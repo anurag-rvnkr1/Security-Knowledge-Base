@@ -1,10 +1,10 @@
 # 07 - Linux Text Processing
 
-# Part 1 — Standard Input, Standard Output, Standard Error, Redirection, Pipes, and Introduction to Text Processing
+## Part 1 — Standard Input, Standard Output, Standard Error, Redirection, Pipes, and Introduction to Text Processing
 
 ---
 
-# Introduction
+## Introduction
 
 Almost everything in Linux can be represented as text.
 
@@ -34,7 +34,7 @@ Text processing is one of the most valuable skills for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -48,7 +48,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Text Processing Matters
+## Why Text Processing Matters
 
 Consider a production Linux server generating:
 
@@ -82,7 +82,7 @@ Linux solves this problem using command-line text processing tools.
 
 ---
 
-# Linux Philosophy
+## Linux Philosophy
 
 One of the Unix design principles is:
 
@@ -116,7 +116,7 @@ Each command performs a specific task, and the output of one command becomes the
 
 ---
 
-# Standard Streams
+## Standard Streams
 
 Every Linux process starts with three standard data streams.
 
@@ -130,7 +130,7 @@ These streams enable flexible redirection and automation.
 
 ---
 
-# Standard Stream Diagram
+## Standard Stream Diagram
 
 ```text
              Keyboard
@@ -154,7 +154,7 @@ These streams enable flexible redirection and automation.
 
 ---
 
-# Standard Input (stdin)
+## Standard Input (stdin)
 
 Standard Input is the source from which a program receives data.
 
@@ -187,7 +187,7 @@ The `cat` command reads from standard input until interrupted or an end-of-file 
 
 ---
 
-# Standard Output (stdout)
+## Standard Output (stdout)
 
 Standard Output contains the normal results produced by a command.
 
@@ -207,7 +207,7 @@ By default, stdout is displayed on the terminal.
 
 ---
 
-# Standard Error (stderr)
+## Standard Error (stderr)
 
 Errors are written to Standard Error.
 
@@ -227,7 +227,7 @@ Separating normal output from error messages allows each stream to be handled in
 
 ---
 
-# Why Separate stdout and stderr?
+## Why Separate stdout and stderr?
 
 Suppose a backup script generates:
 
@@ -255,7 +255,7 @@ This separation improves automation and troubleshooting.
 
 ---
 
-# Output Redirection
+## Output Redirection
 
 Linux allows command output to be written somewhere other than the terminal.
 
@@ -269,7 +269,7 @@ Instead of displaying output, it is written to the specified file.
 
 ---
 
-# Redirect stdout
+## Redirect stdout
 
 Example:
 
@@ -293,7 +293,7 @@ If the file does not exist, it is created.
 
 ---
 
-# Overwrite Behavior
+## Overwrite Behavior
 
 Using:
 
@@ -325,7 +325,7 @@ The previous contents are replaced.
 
 ---
 
-# Append Output
+## Append Output
 
 Use:
 
@@ -353,7 +353,7 @@ The existing contents are preserved and new data is appended.
 
 ---
 
-# Redirect Standard Error
+## Redirect Standard Error
 
 Redirect only error messages:
 
@@ -381,7 +381,7 @@ ls: cannot access 'missingfile': No such file or directory
 
 ---
 
-# Append Standard Error
+## Append Standard Error
 
 ```bash
 command 2>> errors.log
@@ -391,7 +391,7 @@ This appends new error messages without overwriting the existing log.
 
 ---
 
-# Redirect Both stdout and stderr
+## Redirect Both stdout and stderr
 
 One common approach:
 
@@ -415,7 +415,7 @@ Keeping these separate simplifies troubleshooting.
 
 ---
 
-# Combine stdout and stderr
+## Combine stdout and stderr
 
 Redirect both streams into one file:
 
@@ -443,7 +443,7 @@ Both streams are stored together in execution order.
 
 ---
 
-# Discard Output
+## Discard Output
 
 Linux provides a special device:
 
@@ -475,7 +475,7 @@ This is useful for scripts where specific output is intentionally ignored.
 
 ---
 
-# Input Redirection
+## Input Redirection
 
 Programs can receive input from a file instead of the keyboard.
 
@@ -505,7 +505,7 @@ stdout
 
 ---
 
-# Pipes
+## Pipes
 
 One of Linux's most powerful features is the pipe operator.
 
@@ -519,7 +519,7 @@ A pipe sends the output of one command directly to another command.
 
 ---
 
-# Pipe Workflow
+## Pipe Workflow
 
 ```text
 Command A
@@ -545,7 +545,7 @@ No temporary files are required.
 
 ---
 
-# Basic Pipe Example
+## Basic Pipe Example
 
 ```bash
 ls -l | less
@@ -565,7 +565,7 @@ Useful when command output is longer than one screen.
 
 ---
 
-# Another Pipe Example
+## Another Pipe Example
 
 ```bash
 cat access.log | wc
@@ -589,7 +589,7 @@ The `wc` command counts information from the incoming text stream.
 
 ---
 
-# Multi-Command Pipeline
+## Multi-Command Pipeline
 
 Linux pipelines can contain many commands.
 
@@ -623,7 +623,7 @@ Complex processing can often be performed without writing custom programs.
 
 ---
 
-# Advantages of Pipes
+## Advantages of Pipes
 
 Benefits include:
 
@@ -636,7 +636,7 @@ Benefits include:
 
 ---
 
-# Command Chaining vs Pipes
+## Command Chaining vs Pipes
 
 These concepts are related but different.
 
@@ -650,7 +650,7 @@ Pipes transfer data, while command chaining controls execution flow.
 
 ---
 
-# Command Chaining Examples
+## Command Chaining Examples
 
 Run sequentially:
 
@@ -672,7 +672,7 @@ ls missingfile || echo "File not found"
 
 ---
 
-# Enterprise Log Processing Workflow
+## Enterprise Log Processing Workflow
 
 ```text
 Application
@@ -706,7 +706,7 @@ This pipeline is common in SIEM and centralized logging environments.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security teams rely heavily on standard streams and pipelines to:
 
@@ -721,7 +721,7 @@ Many security tools are designed to integrate into Unix-style pipelines.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient text processing enables organizations to:
 
@@ -734,7 +734,7 @@ Efficient text processing enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Redirect output intentionally; avoid overwriting important files.
 - Separate standard output from standard error during automation.
@@ -745,7 +745,7 @@ Efficient text processing enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux processes communicate using standard input, output, and error streams.
 - Redirection changes where data is read from or written to.
@@ -756,11 +756,11 @@ Efficient text processing enables organizations to:
 ---
 
 
-# Part 2 — grep, egrep, Regular Expressions, sort, uniq, cut, paste, tr, and wc
+## Part 2 — grep, egrep, Regular Expressions, sort, uniq, cut, paste, tr, and wc
 
 ---
 
-# Introduction
+## Introduction
 
 Once text is flowing through pipelines, Linux provides utilities to:
 
@@ -787,7 +787,7 @@ Mastering these utilities allows administrators to analyze gigabytes of logs usi
 
 ---
 
-# Linux Text Processing Pipeline
+## Linux Text Processing Pipeline
 
 ```text
 Raw File
@@ -821,7 +821,7 @@ Each utility performs one focused task, making pipelines modular and reusable.
 
 ---
 
-# grep
+## grep
 
 **grep** (Global Regular Expression Print) searches text for matching patterns.
 
@@ -841,7 +841,7 @@ This displays every line containing the word `error`.
 
 ---
 
-# Case-Insensitive Search
+## Case-Insensitive Search
 
 Ignore letter case:
 
@@ -861,7 +861,7 @@ failed
 
 ---
 
-# Show Line Numbers
+## Show Line Numbers
 
 ```bash
 grep -n "root" passwd
@@ -877,7 +877,7 @@ Useful when reviewing configuration files.
 
 ---
 
-# Count Matches
+## Count Matches
 
 Instead of displaying matching lines:
 
@@ -895,7 +895,7 @@ Returns the number of matching lines.
 
 ---
 
-# Invert Search
+## Invert Search
 
 Display lines **not** matching a pattern:
 
@@ -910,7 +910,7 @@ Common use:
 
 ---
 
-# Recursive Search
+## Recursive Search
 
 Search an entire directory tree:
 
@@ -926,7 +926,7 @@ Typical applications:
 
 ---
 
-# Multiple Patterns
+## Multiple Patterns
 
 Search for several alternatives:
 
@@ -938,7 +938,7 @@ The `-E` option enables extended regular expressions.
 
 ---
 
-# egrep
+## egrep
 
 Historically:
 
@@ -958,7 +958,7 @@ Both perform equivalent pattern matching in most environments.
 
 ---
 
-# What Are Regular Expressions?
+## What Are Regular Expressions?
 
 A **regular expression (regex)** describes a search pattern rather than literal text.
 
@@ -972,7 +972,7 @@ Regex allows matching many related strings.
 
 ---
 
-# Basic Regular Expression Symbols
+## Basic Regular Expression Symbols
 
 | Symbol | Meaning |
 |----------|----------|
@@ -988,7 +988,7 @@ Regex allows matching many related strings.
 
 ---
 
-# Beginning of Line
+## Beginning of Line
 
 Match lines beginning with `root`:
 
@@ -1004,7 +1004,7 @@ root:x:0:0:root:/root:/bin/bash
 
 ---
 
-# End of Line
+## End of Line
 
 Match lines ending with `/bin/bash`:
 
@@ -1014,7 +1014,7 @@ grep "/bin/bash$" /etc/passwd
 
 ---
 
-# Wildcard Character
+## Wildcard Character
 
 Example:
 
@@ -1036,7 +1036,7 @@ The period (`.`) matches any single character.
 
 ---
 
-# Character Classes
+## Character Classes
 
 Example:
 
@@ -1058,7 +1058,7 @@ eth0
 
 ---
 
-# Negated Character Classes
+## Negated Character Classes
 
 Example:
 
@@ -1072,7 +1072,7 @@ Commonly used to display active configuration settings.
 
 ---
 
-# Practical grep Examples
+## Practical grep Examples
 
 Find failed SSH logins:
 
@@ -1094,7 +1094,7 @@ grep -E "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" access.log
 
 ---
 
-# sort
+## sort
 
 The `sort` command arranges text in a specified order.
 
@@ -1126,7 +1126,7 @@ Charlie
 
 ---
 
-# Reverse Sort
+## Reverse Sort
 
 ```bash
 sort -r users.txt
@@ -1144,7 +1144,7 @@ Alice
 
 ---
 
-# Numeric Sort
+## Numeric Sort
 
 ```bash
 sort -n scores.txt
@@ -1174,7 +1174,7 @@ Without `-n`, values are sorted alphabetically.
 
 ---
 
-# Remove Duplicate Lines
+## Remove Duplicate Lines
 
 Use:
 
@@ -1186,7 +1186,7 @@ Since `uniq` compares adjacent lines, sorting first is a common practice.
 
 ---
 
-# uniq
+## uniq
 
 The `uniq` command removes consecutive duplicate lines.
 
@@ -1224,7 +1224,7 @@ Charlie
 
 ---
 
-# Count Duplicates
+## Count Duplicates
 
 ```bash
 uniq -c names.txt
@@ -1244,7 +1244,7 @@ Useful for summarizing repeated values.
 
 ---
 
-# Display Only Repeated Lines
+## Display Only Repeated Lines
 
 ```bash
 uniq -d names.txt
@@ -1254,7 +1254,7 @@ Displays only duplicated entries.
 
 ---
 
-# cut
+## cut
 
 The `cut` command extracts selected portions of each line.
 
@@ -1267,7 +1267,7 @@ Typical uses:
 
 ---
 
-# Extract Characters
+## Extract Characters
 
 ```bash
 cut -c1-5 file.txt
@@ -1277,7 +1277,7 @@ Displays characters 1 through 5 from each line.
 
 ---
 
-# Extract Fields
+## Extract Fields
 
 Given:
 
@@ -1314,7 +1314,7 @@ Explanation:
 
 ---
 
-# Extract Multiple Fields
+## Extract Multiple Fields
 
 ```bash
 cut -d ":" -f1,7 /etc/passwd
@@ -1329,7 +1329,7 @@ This is useful for reviewing account configurations.
 
 ---
 
-# paste
+## paste
 
 The `paste` command merges lines from multiple files.
 
@@ -1367,7 +1367,7 @@ Bob      IT
 
 ---
 
-# Change Delimiter
+## Change Delimiter
 
 Example:
 
@@ -1385,7 +1385,7 @@ Bob,IT
 
 ---
 
-# tr
+## tr
 
 The `tr` command translates or deletes characters.
 
@@ -1397,7 +1397,7 @@ Common uses:
 
 ---
 
-# Convert Lowercase to Uppercase
+## Convert Lowercase to Uppercase
 
 ```bash
 echo "linux" | tr 'a-z' 'A-Z'
@@ -1411,7 +1411,7 @@ LINUX
 
 ---
 
-# Convert Uppercase to Lowercase
+## Convert Uppercase to Lowercase
 
 ```bash
 echo "SECURITY" | tr 'A-Z' 'a-z'
@@ -1425,7 +1425,7 @@ security
 
 ---
 
-# Delete Characters
+## Delete Characters
 
 Remove digits:
 
@@ -1441,7 +1441,7 @@ abc
 
 ---
 
-# Replace Characters
+## Replace Characters
 
 Replace spaces with underscores:
 
@@ -1457,7 +1457,7 @@ Linux_Security
 
 ---
 
-# wc
+## wc
 
 The `wc` (word count) utility summarizes text.
 
@@ -1483,7 +1483,7 @@ Meaning:
 
 ---
 
-# Count Lines Only
+## Count Lines Only
 
 ```bash
 wc -l access.log
@@ -1491,7 +1491,7 @@ wc -l access.log
 
 ---
 
-# Count Words
+## Count Words
 
 ```bash
 wc -w article.txt
@@ -1499,7 +1499,7 @@ wc -w article.txt
 
 ---
 
-# Count Characters
+## Count Characters
 
 ```bash
 wc -m notes.txt
@@ -1507,7 +1507,7 @@ wc -m notes.txt
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Count failed SSH logins:
 
@@ -1541,7 +1541,7 @@ This type of pipeline is common in security monitoring.
 
 ---
 
-# Combining Multiple Commands
+## Combining Multiple Commands
 
 Example:
 
@@ -1588,7 +1588,7 @@ This identifies the IP addresses generating the most HTTP 404 responses.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security teams frequently use these tools to:
 
@@ -1604,7 +1604,7 @@ These commands are foundational for SOC investigations and threat hunting.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient text processing enables organizations to:
 
@@ -1617,7 +1617,7 @@ Efficient text processing enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use `grep -E` instead of legacy `egrep` in new scripts.
 - Prefer pipelines over temporary intermediate files when practical.
@@ -1628,7 +1628,7 @@ Efficient text processing enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - `grep` is the primary tool for searching text.
 - Regular expressions provide flexible and powerful pattern matching.
@@ -1640,11 +1640,11 @@ Efficient text processing enables organizations to:
 ---
 
 
-# Part 3 — sed, awk, xargs, tee, Advanced Pipelines, Enterprise Log Processing, and Security Use Cases
+## Part 3 — sed, awk, xargs, tee, Advanced Pipelines, Enterprise Log Processing, and Security Use Cases
 
 ---
 
-# Introduction
+## Introduction
 
 Basic text-processing tools such as `grep`, `sort`, and `cut` are powerful, but enterprise environments often require more advanced capabilities.
 
@@ -1669,7 +1669,7 @@ These commands are fundamental in automation, DevOps, SIEM engineering, and cybe
 
 ---
 
-# Advanced Text Processing Workflow
+## Advanced Text Processing Workflow
 
 ```text
 Raw Log File
@@ -1707,7 +1707,7 @@ Each utility contributes a specific capability to the overall pipeline.
 
 ---
 
-# sed
+## sed
 
 **sed (Stream Editor)** processes text line by line without opening an interactive editor.
 
@@ -1723,7 +1723,7 @@ Typical uses include:
 
 ---
 
-# Display Specific Lines
+## Display Specific Lines
 
 Display the first line:
 
@@ -1746,7 +1746,7 @@ Option explanation:
 
 ---
 
-# Replace Text
+## Replace Text
 
 Replace the first occurrence of "Linux" with "Ubuntu" on each line:
 
@@ -1770,7 +1770,7 @@ Ubuntu Server
 
 ---
 
-# Replace All Occurrences
+## Replace All Occurrences
 
 ```bash
 sed 's/error/warning/g' app.log
@@ -1782,7 +1782,7 @@ Without `g`, only the first match on each line is replaced.
 
 ---
 
-# Edit Files In Place
+## Edit Files In Place
 
 Modify a file directly:
 
@@ -1800,7 +1800,7 @@ sed -i.bak 's/foo/bar/' file.txt
 
 ---
 
-# Delete Lines
+## Delete Lines
 
 Delete blank lines:
 
@@ -1818,7 +1818,7 @@ This is useful for displaying active configuration settings.
 
 ---
 
-# Insert Text
+## Insert Text
 
 Insert a line before line 1:
 
@@ -1834,7 +1834,7 @@ sed '5a\New Entry' config.txt
 
 ---
 
-# awk
+## awk
 
 `awk` is a pattern scanning and data-processing language designed for structured text.
 
@@ -1850,7 +1850,7 @@ Unlike `cut`, `awk` can perform calculations and conditional logic.
 
 ---
 
-# awk Processing Model
+## awk Processing Model
 
 ```text
 Input Line
@@ -1872,7 +1872,7 @@ By default, fields are separated by whitespace.
 
 ---
 
-# Print Entire Line
+## Print Entire Line
 
 ```bash
 awk '{print}' file.txt
@@ -1882,7 +1882,7 @@ Equivalent to displaying each input line.
 
 ---
 
-# Print Specific Fields
+## Print Specific Fields
 
 Example:
 
@@ -1914,7 +1914,7 @@ Charlie
 
 ---
 
-# Multiple Fields
+## Multiple Fields
 
 ```bash
 awk '{print $1,$3}'
@@ -1924,7 +1924,7 @@ Prints the first and third fields separated by a space.
 
 ---
 
-# Using Custom Delimiters
+## Using Custom Delimiters
 
 Read `/etc/passwd`:
 
@@ -1950,7 +1950,7 @@ Option explanation:
 
 ---
 
-# Print Multiple Fields
+## Print Multiple Fields
 
 Display username and shell:
 
@@ -1968,7 +1968,7 @@ daemon /usr/sbin/nologin
 
 ---
 
-# Perform Calculations
+## Perform Calculations
 
 Given:
 
@@ -1996,7 +1996,7 @@ Output:
 
 ---
 
-# Conditional Processing
+## Conditional Processing
 
 Display users with UID greater than or equal to 1000:
 
@@ -2008,7 +2008,7 @@ Useful for reporting user accounts.
 
 ---
 
-# Built-in Variables
+## Built-in Variables
 
 Common `awk` variables:
 
@@ -2028,7 +2028,7 @@ awk '{print NR, $0}' file.txt
 
 ---
 
-# xargs
+## xargs
 
 `xargs` converts standard input into command-line arguments.
 
@@ -2036,7 +2036,7 @@ This is particularly useful when one command generates input for another command
 
 ---
 
-# Basic Example
+## Basic Example
 
 ```bash
 echo "file1 file2 file3" | xargs rm
@@ -2050,7 +2050,7 @@ rm file1 file2 file3
 
 ---
 
-# Using find with xargs
+## Using find with xargs
 
 Search for log files and display details:
 
@@ -2078,7 +2078,7 @@ ls -lh
 
 ---
 
-# Safer File Handling
+## Safer File Handling
 
 When filenames may contain spaces or special characters:
 
@@ -2090,7 +2090,7 @@ The `-print0` and `-0` options work together to safely process filenames.
 
 ---
 
-# tee
+## tee
 
 The `tee` command writes output to both the terminal and one or more files.
 
@@ -2116,7 +2116,7 @@ tee
 
 ---
 
-# Append Using tee
+## Append Using tee
 
 Append instead of overwrite:
 
@@ -2132,7 +2132,7 @@ Option:
 
 ---
 
-# Why tee Is Useful
+## Why tee Is Useful
 
 Typical applications:
 
@@ -2143,7 +2143,7 @@ Typical applications:
 
 ---
 
-# Advanced Pipeline Example
+## Advanced Pipeline Example
 
 Count failed SSH login attempts by username:
 
@@ -2189,7 +2189,7 @@ Ranked User List
 
 ---
 
-# Web Server Log Analysis
+## Web Server Log Analysis
 
 Display the top client IP addresses:
 
@@ -2214,7 +2214,7 @@ This helps identify the most active clients.
 
 ---
 
-# Detect HTTP Errors
+## Detect HTTP Errors
 
 Count HTTP 404 responses:
 
@@ -2226,7 +2226,7 @@ This pipeline reports the number of requests resulting in a 404 status code.
 
 ---
 
-# Process CSV Files
+## Process CSV Files
 
 Example CSV:
 
@@ -2252,7 +2252,7 @@ NR > 1
 
 ---
 
-# Generate Reports
+## Generate Reports
 
 Average salary:
 
@@ -2264,7 +2264,7 @@ This demonstrates how `awk` performs calculations directly from structured data.
 
 ---
 
-# Enterprise Log Processing Workflow
+## Enterprise Log Processing Workflow
 
 ```text
 Application Logs
@@ -2298,7 +2298,7 @@ This workflow closely mirrors centralized logging and SIEM pipelines.
 
 ---
 
-# Automation Example
+## Automation Example
 
 Create a daily summary:
 
@@ -2332,7 +2332,7 @@ Error Count
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security analysts frequently use these tools to:
 
@@ -2348,7 +2348,7 @@ These utilities form the foundation of many SOC workflows before data reaches a 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Advanced text-processing capabilities enable organizations to:
 
@@ -2361,7 +2361,7 @@ Advanced text-processing capabilities enable organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Test `sed -i` commands on backup copies before modifying production files.
 - Prefer `awk` for structured data instead of complex shell parsing.
@@ -2372,7 +2372,7 @@ Advanced text-processing capabilities enable organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - `sed` performs efficient stream editing and text replacement.
 - `awk` is a powerful language for structured text processing and reporting.
@@ -2383,11 +2383,11 @@ Advanced text-processing capabilities enable organizations to:
 ---
 
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Linux text processing utilities are among the most frequently used tools in enterprise environments.
 
@@ -2405,7 +2405,7 @@ This section combines the concepts learned throughout this chapter into practica
 
 ---
 
-# Enterprise Text Processing Workflow
+## Enterprise Text Processing Workflow
 
 ```text
 Raw Data
@@ -2445,7 +2445,7 @@ Archive
 
 ---
 
-# Practical Lab 1 — Search Configuration Files
+## Practical Lab 1 — Search Configuration Files
 
 Search for SSH configuration entries:
 
@@ -2466,7 +2466,7 @@ Objective:
 
 ---
 
-# Practical Lab 2 — Count Failed Logins
+## Practical Lab 2 — Count Failed Logins
 
 Search authentication logs:
 
@@ -2486,7 +2486,7 @@ Objective:
 
 ---
 
-# Practical Lab 3 — Find Unique IP Addresses
+## Practical Lab 3 — Find Unique IP Addresses
 
 Example:
 
@@ -2503,7 +2503,7 @@ Objective:
 
 ---
 
-# Practical Lab 4 — Identify Top IP Addresses
+## Practical Lab 4 — Identify Top IP Addresses
 
 ```bash
 awk '{print $1}' access.log \
@@ -2528,7 +2528,7 @@ Objective:
 
 ---
 
-# Practical Lab 5 — Replace Text
+## Practical Lab 5 — Replace Text
 
 Replace every occurrence of "HTTP" with "HTTPS":
 
@@ -2548,7 +2548,7 @@ Objective:
 
 ---
 
-# Practical Lab 6 — Remove Blank Lines
+## Practical Lab 6 — Remove Blank Lines
 
 ```bash
 sed '/^$/d' notes.txt
@@ -2560,7 +2560,7 @@ Objective:
 
 ---
 
-# Practical Lab 7 — Extract Usernames
+## Practical Lab 7 — Extract Usernames
 
 Display usernames from `/etc/passwd`:
 
@@ -2574,7 +2574,7 @@ Objective:
 
 ---
 
-# Practical Lab 8 — Display Login Shells
+## Practical Lab 8 — Display Login Shells
 
 ```bash
 awk -F: '{print $1,$7}' /etc/passwd
@@ -2586,7 +2586,7 @@ Objective:
 
 ---
 
-# Practical Lab 9 — Sum Numeric Values
+## Practical Lab 9 — Sum Numeric Values
 
 Create:
 
@@ -2612,7 +2612,7 @@ Objective:
 
 ---
 
-# Practical Lab 10 — Character Translation
+## Practical Lab 10 — Character Translation
 
 Convert lowercase to uppercase:
 
@@ -2632,7 +2632,7 @@ Objective:
 
 ---
 
-# Practical Lab 11 — Remove Digits
+## Practical Lab 11 — Remove Digits
 
 ```bash
 echo "user12345" | tr -d '0-9'
@@ -2650,7 +2650,7 @@ Objective:
 
 ---
 
-# Practical Lab 12 — Merge Files
+## Practical Lab 12 — Merge Files
 
 Create:
 
@@ -2672,7 +2672,7 @@ Objective:
 
 ---
 
-# Practical Lab 13 — Save Pipeline Output
+## Practical Lab 13 — Save Pipeline Output
 
 ```bash
 grep "ERROR" app.log | tee errors.txt
@@ -2684,7 +2684,7 @@ Objective:
 
 ---
 
-# Practical Lab 14 — Search Multiple Files
+## Practical Lab 14 — Search Multiple Files
 
 ```bash
 grep -rn "TODO" .
@@ -2703,7 +2703,7 @@ Objective:
 
 ---
 
-# Practical Lab 15 — Count Log Entries
+## Practical Lab 15 — Count Log Entries
 
 ```bash
 wc -l access.log
@@ -2715,7 +2715,7 @@ Objective:
 
 ---
 
-# Practical Lab 16 — Filter Comments
+## Practical Lab 16 — Filter Comments
 
 Given:
 
@@ -2749,7 +2749,7 @@ Objective:
 
 ---
 
-# Practical Lab 17 — Search by Extension
+## Practical Lab 17 — Search by Extension
 
 ```bash
 find . -name "*.conf"
@@ -2761,7 +2761,7 @@ Objective:
 
 ---
 
-# Practical Lab 18 — Combine Multiple Tools
+## Practical Lab 18 — Combine Multiple Tools
 
 ```bash
 cat access.log \
@@ -2808,9 +2808,9 @@ Objective:
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-## Detecting Brute-Force Login Attempts
+### Detecting Brute-Force Login Attempts
 
 Security team objective:
 
@@ -2861,9 +2861,9 @@ This workflow provides a lightweight method for identifying suspicious authentic
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-## Web Server Analytics
+### Web Server Analytics
 
 Administrator goals:
 
@@ -2898,9 +2898,9 @@ These summaries help support capacity planning and operational monitoring.
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-## Configuration Auditing
+### Configuration Auditing
 
 System administrator responsibilities:
 
@@ -2922,9 +2922,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-## Incident Response
+### Incident Response
 
 SOC analysts may need to:
 
@@ -2963,7 +2963,7 @@ Incident Report
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 | Mistake | Impact |
 |----------|---------|
@@ -2977,7 +2977,7 @@ Incident Report
 
 ---
 
-# Performance Considerations
+## Performance Considerations
 
 Large enterprise log files may exceed hundreds of gigabytes.
 
@@ -2992,7 +2992,7 @@ Recommendations:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Text-processing utilities are fundamental to security operations.
 
@@ -3011,7 +3011,7 @@ These tools remain valuable even in environments with centralized SIEM platforms
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective text processing helps organizations:
 
@@ -3024,7 +3024,7 @@ Effective text processing helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use descriptive, well-documented pipelines.
 - Validate regular expressions before using them in production.
@@ -3036,7 +3036,7 @@ Effective text processing helps organizations:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3055,9 +3055,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What are the three standard streams in Linux?
 2. What is the purpose of the pipe (`|`) operator?
@@ -3072,7 +3072,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the difference between `grep`, `grep -E`, and regular expressions.
 2. Compare `cut` and `awk`.
@@ -3087,7 +3087,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a pipeline to identify the top client IP addresses from a web server log.
 2. Explain how text-processing tools support SIEM engineering.
@@ -3102,7 +3102,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux text-processing tools are designed to work together through standard streams and pipelines.
 - `grep`, `sed`, and `awk` are foundational tools for searching, editing, and analyzing text.
@@ -3112,9 +3112,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - GNU grep Manual
 - GNU sed Manual
@@ -3122,7 +3122,7 @@ In this chapter, you learned:
 - GNU Coreutils Manual
 - Linux man pages (`man grep`, `man awk`, `man sed`, etc.)
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - CIS Benchmarks for Linux
@@ -3132,7 +3132,7 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **08-Linux-Users-and-Groups.md**
 

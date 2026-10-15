@@ -27,7 +27,7 @@ They function similarly to **firewall rules** for Kubernetes Pods.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -45,7 +45,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need Network Policies?
+## Why Do We Need Network Policies?
 
 Imagine an e-commerce application.
 
@@ -87,7 +87,7 @@ This violates the **Principle of Least Privilege**.
 
 ---
 
-# Solution
+## Solution
 
 Use Network Policies.
 
@@ -107,7 +107,7 @@ Only approved communication is permitted.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                   Namespace
@@ -147,7 +147,7 @@ Only approved communication is permitted.
 
 ---
 
-# What is a Network Policy?
+## What is a Network Policy?
 
 A Network Policy defines **which traffic is allowed** to or from selected Pods.
 
@@ -169,7 +169,7 @@ Denied
 
 ---
 
-# Network Policy Components
+## Network Policy Components
 
 ```
 Network Policy
@@ -189,7 +189,7 @@ Network Policy
 
 ---
 
-# Pod Selector
+## Pod Selector
 
 A Network Policy targets Pods using labels.
 
@@ -211,7 +211,7 @@ Backend Pods
 
 ---
 
-# Policy Types
+## Policy Types
 
 Two primary policy types exist:
 
@@ -229,7 +229,7 @@ A policy may define one or both.
 
 ---
 
-# Ingress Policy
+## Ingress Policy
 
 Controls:
 
@@ -265,7 +265,7 @@ Denied
 
 ---
 
-# Egress Policy
+## Egress Policy
 
 Controls:
 
@@ -301,7 +301,7 @@ Denied
 
 ---
 
-# Ingress vs Egress
+## Ingress vs Egress
 
 | Ingress | Egress |
 |----------|---------|
@@ -310,7 +310,7 @@ Denied
 
 ---
 
-# Default Behavior
+## Default Behavior
 
 Without Network Policies:
 
@@ -334,7 +334,7 @@ Permitted
 
 ---
 
-# Default Deny
+## Default Deny
 
 A common security practice:
 
@@ -358,7 +358,7 @@ Allowed
 
 ---
 
-# Default Deny Example
+## Default Deny Example
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -382,7 +382,7 @@ This denies all ingress traffic to Pods in the namespace unless another policy e
 
 ---
 
-# Allow Frontend to Backend
+## Allow Frontend to Backend
 
 Example:
 
@@ -408,7 +408,7 @@ Denied
 
 ---
 
-# Namespace Selector
+## Namespace Selector
 
 Traffic can also be allowed based on namespaces.
 
@@ -426,7 +426,7 @@ Only Pods in matching namespaces are permitted.
 
 ---
 
-# Pod Selector + Namespace Selector
+## Pod Selector + Namespace Selector
 
 Both can be combined.
 
@@ -446,7 +446,7 @@ This provides fine-grained access control.
 
 ---
 
-# IP Block
+## IP Block
 
 External IPs can also be allowed.
 
@@ -470,7 +470,7 @@ Allowed
 
 ---
 
-# Excluding Addresses
+## Excluding Addresses
 
 Example:
 
@@ -498,7 +498,7 @@ Except
 
 ---
 
-# Port Restrictions
+## Port Restrictions
 
 Policies can also limit ports.
 
@@ -516,7 +516,7 @@ Only HTTPS traffic is permitted.
 
 ---
 
-# Multiple Rules
+## Multiple Rules
 
 A Network Policy may contain multiple ingress or egress rules.
 
@@ -536,7 +536,7 @@ If any rule matches, the traffic is allowed.
 
 ---
 
-# Example Architecture
+## Example Architecture
 
 ```
 Internet
@@ -588,7 +588,7 @@ Database
 
 ---
 
-# Network Policy Workflow
+## Network Policy Workflow
 
 ```
 Packet
@@ -628,7 +628,7 @@ Drop
 
 ---
 
-# YAML Example
+## YAML Example
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -664,9 +664,9 @@ spec:
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
-### Secure Databases
+#### Secure Databases
 
 ```
 Backend
@@ -686,7 +686,7 @@ Denied
 
 ---
 
-### Restrict Internet Access
+#### Restrict Internet Access
 
 ```
 Pod
@@ -700,7 +700,7 @@ Denied
 
 ---
 
-### Namespace Isolation
+#### Namespace Isolation
 
 ```
 Namespace A
@@ -714,7 +714,7 @@ Denied
 
 ---
 
-### Microservice Security
+#### Microservice Security
 
 ```
 Frontend
@@ -732,7 +732,7 @@ Only the required paths are allowed.
 
 ---
 
-# Viewing Policies
+## Viewing Policies
 
 ```bash
 kubectl get networkpolicy
@@ -740,7 +740,7 @@ kubectl get networkpolicy
 
 ---
 
-# Describe Policy
+## Describe Policy
 
 ```bash
 kubectl describe networkpolicy allow-frontend
@@ -755,7 +755,7 @@ Displays:
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -783,7 +783,7 @@ kubectl delete networkpolicy allow-frontend
 
 ---
 
-# Network Policy Architecture Summary
+## Network Policy Architecture Summary
 
 ```
 Source Pod
@@ -803,9 +803,9 @@ Destination Pod
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Start with Default Deny
+#### 1. Start with Default Deny
 
 Deny all traffic first.
 
@@ -813,13 +813,13 @@ Then explicitly allow only required communication.
 
 ---
 
-### 2. Use Labels Carefully
+#### 2. Use Labels Carefully
 
 Policies depend on accurate Pod labels.
 
 ---
 
-### 3. Apply Least Privilege
+#### 3. Apply Least Privilege
 
 Allow only:
 
@@ -829,21 +829,21 @@ Allow only:
 
 ---
 
-### 4. Test Before Production
+#### 4. Test Before Production
 
 Incorrect policies can accidentally isolate applications.
 
 ---
 
-### 5. Verify CNI Support
+#### 5. Verify CNI Support
 
 Ensure your CNI plugin enforces Network Policies.
 
 ---
 
-# How Network Policies Work Internally
+## How Network Policies Work Internally
 
-## Overview
+### Overview
 
 A **Network Policy** is only a Kubernetes API resource.
 
@@ -869,7 +869,7 @@ Examples:
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                 Kubernetes API Server
@@ -909,7 +909,7 @@ Examples:
 
 ---
 
-# Complete Internal Workflow
+## Complete Internal Workflow
 
 ```
 Developer
@@ -945,7 +945,7 @@ Allow / Drop
 
 ---
 
-# Step 1 – Create Network Policy
+## Step 1 – Create Network Policy
 
 Example:
 
@@ -961,7 +961,7 @@ kubectl apply -f policy.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -984,7 +984,7 @@ No packet filtering occurs yet.
 
 ---
 
-# Step 3 – CNI Watches Policies
+## Step 3 – CNI Watches Policies
 
 The CNI plugin continuously watches:
 
@@ -1009,7 +1009,7 @@ Recalculate Rules
 
 ---
 
-# Step 4 – Identify Target Pods
+## Step 4 – Identify Target Pods
 
 Suppose:
 
@@ -1031,7 +1031,7 @@ Only these Pods are affected.
 
 ---
 
-# Step 5 – Build Rule Set
+## Step 5 – Build Rule Set
 
 Suppose:
 
@@ -1063,7 +1063,7 @@ Everything else is denied once the selected Pods are isolated.
 
 ---
 
-# Step 6 – Program Linux Networking
+## Step 6 – Program Linux Networking
 
 Depending on the CNI:
 
@@ -1095,7 +1095,7 @@ The operating system now enforces the policy.
 
 ---
 
-# Packet Flow
+## Packet Flow
 
 Suppose:
 
@@ -1153,7 +1153,7 @@ Drop Packet
 
 ---
 
-# Ingress Processing
+## Ingress Processing
 
 Example:
 
@@ -1197,7 +1197,7 @@ Dropped
 
 ---
 
-# Egress Processing
+## Egress Processing
 
 Suppose:
 
@@ -1225,7 +1225,7 @@ The CNI evaluates outgoing packets before they leave the Pod.
 
 ---
 
-# Pod Isolation
+## Pod Isolation
 
 Once a Pod is selected by an ingress policy:
 
@@ -1243,7 +1243,7 @@ Similarly, an egress policy isolates outgoing traffic.
 
 ---
 
-# Default Deny
+## Default Deny
 
 Example:
 
@@ -1269,7 +1269,7 @@ This is commonly used as the foundation of Zero Trust networking.
 
 ---
 
-# Policy Evaluation
+## Policy Evaluation
 
 Multiple Network Policies can select the same Pod.
 
@@ -1301,7 +1301,7 @@ Denied traffic is simply traffic that does not match any allow rule.
 
 ---
 
-# Example Evaluation
+## Example Evaluation
 
 Policies:
 
@@ -1349,7 +1349,7 @@ Denied
 
 ---
 
-# Namespace Selector Processing
+## Namespace Selector Processing
 
 Suppose:
 
@@ -1381,7 +1381,7 @@ Allow
 
 ---
 
-# Pod Selector Processing
+## Pod Selector Processing
 
 Suppose:
 
@@ -1413,7 +1413,7 @@ Continue
 
 ---
 
-# IP Block Processing
+## IP Block Processing
 
 Example:
 
@@ -1445,7 +1445,7 @@ Drop
 
 ---
 
-# Port Filtering
+## Port Filtering
 
 Suppose:
 
@@ -1473,7 +1473,7 @@ Ports are evaluated alongside selectors.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Application
@@ -1501,7 +1501,7 @@ Destination
 
 ---
 
-# Calico Enforcement
+## Calico Enforcement
 
 Calico may implement policies using:
 
@@ -1525,7 +1525,7 @@ Felix is Calico's policy programming component.
 
 ---
 
-# Cilium Enforcement
+## Cilium Enforcement
 
 Cilium uses:
 
@@ -1549,7 +1549,7 @@ This avoids large iptables rule sets and offers high performance.
 
 ---
 
-# Antrea Enforcement
+## Antrea Enforcement
 
 Antrea translates Network Policies into Open vSwitch flow rules.
 
@@ -1567,7 +1567,7 @@ Forward / Drop
 
 ---
 
-# Packet Life Cycle
+## Packet Life Cycle
 
 ```
 Application
@@ -1601,7 +1601,7 @@ Policy enforcement occurs before the packet leaves (egress) or after it enters (
 
 ---
 
-# Zero Trust Model
+## Zero Trust Model
 
 ```
 Default Deny
@@ -1619,7 +1619,7 @@ Every communication path must be intentionally permitted.
 
 ---
 
-# Hands-on Lab 1 – Create Default Deny Policy
+## Hands-on Lab 1 – Create Default Deny Policy
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1649,7 +1649,7 @@ Observe that ingress traffic is blocked unless additional policies allow it.
 
 ---
 
-# Hands-on Lab 2 – Allow Frontend Access
+## Hands-on Lab 2 – Allow Frontend Access
 
 Create a policy allowing:
 
@@ -1665,7 +1665,7 @@ Verify that only the frontend can access the backend.
 
 ---
 
-# Hands-on Lab 3 – Test Connectivity
+## Hands-on Lab 3 – Test Connectivity
 
 Launch a temporary Pod:
 
@@ -1685,7 +1685,7 @@ Observe whether traffic is allowed or denied.
 
 ---
 
-# Hands-on Lab 4 – Test Namespace Isolation
+## Hands-on Lab 4 – Test Namespace Isolation
 
 Create two namespaces.
 
@@ -1695,7 +1695,7 @@ Verify that Pods in the other namespace cannot connect.
 
 ---
 
-# Hands-on Lab 5 – Verify CNI Support
+## Hands-on Lab 5 – Verify CNI Support
 
 Check which CNI is running:
 
@@ -1713,9 +1713,9 @@ Confirm that your CNI supports Network Policies.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Assuming Kubernetes Enforces Policies
+### 1. Assuming Kubernetes Enforces Policies
 
 Kubernetes stores the policy.
 
@@ -1733,7 +1733,7 @@ No Enforcement
 
 ---
 
-## 2. Forgetting Default Allow
+### 2. Forgetting Default Allow
 
 Without any Network Policy:
 
@@ -1747,7 +1747,7 @@ Allowed
 
 ---
 
-## 3. Looking for "Deny" Rules
+### 3. Looking for "Deny" Rules
 
 Kubernetes Network Policies only define **allow** rules.
 
@@ -1755,7 +1755,7 @@ Everything not allowed is implicitly denied for isolated Pods.
 
 ---
 
-## 4. Incorrect Labels
+### 4. Incorrect Labels
 
 Policies rely entirely on labels.
 
@@ -1771,7 +1771,7 @@ No Effect
 
 ---
 
-## 5. Ignoring DNS
+### 5. Ignoring DNS
 
 A strict egress policy may accidentally block DNS requests.
 
@@ -1789,9 +1789,9 @@ Remember to allow traffic to your cluster DNS service (for example, CoreDNS) whe
 
 ---
 
-# Network Policies Quick Revision
+## Network Policies Quick Revision
 
-## Workflow
+### Workflow
 
 ```
 Developer
@@ -1819,7 +1819,7 @@ Packet Decision
 
 ---
 
-## Evaluation
+### Evaluation
 
 ```
 Packet
@@ -1843,7 +1843,7 @@ Forward / Drop
 
 ---
 
-## Security Model
+### Security Model
 
 ```
 Default Deny
@@ -1859,7 +1859,7 @@ Least Privilege
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Policies:
 
@@ -1893,9 +1893,9 @@ kubectl delete networkpolicy default-deny
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a Network Policy?
 - What is the difference between ingress and egress policies?
@@ -1903,7 +1903,7 @@ kubectl delete networkpolicy default-deny
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - How does a CNI plugin enforce Network Policies?
 - What happens when multiple Network Policies apply to the same Pod?
@@ -1911,7 +1911,7 @@ kubectl delete networkpolicy default-deny
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the complete packet flow through Network Policy enforcement.
 - Compare Network Policy implementations in Calico and Cilium.
@@ -1921,9 +1921,9 @@ kubectl delete networkpolicy default-deny
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Network Policies
 - Network Policy Concepts
@@ -1932,7 +1932,7 @@ kubectl delete networkpolicy default-deny
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Networking
 - SIG Network
@@ -1941,7 +1941,7 @@ kubectl delete networkpolicy default-deny
 
 ---
 
-## CNI Documentation
+### CNI Documentation
 
 - Calico
 - Cilium
@@ -1950,7 +1950,7 @@ kubectl delete networkpolicy default-deny
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Hardening Guide
@@ -1959,7 +1959,7 @@ kubectl delete networkpolicy default-deny
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Apply a default-deny policy to a namespace.
 2. Create allow policies for only required application communication.
@@ -1971,7 +1971,7 @@ kubectl delete networkpolicy default-deny
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Developer

@@ -1,6 +1,6 @@
 # 02 - Cloud Computing Fundamentals
 
-# Introduction
+## Introduction
 
 Cloud computing is the foundation upon which modern digital infrastructure is built. Today, nearly every technology—from web applications and mobile services to artificial intelligence, machine learning, cybersecurity, big data analytics, blockchain, and Internet of Things (IoT)—relies on cloud platforms.
 
@@ -23,7 +23,7 @@ This chapter introduces the technologies, architecture, terminology, and concept
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -42,7 +42,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is Cloud Computing?
+## What is Cloud Computing?
 
 Cloud computing is the on-demand delivery of computing services over the internet.
 
@@ -66,9 +66,9 @@ The cloud provider manages the underlying infrastructure while customers consume
 
 ---
 
-# Traditional Computing vs Cloud Computing
+## Traditional Computing vs Cloud Computing
 
-## Traditional Infrastructure
+### Traditional Infrastructure
 
 ```
 Purchase Hardware
@@ -111,7 +111,7 @@ Scaling often requires purchasing additional hardware, which may take weeks or m
 
 ---
 
-## Cloud Computing
+### Cloud Computing
 
 ```
 Login to Cloud Portal
@@ -139,13 +139,13 @@ Resources that once required weeks to deploy can now be available within minutes
 
 ---
 
-# Characteristics of Cloud Computing
+## Characteristics of Cloud Computing
 
 Cloud computing possesses several defining characteristics.
 
 ---
 
-## 1. On-Demand Self-Service
+### 1. On-Demand Self-Service
 
 Users can provision computing resources without interacting directly with cloud provider personnel.
 
@@ -177,7 +177,7 @@ Automation significantly improves operational efficiency.
 
 ---
 
-## 2. Broad Network Access
+### 2. Broad Network Access
 
 Cloud services are accessible through standard internet technologies.
 
@@ -194,7 +194,7 @@ This enables developers, administrators, automation tools, and applications to i
 
 ---
 
-## 3. Resource Pooling
+### 3. Resource Pooling
 
 Cloud providers share physical infrastructure among multiple customers while maintaining logical isolation.
 
@@ -223,7 +223,7 @@ Resource pooling improves:
 
 ---
 
-## 4. Rapid Elasticity
+### 4. Rapid Elasticity
 
 Cloud resources can automatically increase or decrease according to workload demands.
 
@@ -258,7 +258,7 @@ Elasticity allows organizations to match infrastructure with demand.
 
 ---
 
-## 5. Measured Service
+### 5. Measured Service
 
 Cloud providers measure resource consumption.
 
@@ -274,7 +274,7 @@ Organizations pay only for the resources they consume, making cloud computing ec
 
 ---
 
-# Cloud Computing Building Blocks
+## Cloud Computing Building Blocks
 
 Cloud platforms consist of several core components.
 
@@ -306,7 +306,7 @@ Each layer abstracts complexity from the layer above it.
 
 ---
 
-# Physical Infrastructure
+## Physical Infrastructure
 
 Cloud providers operate enormous data centers around the world.
 
@@ -327,7 +327,7 @@ Instead, they consume virtualized resources.
 
 ---
 
-# Virtualization
+## Virtualization
 
 Virtualization is one of the most important technologies in cloud computing.
 
@@ -357,7 +357,7 @@ Virtualization transformed traditional data centers and enabled modern cloud com
 
 ---
 
-# What is a Hypervisor?
+## What is a Hypervisor?
 
 A hypervisor is software that creates and manages virtual machines.
 
@@ -374,11 +374,11 @@ In reality, the hypervisor securely shares physical resources.
 
 ---
 
-# Types of Hypervisors
+## Types of Hypervisors
 
 There are two major categories.
 
-## Type 1 Hypervisor
+### Type 1 Hypervisor
 
 Runs directly on physical hardware.
 
@@ -412,7 +412,7 @@ Examples include:
 
 ---
 
-## Type 2 Hypervisor
+### Type 2 Hypervisor
 
 Runs on top of an existing operating system.
 
@@ -449,7 +449,7 @@ Enterprise cloud providers primarily rely on Type 1 hypervisors because of their
 
 ---
 
-# Virtual Machines (VMs)
+## Virtual Machines (VMs)
 
 A Virtual Machine is an isolated software-defined computer running its own operating system.
 
@@ -480,7 +480,7 @@ Virtual machines enable multiple workloads to coexist securely on shared hardwar
 
 ---
 
-# Benefits of Virtual Machines
+## Benefits of Virtual Machines
 
 Virtual machines provide:
 
@@ -495,7 +495,7 @@ They remain widely used despite the growing popularity of containers.
 
 ---
 
-# Virtual Networking
+## Virtual Networking
 
 Cloud providers create software-defined networks rather than relying solely on physical network devices.
 
@@ -525,7 +525,7 @@ Software-defined networking enables rapid deployment and centralized management.
 
 ---
 
-# Virtual Storage
+## Virtual Storage
 
 Cloud storage is abstracted from physical disks.
 
@@ -541,7 +541,7 @@ Each type serves different workload requirements and will be covered in later ch
 
 ---
 
-# Cloud Resource Provisioning
+## Cloud Resource Provisioning
 
 Provisioning is the process of creating cloud resources.
 
@@ -559,7 +559,7 @@ Provisioning can be performed manually or automatically.
 
 ---
 
-# Manual Provisioning
+## Manual Provisioning
 
 ```
 Administrator
@@ -581,7 +581,7 @@ Manual provisioning is simple but may become inconsistent in large environments.
 
 ---
 
-# Automated Provisioning
+## Automated Provisioning
 
 ```
 Infrastructure as Code
@@ -609,7 +609,7 @@ Infrastructure as Code will be explored in a later chapter.
 
 ---
 
-# Resource Lifecycle
+## Resource Lifecycle
 
 Cloud resources follow a lifecycle.
 
@@ -645,7 +645,7 @@ Understanding this lifecycle helps organizations manage security throughout the 
 
 ---
 
-# Cloud Service Consumption
+## Cloud Service Consumption
 
 Cloud services are consumed through several interfaces.
 
@@ -660,7 +660,7 @@ Because nearly every cloud operation is API-driven, securing API access is a cri
 
 ---
 
-# Cloud Computing Benefits
+## Cloud Computing Benefits
 
 Organizations adopt cloud computing because it provides:
 
@@ -678,7 +678,7 @@ These advantages have made cloud computing the preferred platform for modern app
 
 ---
 
-# Challenges of Cloud Computing
+## Challenges of Cloud Computing
 
 Despite its benefits, cloud computing introduces operational challenges.
 
@@ -698,7 +698,7 @@ Understanding these challenges prepares organizations to design secure cloud arc
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Automate infrastructure provisioning where appropriate.
 - Maintain an inventory of cloud resources.
@@ -711,7 +711,7 @@ Understanding these challenges prepares organizations to design secure cloud arc
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -725,7 +725,7 @@ Avoid:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cloud computing delivers computing resources as on-demand services.
 - Virtualization and hypervisors are foundational technologies enabling cloud platforms.
@@ -735,7 +735,7 @@ Avoid:
 
 ---
 
-# Cloud Infrastructure Architecture
+## Cloud Infrastructure Architecture
 
 Modern cloud computing is built upon one of the most sophisticated infrastructure ecosystems ever developed. Behind every cloud service lies a globally distributed network of data centers, high-speed fiber networks, virtualization platforms, storage systems, and management software working together to provide highly available, scalable, and resilient computing resources.
 
@@ -757,7 +757,7 @@ A security engineer must understand not only *how* cloud services function, but 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -776,7 +776,7 @@ After completing this section, you will be able to:
 
 ---
 
-# What is Cloud Infrastructure?
+## What is Cloud Infrastructure?
 
 Cloud infrastructure is the collection of physical and virtual resources that provide cloud computing services.
 
@@ -799,7 +799,7 @@ These components work together to deliver reliable cloud services to millions of
 
 ---
 
-# Layers of Cloud Infrastructure
+## Layers of Cloud Infrastructure
 
 Cloud infrastructure can be visualized as multiple interconnected layers.
 
@@ -845,7 +845,7 @@ For example, application developers rarely interact with physical servers becaus
 
 ---
 
-# Physical Data Centers
+## Physical Data Centers
 
 A cloud data center is a highly secure facility containing thousands or even hundreds of thousands of physical servers.
 
@@ -887,15 +887,15 @@ Large cloud providers operate hundreds of such facilities across the world.
 
 ---
 
-# Characteristics of Modern Data Centers
+## Characteristics of Modern Data Centers
 
 Modern cloud data centers are designed with several objectives:
 
-## Scalability
+### Scalability
 
 Thousands of additional servers can be deployed without disrupting existing services.
 
-## Redundancy
+### Redundancy
 
 Critical systems have multiple backup components.
 
@@ -906,7 +906,7 @@ Examples:
 - Backup cooling
 - Duplicate storage controllers
 
-## Automation
+### Automation
 
 Most operational tasks are automated.
 
@@ -918,7 +918,7 @@ Automation manages:
 - Capacity planning
 - Security monitoring
 
-## Physical Security
+### Physical Security
 
 Cloud providers implement strict physical controls such as:
 
@@ -933,7 +933,7 @@ Physical security forms the first layer of cloud defense.
 
 ---
 
-# Global Cloud Infrastructure
+## Global Cloud Infrastructure
 
 Cloud providers operate infrastructure across multiple geographic locations.
 
@@ -971,7 +971,7 @@ This global architecture enables organizations to deploy applications closer to 
 
 ---
 
-# Regions
+## Regions
 
 A **Region** is a separate geographic area where a cloud provider operates one or more data centers.
 
@@ -1015,11 +1015,11 @@ Organizations often choose regions based on:
 
 ---
 
-# Why Regions Matter
+## Why Regions Matter
 
 Regions provide several benefits.
 
-## Reduced Latency
+### Reduced Latency
 
 Applications can be deployed closer to users.
 
@@ -1039,7 +1039,7 @@ Application
 Fast Response
 ```
 
-## Regulatory Compliance
+### Regulatory Compliance
 
 Many countries require certain categories of data to remain within national borders.
 
@@ -1052,7 +1052,7 @@ Examples include:
 
 Selecting the appropriate region helps organizations satisfy these requirements.
 
-## Disaster Recovery
+### Disaster Recovery
 
 Applications can replicate data between geographically separated regions.
 
@@ -1060,7 +1060,7 @@ If one region becomes unavailable, another region can continue serving users.
 
 ---
 
-# Availability Zones (AZs)
+## Availability Zones (AZs)
 
 Each region is divided into multiple Availability Zones.
 
@@ -1091,7 +1091,7 @@ This isolation helps prevent a single infrastructure failure from affecting the 
 
 ---
 
-# Why Availability Zones Exist
+## Why Availability Zones Exist
 
 Suppose an electrical failure affects one data center.
 
@@ -1143,7 +1143,7 @@ Availability Zones significantly improve service resilience.
 
 ---
 
-# Multi-AZ Architecture
+## Multi-AZ Architecture
 
 Enterprise applications are typically deployed across multiple Availability Zones.
 
@@ -1194,7 +1194,7 @@ Benefits include:
 
 ---
 
-# Edge Locations
+## Edge Locations
 
 Edge locations are smaller facilities positioned closer to end users.
 
@@ -1229,7 +1229,7 @@ By serving frequently requested content locally, edge locations reduce latency a
 
 ---
 
-# Content Delivery Networks (CDNs)
+## Content Delivery Networks (CDNs)
 
 A Content Delivery Network stores copies of static content at edge locations.
 
@@ -1278,7 +1278,7 @@ Slower Response
 
 ---
 
-# Fault Domains
+## Fault Domains
 
 A fault domain represents a group of infrastructure components that may fail together.
 
@@ -1303,7 +1303,7 @@ Cloud providers distribute workloads across fault domains to reduce the impact o
 
 ---
 
-# Redundancy
+## Redundancy
 
 Redundancy means having multiple instances of critical resources.
 
@@ -1331,7 +1331,7 @@ Redundancy minimizes downtime during failures.
 
 ---
 
-# High Availability (HA)
+## High Availability (HA)
 
 High Availability is the ability of a system to remain operational despite component failures.
 
@@ -1365,7 +1365,7 @@ If one server fails, traffic is redirected to healthy instances.
 
 ---
 
-# Fault Tolerance
+## Fault Tolerance
 
 Fault tolerance goes a step further than high availability.
 
@@ -1381,7 +1381,7 @@ Fault tolerance generally requires additional infrastructure and operational com
 
 ---
 
-# High Availability vs Fault Tolerance
+## High Availability vs Fault Tolerance
 
 | High Availability | Fault Tolerance |
 |-------------------|-----------------|
@@ -1392,7 +1392,7 @@ Fault tolerance generally requires additional infrastructure and operational com
 
 ---
 
-# Disaster Recovery (DR)
+## Disaster Recovery (DR)
 
 Disaster Recovery refers to the processes and infrastructure used to restore services after major failures.
 
@@ -1431,7 +1431,7 @@ Key disaster recovery metrics such as Recovery Time Objective (RTO) and Recovery
 
 ---
 
-# Global Cloud Networking
+## Global Cloud Networking
 
 Cloud providers operate private global backbone networks connecting regions, Availability Zones, and edge locations.
 
@@ -1465,7 +1465,7 @@ Benefits include:
 
 ---
 
-# Enterprise Cloud Architecture Example
+## Enterprise Cloud Architecture Example
 
 ```
                       Internet
@@ -1519,7 +1519,7 @@ This architecture combines scalability, redundancy, monitoring, and layered secu
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Deploy production workloads across multiple Availability Zones.
 - Select regions based on latency, compliance, and business requirements.
@@ -1532,7 +1532,7 @@ This architecture combines scalability, redundancy, monitoring, and layered secu
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -1546,7 +1546,7 @@ Avoid:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cloud infrastructure is composed of globally distributed data centers organized into regions and Availability Zones.
 - Regions improve geographic reach, compliance, and disaster recovery, while Availability Zones enhance resilience within a region.

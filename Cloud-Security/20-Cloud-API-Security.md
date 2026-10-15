@@ -1904,7 +1904,7 @@ Organizations should implement the following principles:
 
 ---
 
-# Defense-in-Depth for Cloud APIs
+## Defense-in-Depth for Cloud APIs
 
 ```
                   Client / Consumer
@@ -1958,7 +1958,7 @@ Each layer provides independent security controls, reducing the impact of indivi
 
 ---
 
-# Enforce Strong Authentication
+## Enforce Strong Authentication
 
 Every protected API should require robust authentication.
 
@@ -1974,7 +1974,7 @@ Avoid relying solely on API keys for sensitive operations.
 
 ---
 
-# Apply Fine-Grained Authorization
+## Apply Fine-Grained Authorization
 
 Authorization must be evaluated for every request.
 
@@ -2001,7 +2001,7 @@ Never trust authorization decisions made on the client side.
 
 ---
 
-# Secure API Keys
+## Secure API Keys
 
 API keys should be:
 
@@ -2020,7 +2020,7 @@ Never expose API keys in:
 
 ---
 
-# Validate All Input
+## Validate All Input
 
 Every request should undergo strict validation.
 
@@ -2044,7 +2044,7 @@ Input validation helps prevent:
 
 ---
 
-# Protect Tokens
+## Protect Tokens
 
 Access tokens should:
 
@@ -2066,7 +2066,7 @@ before granting access.
 
 ---
 
-# Secure API Gateway
+## Secure API Gateway
 
 Configure the API Gateway to enforce:
 
@@ -2083,7 +2083,7 @@ The gateway should serve as the primary enforcement point for API security polic
 
 ---
 
-# Implement Rate Limiting
+## Implement Rate Limiting
 
 Limit excessive requests to protect backend services.
 
@@ -2110,7 +2110,7 @@ Rate limiting mitigates abuse, scraping, and Denial-of-Service (DoS) attacks.
 
 ---
 
-# Encrypt Data
+## Encrypt Data
 
 Protect API communications using:
 
@@ -2123,7 +2123,7 @@ Sensitive information stored by backend services should also be encrypted at res
 
 ---
 
-# Secure Backend Services
+## Secure Backend Services
 
 Backend services should:
 
@@ -2137,7 +2137,7 @@ Internal APIs should not be assumed to be inherently trustworthy.
 
 ---
 
-# Secure Third-Party Integrations
+## Secure Third-Party Integrations
 
 When connecting external services:
 
@@ -2151,7 +2151,7 @@ Review integrations regularly to ensure they remain necessary and secure.
 
 ---
 
-# Enable Comprehensive Logging
+## Enable Comprehensive Logging
 
 Log security-relevant API events, including:
 
@@ -2182,7 +2182,7 @@ Avoid logging passwords, tokens, or cryptographic secrets.
 
 ---
 
-# Integrate Security into the API Lifecycle
+## Integrate Security into the API Lifecycle
 
 Security should be embedded throughout API development.
 
@@ -2200,15 +2200,15 @@ Security controls should evolve alongside API functionality.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Design APIs with Security First
+#### 1. Design APIs with Security First
 
 Consider authentication, authorization, encryption, validation, and monitoring during API design rather than after implementation.
 
 ---
 
-### 2. Require Strong Authentication
+#### 2. Require Strong Authentication
 
 Use OAuth 2.0, OpenID Connect, Mutual TLS, or other modern authentication mechanisms for protected APIs.
 
@@ -2216,7 +2216,7 @@ Avoid exposing sensitive operations through anonymous endpoints.
 
 ---
 
-### 3. Enforce Authorization on Every Request
+#### 3. Enforce Authorization on Every Request
 
 Every endpoint should verify that the authenticated client has permission to perform the requested action.
 
@@ -2224,7 +2224,7 @@ Never rely solely on hidden URLs or client-side restrictions.
 
 ---
 
-### 4. Validate All Inputs
+#### 4. Validate All Inputs
 
 Treat every API request as potentially malicious.
 
@@ -2240,7 +2240,7 @@ Reject malformed or unexpected input.
 
 ---
 
-### 5. Protect Tokens and Credentials
+#### 5. Protect Tokens and Credentials
 
 Store API keys and tokens securely.
 
@@ -2250,7 +2250,7 @@ Use short-lived access tokens whenever practical.
 
 ---
 
-### 6. Enable Rate Limiting
+#### 6. Enable Rate Limiting
 
 Apply request limits to reduce:
 
@@ -2263,7 +2263,7 @@ Rate limiting should be configured according to application requirements.
 
 ---
 
-### 7. Encrypt All Communications
+#### 7. Encrypt All Communications
 
 Require HTTPS for every API endpoint.
 
@@ -2271,7 +2271,7 @@ Disable insecure protocols and outdated TLS versions.
 
 ---
 
-### 8. Monitor API Activity Continuously
+#### 8. Monitor API Activity Continuously
 
 Monitor:
 
@@ -2286,7 +2286,7 @@ Behavioral monitoring improves early detection of attacks.
 
 ---
 
-### 9. Test APIs Regularly
+#### 9. Test APIs Regularly
 
 Perform:
 
@@ -2300,7 +2300,7 @@ Continuous testing helps identify security weaknesses before attackers do.
 
 ---
 
-### 10. Maintain an API Inventory
+#### 10. Maintain an API Inventory
 
 Document and review:
 
@@ -2315,7 +2315,7 @@ An accurate API inventory supports governance, security reviews, and lifecycle m
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud APIs expose valuable business functionality and sensitive data directly to users, applications, and third-party services. A single security weakness can allow attackers to bypass controls, steal data, abuse business logic, or compromise backend infrastructure.
 
@@ -2325,7 +2325,7 @@ Understanding these common mistakes helps organizations build secure, resilient,
 
 ---
 
-### 1. Exposing APIs Without Authentication
+#### 1. Exposing APIs Without Authentication
 
 Public APIs that do not require authentication allow unauthorized users to access protected resources.
 
@@ -2352,7 +2352,7 @@ Require authentication for every protected endpoint.
 
 ---
 
-### 2. Broken Authorization
+#### 2. Broken Authorization
 
 Authentication alone does not guarantee secure access.
 
@@ -2368,7 +2368,7 @@ Every request should verify that the authenticated client is authorized to perfo
 
 ---
 
-### 3. Hardcoding API Keys
+#### 3. Hardcoding API Keys
 
 API keys should never appear in:
 
@@ -2394,7 +2394,7 @@ Store keys securely using managed secrets services.
 
 ---
 
-### 4. Weak Token Validation
+#### 4. Weak Token Validation
 
 Applications sometimes accept tokens without verifying:
 
@@ -2408,7 +2408,7 @@ Improper validation may allow attackers to reuse forged, expired, or manipulated
 
 ---
 
-### 5. Missing Rate Limiting
+#### 5. Missing Rate Limiting
 
 Without request limits, attackers can perform:
 
@@ -2422,7 +2422,7 @@ Rate limiting should be applied to authentication endpoints and resource-intensi
 
 ---
 
-### 6. Insufficient Input Validation
+#### 6. Insufficient Input Validation
 
 Failure to validate API input can result in:
 
@@ -2437,7 +2437,7 @@ Every request should be validated on the server before processing.
 
 ---
 
-### 7. Excessive Data Exposure
+#### 7. Excessive Data Exposure
 
 Some APIs return more information than clients require.
 
@@ -2452,7 +2452,7 @@ Return only the minimum data required for the requested operation.
 
 ---
 
-### 8. Exposing Detailed Error Messages
+#### 8. Exposing Detailed Error Messages
 
 Verbose error responses may reveal:
 
@@ -2466,7 +2466,7 @@ Provide generic responses to clients while recording detailed diagnostics secure
 
 ---
 
-### 9. Ignoring API Version Management
+#### 9. Ignoring API Version Management
 
 Maintaining unsupported API versions may expose:
 
@@ -2479,7 +2479,7 @@ Establish a version lifecycle with clear deprecation and retirement policies.
 
 ---
 
-### 10. Logging Sensitive Information
+#### 10. Logging Sensitive Information
 
 Avoid recording:
 
@@ -2494,7 +2494,7 @@ Logs should support investigations without exposing confidential data.
 
 ---
 
-### 11. Insecure Third-Party Integrations
+#### 11. Insecure Third-Party Integrations
 
 Third-party APIs may introduce risks if they are granted excessive permissions or are not properly validated.
 
@@ -2508,7 +2508,7 @@ Best practices include:
 
 ---
 
-### 12. Missing HTTPS Enforcement
+#### 12. Missing HTTPS Enforcement
 
 APIs exposed over unencrypted connections risk:
 
@@ -2521,7 +2521,7 @@ Require HTTPS for all API communication and disable insecure protocols.
 
 ---
 
-### 13. Ignoring Monitoring and Alerting
+#### 13. Ignoring Monitoring and Alerting
 
 Without runtime visibility, organizations may fail to detect:
 
@@ -2535,7 +2535,7 @@ Continuous monitoring is essential for rapid detection and response.
 
 ---
 
-### 14. Over-Privileged Service Accounts
+#### 14. Over-Privileged Service Accounts
 
 Backend services often receive more permissions than necessary.
 
@@ -2549,7 +2549,7 @@ Service identities should follow the Principle of Least Privilege.
 
 ---
 
-### 15. Assuming Internal APIs Are Automatically Secure
+#### 15. Assuming Internal APIs Are Automatically Secure
 
 Internal APIs can also become attack targets.
 
@@ -2566,7 +2566,7 @@ Zero Trust principles apply equally to internal and external APIs.
 
 ---
 
-## Cloud API Security Checklist
+### Cloud API Security Checklist
 
 | Control | Status |
 |---------|--------|
@@ -2588,9 +2588,9 @@ Zero Trust principles apply equally to internal and external APIs.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
 - NIST Cybersecurity Framework (CSF) 2.0
@@ -2602,16 +2602,16 @@ Zero Trust principles apply equally to internal and external APIs.
 
 ---
 
-### API Security Documentation
+#### API Security Documentation
 
-#### OWASP
+##### OWASP
 
 - OWASP API Security Top 10
 - OWASP Application Security Verification Standard (ASVS)
 - OWASP Web Security Testing Guide (WSTG)
 - OWASP Cheat Sheet Series
 
-#### API Standards
+##### API Standards
 
 - OpenAPI Specification (OAS)
 - JSON Web Token (JWT) Specifications
@@ -2622,7 +2622,7 @@ Zero Trust principles apply equally to internal and external APIs.
 
 ---
 
-### Cloud Platform Documentation
+#### Cloud Platform Documentation
 
 - AWS API Gateway Documentation
 - Azure API Management Documentation
@@ -2631,7 +2631,7 @@ Zero Trust principles apply equally to internal and external APIs.
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -2645,7 +2645,7 @@ Zero Trust principles apply equally to internal and external APIs.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - OWASP API Security Top 10
 - OWASP Top 10

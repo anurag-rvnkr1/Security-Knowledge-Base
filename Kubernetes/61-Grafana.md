@@ -55,7 +55,7 @@ Visualization
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -130,7 +130,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Grafana?
+## What Is Grafana?
 
 Grafana is a visualization and observability platform.
 
@@ -150,7 +150,7 @@ Prometheus
 
 ---
 
-# Why Grafana?
+## Why Grafana?
 
 Grafana makes large amounts of monitoring data easier to understand.
 
@@ -174,7 +174,7 @@ Requests  📈 250 req/s
 
 ---
 
-# Grafana Architecture
+## Grafana Architecture
 
 A simplified architecture:
 
@@ -198,7 +198,7 @@ Grafana queries data sources and visualizes their results.
 
 ---
 
-# Grafana Components
+## Grafana Components
 
 Important concepts include:
 
@@ -219,7 +219,7 @@ Plugins
 
 ---
 
-# Grafana Server
+## Grafana Server
 
 The Grafana server provides:
 
@@ -235,7 +235,7 @@ Plugin Management
 
 ---
 
-# Grafana Data Sources
+## Grafana Data Sources
 
 A Data Source is an external system from which Grafana retrieves data.
 
@@ -253,7 +253,7 @@ PostgreSQL
 
 ---
 
-# Prometheus Data Source
+## Prometheus Data Source
 
 In Kubernetes monitoring, Prometheus is one of the most common Grafana data sources.
 
@@ -271,7 +271,7 @@ Grafana executes PromQL queries against Prometheus.
 
 ---
 
-# Adding Prometheus
+## Adding Prometheus
 
 In Grafana:
 
@@ -297,7 +297,7 @@ The actual address depends on your deployment.
 
 ---
 
-# Test Data Source
+## Test Data Source
 
 After configuring Prometheus:
 
@@ -309,7 +309,7 @@ A successful connection means Grafana can communicate with Prometheus.
 
 ---
 
-# Dashboards
+## Dashboards
 
 A dashboard is a collection of visualizations representing related information.
 
@@ -333,7 +333,7 @@ Latency
 
 ---
 
-# Dashboard Architecture
+## Dashboard Architecture
 
 ```text
 Dashboard
@@ -346,7 +346,7 @@ Dashboard
 
 ---
 
-# Panels
+## Panels
 
 A Panel is an individual visualization.
 
@@ -364,7 +364,7 @@ Logs
 
 ---
 
-# Time Series Panel
+## Time Series Panel
 
 Best for values changing over time.
 
@@ -392,7 +392,7 @@ CPU
 
 ---
 
-# Stat Panel
+## Stat Panel
 
 Stat panels display a single important value.
 
@@ -414,7 +414,7 @@ Request Rate
 
 ---
 
-# Gauge Panel
+## Gauge Panel
 
 A Gauge displays a value against a range.
 
@@ -440,7 +440,7 @@ SLO
 
 ---
 
-# Table Panel
+## Table Panel
 
 Tables are useful for detailed comparisons.
 
@@ -454,7 +454,7 @@ Example:
 
 ---
 
-# Heatmap
+## Heatmap
 
 Heatmaps are useful for distributions.
 
@@ -468,7 +468,7 @@ Request Duration
 
 ---
 
-# Bar Chart
+## Bar Chart
 
 Useful for comparing categories.
 
@@ -484,7 +484,7 @@ dev          ████
 
 ---
 
-# Dashboard Queries
+## Dashboard Queries
 
 A panel usually contains:
 
@@ -508,7 +508,7 @@ PromQL
 
 ---
 
-# Example PromQL Panel
+## Example PromQL Panel
 
 ```promql
 sum(
@@ -524,7 +524,7 @@ Time Series
 
 ---
 
-# CPU Dashboard Query
+## CPU Dashboard Query
 
 A commonly used query pattern:
 
@@ -538,7 +538,7 @@ The exact available metric names depend on your monitoring stack.
 
 ---
 
-# Memory Dashboard Query
+## Memory Dashboard Query
 
 Example:
 
@@ -552,7 +552,7 @@ Again, metric availability depends on the installed exporters and Kubernetes mon
 
 ---
 
-# Request Rate Dashboard
+## Request Rate Dashboard
 
 ```promql
 sum(
@@ -562,7 +562,7 @@ sum(
 
 ---
 
-# Error Rate Dashboard
+## Error Rate Dashboard
 
 ```promql
 sum(
@@ -574,7 +574,7 @@ sum(
 
 ---
 
-# P95 Latency Dashboard
+## P95 Latency Dashboard
 
 For histogram metrics:
 
@@ -591,7 +591,7 @@ histogram_quantile(
 
 ---
 
-# Variables
+## Variables
 
 Grafana variables allow users to dynamically change dashboard filters.
 
@@ -611,7 +611,7 @@ Pod:
 
 ---
 
-# Why Variables?
+## Why Variables?
 
 Without variables, you might create:
 
@@ -633,7 +633,7 @@ Pod Variable
 
 ---
 
-# Template Variables
+## Template Variables
 
 Template variables allow dashboards to become reusable.
 
@@ -647,7 +647,7 @@ $cluster
 
 ---
 
-# Query Variables
+## Query Variables
 
 A variable can be populated from a query.
 
@@ -661,7 +661,7 @@ Depending on the Grafana/Prometheus version and query editor, variable query syn
 
 ---
 
-# Namespace Variable
+## Namespace Variable
 
 Conceptually:
 
@@ -680,7 +680,7 @@ development
 
 ---
 
-# Pod Variable
+## Pod Variable
 
 A Pod variable can depend on the selected namespace.
 
@@ -696,7 +696,7 @@ This creates dependent filtering.
 
 ---
 
-# Cluster Variable
+## Cluster Variable
 
 For multi-cluster monitoring:
 
@@ -713,7 +713,7 @@ cluster="$cluster"
 
 ---
 
-# Variable Query Example
+## Variable Query Example
 
 A Prometheus label query can retrieve available values.
 
@@ -727,7 +727,7 @@ The exact Grafana variable-query interface depends on the Grafana version.
 
 ---
 
-# Multi-Select Variables
+## Multi-Select Variables
 
 A variable can allow:
 
@@ -747,7 +747,7 @@ This is useful for comparing environments.
 
 ---
 
-# Variables and PromQL
+## Variables and PromQL
 
 Example:
 
@@ -769,7 +769,7 @@ changes the dashboard automatically.
 
 ---
 
-# Transformations
+## Transformations
 
 Grafana transformations modify query results before visualization.
 
@@ -787,7 +787,7 @@ Reduce
 
 ---
 
-# Why Transformations?
+## Why Transformations?
 
 Suppose you have:
 
@@ -823,7 +823,7 @@ Pod | CPU | Memory
 
 ---
 
-# Field Overrides
+## Field Overrides
 
 Field overrides customize specific fields.
 
@@ -837,7 +837,7 @@ Latency → Milliseconds
 
 ---
 
-# Units
+## Units
 
 Correct units improve dashboard readability.
 
@@ -853,7 +853,7 @@ Requests → req/sec
 
 ---
 
-# Thresholds
+## Thresholds
 
 Thresholds indicate important ranges.
 
@@ -871,7 +871,7 @@ Thresholds should reflect actual operational requirements rather than arbitrary 
 
 ---
 
-# Legends
+## Legends
 
 Legends identify individual time series.
 
@@ -887,7 +887,7 @@ Avoid overly long legends because they reduce dashboard readability.
 
 ---
 
-# Annotations
+## Annotations
 
 Annotations mark important events on dashboards.
 
@@ -915,7 +915,7 @@ CPU
 
 ---
 
-# Dashboard Variables + Annotations
+## Dashboard Variables + Annotations
 
 Together they allow:
 
@@ -930,7 +930,7 @@ to be filtered while displaying operational events.
 
 ---
 
-# Dashboard Provisioning
+## Dashboard Provisioning
 
 Grafana supports provisioning configuration through files.
 
@@ -946,7 +946,7 @@ This helps automate deployments.
 
 ---
 
-# Dashboard as Code
+## Dashboard as Code
 
 Instead of manually creating every dashboard:
 
@@ -972,7 +972,7 @@ Rollback
 
 ---
 
-# Dashboard JSON
+## Dashboard JSON
 
 Grafana dashboards can be represented as JSON.
 
@@ -989,7 +989,7 @@ A dashboard can therefore be stored in Git.
 
 ---
 
-# Grafana Provisioning Architecture
+## Grafana Provisioning Architecture
 
 ```text
 Git Repository
@@ -1009,7 +1009,7 @@ Dashboard
 
 ---
 
-# Why Dashboard as Code?
+## Why Dashboard as Code?
 
 It prevents:
 
@@ -1021,7 +1021,7 @@ and makes dashboards reproducible.
 
 ---
 
-# Grafana Alerting
+## Grafana Alerting
 
 Grafana provides its own alerting capabilities.
 
@@ -1041,7 +1041,7 @@ Notification
 
 ---
 
-# Grafana Alert Rule
+## Grafana Alert Rule
 
 An alert rule defines:
 
@@ -1066,7 +1066,7 @@ for 10 minutes
 
 ---
 
-# Contact Points
+## Contact Points
 
 Contact points define where notifications go.
 
@@ -1084,7 +1084,7 @@ The available integrations depend on the Grafana deployment and configuration.
 
 ---
 
-# Notification Policies
+## Notification Policies
 
 Notification policies determine how alerts are routed.
 
@@ -1102,7 +1102,7 @@ Email
 
 ---
 
-# Alert Groups
+## Alert Groups
 
 Related alerts can be grouped to reduce notification noise.
 
@@ -1124,7 +1124,7 @@ service
 
 ---
 
-# Grafana Alerting vs Alertmanager
+## Grafana Alerting vs Alertmanager
 
 Both can participate in alerting, but they are not identical.
 
@@ -1151,7 +1151,7 @@ A production environment should choose an alerting architecture deliberately to 
 
 ---
 
-# Kubernetes Cluster Dashboard
+## Kubernetes Cluster Dashboard
 
 A useful cluster dashboard may include:
 
@@ -1169,7 +1169,7 @@ Restarts
 
 ---
 
-# Node Dashboard
+## Node Dashboard
 
 Example panels:
 
@@ -1184,7 +1184,7 @@ Pod Count
 
 ---
 
-# Pod Dashboard
+## Pod Dashboard
 
 Example:
 
@@ -1199,7 +1199,7 @@ Container Status
 
 ---
 
-# Application Dashboard
+## Application Dashboard
 
 A production application dashboard should include:
 
@@ -1213,7 +1213,7 @@ Dependency Health
 
 ---
 
-# RED Dashboard
+## RED Dashboard
 
 A RED dashboard focuses on:
 
@@ -1235,7 +1235,7 @@ P99
 
 ---
 
-# USE Dashboard
+## USE Dashboard
 
 A USE dashboard focuses on:
 
@@ -1255,7 +1255,7 @@ CPU Errors
 
 ---
 
-# SLO Dashboard
+## SLO Dashboard
 
 An SLO dashboard can show:
 
@@ -1280,7 +1280,7 @@ Target:
 
 ---
 
-# Error Budget Dashboard
+## Error Budget Dashboard
 
 Display:
 
@@ -1295,7 +1295,7 @@ This helps engineering teams understand reliability risk.
 
 ---
 
-# Kubernetes Namespace Dashboard
+## Kubernetes Namespace Dashboard
 
 Use:
 
@@ -1315,7 +1315,7 @@ Errors
 
 ---
 
-# Kubernetes Pod Dashboard
+## Kubernetes Pod Dashboard
 
 Use variables:
 
@@ -1340,7 +1340,7 @@ The exact labels depend on your metric pipeline.
 
 ---
 
-# Multi-Cluster Dashboard
+## Multi-Cluster Dashboard
 
 A multi-cluster dashboard can use:
 
@@ -1366,7 +1366,7 @@ sum by (cluster) (
 
 ---
 
-# Grafana Authentication
+## Grafana Authentication
 
 Grafana can support authentication mechanisms such as:
 
@@ -1382,7 +1382,7 @@ Exact options depend on the Grafana edition and configuration.
 
 ---
 
-# RBAC
+## RBAC
 
 Grafana should implement appropriate role-based access control.
 
@@ -1398,7 +1398,7 @@ Exact role capabilities depend on the Grafana version/edition.
 
 ---
 
-# Teams
+## Teams
 
 Teams group users with similar responsibilities.
 
@@ -1415,7 +1415,7 @@ This can simplify access management.
 
 ---
 
-# Organizations
+## Organizations
 
 Grafana Organizations provide logical separation of:
 
@@ -1430,7 +1430,7 @@ The exact organization behavior depends on the Grafana edition and deployment mo
 
 ---
 
-# Data Source Security
+## Data Source Security
 
 A user who can query a data source may potentially access sensitive information.
 
@@ -1446,7 +1446,7 @@ should be carefully designed.
 
 ---
 
-# Secrets
+## Secrets
 
 Do not hard-code credentials into:
 
@@ -1461,7 +1461,7 @@ Use appropriate secret-management mechanisms.
 
 ---
 
-# TLS
+## TLS
 
 Secure communication should be considered for:
 
@@ -1473,7 +1473,7 @@ Grafana → External Services
 
 ---
 
-# Grafana Plugins
+## Grafana Plugins
 
 Plugins extend Grafana capabilities.
 
@@ -1489,7 +1489,7 @@ Only install trusted plugins and keep them updated.
 
 ---
 
-# Grafana API
+## Grafana API
 
 Grafana provides APIs for automation.
 
@@ -1505,7 +1505,7 @@ User/Team Automation
 
 ---
 
-# Dashboard Automation
+## Dashboard Automation
 
 A CI/CD pipeline can automatically provision:
 
@@ -1518,7 +1518,7 @@ Folders
 
 ---
 
-# Grafana in Kubernetes
+## Grafana in Kubernetes
 
 Grafana can run as a Deployment:
 
@@ -1544,7 +1544,7 @@ Prometheus Service
 
 ---
 
-# Persistent Storage
+## Persistent Storage
 
 Grafana may need persistent storage for deployment-specific state such as:
 
@@ -1558,7 +1558,7 @@ The exact persistence requirements depend on the chosen deployment architecture 
 
 ---
 
-# Grafana Database
+## Grafana Database
 
 Grafana stores application state in a database.
 
@@ -1574,7 +1574,7 @@ For production environments, an external highly available database may be prefer
 
 ---
 
-# Grafana High Availability
+## Grafana High Availability
 
 A highly available deployment may look like:
 
@@ -1594,7 +1594,7 @@ Dashboards and configuration should be managed consistently across replicas.
 
 ---
 
-# Grafana Backup
+## Grafana Backup
 
 Important items may include:
 
@@ -1611,7 +1611,7 @@ Dashboard-as-code can reduce backup complexity for dashboards.
 
 ---
 
-# Grafana Performance
+## Grafana Performance
 
 Performance depends on:
 
@@ -1627,7 +1627,7 @@ Browser Load
 
 ---
 
-# Dashboard Performance Problems
+## Dashboard Performance Problems
 
 A dashboard with:
 
@@ -1645,7 +1645,7 @@ can create significant load.
 
 ---
 
-# Dashboard Optimization
+## Dashboard Optimization
 
 Use:
 
@@ -1659,7 +1659,7 @@ Appropriate Time Ranges
 
 ---
 
-# Query Optimization
+## Query Optimization
 
 Instead of repeatedly executing:
 
@@ -1679,7 +1679,7 @@ Simple Dashboard Query
 
 ---
 
-# Dashboard Refresh
+## Dashboard Refresh
 
 Avoid unnecessarily aggressive refresh intervals.
 
@@ -1697,7 +1697,7 @@ Choose according to operational requirements.
 
 ---
 
-# Grafana and Observability
+## Grafana and Observability
 
 Grafana can provide a unified interface for:
 
@@ -1712,7 +1712,7 @@ depending on the configured data sources and plugins.
 
 ---
 
-# Metrics + Logs + Traces
+## Metrics + Logs + Traces
 
 A powerful troubleshooting workflow is:
 
@@ -1730,7 +1730,7 @@ Root Cause
 
 ---
 
-# Example Incident
+## Example Incident
 
 Grafana shows:
 
@@ -1764,15 +1764,15 @@ Database latency
 
 ---
 
-# Grafana Security Best Practices
+## Grafana Security Best Practices
 
-### 1. Enable Authentication
+#### 1. Enable Authentication
 
 Do not expose unauthenticated Grafana publicly.
 
 ---
 
-### 2. Use HTTPS
+#### 2. Use HTTPS
 
 Protect:
 
@@ -1784,37 +1784,37 @@ Dashboard Data
 
 ---
 
-### 3. Apply Least Privilege
+#### 3. Apply Least Privilege
 
 Users should only access required resources.
 
 ---
 
-### 4. Protect Data Sources
+#### 4. Protect Data Sources
 
 Do not allow unnecessary access.
 
 ---
 
-### 5. Secure Secrets
+#### 5. Secure Secrets
 
 Never store credentials in dashboards.
 
 ---
 
-### 6. Restrict Public Sharing
+#### 6. Restrict Public Sharing
 
 Be careful with anonymous access and publicly shared dashboards.
 
 ---
 
-### 7. Keep Plugins Updated
+#### 7. Keep Plugins Updated
 
 Remove unused plugins.
 
 ---
 
-### 8. Monitor Grafana
+#### 8. Monitor Grafana
 
 Track:
 
@@ -1828,15 +1828,15 @@ Database Health
 
 ---
 
-# Production Best Practices
+## Production Best Practices
 
-### 1. Use Dashboard as Code
+#### 1. Use Dashboard as Code
 
 Store dashboards in Git.
 
 ---
 
-### 2. Standardize Dashboards
+#### 2. Standardize Dashboards
 
 Create reusable templates for:
 
@@ -1850,13 +1850,13 @@ SLO
 
 ---
 
-### 3. Use Variables
+#### 3. Use Variables
 
 Make dashboards reusable.
 
 ---
 
-### 4. Use Consistent Units
+#### 4. Use Consistent Units
 
 For example:
 
@@ -1869,19 +1869,19 @@ Traffic → bytes/sec
 
 ---
 
-### 5. Avoid Dashboard Overload
+#### 5. Avoid Dashboard Overload
 
 Only show useful information.
 
 ---
 
-### 6. Use Recording Rules
+#### 6. Use Recording Rules
 
 Move expensive repeated calculations into Prometheus.
 
 ---
 
-### 7. Design for Incident Response
+#### 7. Design for Incident Response
 
 Put the most important signals first:
 
@@ -1894,7 +1894,7 @@ Saturation
 
 ---
 
-### 8. Use Drill-Down Dashboards
+#### 8. Use Drill-Down Dashboards
 
 Example:
 
@@ -1912,7 +1912,7 @@ Container
 
 ---
 
-### 9. Use Alert Annotations
+#### 9. Use Alert Annotations
 
 Alerts should explain:
 
@@ -1925,7 +1925,7 @@ Possible Cause
 
 ---
 
-### 10. Version Control
+#### 10. Version Control
 
 Keep:
 
@@ -1940,7 +1940,7 @@ under version control where practical.
 
 ---
 
-# Production Kubernetes Grafana Architecture
+## Production Kubernetes Grafana Architecture
 
 ```text
                          Internet / Internal Users
@@ -1968,7 +1968,7 @@ under version control where practical.
 
 ---
 
-# Hands-on Lab 1 – Deploy Grafana
+## Hands-on Lab 1 – Deploy Grafana
 
 Deploy Grafana in a disposable Kubernetes cluster.
 
@@ -1982,7 +1982,7 @@ Expose it through an appropriate Service.
 
 ---
 
-# Hands-on Lab 2 – Add Prometheus
+## Hands-on Lab 2 – Add Prometheus
 
 Configure:
 
@@ -1998,7 +1998,7 @@ Test the connection.
 
 ---
 
-# Hands-on Lab 3 – Create a Cluster Dashboard
+## Hands-on Lab 3 – Create a Cluster Dashboard
 
 Create panels for:
 
@@ -2012,7 +2012,7 @@ Pending Pods
 
 ---
 
-# Hands-on Lab 4 – Create a Node Dashboard
+## Hands-on Lab 4 – Create a Node Dashboard
 
 Create:
 
@@ -2025,7 +2025,7 @@ Network Traffic
 
 ---
 
-# Hands-on Lab 5 – Create a Pod Dashboard
+## Hands-on Lab 5 – Create a Pod Dashboard
 
 Use variables:
 
@@ -2044,7 +2044,7 @@ Restarts
 
 ---
 
-# Hands-on Lab 6 – Create a RED Dashboard
+## Hands-on Lab 6 – Create a RED Dashboard
 
 Create:
 
@@ -2057,7 +2057,7 @@ P99 Latency
 
 ---
 
-# Hands-on Lab 7 – Create a USE Dashboard
+## Hands-on Lab 7 – Create a USE Dashboard
 
 Create:
 
@@ -2079,7 +2079,7 @@ where suitable metrics are available.
 
 ---
 
-# Hands-on Lab 8 – Dashboard Variables
+## Hands-on Lab 8 – Dashboard Variables
 
 Create:
 
@@ -2092,7 +2092,7 @@ Make Pod options depend on Namespace.
 
 ---
 
-# Hands-on Lab 9 – Multi-Cluster Dashboard
+## Hands-on Lab 9 – Multi-Cluster Dashboard
 
 Create:
 
@@ -2110,7 +2110,7 @@ Cluster C
 
 ---
 
-# Hands-on Lab 10 – Create an SLO Dashboard
+## Hands-on Lab 10 – Create an SLO Dashboard
 
 Display:
 
@@ -2123,7 +2123,7 @@ Current Error Rate
 
 ---
 
-# Hands-on Lab 11 – Create an Alert
+## Hands-on Lab 11 – Create an Alert
 
 Create:
 
@@ -2143,7 +2143,7 @@ Test the alert.
 
 ---
 
-# Hands-on Lab 12 – Contact Point
+## Hands-on Lab 12 – Contact Point
 
 Configure a test contact point.
 
@@ -2159,7 +2159,7 @@ Notification
 
 ---
 
-# Hands-on Lab 13 – Dashboard Provisioning
+## Hands-on Lab 13 – Dashboard Provisioning
 
 Store a dashboard definition in Git.
 
@@ -2167,7 +2167,7 @@ Configure Grafana provisioning to load it automatically.
 
 ---
 
-# Hands-on Lab 14 – Dashboard as Code
+## Hands-on Lab 14 – Dashboard as Code
 
 Create:
 
@@ -2181,7 +2181,7 @@ Use CI/CD to deploy it to a test Grafana instance.
 
 ---
 
-# Hands-on Lab 15 – Grafana API
+## Hands-on Lab 15 – Grafana API
 
 Use the Grafana API to automate dashboard creation.
 
@@ -2197,7 +2197,7 @@ in a test environment.
 
 ---
 
-# Hands-on Lab 16 – Grafana Security
+## Hands-on Lab 16 – Grafana Security
 
 Configure:
 
@@ -2211,7 +2211,7 @@ Then verify that users have only their intended access.
 
 ---
 
-# Hands-on Lab 17 – Performance Testing
+## Hands-on Lab 17 – Performance Testing
 
 Create a dashboard with many panels.
 
@@ -2228,7 +2228,7 @@ Optimize it.
 
 ---
 
-# Hands-on Lab 18 – Incident Drill
+## Hands-on Lab 18 – Incident Drill
 
 Simulate:
 
@@ -2248,7 +2248,7 @@ Resolve
 
 ---
 
-# Hands-on Lab 19 – Metrics + Logs
+## Hands-on Lab 19 – Metrics + Logs
 
 Configure Grafana with:
 
@@ -2262,7 +2262,7 @@ From a metric panel, navigate to related logs where your integrations support th
 
 ---
 
-# Hands-on Lab 20 – Full Observability Dashboard
+## Hands-on Lab 20 – Full Observability Dashboard
 
 Build:
 
@@ -2284,39 +2284,39 @@ This becomes the foundation of a production observability dashboard.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using Grafana as the Metrics Database
+### 1. Using Grafana as the Metrics Database
 
 Grafana is primarily a visualization and observability layer.
 
 ---
 
-## 2. Too Many Panels
+### 2. Too Many Panels
 
 Large dashboards become difficult to use.
 
 ---
 
-## 3. Excessive Refresh Rates
+### 3. Excessive Refresh Rates
 
 Very frequent refreshes can overload data sources.
 
 ---
 
-## 4. Complex Queries Everywhere
+### 4. Complex Queries Everywhere
 
 Use recording rules when appropriate.
 
 ---
 
-## 5. No Variables
+### 5. No Variables
 
 A dashboard for every namespace or cluster does not scale well.
 
 ---
 
-## 6. Poor Units
+### 6. Poor Units
 
 Displaying:
 
@@ -2332,37 +2332,37 @@ is less useful than:
 
 ---
 
-## 7. No Thresholds
+### 7. No Thresholds
 
 Important values may be difficult to identify.
 
 ---
 
-## 8. Exposing Grafana Publicly
+### 8. Exposing Grafana Publicly
 
 Grafana can expose sensitive infrastructure information.
 
 ---
 
-## 9. Storing Secrets in Dashboards
+### 9. Storing Secrets in Dashboards
 
 Never embed credentials in queries or dashboard JSON.
 
 ---
 
-## 10. No Version Control
+### 10. No Version Control
 
 Manually created production dashboards can be difficult to reproduce.
 
 ---
 
-## 11. Duplicate Alerting
+### 11. Duplicate Alerting
 
 Running Grafana Alerting and Prometheus Alertmanager without a clear strategy can generate duplicate notifications.
 
 ---
 
-## 12. No Incident Context
+### 12. No Incident Context
 
 Dashboards should help answer:
 
@@ -2376,9 +2376,9 @@ What changed?
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Grafana
+### Grafana
 
 ```text
 Observability and visualization platform
@@ -2386,7 +2386,7 @@ Observability and visualization platform
 
 ---
 
-## Data Source
+### Data Source
 
 ```text
 External system Grafana queries
@@ -2394,7 +2394,7 @@ External system Grafana queries
 
 ---
 
-## Dashboard
+### Dashboard
 
 ```text
 Collection of related visualizations
@@ -2402,7 +2402,7 @@ Collection of related visualizations
 
 ---
 
-## Panel
+### Panel
 
 ```text
 Individual visualization
@@ -2410,7 +2410,7 @@ Individual visualization
 
 ---
 
-## Variable
+### Variable
 
 ```text
 Dynamic dashboard filter
@@ -2418,7 +2418,7 @@ Dynamic dashboard filter
 
 ---
 
-## Transformation
+### Transformation
 
 ```text
 Modifies query results before visualization
@@ -2426,7 +2426,7 @@ Modifies query results before visualization
 
 ---
 
-## Threshold
+### Threshold
 
 ```text
 Defines meaningful value boundaries
@@ -2434,7 +2434,7 @@ Defines meaningful value boundaries
 
 ---
 
-## Annotation
+### Annotation
 
 ```text
 Marks an event on a visualization
@@ -2442,7 +2442,7 @@ Marks an event on a visualization
 
 ---
 
-## ServiceMonitor
+### ServiceMonitor
 
 ```text
 Kubernetes resource used by Prometheus Operator for Service-based scraping
@@ -2450,7 +2450,7 @@ Kubernetes resource used by Prometheus Operator for Service-based scraping
 
 ---
 
-## Grafana Alerting
+### Grafana Alerting
 
 ```text
 Grafana-native alert rule and notification system
@@ -2458,7 +2458,7 @@ Grafana-native alert rule and notification system
 
 ---
 
-## Contact Point
+### Contact Point
 
 ```text
 Destination for alert notifications
@@ -2466,7 +2466,7 @@ Destination for alert notifications
 
 ---
 
-## Notification Policy
+### Notification Policy
 
 ```text
 Controls how alerts are routed
@@ -2474,7 +2474,7 @@ Controls how alerts are routed
 
 ---
 
-## Dashboard as Code
+### Dashboard as Code
 
 ```text
 Managing dashboards through version-controlled configuration
@@ -2482,7 +2482,7 @@ Managing dashboards through version-controlled configuration
 
 ---
 
-## Grafana HA
+### Grafana HA
 
 ```text
 Multiple Grafana instances sharing appropriate state/configuration
@@ -2490,7 +2490,7 @@ Multiple Grafana instances sharing appropriate state/configuration
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check Grafana Pods:
 
@@ -2553,7 +2553,7 @@ kubectl get prometheusrule -A
 
 ---
 
-# Important PromQL Queries for Grafana
+## Important PromQL Queries for Grafana
 
 Target health:
 
@@ -2624,9 +2624,9 @@ histogram_quantile(
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Grafana?
 - Why is Grafana used with Prometheus?
@@ -2644,7 +2644,7 @@ histogram_quantile(
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How do you connect Grafana to Prometheus?
 - How does Grafana execute PromQL?
@@ -2664,7 +2664,7 @@ histogram_quantile(
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a production Grafana architecture for Kubernetes.
 - How would you design Grafana for multiple clusters?
@@ -2684,13 +2684,13 @@ histogram_quantile(
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > Grafana is showing "No Data" for a panel. How would you troubleshoot it?
 
-### Answer
+#### Answer
 
 Start with:
 
@@ -2732,13 +2732,13 @@ If that works, gradually test the original query.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Grafana dashboards are very slow. What would you investigate?
 
-### Answer
+#### Answer
 
 Check:
 
@@ -2764,13 +2764,13 @@ Recording Rules
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > How would you create one dashboard for multiple Kubernetes namespaces?
 
-### Answer
+#### Answer
 
 Create a variable:
 
@@ -2802,13 +2802,13 @@ to use the same dashboard.
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > How would you create a multi-cluster Grafana dashboard?
 
-### Answer
+#### Answer
 
 Use a:
 
@@ -2830,13 +2830,13 @@ The metric pipeline must provide a reliable cluster label.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > What is the difference between Grafana and Prometheus?
 
-### Answer
+#### Answer
 
 Prometheus is primarily:
 
@@ -2866,13 +2866,13 @@ Grafana
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > What is the difference between Grafana Alerting and Alertmanager?
 
-### Answer
+#### Answer
 
 Grafana Alerting provides:
 
@@ -2898,13 +2898,13 @@ They can be used separately or together, but the alerting architecture should be
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How would you secure Grafana?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2931,13 +2931,13 @@ Overprivileged Users
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How would you manage hundreds of Grafana dashboards?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2964,13 +2964,13 @@ Grafana Provisioning
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > What would you put on a Kubernetes production dashboard?
 
-### Answer
+#### Answer
 
 At cluster level:
 
@@ -3006,13 +3006,13 @@ Active Alerts
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > How would you troubleshoot a Kubernetes application outage using Grafana?
 
-### Answer
+#### Answer
 
 Use a drill-down approach:
 
@@ -3054,7 +3054,7 @@ Traces
 
 ---
 
-# Production Grafana Dashboard Architecture
+## Production Grafana Dashboard Architecture
 
 ```text
                          Grafana
@@ -3080,7 +3080,7 @@ Traces
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Grafana is an observability and visualization platform commonly used with Prometheus and other data sources.
 
@@ -3182,9 +3182,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 62 – Alertmanager
+## Chapter 62 – Alertmanager
 
 Topics will include:
 

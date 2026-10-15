@@ -1,6 +1,6 @@
 # 12 - OAuth 2.0
 
-# Introduction
+## Introduction
 
 OAuth 2.0 is an authorization framework that enables applications to obtain limited access to protected resources on behalf of a user **without exposing the user's credentials**.
 
@@ -23,7 +23,7 @@ Its primary purpose is **delegated authorization**.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -39,7 +39,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Why OAuth?
+## Why OAuth?
 
 Without OAuth,
 
@@ -72,7 +72,7 @@ OAuth eliminates the need to expose user passwords.
 
 ---
 
-# OAuth Solution
+## OAuth Solution
 
 OAuth separates authentication from authorization.
 
@@ -108,7 +108,7 @@ The application never receives the user's password.
 
 ---
 
-# OAuth vs Authentication
+## OAuth vs Authentication
 
 OAuth provides authorization.
 
@@ -134,7 +134,7 @@ OAuth is commonly combined with OpenID Connect (OIDC) for authentication.
 
 ---
 
-# OAuth Roles
+## OAuth Roles
 
 OAuth defines four primary roles.
 
@@ -155,7 +155,7 @@ Each role has a specific responsibility.
 
 ---
 
-# Resource Owner
+## Resource Owner
 
 The Resource Owner is the entity that owns the protected data.
 
@@ -183,7 +183,7 @@ The Resource Owner decides whether access should be granted.
 
 ---
 
-# Client
+## Client
 
 The Client is the application requesting access.
 
@@ -213,7 +213,7 @@ Clients should request only the permissions they require.
 
 ---
 
-# Authorization Server
+## Authorization Server
 
 The Authorization Server authenticates users and issues OAuth tokens.
 
@@ -236,7 +236,7 @@ Examples
 
 ---
 
-# Resource Server
+## Resource Server
 
 The Resource Server hosts protected APIs.
 
@@ -256,7 +256,7 @@ Examples
 
 ---
 
-# OAuth Architecture
+## OAuth Architecture
 
 ```
                  Resource Owner
@@ -290,7 +290,7 @@ Examples
 
 ---
 
-# OAuth Terminology
+## OAuth Terminology
 
 Common OAuth terms
 
@@ -306,7 +306,7 @@ Common OAuth terms
 
 ---
 
-# OAuth Authorization Flow
+## OAuth Authorization Flow
 
 High-level workflow
 
@@ -338,7 +338,7 @@ The exact flow depends on the selected grant type.
 
 ---
 
-# OAuth Tokens
+## OAuth Tokens
 
 OAuth commonly uses
 
@@ -372,7 +372,7 @@ Authentication
 
 ---
 
-# OAuth Scopes
+## OAuth Scopes
 
 Scopes define what the client may access.
 
@@ -402,7 +402,7 @@ Scopes should follow the principle of least privilege.
 
 ---
 
-# Scope Example
+## Scope Example
 
 User grants
 
@@ -420,7 +420,7 @@ OAuth allows granular permission delegation.
 
 ---
 
-# Consent Screen
+## Consent Screen
 
 Users review requested permissions before granting access.
 
@@ -446,7 +446,7 @@ Clear consent improves transparency and security.
 
 ---
 
-# OAuth Endpoint Overview
+## OAuth Endpoint Overview
 
 Typical endpoints
 
@@ -466,7 +466,7 @@ Each endpoint serves a distinct purpose.
 
 ---
 
-# Authorization Endpoint
+## Authorization Endpoint
 
 The authorization endpoint
 
@@ -488,7 +488,7 @@ Authorization Server
 
 ---
 
-# Token Endpoint
+## Token Endpoint
 
 The token endpoint exchanges credentials for tokens.
 
@@ -508,7 +508,7 @@ Only trusted clients should access this endpoint.
 
 ---
 
-# Token Introspection Endpoint
+## Token Introspection Endpoint
 
 Some deployments validate opaque tokens through introspection.
 
@@ -536,7 +536,7 @@ Useful for centralized token validation.
 
 ---
 
-# Token Revocation Endpoint
+## Token Revocation Endpoint
 
 Revocation invalidates issued tokens.
 
@@ -560,7 +560,7 @@ Used during logout or compromise.
 
 ---
 
-# Redirect URI
+## Redirect URI
 
 After authorization,
 
@@ -586,7 +586,7 @@ Redirect URIs must be registered and validated.
 
 ---
 
-# Redirect URI Validation
+## Redirect URI Validation
 
 ```
 Incoming Redirect
@@ -610,7 +610,7 @@ Never allow arbitrary redirect destinations.
 
 ---
 
-# OAuth Client Types
+## OAuth Client Types
 
 OAuth defines different client categories.
 
@@ -628,7 +628,7 @@ Public       Confidential
 
 ---
 
-# Public Clients
+## Public Clients
 
 Public clients cannot securely protect secrets.
 
@@ -646,7 +646,7 @@ Characteristics
 
 ---
 
-# Confidential Clients
+## Confidential Clients
 
 Confidential clients securely store credentials.
 
@@ -664,7 +664,7 @@ Characteristics
 
 ---
 
-# Client Authentication
+## Client Authentication
 
 Confidential clients authenticate themselves to the authorization server.
 
@@ -679,7 +679,7 @@ Proper client authentication prevents unauthorized token issuance.
 
 ---
 
-# OAuth Client Registration
+## OAuth Client Registration
 
 Typical registration information
 
@@ -693,7 +693,7 @@ Each client receives a unique identifier.
 
 ---
 
-# Client Credentials
+## Client Credentials
 
 ```
 Client ID
@@ -711,7 +711,7 @@ Client secrets should never be embedded in public applications.
 
 ---
 
-# Enterprise OAuth Architecture
+## Enterprise OAuth Architecture
 
 ```
                  User
@@ -751,7 +751,7 @@ Client secrets should never be embedded in public applications.
 
 ---
 
-# Best Practices
+## Best Practices
 
 Authorization
 
@@ -778,7 +778,7 @@ Operations
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid
 
@@ -794,7 +794,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - OAuth 2.0 is a delegated authorization framework.
 - OAuth eliminates password sharing with third-party applications.
@@ -806,7 +806,7 @@ Avoid
 ---
 
 
-# OAuth 2.0 Grant Types
+## OAuth 2.0 Grant Types
 
 Grant types define how a client obtains an access token from the Authorization Server.
 
@@ -836,7 +836,7 @@ Some older grant types are now deprecated or discouraged.
 
 ---
 
-# OAuth Authorization Code Flow
+## OAuth Authorization Code Flow
 
 The Authorization Code Flow is the recommended OAuth flow for:
 
@@ -848,7 +848,7 @@ It separates user authentication from token issuance.
 
 ---
 
-# Authorization Code Flow Overview
+## Authorization Code Flow Overview
 
 ```
 +--------+                                +----------------------+
@@ -878,7 +878,7 @@ Protected Resource
 
 ---
 
-# Step 1 - Authorization Request
+## Step 1 - Authorization Request
 
 The client redirects the user to the Authorization Server.
 
@@ -906,7 +906,7 @@ state=random-value
 
 ---
 
-# Step 2 - User Authentication
+## Step 2 - User Authentication
 
 The Authorization Server authenticates the Resource Owner.
 
@@ -936,7 +936,7 @@ Authentication mechanisms may include:
 
 ---
 
-# Step 3 - User Consent
+## Step 3 - User Consent
 
 The Authorization Server requests approval.
 
@@ -962,7 +962,7 @@ Only approved scopes should be granted.
 
 ---
 
-# Step 4 - Authorization Code
+## Step 4 - Authorization Code
 
 After successful authentication and consent,
 
@@ -988,7 +988,7 @@ Characteristics
 
 ---
 
-# Step 5 - Token Exchange
+## Step 5 - Token Exchange
 
 The client exchanges the authorization code.
 
@@ -1014,7 +1014,7 @@ Only trusted clients should perform this exchange.
 
 ---
 
-# Authorization Code Lifetime
+## Authorization Code Lifetime
 
 Typical characteristics
 
@@ -1028,7 +1028,7 @@ the Authorization Server should reject the request.
 
 ---
 
-# PKCE (Proof Key for Code Exchange)
+## PKCE (Proof Key for Code Exchange)
 
 PKCE protects the Authorization Code Flow against authorization code interception.
 
@@ -1038,7 +1038,7 @@ PKCE is now recommended for virtually all OAuth clients.
 
 ---
 
-# Why PKCE?
+## Why PKCE?
 
 Without PKCE
 
@@ -1062,7 +1062,7 @@ PKCE prevents unauthorized token exchange.
 
 ---
 
-# PKCE Components
+## PKCE Components
 
 PKCE introduces two values.
 
@@ -1086,7 +1086,7 @@ The verifier remains known only to the client.
 
 ---
 
-# PKCE Flow
+## PKCE Flow
 
 ```
 Client
@@ -1146,7 +1146,7 @@ Token
 
 ---
 
-# PKCE Benefits
+## PKCE Benefits
 
 Advantages
 
@@ -1158,7 +1158,7 @@ Advantages
 
 ---
 
-# Client Credentials Grant
+## Client Credentials Grant
 
 The Client Credentials Grant is used for machine-to-machine communication.
 
@@ -1195,7 +1195,7 @@ Typical use cases
 
 ---
 
-# Client Credentials Flow
+## Client Credentials Flow
 
 ```
 Service A
@@ -1221,7 +1221,7 @@ No refresh token is typically issued.
 
 ---
 
-# Device Authorization Grant
+## Device Authorization Grant
 
 The Device Authorization Grant supports devices with limited input capabilities.
 
@@ -1234,7 +1234,7 @@ Examples
 
 ---
 
-# Device Authorization Flow
+## Device Authorization Flow
 
 ```
 Smart TV
@@ -1280,7 +1280,7 @@ The user authenticates on a separate trusted device.
 
 ---
 
-# Refresh Token Grant
+## Refresh Token Grant
 
 When the access token expires,
 
@@ -1310,7 +1310,7 @@ Refresh tokens should never be sent to Resource Servers.
 
 ---
 
-# OAuth Scopes
+## OAuth Scopes
 
 Scopes limit client permissions.
 
@@ -1338,7 +1338,7 @@ Applications should request only required scopes.
 
 ---
 
-# Scope Evaluation
+## Scope Evaluation
 
 ```
 Access Token
@@ -1370,7 +1370,7 @@ Authorization decisions should include scope validation.
 
 ---
 
-# Incremental Authorization
+## Incremental Authorization
 
 Applications may request additional permissions only when needed.
 
@@ -1400,7 +1400,7 @@ Benefits
 
 ---
 
-# OAuth Token Types
+## OAuth Token Types
 
 ```
 OAuth Tokens
@@ -1418,7 +1418,7 @@ ID Tokens are provided by OpenID Connect rather than OAuth itself.
 
 ---
 
-# OAuth Error Responses
+## OAuth Error Responses
 
 Common errors
 
@@ -1436,7 +1436,7 @@ Applications should handle errors securely without exposing sensitive informatio
 
 ---
 
-# OAuth Flow Comparison
+## OAuth Flow Comparison
 
 | Flow | User Present | Typical Use Case |
 |------|--------------|------------------|
@@ -1447,11 +1447,11 @@ Applications should handle errors securely without exposing sensitive informatio
 
 ---
 
-# Deprecated OAuth Grant Types
+## Deprecated OAuth Grant Types
 
 The following grant types are no longer recommended.
 
-### Implicit Grant
+#### Implicit Grant
 
 Previously used for browser applications.
 
@@ -1473,7 +1473,7 @@ PKCE
 
 ---
 
-### Resource Owner Password Credentials (ROPC)
+#### Resource Owner Password Credentials (ROPC)
 
 The user provides credentials directly to the client.
 
@@ -1502,7 +1502,7 @@ ROPC should be avoided except in limited legacy scenarios.
 
 ---
 
-# OAuth Security Best Practices
+## OAuth Security Best Practices
 
 Authorization
 
@@ -1528,7 +1528,7 @@ Operations
 
 ---
 
-# Common Security Mistakes
+## Common Security Mistakes
 
 Avoid
 
@@ -1544,7 +1544,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authorization Code + PKCE is the recommended OAuth flow for most user-facing applications.
 - Client Credentials is designed for service-to-service communication.
@@ -1554,7 +1554,7 @@ Avoid
 
 ---
 
-# OAuth Security Threats
+## OAuth Security Threats
 
 OAuth is widely deployed across enterprise applications, but incorrect implementation can introduce serious security vulnerabilities.
 
@@ -1575,7 +1575,7 @@ Understanding these threats is essential for secure OAuth deployments.
 
 ---
 
-# OAuth Threat Landscape
+## OAuth Threat Landscape
 
 ```
                      OAuth
@@ -1601,7 +1601,7 @@ Clickjacking      Refresh Theft    Code Interception
 
 ---
 
-# Cross-Site Request Forgery (CSRF)
+## Cross-Site Request Forgery (CSRF)
 
 An attacker tricks a user's browser into sending an unintended authorization request.
 
@@ -1611,7 +1611,7 @@ the Authorization Server may associate the wrong authorization response with the
 
 ---
 
-# OAuth CSRF Attack
+## OAuth CSRF Attack
 
 ```
 Victim
@@ -1643,7 +1643,7 @@ Attacker's Session
 
 ---
 
-# State Parameter
+## State Parameter
 
 The **state** parameter protects OAuth authorization requests against CSRF.
 
@@ -1671,7 +1671,7 @@ Validate State
 
 ---
 
-# State Validation
+## State Validation
 
 ```
 Authorization Response
@@ -1704,7 +1704,7 @@ State values should be:
 
 ---
 
-# Authorization Code Interception
+## Authorization Code Interception
 
 An attacker intercepts the authorization code before it reaches the legitimate client.
 
@@ -1734,7 +1734,7 @@ the attacker may obtain an access token.
 
 ---
 
-# PKCE Protection
+## PKCE Protection
 
 ```
 Authorization Code
@@ -1768,7 +1768,7 @@ PKCE prevents attackers from exchanging intercepted authorization codes.
 
 ---
 
-# Redirect URI Manipulation
+## Redirect URI Manipulation
 
 Attackers attempt to redirect authorization responses to attacker-controlled locations.
 
@@ -1788,7 +1788,7 @@ https://evil.example/callback
 
 ---
 
-# Redirect URI Validation
+## Redirect URI Validation
 
 ```
 Incoming Redirect
@@ -1812,7 +1812,7 @@ Never allow wildcard redirect URIs.
 
 ---
 
-# Open Redirect Vulnerabilities
+## Open Redirect Vulnerabilities
 
 Poor redirect validation may allow attackers to steal authorization codes or tokens.
 
@@ -1834,7 +1834,7 @@ Open redirects should be eliminated before integrating OAuth.
 
 ---
 
-# Token Leakage
+## Token Leakage
 
 Access tokens may leak through:
 
@@ -1849,7 +1849,7 @@ Tokens should never appear in URLs.
 
 ---
 
-# Secure Token Transmission
+## Secure Token Transmission
 
 Correct
 
@@ -1867,7 +1867,7 @@ GET /profile?token=abcdef
 
 ---
 
-# Token Replay Attack
+## Token Replay Attack
 
 A stolen access token is reused by an attacker.
 
@@ -1896,7 +1896,7 @@ Mitigations
 
 ---
 
-# Refresh Token Theft
+## Refresh Token Theft
 
 Refresh tokens represent high-value credentials.
 
@@ -1920,7 +1920,7 @@ Protect refresh tokens with stronger controls than access tokens.
 
 ---
 
-# Refresh Token Rotation
+## Refresh Token Rotation
 
 ```
 Refresh Token A
@@ -1942,7 +1942,7 @@ Reuse detection can identify compromised refresh tokens.
 
 ---
 
-# Consent Phishing
+## Consent Phishing
 
 Attackers create malicious applications requesting excessive permissions.
 
@@ -1968,7 +1968,7 @@ Users should review requested scopes carefully.
 
 ---
 
-# Excessive Scopes
+## Excessive Scopes
 
 Applications sometimes request more permissions than necessary.
 
@@ -1992,7 +1992,7 @@ Always follow the principle of least privilege.
 
 ---
 
-# Scope Escalation
+## Scope Escalation
 
 An attacker attempts to obtain unauthorized scopes.
 
@@ -2016,7 +2016,7 @@ The Authorization Server must validate permitted scopes.
 
 ---
 
-# Clickjacking
+## Clickjacking
 
 Attackers overlay invisible elements over authorization pages.
 
@@ -2040,7 +2040,7 @@ Mitigations
 
 ---
 
-# Client Secret Exposure
+## Client Secret Exposure
 
 Client secrets should remain confidential.
 
@@ -2056,7 +2056,7 @@ Public clients should not rely on client secrets.
 
 ---
 
-# OAuth Client Impersonation
+## OAuth Client Impersonation
 
 Attackers impersonate legitimate OAuth clients.
 
@@ -2080,7 +2080,7 @@ Client registration and redirect URI validation reduce this risk.
 
 ---
 
-# Authorization Server Impersonation
+## Authorization Server Impersonation
 
 Attackers create fake authorization pages.
 
@@ -2110,7 +2110,7 @@ Mitigations
 
 ---
 
-# Token Substitution Attack
+## Token Substitution Attack
 
 A token intended for one client or API is presented to another.
 
@@ -2134,7 +2134,7 @@ Resource servers must validate the `aud` claim.
 
 ---
 
-# Mix-Up Attack
+## Mix-Up Attack
 
 A client communicating with multiple Authorization Servers may accept responses from the wrong server.
 
@@ -2156,7 +2156,7 @@ Clients should validate the expected issuer and endpoint.
 
 ---
 
-# OAuth Threat Summary
+## OAuth Threat Summary
 
 | Threat | Primary Mitigation |
 |---------|--------------------|
@@ -2173,7 +2173,7 @@ Clients should validate the expected issuer and endpoint.
 
 ---
 
-# OAuth Security Best Practices
+## OAuth Security Best Practices
 
 Authorization
 
@@ -2200,7 +2200,7 @@ Operational Security
 
 ---
 
-# OAuth Logging
+## OAuth Logging
 
 Log
 
@@ -2223,7 +2223,7 @@ Do not log
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -2244,7 +2244,7 @@ Behavior-based detection provides stronger protection than signature-based detec
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Recommended log sources
 
@@ -2295,7 +2295,7 @@ Example correlation rules
 
 ---
 
-# Enterprise OAuth Architecture
+## Enterprise OAuth Architecture
 
 ```
                     User
@@ -2357,7 +2357,7 @@ Example correlation rules
 
 ---
 
-# Hands-on Lab 1 – Redirect URI Validation
+## Hands-on Lab 1 – Redirect URI Validation
 
 **Objective**
 
@@ -2378,7 +2378,7 @@ Review redirect URI validation in an authorized test environment.
 
 ---
 
-# Hands-on Lab 2 – PKCE Verification
+## Hands-on Lab 2 – PKCE Verification
 
 **Objective**
 
@@ -2399,7 +2399,7 @@ Verify PKCE enforcement.
 
 ---
 
-# Hands-on Lab 3 – Scope Review
+## Hands-on Lab 3 – Scope Review
 
 **Objective**
 
@@ -2420,9 +2420,9 @@ Evaluate OAuth scope assignments.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Invalid Redirect URI
+### Invalid Redirect URI
 
 Possible causes
 
@@ -2433,7 +2433,7 @@ Possible causes
 
 ---
 
-## Invalid State
+### Invalid State
 
 Possible causes
 
@@ -2444,7 +2444,7 @@ Possible causes
 
 ---
 
-## Authorization Code Rejected
+### Authorization Code Rejected
 
 Possible causes
 
@@ -2455,7 +2455,7 @@ Possible causes
 
 ---
 
-## Token Refresh Failure
+### Token Refresh Failure
 
 Possible causes
 
@@ -2466,7 +2466,7 @@ Possible causes
 
 ---
 
-## Invalid Scope
+### Invalid Scope
 
 Possible causes
 
@@ -2477,9 +2477,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What problem does OAuth 2.0 solve?
 2. Why is OAuth considered an authorization framework rather than an authentication protocol?
@@ -2494,7 +2494,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. Explain the Authorization Code Flow.
 12. How does PKCE prevent authorization code interception?
@@ -2509,7 +2509,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -2538,7 +2538,7 @@ A newly registered OAuth client begins requesting highly privileged scopes acros
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this section, we explored OAuth 2.0 security and common implementation threats.
 
@@ -2563,7 +2563,7 @@ Secure OAuth deployments rely on strong client validation, least-privilege scope
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -2579,9 +2579,9 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 6749 – OAuth 2.0 Authorization Framework
 - RFC 6750 – Bearer Token Usage
@@ -2589,7 +2589,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - RFC 7009 – Token Revocation
 - RFC 7662 – Token Introspection
 
-## Security Standards
+### Security Standards
 
 - OAuth 2.0 Security Best Current Practice
 - OWASP OAuth Security Cheat Sheet
@@ -2597,7 +2597,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - NIST SP 800-63
 - NIST Cybersecurity Framework (CSF)
 
-## Further Reading
+### Further Reading
 
 - OAuth 2.1 Draft Specification
 - Financial-grade API (FAPI) Security Profiles
@@ -2605,7 +2605,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 13 – OpenID Connect (OIDC)**
 

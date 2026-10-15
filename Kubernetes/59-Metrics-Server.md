@@ -38,7 +38,7 @@ Its primary purpose is to provide near-real-time resource metrics for Kubernetes
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -93,7 +93,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Metrics Server?
+## What Is Metrics Server?
 
 Metrics Server is a lightweight, cluster-level aggregator of resource usage data.
 
@@ -125,7 +125,7 @@ Pods
 
 ---
 
-# Why Metrics Server Exists
+## Why Metrics Server Exists
 
 Kubernetes needs current resource information for features such as:
 
@@ -149,7 +149,7 @@ Increase Pod Replicas
 
 ---
 
-# Metrics Server Architecture
+## Metrics Server Architecture
 
 ```text
                      Kubernetes API Server
@@ -172,7 +172,7 @@ Increase Pod Replicas
 
 ---
 
-# Metrics Server Components
+## Metrics Server Components
 
 The major components involved are:
 
@@ -186,7 +186,7 @@ Metrics API
 
 ---
 
-# Kubelet
+## Kubelet
 
 The kubelet runs on each Kubernetes node.
 
@@ -203,7 +203,7 @@ Node
 
 ---
 
-# Metrics Collection Flow
+## Metrics Collection Flow
 
 The general flow is:
 
@@ -229,7 +229,7 @@ VPA
 
 ---
 
-# Kubernetes Metrics API
+## Kubernetes Metrics API
 
 The Metrics API provides resource metrics through Kubernetes API machinery.
 
@@ -241,7 +241,7 @@ metrics.k8s.io
 
 ---
 
-# Metrics API
+## Metrics API
 
 For nodes:
 
@@ -259,7 +259,7 @@ The exact API version exposed can depend on the installed Metrics Server version
 
 ---
 
-# Checking the Metrics API
+## Checking the Metrics API
 
 Run:
 
@@ -275,7 +275,7 @@ v1beta1.metrics.k8s.io
 
 ---
 
-# Querying the Metrics API
+## Querying the Metrics API
 
 You can inspect the API directly:
 
@@ -291,7 +291,7 @@ kubectl get --raw "/apis/metrics.k8s.io/v1beta1/pods"
 
 ---
 
-# `kubectl top`
+## `kubectl top`
 
 The most common interface is:
 
@@ -303,7 +303,7 @@ It retrieves resource metrics from the Metrics API.
 
 ---
 
-# `kubectl top nodes`
+## `kubectl top nodes`
 
 Run:
 
@@ -323,7 +323,7 @@ This gives a quick overview of node resource consumption.
 
 ---
 
-# `kubectl top pods`
+## `kubectl top pods`
 
 Run:
 
@@ -342,7 +342,7 @@ worker     500m         512Mi
 
 ---
 
-# Namespace Pod Metrics
+## Namespace Pod Metrics
 
 ```bash
 kubectl top pods -n production
@@ -350,7 +350,7 @@ kubectl top pods -n production
 
 ---
 
-# All Namespace Metrics
+## All Namespace Metrics
 
 ```bash
 kubectl top pods -A
@@ -358,7 +358,7 @@ kubectl top pods -A
 
 ---
 
-# Sorting Pod Metrics
+## Sorting Pod Metrics
 
 Depending on the kubectl version, you can use:
 
@@ -374,7 +374,7 @@ kubectl top pods --sort-by=memory
 
 ---
 
-# Container-Level Metrics
+## Container-Level Metrics
 
 For Pods containing multiple containers:
 
@@ -386,7 +386,7 @@ This can help identify which container is consuming resources.
 
 ---
 
-# Node Metrics
+## Node Metrics
 
 Metrics Server provides information such as:
 
@@ -399,7 +399,7 @@ at the node level.
 
 ---
 
-# Pod Metrics
+## Pod Metrics
 
 At the Pod level, Metrics Server can provide resource usage information for:
 
@@ -412,7 +412,7 @@ depending on the API query.
 
 ---
 
-# CPU Metrics
+## CPU Metrics
 
 CPU usage is commonly represented in millicores.
 
@@ -436,7 +436,7 @@ Therefore:
 
 ---
 
-# Memory Metrics
+## Memory Metrics
 
 Memory is commonly displayed using units such as:
 
@@ -454,7 +454,7 @@ Example:
 
 ---
 
-# Metrics Server and Resource Requests
+## Metrics Server and Resource Requests
 
 Metrics Server reports actual resource usage.
 
@@ -478,7 +478,7 @@ It reports observed usage.
 
 ---
 
-# Usage vs Request
+## Usage vs Request
 
 Suppose:
 
@@ -497,7 +497,7 @@ This distinction is important.
 
 ---
 
-# Usage vs Limit
+## Usage vs Limit
 
 Suppose:
 
@@ -522,7 +522,7 @@ Metrics Server reports usage; it does not enforce the limit.
 
 ---
 
-# Metrics Server and HPA
+## Metrics Server and HPA
 
 One of the most important uses of Metrics Server is supporting HPA with resource metrics.
 
@@ -546,7 +546,7 @@ Replica Count
 
 ---
 
-# HPA Example
+## HPA Example
 
 Suppose:
 
@@ -575,7 +575,7 @@ Replicas ↑
 
 ---
 
-# HPA Dependency
+## HPA Dependency
 
 A typical resource-based HPA requires resource metrics to be available.
 
@@ -591,7 +591,7 @@ and autoscaling behavior can be affected.
 
 ---
 
-# Metrics Server and VPA
+## Metrics Server and VPA
 
 VPA can also use resource usage information when recommending resource requests.
 
@@ -611,7 +611,7 @@ VPA's complete behavior depends on its installed components and configuration.
 
 ---
 
-# API Aggregation Layer
+## API Aggregation Layer
 
 Metrics Server integrates with Kubernetes through the API aggregation mechanism.
 
@@ -631,7 +631,7 @@ Metrics Server
 
 ---
 
-# Why API Aggregation Matters
+## Why API Aggregation Matters
 
 It allows additional APIs to appear as part of the Kubernetes API ecosystem.
 
@@ -645,7 +645,7 @@ rather than modifying the core Kubernetes API directly.
 
 ---
 
-# APIService
+## APIService
 
 Kubernetes uses an `APIService` object to register aggregated APIs.
 
@@ -663,7 +663,7 @@ v1beta1.metrics.k8s.io
 
 ---
 
-# Inspect Metrics APIService
+## Inspect Metrics APIService
 
 ```bash
 kubectl describe apiservice v1beta1.metrics.k8s.io
@@ -680,7 +680,7 @@ API Registration
 
 ---
 
-# Metrics Server Service
+## Metrics Server Service
 
 Metrics Server normally runs behind a Kubernetes Service.
 
@@ -698,7 +698,7 @@ metrics-server
 
 ---
 
-# Metrics Server Deployment
+## Metrics Server Deployment
 
 Check:
 
@@ -717,7 +717,7 @@ Labels can vary depending on the installation.
 
 ---
 
-# Metrics Server Installation
+## Metrics Server Installation
 
 There are multiple ways to install Metrics Server.
 
@@ -733,7 +733,7 @@ Always use documentation matching your Kubernetes and Metrics Server versions.
 
 ---
 
-# Manifest Installation
+## Manifest Installation
 
 A typical workflow is:
 
@@ -749,7 +749,7 @@ kubectl get pods -n kube-system
 
 ---
 
-# Helm Installation
+## Helm Installation
 
 If using Helm:
 
@@ -775,7 +775,7 @@ Use the chart's current documented configuration for your environment.
 
 ---
 
-# Verify Installation
+## Verify Installation
 
 Check:
 
@@ -803,7 +803,7 @@ kubectl top pods -A
 
 ---
 
-# Metrics Availability Delay
+## Metrics Availability Delay
 
 After installation, metrics may not be immediately available.
 
@@ -821,7 +821,7 @@ API Availability
 
 ---
 
-# TLS
+## TLS
 
 Metrics Server communicates with kubelets over HTTPS.
 
@@ -837,7 +837,7 @@ TLS configuration is important.
 
 ---
 
-# Kubelet Certificates
+## Kubelet Certificates
 
 Metrics Server needs to establish secure communication with kubelets.
 
@@ -849,7 +849,7 @@ x509 certificate errors
 
 ---
 
-# Certificate Error Example
+## Certificate Error Example
 
 You may see an error similar to:
 
@@ -868,7 +868,7 @@ Improper certificate configuration
 
 ---
 
-# `--kubelet-insecure-tls`
+## `--kubelet-insecure-tls`
 
 You may encounter configurations using:
 
@@ -884,7 +884,7 @@ Do not treat it as a default production security solution.
 
 ---
 
-# Kubelet Address Selection
+## Kubelet Address Selection
 
 Metrics Server may attempt to connect using node addresses such as:
 
@@ -912,7 +912,7 @@ ExternalIP
 
 ---
 
-# Why Address Selection Matters
+## Why Address Selection Matters
 
 Suppose:
 
@@ -928,7 +928,7 @@ Selecting an appropriate node address can solve the issue.
 
 ---
 
-# Kubelet Authentication
+## Kubelet Authentication
 
 Metrics Server must authenticate appropriately when accessing kubelet metrics.
 
@@ -945,7 +945,7 @@ The exact configuration depends on cluster setup.
 
 ---
 
-# Kubelet Authorization
+## Kubelet Authorization
 
 Authentication answers:
 
@@ -963,7 +963,7 @@ Metrics Server requires appropriate permissions to obtain node and Pod resource 
 
 ---
 
-# RBAC
+## RBAC
 
 Metrics Server uses Kubernetes RBAC permissions.
 
@@ -979,7 +979,7 @@ The exact ServiceAccount name can vary by installation.
 
 ---
 
-# Inspect RBAC
+## Inspect RBAC
 
 Check:
 
@@ -997,7 +997,7 @@ Search for Metrics Server-related objects.
 
 ---
 
-# Metrics Server Resource Usage
+## Metrics Server Resource Usage
 
 Metrics Server itself consumes resources.
 
@@ -1021,7 +1021,7 @@ Use the current Metrics Server documentation and release notes for sizing guidan
 
 ---
 
-# Metrics Server Scaling
+## Metrics Server Scaling
 
 Metrics Server is designed for cluster-scale resource metrics.
 
@@ -1037,7 +1037,7 @@ High Availability
 
 ---
 
-# High Availability
+## High Availability
 
 Production environments may run multiple Metrics Server replicas depending on requirements and supported configuration.
 
@@ -1057,7 +1057,7 @@ Conceptually:
 
 ---
 
-# Metrics Server Is Not a Database
+## Metrics Server Is Not a Database
 
 Metrics Server is not intended to be a long-term metrics database.
 
@@ -1073,7 +1073,7 @@ or another time-series platform is more appropriate.
 
 ---
 
-# Metrics Server vs Prometheus
+## Metrics Server vs Prometheus
 
 | Feature | Metrics Server | Prometheus |
 |---|---|---|
@@ -1089,7 +1089,7 @@ or another time-series platform is more appropriate.
 
 ---
 
-# Metrics Server vs Node Exporter
+## Metrics Server vs Node Exporter
 
 Node Exporter focuses on host-level metrics.
 
@@ -1125,7 +1125,7 @@ Metrics API
 
 ---
 
-# Metrics Server vs kube-state-metrics
+## Metrics Server vs kube-state-metrics
 
 These are also different.
 
@@ -1155,7 +1155,7 @@ It does not replace Metrics Server.
 
 ---
 
-# Three Different Monitoring Sources
+## Three Different Monitoring Sources
 
 ```text
 Metrics Server
@@ -1175,7 +1175,7 @@ Prometheus can collect metrics from these sources.
 
 ---
 
-# Troubleshooting Metrics Server
+## Troubleshooting Metrics Server
 
 If:
 
@@ -1187,7 +1187,7 @@ fails, follow a structured process.
 
 ---
 
-# Step 1 – Check Metrics Server Pods
+## Step 1 – Check Metrics Server Pods
 
 ```bash
 kubectl get pods -n kube-system
@@ -1201,7 +1201,7 @@ metrics-server
 
 ---
 
-# Step 2 – Check Deployment
+## Step 2 – Check Deployment
 
 ```bash
 kubectl get deployment \
@@ -1211,7 +1211,7 @@ kubectl get deployment \
 
 ---
 
-# Step 3 – Check Logs
+## Step 3 – Check Logs
 
 ```bash
 kubectl logs \
@@ -1231,7 +1231,7 @@ Authentication Errors
 
 ---
 
-# Step 4 – Check APIService
+## Step 4 – Check APIService
 
 ```bash
 kubectl get apiservice
@@ -1245,7 +1245,7 @@ v1beta1.metrics.k8s.io
 
 ---
 
-# Step 5 – Describe APIService
+## Step 5 – Describe APIService
 
 ```bash
 kubectl describe apiservice \
@@ -1263,7 +1263,7 @@ CA Bundle
 
 ---
 
-# Step 6 – Check Metrics Server Service
+## Step 6 – Check Metrics Server Service
 
 ```bash
 kubectl get svc \
@@ -1273,7 +1273,7 @@ kubectl get svc \
 
 ---
 
-# Step 7 – Check Endpoints
+## Step 7 – Check Endpoints
 
 Depending on Kubernetes version:
 
@@ -1292,7 +1292,7 @@ kubectl get endpointslices \
 
 ---
 
-# Step 8 – Check Node Connectivity
+## Step 8 – Check Node Connectivity
 
 Metrics Server must reach kubelets.
 
@@ -1309,7 +1309,7 @@ TLS
 
 ---
 
-# Step 9 – Check Certificates
+## Step 9 – Check Certificates
 
 If logs contain:
 
@@ -1328,7 +1328,7 @@ SAN
 
 ---
 
-# Step 10 – Check RBAC
+## Step 10 – Check RBAC
 
 Inspect:
 
@@ -1341,7 +1341,7 @@ Verify Metrics Server has appropriate permissions.
 
 ---
 
-# Error: Metrics API Not Available
+## Error: Metrics API Not Available
 
 Example:
 
@@ -1362,7 +1362,7 @@ RBAC Problem
 
 ---
 
-# Error: `kubectl top` Fails
+## Error: `kubectl top` Fails
 
 Start:
 
@@ -1388,7 +1388,7 @@ Check RBAC
 
 ---
 
-# Error: x509 Certificate
+## Error: x509 Certificate
 
 Potential cause:
 
@@ -1407,7 +1407,7 @@ Kubelet Configuration
 
 ---
 
-# Error: Connection Refused
+## Error: Connection Refused
 
 Potential causes:
 
@@ -1421,7 +1421,7 @@ Node failure
 
 ---
 
-# Error: Timeout
+## Error: Timeout
 
 Potential causes:
 
@@ -1435,7 +1435,7 @@ Routing
 
 ---
 
-# Error: Forbidden
+## Error: Forbidden
 
 Potential cause:
 
@@ -1453,7 +1453,7 @@ ClusterRoleBinding
 
 ---
 
-# Error: No Data
+## Error: No Data
 
 If Metrics Server is running but no metrics appear:
 
@@ -1467,7 +1467,7 @@ Check APIService
 
 ---
 
-# Metrics Server Security
+## Metrics Server Security
 
 Metrics Server should follow least privilege.
 
@@ -1482,7 +1482,7 @@ Secure Network Paths
 
 ---
 
-# Network Security
+## Network Security
 
 If NetworkPolicies are used, ensure Metrics Server can reach kubelets.
 
@@ -1500,7 +1500,7 @@ A NetworkPolicy accidentally blocking this path can break metrics collection.
 
 ---
 
-# Metrics Server and Secrets
+## Metrics Server and Secrets
 
 Metrics Server should not require access to arbitrary application Secrets.
 
@@ -1508,7 +1508,7 @@ Follow least privilege.
 
 ---
 
-# Monitoring Metrics Server
+## Monitoring Metrics Server
 
 Monitor:
 
@@ -1523,7 +1523,7 @@ Request Latency
 
 ---
 
-# Production Metrics Server Architecture
+## Production Metrics Server Architecture
 
 ```text
                          Kubernetes API Server
@@ -1545,7 +1545,7 @@ Request Latency
 
 ---
 
-# Metrics Server and Prometheus Architecture
+## Metrics Server and Prometheus Architecture
 
 A production observability platform may use both:
 
@@ -1570,7 +1570,7 @@ These components solve different problems.
 
 ---
 
-# When to Use Metrics Server
+## When to Use Metrics Server
 
 Use Metrics Server when you need:
 
@@ -1583,7 +1583,7 @@ Current CPU/Memory Usage
 
 ---
 
-# When to Use Prometheus
+## When to Use Prometheus
 
 Use Prometheus when you need:
 
@@ -1599,7 +1599,7 @@ Longer-Term Analysis
 
 ---
 
-# Metrics Server Limitations
+## Metrics Server Limitations
 
 Metrics Server is not intended to provide:
 
@@ -1613,7 +1613,7 @@ Distributed Tracing
 
 ---
 
-# Metrics Server and HPA
+## Metrics Server and HPA
 
 A common architecture is:
 
@@ -1635,7 +1635,7 @@ Replica Count
 
 ---
 
-# HPA Troubleshooting
+## HPA Troubleshooting
 
 If HPA shows:
 
@@ -1659,7 +1659,7 @@ If `kubectl top` fails, Metrics Server may be the underlying problem.
 
 ---
 
-# HPA and Resource Requests
+## HPA and Resource Requests
 
 For CPU utilization-based scaling, define resource requests.
 
@@ -1681,7 +1681,7 @@ Then HPA can calculate utilization relative to the CPU request.
 
 ---
 
-# Example HPA
+## Example HPA
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -1723,7 +1723,7 @@ spec:
 
 ---
 
-# Metrics Server and VPA
+## Metrics Server and VPA
 
 VPA can use resource usage information to recommend resource values.
 
@@ -1743,7 +1743,7 @@ VPA architecture and data collection can vary by implementation.
 
 ---
 
-# Resource Efficiency
+## Resource Efficiency
 
 Metrics Server helps identify:
 
@@ -1764,7 +1764,7 @@ This may indicate overprovisioning.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Metrics Server is primarily designed for current resource usage rather than long-term historical analysis.
 
@@ -1778,21 +1778,21 @@ or another time-series system is more appropriate.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Treating Metrics Server as Prometheus
+### 1. Treating Metrics Server as Prometheus
 
 They have different purposes.
 
 ---
 
-## 2. Expecting Long-Term Historical Data
+### 2. Expecting Long-Term Historical Data
 
 Metrics Server is not a long-term metrics database.
 
 ---
 
-## 3. Using `--kubelet-insecure-tls` Blindly
+### 3. Using `--kubelet-insecure-tls` Blindly
 
 This weakens certificate verification.
 
@@ -1800,31 +1800,31 @@ Use only when appropriate and understand the security implications.
 
 ---
 
-## 4. Ignoring APIService
+### 4. Ignoring APIService
 
 The Metrics API depends on proper API aggregation.
 
 ---
 
-## 5. Ignoring Kubelet Connectivity
+### 5. Ignoring Kubelet Connectivity
 
 Metrics Server must reach kubelets.
 
 ---
 
-## 6. Ignoring RBAC
+### 6. Ignoring RBAC
 
 Authentication alone is not enough.
 
 ---
 
-## 7. No Resource Requests
+### 7. No Resource Requests
 
 HPA resource utilization calculations depend on resource requests.
 
 ---
 
-## 8. Assuming `Running` Means Healthy
+### 8. Assuming `Running` Means Healthy
 
 Metrics Server can be Running while scraping is failing.
 
@@ -1838,13 +1838,13 @@ Metrics API
 
 ---
 
-## 9. Ignoring TLS Errors
+### 9. Ignoring TLS Errors
 
 Certificate problems are common causes of scrape failures.
 
 ---
 
-## 10. Using Metrics Server for Application Monitoring
+### 10. Using Metrics Server for Application Monitoring
 
 For rich application metrics use:
 
@@ -1856,27 +1856,27 @@ or another monitoring platform.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use a Supported Version
+#### 1. Use a Supported Version
 
 Use a Metrics Server version compatible with your Kubernetes version.
 
 ---
 
-### 2. Use Secure TLS
+#### 2. Use Secure TLS
 
 Prefer proper certificate validation.
 
 ---
 
-### 3. Follow Least Privilege
+#### 3. Follow Least Privilege
 
 Give Metrics Server only the required permissions.
 
 ---
 
-### 4. Monitor Metrics Server
+#### 4. Monitor Metrics Server
 
 Track:
 
@@ -1889,13 +1889,13 @@ API Health
 
 ---
 
-### 5. Use Prometheus for Long-Term Monitoring
+#### 5. Use Prometheus for Long-Term Monitoring
 
 Do not use Metrics Server as a historical monitoring database.
 
 ---
 
-### 6. Validate Kubelet Connectivity
+#### 6. Validate Kubelet Connectivity
 
 Ensure:
 
@@ -1907,25 +1907,25 @@ communication works.
 
 ---
 
-### 7. Configure Correct Node Addresses
+#### 7. Configure Correct Node Addresses
 
 Use appropriate kubelet address selection.
 
 ---
 
-### 8. Use Resource Requests
+#### 8. Use Resource Requests
 
 Required for meaningful resource-utilization-based HPA behavior.
 
 ---
 
-### 9. Test HPA
+#### 9. Test HPA
 
 Do not assume autoscaling works simply because Metrics Server is installed.
 
 ---
 
-### 10. Monitor APIService Health
+#### 10. Monitor APIService Health
 
 Check:
 
@@ -1937,7 +1937,7 @@ regularly during troubleshooting.
 
 ---
 
-# Production Checklist
+## Production Checklist
 
 ```text
 ☑ Metrics Server installed
@@ -1960,7 +1960,7 @@ regularly during troubleshooting.
 
 ---
 
-# Hands-on Lab 1 – Verify Metrics Server
+## Hands-on Lab 1 – Verify Metrics Server
 
 Run:
 
@@ -1982,7 +1982,7 @@ kubectl top nodes
 
 ---
 
-# Hands-on Lab 2 – Pod Metrics
+## Hands-on Lab 2 – Pod Metrics
 
 Run:
 
@@ -1999,7 +1999,7 @@ Highest Memory Pod
 
 ---
 
-# Hands-on Lab 3 – Container Metrics
+## Hands-on Lab 3 – Container Metrics
 
 Run:
 
@@ -2011,7 +2011,7 @@ Compare resource consumption between containers.
 
 ---
 
-# Hands-on Lab 4 – Metrics API
+## Hands-on Lab 4 – Metrics API
 
 Run:
 
@@ -2034,7 +2034,7 @@ kubectl get --raw \
 
 ---
 
-# Hands-on Lab 5 – Metrics Server Logs
+## Hands-on Lab 5 – Metrics Server Logs
 
 Run:
 
@@ -2058,7 +2058,7 @@ messages.
 
 ---
 
-# Hands-on Lab 6 – Metrics Server and HPA
+## Hands-on Lab 6 – Metrics Server and HPA
 
 Deploy:
 
@@ -2090,7 +2090,7 @@ Replica Count
 
 ---
 
-# Hands-on Lab 7 – APIService Troubleshooting
+## Hands-on Lab 7 – APIService Troubleshooting
 
 Run:
 
@@ -2109,7 +2109,7 @@ and understand the conditions reported by the APIService.
 
 ---
 
-# Hands-on Lab 8 – Simulate TLS Troubleshooting
+## Hands-on Lab 8 – Simulate TLS Troubleshooting
 
 In a disposable environment, study a configuration where Metrics Server cannot validate kubelet certificates.
 
@@ -2125,7 +2125,7 @@ Then correct the certificate/address configuration.
 
 ---
 
-# Hands-on Lab 9 – Network Troubleshooting
+## Hands-on Lab 9 – Network Troubleshooting
 
 Temporarily introduce a network restriction that prevents Metrics Server from reaching kubelets.
 
@@ -2142,7 +2142,7 @@ Restore connectivity.
 
 ---
 
-# Hands-on Lab 10 – RBAC Troubleshooting
+## Hands-on Lab 10 – RBAC Troubleshooting
 
 Inspect Metrics Server permissions:
 
@@ -2163,7 +2163,7 @@ ClusterRoleBinding
 
 ---
 
-# Hands-on Lab 11 – Compare Monitoring Sources
+## Hands-on Lab 11 – Compare Monitoring Sources
 
 Install:
 
@@ -2186,7 +2186,7 @@ Who consumes it?
 
 ---
 
-# Hands-on Lab 12 – Resource Utilization
+## Hands-on Lab 12 – Resource Utilization
 
 Deploy:
 
@@ -2222,7 +2222,7 @@ kubectl top pod
 
 ---
 
-# Hands-on Lab 13 – HPA Failure Investigation
+## Hands-on Lab 13 – HPA Failure Investigation
 
 Create an HPA.
 
@@ -2240,7 +2240,7 @@ Restore Metrics Server.
 
 ---
 
-# Hands-on Lab 14 – Metrics Server Resource Monitoring
+## Hands-on Lab 14 – Metrics Server Resource Monitoring
 
 Monitor:
 
@@ -2253,7 +2253,7 @@ Observe the Metrics Server resource usage.
 
 ---
 
-# Hands-on Lab 15 – End-to-End Architecture
+## Hands-on Lab 15 – End-to-End Architecture
 
 Build:
 
@@ -2284,9 +2284,9 @@ TLS
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Metrics Server
+### Metrics Server
 
 ```text
 Cluster-level resource metrics aggregator
@@ -2294,7 +2294,7 @@ Cluster-level resource metrics aggregator
 
 ---
 
-## Primary Metrics
+### Primary Metrics
 
 ```text
 CPU
@@ -2303,7 +2303,7 @@ Memory
 
 ---
 
-## Primary Consumers
+### Primary Consumers
 
 ```text
 kubectl top
@@ -2313,7 +2313,7 @@ VPA
 
 ---
 
-## Metrics API
+### Metrics API
 
 ```text
 metrics.k8s.io
@@ -2321,7 +2321,7 @@ metrics.k8s.io
 
 ---
 
-## API Aggregation
+### API Aggregation
 
 ```text
 Allows additional APIs to be served through Kubernetes API infrastructure
@@ -2329,7 +2329,7 @@ Allows additional APIs to be served through Kubernetes API infrastructure
 
 ---
 
-## Kubelet
+### Kubelet
 
 ```text
 Provides node-level management and resource-related metrics used by Metrics Server
@@ -2337,7 +2337,7 @@ Provides node-level management and resource-related metrics used by Metrics Serv
 
 ---
 
-## `kubectl top`
+### `kubectl top`
 
 ```text
 Displays resource usage from the Metrics API
@@ -2345,7 +2345,7 @@ Displays resource usage from the Metrics API
 
 ---
 
-## APIService
+### APIService
 
 ```text
 Registers an aggregated API with Kubernetes
@@ -2353,7 +2353,7 @@ Registers an aggregated API with Kubernetes
 
 ---
 
-## Metrics Server vs Prometheus
+### Metrics Server vs Prometheus
 
 ```text
 Metrics Server
@@ -2369,7 +2369,7 @@ General-purpose time-series monitoring
 
 ---
 
-## Metrics Server vs Node Exporter
+### Metrics Server vs Node Exporter
 
 ```text
 Metrics Server
@@ -2385,7 +2385,7 @@ Host/system metrics
 
 ---
 
-## Metrics Server vs kube-state-metrics
+### Metrics Server vs kube-state-metrics
 
 ```text
 Metrics Server
@@ -2401,7 +2401,7 @@ Kubernetes Object State
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check Metrics Server:
 
@@ -2499,9 +2499,9 @@ kubectl describe hpa <hpa>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Metrics Server?
 - Why do we need Metrics Server?
@@ -2518,7 +2518,7 @@ kubectl describe hpa <hpa>
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does Metrics Server collect metrics?
 - How does Metrics Server communicate with kubelets?
@@ -2537,7 +2537,7 @@ kubectl describe hpa <hpa>
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Metrics Server architecture.
 - How does API aggregation work with Metrics Server?
@@ -2556,13 +2556,13 @@ kubectl describe hpa <hpa>
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > `kubectl top nodes` returns "Metrics API not available". What do you do?
 
-### Answer
+#### Answer
 
 Use a layered troubleshooting approach:
 
@@ -2606,13 +2606,13 @@ Metrics Server Service
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Metrics Server is Running, but `kubectl top` still fails. Why?
 
-### Answer
+#### Answer
 
 A Pod being:
 
@@ -2647,13 +2647,13 @@ Kubelet
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > Why is `--kubelet-insecure-tls` not ideal for production?
 
-### Answer
+#### Answer
 
 Because it disables certificate verification when communicating with kubelets.
 
@@ -2668,13 +2668,13 @@ It can be useful in controlled lab environments or for diagnosis, but production
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > Why does HPA need Metrics Server?
 
-### Answer
+#### Answer
 
 For resource-based autoscaling, HPA needs current resource utilization.
 
@@ -2698,13 +2698,13 @@ Without the required resource metrics, HPA cannot make normal resource-based sca
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > Is Metrics Server enough for production monitoring?
 
-### Answer
+#### Answer
 
 No.
 
@@ -2730,13 +2730,13 @@ depending on requirements.
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > What is the difference between resource metrics and application metrics?
 
-### Answer
+#### Answer
 
 Resource metrics describe infrastructure/workload resource usage:
 
@@ -2761,13 +2761,13 @@ Prometheus is commonly used for application metrics.
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > What is the difference between Metrics Server and kube-state-metrics?
 
-### Answer
+#### Answer
 
 Metrics Server provides:
 
@@ -2794,13 +2794,13 @@ They complement each other.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How would you secure Metrics Server?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2822,7 +2822,7 @@ Avoid unnecessary access and avoid disabling TLS verification without a strong r
 
 ---
 
-# Production Metrics Architecture
+## Production Metrics Architecture
 
 ```text
                             Kubernetes Cluster
@@ -2853,7 +2853,7 @@ Avoid unnecessary access and avoid disabling TLS verification without a strong r
 
 ---
 
-# Combined Kubernetes Observability Architecture
+## Combined Kubernetes Observability Architecture
 
 Metrics Server is only one component of a larger observability architecture:
 
@@ -2893,7 +2893,7 @@ Metrics API
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Metrics Server is a lightweight Kubernetes component designed to provide current resource usage metrics.
 
@@ -3018,9 +3018,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 60 – Prometheus
+## Chapter 60 – Prometheus
 
 Topics will include:
 

@@ -1,10 +1,10 @@
 # 03-Windows-Architecture.md
 
-# Part 1 — Windows Architecture Fundamentals, Operating System Design, User Mode vs Kernel Mode, and Core Components
+## Part 1 — Windows Architecture Fundamentals, Operating System Design, User Mode vs Kernel Mode, and Core Components
 
 ---
 
-# Introduction
+## Introduction
 
 Windows is one of the world's most widely used operating systems, powering personal computers, enterprise workstations, servers, cloud environments, and critical infrastructure.
 
@@ -23,7 +23,7 @@ Understanding this architecture enables IT professionals and cybersecurity pract
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this part, you will understand:
 
@@ -40,7 +40,7 @@ By the end of this part, you will understand:
 
 ---
 
-# What is Windows Architecture?
+## What is Windows Architecture?
 
 Windows architecture is the internal organization of the operating system that determines how software components interact with one another and with hardware.
 
@@ -64,7 +64,7 @@ A well-designed architecture provides:
 
 ---
 
-# High-Level Windows Architecture
+## High-Level Windows Architecture
 
 ```text
 +--------------------------------------------------------+
@@ -91,7 +91,7 @@ A well-designed architecture provides:
 
 ---
 
-# Why Windows Uses a Layered Architecture
+## Why Windows Uses a Layered Architecture
 
 A layered architecture separates responsibilities among components.
 
@@ -111,7 +111,7 @@ An application does not communicate directly with the disk controller. Instead, 
 
 ---
 
-# Windows Architecture Layers
+## Windows Architecture Layers
 
 Windows can be viewed as several logical layers.
 
@@ -147,7 +147,7 @@ Each layer performs specialized functions while communicating through well-defin
 
 ---
 
-# User Mode
+## User Mode
 
 User Mode is the execution environment for ordinary applications.
 
@@ -171,7 +171,7 @@ Characteristics:
 
 ---
 
-# User Mode Components
+## User Mode Components
 
 Common User Mode processes include:
 
@@ -186,7 +186,7 @@ Common User Mode processes include:
 
 ---
 
-# Kernel Mode
+## Kernel Mode
 
 Kernel Mode provides unrestricted access to operating system resources.
 
@@ -204,7 +204,7 @@ Responsibilities include:
 
 ---
 
-# User Mode vs Kernel Mode
+## User Mode vs Kernel Mode
 
 | User Mode | Kernel Mode |
 |------------|-------------|
@@ -216,7 +216,7 @@ Responsibilities include:
 
 ---
 
-# Why Privilege Separation Is Important
+## Why Privilege Separation Is Important
 
 Without privilege separation:
 
@@ -254,7 +254,7 @@ This separation significantly improves reliability and security.
 
 ---
 
-# System Calls
+## System Calls
 
 Applications cannot directly execute privileged operations.
 
@@ -290,7 +290,7 @@ Examples of privileged operations:
 
 ---
 
-# Windows APIs
+## Windows APIs
 
 Windows provides programming interfaces that allow software to communicate with the operating system.
 
@@ -305,7 +305,7 @@ Common API families include:
 
 ---
 
-# Core Windows Components
+## Core Windows Components
 
 The operating system consists of several major components.
 
@@ -323,7 +323,7 @@ These components cooperate to manage hardware and software resources efficiently
 
 ---
 
-# Windows Executive Overview
+## Windows Executive Overview
 
 The Windows Executive provides high-level operating system services.
 
@@ -341,7 +341,7 @@ The Windows Executive will be explored in greater detail later in this chapter.
 
 ---
 
-# Windows Kernel Overview
+## Windows Kernel Overview
 
 The Windows Kernel performs low-level operations such as:
 
@@ -355,7 +355,7 @@ Unlike the Executive, the Kernel focuses on immediate interaction with processor
 
 ---
 
-# Hardware Abstraction Layer (HAL)
+## Hardware Abstraction Layer (HAL)
 
 The HAL provides a consistent interface between Windows and hardware.
 
@@ -380,7 +380,7 @@ Benefits:
 
 ---
 
-# Device Drivers
+## Device Drivers
 
 Drivers enable communication between Windows and hardware.
 
@@ -412,7 +412,7 @@ Hardware
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An employee opens a Microsoft Word document stored on an SSD.
 
@@ -448,7 +448,7 @@ Every request passes through multiple Windows architectural layers before reachi
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Understanding Windows architecture helps security professionals detect:
 
@@ -465,7 +465,7 @@ Many endpoint detection and response (EDR) products monitor activity across thes
 
 ---
 
-# Business Impact
+## Business Impact
 
 Organizations benefit from Windows' layered architecture because it:
 
@@ -480,7 +480,7 @@ These advantages are essential for enterprise productivity and operational resil
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use only trusted, signed drivers.
 - Keep Windows fully updated.
@@ -491,9 +491,9 @@ These advantages are essential for enterprise productivity and operational resil
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Identify User Mode Processes
+### Lab 1 — Identify User Mode Processes
 
 1. Open **Task Manager**.
 2. Review running applications.
@@ -502,7 +502,7 @@ These advantages are essential for enterprise productivity and operational resil
 
 ---
 
-## Lab 2 — Observe Windows APIs in Action
+### Lab 2 — Observe Windows APIs in Action
 
 1. Launch multiple applications such as Notepad, Calculator, and File Explorer.
 2. Monitor CPU and memory usage in Task Manager.
@@ -510,7 +510,7 @@ These advantages are essential for enterprise productivity and operational resil
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows uses a layered architecture to improve stability, security, and scalability.
 - User Mode isolates applications from critical system resources.
@@ -520,7 +520,7 @@ These advantages are essential for enterprise productivity and operational resil
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Windows architecture?
 2. Why does Windows use a layered architecture?
@@ -535,7 +535,7 @@ These advantages are essential for enterprise productivity and operational resil
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -545,13 +545,13 @@ These advantages are essential for enterprise productivity and operational resil
 ---
 
 
-# 03-Windows-Architecture.md
+## 03-Windows-Architecture.md
 
-# Part 2 — Windows Executive, Kernel Internals, Object Manager, Memory Manager, I/O Manager, Process Manager, and Security Reference Monitor
+## Part 2 — Windows Executive, Kernel Internals, Object Manager, Memory Manager, I/O Manager, Process Manager, and Security Reference Monitor
 
 ---
 
-# Introduction
+## Introduction
 
 In Part 1, we explored the high-level architecture of Windows. This section dives into the **Windows Executive**, which is responsible for most of the operating system's core services.
 
@@ -578,7 +578,7 @@ Understanding these components is essential for:
 
 ---
 
-# Windows Executive Overview
+## Windows Executive Overview
 
 The Windows Executive is a collection of kernel-mode components that implement the majority of Windows operating system services.
 
@@ -620,7 +620,7 @@ High-level architecture:
 
 ---
 
-# Responsibilities of the Windows Executive
+## Responsibilities of the Windows Executive
 
 The Executive is responsible for:
 
@@ -635,7 +635,7 @@ The Executive is responsible for:
 
 ---
 
-# Windows Executive Components
+## Windows Executive Components
 
 | Component | Primary Responsibility |
 |-----------|------------------------|
@@ -651,9 +651,9 @@ The Executive is responsible for:
 
 ---
 
-# Object Manager
+## Object Manager
 
-## What is the Object Manager?
+### What is the Object Manager?
 
 Windows treats many resources as **objects**.
 
@@ -673,7 +673,7 @@ Instead of handling every resource differently, Windows provides a unified objec
 
 ---
 
-# Object-Based Architecture
+## Object-Based Architecture
 
 ```text
 Windows Resources
@@ -697,7 +697,7 @@ Every object contains:
 
 ---
 
-# Object Handles
+## Object Handles
 
 Applications do not directly manipulate kernel objects.
 
@@ -727,7 +727,7 @@ A **handle** is a reference that allows controlled access to an operating system
 
 ---
 
-# Benefits of Object Management
+## Benefits of Object Management
 
 - Consistent resource management
 - Centralized security
@@ -737,7 +737,7 @@ A **handle** is a reference that allows controlled access to an operating system
 
 ---
 
-# Memory Manager
+## Memory Manager
 
 The Memory Manager is responsible for allocating and managing system memory.
 
@@ -753,7 +753,7 @@ Responsibilities include:
 
 ---
 
-# Physical vs Virtual Memory
+## Physical vs Virtual Memory
 
 ```text
 Application
@@ -779,7 +779,7 @@ Applications use virtual addresses, while the Memory Manager maps them to physic
 
 ---
 
-# Virtual Memory
+## Virtual Memory
 
 Each process receives its own isolated virtual address space.
 
@@ -792,7 +792,7 @@ Advantages:
 
 ---
 
-# Paging
+## Paging
 
 When physical memory becomes limited:
 
@@ -820,7 +820,7 @@ This process is known as **paging**.
 
 ---
 
-# Memory Protection
+## Memory Protection
 
 The Memory Manager enforces permissions such as:
 
@@ -836,7 +836,7 @@ These protections help prevent unauthorized memory access.
 
 ---
 
-# Process Manager
+## Process Manager
 
 The Process Manager creates and manages:
 
@@ -849,7 +849,7 @@ The Process Manager creates and manages:
 
 ---
 
-# Process Lifecycle
+## Process Lifecycle
 
 ```text
 Executable
@@ -881,7 +881,7 @@ Terminated
 
 ---
 
-# Process Structure
+## Process Structure
 
 A Windows process generally contains:
 
@@ -898,7 +898,7 @@ Process
 
 ---
 
-# Thread Management
+## Thread Management
 
 Threads are the smallest units of execution.
 
@@ -919,7 +919,7 @@ Advantages:
 
 ---
 
-# I/O Manager
+## I/O Manager
 
 The I/O Manager coordinates communication between applications and hardware devices.
 
@@ -955,7 +955,7 @@ Data Returned
 
 ---
 
-# Responsibilities of the I/O Manager
+## Responsibilities of the I/O Manager
 
 - File operations
 - Device communication
@@ -966,7 +966,7 @@ Data Returned
 
 ---
 
-# I/O Request Packet (IRP)
+## I/O Request Packet (IRP)
 
 Windows represents many I/O operations using an **I/O Request Packet (IRP)**.
 
@@ -998,7 +998,7 @@ IRPs provide a standardized mechanism for communication between the operating sy
 
 ---
 
-# Cache Manager
+## Cache Manager
 
 The Cache Manager improves performance by storing frequently accessed file data in memory.
 
@@ -1032,7 +1032,7 @@ Benefits:
 
 ---
 
-# Configuration Manager
+## Configuration Manager
 
 The Configuration Manager manages the **Windows Registry**.
 
@@ -1048,7 +1048,7 @@ The Registry will be covered in detail in a later chapter.
 
 ---
 
-# Plug and Play (PnP) Manager
+## Plug and Play (PnP) Manager
 
 Responsibilities:
 
@@ -1077,7 +1077,7 @@ Device Ready
 
 ---
 
-# Power Manager
+## Power Manager
 
 The Power Manager controls system power usage.
 
@@ -1094,7 +1094,7 @@ Enterprise devices use these features to reduce energy consumption while maintai
 
 ---
 
-# Security Reference Monitor (SRM)
+## Security Reference Monitor (SRM)
 
 The Security Reference Monitor is one of Windows' most important security components.
 
@@ -1108,7 +1108,7 @@ Responsibilities:
 
 ---
 
-# Access Check Workflow
+## Access Check Workflow
 
 ```text
 Application
@@ -1138,7 +1138,7 @@ If permission is denied, Windows prevents the requested operation.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A user attempts to open a confidential HR document.
 
@@ -1176,7 +1176,7 @@ Multiple Executive components cooperate to complete a single file access request
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Many advanced attacks attempt to interfere with Executive components.
 
@@ -1200,7 +1200,7 @@ Security teams monitor these behaviors using:
 
 ---
 
-# Business Impact
+## Business Impact
 
 The Windows Executive enables:
 
@@ -1215,7 +1215,7 @@ Failures in these components can lead to application instability, performance de
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Keep Windows fully patched.
 - Deploy only trusted, signed drivers.
@@ -1227,9 +1227,9 @@ Failures in these components can lead to application instability, performance de
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Observe Process Information
+### Lab 1 — Observe Process Information
 
 1. Open **Task Manager**.
 2. Select **Details**.
@@ -1243,7 +1243,7 @@ Identify at least five system processes.
 
 ---
 
-## Lab 2 — Explore Device Manager
+### Lab 2 — Explore Device Manager
 
 1. Open **Device Manager**.
 2. Expand:
@@ -1256,7 +1256,7 @@ Observe how Windows organizes hardware through drivers.
 
 ---
 
-## Lab 3 — View Running Services
+### Lab 3 — View Running Services
 
 1. Press:
 
@@ -1274,7 +1274,7 @@ Observe services that interact with Executive components such as networking, sto
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Windows Executive provides most high-level operating system services.
 - The Object Manager standardizes access to Windows resources.
@@ -1285,7 +1285,7 @@ Observe services that interact with Executive components such as networking, sto
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the Windows Executive?
 2. What is the purpose of the Object Manager?
@@ -1300,7 +1300,7 @@ Observe services that interact with Executive components such as networking, sto
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -1309,13 +1309,13 @@ Observe services that interact with Executive components such as networking, sto
 
 ---
 
-# 03-Windows-Architecture.md
+## 03-Windows-Architecture.md
 
-# Part 3 — Windows Kernel Internals, CPU Scheduling, Interrupts, HAL, Boot Architecture, System Processes, and Architecture Security
+## Part 3 — Windows Kernel Internals, CPU Scheduling, Interrupts, HAL, Boot Architecture, System Processes, and Architecture Security
 
 ---
 
-# Introduction
+## Introduction
 
 While the **Windows Executive** provides most operating system services, the **Windows Kernel** is responsible for the lowest-level operating system operations that directly interact with the processor.
 
@@ -1332,7 +1332,7 @@ For cybersecurity professionals, understanding the Kernel is essential because m
 
 ---
 
-# Windows Kernel Overview
+## Windows Kernel Overview
 
 The Windows Kernel sits below the Executive and above the Hardware Abstraction Layer (HAL).
 
@@ -1359,7 +1359,7 @@ Unlike the Executive, which manages operating system services, the Kernel focuse
 
 ---
 
-# Responsibilities of the Windows Kernel
+## Responsibilities of the Windows Kernel
 
 The Kernel performs:
 
@@ -1374,7 +1374,7 @@ The Kernel performs:
 
 ---
 
-# Windows Kernel Components
+## Windows Kernel Components
 
 ```text
 Windows Kernel
@@ -1390,7 +1390,7 @@ Windows Kernel
 
 ---
 
-# Thread Scheduling
+## Thread Scheduling
 
 Windows schedules **threads**, not processes.
 
@@ -1411,7 +1411,7 @@ The scheduler determines which thread executes on the CPU.
 
 ---
 
-# Why Threads Are Scheduled
+## Why Threads Are Scheduled
 
 Scheduling threads instead of processes allows:
 
@@ -1422,7 +1422,7 @@ Scheduling threads instead of processes allows:
 
 ---
 
-# Scheduler Workflow
+## Scheduler Workflow
 
 ```text
 Ready Thread
@@ -1452,7 +1452,7 @@ This cycle repeats continuously while Windows is running.
 
 ---
 
-# Thread States
+## Thread States
 
 | State | Description |
 |--------|-------------|
@@ -1465,7 +1465,7 @@ This cycle repeats continuously while Windows is running.
 
 ---
 
-# Thread Priorities
+## Thread Priorities
 
 Windows uses priority-based scheduling.
 
@@ -1487,7 +1487,7 @@ Higher-priority threads generally receive CPU time before lower-priority threads
 
 ---
 
-# Dynamic Priority
+## Dynamic Priority
 
 Windows dynamically adjusts thread priorities to improve responsiveness.
 
@@ -1501,7 +1501,7 @@ This behavior helps maintain a responsive user experience.
 
 ---
 
-# Context Switching
+## Context Switching
 
 When Windows switches from one thread to another, it performs a **context switch**.
 
@@ -1530,7 +1530,7 @@ Saved information includes:
 
 ---
 
-# Context Switch Overhead
+## Context Switch Overhead
 
 Frequent context switches increase:
 
@@ -1542,7 +1542,7 @@ Enterprise servers aim to balance responsiveness with efficient CPU utilization.
 
 ---
 
-# Interrupts
+## Interrupts
 
 An interrupt signals the processor that immediate attention is required.
 
@@ -1556,7 +1556,7 @@ Examples:
 
 ---
 
-# Interrupt Workflow
+## Interrupt Workflow
 
 ```text
 Hardware Event
@@ -1582,7 +1582,7 @@ Interrupts allow Windows to respond quickly to hardware events.
 
 ---
 
-# Interrupt Service Routine (ISR)
+## Interrupt Service Routine (ISR)
 
 An ISR is a short routine that executes immediately after an interrupt occurs.
 
@@ -1597,7 +1597,7 @@ ISRs should execute as quickly as possible to avoid delaying other interrupts.
 
 ---
 
-# Deferred Procedure Calls (DPCs)
+## Deferred Procedure Calls (DPCs)
 
 Some interrupt processing is postponed using **Deferred Procedure Calls (DPCs)**.
 
@@ -1631,7 +1631,7 @@ Benefits:
 
 ---
 
-# Exceptions
+## Exceptions
 
 Exceptions occur when unexpected processor events happen.
 
@@ -1646,7 +1646,7 @@ Windows handles exceptions to maintain system stability whenever possible.
 
 ---
 
-# Exception Handling Workflow
+## Exception Handling Workflow
 
 ```text
 Instruction Executed
@@ -1672,7 +1672,7 @@ No → Application Crash
 
 ---
 
-# Synchronization
+## Synchronization
 
 Multiple threads often access shared resources.
 
@@ -1685,7 +1685,7 @@ Synchronization prevents:
 
 ---
 
-# Synchronization Objects
+## Synchronization Objects
 
 Windows provides several synchronization mechanisms.
 
@@ -1699,7 +1699,7 @@ Windows provides several synchronization mechanisms.
 
 ---
 
-# Hardware Abstraction Layer (HAL)
+## Hardware Abstraction Layer (HAL)
 
 The HAL isolates Windows from hardware-specific implementation details.
 
@@ -1729,7 +1729,7 @@ Without the HAL, Windows would require significant changes for each hardware pla
 
 ---
 
-# Responsibilities of the HAL
+## Responsibilities of the HAL
 
 - Abstract hardware differences
 - Provide standardized hardware interfaces
@@ -1739,7 +1739,7 @@ Without the HAL, Windows would require significant changes for each hardware pla
 
 ---
 
-# Multiprocessor Support
+## Multiprocessor Support
 
 Modern computers typically contain multiple CPU cores.
 
@@ -1758,7 +1758,7 @@ The Windows scheduler distributes runnable threads across available processors t
 
 ---
 
-# Boot Architecture Overview
+## Boot Architecture Overview
 
 Kernel initialization begins after the Windows Boot Manager loads the operating system.
 
@@ -1808,7 +1808,7 @@ Later chapters cover the boot process in greater detail.
 
 ---
 
-# Critical Windows System Processes
+## Critical Windows System Processes
 
 Several core processes participate in system startup.
 
@@ -1827,7 +1827,7 @@ These processes are essential for normal system operation.
 
 ---
 
-# Kernel Security
+## Kernel Security
 
 Modern Windows includes multiple kernel protections.
 
@@ -1844,7 +1844,7 @@ These technologies make unauthorized kernel modification significantly more diff
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Many sophisticated attacks target the kernel because it has the highest level of privilege.
 
@@ -1867,7 +1867,7 @@ Security teams monitor:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A secure and efficient kernel provides:
 
@@ -1882,7 +1882,7 @@ Kernel failures can affect every application running on a system, making kernel 
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Deploy only digitally signed drivers.
 - Remove unsupported or legacy drivers.
@@ -1894,9 +1894,9 @@ Kernel failures can affect every application running on a system, making kernel 
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Observe Thread Activity
+### Lab 1 — Observe Thread Activity
 
 1. Open **Task Manager**.
 2. Select **Details**.
@@ -1905,7 +1905,7 @@ Kernel failures can affect every application running on a system, making kernel 
 
 ---
 
-## Lab 2 — Review Processor Information
+### Lab 2 — Review Processor Information
 
 1. Press:
 
@@ -1929,7 +1929,7 @@ Discuss how multiple cores improve multitasking.
 
 ---
 
-## Lab 3 — Identify Critical Processes
+### Lab 3 — Identify Critical Processes
 
 Using **Task Manager**, locate:
 
@@ -1944,7 +1944,7 @@ Record their roles in the operating system.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Windows Kernel manages low-level CPU and hardware operations.
 - Windows schedules threads rather than processes.
@@ -1955,7 +1955,7 @@ Record their roles in the operating system.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the primary responsibility of the Windows Kernel?
 2. Why does Windows schedule threads instead of processes?
@@ -1970,7 +1970,7 @@ Record their roles in the operating system.
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -1980,13 +1980,13 @@ Record their roles in the operating system.
 
 ---
 
-# 03-Windows-Architecture.md
+## 03-Windows-Architecture.md
 
-# Part 4 — Windows Processes, Memory Architecture, Session Architecture, WOW64, Enterprise Architecture, Final Labs, and Chapter Review
+## Part 4 — Windows Processes, Memory Architecture, Session Architecture, WOW64, Enterprise Architecture, Final Labs, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 This final part of the **Windows Architecture** chapter combines the concepts learned so far and explains how they work together in a complete Windows system.
 
@@ -2005,7 +2005,7 @@ We will explore:
 
 ---
 
-# Bringing Everything Together
+## Bringing Everything Together
 
 Every operation performed in Windows involves multiple architectural components.
 
@@ -2051,7 +2051,7 @@ A simple user action may involve dozens of operating system components working t
 
 ---
 
-# Windows Process Architecture
+## Windows Process Architecture
 
 Every running application executes inside a **process**.
 
@@ -2086,7 +2086,7 @@ DLLs
 
 ---
 
-# Process Components
+## Process Components
 
 ```text
 Process
@@ -2104,7 +2104,7 @@ Each process is isolated from other processes, improving system stability and se
 
 ---
 
-# Process Isolation
+## Process Isolation
 
 Windows isolates processes using virtual memory.
 
@@ -2134,7 +2134,7 @@ Benefits:
 
 ---
 
-# Thread Architecture
+## Thread Architecture
 
 Each process contains one or more threads.
 
@@ -2163,7 +2163,7 @@ But each thread has its own:
 
 ---
 
-# Dynamic Link Libraries (DLLs)
+## Dynamic Link Libraries (DLLs)
 
 Windows applications often share code through **Dynamic Link Libraries (DLLs)**.
 
@@ -2194,7 +2194,7 @@ Advantages:
 
 ---
 
-# DLL Loading
+## DLL Loading
 
 ```text
 Application Starts
@@ -2220,7 +2220,7 @@ If a required DLL is missing or incompatible, the application may fail to start.
 
 ---
 
-# Virtual Memory Architecture
+## Virtual Memory Architecture
 
 Each process receives its own virtual address space.
 
@@ -2248,7 +2248,7 @@ Applications are generally unaware of physical memory locations.
 
 ---
 
-# Memory Layout (Simplified)
+## Memory Layout (Simplified)
 
 ```text
 High Memory
@@ -2272,7 +2272,7 @@ The exact layout varies depending on system architecture and security features s
 
 ---
 
-# Address Space Layout Randomization (ASLR)
+## Address Space Layout Randomization (ASLR)
 
 ASLR randomly arranges memory locations used by applications.
 
@@ -2284,7 +2284,7 @@ Benefits:
 
 ---
 
-# Data Execution Prevention (DEP)
+## Data Execution Prevention (DEP)
 
 DEP prevents execution of code from memory regions intended only for data.
 
@@ -2306,7 +2306,7 @@ DEP helps mitigate many buffer overflow attacks.
 
 ---
 
-# Session Architecture
+## Session Architecture
 
 A Windows **session** represents a logical user environment.
 
@@ -2323,7 +2323,7 @@ Windows
 
 ---
 
-# Session 0 Isolation
+## Session 0 Isolation
 
 Modern Windows isolates system services from interactive users.
 
@@ -2353,7 +2353,7 @@ Benefits:
 
 ---
 
-# Desktop Architecture
+## Desktop Architecture
 
 Each user session contains:
 
@@ -2375,7 +2375,7 @@ This separation allows multiple users to have independent desktop environments.
 
 ---
 
-# WOW64 (Windows-on-Windows 64)
+## WOW64 (Windows-on-Windows 64)
 
 WOW64 enables 32-bit applications to run on 64-bit Windows systems.
 
@@ -2408,7 +2408,7 @@ Limitations:
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 A typical enterprise Windows environment includes multiple integrated components.
 
@@ -2452,7 +2452,7 @@ Each workstation becomes part of a centrally managed ecosystem.
 
 ---
 
-# Performance Considerations
+## Performance Considerations
 
 Windows architecture supports performance through:
 
@@ -2473,7 +2473,7 @@ Administrators monitor these resources using:
 
 ---
 
-# Security Architecture
+## Security Architecture
 
 Windows security is implemented across multiple layers.
 
@@ -2513,7 +2513,7 @@ This layered approach helps defend against attacks targeting different parts of 
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A user accesses a confidential financial report.
 
@@ -2557,7 +2557,7 @@ Several architecture components work together to ensure only authorized users ga
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Understanding Windows architecture is essential for:
 
@@ -2581,7 +2581,7 @@ Security analysts commonly investigate:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A well-designed Windows architecture provides:
 
@@ -2596,7 +2596,7 @@ These capabilities reduce downtime and improve organizational productivity.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Standardize on 64-bit Windows deployments.
 - Enable DEP, ASLR, Secure Boot, and VBS where supported.
@@ -2608,9 +2608,9 @@ These capabilities reduce downtime and improve organizational productivity.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Observe Process Memory
+### Lab 1 — Observe Process Memory
 
 1. Open **Task Manager**.
 2. Go to the **Details** tab.
@@ -2624,7 +2624,7 @@ Questions:
 
 ---
 
-## Lab 2 — Identify 32-bit and 64-bit Applications
+### Lab 2 — Identify 32-bit and 64-bit Applications
 
 1. Launch several applications.
 2. Open **Task Manager**.
@@ -2634,7 +2634,7 @@ Discuss how WOW64 supports legacy applications.
 
 ---
 
-## Lab 3 — Explore Resource Monitor
+### Lab 3 — Explore Resource Monitor
 
 1. Press:
 
@@ -2659,7 +2659,7 @@ Identify one process actively using each resource.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2690,7 +2690,7 @@ These concepts form the technical foundation for understanding Windows internals
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows uses a layered architecture that separates applications from privileged operating system components.
 - Processes provide isolation, while threads enable concurrent execution.
@@ -2701,7 +2701,7 @@ These concepts form the technical foundation for understanding Windows internals
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of process isolation?
 2. What resources are shared among threads in the same process?
@@ -2716,7 +2716,7 @@ These concepts form the technical foundation for understanding Windows internals
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -2727,7 +2727,7 @@ These concepts form the technical foundation for understanding Windows internals
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 3 – Windows Architecture**.
 

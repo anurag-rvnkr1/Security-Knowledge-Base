@@ -347,7 +347,7 @@ The objective is to identify attackers early, reduce dwell time, validate securi
 
 ---
 
-# Cloud Threat Hunting Workflow
+## Cloud Threat Hunting Workflow
 
 ```
 Threat Intelligence
@@ -411,7 +411,7 @@ Threat hunting is cyclical, with each investigation refining future hunts.
 
 ---
 
-## Step 1 – Define a Hunting Hypothesis
+### Step 1 – Define a Hunting Hypothesis
 
 Every hunt starts with a specific, testable hypothesis based on:
 
@@ -433,7 +433,7 @@ A focused hypothesis improves efficiency and investigative accuracy.
 
 ---
 
-## Step 2 – Collect Cloud Telemetry
+### Step 2 – Collect Cloud Telemetry
 
 Gather relevant data from multiple cloud services.
 
@@ -457,7 +457,7 @@ Comprehensive telemetry provides the foundation for effective hunting.
 
 ---
 
-## Step 3 – Normalize and Correlate Data
+### Step 3 – Normalize and Correlate Data
 
 Cloud data originates from numerous services and formats.
 
@@ -497,7 +497,7 @@ A sequence that appears benign individually may indicate malicious activity when
 
 ---
 
-## Step 4 – Perform Behavioral Analysis
+### Step 4 – Perform Behavioral Analysis
 
 Threat hunters compare current behavior against known baselines.
 
@@ -515,7 +515,7 @@ Behavioral analysis is particularly valuable against attackers using legitimate 
 
 ---
 
-## Step 5 – Investigate Suspicious Activity
+### Step 5 – Investigate Suspicious Activity
 
 When anomalies are identified, investigators determine:
 
@@ -530,7 +530,7 @@ Investigation combines technical evidence with business context.
 
 ---
 
-## Step 6 – Validate Findings
+### Step 6 – Validate Findings
 
 Before declaring an incident:
 
@@ -545,7 +545,7 @@ Validation reduces unnecessary incident escalations.
 
 ---
 
-## Step 7 – Initiate Incident Response
+### Step 7 – Initiate Incident Response
 
 If malicious activity is confirmed:
 
@@ -560,7 +560,7 @@ Threat hunting often serves as the trigger for incident response.
 
 ---
 
-## Step 8 – Improve Detection
+### Step 8 – Improve Detection
 
 Every confirmed hunt should improve future security.
 
@@ -577,9 +577,9 @@ Continuous improvement is a core objective of mature hunting programs.
 
 ---
 
-## Practical Example
+### Practical Example
 
-### Example 1 – Suspicious IAM Privilege Escalation
+#### Example 1 – Suspicious IAM Privilege Escalation
 
 Scenario:
 
@@ -607,7 +607,7 @@ Outcome:
 
 ---
 
-### Example 2 – Kubernetes Service Account Abuse
+#### Example 2 – Kubernetes Service Account Abuse
 
 Scenario:
 
@@ -634,7 +634,7 @@ Outcome:
 
 ---
 
-### Example 3 – Abnormal Object Storage Access
+#### Example 3 – Abnormal Object Storage Access
 
 Scenario:
 
@@ -660,7 +660,7 @@ Outcome:
 
 ---
 
-### Example 4 – Serverless Function Abuse
+#### Example 4 – Serverless Function Abuse
 
 Scenario:
 
@@ -687,13 +687,13 @@ Outcome:
 
 ---
 
-## Detection
+### Detection
 
 Threat hunting depends on high-quality detection and telemetry.
 
 ---
 
-### Identity-Based Detection
+#### Identity-Based Detection
 
 Monitor for:
 
@@ -708,7 +708,7 @@ Identity anomalies frequently indicate early attack stages.
 
 ---
 
-### Infrastructure Detection
+#### Infrastructure Detection
 
 Review:
 
@@ -723,7 +723,7 @@ Unexpected infrastructure changes warrant investigation.
 
 ---
 
-### Network Detection
+#### Network Detection
 
 Monitor:
 
@@ -738,7 +738,7 @@ Network telemetry often reveals attacker movement and exfiltration.
 
 ---
 
-### Cloud Application Detection
+#### Cloud Application Detection
 
 Analyze:
 
@@ -753,7 +753,7 @@ Application activity provides valuable behavioral context.
 
 ---
 
-### Kubernetes and Container Detection
+#### Kubernetes and Container Detection
 
 Review:
 
@@ -768,7 +768,7 @@ Cloud-native workloads require specialized detection strategies.
 
 ---
 
-### Data Access Detection
+#### Data Access Detection
 
 Monitor:
 
@@ -783,7 +783,7 @@ Unexpected access patterns may indicate data theft.
 
 ---
 
-### Detection Best Practices
+#### Detection Best Practices
 
 - Collect telemetry from every cloud service.
 - Normalize logs before analysis.
@@ -798,7 +798,7 @@ Unexpected access patterns may indicate data theft.
 
 ---
 
-## Prevention
+### Prevention
 
 Effective Cloud Threat Hunting starts with building an environment where malicious activity is difficult to conceal. Prevention does not eliminate the need for threat hunting; instead, it provides the visibility, telemetry, and security controls necessary to identify sophisticated attacks quickly.
 
@@ -806,7 +806,7 @@ A mature prevention strategy combines secure architecture, continuous monitoring
 
 ---
 
-# Cloud Threat Hunting Prevention Lifecycle
+## Cloud Threat Hunting Prevention Lifecycle
 
 ```
 Secure Cloud Design
@@ -864,7 +864,7 @@ Threat hunting should operate as a continuous cycle that strengthens the organiz
 
 ---
 
-# Implement Comprehensive Logging
+## Implement Comprehensive Logging
 
 Threat hunters rely on complete and accurate telemetry.
 
@@ -887,7 +887,7 @@ Missing logs create blind spots that attackers may exploit.
 
 ---
 
-# Centralize Security Telemetry
+## Centralize Security Telemetry
 
 Collect cloud telemetry into a centralized security platform such as a SIEM.
 
@@ -904,7 +904,7 @@ Centralized telemetry significantly improves hunting efficiency.
 
 ---
 
-# Strengthen Identity Security
+## Strengthen Identity Security
 
 Protect cloud identities using:
 
@@ -919,7 +919,7 @@ Most cloud attacks involve identity misuse, making identity protection a critica
 
 ---
 
-# Establish Behavioral Baselines
+## Establish Behavioral Baselines
 
 Understand normal behavior for:
 
@@ -935,7 +935,7 @@ Behavioral baselines help threat hunters recognize meaningful anomalies.
 
 ---
 
-# Integrate Threat Intelligence
+## Integrate Threat Intelligence
 
 Use trusted threat intelligence to enrich investigations.
 
@@ -952,7 +952,7 @@ Current intelligence improves the relevance and effectiveness of threat hunting 
 
 ---
 
-# Secure Cloud Configurations
+## Secure Cloud Configurations
 
 Reduce attack opportunities through:
 
@@ -966,7 +966,7 @@ Well-configured environments reduce attacker persistence opportunities.
 
 ---
 
-# Protect Sensitive Data
+## Protect Sensitive Data
 
 Implement:
 
@@ -981,7 +981,7 @@ Monitoring access to sensitive data assists both prevention and threat hunting.
 
 ---
 
-# Automate Repetitive Tasks
+## Automate Repetitive Tasks
 
 Use automation to:
 
@@ -1016,7 +1016,7 @@ Automation enables analysts to focus on complex investigations.
 
 ---
 
-# Continuously Validate Security Controls
+## Continuously Validate Security Controls
 
 Regularly assess:
 
@@ -1031,7 +1031,7 @@ Validation ensures preventive controls remain effective as cloud environments ev
 
 ---
 
-# Train Threat Hunters
+## Train Threat Hunters
 
 Provide ongoing training in:
 
@@ -1047,9 +1047,9 @@ Experienced analysts are better equipped to identify sophisticated threats.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Adopt a Hypothesis-Driven Approach
+#### 1. Adopt a Hypothesis-Driven Approach
 
 Begin every hunt with a clearly defined hypothesis based on intelligence, recent incidents, or observed anomalies.
 
@@ -1057,7 +1057,7 @@ Focused investigations produce more actionable results.
 
 ---
 
-### 2. Collect High-Quality Telemetry
+#### 2. Collect High-Quality Telemetry
 
 Ensure visibility across:
 
@@ -1075,7 +1075,7 @@ Comprehensive telemetry is essential for reliable threat hunting.
 
 ---
 
-### 3. Correlate Multiple Data Sources
+#### 3. Correlate Multiple Data Sources
 
 Avoid investigating isolated events.
 
@@ -1092,7 +1092,7 @@ Cross-source correlation provides stronger evidence of malicious activity.
 
 ---
 
-### 4. Continuously Update Hunting Hypotheses
+#### 4. Continuously Update Hunting Hypotheses
 
 Threats evolve rapidly.
 
@@ -1108,7 +1108,7 @@ Dynamic hypotheses keep hunting efforts aligned with current risks.
 
 ---
 
-### 5. Map Findings to MITRE ATT&CK
+#### 5. Map Findings to MITRE ATT&CK
 
 Categorize observed behavior using standardized techniques.
 
@@ -1123,7 +1123,7 @@ MITRE ATT&CK provides a common language for defenders.
 
 ---
 
-### 6. Reduce False Positives
+#### 6. Reduce False Positives
 
 Validate suspicious activity by:
 
@@ -1136,7 +1136,7 @@ Reducing false positives allows analysts to prioritize genuine threats.
 
 ---
 
-### 7. Integrate Threat Hunting with the SOC
+#### 7. Integrate Threat Hunting with the SOC
 
 Threat hunting should complement Security Operations Center (SOC) workflows.
 
@@ -1151,7 +1151,7 @@ Collaboration strengthens overall defensive capabilities.
 
 ---
 
-### 8. Measure Hunting Effectiveness
+#### 8. Measure Hunting Effectiveness
 
 Track metrics such as:
 
@@ -1166,7 +1166,7 @@ Metrics help evaluate and improve the maturity of the threat hunting program.
 
 ---
 
-### 9. Document Every Hunt
+#### 9. Document Every Hunt
 
 Maintain records of:
 
@@ -1181,7 +1181,7 @@ Documentation supports knowledge transfer and future investigations.
 
 ---
 
-### 10. Continuously Improve the Hunting Program
+#### 10. Continuously Improve the Hunting Program
 
 Following each hunt:
 
@@ -1197,7 +1197,7 @@ Continuous improvement ensures the threat hunting capability remains effective a
 ---
 
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud Threat Hunting is most effective when it is systematic, intelligence-driven, and supported by comprehensive visibility across cloud environments. Organizations frequently make mistakes that reduce the effectiveness of hunting programs, increase attacker dwell time, and create security blind spots.
 
@@ -1205,7 +1205,7 @@ Recognizing and avoiding these mistakes helps build a mature and proactive threa
 
 ---
 
-### 1. Relying Only on Automated Alerts
+#### 1. Relying Only on Automated Alerts
 
 One of the most common mistakes is assuming that SIEM, EDR, CSPM, or cloud-native security services will detect every attack.
 
@@ -1244,7 +1244,7 @@ Threat hunting complements automated detection by proactively searching for mali
 
 ---
 
-### 2. Hunting Without a Clear Hypothesis
+#### 2. Hunting Without a Clear Hypothesis
 
 Threat hunting should never be random.
 
@@ -1263,7 +1263,7 @@ A clear hypothesis improves efficiency and investigative quality.
 
 ---
 
-### 3. Limited Telemetry Coverage
+#### 3. Limited Telemetry Coverage
 
 Threat hunters cannot investigate events that are not logged.
 
@@ -1281,7 +1281,7 @@ Incomplete telemetry creates blind spots that attackers may exploit.
 
 ---
 
-### 4. Ignoring Identity-Based Threats
+#### 4. Ignoring Identity-Based Threats
 
 Modern cloud attacks frequently target identities instead of infrastructure.
 
@@ -1298,7 +1298,7 @@ Identity investigations should be a priority during threat hunts.
 
 ---
 
-### 5. Failing to Establish Behavioral Baselines
+#### 5. Failing to Establish Behavioral Baselines
 
 Without understanding normal activity, analysts may struggle to identify anomalies.
 
@@ -1314,7 +1314,7 @@ Behavioral baselines improve anomaly detection.
 
 ---
 
-### 6. Investigating Isolated Events
+#### 6. Investigating Isolated Events
 
 Analyzing individual events without context may produce misleading conclusions.
 
@@ -1332,7 +1332,7 @@ Correlation reveals attack chains that isolated events cannot.
 
 ---
 
-### 7. Ignoring Threat Intelligence
+#### 7. Ignoring Threat Intelligence
 
 Threat intelligence helps prioritize investigations.
 
@@ -1346,7 +1346,7 @@ Threat intelligence should be integrated into every mature hunting program.
 
 ---
 
-### 8. Overlooking Cloud-Native Services
+#### 8. Overlooking Cloud-Native Services
 
 Cloud-native services generate valuable security telemetry.
 
@@ -1364,7 +1364,7 @@ Threat hunting should cover the entire cloud ecosystem rather than only virtual 
 
 ---
 
-### 9. Poor Documentation
+#### 9. Poor Documentation
 
 Every hunt should record:
 
@@ -1380,7 +1380,7 @@ Documentation supports future investigations and continuous improvement.
 
 ---
 
-### 10. Ignoring False Positives
+#### 10. Ignoring False Positives
 
 Repeated false positives consume analyst time and reduce confidence in detection systems.
 
@@ -1395,7 +1395,7 @@ Reducing false positives increases operational efficiency.
 
 ---
 
-### 11. Not Validating Findings
+#### 11. Not Validating Findings
 
 Before confirming malicious activity:
 
@@ -1409,7 +1409,7 @@ Validation minimizes unnecessary incident escalations.
 
 ---
 
-### 12. Hunting Too Infrequently
+#### 12. Hunting Too Infrequently
 
 Occasional hunting leaves attackers with extended dwell time.
 
@@ -1425,7 +1425,7 @@ Consistency is critical for early threat discovery.
 
 ---
 
-### 13. Failing to Improve Detection Rules
+#### 13. Failing to Improve Detection Rules
 
 Threat hunting should strengthen future detection capabilities.
 
@@ -1441,7 +1441,7 @@ Every hunt should contribute to a stronger security posture.
 
 ---
 
-### 14. Treating Threat Hunting as an Individual Activity
+#### 14. Treating Threat Hunting as an Individual Activity
 
 Threat hunting requires collaboration across multiple teams.
 
@@ -1459,7 +1459,7 @@ Cross-functional collaboration improves investigative quality and response speed
 
 ---
 
-### 15. Measuring Success Only by Threats Found
+#### 15. Measuring Success Only by Threats Found
 
 A hunt that identifies no active compromise can still provide significant value.
 
@@ -1475,7 +1475,7 @@ Program success should also be measured by improvements to detection quality, co
 
 ---
 
-## Cloud Threat Hunting Checklist
+### Cloud Threat Hunting Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1497,9 +1497,9 @@ Program success should also be measured by improvements to detection quality, co
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST Cybersecurity Framework (CSF) 2.0
 - NIST SP 800-61 Rev. 2 – Computer Security Incident Handling Guide
@@ -1510,7 +1510,7 @@ Program success should also be measured by improvements to detection quality, co
 
 ---
 
-### Threat Hunting Frameworks
+#### Threat Hunting Frameworks
 
 - MITRE ATT&CK Framework
 - MITRE D3FEND
@@ -1520,23 +1520,23 @@ Program success should also be measured by improvements to detection quality, co
 
 ---
 
-### Cloud Security Documentation
+#### Cloud Security Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - AWS Security Reference Architecture
 - AWS Well-Architected Framework – Security Pillar
 - AWS CloudTrail Documentation
 - Amazon GuardDuty Documentation
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Microsoft Defender for Cloud Documentation
 - Microsoft Sentinel Documentation
 - Azure Monitor Documentation
 - Azure Well-Architected Framework – Security
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Google Security Command Center Documentation
 - Google Cloud Logging Documentation
@@ -1544,7 +1544,7 @@ Program success should also be measured by improvements to detection quality, co
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -1556,7 +1556,7 @@ Program success should also be measured by improvements to detection quality, co
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - MITRE ATT&CK Knowledge Base
 - MITRE D3FEND Knowledge Base

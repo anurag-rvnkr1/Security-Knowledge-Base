@@ -21,19 +21,19 @@
 **Fix:** Verify `assets/js/app.js` and hard-refresh.
 
 ## 5. Markdown not loading
-**Cause:** Wrong source path or raw GitHub request failure.
-**Diagnose:** Inspect the raw request in Network.
-**Fix:** Verify the exact path in GitHub and regenerate `site/content.json`.
+**Cause:** The document path is not in the generated catalogue, or its local Pages request failed.
+**Diagnose:** Inspect the document request and confirm its exact case and punctuation in the repository.
+**Fix:** Verify the source file, then regenerate `site/content.json` and `site/search-index.json`.
 
 ## 6. Search not working
-**Cause:** Content index did not load.
-**Diagnose:** Open `site/content.json` under the Pages URL.
-**Fix:** Validate JSON and hard-refresh.
+**Cause:** The catalogue or lazily loaded full-text index did not load.
+**Diagnose:** Check both `site/content.json` and `site/search-index.json` under the Pages URL.
+**Fix:** Run `python scripts/build-content-index.py` and `python scripts/validate-knowledge-base.py`, commit generated output, and hard-refresh.
 
 ## 7. Images not loading
 **Cause:** Relative image path is wrong.
 **Diagnose:** Inspect the generated image URL.
-**Fix:** Keep the image path valid relative to its Markdown source. The viewer resolves relative images against that source directory.
+**Fix:** Keep the image path valid relative to its Markdown source and ensure its file is included in the generated local-image catalogue. External images are intentionally not fetched by the reader.
 
 ## 8. Broken Markdown links
 **Cause:** Target moved or path differs in case/punctuation.
@@ -67,5 +67,5 @@
 **Fix:** Run `python -m http.server 8000` from the repository root and use `http://localhost:8000/`.
 
 ## 15. Back/Forward problems
-**Cause:** Document state is carried in the `doc` query parameter.
-**Fix:** Do not manually remove the generated query parameter. Refreshing a document URL should reopen the same source.
+**Cause:** Document state is carried in the `doc` query parameter and browser history entries.
+**Fix:** Use the reader's close control to return to the opening collection or page. Browser Back and Forward traverse document entries; refreshing a direct document URL should reopen the same source.

@@ -1,10 +1,10 @@
 # 17-PowerShell-for-AD.md
 
-# Part 1 — Introduction to PowerShell for Active Directory, AD Module, Cmdlets, Objects and Basic Administration
+## Part 1 — Introduction to PowerShell for Active Directory, AD Module, Cmdlets, Objects and Basic Administration
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -21,7 +21,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Modern Active Directory administration is no longer limited to graphical tools such as:
 
@@ -43,7 +43,7 @@ PowerShell has become one of the most important skills for Windows Server and Ac
 
 ---
 
-# What is PowerShell?
+## What is PowerShell?
 
 PowerShell is Microsoft's command-line shell and scripting language designed for system administration and automation.
 
@@ -61,7 +61,7 @@ PowerShell allows administrators to:
 
 ---
 
-# Why Use PowerShell?
+## Why Use PowerShell?
 
 Imagine an organization with:
 
@@ -75,7 +75,7 @@ PowerShell enables administrators to manage thousands of objects consistently an
 
 ---
 
-# GUI vs PowerShell
+## GUI vs PowerShell
 
 | GUI Administration | PowerShell Administration |
 |--------------------|--------------------------|
@@ -89,7 +89,7 @@ Both approaches are valuable and often complement one another.
 
 ---
 
-# Windows PowerShell vs PowerShell
+## Windows PowerShell vs PowerShell
 
 | Feature | Windows PowerShell | PowerShell |
 |----------|-------------------|------------|
@@ -102,7 +102,7 @@ Many enterprise Active Directory environments continue to use Windows PowerShell
 
 ---
 
-# PowerShell Architecture
+## PowerShell Architecture
 
 ```
 Administrator
@@ -140,7 +140,7 @@ Active Directory
 
 ---
 
-# PowerShell Components
+## PowerShell Components
 
 ```
 PowerShell
@@ -164,7 +164,7 @@ PowerShell
 
 ---
 
-# What is a Cmdlet?
+## What is a Cmdlet?
 
 A **cmdlet** is a lightweight PowerShell command.
 
@@ -190,7 +190,7 @@ This naming convention improves readability and consistency.
 
 ---
 
-# Approved Verbs
+## Approved Verbs
 
 Common verbs include:
 
@@ -209,7 +209,7 @@ Common verbs include:
 
 ---
 
-# Example Cmdlets
+## Example Cmdlets
 
 ```
 Get-Date
@@ -227,7 +227,7 @@ These examples demonstrate the consistent **Verb-Noun** structure.
 
 ---
 
-# Discovering Available Commands
+## Discovering Available Commands
 
 Administrators can discover commands by category.
 
@@ -245,7 +245,7 @@ Learning how to discover available functionality is often more valuable than mem
 
 ---
 
-# PowerShell Help System
+## PowerShell Help System
 
 PowerShell includes built-in documentation.
 
@@ -266,7 +266,7 @@ Keeping help content updated is recommended in managed environments where intern
 
 ---
 
-# What is a Module?
+## What is a Module?
 
 A module is a collection of related cmdlets.
 
@@ -290,7 +290,7 @@ Modules organize administrative functionality into logical groups.
 
 ---
 
-# Active Directory PowerShell Module
+## Active Directory PowerShell Module
 
 The **Active Directory module** provides cmdlets specifically designed for managing Active Directory.
 
@@ -306,7 +306,7 @@ Examples include:
 
 ---
 
-# RSAT and the AD Module
+## RSAT and the AD Module
 
 The Active Directory module is commonly available after installing the appropriate Remote Server Administration Tools (RSAT) components on supported Windows administrative workstations or through Windows Server management tools.
 
@@ -328,7 +328,7 @@ Remote Administration
 
 ---
 
-# Loading the Module
+## Loading the Module
 
 In many environments, PowerShell automatically imports commonly used modules when needed.
 
@@ -342,7 +342,7 @@ Import-Module ActiveDirectory
 
 ---
 
-# Verifying Module Availability
+## Verifying Module Availability
 
 To determine whether the Active Directory module is available:
 
@@ -354,7 +354,7 @@ This confirms that the module is installed and available for use.
 
 ---
 
-# Objects in PowerShell
+## Objects in PowerShell
 
 Unlike traditional command-line tools that return plain text,
 
@@ -382,7 +382,7 @@ Objects make automation and reporting significantly easier.
 
 ---
 
-# Object Example
+## Object Example
 
 A user object may contain:
 
@@ -408,7 +408,7 @@ Each property can be queried, filtered, or exported.
 
 ---
 
-# Understanding the Pipeline
+## Understanding the Pipeline
 
 The PowerShell pipeline passes **objects** from one command to another.
 
@@ -432,7 +432,7 @@ This is one of PowerShell's most powerful capabilities.
 
 ---
 
-# Pipeline Benefits
+## Pipeline Benefits
 
 - Reusable commands
 - Efficient filtering
@@ -442,7 +442,7 @@ This is one of PowerShell's most powerful capabilities.
 
 ---
 
-# Active Directory PowerShell Workflow
+## Active Directory PowerShell Workflow
 
 ```
 Administrator
@@ -470,7 +470,7 @@ Results Returned
 
 ---
 
-# Common Active Directory Cmdlets
+## Common Active Directory Cmdlets
 
 | Cmdlet | Purpose |
 |---------|----------|
@@ -486,7 +486,7 @@ These cmdlets are foundational for Active Directory administration.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -512,7 +512,7 @@ PowerShell enables administrators to perform these tasks efficiently across the 
 
 ---
 
-# Why Enterprises Prefer PowerShell
+## Why Enterprises Prefer PowerShell
 
 ```
 Manual Administration
@@ -534,7 +534,7 @@ Automation improves consistency while reducing repetitive manual effort.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 PowerShell is a powerful administrative tool.
 
@@ -551,13 +551,13 @@ Responsible use of PowerShell improves operational efficiency without reducing s
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Become familiar with the PowerShell environment and Active Directory module.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -575,7 +575,7 @@ depending on your environment.
 
 ---
 
-### Step 2
+#### Step 2
 
 View available commands:
 
@@ -587,7 +587,7 @@ Observe the Verb-Noun naming convention.
 
 ---
 
-### Step 3
+#### Step 3
 
 Explore built-in help:
 
@@ -604,7 +604,7 @@ Review:
 
 ---
 
-### Step 4
+#### Step 4
 
 Verify whether the Active Directory module is available:
 
@@ -616,7 +616,7 @@ If present, note its version.
 
 ---
 
-### Step 5
+#### Step 5
 
 List the cmdlets provided by the Active Directory module:
 
@@ -628,45 +628,45 @@ Review the available administrative commands without making any changes.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is PowerShell important for Active Directory administrators?
+#### Q1: Why is PowerShell important for Active Directory administrators?
 
 **Answer:** It enables automation, bulk administration, reporting, and consistent management of large Active Directory environments.
 
 ---
 
-### Q2: What is a cmdlet?
+#### Q2: What is a cmdlet?
 
 **Answer:** A cmdlet is a PowerShell command that follows the Verb-Noun naming convention and performs a specific administrative function.
 
 ---
 
-### Q3: What is the purpose of the Active Directory PowerShell module?
+#### Q3: What is the purpose of the Active Directory PowerShell module?
 
 **Answer:** It provides cmdlets for administering Active Directory objects such as users, groups, computers, domains, and Organizational Units.
 
 ---
 
-### Q4: Why are PowerShell objects useful?
+#### Q4: Why are PowerShell objects useful?
 
 **Answer:** Objects contain structured properties that can be filtered, sorted, exported, and passed through the pipeline, making automation more powerful than plain-text command output.
 
 ---
 
-### Q5: What is the PowerShell pipeline?
+#### Q5: What is the PowerShell pipeline?
 
 **Answer:** The pipeline passes objects from one command to another, allowing administrators to combine commands into efficient administrative workflows.
 
 ---
 
-### Q6: Why do enterprises prefer PowerShell for repetitive administrative tasks?
+#### Q6: Why do enterprises prefer PowerShell for repetitive administrative tasks?
 
 **Answer:** PowerShell improves consistency, reduces manual effort, supports automation, and scales effectively across large environments.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Learn the Verb-Noun cmdlet structure.
 - Use built-in help before using unfamiliar cmdlets.
@@ -678,7 +678,7 @@ Review the available administrative commands without making any changes.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Memorizing commands without understanding objects.
 - Running administrative commands without reviewing their effects.
@@ -689,7 +689,7 @@ Review the available administrative commands without making any changes.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - PowerShell is the primary automation platform for Windows and Active Directory administration.
 - The Active Directory module provides specialized cmdlets for directory management.
@@ -699,13 +699,13 @@ Review the available administrative commands without making any changes.
 
 ---
 
-# 17-PowerShell-for-AD.md
+## 17-PowerShell-for-AD.md
 
-# Part 2 — Managing Users, Groups, Computers, Organizational Units, Searching Active Directory and Bulk Administration
+## Part 2 — Managing Users, Groups, Computers, Organizational Units, Searching Active Directory and Bulk Administration
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -722,7 +722,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 One of the greatest advantages of PowerShell is its ability to manage thousands of Active Directory objects efficiently.
 
@@ -739,7 +739,7 @@ PowerShell becomes especially valuable in medium and large enterprise environmen
 
 ---
 
-# Active Directory Administration Workflow
+## Active Directory Administration Workflow
 
 ```
 Administrator
@@ -777,7 +777,7 @@ Administrative Result
 
 ---
 
-# Retrieving User Information
+## Retrieving User Information
 
 The most commonly used cmdlet for user administration is:
 
@@ -795,7 +795,7 @@ This retrieves information about the specified user.
 
 ---
 
-# Viewing Additional Properties
+## Viewing Additional Properties
 
 By default, only a subset of properties is returned.
 
@@ -809,7 +809,7 @@ This retrieves additional attributes for the user.
 
 ---
 
-# Displaying Selected Properties
+## Displaying Selected Properties
 
 Example:
 
@@ -822,7 +822,7 @@ Output is limited to the selected properties, making reports easier to read.
 
 ---
 
-# Searching for Users
+## Searching for Users
 
 Administrators frequently search for multiple users.
 
@@ -838,7 +838,7 @@ This retrieves all users in the domain.
 
 ---
 
-# Filtering Users
+## Filtering Users
 
 Example:
 
@@ -850,7 +850,7 @@ This retrieves users whose **Department** attribute is **Finance**.
 
 ---
 
-# Searching by Name
+## Searching by Name
 
 Example:
 
@@ -862,7 +862,7 @@ This retrieves users whose names begin with **John**.
 
 ---
 
-# User Search Workflow
+## User Search Workflow
 
 ```
 Administrator
@@ -886,7 +886,7 @@ Review Results
 
 ---
 
-# Creating Users
+## Creating Users
 
 PowerShell supports user creation using the appropriate Active Directory cmdlets.
 
@@ -910,7 +910,7 @@ In production environments, new accounts should follow documented provisioning p
 
 ---
 
-# Updating User Attributes
+## Updating User Attributes
 
 Administrators may update user information using:
 
@@ -931,7 +931,7 @@ Maintaining accurate directory information improves administration and reporting
 
 ---
 
-# Resetting Passwords
+## Resetting Passwords
 
 Password management is a routine administrative task.
 
@@ -963,7 +963,7 @@ Password resets should follow organizational identity verification procedures.
 
 ---
 
-# Disabling User Accounts
+## Disabling User Accounts
 
 Rather than deleting accounts immediately, organizations commonly disable them.
 
@@ -982,7 +982,7 @@ Common scenarios:
 
 ---
 
-# Enabling User Accounts
+## Enabling User Accounts
 
 Previously disabled accounts can be re-enabled using:
 
@@ -994,7 +994,7 @@ This is commonly performed when an employee returns from leave or an account sus
 
 ---
 
-# Unlocking Accounts
+## Unlocking Accounts
 
 Users may become locked after repeated failed sign-in attempts.
 
@@ -1020,7 +1020,7 @@ Confirm Successful Sign-In
 
 ---
 
-# Managing Groups
+## Managing Groups
 
 Groups simplify authorization by assigning permissions collectively.
 
@@ -1040,7 +1040,7 @@ These support retrieving, creating, modifying, and removing group objects.
 
 ---
 
-# Viewing Group Members
+## Viewing Group Members
 
 Administrators often need to review membership.
 
@@ -1054,7 +1054,7 @@ This displays the members of the specified group.
 
 ---
 
-# Adding Group Members
+## Adding Group Members
 
 PowerShell supports adding users to existing groups.
 
@@ -1076,7 +1076,7 @@ Membership changes should be approved and documented according to organizational
 
 ---
 
-# Removing Group Members
+## Removing Group Members
 
 When responsibilities change, users may be removed from groups.
 
@@ -1098,7 +1098,7 @@ Removing unnecessary permissions supports least-privilege administration.
 
 ---
 
-# Managing Computer Accounts
+## Managing Computer Accounts
 
 Computer objects can also be managed through PowerShell.
 
@@ -1121,7 +1121,7 @@ Typical administrative tasks include:
 
 ---
 
-# Searching Computer Objects
+## Searching Computer Objects
 
 Example:
 
@@ -1135,7 +1135,7 @@ In large environments, filtering by name, OU, or other attributes is generally p
 
 ---
 
-# Organizational Unit Management
+## Organizational Unit Management
 
 PowerShell supports OU administration.
 
@@ -1158,7 +1158,7 @@ Typical tasks include:
 
 ---
 
-# OU Administration Workflow
+## OU Administration Workflow
 
 ```
 Create OU
@@ -1182,7 +1182,7 @@ Operational
 
 ---
 
-# Searching Active Directory
+## Searching Active Directory
 
 PowerShell enables flexible directory searches.
 
@@ -1199,7 +1199,7 @@ Searching is often combined with filtering to reduce unnecessary results.
 
 ---
 
-# PowerShell Filtering
+## PowerShell Filtering
 
 Filtering improves efficiency.
 
@@ -1225,7 +1225,7 @@ Efficient filtering reduces processing time and network traffic.
 
 ---
 
-# Exporting Information
+## Exporting Information
 
 PowerShell objects can be exported for reporting.
 
@@ -1246,7 +1246,7 @@ CSV exports are commonly used for:
 
 ---
 
-# Importing Data
+## Importing Data
 
 PowerShell can also read structured information.
 
@@ -1260,7 +1260,7 @@ Imported data may be used as input for administrative workflows after validation
 
 ---
 
-# Bulk Administration
+## Bulk Administration
 
 PowerShell excels at managing multiple objects.
 
@@ -1290,7 +1290,7 @@ Bulk administration reduces manual effort and improves consistency.
 
 ---
 
-# Enterprise Provisioning Example
+## Enterprise Provisioning Example
 
 ```
 HR Database
@@ -1324,7 +1324,7 @@ Many organizations integrate these steps into broader identity governance system
 
 ---
 
-# Enterprise Reporting
+## Enterprise Reporting
 
 PowerShell is widely used for generating reports such as:
 
@@ -1341,7 +1341,7 @@ Automated reporting supports operational visibility and compliance.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1368,7 +1368,7 @@ Automation significantly reduces repetitive manual work while maintaining consis
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 PowerShell can efficiently manage Active Directory at scale.
 
@@ -1385,13 +1385,13 @@ Automation should improve security and consistency rather than bypass administra
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Practice retrieving and reporting on Active Directory objects.
 
-### Step 1
+#### Step 1
 
 Retrieve a specific user:
 
@@ -1403,7 +1403,7 @@ Observe the default properties returned.
 
 ---
 
-### Step 2
+#### Step 2
 
 Retrieve additional attributes:
 
@@ -1415,7 +1415,7 @@ Compare the output.
 
 ---
 
-### Step 3
+#### Step 3
 
 Retrieve computer accounts:
 
@@ -1427,7 +1427,7 @@ Review the returned objects.
 
 ---
 
-### Step 4
+#### Step 4
 
 Retrieve Organizational Units:
 
@@ -1439,7 +1439,7 @@ Identify the OU hierarchy in your lab.
 
 ---
 
-### Step 5
+#### Step 5
 
 Generate a CSV report containing user names and departments.
 
@@ -1447,45 +1447,45 @@ Review the exported file using a spreadsheet application.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is PowerShell preferred for bulk Active Directory administration?
+#### Q1: Why is PowerShell preferred for bulk Active Directory administration?
 
 **Answer:** It automates repetitive tasks, reduces manual effort, improves consistency, and scales effectively across large environments.
 
 ---
 
-### Q2: What does `Get-ADUser` do?
+#### Q2: What does `Get-ADUser` do?
 
 **Answer:** It retrieves Active Directory user objects and their associated properties.
 
 ---
 
-### Q3: Why should filters be used instead of retrieving all objects?
+#### Q3: Why should filters be used instead of retrieving all objects?
 
 **Answer:** Filters improve efficiency by reducing unnecessary processing, network traffic, and the amount of returned data.
 
 ---
 
-### Q4: What is the benefit of exporting PowerShell output to CSV?
+#### Q4: What is the benefit of exporting PowerShell output to CSV?
 
 **Answer:** CSV files simplify reporting, auditing, inventory management, and data analysis.
 
 ---
 
-### Q5: Why are groups preferred over assigning permissions directly to users?
+#### Q5: Why are groups preferred over assigning permissions directly to users?
 
 **Answer:** Groups simplify permission management, improve scalability, and make auditing easier.
 
 ---
 
-### Q6: Why should imported data be validated before bulk operations?
+#### Q6: Why should imported data be validated before bulk operations?
 
 **Answer:** Validation helps prevent incorrect changes, duplicate objects, and administrative errors that could affect many directory objects simultaneously.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use filters whenever practical.
 - Retrieve only the properties required for the task.
@@ -1497,7 +1497,7 @@ Review the exported file using a spreadsheet application.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Retrieving all objects unnecessarily in large environments.
 - Running bulk operations without validating input data.
@@ -1508,7 +1508,7 @@ Review the exported file using a spreadsheet application.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - PowerShell enables efficient administration of users, groups, computers, and Organizational Units.
 - Filtering and object-based output improve performance and flexibility.
@@ -1518,13 +1518,13 @@ Review the exported file using a spreadsheet application.
 
 ---
 
-# 17-PowerShell-for-AD.md
+## 17-PowerShell-for-AD.md
 
-# Part 3 — PowerShell Automation, Reporting, CSV Operations, Scheduled Tasks, Error Handling and Enterprise Active Directory Automation
+## Part 3 — PowerShell Automation, Reporting, CSV Operations, Scheduled Tasks, Error Handling and Enterprise Active Directory Automation
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1542,7 +1542,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 PowerShell becomes truly powerful when repetitive administrative tasks are automated.
 
@@ -1559,7 +1559,7 @@ Automation reduces manual effort while improving consistency.
 
 ---
 
-# Why Automation Matters
+## Why Automation Matters
 
 Imagine an enterprise with:
 
@@ -1574,7 +1574,7 @@ Automation enables administrators to complete many recurring tasks reliably and 
 
 ---
 
-# Automation Workflow
+## Automation Workflow
 
 ```
 Business Requirement
@@ -1618,7 +1618,7 @@ Administrator Review
 
 ---
 
-# Variables
+## Variables
 
 Variables temporarily store information.
 
@@ -1640,7 +1640,7 @@ Common uses:
 
 ---
 
-# PowerShell Data Flow
+## PowerShell Data Flow
 
 ```
 Input
@@ -1662,7 +1662,7 @@ Variables make scripts easier to maintain.
 
 ---
 
-# Arrays
+## Arrays
 
 Arrays store multiple values.
 
@@ -1680,7 +1680,7 @@ Arrays are useful when processing multiple objects.
 
 ---
 
-# Conditional Statements
+## Conditional Statements
 
 PowerShell supports decision making.
 
@@ -1702,7 +1702,7 @@ Typical uses include:
 
 ---
 
-# Example Decision Flow
+## Example Decision Flow
 
 ```
 User Found?
@@ -1728,7 +1728,7 @@ Conditional logic helps scripts respond appropriately to different situations.
 
 ---
 
-# Loops
+## Loops
 
 Loops process multiple objects.
 
@@ -1750,7 +1750,7 @@ Loops are widely used for:
 
 ---
 
-# Loop Workflow
+## Loop Workflow
 
 ```
 CSV
@@ -1774,7 +1774,7 @@ Complete
 
 ---
 
-# Functions
+## Functions
 
 Functions group reusable logic.
 
@@ -1796,7 +1796,7 @@ Benefits:
 
 ---
 
-# Script Structure
+## Script Structure
 
 A well-organized script often includes:
 
@@ -1820,7 +1820,7 @@ Structured scripts are easier to review and maintain.
 
 ---
 
-# Working with CSV Files
+## Working with CSV Files
 
 CSV files are widely used for:
 
@@ -1834,7 +1834,7 @@ PowerShell integrates well with structured CSV data.
 
 ---
 
-# Importing CSV
+## Importing CSV
 
 Example:
 
@@ -1846,7 +1846,7 @@ Imported records become PowerShell objects.
 
 ---
 
-# Exporting CSV
+## Exporting CSV
 
 Example:
 
@@ -1860,7 +1860,7 @@ CSV exports are commonly shared with auditors, managers, and operations teams.
 
 ---
 
-# CSV Workflow
+## CSV Workflow
 
 ```
 HR CSV
@@ -1884,7 +1884,7 @@ Export Report
 
 ---
 
-# Reporting
+## Reporting
 
 PowerShell is commonly used to generate reports including:
 
@@ -1901,7 +1901,7 @@ Reports support operational visibility and compliance.
 
 ---
 
-# Example Reporting Workflow
+## Example Reporting Workflow
 
 ```
 PowerShell
@@ -1929,7 +1929,7 @@ Administrator Review
 
 ---
 
-# Logging
+## Logging
 
 Scripts should record important activities.
 
@@ -1946,7 +1946,7 @@ Logging improves troubleshooting and auditing.
 
 ---
 
-# Error Handling
+## Error Handling
 
 Errors should be anticipated rather than ignored.
 
@@ -1972,7 +1972,7 @@ Benefits include:
 
 ---
 
-# Error Handling Workflow
+## Error Handling Workflow
 
 ```
 Command
@@ -2004,7 +2004,7 @@ Notify Administrator
 
 ---
 
-# Scheduled Automation
+## Scheduled Automation
 
 Many PowerShell scripts are executed automatically.
 
@@ -2021,7 +2021,7 @@ Scheduling improves consistency and reduces manual effort.
 
 ---
 
-# Scheduled Task Workflow
+## Scheduled Task Workflow
 
 ```
 Windows Task Scheduler
@@ -2049,7 +2049,7 @@ Administrator Review
 
 ---
 
-# Administrative Reporting Examples
+## Administrative Reporting Examples
 
 Common reports include:
 
@@ -2066,7 +2066,7 @@ Common reports include:
 
 ---
 
-# Enterprise Automation Example
+## Enterprise Automation Example
 
 Company:
 
@@ -2099,7 +2099,7 @@ Result:
 
 ---
 
-# Script Documentation
+## Script Documentation
 
 Every administrative script should include:
 
@@ -2125,7 +2125,7 @@ Good documentation simplifies maintenance and knowledge transfer.
 
 ---
 
-# Version Control
+## Version Control
 
 PowerShell scripts should be maintained using version control.
 
@@ -2141,7 +2141,7 @@ Version control improves both reliability and governance.
 
 ---
 
-# Automation Governance
+## Automation Governance
 
 Enterprise automation should follow:
 
@@ -2177,7 +2177,7 @@ Automation should never bypass organizational change management.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Administrative automation can affect large portions of an Active Directory environment.
 
@@ -2196,13 +2196,13 @@ Automation should increase consistency while preserving security controls.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Build a simple reporting workflow using PowerShell.
 
-### Step 1
+#### Step 1
 
 Retrieve Active Directory users:
 
@@ -2214,7 +2214,7 @@ Review the returned objects.
 
 ---
 
-### Step 2
+#### Step 2
 
 Select useful properties:
 
@@ -2227,7 +2227,7 @@ Observe the simplified output.
 
 ---
 
-### Step 3
+#### Step 3
 
 Export the results:
 
@@ -2239,7 +2239,7 @@ Open the CSV file and review the contents.
 
 ---
 
-### Step 4
+#### Step 4
 
 Create a small script that:
 
@@ -2251,7 +2251,7 @@ Execute it in a lab environment.
 
 ---
 
-### Step 5
+#### Step 5
 
 Modify the script to include:
 
@@ -2263,45 +2263,45 @@ Document the results.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is PowerShell automation important?
+#### Q1: Why is PowerShell automation important?
 
 **Answer:** It reduces repetitive manual work, improves consistency, minimizes human error, and enables large-scale Active Directory administration.
 
 ---
 
-### Q2: Why should scripts include logging?
+#### Q2: Why should scripts include logging?
 
 **Answer:** Logging supports troubleshooting, auditing, operational visibility, and verification of completed tasks.
 
 ---
 
-### Q3: What is the purpose of `Import-Csv`?
+#### Q3: What is the purpose of `Import-Csv`?
 
 **Answer:** It reads structured CSV data and converts each row into a PowerShell object for further processing.
 
 ---
 
-### Q4: Why is error handling important?
+#### Q4: Why is error handling important?
 
 **Answer:** Error handling allows scripts to respond gracefully to failures, improving reliability and simplifying troubleshooting.
 
 ---
 
-### Q5: Why should production scripts be tested before deployment?
+#### Q5: Why should production scripts be tested before deployment?
 
 **Answer:** Testing helps identify logic errors, unexpected behavior, and compatibility issues before they affect production environments.
 
 ---
 
-### Q6: Why should administrative scripts be version controlled?
+#### Q6: Why should administrative scripts be version controlled?
 
 **Answer:** Version control tracks changes, supports collaboration, enables rollback, and provides an audit history for script development.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Build reusable functions.
 - Use descriptive variable names.
@@ -2314,7 +2314,7 @@ Document the results.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Hardcoding environment-specific values.
 - Ignoring error handling.
@@ -2326,7 +2326,7 @@ Document the results.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - PowerShell automation enables efficient, repeatable Active Directory administration.
 - Variables, loops, functions, and conditionals are fundamental building blocks of administrative scripts.
@@ -2336,13 +2336,13 @@ Document the results.
 
 ---
 
-# 17-PowerShell-for-AD.md
+## 17-PowerShell-for-AD.md
 
-# Part 4 — PowerShell Remoting, Security, Best Practices, Enterprise Case Studies, Troubleshooting and Chapter Summary
+## Part 4 — PowerShell Remoting, Security, Best Practices, Enterprise Case Studies, Troubleshooting and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -2359,7 +2359,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 PowerShell is much more than a scripting language—it is the primary automation and management framework for modern Windows environments.
 
@@ -2377,7 +2377,7 @@ A well-designed PowerShell environment enables administrators to securely manage
 
 ---
 
-# Enterprise PowerShell Architecture
+## Enterprise PowerShell Architecture
 
 ```
                  Administrator
@@ -2410,7 +2410,7 @@ A well-designed PowerShell environment enables administrators to securely manage
 
 ---
 
-# PowerShell Remoting
+## PowerShell Remoting
 
 PowerShell Remoting allows administrators to execute PowerShell commands on remote Windows systems without physically accessing them.
 
@@ -2424,7 +2424,7 @@ Benefits include:
 
 ---
 
-# Remote Administration Workflow
+## Remote Administration Workflow
 
 ```
 Administrator
@@ -2448,7 +2448,7 @@ Results Returned
 
 ---
 
-# Common Uses of Remoting
+## Common Uses of Remoting
 
 Enterprise administrators use remoting for:
 
@@ -2462,7 +2462,7 @@ Enterprise administrators use remoting for:
 
 ---
 
-# Secure Remote Administration
+## Secure Remote Administration
 
 Remote administration should follow security best practices.
 
@@ -2490,7 +2490,7 @@ Security controls should ensure that only authorized administrators can establis
 
 ---
 
-# Least Privilege Administration
+## Least Privilege Administration
 
 Administrators should receive only the permissions necessary for their responsibilities.
 
@@ -2523,7 +2523,7 @@ Benefits:
 
 ---
 
-# Just Enough Administration (JEA)
+## Just Enough Administration (JEA)
 
 **Just Enough Administration (JEA)** is a PowerShell security technology that limits administrators to only the commands required for their role.
 
@@ -2568,7 +2568,7 @@ Advantages:
 
 ---
 
-# PowerShell Logging
+## PowerShell Logging
 
 PowerShell activity should be logged in enterprise environments.
 
@@ -2589,7 +2589,7 @@ Common logging includes:
 
 ---
 
-# Logging Workflow
+## Logging Workflow
 
 ```
 PowerShell Command
@@ -2619,7 +2619,7 @@ Centralized logging improves visibility into administrative activity.
 
 ---
 
-# PowerShell Script Security
+## PowerShell Script Security
 
 Administrative scripts should be treated as production assets.
 
@@ -2634,7 +2634,7 @@ Recommendations:
 
 ---
 
-# Execution Policies
+## Execution Policies
 
 PowerShell supports execution policies that influence how scripts are run.
 
@@ -2650,7 +2650,7 @@ Execution policies are intended as a safety feature rather than a security bound
 
 ---
 
-# Secure Script Development
+## Secure Script Development
 
 Enterprise scripts should include:
 
@@ -2678,7 +2678,7 @@ Well-designed scripts are easier to audit and maintain.
 
 ---
 
-# Troubleshooting PowerShell
+## Troubleshooting PowerShell
 
 When troubleshooting PowerShell scripts:
 
@@ -2693,7 +2693,7 @@ When troubleshooting PowerShell scripts:
 
 ---
 
-# Common Administrative Issues
+## Common Administrative Issues
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2706,7 +2706,7 @@ When troubleshooting PowerShell scripts:
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 Problem Reported
@@ -2740,7 +2740,7 @@ A structured process helps reduce resolution time.
 
 ---
 
-# Enterprise Reporting Automation
+## Enterprise Reporting Automation
 
 PowerShell can automatically generate reports such as:
 
@@ -2757,9 +2757,9 @@ Reports can be scheduled and reviewed regularly.
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-## Company
+### Company
 
 ```
 Global Retail Corporation
@@ -2809,9 +2809,9 @@ Results:
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-## Financial Institution
+### Financial Institution
 
 Requirements:
 
@@ -2855,7 +2855,7 @@ Outcome:
 
 ---
 
-# Enterprise PowerShell Governance
+## Enterprise PowerShell Governance
 
 PowerShell administration should follow a governance model.
 
@@ -2895,7 +2895,7 @@ Governance ensures automation remains reliable and secure.
 
 ---
 
-# Administrative Documentation
+## Administrative Documentation
 
 Maintain documentation for:
 
@@ -2913,7 +2913,7 @@ Good documentation supports operational continuity and knowledge transfer.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 PowerShell is a legitimate administrative platform but can also be abused if not governed properly.
 
@@ -2932,13 +2932,13 @@ Organizations should balance operational efficiency with strong administrative o
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review and organize a PowerShell administration workflow.
 
-### Step 1
+#### Step 1
 
 List the Active Directory cmdlets available on your administrative workstation:
 
@@ -2955,7 +2955,7 @@ Identify cmdlets related to:
 
 ---
 
-### Step 2
+#### Step 2
 
 Create a simple inventory report that includes:
 
@@ -2967,7 +2967,7 @@ Export the report to CSV.
 
 ---
 
-### Step 3
+#### Step 3
 
 Review one existing PowerShell script.
 
@@ -2981,7 +2981,7 @@ Document:
 
 ---
 
-### Step 4
+#### Step 4
 
 Design a standard operating procedure (SOP) for deploying a new PowerShell automation script, including:
 
@@ -2993,51 +2993,51 @@ Design a standard operating procedure (SOP) for deploying a new PowerShell autom
 
 ---
 
-### Step 5
+#### Step 5
 
 Document five security controls your organization should implement for administrative PowerShell usage.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is PowerShell Remoting?
+#### Q1: What is PowerShell Remoting?
 
 **Answer:** PowerShell Remoting enables administrators to execute PowerShell commands securely on remote Windows systems, allowing centralized administration and automation.
 
 ---
 
-### Q2: What is Just Enough Administration (JEA)?
+#### Q2: What is Just Enough Administration (JEA)?
 
 **Answer:** JEA is a PowerShell security feature that restricts administrators to a predefined set of commands required for their specific role, supporting least-privilege administration.
 
 ---
 
-### Q3: Why is PowerShell logging important?
+#### Q3: Why is PowerShell logging important?
 
 **Answer:** Logging provides visibility into administrative activity, supports incident response, aids troubleshooting, and helps meet compliance and audit requirements.
 
 ---
 
-### Q4: Why should PowerShell scripts be version controlled?
+#### Q4: Why should PowerShell scripts be version controlled?
 
 **Answer:** Version control tracks changes, supports collaboration, enables rollback, and provides accountability for script modifications.
 
 ---
 
-### Q5: What are common causes of PowerShell script failures?
+#### Q5: What are common causes of PowerShell script failures?
 
 **Answer:** Missing modules, insufficient permissions, invalid input, syntax errors, incorrect filters, and environmental configuration issues are common causes.
 
 ---
 
-### Q6: Why should enterprise PowerShell automation follow governance processes?
+#### Q6: Why should enterprise PowerShell automation follow governance processes?
 
 **Answer:** Governance ensures scripts are reviewed, tested, approved, documented, monitored, and maintained, reducing operational and security risks.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use PowerShell for repeatable administrative tasks.
 - Apply the Principle of Least Privilege.
@@ -3050,7 +3050,7 @@ Document five security controls your organization should implement for administr
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Running scripts without testing.
 - Granting excessive administrative permissions.
@@ -3062,7 +3062,7 @@ Document five security controls your organization should implement for administr
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - PowerShell is the foundation of enterprise Windows and Active Directory automation.
 - Remoting enables secure, centralized administration across multiple systems.
@@ -3072,7 +3072,7 @@ Document five security controls your organization should implement for administr
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

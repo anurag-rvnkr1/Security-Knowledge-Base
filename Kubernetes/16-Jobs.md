@@ -21,7 +21,7 @@ Jobs are ideal for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -38,7 +38,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Jobs?
+## Why Jobs?
 
 Most Kubernetes workloads are long-running.
 
@@ -88,7 +88,7 @@ Deployments are not designed for these workloads.
 
 ---
 
-# Solution
+## Solution
 
 Use a Job.
 
@@ -114,7 +114,7 @@ Success
 
 ---
 
-# What is a Job?
+## What is a Job?
 
 A Job is a controller that ensures a task is completed successfully.
 
@@ -140,7 +140,7 @@ Completed
 
 ---
 
-# Job Architecture
+## Job Architecture
 
 ```
                  Job
@@ -166,7 +166,7 @@ Completed
 
 ---
 
-# Deployment vs Job
+## Deployment vs Job
 
 | Deployment | Job |
 |------------|-----|
@@ -177,7 +177,7 @@ Completed
 
 ---
 
-# Job Workflow
+## Job Workflow
 
 ```
 Create Job
@@ -205,7 +205,7 @@ Job Complete
 
 ---
 
-# Job YAML
+## Job YAML
 
 ```yaml
 apiVersion: batch/v1
@@ -239,7 +239,7 @@ spec:
 
 ---
 
-# YAML Structure
+## YAML Structure
 
 ```
 Job
@@ -269,7 +269,7 @@ No Continuous Running
 
 ---
 
-# restartPolicy
+## restartPolicy
 
 Jobs support:
 
@@ -291,7 +291,7 @@ restartPolicy: Never
 
 ---
 
-# Successful Job
+## Successful Job
 
 ```
 Job
@@ -315,7 +315,7 @@ Complete
 
 ---
 
-# Failed Job
+## Failed Job
 
 ```
 Job
@@ -337,7 +337,7 @@ Kubernetes retries according to Job configuration.
 
 ---
 
-# Retry Mechanism
+## Retry Mechanism
 
 Example:
 
@@ -391,7 +391,7 @@ backoffLimit: 6
 
 ---
 
-# Parallel Jobs
+## Parallel Jobs
 
 Some tasks can run simultaneously.
 
@@ -419,7 +419,7 @@ Three Pods execute concurrently.
 
 ---
 
-# Completions
+## Completions
 
 Example:
 
@@ -441,7 +441,7 @@ The Job completes after five successful executions.
 
 ---
 
-# Parallelism vs Completions
+## Parallelism vs Completions
 
 Example:
 
@@ -483,7 +483,7 @@ Until
 
 ---
 
-# Indexed Jobs
+## Indexed Jobs
 
 Modern Kubernetes supports indexed Jobs.
 
@@ -501,7 +501,7 @@ Useful for distributed batch processing.
 
 ---
 
-# Suspend Jobs
+## Suspend Jobs
 
 Example:
 
@@ -527,7 +527,7 @@ suspend: false
 
 ---
 
-# Active Deadline
+## Active Deadline
 
 Limit execution time.
 
@@ -553,7 +553,7 @@ Terminate Job
 
 ---
 
-# Cleanup Finished Jobs
+## Cleanup Finished Jobs
 
 Automatically remove completed Jobs.
 
@@ -581,7 +581,7 @@ Delete Job
 
 ---
 
-# Job Lifecycle
+## Job Lifecycle
 
 ```
 Create
@@ -605,7 +605,7 @@ Cleanup
 
 ---
 
-# Viewing Jobs
+## Viewing Jobs
 
 List:
 
@@ -621,7 +621,7 @@ kubectl describe job hello-job
 
 ---
 
-# Viewing Job Pods
+## Viewing Job Pods
 
 ```bash
 kubectl get pods
@@ -641,7 +641,7 @@ kubectl logs <pod-name>
 
 ---
 
-# Deleting Jobs
+## Deleting Jobs
 
 ```bash
 kubectl delete job hello-job
@@ -649,9 +649,9 @@ kubectl delete job hello-job
 
 ---
 
-# Common Job Use Cases
+## Common Job Use Cases
 
-## Database Backup
+### Database Backup
 
 ```
 Job
@@ -667,7 +667,7 @@ Backup
 
 ---
 
-## Database Migration
+### Database Migration
 
 ```
 Job
@@ -683,7 +683,7 @@ Migration
 
 ---
 
-## ETL Pipeline
+### ETL Pipeline
 
 ```
 CSV
@@ -699,7 +699,7 @@ Database
 
 ---
 
-## ML Training
+### ML Training
 
 ```
 Training Data
@@ -715,7 +715,7 @@ Model
 
 ---
 
-## Report Generation
+### Report Generation
 
 ```
 Sales Data
@@ -731,7 +731,7 @@ PDF Report
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -765,7 +765,7 @@ kubectl delete job hello-job
 
 ---
 
-# Job Architecture Summary
+## Job Architecture Summary
 
 ```
 Job
@@ -789,15 +789,15 @@ Success
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Jobs for Finite Tasks
+#### 1. Use Jobs for Finite Tasks
 
 Jobs should perform work that eventually finishes.
 
 ---
 
-### 2. Configure Retry Limits
+#### 2. Configure Retry Limits
 
 Set an appropriate:
 
@@ -809,7 +809,7 @@ to avoid endless retries.
 
 ---
 
-### 3. Set Execution Timeouts
+#### 3. Set Execution Timeouts
 
 Use:
 
@@ -821,7 +821,7 @@ to prevent runaway Jobs.
 
 ---
 
-### 4. Clean Up Completed Jobs
+#### 4. Clean Up Completed Jobs
 
 Use:
 
@@ -833,13 +833,13 @@ to automatically remove completed Jobs when appropriate.
 
 ---
 
-### 5. Monitor Job Logs
+#### 5. Monitor Job Logs
 
 Always inspect Job logs to verify successful execution and diagnose failures.
 
 ---
 
-## Next Section
+### Next Section
 
 How Jobs Work Internally
 
@@ -857,9 +857,9 @@ References
 
 ---
 
-# How Jobs Work Internally
+## How Jobs Work Internally
 
-## Overview
+### Overview
 
 The **Job Controller** continuously watches Kubernetes and ensures the requested number of successful task executions are completed.
 
@@ -867,7 +867,7 @@ Unlike Deployments that reconcile **running Pods**, Jobs reconcile **completed P
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Developer
@@ -911,7 +911,7 @@ Job Status Updated
 
 ---
 
-# Complete Workflow
+## Complete Workflow
 
 ```
 Job Created
@@ -971,7 +971,7 @@ Complete
 
 ---
 
-# Exit Codes
+## Exit Codes
 
 ```
 0
@@ -993,7 +993,7 @@ The Job Controller uses the container's exit code to determine success or failur
 
 ---
 
-# Retry Logic
+## Retry Logic
 
 Suppose:
 
@@ -1027,7 +1027,7 @@ backoffLimit Reached
 
 ---
 
-# Parallel Execution
+## Parallel Execution
 
 Example:
 
@@ -1061,7 +1061,7 @@ Job Finished
 
 ---
 
-# Indexed Job Workflow
+## Indexed Job Workflow
 
 ```
 Job
@@ -1083,7 +1083,7 @@ Each Pod knows its index through environment variables and annotations, allowing
 
 ---
 
-# Hands-on Lab 1 – Simple Job
+## Hands-on Lab 1 – Simple Job
 
 ```yaml
 apiVersion: batch/v1
@@ -1108,7 +1108,7 @@ kubectl apply -f job.yaml
 
 ---
 
-# Hands-on Lab 2 – Watch Status
+## Hands-on Lab 2 – Watch Status
 
 ```bash
 kubectl get jobs
@@ -1120,7 +1120,7 @@ kubectl logs job/hello-job
 
 ---
 
-# Hands-on Lab 3 – Failed Job
+## Hands-on Lab 3 – Failed Job
 
 Create a Job that exits with:
 
@@ -1138,7 +1138,7 @@ Notice retry attempts.
 
 ---
 
-# Hands-on Lab 4 – Parallel Job
+## Hands-on Lab 4 – Parallel Job
 
 ```yaml
 parallelism: 2
@@ -1150,7 +1150,7 @@ Observe multiple Pods running simultaneously.
 
 ---
 
-# Hands-on Lab 5 – TTL Cleanup
+## Hands-on Lab 5 – TTL Cleanup
 
 ```yaml
 ttlSecondsAfterFinished: 120
@@ -1160,9 +1160,9 @@ Watch the Job automatically disappear after completion.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using a Deployment for Batch Tasks
+### 1. Using a Deployment for Batch Tasks
 
 Incorrect:
 
@@ -1182,7 +1182,7 @@ Job
 
 ---
 
-## 2. Forgetting restartPolicy
+### 2. Forgetting restartPolicy
 
 Jobs require:
 
@@ -1198,7 +1198,7 @@ OnFailure
 
 ---
 
-## 3. Unlimited Retries
+### 3. Unlimited Retries
 
 Set an appropriate:
 
@@ -1208,7 +1208,7 @@ backoffLimit
 
 ---
 
-## 4. Missing Cleanup
+### 4. Missing Cleanup
 
 Thousands of completed Jobs can clutter the cluster.
 
@@ -1220,7 +1220,7 @@ ttlSecondsAfterFinished
 
 ---
 
-## 5. Ignoring Logs
+### 5. Ignoring Logs
 
 Always inspect:
 
@@ -1230,7 +1230,7 @@ kubectl logs job/<job-name>
 
 ---
 
-# Quick Revision
+## Quick Revision
 
 ```
 Job
@@ -1254,21 +1254,21 @@ Complete
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a Kubernetes Job?
 - When should you use a Job instead of a Deployment?
 - What is `restartPolicy` for Jobs?
 
-### Intermediate
+#### Intermediate
 
 - Explain `parallelism` and `completions`.
 - What is `backoffLimit`?
 - What is `activeDeadlineSeconds`?
 
-### Advanced
+#### Advanced
 
 - How does the Job Controller work?
 - What is an Indexed Job?
@@ -1278,7 +1278,7 @@ Complete
 
 ---
 
-# References
+## References
 
 - Kubernetes Jobs
 - Batch API

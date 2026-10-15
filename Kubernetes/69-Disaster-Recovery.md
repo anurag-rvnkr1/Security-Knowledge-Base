@@ -68,7 +68,7 @@ A simplified DR architecture:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -146,7 +146,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Disaster Recovery?
+## What Is Disaster Recovery?
 
 Disaster Recovery is the capability to recover systems and data after a disruptive event.
 
@@ -168,7 +168,7 @@ Resume Operations
 
 ---
 
-# Disaster vs Failure
+## Disaster vs Failure
 
 A failure may affect one component:
 
@@ -196,7 +196,7 @@ Complete Cluster Loss
 
 ---
 
-# Business Continuity
+## Business Continuity
 
 Business Continuity is the broader strategy for keeping critical business operations functioning during disruptions.
 
@@ -215,7 +215,7 @@ Disaster Recovery is one part of Business Continuity.
 
 ---
 
-# Business Impact Analysis
+## Business Impact Analysis
 
 Business Impact Analysis (BIA) identifies:
 
@@ -241,7 +241,7 @@ RPO = 5 minutes
 
 ---
 
-# RPO
+## RPO
 
 Recovery Point Objective defines acceptable data loss.
 
@@ -255,7 +255,7 @@ The recovery strategy should aim to restore data to a point no older than approx
 
 ---
 
-# RTO
+## RTO
 
 Recovery Time Objective defines the target time for restoring service.
 
@@ -269,7 +269,7 @@ The recovery process should target restoration within approximately one hour.
 
 ---
 
-# MTTR
+## MTTR
 
 MTTR means:
 
@@ -281,7 +281,7 @@ It measures the average time required to restore service after failures.
 
 ---
 
-# MTTD
+## MTTD
 
 MTTD means:
 
@@ -293,7 +293,7 @@ It measures how quickly a problem is detected.
 
 ---
 
-# Recovery Metrics
+## Recovery Metrics
 
 A useful model is:
 
@@ -311,7 +311,7 @@ DR planning should minimize both.
 
 ---
 
-# DR Requirements
+## DR Requirements
 
 Before designing DR, define:
 
@@ -327,7 +327,7 @@ Backup Retention
 
 ---
 
-# Kubernetes Disaster Scenarios
+## Kubernetes Disaster Scenarios
 
 Possible scenarios include:
 
@@ -347,7 +347,7 @@ Human Error
 
 ---
 
-# Cluster Disaster
+## Cluster Disaster
 
 A cluster may become unavailable due to:
 
@@ -369,7 +369,7 @@ Restore
 
 ---
 
-# Control Plane Disaster
+## Control Plane Disaster
 
 Control-plane components include:
 
@@ -392,7 +392,7 @@ but cluster management and reconciliation can be severely affected.
 
 ---
 
-# etcd Disaster
+## etcd Disaster
 
 etcd stores critical Kubernetes state.
 
@@ -408,7 +408,7 @@ A valid etcd backup can support recovery.
 
 ---
 
-# etcd Recovery
+## etcd Recovery
 
 Conceptually:
 
@@ -430,7 +430,7 @@ Exact procedures depend on the cluster topology and Kubernetes distribution.
 
 ---
 
-# Worker Node Disaster
+## Worker Node Disaster
 
 If a worker node is permanently lost:
 
@@ -449,7 +449,7 @@ Storage Is Recoverable
 
 ---
 
-# Storage Disaster
+## Storage Disaster
 
 Storage failure is especially serious for:
 
@@ -470,7 +470,7 @@ Database Restore
 
 ---
 
-# Network Disaster
+## Network Disaster
 
 Networking failures can affect:
 
@@ -494,7 +494,7 @@ Network Policies
 
 ---
 
-# Region Failure
+## Region Failure
 
 A region may become unavailable due to:
 
@@ -519,7 +519,7 @@ Recovery
 
 ---
 
-# Cloud Provider Failure
+## Cloud Provider Failure
 
 A major cloud outage may require:
 
@@ -533,7 +533,7 @@ depending on business requirements.
 
 ---
 
-# Data Center Failure
+## Data Center Failure
 
 For organizations operating their own infrastructure:
 
@@ -552,7 +552,7 @@ Recovery
 
 ---
 
-# Security Incident
+## Security Incident
 
 A Kubernetes cluster can become compromised through:
 
@@ -569,7 +569,7 @@ DR must account for security recovery, not just infrastructure failure.
 
 ---
 
-# Ransomware
+## Ransomware
 
 Ransomware may encrypt or destroy:
 
@@ -596,7 +596,7 @@ Encryption
 
 ---
 
-# Accidental Deletion
+## Accidental Deletion
 
 Example:
 
@@ -618,7 +618,7 @@ if the resources and data were backed up.
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 A production DR strategy should protect:
 
@@ -636,7 +636,7 @@ Secrets
 
 ---
 
-# Kubernetes Resource Backup
+## Kubernetes Resource Backup
 
 Back up important resources such as:
 
@@ -656,7 +656,7 @@ Gateway API Resources
 
 ---
 
-# etcd Backup
+## etcd Backup
 
 etcd snapshots provide a mechanism to preserve Kubernetes control-plane state.
 
@@ -670,7 +670,7 @@ The endpoint and certificate options depend on the cluster environment.
 
 ---
 
-# Persistent Volume Backup
+## Persistent Volume Backup
 
 Persistent application data must be backed up separately.
 
@@ -686,7 +686,7 @@ Backup Storage
 
 ---
 
-# Database Backup
+## Database Backup
 
 Databases should generally use database-aware backup mechanisms.
 
@@ -704,7 +704,7 @@ This can provide better application consistency than simply copying live databas
 
 ---
 
-# Velero
+## Velero
 
 Velero is commonly used to back up and restore Kubernetes resources and, with the appropriate plugins/configuration, persistent volume data.
 
@@ -726,7 +726,7 @@ Kubernetes
 
 ---
 
-# Velero Backup
+## Velero Backup
 
 Example:
 
@@ -742,7 +742,7 @@ velero backup get
 
 ---
 
-# Velero Restore
+## Velero Restore
 
 Example:
 
@@ -755,7 +755,7 @@ Always test restore workflows in a controlled environment.
 
 ---
 
-# Volume Snapshots
+## Volume Snapshots
 
 CSI-based VolumeSnapshots can provide point-in-time storage recovery.
 
@@ -771,7 +771,7 @@ Snapshot Storage
 
 ---
 
-# Snapshot vs Backup
+## Snapshot vs Backup
 
 A snapshot:
 
@@ -789,7 +789,7 @@ A snapshot alone should not be assumed to provide complete disaster recovery.
 
 ---
 
-# Cross-Cluster Recovery
+## Cross-Cluster Recovery
 
 A backup can sometimes be restored to another cluster:
 
@@ -813,7 +813,7 @@ Testing
 
 ---
 
-# Cross-Region Recovery
+## Cross-Region Recovery
 
 For regional disasters:
 
@@ -832,7 +832,7 @@ Recovery Cluster
 
 ---
 
-# Active-Passive DR
+## Active-Passive DR
 
 Architecture:
 
@@ -861,7 +861,7 @@ Active
 
 ---
 
-# Active-Active DR
+## Active-Active DR
 
 Both environments serve traffic:
 
@@ -879,7 +879,7 @@ Active-active is more complex because data consistency and traffic management mu
 
 ---
 
-# Warm Standby
+## Warm Standby
 
 A warm standby environment is partially prepared for recovery.
 
@@ -897,7 +897,7 @@ Recovery is faster than building everything from scratch.
 
 ---
 
-# Cold Standby
+## Cold Standby
 
 A cold standby environment may require significant setup during recovery.
 
@@ -917,7 +917,7 @@ This can be cheaper but typically has a longer RTO.
 
 ---
 
-# DR Environment Comparison
+## DR Environment Comparison
 
 | Strategy | Recovery Speed | Cost | Complexity |
 |---|---|---|---|
@@ -928,7 +928,7 @@ This can be cheaper but typically has a longer RTO.
 
 ---
 
-# Recovery Environment
+## Recovery Environment
 
 A recovery environment may require:
 
@@ -947,7 +947,7 @@ Security
 
 ---
 
-# DNS Failover
+## DNS Failover
 
 DNS can direct users to the recovery environment.
 
@@ -965,7 +965,7 @@ Region A Region B
 
 ---
 
-# Global Load Balancing
+## Global Load Balancing
 
 A global load balancer can route traffic based on:
 
@@ -979,7 +979,7 @@ Policy
 
 ---
 
-# Traffic Failover
+## Traffic Failover
 
 Normal:
 
@@ -999,7 +999,7 @@ Region B
 
 ---
 
-# Data Replication
+## Data Replication
 
 DR often requires replication of application data.
 
@@ -1014,7 +1014,7 @@ Application-Level Replication
 
 ---
 
-# Database Replication
+## Database Replication
 
 Example:
 
@@ -1037,7 +1037,7 @@ The exact process depends on the database.
 
 ---
 
-# Storage Replication
+## Storage Replication
 
 Storage platforms may support:
 
@@ -1058,7 +1058,7 @@ Consistency
 
 ---
 
-# Synchronous Replication
+## Synchronous Replication
 
 Writes are replicated before being acknowledged according to the storage/database protocol.
 
@@ -1078,7 +1078,7 @@ Complexity
 
 ---
 
-# Asynchronous Replication
+## Asynchronous Replication
 
 Changes are replicated after the primary operation.
 
@@ -1097,7 +1097,7 @@ Potential Data Loss
 
 ---
 
-# Secrets Recovery
+## Secrets Recovery
 
 Secrets may be required for:
 
@@ -1119,7 +1119,7 @@ Separate Credentials
 
 ---
 
-# Identity Recovery
+## Identity Recovery
 
 Recovery environments may depend on:
 
@@ -1135,7 +1135,7 @@ Ensure identity dependencies are available during DR.
 
 ---
 
-# Network Recovery
+## Network Recovery
 
 Recovery requires:
 
@@ -1150,7 +1150,7 @@ Network Policies
 
 ---
 
-# CNI Recovery
+## CNI Recovery
 
 Ensure the recovery cluster has:
 
@@ -1162,7 +1162,7 @@ Required Network Permissions
 
 ---
 
-# CSI Recovery
+## CSI Recovery
 
 Persistent storage recovery may require:
 
@@ -1175,7 +1175,7 @@ Snapshot Support
 
 ---
 
-# Control Plane Recovery
+## Control Plane Recovery
 
 A control-plane recovery workflow may look like:
 
@@ -1197,7 +1197,7 @@ Restore Applications
 
 ---
 
-# Application Recovery
+## Application Recovery
 
 Applications may require:
 
@@ -1214,7 +1214,7 @@ Gateway
 
 ---
 
-# Dependency Recovery
+## Dependency Recovery
 
 Applications often depend on:
 
@@ -1232,7 +1232,7 @@ Recover dependencies in the correct order.
 
 ---
 
-# Recovery Order
+## Recovery Order
 
 A common conceptual order is:
 
@@ -1260,7 +1260,7 @@ The exact order depends on the environment.
 
 ---
 
-# Recovery Runbook
+## Recovery Runbook
 
 A DR runbook should include:
 
@@ -1279,7 +1279,7 @@ Escalation
 
 ---
 
-# DR Runbook Example
+## DR Runbook Example
 
 ```text
 1. Declare Incident
@@ -1298,7 +1298,7 @@ Escalation
 
 ---
 
-# DR Testing
+## DR Testing
 
 A DR strategy should be tested regularly.
 
@@ -1315,7 +1315,7 @@ Backup Validation
 
 ---
 
-# Restore Testing
+## Restore Testing
 
 Verify:
 
@@ -1333,7 +1333,7 @@ Traffic Works
 
 ---
 
-# Failover Testing
+## Failover Testing
 
 Simulate:
 
@@ -1353,7 +1353,7 @@ Applications
 
 ---
 
-# Game Day
+## Game Day
 
 A game day is a planned exercise where teams simulate a disaster.
 
@@ -1371,7 +1371,7 @@ Management
 
 ---
 
-# Chaos Engineering
+## Chaos Engineering
 
 Chaos engineering intentionally introduces controlled failures to validate system resilience.
 
@@ -1387,7 +1387,7 @@ Measure Recovery
 
 ---
 
-# DR Testing Metrics
+## DR Testing Metrics
 
 Measure:
 
@@ -1402,7 +1402,7 @@ Service Availability
 
 ---
 
-# Failback
+## Failback
 
 Failback is returning operations to the original or preferred environment after recovery.
 
@@ -1423,7 +1423,7 @@ Failback
 
 ---
 
-# Failback Planning
+## Failback Planning
 
 Before failback:
 
@@ -1438,7 +1438,7 @@ Monitoring
 
 ---
 
-# Recovery Validation
+## Recovery Validation
 
 After recovery, verify:
 
@@ -1461,7 +1461,7 @@ Security
 
 ---
 
-# Application Validation
+## Application Validation
 
 Do not only check:
 
@@ -1485,7 +1485,7 @@ according to the application.
 
 ---
 
-# Data Validation
+## Data Validation
 
 Verify:
 
@@ -1502,7 +1502,7 @@ where applicable.
 
 ---
 
-# DR Monitoring
+## DR Monitoring
 
 During recovery, monitor:
 
@@ -1520,7 +1520,7 @@ Traffic
 
 ---
 
-# DR Security
+## DR Security
 
 During disaster recovery:
 
@@ -1541,7 +1541,7 @@ Image Security
 
 ---
 
-# Immutable Backups
+## Immutable Backups
 
 Immutable backups protect against:
 
@@ -1555,7 +1555,7 @@ during a defined retention period.
 
 ---
 
-# Air-Gapped Backups
+## Air-Gapped Backups
 
 Air-gapped backups are isolated from the production environment.
 
@@ -1569,7 +1569,7 @@ Malicious Deletion
 
 ---
 
-# Backup Separation
+## Backup Separation
 
 A strong strategy separates:
 
@@ -1583,7 +1583,7 @@ Compromise of one should not automatically compromise the other.
 
 ---
 
-# Compliance
+## Compliance
 
 Some environments require:
 
@@ -1600,7 +1600,7 @@ Always follow applicable organizational and regulatory requirements.
 
 ---
 
-# DR Documentation
+## DR Documentation
 
 Document:
 
@@ -1618,7 +1618,7 @@ Testing Results
 
 ---
 
-# DR Architecture Example
+## DR Architecture Example
 
 ```text
                        Global DNS
@@ -1650,33 +1650,33 @@ Testing Results
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Assuming HA Is DR
+### 1. Assuming HA Is DR
 
 HA does not protect against every disaster.
 
 ---
 
-## 2. Keeping Backups in the Same Cluster
+### 2. Keeping Backups in the Same Cluster
 
 Cluster loss can also destroy backups.
 
 ---
 
-## 3. Never Testing Recovery
+### 3. Never Testing Recovery
 
 An untested DR plan may fail when needed.
 
 ---
 
-## 4. Ignoring Application Data
+### 4. Ignoring Application Data
 
 Kubernetes resources alone do not restore database contents.
 
 ---
 
-## 5. Ignoring Dependencies
+### 5. Ignoring Dependencies
 
 Applications may depend on:
 
@@ -1690,45 +1690,45 @@ External APIs
 
 ---
 
-## 6. No RPO/RTO
+### 6. No RPO/RTO
 
 Without measurable targets, DR cannot be properly designed.
 
 ---
 
-## 7. No Failback Plan
+### 7. No Failback Plan
 
 Recovery is incomplete if returning to the primary environment is not planned.
 
 ---
 
-## 8. Ignoring Security During DR
+### 8. Ignoring Security During DR
 
 Do not bypass security controls simply to recover faster without a controlled emergency procedure.
 
 ---
 
-## 9. No Immutable Backup
+### 9. No Immutable Backup
 
 Attackers may destroy ordinary backups.
 
 ---
 
-## 10. No Cross-Region Copy
+### 10. No Cross-Region Copy
 
 A regional disaster can affect locally stored backups.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Define RPO and RTO
+#### 1. Define RPO and RTO
 
 Start with business requirements.
 
 ---
 
-### 2. Protect Both State and Data
+#### 2. Protect Both State and Data
 
 Use:
 
@@ -1742,7 +1742,7 @@ PV / Database Backup
 
 ---
 
-### 3. Store Backups Externally
+#### 3. Store Backups Externally
 
 Prefer:
 
@@ -1756,13 +1756,13 @@ where appropriate.
 
 ---
 
-### 4. Use Immutable Backups
+#### 4. Use Immutable Backups
 
 Protect critical recovery points from deletion.
 
 ---
 
-### 5. Test Recovery
+#### 5. Test Recovery
 
 Regularly perform:
 
@@ -1774,7 +1774,7 @@ Failback
 
 ---
 
-### 6. Document Dependencies
+#### 6. Document Dependencies
 
 Map:
 
@@ -1792,7 +1792,7 @@ Storage
 
 ---
 
-### 7. Automate Recovery
+#### 7. Automate Recovery
 
 Use:
 
@@ -1805,7 +1805,7 @@ Backup Tools
 
 ---
 
-### 8. Monitor Backup Health
+#### 8. Monitor Backup Health
 
 Alert on:
 
@@ -1818,7 +1818,7 @@ Restore Failure
 
 ---
 
-### 9. Maintain Recovery Runbooks
+#### 9. Maintain Recovery Runbooks
 
 Ensure operators know:
 
@@ -1831,13 +1831,13 @@ Who
 
 ---
 
-### 10. Conduct DR Exercises
+#### 10. Conduct DR Exercises
 
 Practice before a real disaster occurs.
 
 ---
 
-# Hands-on Lab 1 – Define RPO and RTO
+## Hands-on Lab 1 – Define RPO and RTO
 
 Choose a test application.
 
@@ -1852,7 +1852,7 @@ Design a backup and recovery strategy that meets those targets.
 
 ---
 
-# Hands-on Lab 2 – etcd Disaster Recovery
+## Hands-on Lab 2 – etcd Disaster Recovery
 
 In a disposable cluster:
 
@@ -1870,7 +1870,7 @@ Document the exact version-specific recovery procedure.
 
 ---
 
-# Hands-on Lab 3 – Namespace Recovery
+## Hands-on Lab 3 – Namespace Recovery
 
 Create:
 
@@ -1892,7 +1892,7 @@ Validate all resources.
 
 ---
 
-# Hands-on Lab 4 – Persistent Data Recovery
+## Hands-on Lab 4 – Persistent Data Recovery
 
 Create a PVC containing test data.
 
@@ -1912,7 +1912,7 @@ Verify the data.
 
 ---
 
-# Hands-on Lab 5 – Velero Disaster Recovery
+## Hands-on Lab 5 – Velero Disaster Recovery
 
 Use Velero to:
 
@@ -1934,7 +1934,7 @@ Recovery Time
 
 ---
 
-# Hands-on Lab 6 – Cross-Cluster Recovery
+## Hands-on Lab 6 – Cross-Cluster Recovery
 
 Use:
 
@@ -1961,7 +1961,7 @@ Storage
 
 ---
 
-# Hands-on Lab 7 – Cross-Region Simulation
+## Hands-on Lab 7 – Cross-Region Simulation
 
 Use two test environments representing:
 
@@ -1978,7 +1978,7 @@ Recover in Region B.
 
 ---
 
-# Hands-on Lab 8 – DNS Failover
+## Hands-on Lab 8 – DNS Failover
 
 Create two test environments.
 
@@ -1994,7 +1994,7 @@ Verify traffic moves to the recovery environment.
 
 ---
 
-# Hands-on Lab 9 – Database Recovery
+## Hands-on Lab 9 – Database Recovery
 
 Create a test database.
 
@@ -2014,7 +2014,7 @@ Validate data integrity.
 
 ---
 
-# Hands-on Lab 10 – Immutable Backup
+## Hands-on Lab 10 – Immutable Backup
 
 Configure an object-storage retention policy in a test environment.
 
@@ -2024,7 +2024,7 @@ Verify the protection behavior.
 
 ---
 
-# Hands-on Lab 11 – DR Game Day
+## Hands-on Lab 11 – DR Game Day
 
 Create a scenario:
 
@@ -2053,7 +2053,7 @@ RTO
 
 ---
 
-# Hands-on Lab 12 – Failover Test
+## Hands-on Lab 12 – Failover Test
 
 Run:
 
@@ -2069,7 +2069,7 @@ Measure traffic recovery time.
 
 ---
 
-# Hands-on Lab 13 – Failback Test
+## Hands-on Lab 13 – Failback Test
 
 After recovering the primary:
 
@@ -2087,7 +2087,7 @@ Verify data consistency.
 
 ---
 
-# Hands-on Lab 14 – Dependency Recovery
+## Hands-on Lab 14 – Dependency Recovery
 
 Create an application dependent on:
 
@@ -2102,7 +2102,7 @@ Recover dependencies in the correct order.
 
 ---
 
-# Hands-on Lab 15 – Security Incident Recovery
+## Hands-on Lab 15 – Security Incident Recovery
 
 In a disposable environment, simulate compromised application credentials.
 
@@ -2124,7 +2124,7 @@ Validation
 
 ---
 
-# Hands-on Lab 16 – Recovery Validation
+## Hands-on Lab 16 – Recovery Validation
 
 Create automated tests that verify:
 
@@ -2140,7 +2140,7 @@ after recovery.
 
 ---
 
-# Hands-on Lab 17 – Measure RTO
+## Hands-on Lab 17 – Measure RTO
 
 Document the exact recovery procedure.
 
@@ -2158,7 +2158,7 @@ Compare with the target.
 
 ---
 
-# Hands-on Lab 18 – Measure RPO
+## Hands-on Lab 18 – Measure RPO
 
 Create data at known timestamps.
 
@@ -2170,7 +2170,7 @@ Determine the latest recoverable data point.
 
 ---
 
-# Hands-on Lab 19 – Full DR Simulation
+## Hands-on Lab 19 – Full DR Simulation
 
 Simulate:
 
@@ -2196,7 +2196,7 @@ Traffic
 
 ---
 
-# Hands-on Lab 20 – Production DR Architecture
+## Hands-on Lab 20 – Production DR Architecture
 
 Design:
 
@@ -2232,9 +2232,9 @@ Monitoring
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Disaster Recovery
+### Disaster Recovery
 
 ```text
 Strategy for recovering from major failures
@@ -2242,7 +2242,7 @@ Strategy for recovering from major failures
 
 ---
 
-## Business Continuity
+### Business Continuity
 
 ```text
 Keeping business operations functioning during disruption
@@ -2250,7 +2250,7 @@ Keeping business operations functioning during disruption
 
 ---
 
-## RPO
+### RPO
 
 ```text
 Maximum acceptable data loss
@@ -2258,7 +2258,7 @@ Maximum acceptable data loss
 
 ---
 
-## RTO
+### RTO
 
 ```text
 Target maximum recovery time
@@ -2266,7 +2266,7 @@ Target maximum recovery time
 
 ---
 
-## MTTD
+### MTTD
 
 ```text
 Mean Time To Detect
@@ -2274,7 +2274,7 @@ Mean Time To Detect
 
 ---
 
-## MTTR
+### MTTR
 
 ```text
 Mean Time To Recovery
@@ -2282,7 +2282,7 @@ Mean Time To Recovery
 
 ---
 
-## Warm Standby
+### Warm Standby
 
 ```text
 Partially prepared recovery environment
@@ -2290,7 +2290,7 @@ Partially prepared recovery environment
 
 ---
 
-## Cold Standby
+### Cold Standby
 
 ```text
 Environment requiring significant provisioning during recovery
@@ -2298,7 +2298,7 @@ Environment requiring significant provisioning during recovery
 
 ---
 
-## Active-Passive
+### Active-Passive
 
 ```text
 Primary environment + standby environment
@@ -2306,7 +2306,7 @@ Primary environment + standby environment
 
 ---
 
-## Active-Active
+### Active-Active
 
 ```text
 Multiple environments actively serving traffic
@@ -2314,7 +2314,7 @@ Multiple environments actively serving traffic
 
 ---
 
-## Failover
+### Failover
 
 ```text
 Move service from failed environment to recovery environment
@@ -2322,7 +2322,7 @@ Move service from failed environment to recovery environment
 
 ---
 
-## Failback
+### Failback
 
 ```text
 Return service to the primary/preferred environment
@@ -2330,7 +2330,7 @@ Return service to the primary/preferred environment
 
 ---
 
-## Immutable Backup
+### Immutable Backup
 
 ```text
 Backup protected against modification/deletion during retention
@@ -2338,7 +2338,7 @@ Backup protected against modification/deletion during retention
 
 ---
 
-## Air-Gapped Backup
+### Air-Gapped Backup
 
 ```text
 Backup isolated from production
@@ -2346,7 +2346,7 @@ Backup isolated from production
 
 ---
 
-## DR Test
+### DR Test
 
 ```text
 Controlled exercise proving recovery capability
@@ -2354,7 +2354,7 @@ Controlled exercise proving recovery capability
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check cluster:
 
@@ -2455,9 +2455,9 @@ etcdctl snapshot status snapshot.db
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Disaster Recovery?
 - What is the difference between HA and DR?
@@ -2478,7 +2478,7 @@ etcdctl snapshot status snapshot.db
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How would you recover a Kubernetes cluster?
 - How would you recover etcd?
@@ -2497,7 +2497,7 @@ etcdctl snapshot status snapshot.db
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a multi-region Kubernetes DR architecture.
 - Design an active-active Kubernetes DR strategy.
@@ -2516,13 +2516,13 @@ etcdctl snapshot status snapshot.db
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What is the difference between High Availability and Disaster Recovery?
 
-### Answer
+#### Answer
 
 HA focuses on continuing service when individual components fail:
 
@@ -2550,13 +2550,13 @@ DR enables recovery.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > What is RPO?
 
-### Answer
+#### Answer
 
 RPO defines acceptable data loss.
 
@@ -2570,13 +2570,13 @@ means the recovery strategy should target a recovery point no older than approxi
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > What is RTO?
 
-### Answer
+#### Answer
 
 RTO defines the target recovery time.
 
@@ -2590,13 +2590,13 @@ means the service should target restoration within approximately one hour.
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > How would you recover a Kubernetes cluster after complete control-plane loss?
 
-### Answer
+#### Answer
 
 Conceptually:
 
@@ -2626,13 +2626,13 @@ The exact procedure depends on the Kubernetes distribution and architecture.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How would you protect Kubernetes backups from ransomware?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2656,13 +2656,13 @@ The attacker should not be able to destroy every recovery copy using compromised
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > Why isn't a VolumeSnapshot enough for disaster recovery?
 
-### Answer
+#### Answer
 
 A VolumeSnapshot may remain tied to the underlying storage system.
 
@@ -2689,13 +2689,13 @@ where required.
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > What should be recovered first?
 
-### Answer
+#### Answer
 
 A common dependency order is:
 
@@ -2721,13 +2721,13 @@ The exact order depends on the environment.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How do you test disaster recovery?
 
-### Answer
+#### Answer
 
 Use controlled exercises:
 
@@ -2753,13 +2753,13 @@ Data Integrity
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > What is the difference between active-active and active-passive DR?
 
-### Answer
+#### Answer
 
 Active-passive:
 
@@ -2779,13 +2779,13 @@ Active-active can provide faster failover but introduces significantly more comp
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a production Kubernetes DR architecture.
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2828,7 +2828,7 @@ Regular Testing
 
 ---
 
-# Production DR Checklist
+## Production DR Checklist
 
 ```text
 ☑ Business-critical services identified
@@ -2862,7 +2862,7 @@ Regular Testing
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Disaster Recovery protects Kubernetes environments against failures larger than normal HA scenarios.
 
@@ -2923,9 +2923,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 70 – Cluster Maintenance
+## Chapter 70 – Cluster Maintenance
 
 Topics will include:
 

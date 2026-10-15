@@ -1,6 +1,6 @@
 # 22-Active-Directory-for-Red-Team.md
 
-# Part 1 — Introduction to Active Directory Red Team Operations, Adversary Simulation, Assessment Methodology and Rules of Engagement
+## Part 1 — Introduction to Active Directory Red Team Operations, Adversary Simulation, Assessment Methodology and Rules of Engagement
 
 > **Important Note**
 >
@@ -10,7 +10,7 @@
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -25,7 +25,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 A **Red Team** is an authorized security team that simulates realistic adversary behavior to evaluate an organization's ability to:
 
@@ -38,7 +38,7 @@ Unlike vulnerability scanning or compliance reviews, Red Team assessments evalua
 
 ---
 
-# Objectives of an Active Directory Red Team Assessment
+## Objectives of an Active Directory Red Team Assessment
 
 Typical objectives include:
 
@@ -53,7 +53,7 @@ The objective is to improve organizational resilience—not simply to find vulne
 
 ---
 
-# Security Team Roles
+## Security Team Roles
 
 ```
                Enterprise Security
@@ -75,7 +75,7 @@ The objective is to improve organizational resilience—not simply to find vulne
 
 ---
 
-# Red Team vs Blue Team
+## Red Team vs Blue Team
 
 | Red Team | Blue Team |
 |----------|-----------|
@@ -88,7 +88,7 @@ Both teams ultimately work toward the same goal: improving enterprise security.
 
 ---
 
-# Purple Team
+## Purple Team
 
 Purple Teaming brings Red and Blue Teams together.
 
@@ -120,7 +120,7 @@ Purple Team exercises shorten the feedback loop between testing and defensive im
 
 ---
 
-# Assessment Scope
+## Assessment Scope
 
 Before any assessment begins, the scope should clearly define:
 
@@ -135,7 +135,7 @@ A well-defined scope protects both the organization and the assessment team.
 
 ---
 
-# Rules of Engagement (RoE)
+## Rules of Engagement (RoE)
 
 Every enterprise assessment should include documented Rules of Engagement.
 
@@ -152,7 +152,7 @@ Typical sections:
 
 ---
 
-# Assessment Lifecycle
+## Assessment Lifecycle
 
 ```
 Planning
@@ -186,7 +186,7 @@ Security improvement continues after the assessment concludes.
 
 ---
 
-# Enterprise Planning Checklist
+## Enterprise Planning Checklist
 
 ```
 ✓ Written Authorization
@@ -208,7 +208,7 @@ Security improvement continues after the assessment concludes.
 
 ---
 
-# Enterprise Risk Management
+## Enterprise Risk Management
 
 Risk should be managed throughout the engagement.
 
@@ -225,7 +225,7 @@ The assessment should avoid unnecessary operational disruption.
 
 ---
 
-# Evidence Collection
+## Evidence Collection
 
 Evidence should be:
 
@@ -239,7 +239,7 @@ Evidence supports remediation and executive reporting.
 
 ---
 
-# Reporting Principles
+## Reporting Principles
 
 Assessment reports should include:
 
@@ -256,7 +256,7 @@ Reports should clearly explain **why** each finding matters.
 
 ---
 
-# Communication During Assessments
+## Communication During Assessments
 
 ```
 Planning Meeting
@@ -286,7 +286,7 @@ Consistent communication reduces misunderstandings and operational risk.
 
 ---
 
-# Success Criteria
+## Success Criteria
 
 An assessment is successful when it helps the organization:
 
@@ -301,7 +301,7 @@ The value lies in actionable improvements.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -333,7 +333,7 @@ Outcomes:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Professional Red Team engagements are governed by:
 
@@ -348,13 +348,13 @@ The objective is to strengthen defenses through realistic, controlled evaluation
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design an assessment plan for a fictional enterprise.
 
-### Step 1
+#### Step 1
 
 Define:
 
@@ -364,7 +364,7 @@ Define:
 
 ---
 
-### Step 2
+#### Step 2
 
 Create a Rules of Engagement document outlining:
 
@@ -375,7 +375,7 @@ Create a Rules of Engagement document outlining:
 
 ---
 
-### Step 3
+#### Step 3
 
 Identify:
 
@@ -385,7 +385,7 @@ Identify:
 
 ---
 
-### Step 4
+#### Step 4
 
 Prepare a reporting template including:
 
@@ -396,51 +396,51 @@ Prepare a reporting template including:
 
 ---
 
-### Step 5
+#### Step 5
 
 Conduct a lessons-learned meeting to discuss how future assessments could be improved.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is the purpose of a Red Team assessment?
+#### Q1: What is the purpose of a Red Team assessment?
 
 **Answer:** To evaluate an organization's ability to prevent, detect, respond to, and recover from realistic security scenarios in an authorized and controlled manner.
 
 ---
 
-### Q2: Why are Rules of Engagement important?
+#### Q2: Why are Rules of Engagement important?
 
 **Answer:** They define authorization, scope, communication, safety requirements, and expectations, ensuring assessments are conducted responsibly.
 
 ---
 
-### Q3: How does a Purple Team exercise benefit an organization?
+#### Q3: How does a Purple Team exercise benefit an organization?
 
 **Answer:** It enables Red and Blue Teams to collaborate, validate detections, identify gaps, and improve defensive capabilities.
 
 ---
 
-### Q4: Why should assessment findings include business impact?
+#### Q4: Why should assessment findings include business impact?
 
 **Answer:** Business impact helps stakeholders prioritize remediation based on operational risk rather than technical severity alone.
 
 ---
 
-### Q5: Why is documentation essential during assessments?
+#### Q5: Why is documentation essential during assessments?
 
 **Answer:** Accurate documentation supports reproducibility, reporting, remediation planning, and future reassessments.
 
 ---
 
-### Q6: What defines a successful Red Team engagement?
+#### Q6: What defines a successful Red Team engagement?
 
 **Answer:** A successful engagement provides actionable insights that improve security controls, detection capabilities, and organizational resilience.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Obtain explicit written authorization before any testing.
 - Define clear scope and objectives.
@@ -453,7 +453,7 @@ Conduct a lessons-learned meeting to discuss how future assessments could be imp
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Beginning assessments without documented authorization.
 - Defining an unclear or overly broad scope.
@@ -464,7 +464,7 @@ Conduct a lessons-learned meeting to discuss how future assessments could be imp
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Red Team engagements are authorized security assessments designed to improve enterprise defenses.
 - Planning, Rules of Engagement, and communication are essential to successful assessments.
@@ -473,9 +473,9 @@ Conduct a lessons-learned meeting to discuss how future assessments could be imp
 
 ---
 
-# 22-Active-Directory-for-Red-Team.md
+## 22-Active-Directory-for-Red-Team.md
 
-# Part 2 — Active Directory Assessment Methodology, Reconnaissance Planning, Security Validation and Defensive Gap Analysis
+## Part 2 — Active Directory Assessment Methodology, Reconnaissance Planning, Security Validation and Defensive Gap Analysis
 
 > **Important Note**
 >
@@ -483,7 +483,7 @@ Conduct a lessons-learned meeting to discuss how future assessments could be imp
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -499,7 +499,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Professional Red Teams do not begin with technical testing.
 
@@ -515,7 +515,7 @@ Planning ensures assessments are realistic, measurable, and safe.
 
 ---
 
-# Enterprise Assessment Methodology
+## Enterprise Assessment Methodology
 
 ```
 Planning
@@ -553,7 +553,7 @@ Every phase produces information that supports the next.
 
 ---
 
-# Assessment Planning
+## Assessment Planning
 
 Before technical work begins, the team should determine:
 
@@ -567,7 +567,7 @@ Before technical work begins, the team should determine:
 
 ---
 
-# Enterprise Asset Identification
+## Enterprise Asset Identification
 
 Typical Active Directory assets include:
 
@@ -597,7 +597,7 @@ Understanding asset relationships helps prioritize assessment activities.
 
 ---
 
-# Critical Asset Classification
+## Critical Asset Classification
 
 Example classification:
 
@@ -615,7 +615,7 @@ Higher criticality generally requires stronger security controls and more detail
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling helps identify where security controls should be evaluated.
 
@@ -643,7 +643,7 @@ Threat modeling supports risk-based assessments rather than checklist-driven rev
 
 ---
 
-# Identity Trust Analysis
+## Identity Trust Analysis
 
 Professional assessments review trust relationships such as:
 
@@ -657,7 +657,7 @@ The objective is to verify that trust boundaries align with business requirement
 
 ---
 
-# Security Control Validation
+## Security Control Validation
 
 Typical control categories include:
 
@@ -685,7 +685,7 @@ Each control should be evaluated for effectiveness rather than simply confirming
 
 ---
 
-# Administrative Security Review
+## Administrative Security Review
 
 Areas commonly reviewed include:
 
@@ -698,7 +698,7 @@ Areas commonly reviewed include:
 
 ---
 
-# Configuration Review
+## Configuration Review
 
 Configuration reviews focus on:
 
@@ -713,7 +713,7 @@ Configuration consistency often reflects operational maturity.
 
 ---
 
-# Defensive Gap Analysis
+## Defensive Gap Analysis
 
 Gap analysis compares:
 
@@ -741,7 +741,7 @@ The goal is to improve defensive capabilities rather than simply identify defici
 
 ---
 
-# Risk Assessment Matrix
+## Risk Assessment Matrix
 
 Example framework:
 
@@ -757,7 +757,7 @@ Organizations should use their own approved risk methodology where applicable.
 
 ---
 
-# Evidence Collection
+## Evidence Collection
 
 Evidence should include:
 
@@ -772,7 +772,7 @@ Evidence should be securely stored and protected from unauthorized access.
 
 ---
 
-# Findings Documentation
+## Findings Documentation
 
 Each finding should include:
 
@@ -788,7 +788,7 @@ Good documentation improves remediation success.
 
 ---
 
-# Assessment Workflow
+## Assessment Workflow
 
 ```
 Identify Asset
@@ -816,7 +816,7 @@ Recommend Improvements
 
 ---
 
-# Stakeholder Communication
+## Stakeholder Communication
 
 Throughout the engagement, maintain communication with:
 
@@ -830,7 +830,7 @@ Regular updates reduce misunderstandings and support coordinated remediation.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -862,7 +862,7 @@ Assessment Outcomes:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Effective Red Team assessments emphasize:
 
@@ -875,13 +875,13 @@ Technical findings are most valuable when paired with business context and pract
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Perform a high-level security review of a fictional Active Directory environment.
 
-### Step 1
+#### Step 1
 
 Create an inventory of:
 
@@ -892,13 +892,13 @@ Create an inventory of:
 
 ---
 
-### Step 2
+#### Step 2
 
 Classify each asset by business criticality.
 
 ---
 
-### Step 3
+#### Step 3
 
 Review documented security controls for:
 
@@ -910,57 +910,57 @@ Review documented security controls for:
 
 ---
 
-### Step 4
+#### Step 4
 
 Create a gap analysis table comparing expected controls to observed controls.
 
 ---
 
-### Step 5
+#### Step 5
 
 Write three prioritized recommendations for improving the organization's Active Directory security posture.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is assessment planning important?
+#### Q1: Why is assessment planning important?
 
 **Answer:** Planning ensures the assessment aligns with business objectives, minimizes operational risk, and defines clear success criteria.
 
 ---
 
-### Q2: What is threat modeling?
+#### Q2: What is threat modeling?
 
 **Answer:** Threat modeling is the process of identifying important assets, potential threats, and the security controls that should protect them.
 
 ---
 
-### Q3: Why should assets be classified by criticality?
+#### Q3: Why should assets be classified by criticality?
 
 **Answer:** Classification helps prioritize security efforts and remediation based on business impact.
 
 ---
 
-### Q4: What is defensive gap analysis?
+#### Q4: What is defensive gap analysis?
 
 **Answer:** It compares current security controls against expected security objectives to identify opportunities for improvement.
 
 ---
 
-### Q5: Why should findings include business impact?
+#### Q5: Why should findings include business impact?
 
 **Answer:** Business impact helps decision-makers prioritize remediation according to organizational risk.
 
 ---
 
-### Q6: Why is evidence collection important?
+#### Q6: Why is evidence collection important?
 
 **Answer:** Evidence supports findings, enables verification, and provides a reliable foundation for remediation planning.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Begin every assessment with clear planning.
 - Prioritize critical identity assets.
@@ -973,7 +973,7 @@ Write three prioritized recommendations for improving the organization's Active 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Starting technical work without understanding business objectives.
 - Treating all assets as equally important.
@@ -984,7 +984,7 @@ Write three prioritized recommendations for improving the organization's Active 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Successful Red Team engagements begin with planning, asset understanding, and risk assessment.
 - Security validation should measure the effectiveness of defensive controls rather than simply confirming their existence.
@@ -993,9 +993,9 @@ Write three prioritized recommendations for improving the organization's Active 
 
 ---
 
-# 22-Active-Directory-for-Red-Team.md
+## 22-Active-Directory-for-Red-Team.md
 
-# Part 3 — Assessment Reporting, Purple Team Collaboration, Security Validation, Remediation Verification and Red Team Operations
+## Part 3 — Assessment Reporting, Purple Team Collaboration, Security Validation, Remediation Verification and Red Team Operations
 
 > **Important Note**
 >
@@ -1003,7 +1003,7 @@ Write three prioritized recommendations for improving the organization's Active 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1019,7 +1019,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Finding security weaknesses is only one part of a successful Red Team engagement.
 
@@ -1035,7 +1035,7 @@ The assessment should ultimately strengthen the organization's security posture.
 
 ---
 
-# Enterprise Assessment Lifecycle
+## Enterprise Assessment Lifecycle
 
 ```
 Planning
@@ -1067,7 +1067,7 @@ Continuous Improvement
 
 ---
 
-# Reporting Objectives
+## Reporting Objectives
 
 A Red Team report should answer:
 
@@ -1082,7 +1082,7 @@ Reports should be actionable rather than purely technical.
 
 ---
 
-# Reporting Structure
+## Reporting Structure
 
 ```
 Executive Summary
@@ -1114,7 +1114,7 @@ Appendices
 
 ---
 
-# Executive Summary
+## Executive Summary
 
 Executive audiences generally require:
 
@@ -1128,7 +1128,7 @@ Avoid unnecessary technical terminology.
 
 ---
 
-# Technical Report
+## Technical Report
 
 Technical teams require greater detail.
 
@@ -1146,7 +1146,7 @@ Typical sections include:
 
 ---
 
-# Risk Prioritization
+## Risk Prioritization
 
 Not every finding requires immediate remediation.
 
@@ -1182,7 +1182,7 @@ Risk prioritization should consider:
 
 ---
 
-# Remediation Planning
+## Remediation Planning
 
 ```
 Finding
@@ -1212,7 +1212,7 @@ Each recommendation should be practical, measurable, and appropriate for the org
 
 ---
 
-# Security Validation
+## Security Validation
 
 After remediation, organizations should validate that:
 
@@ -1225,7 +1225,7 @@ Validation confirms that remediation achieved the intended outcome.
 
 ---
 
-# Remediation Verification
+## Remediation Verification
 
 Verification checklist:
 
@@ -1245,7 +1245,7 @@ Verification checklist:
 
 ---
 
-# Purple Team Collaboration
+## Purple Team Collaboration
 
 Purple Team exercises help convert assessment findings into defensive improvements.
 
@@ -1277,7 +1277,7 @@ Purple Team collaboration reduces the time between discovering a weakness and im
 
 ---
 
-# Detection Improvement Process
+## Detection Improvement Process
 
 ```
 Assessment Finding
@@ -1311,7 +1311,7 @@ Detection engineering should evolve alongside organizational changes.
 
 ---
 
-# Security Control Validation
+## Security Control Validation
 
 Common control areas include:
 
@@ -1327,7 +1327,7 @@ Validation should confirm both effectiveness and operational sustainability.
 
 ---
 
-# Measuring Security Improvement
+## Measuring Security Improvement
 
 Example measurements:
 
@@ -1342,7 +1342,7 @@ Example measurements:
 
 ---
 
-# Security Maturity Model
+## Security Maturity Model
 
 ```
 Level 1
@@ -1378,7 +1378,7 @@ Organizations progress through maturity by continuously improving people, proces
 
 ---
 
-# Lessons Learned
+## Lessons Learned
 
 Every assessment should conclude with a structured review.
 
@@ -1394,7 +1394,7 @@ Lessons learned should be documented and tracked.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1425,7 +1425,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 The most valuable Red Team engagements produce:
 
@@ -1439,19 +1439,19 @@ Security assessments should become part of an organization's continuous improvem
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Create a remediation and validation plan for a fictional Active Directory assessment.
 
-### Step 1
+#### Step 1
 
 Select five example findings.
 
 ---
 
-### Step 2
+#### Step 2
 
 Assign each finding:
 
@@ -1461,63 +1461,63 @@ Assign each finding:
 
 ---
 
-### Step 3
+#### Step 3
 
 Develop a remediation tracking table.
 
 ---
 
-### Step 4
+#### Step 4
 
 Define validation criteria for each completed remediation activity.
 
 ---
 
-### Step 5
+#### Step 5
 
 Prepare an executive summary highlighting the organization's progress and remaining priorities.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is remediation validation important?
+#### Q1: Why is remediation validation important?
 
 **Answer:** Validation confirms that implemented changes effectively address the identified issue without negatively affecting business operations.
 
 ---
 
-### Q2: What is the purpose of an executive summary?
+#### Q2: What is the purpose of an executive summary?
 
 **Answer:** It communicates the overall security posture, key risks, and strategic recommendations in a format suitable for business leadership.
 
 ---
 
-### Q3: How does Purple Teaming improve security?
+#### Q3: How does Purple Teaming improve security?
 
 **Answer:** Purple Teaming enables Red and Blue Teams to collaborate on improving detections, validating controls, and strengthening defensive capabilities.
 
 ---
 
-### Q4: Why should findings be prioritized?
+#### Q4: Why should findings be prioritized?
 
 **Answer:** Prioritization helps organizations allocate resources toward the issues with the greatest business risk.
 
 ---
 
-### Q5: What should happen after remediation is completed?
+#### Q5: What should happen after remediation is completed?
 
 **Answer:** Organizations should verify the effectiveness of the changes, update documentation, and continue monitoring to ensure the improvements remain effective.
 
 ---
 
-### Q6: Why are lessons learned valuable?
+#### Q6: Why are lessons learned valuable?
 
 **Answer:** They help improve future assessments, operational processes, communication, and overall security maturity.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Produce reports that are clear and actionable.
 - Separate executive and technical reporting.
@@ -1530,7 +1530,7 @@ Prepare an executive summary highlighting the organization's progress and remain
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Delivering overly technical reports to executive audiences.
 - Closing findings without validation.
@@ -1541,7 +1541,7 @@ Prepare an executive summary highlighting the organization's progress and remain
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Reporting and remediation are critical components of a successful Red Team engagement.
 - Purple Team collaboration accelerates defensive improvements.
@@ -1550,9 +1550,9 @@ Prepare an executive summary highlighting the organization's progress and remain
 
 ---
 
-# 22-Active-Directory-for-Red-Team.md
+## 22-Active-Directory-for-Red-Team.md
 
-# Part 4 — Program Management, Assessment Metrics, Ethics, Continuous Improvement and Chapter Summary
+## Part 4 — Program Management, Assessment Metrics, Ethics, Continuous Improvement and Chapter Summary
 
 > **Important Note**
 >
@@ -1560,7 +1560,7 @@ Prepare an executive summary highlighting the organization's progress and remain
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1576,7 +1576,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 A successful Red Team engagement is measured **not by the number of findings**, but by the improvements it drives across the organization.
 
@@ -1590,7 +1590,7 @@ The ultimate objective is to:
 
 ---
 
-# Enterprise Red Team Program
+## Enterprise Red Team Program
 
 ```
 Security Strategy
@@ -1624,7 +1624,7 @@ Organizations benefit most when Red Team activities are part of an ongoing secur
 
 ---
 
-# Red Team Governance
+## Red Team Governance
 
 Effective governance defines:
 
@@ -1641,7 +1641,7 @@ Governance ensures consistency across engagements.
 
 ---
 
-# Roles and Responsibilities
+## Roles and Responsibilities
 
 | Role | Primary Responsibility |
 |------|-------------------------|
@@ -1655,7 +1655,7 @@ Governance ensures consistency across engagements.
 
 ---
 
-# Assessment Success Metrics
+## Assessment Success Metrics
 
 Example measurements include:
 
@@ -1674,7 +1674,7 @@ Metrics should demonstrate measurable security improvement over time.
 
 ---
 
-# Remediation Tracking
+## Remediation Tracking
 
 ```
 Finding
@@ -1709,7 +1709,7 @@ Every finding should have:
 
 ---
 
-# Continuous Security Validation
+## Continuous Security Validation
 
 Security controls should be validated regularly.
 
@@ -1741,7 +1741,7 @@ Validation helps ensure controls remain effective as environments evolve.
 
 ---
 
-# Purple Team Improvement Cycle
+## Purple Team Improvement Cycle
 
 ```
 Assessment Finding
@@ -1771,7 +1771,7 @@ This cycle strengthens both offensive testing and defensive operations.
 
 ---
 
-# Executive Communication
+## Executive Communication
 
 Executives typically want answers to questions such as:
 
@@ -1785,7 +1785,7 @@ Executive reporting should focus on business outcomes rather than technical comp
 
 ---
 
-# Ethical Responsibilities
+## Ethical Responsibilities
 
 Professional Red Teams should always:
 
@@ -1801,7 +1801,7 @@ Ethics are fundamental to every security assessment.
 
 ---
 
-# Documentation Standards
+## Documentation Standards
 
 Assessment documentation should include:
 
@@ -1841,7 +1841,7 @@ Comprehensive documentation supports audits, remediation, and future assessments
 
 ---
 
-# Security Program Maturity
+## Security Program Maturity
 
 ```
 Level 1
@@ -1877,9 +1877,9 @@ Higher maturity levels generally result in more predictable and effective securi
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Company
+### Company
 
 ```
 Contoso Energy Group
@@ -1910,7 +1910,7 @@ Results:
 
 ---
 
-# Continuous Improvement Model
+## Continuous Improvement Model
 
 ```
 Assess
@@ -1944,7 +1944,7 @@ Security maturity is achieved through continuous refinement rather than one-time
 
 ---
 
-# Enterprise Assessment Checklist
+## Enterprise Assessment Checklist
 
 ```
 Planning
@@ -1992,7 +1992,7 @@ Post Assessment
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 An effective Red Team program:
 
@@ -2007,13 +2007,13 @@ The value of a Red Team is measured by the positive change it enables.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design a long-term Active Directory Red Team program for a fictional enterprise.
 
-### Step 1
+#### Step 1
 
 Define:
 
@@ -2023,7 +2023,7 @@ Define:
 
 ---
 
-### Step 2
+#### Step 2
 
 Create:
 
@@ -2033,63 +2033,63 @@ Create:
 
 ---
 
-### Step 3
+#### Step 3
 
 Design a Purple Team collaboration process for validating security improvements.
 
 ---
 
-### Step 4
+#### Step 4
 
 Develop a maturity roadmap from initial assessments to continuous validation.
 
 ---
 
-### Step 5
+#### Step 5
 
 Present recommendations for improving governance, reporting, and collaboration over the next 12 months.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is the primary purpose of a Red Team program?
+#### Q1: What is the primary purpose of a Red Team program?
 
 **Answer:** To continuously evaluate and improve an organization's security posture through authorized adversary simulation, reporting, and validation.
 
 ---
 
-### Q2: Why is governance important in Red Team engagements?
+#### Q2: Why is governance important in Red Team engagements?
 
 **Answer:** Governance ensures assessments are properly authorized, consistently executed, well-documented, and aligned with business objectives.
 
 ---
 
-### Q3: Why should findings be tracked after an assessment?
+#### Q3: Why should findings be tracked after an assessment?
 
 **Answer:** Tracking ensures remediation is completed, validated, and measured for effectiveness over time.
 
 ---
 
-### Q4: What is the benefit of continuous security validation?
+#### Q4: What is the benefit of continuous security validation?
 
 **Answer:** It confirms that implemented controls remain effective as infrastructure, business processes, and threats evolve.
 
 ---
 
-### Q5: Why is executive reporting different from technical reporting?
+#### Q5: Why is executive reporting different from technical reporting?
 
 **Answer:** Executive reporting emphasizes business risk, strategic priorities, and organizational impact, while technical reporting provides implementation details and remediation guidance.
 
 ---
 
-### Q6: What defines a mature Red Team program?
+#### Q6: What defines a mature Red Team program?
 
 **Answer:** A mature program includes governance, repeatable assessments, Purple Team collaboration, continuous validation, measurable improvements, and strong executive support.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Conduct assessments only with explicit authorization.
 - Integrate Red Team activities into the broader security program.
@@ -2102,7 +2102,7 @@ Present recommendations for improving governance, reporting, and collaboration o
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating Red Team engagements as isolated events.
 - Measuring success solely by the number of findings.
@@ -2113,7 +2113,7 @@ Present recommendations for improving governance, reporting, and collaboration o
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Red Team assessments are most valuable when they drive measurable security improvements.
 - Governance, reporting, and validation are as important as the assessment itself.
@@ -2122,7 +2122,7 @@ Present recommendations for improving governance, reporting, and collaboration o
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

@@ -1,10 +1,10 @@
 # 19 - Linux Firewalls
 
-# Part 1 — Firewall Fundamentals, Packet Filtering, Netfilter Architecture, Stateful Firewalls, and Linux Firewall Overview
+## Part 1 — Firewall Fundamentals, Packet Filtering, Netfilter Architecture, Stateful Firewalls, and Linux Firewall Overview
 
 ---
 
-# Introduction
+## Introduction
 
 Every Linux server connected to a network is exposed to potential threats.
 
@@ -31,7 +31,7 @@ a properly configured firewall is essential for securing the system.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -46,7 +46,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is a Firewall?
+## What is a Firewall?
 
 A firewall is a security mechanism that monitors and controls incoming and outgoing network traffic according to predefined rules.
 
@@ -60,7 +60,7 @@ Its primary objectives are to:
 
 ---
 
-# Firewall Workflow
+## Firewall Workflow
 
 ```text
 Internet
@@ -92,7 +92,7 @@ Drop / Reject
 
 ---
 
-# Why Firewalls Matter
+## Why Firewalls Matter
 
 Firewalls help organizations:
 
@@ -108,7 +108,7 @@ Without a firewall, any service listening on the network may be directly reachab
 
 ---
 
-# Security Layers
+## Security Layers
 
 ```text
 Internet
@@ -138,7 +138,7 @@ The firewall is one layer in a defense-in-depth strategy.
 
 ---
 
-# Types of Firewalls
+## Types of Firewalls
 
 | Firewall Type | Description |
 |---------------|-------------|
@@ -154,7 +154,7 @@ Linux commonly implements **host-based firewalls**.
 
 ---
 
-# Host-Based vs Network Firewalls
+## Host-Based vs Network Firewalls
 
 | Host Firewall | Network Firewall |
 |---------------|------------------|
@@ -167,7 +167,7 @@ In enterprise environments, both are typically used together.
 
 ---
 
-# Firewall Policies
+## Firewall Policies
 
 A firewall evaluates traffic against a rule set.
 
@@ -182,9 +182,9 @@ Typical policies include:
 
 ---
 
-# Drop vs Reject
+## Drop vs Reject
 
-### Drop
+#### Drop
 
 ```text
 Packet
@@ -202,7 +202,7 @@ The sender receives no firewall-generated response.
 
 ---
 
-### Reject
+#### Reject
 
 ```text
 Packet
@@ -220,7 +220,7 @@ The sender receives a response such as an ICMP unreachable message or a TCP rese
 
 ---
 
-# Packet Filtering
+## Packet Filtering
 
 Packet filtering examines packet headers.
 
@@ -238,7 +238,7 @@ Based on these attributes, the firewall decides whether to allow or block the pa
 
 ---
 
-# Packet Flow
+## Packet Flow
 
 ```text
 Packet
@@ -268,7 +268,7 @@ Drop
 
 ---
 
-# Firewall Rule Components
+## Firewall Rule Components
 
 Typical rule criteria include:
 
@@ -284,7 +284,7 @@ Typical rule criteria include:
 
 ---
 
-# Example Rule
+## Example Rule
 
 Conceptually:
 
@@ -310,7 +310,7 @@ Only SSH traffic from the specified subnet is permitted.
 
 ---
 
-# Packet Filtering Advantages
+## Packet Filtering Advantages
 
 - Fast
 - Efficient
@@ -320,7 +320,7 @@ Only SSH traffic from the specified subnet is permitted.
 
 ---
 
-# Packet Filtering Limitations
+## Packet Filtering Limitations
 
 Traditional stateless filtering:
 
@@ -332,7 +332,7 @@ This led to the development of **stateful firewalls**.
 
 ---
 
-# Stateful Firewalls
+## Stateful Firewalls
 
 Stateful firewalls maintain a **connection tracking table**.
 
@@ -340,7 +340,7 @@ Instead of treating every packet independently, they understand the state of a c
 
 ---
 
-# Connection Tracking
+## Connection Tracking
 
 ```text
 Client
@@ -380,7 +380,7 @@ Established Session
 
 ---
 
-# Common Connection States
+## Common Connection States
 
 | State | Meaning |
 |---------|----------|
@@ -391,7 +391,7 @@ Established Session
 
 ---
 
-# Why Stateful Firewalls are Better
+## Why Stateful Firewalls are Better
 
 Stateful firewalls:
 
@@ -403,7 +403,7 @@ Stateful firewalls:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Without connection tracking:
 
@@ -431,7 +431,7 @@ Automatically Permit Return Traffic
 
 ---
 
-# Netfilter
+## Netfilter
 
 Linux implements packet filtering through the **Netfilter** framework inside the kernel.
 
@@ -447,7 +447,7 @@ User-space tools such as `iptables`, `nftables`, `firewalld`, and `ufw` interact
 
 ---
 
-# Netfilter Architecture
+## Netfilter Architecture
 
 ```text
 Network Interface
@@ -475,7 +475,7 @@ Application
 
 ---
 
-# Packet Processing Hooks
+## Packet Processing Hooks
 
 Netfilter processes packets through several hooks.
 
@@ -541,7 +541,7 @@ Network
 
 ---
 
-# Netfilter Hooks
+## Netfilter Hooks
 
 | Hook | Purpose |
 |-------|----------|
@@ -553,7 +553,7 @@ Network
 
 ---
 
-# Linux Firewall Frameworks
+## Linux Firewall Frameworks
 
 Several user-space tools configure Netfilter.
 
@@ -568,7 +568,7 @@ Although many distributions now default to `nftables`, `iptables` remains widely
 
 ---
 
-# Choosing a Firewall Tool
+## Choosing a Firewall Tool
 
 | Environment | Common Choice |
 |-------------|---------------|
@@ -582,7 +582,7 @@ The choice often depends on distribution defaults and organizational standards.
 
 ---
 
-# Default Firewall Strategy
+## Default Firewall Strategy
 
 A common secure strategy:
 
@@ -608,7 +608,7 @@ Log Important Events
 
 ---
 
-# Example Secure Server
+## Example Secure Server
 
 ```text
 Internet
@@ -636,7 +636,7 @@ This follows the principle of minimizing exposed services.
 
 ---
 
-# Firewall Logging
+## Firewall Logging
 
 Firewalls can record:
 
@@ -656,7 +656,7 @@ Logs support:
 
 ---
 
-# Firewall Performance
+## Firewall Performance
 
 Well-designed firewall rules should be:
 
@@ -670,7 +670,7 @@ Efficient rule sets reduce processing overhead and simplify maintenance.
 
 ---
 
-# Enterprise Firewall Deployment
+## Enterprise Firewall Deployment
 
 ```text
 Internet
@@ -700,7 +700,7 @@ Layered firewall deployment limits the impact of compromised systems.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently begin by:
 
@@ -720,7 +720,7 @@ A firewall is essential but should always be combined with secure configuration,
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective firewall management helps organizations:
 
@@ -733,7 +733,7 @@ Effective firewall management helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow a default-deny approach for inbound traffic where practical.
 - Allow only required ports and protocols.
@@ -746,7 +746,7 @@ Effective firewall management helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Firewalls control network traffic based on security policies.
 - Packet filtering evaluates packet header information.
@@ -757,13 +757,13 @@ Effective firewall management helps organizations:
 
 ---
 
-# 19 - Linux Firewalls
+## 19 - Linux Firewalls
 
-# Part 2 — iptables, nftables, firewalld, UFW, Rule Management, Chains, Tables, and Packet Processing
+## Part 2 — iptables, nftables, firewalld, UFW, Rule Management, Chains, Tables, and Packet Processing
 
 ---
 
-# Introduction
+## Introduction
 
 Linux firewalls are implemented in the kernel through **Netfilter**, but administrators typically interact with them using user-space tools.
 
@@ -778,7 +778,7 @@ Each tool ultimately configures Netfilter, but they differ in syntax, management
 
 ---
 
-# Linux Firewall Stack
+## Linux Firewall Stack
 
 ```text
 Administrator
@@ -802,7 +802,7 @@ Network Interface
 
 ---
 
-# Evolution of Linux Firewalls
+## Evolution of Linux Firewalls
 
 ```text
 ipchains
@@ -824,7 +824,7 @@ Many enterprise environments still maintain legacy `iptables` configurations, wh
 
 ---
 
-# iptables Overview
+## iptables Overview
 
 `iptables` is the traditional Linux firewall management utility.
 
@@ -838,7 +838,7 @@ It allows administrators to:
 
 ---
 
-# iptables Architecture
+## iptables Architecture
 
 ```text
 Incoming Packet
@@ -866,7 +866,7 @@ Decision
 
 ---
 
-# iptables Tables
+## iptables Tables
 
 Each table has a specific purpose.
 
@@ -880,7 +880,7 @@ Each table has a specific purpose.
 
 ---
 
-# Default Table
+## Default Table
 
 If no table is specified:
 
@@ -892,7 +892,7 @@ is used.
 
 ---
 
-# iptables Chains
+## iptables Chains
 
 The filter table contains:
 
@@ -906,7 +906,7 @@ OUTPUT
 
 ---
 
-# Chain Responsibilities
+## Chain Responsibilities
 
 | Chain | Purpose |
 |---------|----------|
@@ -916,7 +916,7 @@ OUTPUT
 
 ---
 
-# Packet Flow
+## Packet Flow
 
 Packets destined for the host:
 
@@ -978,7 +978,7 @@ Outgoing
 
 ---
 
-# Viewing Rules
+## Viewing Rules
 
 Display rules:
 
@@ -1006,7 +1006,7 @@ sudo iptables -L -v -n
 
 ---
 
-# Rule Structure
+## Rule Structure
 
 A rule generally contains:
 
@@ -1040,7 +1040,7 @@ Reject
 
 ---
 
-# Common Targets
+## Common Targets
 
 | Target | Meaning |
 |----------|----------|
@@ -1052,7 +1052,7 @@ Reject
 
 ---
 
-# Example Rules
+## Example Rules
 
 Allow SSH:
 
@@ -1074,7 +1074,7 @@ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 
 ---
 
-# Blocking Traffic
+## Blocking Traffic
 
 Drop Telnet:
 
@@ -1084,7 +1084,7 @@ sudo iptables -A INPUT -p tcp --dport 23 -j DROP
 
 ---
 
-# Default Policy
+## Default Policy
 
 View policies:
 
@@ -1102,7 +1102,7 @@ A default-deny policy should be applied carefully to avoid unintentionally block
 
 ---
 
-# Rule Order
+## Rule Order
 
 Rules are processed sequentially.
 
@@ -1146,7 +1146,7 @@ Order is therefore critical.
 
 ---
 
-# Deleting Rules
+## Deleting Rules
 
 List with numbers:
 
@@ -1162,7 +1162,7 @@ sudo iptables -D INPUT 3
 
 ---
 
-# Flushing Rules
+## Flushing Rules
 
 Remove all rules:
 
@@ -1174,7 +1174,7 @@ sudo iptables -F
 
 ---
 
-# Saving Rules
+## Saving Rules
 
 Persistence varies by distribution.
 
@@ -1188,7 +1188,7 @@ Always verify that rules survive a reboot according to your platform's documenta
 
 ---
 
-# nftables
+## nftables
 
 `nftables` is the modern replacement for `iptables`.
 
@@ -1202,7 +1202,7 @@ Advantages include:
 
 ---
 
-# nftables Architecture
+## nftables Architecture
 
 ```text
 Netfilter
@@ -1226,7 +1226,7 @@ Rules
 
 ---
 
-# Checking nftables
+## Checking nftables
 
 View rules:
 
@@ -1242,7 +1242,7 @@ systemctl status nftables
 
 ---
 
-# nftables Concepts
+## nftables Concepts
 
 Like `iptables`, `nftables` uses:
 
@@ -1254,7 +1254,7 @@ However, syntax is more consistent and expressive.
 
 ---
 
-# Example nftables Rule
+## Example nftables Rule
 
 Conceptual example:
 
@@ -1272,7 +1272,7 @@ Accept
 
 ---
 
-# firewalld
+## firewalld
 
 `firewalld` is a dynamic firewall management daemon.
 
@@ -1285,7 +1285,7 @@ Common on:
 
 ---
 
-# firewalld Features
+## firewalld Features
 
 - Dynamic rule changes
 - Zones
@@ -1296,7 +1296,7 @@ Common on:
 
 ---
 
-# firewalld Architecture
+## firewalld Architecture
 
 ```text
 Administrator
@@ -1316,7 +1316,7 @@ Netfilter
 
 ---
 
-# Checking firewalld
+## Checking firewalld
 
 Status:
 
@@ -1326,7 +1326,7 @@ sudo systemctl status firewalld
 
 ---
 
-# Viewing Active Zones
+## Viewing Active Zones
 
 ```bash
 sudo firewall-cmd --get-active-zones
@@ -1334,7 +1334,7 @@ sudo firewall-cmd --get-active-zones
 
 ---
 
-# Listing Configuration
+## Listing Configuration
 
 ```bash
 sudo firewall-cmd --list-all
@@ -1342,7 +1342,7 @@ sudo firewall-cmd --list-all
 
 ---
 
-# firewalld Zones
+## firewalld Zones
 
 Zones represent different trust levels.
 
@@ -1361,7 +1361,7 @@ Common zones:
 
 ---
 
-# Runtime vs Permanent Configuration
+## Runtime vs Permanent Configuration
 
 Runtime:
 
@@ -1383,7 +1383,7 @@ sudo firewall-cmd --reload
 
 ---
 
-# UFW (Uncomplicated Firewall)
+## UFW (Uncomplicated Firewall)
 
 UFW simplifies firewall administration.
 
@@ -1394,7 +1394,7 @@ Common on:
 
 ---
 
-# Checking UFW
+## Checking UFW
 
 Status:
 
@@ -1410,7 +1410,7 @@ sudo ufw status verbose
 
 ---
 
-# Enabling UFW
+## Enabling UFW
 
 ```bash
 sudo ufw enable
@@ -1424,7 +1424,7 @@ sudo ufw disable
 
 ---
 
-# Allowing Services
+## Allowing Services
 
 Allow SSH:
 
@@ -1452,7 +1452,7 @@ sudo ufw allow 8080/tcp
 
 ---
 
-# Denying Traffic
+## Denying Traffic
 
 Block Telnet:
 
@@ -1462,7 +1462,7 @@ sudo ufw deny 23/tcp
 
 ---
 
-# Removing Rules
+## Removing Rules
 
 Delete by rule:
 
@@ -1472,7 +1472,7 @@ sudo ufw delete allow 8080/tcp
 
 ---
 
-# UFW Application Profiles
+## UFW Application Profiles
 
 Available profiles:
 
@@ -1488,7 +1488,7 @@ sudo ufw app info "Nginx Full"
 
 ---
 
-# Comparing Firewall Tools
+## Comparing Firewall Tools
 
 | Feature | iptables | nftables | firewalld | UFW |
 |----------|-----------|-----------|------------|------|
@@ -1499,7 +1499,7 @@ sudo ufw app info "Nginx Full"
 
 ---
 
-# Packet Processing Example
+## Packet Processing Example
 
 ```text
 Incoming Packet
@@ -1535,7 +1535,7 @@ Default Policy
 
 ---
 
-# Enterprise Firewall Workflow
+## Enterprise Firewall Workflow
 
 ```text
 Security Policy
@@ -1567,7 +1567,7 @@ Optimization
 
 ---
 
-# Firewall Logging
+## Firewall Logging
 
 Logging helps identify:
 
@@ -1581,7 +1581,7 @@ Logs should be reviewed regularly and integrated with centralized logging system
 
 ---
 
-# Firewall Rule Design
+## Firewall Rule Design
 
 Well-designed rules are:
 
@@ -1599,9 +1599,9 @@ Avoid:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Secure Web Server
+### Secure Web Server
 
 Allow:
 
@@ -1634,7 +1634,7 @@ Web Server
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Poor firewall configuration is a common source of security exposure.
 
@@ -1650,7 +1650,7 @@ Regular firewall audits help identify and remediate these weaknesses.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective firewall management:
 
@@ -1663,7 +1663,7 @@ Effective firewall management:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Adopt a default-deny policy where practical.
 - Document every firewall rule.
@@ -1676,7 +1676,7 @@ Effective firewall management:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - `iptables` organizes packet filtering using tables, chains, and rules.
 - `nftables` is the modern successor to `iptables`.
@@ -1687,13 +1687,13 @@ Effective firewall management:
 
 ---
 
-# 19 - Linux Firewalls
+## 19 - Linux Firewalls
 
-# Part 3 — NAT, Port Forwarding, Firewall Logging, Enterprise Firewall Architecture, Troubleshooting, and Security Best Practices
+## Part 3 — NAT, Port Forwarding, Firewall Logging, Enterprise Firewall Architecture, Troubleshooting, and Security Best Practices
 
 ---
 
-# Introduction
+## Introduction
 
 Modern enterprise networks rarely consist of a single server connected directly to the Internet.
 
@@ -1718,7 +1718,7 @@ To support these environments, Linux firewalls provide capabilities beyond simpl
 
 ---
 
-# Enterprise Network Architecture
+## Enterprise Network Architecture
 
 ```text
                 Internet
@@ -1739,7 +1739,7 @@ To support these environments, Linux firewalls provide capabilities beyond simpl
 
 ---
 
-# Network Address Translation (NAT)
+## Network Address Translation (NAT)
 
 NAT changes IP address information as packets travel through the firewall.
 
@@ -1753,7 +1753,7 @@ Common reasons:
 
 ---
 
-# NAT Workflow
+## NAT Workflow
 
 ```text
 Private Host
@@ -1779,7 +1779,7 @@ The firewall maintains translation information so that return traffic reaches th
 
 ---
 
-# Types of NAT
+## Types of NAT
 
 | Type | Description |
 |------|-------------|
@@ -1790,7 +1790,7 @@ The firewall maintains translation information so that return traffic reaches th
 
 ---
 
-# Source NAT (SNAT)
+## Source NAT (SNAT)
 
 Changes the **source** IP address.
 
@@ -1816,7 +1816,7 @@ Used for outbound Internet connectivity.
 
 ---
 
-# Destination NAT (DNAT)
+## Destination NAT (DNAT)
 
 Changes the **destination** IP address.
 
@@ -1840,7 +1840,7 @@ Commonly used to publish internal services.
 
 ---
 
-# MASQUERADE
+## MASQUERADE
 
 MASQUERADE is commonly used when:
 
@@ -1870,7 +1870,7 @@ Internet
 
 ---
 
-# Port Address Translation (PAT)
+## Port Address Translation (PAT)
 
 Multiple internal hosts share one public address.
 
@@ -1894,7 +1894,7 @@ Different source ports allow simultaneous connections.
 
 ---
 
-# NAT Packet Flow
+## NAT Packet Flow
 
 ```text
 Packet
@@ -1930,7 +1930,7 @@ Network
 
 ---
 
-# Port Forwarding
+## Port Forwarding
 
 Port forwarding redirects incoming traffic to another host.
 
@@ -1961,7 +1961,7 @@ Common uses:
 
 ---
 
-# Port Forwarding Workflow
+## Port Forwarding Workflow
 
 ```text
 Client
@@ -1981,7 +1981,7 @@ Internal Server
 
 ---
 
-# Typical Published Services
+## Typical Published Services
 
 | Port | Service |
 |------|----------|
@@ -1996,7 +1996,7 @@ Only expose services that are required by business needs.
 
 ---
 
-# DMZ (Demilitarized Zone)
+## DMZ (Demilitarized Zone)
 
 A DMZ separates public-facing services from internal systems.
 
@@ -2032,7 +2032,7 @@ Benefits:
 
 ---
 
-# Firewall Logging
+## Firewall Logging
 
 Firewalls can record:
 
@@ -2045,7 +2045,7 @@ Firewalls can record:
 
 ---
 
-# Firewall Logging Workflow
+## Firewall Logging Workflow
 
 ```text
 Packet
@@ -2073,7 +2073,7 @@ SIEM
 
 ---
 
-# Why Logging Matters
+## Why Logging Matters
 
 Logging helps administrators:
 
@@ -2085,7 +2085,7 @@ Logging helps administrators:
 
 ---
 
-# Logging Best Practices
+## Logging Best Practices
 
 - Log security-relevant events.
 - Avoid excessive logging that impacts storage or performance.
@@ -2096,7 +2096,7 @@ Logging helps administrators:
 
 ---
 
-# Connection Tracking
+## Connection Tracking
 
 Netfilter tracks active sessions.
 
@@ -2129,7 +2129,7 @@ Benefits:
 
 ---
 
-# Viewing Connection Tracking
+## Viewing Connection Tracking
 
 Connection tracking information may be inspected using tools such as:
 
@@ -2141,7 +2141,7 @@ Availability depends on the installed packages and kernel support.
 
 ---
 
-# Firewall Troubleshooting Workflow
+## Firewall Troubleshooting Workflow
 
 ```text
 Connectivity Problem
@@ -2173,7 +2173,7 @@ Verify
 
 ---
 
-# Basic Troubleshooting Commands
+## Basic Troubleshooting Commands
 
 Check listening ports:
 
@@ -2209,7 +2209,7 @@ Depending on the firewall implementation.
 
 ---
 
-# Packet Capture
+## Packet Capture
 
 When firewall rules appear correct but connectivity still fails, packet capture is often useful.
 
@@ -2234,7 +2234,7 @@ Packet captures help determine:
 
 ---
 
-# Enterprise Troubleshooting Example
+## Enterprise Troubleshooting Example
 
 Scenario:
 
@@ -2272,7 +2272,7 @@ Resolved
 
 ---
 
-# Enterprise Firewall Design
+## Enterprise Firewall Design
 
 A large organization may deploy:
 
@@ -2316,7 +2316,7 @@ Each layer protects different assets.
 
 ---
 
-# Microsegmentation
+## Microsegmentation
 
 Instead of trusting an entire network, workloads are separated into smaller security zones.
 
@@ -2348,7 +2348,7 @@ Benefits:
 
 ---
 
-# High Availability Firewalls
+## High Availability Firewalls
 
 Critical environments deploy redundant firewalls.
 
@@ -2377,7 +2377,7 @@ Features may include:
 
 ---
 
-# Cloud Firewalls
+## Cloud Firewalls
 
 Cloud providers typically offer:
 
@@ -2389,7 +2389,7 @@ These work alongside the Linux host firewall rather than replacing it.
 
 ---
 
-# Firewall Performance
+## Firewall Performance
 
 Performance depends on:
 
@@ -2409,7 +2409,7 @@ Optimize by:
 
 ---
 
-# Common Firewall Mistakes
+## Common Firewall Mistakes
 
 | Mistake | Impact | Better Practice |
 |----------|--------|-----------------|
@@ -2422,9 +2422,9 @@ Optimize by:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Secure Web Infrastructure
+### Secure Web Infrastructure
 
 ```text
 Internet
@@ -2458,7 +2458,7 @@ Only required ports are exposed at each layer.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Firewalls play an important role in:
 
@@ -2480,7 +2480,7 @@ They are one layer of a comprehensive defense strategy.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper firewall architecture helps organizations:
 
@@ -2493,7 +2493,7 @@ Proper firewall architecture helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow a default-deny strategy for inbound traffic where practical.
 - Expose only necessary services.
@@ -2508,7 +2508,7 @@ Proper firewall architecture helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - NAT enables communication between private and public networks.
 - Port forwarding publishes internal services securely when properly configured.
@@ -2520,13 +2520,13 @@ Proper firewall architecture helps organizations:
 ---
 
 
-# 19 - Linux Firewalls
+## 19 - Linux Firewalls
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Understanding firewall concepts is only the first step.
 
@@ -2545,7 +2545,7 @@ This section focuses on practical, enterprise-oriented exercises.
 
 ---
 
-# Enterprise Firewall Lifecycle
+## Enterprise Firewall Lifecycle
 
 ```text
 Plan
@@ -2581,7 +2581,7 @@ Improve
 
 ---
 
-# Practical Lab 1 — Identify Firewall Framework
+## Practical Lab 1 — Identify Firewall Framework
 
 Determine which firewall service is available.
 
@@ -2617,7 +2617,7 @@ Objectives:
 
 ---
 
-# Practical Lab 2 — Review Current Rules
+## Practical Lab 2 — Review Current Rules
 
 Using iptables:
 
@@ -2651,7 +2651,7 @@ Objectives:
 
 ---
 
-# Practical Lab 3 — Identify Listening Services
+## Practical Lab 3 — Identify Listening Services
 
 List listening sockets:
 
@@ -2667,7 +2667,7 @@ Questions:
 
 ---
 
-# Practical Lab 4 — Test Connectivity
+## Practical Lab 4 — Test Connectivity
 
 Test local service:
 
@@ -2694,7 +2694,7 @@ Objectives:
 
 ---
 
-# Practical Lab 5 — Allow SSH (UFW)
+## Practical Lab 5 — Allow SSH (UFW)
 
 Enable SSH:
 
@@ -2715,7 +2715,7 @@ Objectives:
 
 ---
 
-# Practical Lab 6 — Allow HTTP and HTTPS
+## Practical Lab 6 — Allow HTTP and HTTPS
 
 Using UFW:
 
@@ -2735,7 +2735,7 @@ sudo ufw status numbered
 
 ---
 
-# Practical Lab 7 — Remove a Rule
+## Practical Lab 7 — Remove a Rule
 
 Delete rule:
 
@@ -2756,7 +2756,7 @@ Objectives:
 
 ---
 
-# Practical Lab 8 — Inspect firewalld Zones
+## Practical Lab 8 — Inspect firewalld Zones
 
 Display active zones:
 
@@ -2777,7 +2777,7 @@ Objectives:
 
 ---
 
-# Practical Lab 9 — Review Connection Tracking
+## Practical Lab 9 — Review Connection Tracking
 
 If the `conntrack` utility is available:
 
@@ -2792,7 +2792,7 @@ Objectives:
 
 ---
 
-# Practical Lab 10 — Capture Firewall Traffic
+## Practical Lab 10 — Capture Firewall Traffic
 
 Capture packets:
 
@@ -2819,7 +2819,7 @@ Objectives:
 
 ---
 
-# Practical Lab 11 — Review Firewall Logs
+## Practical Lab 11 — Review Firewall Logs
 
 View journal:
 
@@ -2846,7 +2846,7 @@ Objectives:
 
 ---
 
-# Practical Lab 12 — Monitor Open Connections
+## Practical Lab 12 — Monitor Open Connections
 
 Display active TCP connections:
 
@@ -2867,7 +2867,7 @@ Objectives:
 
 ---
 
-# Practical Lab 13 — Compare Firewall Policies
+## Practical Lab 13 — Compare Firewall Policies
 
 Document:
 
@@ -2885,7 +2885,7 @@ Discuss:
 
 ---
 
-# Practical Lab 14 — Build a Firewall Audit Report
+## Practical Lab 14 — Build a Firewall Audit Report
 
 Document:
 
@@ -2907,7 +2907,7 @@ Deliverables:
 
 ---
 
-# Practical Lab 15 — Troubleshoot Blocked Access
+## Practical Lab 15 — Troubleshoot Blocked Access
 
 Scenario:
 
@@ -2963,9 +2963,9 @@ depending on the platform.
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# Public Web Server
+## Public Web Server
 
 Requirements:
 
@@ -3003,9 +3003,9 @@ Key controls:
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Exposed Administrative Service
+## Exposed Administrative Service
 
 Problem:
 
@@ -3039,9 +3039,9 @@ Review firewall configurations after infrastructure changes.
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# SSH Brute-Force Attack
+## SSH Brute-Force Attack
 
 Observed:
 
@@ -3074,9 +3074,9 @@ Potential responses:
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Incorrect NAT Configuration
+## Incorrect NAT Configuration
 
 Symptoms:
 
@@ -3110,9 +3110,9 @@ Misconfigured outbound address translation.
 
 ---
 
-# Enterprise Case Study 5
+## Enterprise Case Study 5
 
-# Data Center Firewall Migration
+## Data Center Firewall Migration
 
 Migration steps:
 
@@ -3150,7 +3150,7 @@ Always validate firewall changes before production deployment.
 
 ---
 
-# Enterprise Firewall Audit Checklist
+## Enterprise Firewall Audit Checklist
 
 | Control | Status |
 |----------|--------|
@@ -3167,7 +3167,7 @@ Always validate firewall changes before production deployment.
 
 ---
 
-# Common Firewall Mistakes
+## Common Firewall Mistakes
 
 | Mistake | Risk | Better Practice |
 |----------|------|-----------------|
@@ -3181,7 +3181,7 @@ Always validate firewall changes before production deployment.
 
 ---
 
-# Enterprise Firewall Dashboard
+## Enterprise Firewall Dashboard
 
 ```text
 Firewall Dashboard
@@ -3209,7 +3209,7 @@ Firewall Dashboard
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Firewalls contribute to:
 
@@ -3231,7 +3231,7 @@ However, they should be combined with:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-managed firewalls help organizations:
 
@@ -3244,7 +3244,7 @@ Well-managed firewalls help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Adopt a default-deny strategy where practical.
 - Review firewall rules on a scheduled basis.
@@ -3259,7 +3259,7 @@ Well-managed firewalls help organizations:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3281,9 +3281,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is a firewall?
 2. What is packet filtering?
@@ -3298,7 +3298,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Compare iptables and nftables.
 2. Explain Netfilter hooks.
@@ -3313,7 +3313,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a firewall architecture for a multi-tier web application.
 2. Explain how stateful inspection improves security.
@@ -3328,7 +3328,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux firewalls are built on the Netfilter framework.
 - `iptables`, `nftables`, `firewalld`, and UFW are different management interfaces for firewall configuration.
@@ -3338,9 +3338,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man iptables`
 - `man nft`
@@ -3350,7 +3350,7 @@ In this chapter, you learned:
 - `man tcpdump`
 - `man conntrack`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - Netfilter Project Documentation
@@ -3364,11 +3364,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **20-Linux-SSH.md**
 
-## Topics Covered
+### Topics Covered
 
 - SSH Fundamentals
 - SSH Architecture

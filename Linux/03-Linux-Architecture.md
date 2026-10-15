@@ -1,10 +1,10 @@
 # 03 - Linux Architecture
 
-# Part 1 — Linux Architecture Overview, Operating System Concepts, Kernel Overview, User Space vs Kernel Space, and System Components
+## Part 1 — Linux Architecture Overview, Operating System Concepts, Kernel Overview, User Space vs Kernel Space, and System Components
 
 ---
 
-# Introduction
+## Introduction
 
 Linux is designed with a modular architecture that separates hardware management from user applications. This layered design makes Linux highly stable, secure, scalable, and portable across a wide range of devices—from embedded systems and smartphones to enterprise servers and supercomputers.
 
@@ -23,7 +23,7 @@ This chapter explores the internal architecture of Linux and explains how applic
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -38,7 +38,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is an Operating System?
+## What is an Operating System?
 
 An **Operating System (OS)** is system software that acts as an intermediary between computer hardware and user applications.
 
@@ -56,7 +56,7 @@ The operating system provides:
 
 ---
 
-# Role of the Operating System
+## Role of the Operating System
 
 ```
 +--------------------------------------+
@@ -72,7 +72,7 @@ The operating system abstracts hardware complexity and provides standardized int
 
 ---
 
-# High-Level Linux Architecture
+## High-Level Linux Architecture
 
 ```
 +----------------------------------------------------------+
@@ -96,7 +96,7 @@ Each layer communicates with adjacent layers using well-defined interfaces.
 
 ---
 
-# Why Linux Uses Layered Architecture
+## Why Linux Uses Layered Architecture
 
 Layered architecture provides:
 
@@ -112,7 +112,7 @@ This design has contributed significantly to Linux's widespread adoption.
 
 ---
 
-# Major Components of Linux
+## Major Components of Linux
 
 A Linux operating system consists of several major components.
 
@@ -129,7 +129,7 @@ A Linux operating system consists of several major components.
 
 ---
 
-# Linux Component Relationships
+## Linux Component Relationships
 
 ```
 Applications
@@ -154,7 +154,7 @@ Each layer builds upon the services of the lower layer.
 
 ---
 
-# The Linux Kernel
+## The Linux Kernel
 
 The **Linux Kernel** is the core component of the operating system.
 
@@ -173,7 +173,7 @@ Every program running on Linux depends on kernel services.
 
 ---
 
-# Responsibilities of the Kernel
+## Responsibilities of the Kernel
 
 ```
 Linux Kernel
@@ -192,7 +192,7 @@ Each subsystem works together to provide a stable and efficient operating enviro
 
 ---
 
-# Why the Kernel is Important
+## Why the Kernel is Important
 
 Without the kernel:
 
@@ -206,7 +206,7 @@ The kernel is the foundation of every Linux system.
 
 ---
 
-# Kernel Characteristics
+## Kernel Characteristics
 
 Modern Linux kernels provide:
 
@@ -224,7 +224,7 @@ These features enable Linux to power everything from embedded devices to hypersc
 
 ---
 
-# User Space
+## User Space
 
 User space is where normal applications execute.
 
@@ -247,7 +247,7 @@ Characteristics:
 
 ---
 
-# Kernel Space
+## Kernel Space
 
 Kernel space is reserved for trusted operating system code.
 
@@ -264,7 +264,7 @@ Only the kernel and authorized kernel modules execute in kernel space.
 
 ---
 
-# User Space vs Kernel Space
+## User Space vs Kernel Space
 
 | Feature | User Space | Kernel Space |
 |----------|------------|--------------|
@@ -278,7 +278,7 @@ This separation enhances both security and system stability.
 
 ---
 
-# Why User Space is Isolated
+## Why User Space is Isolated
 
 Isolation prevents one application from:
 
@@ -291,7 +291,7 @@ This design is a cornerstone of modern operating system security.
 
 ---
 
-# What Happens When an Application Starts?
+## What Happens When an Application Starts?
 
 Example:
 
@@ -323,7 +323,7 @@ Every stage involves interaction with kernel services.
 
 ---
 
-# Communication Between User Space and Kernel Space
+## Communication Between User Space and Kernel Space
 
 Applications cannot communicate directly with hardware.
 
@@ -353,7 +353,7 @@ The kernel validates requests before interacting with hardware.
 
 ---
 
-# Privilege Levels
+## Privilege Levels
 
 Modern processors support multiple privilege levels, often called **rings**.
 
@@ -373,7 +373,7 @@ This hardware-enforced separation helps prevent unauthorized access to critical 
 
 ---
 
-# Hardware Abstraction
+## Hardware Abstraction
 
 The kernel hides hardware-specific details from applications.
 
@@ -388,7 +388,7 @@ Instead, it interacts with standard system calls such as `open()`, `read()`, and
 
 ---
 
-# Advantages of Hardware Abstraction
+## Advantages of Hardware Abstraction
 
 - Improved portability
 - Simplified application development
@@ -399,7 +399,7 @@ Instead, it interacts with standard system calls such as `open()`, `read()`, and
 
 ---
 
-# Enterprise Architecture Example
+## Enterprise Architecture Example
 
 ```
                     Users
@@ -424,7 +424,7 @@ This architecture allows organizations to deploy the same applications across di
 
 ---
 
-# Linux in Modern Enterprise Infrastructure
+## Linux in Modern Enterprise Infrastructure
 
 Linux architecture underpins many technologies, including:
 
@@ -442,7 +442,7 @@ Its modular design enables efficient scaling from single servers to large distri
 
 ---
 
-# Business Impact
+## Business Impact
 
 A strong understanding of Linux architecture enables organizations to:
 
@@ -455,7 +455,7 @@ A strong understanding of Linux architecture enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use supported kernel versions.
 - Keep kernel packages updated with security patches.
@@ -467,7 +467,7 @@ A strong understanding of Linux architecture enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux follows a layered architecture that separates applications from hardware.
 - The kernel is the central component responsible for managing system resources.
@@ -477,11 +477,11 @@ A strong understanding of Linux architecture enables organizations to:
 
 ---
 
-# Part 2 — System Calls, Process Management, Context Switching, CPU Scheduling, Interrupts, and Inter-Process Communication (IPC)
+## Part 2 — System Calls, Process Management, Context Switching, CPU Scheduling, Interrupts, and Inter-Process Communication (IPC)
 
 ---
 
-# Introduction
+## Introduction
 
 Applications running on Linux cannot directly communicate with hardware or access protected system resources. Instead, they rely on the **Linux kernel** through a well-defined mechanism called **system calls**.
 
@@ -497,7 +497,7 @@ Understanding these mechanisms is fundamental for Linux administrators, DevOps e
 
 ---
 
-# System Calls
+## System Calls
 
 A **system call** is a controlled interface through which a user-space application requests services from the Linux kernel.
 
@@ -514,7 +514,7 @@ Examples include:
 
 ---
 
-# Why System Calls Exist
+## Why System Calls Exist
 
 System calls provide:
 
@@ -528,7 +528,7 @@ Without system calls, user applications could compromise system stability and se
 
 ---
 
-# System Call Workflow
+## System Call Workflow
 
 ```text
 Application
@@ -550,7 +550,7 @@ The kernel validates every request before performing the requested operation.
 
 ---
 
-# Common Linux System Calls
+## Common Linux System Calls
 
 | System Call | Purpose |
 |-------------|---------|
@@ -569,7 +569,7 @@ The kernel validates every request before performing the requested operation.
 
 ---
 
-# Example: Opening a File
+## Example: Opening a File
 
 When an application executes:
 
@@ -615,7 +615,7 @@ The application never interacts directly with the storage device.
 
 ---
 
-# Categories of System Calls
+## Categories of System Calls
 
 Linux system calls can be grouped into several categories.
 
@@ -631,7 +631,7 @@ Linux system calls can be grouped into several categories.
 
 ---
 
-# What is a Process?
+## What is a Process?
 
 A **process** is an executing instance of a program.
 
@@ -655,7 +655,7 @@ Every running application is represented by one or more processes.
 
 ---
 
-# Program vs Process
+## Program vs Process
 
 | Program | Process |
 |----------|---------|
@@ -666,7 +666,7 @@ Every running application is represented by one or more processes.
 
 ---
 
-# Process Lifecycle
+## Process Lifecycle
 
 ```text
 New
@@ -692,7 +692,7 @@ A process transitions through several states during its lifetime.
 
 ---
 
-# Process States
+## Process States
 
 | State | Description |
 |---------|-------------|
@@ -706,7 +706,7 @@ A process transitions through several states during its lifetime.
 
 ---
 
-# Process Control Block (PCB)
+## Process Control Block (PCB)
 
 The kernel stores information about each process in a **Process Control Block (PCB)**.
 
@@ -725,7 +725,7 @@ The PCB enables the kernel to manage and resume processes efficiently.
 
 ---
 
-# Process Hierarchy
+## Process Hierarchy
 
 Linux processes form a hierarchical tree.
 
@@ -747,7 +747,7 @@ Every process (except PID 1) has a parent process.
 
 ---
 
-# Process IDs (PID)
+## Process IDs (PID)
 
 Every process receives a unique **Process ID (PID)**.
 
@@ -772,7 +772,7 @@ The PID uniquely identifies a running process.
 
 ---
 
-# Parent and Child Processes
+## Parent and Child Processes
 
 Most new processes are created using:
 
@@ -795,7 +795,7 @@ This model is fundamental to Unix and Linux process creation.
 
 ---
 
-# Process Creation Workflow
+## Process Creation Workflow
 
 ```text
 Parent Process
@@ -821,7 +821,7 @@ This design allows efficient process management and flexible program execution.
 
 ---
 
-# Context Switching
+## Context Switching
 
 A CPU can execute only one process per core at any given instant.
 
@@ -835,7 +835,7 @@ During a context switch, the kernel:
 
 ---
 
-# Context Switching Diagram
+## Context Switching Diagram
 
 ```text
 CPU
@@ -859,7 +859,7 @@ The PCB stores the information required to resume execution later.
 
 ---
 
-# Why Context Switching is Necessary
+## Why Context Switching is Necessary
 
 Without context switching:
 
@@ -871,7 +871,7 @@ Modern Linux systems perform thousands of context switches every second.
 
 ---
 
-# CPU Scheduling
+## CPU Scheduling
 
 The **scheduler** determines which process receives CPU time.
 
@@ -885,7 +885,7 @@ Its goals include:
 
 ---
 
-# Linux Completely Fair Scheduler (CFS)
+## Linux Completely Fair Scheduler (CFS)
 
 Modern Linux kernels primarily use the **Completely Fair Scheduler (CFS)**.
 
@@ -901,7 +901,7 @@ CFS is designed to balance responsiveness with overall system performance.
 
 ---
 
-# Scheduling Workflow
+## Scheduling Workflow
 
 ```text
 Ready Queue
@@ -927,7 +927,7 @@ The scheduler continually evaluates which process should run next.
 
 ---
 
-# CPU-Bound vs I/O-Bound Processes
+## CPU-Bound vs I/O-Bound Processes
 
 | CPU-Bound | I/O-Bound |
 |------------|-----------|
@@ -939,7 +939,7 @@ The scheduler attempts to balance these different workload types efficiently.
 
 ---
 
-# Interrupts
+## Interrupts
 
 An **interrupt** is a signal that temporarily pauses the CPU's current work so it can respond to an event requiring immediate attention.
 
@@ -954,7 +954,7 @@ Interrupts allow hardware devices to notify the CPU asynchronously.
 
 ---
 
-# Interrupt Handling
+## Interrupt Handling
 
 ```text
 Hardware Event
@@ -980,7 +980,7 @@ Interrupt handling enables responsive interaction with hardware.
 
 ---
 
-# Types of Interrupts
+## Types of Interrupts
 
 | Type | Description |
 |------|-------------|
@@ -991,7 +991,7 @@ Interrupt handling enables responsive interaction with hardware.
 
 ---
 
-# Inter-Process Communication (IPC)
+## Inter-Process Communication (IPC)
 
 Processes often need to exchange data or coordinate actions.
 
@@ -1011,7 +1011,7 @@ Each mechanism is suited to different communication patterns.
 
 ---
 
-# IPC Overview
+## IPC Overview
 
 ```text
 Process A
@@ -1033,7 +1033,7 @@ The kernel ensures synchronization and controlled data exchange between processe
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient process management and scheduling help organizations:
 
@@ -1045,7 +1045,7 @@ Efficient process management and scheduling help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor process behavior regularly.
 - Avoid unnecessary background services.
@@ -1056,7 +1056,7 @@ Efficient process management and scheduling help organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - System calls provide a secure interface between applications and the kernel.
 - Every running application is represented as a process with its own PCB and PID.
@@ -1068,11 +1068,11 @@ Efficient process management and scheduling help organizations:
 ---
 
 
-# Part 3 — Memory Management, Virtual Memory, Paging, Swapping, Device Drivers, Virtual File System (VFS), and the Linux Networking Stack
+## Part 3 — Memory Management, Virtual Memory, Paging, Swapping, Device Drivers, Virtual File System (VFS), and the Linux Networking Stack
 
 ---
 
-# Introduction
+## Introduction
 
 Memory is one of the most valuable resources in a computer system. Every running application, service, and kernel component depends on memory to execute instructions and store data.
 
@@ -1090,7 +1090,7 @@ This section explores these core architectural components and their importance i
 
 ---
 
-# Memory Management
+## Memory Management
 
 Memory management is the process of allocating, tracking, protecting, and reclaiming system memory.
 
@@ -1107,7 +1107,7 @@ Without proper memory management, systems would quickly become unstable.
 
 ---
 
-# Memory Architecture
+## Memory Architecture
 
 ```text
 +------------------------------------+
@@ -1125,7 +1125,7 @@ Applications interact with virtual memory rather than physical memory directly.
 
 ---
 
-# Physical Memory (RAM)
+## Physical Memory (RAM)
 
 Physical memory refers to the actual Random Access Memory (RAM) installed in the system.
 
@@ -1146,7 +1146,7 @@ Common enterprise servers may contain:
 
 ---
 
-# Virtual Memory
+## Virtual Memory
 
 Virtual memory is an abstraction that allows each process to believe it has its own contiguous memory space.
 
@@ -1162,7 +1162,7 @@ The kernel translates virtual addresses into physical addresses using page table
 
 ---
 
-# Virtual Memory Workflow
+## Virtual Memory Workflow
 
 ```text
 Application
@@ -1192,7 +1192,7 @@ This translation occurs transparently and is accelerated by hardware.
 
 ---
 
-# Memory Pages
+## Memory Pages
 
 Linux divides memory into fixed-size blocks called **pages**.
 
@@ -1211,7 +1211,7 @@ Larger pages can reduce translation overhead for memory-intensive workloads.
 
 ---
 
-# Paging
+## Paging
 
 Paging is the mechanism by which virtual memory is divided into pages that map to physical memory frames.
 
@@ -1224,7 +1224,7 @@ Benefits:
 
 ---
 
-# Paging Illustration
+## Paging Illustration
 
 ```text
 Virtual Memory
@@ -1252,7 +1252,7 @@ Pages do not need to be stored in consecutive physical locations.
 
 ---
 
-# Page Faults
+## Page Faults
 
 A **page fault** occurs when a process attempts to access a page that is not currently mapped into physical memory.
 
@@ -1282,7 +1282,7 @@ Page faults are normal but excessive faults may indicate memory pressure.
 
 ---
 
-# Demand Paging
+## Demand Paging
 
 Linux uses **demand paging**, meaning pages are loaded into RAM only when required.
 
@@ -1296,7 +1296,7 @@ Unused portions of an application remain on disk until accessed.
 
 ---
 
-# Swapping
+## Swapping
 
 When RAM becomes scarce, Linux may move inactive memory pages to disk.
 
@@ -1324,7 +1324,7 @@ Swapping allows the system to continue operating under memory pressure, though w
 
 ---
 
-# Swap Partition vs Swap File
+## Swap Partition vs Swap File
 
 | Feature | Swap Partition | Swap File |
 |----------|----------------|-----------|
@@ -1337,7 +1337,7 @@ Most modern distributions support swap files by default.
 
 ---
 
-# Out-of-Memory (OOM) Killer
+## Out-of-Memory (OOM) Killer
 
 If the system exhausts both RAM and swap, the kernel invokes the **Out-of-Memory (OOM) Killer**.
 
@@ -1351,7 +1351,7 @@ The OOM Killer prioritizes overall system stability.
 
 ---
 
-# Memory Protection
+## Memory Protection
 
 Each process has its own protected address space.
 
@@ -1366,7 +1366,7 @@ Memory protection is a fundamental security feature of modern operating systems.
 
 ---
 
-# Device Drivers
+## Device Drivers
 
 A **device driver** is software that enables the kernel to communicate with hardware devices.
 
@@ -1383,7 +1383,7 @@ Applications interact with drivers through kernel interfaces rather than hardwar
 
 ---
 
-# Driver Architecture
+## Driver Architecture
 
 ```text
 Application
@@ -1405,7 +1405,7 @@ This separation allows hardware to be replaced without requiring changes to appl
 
 ---
 
-# Types of Device Drivers
+## Types of Device Drivers
 
 | Driver Type | Examples |
 |-------------|----------|
@@ -1417,7 +1417,7 @@ Each driver type is optimized for a specific communication model.
 
 ---
 
-# Loadable Kernel Modules (LKMs)
+## Loadable Kernel Modules (LKMs)
 
 Many drivers are implemented as **Loadable Kernel Modules**.
 
@@ -1450,7 +1450,7 @@ Load a module.
 
 ---
 
-# Virtual File System (VFS)
+## Virtual File System (VFS)
 
 Linux supports numerous filesystems, including:
 
@@ -1469,7 +1469,7 @@ The **Virtual File System (VFS)** provides a unified interface.
 
 ---
 
-# VFS Architecture
+## VFS Architecture
 
 ```text
 Application
@@ -1495,7 +1495,7 @@ The VFS routes file operations to the appropriate filesystem implementation.
 
 ---
 
-# Benefits of VFS
+## Benefits of VFS
 
 - Filesystem independence
 - Standard APIs
@@ -1505,7 +1505,7 @@ The VFS routes file operations to the appropriate filesystem implementation.
 
 ---
 
-# Filesystem Operations
+## Filesystem Operations
 
 Common file operations include:
 
@@ -1521,7 +1521,7 @@ Each operation is translated into filesystem-specific actions by the VFS.
 
 ---
 
-# Linux Networking Stack
+## Linux Networking Stack
 
 The Linux networking stack manages all network communication.
 
@@ -1539,7 +1539,7 @@ It forms the foundation for web servers, cloud platforms, and enterprise network
 
 ---
 
-# Networking Stack Overview
+## Networking Stack Overview
 
 ```text
 Application
@@ -1573,7 +1573,7 @@ Each layer provides services to the layer above it.
 
 ---
 
-# Socket Interface
+## Socket Interface
 
 Applications communicate over networks using **sockets**.
 
@@ -1588,7 +1588,7 @@ Sockets abstract the complexity of network communication.
 
 ---
 
-# Packet Processing Workflow
+## Packet Processing Workflow
 
 ```text
 Application
@@ -1622,7 +1622,7 @@ Incoming packets follow the reverse path before reaching the application.
 
 ---
 
-# Networking Features
+## Networking Features
 
 The Linux networking stack supports:
 
@@ -1640,7 +1640,7 @@ These capabilities make Linux suitable for routers, firewalls, cloud platforms, 
 
 ---
 
-# Memory, Storage, and Networking Together
+## Memory, Storage, and Networking Together
 
 ```text
                 User Application
@@ -1662,7 +1662,7 @@ This integrated architecture enables Linux to efficiently manage computation, st
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Understanding these components is essential for:
 
@@ -1679,7 +1679,7 @@ Many security tools interact directly with kernel facilities, networking APIs, o
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient memory management, robust filesystem abstraction, and a scalable networking stack enable organizations to:
 
@@ -1692,7 +1692,7 @@ Efficient memory management, robust filesystem abstraction, and a scalable netwo
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor memory usage regularly.
 - Configure swap appropriately for workloads.
@@ -1704,7 +1704,7 @@ Efficient memory management, robust filesystem abstraction, and a scalable netwo
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Virtual memory provides isolation and efficient memory utilization.
 - Paging allows flexible mapping between virtual and physical memory.
@@ -1716,11 +1716,11 @@ Efficient memory management, robust filesystem abstraction, and a scalable netwo
 ---
 
 
-# Part 4 — Linux Security Modules (LSM), Kernel Modules, Boot Architecture, Enterprise Linux Architecture, Performance Optimization, Practical Labs, Chapter Summary, Interview Questions, and References
+## Part 4 — Linux Security Modules (LSM), Kernel Modules, Boot Architecture, Enterprise Linux Architecture, Performance Optimization, Practical Labs, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 A modern Linux system is more than just a kernel managing hardware. Enterprise Linux environments rely on additional architectural components that provide:
 
@@ -1736,7 +1736,7 @@ This section explores the security and operational architecture that makes Linux
 
 ---
 
-# Linux Security Modules (LSM)
+## Linux Security Modules (LSM)
 
 The **Linux Security Modules (LSM)** framework allows security mechanisms to integrate directly with the Linux kernel.
 
@@ -1752,7 +1752,7 @@ Examples include:
 
 ---
 
-# Why LSM Exists
+## Why LSM Exists
 
 Traditional Linux permissions (owner, group, others) are effective but may not be sufficient for enterprise environments.
 
@@ -1766,7 +1766,7 @@ LSM provides:
 
 ---
 
-# LSM Architecture
+## LSM Architecture
 
 ```text
 Application
@@ -1800,7 +1800,7 @@ Every protected operation can be evaluated against security policies before exec
 
 ---
 
-# SELinux
+## SELinux
 
 **Security-Enhanced Linux (SELinux)** is a Mandatory Access Control system originally developed by the U.S. National Security Agency (NSA).
 
@@ -1823,7 +1823,7 @@ SELinux is the default security framework on Red Hat Enterprise Linux, Rocky Lin
 
 ---
 
-# AppArmor
+## AppArmor
 
 **AppArmor** restricts applications using path-based security profiles.
 
@@ -1837,7 +1837,7 @@ Ubuntu and SUSE commonly use AppArmor by default.
 
 ---
 
-# SELinux vs AppArmor
+## SELinux vs AppArmor
 
 | Feature | SELinux | AppArmor |
 |----------|----------|-----------|
@@ -1850,7 +1850,7 @@ Both significantly improve system security when configured correctly.
 
 ---
 
-# Kernel Modules
+## Kernel Modules
 
 The Linux kernel supports **Loadable Kernel Modules (LKMs)**, allowing functionality to be added or removed without recompiling the kernel.
 
@@ -1863,7 +1863,7 @@ Common module categories:
 
 ---
 
-# Benefits of Kernel Modules
+## Benefits of Kernel Modules
 
 - Modular kernel design
 - Reduced memory usage
@@ -1873,7 +1873,7 @@ Common module categories:
 
 ---
 
-# Kernel Module Workflow
+## Kernel Module Workflow
 
 ```text
 Boot Kernel
@@ -1899,7 +1899,7 @@ Modules can also be loaded dynamically when hardware is connected.
 
 ---
 
-# Common Kernel Module Commands
+## Common Kernel Module Commands
 
 List loaded modules:
 
@@ -1929,7 +1929,7 @@ These commands are essential for troubleshooting hardware and driver issues.
 
 ---
 
-# Linux Boot Architecture
+## Linux Boot Architecture
 
 Booting Linux involves multiple stages that prepare the system for user interaction.
 
@@ -1971,7 +1971,7 @@ Each stage performs a specific initialization task.
 
 ---
 
-# BIOS/UEFI Initialization
+## BIOS/UEFI Initialization
 
 Firmware responsibilities include:
 
@@ -1984,7 +1984,7 @@ Modern systems typically use UEFI.
 
 ---
 
-# Bootloader
+## Bootloader
 
 The bootloader loads the Linux kernel into memory.
 
@@ -2003,7 +2003,7 @@ Responsibilities:
 
 ---
 
-# initramfs
+## initramfs
 
 The **Initial RAM Filesystem (initramfs)** is a temporary root filesystem loaded into memory during boot.
 
@@ -2018,7 +2018,7 @@ Without initramfs, many systems would be unable to access their root filesystem.
 
 ---
 
-# systemd
+## systemd
 
 After the kernel initializes, it starts **systemd**, the default init system on most modern Linux distributions.
 
@@ -2035,7 +2035,7 @@ Responsibilities:
 
 ---
 
-# Boot Sequence Overview
+## Boot Sequence Overview
 
 ```text
 Firmware
@@ -2063,7 +2063,7 @@ Understanding this sequence is crucial when diagnosing boot failures.
 
 ---
 
-# Enterprise Linux Architecture
+## Enterprise Linux Architecture
 
 Enterprise Linux systems are typically composed of multiple integrated components.
 
@@ -2096,7 +2096,7 @@ Additional enterprise integrations may include:
 
 ---
 
-# High Availability and Scalability
+## High Availability and Scalability
 
 Enterprise Linux deployments often support:
 
@@ -2111,7 +2111,7 @@ These capabilities ensure that critical services remain available even during ha
 
 ---
 
-# Performance Optimization
+## Performance Optimization
 
 Optimizing Linux performance involves balancing CPU, memory, storage, and network resources.
 
@@ -2128,7 +2128,7 @@ Performance tuning should always be guided by measurement rather than assumption
 
 ---
 
-# Useful Performance Monitoring Commands
+## Useful Performance Monitoring Commands
 
 Display CPU and process information:
 
@@ -2170,7 +2170,7 @@ These tools help identify bottlenecks and abnormal resource consumption.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 A deep understanding of Linux architecture enables security professionals to:
 
@@ -2186,7 +2186,7 @@ Many advanced attacks target architectural components such as the boot process, 
 
 ---
 
-# Practical Lab 1 — Explore Kernel Information
+## Practical Lab 1 — Explore Kernel Information
 
 Commands:
 
@@ -2201,7 +2201,7 @@ Objective:
 
 ---
 
-# Practical Lab 2 — Inspect Loaded Kernel Modules
+## Practical Lab 2 — Inspect Loaded Kernel Modules
 
 Commands:
 
@@ -2216,7 +2216,7 @@ Objective:
 
 ---
 
-# Practical Lab 3 — Check Security Framework
+## Practical Lab 3 — Check Security Framework
 
 SELinux:
 
@@ -2236,7 +2236,7 @@ Objective:
 
 ---
 
-# Practical Lab 4 — Examine the Boot Process
+## Practical Lab 4 — Examine the Boot Process
 
 Commands:
 
@@ -2251,7 +2251,7 @@ Objective:
 
 ---
 
-# Practical Lab 5 — Monitor System Performance
+## Practical Lab 5 — Monitor System Performance
 
 Commands:
 
@@ -2267,7 +2267,7 @@ Objective:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2289,9 +2289,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is the Linux kernel?
 2. What is the difference between user space and kernel space?
@@ -2306,7 +2306,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the process lifecycle in Linux.
 2. What happens during a context switch?
@@ -2321,7 +2321,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Explain the complete Linux boot sequence from power-on to user login.
 2. How would you troubleshoot a system that fails to boot after a kernel update?
@@ -2336,7 +2336,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux uses a modular architecture that separates hardware management, applications, and security mechanisms.
 - Linux Security Modules (LSMs) provide advanced access control beyond traditional permissions.
@@ -2346,9 +2346,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - Linux Kernel Documentation
 - Linux Foundation Documentation
@@ -2358,7 +2358,7 @@ In this chapter, you learned:
 - SELinux Project Documentation
 - AppArmor Documentation
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - POSIX (IEEE 1003.1)
 - Filesystem Hierarchy Standard (FHS)
@@ -2368,7 +2368,7 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **04-Linux-Boot-Process.md**
 

@@ -1,10 +1,10 @@
 # 13-Windows-Networking.md
 
-# Part 1 — Windows Networking Fundamentals, Network Architecture, OSI Model, TCP/IP, IP Addressing, and Core Networking Components
+## Part 1 — Windows Networking Fundamentals, Network Architecture, OSI Model, TCP/IP, IP Addressing, and Core Networking Components
 
 ---
 
-# Introduction
+## Introduction
 
 Networking enables computers, servers, printers, mobile devices, and cloud resources to communicate with one another.
 
@@ -27,7 +27,7 @@ This chapter begins with the core concepts that form the foundation of enterpris
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -46,7 +46,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is a Computer Network?
+## What is a Computer Network?
 
 A **computer network** is a collection of devices connected together to exchange information and share resources.
 
@@ -81,7 +81,7 @@ Networks can range from two connected devices to millions of interconnected syst
 
 ---
 
-# Why Networking is Important
+## Why Networking is Important
 
 Without networking:
 
@@ -116,7 +116,7 @@ Networking enables collaboration, centralized management, and modern enterprise 
 
 ---
 
-# Types of Networks
+## Types of Networks
 
 Common network types include:
 
@@ -133,7 +133,7 @@ Each serves different connectivity requirements.
 
 ---
 
-# Personal Area Network (PAN)
+## Personal Area Network (PAN)
 
 A PAN connects devices over a short distance.
 
@@ -160,7 +160,7 @@ Personal Devices
 
 ---
 
-# Local Area Network (LAN)
+## Local Area Network (LAN)
 
 A LAN connects devices within a limited geographic area.
 
@@ -191,7 +191,7 @@ LANs provide high-speed communication with relatively low latency.
 
 ---
 
-# Wireless LAN (WLAN)
+## Wireless LAN (WLAN)
 
 A WLAN uses wireless technology instead of Ethernet cables.
 
@@ -219,7 +219,7 @@ Wireless security is an important consideration.
 
 ---
 
-# Metropolitan Area Network (MAN)
+## Metropolitan Area Network (MAN)
 
 A MAN connects multiple LANs across a city or campus.
 
@@ -239,7 +239,7 @@ Office B
 
 ---
 
-# Wide Area Network (WAN)
+## Wide Area Network (WAN)
 
 A WAN connects geographically separated locations.
 
@@ -265,7 +265,7 @@ Large enterprises commonly use WANs to connect branch offices and data centers.
 
 ---
 
-# Virtual Private Network (VPN)
+## Virtual Private Network (VPN)
 
 A VPN creates an encrypted connection across an untrusted network such as the Internet.
 
@@ -287,7 +287,7 @@ VPNs support secure remote access for employees and administrators.
 
 ---
 
-# Network Topologies
+## Network Topologies
 
 A **network topology** describes how devices are interconnected.
 
@@ -303,7 +303,7 @@ Modern Ethernet networks primarily use the **star topology**.
 
 ---
 
-# Star Topology
+## Star Topology
 
 ```text
           Switch
@@ -325,7 +325,7 @@ Disadvantage:
 
 ---
 
-# Mesh Topology
+## Mesh Topology
 
 ```text
 A────B
@@ -348,7 +348,7 @@ Often used in critical infrastructure and certain wireless deployments.
 
 ---
 
-# Network Communication
+## Network Communication
 
 Basic communication process:
 
@@ -376,7 +376,7 @@ Windows uses the TCP/IP protocol suite to perform this communication.
 
 ---
 
-# OSI Model
+## OSI Model
 
 The **Open Systems Interconnection (OSI)** model describes networking in seven layers.
 
@@ -394,7 +394,7 @@ The OSI model is primarily used for learning, troubleshooting, and protocol anal
 
 ---
 
-# OSI Layer Overview
+## OSI Layer Overview
 
 ```text
 7 Application
@@ -416,7 +416,7 @@ Each layer performs specific networking functions.
 
 ---
 
-# Layer 7 — Application
+## Layer 7 — Application
 
 Provides network services to applications.
 
@@ -432,7 +432,7 @@ Windows applications interact with the network through this layer.
 
 ---
 
-# Layer 6 — Presentation
+## Layer 6 — Presentation
 
 Responsible for:
 
@@ -449,7 +449,7 @@ Examples include:
 
 ---
 
-# Layer 5 — Session
+## Layer 5 — Session
 
 Manages communication sessions.
 
@@ -463,7 +463,7 @@ This layer helps coordinate ongoing communication between applications.
 
 ---
 
-# Layer 4 — Transport
+## Layer 4 — Transport
 
 Responsible for:
 
@@ -479,7 +479,7 @@ Primary protocols:
 
 ---
 
-# Layer 3 — Network
+## Layer 3 — Network
 
 Provides logical addressing and routing.
 
@@ -493,7 +493,7 @@ Responsible for forwarding packets between different networks.
 
 ---
 
-# Layer 2 — Data Link
+## Layer 2 — Data Link
 
 Responsible for:
 
@@ -511,7 +511,7 @@ Switches primarily operate at this layer.
 
 ---
 
-# Layer 1 — Physical
+## Layer 1 — Physical
 
 Represents the physical transmission medium.
 
@@ -525,7 +525,7 @@ This layer transmits bits between devices.
 
 ---
 
-# TCP/IP Model
+## TCP/IP Model
 
 Windows networking primarily follows the TCP/IP model.
 
@@ -540,7 +540,7 @@ The TCP/IP model is the practical implementation used on modern networks.
 
 ---
 
-# Data Encapsulation
+## Data Encapsulation
 
 When data is transmitted:
 
@@ -568,7 +568,7 @@ Each layer adds its own header before transmission.
 
 ---
 
-# Decapsulation
+## Decapsulation
 
 At the receiving system:
 
@@ -596,7 +596,7 @@ Headers are removed layer by layer until the original application data is delive
 
 ---
 
-# IPv4 Address
+## IPv4 Address
 
 An IPv4 address uniquely identifies a device on a network.
 
@@ -614,7 +614,7 @@ IPv4 uses:
 
 ---
 
-# IPv6 Address
+## IPv6 Address
 
 IPv6 addresses provide a much larger address space.
 
@@ -634,7 +634,7 @@ IPv6 adoption continues to increase in enterprise environments.
 
 ---
 
-# Public vs Private IP Addresses
+## Public vs Private IP Addresses
 
 | Type | Description |
 |------|-------------|
@@ -653,7 +653,7 @@ Private addresses require technologies such as NAT to communicate with the publi
 
 ---
 
-# MAC Address
+## MAC Address
 
 A **Media Access Control (MAC)** address identifies a network interface at Layer 2.
 
@@ -673,7 +673,7 @@ Unlike IP addresses, MAC addresses are not used for routing across the Internet.
 
 ---
 
-# Network Adapter
+## Network Adapter
 
 Every Windows computer uses one or more network adapters.
 
@@ -706,7 +706,7 @@ The adapter converts software data into signals suitable for transmission.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An employee accesses an internal web application.
 
@@ -734,7 +734,7 @@ Successful communication depends on correct addressing, routing, DNS resolution,
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Understanding networking fundamentals enables security professionals to:
 
@@ -749,7 +749,7 @@ These concepts form the foundation for intrusion detection, incident response, a
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable networking provides:
 
@@ -764,7 +764,7 @@ Network failures can disrupt critical business services and increase operational
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use structured network designs.
 - Document IP addressing schemes.
@@ -776,9 +776,9 @@ Network failures can disrupt critical business services and increase operational
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Identify Network Adapters
+### Lab 1 — Identify Network Adapters
 
 Open:
 
@@ -802,7 +802,7 @@ Identify:
 
 ---
 
-## Lab 2 — View IP Configuration
+### Lab 2 — View IP Configuration
 
 Open **Command Prompt**.
 
@@ -820,7 +820,7 @@ Record:
 
 ---
 
-## Lab 3 — Identify MAC Address
+### Lab 3 — Identify MAC Address
 
 Run:
 
@@ -832,7 +832,7 @@ Locate the **Physical Address** for your active network adapter.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows networking enables communication between devices, applications, and enterprise services.
 - The OSI and TCP/IP models provide frameworks for understanding network communication.
@@ -842,7 +842,7 @@ Locate the **Physical Address** for your active network adapter.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of the OSI model?
 2. What is the difference between IPv4 and IPv6?
@@ -857,7 +857,7 @@ Locate the **Physical Address** for your active network adapter.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Networking Documentation
@@ -868,13 +868,13 @@ Locate the **Physical Address** for your active network adapter.
 
 ---
 
-# 13-Windows-Networking.md
+## 13-Windows-Networking.md
 
-# Part 2 — TCP, UDP, DNS, DHCP, ARP, Routing, NAT, and Windows Network Configuration
+## Part 2 — TCP, UDP, DNS, DHCP, ARP, Routing, NAT, and Windows Network Configuration
 
 ---
 
-# Introduction
+## Introduction
 
 In Part 1, you learned the fundamentals of Windows networking, including:
 
@@ -898,7 +898,7 @@ These concepts are essential for:
 
 ---
 
-# Transport Layer Protocols
+## Transport Layer Protocols
 
 The Transport Layer is responsible for communication between applications.
 
@@ -911,7 +911,7 @@ Both operate above IP but provide different communication characteristics.
 
 ---
 
-# TCP (Transmission Control Protocol)
+## TCP (Transmission Control Protocol)
 
 TCP is a **connection-oriented** protocol that emphasizes reliable data delivery.
 
@@ -933,7 +933,7 @@ Typical uses:
 
 ---
 
-# TCP Three-Way Handshake
+## TCP Three-Way Handshake
 
 Before transmitting data, TCP establishes a connection.
 
@@ -951,7 +951,7 @@ After the handshake completes, both systems begin exchanging application data.
 
 ---
 
-# TCP Session
+## TCP Session
 
 Simplified workflow:
 
@@ -975,7 +975,7 @@ TCP ensures data reaches the destination in the correct order.
 
 ---
 
-# TCP Connection Termination
+## TCP Connection Termination
 
 TCP normally closes a connection gracefully.
 
@@ -999,7 +999,7 @@ This allows both systems to complete outstanding communication before ending the
 
 ---
 
-# Advantages of TCP
+## Advantages of TCP
 
 - Reliable communication
 - Packet ordering
@@ -1013,7 +1013,7 @@ Trade-off:
 
 ---
 
-# UDP (User Datagram Protocol)
+## UDP (User Datagram Protocol)
 
 UDP is a **connectionless** protocol.
 
@@ -1036,7 +1036,7 @@ Typical uses:
 
 ---
 
-# TCP vs UDP
+## TCP vs UDP
 
 | Feature | TCP | UDP |
 |----------|-----|-----|
@@ -1051,7 +1051,7 @@ Choosing TCP or UDP depends on application requirements.
 
 ---
 
-# Ports
+## Ports
 
 A **port** identifies a specific application or service on a computer.
 
@@ -1077,7 +1077,7 @@ Ports range from:
 
 ---
 
-# Port Categories
+## Port Categories
 
 | Range | Description |
 |--------|-------------|
@@ -1089,7 +1089,7 @@ Windows typically assigns ephemeral ports automatically for outbound client conn
 
 ---
 
-# Common Network Ports
+## Common Network Ports
 
 | Port | Protocol | Typical Service |
 |------|----------|-----------------|
@@ -1112,7 +1112,7 @@ Administrators should understand which ports are required for business applicati
 
 ---
 
-# DNS (Domain Name System)
+## DNS (Domain Name System)
 
 Humans prefer names.
 
@@ -1138,7 +1138,7 @@ Without DNS, users would need to remember numeric IP addresses.
 
 ---
 
-# DNS Resolution Process
+## DNS Resolution Process
 
 ```text
 User
@@ -1168,7 +1168,7 @@ Windows caches many DNS responses to improve performance.
 
 ---
 
-# DNS Records
+## DNS Records
 
 Common DNS record types include:
 
@@ -1186,7 +1186,7 @@ Enterprise DNS environments often contain many additional record types.
 
 ---
 
-# DHCP (Dynamic Host Configuration Protocol)
+## DHCP (Dynamic Host Configuration Protocol)
 
 DHCP automatically assigns network configuration.
 
@@ -1202,7 +1202,7 @@ Without DHCP, administrators would manually configure every device.
 
 ---
 
-# DHCP Process (DORA)
+## DHCP Process (DORA)
 
 The DHCP process is commonly summarized as **DORA**.
 
@@ -1230,7 +1230,7 @@ This process automatically provides a usable network configuration.
 
 ---
 
-# DHCP Lease
+## DHCP Lease
 
 Assigned addresses are leased for a limited period.
 
@@ -1258,7 +1258,7 @@ Windows attempts renewal before the lease expires.
 
 ---
 
-# Automatic Private IP Addressing (APIPA)
+## Automatic Private IP Addressing (APIPA)
 
 If a DHCP server cannot be reached, Windows may assign an APIPA address.
 
@@ -1272,7 +1272,7 @@ An APIPA address usually indicates that DHCP configuration was unsuccessful.
 
 ---
 
-# Address Resolution Protocol (ARP)
+## Address Resolution Protocol (ARP)
 
 ARP maps an IPv4 address to a MAC address.
 
@@ -1298,7 +1298,7 @@ ARP operates only within the local network segment.
 
 ---
 
-# ARP Workflow
+## ARP Workflow
 
 ```text
 Host A
@@ -1321,7 +1321,7 @@ Windows stores recently learned mappings in the ARP cache.
 
 ---
 
-# ARP Cache
+## ARP Cache
 
 Display the ARP cache:
 
@@ -1341,7 +1341,7 @@ The cache reduces repeated ARP requests.
 
 ---
 
-# Default Gateway
+## Default Gateway
 
 A **default gateway** forwards traffic destined for other networks.
 
@@ -1365,7 +1365,7 @@ Without a valid gateway, communication outside the local network is generally no
 
 ---
 
-# Router
+## Router
 
 A router connects multiple networks.
 
@@ -1380,7 +1380,7 @@ Routers primarily operate at **OSI Layer 3 (Network Layer)**.
 
 ---
 
-# Routing
+## Routing
 
 Routing determines the path packets take to reach their destination.
 
@@ -1404,7 +1404,7 @@ Windows maintains a routing table to determine where packets should be sent.
 
 ---
 
-# Routing Table
+## Routing Table
 
 View the routing table:
 
@@ -1424,7 +1424,7 @@ Windows consults this table before transmitting IP packets.
 
 ---
 
-# Network Address Translation (NAT)
+## Network Address Translation (NAT)
 
 NAT allows multiple private devices to share one or more public IP addresses.
 
@@ -1450,7 +1450,7 @@ NAT does **not** replace a firewall and should not be considered a security cont
 
 ---
 
-# Windows Network Configuration
+## Windows Network Configuration
 
 Administrators can configure networking using:
 
@@ -1464,7 +1464,7 @@ The choice depends on administrative requirements and environment size.
 
 ---
 
-# IPConfig Utility
+## IPConfig Utility
 
 Display basic configuration:
 
@@ -1500,7 +1500,7 @@ These commands are frequently used during troubleshooting.
 
 ---
 
-# Windows Network Profile
+## Windows Network Profile
 
 Windows categorizes networks into profiles.
 
@@ -1516,7 +1516,7 @@ The selected profile influences Windows Firewall behavior and sharing settings.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A new employee connects a laptop to the corporate network.
 
@@ -1544,7 +1544,7 @@ Each protocol contributes to successful connectivity.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security professionals frequently analyze:
 
@@ -1559,7 +1559,7 @@ Unexpected activity in these protocols may indicate configuration issues or mali
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable network configuration provides:
 
@@ -1573,7 +1573,7 @@ Misconfigured DNS, DHCP, or routing can disrupt critical business services.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use DHCP for centralized IP address management.
 - Protect DNS infrastructure and monitor unusual queries.
@@ -1585,9 +1585,9 @@ Misconfigured DNS, DHCP, or routing can disrupt critical business services.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Display IP Configuration
+### Lab 1 — Display IP Configuration
 
 Open **Command Prompt**.
 
@@ -1607,7 +1607,7 @@ Record:
 
 ---
 
-## Lab 2 — View the ARP Cache
+### Lab 2 — View the ARP Cache
 
 Run:
 
@@ -1624,7 +1624,7 @@ Observe how local devices are represented.
 
 ---
 
-## Lab 3 — Display the Routing Table
+### Lab 3 — Display the Routing Table
 
 Run:
 
@@ -1642,7 +1642,7 @@ Compare the routing table with your network configuration.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - TCP provides reliable, connection-oriented communication, while UDP prioritizes speed with lower overhead.
 - Ports identify the destination application on a host.
@@ -1655,7 +1655,7 @@ Compare the routing table with your network configuration.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between TCP and UDP?
 2. Explain the TCP three-way handshake.
@@ -1670,7 +1670,7 @@ Compare the routing table with your network configuration.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Networking Documentation
@@ -1684,13 +1684,13 @@ Compare the routing table with your network configuration.
 
 ---
 
-# 13-Windows-Networking.md
+## 13-Windows-Networking.md
 
-# Part 3 — Windows Networking Tools, SMB, Remote Connectivity, Network Troubleshooting, and Enterprise Monitoring
+## Part 3 — Windows Networking Tools, SMB, Remote Connectivity, Network Troubleshooting, and Enterprise Monitoring
 
 ---
 
-# Introduction
+## Introduction
 
 Understanding networking protocols alone is not enough for Windows administration.
 
@@ -1707,7 +1707,7 @@ Windows provides numerous built-in networking tools that support administration,
 
 ---
 
-# Windows Networking Tools
+## Windows Networking Tools
 
 Common networking tools include:
 
@@ -1729,7 +1729,7 @@ These tools form the foundation of Windows network troubleshooting.
 
 ---
 
-# Ping
+## Ping
 
 `ping` tests network connectivity using **ICMP Echo Request** and **Echo Reply** messages.
 
@@ -1761,7 +1761,7 @@ Successful replies indicate that the destination is reachable over the network.
 
 ---
 
-# Ping Results
+## Ping Results
 
 Typical output includes:
 
@@ -1786,7 +1786,7 @@ Packet loss may indicate network congestion or connectivity issues.
 
 ---
 
-# Tracert
+## Tracert
 
 `tracert` displays the path packets take to reach a destination.
 
@@ -1822,7 +1822,7 @@ Each router is called a **hop**.
 
 ---
 
-# PathPing
+## PathPing
 
 `pathping` combines the functionality of `ping` and `tracert`.
 
@@ -1842,7 +1842,7 @@ This is particularly useful for identifying where packet loss occurs.
 
 ---
 
-# Nslookup
+## Nslookup
 
 `nslookup` queries DNS servers.
 
@@ -1874,7 +1874,7 @@ Administrators use `nslookup` to verify DNS resolution.
 
 ---
 
-# Netstat
+## Netstat
 
 `netstat` displays:
 
@@ -1898,7 +1898,7 @@ Useful columns include:
 
 ---
 
-# Common Netstat Options
+## Common Netstat Options
 
 | Command | Purpose |
 |----------|----------|
@@ -1911,7 +1911,7 @@ Administrators often correlate PIDs with Task Manager or PowerShell.
 
 ---
 
-# Hostname
+## Hostname
 
 Display the computer name:
 
@@ -1929,7 +1929,7 @@ The hostname helps identify systems on a network.
 
 ---
 
-# Network Interface Information
+## Network Interface Information
 
 PowerShell provides detailed network information.
 
@@ -1950,7 +1950,7 @@ PowerShell is commonly used for enterprise automation.
 
 ---
 
-# IP Configuration with PowerShell
+## IP Configuration with PowerShell
 
 Example:
 
@@ -1967,7 +1967,7 @@ Administrators can view:
 
 ---
 
-# SMB (Server Message Block)
+## SMB (Server Message Block)
 
 SMB is the primary Windows protocol for:
 
@@ -1998,7 +1998,7 @@ SMB is fundamental to Windows enterprise environments.
 
 ---
 
-# SMB Shares
+## SMB Shares
 
 Example:
 
@@ -2010,7 +2010,7 @@ Authorized users can access shared resources based on permissions.
 
 ---
 
-# SMB Permissions
+## SMB Permissions
 
 Access depends on:
 
@@ -2021,7 +2021,7 @@ Effective access is determined by evaluating both permission sets.
 
 ---
 
-# Administrative Shares
+## Administrative Shares
 
 Windows automatically creates hidden administrative shares such as:
 
@@ -2037,7 +2037,7 @@ These are primarily intended for administrative use and require appropriate cred
 
 ---
 
-# Network Discovery
+## Network Discovery
 
 Windows can discover nearby devices on trusted networks.
 
@@ -2051,7 +2051,7 @@ This feature is generally enabled only on trusted network profiles.
 
 ---
 
-# Remote Desktop Protocol (RDP)
+## Remote Desktop Protocol (RDP)
 
 RDP allows graphical remote administration.
 
@@ -2083,7 +2083,7 @@ Restrict access using firewalls, strong authentication, and least privilege.
 
 ---
 
-# Remote Assistance
+## Remote Assistance
 
 Windows Remote Assistance enables one user to assist another user remotely.
 
@@ -2109,7 +2109,7 @@ This differs from Remote Desktop because it is designed for interactive support.
 
 ---
 
-# Windows Network Profiles
+## Windows Network Profiles
 
 Windows classifies networks as:
 
@@ -2123,7 +2123,7 @@ Firewall rules and sharing settings vary based on the selected profile.
 
 ---
 
-# Windows Firewall Interaction
+## Windows Firewall Interaction
 
 Network communication is evaluated against Windows Firewall rules.
 
@@ -2149,7 +2149,7 @@ Firewall configuration is covered in detail in a later chapter.
 
 ---
 
-# Network Troubleshooting Methodology
+## Network Troubleshooting Methodology
 
 A structured approach improves efficiency.
 
@@ -2185,7 +2185,7 @@ Avoid changing multiple settings simultaneously during troubleshooting.
 
 ---
 
-# Connectivity Troubleshooting
+## Connectivity Troubleshooting
 
 Example workflow:
 
@@ -2225,7 +2225,7 @@ Working methodically helps isolate the root cause.
 
 ---
 
-# DNS Troubleshooting
+## DNS Troubleshooting
 
 Steps:
 
@@ -2240,7 +2240,7 @@ If IP connectivity works but name resolution fails, the issue often involves DNS
 
 ---
 
-# DHCP Troubleshooting
+## DHCP Troubleshooting
 
 Common checks:
 
@@ -2262,7 +2262,7 @@ An address in the `169.254.0.0/16` range often indicates that a DHCP lease was n
 
 ---
 
-# Network Performance Monitoring
+## Network Performance Monitoring
 
 Administrators monitor:
 
@@ -2277,7 +2277,7 @@ Monitoring helps detect performance degradation before users report issues.
 
 ---
 
-# Enterprise Monitoring
+## Enterprise Monitoring
 
 Typical monitoring workflow:
 
@@ -2309,7 +2309,7 @@ Centralized monitoring improves visibility across enterprise environments.
 
 ---
 
-# PowerShell Networking
+## PowerShell Networking
 
 Useful cmdlets include:
 
@@ -2329,7 +2329,7 @@ PowerShell enables automation and remote management of networking tasks.
 
 ---
 
-# Test-NetConnection
+## Test-NetConnection
 
 Example:
 
@@ -2347,7 +2347,7 @@ It is a powerful troubleshooting tool.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An employee cannot access a file server.
 
@@ -2385,7 +2385,7 @@ Using a structured process reduces troubleshooting time.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Network tools are valuable during:
 
@@ -2407,7 +2407,7 @@ These observations should be correlated with process execution, authentication e
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective network administration provides:
 
@@ -2422,7 +2422,7 @@ Poor network troubleshooting practices can increase recovery times and business 
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow a documented troubleshooting methodology.
 - Restrict SMB access to authorized users and systems.
@@ -2434,9 +2434,9 @@ Poor network troubleshooting practices can increase recovery times and business 
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Test Connectivity
+### Lab 1 — Test Connectivity
 
 Open **Command Prompt**.
 
@@ -2454,7 +2454,7 @@ Record:
 
 ---
 
-## Lab 2 — Trace a Route
+### Lab 2 — Trace a Route
 
 Run:
 
@@ -2470,7 +2470,7 @@ Observe:
 
 ---
 
-## Lab 3 — Display Active Connections
+### Lab 3 — Display Active Connections
 
 Run:
 
@@ -2486,7 +2486,7 @@ Identify:
 
 ---
 
-## Lab 4 — Test DNS Resolution with PowerShell
+### Lab 4 — Test DNS Resolution with PowerShell
 
 Open **PowerShell**.
 
@@ -2506,7 +2506,7 @@ Observe similarities and differences in the returned information.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows includes built-in tools for diagnosing network connectivity and performance.
 - `ping`, `tracert`, `pathping`, and `nslookup` are core troubleshooting utilities.
@@ -2518,7 +2518,7 @@ Observe similarities and differences in the returned information.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What does `ping` test?
 2. What is the difference between `ping` and `tracert`?
@@ -2533,7 +2533,7 @@ Observe similarities and differences in the returned information.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Networking Documentation
@@ -2545,13 +2545,13 @@ Observe similarities and differences in the returned information.
 
 ---
 
-# 13-Windows-Networking.md
+## 13-Windows-Networking.md
 
-# Part 4 — Enterprise Windows Networking, Network Security, Monitoring, Performance Optimization, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Windows Networking, Network Security, Monitoring, Performance Optimization, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise Windows networking extends beyond basic connectivity.
 
@@ -2569,7 +2569,7 @@ This section focuses on enterprise networking concepts, security best practices,
 
 ---
 
-# Enterprise Network Architecture
+## Enterprise Network Architecture
 
 A typical enterprise network consists of multiple interconnected segments.
 
@@ -2594,7 +2594,7 @@ Segmenting networks improves security, performance, and manageability.
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Network segmentation divides a large network into smaller logical sections.
 
@@ -2616,7 +2616,7 @@ Examples of segmented networks:
 
 ---
 
-# Virtual LANs (VLANs)
+## Virtual LANs (VLANs)
 
 A **Virtual Local Area Network (VLAN)** logically separates devices even when they share the same physical switch infrastructure.
 
@@ -2638,7 +2638,7 @@ Traffic between VLANs typically requires routing through a Layer 3 device.
 
 ---
 
-# Network Redundancy
+## Network Redundancy
 
 Enterprise networks minimize downtime through redundancy.
 
@@ -2672,7 +2672,7 @@ Redundancy helps maintain service availability during hardware or link failures.
 
 ---
 
-# High Availability
+## High Availability
 
 High availability (HA) aims to minimize service interruptions.
 
@@ -2701,7 +2701,7 @@ If one server becomes unavailable, traffic is redirected to the remaining server
 
 ---
 
-# Quality of Service (QoS)
+## Quality of Service (QoS)
 
 Quality of Service prioritizes critical network traffic.
 
@@ -2721,7 +2721,7 @@ QoS helps ensure time-sensitive traffic receives appropriate bandwidth.
 
 ---
 
-# Network Security Layers
+## Network Security Layers
 
 Enterprise network security commonly uses a defense-in-depth approach.
 
@@ -2753,7 +2753,7 @@ Each layer provides additional protection.
 
 ---
 
-# Firewalls
+## Firewalls
 
 Firewalls evaluate network traffic against defined rules.
 
@@ -2769,7 +2769,7 @@ Windows Firewall is discussed in detail in **Chapter 19 – Windows Firewall**.
 
 ---
 
-# Secure Network Protocols
+## Secure Network Protocols
 
 Prefer encrypted protocols whenever possible.
 
@@ -2784,7 +2784,7 @@ Using encrypted protocols helps protect confidentiality and integrity.
 
 ---
 
-# Remote Access Security
+## Remote Access Security
 
 Secure remote access should include:
 
@@ -2799,7 +2799,7 @@ Remote administration should never expose unnecessary services directly to the I
 
 ---
 
-# Network Monitoring
+## Network Monitoring
 
 Continuous monitoring provides visibility into:
 
@@ -2814,7 +2814,7 @@ Monitoring supports proactive maintenance.
 
 ---
 
-# Network Monitoring Workflow
+## Network Monitoring Workflow
 
 ```text
 Network Devices
@@ -2848,7 +2848,7 @@ Timely alerts reduce mean time to detect (MTTD) and mean time to resolve (MTTR).
 
 ---
 
-# Performance Optimization
+## Performance Optimization
 
 Administrators improve performance by:
 
@@ -2863,7 +2863,7 @@ Performance tuning should be based on measured data rather than assumptions.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Capacity planning helps organizations prepare for future growth.
 
@@ -2879,7 +2879,7 @@ Planning reduces the risk of unexpected performance degradation.
 
 ---
 
-# Network Documentation
+## Network Documentation
 
 Comprehensive documentation should include:
 
@@ -2896,7 +2896,7 @@ Accurate documentation accelerates troubleshooting and disaster recovery.
 
 ---
 
-# Network Change Management
+## Network Change Management
 
 Recommended process:
 
@@ -2932,7 +2932,7 @@ Controlled changes reduce operational risk.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Network disaster recovery planning should address:
 
@@ -2947,7 +2947,7 @@ Recovery plans should be tested periodically.
 
 ---
 
-# Enterprise Monitoring Example
+## Enterprise Monitoring Example
 
 An organization experiences intermittent network latency.
 
@@ -2985,7 +2985,7 @@ A systematic process helps identify the root cause efficiently.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Windows networking telemetry plays a significant role in:
 
@@ -3009,7 +3009,7 @@ Network telemetry should be correlated with endpoint logs, authentication events
 
 ---
 
-# Business Impact
+## Business Impact
 
 A well-managed enterprise network provides:
 
@@ -3025,7 +3025,7 @@ Network outages can affect revenue, customer satisfaction, and operational conti
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Implement network segmentation using VLANs.
 - Prefer encrypted protocols over legacy plaintext protocols.
@@ -3040,9 +3040,9 @@ Network outages can affect revenue, customer satisfaction, and operational conti
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Document Your Network
+### Lab 1 — Document Your Network
 
 Create a simple diagram showing:
 
@@ -3056,7 +3056,7 @@ Identify IP addresses where possible.
 
 ---
 
-## Lab 2 — Review Network Profile
+### Lab 2 — Review Network Profile
 
 Open:
 
@@ -3082,7 +3082,7 @@ Consider how the selected profile affects firewall behavior.
 
 ---
 
-## Lab 3 — Test Connectivity to a Remote Port
+### Lab 3 — Test Connectivity to a Remote Port
 
 Open **PowerShell**.
 
@@ -3100,7 +3100,7 @@ Observe:
 
 ---
 
-## Lab 4 — Create a Troubleshooting Checklist
+### Lab 4 — Create a Troubleshooting Checklist
 
 Prepare a checklist containing:
 
@@ -3117,7 +3117,7 @@ Use this checklist for future troubleshooting exercises.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3149,7 +3149,7 @@ These concepts provide the networking foundation required for Windows administra
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows networking is built on the TCP/IP protocol suite.
 - DNS, DHCP, ARP, routing, and NAT are fundamental networking components.
@@ -3160,7 +3160,7 @@ These concepts provide the networking foundation required for Windows administra
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of VLANs?
 2. Explain the difference between TCP and UDP.
@@ -3175,7 +3175,7 @@ These concepts provide the networking foundation required for Windows administra
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Networking Documentation
@@ -3191,7 +3191,7 @@ These concepts provide the networking foundation required for Windows administra
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 13 – Windows Networking**.
 

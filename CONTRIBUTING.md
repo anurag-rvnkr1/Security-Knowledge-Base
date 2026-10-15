@@ -1,13 +1,12 @@
-# Contributing to Cybersecurity Notes
+# Contributing to Security Knowledge Base
 
-First off, thank you for your interest in contributing to **Cybersecurity Handbook**! 🎉
+First off, thank you for your interest in contributing to **Security Knowledge Base**.
 
 Whether you're fixing a typo, improving an explanation, adding a new topic, or contributing a hands-on lab, your efforts help make this repository a valuable learning resource for the cybersecurity community.
 
 ---
 
-# Our Goal
-
+## Our Goal
 The goal of this repository is to provide:
 
 * Accurate and practical cybersecurity knowledge
@@ -20,8 +19,7 @@ We welcome contributions that improve the educational value, technical accuracy,
 
 ---
 
-# Ways to Contribute.
-
+## Ways to Contribute.
 You can contribute by:
 
 * Fixing spelling or grammar mistakes
@@ -36,8 +34,7 @@ You can contribute by:
 
 ---
 
-# Before You Start
-
+## Before You Start
 Please:
 
 * Search existing Issues before creating a new one.
@@ -48,8 +45,7 @@ Please:
 
 ---
 
-# Repository Structure
-
+## Repository Structure
 Please place new content in the appropriate directory.
 
 Example:
@@ -74,8 +70,7 @@ If your topic does not fit an existing category, open an Issue for discussion be
 
 ---
 
-# Writing Guidelines
-
+## Writing Guidelines
 Please write documentation that is:
 
 * Clear
@@ -97,8 +92,7 @@ Prefer Markdown features such as:
 
 ---
 
-# Recommended Topic Template
-
+## Recommended Topic Template
 Whenever possible, structure technical articles like this:
 
 ```markdown
@@ -129,8 +123,7 @@ Whenever possible, structure technical articles like this:
 
 ---
 
-# Lab Contribution Guidelines
-
+## Lab Contribution Guidelines
 Practical labs should include:
 
 * Objective
@@ -146,8 +139,7 @@ Do **not** include unauthorized testing instructions or content intended to faci
 
 ---
 
-# Code Snippets
-
+## Code Snippets
 If adding scripts or code:
 
 * Keep them simple and readable.
@@ -158,8 +150,7 @@ If adding scripts or code:
 
 ---
 
-# Commit Message Guidelines
-
+## Commit Message Guidelines
 Use meaningful commit messages.
 
 Examples:
@@ -192,8 +183,7 @@ misc
 
 ---
 
-# Pull Request Checklist
-
+## Pull Request Checklist
 Before opening a Pull Request, ensure that:
 
 * The content is accurate.
@@ -206,8 +196,7 @@ Before opening a Pull Request, ensure that:
 
 ---
 
-# Style Guide
-
+## Style Guide
 Use:
 
 * Descriptive headings
@@ -225,8 +214,7 @@ Avoid unexplained abbreviations.
 
 ---
 
-# References
-
+## References
 Whenever possible, support technical information using authoritative sources such as:
 
 * OWASP
@@ -244,8 +232,7 @@ Clearly distinguish between official guidance and personal observations.
 
 ---
 
-# Reporting Issues
-
+## Reporting Issues
 If you discover:
 
 * Broken links
@@ -257,14 +244,12 @@ Please open a GitHub Issue with enough detail to reproduce or verify the problem
 
 ---
 
-# Code of Conduct
-
+## Code of Conduct
 By participating in this project, you agree to follow the project's **Code of Conduct** and help maintain a welcoming, respectful, and inclusive community.
 
 ---
 
-# License
-
+## License
 By contributing to this repository, you agree that your contributions will be licensed under the project's MIT License.
 
 ---
@@ -273,4 +258,4 @@ By contributing to this repository, you agree that your contributions will be li
 
 Every contribution—whether it's correcting a typo, improving a diagram, or adding a new topic—helps make this repository more useful for learners and professionals around the world.
 
-Thank you for helping improve **Cybersecurity Notes**.
+Thank you for helping improve **Security Knowledge Base**.

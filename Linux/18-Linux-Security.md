@@ -1,10 +1,10 @@
 # 18 - Linux Security
 
-# Part 1 — Linux Security Fundamentals, Security Principles, Threat Landscape, Authentication, Password Security, and PAM
+## Part 1 — Linux Security Fundamentals, Security Principles, Threat Landscape, Authentication, Password Security, and PAM
 
 ---
 
-# Introduction
+## Introduction
 
 Linux is widely regarded as one of the most secure operating systems available.
 
@@ -35,7 +35,7 @@ Poorly configured Linux systems are vulnerable regardless of the operating syste
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -50,7 +50,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is Linux Security?
+## What is Linux Security?
 
 Linux security is the practice of protecting:
 
@@ -73,7 +73,7 @@ Goals include:
 
 ---
 
-# Security Goals (CIA Triad)
+## Security Goals (CIA Triad)
 
 Every security control ultimately supports one or more of these goals.
 
@@ -91,7 +91,7 @@ Availability
 
 ---
 
-## Confidentiality
+### Confidentiality
 
 Protect information from unauthorized disclosure.
 
@@ -104,7 +104,7 @@ Examples:
 
 ---
 
-## Integrity
+### Integrity
 
 Ensure data remains accurate and unmodified.
 
@@ -117,7 +117,7 @@ Examples:
 
 ---
 
-## Availability
+### Availability
 
 Ensure systems remain accessible.
 
@@ -131,7 +131,7 @@ Examples:
 
 ---
 
-# Additional Security Principles
+## Additional Security Principles
 
 Large organizations also consider:
 
@@ -142,7 +142,7 @@ Large organizations also consider:
 
 ---
 
-# Security Architecture
+## Security Architecture
 
 ```text
 Users
@@ -176,7 +176,7 @@ Multiple layers reduce the impact of individual failures.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Security should not rely on a single control.
 
@@ -212,7 +212,7 @@ If one layer fails, additional controls continue to provide protection.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Every user, application, and service should receive **only the permissions required** to perform its tasks.
 
@@ -255,7 +255,7 @@ Benefits:
 
 ---
 
-# Separation of Duties
+## Separation of Duties
 
 Critical tasks should be divided among multiple roles.
 
@@ -270,7 +270,7 @@ Example:
 
 ---
 
-# Zero Trust
+## Zero Trust
 
 Modern security assumes:
 
@@ -286,13 +286,13 @@ Requirements include:
 
 ---
 
-# Linux Threat Landscape
+## Linux Threat Landscape
 
 Linux systems face many types of threats.
 
 ---
 
-## External Threats
+### External Threats
 
 Examples:
 
@@ -305,7 +305,7 @@ Examples:
 
 ---
 
-## Internal Threats
+### Internal Threats
 
 Examples:
 
@@ -318,7 +318,7 @@ Examples:
 
 ---
 
-## Malware
+### Malware
 
 Examples include:
 
@@ -331,7 +331,7 @@ Examples include:
 
 ---
 
-# Common Attack Surface
+## Common Attack Surface
 
 ```text
 Internet
@@ -365,7 +365,7 @@ Each exposed service increases the potential attack surface.
 
 ---
 
-# Common Linux Attack Vectors
+## Common Linux Attack Vectors
 
 | Attack | Description |
 |----------|-------------|
@@ -380,7 +380,7 @@ Each exposed service increases the potential attack surface.
 
 ---
 
-# Authentication
+## Authentication
 
 Authentication answers:
 
@@ -400,7 +400,7 @@ Examples:
 
 ---
 
-# Authentication Workflow
+## Authentication Workflow
 
 ```text
 User
@@ -434,7 +434,7 @@ Access Denied
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 | Authentication | Authorization |
 |----------------|---------------|
@@ -446,7 +446,7 @@ Both are required for secure systems.
 
 ---
 
-# Password Security
+## Password Security
 
 Passwords remain one of the most common authentication mechanisms.
 
@@ -459,7 +459,7 @@ Strong password policies reduce the risk of:
 
 ---
 
-# Characteristics of Strong Passwords
+## Characteristics of Strong Passwords
 
 Recommended characteristics:
 
@@ -472,7 +472,7 @@ Recommended characteristics:
 
 ---
 
-# Weak Password Examples
+## Weak Password Examples
 
 ```text
 password123
@@ -488,7 +488,7 @@ These passwords are easily guessed or appear in common password dictionaries.
 
 ---
 
-# Strong Password Example
+## Strong Password Example
 
 ```text
 River!Copper-Cloud27?Orbit
@@ -498,7 +498,7 @@ A randomly generated password from a reputable password manager is generally eve
 
 ---
 
-# Password Storage
+## Password Storage
 
 Passwords should **never** be stored in plaintext.
 
@@ -522,7 +522,7 @@ Access to `/etc/shadow` is restricted to privileged users.
 
 ---
 
-# Understanding `/etc/passwd`
+## Understanding `/etc/passwd`
 
 Example:
 
@@ -544,7 +544,7 @@ Fields:
 
 ---
 
-# Understanding `/etc/shadow`
+## Understanding `/etc/shadow`
 
 Example:
 
@@ -569,7 +569,7 @@ The exact hash format depends on the configured hashing algorithm.
 
 ---
 
-# Password Hashing
+## Password Hashing
 
 Modern Linux systems commonly use strong password hashing algorithms such as:
 
@@ -582,7 +582,7 @@ These algorithms are designed to make password cracking significantly more diffi
 
 ---
 
-# Account Locking
+## Account Locking
 
 Organizations often configure account lockout policies after repeated failed authentication attempts.
 
@@ -604,7 +604,7 @@ Exact thresholds vary according to organizational policy.
 
 ---
 
-# Password Aging
+## Password Aging
 
 Password aging policies may define:
 
@@ -621,7 +621,7 @@ chage -l username
 
 ---
 
-# Changing Password Policy
+## Changing Password Policy
 
 Example:
 
@@ -641,7 +641,7 @@ Maximum password age
 
 ---
 
-# Password Complexity
+## Password Complexity
 
 Typical enterprise requirements:
 
@@ -657,7 +657,7 @@ Many organizations now prioritize **long passphrases** and block compromised pas
 
 ---
 
-# PAM (Pluggable Authentication Modules)
+## PAM (Pluggable Authentication Modules)
 
 PAM provides a modular authentication framework.
 
@@ -665,7 +665,7 @@ Instead of each application implementing authentication independently, applicati
 
 ---
 
-# PAM Architecture
+## PAM Architecture
 
 ```text
 Application
@@ -689,7 +689,7 @@ Access Decision
 
 ---
 
-# Advantages of PAM
+## Advantages of PAM
 
 - Centralized authentication
 - Modular configuration
@@ -700,7 +700,7 @@ Access Decision
 
 ---
 
-# PAM Module Types
+## PAM Module Types
 
 | Module Type | Purpose |
 |-------------|----------|
@@ -711,7 +711,7 @@ Access Decision
 
 ---
 
-# PAM Control Flags
+## PAM Control Flags
 
 | Flag | Behavior |
 |------|----------|
@@ -722,7 +722,7 @@ Access Decision
 
 ---
 
-# PAM Configuration
+## PAM Configuration
 
 Common directory:
 
@@ -740,7 +740,7 @@ Example:
 
 ---
 
-# Authentication Flow with PAM
+## Authentication Flow with PAM
 
 ```text
 SSH Login
@@ -764,7 +764,7 @@ User Shell
 
 ---
 
-# Enterprise Authentication Workflow
+## Enterprise Authentication Workflow
 
 ```text
 User
@@ -802,7 +802,7 @@ Directory services may include LDAP or Active Directory integrations.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Authentication is a primary target for attackers.
 
@@ -827,7 +827,7 @@ Defensive measures include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong authentication and access controls help organizations:
 
@@ -840,7 +840,7 @@ Strong authentication and access controls help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Enforce least privilege.
 - Require MFA for administrative accounts where possible.
@@ -853,7 +853,7 @@ Strong authentication and access controls help organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux security relies on layered defenses rather than a single mechanism.
 - The CIA Triad underpins most security decisions.
@@ -865,13 +865,13 @@ Strong authentication and access controls help organizations:
 ---
 
 
-# 18 - Linux Security
+## 18 - Linux Security
 
-# Part 2 — File Security, Process Security, Linux Capabilities, SELinux, AppArmor, Kernel Security, and Secure System Configuration
+## Part 2 — File Security, Process Security, Linux Capabilities, SELinux, AppArmor, Kernel Security, and Secure System Configuration
 
 ---
 
-# Introduction
+## Introduction
 
 Authentication is only the first layer of Linux security.
 
@@ -890,7 +890,7 @@ Enterprise environments combine these controls to minimize risk and reduce the i
 
 ---
 
-# Linux Security Layers
+## Linux Security Layers
 
 ```text
 Users
@@ -930,7 +930,7 @@ Hardware
 
 ---
 
-# File Security
+## File Security
 
 Linux protects files using:
 
@@ -943,7 +943,7 @@ Linux protects files using:
 
 ---
 
-# File Ownership
+## File Ownership
 
 Every file has:
 
@@ -981,7 +981,7 @@ Meaning:
 
 ---
 
-# Permission Review
+## Permission Review
 
 Display permissions:
 
@@ -1009,7 +1009,7 @@ sudo chgrp developers report.txt
 
 ---
 
-# Secure Permission Examples
+## Secure Permission Examples
 
 | File | Recommended Permissions |
 |------|--------------------------|
@@ -1023,7 +1023,7 @@ Exact permissions depend on organizational requirements.
 
 ---
 
-# Special Permission Bits
+## Special Permission Bits
 
 Linux supports:
 
@@ -1035,7 +1035,7 @@ Linux supports:
 
 ---
 
-# Sticky Bit Example
+## Sticky Bit Example
 
 Common example:
 
@@ -1059,7 +1059,7 @@ Users can remove only:
 
 ---
 
-# SUID Risk
+## SUID Risk
 
 A SUID program executes with the effective permissions of its owner.
 
@@ -1085,7 +1085,7 @@ Misconfigured or vulnerable SUID programs can become privilege escalation vector
 
 ---
 
-# Finding SUID Files
+## Finding SUID Files
 
 ```bash
 find / -perm -4000 -type f 2>/dev/null
@@ -1095,7 +1095,7 @@ Review results periodically and investigate unexpected binaries.
 
 ---
 
-# Access Control Lists (ACLs)
+## Access Control Lists (ACLs)
 
 ACLs provide more granular permissions than standard owner/group/others.
 
@@ -1113,7 +1113,7 @@ getfacl project.txt
 
 ---
 
-# File Integrity
+## File Integrity
 
 Critical files should be monitored.
 
@@ -1135,7 +1135,7 @@ Unexpected modifications should trigger investigation.
 
 ---
 
-# Process Security
+## Process Security
 
 Processes should execute with only the privileges they require.
 
@@ -1150,7 +1150,7 @@ Each process has:
 
 ---
 
-# Process Isolation
+## Process Isolation
 
 Linux isolates processes.
 
@@ -1170,7 +1170,7 @@ A normal user process cannot directly access another process's memory without ap
 
 ---
 
-# Viewing Processes
+## Viewing Processes
 
 ```bash
 ps -ef
@@ -1191,7 +1191,7 @@ Review:
 
 ---
 
-# Killing a Process
+## Killing a Process
 
 Graceful termination:
 
@@ -1209,7 +1209,7 @@ kill -9 PID
 
 ---
 
-# Process Limits
+## Process Limits
 
 Display limits:
 
@@ -1229,7 +1229,7 @@ These limits help protect systems from resource exhaustion.
 
 ---
 
-# Linux Capabilities
+## Linux Capabilities
 
 Traditionally, the root user possessed all administrative privileges.
 
@@ -1244,7 +1244,7 @@ Examples include:
 
 ---
 
-# Capability Model
+## Capability Model
 
 ```text
 Traditional
@@ -1272,7 +1272,7 @@ Only Required Privileges
 
 ---
 
-# Viewing Capabilities
+## Viewing Capabilities
 
 Installed capability information:
 
@@ -1294,7 +1294,7 @@ getcap -r / 2>/dev/null
 
 ---
 
-# Advantages of Capabilities
+## Advantages of Capabilities
 
 - Reduced privilege
 - Smaller attack surface
@@ -1303,7 +1303,7 @@ getcap -r / 2>/dev/null
 
 ---
 
-# Mandatory Access Control (MAC)
+## Mandatory Access Control (MAC)
 
 Traditional permissions are **Discretionary Access Control (DAC)**.
 
@@ -1318,7 +1318,7 @@ Even if traditional permissions allow access, MAC policies may deny it.
 
 ---
 
-# DAC vs MAC
+## DAC vs MAC
 
 | DAC | MAC |
 |------|-----|
@@ -1329,7 +1329,7 @@ Even if traditional permissions allow access, MAC policies may deny it.
 
 ---
 
-# SELinux
+## SELinux
 
 SELinux (Security-Enhanced Linux) provides Mandatory Access Control.
 
@@ -1343,7 +1343,7 @@ Common on:
 
 ---
 
-# SELinux Workflow
+## SELinux Workflow
 
 ```text
 Application
@@ -1363,7 +1363,7 @@ Allow or Deny
 
 ---
 
-# SELinux Modes
+## SELinux Modes
 
 Display current mode:
 
@@ -1381,7 +1381,7 @@ Modes:
 
 ---
 
-# Viewing SELinux Status
+## Viewing SELinux Status
 
 ```bash
 sestatus
@@ -1389,7 +1389,7 @@ sestatus
 
 ---
 
-# SELinux Contexts
+## SELinux Contexts
 
 Display contexts:
 
@@ -1414,7 +1414,7 @@ Typical fields:
 
 ---
 
-# Why SELinux Matters
+## Why SELinux Matters
 
 Example:
 
@@ -1444,7 +1444,7 @@ Even when a service is compromised, SELinux can reduce its ability to access unr
 
 ---
 
-# AppArmor
+## AppArmor
 
 AppArmor is another Mandatory Access Control framework.
 
@@ -1456,7 +1456,7 @@ Common on:
 
 ---
 
-# AppArmor Workflow
+## AppArmor Workflow
 
 ```text
 Application
@@ -1480,7 +1480,7 @@ Deny
 
 ---
 
-# Viewing AppArmor Status
+## Viewing AppArmor Status
 
 ```bash
 sudo aa-status
@@ -1488,7 +1488,7 @@ sudo aa-status
 
 ---
 
-# AppArmor Profiles
+## AppArmor Profiles
 
 Profiles define:
 
@@ -1501,7 +1501,7 @@ Applications run according to their assigned profiles.
 
 ---
 
-# SELinux vs AppArmor
+## SELinux vs AppArmor
 
 | SELinux | AppArmor |
 |----------|-----------|
@@ -1512,7 +1512,7 @@ Applications run according to their assigned profiles.
 
 ---
 
-# Kernel Security
+## Kernel Security
 
 The Linux kernel enforces many security protections.
 
@@ -1528,7 +1528,7 @@ Examples include:
 
 ---
 
-# Address Space Layout Randomization (ASLR)
+## Address Space Layout Randomization (ASLR)
 
 ASLR randomizes memory locations.
 
@@ -1556,7 +1556,7 @@ This increases the difficulty of many memory corruption exploits.
 
 ---
 
-# Checking ASLR
+## Checking ASLR
 
 ```bash
 cat /proc/sys/kernel/randomize_va_space
@@ -1572,7 +1572,7 @@ Typical values:
 
 ---
 
-# Kernel Modules
+## Kernel Modules
 
 Loaded modules:
 
@@ -1590,7 +1590,7 @@ Kernel modules extend kernel functionality and should be managed carefully.
 
 ---
 
-# Secure Boot
+## Secure Boot
 
 Secure Boot helps ensure that only trusted boot components are executed during system startup.
 
@@ -1604,7 +1604,7 @@ Support depends on hardware and firmware configuration.
 
 ---
 
-# Secure Configuration
+## Secure Configuration
 
 A secure Linux system should include:
 
@@ -1619,7 +1619,7 @@ A secure Linux system should include:
 
 ---
 
-# Secure Configuration Workflow
+## Secure Configuration Workflow
 
 ```text
 Install
@@ -1651,7 +1651,7 @@ Improve
 
 ---
 
-# Configuration Review
+## Configuration Review
 
 Administrators should regularly review:
 
@@ -1665,7 +1665,7 @@ Administrators should regularly review:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Many Linux compromises exploit:
 
@@ -1679,7 +1679,7 @@ Defense mechanisms such as capabilities, SELinux, and AppArmor significantly inc
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong operating system security:
 
@@ -1692,7 +1692,7 @@ Strong operating system security:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Apply the principle of least privilege.
 - Regularly audit SUID/SGID binaries.
@@ -1705,7 +1705,7 @@ Strong operating system security:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - File and process security form the foundation of Linux access control.
 - Linux capabilities divide root privileges into smaller, more manageable permissions.
@@ -1715,13 +1715,13 @@ Strong operating system security:
 
 ---
 
-# 18 - Linux Security
+## 18 - Linux Security
 
-# Part 3 — Security Monitoring, Malware & Rootkits, Vulnerability Management, System Hardening, Incident Response, Enterprise Security Practices, and Compliance
+## Part 3 — Security Monitoring, Malware & Rootkits, Vulnerability Management, System Hardening, Incident Response, Enterprise Security Practices, and Compliance
 
 ---
 
-# Introduction
+## Introduction
 
 Even a properly configured Linux server is **never "finished" from a security perspective**.
 
@@ -1759,7 +1759,7 @@ Improve
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Security monitoring is the continuous observation of systems to identify:
 
@@ -1781,7 +1781,7 @@ Monitoring combines:
 
 ---
 
-# Security Monitoring Architecture
+## Security Monitoring Architecture
 
 ```text
 Linux Servers
@@ -1821,7 +1821,7 @@ Incident Response
 
 ---
 
-# What Should Be Monitored?
+## What Should Be Monitored?
 
 Enterprise Linux systems should monitor:
 
@@ -1838,7 +1838,7 @@ Enterprise Linux systems should monitor:
 
 ---
 
-# Important Security Logs
+## Important Security Logs
 
 | Log | Purpose |
 |------|----------|
@@ -1852,7 +1852,7 @@ Enterprise Linux systems should monitor:
 
 ---
 
-# Daily Security Review
+## Daily Security Review
 
 A security administrator should routinely review:
 
@@ -1882,7 +1882,7 @@ Critical Errors
 
 ---
 
-# Detecting Suspicious Logins
+## Detecting Suspicious Logins
 
 Useful commands:
 
@@ -1912,7 +1912,7 @@ ss -tnp | grep ssh
 
 ---
 
-# Monitoring Running Processes
+## Monitoring Running Processes
 
 List processes:
 
@@ -1942,7 +1942,7 @@ Look for:
 
 ---
 
-# Monitoring Open Network Ports
+## Monitoring Open Network Ports
 
 Display listening ports:
 
@@ -1965,7 +1965,7 @@ Questions to ask:
 
 ---
 
-# Monitoring File Changes
+## Monitoring File Changes
 
 Critical files include:
 
@@ -1985,7 +1985,7 @@ Unexpected modifications should be investigated immediately.
 
 ---
 
-# File Integrity Monitoring (FIM)
+## File Integrity Monitoring (FIM)
 
 File Integrity Monitoring detects unauthorized changes.
 
@@ -2020,7 +2020,7 @@ Common uses:
 
 ---
 
-# Malware on Linux
+## Malware on Linux
 
 Although Linux experiences fewer malware infections than some desktop operating systems, it is **not immune**.
 
@@ -2036,7 +2036,7 @@ Examples include:
 
 ---
 
-# Malware Infection Chain
+## Malware Infection Chain
 
 ```text
 Initial Access
@@ -2068,7 +2068,7 @@ Impact
 
 ---
 
-# Indicators of Malware
+## Indicators of Malware
 
 Possible indicators include:
 
@@ -2084,7 +2084,7 @@ These indicators require investigation but are not, by themselves, proof of malw
 
 ---
 
-# Rootkits
+## Rootkits
 
 A rootkit attempts to hide malicious activity by modifying or interfering with the operating system.
 
@@ -2098,7 +2098,7 @@ Objectives may include:
 
 ---
 
-# Rootkit Risks
+## Rootkit Risks
 
 ```text
 Attacker
@@ -2122,7 +2122,7 @@ Hidden Activity
 
 ---
 
-# Detecting Rootkits
+## Detecting Rootkits
 
 Common approaches:
 
@@ -2141,7 +2141,7 @@ These tools help identify suspicious indicators but should not be considered def
 
 ---
 
-# Kernel Module Inspection
+## Kernel Module Inspection
 
 Loaded modules:
 
@@ -2159,7 +2159,7 @@ Investigate unexpected or unsigned modules according to organizational policy.
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Vulnerability management is an ongoing process.
 
@@ -2189,7 +2189,7 @@ Monitor
 
 ---
 
-# Types of Vulnerabilities
+## Types of Vulnerabilities
 
 | Category | Examples |
 |-----------|----------|
@@ -2202,7 +2202,7 @@ Monitor
 
 ---
 
-# Vulnerability Assessment
+## Vulnerability Assessment
 
 A vulnerability assessment identifies security weaknesses before attackers do.
 
@@ -2234,7 +2234,7 @@ Rescan
 
 ---
 
-# Patch Management
+## Patch Management
 
 Regular updates reduce exposure to known vulnerabilities.
 
@@ -2268,7 +2268,7 @@ Testing updates before production deployment helps reduce operational risk.
 
 ---
 
-# Security Hardening
+## Security Hardening
 
 Hardening reduces the attack surface of a system.
 
@@ -2285,7 +2285,7 @@ Examples include:
 
 ---
 
-# Hardening Workflow
+## Hardening Workflow
 
 ```text
 Install
@@ -2313,7 +2313,7 @@ Regular Audits
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Security includes recoverability.
 
@@ -2327,7 +2327,7 @@ Recommended practices:
 
 ---
 
-# Incident Response
+## Incident Response
 
 Incident response is the structured process of handling security events.
 
@@ -2363,7 +2363,7 @@ Lessons Learned
 
 ---
 
-# Example Incident Workflow
+## Example Incident Workflow
 
 ```text
 SIEM Alert
@@ -2395,7 +2395,7 @@ Review Incident
 
 ---
 
-# Digital Forensics
+## Digital Forensics
 
 Forensics focuses on preserving and analyzing evidence.
 
@@ -2412,7 +2412,7 @@ Evidence handling should follow organizational and legal requirements.
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```text
 Users
@@ -2448,7 +2448,7 @@ Compliance
 
 ---
 
-# Compliance
+## Compliance
 
 Many organizations must comply with security standards.
 
@@ -2467,7 +2467,7 @@ Applicable requirements depend on the organization and jurisdiction.
 
 ---
 
-# Security Auditing
+## Security Auditing
 
 Regular audits evaluate:
 
@@ -2484,7 +2484,7 @@ Audits help identify deviations from security policy.
 
 ---
 
-# Enterprise Security Dashboard
+## Enterprise Security Dashboard
 
 ```text
 Security Dashboard
@@ -2512,9 +2512,9 @@ Security Dashboard
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Detecting an Unauthorized Service
+### Detecting an Unauthorized Service
 
 ```text
 Monitoring Alert
@@ -2550,9 +2550,9 @@ Review Logs
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Investigating a Suspicious Login
+### Investigating a Suspicious Login
 
 ```text
 Failed Logins
@@ -2580,9 +2580,9 @@ Incident Response
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Responding to Malware
+### Responding to Malware
 
 ```text
 Detection
@@ -2618,7 +2618,7 @@ Monitor Closely
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Linux security is built on multiple complementary controls.
 
@@ -2637,7 +2637,7 @@ No single control can stop every attack.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong Linux security helps organizations:
 
@@ -2651,7 +2651,7 @@ Strong Linux security helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Apply security updates promptly after appropriate testing.
 - Enable centralized logging and monitoring.
@@ -2666,7 +2666,7 @@ Strong Linux security helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Security monitoring enables early detection of threats.
 - Malware and rootkits require layered detection and response.
@@ -2677,13 +2677,13 @@ Strong Linux security helps organizations:
 
 ---
 
-# 18 - Linux Security
+## 18 - Linux Security
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise Linux security is built through continuous practice rather than theory alone.
 
@@ -2702,7 +2702,7 @@ This section focuses on practical, enterprise-oriented exercises.
 
 ---
 
-# Enterprise Security Lifecycle
+## Enterprise Security Lifecycle
 
 ```text
 Plan
@@ -2742,7 +2742,7 @@ Improve
 
 ---
 
-# Practical Lab 1 — System Information Gathering
+## Practical Lab 1 — System Information Gathering
 
 Display operating system information:
 
@@ -2771,7 +2771,7 @@ Objectives:
 
 ---
 
-# Practical Lab 2 — Review User Accounts
+## Practical Lab 2 — Review User Accounts
 
 List users:
 
@@ -2805,7 +2805,7 @@ Objectives:
 
 ---
 
-# Practical Lab 3 — Inspect Password Policies
+## Practical Lab 3 — Inspect Password Policies
 
 Display password aging:
 
@@ -2827,7 +2827,7 @@ Objectives:
 
 ---
 
-# Practical Lab 4 — Check File Permissions
+## Practical Lab 4 — Check File Permissions
 
 Review sensitive files:
 
@@ -2851,7 +2851,7 @@ Objectives:
 
 ---
 
-# Practical Lab 5 — Find SUID Files
+## Practical Lab 5 — Find SUID Files
 
 Locate SUID binaries:
 
@@ -2867,7 +2867,7 @@ Questions:
 
 ---
 
-# Practical Lab 6 — Review Running Services
+## Practical Lab 6 — Review Running Services
 
 Display services:
 
@@ -2889,7 +2889,7 @@ Objectives:
 
 ---
 
-# Practical Lab 7 — Inspect Listening Ports
+## Practical Lab 7 — Inspect Listening Ports
 
 Display listening ports:
 
@@ -2905,7 +2905,7 @@ Questions:
 
 ---
 
-# Practical Lab 8 — Review Firewall Rules
+## Practical Lab 8 — Review Firewall Rules
 
 Using nftables:
 
@@ -2933,7 +2933,7 @@ Objectives:
 
 ---
 
-# Practical Lab 9 — Review Authentication Logs
+## Practical Lab 9 — Review Authentication Logs
 
 Ubuntu/Debian:
 
@@ -2955,7 +2955,7 @@ Objectives:
 
 ---
 
-# Practical Lab 10 — Monitor Active Processes
+## Practical Lab 10 — Monitor Active Processes
 
 Display processes:
 
@@ -2983,7 +2983,7 @@ Objectives:
 
 ---
 
-# Practical Lab 11 — Verify SELinux Status
+## Practical Lab 11 — Verify SELinux Status
 
 Check status:
 
@@ -3010,7 +3010,7 @@ Objectives:
 
 ---
 
-# Practical Lab 12 — Verify AppArmor Status
+## Practical Lab 12 — Verify AppArmor Status
 
 Ubuntu/Debian:
 
@@ -3025,7 +3025,7 @@ Objectives:
 
 ---
 
-# Practical Lab 13 — Inspect Linux Capabilities
+## Practical Lab 13 — Inspect Linux Capabilities
 
 View capabilities:
 
@@ -3046,7 +3046,7 @@ Objectives:
 
 ---
 
-# Practical Lab 14 — Review Kernel Modules
+## Practical Lab 14 — Review Kernel Modules
 
 Display modules:
 
@@ -3067,7 +3067,7 @@ Objectives:
 
 ---
 
-# Practical Lab 15 — Verify Security Updates
+## Practical Lab 15 — Verify Security Updates
 
 Debian/Ubuntu:
 
@@ -3089,7 +3089,7 @@ Objectives:
 
 ---
 
-# Practical Lab 16 — Security Audit Checklist
+## Practical Lab 16 — Security Audit Checklist
 
 Verify:
 
@@ -3108,7 +3108,7 @@ Document findings and remediation actions.
 
 ---
 
-# Practical Lab 17 — Build a Basic Hardening Script
+## Practical Lab 17 — Build a Basic Hardening Script
 
 Example:
 
@@ -3150,9 +3150,9 @@ Possible improvements:
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# SSH Brute-Force Attack
+## SSH Brute-Force Attack
 
 Timeline:
 
@@ -3186,9 +3186,9 @@ Investigation Steps:
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Accidental Permission Change
+## Accidental Permission Change
 
 Problem:
 
@@ -3218,9 +3218,9 @@ Resolution:
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# Unauthorized Service Running
+## Unauthorized Service Running
 
 Symptoms:
 
@@ -3260,9 +3260,9 @@ Remove
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Missed Security Updates
+## Missed Security Updates
 
 Problem:
 
@@ -3300,9 +3300,9 @@ Delaying security updates increases exposure to known vulnerabilities.
 
 ---
 
-# Enterprise Case Study 5
+## Enterprise Case Study 5
 
-# Insider Misuse
+## Insider Misuse
 
 Observed Activity:
 
@@ -3335,7 +3335,7 @@ Evidence:
 
 ---
 
-# Security Hardening Checklist
+## Security Hardening Checklist
 
 | Control | Status |
 |----------|--------|
@@ -3352,7 +3352,7 @@ Evidence:
 
 ---
 
-# Common Linux Security Mistakes
+## Common Linux Security Mistakes
 
 | Mistake | Risk | Better Practice |
 |----------|------|-----------------|
@@ -3367,7 +3367,7 @@ Evidence:
 
 ---
 
-# Enterprise Security Dashboard
+## Enterprise Security Dashboard
 
 ```text
 Security Dashboard
@@ -3397,7 +3397,7 @@ Security Dashboard
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 A mature Linux security program combines:
 
@@ -3415,7 +3415,7 @@ Security is a continuous process rather than a one-time configuration.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong Linux security helps organizations:
 
@@ -3429,7 +3429,7 @@ Strong Linux security helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Standardize secure configurations across systems.
 - Automate security patch deployment after appropriate testing.
@@ -3444,7 +3444,7 @@ Strong Linux security helps organizations:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3470,9 +3470,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is the CIA Triad?
 2. What is the principle of least privilege?
@@ -3487,7 +3487,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Compare DAC and MAC.
 2. Explain SELinux modes.
@@ -3502,7 +3502,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a secure Linux baseline for enterprise servers.
 2. Explain how defense in depth limits attacker success.
@@ -3517,7 +3517,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux security depends on layered defenses rather than any single control.
 - Authentication, authorization, and least privilege form the foundation of secure access.
@@ -3527,9 +3527,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man chmod`
 - `man chown`
@@ -3545,7 +3545,7 @@ In this chapter, you learned:
 - `man ps`
 - `man systemctl`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - Red Hat Enterprise Linux Security Guide
@@ -3560,11 +3560,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **19-Linux-Firewalls.md**
 
-## Topics Covered
+### Topics Covered
 
 - Firewall Fundamentals
 - Packet Filtering

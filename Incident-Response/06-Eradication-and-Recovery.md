@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Eradication and recovery are the phases in which the organization moves from:
 
@@ -67,7 +67,7 @@ Containment
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Containment does not necessarily mean that the attacker has been removed.
 
@@ -110,9 +110,9 @@ This creates a **containment failure and recovery failure**.
 
 ---
 
-# Eradication vs Recovery
+## Eradication vs Recovery
 
-## Eradication
+### Eradication
 
 Removes the cause and attacker presence.
 
@@ -125,7 +125,7 @@ Examples:
 - Remove malicious services
 - Patch exploited vulnerabilities
 
-## Recovery
+### Recovery
 
 Returns affected systems to trusted operational state.
 
@@ -153,7 +153,7 @@ Operational State
 
 ---
 
-# Core Objectives
+## Core Objectives
 
 Eradication should:
 
@@ -177,7 +177,7 @@ Recovery should:
 
 ---
 
-# Eradication Strategy
+## Eradication Strategy
 
 A mature eradication process looks like:
 
@@ -205,7 +205,7 @@ Validate
 
 ---
 
-# Determine the Root Cause
+## Determine the Root Cause
 
 Eradication should address **why the compromise happened**.
 
@@ -244,11 +244,11 @@ Simply resetting the password does not necessarily fix the phishing weakness.
 
 ---
 
-# Persistence Removal
+## Persistence Removal
 
 Persistence should be investigated systematically.
 
-## Windows
+### Windows
 
 Potential persistence locations include:
 
@@ -261,7 +261,7 @@ Potential persistence locations include:
 - Group memberships
 - Remote management mechanisms
 
-## Linux
+### Linux
 
 Potential persistence locations include:
 
@@ -273,7 +273,7 @@ Potential persistence locations include:
 - User accounts
 - Sudo configuration
 
-## Cloud
+### Cloud
 
 Potential persistence includes:
 
@@ -287,7 +287,7 @@ Potential persistence includes:
 
 ---
 
-# Windows Persistence Investigation
+## Windows Persistence Investigation
 
 List services:
 
@@ -317,7 +317,7 @@ Registry locations should be reviewed according to organizational forensic proce
 
 ---
 
-# Linux Persistence Investigation
+## Linux Persistence Investigation
 
 List services:
 
@@ -353,7 +353,7 @@ These commands should be used only on systems where you have authorization.
 
 ---
 
-# Malware Removal
+## Malware Removal
 
 Malware eradication can involve:
 
@@ -367,7 +367,7 @@ The appropriate strategy depends on confidence in system integrity.
 
 ---
 
-# When to Reimage
+## When to Reimage
 
 Reimaging is often preferable when:
 
@@ -403,7 +403,7 @@ Validate
 
 ---
 
-# When Cleaning May Be Appropriate
+## When Cleaning May Be Appropriate
 
 Cleaning may be appropriate when:
 
@@ -419,7 +419,7 @@ However:
 
 ---
 
-# Credential Remediation
+## Credential Remediation
 
 Credentials must be considered across the entire attack path.
 
@@ -446,7 +446,7 @@ Potential remediation:
 
 ---
 
-# Credential Blast Radius
+## Credential Blast Radius
 
 If an administrator account was compromised:
 
@@ -464,7 +464,7 @@ The organization should investigate all systems accessible by that identity.
 
 ---
 
-# Privilege Remediation
+## Privilege Remediation
 
 Review:
 
@@ -485,7 +485,7 @@ Remove privileges that were:
 
 ---
 
-# Patch the Root Cause
+## Patch the Root Cause
 
 If exploitation occurred through a vulnerability:
 
@@ -518,7 +518,7 @@ Restore Service
 
 ---
 
-# Security Configuration Remediation
+## Security Configuration Remediation
 
 Review relevant controls:
 
@@ -536,7 +536,7 @@ The incident should improve the environment rather than simply return it to its 
 
 ---
 
-# Data Integrity
+## Data Integrity
 
 Eradication and recovery must consider whether data was modified.
 
@@ -564,7 +564,7 @@ Compare
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Backups are critical during recovery.
 
@@ -585,7 +585,7 @@ Backups should be protected from the same compromise affecting production.
 
 ---
 
-# Backup Validation
+## Backup Validation
 
 A backup existing does not mean it is usable.
 
@@ -602,7 +602,7 @@ Test restores regularly.
 
 ---
 
-# Recovery Point Objective
+## Recovery Point Objective
 
 **RPO** describes how much data loss the organization can tolerate.
 
@@ -621,7 +621,7 @@ An RPO of 4 hours means the organization may accept up to approximately four hou
 
 ---
 
-# Recovery Time Objective
+## Recovery Time Objective
 
 **RTO** describes the targeted time to restore a service.
 
@@ -639,7 +639,7 @@ Organizations should define RTOs according to business requirements.
 
 ---
 
-# Recovery Architecture
+## Recovery Architecture
 
 ```text
              Incident
@@ -670,7 +670,7 @@ Organizations should define RTOs according to business requirements.
 
 ---
 
-# Recovery Validation
+## Recovery Validation
 
 Before returning a system to production, validate:
 
@@ -689,7 +689,7 @@ Before returning a system to production, validate:
 
 ---
 
-# Controlled Recovery
+## Controlled Recovery
 
 Avoid restoring everything simultaneously when possible.
 
@@ -715,7 +715,7 @@ This allows the response team to detect recurrence before the entire environment
 
 ---
 
-# Recovery Monitoring
+## Recovery Monitoring
 
 Monitoring should continue after restoration.
 
@@ -746,7 +746,7 @@ Enhanced Monitoring
 
 ---
 
-# Recovery Watch Period
+## Recovery Watch Period
 
 Organizations may define an enhanced monitoring period after recovery.
 
@@ -766,7 +766,7 @@ The duration should depend on the incident.
 
 ---
 
-# Recompromise Detection
+## Recompromise Detection
 
 One of the most important recovery questions is:
 
@@ -785,7 +785,7 @@ Look for:
 
 ---
 
-# Recovery Failure
+## Recovery Failure
 
 Recovery has failed if:
 
@@ -811,7 +811,7 @@ Possible causes:
 
 ---
 
-# Recovery Decision Gate
+## Recovery Decision Gate
 
 Before returning to production:
 
@@ -844,7 +844,7 @@ If critical answers are unknown, recovery may need to pause.
 
 ---
 
-# Business Continuity
+## Business Continuity
 
 Security recovery must account for business operations.
 
@@ -877,7 +877,7 @@ Recovery decisions should balance both.
 
 ---
 
-# Third-Party Dependencies
+## Third-Party Dependencies
 
 An incident may involve:
 
@@ -892,7 +892,7 @@ Coordinate recovery with affected third parties when necessary.
 
 ---
 
-# Certificate and Secret Rotation
+## Certificate and Secret Rotation
 
 Some incidents require rotation of:
 
@@ -907,7 +907,7 @@ A compromised secret should not remain active simply because the original system
 
 ---
 
-# Cloud Recovery
+## Cloud Recovery
 
 Cloud recovery may involve:
 
@@ -944,7 +944,7 @@ Review:
 
 ---
 
-# Active Directory Recovery
+## Active Directory Recovery
 
 For identity incidents, validate:
 
@@ -962,7 +962,7 @@ A domain-level compromise requires substantially more extensive recovery than a 
 
 ---
 
-# Application Recovery
+## Application Recovery
 
 Application recovery should validate:
 
@@ -979,7 +979,7 @@ Application recovery should validate:
 
 ---
 
-# Container Recovery
+## Container Recovery
 
 For compromised containers:
 
@@ -1006,7 +1006,7 @@ Avoid simply restarting a compromised container without understanding the image 
 
 ---
 
-# Kubernetes Recovery
+## Kubernetes Recovery
 
 Review:
 
@@ -1024,51 +1024,51 @@ A compromised workload may indicate a broader cluster problem.
 
 ---
 
-# Common Eradication Mistakes
+## Common Eradication Mistakes
 
-## 1. Deleting Only the Malware File
+### 1. Deleting Only the Malware File
 
 Persistence may remain.
 
-## 2. Resetting Only One Password
+### 2. Resetting Only One Password
 
 Other credentials may have been stolen.
 
-## 3. Restoring an Unpatched System
+### 3. Restoring an Unpatched System
 
 The attacker can exploit the same vulnerability again.
 
-## 4. Restoring from an Untrusted Backup
+### 4. Restoring from an Untrusted Backup
 
 Malicious content may return.
 
-## 5. Failing to Investigate Persistence
+### 5. Failing to Investigate Persistence
 
 The attacker can reconnect.
 
-## 6. Reconnecting Systems Too Quickly
+### 6. Reconnecting Systems Too Quickly
 
 Recovery may occur before validation.
 
-## 7. Ignoring Cloud Access
+### 7. Ignoring Cloud Access
 
 Cloud identities may remain compromised.
 
-## 8. Ignoring Service Accounts
+### 8. Ignoring Service Accounts
 
 Attackers frequently abuse non-human identities.
 
-## 9. Disabling EDR During Recovery
+### 9. Disabling EDR During Recovery
 
 This reduces visibility exactly when monitoring matters.
 
-## 10. Declaring Recovery Complete Too Early
+### 10. Declaring Recovery Complete Too Early
 
 Recovery requires validation.
 
 ---
 
-# Detection During Eradication
+## Detection During Eradication
 
 Detection engineering should continue during eradication.
 
@@ -1089,37 +1089,37 @@ Eradication is not a period where monitoring stops.
 
 ---
 
-# Practical Commands
+## Practical Commands
 
 These commands support authorized defensive investigation and validation.
 
-## Windows
+### Windows
 
-### List Services
+#### List Services
 
 ```powershell
 Get-Service
 ```
 
-### List Scheduled Tasks
+#### List Scheduled Tasks
 
 ```powershell
 Get-ScheduledTask
 ```
 
-### List Local Users
+#### List Local Users
 
 ```powershell
 Get-LocalUser
 ```
 
-### List Administrators
+#### List Administrators
 
 ```powershell
 Get-LocalGroupMember Administrators
 ```
 
-### Verify Windows Defender Status
+#### Verify Windows Defender Status
 
 ```powershell
 Get-MpComputerStatus
@@ -1127,33 +1127,33 @@ Get-MpComputerStatus
 
 ---
 
-# Linux
+## Linux
 
-### System Services
+#### System Services
 
 ```bash
 systemctl list-units --type=service
 ```
 
-### Running Processes
+#### Running Processes
 
 ```bash
 ps aux
 ```
 
-### Network Connections
+#### Network Connections
 
 ```bash
 ss -tunap
 ```
 
-### Logged-In Users
+#### Logged-In Users
 
 ```bash
 who
 ```
 
-### Scheduled Jobs
+#### Scheduled Jobs
 
 ```bash
 crontab -l
@@ -1161,7 +1161,7 @@ crontab -l
 
 ---
 
-# File Integrity
+## File Integrity
 
 A simple cryptographic hash can help compare files against a known-good reference.
 
@@ -1181,11 +1181,11 @@ Hash comparison alone does not prove that a system is clean.
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-# Lab — Endpoint Eradication and Recovery
+## Lab — Endpoint Eradication and Recovery
 
-## Scenario
+### Scenario
 
 A workstation was compromised through phishing.
 
@@ -1213,7 +1213,7 @@ Host isolated
 
 ---
 
-# Step 1 — Identify Persistence
+## Step 1 — Identify Persistence
 
 Investigate:
 
@@ -1227,7 +1227,7 @@ Network connections
 
 ---
 
-# Step 2 — Remove Persistence
+## Step 2 — Remove Persistence
 
 Document:
 
@@ -1241,7 +1241,7 @@ Validation
 
 ---
 
-# Step 3 — Credential Remediation
+## Step 3 — Credential Remediation
 
 Determine:
 
@@ -1257,7 +1257,7 @@ Apply appropriate credential remediation.
 
 ---
 
-# Step 4 — Patch Root Cause
+## Step 4 — Patch Root Cause
 
 Determine:
 
@@ -1273,7 +1273,7 @@ Was the application configured securely?
 
 ---
 
-# Step 5 — Recovery Decision
+## Step 5 — Recovery Decision
 
 Choose between:
 
@@ -1287,7 +1287,7 @@ Document the reasoning.
 
 ---
 
-# Step 6 — Restore
+## Step 6 — Restore
 
 Restore:
 
@@ -1299,7 +1299,7 @@ Restore:
 
 ---
 
-# Step 7 — Validate
+## Step 7 — Validate
 
 Confirm:
 
@@ -1315,7 +1315,7 @@ Confirm:
 
 ---
 
-# Step 8 — Monitor
+## Step 8 — Monitor
 
 Monitor for:
 
@@ -1330,9 +1330,9 @@ Suspicious DNS
 
 ---
 
-# Advanced Lab — Enterprise Recovery
+## Advanced Lab — Enterprise Recovery
 
-## Scenario
+### Scenario
 
 An attacker compromised:
 
@@ -1362,7 +1362,7 @@ The organization has:
 
 ---
 
-## Task
+### Task
 
 Design a recovery strategy covering:
 
@@ -1377,7 +1377,7 @@ Design a recovery strategy covering:
 
 ---
 
-## Expected Architecture
+### Expected Architecture
 
 ```text
              Compromise
@@ -1410,9 +1410,9 @@ Design a recovery strategy covering:
 
 ---
 
-# Recovery Checklist
+## Recovery Checklist
 
-## Eradication
+### Eradication
 
 ```text
 [ ] Root cause identified
@@ -1426,7 +1426,7 @@ Design a recovery strategy covering:
 [ ] Security configuration corrected
 ```
 
-## Recovery
+### Recovery
 
 ```text
 [ ] Trusted backup selected
@@ -1440,7 +1440,7 @@ Design a recovery strategy covering:
 [ ] Business owner approval obtained
 ```
 
-## Post-Recovery
+### Post-Recovery
 
 ```text
 [ ] Enhanced monitoring enabled
@@ -1454,7 +1454,7 @@ Design a recovery strategy covering:
 
 ---
 
-# Professional Eradication and Recovery Record
+## Professional Eradication and Recovery Record
 
 ```text
 Incident ID:
@@ -1505,57 +1505,57 @@ ________________________
 
 ---
 
-# Recovery Metrics
+## Recovery Metrics
 
-## Mean Time to Recover
+### Mean Time to Recover
 
 Measures the time required to restore affected services.
 
-## Recompromise Rate
+### Recompromise Rate
 
 Measures how often recovered systems become compromised again.
 
-## Recovery Validation Failure Rate
+### Recovery Validation Failure Rate
 
 Measures how frequently restored systems fail security validation.
 
-## Backup Restore Success Rate
+### Backup Restore Success Rate
 
 Measures whether backups can actually support recovery.
 
-## Credential Remediation Coverage
+### Credential Remediation Coverage
 
 Measures the percentage of identified compromised credentials successfully remediated.
 
 ---
 
-# Eradication and Recovery Maturity
+## Eradication and Recovery Maturity
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 - Manual cleanup
 - Ad hoc recovery
 - Limited backup testing
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Recovery procedures
 - Standard rebuild process
 - Basic credential rotation
 
-## Level 3 — Defined
+### Level 3 — Defined
 
 - Trusted images
 - Tested recovery plans
 - Formal validation
 
-## Level 4 — Measured
+### Level 4 — Measured
 
 - Recovery metrics
 - Backup restoration testing
 - Recompromise monitoring
 
-## Level 5 — Optimized
+### Level 5 — Optimized
 
 - Automated recovery workflows
 - Immutable infrastructure
@@ -1566,15 +1566,15 @@ Measures the percentage of identified compromised credentials successfully remed
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is eradication?
+### 1. What is eradication?
 
 Eradication is the process of removing malware, persistence, unauthorized access, compromised credentials, vulnerabilities, and other causes of attacker presence.
 
 ---
 
-## 2. What is the difference between eradication and recovery?
+### 2. What is the difference between eradication and recovery?
 
 Eradication removes the threat.
 
@@ -1582,7 +1582,7 @@ Recovery restores affected systems and services to a trusted operational state.
 
 ---
 
-## 3. When would you reimage a system instead of cleaning it?
+### 3. When would you reimage a system instead of cleaning it?
 
 Reimaging may be preferred when:
 
@@ -1594,37 +1594,37 @@ Reimaging may be preferred when:
 
 ---
 
-## 4. Why should credentials be rotated during eradication?
+### 4. Why should credentials be rotated during eradication?
 
 Because attackers may have stolen credentials that remain usable even after the compromised endpoint is removed.
 
 ---
 
-## 5. Why are service accounts important?
+### 5. Why are service accounts important?
 
 Service accounts often have persistent access and may possess significant privileges. Attackers can abuse them for continued access.
 
 ---
 
-## 6. What is RTO?
+### 6. What is RTO?
 
 Recovery Time Objective defines the targeted time for restoring a service after disruption.
 
 ---
 
-## 7. What is RPO?
+### 7. What is RPO?
 
 Recovery Point Objective describes the acceptable amount of data loss measured relative to the recovery point.
 
 ---
 
-## 8. Why should backups be protected during ransomware incidents?
+### 8. Why should backups be protected during ransomware incidents?
 
 Attackers frequently attempt to compromise or destroy backups to prevent recovery.
 
 ---
 
-## 9. How do you know eradication succeeded?
+### 9. How do you know eradication succeeded?
 
 Evidence should show that:
 
@@ -1637,25 +1637,25 @@ Evidence should show that:
 
 ---
 
-## 10. Why should systems be monitored after recovery?
+### 10. Why should systems be monitored after recovery?
 
 Attackers may have established persistence that was initially missed, or another compromised system may still provide access.
 
 ---
 
-## 11. What happens if you recover before fixing the root cause?
+### 11. What happens if you recover before fixing the root cause?
 
 The organization may simply recreate the conditions that allowed the original compromise.
 
 ---
 
-## 12. What is a trusted image?
+### 12. What is a trusted image?
 
 A known-good system image whose origin, configuration, security state, and integrity are sufficiently understood and validated for organizational use.
 
 ---
 
-## 13. How would you recover from a ransomware incident?
+### 13. How would you recover from a ransomware incident?
 
 A high-level approach:
 
@@ -1683,7 +1683,7 @@ Monitor
 
 ---
 
-## 14. How would you recover from cloud credential compromise?
+### 14. How would you recover from cloud credential compromise?
 
 Potential actions include:
 
@@ -1700,9 +1700,9 @@ Monitor
 
 ---
 
-# Integration With Other Security Functions
+## Integration With Other Security Functions
 
-## SOC
+### SOC
 
 Provides:
 
@@ -1710,7 +1710,7 @@ Provides:
 - Alerting
 - Monitoring
 
-## Incident Response
+### Incident Response
 
 Provides:
 
@@ -1718,7 +1718,7 @@ Provides:
 - Eradication
 - Recovery coordination
 
-## Threat Hunting
+### Threat Hunting
 
 Provides:
 
@@ -1726,7 +1726,7 @@ Provides:
 - Recompromise detection
 - Environment-wide searches
 
-## Detection Engineering
+### Detection Engineering
 
 Provides:
 
@@ -1734,14 +1734,14 @@ Provides:
 - Recovery monitoring
 - Control validation
 
-## Vulnerability Management
+### Vulnerability Management
 
 Provides:
 
 - Root cause remediation
 - Patch verification
 
-## Identity Security
+### Identity Security
 
 Provides:
 
@@ -1751,7 +1751,7 @@ Provides:
 
 ---
 
-# Enterprise Eradication Architecture
+## Enterprise Eradication Architecture
 
 ```text
                   Incident
@@ -1793,7 +1793,7 @@ Provides:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Eradication and recovery should never be treated as simply:
 
@@ -1838,9 +1838,9 @@ The most important principles are:
 
 ---
 
-# References
+## References
 
-### NIST
+#### NIST
 
 Computer Security Incident Handling Guide:
 
@@ -1850,7 +1850,7 @@ NIST Cybersecurity Framework:
 
 https://www.nist.gov/cyberframework
 
-### CISA
+#### CISA
 
 Cybersecurity guidance and incident response resources:
 
@@ -1860,27 +1860,27 @@ Ransomware guidance:
 
 https://www.cisa.gov/stopransomware
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 Persistence and post-compromise techniques:
 
 https://attack.mitre.org/
 
-### CIS Controls
+#### CIS Controls
 
 https://www.cisecurity.org/controls
 
-### FIRST
+#### FIRST
 
 https://www.first.org/
 
-### SANS
+#### SANS
 
 https://www.sans.org/
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 A mature organization does not consider an incident resolved simply because malicious activity has stopped.
 

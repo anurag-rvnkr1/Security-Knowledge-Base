@@ -1,12 +1,12 @@
 # 29-API-Security.md
 
-# Part 1 — Fundamentals of API Security, API Architecture, Authentication, and Enterprise Overview
+## Part 1 — Fundamentals of API Security, API Architecture, Authentication, and Enterprise Overview
 
 > **"Modern applications are API-driven. APIs connect web applications, mobile apps, cloud platforms, IoT devices, and enterprise services. Securing APIs is essential because they often expose business logic, sensitive data, and critical backend functionality."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is an API?
+## What is an API?
 
 An **Application Programming Interface (API)** is a set of rules and interfaces that enables two software systems to communicate.
 
@@ -43,7 +43,7 @@ APIs enable secure and standardized communication between systems.
 
 ---
 
-# Why APIs Matter
+## Why APIs Matter
 
 Nearly every modern application relies on APIs.
 
@@ -77,7 +77,7 @@ Examples:
 
 ---
 
-# API Security
+## API Security
 
 API Security is the practice of protecting APIs from unauthorized access, misuse, data exposure, and operational disruption.
 
@@ -93,7 +93,7 @@ It includes protecting:
 
 ---
 
-# API Security Goals
+## API Security Goals
 
 ```
 API Security
@@ -119,7 +119,7 @@ These goals align with overall enterprise cybersecurity objectives.
 
 ---
 
-# APIs in Enterprise Architecture
+## APIs in Enterprise Architecture
 
 ```
 Client
@@ -145,7 +145,7 @@ Most enterprise applications expose APIs rather than allowing direct database ac
 
 ---
 
-# API Communication Flow
+## API Communication Flow
 
 ```
 Client
@@ -175,7 +175,7 @@ Every stage should include appropriate security controls.
 
 ---
 
-# Common API Types
+## Common API Types
 
 ```
 APIs
@@ -201,7 +201,7 @@ Each API style has different design principles and security considerations.
 
 ---
 
-# REST APIs
+## REST APIs
 
 REST (Representational State Transfer) is the most widely used API architectural style.
 
@@ -225,7 +225,7 @@ REST commonly uses standard HTTP methods and JSON payloads.
 
 ---
 
-# Common REST Methods
+## Common REST Methods
 
 | Method | Typical Purpose |
 |----------|----------------|
@@ -239,7 +239,7 @@ The appropriate method should match the intended business operation.
 
 ---
 
-# SOAP APIs
+## SOAP APIs
 
 SOAP (Simple Object Access Protocol) uses structured XML messages.
 
@@ -263,7 +263,7 @@ SOAP remains common in financial institutions, government systems, and legacy en
 
 ---
 
-# GraphQL APIs
+## GraphQL APIs
 
 GraphQL allows clients to request only the information they need.
 
@@ -287,7 +287,7 @@ GraphQL introduces flexibility while requiring careful security design.
 
 ---
 
-# Internal vs External APIs
+## Internal vs External APIs
 
 | Internal APIs | External APIs |
 |---------------|---------------|
@@ -300,7 +300,7 @@ Both require strong authentication and authorization.
 
 ---
 
-# Public, Private, and Partner APIs
+## Public, Private, and Partner APIs
 
 ```
 API Types
@@ -318,7 +318,7 @@ Different exposure levels require different governance and access controls.
 
 ---
 
-# API Lifecycle
+## API Lifecycle
 
 ```
 Requirements
@@ -356,7 +356,7 @@ Security should be integrated into every lifecycle phase.
 
 ---
 
-# API Components
+## API Components
 
 ```
 API
@@ -384,7 +384,7 @@ Each component contributes to overall API security.
 
 ---
 
-# API Endpoints
+## API Endpoints
 
 Endpoints define where API requests are processed.
 
@@ -404,7 +404,7 @@ Endpoints should expose only required functionality.
 
 ---
 
-# API Authentication
+## API Authentication
 
 Authentication verifies the identity of the requester.
 
@@ -430,7 +430,7 @@ Authentication answers:
 
 ---
 
-# API Authorization
+## API Authorization
 
 Authorization determines what an authenticated entity is permitted to do.
 
@@ -452,7 +452,7 @@ Authorization answers:
 
 ---
 
-# API Request Lifecycle
+## API Request Lifecycle
 
 ```
 Request
@@ -486,7 +486,7 @@ Security checks should occur before business operations are performed.
 
 ---
 
-# API Security Risks
+## API Security Risks
 
 Common categories of API risk include:
 
@@ -518,7 +518,7 @@ Effective API security requires addressing each of these areas.
 
 ---
 
-# Enterprise API Architecture
+## Enterprise API Architecture
 
 ```
 Internet
@@ -552,7 +552,7 @@ Centralized architecture improves governance and visibility.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global retail company exposes APIs for:
 
@@ -588,7 +588,7 @@ Every request passes through authentication, authorization, logging, and monitor
 
 ---
 
-# Benefits of API Gateways
+## Benefits of API Gateways
 
 ```
 API Gateway
@@ -616,7 +616,7 @@ API gateways centralize many operational and security functions.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise API architecture.
 2. Identify authentication and authorization points.
@@ -628,7 +628,7 @@ API gateways centralize many operational and security functions.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an API?
 2. Why are APIs important in modern applications?
@@ -643,7 +643,7 @@ API gateways centralize many operational and security functions.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply security throughout the API lifecycle.
 - Authenticate every client before processing requests.
@@ -655,7 +655,7 @@ API gateways centralize many operational and security functions.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming internal APIs do not require security controls.
 - Relying only on authentication without authorization.
@@ -666,7 +666,7 @@ API gateways centralize many operational and security functions.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - APIs are the foundation of modern application communication.
 - API security protects authentication, authorization, data, and business functionality.
@@ -674,15 +674,15 @@ API gateways centralize many operational and security functions.
 - API gateways provide centralized authentication, authorization, routing, logging, and monitoring.
 - Security should be embedded into every stage of the API lifecycle.
 
-# 29-API-Security.md
+## 29-API-Security.md
 
-# Part 2 — API Authentication, Authorization, API Gateway Security, Tokens, Rate Limiting, and Secure API Design
+## Part 2 — API Authentication, Authorization, API Gateway Security, Tokens, Rate Limiting, and Secure API Design
 
 > **"Most API attacks do not exploit the protocol—they exploit weak identity verification, broken authorization, excessive trust, or insecure business logic."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -699,7 +699,7 @@ After completing this part, you will understand:
 
 ---
 
-# API Authentication
+## API Authentication
 
 Authentication confirms the identity of an API client before processing requests.
 
@@ -729,7 +729,7 @@ Authentication answers:
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 | Authentication | Authorization |
 |---------------|---------------|
@@ -742,7 +742,7 @@ Both are required for secure APIs.
 
 ---
 
-# Common Authentication Methods
+## Common Authentication Methods
 
 ```
 Authentication
@@ -768,7 +768,7 @@ Organizations select authentication methods based on security requirements and a
 
 ---
 
-# API Keys
+## API Keys
 
 API keys uniquely identify an application or client.
 
@@ -792,7 +792,7 @@ API keys identify the calling application but are typically **not sufficient by 
 
 ---
 
-# API Key Best Practices
+## API Key Best Practices
 
 ```
 API Keys
@@ -816,7 +816,7 @@ API keys should be treated as sensitive credentials.
 
 ---
 
-# OAuth 2.0 Overview
+## OAuth 2.0 Overview
 
 OAuth 2.0 enables delegated authorization.
 
@@ -844,7 +844,7 @@ OAuth allows applications to access resources without sharing user passwords.
 
 ---
 
-# OAuth Components
+## OAuth Components
 
 ```
 OAuth
@@ -866,7 +866,7 @@ Each component performs a specific role within the authorization process.
 
 ---
 
-# OAuth Authentication Flow (High Level)
+## OAuth Authentication Flow (High Level)
 
 ```
 User
@@ -896,7 +896,7 @@ The complete OAuth framework defines multiple standardized authorization flows f
 
 ---
 
-# OpenID Connect (OIDC)
+## OpenID Connect (OIDC)
 
 OpenID Connect builds on OAuth 2.0 by adding standardized identity information.
 
@@ -924,7 +924,7 @@ OIDC is commonly used for Single Sign-On (SSO).
 
 ---
 
-# OAuth vs OpenID Connect
+## OAuth vs OpenID Connect
 
 | OAuth 2.0 | OpenID Connect |
 |------------|----------------|
@@ -937,7 +937,7 @@ OIDC extends OAuth rather than replacing it.
 
 ---
 
-# JSON Web Tokens (JWT)
+## JSON Web Tokens (JWT)
 
 JWT is a compact token format commonly used to carry authentication or authorization information.
 
@@ -965,7 +965,7 @@ The receiving system validates the token before granting access.
 
 ---
 
-# High-Level JWT Structure
+## High-Level JWT Structure
 
 ```
 JWT
@@ -983,7 +983,7 @@ The signature helps detect unauthorized modifications to the token.
 
 ---
 
-# Token Lifecycle
+## Token Lifecycle
 
 ```
 Authentication
@@ -1013,7 +1013,7 @@ Token management is an important aspect of API security.
 
 ---
 
-# Token Best Practices
+## Token Best Practices
 
 ```
 Tokens
@@ -1037,7 +1037,7 @@ Proper lifecycle management reduces security risks.
 
 ---
 
-# API Authorization
+## API Authorization
 
 After authentication, authorization determines what resources may be accessed.
 
@@ -1061,7 +1061,7 @@ Authorization should be enforced for every protected endpoint.
 
 ---
 
-# Common Authorization Models
+## Common Authorization Models
 
 ```
 Authorization
@@ -1083,7 +1083,7 @@ Organizations often combine multiple authorization approaches.
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 ```
 User
@@ -1105,7 +1105,7 @@ Permissions are assigned to roles rather than individual users.
 
 ---
 
-# Attribute-Based Access Control (ABAC)
+## Attribute-Based Access Control (ABAC)
 
 ABAC evaluates multiple attributes before granting access.
 
@@ -1129,7 +1129,7 @@ ABAC provides more granular authorization than RBAC.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Applications and users should receive only the permissions necessary for their responsibilities.
 
@@ -1153,7 +1153,7 @@ Least privilege reduces the impact of credential misuse or configuration errors.
 
 ---
 
-# API Gateway Security
+## API Gateway Security
 
 The API gateway acts as a centralized security control point.
 
@@ -1185,7 +1185,7 @@ Gateways simplify consistent policy enforcement.
 
 ---
 
-# API Gateway Responsibilities
+## API Gateway Responsibilities
 
 ```
 API Gateway
@@ -1213,7 +1213,7 @@ API Gateway
 
 ---
 
-# Request Validation
+## Request Validation
 
 Before business logic executes:
 
@@ -1245,7 +1245,7 @@ Validation should occur as early as possible.
 
 ---
 
-# Rate Limiting
+## Rate Limiting
 
 Rate limiting helps protect APIs from accidental misuse and abusive request volumes.
 
@@ -1277,7 +1277,7 @@ Rate limiting improves availability and operational stability.
 
 ---
 
-# Benefits of Rate Limiting
+## Benefits of Rate Limiting
 
 ```
 Rate Limiting
@@ -1299,7 +1299,7 @@ Rate Limiting
 
 ---
 
-# Secure API Design Principles
+## Secure API Design Principles
 
 ```
 Secure API Design
@@ -1327,7 +1327,7 @@ Security should be built into API design from the beginning.
 
 ---
 
-# Enterprise API Request Flow
+## Enterprise API Request Flow
 
 ```
 Client
@@ -1365,7 +1365,7 @@ Every layer contributes to reducing risk.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider exposes APIs for patient portals and mobile applications.
 
@@ -1397,7 +1397,7 @@ Every request is authenticated, authorized, validated, logged, and monitored bef
 
 ---
 
-# Common Authentication Challenges
+## Common Authentication Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1410,7 +1410,7 @@ Every request is authenticated, authorized, validated, logged, and monitored bef
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an OAuth-based enterprise API architecture.
 2. Identify authentication and authorization stages.
@@ -1422,7 +1422,7 @@ Every request is authenticated, authorized, validated, logged, and monitored bef
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between authentication and authorization?
 2. What are API keys?
@@ -1437,7 +1437,7 @@ Every request is authenticated, authorized, validated, logged, and monitored bef
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Authenticate every API client before processing requests.
 - Enforce authorization on every protected endpoint.
@@ -1449,7 +1449,7 @@ Every request is authenticated, authorized, validated, logged, and monitored bef
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming authentication alone is sufficient.
 - Granting excessive permissions to users or services.
@@ -1460,7 +1460,7 @@ Every request is authenticated, authorized, validated, logged, and monitored bef
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication verifies identity, while authorization determines permitted actions.
 - OAuth 2.0 and OpenID Connect provide standardized identity and authorization frameworks.
@@ -1468,15 +1468,15 @@ Every request is authenticated, authorized, validated, logged, and monitored bef
 - API gateways centralize security controls such as authentication, authorization, validation, and rate limiting.
 - Secure API design combines identity, least privilege, validation, monitoring, and defense in depth.
 
-# 29-API-Security.md
+## 29-API-Security.md
 
-# Part 3 — API Threats, OWASP API Security Top Risks, Secure Development, Testing, Monitoring, and Enterprise Operations
+## Part 3 — API Threats, OWASP API Security Top Risks, Secure Development, Testing, Monitoring, and Enterprise Operations
 
 > **"Most successful API attacks exploit flaws in business logic, authorization, or operational controls rather than weaknesses in the API protocol itself."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1493,7 +1493,7 @@ After completing this part, you will understand:
 
 ---
 
-# API Threat Landscape
+## API Threat Landscape
 
 Modern APIs are exposed to a variety of security risks.
 
@@ -1525,7 +1525,7 @@ Many of these risks result from insecure implementation rather than weaknesses i
 
 ---
 
-# OWASP API Security Risks
+## OWASP API Security Risks
 
 The OWASP API Security Top 10 identifies common categories of API security issues.
 
@@ -1565,7 +1565,7 @@ These categories help organizations prioritize secure API design and testing.
 
 ---
 
-# Broken Object Level Authorization (BOLA)
+## Broken Object Level Authorization (BOLA)
 
 Object-level authorization ensures users can access only resources they are permitted to use.
 
@@ -1589,7 +1589,7 @@ Every request for protected resources should undergo authorization checks.
 
 ---
 
-# Importance of Object-Level Authorization
+## Importance of Object-Level Authorization
 
 ```
 API Request
@@ -1615,7 +1615,7 @@ Authorization decisions should be based on both the requester and the requested 
 
 ---
 
-# Broken Authentication
+## Broken Authentication
 
 Authentication failures may allow unauthorized entities to impersonate legitimate users.
 
@@ -1639,7 +1639,7 @@ Strong authentication mechanisms reduce this risk.
 
 ---
 
-# Excessive Data Exposure
+## Excessive Data Exposure
 
 Applications should return only information required by the client.
 
@@ -1663,7 +1663,7 @@ Returning unnecessary information increases exposure.
 
 ---
 
-# Data Minimization
+## Data Minimization
 
 ```
 Stored Data
@@ -1685,7 +1685,7 @@ Only the minimum necessary information should be included in responses.
 
 ---
 
-# Input Validation
+## Input Validation
 
 Every API request should be validated before processing.
 
@@ -1709,7 +1709,7 @@ Validation improves both security and reliability.
 
 ---
 
-# Secure Input Validation
+## Secure Input Validation
 
 ```
 Input
@@ -1739,7 +1739,7 @@ Multiple validation layers reduce implementation errors.
 
 ---
 
-# API Business Logic
+## API Business Logic
 
 Business logic determines how applications process requests.
 
@@ -1771,7 +1771,7 @@ Business rules should enforce organizational policies consistently.
 
 ---
 
-# Business Logic Security
+## Business Logic Security
 
 Applications should verify that requests align with expected business processes.
 
@@ -1795,7 +1795,7 @@ Secure business logic prevents unintended operations.
 
 ---
 
-# API Error Handling
+## API Error Handling
 
 Applications should handle errors consistently.
 
@@ -1827,7 +1827,7 @@ Error messages should assist legitimate users without revealing unnecessary impl
 
 ---
 
-# API Security Headers
+## API Security Headers
 
 API responses may include security-related HTTP headers.
 
@@ -1847,7 +1847,7 @@ Appropriate headers contribute to secure communication and browser behavior wher
 
 ---
 
-# API Versioning
+## API Versioning
 
 Organizations commonly maintain multiple API versions.
 
@@ -1867,7 +1867,7 @@ Version management helps introduce improvements while maintaining compatibility.
 
 ---
 
-# API Deprecation
+## API Deprecation
 
 Retiring APIs should follow a controlled process.
 
@@ -1891,7 +1891,7 @@ Consumers should receive sufficient notice before unsupported versions are remov
 
 ---
 
-# API Inventory
+## API Inventory
 
 Organizations should maintain an inventory of exposed APIs.
 
@@ -1919,7 +1919,7 @@ A current inventory improves governance and security visibility.
 
 ---
 
-# API Security Testing
+## API Security Testing
 
 Security testing should occur throughout the SDLC.
 
@@ -1951,7 +1951,7 @@ Testing validates that security controls operate as intended.
 
 ---
 
-# Types of API Security Testing
+## Types of API Security Testing
 
 ```
 API Security Testing
@@ -1979,7 +1979,7 @@ Different testing activities examine different aspects of API security.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling helps identify security risks before implementation.
 
@@ -2007,7 +2007,7 @@ Early analysis reduces development costs and security risks.
 
 ---
 
-# API Logging
+## API Logging
 
 Important API events should be logged.
 
@@ -2039,7 +2039,7 @@ Logging supports investigations and operational monitoring.
 
 ---
 
-# What Should Be Logged?
+## What Should Be Logged?
 
 | Event | Reason |
 |--------|--------|
@@ -2054,7 +2054,7 @@ Sensitive information should be protected and logged only when necessary.
 
 ---
 
-# API Monitoring
+## API Monitoring
 
 Monitoring transforms log data into operational awareness.
 
@@ -2086,7 +2086,7 @@ Continuous monitoring improves detection of unusual behavior.
 
 ---
 
-# API Observability
+## API Observability
 
 Modern API operations rely on multiple telemetry sources.
 
@@ -2108,7 +2108,7 @@ Together, they provide a comprehensive operational view.
 
 ---
 
-# Enterprise API Architecture
+## Enterprise API Architecture
 
 ```
 Internet
@@ -2150,7 +2150,7 @@ Security controls should be applied consistently across all APIs.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational airline provides booking, payment, and customer APIs.
 
@@ -2190,7 +2190,7 @@ Each API request is authenticated, authorized, validated, logged, and continuous
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2203,7 +2203,7 @@ Each API request is authenticated, authorized, validated, logged, and continuous
 
 ---
 
-# Enterprise API Workflow
+## Enterprise API Workflow
 
 ```
 Client
@@ -2243,7 +2243,7 @@ Response
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create an inventory of APIs for a sample enterprise.
 2. Identify where authorization decisions occur.
@@ -2255,7 +2255,7 @@ Response
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Broken Object Level Authorization (BOLA)?
 2. Why is excessive data exposure a security concern?
@@ -2270,7 +2270,7 @@ Response
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enforce authorization checks for every protected resource.
 - Return only the minimum data required for business functionality.
@@ -2282,7 +2282,7 @@ Response
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming authenticated users may access every resource.
 - Returning unnecessary information in API responses.
@@ -2293,7 +2293,7 @@ Response
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - API security extends beyond authentication to include authorization, data protection, secure business logic, monitoring, and lifecycle management.
 - Broken Object Level Authorization is one of the most significant API security risks.
@@ -2301,15 +2301,15 @@ Response
 - API inventories, observability, and structured version management improve operational security.
 - Continuous testing, monitoring, and governance are essential for secure enterprise APIs.
 
-# 29-API-Security.md
+## 29-API-Security.md
 
-# Part 4 — Enterprise Governance, API Security Operations, Compliance, Zero Trust, and Chapter Summary
+## Part 4 — Enterprise Governance, API Security Operations, Compliance, Zero Trust, and Chapter Summary
 
 > **"API security is not a single control or product—it is a continuous process that combines secure development, identity, governance, monitoring, automation, and operational excellence throughout the API lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2326,7 +2326,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise API Governance
+## Enterprise API Governance
 
 API governance establishes organizational policies, standards, and processes for designing, deploying, securing, operating, and retiring APIs.
 
@@ -2362,7 +2362,7 @@ Governance ensures that APIs remain secure, consistent, and manageable throughou
 
 ---
 
-# API Governance Framework
+## API Governance Framework
 
 ```
 API Governance
@@ -2392,7 +2392,7 @@ A mature governance framework improves consistency across development teams.
 
 ---
 
-# API Lifecycle Governance
+## API Lifecycle Governance
 
 ```
 Requirements
@@ -2434,7 +2434,7 @@ Security should be embedded into every lifecycle stage.
 
 ---
 
-# API Risk Management
+## API Risk Management
 
 Organizations should identify, evaluate, and manage API-related risks continuously.
 
@@ -2466,7 +2466,7 @@ Risk management enables organizations to prioritize security investments.
 
 ---
 
-# API Asset Management
+## API Asset Management
 
 An organization should always know:
 
@@ -2496,7 +2496,7 @@ Maintaining an accurate inventory improves governance and reduces unmanaged expo
 
 ---
 
-# API Documentation
+## API Documentation
 
 Well-maintained documentation supports secure development and operations.
 
@@ -2526,7 +2526,7 @@ Documentation should remain synchronized with deployed APIs.
 
 ---
 
-# Zero Trust for APIs
+## Zero Trust for APIs
 
 Zero Trust assumes that every request must be verified.
 
@@ -2562,7 +2562,7 @@ No request should be trusted solely because it originates from an internal netwo
 
 ---
 
-# Identity-Centric API Security
+## Identity-Centric API Security
 
 ```
 Identity
@@ -2588,7 +2588,7 @@ Identity is the foundation of modern API security.
 
 ---
 
-# Secure Service-to-Service Communication
+## Secure Service-to-Service Communication
 
 Internal APIs should also enforce strong identity verification.
 
@@ -2612,7 +2612,7 @@ Microservices should not rely solely on network segmentation for trust.
 
 ---
 
-# API Security Operations
+## API Security Operations
 
 Security operations continuously monitor API environments.
 
@@ -2644,7 +2644,7 @@ Operations teams help identify suspicious behavior before it impacts business se
 
 ---
 
-# API Incident Response
+## API Incident Response
 
 ```
 Detection
@@ -2678,7 +2678,7 @@ Every incident should lead to process and control improvements.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 After resolving an API-related incident:
 
@@ -2710,7 +2710,7 @@ The goal is to reduce the likelihood of similar issues recurring.
 
 ---
 
-# API Compliance
+## API Compliance
 
 Many industry standards expect organizations to secure APIs appropriately.
 
@@ -2738,7 +2738,7 @@ Meeting these expectations supports both operational resilience and regulatory c
 
 ---
 
-# API Security Metrics
+## API Security Metrics
 
 Organizations should continuously measure API security effectiveness.
 
@@ -2755,7 +2755,7 @@ Organizations should continuously measure API security effectiveness.
 
 ---
 
-# Enterprise API Dashboard
+## Enterprise API Dashboard
 
 ```
 API Security Dashboard
@@ -2783,7 +2783,7 @@ Dashboards provide operational visibility for engineering, security, and managem
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 API security should evolve alongside business requirements.
 
@@ -2815,7 +2815,7 @@ Continuous feedback strengthens long-term security.
 
 ---
 
-# API Security Maturity Model
+## API Security Maturity Model
 
 ```
 Level 1
@@ -2851,7 +2851,7 @@ Organizations gradually mature by integrating security into both technology and 
 
 ---
 
-# Enterprise API Architecture
+## Enterprise API Architecture
 
 ```
                  Internet
@@ -2907,7 +2907,7 @@ This layered architecture supports defense in depth.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization provides APIs for:
 
@@ -2951,7 +2951,7 @@ Every request is authenticated, authorized, validated, logged, monitored, and co
 
 ---
 
-# Enterprise API Security Checklist
+## Enterprise API Security Checklist
 
 ```
 ✓ API Inventory Maintained
@@ -2977,7 +2977,7 @@ Every request is authenticated, authorized, validated, logged, monitored, and co
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2990,9 +2990,9 @@ Every request is authenticated, authorized, validated, logged, monitored, and co
 
 ---
 
-# Interview Revision
+## Interview Revision
 
-## API Request Flow
+### API Request Flow
 
 ```
 Client
@@ -3020,7 +3020,7 @@ Response
 
 ---
 
-## API Gateway
+### API Gateway
 
 ```
 Client
@@ -3048,7 +3048,7 @@ Service
 
 ---
 
-## Zero Trust
+### Zero Trust
 
 ```
 Request
@@ -3072,7 +3072,7 @@ Grant Access
 
 ---
 
-## API Lifecycle
+### API Lifecycle
 
 ```
 Design
@@ -3100,7 +3100,7 @@ Retire
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a secure enterprise API architecture using an API gateway.
 2. Create an API inventory for a fictional organization.
@@ -3112,7 +3112,7 @@ Retire
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is API governance important?
 2. What is an API inventory?
@@ -3127,7 +3127,7 @@ Retire
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain a complete inventory of all APIs.
 - Enforce authentication and authorization consistently.
@@ -3139,7 +3139,7 @@ Retire
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing undocumented or unmanaged APIs to remain active.
 - Applying inconsistent authentication across different APIs.
@@ -3150,7 +3150,7 @@ Retire
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

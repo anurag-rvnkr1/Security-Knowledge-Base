@@ -82,7 +82,7 @@ Kubernetes automatically resolves names into IP addresses.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -99,7 +99,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Kubernetes DNS?
+## Why Kubernetes DNS?
 
 Without DNS:
 
@@ -125,7 +125,7 @@ Application fails.
 
 ---
 
-## Better Solution
+### Better Solution
 
 ```
 Frontend
@@ -139,7 +139,7 @@ DNS automatically resolves the correct Service IP.
 
 ---
 
-# What is CoreDNS?
+## What is CoreDNS?
 
 **CoreDNS** is the default DNS server in Kubernetes.
 
@@ -155,7 +155,7 @@ CoreDNS runs as Pods inside the cluster.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                 Application
@@ -191,7 +191,7 @@ CoreDNS runs as Pods inside the cluster.
 
 ---
 
-# DNS Workflow
+## DNS Workflow
 
 ```
 Application
@@ -215,7 +215,7 @@ Backend Pods
 
 ---
 
-# Kubernetes DNS Components
+## Kubernetes DNS Components
 
 ```
 DNS
@@ -235,7 +235,7 @@ DNS
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 Suppose:
 
@@ -265,7 +265,7 @@ instead of:
 
 ---
 
-# DNS Resolution Process
+## DNS Resolution Process
 
 ```
 Application
@@ -293,7 +293,7 @@ Response
 
 ---
 
-# Service Name
+## Service Name
 
 Example:
 
@@ -315,7 +315,7 @@ No additional domain is required.
 
 ---
 
-# Namespace-Aware DNS
+## Namespace-Aware DNS
 
 Suppose:
 
@@ -341,7 +341,7 @@ Applications in other namespaces can use namespace-qualified names.
 
 ---
 
-# Fully Qualified Domain Name (FQDN)
+## Fully Qualified Domain Name (FQDN)
 
 Every Service has a complete DNS name.
 
@@ -359,7 +359,7 @@ backend.default.svc.cluster.local
 
 ---
 
-# DNS Name Structure
+## DNS Name Structure
 
 ```
 backend
@@ -397,7 +397,7 @@ Cluster Domain
 
 ---
 
-# Cluster Domain
+## Cluster Domain
 
 Default:
 
@@ -409,7 +409,7 @@ Some organizations customize the cluster domain during cluster setup.
 
 ---
 
-# Service DNS Example
+## Service DNS Example
 
 Service:
 
@@ -431,7 +431,7 @@ payment.finance.svc.cluster.local
 
 ---
 
-# DNS Search Domains
+## DNS Search Domains
 
 Pods automatically receive search domains.
 
@@ -455,7 +455,7 @@ instead of the full FQDN when communicating within the cluster.
 
 ---
 
-# DNS Search Example
+## DNS Search Example
 
 Application:
 
@@ -477,7 +477,7 @@ Return ClusterIP
 
 ---
 
-# Pod DNS Policy
+## Pod DNS Policy
 
 Common DNS policies:
 
@@ -505,7 +505,7 @@ ClusterFirst
 
 ---
 
-# ClusterFirst
+## ClusterFirst
 
 ```
 Application
@@ -537,13 +537,13 @@ External DNS
 
 ---
 
-# Default Policy
+## Default Policy
 
 Uses the Node's DNS configuration instead of cluster-first behavior.
 
 ---
 
-# None
+## None
 
 Allows custom DNS configuration.
 
@@ -557,7 +557,7 @@ Must be used with `dnsConfig`.
 
 ---
 
-# dnsConfig
+## dnsConfig
 
 Example:
 
@@ -573,7 +573,7 @@ Allows additional DNS customization such as nameservers, search domains, and res
 
 ---
 
-# External DNS Lookup
+## External DNS Lookup
 
 Suppose:
 
@@ -597,7 +597,7 @@ CoreDNS forwards unknown domains to upstream DNS servers.
 
 ---
 
-# Service Discovery Example
+## Service Discovery Example
 
 ```
 Frontend
@@ -621,7 +621,7 @@ Backend Pods
 
 ---
 
-# Headless Service DNS
+## Headless Service DNS
 
 Normal Service:
 
@@ -657,7 +657,7 @@ This is commonly used with StatefulSets.
 
 ---
 
-# StatefulSet DNS
+## StatefulSet DNS
 
 Example:
 
@@ -673,7 +673,7 @@ Each Pod receives a stable DNS name.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Application
@@ -703,7 +703,7 @@ CoreDNS watches the Kubernetes API to maintain up-to-date DNS records.
 
 ---
 
-# Viewing CoreDNS
+## Viewing CoreDNS
 
 ```bash
 kubectl get pods -n kube-system
@@ -717,7 +717,7 @@ coredns
 
 ---
 
-# View CoreDNS Service
+## View CoreDNS Service
 
 ```bash
 kubectl get svc -n kube-system
@@ -727,7 +727,7 @@ Observe the ClusterIP used by Pods for DNS queries.
 
 ---
 
-# View DNS Configuration
+## View DNS Configuration
 
 Inside a Pod:
 
@@ -743,7 +743,7 @@ Typical output contains:
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 View CoreDNS Pods:
 
@@ -771,7 +771,7 @@ kubectl exec -it <pod> -- nslookup kubernetes.default
 
 ---
 
-# Kubernetes DNS Architecture
+## Kubernetes DNS Architecture
 
 ```
 Application
@@ -803,9 +803,9 @@ Response
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Always Use Service Names
+#### 1. Always Use Service Names
 
 Prefer:
 
@@ -821,7 +821,7 @@ instead of:
 
 ---
 
-### 2. Avoid Pod IPs
+#### 2. Avoid Pod IPs
 
 Pod IPs are temporary.
 
@@ -829,7 +829,7 @@ Services provide stable endpoints.
 
 ---
 
-### 3. Use FQDN for Cross-Namespace Communication
+#### 3. Use FQDN for Cross-Namespace Communication
 
 Example:
 
@@ -839,7 +839,7 @@ database.finance.svc.cluster.local
 
 ---
 
-### 4. Keep CoreDNS Healthy
+#### 4. Keep CoreDNS Healthy
 
 Monitor:
 
@@ -850,15 +850,15 @@ Monitor:
 
 ---
 
-### 5. Test DNS During Troubleshooting
+#### 5. Test DNS During Troubleshooting
 
 A simple `nslookup` or `dig` from inside a Pod can quickly identify name resolution issues.
 
 ---
 
-# How DNS Works Internally in Kubernetes
+## How DNS Works Internally in Kubernetes
 
-## Overview
+### Overview
 
 When an application inside Kubernetes communicates with another application, it almost never uses an IP address directly.
 
@@ -890,7 +890,7 @@ This process happens in milliseconds and involves several Kubernetes components.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -907,7 +907,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                 Application
@@ -951,7 +951,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Complete Workflow
+## Complete Workflow
 
 ```
 Application
@@ -983,7 +983,7 @@ Application Connects
 
 ---
 
-# Step 1 – Application Requests Service
+## Step 1 – Application Requests Service
 
 Suppose:
 
@@ -1001,7 +1001,7 @@ No IP address is provided.
 
 ---
 
-# Step 2 – libc Resolver
+## Step 2 – libc Resolver
 
 Linux applications use the system resolver library.
 
@@ -1027,7 +1027,7 @@ The resolver reads:
 
 ---
 
-# Step 3 – resolv.conf
+## Step 3 – resolv.conf
 
 Example:
 
@@ -1047,7 +1047,7 @@ Meaning:
 
 ---
 
-# Step 4 – DNS Search
+## Step 4 – DNS Search
 
 Application requests:
 
@@ -1075,7 +1075,7 @@ database.cluster.local
 
 ---
 
-# Step 5 – CoreDNS Receives Query
+## Step 5 – CoreDNS Receives Query
 
 Packet:
 
@@ -1093,7 +1093,7 @@ TCP is used when responses are large or UDP retries fail.
 
 ---
 
-# CoreDNS Architecture
+## CoreDNS Architecture
 
 ```
 CoreDNS
@@ -1117,7 +1117,7 @@ CoreDNS functionality is built using plugins.
 
 ---
 
-# Kubernetes Plugin
+## Kubernetes Plugin
 
 The Kubernetes plugin watches:
 
@@ -1144,7 +1144,7 @@ No manual configuration is required.
 
 ---
 
-# Step 6 – Service Lookup
+## Step 6 – Service Lookup
 
 CoreDNS searches:
 
@@ -1164,7 +1164,7 @@ ClusterIP
 
 ---
 
-# Step 7 – DNS Response
+## Step 7 – DNS Response
 
 CoreDNS sends:
 
@@ -1180,7 +1180,7 @@ Back to the application.
 
 ---
 
-# Step 8 – Application Connects
+## Step 8 – Application Connects
 
 Application now sends packets to:
 
@@ -1204,7 +1204,7 @@ Backend Pod
 
 ---
 
-# Complete Packet Flow
+## Complete Packet Flow
 
 ```
 Application
@@ -1236,7 +1236,7 @@ Pod
 
 ---
 
-# CoreDNS Cache
+## CoreDNS Cache
 
 CoreDNS caches DNS records.
 
@@ -1262,7 +1262,7 @@ Benefits:
 
 ---
 
-# External DNS
+## External DNS
 
 Suppose:
 
@@ -1290,9 +1290,9 @@ CoreDNS acts as a DNS forwarder for external domains.
 
 ---
 
-# CoreDNS Plugins
+## CoreDNS Plugins
 
-## Kubernetes Plugin
+### Kubernetes Plugin
 
 ```
 Internal DNS
@@ -1300,7 +1300,7 @@ Internal DNS
 
 ---
 
-## Cache Plugin
+### Cache Plugin
 
 ```
 DNS Cache
@@ -1308,7 +1308,7 @@ DNS Cache
 
 ---
 
-## Forward Plugin
+### Forward Plugin
 
 ```
 External DNS
@@ -1316,7 +1316,7 @@ External DNS
 
 ---
 
-## Health Plugin
+### Health Plugin
 
 ```
 Health Checks
@@ -1324,7 +1324,7 @@ Health Checks
 
 ---
 
-## Ready Plugin
+### Ready Plugin
 
 ```
 Readiness Endpoint
@@ -1332,7 +1332,7 @@ Readiness Endpoint
 
 ---
 
-## Prometheus Plugin
+### Prometheus Plugin
 
 ```
 Metrics
@@ -1340,7 +1340,7 @@ Metrics
 
 ---
 
-# DNS Cache Flow
+## DNS Cache Flow
 
 ```
 Application
@@ -1370,7 +1370,7 @@ API Lookup
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 Suppose:
 
@@ -1402,7 +1402,7 @@ DNS:
 
 ---
 
-# Headless Service
+## Headless Service
 
 Normal Service:
 
@@ -1432,7 +1432,7 @@ CoreDNS returns Pod IPs directly.
 
 ---
 
-# StatefulSet Example
+## StatefulSet Example
 
 ```
 mysql-0.mysql.default.svc.cluster.local
@@ -1446,7 +1446,7 @@ Each Pod has a predictable DNS identity.
 
 ---
 
-# EndpointSlice Integration
+## EndpointSlice Integration
 
 Service:
 
@@ -1476,7 +1476,7 @@ kube-proxy handles load balancing to the endpoints.
 
 ---
 
-# DNS TTL
+## DNS TTL
 
 DNS responses include a **Time To Live (TTL)** value.
 
@@ -1500,7 +1500,7 @@ The TTL determines how long DNS responses may be cached before a new lookup is r
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Application
@@ -1532,7 +1532,7 @@ Pod
 
 ---
 
-# DNS Resolution Example
+## DNS Resolution Example
 
 Request:
 
@@ -1554,7 +1554,7 @@ Address:
 
 ---
 
-# Troubleshooting DNS
+## Troubleshooting DNS
 
 Check CoreDNS:
 
@@ -1588,7 +1588,7 @@ kubectl exec -it busybox -- cat /etc/resolv.conf
 
 ---
 
-# Hands-on Lab 1 – Create BusyBox Pod
+## Hands-on Lab 1 – Create BusyBox Pod
 
 ```bash
 kubectl run dns-test \
@@ -1598,7 +1598,7 @@ kubectl run dns-test \
 
 ---
 
-# Hands-on Lab 2 – Test Service Lookup
+## Hands-on Lab 2 – Test Service Lookup
 
 Inside BusyBox:
 
@@ -1610,7 +1610,7 @@ Observe the returned ClusterIP.
 
 ---
 
-# Hands-on Lab 3 – Test External DNS
+## Hands-on Lab 3 – Test External DNS
 
 ```bash
 nslookup google.com
@@ -1620,7 +1620,7 @@ Verify that CoreDNS forwards external queries.
 
 ---
 
-# Hands-on Lab 4 – Inspect Resolver
+## Hands-on Lab 4 – Inspect Resolver
 
 ```bash
 cat /etc/resolv.conf
@@ -1634,7 +1634,7 @@ Observe:
 
 ---
 
-# Hands-on Lab 5 – Verify CoreDNS
+## Hands-on Lab 5 – Verify CoreDNS
 
 ```bash
 kubectl get pods -n kube-system
@@ -1644,9 +1644,9 @@ Ensure CoreDNS Pods are running.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using Pod IPs Instead of Services
+### 1. Using Pod IPs Instead of Services
 
 Incorrect:
 
@@ -1668,7 +1668,7 @@ database.default.svc.cluster.local
 
 ---
 
-## 2. Assuming CoreDNS Knows Static Records
+### 2. Assuming CoreDNS Knows Static Records
 
 CoreDNS dynamically watches Kubernetes resources.
 
@@ -1676,7 +1676,7 @@ Records change automatically as Services and EndpointSlices change.
 
 ---
 
-## 3. Ignoring Search Domains
+### 3. Ignoring Search Domains
 
 Within the same namespace:
 
@@ -1696,7 +1696,7 @@ or the full FQDN.
 
 ---
 
-## 4. Forgetting CoreDNS Health
+### 4. Forgetting CoreDNS Health
 
 If CoreDNS Pods fail:
 
@@ -1716,7 +1716,7 @@ Even healthy applications may become unreachable because names cannot be resolve
 
 ---
 
-## 5. Confusing DNS with Load Balancing
+### 5. Confusing DNS with Load Balancing
 
 CoreDNS:
 
@@ -1734,9 +1734,9 @@ They perform different functions.
 
 ---
 
-# DNS Quick Revision
+## DNS Quick Revision
 
-## Resolution Flow
+### Resolution Flow
 
 ```
 Application
@@ -1760,7 +1760,7 @@ ClusterIP
 
 ---
 
-## External Query
+### External Query
 
 ```
 Application
@@ -1780,7 +1780,7 @@ Internet DNS
 
 ---
 
-## Internal Query
+### Internal Query
 
 ```
 Application
@@ -1800,7 +1800,7 @@ ClusterIP
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View CoreDNS:
 
@@ -1834,9 +1834,9 @@ kubectl get endpointslices
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is CoreDNS?
 - Why does Kubernetes use DNS?
@@ -1844,7 +1844,7 @@ kubectl get endpointslices
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - How does CoreDNS discover Services?
 - What is the purpose of `/etc/resolv.conf`?
@@ -1852,7 +1852,7 @@ kubectl get endpointslices
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the complete DNS resolution process in Kubernetes.
 - What is the role of the Kubernetes plugin in CoreDNS?
@@ -1862,9 +1862,9 @@ kubectl get endpointslices
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - DNS for Services and Pods
 - CoreDNS
@@ -1873,7 +1873,7 @@ kubectl get endpointslices
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Networking
 - CoreDNS Documentation
@@ -1882,7 +1882,7 @@ kubectl get endpointslices
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - Kubernetes Production Networking
 - CIS Kubernetes Benchmark
@@ -1891,7 +1891,7 @@ kubectl get endpointslices
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Deploy multiple Services and resolve them using short names and FQDNs.
 2. Explore `/etc/resolv.conf` inside Pods.
@@ -1903,7 +1903,7 @@ kubectl get endpointslices
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Application

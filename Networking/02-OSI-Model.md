@@ -1,10 +1,10 @@
 # 02 - OSI Model
 
-# Part 1 — Introduction to the OSI Model
+## Part 1 — Introduction to the OSI Model
 
 ---
 
-# Overview
+## Overview
 
 The **Open Systems Interconnection (OSI) Model** is one of the most important concepts in computer networking and cybersecurity.
 
@@ -24,7 +24,7 @@ Understanding the OSI Model allows engineers to determine **where communication 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -39,7 +39,7 @@ After completing this chapter, you should be able to:
 
 ---
 
-# What is the OSI Model?
+## What is the OSI Model?
 
 The **OSI (Open Systems Interconnection) Model** is a **seven-layer conceptual framework** developed by the **International Organization for Standardization (ISO)** to standardize communication between different computer systems and networking devices.
 
@@ -49,7 +49,7 @@ This layered approach enables equipment and software from different vendors to i
 
 ---
 
-# Why Was the OSI Model Created?
+## Why Was the OSI Model Created?
 
 Before networking standards existed, different manufacturers implemented proprietary networking solutions.
 
@@ -74,7 +74,7 @@ Benefits included:
 
 ---
 
-# Goals of the OSI Model
+## Goals of the OSI Model
 
 The primary objectives are:
 
@@ -87,7 +87,7 @@ The primary objectives are:
 
 ---
 
-# The Seven Layers of the OSI Model
+## The Seven Layers of the OSI Model
 
 The OSI Model consists of seven layers.
 
@@ -113,7 +113,7 @@ Each layer provides services to the layer above while relying on services from t
 
 ---
 
-# OSI Layer Order
+## OSI Layer Order
 
 Communication begins at the Application Layer on the sending device and moves downward to the Physical Layer.
 
@@ -187,7 +187,7 @@ This process ensures that data is prepared for transmission, transported across 
 
 ---
 
-# Why Does Layering Matter?
+## Why Does Layering Matter?
 
 Each layer has a single, well-defined responsibility.
 
@@ -207,7 +207,7 @@ This separation simplifies maintenance and allows technologies at one layer to e
 
 ---
 
-# Layer Independence
+## Layer Independence
 
 Each layer communicates with:
 
@@ -235,7 +235,7 @@ Although actual communication traverses the network, each layer behaves as thoug
 
 ---
 
-# Protocol Data Units (PDUs)
+## Protocol Data Units (PDUs)
 
 Each OSI layer processes a different form of data known as a **Protocol Data Unit (PDU).**
 
@@ -253,9 +253,9 @@ Understanding PDUs is essential when analyzing packet captures or troubleshootin
 
 ---
 
-# Memory Mnemonics
+## Memory Mnemonics
 
-## Top to Bottom (Layer 7 → Layer 1)
+### Top to Bottom (Layer 7 → Layer 1)
 
 ```
 All
@@ -275,7 +275,7 @@ Processing
 
 ---
 
-## Bottom to Top (Layer 1 → Layer 7)
+### Bottom to Top (Layer 1 → Layer 7)
 
 ```
 Please
@@ -297,7 +297,7 @@ These mnemonics are commonly used in networking education to remember the layer 
 
 ---
 
-# Enterprise Communication Example
+## Enterprise Communication Example
 
 Consider an employee opening an internal Human Resources portal.
 
@@ -361,37 +361,37 @@ Every network request follows this layered communication process before the appl
 
 ---
 
-# Benefits of the OSI Model
+## Benefits of the OSI Model
 
 The layered architecture provides several advantages:
 
-### Standardization
+#### Standardization
 
 A common framework for networking technologies.
 
-### Interoperability
+#### Interoperability
 
 Devices from different vendors can communicate using standardized protocols.
 
-### Modularity
+#### Modularity
 
 Each layer can evolve independently.
 
-### Troubleshooting
+#### Troubleshooting
 
 Problems can be isolated to a specific layer.
 
-### Scalability
+#### Scalability
 
 New technologies can be introduced without redesigning the entire networking stack.
 
-### Education
+#### Education
 
 Provides a structured method for learning complex networking concepts.
 
 ---
 
-# Limitations of the OSI Model
+## Limitations of the OSI Model
 
 Although extremely valuable, the OSI Model has some limitations.
 
@@ -404,7 +404,7 @@ Despite these limitations, the OSI Model remains indispensable for learning and 
 
 ---
 
-# OSI Model in Cybersecurity
+## OSI Model in Cybersecurity
 
 Cybersecurity professionals frequently analyze attacks and defenses using the OSI framework.
 
@@ -424,7 +424,7 @@ Mapping attacks to layers helps defenders select appropriate security controls.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The OSI Model is a seven-layer conceptual framework for network communication.
 - Each layer has a clearly defined responsibility.
@@ -434,13 +434,13 @@ Mapping attacks to layers helps defenders select appropriate security controls.
 - The OSI Model is widely used in networking education, cybersecurity, packet analysis, and enterprise troubleshooting.
 
 
-# 02 - OSI Model
+## 02 - OSI Model
 
-# Part 2 — The Seven Layers of the OSI Model (In Depth)
+## Part 2 — The Seven Layers of the OSI Model (In Depth)
 
 ---
 
-# Overview
+## Overview
 
 Every layer of the OSI Model performs a specific function in the communication process.
 
@@ -458,7 +458,7 @@ The seven layers work together to move data from one application to another acro
 
 ---
 
-# Layer 7 — Application Layer
+## Layer 7 — Application Layer
 
 ```
 +----------------------+
@@ -469,7 +469,7 @@ The seven layers work together to move data from one application to another acro
 
 ---
 
-## Purpose
+### Purpose
 
 The Application Layer is the closest layer to the end user.
 
@@ -480,7 +480,7 @@ It provides network services directly to applications.
 
 ---
 
-## Responsibilities
+### Responsibilities
 
 - Network services for applications
 - Resource sharing
@@ -492,7 +492,7 @@ It provides network services directly to applications.
 
 ---
 
-## Common Protocols
+### Common Protocols
 
 | Protocol | Purpose |
 |-----------|----------|
@@ -512,7 +512,7 @@ It provides network services directly to applications.
 
 ---
 
-## Data Unit
+### Data Unit
 
 ```
 Data
@@ -520,7 +520,7 @@ Data
 
 ---
 
-## Address Used
+### Address Used
 
 Application-specific identifiers such as:
 
@@ -531,7 +531,7 @@ Application-specific identifiers such as:
 
 ---
 
-## Enterprise Example
+### Enterprise Example
 
 A user opens:
 
@@ -545,7 +545,7 @@ The Application Layer prepares the request before passing it to the Presentation
 
 ---
 
-## Cybersecurity Threats
+### Cybersecurity Threats
 
 Common attacks include:
 
@@ -562,7 +562,7 @@ Common attacks include:
 
 ---
 
-## Security Controls
+### Security Controls
 
 - Web Application Firewall (WAF)
 - Input validation
@@ -574,7 +574,7 @@ Common attacks include:
 
 ---
 
-## Wireshark Observation
+### Wireshark Observation
 
 Typical protocols observed:
 
@@ -586,7 +586,7 @@ Typical protocols observed:
 
 ---
 
-# Layer 6 — Presentation Layer
+## Layer 6 — Presentation Layer
 
 ```
 +----------------------+
@@ -597,7 +597,7 @@ Typical protocols observed:
 
 ---
 
-## Purpose
+### Purpose
 
 The Presentation Layer is responsible for ensuring that data is in a format understandable by both communicating systems.
 
@@ -605,7 +605,7 @@ Think of it as the **translator** of the OSI Model.
 
 ---
 
-## Responsibilities
+### Responsibilities
 
 - Data formatting
 - Character encoding
@@ -617,7 +617,7 @@ Think of it as the **translator** of the OSI Model.
 
 ---
 
-## Examples
+### Examples
 
 Different systems may use different:
 
@@ -629,7 +629,7 @@ The Presentation Layer converts them into a common format.
 
 ---
 
-## Encryption
+### Encryption
 
 This layer commonly handles:
 
@@ -639,7 +639,7 @@ This layer commonly handles:
 
 ---
 
-## Compression
+### Compression
 
 Compression reduces the amount of data transmitted.
 
@@ -652,7 +652,7 @@ Examples:
 
 ---
 
-## Data Unit
+### Data Unit
 
 ```
 Data
@@ -660,13 +660,13 @@ Data
 
 ---
 
-## Enterprise Example
+### Enterprise Example
 
 A browser encrypts data using TLS before it is transmitted to a secure web server.
 
 ---
 
-## Cybersecurity Threats
+### Cybersecurity Threats
 
 - Weak encryption
 - Deprecated cipher suites
@@ -676,7 +676,7 @@ A browser encrypts data using TLS before it is transmitted to a secure web serve
 
 ---
 
-## Security Controls
+### Security Controls
 
 - TLS 1.3
 - Strong cipher suites
@@ -687,13 +687,13 @@ A browser encrypts data using TLS before it is transmitted to a secure web serve
 
 ---
 
-## Wireshark Observation
+### Wireshark Observation
 
 Encrypted HTTPS traffic appears unreadable without session keys.
 
 ---
 
-# Layer 5 — Session Layer
+## Layer 5 — Session Layer
 
 ```
 +----------------------+
@@ -704,13 +704,13 @@ Encrypted HTTPS traffic appears unreadable without session keys.
 
 ---
 
-## Purpose
+### Purpose
 
 The Session Layer establishes, manages, and terminates communication sessions between applications.
 
 ---
 
-## Responsibilities
+### Responsibilities
 
 - Session establishment
 - Session maintenance
@@ -721,7 +721,7 @@ The Session Layer establishes, manages, and terminates communication sessions be
 
 ---
 
-## Example
+### Example
 
 During an online banking session:
 
@@ -747,7 +747,7 @@ Session Ends
 
 ---
 
-## Common Protocols
+### Common Protocols
 
 Examples include:
 
@@ -759,7 +759,7 @@ Modern applications often implement session management within higher-layer proto
 
 ---
 
-## Data Unit
+### Data Unit
 
 ```
 Data
@@ -767,7 +767,7 @@ Data
 
 ---
 
-## Cybersecurity Threats
+### Cybersecurity Threats
 
 - Session hijacking
 - Session fixation
@@ -777,7 +777,7 @@ Data
 
 ---
 
-## Security Controls
+### Security Controls
 
 - Secure cookies
 - HttpOnly
@@ -788,13 +788,13 @@ Data
 
 ---
 
-## Wireshark Observation
+### Wireshark Observation
 
 Session establishment and teardown can often be inferred from application and transport-layer exchanges.
 
 ---
 
-# Layer 4 — Transport Layer
+## Layer 4 — Transport Layer
 
 ```
 +----------------------+
@@ -805,7 +805,7 @@ Session establishment and teardown can often be inferred from application and tr
 
 ---
 
-## Purpose
+### Purpose
 
 The Transport Layer provides **end-to-end communication** between hosts.
 
@@ -813,7 +813,7 @@ It ensures data reaches the correct application reliably or efficiently, dependi
 
 ---
 
-## Responsibilities
+### Responsibilities
 
 - Segmentation
 - Reassembly
@@ -825,7 +825,7 @@ It ensures data reaches the correct application reliably or efficiently, dependi
 
 ---
 
-## Protocols
+### Protocols
 
 | Protocol | Characteristics |
 |-----------|-----------------|
@@ -834,7 +834,7 @@ It ensures data reaches the correct application reliably or efficiently, dependi
 
 ---
 
-## Data Unit
+### Data Unit
 
 ```
 Segment (TCP)
@@ -844,7 +844,7 @@ Datagram (UDP)
 
 ---
 
-## Address Used
+### Address Used
 
 ```
 Port Number
@@ -866,7 +866,7 @@ Examples:
 
 ---
 
-## Enterprise Example
+### Enterprise Example
 
 A browser sends an HTTPS request using:
 
@@ -880,7 +880,7 @@ The Transport Layer directs the traffic to the correct service running on the de
 
 ---
 
-## Cybersecurity Threats
+### Cybersecurity Threats
 
 - TCP SYN Flood
 - Port scanning
@@ -890,7 +890,7 @@ The Transport Layer directs the traffic to the correct service running on the de
 
 ---
 
-## Security Controls
+### Security Controls
 
 - Stateful firewalls
 - TCP SYN cookies
@@ -900,7 +900,7 @@ The Transport Layer directs the traffic to the correct service running on the de
 
 ---
 
-## Wireshark Observation
+### Wireshark Observation
 
 You can observe:
 
@@ -912,7 +912,7 @@ You can observe:
 
 ---
 
-# Layer 3 — Network Layer
+## Layer 3 — Network Layer
 
 ```
 +----------------------+
@@ -923,7 +923,7 @@ You can observe:
 
 ---
 
-## Purpose
+### Purpose
 
 The Network Layer is responsible for delivering packets between different networks.
 
@@ -931,7 +931,7 @@ It determines the best path from source to destination.
 
 ---
 
-## Responsibilities
+### Responsibilities
 
 - Logical addressing
 - Routing
@@ -941,7 +941,7 @@ It determines the best path from source to destination.
 
 ---
 
-## Protocols
+### Protocols
 
 - IPv4
 - IPv6
@@ -954,7 +954,7 @@ It determines the best path from source to destination.
 
 ---
 
-## Data Unit
+### Data Unit
 
 ```
 Packet
@@ -962,7 +962,7 @@ Packet
 
 ---
 
-## Address Used
+### Address Used
 
 ```
 IP Address
@@ -982,7 +982,7 @@ Examples:
 
 ---
 
-## Devices
+### Devices
 
 - Routers
 - Layer 3 Switches
@@ -990,13 +990,13 @@ Examples:
 
 ---
 
-## Enterprise Example
+### Enterprise Example
 
 A router forwards packets from a branch office to a cloud-hosted application over a WAN.
 
 ---
 
-## Cybersecurity Threats
+### Cybersecurity Threats
 
 - IP spoofing
 - Route hijacking
@@ -1006,7 +1006,7 @@ A router forwards packets from a branch office to a cloud-hosted application ove
 
 ---
 
-## Security Controls
+### Security Controls
 
 - ACLs
 - Routing authentication
@@ -1016,7 +1016,7 @@ A router forwards packets from a branch office to a cloud-hosted application ove
 
 ---
 
-## Wireshark Observation
+### Wireshark Observation
 
 Fields commonly examined include:
 
@@ -1028,7 +1028,7 @@ Fields commonly examined include:
 
 ---
 
-# Layer 2 — Data Link Layer
+## Layer 2 — Data Link Layer
 
 ```
 +----------------------+
@@ -1039,13 +1039,13 @@ Fields commonly examined include:
 
 ---
 
-## Purpose
+### Purpose
 
 The Data Link Layer provides reliable communication between devices on the **same local network**.
 
 ---
 
-## Responsibilities
+### Responsibilities
 
 - Framing
 - MAC addressing
@@ -1056,7 +1056,7 @@ The Data Link Layer provides reliable communication between devices on the **sam
 
 ---
 
-## Protocols and Standards
+### Protocols and Standards
 
 - Ethernet (IEEE 802.3)
 - Wi-Fi (IEEE 802.11)
@@ -1067,7 +1067,7 @@ The Data Link Layer provides reliable communication between devices on the **sam
 
 ---
 
-## Data Unit
+### Data Unit
 
 ```
 Frame
@@ -1075,7 +1075,7 @@ Frame
 
 ---
 
-## Address Used
+### Address Used
 
 ```
 MAC Address
@@ -1089,7 +1089,7 @@ Example:
 
 ---
 
-## Devices
+### Devices
 
 - Switches
 - Bridges
@@ -1097,13 +1097,13 @@ Example:
 
 ---
 
-## Enterprise Example
+### Enterprise Example
 
 A switch forwards an Ethernet frame to the correct workstation using its MAC address table.
 
 ---
 
-## Cybersecurity Threats
+### Cybersecurity Threats
 
 - ARP spoofing
 - MAC flooding
@@ -1112,7 +1112,7 @@ A switch forwards an Ethernet frame to the correct workstation using its MAC add
 
 ---
 
-## Security Controls
+### Security Controls
 
 - Port security
 - Dynamic ARP Inspection (DAI)
@@ -1122,7 +1122,7 @@ A switch forwards an Ethernet frame to the correct workstation using its MAC add
 
 ---
 
-## Wireshark Observation
+### Wireshark Observation
 
 Typical fields include:
 
@@ -1133,7 +1133,7 @@ Typical fields include:
 
 ---
 
-# Layer 1 — Physical Layer
+## Layer 1 — Physical Layer
 
 ```
 +----------------------+
@@ -1144,7 +1144,7 @@ Typical fields include:
 
 ---
 
-## Purpose
+### Purpose
 
 The Physical Layer is responsible for transmitting raw bits across the communication medium.
 
@@ -1152,7 +1152,7 @@ It defines the physical characteristics of the network.
 
 ---
 
-## Responsibilities
+### Responsibilities
 
 - Bit transmission
 - Electrical signaling
@@ -1165,7 +1165,7 @@ It defines the physical characteristics of the network.
 
 ---
 
-## Examples of Media
+### Examples of Media
 
 - Copper Ethernet
 - Fiber optic cable
@@ -1175,7 +1175,7 @@ It defines the physical characteristics of the network.
 
 ---
 
-## Data Unit
+### Data Unit
 
 ```
 Bits
@@ -1183,7 +1183,7 @@ Bits
 
 ---
 
-## Devices
+### Devices
 
 - Hubs
 - Repeaters
@@ -1194,13 +1194,13 @@ Bits
 
 ---
 
-## Enterprise Example
+### Enterprise Example
 
 A fiber optic cable connects two core switches between separate data center buildings.
 
 ---
 
-## Cybersecurity Threats
+### Cybersecurity Threats
 
 - Cable tampering
 - Device theft
@@ -1210,7 +1210,7 @@ A fiber optic cable connects two core switches between separate data center buil
 
 ---
 
-## Security Controls
+### Security Controls
 
 - Locked server rooms
 - CCTV
@@ -1221,13 +1221,13 @@ A fiber optic cable connects two core switches between separate data center buil
 
 ---
 
-## Wireshark Observation
+### Wireshark Observation
 
 The Physical Layer itself is **not directly visible** in packet captures because Wireshark analyzes frames after they have been successfully received.
 
 ---
 
-# Summary of the Seven Layers
+## Summary of the Seven Layers
 
 | Layer | PDU | Address | Typical Devices | Example Protocols |
 |--------|-----|----------|-----------------|-------------------|
@@ -1239,13 +1239,13 @@ The Physical Layer itself is **not directly visible** in packet captures because
 | 2. Data Link | Frame | MAC Address | Switch | Ethernet, ARP, VLAN |
 | 1. Physical | Bits | — | Hub, Cable | Ethernet PHY, Fiber |
 
-# 02 - OSI Model
+## 02 - OSI Model
 
-# Part 3 — Encapsulation, Decapsulation, Packet Journey, and Real-World Communication Flow
+## Part 3 — Encapsulation, Decapsulation, Packet Journey, and Real-World Communication Flow
 
 ---
 
-# Overview
+## Overview
 
 The true power of the OSI Model becomes apparent when we examine **how data actually travels across a network**.
 
@@ -1279,7 +1279,7 @@ Understanding these concepts is fundamental for:
 
 ---
 
-# What is Encapsulation?
+## What is Encapsulation?
 
 Encapsulation is the process of **adding protocol information (headers and sometimes trailers)** to data as it moves **down the OSI stack**.
 
@@ -1331,7 +1331,7 @@ Bits
 
 ---
 
-# Why Encapsulation is Necessary
+## Why Encapsulation is Necessary
 
 Each networking layer has its own responsibilities.
 
@@ -1377,7 +1377,7 @@ Without encapsulation, devices would not know:
 
 ---
 
-# Encapsulation Process
+## Encapsulation Process
 
 ```
 Application Layer
@@ -1439,7 +1439,7 @@ Each layer adds only the information required for its own function.
 
 ---
 
-# Headers Added by Each Layer
+## Headers Added by Each Layer
 
 ```
 Application
@@ -1483,7 +1483,7 @@ Data
 
 ---
 
-# Protocol Data Unit (PDU) Transformation
+## Protocol Data Unit (PDU) Transformation
 
 As data moves through the layers, its name changes.
 
@@ -1531,7 +1531,7 @@ Remember this transformation—it is frequently asked in networking interviews.
 
 ---
 
-# Example: Opening a Website
+## Example: Opening a Website
 
 Suppose a user visits:
 
@@ -1543,7 +1543,7 @@ The communication begins at the browser.
 
 ---
 
-## Step 1 — Application Layer
+### Step 1 — Application Layer
 
 The browser creates an HTTPS request.
 
@@ -1563,7 +1563,7 @@ Data
 
 ---
 
-## Step 2 — Presentation Layer
+### Step 2 — Presentation Layer
 
 The request is encrypted using TLS.
 
@@ -1573,7 +1573,7 @@ Encrypted Data
 
 ---
 
-## Step 3 — Session Layer
+### Step 3 — Session Layer
 
 A secure session is established.
 
@@ -1587,7 +1587,7 @@ Authenticated Session
 
 ---
 
-## Step 4 — Transport Layer
+### Step 4 — Transport Layer
 
 TCP adds:
 
@@ -1614,7 +1614,7 @@ Segment
 
 ---
 
-## Step 5 — Network Layer
+### Step 5 — Network Layer
 
 IP adds:
 
@@ -1640,7 +1640,7 @@ Packet
 
 ---
 
-## Step 6 — Data Link Layer
+### Step 6 — Data Link Layer
 
 Ethernet adds:
 
@@ -1665,7 +1665,7 @@ Frame
 
 ---
 
-## Step 7 — Physical Layer
+### Step 7 — Physical Layer
 
 The frame becomes:
 
@@ -1681,7 +1681,7 @@ These bits are transmitted over:
 
 ---
 
-# Complete Encapsulation Diagram
+## Complete Encapsulation Diagram
 
 ```
 Application Layer
@@ -1740,7 +1740,7 @@ Bits
 
 ---
 
-# What is Decapsulation?
+## What is Decapsulation?
 
 Decapsulation is the **reverse process**.
 
@@ -1768,7 +1768,7 @@ Data
 
 ---
 
-# Decapsulation Process
+## Decapsulation Process
 
 ```
 Incoming Bits
@@ -1818,7 +1818,7 @@ Application Layer
 
 ---
 
-# Enterprise Communication Example
+## Enterprise Communication Example
 
 Imagine an employee accessing an internal HR portal.
 
@@ -1867,7 +1867,7 @@ At each hop:
 
 ---
 
-# What Changes at Each Hop?
+## What Changes at Each Hop?
 
 Consider a packet traveling through multiple routers.
 
@@ -1895,7 +1895,7 @@ Router
 Server
 ```
 
-### Changes
+#### Changes
 
 ✔ Layer 2 (MAC Addresses)
 
@@ -1927,7 +1927,7 @@ Remains unchanged unless modified by an intermediary such as a proxy or applicat
 
 ---
 
-# Example Ethernet Frame
+## Example Ethernet Frame
 
 ```
 +------------------------------------------------+
@@ -1949,7 +1949,7 @@ Remains unchanged unless modified by an intermediary such as a proxy or applicat
 
 ---
 
-# Example IP Packet
+## Example IP Packet
 
 ```
 +-----------------------------------------+
@@ -1966,7 +1966,7 @@ TCP Segment
 
 ---
 
-# Example TCP Segment
+## Example TCP Segment
 
 ```
 +--------------------------------------+
@@ -1983,7 +1983,7 @@ Application Data
 
 ---
 
-# Wireshark View
+## Wireshark View
 
 When capturing packets in Wireshark, you typically observe protocol layers similar to:
 
@@ -2011,7 +2011,7 @@ Wireshark displays protocol information in a hierarchical format, reflecting the
 
 ---
 
-# Encapsulation vs Decapsulation
+## Encapsulation vs Decapsulation
 
 | Encapsulation | Decapsulation |
 |----------------|---------------|
@@ -2022,9 +2022,9 @@ Wireshark displays protocol information in a hierarchical format, reflecting the
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
-### Does every layer add a header?
+#### Does every layer add a header?
 
 No.
 
@@ -2032,7 +2032,7 @@ Most layers add headers, while the Data Link Layer also appends a trailer (such 
 
 ---
 
-### Does every device process all seven layers?
+#### Does every device process all seven layers?
 
 No.
 
@@ -2048,7 +2048,7 @@ For example:
 
 ---
 
-### Does the IP address change at every hop?
+#### Does the IP address change at every hop?
 
 Normally, no.
 
@@ -2056,7 +2056,7 @@ Routers forward packets based on the destination IP address while updating field
 
 ---
 
-# Business Impact
+## Business Impact
 
 Encapsulation enables:
 
@@ -2074,7 +2074,7 @@ Without encapsulation, modern computer networks and the Internet would not funct
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Encapsulation adds protocol-specific information as data moves down the OSI stack.
 - Decapsulation removes this information as data moves up the stack at the receiver.
@@ -2082,13 +2082,13 @@ Without encapsulation, modern computer networks and the Internet would not funct
 - Layer 2 information changes at each network hop, while Layer 3 addresses usually remain constant unless translation mechanisms such as NAT are used.
 - Packet analyzers like Wireshark display encapsulated protocols in a layered hierarchy, making the OSI model an invaluable framework for troubleshooting and cybersecurity analysis.
 
-# 02 - OSI Model
+## 02 - OSI Model
 
-# Part 4 — OSI vs TCP/IP, Layer-Based Troubleshooting, Security Mapping, Practical Lab, and Interview Preparation
+## Part 4 — OSI vs TCP/IP, Layer-Based Troubleshooting, Security Mapping, Practical Lab, and Interview Preparation
 
 ---
 
-# Overview
+## Overview
 
 The OSI Model is more than a theoretical framework—it is a practical tool used daily by network engineers, cybersecurity analysts, SOC teams, cloud engineers, and system administrators.
 
@@ -2104,7 +2104,7 @@ This chapter concludes by showing how the OSI Model is applied in real-world env
 
 ---
 
-# OSI Model vs TCP/IP Model
+## OSI Model vs TCP/IP Model
 
 Although the OSI Model is widely used for learning and troubleshooting, the Internet primarily uses the **TCP/IP Model**.
 
@@ -2112,7 +2112,7 @@ The TCP/IP Model combines several OSI layers while maintaining the same fundamen
 
 ---
 
-# OSI Model
+## OSI Model
 
 ```
 +----------------------+
@@ -2134,7 +2134,7 @@ The TCP/IP Model combines several OSI layers while maintaining the same fundamen
 
 ---
 
-# TCP/IP Model
+## TCP/IP Model
 
 ```
 +----------------------+
@@ -2150,7 +2150,7 @@ The TCP/IP Model combines several OSI layers while maintaining the same fundamen
 
 ---
 
-# Layer Mapping
+## Layer Mapping
 
 | OSI Layer | TCP/IP Layer |
 |------------|--------------|
@@ -2164,7 +2164,7 @@ The TCP/IP Model combines several OSI layers while maintaining the same fundamen
 
 ---
 
-# Key Differences
+## Key Differences
 
 | OSI Model | TCP/IP Model |
 |------------|--------------|
@@ -2176,7 +2176,7 @@ The TCP/IP Model combines several OSI layers while maintaining the same fundamen
 
 ---
 
-# Devices by OSI Layer
+## Devices by OSI Layer
 
 Understanding which devices primarily operate at each layer helps isolate problems and understand traffic flow.
 
@@ -2194,7 +2194,7 @@ Understanding which devices primarily operate at each layer helps isolate proble
 
 ---
 
-# Troubleshooting Using the OSI Model
+## Troubleshooting Using the OSI Model
 
 One of the greatest advantages of the OSI Model is its structured approach to troubleshooting.
 
@@ -2202,9 +2202,9 @@ Engineers can isolate problems layer by layer rather than investigating the enti
 
 ---
 
-## Layer 1 — Physical
+### Layer 1 — Physical
 
-### Common Issues
+#### Common Issues
 
 - Damaged cables
 - Loose connectors
@@ -2212,13 +2212,13 @@ Engineers can isolate problems layer by layer rather than investigating the enti
 - Power failures
 - Wireless interference
 
-### Symptoms
+#### Symptoms
 
 - No link light
 - Device offline
 - Frequent disconnections
 
-### Common Tools
+#### Common Tools
 
 - Cable tester
 - Loopback tester
@@ -2226,9 +2226,9 @@ Engineers can isolate problems layer by layer rather than investigating the enti
 
 ---
 
-## Layer 2 — Data Link
+### Layer 2 — Data Link
 
-### Common Issues
+#### Common Issues
 
 - VLAN mismatch
 - MAC address table problems
@@ -2236,13 +2236,13 @@ Engineers can isolate problems layer by layer rather than investigating the enti
 - Port security violations
 - Spanning Tree issues
 
-### Symptoms
+#### Symptoms
 
 - Local devices cannot communicate
 - Duplicate MAC address warnings
 - Broadcast storms
 
-### Common Tools
+#### Common Tools
 
 - `show mac address-table`
 - `arp -a`
@@ -2251,9 +2251,9 @@ Engineers can isolate problems layer by layer rather than investigating the enti
 
 ---
 
-## Layer 3 — Network
+### Layer 3 — Network
 
-### Common Issues
+#### Common Issues
 
 - Incorrect IP configuration
 - Routing failures
@@ -2261,13 +2261,13 @@ Engineers can isolate problems layer by layer rather than investigating the enti
 - ACL blocks
 - Subnet mismatch
 
-### Symptoms
+#### Symptoms
 
 - Unable to reach remote networks
 - Ping failures
 - Traceroute stops unexpectedly
 
-### Common Tools
+#### Common Tools
 
 - `ping`
 - `traceroute` / `tracert`
@@ -2276,22 +2276,22 @@ Engineers can isolate problems layer by layer rather than investigating the enti
 
 ---
 
-## Layer 4 — Transport
+### Layer 4 — Transport
 
-### Common Issues
+#### Common Issues
 
 - Closed ports
 - Firewall filtering
 - TCP handshake failures
 - Excessive retransmissions
 
-### Symptoms
+#### Symptoms
 
 - Applications time out
 - Connections reset
 - Service unavailable
 
-### Common Tools
+#### Common Tools
 
 - `netstat`
 - `ss`
@@ -2301,37 +2301,37 @@ Engineers can isolate problems layer by layer rather than investigating the enti
 
 ---
 
-## Layer 5 — Session
+### Layer 5 — Session
 
-### Common Issues
+#### Common Issues
 
 - Session timeout
 - Authentication failures
 - Token expiration
 - Session synchronization issues
 
-### Symptoms
+#### Symptoms
 
 - Frequent logouts
 - Interrupted user sessions
 
 ---
 
-## Layer 6 — Presentation
+### Layer 6 — Presentation
 
-### Common Issues
+#### Common Issues
 
 - TLS handshake failures
 - Certificate errors
 - Unsupported cipher suites
 - Encoding mismatches
 
-### Symptoms
+#### Symptoms
 
 - Browser certificate warnings
 - Failed encrypted connections
 
-### Common Tools
+#### Common Tools
 
 - `openssl s_client`
 - Browser developer tools
@@ -2339,22 +2339,22 @@ Engineers can isolate problems layer by layer rather than investigating the enti
 
 ---
 
-## Layer 7 — Application
+### Layer 7 — Application
 
-### Common Issues
+#### Common Issues
 
 - Application bugs
 - DNS resolution failures
 - API errors
 - Web server configuration problems
 
-### Symptoms
+#### Symptoms
 
 - HTTP 404 or 500 errors
 - Slow web applications
 - Login failures
 
-### Common Tools
+#### Common Tools
 
 - Browser developer tools
 - API clients
@@ -2363,7 +2363,7 @@ Engineers can isolate problems layer by layer rather than investigating the enti
 
 ---
 
-# Security Across the OSI Layers
+## Security Across the OSI Layers
 
 Security controls should be applied at multiple layers rather than relying on a single defense.
 
@@ -2381,13 +2381,13 @@ This layered defense strategy is commonly referred to as **Defense in Depth**.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A company's employees report that they cannot access the internal Human Resources portal.
 
-### Investigation
+#### Investigation
 
 **Layer 1**
 
@@ -2423,7 +2423,7 @@ A company's employees report that they cannot access the internal Human Resource
 - Review web server logs.
 - Inspect application errors and database connectivity.
 
-### Result
+#### Result
 
 The investigation reveals an expired TLS certificate.
 
@@ -2431,13 +2431,13 @@ Because the issue was isolated systematically, troubleshooting was completed qui
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Objective
+### Objective
 
 Observe the OSI Model using a packet capture.
 
-### Requirements
+#### Requirements
 
 - Wireshark
 - Internet connection
@@ -2445,7 +2445,7 @@ Observe the OSI Model using a packet capture.
 
 ---
 
-## Steps
+### Steps
 
 1. Start a packet capture in Wireshark.
 2. Open a web browser.
@@ -2484,63 +2484,63 @@ Relate each protocol to its corresponding OSI layer.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is the purpose of the OSI Model?
+#### What is the purpose of the OSI Model?
 
 The OSI Model provides a standardized framework for understanding, designing, and troubleshooting network communication.
 
 ---
 
-### Which layer is responsible for routing?
+#### Which layer is responsible for routing?
 
 The **Network Layer (Layer 3)** is responsible for logical addressing and routing packets between networks.
 
 ---
 
-### Which layer uses MAC addresses?
+#### Which layer uses MAC addresses?
 
 The **Data Link Layer (Layer 2)** uses MAC addresses for communication within the same local network.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is encapsulation?
+#### What is encapsulation?
 
 Encapsulation is the process of adding protocol-specific headers (and sometimes trailers) to data as it moves down the OSI stack before transmission.
 
 ---
 
-### Why do MAC addresses change while IP addresses usually remain the same during routing?
+#### Why do MAC addresses change while IP addresses usually remain the same during routing?
 
 MAC addresses identify devices on the local network segment, so routers rebuild Layer 2 frames for each hop. IP addresses identify the end hosts and generally remain unchanged unless translation mechanisms such as NAT are applied.
 
 ---
 
-### Which OSI layer is most commonly associated with HTTPS?
+#### Which OSI layer is most commonly associated with HTTPS?
 
 HTTPS primarily operates at the **Application Layer (Layer 7)** while relying on **TLS**, which is commonly associated with the **Presentation Layer (Layer 6)** in the OSI conceptual model.
 
 ---
 
-## Advanced
+### Advanced
 
-### How does the OSI Model improve troubleshooting?
+#### How does the OSI Model improve troubleshooting?
 
 The OSI Model allows engineers to isolate problems by layer, reducing the scope of investigation and enabling a structured troubleshooting methodology.
 
 ---
 
-### Why is the OSI Model still relevant even though the Internet uses TCP/IP?
+#### Why is the OSI Model still relevant even though the Internet uses TCP/IP?
 
 The OSI Model provides a clear conceptual framework for understanding protocols, troubleshooting issues, designing secure architectures, and explaining network communication. The TCP/IP Model is the practical implementation used by the Internet, while the OSI Model remains invaluable for education and analysis.
 
 ---
 
-### Explain a complete HTTPS request using the OSI Model.
+#### Explain a complete HTTPS request using the OSI Model.
 
 A strong answer should describe:
 
@@ -2555,21 +2555,21 @@ A strong answer should describe:
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - ISO/IEC 7498-1 (Open Systems Interconnection Basic Reference Model)
 - IEEE 802 Series
 - IETF RFC Series
 
-## Security Guidance
+### Security Guidance
 
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-53
 - NIST SP 800-61 (Incident Handling Guide)
 
-## Vendor Documentation
+### Vendor Documentation
 
 - Cisco Networking Documentation
 - Juniper Documentation
@@ -2578,15 +2578,15 @@ A strong answer should describe:
 
 ---
 
-# Summary
+## Summary
 
 The OSI Model provides a structured framework for understanding how data moves across computer networks. By dividing communication into seven specialized layers, it simplifies network design, troubleshooting, protocol analysis, and security implementation. Although the Internet is built on the TCP/IP model, the OSI Model remains the industry-standard reference for networking education, enterprise operations, and cybersecurity investigations.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
-## Skills Covered
+### Skills Covered
 
 After completing this chapter, you should understand:
 

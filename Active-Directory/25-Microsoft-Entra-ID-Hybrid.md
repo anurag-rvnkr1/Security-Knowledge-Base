@@ -1,6 +1,6 @@
 # 25-Microsoft-Entra-ID-Hybrid.md
 
-# Part 1 — Introduction to Microsoft Entra ID, Hybrid Identity, Synchronization Concepts and Enterprise Architecture
+## Part 1 — Introduction to Microsoft Entra ID, Hybrid Identity, Synchronization Concepts and Enterprise Architecture
 
 > **Important Note**
 >
@@ -8,7 +8,7 @@
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -24,7 +24,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Modern organizations rarely operate entirely on-premises.
 
@@ -43,7 +43,7 @@ Microsoft Entra ID fulfills this role.
 
 ---
 
-# What is Microsoft Entra ID?
+## What is Microsoft Entra ID?
 
 **Microsoft Entra ID** is Microsoft's cloud-based identity and access management (IAM) service.
 
@@ -60,7 +60,7 @@ It enables organizations to:
 
 ---
 
-# Evolution of Microsoft Entra ID
+## Evolution of Microsoft Entra ID
 
 ```
 Windows Domains
@@ -82,7 +82,7 @@ The name changed from **Azure Active Directory** to **Microsoft Entra ID**, whil
 
 ---
 
-# Identity Management
+## Identity Management
 
 Identity management answers questions such as:
 
@@ -96,7 +96,7 @@ Identity is the foundation of enterprise security.
 
 ---
 
-# Traditional Active Directory
+## Traditional Active Directory
 
 ```
 Users
@@ -118,7 +118,7 @@ Traditional Active Directory primarily manages identities within an organization
 
 ---
 
-# Cloud Identity
+## Cloud Identity
 
 ```
 Users
@@ -140,7 +140,7 @@ Cloud identity allows secure access regardless of user location.
 
 ---
 
-# Hybrid Identity
+## Hybrid Identity
 
 Most organizations combine both environments.
 
@@ -168,7 +168,7 @@ Hybrid identity provides a unified experience across on-premises and cloud resou
 
 ---
 
-# Why Hybrid Identity?
+## Why Hybrid Identity?
 
 Organizations often need to support:
 
@@ -184,7 +184,7 @@ Hybrid identity bridges these requirements.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Employees
@@ -222,7 +222,7 @@ This architecture enables centralized identity management across environments.
 
 ---
 
-# Core Components
+## Core Components
 
 | Component | Purpose |
 |-----------|----------|
@@ -236,7 +236,7 @@ This architecture enables centralized identity management across environments.
 
 ---
 
-# Authentication Flow (High-Level)
+## Authentication Flow (High-Level)
 
 ```
 User
@@ -266,7 +266,7 @@ Authentication is combined with policy evaluation to determine whether access sh
 
 ---
 
-# Benefits of Hybrid Identity
+## Benefits of Hybrid Identity
 
 Organizations benefit from:
 
@@ -280,7 +280,7 @@ Organizations benefit from:
 
 ---
 
-# Business Advantages
+## Business Advantages
 
 Hybrid identity enables:
 
@@ -293,7 +293,7 @@ Hybrid identity enables:
 
 ---
 
-# Common Enterprise Scenarios
+## Common Enterprise Scenarios
 
 Examples include:
 
@@ -306,9 +306,9 @@ Examples include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Company
+### Company
 
 ```
 Contoso Global Services
@@ -339,7 +339,7 @@ Benefits achieved:
 
 ---
 
-# Hybrid Identity Workflow
+## Hybrid Identity Workflow
 
 ```
 Employee Created
@@ -365,7 +365,7 @@ Identity information is maintained consistently across environments.
 
 ---
 
-# Security Principles
+## Security Principles
 
 Microsoft Entra ID supports:
 
@@ -380,7 +380,7 @@ These principles strengthen enterprise identity protection.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Identity has become the primary security perimeter in modern enterprises.
 
@@ -396,13 +396,13 @@ When combined with Active Directory, it provides a robust hybrid identity platfo
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design a hybrid identity architecture for a fictional enterprise.
 
-### Step 1
+#### Step 1
 
 Identify:
 
@@ -414,19 +414,19 @@ Identify:
 
 ---
 
-### Step 2
+#### Step 2
 
 Draw a high-level architecture showing identity synchronization between Active Directory and Microsoft Entra ID.
 
 ---
 
-### Step 3
+#### Step 3
 
 List the business benefits of adopting hybrid identity.
 
 ---
 
-### Step 4
+#### Step 4
 
 Identify the teams responsible for:
 
@@ -437,51 +437,51 @@ Identify the teams responsible for:
 
 ---
 
-### Step 5
+#### Step 5
 
 Document three security controls that should accompany a hybrid identity deployment.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is Microsoft Entra ID?
+#### Q1: What is Microsoft Entra ID?
 
 **Answer:** Microsoft Entra ID is Microsoft's cloud-based identity and access management platform that provides authentication, authorization, identity governance, and secure access to cloud applications.
 
 ---
 
-### Q2: What is hybrid identity?
+#### Q2: What is hybrid identity?
 
 **Answer:** Hybrid identity combines on-premises Active Directory with Microsoft Entra ID, allowing users to access both on-premises and cloud resources using a unified identity.
 
 ---
 
-### Q3: Why do organizations adopt hybrid identity?
+#### Q3: Why do organizations adopt hybrid identity?
 
 **Answer:** To support cloud adoption while maintaining existing Active Directory infrastructure, enabling centralized identity management and secure access across environments.
 
 ---
 
-### Q4: What are the benefits of Microsoft Entra ID?
+#### Q4: What are the benefits of Microsoft Entra ID?
 
 **Answer:** Centralized identity management, cloud authentication, Single Sign-On, stronger security controls, scalability, and improved user experience.
 
 ---
 
-### Q5: How does Microsoft Entra ID support Zero Trust?
+#### Q5: How does Microsoft Entra ID support Zero Trust?
 
 **Answer:** By continuously evaluating identity, authentication, device status, and access policies before granting access to resources.
 
 ---
 
-### Q6: What is the relationship between Active Directory and Microsoft Entra ID?
+#### Q6: What is the relationship between Active Directory and Microsoft Entra ID?
 
 **Answer:** Active Directory manages on-premises identities, while Microsoft Entra ID manages cloud identities. In a hybrid deployment, identity information is synchronized to provide a unified user experience.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Plan hybrid identity before cloud migration.
 - Maintain accurate identity information.
@@ -494,7 +494,7 @@ Document three security controls that should accompany a hybrid identity deploym
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming cloud identity completely replaces on-premises Active Directory.
 - Poor identity lifecycle management.
@@ -505,7 +505,7 @@ Document three security controls that should accompany a hybrid identity deploym
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Microsoft Entra ID is Microsoft's cloud identity and access management platform.
 - Hybrid identity combines Active Directory with Microsoft Entra ID to provide unified authentication across on-premises and cloud environments.
@@ -514,9 +514,9 @@ Document three security controls that should accompany a hybrid identity deploym
 
 ---
 
-# 25-Microsoft-Entra-ID-Hybrid.md
+## 25-Microsoft-Entra-ID-Hybrid.md
 
-# Part 2 — Microsoft Entra ID Synchronization, Authentication Models, Single Sign-On, Identity Lifecycle and Enterprise Integration
+## Part 2 — Microsoft Entra ID Synchronization, Authentication Models, Single Sign-On, Identity Lifecycle and Enterprise Integration
 
 > **Important Note**
 >
@@ -524,7 +524,7 @@ Document three security controls that should accompany a hybrid identity deploym
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -540,7 +540,7 @@ After completing this part, you will understand:
 
 ---
 
-# Identity Synchronization
+## Identity Synchronization
 
 Hybrid identity requires identity information to remain consistent across both environments.
 
@@ -564,7 +564,7 @@ Synchronization helps ensure users have a consistent identity across enterprise 
 
 ---
 
-# What Gets Synchronized?
+## What Gets Synchronized?
 
 Examples of synchronized identity information include:
 
@@ -578,7 +578,7 @@ The exact attributes synchronized depend on organizational requirements and conf
 
 ---
 
-# Synchronization Workflow
+## Synchronization Workflow
 
 ```
 User Created
@@ -608,7 +608,7 @@ The synchronization process helps maintain a unified identity experience.
 
 ---
 
-# Identity Consistency
+## Identity Consistency
 
 Without synchronization:
 
@@ -634,7 +634,7 @@ Identity consistency simplifies administration and improves the user experience.
 
 ---
 
-# Authentication Models
+## Authentication Models
 
 Organizations can choose different authentication models based on their operational and security requirements.
 
@@ -648,7 +648,7 @@ Each model offers different operational characteristics.
 
 ---
 
-# Password Hash Synchronization (Conceptual)
+## Password Hash Synchronization (Conceptual)
 
 ```
 Active Directory
@@ -668,7 +668,7 @@ Cloud Authentication
 
 In this model, password hash data is synchronized to support cloud authentication.
 
-### Benefits
+#### Benefits
 
 - Simpler deployment
 - Reduced infrastructure requirements
@@ -677,7 +677,7 @@ In this model, password hash data is synchronized to support cloud authenticatio
 
 ---
 
-# Pass-Through Authentication (Conceptual)
+## Pass-Through Authentication (Conceptual)
 
 ```
 User
@@ -701,7 +701,7 @@ Access Decision
 
 Authentication occurs against the on-premises environment while users access cloud resources.
 
-### Benefits
+#### Benefits
 
 - Password validation remains on-premises
 - Simplified user experience
@@ -709,7 +709,7 @@ Authentication occurs against the on-premises environment while users access clo
 
 ---
 
-# Federation (High-Level)
+## Federation (High-Level)
 
 ```
 User
@@ -741,7 +741,7 @@ Typical scenarios include:
 
 ---
 
-# Authentication Comparison
+## Authentication Comparison
 
 | Authentication Model | Authentication Location | Typical Use Case |
 |----------------------|-------------------------|------------------|
@@ -753,7 +753,7 @@ The appropriate model depends on business, operational, and security requirement
 
 ---
 
-# Single Sign-On (SSO)
+## Single Sign-On (SSO)
 
 Single Sign-On enables users to authenticate once and access multiple authorized applications without repeatedly entering credentials.
 
@@ -785,7 +785,7 @@ SSO improves both usability and security when combined with appropriate access c
 
 ---
 
-# Benefits of Single Sign-On
+## Benefits of Single Sign-On
 
 Organizations gain:
 
@@ -797,7 +797,7 @@ Organizations gain:
 
 ---
 
-# Identity Lifecycle Management
+## Identity Lifecycle Management
 
 Identity management continues throughout a user's employment.
 
@@ -829,9 +829,9 @@ Every stage should be governed by organizational policies.
 
 ---
 
-# Identity Lifecycle Example
+## Identity Lifecycle Example
 
-### New Employee
+#### New Employee
 
 ```
 HR Creates Employee Record
@@ -861,7 +861,7 @@ The employee receives appropriate access based on their role.
 
 ---
 
-### Employee Role Change
+#### Employee Role Change
 
 ```
 Department Changes
@@ -887,7 +887,7 @@ Access should always reflect current business responsibilities.
 
 ---
 
-### Employee Departure
+#### Employee Departure
 
 ```
 Employment Ends
@@ -913,7 +913,7 @@ Prompt deprovisioning helps reduce security risk.
 
 ---
 
-# Enterprise Identity Integration
+## Enterprise Identity Integration
 
 Hybrid identity connects multiple enterprise services.
 
@@ -945,7 +945,7 @@ This enables centralized identity management across the organization.
 
 ---
 
-# Administrative Responsibilities
+## Administrative Responsibilities
 
 | Team | Responsibility |
 |------|----------------|
@@ -959,9 +959,9 @@ Successful identity management requires collaboration across departments.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Company
+### Company
 
 ```
 Wingtip Healthcare
@@ -992,7 +992,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Synchronization and authentication are foundational elements of hybrid identity security.
 
@@ -1008,13 +1008,13 @@ These practices strengthen both operational efficiency and security.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design an identity synchronization and lifecycle process for a fictional enterprise.
 
-### Step 1
+#### Step 1
 
 Identify:
 
@@ -1025,13 +1025,13 @@ Identify:
 
 ---
 
-### Step 2
+#### Step 2
 
 Draw a synchronization workflow showing how user identities move between environments.
 
 ---
 
-### Step 3
+#### Step 3
 
 Document the identity lifecycle for:
 
@@ -1041,57 +1041,57 @@ Document the identity lifecycle for:
 
 ---
 
-### Step 4
+#### Step 4
 
 Select an authentication model (PHS, PTA, or Federation) based on business requirements and justify your choice.
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a governance checklist for reviewing synchronization health, user provisioning, and access removal.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is identity synchronization?
+#### Q1: What is identity synchronization?
 
 **Answer:** Identity synchronization keeps user identities and selected directory information consistent between on-premises Active Directory and Microsoft Entra ID.
 
 ---
 
-### Q2: What are the common hybrid authentication models?
+#### Q2: What are the common hybrid authentication models?
 
 **Answer:** Password Hash Synchronization (PHS), Pass-Through Authentication (PTA), and Federation.
 
 ---
 
-### Q3: What is Single Sign-On?
+#### Q3: What is Single Sign-On?
 
 **Answer:** Single Sign-On allows users to authenticate once and securely access multiple authorized applications without repeated sign-ins.
 
 ---
 
-### Q4: Why is identity lifecycle management important?
+#### Q4: Why is identity lifecycle management important?
 
 **Answer:** It ensures user access is provisioned, modified, and removed according to business requirements throughout the employee lifecycle.
 
 ---
 
-### Q5: Why should organizations promptly deprovision departing employees?
+#### Q5: Why should organizations promptly deprovision departing employees?
 
 **Answer:** Prompt deprovisioning reduces the risk of unauthorized access and supports organizational security policies.
 
 ---
 
-### Q6: Why should synchronization health be monitored?
+#### Q6: Why should synchronization health be monitored?
 
 **Answer:** Monitoring helps identify issues that could affect user authentication, access consistency, and operational reliability.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Monitor synchronization status regularly.
 - Implement a well-defined identity lifecycle process.
@@ -1104,7 +1104,7 @@ Create a governance checklist for reviewing synchronization health, user provisi
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Delaying user deprovisioning after employment ends.
 - Failing to monitor synchronization health.
@@ -1115,7 +1115,7 @@ Create a governance checklist for reviewing synchronization health, user provisi
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Identity synchronization enables consistent user identities across Active Directory and Microsoft Entra ID.
 - Organizations can choose between PHS, PTA, and Federation based on operational requirements.
@@ -1124,9 +1124,9 @@ Create a governance checklist for reviewing synchronization health, user provisi
 
 ---
 
-# 25-Microsoft-Entra-ID-Hybrid.md
+## 25-Microsoft-Entra-ID-Hybrid.md
 
-# Part 3 — Conditional Access, Multi-Factor Authentication, Device Identity, Identity Governance, Monitoring and Enterprise Security
+## Part 3 — Conditional Access, Multi-Factor Authentication, Device Identity, Identity Governance, Monitoring and Enterprise Security
 
 > **Important Note**
 >
@@ -1134,7 +1134,7 @@ Create a governance checklist for reviewing synchronization health, user provisi
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1150,7 +1150,7 @@ After completing this part, you will understand:
 
 ---
 
-# Identity as the New Security Perimeter
+## Identity as the New Security Perimeter
 
 Traditional security focused primarily on protecting networks.
 
@@ -1180,7 +1180,7 @@ Identity has become the primary control point for enterprise security.
 
 ---
 
-# Zero Trust Identity Model
+## Zero Trust Identity Model
 
 Zero Trust assumes that no user, device, or application is automatically trusted.
 
@@ -1212,7 +1212,7 @@ Verification occurs every time access is requested.
 
 ---
 
-# Conditional Access
+## Conditional Access
 
 Conditional Access evaluates multiple factors before making an access decision.
 
@@ -1229,7 +1229,7 @@ Access decisions are based on predefined organizational rules.
 
 ---
 
-# High-Level Conditional Access Flow
+## High-Level Conditional Access Flow
 
 ```
 User Requests Access
@@ -1267,7 +1267,7 @@ Conditional Access helps organizations balance usability with security.
 
 ---
 
-# Common Conditional Access Scenarios
+## Common Conditional Access Scenarios
 
 Organizations commonly require additional verification when:
 
@@ -1281,7 +1281,7 @@ Policies should align with business and risk requirements.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 MFA strengthens authentication by requiring more than one factor.
 
@@ -1297,7 +1297,7 @@ Combining factors significantly improves authentication security.
 
 ---
 
-# MFA Workflow
+## MFA Workflow
 
 ```
 User Sign-In
@@ -1323,7 +1323,7 @@ MFA helps reduce the risk of unauthorized access resulting from compromised pass
 
 ---
 
-# Device Identity
+## Device Identity
 
 Modern security also evaluates the device requesting access.
 
@@ -1347,7 +1347,7 @@ Organizations can define policies that consider device status during authenticat
 
 ---
 
-# Device States (Conceptual)
+## Device States (Conceptual)
 
 Examples include:
 
@@ -1360,7 +1360,7 @@ Device management policies vary according to organizational requirements.
 
 ---
 
-# Hybrid Device Integration
+## Hybrid Device Integration
 
 ```
 Windows Device
@@ -1386,7 +1386,7 @@ Hybrid device identity provides a consistent management experience across enviro
 
 ---
 
-# Identity Governance
+## Identity Governance
 
 Identity governance ensures users have appropriate access throughout their lifecycle.
 
@@ -1403,7 +1403,7 @@ Governance supports least privilege and regulatory compliance.
 
 ---
 
-# Identity Lifecycle Governance
+## Identity Lifecycle Governance
 
 ```
 Hire
@@ -1441,7 +1441,7 @@ Identity should evolve with the user's role in the organization.
 
 ---
 
-# Privileged Identity Protection
+## Privileged Identity Protection
 
 Administrative accounts require additional oversight.
 
@@ -1458,7 +1458,7 @@ Protecting privileged identities significantly reduces enterprise risk.
 
 ---
 
-# Identity Monitoring
+## Identity Monitoring
 
 Organizations should monitor:
 
@@ -1473,7 +1473,7 @@ Monitoring improves visibility and supports timely incident response.
 
 ---
 
-# Security Dashboard
+## Security Dashboard
 
 Example identity dashboard:
 
@@ -1509,7 +1509,7 @@ Dashboards help operational teams measure identity security posture.
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```
 User
@@ -1543,9 +1543,9 @@ Multiple security controls work together to protect enterprise resources.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Company
+### Company
 
 ```
 Adventure Works Insurance
@@ -1578,7 +1578,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Modern identity security extends beyond passwords.
 
@@ -1596,13 +1596,13 @@ Together, these controls create a layered defense that protects both users and e
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design a secure hybrid identity architecture using Microsoft Entra ID.
 
-### Step 1
+#### Step 1
 
 Identify:
 
@@ -1614,7 +1614,7 @@ Identify:
 
 ---
 
-### Step 2
+#### Step 2
 
 Design Conditional Access policies for:
 
@@ -1625,13 +1625,13 @@ Design Conditional Access policies for:
 
 ---
 
-### Step 3
+#### Step 3
 
 Create an MFA rollout plan for all employees.
 
 ---
 
-### Step 4
+#### Step 4
 
 Design an identity governance process covering:
 
@@ -1642,7 +1642,7 @@ Design an identity governance process covering:
 
 ---
 
-### Step 5
+#### Step 5
 
 Develop a monitoring dashboard with metrics for:
 
@@ -1654,45 +1654,45 @@ Develop a monitoring dashboard with metrics for:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is Conditional Access?
+#### Q1: What is Conditional Access?
 
 **Answer:** Conditional Access is a policy-based capability that evaluates factors such as user identity, device status, location, and risk before granting or denying access to resources.
 
 ---
 
-### Q2: Why is MFA important?
+#### Q2: Why is MFA important?
 
 **Answer:** MFA requires multiple authentication factors, significantly reducing the risk of unauthorized access if a password is compromised.
 
 ---
 
-### Q3: Why does device identity matter?
+#### Q3: Why does device identity matter?
 
 **Answer:** Device identity allows organizations to evaluate the security and compliance status of devices before permitting access to enterprise resources.
 
 ---
 
-### Q4: What is identity governance?
+#### Q4: What is identity governance?
 
 **Answer:** Identity governance is the process of managing user identities, permissions, access reviews, and lifecycle events to ensure appropriate access throughout a user's employment.
 
 ---
 
-### Q5: Why should privileged accounts receive additional protection?
+#### Q5: Why should privileged accounts receive additional protection?
 
 **Answer:** Privileged accounts have elevated permissions, making them high-value targets that require stronger authentication, governance, and monitoring.
 
 ---
 
-### Q6: How does Zero Trust improve identity security?
+#### Q6: How does Zero Trust improve identity security?
 
 **Answer:** Zero Trust continuously verifies users, devices, and policies before granting access instead of assuming trust based on network location or prior authentication.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Require MFA for all privileged accounts.
 - Implement Conditional Access based on organizational risk.
@@ -1705,7 +1705,7 @@ Develop a monitoring dashboard with metrics for:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Relying solely on passwords.
 - Applying identical policies to all users regardless of risk.
@@ -1716,7 +1716,7 @@ Develop a monitoring dashboard with metrics for:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Identity is the primary security perimeter in modern enterprises.
 - Conditional Access and MFA significantly strengthen authentication security.
@@ -1725,9 +1725,9 @@ Develop a monitoring dashboard with metrics for:
 
 ---
 
-# 25-Microsoft-Entra-ID-Hybrid.md
+## 25-Microsoft-Entra-ID-Hybrid.md
 
-# Part 4 — Enterprise Governance, Security Operations, Compliance, Best Practices and Chapter Summary
+## Part 4 — Enterprise Governance, Security Operations, Compliance, Best Practices and Chapter Summary
 
 > **Important Note**
 >
@@ -1735,7 +1735,7 @@ Develop a monitoring dashboard with metrics for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1751,7 +1751,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Deploying Microsoft Entra ID Hybrid Identity is not the final objective.
 
@@ -1768,7 +1768,7 @@ Identity should be managed as a continuous business process.
 
 ---
 
-# Enterprise Identity Governance Lifecycle
+## Enterprise Identity Governance Lifecycle
 
 ```
 Plan
@@ -1802,7 +1802,7 @@ This lifecycle ensures identity services remain secure, reliable, and aligned wi
 
 ---
 
-# Enterprise Identity Governance Framework
+## Enterprise Identity Governance Framework
 
 ```
 Identity Governance
@@ -1830,7 +1830,7 @@ Each component contributes to a comprehensive identity security program.
 
 ---
 
-# Identity Security Operations
+## Identity Security Operations
 
 Security operations should include:
 
@@ -1845,7 +1845,7 @@ Security Operations Centers (SOCs) should integrate identity monitoring into dai
 
 ---
 
-# Hybrid Identity Monitoring
+## Hybrid Identity Monitoring
 
 ```
 Users
@@ -1875,7 +1875,7 @@ Continuous monitoring provides visibility into authentication and identity-relat
 
 ---
 
-# Access Review Process
+## Access Review Process
 
 Regular access reviews help maintain least privilege.
 
@@ -1907,7 +1907,7 @@ Reviews should occur at intervals defined by organizational policy.
 
 ---
 
-# Identity Lifecycle Governance
+## Identity Lifecycle Governance
 
 A mature identity lifecycle process includes:
 
@@ -1924,7 +1924,7 @@ Accurate lifecycle management reduces operational and security risks.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Hybrid identity supports compliance by enabling:
 
@@ -1939,7 +1939,7 @@ These capabilities help organizations align with common regulatory and security 
 
 ---
 
-# Identity Security Metrics
+## Identity Security Metrics
 
 Example enterprise metrics:
 
@@ -1958,7 +1958,7 @@ Tracking these metrics helps measure the effectiveness of identity governance.
 
 ---
 
-# Enterprise Dashboard
+## Enterprise Dashboard
 
 Example dashboard:
 
@@ -1998,7 +1998,7 @@ Dashboards support operational awareness and executive reporting.
 
 ---
 
-# Administrative Responsibilities
+## Administrative Responsibilities
 
 | Team | Responsibility |
 |------|----------------|
@@ -2013,7 +2013,7 @@ Shared responsibility improves governance and accountability.
 
 ---
 
-# Enterprise Integration
+## Enterprise Integration
 
 Hybrid identity integrates with many enterprise technologies.
 
@@ -2049,7 +2049,7 @@ A unified architecture simplifies identity management across the organization.
 
 ---
 
-# Enterprise Maturity Model
+## Enterprise Maturity Model
 
 ```
 Level 1
@@ -2085,7 +2085,7 @@ Organizations progress through increasing levels of automation, governance, and 
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Collect Metrics
@@ -2115,9 +2115,9 @@ Identity security should evolve alongside business needs and emerging threats.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Company
+### Company
 
 ```
 Fabrikam Global Logistics
@@ -2150,7 +2150,7 @@ Results:
 
 ---
 
-# Hybrid Identity and Zero Trust
+## Hybrid Identity and Zero Trust
 
 Hybrid identity is a key component of a Zero Trust architecture.
 
@@ -2186,7 +2186,7 @@ Every access request is evaluated using organizational policies before access is
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Microsoft Entra ID enables organizations to move from traditional perimeter-based security to an identity-centric model.
 
@@ -2203,13 +2203,13 @@ organizations can build a resilient and scalable identity security program.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Create a long-term governance strategy for a hybrid identity environment.
 
-### Step 1
+#### Step 1
 
 Develop a governance framework covering:
 
@@ -2220,7 +2220,7 @@ Develop a governance framework covering:
 
 ---
 
-### Step 2
+#### Step 2
 
 Define quarterly review activities for:
 
@@ -2231,7 +2231,7 @@ Define quarterly review activities for:
 
 ---
 
-### Step 3
+#### Step 3
 
 Design a dashboard that tracks:
 
@@ -2243,57 +2243,57 @@ Design a dashboard that tracks:
 
 ---
 
-### Step 4
+#### Step 4
 
 Document a process for reviewing and improving identity policies based on operational metrics.
 
 ---
 
-### Step 5
+#### Step 5
 
 Prepare a one-year roadmap for enhancing identity governance and aligning it with Zero Trust objectives.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is hybrid identity governance important?
+#### Q1: Why is hybrid identity governance important?
 
 **Answer:** It ensures identities remain secure, synchronized, and appropriately managed across both on-premises and cloud environments.
 
 ---
 
-### Q2: What is the purpose of access reviews?
+#### Q2: What is the purpose of access reviews?
 
 **Answer:** Access reviews verify that users retain only the permissions required for their current business responsibilities.
 
 ---
 
-### Q3: Why should organizations monitor identity synchronization?
+#### Q3: Why should organizations monitor identity synchronization?
 
 **Answer:** Monitoring helps ensure consistent identities, reliable authentication, and timely detection of operational issues.
 
 ---
 
-### Q4: How does Microsoft Entra ID support Zero Trust?
+#### Q4: How does Microsoft Entra ID support Zero Trust?
 
 **Answer:** It evaluates identity, authentication, device status, and organizational policies before granting access to enterprise resources.
 
 ---
 
-### Q5: What metrics are useful for measuring identity security?
+#### Q5: What metrics are useful for measuring identity security?
 
 **Answer:** Examples include MFA adoption, synchronization health, Conditional Access coverage, privileged account reviews, access review completion, and device compliance.
 
 ---
 
-### Q6: What is the long-term goal of a hybrid identity program?
+#### Q6: What is the long-term goal of a hybrid identity program?
 
 **Answer:** To provide secure, centralized, and well-governed identity management that supports business operations while continuously improving security and compliance.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Implement Multi-Factor Authentication for all privileged identities.
 - Review access regularly using formal governance processes.
@@ -2306,7 +2306,7 @@ Prepare a one-year roadmap for enhancing identity governance and aligning it wit
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating hybrid identity deployment as a one-time project.
 - Neglecting access reviews.
@@ -2317,7 +2317,7 @@ Prepare a one-year roadmap for enhancing identity governance and aligning it wit
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Hybrid identity combines the strengths of Active Directory and Microsoft Entra ID.
 - Governance, monitoring, and lifecycle management are essential for secure identity operations.
@@ -2326,7 +2326,7 @@ Prepare a one-year roadmap for enhancing identity governance and aligning it wit
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

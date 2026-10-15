@@ -1,10 +1,10 @@
 # 01-Windows-Fundamentals.md
 
-# Part 1 — Introduction to Windows Operating System
+## Part 1 — Introduction to Windows Operating System
 
 ---
 
-# What is Microsoft Windows?
+## What is Microsoft Windows?
 
 Microsoft Windows is a **Graphical User Interface (GUI)-based Operating System** developed by Microsoft that manages computer hardware, software, memory, storage, processes, users, networking, and security while providing an easy-to-use interface for end users and enterprise environments.
 
@@ -25,7 +25,7 @@ Today, Windows is one of the most widely deployed operating systems in enterpris
 
 ---
 
-# Objectives of this Chapter
+## Objectives of this Chapter
 
 By the end of this chapter, you will understand:
 
@@ -45,7 +45,7 @@ By the end of this chapter, you will understand:
 
 ---
 
-# What is an Operating System?
+## What is an Operating System?
 
 An Operating System (OS) is system software that acts as an intermediary between hardware and applications.
 
@@ -69,7 +69,7 @@ Without an operating system:
 
 ---
 
-# Responsibilities of Windows
+## Responsibilities of Windows
 
 Windows performs many essential functions:
 
@@ -86,7 +86,7 @@ Windows performs many essential functions:
 
 ---
 
-# Evolution of Microsoft Windows
+## Evolution of Microsoft Windows
 
 | Version | Release Year | Major Highlights |
 |----------|--------------|------------------|
@@ -103,7 +103,7 @@ Windows performs many essential functions:
 
 ---
 
-# Windows Family
+## Windows Family
 
 ```text
 Microsoft Windows
@@ -127,7 +127,7 @@ Microsoft Windows
 
 ---
 
-# Desktop vs Server Windows
+## Desktop vs Server Windows
 
 | Desktop Windows | Windows Server |
 |-----------------|----------------|
@@ -140,9 +140,9 @@ Microsoft Windows
 
 ---
 
-# Common Windows Editions
+## Common Windows Editions
 
-## Windows Home
+### Windows Home
 
 Designed for:
 
@@ -159,7 +159,7 @@ Features:
 
 ---
 
-## Windows Pro
+### Windows Pro
 
 Adds enterprise-oriented capabilities:
 
@@ -171,7 +171,7 @@ Adds enterprise-oriented capabilities:
 
 ---
 
-## Windows Enterprise
+### Windows Enterprise
 
 Enterprise-grade edition offering:
 
@@ -184,13 +184,13 @@ Enterprise-grade edition offering:
 
 ---
 
-## Windows Education
+### Windows Education
 
 Optimized for educational institutions with features similar to Enterprise, depending on licensing.
 
 ---
 
-# Why Windows Dominates Enterprises
+## Why Windows Dominates Enterprises
 
 Organizations commonly choose Windows because of:
 
@@ -205,7 +205,7 @@ Organizations commonly choose Windows because of:
 
 ---
 
-# Characteristics of Windows
+## Characteristics of Windows
 
 - Graphical User Interface (GUI)
 - Multi-user support
@@ -220,7 +220,7 @@ Organizations commonly choose Windows because of:
 
 ---
 
-# GUI Components
+## GUI Components
 
 Typical desktop interface:
 
@@ -239,7 +239,7 @@ Typical desktop interface:
 
 ---
 
-# Major Windows Components
+## Major Windows Components
 
 | Component | Purpose |
 |-----------|---------|
@@ -255,7 +255,7 @@ Typical desktop interface:
 
 ---
 
-# Advantages of Windows
+## Advantages of Windows
 
 - User-friendly interface
 - Extensive hardware support
@@ -268,7 +268,7 @@ Typical desktop interface:
 
 ---
 
-# Limitations
+## Limitations
 
 - Commercial licensing costs
 - Closed-source development
@@ -278,7 +278,7 @@ Typical desktop interface:
 
 ---
 
-# Windows in Enterprise Environments
+## Windows in Enterprise Environments
 
 Common enterprise roles include:
 
@@ -294,7 +294,7 @@ Common enterprise roles include:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Windows is a primary target for attackers because of its widespread enterprise deployment.
 
@@ -314,7 +314,7 @@ Understanding Windows internals is essential for blue teams, red teams, digital 
 
 ---
 
-# Business Impact
+## Business Impact
 
 A well-managed Windows environment helps organizations:
 
@@ -328,7 +328,7 @@ A well-managed Windows environment helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use supported Windows versions.
 - Apply security updates regularly.
@@ -341,15 +341,15 @@ A well-managed Windows environment helps organizations:
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Lab 1 — Identify Your Windows Edition
+### Lab 1 — Identify Your Windows Edition
 
-### Objective
+#### Objective
 
 Determine the edition and version of Windows installed.
 
-### Method 1
+#### Method 1
 
 Press:
 
@@ -369,7 +369,7 @@ Record:
 - Version
 - OS Build
 
-### Method 2
+#### Method 2
 
 Open:
 
@@ -389,7 +389,7 @@ Record:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows is the most widely deployed desktop operating system in enterprise environments.
 - It provides hardware abstraction, resource management, networking, and security.
@@ -398,7 +398,7 @@ Record:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Microsoft Windows?
 2. What are the primary responsibilities of an operating system?
@@ -413,7 +413,7 @@ Record:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Documentation
@@ -423,13 +423,13 @@ Record:
 
 ---
 
-# 01-Windows-Fundamentals.md
+## 01-Windows-Fundamentals.md
 
-# Part 2 — Windows Editions, Licensing, Desktop Interface, User Profiles, File Explorer, and Windows Components
+## Part 2 — Windows Editions, Licensing, Desktop Interface, User Profiles, File Explorer, and Windows Components
 
 ---
 
-# Introduction
+## Introduction
 
 In Part 1, we learned what Windows is, its history, enterprise importance, and basic architecture.
 
@@ -447,7 +447,7 @@ In this part, we will explore:
 
 ---
 
-# Windows Editions in Detail
+## Windows Editions in Detail
 
 Microsoft provides different editions of Windows to meet the needs of home users, professionals, educational institutions, and enterprises.
 
@@ -465,11 +465,11 @@ Windows Editions
 
 ---
 
-# Windows Home
+## Windows Home
 
 Designed primarily for personal computing.
 
-### Suitable For
+#### Suitable For
 
 - Home users
 - Students
@@ -477,7 +477,7 @@ Designed primarily for personal computing.
 - Entertainment
 - Gaming
 
-### Features
+#### Features
 
 - Microsoft Defender Antivirus
 - Microsoft Store
@@ -486,7 +486,7 @@ Designed primarily for personal computing.
 - Windows Hello
 - Basic virtualization support (client dependent)
 
-### Limitations
+#### Limitations
 
 - Cannot join Active Directory domains
 - Limited centralized management
@@ -495,7 +495,7 @@ Designed primarily for personal computing.
 
 ---
 
-# Windows Pro
+## Windows Pro
 
 Built for professionals and small businesses.
 
@@ -518,7 +518,7 @@ Common environments:
 
 ---
 
-# Windows Enterprise
+## Windows Enterprise
 
 Enterprise edition contains the most advanced security and management capabilities.
 
@@ -543,7 +543,7 @@ Used by:
 
 ---
 
-# Windows Education
+## Windows Education
 
 Designed for:
 
@@ -555,7 +555,7 @@ Includes many Enterprise capabilities depending on licensing agreements.
 
 ---
 
-# Pro for Workstations
+## Pro for Workstations
 
 Optimized for high-performance hardware.
 
@@ -577,7 +577,7 @@ Commonly used for:
 
 ---
 
-# Windows IoT
+## Windows IoT
 
 Designed for embedded systems.
 
@@ -592,7 +592,7 @@ Examples:
 
 ---
 
-# Windows Licensing
+## Windows Licensing
 
 Organizations activate Windows using different licensing models.
 
@@ -606,7 +606,7 @@ Organizations activate Windows using different licensing models.
 
 ---
 
-# Windows Activation
+## Windows Activation
 
 Check activation status:
 
@@ -630,7 +630,7 @@ slmgr /dlv
 
 ---
 
-# Windows Desktop
+## Windows Desktop
 
 The Windows desktop is the primary workspace.
 
@@ -651,7 +651,7 @@ The Windows desktop is the primary workspace.
 
 ---
 
-# Desktop Components
+## Desktop Components
 
 | Component | Purpose |
 |-----------|---------|
@@ -666,7 +666,7 @@ The Windows desktop is the primary workspace.
 
 ---
 
-# Start Menu
+## Start Menu
 
 The Start Menu provides access to:
 
@@ -680,7 +680,7 @@ The Start Menu provides access to:
 
 ---
 
-# Taskbar
+## Taskbar
 
 The Taskbar provides quick access to:
 
@@ -696,7 +696,7 @@ The Taskbar provides quick access to:
 
 ---
 
-# Notification Area (System Tray)
+## Notification Area (System Tray)
 
 Located on the right side of the taskbar.
 
@@ -714,7 +714,7 @@ Common icons include:
 
 ---
 
-# Windows Search
+## Windows Search
 
 Search can locate:
 
@@ -733,7 +733,7 @@ Windows + S
 
 ---
 
-# User Profiles
+## User Profiles
 
 Each user has an individual profile that stores personal settings and data.
 
@@ -755,7 +755,7 @@ C:\Users\Alice
 
 ---
 
-# User Profile Structure
+## User Profile Structure
 
 ```text
 C:\Users\John
@@ -774,7 +774,7 @@ C:\Users\John
 
 ---
 
-# AppData Folder
+## AppData Folder
 
 Stores application-specific configuration.
 
@@ -794,7 +794,7 @@ AppData
 
 ---
 
-# File Explorer
+## File Explorer
 
 File Explorer is Windows' primary file management application.
 
@@ -818,7 +818,7 @@ Main capabilities:
 
 ---
 
-# File Explorer Layout
+## File Explorer Layout
 
 ```text
 +---------------------------------------------+
@@ -834,7 +834,7 @@ Main capabilities:
 
 ---
 
-# Common Locations
+## Common Locations
 
 | Folder | Purpose |
 |----------|----------|
@@ -849,7 +849,7 @@ Main capabilities:
 
 ---
 
-# This PC
+## This PC
 
 Displays:
 
@@ -861,7 +861,7 @@ Displays:
 
 ---
 
-# Recycle Bin
+## Recycle Bin
 
 Deleted files are typically moved to the Recycle Bin before permanent deletion.
 
@@ -880,7 +880,7 @@ Shift + Delete
 
 ---
 
-# Settings Application
+## Settings Application
 
 Modern configuration interface.
 
@@ -906,7 +906,7 @@ Categories include:
 
 ---
 
-# Control Panel
+## Control Panel
 
 Legacy administration interface.
 
@@ -924,7 +924,7 @@ Examples:
 
 ---
 
-# Settings vs Control Panel
+## Settings vs Control Panel
 
 | Settings | Control Panel |
 |-----------|---------------|
@@ -935,7 +935,7 @@ Examples:
 
 ---
 
-# Built-in Windows Applications
+## Built-in Windows Applications
 
 Examples include:
 
@@ -951,7 +951,7 @@ Examples include:
 
 ---
 
-# Enterprise Perspective
+## Enterprise Perspective
 
 Large organizations often standardize:
 
@@ -966,7 +966,7 @@ Large organizations often standardize:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security professionals frequently inspect:
 
@@ -983,7 +983,7 @@ These locations often contain valuable evidence during incident response and dig
 
 ---
 
-# Business Impact
+## Business Impact
 
 A standardized Windows desktop environment:
 
@@ -995,7 +995,7 @@ A standardized Windows desktop environment:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use standard user accounts for daily work.
 - Redirect or back up important user data where appropriate.
@@ -1006,9 +1006,9 @@ A standardized Windows desktop environment:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Explore Your User Profile
+### Lab 1 — Explore Your User Profile
 
 1. Press:
 
@@ -1032,7 +1032,7 @@ C:\Users\<YourUserName>
 
 ---
 
-## Lab 2 — Compare Settings and Control Panel
+### Lab 2 — Compare Settings and Control Panel
 
 1. Open:
 
@@ -1052,7 +1052,7 @@ Control Panel
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows provides multiple editions for different audiences.
 - User profiles isolate personal settings and files.
@@ -1062,7 +1062,7 @@ Control Panel
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are the major Windows editions?
 2. Differentiate Windows Pro and Enterprise.
@@ -1077,7 +1077,7 @@ Control Panel
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Documentation
@@ -1086,13 +1086,13 @@ Control Panel
 
 ---
 
-# 01-Windows-Fundamentals.md
+## 01-Windows-Fundamentals.md
 
-# Part 3 — Windows Architecture Overview, Kernel, User Mode vs Kernel Mode, System Components, Windows Processes, and Memory Fundamentals
+## Part 3 — Windows Architecture Overview, Kernel, User Mode vs Kernel Mode, System Components, Windows Processes, and Memory Fundamentals
 
 ---
 
-# Introduction
+## Introduction
 
 Understanding Windows architecture is essential for:
 
@@ -1111,7 +1111,7 @@ Windows is designed using a layered architecture that separates user application
 
 ---
 
-# Windows Architecture Overview
+## Windows Architecture Overview
 
 A simplified view of the Windows architecture:
 
@@ -1140,7 +1140,7 @@ A simplified view of the Windows architecture:
 
 ---
 
-# Why Windows Uses Layers
+## Why Windows Uses Layers
 
 Each layer has a specific responsibility.
 
@@ -1156,7 +1156,7 @@ Benefits include:
 
 ---
 
-# User Mode
+## User Mode
 
 User Mode is where normal applications execute.
 
@@ -1179,7 +1179,7 @@ Characteristics:
 
 ---
 
-# Examples of User Mode Processes
+## Examples of User Mode Processes
 
 | Process | Purpose |
 |----------|---------|
@@ -1192,7 +1192,7 @@ Characteristics:
 
 ---
 
-# Kernel Mode
+## Kernel Mode
 
 Kernel Mode is the most privileged execution mode in Windows.
 
@@ -1211,7 +1211,7 @@ Only trusted operating system components and drivers execute here.
 
 ---
 
-# User Mode vs Kernel Mode
+## User Mode vs Kernel Mode
 
 | User Mode | Kernel Mode |
 |------------|-------------|
@@ -1223,7 +1223,7 @@ Only trusted operating system components and drivers execute here.
 
 ---
 
-# Why This Separation Matters
+## Why This Separation Matters
 
 Without privilege separation:
 
@@ -1261,7 +1261,7 @@ This design significantly improves operating system stability.
 
 ---
 
-# Hardware Abstraction Layer (HAL)
+## Hardware Abstraction Layer (HAL)
 
 The Hardware Abstraction Layer (HAL) provides a consistent interface between Windows and physical hardware.
 
@@ -1285,7 +1285,7 @@ The HAL hides hardware-specific implementation details, allowing Windows to run 
 
 ---
 
-# Benefits of HAL
+## Benefits of HAL
 
 - Hardware independence
 - Simplified driver development
@@ -1295,7 +1295,7 @@ The HAL hides hardware-specific implementation details, allowing Windows to run 
 
 ---
 
-# Windows Executive
+## Windows Executive
 
 The Windows Executive provides core operating system services.
 
@@ -1317,7 +1317,7 @@ Windows Executive
 
 ---
 
-# Object Manager
+## Object Manager
 
 The Object Manager maintains operating system objects.
 
@@ -1339,7 +1339,7 @@ Benefits:
 
 ---
 
-# Memory Manager
+## Memory Manager
 
 Responsibilities:
 
@@ -1358,7 +1358,7 @@ Benefits:
 
 ---
 
-# I/O Manager
+## I/O Manager
 
 Handles communication between:
 
@@ -1388,7 +1388,7 @@ Examples:
 
 ---
 
-# Process Manager
+## Process Manager
 
 Responsible for:
 
@@ -1400,7 +1400,7 @@ Responsible for:
 
 ---
 
-# Security Reference Monitor (SRM)
+## Security Reference Monitor (SRM)
 
 One of the most important security components.
 
@@ -1416,7 +1416,7 @@ Whenever a process attempts to access a protected resource, the SRM evaluates wh
 
 ---
 
-# Windows Processes
+## Windows Processes
 
 A process is a running instance of a program.
 
@@ -1453,7 +1453,7 @@ Each process has:
 
 ---
 
-# Threads
+## Threads
 
 A thread is the smallest unit of execution within a process.
 
@@ -1474,7 +1474,7 @@ Advantages of multiple threads:
 
 ---
 
-# Process vs Thread
+## Process vs Thread
 
 | Process | Thread |
 |----------|---------|
@@ -1485,7 +1485,7 @@ Advantages of multiple threads:
 
 ---
 
-# Virtual Memory
+## Virtual Memory
 
 Windows uses virtual memory to allow processes to operate as though they have large, continuous memory spaces.
 
@@ -1514,7 +1514,7 @@ Benefits:
 
 ---
 
-# Paging
+## Paging
 
 When RAM becomes limited:
 
@@ -1538,7 +1538,7 @@ This mechanism allows Windows to continue running applications even when physica
 
 ---
 
-# System Calls
+## System Calls
 
 Applications cannot directly manipulate kernel resources.
 
@@ -1568,7 +1568,7 @@ This controlled interface enhances security and stability.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An employee launches Microsoft Excel.
 
@@ -1612,7 +1612,7 @@ Multiple Windows subsystems collaborate to complete this seemingly simple action
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Understanding Windows architecture is critical because attackers often target:
 
@@ -1638,7 +1638,7 @@ A strong understanding of architecture helps distinguish legitimate system behav
 
 ---
 
-# Business Impact
+## Business Impact
 
 A well-designed architecture provides:
 
@@ -1653,7 +1653,7 @@ These characteristics reduce downtime and support mission-critical business oper
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Keep device drivers updated from trusted sources.
 - Avoid installing unnecessary kernel-mode software.
@@ -1664,9 +1664,9 @@ These characteristics reduce downtime and support mission-critical business oper
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Explore Running Processes
+### Lab 1 — Explore Running Processes
 
 1. Press:
 
@@ -1687,7 +1687,7 @@ Ctrl + Shift + Esc
 
 ---
 
-## Lab 2 — View System Information
+### Lab 2 — View System Information
 
 1. Press:
 
@@ -1711,7 +1711,7 @@ msinfo32
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows uses a layered architecture to separate applications from the operating system core.
 - User Mode and Kernel Mode provide stability and security through privilege separation.
@@ -1721,7 +1721,7 @@ msinfo32
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Windows architecture?
 2. Explain the difference between User Mode and Kernel Mode.
@@ -1736,7 +1736,7 @@ msinfo32
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -1745,13 +1745,13 @@ msinfo32
 
 ---
 
-# 01-Windows-Fundamentals.md
+## 01-Windows-Fundamentals.md
 
-# Part 4 — Windows Features, Enterprise Ecosystem, Windows vs Linux, Career Paths, Summary, Final Labs, and Chapter Review
+## Part 4 — Windows Features, Enterprise Ecosystem, Windows vs Linux, Career Paths, Summary, Final Labs, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 In this final part, we will bring together everything learned throughout the Windows Fundamentals chapter and explore how Windows fits into modern enterprise IT and cybersecurity environments.
 
@@ -1769,7 +1769,7 @@ Topics covered:
 
 ---
 
-# Core Features of Windows
+## Core Features of Windows
 
 Windows provides a rich set of features for both personal and enterprise environments.
 
@@ -1788,7 +1788,7 @@ Windows provides a rich set of features for both personal and enterprise environ
 
 ---
 
-# Windows Enterprise Ecosystem
+## Windows Enterprise Ecosystem
 
 Windows integrates with many Microsoft enterprise technologies.
 
@@ -1818,7 +1818,7 @@ Windows integrates with many Microsoft enterprise technologies.
 
 ---
 
-# Windows Administration Tools
+## Windows Administration Tools
 
 Common administrative tools include:
 
@@ -1837,7 +1837,7 @@ Common administrative tools include:
 
 ---
 
-# Windows Security Features
+## Windows Security Features
 
 Modern Windows includes multiple built-in security technologies.
 
@@ -1855,7 +1855,7 @@ Modern Windows includes multiple built-in security technologies.
 
 ---
 
-# Why Enterprises Prefer Windows
+## Why Enterprises Prefer Windows
 
 Large organizations choose Windows because of:
 
@@ -1870,7 +1870,7 @@ Large organizations choose Windows because of:
 
 ---
 
-# Windows in Cloud Computing
+## Windows in Cloud Computing
 
 Windows is widely used in cloud platforms.
 
@@ -1891,7 +1891,7 @@ Popular cloud providers:
 
 ---
 
-# Windows in Cybersecurity
+## Windows in Cybersecurity
 
 Windows is one of the most targeted operating systems due to its widespread use.
 
@@ -1926,7 +1926,7 @@ Typical activities include:
 
 ---
 
-# Windows vs Linux
+## Windows vs Linux
 
 | Feature | Windows | Linux |
 |----------|----------|--------|
@@ -1941,7 +1941,7 @@ Typical activities include:
 
 ---
 
-# Windows Career Paths
+## Windows Career Paths
 
 ```text
 Windows Fundamentals
@@ -2003,7 +2003,7 @@ Solutions Architecture
 
 ---
 
-# Recommended Skills After This Chapter
+## Recommended Skills After This Chapter
 
 Continue learning:
 
@@ -2020,9 +2020,9 @@ Continue learning:
 
 ---
 
-# Enterprise Scenario
+## Enterprise Scenario
 
-## New Employee Onboarding
+### New Employee Onboarding
 
 A new employee joins an organization.
 
@@ -2072,7 +2072,7 @@ This demonstrates how Windows integrates with enterprise identity, security, and
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective Windows management helps organizations:
 
@@ -2086,7 +2086,7 @@ Effective Windows management helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Standardize Windows versions across the organization.
 - Enable automatic security updates.
@@ -2099,15 +2099,15 @@ Effective Windows management helps organizations:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Explore Administrative Tools
+### Lab 1 — Explore Administrative Tools
 
-### Objective
+#### Objective
 
 Locate commonly used Windows administration utilities.
 
-### Steps
+#### Steps
 
 Open the Start Menu and launch:
 
@@ -2123,7 +2123,7 @@ Record the purpose of each tool.
 
 ---
 
-## Lab 2 — Compare Windows Editions
+### Lab 2 — Compare Windows Editions
 
 Research the differences between:
 
@@ -2136,7 +2136,7 @@ Identify which features are available only in Professional or Enterprise edition
 
 ---
 
-## Lab 3 — Explore Windows Security
+### Lab 3 — Explore Windows Security
 
 Navigate to:
 
@@ -2162,7 +2162,7 @@ Review:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 You have learned:
 
@@ -2187,7 +2187,7 @@ These concepts form the foundation for every advanced Windows administration, cl
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows is the dominant desktop operating system in enterprise environments.
 - Its layered architecture improves stability, security, and hardware compatibility.
@@ -2197,7 +2197,7 @@ These concepts form the foundation for every advanced Windows administration, cl
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are the primary responsibilities of Windows?
 2. Differentiate Windows Home, Pro, and Enterprise editions.
@@ -2212,7 +2212,7 @@ These concepts form the foundation for every advanced Windows administration, cl
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Documentation
@@ -2224,7 +2224,7 @@ These concepts form the foundation for every advanced Windows administration, cl
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 1 – Windows Fundamentals**.
 

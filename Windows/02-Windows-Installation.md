@@ -1,10 +1,10 @@
 # 02-Windows-Installation.md
 
-# Part 1 — Windows Installation Fundamentals, Hardware Requirements, BIOS/UEFI, GPT/MBR, and Installation Methods
+## Part 1 — Windows Installation Fundamentals, Hardware Requirements, BIOS/UEFI, GPT/MBR, and Installation Methods
 
 ---
 
-# Introduction
+## Introduction
 
 Installing Windows correctly is the foundation of a stable, secure, and high-performing system. Whether deploying a personal laptop, an enterprise workstation, or a Windows Server, understanding the installation process is essential for IT administrators, cloud engineers, and cybersecurity professionals.
 
@@ -12,7 +12,7 @@ This chapter covers Windows installation from beginner to enterprise level.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this chapter, you will understand:
 
@@ -31,7 +31,7 @@ By the end of this chapter, you will understand:
 
 ---
 
-# Windows Installation Overview
+## Windows Installation Overview
 
 A typical Windows installation follows this sequence:
 
@@ -81,7 +81,7 @@ Desktop Ready
 
 ---
 
-# Why Proper Installation Matters
+## Why Proper Installation Matters
 
 A properly installed Windows system provides:
 
@@ -103,7 +103,7 @@ Improper installations can lead to:
 
 ---
 
-# Windows Hardware Requirements
+## Windows Hardware Requirements
 
 Hardware requirements vary by Windows version. The table below reflects modern Windows 11 requirements and serves as a reference for current enterprise deployments.
 
@@ -122,7 +122,7 @@ Hardware requirements vary by Windows version. The table below reflects modern W
 
 ---
 
-# Recommended Enterprise Hardware
+## Recommended Enterprise Hardware
 
 | Component | Recommended |
 |-----------|-------------|
@@ -135,7 +135,7 @@ Hardware requirements vary by Windows version. The table below reflects modern W
 
 ---
 
-# Firmware Basics
+## Firmware Basics
 
 Before Windows starts, the system firmware initializes hardware and prepares the computer to boot.
 
@@ -150,7 +150,7 @@ Firmware
 
 ---
 
-# BIOS (Basic Input/Output System)
+## BIOS (Basic Input/Output System)
 
 BIOS is the traditional firmware used by older computers.
 
@@ -170,7 +170,7 @@ Limitations:
 
 ---
 
-# UEFI (Unified Extensible Firmware Interface)
+## UEFI (Unified Extensible Firmware Interface)
 
 UEFI is the modern firmware standard.
 
@@ -192,7 +192,7 @@ Advantages:
 
 ---
 
-# BIOS vs UEFI
+## BIOS vs UEFI
 
 | BIOS | UEFI |
 |------|------|
@@ -205,7 +205,7 @@ Advantages:
 
 ---
 
-# Legacy Boot vs UEFI Boot
+## Legacy Boot vs UEFI Boot
 
 ```text
 Legacy Boot
@@ -253,7 +253,7 @@ Windows
 
 ---
 
-# MBR (Master Boot Record)
+## MBR (Master Boot Record)
 
 MBR is the traditional partitioning scheme.
 
@@ -274,7 +274,7 @@ Limitations:
 
 ---
 
-# GPT (GUID Partition Table)
+## GPT (GUID Partition Table)
 
 GPT is the modern partitioning standard.
 
@@ -293,7 +293,7 @@ Advantages:
 
 ---
 
-# MBR vs GPT
+## MBR vs GPT
 
 | MBR | GPT |
 |------|------|
@@ -305,7 +305,7 @@ Advantages:
 
 ---
 
-# Secure Boot
+## Secure Boot
 
 Secure Boot is a UEFI security feature.
 
@@ -341,7 +341,7 @@ Benefits:
 
 ---
 
-# TPM (Trusted Platform Module)
+## TPM (Trusted Platform Module)
 
 TPM is a hardware security component.
 
@@ -357,7 +357,7 @@ Enterprise systems commonly enable TPM 2.0 by default.
 
 ---
 
-# Installation Methods
+## Installation Methods
 
 Windows can be installed using multiple methods.
 
@@ -373,7 +373,7 @@ Windows can be installed using multiple methods.
 
 ---
 
-# USB Installation
+## USB Installation
 
 Most common approach.
 
@@ -392,7 +392,7 @@ Advantages:
 
 ---
 
-# ISO Image
+## ISO Image
 
 An ISO file is a complete image of installation media.
 
@@ -416,7 +416,7 @@ ISO images are commonly used to:
 
 ---
 
-# Bootable USB
+## Bootable USB
 
 A bootable USB contains:
 
@@ -432,7 +432,7 @@ Benefits:
 
 ---
 
-# Enterprise Deployment Overview
+## Enterprise Deployment Overview
 
 Large organizations rarely install Windows manually on each device.
 
@@ -474,7 +474,7 @@ Automation reduces deployment time and ensures consistent configurations.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 During installation, security decisions have long-term effects.
 
@@ -490,7 +490,7 @@ Recommendations:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A standardized installation process helps organizations:
 
@@ -503,7 +503,7 @@ A standardized installation process helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Standardize on UEFI and GPT for new deployments.
 - Maintain approved installation images.
@@ -515,11 +515,11 @@ A standardized installation process helps organizations:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Check Firmware Mode
+### Lab 1 — Check Firmware Mode
 
-### Objective
+#### Objective
 
 Determine whether your system is using BIOS or UEFI.
 
@@ -550,7 +550,7 @@ Record whether it displays:
 
 ---
 
-## Lab 2 — Check Disk Partition Style
+### Lab 2 — Check Disk Partition Style
 
 1. Open:
 
@@ -577,7 +577,7 @@ Volumes
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - UEFI and GPT are the modern standards for Windows installations.
 - Secure Boot and TPM significantly improve startup security.
@@ -587,7 +587,7 @@ Volumes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are the minimum hardware requirements for modern Windows installations?
 2. Explain the difference between BIOS and UEFI.
@@ -602,7 +602,7 @@ Volumes
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Windows Installation Documentation
@@ -612,13 +612,13 @@ Volumes
 
 ---
 
-# 02-Windows-Installation.md
+## 02-Windows-Installation.md
 
-# Part 2 — Creating Installation Media, Boot Process, Windows Setup, Disk Partitioning, and Installation Walkthrough
+## Part 2 — Creating Installation Media, Boot Process, Windows Setup, Disk Partitioning, and Installation Walkthrough
 
 ---
 
-# Introduction
+## Introduction
 
 After understanding the hardware requirements and firmware concepts, the next step is preparing installation media and performing a Windows installation.
 
@@ -634,7 +634,7 @@ This section covers:
 
 ---
 
-# Windows Installation Workflow
+## Windows Installation Workflow
 
 ```text
 Download Windows
@@ -678,7 +678,7 @@ Desktop Ready
 
 ---
 
-# Obtaining Windows Installation Media
+## Obtaining Windows Installation Media
 
 Microsoft provides official installation media through:
 
@@ -691,7 +691,7 @@ Always use official Microsoft sources for installation media.
 
 ---
 
-# Creating a Bootable USB
+## Creating a Bootable USB
 
 Requirements:
 
@@ -704,7 +704,7 @@ Requirements:
 
 ---
 
-# Media Creation Tool
+## Media Creation Tool
 
 The Media Creation Tool automates:
 
@@ -722,7 +722,7 @@ Benefits:
 
 ---
 
-# Alternative USB Creation Tools
+## Alternative USB Creation Tools
 
 Common tools include:
 
@@ -735,7 +735,7 @@ Common tools include:
 
 ---
 
-# Choosing the Correct Architecture
+## Choosing the Correct Architecture
 
 Modern Windows installations are generally:
 
@@ -753,7 +753,7 @@ Enterprise deployments should standardize on 64-bit unless a legacy application 
 
 ---
 
-# Configuring Boot Order
+## Configuring Boot Order
 
 The system firmware determines which device boots first.
 
@@ -779,7 +779,7 @@ Temporary boot menus are often available through vendor-specific keys during sta
 
 ---
 
-# Windows Setup Environment
+## Windows Setup Environment
 
 After booting from the installation media:
 
@@ -825,7 +825,7 @@ Out-of-Box Experience (OOBE)
 
 ---
 
-# Language Selection
+## Language Selection
 
 Choose:
 
@@ -837,7 +837,7 @@ These settings can typically be modified after installation if needed.
 
 ---
 
-# Install Now
+## Install Now
 
 Selecting **Install Now** starts the installation process.
 
@@ -850,7 +850,7 @@ Setup performs:
 
 ---
 
-# Product Key
+## Product Key
 
 Windows Setup may prompt for:
 
@@ -867,7 +867,7 @@ Enterprise environments often activate Windows automatically through centralized
 
 ---
 
-# Windows Edition Selection
+## Windows Edition Selection
 
 Choose the edition matching your license.
 
@@ -887,19 +887,19 @@ Installing the incorrect edition may prevent successful activation.
 
 ---
 
-# License Agreement
+## License Agreement
 
 Read and accept the Microsoft Software License Terms before proceeding.
 
 ---
 
-# Installation Types
+## Installation Types
 
 Windows offers two primary installation types.
 
 ---
 
-## Upgrade Installation
+### Upgrade Installation
 
 ```text
 Existing Windows
@@ -934,7 +934,7 @@ Limitations:
 
 ---
 
-## Custom Installation (Clean Install)
+### Custom Installation (Clean Install)
 
 ```text
 Empty Disk
@@ -961,7 +961,7 @@ Advantages:
 
 ---
 
-# Upgrade vs Clean Installation
+## Upgrade vs Clean Installation
 
 | Upgrade | Clean Install |
 |----------|---------------|
@@ -972,7 +972,7 @@ Advantages:
 
 ---
 
-# Disk Selection
+## Disk Selection
 
 Windows displays available storage devices.
 
@@ -994,7 +994,7 @@ Select the appropriate destination for installation.
 
 ---
 
-# Partition Concepts
+## Partition Concepts
 
 A partition divides physical storage into logical sections.
 
@@ -1020,7 +1020,7 @@ Modern Windows installations automatically create required partitions on unalloc
 
 ---
 
-# Typical GPT Layout
+## Typical GPT Layout
 
 ```text
 Disk
@@ -1035,7 +1035,7 @@ Each partition serves a specific purpose during boot, operation, and recovery.
 
 ---
 
-# Formatting Partitions
+## Formatting Partitions
 
 During a clean installation, Setup allows formatting of existing partitions.
 
@@ -1049,7 +1049,7 @@ Formatting:
 
 ---
 
-# File Copy Phase
+## File Copy Phase
 
 Windows Setup copies:
 
@@ -1079,7 +1079,7 @@ Finalize Installation
 
 ---
 
-# Automatic Restart
+## Automatic Restart
 
 After installation files are copied:
 
@@ -1099,7 +1099,7 @@ Avoid booting from the USB again unless reinstalling.
 
 ---
 
-# Out-of-Box Experience (OOBE)
+## Out-of-Box Experience (OOBE)
 
 OOBE completes the initial configuration.
 
@@ -1114,7 +1114,7 @@ Typical tasks:
 
 ---
 
-# Creating User Accounts
+## Creating User Accounts
 
 Options may include:
 
@@ -1126,7 +1126,7 @@ Enterprise devices are commonly joined to organizational identity services after
 
 ---
 
-# Device Naming
+## Device Naming
 
 Meaningful naming conventions improve management.
 
@@ -1148,7 +1148,7 @@ Benefits:
 
 ---
 
-# Enterprise Deployment Considerations
+## Enterprise Deployment Considerations
 
 Large organizations automate installation using:
 
@@ -1184,7 +1184,7 @@ Automation reduces manual effort and improves consistency.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Installation decisions directly affect security.
 
@@ -1199,7 +1199,7 @@ Recommendations:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A standardized installation process provides:
 
@@ -1212,7 +1212,7 @@ A standardized installation process provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Maintain standardized installation images.
 - Validate hardware compatibility before deployment.
@@ -1223,11 +1223,11 @@ A standardized installation process provides:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Identify Existing Partitions
+### Lab 1 — Identify Existing Partitions
 
-### Objective
+#### Objective
 
 Examine the partition structure of a Windows system.
 
@@ -1250,7 +1250,7 @@ Disk Management
 
 ---
 
-## Lab 2 — Observe Windows Setup (Virtual Machine)
+### Lab 2 — Observe Windows Setup (Virtual Machine)
 
 Create a virtual machine and boot from a Windows ISO.
 
@@ -1266,7 +1266,7 @@ During Setup, identify:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Bootable USB media is the standard installation method for most systems.
 - Clean installations provide the most consistent deployment experience.
@@ -1276,7 +1276,7 @@ During Setup, identify:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of the Media Creation Tool?
 2. Compare upgrade and clean installations.
@@ -1291,7 +1291,7 @@ During Setup, identify:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Windows Setup Documentation
@@ -1302,13 +1302,13 @@ During Setup, identify:
 ---
 
 
-# 02-Windows-Installation.md
+## 02-Windows-Installation.md
 
-# Part 3 — Windows Drivers, Device Manager, Windows Recovery Environment (WinRE), Activation, Updates, and Post-Installation Configuration
+## Part 3 — Windows Drivers, Device Manager, Windows Recovery Environment (WinRE), Activation, Updates, and Post-Installation Configuration
 
 ---
 
-# Introduction
+## Introduction
 
 Installing Windows is only the beginning. After the operating system boots successfully, administrators must configure drivers, activate Windows, install updates, enable security features, and verify system health before handing the device to a user.
 
@@ -1316,7 +1316,7 @@ This phase is known as **post-installation configuration**.
 
 ---
 
-# Post-Installation Workflow
+## Post-Installation Workflow
 
 ```text
 Windows Installed
@@ -1356,7 +1356,7 @@ System Ready
 
 ---
 
-# What Are Device Drivers?
+## What Are Device Drivers?
 
 A **device driver** is software that enables Windows to communicate with hardware devices.
 
@@ -1375,7 +1375,7 @@ Examples:
 
 ---
 
-# Driver Architecture
+## Driver Architecture
 
 ```text
 Application
@@ -1401,7 +1401,7 @@ Drivers translate operating system requests into hardware-specific instructions.
 
 ---
 
-# Types of Drivers
+## Types of Drivers
 
 | Driver Type | Examples |
 |-------------|----------|
@@ -1416,7 +1416,7 @@ Drivers translate operating system requests into hardware-specific instructions.
 
 ---
 
-# Installing Drivers
+## Installing Drivers
 
 Drivers can be installed from:
 
@@ -1430,7 +1430,7 @@ Drivers can be installed from:
 
 ---
 
-# Device Manager
+## Device Manager
 
 Device Manager displays installed hardware and driver status.
 
@@ -1460,7 +1460,7 @@ Device Manager
 
 ---
 
-# Device Manager Layout
+## Device Manager Layout
 
 ```text
 Device Manager
@@ -1479,7 +1479,7 @@ Device Manager
 
 ---
 
-# Device Status Indicators
+## Device Status Indicators
 
 | Icon | Meaning |
 |------|---------|
@@ -1490,7 +1490,7 @@ Device Manager
 
 ---
 
-# Common Driver Problems
+## Common Driver Problems
 
 Symptoms include:
 
@@ -1510,7 +1510,7 @@ Typical causes:
 
 ---
 
-# Updating Drivers
+## Updating Drivers
 
 Methods:
 
@@ -1523,7 +1523,7 @@ Always test updated drivers before organization-wide deployment.
 
 ---
 
-# Windows Activation
+## Windows Activation
 
 Activation verifies that Windows is properly licensed.
 
@@ -1536,7 +1536,7 @@ Benefits:
 
 ---
 
-# Checking Activation
+## Checking Activation
 
 Navigate to:
 
@@ -1566,7 +1566,7 @@ slmgr /dlv
 
 ---
 
-# Activation Methods
+## Activation Methods
 
 | Method | Typical Use |
 |---------|-------------|
@@ -1578,7 +1578,7 @@ slmgr /dlv
 
 ---
 
-# Windows Update
+## Windows Update
 
 Windows Update provides:
 
@@ -1590,7 +1590,7 @@ Windows Update provides:
 
 ---
 
-# Update Categories
+## Update Categories
 
 | Update Type | Purpose |
 |-------------|---------|
@@ -1602,7 +1602,7 @@ Windows Update provides:
 
 ---
 
-# Windows Update Workflow
+## Windows Update Workflow
 
 ```text
 Check for Updates
@@ -1626,7 +1626,7 @@ Verification
 
 ---
 
-# Windows Recovery Environment (WinRE)
+## Windows Recovery Environment (WinRE)
 
 WinRE is a built-in recovery platform used when Windows cannot start normally.
 
@@ -1641,7 +1641,7 @@ Capabilities include:
 
 ---
 
-# Accessing WinRE
+## Accessing WinRE
 
 Methods include:
 
@@ -1652,7 +1652,7 @@ Methods include:
 
 ---
 
-# WinRE Menu
+## WinRE Menu
 
 ```text
 Windows Recovery Environment
@@ -1671,7 +1671,7 @@ Windows Recovery Environment
 
 ---
 
-# Startup Repair
+## Startup Repair
 
 Startup Repair automatically attempts to fix problems such as:
 
@@ -1682,7 +1682,7 @@ Startup Repair automatically attempts to fix problems such as:
 
 ---
 
-# System Restore
+## System Restore
 
 System Restore returns system files and settings to an earlier restore point.
 
@@ -1696,7 +1696,7 @@ Best used after:
 
 ---
 
-# Reset This PC
+## Reset This PC
 
 Reset options include:
 
@@ -1711,7 +1711,7 @@ This feature reinstalls Windows while offering different levels of data retentio
 
 ---
 
-# Installing Essential Applications
+## Installing Essential Applications
 
 Typical enterprise workstation software:
 
@@ -1725,7 +1725,7 @@ Typical enterprise workstation software:
 
 ---
 
-# Security Configuration After Installation
+## Security Configuration After Installation
 
 Recommended tasks:
 
@@ -1740,7 +1740,7 @@ Recommended tasks:
 
 ---
 
-# Creating a Restore Point
+## Creating a Restore Point
 
 Create a restore point after:
 
@@ -1757,7 +1757,7 @@ Benefits:
 
 ---
 
-# Enterprise Imaging
+## Enterprise Imaging
 
 Organizations commonly prepare a **reference image** containing:
 
@@ -1793,7 +1793,7 @@ This image is then deployed to multiple devices.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers often target:
 
@@ -1813,7 +1813,7 @@ Security teams should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper post-installation configuration:
 
@@ -1825,7 +1825,7 @@ Proper post-installation configuration:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Deploy approved driver packages.
 - Test updates before broad deployment.
@@ -1836,9 +1836,9 @@ Proper post-installation configuration:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review Device Manager
+### Lab 1 — Review Device Manager
 
 1. Open **Device Manager**.
 
@@ -1853,7 +1853,7 @@ Proper post-installation configuration:
 
 ---
 
-## Lab 2 — Verify Activation
+### Lab 2 — Verify Activation
 
 Navigate to:
 
@@ -1876,7 +1876,7 @@ Record:
 
 ---
 
-## Lab 3 — Check for Updates
+### Lab 3 — Check for Updates
 
 Open:
 
@@ -1896,7 +1896,7 @@ Review:
 
 ---
 
-## Lab 4 — Create a Restore Point
+### Lab 4 — Create a Restore Point
 
 1. Search for:
 
@@ -1914,7 +1914,7 @@ Fresh Installation
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Device drivers are essential for hardware functionality.
 - Device Manager helps identify hardware and driver issues.
@@ -1925,7 +1925,7 @@ Fresh Installation
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a device driver?
 2. What is the purpose of Device Manager?
@@ -1940,7 +1940,7 @@ Fresh Installation
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Windows Update Documentation
@@ -1950,13 +1950,13 @@ Fresh Installation
 
 ---
 
-# 02-Windows-Installation.md
+## 02-Windows-Installation.md
 
-# Part 4 — Enterprise Deployment (WDS, MDT, Autopilot), Installation Troubleshooting, Best Practices, Final Labs, and Chapter Review
+## Part 4 — Enterprise Deployment (WDS, MDT, Autopilot), Installation Troubleshooting, Best Practices, Final Labs, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 In enterprise environments, Windows is rarely installed manually on every computer.
 
@@ -1972,7 +1972,7 @@ This section covers enterprise deployment methods, installation troubleshooting,
 
 ---
 
-# Enterprise Windows Deployment
+## Enterprise Windows Deployment
 
 Large organizations commonly deploy Windows using:
 
@@ -2010,13 +2010,13 @@ Ready for End User
 
 ---
 
-# Windows Deployment Services (WDS)
+## Windows Deployment Services (WDS)
 
-## What is WDS?
+### What is WDS?
 
 Windows Deployment Services (WDS) is a Windows Server role that enables administrators to deploy Windows over a network using PXE (Preboot Execution Environment).
 
-### Benefits
+#### Benefits
 
 - Network-based installation
 - No USB required
@@ -2026,7 +2026,7 @@ Windows Deployment Services (WDS) is a Windows Server role that enables administ
 
 ---
 
-# WDS Workflow
+## WDS Workflow
 
 ```text
 Client Computer
@@ -2058,9 +2058,9 @@ Installation Begins
 
 ---
 
-# Microsoft Deployment Toolkit (MDT)
+## Microsoft Deployment Toolkit (MDT)
 
-## What is MDT?
+### What is MDT?
 
 Microsoft Deployment Toolkit (MDT) is a free deployment solution that automates Windows installation.
 
@@ -2074,7 +2074,7 @@ It supports:
 
 ---
 
-# MDT Workflow
+## MDT Workflow
 
 ```text
 Reference Image
@@ -2106,7 +2106,7 @@ Ready for Production
 
 ---
 
-# Benefits of MDT
+## Benefits of MDT
 
 - Reduced manual effort
 - Consistent deployments
@@ -2117,7 +2117,7 @@ Ready for Production
 
 ---
 
-# Microsoft Configuration Manager
+## Microsoft Configuration Manager
 
 Microsoft Configuration Manager (formerly System Center Configuration Manager or SCCM) is an enterprise endpoint management platform.
 
@@ -2134,9 +2134,9 @@ Large enterprises commonly integrate it with Active Directory and Microsoft Intu
 
 ---
 
-# Windows Autopilot
+## Windows Autopilot
 
-## What is Windows Autopilot?
+### What is Windows Autopilot?
 
 Windows Autopilot simplifies new device provisioning by allowing users to configure devices with minimal IT intervention.
 
@@ -2172,7 +2172,7 @@ Ready for Work
 
 ---
 
-# Benefits of Autopilot
+## Benefits of Autopilot
 
 - Zero-touch deployment
 - Cloud-based provisioning
@@ -2183,7 +2183,7 @@ Ready for Work
 
 ---
 
-# Deployment Comparison
+## Deployment Comparison
 
 | Method | Best For |
 |---------|----------|
@@ -2195,7 +2195,7 @@ Ready for Work
 
 ---
 
-# Golden (Reference) Image
+## Golden (Reference) Image
 
 A **golden image** is a standardized Windows installation prepared for deployment.
 
@@ -2227,7 +2227,7 @@ Reference Image
 
 ---
 
-# Benefits of Golden Images
+## Benefits of Golden Images
 
 - Consistency
 - Faster deployment
@@ -2239,7 +2239,7 @@ Images should be updated regularly to include the latest patches and approved so
 
 ---
 
-# Common Installation Problems
+## Common Installation Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2253,7 +2253,7 @@ Images should be updated regularly to include the latest patches and approved so
 
 ---
 
-# Basic Troubleshooting Workflow
+## Basic Troubleshooting Workflow
 
 ```text
 Identify Problem
@@ -2289,7 +2289,7 @@ Retest
 
 ---
 
-# Common Recovery Tools
+## Common Recovery Tools
 
 | Tool | Purpose |
 |------|---------|
@@ -2302,7 +2302,7 @@ Retest
 
 ---
 
-# Safe Mode
+## Safe Mode
 
 Safe Mode starts Windows with a minimal set of drivers and services.
 
@@ -2321,7 +2321,7 @@ Variants include:
 
 ---
 
-# Installation Log Files
+## Installation Log Files
 
 Windows Setup generates logs that help diagnose installation problems.
 
@@ -2338,7 +2338,7 @@ Common log locations include:
 
 ---
 
-# Validation After Installation
+## Validation After Installation
 
 Before handing a system to a user, verify:
 
@@ -2355,7 +2355,7 @@ Before handing a system to a user, verify:
 
 ---
 
-# Enterprise Deployment Checklist
+## Enterprise Deployment Checklist
 
 ```text
 ☑ Firmware updated
@@ -2375,7 +2375,7 @@ Before handing a system to a user, verify:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Secure deployment reduces attack surface from the first boot.
 
@@ -2392,7 +2392,7 @@ Recommendations:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A mature deployment strategy enables organizations to:
 
@@ -2405,7 +2405,7 @@ A mature deployment strategy enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Maintain documented deployment procedures.
 - Regularly update reference images.
@@ -2418,9 +2418,9 @@ A mature deployment strategy enables organizations to:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Explore Windows Recovery Environment
+### Lab 1 — Explore Windows Recovery Environment
 
 If available in a virtual machine:
 
@@ -2448,7 +2448,7 @@ Recovery
 
 ---
 
-## Lab 2 — Review Device Readiness Checklist
+### Lab 2 — Review Device Readiness Checklist
 
 Create a checklist verifying:
 
@@ -2463,7 +2463,7 @@ Compare it against the Enterprise Deployment Checklist above.
 
 ---
 
-## Lab 3 — Build a Deployment Plan
+### Lab 3 — Build a Deployment Plan
 
 Design a deployment workflow for a fictional company with 100 new laptops.
 
@@ -2478,7 +2478,7 @@ Include:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 This chapter covered:
 
@@ -2503,7 +2503,7 @@ These concepts provide the foundation for installing, maintaining, and deploying
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - UEFI, GPT, Secure Boot, and TPM are the recommended standards for modern Windows deployments.
 - Device drivers and updates are essential after installation.
@@ -2513,7 +2513,7 @@ These concepts provide the foundation for installing, maintaining, and deploying
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Windows Deployment Services (WDS)?
 2. How does MDT differ from WDS?
@@ -2528,7 +2528,7 @@ These concepts provide the foundation for installing, maintaining, and deploying
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Windows Deployment Documentation
@@ -2540,7 +2540,7 @@ These concepts provide the foundation for installing, maintaining, and deploying
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 2 – Windows Installation**.
 

@@ -1,12 +1,12 @@
 # 02-How-the-Web-Works.md
 
-# Part 1 — What Happens When You Type a URL in Your Browser?
+## Part 1 — What Happens When You Type a URL in Your Browser?
 
 > **"Before you can secure a web application, you must understand exactly how it works. Every web attack targets one or more stages of the request-response lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Whenever you visit a website, hundreds of operations happen within milliseconds.
 
@@ -49,7 +49,7 @@ Understanding this lifecycle is essential because **every stage can introduce se
 
 ---
 
-# The Complete Web Request Lifecycle
+## The Complete Web Request Lifecycle
 
 ```
 User
@@ -109,7 +109,7 @@ User Sees Website
 
 ---
 
-# What is the Web?
+## What is the Web?
 
 The **World Wide Web (WWW)** is a system of interconnected resources that are accessed using browsers over the Internet.
 
@@ -124,7 +124,7 @@ The web consists of:
 
 ---
 
-# Client-Server Architecture
+## Client-Server Architecture
 
 The web follows the **Client-Server Model**.
 
@@ -152,7 +152,7 @@ The web follows the **Client-Server Model**.
 
 ---
 
-# What is a Client?
+## What is a Client?
 
 A **client** is any device or application that requests information.
 
@@ -176,7 +176,7 @@ Responsibilities:
 
 ---
 
-# What is a Server?
+## What is a Server?
 
 A **server** receives requests, processes them, and returns responses.
 
@@ -192,7 +192,7 @@ Responsibilities include:
 
 ---
 
-# Example
+## Example
 
 Customer opens:
 
@@ -224,7 +224,7 @@ Browser renders the website.
 
 ---
 
-# Understanding URLs
+## Understanding URLs
 
 Example:
 
@@ -234,7 +234,7 @@ https://shop.example.com:443/products?id=15#reviews
 
 ---
 
-# URL Structure
+## URL Structure
 
 ```
 https://shop.example.com:443/products?id=15#reviews
@@ -249,7 +249,7 @@ https://shop.example.com:443/products?id=15#reviews
 
 ---
 
-# URL Components
+## URL Components
 
 | Component | Example | Purpose |
 |-----------|---------|---------|
@@ -262,7 +262,7 @@ https://shop.example.com:443/products?id=15#reviews
 
 ---
 
-# HTTP vs HTTPS
+## HTTP vs HTTPS
 
 | HTTP | HTTPS |
 |------|-------|
@@ -275,7 +275,7 @@ HTTPS is the standard for modern web applications.
 
 ---
 
-# The Journey Begins
+## The Journey Begins
 
 Imagine typing:
 
@@ -292,7 +292,7 @@ The browser first determines:
 
 ---
 
-# Step 1 — URL Parsing
+## Step 1 — URL Parsing
 
 The browser breaks the URL into components.
 
@@ -326,7 +326,7 @@ Fragment
 
 ---
 
-# Step 2 — Check Browser Cache
+## Step 2 — Check Browser Cache
 
 The browser first checks whether it already has:
 
@@ -341,7 +341,7 @@ If available and still valid, it may avoid downloading them again.
 
 ---
 
-# Step 3 — DNS Resolution
+## Step 3 — DNS Resolution
 
 The browser must determine the server's IP address.
 
@@ -365,7 +365,7 @@ Without DNS, users would have to remember IP addresses instead of domain names.
 
 ---
 
-# DNS Flow (Simplified)
+## DNS Flow (Simplified)
 
 ```
 Browser
@@ -395,7 +395,7 @@ We will study DNS in detail in a dedicated chapter.
 
 ---
 
-# Step 4 — TCP Connection
+## Step 4 — TCP Connection
 
 The browser establishes a reliable connection using TCP.
 
@@ -427,7 +427,7 @@ This process is called the **TCP Three-Way Handshake**.
 
 ---
 
-# Why TCP?
+## Why TCP?
 
 TCP provides:
 
@@ -439,7 +439,7 @@ TCP provides:
 
 ---
 
-# Step 5 — HTTPS (Overview)
+## Step 5 — HTTPS (Overview)
 
 If HTTPS is used:
 
@@ -463,7 +463,7 @@ Encryption protects data while it travels across networks.
 
 ---
 
-# Step 6 — Browser Sends HTTP Request
+## Step 6 — Browser Sends HTTP Request
 
 Example:
 
@@ -483,7 +483,7 @@ The request may also include:
 
 ---
 
-# Step 7 — Request Reaches the Web Server
+## Step 7 — Request Reaches the Web Server
 
 ```
 Browser
@@ -509,7 +509,7 @@ Enterprise environments often include multiple infrastructure components before 
 
 ---
 
-# Step 8 — Application Processing
+## Step 8 — Application Processing
 
 The application may:
 
@@ -523,7 +523,7 @@ The application may:
 
 ---
 
-# Step 9 — Database Query
+## Step 9 — Database Query
 
 ```
 Application
@@ -545,7 +545,7 @@ Most dynamic websites retrieve or update data before generating a response.
 
 ---
 
-# Step 10 — HTTP Response
+## Step 10 — HTTP Response
 
 Example:
 
@@ -566,7 +566,7 @@ The response may contain:
 
 ---
 
-# Step 11 — Browser Rendering
+## Step 11 — Browser Rendering
 
 The browser:
 
@@ -579,7 +579,7 @@ The browser:
 
 ---
 
-# Complete Browser Workflow
+## Complete Browser Workflow
 
 ```
 User
@@ -643,7 +643,7 @@ Rendered Page
 
 ---
 
-# Dynamic vs Static Websites
+## Dynamic vs Static Websites
 
 | Static | Dynamic |
 |---------|----------|
@@ -654,7 +654,7 @@ Rendered Page
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A customer logs into an online banking portal.
 
@@ -698,7 +698,7 @@ At each stage, security controls such as encryption, authentication, authorizati
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Open your browser's **Developer Tools** (Network tab):
 
@@ -717,7 +717,7 @@ Notice how a single webpage often requires dozens or even hundreds of network re
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What happens when you type a URL into a browser?
 2. What is Client-Server Architecture?
@@ -732,7 +732,7 @@ Notice how a single webpage often requires dozens or even hundreds of network re
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use HTTPS for all web traffic.
 - Minimize unnecessary requests.
@@ -742,7 +742,7 @@ Notice how a single webpage often requires dozens or even hundreds of network re
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming browsers communicate directly with databases.
 - Believing HTTPS secures the application against all attacks.
@@ -751,7 +751,7 @@ Notice how a single webpage often requires dozens or even hundreds of network re
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Every web request follows a structured lifecycle from the browser to the server and back.
 - URLs contain multiple components that identify the requested resource.
@@ -1627,15 +1627,15 @@ Choose any website and answer:
 
 ```
 
-# 02-How-the-Web-Works.md
+## 02-How-the-Web-Works.md
 
-# Part 3 — HTTP Request Processing, Web Servers, Application Servers, Databases, Browser Rendering, and Complete Request Lifecycle
+## Part 3 — HTTP Request Processing, Web Servers, Application Servers, Databases, Browser Rendering, and Complete Request Lifecycle
 
 > **"The network delivers your request to the server, but the application decides what happens next. Understanding this processing pipeline is essential for understanding modern web security."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1652,7 +1652,7 @@ After completing this part, you will understand:
 
 ---
 
-# Recap
+## Recap
 
 So far we have learned:
 
@@ -1684,7 +1684,7 @@ Now we will explore what happens **after the request reaches the server**.
 
 ---
 
-# Complete Request Processing
+## Complete Request Processing
 
 ```
 Browser
@@ -1740,7 +1740,7 @@ Browser Rendering
 
 ---
 
-# What is an HTTP Request?
+## What is an HTTP Request?
 
 An HTTP request is a message sent from a client to a server requesting a resource.
 
@@ -1759,7 +1759,7 @@ A request tells the server:
 
 ---
 
-# Anatomy of an HTTP Request
+## Anatomy of an HTTP Request
 
 ```
 Request Line
@@ -1792,7 +1792,7 @@ Content-Type: application/json
 
 ---
 
-# Common HTTP Methods
+## Common HTTP Methods
 
 | Method | Purpose |
 |---------|----------|
@@ -1808,7 +1808,7 @@ Each method has a different purpose and should be used appropriately.
 
 ---
 
-# HTTP Headers
+## HTTP Headers
 
 Headers provide additional information.
 
@@ -1831,7 +1831,7 @@ User-Agent: Mozilla/5.0
 
 ---
 
-# HTTP Body
+## HTTP Body
 
 The body usually contains data sent by the client.
 
@@ -1865,7 +1865,7 @@ Typical body formats:
 
 ---
 
-# Request Reaches the Web Server
+## Request Reaches the Web Server
 
 ```
 Client
@@ -1888,7 +1888,7 @@ Popular web servers include:
 
 ---
 
-# Responsibilities of a Web Server
+## Responsibilities of a Web Server
 
 A web server typically:
 
@@ -1901,7 +1901,7 @@ A web server typically:
 
 ---
 
-# Static Resources
+## Static Resources
 
 Static resources do not change for each user.
 
@@ -1930,7 +1930,7 @@ No database lookup is required.
 
 ---
 
-# Dynamic Resources
+## Dynamic Resources
 
 Dynamic resources are generated at request time.
 
@@ -1960,7 +1960,7 @@ Generated Response
 
 ---
 
-# Web Server vs Application Server
+## Web Server vs Application Server
 
 | Web Server | Application Server |
 |------------|--------------------|
@@ -1971,7 +1971,7 @@ Generated Response
 
 ---
 
-# What is an Application Server?
+## What is an Application Server?
 
 The application server contains the application's logic.
 
@@ -1987,7 +1987,7 @@ Responsibilities include:
 
 ---
 
-# Example Request Flow
+## Example Request Flow
 
 Customer requests:
 
@@ -2027,7 +2027,7 @@ Return Response
 
 ---
 
-# Business Logic
+## Business Logic
 
 Business logic defines how an application behaves.
 
@@ -2042,7 +2042,7 @@ Examples:
 
 ---
 
-# Database Interaction
+## Database Interaction
 
 Many web applications store information in databases.
 
@@ -2077,9 +2077,9 @@ Typical data stored:
 
 ---
 
-# Database Types
+## Database Types
 
-## Relational Databases
+### Relational Databases
 
 Examples:
 
@@ -2090,7 +2090,7 @@ Examples:
 
 ---
 
-## NoSQL Databases
+### NoSQL Databases
 
 Examples:
 
@@ -2102,7 +2102,7 @@ Different applications choose different databases based on their requirements.
 
 ---
 
-# Example Login Workflow
+## Example Login Workflow
 
 ```
 User
@@ -2134,7 +2134,7 @@ Dashboard
 
 ---
 
-# Response Generation
+## Response Generation
 
 After processing the request, the application creates a response.
 
@@ -2149,7 +2149,7 @@ Possible formats:
 
 ---
 
-# HTTP Response
+## HTTP Response
 
 Example:
 
@@ -2178,7 +2178,7 @@ Response Body
 
 ---
 
-# Common HTTP Status Codes
+## Common HTTP Status Codes
 
 | Code | Meaning |
 |------|----------|
@@ -2200,7 +2200,7 @@ Response Body
 
 ---
 
-# Browser Receives Response
+## Browser Receives Response
 
 The browser processes:
 
@@ -2234,7 +2234,7 @@ Rendered Page
 
 ---
 
-# Browser Rendering Process
+## Browser Rendering Process
 
 ```
 Download HTML
@@ -2282,7 +2282,7 @@ Display Page
 
 ---
 
-# What is the DOM?
+## What is the DOM?
 
 The **Document Object Model (DOM)** is the browser's internal representation of an HTML document.
 
@@ -2304,7 +2304,7 @@ JavaScript can modify the DOM dynamically, allowing pages to update without a fu
 
 ---
 
-# Additional Browser Requests
+## Additional Browser Requests
 
 A single HTML page often references many additional resources.
 
@@ -2330,7 +2330,7 @@ The browser sends separate HTTP requests for many of these resources.
 
 ---
 
-# Browser Cache
+## Browser Cache
 
 Browsers cache resources to improve performance.
 
@@ -2362,7 +2362,7 @@ Benefits:
 
 ---
 
-# Cookies (Overview)
+## Cookies (Overview)
 
 Cookies are small pieces of data stored by the browser.
 
@@ -2377,7 +2377,7 @@ A dedicated chapter will explore cookies in depth.
 
 ---
 
-# Sessions (Overview)
+## Sessions (Overview)
 
 A session allows the server to recognize multiple requests as belonging to the same user.
 
@@ -2401,7 +2401,7 @@ Server Recognizes User
 
 ---
 
-# Security Checkpoints
+## Security Checkpoints
 
 A secure application performs checks throughout the request lifecycle.
 
@@ -2445,7 +2445,7 @@ Security should not rely on a single checkpoint.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A customer views an order history page.
 
@@ -2497,7 +2497,7 @@ Each step contributes to the overall security and reliability of the application
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser's Developer Tools:
 
@@ -2516,7 +2516,7 @@ Think about which requests contain sensitive information and which should requir
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between a web server and an application server?
 2. What is an HTTP request?
@@ -2531,7 +2531,7 @@ Think about which requests contain sensitive information and which should requir
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Separate static and dynamic content efficiently.
 - Validate all incoming data before processing.
@@ -2542,7 +2542,7 @@ Think about which requests contain sensitive information and which should requir
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Returning overly detailed error messages.
 - Trusting client-side validation alone.
@@ -2552,7 +2552,7 @@ Think about which requests contain sensitive information and which should requir
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Web servers receive requests and serve static resources, while application servers execute business logic.
 - Dynamic pages often require database access before generating a response.

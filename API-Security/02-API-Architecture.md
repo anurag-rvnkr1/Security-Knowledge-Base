@@ -1,7 +1,6 @@
 # 02 - API Architecture
 
-# Introduction
-
+## Introduction
 API architecture defines how APIs are designed, organized, deployed, managed, and secured within an application or enterprise ecosystem.
 
 A well-designed API architecture is far more than a collection of endpoints. It determines how applications communicate, how services scale, how failures are handled, how security is enforced, and how organizations evolve their software over time.
@@ -36,8 +35,7 @@ This chapter explores the architectural foundations that support secure enterpri
 
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 By the end of this chapter, you will be able to:
 
 - Understand API architecture fundamentals.
@@ -53,8 +51,7 @@ By the end of this chapter, you will be able to:
 
 ---
 
-# What is API Architecture?
-
+## What is API Architecture?
 API architecture refers to the overall structure that governs how APIs are designed, deployed, interconnected, and managed.
 
 It defines:
@@ -73,8 +70,7 @@ Just as a blueprint specifies rooms, hallways, electrical systems, plumbing, and
 
 ---
 
-# Why API Architecture Matters
-
+## Why API Architecture Matters
 Poor architecture often results in:
 
 - Slow applications
@@ -97,8 +93,7 @@ Good architecture enables:
 
 ---
 
-# Building Analogy
-
+## Building Analogy
 Imagine a modern airport.
 
 ```
@@ -163,8 +158,7 @@ Each layer has a dedicated responsibility.
 
 ---
 
-# Core Components of API Architecture
-
+## Core Components of API Architecture
 Every API ecosystem contains several fundamental components.
 
 ```
@@ -202,8 +196,7 @@ Each component contributes to the overall reliability and security of the system
 
 ---
 
-# Client Layer
-
+## Client Layer
 The client initiates communication with APIs.
 
 Common clients include:
@@ -237,8 +230,7 @@ The client should never directly access databases or internal business logic.
 
 ---
 
-# Network Layer
-
+## Network Layer
 Before reaching an API server, requests typically traverse several networking components.
 
 ```
@@ -279,8 +271,7 @@ Each component performs a specialized function.
 
 ---
 
-# Load Balancer
-
+## Load Balancer
 A load balancer distributes incoming traffic across multiple API servers.
 
 Example:
@@ -323,8 +314,7 @@ Popular solutions:
 
 ---
 
-# API Gateway
-
+## API Gateway
 The API Gateway serves as the single entry point for all API requests.
 
 ```
@@ -360,8 +350,7 @@ The gateway significantly reduces complexity by centralizing cross-cutting conce
 
 ---
 
-# Business Services
-
+## Business Services
 Business services implement the organization's core functionality.
 
 Examples:
@@ -388,8 +377,7 @@ Each service is responsible for a specific business capability.
 
 ---
 
-# Data Layer
-
+## Data Layer
 The data layer stores persistent information.
 
 Examples include:
@@ -415,8 +403,7 @@ Good architectures isolate the data layer from direct client access.
 
 ---
 
-# Supporting Components
-
+## Supporting Components
 Enterprise APIs commonly rely on additional supporting services.
 
 ```
@@ -447,8 +434,7 @@ These systems improve performance, observability, and resilience.
 
 ---
 
-# Layered Architecture
-
+## Layered Architecture
 Most enterprise APIs follow a layered architecture.
 
 ```
@@ -477,8 +463,7 @@ Advantages include:
 
 ---
 
-# Separation of Concerns
-
+## Separation of Concerns
 One of the most important architectural principles is **Separation of Concerns (SoC).**
 
 Instead of mixing everything into a single module:
@@ -523,8 +508,7 @@ Benefits include:
 
 ---
 
-# Enterprise Example
-
+## Enterprise Example
 Consider a banking application.
 
 ```
@@ -561,8 +545,7 @@ Each service performs one business function while relying on shared infrastructu
 
 ---
 
-# Design Principles of Good API Architecture
-
+## Design Principles of Good API Architecture
 Successful API architectures follow several fundamental principles.
 
 - Loose coupling
@@ -580,8 +563,7 @@ These principles reduce complexity while improving long-term reliability.
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - API architecture defines how APIs are structured and how components interact.
 - Modern API ecosystems consist of multiple layers, including clients, gateways, business services, and data stores.
 - Components such as load balancers and API gateways improve availability, scalability, and security.
@@ -590,10 +572,8 @@ These principles reduce complexity while improving long-term reliability.
 
 ---
 
-# 02 - API Architecture (Part 2)
-
-# Client–Server Architecture
-
+## 02 - API Architecture (Part 2)
+## Client–Server Architecture
 The client–server model is the foundation of modern API communication.
 
 In this architecture, responsibilities are divided between two independent systems.
@@ -630,8 +610,7 @@ This separation allows clients and servers to evolve independently.
 
 ---
 
-# Responsibilities of the Client
-
+## Responsibilities of the Client
 The client is responsible for:
 
 - Collecting user input
@@ -665,8 +644,7 @@ The client never directly accesses the database.
 
 ---
 
-# Responsibilities of the Server
-
+## Responsibilities of the Server
 The server performs business operations.
 
 Responsibilities include:
@@ -708,8 +686,7 @@ Return Response
 
 ---
 
-# Advantages of Client–Server Architecture
-
+## Advantages of Client–Server Architecture
 Benefits include:
 
 - Centralized security
@@ -722,8 +699,7 @@ Benefits include:
 
 ---
 
-# Two-Tier Architecture
-
+## Two-Tier Architecture
 One of the earliest enterprise architectures.
 
 ```
@@ -749,8 +725,7 @@ Modern APIs rarely use this architecture.
 
 ---
 
-# Three-Tier Architecture
-
+## Three-Tier Architecture
 Introduces a business layer between clients and databases.
 
 ```
@@ -780,8 +755,7 @@ This architecture remains common in enterprise software.
 
 ---
 
-# N-Tier Architecture
-
+## N-Tier Architecture
 Large organizations often introduce additional layers.
 
 ```
@@ -822,8 +796,7 @@ Advantages:
 
 ---
 
-# Monolithic Architecture
-
+## Monolithic Architecture
 A monolithic application packages all functionality into a single deployment unit.
 
 ```
@@ -847,8 +820,7 @@ Everything runs as one application.
 
 ---
 
-# Characteristics of Monolithic Applications
-
+## Characteristics of Monolithic Applications
 Advantages
 
 - Simple development
@@ -868,8 +840,7 @@ Disadvantages
 
 ---
 
-# Enterprise Example — Monolith
-
+## Enterprise Example — Monolith
 ```
 Online Store
 
@@ -886,8 +857,7 @@ Any update requires redeploying the entire application.
 
 ---
 
-# Microservices Architecture
-
+## Microservices Architecture
 Microservices divide applications into multiple independent services.
 
 Each service focuses on a single business capability.
@@ -917,8 +887,7 @@ Every service has:
 
 ---
 
-# Characteristics of Microservices
-
+## Characteristics of Microservices
 Advantages
 
 - High scalability
@@ -938,8 +907,7 @@ Disadvantages
 
 ---
 
-# Monolith vs Microservices
-
+## Monolith vs Microservices
 | Feature | Monolith | Microservices |
 |----------|-----------|--------------|
 | Deployment | Single | Multiple |
@@ -953,8 +921,7 @@ Disadvantages
 
 ---
 
-# Service-Oriented Architecture (SOA)
-
+## Service-Oriented Architecture (SOA)
 Service-Oriented Architecture (SOA) preceded modern microservices.
 
 SOA exposes reusable enterprise services.
@@ -982,8 +949,7 @@ SOA typically relies on:
 
 ---
 
-# SOA vs Microservices
-
+## SOA vs Microservices
 | SOA | Microservices |
 |------|---------------|
 | Large enterprise services | Small independent services |
@@ -995,8 +961,7 @@ SOA typically relies on:
 
 ---
 
-# Event-Driven Architecture
-
+## Event-Driven Architecture
 Instead of requesting data continuously, systems communicate using events.
 
 ```
@@ -1021,8 +986,7 @@ Each service reacts independently.
 
 ---
 
-# Event Components
-
+## Event Components
 ```
 Producer
 
@@ -1058,8 +1022,7 @@ Popular technologies:
 
 ---
 
-# Synchronous Communication
-
+## Synchronous Communication
 Client waits for a response.
 
 ```
@@ -1096,8 +1059,7 @@ Disadvantages:
 
 ---
 
-# Asynchronous Communication
-
+## Asynchronous Communication
 The sender does not wait for immediate processing.
 
 ```
@@ -1134,8 +1096,7 @@ Disadvantages:
 
 ---
 
-# Enterprise Communication Patterns
-
+## Enterprise Communication Patterns
 Large organizations combine multiple communication models.
 
 ```
@@ -1166,8 +1127,7 @@ This hybrid architecture provides flexibility while supporting diverse workloads
 
 ---
 
-# Enterprise Case Study
-
+## Enterprise Case Study
 A global e-commerce company migrated from a monolithic application to microservices.
 
 Before migration:
@@ -1193,8 +1153,7 @@ The migration allowed development teams to deploy features independently while i
 
 ---
 
-# Best Practices
-
+## Best Practices
 - Design services around business capabilities.
 - Keep services loosely coupled.
 - Avoid direct database sharing between services.
@@ -1208,8 +1167,7 @@ The migration allowed development teams to deploy features independently while i
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - Client–server architecture separates responsibilities between consumers and providers.
 - Two-tier architectures are simple but expose security and scalability limitations.
 - Three-tier and N-tier architectures improve maintainability and security through layered design.
@@ -1221,10 +1179,8 @@ The migration allowed development teams to deploy features independently while i
 
 ---
 
-# 02 - API Architecture (Part 3)
-
-# API Gateway Architecture
-
+## 02 - API Architecture (Part 3)
+## API Gateway Architecture
 As organizations transition from monolithic applications to microservices, the number of backend services increases significantly.
 
 Without a centralized entry point, clients would need to communicate with dozens or even hundreds of services individually.
@@ -1254,8 +1210,7 @@ The gateway hides internal implementation details and provides a unified interfa
 
 ---
 
-# Why API Gateways are Important
-
+## Why API Gateways are Important
 Without an API Gateway:
 
 ```
@@ -1313,12 +1268,10 @@ The client communicates with only one endpoint.
 
 ---
 
-# Responsibilities of an API Gateway
-
+## Responsibilities of an API Gateway
 A modern API Gateway performs numerous functions.
 
-### Request Routing
-
+#### Request Routing
 Routes incoming requests to the correct backend service.
 
 Example:
@@ -1341,8 +1294,7 @@ Order Service
 
 ---
 
-### Authentication
-
+#### Authentication
 Verifies the identity of clients.
 
 Examples:
@@ -1356,8 +1308,7 @@ Examples:
 
 ---
 
-### Authorization
-
+#### Authorization
 Determines whether an authenticated user has permission to access a resource.
 
 Examples:
@@ -1380,8 +1331,7 @@ Access Own Orders
 
 ---
 
-### SSL/TLS Termination
-
+#### SSL/TLS Termination
 The gateway decrypts HTTPS traffic before forwarding requests internally.
 
 ```
@@ -1402,8 +1352,7 @@ Backend Services
 
 ---
 
-### Rate Limiting
-
+#### Rate Limiting
 Protects APIs from abuse.
 
 Example:
@@ -1420,8 +1369,7 @@ Requests exceeding the limit are rejected.
 
 ---
 
-### Request Transformation
-
+#### Request Transformation
 Transforms incoming requests before forwarding them.
 
 Example:
@@ -1454,8 +1402,7 @@ Internal Header
 
 ---
 
-### Response Aggregation
-
+#### Response Aggregation
 Instead of requiring multiple API calls:
 
 ```
@@ -1478,8 +1425,7 @@ Complete Response
 
 ---
 
-### Logging
-
+#### Logging
 Records:
 
 - Requests
@@ -1492,8 +1438,7 @@ Records:
 
 ---
 
-### Monitoring
-
+#### Monitoring
 Provides metrics such as:
 
 - Requests per second
@@ -1505,8 +1450,7 @@ Provides metrics such as:
 
 ---
 
-# Popular API Gateways
-
+## Popular API Gateways
 Commercial
 
 - Kong Enterprise
@@ -1527,8 +1471,7 @@ Open Source
 
 ---
 
-# Reverse Proxy vs API Gateway
-
+## Reverse Proxy vs API Gateway
 Many beginners confuse these concepts.
 
 | Reverse Proxy | API Gateway |
@@ -1544,8 +1487,7 @@ An API Gateway often includes reverse proxy capabilities, but it provides signif
 
 ---
 
-# Service Mesh
-
+## Service Mesh
 As microservice deployments grow, communication between services becomes increasingly complex.
 
 A **Service Mesh** manages service-to-service communication.
@@ -1570,8 +1512,7 @@ User Service  Order Service  Payment Service
 
 ---
 
-# Responsibilities of a Service Mesh
-
+## Responsibilities of a Service Mesh
 A Service Mesh provides:
 
 - Service discovery
@@ -1587,8 +1528,7 @@ A Service Mesh provides:
 
 ---
 
-# Sidecar Proxy Architecture
-
+## Sidecar Proxy Architecture
 Most service meshes use sidecar proxies.
 
 ```
@@ -1616,8 +1556,7 @@ Benefits include:
 
 ---
 
-# Popular Service Mesh Solutions
-
+## Popular Service Mesh Solutions
 Examples:
 
 - Istio
@@ -1628,8 +1567,7 @@ Examples:
 
 ---
 
-# Cloud-Native API Architecture
-
+## Cloud-Native API Architecture
 Modern APIs are increasingly deployed on cloud-native infrastructure.
 
 ```
@@ -1686,8 +1624,7 @@ Cloud-native APIs emphasize:
 
 ---
 
-# Containers and APIs
-
+## Containers and APIs
 Containers package applications with all dependencies.
 
 ```
@@ -1716,8 +1653,7 @@ Popular platforms:
 
 ---
 
-# Kubernetes Architecture
-
+## Kubernetes Architecture
 Many enterprise APIs run on Kubernetes.
 
 ```
@@ -1758,8 +1694,7 @@ Kubernetes automatically manages:
 
 ---
 
-# High Availability (HA)
-
+## High Availability (HA)
 High Availability ensures APIs remain accessible despite failures.
 
 Without HA
@@ -1812,10 +1747,8 @@ If one server fails, traffic automatically shifts to healthy servers.
 
 ---
 
-# Horizontal vs Vertical Scaling
-
-### Vertical Scaling
-
+## Horizontal vs Vertical Scaling
+#### Vertical Scaling
 Increase resources of one server.
 
 ```
@@ -1837,8 +1770,7 @@ Limitations:
 
 ---
 
-### Horizontal Scaling
-
+#### Horizontal Scaling
 Add additional servers.
 
 ```
@@ -1861,8 +1793,7 @@ Modern APIs typically prefer horizontal scaling.
 
 ---
 
-# Stateless API Design
-
+## Stateless API Design
 REST APIs should ideally be stateless.
 
 Each request contains all information needed for processing.
@@ -1894,8 +1825,7 @@ Benefits:
 
 ---
 
-# Caching
-
+## Caching
 Caching reduces repeated processing.
 
 ```
@@ -1946,18 +1876,15 @@ Benefits:
 
 ---
 
-# Enterprise Design Patterns
-
+## Enterprise Design Patterns
 Frequently used architectural patterns include:
 
-### API Gateway Pattern
-
+#### API Gateway Pattern
 Single entry point for clients.
 
 ---
 
-### Backend-for-Frontend (BFF)
-
+#### Backend-for-Frontend (BFF)
 Separate backend for each client.
 
 ```
@@ -1981,8 +1908,7 @@ Optimizes responses for different platforms.
 
 ---
 
-### Aggregator Pattern
-
+#### Aggregator Pattern
 Combines multiple APIs into one response.
 
 ```
@@ -2001,8 +1927,7 @@ Notifications
 
 ---
 
-### Circuit Breaker Pattern
-
+#### Circuit Breaker Pattern
 Prevents cascading failures.
 
 ```
@@ -2025,8 +1950,7 @@ Protects dependent services from repeated failures.
 
 ---
 
-### Retry Pattern
-
+#### Retry Pattern
 Automatically retries temporary failures.
 
 Useful for:
@@ -2039,8 +1963,7 @@ Retries should use exponential backoff to avoid overwhelming downstream services
 
 ---
 
-# Enterprise Example
-
+## Enterprise Example
 A multinational bank exposes over 800 APIs.
 
 Architecture:
@@ -2095,8 +2018,7 @@ This architecture supports millions of daily transactions while maintaining stro
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - API Gateways centralize routing, authentication, authorization, monitoring, and traffic management.
 - Service Meshes secure and manage communication between internal services.
 - Cloud-native architectures use containers, Kubernetes, and automation for scalable API deployments.
@@ -2108,10 +2030,8 @@ This architecture supports millions of daily transactions while maintaining stro
 
 ---
 
-# 02 - API Architecture (Part 4)
-
-# API Security Architecture
-
+## 02 - API Architecture (Part 4)
+## API Security Architecture
 A secure API architecture does not rely on a single security mechanism.
 
 Instead, it implements **Defense in Depth**, where multiple security controls work together to protect APIs from different types of attacks.
@@ -2156,8 +2076,7 @@ Each layer protects against different categories of threats.
 
 ---
 
-# Defense in Depth
-
+## Defense in Depth
 Defense in Depth is one of the most important security principles in API architecture.
 
 Instead of depending on one control, multiple independent controls reduce overall risk.
@@ -2194,8 +2113,7 @@ If one layer fails, the remaining controls continue to provide protection.
 
 ---
 
-# Zero Trust Architecture
-
+## Zero Trust Architecture
 Modern enterprise APIs increasingly follow the **Zero Trust** model.
 
 Core principle:
@@ -2232,8 +2150,7 @@ Zero Trust requires continuous verification instead of assuming internal traffic
 
 ---
 
-# API Security Controls
-
+## API Security Controls
 A secure API architecture typically includes the following controls.
 
 | Control | Purpose |
@@ -2253,8 +2170,7 @@ A secure API architecture typically includes the following controls.
 
 ---
 
-# Detection Engineering
-
+## Detection Engineering
 Detection Engineering focuses on identifying malicious API activity through logs, telemetry, and behavioral analysis.
 
 Examples of suspicious events include:
@@ -2272,8 +2188,7 @@ Detection rules should be continuously refined to reduce false positives and imp
 
 ---
 
-# Logging Architecture
-
+## Logging Architecture
 Logging provides visibility into API operations.
 
 ```
@@ -2305,8 +2220,7 @@ Typical log sources include:
 
 ---
 
-# What Should Be Logged?
-
+## What Should Be Logged?
 Important events include:
 
 Authentication
@@ -2347,8 +2261,7 @@ Security
 
 ---
 
-# SIEM Integration
-
+## SIEM Integration
 A Security Information and Event Management (SIEM) platform collects and correlates logs from multiple sources.
 
 ```
@@ -2388,8 +2301,7 @@ Common SIEM platforms:
 
 ---
 
-# Monitoring and Observability
-
+## Monitoring and Observability
 Modern API architectures require continuous monitoring.
 
 Key metrics include:
@@ -2431,8 +2343,7 @@ Business
 
 ---
 
-# Distributed Tracing
-
+## Distributed Tracing
 In a microservices architecture, a single request may traverse many services.
 
 ```
@@ -2479,8 +2390,7 @@ Popular tools:
 
 ---
 
-# Cloud-Native Security
-
+## Cloud-Native Security
 Cloud deployments introduce additional security requirements.
 
 Examples include:
@@ -2516,10 +2426,8 @@ Kubernetes
 
 ---
 
-# Enterprise Case Study
-
-## Scenario
-
+## Enterprise Case Study
+### Scenario
 A global fintech organization exposes over 1,500 APIs.
 
 Daily traffic:
@@ -2618,8 +2526,7 @@ Result
 
 ---
 
-# Hands-on Lab 1 – Explore an API Gateway
-
+## Hands-on Lab 1 – Explore an API Gateway
 Objective:
 
 Understand how an API Gateway routes requests.
@@ -2642,8 +2549,7 @@ Learning Outcomes:
 
 ---
 
-# Hands-on Lab 2 – Observe Load Balancing
-
+## Hands-on Lab 2 – Observe Load Balancing
 Objective:
 
 Understand traffic distribution.
@@ -2663,8 +2569,7 @@ Learning Outcomes:
 
 ---
 
-# Hands-on Lab 3 – Analyze API Logs
-
+## Hands-on Lab 3 – Analyze API Logs
 Collect logs from:
 
 - API Gateway
@@ -2682,8 +2587,7 @@ This exercise demonstrates how operational logs support both troubleshooting and
 
 ---
 
-# Common Architectural Mistakes
-
+## Common Architectural Mistakes
 Many organizations encounter similar design issues.
 
 Examples:
@@ -2705,10 +2609,8 @@ These weaknesses increase both operational and security risks.
 
 ---
 
-# Troubleshooting
-
-## High Latency
-
+## Troubleshooting
+### High Latency
 Possible causes:
 
 - Database bottlenecks
@@ -2718,8 +2620,7 @@ Possible causes:
 
 ---
 
-## Frequent 502/503 Errors
-
+### Frequent 502/503 Errors
 Possible causes:
 
 - Backend service unavailable
@@ -2729,8 +2630,7 @@ Possible causes:
 
 ---
 
-## Authentication Failures
-
+### Authentication Failures
 Possible causes:
 
 - Expired tokens
@@ -2740,8 +2640,7 @@ Possible causes:
 
 ---
 
-## Service Communication Failures
-
+### Service Communication Failures
 Possible causes:
 
 - DNS resolution issues
@@ -2751,8 +2650,7 @@ Possible causes:
 
 ---
 
-## Uneven Traffic Distribution
-
+### Uneven Traffic Distribution
 Possible causes:
 
 - Load balancer misconfiguration
@@ -2762,10 +2660,8 @@ Possible causes:
 
 ---
 
-# Interview Questions
-
-## Fundamental
-
+## Interview Questions
+### Fundamental
 1. What is API architecture?
 2. Why is layered architecture important?
 3. What is an API Gateway?
@@ -2779,8 +2675,7 @@ Possible causes:
 
 ---
 
-## Intermediate
-
+### Intermediate
 11. Compare API Gateway and Service Mesh.
 12. Explain the role of a load balancer.
 13. Why should APIs avoid direct database access?
@@ -2794,8 +2689,7 @@ Possible causes:
 
 ---
 
-## Scenario-Based
-
+### Scenario-Based
 **Scenario 1**
 
 Your organization's APIs experience a sudden spike in traffic, causing intermittent failures.
@@ -2822,8 +2716,7 @@ An attacker compromises one internal service account.
 
 ---
 
-# Chapter Summary
-
+## Chapter Summary
 In this chapter, we explored the architectural foundations of modern API ecosystems.
 
 We covered:
@@ -2852,8 +2745,7 @@ These concepts provide the architectural knowledge required to understand how se
 
 ---
 
-# Chapter Review
-
+## Chapter Review
 You should now be able to answer:
 
 - What is API architecture?
@@ -2871,16 +2763,13 @@ If you can confidently explain these topics, you are ready to continue.
 
 ---
 
-# References
-
-## RFCs
-
+## References
+### RFCs
 - RFC 9110 – HTTP Semantics
 - RFC 9112 – HTTP/1.1
 - RFC 8446 – TLS 1.3
 
-## Security Standards
-
+### Security Standards
 - OWASP API Security Top 10
 - OWASP ASVS
 - NIST Cybersecurity Framework (CSF)
@@ -2889,8 +2778,7 @@ If you can confidently explain these topics, you are ready to continue.
 - CIS Controls v8
 - Zero Trust Architecture (NIST SP 800-207)
 
-## Further Reading
-
+### Further Reading
 - OpenAPI Specification
 - Kubernetes Documentation
 - Istio Documentation
@@ -2900,8 +2788,7 @@ If you can confidently explain these topics, you are ready to continue.
 
 ---
 
-# What's Next?
-
+## What's Next?
 ➡️ **Chapter 03 – REST API**
 
 In the next chapter, we will take a deep dive into REST (Representational State Transfer), including:

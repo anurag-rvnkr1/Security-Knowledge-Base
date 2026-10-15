@@ -1,12 +1,12 @@
 # 60-Cloud-Web-Security.md
 
-# Part 1 — Introduction to Cloud Web Security, Cloud Computing Models, Shared Responsibility, Cloud Architecture, and Enterprise Foundations
+## Part 1 — Introduction to Cloud Web Security, Cloud Computing Models, Shared Responsibility, Cloud Architecture, and Enterprise Foundations
 
 > **"Cloud Web Security is the practice of protecting cloud-hosted applications, services, infrastructure, identities, data, and operational processes throughout the cloud lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Cloud Web Security?
+## What is Cloud Web Security?
 
 Cloud Web Security focuses on protecting applications and services hosted in cloud environments.
 
@@ -55,7 +55,7 @@ Security should be integrated into every phase of cloud adoption, application de
 
 ---
 
-# Why Cloud Security Matters
+## Why Cloud Security Matters
 
 Organizations use cloud platforms because they provide:
 
@@ -72,7 +72,7 @@ As organizations move critical workloads to the cloud, protecting cloud resource
 
 ---
 
-# Evolution of Computing
+## Evolution of Computing
 
 ```
 Physical Infrastructure
@@ -98,7 +98,7 @@ Cloud computing enables organizations to consume infrastructure and services on 
 
 ---
 
-# What is Cloud Computing?
+## What is Cloud Computing?
 
 Cloud computing delivers computing resources over a network instead of relying solely on local infrastructure.
 
@@ -126,7 +126,7 @@ Resources are provisioned dynamically based on business requirements.
 
 ---
 
-# Cloud Service Models
+## Cloud Service Models
 
 Cloud services are commonly categorized into three primary models.
 
@@ -146,7 +146,7 @@ Each model provides different levels of customer control and provider responsibi
 
 ---
 
-# Infrastructure as a Service (IaaS)
+## Infrastructure as a Service (IaaS)
 
 IaaS provides virtualized infrastructure resources.
 
@@ -170,7 +170,7 @@ Organizations manage their applications and operating systems while the provider
 
 ---
 
-# Platform as a Service (PaaS)
+## Platform as a Service (PaaS)
 
 PaaS provides managed application platforms.
 
@@ -190,7 +190,7 @@ Developers focus primarily on application development while the provider manages
 
 ---
 
-# Software as a Service (SaaS)
+## Software as a Service (SaaS)
 
 SaaS delivers complete software applications.
 
@@ -210,7 +210,7 @@ Customers consume the application while the provider manages the infrastructure 
 
 ---
 
-# Cloud Deployment Models
+## Cloud Deployment Models
 
 ```
 Deployment Models
@@ -230,7 +230,7 @@ Organizations select deployment models based on business, operational, and regul
 
 ---
 
-# Public Cloud
+## Public Cloud
 
 ```
 Organization
@@ -248,7 +248,7 @@ Infrastructure is operated by a cloud provider and shared among multiple custome
 
 ---
 
-# Private Cloud
+## Private Cloud
 
 ```
 Organization
@@ -266,7 +266,7 @@ Private cloud environments provide dedicated resources for a single organization
 
 ---
 
-# Hybrid Cloud
+## Hybrid Cloud
 
 ```
 Private Cloud
@@ -284,7 +284,7 @@ Hybrid cloud combines on-premises or private cloud infrastructure with public cl
 
 ---
 
-# Multi-Cloud
+## Multi-Cloud
 
 ```
 Cloud Provider A
@@ -302,7 +302,7 @@ Organizations use multiple providers to improve flexibility, resilience, or meet
 
 ---
 
-# Shared Responsibility Model
+## Shared Responsibility Model
 
 Cloud security is a shared responsibility between the cloud provider and the customer.
 
@@ -322,7 +322,7 @@ The exact responsibilities vary depending on the cloud service model.
 
 ---
 
-# Shared Responsibility Overview
+## Shared Responsibility Overview
 
 | Cloud Provider | Customer |
 |----------------|----------|
@@ -337,7 +337,7 @@ Understanding responsibilities helps organizations implement appropriate securit
 
 ---
 
-# Cloud Assets
+## Cloud Assets
 
 ```
 Cloud Assets
@@ -365,7 +365,7 @@ Every cloud asset should be inventoried and governed throughout its lifecycle.
 
 ---
 
-# Cloud Identities
+## Cloud Identities
 
 Identity is the foundation of cloud security.
 
@@ -389,7 +389,7 @@ Every user, application, and service should have an appropriately managed identi
 
 ---
 
-# Security by Design
+## Security by Design
 
 Cloud security should begin during planning and architecture.
 
@@ -417,7 +417,7 @@ Early planning reduces operational risk and improves long-term maintainability.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Cloud environments should use multiple complementary security controls.
 
@@ -449,7 +449,7 @@ No single security control should be relied upon exclusively.
 
 ---
 
-# Enterprise Cloud Architecture
+## Enterprise Cloud Architecture
 
 ```
               Business Requirements
@@ -489,7 +489,7 @@ This architecture demonstrates how cloud security spans identities, infrastructu
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational insurance company hosts customer portals and internal business applications in the cloud.
 
@@ -517,7 +517,7 @@ Development teams build secure cloud-native applications, cloud engineers manage
 
 ---
 
-# Benefits of Cloud Security
+## Benefits of Cloud Security
 
 ```
 Business Benefits
@@ -543,7 +543,7 @@ Business Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the architecture of a cloud-hosted web application.
 2. Identify cloud assets and trust boundaries.
@@ -555,7 +555,7 @@ Business Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Cloud Web Security?
 2. What is cloud computing?
@@ -570,7 +570,7 @@ Business Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security into cloud architecture from the beginning.
 - Clearly understand shared responsibilities with the cloud provider.
@@ -583,7 +583,7 @@ Business Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming the cloud provider is responsible for every aspect of security.
 - Ignoring identity governance.
@@ -595,7 +595,7 @@ Business Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cloud Web Security protects cloud-hosted applications, infrastructure, identities, and services.
 - Cloud computing includes IaaS, PaaS, and SaaS service models.
@@ -603,15 +603,15 @@ Business Benefits
 - The Shared Responsibility Model defines security responsibilities between providers and customers.
 - Mature cloud security integrates Security by Design, Defense in Depth, governance, monitoring, and continuous improvement.
 
-# 60-Cloud-Web-Security.md
+## 60-Cloud-Web-Security.md
 
-# Part 2 — Cloud Identity, Access Management, Network Security, Data Protection, Secure Configuration, and Enterprise Governance
+## Part 2 — Cloud Identity, Access Management, Network Security, Data Protection, Secure Configuration, and Enterprise Governance
 
 > **"Strong identity management, secure networking, protected data, standardized configurations, and governance form the foundation of secure cloud operations."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -628,7 +628,7 @@ After completing this part, you will understand:
 
 ---
 
-# Cloud Identity and Access Management (IAM)
+## Cloud Identity and Access Management (IAM)
 
 Identity is the primary security boundary in modern cloud environments.
 
@@ -656,7 +656,7 @@ Every interaction with cloud resources should be associated with a managed ident
 
 ---
 
-# Identity Types
+## Identity Types
 
 ```
 Cloud Identities
@@ -684,7 +684,7 @@ Each identity should have clearly defined ownership and responsibilities.
 
 ---
 
-# Authentication
+## Authentication
 
 Authentication verifies the identity of a user or service.
 
@@ -704,7 +704,7 @@ Organizations should use strong authentication mechanisms and align them with en
 
 ---
 
-# Authorization
+## Authorization
 
 Authorization determines what an authenticated identity is allowed to do.
 
@@ -728,7 +728,7 @@ Authorization policies should be reviewed regularly to ensure they remain approp
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Every identity should receive only the permissions required for its responsibilities.
 
@@ -752,7 +752,7 @@ Least privilege reduces the impact of accidental or unauthorized actions.
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 RBAC simplifies permission management by assigning permissions through predefined roles.
 
@@ -776,7 +776,7 @@ Roles should align with business responsibilities and operational requirements.
 
 ---
 
-# Access Governance
+## Access Governance
 
 ```
 Access Request
@@ -806,7 +806,7 @@ Access should be reviewed regularly to ensure permissions remain appropriate.
 
 ---
 
-# Cloud Networking
+## Cloud Networking
 
 Cloud networking enables communication between applications, services, and users.
 
@@ -834,7 +834,7 @@ Network architecture should be documented and aligned with security requirements
 
 ---
 
-# Network Components
+## Network Components
 
 ```
 Cloud Network
@@ -862,7 +862,7 @@ Each component contributes to secure and reliable communication.
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Logical segmentation limits unnecessary communication between workloads.
 
@@ -888,7 +888,7 @@ Segmentation improves operational resilience and simplifies governance.
 
 ---
 
-# Data Protection
+## Data Protection
 
 Cloud environments process and store valuable business information.
 
@@ -916,7 +916,7 @@ Data protection should align with organizational policies and regulatory require
 
 ---
 
-# Data Lifecycle
+## Data Lifecycle
 
 ```
 Creation
@@ -950,7 +950,7 @@ Security controls should be applied throughout the complete data lifecycle.
 
 ---
 
-# Encryption Concepts
+## Encryption Concepts
 
 Encryption protects the confidentiality of data.
 
@@ -978,7 +978,7 @@ Encryption should be considered for both stored data and data transmitted across
 
 ---
 
-# Data Classification
+## Data Classification
 
 ```
 Business Data
@@ -1006,7 +1006,7 @@ Classification supports appropriate security controls and governance.
 
 ---
 
-# Secure Configuration Management
+## Secure Configuration Management
 
 Cloud resources should follow standardized configuration procedures.
 
@@ -1038,7 +1038,7 @@ Configuration consistency improves operational stability.
 
 ---
 
-# Configuration Governance
+## Configuration Governance
 
 ```
 Configuration
@@ -1066,7 +1066,7 @@ Configuration governance reduces operational risk.
 
 ---
 
-# Enterprise Cloud Workflow
+## Enterprise Cloud Workflow
 
 ```
 Application Development
@@ -1096,7 +1096,7 @@ Every stage contributes to secure cloud operations.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider hosts patient portals and business applications across multiple cloud environments.
 
@@ -1124,7 +1124,7 @@ Platform engineers manage cloud infrastructure, developers deploy secure applica
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1139,7 +1139,7 @@ Platform engineers manage cloud infrastructure, developers deploy secure applica
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1152,7 +1152,7 @@ Platform engineers manage cloud infrastructure, developers deploy secure applica
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise IAM architecture for a cloud environment.
 2. Identify roles and responsibilities using RBAC.
@@ -1164,7 +1164,7 @@ Platform engineers manage cloud infrastructure, developers deploy secure applica
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is IAM considered the foundation of cloud security?
 2. What is the difference between authentication and authorization?
@@ -1179,7 +1179,7 @@ Platform engineers manage cloud infrastructure, developers deploy secure applica
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use centralized IAM with clearly defined roles.
 - Apply least-privilege access across all cloud resources.
@@ -1192,7 +1192,7 @@ Platform engineers manage cloud infrastructure, developers deploy secure applica
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Granting excessive permissions to users or services.
 - Maintaining inconsistent cloud configurations.
@@ -1204,7 +1204,7 @@ Platform engineers manage cloud infrastructure, developers deploy secure applica
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Identity and Access Management is the cornerstone of cloud security.
 - Authentication, authorization, RBAC, and least privilege strengthen access control.
@@ -1212,15 +1212,15 @@ Platform engineers manage cloud infrastructure, developers deploy secure applica
 - Standardized configuration management supports operational consistency.
 - Enterprise cloud environments benefit from centralized governance, monitoring, and continuous review.
 
-# 60-Cloud-Web-Security.md
+## 60-Cloud-Web-Security.md
 
-# Part 3 — Cloud Monitoring, Logging, Security Operations, Compliance, Risk Management, Incident Response, and Operational Excellence
+## Part 3 — Cloud Monitoring, Logging, Security Operations, Compliance, Risk Management, Incident Response, and Operational Excellence
 
 > **"Cloud security is not a one-time deployment activity. Continuous monitoring, centralized logging, governance, compliance, and incident response enable organizations to maintain secure and resilient cloud environments."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1237,7 +1237,7 @@ After completing this part, you will understand:
 
 ---
 
-# Cloud Monitoring
+## Cloud Monitoring
 
 Monitoring provides continuous visibility into cloud resources, workloads, and platform health.
 
@@ -1265,7 +1265,7 @@ Continuous monitoring enables organizations to identify operational issues, main
 
 ---
 
-# Monitoring Objectives
+## Monitoring Objectives
 
 ```
 Cloud Monitoring
@@ -1293,7 +1293,7 @@ Monitoring supports proactive operational management.
 
 ---
 
-# Cloud Resources to Monitor
+## Cloud Resources to Monitor
 
 ```
 Cloud Resources
@@ -1321,7 +1321,7 @@ Organizations should define monitoring requirements for every critical cloud ass
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1351,7 +1351,7 @@ Centralized visibility simplifies operational management across multiple cloud e
 
 ---
 
-# Logging in Cloud Environments
+## Logging in Cloud Environments
 
 Logs provide historical records of activities occurring within cloud services.
 
@@ -1379,7 +1379,7 @@ Centralized logging improves troubleshooting, governance, and operational invest
 
 ---
 
-# Types of Cloud Logs
+## Types of Cloud Logs
 
 ```
 Cloud Logs
@@ -1407,7 +1407,7 @@ Different log sources provide insights into different aspects of cloud operation
 
 ---
 
-# Log Lifecycle
+## Log Lifecycle
 
 ```
 Generation
@@ -1441,7 +1441,7 @@ Organizations should establish retention policies aligned with business and regu
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Audit logging records administrative and operational activities.
 
@@ -1469,7 +1469,7 @@ Audit logs improve accountability and support governance processes.
 
 ---
 
-# Important Audit Events
+## Important Audit Events
 
 ```
 Audit Events
@@ -1497,7 +1497,7 @@ Critical events should be reviewed regularly.
 
 ---
 
-# Security Operations
+## Security Operations
 
 Cloud Security Operations (CloudSecOps) integrates security monitoring into daily operational activities.
 
@@ -1525,7 +1525,7 @@ Security operations teams coordinate monitoring, investigations, and operational
 
 ---
 
-# Operational Responsibilities
+## Operational Responsibilities
 
 ```
 Cloud Operations
@@ -1553,7 +1553,7 @@ Clearly defined responsibilities improve operational efficiency.
 
 ---
 
-# Compliance Integration
+## Compliance Integration
 
 Compliance activities should be embedded into routine cloud operations.
 
@@ -1585,7 +1585,7 @@ Continuous compliance simplifies governance and reduces operational risk.
 
 ---
 
-# Compliance Lifecycle
+## Compliance Lifecycle
 
 ```
 Requirements
@@ -1611,7 +1611,7 @@ Compliance should evolve alongside cloud environments.
 
 ---
 
-# Risk Management
+## Risk Management
 
 Cloud risks should be assessed continuously.
 
@@ -1643,7 +1643,7 @@ Risk management supports informed operational decisions.
 
 ---
 
-# Common Cloud Risk Categories
+## Common Cloud Risk Categories
 
 ```
 Cloud Risks
@@ -1671,7 +1671,7 @@ Categorizing risks helps prioritize security improvements.
 
 ---
 
-# Cloud Incident Response
+## Cloud Incident Response
 
 Cloud incident response should integrate with the organization's overall incident management process.
 
@@ -1703,7 +1703,7 @@ Documented procedures improve response consistency and organizational resilience
 
 ---
 
-# Business Continuity
+## Business Continuity
 
 Business continuity planning helps maintain essential services during operational disruptions.
 
@@ -1731,7 +1731,7 @@ Cloud architectures should support resilient service delivery.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -1757,7 +1757,7 @@ Organizations should use operational experience to strengthen cloud security ove
 
 ---
 
-# Enterprise Cloud Security Architecture
+## Enterprise Cloud Security Architecture
 
 ```
                 Cloud Applications
@@ -1797,7 +1797,7 @@ This architecture demonstrates how monitoring, governance, and security operatio
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial services organization operates business applications across several cloud regions.
 
@@ -1829,7 +1829,7 @@ Cloud engineers manage infrastructure, operations teams monitor platform health,
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1844,7 +1844,7 @@ Cloud engineers manage infrastructure, operations teams monitor platform health,
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1857,7 +1857,7 @@ Cloud engineers manage infrastructure, operations teams monitor platform health,
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a centralized cloud monitoring architecture.
 2. Document the lifecycle of cloud log management.
@@ -1869,7 +1869,7 @@ Cloud engineers manage infrastructure, operations teams monitor platform health,
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is continuous monitoring important in cloud environments?
 2. What is the purpose of centralized logging?
@@ -1884,7 +1884,7 @@ Cloud engineers manage infrastructure, operations teams monitor platform health,
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Continuously monitor all critical cloud resources.
 - Centralize logging and audit records.
@@ -1897,7 +1897,7 @@ Cloud engineers manage infrastructure, operations teams monitor platform health,
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Monitoring only infrastructure while ignoring applications.
 - Maintaining fragmented logging systems.
@@ -1909,7 +1909,7 @@ Cloud engineers manage infrastructure, operations teams monitor platform health,
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Continuous monitoring and centralized logging provide visibility into cloud environments.
 - Audit logging strengthens accountability and governance.
@@ -1917,15 +1917,15 @@ Cloud engineers manage infrastructure, operations teams monitor platform health,
 - Risk management and compliance should be continuous processes.
 - Mature cloud security programs evolve through monitoring, governance, and continuous improvement.
 
-# 60-Cloud-Web-Security.md
+## 60-Cloud-Web-Security.md
 
-# Part 4 — Enterprise Governance, Zero Trust, Cloud Security Maturity, Operational Excellence, Business Continuity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, Cloud Security Maturity, Operational Excellence, Business Continuity, and Chapter Summary
 
 > **"Cloud Web Security is most effective when security is embedded throughout the entire cloud lifecycle—from architecture and identity management to governance, monitoring, operational resilience, and continuous improvement."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1942,7 +1942,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Cloud Governance
+## Enterprise Cloud Governance
 
 Cloud governance establishes policies, standards, responsibilities, and oversight for cloud resources.
 
@@ -1974,7 +1974,7 @@ Governance ensures cloud resources remain secure, compliant, and aligned with bu
 
 ---
 
-# Cloud Governance Framework
+## Cloud Governance Framework
 
 ```
 Cloud Governance
@@ -2004,7 +2004,7 @@ A governance framework provides consistency across cloud environments.
 
 ---
 
-# Zero Trust for Cloud
+## Zero Trust for Cloud
 
 Zero Trust assumes that no identity, device, application, or workload should be automatically trusted.
 
@@ -2036,7 +2036,7 @@ Trust should be continuously verified throughout the session.
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -2064,7 +2064,7 @@ Applying Zero Trust strengthens security across cloud-hosted applications and se
 
 ---
 
-# Cloud Security Architecture
+## Cloud Security Architecture
 
 A secure cloud architecture integrates multiple security layers.
 
@@ -2100,7 +2100,7 @@ Each layer contributes to the overall security posture.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Cloud environments should implement layered security controls.
 
@@ -2136,7 +2136,7 @@ Multiple defensive layers improve resilience against failures and misconfigurati
 
 ---
 
-# Cloud Asset Governance
+## Cloud Asset Governance
 
 Organizations should maintain visibility into all cloud resources.
 
@@ -2166,7 +2166,7 @@ Asset inventories should be updated throughout the resource lifecycle.
 
 ---
 
-# Secure Change Management
+## Secure Change Management
 
 Changes to cloud environments should follow standardized governance.
 
@@ -2198,7 +2198,7 @@ Controlled changes reduce operational risk and improve stability.
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Critical cloud resources should be backed up according to organizational policies.
 
@@ -2226,7 +2226,7 @@ Backup plans should include periodic validation and documentation.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Disaster recovery planning prepares organizations for unexpected outages.
 
@@ -2258,7 +2258,7 @@ Recovery procedures should be tested regularly.
 
 ---
 
-# Business Continuity
+## Business Continuity
 
 Business continuity ensures essential services remain available during disruptions.
 
@@ -2286,7 +2286,7 @@ Business continuity planning supports organizational resilience.
 
 ---
 
-# Cloud Security Maturity Model
+## Cloud Security Maturity Model
 
 ```
 Level 1
@@ -2324,7 +2324,7 @@ Organizations progress through increasing levels of governance, automation, and 
 
 ---
 
-# Characteristics of Mature Cloud Security
+## Characteristics of Mature Cloud Security
 
 ```
 Mature Cloud Security
@@ -2354,7 +2354,7 @@ These characteristics improve operational consistency and resilience.
 
 ---
 
-# Enterprise Cloud Security Architecture
+## Enterprise Cloud Security Architecture
 
 ```
              Business Requirements
@@ -2400,7 +2400,7 @@ This architecture demonstrates the integration of cloud security controls across
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational e-commerce organization hosts customer-facing services across multiple cloud regions.
 
@@ -2432,7 +2432,7 @@ Cloud engineers manage infrastructure, development teams deploy secure applicati
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Cloud Architecture Documented
@@ -2458,7 +2458,7 @@ Cloud engineers manage infrastructure, development teams deploy secure applicati
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2471,9 +2471,9 @@ Cloud engineers manage infrastructure, development teams deploy secure applicati
 
 ---
 
-# Cloud Security Quick Revision
+## Cloud Security Quick Revision
 
-## Cloud Lifecycle
+### Cloud Lifecycle
 
 ```
 Planning
@@ -2501,7 +2501,7 @@ Optimization
 
 ---
 
-## Core Security Principles
+### Core Security Principles
 
 ```
 Security by Design
@@ -2529,7 +2529,7 @@ Continuous Improvement
 
 ---
 
-## Operational Workflow
+### Operational Workflow
 
 ```
 Develop
@@ -2557,7 +2557,7 @@ Improve
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise cloud security architecture for a multi-tier web application.
 2. Identify trust boundaries between identities, cloud services, and business applications.
@@ -2569,7 +2569,7 @@ Improve
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Cloud Web Security?
 2. Why is the Shared Responsibility Model important?
@@ -2584,7 +2584,7 @@ Improve
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security throughout the cloud lifecycle.
 - Clearly understand and document shared responsibilities.
@@ -2597,7 +2597,7 @@ Improve
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming the cloud provider manages all security responsibilities.
 - Granting excessive permissions to cloud identities.
@@ -2609,7 +2609,7 @@ Improve
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

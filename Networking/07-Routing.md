@@ -1,10 +1,10 @@
 # 07 - Routing
 
-# Part 1 — Routing Fundamentals, Router Architecture, Packet Forwarding, and Routing Tables
+## Part 1 — Routing Fundamentals, Router Architecture, Packet Forwarding, and Routing Tables
 
 ---
 
-# Overview
+## Overview
 
 Routing is the process of forwarding packets from one network to another.
 
@@ -16,7 +16,7 @@ Routing is therefore one of the fundamental technologies that enables modern com
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -32,7 +32,7 @@ After completing this chapter, you should be able to:
 
 ---
 
-# What is Routing?
+## What is Routing?
 
 **Routing** is the process of selecting the best path for IP packets to travel between different networks.
 
@@ -64,7 +64,7 @@ Without routing, communication would be limited to devices within the same subne
 
 ---
 
-# Why Routing is Important
+## Why Routing is Important
 
 Routing enables:
 
@@ -81,7 +81,7 @@ Without routers, modern enterprise networks would be isolated islands.
 
 ---
 
-# Routing vs Switching
+## Routing vs Switching
 
 | Feature | Switching | Routing |
 |----------|-----------|----------|
@@ -136,7 +136,7 @@ A router is required because the devices are on different subnets.
 
 ---
 
-# Router Fundamentals
+## Router Fundamentals
 
 A **router** is a Layer 3 device responsible for:
 
@@ -159,7 +159,7 @@ Many enterprise routers also provide:
 
 ---
 
-# Router Components
+## Router Components
 
 A modern router consists of several key components.
 
@@ -180,7 +180,7 @@ A modern router consists of several key components.
 
 ---
 
-## CPU
+### CPU
 
 Responsible for:
 
@@ -192,7 +192,7 @@ Responsible for:
 
 ---
 
-## RAM
+### RAM
 
 Stores:
 
@@ -205,7 +205,7 @@ Stores:
 
 ---
 
-## Flash Storage
+### Flash Storage
 
 Stores:
 
@@ -216,7 +216,7 @@ Stores:
 
 ---
 
-## Network Interfaces
+### Network Interfaces
 
 Interfaces connect routers to networks.
 
@@ -233,7 +233,7 @@ Each interface belongs to a different Layer 3 network.
 
 ---
 
-# Router Interfaces Example
+## Router Interfaces Example
 
 ```
                 Router
@@ -259,7 +259,7 @@ Each interface acts as the gateway for its connected subnet.
 
 ---
 
-# What is a Default Gateway?
+## What is a Default Gateway?
 
 A **default gateway** is the router interface that a host uses to reach networks outside its own subnet.
 
@@ -285,7 +285,7 @@ When the laptop needs to communicate with a remote network, it forwards packets 
 
 ---
 
-# Local vs Remote Traffic
+## Local vs Remote Traffic
 
 Suppose:
 
@@ -339,7 +339,7 @@ The router forwards the packet toward the destination network.
 
 ---
 
-# Packet Forwarding Process
+## Packet Forwarding Process
 
 When a packet arrives at a router:
 
@@ -375,7 +375,7 @@ The router does **not** change the destination IP address during normal forwardi
 
 ---
 
-# Packet Journey Example
+## Packet Journey Example
 
 Source:
 
@@ -432,7 +432,7 @@ At every router:
 
 ---
 
-# What is a Routing Table?
+## What is a Routing Table?
 
 A **routing table** is a database containing information about reachable networks and the paths used to reach them.
 
@@ -449,7 +449,7 @@ The router consults this table for every packet it forwards.
 
 ---
 
-# Routing Table Components
+## Routing Table Components
 
 A routing table entry typically includes:
 
@@ -463,11 +463,11 @@ A routing table entry typically includes:
 
 ---
 
-# Types of Routes
+## Types of Routes
 
 Routers can learn routes from different sources.
 
-### Connected Routes
+#### Connected Routes
 
 Automatically created when an interface is configured with an IP address.
 
@@ -481,7 +481,7 @@ Connected
 
 ---
 
-### Static Routes
+#### Static Routes
 
 Manually configured by an administrator.
 
@@ -501,7 +501,7 @@ Next Hop:
 
 ---
 
-### Dynamic Routes
+#### Dynamic Routes
 
 Learned automatically through routing protocols such as:
 
@@ -515,7 +515,7 @@ These protocols are covered later in this chapter.
 
 ---
 
-# Default Route
+## Default Route
 
 A **default route** is used when no more specific route exists.
 
@@ -539,7 +539,7 @@ This is commonly referred to as the **Gateway of Last Resort**.
 
 ---
 
-# Longest Prefix Match Review
+## Longest Prefix Match Review
 
 Consider the routing table:
 
@@ -565,7 +565,7 @@ because it has the **longest matching prefix**.
 
 ---
 
-# Enterprise Routing Example
+## Enterprise Routing Example
 
 ```
                  Internet
@@ -582,7 +582,7 @@ The core router maintains routes to all internal networks and forwards traffic b
 
 ---
 
-# Common Routing Issues
+## Common Routing Issues
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -595,7 +595,7 @@ The core router maintains routes to all internal networks and forwards traffic b
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient routing provides:
 
@@ -611,7 +611,7 @@ Poor routing design can result in outages, degraded performance, and operational
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Routing enables communication between different IP networks.
 - Routers operate at OSI Layer 3 using IP addresses.
@@ -621,13 +621,13 @@ Poor routing design can result in outages, degraded performance, and operational
 - The **Longest Prefix Match** rule ensures the most specific route is selected.
 - Routing is a foundational technology for enterprise, cloud, and Internet connectivity.
 
-# 07 - Routing
+## 07 - Routing
 
-# Part 2 — Routing Decisions, Administrative Distance, Routing Metrics, FIB, CEF, ECMP, and Packet Forwarding
+## Part 2 — Routing Decisions, Administrative Distance, Routing Metrics, FIB, CEF, ECMP, and Packet Forwarding
 
 ---
 
-# Overview
+## Overview
 
 In the previous section, we learned that routers use **routing tables** to forward packets between networks.
 
@@ -646,7 +646,7 @@ Understanding these decisions is essential for network engineers, SOC analysts, 
 
 ---
 
-# Packet Forwarding Workflow
+## Packet Forwarding Workflow
 
 When a router receives a packet, it follows a structured forwarding process.
 
@@ -690,7 +690,7 @@ Transmit Packet
 
 ---
 
-# Control Plane vs Data Plane
+## Control Plane vs Data Plane
 
 Enterprise routers separate responsibilities into different operational planes.
 
@@ -705,7 +705,7 @@ Enterprise routers separate responsibilities into different operational planes.
 
 ---
 
-## Control Plane
+### Control Plane
 
 Responsible for:
 
@@ -726,7 +726,7 @@ The control plane decides **where traffic should go**.
 
 ---
 
-## Data Plane
+### Data Plane
 
 Responsible for:
 
@@ -739,7 +739,7 @@ The data plane determines **how traffic is forwarded**.
 
 ---
 
-# Routing Information Base (RIB)
+## Routing Information Base (RIB)
 
 The **Routing Information Base (RIB)** is the logical routing table maintained by the control plane.
 
@@ -762,7 +762,7 @@ The RIB is responsible for route selection.
 
 ---
 
-# Forwarding Information Base (FIB)
+## Forwarding Information Base (FIB)
 
 The **Forwarding Information Base (FIB)** is an optimized forwarding table used by the data plane.
 
@@ -786,7 +786,7 @@ Unlike the RIB, the FIB is optimized for rapid lookups so packets can be forward
 
 ---
 
-# Why Routers Use a FIB
+## Why Routers Use a FIB
 
 If routers searched the full routing table for every packet, forwarding performance would suffer.
 
@@ -800,7 +800,7 @@ This separation improves scalability and throughput.
 
 ---
 
-# Cisco Express Forwarding (CEF)
+## Cisco Express Forwarding (CEF)
 
 **Cisco Express Forwarding (CEF)** is Cisco's high-performance Layer 3 forwarding architecture.
 
@@ -826,7 +826,7 @@ Modern enterprise routers and multilayer switches typically rely on CEF or equiv
 
 ---
 
-# Adjacency Table
+## Adjacency Table
 
 The adjacency table maps:
 
@@ -852,7 +852,7 @@ This allows the router to quickly build the outgoing Ethernet frame.
 
 ---
 
-# ARP and Next-Hop Resolution
+## ARP and Next-Hop Resolution
 
 Before sending a packet on an Ethernet network, the router must know the destination MAC address.
 
@@ -892,7 +892,7 @@ For IPv6, this process uses **Neighbor Discovery Protocol (NDP)** instead of ARP
 
 ---
 
-# Route Lookup Process
+## Route Lookup Process
 
 A simplified route lookup:
 
@@ -926,7 +926,7 @@ Forward Packet
 
 ---
 
-# Longest Prefix Match (LPM)
+## Longest Prefix Match (LPM)
 
 Routers may have multiple matching routes.
 
@@ -954,7 +954,7 @@ because it has the **longest matching prefix**.
 
 ---
 
-# Administrative Distance (AD)
+## Administrative Distance (AD)
 
 Sometimes, a router learns the same destination through multiple sources.
 
@@ -982,7 +982,7 @@ Lower values are preferred.
 
 ---
 
-# Common Administrative Distances
+## Common Administrative Distances
 
 | Route Source | Administrative Distance |
 |---------------|-----------------------:|
@@ -1000,7 +1000,7 @@ Lower values are preferred.
 
 ---
 
-# Example — Administrative Distance
+## Example — Administrative Distance
 
 Suppose the router learns:
 
@@ -1036,7 +1036,7 @@ because it has the lower Administrative Distance.
 
 ---
 
-# Routing Metrics
+## Routing Metrics
 
 Administrative Distance decides **which routing source is trusted**.
 
@@ -1056,7 +1056,7 @@ Examples:
 
 ---
 
-# Hop Count
+## Hop Count
 
 RIP selects routes based on:
 
@@ -1088,7 +1088,7 @@ Smaller hop counts are preferred.
 
 ---
 
-# OSPF Cost
+## OSPF Cost
 
 OSPF uses **cost**, which is generally based on interface bandwidth.
 
@@ -1096,7 +1096,7 @@ Higher-bandwidth links typically have lower costs and are preferred over slower 
 
 ---
 
-# Equal-Cost Multi-Path (ECMP)
+## Equal-Cost Multi-Path (ECMP)
 
 Sometimes multiple routes have:
 
@@ -1121,7 +1121,7 @@ This feature is called **Equal-Cost Multi-Path (ECMP)**.
 
 ---
 
-# Benefits of ECMP
+## Benefits of ECMP
 
 - Load sharing
 - Better bandwidth utilization
@@ -1133,7 +1133,7 @@ Many enterprise networks and data centers use ECMP extensively.
 
 ---
 
-# Recursive Route Lookup
+## Recursive Route Lookup
 
 Sometimes a route points to a next-hop IP address rather than a directly connected interface.
 
@@ -1163,7 +1163,7 @@ The router repeats route lookups until it finds a directly connected interface.
 
 ---
 
-# TTL (Time To Live)
+## TTL (Time To Live)
 
 Each IPv4 packet contains a **Time To Live (TTL)** field.
 
@@ -1191,7 +1191,7 @@ IPv6 uses a similar field called the **Hop Limit**.
 
 ---
 
-# Enterprise Packet Walkthrough
+## Enterprise Packet Walkthrough
 
 Consider the following path:
 
@@ -1233,7 +1233,7 @@ The forwarding sequence:
 
 ---
 
-# Common Routing Decision Problems
+## Common Routing Decision Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1246,7 +1246,7 @@ The forwarding sequence:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The **RIB** stores learned routes, while the **FIB** is optimized for fast forwarding.
 - The **control plane** computes routes; the **data plane** forwards packets.
@@ -1256,13 +1256,13 @@ The forwarding sequence:
 - **ECMP** allows traffic to be distributed across multiple equal-cost paths.
 - ARP (IPv4) and Neighbor Discovery (IPv6) resolve next-hop Layer 2 addresses before packets are forwarded.
 
-# 07 - Routing
+## 07 - Routing
 
-# Part 3 — Static Routing, Dynamic Routing Protocols, OSPF, EIGRP, IS-IS, BGP, and Enterprise Routing Design
+## Part 3 — Static Routing, Dynamic Routing Protocols, OSPF, EIGRP, IS-IS, BGP, and Enterprise Routing Design
 
 ---
 
-# Overview
+## Overview
 
 Routers need a way to learn how to reach remote networks.
 
@@ -1292,7 +1292,7 @@ Small networks may rely entirely on static routes, while enterprise networks typ
 
 ---
 
-# Route Learning Methods
+## Route Learning Methods
 
 | Method | Learned From | Typical Use |
 |----------|--------------|-------------|
@@ -1302,7 +1302,7 @@ Small networks may rely entirely on static routes, while enterprise networks typ
 
 ---
 
-# Connected Routes
+## Connected Routes
 
 Whenever an IP address is assigned to an active router interface, the router automatically installs a connected route.
 
@@ -1334,7 +1334,7 @@ No manual configuration is required.
 
 ---
 
-# Static Routing
+## Static Routing
 
 A **static route** is manually configured by a network administrator.
 
@@ -1368,7 +1368,7 @@ Next Hop
 
 ---
 
-# Advantages of Static Routing
+## Advantages of Static Routing
 
 - Simple
 - Predictable
@@ -1379,7 +1379,7 @@ Next Hop
 
 ---
 
-# Disadvantages
+## Disadvantages
 
 - Manual configuration
 - Poor scalability
@@ -1389,7 +1389,7 @@ Next Hop
 
 ---
 
-# Default Route
+## Default Route
 
 Instead of configuring routes to every possible destination, a router can use a **default route**.
 
@@ -1425,7 +1425,7 @@ ISP
 
 ---
 
-# Floating Static Route
+## Floating Static Route
 
 A **floating static route** acts as a backup route.
 
@@ -1453,7 +1453,7 @@ The static route remains inactive until the OSPF route is lost.
 
 ---
 
-# Dynamic Routing
+## Dynamic Routing
 
 Dynamic routing protocols automatically:
 
@@ -1472,7 +1472,7 @@ Benefits include:
 
 ---
 
-# Distance Vector vs Link-State
+## Distance Vector vs Link-State
 
 Routing protocols are commonly categorized as:
 
@@ -1487,7 +1487,7 @@ Each category uses a different algorithm to determine the best path.
 
 ---
 
-# Routing Protocol Comparison
+## Routing Protocol Comparison
 
 | Protocol | Type | Metric | Typical Scale |
 |----------|------|--------|---------------|
@@ -1499,7 +1499,7 @@ Each category uses a different algorithm to determine the best path.
 
 ---
 
-# RIP (Routing Information Protocol)
+## RIP (Routing Information Protocol)
 
 RIP is one of the oldest dynamic routing protocols.
 
@@ -1533,7 +1533,7 @@ Hop count:
 
 ---
 
-## Advantages of RIP
+### Advantages of RIP
 
 - Simple configuration
 - Easy to understand
@@ -1541,7 +1541,7 @@ Hop count:
 
 ---
 
-## Limitations
+### Limitations
 
 - Slow convergence
 - Limited scalability
@@ -1552,7 +1552,7 @@ RIP is rarely deployed in large enterprise environments today.
 
 ---
 
-# OSPF (Open Shortest Path First)
+## OSPF (Open Shortest Path First)
 
 OSPF is one of the most widely used enterprise Interior Gateway Protocols (IGPs).
 
@@ -1567,7 +1567,7 @@ Characteristics:
 
 ---
 
-# OSPF Areas
+## OSPF Areas
 
 Large OSPF deployments divide the network into **areas**.
 
@@ -1588,7 +1588,7 @@ Benefits:
 
 ---
 
-# OSPF Router Types
+## OSPF Router Types
 
 Common OSPF router roles include:
 
@@ -1601,7 +1601,7 @@ Each role has specific responsibilities for route exchange and area connectivity
 
 ---
 
-# OSPF Neighbor States
+## OSPF Neighbor States
 
 Routers establish neighbor relationships before exchanging routes.
 
@@ -1639,7 +1639,7 @@ Only routers in the **Full** state have synchronized link-state databases.
 
 ---
 
-# Designated Router (DR) and Backup Designated Router (BDR)
+## Designated Router (DR) and Backup Designated Router (BDR)
 
 On multi-access networks (such as Ethernet), OSPF elects:
 
@@ -1654,7 +1654,7 @@ Purpose:
 
 ---
 
-# Link-State Advertisements (LSAs)
+## Link-State Advertisements (LSAs)
 
 OSPF shares topology information using **Link-State Advertisements (LSAs)**.
 
@@ -1670,7 +1670,7 @@ Routers build a common **Link-State Database (LSDB)** from received LSAs.
 
 ---
 
-# Dijkstra's SPF Algorithm
+## Dijkstra's SPF Algorithm
 
 OSPF uses the **Shortest Path First (SPF)** algorithm to calculate the most efficient path.
 
@@ -1694,7 +1694,7 @@ Install Best Routes
 
 ---
 
-# OSPF Cost
+## OSPF Cost
 
 OSPF chooses paths based on **cost**, which is generally derived from interface bandwidth.
 
@@ -1710,7 +1710,7 @@ Lower total cost is preferred.
 
 ---
 
-# EIGRP (Enhanced Interior Gateway Routing Protocol)
+## EIGRP (Enhanced Interior Gateway Routing Protocol)
 
 EIGRP is an advanced distance-vector protocol originally developed by Cisco.
 
@@ -1725,7 +1725,7 @@ It uses the **Diffusing Update Algorithm (DUAL)** to calculate loop-free paths.
 
 ---
 
-# EIGRP Metric
+## EIGRP Metric
 
 EIGRP uses a composite metric based primarily on:
 
@@ -1740,7 +1740,7 @@ Additional optional factors include:
 
 ---
 
-# DUAL Algorithm
+## DUAL Algorithm
 
 DUAL provides:
 
@@ -1752,7 +1752,7 @@ This reduces downtime during network failures.
 
 ---
 
-# IS-IS (Intermediate System to Intermediate System)
+## IS-IS (Intermediate System to Intermediate System)
 
 IS-IS is another link-state routing protocol.
 
@@ -1771,7 +1771,7 @@ Characteristics:
 
 ---
 
-# BGP (Border Gateway Protocol)
+## BGP (Border Gateway Protocol)
 
 BGP is the routing protocol that powers the Internet.
 
@@ -1799,7 +1799,7 @@ Each organization advertises reachable networks to its neighbors.
 
 ---
 
-# Interior vs Exterior Routing
+## Interior vs Exterior Routing
 
 | Type | Protocols |
 |------|-----------|
@@ -1812,7 +1812,7 @@ BGP operates **between** organizations or autonomous systems.
 
 ---
 
-# Autonomous System (AS)
+## Autonomous System (AS)
 
 An **Autonomous System** is a collection of IP networks managed under a single administrative authority.
 
@@ -1840,7 +1840,7 @@ AS15169
 
 ---
 
-# BGP Path Selection (Simplified)
+## BGP Path Selection (Simplified)
 
 BGP evaluates multiple attributes to determine the preferred route.
 
@@ -1856,7 +1856,7 @@ Unlike IGPs, BGP focuses on routing policy in addition to path efficiency.
 
 ---
 
-# Route Convergence
+## Route Convergence
 
 **Convergence** is the time required for routers to agree on the current network topology after a change.
 
@@ -1868,7 +1868,7 @@ Fast convergence results in:
 
 ---
 
-# Route Redistribution
+## Route Redistribution
 
 Organizations sometimes run multiple routing protocols.
 
@@ -1892,7 +1892,7 @@ Because it can introduce routing loops or suboptimal paths if misconfigured, it 
 
 ---
 
-# Enterprise Routing Protocol Selection
+## Enterprise Routing Protocol Selection
 
 | Environment | Recommended Protocol |
 |-------------|----------------------|
@@ -1907,7 +1907,7 @@ Protocol selection depends on scalability, interoperability, operational require
 
 ---
 
-# Common Routing Protocol Issues
+## Common Routing Protocol Issues
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1919,7 +1919,7 @@ Protocol selection depends on scalability, interoperability, operational require
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - **Static routing** is simple and predictable but does not scale well.
 - **Dynamic routing protocols** automatically discover and maintain routes.
@@ -1929,13 +1929,13 @@ Protocol selection depends on scalability, interoperability, operational require
 - **BGP** connects autonomous systems and forms the foundation of Internet routing.
 - Route convergence, redistribution, and protocol selection are critical aspects of enterprise network design.
 
-# 07 - Routing
+## 07 - Routing
 
-# Part 4 — Enterprise WAN Architecture, Routing Security, High Availability, Practical Labs, Troubleshooting, Interview Questions, and Chapter Review
+## Part 4 — Enterprise WAN Architecture, Routing Security, High Availability, Practical Labs, Troubleshooting, Interview Questions, and Chapter Review
 
 ---
 
-# Overview
+## Overview
 
 Enterprise routing extends far beyond forwarding packets between two networks.
 
@@ -1953,7 +1953,7 @@ This section focuses on real-world enterprise routing architectures, routing sec
 
 ---
 
-# Enterprise Routing Architecture
+## Enterprise Routing Architecture
 
 Large organizations typically follow a hierarchical design.
 
@@ -1982,7 +1982,7 @@ Benefits include:
 
 ---
 
-# Core Layer
+## Core Layer
 
 Responsibilities:
 
@@ -2001,7 +2001,7 @@ Characteristics:
 
 ---
 
-# Distribution Layer
+## Distribution Layer
 
 Responsibilities:
 
@@ -2015,7 +2015,7 @@ This layer connects the access layer to the network core.
 
 ---
 
-# Access Layer
+## Access Layer
 
 Responsibilities:
 
@@ -2035,7 +2035,7 @@ Examples of connected devices:
 
 ---
 
-# Enterprise WAN Technologies
+## Enterprise WAN Technologies
 
 Organizations connect geographically separated sites using Wide Area Networks (WANs).
 
@@ -2050,7 +2050,7 @@ Common technologies include:
 
 ---
 
-# MPLS (Multiprotocol Label Switching)
+## MPLS (Multiprotocol Label Switching)
 
 MPLS forwards packets using **labels** instead of repeated IP route lookups.
 
@@ -2088,7 +2088,7 @@ MPLS remains common in service provider and enterprise WAN environments.
 
 ---
 
-# SD-WAN (Software-Defined WAN)
+## SD-WAN (Software-Defined WAN)
 
 SD-WAN centralizes WAN management and dynamically selects the best path across multiple transport links.
 
@@ -2120,7 +2120,7 @@ Benefits:
 
 ---
 
-# Hybrid Cloud Routing
+## Hybrid Cloud Routing
 
 Modern enterprises frequently connect on-premises networks to cloud providers.
 
@@ -2146,7 +2146,7 @@ These services provide private, high-performance connectivity between enterprise
 
 ---
 
-# High Availability (HA)
+## High Availability (HA)
 
 Routing infrastructures should continue operating during device or link failures.
 
@@ -2160,7 +2160,7 @@ Common HA strategies:
 
 ---
 
-# First Hop Redundancy Protocols (FHRPs)
+## First Hop Redundancy Protocols (FHRPs)
 
 Hosts typically have a single default gateway. FHRPs provide gateway redundancy.
 
@@ -2174,7 +2174,7 @@ These protocols present a virtual gateway address to hosts.
 
 ---
 
-## HSRP (Hot Standby Router Protocol)
+### HSRP (Hot Standby Router Protocol)
 
 ```
 Host
@@ -2191,7 +2191,7 @@ If the active router fails, the standby router assumes the virtual gateway role.
 
 ---
 
-## VRRP (Virtual Router Redundancy Protocol)
+### VRRP (Virtual Router Redundancy Protocol)
 
 VRRP is an open standard that provides gateway redundancy similar to HSRP.
 
@@ -2203,7 +2203,7 @@ Advantages:
 
 ---
 
-## GLBP (Gateway Load Balancing Protocol)
+### GLBP (Gateway Load Balancing Protocol)
 
 GLBP extends gateway redundancy by also providing load balancing.
 
@@ -2215,7 +2215,7 @@ Benefits:
 
 ---
 
-# Routing Security
+## Routing Security
 
 Attackers may target routing infrastructure to intercept, redirect, or disrupt traffic.
 
@@ -2231,7 +2231,7 @@ Protecting routing infrastructure is a critical aspect of enterprise cybersecuri
 
 ---
 
-# BGP Hijacking
+## BGP Hijacking
 
 A malicious or misconfigured Autonomous System advertises IP prefixes it does not legitimately own.
 
@@ -2263,7 +2263,7 @@ Potential impacts:
 
 ---
 
-# Route Leaks
+## Route Leaks
 
 A route leak occurs when routing information is advertised beyond its intended scope.
 
@@ -2276,7 +2276,7 @@ Consequences:
 
 ---
 
-# Route Authentication
+## Route Authentication
 
 Many routing protocols support authentication to verify routing updates.
 
@@ -2291,7 +2291,7 @@ Authentication helps prevent unauthorized devices from participating in routing 
 
 ---
 
-# Reverse Path Forwarding (uRPF)
+## Reverse Path Forwarding (uRPF)
 
 **Unicast Reverse Path Forwarding (uRPF)** validates that incoming packets arrive on an interface consistent with the router's routing information.
 
@@ -2304,7 +2304,7 @@ uRPF is commonly deployed at network edges.
 
 ---
 
-# RPKI (Resource Public Key Infrastructure)
+## RPKI (Resource Public Key Infrastructure)
 
 RPKI enables network operators to validate whether a BGP announcement is authorized by the holder of an IP prefix.
 
@@ -2318,7 +2318,7 @@ Many service providers now support RPKI validation.
 
 ---
 
-# Enterprise Routing Best Practices
+## Enterprise Routing Best Practices
 
 - Use hierarchical network design.
 - Deploy dynamic routing where appropriate.
@@ -2331,7 +2331,7 @@ Many service providers now support RPKI validation.
 
 ---
 
-# Cisco IOS Verification
+## Cisco IOS Verification
 
 Display routing table:
 
@@ -2373,7 +2373,7 @@ These commands help verify routing operation and neighbor relationships.
 
 ---
 
-# Linux Verification
+## Linux Verification
 
 View routing table:
 
@@ -2401,7 +2401,7 @@ ip addr
 
 ---
 
-# Windows Verification
+## Windows Verification
 
 Display routing table:
 
@@ -2429,7 +2429,7 @@ arp -a
 
 ---
 
-# Wireshark Analysis
+## Wireshark Analysis
 
 Useful display filters:
 
@@ -2461,7 +2461,7 @@ Packet captures help validate routing behavior and diagnose protocol issues.
 
 ---
 
-# Practical Lab 1 — Static Routing
+## Practical Lab 1 — Static Routing
 
 Topology:
 
@@ -2489,7 +2489,7 @@ Tasks:
 
 ---
 
-# Practical Lab 2 — OSPF
+## Practical Lab 2 — OSPF
 
 Configure three routers.
 
@@ -2503,7 +2503,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — Route Failure
+## Practical Lab 3 — Route Failure
 
 Scenario:
 
@@ -2518,9 +2518,9 @@ Tasks:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A company connects two data centers and three regional offices.
 
@@ -2531,7 +2531,7 @@ Requirements:
 - Cloud connectivity
 - Secure branch communication
 
-### Solution
+#### Solution
 
 - OSPF within each site
 - BGP at Internet edges
@@ -2545,7 +2545,7 @@ This design improves resilience, scalability, and operational flexibility.
 
 ---
 
-# Troubleshooting Methodology
+## Troubleshooting Methodology
 
 When diagnosing routing problems:
 
@@ -2585,57 +2585,57 @@ A structured workflow reduces troubleshooting time and avoids unnecessary config
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is routing?
+#### What is routing?
 
 Routing is the process of forwarding packets between different IP networks based on destination IP addresses and routing information.
 
 ---
 
-### What is the difference between static and dynamic routing?
+#### What is the difference between static and dynamic routing?
 
 Static routing is manually configured, while dynamic routing protocols automatically discover, advertise, and maintain routes.
 
 ---
 
-### What is a default route?
+#### What is a default route?
 
 A default route (`0.0.0.0/0`) is used when no more specific route exists for a destination.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### Explain Administrative Distance.
+#### Explain Administrative Distance.
 
 Administrative Distance measures the trustworthiness of a routing source. When multiple routing sources advertise the same destination, the router prefers the route with the lowest Administrative Distance.
 
 ---
 
-### What is OSPF?
+#### What is OSPF?
 
 OSPF is a link-state Interior Gateway Protocol (IGP) that uses the Shortest Path First algorithm to calculate efficient routes within an autonomous system.
 
 ---
 
-### What is BGP used for?
+#### What is BGP used for?
 
 BGP exchanges routing information between autonomous systems and forms the foundation of Internet routing.
 
 ---
 
-## Advanced
+### Advanced
 
-### Explain route summarization.
+#### Explain route summarization.
 
 Route summarization combines contiguous networks into a larger aggregate prefix, reducing routing table size and improving scalability.
 
 ---
 
-### How would you secure enterprise routing?
+#### How would you secure enterprise routing?
 
 A strong answer should include:
 
@@ -2650,7 +2650,7 @@ A strong answer should include:
 
 ---
 
-### How would you troubleshoot a routing failure?
+#### How would you troubleshoot a routing failure?
 
 An effective approach includes:
 
@@ -2664,9 +2664,9 @@ An effective approach includes:
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 791 — Internet Protocol (IPv4)
 - RFC 2328 — OSPF Version 2
@@ -2674,7 +2674,7 @@ An effective approach includes:
 - RFC 5880 — Bidirectional Forwarding Detection (BFD)
 - RFC 7454 — BGP Operations and Security
 
-## Organizations
+### Organizations
 
 - IETF
 - IANA
@@ -2683,13 +2683,13 @@ An effective approach includes:
 
 ---
 
-# Summary
+## Summary
 
 Routing enables communication between networks and forms the backbone of enterprise and Internet connectivity. Static routes offer simplicity, while dynamic routing protocols provide scalability and resilience. Enterprise routing architectures combine hierarchical design, redundancy, secure routing practices, and cloud connectivity to deliver reliable, high-performance networks.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -2731,7 +2731,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`08-Switching.md`**, will cover:
 

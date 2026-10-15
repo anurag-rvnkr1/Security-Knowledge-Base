@@ -1410,7 +1410,7 @@ Encryption should be implemented as a default security control rather than an op
 
 ---
 
-# Defense-in-Depth for Encryption
+## Defense-in-Depth for Encryption
 
 ```
                   Sensitive Data
@@ -1444,7 +1444,7 @@ Every layer contributes to protecting encrypted information from unauthorized ac
 
 ---
 
-# Encrypt Data at Rest
+## Encrypt Data at Rest
 
 All sensitive information stored in cloud environments should be encrypted.
 
@@ -1475,7 +1475,7 @@ Encryption at rest significantly reduces the impact of storage compromise.
 
 ---
 
-# Encrypt Data in Transit
+## Encrypt Data in Transit
 
 Every communication involving sensitive information should use secure transport encryption.
 
@@ -1505,7 +1505,7 @@ Avoid transmitting sensitive information over unencrypted protocols.
 
 ---
 
-# Protect Data in Use
+## Protect Data in Use
 
 Sensitive workloads should also protect information while it is being processed.
 
@@ -1520,7 +1520,7 @@ These technologies reduce exposure during active processing.
 
 ---
 
-# Use Strong Cryptographic Algorithms
+## Use Strong Cryptographic Algorithms
 
 Organizations should adopt modern, industry-approved algorithms.
 
@@ -1542,7 +1542,7 @@ Avoid deprecated algorithms such as:
 
 ---
 
-# Protect Cryptographic Keys
+## Protect Cryptographic Keys
 
 Encryption is only effective if cryptographic keys remain secure.
 
@@ -1571,7 +1571,7 @@ Keys should never be stored in plaintext.
 
 ---
 
-# Use Customer-Managed Keys When Required
+## Use Customer-Managed Keys When Required
 
 Many cloud providers support:
 
@@ -1584,7 +1584,7 @@ Organizations with strict compliance or regulatory requirements often prefer cus
 
 ---
 
-# Implement Envelope Encryption
+## Implement Envelope Encryption
 
 Envelope Encryption improves scalability and security.
 
@@ -1621,7 +1621,7 @@ Benefits include:
 
 ---
 
-# Rotate Encryption Keys
+## Rotate Encryption Keys
 
 Cryptographic keys should not remain active indefinitely.
 
@@ -1653,7 +1653,7 @@ Regular rotation limits the impact of compromised keys.
 
 ---
 
-# Secure Certificate Management
+## Secure Certificate Management
 
 Certificates protect encrypted communication.
 
@@ -1681,7 +1681,7 @@ Expired certificates may interrupt secure communication.
 
 ---
 
-# Enforce Least Privilege for Key Access
+## Enforce Least Privilege for Key Access
 
 Only authorized users and applications should access encryption keys.
 
@@ -1710,7 +1710,7 @@ Recommendations:
 
 ---
 
-# Secure APIs Using Encryption
+## Secure APIs Using Encryption
 
 Cloud APIs should always use encrypted communication.
 
@@ -1726,7 +1726,7 @@ Never expose APIs over plaintext HTTP.
 
 ---
 
-# Protect Backups
+## Protect Backups
 
 Backups often contain highly sensitive information.
 
@@ -1753,7 +1753,7 @@ Secure Backup Vault
 
 ---
 
-# Secure Storage Services
+## Secure Storage Services
 
 Cloud storage should combine encryption with access control.
 
@@ -1769,7 +1769,7 @@ Encryption alone cannot compensate for poor access control.
 
 ---
 
-# Monitor Cryptographic Events
+## Monitor Cryptographic Events
 
 Organizations should continuously monitor:
 
@@ -1801,7 +1801,7 @@ Continuous monitoring supports rapid detection of suspicious activity.
 
 ---
 
-# Secure Secrets
+## Secure Secrets
 
 Applications should never store secrets directly in:
 
@@ -1814,9 +1814,9 @@ Instead, use dedicated secrets management services integrated with KMS where app
 
 ---
 
-# Best Practices
+## Best Practices
 
-## 1. Enable Encryption by Default
+### 1. Enable Encryption by Default
 
 All newly created storage resources should automatically enable encryption.
 
@@ -1824,7 +1824,7 @@ Avoid optional encryption configurations for production environments.
 
 ---
 
-## 2. Use Strong Industry-Approved Algorithms
+### 2. Use Strong Industry-Approved Algorithms
 
 Adopt modern cryptographic standards and periodically review them against evolving industry guidance.
 
@@ -1832,7 +1832,7 @@ Avoid obsolete algorithms for new deployments.
 
 ---
 
-## 3. Protect Encryption Keys
+### 3. Protect Encryption Keys
 
 Treat cryptographic keys as highly sensitive assets.
 
@@ -1840,7 +1840,7 @@ Store them separately from encrypted data and limit administrative access.
 
 ---
 
-## 4. Rotate Keys Regularly
+### 4. Rotate Keys Regularly
 
 Implement documented key rotation procedures for:
 
@@ -1853,7 +1853,7 @@ Regular rotation limits exposure if keys are compromised.
 
 ---
 
-## 5. Enforce Least Privilege
+### 5. Enforce Least Privilege
 
 Only authorized users, services, and applications should perform cryptographic operations.
 
@@ -1861,7 +1861,7 @@ Review permissions regularly.
 
 ---
 
-## 6. Encrypt Every Sensitive Communication
+### 6. Encrypt Every Sensitive Communication
 
 Protect all sensitive traffic using secure transport protocols.
 
@@ -1875,7 +1875,7 @@ This includes:
 
 ---
 
-## 7. Monitor Key Usage
+### 7. Monitor Key Usage
 
 Alert on:
 
@@ -1889,7 +1889,7 @@ Behavioral monitoring can identify misuse early.
 
 ---
 
-## 8. Protect Certificates
+### 8. Protect Certificates
 
 Maintain an inventory of certificates and monitor:
 
@@ -1902,7 +1902,7 @@ Automate certificate renewal where possible.
 
 ---
 
-## 9. Encrypt Backups and Archives
+### 9. Encrypt Backups and Archives
 
 Archived and backup data should receive the same level of cryptographic protection as production data.
 
@@ -1910,7 +1910,7 @@ Regularly validate recovery procedures.
 
 ---
 
-## 10. Integrate Encryption with Zero Trust
+### 10. Integrate Encryption with Zero Trust
 
 Encryption should complement—not replace—identity verification and authorization.
 
@@ -1924,9 +1924,9 @@ Every request to access encrypted data should verify:
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
-### Relying Only on Encryption
+#### Relying Only on Encryption
 
 Encryption does not replace:
 
@@ -1940,7 +1940,7 @@ Multiple security controls should work together.
 
 ---
 
-### Hardcoding Encryption Keys
+#### Hardcoding Encryption Keys
 
 Embedding keys in:
 
@@ -1955,7 +1955,7 @@ Use managed Key Management Services instead.
 
 ---
 
-### Using Weak Algorithms
+#### Using Weak Algorithms
 
 Legacy algorithms such as DES, RC4, and MD5 (for security-sensitive uses) should not be used in modern cloud deployments.
 
@@ -1963,7 +1963,7 @@ Follow current organizational and industry cryptographic standards.
 
 ---
 
-### Failing to Rotate Keys
+#### Failing to Rotate Keys
 
 Keys that remain active for extended periods increase organizational risk if compromised.
 
@@ -1971,7 +1971,7 @@ Implement automated or policy-driven rotation where feasible.
 
 ---
 
-### Storing Keys with Encrypted Data
+#### Storing Keys with Encrypted Data
 
 Encryption keys should never reside alongside the encrypted information they protect.
 
@@ -1979,7 +1979,7 @@ Maintain logical and operational separation.
 
 ---
 
-### Ignoring Certificate Expiration
+#### Ignoring Certificate Expiration
 
 Expired TLS certificates may:
 
@@ -1991,13 +1991,13 @@ Monitor certificate lifecycles proactively.
 
 ---
 
-### Leaving Data Unencrypted
+#### Leaving Data Unencrypted
 
 Sensitive resources such as databases, backups, object storage, and virtual disks should not remain unencrypted in production environments.
 
 ---
 
-### Assuming Provider Defaults Meet Every Requirement
+#### Assuming Provider Defaults Meet Every Requirement
 
 Cloud providers often enable encryption capabilities, but organizations remain responsible for:
 
@@ -2011,7 +2011,7 @@ Review default configurations against business and regulatory needs.
 
 ---
 
-### Ignoring Cryptographic Logs
+#### Ignoring Cryptographic Logs
 
 Without monitoring KMS and encryption events, organizations may miss:
 
@@ -2024,7 +2024,7 @@ Centralize cryptographic logs within the SIEM.
 
 ---
 
-### Poor Secrets Management
+#### Poor Secrets Management
 
 Using the same credentials or keys across multiple applications, environments, or teams increases the potential impact of compromise.
 
@@ -2032,9 +2032,9 @@ Store secrets securely, rotate them regularly, and restrict access based on leas
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-57 – Recommendation for Key Management
 - NIST SP 800-38 Series – Block Cipher Modes of Operation
@@ -2048,7 +2048,7 @@ Store secrets securely, rotate them regularly, and restrict access based on leas
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
 - AWS Key Management Service (AWS KMS) Documentation
 - AWS Encryption SDK Documentation
@@ -2061,7 +2061,7 @@ Store secrets securely, rotate them regularly, and restrict access based on leas
 
 ---
 
-### Industry Best Practices
+#### Industry Best Practices
 
 - Defense in Depth
 - Envelope Encryption

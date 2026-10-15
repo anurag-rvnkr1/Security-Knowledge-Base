@@ -2,7 +2,7 @@
 
 ---
 
-# Overview
+## Overview
 
 **Cryptographic Failures** is the **second category in the OWASP Top 10 (2021)**. It refers to vulnerabilities that arise when applications fail to properly protect sensitive data using modern cryptographic techniques.
 
@@ -24,7 +24,7 @@ When cryptography is implemented incorrectly—or omitted entirely—attackers c
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Nearly every modern application processes sensitive information.
 
@@ -80,9 +80,9 @@ Unlike Broken Access Control, which focuses on **who can access data**, Cryptogr
 
 ---
 
-# Evolution of the Category
+## Evolution of the Category
 
-## OWASP Top 10 (2017)
+### OWASP Top 10 (2017)
 
 The category was called:
 
@@ -104,7 +104,7 @@ To better reflect these root causes, OWASP renamed the category.
 
 ---
 
-## OWASP Top 10 (2021)
+### OWASP Top 10 (2021)
 
 ```
 A02: Cryptographic Failures
@@ -114,9 +114,9 @@ The new name emphasizes implementing cryptography correctly rather than focusing
 
 ---
 
-# Architecture / Diagram
+## Architecture / Diagram
 
-## Secure Communication
+### Secure Communication
 
 ```
 Client
@@ -146,7 +146,7 @@ Attackers intercepting traffic see only encrypted data.
 
 ---
 
-## Insecure Communication
+### Insecure Communication
 
 ```
 Client
@@ -176,13 +176,13 @@ Without encryption, usernames, passwords, cookies, and personal data may be expo
 
 ---
 
-# Key Concepts
+## Key Concepts
 
 To understand Cryptographic Failures, it is important to understand several fundamental concepts.
 
 ---
 
-# What Is Cryptography?
+## What Is Cryptography?
 
 Cryptography is the practice of protecting information by transforming readable data into an unreadable format.
 
@@ -206,7 +206,7 @@ Without the correct key, recovering the original value should be computationally
 
 ---
 
-# Plaintext
+## Plaintext
 
 Plaintext is the original, readable information before any cryptographic operation.
 
@@ -228,7 +228,7 @@ Anyone who intercepts plaintext can immediately read it.
 
 ---
 
-# Ciphertext
+## Ciphertext
 
 Ciphertext is the encrypted version of plaintext.
 
@@ -242,7 +242,7 @@ Ciphertext should reveal no useful information without the appropriate cryptogra
 
 ---
 
-# Encryption
+## Encryption
 
 Encryption converts plaintext into ciphertext using an algorithm and a cryptographic key.
 
@@ -266,7 +266,7 @@ Only authorized parties possessing the correct key should be able to decrypt the
 
 ---
 
-# Decryption
+## Decryption
 
 Decryption reverses encryption.
 
@@ -286,7 +286,7 @@ If an attacker lacks the key, the data should remain unreadable.
 
 ---
 
-# The CIA Triad
+## The CIA Triad
 
 Cryptography primarily supports the **Confidentiality** pillar of the CIA Triad, while also contributing to Integrity and, in some cases, Authentication.
 
@@ -299,7 +299,7 @@ Cryptography primarily supports the **Confidentiality** pillar of the CIA Triad,
 Integrity ◄──┼──► Availability
 ```
 
-## Confidentiality
+### Confidentiality
 
 Ensures that only authorized users can access sensitive information.
 
@@ -311,7 +311,7 @@ Example:
 
 ---
 
-## Integrity
+### Integrity
 
 Ensures that data has not been altered.
 
@@ -323,7 +323,7 @@ Mechanisms include:
 
 ---
 
-## Availability
+### Availability
 
 Ensures that authorized users can access systems and data when needed.
 
@@ -331,7 +331,7 @@ Although availability is not provided directly by encryption, secure key managem
 
 ---
 
-# Encryption vs Hashing vs Encoding
+## Encryption vs Hashing vs Encoding
 
 These terms are frequently confused.
 
@@ -344,7 +344,7 @@ These terms are frequently confused.
 
 ---
 
-## Encryption Example
+### Encryption Example
 
 ```
 Original
@@ -375,7 +375,7 @@ Used for:
 
 ---
 
-## Hashing Example
+### Hashing Example
 
 ```
 Password
@@ -399,7 +399,7 @@ Hashing is commonly used for:
 
 ---
 
-## Encoding Example
+### Encoding Example
 
 ```
 hello
@@ -429,7 +429,7 @@ Encoding is designed for compatibility and data transport—not security.
 
 ---
 
-# Why Base64 Is Not Secure
+## Why Base64 Is Not Secure
 
 A common misconception among beginners is that Base64 "encrypts" data.
 
@@ -453,32 +453,32 @@ Never use Base64 to protect sensitive information.
 
 ---
 
-# Real-World Uses of Cryptography
+## Real-World Uses of Cryptography
 
 Modern systems rely on cryptography in many areas:
 
-### Authentication
+#### Authentication
 
 - Password hashing
 - Multi-factor authentication
 - OAuth tokens
 - JWT signatures
 
-### Secure Communication
+#### Secure Communication
 
 - HTTPS (TLS)
 - SSH
 - VPNs
 - Secure email
 
-### Data Storage
+#### Data Storage
 
 - Encrypted databases
 - Disk encryption
 - Cloud storage encryption
 - Backup encryption
 
-### Digital Trust
+#### Digital Trust
 
 - Certificates
 - Code signing
@@ -487,7 +487,7 @@ Modern systems rely on cryptography in many areas:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cryptographic Failures occur when sensitive information is not adequately protected.
 - The category was renamed from **Sensitive Data Exposure** to emphasize the importance of implementing cryptography correctly.
@@ -495,15 +495,15 @@ Modern systems rely on cryptography in many areas:
 - Base64 encoding is **not** a security mechanism.
 - Strong cryptographic design is essential for protecting modern applications, user data, and communications.
 
-# Core Cryptographic Concepts
+## Core Cryptographic Concepts
 
 To implement secure applications, it is essential to understand the major cryptographic techniques and where each should be used. Using the wrong cryptographic primitive—or using the right one incorrectly—is a common cause of security vulnerabilities.
 
 ---
 
-# Symmetric Encryption
+## Symmetric Encryption
 
-## Overview
+### Overview
 
 Symmetric encryption uses **a single secret key** for both encryption and decryption.
 
@@ -524,7 +524,7 @@ Both the sender and the receiver must know the same secret key.
 
 ---
 
-## Advantages
+### Advantages
 
 - Very fast
 - Efficient for large amounts of data
@@ -533,7 +533,7 @@ Both the sender and the receiver must know the same secret key.
 
 ---
 
-## Disadvantages
+### Disadvantages
 
 - Secure key distribution is difficult
 - If the key is compromised, all encrypted data is compromised
@@ -541,9 +541,9 @@ Both the sender and the receiver must know the same secret key.
 
 ---
 
-## Common Algorithms
+### Common Algorithms
 
-### AES (Advanced Encryption Standard)
+#### AES (Advanced Encryption Standard)
 
 The current industry standard.
 
@@ -564,7 +564,7 @@ Widely used in:
 
 ---
 
-### ChaCha20
+#### ChaCha20
 
 A modern stream cipher.
 
@@ -582,7 +582,7 @@ ChaCha20-Poly1305
 
 ---
 
-## Example
+### Example
 
 ```
 Message
@@ -606,9 +606,9 @@ Original Message
 
 ---
 
-# Asymmetric Encryption
+## Asymmetric Encryption
 
-## Overview
+### Overview
 
 Asymmetric encryption uses **two mathematically related keys**.
 
@@ -648,7 +648,7 @@ Must remain secret.
 
 ---
 
-## Advantages
+### Advantages
 
 - No need to share a secret key beforehand
 - Enables secure communication over the Internet
@@ -657,7 +657,7 @@ Must remain secret.
 
 ---
 
-## Disadvantages
+### Disadvantages
 
 - Much slower than symmetric encryption
 - Computationally expensive
@@ -665,9 +665,9 @@ Must remain secret.
 
 ---
 
-## Common Algorithms
+### Common Algorithms
 
-### RSA
+#### RSA
 
 One of the oldest public-key algorithms.
 
@@ -689,7 +689,7 @@ Used for:
 
 ---
 
-### ECC (Elliptic Curve Cryptography)
+#### ECC (Elliptic Curve Cryptography)
 
 Provides equivalent security with much smaller keys.
 
@@ -708,7 +708,7 @@ Widely used in:
 
 ---
 
-# Why HTTPS Uses Both
+## Why HTTPS Uses Both
 
 Many people assume HTTPS uses only RSA.
 
@@ -748,7 +748,7 @@ After the secure handshake, nearly all communication uses fast symmetric encrypt
 
 ---
 
-# TLS (Transport Layer Security)
+## TLS (Transport Layer Security)
 
 TLS secures communication between client and server.
 
@@ -792,7 +792,7 @@ Mail Server
 
 ---
 
-## TLS Handshake
+### TLS Handshake
 
 Simplified process:
 
@@ -836,7 +836,7 @@ The handshake:
 
 ---
 
-# Public Key Infrastructure (PKI)
+## Public Key Infrastructure (PKI)
 
 PKI enables trust on the Internet.
 
@@ -864,7 +864,7 @@ Without PKI, attackers could easily impersonate websites.
 
 ---
 
-## Digital Certificates
+### Digital Certificates
 
 A certificate contains:
 
@@ -891,7 +891,7 @@ Trusted
 
 ---
 
-# Certificate Authorities (CA)
+## Certificate Authorities (CA)
 
 Examples:
 
@@ -906,7 +906,7 @@ If a certificate is signed by a trusted CA, browsers establish a secure connecti
 
 ---
 
-# Digital Signatures
+## Digital Signatures
 
 Encryption protects confidentiality.
 
@@ -960,7 +960,7 @@ If verification succeeds:
 
 ---
 
-# Hash Functions
+## Hash Functions
 
 A cryptographic hash converts data into a fixed-length value.
 
@@ -986,7 +986,7 @@ Properties:
 
 ---
 
-## Example
+### Example
 
 ```
 Password123
@@ -1004,7 +1004,7 @@ Changing one character completely changes the output.
 
 ---
 
-# Password Hashing
+## Password Hashing
 
 Passwords should **never** be encrypted for storage.
 
@@ -1042,9 +1042,9 @@ Stored Hash
 
 ---
 
-## Modern Password Hashing Algorithms
+### Modern Password Hashing Algorithms
 
-### Argon2
+#### Argon2
 
 Winner of the Password Hashing Competition.
 
@@ -1058,7 +1058,7 @@ Provides protection against:
 
 ---
 
-### bcrypt
+#### bcrypt
 
 Still widely used.
 
@@ -1070,7 +1070,7 @@ Features:
 
 ---
 
-### scrypt
+#### scrypt
 
 Designed to require large amounts of memory.
 
@@ -1078,7 +1078,7 @@ Helps defend against specialized cracking hardware.
 
 ---
 
-### PBKDF2
+#### PBKDF2
 
 Recommended in many enterprise environments.
 
@@ -1090,7 +1090,7 @@ Uses:
 
 ---
 
-## Never Use
+### Never Use
 
 ❌ MD5
 
@@ -1102,7 +1102,7 @@ These algorithms are too fast and unsuitable for protecting passwords against of
 
 ---
 
-# Salting
+## Salting
 
 A salt is a random value added before hashing.
 
@@ -1138,7 +1138,7 @@ Benefits:
 
 ---
 
-## Example
+### Example
 
 User A
 
@@ -1178,7 +1178,7 @@ Different hash produced.
 
 ---
 
-# Pepper
+## Pepper
 
 A pepper is an additional secret value stored separately from the database.
 
@@ -1204,7 +1204,7 @@ Even if the database is compromised, the attacker still needs the server-side pe
 
 ---
 
-# Cryptographically Secure Random Number Generator (CSPRNG)
+## Cryptographically Secure Random Number Generator (CSPRNG)
 
 Randomness is essential for generating:
 
@@ -1228,7 +1228,7 @@ Avoid general-purpose pseudo-random generators (such as `rand()` or `Math.random
 
 ---
 
-# Key Management
+## Key Management
 
 Even the strongest encryption is ineffective if cryptographic keys are mishandled.
 
@@ -1243,7 +1243,7 @@ Best practices include:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - **Symmetric encryption** is fast and ideal for protecting large amounts of data.
 - **Asymmetric encryption** enables secure key exchange and digital signatures.
@@ -1253,7 +1253,7 @@ Best practices include:
 - Salts and peppers strengthen password storage against offline attacks.
 - Secure random number generation and proper key management are critical components of any cryptographic system.
 
-# Common Cryptographic Misconfigurations
+## Common Cryptographic Misconfigurations
 
 Cryptography is only as secure as its implementation. Even when strong algorithms are available, poor configuration or misuse can completely undermine security.
 
@@ -1261,9 +1261,9 @@ Many real-world data breaches are caused not by breaking encryption, but by **in
 
 ---
 
-# 1. Using Weak or Deprecated Algorithms
+## 1. Using Weak or Deprecated Algorithms
 
-## Overview
+### Overview
 
 Older cryptographic algorithms were once considered secure but are now vulnerable due to advances in cryptanalysis and computing power.
 
@@ -1271,9 +1271,9 @@ Applications that continue using deprecated algorithms expose sensitive data to 
 
 ---
 
-## Insecure Algorithms
+### Insecure Algorithms
 
-### DES (Data Encryption Standard)
+#### DES (Data Encryption Standard)
 
 ```
 Key Size:
@@ -1288,7 +1288,7 @@ Problems:
 
 ---
 
-### 3DES (Triple DES)
+#### 3DES (Triple DES)
 
 Improved upon DES but is now deprecated.
 
@@ -1300,7 +1300,7 @@ Problems:
 
 ---
 
-### RC4
+#### RC4
 
 Previously used in SSL/TLS.
 
@@ -1312,7 +1312,7 @@ Problems:
 
 ---
 
-### MD5
+#### MD5
 
 Originally designed as a cryptographic hash.
 
@@ -1341,7 +1341,7 @@ Attackers can recover many MD5 hashes within seconds using rainbow tables or GPU
 
 ---
 
-### SHA-1
+#### SHA-1
 
 Once widely trusted.
 
@@ -1357,7 +1357,7 @@ Use SHA-256 or SHA-3 instead.
 
 ---
 
-# Secure Alternatives
+## Secure Alternatives
 
 | Deprecated | Recommended |
 |------------|-------------|
@@ -1370,7 +1370,7 @@ Use SHA-256 or SHA-3 instead.
 
 ---
 
-# 2. Hardcoded Secrets
+## 2. Hardcoded Secrets
 
 One of the most common developer mistakes is embedding secrets directly into source code.
 
@@ -1396,7 +1396,7 @@ If source code is leaked or pushed to GitHub, attackers immediately obtain these
 
 ---
 
-## Secure Approach
+### Secure Approach
 
 Store secrets using:
 
@@ -1410,9 +1410,9 @@ Store secrets using:
 
 ---
 
-# 3. Weak Password Storage
+## 3. Weak Password Storage
 
-## Insecure
+### Insecure
 
 ```
 password
@@ -1430,7 +1430,7 @@ Attackers can recover millions of passwords rapidly using GPU-based cracking.
 
 ---
 
-## Secure
+### Secure
 
 ```
 Password
@@ -1452,7 +1452,7 @@ Argon2 is intentionally slow and memory-intensive, making offline attacks signif
 
 ---
 
-# 4. Missing HTTPS
+## 4. Missing HTTPS
 
 Some applications still transmit sensitive data over HTTP.
 
@@ -1484,7 +1484,7 @@ Attackers on the same network can capture:
 
 ---
 
-## Secure Version
+### Secure Version
 
 ```
 Browser
@@ -1506,7 +1506,7 @@ The data is encrypted in transit.
 
 ---
 
-# 5. Weak TLS Configuration
+## 5. Weak TLS Configuration
 
 Even when HTTPS is enabled, poor TLS configuration can introduce vulnerabilities.
 
@@ -1522,7 +1522,7 @@ Examples include:
 
 ---
 
-## Recommended Configuration
+### Recommended Configuration
 
 Enable only modern protocols:
 
@@ -1538,7 +1538,7 @@ Disable:
 
 ---
 
-# 6. Poor Key Management
+## 6. Poor Key Management
 
 Strong encryption is ineffective if cryptographic keys are mishandled.
 
@@ -1553,7 +1553,7 @@ Common mistakes:
 
 ---
 
-## Secure Key Lifecycle
+### Secure Key Lifecycle
 
 ```
 Generate
@@ -1581,7 +1581,7 @@ Destroy
 
 ---
 
-# 7. Predictable Random Values
+## 7. Predictable Random Values
 
 Applications often generate:
 
@@ -1606,7 +1606,7 @@ can produce predictable values.
 
 ---
 
-## Secure Generators
+### Secure Generators
 
 Python:
 
@@ -1630,7 +1630,7 @@ SecureRandom random = new SecureRandom();
 
 ---
 
-# 8. Sensitive Data Stored in Plaintext
+## 8. Sensitive Data Stored in Plaintext
 
 Examples:
 
@@ -1660,7 +1660,7 @@ Sensitive information should be encrypted at rest where appropriate, and passwor
 
 ---
 
-# 9. Improper Certificate Validation
+## 9. Improper Certificate Validation
 
 Some applications ignore certificate validation errors.
 
@@ -1679,7 +1679,7 @@ Similarly, mobile applications that trust all certificates or implement insecure
 
 ---
 
-# 10. Client-Side Encryption Misuse
+## 10. Client-Side Encryption Misuse
 
 Developers sometimes believe encrypting data in JavaScript alone is sufficient.
 
@@ -1707,7 +1707,7 @@ Client-side encryption should complement—not replace—server-side security an
 
 ---
 
-# Real-World Example: Heartbleed (CVE-2014-0160)
+## Real-World Example: Heartbleed (CVE-2014-0160)
 
 Heartbleed was a critical vulnerability in OpenSSL's implementation of the TLS Heartbeat extension.
 
@@ -1721,7 +1721,7 @@ The flaw was not caused by weak cryptographic algorithms, but by an implementati
 
 ---
 
-# Real-World Example: Equifax (2017)
+## Real-World Example: Equifax (2017)
 
 The Equifax breach exposed personal information of approximately 147 million individuals.
 
@@ -1733,7 +1733,7 @@ While not a cryptographic failure itself, the incident highlighted the importanc
 
 ---
 
-# Detecting Cryptographic Failures
+## Detecting Cryptographic Failures
 
 Security testing should verify:
 
@@ -1748,7 +1748,7 @@ Security testing should verify:
 
 ---
 
-# Manual Testing Checklist
+## Manual Testing Checklist
 
 ✔ Verify HTTPS on every sensitive page.
 
@@ -1768,7 +1768,7 @@ Security testing should verify:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Strong cryptographic algorithms are ineffective if implemented incorrectly.
 - Avoid deprecated algorithms such as DES, RC4, MD5, and SHA-1.
@@ -1777,15 +1777,15 @@ Security testing should verify:
 - Protect passwords using dedicated password-hashing algorithms like Argon2 or bcrypt.
 - Secure key management is just as important as selecting strong algorithms.
 
-# Detection
+## Detection
 
 Detecting cryptographic failures requires evaluating how sensitive data is protected both **in transit** and **at rest**. Security assessments should verify algorithms, protocol versions, key management, certificate validation, and secret handling.
 
 ---
 
-# Manual Testing
+## Manual Testing
 
-## 1. Verify HTTPS Enforcement
+### 1. Verify HTTPS Enforcement
 
 Check whether all sensitive pages automatically redirect from HTTP to HTTPS.
 
@@ -1809,7 +1809,7 @@ If credentials can be submitted over HTTP, the application is vulnerable.
 
 ---
 
-## 2. Inspect TLS Configuration
+### 2. Inspect TLS Configuration
 
 Review:
 
@@ -1822,7 +1822,7 @@ Review:
 
 ---
 
-## 3. Inspect Cookies
+### 3. Inspect Cookies
 
 Authentication cookies should include:
 
@@ -1848,7 +1848,7 @@ Missing attributes increase the risk of session theft.
 
 ---
 
-## 4. Search for Sensitive Data Exposure
+### 4. Search for Sensitive Data Exposure
 
 Look for:
 
@@ -1871,7 +1871,7 @@ Inspect:
 
 ---
 
-## 5. Review Password Storage
+### 5. Review Password Storage
 
 Verify that passwords use modern password hashing algorithms:
 
@@ -1892,9 +1892,9 @@ Never store:
 
 ---
 
-# Automated Detection
+## Automated Detection
 
-## Burp Suite
+### Burp Suite
 
 Useful for:
 
@@ -1906,7 +1906,7 @@ Useful for:
 
 ---
 
-## Nmap
+### Nmap
 
 Check supported TLS versions:
 
@@ -1923,7 +1923,7 @@ Provides:
 
 ---
 
-## OpenSSL
+### OpenSSL
 
 Retrieve certificate details:
 
@@ -1941,7 +1941,7 @@ Useful for verifying:
 
 ---
 
-## SSL Labs
+### SSL Labs
 
 Analyze:
 
@@ -1954,13 +1954,13 @@ Analyze:
 
 ---
 
-# Prevention
+## Prevention
 
 Strong cryptography requires secure implementation, continuous maintenance, and disciplined key management.
 
 ---
 
-## 1. Use Modern Algorithms
+### 1. Use Modern Algorithms
 
 Encryption:
 
@@ -1981,7 +1981,7 @@ Password Storage:
 
 ---
 
-## 2. Disable Weak Algorithms
+### 2. Disable Weak Algorithms
 
 Remove support for:
 
@@ -1997,7 +1997,7 @@ Remove support for:
 
 ---
 
-## 3. Enforce HTTPS Everywhere
+### 3. Enforce HTTPS Everywhere
 
 Every page handling sensitive information should use HTTPS.
 
@@ -2010,7 +2010,7 @@ Implement:
 
 ---
 
-## 4. Protect Secrets
+### 4. Protect Secrets
 
 Never hardcode:
 
@@ -2028,7 +2028,7 @@ Use:
 
 ---
 
-## 5. Secure Key Management
+### 5. Secure Key Management
 
 Follow the full key lifecycle:
 
@@ -2060,7 +2060,7 @@ Limit key access using least privilege and audit all key usage.
 
 ---
 
-## 6. Encrypt Sensitive Data at Rest
+### 6. Encrypt Sensitive Data at Rest
 
 Examples:
 
@@ -2073,9 +2073,9 @@ Only encrypt data that requires confidentiality, and manage keys separately from
 
 ---
 
-# Secure Coding Examples
+## Secure Coding Examples
 
-## Python
+### Python
 
 Password hashing with `bcrypt`:
 
@@ -2094,7 +2094,7 @@ print(hashed)
 
 ---
 
-## Java
+### Java
 
 Generate secure random bytes:
 
@@ -2111,7 +2111,7 @@ random.nextBytes(key);
 
 ---
 
-## Node.js
+### Node.js
 
 Generate a secure token:
 
@@ -2127,7 +2127,7 @@ console.log(token);
 
 ---
 
-## Environment Variables
+### Environment Variables
 
 Instead of:
 
@@ -2145,7 +2145,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 ---
 
-# Best Practices
+## Best Practices
 
 ✔ Encrypt sensitive data in transit using TLS.
 
@@ -2175,9 +2175,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 ---
 
-# Useful Commands
+## Useful Commands
 
-## View Certificate
+### View Certificate
 
 ```bash
 openssl s_client \
@@ -2186,7 +2186,7 @@ openssl s_client \
 
 ---
 
-## Check Certificate Dates
+### Check Certificate Dates
 
 ```bash
 openssl x509 \
@@ -2197,7 +2197,7 @@ openssl x509 \
 
 ---
 
-## Generate SHA-256 Hash
+### Generate SHA-256 Hash
 
 ```bash
 echo "hello" | sha256sum
@@ -2205,7 +2205,7 @@ echo "hello" | sha256sum
 
 ---
 
-## Generate Random Bytes
+### Generate Random Bytes
 
 ```bash
 openssl rand -hex 32
@@ -2213,7 +2213,7 @@ openssl rand -hex 32
 
 ---
 
-## Scan TLS Configuration
+### Scan TLS Configuration
 
 ```bash
 nmap \
@@ -2223,15 +2223,15 @@ nmap \
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Objective
+### Objective
 
 Assess the cryptographic posture of a web application.
 
 ---
 
-## Lab Steps
+### Lab Steps
 
 1. Deploy or access a web application (e.g., OWASP Juice Shop).
 
@@ -2255,7 +2255,7 @@ Assess the cryptographic posture of a web application.
 
 ---
 
-## Expected Learning Outcomes
+### Expected Learning Outcomes
 
 You should be able to:
 
@@ -2267,76 +2267,76 @@ You should be able to:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is a Cryptographic Failure?
+#### What is a Cryptographic Failure?
 
 A vulnerability caused by missing, weak, or improperly implemented cryptographic protections, resulting in exposure or compromise of sensitive information.
 
 ---
 
-### Why was "Sensitive Data Exposure" renamed?
+#### Why was "Sensitive Data Exposure" renamed?
 
 Because the underlying issue is incorrect implementation of cryptography rather than the exposure itself.
 
 ---
 
-### What is the difference between encryption and hashing?
+#### What is the difference between encryption and hashing?
 
 - Encryption is reversible with a key and provides confidentiality.
 - Hashing is one-way and is primarily used for integrity verification and password storage.
 
 ---
 
-### Why is Base64 not encryption?
+#### Why is Base64 not encryption?
 
 Base64 is an encoding mechanism. It can be decoded by anyone and provides no confidentiality.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### Why shouldn't passwords be encrypted?
+#### Why shouldn't passwords be encrypted?
 
 Encrypted passwords can be decrypted if the key is compromised. Passwords should instead be hashed using dedicated password-hashing algorithms such as Argon2 or bcrypt.
 
 ---
 
-### What is the purpose of a salt?
+#### What is the purpose of a salt?
 
 A salt is a unique random value added before hashing. It prevents identical passwords from producing identical hashes and defeats rainbow table attacks.
 
 ---
 
-### What is the purpose of a pepper?
+#### What is the purpose of a pepper?
 
 A pepper is a secret value stored separately from the database and combined with passwords before hashing. It adds an additional layer of defense if the password database is compromised.
 
 ---
 
-### Why does HTTPS use both symmetric and asymmetric cryptography?
+#### Why does HTTPS use both symmetric and asymmetric cryptography?
 
 Asymmetric cryptography is used during the TLS handshake to establish trust and exchange session keys securely. Symmetric cryptography is then used for bulk data encryption because it is significantly faster.
 
 ---
 
-## Advanced
+### Advanced
 
-### What is Forward Secrecy?
+#### What is Forward Secrecy?
 
 Forward Secrecy ensures that if a server's long-term private key is compromised, previously captured encrypted sessions remain secure because each session used a unique ephemeral key.
 
 ---
 
-### Why is Argon2 preferred over MD5?
+#### Why is Argon2 preferred over MD5?
 
 Argon2 is intentionally slow, memory-intensive, and resistant to GPU and ASIC attacks. MD5 is extremely fast and vulnerable to collisions, making it unsuitable for password storage.
 
 ---
 
-### How would you assess an application's cryptographic implementation during a penetration test?
+#### How would you assess an application's cryptographic implementation during a penetration test?
 
 A thorough assessment includes:
 
@@ -2351,9 +2351,9 @@ A thorough assessment includes:
 
 ---
 
-# References
+## References
 
-## OWASP
+### OWASP
 
 - OWASP Top 10 (2021)
 - OWASP Cryptographic Storage Cheat Sheet
@@ -2362,14 +2362,14 @@ A thorough assessment includes:
 - OWASP ASVS
 - OWASP Web Security Testing Guide
 
-## Standards
+### Standards
 
 - NIST SP 800-57 (Key Management)
 - NIST SP 800-63B (Digital Identity Guidelines)
 - FIPS 140-3
 - RFC 8446 (TLS 1.3)
 
-## MITRE
+### MITRE
 
 - CWE-295: Improper Certificate Validation
 - CWE-321: Use of Hard-coded Cryptographic Key
@@ -2379,7 +2379,7 @@ A thorough assessment includes:
 
 ---
 
-# Summary
+## Summary
 
 Cryptographic Failures occur when applications fail to adequately protect sensitive information through proper cryptographic design and implementation. Strong algorithms alone are not sufficient—secure key management, modern TLS configurations, proper password hashing, certificate validation, and disciplined secret management are equally important.
 

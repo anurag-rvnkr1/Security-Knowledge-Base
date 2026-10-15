@@ -42,9 +42,9 @@ Prevention
 
 ---
 
-# Case Study 1 – E-Commerce Platform
+## Case Study 1 – E-Commerce Platform
 
-## Scenario
+### Scenario
 
 An e-commerce company runs its application on Kubernetes.
 
@@ -73,7 +73,7 @@ Architecture:
 
 ---
 
-## Requirements
+### Requirements
 
 The platform must support:
 
@@ -89,7 +89,7 @@ Automated Deployment
 
 ---
 
-## Kubernetes Design
+### Kubernetes Design
 
 Use:
 
@@ -108,7 +108,7 @@ PVC
 
 ---
 
-## Failure Scenario
+### Failure Scenario
 
 Customers report:
 
@@ -118,7 +118,7 @@ Checkout requests are failing.
 
 ---
 
-## Symptoms
+### Symptoms
 
 ```text
 HTTP 500
@@ -137,7 +137,7 @@ kubectl get events
 
 ---
 
-## Investigation
+### Investigation
 
 Check API logs:
 
@@ -159,7 +159,7 @@ Secrets
 
 ---
 
-## Root Cause
+### Root Cause
 
 Suppose the API's NetworkPolicy was modified and database traffic was accidentally blocked.
 
@@ -175,7 +175,7 @@ Database
 
 ---
 
-## Remediation
+### Remediation
 
 Update the NetworkPolicy to explicitly allow:
 
@@ -191,7 +191,7 @@ kubectl get networkpolicy
 
 ---
 
-## Prevention
+### Prevention
 
 Implement:
 
@@ -205,9 +205,9 @@ Monitoring
 
 ---
 
-# Case Study 2 – Banking Platform
+## Case Study 2 – Banking Platform
 
-## Scenario
+### Scenario
 
 A banking application handles:
 
@@ -223,7 +223,7 @@ Security requirements are strict.
 
 ---
 
-## Architecture
+### Architecture
 
 ```text
 Internet
@@ -247,7 +247,7 @@ Application
 
 ---
 
-## Security Requirements
+### Security Requirements
 
 ```text
 Least Privilege
@@ -261,7 +261,7 @@ Runtime Security
 
 ---
 
-## Kubernetes Security Design
+### Kubernetes Security Design
 
 Use:
 
@@ -278,13 +278,13 @@ Audit Logs
 
 ---
 
-## Incident
+### Incident
 
 An application attempts to access Kubernetes Secrets belonging to another namespace.
 
 ---
 
-## Investigation
+### Investigation
 
 Identify the workload:
 
@@ -308,7 +308,7 @@ kubectl auth can-i \
 
 ---
 
-## Root Cause
+### Root Cause
 
 A ClusterRoleBinding granted excessive permissions.
 
@@ -326,7 +326,7 @@ all namespaces
 
 ---
 
-## Remediation
+### Remediation
 
 Replace cluster-wide permissions with a namespace-scoped Role.
 
@@ -338,7 +338,7 @@ Least Privilege
 
 ---
 
-## Prevention
+### Prevention
 
 Implement:
 
@@ -352,9 +352,9 @@ ServiceAccount Separation
 
 ---
 
-# Case Study 3 – SaaS Platform
+## Case Study 3 – SaaS Platform
 
-## Scenario
+### Scenario
 
 A SaaS company hosts thousands of customers.
 
@@ -362,7 +362,7 @@ Each customer requires logical isolation.
 
 ---
 
-## Architecture
+### Architecture
 
 ```text
                 Kubernetes Cluster
@@ -375,7 +375,7 @@ Each customer requires logical isolation.
 
 ---
 
-## Requirements
+### Requirements
 
 Each tenant should have:
 
@@ -388,7 +388,7 @@ Storage Isolation
 
 ---
 
-## Kubernetes Controls
+### Kubernetes Controls
 
 Use:
 
@@ -403,7 +403,7 @@ Dedicated ServiceAccounts
 
 ---
 
-## Incident
+### Incident
 
 Tenant A experiences a traffic spike.
 
@@ -411,13 +411,13 @@ CPU usage increases dramatically.
 
 ---
 
-## Risk
+### Risk
 
 Tenant A could consume resources required by Tenant B.
 
 ---
 
-## Solution
+### Solution
 
 Apply ResourceQuota:
 
@@ -433,7 +433,7 @@ Apply LimitRange for per-container defaults and limits.
 
 ---
 
-## Result
+### Result
 
 ```text
 Tenant A
@@ -447,9 +447,9 @@ Other tenants remain protected.
 
 ---
 
-# Case Study 4 – High-Traffic Web Application
+## Case Study 4 – High-Traffic Web Application
 
-## Scenario
+### Scenario
 
 A website receives:
 
@@ -465,13 +465,13 @@ During a marketing campaign:
 
 ---
 
-## Problem
+### Problem
 
 Application becomes overloaded.
 
 ---
 
-## Solution
+### Solution
 
 Implement:
 
@@ -486,7 +486,7 @@ Multiple Replicas
 
 ---
 
-## HPA
+### HPA
 
 Example:
 
@@ -503,7 +503,7 @@ CPU = 60%
 
 ---
 
-## Cluster Autoscaler
+### Cluster Autoscaler
 
 If Pods cannot be scheduled because nodes lack capacity:
 
@@ -523,7 +523,7 @@ Pods Scheduled
 
 ---
 
-## Important Insight
+### Important Insight
 
 HPA and Cluster Autoscaler solve different problems.
 
@@ -537,9 +537,9 @@ Cluster Autoscaler
 
 ---
 
-# Case Study 5 – Microservices Platform
+## Case Study 5 – Microservices Platform
 
-## Scenario
+### Scenario
 
 A company has:
 
@@ -554,7 +554,7 @@ Notifications
 
 ---
 
-## Architecture
+### Architecture
 
 ```text
 Frontend
@@ -571,13 +571,13 @@ API Gateway
 
 ---
 
-## Problem
+### Problem
 
 Orders become slow.
 
 ---
 
-## Investigation
+### Investigation
 
 Application traces reveal:
 
@@ -597,7 +597,7 @@ Inventory service takes:
 
 ---
 
-## Solution
+### Solution
 
 Implement:
 
@@ -613,9 +613,9 @@ A service mesh can provide some of these capabilities depending on the architect
 
 ---
 
-# Case Study 6 – Kubernetes Node Failure
+## Case Study 6 – Kubernetes Node Failure
 
-## Scenario
+### Scenario
 
 A worker node becomes unavailable.
 
@@ -625,13 +625,13 @@ Node A → NotReady
 
 ---
 
-## Symptoms
+### Symptoms
 
 Pods disappear or become unavailable.
 
 ---
 
-## Investigation
+### Investigation
 
 ```bash
 kubectl get nodes
@@ -651,7 +651,7 @@ kubectl describe node node-a
 
 ---
 
-## Recovery
+### Recovery
 
 If workloads are managed by a Deployment:
 
@@ -669,7 +669,7 @@ Healthy Nodes
 
 ---
 
-## Important Requirement
+### Important Requirement
 
 Applications must have multiple replicas.
 
@@ -689,9 +689,9 @@ with suitable topology constraints.
 
 ---
 
-# Case Study 7 – DNS Outage
+## Case Study 7 – DNS Outage
 
-## Scenario
+### Scenario
 
 Applications suddenly report:
 
@@ -701,7 +701,7 @@ Temporary failure in name resolution
 
 ---
 
-## Investigation
+### Investigation
 
 Check CoreDNS:
 
@@ -733,7 +733,7 @@ nslookup kubernetes.default
 
 ---
 
-## Potential Causes
+### Potential Causes
 
 ```text
 CoreDNS failure
@@ -746,7 +746,7 @@ Upstream DNS
 
 ---
 
-## Recovery
+### Recovery
 
 Restore the failed component.
 
@@ -760,9 +760,9 @@ Then test application connectivity.
 
 ---
 
-# Case Study 8 – NetworkPolicy Incident
+## Case Study 8 – NetworkPolicy Incident
 
-## Scenario
+### Scenario
 
 A new NetworkPolicy is deployed.
 
@@ -774,7 +774,7 @@ Backend cannot reach Database.
 
 ---
 
-## Investigation
+### Investigation
 
 List policies:
 
@@ -796,13 +796,13 @@ kubectl get pods --show-labels
 
 ---
 
-## Root Cause
+### Root Cause
 
 The policy selector doesn't match the intended backend Pods.
 
 ---
 
-## Fix
+### Fix
 
 Correct:
 
@@ -818,7 +818,7 @@ namespaceSelector:
 
 ---
 
-## Lesson
+### Lesson
 
 NetworkPolicy is label-driven.
 
@@ -832,9 +832,9 @@ Unexpected Network Behavior
 
 ---
 
-# Case Study 9 – Storage Failure
+## Case Study 9 – Storage Failure
 
-## Scenario
+### Scenario
 
 A database Pod is stuck:
 
@@ -844,7 +844,7 @@ Pending
 
 ---
 
-## Investigation
+### Investigation
 
 ```bash
 kubectl get pvc
@@ -864,7 +864,7 @@ kubectl describe pvc database-data
 
 ---
 
-## Check
+### Check
 
 ```bash
 kubectl get storageclass
@@ -875,7 +875,7 @@ kubectl get events
 
 ---
 
-## Possible Causes
+### Possible Causes
 
 ```text
 Missing StorageClass
@@ -888,7 +888,7 @@ Provisioning Failure
 
 ---
 
-## Remediation
+### Remediation
 
 Fix the underlying storage configuration.
 
@@ -906,9 +906,9 @@ Bound
 
 ---
 
-# Case Study 10 – ImagePullBackOff
+## Case Study 10 – ImagePullBackOff
 
-## Scenario
+### Scenario
 
 A Deployment update causes all new Pods to fail.
 
@@ -920,7 +920,7 @@ ImagePullBackOff
 
 ---
 
-## Investigation
+### Investigation
 
 ```bash
 kubectl describe pod <pod>
@@ -934,7 +934,7 @@ Events
 
 ---
 
-## Potential Causes
+### Potential Causes
 
 ```text
 Wrong image name
@@ -947,7 +947,7 @@ Network failure
 
 ---
 
-## Solution
+### Solution
 
 Verify image:
 
@@ -963,9 +963,9 @@ imagePullSecrets
 
 ---
 
-# Case Study 11 – CrashLoopBackOff
+## Case Study 11 – CrashLoopBackOff
 
-## Scenario
+### Scenario
 
 A new application deployment never becomes Ready.
 
@@ -977,7 +977,7 @@ CrashLoopBackOff
 
 ---
 
-## Investigation
+### Investigation
 
 ```bash
 kubectl logs <pod>
@@ -997,7 +997,7 @@ kubectl describe pod <pod>
 
 ---
 
-## Possible Causes
+### Possible Causes
 
 ```text
 Application Error
@@ -1012,15 +1012,15 @@ OOMKilled
 
 ---
 
-# Case Study 12 – OOMKilled
+## Case Study 12 – OOMKilled
 
-## Scenario
+### Scenario
 
 An application works initially but periodically restarts.
 
 ---
 
-## Investigation
+### Investigation
 
 ```bash
 kubectl describe pod <pod>
@@ -1034,13 +1034,13 @@ Reason: OOMKilled
 
 ---
 
-## Root Cause
+### Root Cause
 
 Memory usage exceeds the configured limit.
 
 ---
 
-## Remediation
+### Remediation
 
 Analyze:
 
@@ -1058,15 +1058,15 @@ Do not use large limits as a substitute for diagnosing a memory leak.
 
 ---
 
-# Case Study 13 – Readiness Probe Failure
+## Case Study 13 – Readiness Probe Failure
 
-## Scenario
+### Scenario
 
 Pods are Running but receive no traffic.
 
 ---
 
-## Observation
+### Observation
 
 ```bash
 kubectl get pods
@@ -1082,7 +1082,7 @@ but the Service has fewer or no endpoints.
 
 ---
 
-## Investigation
+### Investigation
 
 ```bash
 kubectl describe pod <pod>
@@ -1091,13 +1091,13 @@ kubectl get endpointslices
 
 ---
 
-## Root Cause
+### Root Cause
 
 Readiness endpoint returns failure.
 
 ---
 
-## Important Lesson
+### Important Lesson
 
 ```text
 Running ≠ Ready
@@ -1107,15 +1107,15 @@ A Pod can be running but intentionally excluded from Service traffic.
 
 ---
 
-# Case Study 14 – Liveness Probe Failure
+## Case Study 14 – Liveness Probe Failure
 
-## Scenario
+### Scenario
 
 Application repeatedly restarts.
 
 ---
 
-## Investigation
+### Investigation
 
 ```bash
 kubectl describe pod <pod>
@@ -1129,13 +1129,13 @@ Liveness probe failed
 
 ---
 
-## Root Cause
+### Root Cause
 
 The liveness probe is incorrectly configured or the application is unhealthy.
 
 ---
 
-## Remediation
+### Remediation
 
 Check:
 
@@ -1152,9 +1152,9 @@ Do not make liveness probes excessively aggressive.
 
 ---
 
-# Case Study 15 – Kubernetes API Server Overload
+## Case Study 15 – Kubernetes API Server Overload
 
-## Scenario
+### Scenario
 
 `kubectl` commands become slow.
 
@@ -1162,7 +1162,7 @@ Applications using the Kubernetes API also experience delays.
 
 ---
 
-## Investigation
+### Investigation
 
 Check:
 
@@ -1177,7 +1177,7 @@ Control Plane Resources
 
 ---
 
-## Possible Causes
+### Possible Causes
 
 ```text
 Excessive API Requests
@@ -1189,7 +1189,7 @@ Resource Exhaustion
 
 ---
 
-## Prevention
+### Prevention
 
 Use:
 
@@ -1203,15 +1203,15 @@ API Monitoring
 
 ---
 
-# Case Study 16 – etcd Failure
+## Case Study 16 – etcd Failure
 
-## Scenario
+### Scenario
 
 The Kubernetes control plane becomes unstable.
 
 ---
 
-## Symptoms
+### Symptoms
 
 ```text
 API errors
@@ -1222,7 +1222,7 @@ Scheduler problems
 
 ---
 
-## Investigation
+### Investigation
 
 Check:
 
@@ -1235,7 +1235,7 @@ Control Plane Logs
 
 ---
 
-## Recovery
+### Recovery
 
 For HA clusters:
 
@@ -1251,9 +1251,9 @@ Always maintain tested etcd backups.
 
 ---
 
-# Case Study 17 – Control Plane Failure
+## Case Study 17 – Control Plane Failure
 
-## Scenario
+### Scenario
 
 One control-plane node fails.
 
@@ -1267,13 +1267,13 @@ Control Plane C → Healthy
 
 ---
 
-## Result
+### Result
 
 The cluster should continue operating if quorum and API availability are maintained.
 
 ---
 
-## Lesson
+### Lesson
 
 High availability requires:
 
@@ -1286,15 +1286,15 @@ Failure-Domain Planning
 
 ---
 
-# Case Study 18 – Zero-Downtime Deployment
+## Case Study 18 – Zero-Downtime Deployment
 
-## Scenario
+### Scenario
 
 A company must deploy a new application version without service interruption.
 
 ---
 
-## Configuration
+### Configuration
 
 ```text
 Replicas = 5
@@ -1305,7 +1305,7 @@ PodDisruptionBudget
 
 ---
 
-## Deployment
+### Deployment
 
 ```bash
 kubectl set image deployment/web \
@@ -1320,7 +1320,7 @@ kubectl rollout status deployment/web
 
 ---
 
-## Validation
+### Validation
 
 Check:
 
@@ -1333,9 +1333,9 @@ Pod Readiness
 
 ---
 
-# Case Study 19 – Failed Deployment Rollback
+## Case Study 19 – Failed Deployment Rollback
 
-## Scenario
+### Scenario
 
 Version 2 causes:
 
@@ -1345,7 +1345,7 @@ HTTP 500
 
 ---
 
-## Investigation
+### Investigation
 
 ```bash
 kubectl rollout history deployment/web
@@ -1365,15 +1365,15 @@ kubectl rollout status deployment/web
 
 ---
 
-## Lesson
+### Lesson
 
 Every production deployment should have a tested rollback strategy.
 
 ---
 
-# Case Study 20 – Blue/Green Deployment
+## Case Study 20 – Blue/Green Deployment
 
-## Architecture
+### Architecture
 
 ```text
              Service
@@ -1397,7 +1397,7 @@ Service → v2
 
 ---
 
-## Advantages
+### Advantages
 
 ```text
 Fast Rollback
@@ -1407,7 +1407,7 @@ Clear Version Separation
 
 ---
 
-## Disadvantages
+### Disadvantages
 
 ```text
 Higher Resource Usage
@@ -1417,15 +1417,15 @@ Database Compatibility Complexity
 
 ---
 
-# Case Study 21 – Canary Deployment
+## Case Study 21 – Canary Deployment
 
-## Scenario
+### Scenario
 
 A company wants to release a new version to only a small percentage of users.
 
 ---
 
-## Strategy
+### Strategy
 
 ```text
 v1 → 90%
@@ -1455,7 +1455,7 @@ Then:
 
 ---
 
-## Stop Condition
+### Stop Condition
 
 Rollback if:
 
@@ -1468,9 +1468,9 @@ Business Metrics ↓
 
 ---
 
-# Case Study 22 – GitOps Drift
+## Case Study 22 – GitOps Drift
 
-## Scenario
+### Scenario
 
 Production is managed through GitOps.
 
@@ -1488,7 +1488,7 @@ replicas = 5
 
 ---
 
-## Result
+### Result
 
 The GitOps controller detects drift and restores:
 
@@ -1498,7 +1498,7 @@ replicas = 5
 
 ---
 
-## Lesson
+### Lesson
 
 Git becomes the source of truth.
 
@@ -1506,15 +1506,15 @@ Manual production changes should be controlled and exceptional.
 
 ---
 
-# Case Study 23 – Secret Exposure
+## Case Study 23 – Secret Exposure
 
-## Scenario
+### Scenario
 
 A developer accidentally commits a Kubernetes Secret manifest containing credentials into Git.
 
 ---
 
-## Immediate Actions
+### Immediate Actions
 
 ```text
 1. Revoke credential
@@ -1527,7 +1527,7 @@ A developer accidentally commits a Kubernetes Secret manifest containing credent
 
 ---
 
-## Important
+### Important
 
 Deleting the file from the latest Git commit does not necessarily remove historical copies.
 
@@ -1535,15 +1535,15 @@ Treat exposed credentials as compromised.
 
 ---
 
-# Case Study 24 – Kubernetes Supply Chain Attack
+## Case Study 24 – Kubernetes Supply Chain Attack
 
-## Scenario
+### Scenario
 
 A compromised container image is introduced into a cluster.
 
 ---
 
-## Potential Attack Path
+### Potential Attack Path
 
 ```text
 Compromised Dependency
@@ -1559,7 +1559,7 @@ Production Pod
 
 ---
 
-## Controls
+### Controls
 
 ```text
 Trusted Registries
@@ -1574,15 +1574,15 @@ Runtime Monitoring
 
 ---
 
-# Case Study 25 – Container Escape Scenario
+## Case Study 25 – Container Escape Scenario
 
-## Scenario
+### Scenario
 
 A workload is compromised and attempts to escape its container boundary.
 
 ---
 
-## Risk Factors
+### Risk Factors
 
 ```text
 Privileged Container
@@ -1596,7 +1596,7 @@ Weak Runtime Configuration
 
 ---
 
-## Defensive Controls
+### Defensive Controls
 
 Use:
 
@@ -1613,9 +1613,9 @@ Least Privilege
 
 ---
 
-# Case Study 26 – Runtime Threat Detection
+## Case Study 26 – Runtime Threat Detection
 
-## Scenario
+### Scenario
 
 A container unexpectedly launches:
 
@@ -1627,7 +1627,7 @@ and accesses sensitive filesystem paths.
 
 ---
 
-## Detection
+### Detection
 
 Runtime security tooling can detect suspicious behavior such as:
 
@@ -1640,7 +1640,7 @@ Unexpected Network Connections
 
 ---
 
-## Response
+### Response
 
 ```text
 Detect
@@ -1662,15 +1662,15 @@ Monitor
 
 ---
 
-# Case Study 27 – Kubernetes Forensics
+## Case Study 27 – Kubernetes Forensics
 
-## Scenario
+### Scenario
 
 A Pod is suspected of compromise.
 
 ---
 
-## Evidence
+### Evidence
 
 Collect:
 
@@ -1690,7 +1690,7 @@ Node Evidence
 
 ---
 
-## Timeline
+### Timeline
 
 Build:
 
@@ -1705,15 +1705,15 @@ T5 → Recovery
 
 ---
 
-# Case Study 28 – RBAC Privilege Escalation
+## Case Study 28 – RBAC Privilege Escalation
 
-## Scenario
+### Scenario
 
 A compromised application attempts to create privileged resources.
 
 ---
 
-## Investigation
+### Investigation
 
 Check:
 
@@ -1734,7 +1734,7 @@ ClusterRoleBindings
 
 ---
 
-## Root Cause
+### Root Cause
 
 Excessive permissions:
 
@@ -1748,7 +1748,7 @@ on sensitive resources.
 
 ---
 
-## Prevention
+### Prevention
 
 Use:
 
@@ -1761,15 +1761,15 @@ RBAC Auditing
 
 ---
 
-# Case Study 29 – Database Failure
+## Case Study 29 – Database Failure
 
-## Scenario
+### Scenario
 
 Database Pods are unavailable.
 
 ---
 
-## Investigation
+### Investigation
 
 ```bash
 kubectl get statefulset
@@ -1790,7 +1790,7 @@ Resource Usage
 
 ---
 
-## Recovery
+### Recovery
 
 Depending on the architecture:
 
@@ -1806,15 +1806,15 @@ Never assume that deleting a database Pod is a safe recovery action.
 
 ---
 
-# Case Study 30 – Database Storage Failure
+## Case Study 30 – Database Storage Failure
 
-## Scenario
+### Scenario
 
 Database Pod cannot mount its volume.
 
 ---
 
-## Investigation
+### Investigation
 
 ```bash
 kubectl describe pod <pod>
@@ -1834,15 +1834,15 @@ Access Mode
 
 ---
 
-# Case Study 31 – Network Partition
+## Case Study 31 – Network Partition
 
-## Scenario
+### Scenario
 
 Two nodes cannot communicate.
 
 ---
 
-## Symptoms
+### Symptoms
 
 ```text
 Pod connectivity failures
@@ -1853,7 +1853,7 @@ Timeouts
 
 ---
 
-## Investigation
+### Investigation
 
 Check:
 
@@ -1868,7 +1868,7 @@ DNS
 
 ---
 
-## Lesson
+### Lesson
 
 Kubernetes networking depends on several layers:
 
@@ -1888,15 +1888,15 @@ Physical / Cloud Network
 
 ---
 
-# Case Study 32 – Resource Exhaustion
+## Case Study 32 – Resource Exhaustion
 
-## Scenario
+### Scenario
 
 Nodes run out of memory.
 
 ---
 
-## Symptoms
+### Symptoms
 
 ```text
 Pod Evictions
@@ -1907,7 +1907,7 @@ Node Pressure
 
 ---
 
-## Investigation
+### Investigation
 
 ```bash
 kubectl top nodes
@@ -1925,7 +1925,7 @@ PIDPressure
 
 ---
 
-## Prevention
+### Prevention
 
 ```text
 Requests
@@ -1938,9 +1938,9 @@ Capacity Planning
 
 ---
 
-# Case Study 33 – Disk Pressure
+## Case Study 33 – Disk Pressure
 
-## Scenario
+### Scenario
 
 A node reports:
 
@@ -1950,7 +1950,7 @@ DiskPressure=True
 
 ---
 
-## Potential Causes
+### Potential Causes
 
 ```text
 Container Logs
@@ -1962,7 +1962,7 @@ Ephemeral Storage
 
 ---
 
-## Investigation
+### Investigation
 
 Check node storage at the operating-system level where authorized.
 
@@ -1974,7 +1974,7 @@ kubectl describe node <node>
 
 ---
 
-## Prevention
+### Prevention
 
 ```text
 Log Rotation
@@ -1985,15 +1985,15 @@ Capacity Monitoring
 
 ---
 
-# Case Study 34 – Certificate Expiration
+## Case Study 34 – Certificate Expiration
 
-## Scenario
+### Scenario
 
 Kubernetes components begin reporting TLS errors.
 
 ---
 
-## Symptoms
+### Symptoms
 
 ```text
 API connection failures
@@ -2003,7 +2003,7 @@ Authentication failures
 
 ---
 
-## Investigation
+### Investigation
 
 Review:
 
@@ -2016,7 +2016,7 @@ Component Certificates
 
 ---
 
-## Prevention
+### Prevention
 
 ```text
 Certificate Monitoring
@@ -2027,15 +2027,15 @@ Documented Renewal Procedures
 
 ---
 
-# Case Study 35 – Cluster Upgrade Failure
+## Case Study 35 – Cluster Upgrade Failure
 
-## Scenario
+### Scenario
 
 A Kubernetes upgrade causes workloads to behave unexpectedly.
 
 ---
 
-## Potential Causes
+### Potential Causes
 
 ```text
 API Deprecation
@@ -2049,7 +2049,7 @@ CRD Compatibility
 
 ---
 
-## Prevention
+### Prevention
 
 Before upgrading:
 
@@ -2064,9 +2064,9 @@ Plan Rollback
 
 ---
 
-# Case Study 36 – Admission Policy Blocks Deployment
+## Case Study 36 – Admission Policy Blocks Deployment
 
-## Scenario
+### Scenario
 
 A Deployment fails during creation.
 
@@ -2078,7 +2078,7 @@ Admission webhook denied request.
 
 ---
 
-## Investigation
+### Investigation
 
 Check:
 
@@ -2092,7 +2092,7 @@ Pod Security
 
 ---
 
-## Common Causes
+### Common Causes
 
 ```text
 Privileged Container
@@ -2104,9 +2104,9 @@ Policy Violation
 
 ---
 
-# Case Study 37 – Multi-Cluster Architecture
+## Case Study 37 – Multi-Cluster Architecture
 
-## Scenario
+### Scenario
 
 A global SaaS platform needs:
 
@@ -2118,7 +2118,7 @@ US Cluster
 
 ---
 
-## Architecture
+### Architecture
 
 ```text
 Global Traffic Management
@@ -2131,7 +2131,7 @@ Cluster Cluster Cluster
 
 ---
 
-## Benefits
+### Benefits
 
 ```text
 Regional Availability
@@ -2142,7 +2142,7 @@ Compliance
 
 ---
 
-## Challenges
+### Challenges
 
 ```text
 Data Replication
@@ -2154,15 +2154,15 @@ Cost
 
 ---
 
-# Case Study 38 – Disaster Recovery
+## Case Study 38 – Disaster Recovery
 
-## Scenario
+### Scenario
 
 A production cluster is lost.
 
 ---
 
-## Recovery Architecture
+### Recovery Architecture
 
 ```text
 Primary Cluster
@@ -2177,7 +2177,7 @@ DR Cluster
 
 ---
 
-## Recovery Steps
+### Recovery Steps
 
 ```text
 1. Provision cluster
@@ -2193,15 +2193,15 @@ DR Cluster
 
 ---
 
-# Case Study 39 – Ransomware Scenario
+## Case Study 39 – Ransomware Scenario
 
-## Scenario
+### Scenario
 
 A compromised workload attempts to encrypt application data.
 
 ---
 
-## Response
+### Response
 
 ```text
 Detect
@@ -2225,7 +2225,7 @@ Harden
 
 ---
 
-## Key Requirement
+### Key Requirement
 
 Backups must be:
 
@@ -2239,15 +2239,15 @@ Separated From Primary Failure Domain
 
 ---
 
-# Case Study 40 – Production Incident Management
+## Case Study 40 – Production Incident Management
 
-## Scenario
+### Scenario
 
 Production API availability drops to 80%.
 
 ---
 
-## Incident Process
+### Incident Process
 
 ```text
 Detection
@@ -2269,7 +2269,7 @@ Postmortem
 
 ---
 
-## Incident Questions
+### Incident Questions
 
 Ask:
 
@@ -2285,15 +2285,15 @@ What is the safest mitigation?
 
 ---
 
-# Case Study 41 – Observability Failure
+## Case Study 41 – Observability Failure
 
-## Scenario
+### Scenario
 
 Application is failing but dashboards show no metrics.
 
 ---
 
-## Investigation
+### Investigation
 
 Check:
 
@@ -2308,7 +2308,7 @@ RBAC
 
 ---
 
-## Lesson
+### Lesson
 
 Observability itself is a production dependency.
 
@@ -2323,21 +2323,21 @@ Alerting Pipeline
 
 ---
 
-# Case Study 42 – Alert Fatigue
+## Case Study 42 – Alert Fatigue
 
-## Scenario
+### Scenario
 
 The operations team receives thousands of alerts every day.
 
 ---
 
-## Problem
+### Problem
 
 Important alerts are ignored.
 
 ---
 
-## Solution
+### Solution
 
 Design alerts around:
 
@@ -2353,7 +2353,7 @@ Avoid alerting on every small fluctuation.
 
 ---
 
-# Case Study 43 – SLO-Based Kubernetes Monitoring
+## Case Study 43 – SLO-Based Kubernetes Monitoring
 
 Define:
 
@@ -2373,7 +2373,7 @@ Traffic
 
 ---
 
-## Error Budget
+### Error Budget
 
 If SLO:
 
@@ -2397,9 +2397,9 @@ Incident Response
 
 ---
 
-# Case Study 44 – CI/CD Pipeline
+## Case Study 44 – CI/CD Pipeline
 
-## Architecture
+### Architecture
 
 ```text
 Developer
@@ -2423,7 +2423,7 @@ Kubernetes
 
 ---
 
-## Security Gates
+### Security Gates
 
 Include:
 
@@ -2439,15 +2439,15 @@ Policy Validation
 
 ---
 
-# Case Study 45 – Secure Software Supply Chain
+## Case Study 45 – Secure Software Supply Chain
 
-## Goal
+### Goal
 
 Prevent untrusted artifacts from reaching production.
 
 ---
 
-## Pipeline
+### Pipeline
 
 ```text
 Source
@@ -2469,15 +2469,15 @@ Deploy
 
 ---
 
-# Case Study 46 – Production Resource Optimization
+## Case Study 46 – Production Resource Optimization
 
-## Scenario
+### Scenario
 
 Cluster cost is increasing.
 
 ---
 
-## Investigation
+### Investigation
 
 Check:
 
@@ -2497,7 +2497,7 @@ Actual Memory
 
 ---
 
-## Optimization
+### Optimization
 
 Adjust:
 
@@ -2512,9 +2512,9 @@ Workload Placement
 
 ---
 
-# Case Study 47 – Overprovisioned Workloads
+## Case Study 47 – Overprovisioned Workloads
 
-## Scenario
+### Scenario
 
 A service requests:
 
@@ -2532,21 +2532,21 @@ Memory = 500Mi
 
 ---
 
-## Problem
+### Problem
 
 Scheduling capacity is wasted.
 
 ---
 
-## Solution
+### Solution
 
 Use observed usage to establish appropriate requests while maintaining sufficient headroom.
 
 ---
 
-# Case Study 48 – Underprovisioned Workloads
+## Case Study 48 – Underprovisioned Workloads
 
-## Scenario
+### Scenario
 
 A service requests:
 
@@ -2564,7 +2564,7 @@ Memory = 1Gi
 
 ---
 
-## Symptoms
+### Symptoms
 
 ```text
 Throttling
@@ -2574,21 +2574,21 @@ Poor Performance
 
 ---
 
-## Solution
+### Solution
 
 Tune requests and limits based on measured workload behavior.
 
 ---
 
-# Case Study 49 – Pod Topology Failure
+## Case Study 49 – Pod Topology Failure
 
-## Scenario
+### Scenario
 
 Three replicas are accidentally scheduled onto the same node.
 
 ---
 
-## Risk
+### Risk
 
 ```text
 Node Failure
@@ -2598,7 +2598,7 @@ All Replicas Lost
 
 ---
 
-## Solution
+### Solution
 
 Use:
 
@@ -2609,15 +2609,15 @@ Topology Spread Constraints
 
 ---
 
-# Case Study 50 – Complete Production Architecture
+## Case Study 50 – Complete Production Architecture
 
-## Scenario
+### Scenario
 
 Design a highly available enterprise Kubernetes platform.
 
 ---
 
-## Architecture
+### Architecture
 
 ```text
                          Internet
@@ -2646,7 +2646,7 @@ Design a highly available enterprise Kubernetes platform.
 
 ---
 
-## Platform Layer
+### Platform Layer
 
 ```text
 Kubernetes
@@ -2658,7 +2658,7 @@ Ingress / Gateway
 
 ---
 
-## Security Layer
+### Security Layer
 
 ```text
 RBAC
@@ -2673,7 +2673,7 @@ Audit
 
 ---
 
-## Observability Layer
+### Observability Layer
 
 ```text
 Prometheus
@@ -2686,7 +2686,7 @@ Tracing
 
 ---
 
-## Operations Layer
+### Operations Layer
 
 ```text
 GitOps
@@ -2701,17 +2701,17 @@ Incident Response
 
 ---
 
-# Case Study Analysis Framework
+## Case Study Analysis Framework
 
 For every production incident, use this framework:
 
-## 1. Identify
+### 1. Identify
 
 ```text
 What is broken?
 ```
 
-## 2. Scope
+### 2. Scope
 
 ```text
 Which users?
@@ -2720,14 +2720,14 @@ Which workloads?
 Which nodes?
 ```
 
-## 3. Timeline
+### 3. Timeline
 
 ```text
 When did it start?
 What changed immediately before it?
 ```
 
-## 4. Evidence
+### 4. Evidence
 
 Collect:
 
@@ -2740,7 +2740,7 @@ Resource Definitions
 Audit Logs
 ```
 
-## 5. Hypothesis
+### 5. Hypothesis
 
 Form a testable theory.
 
@@ -2751,7 +2751,7 @@ Example:
 new NetworkPolicy blocks egress."
 ```
 
-## 6. Test
+### 6. Test
 
 Use targeted commands.
 
@@ -2762,15 +2762,15 @@ kubectl get
 kubectl auth can-i
 ```
 
-## 7. Root Cause
+### 7. Root Cause
 
 Identify the actual failure.
 
-## 8. Remediation
+### 8. Remediation
 
 Apply the smallest safe fix.
 
-## 9. Validation
+### 9. Validation
 
 Confirm:
 
@@ -2781,7 +2781,7 @@ Security
 Data Integrity
 ```
 
-## 10. Prevention
+### 10. Prevention
 
 Implement:
 
@@ -2795,9 +2795,9 @@ Documentation
 
 ---
 
-# Production Incident Severity
+## Production Incident Severity
 
-## SEV-1
+### SEV-1
 
 ```text
 Major production outage
@@ -2809,7 +2809,7 @@ Immediate response.
 
 ---
 
-## SEV-2
+### SEV-2
 
 ```text
 Major degradation
@@ -2821,7 +2821,7 @@ Urgent response.
 
 ---
 
-## SEV-3
+### SEV-3
 
 ```text
 Limited impact
@@ -2832,7 +2832,7 @@ Normal incident response.
 
 ---
 
-# Golden Signals
+## Golden Signals
 
 Monitor:
 
@@ -2847,7 +2847,7 @@ These provide a useful high-level view of application health.
 
 ---
 
-# Kubernetes Golden Signals
+## Kubernetes Golden Signals
 
 Add:
 
@@ -2862,7 +2862,7 @@ Storage Health
 
 ---
 
-# Production Debugging Priority
+## Production Debugging Priority
 
 When an incident occurs:
 
@@ -2882,7 +2882,7 @@ When an incident occurs:
 
 ---
 
-# Security Incident Priority
+## Security Incident Priority
 
 For a suspected compromise:
 
@@ -2901,7 +2901,7 @@ For a suspected compromise:
 
 ---
 
-# Common Production Mistakes
+## Common Production Mistakes
 
 Avoid:
 
@@ -2926,15 +2926,15 @@ Avoid:
 
 ---
 
-# Production Design Principles
+## Production Design Principles
 
-## Principle 1 – Least Privilege
+### Principle 1 – Least Privilege
 
 ```text
 Give workloads only what they need.
 ```
 
-## Principle 2 – Defense in Depth
+### Principle 2 – Defense in Depth
 
 ```text
 Identity
@@ -2950,7 +2950,7 @@ Admission
 Monitoring
 ```
 
-## Principle 3 – Assume Failure
+### Principle 3 – Assume Failure
 
 Design for:
 
@@ -2963,7 +2963,7 @@ Storage Failure
 Control Plane Failure
 ```
 
-## Principle 4 – Automate
+### Principle 4 – Automate
 
 Automate:
 
@@ -2976,13 +2976,13 @@ Backup
 Recovery
 ```
 
-## Principle 5 – Observe Everything Important
+### Principle 5 – Observe Everything Important
 
 You cannot reliably operate what you cannot observe.
 
 ---
 
-# Final Case Study Challenge
+## Final Case Study Challenge
 
 Design a Kubernetes platform for an online banking application.
 
@@ -3022,7 +3022,7 @@ Incident Response
 
 ---
 
-# Expected Architecture
+## Expected Architecture
 
 ```text
                          Global Traffic
@@ -3067,7 +3067,7 @@ DR
 
 ---
 
-# Final Takeaways
+## Final Takeaways
 
 Real-world Kubernetes expertise comes from understanding the relationship between:
 
@@ -3149,7 +3149,7 @@ It is to understand the **dependency chain**.
 
 ---
 
-# Core Production Mindset
+## Core Production Mindset
 
 ```text
 Observe
@@ -3171,9 +3171,9 @@ Prevent
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 88 – Troubleshooting Playbook
+### Chapter 88 – Troubleshooting Playbook
 
 The next chapter converts the case studies into a practical troubleshooting reference covering:
 
@@ -3200,5 +3200,4 @@ Security Incident Troubleshooting
 Performance Troubleshooting
 Production Incident Response
 Root Cause Analysis
-```
 ```

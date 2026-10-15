@@ -7,7 +7,7 @@
 
 ---
 
-# Enterprise Web Security Handbook
+## Enterprise Web Security Handbook
 
 A comprehensive, enterprise-grade Web Security learning handbook designed for students, penetration testers, SOC analysts, security engineers, developers, DevSecOps engineers, and cybersecurity professionals.
 
@@ -85,7 +85,7 @@ Incident Response
 
 ---
 
-# Who Should Read This?
+## Who Should Read This?
 
 - Students
 - Beginners in Cybersecurity
@@ -101,7 +101,7 @@ Incident Response
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this handbook you will understand:
 
@@ -139,7 +139,7 @@ After completing this handbook you will understand:
 
 ---
 
-# Prerequisites
+## Prerequisites
 
 Helpful knowledge includes:
 
@@ -154,9 +154,9 @@ No prior web security experience is required.
 
 ---
 
-# Handbook Structure
+## Handbook Structure
 
-## Fundamentals
+### Fundamentals
 
 01-Introduction-to-Web-Security.md
 
@@ -194,7 +194,7 @@ No prior web security experience is required.
 
 ---
 
-## Core Web Security
+### Core Web Security
 
 18-OWASP-Top-10-Overview.md
 
@@ -220,7 +220,7 @@ No prior web security experience is required.
 
 ---
 
-## Advanced Web Security
+### Advanced Web Security
 
 29-API-Security.md
 
@@ -268,7 +268,7 @@ No prior web security experience is required.
 
 ---
 
-## Enterprise Security
+### Enterprise Security
 
 51-Web-Application-Firewalls.md
 
@@ -306,7 +306,7 @@ No prior web security experience is required.
 
 ---
 
-# Features
+## Features
 
 Each chapter contains:
 
@@ -325,7 +325,7 @@ Each chapter contains:
 
 ---
 
-# Learning Philosophy
+## Learning Philosophy
 
 Every topic follows this structure:
 
@@ -371,13 +371,13 @@ Best Practices
 
 ---
 
-# Intended Audience
+## Intended Audience
 
 This handbook is designed for enterprise learning and authorized security testing. Offensive techniques are discussed to help readers understand risks and implement effective defenses. Always obtain proper authorization before testing any systems.
 
 ---
 
-# License
+## License
 
 MIT License
 

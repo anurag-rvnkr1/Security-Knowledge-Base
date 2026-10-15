@@ -27,7 +27,7 @@ Understanding container networking is fundamental for:
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Consider an online shopping application.
 
@@ -72,7 +72,7 @@ Container networking solves these problems while preserving isolation and scalab
 
 ---
 
-# Container Networking Architecture
+## Container Networking Architecture
 
 ```
                     Internet
@@ -104,7 +104,7 @@ Containers communicate through virtual networks created and managed by Docker.
 
 ---
 
-# How Container Networking Works
+## How Container Networking Works
 
 Every container receives:
 
@@ -119,7 +119,7 @@ These components isolate network traffic while enabling controlled communication
 
 ---
 
-# Network Namespace
+## Network Namespace
 
 Every container has its own network namespace.
 
@@ -148,7 +148,7 @@ Although both containers have an `eth0` interface and a loopback address (`127.0
 
 ---
 
-# Virtual Ethernet (veth)
+## Virtual Ethernet (veth)
 
 Docker connects containers to virtual networks using **virtual Ethernet pairs (veth pairs)**.
 
@@ -175,7 +175,7 @@ A veth pair acts like a virtual cable:
 
 ---
 
-# Docker Bridge
+## Docker Bridge
 
 By default, Docker creates a bridge network named:
 
@@ -203,7 +203,7 @@ Containers connected to the same bridge network can communicate with each other,
 
 ---
 
-# Types of Docker Networks
+## Types of Docker Networks
 
 Docker supports several network drivers.
 
@@ -219,7 +219,7 @@ Each driver serves different deployment requirements.
 
 ---
 
-# Bridge Network
+## Bridge Network
 
 The **Bridge** network is the default Docker network.
 
@@ -248,7 +248,7 @@ Bridge networks are the most common choice for local development.
 
 ---
 
-# Host Network
+## Host Network
 
 With the **Host** network driver, the container shares the host's network stack.
 
@@ -271,7 +271,7 @@ Use this mode only when necessary, as it increases exposure and reduces isolatio
 
 ---
 
-# Overlay Network
+## Overlay Network
 
 The **Overlay** driver connects containers running on multiple hosts.
 
@@ -297,7 +297,7 @@ Overlay networks are widely used in Kubernetes and Docker Swarm environments.
 
 ---
 
-# Macvlan Network
+## Macvlan Network
 
 The **Macvlan** driver assigns a unique MAC address to each container.
 
@@ -323,7 +323,7 @@ Typical use cases include:
 
 ---
 
-# None Network
+## None Network
 
 The **None** network disables networking entirely.
 
@@ -343,7 +343,7 @@ Useful for highly isolated workloads.
 
 ---
 
-# Port Mapping
+## Port Mapping
 
 Containers often expose services internally.
 
@@ -381,7 +381,7 @@ Requests to the host's port `8080` are forwarded to port `80` inside the contain
 
 ---
 
-# DNS and Service Discovery
+## DNS and Service Discovery
 
 Docker provides built-in DNS for user-defined networks.
 
@@ -415,45 +415,45 @@ Using service names instead of IP addresses improves portability and reliability
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-## Network Isolation
+### Network Isolation
 
 Each container operates within its own network namespace, isolating interfaces, routing tables, and firewall rules.
 
 ---
 
-## Virtual Networking
+### Virtual Networking
 
 Docker creates software-defined virtual networks that allow containers to communicate without requiring physical network hardware.
 
 ---
 
-## Service Discovery
+### Service Discovery
 
 Containers on the same user-defined network can locate each other using DNS-based service names rather than hardcoded IP addresses.
 
 ---
 
-## Port Publishing
+### Port Publishing
 
 Applications become accessible outside the container only when ports are explicitly published (for example, with `-p`).
 
 ---
 
-## Multi-Host Networking
+### Multi-Host Networking
 
 Overlay networks enable communication between containers running on different hosts, supporting distributed applications.
 
 ---
 
-## Network Drivers
+### Network Drivers
 
 Selecting the appropriate network driver depends on the application's communication, performance, and isolation requirements.
 
 ---
 
-## How It Works
+### How It Works
 
 Container networking enables communication between containers, the host system, and external networks while maintaining isolation through Linux kernel networking features. Docker automates the creation of virtual networks, assigns IP addresses, configures DNS, and manages routing rules so applications can communicate without manual network configuration.
 
@@ -470,7 +470,7 @@ These components work together to provide secure and efficient networking for co
 
 ---
 
-# Container Networking Workflow
+## Container Networking Workflow
 
 ```
 Application
@@ -506,7 +506,7 @@ Every network packet follows this path unless a different network driver is used
 
 ---
 
-## Step 1 – Create the Container
+### Step 1 – Create the Container
 
 When a container starts:
 
@@ -525,7 +525,7 @@ Docker automatically:
 
 ---
 
-## Step 2 – Create a Network Namespace
+### Step 2 – Create a Network Namespace
 
 Every container receives an isolated network stack.
 
@@ -557,7 +557,7 @@ Containers cannot directly access each other's networking configuration.
 
 ---
 
-## Step 3 – Create a Virtual Ethernet Pair
+### Step 3 – Create a Virtual Ethernet Pair
 
 Docker creates a **veth pair**.
 
@@ -583,7 +583,7 @@ Think of it as plugging the container into a virtual network switch.
 
 ---
 
-## Step 4 – Connect to Docker Bridge
+### Step 4 – Connect to Docker Bridge
 
 By default:
 
@@ -617,7 +617,7 @@ Containers on the same bridge network can communicate with one another according
 
 ---
 
-## Step 5 – Assign an IP Address
+### Step 5 – Assign an IP Address
 
 Docker assigns an internal IP.
 
@@ -640,7 +640,7 @@ Applications should generally communicate using service or container names on us
 
 ---
 
-## Step 6 – Configure DNS
+### Step 6 – Configure DNS
 
 On user-defined bridge networks, Docker provides an embedded DNS service.
 
@@ -678,7 +678,7 @@ Docker resolves the service name automatically.
 
 ---
 
-## Step 7 – Configure Port Mapping
+### Step 7 – Configure Port Mapping
 
 Suppose Nginx listens on:
 
@@ -722,7 +722,7 @@ Docker forwards requests to the container's port 80.
 
 ---
 
-## Step 8 – Communicate Between Containers
+### Step 8 – Communicate Between Containers
 
 Containers attached to the same user-defined network communicate directly.
 
@@ -758,7 +758,7 @@ No manual IP management is required.
 
 ---
 
-## Step 9 – Access External Networks
+### Step 9 – Access External Networks
 
 Containers can also access the Internet.
 
@@ -793,9 +793,9 @@ This allows containers to:
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Two Containers
+### Example 1 – Two Containers
 
 Run:
 
@@ -821,7 +821,7 @@ rather than IP addresses.
 
 ---
 
-## Example 2 – Docker Compose
+### Example 2 – Docker Compose
 
 Compose file:
 
@@ -855,7 +855,7 @@ Each service is reachable by its service name.
 
 ---
 
-## Example 3 – Port Mapping
+### Example 3 – Port Mapping
 
 Command:
 
@@ -885,7 +885,7 @@ The host forwards incoming traffic to the container.
 
 ---
 
-## Example 4 – Host Network
+### Example 4 – Host Network
 
 Command:
 
@@ -907,9 +907,9 @@ No bridge or virtual interface is created for the container's network.
 
 ---
 
-# Hands-on Commands
+## Hands-on Commands
 
-## List Networks
+### List Networks
 
 ```bash
 docker network ls
@@ -919,7 +919,7 @@ Displays all Docker networks.
 
 ---
 
-## Inspect a Network
+### Inspect a Network
 
 ```bash
 docker network inspect bridge
@@ -935,7 +935,7 @@ Displays:
 
 ---
 
-## Create a Network
+### Create a Network
 
 ```bash
 docker network create mynetwork
@@ -945,7 +945,7 @@ Creates a user-defined bridge network.
 
 ---
 
-## Run a Container on a Network
+### Run a Container on a Network
 
 ```bash
 docker run --network mynetwork nginx
@@ -955,7 +955,7 @@ Attaches the container to the specified network.
 
 ---
 
-## Connect an Existing Container
+### Connect an Existing Container
 
 ```bash
 docker network connect mynetwork web
@@ -965,7 +965,7 @@ Connects a running container to another network.
 
 ---
 
-## Disconnect a Container
+### Disconnect a Container
 
 ```bash
 docker network disconnect mynetwork web
@@ -975,7 +975,7 @@ Removes the container from the network.
 
 ---
 
-## Remove a Network
+### Remove a Network
 
 ```bash
 docker network rm mynetwork
@@ -985,7 +985,7 @@ Deletes an unused network.
 
 ---
 
-## View Port Mappings
+### View Port Mappings
 
 ```bash
 docker port web
@@ -995,7 +995,7 @@ Displays published ports for a container.
 
 ---
 
-## Inspect Network Configuration
+### Inspect Network Configuration
 
 ```bash
 docker inspect web
@@ -1011,9 +1011,9 @@ Review the **NetworkSettings** section for:
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use User-Defined Bridge Networks
+#### 1. Use User-Defined Bridge Networks
 
 Prefer creating your own bridge networks instead of relying on the default `bridge` network.
 
@@ -1025,7 +1025,7 @@ Benefits include:
 
 ---
 
-### 2. Publish Only Required Ports
+#### 2. Publish Only Required Ports
 
 Expose only the services that must be reachable externally.
 
@@ -1033,7 +1033,7 @@ Keep databases, caches, and internal services on private networks whenever possi
 
 ---
 
-### 3. Use Service Names Instead of IP Addresses
+#### 3. Use Service Names Instead of IP Addresses
 
 Avoid hardcoded IP addresses.
 
@@ -1053,7 +1053,7 @@ Docker's DNS makes service names stable and portable.
 
 ---
 
-### 4. Separate Public and Private Services
+#### 4. Separate Public and Private Services
 
 Example:
 
@@ -1077,7 +1077,7 @@ Only the frontend should generally be exposed to external users.
 
 ---
 
-### 5. Avoid Host Networking Unless Necessary
+#### 5. Avoid Host Networking Unless Necessary
 
 The host network driver reduces isolation.
 
@@ -1085,7 +1085,7 @@ Use it only when specific performance or networking requirements justify the tra
 
 ---
 
-### 6. Document Port Usage
+#### 6. Document Port Usage
 
 Clearly document:
 
@@ -1097,7 +1097,7 @@ This simplifies troubleshooting and maintenance.
 
 ---
 
-### 7. Monitor Network Connectivity
+#### 7. Monitor Network Connectivity
 
 Regularly verify:
 
@@ -1112,13 +1112,13 @@ Early monitoring helps detect configuration issues before they impact applicatio
 ---
 
 
-## Common Mistakes
+### Common Mistakes
 
 Container networking is often one of the most misunderstood aspects of Docker. Many networking issues arise from incorrect assumptions about how containers communicate, how port mapping works, or how Docker networks are configured. Understanding these common mistakes will help you troubleshoot problems more effectively and design secure, reliable containerized applications.
 
 ---
 
-# 1. Confusing `EXPOSE` with Port Publishing
+## 1. Confusing `EXPOSE` with Port Publishing
 
 Many beginners believe:
 
@@ -1160,7 +1160,7 @@ Container Port 80
 
 ---
 
-# 2. Using Container IP Addresses
+## 2. Using Container IP Addresses
 
 Incorrect:
 
@@ -1190,7 +1190,7 @@ Docker automatically resolves service names on user-defined networks.
 
 ---
 
-# 3. Publishing Every Port
+## 3. Publishing Every Port
 
 Example:
 
@@ -1230,7 +1230,7 @@ Only publish ports that require external access.
 
 ---
 
-# 4. Using the Default Bridge for Everything
+## 4. Using the Default Bridge for Everything
 
 Docker automatically creates:
 
@@ -1247,7 +1247,7 @@ Although suitable for basic usage, production-style applications benefit from us
 
 ---
 
-# 5. Assuming `localhost` Refers to the Host
+## 5. Assuming `localhost` Refers to the Host
 
 Inside a container:
 
@@ -1277,7 +1277,7 @@ It does **not** automatically reach services running on the host machine.
 
 ---
 
-# 6. Ignoring Network Isolation
+## 6. Ignoring Network Isolation
 
 Containers on different Docker networks cannot communicate unless explicitly connected.
 
@@ -1302,7 +1302,7 @@ Communication fails unless routing or shared network membership is configured.
 
 ---
 
-# 7. Misunderstanding Host Networking
+## 7. Misunderstanding Host Networking
 
 Using:
 
@@ -1335,7 +1335,7 @@ Host networking should be used only when necessary.
 
 ---
 
-# 8. Forgetting DNS-Based Service Discovery
+## 8. Forgetting DNS-Based Service Discovery
 
 Instead of:
 
@@ -1358,7 +1358,7 @@ Benefits:
 
 ---
 
-# 9. Assuming `depends_on` Solves Networking
+## 9. Assuming `depends_on` Solves Networking
 
 Example:
 
@@ -1380,7 +1380,7 @@ Use health checks and retry logic when required.
 
 ---
 
-# 10. Ignoring Firewall Rules
+## 10. Ignoring Firewall Rules
 
 Container communication may be affected by:
 
@@ -1393,7 +1393,7 @@ Networking problems are not always caused by Docker configuration alone.
 
 ---
 
-# 11. Using Host Ports That Are Already in Use
+## 11. Using Host Ports That Are Already in Use
 
 Example:
 
@@ -1415,7 +1415,7 @@ Check host port availability before publishing ports.
 
 ---
 
-# 12. Exposing Databases to the Internet
+## 12. Exposing Databases to the Internet
 
 Poor configuration:
 
@@ -1437,7 +1437,7 @@ Expose only application endpoints that require external access.
 
 ---
 
-# 13. Forgetting Network Cleanup
+## 13. Forgetting Network Cleanup
 
 Over time, development environments accumulate:
 
@@ -1449,7 +1449,7 @@ Regular cleanup prevents clutter and simplifies troubleshooting.
 
 ---
 
-# 14. Assuming All Network Drivers Behave the Same
+## 14. Assuming All Network Drivers Behave the Same
 
 Each driver serves different purposes.
 
@@ -1465,7 +1465,7 @@ Selecting the appropriate driver is important for performance, security, and fun
 
 ---
 
-# 15. Memorizing Commands Without Understanding Networking
+## 15. Memorizing Commands Without Understanding Networking
 
 Many engineers memorize:
 
@@ -1493,9 +1493,9 @@ A conceptual understanding makes networking issues much easier to diagnose.
 
 ---
 
-# Container Networking Quick Revision
+## Container Networking Quick Revision
 
-## Network Flow
+### Network Flow
 
 ```
 Application
@@ -1523,7 +1523,7 @@ Internet
 
 ---
 
-## Docker Network Drivers
+### Docker Network Drivers
 
 | Driver | Purpose |
 |---------|---------|
@@ -1535,7 +1535,7 @@ Internet
 
 ---
 
-## Port Mapping
+### Port Mapping
 
 ```bash
 docker run -p 8080:80 nginx
@@ -1551,7 +1551,7 @@ Container 80
 
 ---
 
-## Common Network Commands
+### Common Network Commands
 
 ```bash
 docker network ls
@@ -1569,7 +1569,7 @@ docker network rm
 
 ---
 
-## Communication Best Practice
+### Communication Best Practice
 
 Instead of:
 
@@ -1587,7 +1587,7 @@ Service names are more stable, portable, and easier to maintain.
 
 ---
 
-# Container Networking Checklist
+## Container Networking Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1609,9 +1609,9 @@ Service names are more stable, portable, and easier to maintain.
 
 ---
 
-# References
+## References
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker Networking Documentation
 - Docker Bridge Network Documentation
@@ -1621,7 +1621,7 @@ Service names are more stable, portable, and easier to maintain.
 
 ---
 
-## Linux Documentation
+### Linux Documentation
 
 - Linux Network Namespaces
 - Linux Virtual Ethernet (veth)
@@ -1631,7 +1631,7 @@ Service names are more stable, portable, and easier to maintain.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Networking Documentation
 - Container Network Interface (CNI) Specification
@@ -1639,7 +1639,7 @@ Service names are more stable, portable, and easier to maintain.
 
 ---
 
-## Security Resources
+### Security Resources
 
 - NIST SP 800-190 — Application Container Security Guide
 - OWASP Docker Security Cheat Sheet
@@ -1648,7 +1648,7 @@ Service names are more stable, portable, and easier to maintain.
 
 ---
 
-## Books
+### Books
 
 - *Docker Deep Dive* — Nigel Poulton
 - *Container Security* — Liz Rice
@@ -1657,7 +1657,7 @@ Service names are more stable, portable, and easier to maintain.
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Play with Docker

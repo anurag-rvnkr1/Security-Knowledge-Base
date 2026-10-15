@@ -59,7 +59,7 @@ Updated Pod Resources
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -93,7 +93,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Vertical Scaling?
+## What Is Vertical Scaling?
 
 Vertical scaling means:
 
@@ -121,9 +121,9 @@ The number of Pods does not necessarily change.
 
 ---
 
-# Horizontal vs Vertical Scaling
+## Horizontal vs Vertical Scaling
 
-## Horizontal Scaling
+### Horizontal Scaling
 
 ```text
 More Pods
@@ -145,7 +145,7 @@ HPA
 
 ---
 
-## Vertical Scaling
+### Vertical Scaling
 
 ```text
 More Resources per Pod
@@ -167,7 +167,7 @@ VPA
 
 ---
 
-# Comparison
+## Comparison
 
 | Feature | HPA | VPA |
 |---|---|---|
@@ -180,7 +180,7 @@ VPA
 
 ---
 
-# Why Do We Need VPA?
+## Why Do We Need VPA?
 
 Suppose an application has:
 
@@ -223,7 +223,7 @@ VPA can help identify better resource values.
 
 ---
 
-# VPA Architecture
+## VPA Architecture
 
 A simplified architecture:
 
@@ -259,7 +259,7 @@ A simplified architecture:
 
 ---
 
-# VPA Components
+## VPA Components
 
 VPA generally consists of three major components:
 
@@ -277,7 +277,7 @@ Admission Controller
 
 ---
 
-# VPA Recommender
+## VPA Recommender
 
 The **Recommender** analyzes resource usage and determines recommended CPU and memory values.
 
@@ -300,7 +300,7 @@ It considers workload usage patterns and produces recommendations.
 
 ---
 
-# VPA Updater
+## VPA Updater
 
 The **Updater** determines whether running Pods need to be recreated based on the VPA recommendation and policy.
 
@@ -332,7 +332,7 @@ Pod Replacement
 
 ---
 
-# VPA Admission Controller
+## VPA Admission Controller
 
 When a new Pod is created, the Admission Controller can modify the Pod's resource requests and limits according to VPA recommendations.
 
@@ -360,7 +360,7 @@ Pod Starts
 
 ---
 
-# VPA Resource Recommendation
+## VPA Resource Recommendation
 
 VPA can recommend:
 
@@ -389,7 +389,7 @@ Upper Bound = 1Gi
 
 ---
 
-# Recommendation Components
+## Recommendation Components
 
 VPA recommendations can contain:
 
@@ -402,7 +402,7 @@ Uncapped Target
 
 ---
 
-# Lower Bound
+## Lower Bound
 
 The lower bound represents a lower resource estimate below which the workload may be considered under-provisioned.
 
@@ -416,7 +416,7 @@ Lower Bound = 250m
 
 ---
 
-# Target
+## Target
 
 The target is the primary recommended resource value.
 
@@ -430,7 +430,7 @@ This is commonly the value used when updating resources.
 
 ---
 
-# Upper Bound
+## Upper Bound
 
 The upper bound represents an upper resource estimate.
 
@@ -444,7 +444,7 @@ The workload may require more than the target under certain conditions.
 
 ---
 
-# Uncapped Target
+## Uncapped Target
 
 The uncapped target represents a recommendation before constraints such as container policies or other limits are applied.
 
@@ -452,7 +452,7 @@ It can help understand the recommendation process.
 
 ---
 
-# VPA Modes
+## VPA Modes
 
 VPA supports different operating modes.
 
@@ -476,7 +476,7 @@ Auto
 
 ---
 
-# Off Mode
+## Off Mode
 
 Example:
 
@@ -510,7 +510,7 @@ Right-sizing analysis
 
 ---
 
-# Initial Mode
+## Initial Mode
 
 Example:
 
@@ -544,7 +544,7 @@ Pod starts
 
 ---
 
-# Recreate Mode
+## Recreate Mode
 
 Example:
 
@@ -582,7 +582,7 @@ This can cause disruption unless the application is designed for Pod replacement
 
 ---
 
-# Auto Mode
+## Auto Mode
 
 Historically, VPA has supported:
 
@@ -598,7 +598,7 @@ When using modern VPA installations, verify the installed VPA version and its do
 
 ---
 
-# VPA Example
+## VPA Example
 
 A basic VPA object:
 
@@ -642,7 +642,7 @@ Do not automatically change Pods
 
 ---
 
-# VPA Target Reference
+## VPA Target Reference
 
 Example:
 
@@ -660,7 +660,7 @@ This identifies the workload whose Pods VPA should analyze.
 
 ---
 
-# VPA Update Policy
+## VPA Update Policy
 
 Example:
 
@@ -686,7 +686,7 @@ The supported modes depend on the VPA version installed in the cluster.
 
 ---
 
-# Resource Policy
+## Resource Policy
 
 VPA can also define resource policies.
 
@@ -716,7 +716,7 @@ This constrains VPA recommendations.
 
 ---
 
-# minAllowed
+## minAllowed
 
 Example:
 
@@ -732,7 +732,7 @@ This prevents VPA from recommending values below the specified minimum.
 
 ---
 
-# maxAllowed
+## maxAllowed
 
 Example:
 
@@ -748,7 +748,7 @@ This prevents VPA from recommending values above the specified maximum.
 
 ---
 
-# Container Policy
+## Container Policy
 
 Example:
 
@@ -780,7 +780,7 @@ container.
 
 ---
 
-# Wildcard Container Policy
+## Wildcard Container Policy
 
 You may encounter:
 
@@ -794,7 +794,7 @@ Use carefully in multi-container workloads.
 
 ---
 
-# VPA and CPU
+## VPA and CPU
 
 Suppose the workload uses:
 
@@ -822,7 +822,7 @@ Recommended:
 
 ---
 
-# VPA and Memory
+## VPA and Memory
 
 Suppose:
 
@@ -846,7 +846,7 @@ The exact recommendation is determined by VPA's analysis and configured constrai
 
 ---
 
-# VPA and Resource Requests
+## VPA and Resource Requests
 
 VPA primarily helps determine better resource requests.
 
@@ -874,7 +874,7 @@ Cost Efficiency
 
 ---
 
-# VPA and Resource Limits
+## VPA and Resource Limits
 
 VPA can also influence resource limits depending on the configured policy and VPA behavior.
 
@@ -888,7 +888,7 @@ Inspect the resulting Pod specification and the VPA configuration.
 
 ---
 
-# VPA and HPA
+## VPA and HPA
 
 This is an important production topic.
 
@@ -936,7 +936,7 @@ Therefore, careful design is required.
 
 ---
 
-# HPA + VPA Best Practice
+## HPA + VPA Best Practice
 
 A common approach is:
 
@@ -963,7 +963,7 @@ This reduces the chance that both controllers react to the exact same signal.
 
 ---
 
-# VPA and Cluster Autoscaler
+## VPA and Cluster Autoscaler
 
 VPA can change resource requests.
 
@@ -1004,7 +1004,7 @@ Therefore VPA and Cluster Autoscaler can work together.
 
 ---
 
-# VPA + Cluster Autoscaler
+## VPA + Cluster Autoscaler
 
 ```text
 VPA
@@ -1036,7 +1036,7 @@ Pod Scheduled
 
 ---
 
-# VPA and Pod Disruption
+## VPA and Pod Disruption
 
 VPA may need to recreate Pods when resource changes are required.
 
@@ -1065,7 +1065,7 @@ where appropriate.
 
 ---
 
-# Stateful Workloads
+## Stateful Workloads
 
 VPA can be more complicated for:
 
@@ -1089,7 +1089,7 @@ Always test carefully.
 
 ---
 
-# VPA and DaemonSets
+## VPA and DaemonSets
 
 DaemonSets run Pods on Nodes according to Node scheduling rules.
 
@@ -1099,7 +1099,7 @@ Use caution.
 
 ---
 
-# VPA and Jobs
+## VPA and Jobs
 
 Batch workloads can also benefit from resource recommendations.
 
@@ -1109,7 +1109,7 @@ For recurring batch workloads, historical analysis can become more useful.
 
 ---
 
-# VPA Installation
+## VPA Installation
 
 VPA is not normally enabled simply by creating a VPA object.
 
@@ -1133,7 +1133,7 @@ or the namespace where your VPA installation is deployed.
 
 ---
 
-# Verify VPA CRD
+## Verify VPA CRD
 
 Run:
 
@@ -1145,7 +1145,7 @@ If VPA is installed, the CRD should be available.
 
 ---
 
-# Check VPA Objects
+## Check VPA Objects
 
 ```bash
 kubectl get vpa
@@ -1159,7 +1159,7 @@ kubectl get verticalpodautoscalers
 
 ---
 
-# Describe VPA
+## Describe VPA
 
 ```bash
 kubectl describe vpa <vpa-name>
@@ -1173,7 +1173,7 @@ Recommendation
 
 ---
 
-# VPA Status
+## VPA Status
 
 Example:
 
@@ -1198,7 +1198,7 @@ Exact output varies by VPA version and workload.
 
 ---
 
-# Hands-on Lab 1 – Verify VPA Installation
+## Hands-on Lab 1 – Verify VPA Installation
 
 Run:
 
@@ -1222,7 +1222,7 @@ Admission Controller
 
 ---
 
-# Hands-on Lab 2 – Deploy Sample Application
+## Hands-on Lab 2 – Deploy Sample Application
 
 Create:
 
@@ -1284,7 +1284,7 @@ kubectl apply -f vpa-demo.yaml
 
 ---
 
-# Hands-on Lab 3 – Create VPA in Off Mode
+## Hands-on Lab 3 – Create VPA in Off Mode
 
 Create:
 
@@ -1320,7 +1320,7 @@ kubectl apply -f vpa.yaml
 
 ---
 
-# Hands-on Lab 4 – View Recommendations
+## Hands-on Lab 4 – View Recommendations
 
 Run:
 
@@ -1344,7 +1344,7 @@ upperBound
 
 ---
 
-# Hands-on Lab 5 – Generate Workload
+## Hands-on Lab 5 – Generate Workload
 
 Generate application activity in a disposable environment.
 
@@ -1360,7 +1360,7 @@ Observe how recommendations evolve over time.
 
 ---
 
-# Hands-on Lab 6 – Initial Mode
+## Hands-on Lab 6 – Initial Mode
 
 Change:
 
@@ -1374,7 +1374,7 @@ Observe that new Pods can receive VPA recommendations during creation.
 
 ---
 
-# Hands-on Lab 7 – Resource Policies
+## Hands-on Lab 7 – Resource Policies
 
 Create:
 
@@ -1402,7 +1402,7 @@ Observe how recommendations are bounded.
 
 ---
 
-# Hands-on Lab 8 – Recreate Mode
+## Hands-on Lab 8 – Recreate Mode
 
 Only in a disposable environment:
 
@@ -1430,7 +1430,7 @@ kubectl describe vpa <vpa-name>
 
 ---
 
-# Important Lab Warning
+## Important Lab Warning
 
 Do not experiment with VPA `Recreate` mode on critical production workloads without understanding the disruption implications.
 
@@ -1438,9 +1438,9 @@ VPA may restart Pods to apply new resource settings.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## VPA Has No Recommendation
+### VPA Has No Recommendation
 
 Possible reasons:
 
@@ -1462,7 +1462,7 @@ VPA is not targeting the intended workload
 
 ---
 
-# Check VPA Components
+## Check VPA Components
 
 ```bash
 kubectl get pods -A | grep vpa
@@ -1470,7 +1470,7 @@ kubectl get pods -A | grep vpa
 
 ---
 
-# Check VPA Logs
+## Check VPA Logs
 
 For example:
 
@@ -1482,7 +1482,7 @@ The exact deployment name and namespace may vary.
 
 ---
 
-# Check VPA Object
+## Check VPA Object
 
 ```bash
 kubectl describe vpa <vpa-name>
@@ -1498,7 +1498,7 @@ Conditions
 
 ---
 
-# Check Metrics
+## Check Metrics
 
 If your environment uses Metrics Server:
 
@@ -1514,7 +1514,7 @@ kubectl top nodes
 
 ---
 
-# VPA Does Not Update Pods
+## VPA Does Not Update Pods
 
 Check:
 
@@ -1548,7 +1548,7 @@ or another supported automatic mode is configured, Pod replacement may occur acc
 
 ---
 
-# VPA Recommendation Too High
+## VPA Recommendation Too High
 
 Possible reasons:
 
@@ -1578,7 +1578,7 @@ Upper Bound
 
 ---
 
-# VPA Recommendation Too Low
+## VPA Recommendation Too Low
 
 Possible causes:
 
@@ -1600,9 +1600,9 @@ Recommendation window does not capture relevant workload behavior
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Thinking VPA Adds More Pods
+### 1. Thinking VPA Adds More Pods
 
 Incorrect:
 
@@ -1622,7 +1622,7 @@ Resource Adjustment
 
 ---
 
-## 2. Confusing VPA with HPA
+### 2. Confusing VPA with HPA
 
 ```text
 HPA
@@ -1638,7 +1638,7 @@ Pod Resources
 
 ---
 
-## 3. Using HPA and VPA Carelessly Together
+### 3. Using HPA and VPA Carelessly Together
 
 If both use CPU utilization as their primary feedback signal, they can influence each other.
 
@@ -1646,7 +1646,7 @@ Design their metrics carefully.
 
 ---
 
-## 4. Using Recreate Mode Without Understanding Disruption
+### 4. Using Recreate Mode Without Understanding Disruption
 
 VPA may need to recreate Pods.
 
@@ -1658,7 +1658,7 @@ Temporary availability impact
 
 ---
 
-## 5. Expecting Immediate Recommendations
+### 5. Expecting Immediate Recommendations
 
 VPA relies on usage history.
 
@@ -1666,13 +1666,13 @@ Recommendations may require time to become meaningful.
 
 ---
 
-## 6. Ignoring Resource Policies
+### 6. Ignoring Resource Policies
 
 Without suitable bounds, VPA recommendations may not align with workload or cluster requirements.
 
 ---
 
-## 7. Assuming VPA Fixes Application Memory Leaks
+### 7. Assuming VPA Fixes Application Memory Leaks
 
 If an application continuously consumes more memory:
 
@@ -1692,19 +1692,19 @@ It may simply provide more memory before the problem becomes visible.
 
 ---
 
-## 8. Ignoring Node Capacity
+### 8. Ignoring Node Capacity
 
 Increasing Pod resource requests can make Pods difficult to schedule.
 
 ---
 
-## 9. Ignoring Stateful Workloads
+### 9. Ignoring Stateful Workloads
 
 Restarting a stateful application can have significant consequences.
 
 ---
 
-# VPA vs HPA
+## VPA vs HPA
 
 ```text
 HPA
@@ -1728,7 +1728,7 @@ More CPU/Memory per Pod
 
 ---
 
-# VPA vs Cluster Autoscaler
+## VPA vs Cluster Autoscaler
 
 ```text
 VPA
@@ -1750,7 +1750,7 @@ They can work together.
 
 ---
 
-# VPA vs Resource Requests
+## VPA vs Resource Requests
 
 VPA can help determine:
 
@@ -1767,7 +1767,7 @@ memory: 512Mi
 
 ---
 
-# VPA and QoS
+## VPA and QoS
 
 VPA can change requests and limits.
 
@@ -1791,7 +1791,7 @@ Therefore, monitor QoS behavior when VPA changes resource settings.
 
 ---
 
-# VPA and Scheduling
+## VPA and Scheduling
 
 Suppose:
 
@@ -1833,7 +1833,7 @@ must be considered together.
 
 ---
 
-# VPA and Cost Optimization
+## VPA and Cost Optimization
 
 VPA can help identify:
 
@@ -1863,7 +1863,7 @@ Infrastructure Cost
 
 ---
 
-# VPA Right-Sizing Workflow
+## VPA Right-Sizing Workflow
 
 ```text
 Deploy Workload
@@ -1899,7 +1899,7 @@ Repeat
 
 ---
 
-# Production Strategy
+## Production Strategy
 
 A cautious production rollout can be:
 
@@ -1945,7 +1945,7 @@ This reduces operational risk.
 
 ---
 
-# VPA and SLOs
+## VPA and SLOs
 
 Do not optimize resources only for:
 
@@ -1967,7 +1967,7 @@ A lower CPU allocation might reduce cost but increase latency.
 
 ---
 
-# Production Example
+## Production Example
 
 Suppose:
 
@@ -2004,9 +2004,9 @@ SLOs
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Start with Off Mode
+#### 1. Start with Off Mode
 
 Use:
 
@@ -2018,31 +2018,31 @@ to understand recommendations before automatic changes.
 
 ---
 
-### 2. Set minAllowed and maxAllowed
+#### 2. Set minAllowed and maxAllowed
 
 Prevent unreasonable resource recommendations.
 
 ---
 
-### 3. Monitor Historical Recommendations
+#### 3. Monitor Historical Recommendations
 
 Do not make decisions based on one short observation period.
 
 ---
 
-### 4. Be Careful with Memory
+#### 4. Be Careful with Memory
 
 Memory spikes and leaks require special attention.
 
 ---
 
-### 5. Avoid Blind HPA + VPA CPU Scaling
+#### 5. Avoid Blind HPA + VPA CPU Scaling
 
 Use different signals where possible.
 
 ---
 
-### 6. Account for Pod Restarts
+#### 6. Account for Pod Restarts
 
 Automatic VPA updates can recreate Pods.
 
@@ -2058,33 +2058,33 @@ where appropriate.
 
 ---
 
-### 7. Monitor Cluster Capacity
+#### 7. Monitor Cluster Capacity
 
 Large VPA recommendations can make Pods unschedulable.
 
 ---
 
-### 8. Validate Recommendations
+#### 8. Validate Recommendations
 
 Treat VPA as an engineering aid, not an automatic substitute for capacity planning.
 
 ---
 
-### 9. Use Workload-Specific Policies
+#### 9. Use Workload-Specific Policies
 
 A latency-sensitive API and a batch worker may need very different resource strategies.
 
 ---
 
-### 10. Review Recommendations Periodically
+#### 10. Review Recommendations Periodically
 
 Application behavior changes over time.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## VPA
+### VPA
 
 ```text
 Vertical Pod Autoscaler
@@ -2092,7 +2092,7 @@ Vertical Pod Autoscaler
 
 ---
 
-## VPA Purpose
+### VPA Purpose
 
 ```text
 Adjust CPU / Memory resources
@@ -2100,7 +2100,7 @@ Adjust CPU / Memory resources
 
 ---
 
-## Recommender
+### Recommender
 
 ```text
 Analyzes usage
@@ -2108,7 +2108,7 @@ Analyzes usage
 
 ---
 
-## Updater
+### Updater
 
 ```text
 Determines whether Pods need updating
@@ -2116,7 +2116,7 @@ Determines whether Pods need updating
 
 ---
 
-## Admission Controller
+### Admission Controller
 
 ```text
 Applies recommendations to newly created Pods
@@ -2124,7 +2124,7 @@ Applies recommendations to newly created Pods
 
 ---
 
-## Off
+### Off
 
 ```text
 Recommendations only
@@ -2132,7 +2132,7 @@ Recommendations only
 
 ---
 
-## Initial
+### Initial
 
 ```text
 Apply recommendations to new Pods
@@ -2140,7 +2140,7 @@ Apply recommendations to new Pods
 
 ---
 
-## Recreate
+### Recreate
 
 ```text
 Can recreate Pods to apply changes
@@ -2148,7 +2148,7 @@ Can recreate Pods to apply changes
 
 ---
 
-## HPA
+### HPA
 
 ```text
 More/Fewer Pods
@@ -2156,7 +2156,7 @@ More/Fewer Pods
 
 ---
 
-## VPA
+### VPA
 
 ```text
 More/Fewer Resources per Pod
@@ -2164,7 +2164,7 @@ More/Fewer Resources per Pod
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 Check VPA:
 
@@ -2216,9 +2216,9 @@ kubectl top nodes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is VPA?
 - What is vertical scaling?
@@ -2230,7 +2230,7 @@ kubectl top nodes
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Explain VPA update modes.
 - What does `Off` mode do?
@@ -2243,7 +2243,7 @@ kubectl top nodes
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete VPA architecture.
 - How does VPA calculate resource recommendations?
@@ -2262,7 +2262,7 @@ kubectl top nodes
 
 ---
 
-# Production Architecture
+## Production Architecture
 
 A typical architecture:
 
@@ -2305,7 +2305,7 @@ A typical architecture:
 
 ---
 
-# HPA + VPA + Cluster Autoscaler
+## HPA + VPA + Cluster Autoscaler
 
 A production environment may use all three:
 
@@ -2350,7 +2350,7 @@ but it requires careful configuration to avoid conflicting control loops.
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Install VPA in a disposable Kubernetes cluster.
 2. Verify the VPA CRDs.
@@ -2372,9 +2372,9 @@ but it requires careful configuration to avoid conflicting control loops.
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Vertical Pod Autoscaling
 - Resource Management for Pods and Containers
@@ -2386,7 +2386,7 @@ but it requires careful configuration to avoid conflicting control loops.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes SIG Autoscaling
 - Kubernetes SIG Scheduling
@@ -2395,7 +2395,7 @@ but it requires careful configuration to avoid conflicting control loops.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 VPA provides Kubernetes with a mechanism for automatically analyzing and adjusting the CPU and memory resources assigned to Pods.
 
@@ -2588,9 +2588,9 @@ when used carefully.
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 45 – Cluster Autoscaler
+## Chapter 45 – Cluster Autoscaler
 
 Topics will include:
 
@@ -2628,4 +2628,3 @@ Topics will include:
 - References
 
 ---
-```

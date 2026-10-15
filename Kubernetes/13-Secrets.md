@@ -22,7 +22,7 @@ Secrets allow applications to access sensitive information **without embedding c
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -40,7 +40,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Secrets?
+## Why Secrets?
 
 Imagine an application.
 
@@ -65,7 +65,7 @@ Problems:
 
 ---
 
-# Better Solution
+## Better Solution
 
 Separate:
 
@@ -91,7 +91,7 @@ Now credentials can be updated independently.
 
 ---
 
-# What is a Secret?
+## What is a Secret?
 
 A Secret is a Kubernetes API object that stores sensitive key-value data.
 
@@ -123,7 +123,7 @@ Applications retrieve these values securely at runtime.
 
 ---
 
-# Secret Architecture
+## Secret Architecture
 
 ```
                  Secret
@@ -147,7 +147,7 @@ Applications retrieve these values securely at runtime.
 
 ---
 
-# ConfigMap vs Secret
+## ConfigMap vs Secret
 
 | ConfigMap | Secret |
 |------------|---------|
@@ -159,7 +159,7 @@ Applications retrieve these values securely at runtime.
 
 ---
 
-# Secret Types
+## Secret Types
 
 Kubernetes supports several Secret types.
 
@@ -183,7 +183,7 @@ Secrets
 
 ---
 
-# 1. Opaque Secret
+## 1. Opaque Secret
 
 The default Secret type.
 
@@ -197,7 +197,7 @@ Stores arbitrary key-value data.
 
 ---
 
-# 2. TLS Secret
+## 2. TLS Secret
 
 Used for:
 
@@ -215,7 +215,7 @@ tls.key
 
 ---
 
-# 3. Docker Registry Secret
+## 3. Docker Registry Secret
 
 Stores credentials for pulling private container images.
 
@@ -239,7 +239,7 @@ Secret
 
 ---
 
-# 4. Basic Authentication Secret
+## 4. Basic Authentication Secret
 
 Stores:
 
@@ -253,7 +253,7 @@ Password
 
 ---
 
-# 5. SSH Authentication Secret
+## 5. SSH Authentication Secret
 
 Stores:
 
@@ -267,7 +267,7 @@ SSH Authentication
 
 ---
 
-# Secret Structure
+## Secret Structure
 
 Example:
 
@@ -293,7 +293,7 @@ data:
 
 ---
 
-# Secret YAML Breakdown
+## Secret YAML Breakdown
 
 ```
 Secret
@@ -313,7 +313,7 @@ Data
 
 ---
 
-# Creating Secrets
+## Creating Secrets
 
 Apply:
 
@@ -329,7 +329,7 @@ kubectl get secrets
 
 ---
 
-# Creating from Command Line
+## Creating from Command Line
 
 ```bash
 kubectl create secret generic database-secret \
@@ -339,7 +339,7 @@ kubectl create secret generic database-secret \
 
 ---
 
-# Creating from File
+## Creating from File
 
 Example:
 
@@ -350,7 +350,7 @@ kubectl create secret generic app-secret \
 
 ---
 
-# Creating TLS Secret
+## Creating TLS Secret
 
 ```bash
 kubectl create secret tls tls-secret \
@@ -360,7 +360,7 @@ kubectl create secret tls tls-secret \
 
 ---
 
-# Viewing Secrets
+## Viewing Secrets
 
 List:
 
@@ -383,7 +383,7 @@ kubectl get secret database-secret \
 
 ---
 
-# Decoding Secret Values
+## Decoding Secret Values
 
 View Base64 value:
 
@@ -408,7 +408,7 @@ admin
 
 ---
 
-# Using Secrets as Environment Variables
+## Using Secrets as Environment Variables
 
 Example:
 
@@ -442,7 +442,7 @@ Container
 
 ---
 
-# Importing All Secret Keys
+## Importing All Secret Keys
 
 ```yaml
 envFrom:
@@ -456,7 +456,7 @@ Every key becomes an environment variable.
 
 ---
 
-# Using Secrets as Volumes
+## Using Secrets as Volumes
 
 Volume:
 
@@ -482,7 +482,7 @@ volumeMounts:
 
 ---
 
-# Volume Architecture
+## Volume Architecture
 
 ```
 Secret
@@ -504,7 +504,7 @@ Each Secret key becomes a file.
 
 ---
 
-# Mounted Secret Files
+## Mounted Secret Files
 
 Secret:
 
@@ -528,7 +528,7 @@ Applications can read these files.
 
 ---
 
-# Docker Registry Secret
+## Docker Registry Secret
 
 Create:
 
@@ -549,7 +549,7 @@ imagePullSecrets:
 
 ---
 
-# Secret Lifecycle
+## Secret Lifecycle
 
 ```
 Create
@@ -577,7 +577,7 @@ Application
 
 ---
 
-# Namespace Scope
+## Namespace Scope
 
 Secrets are Namespace-scoped.
 
@@ -603,7 +603,7 @@ These are independent Secrets.
 
 ---
 
-# Secret Size
+## Secret Size
 
 Secrets are designed for relatively small pieces of sensitive information.
 
@@ -611,7 +611,7 @@ Large files or backups should be stored using more appropriate storage solutions
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -647,7 +647,7 @@ kubectl delete secret app-secret
 
 ---
 
-# Secret Architecture Summary
+## Secret Architecture Summary
 
 ```
 Secret
@@ -675,41 +675,41 @@ Application
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Never Store Passwords in ConfigMaps
+#### 1. Never Store Passwords in ConfigMaps
 
 Sensitive information belongs in Secrets.
 
 ---
 
-### 2. Enable Encryption at Rest
+#### 2. Enable Encryption at Rest
 
 Protect Secrets stored in etcd by enabling Kubernetes Encryption at Rest.
 
 ---
 
-### 3. Apply Least-Privilege RBAC
+#### 3. Apply Least-Privilege RBAC
 
 Only authorized users and workloads should be able to read Secrets.
 
 ---
 
-### 4. Rotate Secrets Regularly
+#### 4. Rotate Secrets Regularly
 
 Update passwords, tokens, and certificates on a regular schedule and after suspected compromise.
 
 ---
 
-### 5. Avoid Logging Secret Values
+#### 5. Avoid Logging Secret Values
 
 Applications should never print credentials or tokens to logs.
 
 ---
 
-# How Secrets Work Internally
+## How Secrets Work Internally
 
-## Overview
+### Overview
 
 Secrets are one of the most security-critical resources in Kubernetes.
 
@@ -725,7 +725,7 @@ Understanding the internal workflow helps administrators troubleshoot authentica
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                  Secret
@@ -761,7 +761,7 @@ Understanding the internal workflow helps administrators troubleshoot authentica
 
 ---
 
-# Complete Secret Workflow
+## Complete Secret Workflow
 
 ```
 Developer
@@ -813,7 +813,7 @@ Application
 
 ---
 
-# Step 1 – Secret Creation
+## Step 1 – Secret Creation
 
 Example:
 
@@ -845,7 +845,7 @@ kubectl apply -f secret.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -870,7 +870,7 @@ Secret Accepted
 
 ---
 
-# Step 3 – Storage in etcd
+## Step 3 – Storage in etcd
 
 Internally:
 
@@ -912,7 +912,7 @@ Encryption
 
 ---
 
-# Step 4 – Pod References Secret
+## Step 4 – Pod References Secret
 
 Example:
 
@@ -938,7 +938,7 @@ The Pod stores only a **reference**, not the secret value itself.
 
 ---
 
-# Step 5 – kubelet Retrieves Secret
+## Step 5 – kubelet Retrieves Secret
 
 Worker Node:
 
@@ -960,7 +960,7 @@ This reduces unnecessary distribution across the cluster.
 
 ---
 
-# Step 6 – Container Startup
+## Step 6 – Container Startup
 
 Depending on configuration:
 
@@ -984,7 +984,7 @@ Mounted Files
 
 ---
 
-# Environment Variable Flow
+## Environment Variable Flow
 
 ```
 Secret
@@ -1026,7 +1026,7 @@ The variables are available when the container starts.
 
 ---
 
-# Volume Mount Flow
+## Volume Mount Flow
 
 ```
 Secret
@@ -1058,7 +1058,7 @@ Applications read the files directly.
 
 ---
 
-# Secret Files
+## Secret Files
 
 Example:
 
@@ -1076,7 +1076,7 @@ The application reads the file instead of an environment variable.
 
 ---
 
-# Secret Distribution
+## Secret Distribution
 
 Suppose:
 
@@ -1108,7 +1108,7 @@ The Secret is not proactively copied to every Node.
 
 ---
 
-# Secret Cache
+## Secret Cache
 
 kubelet maintains a temporary cache.
 
@@ -1132,7 +1132,7 @@ Benefits:
 
 ---
 
-# Secret Update
+## Secret Update
 
 Modify:
 
@@ -1158,7 +1158,7 @@ How the application observes the update depends on how the Secret is consumed.
 
 ---
 
-# Environment Variable Updates
+## Environment Variable Updates
 
 ```
 Secret Updated
@@ -1182,7 +1182,7 @@ Restart Pod
 
 ---
 
-# Mounted Secret Updates
+## Mounted Secret Updates
 
 Mounted Secret volumes behave differently.
 
@@ -1202,7 +1202,7 @@ The application must reread the file if it does not automatically watch for conf
 
 ---
 
-# Image Pull Secrets
+## Image Pull Secrets
 
 Private Registry:
 
@@ -1242,7 +1242,7 @@ Pull Image
 
 ---
 
-# TLS Secret Workflow
+## TLS Secret Workflow
 
 ```
 TLS Secret
@@ -1264,7 +1264,7 @@ The TLS certificate and private key are supplied from the Secret.
 
 ---
 
-# ServiceAccount Secrets
+## ServiceAccount Secrets
 
 Historically:
 
@@ -1284,7 +1284,7 @@ Modern Kubernetes versions commonly use **projected service account tokens** ins
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Developer
@@ -1316,7 +1316,7 @@ Application
 
 ---
 
-# Security Model
+## Security Model
 
 ```
 RBAC
@@ -1348,7 +1348,7 @@ RBAC is the primary mechanism controlling Secret access.
 
 ---
 
-# Encryption at Rest
+## Encryption at Rest
 
 Production recommendation:
 
@@ -1376,7 +1376,7 @@ Benefits:
 
 ---
 
-# Hands-on Lab 1 – Create Secret
+## Hands-on Lab 1 – Create Secret
 
 ```bash
 kubectl create secret generic db-secret \
@@ -1392,7 +1392,7 @@ kubectl get secrets
 
 ---
 
-# Hands-on Lab 2 – Use Environment Variables
+## Hands-on Lab 2 – Use Environment Variables
 
 Example:
 
@@ -1424,7 +1424,7 @@ kubectl exec -it <pod-name> -- printenv
 
 ---
 
-# Hands-on Lab 3 – Mount Secret
+## Hands-on Lab 3 – Mount Secret
 
 Volume:
 
@@ -1452,7 +1452,7 @@ kubectl exec -it <pod-name> -- cat /etc/secrets/password
 
 ---
 
-# Hands-on Lab 4 – Update Secret
+## Hands-on Lab 4 – Update Secret
 
 Edit:
 
@@ -1467,7 +1467,7 @@ Observe:
 
 ---
 
-# Hands-on Lab 5 – Image Pull Secret
+## Hands-on Lab 5 – Image Pull Secret
 
 Create:
 
@@ -1490,9 +1490,9 @@ Deploy a Pod using a private container image.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Assuming Base64 Is Encryption
+### 1. Assuming Base64 Is Encryption
 
 Incorrect:
 
@@ -1520,7 +1520,7 @@ Enable Encryption at Rest
 
 ---
 
-## 2. Storing Secrets in Git
+### 2. Storing Secrets in Git
 
 Avoid committing:
 
@@ -1534,7 +1534,7 @@ Use secure secret management workflows instead.
 
 ---
 
-## 3. Printing Secrets
+### 3. Printing Secrets
 
 Avoid:
 
@@ -1546,7 +1546,7 @@ or application logs that expose credentials.
 
 ---
 
-## 4. Giving Broad RBAC Permissions
+### 4. Giving Broad RBAC Permissions
 
 Incorrect:
 
@@ -1562,7 +1562,7 @@ Use least-privilege access.
 
 ---
 
-## 5. Forgetting Secret Rotation
+### 5. Forgetting Secret Rotation
 
 Long-lived credentials increase security risk.
 
@@ -1577,9 +1577,9 @@ regularly.
 
 ---
 
-# Secrets Quick Revision
+## Secrets Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 Secret
@@ -1607,7 +1607,7 @@ Application
 
 ---
 
-## Access Methods
+### Access Methods
 
 ```
 Secret
@@ -1621,7 +1621,7 @@ Secret
 
 ---
 
-## Update Behavior
+### Update Behavior
 
 ```
 Environment Variables
@@ -1645,7 +1645,7 @@ Application Reload Needed
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 Create:
 
@@ -1680,9 +1680,9 @@ kubectl delete secret db-secret
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a Kubernetes Secret?
 - How is a Secret different from a ConfigMap?
@@ -1690,7 +1690,7 @@ kubectl delete secret db-secret
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - How can a Pod consume a Secret?
 - What is an ImagePullSecret?
@@ -1698,7 +1698,7 @@ kubectl delete secret db-secret
 
 ---
 
-### Advanced
+#### Advanced
 
 - Why is Base64 not considered encryption?
 - How does kubelet securely distribute Secrets?
@@ -1708,9 +1708,9 @@ kubectl delete secret db-secret
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Secrets
 - Secret Types
@@ -1720,7 +1720,7 @@ kubectl delete secret db-secret
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Security Best Practices
 - Cloud Native Computing Foundation (CNCF)
@@ -1728,7 +1728,7 @@ kubectl delete secret db-secret
 
 ---
 
-## Security References
+### Security References
 
 - CIS Kubernetes Benchmark
 - NSA/CISA Kubernetes Hardening Guidance
@@ -1737,7 +1737,7 @@ kubectl delete secret db-secret
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create Opaque Secrets using both `stringData` and `kubectl create secret`.
 2. Consume Secrets through environment variables and mounted volumes.
@@ -1749,7 +1749,7 @@ kubectl delete secret db-secret
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Developer

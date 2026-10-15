@@ -49,7 +49,7 @@ Cloud Security Groups
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -91,7 +91,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Kubernetes Network Security?
+## What Is Kubernetes Network Security?
 
 Kubernetes network security controls communication between:
 
@@ -120,7 +120,7 @@ A simplified model:
 
 ---
 
-# Why Network Security Matters
+## Why Network Security Matters
 
 Without network restrictions:
 
@@ -142,7 +142,7 @@ Network segmentation can reduce this attack path.
 
 ---
 
-# Kubernetes Network Security Model
+## Kubernetes Network Security Model
 
 Kubernetes networking generally follows the principle that Pods can communicate with one another, subject to the network implementation and policies configured.
 
@@ -160,7 +160,7 @@ Pod A ───────────────X Pod C
 
 ---
 
-# Network Security Layers
+## Network Security Layers
 
 A production Kubernetes environment may use:
 
@@ -186,7 +186,7 @@ Monitoring
 
 ---
 
-# NetworkPolicy
+## NetworkPolicy
 
 A Kubernetes:
 
@@ -207,7 +207,7 @@ depending on the policy configuration.
 
 ---
 
-# Basic NetworkPolicy Structure
+## Basic NetworkPolicy Structure
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -252,7 +252,7 @@ The actual allow rules must then be defined.
 
 ---
 
-# NetworkPolicy Components
+## NetworkPolicy Components
 
 Important fields include:
 
@@ -267,7 +267,7 @@ policyTypes
 
 ---
 
-# `podSelector`
+## `podSelector`
 
 Selects Pods within the NetworkPolicy's namespace.
 
@@ -289,7 +289,7 @@ backend Pods
 
 ---
 
-# `namespaceSelector`
+## `namespaceSelector`
 
 Selects namespaces based on labels.
 
@@ -307,7 +307,7 @@ This can allow communication from selected namespaces.
 
 ---
 
-# `ipBlock`
+## `ipBlock`
 
 Selects IP address ranges.
 
@@ -323,7 +323,7 @@ This can allow traffic from a specified IP range.
 
 ---
 
-# Ingress
+## Ingress
 
 Ingress means:
 
@@ -354,7 +354,7 @@ Ingress
 
 ---
 
-# Egress
+## Egress
 
 Egress means:
 
@@ -385,7 +385,7 @@ Egress
 
 ---
 
-# Ingress vs Egress
+## Ingress vs Egress
 
 | Direction | Meaning |
 |---|---|
@@ -412,7 +412,7 @@ Egress
 
 ---
 
-# Default-Allow Behavior
+## Default-Allow Behavior
 
 If no NetworkPolicy selects a Pod for a particular direction, traffic is generally not restricted by NetworkPolicy for that direction.
 
@@ -434,7 +434,7 @@ patterns.
 
 ---
 
-# Default-Deny Ingress
+## Default-Deny Ingress
 
 A namespace-wide ingress isolation pattern:
 
@@ -468,7 +468,7 @@ This establishes ingress isolation for those Pods.
 
 ---
 
-# Default-Deny Egress
+## Default-Deny Egress
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -492,7 +492,7 @@ This establishes egress isolation for all selected Pods.
 
 ---
 
-# Default-Deny Both Directions
+## Default-Deny Both Directions
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -520,7 +520,7 @@ However, you must then explicitly allow required traffic.
 
 ---
 
-# Why Default Deny Is Important
+## Why Default Deny Is Important
 
 Without default deny:
 
@@ -548,7 +548,7 @@ Least Privilege Networking
 
 ---
 
-# Allowing Ingress
+## Allowing Ingress
 
 Suppose:
 
@@ -614,7 +614,7 @@ backend
 
 ---
 
-# Namespace-Scoped Pod Selector
+## Namespace-Scoped Pod Selector
 
 An important detail:
 
@@ -645,7 +645,7 @@ in the policy's namespace
 
 ---
 
-# Cross-Namespace Access
+## Cross-Namespace Access
 
 To allow Pods from another namespace:
 
@@ -663,7 +663,7 @@ You can combine selectors.
 
 ---
 
-# Namespace + Pod Selector
+## Namespace + Pod Selector
 
 Example:
 
@@ -695,7 +695,7 @@ team=frontend
 
 ---
 
-# Important Selector Semantics
+## Important Selector Semantics
 
 Consider:
 
@@ -723,7 +723,7 @@ Pod matches
 
 ---
 
-# Separate Selector Entries
+## Separate Selector Entries
 
 If you write:
 
@@ -753,7 +753,7 @@ This distinction is important.
 
 ---
 
-# Allowing Egress
+## Allowing Egress
 
 Suppose:
 
@@ -819,7 +819,7 @@ Database
 
 ---
 
-# Three-Tier Application
+## Three-Tier Application
 
 Consider:
 
@@ -853,7 +853,7 @@ unless explicitly required.
 
 ---
 
-# Three-Tier Security Model
+## Three-Tier Security Model
 
 ```text
                   Internet
@@ -876,7 +876,7 @@ This is network segmentation.
 
 ---
 
-# Zero-Trust Networking
+## Zero-Trust Networking
 
 A zero-trust approach assumes:
 
@@ -908,7 +908,7 @@ Is Pod A allowed to reach Pod B?
 
 ---
 
-# Zero-Trust Principle
+## Zero-Trust Principle
 
 Instead of:
 
@@ -926,7 +926,7 @@ Explicitly allow required communication
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Network segmentation divides workloads into logical security zones.
 
@@ -947,7 +947,7 @@ Policies control traffic between these zones.
 
 ---
 
-# Namespace Segmentation
+## Namespace Segmentation
 
 Namespaces can represent security boundaries.
 
@@ -963,7 +963,7 @@ Network policies can restrict communication across them.
 
 ---
 
-# Multi-Tenant Networking
+## Multi-Tenant Networking
 
 Consider:
 
@@ -991,7 +991,7 @@ Tenant A frontend → Tenant A backend
 
 ---
 
-# Tenant Isolation
+## Tenant Isolation
 
 A strict architecture might be:
 
@@ -1013,7 +1013,7 @@ Tenant B
 
 ---
 
-# NetworkPolicy and Services
+## NetworkPolicy and Services
 
 NetworkPolicy applies to Pod traffic.
 
@@ -1037,7 +1037,7 @@ The policy controls traffic involving the selected Pods.
 
 ---
 
-# NetworkPolicy Does Not Replace Services
+## NetworkPolicy Does Not Replace Services
 
 These solve different problems.
 
@@ -1055,7 +1055,7 @@ Traffic Authorization
 
 ---
 
-# NetworkPolicy and Ingress Controllers
+## NetworkPolicy and Ingress Controllers
 
 External traffic may follow:
 
@@ -1075,7 +1075,7 @@ NetworkPolicy can control traffic between these components.
 
 ---
 
-# North-South Traffic
+## North-South Traffic
 
 Traffic entering or leaving the cluster is often called:
 
@@ -1093,7 +1093,7 @@ Cluster
 
 ---
 
-# East-West Traffic
+## East-West Traffic
 
 Traffic between workloads inside the cluster is commonly called:
 
@@ -1113,7 +1113,7 @@ Database
 
 ---
 
-# Network Security Focus
+## Network Security Focus
 
 North-South:
 
@@ -1137,7 +1137,7 @@ Segmentation
 
 ---
 
-# Egress Security
+## Egress Security
 
 Egress controls outbound traffic.
 
@@ -1155,7 +1155,7 @@ A default-deny egress policy can reduce this risk.
 
 ---
 
-# Egress Allowlist
+## Egress Allowlist
 
 Example:
 
@@ -1179,7 +1179,7 @@ Unknown Internet Destination
 
 ---
 
-# Egress to the Internet
+## Egress to the Internet
 
 If a workload needs Internet access, explicitly define what is required.
 
@@ -1196,7 +1196,7 @@ DNS filtering
 
 ---
 
-# DNS Security
+## DNS Security
 
 Kubernetes applications commonly use DNS for service discovery.
 
@@ -1210,7 +1210,7 @@ DNS is therefore part of the network security model.
 
 ---
 
-# DNS Traffic
+## DNS Traffic
 
 Applications generally need to reach the cluster DNS service.
 
@@ -1228,7 +1228,7 @@ service discovery may fail.
 
 ---
 
-# DNS Egress Example
+## DNS Egress Example
 
 A strict egress policy may need to allow traffic to the DNS service.
 
@@ -1262,7 +1262,7 @@ The exact DNS labels vary by Kubernetes distribution and cluster configuration.
 
 ---
 
-# DNS Security Risks
+## DNS Security Risks
 
 Attackers may attempt:
 
@@ -1285,7 +1285,7 @@ Secure DNS infrastructure
 
 ---
 
-# CNI and NetworkPolicy
+## CNI and NetworkPolicy
 
 NetworkPolicy requires network implementation support.
 
@@ -1309,7 +1309,7 @@ Capabilities vary by CNI and configuration.
 
 ---
 
-# NetworkPolicy Limitation
+## NetworkPolicy Limitation
 
 NetworkPolicy is intentionally focused on network-layer access control.
 
@@ -1327,7 +1327,7 @@ For those requirements, additional controls may be needed.
 
 ---
 
-# CNI Enforcement
+## CNI Enforcement
 
 The CNI may enforce NetworkPolicy using mechanisms such as:
 
@@ -1342,7 +1342,7 @@ Implementation depends on the CNI.
 
 ---
 
-# Cilium Example
+## Cilium Example
 
 A CNI such as:
 
@@ -1356,7 +1356,7 @@ It can support capabilities beyond basic Kubernetes NetworkPolicy.
 
 ---
 
-# Calico Example
+## Calico Example
 
 Calico provides:
 
@@ -1371,7 +1371,7 @@ depending on the deployment model and configuration.
 
 ---
 
-# Network Encryption
+## Network Encryption
 
 NetworkPolicy answers:
 
@@ -1389,7 +1389,7 @@ These are different controls.
 
 ---
 
-# Encryption in Transit
+## Encryption in Transit
 
 Example:
 
@@ -1414,7 +1414,7 @@ Support depends on the networking architecture.
 
 ---
 
-# mTLS
+## mTLS
 
 mTLS means:
 
@@ -1438,7 +1438,7 @@ with both identities authenticated.
 
 ---
 
-# NetworkPolicy vs mTLS
+## NetworkPolicy vs mTLS
 
 | Technology | Primary Purpose |
 |---|---|
@@ -1451,7 +1451,7 @@ They can complement one another.
 
 ---
 
-# Service Mesh Security
+## Service Mesh Security
 
 A service mesh can provide:
 
@@ -1483,7 +1483,7 @@ Application
 
 ---
 
-# Network Security with Service Mesh
+## Network Security with Service Mesh
 
 A mature architecture may use:
 
@@ -1499,7 +1499,7 @@ This provides multiple layers.
 
 ---
 
-# NetworkPolicy Limitations
+## NetworkPolicy Limitations
 
 NetworkPolicy implementations may differ across CNIs.
 
@@ -1509,7 +1509,7 @@ Do not assume every CNI supports every advanced networking feature.
 
 ---
 
-# NetworkPolicy and Node Traffic
+## NetworkPolicy and Node Traffic
 
 NetworkPolicy is primarily about Pod traffic.
 
@@ -1524,7 +1524,7 @@ Host firewall
 
 ---
 
-# API Server Network Security
+## API Server Network Security
 
 The Kubernetes API Server is a highly sensitive endpoint.
 
@@ -1542,7 +1542,7 @@ Audit Logging
 
 ---
 
-# Restrict API Server Exposure
+## Restrict API Server Exposure
 
 Avoid unnecessarily exposing the API Server publicly.
 
@@ -1560,7 +1560,7 @@ can reduce attack surface.
 
 ---
 
-# Network Security Architecture
+## Network Security Architecture
 
 ```text
                        Internet
@@ -1590,7 +1590,7 @@ can reduce attack surface.
 
 ---
 
-# Network Security Layers
+## Network Security Layers
 
 ```text
 Internet Firewall
@@ -1610,7 +1610,7 @@ Runtime Monitoring
 
 ---
 
-# Common Attack Path
+## Common Attack Path
 
 A common lateral movement scenario:
 
@@ -1632,7 +1632,7 @@ Network segmentation can interrupt this chain.
 
 ---
 
-# NetworkPolicy Defense
+## NetworkPolicy Defense
 
 ```text
 Compromised Frontend
@@ -1658,7 +1658,7 @@ DENIED
 
 ---
 
-# Network Monitoring
+## Network Monitoring
 
 Monitor:
 
@@ -1685,7 +1685,7 @@ Cloud Flow Logs
 
 ---
 
-# Network Security and Observability
+## Network Security and Observability
 
 A security monitoring architecture:
 
@@ -1705,7 +1705,7 @@ Security Investigation
 
 ---
 
-# Detecting Lateral Movement
+## Detecting Lateral Movement
 
 Potential indicators:
 
@@ -1720,7 +1720,7 @@ Connections to external IPs
 
 ---
 
-# Detecting Data Exfiltration
+## Detecting Data Exfiltration
 
 Indicators can include:
 
@@ -1744,7 +1744,7 @@ Monitoring
 
 ---
 
-# Network Troubleshooting
+## Network Troubleshooting
 
 If:
 
@@ -1769,7 +1769,7 @@ check:
 
 ---
 
-# Check NetworkPolicies
+## Check NetworkPolicies
 
 ```bash
 kubectl get networkpolicies -A
@@ -1783,7 +1783,7 @@ kubectl get netpol -A
 
 ---
 
-# Describe NetworkPolicy
+## Describe NetworkPolicy
 
 ```bash
 kubectl describe networkpolicy <name>
@@ -1791,7 +1791,7 @@ kubectl describe networkpolicy <name>
 
 ---
 
-# Check Pod Labels
+## Check Pod Labels
 
 ```bash
 kubectl get pods --show-labels
@@ -1801,7 +1801,7 @@ This is critical because NetworkPolicy selectors depend on labels.
 
 ---
 
-# Check Services
+## Check Services
 
 ```bash
 kubectl get svc
@@ -1809,7 +1809,7 @@ kubectl get svc
 
 ---
 
-# Check Endpoints
+## Check Endpoints
 
 ```bash
 kubectl get endpoints
@@ -1823,7 +1823,7 @@ kubectl get endpointslices
 
 ---
 
-# Test DNS
+## Test DNS
 
 From a test Pod:
 
@@ -1841,7 +1841,7 @@ depending on the image.
 
 ---
 
-# Test Connectivity
+## Test Connectivity
 
 From a test container:
 
@@ -1859,7 +1859,7 @@ Only use tools available in the image.
 
 ---
 
-# NetworkPolicy Troubleshooting Flow
+## NetworkPolicy Troubleshooting Flow
 
 ```text
 Connection Failure
@@ -1883,7 +1883,7 @@ Application?
 
 ---
 
-# Common NetworkPolicy Mistake
+## Common NetworkPolicy Mistake
 
 A developer creates:
 
@@ -1909,7 +1909,7 @@ Always account for required DNS traffic.
 
 ---
 
-# Common NetworkPolicy Mistake
+## Common NetworkPolicy Mistake
 
 A policy allows:
 
@@ -1923,7 +1923,7 @@ Network policies are stateful in typical implementations, but policies still nee
 
 ---
 
-# Common NetworkPolicy Mistake
+## Common NetworkPolicy Mistake
 
 Wrong labels:
 
@@ -1953,7 +1953,7 @@ kubectl get pods --show-labels
 
 ---
 
-# Common NetworkPolicy Mistake
+## Common NetworkPolicy Mistake
 
 Assuming:
 
@@ -1965,7 +1965,7 @@ NetworkPolicy is a Kubernetes abstraction and its exact capabilities depend on t
 
 ---
 
-# Hands-on Lab 1 – Default Deny
+## Hands-on Lab 1 – Default Deny
 
 Create:
 
@@ -1999,7 +1999,7 @@ Test application connectivity.
 
 ---
 
-# Hands-on Lab 2 – Allow Frontend to Backend
+## Hands-on Lab 2 – Allow Frontend to Backend
 
 Create:
 
@@ -2055,7 +2055,7 @@ other-pod → backend
 
 ---
 
-# Hands-on Lab 3 – Allow Backend to Database
+## Hands-on Lab 3 – Allow Backend to Database
 
 Create:
 
@@ -2111,7 +2111,7 @@ frontend → database
 
 ---
 
-# Hands-on Lab 4 – Namespace Isolation
+## Hands-on Lab 4 – Namespace Isolation
 
 Create:
 
@@ -2142,7 +2142,7 @@ team-a → team-b
 
 ---
 
-# Hands-on Lab 5 – DNS Egress
+## Hands-on Lab 5 – DNS Egress
 
 Apply default-deny egress.
 
@@ -2162,7 +2162,7 @@ kubectl exec -it <pod> -- nslookup kubernetes.default
 
 ---
 
-# Hands-on Lab 6 – Egress Restriction
+## Hands-on Lab 6 – Egress Restriction
 
 Create a workload with:
 
@@ -2188,7 +2188,7 @@ Connection denied
 
 ---
 
-# Hands-on Lab 7 – Network Segmentation
+## Hands-on Lab 7 – Network Segmentation
 
 Build:
 
@@ -2216,7 +2216,7 @@ Verify the communication matrix.
 
 ---
 
-# Hands-on Lab 8 – Inspect Network Policies
+## Hands-on Lab 8 – Inspect Network Policies
 
 Run:
 
@@ -2242,7 +2242,7 @@ Selectors
 
 ---
 
-# Hands-on Lab 9 – Network Troubleshooting
+## Hands-on Lab 9 – Network Troubleshooting
 
 Intentionally create an incorrect label:
 
@@ -2262,7 +2262,7 @@ Fix the label and test again.
 
 ---
 
-# Hands-on Lab 10 – Security Review
+## Hands-on Lab 10 – Security Review
 
 For a production namespace, answer:
 
@@ -2281,33 +2281,33 @@ For a production namespace, answer:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. No Default Deny
+### 1. No Default Deny
 
 Unrestricted traffic increases lateral movement risk.
 
 ---
 
-## 2. Forgetting DNS
+### 2. Forgetting DNS
 
 Strict egress policies can break service discovery.
 
 ---
 
-## 3. Wrong Pod Labels
+### 3. Wrong Pod Labels
 
 NetworkPolicy selectors depend on labels.
 
 ---
 
-## 4. Forgetting Egress
+### 4. Forgetting Egress
 
 Ingress restrictions do not automatically restrict outbound traffic.
 
 ---
 
-## 5. Assuming NetworkPolicy Encrypts Traffic
+### 5. Assuming NetworkPolicy Encrypts Traffic
 
 NetworkPolicy controls traffic authorization.
 
@@ -2315,7 +2315,7 @@ It does not inherently encrypt traffic.
 
 ---
 
-## 6. Assuming NetworkPolicy Provides Authentication
+### 6. Assuming NetworkPolicy Provides Authentication
 
 NetworkPolicy does not prove application identity.
 
@@ -2331,7 +2331,7 @@ when required.
 
 ---
 
-## 7. Allowing Entire CIDRs
+### 7. Allowing Entire CIDRs
 
 Avoid unnecessarily broad:
 
@@ -2343,27 +2343,27 @@ rules.
 
 ---
 
-## 8. Ignoring CNI Capabilities
+### 8. Ignoring CNI Capabilities
 
 Different CNIs provide different networking features.
 
 ---
 
-## 9. Forgetting Return Traffic Requirements
+### 9. Forgetting Return Traffic Requirements
 
 Understand the actual connection flow and CNI behavior.
 
 ---
 
-## 10. Treating Internal Traffic as Trusted
+### 10. Treating Internal Traffic as Trusted
 
 Internal network traffic can be hostile after a workload compromise.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Start With Default Deny
+#### 1. Start With Default Deny
 
 Use:
 
@@ -2376,7 +2376,7 @@ policies wherever practical.
 
 ---
 
-### 2. Explicitly Allow Required Communication
+#### 2. Explicitly Allow Required Communication
 
 Use:
 
@@ -2388,7 +2388,7 @@ for networking.
 
 ---
 
-### 3. Segment by Application
+#### 3. Segment by Application
 
 Separate:
 
@@ -2400,31 +2400,31 @@ Database
 
 ---
 
-### 4. Segment by Namespace
+#### 4. Segment by Namespace
 
 Use namespaces as organizational and security boundaries.
 
 ---
 
-### 5. Restrict Egress
+#### 5. Restrict Egress
 
 Prevent unnecessary Internet access.
 
 ---
 
-### 6. Protect DNS
+#### 6. Protect DNS
 
 Allow only required DNS traffic.
 
 ---
 
-### 7. Use mTLS for Sensitive Application Traffic
+#### 7. Use mTLS for Sensitive Application Traffic
 
 NetworkPolicy and encryption solve different problems.
 
 ---
 
-### 8. Monitor Network Flows
+#### 8. Monitor Network Flows
 
 Detect:
 
@@ -2437,7 +2437,7 @@ Lateral Movement
 
 ---
 
-### 9. Protect the API Server
+#### 9. Protect the API Server
 
 Use:
 
@@ -2451,7 +2451,7 @@ Audit Logging
 
 ---
 
-### 10. Use a Security-Capable CNI
+#### 10. Use a Security-Capable CNI
 
 Choose a CNI based on requirements such as:
 
@@ -2466,7 +2466,7 @@ Advanced Security
 
 ---
 
-### 11. Test Policies Before Production
+#### 11. Test Policies Before Production
 
 Validate:
 
@@ -2480,7 +2480,7 @@ Monitoring
 
 ---
 
-### 12. Document Communication Flows
+#### 12. Document Communication Flows
 
 Maintain a matrix:
 
@@ -2493,7 +2493,7 @@ Maintain a matrix:
 
 ---
 
-# Zero-Trust Kubernetes Architecture
+## Zero-Trust Kubernetes Architecture
 
 ```text
                   Internet
@@ -2529,7 +2529,7 @@ Implicitly Trusted
 
 ---
 
-# Network Security Threat Model
+## Network Security Threat Model
 
 Potential threats:
 
@@ -2558,7 +2558,7 @@ Monitoring
 
 ---
 
-# Production Network Security Checklist
+## Production Network Security Checklist
 
 ```text
 ☑ Default-deny ingress
@@ -2581,9 +2581,9 @@ Monitoring
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## NetworkPolicy
+### NetworkPolicy
 
 ```text
 Controls Pod traffic
@@ -2591,7 +2591,7 @@ Controls Pod traffic
 
 ---
 
-## Ingress
+### Ingress
 
 ```text
 Incoming traffic
@@ -2599,7 +2599,7 @@ Incoming traffic
 
 ---
 
-## Egress
+### Egress
 
 ```text
 Outgoing traffic
@@ -2607,7 +2607,7 @@ Outgoing traffic
 
 ---
 
-## Pod Selector
+### Pod Selector
 
 ```text
 Select Pods
@@ -2615,7 +2615,7 @@ Select Pods
 
 ---
 
-## Namespace Selector
+### Namespace Selector
 
 ```text
 Select namespaces
@@ -2623,7 +2623,7 @@ Select namespaces
 
 ---
 
-## IP Block
+### IP Block
 
 ```text
 Select CIDR ranges
@@ -2631,7 +2631,7 @@ Select CIDR ranges
 
 ---
 
-## Default Deny
+### Default Deny
 
 ```text
 Deny unless explicitly allowed
@@ -2639,7 +2639,7 @@ Deny unless explicitly allowed
 
 ---
 
-## East-West
+### East-West
 
 ```text
 Pod-to-Pod / internal traffic
@@ -2647,7 +2647,7 @@ Pod-to-Pod / internal traffic
 
 ---
 
-## North-South
+### North-South
 
 ```text
 External-to-cluster / cluster-to-external traffic
@@ -2655,7 +2655,7 @@ External-to-cluster / cluster-to-external traffic
 
 ---
 
-## Zero Trust
+### Zero Trust
 
 ```text
 Do not implicitly trust network location
@@ -2663,7 +2663,7 @@ Do not implicitly trust network location
 
 ---
 
-## mTLS
+### mTLS
 
 ```text
 Mutual authentication + encryption
@@ -2671,7 +2671,7 @@ Mutual authentication + encryption
 
 ---
 
-## CNI
+### CNI
 
 ```text
 Provides cluster networking and may enforce NetworkPolicy
@@ -2679,7 +2679,7 @@ Provides cluster networking and may enforce NetworkPolicy
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 List NetworkPolicies:
 
@@ -2749,9 +2749,9 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Kubernetes NetworkPolicy?
 - What is ingress traffic?
@@ -2766,7 +2766,7 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does NetworkPolicy work?
 - How do you allow one Pod to communicate with another?
@@ -2783,7 +2783,7 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-## Advanced
+### Advanced
 
 - Design NetworkPolicies for a three-tier application.
 - How would you isolate two tenants in the same cluster?
@@ -2803,13 +2803,13 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > A frontend Pod should communicate with the backend on port 8080, but it should not communicate with the database. How would you design the policy?
 
-### Answer
+#### Answer
 
 Use default-deny networking and explicitly allow:
 
@@ -2847,13 +2847,13 @@ This implements least-privilege network access.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > You enabled default-deny egress and suddenly applications cannot resolve service names. What happened?
 
-### Answer
+#### Answer
 
 DNS traffic is likely being blocked.
 
@@ -2872,13 +2872,13 @@ The exact selector depends on the Kubernetes distribution and DNS deployment.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > Does NetworkPolicy provide encryption?
 
-### Answer
+#### Answer
 
 No.
 
@@ -2912,13 +2912,13 @@ mTLS
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > A compromised frontend Pod is scanning internal services. How can Kubernetes network security reduce the impact?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2952,13 +2952,13 @@ This reduces lateral movement.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How would you implement zero-trust networking in Kubernetes?
 
-### Answer
+#### Answer
 
 Start with:
 
@@ -2998,7 +2998,7 @@ Monitoring
 
 ---
 
-# Production Network Security Checklist
+## Production Network Security Checklist
 
 ```text
 ☑ Default-deny ingress
@@ -3021,7 +3021,7 @@ Monitoring
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create a frontend Pod.
 2. Create a backend Pod.
@@ -3050,9 +3050,9 @@ Monitoring
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Network Policies
 - Cluster Networking
@@ -3067,7 +3067,7 @@ Monitoring
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Kubernetes network security controls how workloads communicate.
 
@@ -3225,9 +3225,9 @@ The key principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 53 – Secret Management
+## Chapter 53 – Secret Management
 
 Topics will include:
 

@@ -383,7 +383,7 @@ It is especially useful:
 
 ---
 
-# Cloud Security Quick Reference Workflow
+## Cloud Security Quick Reference Workflow
 
 ```
 Understand Requirements
@@ -447,9 +447,9 @@ Every stage reinforces the overall security posture of the cloud environment.
 
 ---
 
-## Practical Example
+### Practical Example
 
-### Example 1 – Securing a New Cloud Environment
+#### Example 1 – Securing a New Cloud Environment
 
 Before deploying workloads, verify:
 
@@ -464,7 +464,7 @@ Before deploying workloads, verify:
 
 ---
 
-### Example 2 – Quick Security Review Before Production
+#### Example 2 – Quick Security Review Before Production
 
 Review the following questions:
 
@@ -481,7 +481,7 @@ If every answer is **Yes**, the deployment is significantly more secure.
 
 ---
 
-### Example 3 – Interview Revision
+#### Example 3 – Interview Revision
 
 Suppose you have only **15 minutes** before a Cloud Security interview.
 
@@ -502,7 +502,7 @@ This sequence covers the topics most frequently discussed in interviews.
 
 ---
 
-### Example 4 – Security Assessment
+#### Example 4 – Security Assessment
 
 During a cloud security review, quickly verify:
 
@@ -532,13 +532,13 @@ This checklist provides a high-level health assessment before deeper technical a
 
 ---
 
-## Detection
+### Detection
 
 The cheat sheet can also be used to quickly recall the indicators of common cloud security issues.
 
 ---
 
-### Identity Threat Indicators
+#### Identity Threat Indicators
 
 Watch for:
 
@@ -551,7 +551,7 @@ Watch for:
 
 ---
 
-### Network Threat Indicators
+#### Network Threat Indicators
 
 Monitor for:
 
@@ -564,7 +564,7 @@ Monitor for:
 
 ---
 
-### Workload Threat Indicators
+#### Workload Threat Indicators
 
 Look for:
 
@@ -577,7 +577,7 @@ Look for:
 
 ---
 
-### Data Threat Indicators
+#### Data Threat Indicators
 
 Identify:
 
@@ -590,7 +590,7 @@ Identify:
 
 ---
 
-### Configuration Drift Indicators
+#### Configuration Drift Indicators
 
 Detect:
 
@@ -605,7 +605,7 @@ Continuous validation tools help identify drift before it becomes a security inc
 
 ---
 
-### Compliance Indicators
+#### Compliance Indicators
 
 Continuously verify:
 
@@ -620,7 +620,7 @@ Automated compliance monitoring reduces manual audit effort.
 
 ---
 
-## Quick Detection Checklist
+### Quick Detection Checklist
 
 | Security Domain | Primary Indicators |
 |-----------------|-------------------|
@@ -633,9 +633,9 @@ Automated compliance monitoring reduces manual audit effort.
 
 ---
 
-## Memory Aids
+### Memory Aids
 
-### CIA Triad
+#### CIA Triad
 
 ```
 C → Confidentiality
@@ -647,7 +647,7 @@ A → Availability
 
 ---
 
-### Incident Response
+#### Incident Response
 
 ```
 Prepare
@@ -675,7 +675,7 @@ Lessons Learned
 
 ---
 
-### Zero Trust
+#### Zero Trust
 
 ```
 Never Trust
@@ -695,7 +695,7 @@ Continuous Monitoring
 
 ---
 
-## Prevention
+### Prevention
 
 Cloud Security is most effective when preventive controls are implemented before workloads are deployed. Prevention focuses on minimizing the attack surface, enforcing secure configurations, protecting identities and data, and continuously validating cloud environments.
 
@@ -703,7 +703,7 @@ The following checklist summarizes essential preventive measures.
 
 ---
 
-# Cloud Security Prevention Workflow
+## Cloud Security Prevention Workflow
 
 ```
 Plan
@@ -759,7 +759,7 @@ Continuous Improvement
 
 ---
 
-## Identity Security Checklist
+### Identity Security Checklist
 
 Always:
 
@@ -781,7 +781,7 @@ Never:
 
 ---
 
-## Network Security Checklist
+### Network Security Checklist
 
 - Use private subnets for internal resources
 - Restrict inbound traffic
@@ -795,7 +795,7 @@ Never:
 
 ---
 
-## Data Security Checklist
+### Data Security Checklist
 
 - Encrypt data at rest
 - Encrypt data in transit
@@ -810,7 +810,7 @@ Never:
 
 ---
 
-## Compute Security Checklist
+### Compute Security Checklist
 
 - Harden operating systems
 - Apply security patches promptly
@@ -823,7 +823,7 @@ Never:
 
 ---
 
-## Container & Kubernetes Checklist
+### Container & Kubernetes Checklist
 
 - Scan container images
 - Use trusted image registries
@@ -837,7 +837,7 @@ Never:
 
 ---
 
-## DevSecOps Checklist
+### DevSecOps Checklist
 
 Integrate security throughout the development lifecycle.
 
@@ -854,7 +854,7 @@ Perform:
 
 ---
 
-## Monitoring Checklist
+### Monitoring Checklist
 
 Enable:
 
@@ -872,7 +872,7 @@ Visibility is essential for maintaining a secure cloud environment.
 
 ---
 
-## Incident Preparedness Checklist
+### Incident Preparedness Checklist
 
 Maintain:
 
@@ -889,15 +889,15 @@ Preparation reduces recovery time and operational disruption.
 
 ---
 
-# Best Practices
+## Best Practices
 
-## Security by Design
+### Security by Design
 
 Incorporate security requirements during planning and architecture rather than after deployment.
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 Protect every layer of the cloud stack:
 
@@ -935,7 +935,7 @@ Incident Response
 
 ---
 
-## Zero Trust
+### Zero Trust
 
 Follow the principle:
 
@@ -947,7 +947,7 @@ Follow the principle:
 
 ---
 
-## Automate Security
+### Automate Security
 
 Automate repetitive tasks including:
 
@@ -962,7 +962,7 @@ Automation improves consistency and reduces human error.
 
 ---
 
-## Continuous Monitoring
+### Continuous Monitoring
 
 Continuously monitor:
 
@@ -978,7 +978,7 @@ Early detection supports rapid response.
 
 ---
 
-## Secure Secrets Management
+### Secure Secrets Management
 
 Store sensitive credentials in dedicated secrets management solutions.
 
@@ -991,7 +991,7 @@ Never:
 
 ---
 
-## Keep Everything Updated
+### Keep Everything Updated
 
 Regularly update:
 
@@ -1006,7 +1006,7 @@ Patch management reduces exposure to known vulnerabilities.
 
 ---
 
-## Validate Backups
+### Validate Backups
 
 Backups should be:
 
@@ -1020,7 +1020,7 @@ Reliable backups are essential for disaster recovery and ransomware resilience.
 
 ---
 
-## Measure Security
+### Measure Security
 
 Track metrics such as:
 
@@ -1036,7 +1036,7 @@ Metrics enable continuous improvement and informed decision-making.
 
 ---
 
-## Promote a Security Culture
+### Promote a Security Culture
 
 Encourage:
 
@@ -1051,13 +1051,13 @@ Technology alone cannot secure a cloud environment; people and processes are equ
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud Security is not compromised solely by sophisticated cyberattacks—many incidents result from preventable operational mistakes, weak governance, or inconsistent implementation of security controls. The following checklist highlights the most common issues encountered across cloud environments.
 
 ---
 
-### 1. Misunderstanding the Shared Responsibility Model
+#### 1. Misunderstanding the Shared Responsibility Model
 
 Many organizations assume that the cloud provider secures every aspect of the environment.
 
@@ -1076,7 +1076,7 @@ Clearly define ownership to avoid security gaps.
 
 ---
 
-### 2. Excessive IAM Permissions
+#### 2. Excessive IAM Permissions
 
 Granting more permissions than required increases the blast radius of a compromised account.
 
@@ -1092,7 +1092,7 @@ Apply the Principle of Least Privilege (PoLP) and conduct periodic access review
 
 ---
 
-### 3. Not Enforcing Multi-Factor Authentication (MFA)
+#### 3. Not Enforcing Multi-Factor Authentication (MFA)
 
 Accounts protected only by passwords are more susceptible to:
 
@@ -1106,7 +1106,7 @@ MFA should be enabled for all users, especially privileged accounts.
 
 ---
 
-### 4. Hardcoding Secrets
+#### 4. Hardcoding Secrets
 
 Avoid storing:
 
@@ -1127,7 +1127,7 @@ Use a dedicated secrets management solution.
 
 ---
 
-### 5. Publicly Exposed Resources
+#### 5. Publicly Exposed Resources
 
 Examples include:
 
@@ -1141,7 +1141,7 @@ Default to private access and expose only what is necessary.
 
 ---
 
-### 6. Ignoring Configuration Drift
+#### 6. Ignoring Configuration Drift
 
 Manual changes can introduce:
 
@@ -1155,7 +1155,7 @@ Use Infrastructure as Code (IaC) and continuous drift detection to maintain cons
 
 ---
 
-### 7. Delayed Patch Management
+#### 7. Delayed Patch Management
 
 Outdated software increases exposure to known vulnerabilities.
 
@@ -1172,7 +1172,7 @@ Implement a structured patch management process.
 
 ---
 
-### 8. Weak Logging and Monitoring
+#### 8. Weak Logging and Monitoring
 
 Without adequate visibility, detecting and investigating incidents becomes significantly more difficult.
 
@@ -1189,7 +1189,7 @@ Centralize logs and correlate events using a SIEM.
 
 ---
 
-### 9. Neglecting Backup Validation
+#### 9. Neglecting Backup Validation
 
 Backups should not only exist—they should be tested.
 
@@ -1205,7 +1205,7 @@ Regular recovery exercises validate business continuity.
 
 ---
 
-### 10. Treating Compliance as Complete Security
+#### 10. Treating Compliance as Complete Security
 
 Compliance provides a baseline but does not replace:
 
@@ -1220,7 +1220,7 @@ Aim to exceed minimum compliance requirements.
 
 ---
 
-### 11. Overlooking Supply Chain Security
+#### 11. Overlooking Supply Chain Security
 
 Risks include:
 
@@ -1234,7 +1234,7 @@ Secure the software supply chain from development through deployment.
 
 ---
 
-### 12. Ignoring Security Training
+#### 12. Ignoring Security Training
 
 Human error remains a major contributor to security incidents.
 
@@ -1251,7 +1251,7 @@ A knowledgeable workforce strengthens organizational security.
 
 ---
 
-### 13. Failing to Test Incident Response
+#### 13. Failing to Test Incident Response
 
 Incident response plans should be exercised regularly.
 
@@ -1268,7 +1268,7 @@ Prepared teams respond more effectively during real incidents.
 
 ---
 
-### 14. Overcomplicating Security Tooling
+#### 14. Overcomplicating Security Tooling
 
 Deploying too many overlapping tools can result in:
 
@@ -1282,7 +1282,7 @@ Choose tools strategically and integrate them effectively.
 
 ---
 
-### 15. Treating Cloud Security as a One-Time Task
+#### 15. Treating Cloud Security as a One-Time Task
 
 Cloud environments change continuously.
 
@@ -1299,9 +1299,9 @@ Cloud security is a continuous operational process.
 
 ---
 
-## Ultimate Cloud Security Checklist
+### Ultimate Cloud Security Checklist
 
-### Identity
+#### Identity
 
 - ✓ MFA enabled
 - ✓ RBAC implemented
@@ -1311,7 +1311,7 @@ Cloud security is a continuous operational process.
 
 ---
 
-### Network
+#### Network
 
 - ✓ Private networking
 - ✓ Security Groups configured
@@ -1322,7 +1322,7 @@ Cloud security is a continuous operational process.
 
 ---
 
-### Data
+#### Data
 
 - ✓ Encryption at rest
 - ✓ Encryption in transit
@@ -1333,7 +1333,7 @@ Cloud security is a continuous operational process.
 
 ---
 
-### Compute
+#### Compute
 
 - ✓ Systems hardened
 - ✓ Patches current
@@ -1342,7 +1342,7 @@ Cloud security is a continuous operational process.
 
 ---
 
-### Containers & Kubernetes
+#### Containers & Kubernetes
 
 - ✓ Images scanned
 - ✓ Trusted registries used
@@ -1352,7 +1352,7 @@ Cloud security is a continuous operational process.
 
 ---
 
-### DevSecOps
+#### DevSecOps
 
 - ✓ SAST
 - ✓ DAST
@@ -1363,7 +1363,7 @@ Cloud security is a continuous operational process.
 
 ---
 
-### Monitoring
+#### Monitoring
 
 - ✓ Centralized logging
 - ✓ SIEM integration
@@ -1373,7 +1373,7 @@ Cloud security is a continuous operational process.
 
 ---
 
-### Incident Response
+#### Incident Response
 
 - ✓ IR plan documented
 - ✓ Disaster recovery tested
@@ -1383,9 +1383,9 @@ Cloud security is a continuous operational process.
 
 ---
 
-## References
+### References
 
-### International Standards
+#### International Standards
 
 - ISO/IEC 27001 — Information Security Management Systems (ISMS)
 - ISO/IEC 27002 — Information Security Controls
@@ -1395,7 +1395,7 @@ Cloud security is a continuous operational process.
 
 ---
 
-### NIST Publications
+#### NIST Publications
 
 - NIST Cybersecurity Framework (CSF) 2.0
 - NIST SP 800-53 Rev. 5 — Security and Privacy Controls
@@ -1405,7 +1405,7 @@ Cloud security is a continuous operational process.
 
 ---
 
-### CIS Resources
+#### CIS Resources
 
 - CIS Controls v8
 - CIS Benchmarks
@@ -1414,14 +1414,14 @@ Cloud security is a continuous operational process.
 
 ---
 
-### Cloud Security Alliance (CSA)
+#### Cloud Security Alliance (CSA)
 
 - Cloud Controls Matrix (CCM)
 - Security Guidance for Critical Areas of Cloud Computing
 
 ---
 
-### OWASP Resources
+#### OWASP Resources
 
 - OWASP Top 10
 - OWASP API Security Top 10
@@ -1431,7 +1431,7 @@ Cloud security is a continuous operational process.
 
 ---
 
-### Cloud-Native Security
+#### Cloud-Native Security
 
 - Kubernetes Security Best Practices
 - Open Policy Agent (OPA)
@@ -1440,9 +1440,9 @@ Cloud security is a continuous operational process.
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - AWS Well-Architected Framework – Security Pillar
 - AWS Security Hub
@@ -1450,7 +1450,7 @@ Cloud security is a continuous operational process.
 - AWS Inspector
 - AWS Config
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Microsoft Defender for Cloud
 - Microsoft Sentinel
@@ -1458,7 +1458,7 @@ Cloud security is a continuous operational process.
 - Azure Key Vault
 - Microsoft Entra ID
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Security Command Center
 - Cloud Armor
@@ -1468,7 +1468,7 @@ Cloud security is a continuous operational process.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - NIST Computer Security Resource Center (CSRC)
 - Cloud Security Alliance (CSA)
@@ -1479,7 +1479,7 @@ Cloud security is a continuous operational process.
 
 **End of Chapter 39 – Cloud Security Cheat Sheet**
 
-# 🎉 Congratulations!
+## 🎉 Congratulations!
 
 You have completed the complete **Cloud Security Handbook**, covering:
 

@@ -1,12 +1,12 @@
 # 15-CSRF.md
 
-# Part 1 — Cross-Site Request Forgery (CSRF) Fundamentals, Browser Trust Model, Attack Flow, and Enterprise Security
+## Part 1 — Cross-Site Request Forgery (CSRF) Fundamentals, Browser Trust Model, Attack Flow, and Enterprise Security
 
 > **"Cross-Site Request Forgery (CSRF) exploits the browser's trust in an authenticated session. Instead of stealing credentials, it tricks a user's browser into performing unintended actions on a trusted website."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is CSRF?
+## What is CSRF?
 
 **Cross-Site Request Forgery (CSRF)** is a web attack in which an attacker causes a victim's browser to send an unintended request to a web application where the victim is already authenticated.
 
@@ -51,7 +51,7 @@ The browser sends the request because it already possesses the user's authentica
 
 ---
 
-# Why CSRF Exists
+## Why CSRF Exists
 
 Web browsers automatically include authentication information such as session cookies when communicating with a website.
 
@@ -75,7 +75,7 @@ This automatic behavior enables convenient user experiences but can be abused if
 
 ---
 
-# Browser Trust Model
+## Browser Trust Model
 
 ```
 User
@@ -105,7 +105,7 @@ The browser cannot always distinguish between a legitimate user action and a mal
 
 ---
 
-# Authentication vs Authorization vs CSRF
+## Authentication vs Authorization vs CSRF
 
 | Concept | Purpose |
 |----------|----------|
@@ -117,7 +117,7 @@ These mechanisms complement one another.
 
 ---
 
-# What CSRF Does NOT Do
+## What CSRF Does NOT Do
 
 CSRF does **not**:
 
@@ -131,7 +131,7 @@ Instead, it abuses an already authenticated browser session.
 
 ---
 
-# High-Level Attack Flow
+## High-Level Attack Flow
 
 ```
 Victim
@@ -163,7 +163,7 @@ Bank Receives Authenticated Request
 
 ---
 
-# Why the Browser Sends Cookies
+## Why the Browser Sends Cookies
 
 ```
 Request
@@ -185,7 +185,7 @@ This is expected browser behavior and is fundamental to web sessions.
 
 ---
 
-# Trust Relationship
+## Trust Relationship
 
 ```
 Website
@@ -203,7 +203,7 @@ If the application validates only the session and not the request origin, uninte
 
 ---
 
-# Typical Preconditions
+## Typical Preconditions
 
 For a CSRF attack to succeed, several conditions commonly exist:
 
@@ -227,7 +227,7 @@ If one or more of these conditions are absent, the attack may fail.
 
 ---
 
-# Conceptual Scenario
+## Conceptual Scenario
 
 Imagine a user is logged into:
 
@@ -253,7 +253,7 @@ If adequate protections are not present, the browser may automatically attach th
 
 ---
 
-# Browser Perspective
+## Browser Perspective
 
 The browser simply processes requests according to established rules.
 
@@ -281,7 +281,7 @@ The browser itself does not determine whether the request represents the user's 
 
 ---
 
-# CSRF vs XSS
+## CSRF vs XSS
 
 | Cross-Site Scripting (XSS) | Cross-Site Request Forgery (CSRF) |
 |----------------------------|-----------------------------------|
@@ -294,7 +294,7 @@ These are different attack classes, although they may interact.
 
 ---
 
-# Real-World Examples
+## Real-World Examples
 
 Potential targets include:
 
@@ -311,7 +311,7 @@ Any state-changing action should be considered during security design.
 
 ---
 
-# Safe vs Unsafe HTTP Methods
+## Safe vs Unsafe HTTP Methods
 
 Conceptually:
 
@@ -335,7 +335,7 @@ Operations that change server-side state require stronger protection against CSR
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Employee Portal
@@ -365,7 +365,7 @@ Without proper CSRF defenses, unauthorized state-changing requests could be acce
 
 ---
 
-# Why Financial Applications Care
+## Why Financial Applications Care
 
 ```
 Authenticated Session
@@ -383,7 +383,7 @@ Applications involving payments, healthcare, administration, or identity managem
 
 ---
 
-# Browser Session Model
+## Browser Session Model
 
 ```
 Login
@@ -409,7 +409,7 @@ This model enables seamless browsing but requires server-side safeguards.
 
 ---
 
-# Browser Security Layers
+## Browser Security Layers
 
 CSRF is only one aspect of web security.
 
@@ -445,7 +445,7 @@ Defense in depth remains essential.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
 | Myth | Reality |
 |------|---------|
@@ -456,7 +456,7 @@ Defense in depth remains essential.
 
 ---
 
-# Enterprise Risk
+## Enterprise Risk
 
 Possible consequences include:
 
@@ -471,7 +471,7 @@ The impact depends on the application's functionality and authorization model.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Identify an application requiring authentication.
 2. Map actions that modify server-side data.
@@ -483,7 +483,7 @@ The impact depends on the application's functionality and authorization model.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Cross-Site Request Forgery?
 2. Why does CSRF occur?
@@ -498,7 +498,7 @@ The impact depends on the application's functionality and authorization model.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat every authenticated state-changing request as potentially exposed to CSRF.
 - Design applications using defense in depth.
@@ -509,7 +509,7 @@ The impact depends on the application's functionality and authorization model.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming authentication alone prevents CSRF.
 - Ignoring browser automatic cookie behavior.
@@ -519,7 +519,7 @@ The impact depends on the application's functionality and authorization model.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - CSRF exploits the browser's automatic handling of authenticated sessions.
 - It abuses trust rather than stealing credentials.
@@ -527,15 +527,15 @@ The impact depends on the application's functionality and authorization model.
 - State-changing operations require dedicated CSRF defenses.
 - Understanding browser session behavior is essential for designing secure web applications.
 
-# 15-CSRF.md
+## 15-CSRF.md
 
-# Part 2 — CSRF Attack Vectors, HTTP Methods, Browser Behavior, CSRF Tokens, SameSite Cookies, Origin Validation, and Enterprise Defenses
+## Part 2 — CSRF Attack Vectors, HTTP Methods, Browser Behavior, CSRF Tokens, SameSite Cookies, Origin Validation, and Enterprise Defenses
 
 > **"Modern CSRF protection does not rely on a single control. Secure applications combine CSRF tokens, browser protections, cookie attributes, origin validation, and secure application design to defend against forged requests."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -552,7 +552,7 @@ After completing this part, you will understand:
 
 ---
 
-# Browser Request Behavior
+## Browser Request Behavior
 
 Browsers automatically attach authentication information when making requests to a website.
 
@@ -580,7 +580,7 @@ This automatic behavior is the primary reason CSRF attacks are possible.
 
 ---
 
-# State-Changing Requests
+## State-Changing Requests
 
 CSRF primarily targets operations that modify server-side data.
 
@@ -609,7 +609,7 @@ Server State Changes
 
 ---
 
-# Read vs Write Operations
+## Read vs Write Operations
 
 ```
 Read Data
@@ -631,7 +631,7 @@ State-changing requests should always receive stronger protection.
 
 ---
 
-# Common Attack Flow
+## Common Attack Flow
 
 ```
 Victim
@@ -661,7 +661,7 @@ The browser behaves normally—the application must determine whether the reques
 
 ---
 
-# Hidden Form Submission
+## Hidden Form Submission
 
 A malicious page could attempt to submit a hidden form automatically.
 
@@ -687,7 +687,7 @@ Without proper protections, the server may treat the request as legitimate.
 
 ---
 
-# Image-Based Requests
+## Image-Based Requests
 
 Historically, attackers attempted to trigger requests through embedded resources.
 
@@ -707,7 +707,7 @@ Modern browser protections have reduced many historical attack techniques, but a
 
 ---
 
-# CSRF Protection Strategy
+## CSRF Protection Strategy
 
 Modern applications typically combine multiple defenses.
 
@@ -737,7 +737,7 @@ Protected Request
 
 ---
 
-# CSRF Tokens
+## CSRF Tokens
 
 A **CSRF token** is a server-generated value associated with the user's session or request.
 
@@ -769,7 +769,7 @@ The server verifies the token before processing sensitive requests.
 
 ---
 
-# Synchronizer Token Pattern
+## Synchronizer Token Pattern
 
 One common approach is the Synchronizer Token Pattern.
 
@@ -809,7 +809,7 @@ The token should be difficult to predict and generated securely.
 
 ---
 
-# Token Validation
+## Token Validation
 
 ```
 Incoming Request
@@ -847,7 +847,7 @@ Missing or invalid tokens should result in request rejection.
 
 ---
 
-# Why Tokens Work
+## Why Tokens Work
 
 An attacker can often cause the browser to send a request.
 
@@ -873,7 +873,7 @@ The token demonstrates that the request originated from the legitimate applicati
 
 ---
 
-# Token Lifecycle
+## Token Lifecycle
 
 ```
 User Login
@@ -903,7 +903,7 @@ Applications may generate tokens per session or per request depending on their d
 
 ---
 
-# Double Submit Cookie Pattern
+## Double Submit Cookie Pattern
 
 Another approach is the **Double Submit Cookie Pattern**.
 
@@ -941,7 +941,7 @@ The server validates that both values match before processing the request.
 
 ---
 
-# SameSite Cookies
+## SameSite Cookies
 
 Modern browsers support the **SameSite** cookie attribute.
 
@@ -971,7 +971,7 @@ SameSite reduces the likelihood that cookies will be automatically included in c
 
 ---
 
-# Common SameSite Modes
+## Common SameSite Modes
 
 | Mode | High-Level Behavior |
 |------|----------------------|
@@ -983,7 +983,7 @@ Exact browser behavior depends on standards and browser implementation.
 
 ---
 
-# SameSite Concept
+## SameSite Concept
 
 ```
 Cross-Site Request
@@ -1009,7 +1009,7 @@ SameSite provides an important browser-side mitigation but should not replace se
 
 ---
 
-# Origin Validation
+## Origin Validation
 
 Applications may verify the request's origin.
 
@@ -1047,7 +1047,7 @@ Origin validation helps detect unexpected cross-site requests.
 
 ---
 
-# Referer Validation
+## Referer Validation
 
 Some applications also examine the `Referer` header.
 
@@ -1087,7 +1087,7 @@ Referer validation is typically used as an additional layer rather than the sole
 
 ---
 
-# Layered Defense
+## Layered Defense
 
 ```
 Authenticated Session
@@ -1117,7 +1117,7 @@ Multiple independent controls improve resilience.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                   Browser
@@ -1167,7 +1167,7 @@ Multiple independent controls improve resilience.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An enterprise HR application protects profile updates using:
 
@@ -1182,7 +1182,7 @@ Only requests that satisfy all required security checks are processed.
 
 ---
 
-# Security Checklist
+## Security Checklist
 
 ```
 ✓ Session Authentication
@@ -1204,7 +1204,7 @@ Only requests that satisfy all required security checks are processed.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Identify state-changing requests in an application.
 2. Observe whether forms contain a CSRF token.
@@ -1217,7 +1217,7 @@ Only requests that satisfy all required security checks are processed.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are CSRF tokens effective?
 2. What is the Synchronizer Token Pattern?
@@ -1232,7 +1232,7 @@ Only requests that satisfy all required security checks are processed.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Protect every state-changing endpoint with CSRF defenses.
 - Generate cryptographically secure CSRF tokens.
@@ -1244,7 +1244,7 @@ Only requests that satisfy all required security checks are processed.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Protecting login pages but not profile updates.
 - Treating SameSite as a complete replacement for CSRF tokens.
@@ -1255,7 +1255,7 @@ Only requests that satisfy all required security checks are processed.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - CSRF exploits authenticated browser sessions, not authentication itself.
 - CSRF tokens are a primary server-side defense against forged requests.
@@ -1263,15 +1263,15 @@ Only requests that satisfy all required security checks are processed.
 - Origin and Referer validation provide additional layers of protection.
 - A defense-in-depth strategy offers the strongest protection against CSRF attacks.
 
-# 15-CSRF.md
+## 15-CSRF.md
 
-# Part 3 — Advanced CSRF, Modern Browser Protections, APIs, OAuth Considerations, Security Testing, Enterprise Architecture, and Secure Design
+## Part 3 — Advanced CSRF, Modern Browser Protections, APIs, OAuth Considerations, Security Testing, Enterprise Architecture, and Secure Design
 
 > **"Modern browsers have significantly reduced CSRF risk through features like SameSite cookies, but secure applications must still implement server-side defenses because browser behavior alone cannot guarantee protection."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1288,7 +1288,7 @@ After completing this part, you will understand:
 
 ---
 
-# Modern Browser Defenses
+## Modern Browser Defenses
 
 Today's browsers provide several built-in protections.
 
@@ -1312,7 +1312,7 @@ These protections reduce risk but should complement—not replace—application-
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 A secure application combines multiple security controls.
 
@@ -1352,7 +1352,7 @@ No single protection should be considered sufficient on its own.
 
 ---
 
-# CSRF in APIs
+## CSRF in APIs
 
 Traditional browser-based applications commonly use cookies for authentication.
 
@@ -1372,7 +1372,7 @@ If authentication relies on automatically included cookies, CSRF protections rem
 
 ---
 
-# Browser-Based APIs
+## Browser-Based APIs
 
 ```
 Frontend
@@ -1398,7 +1398,7 @@ The API should validate both authentication and CSRF protections where applicabl
 
 ---
 
-# Single Page Applications (SPAs)
+## Single Page Applications (SPAs)
 
 Many modern applications are built as SPAs.
 
@@ -1422,7 +1422,7 @@ The application may make many asynchronous requests after login.
 
 ---
 
-# SPA Security
+## SPA Security
 
 Even in SPAs:
 
@@ -1442,7 +1442,7 @@ The application architecture changes, but the security principles remain the sam
 
 ---
 
-# Token-Based Authentication
+## Token-Based Authentication
 
 Some applications authenticate requests using tokens sent explicitly by JavaScript instead of automatically included session cookies.
 
@@ -1468,7 +1468,7 @@ Whether CSRF protection is required depends on **how authentication credentials 
 
 ---
 
-# Cookies vs Explicit Tokens
+## Cookies vs Explicit Tokens
 
 | Authentication Method | Browser Automatically Includes Credentials? |
 |-----------------------|---------------------------------------------|
@@ -1479,7 +1479,7 @@ This distinction affects CSRF risk but does not eliminate the need for secure ap
 
 ---
 
-# Login CSRF
+## Login CSRF
 
 Applications should also consider login workflows.
 
@@ -1505,7 +1505,7 @@ Proper validation during authentication flows helps reduce this risk.
 
 ---
 
-# Logout CSRF
+## Logout CSRF
 
 Similarly, applications should evaluate logout operations.
 
@@ -1525,7 +1525,7 @@ While generally less severe than unauthorized state changes, unexpected logout b
 
 ---
 
-# Password Change Example
+## Password Change Example
 
 ```
 User
@@ -1555,7 +1555,7 @@ Sensitive account-management operations should always be protected.
 
 ---
 
-# Administrative Operations
+## Administrative Operations
 
 High-risk operations include:
 
@@ -1570,7 +1570,7 @@ These operations require robust authentication, authorization, and CSRF protecti
 
 ---
 
-# OAuth Considerations
+## OAuth Considerations
 
 Applications using OAuth or OpenID Connect often involve multiple browser redirects.
 
@@ -1598,7 +1598,7 @@ These workflows include additional protections against request forgery, which ar
 
 ---
 
-# Request Validation
+## Request Validation
 
 Every sensitive request should undergo multiple checks.
 
@@ -1628,7 +1628,7 @@ Database Update
 
 ---
 
-# Fetch Metadata (Conceptual)
+## Fetch Metadata (Conceptual)
 
 Modern browsers may provide metadata about how requests originated.
 
@@ -1654,7 +1654,7 @@ This information can serve as another layer of defense.
 
 ---
 
-# Enterprise API Gateway
+## Enterprise API Gateway
 
 ```
                 Browser
@@ -1692,7 +1692,7 @@ The gateway may centralize common security controls.
 
 ---
 
-# Enterprise Security Pipeline
+## Enterprise Security Pipeline
 
 ```
 Incoming Request
@@ -1734,7 +1734,7 @@ Each stage contributes to overall application security.
 
 ---
 
-# Security Testing
+## Security Testing
 
 During an assessment, verify:
 
@@ -1760,7 +1760,7 @@ Testing must always be conducted with proper authorization.
 
 ---
 
-# Logging
+## Logging
 
 Applications should record:
 
@@ -1775,7 +1775,7 @@ Logs support incident response and forensic analysis.
 
 ---
 
-# Monitoring
+## Monitoring
 
 Useful metrics include:
 
@@ -1789,7 +1789,7 @@ Useful metrics include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization protects patient record updates using:
 
@@ -1829,7 +1829,7 @@ Every update request passes multiple independent security checks.
 
 ---
 
-# Common Misconfigurations
+## Common Misconfigurations
 
 | Misconfiguration | Risk |
 |------------------|------|
@@ -1841,7 +1841,7 @@ Every update request passes multiple independent security checks.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Map all state-changing endpoints.
 2. Identify where CSRF tokens are validated.
@@ -1854,7 +1854,7 @@ Every update request passes multiple independent security checks.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Does a Single Page Application eliminate CSRF risk?
 2. Why are state-changing requests prioritized for CSRF protection?
@@ -1869,7 +1869,7 @@ Every update request passes multiple independent security checks.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Protect every state-changing operation.
 - Use cryptographically secure CSRF tokens.
@@ -1881,7 +1881,7 @@ Every update request passes multiple independent security checks.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming SPAs are automatically immune to CSRF.
 - Protecting only high-profile pages while ignoring ordinary account features.
@@ -1892,7 +1892,7 @@ Every update request passes multiple independent security checks.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Modern browsers reduce CSRF risk, but server-side defenses remain essential.
 - Both traditional and modern web applications should evaluate CSRF risks based on how authentication is handled.
@@ -1900,15 +1900,15 @@ Every update request passes multiple independent security checks.
 - Enterprise applications combine authentication, authorization, CSRF validation, logging, and monitoring.
 - Defense in depth remains the most effective approach against request forgery.
 
-# 15-CSRF.md
+## 15-CSRF.md
 
-# Part 4 — Enterprise CSRF Governance, Security Testing, Troubleshooting, Best Practices, Architecture Review, and Chapter Summary
+## Part 4 — Enterprise CSRF Governance, Security Testing, Troubleshooting, Best Practices, Architecture Review, and Chapter Summary
 
 > **"Effective CSRF protection is achieved through layered defenses. Secure applications combine browser features, server-side validation, secure session management, and continuous security reviews to ensure that authenticated requests truly represent the user's intent."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1925,7 +1925,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise CSRF Governance
+## Enterprise CSRF Governance
 
 Organizations should standardize CSRF protection across all web applications.
 
@@ -1953,7 +1953,7 @@ A centralized standard reduces inconsistencies and security gaps.
 
 ---
 
-# CSRF Protection Lifecycle
+## CSRF Protection Lifecycle
 
 ```
 Application Design
@@ -1991,7 +1991,7 @@ CSRF protection should be evaluated throughout the application's lifecycle.
 
 ---
 
-# Secure Software Development Lifecycle (SSDLC)
+## Secure Software Development Lifecycle (SSDLC)
 
 ```
 Requirements
@@ -2025,7 +2025,7 @@ CSRF requirements should be incorporated from the design phase rather than added
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                      Browser
@@ -2087,7 +2087,7 @@ Every sensitive request passes through multiple independent security controls.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 HTTPS
@@ -2129,7 +2129,7 @@ Removing one layer should not immediately expose the application.
 
 ---
 
-# Security Review Checklist
+## Security Review Checklist
 
 During security reviews, verify:
 
@@ -2157,7 +2157,7 @@ During security reviews, verify:
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 During application design, identify:
 
@@ -2173,7 +2173,7 @@ Threat modeling helps prioritize security controls.
 
 ---
 
-# Security Testing
+## Security Testing
 
 A CSRF assessment should examine:
 
@@ -2199,7 +2199,7 @@ Testing should always be performed only in authorized environments.
 
 ---
 
-# Conceptual Testing Workflow
+## Conceptual Testing Workflow
 
 ```
 Identify Authenticated Feature
@@ -2227,7 +2227,7 @@ Document Findings
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Applications should record:
 
@@ -2243,7 +2243,7 @@ Logs should support security investigations and incident response.
 
 ---
 
-# Monitoring Metrics
+## Monitoring Metrics
 
 Useful metrics include:
 
@@ -2258,7 +2258,7 @@ Useful metrics include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking platform protects account settings with the following workflow:
 
@@ -2306,7 +2306,7 @@ Every state-changing operation follows the same security pipeline.
 
 ---
 
-# API Security Considerations
+## API Security Considerations
 
 When browser-based APIs rely on session cookies:
 
@@ -2334,7 +2334,7 @@ API endpoints that modify server-side state should be protected using the organi
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2348,7 +2348,7 @@ Troubleshoot methodically by reviewing authentication, session handling, token v
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 State-Changing Request
@@ -2384,7 +2384,7 @@ Reject
 
 ---
 
-# Secure Deployment Checklist
+## Secure Deployment Checklist
 
 ```
 ✓ HTTPS Everywhere
@@ -2410,7 +2410,7 @@ Reject
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Protect every authenticated state-changing request.
 - Use cryptographically secure CSRF tokens.
@@ -2425,7 +2425,7 @@ Reject
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming HTTPS eliminates CSRF.
 - Protecting only administrative pages.
@@ -2437,9 +2437,9 @@ Reject
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## CSRF Attack Flow
+### CSRF Attack Flow
 
 ```
 Authenticated User
@@ -2471,7 +2471,7 @@ Request May Succeed
 
 ---
 
-## Secure Request Flow
+### Secure Request Flow
 
 ```
 Authenticated User
@@ -2503,7 +2503,7 @@ Success
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 ```
 HTTPS
@@ -2543,7 +2543,7 @@ Monitoring
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Identify every authenticated, state-changing endpoint.
 2. Verify that each request includes CSRF protection.
@@ -2557,7 +2557,7 @@ Monitoring
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Cross-Site Request Forgery (CSRF)?
 2. Why do browsers automatically send session cookies?
@@ -2572,7 +2572,7 @@ Monitoring
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

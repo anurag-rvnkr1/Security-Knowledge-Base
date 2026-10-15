@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 In the previous chapter, we learned:
 
@@ -57,7 +57,7 @@ Reliable, structured, searchable security events
 
 ---
 
-# 2. What is Log Ingestion?
+## 2. What is Log Ingestion?
 
 **Log ingestion** is the process of receiving telemetry into a SIEM or security data platform.
 
@@ -91,11 +91,11 @@ Indexing
 
 ---
 
-# 3. Collection vs Ingestion
+## 3. Collection vs Ingestion
 
 These terms are related but different.
 
-### Collection
+#### Collection
 
 Getting data from the source.
 
@@ -105,7 +105,7 @@ Firewall
 Collector
 ```
 
-### Ingestion
+#### Ingestion
 
 Receiving and processing that data into the SIEM pipeline.
 
@@ -127,7 +127,7 @@ INGESTION
 
 ---
 
-# 4. Complete Ingestion Pipeline
+## 4. Complete Ingestion Pipeline
 
 A typical architecture:
 
@@ -167,7 +167,7 @@ A typical architecture:
 
 ---
 
-# 5. Why Ingestion Matters
+## 5. Why Ingestion Matters
 
 Poor ingestion can cause:
 
@@ -188,7 +188,7 @@ Therefore:
 
 ---
 
-# 6. Ingestion Architecture
+## 6. Ingestion Architecture
 
 Large environments may separate ingestion into multiple stages.
 
@@ -218,7 +218,7 @@ This provides scalability and resilience.
 
 ---
 
-# 7. Collectors
+## 7. Collectors
 
 A collector receives logs from one or more sources.
 
@@ -247,7 +247,7 @@ VPN ──────────┤
 
 ---
 
-# 8. Forwarders
+## 8. Forwarders
 
 A forwarder transfers logs from one location to another.
 
@@ -274,7 +274,7 @@ Load Distribution
 
 ---
 
-# 9. Ingestion Endpoints
+## 9. Ingestion Endpoints
 
 A SIEM may expose different ingestion interfaces.
 
@@ -295,7 +295,7 @@ The correct method depends on the data source.
 
 ---
 
-# 10. Syslog Ingestion
+## 10. Syslog Ingestion
 
 A common architecture:
 
@@ -325,9 +325,9 @@ Where reliability and confidentiality are important, secure transport should be 
 
 ---
 
-# 11. UDP vs TCP for Logs
+## 11. UDP vs TCP for Logs
 
-## UDP
+### UDP
 
 Advantages:
 
@@ -345,7 +345,7 @@ Potential Packet Loss
 No Connection State
 ```
 
-## TCP
+### TCP
 
 Advantages:
 
@@ -364,7 +364,7 @@ Connection Management
 
 ---
 
-# 12. TLS-Protected Logging
+## 12. TLS-Protected Logging
 
 When logs contain sensitive information:
 
@@ -390,7 +390,7 @@ Exact security properties depend on certificate configuration and deployment.
 
 ---
 
-# 13. API-Based Ingestion
+## 13. API-Based Ingestion
 
 Cloud and SaaS platforms commonly provide APIs.
 
@@ -423,9 +423,9 @@ Checkpointing
 
 ---
 
-# 14. Polling vs Streaming
+## 14. Polling vs Streaming
 
-## Polling
+### Polling
 
 The collector periodically asks:
 
@@ -443,7 +443,7 @@ API request
 Retrieve events
 ```
 
-## Streaming
+### Streaming
 
 The source continuously sends events.
 
@@ -459,7 +459,7 @@ Streaming can provide lower latency.
 
 ---
 
-# 15. Ingestion Latency
+## 15. Ingestion Latency
 
 There may be a delay between:
 
@@ -497,7 +497,7 @@ Ingestion latency:
 
 ---
 
-# 16. Why Ingestion Latency Matters
+## 16. Why Ingestion Latency Matters
 
 High latency can affect:
 
@@ -523,7 +523,7 @@ This can significantly increase attacker dwell time.
 
 ---
 
-# 17. Event Ordering
+## 17. Event Ordering
 
 Events do not always arrive in the same order they occurred.
 
@@ -553,7 +553,7 @@ Detection systems should account for such conditions where necessary.
 
 ---
 
-# 18. Event Time vs Ingestion Time
+## 18. Event Time vs Ingestion Time
 
 An event can contain multiple timestamps.
 
@@ -581,7 +581,7 @@ For security investigation, the original event time is usually essential.
 
 ---
 
-# 19. Timestamp Normalization
+## 19. Timestamp Normalization
 
 Different sources may produce:
 
@@ -602,7 +602,7 @@ Example:
 
 ---
 
-# 20. Time Zones
+## 20. Time Zones
 
 A global organization may have:
 
@@ -629,7 +629,7 @@ Best practice is often to store timestamps in a standardized form such as UTC wh
 
 ---
 
-# 21. Parsing
+## 21. Parsing
 
 Parsing converts raw data into structured fields.
 
@@ -651,7 +651,7 @@ source.port = 55221
 
 ---
 
-# 22. Why Parsing Matters
+## 22. Why Parsing Matters
 
 Without parsing:
 
@@ -682,7 +682,7 @@ Automation
 
 ---
 
-# 23. Parsing Methods
+## 23. Parsing Methods
 
 Common parsing approaches:
 
@@ -700,7 +700,7 @@ Vendor Parsers
 
 ---
 
-# 24. Delimiter Parsing
+## 24. Delimiter Parsing
 
 Example:
 
@@ -719,7 +719,7 @@ status = failed
 
 ---
 
-# 25. Key-Value Parsing
+## 25. Key-Value Parsing
 
 Example:
 
@@ -740,7 +740,7 @@ This is often easier to parse than free-form text.
 
 ---
 
-# 26. JSON Parsing
+## 26. JSON Parsing
 
 Example:
 
@@ -766,7 +766,7 @@ into structured fields.
 
 ---
 
-# 27. XML Parsing
+## 27. XML Parsing
 
 Some enterprise systems use XML.
 
@@ -790,7 +790,7 @@ status = failure
 
 ---
 
-# 28. Regular Expressions
+## 28. Regular Expressions
 
 Regular expressions can extract fields from unstructured logs.
 
@@ -811,7 +811,7 @@ Regex is powerful but can become difficult to maintain if used excessively.
 
 ---
 
-# 29. Vendor Parsers
+## 29. Vendor Parsers
 
 SIEM platforms often provide parsers for common vendors.
 
@@ -838,7 +838,7 @@ But parsers still need testing and validation.
 
 ---
 
-# 30. Parsing Failure
+## 30. Parsing Failure
 
 Suppose the parser expects:
 
@@ -870,7 +870,7 @@ Correlation Failure
 
 ---
 
-# 31. Parser Validation
+## 31. Parser Validation
 
 After onboarding a source:
 
@@ -897,7 +897,7 @@ Severity
 
 ---
 
-# 32. Parsing Success Rate
+## 32. Parsing Success Rate
 
 A useful operational metric:
 
@@ -924,7 +924,7 @@ Configuration Problem
 
 ---
 
-# 33. Normalization
+## 33. Normalization
 
 Normalization creates a common representation across different sources.
 
@@ -952,7 +952,7 @@ source.ip
 
 ---
 
-# 34. Why Normalization Matters
+## 34. Why Normalization Matters
 
 Without normalization:
 
@@ -982,7 +982,7 @@ Detections can use a common field.
 
 ---
 
-# 35. Common Normalized Fields
+## 35. Common Normalized Fields
 
 Examples:
 
@@ -1025,7 +1025,7 @@ Exact schemas vary by platform.
 
 ---
 
-# 36. ECS
+## 36. ECS
 
 **Elastic Common Schema (ECS)** is one example of a standardized field schema used in security data pipelines.
 
@@ -1051,9 +1051,9 @@ The underlying principle is:
 
 ---
 
-# 37. Schema-on-Write vs Schema-on-Read
+## 37. Schema-on-Write vs Schema-on-Read
 
-## Schema-on-Write
+### Schema-on-Write
 
 Data is transformed into a defined structure before or during ingestion.
 
@@ -1083,7 +1083,7 @@ Transformation Complexity
 
 ---
 
-## Schema-on-Read
+### Schema-on-Read
 
 Raw data is stored and interpreted when queried.
 
@@ -1112,7 +1112,7 @@ Modern systems may use combinations of these approaches.
 
 ---
 
-# 38. Data Transformation
+## 38. Data Transformation
 
 During ingestion, fields may be:
 
@@ -1140,7 +1140,7 @@ source.ip=10.10.10.20
 
 ---
 
-# 39. Data Type Normalization
+## 39. Data Type Normalization
 
 Fields should have consistent data types.
 
@@ -1169,7 +1169,7 @@ Querying
 
 ---
 
-# 40. IP Address Normalization
+## 40. IP Address Normalization
 
 Different representations may exist:
 
@@ -1184,7 +1184,7 @@ The ingestion pipeline should handle supported formats consistently.
 
 ---
 
-# 41. User Identity Normalization
+## 41. User Identity Normalization
 
 The same user may appear as:
 
@@ -1202,7 +1202,7 @@ Normalization can help map them to a canonical identity.
 
 ---
 
-# 42. Hostname Normalization
+## 42. Hostname Normalization
 
 The same host may appear as:
 
@@ -1217,7 +1217,7 @@ Asset enrichment can map these identifiers to a canonical asset.
 
 ---
 
-# 43. Identity Resolution
+## 43. Identity Resolution
 
 Identity resolution attempts to connect different identifiers.
 
@@ -1240,7 +1240,7 @@ This is extremely useful for investigation.
 
 ---
 
-# 44. Asset Resolution
+## 44. Asset Resolution
 
 Example:
 
@@ -1259,7 +1259,7 @@ Owner: Identity Team
 
 ---
 
-# 45. Enrichment
+## 45. Enrichment
 
 Enrichment adds information not directly present in the original event.
 
@@ -1280,7 +1280,7 @@ Cloud Metadata
 
 ---
 
-# 46. GeoIP Enrichment
+## 46. GeoIP Enrichment
 
 Example:
 
@@ -1300,7 +1300,7 @@ GeoIP is contextual and may be inaccurate, so it should not be treated as defini
 
 ---
 
-# 47. Threat Intelligence Enrichment
+## 47. Threat Intelligence Enrichment
 
 Example:
 
@@ -1326,7 +1326,7 @@ threat.confidence
 
 ---
 
-# 48. Asset Enrichment
+## 48. Asset Enrichment
 
 Example:
 
@@ -1346,7 +1346,7 @@ This can increase alert priority.
 
 ---
 
-# 49. User Enrichment
+## 49. User Enrichment
 
 Example:
 
@@ -1367,7 +1367,7 @@ Again, only appropriate and authorized contextual data should be included.
 
 ---
 
-# 50. Vulnerability Enrichment
+## 50. Vulnerability Enrichment
 
 Example:
 
@@ -1383,7 +1383,7 @@ This provides additional risk context.
 
 ---
 
-# 51. Deduplication
+## 51. Deduplication
 
 The same event may arrive multiple times.
 
@@ -1409,7 +1409,7 @@ Deduplication prevents inflated counts and unnecessary alerts.
 
 ---
 
-# 52. Event Fingerprinting
+## 52. Event Fingerprinting
 
 A system can create an event fingerprint from fields such as:
 
@@ -1427,7 +1427,7 @@ Similar fingerprints can help identify duplicates.
 
 ---
 
-# 53. Event Ordering
+## 53. Event Ordering
 
 Consider:
 
@@ -1456,7 +1456,7 @@ Late Event Handling
 
 ---
 
-# 54. Late-Arriving Events
+## 54. Late-Arriving Events
 
 An event may arrive after the correlation window.
 
@@ -1482,7 +1482,7 @@ This is an important engineering consideration.
 
 ---
 
-# 55. Buffering
+## 55. Buffering
 
 Buffers temporarily hold data.
 
@@ -1508,7 +1508,7 @@ Absorbs Temporary Outages
 
 ---
 
-# 56. Backpressure
+## 56. Backpressure
 
 If downstream processing cannot keep up:
 
@@ -1540,7 +1540,7 @@ Optimize Processing
 
 ---
 
-# 57. Throughput
+## 57. Throughput
 
 SIEM pipelines must handle large event volumes.
 
@@ -1566,7 +1566,7 @@ means:
 
 ---
 
-# 58. Data Volume
+## 58. Data Volume
 
 Suppose:
 
@@ -1597,7 +1597,7 @@ This is a simplified estimate before compression, metadata, indexing overhead, a
 
 ---
 
-# 59. Ingestion Scaling
+## 59. Ingestion Scaling
 
 A large environment may use:
 
@@ -1617,7 +1617,7 @@ This improves scalability and availability.
 
 ---
 
-# 60. Horizontal Scaling
+## 60. Horizontal Scaling
 
 Instead of making one server larger:
 
@@ -1642,7 +1642,7 @@ Horizontal Scaling
 
 ---
 
-# 61. Vertical Scaling
+## 61. Vertical Scaling
 
 Increase resources of a node:
 
@@ -1662,7 +1662,7 @@ Large SIEM platforms often combine both approaches.
 
 ---
 
-# 62. Load Balancing
+## 62. Load Balancing
 
 Incoming telemetry can be distributed:
 
@@ -1687,7 +1687,7 @@ Balanced Processing
 
 ---
 
-# 63. Queue-Based Architecture
+## 63. Queue-Based Architecture
 
 A queue can decouple ingestion from processing.
 
@@ -1716,7 +1716,7 @@ Fault Isolation
 
 ---
 
-# 64. Ingestion Failure Modes
+## 64. Ingestion Failure Modes
 
 Common failures:
 
@@ -1737,7 +1737,7 @@ Each should be monitored.
 
 ---
 
-# 65. API Rate Limits
+## 65. API Rate Limits
 
 SaaS/cloud APIs may limit requests.
 
@@ -1773,7 +1773,7 @@ Multiple Authorized Consumers
 
 ---
 
-# 66. Checkpointing
+## 66. Checkpointing
 
 A collector can remember:
 
@@ -1793,7 +1793,7 @@ This reduces event loss or duplication.
 
 ---
 
-# 67. Retry Logic
+## 67. Retry Logic
 
 Temporary failure:
 
@@ -1815,7 +1815,7 @@ Proper retry strategies should use controlled backoff rather than creating addit
 
 ---
 
-# 68. Dead-Letter Queue
+## 68. Dead-Letter Queue
 
 Events that cannot be processed may be sent to a separate location:
 
@@ -1831,7 +1831,7 @@ This prevents malformed events from blocking the entire pipeline.
 
 ---
 
-# 69. Schema Evolution
+## 69. Schema Evolution
 
 Vendors may change event formats.
 
@@ -1857,7 +1857,7 @@ Ingestion pipelines must handle schema evolution safely.
 
 ---
 
-# 70. Parser Versioning
+## 70. Parser Versioning
 
 Parsers should ideally be version-controlled.
 
@@ -1879,7 +1879,7 @@ Deploy
 
 ---
 
-# 71. Testing Ingestion
+## 71. Testing Ingestion
 
 Before production:
 
@@ -1901,7 +1901,7 @@ Verify Detection
 
 ---
 
-# 72. Data Validation
+## 72. Data Validation
 
 Validate:
 
@@ -1928,7 +1928,7 @@ Unexpected Formats
 
 ---
 
-# 73. Required vs Optional Fields
+## 73. Required vs Optional Fields
 
 Not every event needs every field.
 
@@ -1952,7 +1952,7 @@ A detection should clearly define which fields it actually requires.
 
 ---
 
-# 74. Null Handling
+## 74. Null Handling
 
 Example:
 
@@ -1972,7 +1972,7 @@ A detection should not blindly assume every field is populated.
 
 ---
 
-# 75. Data Quality Pipeline
+## 75. Data Quality Pipeline
 
 ```text
 RAW EVENT
@@ -1996,7 +1996,7 @@ STORE
 
 ---
 
-# 76. Quality Scoring
+## 76. Quality Scoring
 
 A platform can conceptually assign:
 
@@ -2011,7 +2011,7 @@ This helps identify problematic sources.
 
 ---
 
-# 77. Filtering
+## 77. Filtering
 
 Filtering removes events that are not needed.
 
@@ -2040,7 +2040,7 @@ Business Requirements
 
 ---
 
-# 78. Sampling
+## 78. Sampling
 
 In very high-volume environments, some telemetry may be sampled.
 
@@ -2058,7 +2058,7 @@ Therefore, sampling is generally unsuitable for telemetry where every event may 
 
 ---
 
-# 79. Compression
+## 79. Compression
 
 Logs can be compressed:
 
@@ -2079,7 +2079,7 @@ Processing Complexity
 
 ---
 
-# 80. Data Routing
+## 80. Data Routing
 
 Different events may go to different destinations.
 
@@ -2103,7 +2103,7 @@ Routing can reduce unnecessary SIEM cost.
 
 ---
 
-# 81. Hot vs Cold Routing
+## 81. Hot vs Cold Routing
 
 Example:
 
@@ -2123,7 +2123,7 @@ Cold Storage
 
 ---
 
-# 82. Ingestion Security
+## 82. Ingestion Security
 
 Protect ingestion endpoints with:
 
@@ -2140,7 +2140,7 @@ Monitoring
 
 ---
 
-# 83. Certificate Management
+## 83. Certificate Management
 
 TLS-based ingestion may fail if:
 
@@ -2161,7 +2161,7 @@ is important.
 
 ---
 
-# 84. Authentication for Collectors
+## 84. Authentication for Collectors
 
 Collectors may use:
 
@@ -2185,7 +2185,7 @@ Monitored
 
 ---
 
-# 85. Secrets in Logs
+## 85. Secrets in Logs
 
 Logs themselves may accidentally contain:
 
@@ -2213,7 +2213,7 @@ before storage.
 
 ---
 
-# 86. Data Privacy
+## 86. Data Privacy
 
 SIEM data may contain:
 
@@ -2238,7 +2238,7 @@ Legal Requirements
 
 ---
 
-# 87. Original Event Preservation
+## 87. Original Event Preservation
 
 When possible, preserve sufficient original context for investigation.
 
@@ -2258,11 +2258,11 @@ Retention policies determine how long original data can be retained.
 
 ---
 
-# 88. Parsing vs Normalization
+## 88. Parsing vs Normalization
 
 These are frequently confused.
 
-### Parsing
+#### Parsing
 
 Extract information:
 
@@ -2273,7 +2273,7 @@ user=alice
 ip=10.10.10.20
 ```
 
-### Normalization
+#### Normalization
 
 Map to standard fields:
 
@@ -2294,9 +2294,9 @@ NORMALIZATION
 
 ---
 
-# 89. Normalization vs Enrichment
+## 89. Normalization vs Enrichment
 
-### Normalization
+#### Normalization
 
 Makes data consistent.
 
@@ -2306,7 +2306,7 @@ src_ip
 source.ip
 ```
 
-### Enrichment
+#### Enrichment
 
 Adds new information.
 
@@ -2322,7 +2322,7 @@ Threat Reputation
 
 ---
 
-# 90. Complete Transformation
+## 90. Complete Transformation
 
 ```text
 RAW
@@ -2353,7 +2353,7 @@ Structured Security Event
 
 ---
 
-# 91. Example: Windows Event
+## 91. Example: Windows Event
 
 Raw:
 
@@ -2390,7 +2390,7 @@ source.reputation = Unknown
 
 ---
 
-# 92. Example: Firewall Event
+## 92. Example: Firewall Event
 
 Raw:
 
@@ -2422,7 +2422,7 @@ destination.port = 443
 
 ---
 
-# 93. Example: DNS Event
+## 93. Example: DNS Event
 
 Raw:
 
@@ -2448,7 +2448,7 @@ threat.category = ...
 
 ---
 
-# 94. Data Lineage
+## 94. Data Lineage
 
 Data lineage answers:
 
@@ -2486,7 +2486,7 @@ Data lineage is useful for troubleshooting and auditability.
 
 ---
 
-# 95. Observability of the SIEM Pipeline
+## 95. Observability of the SIEM Pipeline
 
 The SIEM should monitor itself.
 
@@ -2507,7 +2507,7 @@ Network
 
 ---
 
-# 96. Ingestion Monitoring Dashboard
+## 96. Ingestion Monitoring Dashboard
 
 A useful dashboard might show:
 
@@ -2525,7 +2525,7 @@ Storage Usage
 
 ---
 
-# 97. Example Pipeline Failure
+## 97. Example Pipeline Failure
 
 Suppose:
 
@@ -2558,7 +2558,7 @@ This demonstrates why pipeline health is itself a security concern.
 
 ---
 
-# 98. Ingestion Best Practices
+## 98. Ingestion Best Practices
 
 ```text
 1. Use reliable transport where appropriate.
@@ -2604,7 +2604,7 @@ This demonstrates why pipeline health is itself a security concern.
 
 ---
 
-# 99. Practical Lab
+## 99. Practical Lab
 
 Build a small pipeline:
 
@@ -2644,7 +2644,7 @@ Search
 
 ---
 
-# 100. Parsing Exercise
+## 100. Parsing Exercise
 
 Start with:
 
@@ -2672,7 +2672,7 @@ event.outcome = failure
 
 ---
 
-# 101. Normalization Exercise
+## 101. Normalization Exercise
 
 Given:
 
@@ -2706,7 +2706,7 @@ regardless of the original source.
 
 ---
 
-# 102. Enrichment Exercise
+## 102. Enrichment Exercise
 
 Given:
 
@@ -2727,7 +2727,7 @@ Then determine how the additional context changes investigation priority.
 
 ---
 
-# 103. Ingestion Failure Exercise
+## 103. Ingestion Failure Exercise
 
 Simulate:
 
@@ -2754,71 +2754,71 @@ Detections work
 
 ---
 
-# 104. Interview Questions
+## 104. Interview Questions
 
-### What is log ingestion?
+#### What is log ingestion?
 
 > The process of receiving telemetry into a SIEM or security data platform for processing and analysis.
 
-### What is the difference between collection and ingestion?
+#### What is the difference between collection and ingestion?
 
 > Collection obtains telemetry from the source, while ingestion brings that telemetry into the processing pipeline.
 
-### What is parsing?
+#### What is parsing?
 
 > Extracting structured fields from raw log data.
 
-### What is normalization?
+#### What is normalization?
 
 > Converting source-specific fields and formats into a consistent schema.
 
-### What is enrichment?
+#### What is enrichment?
 
 > Adding contextual information such as asset, identity, geographic, vulnerability, or threat intelligence data.
 
-### Why is normalization important?
+#### Why is normalization important?
 
 > It allows detections and searches to use consistent fields across different log sources.
 
-### What is ingestion latency?
+#### What is ingestion latency?
 
 > The time between an event occurring and becoming available for processing or search in the SIEM.
 
-### What is log loss?
+#### What is log loss?
 
 > Events generated by a source but not successfully delivered or retained by the SIEM pipeline.
 
-### What causes parsing failures?
+#### What causes parsing failures?
 
 > Format changes, malformed logs, incorrect parser logic, schema changes, and configuration errors.
 
-### What is buffering?
+#### What is buffering?
 
 > Temporarily storing events during transport or processing to absorb bursts or temporary downstream failures.
 
-### What is backpressure?
+#### What is backpressure?
 
 > A condition where incoming data arrives faster than downstream systems can process it.
 
-### What is deduplication?
+#### What is deduplication?
 
 > Identifying and removing or suppressing duplicate copies of the same event.
 
-### Why is time synchronization important?
+#### Why is time synchronization important?
 
 > It allows accurate event correlation and incident timeline reconstruction.
 
-### What is schema evolution?
+#### What is schema evolution?
 
 > Changes to the structure or fields of telemetry over time.
 
-### Why should parsers be versioned?
+#### Why should parsers be versioned?
 
 > To safely manage format changes and allow controlled testing and rollback.
 
 ---
 
-# 105. Quick Revision
+## 105. Quick Revision
 
 ```text
 COLLECTION
@@ -2869,7 +2869,7 @@ SCHEMA
 
 ---
 
-# 106. Golden Rules
+## 106. Golden Rules
 
 ```text
 1. Raw logs are not automatically analysis-ready.
@@ -2915,7 +2915,7 @@ SCHEMA
 
 ---
 
-# 107. Chapter Summary
+## 107. Chapter Summary
 
 The key transformation is:
 

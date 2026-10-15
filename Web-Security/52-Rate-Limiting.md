@@ -1,12 +1,12 @@
 # 52-Rate-Limiting.md
 
-# Part 1 — Introduction to Rate Limiting, Traffic Control, Request Management, and Enterprise Protection
+## Part 1 — Introduction to Rate Limiting, Traffic Control, Request Management, and Enterprise Protection
 
 > **"Rate Limiting is a defensive security and availability control that restricts how many requests a client can make within a defined period of time. It helps protect applications, APIs, and services from excessive usage while maintaining fairness, availability, and operational stability."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Rate Limiting?
+## What is Rate Limiting?
 
 Rate Limiting is a mechanism that controls the number of requests accepted from a client during a defined time interval.
 
@@ -48,7 +48,7 @@ The goal is to maintain application availability, fairness, and predictable reso
 
 ---
 
-# Why Organizations Use Rate Limiting
+## Why Organizations Use Rate Limiting
 
 Modern applications receive traffic from many different sources.
 
@@ -64,7 +64,7 @@ Organizations implement rate limiting to:
 
 ---
 
-# Position of a Rate Limiter
+## Position of a Rate Limiter
 
 ```
 Internet
@@ -94,7 +94,7 @@ The rate limiter evaluates request frequency before requests reach backend servi
 
 ---
 
-# High-Level Request Flow
+## High-Level Request Flow
 
 ```
 Client Request
@@ -124,7 +124,7 @@ Every request is evaluated against predefined rate policies.
 
 ---
 
-# Rate Limiting Policy
+## Rate Limiting Policy
 
 Policies define how much traffic is permitted over a specified period.
 
@@ -150,7 +150,7 @@ Policies should balance user experience with service protection.
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 External Clients
@@ -168,7 +168,7 @@ Rate limiting provides an additional security and availability control at the ap
 
 ---
 
-# Types of Clients
+## Types of Clients
 
 ```
 Application Clients
@@ -192,7 +192,7 @@ Different client categories may require different rate limits.
 
 ---
 
-# Request Evaluation Workflow
+## Request Evaluation Workflow
 
 ```
 Incoming Request
@@ -218,7 +218,7 @@ Only requests satisfying organizational policies proceed to the application.
 
 ---
 
-# Rate Limiting Scope
+## Rate Limiting Scope
 
 Policies can be applied based on:
 
@@ -246,7 +246,7 @@ The exact scope depends on application architecture and business requirements.
 
 ---
 
-# Enterprise Rate Limiting Architecture
+## Enterprise Rate Limiting Architecture
 
 ```
                  Internet
@@ -290,7 +290,7 @@ Rate limiting works alongside other infrastructure components to improve stabili
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Authentication
@@ -320,7 +320,7 @@ Rate limiting strengthens—but does not replace—other security controls.
 
 ---
 
-# Responsibilities of Rate Limiting
+## Responsibilities of Rate Limiting
 
 Rate limiting commonly helps with:
 
@@ -336,7 +336,7 @@ Secure application design remains essential.
 
 ---
 
-# Components of a Rate Limiter
+## Components of a Rate Limiter
 
 ```
 Rate Limiter
@@ -362,7 +362,7 @@ Each component contributes to consistent traffic management.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking platform protects customer portals and public APIs using centralized rate limiting.
 
@@ -390,7 +390,7 @@ Traffic policies maintain predictable service availability during periods of inc
 
 ---
 
-# Benefits of Rate Limiting
+## Benefits of Rate Limiting
 
 ```
 Operational Benefits
@@ -414,7 +414,7 @@ Operational Benefits
 
 ---
 
-# Relationship with Other Security Controls
+## Relationship with Other Security Controls
 
 ```
 Network Firewall
@@ -444,7 +444,7 @@ Each control addresses different operational and security objectives.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise architecture showing where rate limiting is applied.
 2. Identify trust boundaries between external clients and backend services.
@@ -456,7 +456,7 @@ Each control addresses different operational and security objectives.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Rate Limiting?
 2. Why is rate limiting important for modern applications?
@@ -471,7 +471,7 @@ Each control addresses different operational and security objectives.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply rate limiting close to Internet-facing services.
 - Define policies according to business requirements.
@@ -484,7 +484,7 @@ Each control addresses different operational and security objectives.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Applying identical limits to every client regardless of usage patterns.
 - Treating rate limiting as a replacement for authentication or authorization.
@@ -496,7 +496,7 @@ Each control addresses different operational and security objectives.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Rate Limiting is a defensive control that regulates request frequency.
 - It improves availability, fairness, and operational stability.
@@ -504,15 +504,15 @@ Each control addresses different operational and security objectives.
 - Enterprise deployments rely on centralized policies, monitoring, and governance.
 - Continuous review and operational visibility improve long-term effectiveness.
 
-# 52-Rate-Limiting.md
+## 52-Rate-Limiting.md
 
-# Part 2 — Rate Limiting Algorithms, Policy Design, Request Lifecycle, Logging, Monitoring, and Enterprise Operations
+## Part 2 — Rate Limiting Algorithms, Policy Design, Request Lifecycle, Logging, Monitoring, and Enterprise Operations
 
 > **"Effective rate limiting is achieved through well-designed policies, reliable request counting, continuous monitoring, and operational governance that balances service availability with user experience."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -529,7 +529,7 @@ After completing this part, you will understand:
 
 ---
 
-# Request Processing Pipeline
+## Request Processing Pipeline
 
 Every request should follow a structured evaluation process.
 
@@ -565,7 +565,7 @@ This pipeline ensures that every request is processed consistently.
 
 ---
 
-# Request Lifecycle
+## Request Lifecycle
 
 ```
 Client
@@ -595,7 +595,7 @@ The rate limiter evaluates traffic before application resources are consumed.
 
 ---
 
-# Client Identification
+## Client Identification
 
 To apply policies correctly, the system first identifies the client.
 
@@ -621,7 +621,7 @@ The identification method depends on application architecture and authentication
 
 ---
 
-# Policy Categories
+## Policy Categories
 
 Policies may differ according to application requirements.
 
@@ -649,7 +649,7 @@ Each category allows organizations to tailor request limits to different use cas
 
 ---
 
-# Common Rate Limiting Algorithms
+## Common Rate Limiting Algorithms
 
 Several defensive algorithms are commonly used to regulate traffic.
 
@@ -673,7 +673,7 @@ Each algorithm has different trade-offs in terms of simplicity, precision, scala
 
 ---
 
-# Fixed Window (Concept)
+## Fixed Window (Concept)
 
 ```
 Time Window
@@ -700,7 +700,7 @@ Characteristics:
 
 ---
 
-# Sliding Window (Concept)
+## Sliding Window (Concept)
 
 ```
 Continuous Timeline
@@ -727,7 +727,7 @@ Characteristics:
 
 ---
 
-# Token Bucket (Concept)
+## Token Bucket (Concept)
 
 ```
 Bucket
@@ -758,7 +758,7 @@ Characteristics:
 
 ---
 
-# Leaky Bucket (Concept)
+## Leaky Bucket (Concept)
 
 ```
 Incoming Requests
@@ -784,7 +784,7 @@ Characteristics:
 
 ---
 
-# Algorithm Selection
+## Algorithm Selection
 
 ```
 Business Requirements
@@ -810,7 +810,7 @@ Organizations should choose algorithms based on operational requirements rather 
 
 ---
 
-# Policy Evaluation Workflow
+## Policy Evaluation Workflow
 
 ```
 Incoming Request
@@ -840,7 +840,7 @@ Policies should be deterministic and consistently enforced.
 
 ---
 
-# Logging
+## Logging
 
 Important rate-limiting events should be recorded.
 
@@ -868,7 +868,7 @@ Logging supports auditing, operational analysis, and troubleshooting.
 
 ---
 
-# Typical Log Events
+## Typical Log Events
 
 | Event | Purpose |
 |--------|----------|
@@ -884,7 +884,7 @@ Sensitive information should be handled according to organizational policies.
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Rate Limiter
@@ -910,7 +910,7 @@ Continuous monitoring provides insight into service health and traffic behavior.
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -925,7 +925,7 @@ Continuous monitoring provides insight into service health and traffic behavior.
 
 ---
 
-# High Availability
+## High Availability
 
 Rate limiting infrastructure should avoid single points of failure.
 
@@ -957,7 +957,7 @@ High availability improves resilience and service continuity.
 
 ---
 
-# Scalability
+## Scalability
 
 Large-scale deployments require distributed architectures.
 
@@ -985,7 +985,7 @@ Scalable architectures support increasing traffic while maintaining consistent p
 
 ---
 
-# Enterprise Operations
+## Enterprise Operations
 
 Operational teams typically manage:
 
@@ -1015,7 +1015,7 @@ Operational discipline helps maintain long-term reliability.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global video streaming platform applies centralized rate-limiting policies to customer APIs, authentication services, and content delivery endpoints.
 
@@ -1039,7 +1039,7 @@ Operations teams continuously monitor traffic trends, adjust policies during pea
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1052,7 +1052,7 @@ Operations teams continuously monitor traffic trends, adjust policies during pea
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Compare the characteristics of common rate-limiting algorithms.
 2. Design separate policies for users, APIs, and administrators.
@@ -1064,7 +1064,7 @@ Operations teams continuously monitor traffic trends, adjust policies during pea
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is client identification important for rate limiting?
 2. What is the purpose of request counters?
@@ -1079,7 +1079,7 @@ Operations teams continuously monitor traffic trends, adjust policies during pea
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Select algorithms according to business requirements.
 - Apply different policies for different client categories.
@@ -1092,7 +1092,7 @@ Operations teams continuously monitor traffic trends, adjust policies during pea
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Choosing algorithms without understanding traffic patterns.
 - Applying identical limits to all clients.
@@ -1104,7 +1104,7 @@ Operations teams continuously monitor traffic trends, adjust policies during pea
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Rate limiting depends on consistent client identification, request counting, and policy evaluation.
 - Different algorithms provide different operational characteristics.
@@ -1112,15 +1112,15 @@ Operations teams continuously monitor traffic trends, adjust policies during pea
 - High availability and scalability are critical for enterprise deployments.
 - Continuous governance and policy reviews improve long-term effectiveness.
 
-# 52-Rate-Limiting.md
+## 52-Rate-Limiting.md
 
-# Part 3 — Enterprise Governance, Threat Modeling, Secure SDLC, DevSecOps, Logging, Monitoring, and Operational Excellence
+## Part 3 — Enterprise Governance, Threat Modeling, Secure SDLC, DevSecOps, Logging, Monitoring, and Operational Excellence
 
 > **"Rate limiting becomes significantly more effective when it is integrated into secure architecture reviews, governance processes, monitoring systems, and the Secure Software Development Lifecycle (Secure SDLC)."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1137,7 +1137,7 @@ After completing this part, you will understand:
 
 ---
 
-# Reviewing Rate Limiting Architecture
+## Reviewing Rate Limiting Architecture
 
 Organizations should periodically review how rate limiting is deployed across applications.
 
@@ -1165,7 +1165,7 @@ Reviews should be performed whenever new services, APIs, or infrastructure compo
 
 ---
 
-# Rate Limiting Security Review
+## Rate Limiting Security Review
 
 A structured review should evaluate every stage of request handling.
 
@@ -1201,7 +1201,7 @@ Review areas include:
 
 ---
 
-# Protected Service Inventory
+## Protected Service Inventory
 
 Maintain an inventory of every service protected by rate limiting.
 
@@ -1231,7 +1231,7 @@ Maintaining an accurate inventory supports governance and operational planning.
 
 ---
 
-# Infrastructure Component Inventory
+## Infrastructure Component Inventory
 
 Document every infrastructure component involved in request management.
 
@@ -1261,7 +1261,7 @@ Comprehensive documentation simplifies troubleshooting and compliance.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Policies should remain consistent across environments.
 
@@ -1285,7 +1285,7 @@ Configuration drift can produce inconsistent client experiences and operational 
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling evaluates how requests move through infrastructure and identifies where rate limiting should be applied.
 
@@ -1313,7 +1313,7 @@ The objective is to ensure that traffic management aligns with business requirem
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 Security teams should periodically review:
 
@@ -1344,7 +1344,7 @@ Continuous Review
 
 ---
 
-# Policy Governance
+## Policy Governance
 
 Rate limiting policies should follow a structured governance process.
 
@@ -1376,7 +1376,7 @@ Every policy modification should be documented and traceable.
 
 ---
 
-# Policy Lifecycle
+## Policy Lifecycle
 
 ```
 Requirements
@@ -1410,7 +1410,7 @@ Policy management is an ongoing operational responsibility.
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 Rate limiting should be considered during application design and development.
 
@@ -1446,7 +1446,7 @@ Development and security teams should collaborate throughout the lifecycle.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -1480,7 +1480,7 @@ Automation improves consistency while reducing operational risk.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Organizations should regularly evaluate infrastructure capacity.
 
@@ -1508,7 +1508,7 @@ Capacity planning helps maintain reliable service during growth.
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Operationally important events should be centrally recorded.
 
@@ -1536,7 +1536,7 @@ Logs support investigations, compliance, and operational analysis.
 
 ---
 
-# Important Log Events
+## Important Log Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1553,7 +1553,7 @@ Sensitive information should never be unnecessarily logged.
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Rate Limiter
@@ -1579,7 +1579,7 @@ Monitoring enables rapid detection of abnormal traffic patterns and operational 
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1594,7 +1594,7 @@ Monitoring enables rapid detection of abnormal traffic patterns and operational 
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                   Internet
@@ -1636,7 +1636,7 @@ The rate limiter integrates with application infrastructure while supporting cen
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider protects patient portals, appointment scheduling systems, and mobile APIs using centrally managed rate-limiting infrastructure.
 
@@ -1664,7 +1664,7 @@ Operations teams continuously review traffic patterns, monitor dashboards, evalu
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Protected Service Inventory Updated
@@ -1690,7 +1690,7 @@ Operations teams continuously review traffic patterns, monitor dashboards, evalu
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1703,7 +1703,7 @@ Operations teams continuously review traffic patterns, monitor dashboards, evalu
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Document all services protected by rate limiting.
 2. Draw the complete request evaluation architecture.
@@ -1715,7 +1715,7 @@ Operations teams continuously review traffic patterns, monitor dashboards, evalu
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should organizations review rate-limiting architecture regularly?
 2. What information belongs in a protected service inventory?
@@ -1730,7 +1730,7 @@ Operations teams continuously review traffic patterns, monitor dashboards, evalu
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Review rate-limiting architecture periodically.
 - Maintain an inventory of protected services.
@@ -1744,7 +1744,7 @@ Operations teams continuously review traffic patterns, monitor dashboards, evalu
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing undocumented policy changes.
 - Ignoring traffic growth when planning capacity.
@@ -1756,7 +1756,7 @@ Operations teams continuously review traffic patterns, monitor dashboards, evalu
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise rate limiting requires governance, documentation, and continuous improvement.
 - Threat modeling helps determine where policies should be applied.
@@ -1764,15 +1764,15 @@ Operations teams continuously review traffic patterns, monitor dashboards, evalu
 - Centralized logging and monitoring improve operational visibility.
 - Capacity planning and regular reviews help maintain long-term service reliability.
 
-# 52-Rate-Limiting.md
+## 52-Rate-Limiting.md
 
-# Part 4 — Enterprise Governance, Zero Trust, Incident Response, Security Maturity, Best Practices, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, Incident Response, Security Maturity, Best Practices, and Chapter Summary
 
 > **"A mature Rate Limiting implementation is not simply a request counter—it is a governed, monitored, continuously improved enterprise control that protects service availability, supports business continuity, and complements secure application development."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1793,7 +1793,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 Rate limiting should be governed using centralized operational standards.
 
@@ -1833,7 +1833,7 @@ Governance ensures consistent implementation across applications, APIs, and infr
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Rate Limiting Governance
@@ -1863,7 +1863,7 @@ A structured governance model reduces operational risk.
 
 ---
 
-# Zero Trust and Rate Limiting
+## Zero Trust and Rate Limiting
 
 Rate limiting complements Zero Trust but does not replace authentication or authorization.
 
@@ -1895,7 +1895,7 @@ Every request should continue to be validated regardless of request frequency.
 
 ---
 
-# Layered Security Architecture
+## Layered Security Architecture
 
 ```
 Internet
@@ -1933,7 +1933,7 @@ Each layer performs a different defensive function.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Identity Verification
@@ -1967,7 +1967,7 @@ Multiple independent controls improve overall resilience.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Rate-limiting configurations should be managed using Infrastructure as Code where appropriate.
 
@@ -2001,7 +2001,7 @@ Benefits include:
 
 ---
 
-# Secure CI/CD Integration
+## Secure CI/CD Integration
 
 ```
 Developer
@@ -2035,7 +2035,7 @@ Automated validation helps reduce configuration errors before production.
 
 ---
 
-# Configuration Lifecycle
+## Configuration Lifecycle
 
 ```
 Planning
@@ -2069,7 +2069,7 @@ Configuration management should remain a continuous operational activity.
 
 ---
 
-# Documentation
+## Documentation
 
 Organizations should maintain documentation for:
 
@@ -2099,7 +2099,7 @@ Good documentation supports operational continuity and compliance.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Common governance activities include:
 
@@ -2125,7 +2125,7 @@ Compliance requirements vary according to regulatory and organizational obligati
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Operationally important activities should be recorded.
 
@@ -2153,7 +2153,7 @@ Audit logs improve accountability and simplify investigations.
 
 ---
 
-# Important Audit Events
+## Important Audit Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2170,7 +2170,7 @@ Sensitive information should never be unnecessarily stored within audit records.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2200,7 +2200,7 @@ Continuous monitoring enables proactive operational management.
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2215,7 +2215,7 @@ Continuous monitoring enables proactive operational management.
 
 ---
 
-# Enterprise Dashboard
+## Enterprise Dashboard
 
 ```
 Operations Dashboard
@@ -2243,7 +2243,7 @@ Dashboards provide centralized operational visibility.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Rate Limiter
@@ -2273,7 +2273,7 @@ SOC analysts correlate rate-limiting telemetry with authentication, endpoint, ap
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should define a structured process for operational events.
 
@@ -2309,7 +2309,7 @@ Documented procedures improve response consistency.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Operational Event
@@ -2343,7 +2343,7 @@ Root cause analysis should focus on improving processes, technology, and operati
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2373,7 +2373,7 @@ Rate-limiting policies should evolve alongside application growth and changing b
 
 ---
 
-# Rate Limiting Security Maturity Model
+## Rate Limiting Security Maturity Model
 
 ```
 Level 1
@@ -2410,7 +2410,7 @@ Higher maturity levels emphasize governance, automation, visibility, and continu
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                      Internet
@@ -2452,7 +2452,7 @@ The rate limiter provides centralized request management while integrating with 
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational e-commerce platform protects customer APIs, checkout services, and authentication systems using globally managed rate-limiting infrastructure.
 
@@ -2476,7 +2476,7 @@ Platform engineers continuously review request trends, optimize policies, monito
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Protected Service Inventory Maintained
@@ -2502,7 +2502,7 @@ Platform engineers continuously review request trends, optimize policies, monito
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2515,9 +2515,9 @@ Platform engineers continuously review request trends, optimize policies, monito
 
 ---
 
-# Rate Limiting Quick Revision
+## Rate Limiting Quick Revision
 
-## Request Flow
+### Request Flow
 
 ```
 Client
@@ -2541,7 +2541,7 @@ Response
 
 ---
 
-## Layered Protection
+### Layered Protection
 
 ```
 Identity
@@ -2565,7 +2565,7 @@ Monitoring
 
 ---
 
-## Continuous Improvement Cycle
+### Continuous Improvement Cycle
 
 ```
 Metrics
@@ -2585,7 +2585,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a rate-limiting architecture for a multi-tier application.
 2. Identify trust boundaries and policy enforcement points.
@@ -2597,7 +2597,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the primary purpose of rate limiting?
 2. How does rate limiting improve service availability?
@@ -2612,7 +2612,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Deploy rate limiting close to Internet-facing services.
 - Maintain centralized governance and standardized policies.
@@ -2626,7 +2626,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating rate limiting as a substitute for authentication.
 - Applying identical limits to all clients without considering business requirements.
@@ -2638,7 +2638,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

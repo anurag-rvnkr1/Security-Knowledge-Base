@@ -63,7 +63,7 @@ A **Persistent Volume** is a cluster-wide storage resource that exists independe
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -80,7 +80,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need Persistent Volumes?
+## Why Do We Need Persistent Volumes?
 
 Consider a database application.
 
@@ -110,7 +110,7 @@ Lost
 
 ---
 
-## Solution
+### Solution
 
 Store the data on a Persistent Volume.
 
@@ -142,7 +142,7 @@ Data Preserved
 
 ---
 
-# What is a Persistent Volume?
+## What is a Persistent Volume?
 
 A **Persistent Volume (PV)** is a storage resource managed by the Kubernetes cluster.
 
@@ -156,7 +156,7 @@ Characteristics:
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                   Kubernetes Cluster
@@ -182,7 +182,7 @@ The PV represents real storage infrastructure.
 
 ---
 
-# Persistent Storage Architecture
+## Persistent Storage Architecture
 
 ```
 Application
@@ -212,7 +212,7 @@ PVCs are covered in the next chapter.
 
 ---
 
-# Static Provisioning
+## Static Provisioning
 
 Originally, storage administrators created Persistent Volumes manually.
 
@@ -238,7 +238,7 @@ Static Provisioning
 
 ---
 
-# Persistent Volume Lifecycle
+## Persistent Volume Lifecycle
 
 ```
 Create
@@ -264,9 +264,9 @@ Each state represents a different phase of the PV lifecycle.
 
 ---
 
-# Lifecycle States
+## Lifecycle States
 
-### Available
+#### Available
 
 ```
 PV
@@ -280,7 +280,7 @@ No claim is using it.
 
 ---
 
-### Bound
+#### Bound
 
 ```
 PVC
@@ -298,7 +298,7 @@ The storage is reserved for one claim.
 
 ---
 
-### Released
+#### Released
 
 ```
 PVC Deleted
@@ -312,13 +312,13 @@ The data may still exist depending on the reclaim policy.
 
 ---
 
-### Failed
+#### Failed
 
 The PV encountered an error or cannot be reclaimed successfully.
 
 ---
 
-# Persistent Volume YAML
+## Persistent Volume YAML
 
 ```yaml
 apiVersion: v1
@@ -348,7 +348,7 @@ spec:
 
 ---
 
-# YAML Breakdown
+## YAML Breakdown
 
 ```
 capacity
@@ -396,7 +396,7 @@ In production, cloud or network storage is generally preferred.
 
 ---
 
-# Storage Capacity
+## Storage Capacity
 
 Example:
 
@@ -428,11 +428,11 @@ Capacity represents the maximum storage available through the PV.
 
 ---
 
-# Access Modes
+## Access Modes
 
 Kubernetes defines how a volume may be mounted.
 
-### ReadWriteOnce (RWO)
+#### ReadWriteOnce (RWO)
 
 ```
 One Node
@@ -446,7 +446,7 @@ Most block storage systems use this mode.
 
 ---
 
-### ReadOnlyMany (ROX)
+#### ReadOnlyMany (ROX)
 
 ```
 Many Nodes
@@ -460,7 +460,7 @@ Suitable for shared read-only content.
 
 ---
 
-### ReadWriteMany (RWX)
+#### ReadWriteMany (RWX)
 
 ```
 Many Nodes
@@ -474,7 +474,7 @@ Typically provided by shared filesystems such as NFS, CephFS, or Azure Files.
 
 ---
 
-### ReadWriteOncePod (RWOP)
+#### ReadWriteOncePod (RWOP)
 
 ```
 One Pod
@@ -490,7 +490,7 @@ Useful for preventing accidental concurrent writers.
 
 ---
 
-# Access Mode Comparison
+## Access Mode Comparison
 
 | Mode | Nodes | Read | Write |
 |------|-------|------|-------|
@@ -503,7 +503,7 @@ Useful for preventing accidental concurrent writers.
 
 ---
 
-# Storage Backend Examples
+## Storage Backend Examples
 
 A PV can represent storage from many providers.
 
@@ -547,7 +547,7 @@ Fibre Channel
 
 ---
 
-# hostPath Example
+## hostPath Example
 
 ```
 Worker Node
@@ -571,7 +571,7 @@ Not recommended for highly available production workloads.
 
 ---
 
-# NFS Example
+## NFS Example
 
 ```
 Multiple Nodes
@@ -593,7 +593,7 @@ ReadWriteMany
 
 ---
 
-# Cloud Storage Example
+## Cloud Storage Example
 
 ```
 AWS EBS
@@ -611,7 +611,7 @@ Cloud providers often create PVs dynamically through Storage Classes.
 
 ---
 
-# Reclaim Policies
+## Reclaim Policies
 
 A reclaim policy determines what happens when the PVC is deleted.
 
@@ -619,7 +619,7 @@ Three options exist.
 
 ---
 
-## Retain
+### Retain
 
 ```
 PVC Deleted
@@ -639,7 +639,7 @@ Suitable for critical data.
 
 ---
 
-## Delete
+### Delete
 
 ```
 PVC Deleted
@@ -657,7 +657,7 @@ Commonly used with dynamically provisioned cloud storage.
 
 ---
 
-## Recycle (Deprecated)
+### Recycle (Deprecated)
 
 Previously:
 
@@ -673,7 +673,7 @@ This policy has been deprecated and should not be used.
 
 ---
 
-# Volume Binding
+## Volume Binding
 
 Workflow:
 
@@ -693,7 +693,7 @@ Binding occurs automatically when requirements match.
 
 ---
 
-# Matching Criteria
+## Matching Criteria
 
 A PVC matches a PV based on factors such as:
 
@@ -704,7 +704,7 @@ A PVC matches a PV based on factors such as:
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Pod
@@ -726,7 +726,7 @@ Pods never interact with physical storage directly.
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 Production database:
 
@@ -758,7 +758,7 @@ Still Exists
 
 ---
 
-# View Persistent Volumes
+## View Persistent Volumes
 
 ```bash
 kubectl get pv
@@ -778,7 +778,7 @@ STATUS
 
 ---
 
-# Describe Persistent Volume
+## Describe Persistent Volume
 
 ```bash
 kubectl describe pv app-pv
@@ -794,7 +794,7 @@ Observe:
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -822,7 +822,7 @@ kubectl delete pv app-pv
 
 ---
 
-# Persistent Volume Architecture Summary
+## Persistent Volume Architecture Summary
 
 ```
 Application
@@ -846,9 +846,9 @@ Physical Storage
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Persistent Volumes for Important Data
+#### 1. Use Persistent Volumes for Important Data
 
 Examples:
 
@@ -859,25 +859,25 @@ Examples:
 
 ---
 
-### 2. Prefer Dynamic Provisioning
+#### 2. Prefer Dynamic Provisioning
 
 Manual PV creation is useful for learning but dynamic provisioning is preferred in production.
 
 ---
 
-### 3. Choose the Correct Access Mode
+#### 3. Choose the Correct Access Mode
 
 Match the application's sharing requirements to the storage backend.
 
 ---
 
-### 4. Use `Retain` for Critical Data
+#### 4. Use `Retain` for Critical Data
 
 Prevent accidental deletion of valuable information.
 
 ---
 
-### 5. Monitor Storage Capacity
+#### 5. Monitor Storage Capacity
 
 Track:
 
@@ -887,7 +887,7 @@ Track:
 
 ---
 
-# Hands-on Lab 1 – Create a Persistent Volume
+## Hands-on Lab 1 – Create a Persistent Volume
 
 Create:
 
@@ -905,7 +905,7 @@ kubectl get pv
 
 ---
 
-# Hands-on Lab 2 – Describe the PV
+## Hands-on Lab 2 – Describe the PV
 
 ```bash
 kubectl describe pv app-pv
@@ -920,7 +920,7 @@ Observe:
 
 ---
 
-# Hands-on Lab 3 – Compare Reclaim Policies
+## Hands-on Lab 3 – Compare Reclaim Policies
 
 Create test PVs using:
 
@@ -931,7 +931,7 @@ Observe behavior after deleting the associated PVC (covered in the next chapter)
 
 ---
 
-# Hands-on Lab 4 – Create Multiple PVs
+## Hands-on Lab 4 – Create Multiple PVs
 
 Create:
 
@@ -943,15 +943,15 @@ Compare capacities and binding behavior.
 
 ---
 
-# Hands-on Lab 5 – Observe Lifecycle
+## Hands-on Lab 5 – Observe Lifecycle
 
 Watch the PV status change as PVCs are created and deleted in later chapters.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Confusing PV with a Volume
+### 1. Confusing PV with a Volume
 
 A regular Volume is Pod-scoped.
 
@@ -959,7 +959,7 @@ A Persistent Volume is cluster-scoped.
 
 ---
 
-## 2. Mounting a PV Directly into a Pod
+### 2. Mounting a PV Directly into a Pod
 
 Incorrect:
 
@@ -987,13 +987,13 @@ Persistent Volume
 
 ---
 
-## 3. Using `hostPath` for Production Databases
+### 3. Using `hostPath` for Production Databases
 
 `hostPath` ties storage to a single Node and lacks high availability.
 
 ---
 
-## 4. Choosing the Wrong Access Mode
+### 4. Choosing the Wrong Access Mode
 
 Example:
 
@@ -1013,15 +1013,15 @@ The claim cannot bind.
 
 ---
 
-## 5. Using `Delete` for Critical Data
+### 5. Using `Delete` for Critical Data
 
 Deleting the PVC may also remove the underlying storage, depending on the backend and reclaim policy.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Storage Flow
+### Storage Flow
 
 ```
 Application
@@ -1045,7 +1045,7 @@ Storage
 
 ---
 
-## Lifecycle
+### Lifecycle
 
 ```
 Available
@@ -1065,7 +1065,7 @@ Reclaimed
 
 ---
 
-## Reclaim Policies
+### Reclaim Policies
 
 ```
 Retain
@@ -1077,7 +1077,7 @@ Recycle (Deprecated)
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View PVs:
 
@@ -1105,9 +1105,9 @@ kubectl get pv <pv-name> -o yaml
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a Persistent Volume?
 - Why do we need a PV?
@@ -1115,7 +1115,7 @@ kubectl get pv <pv-name> -o yaml
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - Explain the lifecycle of a Persistent Volume.
 - What are the available access modes?
@@ -1123,7 +1123,7 @@ kubectl get pv <pv-name> -o yaml
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the complete storage architecture from Pod to storage backend.
 - Compare static and dynamic provisioning.
@@ -1133,9 +1133,9 @@ kubectl get pv <pv-name> -o yaml
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Persistent Volumes
 - Storage Concepts
@@ -1144,7 +1144,7 @@ kubectl get pv <pv-name> -o yaml
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Storage
 - SIG Storage
@@ -1153,7 +1153,7 @@ kubectl get pv <pv-name> -o yaml
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - Kubernetes Storage Best Practices
 - CIS Kubernetes Benchmark
@@ -1161,7 +1161,7 @@ kubectl get pv <pv-name> -o yaml
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create multiple Persistent Volumes with different capacities.
 2. Experiment with different access modes.
@@ -1171,7 +1171,7 @@ kubectl get pv <pv-name> -o yaml
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Application
@@ -1197,7 +1197,7 @@ A **Persistent Volume (PV)** is a cluster-managed storage resource that provides
 
 ---
 
-## Next Chapter
+### Next Chapter
 
 **Chapter 32 – Persistent Volume Claims (PVC)**
 

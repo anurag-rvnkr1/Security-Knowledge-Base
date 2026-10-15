@@ -1,10 +1,10 @@
 # 01 - Networking Fundamentals
 
-# Part 1 — Introduction to Computer Networks
+## Part 1 — Introduction to Computer Networks
 
 ---
 
-# Overview
+## Overview
 
 Computer networking is the foundation of modern computing.
 
@@ -27,7 +27,7 @@ Understanding networking is the first step toward becoming a cybersecurity profe
 
 ---
 
-# What is a Computer Network?
+## What is a Computer Network?
 
 A **computer network** is a collection of interconnected devices that communicate with each other to exchange information and share resources.
 
@@ -68,7 +68,7 @@ Every device connected to the network can communicate using standardized network
 
 ---
 
-# Why Do We Need Computer Networks?
+## Why Do We Need Computer Networks?
 
 Before networking, computers worked independently.
 
@@ -85,9 +85,9 @@ Networking solves these problems by enabling communication and resource sharing.
 
 ---
 
-# Benefits of Networking
+## Benefits of Networking
 
-## Resource Sharing
+### Resource Sharing
 
 Multiple users can share:
 
@@ -116,7 +116,7 @@ Shared File Server
 
 ---
 
-## Communication
+### Communication
 
 Networks enable:
 
@@ -130,7 +130,7 @@ Examples include enterprise communication tools and conferencing platforms.
 
 ---
 
-## Centralized Management
+### Centralized Management
 
 Organizations can centrally manage:
 
@@ -145,7 +145,7 @@ This simplifies administration and improves consistency.
 
 ---
 
-## Scalability
+### Scalability
 
 Networks can grow over time.
 
@@ -173,7 +173,7 @@ Well-designed networks support expansion with minimal disruption.
 
 ---
 
-## High Availability
+### High Availability
 
 Enterprise networks often include redundancy.
 
@@ -205,7 +205,7 @@ If one path fails, another may continue providing connectivity.
 
 ---
 
-## Security
+### Security
 
 Networking enables centralized security controls such as:
 
@@ -218,47 +218,47 @@ Networking enables centralized security controls such as:
 
 ---
 
-# Characteristics of a Good Network
+## Characteristics of a Good Network
 
 A well-designed network should provide:
 
-### Reliability
+#### Reliability
 
 The network should remain operational under normal conditions and recover gracefully from failures.
 
 ---
 
-### Availability
+#### Availability
 
 Users should be able to access required services whenever authorized.
 
 ---
 
-### Scalability
+#### Scalability
 
 The network should accommodate growth without major redesign.
 
 ---
 
-### Performance
+#### Performance
 
 Applications should receive sufficient bandwidth with acceptable latency.
 
 ---
 
-### Security
+#### Security
 
 Only authorized users and systems should access protected resources.
 
 ---
 
-### Manageability
+#### Manageability
 
 Administrators should be able to monitor, configure, and troubleshoot the network efficiently.
 
 ---
 
-# Components of a Network
+## Components of a Network
 
 Every network consists of three primary elements.
 
@@ -276,7 +276,7 @@ Protocols
 
 ---
 
-## Devices
+### Devices
 
 Examples include:
 
@@ -292,16 +292,16 @@ These devices generate, forward, process, or secure network traffic.
 
 ---
 
-## Communication Media
+### Communication Media
 
 Data travels over transmission media such as:
 
-### Wired
+#### Wired
 
 - Ethernet (Copper)
 - Fiber Optic
 
-### Wireless
+#### Wireless
 
 - Wi-Fi
 - Cellular Networks
@@ -310,7 +310,7 @@ Data travels over transmission media such as:
 
 ---
 
-## Protocols
+### Protocols
 
 Protocols define how devices communicate.
 
@@ -330,7 +330,7 @@ Without protocols, devices would not understand each other.
 
 ---
 
-# Network Communication Process
+## Network Communication Process
 
 A simplified communication sequence:
 
@@ -370,7 +370,7 @@ This layered approach ensures interoperability across different vendors and tech
 
 ---
 
-# Data Transmission
+## Data Transmission
 
 When data is sent across a network, it is divided into manageable units before transmission.
 
@@ -398,9 +398,9 @@ Segmenting data improves efficiency, reliability, and error handling.
 
 ---
 
-# Types of Data Transmission
+## Types of Data Transmission
 
-## Unicast
+### Unicast
 
 One sender communicates with one receiver.
 
@@ -418,7 +418,7 @@ Example:
 
 ---
 
-## Broadcast
+### Broadcast
 
 One sender communicates with every device within the broadcast domain.
 
@@ -434,7 +434,7 @@ Common in local network discovery processes.
 
 ---
 
-## Multicast
+### Multicast
 
 One sender communicates with a selected group of receivers.
 
@@ -452,13 +452,13 @@ Used for applications such as streaming and conferencing.
 
 ---
 
-# Network Performance Metrics
+## Network Performance Metrics
 
 Understanding network performance is essential for troubleshooting and optimization.
 
 ---
 
-## Bandwidth
+### Bandwidth
 
 Bandwidth is the maximum amount of data that can be transmitted over a connection in a given period.
 
@@ -473,7 +473,7 @@ Higher bandwidth allows more data to be transferred simultaneously.
 
 ---
 
-## Throughput
+### Throughput
 
 Throughput is the actual amount of useful data successfully transmitted over the network.
 
@@ -481,7 +481,7 @@ Throughput is often lower than theoretical bandwidth due to protocol overhead, c
 
 ---
 
-## Latency
+### Latency
 
 Latency is the time taken for data to travel from source to destination.
 
@@ -496,7 +496,7 @@ Examples of latency-sensitive applications:
 
 ---
 
-## Jitter
+### Jitter
 
 Jitter is the variation in packet arrival times.
 
@@ -508,7 +508,7 @@ High jitter can negatively affect:
 
 ---
 
-## Packet Loss
+### Packet Loss
 
 Packet loss occurs when transmitted packets fail to reach their destination.
 
@@ -523,7 +523,7 @@ Excessive packet loss degrades application performance.
 
 ---
 
-# Enterprise Network Example
+## Enterprise Network Example
 
 ```
                      Internet
@@ -551,7 +551,7 @@ This simplified architecture illustrates how users, infrastructure, and security
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable networking enables organizations to:
 
@@ -572,7 +572,7 @@ Conversely, network outages can lead to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A computer network enables devices to communicate and share resources.
 - Networking underpins nearly all modern IT systems and cybersecurity operations.
@@ -580,13 +580,13 @@ Conversely, network outages can lead to:
 - Understanding bandwidth, throughput, latency, jitter, and packet loss is essential for evaluating network performance.
 - A well-designed network emphasizes reliability, scalability, security, and manageability.
 
-# 01 - Networking Fundamentals
+## 01 - Networking Fundamentals
 
-# Part 2 — Network Types and Network Topologies
+## Part 2 — Network Types and Network Topologies
 
 ---
 
-# Overview
+## Overview
 
 Computer networks vary in size, purpose, ownership, and geographical coverage.
 
@@ -604,7 +604,7 @@ This chapter introduces the most common network classifications and physical/log
 
 ---
 
-# Network Classification
+## Network Classification
 
 Networks are commonly classified based on:
 
@@ -641,9 +641,9 @@ Computer Networks
 
 ---
 
-# Personal Area Network (PAN)
+## Personal Area Network (PAN)
 
-## Overview
+### Overview
 
 A Personal Area Network (PAN) connects devices within the immediate vicinity of an individual, typically within a few meters.
 
@@ -661,20 +661,20 @@ Examples include:
  Earbuds  Watch  Laptop
 ```
 
-### Technologies
+#### Technologies
 
 - Bluetooth
 - NFC
 - Infrared
 - USB
 
-### Advantages
+#### Advantages
 
 - Low cost
 - Easy setup
 - Low power consumption
 
-### Limitations
+#### Limitations
 
 - Short range
 - Limited bandwidth
@@ -682,9 +682,9 @@ Examples include:
 
 ---
 
-# Local Area Network (LAN)
+## Local Area Network (LAN)
 
-## Overview
+### Overview
 
 A LAN connects devices within a limited geographic area such as:
 
@@ -710,7 +710,7 @@ LANs typically offer:
 - Low latency
 - Centralized management
 
-### Common Technologies
+#### Common Technologies
 
 - Ethernet
 - Fiber
@@ -718,7 +718,7 @@ LANs typically offer:
 
 ---
 
-# Wireless Local Area Network (WLAN)
+## Wireless Local Area Network (WLAN)
 
 A WLAN is a LAN that uses wireless communication.
 
@@ -744,7 +744,7 @@ Challenges:
 
 ---
 
-# Campus Area Network (CAN)
+## Campus Area Network (CAN)
 
 A Campus Area Network interconnects multiple LANs across a campus or organization.
 
@@ -774,7 +774,7 @@ A CAN provides centralized connectivity while remaining under the control of a s
 
 ---
 
-# Metropolitan Area Network (MAN)
+## Metropolitan Area Network (MAN)
 
 A MAN connects networks across a city or metropolitan region.
 
@@ -802,9 +802,9 @@ Metro Fiber Network
 
 ---
 
-# Wide Area Network (WAN)
+## Wide Area Network (WAN)
 
-## Overview
+### Overview
 
 A WAN spans large geographic areas.
 
@@ -834,7 +834,7 @@ WANs commonly use leased lines, MPLS, SD-WAN, VPNs, or Internet-based connectivi
 
 ---
 
-# Global Area Network (GAN)
+## Global Area Network (GAN)
 
 A GAN interconnects networks across multiple countries or continents.
 
@@ -864,7 +864,7 @@ Modern cloud platforms effectively operate global-scale networks.
 
 ---
 
-# Storage Area Network (SAN)
+## Storage Area Network (SAN)
 
 A SAN is a dedicated high-speed network for storage communication.
 
@@ -889,7 +889,7 @@ Benefits:
 
 ---
 
-# Virtual Private Network (VPN)
+## Virtual Private Network (VPN)
 
 A VPN creates an encrypted tunnel over an untrusted network.
 
@@ -913,9 +913,9 @@ VPNs enable secure remote access to enterprise resources.
 
 ---
 
-# Client-Server Architecture
+## Client-Server Architecture
 
-## Overview
+### Overview
 
 Most enterprise applications use the client-server model.
 
@@ -938,21 +938,21 @@ Examples:
 - Enterprise applications
 - Email servers
 
-### Advantages
+#### Advantages
 
 - Centralized control
 - Easier security management
 - Better scalability
 - Simplified backups
 
-### Disadvantages
+#### Disadvantages
 
 - Server failure affects multiple users
 - Higher infrastructure costs
 
 ---
 
-# Peer-to-Peer (P2P)
+## Peer-to-Peer (P2P)
 
 In a peer-to-peer network, every device can function as both a client and a server.
 
@@ -980,9 +980,9 @@ Disadvantages:
 
 ---
 
-# Physical vs Logical Topology
+## Physical vs Logical Topology
 
-## Physical Topology
+### Physical Topology
 
 Describes how devices are physically connected.
 
@@ -1002,7 +1002,7 @@ Focus:
 
 ---
 
-## Logical Topology
+### Logical Topology
 
 Describes how data flows through the network regardless of physical layout.
 
@@ -1026,13 +1026,13 @@ Logical and physical topologies may differ in modern switched networks.
 
 ---
 
-# Network Topologies
+## Network Topologies
 
 A topology defines how network devices are interconnected.
 
 ---
 
-# Bus Topology
+## Bus Topology
 
 ```
 PC──PC──PC──PC──PC
@@ -1040,13 +1040,13 @@ PC──PC──PC──PC──PC
 
 All devices share a single communication cable.
 
-### Advantages
+#### Advantages
 
 - Simple
 - Low cost
 - Minimal cabling
 
-### Disadvantages
+#### Disadvantages
 
 - Single cable failure affects the entire network
 - Difficult troubleshooting
@@ -1057,7 +1057,7 @@ This topology is rarely used in modern enterprise environments.
 
 ---
 
-# Star Topology
+## Star Topology
 
 ```
          Switch
@@ -1067,14 +1067,14 @@ This topology is rarely used in modern enterprise environments.
 
 Every device connects to a central switch.
 
-### Advantages
+#### Advantages
 
 - Easy troubleshooting
 - High performance
 - Simple expansion
 - Failure isolation
 
-### Disadvantages
+#### Disadvantages
 
 - Central switch is a single point of failure unless redundancy is implemented.
 
@@ -1082,7 +1082,7 @@ Star topology is the most common LAN design today.
 
 ---
 
-# Ring Topology
+## Ring Topology
 
 ```
 PC1 ─ PC2
@@ -1104,7 +1104,7 @@ Ring topologies are uncommon in modern Ethernet networks but have historical sig
 
 ---
 
-# Mesh Topology
+## Mesh Topology
 
 Every device has multiple communication paths.
 
@@ -1131,7 +1131,7 @@ Mesh concepts are widely used in data centers and wireless networking.
 
 ---
 
-# Tree Topology
+## Tree Topology
 
 ```
           Core
@@ -1153,7 +1153,7 @@ Tree topology is common in campus and enterprise environments.
 
 ---
 
-# Hybrid Topology
+## Hybrid Topology
 
 Most enterprise networks combine multiple topologies.
 
@@ -1175,7 +1175,7 @@ Hybrid networks provide flexibility and scalability.
 
 ---
 
-# Enterprise Three-Tier Architecture
+## Enterprise Three-Tier Architecture
 
 Traditional enterprise campus networks commonly use three layers.
 
@@ -1191,20 +1191,20 @@ Traditional enterprise campus networks commonly use three layers.
  End Devices   End Devices
 ```
 
-### Core Layer
+#### Core Layer
 
 - High-speed backbone
 - Fast packet forwarding
 - High availability
 
-### Distribution Layer
+#### Distribution Layer
 
 - Policy enforcement
 - Routing
 - Access control
 - Traffic aggregation
 
-### Access Layer
+#### Access Layer
 
 - User connectivity
 - Device authentication
@@ -1213,7 +1213,7 @@ Traditional enterprise campus networks commonly use three layers.
 
 ---
 
-# Spine-Leaf Architecture
+## Spine-Leaf Architecture
 
 Modern data centers commonly use Spine-Leaf designs.
 
@@ -1240,7 +1240,7 @@ Spine-Leaf architectures are widely used in cloud environments.
 
 ---
 
-# Comparison of Network Types
+## Comparison of Network Types
 
 | Network | Coverage | Typical Use |
 |----------|----------|-------------|
@@ -1255,7 +1255,7 @@ Spine-Leaf architectures are widely used in cloud environments.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Selecting the appropriate network type and topology affects:
 
@@ -1270,7 +1270,7 @@ Poor design can result in bottlenecks, outages, and increased operational risk.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Networks are classified by geographic scope, architecture, and topology.
 - LANs and WLANs dominate local environments, while WANs connect geographically dispersed sites.
@@ -1279,13 +1279,13 @@ Poor design can result in bottlenecks, outages, and increased operational risk.
 - Tree and Spine-Leaf architectures support scalable enterprise and data center deployments.
 - Choosing the correct topology requires balancing performance, resilience, cost, and manageability.
 
-# 01 - Networking Fundamentals
+## 01 - Networking Fundamentals
 
-# Part 3 — Network Communication, Data Transmission, and Network Models
+## Part 3 — Network Communication, Data Transmission, and Network Models
 
 ---
 
-# Overview
+## Overview
 
 A network exists to transfer information between devices.
 
@@ -1314,9 +1314,9 @@ This chapter explains how devices communicate, how data is transmitted, and how 
 
 ---
 
-# Network Communication
+## Network Communication
 
-## What is Network Communication?
+### What is Network Communication?
 
 Network communication is the process of exchanging information between two or more devices using agreed-upon communication protocols.
 
@@ -1346,7 +1346,7 @@ Every communication consists of:
 
 ---
 
-# Communication Components
+## Communication Components
 
 ```
 Application
@@ -1376,15 +1376,15 @@ Each component has a specific responsibility to ensure reliable communication.
 
 ---
 
-# Types of Communication
+## Types of Communication
 
 Network communication can occur in different directions depending on how data flows.
 
 ---
 
-# Simplex Communication
+## Simplex Communication
 
-## Overview
+### Overview
 
 Data travels in only **one direction**.
 
@@ -1398,28 +1398,28 @@ Receiver
 
 The receiver cannot send information back.
 
-### Examples
+#### Examples
 
 - Television broadcasting
 - Radio broadcasting
 - Digital signage
 - GPS satellites transmitting position data
 
-### Advantages
+#### Advantages
 
 - Simple implementation
 - Low overhead
 
-### Limitations
+#### Limitations
 
 - No acknowledgment
 - No two-way communication
 
 ---
 
-# Half-Duplex Communication
+## Half-Duplex Communication
 
-## Overview
+### Overview
 
 Data can travel in **both directions**, but **only one direction at a time**.
 
@@ -1435,25 +1435,25 @@ Computer B
 (Not simultaneously)
 ```
 
-### Examples
+#### Examples
 
 - Walkie-talkies
 - Two-way radio systems
 
-### Advantages
+#### Advantages
 
 - Bidirectional communication
 - Lower cost than full-duplex
 
-### Disadvantages
+#### Disadvantages
 
 - Devices must wait for the medium to become available before transmitting.
 
 ---
 
-# Full-Duplex Communication
+## Full-Duplex Communication
 
-## Overview
+### Overview
 
 Data flows simultaneously in both directions.
 
@@ -1467,14 +1467,14 @@ Computer A
 Computer B
 ```
 
-### Examples
+#### Examples
 
 - Modern Ethernet
 - Telephone calls
 - Video conferencing
 - SSH sessions
 
-### Advantages
+#### Advantages
 
 - Higher throughput
 - Lower latency
@@ -1484,7 +1484,7 @@ Modern switched Ethernet networks typically operate in full-duplex mode.
 
 ---
 
-# Communication Comparison
+## Communication Comparison
 
 | Mode | Direction | Simultaneous? | Example |
 |------|-----------|---------------|---------|
@@ -1494,9 +1494,9 @@ Modern switched Ethernet networks typically operate in full-duplex mode.
 
 ---
 
-# Data Transmission
+## Data Transmission
 
-## Overview
+### Overview
 
 Data transmission is the process of sending information from one device to another over a communication medium.
 
@@ -1521,7 +1521,7 @@ The medium may be:
 
 ---
 
-# Analog Transmission
+## Analog Transmission
 
 Analog transmission represents information using continuously varying signals.
 
@@ -1539,7 +1539,7 @@ Characteristics:
 
 ---
 
-# Digital Transmission
+## Digital Transmission
 
 Digital transmission represents information using discrete binary values.
 
@@ -1556,7 +1556,7 @@ Characteristics:
 
 ---
 
-# Analog vs Digital
+## Analog vs Digital
 
 | Analog | Digital |
 |----------|----------|
@@ -1567,9 +1567,9 @@ Characteristics:
 
 ---
 
-# Serial Communication
+## Serial Communication
 
-## Overview
+### Overview
 
 Bits are transmitted **one after another**.
 
@@ -1587,9 +1587,9 @@ Most modern networking technologies use serial transmission.
 
 ---
 
-# Parallel Communication
+## Parallel Communication
 
-## Overview
+### Overview
 
 Multiple bits are transmitted simultaneously.
 
@@ -1614,7 +1614,7 @@ Parallel communication is generally used inside computers rather than across net
 
 ---
 
-# Baseband Transmission
+## Baseband Transmission
 
 Baseband uses the entire communication channel for a single signal.
 
@@ -1637,7 +1637,7 @@ Advantages:
 
 ---
 
-# Broadband Transmission
+## Broadband Transmission
 
 Broadband allows multiple signals to share the same transmission medium simultaneously.
 
@@ -1659,13 +1659,13 @@ Examples:
 
 ---
 
-# Switching Techniques
+## Switching Techniques
 
 Networks use switching techniques to transfer data between devices.
 
 ---
 
-# Circuit Switching
+## Circuit Switching
 
 A dedicated communication path is established before data transmission begins.
 
@@ -1691,7 +1691,7 @@ Traditional telephone systems used circuit switching.
 
 ---
 
-# Packet Switching
+## Packet Switching
 
 Modern computer networks use packet switching.
 
@@ -1729,7 +1729,7 @@ The Internet primarily uses packet switching.
 
 ---
 
-# Packet Structure
+## Packet Structure
 
 A packet generally contains:
 
@@ -1743,7 +1743,7 @@ A packet generally contains:
 +------------------+
 ```
 
-### Header
+#### Header
 
 Contains control information such as:
 
@@ -1752,17 +1752,17 @@ Contains control information such as:
 - Protocol information
 - Sequence numbers
 
-### Payload
+#### Payload
 
 The actual user data being transmitted.
 
-### Trailer
+#### Trailer
 
 May contain error detection information depending on the protocol.
 
 ---
 
-# Encapsulation
+## Encapsulation
 
 Before data is transmitted, each networking layer adds its own information.
 
@@ -1790,7 +1790,7 @@ Each layer encapsulates the data from the layer above.
 
 ---
 
-# Decapsulation
+## Decapsulation
 
 At the receiving device, the process is reversed.
 
@@ -1822,7 +1822,7 @@ Each layer removes and processes its corresponding header before passing the rem
 
 ---
 
-# Data Units
+## Data Units
 
 Different networking layers use different names for transmitted data.
 
@@ -1838,7 +1838,7 @@ Understanding these terms is essential for troubleshooting and protocol analysis
 
 ---
 
-# Enterprise Communication Example
+## Enterprise Communication Example
 
 Consider an employee accessing an internal web application.
 
@@ -1883,7 +1883,7 @@ At each stage:
 
 ---
 
-# Introduction to Network Models
+## Introduction to Network Models
 
 To ensure interoperability between different vendors and technologies, networking follows standardized communication models.
 
@@ -1913,7 +1913,7 @@ The next chapters explore both models in detail.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Understanding communication principles enables organizations to:
 
@@ -1927,7 +1927,7 @@ Without standardized communication methods, devices from different manufacturers
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Network communication enables devices to exchange information using standardized protocols.
 - Simplex, half-duplex, and full-duplex define the direction and simultaneity of data flow.
@@ -1937,13 +1937,13 @@ Without standardized communication methods, devices from different manufacturers
 - The OSI and TCP/IP models provide structured approaches to designing, implementing, and troubleshooting computer networks.
 
 
-# 01 - Networking Fundamentals
+## 01 - Networking Fundamentals
 
-# Part 4 — Network Performance, Reliability, Enterprise Best Practices, Practical Lab, and Interview Preparation
+## Part 4 — Network Performance, Reliability, Enterprise Best Practices, Practical Lab, and Interview Preparation
 
 ---
 
-# Overview
+## Overview
 
 A network is considered successful not only because it connects devices, but because it delivers **fast, reliable, secure, and predictable communication**.
 
@@ -1961,7 +1961,7 @@ Even small performance issues can affect thousands of users and business operati
 
 ---
 
-# Network Performance
+## Network Performance
 
 Network performance measures how efficiently data travels between devices.
 
@@ -1976,9 +1976,9 @@ The most common performance metrics include:
 
 ---
 
-# Bandwidth
+## Bandwidth
 
-## Overview
+### Overview
 
 Bandwidth is the **maximum theoretical amount of data** that can be transmitted over a network connection in a given period.
 
@@ -2013,7 +2013,7 @@ Bandwidth is commonly measured in:
 
 ---
 
-## Example
+### Example
 
 ```
 Internet Link
@@ -2027,9 +2027,9 @@ Higher bandwidth increases capacity but does **not** automatically guarantee fas
 
 ---
 
-# Throughput
+## Throughput
 
-## Overview
+### Overview
 
 Throughput is the **actual amount of useful data successfully delivered** across the network.
 
@@ -2059,7 +2059,7 @@ Throughput is typically lower than bandwidth because of:
 
 ---
 
-# Bandwidth vs Throughput
+## Bandwidth vs Throughput
 
 | Bandwidth | Throughput |
 |------------|------------|
@@ -2069,9 +2069,9 @@ Throughput is typically lower than bandwidth because of:
 
 ---
 
-# Latency
+## Latency
 
-## Overview
+### Overview
 
 Latency is the **time required for data to travel from the source to the destination**.
 
@@ -2093,7 +2093,7 @@ Usually measured in:
 
 ---
 
-## Sources of Latency
+### Sources of Latency
 
 Latency may be introduced by:
 
@@ -2107,7 +2107,7 @@ Latency may be introduced by:
 
 ---
 
-## Applications Sensitive to Latency
+### Applications Sensitive to Latency
 
 Low latency is essential for:
 
@@ -2120,9 +2120,9 @@ Low latency is essential for:
 
 ---
 
-# Jitter
+## Jitter
 
-## Overview
+### Overview
 
 Jitter is the **variation in packet arrival times**.
 
@@ -2160,7 +2160,7 @@ Packet
 
 ---
 
-## Impact
+### Impact
 
 High jitter may cause:
 
@@ -2171,9 +2171,9 @@ High jitter may cause:
 
 ---
 
-# Packet Loss
+## Packet Loss
 
-## Overview
+### Overview
 
 Packet loss occurs when transmitted packets fail to reach their destination.
 
@@ -2193,7 +2193,7 @@ Packet 3
 
 ---
 
-## Causes
+### Causes
 
 - Congestion
 - Hardware failures
@@ -2204,7 +2204,7 @@ Packet 3
 
 ---
 
-## Impact
+### Impact
 
 Packet loss can result in:
 
@@ -2216,7 +2216,7 @@ Packet loss can result in:
 
 ---
 
-# Network Utilization
+## Network Utilization
 
 Network utilization measures how much of the available bandwidth is currently being used.
 
@@ -2242,9 +2242,9 @@ Consistently high utilization may indicate the need for additional capacity or t
 
 ---
 
-# Quality of Service (QoS)
+## Quality of Service (QoS)
 
-## Overview
+### Overview
 
 Not all traffic has the same importance.
 
@@ -2263,7 +2263,7 @@ QoS prioritizes time-sensitive traffic to improve user experience.
 
 ---
 
-# QoS Workflow
+## QoS Workflow
 
 ```
 Traffic
@@ -2293,7 +2293,7 @@ QoS helps ensure that critical applications receive the bandwidth and low latenc
 
 ---
 
-# Network Reliability
+## Network Reliability
 
 A reliable network consistently delivers services even when components fail.
 
@@ -2306,9 +2306,9 @@ Key characteristics:
 
 ---
 
-# High Availability (HA)
+## High Availability (HA)
 
-## Overview
+### Overview
 
 High Availability minimizes downtime by eliminating single points of failure.
 
@@ -2332,7 +2332,7 @@ If one ISP or router fails, traffic can continue through the alternate path.
 
 ---
 
-# Redundancy
+## Redundancy
 
 Redundancy provides backup components that take over when primary components fail.
 
@@ -2347,7 +2347,7 @@ Common examples include:
 
 ---
 
-# Fault Tolerance
+## Fault Tolerance
 
 Fault tolerance is the ability of a network to continue operating despite hardware or software failures.
 
@@ -2371,7 +2371,7 @@ Fault tolerance improves business continuity.
 
 ---
 
-# Scalability
+## Scalability
 
 A scalable network supports future growth without requiring a complete redesign.
 
@@ -2397,7 +2397,7 @@ Scalable designs use modular architectures, standardized configurations, and suf
 
 ---
 
-# Enterprise Network Design Principles
+## Enterprise Network Design Principles
 
 Modern enterprise networks emphasize:
 
@@ -2413,7 +2413,7 @@ Good design reduces operational complexity and improves resilience.
 
 ---
 
-# Network Documentation
+## Network Documentation
 
 Accurate documentation is essential for operations and incident response.
 
@@ -2433,7 +2433,7 @@ Well-maintained documentation accelerates troubleshooting and supports disaster 
 
 ---
 
-# Monitoring and Observability
+## Monitoring and Observability
 
 Continuous monitoring enables administrators to detect issues before users are affected.
 
@@ -2463,7 +2463,7 @@ Common monitoring tools include:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 ✔ Design for redundancy.
 
@@ -2491,15 +2491,15 @@ Common monitoring tools include:
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Objective
+### Objective
 
 Analyze the health and performance of a small enterprise network.
 
 ---
 
-## Lab Topology
+### Lab Topology
 
 ```
                  Internet
@@ -2517,7 +2517,7 @@ Analyze the health and performance of a small enterprise network.
 
 ---
 
-## Tasks
+### Tasks
 
 1. Identify all network devices.
 2. Measure latency between hosts.
@@ -2530,7 +2530,7 @@ Analyze the health and performance of a small enterprise network.
 
 ---
 
-## Expected Learning Outcomes
+### Expected Learning Outcomes
 
 After completing this lab, you should be able to:
 
@@ -2542,51 +2542,51 @@ After completing this lab, you should be able to:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is a computer network?
+#### What is a computer network?
 
 A computer network is a collection of interconnected devices that communicate and share resources using standardized protocols.
 
 ---
 
-### What is the difference between bandwidth and throughput?
+#### What is the difference between bandwidth and throughput?
 
 Bandwidth is the maximum theoretical capacity of a network connection, while throughput is the actual amount of useful data successfully transmitted.
 
 ---
 
-### What causes packet loss?
+#### What causes packet loss?
 
 Common causes include congestion, faulty hardware, damaged cables, wireless interference, software issues, and network misconfigurations.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is Quality of Service (QoS)?
+#### What is Quality of Service (QoS)?
 
 QoS is a set of techniques used to prioritize network traffic so that time-sensitive applications receive the bandwidth and latency characteristics they require.
 
 ---
 
-### Why is redundancy important?
+#### Why is redundancy important?
 
 Redundancy eliminates single points of failure by providing backup paths or devices, improving availability and business continuity.
 
 ---
 
-### What is the difference between latency and jitter?
+#### What is the difference between latency and jitter?
 
 Latency measures the time required for data to travel between endpoints, while jitter measures the variation in packet arrival times.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you design a highly available enterprise network?
+#### How would you design a highly available enterprise network?
 
 A robust design should include:
 
@@ -2603,7 +2603,7 @@ A robust design should include:
 
 ---
 
-### How would you troubleshoot slow network performance?
+#### How would you troubleshoot slow network performance?
 
 A structured approach includes:
 
@@ -2618,20 +2618,20 @@ A structured approach includes:
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - IEEE 802 Series
 - IETF RFC Series
 - ISO/IEC Networking Standards
 
-## NIST
+### NIST
 
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-53
 
-## Vendor Documentation
+### Vendor Documentation
 
 - Cisco Networking Documentation
 - Juniper Documentation
@@ -2640,15 +2640,15 @@ A structured approach includes:
 
 ---
 
-# Summary
+## Summary
 
 Networking forms the foundation of modern digital communication. Understanding communication models, transmission methods, network performance metrics, and enterprise design principles enables professionals to build resilient, scalable, and secure infrastructures. Strong networking knowledge is essential for cybersecurity, cloud computing, DevOps, system administration, and network engineering, serving as the basis for more advanced topics such as the OSI Model, TCP/IP, routing, switching, and network security.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
-## Skills Covered
+### Skills Covered
 
 After completing this chapter, you should understand:
 

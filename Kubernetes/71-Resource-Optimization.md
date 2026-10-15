@@ -59,7 +59,7 @@ Cost
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -138,7 +138,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Resource Optimization?
+## What Is Resource Optimization?
 
 Resource optimization means allocating enough resources for workloads without unnecessarily wasting capacity.
 
@@ -178,7 +178,7 @@ Throttling
 
 ---
 
-# The Optimization Balance
+## The Optimization Balance
 
 A production system should balance:
 
@@ -194,7 +194,7 @@ Cost
 
 ---
 
-# Kubernetes Resource Types
+## Kubernetes Resource Types
 
 Major resource categories include:
 
@@ -208,7 +208,7 @@ Network
 
 ---
 
-# CPU
+## CPU
 
 CPU is generally measured in:
 
@@ -237,7 +237,7 @@ Therefore:
 
 ---
 
-# Memory
+## Memory
 
 Memory is commonly represented using:
 
@@ -256,7 +256,7 @@ Example:
 
 ---
 
-# Resource Requests
+## Resource Requests
 
 Requests tell Kubernetes how much resource a container requires for scheduling purposes.
 
@@ -272,7 +272,7 @@ resources:
 
 ---
 
-# Resource Limits
+## Resource Limits
 
 Limits define the maximum resource boundary for a container.
 
@@ -288,7 +288,7 @@ resources:
 
 ---
 
-# Complete Resource Configuration
+## Complete Resource Configuration
 
 Example:
 
@@ -306,7 +306,7 @@ resources:
 
 ---
 
-# Requests vs Limits
+## Requests vs Limits
 
 | Property | Purpose |
 |---|---|
@@ -315,7 +315,7 @@ resources:
 
 ---
 
-# CPU Requests
+## CPU Requests
 
 Example:
 
@@ -328,7 +328,7 @@ The scheduler considers the requested CPU when deciding where to place the Pod.
 
 ---
 
-# Memory Requests
+## Memory Requests
 
 Example:
 
@@ -341,7 +341,7 @@ The scheduler uses the memory request when evaluating node capacity.
 
 ---
 
-# CPU Limits
+## CPU Limits
 
 Example:
 
@@ -354,7 +354,7 @@ The container cannot continuously consume more than its configured CPU limit und
 
 ---
 
-# Memory Limits
+## Memory Limits
 
 Example:
 
@@ -371,7 +371,7 @@ OOMKilled
 
 ---
 
-# CPU vs Memory Behavior
+## CPU vs Memory Behavior
 
 CPU:
 
@@ -391,7 +391,7 @@ Potential OOM Kill
 
 ---
 
-# Quality of Service Classes
+## Quality of Service Classes
 
 Kubernetes assigns Pods to QoS classes:
 
@@ -403,7 +403,7 @@ BestEffort
 
 ---
 
-# Guaranteed QoS
+## Guaranteed QoS
 
 A Pod is generally Guaranteed when all containers have CPU and memory requests and limits configured, with requests equal to limits for those resources.
 
@@ -423,7 +423,7 @@ resources:
 
 ---
 
-# Burstable QoS
+## Burstable QoS
 
 A Pod is Burstable when it has resource requests or limits but does not meet the conditions for Guaranteed QoS.
 
@@ -443,7 +443,7 @@ resources:
 
 ---
 
-# BestEffort QoS
+## BestEffort QoS
 
 A Pod is generally BestEffort when none of its containers specify CPU or memory requests or limits.
 
@@ -458,7 +458,7 @@ containers:
 
 ---
 
-# QoS Comparison
+## QoS Comparison
 
 | QoS | Requests/Limits | Typical Use |
 |---|---|---|
@@ -468,7 +468,7 @@ containers:
 
 ---
 
-# Why Requests Matter
+## Why Requests Matter
 
 Suppose a node has:
 
@@ -493,7 +493,7 @@ Even if actual usage is temporarily lower.
 
 ---
 
-# Overprovisioning
+## Overprovisioning
 
 Overprovisioning means requesting significantly more resources than workloads actually use.
 
@@ -514,7 +514,7 @@ Higher Cost
 
 ---
 
-# Underprovisioning
+## Underprovisioning
 
 Underprovisioning means requests are too low.
 
@@ -536,7 +536,7 @@ Scheduling Issues
 
 ---
 
-# Right-Sizing
+## Right-Sizing
 
 Right-sizing means selecting resource requests and limits based on measured workload behavior.
 
@@ -558,7 +558,7 @@ Adjust
 
 ---
 
-# Workload Profiling
+## Workload Profiling
 
 Before right-sizing, measure:
 
@@ -574,7 +574,7 @@ Throughput
 
 ---
 
-# Requests Should Reflect Reality
+## Requests Should Reflect Reality
 
 Example:
 
@@ -587,7 +587,7 @@ A reasonable request might be closer to the sustained requirement than the absol
 
 ---
 
-# Headroom
+## Headroom
 
 Headroom is spare capacity available for:
 
@@ -608,7 +608,7 @@ Headroom = 5 CPU
 
 ---
 
-# Why Headroom Matters
+## Why Headroom Matters
 
 Without headroom:
 
@@ -632,7 +632,7 @@ Application Continues
 
 ---
 
-# Bin Packing
+## Bin Packing
 
 Bin packing means placing workloads efficiently onto available nodes.
 
@@ -649,7 +649,7 @@ rather than spreading tiny workloads unnecessarily across many nodes.
 
 ---
 
-# Bin Packing Trade-Off
+## Bin Packing Trade-Off
 
 Higher utilization:
 
@@ -668,7 +668,7 @@ Therefore optimization must not sacrifice resilience.
 
 ---
 
-# Node Utilization
+## Node Utilization
 
 Monitor:
 
@@ -682,7 +682,7 @@ Network Usage
 
 ---
 
-# Pod Density
+## Pod Density
 
 Pod density describes how many Pods run on a node.
 
@@ -703,7 +703,7 @@ Failure Blast Radius
 
 ---
 
-# ResourceQuota
+## ResourceQuota
 
 ResourceQuota limits aggregate resource consumption within a namespace.
 
@@ -729,7 +729,7 @@ spec:
 
 ---
 
-# Why ResourceQuota?
+## Why ResourceQuota?
 
 ResourceQuota helps prevent one namespace from consuming all cluster resources.
 
@@ -745,7 +745,7 @@ Controlled Usage
 
 ---
 
-# LimitRange
+## LimitRange
 
 LimitRange can define default or allowed resource values within a namespace.
 
@@ -775,7 +775,7 @@ spec:
 
 ---
 
-# ResourceQuota vs LimitRange
+## ResourceQuota vs LimitRange
 
 | Resource | Purpose |
 |---|---|
@@ -784,7 +784,7 @@ spec:
 
 ---
 
-# Namespace Resource Management
+## Namespace Resource Management
 
 A multi-team cluster can use:
 
@@ -802,7 +802,7 @@ This improves governance and resource isolation.
 
 ---
 
-# CPU Optimization
+## CPU Optimization
 
 CPU optimization can involve:
 
@@ -816,7 +816,7 @@ Node Packing
 
 ---
 
-# CPU Throttling
+## CPU Throttling
 
 When CPU limits are configured, a container may be throttled when it reaches its CPU limit.
 
@@ -832,7 +832,7 @@ Monitor before blindly lowering CPU limits.
 
 ---
 
-# Memory Optimization
+## Memory Optimization
 
 Memory optimization involves:
 
@@ -846,7 +846,7 @@ Garbage Collection
 
 ---
 
-# OOMKilled
+## OOMKilled
 
 A container can be terminated after exceeding its memory limit.
 
@@ -864,7 +864,7 @@ OOMKilled
 
 ---
 
-# Memory Pressure
+## Memory Pressure
 
 A node under memory pressure may begin evicting Pods according to Kubernetes eviction behavior.
 
@@ -876,7 +876,7 @@ kubectl describe node <node>
 
 ---
 
-# Evictions
+## Evictions
 
 Eviction may occur because of:
 
@@ -888,7 +888,7 @@ PID Pressure
 
 ---
 
-# Ephemeral Storage
+## Ephemeral Storage
 
 Containers can consume node-local ephemeral storage through:
 
@@ -901,7 +901,7 @@ Temporary Files
 
 ---
 
-# Ephemeral Storage Requests
+## Ephemeral Storage Requests
 
 Example:
 
@@ -917,7 +917,7 @@ resources:
 
 ---
 
-# Storage Optimization
+## Storage Optimization
 
 Optimize:
 
@@ -931,7 +931,7 @@ Data Duplication
 
 ---
 
-# Persistent Volume Optimization
+## Persistent Volume Optimization
 
 Review:
 
@@ -947,7 +947,7 @@ Retention
 
 ---
 
-# Oversized PVC
+## Oversized PVC
 
 Example:
 
@@ -960,7 +960,7 @@ This may indicate an opportunity for optimization, depending on the storage back
 
 ---
 
-# Image Optimization
+## Image Optimization
 
 Large container images increase:
 
@@ -982,7 +982,7 @@ Unused Package Removal
 
 ---
 
-# Image Optimization Example
+## Image Optimization Example
 
 Instead of:
 
@@ -1004,7 +1004,7 @@ Minimal Runtime Image
 
 ---
 
-# Network Optimization
+## Network Optimization
 
 Network optimization includes:
 
@@ -1018,7 +1018,7 @@ Caching
 
 ---
 
-# DNS Optimization
+## DNS Optimization
 
 Excessive DNS requests can increase:
 
@@ -1032,7 +1032,7 @@ Applications should use sensible DNS behavior and connection reuse.
 
 ---
 
-# Logging Optimization
+## Logging Optimization
 
 Logs can consume substantial:
 
@@ -1055,7 +1055,7 @@ Centralized Storage
 
 ---
 
-# Monitoring Optimization
+## Monitoring Optimization
 
 Metrics systems can also consume resources.
 
@@ -1070,7 +1070,7 @@ Label Design
 
 ---
 
-# High Cardinality
+## High Cardinality
 
 A metric with too many unique label combinations can create excessive time-series data.
 
@@ -1086,7 +1086,7 @@ in high-volume metrics.
 
 ---
 
-# Idle Resources
+## Idle Resources
 
 Identify:
 
@@ -1101,7 +1101,7 @@ Unused Namespaces
 
 ---
 
-# Resource Cleanup
+## Resource Cleanup
 
 Regular cleanup reduces:
 
@@ -1114,7 +1114,7 @@ Operational Noise
 
 ---
 
-# HPA
+## HPA
 
 Horizontal Pod Autoscaler adjusts the number of Pod replicas.
 
@@ -1132,7 +1132,7 @@ Replica Count
 
 ---
 
-# HPA Example
+## HPA Example
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -1168,7 +1168,7 @@ spec:
 
 ---
 
-# HPA Optimization
+## HPA Optimization
 
 Avoid:
 
@@ -1191,7 +1191,7 @@ Startup Time
 
 ---
 
-# VPA
+## VPA
 
 Vertical Pod Autoscaler adjusts Pod resource requests and limits based on observed usage, depending on its configured mode and implementation.
 
@@ -1207,7 +1207,7 @@ Recommended Resources
 
 ---
 
-# VPA Modes
+## VPA Modes
 
 Common modes include:
 
@@ -1222,7 +1222,7 @@ The exact behavior depends on the VPA version and configuration.
 
 ---
 
-# VPA Use Case
+## VPA Use Case
 
 VPA is useful when:
 
@@ -1234,7 +1234,7 @@ Resource Requirements Change
 
 ---
 
-# HPA vs VPA
+## HPA vs VPA
 
 | HPA | VPA |
 |---|---|
@@ -1244,7 +1244,7 @@ Resource Requirements Change
 
 ---
 
-# HPA and VPA Together
+## HPA and VPA Together
 
 Using HPA and VPA together requires careful metric design.
 
@@ -1252,7 +1252,7 @@ Avoid having both mechanisms independently manipulate the same resource signal i
 
 ---
 
-# Cluster Autoscaler
+## Cluster Autoscaler
 
 Cluster Autoscaler changes node count based on scheduling needs and node utilization policies supported by the environment.
 
@@ -1270,7 +1270,7 @@ New Node
 
 ---
 
-# Cluster Autoscaler Scale Down
+## Cluster Autoscaler Scale Down
 
 When nodes become unnecessary:
 
@@ -1286,7 +1286,7 @@ It must respect workload and scheduling constraints.
 
 ---
 
-# HPA + Cluster Autoscaler
+## HPA + Cluster Autoscaler
 
 A common architecture:
 
@@ -1306,7 +1306,7 @@ More Nodes
 
 ---
 
-# Autoscaling Feedback Loop
+## Autoscaling Feedback Loop
 
 ```text
 Load Increase
@@ -1338,7 +1338,7 @@ Fewer Nodes
 
 ---
 
-# Autoscaling Risks
+## Autoscaling Risks
 
 Poor configuration can cause:
 
@@ -1352,7 +1352,7 @@ Application Instability
 
 ---
 
-# Priority Classes
+## Priority Classes
 
 Priority classes assign relative importance to Pods.
 
@@ -1374,7 +1374,7 @@ description: "Critical workloads"
 
 ---
 
-# Preemption
+## Preemption
 
 When a high-priority Pod cannot be scheduled, Kubernetes may preempt lower-priority Pods if configured and appropriate.
 
@@ -1394,7 +1394,7 @@ High Priority Pod Scheduled
 
 ---
 
-# Resource Optimization and Priority
+## Resource Optimization and Priority
 
 Use priority carefully.
 
@@ -1408,7 +1408,7 @@ or priority loses meaning.
 
 ---
 
-# Taints and Tolerations
+## Taints and Tolerations
 
 Taints can reserve nodes for specific workloads.
 
@@ -1426,7 +1426,7 @@ This can improve isolation but may reduce overall utilization.
 
 ---
 
-# Node Affinity
+## Node Affinity
 
 Node affinity can place workloads on appropriate nodes.
 
@@ -1442,7 +1442,7 @@ But strict affinity can reduce scheduling flexibility.
 
 ---
 
-# Topology Spread
+## Topology Spread
 
 Topology spread can improve resilience:
 
@@ -1464,7 +1464,7 @@ Utilization
 
 ---
 
-# Cost Optimization
+## Cost Optimization
 
 Kubernetes cost optimization includes:
 
@@ -1481,7 +1481,7 @@ Monitoring Optimization
 
 ---
 
-# Spot / Preemptible Nodes
+## Spot / Preemptible Nodes
 
 These lower-cost nodes can be useful for workloads that tolerate interruption.
 
@@ -1498,7 +1498,7 @@ Avoid placing critical workloads on interruptible capacity unless the architectu
 
 ---
 
-# Node Pools
+## Node Pools
 
 Different workloads can use different node pools.
 
@@ -1514,7 +1514,7 @@ Spot Pool
 
 ---
 
-# Specialized Hardware
+## Specialized Hardware
 
 Do not schedule ordinary workloads onto expensive specialized nodes unless necessary.
 
@@ -1528,7 +1528,7 @@ GPU Workload
 
 ---
 
-# Resource Efficiency Metrics
+## Resource Efficiency Metrics
 
 Important metrics include:
 
@@ -1544,7 +1544,7 @@ Cost per Workload
 
 ---
 
-# Requested vs Actual Usage
+## Requested vs Actual Usage
 
 A useful metric:
 
@@ -1565,7 +1565,7 @@ Very low values may indicate over-requesting.
 
 ---
 
-# Utilization Ratio
+## Utilization Ratio
 
 Conceptually:
 
@@ -1578,7 +1578,7 @@ Use appropriate time windows and percentiles rather than relying only on a singl
 
 ---
 
-# Percentiles
+## Percentiles
 
 For production sizing, consider:
 
@@ -1599,7 +1599,7 @@ This may be more useful for capacity planning than average usage alone.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Capacity planning estimates:
 
@@ -1615,7 +1615,7 @@ Maintenance Headroom
 
 ---
 
-# Capacity Formula
+## Capacity Formula
 
 Conceptually:
 
@@ -1630,7 +1630,7 @@ Failure Reserve
 
 ---
 
-# Resource Fragmentation
+## Resource Fragmentation
 
 A cluster may have enough total CPU but still fail to schedule a Pod.
 
@@ -1659,7 +1659,7 @@ This is resource fragmentation.
 
 ---
 
-# Bin Packing and Fragmentation
+## Bin Packing and Fragmentation
 
 Better packing can reduce fragmentation:
 
@@ -1674,7 +1674,7 @@ But excessive packing can reduce failure headroom.
 
 ---
 
-# Resource Optimization Strategy
+## Resource Optimization Strategy
 
 Use:
 
@@ -1694,7 +1694,7 @@ Monitor
 
 ---
 
-# Multi-Tenant Optimization
+## Multi-Tenant Optimization
 
 For multiple teams:
 
@@ -1712,7 +1712,7 @@ Cost Allocation
 
 ---
 
-# Cost Allocation
+## Cost Allocation
 
 Track cost by:
 
@@ -1734,7 +1734,7 @@ Optimization
 
 ---
 
-# Production Optimization
+## Production Optimization
 
 A production cluster should optimize:
 
@@ -1750,7 +1750,7 @@ not cost alone.
 
 ---
 
-# Optimization Trade-Off
+## Optimization Trade-Off
 
 Example:
 
@@ -1772,7 +1772,7 @@ Remove Redundancy
 
 ---
 
-# Resource Optimization and HA
+## Resource Optimization and HA
 
 HA requires spare capacity.
 
@@ -1786,7 +1786,7 @@ is usually not an appropriate production target.
 
 ---
 
-# Resource Optimization and DR
+## Resource Optimization and DR
 
 DR environments can optimize cost through:
 
@@ -1801,7 +1801,7 @@ depending on RTO requirements.
 
 ---
 
-# Resource Optimization Runbook
+## Resource Optimization Runbook
 
 A basic optimization process:
 
@@ -1822,9 +1822,9 @@ A basic optimization process:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Setting Requests Too High
+### 1. Setting Requests Too High
 
 ```text
 Actual = 500m
@@ -1835,7 +1835,7 @@ This wastes schedulable capacity.
 
 ---
 
-## 2. Setting Requests Too Low
+### 2. Setting Requests Too Low
 
 ```text
 Actual = 2 CPU
@@ -1846,7 +1846,7 @@ This may create scheduling and performance problems.
 
 ---
 
-## 3. Ignoring Memory
+### 3. Ignoring Memory
 
 Memory problems can result in:
 
@@ -1858,13 +1858,13 @@ Node Pressure
 
 ---
 
-## 4. Setting CPU Limits Blindly
+### 4. Setting CPU Limits Blindly
 
 Aggressive CPU limits may introduce throttling.
 
 ---
 
-## 5. Removing All Headroom
+### 5. Removing All Headroom
 
 A cluster running near saturation has little room for:
 
@@ -1876,69 +1876,69 @@ Maintenance
 
 ---
 
-## 6. Using HPA Without Capacity
+### 6. Using HPA Without Capacity
 
 More replicas require more nodes.
 
 ---
 
-## 7. Using VPA Without Understanding Its Mode
+### 7. Using VPA Without Understanding Its Mode
 
 Some VPA modes may require Pod restarts/recreation to apply recommendations.
 
 ---
 
-## 8. Using HPA and VPA Carelessly Together
+### 8. Using HPA and VPA Carelessly Together
 
 Conflicting scaling behavior can occur if both independently react to overlapping signals.
 
 ---
 
-## 9. Ignoring Fragmentation
+### 9. Ignoring Fragmentation
 
 Total free resources may not be usable for a specific Pod.
 
 ---
 
-## 10. Overusing Specialized Nodes
+### 10. Overusing Specialized Nodes
 
 Expensive nodes should be reserved for workloads that need them.
 
 ---
 
-## 11. Ignoring Logging Costs
+### 11. Ignoring Logging Costs
 
 High-volume logs can become expensive.
 
 ---
 
-## 12. Optimizing Cost at the Expense of Reliability
+### 12. Optimizing Cost at the Expense of Reliability
 
 The cheapest architecture is not necessarily the best architecture.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Measure Before Optimizing
+#### 1. Measure Before Optimizing
 
 Use actual workload data.
 
 ---
 
-### 2. Right-Size Requests
+#### 2. Right-Size Requests
 
 Base requests on observed usage and workload behavior.
 
 ---
 
-### 3. Set Appropriate Limits
+#### 3. Set Appropriate Limits
 
 Avoid arbitrary limits.
 
 ---
 
-### 4. Maintain Headroom
+#### 4. Maintain Headroom
 
 Keep enough capacity for:
 
@@ -1950,7 +1950,7 @@ Maintenance
 
 ---
 
-### 5. Use Autoscaling
+#### 5. Use Autoscaling
 
 Use:
 
@@ -1964,25 +1964,25 @@ where appropriate.
 
 ---
 
-### 6. Use ResourceQuota
+#### 6. Use ResourceQuota
 
 Prevent namespace-level resource abuse.
 
 ---
 
-### 7. Use LimitRange
+#### 7. Use LimitRange
 
 Provide sensible defaults and constraints.
 
 ---
 
-### 8. Optimize Node Pools
+#### 8. Optimize Node Pools
 
 Match workloads to appropriate infrastructure.
 
 ---
 
-### 9. Clean Unused Resources
+#### 9. Clean Unused Resources
 
 Regularly review:
 
@@ -1997,7 +1997,7 @@ Namespaces
 
 ---
 
-### 10. Monitor Efficiency
+#### 10. Monitor Efficiency
 
 Track:
 
@@ -2009,7 +2009,7 @@ Cost / Workload
 
 ---
 
-# Hands-on Lab 1 – Resource Requests
+## Hands-on Lab 1 – Resource Requests
 
 Create:
 
@@ -2029,7 +2029,7 @@ Deploy it and inspect scheduling.
 
 ---
 
-# Hands-on Lab 2 – ResourceQuota
+## Hands-on Lab 2 – ResourceQuota
 
 Create:
 
@@ -2052,7 +2052,7 @@ Deploy workloads and observe quota enforcement.
 
 ---
 
-# Hands-on Lab 3 – LimitRange
+## Hands-on Lab 3 – LimitRange
 
 Create namespace defaults:
 
@@ -2084,7 +2084,7 @@ Observe the resulting Pod specification.
 
 ---
 
-# Hands-on Lab 4 – QoS Classes
+## Hands-on Lab 4 – QoS Classes
 
 Create three Pods:
 
@@ -2103,7 +2103,7 @@ kubectl get pod <pod-name> \
 
 ---
 
-# Hands-on Lab 5 – CPU Usage
+## Hands-on Lab 5 – CPU Usage
 
 Deploy a workload with CPU requests.
 
@@ -2123,7 +2123,7 @@ Actual Usage
 
 ---
 
-# Hands-on Lab 6 – Memory Usage
+## Hands-on Lab 6 – Memory Usage
 
 Deploy a memory-consuming test application.
 
@@ -2137,7 +2137,7 @@ Observe memory behavior.
 
 ---
 
-# Hands-on Lab 7 – OOMKilled
+## Hands-on Lab 7 – OOMKilled
 
 In a disposable environment, create a Pod with a low memory limit.
 
@@ -2157,7 +2157,7 @@ OOMKilled
 
 ---
 
-# Hands-on Lab 8 – CPU Throttling
+## Hands-on Lab 8 – CPU Throttling
 
 Create a workload with a deliberately restrictive CPU limit in a test environment.
 
@@ -2167,7 +2167,7 @@ Observe application performance and throttling metrics where available.
 
 ---
 
-# Hands-on Lab 9 – HPA
+## Hands-on Lab 9 – HPA
 
 Deploy an application and configure HPA.
 
@@ -2188,7 +2188,7 @@ kubectl get hpa
 
 ---
 
-# Hands-on Lab 10 – HPA Load Test
+## Hands-on Lab 10 – HPA Load Test
 
 Generate controlled traffic.
 
@@ -2206,7 +2206,7 @@ Replicas
 
 ---
 
-# Hands-on Lab 11 – VPA
+## Hands-on Lab 11 – VPA
 
 Install VPA in a test cluster.
 
@@ -2223,7 +2223,7 @@ Do not blindly apply recommendations to production.
 
 ---
 
-# Hands-on Lab 12 – Cluster Autoscaler
+## Hands-on Lab 12 – Cluster Autoscaler
 
 In a supported environment:
 
@@ -2241,7 +2241,7 @@ Observe scaling behavior.
 
 ---
 
-# Hands-on Lab 13 – Node Utilization
+## Hands-on Lab 13 – Node Utilization
 
 Inspect:
 
@@ -2258,7 +2258,7 @@ Highly Utilized Nodes
 
 ---
 
-# Hands-on Lab 14 – Resource Fragmentation
+## Hands-on Lab 14 – Resource Fragmentation
 
 Create Pods with resource requests that demonstrate:
 
@@ -2276,7 +2276,7 @@ Observe scheduling behavior.
 
 ---
 
-# Hands-on Lab 15 – Pod Density
+## Hands-on Lab 15 – Pod Density
 
 Deploy multiple small workloads.
 
@@ -2291,7 +2291,7 @@ Network
 
 ---
 
-# Hands-on Lab 16 – Ephemeral Storage
+## Hands-on Lab 16 – Ephemeral Storage
 
 Create a Pod that uses:
 
@@ -2309,7 +2309,7 @@ Observe node storage behavior.
 
 ---
 
-# Hands-on Lab 17 – Image Optimization
+## Hands-on Lab 17 – Image Optimization
 
 Create two images:
 
@@ -2329,7 +2329,7 @@ Startup
 
 ---
 
-# Hands-on Lab 18 – Resource Right-Sizing
+## Hands-on Lab 18 – Resource Right-Sizing
 
 Collect workload metrics for several days.
 
@@ -2356,7 +2356,7 @@ Cost
 
 ---
 
-# Hands-on Lab 19 – Cost Optimization
+## Hands-on Lab 19 – Cost Optimization
 
 Identify:
 
@@ -2374,7 +2374,7 @@ Estimate the resource savings.
 
 ---
 
-# Hands-on Lab 20 – Full Optimization Exercise
+## Hands-on Lab 20 – Full Optimization Exercise
 
 Optimize a test cluster:
 
@@ -2412,9 +2412,9 @@ Availability
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Resource Request
+### Resource Request
 
 ```text
 Amount considered for scheduling
@@ -2422,7 +2422,7 @@ Amount considered for scheduling
 
 ---
 
-## Resource Limit
+### Resource Limit
 
 ```text
 Configured maximum resource boundary
@@ -2430,7 +2430,7 @@ Configured maximum resource boundary
 
 ---
 
-## Guaranteed
+### Guaranteed
 
 ```text
 Predictable resource configuration with required requests and limits
@@ -2438,7 +2438,7 @@ Predictable resource configuration with required requests and limits
 
 ---
 
-## Burstable
+### Burstable
 
 ```text
 Pod with resource configuration that does not qualify as Guaranteed
@@ -2446,7 +2446,7 @@ Pod with resource configuration that does not qualify as Guaranteed
 
 ---
 
-## BestEffort
+### BestEffort
 
 ```text
 No CPU or memory requests/limits configured
@@ -2454,7 +2454,7 @@ No CPU or memory requests/limits configured
 
 ---
 
-## ResourceQuota
+### ResourceQuota
 
 ```text
 Namespace-wide resource consumption control
@@ -2462,7 +2462,7 @@ Namespace-wide resource consumption control
 
 ---
 
-## LimitRange
+### LimitRange
 
 ```text
 Per-object resource defaults and constraints
@@ -2470,7 +2470,7 @@ Per-object resource defaults and constraints
 
 ---
 
-## Right-Sizing
+### Right-Sizing
 
 ```text
 Matching resource configuration to actual workload needs
@@ -2478,7 +2478,7 @@ Matching resource configuration to actual workload needs
 
 ---
 
-## HPA
+### HPA
 
 ```text
 Scales Pod replicas
@@ -2486,7 +2486,7 @@ Scales Pod replicas
 
 ---
 
-## VPA
+### VPA
 
 ```text
 Adjusts/recommends Pod resource sizing
@@ -2494,7 +2494,7 @@ Adjusts/recommends Pod resource sizing
 
 ---
 
-## Cluster Autoscaler
+### Cluster Autoscaler
 
 ```text
 Adjusts node capacity based on cluster scheduling needs
@@ -2502,7 +2502,7 @@ Adjusts node capacity based on cluster scheduling needs
 
 ---
 
-## Bin Packing
+### Bin Packing
 
 ```text
 Efficiently placing workloads onto nodes
@@ -2510,7 +2510,7 @@ Efficiently placing workloads onto nodes
 
 ---
 
-## Headroom
+### Headroom
 
 ```text
 Unused capacity reserved for spikes, failures, and operations
@@ -2518,7 +2518,7 @@ Unused capacity reserved for spikes, failures, and operations
 
 ---
 
-## OOMKilled
+### OOMKilled
 
 ```text
 Container terminated because of memory exhaustion / limit enforcement
@@ -2526,7 +2526,7 @@ Container terminated because of memory exhaustion / limit enforcement
 
 ---
 
-## CPU Throttling
+### CPU Throttling
 
 ```text
 CPU usage restricted by configured CPU limits/cgroup enforcement
@@ -2534,7 +2534,7 @@ CPU usage restricted by configured CPU limits/cgroup enforcement
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check node resources:
 
@@ -2653,9 +2653,9 @@ kubectl get storageclass
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is resource optimization in Kubernetes?
 - What are CPU requests?
@@ -2678,7 +2678,7 @@ kubectl get storageclass
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Why are resource requests important for scheduling?
 - What happens when a container exceeds its memory limit?
@@ -2698,7 +2698,7 @@ kubectl get storageclass
 
 ---
 
-## Advanced
+### Advanced
 
 - How would you right-size resources for a production application?
 - How would you optimize a 1,000-node Kubernetes cluster?
@@ -2717,13 +2717,13 @@ kubectl get storageclass
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What is the difference between a resource request and a resource limit?
 
-### Answer
+#### Answer
 
 A request represents the resource amount Kubernetes considers when scheduling a Pod.
 
@@ -2757,13 +2757,13 @@ Limit:
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > What happens when a container exceeds its memory limit?
 
-### Answer
+#### Answer
 
 The container can be terminated due to memory exhaustion and may show:
 
@@ -2779,13 +2779,13 @@ kubectl describe pod <pod-name>
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > Why should resource requests be configured?
 
-### Answer
+#### Answer
 
 Requests help Kubernetes:
 
@@ -2800,13 +2800,13 @@ Without realistic requests, scheduling and capacity decisions can become inaccur
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > How would you identify overprovisioned Pods?
 
-### Answer
+#### Answer
 
 Compare:
 
@@ -2827,13 +2827,13 @@ This may indicate the request is much higher than necessary, although workload s
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How would you identify underprovisioned Pods?
 
-### Answer
+#### Answer
 
 Look for:
 
@@ -2850,13 +2850,13 @@ Then compare actual usage against configured requests and limits.
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > How does HPA help resource optimization?
 
-### Answer
+#### Answer
 
 HPA changes the number of replicas based on configured metrics.
 
@@ -2874,13 +2874,13 @@ This allows capacity to follow workload demand.
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How does Cluster Autoscaler work with HPA?
 
-### Answer
+#### Answer
 
 The sequence can be:
 
@@ -2900,13 +2900,13 @@ Pods Scheduled
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > Why shouldn't you run a production cluster at 100% utilization?
 
-### Answer
+#### Answer
 
 Because production systems need capacity for:
 
@@ -2922,13 +2922,13 @@ High utilization without headroom increases operational risk.
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How would you optimize a multi-tenant Kubernetes cluster?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2954,13 +2954,13 @@ This prevents one tenant from consuming disproportionate resources.
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > How would you optimize Kubernetes costs without reducing availability?
 
-### Answer
+#### Answer
 
 Focus on waste rather than simply removing redundancy:
 
@@ -2984,7 +2984,7 @@ Maintain HA Headroom
 
 ---
 
-# Production Optimization Checklist
+## Production Optimization Checklist
 
 ```text
 ☑ CPU requests reviewed
@@ -3018,7 +3018,7 @@ Maintain HA Headroom
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Resource optimization is about achieving the right balance between:
 
@@ -3073,9 +3073,9 @@ The correct objective is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 72 – Vulnerability Management
+## Chapter 72 – Vulnerability Management
 
 Topics will include:
 

@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Network forensics is the investigation of network communications to reconstruct:
 
@@ -45,7 +45,7 @@ The objective is not simply to inspect packets.
 
 ---
 
-# Why Network Forensics Matters
+## Why Network Forensics Matters
 
 Network evidence can reveal activity that endpoint evidence alone may miss.
 
@@ -66,7 +66,7 @@ Suspicious External Connections
 
 ---
 
-# Network Forensic Architecture
+## Network Forensic Architecture
 
 ```text
                          Enterprise Network
@@ -98,7 +98,7 @@ Suspicious External Connections
 
 ---
 
-# Network Investigation Questions
+## Network Investigation Questions
 
 A strong investigation should answer:
 
@@ -119,7 +119,7 @@ Was the activity expected?
 
 ---
 
-# Network Evidence Sources
+## Network Evidence Sources
 
 | Evidence Source | Primary Value |
 |---|---|
@@ -137,7 +137,7 @@ Was the activity expected?
 
 ---
 
-# Packet Capture
+## Packet Capture
 
 A packet capture, commonly called **PCAP**, contains captured network packets.
 
@@ -164,9 +164,9 @@ Application Protocol
 
 ---
 
-# Packet-Level vs Flow-Level Evidence
+## Packet-Level vs Flow-Level Evidence
 
-## PCAP
+### PCAP
 
 Provides detailed packet information.
 
@@ -178,7 +178,7 @@ Useful for:
 - DNS investigation
 - HTTP analysis
 
-## Flow Data
+### Flow Data
 
 Usually provides:
 
@@ -198,7 +198,7 @@ Flow data is smaller and more scalable.
 
 ---
 
-# PCAP Limitations
+## PCAP Limitations
 
 PCAP may be:
 
@@ -215,7 +215,7 @@ Therefore:
 
 ---
 
-# Network Investigation Workflow
+## Network Investigation Workflow
 
 ```text
 Alert
@@ -253,7 +253,7 @@ Report
 
 ---
 
-# IP Addressing
+## IP Addressing
 
 Investigators should understand:
 
@@ -277,7 +277,7 @@ Private IPv4 ranges commonly include:
 
 ---
 
-# NAT Considerations
+## NAT Considerations
 
 Network Address Translation can make multiple internal systems appear behind one public IP.
 
@@ -305,7 +305,7 @@ to identify the actual internal system.
 
 ---
 
-# TCP/IP Model
+## TCP/IP Model
 
 A simplified investigation model:
 
@@ -335,7 +335,7 @@ DHCP
 
 ---
 
-# TCP
+## TCP
 
 TCP provides:
 
@@ -358,7 +358,7 @@ Connection State
 
 ---
 
-# TCP Three-Way Handshake
+## TCP Three-Way Handshake
 
 ```text
 Client                  Server
@@ -374,7 +374,7 @@ A handshake can help establish whether a connection was actually established.
 
 ---
 
-# TCP Flags
+## TCP Flags
 
 Common flags:
 
@@ -398,7 +398,7 @@ But flags should always be interpreted in context.
 
 ---
 
-# UDP
+## UDP
 
 UDP is connectionless.
 
@@ -422,7 +422,7 @@ Because UDP lacks TCP-style connection establishment, investigation relies more 
 
 ---
 
-# DNS Forensics
+## DNS Forensics
 
 DNS is one of the most valuable network evidence sources.
 
@@ -439,7 +439,7 @@ Timestamp
 
 ---
 
-# DNS Investigation Model
+## DNS Investigation Model
 
 ```text
 Endpoint
@@ -462,7 +462,7 @@ Process
 
 ---
 
-# DNS Record Types
+## DNS Record Types
 
 Important records include:
 
@@ -480,7 +480,7 @@ Each can provide different investigative context.
 
 ---
 
-# Suspicious DNS Indicators
+## Suspicious DNS Indicators
 
 Potential indicators include:
 
@@ -496,7 +496,7 @@ None is automatically malicious.
 
 ---
 
-# DNS Tunneling
+## DNS Tunneling
 
 DNS can be abused to transport information through DNS queries and responses.
 
@@ -529,7 +529,7 @@ Behavior should be validated against legitimate applications.
 
 ---
 
-# DNS Timeline
+## DNS Timeline
 
 Example:
 
@@ -544,7 +544,7 @@ This becomes stronger when endpoint evidence supports it.
 
 ---
 
-# HTTP Forensics
+## HTTP Forensics
 
 HTTP can expose valuable metadata.
 
@@ -564,7 +564,7 @@ Destination
 
 ---
 
-# HTTP Investigation
+## HTTP Investigation
 
 Questions:
 
@@ -579,7 +579,7 @@ Which process generated it?
 
 ---
 
-# HTTP Methods
+## HTTP Methods
 
 Common methods:
 
@@ -597,7 +597,7 @@ Method alone is not a malicious indicator.
 
 ---
 
-# HTTP Status Codes
+## HTTP Status Codes
 
 Examples:
 
@@ -615,7 +615,7 @@ Investigate sequences rather than isolated codes.
 
 ---
 
-# HTTP User-Agent
+## HTTP User-Agent
 
 The User-Agent may help identify:
 
@@ -633,7 +633,7 @@ Therefore:
 
 ---
 
-# HTTPS
+## HTTPS
 
 HTTPS encrypts application content using TLS.
 
@@ -653,7 +653,7 @@ SNI where available
 
 ---
 
-# TLS Investigation
+## TLS Investigation
 
 Encryption does not eliminate network evidence.
 
@@ -675,7 +675,7 @@ Encrypted Application Data
 
 ---
 
-# TLS Limitations
+## TLS Limitations
 
 Depending on protocol version and deployment, investigators may not see:
 
@@ -687,7 +687,7 @@ Network metadata may still be valuable.
 
 ---
 
-# Certificate Analysis
+## Certificate Analysis
 
 Investigate:
 
@@ -704,7 +704,7 @@ A certificate anomaly does not automatically indicate malicious activity.
 
 ---
 
-# SNI
+## SNI
 
 Server Name Indication may expose the intended hostname during TLS establishment in environments where it is visible.
 
@@ -712,7 +712,7 @@ Modern encrypted transport technologies can reduce traditional visibility.
 
 ---
 
-# QUIC and HTTP/3
+## QUIC and HTTP/3
 
 Modern applications may use:
 
@@ -733,7 +733,7 @@ Investigators should understand:
 
 ---
 
-# DHCP Forensics
+## DHCP Forensics
 
 DHCP can map:
 
@@ -748,7 +748,7 @@ This can help identify which endpoint used an IP at a particular time.
 
 ---
 
-# DHCP Investigation
+## DHCP Investigation
 
 Example:
 
@@ -764,7 +764,7 @@ A network investigation that only uses IP addresses may therefore misattribute a
 
 ---
 
-# ARP
+## ARP
 
 ARP maps:
 
@@ -778,7 +778,7 @@ ARP evidence can help understand local network relationships.
 
 ---
 
-# ARP Investigation
+## ARP Investigation
 
 Potentially relevant activity includes:
 
@@ -791,7 +791,7 @@ Again, investigate within network context.
 
 ---
 
-# Firewall Forensics
+## Firewall Forensics
 
 Firewall logs may show:
 
@@ -812,7 +812,7 @@ Firewall evidence can answer:
 
 ---
 
-# Proxy Forensics
+## Proxy Forensics
 
 Web proxies can provide:
 
@@ -831,7 +831,7 @@ Proxy logs are especially useful when endpoint telemetry is incomplete.
 
 ---
 
-# VPN Forensics
+## VPN Forensics
 
 VPN logs may provide:
 
@@ -849,7 +849,7 @@ This helps correlate remote users with internal network activity.
 
 ---
 
-# Network Scanning
+## Network Scanning
 
 Scanning may produce patterns such as:
 
@@ -874,7 +874,7 @@ But legitimate vulnerability scanners produce similar patterns.
 
 ---
 
-# Lateral Movement
+## Lateral Movement
 
 Network evidence can help identify movement between internal systems.
 
@@ -904,7 +904,7 @@ Time
 
 ---
 
-# Common Lateral Movement Protocols
+## Common Lateral Movement Protocols
 
 Depending on environment:
 
@@ -921,7 +921,7 @@ The presence of these protocols is not inherently malicious.
 
 ---
 
-# Beaconing
+## Beaconing
 
 Command-and-control traffic may exhibit recurring communication.
 
@@ -945,7 +945,7 @@ Legitimate applications can also beacon.
 
 ---
 
-# Beaconing Analysis
+## Beaconing Analysis
 
 Compare:
 
@@ -967,7 +967,7 @@ A process generating regular encrypted connections to an unusual destination may
 
 ---
 
-# Command and Control
+## Command and Control
 
 Network C2 investigation can use:
 
@@ -1005,7 +1005,7 @@ Repeated Connection
 
 ---
 
-# Data Exfiltration
+## Data Exfiltration
 
 Potential indicators include:
 
@@ -1023,7 +1023,7 @@ Volume alone is insufficient.
 
 ---
 
-# Exfiltration Investigation
+## Exfiltration Investigation
 
 Ask:
 
@@ -1040,7 +1040,7 @@ Was transfer authorized?
 
 ---
 
-# Data Volume Analysis
+## Data Volume Analysis
 
 Example:
 
@@ -1062,7 +1062,7 @@ This is an anomaly, but investigators must determine whether it corresponds to:
 
 ---
 
-# NetworkMiner
+## NetworkMiner
 
 NetworkMiner can assist with network traffic analysis and extraction of information from captured traffic.
 
@@ -1081,7 +1081,7 @@ Use only authorized captures.
 
 ---
 
-# Wireshark
+## Wireshark
 
 Wireshark is a widely used packet-analysis tool.
 
@@ -1100,7 +1100,7 @@ It provides:
 
 ---
 
-# Wireshark Investigation Workflow
+## Wireshark Investigation Workflow
 
 ```text
 PCAP
@@ -1132,7 +1132,7 @@ Stream Analysis
 
 ---
 
-# Wireshark Filters
+## Wireshark Filters
 
 Common examples:
 
@@ -1164,7 +1164,7 @@ Use filters to reduce noise rather than blindly reviewing every packet.
 
 ---
 
-# TCP Stream Analysis
+## TCP Stream Analysis
 
 A TCP stream can reconstruct application communication when the traffic is available and not protected by encryption.
 
@@ -1182,7 +1182,7 @@ Application Data
 
 ---
 
-# Zeek
+## Zeek
 
 Zeek is a network security monitoring platform that generates rich protocol-level metadata.
 
@@ -1204,7 +1204,7 @@ https://zeek.org/
 
 ---
 
-# Zeek Investigation Model
+## Zeek Investigation Model
 
 ```text
 Network Traffic
@@ -1222,7 +1222,7 @@ Flow Domain         Web
 
 ---
 
-# Network Forensic Correlation
+## Network Forensic Correlation
 
 A strong investigation connects:
 
@@ -1263,7 +1263,7 @@ TLS Session
 
 ---
 
-# Network Timeline
+## Network Timeline
 
 Example:
 
@@ -1280,7 +1280,7 @@ Correlation helps reconstruct the sequence.
 
 ---
 
-# Network Evidence Gaps
+## Network Evidence Gaps
 
 Document limitations such as:
 
@@ -1299,39 +1299,39 @@ Evidence gaps are part of the investigation result.
 
 ---
 
-# Common Network Forensic Mistakes
+## Common Network Forensic Mistakes
 
-## Treating IP Reputation as Proof
+### Treating IP Reputation as Proof
 
 An IP reputation score is an indicator, not a complete conclusion.
 
-## Assuming Encryption Means No Evidence
+### Assuming Encryption Means No Evidence
 
 TLS still leaves metadata.
 
-## Ignoring NAT
+### Ignoring NAT
 
 Public IPs may represent many internal hosts.
 
-## Ignoring DHCP
+### Ignoring DHCP
 
 IP-to-host attribution can become inaccurate.
 
-## Ignoring Time
+### Ignoring Time
 
 Network correlation depends heavily on accurate timestamps.
 
-## Inspecting Only PCAP
+### Inspecting Only PCAP
 
 Logs and endpoint data provide important context.
 
-## Assuming Large Transfers Are Exfiltration
+### Assuming Large Transfers Are Exfiltration
 
 Backups and cloud synchronization can generate large transfers.
 
 ---
 
-# Network Forensic Decision Tree
+## Network Forensic Decision Tree
 
 ```text
                     Alert
@@ -1374,9 +1374,9 @@ Backups and cloud synchronization can generate large transfers.
 
 ---
 
-# Practical Lab 01 — PCAP Triage
+## Practical Lab 01 — PCAP Triage
 
-## Objective
+### Objective
 
 Given an authorized PCAP:
 
@@ -1401,7 +1401,7 @@ Then move toward specific traffic.
 
 ---
 
-# Practical Lab 02 — DNS Investigation
+## Practical Lab 02 — DNS Investigation
 
 Find:
 
@@ -1430,7 +1430,7 @@ Connection
 
 ---
 
-# Practical Lab 03 — HTTP Investigation
+## Practical Lab 03 — HTTP Investigation
 
 Identify:
 
@@ -1447,7 +1447,7 @@ Determine whether suspicious activity occurred.
 
 ---
 
-# Practical Lab 04 — TLS Investigation
+## Practical Lab 04 — TLS Investigation
 
 Analyze available:
 
@@ -1464,7 +1464,7 @@ Determine what can and cannot be concluded from encrypted traffic.
 
 ---
 
-# Practical Lab 05 — Beaconing Investigation
+## Practical Lab 05 — Beaconing Investigation
 
 Scenario:
 
@@ -1493,7 +1493,7 @@ Unknown
 
 ---
 
-# Practical Lab 06 — Lateral Movement Investigation
+## Practical Lab 06 — Lateral Movement Investigation
 
 Scenario:
 
@@ -1519,7 +1519,7 @@ Determine:
 
 ---
 
-# Practical Lab 07 — Exfiltration Investigation
+## Practical Lab 07 — Exfiltration Investigation
 
 Scenario:
 
@@ -1550,7 +1550,7 @@ Potential Exfiltration
 
 ---
 
-# Practical Lab 08 — Complete Network Forensic Investigation
+## Practical Lab 08 — Complete Network Forensic Investigation
 
 Scenario:
 
@@ -1591,7 +1591,7 @@ Your investigation should establish:
 
 ---
 
-# Network Forensic Report Template
+## Network Forensic Report Template
 
 ```text
 # Network Forensic Investigation
@@ -1653,7 +1653,7 @@ EDR:
 
 ---
 
-# Example Finding
+## Example Finding
 
 ```text
 Finding ID:
@@ -1683,7 +1683,7 @@ Application payload was encrypted and no endpoint process capture was available 
 
 ---
 
-# Network Forensics and Incident Response
+## Network Forensics and Incident Response
 
 Network forensics supports:
 
@@ -1709,7 +1709,7 @@ Network telemetry can identify additional compromised hosts even when endpoint e
 
 ---
 
-# Network Forensics and Threat Hunting
+## Network Forensics and Threat Hunting
 
 A forensic discovery can become a hunt:
 
@@ -1737,7 +1737,7 @@ Scope
 
 ---
 
-# Network Forensics and Detection Engineering
+## Network Forensics and Detection Engineering
 
 Example:
 
@@ -1763,7 +1763,7 @@ Alert on anomalous recurring communication
 
 ---
 
-# Enterprise Network Forensics Architecture
+## Enterprise Network Forensics Architecture
 
 ```text
                          Enterprise Network
@@ -1797,7 +1797,7 @@ Alert on anomalous recurring communication
 
 ---
 
-# Network Forensic Readiness
+## Network Forensic Readiness
 
 Organizations should maintain:
 
@@ -1817,7 +1817,7 @@ Sensor Coverage
 
 ---
 
-# Network Time Synchronization
+## Network Time Synchronization
 
 Accurate timestamps are essential.
 
@@ -1836,7 +1836,7 @@ Clock Offset
 
 ---
 
-# Network Evidence Retention
+## Network Evidence Retention
 
 Retention strategy should consider:
 
@@ -1862,7 +1862,7 @@ High-value network segments
 
 ---
 
-# Encrypted Traffic Strategy
+## Encrypted Traffic Strategy
 
 When payload inspection is unavailable, use metadata:
 
@@ -1881,7 +1881,7 @@ This supports behavioral detection without decrypting every connection.
 
 ---
 
-# Cloud Network Forensics
+## Cloud Network Forensics
 
 Cloud environments may provide:
 
@@ -1899,7 +1899,7 @@ Cloud network investigation should correlate identity and infrastructure metadat
 
 ---
 
-# Container Network Forensics
+## Container Network Forensics
 
 Containerized workloads introduce:
 
@@ -1925,9 +1925,9 @@ Identity
 
 ---
 
-# Network Evidence Confidence
+## Network Evidence Confidence
 
-## High Confidence
+### High Confidence
 
 Multiple independent sources agree.
 
@@ -1941,35 +1941,35 @@ Firewall
 EDR
 ```
 
-## Medium Confidence
+### Medium Confidence
 
 Flow and endpoint evidence support the finding.
 
-## Low Confidence
+### Low Confidence
 
 Only an isolated IP/domain indicator exists.
 
-## Unknown
+### Unknown
 
 Insufficient telemetry.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is network forensics?
+### 1. What is network forensics?
 
 The investigation of network communications and associated telemetry to reconstruct activity and identify security-relevant behavior.
 
 ---
 
-## 2. What is PCAP?
+### 2. What is PCAP?
 
 A packet capture containing captured network packets.
 
 ---
 
-## 3. What is the difference between PCAP and NetFlow?
+### 3. What is the difference between PCAP and NetFlow?
 
 PCAP provides packet-level detail.
 
@@ -1977,7 +1977,7 @@ Flow telemetry generally provides connection metadata without full packet payloa
 
 ---
 
-## 4. Why is DNS important?
+### 4. Why is DNS important?
 
 DNS can connect:
 
@@ -1992,7 +1992,7 @@ making it valuable for investigation.
 
 ---
 
-## 5. Does HTTPS hide everything?
+### 5. Does HTTPS hide everything?
 
 No.
 
@@ -2000,7 +2000,7 @@ It generally protects application content but network metadata may remain visibl
 
 ---
 
-## 6. What can investigators still see with encrypted traffic?
+### 6. What can investigators still see with encrypted traffic?
 
 Potentially:
 
@@ -2016,7 +2016,7 @@ Visibility depends on protocol and deployment.
 
 ---
 
-## 7. What is beaconing?
+### 7. What is beaconing?
 
 Repeated communication between a host and destination, often exhibiting a recurring pattern.
 
@@ -2024,25 +2024,25 @@ Legitimate applications can also beacon.
 
 ---
 
-## 8. What is DNS tunneling?
+### 8. What is DNS tunneling?
 
 Using DNS queries/responses as a communication or data-transfer channel.
 
 ---
 
-## 9. Why is DHCP useful?
+### 9. Why is DHCP useful?
 
 It can help associate IP addresses with devices over time.
 
 ---
 
-## 10. Why is NAT important?
+### 10. Why is NAT important?
 
 Multiple internal systems can appear behind one public address.
 
 ---
 
-## 11. How would you investigate possible lateral movement?
+### 11. How would you investigate possible lateral movement?
 
 Correlate:
 
@@ -2058,7 +2058,7 @@ Time
 
 ---
 
-## 12. How would you investigate suspected exfiltration?
+### 12. How would you investigate suspected exfiltration?
 
 Examine:
 
@@ -2075,21 +2075,21 @@ Business Context
 
 ---
 
-## 13. What is Zeek?
+### 13. What is Zeek?
 
 A network security monitoring platform that generates rich protocol-level telemetry.
 
 ---
 
-## 14. What is Wireshark?
+### 14. What is Wireshark?
 
 A packet-analysis tool used to inspect and decode network traffic.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A workstation makes HTTPS connections to an unfamiliar domain every five minutes.
 
@@ -2117,9 +2117,9 @@ Do not automatically label it C2.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A public IP appears in firewall logs during an incident.
 
@@ -2140,9 +2140,9 @@ This avoids incorrect host attribution.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A server transferred several gigabytes to an external cloud provider.
 
@@ -2169,35 +2169,35 @@ Authorization
 
 ---
 
-# Network Forensic Maturity Model
+## Network Forensic Maturity Model
 
-## Level 1 — Basic
+### Level 1 — Basic
 
 - Firewall logs
 - Basic packet analysis
 - DNS investigation
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Flow telemetry
 - PCAP workflows
 - Standard network investigations
 
-## Level 3 — Managed
+### Level 3 — Managed
 
 - Centralized network monitoring
 - Zeek
 - SIEM
 - Retention policies
 
-## Level 4 — Integrated
+### Level 4 — Integrated
 
 - Network + EDR
 - Threat hunting
 - Detection engineering
 - Automated enrichment
 
-## Level 5 — Advanced
+### Level 5 — Advanced
 
 - Enterprise network analytics
 - Large-scale PCAP investigation
@@ -2207,7 +2207,7 @@ Authorization
 
 ---
 
-# Chapter Completion Checklist
+## Chapter Completion Checklist
 
 ```text
 [ ] Understand network forensics
@@ -2246,7 +2246,7 @@ Authorization
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Network forensics transforms communications into investigative evidence.
 
@@ -2286,49 +2286,49 @@ Remember:
 
 ---
 
-# References
+## References
 
-### Wireshark
+#### Wireshark
 
 https://www.wireshark.org/
 
-### Zeek
+#### Zeek
 
 https://zeek.org/
 
-### NetworkMiner
+#### NetworkMiner
 
 https://www.netresec.com/?page=NetworkMiner
 
-### NIST SP 800-86 — Guide to Integrating Forensic Techniques into Incident Response
+#### NIST SP 800-86 — Guide to Integrating Forensic Techniques into Incident Response
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### NIST SP 800-61 — Incident Response
+#### NIST SP 800-61 — Incident Response
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 
-### CISA
+#### CISA
 
 https://www.cisa.gov/
 
-### RFC 9293 — Transmission Control Protocol
+#### RFC 9293 — Transmission Control Protocol
 
 https://www.rfc-editor.org/rfc/rfc9293
 
-### RFC 1034 — Domain Names
+#### RFC 1034 — Domain Names
 
 https://www.rfc-editor.org/rfc/rfc1034
 
-### RFC 8446 — TLS 1.3
+#### RFC 8446 — TLS 1.3
 
 https://www.rfc-editor.org/rfc/rfc8446
 
-### SANS Network Forensics
+#### SANS Network Forensics
 
 https://www.sans.org/cyber-security-skills-roadmap/
 

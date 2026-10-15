@@ -1,12 +1,12 @@
 # 55-Threat-Modeling.md
 
-# Part 1 — Introduction to Threat Modeling, Risk Identification, Trust Boundaries, and Secure System Design
+## Part 1 — Introduction to Threat Modeling, Risk Identification, Trust Boundaries, and Secure System Design
 
 > **"Threat Modeling is a structured security engineering process used to identify, evaluate, and mitigate potential security risks during the design and development of systems before they become real-world vulnerabilities."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Threat Modeling?
+## What is Threat Modeling?
 
 Threat Modeling is a systematic process for identifying security risks, understanding how a system may be exposed to threats, and designing appropriate security controls before implementation.
 
@@ -55,7 +55,7 @@ Threat modeling enables organizations to make informed security decisions early 
 
 ---
 
-# Why Threat Modeling is Important
+## Why Threat Modeling is Important
 
 Modern applications operate across cloud environments, APIs, mobile devices, microservices, and distributed infrastructure.
 
@@ -71,7 +71,7 @@ Threat modeling helps organizations:
 
 ---
 
-# Security by Design
+## Security by Design
 
 Threat modeling supports Security by Design by introducing security considerations before implementation.
 
@@ -103,7 +103,7 @@ Addressing risks during design is generally more efficient than correcting them 
 
 ---
 
-# Threat Modeling in the Secure SDLC
+## Threat Modeling in the Secure SDLC
 
 ```
 Requirements
@@ -137,7 +137,7 @@ Threat modeling should be revisited whenever significant architectural or busine
 
 ---
 
-# Objectives of Threat Modeling
+## Objectives of Threat Modeling
 
 ```
 Threat Modeling Objectives
@@ -165,7 +165,7 @@ The goal is not to eliminate all risk but to understand and manage it appropriat
 
 ---
 
-# Understanding Assets
+## Understanding Assets
 
 An asset is anything valuable that requires protection.
 
@@ -195,7 +195,7 @@ Asset identification is the foundation of threat modeling.
 
 ---
 
-# Asset Classification
+## Asset Classification
 
 Organizations commonly classify assets according to business value.
 
@@ -219,7 +219,7 @@ Higher-value assets typically require stronger security controls and monitoring.
 
 ---
 
-# Understanding the Attack Surface (Conceptual)
+## Understanding the Attack Surface (Conceptual)
 
 The attack surface represents all locations where external interaction with a system is possible.
 
@@ -249,7 +249,7 @@ Understanding the attack surface helps security teams focus defensive efforts.
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
 
 A trust boundary represents a location where the level of trust changes between components.
 
@@ -277,7 +277,7 @@ Security controls should be applied whenever data crosses a trust boundary.
 
 ---
 
-# Identifying Data Flows
+## Identifying Data Flows
 
 Threat modeling begins with understanding how information moves through the system.
 
@@ -309,7 +309,7 @@ Every interaction should be documented and reviewed.
 
 ---
 
-# Threat Modeling Process
+## Threat Modeling Process
 
 A typical high-level workflow is:
 
@@ -345,7 +345,7 @@ Threat modeling is iterative rather than a one-time activity.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Threat modeling supports layered security.
 
@@ -377,7 +377,7 @@ Multiple independent controls reduce the impact of individual failures.
 
 ---
 
-# Enterprise Threat Modeling Architecture
+## Enterprise Threat Modeling Architecture
 
 ```
               Business Requirements
@@ -419,7 +419,7 @@ Threat modeling should involve development, security, architecture, and business
 
 ---
 
-# Stakeholder Responsibilities
+## Stakeholder Responsibilities
 
 ```
 Stakeholders
@@ -447,7 +447,7 @@ Collaboration improves the completeness and effectiveness of threat modeling.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization designs a new patient management platform.
 
@@ -479,7 +479,7 @@ Before development begins, architects identify critical patient data, trust boun
 
 ---
 
-# Benefits of Threat Modeling
+## Benefits of Threat Modeling
 
 ```
 Business Benefits
@@ -505,7 +505,7 @@ Business Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the architecture of a simple web application.
 2. Identify all business assets.
@@ -517,7 +517,7 @@ Business Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Threat Modeling?
 2. Why should Threat Modeling occur early in development?
@@ -532,7 +532,7 @@ Business Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Begin Threat Modeling during system design.
 - Maintain an accurate inventory of business assets.
@@ -545,7 +545,7 @@ Business Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Performing Threat Modeling only after development.
 - Ignoring business assets during design.
@@ -557,7 +557,7 @@ Business Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Threat Modeling is a structured process for identifying and managing security risks during system design.
 - Assets, trust boundaries, and data flows form the foundation of effective Threat Modeling.
@@ -565,15 +565,15 @@ Business Benefits
 - Threat Modeling complements Secure SDLC, DevSecOps, and defense-in-depth strategies.
 - Continuous review and collaboration are essential for maintaining effective threat models.
 
-# 55-Threat-Modeling.md
+## 55-Threat-Modeling.md
 
-# Part 2 — Threat Modeling Methodologies, Data Flow Diagrams, Risk Assessment, Threat Analysis, and Enterprise Security Planning
+## Part 2 — Threat Modeling Methodologies, Data Flow Diagrams, Risk Assessment, Threat Analysis, and Enterprise Security Planning
 
 > **"An effective Threat Model provides a structured understanding of how a system operates, where trust changes, what assets require protection, and which security controls reduce business risk."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -590,7 +590,7 @@ After completing this part, you will understand:
 
 ---
 
-# Threat Modeling Methodologies
+## Threat Modeling Methodologies
 
 Organizations use structured methodologies to ensure consistency across projects.
 
@@ -618,7 +618,7 @@ Different methodologies emphasize different aspects such as application security
 
 ---
 
-# Selecting a Methodology
+## Selecting a Methodology
 
 Method selection depends on:
 
@@ -646,7 +646,7 @@ Many organizations combine elements from multiple methodologies while maintainin
 
 ---
 
-# Understanding Data Flow Diagrams (DFDs)
+## Understanding Data Flow Diagrams (DFDs)
 
 A Data Flow Diagram (DFD) visually represents how information moves through a system.
 
@@ -678,7 +678,7 @@ DFDs help security teams understand communication paths before analyzing potenti
 
 ---
 
-# Components of a Data Flow Diagram
+## Components of a Data Flow Diagram
 
 ```
 DFD Components
@@ -700,7 +700,7 @@ Each component contributes to understanding how data moves throughout the applic
 
 ---
 
-# Example Enterprise DFD
+## Example Enterprise DFD
 
 ```
              Customer
@@ -742,7 +742,7 @@ This simplified diagram helps identify where security controls should be evaluat
 
 ---
 
-# Process Decomposition
+## Process Decomposition
 
 Large applications should be divided into smaller logical components.
 
@@ -770,7 +770,7 @@ Smaller components are easier to review and secure.
 
 ---
 
-# Trust Boundary Analysis
+## Trust Boundary Analysis
 
 Every trust boundary represents a transition where additional verification should occur.
 
@@ -802,7 +802,7 @@ Security controls should be evaluated wherever trust changes.
 
 ---
 
-# Identifying Threats
+## Identifying Threats
 
 Threat identification focuses on understanding where business risks may exist.
 
@@ -834,7 +834,7 @@ Threats should be documented using consistent organizational standards.
 
 ---
 
-# Threat Categories (Conceptual)
+## Threat Categories (Conceptual)
 
 Organizations often group identified threats into broad categories.
 
@@ -864,7 +864,7 @@ Categories help organize analysis and prioritize remediation activities.
 
 ---
 
-# Risk Assessment
+## Risk Assessment
 
 After identifying potential threats, organizations evaluate business impact and likelihood.
 
@@ -896,7 +896,7 @@ Risk assessment enables informed security decisions.
 
 ---
 
-# Example Risk Matrix
+## Example Risk Matrix
 
 | Likelihood | Business Impact | Priority |
 |------------|-----------------|----------|
@@ -910,7 +910,7 @@ Organizations should define their own risk criteria based on business objectives
 
 ---
 
-# Risk Treatment Options
+## Risk Treatment Options
 
 ```
 Risk
@@ -930,7 +930,7 @@ The chosen treatment depends on business requirements, resources, and organizati
 
 ---
 
-# Selecting Security Controls
+## Selecting Security Controls
 
 After risks are prioritized, appropriate defensive controls are selected.
 
@@ -958,7 +958,7 @@ Controls should align with business objectives and architectural requirements.
 
 ---
 
-# Security Control Categories
+## Security Control Categories
 
 ```
 Security Controls
@@ -982,7 +982,7 @@ Layering multiple categories improves resilience.
 
 ---
 
-# Threat Model Documentation
+## Threat Model Documentation
 
 Threat models should include:
 
@@ -1016,7 +1016,7 @@ Good documentation supports future reviews and audits.
 
 ---
 
-# Threat Model Lifecycle
+## Threat Model Lifecycle
 
 ```
 Requirements
@@ -1054,7 +1054,7 @@ Threat models should evolve as systems evolve.
 
 ---
 
-# Enterprise Threat Modeling Workflow
+## Enterprise Threat Modeling Workflow
 
 ```
 Business Requirements
@@ -1100,7 +1100,7 @@ This structured workflow helps maintain consistency across projects.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global logistics company develops a shipment tracking platform.
 
@@ -1132,7 +1132,7 @@ Security architects identify customer data, API integrations, mobile application
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1145,7 +1145,7 @@ Security architects identify customer data, API integrations, mobile application
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create a Data Flow Diagram for an enterprise application.
 2. Identify all external entities and trust boundaries.
@@ -1157,7 +1157,7 @@ Security architects identify customer data, API integrations, mobile application
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a Data Flow Diagram (DFD)?
 2. Why are trust boundaries important?
@@ -1172,7 +1172,7 @@ Security architects identify customer data, API integrations, mobile application
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Create Data Flow Diagrams before identifying threats.
 - Maintain accurate asset inventories.
@@ -1185,7 +1185,7 @@ Security architects identify customer data, API integrations, mobile application
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Creating incomplete Data Flow Diagrams.
 - Ignoring trust boundaries.
@@ -1197,7 +1197,7 @@ Security architects identify customer data, API integrations, mobile application
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Data Flow Diagrams provide the foundation for structured Threat Modeling.
 - Risk assessment prioritizes security efforts according to business impact and likelihood.
@@ -1205,15 +1205,15 @@ Security architects identify customer data, API integrations, mobile application
 - Security controls should be selected using a layered, risk-based approach.
 - Threat Modeling is an iterative process that should evolve alongside application architecture and business requirements.
 
-# 55-Threat-Modeling.md
+## 55-Threat-Modeling.md
 
-# Part 3 — Enterprise Threat Modeling Reviews, Secure SDLC Integration, DevSecOps, Continuous Risk Assessment, and Operational Excellence
+## Part 3 — Enterprise Threat Modeling Reviews, Secure SDLC Integration, DevSecOps, Continuous Risk Assessment, and Operational Excellence
 
 > **"Threat Modeling is most effective when it becomes a continuous engineering activity integrated into architecture reviews, Secure SDLC, DevSecOps, governance, and operational decision-making."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1230,7 +1230,7 @@ After completing this part, you will understand:
 
 ---
 
-# Reviewing Threat Models
+## Reviewing Threat Models
 
 Threat models should be reviewed throughout the application lifecycle rather than created only once.
 
@@ -1258,7 +1258,7 @@ Regular reviews ensure the model accurately reflects the current system.
 
 ---
 
-# When Should Threat Models Be Updated?
+## When Should Threat Models Be Updated?
 
 Threat models should be revisited whenever significant changes occur.
 
@@ -1288,7 +1288,7 @@ Keeping models current improves long-term security planning.
 
 ---
 
-# Architecture Security Reviews
+## Architecture Security Reviews
 
 Architecture reviews evaluate whether the current design aligns with organizational security objectives.
 
@@ -1316,7 +1316,7 @@ Reviews should involve multiple stakeholders with technical and business experti
 
 ---
 
-# Security Review Checklist
+## Security Review Checklist
 
 ```
 ✓ Assets Identified
@@ -1340,7 +1340,7 @@ A consistent checklist improves review quality across projects.
 
 ---
 
-# Continuous Risk Assessment
+## Continuous Risk Assessment
 
 Risk assessment should continue after deployment.
 
@@ -1368,7 +1368,7 @@ Operational experience often reveals new business and technical considerations.
 
 ---
 
-# Risk Prioritization
+## Risk Prioritization
 
 Organizations should prioritize remediation based on business impact.
 
@@ -1396,7 +1396,7 @@ Not every identified risk requires the same level of response.
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 Threat Modeling should be integrated into every major SDLC phase.
 
@@ -1432,7 +1432,7 @@ Threat modeling provides context for many later security activities.
 
 ---
 
-# Threat Modeling During Development
+## Threat Modeling During Development
 
 ```
 Design Changes
@@ -1458,7 +1458,7 @@ Development teams should verify that implementation remains aligned with the app
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Threat Modeling supports automated and collaborative development workflows.
 
@@ -1494,7 +1494,7 @@ Threat models help guide security decisions throughout the delivery pipeline.
 
 ---
 
-# Threat Modeling and Security Testing
+## Threat Modeling and Security Testing
 
 Threat models help determine which areas deserve additional verification.
 
@@ -1522,7 +1522,7 @@ Threat modeling complements security testing by improving planning rather than r
 
 ---
 
-# Threat Model Maintenance
+## Threat Model Maintenance
 
 Threat models should remain living documents.
 
@@ -1550,7 +1550,7 @@ Historical versions provide valuable context during future architecture reviews.
 
 ---
 
-# Version Control
+## Version Control
 
 Threat model documentation should be stored alongside other project documentation.
 
@@ -1574,7 +1574,7 @@ Version history improves traceability and governance.
 
 ---
 
-# Security Governance
+## Security Governance
 
 Organizations should define governance for threat modeling activities.
 
@@ -1604,7 +1604,7 @@ Governance improves consistency across engineering teams.
 
 ---
 
-# Collaboration Across Teams
+## Collaboration Across Teams
 
 Effective Threat Modeling requires collaboration.
 
@@ -1636,7 +1636,7 @@ Multiple perspectives improve risk identification and mitigation planning.
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Threat-model-related activities should support operational visibility.
 
@@ -1664,7 +1664,7 @@ Logs help demonstrate accountability and support audit requirements.
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1690,7 +1690,7 @@ Monitoring validates whether security assumptions remain appropriate over time.
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1705,7 +1705,7 @@ Monitoring validates whether security assumptions remain appropriate over time.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                Business Requirements
@@ -1751,7 +1751,7 @@ Threat Modeling connects business requirements with secure engineering decisions
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational manufacturing company develops a cloud-based production management platform.
 
@@ -1783,7 +1783,7 @@ Security architects maintain documented threat models for production systems, cl
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Threat Model Created
@@ -1809,7 +1809,7 @@ Security architects maintain documented threat models for production systems, cl
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1822,7 +1822,7 @@ Security architects maintain documented threat models for production systems, cl
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Review an existing system architecture.
 2. Identify changes requiring a Threat Model update.
@@ -1834,7 +1834,7 @@ Security architects maintain documented threat models for production systems, cl
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should Threat Models be updated regularly?
 2. Which events should trigger a Threat Model review?
@@ -1849,7 +1849,7 @@ Security architects maintain documented threat models for production systems, cl
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Review Threat Models after significant architectural changes.
 - Maintain version-controlled documentation.
@@ -1862,7 +1862,7 @@ Security architects maintain documented threat models for production systems, cl
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating Threat Models as static documents.
 - Updating models only after production deployments.
@@ -1874,7 +1874,7 @@ Security architects maintain documented threat models for production systems, cl
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Threat Modeling should be continuously reviewed and maintained throughout the application lifecycle.
 - Secure SDLC and DevSecOps benefit from integrating Threat Modeling into design and development workflows.
@@ -1882,15 +1882,15 @@ Security architects maintain documented threat models for production systems, cl
 - Collaboration across multiple teams produces more comprehensive threat analyses.
 - Continuous monitoring and operational metrics help organizations maintain mature Threat Modeling programs.
 
-# 55-Threat-Modeling.md
+## 55-Threat-Modeling.md
 
-# Part 4 — Enterprise Governance, Zero Trust, Continuous Threat Modeling, Security Maturity, Best Practices, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, Continuous Threat Modeling, Security Maturity, Best Practices, and Chapter Summary
 
 > **"Threat Modeling is most valuable when it becomes a continuous organizational capability that guides architecture decisions, software development, operational security, and long-term risk management."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1911,7 +1911,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 Threat Modeling should follow documented governance processes that ensure consistency across all projects.
 
@@ -1951,7 +1951,7 @@ Governance ensures that security decisions remain aligned with business objectiv
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Threat Modeling Governance
@@ -1981,7 +1981,7 @@ A standardized governance framework improves quality, repeatability, and account
 
 ---
 
-# Zero Trust and Threat Modeling
+## Zero Trust and Threat Modeling
 
 Threat Modeling supports Zero Trust by identifying where trust assumptions exist within a system.
 
@@ -2013,7 +2013,7 @@ Threat models help architects determine where additional verification and securi
 
 ---
 
-# Zero Trust Design Considerations
+## Zero Trust Design Considerations
 
 When reviewing architectures, teams should evaluate:
 
@@ -2043,7 +2043,7 @@ These considerations strengthen security throughout distributed environments.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Threat Modeling enables multiple independent security layers.
 
@@ -2079,7 +2079,7 @@ Layered controls improve resilience when individual controls fail.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Threat models should include infrastructure defined through Infrastructure as Code.
 
@@ -2107,7 +2107,7 @@ Reviewing infrastructure definitions early helps identify architectural risks be
 
 ---
 
-# Secure CI/CD Integration
+## Secure CI/CD Integration
 
 Threat Modeling supports secure software delivery by influencing security validation activities.
 
@@ -2143,7 +2143,7 @@ Security considerations remain integrated throughout automated delivery pipeline
 
 ---
 
-# Threat Model Documentation
+## Threat Model Documentation
 
 Threat model documentation should remain accurate and current.
 
@@ -2177,7 +2177,7 @@ Complete documentation supports maintenance, audits, and future design decisions
 
 ---
 
-# Documentation Lifecycle
+## Documentation Lifecycle
 
 ```
 Create
@@ -2207,7 +2207,7 @@ Threat models should evolve alongside business and technical changes.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Threat Modeling often supports organizational compliance activities.
 
@@ -2237,7 +2237,7 @@ Specific compliance requirements vary across industries and regulatory framework
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Threat Modeling activities should support organizational accountability.
 
@@ -2265,7 +2265,7 @@ Audit records demonstrate review history and support governance processes.
 
 ---
 
-# Important Audit Events
+## Important Audit Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2282,7 +2282,7 @@ Audit logs should avoid storing unnecessary confidential information while maint
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 Threat Modeling should remain connected to operational monitoring.
 
@@ -2310,7 +2310,7 @@ Monitoring validates whether architectural assumptions remain accurate over time
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2325,7 +2325,7 @@ Monitoring validates whether architectural assumptions remain accurate over time
 
 ---
 
-# Enterprise Dashboard
+## Enterprise Dashboard
 
 ```
 Threat Modeling Dashboard
@@ -2353,7 +2353,7 @@ Dashboards provide management with visibility into Threat Modeling activities an
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2383,7 +2383,7 @@ SOC teams use operational telemetry together with architectural knowledge from t
 
 ---
 
-# Incident Response
+## Incident Response
 
 Threat Models support incident response by documenting system architecture, trust boundaries, and critical assets.
 
@@ -2415,7 +2415,7 @@ Documented architecture accelerates investigation and recovery.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Security Event
@@ -2449,7 +2449,7 @@ Lessons learned should be incorporated into future threat models.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Architecture Reviews
@@ -2475,7 +2475,7 @@ Threat Modeling should evolve continuously alongside applications and infrastruc
 
 ---
 
-# Threat Modeling Security Maturity Model
+## Threat Modeling Security Maturity Model
 
 ```
 Level 1
@@ -2513,7 +2513,7 @@ Organizations mature by improving consistency, collaboration, governance, automa
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                  Business Requirements
@@ -2555,7 +2555,7 @@ Threat Modeling provides a structured connection between business objectives, te
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial services organization develops a cloud-native payment platform.
 
@@ -2591,7 +2591,7 @@ Threat models are maintained throughout the project lifecycle. Architecture revi
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Threat Modeling Methodology Defined
@@ -2617,7 +2617,7 @@ Threat models are maintained throughout the project lifecycle. Architecture revi
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2630,9 +2630,9 @@ Threat models are maintained throughout the project lifecycle. Architecture revi
 
 ---
 
-# Threat Modeling Quick Revision
+## Threat Modeling Quick Revision
 
-## Threat Modeling Workflow
+### Threat Modeling Workflow
 
 ```
 Requirements
@@ -2660,7 +2660,7 @@ Development
 
 ---
 
-## Core Components
+### Core Components
 
 ```
 Assets
@@ -2684,7 +2684,7 @@ Security Controls
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Monitoring
@@ -2704,7 +2704,7 @@ Threat Model Revision
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a Threat Model for a multi-tier enterprise application.
 2. Draw a Data Flow Diagram identifying trust boundaries.
@@ -2716,7 +2716,7 @@ Threat Model Revision
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should Threat Modeling be integrated into the Secure SDLC?
 2. How does Threat Modeling support Zero Trust?
@@ -2731,7 +2731,7 @@ Threat Model Revision
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Begin Threat Modeling during architecture design.
 - Maintain version-controlled Threat Model documentation.
@@ -2744,7 +2744,7 @@ Threat Model Revision
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating Threat Modeling as a one-time activity.
 - Ignoring changes in architecture or business processes.
@@ -2756,7 +2756,7 @@ Threat Model Revision
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

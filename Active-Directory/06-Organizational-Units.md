@@ -1,10 +1,10 @@
 # 06-Organizational-Units.md
 
-# Part 1 — Organizational Units (OUs): Fundamentals, Architecture, and Enterprise Design
+## Part 1 — Organizational Units (OUs): Fundamentals, Architecture, and Enterprise Design
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -18,7 +18,7 @@ After completing this part, you will be able to:
 
 ---
 
-# What is an Organizational Unit (OU)?
+## What is an Organizational Unit (OU)?
 
 An **Organizational Unit (OU)** is a logical container within an Active Directory domain that is used to organize objects such as:
 
@@ -35,7 +35,7 @@ Think of an OU as a folder that helps administrators organize objects for admini
 
 ---
 
-# Why Do Organizational Units Exist?
+## Why Do Organizational Units Exist?
 
 Imagine a company with:
 
@@ -74,7 +74,7 @@ Administration would quickly become unmanageable.
 
 ---
 
-# Active Directory with Organizational Units
+## Active Directory with Organizational Units
 
 Instead, enterprises organize objects into meaningful structures.
 
@@ -114,7 +114,7 @@ This hierarchy improves organization, administration, and policy management.
 
 ---
 
-# Real-World Analogy
+## Real-World Analogy
 
 Consider a university.
 
@@ -139,7 +139,7 @@ Similarly, Active Directory uses OUs to group related directory objects.
 
 ---
 
-# Characteristics of an OU
+## Characteristics of an OU
 
 An Organizational Unit:
 
@@ -153,7 +153,7 @@ An Organizational Unit:
 
 ---
 
-# What Can Be Stored Inside an OU?
+## What Can Be Stored Inside an OU?
 
 An OU may contain:
 
@@ -181,7 +181,7 @@ This flexibility allows administrators to model business structures.
 
 ---
 
-# Nested Organizational Units
+## Nested Organizational Units
 
 OUs can contain additional OUs.
 
@@ -217,7 +217,7 @@ Nested OUs help create logical administrative hierarchies.
 
 ---
 
-# Benefits of Organizational Units
+## Benefits of Organizational Units
 
 OUs provide:
 
@@ -232,7 +232,7 @@ OUs provide:
 
 ---
 
-# Organizational Units vs Containers
+## Organizational Units vs Containers
 
 Active Directory includes both **Containers** and **Organizational Units**.
 
@@ -240,7 +240,7 @@ Many beginners confuse the two.
 
 ---
 
-# Default Containers
+## Default Containers
 
 When a new domain is created, several containers already exist.
 
@@ -264,7 +264,7 @@ These are containers—not Organizational Units.
 
 ---
 
-# Container vs OU Comparison
+## Container vs OU Comparison
 
 | Feature | Container | Organizational Unit |
 |----------|------------|--------------------|
@@ -278,7 +278,7 @@ These are containers—not Organizational Units.
 
 ---
 
-# Why Not Use Default Containers?
+## Why Not Use Default Containers?
 
 Consider the default **Users** container.
 
@@ -309,7 +309,7 @@ Problems:
 
 ---
 
-# Enterprise Recommendation
+## Enterprise Recommendation
 
 Most organizations create dedicated OUs.
 
@@ -343,7 +343,7 @@ This structure supports long-term growth and administration.
 
 ---
 
-# OU Hierarchy Design Principles
+## OU Hierarchy Design Principles
 
 Good OU design should reflect administrative needs rather than organizational charts alone.
 
@@ -361,7 +361,7 @@ Avoid creating unnecessary depth.
 
 ---
 
-# Example Enterprise OU Structure
+## Example Enterprise OU Structure
 
 ```text
 company.com
@@ -409,7 +409,7 @@ This layout separates resources by administrative function and simplifies policy
 
 ---
 
-# Naming Conventions
+## Naming Conventions
 
 Use clear, consistent naming.
 
@@ -449,7 +449,7 @@ Meaningful names improve maintainability.
 
 ---
 
-# Distinguished Name (DN) Example
+## Distinguished Name (DN) Example
 
 Every OU has a Distinguished Name (DN).
 
@@ -469,7 +469,7 @@ The DN uniquely identifies the object's location in Active Directory.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational organization operates in three regions.
 
@@ -505,7 +505,7 @@ Each regional IT team can manage its own resources while adhering to corporate s
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Well-designed OUs support security operations by enabling:
 
@@ -520,7 +520,7 @@ Although OUs are **not** security boundaries, they are a key component of secure
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -533,13 +533,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore the OU structure of an Active Directory domain.
 
-### Tasks
+#### Tasks
 
 1. Open **Active Directory Users and Computers (ADUC)**.
 2. Identify:
@@ -555,7 +555,7 @@ Explore the OU structure of an Active Directory domain.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an Organizational Unit?
 2. Why are OUs used in Active Directory?
@@ -570,7 +570,7 @@ Explore the OU structure of an Active Directory domain.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - OUs provide logical organization for Active Directory objects.
 - OUs support delegation and Group Policy.
@@ -581,13 +581,13 @@ Explore the OU structure of an Active Directory domain.
 
 ---
 
-# 06-Organizational-Units.md
+## 06-Organizational-Units.md
 
-# Part 2 — OU Delegation, Group Policy Integration, Protection, and Enterprise Administration
+## Part 2 — OU Delegation, Group Policy Integration, Protection, and Enterprise Administration
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -601,7 +601,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Why Delegation Matters
+## Why Delegation Matters
 
 Imagine a company with:
 
@@ -616,7 +616,7 @@ Instead, Active Directory allows administrators to delegate limited permissions.
 
 ---
 
-# What is Delegation?
+## What is Delegation?
 
 Delegation is the process of assigning specific administrative tasks to users or groups without granting full administrative control over the domain.
 
@@ -648,7 +648,7 @@ Each administrator manages only their own OU.
 
 ---
 
-# Benefits of Delegation
+## Benefits of Delegation
 
 Delegation provides:
 
@@ -662,7 +662,7 @@ Delegation provides:
 
 ---
 
-# Delegation vs Domain Admin
+## Delegation vs Domain Admin
 
 | Domain Admin | Delegated Administrator |
 |--------------|------------------------|
@@ -674,7 +674,7 @@ Delegation provides:
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 Human Resources should manage:
 
@@ -695,7 +695,7 @@ Delegation allows this separation.
 
 ---
 
-# Delegation Wizard
+## Delegation Wizard
 
 Active Directory Users and Computers provides the **Delegation of Control Wizard**.
 
@@ -711,7 +711,7 @@ It helps assign permissions such as:
 
 ---
 
-# Delegation Workflow
+## Delegation Workflow
 
 ```text
 Domain Admin
@@ -737,7 +737,7 @@ The delegated administrator cannot exceed the permissions granted.
 
 ---
 
-# Example Delegation
+## Example Delegation
 
 ```text
 company.com
@@ -777,7 +777,7 @@ Not granted:
 
 ---
 
-# Delegation Best Practices
+## Delegation Best Practices
 
 Delegate permissions to **security groups**, not individual users.
 
@@ -799,7 +799,7 @@ This simplifies administration.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 One of the most important security principles.
 
@@ -833,7 +833,7 @@ Domain Admin
 
 ---
 
-# Delegation Through ACLs
+## Delegation Through ACLs
 
 Delegation works by modifying the **Access Control List (ACL)** on an OU.
 
@@ -859,7 +859,7 @@ The ACL determines what actions are allowed.
 
 ---
 
-# Group Policy and Organizational Units
+## Group Policy and Organizational Units
 
 One of the primary reasons OUs exist is to apply **Group Policy Objects (GPOs).**
 
@@ -885,7 +885,7 @@ Without OUs, targeted policy application becomes much more difficult.
 
 ---
 
-# Why Link GPOs to OUs?
+## Why Link GPOs to OUs?
 
 Different departments require different settings.
 
@@ -913,7 +913,7 @@ Each OU can receive its own policies.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```text
 Company
@@ -947,7 +947,7 @@ Each department receives only relevant policies.
 
 ---
 
-# Moving Objects Between OUs
+## Moving Objects Between OUs
 
 Objects may need to be reorganized.
 
@@ -975,7 +975,7 @@ Moving the user changes the OU and may result in different Group Policies being 
 
 ---
 
-# Effects of Moving Objects
+## Effects of Moving Objects
 
 Moving a user or computer can affect:
 
@@ -990,7 +990,7 @@ Always assess the impact before moving objects.
 
 ---
 
-# Administrative Boundaries
+## Administrative Boundaries
 
 Many enterprises organize OUs by administration rather than by the company's reporting structure.
 
@@ -1026,7 +1026,7 @@ This aligns better with management tasks.
 
 ---
 
-# Geographic OU Design
+## Geographic OU Design
 
 Example:
 
@@ -1062,7 +1062,7 @@ Regional administrators can manage their own resources.
 
 ---
 
-# Department-Based Design
+## Department-Based Design
 
 Example:
 
@@ -1086,7 +1086,7 @@ Simple and suitable for smaller organizations.
 
 ---
 
-# Hybrid OU Design
+## Hybrid OU Design
 
 Many enterprises combine multiple approaches.
 
@@ -1130,7 +1130,7 @@ This supports both geographic and departmental administration.
 
 ---
 
-# Protecting Organizational Units
+## Protecting Organizational Units
 
 Active Directory provides the option:
 
@@ -1154,7 +1154,7 @@ This protection helps prevent accidental removal of important OUs.
 
 ---
 
-# Why Protection Matters
+## Why Protection Matters
 
 Deleting an OU may remove:
 
@@ -1168,7 +1168,7 @@ Protection reduces the likelihood of costly mistakes.
 
 ---
 
-# Common Administrative Tasks
+## Common Administrative Tasks
 
 Typical OU administration includes:
 
@@ -1183,7 +1183,7 @@ Typical OU administration includes:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 A well-designed OU structure improves security by enabling:
 
@@ -1202,7 +1202,7 @@ Security enforcement is achieved through permissions, authentication, and Group 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -1215,13 +1215,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Practice delegation and OU management.
 
-### Tasks
+#### Tasks
 
 1. Create an OU named `Finance`.
 2. Create child OUs:
@@ -1238,7 +1238,7 @@ Practice delegation and OU management.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is delegation in Active Directory?
 2. Why should administrators avoid assigning Domain Admin rights broadly?
@@ -1253,7 +1253,7 @@ Practice delegation and OU management.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Delegation enables secure, limited administration of Active Directory.
 - OUs are the primary targets for Group Policy.
@@ -1264,13 +1264,13 @@ Practice delegation and OU management.
 
 ---
 
-# 06-Organizational-Units.md
+## 06-Organizational-Units.md
 
-# Part 3 — Group Policy Inheritance, OU Design Strategies, Automation, Troubleshooting, and Enterprise Best Practices
+## Part 3 — Group Policy Inheritance, OU Design Strategies, Automation, Troubleshooting, and Enterprise Best Practices
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -1284,7 +1284,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Organizational Units and Group Policy
+## Organizational Units and Group Policy
 
 One of the biggest advantages of Organizational Units is their ability to receive **Group Policy Objects (GPOs).**
 
@@ -1312,7 +1312,7 @@ Finance Users & Computers
 
 ---
 
-# Understanding Group Policy Scope
+## Understanding Group Policy Scope
 
 A Group Policy can be linked to:
 
@@ -1346,7 +1346,7 @@ Policies flow downward unless configured otherwise.
 
 ---
 
-# Group Policy Inheritance
+## Group Policy Inheritance
 
 Inheritance means that child OUs receive policies linked to their parent containers.
 
@@ -1368,7 +1368,7 @@ If a policy is linked to **Corporate**, both child OUs inherit it.
 
 ---
 
-# Example
+## Example
 
 ```text
 Company
@@ -1386,7 +1386,7 @@ If a password policy or software deployment GPO is linked to **IT**, both **Serv
 
 ---
 
-# Policy Processing Flow
+## Policy Processing Flow
 
 ```text
 Local Policy
@@ -1412,7 +1412,7 @@ This is commonly referred to as the **LSDOU** processing order, which will be ex
 
 ---
 
-# Block Inheritance
+## Block Inheritance
 
 Sometimes an OU should **not** receive policies from its parent.
 
@@ -1441,7 +1441,7 @@ Common use cases:
 
 ---
 
-# Enforced Policies
+## Enforced Policies
 
 An administrator may require a policy to apply regardless of Block Inheritance.
 
@@ -1469,7 +1469,7 @@ Typical enterprise examples include:
 
 ---
 
-# Inheritance Example
+## Inheritance Example
 
 ```text
 Domain
@@ -1502,7 +1502,7 @@ Results:
 
 ---
 
-# When Should Block Inheritance Be Used?
+## When Should Block Inheritance Be Used?
 
 Use it only when necessary.
 
@@ -1521,7 +1521,7 @@ Poor examples:
 
 ---
 
-# Designing Enterprise OUs
+## Designing Enterprise OUs
 
 Microsoft recommends designing OUs based on:
 
@@ -1535,7 +1535,7 @@ Avoid designing OUs purely around reporting structures.
 
 ---
 
-# Poor OU Design
+## Poor OU Design
 
 ```text
 CEO
@@ -1560,7 +1560,7 @@ Problems:
 
 ---
 
-# Better Enterprise Design
+## Better Enterprise Design
 
 ```text
 Company
@@ -1586,7 +1586,7 @@ Administrative tasks become much easier.
 
 ---
 
-# Separating Workstations and Servers
+## Separating Workstations and Servers
 
 Never mix servers and workstations inside the same OU.
 
@@ -1612,7 +1612,7 @@ Different security policies apply to each.
 
 ---
 
-# Privileged Accounts
+## Privileged Accounts
 
 Enterprise administrators usually maintain a dedicated OU.
 
@@ -1634,7 +1634,7 @@ Separate policies protect privileged identities.
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Dedicated OU:
 
@@ -1658,7 +1658,7 @@ Benefits:
 
 ---
 
-# Computer Lifecycle Example
+## Computer Lifecycle Example
 
 ```text
 New Computer
@@ -1688,7 +1688,7 @@ Many organizations use temporary OUs during provisioning.
 
 ---
 
-# User Lifecycle Example
+## User Lifecycle Example
 
 ```text
 New User
@@ -1718,7 +1718,7 @@ OUs help organize identity lifecycle processes.
 
 ---
 
-# Automation with OUs
+## Automation with OUs
 
 PowerShell simplifies OU management.
 
@@ -1747,7 +1747,7 @@ Detailed PowerShell examples are covered in Chapter 17.
 
 ---
 
-# Enterprise Automation
+## Enterprise Automation
 
 Large enterprises automate:
 
@@ -1762,7 +1762,7 @@ Automation reduces manual errors and improves consistency.
 
 ---
 
-# OU Troubleshooting
+## OU Troubleshooting
 
 Common issues include:
 
@@ -1776,7 +1776,7 @@ Common issues include:
 
 ---
 
-# Troubleshooting Checklist
+## Troubleshooting Checklist
 
 | Check | Why It Matters |
 |---------|----------------|
@@ -1790,7 +1790,7 @@ Common issues include:
 
 ---
 
-# Monitoring OUs
+## Monitoring OUs
 
 Administrators should monitor:
 
@@ -1806,7 +1806,7 @@ Logging helps identify unauthorized modifications.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Company:
 
@@ -1846,7 +1846,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 A well-planned OU structure strengthens security operations by:
 
@@ -1887,7 +1887,7 @@ Enhanced Auditing
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -1901,7 +1901,7 @@ Avoid:
 
 ---
 
-# Best Practices Checklist
+## Best Practices Checklist
 
 ✔ Design OUs around administration.
 
@@ -1925,13 +1925,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design a scalable OU hierarchy for a fictional enterprise.
 
-### Scenario
+#### Scenario
 
 Company:
 
@@ -1944,7 +1944,7 @@ Company:
 - Bengaluru
 - New York
 
-### Tasks
+#### Tasks
 
 1. Create a root OU for each location.
 2. Create child OUs:
@@ -1963,7 +1963,7 @@ Company:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should OUs be designed around administration instead of organizational charts?
 2. What is Group Policy inheritance?
@@ -1978,7 +1978,7 @@ Company:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - OUs are central to enterprise administration and Group Policy management.
 - Policies inherit through the OU hierarchy unless inheritance is blocked or overridden by an Enforced GPO.
@@ -1989,13 +1989,13 @@ Company:
 
 ---
 
-# 06-Organizational-Units.md
+## 06-Organizational-Units.md
 
-# Part 4 — Enterprise OU Best Practices, Disaster Recovery, Auditing, Final Revision, and Chapter Summary
+## Part 4 — Enterprise OU Best Practices, Disaster Recovery, Auditing, Final Revision, and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -2008,7 +2008,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Enterprise OU Design Principles
+## Enterprise OU Design Principles
 
 A well-designed OU structure should be:
 
@@ -2024,7 +2024,7 @@ A good OU design minimizes administrative overhead while supporting business and
 
 ---
 
-# Microsoft's General Recommendations
+## Microsoft's General Recommendations
 
 Microsoft generally recommends:
 
@@ -2039,7 +2039,7 @@ Microsoft generally recommends:
 
 ---
 
-# Enterprise OU Architecture
+## Enterprise OU Architecture
 
 ```text
 company.com
@@ -2089,7 +2089,7 @@ This structure supports:
 
 ---
 
-# Administrative Boundary Example
+## Administrative Boundary Example
 
 ```text
 Finance OU
@@ -2119,7 +2119,7 @@ No administrator should receive permissions beyond their operational responsibil
 
 ---
 
-# OU Security Model
+## OU Security Model
 
 Although OUs are **not security boundaries**, they contribute significantly to secure administration.
 
@@ -2143,7 +2143,7 @@ Security is enforced through permissions—not by the OU itself.
 
 ---
 
-# Privileged Administrative Model
+## Privileged Administrative Model
 
 Enterprise environments often separate administrative identities.
 
@@ -2177,7 +2177,7 @@ Each account type can reside in a dedicated OU with tailored Group Policies.
 
 ---
 
-# Group Policy Strategy
+## Group Policy Strategy
 
 Avoid linking every GPO at the domain level.
 
@@ -2211,7 +2211,7 @@ This approach keeps policy management organized and predictable.
 
 ---
 
-# Documentation Standards
+## Documentation Standards
 
 Every enterprise should maintain documentation for:
 
@@ -2234,7 +2234,7 @@ Example:
 
 ---
 
-# Change Management
+## Change Management
 
 Changes to OU structures should follow a controlled process.
 
@@ -2272,7 +2272,7 @@ Avoid making structural changes directly in production without proper testing.
 
 ---
 
-# Auditing Organizational Units
+## Auditing Organizational Units
 
 Monitor the following events:
 
@@ -2288,7 +2288,7 @@ Auditing helps detect unauthorized or accidental changes.
 
 ---
 
-# Monitoring Checklist
+## Monitoring Checklist
 
 Administrators should regularly review:
 
@@ -2304,7 +2304,7 @@ Administrators should regularly review:
 
 ---
 
-# Disaster Recovery Considerations
+## Disaster Recovery Considerations
 
 Although OUs themselves are lightweight objects, they are essential to the administrative structure of Active Directory.
 
@@ -2326,7 +2326,7 @@ Recovery options include:
 
 ---
 
-# Active Directory Recycle Bin
+## Active Directory Recycle Bin
 
 When enabled, the Active Directory Recycle Bin allows recovery of accidentally deleted objects with much of their metadata preserved.
 
@@ -2352,7 +2352,7 @@ This feature significantly simplifies recovery compared to older methods.
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 A mature backup strategy includes:
 
@@ -2368,7 +2368,7 @@ A backup that has never been tested should not be assumed to be recoverable.
 
 ---
 
-# Lifecycle Management
+## Lifecycle Management
 
 Example OU lifecycle:
 
@@ -2404,7 +2404,7 @@ Periodic reviews ensure that obsolete OUs are removed and the hierarchy remains 
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -2440,7 +2440,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 A mature OU strategy supports multiple security objectives.
 
@@ -2459,9 +2459,9 @@ However, remember:
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
-## Myth 1
+### Myth 1
 
 > OUs provide security boundaries.
 
@@ -2471,7 +2471,7 @@ Permissions and authentication provide security boundaries. OUs are administrati
 
 ---
 
-## Myth 2
+### Myth 2
 
 > More nested OUs always mean better organization.
 
@@ -2481,7 +2481,7 @@ Excessive nesting increases complexity and can make administration more difficul
 
 ---
 
-## Myth 3
+### Myth 3
 
 > Every department needs a unique OU hierarchy.
 
@@ -2491,7 +2491,7 @@ Many departments can share a standardized structure while using different GPOs o
 
 ---
 
-## Myth 4
+### Myth 4
 
 > Group Policy should always be linked at the domain level.
 
@@ -2501,7 +2501,7 @@ Only policies intended for the entire domain should be linked there. Departmenta
 
 ---
 
-# Common Administrative Mistakes
+## Common Administrative Mistakes
 
 Avoid:
 
@@ -2515,7 +2515,7 @@ Avoid:
 
 ---
 
-# Best Practices Checklist
+## Best Practices Checklist
 
 ✔ Keep OU hierarchy simple.
 
@@ -2541,7 +2541,7 @@ Avoid:
 
 ---
 
-# Complete Chapter Summary
+## Complete Chapter Summary
 
 In this chapter, you learned:
 
@@ -2565,7 +2565,7 @@ Organizational Units form the administrative backbone of Active Directory and ar
 
 ---
 
-# Final Revision Table
+## Final Revision Table
 
 | Topic | Key Point |
 |--------|-----------|
@@ -2584,13 +2584,13 @@ Organizational Units form the administrative backbone of Active Directory and ar
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design and secure an enterprise-ready OU structure.
 
-### Scenario
+#### Scenario
 
 A company has:
 
@@ -2602,7 +2602,7 @@ A company has:
 - Security
 - Two regional offices (London and Bengaluru)
 
-### Tasks
+#### Tasks
 
 1. Create a root OU for each department.
 2. Create child OUs for:
@@ -2622,7 +2622,7 @@ A company has:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the primary purpose of an Organizational Unit?
 2. How does an OU differ from a Container?
@@ -2639,7 +2639,7 @@ A company has:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Active Directory Domain Services
 - Microsoft Learn – Organizational Units
@@ -2651,7 +2651,7 @@ A company has:
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 06 – Organizational Units**.
 

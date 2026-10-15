@@ -1,10 +1,10 @@
 # 12 - Transmission Control Protocol (TCP)
 
-# Part 1 — TCP Fundamentals, Architecture, Header Format, Three-Way Handshake, and Reliable Communication
+## Part 1 — TCP Fundamentals, Architecture, Header Format, Three-Way Handshake, and Reliable Communication
 
 ---
 
-# Overview
+## Overview
 
 The **Transmission Control Protocol (TCP)** is one of the core protocols of the Internet Protocol Suite (TCP/IP). It operates at the **Transport Layer (Layer 4)** of both the TCP/IP and OSI networking models and provides **reliable, connection-oriented communication** between applications running on different hosts.
 
@@ -32,7 +32,7 @@ Almost every business-critical application depends on TCP to ensure accurate and
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -52,7 +52,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why TCP Exists
+## Why TCP Exists
 
 Early networking protocols focused on sending data from one device to another. However, networks are inherently unreliable.
 
@@ -72,7 +72,7 @@ TCP was designed to solve these problems by providing a mechanism that guarantee
 
 ---
 
-# What is TCP?
+## What is TCP?
 
 **Transmission Control Protocol (TCP)** is a **connection-oriented transport layer protocol** that establishes a communication session before transmitting data.
 
@@ -89,7 +89,7 @@ Unlike UDP, TCP tracks every byte transmitted and ensures successful delivery be
 
 ---
 
-# Transport Layer Overview
+## Transport Layer Overview
 
 TCP operates at **Layer 4 (Transport Layer)**.
 
@@ -111,7 +111,7 @@ The Transport Layer is responsible for communication between applications rather
 
 ---
 
-# Responsibilities of TCP
+## Responsibilities of TCP
 
 TCP performs several critical functions:
 
@@ -128,7 +128,7 @@ TCP performs several critical functions:
 
 ---
 
-# Characteristics of TCP
+## Characteristics of TCP
 
 | Feature | Description |
 |----------|-------------|
@@ -143,7 +143,7 @@ TCP performs several critical functions:
 
 ---
 
-# TCP vs UDP
+## TCP vs UDP
 
 | Feature | TCP | UDP |
 |----------|-----|-----|
@@ -159,7 +159,7 @@ TCP performs several critical functions:
 
 ---
 
-# Connection-Oriented Communication
+## Connection-Oriented Communication
 
 TCP requires establishing a session before exchanging data.
 
@@ -191,7 +191,7 @@ This ensures both devices are synchronized before transmitting application data.
 
 ---
 
-# Reliable Communication
+## Reliable Communication
 
 TCP reliability is achieved through:
 
@@ -206,7 +206,7 @@ If any segment is lost, TCP retransmits it automatically.
 
 ---
 
-# TCP Segment
+## TCP Segment
 
 Unlike UDP datagrams, TCP transmits **segments**.
 
@@ -222,7 +222,7 @@ Each segment contains control information required to maintain reliable communic
 
 ---
 
-# TCP Header Format
+## TCP Header Format
 
 ```
 0                   15 16                  31
@@ -262,7 +262,7 @@ Maximum Header Size:
 
 ---
 
-# Source Port
+## Source Port
 
 The Source Port identifies the sending application.
 
@@ -282,7 +282,7 @@ The operating system dynamically assigns this port.
 
 ---
 
-# Destination Port
+## Destination Port
 
 The Destination Port identifies the receiving service.
 
@@ -301,7 +301,7 @@ Examples:
 
 ---
 
-# Port Number Categories
+## Port Number Categories
 
 | Range | Description |
 |--------|-------------|
@@ -311,7 +311,7 @@ Examples:
 
 ---
 
-# Sequence Number
+## Sequence Number
 
 Every byte transmitted over TCP is assigned a sequence number.
 
@@ -339,7 +339,7 @@ Sequence numbers allow the receiver to reconstruct the original byte stream in t
 
 ---
 
-# Acknowledgment Number
+## Acknowledgment Number
 
 The acknowledgment number indicates the next expected byte.
 
@@ -363,7 +363,7 @@ This tells the sender that bytes up to 1499 have been received successfully.
 
 ---
 
-# Data Offset
+## Data Offset
 
 The Data Offset field specifies the size of the TCP header.
 
@@ -376,13 +376,13 @@ This allows the receiver to determine where the application data begins.
 
 ---
 
-# Reserved Bits
+## Reserved Bits
 
 Reserved bits are set aside for future protocol enhancements and are normally set to zero.
 
 ---
 
-# TCP Flags
+## TCP Flags
 
 TCP uses control flags to manage the state of a connection.
 
@@ -400,7 +400,7 @@ TCP uses control flags to manage the state of a connection.
 
 ---
 
-# SYN Flag
+## SYN Flag
 
 The SYN flag initiates a TCP connection.
 
@@ -418,7 +418,7 @@ It synchronizes sequence numbers between both endpoints.
 
 ---
 
-# ACK Flag
+## ACK Flag
 
 The ACK flag acknowledges successful receipt of data.
 
@@ -436,7 +436,7 @@ Almost every TCP segment after the initial SYN includes the ACK flag.
 
 ---
 
-# FIN Flag
+## FIN Flag
 
 FIN is used for graceful connection termination.
 
@@ -454,7 +454,7 @@ Both endpoints exchange FIN and ACK segments to close the connection cleanly.
 
 ---
 
-# RST Flag
+## RST Flag
 
 RST immediately aborts a connection.
 
@@ -469,7 +469,7 @@ Unlike FIN, RST does not complete pending data transfers.
 
 ---
 
-# PSH Flag
+## PSH Flag
 
 The PSH (Push) flag instructs the receiver to deliver data to the application immediately instead of buffering it.
 
@@ -481,7 +481,7 @@ Used by interactive applications such as:
 
 ---
 
-# URG Flag
+## URG Flag
 
 URG indicates that the Urgent Pointer field contains high-priority data.
 
@@ -489,7 +489,7 @@ This feature is rarely used in modern applications.
 
 ---
 
-# Window Size
+## Window Size
 
 The Window Size field controls how much data can be sent before an acknowledgment is required.
 
@@ -513,7 +513,7 @@ This mechanism supports efficient flow control.
 
 ---
 
-# Checksum
+## Checksum
 
 The Checksum verifies the integrity of the TCP header and payload.
 
@@ -541,7 +541,7 @@ If the checksum validation fails, the segment is discarded and retransmitted.
 
 ---
 
-# Urgent Pointer
+## Urgent Pointer
 
 The Urgent Pointer identifies the end of urgent data when the URG flag is set.
 
@@ -549,7 +549,7 @@ Although part of the TCP specification, it is seldom used in modern networking.
 
 ---
 
-# TCP Options
+## TCP Options
 
 TCP Options extend the protocol with additional capabilities.
 
@@ -565,7 +565,7 @@ These options improve efficiency and performance.
 
 ---
 
-# Maximum Segment Size (MSS)
+## Maximum Segment Size (MSS)
 
 MSS specifies the maximum amount of application data that can be carried in a TCP segment.
 
@@ -599,7 +599,7 @@ Negotiating MSS during connection establishment helps avoid fragmentation.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A user opens:
 
@@ -641,7 +641,7 @@ Every step depends on TCP to deliver requests and responses reliably.
 
 ---
 
-# Three-Way Handshake
+## Three-Way Handshake
 
 Before any application data is exchanged, TCP establishes a connection using the **Three-Way Handshake**.
 
@@ -666,7 +666,7 @@ The connection is then ready for data transfer.
 
 ---
 
-# Step 1 – SYN
+## Step 1 – SYN
 
 The client initiates communication.
 
@@ -686,7 +686,7 @@ The SYN segment advertises the client's initial sequence number and TCP options.
 
 ---
 
-# Step 2 – SYN + ACK
+## Step 2 – SYN + ACK
 
 The server acknowledges the client's SYN and sends its own SYN.
 
@@ -706,7 +706,7 @@ This synchronizes sequence numbers in both directions.
 
 ---
 
-# Step 3 – ACK
+## Step 3 – ACK
 
 The client acknowledges the server's SYN.
 
@@ -724,7 +724,7 @@ At this point, the TCP connection is fully established.
 
 ---
 
-# Why Three-Way Handshake Is Important
+## Why Three-Way Handshake Is Important
 
 The handshake ensures:
 
@@ -738,7 +738,7 @@ Without this process, reliable byte-stream communication would not be possible.
 
 ---
 
-# Enterprise Communication Workflow
+## Enterprise Communication Workflow
 
 ```
 Employee Browser
@@ -780,7 +780,7 @@ TCP serves as the transport foundation for higher-layer protocols such as TLS an
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable TCP communication is essential for:
 
@@ -797,7 +797,7 @@ Failures in TCP connectivity can lead to service outages, transaction failures, 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - TCP is a connection-oriented Transport Layer protocol.
 - It provides reliable, ordered, and error-checked delivery of data.
@@ -808,11 +808,11 @@ Failures in TCP connectivity can lead to service outages, transaction failures, 
 
 ---
 
-# Part 2 — TCP Data Transfer, Sliding Window, Flow Control, Congestion Control, and Connection Termination
+## Part 2 — TCP Data Transfer, Sliding Window, Flow Control, Congestion Control, and Connection Termination
 
 ---
 
-# Introduction
+## Introduction
 
 After successfully establishing a TCP connection through the **Three-Way Handshake**, both endpoints are ready to exchange application data.
 
@@ -829,7 +829,7 @@ This section explains how TCP manages reliable communication after the connectio
 
 ---
 
-# TCP Data Transfer
+## TCP Data Transfer
 
 TCP treats application data as a **continuous stream of bytes** rather than independent messages.
 
@@ -871,7 +871,7 @@ Each segment is independently acknowledged by the receiver.
 
 ---
 
-# Byte-Oriented Communication
+## Byte-Oriented Communication
 
 Unlike UDP, TCP does not preserve application message boundaries.
 
@@ -915,7 +915,7 @@ The receiving TCP stack reconstructs the original byte stream before delivering 
 
 ---
 
-# Segmentation
+## Segmentation
 
 Segmentation divides large amounts of application data into manageable TCP segments.
 
@@ -948,7 +948,7 @@ Advantages include:
 
 ---
 
-# Reassembly
+## Reassembly
 
 The receiver reconstructs all incoming segments into the original byte stream.
 
@@ -976,7 +976,7 @@ Even if packets arrive out of order, TCP uses sequence numbers to restore the co
 
 ---
 
-# Ordered Delivery
+## Ordered Delivery
 
 Suppose packets arrive as:
 
@@ -1020,7 +1020,7 @@ This guarantees consistent application behavior.
 
 ---
 
-# Reliable Delivery
+## Reliable Delivery
 
 Every transmitted segment requires an acknowledgment (ACK).
 
@@ -1052,7 +1052,7 @@ If an acknowledgment is not received within a specified timeout, TCP retransmits
 
 ---
 
-# Retransmission
+## Retransmission
 
 Example:
 
@@ -1082,7 +1082,7 @@ This mechanism ensures reliable delivery despite packet loss.
 
 ---
 
-# Duplicate Detection
+## Duplicate Detection
 
 If duplicate segments arrive due to retransmissions:
 
@@ -1106,7 +1106,7 @@ Sequence numbers allow TCP to identify and ignore duplicate data.
 
 ---
 
-# Sliding Window
+## Sliding Window
 
 The Sliding Window mechanism allows multiple segments to be transmitted before waiting for acknowledgments.
 
@@ -1158,7 +1158,7 @@ This significantly improves throughput.
 
 ---
 
-# Sliding Window Example
+## Sliding Window Example
 
 Window Size:
 
@@ -1192,7 +1192,7 @@ As acknowledgments arrive, the transmission window advances.
 
 ---
 
-# Window Advertisement
+## Window Advertisement
 
 The receiver informs the sender how much buffer space is available.
 
@@ -1216,7 +1216,7 @@ If the receiver's buffer fills, it advertises a smaller window.
 
 ---
 
-# Zero Window
+## Zero Window
 
 If the receiver cannot accept additional data:
 
@@ -1230,7 +1230,7 @@ This prevents receiver buffer overflow.
 
 ---
 
-# Flow Control
+## Flow Control
 
 Flow Control ensures that a fast sender does not overwhelm a slower receiver.
 
@@ -1254,7 +1254,7 @@ The receiver dynamically adjusts the advertised window size based on available b
 
 ---
 
-# Why Flow Control Matters
+## Why Flow Control Matters
 
 Without flow control:
 
@@ -1280,7 +1280,7 @@ Flow control prevents this by regulating the transmission rate.
 
 ---
 
-# Congestion Control
+## Congestion Control
 
 While Flow Control protects the receiver, **Congestion Control protects the network**.
 
@@ -1297,7 +1297,7 @@ TCP uses congestion control algorithms to prevent network collapse.
 
 ---
 
-# Congestion Window (cwnd)
+## Congestion Window (cwnd)
 
 TCP maintains a **Congestion Window (cwnd)** that limits the amount of data in transit.
 
@@ -1317,7 +1317,7 @@ This balances receiver capacity and network conditions.
 
 ---
 
-# Slow Start
+## Slow Start
 
 TCP begins cautiously.
 
@@ -1349,7 +1349,7 @@ The congestion window doubles every round-trip time (RTT) until a threshold is r
 
 ---
 
-# Slow Start Threshold (ssthresh)
+## Slow Start Threshold (ssthresh)
 
 The **Slow Start Threshold (ssthresh)** determines when TCP switches from exponential growth to linear growth.
 
@@ -1373,7 +1373,7 @@ This helps prevent congestion.
 
 ---
 
-# Congestion Avoidance
+## Congestion Avoidance
 
 After reaching `ssthresh`, TCP increases the congestion window more gradually.
 
@@ -1401,7 +1401,7 @@ Instead of doubling each RTT, the window grows approximately one MSS per RTT.
 
 ---
 
-# Packet Loss
+## Packet Loss
 
 TCP interprets packet loss as a sign of congestion.
 
@@ -1416,7 +1416,7 @@ When packet loss is detected, TCP reduces its transmission rate.
 
 ---
 
-# Fast Retransmit
+## Fast Retransmit
 
 If the sender receives **three duplicate ACKs**, it assumes a segment has been lost.
 
@@ -1440,7 +1440,7 @@ This avoids waiting for the retransmission timeout, improving recovery time.
 
 ---
 
-# Fast Recovery
+## Fast Recovery
 
 Instead of restarting from one segment, Fast Recovery reduces the congestion window and continues transmitting.
 
@@ -1452,7 +1452,7 @@ Benefits:
 
 ---
 
-# Selective Acknowledgment (SACK)
+## Selective Acknowledgment (SACK)
 
 Without SACK:
 
@@ -1492,7 +1492,7 @@ SACK improves efficiency by retransmitting only missing data.
 
 ---
 
-# Delayed ACK
+## Delayed ACK
 
 To reduce protocol overhead, receivers may delay acknowledgments briefly.
 
@@ -1520,7 +1520,7 @@ This reduces network traffic.
 
 ---
 
-# Nagle Algorithm
+## Nagle Algorithm
 
 The Nagle Algorithm combines small packets into larger ones.
 
@@ -1565,7 +1565,7 @@ Applications such as SSH or gaming often disable the Nagle Algorithm.
 
 ---
 
-# Keepalive
+## Keepalive
 
 TCP Keepalive detects inactive or dead connections.
 
@@ -1591,7 +1591,7 @@ Keepalive helps remove stale sessions.
 
 ---
 
-# TCP Connection States
+## TCP Connection States
 
 TCP maintains a finite state machine to track each connection.
 
@@ -1612,7 +1612,7 @@ Each state represents a different phase of the connection lifecycle.
 
 ---
 
-# TCP State Transition
+## TCP State Transition
 
 ```
 CLOSED
@@ -1646,7 +1646,7 @@ Understanding these states is essential for troubleshooting network issues.
 
 ---
 
-# Four-Way Handshake
+## Four-Way Handshake
 
 TCP closes connections gracefully using a **Four-Way Handshake**.
 
@@ -1666,7 +1666,7 @@ Each direction of communication is terminated independently.
 
 ---
 
-# Step 1 – FIN
+## Step 1 – FIN
 
 The client indicates it has finished sending data.
 
@@ -1682,7 +1682,7 @@ Server
 
 ---
 
-# Step 2 – ACK
+## Step 2 – ACK
 
 The server acknowledges the FIN.
 
@@ -1700,7 +1700,7 @@ The client stops sending data but can still receive data.
 
 ---
 
-# Step 3 – FIN
+## Step 3 – FIN
 
 When the server finishes transmitting, it sends its own FIN.
 
@@ -1716,7 +1716,7 @@ Client
 
 ---
 
-# Step 4 – ACK
+## Step 4 – ACK
 
 The client acknowledges the server's FIN.
 
@@ -1734,7 +1734,7 @@ The connection is now closed.
 
 ---
 
-# TIME_WAIT
+## TIME_WAIT
 
 After sending the final ACK, the client enters the **TIME_WAIT** state.
 
@@ -1748,7 +1748,7 @@ TIME_WAIT is a normal and important part of TCP.
 
 ---
 
-# CLOSE_WAIT
+## CLOSE_WAIT
 
 A connection remains in **CLOSE_WAIT** when the local application has not yet closed the socket after receiving a FIN.
 
@@ -1756,7 +1756,7 @@ Persistent CLOSE_WAIT states may indicate application issues or resource leaks.
 
 ---
 
-# Half-Open Connections
+## Half-Open Connections
 
 A half-open connection occurs when one endpoint believes the session is active while the other does not.
 
@@ -1771,7 +1771,7 @@ TCP Keepalive mechanisms help identify and remove such connections.
 
 ---
 
-# Enterprise Load Balancers
+## Enterprise Load Balancers
 
 Modern load balancers manage millions of concurrent TCP connections.
 
@@ -1805,7 +1805,7 @@ The load balancer distributes connections while preserving TCP session integrity
 
 ---
 
-# High Availability
+## High Availability
 
 Enterprise environments deploy redundant TCP-based services.
 
@@ -1833,7 +1833,7 @@ This ensures continuous availability during failures.
 
 ---
 
-# TCP in Cloud Environments
+## TCP in Cloud Environments
 
 Cloud providers optimize TCP for distributed workloads.
 
@@ -1849,7 +1849,7 @@ Efficient TCP tuning improves scalability and performance in cloud-native archit
 
 ---
 
-# Business Impact
+## Business Impact
 
 TCP's data transfer mechanisms enable:
 
@@ -1864,7 +1864,7 @@ Without these mechanisms, modern business applications could not guarantee data 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - TCP divides application data into segments and reassembles it at the receiver.
 - Sequence numbers and acknowledgments provide reliable, ordered delivery.
@@ -1875,11 +1875,11 @@ Without these mechanisms, modern business applications could not guarantee data 
 
 ---
 
-# Part 3 — TCP Security, Attack Techniques, Hardening, IDS/IPS, Enterprise Protection, and Best Practices
+## Part 3 — TCP Security, Attack Techniques, Hardening, IDS/IPS, Enterprise Protection, and Best Practices
 
 ---
 
-# Introduction
+## Introduction
 
 TCP is the backbone of modern enterprise communication. Nearly every critical service—including web applications, email, databases, cloud workloads, VPNs, APIs, and remote administration—depends on TCP.
 
@@ -1900,7 +1900,7 @@ Understanding TCP attacks and defensive strategies is essential for Network Engi
 
 ---
 
-# TCP Security Objectives
+## TCP Security Objectives
 
 A secure TCP implementation should provide:
 
@@ -1915,7 +1915,7 @@ A secure TCP implementation should provide:
 
 ---
 
-# Common TCP Threats
+## Common TCP Threats
 
 Modern enterprise networks commonly encounter:
 
@@ -1937,9 +1937,9 @@ Each technique targets different aspects of the TCP protocol.
 
 ---
 
-# SYN Flood Attack
+## SYN Flood Attack
 
-## Overview
+### Overview
 
 A SYN Flood is one of the most common TCP-based Denial-of-Service attacks.
 
@@ -1987,7 +1987,7 @@ Legitimate Clients Rejected
 
 ---
 
-# Half-Open Connections
+## Half-Open Connections
 
 A half-open connection occurs when:
 
@@ -2014,7 +2014,7 @@ Thousands of these sessions consume memory and CPU resources.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Possible consequences include:
 
@@ -2028,7 +2028,7 @@ Possible consequences include:
 
 ---
 
-# Detection
+## Detection
 
 SOC analysts should monitor for:
 
@@ -2041,7 +2041,7 @@ SOC analysts should monitor for:
 
 ---
 
-# Mitigation
+## Mitigation
 
 Recommended controls:
 
@@ -2056,7 +2056,7 @@ Recommended controls:
 
 ---
 
-# SYN Cookies
+## SYN Cookies
 
 Instead of allocating memory immediately, the server encodes connection state within the SYN-ACK response.
 
@@ -2088,9 +2088,9 @@ This prevents attackers from exhausting connection tables.
 
 ---
 
-# TCP Session Hijacking
+## TCP Session Hijacking
 
-## Overview
+### Overview
 
 TCP Session Hijacking occurs when an attacker takes control of an existing TCP session.
 
@@ -2114,7 +2114,7 @@ If successful, the attacker impersonates the legitimate client.
 
 ---
 
-# Requirements
+## Requirements
 
 Successful hijacking typically requires:
 
@@ -2127,7 +2127,7 @@ Modern encryption (TLS) greatly reduces the usefulness of session hijacking by p
 
 ---
 
-# Business Impact
+## Business Impact
 
 Potential consequences:
 
@@ -2139,7 +2139,7 @@ Potential consequences:
 
 ---
 
-# Mitigation
+## Mitigation
 
 Organizations should:
 
@@ -2152,7 +2152,7 @@ Organizations should:
 
 ---
 
-# TCP Reset (RST) Attack
+## TCP Reset (RST) Attack
 
 An attacker injects forged TCP Reset packets.
 
@@ -2177,7 +2177,7 @@ Possible effects:
 
 ---
 
-# Detection
+## Detection
 
 Indicators include:
 
@@ -2188,7 +2188,7 @@ Indicators include:
 
 ---
 
-# TCP Spoofing
+## TCP Spoofing
 
 TCP Spoofing involves forging source IP addresses.
 
@@ -2212,7 +2212,7 @@ Spoofing is commonly combined with other attacks.
 
 ---
 
-# Mitigation
+## Mitigation
 
 Best practices include:
 
@@ -2224,7 +2224,7 @@ Best practices include:
 
 ---
 
-# Sequence Number Prediction
+## Sequence Number Prediction
 
 Early TCP implementations generated predictable Initial Sequence Numbers (ISNs).
 
@@ -2246,7 +2246,7 @@ Modern operating systems use cryptographically strong random sequence numbers.
 
 ---
 
-# ACK Flood Attack
+## ACK Flood Attack
 
 Attackers send massive numbers of ACK packets.
 
@@ -2270,7 +2270,7 @@ Some devices expend significant resources validating unsolicited ACK traffic.
 
 ---
 
-# FIN Scan
+## FIN Scan
 
 FIN Scan sends packets with only the FIN flag set.
 
@@ -2294,7 +2294,7 @@ Attackers use this behavior to identify open ports while attempting to evade bas
 
 ---
 
-# NULL Scan
+## NULL Scan
 
 A NULL Scan sends packets with **no TCP flags**.
 
@@ -2315,7 +2315,7 @@ Expected behavior:
 
 ---
 
-# Xmas Scan
+## Xmas Scan
 
 An Xmas Scan sets multiple TCP flags simultaneously.
 
@@ -2333,7 +2333,7 @@ It is used for stealthier reconnaissance on systems that follow RFC behavior.
 
 ---
 
-# Why FIN/NULL/Xmas Scans Work
+## Why FIN/NULL/Xmas Scans Work
 
 RFC-compliant TCP stacks respond differently to open and closed ports.
 
@@ -2357,7 +2357,7 @@ Attackers leverage these differences for reconnaissance.
 
 ---
 
-# Fragmentation Attacks
+## Fragmentation Attacks
 
 Attackers split malicious packets into multiple IP fragments.
 
@@ -2381,7 +2381,7 @@ Some security devices may inspect fragments incorrectly, allowing payloads to by
 
 ---
 
-# TCP Port Scanning
+## TCP Port Scanning
 
 Port scanning identifies listening services.
 
@@ -2424,7 +2424,7 @@ Open Ports Identified
 
 ---
 
-# TCP Reflection
+## TCP Reflection
 
 Although less common than UDP reflection, TCP can be abused in reflection-style attacks under certain conditions.
 
@@ -2450,7 +2450,7 @@ Ingress filtering helps mitigate source address spoofing.
 
 ---
 
-# Distributed Denial of Service (DDoS)
+## Distributed Denial of Service (DDoS)
 
 Thousands of compromised systems generate TCP traffic simultaneously.
 
@@ -2483,7 +2483,7 @@ Large-scale TCP floods can overwhelm:
 
 ---
 
-# Enterprise Firewall Protection
+## Enterprise Firewall Protection
 
 Modern firewalls perform **Stateful Packet Inspection (SPI)**.
 
@@ -2517,7 +2517,7 @@ This prevents many spoofing and session attacks.
 
 ---
 
-# Stateful Packet Inspection (SPI)
+## Stateful Packet Inspection (SPI)
 
 Example workflow:
 
@@ -2561,7 +2561,7 @@ Packets that do not match an existing state are typically dropped.
 
 ---
 
-# Intrusion Detection Systems (IDS)
+## Intrusion Detection Systems (IDS)
 
 IDS platforms inspect TCP traffic for malicious behavior.
 
@@ -2582,7 +2582,7 @@ Popular IDS solutions:
 
 ---
 
-# Intrusion Prevention Systems (IPS)
+## Intrusion Prevention Systems (IPS)
 
 Unlike IDS, IPS can actively block malicious TCP traffic.
 
@@ -2596,7 +2596,7 @@ Possible actions:
 
 ---
 
-# Linux TCP Hardening
+## Linux TCP Hardening
 
 Common Linux hardening measures:
 
@@ -2622,7 +2622,7 @@ Administrators should also review timeout values, backlog limits, and kernel net
 
 ---
 
-# Windows TCP Hardening
+## Windows TCP Hardening
 
 Recommended practices:
 
@@ -2635,7 +2635,7 @@ Recommended practices:
 
 ---
 
-# Cisco TCP Protection
+## Cisco TCP Protection
 
 Cisco IOS offers several TCP protection features:
 
@@ -2648,7 +2648,7 @@ Cisco IOS offers several TCP protection features:
 
 ---
 
-# TCP Security in Cloud Environments
+## TCP Security in Cloud Environments
 
 Cloud providers offer additional protections:
 
@@ -2675,7 +2675,7 @@ These services help defend TCP-based workloads from unauthorized access and volu
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -2694,7 +2694,7 @@ Organizations should:
 
 ---
 
-# SOC Detection Engineering
+## SOC Detection Engineering
 
 SOC teams should monitor:
 
@@ -2711,7 +2711,7 @@ Combining TCP telemetry with endpoint, DNS, authentication, and proxy logs impro
 
 ---
 
-# Zeek Monitoring
+## Zeek Monitoring
 
 Zeek provides detailed TCP connection logging through `conn.log`.
 
@@ -2732,7 +2732,7 @@ These logs are valuable for threat hunting and incident investigations.
 
 ---
 
-# Suricata Monitoring
+## Suricata Monitoring
 
 Suricata can detect:
 
@@ -2747,7 +2747,7 @@ Alerts can be forwarded to SIEM platforms for correlation.
 
 ---
 
-# Sigma Detection Ideas
+## Sigma Detection Ideas
 
 Potential detection logic includes:
 
@@ -2762,7 +2762,7 @@ These detections should be tuned to reduce false positives.
 
 ---
 
-# MITRE ATT&CK Mapping
+## MITRE ATT&CK Mapping
 
 | Technique | MITRE ATT&CK |
 |-----------|--------------|
@@ -2774,7 +2774,7 @@ These detections should be tuned to reduce false positives.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Weak TCP security can result in:
 
@@ -2789,7 +2789,7 @@ Securing TCP is therefore a foundational requirement for enterprise resilience.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - TCP is frequently targeted because it supports most enterprise applications.
 - SYN Floods exploit the connection establishment process to exhaust server resources.
@@ -2801,11 +2801,11 @@ Securing TCP is therefore a foundational requirement for enterprise resilience.
 ---
 
 
-# Part 4 — TCP Packet Analysis, Wireshark, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, RFC References, Summary, and Chapter Review
+## Part 4 — TCP Packet Analysis, Wireshark, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, RFC References, Summary, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 Understanding TCP theory is only part of becoming a networking or cybersecurity professional.
 
@@ -2823,7 +2823,7 @@ This section focuses on practical TCP analysis and enterprise operations.
 
 ---
 
-# TCP Packet Analysis
+## TCP Packet Analysis
 
 A TCP packet (more accurately, a **TCP segment**) contains both control information and application data.
 
@@ -2849,7 +2849,7 @@ Every field contributes to reliable communication.
 
 ---
 
-# Source Port
+## Source Port
 
 The Source Port identifies the application that initiated the connection.
 
@@ -2865,7 +2865,7 @@ This is typically an ephemeral port assigned by the operating system.
 
 ---
 
-# Destination Port
+## Destination Port
 
 The Destination Port identifies the service being accessed.
 
@@ -2881,7 +2881,7 @@ Examples:
 
 ---
 
-# Sequence Number
+## Sequence Number
 
 The Sequence Number represents the first byte carried within the TCP segment.
 
@@ -2895,7 +2895,7 @@ This value allows the receiver to reorder segments and detect missing data.
 
 ---
 
-# Acknowledgment Number
+## Acknowledgment Number
 
 The Acknowledgment Number indicates the next byte expected from the sender.
 
@@ -2907,7 +2907,7 @@ It confirms that all previous bytes have been received successfully.
 
 ---
 
-# Window Size
+## Window Size
 
 The Window Size advertises the amount of data the receiver is prepared to accept before requiring another acknowledgment.
 
@@ -2923,7 +2923,7 @@ Larger windows improve throughput on high-bandwidth, high-latency links.
 
 ---
 
-# TCP Flags
+## TCP Flags
 
 Common TCP flags observed in captures include:
 
@@ -2940,7 +2940,7 @@ Common TCP flags observed in captures include:
 
 ---
 
-# TCP Options
+## TCP Options
 
 Common options include:
 
@@ -2954,7 +2954,7 @@ These are negotiated during connection establishment.
 
 ---
 
-# Packet Capture Workflow
+## Packet Capture Workflow
 
 ```
 Client
@@ -2992,7 +2992,7 @@ Capturing packets at multiple locations helps isolate network issues.
 
 ---
 
-# Wireshark
+## Wireshark
 
 Wireshark is one of the most widely used protocol analyzers for TCP troubleshooting.
 
@@ -3007,7 +3007,7 @@ Typical uses include:
 
 ---
 
-# Basic Display Filters
+## Basic Display Filters
 
 Display all TCP packets:
 
@@ -3081,7 +3081,7 @@ tcp.analysis.out_of_order
 
 ---
 
-# Three-Way Handshake Analysis
+## Three-Way Handshake Analysis
 
 Normal capture:
 
@@ -3106,7 +3106,7 @@ Things to verify:
 
 ---
 
-# Data Transfer Analysis
+## Data Transfer Analysis
 
 Typical capture:
 
@@ -3135,7 +3135,7 @@ Verify:
 
 ---
 
-# Connection Termination Analysis
+## Connection Termination Analysis
 
 ```
 FIN
@@ -3159,7 +3159,7 @@ Unexpected RST packets may indicate application failures or network interruption
 
 ---
 
-# TCP Retransmission Analysis
+## TCP Retransmission Analysis
 
 Retransmissions indicate packet loss.
 
@@ -3194,7 +3194,7 @@ Frequent retransmissions reduce application performance.
 
 ---
 
-# Duplicate ACK Analysis
+## Duplicate ACK Analysis
 
 Example:
 
@@ -3216,7 +3216,7 @@ TCP may invoke **Fast Retransmit** after three duplicate ACKs.
 
 ---
 
-# Window Analysis
+## Window Analysis
 
 Small receive windows may indicate:
 
@@ -3229,7 +3229,7 @@ Zero Window advertisements indicate the receiver cannot currently accept additio
 
 ---
 
-# Round-Trip Time (RTT)
+## Round-Trip Time (RTT)
 
 RTT measures the time required for a packet to travel to the destination and back.
 
@@ -3253,7 +3253,7 @@ High RTT values increase latency and may reduce TCP throughput.
 
 ---
 
-# Cisco IOS Verification
+## Cisco IOS Verification
 
 Display active TCP sessions:
 
@@ -3287,7 +3287,7 @@ show interfaces counters errors
 
 ---
 
-# Linux Verification
+## Linux Verification
 
 Display listening TCP ports:
 
@@ -3333,7 +3333,7 @@ nc -vz server.example.com 443
 
 ---
 
-# Windows Verification
+## Windows Verification
 
 Display active connections:
 
@@ -3367,7 +3367,7 @@ Get-NetTCPConnection
 
 ---
 
-# Enterprise Troubleshooting Methodology
+## Enterprise Troubleshooting Methodology
 
 A structured troubleshooting approach minimizes downtime.
 
@@ -3413,15 +3413,15 @@ Monitor
 
 ---
 
-# Scenario 1 — TCP Handshake Failure
+## Scenario 1 — TCP Handshake Failure
 
-### Symptoms
+#### Symptoms
 
 - Website unavailable
 - Timeout errors
 - No application response
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -3433,9 +3433,9 @@ Verify:
 
 ---
 
-# Scenario 2 — Frequent Retransmissions
+## Scenario 2 — Frequent Retransmissions
 
-### Symptoms
+#### Symptoms
 
 - Slow downloads
 - Poor application performance
@@ -3451,7 +3451,7 @@ Possible causes:
 
 ---
 
-# Scenario 3 — Excessive RST Packets
+## Scenario 3 — Excessive RST Packets
 
 Possible causes:
 
@@ -3463,7 +3463,7 @@ Possible causes:
 
 ---
 
-# Scenario 4 — High Connection Count
+## Scenario 4 — High Connection Count
 
 Indicators:
 
@@ -3481,7 +3481,7 @@ Recommended actions:
 
 ---
 
-# SOC Detection Engineering
+## SOC Detection Engineering
 
 TCP telemetry is valuable for detecting:
 
@@ -3495,11 +3495,11 @@ TCP telemetry is valuable for detecting:
 
 ---
 
-# SIEM Detection Ideas
+## SIEM Detection Ideas
 
 Examples:
 
-### Excessive SYN Packets
+#### Excessive SYN Packets
 
 ```
 IF
@@ -3521,7 +3521,7 @@ Alert
 
 ---
 
-### Multiple Destination Ports
+#### Multiple Destination Ports
 
 ```
 Host
@@ -3543,7 +3543,7 @@ Potential Port Scan
 
 ---
 
-### High RST Rate
+#### High RST Rate
 
 ```
 Connection Resets
@@ -3559,7 +3559,7 @@ Alert
 
 ---
 
-### Repeated Failed Connections
+#### Repeated Failed Connections
 
 ```
 Same Host
@@ -3575,7 +3575,7 @@ Potential Malware
 
 ---
 
-# Zeek Monitoring
+## Zeek Monitoring
 
 Useful Zeek logs:
 
@@ -3597,7 +3597,7 @@ These logs support threat hunting and network forensics.
 
 ---
 
-# Suricata Monitoring
+## Suricata Monitoring
 
 Suricata can detect:
 
@@ -3612,7 +3612,7 @@ Alerts should be correlated with endpoint, DNS, and authentication logs.
 
 ---
 
-# Sigma Detection Ideas
+## Sigma Detection Ideas
 
 Example use cases:
 
@@ -3626,7 +3626,7 @@ Sigma rules can be adapted to SIEM platforms such as Microsoft Sentinel, Splunk,
 
 ---
 
-# MITRE ATT&CK Mapping
+## MITRE ATT&CK Mapping
 
 | Activity | ATT&CK Technique |
 |-----------|------------------|
@@ -3638,7 +3638,7 @@ Sigma rules can be adapted to SIEM platforms such as Microsoft Sentinel, Splunk,
 
 ---
 
-# Practical Lab 1 — Three-Way Handshake
+## Practical Lab 1 — Three-Way Handshake
 
 Objective:
 
@@ -3664,7 +3664,7 @@ tcp
 
 ---
 
-# Practical Lab 2 — TCP Retransmissions
+## Practical Lab 2 — TCP Retransmissions
 
 Tasks:
 
@@ -3680,7 +3680,7 @@ tcp.analysis.retransmission
 
 ---
 
-# Practical Lab 3 — Port Scanning
+## Practical Lab 3 — Port Scanning
 
 Environment:
 
@@ -3698,7 +3698,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — Connection States
+## Practical Lab 4 — Connection States
 
 Tasks:
 
@@ -3726,7 +3726,7 @@ Get-NetTCPConnection
 
 ---
 
-# Practical Lab 5 — Firewall Inspection
+## Practical Lab 5 — Firewall Inspection
 
 Tasks:
 
@@ -3742,13 +3742,13 @@ Tasks:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 An international e-commerce platform experiences intermittent checkout failures.
 
-### Investigation
+#### Investigation
 
 The SOC and network teams observe:
 
@@ -3757,7 +3757,7 @@ The SOC and network teams observe:
 - Firewall connection tables approaching capacity.
 - Numerous half-open TCP sessions from a malicious source.
 
-### Resolution
+#### Resolution
 
 - Enable SYN Cookies on affected servers.
 - Increase firewall connection table limits.
@@ -3765,7 +3765,7 @@ The SOC and network teams observe:
 - Optimize database network paths.
 - Implement DDoS protection and continuous TCP monitoring.
 
-### Outcome
+#### Outcome
 
 - Retransmissions reduced significantly.
 - Checkout latency returned to normal.
@@ -3773,17 +3773,17 @@ The SOC and network teams observe:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is TCP?
+#### What is TCP?
 
 TCP (Transmission Control Protocol) is a reliable, connection-oriented Transport Layer protocol that ensures ordered and error-checked delivery of data.
 
 ---
 
-### What is the Three-Way Handshake?
+#### What is the Three-Way Handshake?
 
 It is the process used to establish a TCP connection:
 
@@ -3793,42 +3793,42 @@ It is the process used to establish a TCP connection:
 
 ---
 
-### What is a TCP segment?
+#### What is a TCP segment?
 
 A TCP segment consists of a TCP header and application data transmitted between two endpoints.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is the purpose of the Sliding Window?
+#### What is the purpose of the Sliding Window?
 
 The Sliding Window allows multiple segments to be transmitted before acknowledgments are received, improving throughput while supporting flow control.
 
 ---
 
-### Explain Flow Control and Congestion Control.
+#### Explain Flow Control and Congestion Control.
 
 - **Flow Control** prevents the sender from overwhelming the receiver.
 - **Congestion Control** prevents excessive traffic from overwhelming the network.
 
 ---
 
-### What causes TCP retransmissions?
+#### What causes TCP retransmissions?
 
 Common causes include packet loss, congestion, faulty hardware, wireless interference, and overloaded systems.
 
 ---
 
-## Advanced
+### Advanced
 
-### Explain SYN Flood attacks and mitigations.
+#### Explain SYN Flood attacks and mitigations.
 
 A SYN Flood overwhelms a server with incomplete TCP handshakes, exhausting connection resources. Mitigations include SYN Cookies, stateful firewalls, rate limiting, and DDoS protection.
 
 ---
 
-### How would you troubleshoot a failed TCP connection?
+#### How would you troubleshoot a failed TCP connection?
 
 A structured approach includes:
 
@@ -3842,13 +3842,13 @@ A structured approach includes:
 
 ---
 
-### Why is TIME_WAIT important?
+#### Why is TIME_WAIT important?
 
 TIME_WAIT ensures delayed packets expire and allows retransmission of the final ACK if necessary, preventing old packets from interfering with new connections.
 
 ---
 
-# RFC References
+## RFC References
 
 Important TCP-related RFCs include:
 
@@ -3863,13 +3863,13 @@ Important TCP-related RFCs include:
 
 ---
 
-# Summary
+## Summary
 
 TCP is the foundation of reliable communication across modern enterprise networks. Its mechanisms for connection establishment, sequencing, acknowledgments, retransmissions, flow control, and congestion control enable dependable delivery for critical applications. Security controls such as stateful inspection, SYN Cookies, IDS/IPS, and continuous monitoring help protect TCP-based services from attack while practical analysis with tools like Wireshark, Zeek, and Suricata supports troubleshooting and incident response.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -3907,7 +3907,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`13-UDP.md`**, covers:
 

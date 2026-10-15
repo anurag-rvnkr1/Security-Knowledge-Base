@@ -1,13 +1,10 @@
 # Active-Directory/
 
-# 02-AD-Architecture.md
-
-# Part 1 — Active Directory Architecture Fundamentals, Components, Logical vs Physical Architecture, and Enterprise Design
-
+## 02-AD-Architecture.md
+## Part 1 — Active Directory Architecture Fundamentals, Components, Logical vs Physical Architecture, and Enterprise Design
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 After completing this chapter, you will be able to:
 
 - Understand the architecture of Active Directory.
@@ -20,8 +17,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is Active Directory Architecture?
-
+## What is Active Directory Architecture?
 Active Directory architecture is the overall design that defines:
 
 - How identities are organized.
@@ -36,8 +32,7 @@ Think of the architecture as the blueprint that determines how Active Directory 
 
 ---
 
-# High-Level Architecture
-
+## High-Level Architecture
 ```text
                      Users
 
@@ -64,8 +59,7 @@ Think of the architecture as the blueprint that determines how Active Directory 
 
 ---
 
-# Core Architectural Components
-
+## Core Architectural Components
 Every Active Directory environment consists of several interconnected components.
 
 ```text
@@ -100,10 +94,8 @@ Each layer has a specific responsibility.
 
 ---
 
-# Architectural Layers
-
-## Layer 1 — Identity Layer
-
+## Architectural Layers
+### Layer 1 — Identity Layer
 Responsible for storing identities.
 
 Includes:
@@ -120,8 +112,7 @@ Identify every security principal within the organization.
 
 ---
 
-## Layer 2 — Authentication Layer
-
+### Layer 2 — Authentication Layer
 Responsible for verifying identities.
 
 Primary technologies:
@@ -137,8 +128,7 @@ Outputs:
 
 ---
 
-## Layer 3 — Authorization Layer
-
+### Layer 3 — Authorization Layer
 Responsible for determining access rights.
 
 Uses:
@@ -158,8 +148,7 @@ Authorization answers:
 
 ---
 
-## Layer 4 — Management Layer
-
+### Layer 4 — Management Layer
 Responsible for centralized administration.
 
 Includes:
@@ -174,8 +163,7 @@ Administrators interact with this layer daily.
 
 ---
 
-## Layer 5 — Replication Layer
-
+### Layer 5 — Replication Layer
 Ensures consistency between Domain Controllers.
 
 Responsibilities:
@@ -189,8 +177,7 @@ Replication is automatic and secure.
 
 ---
 
-# Active Directory Services
-
+## Active Directory Services
 The Active Directory family includes multiple services.
 
 | Service | Purpose |
@@ -207,8 +194,7 @@ This handbook primarily focuses on **Active Directory Domain Services (AD DS)**.
 
 ---
 
-# Active Directory Domain Services (AD DS)
-
+## Active Directory Domain Services (AD DS)
 AD DS provides:
 
 - Authentication
@@ -223,8 +209,7 @@ It is the core service used in Windows enterprise environments.
 
 ---
 
-# Logical Architecture
-
+## Logical Architecture
 Logical architecture organizes identities regardless of physical location.
 
 Components include:
@@ -262,8 +247,7 @@ Logical architecture focuses on **administration and organization**.
 
 ---
 
-# Physical Architecture
-
+## Physical Architecture
 Physical architecture represents the actual infrastructure.
 
 Components include:
@@ -306,8 +290,7 @@ Physical architecture focuses on **network efficiency and availability**.
 
 ---
 
-# Logical vs Physical Architecture
-
+## Logical vs Physical Architecture
 | Logical | Physical |
 |----------|----------|
 | Forest | Domain Controller |
@@ -322,8 +305,7 @@ Physical architecture organizes **infrastructure**.
 
 ---
 
-# Enterprise Architecture Example
-
+## Enterprise Architecture Example
 ```text
                     Forest
 
@@ -352,8 +334,7 @@ Physical architecture organizes **infrastructure**.
 
 ---
 
-# Domain Controller Placement
-
+## Domain Controller Placement
 Example enterprise:
 
 ```text
@@ -386,8 +367,7 @@ Reasons:
 
 ---
 
-# Why Multiple Domain Controllers?
-
+## Why Multiple Domain Controllers?
 Never rely on a single Domain Controller.
 
 Benefits include:
@@ -402,8 +382,7 @@ If one Domain Controller becomes unavailable, others can continue providing serv
 
 ---
 
-# Authentication Architecture
-
+## Authentication Architecture
 ```text
 User
 
@@ -432,8 +411,7 @@ Every step depends on multiple Active Directory components working together.
 
 ---
 
-# Authorization Architecture
-
+## Authorization Architecture
 ```text
 Authenticated User
 
@@ -458,8 +436,7 @@ Permissions are evaluated using SIDs and ACLs, not usernames alone.
 
 ---
 
-# Active Directory Data Flow
-
+## Active Directory Data Flow
 ```text
 Administrator
 
@@ -488,8 +465,7 @@ Changes made on one Domain Controller are replicated according to the configured
 
 ---
 
-# Administrative Tools
-
+## Administrative Tools
 Common tools include:
 
 | Tool | Purpose |
@@ -503,8 +479,7 @@ Common tools include:
 
 ---
 
-# Enterprise Design Goals
-
+## Enterprise Design Goals
 A well-designed Active Directory environment should provide:
 
 - Scalability
@@ -520,8 +495,7 @@ These goals influence decisions throughout the deployment lifecycle.
 
 ---
 
-# Cybersecurity Perspective
-
+## Cybersecurity Perspective
 From a security standpoint, the architecture should:
 
 - Minimize privileged accounts.
@@ -536,14 +510,11 @@ A well-architected environment reduces attack surface and simplifies incident re
 
 ---
 
-# Hands-on Lab
-
-## Objective
-
+## Hands-on Lab
+### Objective
 Explore Active Directory management tools in a lab environment.
 
-### Steps
-
+#### Steps
 1. Open **Server Manager** on a Windows Server with AD DS installed.
 2. Launch:
    - Active Directory Users and Computers
@@ -559,8 +530,7 @@ Explore Active Directory management tools in a lab environment.
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - Active Directory architecture combines logical organization and physical infrastructure.
 - AD DS is the core identity service in Windows environments.
 - Logical architecture organizes directory objects.
@@ -571,8 +541,7 @@ Explore Active Directory management tools in a lab environment.
 
 ---
 
-# Interview Questions
-
+## Interview Questions
 1. What is Active Directory architecture?
 2. Explain the difference between logical and physical architecture.
 3. Why are multiple Domain Controllers recommended?
@@ -586,8 +555,7 @@ Explore Active Directory management tools in a lab environment.
 
 ---
 
-# References
-
+## References
 - Microsoft Learn – Active Directory Architecture
 - Microsoft Windows Server Documentation
 - Windows Internals
@@ -596,14 +564,11 @@ Explore Active Directory management tools in a lab environment.
 
 ---
 
-# 02-AD-Architecture.md
-
-# Part 2 — Active Directory Database (NTDS.DIT), Schema, Naming Contexts, Global Catalog Architecture, and Data Storage
-
+## 02-AD-Architecture.md
+## Part 2 — Active Directory Database (NTDS.DIT), Schema, Naming Contexts, Global Catalog Architecture, and Data Storage
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 By the end of this chapter, you will be able to:
 
 - Understand how Active Directory stores data.
@@ -616,8 +581,7 @@ By the end of this chapter, you will be able to:
 
 ---
 
-# Active Directory Database Overview
-
+## Active Directory Database Overview
 Every Active Directory Domain Controller stores its directory information in a database.
 
 This database is called:
@@ -643,8 +607,7 @@ The database contains:
 
 ---
 
-# Database Architecture
-
+## Database Architecture
 ```text
                 Active Directory
 
@@ -671,8 +634,7 @@ The database contains:
 
 ---
 
-# Location of NTDS.DIT
-
+## Location of NTDS.DIT
 The default location is:
 
 ```text
@@ -685,8 +647,7 @@ Access to this file is restricted because it contains sensitive directory inform
 
 ---
 
-# What Does NTDS.DIT Store?
-
+## What Does NTDS.DIT Store?
 | Category | Examples |
 |----------|----------|
 | Users | Employee accounts, service accounts |
@@ -703,8 +664,7 @@ Access to this file is restricted because it contains sensitive directory inform
 
 ---
 
-# Extensible Storage Engine (ESE)
-
+## Extensible Storage Engine (ESE)
 Active Directory uses Microsoft's **Extensible Storage Engine (ESE)**, also known as **JET Blue**, as its database engine.
 
 ESE provides:
@@ -719,8 +679,7 @@ It is optimized for directory workloads rather than general-purpose relational d
 
 ---
 
-# Simplified Storage Flow
-
+## Simplified Storage Flow
 ```text
 Administrator
 
@@ -751,8 +710,7 @@ Other Domain Controllers
 
 ---
 
-# Supporting Database Files
-
+## Supporting Database Files
 In addition to `NTDS.DIT`, Active Directory uses log and checkpoint files.
 
 | File Type | Purpose |
@@ -765,8 +723,7 @@ These files help maintain database consistency after unexpected shutdowns.
 
 ---
 
-# Active Directory Schema
-
+## Active Directory Schema
 The **Schema** defines:
 
 - Which object classes exist.
@@ -778,8 +735,7 @@ Think of the schema as the blueprint for the directory.
 
 ---
 
-# Schema Architecture
-
+## Schema Architecture
 ```text
 Schema
 
@@ -812,8 +768,7 @@ Schema
 
 ---
 
-# Object Classes
-
+## Object Classes
 An object class defines what type of object can exist.
 
 Examples:
@@ -829,8 +784,7 @@ Examples:
 
 ---
 
-# Attributes
-
+## Attributes
 Attributes describe properties of an object.
 
 Example:
@@ -867,8 +821,7 @@ Each attribute has a defined data type and behavior.
 
 ---
 
-# Mandatory vs Optional Attributes
-
+## Mandatory vs Optional Attributes
 | Type | Description |
 |------|-------------|
 | Mandatory | Required when creating the object |
@@ -893,8 +846,7 @@ The exact set of required attributes depends on the object class and schema defi
 
 ---
 
-# Schema Extension
-
+## Schema Extension
 Applications can extend the Active Directory Schema.
 
 Examples include:
@@ -908,8 +860,7 @@ Schema extensions affect the **entire forest** and should be carefully planned, 
 
 ---
 
-# Naming Contexts (Directory Partitions)
-
+## Naming Contexts (Directory Partitions)
 The Active Directory database is divided into logical partitions called **Naming Contexts**.
 
 ```text
@@ -930,8 +881,7 @@ This design improves scalability and replication efficiency.
 
 ---
 
-# 1. Schema Partition
-
+## 1. Schema Partition
 Contains:
 
 - Object classes
@@ -946,8 +896,7 @@ Characteristics:
 
 ---
 
-# 2. Configuration Partition
-
+## 2. Configuration Partition
 Contains:
 
 - Site information
@@ -959,8 +908,7 @@ Also replicated to every Domain Controller in the forest.
 
 ---
 
-# 3. Domain Partition
-
+## 3. Domain Partition
 Contains:
 
 - Users
@@ -973,8 +921,7 @@ Replicated only to Domain Controllers within the same domain.
 
 ---
 
-# 4. Application Partition
-
+## 4. Application Partition
 Stores application-specific information.
 
 Common example:
@@ -985,8 +932,7 @@ Replication scope is configurable depending on the application.
 
 ---
 
-# Partition Replication
-
+## Partition Replication
 ```text
                 Forest
 
@@ -1019,8 +965,7 @@ Replication scope is configurable depending on the application.
 
 ---
 
-# Why Partitions?
-
+## Why Partitions?
 Benefits include:
 
 - Improved scalability
@@ -1031,8 +976,7 @@ Benefits include:
 
 ---
 
-# Global Catalog (GC)
-
+## Global Catalog (GC)
 The **Global Catalog** is a specialized role provided by selected Domain Controllers.
 
 It stores:
@@ -1044,8 +988,7 @@ This enables efficient searches across the entire forest.
 
 ---
 
-# Global Catalog Architecture
-
+## Global Catalog Architecture
 ```text
               Forest
 
@@ -1070,8 +1013,7 @@ This enables efficient searches across the entire forest.
 
 ---
 
-# Why Use a Global Catalog?
-
+## Why Use a Global Catalog?
 Without a Global Catalog:
 
 - Searches would need to query multiple domains individually.
@@ -1088,8 +1030,7 @@ This improves:
 
 ---
 
-# Partial Attribute Set (PAS)
-
+## Partial Attribute Set (PAS)
 The Global Catalog does **not** store every attribute for every object outside its own domain.
 
 Instead, it stores a **Partial Attribute Set (PAS)**.
@@ -1112,8 +1053,7 @@ This reduces storage and replication overhead.
 
 ---
 
-# Query Flow
-
+## Query Flow
 ```text
 Administrator
 
@@ -1138,8 +1078,7 @@ The GC enables forest-wide object discovery without querying every domain indivi
 
 ---
 
-# Read vs Write Operations
-
+## Read vs Write Operations
 | Operation | Behavior |
 |-----------|----------|
 | Read | Query object information |
@@ -1151,8 +1090,7 @@ Read operations are significantly more frequent than write operations in most en
 
 ---
 
-# Enterprise Example
-
+## Enterprise Example
 Organization:
 
 - 8 domains
@@ -1169,8 +1107,7 @@ Instead of searching each domain individually, the Global Catalog returns matchi
 
 ---
 
-# Cybersecurity Perspective
-
+## Cybersecurity Perspective
 From a security perspective, directory data is highly sensitive.
 
 Protect:
@@ -1192,14 +1129,11 @@ Restrict administrative access, monitor changes, and follow least-privilege prin
 
 ---
 
-# Hands-on Lab
-
-## Objective
-
+## Hands-on Lab
+### Objective
 Explore Active Directory Schema and Global Catalog concepts.
 
-### Steps
-
+#### Steps
 1. Open **Active Directory Users and Computers** (`dsa.msc`).
 2. Examine user object properties and identify common attributes.
 3. If available, explore **Active Directory Sites and Services** and identify Global Catalog servers.
@@ -1208,8 +1142,7 @@ Explore Active Directory Schema and Global Catalog concepts.
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - NTDS.DIT is the Active Directory database.
 - The Extensible Storage Engine (ESE) manages directory storage.
 - The Schema defines object classes and attributes.
@@ -1220,8 +1153,7 @@ Explore Active Directory Schema and Global Catalog concepts.
 
 ---
 
-# Interview Questions
-
+## Interview Questions
 1. What is NTDS.DIT?
 2. What database engine does Active Directory use?
 3. What is the purpose of the Active Directory Schema?
@@ -1235,8 +1167,7 @@ Explore Active Directory Schema and Global Catalog concepts.
 
 ---
 
-# References
-
+## References
 - Microsoft Learn – Active Directory Database and Schema
 - Microsoft Windows Server Documentation
 - Windows Internals
@@ -1245,14 +1176,11 @@ Explore Active Directory Schema and Global Catalog concepts.
 
 ---
 
-# 02-AD-Architecture.md
-
-# Part 3 — Domain Controllers, SYSVOL, Authentication Architecture, Replication Fundamentals, and Active Directory Service Dependencies
-
+## 02-AD-Architecture.md
+## Part 3 — Domain Controllers, SYSVOL, Authentication Architecture, Replication Fundamentals, and Active Directory Service Dependencies
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 By the end of this chapter, you will be able to:
 
 - Understand the role of Domain Controllers (DCs).
@@ -1265,8 +1193,7 @@ By the end of this chapter, you will be able to:
 
 ---
 
-# What is a Domain Controller?
-
+## What is a Domain Controller?
 A **Domain Controller (DC)** is a Windows Server that hosts the **Active Directory Domain Services (AD DS)** role.
 
 A Domain Controller is responsible for:
@@ -1283,8 +1210,7 @@ Think of the Domain Controller as the **central authority** for a Windows domain
 
 ---
 
-# Domain Controller Architecture
-
+## Domain Controller Architecture
 ```text
               Domain Controller
 
@@ -1305,8 +1231,7 @@ Think of the Domain Controller as the **central authority** for a Windows domain
 
 ---
 
-# Responsibilities of a Domain Controller
-
+## Responsibilities of a Domain Controller
 | Responsibility | Description |
 |---------------|-------------|
 | Authentication | Verify user and computer identities |
@@ -1320,8 +1245,7 @@ Think of the Domain Controller as the **central authority** for a Windows domain
 
 ---
 
-# Why Multiple Domain Controllers?
-
+## Why Multiple Domain Controllers?
 Enterprise environments rarely deploy a single Domain Controller.
 
 Benefits include:
@@ -1335,8 +1259,7 @@ Benefits include:
 
 ---
 
-# Example Enterprise Deployment
-
+## Example Enterprise Deployment
 ```text
               Head Office
 
@@ -1375,8 +1298,7 @@ If DC01 becomes unavailable, authentication continues through other Domain Contr
 
 ---
 
-# Read/Write Domain Controllers
-
+## Read/Write Domain Controllers
 Standard Domain Controllers are writable.
 
 They can:
@@ -1392,8 +1314,7 @@ A later chapter will discuss **Read-Only Domain Controllers (RODCs)** in detail.
 
 ---
 
-# Active Directory Authentication Flow
-
+## Active Directory Authentication Flow
 A simplified authentication sequence is shown below.
 
 ```text
@@ -1432,8 +1353,7 @@ Every stage depends on multiple AD services functioning correctly.
 
 ---
 
-# Authentication Components
-
+## Authentication Components
 | Component | Purpose |
 |----------|---------|
 | User | Initiates authentication |
@@ -1446,8 +1366,7 @@ Every stage depends on multiple AD services functioning correctly.
 
 ---
 
-# Authorization Flow
-
+## Authorization Flow
 Authentication confirms identity.
 
 Authorization determines access.
@@ -1478,8 +1397,7 @@ Access Granted or Denied
 
 ---
 
-# Security Token
-
+## Security Token
 After successful authentication, Windows creates a **security token**.
 
 The token contains information such as:
@@ -1493,8 +1411,7 @@ Applications use this token to determine access to resources.
 
 ---
 
-# SYSVOL
-
+## SYSVOL
 Every Domain Controller contains a special shared folder named:
 
 ```text
@@ -1509,8 +1426,7 @@ C:\Windows\SYSVOL
 
 ---
 
-# Purpose of SYSVOL
-
+## Purpose of SYSVOL
 SYSVOL stores information that must be consistent across all Domain Controllers.
 
 Examples:
@@ -1523,8 +1439,7 @@ Examples:
 
 ---
 
-# SYSVOL Architecture
-
+## SYSVOL Architecture
 ```text
 Domain Controller
 
@@ -1547,8 +1462,7 @@ Domain Controller
 
 ---
 
-# Why SYSVOL Matters
-
+## Why SYSVOL Matters
 Without SYSVOL:
 
 - Group Policy would not function correctly.
@@ -1559,8 +1473,7 @@ SYSVOL consistency is essential for predictable administration.
 
 ---
 
-# Group Policy and SYSVOL
-
+## Group Policy and SYSVOL
 ```text
 Administrator
 
@@ -1587,8 +1500,7 @@ Clients Download Updated Policy
 
 ---
 
-# Replication Fundamentals
-
+## Replication Fundamentals
 Every writable Domain Controller maintains a copy of the directory database.
 
 When changes occur:
@@ -1600,8 +1512,7 @@ This keeps the directory synchronized.
 
 ---
 
-# Replication Overview
-
+## Replication Overview
 ```text
 DC01
 
@@ -1638,8 +1549,7 @@ Replication is **multi-master**, meaning changes can originate from any writable
 
 ---
 
-# What Replicates?
-
+## What Replicates?
 Examples include:
 
 - New users
@@ -1653,8 +1563,7 @@ Examples include:
 
 ---
 
-# Replication Benefits
-
+## Replication Benefits
 | Benefit | Description |
 |----------|-------------|
 | High Availability | Multiple copies of directory data |
@@ -1665,8 +1574,7 @@ Examples include:
 
 ---
 
-# Active Directory Service Dependencies
-
+## Active Directory Service Dependencies
 Active Directory relies on several Windows services.
 
 | Service | Purpose |
@@ -1683,8 +1591,7 @@ Active Directory relies on several Windows services.
 
 ---
 
-# Why DNS Is Critical
-
+## Why DNS Is Critical
 Active Directory clients do **not** normally connect to Domain Controllers by manually configured IP addresses.
 
 Instead, they query DNS to locate available Domain Controllers.
@@ -1711,8 +1618,7 @@ Without functioning DNS, many AD operations fail.
 
 ---
 
-# Time Synchronization
-
+## Time Synchronization
 Kerberos depends on accurate system time.
 
 If clocks differ significantly, authentication may fail.
@@ -1741,8 +1647,7 @@ Client Computers
 
 ---
 
-# Enterprise Architecture Example
-
+## Enterprise Architecture Example
 ```text
 Users
 
@@ -1779,8 +1684,7 @@ Every component contributes to authentication, authorization, and centralized ma
 
 ---
 
-# Cybersecurity Perspective
-
+## Cybersecurity Perspective
 Domain Controllers are among the most critical assets in a Windows environment.
 
 Attackers commonly target them because they contain:
@@ -1803,14 +1707,11 @@ Security recommendations:
 
 ---
 
-# Hands-on Lab
-
-## Objective
-
+## Hands-on Lab
+### Objective
 Explore core Domain Controller components in a lab environment.
 
-### Steps
-
+#### Steps
 1. Log on to a Windows Server configured as a Domain Controller.
 2. Open **Server Manager** and verify the AD DS role.
 3. Locate the default `C:\Windows\SYSVOL` directory.
@@ -1820,8 +1721,7 @@ Explore core Domain Controller components in a lab environment.
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - Domain Controllers host Active Directory Domain Services.
 - Multiple Domain Controllers provide redundancy and scalability.
 - SYSVOL stores Group Policy and logon-related files.
@@ -1832,8 +1732,7 @@ Explore core Domain Controller components in a lab environment.
 
 ---
 
-# Interview Questions
-
+## Interview Questions
 1. What is a Domain Controller?
 2. Why should organizations deploy multiple Domain Controllers?
 3. What is SYSVOL?
@@ -1847,8 +1746,7 @@ Explore core Domain Controller components in a lab environment.
 
 ---
 
-# References
-
+## References
 - Microsoft Learn – Domain Controllers
 - Microsoft Windows Server Documentation
 - Microsoft Identity Documentation
@@ -1858,14 +1756,11 @@ Explore core Domain Controller components in a lab environment.
 
 ---
 
-# 02-AD-Architecture.md
-
-# Part 4 — Active Directory Communication Flow, Service Discovery, LDAP Architecture, Enterprise Best Practices, Architecture Summary, and Final Revision
-
+## 02-AD-Architecture.md
+## Part 4 — Active Directory Communication Flow, Service Discovery, LDAP Architecture, Enterprise Best Practices, Architecture Summary, and Final Revision
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 After completing this chapter, you will be able to:
 
 - Understand how Active Directory components communicate.
@@ -1878,8 +1773,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# End-to-End Active Directory Communication Flow
-
+## End-to-End Active Directory Communication Flow
 The following diagram shows a simplified sequence from user logon to resource access.
 
 ```text
@@ -1934,8 +1828,7 @@ Every component must function correctly for a seamless user experience.
 
 ---
 
-# Enterprise Authentication Workflow
-
+## Enterprise Authentication Workflow
 ```text
 +----------------------+
 | User Enters Password |
@@ -1974,8 +1867,7 @@ Every component must function correctly for a seamless user experience.
 
 ---
 
-# Service Discovery
-
+## Service Discovery
 Clients do not usually maintain a static list of Domain Controllers.
 
 Instead, they use **DNS service records (SRV records)** to discover available services.
@@ -2011,8 +1903,7 @@ Service discovery provides:
 
 ---
 
-# Simplified DNS Service Discovery
-
+## Simplified DNS Service Discovery
 ```text
 Client
 
@@ -2041,8 +1932,7 @@ This process is transparent to the user.
 
 ---
 
-# LDAP Communication Architecture
-
+## LDAP Communication Architecture
 Applications often communicate with Active Directory using LDAP.
 
 ```text
@@ -2078,8 +1968,7 @@ Common LDAP operations include:
 
 ---
 
-# Example LDAP Search
-
+## Example LDAP Search
 Application requirement:
 
 ```text
@@ -2114,8 +2003,7 @@ Applications use these searches to locate directory objects efficiently.
 
 ---
 
-# Authentication vs Directory Queries
-
+## Authentication vs Directory Queries
 Authentication and LDAP searches are related but different.
 
 | Authentication | LDAP Query |
@@ -2127,8 +2015,7 @@ Authentication and LDAP searches are related but different.
 
 ---
 
-# Communication Between Domain Controllers
-
+## Communication Between Domain Controllers
 Domain Controllers exchange updates through replication.
 
 ```text
@@ -2163,8 +2050,7 @@ The replication topology is designed to maintain consistency while reducing unne
 
 ---
 
-# Client Communication Summary
-
+## Client Communication Summary
 ```text
 User
 
@@ -2199,8 +2085,7 @@ Enterprise Resources
 
 ---
 
-# Enterprise Architecture Layers
-
+## Enterprise Architecture Layers
 ```text
 +--------------------------------------+
 | Users                                |
@@ -2223,8 +2108,7 @@ Each layer depends on the stability of the layers beneath it.
 
 ---
 
-# Typical Enterprise Components
-
+## Typical Enterprise Components
 Large organizations commonly include:
 
 - Multiple forests (when business or regulatory needs require separation)
@@ -2241,8 +2125,7 @@ The exact design depends on business requirements, not simply organization size.
 
 ---
 
-# High Availability Principles
-
+## High Availability Principles
 An enterprise Active Directory deployment should avoid single points of failure.
 
 Recommendations include:
@@ -2256,8 +2139,7 @@ Recommendations include:
 
 ---
 
-# Disaster Recovery Considerations
-
+## Disaster Recovery Considerations
 Important planning areas include:
 
 - Domain Controller backups
@@ -2272,8 +2154,7 @@ Recovery plans should be validated periodically.
 
 ---
 
-# Monitoring Checklist
-
+## Monitoring Checklist
 Administrators should monitor:
 
 | Area | Why It Matters |
@@ -2289,8 +2170,7 @@ Administrators should monitor:
 
 ---
 
-# Common Architecture Mistakes
-
+## Common Architecture Mistakes
 Avoid:
 
 - Deploying only one Domain Controller
@@ -2305,10 +2185,8 @@ Avoid:
 
 ---
 
-# Active Directory Best Practices
-
-## Design
-
+## Active Directory Best Practices
+### Design
 - Keep the design as simple as practical.
 - Align the structure with business needs.
 - Plan for future growth.
@@ -2316,8 +2194,7 @@ Avoid:
 
 ---
 
-## Administration
-
+### Administration
 - Use delegated administration.
 - Avoid daily use of highly privileged accounts.
 - Apply standardized naming conventions.
@@ -2325,8 +2202,7 @@ Avoid:
 
 ---
 
-## Security
-
+### Security
 - Apply least privilege.
 - Monitor privileged activities.
 - Patch Domain Controllers promptly.
@@ -2336,8 +2212,7 @@ Avoid:
 
 ---
 
-## Operations
-
+### Operations
 - Monitor replication.
 - Validate backups.
 - Test disaster recovery.
@@ -2346,8 +2221,7 @@ Avoid:
 
 ---
 
-# Enterprise Example
-
+## Enterprise Example
 A company has:
 
 - 15,000 employees
@@ -2403,8 +2277,7 @@ This architecture provides scalability, resilience, and centralized management.
 
 ---
 
-# Cybersecurity Perspective
-
+## Cybersecurity Perspective
 Because Active Directory controls authentication and authorization across the enterprise, attackers frequently target architectural weaknesses.
 
 Common attack goals include:
@@ -2428,8 +2301,7 @@ A well-designed architecture reduces both operational risk and security exposure
 
 ---
 
-# Complete Chapter Summary
-
+## Complete Chapter Summary
 This chapter covered:
 
 - Active Directory architecture
@@ -2456,8 +2328,7 @@ These concepts provide the architectural foundation for understanding how Active
 
 ---
 
-# Final Revision Table
-
+## Final Revision Table
 | Topic | Key Point |
 |------|-----------|
 | AD DS | Core directory service |
@@ -2477,8 +2348,7 @@ These concepts provide the architectural foundation for understanding how Active
 
 ---
 
-# Interview Questions
-
+## Interview Questions
 1. Describe the end-to-end Active Directory authentication process.
 2. How do clients locate a Domain Controller?
 3. What role does DNS play in Active Directory?
@@ -2492,8 +2362,7 @@ These concepts provide the architectural foundation for understanding how Active
 
 ---
 
-# Practical Exercises
-
+## Practical Exercises
 1. Draw the communication flow from user logon to file server access.
 2. Diagram the logical and physical architecture for a company with three offices.
 3. Explain the role of DNS in Domain Controller discovery.
@@ -2504,8 +2373,7 @@ These concepts provide the architectural foundation for understanding how Active
 
 ---
 
-# References
-
+## References
 - Microsoft Learn – Active Directory Architecture
 - Microsoft Windows Server Documentation
 - Microsoft Identity Documentation
@@ -2516,8 +2384,7 @@ These concepts provide the architectural foundation for understanding how Active
 
 ---
 
-# Congratulations!
-
+## Congratulations!
 You have successfully completed **Chapter 02 – Active Directory Architecture**.
 
 You now understand the core architectural building blocks of Active Directory, including Domain Controllers, directory storage, authentication, authorization, replication, DNS integration, LDAP communication, and enterprise design principles. This knowledge forms the basis for deeper exploration of domains, forests, replication, FSMO roles, and advanced administration.

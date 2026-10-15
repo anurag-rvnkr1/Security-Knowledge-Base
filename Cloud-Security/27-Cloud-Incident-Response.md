@@ -865,7 +865,7 @@ A proactive incident response capability reduces both the likelihood of successf
 
 ---
 
-# Cloud Incident Response Prevention Lifecycle
+## Cloud Incident Response Prevention Lifecycle
 
 ```
 Risk Assessment
@@ -929,7 +929,7 @@ This lifecycle promotes continuous enhancement of organizational resilience.
 
 ---
 
-# Establish an Incident Response Plan
+## Establish an Incident Response Plan
 
 Develop and maintain a documented Incident Response (IR) plan that defines:
 
@@ -945,7 +945,7 @@ Review and update the plan regularly to reflect changes in the cloud environment
 
 ---
 
-# Develop Incident Response Playbooks
+## Develop Incident Response Playbooks
 
 Create detailed playbooks for common incident scenarios such as:
 
@@ -963,7 +963,7 @@ Playbooks reduce response time and improve consistency.
 
 ---
 
-# Implement Strong Identity Security
+## Implement Strong Identity Security
 
 Protect cloud identities by implementing:
 
@@ -978,7 +978,7 @@ Identity protection significantly reduces the likelihood of account compromise.
 
 ---
 
-# Enable Continuous Monitoring
+## Enable Continuous Monitoring
 
 Continuously monitor:
 
@@ -996,7 +996,7 @@ Comprehensive monitoring enables rapid detection of suspicious behavior.
 
 ---
 
-# Centralize Security Logging
+## Centralize Security Logging
 
 Aggregate logs from all cloud resources into a centralized platform or SIEM.
 
@@ -1012,7 +1012,7 @@ Centralized logging supports both operational monitoring and forensic investigat
 
 ---
 
-# Automate Security Responses
+## Automate Security Responses
 
 Use Security Orchestration, Automation, and Response (SOAR) or equivalent automation to:
 
@@ -1048,7 +1048,7 @@ Automation reduces Mean Time to Respond (MTTR).
 
 ---
 
-# Secure Cloud Infrastructure
+## Secure Cloud Infrastructure
 
 Apply preventive controls such as:
 
@@ -1063,7 +1063,7 @@ Reducing the attack surface decreases the probability of successful attacks.
 
 ---
 
-# Protect Sensitive Data
+## Protect Sensitive Data
 
 Implement:
 
@@ -1078,7 +1078,7 @@ Sensitive information should remain protected even if systems are compromised.
 
 ---
 
-# Perform Regular Security Assessments
+## Perform Regular Security Assessments
 
 Validate security through:
 
@@ -1093,7 +1093,7 @@ Regular testing identifies weaknesses before adversaries exploit them.
 
 ---
 
-# Train Personnel
+## Train Personnel
 
 Conduct ongoing security awareness and incident response training for:
 
@@ -1108,7 +1108,7 @@ Well-trained teams respond faster and make fewer errors during incidents.
 
 ---
 
-# Maintain Forensic Readiness
+## Maintain Forensic Readiness
 
 Prepare systems to support future investigations by:
 
@@ -1123,9 +1123,9 @@ Forensic readiness improves investigation quality and legal defensibility.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Prepare Before an Incident Occurs
+#### 1. Prepare Before an Incident Occurs
 
 Develop and regularly review:
 
@@ -1139,7 +1139,7 @@ Preparation is the foundation of effective incident response.
 
 ---
 
-### 2. Clearly Define Roles and Responsibilities
+#### 2. Clearly Define Roles and Responsibilities
 
 Assign responsibilities for:
 
@@ -1156,7 +1156,7 @@ Clearly defined roles reduce confusion during high-pressure situations.
 
 ---
 
-### 3. Use Risk-Based Incident Prioritization
+#### 3. Use Risk-Based Incident Prioritization
 
 Prioritize incidents based on:
 
@@ -1170,7 +1170,7 @@ Risk-based prioritization ensures critical incidents receive immediate attention
 
 ---
 
-### 4. Preserve Evidence
+#### 4. Preserve Evidence
 
 Protect evidence by:
 
@@ -1184,7 +1184,7 @@ Evidence preservation supports accurate investigations and potential legal proce
 
 ---
 
-### 5. Validate Detection Capabilities
+#### 5. Validate Detection Capabilities
 
 Regularly verify that:
 
@@ -1197,7 +1197,7 @@ Detection validation strengthens organizational readiness.
 
 ---
 
-### 6. Practice Incident Response
+#### 6. Practice Incident Response
 
 Conduct:
 
@@ -1211,7 +1211,7 @@ Frequent practice improves coordination and confidence.
 
 ---
 
-### 7. Communicate Effectively
+#### 7. Communicate Effectively
 
 Maintain clear communication throughout the incident.
 
@@ -1227,7 +1227,7 @@ Timely communication supports informed decision-making.
 
 ---
 
-### 8. Verify Recovery
+#### 8. Verify Recovery
 
 Before closing an incident:
 
@@ -1240,7 +1240,7 @@ Recovery should be verified, not assumed.
 
 ---
 
-### 9. Conduct Lessons Learned Reviews
+#### 9. Conduct Lessons Learned Reviews
 
 Following every incident:
 
@@ -1255,7 +1255,7 @@ Continuous improvement strengthens future resilience.
 
 ---
 
-### 10. Measure Incident Response Performance
+#### 10. Measure Incident Response Performance
 
 Track metrics such as:
 
@@ -1273,7 +1273,7 @@ Performance metrics enable data-driven improvements to the incident response pro
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud Incident Response is successful only when organizations are prepared, coordinated, and capable of responding rapidly to security incidents. Many organizations invest heavily in preventive controls but underestimate the importance of an effective incident response capability.
 
@@ -1281,7 +1281,7 @@ The following mistakes frequently delay containment, increase business impact, a
 
 ---
 
-### 1. Not Having an Incident Response Plan
+#### 1. Not Having an Incident Response Plan
 
 One of the most common mistakes is responding to incidents without a documented plan.
 
@@ -1313,7 +1313,7 @@ Every organization should maintain and regularly update an Incident Response Pla
 
 ---
 
-### 2. Unclear Roles and Responsibilities
+#### 2. Unclear Roles and Responsibilities
 
 During an incident, uncertainty regarding ownership leads to confusion and delays.
 
@@ -1332,7 +1332,7 @@ Role clarity improves coordination and accountability.
 
 ---
 
-### 3. Delayed Detection
+#### 3. Delayed Detection
 
 Many incidents remain undetected for extended periods due to:
 
@@ -1346,7 +1346,7 @@ The longer an attacker remains undetected, the greater the potential damage.
 
 ---
 
-### 4. Ignoring Cloud-Native Evidence
+#### 4. Ignoring Cloud-Native Evidence
 
 Traditional forensic techniques alone are insufficient for cloud environments.
 
@@ -1364,7 +1364,7 @@ Failure to preserve cloud-native evidence can hinder investigations.
 
 ---
 
-### 5. Destroying Evidence During Containment
+#### 5. Destroying Evidence During Containment
 
 Immediately rebuilding or deleting compromised resources without preserving evidence may prevent investigators from determining:
 
@@ -1377,7 +1377,7 @@ Whenever feasible, preserve relevant evidence before making irreversible changes
 
 ---
 
-### 6. Failing to Isolate Compromised Resources
+#### 6. Failing to Isolate Compromised Resources
 
 Leaving compromised systems connected to production environments allows attackers to:
 
@@ -1390,7 +1390,7 @@ Prompt containment reduces further damage.
 
 ---
 
-### 7. Poor Communication
+#### 7. Poor Communication
 
 Communication failures commonly occur when:
 
@@ -1403,7 +1403,7 @@ Establish communication procedures before incidents occur.
 
 ---
 
-### 8. Neglecting Identity Security During Response
+#### 8. Neglecting Identity Security During Response
 
 Many cloud attacks focus on identities rather than infrastructure.
 
@@ -1419,7 +1419,7 @@ Identity should be a primary focus during incident response.
 
 ---
 
-### 9. Recovering Too Early
+#### 9. Recovering Too Early
 
 Restoring services before eradication is complete may allow attackers to regain access.
 
@@ -1435,7 +1435,7 @@ Premature recovery increases the likelihood of recurring incidents.
 
 ---
 
-### 10. Not Validating Recovery
+#### 10. Not Validating Recovery
 
 Assuming recovery was successful without verification can leave residual weaknesses.
 
@@ -1452,7 +1452,7 @@ Recovery should be tested before declaring the incident closed.
 
 ---
 
-### 11. Not Updating Security Controls
+#### 11. Not Updating Security Controls
 
 Every incident provides valuable learning opportunities.
 
@@ -1469,7 +1469,7 @@ Lessons learned should drive continuous improvement.
 
 ---
 
-### 12. Ignoring Third-Party Dependencies
+#### 12. Ignoring Third-Party Dependencies
 
 Cloud incidents may involve:
 
@@ -1483,7 +1483,7 @@ Response procedures should consider dependencies that may influence containment,
 
 ---
 
-### 13. Inadequate Documentation
+#### 13. Inadequate Documentation
 
 Incomplete documentation complicates investigations and future improvements.
 
@@ -1501,7 +1501,7 @@ Accurate documentation supports audits, compliance, and future incident response
 
 ---
 
-### 14. Treating Incident Response as Only a Security Function
+#### 14. Treating Incident Response as Only a Security Function
 
 Effective incident response requires collaboration across multiple teams.
 
@@ -1520,7 +1520,7 @@ Cross-functional collaboration improves overall response effectiveness.
 
 ---
 
-### 15. Never Practicing the Incident Response Plan
+#### 15. Never Practicing the Incident Response Plan
 
 An untested incident response plan often fails during real emergencies.
 
@@ -1536,7 +1536,7 @@ Practice improves coordination, confidence, and response speed.
 
 ---
 
-## Cloud Incident Response Checklist
+### Cloud Incident Response Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1558,9 +1558,9 @@ Practice improves coordination, confidence, and response speed.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-61 Rev. 2 – Computer Security Incident Handling Guide
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
@@ -1572,7 +1572,7 @@ Practice improves coordination, confidence, and response speed.
 
 ---
 
-### Incident Response Frameworks
+#### Incident Response Frameworks
 
 - SANS Incident Handler's Handbook
 - MITRE ATT&CK Framework
@@ -1583,21 +1583,21 @@ Practice improves coordination, confidence, and response speed.
 
 ---
 
-### Cloud Security Documentation
+#### Cloud Security Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - AWS Security Incident Response Guide
 - AWS Well-Architected Framework – Security Pillar
 - AWS Security Best Practices
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Microsoft Incident Response Documentation
 - Microsoft Defender for Cloud Documentation
 - Azure Well-Architected Framework – Security
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Google Cloud Incident Response Guidance
 - Google Security Best Practices
@@ -1605,7 +1605,7 @@ Practice improves coordination, confidence, and response speed.
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -1617,7 +1617,7 @@ Practice improves coordination, confidence, and response speed.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - NIST Computer Security Incident Handling Guide
 - MITRE ATT&CK Knowledge Base

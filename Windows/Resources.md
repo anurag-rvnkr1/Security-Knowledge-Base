@@ -1,10 +1,10 @@
 # Resources.md
 
-# Windows Administration & Cybersecurity Learning Resources
+## Windows Administration & Cybersecurity Learning Resources
 
 ---
 
-# Introduction
+## Introduction
 
 Learning Windows administration is a continuous journey. The Windows ecosystem evolves regularly with new security features, management capabilities, and enterprise technologies.
 
@@ -12,7 +12,7 @@ This resource guide contains trusted learning materials, books, documentation, v
 
 ---
 
-# Official Microsoft Resources
+## Official Microsoft Resources
 
 These should be your primary reference sources.
 
@@ -29,7 +29,7 @@ These should be your primary reference sources.
 
 ---
 
-# Windows Internals
+## Windows Internals
 
 The following books are considered essential for advanced Windows professionals.
 
@@ -43,7 +43,7 @@ The following books are considered essential for advanced Windows professionals.
 
 ---
 
-# Windows Administration Books
+## Windows Administration Books
 
 Recommended reading:
 
@@ -55,7 +55,7 @@ Recommended reading:
 
 ---
 
-# Cybersecurity Books
+## Cybersecurity Books
 
 Recommended books:
 
@@ -69,7 +69,7 @@ Recommended books:
 
 ---
 
-# Networking Resources
+## Networking Resources
 
 Study topics:
 
@@ -89,7 +89,7 @@ Recommended references:
 
 ---
 
-# PowerShell Resources
+## PowerShell Resources
 
 Practice topics:
 
@@ -107,7 +107,7 @@ Daily practice is more effective than occasional long sessions.
 
 ---
 
-# Sysinternals Tools
+## Sysinternals Tools
 
 Become familiar with:
 
@@ -124,7 +124,7 @@ Become familiar with:
 
 ---
 
-# Virtual Lab Platforms
+## Virtual Lab Platforms
 
 Build hands-on experience using:
 
@@ -146,7 +146,7 @@ Suggested lab environments:
 
 ---
 
-# Cybersecurity Practice Platforms
+## Cybersecurity Practice Platforms
 
 Recommended platforms:
 
@@ -163,7 +163,7 @@ Practice in environments you own or are explicitly authorized to use.
 
 ---
 
-# Windows Administration Lab Ideas
+## Windows Administration Lab Ideas
 
 Build and practice:
 
@@ -180,7 +180,7 @@ Build and practice:
 
 ---
 
-# PowerShell Practice Projects
+## PowerShell Practice Projects
 
 Ideas include:
 
@@ -197,7 +197,7 @@ Ideas include:
 
 ---
 
-# Security Practice Projects
+## Security Practice Projects
 
 Build projects such as:
 
@@ -214,9 +214,9 @@ Build projects such as:
 
 ---
 
-# Recommended Certifications
+## Recommended Certifications
 
-## Microsoft
+### Microsoft
 
 - Microsoft 365 Certified Fundamentals
 - Azure Fundamentals (AZ-900)
@@ -227,7 +227,7 @@ Build projects such as:
 
 ---
 
-## Cybersecurity
+### Cybersecurity
 
 - CompTIA Security+
 - CompTIA CySA+
@@ -240,7 +240,7 @@ Choose certifications based on your career goals and practical experience.
 
 ---
 
-# Enterprise Skills Beyond Windows
+## Enterprise Skills Beyond Windows
 
 Develop knowledge in:
 
@@ -257,7 +257,7 @@ Develop knowledge in:
 
 ---
 
-# Daily Learning Routine
+## Daily Learning Routine
 
 Example study plan:
 
@@ -274,7 +274,7 @@ Consistency is more valuable than occasional intensive study sessions.
 
 ---
 
-# Interview Preparation Checklist
+## Interview Preparation Checklist
 
 Before attending interviews, review:
 
@@ -298,7 +298,7 @@ Practice explaining concepts aloud using real-world examples.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow the principle of least privilege.
 - Document every configuration change.
@@ -313,7 +313,7 @@ Practice explaining concepts aloud using real-world examples.
 
 ---
 
-# Career Roadmap
+## Career Roadmap
 
 ```text
 Windows Fundamentals
@@ -365,7 +365,7 @@ Senior Infrastructure / Security Engineer
 
 ---
 
-# Final Advice
+## Final Advice
 
 Technical knowledge alone is not enough to succeed in enterprise environments.
 
@@ -383,7 +383,7 @@ These skills will help you become a reliable Windows administrator, infrastructu
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have completed the **Windows Handbook**.
 
@@ -423,7 +423,7 @@ By studying these topics and practicing regularly in lab environments, you will 
 
 ---
 
-# End of Handbook
+## End of Handbook
 
 **Version:** 1.0  
 **Audience:** Students, IT Support Engineers, System Administrators, SOC Analysts, Security Engineers, and Cybersecurity Professionals  

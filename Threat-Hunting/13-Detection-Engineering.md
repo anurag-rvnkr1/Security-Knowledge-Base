@@ -53,7 +53,7 @@ It is a continuous engineering lifecycle.
 
 ---
 
-# Why Detection Engineering Matters
+## Why Detection Engineering Matters
 
 Modern enterprises generate enormous quantities of telemetry:
 
@@ -97,7 +97,7 @@ The objective is to generate:
 
 ---
 
-# Detection Engineering vs Threat Hunting
+## Detection Engineering vs Threat Hunting
 
 | Threat Hunting | Detection Engineering |
 |---|---|
@@ -135,7 +135,7 @@ Future Hunting
 
 ---
 
-# Detection Engineering Lifecycle
+## Detection Engineering Lifecycle
 
 ```text
 01. Identify Threat
@@ -176,7 +176,7 @@ Future Hunting
 
 ---
 
-# Detection Objectives
+## Detection Objectives
 
 Before writing a rule, define what it should accomplish.
 
@@ -197,7 +197,7 @@ A detection without a defined objective is difficult to evaluate.
 
 ---
 
-# Detection Design Questions
+## Detection Design Questions
 
 Ask:
 
@@ -221,11 +221,11 @@ What should the SOC do when it triggers?
 
 ---
 
-# Detection Types
+## Detection Types
 
 Detection engineering commonly uses several approaches.
 
-## Signature Detection
+### Signature Detection
 
 Matches known patterns.
 
@@ -251,7 +251,7 @@ Limitations:
 
 ---
 
-# IOC Detection
+## IOC Detection
 
 Searches for known indicators.
 
@@ -275,7 +275,7 @@ Incident Response
 
 ---
 
-# Behavioral Detection
+## Behavioral Detection
 
 Detects activity patterns.
 
@@ -293,7 +293,7 @@ Behavioral detection is generally more resilient to simple IOC changes.
 
 ---
 
-# Threshold Detection
+## Threshold Detection
 
 Example:
 
@@ -314,7 +314,7 @@ Scanning
 
 ---
 
-# Anomaly Detection
+## Anomaly Detection
 
 Identifies deviations from expected behavior.
 
@@ -335,7 +335,7 @@ Anomaly signals require context.
 
 ---
 
-# Sequence Detection
+## Sequence Detection
 
 Detects a sequence of events.
 
@@ -355,7 +355,7 @@ The sequence may be suspicious.
 
 ---
 
-# Correlation Detection
+## Correlation Detection
 
 Combines multiple data sources.
 
@@ -383,7 +383,7 @@ External Connection
 
 ---
 
-# Risk-Based Detection
+## Risk-Based Detection
 
 Instead of treating every signal independently:
 
@@ -399,7 +399,7 @@ The SOC can prioritize higher-risk entities.
 
 ---
 
-# Detection Pyramid
+## Detection Pyramid
 
 A useful conceptual model:
 
@@ -424,7 +424,7 @@ Higher layers can provide stronger contextual detection.
 
 ---
 
-# Detection Coverage
+## Detection Coverage
 
 Detection coverage should be mapped to threats and techniques.
 
@@ -450,7 +450,7 @@ Coverage should not be measured only by the number of rules.
 
 ---
 
-# Detection Coverage Matrix
+## Detection Coverage Matrix
 
 Example:
 
@@ -466,7 +466,7 @@ This exposes gaps.
 
 ---
 
-# Detection Gap
+## Detection Gap
 
 A detection gap occurs when:
 
@@ -492,7 +492,7 @@ This is an engineering priority.
 
 ---
 
-# Detection Requirements
+## Detection Requirements
 
 Every detection should have clearly defined requirements.
 
@@ -517,7 +517,7 @@ required_fields:
 
 ---
 
-# Detection Logic
+## Detection Logic
 
 The detection should explain:
 
@@ -537,7 +537,7 @@ Avoid opaque logic whenever possible.
 
 ---
 
-# Detection Engineering Workflow
+## Detection Engineering Workflow
 
 ```text
 Threat
@@ -566,7 +566,7 @@ Deployment
 
 ---
 
-# Data Source Selection
+## Data Source Selection
 
 Potential sources include:
 
@@ -591,7 +591,7 @@ Choose the source that provides the strongest evidence.
 
 ---
 
-# Telemetry Requirements
+## Telemetry Requirements
 
 A detection may fail because telemetry is incomplete.
 
@@ -609,7 +609,7 @@ The detection cannot reliably implement its intended logic.
 
 ---
 
-# Telemetry Quality
+## Telemetry Quality
 
 Evaluate:
 
@@ -627,7 +627,7 @@ Availability
 
 ---
 
-# Detection Data Pipeline
+## Detection Data Pipeline
 
 ```text
 Source
@@ -658,7 +658,7 @@ Failures anywhere can affect detection quality.
 
 ---
 
-# Detection Schema
+## Detection Schema
 
 Normalized schemas improve portability.
 
@@ -685,7 +685,7 @@ Examples include:
 
 ---
 
-# Sigma
+## Sigma
 
 Sigma provides a vendor-neutral way of describing detection logic.
 
@@ -704,7 +704,7 @@ This enables detection logic to be separated from a specific backend.
 
 ---
 
-# Example Sigma Structure
+## Example Sigma Structure
 
 ```yaml
 title: Suspicious PowerShell Execution
@@ -732,7 +732,7 @@ Production rules should be significantly more context-aware and tested.
 
 ---
 
-# Detection Metadata
+## Detection Metadata
 
 Recommended metadata:
 
@@ -758,11 +758,11 @@ response:
 
 ---
 
-# Severity vs Confidence
+## Severity vs Confidence
 
 These are different.
 
-## Severity
+### Severity
 
 Potential impact.
 
@@ -773,7 +773,7 @@ High
 Critical
 ```
 
-## Confidence
+### Confidence
 
 Confidence that the activity is malicious.
 
@@ -795,7 +795,7 @@ may require analyst validation before escalation.
 
 ---
 
-# Detection Priority
+## Detection Priority
 
 A useful conceptual model:
 
@@ -814,7 +814,7 @@ Exact implementation should be adapted to the organization.
 
 ---
 
-# Alert Design
+## Alert Design
 
 A detection should produce enough context for investigation.
 
@@ -841,7 +841,7 @@ Reason: Unusual parent + external connection
 
 ---
 
-# Detection Context
+## Detection Context
 
 Useful context:
 
@@ -863,7 +863,7 @@ Historical Baseline
 
 ---
 
-# Alert Enrichment
+## Alert Enrichment
 
 Enrichment can include:
 
@@ -885,7 +885,7 @@ Enrichment should improve decisions, not simply increase alert size.
 
 ---
 
-# Entity Context
+## Entity Context
 
 Example:
 
@@ -901,7 +901,7 @@ Alert
 
 ---
 
-# Detection Correlation
+## Detection Correlation
 
 A detection becomes stronger when multiple signals align.
 
@@ -920,7 +920,7 @@ High-Confidence Incident
 
 ---
 
-# Detection Chaining
+## Detection Chaining
 
 Example:
 
@@ -938,7 +938,7 @@ This can represent an attack progression.
 
 ---
 
-# Detection Dependencies
+## Detection Dependencies
 
 Document dependencies:
 
@@ -955,7 +955,7 @@ If one dependency fails, detection quality may degrade.
 
 ---
 
-# Detection Testing
+## Detection Testing
 
 A production detection should be tested.
 
@@ -974,7 +974,7 @@ Known Attack Simulation
 
 ---
 
-# Positive Test
+## Positive Test
 
 Expected malicious behavior:
 
@@ -986,7 +986,7 @@ Detection triggers
 
 ---
 
-# Negative Test
+## Negative Test
 
 Expected benign behavior:
 
@@ -998,7 +998,7 @@ Detection does not trigger
 
 ---
 
-# Boundary Test
+## Boundary Test
 
 Example:
 
@@ -1014,7 +1014,7 @@ The exact expected result must be documented.
 
 ---
 
-# Detection Testing Framework
+## Detection Testing Framework
 
 ```text
 Test Data
@@ -1030,7 +1030,7 @@ Automate this where practical.
 
 ---
 
-# Atomic Red Team / Adversary Simulation
+## Atomic Red Team / Adversary Simulation
 
 Authorized adversary simulation can validate detection coverage.
 
@@ -1052,7 +1052,7 @@ Use only within authorized environments.
 
 ---
 
-# Purple Teaming
+## Purple Teaming
 
 Purple teaming combines:
 
@@ -1074,7 +1074,7 @@ Attack
 
 ---
 
-# Detection Validation Questions
+## Detection Validation Questions
 
 After testing:
 
@@ -1100,7 +1100,7 @@ Was the response actionable?
 
 ---
 
-# False Positives
+## False Positives
 
 False positives occur when benign activity triggers a detection.
 
@@ -1124,7 +1124,7 @@ The objective is:
 
 ---
 
-# False Positive Analysis
+## False Positive Analysis
 
 For each false positive:
 
@@ -1144,7 +1144,7 @@ Is the telemetry misleading?
 
 ---
 
-# Tuning
+## Tuning
 
 Tuning may involve:
 
@@ -1161,7 +1161,7 @@ Field Conditions
 
 ---
 
-# Dangerous Tuning
+## Dangerous Tuning
 
 Avoid:
 
@@ -1179,7 +1179,7 @@ Instead determine why the alerts occur.
 
 ---
 
-# Tuning Lifecycle
+## Tuning Lifecycle
 
 ```text
 Alert
@@ -1203,7 +1203,7 @@ Classify
 
 ---
 
-# Alert Fatigue
+## Alert Fatigue
 
 Excessive alerts cause:
 
@@ -1221,7 +1221,7 @@ Detection engineering must therefore consider analyst capacity.
 
 ---
 
-# Detection Quality Metrics
+## Detection Quality Metrics
 
 Useful metrics include:
 
@@ -1239,7 +1239,7 @@ Detection Coverage
 
 ---
 
-# Precision
+## Precision
 
 ```text
 Precision =
@@ -1252,7 +1252,7 @@ High precision means alerts are generally useful.
 
 ---
 
-# Recall
+## Recall
 
 ```text
 Recall =
@@ -1265,7 +1265,7 @@ High recall means more relevant malicious activity is detected.
 
 ---
 
-# F1 Score
+## F1 Score
 
 A conceptual combined metric:
 
@@ -1282,7 +1282,7 @@ Business risk and analyst workflow matter.
 
 ---
 
-# Detection Latency
+## Detection Latency
 
 Important timestamps:
 
@@ -1304,7 +1304,7 @@ The difference between these points affects response time.
 
 ---
 
-# Detection Freshness
+## Detection Freshness
 
 A detection should operate on sufficiently recent telemetry.
 
@@ -1320,7 +1320,7 @@ Large gaps may indicate pipeline problems.
 
 ---
 
-# Detection Reliability
+## Detection Reliability
 
 Track:
 
@@ -1336,7 +1336,7 @@ A theoretically excellent detection is useless if it repeatedly fails operationa
 
 ---
 
-# Detection Performance
+## Detection Performance
 
 Performance factors include:
 
@@ -1356,7 +1356,7 @@ Optimize production detections for predictable execution.
 
 ---
 
-# Detection Optimization
+## Detection Optimization
 
 General pattern:
 
@@ -1376,7 +1376,7 @@ Correlate Relevant Events
 
 ---
 
-# High-Cardinality Problems
+## High-Cardinality Problems
 
 Examples:
 
@@ -1394,7 +1394,7 @@ Use them deliberately.
 
 ---
 
-# Joins
+## Joins
 
 Joins can be useful:
 
@@ -1410,7 +1410,7 @@ Prefer correlation strategies appropriate to the SIEM/data platform.
 
 ---
 
-# Detection Scheduling
+## Detection Scheduling
 
 A detection may execute:
 
@@ -1427,7 +1427,7 @@ The correct schedule depends on the threat.
 
 ---
 
-# Real-Time Detection
+## Real-Time Detection
 
 Useful for:
 
@@ -1441,7 +1441,7 @@ Critical Cloud Changes
 
 ---
 
-# Batch Detection
+## Batch Detection
 
 Useful for:
 
@@ -1454,7 +1454,7 @@ Historical Correlation
 
 ---
 
-# Detection Window
+## Detection Window
 
 Example:
 
@@ -1469,7 +1469,7 @@ But excessive overlap may duplicate alerts.
 
 ---
 
-# Alert Deduplication
+## Alert Deduplication
 
 Multiple events may represent one incident.
 
@@ -1496,7 +1496,7 @@ Attempts: 100
 
 ---
 
-# Alert Grouping
+## Alert Grouping
 
 Group by entities such as:
 
@@ -1511,7 +1511,7 @@ Session
 
 ---
 
-# Detection Suppression
+## Detection Suppression
 
 Suppression can prevent repeated alerts.
 
@@ -1529,7 +1529,7 @@ Suppression must preserve enough evidence for investigation.
 
 ---
 
-# Detection Deduplication Risks
+## Detection Deduplication Risks
 
 Over-aggressive deduplication can hide:
 
@@ -1545,7 +1545,7 @@ Use meaningful grouping keys.
 
 ---
 
-# Detection-as-Code Repository
+## Detection-as-Code Repository
 
 Example:
 
@@ -1571,7 +1571,7 @@ detections/
 
 ---
 
-# Detection Pull Request
+## Detection Pull Request
 
 A mature workflow:
 
@@ -1599,7 +1599,7 @@ Deployment
 
 ---
 
-# Detection CI/CD
+## Detection CI/CD
 
 Possible pipeline:
 
@@ -1627,7 +1627,7 @@ Deploy
 
 ---
 
-# Detection Regression Testing
+## Detection Regression Testing
 
 A previously working detection can break because of:
 
@@ -1644,7 +1644,7 @@ Regression testing protects against silent failures.
 
 ---
 
-# Detection Test Dataset
+## Detection Test Dataset
 
 Maintain representative events:
 
@@ -1661,7 +1661,7 @@ Each test should have an expected outcome.
 
 ---
 
-# Detection Documentation
+## Detection Documentation
 
 Each production detection should document:
 
@@ -1686,7 +1686,7 @@ Review Date
 
 ---
 
-# Detection Runbook
+## Detection Runbook
 
 A detection should connect to an investigation procedure.
 
@@ -1714,7 +1714,7 @@ Contain if Necessary
 
 ---
 
-# Detection-to-Response Mapping
+## Detection-to-Response Mapping
 
 ```text
 Detection
@@ -1729,7 +1729,7 @@ Detection
 
 ---
 
-# Detection Ownership
+## Detection Ownership
 
 Assign ownership.
 
@@ -1753,7 +1753,7 @@ Ownership prevents abandoned detections.
 
 ---
 
-# Detection Review Cycle
+## Detection Review Cycle
 
 Review:
 
@@ -1769,7 +1769,7 @@ The exact cadence should match risk and organizational change.
 
 ---
 
-# Detection Retirement
+## Detection Retirement
 
 A detection should eventually be retired when:
 
@@ -1786,7 +1786,7 @@ Retirement should be documented.
 
 ---
 
-# Detection Debt
+## Detection Debt
 
 Detection debt is similar to technical debt.
 
@@ -1806,7 +1806,7 @@ Detection debt reduces SOC effectiveness.
 
 ---
 
-# Detection Inventory
+## Detection Inventory
 
 Maintain a central inventory:
 
@@ -1819,7 +1819,7 @@ Maintain a central inventory:
 
 ---
 
-# Detection Coverage Mapping
+## Detection Coverage Mapping
 
 ```text
 Threat
@@ -1844,21 +1844,21 @@ Every important threat should ideally have this chain.
 
 ---
 
-# Detection Engineering Example
+## Detection Engineering Example
 
-## Scenario
+### Scenario
 
 A SOC wants to detect suspicious remote PowerShell execution.
 
-### Threat
+#### Threat
 
 Remote execution following credential compromise.
 
-### Hypothesis
+#### Hypothesis
 
 A compromised account may remotely execute PowerShell on another Windows host.
 
-### Evidence
+#### Evidence
 
 ```text
 Remote Authentication
@@ -1870,7 +1870,7 @@ Remote Source
 Unusual User/Host Relationship
 ```
 
-### Correlation
+#### Correlation
 
 ```text
 Authentication
@@ -1885,7 +1885,7 @@ PowerShell
 Command Line
 ```
 
-### Enrichment
+#### Enrichment
 
 ```text
 User Role
@@ -1894,7 +1894,7 @@ Source Reputation
 Historical Relationship
 ```
 
-### Alert
+#### Alert
 
 ```text
 Suspicious Remote PowerShell
@@ -1910,9 +1910,9 @@ Unusual remote execution relationship
 
 ---
 
-# Detection Engineering Example — Password Spray
+## Detection Engineering Example — Password Spray
 
-## Logic
+### Logic
 
 ```text
 IF
@@ -1948,9 +1948,9 @@ Target Privilege
 
 ---
 
-# Detection Engineering Example — DNS Tunneling
+## Detection Engineering Example — DNS Tunneling
 
-## Logic
+### Logic
 
 ```text
 IF
@@ -1978,7 +1978,7 @@ Do not rely on one feature alone.
 
 ---
 
-# Detection Engineering Example — Cloud Credential Abuse
+## Detection Engineering Example — Cloud Credential Abuse
 
 ```text
 New Credential
@@ -1994,7 +1994,7 @@ This combined signal can be more useful than any individual event.
 
 ---
 
-# Detection Engineering Example — Account Takeover
+## Detection Engineering Example — Account Takeover
 
 ```text
 New Login Location
@@ -2010,7 +2010,7 @@ This represents a behavioral chain.
 
 ---
 
-# Threat-Informed Detection Engineering
+## Threat-Informed Detection Engineering
 
 Detection priorities should be influenced by:
 
@@ -2030,7 +2030,7 @@ Do not attempt to detect everything equally.
 
 ---
 
-# Crown Jewel Detection
+## Crown Jewel Detection
 
 Critical assets deserve stronger detection coverage.
 
@@ -2048,7 +2048,7 @@ Security Infrastructure
 
 ---
 
-# Attack Path Detection
+## Attack Path Detection
 
 Think beyond individual events.
 
@@ -2072,7 +2072,7 @@ Detection coverage should address meaningful portions of the attack path.
 
 ---
 
-# Detection Engineering and MITRE ATT&CK
+## Detection Engineering and MITRE ATT&CK
 
 ATT&CK can provide:
 
@@ -2088,7 +2088,7 @@ Use ATT&CK as a framework, not as proof that an environment is fully protected.
 
 ---
 
-# Detection Coverage Limitations
+## Detection Coverage Limitations
 
 A technique may be:
 
@@ -2115,41 +2115,41 @@ Response
 
 ---
 
-# Detection Maturity Model
+## Detection Maturity Model
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 Rules are created after incidents.
 
-## Level 2 — Signature Driven
+### Level 2 — Signature Driven
 
 IOC and known-pattern detection.
 
-## Level 3 — Behavioral
+### Level 3 — Behavioral
 
 Behavior-based detection introduced.
 
-## Level 4 — Threat-Informed
+### Level 4 — Threat-Informed
 
 Detection priorities based on intelligence and risk.
 
-## Level 5 — Detection-as-Code
+### Level 5 — Detection-as-Code
 
 Automated testing and version control.
 
-## Level 6 — Continuous Validation
+### Level 6 — Continuous Validation
 
 Purple-team validation, telemetry health, and continuous improvement.
 
 ---
 
-# Practical Lab 1 — Build a PowerShell Detection
+## Practical Lab 1 — Build a PowerShell Detection
 
-## Objective
+### Objective
 
 Create a detection for suspicious PowerShell execution.
 
-## Steps
+### Steps
 
 1. Identify PowerShell telemetry.
 2. Identify process fields.
@@ -2164,13 +2164,13 @@ Create a detection for suspicious PowerShell execution.
 
 ---
 
-# Practical Lab 2 — Password Spray Detection
+## Practical Lab 2 — Password Spray Detection
 
-## Objective
+### Objective
 
 Detect one source authenticating against multiple accounts.
 
-### Required fields
+#### Required fields
 
 ```text
 timestamp
@@ -2179,7 +2179,7 @@ user.name
 event.outcome
 ```
 
-### Logic
+#### Logic
 
 ```text
 Filter failures
@@ -2193,7 +2193,7 @@ Count attempts
 Apply threshold
 ```
 
-### Validation
+#### Validation
 
 Generate authorized authentication failures in a lab environment and confirm:
 
@@ -2209,9 +2209,9 @@ Alert
 
 ---
 
-# Practical Lab 3 — DNS Detection
+## Practical Lab 3 — DNS Detection
 
-## Objective
+### Objective
 
 Identify suspicious DNS behavior.
 
@@ -2231,7 +2231,7 @@ Create a combined detection candidate.
 
 ---
 
-# Practical Lab 4 — Detection-as-Code
+## Practical Lab 4 — Detection-as-Code
 
 Create:
 
@@ -2259,7 +2259,7 @@ Commit everything to version control.
 
 ---
 
-# Practical Lab 5 — Purple Team Validation
+## Practical Lab 5 — Purple Team Validation
 
 Choose an authorized technique.
 
@@ -2293,16 +2293,16 @@ Result
 
 ---
 
-# Detection Engineering Checklist
+## Detection Engineering Checklist
 
-## Threat Modeling
+### Threat Modeling
 
 - [ ] Threat identified
 - [ ] Behavior defined
 - [ ] ATT&CK mapping considered
 - [ ] Business impact understood
 
-## Telemetry
+### Telemetry
 
 - [ ] Data source identified
 - [ ] Required fields available
@@ -2310,7 +2310,7 @@ Result
 - [ ] Parsing validated
 - [ ] Timestamp quality checked
 
-## Detection
+### Detection
 
 - [ ] Logic documented
 - [ ] Severity defined
@@ -2318,7 +2318,7 @@ Result
 - [ ] Context included
 - [ ] Correlation considered
 
-## Testing
+### Testing
 
 - [ ] Positive test
 - [ ] Negative test
@@ -2326,7 +2326,7 @@ Result
 - [ ] Regression test
 - [ ] Authorized simulation
 
-## Operations
+### Operations
 
 - [ ] Owner assigned
 - [ ] Runbook created
@@ -2334,7 +2334,7 @@ Result
 - [ ] Suppression reviewed
 - [ ] Performance evaluated
 
-## Maintenance
+### Maintenance
 
 - [ ] Version controlled
 - [ ] Review date assigned
@@ -2344,69 +2344,69 @@ Result
 
 ---
 
-# Common Detection Engineering Mistakes
+## Common Detection Engineering Mistakes
 
-## 1. Alert Everything
+### 1. Alert Everything
 
 More alerts do not equal better security.
 
 ---
 
-## 2. Detect Only IOCs
+### 2. Detect Only IOCs
 
 Attackers can change infrastructure.
 
 ---
 
-## 3. Ignore Context
+### 3. Ignore Context
 
 A suspicious event without context may be meaningless.
 
 ---
 
-## 4. No Testing
+### 4. No Testing
 
 Untested detections create false confidence.
 
 ---
 
-## 5. Hard-Coded Assumptions
+### 5. Hard-Coded Assumptions
 
 Enterprise environments change.
 
 ---
 
-## 6. Excessive Allowlisting
+### 6. Excessive Allowlisting
 
 Attackers can abuse trusted entities.
 
 ---
 
-## 7. No Ownership
+### 7. No Ownership
 
 Unowned detections eventually decay.
 
 ---
 
-## 8. No Performance Testing
+### 8. No Performance Testing
 
 Expensive rules can affect SIEM operations.
 
 ---
 
-## 9. No Runbook
+### 9. No Runbook
 
 The SOC may receive an alert without knowing what to do.
 
 ---
 
-## 10. No Feedback Loop
+### 10. No Feedback Loop
 
 Detection quality must improve from investigation results.
 
 ---
 
-# Professional Detection Record
+## Professional Detection Record
 
 ```text
 Detection ID:
@@ -2463,7 +2463,7 @@ Next Review:
 
 ---
 
-# Enterprise Detection Architecture
+## Enterprise Detection Architecture
 
 ```text
                        THREAT INTELLIGENCE
@@ -2508,7 +2508,7 @@ Next Review:
 
 ---
 
-# Detection Engineering Operating Model
+## Detection Engineering Operating Model
 
 A mature team may include:
 
@@ -2527,7 +2527,7 @@ Responsibilities should overlap enough to create feedback but remain clearly own
 
 ---
 
-# Detection Engineer Responsibilities
+## Detection Engineer Responsibilities
 
 Typical responsibilities include:
 
@@ -2547,7 +2547,7 @@ Typical responsibilities include:
 
 ---
 
-# SOC Feedback Loop
+## SOC Feedback Loop
 
 ```text
 Detection
@@ -2569,7 +2569,7 @@ The SOC is one of the most important sources of detection-quality feedback.
 
 ---
 
-# Detection Engineering KPIs
+## Detection Engineering KPIs
 
 Possible metrics:
 
@@ -2591,7 +2591,7 @@ Metrics should be interpreted together.
 
 ---
 
-# Important Principle
+## Important Principle
 
 A detection that generates 10,000 alerts with no useful signal is not necessarily better than a detection generating 50 high-quality alerts.
 
@@ -2605,7 +2605,7 @@ Operational Cost
 
 ---
 
-# Final Takeaways
+## Final Takeaways
 
 1. **Detection engineering turns threat knowledge into repeatable security controls.**
 2. **Good detections begin with clearly defined threat behavior.**
@@ -2629,7 +2629,7 @@ The central principle is:
 
 ---
 
-# References
+## References
 
 - MITRE ATT&CK  
   https://attack.mitre.org/

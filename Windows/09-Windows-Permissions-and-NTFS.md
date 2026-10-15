@@ -1,10 +1,10 @@
 # 09-Windows-Permissions-and-NTFS.md
 
-# Part 1 — NTFS Fundamentals, Permissions, Access Control Lists (ACLs), Security Descriptors, Ownership, and Authorization Basics
+## Part 1 — NTFS Fundamentals, Permissions, Access Control Lists (ACLs), Security Descriptors, Ownership, and Authorization Basics
 
 ---
 
-# Introduction
+## Introduction
 
 One of the most important responsibilities of an operating system is controlling **who can access which resources**.
 
@@ -39,7 +39,7 @@ Understanding NTFS permissions is essential for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this part, you will understand:
 
@@ -55,7 +55,7 @@ By the end of this part, you will understand:
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 These two concepts are closely related but serve different purposes.
 
@@ -90,7 +90,7 @@ Access Resource
 
 ---
 
-# Windows Authorization Model
+## Windows Authorization Model
 
 Every resource access request follows a similar process.
 
@@ -126,7 +126,7 @@ Windows performs this evaluation automatically whenever a protected resource is 
 
 ---
 
-# What is NTFS?
+## What is NTFS?
 
 **NTFS (New Technology File System)** is the primary file system used by modern Windows operating systems.
 
@@ -145,7 +145,7 @@ NTFS is significantly more secure and feature-rich than older file systems such 
 
 ---
 
-# Why NTFS Permissions Exist
+## Why NTFS Permissions Exist
 
 Without permissions:
 
@@ -183,7 +183,7 @@ Permissions enforce the principle of least privilege and help protect sensitive 
 
 ---
 
-# Security Principals
+## Security Principals
 
 Permissions are assigned to **security principals**.
 
@@ -199,7 +199,7 @@ Each security principal is identified internally by a **Security Identifier (SID
 
 ---
 
-# Objects Protected by NTFS
+## Objects Protected by NTFS
 
 NTFS can secure:
 
@@ -216,7 +216,7 @@ Each object contains security information describing who can access it.
 
 ---
 
-# Security Descriptor
+## Security Descriptor
 
 Every secured NTFS object has a **Security Descriptor**.
 
@@ -235,7 +235,7 @@ The Security Descriptor is the central structure Windows uses to make authorizat
 
 ---
 
-# Components of a Security Descriptor
+## Components of a Security Descriptor
 
 | Component | Purpose |
 |------------|----------|
@@ -246,7 +246,7 @@ The Security Descriptor is the central structure Windows uses to make authorizat
 
 ---
 
-# What is an ACL?
+## What is an ACL?
 
 An **Access Control List (ACL)** is a list of rules attached to an object.
 
@@ -266,7 +266,7 @@ ACL
 
 ---
 
-# Discretionary Access Control List (DACL)
+## Discretionary Access Control List (DACL)
 
 The **DACL** determines whether access is allowed or denied.
 
@@ -292,7 +292,7 @@ If no applicable permissions allow the requested action, access is denied.
 
 ---
 
-# System Access Control List (SACL)
+## System Access Control List (SACL)
 
 The **SACL** controls **auditing**, not permissions.
 
@@ -318,7 +318,7 @@ SACLs define which access attempts should generate audit events.
 
 ---
 
-# Access Control Entry (ACE)
+## Access Control Entry (ACE)
 
 An ACL is composed of multiple **Access Control Entries (ACEs)**.
 
@@ -337,7 +337,7 @@ Each ACE contains one permission rule.
 
 ---
 
-# ACE Structure
+## ACE Structure
 
 An ACE typically specifies:
 
@@ -363,7 +363,7 @@ Read
 
 ---
 
-# Allow ACE
+## Allow ACE
 
 Example:
 
@@ -383,7 +383,7 @@ Members of the Engineering group can modify the resource (subject to overall per
 
 ---
 
-# Deny ACE
+## Deny ACE
 
 Example:
 
@@ -403,7 +403,7 @@ Deny entries should be used carefully because they can override allow permission
 
 ---
 
-# Common NTFS Permissions
+## Common NTFS Permissions
 
 Windows provides several standard NTFS permissions.
 
@@ -420,7 +420,7 @@ These standard permissions are combinations of more granular special permissions
 
 ---
 
-# Permission Hierarchy
+## Permission Hierarchy
 
 ```text
 Full Control
@@ -446,7 +446,7 @@ Higher permission levels generally include the capabilities of lower levels.
 
 ---
 
-# Full Control
+## Full Control
 
 Allows users to:
 
@@ -461,7 +461,7 @@ Because of its broad capabilities, Full Control should be granted only when nece
 
 ---
 
-# Modify
+## Modify
 
 Allows users to:
 
@@ -474,7 +474,7 @@ However, users generally cannot change the object's permissions unless additiona
 
 ---
 
-# Read & Execute
+## Read & Execute
 
 Users can:
 
@@ -487,7 +487,7 @@ Commonly assigned for application directories.
 
 ---
 
-# Read
+## Read
 
 Allows:
 
@@ -500,7 +500,7 @@ Read permission does not allow modifying content.
 
 ---
 
-# Write
+## Write
 
 Allows:
 
@@ -513,7 +513,7 @@ Write permission alone does not automatically allow deleting objects.
 
 ---
 
-# Basic vs Special Permissions
+## Basic vs Special Permissions
 
 Windows exposes:
 
@@ -528,7 +528,7 @@ Basic permissions are predefined combinations of individual special permissions.
 
 ---
 
-# Special Permissions
+## Special Permissions
 
 Examples include:
 
@@ -547,7 +547,7 @@ Administrators can configure these for fine-grained access control.
 
 ---
 
-# Viewing Permissions
+## Viewing Permissions
 
 Graphical interface:
 
@@ -571,7 +571,7 @@ Command-line tools and PowerShell can also display security information.
 
 ---
 
-# Permission Example
+## Permission Example
 
 ```text
 Finance Folder
@@ -593,7 +593,7 @@ Group-based permission assignment simplifies administration.
 
 ---
 
-# File vs Folder Permissions
+## File vs Folder Permissions
 
 Permissions may behave differently depending on the object.
 
@@ -607,7 +607,7 @@ Inheritance is covered in the next part.
 
 ---
 
-# Ownership
+## Ownership
 
 Every NTFS object has an **owner**.
 
@@ -617,7 +617,7 @@ Ownership is distinct from permission assignment.
 
 ---
 
-# Ownership Workflow
+## Ownership Workflow
 
 ```text
 Create File
@@ -637,7 +637,7 @@ Resource Protected
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An HR department stores payroll information.
 
@@ -673,7 +673,7 @@ Instead of assigning permissions individually, administrators assign permissions
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Incorrect NTFS permissions are a frequent cause of security incidents.
 
@@ -696,7 +696,7 @@ Regular permission reviews help reduce these risks.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper NTFS permission management provides:
 
@@ -711,7 +711,7 @@ Poor permission management can result in unauthorized access, data loss, and com
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Assign permissions to groups rather than individual users.
 - Apply the Principle of Least Privilege (PoLP).
@@ -723,9 +723,9 @@ Poor permission management can result in unauthorized access, data loss, and com
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View NTFS Permissions
+### Lab 1 — View NTFS Permissions
 
 Create a test folder.
 
@@ -751,7 +751,7 @@ Identify:
 
 ---
 
-## Lab 2 — Compare Permissions
+### Lab 2 — Compare Permissions
 
 Create:
 
@@ -773,7 +773,7 @@ Observe how the permission entries differ.
 
 ---
 
-## Lab 3 — View Owner
+### Lab 3 — View Owner
 
 Open:
 
@@ -799,7 +799,7 @@ Do not modify production permissions.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - NTFS permissions provide fine-grained authorization for files and folders.
 - Authentication identifies users; authorization determines access.
@@ -811,7 +811,7 @@ Do not modify production permissions.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between authentication and authorization?
 2. What is an Access Control List (ACL)?
@@ -826,7 +826,7 @@ Do not modify production permissions.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Security Documentation
@@ -836,13 +836,13 @@ Do not modify production permissions.
 
 ---
 
-# 09-Windows-Permissions-and-NTFS.md
+## 09-Windows-Permissions-and-NTFS.md
 
-# Part 2 — NTFS Permission Inheritance, Effective Permissions, Ownership, Special Permissions, and Permission Evaluation
+## Part 2 — NTFS Permission Inheritance, Effective Permissions, Ownership, Special Permissions, and Permission Evaluation
 
 ---
 
-# Introduction
+## Introduction
 
 Assigning permissions is only the beginning of Windows authorization.
 
@@ -859,7 +859,7 @@ Understanding this evaluation process is critical for administrators and cyberse
 
 ---
 
-# Permission Evaluation Workflow
+## Permission Evaluation Workflow
 
 ```text
 User Requests Access
@@ -897,7 +897,7 @@ This process occurs automatically whenever Windows protects an NTFS resource.
 
 ---
 
-# Permission Inheritance
+## Permission Inheritance
 
 By default, child objects inherit permissions from their parent folder.
 
@@ -921,7 +921,7 @@ then the child folders inherit the same permission unless inheritance is changed
 
 ---
 
-# Benefits of Inheritance
+## Benefits of Inheritance
 
 Inheritance provides:
 
@@ -935,7 +935,7 @@ Without inheritance, administrators would need to configure permissions on every
 
 ---
 
-# Inheritance Example
+## Inheritance Example
 
 ```text
 Root Folder
@@ -968,7 +968,7 @@ inherit those permissions unless inheritance is disabled or overridden.
 
 ---
 
-# Explicit Permissions
+## Explicit Permissions
 
 Explicit permissions are assigned directly to an object.
 
@@ -990,7 +990,7 @@ These permissions exist only on the Payroll folder unless inherited by child obj
 
 ---
 
-# Inherited Permissions
+## Inherited Permissions
 
 Inherited permissions come from a parent object.
 
@@ -1016,7 +1016,7 @@ No manual assignment is required on the child object.
 
 ---
 
-# Explicit vs Inherited Permissions
+## Explicit vs Inherited Permissions
 
 | Explicit | Inherited |
 |-----------|-----------|
@@ -1029,7 +1029,7 @@ Explicit permissions generally take precedence over inherited permissions.
 
 ---
 
-# Viewing Inheritance
+## Viewing Inheritance
 
 Graphically:
 
@@ -1058,7 +1058,7 @@ This helps administrators understand where permissions originate.
 
 ---
 
-# Disabling Inheritance
+## Disabling Inheritance
 
 Administrators can disable inheritance on an object.
 
@@ -1090,7 +1090,7 @@ Removing inherited permissions without careful planning can unintentionally deny
 
 ---
 
-# Converting Inherited Permissions
+## Converting Inherited Permissions
 
 When disabling inheritance, administrators often choose:
 
@@ -1110,7 +1110,7 @@ This preserves existing access while allowing independent modification.
 
 ---
 
-# Removing Inherited Permissions
+## Removing Inherited Permissions
 
 Alternative option:
 
@@ -1130,7 +1130,7 @@ This approach is useful when creating highly restricted folders but should be us
 
 ---
 
-# Effective Permissions
+## Effective Permissions
 
 A user's **effective permissions** represent the final permissions Windows applies after evaluating:
 
@@ -1145,7 +1145,7 @@ Effective permissions determine whether access is ultimately granted.
 
 ---
 
-# Effective Permission Workflow
+## Effective Permission Workflow
 
 ```text
 User
@@ -1173,7 +1173,7 @@ Access Decision
 
 ---
 
-# Multiple Group Memberships
+## Multiple Group Memberships
 
 Users often belong to multiple groups.
 
@@ -1192,7 +1192,7 @@ Windows combines applicable permissions before making an access decision.
 
 ---
 
-# Combining Allow Permissions
+## Combining Allow Permissions
 
 Example:
 
@@ -1231,7 +1231,7 @@ Allow permissions generally accumulate unless affected by Deny entries.
 
 ---
 
-# Deny Permissions
+## Deny Permissions
 
 Windows supports explicit **Deny** permissions.
 
@@ -1258,7 +1258,7 @@ Because Deny entries can create complexity, they should be used carefully.
 
 ---
 
-# Permission Evaluation Order (Simplified)
+## Permission Evaluation Order (Simplified)
 
 A simplified view of evaluation is:
 
@@ -1282,7 +1282,7 @@ Windows performs detailed access checks internally, but this order helps explain
 
 ---
 
-# Example 1
+## Example 1
 
 Folder:
 
@@ -1310,7 +1310,7 @@ Modify Access
 
 ---
 
-# Example 2
+## Example 2
 
 Permissions:
 
@@ -1341,7 +1341,7 @@ Combined permissions allow broader access than either permission alone.
 
 ---
 
-# Example 3
+## Example 3
 
 Permissions:
 
@@ -1376,7 +1376,7 @@ The Deny entry affects the specific denied operation.
 
 ---
 
-# Ownership Review
+## Ownership Review
 
 Every NTFS object has an owner.
 
@@ -1398,7 +1398,7 @@ Ownership is separate from ordinary read/write permissions.
 
 ---
 
-# Changing Ownership
+## Changing Ownership
 
 Administrators (or users with appropriate rights) can change ownership.
 
@@ -1428,7 +1428,7 @@ Ownership changes should follow organizational authorization procedures.
 
 ---
 
-# Take Ownership Permission
+## Take Ownership Permission
 
 One special NTFS permission is:
 
@@ -1442,7 +1442,7 @@ Because ownership affects security administration, this permission should be tig
 
 ---
 
-# Change Permissions Permission
+## Change Permissions Permission
 
 Another important special permission is:
 
@@ -1456,7 +1456,7 @@ They do **not** automatically become the owner.
 
 ---
 
-# Delete vs Delete Subfolders and Files
+## Delete vs Delete Subfolders and Files
 
 These special permissions are different.
 
@@ -1469,7 +1469,7 @@ Understanding the distinction is important when designing secure folder structur
 
 ---
 
-# Read Permissions
+## Read Permissions
 
 Allows users to:
 
@@ -1481,7 +1481,7 @@ This permission does not allow modifying the ACL.
 
 ---
 
-# Synchronize Permission
+## Synchronize Permission
 
 The **Synchronize** permission is used internally by Windows for coordinating access to objects.
 
@@ -1489,7 +1489,7 @@ Administrators rarely modify this permission directly.
 
 ---
 
-# Advanced Security Settings
+## Advanced Security Settings
 
 The **Advanced Security Settings** dialog provides:
 
@@ -1503,7 +1503,7 @@ It is the primary graphical interface for advanced NTFS security management.
 
 ---
 
-# Effective Access Tool
+## Effective Access Tool
 
 Windows includes an **Effective Access** feature (supported editions).
 
@@ -1525,7 +1525,7 @@ This helps administrators troubleshoot complex permission issues.
 
 ---
 
-# Command-Line Permission Tools
+## Command-Line Permission Tools
 
 Windows provides command-line utilities for managing NTFS permissions.
 
@@ -1542,7 +1542,7 @@ PowerShell also provides advanced security management capabilities, covered in a
 
 ---
 
-# ICACLS Example
+## ICACLS Example
 
 Display permissions:
 
@@ -1561,7 +1561,7 @@ Typical output includes:
 
 ---
 
-# TAKEOWN Example
+## TAKEOWN Example
 
 Take ownership:
 
@@ -1575,7 +1575,7 @@ Ownership should only be changed when authorized.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A confidential HR folder requires stricter security.
 
@@ -1615,7 +1615,7 @@ This approach limits access while preserving required functionality.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Misconfigured NTFS permissions are a common source of privilege escalation.
 
@@ -1638,7 +1638,7 @@ Regular permission reviews and least-privilege design reduce these risks.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper inheritance and permission management provide:
 
@@ -1653,7 +1653,7 @@ Poorly designed ACLs can expose confidential information or disrupt business ope
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Keep inheritance enabled unless there is a clear business requirement.
 - Assign permissions to groups instead of individual users.
@@ -1665,9 +1665,9 @@ Poorly designed ACLs can expose confidential information or disrupt business ope
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Observe Inheritance
+### Lab 1 — Observe Inheritance
 
 1. Create a parent folder.
 2. Create two child folders.
@@ -1678,7 +1678,7 @@ Document the inherited entries.
 
 ---
 
-## Lab 2 — Disable Inheritance
+### Lab 2 — Disable Inheritance
 
 Using a test folder:
 
@@ -1707,7 +1707,7 @@ Observe how the permission entries change.
 
 ---
 
-## Lab 3 — View Permissions Using ICACLS
+### Lab 3 — View Permissions Using ICACLS
 
 Open **Command Prompt**.
 
@@ -1728,7 +1728,7 @@ Do not modify permissions on production systems.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Inheritance simplifies permission management by propagating permissions from parent objects.
 - Explicit permissions generally take precedence over inherited permissions.
@@ -1739,7 +1739,7 @@ Do not modify permissions on production systems.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is permission inheritance?
 2. What is the difference between explicit and inherited permissions?
@@ -1754,7 +1754,7 @@ Do not modify permissions on production systems.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft NTFS Security Documentation
@@ -1765,13 +1765,13 @@ Do not modify permissions on production systems.
 
 ---
 
-# 09-Windows-Permissions-and-NTFS.md
+## 09-Windows-Permissions-and-NTFS.md
 
-# Part 3 — NTFS Advanced Permissions, Sharing Permissions, Encrypting File System (EFS), Auditing, Access-Based Enumeration, and Enterprise File Security
+## Part 3 — NTFS Advanced Permissions, Sharing Permissions, Encrypting File System (EFS), Auditing, Access-Based Enumeration, and Enterprise File Security
 
 ---
 
-# Introduction
+## Introduction
 
 NTFS permissions provide fine-grained access control for local file systems, but enterprise environments require additional security capabilities.
 
@@ -1788,7 +1788,7 @@ Windows combines NTFS with additional technologies to provide layered file secur
 
 ---
 
-# Enterprise File Security Model
+## Enterprise File Security Model
 
 ```text
 User
@@ -1822,7 +1822,7 @@ For network access, both **Share Permissions** and **NTFS Permissions** particip
 
 ---
 
-# NTFS Permissions vs Share Permissions
+## NTFS Permissions vs Share Permissions
 
 These permission systems serve different purposes.
 
@@ -1837,7 +1837,7 @@ A user accessing a shared folder over the network must satisfy **both** permissi
 
 ---
 
-# Share Permissions
+## Share Permissions
 
 Windows provides three standard share permissions.
 
@@ -1851,7 +1851,7 @@ Share permissions are evaluated only for network access.
 
 ---
 
-# Share Permission Workflow
+## Share Permission Workflow
 
 ```text
 Remote User
@@ -1877,7 +1877,7 @@ Both permission systems must allow the requested operation.
 
 ---
 
-# Combined Permission Evaluation
+## Combined Permission Evaluation
 
 Consider:
 
@@ -1906,7 +1906,7 @@ The **most restrictive effective result** applies across the combined share and 
 
 ---
 
-# Example 1
+## Example 1
 
 Share:
 
@@ -1928,7 +1928,7 @@ Read
 
 ---
 
-# Example 2
+## Example 2
 
 Share:
 
@@ -1950,7 +1950,7 @@ Modify
 
 ---
 
-# Example 3
+## Example 3
 
 Share:
 
@@ -1972,7 +1972,7 @@ Read
 
 ---
 
-# Recommended Enterprise Practice
+## Recommended Enterprise Practice
 
 Many organizations configure:
 
@@ -1999,7 +1999,7 @@ Note: Modern organizations often replace broad **Everyone** access with authenti
 
 ---
 
-# Hidden Shares
+## Hidden Shares
 
 Windows supports hidden administrative-style shares.
 
@@ -2021,7 +2021,7 @@ Users who know the share path and have appropriate permissions can still access 
 
 ---
 
-# Administrative Shares
+## Administrative Shares
 
 Windows automatically creates administrative shares such as:
 
@@ -2035,7 +2035,7 @@ These shares are intended for administrative use and should be protected appropr
 
 ---
 
-# Encrypting File System (EFS)
+## Encrypting File System (EFS)
 
 **Encrypting File System (EFS)** provides file-level encryption on NTFS volumes.
 
@@ -2061,7 +2061,7 @@ Only authorized users with the appropriate encryption keys can decrypt the data.
 
 ---
 
-# EFS Characteristics
+## EFS Characteristics
 
 EFS provides:
 
@@ -2074,7 +2074,7 @@ Unlike full-disk encryption, EFS protects selected files and folders.
 
 ---
 
-# EFS Example
+## EFS Example
 
 ```text
 Payroll.xlsx
@@ -2100,7 +2100,7 @@ Encryption and decryption occur transparently for authorized users.
 
 ---
 
-# EFS vs BitLocker
+## EFS vs BitLocker
 
 | EFS | BitLocker |
 |------|-----------|
@@ -2113,7 +2113,7 @@ Many enterprise environments use BitLocker for device protection and EFS only wh
 
 ---
 
-# Data Recovery Agent (DRA)
+## Data Recovery Agent (DRA)
 
 Organizations may configure **Data Recovery Agents (DRAs)** for EFS.
 
@@ -2139,7 +2139,7 @@ DRAs help organizations recover encrypted data under approved procedures.
 
 ---
 
-# File Auditing
+## File Auditing
 
 Windows can audit file access using **SACLs**.
 
@@ -2155,7 +2155,7 @@ Auditing helps detect unauthorized access and supports forensic investigations.
 
 ---
 
-# Auditing Workflow
+## Auditing Workflow
 
 ```text
 User Accesses File
@@ -2181,7 +2181,7 @@ Audit generation depends on both SACL configuration and system audit policy.
 
 ---
 
-# Audit Policies
+## Audit Policies
 
 Administrators configure auditing through:
 
@@ -2205,7 +2205,7 @@ Audit policies determine whether configured SACLs generate events.
 
 ---
 
-# Common Audit Events
+## Common Audit Events
 
 Organizations commonly audit:
 
@@ -2219,7 +2219,7 @@ Not every file requires auditing; excessive auditing may increase log volume.
 
 ---
 
-# Access-Based Enumeration (ABE)
+## Access-Based Enumeration (ABE)
 
 **Access-Based Enumeration (ABE)** hides folders that users cannot access.
 
@@ -2253,7 +2253,7 @@ This improves usability and reduces unnecessary information disclosure.
 
 ---
 
-# Access-Based Enumeration Workflow
+## Access-Based Enumeration Workflow
 
 ```text
 User
@@ -2275,7 +2275,7 @@ ABE does **not** replace NTFS permissions; it complements them.
 
 ---
 
-# Offline Files
+## Offline Files
 
 Windows supports cached copies of network files.
 
@@ -2305,7 +2305,7 @@ Offline Files improve availability for mobile users.
 
 ---
 
-# File Synchronization Conflicts
+## File Synchronization Conflicts
 
 Synchronization may produce conflicts when:
 
@@ -2337,7 +2337,7 @@ Administrators should establish version control and collaboration procedures to 
 
 ---
 
-# Sensitive Data Protection
+## Sensitive Data Protection
 
 Examples of sensitive enterprise data include:
 
@@ -2358,7 +2358,7 @@ These resources often require:
 
 ---
 
-# Data Classification
+## Data Classification
 
 Organizations commonly classify data.
 
@@ -2384,7 +2384,7 @@ Higher classifications typically require stronger security controls.
 
 ---
 
-# Information Barriers
+## Information Barriers
 
 Sensitive departments often require isolation.
 
@@ -2410,7 +2410,7 @@ Proper permission design supports confidentiality.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A Human Resources department stores employee records.
 
@@ -2440,7 +2440,7 @@ This layered approach combines authorization, encryption, and auditing.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Misconfigured shares are a common attack vector.
 
@@ -2463,7 +2463,7 @@ Security teams should regularly review both share and NTFS permissions.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Enterprise file security provides:
 
@@ -2478,7 +2478,7 @@ Weak file security can expose confidential data and increase operational and leg
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use NTFS permissions as the primary authorization mechanism.
 - Apply the Principle of Least Privilege (PoLP).
@@ -2491,9 +2491,9 @@ Weak file security can expose confidential data and increase operational and leg
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Compare Share and NTFS Permissions
+### Lab 1 — Compare Share and NTFS Permissions
 
 Create a test shared folder.
 
@@ -2506,7 +2506,7 @@ Access the share from another authorized device (where available) and compare th
 
 ---
 
-## Lab 2 — Review Administrative Shares
+### Lab 2 — Review Administrative Shares
 
 Open **Command Prompt**.
 
@@ -2526,7 +2526,7 @@ Do not modify production shares without authorization.
 
 ---
 
-## Lab 3 — Explore Advanced Security
+### Lab 3 — Explore Advanced Security
 
 Open:
 
@@ -2553,7 +2553,7 @@ Document the security configuration of a test folder.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Share permissions apply only to network access.
 - NTFS permissions apply locally and across the network.
@@ -2565,7 +2565,7 @@ Document the security configuration of a test folder.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between NTFS permissions and share permissions?
 2. Which permission set determines effective access over a network?
@@ -2580,7 +2580,7 @@ Document the security configuration of a test folder.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft NTFS Documentation
@@ -2591,13 +2591,13 @@ Document the security configuration of a test folder.
 
 ---
 
-# 09-Windows-Permissions-and-NTFS.md
+## 09-Windows-Permissions-and-NTFS.md
 
-# Part 4 — Enterprise NTFS Administration, Permission Management Tools, Security Best Practices, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise NTFS Administration, Permission Management Tools, Security Best Practices, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 NTFS permissions are one of the most important security controls in Windows.
 
@@ -2615,7 +2615,7 @@ This chapter concludes with enterprise administration techniques, security best 
 
 ---
 
-# Enterprise Permission Management Workflow
+## Enterprise Permission Management Workflow
 
 A well-managed organization typically follows this workflow:
 
@@ -2655,7 +2655,7 @@ This structured approach reduces configuration errors and supports long-term mai
 
 ---
 
-# Designing Secure Folder Structures
+## Designing Secure Folder Structures
 
 Rather than assigning permissions randomly, enterprise environments use a hierarchical design.
 
@@ -2675,7 +2675,7 @@ Each department receives dedicated security groups and clearly defined access.
 
 ---
 
-# Role-Based Permission Assignment
+## Role-Based Permission Assignment
 
 Example:
 
@@ -2707,7 +2707,7 @@ Instead of assigning permissions directly to users, administrators assign users 
 
 ---
 
-# Permission Management Strategy
+## Permission Management Strategy
 
 A common enterprise strategy is:
 
@@ -2735,7 +2735,7 @@ This minimizes administrative effort and simplifies audits.
 
 ---
 
-# Common NTFS Administration Tools
+## Common NTFS Administration Tools
 
 Windows provides several tools for managing permissions.
 
@@ -2752,7 +2752,7 @@ PowerShell is covered in detail in a later chapter.
 
 ---
 
-# Using ICACLS
+## Using ICACLS
 
 Display permissions:
 
@@ -2782,7 +2782,7 @@ icacls C:\Finance /reset
 
 ---
 
-# Understanding ICACLS Output
+## Understanding ICACLS Output
 
 Example:
 
@@ -2808,7 +2808,7 @@ Common abbreviations:
 
 ---
 
-# Using TAKEOWN
+## Using TAKEOWN
 
 Example:
 
@@ -2828,7 +2828,7 @@ Ownership should only be changed when authorized.
 
 ---
 
-# Backup Before Permission Changes
+## Backup Before Permission Changes
 
 Before modifying permissions:
 
@@ -2856,7 +2856,7 @@ Backing up ACLs helps recover from accidental misconfiguration.
 
 ---
 
-# Permission Troubleshooting Process
+## Permission Troubleshooting Process
 
 When a user cannot access a file:
 
@@ -2896,7 +2896,7 @@ Following a consistent troubleshooting process reduces time to resolution.
 
 ---
 
-# Common Permission Problems
+## Common Permission Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2909,7 +2909,7 @@ Following a consistent troubleshooting process reduces time to resolution.
 
 ---
 
-# Permission Drift
+## Permission Drift
 
 Permission drift occurs when ACLs gradually change over time without proper governance.
 
@@ -2943,7 +2943,7 @@ Periodic reviews help detect and correct permission drift.
 
 ---
 
-# Periodic Access Reviews
+## Periodic Access Reviews
 
 Organizations should regularly review:
 
@@ -2958,7 +2958,7 @@ Periodic reviews improve compliance and reduce unnecessary privileges.
 
 ---
 
-# Least Privilege Review
+## Least Privilege Review
 
 Questions administrators should ask:
 
@@ -2972,7 +2972,7 @@ These reviews support continuous security improvement.
 
 ---
 
-# Change Management
+## Change Management
 
 Permission changes should follow an approved process.
 
@@ -3004,7 +3004,7 @@ Formal change management reduces the risk of accidental outages.
 
 ---
 
-# Permission Documentation
+## Permission Documentation
 
 Critical resources should have documented:
 
@@ -3020,7 +3020,7 @@ Good documentation simplifies audits and incident response.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Security teams should monitor:
 
@@ -3035,7 +3035,7 @@ Many organizations forward these events to a SIEM for centralized analysis.
 
 ---
 
-# Incident Response Example
+## Incident Response Example
 
 SOC Alert:
 
@@ -3069,7 +3069,7 @@ Analysts investigate:
 
 ---
 
-# Ransomware Perspective
+## Ransomware Perspective
 
 Attackers often attempt to:
 
@@ -3083,7 +3083,7 @@ Well-designed NTFS permissions can reduce the attack surface and limit lateral m
 
 ---
 
-# Insider Threat Perspective
+## Insider Threat Perspective
 
 Potential indicators include:
 
@@ -3097,7 +3097,7 @@ These indicators require investigation within the broader business context.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial institution protects customer records.
 
@@ -3143,7 +3143,7 @@ This layered approach balances operational needs with regulatory requirements.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective NTFS administration provides:
 
@@ -3159,7 +3159,7 @@ Poor permission management can lead to data breaches, service disruption, and re
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Design permissions using security groups.
 - Follow the Principle of Least Privilege (PoLP).
@@ -3174,9 +3174,9 @@ Poor permission management can lead to data breaches, service disruption, and re
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Display Permissions with ICACLS
+### Lab 1 — Display Permissions with ICACLS
 
 Open **Command Prompt**.
 
@@ -3194,7 +3194,7 @@ Identify:
 
 ---
 
-## Lab 2 — Compare Effective Access
+### Lab 2 — Compare Effective Access
 
 Create two local test users (in a lab environment).
 
@@ -3213,7 +3213,7 @@ Document the effective permissions.
 
 ---
 
-## Lab 3 — Permission Review Exercise
+### Lab 3 — Permission Review Exercise
 
 Choose a non-production folder.
 
@@ -3243,7 +3243,7 @@ Recommend improvements using least privilege principles.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3271,7 +3271,7 @@ These concepts form the foundation of Windows file security and are essential fo
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - NTFS is the primary authorization mechanism for Windows files and folders.
 - Security Descriptors contain ownership and ACL information.
@@ -3284,7 +3284,7 @@ These concepts form the foundation of Windows file security and are essential fo
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between NTFS and share permissions?
 2. What is a Security Descriptor?
@@ -3299,7 +3299,7 @@ These concepts form the foundation of Windows file security and are essential fo
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Security Documentation
@@ -3313,7 +3313,7 @@ These concepts form the foundation of Windows file security and are essential fo
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 9 – Windows Permissions and NTFS**.
 

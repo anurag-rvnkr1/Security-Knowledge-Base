@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 Creating a detection is only one part of the lifecycle.
 
@@ -48,7 +48,7 @@ Actionable
 
 ---
 
-# 2. Detection Operations
+## 2. Detection Operations
 
 Detection operations include:
 
@@ -67,7 +67,7 @@ Retirement
 
 ---
 
-# 3. Detection Ownership
+## 3. Detection Ownership
 
 Every production detection should have an owner.
 
@@ -84,7 +84,7 @@ Application Security Team
 
 ---
 
-# 4. Why Ownership Matters
+## 4. Why Ownership Matters
 
 Without ownership:
 
@@ -109,7 +109,7 @@ Escalation
 
 ---
 
-# 5. Detection Owner Responsibilities
+## 5. Detection Owner Responsibilities
 
 The owner should typically manage:
 
@@ -127,7 +127,7 @@ Retirement
 
 ---
 
-# 6. Detection Metadata
+## 6. Detection Metadata
 
 A production detection should maintain:
 
@@ -151,7 +151,7 @@ techniques:
 
 ---
 
-# 7. Detection Status
+## 7. Detection Status
 
 Useful states:
 
@@ -168,7 +168,7 @@ Retired
 
 ---
 
-# 8. Production Detection
+## 8. Production Detection
 
 A production detection should have:
 
@@ -184,7 +184,7 @@ Rollback Strategy
 
 ---
 
-# 9. Detection Health
+## 9. Detection Health
 
 A detection can be:
 
@@ -199,7 +199,7 @@ Retired
 
 ---
 
-# 10. Detection Health Signals
+## 10. Detection Health Signals
 
 Monitor:
 
@@ -215,7 +215,7 @@ Dependencies
 
 ---
 
-# 11. Detection Heartbeat
+## 11. Detection Heartbeat
 
 For critical detection infrastructure, establish a mechanism to determine:
 
@@ -234,7 +234,7 @@ Pipeline Health
 
 ---
 
-# 12. No-Data Condition
+## 12. No-Data Condition
 
 A detection producing:
 
@@ -261,7 +261,7 @@ Environment Changed
 
 ---
 
-# 13. Alert Volume Monitoring
+## 13. Alert Volume Monitoring
 
 Track:
 
@@ -275,7 +275,7 @@ Alerts / Detection
 
 ---
 
-# 14. Alert Spike
+## 14. Alert Spike
 
 Example:
 
@@ -297,7 +297,7 @@ Rule Bug
 
 ---
 
-# 15. Alert Drop
+## 15. Alert Drop
 
 Example:
 
@@ -318,7 +318,7 @@ Rule Disabled
 
 ---
 
-# 16. Detection Latency Monitoring
+## 16. Detection Latency Monitoring
 
 Track:
 
@@ -331,7 +331,7 @@ Alert Time
 
 ---
 
-# 17. Detection Availability
+## 17. Detection Availability
 
 Critical detections should have measurable:
 
@@ -343,7 +343,7 @@ Data Availability
 
 ---
 
-# 18. Detection SLO
+## 18. Detection SLO
 
 A detection SLO may define:
 
@@ -357,13 +357,13 @@ Exact targets should depend on detection criticality.
 
 ---
 
-# 19. Detection SLA vs SLO
+## 19. Detection SLA vs SLO
 
-### SLA
+#### SLA
 
 A formal commitment between parties.
 
-### SLO
+#### SLO
 
 An operational reliability objective.
 
@@ -376,7 +376,7 @@ Critical Detection:
 
 ---
 
-# 20. Detection Error Monitoring
+## 20. Detection Error Monitoring
 
 Monitor:
 
@@ -392,7 +392,7 @@ Deployment Error
 
 ---
 
-# 21. Detection Failure Workflow
+## 21. Detection Failure Workflow
 
 ```text
 Failure
@@ -416,7 +416,7 @@ Document
 
 ---
 
-# 22. Detection Incident
+## 22. Detection Incident
 
 A detection failure can itself become a security incident when:
 
@@ -439,7 +439,7 @@ Blind
 
 ---
 
-# 23. Detection Dependency Monitoring
+## 23. Detection Dependency Monitoring
 
 Dependencies may include:
 
@@ -456,7 +456,7 @@ Reference Data
 
 ---
 
-# 24. Dependency Failure
+## 24. Dependency Failure
 
 Example:
 
@@ -475,7 +475,7 @@ Detection fails
 
 ---
 
-# 25. Schema Monitoring
+## 25. Schema Monitoring
 
 Track:
 
@@ -489,7 +489,7 @@ Data Volume
 
 ---
 
-# 26. Data Availability
+## 26. Data Availability
 
 Monitor:
 
@@ -512,7 +512,7 @@ Potential telemetry degradation.
 
 ---
 
-# 27. Detection Coverage
+## 27. Detection Coverage
 
 Detection coverage measures how well the detection program addresses:
 
@@ -526,7 +526,7 @@ Attack Paths
 
 ---
 
-# 28. Coverage Dimensions
+## 28. Coverage Dimensions
 
 Coverage can be measured across:
 
@@ -544,7 +544,7 @@ Applications
 
 ---
 
-# 29. ATT&CK Coverage
+## 29. ATT&CK Coverage
 
 Map detections to:
 
@@ -564,7 +564,7 @@ Not Covered
 
 ---
 
-# 30. Technique Coverage
+## 30. Technique Coverage
 
 Example:
 
@@ -587,7 +587,7 @@ Strong
 
 ---
 
-# 31. Partial Coverage
+## 31. Partial Coverage
 
 Example:
 
@@ -607,7 +607,7 @@ Partial Coverage
 
 ---
 
-# 32. Coverage ≠ Detection Count
+## 32. Coverage ≠ Detection Count
 
 Example:
 
@@ -625,7 +625,7 @@ Five hundred overlapping detections may cover fewer meaningful behaviors than a 
 
 ---
 
-# 33. Coverage Quality
+## 33. Coverage Quality
 
 A mature coverage model considers:
 
@@ -639,7 +639,7 @@ Response
 
 ---
 
-# 34. Coverage Confidence
+## 34. Coverage Confidence
 
 Example model:
 
@@ -661,7 +661,7 @@ The organization should define its own formal confidence levels.
 
 ---
 
-# 35. Coverage Matrix
+## 35. Coverage Matrix
 
 | Technique | Telemetry | Detection | Tested | Response | Coverage |
 |---|---|---|---|---|---|
@@ -672,7 +672,7 @@ The organization should define its own formal confidence levels.
 
 ---
 
-# 36. Coverage Heatmap
+## 36. Coverage Heatmap
 
 A heatmap can represent:
 
@@ -693,7 +693,7 @@ Assets
 
 ---
 
-# 37. Threat-Informed Coverage
+## 37. Threat-Informed Coverage
 
 Coverage should prioritize:
 
@@ -708,7 +708,7 @@ rather than attempting to detect everything equally.
 
 ---
 
-# 38. Crown-Jewel Coverage
+## 38. Crown-Jewel Coverage
 
 Identify:
 
@@ -724,7 +724,7 @@ Then prioritize detections around them.
 
 ---
 
-# 39. Attack Path Coverage
+## 39. Attack Path Coverage
 
 Consider:
 
@@ -750,7 +750,7 @@ A mature program should understand detection coverage across the attack path.
 
 ---
 
-# 40. Detection Coverage Gaps
+## 40. Detection Coverage Gaps
 
 Common gaps:
 
@@ -765,7 +765,7 @@ No Response
 
 ---
 
-# 41. Telemetry Gap
+## 41. Telemetry Gap
 
 ```text
 Technique
@@ -781,7 +781,7 @@ Collect / Improve Telemetry
 
 ---
 
-# 42. Detection Gap
+## 42. Detection Gap
 
 ```text
 Telemetry
@@ -797,7 +797,7 @@ Build Detection
 
 ---
 
-# 43. Correlation Gap
+## 43. Correlation Gap
 
 ```text
 Events Exist
@@ -813,7 +813,7 @@ Correlation / Sequence Detection
 
 ---
 
-# 44. Context Gap
+## 44. Context Gap
 
 ```text
 Alert
@@ -831,7 +831,7 @@ Context
 
 ---
 
-# 45. Response Gap
+## 45. Response Gap
 
 ```text
 Detection
@@ -849,7 +849,7 @@ Escalation
 
 ---
 
-# 46. Detection Inventory
+## 46. Detection Inventory
 
 Maintain a central inventory:
 
@@ -869,7 +869,7 @@ Last Reviewed
 
 ---
 
-# 47. Detection Catalog
+## 47. Detection Catalog
 
 A detection catalog helps teams answer:
 
@@ -883,7 +883,7 @@ Which need review?
 
 ---
 
-# 48. Detection Search
+## 48. Detection Search
 
 Useful searchable metadata:
 
@@ -902,7 +902,7 @@ Cloud
 
 ---
 
-# 49. Detection Lifecycle
+## 49. Detection Lifecycle
 
 A mature lifecycle:
 
@@ -932,7 +932,7 @@ Retirement
 
 ---
 
-# 50. Detection Review
+## 50. Detection Review
 
 Every detection should be periodically reviewed.
 
@@ -951,7 +951,7 @@ Ownership
 
 ---
 
-# 51. Review Frequency
+## 51. Review Frequency
 
 Possible model:
 
@@ -973,7 +973,7 @@ Exact cadence should depend on risk and operational requirements.
 
 ---
 
-# 52. Stale Detection
+## 52. Stale Detection
 
 A detection may become stale when:
 
@@ -987,7 +987,7 @@ Cloud Architecture Changes
 
 ---
 
-# 53. Detection Freshness
+## 53. Detection Freshness
 
 Track:
 
@@ -1000,7 +1000,7 @@ Last Triggered
 
 ---
 
-# 54. Last Triggered Is Not Health
+## 54. Last Triggered Is Not Health
 
 A detection that triggered recently may still be:
 
@@ -1014,7 +1014,7 @@ Therefore monitor more than alert frequency.
 
 ---
 
-# 55. Detection Effectiveness
+## 55. Detection Effectiveness
 
 Evaluate:
 
@@ -1030,7 +1030,7 @@ Incident Detection
 
 ---
 
-# 56. Detection Retirement
+## 56. Detection Retirement
 
 Not every detection should live forever.
 
@@ -1048,7 +1048,7 @@ Persistent Poor Value
 
 ---
 
-# 57. Deprecation
+## 57. Deprecation
 
 Before retirement:
 
@@ -1062,7 +1062,7 @@ Plan Removal
 
 ---
 
-# 58. Retirement Workflow
+## 58. Retirement Workflow
 
 ```text
 Identify Candidate
@@ -1086,7 +1086,7 @@ Archive
 
 ---
 
-# 59. Safe Retirement
+## 59. Safe Retirement
 
 Before disabling:
 
@@ -1100,7 +1100,7 @@ Check Compliance
 
 ---
 
-# 60. Detection Replacement
+## 60. Detection Replacement
 
 Example:
 
@@ -1120,7 +1120,7 @@ Retired
 
 ---
 
-# 61. Duplicate Detection
+## 61. Duplicate Detection
 
 Two detections may identify:
 
@@ -1138,7 +1138,7 @@ Conflicting Severity
 
 ---
 
-# 62. Detection Consolidation
+## 62. Detection Consolidation
 
 Combine related detections when appropriate:
 
@@ -1160,7 +1160,7 @@ But avoid creating overly complex rules.
 
 ---
 
-# 63. Detection Debt
+## 63. Detection Debt
 
 Detection debt is accumulated technical and operational debt such as:
 
@@ -1176,7 +1176,7 @@ Poor Queries
 
 ---
 
-# 64. Detection Debt Management
+## 64. Detection Debt Management
 
 Track:
 
@@ -1191,7 +1191,7 @@ Remediation
 
 ---
 
-# 65. Detection Backlog
+## 65. Detection Backlog
 
 Typical backlog items:
 
@@ -1209,7 +1209,7 @@ Documentation
 
 ---
 
-# 66. Detection Prioritization
+## 66. Detection Prioritization
 
 Prioritize based on:
 
@@ -1225,7 +1225,7 @@ Operational Cost
 
 ---
 
-# 67. Risk-Based Prioritization
+## 67. Risk-Based Prioritization
 
 Example:
 
@@ -1241,7 +1241,7 @@ High Priority
 
 ---
 
-# 68. Detection Change Management
+## 68. Detection Change Management
 
 Production changes should be:
 
@@ -1256,7 +1256,7 @@ Reversible
 
 ---
 
-# 69. Emergency Detection Changes
+## 69. Emergency Detection Changes
 
 During active incidents:
 
@@ -1279,7 +1279,7 @@ Harden
 
 ---
 
-# 70. Detection Release Management
+## 70. Detection Release Management
 
 A release may contain:
 
@@ -1293,7 +1293,7 @@ Performance Improvements
 
 ---
 
-# 71. Release Notes
+## 71. Release Notes
 
 Example:
 
@@ -1316,7 +1316,7 @@ Legacy scanner rule
 
 ---
 
-# 72. Detection Deployment Validation
+## 72. Detection Deployment Validation
 
 After deployment:
 
@@ -1336,7 +1336,7 @@ Analyst Context
 
 ---
 
-# 73. Production Smoke Test
+## 73. Production Smoke Test
 
 A smoke test verifies:
 
@@ -1355,7 +1355,7 @@ Synthetic Event
 
 ---
 
-# 74. Rollback
+## 74. Rollback
 
 Every critical change should have:
 
@@ -1368,7 +1368,7 @@ Validation
 
 ---
 
-# 75. Detection Change Audit
+## 75. Detection Change Audit
 
 Track:
 
@@ -1385,7 +1385,7 @@ Result
 
 ---
 
-# 76. Detection Documentation
+## 76. Detection Documentation
 
 Documentation should remain synchronized with:
 
@@ -1400,7 +1400,7 @@ Operations
 
 ---
 
-# 77. Runbooks
+## 77. Runbooks
 
 A detection runbook should tell analysts:
 
@@ -1415,7 +1415,7 @@ Who should be contacted?
 
 ---
 
-# 78. Detection Runbook Example
+## 78. Detection Runbook Example
 
 ```text
 Alert:
@@ -1439,7 +1439,7 @@ Sensitive resource
 
 ---
 
-# 79. Detection-to-Playbook Mapping
+## 79. Detection-to-Playbook Mapping
 
 Example:
 
@@ -1455,7 +1455,7 @@ Containment
 
 ---
 
-# 80. Detection Coverage vs Response Coverage
+## 80. Detection Coverage vs Response Coverage
 
 A team may have:
 
@@ -1468,7 +1468,7 @@ This should not be considered complete operational coverage.
 
 ---
 
-# 81. Operational Coverage Model
+## 81. Operational Coverage Model
 
 ```text
 Telemetry
@@ -1488,7 +1488,7 @@ Strong coverage considers all stages.
 
 ---
 
-# 82. Detection Service Ownership
+## 82. Detection Service Ownership
 
 Large programs may use:
 
@@ -1503,7 +1503,7 @@ Incident Response
 
 ---
 
-# 83. RACI Model
+## 83. RACI Model
 
 Example:
 
@@ -1528,7 +1528,7 @@ Exact responsibility should be organization-specific.
 
 ---
 
-# 84. Detection Operations Dashboard
+## 84. Detection Operations Dashboard
 
 Useful metrics:
 
@@ -1549,7 +1549,7 @@ Performance
 
 ---
 
-# 85. Detection Coverage Dashboard
+## 85. Detection Coverage Dashboard
 
 Track:
 
@@ -1565,7 +1565,7 @@ Application Coverage
 
 ---
 
-# 86. Detection Health Dashboard
+## 86. Detection Health Dashboard
 
 Track:
 
@@ -1581,7 +1581,7 @@ Dependency Failures
 
 ---
 
-# 87. Detection Lifecycle Dashboard
+## 87. Detection Lifecycle Dashboard
 
 Track:
 
@@ -1595,7 +1595,7 @@ Retirement
 
 ---
 
-# 88. Detection KPI
+## 88. Detection KPI
 
 Possible KPIs:
 
@@ -1612,7 +1612,7 @@ Detection Gap Age
 
 ---
 
-# 89. KPI Warning
+## 89. KPI Warning
 
 Metrics can be gamed.
 
@@ -1633,7 +1633,7 @@ Therefore measure multiple dimensions.
 
 ---
 
-# 90. Balanced Detection Scorecard
+## 90. Balanced Detection Scorecard
 
 Track:
 
@@ -1649,39 +1649,39 @@ Response
 
 ---
 
-# 91. Detection Maturity
+## 91. Detection Maturity
 
-### Level 1
+#### Level 1
 
 Manual rules.
 
-### Level 2
+#### Level 2
 
 Central detection inventory.
 
-### Level 3
+#### Level 3
 
 Ownership and lifecycle.
 
-### Level 4
+#### Level 4
 
 Automated testing and deployment.
 
-### Level 5
+#### Level 5
 
 Coverage and health monitoring.
 
-### Level 6
+#### Level 6
 
 Threat-informed optimization.
 
-### Level 7
+#### Level 7
 
 Continuous adaptive detection operations.
 
 ---
 
-# 92. Detection Operations Automation
+## 92. Detection Operations Automation
 
 Automate:
 
@@ -1698,7 +1698,7 @@ Dependency Monitoring
 
 ---
 
-# 93. Automated Stale Detection Report
+## 93. Automated Stale Detection Report
 
 Example:
 
@@ -1718,7 +1718,7 @@ Needs Review
 
 ---
 
-# 94. Automated Ownership Check
+## 94. Automated Ownership Check
 
 Identify:
 
@@ -1736,7 +1736,7 @@ Ownership Gap
 
 ---
 
-# 95. Automated Coverage Check
+## 95. Automated Coverage Check
 
 Example:
 
@@ -1756,7 +1756,7 @@ Coverage Gap
 
 ---
 
-# 96. Automated Dependency Check
+## 96. Automated Dependency Check
 
 Example:
 
@@ -1776,7 +1776,7 @@ Detection Degraded
 
 ---
 
-# 97. Detection Lifecycle Automation
+## 97. Detection Lifecycle Automation
 
 Conceptually:
 
@@ -1800,7 +1800,7 @@ Retire
 
 ---
 
-# 98. Detection Program Governance
+## 98. Detection Program Governance
 
 Governance defines:
 
@@ -1816,7 +1816,7 @@ Metrics
 
 ---
 
-# 99. Detection Standards
+## 99. Detection Standards
 
 Standardize:
 
@@ -1834,7 +1834,7 @@ Deployment
 
 ---
 
-# 100. Detection Quality Gates
+## 100. Detection Quality Gates
 
 Before production:
 
@@ -1854,7 +1854,7 @@ Coverage
 
 ---
 
-# 101. Production Readiness Checklist
+## 101. Production Readiness Checklist
 
 ```text
 [ ] Unique ID
@@ -1879,7 +1879,7 @@ Coverage
 
 ---
 
-# 102. Detection Lifecycle Checklist
+## 102. Detection Lifecycle Checklist
 
 ```text
 [ ] Detection created
@@ -1901,59 +1901,59 @@ Coverage
 
 ---
 
-# 103. Interview Questions
+## 103. Interview Questions
 
-### What is detection operations?
+#### What is detection operations?
 
 > The ongoing management of production detections, including deployment, monitoring, health checks, tuning, ownership, coverage, incident feedback, and lifecycle management.
 
-### Why does every detection need an owner?
+#### Why does every detection need an owner?
 
 > Ownership ensures someone is accountable for maintaining, testing, tuning, reviewing, and retiring the detection.
 
-### What is detection health?
+#### What is detection health?
 
 > The operational state of a detection, including whether it executes successfully, receives telemetry, maintains expected performance, and produces expected outputs.
 
-### Why is zero alert volume not necessarily good?
+#### Why is zero alert volume not necessarily good?
 
 > Zero alerts may indicate no malicious activity, but it may also indicate missing telemetry, query failure, schema changes, or a disabled detection.
 
-### What is detection coverage?
+#### What is detection coverage?
 
 > The degree to which relevant threats, techniques, assets, and attack paths are supported by telemetry, detections, testing, and response capability.
 
-### Why isn't detection count a good coverage metric?
+#### Why isn't detection count a good coverage metric?
 
 > Many detections can overlap the same behavior while leaving important techniques or attack paths uncovered.
 
-### What is a telemetry gap?
+#### What is a telemetry gap?
 
 > A missing data source or field that prevents effective detection of relevant behavior.
 
-### What is detection debt?
+#### What is detection debt?
 
 > Accumulated maintenance problems such as stale, untested, duplicate, undocumented, or unowned detections.
 
-### When should a detection be retired?
+#### When should a detection be retired?
 
 > When its threat is no longer relevant, its data source is gone, a better replacement exists, it duplicates another detection, or its operational value is consistently poor.
 
-### What should be checked before retiring a detection?
+#### What should be checked before retiring a detection?
 
 > Active incidents, coverage impact, dependencies, replacement detections, compliance requirements, and stakeholder ownership.
 
-### What is a detection runbook?
+#### What is a detection runbook?
 
 > Operational guidance explaining what an alert means, what analysts should investigate, what context matters, and when to escalate.
 
-### How do you measure detection program maturity?
+#### How do you measure detection program maturity?
 
 > Evaluate coverage, reliability, testing, ownership, lifecycle management, performance, false positives, latency, response integration, and continuous improvement.
 
 ---
 
-# 104. Quick Revision
+## 104. Quick Revision
 
 ```text
 Detection Operations
@@ -2028,7 +2028,7 @@ Detection KPI
 
 ---
 
-# 105. Golden Rules
+## 105. Golden Rules
 
 ```text
 1. Every production detection needs an owner.
@@ -2124,7 +2124,7 @@ Detection KPI
 
 ---
 
-# 106. Final Mental Model
+## 106. Final Mental Model
 
 Think of the detection program as a continuously operated service:
 
@@ -2173,7 +2173,7 @@ RETIRE
 
 ---
 
-# 107. Detection Coverage Mental Model
+## 107. Detection Coverage Mental Model
 
 Instead of asking:
 
@@ -2203,7 +2203,7 @@ That is meaningful detection coverage.
 
 ---
 
-# 108. Detection Health Mental Model
+## 108. Detection Health Mental Model
 
 A healthy detection should satisfy:
 
@@ -2235,7 +2235,7 @@ Potentially Degraded
 
 ---
 
-# 109. Detection Lifecycle Mental Model
+## 109. Detection Lifecycle Mental Model
 
 ```text
 THREAT
@@ -2267,7 +2267,7 @@ The most important point is:
 
 ---
 
-# 110. Chapter Summary
+## 110. Chapter Summary
 
 This chapter covered:
 

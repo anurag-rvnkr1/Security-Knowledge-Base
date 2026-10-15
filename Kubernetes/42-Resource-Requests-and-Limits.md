@@ -71,7 +71,7 @@ Memory limit   = 1 GiB
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -103,7 +103,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Are Resource Requests Needed?
+## Why Are Resource Requests Needed?
 
 Suppose a Node has:
 
@@ -155,7 +155,7 @@ The Scheduler can determine whether sufficient allocatable capacity remains.
 
 ---
 
-# Why Are Resource Limits Needed?
+## Why Are Resource Limits Needed?
 
 A container might consume significantly more CPU or memory than expected.
 
@@ -181,7 +181,7 @@ Limits provide runtime boundaries.
 
 ---
 
-# Resource Types
+## Resource Types
 
 Kubernetes primarily manages:
 
@@ -206,7 +206,7 @@ The core concepts in this chapter focus on CPU and memory.
 
 ---
 
-# CPU Resources
+## CPU Resources
 
 CPU is represented using CPU units.
 
@@ -244,7 +244,7 @@ means:
 
 ---
 
-# CPU Units
+## CPU Units
 
 Common examples:
 
@@ -264,7 +264,7 @@ milliCPU
 
 ---
 
-# CPU Example
+## CPU Example
 
 ```yaml
 resources:
@@ -294,7 +294,7 @@ Limit:
 
 ---
 
-# Memory Resources
+## Memory Resources
 
 Memory is commonly expressed using binary units such as:
 
@@ -316,7 +316,7 @@ Examples:
 
 ---
 
-# Memory Units
+## Memory Units
 
 Common examples:
 
@@ -339,7 +339,7 @@ but it is important to understand the distinction between decimal and binary uni
 
 ---
 
-# CPU vs Memory
+## CPU vs Memory
 
 CPU is generally a compressible resource.
 
@@ -365,7 +365,7 @@ This distinction is extremely important.
 
 ---
 
-# Resource Requests
+## Resource Requests
 
 A request represents the amount of a resource that the container expects to require for scheduling purposes.
 
@@ -385,7 +385,7 @@ The Scheduler uses requests when determining whether a Pod can fit on a Node.
 
 ---
 
-# Resource Limits
+## Resource Limits
 
 A limit defines the maximum resource amount the container can consume according to the resource's runtime enforcement semantics.
 
@@ -403,7 +403,7 @@ resources:
 
 ---
 
-# Complete Example
+## Complete Example
 
 ```yaml
 apiVersion: v1
@@ -439,7 +439,7 @@ spec:
 
 ---
 
-# Request vs Limit
+## Request vs Limit
 
 | Resource | Request | Limit |
 |---|---|---|
@@ -451,7 +451,7 @@ spec:
 
 ---
 
-# Important Rule
+## Important Rule
 
 A common relationship is:
 
@@ -475,7 +475,7 @@ is valid.
 
 ---
 
-# Can Request Equal Limit?
+## Can Request Equal Limit?
 
 Yes.
 
@@ -501,7 +501,7 @@ This configuration is important for the **Guaranteed QoS** classification when a
 
 ---
 
-# Can Request Be Lower Than Limit?
+## Can Request Be Lower Than Limit?
 
 Yes.
 
@@ -533,7 +533,7 @@ at runtime.
 
 ---
 
-# What Happens If Request Is Missing?
+## What Happens If Request Is Missing?
 
 If a request is not explicitly specified, Kubernetes may derive a request from a configured limit in certain situations, particularly when a `LimitRange` applies.
 
@@ -543,7 +543,7 @@ Therefore, cluster policy matters.
 
 ---
 
-# What Happens If Limit Is Missing?
+## What Happens If Limit Is Missing?
 
 A container can have a request without a limit.
 
@@ -565,7 +565,7 @@ Always inspect the resulting Pod specification when troubleshooting.
 
 ---
 
-# Scheduler and Requests
+## Scheduler and Requests
 
 Suppose a Node has:
 
@@ -603,7 +603,7 @@ The Node can satisfy the CPU requests assuming other scheduling requirements als
 
 ---
 
-# Actual Usage vs Requests
+## Actual Usage vs Requests
 
 Suppose:
 
@@ -650,7 +650,7 @@ Runtime behavior
 
 ---
 
-# Why Accurate Requests Matter
+## Why Accurate Requests Matter
 
 If requests are too low:
 
@@ -681,7 +681,7 @@ which can cause:
 
 ---
 
-# CPU Limits
+## CPU Limits
 
 CPU limits are generally enforced through CPU scheduling controls.
 
@@ -703,7 +703,7 @@ The container normally remains running but receives limited CPU time.
 
 ---
 
-# CPU Throttling
+## CPU Throttling
 
 Example:
 
@@ -730,7 +730,7 @@ This can affect:
 
 ---
 
-# CPU Requests and Bursting
+## CPU Requests and Bursting
 
 Suppose:
 
@@ -766,7 +766,7 @@ Bursting
 
 ---
 
-# Memory Limits
+## Memory Limits
 
 Memory is different.
 
@@ -790,7 +790,7 @@ depending on the circumstances and system behavior.
 
 ---
 
-# OOMKilled
+## OOMKilled
 
 OOM means:
 
@@ -822,7 +822,7 @@ Reason: OOMKilled
 
 ---
 
-# Memory Is Not Compressible
+## Memory Is Not Compressible
 
 CPU:
 
@@ -852,7 +852,7 @@ depending on the situation.
 
 ---
 
-# Resource Requests and QoS
+## Resource Requests and QoS
 
 Kubernetes assigns Pods a QoS class based on their resource requests and limits.
 
@@ -872,7 +872,7 @@ BestEffort
 
 ---
 
-# Guaranteed QoS
+## Guaranteed QoS
 
 A Pod generally receives `Guaranteed` QoS when:
 
@@ -902,7 +902,7 @@ For a multi-container Pod, the condition applies to every relevant container.
 
 ---
 
-# Guaranteed Example
+## Guaranteed Example
 
 ```yaml
 apiVersion: v1
@@ -940,7 +940,7 @@ This is a Guaranteed QoS configuration.
 
 ---
 
-# Burstable QoS
+## Burstable QoS
 
 A Pod generally receives `Burstable` QoS when it has resource requests or limits but does not meet all the conditions required for Guaranteed.
 
@@ -972,7 +972,7 @@ so the Pod is not Guaranteed.
 
 ---
 
-# BestEffort QoS
+## BestEffort QoS
 
 A Pod generally receives `BestEffort` QoS when none of its containers specify CPU or memory requests or limits.
 
@@ -1000,7 +1000,7 @@ No CPU or memory resources are specified.
 
 ---
 
-# QoS Comparison
+## QoS Comparison
 
 | QoS | Requests/Limits | Typical Characteristics |
 |---|---|---|
@@ -1010,7 +1010,7 @@ No CPU or memory resources are specified.
 
 ---
 
-# QoS and Eviction
+## QoS and Eviction
 
 During Node memory pressure, Kubernetes uses QoS and other factors when determining which Pods are more vulnerable to eviction.
 
@@ -1044,7 +1044,7 @@ Do not treat QoS as the only eviction factor.
 
 ---
 
-# Priority vs QoS
+## Priority vs QoS
 
 This distinction is important.
 
@@ -1076,7 +1076,7 @@ These are independent concepts.
 
 ---
 
-# ResourceQuota
+## ResourceQuota
 
 A namespace can have a total resource quota.
 
@@ -1108,7 +1108,7 @@ This limits the aggregate resources requested/limited by workloads in the namesp
 
 ---
 
-# Why ResourceQuota Matters
+## Why ResourceQuota Matters
 
 Without quotas:
 
@@ -1132,7 +1132,7 @@ Controlled resource consumption
 
 ---
 
-# Checking ResourceQuota
+## Checking ResourceQuota
 
 ```bash
 kubectl get resourcequota
@@ -1146,7 +1146,7 @@ kubectl describe resourcequota compute-quota
 
 ---
 
-# LimitRange
+## LimitRange
 
 A `LimitRange` can define default or minimum/maximum resource constraints for containers in a namespace.
 
@@ -1194,7 +1194,7 @@ spec:
 
 ---
 
-# LimitRange Purpose
+## LimitRange Purpose
 
 A LimitRange can enforce:
 
@@ -1209,7 +1209,7 @@ This is useful for namespace-level governance.
 
 ---
 
-# ResourceQuota vs LimitRange
+## ResourceQuota vs LimitRange
 
 | ResourceQuota | LimitRange |
 |---|---|
@@ -1220,7 +1220,7 @@ This is useful for namespace-level governance.
 
 ---
 
-# Container-Level Resources
+## Container-Level Resources
 
 Resources are commonly configured at the container level.
 
@@ -1250,7 +1250,7 @@ containers:
 
 ---
 
-# Multi-Container Pod
+## Multi-Container Pod
 
 Suppose a Pod has:
 
@@ -1272,7 +1272,7 @@ The Scheduler considers the aggregate resource requirements of the Pod.
 
 ---
 
-# Example
+## Example
 
 ```yaml
 containers:
@@ -1312,7 +1312,7 @@ Memory = 640Mi
 
 ---
 
-# Pod-Level Resource Configuration
+## Pod-Level Resource Configuration
 
 Modern Kubernetes versions can support Pod-level resource declarations depending on the enabled feature set and API behavior.
 
@@ -1330,7 +1330,7 @@ When using Pod-level resource features, always verify the Kubernetes version and
 
 ---
 
-# Ephemeral Storage
+## Ephemeral Storage
 
 Kubernetes can also manage:
 
@@ -1356,7 +1356,7 @@ This controls local ephemeral storage requests and limits for containers.
 
 ---
 
-# Extended Resources
+## Extended Resources
 
 Specialized hardware can be exposed as extended resources.
 
@@ -1374,7 +1374,7 @@ This is different from CPU and memory and typically depends on a device plugin.
 
 ---
 
-# Resource Overcommitment
+## Resource Overcommitment
 
 Suppose a Node has:
 
@@ -1400,7 +1400,7 @@ The cluster assumes not all workloads will necessarily consume their maximum CPU
 
 ---
 
-# Overcommitment Example
+## Overcommitment Example
 
 ```text
 Node CPU = 8
@@ -1434,7 +1434,7 @@ This can be valid depending on cluster policy.
 
 ---
 
-# Memory Overcommitment
+## Memory Overcommitment
 
 Memory overcommitment is more dangerous.
 
@@ -1473,7 +1473,7 @@ Evictions
 
 ---
 
-# Resource Sizing Strategy
+## Resource Sizing Strategy
 
 A practical approach is:
 
@@ -1503,7 +1503,7 @@ Tune
 
 ---
 
-# Right-Sizing
+## Right-Sizing
 
 Suppose monitoring shows:
 
@@ -1531,7 +1531,7 @@ The exact values should be based on real workload behavior.
 
 ---
 
-# Memory Right-Sizing
+## Memory Right-Sizing
 
 Suppose:
 
@@ -1559,7 +1559,7 @@ Again, production values should be based on measured behavior and safety margin.
 
 ---
 
-# Requests Too High
+## Requests Too High
 
 Example:
 
@@ -1587,7 +1587,7 @@ This can waste cluster capacity.
 
 ---
 
-# Requests Too Low
+## Requests Too Low
 
 Example:
 
@@ -1615,7 +1615,7 @@ The Node can become heavily overcommitted.
 
 ---
 
-# Limits Too Low
+## Limits Too Low
 
 If a workload requires:
 
@@ -1639,7 +1639,7 @@ and poor performance.
 
 ---
 
-# Memory Limit Too Low
+## Memory Limit Too Low
 
 If the application requires:
 
@@ -1661,7 +1661,7 @@ OOMKilled
 
 ---
 
-# Troubleshooting Resource Problems
+## Troubleshooting Resource Problems
 
 Check:
 
@@ -1684,7 +1684,7 @@ resources.limits
 
 ---
 
-# Check Pod Status
+## Check Pod Status
 
 ```bash
 kubectl get pods
@@ -1704,7 +1704,7 @@ CrashLoopBackOff
 
 ---
 
-# Check Previous Container State
+## Check Previous Container State
 
 ```bash
 kubectl describe pod <pod-name>
@@ -1719,7 +1719,7 @@ kubectl get pod <pod-name> \
 
 ---
 
-# Metrics
+## Metrics
 
 If Metrics Server is installed:
 
@@ -1758,7 +1758,7 @@ Declared scheduling requirement
 
 ---
 
-# Hands-on Lab 1 – Resource Requests
+## Hands-on Lab 1 – Resource Requests
 
 Create:
 
@@ -1802,7 +1802,7 @@ kubectl describe pod requests-demo
 
 ---
 
-# Hands-on Lab 2 – Requests and Limits
+## Hands-on Lab 2 – Requests and Limits
 
 Create:
 
@@ -1830,7 +1830,7 @@ kubectl get pod <pod-name> -o yaml
 
 ---
 
-# Hands-on Lab 3 – Guaranteed QoS
+## Hands-on Lab 3 – Guaranteed QoS
 
 Create:
 
@@ -1865,7 +1865,7 @@ Guaranteed
 
 ---
 
-# Hands-on Lab 4 – Burstable QoS
+## Hands-on Lab 4 – Burstable QoS
 
 Use:
 
@@ -1900,7 +1900,7 @@ Burstable
 
 ---
 
-# Hands-on Lab 5 – BestEffort QoS
+## Hands-on Lab 5 – BestEffort QoS
 
 Create a Pod without:
 
@@ -1929,7 +1929,7 @@ BestEffort
 
 ---
 
-# Hands-on Lab 6 – LimitRange
+## Hands-on Lab 6 – LimitRange
 
 Create:
 
@@ -1973,7 +1973,7 @@ Inspect its resulting configuration.
 
 ---
 
-# Hands-on Lab 7 – ResourceQuota
+## Hands-on Lab 7 – ResourceQuota
 
 Create:
 
@@ -2013,7 +2013,7 @@ kubectl describe resourcequota lab-quota
 
 ---
 
-# Hands-on Lab 8 – CPU Stress Test
+## Hands-on Lab 8 – CPU Stress Test
 
 In a disposable lab environment, deploy a CPU-intensive container with a CPU limit.
 
@@ -2041,7 +2041,7 @@ if Metrics Server is available.
 
 ---
 
-# Hands-on Lab 9 – Memory Limit Test
+## Hands-on Lab 9 – Memory Limit Test
 
 In a disposable environment, run a workload that intentionally consumes more memory than its configured limit.
 
@@ -2061,9 +2061,9 @@ Do not perform destructive resource tests on production workloads.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Confusing Requests and Limits
+### 1. Confusing Requests and Limits
 
 Remember:
 
@@ -2079,7 +2079,7 @@ Runtime ceiling
 
 ---
 
-## 2. Setting Requests Too Low
+### 2. Setting Requests Too Low
 
 This can cause:
 
@@ -2091,7 +2091,7 @@ and poor scheduling decisions.
 
 ---
 
-## 3. Setting Requests Too High
+### 3. Setting Requests Too High
 
 This can result in:
 
@@ -2103,7 +2103,7 @@ and unnecessary Node scaling.
 
 ---
 
-## 4. Setting Memory Limits Too Low
+### 4. Setting Memory Limits Too Low
 
 This can cause:
 
@@ -2113,7 +2113,7 @@ OOMKilled
 
 ---
 
-## 5. Setting CPU Limits Too Low
+### 5. Setting CPU Limits Too Low
 
 This can cause:
 
@@ -2125,7 +2125,7 @@ and latency problems.
 
 ---
 
-## 6. Assuming CPU and Memory Behave the Same Way
+### 6. Assuming CPU and Memory Behave the Same Way
 
 They do not.
 
@@ -2143,13 +2143,13 @@ Can trigger OOM/eviction
 
 ---
 
-## 7. Ignoring Multi-Container Pods
+### 7. Ignoring Multi-Container Pods
 
 The Scheduler considers the aggregate resource requirements of the Pod.
 
 ---
 
-## 8. Forgetting LimitRange
+### 8. Forgetting LimitRange
 
 Namespace policies can automatically provide defaults or reject invalid resource configurations.
 
@@ -2161,19 +2161,19 @@ kubectl get limitrange
 
 ---
 
-## 9. Ignoring ResourceQuota
+### 9. Ignoring ResourceQuota
 
 A Pod may be correctly configured but still fail admission because the namespace has insufficient quota.
 
 ---
 
-## 10. Confusing Priority with Resource Capacity
+### 10. Confusing Priority with Resource Capacity
 
 High priority does not create additional CPU or memory.
 
 ---
 
-# Requests and Limits vs Priority
+## Requests and Limits vs Priority
 
 ```text
 Requests
@@ -2209,7 +2209,7 @@ Pod B is more important but does not require more CPU.
 
 ---
 
-# Resource Management Architecture
+## Resource Management Architecture
 
 ```text
                     Pod
@@ -2243,7 +2243,7 @@ Pod B is more important but does not require more CPU.
 
 ---
 
-# Production Resource Strategy
+## Production Resource Strategy
 
 A production workload should generally have carefully considered:
 
@@ -2285,7 +2285,7 @@ The correct values depend on:
 
 ---
 
-# Resource Requests and Autoscaling
+## Resource Requests and Autoscaling
 
 Resource requests are important for autoscaling.
 
@@ -2313,7 +2313,7 @@ This becomes important in the next autoscaling chapter.
 
 ---
 
-# Resource Requests and Cluster Autoscaler
+## Resource Requests and Cluster Autoscaler
 
 Cluster Autoscaler can use unschedulable Pods and their resource requests when determining whether additional Nodes are needed.
 
@@ -2335,9 +2335,9 @@ Resource requests are an important input to cluster capacity planning.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Request
+### Request
 
 ```text
 Used primarily for scheduling
@@ -2345,7 +2345,7 @@ Used primarily for scheduling
 
 ---
 
-## Limit
+### Limit
 
 ```text
 Runtime resource ceiling
@@ -2353,7 +2353,7 @@ Runtime resource ceiling
 
 ---
 
-## CPU
+### CPU
 
 ```text
 Can be throttled
@@ -2361,7 +2361,7 @@ Can be throttled
 
 ---
 
-## Memory
+### Memory
 
 ```text
 Can trigger OOM
@@ -2369,7 +2369,7 @@ Can trigger OOM
 
 ---
 
-## QoS
+### QoS
 
 ```text
 Guaranteed
@@ -2379,7 +2379,7 @@ BestEffort
 
 ---
 
-## LimitRange
+### LimitRange
 
 ```text
 Namespace-level resource defaults and constraints
@@ -2387,7 +2387,7 @@ Namespace-level resource defaults and constraints
 
 ---
 
-## ResourceQuota
+### ResourceQuota
 
 ```text
 Namespace-level aggregate resource limits
@@ -2395,7 +2395,7 @@ Namespace-level aggregate resource limits
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Pod resources:
 
@@ -2454,9 +2454,9 @@ kubectl describe resourcequota <name>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What are resource requests?
 - What are resource limits?
@@ -2467,7 +2467,7 @@ kubectl describe resourcequota <name>
 
 ---
 
-## Intermediate
+### Intermediate
 
 - What is the difference between requests and limits?
 - How does the Scheduler use resource requests?
@@ -2481,7 +2481,7 @@ kubectl describe resourcequota <name>
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain how Kubernetes schedules Pods using resource requests.
 - Why can incorrect requests lead to inefficient cluster utilization?
@@ -2499,7 +2499,7 @@ kubectl describe resourcequota <name>
 
 ---
 
-# Production Design Example
+## Production Design Example
 
 Consider:
 
@@ -2569,63 +2569,63 @@ This is preferable to guessing permanently.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Always Define Requests for Production Workloads
+#### 1. Always Define Requests for Production Workloads
 
 Accurate requests improve scheduling and capacity planning.
 
 ---
 
-### 2. Size Requests Based on Measurements
+#### 2. Size Requests Based on Measurements
 
 Use real usage data whenever possible.
 
 ---
 
-### 3. Avoid Extremely Low Requests
+#### 3. Avoid Extremely Low Requests
 
 They can cause excessive overcommitment.
 
 ---
 
-### 4. Avoid Extremely High Requests
+#### 4. Avoid Extremely High Requests
 
 They waste schedulable capacity.
 
 ---
 
-### 5. Be Careful with CPU Limits
+#### 5. Be Careful with CPU Limits
 
 Very restrictive CPU limits can cause throttling and application latency.
 
 ---
 
-### 6. Set Appropriate Memory Limits
+#### 6. Set Appropriate Memory Limits
 
 Memory limits should provide enough headroom for normal and expected peak usage.
 
 ---
 
-### 7. Monitor OOMKilled Events
+#### 7. Monitor OOMKilled Events
 
 Repeated OOM kills usually require investigation rather than simply increasing limits blindly.
 
 ---
 
-### 8. Use LimitRange for Namespace Governance
+#### 8. Use LimitRange for Namespace Governance
 
 Provide sensible defaults and enforce minimum/maximum values where appropriate.
 
 ---
 
-### 9. Use ResourceQuota for Multi-Tenant Clusters
+#### 9. Use ResourceQuota for Multi-Tenant Clusters
 
 Prevent one namespace from consuming unlimited resources.
 
 ---
 
-### 10. Review Resource Settings Regularly
+#### 10. Review Resource Settings Regularly
 
 Workloads change over time.
 
@@ -2633,9 +2633,9 @@ Resource configurations should be periodically re-evaluated.
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Resource Management for Pods and Containers
 - Assign Memory Resources to Containers and Pods
@@ -2649,7 +2649,7 @@ Resource configurations should be periodically re-evaluated.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Resource Management
 - Kubernetes Scheduling
@@ -2658,7 +2658,7 @@ Resource configurations should be periodically re-evaluated.
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create a Pod with CPU and memory requests.
 2. Add CPU and memory limits.
@@ -2676,7 +2676,7 @@ Resource configurations should be periodically re-evaluated.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```text
                     Resource Management
@@ -2791,9 +2791,9 @@ Therefore, resource requests and limits should be treated as an important part o
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 43 – Horizontal Pod Autoscaler (HPA)
+## Chapter 43 – Horizontal Pod Autoscaler (HPA)
 
 Topics will include:
 

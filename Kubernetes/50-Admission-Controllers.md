@@ -58,7 +58,7 @@ Enforce organizational policies
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -102,7 +102,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Are Admission Controllers?
+## What Are Admission Controllers?
 
 Admission Controllers are components of the Kubernetes API Server processing pipeline that intercept API requests after authentication and authorization and before the object is persisted.
 
@@ -135,7 +135,7 @@ Validate
 
 ---
 
-# Why Is Admission Control Needed?
+## Why Is Admission Control Needed?
 
 RBAC answers:
 
@@ -164,7 +164,7 @@ Admission control can enforce such rules.
 
 ---
 
-# Example
+## Example
 
 Suppose a developer creates:
 
@@ -210,11 +210,11 @@ Admission = DENIED
 
 ---
 
-# Admission vs Authorization
+## Admission vs Authorization
 
 This distinction is extremely important.
 
-## Authorization
+### Authorization
 
 ```text
 Can this identity perform this API operation?
@@ -232,7 +232,7 @@ Yes
 
 ---
 
-## Admission
+### Admission
 
 ```text
 Should this particular object/request be accepted?
@@ -252,7 +252,7 @@ Reject
 
 ---
 
-# Complete API Request Flow
+## Complete API Request Flow
 
 A simplified Kubernetes request flow is:
 
@@ -290,7 +290,7 @@ The exact internal processing details are more nuanced, but this model is useful
 
 ---
 
-# Admission Control Types
+## Admission Control Types
 
 Admission controls can broadly be divided into:
 
@@ -301,7 +301,7 @@ Validating
 
 ---
 
-# Mutating Admission
+## Mutating Admission
 
 A mutating admission mechanism can modify an incoming object before it is persisted.
 
@@ -319,7 +319,7 @@ Object continues
 
 ---
 
-# Example Mutation
+## Example Mutation
 
 Input:
 
@@ -353,7 +353,7 @@ metadata:
 
 ---
 
-# Common Uses of Mutation
+## Common Uses of Mutation
 
 Mutating admission can be used for:
 
@@ -369,7 +369,7 @@ Configuration Injection
 
 ---
 
-# Sidecar Injection
+## Sidecar Injection
 
 A classic example is service mesh injection.
 
@@ -401,7 +401,7 @@ Application Pod
 
 ---
 
-# Validating Admission
+## Validating Admission
 
 Validating admission checks whether a request satisfies a policy.
 
@@ -421,7 +421,7 @@ Reject
 
 ---
 
-# Example Validation
+## Example Validation
 
 Policy:
 
@@ -444,7 +444,7 @@ Rejected
 
 ---
 
-# Mutating vs Validating
+## Mutating vs Validating
 
 | Type | Purpose |
 |---|---|
@@ -465,7 +465,7 @@ Reject privileged Pod
 
 ---
 
-# Admission Webhooks
+## Admission Webhooks
 
 Kubernetes can call external webhook services during admission.
 
@@ -496,7 +496,7 @@ API Server
 
 ---
 
-# Validating Admission Webhook
+## Validating Admission Webhook
 
 A validating webhook receives an admission request and returns a decision.
 
@@ -514,7 +514,7 @@ Yes / No
 
 ---
 
-# Mutating Admission Webhook
+## Mutating Admission Webhook
 
 A mutating webhook can return changes to the object.
 
@@ -532,7 +532,7 @@ API Server applies mutation
 
 ---
 
-# Webhook Architecture
+## Webhook Architecture
 
 ```text
                     API Server
@@ -559,7 +559,7 @@ API Server applies mutation
 
 ---
 
-# Admission Webhook Components
+## Admission Webhook Components
 
 A typical webhook deployment contains:
 
@@ -582,7 +582,7 @@ Namespace
 
 ---
 
-# TLS for Webhooks
+## TLS for Webhooks
 
 Admission webhooks communicate securely with the API Server.
 
@@ -600,7 +600,7 @@ The API Server must be able to verify the webhook server's certificate.
 
 ---
 
-# Webhook Security
+## Webhook Security
 
 A webhook should:
 
@@ -616,7 +616,7 @@ Avoid unnecessary data access
 
 ---
 
-# Webhook Configuration
+## Webhook Configuration
 
 A validating webhook is configured using:
 
@@ -632,7 +632,7 @@ MutatingWebhookConfiguration
 
 ---
 
-# Example Validating Webhook Configuration
+## Example Validating Webhook Configuration
 
 Conceptually:
 
@@ -670,7 +670,7 @@ Additional fields are normally required for a production configuration.
 
 ---
 
-# AdmissionReview
+## AdmissionReview
 
 The API Server communicates with admission webhooks using:
 
@@ -699,7 +699,7 @@ AdmissionReview
 
 ---
 
-# Admission Operations
+## Admission Operations
 
 Admission requests can involve operations such as:
 
@@ -714,7 +714,7 @@ A webhook can specify which operations it wants to intercept.
 
 ---
 
-# `failurePolicy`
+## `failurePolicy`
 
 One of the most important webhook settings is:
 
@@ -731,7 +731,7 @@ Ignore
 
 ---
 
-# `failurePolicy: Fail`
+## `failurePolicy: Fail`
 
 If the webhook cannot be reached or returns an appropriate failure:
 
@@ -753,7 +753,7 @@ Request rejected
 
 ---
 
-# `failurePolicy: Ignore`
+## `failurePolicy: Ignore`
 
 If the webhook cannot be reached:
 
@@ -775,7 +775,7 @@ Continue processing
 
 ---
 
-# Fail vs Ignore
+## Fail vs Ignore
 
 | Policy | Webhook unavailable |
 |---|---|
@@ -784,7 +784,7 @@ Continue processing
 
 ---
 
-# Security Trade-Off
+## Security Trade-Off
 
 For security-critical policies:
 
@@ -816,7 +816,7 @@ must both be considered.
 
 ---
 
-# `timeoutSeconds`
+## `timeoutSeconds`
 
 Webhooks should respond quickly.
 
@@ -838,7 +838,7 @@ Create cluster-wide operational issues
 
 ---
 
-# `matchPolicy`
+## `matchPolicy`
 
 A webhook can specify how API resource matching should behave.
 
@@ -853,7 +853,7 @@ This determines how requests are matched against the webhook's configured resour
 
 ---
 
-# `namespaceSelector`
+## `namespaceSelector`
 
 A webhook can restrict matching based on namespace labels.
 
@@ -877,7 +877,7 @@ environment=development
 
 ---
 
-# Why Namespace Selectors Matter
+## Why Namespace Selectors Matter
 
 Suppose a security webhook is expensive.
 
@@ -897,7 +897,7 @@ This can reduce unnecessary processing.
 
 ---
 
-# `objectSelector`
+## `objectSelector`
 
 `objectSelector` can match objects using labels.
 
@@ -913,7 +913,7 @@ Use selectors carefully because labeling can affect whether a webhook receives a
 
 ---
 
-# `sideEffects`
+## `sideEffects`
 
 Webhook configuration requires declaring whether the webhook has side effects.
 
@@ -927,7 +927,7 @@ This helps Kubernetes understand webhook behavior.
 
 ---
 
-# Admission Webhook Ordering
+## Admission Webhook Ordering
 
 Multiple admission mechanisms can apply to the same request.
 
@@ -946,7 +946,7 @@ Policies should be designed to remain correct even when multiple admission contr
 
 ---
 
-# Built-in Admission Controllers
+## Built-in Admission Controllers
 
 Kubernetes provides built-in admission controllers.
 
@@ -966,7 +966,7 @@ The exact set enabled by default can vary by Kubernetes version and distribution
 
 ---
 
-# NamespaceLifecycle
+## NamespaceLifecycle
 
 This admission control helps enforce namespace lifecycle behavior.
 
@@ -980,7 +980,7 @@ should not accept arbitrary new resources.
 
 ---
 
-# ServiceAccount Admission
+## ServiceAccount Admission
 
 The ServiceAccount admission controller can help assign a default Service Account to Pods when one is not explicitly specified.
 
@@ -998,7 +998,7 @@ default ServiceAccount
 
 ---
 
-# ResourceQuota Admission
+## ResourceQuota Admission
 
 ResourceQuota helps enforce namespace resource quotas.
 
@@ -1014,7 +1014,7 @@ A request that would exceed the quota can be rejected.
 
 ---
 
-# LimitRanger
+## LimitRanger
 
 LimitRanger can apply default resource requests/limits and enforce configured limits within a namespace.
 
@@ -1030,7 +1030,7 @@ Default memory limit
 
 ---
 
-# Pod Security Admission
+## Pod Security Admission
 
 Pod Security Admission enforces the:
 
@@ -1050,7 +1050,7 @@ Restricted
 
 ---
 
-# Privileged
+## Privileged
 
 The:
 
@@ -1064,7 +1064,7 @@ It is appropriate only for workloads that genuinely require elevated capabilitie
 
 ---
 
-# Baseline
+## Baseline
 
 The:
 
@@ -1076,7 +1076,7 @@ profile aims to prevent known privilege escalation patterns while remaining prac
 
 ---
 
-# Restricted
+## Restricted
 
 The:
 
@@ -1097,7 +1097,7 @@ Security settings
 
 ---
 
-# Pod Security Labels
+## Pod Security Labels
 
 Pod Security Admission is commonly configured using namespace labels.
 
@@ -1121,7 +1121,7 @@ Pod Security Standard for that namespace.
 
 ---
 
-# Pod Security Modes
+## Pod Security Modes
 
 Pod Security Admission supports modes such as:
 
@@ -1133,7 +1133,7 @@ warn
 
 ---
 
-# `enforce`
+## `enforce`
 
 Violating Pods are:
 
@@ -1143,7 +1143,7 @@ Rejected
 
 ---
 
-# `audit`
+## `audit`
 
 Violations are:
 
@@ -1155,7 +1155,7 @@ without necessarily rejecting the request.
 
 ---
 
-# `warn`
+## `warn`
 
 Users receive:
 
@@ -1167,7 +1167,7 @@ while the request may still be accepted.
 
 ---
 
-# Recommended Rollout
+## Recommended Rollout
 
 For introducing stronger Pod Security:
 
@@ -1183,7 +1183,7 @@ This allows teams to discover existing violations before enforcing the policy.
 
 ---
 
-# ValidatingAdmissionPolicy
+## ValidatingAdmissionPolicy
 
 Kubernetes also provides:
 
@@ -1205,7 +1205,7 @@ This can avoid creating a separate webhook for some policy requirements.
 
 ---
 
-# Why ValidatingAdmissionPolicy?
+## Why ValidatingAdmissionPolicy?
 
 Traditional model:
 
@@ -1237,7 +1237,7 @@ Lower operational overhead
 
 ---
 
-# Example ValidatingAdmissionPolicy
+## Example ValidatingAdmissionPolicy
 
 A simplified example can validate that a Pod contains a required label.
 
@@ -1285,7 +1285,7 @@ The exact syntax and API behavior should be validated against the Kubernetes ver
 
 ---
 
-# ValidatingAdmissionPolicyBinding
+## ValidatingAdmissionPolicyBinding
 
 A policy must be appropriately bound to determine where and how it is applied.
 
@@ -1301,7 +1301,7 @@ Matching Resources
 
 ---
 
-# MutatingAdmissionPolicy
+## MutatingAdmissionPolicy
 
 Modern Kubernetes also provides:
 
@@ -1315,7 +1315,7 @@ This can reduce the need for external mutating webhooks for suitable use cases.
 
 ---
 
-# Built-in vs Webhook vs Policy
+## Built-in vs Webhook vs Policy
 
 | Mechanism | Typical Use |
 |---|---|
@@ -1327,7 +1327,7 @@ This can reduce the need for external mutating webhooks for suitable use cases.
 
 ---
 
-# Admission Controller Example
+## Admission Controller Example
 
 Imagine an organization requires:
 
@@ -1357,7 +1357,7 @@ Add default value
 
 ---
 
-# Admission Security Policy
+## Admission Security Policy
 
 A production policy framework may enforce:
 
@@ -1374,7 +1374,7 @@ Allowed namespaces
 
 ---
 
-# Image Security
+## Image Security
 
 Admission can enforce approved registries.
 
@@ -1397,7 +1397,7 @@ if those registries are not approved by organizational policy.
 
 ---
 
-# Image Tag Policy
+## Image Tag Policy
 
 An organization may require:
 
@@ -1433,7 +1433,7 @@ image@sha256:<digest>
 
 ---
 
-# Why Image Admission Matters
+## Why Image Admission Matters
 
 Without admission enforcement:
 
@@ -1459,7 +1459,7 @@ Approved?
 
 ---
 
-# Resource Policy
+## Resource Policy
 
 Admission can enforce:
 
@@ -1482,7 +1482,7 @@ This helps prevent workloads from consuming uncontrolled resources.
 
 ---
 
-# Namespace Policy
+## Namespace Policy
 
 Admission can enforce policies based on:
 
@@ -1506,7 +1506,7 @@ Relaxed policy
 
 ---
 
-# Required Labels
+## Required Labels
 
 Organizations often require:
 
@@ -1522,7 +1522,7 @@ Admission validation can enforce these.
 
 ---
 
-# Example
+## Example
 
 Required:
 
@@ -1552,7 +1552,7 @@ Admission rejection
 
 ---
 
-# Custom Admission Controller
+## Custom Admission Controller
 
 A custom admission controller is usually implemented as:
 
@@ -1577,7 +1577,7 @@ Allow / Deny / Mutate
 
 ---
 
-# Admission Webhook Deployment
+## Admission Webhook Deployment
 
 A production webhook may contain:
 
@@ -1596,7 +1596,7 @@ Use multiple replicas for availability.
 
 ---
 
-# Webhook High Availability
+## Webhook High Availability
 
 Avoid:
 
@@ -1629,7 +1629,7 @@ behind a Service.
 
 ---
 
-# Webhook Availability
+## Webhook Availability
 
 Admission webhooks can become part of the Kubernetes control-plane dependency chain.
 
@@ -1661,7 +1661,7 @@ failurePolicy: Fail
 
 ---
 
-# Webhook Performance
+## Webhook Performance
 
 Admission requests occur on the API Server request path.
 
@@ -1685,7 +1685,7 @@ Stateless where possible
 
 ---
 
-# Webhook Timeout
+## Webhook Timeout
 
 Example:
 
@@ -1705,7 +1705,7 @@ API request waits longer
 
 ---
 
-# Webhook Failure Policy
+## Webhook Failure Policy
 
 For security-critical validation:
 
@@ -1733,7 +1733,7 @@ Operational risk
 
 ---
 
-# Admission Security Risks
+## Admission Security Risks
 
 Admission controllers can create serious security risks if poorly configured.
 
@@ -1752,7 +1752,7 @@ Supply-chain compromise
 
 ---
 
-# Webhook Compromise
+## Webhook Compromise
 
 If an attacker compromises a mutating webhook:
 
@@ -1772,7 +1772,7 @@ Therefore, admission infrastructure must be highly trusted.
 
 ---
 
-# Webhook Certificate Security
+## Webhook Certificate Security
 
 Protect:
 
@@ -1786,7 +1786,7 @@ If an attacker can impersonate the webhook endpoint, they may interfere with adm
 
 ---
 
-# Webhook RBAC
+## Webhook RBAC
 
 The webhook's Service Account should receive only required permissions.
 
@@ -1800,7 +1800,7 @@ to webhook Pods.
 
 ---
 
-# Admission Denial of Service
+## Admission Denial of Service
 
 A badly designed webhook can cause:
 
@@ -1818,7 +1818,7 @@ This can impact the entire cluster.
 
 ---
 
-# Admission Webhook Loop
+## Admission Webhook Loop
 
 Mutating webhooks should be designed carefully.
 
@@ -1840,7 +1840,7 @@ Poorly designed mutation behavior can create repeated processing or unexpected o
 
 ---
 
-# Admission Policy Bypass
+## Admission Policy Bypass
 
 Potential bypass techniques can involve:
 
@@ -1857,7 +1857,7 @@ Always test policies against realistic workloads.
 
 ---
 
-# Security Testing
+## Security Testing
 
 Admission policies should be tested with:
 
@@ -1875,7 +1875,7 @@ Unexpected Namespace
 
 ---
 
-# Admission Logging
+## Admission Logging
 
 Monitor:
 
@@ -1898,7 +1898,7 @@ Incident Response
 
 ---
 
-# Admission and Audit Logs
+## Admission and Audit Logs
 
 Audit logs can help answer:
 
@@ -1914,7 +1914,7 @@ Admission logs and Kubernetes audit logs provide complementary visibility.
 
 ---
 
-# Admission Troubleshooting
+## Admission Troubleshooting
 
 If:
 
@@ -1942,7 +1942,7 @@ investigate:
 
 ---
 
-# Check Webhook Configurations
+## Check Webhook Configurations
 
 List validating webhooks:
 
@@ -1958,7 +1958,7 @@ kubectl get mutatingwebhookconfigurations
 
 ---
 
-# Describe Webhook Configuration
+## Describe Webhook Configuration
 
 ```bash
 kubectl describe validatingwebhookconfiguration <name>
@@ -1972,7 +1972,7 @@ kubectl describe mutatingwebhookconfiguration <name>
 
 ---
 
-# Check Webhook Pods
+## Check Webhook Pods
 
 ```bash
 kubectl get pods -n <webhook-namespace>
@@ -1988,7 +1988,7 @@ Restarts
 
 ---
 
-# Check Webhook Logs
+## Check Webhook Logs
 
 ```bash
 kubectl logs -n <webhook-namespace> \
@@ -2007,7 +2007,7 @@ Application exceptions
 
 ---
 
-# Check Webhook Service
+## Check Webhook Service
 
 ```bash
 kubectl get service -n <webhook-namespace>
@@ -2023,7 +2023,7 @@ Ports are correct
 
 ---
 
-# Check Endpoints
+## Check Endpoints
 
 ```bash
 kubectl get endpoints -n <webhook-namespace>
@@ -2039,7 +2039,7 @@ No endpoints can cause webhook connectivity failures.
 
 ---
 
-# TLS Troubleshooting
+## TLS Troubleshooting
 
 Potential issues:
 
@@ -2053,7 +2053,7 @@ Certificate rotation failure
 
 ---
 
-# Admission Failure Troubleshooting Flow
+## Admission Failure Troubleshooting Flow
 
 ```text
 API request denied
@@ -2081,7 +2081,7 @@ Check failurePolicy
 
 ---
 
-# Hands-on Lab 1 – Observe Pod Security Admission
+## Hands-on Lab 1 – Observe Pod Security Admission
 
 Create a test namespace:
 
@@ -2106,7 +2106,7 @@ Admission rejection
 
 ---
 
-# Hands-on Lab 2 – Test Pod Security Modes
+## Hands-on Lab 2 – Test Pod Security Modes
 
 Experiment with:
 
@@ -2139,7 +2139,7 @@ Rejection
 
 ---
 
-# Hands-on Lab 3 – ValidatingAdmissionPolicy
+## Hands-on Lab 3 – ValidatingAdmissionPolicy
 
 In a Kubernetes version supporting `ValidatingAdmissionPolicy`, create a test policy that requires a label such as:
 
@@ -2183,7 +2183,7 @@ Compare the results.
 
 ---
 
-# Hands-on Lab 4 – ResourceQuota
+## Hands-on Lab 4 – ResourceQuota
 
 Create:
 
@@ -2227,7 +2227,7 @@ Deploy workloads and observe what happens when the quota is exceeded.
 
 ---
 
-# Hands-on Lab 5 – LimitRange
+## Hands-on Lab 5 – LimitRange
 
 Create:
 
@@ -2267,7 +2267,7 @@ Observe the resulting Pod specification.
 
 ---
 
-# Hands-on Lab 6 – Inspect Webhooks
+## Hands-on Lab 6 – Inspect Webhooks
 
 Run:
 
@@ -2297,7 +2297,7 @@ Do not modify production webhook configurations during this exercise.
 
 ---
 
-# Hands-on Lab 7 – Admission Failure Simulation
+## Hands-on Lab 7 – Admission Failure Simulation
 
 In a disposable cluster, deploy a test webhook.
 
@@ -2323,7 +2323,7 @@ Restore the webhook immediately after the experiment.
 
 ---
 
-# Hands-on Lab 8 – Failure Policy Comparison
+## Hands-on Lab 8 – Failure Policy Comparison
 
 In a disposable environment, compare:
 
@@ -2341,7 +2341,7 @@ Observe how webhook availability affects API requests.
 
 ---
 
-# Hands-on Lab 9 – Namespace Selector
+## Hands-on Lab 9 – Namespace Selector
 
 Create:
 
@@ -2362,7 +2362,7 @@ Verify that matching behavior differs between namespaces.
 
 ---
 
-# Hands-on Lab 10 – Admission Troubleshooting
+## Hands-on Lab 10 – Admission Troubleshooting
 
 Create an intentionally invalid object.
 
@@ -2388,9 +2388,9 @@ Document the troubleshooting process.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Confusing Authorization and Admission
+### 1. Confusing Authorization and Admission
 
 Remember:
 
@@ -2408,31 +2408,31 @@ Should this object/request be accepted?
 
 ---
 
-## 2. Using `failurePolicy: Ignore` for Critical Security Controls
+### 2. Using `failurePolicy: Ignore` for Critical Security Controls
 
 This can create a policy bypass if the webhook becomes unavailable.
 
 ---
 
-## 3. Using `failurePolicy: Fail` Without HA
+### 3. Using `failurePolicy: Fail` Without HA
 
 A single webhook Pod can become a cluster availability dependency.
 
 ---
 
-## 4. Slow Webhooks
+### 4. Slow Webhooks
 
 A slow admission webhook increases API latency.
 
 ---
 
-## 5. Incorrect TLS Configuration
+### 5. Incorrect TLS Configuration
 
 Certificate problems can make the API Server unable to communicate with the webhook.
 
 ---
 
-## 6. Overly Broad Selectors
+### 6. Overly Broad Selectors
 
 A webhook that matches too many resources can unexpectedly affect:
 
@@ -2445,13 +2445,13 @@ Infrastructure
 
 ---
 
-## 7. Incorrect Selectors
+### 7. Incorrect Selectors
 
 A policy can be bypassed if its matching rules are incomplete.
 
 ---
 
-## 8. Giving Webhooks Excessive RBAC
+### 8. Giving Webhooks Excessive RBAC
 
 A webhook should not automatically receive:
 
@@ -2461,13 +2461,13 @@ cluster-admin
 
 ---
 
-## 9. Ignoring Webhook Availability
+### 9. Ignoring Webhook Availability
 
 Admission infrastructure must be monitored like other production control-plane dependencies.
 
 ---
 
-## 10. Mutating Objects Unnecessarily
+### 10. Mutating Objects Unnecessarily
 
 Every mutation adds complexity.
 
@@ -2475,13 +2475,13 @@ Only mutate when there is a clear reason.
 
 ---
 
-## 11. Building Policy That Depends on Webhook Ordering
+### 11. Building Policy That Depends on Webhook Ordering
 
 Admission systems should be designed to avoid fragile dependencies on ordering.
 
 ---
 
-## 12. Forgetting Existing Policies
+### 12. Forgetting Existing Policies
 
 A request may be rejected by:
 
@@ -2497,27 +2497,27 @@ or another admission mechanism.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Built-In Policies Where Possible
+#### 1. Use Built-In Policies Where Possible
 
 Prefer native Kubernetes mechanisms when they satisfy your requirement.
 
 ---
 
-### 2. Use ValidatingAdmissionPolicy for Suitable Declarative Rules
+#### 2. Use ValidatingAdmissionPolicy for Suitable Declarative Rules
 
 This can reduce external webhook complexity.
 
 ---
 
-### 3. Keep Webhooks Fast
+#### 3. Keep Webhooks Fast
 
 Admission is on the API request path.
 
 ---
 
-### 4. Make Webhooks Highly Available
+#### 4. Make Webhooks Highly Available
 
 Use:
 
@@ -2530,13 +2530,13 @@ PodDisruptionBudget where appropriate
 
 ---
 
-### 5. Use TLS
+#### 5. Use TLS
 
 Never expose an admission webhook without appropriate secure transport.
 
 ---
 
-### 6. Choose `failurePolicy` Carefully
+#### 6. Choose `failurePolicy` Carefully
 
 Balance:
 
@@ -2548,7 +2548,7 @@ Availability
 
 ---
 
-### 7. Restrict Webhook Scope
+#### 7. Restrict Webhook Scope
 
 Use:
 
@@ -2562,13 +2562,13 @@ where appropriate.
 
 ---
 
-### 8. Minimize Webhook RBAC
+#### 8. Minimize Webhook RBAC
 
 Grant only the permissions needed by the webhook.
 
 ---
 
-### 9. Monitor Webhook Latency
+#### 9. Monitor Webhook Latency
 
 Track:
 
@@ -2582,7 +2582,7 @@ Rejections
 
 ---
 
-### 10. Test Policy Bypass Scenarios
+#### 10. Test Policy Bypass Scenarios
 
 Test:
 
@@ -2598,7 +2598,7 @@ Subresources
 
 ---
 
-### 11. Roll Out Policies Gradually
+#### 11. Roll Out Policies Gradually
 
 For Pod Security:
 
@@ -2614,7 +2614,7 @@ can help teams identify violations before enforcement.
 
 ---
 
-### 12. Document Every Security Policy
+#### 12. Document Every Security Policy
 
 Record:
 
@@ -2629,13 +2629,13 @@ Exception Process
 
 ---
 
-### 13. Protect Admission Infrastructure
+#### 13. Protect Admission Infrastructure
 
 Treat admission webhooks as highly trusted security components.
 
 ---
 
-# Production Admission Architecture
+## Production Admission Architecture
 
 A mature cluster can look like:
 
@@ -2670,7 +2670,7 @@ A mature cluster can look like:
 
 ---
 
-# Defense-in-Depth Architecture
+## Defense-in-Depth Architecture
 
 Admission control should not be the only security mechanism.
 
@@ -2698,7 +2698,7 @@ Audit
 
 ---
 
-# Admission Policy Lifecycle
+## Admission Policy Lifecycle
 
 A good policy lifecycle is:
 
@@ -2720,7 +2720,7 @@ Review
 
 ---
 
-# Security Policy Example
+## Security Policy Example
 
 Requirement:
 
@@ -2753,7 +2753,7 @@ This demonstrates that multiple controls can work together.
 
 ---
 
-# Admission and DevSecOps
+## Admission and DevSecOps
 
 Admission control moves security enforcement into the cluster.
 
@@ -2789,7 +2789,7 @@ while still protecting the cluster at runtime.
 
 ---
 
-# Admission and CI/CD
+## Admission and CI/CD
 
 CI/CD should ideally validate policies before deployment.
 
@@ -2813,7 +2813,7 @@ This provides multiple enforcement layers.
 
 ---
 
-# Admission and GitOps
+## Admission and GitOps
 
 In GitOps environments:
 
@@ -2843,7 +2843,7 @@ Admission Control
 
 ---
 
-# Admission and Multi-Tenancy
+## Admission and Multi-Tenancy
 
 Admission controls can enforce tenant boundaries.
 
@@ -2871,9 +2871,9 @@ This helps implement organizational governance.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Admission Controller
+### Admission Controller
 
 ```text
 Policy enforcement layer
@@ -2881,7 +2881,7 @@ Policy enforcement layer
 
 ---
 
-## Mutating
+### Mutating
 
 ```text
 Modify request
@@ -2889,7 +2889,7 @@ Modify request
 
 ---
 
-## Validating
+### Validating
 
 ```text
 Accept or reject request
@@ -2897,7 +2897,7 @@ Accept or reject request
 
 ---
 
-## Validating Webhook
+### Validating Webhook
 
 ```text
 External validation service
@@ -2905,7 +2905,7 @@ External validation service
 
 ---
 
-## Mutating Webhook
+### Mutating Webhook
 
 ```text
 External mutation service
@@ -2913,7 +2913,7 @@ External mutation service
 
 ---
 
-## `failurePolicy`
+### `failurePolicy`
 
 ```text
 Fail or Ignore
@@ -2921,7 +2921,7 @@ Fail or Ignore
 
 ---
 
-## `timeoutSeconds`
+### `timeoutSeconds`
 
 ```text
 Maximum webhook response time
@@ -2929,7 +2929,7 @@ Maximum webhook response time
 
 ---
 
-## `namespaceSelector`
+### `namespaceSelector`
 
 ```text
 Match namespaces
@@ -2937,7 +2937,7 @@ Match namespaces
 
 ---
 
-## `objectSelector`
+### `objectSelector`
 
 ```text
 Match objects
@@ -2945,7 +2945,7 @@ Match objects
 
 ---
 
-## Pod Security Admission
+### Pod Security Admission
 
 ```text
 Enforces Pod Security Standards
@@ -2953,7 +2953,7 @@ Enforces Pod Security Standards
 
 ---
 
-## ValidatingAdmissionPolicy
+### ValidatingAdmissionPolicy
 
 ```text
 Declarative admission validation
@@ -2961,7 +2961,7 @@ Declarative admission validation
 
 ---
 
-## MutatingAdmissionPolicy
+### MutatingAdmissionPolicy
 
 ```text
 Declarative admission mutation
@@ -2969,7 +2969,7 @@ Declarative admission mutation
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 List validating webhooks:
 
@@ -3040,9 +3040,9 @@ kubectl get namespace <name> -o yaml
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is an Admission Controller?
 - What is the purpose of admission control?
@@ -3057,7 +3057,7 @@ kubectl get namespace <name> -o yaml
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Explain the Kubernetes API request pipeline.
 - What is `failurePolicy`?
@@ -3075,7 +3075,7 @@ kubectl get namespace <name> -o yaml
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Kubernetes admission control flow.
 - How would you design a highly available admission webhook?
@@ -3097,13 +3097,13 @@ kubectl get namespace <name> -o yaml
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > A developer has permission to create Pods but receives an error saying the Pod was rejected by an admission webhook. Is this an RBAC problem?
 
-### Answer
+#### Answer
 
 Not necessarily.
 
@@ -3139,13 +3139,13 @@ Therefore, a user can be authorized to create Pods while still being prevented f
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Your validating webhook is down and production deployments are failing. What could cause this?
 
-### Answer
+#### Answer
 
 If the webhook uses:
 
@@ -3189,13 +3189,13 @@ Then inspect the webhook configuration.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > How would you enforce that production Pods cannot use privileged containers?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3229,13 +3229,13 @@ Rejected
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > Why can a poorly designed admission webhook become a security and availability problem?
 
-### Answer
+#### Answer
 
 Because admission webhooks run on the API request path.
 
@@ -3270,13 +3270,13 @@ Monitored
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > When should you use a mutating admission controller instead of a validating controller?
 
-### Answer
+#### Answer
 
 Use mutation when the platform should automatically modify an object.
 
@@ -3307,7 +3307,7 @@ Reject missing required labels
 
 ---
 
-# Production Admission Checklist
+## Production Admission Checklist
 
 ```text
 ☑ Understand authentication → authorization → admission
@@ -3331,7 +3331,7 @@ Reject missing required labels
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Study the Kubernetes API request pipeline.
 2. Understand authentication vs authorization vs admission.
@@ -3362,9 +3362,9 @@ Reject missing required labels
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Admission Control
 - Dynamic Admission Control
@@ -3380,7 +3380,7 @@ Reject missing required labels
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Admission Controllers provide an important policy enforcement layer in Kubernetes.
 
@@ -3557,9 +3557,9 @@ This creates multiple independent security layers instead of relying on a single
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 51 – Pod Security Standards
+## Chapter 51 – Pod Security Standards
 
 Topics will include:
 

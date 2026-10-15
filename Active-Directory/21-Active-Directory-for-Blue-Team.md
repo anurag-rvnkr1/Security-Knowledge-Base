@@ -1,6 +1,6 @@
 # 21-Active-Directory-for-Blue-Team.md
 
-# Part 1 — Introduction to Active Directory Blue Team Operations, SOC Responsibilities, Defensive Monitoring and Security Visibility
+## Part 1 — Introduction to Active Directory Blue Team Operations, SOC Responsibilities, Defensive Monitoring and Security Visibility
 
 > **Important Note**
 >
@@ -10,7 +10,7 @@
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -26,7 +26,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 A **Blue Team** is responsible for protecting an organization's infrastructure against cyber threats.
 
@@ -42,7 +42,7 @@ In Active Directory environments, Blue Teams are responsible for protecting the 
 
 ---
 
-# Blue Team Mission
+## Blue Team Mission
 
 ```
 Prevent
@@ -72,7 +72,7 @@ Every activity performed by the Blue Team contributes to reducing enterprise ris
 
 ---
 
-# Blue Team Responsibilities
+## Blue Team Responsibilities
 
 Core responsibilities include:
 
@@ -88,7 +88,7 @@ Core responsibilities include:
 
 ---
 
-# Active Directory from a Blue Team Perspective
+## Active Directory from a Blue Team Perspective
 
 Blue Teams view Active Directory differently than administrators.
 
@@ -106,7 +106,7 @@ A healthy Domain Controller may still be experiencing malicious activity.
 
 ---
 
-# Enterprise Identity Visibility
+## Enterprise Identity Visibility
 
 ```
 Users
@@ -140,7 +140,7 @@ Visibility is the foundation of effective defense.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 The SOC is responsible for continuous security monitoring.
 
@@ -158,7 +158,7 @@ Many enterprises operate a 24×7 SOC.
 
 ---
 
-# SOC Workflow
+## SOC Workflow
 
 ```
 Security Event
@@ -194,7 +194,7 @@ Response
 
 ---
 
-# Blue Team Skill Areas
+## Blue Team Skill Areas
 
 ```
 Identity Security
@@ -228,7 +228,7 @@ Modern Blue Team members typically possess skills across multiple domains.
 
 ---
 
-# Security Visibility
+## Security Visibility
 
 Organizations cannot defend what they cannot observe.
 
@@ -246,7 +246,7 @@ Visibility should include:
 
 ---
 
-# Enterprise Monitoring Architecture
+## Enterprise Monitoring Architecture
 
 ```
 Domain Controllers
@@ -290,7 +290,7 @@ Security Analysts
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Important log sources include:
 
@@ -307,7 +307,7 @@ Logs should be centralized whenever possible.
 
 ---
 
-# High-Value Monitoring Targets
+## High-Value Monitoring Targets
 
 Priority assets include:
 
@@ -331,7 +331,7 @@ These systems require enhanced monitoring.
 
 ---
 
-# Detection Philosophy
+## Detection Philosophy
 
 Effective detection focuses on:
 
@@ -345,7 +345,7 @@ Rather than relying on a single event, analysts evaluate patterns across multipl
 
 ---
 
-# Security Event Lifecycle
+## Security Event Lifecycle
 
 ```
 Activity
@@ -381,11 +381,11 @@ Lessons Learned
 
 ---
 
-# Types of Security Events
+## Types of Security Events
 
 Examples include:
 
-### Authentication Events
+#### Authentication Events
 
 - Successful logons
 - Failed logons
@@ -393,7 +393,7 @@ Examples include:
 
 ---
 
-### Administrative Events
+#### Administrative Events
 
 - Privileged logons
 - Group membership changes
@@ -401,7 +401,7 @@ Examples include:
 
 ---
 
-### Configuration Events
+#### Configuration Events
 
 - GPO changes
 - DNS modifications
@@ -409,7 +409,7 @@ Examples include:
 
 ---
 
-### Infrastructure Events
+#### Infrastructure Events
 
 - Replication issues
 - Service failures
@@ -417,7 +417,7 @@ Examples include:
 
 ---
 
-# Alert Prioritization
+## Alert Prioritization
 
 ```
 Critical
@@ -443,7 +443,7 @@ Critical events should receive immediate attention according to organizational r
 
 ---
 
-# False Positives vs False Negatives
+## False Positives vs False Negatives
 
 ```
 Alert
@@ -469,7 +469,7 @@ Blue Teams continually tune detection logic to balance both risks.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Detection engineering involves:
 
@@ -483,7 +483,7 @@ Detection content should evolve alongside infrastructure and threat intelligence
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -515,7 +515,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Successful Blue Teams rely on:
 
@@ -530,13 +530,13 @@ Detection quality is often more valuable than detection quantity.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Map the monitoring architecture for an Active Directory environment.
 
-### Step 1
+#### Step 1
 
 Identify:
 
@@ -547,7 +547,7 @@ Identify:
 
 ---
 
-### Step 2
+#### Step 2
 
 Document:
 
@@ -558,63 +558,63 @@ Document:
 
 ---
 
-### Step 3
+#### Step 3
 
 Identify which systems generate Tier-0 security events.
 
 ---
 
-### Step 4
+#### Step 4
 
 Create a simple SOC workflow diagram from log generation to analyst investigation.
 
 ---
 
-### Step 5
+#### Step 5
 
 List five security events that should trigger high-priority review within your organization.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is the primary goal of a Blue Team?
+#### Q1: What is the primary goal of a Blue Team?
 
 **Answer:** To protect the organization's infrastructure by detecting, investigating, responding to, and preventing security incidents.
 
 ---
 
-### Q2: Why is Active Directory a priority for Blue Teams?
+#### Q2: Why is Active Directory a priority for Blue Teams?
 
 **Answer:** Because it manages enterprise identities, authentication, authorization, and privileged access, making it one of the most critical security components.
 
 ---
 
-### Q3: Why is centralized logging important?
+#### Q3: Why is centralized logging important?
 
 **Answer:** It enables correlation of events across systems, improving visibility, detection, and incident investigation.
 
 ---
 
-### Q4: What is detection engineering?
+#### Q4: What is detection engineering?
 
 **Answer:** Detection engineering is the process of designing, testing, tuning, and maintaining security detections to identify suspicious or malicious activity.
 
 ---
 
-### Q5: Why are Tier-0 assets monitored more closely?
+#### Q5: Why are Tier-0 assets monitored more closely?
 
 **Answer:** Because compromise of Tier-0 assets can significantly impact the security and operation of the entire Active Directory environment.
 
 ---
 
-### Q6: What is the difference between a false positive and a false negative?
+#### Q6: What is the difference between a false positive and a false negative?
 
 **Answer:** A false positive is a benign event incorrectly flagged as malicious, while a false negative is malicious activity that goes undetected.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Centralize security logs.
 - Monitor Tier-0 assets continuously.
@@ -627,7 +627,7 @@ List five security events that should trigger high-priority review within your o
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Collecting logs without reviewing them.
 - Ignoring low-frequency administrative events.
@@ -638,7 +638,7 @@ List five security events that should trigger high-priority review within your o
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Blue Teams protect Active Directory through continuous monitoring, detection, investigation, and improvement.
 - Visibility into authentication, administration, and identity activity is essential.
@@ -647,9 +647,9 @@ List five security events that should trigger high-priority review within your o
 
 ---
 
-# 21-Active-Directory-for-Blue-Team.md
+## 21-Active-Directory-for-Blue-Team.md
 
-# Part 2 — Active Directory Detection Engineering, Security Logging, Windows Event IDs, SIEM Integration and Alert Triage
+## Part 2 — Active Directory Detection Engineering, Security Logging, Windows Event IDs, SIEM Integration and Alert Triage
 
 > **Important Note**
 >
@@ -657,7 +657,7 @@ List five security events that should trigger high-priority review within your o
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -673,7 +673,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Modern Blue Teams rely on **telemetry** rather than assumptions.
 
@@ -683,7 +683,7 @@ The challenge is not collecting logs—it is identifying which events require in
 
 ---
 
-# Detection Engineering Lifecycle
+## Detection Engineering Lifecycle
 
 ```
 Security Requirement
@@ -723,7 +723,7 @@ Detection engineering is a continuous improvement process.
 
 ---
 
-# Logging Architecture
+## Logging Architecture
 
 ```
 Domain Controllers
@@ -761,7 +761,7 @@ SOC Dashboard
 
 ---
 
-# Important Log Sources
+## Important Log Sources
 
 | Source | Typical Security Value |
 |---------|------------------------|
@@ -775,7 +775,7 @@ SOC Dashboard
 
 ---
 
-# Windows Security Events
+## Windows Security Events
 
 Windows records thousands of event types.
 
@@ -792,7 +792,7 @@ Monitoring should align with organizational risk priorities.
 
 ---
 
-# Commonly Monitored Active Directory Events
+## Commonly Monitored Active Directory Events
 
 The following Windows Security Event IDs are commonly monitored in enterprise environments.
 
@@ -822,7 +822,7 @@ The following Windows Security Event IDs are commonly monitored in enterprise en
 
 ---
 
-# Authentication Monitoring
+## Authentication Monitoring
 
 Authentication events provide valuable security visibility.
 
@@ -850,7 +850,7 @@ Monitor trends rather than isolated events whenever possible.
 
 ---
 
-# Administrative Activity Monitoring
+## Administrative Activity Monitoring
 
 Monitor actions involving:
 
@@ -866,7 +866,7 @@ Administrative actions should generally have documented business justification.
 
 ---
 
-# Group Membership Monitoring
+## Group Membership Monitoring
 
 ```
 Privileged Group
@@ -896,7 +896,7 @@ Unexpected changes to privileged groups should be reviewed promptly.
 
 ---
 
-# Password Management Events
+## Password Management Events
 
 Important categories include:
 
@@ -909,7 +909,7 @@ Unexpected patterns may indicate operational issues or attempted misuse.
 
 ---
 
-# Kerberos Monitoring
+## Kerberos Monitoring
 
 Blue Teams should monitor:
 
@@ -922,7 +922,7 @@ Authentication telemetry should be correlated with other security events before 
 
 ---
 
-# SIEM Correlation
+## SIEM Correlation
 
 Individual events often have limited value.
 
@@ -952,7 +952,7 @@ Correlation reduces alert fatigue while improving detection quality.
 
 ---
 
-# Risk-Based Alerting
+## Risk-Based Alerting
 
 Example prioritization:
 
@@ -986,7 +986,7 @@ Alert priority should consider:
 
 ---
 
-# Detection Coverage Matrix
+## Detection Coverage Matrix
 
 | Security Area | Example Monitoring |
 |---------------|-------------------|
@@ -1003,7 +1003,7 @@ Coverage matrices help identify monitoring gaps.
 
 ---
 
-# Alert Triage
+## Alert Triage
 
 Typical SOC triage process:
 
@@ -1035,7 +1035,7 @@ The goal is to determine whether additional investigation is required.
 
 ---
 
-# Alert Investigation Checklist
+## Alert Investigation Checklist
 
 ```
 ✓ Which account was involved?
@@ -1053,7 +1053,7 @@ The goal is to determine whether additional investigation is required.
 
 ---
 
-# Reducing False Positives
+## Reducing False Positives
 
 Methods include:
 
@@ -1068,7 +1068,7 @@ High-quality detections reduce analyst workload.
 
 ---
 
-# Detection Rule Lifecycle
+## Detection Rule Lifecycle
 
 ```
 Requirement
@@ -1102,7 +1102,7 @@ Rules should be reviewed after major infrastructure changes.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1135,7 +1135,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Detection engineering should focus on:
 
@@ -1150,13 +1150,13 @@ Successful Blue Teams continuously improve detections rather than relying on sta
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review Active Directory logging and detection coverage.
 
-### Step 1
+#### Step 1
 
 Identify:
 
@@ -1166,7 +1166,7 @@ Identify:
 
 ---
 
-### Step 2
+#### Step 2
 
 Verify that authentication logs are being collected.
 
@@ -1178,7 +1178,7 @@ Document:
 
 ---
 
-### Step 3
+#### Step 3
 
 Review privileged group monitoring.
 
@@ -1190,7 +1190,7 @@ Identify which alerts are generated for:
 
 ---
 
-### Step 4
+#### Step 4
 
 Create a simple detection coverage matrix for:
 
@@ -1202,51 +1202,51 @@ Create a simple detection coverage matrix for:
 
 ---
 
-### Step 5
+#### Step 5
 
 Recommend three improvements to increase monitoring visibility.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is detection engineering?
+#### Q1: What is detection engineering?
 
 **Answer:** Detection engineering is the process of designing, implementing, validating, and continuously improving security detections using available telemetry.
 
 ---
 
-### Q2: Why are Windows Security Event IDs important?
+#### Q2: Why are Windows Security Event IDs important?
 
 **Answer:** They provide standardized records of authentication, authorization, account management, and administrative activity that support security monitoring and investigations.
 
 ---
 
-### Q3: Why is event correlation valuable?
+#### Q3: Why is event correlation valuable?
 
 **Answer:** Correlation combines related events to provide additional context, reduce false positives, and improve detection accuracy.
 
 ---
 
-### Q4: Why should privileged group changes be monitored?
+#### Q4: Why should privileged group changes be monitored?
 
 **Answer:** Changes to privileged groups may significantly affect security and should be verified to ensure they are authorized.
 
 ---
 
-### Q5: What is the purpose of alert triage?
+#### Q5: What is the purpose of alert triage?
 
 **Answer:** Alert triage determines the severity, validity, and priority of security alerts so analysts can respond efficiently.
 
 ---
 
-### Q6: Why should detection rules be tuned regularly?
+#### Q6: Why should detection rules be tuned regularly?
 
 **Answer:** Infrastructure, user behavior, and threats evolve over time, so detection logic must be updated to maintain effectiveness.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Centralize security logging.
 - Monitor authentication continuously.
@@ -1259,7 +1259,7 @@ Recommend three improvements to increase monitoring visibility.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Monitoring only failed logons while ignoring successful privileged activity.
 - Treating individual events as conclusive evidence without context.
@@ -1270,7 +1270,7 @@ Recommend three improvements to increase monitoring visibility.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Detection engineering is a continuous process that transforms security telemetry into actionable alerts.
 - Windows Security Events provide valuable visibility into authentication, identity, and administrative activity.
@@ -1279,9 +1279,9 @@ Recommend three improvements to increase monitoring visibility.
 
 ---
 
-# 21-Active-Directory-for-Blue-Team.md
+## 21-Active-Directory-for-Blue-Team.md
 
-# Part 3 — Active Directory Threat Hunting, Incident Investigation, Baselines, Security Analytics and Defensive Operations
+## Part 3 — Active Directory Threat Hunting, Incident Investigation, Baselines, Security Analytics and Defensive Operations
 
 > **Important Note**
 >
@@ -1289,7 +1289,7 @@ Recommend three improvements to increase monitoring visibility.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1305,7 +1305,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Traditional monitoring is **alert-driven**.
 
@@ -1315,7 +1315,7 @@ Instead of waiting for alerts, defenders proactively search for abnormal or susp
 
 ---
 
-# Blue Team Hunting Lifecycle
+## Blue Team Hunting Lifecycle
 
 ```
 Define Hypothesis
@@ -1355,7 +1355,7 @@ Threat hunting complements automated detection by identifying gaps and improving
 
 ---
 
-# Security Baselines
+## Security Baselines
 
 A baseline represents **normal behavior** within an environment.
 
@@ -1372,7 +1372,7 @@ Without a baseline, distinguishing legitimate activity from anomalies becomes mu
 
 ---
 
-# Building a Baseline
+## Building a Baseline
 
 ```
 Collect Data
@@ -1398,7 +1398,7 @@ Baselines should evolve as infrastructure and business operations change.
 
 ---
 
-# Identity-Centric Monitoring
+## Identity-Centric Monitoring
 
 Identity should be at the center of every investigation.
 
@@ -1434,7 +1434,7 @@ Understanding identity behavior provides valuable context during investigations.
 
 ---
 
-# Investigation Workflow
+## Investigation Workflow
 
 ```
 Alert
@@ -1472,7 +1472,7 @@ A structured workflow improves consistency and reduces investigation time.
 
 ---
 
-# Investigation Checklist
+## Investigation Checklist
 
 Before reaching conclusions, analysts should answer:
 
@@ -1494,7 +1494,7 @@ Before reaching conclusions, analysts should answer:
 
 ---
 
-# Timeline Analysis
+## Timeline Analysis
 
 Organizing events chronologically often reveals important context.
 
@@ -1522,7 +1522,7 @@ Timelines help correlate events during investigations.
 
 ---
 
-# Security Analytics
+## Security Analytics
 
 Security analytics combines multiple data sources to identify trends.
 
@@ -1539,7 +1539,7 @@ Analytics should support operational decision-making rather than relying on isol
 
 ---
 
-# Behavioral Analysis
+## Behavioral Analysis
 
 Behavioral analytics focuses on identifying deviations from established baselines.
 
@@ -1555,7 +1555,7 @@ Behavior should always be evaluated in organizational context.
 
 ---
 
-# Identity Risk Indicators
+## Identity Risk Indicators
 
 Examples of situations that may warrant additional review include:
 
@@ -1569,7 +1569,7 @@ These indicators require validation and should not automatically be treated as m
 
 ---
 
-# Threat Hunting Data Sources
+## Threat Hunting Data Sources
 
 Useful data sources include:
 
@@ -1586,7 +1586,7 @@ Useful data sources include:
 
 ---
 
-# Threat Hunting Dashboard
+## Threat Hunting Dashboard
 
 Example dashboard sections:
 
@@ -1622,7 +1622,7 @@ Dashboards help analysts prioritize investigations efficiently.
 
 ---
 
-# Detection Gap Analysis
+## Detection Gap Analysis
 
 Every detection program has blind spots.
 
@@ -1654,24 +1654,24 @@ Gap analysis should be performed regularly.
 
 ---
 
-# Security Reporting
+## Security Reporting
 
 Blue Teams should produce reports for different audiences.
 
-### Operational Reports
+#### Operational Reports
 
 - Daily alerts
 - Investigation summaries
 - Detection health
 
-### Management Reports
+#### Management Reports
 
 - Security trends
 - Incident statistics
 - Risk summaries
 - Compliance metrics
 
-### Executive Reports
+#### Executive Reports
 
 - Overall security posture
 - Major incidents
@@ -1681,7 +1681,7 @@ Reports should be tailored to the audience.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitor
@@ -1711,7 +1711,7 @@ Continuous improvement strengthens long-term security maturity.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1743,7 +1743,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Threat hunting should:
 
@@ -1757,13 +1757,13 @@ The objective is to enhance defensive capability rather than simply generate add
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Develop a simple Active Directory threat hunting plan.
 
-### Step 1
+#### Step 1
 
 Identify critical assets:
 
@@ -1774,7 +1774,7 @@ Identify critical assets:
 
 ---
 
-### Step 2
+#### Step 2
 
 Document normal operational baselines for:
 
@@ -1785,7 +1785,7 @@ Document normal operational baselines for:
 
 ---
 
-### Step 3
+#### Step 3
 
 Review one week's worth of security events.
 
@@ -1797,7 +1797,7 @@ Categorize:
 
 ---
 
-### Step 4
+#### Step 4
 
 Create a dashboard showing:
 
@@ -1808,51 +1808,51 @@ Create a dashboard showing:
 
 ---
 
-### Step 5
+#### Step 5
 
 Identify three areas where monitoring coverage could be improved.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is threat hunting?
+#### Q1: What is threat hunting?
 
 **Answer:** Threat hunting is the proactive process of searching for suspicious or abnormal activity that may not have generated automated alerts.
 
 ---
 
-### Q2: Why are security baselines important?
+#### Q2: Why are security baselines important?
 
 **Answer:** Baselines define normal behavior, allowing analysts to identify meaningful deviations that may require investigation.
 
 ---
 
-### Q3: Why is timeline analysis useful?
+#### Q3: Why is timeline analysis useful?
 
 **Answer:** Timeline analysis helps correlate events chronologically, providing context for investigations and supporting more accurate conclusions.
 
 ---
 
-### Q4: What is detection gap analysis?
+#### Q4: What is detection gap analysis?
 
 **Answer:** Detection gap analysis identifies areas where existing monitoring may not provide sufficient visibility, enabling organizations to improve coverage.
 
 ---
 
-### Q5: Why should security reports be tailored to different audiences?
+#### Q5: Why should security reports be tailored to different audiences?
 
 **Answer:** Different stakeholders require different levels of technical detail and business context to support decision-making.
 
 ---
 
-### Q6: Why is continuous improvement important for Blue Teams?
+#### Q6: Why is continuous improvement important for Blue Teams?
 
 **Answer:** Because threats, infrastructure, and organizational requirements evolve, requiring ongoing refinement of detections, procedures, and monitoring capabilities.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Establish and maintain behavioral baselines.
 - Use multiple data sources during investigations.
@@ -1865,7 +1865,7 @@ Identify three areas where monitoring coverage could be improved.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Investigating events without sufficient context.
 - Ignoring changes to normal operational baselines.
@@ -1876,7 +1876,7 @@ Identify three areas where monitoring coverage could be improved.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Threat hunting is a proactive defensive activity that complements automated monitoring.
 - Security baselines provide essential context for identifying abnormal behavior.
@@ -1885,9 +1885,9 @@ Identify three areas where monitoring coverage could be improved.
 
 ---
 
-# 21-Active-Directory-for-Blue-Team.md
+## 21-Active-Directory-for-Blue-Team.md
 
-# Part 4 — Incident Response, Active Directory Health Monitoring, Security Metrics, Blue Team Maturity and Chapter Summary
+## Part 4 — Incident Response, Active Directory Health Monitoring, Security Metrics, Blue Team Maturity and Chapter Summary
 
 > **Important Note**
 >
@@ -1895,7 +1895,7 @@ Identify three areas where monitoring coverage could be improved.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1910,7 +1910,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Monitoring alone does not secure Active Directory.
 
@@ -1927,7 +1927,7 @@ Detection without response provides limited value.
 
 ---
 
-# Active Directory Incident Response Lifecycle
+## Active Directory Incident Response Lifecycle
 
 ```
 Preparation
@@ -1965,7 +1965,7 @@ Every completed incident strengthens the organization's future defensive capabil
 
 ---
 
-# Incident Response Roles
+## Incident Response Roles
 
 ```
 SOC Analyst
@@ -1995,7 +1995,7 @@ Each participant has clearly defined responsibilities during an incident.
 
 ---
 
-# Blue Team Responsibilities During an Incident
+## Blue Team Responsibilities During an Incident
 
 Blue Team members typically perform the following activities:
 
@@ -2010,7 +2010,7 @@ Blue Team members typically perform the following activities:
 
 ---
 
-# Incident Severity Classification
+## Incident Severity Classification
 
 | Severity | Description | Typical Response |
 |----------|-------------|------------------|
@@ -2024,7 +2024,7 @@ Severity should consider business impact as well as technical impact.
 
 ---
 
-# Incident Investigation Workflow
+## Incident Investigation Workflow
 
 ```
 Alert
@@ -2062,7 +2062,7 @@ A consistent workflow improves investigation quality.
 
 ---
 
-# Evidence Collection
+## Evidence Collection
 
 Useful evidence sources include:
 
@@ -2079,7 +2079,7 @@ Evidence should be preserved according to organizational policies.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 After recovery, organizations should determine:
 
@@ -2111,7 +2111,7 @@ Root cause analysis helps prevent similar incidents in the future.
 
 ---
 
-# Active Directory Health Monitoring
+## Active Directory Health Monitoring
 
 Blue Teams should continuously monitor infrastructure health.
 
@@ -2129,7 +2129,7 @@ Healthy infrastructure supports reliable security monitoring.
 
 ---
 
-# Enterprise Health Dashboard
+## Enterprise Health Dashboard
 
 ```
 Active Directory Health
@@ -2153,7 +2153,7 @@ A centralized dashboard provides operational visibility.
 
 ---
 
-# Blue Team Performance Metrics
+## Blue Team Performance Metrics
 
 Example operational metrics:
 
@@ -2172,11 +2172,11 @@ Metrics should support improvement, not simply measurement.
 
 ---
 
-# Security Reporting
+## Security Reporting
 
 Blue Teams typically prepare reports for multiple audiences.
 
-### Daily Reports
+#### Daily Reports
 
 - Significant alerts
 - Ongoing investigations
@@ -2184,7 +2184,7 @@ Blue Teams typically prepare reports for multiple audiences.
 
 ---
 
-### Weekly Reports
+#### Weekly Reports
 
 - Detection trends
 - Rule tuning
@@ -2192,7 +2192,7 @@ Blue Teams typically prepare reports for multiple audiences.
 
 ---
 
-### Monthly Reports
+#### Monthly Reports
 
 - Security posture
 - Identity trends
@@ -2201,7 +2201,7 @@ Blue Teams typically prepare reports for multiple audiences.
 
 ---
 
-### Executive Reports
+#### Executive Reports
 
 - Business impact
 - Major incidents
@@ -2212,7 +2212,7 @@ Executive reports should focus on business outcomes rather than technical detail
 
 ---
 
-# Threat Intelligence Integration
+## Threat Intelligence Integration
 
 Threat intelligence enhances defensive operations by providing external context.
 
@@ -2240,7 +2240,7 @@ Threat intelligence should complement—not replace—internal telemetry.
 
 ---
 
-# Blue Team Maturity Model
+## Blue Team Maturity Model
 
 ```
 Level 1
@@ -2276,7 +2276,7 @@ Organizations mature gradually through investment in people, processes, and tech
 
 ---
 
-# Collaboration Model
+## Collaboration Model
 
 Successful Blue Teams collaborate with:
 
@@ -2308,9 +2308,9 @@ Cross-functional communication improves incident response effectiveness.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Company
+### Company
 
 ```
 Adventure Works Global
@@ -2341,7 +2341,7 @@ Results:
 
 ---
 
-# Continuous Improvement Cycle
+## Continuous Improvement Cycle
 
 ```
 Monitor
@@ -2375,7 +2375,7 @@ Each completed cycle strengthens organizational resilience.
 
 ---
 
-# Blue Team Operational Checklist
+## Blue Team Operational Checklist
 
 ```
 ✓ Centralized Logging
@@ -2401,7 +2401,7 @@ Each completed cycle strengthens organizational resilience.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 A mature Active Directory Blue Team emphasizes:
 
@@ -2416,13 +2416,13 @@ The objective is sustained resilience against evolving threats.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Evaluate the maturity of an Active Directory Blue Team program.
 
-### Step 1
+#### Step 1
 
 Review:
 
@@ -2433,7 +2433,7 @@ Review:
 
 ---
 
-### Step 2
+#### Step 2
 
 Measure:
 
@@ -2443,13 +2443,13 @@ Measure:
 
 ---
 
-### Step 3
+#### Step 3
 
 Create an incident response workflow diagram for identity-related events.
 
 ---
 
-### Step 4
+#### Step 4
 
 Develop a monthly Blue Team reporting template including:
 
@@ -2460,51 +2460,51 @@ Develop a monthly Blue Team reporting template including:
 
 ---
 
-### Step 5
+#### Step 5
 
 Identify three opportunities to improve monitoring or operational maturity.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is incident response important for Active Directory?
+#### Q1: Why is incident response important for Active Directory?
 
 **Answer:** It provides a structured process for identifying, investigating, containing, recovering from, and learning from security incidents affecting identity infrastructure.
 
 ---
 
-### Q2: What is Mean Time to Detect (MTTD)?
+#### Q2: What is Mean Time to Detect (MTTD)?
 
 **Answer:** MTTD measures how quickly an organization identifies potential security incidents after they occur.
 
 ---
 
-### Q3: Why should Blue Teams monitor Domain Controller health?
+#### Q3: Why should Blue Teams monitor Domain Controller health?
 
 **Answer:** Domain Controllers are critical identity infrastructure, and their availability and integrity directly affect authentication, authorization, and enterprise operations.
 
 ---
 
-### Q4: What is the purpose of root cause analysis?
+#### Q4: What is the purpose of root cause analysis?
 
 **Answer:** Root cause analysis identifies why an incident occurred so organizations can improve controls and reduce the likelihood of recurrence.
 
 ---
 
-### Q5: Why are operational metrics valuable?
+#### Q5: Why are operational metrics valuable?
 
 **Answer:** Metrics provide measurable insight into the effectiveness of detection, investigation, response, and continuous improvement efforts.
 
 ---
 
-### Q6: Why is collaboration important during incident response?
+#### Q6: Why is collaboration important during incident response?
 
 **Answer:** Security incidents often involve multiple technical and business teams, making coordinated communication essential for efficient response and recovery.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain comprehensive visibility into identity infrastructure.
 - Regularly review and tune detection rules.
@@ -2517,7 +2517,7 @@ Identify three opportunities to improve monitoring or operational maturity.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Focusing solely on alert volume instead of alert quality.
 - Neglecting Domain Controller health monitoring.
@@ -2528,7 +2528,7 @@ Identify three opportunities to improve monitoring or operational maturity.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective Blue Teams combine monitoring, detection, investigation, response, and continuous improvement.
 - Incident response should follow structured, repeatable workflows.
@@ -2537,7 +2537,7 @@ Identify three opportunities to improve monitoring or operational maturity.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

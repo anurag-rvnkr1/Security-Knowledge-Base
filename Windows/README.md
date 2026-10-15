@@ -38,9 +38,9 @@ Windows/
 
 ---
 
-# Chapter Overview
+## Chapter Overview
 
-## 01 - Windows Fundamentals
+### 01 - Windows Fundamentals
 
 - History of Windows
 - Windows Editions
@@ -57,7 +57,7 @@ Windows/
 
 ---
 
-## 02 - Windows Installation
+### 02 - Windows Installation
 
 - Installation Methods
 - BIOS vs UEFI
@@ -74,7 +74,7 @@ Windows/
 
 ---
 
-## 03 - Windows Architecture
+### 03 - Windows Architecture
 
 - Windows Kernel
 - Executive
@@ -90,7 +90,7 @@ Windows/
 
 ---
 
-## 04 - Windows Boot Process
+### 04 - Windows Boot Process
 
 - Power On
 - UEFI
@@ -105,7 +105,7 @@ Windows/
 
 ---
 
-## 05 - Windows File System
+### 05 - Windows File System
 
 - NTFS
 - FAT32
@@ -121,7 +121,7 @@ Windows/
 
 ---
 
-## 06 - Windows File Management
+### 06 - Windows File Management
 
 - File Explorer
 - Command Prompt
@@ -135,7 +135,7 @@ Windows/
 
 ---
 
-## 07 - Windows Command Line
+### 07 - Windows Command Line
 
 - CMD Basics
 - Environment Variables
@@ -148,7 +148,7 @@ Windows/
 
 ---
 
-## 08 - Windows Users and Groups
+### 08 - Windows Users and Groups
 
 - Local Users
 - Microsoft Accounts
@@ -162,7 +162,7 @@ Windows/
 
 ---
 
-## 09 - Windows Permissions and NTFS
+### 09 - Windows Permissions and NTFS
 
 - NTFS Permissions
 - Share Permissions
@@ -175,7 +175,7 @@ Windows/
 
 ---
 
-## 10 - Windows Processes and Threads
+### 10 - Windows Processes and Threads
 
 - Process Creation
 - Threads
@@ -188,7 +188,7 @@ Windows/
 
 ---
 
-## 11 - Windows Services
+### 11 - Windows Services
 
 - Windows Service Architecture
 - Service Control Manager
@@ -200,7 +200,7 @@ Windows/
 
 ---
 
-## 12 - Windows Registry
+### 12 - Windows Registry
 
 - Registry Structure
 - Hives
@@ -213,7 +213,7 @@ Windows/
 
 ---
 
-## 13 - Windows Networking
+### 13 - Windows Networking
 
 - TCP/IP
 - DNS
@@ -227,7 +227,7 @@ Windows/
 
 ---
 
-## 14 - Windows Storage Management
+### 14 - Windows Storage Management
 
 - Disks
 - Volumes
@@ -240,7 +240,7 @@ Windows/
 
 ---
 
-## 15 - PowerShell and Scripting
+### 15 - PowerShell and Scripting
 
 - PowerShell Basics
 - Cmdlets
@@ -256,7 +256,7 @@ Windows/
 
 ---
 
-## 16 - Windows System Monitoring
+### 16 - Windows System Monitoring
 
 - Task Manager
 - Resource Monitor
@@ -268,7 +268,7 @@ Windows/
 
 ---
 
-## 17 - Windows Logging and Event Viewer
+### 17 - Windows Logging and Event Viewer
 
 - Event Viewer
 - Windows Logs
@@ -281,7 +281,7 @@ Windows/
 
 ---
 
-## 18 - Windows Security
+### 18 - Windows Security
 
 - Windows Defender
 - Credential Guard
@@ -295,7 +295,7 @@ Windows/
 
 ---
 
-## 19 - Windows Firewall
+### 19 - Windows Firewall
 
 - Windows Defender Firewall
 - Profiles
@@ -308,7 +308,7 @@ Windows/
 
 ---
 
-## 20 - Windows Remote Management
+### 20 - Windows Remote Management
 
 - RDP
 - WinRM
@@ -320,7 +320,7 @@ Windows/
 
 ---
 
-## 21 - Windows Automation
+### 21 - Windows Automation
 
 - Task Scheduler
 - PowerShell Automation
@@ -331,7 +331,7 @@ Windows/
 
 ---
 
-## 22 - Windows Hardening
+### 22 - Windows Hardening
 
 - CIS Benchmarks
 - Microsoft Security Baselines
@@ -344,7 +344,7 @@ Windows/
 
 ---
 
-## 23 - Active Directory
+### 23 - Active Directory
 
 - Domain Services
 - Forest
@@ -361,7 +361,7 @@ Windows/
 
 ---
 
-## 24 - Group Policy
+### 24 - Group Policy
 
 - GPO Architecture
 - Policy Processing
@@ -374,7 +374,7 @@ Windows/
 
 ---
 
-## 25 - Windows for Cybersecurity
+### 25 - Windows for Cybersecurity
 
 - Windows Enumeration
 - Event Logs
@@ -390,7 +390,7 @@ Windows/
 
 ---
 
-## 26 - Windows Troubleshooting
+### 26 - Windows Troubleshooting
 
 - Boot Issues
 - BSOD
@@ -403,7 +403,7 @@ Windows/
 
 ---
 
-## 27 - Windows Interview Questions
+### 27 - Windows Interview Questions
 
 - Windows Fundamentals
 - Active Directory
@@ -418,7 +418,7 @@ Windows/
 
 ---
 
-## 28 - Windows Cheat Sheet
+### 28 - Windows Cheat Sheet
 
 - CMD Commands
 - PowerShell Commands
@@ -434,7 +434,7 @@ Windows/
 
 ---
 
-## Resources.md
+### Resources.md
 
 - Books
 - Microsoft Learn

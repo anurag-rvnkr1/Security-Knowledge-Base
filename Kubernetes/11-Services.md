@@ -17,7 +17,7 @@ A Service solves this problem by providing a **stable virtual IP address (Cluste
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -37,7 +37,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Services?
+## Why Services?
 
 Imagine an application with three Pods.
 
@@ -87,7 +87,7 @@ Applications depending on the old IP will fail.
 
 ---
 
-# Solution
+## Solution
 
 Instead of using Pod IPs:
 
@@ -107,7 +107,7 @@ The Service always remains available.
 
 ---
 
-# What is a Service?
+## What is a Service?
 
 A Service is an abstraction that exposes a group of Pods as a **single network endpoint**.
 
@@ -127,7 +127,7 @@ Applications communicate with the Service—not individual Pods.
 
 ---
 
-# Service Architecture
+## Service Architecture
 
 ```
                  Client
@@ -151,7 +151,7 @@ The Service automatically routes requests to healthy Pods.
 
 ---
 
-# Service Responsibilities
+## Service Responsibilities
 
 A Service provides:
 
@@ -164,7 +164,7 @@ A Service provides:
 
 ---
 
-# Service Workflow
+## Service Workflow
 
 ```
 Client
@@ -190,7 +190,7 @@ The Service uses **Label Selectors** to determine which Pods receive traffic.
 
 ---
 
-# Service YAML
+## Service YAML
 
 Example:
 
@@ -218,7 +218,7 @@ spec:
 
 ---
 
-# YAML Structure
+## YAML Structure
 
 ```
 Service
@@ -242,7 +242,7 @@ Type
 
 ---
 
-# Understanding Selectors
+## Understanding Selectors
 
 Service:
 
@@ -278,7 +278,7 @@ If labels do not match, the Service has no endpoints.
 
 ---
 
-# Service Types
+## Service Types
 
 Kubernetes supports four primary Service types.
 
@@ -300,7 +300,7 @@ Additionally, Kubernetes supports **Headless Services**, which behave differentl
 
 ---
 
-# ClusterIP (Default)
+## ClusterIP (Default)
 
 ```
 Client
@@ -331,7 +331,7 @@ spec:
 
 ---
 
-# NodePort
+## NodePort
 
 ```
 External Client
@@ -365,7 +365,7 @@ spec:
 
 ---
 
-# LoadBalancer
+## LoadBalancer
 
 ```
 Internet
@@ -399,7 +399,7 @@ spec:
 
 ---
 
-# ExternalName
+## ExternalName
 
 Instead of forwarding traffic to Pods:
 
@@ -429,7 +429,7 @@ This Service acts as a DNS alias.
 
 ---
 
-# Headless Service
+## Headless Service
 
 A Headless Service does not allocate a ClusterIP.
 
@@ -463,7 +463,7 @@ Common use cases:
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 Every Service receives a DNS name.
 
@@ -489,7 +489,7 @@ Applications should use Service DNS names instead of Pod IPs.
 
 ---
 
-# Service Ports
+## Service Ports
 
 Example:
 
@@ -517,7 +517,7 @@ Pod Port
 
 ---
 
-# Port Terminology
+## Port Terminology
 
 | Field | Meaning |
 |--------|---------|
@@ -527,7 +527,7 @@ Pod Port
 
 ---
 
-# Creating a Service
+## Creating a Service
 
 Apply:
 
@@ -549,7 +549,7 @@ kubectl get svc
 
 ---
 
-# Viewing Services
+## Viewing Services
 
 List:
 
@@ -573,7 +573,7 @@ Review:
 
 ---
 
-# Service Lifecycle
+## Service Lifecycle
 
 ```
 Create Service
@@ -601,7 +601,7 @@ Delete Service
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 View:
 
@@ -635,7 +635,7 @@ kubectl get endpointslices
 
 ---
 
-# Services vs Pods
+## Services vs Pods
 
 | Service | Pod |
 |----------|-----|
@@ -647,7 +647,7 @@ kubectl get endpointslices
 
 ---
 
-# Service Architecture Summary
+## Service Architecture Summary
 
 ```
 Client
@@ -671,15 +671,15 @@ Containers
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Never Communicate Directly Using Pod IPs
+#### 1. Never Communicate Directly Using Pod IPs
 
 Always use Services for application-to-application communication.
 
 ---
 
-### 2. Use Meaningful Service Names
+#### 2. Use Meaningful Service Names
 
 Examples:
 
@@ -695,13 +695,13 @@ auth-service
 
 ---
 
-### 3. Verify Label Selectors
+#### 3. Verify Label Selectors
 
 Ensure the Service selector matches the labels applied to the target Pods.
 
 ---
 
-### 4. Choose the Correct Service Type
+#### 4. Choose the Correct Service Type
 
 - ClusterIP → Internal communication
 - NodePort → Basic external access
@@ -710,15 +710,15 @@ Ensure the Service selector matches the labels applied to the target Pods.
 
 ---
 
-### 5. Prefer DNS Names
+#### 5. Prefer DNS Names
 
 Applications should connect using Service DNS names rather than hard-coded IP addresses.
 
 ---
 
-# How Services Work Internally
+## How Services Work Internally
 
-## Overview
+### Overview
 
 A Kubernetes Service is much more than a simple IP address.
 
@@ -735,7 +735,7 @@ Understanding how these components work together is essential for troubleshootin
 
 ---
 
-# High-Level Service Architecture
+## High-Level Service Architecture
 
 ```
                    Client
@@ -777,7 +777,7 @@ Pods
 
 ---
 
-# Complete Service Workflow
+## Complete Service Workflow
 
 Suppose an application sends a request.
 
@@ -813,7 +813,7 @@ Every request follows this general flow.
 
 ---
 
-# Step 1 – Client Uses DNS
+## Step 1 – Client Uses DNS
 
 Instead of:
 
@@ -839,7 +839,7 @@ ClusterIP
 
 ---
 
-# Step 2 – DNS Resolution
+## Step 2 – DNS Resolution
 
 CoreDNS maintains DNS records.
 
@@ -855,7 +855,7 @@ Applications rarely need to use the full DNS name because Kubernetes automatical
 
 ---
 
-# Step 3 – ClusterIP
+## Step 3 – ClusterIP
 
 Example:
 
@@ -881,7 +881,7 @@ ClusterIP is a **virtual IP** managed by Kubernetes.
 
 ---
 
-# Step 4 – kube-proxy
+## Step 4 – kube-proxy
 
 Each worker node runs:
 
@@ -913,7 +913,7 @@ Depending on cluster configuration, it may use technologies such as **iptables**
 
 ---
 
-# Step 5 – Service Selectors
+## Step 5 – Service Selectors
 
 Service:
 
@@ -949,7 +949,7 @@ Only matching Pods become Service backends.
 
 ---
 
-# Step 6 – Endpoints
+## Step 6 – Endpoints
 
 Kubernetes automatically creates an Endpoints object.
 
@@ -981,7 +981,7 @@ kubectl get endpoints
 
 ---
 
-# Step 7 – EndpointSlices
+## Step 7 – EndpointSlices
 
 Modern Kubernetes clusters use **EndpointSlices** to efficiently represent Service backends.
 
@@ -1017,7 +1017,7 @@ kubectl get endpointslices
 
 ---
 
-# Step 8 – Load Balancing
+## Step 8 – Load Balancing
 
 Suppose:
 
@@ -1059,7 +1059,7 @@ The exact distribution depends on the Service implementation and networking comp
 
 ---
 
-# Step 9 – Pod Response
+## Step 9 – Pod Response
 
 ```
 Pod
@@ -1081,7 +1081,7 @@ The client never needs to know which Pod handled the request.
 
 ---
 
-# Internal Service Architecture
+## Internal Service Architecture
 
 ```
 Client
@@ -1109,7 +1109,7 @@ Pods
 
 ---
 
-# What Happens When a Pod Dies?
+## What Happens When a Pod Dies?
 
 Current:
 
@@ -1151,7 +1151,7 @@ Applications continue using the same Service without changing configuration.
 
 ---
 
-# Dynamic Endpoint Updates
+## Dynamic Endpoint Updates
 
 Current:
 
@@ -1197,7 +1197,7 @@ This update happens automatically.
 
 ---
 
-# ClusterIP Internals
+## ClusterIP Internals
 
 ClusterIP is virtual.
 
@@ -1221,7 +1221,7 @@ Packets are redirected by the node's networking stack according to rules program
 
 ---
 
-# NodePort Workflow
+## NodePort Workflow
 
 ```
 Internet
@@ -1247,7 +1247,7 @@ Every worker node listens on the configured NodePort.
 
 ---
 
-# LoadBalancer Workflow
+## LoadBalancer Workflow
 
 ```
 Internet
@@ -1273,7 +1273,7 @@ The cloud provider provisions and manages the external load balancer.
 
 ---
 
-# Headless Service Workflow
+## Headless Service Workflow
 
 Configuration:
 
@@ -1299,7 +1299,7 @@ DNS returns Pod IP addresses directly instead of a virtual Service IP.
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 Every Service automatically receives DNS records.
 
@@ -1321,7 +1321,7 @@ Applications should rely on DNS instead of fixed IP addresses.
 
 ---
 
-# kube-proxy Monitoring
+## kube-proxy Monitoring
 
 kube-proxy continuously watches:
 
@@ -1345,7 +1345,7 @@ Whenever Pods are added or removed, networking rules are updated automatically.
 
 ---
 
-# Hands-on Lab 1 – Create Deployment
+## Hands-on Lab 1 – Create Deployment
 
 ```bash
 kubectl create deployment nginx \
@@ -1361,7 +1361,7 @@ kubectl get pods
 
 ---
 
-# Hands-on Lab 2 – Create Service
+## Hands-on Lab 2 – Create Service
 
 ```bash
 kubectl expose deployment nginx \
@@ -1376,7 +1376,7 @@ kubectl get svc
 
 ---
 
-# Hands-on Lab 3 – Inspect Endpoints
+## Hands-on Lab 3 – Inspect Endpoints
 
 ```bash
 kubectl get endpoints
@@ -1388,7 +1388,7 @@ Observe that backend Pod IP addresses are associated with the Service.
 
 ---
 
-# Hands-on Lab 4 – Delete a Pod
+## Hands-on Lab 4 – Delete a Pod
 
 Delete one Pod:
 
@@ -1406,7 +1406,7 @@ Watch Kubernetes update the backend list automatically.
 
 ---
 
-# Hands-on Lab 5 – Describe Service
+## Hands-on Lab 5 – Describe Service
 
 ```bash
 kubectl describe svc nginx
@@ -1422,9 +1422,9 @@ Review:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using Pod IPs
+### 1. Using Pod IPs
 
 Incorrect:
 
@@ -1448,7 +1448,7 @@ Service DNS
 
 ---
 
-## 2. Label Selector Mismatch
+### 2. Label Selector Mismatch
 
 Service:
 
@@ -1476,7 +1476,7 @@ Traffic cannot reach the application.
 
 ---
 
-## 3. Assuming ClusterIP Is a Pod
+### 3. Assuming ClusterIP Is a Pod
 
 Remember:
 
@@ -1492,7 +1492,7 @@ It is not assigned to any individual Pod.
 
 ---
 
-## 4. Forgetting DNS
+### 4. Forgetting DNS
 
 Avoid hard-coded addresses.
 
@@ -1512,7 +1512,7 @@ instead of IP addresses.
 
 ---
 
-## 5. Ignoring EndpointSlices
+### 5. Ignoring EndpointSlices
 
 Large clusters primarily use EndpointSlices.
 
@@ -1520,9 +1520,9 @@ Administrators should know how to inspect them during troubleshooting.
 
 ---
 
-# Services Quick Revision
+## Services Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 Client
@@ -1550,7 +1550,7 @@ Pods
 
 ---
 
-## Request Flow
+### Request Flow
 
 ```
 Application
@@ -1574,7 +1574,7 @@ Response
 
 ---
 
-## Service Types
+### Service Types
 
 ```
 ClusterIP
@@ -1618,7 +1618,7 @@ Direct Pod Discovery
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Services:
 
@@ -1652,9 +1652,9 @@ kubectl delete svc nginx
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What problem does a Service solve?
 - What is a ClusterIP?
@@ -1662,7 +1662,7 @@ kubectl delete svc nginx
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - Explain how a Service finds Pods.
 - What are Endpoints?
@@ -1671,7 +1671,7 @@ kubectl delete svc nginx
 
 ---
 
-### Advanced
+#### Advanced
 
 - How does Kubernetes update a Service when a Pod is replaced?
 - What is the difference between ClusterIP and Headless Services?
@@ -1681,9 +1681,9 @@ kubectl delete svc nginx
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Services
 - Service Concepts
@@ -1694,7 +1694,7 @@ kubectl delete svc nginx
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Best Practices
 - Kubernetes Networking Guide
@@ -1702,7 +1702,7 @@ kubectl delete svc nginx
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Production Best Practices
@@ -1711,7 +1711,7 @@ kubectl delete svc nginx
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create a Deployment with three replicas.
 2. Expose it using a ClusterIP Service.
@@ -1723,7 +1723,7 @@ kubectl delete svc nginx
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Client
@@ -1761,9 +1761,9 @@ Services provide the **stable networking foundation** of Kubernetes. By abstract
 
 ---
 
-# Service Types Deep Dive
+## Service Types Deep Dive
 
-## Overview
+### Overview
 
 Kubernetes supports multiple Service types to expose applications in different ways.
 
@@ -1779,7 +1779,7 @@ Each Service type serves a different networking purpose.
 
 ---
 
-# Complete Service Type Hierarchy
+## Complete Service Type Hierarchy
 
 ```
                     Services
@@ -1807,7 +1807,7 @@ Each Service type serves a different networking purpose.
 
 ---
 
-# Service Type Comparison
+## Service Type Comparison
 
 | Service Type | Accessible From | Use Case |
 |--------------|----------------|----------|
@@ -1819,9 +1819,9 @@ Each Service type serves a different networking purpose.
 
 ---
 
-# 1. ClusterIP
+## 1. ClusterIP
 
-## Overview
+### Overview
 
 ClusterIP is the **default** Service type.
 
@@ -1843,7 +1843,7 @@ Kubernetes automatically creates a ClusterIP Service.
 
 ---
 
-# Architecture
+## Architecture
 
 ```
           Pod
@@ -1865,7 +1865,7 @@ Kubernetes automatically creates a ClusterIP Service.
 
 ---
 
-# Traffic Flow
+## Traffic Flow
 
 ```
 Application
@@ -1885,7 +1885,7 @@ Pods
 
 ---
 
-# Characteristics
+## Characteristics
 
 - Internal communication only
 - Stable virtual IP
@@ -1895,7 +1895,7 @@ Pods
 
 ---
 
-# Example
+## Example
 
 ```yaml
 apiVersion: v1
@@ -1923,7 +1923,7 @@ spec:
 
 ---
 
-# Typical Use Cases
+## Typical Use Cases
 
 - Backend APIs
 - Databases
@@ -1933,7 +1933,7 @@ spec:
 
 ---
 
-# Advantages
+## Advantages
 
 ✓ Secure
 
@@ -1945,15 +1945,15 @@ spec:
 
 ---
 
-# Limitations
+## Limitations
 
 ✗ Cannot be accessed directly from outside the cluster.
 
 ---
 
-# 2. NodePort
+## 2. NodePort
 
-## Overview
+### Overview
 
 NodePort exposes a Service on a port of every worker node.
 
@@ -1981,7 +1981,7 @@ Pods
 
 ---
 
-# Port Range
+## Port Range
 
 Default NodePort range:
 
@@ -1993,7 +1993,7 @@ This range can be configured by the cluster administrator.
 
 ---
 
-# Example
+## Example
 
 ```yaml
 spec:
@@ -2011,7 +2011,7 @@ spec:
 
 ---
 
-# Access
+## Access
 
 ```
 http://NodeIP:30080
@@ -2025,7 +2025,7 @@ http://192.168.1.20:30080
 
 ---
 
-# Workflow
+## Workflow
 
 ```
 Browser
@@ -2049,7 +2049,7 @@ Pods
 
 ---
 
-# Advantages
+## Advantages
 
 ✓ External access
 
@@ -2059,7 +2059,7 @@ Pods
 
 ---
 
-# Limitations
+## Limitations
 
 - Limited port range
 - Node IP must be known
@@ -2067,7 +2067,7 @@ Pods
 
 ---
 
-# Typical Use Cases
+## Typical Use Cases
 
 - Development
 - Labs
@@ -2076,9 +2076,9 @@ Pods
 
 ---
 
-# 3. LoadBalancer
+## 3. LoadBalancer
 
-## Overview
+### Overview
 
 LoadBalancer Services expose applications using a cloud provider's external load balancer.
 
@@ -2102,7 +2102,7 @@ Pods
 
 ---
 
-# Example
+## Example
 
 ```yaml
 spec:
@@ -2112,7 +2112,7 @@ spec:
 
 ---
 
-# Workflow
+## Workflow
 
 ```
 User
@@ -2136,7 +2136,7 @@ Pods
 
 ---
 
-# Advantages
+## Advantages
 
 ✓ Production-ready
 
@@ -2148,13 +2148,13 @@ Pods
 
 ---
 
-# Limitations
+## Limitations
 
 - Requires cloud provider support or an on-premises load balancer implementation (for example, MetalLB).
 
 ---
 
-# Typical Use Cases
+## Typical Use Cases
 
 - Public websites
 - APIs
@@ -2163,9 +2163,9 @@ Pods
 
 ---
 
-# 4. ExternalName
+## 4. ExternalName
 
-## Overview
+### Overview
 
 ExternalName maps a Kubernetes Service to an external DNS name.
 
@@ -2191,7 +2191,7 @@ External Server
 
 ---
 
-# Example
+## Example
 
 ```yaml
 apiVersion: v1
@@ -2211,7 +2211,7 @@ spec:
 
 ---
 
-# Workflow
+## Workflow
 
 ```
 Application
@@ -2227,7 +2227,7 @@ database.example.com
 
 ---
 
-# Advantages
+## Advantages
 
 ✓ Easy DNS abstraction
 
@@ -2237,7 +2237,7 @@ database.example.com
 
 ---
 
-# Typical Use Cases
+## Typical Use Cases
 
 - External databases
 - SaaS APIs
@@ -2246,16 +2246,16 @@ database.example.com
 
 ---
 
-# Limitations
+## Limitations
 
 - Does not load balance traffic.
 - Relies entirely on DNS resolution.
 
 ---
 
-# 5. Headless Service
+## 5. Headless Service
 
-## Overview
+### Overview
 
 A Headless Service does **not** allocate a ClusterIP.
 
@@ -2267,7 +2267,7 @@ clusterIP: None
 
 ---
 
-# Architecture
+## Architecture
 
 ```
 Application
@@ -2289,7 +2289,7 @@ DNS returns Pod IP addresses directly.
 
 ---
 
-# Example
+## Example
 
 ```yaml
 apiVersion: v1
@@ -2315,7 +2315,7 @@ spec:
 
 ---
 
-# Workflow
+## Workflow
 
 ```
 DNS Query
@@ -2331,7 +2331,7 @@ Direct Pod Connection
 
 ---
 
-# Advantages
+## Advantages
 
 ✓ Direct Pod discovery
 
@@ -2341,7 +2341,7 @@ Direct Pod Connection
 
 ---
 
-# Typical Use Cases
+## Typical Use Cases
 
 - StatefulSets
 - Databases
@@ -2352,7 +2352,7 @@ Direct Pod Connection
 
 ---
 
-# Comparison Diagram
+## Comparison Diagram
 
 ```
 ClusterIP
@@ -2420,7 +2420,7 @@ Pods
 
 ---
 
-# Choosing the Right Service
+## Choosing the Right Service
 
 ```
 Need Internal Communication?
@@ -2460,7 +2460,7 @@ Headless
 
 ---
 
-# Hands-on Lab 1 – ClusterIP
+## Hands-on Lab 1 – ClusterIP
 
 Create:
 
@@ -2477,7 +2477,7 @@ kubectl get svc
 
 ---
 
-# Hands-on Lab 2 – NodePort
+## Hands-on Lab 2 – NodePort
 
 ```bash
 kubectl expose deployment nginx \
@@ -2499,7 +2499,7 @@ http://NodeIP:NodePort
 
 ---
 
-# Hands-on Lab 3 – LoadBalancer
+## Hands-on Lab 3 – LoadBalancer
 
 ```bash
 kubectl expose deployment nginx \
@@ -2517,7 +2517,7 @@ On supported platforms, wait for the external IP to be assigned.
 
 ---
 
-# Hands-on Lab 4 – Headless Service
+## Hands-on Lab 4 – Headless Service
 
 Create:
 
@@ -2535,7 +2535,7 @@ Verify DNS responses from another Pod.
 
 ---
 
-# Hands-on Lab 5 – ExternalName
+## Hands-on Lab 5 – ExternalName
 
 Create:
 
@@ -2553,9 +2553,9 @@ Test DNS resolution inside the cluster.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using NodePort in Production
+### 1. Using NodePort in Production
 
 NodePort works well for testing but is generally not the preferred production entry point.
 
@@ -2573,7 +2573,7 @@ for Internet-facing applications.
 
 ---
 
-## 2. Exposing Databases Publicly
+### 2. Exposing Databases Publicly
 
 Avoid:
 
@@ -2595,19 +2595,19 @@ unless external access is explicitly required and properly secured.
 
 ---
 
-## 3. Using ClusterIP for External Clients
+### 3. Using ClusterIP for External Clients
 
 ClusterIP Services are only reachable from within the cluster.
 
 ---
 
-## 4. Forgetting Headless Services for StatefulSets
+### 4. Forgetting Headless Services for StatefulSets
 
 Stateful workloads often require direct Pod identities rather than a single virtual IP.
 
 ---
 
-## 5. Assuming ExternalName Creates a Proxy
+### 5. Assuming ExternalName Creates a Proxy
 
 ExternalName only returns a DNS alias.
 
@@ -2615,9 +2615,9 @@ It does **not** proxy, load balance, or inspect traffic.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Service Types
+### Service Types
 
 ```
 ClusterIP
@@ -2661,7 +2661,7 @@ Direct Pod Discovery
 
 ---
 
-# Important Commands
+## Important Commands
 
 View Services:
 
@@ -2695,9 +2695,9 @@ kubectl get endpointslices
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What are the different Kubernetes Service types?
 - Which Service type is the default?
@@ -2705,7 +2705,7 @@ kubectl get endpointslices
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - When would you use ClusterIP versus LoadBalancer?
 - What is an ExternalName Service?
@@ -2713,7 +2713,7 @@ kubectl get endpointslices
 
 ---
 
-### Advanced
+#### Advanced
 
 - How does a LoadBalancer Service differ from an Ingress?
 - Why doesn't a Headless Service receive a ClusterIP?
@@ -2723,9 +2723,9 @@ kubectl get endpointslices
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Services
 - Service Types
@@ -2735,7 +2735,7 @@ kubectl get endpointslices
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Networking Guide
 - Kubernetes Best Practices
@@ -2743,7 +2743,7 @@ kubectl get endpointslices
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Production Best Practices
@@ -2752,7 +2752,7 @@ kubectl get endpointslices
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create one Service of each type.
 2. Compare the output of `kubectl get svc`.
@@ -2764,7 +2764,7 @@ kubectl get endpointslices
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Application

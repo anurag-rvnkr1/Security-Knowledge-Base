@@ -4,7 +4,7 @@
 
 ---
 
-# 1. What Is a Detection Methodology?
+## 1. What Is a Detection Methodology?
 
 A **detection methodology** is the approach used to identify suspicious or malicious activity from security telemetry.
 
@@ -31,7 +31,7 @@ A mature detection program combines multiple approaches.
 
 ---
 
-# 2. Detection Methodology Selection
+## 2. Detection Methodology Selection
 
 The choice of methodology should depend on:
 
@@ -62,7 +62,7 @@ Validation
 
 ---
 
-# 3. Signature-Based Detection
+## 3. Signature-Based Detection
 
 Signature-based detection looks for a known pattern associated with malicious activity.
 
@@ -90,7 +90,7 @@ Alert
 
 ---
 
-# 4. Signature Example
+## 4. Signature Example
 
 Suppose a known malicious file has a known hash:
 
@@ -110,7 +110,7 @@ This is simple and high-confidence when the indicator is trustworthy.
 
 ---
 
-# 5. Advantages of Signature Detection
+## 5. Advantages of Signature Detection
 
 ```text
 Simple
@@ -131,7 +131,7 @@ Known Attack Patterns
 
 ---
 
-# 6. Limitations of Signature Detection
+## 6. Limitations of Signature Detection
 
 Attackers can modify:
 
@@ -159,7 +159,7 @@ Modified Variant
 
 ---
 
-# 7. IOC-Based Detection
+## 7. IOC-Based Detection
 
 IOC = **Indicator of Compromise**
 
@@ -189,15 +189,15 @@ Alert
 
 ---
 
-# 8. Signature vs IOC
+## 8. Signature vs IOC
 
 They overlap but are not identical.
 
-### Signature
+#### Signature
 
 Looks for a recognizable pattern.
 
-### IOC
+#### IOC
 
 Looks for a known indicator associated with compromise.
 
@@ -213,7 +213,7 @@ Known Malware Byte Pattern
 
 ---
 
-# 9. IOC Advantages
+## 9. IOC Advantages
 
 ```text
 Fast
@@ -224,7 +224,7 @@ Good for Threat Intelligence Integration
 
 ---
 
-# 10. IOC Limitations
+## 10. IOC Limitations
 
 IOCs can become:
 
@@ -251,7 +251,7 @@ is stronger than relying only on IOCs.
 
 ---
 
-# 11. Rule-Based Detection
+## 11. Rule-Based Detection
 
 Rule-based detection uses explicit conditions.
 
@@ -278,7 +278,7 @@ Stateful
 
 ---
 
-# 12. Rule-Based Detection Advantages
+## 12. Rule-Based Detection Advantages
 
 ```text
 Predictable
@@ -292,7 +292,7 @@ This makes rule-based detection extremely common in SOC environments.
 
 ---
 
-# 13. Rule-Based Detection Limitations
+## 13. Rule-Based Detection Limitations
 
 Rules can become:
 
@@ -308,7 +308,7 @@ A large rule is not automatically a better rule.
 
 ---
 
-# 14. Threshold-Based Detection
+## 14. Threshold-Based Detection
 
 Threshold detection triggers when activity exceeds a predefined limit.
 
@@ -331,7 +331,7 @@ Repeated API Calls
 
 ---
 
-# 15. Threshold Structure
+## 15. Threshold Structure
 
 A threshold detection usually contains:
 
@@ -361,7 +361,7 @@ Same User
 
 ---
 
-# 16. Threshold Advantages
+## 16. Threshold Advantages
 
 ```text
 Simple
@@ -373,7 +373,7 @@ Easy to Tune
 
 ---
 
-# 17. Threshold Limitations
+## 17. Threshold Limitations
 
 Static thresholds may fail when normal behavior varies.
 
@@ -391,7 +391,7 @@ A single threshold may not work equally well for both.
 
 ---
 
-# 18. Static Threshold
+## 18. Static Threshold
 
 Example:
 
@@ -406,7 +406,7 @@ The threshold is fixed.
 
 ---
 
-# 19. Dynamic Threshold
+## 19. Dynamic Threshold
 
 Dynamic thresholds adapt to expected behavior.
 
@@ -434,7 +434,7 @@ Is behavior significantly above baseline?
 
 ---
 
-# 20. Behavioral Detection
+## 20. Behavioral Detection
 
 Behavioral detection focuses on **what an entity does** rather than only matching known indicators.
 
@@ -454,7 +454,7 @@ The behavior itself is suspicious.
 
 ---
 
-# 21. Behavioral Detection Advantages
+## 21. Behavioral Detection Advantages
 
 Behavioral detection can detect:
 
@@ -470,7 +470,7 @@ It is often more resilient to indicator changes.
 
 ---
 
-# 22. Behavioral Detection Limitations
+## 22. Behavioral Detection Limitations
 
 Behavioral patterns may also be legitimate.
 
@@ -493,7 +493,7 @@ Therefore context is important.
 
 ---
 
-# 23. Contextual Behavioral Detection
+## 23. Contextual Behavioral Detection
 
 Weak:
 
@@ -517,7 +517,7 @@ The second pattern provides more evidence.
 
 ---
 
-# 24. Anomaly Detection
+## 24. Anomaly Detection
 
 Anomaly detection identifies activity that deviates from expected behavior.
 
@@ -535,7 +535,7 @@ Anomaly
 
 ---
 
-# 25. Examples of Anomalies
+## 25. Examples of Anomalies
 
 ```text
 New Login Location
@@ -549,7 +549,7 @@ Unusual Cloud API Activity
 
 ---
 
-# 26. Anomaly Detection Advantages
+## 26. Anomaly Detection Advantages
 
 Useful for:
 
@@ -563,7 +563,7 @@ Abnormal Resource Usage
 
 ---
 
-# 27. Anomaly Detection Limitations
+## 27. Anomaly Detection Limitations
 
 Anomalies are not automatically malicious.
 
@@ -591,7 +591,7 @@ Compromise
 
 ---
 
-# 28. Baseline
+## 28. Baseline
 
 A baseline represents expected activity.
 
@@ -608,7 +608,7 @@ Normal Network Destination
 
 ---
 
-# 29. Baseline Example
+## 29. Baseline Example
 
 User normally:
 
@@ -632,7 +632,7 @@ Additional context is needed before concluding compromise.
 
 ---
 
-# 30. Statistical Detection
+## 30. Statistical Detection
 
 Statistical detection uses mathematical properties of observed data.
 
@@ -650,7 +650,7 @@ Distribution
 
 ---
 
-# 31. Standard Deviation Concept
+## 31. Standard Deviation Concept
 
 Suppose normal activity has:
 
@@ -671,7 +671,7 @@ The exact threshold depends on the detection design and data distribution.
 
 ---
 
-# 32. Z-Score
+## 32. Z-Score
 
 A common statistical concept:
 
@@ -691,7 +691,7 @@ A large absolute z-score can indicate an unusual observation.
 
 ---
 
-# 33. Percentile-Based Detection
+## 33. Percentile-Based Detection
 
 Instead of standard deviation:
 
@@ -717,7 +717,7 @@ An event above that level may deserve investigation.
 
 ---
 
-# 34. Statistical Detection Advantages
+## 34. Statistical Detection Advantages
 
 ```text
 Adaptive
@@ -728,7 +728,7 @@ Can Detect Unusual Behavior
 
 ---
 
-# 35. Statistical Detection Limitations
+## 35. Statistical Detection Limitations
 
 Challenges include:
 
@@ -743,7 +743,7 @@ Changing Environment
 
 ---
 
-# 36. Seasonality
+## 36. Seasonality
 
 Behavior may vary by:
 
@@ -769,7 +769,7 @@ A detection should not treat every difference as malicious.
 
 ---
 
-# 37. Correlation-Based Detection
+## 37. Correlation-Based Detection
 
 Correlation combines multiple events.
 
@@ -793,7 +793,7 @@ Potential Account Takeover
 
 ---
 
-# 38. Correlation Advantages
+## 38. Correlation Advantages
 
 ```text
 Higher Context
@@ -804,7 +804,7 @@ Reduced Isolated Alerts
 
 ---
 
-# 39. Correlation Limitations
+## 39. Correlation Limitations
 
 Correlation can become:
 
@@ -825,7 +825,7 @@ May Fail
 
 ---
 
-# 40. Sequence Detection
+## 40. Sequence Detection
 
 Sequence detection focuses on ordered events.
 
@@ -845,9 +845,9 @@ Sequence is particularly useful for attack-chain detection.
 
 ---
 
-# 41. Sequence vs Correlation
+## 41. Sequence vs Correlation
 
-### Correlation
+#### Correlation
 
 ```text
 A + B + C
@@ -855,7 +855,7 @@ A + B + C
 
 does not always require strict order.
 
-### Sequence
+#### Sequence
 
 ```text
 A → B → C
@@ -865,7 +865,7 @@ requires ordering.
 
 ---
 
-# 42. Entity-Based Detection
+## 42. Entity-Based Detection
 
 Behavior is grouped around an entity.
 
@@ -895,7 +895,7 @@ MFA Change
 
 ---
 
-# 43. Risk-Based Detection
+## 43. Risk-Based Detection
 
 Risk-based detection combines multiple signals into a score.
 
@@ -923,7 +923,7 @@ THEN high-priority alert
 
 ---
 
-# 44. Risk-Based Advantages
+## 44. Risk-Based Advantages
 
 ```text
 Prioritization
@@ -946,7 +946,7 @@ you can create:
 
 ---
 
-# 45. Risk-Based Limitations
+## 45. Risk-Based Limitations
 
 Risk scoring can fail if:
 
@@ -962,7 +962,7 @@ Risk models require calibration.
 
 ---
 
-# 46. Threat-Informed Detection
+## 46. Threat-Informed Detection
 
 Threat-informed detection starts with:
 
@@ -984,7 +984,7 @@ Detection Coverage
 
 ---
 
-# 47. Threat-Informed Workflow
+## 47. Threat-Informed Workflow
 
 ```text
 Threat
@@ -1004,7 +1004,7 @@ Coverage
 
 ---
 
-# 48. Hybrid Detection
+## 48. Hybrid Detection
 
 Hybrid detection combines multiple methodologies.
 
@@ -1026,7 +1026,7 @@ This can provide stronger detection than any single method.
 
 ---
 
-# 49. Hybrid Example
+## 49. Hybrid Example
 
 Suppose:
 
@@ -1054,7 +1054,7 @@ Risk Score ↑
 
 ---
 
-# 50. Detection Layering
+## 50. Detection Layering
 
 A mature detection architecture can use multiple layers:
 
@@ -1071,7 +1071,7 @@ The layers reinforce each other.
 
 ---
 
-# 51. Defense in Depth for Detection
+## 51. Defense in Depth for Detection
 
 Do not rely on:
 
@@ -1099,7 +1099,7 @@ Identity Detection
 
 ---
 
-# 52. Detection Methodology Comparison
+## 52. Detection Methodology Comparison
 
 | Method | Best For | Strength | Weakness |
 |---|---|---|---|
@@ -1117,7 +1117,7 @@ Identity Detection
 
 ---
 
-# 53. Choosing the Right Method
+## 53. Choosing the Right Method
 
 Ask:
 
@@ -1187,9 +1187,9 @@ Hybrid
 
 ---
 
-# 54. Known Threat vs Unknown Threat
+## 54. Known Threat vs Unknown Threat
 
-### Known Threat
+#### Known Threat
 
 Use:
 
@@ -1199,7 +1199,7 @@ Signature
 Known Pattern
 ```
 
-### Unknown Threat
+#### Unknown Threat
 
 Consider:
 
@@ -1212,7 +1212,7 @@ Correlation
 
 ---
 
-# 55. Indicator-Based Detection
+## 55. Indicator-Based Detection
 
 Useful when:
 
@@ -1230,7 +1230,7 @@ Known Malicious Domain
 
 ---
 
-# 56. Behavior-Based Detection
+## 56. Behavior-Based Detection
 
 Useful when:
 
@@ -1248,7 +1248,7 @@ Credential Dumping Behavior
 
 ---
 
-# 57. Detection Evasion
+## 57. Detection Evasion
 
 Attackers may evade:
 
@@ -1275,7 +1275,7 @@ remains similar.
 
 ---
 
-# 58. Living-off-the-Land
+## 58. Living-off-the-Land
 
 Attackers may use legitimate tools:
 
@@ -1294,7 +1294,7 @@ Behavioral detection becomes particularly important.
 
 ---
 
-# 59. Example – PowerShell
+## 59. Example – PowerShell
 
 Weak:
 
@@ -1316,7 +1316,7 @@ External Network
 
 ---
 
-# 60. Example – DNS C2
+## 60. Example – DNS C2
 
 Weak:
 
@@ -1342,7 +1342,7 @@ This is a behavioral/hybrid approach.
 
 ---
 
-# 61. Example – Brute Force
+## 61. Example – Brute Force
 
 Method:
 
@@ -1371,7 +1371,7 @@ Successful Login
 
 ---
 
-# 62. Example – Password Spray
+## 62. Example – Password Spray
 
 Method:
 
@@ -1393,7 +1393,7 @@ Authentication Failures
 
 ---
 
-# 63. Example – Account Takeover
+## 63. Example – Account Takeover
 
 Method:
 
@@ -1421,7 +1421,7 @@ Sensitive Access
 
 ---
 
-# 64. Example – Ransomware
+## 64. Example – Ransomware
 
 Method:
 
@@ -1445,7 +1445,7 @@ Backup Tampering
 
 ---
 
-# 65. Example – Data Exfiltration
+## 65. Example – Data Exfiltration
 
 Method:
 
@@ -1469,7 +1469,7 @@ External Destination
 
 ---
 
-# 66. Detection Confidence
+## 66. Detection Confidence
 
 Different methods provide different confidence levels.
 
@@ -1490,7 +1490,7 @@ Confidence should be calibrated using evidence and testing.
 
 ---
 
-# 67. Precision by Method
+## 67. Precision by Method
 
 Conceptually:
 
@@ -1515,7 +1515,7 @@ Actual performance depends on implementation and environment.
 
 ---
 
-# 68. Recall by Method
+## 68. Recall by Method
 
 Conceptually:
 
@@ -1540,17 +1540,17 @@ Again, real-world performance depends on telemetry and implementation quality.
 
 ---
 
-# 69. Detection Coverage vs Detection Confidence
+## 69. Detection Coverage vs Detection Confidence
 
 These are different.
 
-### Coverage
+#### Coverage
 
 ```text
 How much relevant behavior can we detect?
 ```
 
-### Confidence
+#### Confidence
 
 ```text
 How strongly does the evidence indicate malicious activity?
@@ -1572,7 +1572,7 @@ Many Alerts
 
 ---
 
-# 70. Detection Layer Strategy
+## 70. Detection Layer Strategy
 
 Use:
 
@@ -1591,7 +1591,7 @@ This prevents every weak signal from becoming an urgent alert.
 
 ---
 
-# 71. Detection Pipeline
+## 71. Detection Pipeline
 
 ```text
 Raw Event
@@ -1613,7 +1613,7 @@ Alert
 
 ---
 
-# 72. Detection Chaining
+## 72. Detection Chaining
 
 One detection can become input to another.
 
@@ -1633,7 +1633,7 @@ Incident
 
 ---
 
-# 73. Detection Suppression
+## 73. Detection Suppression
 
 Low-confidence repetitive detections can be:
 
@@ -1647,7 +1647,7 @@ while high-confidence signals can remain immediate.
 
 ---
 
-# 74. Detection Escalation
+## 74. Detection Escalation
 
 Conceptually:
 
@@ -1675,7 +1675,7 @@ Critical Server
 
 ---
 
-# 75. Detection Decay
+## 75. Detection Decay
 
 Some signals should lose relevance over time.
 
@@ -1695,7 +1695,7 @@ This prevents old activity from permanently increasing risk.
 
 ---
 
-# 76. Detection Feedback
+## 76. Detection Feedback
 
 Analyst feedback can improve methodology selection.
 
@@ -1719,7 +1719,7 @@ Behavioral Context Added
 
 ---
 
-# 77. Detection Methodology Lifecycle
+## 77. Detection Methodology Lifecycle
 
 ```text
 Select Method
@@ -1741,7 +1741,7 @@ Do not assume a methodology is effective simply because it is theoretically appr
 
 ---
 
-# 78. Combining Methodologies
+## 78. Combining Methodologies
 
 Example:
 
@@ -1773,7 +1773,7 @@ Hybrid detection is common in mature environments.
 
 ---
 
-# 79. Detection Engineering Decision Tree
+## 79. Detection Engineering Decision Tree
 
 ```text
              START
@@ -1819,11 +1819,11 @@ Hybrid detection is common in mature environments.
 
 ---
 
-# 80. Practical Exercise – Detection Method Selection
+## 80. Practical Exercise – Detection Method Selection
 
 For each scenario, choose a methodology.
 
-### Scenario 1
+#### Scenario 1
 
 Known malicious hash.
 
@@ -1833,7 +1833,7 @@ Answer:
 IOC / Signature
 ```
 
-### Scenario 2
+#### Scenario 2
 
 50 failed logins within 5 minutes.
 
@@ -1843,7 +1843,7 @@ Answer:
 Threshold
 ```
 
-### Scenario 3
+#### Scenario 3
 
 User suddenly downloads 100x their normal data volume.
 
@@ -1853,7 +1853,7 @@ Answer:
 Anomaly / Statistical
 ```
 
-### Scenario 4
+#### Scenario 4
 
 Failed login → successful login → MFA change.
 
@@ -1863,7 +1863,7 @@ Answer:
 Sequence / Correlation
 ```
 
-### Scenario 5
+#### Scenario 5
 
 Known malicious IP + suspicious process + critical host.
 
@@ -1875,7 +1875,7 @@ Hybrid / Risk-Based
 
 ---
 
-# 81. Practical Exercise – Build Layered Detection
+## 81. Practical Exercise – Build Layered Detection
 
 Threat:
 
@@ -1914,7 +1914,7 @@ Prioritize
 
 ---
 
-# 82. Practical Exercise – Compare Methods
+## 82. Practical Exercise – Compare Methods
 
 Take:
 
@@ -1943,7 +1943,7 @@ Performance
 
 ---
 
-# 83. Practical Exercise – Build an Anomaly
+## 83. Practical Exercise – Build an Anomaly
 
 Choose:
 
@@ -1975,7 +1975,7 @@ Legitimate Travel
 
 ---
 
-# 84. Practical Exercise – Hybrid Detection
+## 84. Practical Exercise – Hybrid Detection
 
 Threat:
 
@@ -2005,9 +2005,9 @@ Risk Score
 
 ---
 
-# 85. Common Mistakes
+## 85. Common Mistakes
 
-## Mistake 1
+### Mistake 1
 
 Using only IOCs.
 
@@ -2019,7 +2019,7 @@ Indicators Change
 
 ---
 
-## Mistake 2
+### Mistake 2
 
 Alerting on every anomaly.
 
@@ -2031,7 +2031,7 @@ Anomaly ≠ Malicious
 
 ---
 
-## Mistake 3
+### Mistake 3
 
 Using static thresholds everywhere.
 
@@ -2043,7 +2043,7 @@ Different Users Have Different Baselines
 
 ---
 
-## Mistake 4
+### Mistake 4
 
 Creating overly complex correlations.
 
@@ -2057,7 +2057,7 @@ Sensitive to Missing Data
 
 ---
 
-## Mistake 5
+### Mistake 5
 
 Ignoring context.
 
@@ -2070,7 +2070,7 @@ High Alert Volume
 
 ---
 
-## Mistake 6
+### Mistake 6
 
 Assuming one methodology fits every threat.
 
@@ -2082,7 +2082,7 @@ Choose Based on Threat + Telemetry + Objective
 
 ---
 
-# 86. Methodology Selection Checklist
+## 86. Methodology Selection Checklist
 
 Before choosing a detection approach:
 
@@ -2103,59 +2103,59 @@ Before choosing a detection approach:
 
 ---
 
-# 87. Interview Questions
+## 87. Interview Questions
 
-### What are common detection methodologies?
+#### What are common detection methodologies?
 
 > Signature, IOC, rule-based, threshold, behavioral, anomaly, statistical, correlation, sequence, risk-based, threat-informed, and hybrid detection.
 
-### What is signature-based detection?
+#### What is signature-based detection?
 
 > Detection based on a known pattern associated with malicious activity.
 
-### What is IOC-based detection?
+#### What is IOC-based detection?
 
 > Detection based on known indicators such as malicious IPs, domains, URLs, or hashes.
 
-### What is behavioral detection?
+#### What is behavioral detection?
 
 > Detection based on suspicious activity patterns rather than relying only on known indicators.
 
-### What is anomaly detection?
+#### What is anomaly detection?
 
 > Detection that identifies activity deviating from an established baseline or expected behavior.
 
-### What is threshold detection?
+#### What is threshold detection?
 
 > Detection that triggers when an event count or value crosses a predefined threshold within a defined context or time window.
 
-### What is correlation detection?
+#### What is correlation detection?
 
 > Combining multiple related events to identify a higher-confidence security condition.
 
-### What is sequence detection?
+#### What is sequence detection?
 
 > Detection that identifies a specific ordered chain of events.
 
-### What is risk-based detection?
+#### What is risk-based detection?
 
 > Combining multiple signals and contextual factors into a risk score used for prioritization or alerting.
 
-### Why use hybrid detection?
+#### Why use hybrid detection?
 
 > Different methodologies have different strengths, and combining them can improve coverage, context, and confidence.
 
-### Which is better: IOC or behavioral detection?
+#### Which is better: IOC or behavioral detection?
 
 > Neither is universally better. IOCs are effective for known threats, while behavioral detection can better identify modified or previously unknown variants.
 
-### Why can anomaly detection produce false positives?
+#### Why can anomaly detection produce false positives?
 
 > Legitimate changes in user, business, or system behavior can appear anomalous.
 
 ---
 
-# 88. Quick Revision
+## 88. Quick Revision
 
 ```text
 Signature
@@ -2197,7 +2197,7 @@ Hybrid
 
 ---
 
-# 89. Golden Rules
+## 89. Golden Rules
 
 ```text
 1. No single detection methodology detects everything.
@@ -2253,7 +2253,7 @@ Hybrid
 
 ---
 
-# 90. Final Mental Model
+## 90. Final Mental Model
 
 Think of detection methodologies as different lenses:
 
@@ -2311,7 +2311,7 @@ High-Confidence Detection
 
 ---
 
-# 91. Chapter Summary
+## 91. Chapter Summary
 
 This chapter covered the major detection methodologies used in modern security operations:
 
@@ -2335,4 +2335,3 @@ The key lesson is:
 > **Detection engineering is not about choosing the most sophisticated detection method. It is about choosing the appropriate method—or combination of methods—for the threat, telemetry, environment, and operational objective.**
 
 The next chapter focuses specifically on **IOC, Signature & Indicator-Based Detection**, including indicator types, matching strategies, threat-intelligence integration, IOC lifecycle, freshness, confidence, false positives, and the limitations of indicator-driven detection.
-```

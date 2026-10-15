@@ -1,10 +1,10 @@
 # 15 - Network Devices
 
-# Part 1 — Network Device Fundamentals, OSI Layer Mapping, Repeaters, Hubs, Bridges, Switches, Routers, Gateways, and Enterprise Network Infrastructure
+## Part 1 — Network Device Fundamentals, OSI Layer Mapping, Repeaters, Hubs, Bridges, Switches, Routers, Gateways, and Enterprise Network Infrastructure
 
 ---
 
-# Overview
+## Overview
 
 Modern computer networks rely on specialized devices that perform functions such as forwarding traffic, connecting network segments, enforcing security policies, optimizing performance, and ensuring high availability.
 
@@ -32,7 +32,7 @@ Understanding how each device operates and where it fits into the OSI model is e
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -52,7 +52,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is a Network Device?
+## What is a Network Device?
 
 A **network device** is a hardware or virtual appliance that enables communication between systems by transmitting, forwarding, filtering, securing, or managing network traffic.
 
@@ -60,7 +60,7 @@ These devices perform different functions depending on the OSI layer at which th
 
 ---
 
-# Why Network Devices Matter
+## Why Network Devices Matter
 
 Every enterprise depends on network devices to provide:
 
@@ -77,7 +77,7 @@ Without properly designed network infrastructure, business applications cannot f
 
 ---
 
-# Network Device Classification
+## Network Device Classification
 
 Network devices can be grouped into several categories.
 
@@ -92,7 +92,7 @@ Network devices can be grouped into several categories.
 
 ---
 
-# OSI Layer Mapping
+## OSI Layer Mapping
 
 Different devices primarily operate at different OSI layers.
 
@@ -110,7 +110,7 @@ Different devices primarily operate at different OSI layers.
 
 ---
 
-# Enterprise Network Architecture
+## Enterprise Network Architecture
 
 A simplified enterprise topology:
 
@@ -150,9 +150,9 @@ Additional devices such as IDS/IPS, WAFs, VPN gateways, and load balancers are c
 
 ---
 
-# Network Interface Card (NIC)
+## Network Interface Card (NIC)
 
-## Overview
+### Overview
 
 A **Network Interface Card (NIC)** is the hardware or virtual adapter that connects a device to a network.
 
@@ -176,7 +176,7 @@ Switch
 
 ---
 
-# Responsibilities of a NIC
+## Responsibilities of a NIC
 
 A NIC is responsible for:
 
@@ -189,7 +189,7 @@ A NIC is responsible for:
 
 ---
 
-# NIC Components
+## NIC Components
 
 Typical components include:
 
@@ -202,7 +202,7 @@ Typical components include:
 
 ---
 
-# MAC Address
+## MAC Address
 
 Every NIC contains a unique hardware identifier.
 
@@ -216,7 +216,7 @@ The MAC address operates at the Data Link Layer.
 
 ---
 
-# NIC Speeds
+## NIC Speeds
 
 Common Ethernet speeds include:
 
@@ -234,9 +234,9 @@ Modern data centers increasingly deploy 100G and 400G links for high-throughput 
 
 ---
 
-# Repeater
+## Repeater
 
-## Overview
+### Overview
 
 A **Repeater** is a Layer 1 device that regenerates weakened electrical or optical signals.
 
@@ -260,7 +260,7 @@ Repeaters extend the distance over which signals can travel.
 
 ---
 
-# Functions of a Repeater
+## Functions of a Repeater
 
 A repeater:
 
@@ -277,7 +277,7 @@ It does **not**:
 
 ---
 
-# Enterprise Use Cases
+## Enterprise Use Cases
 
 Repeaters are less common in modern LANs but may still be found in:
 
@@ -287,9 +287,9 @@ Repeaters are less common in modern LANs but may still be found in:
 
 ---
 
-# Hub
+## Hub
 
-## Overview
+### Overview
 
 A **Hub** is a multiport repeater operating at Layer 1.
 
@@ -317,7 +317,7 @@ Any incoming signal is repeated to every connected device.
 
 ---
 
-# Hub Operation
+## Hub Operation
 
 Example:
 
@@ -337,7 +337,7 @@ Every device receives the frame, even if it is not the intended recipient.
 
 ---
 
-# Limitations of Hubs
+## Limitations of Hubs
 
 Hubs:
 
@@ -351,9 +351,9 @@ Consequently, hubs have largely been replaced by switches.
 
 ---
 
-# Bridge
+## Bridge
 
-## Overview
+### Overview
 
 A **Bridge** operates at Layer 2 and connects two LAN segments.
 
@@ -373,7 +373,7 @@ Unlike a hub, a bridge forwards frames selectively.
 
 ---
 
-# Bridge Functions
+## Bridge Functions
 
 A bridge:
 
@@ -384,7 +384,7 @@ A bridge:
 
 ---
 
-# MAC Learning
+## MAC Learning
 
 Example:
 
@@ -408,7 +408,7 @@ The bridge records which MAC addresses are reachable through each interface.
 
 ---
 
-# Bridge Forwarding
+## Bridge Forwarding
 
 ```
 Destination MAC Known
@@ -430,9 +430,9 @@ This process is similar to switch forwarding.
 
 ---
 
-# Switch
+## Switch
 
-## Overview
+### Overview
 
 A **Network Switch** is the primary Layer 2 forwarding device used in modern Ethernet networks.
 
@@ -460,7 +460,7 @@ Switches forward frames only to the destination port instead of broadcasting to 
 
 ---
 
-# Switch Responsibilities
+## Switch Responsibilities
 
 Switches perform:
 
@@ -475,7 +475,7 @@ Switches perform:
 
 ---
 
-# Switch MAC Address Table
+## Switch MAC Address Table
 
 Example:
 
@@ -489,7 +489,7 @@ The switch uses this table to determine where frames should be forwarded.
 
 ---
 
-# Switch Forwarding Process
+## Switch Forwarding Process
 
 ```
 Frame Received
@@ -523,7 +523,7 @@ Over time, MAC learning reduces unnecessary flooding.
 
 ---
 
-# Collision Domains
+## Collision Domains
 
 Unlike hubs, switches create separate collision domains.
 
@@ -551,7 +551,7 @@ Each switch port represents an independent collision domain.
 
 ---
 
-# Broadcast Domains
+## Broadcast Domains
 
 By default, all ports within the same VLAN belong to the same broadcast domain.
 
@@ -569,9 +569,9 @@ Broadcast domains can be separated using:
 
 ---
 
-# Router
+## Router
 
-## Overview
+### Overview
 
 A **Router** is a Layer 3 device that forwards packets between different IP networks.
 
@@ -595,7 +595,7 @@ Routers make forwarding decisions using IP addresses and routing tables.
 
 ---
 
-# Router Responsibilities
+## Router Responsibilities
 
 Routers:
 
@@ -609,7 +609,7 @@ Routers:
 
 ---
 
-# Routing Decision Process
+## Routing Decision Process
 
 ```
 Packet Arrives
@@ -635,7 +635,7 @@ Routing decisions are based on the longest-prefix match and routing metrics.
 
 ---
 
-# Default Gateway
+## Default Gateway
 
 Hosts send traffic destined for remote networks to their configured default gateway.
 
@@ -659,9 +659,9 @@ Without a valid gateway, hosts can communicate only within their local subnet.
 
 ---
 
-# Gateway
+## Gateway
 
-## Overview
+### Overview
 
 A **Gateway** connects networks that use different protocols, architectures, or communication methods.
 
@@ -677,7 +677,7 @@ Unlike routers, gateways often perform protocol translation.
 
 ---
 
-# Gateway Functions
+## Gateway Functions
 
 A gateway may provide:
 
@@ -692,7 +692,7 @@ Gateways commonly operate at Layers 4–7, although implementations vary.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An employee accesses a cloud-hosted business application.
 
@@ -732,7 +732,7 @@ Each network device contributes to secure and reliable communication.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-designed network infrastructure enables:
 
@@ -748,7 +748,7 @@ Selecting the appropriate network devices is fundamental to enterprise architect
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -763,7 +763,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Network devices perform specialized roles at different OSI layers.
 - NICs provide physical and data link connectivity.
@@ -777,11 +777,11 @@ Organizations should:
 ---
 
 
-# Part 2 — Firewalls, Wireless Access Points, Modems, Load Balancers, Proxies, IDS, IPS, WAF, SD-WAN, Cloud Network Devices, and Enterprise Architectures
+## Part 2 — Firewalls, Wireless Access Points, Modems, Load Balancers, Proxies, IDS, IPS, WAF, SD-WAN, Cloud Network Devices, and Enterprise Architectures
 
 ---
 
-# Introduction
+## Introduction
 
 Modern enterprise networks consist of far more than switches and routers.
 
@@ -800,9 +800,9 @@ These devices are essential for supporting today's hybrid, multi-cloud, and Zero
 
 ---
 
-# Firewall
+## Firewall
 
-## Overview
+### Overview
 
 A **Firewall** is a network security device that monitors, filters, and controls traffic based on predefined security policies.
 
@@ -822,7 +822,7 @@ Firewalls inspect traffic entering and leaving a network and decide whether to a
 
 ---
 
-# Primary Responsibilities
+## Primary Responsibilities
 
 A firewall performs:
 
@@ -836,7 +836,7 @@ A firewall performs:
 
 ---
 
-# Firewall Types
+## Firewall Types
 
 | Type | Description |
 |--------|-------------|
@@ -848,7 +848,7 @@ A firewall performs:
 
 ---
 
-# Packet Filtering Firewall
+## Packet Filtering Firewall
 
 Operates using rules such as:
 
@@ -885,7 +885,7 @@ Limitations:
 
 ---
 
-# Stateful Firewall
+## Stateful Firewall
 
 Stateful firewalls maintain a **state table**.
 
@@ -913,7 +913,7 @@ Benefits:
 
 ---
 
-# Next-Generation Firewall (NGFW)
+## Next-Generation Firewall (NGFW)
 
 NGFWs combine traditional firewall functionality with advanced security features.
 
@@ -932,9 +932,9 @@ Popular enterprise NGFW vendors include Palo Alto Networks, Fortinet, Cisco, Che
 
 ---
 
-# Wireless Access Point (WAP)
+## Wireless Access Point (WAP)
 
-## Overview
+### Overview
 
 A **Wireless Access Point (WAP)** enables wireless devices to connect to a wired Ethernet network.
 
@@ -956,7 +956,7 @@ Switch
 
 ---
 
-# Responsibilities
+## Responsibilities
 
 A WAP provides:
 
@@ -969,7 +969,7 @@ A WAP provides:
 
 ---
 
-# Enterprise Wireless Architecture
+## Enterprise Wireless Architecture
 
 ```
 Wireless Clients
@@ -995,7 +995,7 @@ Large organizations often use centralized wireless controllers for policy manage
 
 ---
 
-# Wireless Security
+## Wireless Security
 
 Recommended enterprise security:
 
@@ -1008,9 +1008,9 @@ Recommended enterprise security:
 
 ---
 
-# Modem
+## Modem
 
-## Overview
+### Overview
 
 A **Modem (Modulator/Demodulator)** converts digital signals into forms suitable for transmission across a service provider's network and converts incoming signals back into digital form.
 
@@ -1039,9 +1039,9 @@ Modern broadband technologies include:
 
 ---
 
-# Load Balancer
+## Load Balancer
 
-## Overview
+### Overview
 
 A **Load Balancer** distributes incoming client requests across multiple backend servers.
 
@@ -1069,7 +1069,7 @@ This improves availability, scalability, and performance.
 
 ---
 
-# Benefits
+## Benefits
 
 Load balancing provides:
 
@@ -1081,7 +1081,7 @@ Load balancing provides:
 
 ---
 
-# Load Balancing Algorithms
+## Load Balancing Algorithms
 
 Common algorithms:
 
@@ -1095,7 +1095,7 @@ Common algorithms:
 
 ---
 
-# Health Checks
+## Health Checks
 
 Load balancers continuously verify server availability.
 
@@ -1129,7 +1129,7 @@ Remove From Pool
 
 ---
 
-# Layer 4 vs Layer 7 Load Balancing
+## Layer 4 vs Layer 7 Load Balancing
 
 | Layer | Characteristics |
 |--------|----------------|
@@ -1146,9 +1146,9 @@ Layer 7 load balancers can make routing decisions based on:
 
 ---
 
-# Proxy Server
+## Proxy Server
 
-## Overview
+### Overview
 
 A **Proxy Server** acts as an intermediary between clients and servers.
 
@@ -1166,7 +1166,7 @@ Internet
 
 ---
 
-# Forward Proxy
+## Forward Proxy
 
 Used by internal users accessing external resources.
 
@@ -1180,7 +1180,7 @@ Benefits:
 
 ---
 
-# Reverse Proxy
+## Reverse Proxy
 
 Protects backend servers.
 
@@ -1206,9 +1206,9 @@ Benefits:
 
 ---
 
-# Intrusion Detection System (IDS)
+## Intrusion Detection System (IDS)
 
-## Overview
+### Overview
 
 An IDS monitors network traffic and generates alerts for suspicious activity.
 
@@ -1232,7 +1232,7 @@ An IDS does **not** automatically block traffic.
 
 ---
 
-# IDS Types
+## IDS Types
 
 | Type | Description |
 |--------|-------------|
@@ -1241,7 +1241,7 @@ An IDS does **not** automatically block traffic.
 
 ---
 
-# Common IDS Platforms
+## Common IDS Platforms
 
 Examples:
 
@@ -1251,9 +1251,9 @@ Examples:
 
 ---
 
-# Intrusion Prevention System (IPS)
+## Intrusion Prevention System (IPS)
 
-## Overview
+### Overview
 
 An IPS operates inline and can actively prevent attacks.
 
@@ -1281,7 +1281,7 @@ Unlike an IDS, an IPS can enforce security policies in real time.
 
 ---
 
-# IPS Capabilities
+## IPS Capabilities
 
 - Signature detection
 - Anomaly detection
@@ -1292,7 +1292,7 @@ Unlike an IDS, an IPS can enforce security policies in real time.
 
 ---
 
-# IDS vs IPS
+## IDS vs IPS
 
 | Feature | IDS | IPS |
 |----------|-----|-----|
@@ -1304,9 +1304,9 @@ Unlike an IDS, an IPS can enforce security policies in real time.
 
 ---
 
-# Web Application Firewall (WAF)
+## Web Application Firewall (WAF)
 
-## Overview
+### Overview
 
 A WAF protects web applications from Layer 7 attacks.
 
@@ -1324,7 +1324,7 @@ Web Application
 
 ---
 
-# Common Threats Blocked
+## Common Threats Blocked
 
 A WAF can detect or mitigate:
 
@@ -1338,9 +1338,9 @@ A WAF can detect or mitigate:
 
 ---
 
-# SD-WAN
+## SD-WAN
 
-## Overview
+### Overview
 
 Software-Defined Wide Area Networking (SD-WAN) centralizes WAN management and intelligently routes traffic across multiple network links.
 
@@ -1362,7 +1362,7 @@ Data Center
 
 ---
 
-# SD-WAN Benefits
+## SD-WAN Benefits
 
 - Centralized management
 - Dynamic path selection
@@ -1373,7 +1373,7 @@ Data Center
 
 ---
 
-# VPN Gateway
+## VPN Gateway
 
 A VPN Gateway enables secure communication across untrusted networks.
 
@@ -1402,7 +1402,7 @@ Supported technologies commonly include:
 
 ---
 
-# Network TAP
+## Network TAP
 
 A **Network TAP (Test Access Point)** provides a copy of network traffic for monitoring tools.
 
@@ -1426,7 +1426,7 @@ Unlike SPAN ports, hardware TAPs generally introduce minimal packet loss during 
 
 ---
 
-# Packet Broker
+## Packet Broker
 
 Packet Brokers aggregate, filter, and distribute network traffic to monitoring tools.
 
@@ -1454,7 +1454,7 @@ This improves monitoring efficiency in large enterprise environments.
 
 ---
 
-# Cloud Network Devices
+## Cloud Network Devices
 
 Cloud providers offer virtual networking components.
 
@@ -1488,7 +1488,7 @@ These services provide functionality similar to traditional on-premises applianc
 
 ---
 
-# Enterprise Data Center Architecture
+## Enterprise Data Center Architecture
 
 Example:
 
@@ -1528,7 +1528,7 @@ Monitoring systems collect logs from each component for centralized analysis.
 
 ---
 
-# Hybrid Cloud Architecture
+## Hybrid Cloud Architecture
 
 ```
 Branch Office
@@ -1562,7 +1562,7 @@ Hybrid architectures allow workloads to span on-premises and cloud environments 
 
 ---
 
-# Zero Trust Network Architecture
+## Zero Trust Network Architecture
 
 Modern enterprises increasingly adopt Zero Trust principles.
 
@@ -1579,7 +1579,7 @@ Network devices enforce these principles through integrated security controls.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Deploying specialized network devices enables organizations to:
 
@@ -1593,7 +1593,7 @@ Deploying specialized network devices enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -1608,7 +1608,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Firewalls enforce network security policies.
 - NGFWs provide advanced application-aware inspection.
@@ -1623,11 +1623,11 @@ Organizations should:
 ---
 
 
-# Part 3 — Network Device Security, Hardening, Monitoring, Management Protocols, Enterprise Operations, and SOC Integration
+## Part 3 — Network Device Security, Hardening, Monitoring, Management Protocols, Enterprise Operations, and SOC Integration
 
 ---
 
-# Introduction
+## Introduction
 
 Network devices form the backbone of enterprise infrastructure. If compromised, attackers may gain visibility into network traffic, manipulate routing, bypass security controls, or disrupt business operations.
 
@@ -1637,7 +1637,7 @@ Therefore, securing network devices is a fundamental responsibility of network a
 
 ---
 
-# Security Objectives
+## Security Objectives
 
 Enterprise network device security focuses on:
 
@@ -1653,7 +1653,7 @@ Enterprise network device security focuses on:
 
 ---
 
-# Common Threats
+## Common Threats
 
 Network devices commonly face:
 
@@ -1676,7 +1676,7 @@ Understanding these threats helps organizations implement appropriate controls.
 
 ---
 
-# Default Credentials
+## Default Credentials
 
 Many devices ship with default usernames and passwords.
 
@@ -1698,7 +1698,7 @@ Leaving default credentials unchanged is one of the most common security misconf
 
 ---
 
-# Weak Passwords
+## Weak Passwords
 
 Weak passwords increase the risk of unauthorized access.
 
@@ -1718,7 +1718,7 @@ Recommended practices:
 
 ---
 
-# Firmware Vulnerabilities
+## Firmware Vulnerabilities
 
 Firmware flaws can allow attackers to:
 
@@ -1737,7 +1737,7 @@ Organizations should:
 
 ---
 
-# Unauthorized Management Access
+## Unauthorized Management Access
 
 Administrative interfaces should never be unnecessarily exposed.
 
@@ -1763,7 +1763,7 @@ Avoid exposing management interfaces directly to the Internet.
 
 ---
 
-# Secure Management Protocols
+## Secure Management Protocols
 
 Use encrypted management protocols whenever possible.
 
@@ -1779,7 +1779,7 @@ Encryption protects credentials and management traffic.
 
 ---
 
-# AAA (Authentication, Authorization, Accounting)
+## AAA (Authentication, Authorization, Accounting)
 
 AAA centralizes administrative access control.
 
@@ -1816,7 +1816,7 @@ Benefits:
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 Administrators should receive only the permissions required for their responsibilities.
 
@@ -1833,7 +1833,7 @@ This supports the principle of least privilege.
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Separate critical systems into dedicated security zones.
 
@@ -1863,7 +1863,7 @@ Segmentation limits lateral movement following a compromise.
 
 ---
 
-# VLAN Security
+## VLAN Security
 
 Improper VLAN configuration can expose sensitive resources.
 
@@ -1877,7 +1877,7 @@ Recommended practices:
 
 ---
 
-# Port Security
+## Port Security
 
 Switch port security restricts which devices may connect.
 
@@ -1907,7 +1907,7 @@ Unknown MAC addresses may trigger:
 
 ---
 
-# MAC Flooding Attack
+## MAC Flooding Attack
 
 An attacker sends many fake MAC addresses to overflow a switch's MAC address table.
 
@@ -1939,7 +1939,7 @@ Mitigation:
 
 ---
 
-# ARP Spoofing
+## ARP Spoofing
 
 Attackers forge ARP messages to intercept traffic.
 
@@ -1968,7 +1968,7 @@ Mitigation:
 
 ---
 
-# DHCP Spoofing
+## DHCP Spoofing
 
 A rogue DHCP server distributes malicious network settings.
 
@@ -1997,7 +1997,7 @@ Mitigation:
 
 ---
 
-# VLAN Hopping
+## VLAN Hopping
 
 Attackers attempt to access traffic from unauthorized VLANs.
 
@@ -2015,7 +2015,7 @@ Mitigation:
 
 ---
 
-# Rogue Access Points
+## Rogue Access Points
 
 Unauthorized wireless access points create security risks.
 
@@ -2047,7 +2047,7 @@ Mitigation:
 
 ---
 
-# Routing Attacks
+## Routing Attacks
 
 Attackers may attempt to manipulate routing protocols.
 
@@ -2066,7 +2066,7 @@ Mitigation:
 
 ---
 
-# Denial-of-Service (DoS)
+## Denial-of-Service (DoS)
 
 Attackers may overwhelm network devices.
 
@@ -2086,7 +2086,7 @@ Protection methods include:
 
 ---
 
-# Infrastructure ACLs (iACLs)
+## Infrastructure ACLs (iACLs)
 
 Infrastructure ACLs protect networking equipment.
 
@@ -2110,7 +2110,7 @@ They reduce unnecessary exposure of routers, switches, and firewalls.
 
 ---
 
-# Logging and Auditing
+## Logging and Auditing
 
 All administrative actions should be logged.
 
@@ -2126,7 +2126,7 @@ Logs should be forwarded to a centralized logging platform.
 
 ---
 
-# Configuration Backup
+## Configuration Backup
 
 Regular backups reduce recovery time.
 
@@ -2152,7 +2152,7 @@ Store backups securely and encrypt sensitive configuration files.
 
 ---
 
-# Change Management
+## Change Management
 
 Changes should follow an approved process.
 
@@ -2186,7 +2186,7 @@ Formal change management reduces operational risk.
 
 ---
 
-# High Availability (HA)
+## High Availability (HA)
 
 Critical devices should be deployed redundantly.
 
@@ -2218,7 +2218,7 @@ Benefits:
 
 ---
 
-# Network Monitoring
+## Network Monitoring
 
 Continuous monitoring improves visibility.
 
@@ -2235,7 +2235,7 @@ Common metrics:
 
 ---
 
-# SNMP
+## SNMP
 
 Simple Network Management Protocol (SNMP) enables centralized monitoring.
 
@@ -2255,7 +2255,7 @@ Avoid SNMPv1 and SNMPv2c where possible because they rely on community strings.
 
 ---
 
-# Syslog
+## Syslog
 
 Network devices send operational logs to centralized collectors.
 
@@ -2279,7 +2279,7 @@ Centralized logging simplifies monitoring and incident response.
 
 ---
 
-# NetFlow, IPFIX, and sFlow
+## NetFlow, IPFIX, and sFlow
 
 Flow monitoring technologies provide visibility into network traffic.
 
@@ -2298,7 +2298,7 @@ Use cases:
 
 ---
 
-# Network Time Protocol (NTP)
+## Network Time Protocol (NTP)
 
 Accurate time synchronization is essential.
 
@@ -2326,7 +2326,7 @@ Consistent timestamps improve log correlation during incident investigations.
 
 ---
 
-# Network Access Control (NAC)
+## Network Access Control (NAC)
 
 NAC verifies endpoint compliance before granting access.
 
@@ -2342,7 +2342,7 @@ Non-compliant devices may be quarantined automatically.
 
 ---
 
-# Enterprise Device Hardening Checklist
+## Enterprise Device Hardening Checklist
 
 Organizations should:
 
@@ -2364,7 +2364,7 @@ Organizations should:
 
 ---
 
-# SOC Integration
+## SOC Integration
 
 Network devices provide valuable telemetry for security operations.
 
@@ -2390,7 +2390,7 @@ These logs help identify:
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 A SIEM platform correlates logs from multiple devices.
 
@@ -2428,7 +2428,7 @@ Correlation reduces false positives and improves incident detection.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -2445,7 +2445,7 @@ Organizations should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-secured network devices help organizations:
 
@@ -2459,7 +2459,7 @@ Well-secured network devices help organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Network devices must be hardened and continuously monitored.
 - Secure management protocols such as SSH, HTTPS, and SNMPv3 should replace legacy alternatives.
@@ -2470,11 +2470,11 @@ Well-secured network devices help organizations:
 ---
 
 
-# Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, RFC/IEEE References, Summary, and Chapter Review
+## Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, RFC/IEEE References, Summary, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise network devices generate enormous amounts of operational and security data.
 
@@ -2500,7 +2500,7 @@ Modern enterprise troubleshooting combines:
 
 ---
 
-# Enterprise Troubleshooting Methodology
+## Enterprise Troubleshooting Methodology
 
 A structured troubleshooting approach minimizes downtime.
 
@@ -2550,7 +2550,7 @@ Monitor
 
 ---
 
-# Physical Layer Verification
+## Physical Layer Verification
 
 Begin with Layer 1.
 
@@ -2569,7 +2569,7 @@ Many network issues originate from physical connectivity problems.
 
 ---
 
-# Interface Verification
+## Interface Verification
 
 Check:
 
@@ -2585,7 +2585,7 @@ Abnormal interface statistics often indicate underlying hardware or configuratio
 
 ---
 
-# Switch Verification
+## Switch Verification
 
 Confirm:
 
@@ -2599,7 +2599,7 @@ Confirm:
 
 ---
 
-# Router Verification
+## Router Verification
 
 Verify:
 
@@ -2614,7 +2614,7 @@ Incorrect routing is a common cause of connectivity failures.
 
 ---
 
-# Firewall Verification
+## Firewall Verification
 
 Review:
 
@@ -2630,7 +2630,7 @@ Ensure firewall rules align with business requirements.
 
 ---
 
-# Wireless Verification
+## Wireless Verification
 
 Inspect:
 
@@ -2644,7 +2644,7 @@ Inspect:
 
 ---
 
-# Packet Capture
+## Packet Capture
 
 Packet captures provide direct visibility into network communication.
 
@@ -2674,7 +2674,7 @@ Capturing traffic at multiple points helps isolate where packets are being dropp
 
 ---
 
-# Wireshark
+## Wireshark
 
 Wireshark is widely used for packet analysis.
 
@@ -2690,7 +2690,7 @@ Common tasks:
 
 ---
 
-# Useful Display Filters
+## Useful Display Filters
 
 ARP traffic:
 
@@ -2764,7 +2764,7 @@ eth.addr == AA:BB:CC:DD:EE:FF
 
 ---
 
-# Cisco IOS Verification Commands
+## Cisco IOS Verification Commands
 
 Verify interfaces:
 
@@ -2862,7 +2862,7 @@ show logging
 
 ---
 
-# Linux Verification
+## Linux Verification
 
 Display interfaces:
 
@@ -2920,7 +2920,7 @@ ss -tuln
 
 ---
 
-# Windows Verification
+## Windows Verification
 
 Display IP configuration:
 
@@ -2970,7 +2970,7 @@ Test-NetConnection example.com
 
 ---
 
-# Network Performance Monitoring
+## Network Performance Monitoring
 
 Important metrics:
 
@@ -2988,18 +2988,18 @@ Continuous monitoring enables proactive issue detection.
 
 ---
 
-# Common Enterprise Troubleshooting Scenarios
+## Common Enterprise Troubleshooting Scenarios
 
 ---
 
-## Scenario 1 — Users Cannot Access the Internet
+### Scenario 1 — Users Cannot Access the Internet
 
-### Symptoms
+#### Symptoms
 
 - Internal resources work.
 - External websites are unreachable.
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -3012,13 +3012,13 @@ Check:
 
 ---
 
-## Scenario 2 — VLAN Communication Failure
+### Scenario 2 — VLAN Communication Failure
 
-### Symptoms
+#### Symptoms
 
 Devices in different VLANs cannot communicate.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -3030,9 +3030,9 @@ Verify:
 
 ---
 
-## Scenario 3 — High Network Latency
+### Scenario 3 — High Network Latency
 
-### Symptoms
+#### Symptoms
 
 - Slow applications
 - Poor VoIP quality
@@ -3048,9 +3048,9 @@ Investigate:
 
 ---
 
-## Scenario 4 — Wireless Connectivity Problems
+### Scenario 4 — Wireless Connectivity Problems
 
-### Symptoms
+#### Symptoms
 
 - Frequent disconnections
 - Low throughput
@@ -3066,9 +3066,9 @@ Check:
 
 ---
 
-## Scenario 5 — Firewall Blocking Legitimate Traffic
+### Scenario 5 — Firewall Blocking Legitimate Traffic
 
-### Symptoms
+#### Symptoms
 
 - Application inaccessible
 - Logs show denied sessions
@@ -3084,9 +3084,9 @@ Investigation:
 
 ---
 
-## Scenario 6 — Network Loop
+### Scenario 6 — Network Loop
 
-### Symptoms
+#### Symptoms
 
 - Broadcast storm
 - High CPU
@@ -3102,7 +3102,7 @@ Investigation:
 
 ---
 
-# SOC Detection Engineering
+## SOC Detection Engineering
 
 Network devices are major telemetry sources for the SOC.
 
@@ -3121,11 +3121,11 @@ Monitor for:
 
 ---
 
-# SIEM Detection Ideas
+## SIEM Detection Ideas
 
 Examples include:
 
-### Unauthorized Administrative Login
+#### Unauthorized Administrative Login
 
 ```
 Administrator Login
@@ -3145,7 +3145,7 @@ Alert
 
 ---
 
-### Configuration Change
+#### Configuration Change
 
 ```
 Configuration Modified
@@ -3161,7 +3161,7 @@ Alert
 
 ---
 
-### Interface Flapping
+#### Interface Flapping
 
 ```
 Interface
@@ -3185,7 +3185,7 @@ Alert
 
 ---
 
-### Excessive Firewall Denies
+#### Excessive Firewall Denies
 
 ```
 Single Source
@@ -3201,7 +3201,7 @@ Alert
 
 ---
 
-### New Rogue Device
+#### New Rogue Device
 
 ```
 Unknown MAC Address
@@ -3221,7 +3221,7 @@ Alert
 
 ---
 
-# Zeek Integration
+## Zeek Integration
 
 Zeek complements network devices by providing protocol-level visibility.
 
@@ -3238,7 +3238,7 @@ These logs help identify abnormal communication patterns.
 
 ---
 
-# Suricata Integration
+## Suricata Integration
 
 Suricata analyzes mirrored or inline traffic to detect:
 
@@ -3253,7 +3253,7 @@ Integrating Suricata alerts with firewall and endpoint logs enhances detection a
 
 ---
 
-# NetFlow/IPFIX Analysis
+## NetFlow/IPFIX Analysis
 
 Flow data provides high-level visibility without requiring full packet captures.
 
@@ -3270,7 +3270,7 @@ Flow analysis is valuable for capacity planning and threat hunting.
 
 ---
 
-# Practical Lab 1 — Switch Verification
+## Practical Lab 1 — Switch Verification
 
 Objective:
 
@@ -3285,7 +3285,7 @@ Tasks:
 
 ---
 
-# Practical Lab 2 — Router Verification
+## Practical Lab 2 — Router Verification
 
 Tasks:
 
@@ -3296,7 +3296,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — Packet Capture
+## Practical Lab 3 — Packet Capture
 
 Tasks:
 
@@ -3311,7 +3311,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — Firewall Policy Validation
+## Practical Lab 4 — Firewall Policy Validation
 
 Tasks:
 
@@ -3322,7 +3322,7 @@ Tasks:
 
 ---
 
-# Practical Lab 5 — Enterprise Monitoring
+## Practical Lab 5 — Enterprise Monitoring
 
 Tasks:
 
@@ -3334,13 +3334,13 @@ Tasks:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A multinational enterprise reports intermittent connectivity between branch offices and applications hosted in a hybrid cloud environment.
 
-### Investigation
+#### Investigation
 
 Engineers identify:
 
@@ -3350,7 +3350,7 @@ Engineers identify:
 - DNS latency caused by an overloaded resolver.
 - High CPU utilization on the branch firewall.
 
-### Resolution
+#### Resolution
 
 - Replace the faulty WAN interface.
 - Update SD-WAN routing policies.
@@ -3358,7 +3358,7 @@ Engineers identify:
 - Deploy an additional DNS resolver.
 - Upgrade firewall hardware.
 
-### Outcome
+#### Outcome
 
 - Restored application availability.
 - Reduced WAN latency.
@@ -3368,52 +3368,52 @@ Engineers identify:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is the difference between a hub and a switch?
+#### What is the difference between a hub and a switch?
 
 A hub broadcasts incoming traffic to all connected ports, while a switch learns MAC addresses and forwards frames only to the appropriate destination port.
 
 ---
 
-### Which device connects different IP networks?
+#### Which device connects different IP networks?
 
 A **Router** connects multiple IP networks and forwards packets using routing tables.
 
 ---
 
-### What is the purpose of a firewall?
+#### What is the purpose of a firewall?
 
 A firewall enforces security policies by allowing or denying network traffic based on configured rules.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### Why is STP important?
+#### Why is STP important?
 
 Spanning Tree Protocol (STP) prevents Layer 2 loops and broadcast storms by placing redundant links into a blocking state until needed.
 
 ---
 
-### Explain the difference between IDS and IPS.
+#### Explain the difference between IDS and IPS.
 
 - **IDS** monitors traffic and generates alerts.
 - **IPS** operates inline and can automatically block malicious traffic.
 
 ---
 
-### What is the role of a load balancer?
+#### What is the role of a load balancer?
 
 A load balancer distributes client requests across multiple backend servers to improve availability, scalability, and performance.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you troubleshoot intermittent connectivity in an enterprise network?
+#### How would you troubleshoot intermittent connectivity in an enterprise network?
 
 A structured approach includes:
 
@@ -3428,19 +3428,19 @@ A structured approach includes:
 
 ---
 
-### Explain the benefits of SD-WAN.
+#### Explain the benefits of SD-WAN.
 
 SD-WAN provides centralized WAN management, application-aware routing, dynamic path selection, improved resilience, and optimized utilization of multiple transport links.
 
 ---
 
-### Why are centralized logging and SIEM integration important?
+#### Why are centralized logging and SIEM integration important?
 
 Centralized logging enables correlation of events across multiple network devices, improving incident detection, forensic investigations, compliance reporting, and operational visibility.
 
 ---
 
-# RFC and IEEE References
+## RFC and IEEE References
 
 Important standards related to network devices include:
 
@@ -3456,13 +3456,13 @@ Important standards related to network devices include:
 
 ---
 
-# Summary
+## Summary
 
 Enterprise networks depend on a diverse set of physical and virtual devices to provide connectivity, security, performance, and resilience. Understanding how switches, routers, firewalls, wireless infrastructure, load balancers, IDS/IPS, and cloud networking components operate is essential for designing, securing, and troubleshooting modern infrastructures. Effective operations also require strong hardening practices, centralized monitoring, packet analysis, and integration with SIEM platforms to maintain availability and detect security threats.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -3492,7 +3492,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`16-Firewalls.md`**, covers:
 

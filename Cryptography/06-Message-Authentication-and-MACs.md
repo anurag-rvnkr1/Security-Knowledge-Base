@@ -65,7 +65,7 @@ Cryptographic Protocols
 
 ---
 
-# 1. What is a Message Authentication Code?
+## 1. What is a Message Authentication Code?
 
 A MAC is a cryptographic tag generated from:
 
@@ -87,7 +87,7 @@ The exact construction depends on the MAC algorithm.
 
 ---
 
-# 2. Purpose of a MAC
+## 2. Purpose of a MAC
 
 A MAC primarily provides:
 
@@ -109,7 +109,7 @@ It does **not** inherently provide confidentiality.
 
 ---
 
-# 3. MAC Example
+## 3. MAC Example
 
 Suppose Alice and Bob share:
 
@@ -149,7 +149,7 @@ the message passes authentication.
 
 ---
 
-# 4. MAC Security Model
+## 4. MAC Security Model
 
 An attacker may see:
 
@@ -183,7 +183,7 @@ without the secret key.
 
 ---
 
-# 5. MAC vs Hash
+## 5. MAC vs Hash
 
 A normal hash uses:
 
@@ -212,7 +212,7 @@ MAC  → Integrity + Authentication
 
 ---
 
-# 6. MAC vs Encryption
+## 6. MAC vs Encryption
 
 Encryption provides:
 
@@ -249,11 +249,11 @@ A MAC does not hide the message.
 
 ---
 
-# 7. MAC vs Digital Signature
+## 7. MAC vs Digital Signature
 
 Both can provide authentication and integrity, but their trust models are different.
 
-### MAC
+#### MAC
 
 ```text
 Shared Secret
@@ -261,7 +261,7 @@ Shared Secret
 
 Both parties possess the same secret.
 
-### Digital Signature
+#### Digital Signature
 
 ```text
 Private Key
@@ -275,7 +275,7 @@ Anyone with the public key can verify the signature.
 
 ---
 
-# 8. MAC vs Digital Signature
+## 8. MAC vs Digital Signature
 
 | Property | MAC | Digital Signature |
 |---|---|---|
@@ -288,7 +288,7 @@ Anyone with the public key can verify the signature.
 
 ---
 
-# 9. HMAC
+## 9. HMAC
 
 **HMAC** stands for:
 
@@ -314,7 +314,7 @@ HMAC-SHA-512
 
 ---
 
-# 10. HMAC Formula
+## 10. HMAC Formula
 
 The standard HMAC construction can be represented as:
 
@@ -343,7 +343,7 @@ Hash(Key || Message)
 
 ---
 
-# 11. HMAC Structure
+## 11. HMAC Structure
 
 Conceptually:
 
@@ -370,7 +370,7 @@ Conceptually:
 
 ---
 
-# 12. Why Not Simply Hash the Key and Message?
+## 12. Why Not Simply Hash the Key and Message?
 
 A naive construction such as:
 
@@ -401,7 +401,7 @@ as appropriate.
 
 ---
 
-# 13. HMAC-SHA-256
+## 13. HMAC-SHA-256
 
 A common construction is:
 
@@ -431,7 +431,7 @@ or:
 
 ---
 
-# 14. HMAC-SHA-512
+## 14. HMAC-SHA-512
 
 HMAC can also use SHA-512:
 
@@ -459,7 +459,7 @@ Standards
 
 ---
 
-# 15. HMAC Verification
+## 15. HMAC Verification
 
 Sender:
 
@@ -507,7 +507,7 @@ Reject
 
 ---
 
-# 16. Constant-Time Comparison
+## 16. Constant-Time Comparison
 
 Authentication tags should not be compared using ordinary operations if doing so can expose timing information.
 
@@ -534,7 +534,7 @@ else:
 
 ---
 
-# 17. Timing Attack
+## 17. Timing Attack
 
 A naive comparison might stop when the first differing byte is found.
 
@@ -566,7 +566,7 @@ Timing Side Channel
 
 ---
 
-# 18. Constant-Time Comparison
+## 18. Constant-Time Comparison
 
 A constant-time comparison aims to prevent the comparison time from depending on how many initial bytes match.
 
@@ -585,7 +585,7 @@ This does not make the entire application automatically constant-time, but it is
 
 ---
 
-# 19. MAC Key Requirements
+## 19. MAC Key Requirements
 
 A MAC key should be:
 
@@ -610,7 +610,7 @@ as production MAC keys.
 
 ---
 
-# 20. MAC Key Generation
+## 20. MAC Key Generation
 
 Use a cryptographically secure random generator.
 
@@ -634,7 +634,7 @@ using Python's cryptographically secure randomness facilities.
 
 ---
 
-# 21. MAC Key Storage
+## 21. MAC Key Storage
 
 Never hard-code:
 
@@ -658,7 +658,7 @@ depending on the architecture.
 
 ---
 
-# 22. HMAC Example in Python
+## 22. HMAC Example in Python
 
 ```python
 import hmac
@@ -678,7 +678,7 @@ print(tag.hex())
 
 ---
 
-# 23. HMAC Verification in Python
+## 23. HMAC Verification in Python
 
 ```python
 expected = hmac.new(
@@ -695,7 +695,7 @@ else:
 
 ---
 
-# 24. Modified Message
+## 24. Modified Message
 
 Suppose an attacker changes:
 
@@ -727,7 +727,7 @@ The attacker cannot produce a valid new tag without the key.
 
 ---
 
-# 25. Modified MAC
+## 25. Modified MAC
 
 Suppose an attacker modifies:
 
@@ -757,7 +757,7 @@ Authentication Failed
 
 ---
 
-# 26. MAC Does Not Provide Confidentiality
+## 26. MAC Does Not Provide Confidentiality
 
 Suppose:
 
@@ -793,7 +793,7 @@ when appropriate.
 
 ---
 
-# 27. AEAD vs HMAC
+## 27. AEAD vs HMAC
 
 AEAD constructions combine encryption and authentication.
 
@@ -831,7 +831,7 @@ Ciphertext + Tag
 
 ---
 
-# 28. HMAC vs AEAD
+## 28. HMAC vs AEAD
 
 | Feature | HMAC | AEAD |
 |---|---:|---:|
@@ -844,7 +844,7 @@ Ciphertext + Tag
 
 ---
 
-# 29. CMAC
+## 29. CMAC
 
 **CMAC** stands for:
 
@@ -874,7 +874,7 @@ Authentication Tag
 
 ---
 
-# 30. HMAC vs CMAC
+## 30. HMAC vs CMAC
 
 | Feature | HMAC | CMAC |
 |---|---|---|
@@ -888,7 +888,7 @@ Use the construction required by the protocol or security architecture rather th
 
 ---
 
-# 31. GMAC
+## 31. GMAC
 
 **GMAC** is the authentication component associated with GCM.
 
@@ -912,7 +912,7 @@ In practice, AES-GCM is usually used when both encryption and authentication are
 
 ---
 
-# 32. GMAC and GCM
+## 32. GMAC and GCM
 
 GCM combines:
 
@@ -930,7 +930,7 @@ GMAC
 
 ---
 
-# 33. MAC Key Separation
+## 33. MAC Key Separation
 
 Avoid using the same secret key for unrelated cryptographic purposes.
 
@@ -958,7 +958,7 @@ KDF
 
 ---
 
-# 34. HMAC Key Separation
+## 34. HMAC Key Separation
 
 If multiple services use HMAC:
 
@@ -973,7 +973,7 @@ This limits the impact if one key is compromised.
 
 ---
 
-# 35. Webhook Authentication
+## 35. Webhook Authentication
 
 Webhooks often use HMAC to prove that requests came from an expected sender.
 
@@ -993,7 +993,7 @@ The receiver recalculates the HMAC.
 
 ---
 
-# 36. Webhook Verification
+## 36. Webhook Verification
 
 Example:
 
@@ -1027,7 +1027,7 @@ Only accept the request if the signature is valid.
 
 ---
 
-# 37. Important Webhook Rule
+## 37. Important Webhook Rule
 
 Always calculate the signature over the exact bytes specified by the provider.
 
@@ -1057,7 +1057,7 @@ when the protocol specifies signing the raw body.
 
 ---
 
-# 38. Replay Attacks
+## 38. Replay Attacks
 
 A valid MAC does not automatically prevent replay.
 
@@ -1081,7 +1081,7 @@ has not changed.
 
 ---
 
-# 39. Replay Protection
+## 39. Replay Protection
 
 Protocols can include:
 
@@ -1119,7 +1119,7 @@ Nonce Already Used?
 
 ---
 
-# 40. Webhook Replay Protection
+## 40. Webhook Replay Protection
 
 A secure webhook design might include:
 
@@ -1149,7 +1149,7 @@ The exact construction must follow the provider's documented protocol.
 
 ---
 
-# 41. API Request Signing
+## 41. API Request Signing
 
 Some APIs authenticate requests using HMAC.
 
@@ -1183,7 +1183,7 @@ if the protocol correctly incorporates freshness information.
 
 ---
 
-# 42. HMAC-Based API Authentication
+## 42. HMAC-Based API Authentication
 
 Example conceptual request:
 
@@ -1213,7 +1213,7 @@ Then verifies the signature.
 
 ---
 
-# 43. JWT and HMAC
+## 43. JWT and HMAC
 
 JSON Web Tokens can use symmetric signing algorithms such as:
 
@@ -1235,7 +1235,7 @@ HMAC-SHA-256
 
 ---
 
-# 44. JWT Symmetric Signing Model
+## 44. JWT Symmetric Signing Model
 
 A JWT signed using HS256 conceptually uses:
 
@@ -1265,9 +1265,9 @@ must possess the shared secret.
 
 ---
 
-# 45. HMAC JWT vs RSA JWT
+## 45. HMAC JWT vs RSA JWT
 
-### HMAC
+#### HMAC
 
 ```text
 HS256
@@ -1279,7 +1279,7 @@ uses:
 Shared Secret
 ```
 
-### RSA
+#### RSA
 
 ```text
 RS256
@@ -1296,7 +1296,7 @@ This creates different trust models.
 
 ---
 
-# 46. JWT Key Management
+## 46. JWT Key Management
 
 With HMAC JWTs:
 
@@ -1322,7 +1322,7 @@ Verifiers do not need the signing private key.
 
 ---
 
-# 47. HMAC in TLS
+## 47. HMAC in TLS
 
 HMAC has historically played important roles in TLS.
 
@@ -1330,7 +1330,7 @@ Modern TLS versions often use AEAD constructions for record protection, while HM
 
 ---
 
-# 48. HMAC in SSH
+## 48. HMAC in SSH
 
 HMAC-based algorithms can be used in SSH protocol integrity protection.
 
@@ -1350,7 +1350,7 @@ Modern SSH configurations should use algorithms recommended by current security 
 
 ---
 
-# 49. MAC in Network Security
+## 49. MAC in Network Security
 
 MACs can protect:
 
@@ -1366,7 +1366,7 @@ The exact construction depends on the protocol.
 
 ---
 
-# 50. MAC in Distributed Systems
+## 50. MAC in Distributed Systems
 
 Distributed services may share secrets and authenticate messages using HMAC.
 
@@ -1390,7 +1390,7 @@ Sender Knowledge of Shared Secret
 
 ---
 
-# 51. HMAC and Microservices
+## 51. HMAC and Microservices
 
 A microservice architecture may use:
 
@@ -1410,7 +1410,7 @@ However, centralized secret management and key rotation become important at scal
 
 ---
 
-# 52. HMAC and Zero Trust
+## 52. HMAC and Zero Trust
 
 HMAC can authenticate service-to-service messages where shared secrets are appropriate.
 
@@ -1428,7 +1428,7 @@ depending on the environment.
 
 ---
 
-# 53. HMAC Key Rotation
+## 53. HMAC Key Rotation
 
 A practical system may support:
 
@@ -1454,7 +1454,7 @@ This requires versioning and controlled rollout.
 
 ---
 
-# 54. Key Versioning
+## 54. Key Versioning
 
 Include a key identifier when appropriate:
 
@@ -1475,7 +1475,7 @@ This helps during rotation.
 
 ---
 
-# 55. HMAC Tag Length
+## 55. HMAC Tag Length
 
 HMAC can produce a tag as large as the underlying hash output.
 
@@ -1498,7 +1498,7 @@ Do not arbitrarily shorten authentication tags.
 
 ---
 
-# 56. Truncated MACs
+## 56. Truncated MACs
 
 Suppose:
 
@@ -1530,7 +1530,7 @@ Therefore tag length must be selected carefully.
 
 ---
 
-# 57. MAC Forgery
+## 57. MAC Forgery
 
 An attacker attempts to produce:
 
@@ -1558,7 +1558,7 @@ Valid MAC
 
 ---
 
-# 58. Existential Unforgeability
+## 58. Existential Unforgeability
 
 A formal security goal for MACs is resistance to existential forgery under chosen-message attack.
 
@@ -1579,7 +1579,7 @@ A secure MAC should prevent successful forgery except with negligible probabilit
 
 ---
 
-# 59. Chosen-Message Attack
+## 59. Chosen-Message Attack
 
 An attacker may obtain valid MACs for messages they choose.
 
@@ -1601,7 +1601,7 @@ A secure MAC should resist this.
 
 ---
 
-# 60. MAC and Nonce
+## 60. MAC and Nonce
 
 Traditional HMAC itself does not require a nonce for basic operation.
 
@@ -1626,7 +1626,7 @@ unless freshness is incorporated into the authenticated protocol.
 
 ---
 
-# 61. MAC and Confidentiality
+## 61. MAC and Confidentiality
 
 A common secure architecture is:
 
@@ -1653,7 +1653,7 @@ ChaCha20-Poly1305
 
 ---
 
-# 62. Encrypt-then-MAC
+## 62. Encrypt-then-MAC
 
 A classical construction is:
 
@@ -1679,7 +1679,7 @@ Prefer standardized AEAD.
 
 ---
 
-# 63. MAC-then-Encrypt
+## 63. MAC-then-Encrypt
 
 Another construction:
 
@@ -1699,7 +1699,7 @@ Do not invent or select cryptographic composition without expert protocol design
 
 ---
 
-# 64. Encrypt-and-MAC
+## 64. Encrypt-and-MAC
 
 Another design is:
 
@@ -1720,7 +1720,7 @@ Prefer standardized AEAD constructions.
 
 ---
 
-# 65. AEAD as Modern Alternative
+## 65. AEAD as Modern Alternative
 
 Instead of manually designing:
 
@@ -1756,7 +1756,7 @@ Authentication
 
 ---
 
-# 66. HMAC and Password Reset Tokens
+## 66. HMAC and Password Reset Tokens
 
 HMAC can be used to authenticate application-generated tokens.
 
@@ -1788,7 +1788,7 @@ Security depends on token generation, expiration, storage, and replay protection
 
 ---
 
-# 67. HMAC-Based File Integrity
+## 67. HMAC-Based File Integrity
 
 A shared secret can protect file integrity:
 
@@ -1808,9 +1808,9 @@ This differs from a public hash because verification requires the secret.
 
 ---
 
-# 68. HMAC vs Hash for File Integrity
+## 68. HMAC vs Hash for File Integrity
 
-### Public verification
+#### Public verification
 
 Use:
 
@@ -1820,7 +1820,7 @@ SHA-256
 
 when the expected digest is distributed through a trusted channel.
 
-### Shared-secret verification
+#### Shared-secret verification
 
 Use:
 
@@ -1830,7 +1830,7 @@ HMAC-SHA-256
 
 when both parties share a secret.
 
-### Publicly verifiable integrity
+#### Publicly verifiable integrity
 
 Use:
 
@@ -1842,7 +1842,7 @@ when third parties need verification without access to a shared secret.
 
 ---
 
-# 69. HMAC and Logging
+## 69. HMAC and Logging
 
 HMAC can provide tamper detection for logs.
 
@@ -1872,7 +1872,7 @@ they may be able to forge valid log entries.
 
 ---
 
-# 70. HMAC and Audit Trails
+## 70. HMAC and Audit Trails
 
 A secure audit system can combine:
 
@@ -1892,7 +1892,7 @@ No single cryptographic mechanism solves every audit problem.
 
 ---
 
-# 71. VAPT Testing – HMAC
+## 71. VAPT Testing – HMAC
 
 During application security testing, examine:
 
@@ -1911,7 +1911,7 @@ During application security testing, examine:
 
 ---
 
-# 72. VAPT – Webhook Testing
+## 72. VAPT – Webhook Testing
 
 A webhook assessment may check:
 
@@ -1932,7 +1932,7 @@ The exact tests must follow the webhook's documented signing protocol.
 
 ---
 
-# 73. Example Vulnerability
+## 73. Example Vulnerability
 
 Suppose an API receives:
 
@@ -1979,7 +1979,7 @@ The lesson:
 
 ---
 
-# 74. Canonicalization
+## 74. Canonicalization
 
 Signing structured data introduces a major issue:
 
@@ -2015,7 +2015,7 @@ Protocols must define canonicalization or specify exactly which representation i
 
 ---
 
-# 75. Request Signing
+## 75. Request Signing
 
 A robust request-signing protocol might define:
 
@@ -2047,7 +2047,7 @@ The exact format should be standardized and unambiguous.
 
 ---
 
-# 76. MAC Secret Exposure
+## 76. MAC Secret Exposure
 
 If the secret is exposed:
 
@@ -2069,7 +2069,7 @@ is as important as the MAC algorithm itself.
 
 ---
 
-# 77. Secrets in Source Code
+## 77. Secrets in Source Code
 
 Bad:
 
@@ -2094,7 +2094,7 @@ Once committed, a secret may remain in repository history even after deletion.
 
 ---
 
-# 78. Secrets in Environment Variables
+## 78. Secrets in Environment Variables
 
 Environment variables can be better than hard-coding:
 
@@ -2118,7 +2118,7 @@ For higher-security environments, use dedicated secret-management systems.
 
 ---
 
-# 79. HMAC in CI/CD
+## 79. HMAC in CI/CD
 
 HMAC secrets may be used to:
 
@@ -2140,7 +2140,7 @@ Avoid Logging Secrets
 
 ---
 
-# 80. HMAC in Kubernetes
+## 80. HMAC in Kubernetes
 
 Kubernetes applications may receive HMAC secrets through:
 
@@ -2165,7 +2165,7 @@ Least Privilege
 
 ---
 
-# 81. HMAC and Kubernetes Webhooks
+## 81. HMAC and Kubernetes Webhooks
 
 Admission webhooks or external integrations may authenticate requests using:
 
@@ -2192,7 +2192,7 @@ should be considered.
 
 ---
 
-# 82. HMAC in SOC Operations
+## 82. HMAC in SOC Operations
 
 SOC analysts may investigate:
 
@@ -2218,7 +2218,7 @@ Replay Attempt
 
 ---
 
-# 83. Incident Response for MAC-Key Compromise
+## 83. Incident Response for MAC-Key Compromise
 
 If a MAC secret is suspected to be compromised:
 
@@ -2237,7 +2237,7 @@ If a MAC secret is suspected to be compromised:
 
 ---
 
-# 84. Key Rotation Strategy
+## 84. Key Rotation Strategy
 
 A practical strategy:
 
@@ -2270,7 +2270,7 @@ This avoids abrupt service disruption.
 
 ---
 
-# 85. HMAC Algorithm Selection
+## 85. HMAC Algorithm Selection
 
 Recommended modern choices commonly include:
 
@@ -2296,7 +2296,7 @@ for new designs unless a specific legacy protocol requires them and the security
 
 ---
 
-# 86. HMAC Security Does Not Depend Only on Hash Collision Resistance
+## 86. HMAC Security Does Not Depend Only on Hash Collision Resistance
 
 HMAC security has a more nuanced relationship with the underlying hash than simply:
 
@@ -2316,7 +2316,7 @@ Avoid deprecated primitives in new designs.
 
 ---
 
-# 87. MAC Security Checklist
+## 87. MAC Security Checklist
 
 ```text
 ☐ Use HMAC / CMAC / GMAC as appropriate
@@ -2336,7 +2336,7 @@ Avoid deprecated primitives in new designs.
 
 ---
 
-# 88. Common Mistakes
+## 88. Common Mistakes
 
 ```text
 ❌ Using a plain hash as authentication
@@ -2355,7 +2355,7 @@ Avoid deprecated primitives in new designs.
 
 ---
 
-# 89. Secure Webhook Architecture
+## 89. Secure Webhook Architecture
 
 A strong conceptual design:
 
@@ -2387,7 +2387,7 @@ A strong conceptual design:
 
 ---
 
-# 90. Secure API Request Architecture
+## 90. Secure API Request Architecture
 
 ```text
 Client
@@ -2413,7 +2413,7 @@ Backend Service
 
 ---
 
-# 91. MAC + Encryption Architecture
+## 91. MAC + Encryption Architecture
 
 Where both confidentiality and authentication are required:
 
@@ -2439,7 +2439,7 @@ Encryption + MAC
 
 ---
 
-# 92. MAC + Digital Signature Architecture
+## 92. MAC + Digital Signature Architecture
 
 Some systems may use both:
 
@@ -2469,7 +2469,7 @@ Whether this is necessary depends entirely on the system architecture.
 
 ---
 
-# 93. Practical Exercise – HMAC Tampering
+## 93. Practical Exercise – HMAC Tampering
 
 Create:
 
@@ -2503,7 +2503,7 @@ Restored → Valid
 
 ---
 
-# 94. Practical Exercise – Replay Protection
+## 94. Practical Exercise – Replay Protection
 
 Design a message:
 
@@ -2531,7 +2531,7 @@ Only accept if all three conditions succeed.
 
 ---
 
-# 95. Practical Exercise – Key Rotation
+## 95. Practical Exercise – Key Rotation
 
 Implement:
 
@@ -2551,7 +2551,7 @@ After migration → v1 rejected
 
 ---
 
-# 96. Practical Exercise – Webhook Verification
+## 96. Practical Exercise – Webhook Verification
 
 Build a small API:
 
@@ -2586,21 +2586,21 @@ Constant-Time Comparison
 
 ---
 
-# 97. Interview Questions
+## 97. Interview Questions
 
-## What is a MAC?
+### What is a MAC?
 
 A Message Authentication Code is a keyed cryptographic tag used to provide message integrity and authentication.
 
 ---
 
-## What does HMAC stand for?
+### What does HMAC stand for?
 
 Hash-based Message Authentication Code.
 
 ---
 
-## What does HMAC provide?
+### What does HMAC provide?
 
 Primarily:
 
@@ -2614,67 +2614,67 @@ It does not provide confidentiality.
 
 ---
 
-## What is the difference between HMAC and hashing?
+### What is the difference between HMAC and hashing?
 
 HMAC uses a secret key, while a normal hash does not.
 
 ---
 
-## What is the difference between HMAC and encryption?
+### What is the difference between HMAC and encryption?
 
 HMAC authenticates data but does not hide it. Encryption provides confidentiality.
 
 ---
 
-## What is the difference between HMAC and a digital signature?
+### What is the difference between HMAC and a digital signature?
 
 HMAC uses a shared secret, while digital signatures use a private/public key pair.
 
 ---
 
-## Why should HMAC tags be compared carefully?
+### Why should HMAC tags be compared carefully?
 
 Naive comparisons can potentially expose timing information. Appropriate constant-time comparison functions should be used.
 
 ---
 
-## Does HMAC prevent replay attacks?
+### Does HMAC prevent replay attacks?
 
 No. Replay protection requires additional mechanisms such as timestamps, nonces, counters, or unique request IDs.
 
 ---
 
-## Why is `SHA256(secret || message)` not recommended?
+### Why is `SHA256(secret || message)` not recommended?
 
 Some hash constructions have length-extension properties. HMAC is specifically designed for secure keyed hashing.
 
 ---
 
-## What is CMAC?
+### What is CMAC?
 
 CMAC is a message authentication code based on a block cipher, commonly AES.
 
 ---
 
-## What is GMAC?
+### What is GMAC?
 
 GMAC is the authentication-only component associated with GCM.
 
 ---
 
-## What is AEAD?
+### What is AEAD?
 
 Authenticated Encryption with Associated Data provides encryption, integrity, and authentication in a single standardized construction.
 
 ---
 
-## Why is AES-GCM often preferred over AES-CTR + HMAC?
+### Why is AES-GCM often preferred over AES-CTR + HMAC?
 
 AES-GCM is a standardized AEAD construction that integrates confidentiality and authentication, reducing the risk of incorrect cryptographic composition.
 
 ---
 
-# 98. Quick Revision Table
+## 98. Quick Revision Table
 
 | Concept | Key Idea |
 |---|---|
@@ -2696,7 +2696,7 @@ AES-GCM is a standardized AEAD construction that integrates confidentiality and 
 
 ---
 
-# 99. Key Takeaways
+## 99. Key Takeaways
 
 ```text
 1. A MAC provides message integrity and authentication.
@@ -2742,7 +2742,7 @@ AES-GCM is a standardized AEAD construction that integrates confidentiality and 
 
 ---
 
-# 100. Chapter Summary
+## 100. Chapter Summary
 
 This chapter covered:
 
@@ -2804,9 +2804,9 @@ Confidentiality + Integrity + Authentication
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 07 – Digital Signatures & PKI
+### Chapter 07 – Digital Signatures & PKI
 
 The next chapter will cover:
 
@@ -2845,4 +2845,3 @@ VAPT Testing
 The key question for the next chapter will be:
 
 > **How can someone prove that a message, certificate, software package, or communication endpoint genuinely belongs to a particular trusted identity?**
-```

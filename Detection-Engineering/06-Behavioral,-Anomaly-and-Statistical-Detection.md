@@ -4,7 +4,7 @@
 
 ---
 
-# 1. What Is Behavioral Detection?
+## 1. What Is Behavioral Detection?
 
 Behavioral detection identifies activity that is suspicious because of **what happened, how it happened, or the context in which it happened**.
 
@@ -38,7 +38,7 @@ Alert
 
 ---
 
-# 2. Why Behavioral Detection Matters
+## 2. Why Behavioral Detection Matters
 
 Attackers can change:
 
@@ -69,9 +69,9 @@ The specific tools may change, but the underlying behavior can remain similar.
 
 ---
 
-# 3. Indicator-Based vs Behavioral Detection
+## 3. Indicator-Based vs Behavioral Detection
 
-### Indicator-Based
+#### Indicator-Based
 
 ```text
 Known Malicious IP
@@ -79,7 +79,7 @@ Known Hash
 Known Domain
 ```
 
-### Behavioral
+#### Behavioral
 
 ```text
 Unusual Process
@@ -95,7 +95,7 @@ The second approach does not require the exact attacker infrastructure to be kno
 
 ---
 
-# 4. What Is TTP?
+## 4. What Is TTP?
 
 TTP stands for:
 
@@ -117,7 +117,7 @@ Procedure
 
 ---
 
-# 5. Tactics
+## 5. Tactics
 
 A **tactic** represents the attacker's objective.
 
@@ -140,7 +140,7 @@ Impact
 
 ---
 
-# 6. Techniques
+## 6. Techniques
 
 A technique describes how an attacker achieves a tactical objective.
 
@@ -158,7 +158,7 @@ The technique provides more specific behavioral detail.
 
 ---
 
-# 7. Procedures
+## 7. Procedures
 
 A procedure describes how a real adversary implements a technique.
 
@@ -177,7 +177,7 @@ Different threat actors may use different procedures for the same technique.
 
 ---
 
-# 8. TTP Detection
+## 8. TTP Detection
 
 TTP detection focuses on:
 
@@ -195,7 +195,7 @@ What exact artifact did they use?
 
 ---
 
-# 9. MITRE ATT&CK
+## 9. MITRE ATT&CK
 
 :contentReference[oaicite:0]{index=0} ATT&CK is a knowledge base describing adversary tactics and techniques.
 
@@ -212,7 +212,7 @@ Validate Detections
 
 ---
 
-# 10. TTP-Based Detection Workflow
+## 10. TTP-Based Detection Workflow
 
 ```text
 Threat
@@ -234,7 +234,7 @@ Coverage
 
 ---
 
-# 11. Behavior as a Detection Primitive
+## 11. Behavior as a Detection Primitive
 
 Instead of:
 
@@ -260,7 +260,7 @@ This describes behavior rather than a single indicator.
 
 ---
 
-# 12. Process Behavior
+## 12. Process Behavior
 
 Important process relationships:
 
@@ -290,7 +290,7 @@ This chain can be more informative than the presence of a script interpreter alo
 
 ---
 
-# 13. Parent-Child Behavior
+## 13. Parent-Child Behavior
 
 Example:
 
@@ -316,7 +316,7 @@ can increase confidence.
 
 ---
 
-# 14. Process Tree
+## 14. Process Tree
 
 A process tree:
 
@@ -337,7 +337,7 @@ What happened afterward
 
 ---
 
-# 15. Command-Line Behavior
+## 15. Command-Line Behavior
 
 Behavioral detection can examine:
 
@@ -370,7 +370,7 @@ alone.
 
 ---
 
-# 16. Parent Process Anomaly
+## 16. Parent Process Anomaly
 
 A process may be legitimate but launched from an unusual parent.
 
@@ -396,7 +396,7 @@ This should be validated against legitimate application behavior before alerting
 
 ---
 
-# 17. Process Path Behavior
+## 17. Process Path Behavior
 
 Potentially suspicious:
 
@@ -432,7 +432,7 @@ Behavior
 
 ---
 
-# 18. Living-off-the-Land Behavior
+## 18. Living-off-the-Land Behavior
 
 Attackers may use legitimate system utilities.
 
@@ -460,7 +460,7 @@ Behavioral detection becomes important.
 
 ---
 
-# 19. LOLBins
+## 19. LOLBins
 
 **Living-off-the-Land Binaries** are legitimate tools that can be abused by attackers.
 
@@ -488,7 +488,7 @@ Tool Executed
 
 ---
 
-# 20. Authentication Behavior
+## 20. Authentication Behavior
 
 Behavioral identity detections may examine:
 
@@ -505,7 +505,7 @@ Frequency
 
 ---
 
-# 21. Login Anomaly
+## 21. Login Anomaly
 
 Normal:
 
@@ -534,7 +534,7 @@ But legitimate travel and VPN usage must be considered.
 
 ---
 
-# 22. Authentication Sequence
+## 22. Authentication Sequence
 
 A stronger detection:
 
@@ -556,7 +556,7 @@ One Failed Login
 
 ---
 
-# 23. Privilege Escalation Behavior
+## 23. Privilege Escalation Behavior
 
 Look for:
 
@@ -581,7 +581,7 @@ Sensitive Resource Access
 
 ---
 
-# 24. Persistence Behavior
+## 24. Persistence Behavior
 
 Potential persistence behaviors:
 
@@ -607,7 +607,7 @@ Why
 
 ---
 
-# 25. Defense Evasion Behavior
+## 25. Defense Evasion Behavior
 
 Examples:
 
@@ -634,7 +634,7 @@ Suspicious Security Control Manipulation
 
 ---
 
-# 26. Discovery Behavior
+## 26. Discovery Behavior
 
 Attackers often perform discovery before lateral movement.
 
@@ -653,7 +653,7 @@ A sequence of discovery actions can provide behavioral evidence.
 
 ---
 
-# 27. Discovery Burst
+## 27. Discovery Burst
 
 Example:
 
@@ -675,7 +675,7 @@ Potential Reconnaissance
 
 ---
 
-# 28. Lateral Movement Behavior
+## 28. Lateral Movement Behavior
 
 Potential signals:
 
@@ -702,7 +702,7 @@ is important.
 
 ---
 
-# 29. Lateral Movement Example
+## 29. Lateral Movement Example
 
 Normal:
 
@@ -724,7 +724,7 @@ The relationship itself may be meaningful.
 
 ---
 
-# 30. Network Behavior
+## 30. Network Behavior
 
 Behavioral network detection may consider:
 
@@ -741,7 +741,7 @@ Beaconing
 
 ---
 
-# 31. Beaconing Behavior
+## 31. Beaconing Behavior
 
 C2 communication can exhibit periodic patterns.
 
@@ -773,7 +773,7 @@ for stronger detection.
 
 ---
 
-# 32. Rare Destination
+## 32. Rare Destination
 
 A destination contacted by:
 
@@ -791,7 +791,7 @@ But rarity alone is not maliciousness.
 
 ---
 
-# 33. Domain Rarity
+## 33. Domain Rarity
 
 Potential signals:
 
@@ -809,7 +809,7 @@ can identify potential C2.
 
 ---
 
-# 34. DNS Behavioral Detection
+## 34. DNS Behavioral Detection
 
 Potential characteristics:
 
@@ -826,7 +826,7 @@ These should be combined carefully because legitimate applications can exhibit s
 
 ---
 
-# 35. Data Transfer Behavior
+## 35. Data Transfer Behavior
 
 Potential exfiltration indicators:
 
@@ -844,7 +844,7 @@ A large transfer alone is not sufficient because backups and legitimate data wor
 
 ---
 
-# 36. File Behavior
+## 36. File Behavior
 
 Potential suspicious behaviors:
 
@@ -858,7 +858,7 @@ Sensitive File Access
 
 ---
 
-# 37. Ransomware Behavior
+## 37. Ransomware Behavior
 
 Conceptual sequence:
 
@@ -876,7 +876,7 @@ This behavioral approach can detect ransomware variants without relying solely o
 
 ---
 
-# 38. Cloud Behavioral Detection
+## 38. Cloud Behavioral Detection
 
 Cloud activity can be evaluated using:
 
@@ -893,7 +893,7 @@ Historical Behavior
 
 ---
 
-# 39. Cloud Anomaly Example
+## 39. Cloud Anomaly Example
 
 Normal:
 
@@ -923,7 +923,7 @@ Cloud Account Compromise
 
 ---
 
-# 40. Application Behavior
+## 40. Application Behavior
 
 Web applications can be monitored for:
 
@@ -938,7 +938,7 @@ Error Rates
 
 ---
 
-# 41. Web Attack Behavior
+## 41. Web Attack Behavior
 
 Potential sequence:
 
@@ -958,7 +958,7 @@ This may indicate an attack chain.
 
 ---
 
-# 42. Sequence-Based Behavioral Detection
+## 42. Sequence-Based Behavioral Detection
 
 A behavioral sequence may be:
 
@@ -982,7 +982,7 @@ C2 Connection
 
 ---
 
-# 43. State Machines
+## 43. State Machines
 
 Complex behavioral detections can be modeled as states.
 
@@ -1006,7 +1006,7 @@ Each transition represents new evidence.
 
 ---
 
-# 44. Behavioral Baselines
+## 44. Behavioral Baselines
 
 A baseline can be created for:
 
@@ -1031,7 +1031,7 @@ Normal Access Patterns
 
 ---
 
-# 45. User Behavioral Baseline
+## 45. User Behavioral Baseline
 
 Example:
 
@@ -1059,7 +1059,7 @@ Behavioral risk increases.
 
 ---
 
-# 46. Host Behavioral Baseline
+## 46. Host Behavioral Baseline
 
 Example:
 
@@ -1084,7 +1084,7 @@ Potential anomaly.
 
 ---
 
-# 47. Application Baseline
+## 47. Application Baseline
 
 Example:
 
@@ -1110,7 +1110,7 @@ Attack
 
 ---
 
-# 48. Behavioral Detection and Context
+## 48. Behavioral Detection and Context
 
 Context sources:
 
@@ -1130,7 +1130,7 @@ The same behavior can have different meanings depending on context.
 
 ---
 
-# 49. Contextual Example
+## 49. Contextual Example
 
 Event:
 
@@ -1138,7 +1138,7 @@ Event:
 PowerShell Execution
 ```
 
-### Developer Machine
+#### Developer Machine
 
 Could be:
 
@@ -1146,7 +1146,7 @@ Could be:
 Normal Development
 ```
 
-### Domain Controller
+#### Domain Controller
 
 Could be:
 
@@ -1154,7 +1154,7 @@ Could be:
 Higher Risk
 ```
 
-### Critical Server + Suspicious Parent
+#### Critical Server + Suspicious Parent
 
 Potentially:
 
@@ -1164,7 +1164,7 @@ High Priority
 
 ---
 
-# 50. Behavioral Detection and Asset Criticality
+## 50. Behavioral Detection and Asset Criticality
 
 Risk can be influenced by:
 
@@ -1192,7 +1192,7 @@ The second event deserves greater attention.
 
 ---
 
-# 51. Behavioral Detection and User Privilege
+## 51. Behavioral Detection and User Privilege
 
 Example:
 
@@ -1212,7 +1212,7 @@ The same behavior can have very different impact.
 
 ---
 
-# 52. Behavioral Detection and Threat Intelligence
+## 52. Behavioral Detection and Threat Intelligence
 
 Combine:
 
@@ -1234,7 +1234,7 @@ This provides stronger confidence than either alone.
 
 ---
 
-# 53. Behavioral Detection and Vulnerability Context
+## 53. Behavioral Detection and Vulnerability Context
 
 Example:
 
@@ -1256,7 +1256,7 @@ alone.
 
 ---
 
-# 54. Behavioral Detection and Attack Chains
+## 54. Behavioral Detection and Attack Chains
 
 An attacker may generate multiple behaviors:
 
@@ -1278,7 +1278,7 @@ Each stage can feed a larger detection model.
 
 ---
 
-# 55. Attack Chain Detection
+## 55. Attack Chain Detection
 
 Example:
 
@@ -1304,7 +1304,7 @@ can be created.
 
 ---
 
-# 56. Behavioral Detection Advantages
+## 56. Behavioral Detection Advantages
 
 ```text
 Resilient to IOC Changes
@@ -1316,7 +1316,7 @@ Supports Attack Chain Detection
 
 ---
 
-# 57. Behavioral Detection Limitations
+## 57. Behavioral Detection Limitations
 
 ```text
 Complexity
@@ -1329,11 +1329,11 @@ Environmental Differences
 
 ---
 
-# 58. Behavioral Detection vs Anomaly Detection
+## 58. Behavioral Detection vs Anomaly Detection
 
 These are related but different.
 
-### Behavioral Detection
+#### Behavioral Detection
 
 Looks for known suspicious patterns.
 
@@ -1343,7 +1343,7 @@ Office
 → External Connection
 ```
 
-### Anomaly Detection
+#### Anomaly Detection
 
 Looks for deviation from normal.
 
@@ -1357,7 +1357,7 @@ Observed:
 
 ---
 
-# 59. Behavioral + Anomaly
+## 59. Behavioral + Anomaly
 
 Combining both can improve confidence.
 
@@ -1379,7 +1379,7 @@ High-Risk Behavior
 
 ---
 
-# 60. TTP Detection vs Tool Detection
+## 60. TTP Detection vs Tool Detection
 
 Tool-focused:
 
@@ -1405,7 +1405,7 @@ if they perform the same relevant behavior.
 
 ---
 
-# 61. Tool Agnostic Detection
+## 61. Tool Agnostic Detection
 
 Good TTP detection attempts to avoid unnecessary dependency on a specific tool.
 
@@ -1427,7 +1427,7 @@ when the telemetry supports it.
 
 ---
 
-# 62. ATT&CK Mapping
+## 62. ATT&CK Mapping
 
 A detection should ideally map to:
 
@@ -1453,7 +1453,7 @@ Exact mappings should be validated against the current ATT&CK knowledge base.
 
 ---
 
-# 63. ATT&CK Coverage
+## 63. ATT&CK Coverage
 
 Create a matrix:
 
@@ -1467,7 +1467,7 @@ This helps identify weaknesses.
 
 ---
 
-# 64. Detection Coverage Is Not ATT&CK Checkbox Counting
+## 64. Detection Coverage Is Not ATT&CK Checkbox Counting
 
 Avoid:
 
@@ -1497,7 +1497,7 @@ Environment
 
 ---
 
-# 65. Procedure-Level Detection
+## 65. Procedure-Level Detection
 
 A mature approach considers:
 
@@ -1515,7 +1515,7 @@ This helps avoid overly generic rules.
 
 ---
 
-# 66. Threat Actor Behavior
+## 66. Threat Actor Behavior
 
 Threat actors may have recurring:
 
@@ -1532,7 +1532,7 @@ These can inform behavioral detection.
 
 ---
 
-# 67. Threat-Informed Behavioral Detection
+## 67. Threat-Informed Behavioral Detection
 
 Example:
 
@@ -1552,7 +1552,7 @@ Coverage
 
 ---
 
-# 68. Behavioral Detection Testing
+## 68. Behavioral Detection Testing
 
 Test:
 
@@ -1568,7 +1568,7 @@ Missing Telemetry
 
 ---
 
-# 69. Positive Behavioral Test
+## 69. Positive Behavioral Test
 
 Example:
 
@@ -1584,7 +1584,7 @@ Detection Fires
 
 ---
 
-# 70. Negative Behavioral Test
+## 70. Negative Behavioral Test
 
 Example:
 
@@ -1608,7 +1608,7 @@ depending on design.
 
 ---
 
-# 71. Evasion Testing
+## 71. Evasion Testing
 
 Test whether changing:
 
@@ -1633,7 +1633,7 @@ rather than only one implementation.
 
 ---
 
-# 72. Behavioral Detection Tuning
+## 72. Behavioral Detection Tuning
 
 Tune:
 
@@ -1650,7 +1650,7 @@ Do not immediately suppress the entire behavior.
 
 ---
 
-# 73. False Positives
+## 73. False Positives
 
 Common sources:
 
@@ -1668,7 +1668,7 @@ Scheduled Jobs
 
 ---
 
-# 74. Contextual Exclusions
+## 74. Contextual Exclusions
 
 Instead of:
 
@@ -1690,7 +1690,7 @@ when justified.
 
 ---
 
-# 75. Behavioral Detection Anti-Patterns
+## 75. Behavioral Detection Anti-Patterns
 
 Avoid:
 
@@ -1714,7 +1714,7 @@ These are signals, not necessarily complete detections.
 
 ---
 
-# 76. Signal vs Detection
+## 76. Signal vs Detection
 
 A signal:
 
@@ -1738,7 +1738,7 @@ The distinction matters.
 
 ---
 
-# 77. Signal Stacking
+## 77. Signal Stacking
 
 Combine multiple weak signals:
 
@@ -1758,7 +1758,7 @@ This can produce a stronger detection.
 
 ---
 
-# 78. Behavioral Risk Model
+## 78. Behavioral Risk Model
 
 Conceptually:
 
@@ -1777,7 +1777,7 @@ Identity Context
 
 ---
 
-# 79. Behavior Frequency
+## 79. Behavior Frequency
 
 Frequency can be important.
 
@@ -1799,7 +1799,7 @@ Volume can change interpretation.
 
 ---
 
-# 80. Behavior Rarity
+## 80. Behavior Rarity
 
 Rarity can provide context.
 
@@ -1820,7 +1820,7 @@ Rare ≠ Malicious
 
 ---
 
-# 81. First-Seen Behavior
+## 81. First-Seen Behavior
 
 Potential signal:
 
@@ -1842,7 +1842,7 @@ Threat Intelligence
 
 ---
 
-# 82. New Behavior
+## 82. New Behavior
 
 Examples:
 
@@ -1859,7 +1859,7 @@ Newness is useful context but not proof of maliciousness.
 
 ---
 
-# 83. Behavioral Drift
+## 83. Behavioral Drift
 
 Normal behavior changes over time.
 
@@ -1877,7 +1877,7 @@ Detection baselines must adapt.
 
 ---
 
-# 84. Baseline Poisoning
+## 84. Baseline Poisoning
 
 An attacker may attempt to make malicious behavior appear normal over time.
 
@@ -1899,7 +1899,7 @@ Therefore baselines should be carefully designed and monitored.
 
 ---
 
-# 85. Cold Start Problem
+## 85. Cold Start Problem
 
 A new user or system may have little historical data.
 
@@ -1927,7 +1927,7 @@ where appropriate.
 
 ---
 
-# 86. Peer Group Baselines
+## 86. Peer Group Baselines
 
 Instead of comparing:
 
@@ -1955,7 +1955,7 @@ This can provide better context.
 
 ---
 
-# 87. Entity Profiling
+## 87. Entity Profiling
 
 Maintain profiles for:
 
@@ -1979,7 +1979,7 @@ Normal Resource Access
 
 ---
 
-# 88. User and Entity Behavior Analytics
+## 88. User and Entity Behavior Analytics
 
 UEBA commonly uses:
 
@@ -1995,7 +1995,7 @@ UEBA is covered in greater depth later in this curriculum.
 
 ---
 
-# 89. Practical Exercise – Process Behavior
+## 89. Practical Exercise – Process Behavior
 
 Create a detection hypothesis:
 
@@ -2019,7 +2019,7 @@ ATT&CK Mapping
 
 ---
 
-# 90. Practical Exercise – Login Behavior
+## 90. Practical Exercise – Login Behavior
 
 Build:
 
@@ -2043,7 +2043,7 @@ Risk
 
 ---
 
-# 91. Practical Exercise – C2 Behavior
+## 91. Practical Exercise – C2 Behavior
 
 Look for:
 
@@ -2066,7 +2066,7 @@ Monitoring Agent
 
 ---
 
-# 92. Practical Exercise – Ransomware Behavior
+## 92. Practical Exercise – Ransomware Behavior
 
 Conceptually detect:
 
@@ -2089,7 +2089,7 @@ Ransomware Simulation
 
 ---
 
-# 93. Practical Exercise – TTP Mapping
+## 93. Practical Exercise – TTP Mapping
 
 Choose:
 
@@ -2111,7 +2111,7 @@ Coverage
 
 ---
 
-# 94. Practical Exercise – Evasion Test
+## 94. Practical Exercise – Evasion Test
 
 Take a behavior detection.
 
@@ -2140,7 +2140,7 @@ Improve Behavioral Logic
 
 ---
 
-# 95. Practical Exercise – Attack Chain
+## 95. Practical Exercise – Attack Chain
 
 Build:
 
@@ -2171,7 +2171,7 @@ Which stage has no detection?
 
 ---
 
-# 96. Behavioral Detection Checklist
+## 96. Behavioral Detection Checklist
 
 ```text
 [ ] Threat behavior understood
@@ -2196,55 +2196,55 @@ Which stage has no detection?
 
 ---
 
-# 97. Interview Questions
+## 97. Interview Questions
 
-### What is behavioral detection?
+#### What is behavioral detection?
 
 > Detection based on suspicious activity patterns and context rather than relying exclusively on known indicators.
 
-### What does TTP mean?
+#### What does TTP mean?
 
 > Tactics, Techniques, and Procedures—the objectives, methods, and implementation details associated with adversary behavior.
 
-### Why is TTP-based detection valuable?
+#### Why is TTP-based detection valuable?
 
 > Attackers can change tools, hashes, domains, and infrastructure, while underlying techniques and objectives may remain more stable.
 
-### What is the difference between behavior and anomaly detection?
+#### What is the difference between behavior and anomaly detection?
 
 > Behavioral detection identifies known suspicious patterns, while anomaly detection identifies deviations from expected behavior.
 
-### What is a process tree?
+#### What is a process tree?
 
 > A representation of parent-child process relationships that helps analysts understand how execution occurred.
 
-### Why is PowerShell alone a weak detection?
+#### Why is PowerShell alone a weak detection?
 
 > PowerShell is a legitimate administrative and development tool, so its execution alone does not establish malicious behavior.
 
-### How do you detect living-off-the-land activity?
+#### How do you detect living-off-the-land activity?
 
 > Focus on tool usage combined with context such as parent process, command line, user, destination, frequency, and surrounding behavior.
 
-### What is a behavioral baseline?
+#### What is a behavioral baseline?
 
 > A model or representation of expected activity for an entity such as a user, host, or application.
 
-### What is baseline poisoning?
+#### What is baseline poisoning?
 
 > An attempt to influence behavioral baselines so malicious activity becomes incorporated into what the system considers normal.
 
-### What is a cold-start problem?
+#### What is a cold-start problem?
 
 > The lack of sufficient historical data to establish a reliable baseline for a new user, host, application, or account.
 
-### How do you improve behavioral detection accuracy?
+#### How do you improve behavioral detection accuracy?
 
 > Add contextual enrichment, correlation, entity profiling, appropriate thresholds, carefully designed exceptions, and continuous validation.
 
 ---
 
-# 98. Quick Revision
+## 98. Quick Revision
 
 ```text
 Behavioral Detection
@@ -2295,7 +2295,7 @@ Cold Start
 
 ---
 
-# 99. Golden Rules
+## 99. Golden Rules
 
 ```text
 1. Focus on behavior, not only indicators.
@@ -2351,7 +2351,7 @@ Cold Start
 
 ---
 
-# 100. Final Mental Model
+## 100. Final Mental Model
 
 Behavioral detection can be summarized as:
 
@@ -2399,7 +2399,7 @@ Actionable Detection
 
 ---
 
-# 101. Chapter Summary
+## 101. Chapter Summary
 
 This chapter covered:
 
@@ -2442,4 +2442,3 @@ The central principle is:
 > **Attackers can change their tools and indicators, but they still need to perform actions to achieve their objectives. Detecting those actions and the relationships between them makes TTP-based behavioral detection one of the most important foundations of modern detection engineering.**
 
 The next chapter moves into **Anomaly Detection, Baselines & Statistical Detection**, focusing on how to model normal behavior, identify deviations, handle seasonality and drift, reduce anomaly-driven false positives, and build reliable statistical detections.
-```

@@ -47,7 +47,7 @@ Elliptic Curve Cryptography
 
 ---
 
-# 1. What is Asymmetric Cryptography?
+## 1. What is Asymmetric Cryptography?
 
 Asymmetric cryptography uses a pair of mathematically related keys.
 
@@ -70,7 +70,7 @@ The private key must be protected.
 
 ---
 
-# 2. Why Asymmetric Cryptography Exists
+## 2. Why Asymmetric Cryptography Exists
 
 Symmetric cryptography has a major challenge:
 
@@ -96,7 +96,7 @@ Asymmetric cryptography provides mechanisms that allow parties to establish shar
 
 ---
 
-# 3. Basic Public-Key Model
+## 3. Basic Public-Key Model
 
 Each participant generates:
 
@@ -127,7 +127,7 @@ Private keys remain secret.
 
 ---
 
-# 4. Public Key
+## 4. Public Key
 
 A public key is intended to be shared.
 
@@ -150,7 +150,7 @@ Ed25519 Public Key
 
 ---
 
-# 5. Private Key
+## 5. Private Key
 
 A private key is secret cryptographic material.
 
@@ -175,7 +175,7 @@ If a private key is compromised, the consequences can be severe.
 
 ---
 
-# 6. Public vs Private Key
+## 6. Public vs Private Key
 
 | Property | Public Key | Private Key |
 |---|---|---|
@@ -189,7 +189,7 @@ The exact operations depend on the algorithm.
 
 ---
 
-# 7. Mathematical Relationship
+## 7. Mathematical Relationship
 
 The public and private keys are mathematically related.
 
@@ -217,7 +217,7 @@ This is based on mathematical problems believed to be difficult.
 
 ---
 
-# 8. Computational Hardness
+## 8. Computational Hardness
 
 Modern public-key cryptography relies on mathematical problems that are computationally difficult.
 
@@ -239,7 +239,7 @@ Difficult to reverse without secret information
 
 ---
 
-# 9. Trapdoor Functions
+## 9. Trapdoor Functions
 
 A trapdoor function is conceptually a function that is:
 
@@ -274,7 +274,7 @@ The private key acts as the "trapdoor" in relevant constructions.
 
 ---
 
-# 10. RSA
+## 10. RSA
 
 **RSA** is one of the best-known public-key cryptosystems.
 
@@ -307,7 +307,7 @@ Modern protocols should use carefully specified RSA schemes rather than textbook
 
 ---
 
-# 11. RSA Mathematical Foundation
+## 11. RSA Mathematical Foundation
 
 RSA uses two large prime numbers:
 
@@ -334,7 +334,7 @@ The difficulty of factoring a sufficiently large modulus into its original prime
 
 ---
 
-# 12. RSA Key Generation
+## 12. RSA Key Generation
 
 A simplified educational process:
 
@@ -359,7 +359,7 @@ Real RSA implementations use additional requirements and optimizations.
 
 ---
 
-# 13. RSA Public Key
+## 13. RSA Public Key
 
 A simplified RSA public key contains:
 
@@ -378,7 +378,7 @@ The public key can be distributed.
 
 ---
 
-# 14. RSA Private Key
+## 14. RSA Private Key
 
 A simplified RSA private key contains:
 
@@ -396,7 +396,7 @@ Real private keys also contain additional values used for efficient and secure i
 
 ---
 
-# 15. RSA Encryption Concept
+## 15. RSA Encryption Concept
 
 At a simplified mathematical level:
 
@@ -433,7 +433,7 @@ RSA-OAEP
 
 ---
 
-# 16. RSA-OAEP
+## 16. RSA-OAEP
 
 **OAEP** stands for:
 
@@ -459,7 +459,7 @@ OAEP helps prevent attacks against deterministic textbook RSA.
 
 ---
 
-# 17. Why Textbook RSA is Dangerous
+## 17. Why Textbook RSA is Dangerous
 
 Suppose:
 
@@ -487,7 +487,7 @@ Modern RSA encryption should use an appropriate randomized encoding scheme such 
 
 ---
 
-# 18. RSA Key Size
+## 18. RSA Key Size
 
 Common historical RSA sizes include:
 
@@ -512,7 +512,7 @@ Key size should be selected according to current standards and expected security
 
 ---
 
-# 19. RSA Performance
+## 19. RSA Performance
 
 RSA is computationally expensive compared with symmetric encryption.
 
@@ -540,7 +540,7 @@ Hybrid Cryptography
 
 ---
 
-# 20. RSA and Digital Signatures
+## 20. RSA and Digital Signatures
 
 RSA can also be used for digital signatures.
 
@@ -582,7 +582,7 @@ for new designs where appropriate.
 
 ---
 
-# 21. RSA-PSS
+## 21. RSA-PSS
 
 **Probabilistic Signature Scheme (PSS)** is a modern RSA signature encoding.
 
@@ -602,7 +602,7 @@ PSS provides randomized encoding and is preferred for modern RSA signatures in m
 
 ---
 
-# 22. RSA Encryption vs RSA Signature
+## 22. RSA Encryption vs RSA Signature
 
 | Operation | Key Used |
 |---|---|
@@ -615,7 +615,7 @@ The underlying mathematics is related, but encryption and signatures use differe
 
 ---
 
-# 23. RSA Padding
+## 23. RSA Padding
 
 Modern RSA should not be used without appropriate padding/encoding.
 
@@ -636,7 +636,7 @@ These require careful standards-based use.
 
 ---
 
-# 24. Diffie-Hellman
+## 24. Diffie-Hellman
 
 **Diffie-Hellman (DH)** is a key-agreement mechanism.
 
@@ -662,7 +662,7 @@ The shared secret is not directly transmitted.
 
 ---
 
-# 25. Diffie-Hellman Concept
+## 25. Diffie-Hellman Concept
 
 Alice chooses:
 
@@ -701,7 +701,7 @@ Both arrive at the same secret.
 
 ---
 
-# 26. Simplified Diffie-Hellman Mathematics
+## 26. Simplified Diffie-Hellman Mathematics
 
 Choose public parameters:
 
@@ -761,7 +761,7 @@ S = g^(ab) mod p
 
 ---
 
-# 27. Diffie-Hellman Security
+## 27. Diffie-Hellman Security
 
 The attacker sees:
 
@@ -784,7 +784,7 @@ This relates to the difficulty of the discrete logarithm problem and the computa
 
 ---
 
-# 28. Diffie-Hellman Does Not Automatically Authenticate
+## 28. Diffie-Hellman Does Not Automatically Authenticate
 
 A critical limitation:
 
@@ -804,7 +804,7 @@ unless the key exchange is authenticated.
 
 ---
 
-# 29. Diffie-Hellman Man-in-the-Middle Attack
+## 29. Diffie-Hellman Man-in-the-Middle Attack
 
 Conceptually:
 
@@ -835,7 +835,7 @@ unless an authentication mechanism is added.
 
 ---
 
-# 30. Authenticated Key Exchange
+## 30. Authenticated Key Exchange
 
 Modern protocols combine key exchange with authentication.
 
@@ -855,7 +855,7 @@ TLS is a major example.
 
 ---
 
-# 31. Ephemeral Diffie-Hellman
+## 31. Ephemeral Diffie-Hellman
 
 Ephemeral Diffie-Hellman uses temporary key pairs.
 
@@ -879,7 +879,7 @@ when used appropriately.
 
 ---
 
-# 32. Forward Secrecy
+## 32. Forward Secrecy
 
 Forward secrecy means that compromise of a long-term private key should not automatically allow decryption of previously captured sessions.
 
@@ -913,7 +913,7 @@ assuming the protocol and implementation provide forward secrecy and ephemeral s
 
 ---
 
-# 33. ECDH
+## 33. ECDH
 
 **Elliptic Curve Diffie-Hellman (ECDH)** is a key agreement mechanism based on elliptic curve cryptography.
 
@@ -939,7 +939,7 @@ ECDH provides the same general purpose as DH but uses elliptic-curve mathematics
 
 ---
 
-# 34. Why ECC?
+## 34. Why ECC?
 
 Elliptic Curve Cryptography can provide strong security with relatively small key sizes.
 
@@ -957,7 +957,7 @@ ECC is widely used in modern protocols.
 
 ---
 
-# 35. Elliptic Curve Cryptography
+## 35. Elliptic Curve Cryptography
 
 ECC is based on mathematical operations involving points on elliptic curves over finite fields.
 
@@ -975,7 +975,7 @@ The security relies on the difficulty of solving the elliptic curve discrete log
 
 ---
 
-# 36. Elliptic Curve Concept
+## 36. Elliptic Curve Concept
 
 An elliptic curve can be represented mathematically in a simplified form such as:
 
@@ -991,7 +991,7 @@ It operates over finite mathematical structures.
 
 ---
 
-# 37. ECC Point Operations
+## 37. ECC Point Operations
 
 Important operations include:
 
@@ -1018,7 +1018,7 @@ This produces another point on the curve.
 
 ---
 
-# 38. ECC Security Concept
+## 38. ECC Security Concept
 
 An attacker may know:
 
@@ -1037,7 +1037,7 @@ This is related to the elliptic curve discrete logarithm problem.
 
 ---
 
-# 39. Common ECC Curves
+## 39. Common ECC Curves
 
 Common curves and curve families include:
 
@@ -1059,7 +1059,7 @@ Ed25519 → Digital Signatures
 
 ---
 
-# 40. X25519
+## 40. X25519
 
 **X25519** is a modern elliptic-curve Diffie-Hellman function based on Curve25519.
 
@@ -1076,7 +1076,7 @@ It is designed to provide efficient and secure key exchange.
 
 ---
 
-# 41. Ed25519
+## 41. Ed25519
 
 **Ed25519** is a digital signature scheme based on Edwards-curve cryptography.
 
@@ -1103,7 +1103,7 @@ Signature Verification
 
 ---
 
-# 42. ECDSA
+## 42. ECDSA
 
 **ECDSA** stands for:
 
@@ -1129,7 +1129,7 @@ Verification uses the public key.
 
 ---
 
-# 43. ECDSA Nonce Security
+## 43. ECDSA Nonce Security
 
 ECDSA requires careful handling of its per-signature nonce.
 
@@ -1156,7 +1156,7 @@ Compromised Security
 
 ---
 
-# 44. RSA vs ECC
+## 44. RSA vs ECC
 
 | Property | RSA | ECC |
 |---|---|---|
@@ -1170,7 +1170,7 @@ Security equivalence depends on the exact algorithm and security level.
 
 ---
 
-# 45. RSA vs ECDH
+## 45. RSA vs ECDH
 
 RSA and ECDH should not be treated as interchangeable.
 
@@ -1197,7 +1197,7 @@ ECDH
 
 ---
 
-# 46. RSA vs ECDSA
+## 46. RSA vs ECDSA
 
 ```text
 RSA-PSS
@@ -1211,11 +1211,11 @@ Both can provide signatures, but they use different mathematical foundations and
 
 ---
 
-# 47. Public-Key Encryption vs Key Exchange
+## 47. Public-Key Encryption vs Key Exchange
 
 These are different concepts.
 
-### Public-Key Encryption
+#### Public-Key Encryption
 
 ```text
 Encrypt
@@ -1229,7 +1229,7 @@ Example:
 RSA-OAEP
 ```
 
-### Key Exchange
+#### Key Exchange
 
 ```text
 Two parties
@@ -1246,7 +1246,7 @@ Modern protocols often favor ephemeral key agreement rather than using RSA encry
 
 ---
 
-# 48. Hybrid Cryptography
+## 48. Hybrid Cryptography
 
 A practical secure communication architecture often looks like:
 
@@ -1280,7 +1280,7 @@ Symmetric Cryptography
 
 ---
 
-# 49. Key Derivation After ECDH
+## 49. Key Derivation After ECDH
 
 ECDH produces shared secret material.
 
@@ -1300,7 +1300,7 @@ This provides better key separation and protocol context binding.
 
 ---
 
-# 50. Public-Key Certificates
+## 50. Public-Key Certificates
 
 A public key needs a way to be associated with an identity.
 
@@ -1330,7 +1330,7 @@ TLS Certificate
 
 ---
 
-# 51. Certificate Authority
+## 51. Certificate Authority
 
 A **Certificate Authority (CA)** signs certificates.
 
@@ -1352,7 +1352,7 @@ PKI is covered in detail in Chapter 07.
 
 ---
 
-# 52. Public-Key Infrastructure
+## 52. Public-Key Infrastructure
 
 PKI manages:
 
@@ -1370,7 +1370,7 @@ It is essential to many enterprise and Internet security systems.
 
 ---
 
-# 53. SSH and Asymmetric Cryptography
+## 53. SSH and Asymmetric Cryptography
 
 SSH uses public-key cryptography for authentication and key establishment.
 
@@ -1390,7 +1390,7 @@ The server stores the corresponding public key.
 
 ---
 
-# 54. Software Signing
+## 54. Software Signing
 
 Digital signatures can verify that software originated from an expected signing identity and was not modified after signing.
 
@@ -1420,7 +1420,7 @@ Valid / Invalid
 
 ---
 
-# 55. Secure Boot
+## 55. Secure Boot
 
 Secure Boot mechanisms can use cryptographic signatures to verify software components before execution.
 
@@ -1442,7 +1442,7 @@ This helps establish a chain of trust.
 
 ---
 
-# 56. Digital Identity
+## 56. Digital Identity
 
 Public-key cryptography can support identity systems.
 
@@ -1462,7 +1462,7 @@ This is an important advantage of public-key authentication.
 
 ---
 
-# 57. Proof of Possession
+## 57. Proof of Possession
 
 A server can challenge a client to prove possession of a private key.
 
@@ -1486,7 +1486,7 @@ The private key itself is never sent to the server.
 
 ---
 
-# 58. Asymmetric Cryptography and TLS
+## 58. Asymmetric Cryptography and TLS
 
 A simplified TLS architecture:
 
@@ -1517,7 +1517,7 @@ Modern TLS generally uses ephemeral key agreement for forward secrecy.
 
 ---
 
-# 59. Asymmetric Cryptography Does Not Replace Symmetric Cryptography
+## 59. Asymmetric Cryptography Does Not Replace Symmetric Cryptography
 
 Asymmetric algorithms are generally not used to encrypt every byte of a large file or network stream.
 
@@ -1537,7 +1537,7 @@ This architecture is both efficient and secure when implemented correctly.
 
 ---
 
-# 60. Man-in-the-Middle Attack
+## 60. Man-in-the-Middle Attack
 
 A public-key system must authenticate public keys appropriately.
 
@@ -1567,7 +1567,7 @@ Secure Communication
 
 ---
 
-# 61. Certificate Validation
+## 61. Certificate Validation
 
 When connecting to:
 
@@ -1591,7 +1591,7 @@ Incorrect certificate validation can enable serious attacks.
 
 ---
 
-# 62. Public Key Pinning
+## 62. Public Key Pinning
 
 Historically, some applications used public-key pinning to restrict which keys were trusted.
 
@@ -1601,7 +1601,7 @@ Modern systems should follow current platform and protocol guidance for certific
 
 ---
 
-# 63. Private Key Protection
+## 63. Private Key Protection
 
 Private keys should be protected using appropriate mechanisms.
 
@@ -1621,7 +1621,7 @@ The appropriate mechanism depends on the threat model.
 
 ---
 
-# 64. Private Key Compromise
+## 64. Private Key Compromise
 
 If a private key is compromised:
 
@@ -1649,7 +1649,7 @@ Assess Exposure
 
 ---
 
-# 65. Key Lifecycle
+## 65. Key Lifecycle
 
 Public-key infrastructure requires lifecycle management:
 
@@ -1671,7 +1671,7 @@ Destroy
 
 ---
 
-# 66. Key Separation
+## 66. Key Separation
 
 Do not unnecessarily reuse one private key for unrelated functions.
 
@@ -1689,7 +1689,7 @@ Using separate keys can limit the impact of compromise and simplify security man
 
 ---
 
-# 67. RSA Attacks
+## 67. RSA Attacks
 
 RSA can be vulnerable to problems such as:
 
@@ -1708,7 +1708,7 @@ Modern standardized padding and secure implementations are essential.
 
 ---
 
-# 68. RSA Padding Oracle
+## 68. RSA Padding Oracle
 
 Some historical RSA padding schemes can be vulnerable to oracle attacks if an application leaks information about whether decrypted ciphertext has valid padding.
 
@@ -1730,7 +1730,7 @@ Secure applications should use modern constructions and avoid exposing decryptio
 
 ---
 
-# 69. Bleichenbacher Attack
+## 69. Bleichenbacher Attack
 
 The **Bleichenbacher attack** is a well-known class of attacks against vulnerable RSA PKCS#1 v1.5 decryption implementations.
 
@@ -1748,7 +1748,7 @@ The broader lesson is to use modern standardized constructions such as RSA-OAEP 
 
 ---
 
-# 70. Small Exponent Problems
+## 70. Small Exponent Problems
 
 Poorly designed RSA systems using small public exponents without proper randomized encoding can be vulnerable to attacks.
 
@@ -1769,7 +1769,7 @@ for appropriate purposes.
 
 ---
 
-# 71. ECC Attacks
+## 71. ECC Attacks
 
 ECC implementations can fail because of:
 
@@ -1788,7 +1788,7 @@ The mathematical security of the curve does not protect a flawed implementation.
 
 ---
 
-# 72. ECDSA Nonce Reuse Attack
+## 72. ECDSA Nonce Reuse Attack
 
 Suppose an ECDSA signing nonce is reused incorrectly.
 
@@ -1816,7 +1816,7 @@ is critical for ECDSA.
 
 ---
 
-# 73. Deterministic ECDSA
+## 73. Deterministic ECDSA
 
 Some systems use deterministic nonce generation for ECDSA, such as the approach specified in RFC 6979.
 
@@ -1836,7 +1836,7 @@ This can reduce dependence on external randomness during signing, although imple
 
 ---
 
-# 74. Side-Channel Attacks Against Public-Key Crypto
+## 74. Side-Channel Attacks Against Public-Key Crypto
 
 Attackers may exploit:
 
@@ -1864,7 +1864,7 @@ may be required.
 
 ---
 
-# 75. Quantum Computing Threat
+## 75. Quantum Computing Threat
 
 Large-scale quantum computers could threaten widely used public-key systems.
 
@@ -1892,7 +1892,7 @@ Symmetric cryptography is affected differently.
 
 ---
 
-# 76. Quantum Impact on Symmetric Cryptography
+## 76. Quantum Impact on Symmetric Cryptography
 
 Grover's algorithm provides a theoretical quadratic speedup for unstructured search.
 
@@ -1914,7 +1914,7 @@ This is one reason larger symmetric keys such as AES-256 are relevant for long-t
 
 ---
 
-# 77. Post-Quantum Cryptography
+## 77. Post-Quantum Cryptography
 
 Post-quantum cryptography (PQC) aims to provide security against attackers equipped with quantum computers while running on conventional computers.
 
@@ -1930,7 +1930,7 @@ These will be discussed in detail in Chapter 12.
 
 ---
 
-# 78. Crypto-Agility
+## 78. Crypto-Agility
 
 Systems should be able to transition between algorithms.
 
@@ -1956,7 +1956,7 @@ Migration Planning
 
 ---
 
-# 79. Asymmetric Cryptography Checklist
+## 79. Asymmetric Cryptography Checklist
 
 ```text
 ☐ Protect private keys
@@ -1976,7 +1976,7 @@ Migration Planning
 
 ---
 
-# 80. Common Mistakes
+## 80. Common Mistakes
 
 ```text
 ❌ Sharing private keys
@@ -1993,7 +1993,7 @@ Migration Planning
 
 ---
 
-# 81. Practical OpenSSL – Generate RSA Key
+## 81. Practical OpenSSL – Generate RSA Key
 
 Generate a 2048-bit RSA private key:
 
@@ -2015,7 +2015,7 @@ openssl pkey \
 
 ---
 
-# 82. Inspect RSA Key
+## 82. Inspect RSA Key
 
 ```bash
 openssl pkey \
@@ -2036,7 +2036,7 @@ openssl pkey \
 
 ---
 
-# 83. Generate an EC Private Key
+## 83. Generate an EC Private Key
 
 For a commonly used NIST curve:
 
@@ -2058,7 +2058,7 @@ openssl pkey \
 
 ---
 
-# 84. Generate an Ed25519 Key
+## 84. Generate an Ed25519 Key
 
 Where supported:
 
@@ -2079,7 +2079,7 @@ openssl pkey \
 
 ---
 
-# 85. Generate X25519 Key Material
+## 85. Generate X25519 Key Material
 
 OpenSSL versions with X25519 support can generate an X25519 private key:
 
@@ -2093,7 +2093,7 @@ X25519 is used for key agreement rather than digital signatures.
 
 ---
 
-# 86. RSA Signing with OpenSSL
+## 86. RSA Signing with OpenSSL
 
 Create a file:
 
@@ -2125,7 +2125,7 @@ For production use, ensure the chosen command and parameters match the required 
 
 ---
 
-# 87. Practical Python – RSA Concept
+## 87. Practical Python – RSA Concept
 
 Using a well-maintained cryptographic library:
 
@@ -2144,7 +2144,7 @@ The library performs the difficult cryptographic implementation work.
 
 ---
 
-# 88. Practical Python – RSA-PSS Signature
+## 88. Practical Python – RSA-PSS Signature
 
 ```python
 from cryptography.hazmat.primitives import hashes
@@ -2176,7 +2176,7 @@ print("Signature valid")
 
 ---
 
-# 89. Practical Python – ECDH Concept
+## 89. Practical Python – ECDH Concept
 
 Using a vetted library:
 
@@ -2208,7 +2208,7 @@ In a real protocol, the resulting secret should normally be processed through an
 
 ---
 
-# 90. Practical Exercise – RSA
+## 90. Practical Exercise – RSA
 
 Generate:
 
@@ -2240,7 +2240,7 @@ Modified Message
 
 ---
 
-# 91. Practical Exercise – ECDH
+## 91. Practical Exercise – ECDH
 
 Create:
 
@@ -2276,7 +2276,7 @@ Then derive an encryption key using a KDF.
 
 ---
 
-# 92. Practical Exercise – Certificate Inspection
+## 92. Practical Exercise – Certificate Inspection
 
 Inspect a public TLS certificate:
 
@@ -2300,7 +2300,7 @@ Certificate Chain
 
 ---
 
-# 93. VAPT Testing Workflow
+## 93. VAPT Testing Workflow
 
 When assessing asymmetric cryptography:
 
@@ -2328,7 +2328,7 @@ Assess Key Lifecycle
 
 ---
 
-# 94. Example VAPT Findings
+## 94. Example VAPT Findings
 
 Potential issues include:
 
@@ -2348,7 +2348,7 @@ Unsupported / Deprecated Algorithms
 
 ---
 
-# 95. Asymmetric Cryptography in SOC
+## 95. Asymmetric Cryptography in SOC
 
 SOC analysts may encounter:
 
@@ -2367,7 +2367,7 @@ Understanding public-key cryptography helps analysts interpret these events.
 
 ---
 
-# 96. Asymmetric Cryptography in Cloud Security
+## 96. Asymmetric Cryptography in Cloud Security
 
 Cloud systems commonly use:
 
@@ -2392,7 +2392,7 @@ Software Signing
 
 ---
 
-# 97. Asymmetric Cryptography in Zero Trust
+## 97. Asymmetric Cryptography in Zero Trust
 
 Zero Trust architectures commonly use:
 
@@ -2421,7 +2421,7 @@ Encrypted Communication
 
 ---
 
-# 98. Symmetric + Asymmetric Architecture
+## 98. Symmetric + Asymmetric Architecture
 
 A typical modern architecture:
 
@@ -2451,7 +2451,7 @@ This architecture demonstrates why modern cryptography uses multiple primitives 
 
 ---
 
-# 99. Important Distinction
+## 99. Important Distinction
 
 Remember:
 
@@ -2486,99 +2486,99 @@ X25519 → Key Agreement
 
 ---
 
-# 100. Common Interview Questions
+## 100. Common Interview Questions
 
-## What is asymmetric cryptography?
+### What is asymmetric cryptography?
 
 Asymmetric cryptography uses mathematically related public and private keys to support operations such as encryption, digital signatures, and key agreement.
 
 ---
 
-## Why is asymmetric cryptography slower than symmetric cryptography?
+### Why is asymmetric cryptography slower than symmetric cryptography?
 
 Public-key operations generally involve more computationally expensive mathematical operations than symmetric encryption.
 
 ---
 
-## What is RSA?
+### What is RSA?
 
 RSA is a public-key cryptosystem based on mathematical properties related to integer factorization and can support encryption and digital signatures using appropriate standardized schemes.
 
 ---
 
-## What is Diffie-Hellman?
+### What is Diffie-Hellman?
 
 Diffie-Hellman is a key-agreement mechanism that allows two parties to derive shared secret material over an insecure channel.
 
 ---
 
-## Does Diffie-Hellman authenticate users?
+### Does Diffie-Hellman authenticate users?
 
 No. Plain Diffie-Hellman does not inherently authenticate the participants and can be vulnerable to man-in-the-middle attacks without an authentication mechanism.
 
 ---
 
-## What is ECDH?
+### What is ECDH?
 
 ECDH is an elliptic-curve-based key agreement mechanism.
 
 ---
 
-## What is ECDSA?
+### What is ECDSA?
 
 ECDSA is an elliptic-curve digital signature algorithm.
 
 ---
 
-## What is Ed25519?
+### What is Ed25519?
 
 Ed25519 is a modern digital signature scheme based on Edwards-curve cryptography.
 
 ---
 
-## What is X25519?
+### What is X25519?
 
 X25519 is an elliptic-curve Diffie-Hellman function used for key agreement.
 
 ---
 
-## What is forward secrecy?
+### What is forward secrecy?
 
 Forward secrecy is a property where compromise of long-term authentication keys does not automatically expose previously established session keys.
 
 ---
 
-## Why is RSA not normally used for bulk encryption?
+### Why is RSA not normally used for bulk encryption?
 
 RSA is computationally expensive and has limitations on the amount of data it can encrypt under a given key and padding scheme. Symmetric encryption is much more efficient for bulk data.
 
 ---
 
-## What is hybrid encryption?
+### What is hybrid encryption?
 
 Hybrid encryption combines asymmetric cryptography for key establishment or protection with symmetric cryptography for efficient bulk encryption.
 
 ---
 
-## Why is RSA-OAEP used?
+### Why is RSA-OAEP used?
 
 RSA-OAEP provides randomized encoding for RSA encryption and is designed to avoid weaknesses of deterministic textbook RSA.
 
 ---
 
-## Why is RSA-PSS used?
+### Why is RSA-PSS used?
 
 RSA-PSS provides a modern randomized encoding for RSA digital signatures.
 
 ---
 
-## Why is ECDSA nonce reuse dangerous?
+### Why is ECDSA nonce reuse dangerous?
 
 Reusing or predictably generating the per-signature nonce can expose enough mathematical information to recover the private signing key in vulnerable implementations.
 
 ---
 
-# 101. Quick Revision Table
+## 101. Quick Revision Table
 
 | Concept | Primary Purpose |
 |---|---|
@@ -2602,7 +2602,7 @@ Reusing or predictably generating the per-signature nonce can expose enough math
 
 ---
 
-# 102. Key Takeaways
+## 102. Key Takeaways
 
 ```text
 1. Asymmetric cryptography uses public/private key pairs.
@@ -2648,7 +2648,7 @@ Reusing or predictably generating the per-signature nonce can expose enough math
 
 ---
 
-# 103. Chapter Summary
+## 103. Chapter Summary
 
 This chapter introduced public-key cryptography and its major applications.
 
@@ -2706,9 +2706,9 @@ Secure Data Communication
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 05 – Hash Functions & Message Integrity
+### Chapter 05 – Hash Functions & Message Integrity
 
 The next chapter focuses on cryptographic hash functions and will cover:
 

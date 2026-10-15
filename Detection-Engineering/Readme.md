@@ -67,8 +67,7 @@ Detections
 
 ---
 
-# 🎯 Objectives
-
+## 🎯 Objectives
 By completing this section, you should be able to:
 
 - Understand the principles of detection engineering.
@@ -92,8 +91,7 @@ By completing this section, you should be able to:
 
 ---
 
-# 🧠 What Is Detection Engineering?
-
+## 🧠 What Is Detection Engineering?
 Detection engineering is the systematic process of creating security detections from known threats, attacker behaviors, intelligence, and observed security telemetry.
 
 A simplified lifecycle:
@@ -126,8 +124,7 @@ Continuous Improvement
 
 ---
 
-# 🔍 Detection Engineering vs SIEM
-
+## 🔍 Detection Engineering vs SIEM
 These concepts are closely related but not identical.
 
 ### SIEM
@@ -186,8 +183,7 @@ Detection engineering is the discipline used to build and operate effective dete
 
 ---
 
-# 🏗️ Detection Engineering Lifecycle
-
+## 🏗️ Detection Engineering Lifecycle
 A professional detection lifecycle can be represented as:
 
 ```text
@@ -216,8 +212,7 @@ A professional detection lifecycle can be represented as:
 
 ---
 
-# 📡 Telemetry
-
+## 📡 Telemetry
 A detection is only as good as the telemetry available to it.
 
 Common telemetry sources include:
@@ -255,8 +250,7 @@ Can it be correlated?
 
 ---
 
-# 🧩 Detection Types
-
+## 🧩 Detection Types
 This section covers multiple detection methodologies:
 
 ```text
@@ -278,8 +272,7 @@ No single detection method is sufficient for every threat.
 
 ---
 
-# 🕵️ IOC-Based Detection
-
+## 🕵️ IOC-Based Detection
 IOC-based detection searches for known indicators such as:
 
 ```text
@@ -321,8 +314,7 @@ Potential False Positives
 
 ---
 
-# 🧠 Behavioral Detection
-
+## 🧠 Behavioral Detection
 Behavioral detection focuses on:
 
 ```text
@@ -349,8 +341,7 @@ This may be more resilient than searching for a specific malicious hash.
 
 ---
 
-# 📊 Anomaly Detection
-
+## 📊 Anomaly Detection
 Anomaly detection identifies deviations from expected behavior.
 
 Example:
@@ -375,8 +366,7 @@ Important:
 
 ---
 
-# 🔗 Correlation Detection
-
+## 🔗 Correlation Detection
 Multiple events can be combined:
 
 ```text
@@ -399,8 +389,7 @@ Correlation can increase detection confidence and reduce isolated low-value aler
 
 ---
 
-# ⚠️ Detection Quality
-
+## ⚠️ Detection Quality
 A detection should ideally be:
 
 ```text
@@ -417,8 +406,7 @@ Avoid detections that simply generate large numbers of alerts without useful sec
 
 ---
 
-# 🎯 Precision and Recall
-
+## 🎯 Precision and Recall
 Detection engineering involves balancing:
 
 ### Precision
@@ -461,8 +449,7 @@ Detection Confidence
 
 ---
 
-# 🧪 Detection Testing
-
+## 🧪 Detection Testing
 Detections should be tested before production deployment.
 
 Testing should include:
@@ -496,8 +483,7 @@ Expected → No Alert
 
 ---
 
-# 🟣 Purple Teaming
-
+## 🟣 Purple Teaming
 Purple teaming connects:
 
 ```text
@@ -520,8 +506,7 @@ How accurate is the detection?
 
 ---
 
-# 🗺️ MITRE ATT&CK
-
+## 🗺️ MITRE ATT&CK
 MITRE ATT&CK provides a threat-informed framework for understanding adversary behavior.
 
 Detection engineering uses ATT&CK to:
@@ -554,8 +539,7 @@ Coverage
 
 ---
 
-# 💻 Detection-as-Code
-
+## 💻 Detection-as-Code
 Modern detection engineering increasingly treats detections like software.
 
 A detection repository may contain:
@@ -589,8 +573,7 @@ Version
 
 ---
 
-# 🔀 Git-Based Detection Development
-
+## 🔀 Git-Based Detection Development
 A professional workflow:
 
 ```text
@@ -626,8 +609,7 @@ Collaboration
 
 ---
 
-# 🚀 Detection Deployment
-
+## 🚀 Detection Deployment
 A safe deployment pipeline:
 
 ```text
@@ -656,8 +638,7 @@ Rollback
 
 ---
 
-# 🔧 Detection Tuning
-
+## 🔧 Detection Tuning
 Production detections require continuous tuning.
 
 Typical process:
@@ -703,8 +684,7 @@ unless there is a strong, documented reason.
 
 ---
 
-# 🚨 False Positives
-
+## 🚨 False Positives
 A false positive occurs when:
 
 ```text
@@ -744,8 +724,7 @@ Disable Rule
 
 ---
 
-# ❌ False Negatives
-
+## ❌ False Negatives
 A false negative occurs when:
 
 ```text
@@ -769,8 +748,7 @@ Attacker Evasion
 
 ---
 
-# ⚡ Detection Performance
-
+## ⚡ Detection Performance
 A detection must be effective without unnecessarily consuming resources.
 
 Consider:
@@ -798,8 +776,7 @@ Using Efficient Aggregations
 
 ---
 
-# ☁️ Cloud Detection Engineering
-
+## ☁️ Cloud Detection Engineering
 Cloud environments introduce:
 
 ```text
@@ -831,8 +808,7 @@ Cryptomining
 
 ---
 
-# 🖥️ Endpoint Detection
-
+## 🖥️ Endpoint Detection
 Common endpoint telemetry:
 
 ```text
@@ -862,8 +838,7 @@ external connection
 
 ---
 
-# 🌐 Network Detection
-
+## 🌐 Network Detection
 Common telemetry:
 
 ```text
@@ -890,8 +865,7 @@ Data Exfiltration
 
 ---
 
-# 👤 Identity Detection
-
+## 👤 Identity Detection
 Monitor:
 
 ```text
@@ -919,8 +893,7 @@ Account Takeover
 
 ---
 
-# 🐳 Container & Kubernetes Detection
-
+## 🐳 Container & Kubernetes Detection
 Important telemetry:
 
 ```text
@@ -947,8 +920,7 @@ Cluster Configuration Change
 
 ---
 
-# 🤖 AI-Assisted Detection Engineering
-
+## 🤖 AI-Assisted Detection Engineering
 AI can assist with:
 
 ```text
@@ -981,8 +953,7 @@ AI output should not be blindly trusted.
 
 ---
 
-# 🔄 Detection Lifecycle
-
+## 🔄 Detection Lifecycle
 Every production detection should have a lifecycle:
 
 ```text
@@ -1015,8 +986,7 @@ Detection Has Better Alternative
 
 ---
 
-# 📈 Detection Metrics
-
+## 📈 Detection Metrics
 Useful metrics include:
 
 ```text
@@ -1036,8 +1006,7 @@ Detection Health
 
 ---
 
-# 🏆 What Makes a Good Detection?
-
+## 🏆 What Makes a Good Detection?
 A strong detection should answer:
 
 ```text
@@ -1068,8 +1037,7 @@ How is it maintained?
 
 ---
 
-# 📚 Chapter Structure
-
+## 📚 Chapter Structure
 This folder contains **15 chapters**.
 
 ---
@@ -1353,8 +1321,7 @@ Future SOC
 
 ---
 
-# 🧪 Practical Learning Approach
-
+## 🧪 Practical Learning Approach
 Each chapter should be studied using:
 
 ```text
@@ -1395,8 +1362,7 @@ How to improve it
 
 ---
 
-# 🛠️ Recommended Detection Engineering Tool Categories
-
+## 🛠️ Recommended Detection Engineering Tool Categories
 A professional detection engineering environment may involve:
 
 ```text
@@ -1435,8 +1401,7 @@ Exact tools vary by organization.
 
 ---
 
-# 🧩 Example Detection Workflow
-
+## 🧩 Example Detection Workflow
 Suppose the threat is:
 
 ```text
@@ -1473,8 +1438,7 @@ Detection engineering process:
 
 ---
 
-# 🔥 Detection Engineering Mindset
-
+## 🔥 Detection Engineering Mindset
 Do not think:
 
 ```text
@@ -1505,8 +1469,7 @@ How can I measure its effectiveness?
 
 ---
 
-# 🎓 Career Relevance
-
+## 🎓 Career Relevance
 Detection engineering skills are highly relevant to roles such as:
 
 ```text
@@ -1542,8 +1505,7 @@ Cloud Security
 
 ---
 
-# 🗂️ Recommended Folder Structure
-
+## 🗂️ Recommended Folder Structure
 ```text
 Detection-Engineering/
 │
@@ -1570,8 +1532,7 @@ Detection-Engineering/
 
 ---
 
-# 🧠 Complete Learning Path
-
+## 🧠 Complete Learning Path
 ```text
                     DETECTION ENGINEERING
                              │
@@ -1634,8 +1595,7 @@ Detection-Engineering/
 
 ---
 
-# ⭐ Core Principles
-
+## ⭐ Core Principles
 ```text
 1. Start with the threat, not the tool.
 
@@ -1690,8 +1650,7 @@ Detection-Engineering/
 
 ---
 
-# 🚀 Final Goal
-
+## 🚀 Final Goal
 The ultimate goal of this section is to develop the ability to move from:
 
 ```text

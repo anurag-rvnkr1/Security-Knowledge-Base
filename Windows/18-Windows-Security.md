@@ -1,10 +1,10 @@
 # 18-Windows-Security.md
 
-# Part 1 — Windows Security Fundamentals, Security Architecture, Authentication, Authorization, and Core Security Components
+## Part 1 — Windows Security Fundamentals, Security Architecture, Authentication, Authorization, and Core Security Components
 
 ---
 
-# Introduction
+## Introduction
 
 Windows Security is a comprehensive framework of technologies, services, policies, and mechanisms designed to protect:
 
@@ -21,7 +21,7 @@ Security in Windows follows the principle of **Defense in Depth**, meaning multi
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -41,7 +41,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is Windows Security?
+## What is Windows Security?
 
 Windows Security is the collection of built-in technologies that protect the operating system from:
 
@@ -56,7 +56,7 @@ It combines hardware, software, and policy-based protections.
 
 ---
 
-# Security Goals
+## Security Goals
 
 Windows Security aims to ensure:
 
@@ -71,7 +71,7 @@ These goals guide the design of enterprise security controls.
 
 ---
 
-# CIA Triad
+## CIA Triad
 
 The CIA Triad forms the foundation of information security.
 
@@ -83,7 +83,7 @@ The CIA Triad forms the foundation of information security.
 Integrity -------- Availability
 ```
 
-### Confidentiality
+#### Confidentiality
 
 Protect information from unauthorized access.
 
@@ -95,7 +95,7 @@ Examples:
 
 ---
 
-### Integrity
+#### Integrity
 
 Ensure data remains accurate and unmodified.
 
@@ -107,7 +107,7 @@ Examples:
 
 ---
 
-### Availability
+#### Availability
 
 Ensure systems remain accessible.
 
@@ -120,7 +120,7 @@ Examples:
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Windows applies multiple security layers.
 
@@ -156,7 +156,7 @@ If one control fails, additional layers continue to provide protection.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Users and applications should receive **only the permissions required** to perform their tasks.
 
@@ -180,7 +180,7 @@ Least privilege reduces the impact of compromised accounts.
 
 ---
 
-# Zero Trust Concept
+## Zero Trust Concept
 
 Modern enterprise security follows the **Zero Trust** model.
 
@@ -214,7 +214,7 @@ Grant Limited Access
 
 ---
 
-# Windows Security Architecture
+## Windows Security Architecture
 
 ```text
 Applications
@@ -248,7 +248,7 @@ Multiple components cooperate during authentication and authorization.
 
 ---
 
-# Windows Security Components
+## Windows Security Components
 
 Major security components include:
 
@@ -268,7 +268,7 @@ Each component contributes to the overall security posture.
 
 ---
 
-# Authentication
+## Authentication
 
 Authentication answers the question:
 
@@ -287,7 +287,7 @@ Authentication verifies identity before access is granted.
 
 ---
 
-# Authentication Workflow
+## Authentication Workflow
 
 ```text
 User
@@ -313,7 +313,7 @@ Successful authentication does not automatically grant unrestricted access.
 
 ---
 
-# Authorization
+## Authorization
 
 Authorization answers:
 
@@ -331,7 +331,7 @@ Authorization occurs after successful authentication.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 | Authentication | Authorization |
 |---------------|---------------|
@@ -344,7 +344,7 @@ Both processes are essential.
 
 ---
 
-# Security Identifier (SID)
+## Security Identifier (SID)
 
 Every Windows security principal receives a unique **Security Identifier (SID).**
 
@@ -366,7 +366,7 @@ Windows uses SIDs internally rather than usernames.
 
 ---
 
-# SID Structure
+## SID Structure
 
 ```text
 Revision
@@ -388,7 +388,7 @@ The RID uniquely identifies the account within a domain or local system.
 
 ---
 
-# Relative Identifier (RID)
+## Relative Identifier (RID)
 
 Common RIDs include:
 
@@ -403,7 +403,7 @@ These identifiers are consistent across Windows domains.
 
 ---
 
-# Security Principals
+## Security Principals
 
 Security principals include:
 
@@ -417,7 +417,7 @@ Each principal possesses its own SID.
 
 ---
 
-# Access Token
+## Access Token
 
 After authentication, Windows creates an **Access Token**.
 
@@ -433,7 +433,7 @@ Windows uses the access token during authorization.
 
 ---
 
-# Access Token Workflow
+## Access Token Workflow
 
 ```text
 User Login
@@ -463,7 +463,7 @@ Every process launched by a user inherits that user's access token unless elevat
 
 ---
 
-# Access Check
+## Access Check
 
 Whenever a protected resource is accessed:
 
@@ -487,7 +487,7 @@ Windows compares the user's token with the resource's permissions.
 
 ---
 
-# Local Security Authority (LSA)
+## Local Security Authority (LSA)
 
 The **Local Security Authority (LSA)** is responsible for:
 
@@ -507,7 +507,7 @@ LSA is one of the most critical Windows security components.
 
 ---
 
-# Security Accounts Manager (SAM)
+## Security Accounts Manager (SAM)
 
 SAM stores:
 
@@ -525,7 +525,7 @@ Direct access is restricted while Windows is running.
 
 ---
 
-# Active Directory Authentication
+## Active Directory Authentication
 
 In a domain environment:
 
@@ -553,7 +553,7 @@ Active Directory replaces local authentication for domain accounts.
 
 ---
 
-# User Account Control (UAC)
+## User Account Control (UAC)
 
 UAC reduces the risk of unintended administrative actions.
 
@@ -583,7 +583,7 @@ UAC helps prevent silent privilege escalation.
 
 ---
 
-# Integrity Levels
+## Integrity Levels
 
 Windows assigns integrity levels to processes.
 
@@ -598,7 +598,7 @@ Higher integrity processes can perform more privileged operations.
 
 ---
 
-# Windows Security Model
+## Windows Security Model
 
 ```text
 User
@@ -628,7 +628,7 @@ The Security Reference Monitor evaluates every access request.
 
 ---
 
-# Enterprise Authentication Example
+## Enterprise Authentication Example
 
 An employee signs in using Windows Hello for Business.
 
@@ -658,7 +658,7 @@ This reduces reliance on passwords while improving security.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers commonly target:
 
@@ -672,7 +672,7 @@ Defenders protect these components using technologies such as Credential Guard, 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong Windows security provides:
 
@@ -687,7 +687,7 @@ Security failures can result in data breaches, downtime, financial loss, and rep
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Enforce Multi-Factor Authentication (MFA).
 - Implement least privilege.
@@ -702,9 +702,9 @@ Security failures can result in data breaches, downtime, financial loss, and rep
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Current User SID
+### Lab 1 — View Current User SID
 
 Run:
 
@@ -719,7 +719,7 @@ Record:
 
 ---
 
-## Lab 2 — View Group Membership
+### Lab 2 — View Group Membership
 
 Run:
 
@@ -731,7 +731,7 @@ Identify all security groups associated with the current user.
 
 ---
 
-## Lab 3 — Display Current Privileges
+### Lab 3 — Display Current Privileges
 
 Run:
 
@@ -743,7 +743,7 @@ Review enabled and disabled privileges.
 
 ---
 
-## Lab 4 — Examine UAC
+### Lab 4 — Examine UAC
 
 Attempt to open **Command Prompt** as Administrator.
 
@@ -755,7 +755,7 @@ Observe:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows Security is built on layered defense principles.
 - Authentication verifies identity; authorization determines permissions.
@@ -768,7 +768,7 @@ Observe:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between authentication and authorization?
 2. What is a Security Identifier (SID)?
@@ -783,7 +783,7 @@ Observe:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Security Documentation
@@ -794,13 +794,13 @@ Observe:
 
 ---
 
-# 18-Windows-Security.md
+## 18-Windows-Security.md
 
-# Part 2 — Microsoft Defender Antivirus, SmartScreen, Secure Boot, TPM, BitLocker, Windows Hello, and Credential Protection
+## Part 2 — Microsoft Defender Antivirus, SmartScreen, Secure Boot, TPM, BitLocker, Windows Hello, and Credential Protection
 
 ---
 
-# Introduction
+## Introduction
 
 Modern Windows includes multiple built-in security technologies that protect the system before, during, and after startup.
 
@@ -819,7 +819,7 @@ Rather than relying on a single security solution, Windows uses several integrat
 
 ---
 
-# Windows Built-in Security Stack
+## Windows Built-in Security Stack
 
 ```text
 Applications
@@ -861,7 +861,7 @@ Each component protects against different attack vectors.
 
 ---
 
-# Microsoft Defender Antivirus
+## Microsoft Defender Antivirus
 
 Microsoft Defender Antivirus is Windows' built-in anti-malware solution.
 
@@ -879,7 +879,7 @@ It is enabled by default on supported Windows editions.
 
 ---
 
-# Defender Protection Workflow
+## Defender Protection Workflow
 
 ```text
 File Created
@@ -911,7 +911,7 @@ Threats are evaluated using signatures, heuristics, and cloud intelligence.
 
 ---
 
-# Types of Defender Scans
+## Types of Defender Scans
 
 | Scan Type | Purpose |
 |------------|----------|
@@ -922,7 +922,7 @@ Threats are evaluated using signatures, heuristics, and cloud intelligence.
 
 ---
 
-# Real-Time Protection
+## Real-Time Protection
 
 Real-time protection continuously monitors:
 
@@ -937,7 +937,7 @@ Every new file is evaluated before execution whenever possible.
 
 ---
 
-# Cloud-Delivered Protection
+## Cloud-Delivered Protection
 
 Cloud protection provides:
 
@@ -970,7 +970,7 @@ Cloud intelligence enables faster response to newly discovered threats.
 
 ---
 
-# Behavioral Monitoring
+## Behavioral Monitoring
 
 Instead of relying only on signatures, Defender also analyzes behavior.
 
@@ -986,7 +986,7 @@ Behavioral detection helps identify previously unknown malware.
 
 ---
 
-# Quarantine
+## Quarantine
 
 Detected threats are isolated.
 
@@ -1010,7 +1010,7 @@ Administrators can review, restore (if appropriate), or permanently remove quara
 
 ---
 
-# Scheduled Protection
+## Scheduled Protection
 
 Organizations commonly schedule:
 
@@ -1023,7 +1023,7 @@ Scheduling balances protection with system performance.
 
 ---
 
-# Microsoft Defender SmartScreen
+## Microsoft Defender SmartScreen
 
 SmartScreen protects users from:
 
@@ -1040,7 +1040,7 @@ It integrates with:
 
 ---
 
-# SmartScreen Workflow
+## SmartScreen Workflow
 
 ```text
 Downloaded File
@@ -1068,7 +1068,7 @@ Users are warned before running suspicious applications.
 
 ---
 
-# Reputation-Based Protection
+## Reputation-Based Protection
 
 Windows evaluates:
 
@@ -1081,7 +1081,7 @@ Low-reputation files may generate warnings even if they are not confirmed malwar
 
 ---
 
-# Potentially Unwanted Applications (PUA)
+## Potentially Unwanted Applications (PUA)
 
 Microsoft Defender can block:
 
@@ -1094,7 +1094,7 @@ Although not always malicious, PUAs can reduce security and system stability.
 
 ---
 
-# Tamper Protection
+## Tamper Protection
 
 Tamper Protection prevents unauthorized changes to Microsoft Defender settings.
 
@@ -1109,7 +1109,7 @@ This helps malware avoid disabling security controls.
 
 ---
 
-# Secure Boot
+## Secure Boot
 
 Secure Boot protects the startup process.
 
@@ -1139,7 +1139,7 @@ Unsigned or modified bootloaders are blocked.
 
 ---
 
-# Benefits of Secure Boot
+## Benefits of Secure Boot
 
 Secure Boot helps defend against:
 
@@ -1152,7 +1152,7 @@ It establishes trust before Windows begins loading.
 
 ---
 
-# Trusted Platform Module (TPM)
+## Trusted Platform Module (TPM)
 
 TPM is a dedicated hardware security processor.
 
@@ -1168,7 +1168,7 @@ Modern enterprise devices typically include TPM 2.0.
 
 ---
 
-# TPM Architecture
+## TPM Architecture
 
 ```text
 CPU
@@ -1190,7 +1190,7 @@ Keys stored within the TPM are significantly better protected than software-only
 
 ---
 
-# TPM Capabilities
+## TPM Capabilities
 
 | Capability | Description |
 |------------|-------------|
@@ -1202,7 +1202,7 @@ Keys stored within the TPM are significantly better protected than software-only
 
 ---
 
-# BitLocker Drive Encryption
+## BitLocker Drive Encryption
 
 BitLocker encrypts entire storage volumes.
 
@@ -1217,7 +1217,7 @@ BitLocker protects data at rest.
 
 ---
 
-# BitLocker Workflow
+## BitLocker Workflow
 
 ```text
 Disk
@@ -1251,7 +1251,7 @@ Encryption occurs transparently after successful authentication.
 
 ---
 
-# BitLocker Authentication Methods
+## BitLocker Authentication Methods
 
 Common methods include:
 
@@ -1264,7 +1264,7 @@ Organizations choose methods based on security requirements.
 
 ---
 
-# Recovery Key
+## Recovery Key
 
 A BitLocker Recovery Key allows access when normal authentication fails.
 
@@ -1279,7 +1279,7 @@ Recovery keys should be securely backed up.
 
 ---
 
-# BitLocker Enterprise Management
+## BitLocker Enterprise Management
 
 Organizations commonly store recovery keys in:
 
@@ -1291,7 +1291,7 @@ Centralized recovery simplifies device support.
 
 ---
 
-# Windows Hello
+## Windows Hello
 
 Windows Hello replaces traditional passwords with stronger authentication.
 
@@ -1305,7 +1305,7 @@ Authentication occurs locally and can integrate with enterprise identity systems
 
 ---
 
-# Windows Hello Workflow
+## Windows Hello Workflow
 
 ```text
 User
@@ -1331,7 +1331,7 @@ Biometric information remains securely protected on the device.
 
 ---
 
-# Windows Hello for Business
+## Windows Hello for Business
 
 Windows Hello for Business supports enterprise authentication using:
 
@@ -1344,7 +1344,7 @@ It significantly reduces password-related attacks.
 
 ---
 
-# Credential Theft
+## Credential Theft
 
 Attackers frequently attempt to steal:
 
@@ -1358,7 +1358,7 @@ Windows provides dedicated technologies to reduce this risk.
 
 ---
 
-# Credential Guard
+## Credential Guard
 
 Credential Guard isolates sensitive authentication secrets.
 
@@ -1372,7 +1372,7 @@ Credential Guard leverages virtualization-based security (VBS).
 
 ---
 
-# Credential Guard Architecture
+## Credential Guard Architecture
 
 ```text
 Applications
@@ -1398,7 +1398,7 @@ Even highly privileged malware has difficulty accessing isolated credentials.
 
 ---
 
-# Benefits of Credential Guard
+## Benefits of Credential Guard
 
 Credential Guard helps prevent:
 
@@ -1411,7 +1411,7 @@ It is highly recommended for enterprise endpoints.
 
 ---
 
-# Security Health Dashboard
+## Security Health Dashboard
 
 Windows Security provides centralized management for:
 
@@ -1427,7 +1427,7 @@ Administrators can quickly assess overall security status.
 
 ---
 
-# Enterprise Security Example
+## Enterprise Security Example
 
 An employee downloads an unknown executable.
 
@@ -1465,7 +1465,7 @@ Multiple security layers prevent execution.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Modern attacks frequently target:
 
@@ -1479,7 +1479,7 @@ Windows security technologies significantly reduce attack opportunities when cor
 
 ---
 
-# Business Impact
+## Business Impact
 
 Built-in Windows protections help organizations:
 
@@ -1494,7 +1494,7 @@ Layered security directly supports business continuity.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Enable Microsoft Defender Antivirus.
 - Keep security intelligence updated automatically.
@@ -1509,9 +1509,9 @@ Layered security directly supports business continuity.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Verify Microsoft Defender Status
+### Lab 1 — Verify Microsoft Defender Status
 
 Open:
 
@@ -1531,7 +1531,7 @@ Review:
 
 ---
 
-## Lab 2 — Verify Secure Boot
+### Lab 2 — Verify Secure Boot
 
 Run:
 
@@ -1543,7 +1543,7 @@ Record whether Secure Boot is enabled.
 
 ---
 
-## Lab 3 — Check BitLocker Status
+### Lab 3 — Check BitLocker Status
 
 Run:
 
@@ -1559,7 +1559,7 @@ Record:
 
 ---
 
-## Lab 4 — Verify TPM
+### Lab 4 — Verify TPM
 
 Run:
 
@@ -1576,7 +1576,7 @@ Record:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Microsoft Defender provides integrated malware protection.
 - SmartScreen protects users from malicious downloads and phishing.
@@ -1588,7 +1588,7 @@ Record:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Microsoft Defender Antivirus?
 2. How does SmartScreen improve security?
@@ -1603,7 +1603,7 @@ Record:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Defender Documentation
@@ -1617,13 +1617,13 @@ Record:
 
 ---
 
-# 18-Windows-Security.md
+## 18-Windows-Security.md
 
-# Part 3 — Virtualization-Based Security (VBS), Device Guard, Windows Defender Application Control (WDAC), AppLocker, Exploit Protection, Windows Sandbox, and Enterprise Endpoint Protection
+## Part 3 — Virtualization-Based Security (VBS), Device Guard, Windows Defender Application Control (WDAC), AppLocker, Exploit Protection, Windows Sandbox, and Enterprise Endpoint Protection
 
 ---
 
-# Introduction
+## Introduction
 
 Modern cyberattacks frequently bypass traditional antivirus solutions by exploiting:
 
@@ -1639,7 +1639,7 @@ To defend against these attacks, Windows provides advanced security technologies
 
 ---
 
-# Modern Windows Security Layers
+## Modern Windows Security Layers
 
 ```text
 User
@@ -1677,7 +1677,7 @@ Each layer independently reduces attack opportunities.
 
 ---
 
-# Virtualization-Based Security (VBS)
+## Virtualization-Based Security (VBS)
 
 Virtualization-Based Security (VBS) uses the Windows Hypervisor to create isolated memory regions that are inaccessible to normal operating system processes.
 
@@ -1685,7 +1685,7 @@ Instead of trusting the operating system alone, Windows creates a protected exec
 
 ---
 
-# VBS Architecture
+## VBS Architecture
 
 ```text
 Applications
@@ -1711,7 +1711,7 @@ Security-sensitive components execute inside the isolated environment.
 
 ---
 
-# Benefits of VBS
+## Benefits of VBS
 
 VBS helps protect against:
 
@@ -1725,7 +1725,7 @@ It establishes stronger isolation between security components and the operating 
 
 ---
 
-# Virtual Secure Mode (VSM)
+## Virtual Secure Mode (VSM)
 
 Virtual Secure Mode is the isolated environment created by VBS.
 
@@ -1739,7 +1739,7 @@ Attackers executing within the normal operating system cannot directly access me
 
 ---
 
-# Secure Kernel
+## Secure Kernel
 
 The Secure Kernel operates alongside the Windows kernel.
 
@@ -1754,7 +1754,7 @@ It communicates with the normal Windows kernel through controlled interfaces.
 
 ---
 
-# Hypervisor-Protected Code Integrity (HVCI)
+## Hypervisor-Protected Code Integrity (HVCI)
 
 HVCI enforces kernel-mode code integrity using virtualization.
 
@@ -1768,7 +1768,7 @@ Only trusted and verified kernel code is allowed to execute.
 
 ---
 
-# HVCI Workflow
+## HVCI Workflow
 
 ```text
 Driver Loads
@@ -1794,7 +1794,7 @@ No → Block
 
 ---
 
-# Device Guard
+## Device Guard
 
 Historically, Device Guard referred to a collection of enterprise technologies including:
 
@@ -1806,7 +1806,7 @@ In current Windows versions, its capabilities are primarily delivered through **
 
 ---
 
-# Windows Defender Application Control (WDAC)
+## Windows Defender Application Control (WDAC)
 
 WDAC controls which applications are allowed to execute.
 
@@ -1823,7 +1823,7 @@ Anything not explicitly permitted can be blocked.
 
 ---
 
-# WDAC Workflow
+## WDAC Workflow
 
 ```text
 Application Launch
@@ -1847,7 +1847,7 @@ Application allowlisting significantly reduces malware execution.
 
 ---
 
-# Advantages of WDAC
+## Advantages of WDAC
 
 Benefits include:
 
@@ -1861,7 +1861,7 @@ WDAC is considerably stronger than traditional blacklist-based approaches.
 
 ---
 
-# Application Allowlisting
+## Application Allowlisting
 
 Traditional antivirus:
 
@@ -1891,7 +1891,7 @@ Allowlisting assumes software is untrusted unless explicitly approved.
 
 ---
 
-# AppLocker
+## AppLocker
 
 AppLocker is a Windows feature that restricts application execution using configurable rules.
 
@@ -1907,7 +1907,7 @@ AppLocker is commonly deployed through Group Policy.
 
 ---
 
-# AppLocker Rule Types
+## AppLocker Rule Types
 
 | Rule Type | Example |
 |-----------|----------|
@@ -1918,7 +1918,7 @@ AppLocker is commonly deployed through Group Policy.
 
 ---
 
-# AppLocker Architecture
+## AppLocker Architecture
 
 ```text
 Application
@@ -1942,7 +1942,7 @@ Policies should be tested in audit mode before enforcement.
 
 ---
 
-# WDAC vs AppLocker
+## WDAC vs AppLocker
 
 | WDAC | AppLocker |
 |------|-----------|
@@ -1955,7 +1955,7 @@ Many enterprises deploy WDAC for highly secure systems and AppLocker for adminis
 
 ---
 
-# Exploit Protection
+## Exploit Protection
 
 Exploit Protection reduces the effectiveness of software vulnerabilities.
 
@@ -1970,7 +1970,7 @@ Many protections operate automatically.
 
 ---
 
-# Common Exploit Mitigations
+## Common Exploit Mitigations
 
 Examples include:
 
@@ -1984,7 +1984,7 @@ Together they significantly increase attack complexity.
 
 ---
 
-# Data Execution Prevention (DEP)
+## Data Execution Prevention (DEP)
 
 DEP prevents execution of code stored in memory regions intended only for data.
 
@@ -2004,7 +2004,7 @@ DEP helps stop many memory-based exploits.
 
 ---
 
-# Address Space Layout Randomization (ASLR)
+## Address Space Layout Randomization (ASLR)
 
 ASLR randomizes memory locations used by applications.
 
@@ -2040,7 +2040,7 @@ Randomization reduces the reliability of memory corruption attacks.
 
 ---
 
-# Control Flow Guard (CFG)
+## Control Flow Guard (CFG)
 
 CFG validates indirect function calls.
 
@@ -2066,7 +2066,7 @@ CFG disrupts many exploit chains that attempt to redirect execution flow.
 
 ---
 
-# Windows Sandbox
+## Windows Sandbox
 
 Windows Sandbox provides a disposable virtual Windows environment.
 
@@ -2081,7 +2081,7 @@ Closing the Sandbox permanently removes all changes.
 
 ---
 
-# Windows Sandbox Workflow
+## Windows Sandbox Workflow
 
 ```text
 Host Windows
@@ -2107,7 +2107,7 @@ Sandbox is useful for testing unknown applications safely.
 
 ---
 
-# Attack Surface Reduction (ASR)
+## Attack Surface Reduction (ASR)
 
 Microsoft Defender includes Attack Surface Reduction rules.
 
@@ -2123,7 +2123,7 @@ ASR reduces opportunities for common attack techniques.
 
 ---
 
-# Controlled Folder Access
+## Controlled Folder Access
 
 Controlled Folder Access protects important directories from ransomware.
 
@@ -2137,7 +2137,7 @@ Untrusted applications attempting to modify protected files are blocked unless e
 
 ---
 
-# Enterprise Endpoint Protection
+## Enterprise Endpoint Protection
 
 Enterprise endpoint protection combines:
 
@@ -2155,7 +2155,7 @@ Together they create a layered endpoint defense strategy.
 
 ---
 
-# Endpoint Security Workflow
+## Endpoint Security Workflow
 
 ```text
 User Action
@@ -2193,7 +2193,7 @@ Multiple security layers work together to reduce risk.
 
 ---
 
-# Enterprise Security Example
+## Enterprise Security Example
 
 A user downloads an unsigned executable.
 
@@ -2227,7 +2227,7 @@ The attack is prevented before execution.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Advanced attackers frequently attempt:
 
@@ -2242,7 +2242,7 @@ Windows security technologies reduce these attack opportunities by enforcing tru
 
 ---
 
-# Business Impact
+## Business Impact
 
 Advanced endpoint protections help organizations:
 
@@ -2257,7 +2257,7 @@ Layered endpoint protection is essential for modern enterprise environments.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Enable Virtualization-Based Security on supported hardware.
 - Deploy Hypervisor-Protected Code Integrity (HVCI).
@@ -2272,9 +2272,9 @@ Layered endpoint protection is essential for modern enterprise environments.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Verify VBS Status
+### Lab 1 — Verify VBS Status
 
 Run:
 
@@ -2290,7 +2290,7 @@ Record:
 
 ---
 
-## Lab 2 — Review Exploit Protection
+### Lab 2 — Review Exploit Protection
 
 Open:
 
@@ -2310,7 +2310,7 @@ Review system-wide exploit mitigation settings.
 
 ---
 
-## Lab 3 — Launch Windows Sandbox
+### Lab 3 — Launch Windows Sandbox
 
 If available:
 
@@ -2321,7 +2321,7 @@ If available:
 
 ---
 
-## Lab 4 — Review Controlled Folder Access
+### Lab 4 — Review Controlled Folder Access
 
 Navigate to:
 
@@ -2341,7 +2341,7 @@ Review Controlled Folder Access configuration.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Virtualization-Based Security isolates critical security components using the Windows Hypervisor.
 - Virtual Secure Mode protects sensitive operating system services.
@@ -2354,7 +2354,7 @@ Review Controlled Folder Access configuration.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Virtualization-Based Security (VBS)?
 2. What is Virtual Secure Mode (VSM)?
@@ -2369,7 +2369,7 @@ Review Controlled Folder Access configuration.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Defender Application Control Documentation
@@ -2383,13 +2383,13 @@ Review Controlled Folder Access configuration.
 
 ---
 
-# 18-Windows-Security.md
+## 18-Windows-Security.md
 
-# Part 4 — Enterprise Windows Security Strategy, Security Hardening, Incident Response, Best Practices, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Windows Security Strategy, Security Hardening, Incident Response, Best Practices, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Windows security is most effective when security controls work together as part of a comprehensive enterprise security strategy.
 
@@ -2408,7 +2408,7 @@ A layered approach significantly improves resilience against modern cyber threat
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```text
 Users
@@ -2458,7 +2458,7 @@ Every layer contributes to the organization's overall security posture.
 
 ---
 
-# Windows Security Lifecycle
+## Windows Security Lifecycle
 
 ```text
 Identify Assets
@@ -2496,7 +2496,7 @@ Security is a continuous lifecycle rather than a one-time deployment.
 
 ---
 
-# Security Hardening
+## Security Hardening
 
 Security hardening is the process of reducing the attack surface of Windows systems.
 
@@ -2513,7 +2513,7 @@ Hardening minimizes opportunities for attackers.
 
 ---
 
-# Attack Surface Reduction
+## Attack Surface Reduction
 
 Attack surface consists of all possible entry points an attacker could exploit.
 
@@ -2531,7 +2531,7 @@ Reducing the attack surface lowers overall risk.
 
 ---
 
-# Windows Hardening Checklist
+## Windows Hardening Checklist
 
 | Control | Recommendation |
 |----------|----------------|
@@ -2548,7 +2548,7 @@ Reducing the attack surface lowers overall risk.
 
 ---
 
-# Patch Management
+## Patch Management
 
 Security patches correct software vulnerabilities.
 
@@ -2582,7 +2582,7 @@ Timely patching is one of the most effective security controls.
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Organizations continuously identify and remediate vulnerabilities.
 
@@ -2616,7 +2616,7 @@ Critical vulnerabilities should be addressed as quickly as operationally feasibl
 
 ---
 
-# Secure Configuration Baselines
+## Secure Configuration Baselines
 
 Organizations commonly adopt standardized baselines.
 
@@ -2631,7 +2631,7 @@ Standardized configurations improve consistency and security.
 
 ---
 
-# Administrative Security
+## Administrative Security
 
 Administrative accounts should receive additional protection.
 
@@ -2648,7 +2648,7 @@ Administrative accounts should not be used for routine daily tasks.
 
 ---
 
-# Password Security
+## Password Security
 
 Strong password practices include:
 
@@ -2662,7 +2662,7 @@ Modern guidance favors longer passwords over complex but short passwords.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 Authentication factors include:
 
@@ -2676,7 +2676,7 @@ Combining multiple factors significantly reduces account compromise risk.
 
 ---
 
-# Privileged Access Management (PAM)
+## Privileged Access Management (PAM)
 
 PAM protects high-value administrative accounts.
 
@@ -2692,7 +2692,7 @@ PAM reduces exposure of privileged credentials.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Continuous monitoring should include:
 
@@ -2709,7 +2709,7 @@ Monitoring supports early threat detection.
 
 ---
 
-# Incident Response Lifecycle
+## Incident Response Lifecycle
 
 ```text
 Preparation
@@ -2743,7 +2743,7 @@ A documented response process reduces recovery time.
 
 ---
 
-# Windows Incident Investigation
+## Windows Incident Investigation
 
 Typical investigation includes:
 
@@ -2760,7 +2760,7 @@ Multiple evidence sources should be correlated before reaching conclusions.
 
 ---
 
-# Malware Response
+## Malware Response
 
 Example workflow:
 
@@ -2800,7 +2800,7 @@ Evidence should be preserved before remediation whenever practical.
 
 ---
 
-# Ransomware Response
+## Ransomware Response
 
 Recommended actions:
 
@@ -2816,7 +2816,7 @@ Avoid deleting forensic evidence before analysis.
 
 ---
 
-# Insider Threats
+## Insider Threats
 
 Potential indicators include:
 
@@ -2831,7 +2831,7 @@ Behavioral monitoring assists in identifying insider threats.
 
 ---
 
-# Security Awareness
+## Security Awareness
 
 Technical controls alone are insufficient.
 
@@ -2848,7 +2848,7 @@ User awareness is a critical defense layer.
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Organizations should maintain:
 
@@ -2879,7 +2879,7 @@ Backups are essential for disaster recovery and ransomware resilience.
 
 ---
 
-# Security Documentation
+## Security Documentation
 
 Maintain documentation for:
 
@@ -2895,7 +2895,7 @@ Documentation supports consistency and compliance.
 
 ---
 
-# Enterprise Security Operations
+## Enterprise Security Operations
 
 ```text
 Endpoints
@@ -2929,7 +2929,7 @@ Modern enterprises integrate operational and security monitoring.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An employee receives a phishing email containing a malicious attachment.
 
@@ -2971,7 +2971,7 @@ Multiple security layers prevent the attack from succeeding.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Modern attackers commonly use:
 
@@ -2987,7 +2987,7 @@ Windows security features significantly increase the effort required for success
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong Windows security enables organizations to:
 
@@ -3003,7 +3003,7 @@ Security investments reduce both operational and reputational risk.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Apply Microsoft Security Baselines.
 - Enable Secure Boot, TPM, and BitLocker.
@@ -3018,9 +3018,9 @@ Security investments reduce both operational and reputational risk.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review Windows Security
+### Lab 1 — Review Windows Security
 
 Open:
 
@@ -3039,7 +3039,7 @@ Document any recommendations shown.
 
 ---
 
-## Lab 2 — Review Local Security Policy
+### Lab 2 — Review Local Security Policy
 
 Open:
 
@@ -3057,7 +3057,7 @@ Document current settings.
 
 ---
 
-## Lab 3 — Verify Security Features
+### Lab 3 — Verify Security Features
 
 Run:
 
@@ -3077,7 +3077,7 @@ Verify:
 
 ---
 
-## Lab 4 — Create a Security Assessment Checklist
+### Lab 4 — Create a Security Assessment Checklist
 
 Develop a checklist covering:
 
@@ -3096,7 +3096,7 @@ Use the checklist during future system reviews.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3126,7 +3126,7 @@ These technologies work together to provide layered protection against modern th
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows implements defense in depth using multiple integrated security controls.
 - Authentication and authorization are separate but complementary processes.
@@ -3137,7 +3137,7 @@ These technologies work together to provide layered protection against modern th
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Explain the Windows security architecture.
 2. What is the difference between authentication and authorization?
@@ -3152,7 +3152,7 @@ These technologies work together to provide layered protection against modern th
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Security Documentation
@@ -3167,7 +3167,7 @@ These technologies work together to provide layered protection against modern th
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 18 – Windows Security**.
 

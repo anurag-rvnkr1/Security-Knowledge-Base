@@ -33,7 +33,7 @@ The goal is to answer:
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Traditional endpoint security often relies heavily on known signatures.
 
@@ -109,7 +109,7 @@ This context is the foundation of EDR threat hunting.
 
 ---
 
-# EDR Architecture
+## EDR Architecture
 
 A typical EDR architecture looks like:
 
@@ -155,9 +155,9 @@ A typical EDR architecture looks like:
 
 ---
 
-# EPP vs EDR vs XDR
+## EPP vs EDR vs XDR
 
-## EPP
+### EPP
 
 Endpoint Protection Platform primarily focuses on prevention.
 
@@ -184,7 +184,7 @@ EPP
 
 ---
 
-## EDR
+### EDR
 
 EDR emphasizes visibility, investigation, detection, and response.
 
@@ -208,7 +208,7 @@ EDR allows analysts to reconstruct endpoint activity.
 
 ---
 
-## XDR
+### XDR
 
 XDR extends the detection and investigation model across multiple security domains.
 
@@ -225,7 +225,7 @@ The exact capabilities vary between vendors.
 
 ---
 
-# Endpoint Telemetry
+## Endpoint Telemetry
 
 A threat hunter should understand the telemetry available before designing a hunt.
 
@@ -252,7 +252,7 @@ Telemetry quality determines hunting quality.
 
 ---
 
-# Endpoint Investigation Model
+## Endpoint Investigation Model
 
 A useful investigation model is:
 
@@ -283,7 +283,7 @@ A suspicious process should therefore never be investigated in isolation.
 
 ---
 
-# Process Tree Hunting
+## Process Tree Hunting
 
 Process trees are one of the most valuable EDR hunting capabilities.
 
@@ -313,7 +313,7 @@ A hunter should ask:
 
 ---
 
-# Parent-Child Relationships
+## Parent-Child Relationships
 
 Commonly suspicious relationships include:
 
@@ -366,7 +366,7 @@ could be legitimate.
 
 ---
 
-# Command-Line Hunting
+## Command-Line Hunting
 
 Command-line arguments frequently provide the missing context.
 
@@ -402,7 +402,7 @@ Avoid treating one command-line switch as proof of compromise.
 
 ---
 
-# PowerShell Hunting
+## PowerShell Hunting
 
 PowerShell is widely used by administrators and attackers.
 
@@ -441,7 +441,7 @@ What happened afterward?
 
 ---
 
-# Script Execution Hunting
+## Script Execution Hunting
 
 Important script interpreters include:
 
@@ -479,7 +479,7 @@ alone.
 
 ---
 
-# Living-off-the-Land Hunting
+## Living-off-the-Land Hunting
 
 Living-off-the-Land (LotL) activity uses legitimate operating-system utilities.
 
@@ -535,7 +535,7 @@ Frequency
 
 ---
 
-# File Activity Hunting
+## File Activity Hunting
 
 EDR platforms can provide visibility into:
 
@@ -579,7 +579,7 @@ Network activity
 
 ---
 
-# Temporary Directory Hunting
+## Temporary Directory Hunting
 
 Attackers may stage files in temporary or user-writable locations.
 
@@ -617,7 +617,7 @@ The sequence is more important than the directory alone.
 
 ---
 
-# Registry Hunting
+## Registry Hunting
 
 Windows persistence and configuration changes can involve registry activity.
 
@@ -652,7 +652,7 @@ Was the process expected?
 
 ---
 
-# Network Hunting
+## Network Hunting
 
 Endpoint network telemetry can reveal:
 
@@ -687,7 +687,7 @@ Useful investigation questions:
 
 ---
 
-# Process-to-Network Correlation
+## Process-to-Network Correlation
 
 Consider:
 
@@ -707,7 +707,7 @@ The endpoint provides behavioral context.
 
 ---
 
-# Authentication Context
+## Authentication Context
 
 Endpoint telemetry should be correlated with identity.
 
@@ -748,7 +748,7 @@ This helps identify:
 
 ---
 
-# Privilege Context
+## Privilege Context
 
 Important process attributes may include:
 
@@ -779,7 +779,7 @@ This should trigger deeper investigation.
 
 ---
 
-# Endpoint Baselines
+## Endpoint Baselines
 
 Threat hunting becomes more effective when normal behavior is understood.
 
@@ -821,7 +821,7 @@ Baselines should consider:
 
 ---
 
-# Rarity-Based Hunting
+## Rarity-Based Hunting
 
 Rare activity can be useful as a hunting signal.
 
@@ -856,7 +856,7 @@ However:
 
 ---
 
-# Behavioral Detection
+## Behavioral Detection
 
 Behavioral detection combines multiple signals.
 
@@ -884,7 +884,7 @@ The combined chain is much more suspicious.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 A mature SOC converts successful hunts into detections.
 
@@ -928,7 +928,7 @@ A detection should have:
 
 ---
 
-# Example Detection Concept
+## Example Detection Concept
 
 Detection objective:
 
@@ -974,7 +974,7 @@ File From Internet Zone
 
 ---
 
-# Microsoft Defender Hunting Concepts
+## Microsoft Defender Hunting Concepts
 
 Microsoft Defender environments commonly expose endpoint telemetry suitable for advanced hunting.
 
@@ -1006,7 +1006,7 @@ This is useful for finding PowerShell execution and its initiating process.
 
 ---
 
-# PowerShell Parent-Process Hunt
+## PowerShell Parent-Process Hunt
 
 ```kusto
 DeviceProcessEvents
@@ -1028,7 +1028,7 @@ This is a starting point, not a complete production detection.
 
 ---
 
-# Network Correlation
+## Network Correlation
 
 A useful workflow is:
 
@@ -1055,7 +1055,7 @@ The objective is to reconstruct the execution chain.
 
 ---
 
-# CrowdStrike-Style Investigation Concepts
+## CrowdStrike-Style Investigation Concepts
 
 EDR platforms such as CrowdStrike provide endpoint telemetry and process-centric investigation capabilities.
 
@@ -1091,7 +1091,7 @@ Vendor terminology and query syntax vary by product version and deployment.
 
 ---
 
-# SentinelOne Investigation Concepts
+## SentinelOne Investigation Concepts
 
 SentinelOne-style endpoint investigations commonly emphasize:
 
@@ -1118,7 +1118,7 @@ The important principle is to understand the complete behavioral chain rather th
 
 ---
 
-# osquery
+## osquery
 
 osquery exposes operating-system state through SQL-like queries.
 
@@ -1171,7 +1171,7 @@ Scheduled tasks and persistence can also be investigated depending on operating 
 
 ---
 
-# Velociraptor
+## Velociraptor
 
 Velociraptor is an open-source digital forensics and endpoint visibility platform.
 
@@ -1208,7 +1208,7 @@ It is particularly useful when a SOC needs deeper endpoint visibility beyond tra
 
 ---
 
-# EDR Evasion Concepts
+## EDR Evasion Concepts
 
 Threat hunters should understand how attackers attempt to reduce visibility.
 
@@ -1250,7 +1250,7 @@ A telemetry gap can itself become a detection signal.
 
 ---
 
-# Security Tool Tampering
+## Security Tool Tampering
 
 Monitor changes involving:
 
@@ -1276,7 +1276,7 @@ What happened afterward?
 
 ---
 
-# Process Injection Hunting
+## Process Injection Hunting
 
 Process injection attempts to execute code within another process context.
 
@@ -1309,7 +1309,7 @@ Process A
 
 ---
 
-# Masquerading
+## Masquerading
 
 Attackers may name malicious files after legitimate programs.
 
@@ -1347,7 +1347,7 @@ running from an unexpected user-writable directory should receive additional scr
 
 ---
 
-# Hash Hunting
+## Hash Hunting
 
 Hashes can be used for:
 
@@ -1381,7 +1381,7 @@ Hash
 
 ---
 
-# Prevalence Hunting
+## Prevalence Hunting
 
 One of the most useful questions in EDR is:
 
@@ -1404,7 +1404,7 @@ A rare artifact may be more interesting than a widely deployed corporate applica
 
 ---
 
-# First-Seen / Last-Seen Analysis
+## First-Seen / Last-Seen Analysis
 
 Important questions:
 
@@ -1429,7 +1429,7 @@ This helps determine the probable intrusion window.
 
 ---
 
-# Endpoint Timeline Reconstruction
+## Endpoint Timeline Reconstruction
 
 A typical timeline may look like:
 
@@ -1463,9 +1463,9 @@ This is significantly more useful than examining alerts independently.
 
 ---
 
-# Investigation Workflow
+## Investigation Workflow
 
-## Step 1 — Validate the Alert
+### Step 1 — Validate the Alert
 
 Determine:
 
@@ -1479,7 +1479,7 @@ Which process?
 
 ---
 
-## Step 2 — Build the Process Tree
+### Step 2 — Build the Process Tree
 
 ```text
 Root Process
@@ -1491,7 +1491,7 @@ Root Process
 
 ---
 
-## Step 3 — Analyze Command Line
+### Step 3 — Analyze Command Line
 
 Look for:
 
@@ -1503,7 +1503,7 @@ Look for:
 
 ---
 
-## Step 4 — Analyze Files
+### Step 4 — Analyze Files
 
 Check:
 
@@ -1518,7 +1518,7 @@ Prevalence
 
 ---
 
-## Step 5 — Analyze Network
+### Step 5 — Analyze Network
 
 Check:
 
@@ -1534,7 +1534,7 @@ Reputation
 
 ---
 
-## Step 6 — Analyze User
+### Step 6 — Analyze User
 
 Determine:
 
@@ -1547,7 +1547,7 @@ Was there unusual authentication?
 
 ---
 
-## Step 7 — Search for Persistence
+### Step 7 — Search for Persistence
 
 Investigate:
 
@@ -1563,7 +1563,7 @@ SSH Keys
 
 ---
 
-## Step 8 — Scope the Incident
+### Step 8 — Scope the Incident
 
 Search across:
 
@@ -1580,7 +1580,7 @@ File Name
 
 ---
 
-## Step 9 — Determine ATT&CK Mapping
+### Step 9 — Determine ATT&CK Mapping
 
 Example:
 
@@ -1597,7 +1597,7 @@ Command Shell
 
 ---
 
-## Step 10 — Contain and Respond
+### Step 10 — Contain and Respond
 
 Depending on incident severity:
 
@@ -1615,7 +1615,7 @@ Actions should follow organizational incident-response procedures.
 
 ---
 
-# False Positives
+## False Positives
 
 EDR generates large amounts of telemetry.
 
@@ -1652,7 +1652,7 @@ Tune Detection
 
 ---
 
-# Detection Tuning
+## Detection Tuning
 
 Bad detection:
 
@@ -1685,13 +1685,13 @@ Better detections generally combine:
 
 ---
 
-# Practical Lab 1 — PowerShell Parent-Child Hunting
+## Practical Lab 1 — PowerShell Parent-Child Hunting
 
-## Objective
+### Objective
 
 Identify unusual PowerShell execution originating from user-facing applications.
 
-## Query Concept
+### Query Concept
 
 ```text
 Process = powershell.exe
@@ -1703,7 +1703,7 @@ Parent IN (
 )
 ```
 
-## Investigation
+### Investigation
 
 For every result collect:
 
@@ -1717,7 +1717,7 @@ Hash
 Network Connections
 ```
 
-## Expected Outcome
+### Expected Outcome
 
 Build a process tree:
 
@@ -1734,9 +1734,9 @@ PowerShell
 
 ---
 
-# Practical Lab 2 — Rare Process Hunting
+## Practical Lab 2 — Rare Process Hunting
 
-## Objective
+### Objective
 
 Find uncommon processes across endpoints.
 
@@ -1773,9 +1773,9 @@ Investigate processes with unusually low prevalence.
 
 ---
 
-# Practical Lab 3 — Suspicious Temporary File
+## Practical Lab 3 — Suspicious Temporary File
 
-## Objective
+### Objective
 
 Investigate executable files created in temporary directories.
 
@@ -1809,9 +1809,9 @@ Persistence
 
 ---
 
-# Practical Lab 4 — Security Control Tampering
+## Practical Lab 4 — Security Control Tampering
 
-## Objective
+### Objective
 
 Detect suspicious modification of endpoint security controls.
 
@@ -1837,7 +1837,7 @@ A security-control modification followed by suspicious execution deserves priori
 
 ---
 
-# Practical Lab 5 — Cross-Host IOC Hunt
+## Practical Lab 5 — Cross-Host IOC Hunt
 
 Given:
 
@@ -1869,7 +1869,7 @@ Then build the incident scope.
 
 ---
 
-# Practical Lab 6 — Process-to-Network Hunt
+## Practical Lab 6 — Process-to-Network Hunt
 
 Identify processes that establish unusual outbound connections.
 
@@ -1898,7 +1898,7 @@ Investigate uncommon combinations.
 
 ---
 
-# ATT&CK Mapping
+## ATT&CK Mapping
 
 Useful endpoint hunting techniques include:
 
@@ -1925,9 +1925,9 @@ Always verify the appropriate ATT&CK technique and sub-technique when creating p
 
 ---
 
-# EDR Hunting Checklist
+## EDR Hunting Checklist
 
-## Process
+### Process
 
 - [ ] Process identified
 - [ ] Parent identified
@@ -1937,7 +1937,7 @@ Always verify the appropriate ATT&CK technique and sub-technique when creating p
 - [ ] Integrity/privilege reviewed
 - [ ] Process path validated
 
-## Files
+### Files
 
 - [ ] File path checked
 - [ ] Hash collected
@@ -1946,7 +1946,7 @@ Always verify the appropriate ATT&CK technique and sub-technique when creating p
 - [ ] Creation time checked
 - [ ] Modification time checked
 
-## Network
+### Network
 
 - [ ] Destination identified
 - [ ] Domain checked
@@ -1955,14 +1955,14 @@ Always verify the appropriate ATT&CK technique and sub-technique when creating p
 - [ ] DNS activity reviewed
 - [ ] Process-to-network relationship established
 
-## Identity
+### Identity
 
 - [ ] User identified
 - [ ] Logon reviewed
 - [ ] Privileges checked
 - [ ] Account legitimacy confirmed
 
-## Persistence
+### Persistence
 
 - [ ] Scheduled tasks checked
 - [ ] Services checked
@@ -1971,7 +1971,7 @@ Always verify the appropriate ATT&CK technique and sub-technique when creating p
 - [ ] WMI checked
 - [ ] Accounts checked
 
-## Defense Evasion
+### Defense Evasion
 
 - [ ] Security-control changes checked
 - [ ] Logging changes checked
@@ -1981,9 +1981,9 @@ Always verify the appropriate ATT&CK technique and sub-technique when creating p
 
 ---
 
-# Common EDR Hunting Mistakes
+## Common EDR Hunting Mistakes
 
-## 1. Searching Only for Malware Names
+### 1. Searching Only for Malware Names
 
 Attackers may use:
 
@@ -1995,7 +1995,7 @@ rather than malware with recognizable names.
 
 ---
 
-## 2. Treating Every PowerShell Event as Malicious
+### 2. Treating Every PowerShell Event as Malicious
 
 PowerShell is a legitimate administration platform.
 
@@ -2003,25 +2003,25 @@ Context matters.
 
 ---
 
-## 3. Ignoring Parent Processes
+### 3. Ignoring Parent Processes
 
 The parent process can reveal the execution origin.
 
 ---
 
-## 4. Ignoring User Context
+### 4. Ignoring User Context
 
 A process may be normal for one user and highly unusual for another.
 
 ---
 
-## 5. Ignoring Network Activity
+### 5. Ignoring Network Activity
 
 Endpoint process activity becomes significantly more useful when correlated with network telemetry.
 
 ---
 
-## 6. Hunting Only IOCs
+### 6. Hunting Only IOCs
 
 IOC hunting is useful but limited.
 
@@ -2043,7 +2043,7 @@ Timeline
 
 ---
 
-# EDR Data Quality
+## EDR Data Quality
 
 A mature EDR deployment should answer:
 
@@ -2067,7 +2067,7 @@ for many events, the organization has a telemetry gap.
 
 ---
 
-# Telemetry Gap Analysis
+## Telemetry Gap Analysis
 
 Example:
 
@@ -2086,7 +2086,7 @@ This should become a security improvement item.
 
 ---
 
-# EDR + SIEM Architecture
+## EDR + SIEM Architecture
 
 ```text
                   ENDPOINTS
@@ -2118,7 +2118,7 @@ SIEM provides broader organizational correlation.
 
 ---
 
-# EDR + Identity Correlation
+## EDR + Identity Correlation
 
 ```text
 Identity
@@ -2143,7 +2143,7 @@ This allows detection of attacks that span multiple security layers.
 
 ---
 
-# EDR + Threat Intelligence
+## EDR + Threat Intelligence
 
 Threat intelligence can enrich endpoint observations.
 
@@ -2166,9 +2166,9 @@ But reputation should not replace investigation.
 
 ---
 
-# EDR Hunt Maturity Model
+## EDR Hunt Maturity Model
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 ```text
 Alert
@@ -2178,7 +2178,7 @@ Investigate
 
 ---
 
-## Level 2 — IOC Hunting
+### Level 2 — IOC Hunting
 
 ```text
 Hash
@@ -2190,7 +2190,7 @@ Search
 
 ---
 
-## Level 3 — Behavioral Hunting
+### Level 3 — Behavioral Hunting
 
 ```text
 Process
@@ -2204,7 +2204,7 @@ Persistence
 
 ---
 
-## Level 4 — Hypothesis-Driven Hunting
+### Level 4 — Hypothesis-Driven Hunting
 
 ```text
 Threat Intelligence
@@ -2220,7 +2220,7 @@ Detection
 
 ---
 
-## Level 5 — Continuous Detection Engineering
+### Level 5 — Continuous Detection Engineering
 
 ```text
 Threat Research
@@ -2240,7 +2240,7 @@ New Hunt
 
 ---
 
-# Professional EDR Investigation Template
+## Professional EDR Investigation Template
 
 ```text
 Incident ID:
@@ -2293,15 +2293,15 @@ Detection Improvement:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is EDR?
+### 1. What is EDR?
 
 EDR is an endpoint security capability that collects endpoint telemetry and provides detection, investigation, threat hunting, and response functionality.
 
 ---
 
-## 2. What is the difference between EPP and EDR?
+### 2. What is the difference between EPP and EDR?
 
 EPP focuses primarily on prevention and protection.
 
@@ -2309,13 +2309,13 @@ EDR focuses on visibility, behavioral detection, investigation, hunting, and res
 
 ---
 
-## 3. Why is process-tree analysis important?
+### 3. Why is process-tree analysis important?
 
 It establishes execution relationships and provides context about how a process started and what it subsequently launched.
 
 ---
 
-## 4. Is PowerShell execution malicious?
+### 4. Is PowerShell execution malicious?
 
 No.
 
@@ -2323,13 +2323,13 @@ PowerShell is a legitimate administrative technology. Suspicion depends on conte
 
 ---
 
-## 5. What is Living-off-the-Land?
+### 5. What is Living-off-the-Land?
 
 It is the use or abuse of legitimate tools already present within an environment to perform malicious activity.
 
 ---
 
-## 6. How would you investigate a suspicious process?
+### 6. How would you investigate a suspicious process?
 
 I would examine:
 
@@ -2350,7 +2350,7 @@ Timeline
 
 ---
 
-## 7. How would you hunt for a compromised endpoint?
+### 7. How would you hunt for a compromised endpoint?
 
 I would correlate:
 
@@ -2372,7 +2372,7 @@ and establish a timeline.
 
 ---
 
-## 8. How do you distinguish legitimate administration from attacker activity?
+### 8. How do you distinguish legitimate administration from attacker activity?
 
 I would evaluate:
 
@@ -2389,37 +2389,37 @@ I would evaluate:
 
 ---
 
-## 9. What is process injection?
+### 9. What is process injection?
 
 Process injection is a class of techniques where code execution is introduced into the context of another process.
 
 ---
 
-## 10. What is telemetry gap analysis?
+### 10. What is telemetry gap analysis?
 
 It is the process of identifying missing or insufficient endpoint telemetry that prevents reliable investigation or detection.
 
 ---
 
-## 11. Why is command-line telemetry important?
+### 11. Why is command-line telemetry important?
 
 It provides execution context that a process name alone cannot provide.
 
 ---
 
-## 12. What is behavioral detection?
+### 12. What is behavioral detection?
 
 Behavioral detection identifies suspicious combinations or sequences of activity rather than relying solely on known malware signatures or static indicators.
 
 ---
 
-## 13. What is EDR telemetry?
+### 13. What is EDR telemetry?
 
 It is endpoint-generated security data describing activity such as process creation, file operations, network connections, authentication, registry changes, and other security-relevant behavior.
 
 ---
 
-## 14. How would you investigate a suspicious PowerShell process?
+### 14. How would you investigate a suspicious PowerShell process?
 
 I would identify:
 
@@ -2439,7 +2439,7 @@ Then correlate the activity with identity and other security telemetry.
 
 ---
 
-## 15. How can a threat hunter improve an EDR detection?
+### 15. How can a threat hunter improve an EDR detection?
 
 A typical workflow is:
 
@@ -2463,9 +2463,9 @@ Measure
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
-## 1. Collect High-Value Telemetry
+### 1. Collect High-Value Telemetry
 
 Prioritize:
 
@@ -2481,7 +2481,7 @@ Security Control Changes
 
 ---
 
-## 2. Correlate Multiple Signals
+### 2. Correlate Multiple Signals
 
 Avoid relying on one event.
 
@@ -2493,7 +2493,7 @@ Process + User + Network + File + Timeline
 
 ---
 
-## 3. Maintain Baselines
+### 3. Maintain Baselines
 
 Know:
 
@@ -2507,7 +2507,7 @@ Normal administration
 
 ---
 
-## 4. Track Telemetry Gaps
+### 4. Track Telemetry Gaps
 
 Document:
 
@@ -2521,13 +2521,13 @@ Coverage Gaps
 
 ---
 
-## 5. Convert Successful Hunts into Detections
+### 5. Convert Successful Hunts into Detections
 
 Repeated manual investigations should become repeatable detections where appropriate.
 
 ---
 
-## 6. Measure Detection Quality
+### 6. Measure Detection Quality
 
 Useful metrics include:
 
@@ -2544,7 +2544,7 @@ Detection Coverage
 
 ---
 
-## 7. Integrate EDR With the SOC
+### 7. Integrate EDR With the SOC
 
 A mature architecture connects:
 
@@ -2561,7 +2561,7 @@ Email Security
 
 ---
 
-# Final Threat-Hunting Workflow
+## Final Threat-Hunting Workflow
 
 A professional endpoint hunter should think like this:
 
@@ -2617,7 +2617,7 @@ A professional endpoint hunter should think like this:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 The most important principles of EDR threat hunting are:
 
@@ -2640,7 +2640,7 @@ The fundamental mindset is:
 
 ---
 
-# References
+## References
 
 - MITRE ATT&CK — Enterprise Techniques  
   https://attack.mitre.org/

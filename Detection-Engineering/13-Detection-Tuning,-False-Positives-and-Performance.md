@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A detection can be technically correct and still be operationally poor.
 
@@ -46,7 +46,7 @@ are all necessary.
 
 ---
 
-# 2. What Is Detection Tuning?
+## 2. What Is Detection Tuning?
 
 Detection tuning is the process of improving detection behavior by adjusting:
 
@@ -73,7 +73,7 @@ Minimum Unnecessary Noise
 
 ---
 
-# 3. Why Detection Tuning Matters
+## 3. Why Detection Tuning Matters
 
 Poorly tuned detections can cause:
 
@@ -98,7 +98,7 @@ Better SOC Efficiency
 
 ---
 
-# 4. Detection Quality
+## 4. Detection Quality
 
 Detection quality can be evaluated using:
 
@@ -116,7 +116,7 @@ Analyst Feedback
 
 ---
 
-# 5. Precision
+## 5. Precision
 
 Precision measures:
 
@@ -139,7 +139,7 @@ Less Alert Noise
 
 ---
 
-# 6. Recall
+## 6. Recall
 
 Recall measures:
 
@@ -162,7 +162,7 @@ Fewer Missed Threats
 
 ---
 
-# 7. Precision vs Recall
+## 7. Precision vs Recall
 
 Conceptually:
 
@@ -182,7 +182,7 @@ Detection tuning is therefore a balancing process.
 
 ---
 
-# 8. False Positive
+## 8. False Positive
 
 A false positive occurs when:
 
@@ -216,7 +216,7 @@ False Positive
 
 ---
 
-# 9. False Negative
+## 9. False Negative
 
 A false negative occurs when:
 
@@ -230,7 +230,7 @@ This can be more dangerous than a false positive because the threat may remain u
 
 ---
 
-# 10. True Positive
+## 10. True Positive
 
 ```text
 Malicious Activity
@@ -244,7 +244,7 @@ This is the desired outcome.
 
 ---
 
-# 11. True Negative
+## 11. True Negative
 
 ```text
 Legitimate Activity
@@ -256,7 +256,7 @@ This is also important because excessive alerts reduce SOC efficiency.
 
 ---
 
-# 12. Confusion Matrix
+## 12. Confusion Matrix
 
 ```text
                     Actual
@@ -270,7 +270,7 @@ Not Detected       FN          TN
 
 ---
 
-# 13. False Positive Rate
+## 13. False Positive Rate
 
 Conceptually:
 
@@ -283,7 +283,7 @@ Lower is generally better, but extremely aggressive suppression can increase fal
 
 ---
 
-# 14. Detection Tuning Loop
+## 14. Detection Tuning Loop
 
 ```text
 Detection
@@ -307,7 +307,7 @@ Measure Again
 
 ---
 
-# 15. Alert Analysis
+## 15. Alert Analysis
 
 When tuning a detection, examine:
 
@@ -343,7 +343,7 @@ This may be legitimate.
 
 ---
 
-# 16. Alert Context
+## 16. Alert Context
 
 Useful context includes:
 
@@ -368,7 +368,7 @@ Better context improves tuning decisions.
 
 ---
 
-# 17. Baseline
+## 17. Baseline
 
 A baseline describes normal behavior.
 
@@ -387,7 +387,7 @@ Tuning often begins with understanding the baseline.
 
 ---
 
-# 18. Static Threshold
+## 18. Static Threshold
 
 Example:
 
@@ -405,7 +405,7 @@ Different users have different normal behavior.
 
 ---
 
-# 19. Dynamic Threshold
+## 19. Dynamic Threshold
 
 Instead:
 
@@ -420,7 +420,7 @@ Dynamic thresholds can adapt to different entities.
 
 ---
 
-# 20. Entity-Based Baselines
+## 20. Entity-Based Baselines
 
 Build baselines per:
 
@@ -436,7 +436,7 @@ Network Segment
 
 ---
 
-# 21. Peer-Based Baselines
+## 21. Peer-Based Baselines
 
 Compare an entity with similar entities.
 
@@ -458,7 +458,7 @@ Other Production Servers
 
 ---
 
-# 22. Time-Based Baselines
+## 22. Time-Based Baselines
 
 Behavior may vary by:
 
@@ -483,7 +483,7 @@ But time anomalies alone should not automatically imply malicious activity.
 
 ---
 
-# 23. Geographic Baselines
+## 23. Geographic Baselines
 
 Monitor:
 
@@ -498,7 +498,7 @@ Unexpected locations can be useful context.
 
 ---
 
-# 24. Device Baselines
+## 24. Device Baselines
 
 Monitor:
 
@@ -513,7 +513,7 @@ Endpoint Health
 
 ---
 
-# 25. Application Baselines
+## 25. Application Baselines
 
 Monitor:
 
@@ -527,7 +527,7 @@ Normal Error Rates
 
 ---
 
-# 26. Cloud Baselines
+## 26. Cloud Baselines
 
 Monitor:
 
@@ -541,7 +541,7 @@ Normal Deployment Patterns
 
 ---
 
-# 27. Container Baselines
+## 27. Container Baselines
 
 Monitor:
 
@@ -555,7 +555,7 @@ Normal Service Accounts
 
 ---
 
-# 28. Why Baselines Matter
+## 28. Why Baselines Matter
 
 Without baselines:
 
@@ -577,7 +577,7 @@ Unusual + Risky + Contextually Suspicious
 
 ---
 
-# 29. Tuning Through Filtering
+## 29. Tuning Through Filtering
 
 Example:
 
@@ -600,7 +600,7 @@ This reduces unnecessary alerts.
 
 ---
 
-# 30. Filtering
+## 30. Filtering
 
 Filters can remove known benign patterns.
 
@@ -617,7 +617,7 @@ Filters should be narrow.
 
 ---
 
-# 31. Broad Exceptions
+## 31. Broad Exceptions
 
 Avoid:
 
@@ -635,7 +635,7 @@ These can create large blind spots.
 
 ---
 
-# 32. Narrow Exceptions
+## 32. Narrow Exceptions
 
 Prefer:
 
@@ -659,7 +659,7 @@ Known deployment process
 
 ---
 
-# 33. Exception Documentation
+## 33. Exception Documentation
 
 Every important exception should explain:
 
@@ -675,7 +675,7 @@ Review date?
 
 ---
 
-# 34. Temporary Exceptions
+## 34. Temporary Exceptions
 
 Prefer:
 
@@ -701,7 +701,7 @@ Expires:
 
 ---
 
-# 35. Exception Lifecycle
+## 35. Exception Lifecycle
 
 ```text
 Request
@@ -721,7 +721,7 @@ Expire / Renew
 
 ---
 
-# 36. Exception Risk
+## 36. Exception Risk
 
 Every exception can create:
 
@@ -741,7 +741,7 @@ should be minimized.
 
 ---
 
-# 37. Threshold Tuning
+## 37. Threshold Tuning
 
 Suppose:
 
@@ -772,7 +772,7 @@ Alert Volume
 
 ---
 
-# 38. Threshold Tuning Mistake
+## 38. Threshold Tuning Mistake
 
 Do not simply increase:
 
@@ -790,7 +790,7 @@ You may suppress real attacks.
 
 ---
 
-# 39. Contextual Thresholds
+## 39. Contextual Thresholds
 
 Instead of:
 
@@ -816,7 +816,7 @@ New Device
 
 ---
 
-# 40. Time-Window Tuning
+## 40. Time-Window Tuning
 
 Example:
 
@@ -848,7 +848,7 @@ Response Requirements
 
 ---
 
-# 41. Correlation Window
+## 41. Correlation Window
 
 Too short:
 
@@ -866,7 +866,7 @@ The correct window should represent realistic attack behavior.
 
 ---
 
-# 42. Sequence Tuning
+## 42. Sequence Tuning
 
 Example:
 
@@ -886,7 +886,7 @@ may be combined.
 
 ---
 
-# 43. Aggregation Tuning
+## 43. Aggregation Tuning
 
 Instead of:
 
@@ -912,7 +912,7 @@ This can significantly reduce noise.
 
 ---
 
-# 44. Alert Deduplication
+## 44. Alert Deduplication
 
 If the same event generates:
 
@@ -932,7 +932,7 @@ Time Window
 
 ---
 
-# 45. Alert Suppression
+## 45. Alert Suppression
 
 Suppression temporarily prevents repeated alerts.
 
@@ -947,7 +947,7 @@ Use carefully.
 
 ---
 
-# 46. Suppression Risk
+## 46. Suppression Risk
 
 Over-suppression can hide:
 
@@ -969,7 +969,7 @@ Same Context
 
 ---
 
-# 47. Alert Grouping
+## 47. Alert Grouping
 
 Group related events:
 
@@ -987,7 +987,7 @@ into one investigation object.
 
 ---
 
-# 48. Alert Enrichment
+## 48. Alert Enrichment
 
 Add:
 
@@ -1005,7 +1005,7 @@ Enrichment can improve analyst decision-making without changing the core detecti
 
 ---
 
-# 49. Severity Tuning
+## 49. Severity Tuning
 
 Severity should reflect:
 
@@ -1019,17 +1019,17 @@ Threat Intelligence
 
 ---
 
-# 50. Severity vs Confidence
+## 50. Severity vs Confidence
 
 These are different.
 
-### Severity
+#### Severity
 
 ```text
 How serious is the potential impact?
 ```
 
-### Confidence
+#### Confidence
 
 ```text
 How likely is the alert to represent malicious activity?
@@ -1047,7 +1047,7 @@ may require investigation but not immediate automated containment.
 
 ---
 
-# 51. Risk-Based Tuning
+## 51. Risk-Based Tuning
 
 A detection can calculate:
 
@@ -1066,7 +1066,7 @@ Historical Context
 
 ---
 
-# 52. Example Risk Model
+## 52. Example Risk Model
 
 Conceptual:
 
@@ -1089,7 +1089,7 @@ Actual scoring should be calibrated to the organization's risk model.
 
 ---
 
-# 53. Confidence Scoring
+## 53. Confidence Scoring
 
 Possible factors:
 
@@ -1104,7 +1104,7 @@ Historical Behavior
 
 ---
 
-# 54. Multi-Signal Detection
+## 54. Multi-Signal Detection
 
 Weak:
 
@@ -1126,7 +1126,7 @@ New Device
 
 ---
 
-# 55. Alert Correlation
+## 55. Alert Correlation
 
 Combine:
 
@@ -1146,7 +1146,7 @@ to reduce ambiguity.
 
 ---
 
-# 56. Noise Reduction
+## 56. Noise Reduction
 
 Noise reduction techniques:
 
@@ -1164,7 +1164,7 @@ Risk Scoring
 
 ---
 
-# 57. Alert Fatigue
+## 57. Alert Fatigue
 
 Alert fatigue occurs when analysts receive too many low-value alerts.
 
@@ -1180,7 +1180,7 @@ Analyst Burnout
 
 ---
 
-# 58. Alert Fatigue Is a Security Risk
+## 58. Alert Fatigue Is a Security Risk
 
 Too much noise can cause:
 
@@ -1198,7 +1198,7 @@ Security Control
 
 ---
 
-# 59. Alert-to-Action Ratio
+## 59. Alert-to-Action Ratio
 
 A useful internal metric:
 
@@ -1212,7 +1212,7 @@ Higher is generally better.
 
 ---
 
-# 60. Alert Closure Analysis
+## 60. Alert Closure Analysis
 
 Analyze closure reasons:
 
@@ -1229,7 +1229,7 @@ These categories can guide tuning.
 
 ---
 
-# 61. SOC Feedback Loop
+## 61. SOC Feedback Loop
 
 ```text
 Alert
@@ -1249,7 +1249,7 @@ Deployment
 
 ---
 
-# 62. Analyst Feedback
+## 62. Analyst Feedback
 
 Analysts can identify:
 
@@ -1265,7 +1265,7 @@ Detection engineering should incorporate this feedback.
 
 ---
 
-# 63. Tuning Through Incident Analysis
+## 63. Tuning Through Incident Analysis
 
 A true incident may reveal:
 
@@ -1287,7 +1287,7 @@ This is a tuning opportunity.
 
 ---
 
-# 64. Tuning Through Threat Hunting
+## 64. Tuning Through Threat Hunting
 
 Threat hunting can reveal:
 
@@ -1305,7 +1305,7 @@ rather than simply tuning an existing rule.
 
 ---
 
-# 65. Tuning Through Purple Teaming
+## 65. Tuning Through Purple Teaming
 
 Purple team results may reveal:
 
@@ -1329,7 +1329,7 @@ Retest
 
 ---
 
-# 66. Performance Tuning
+## 66. Performance Tuning
 
 Detection performance concerns:
 
@@ -1345,7 +1345,7 @@ Concurrency
 
 ---
 
-# 67. Why Performance Matters
+## 67. Why Performance Matters
 
 A detection that takes:
 
@@ -1361,7 +1361,7 @@ Active Attack
 
 ---
 
-# 68. Query Cost
+## 68. Query Cost
 
 Expensive queries may use:
 
@@ -1376,7 +1376,7 @@ Unindexed Fields
 
 ---
 
-# 69. Filter Early
+## 69. Filter Early
 
 Bad:
 
@@ -1396,7 +1396,7 @@ Process smaller dataset
 
 ---
 
-# 70. Select Only Required Fields
+## 70. Select Only Required Fields
 
 Avoid unnecessary:
 
@@ -1419,7 +1419,7 @@ where appropriate.
 
 ---
 
-# 71. Indexed Fields
+## 71. Indexed Fields
 
 Where supported, use fields optimized for searching:
 
@@ -1435,7 +1435,7 @@ The exact optimization depends on the platform.
 
 ---
 
-# 72. Time Window Optimization
+## 72. Time Window Optimization
 
 Avoid unnecessarily large windows.
 
@@ -1455,7 +1455,7 @@ is sufficient.
 
 ---
 
-# 73. Aggregation
+## 73. Aggregation
 
 Instead of processing every event individually:
 
@@ -1471,7 +1471,7 @@ Then evaluate the aggregate.
 
 ---
 
-# 74. Pre-Aggregation
+## 74. Pre-Aggregation
 
 For high-volume environments, maintain:
 
@@ -1485,7 +1485,7 @@ This can reduce query cost.
 
 ---
 
-# 75. Caching
+## 75. Caching
 
 Cache stable enrichment:
 
@@ -1500,7 +1500,7 @@ rather than repeatedly querying expensive sources.
 
 ---
 
-# 76. Lookup Optimization
+## 76. Lookup Optimization
 
 Reference tables should be:
 
@@ -1515,7 +1515,7 @@ Avoid enormous inefficient lookups.
 
 ---
 
-# 77. Regex Performance
+## 77. Regex Performance
 
 Prefer:
 
@@ -1532,7 +1532,7 @@ Avoid unnecessary complex regex across massive datasets.
 
 ---
 
-# 78. Cardinality
+## 78. Cardinality
 
 High-cardinality fields include:
 
@@ -1549,7 +1549,7 @@ Large aggregations over these fields can be expensive.
 
 ---
 
-# 79. Correlation State
+## 79. Correlation State
 
 Sequence detection may need to store state:
 
@@ -1573,7 +1573,7 @@ Cleanup
 
 ---
 
-# 80. Query Concurrency
+## 80. Query Concurrency
 
 Too many expensive detections running simultaneously can cause:
 
@@ -1587,7 +1587,7 @@ Prioritize critical detections.
 
 ---
 
-# 81. Detection Scheduling
+## 81. Detection Scheduling
 
 Not every detection needs the same frequency.
 
@@ -1608,9 +1608,9 @@ The correct schedule depends on risk.
 
 ---
 
-# 82. Streaming vs Batch
+## 82. Streaming vs Batch
 
-### Streaming
+#### Streaming
 
 ```text
 Low Latency
@@ -1625,7 +1625,7 @@ C2
 Privilege Escalation
 ```
 
-### Batch
+#### Batch
 
 ```text
 Periodic
@@ -1642,7 +1642,7 @@ Periodic Review
 
 ---
 
-# 83. Performance Testing
+## 83. Performance Testing
 
 Measure:
 
@@ -1657,7 +1657,7 @@ Latency
 
 ---
 
-# 84. Tail Latency
+## 84. Tail Latency
 
 Average runtime may look good:
 
@@ -1675,7 +1675,7 @@ Tail latency matters for security operations.
 
 ---
 
-# 85. Performance Regression
+## 85. Performance Regression
 
 After changing a detection:
 
@@ -1693,7 +1693,7 @@ Performance should therefore be part of regression testing.
 
 ---
 
-# 86. Alert Volume Regression
+## 86. Alert Volume Regression
 
 Similarly:
 
@@ -1709,7 +1709,7 @@ This should trigger investigation.
 
 ---
 
-# 87. Tuning Validation
+## 87. Tuning Validation
 
 After every significant tuning change:
 
@@ -1725,7 +1725,7 @@ Performance Test
 
 ---
 
-# 88. Canary Tuning
+## 88. Canary Tuning
 
 Deploy tuned detection to:
 
@@ -1746,7 +1746,7 @@ Then expand.
 
 ---
 
-# 89. Shadow Tuning
+## 89. Shadow Tuning
 
 Run:
 
@@ -1769,7 +1769,7 @@ Noise
 
 ---
 
-# 90. A/B Detection Comparison
+## 90. A/B Detection Comparison
 
 Conceptually:
 
@@ -1791,7 +1791,7 @@ Performance
 
 ---
 
-# 91. Detection Tuning Experiment
+## 91. Detection Tuning Experiment
 
 Document:
 
@@ -1822,7 +1822,7 @@ Deploy.
 
 ---
 
-# 92. Tuning Trade-Offs
+## 92. Tuning Trade-Offs
 
 Every tuning decision can affect:
 
@@ -1845,7 +1845,7 @@ Potential Recall ↓
 
 ---
 
-# 93. Never Optimize Only One Metric
+## 93. Never Optimize Only One Metric
 
 Avoid:
 
@@ -1867,7 +1867,7 @@ Acceptable Performance
 
 ---
 
-# 94. Detection Quality Triangle
+## 94. Detection Quality Triangle
 
 ```text
           Detection Quality
@@ -1880,35 +1880,35 @@ All three matter.
 
 ---
 
-# 95. Detection Tuning Maturity
+## 95. Detection Tuning Maturity
 
-### Level 1
+#### Level 1
 
 Manual tuning.
 
-### Level 2
+#### Level 2
 
 Alert feedback.
 
-### Level 3
+#### Level 3
 
 Metrics-driven tuning.
 
-### Level 4
+#### Level 4
 
 Baseline-aware tuning.
 
-### Level 5
+#### Level 5
 
 Automated tuning experiments.
 
-### Level 6
+#### Level 6
 
 Continuous adaptive detection.
 
 ---
 
-# 96. Automated Tuning
+## 96. Automated Tuning
 
 Possible automation:
 
@@ -1928,7 +1928,7 @@ Automation should not blindly suppress alerts.
 
 ---
 
-# 97. Machine Learning for Tuning
+## 97. Machine Learning for Tuning
 
 ML can help identify:
 
@@ -1952,7 +1952,7 @@ Human validation remains important.
 
 ---
 
-# 98. Adaptive Detection
+## 98. Adaptive Detection
 
 An adaptive detection can respond to:
 
@@ -1975,7 +1975,7 @@ Over-Suppression
 
 ---
 
-# 99. Detection Drift Monitoring
+## 99. Detection Drift Monitoring
 
 Monitor:
 
@@ -1991,7 +1991,7 @@ Environment
 
 ---
 
-# 100. Tuning Trigger Conditions
+## 100. Tuning Trigger Conditions
 
 Revisit a detection when:
 
@@ -2009,7 +2009,7 @@ ATT&CK Changes
 
 ---
 
-# 101. Detection Review Cadence
+## 101. Detection Review Cadence
 
 Possible:
 
@@ -2028,7 +2028,7 @@ Exact schedules should be defined by risk and organizational policy.
 
 ---
 
-# 102. Detection Performance Budget
+## 102. Detection Performance Budget
 
 Define acceptable:
 
@@ -2044,7 +2044,7 @@ This prevents detection logic from consuming disproportionate resources.
 
 ---
 
-# 103. Cost-Aware Detection
+## 103. Cost-Aware Detection
 
 In large environments, consider:
 
@@ -2060,7 +2060,7 @@ A detection should provide enough security value to justify its operational cost
 
 ---
 
-# 104. Detection ROI
+## 104. Detection ROI
 
 Conceptually:
 
@@ -2082,7 +2082,7 @@ Acceptable Cost
 
 ---
 
-# 105. Noise Budget
+## 105. Noise Budget
 
 Teams may define an acceptable amount of:
 
@@ -2100,7 +2100,7 @@ Redesign
 
 ---
 
-# 106. Alert Quality Score
+## 106. Alert Quality Score
 
 A custom score may consider:
 
@@ -2129,7 +2129,7 @@ The formula is illustrative; organizations should calibrate their own model.
 
 ---
 
-# 107. Detection Tuning Documentation
+## 107. Detection Tuning Documentation
 
 Record:
 
@@ -2148,7 +2148,7 @@ Rollback
 
 ---
 
-# 108. Tuning Record Example
+## 108. Tuning Record Example
 
 ```yaml
 detection_id: DET-001
@@ -2178,7 +2178,7 @@ status: deployed
 
 ---
 
-# 109. Detection Tuning Checklist
+## 109. Detection Tuning Checklist
 
 ```text
 [ ] Alert volume measured
@@ -2207,71 +2207,71 @@ status: deployed
 
 ---
 
-# 110. Interview Questions
+## 110. Interview Questions
 
-### What is detection tuning?
+#### What is detection tuning?
 
 > The process of improving detection logic, thresholds, context, exceptions, and correlation to increase useful detection while controlling false positives and performance costs.
 
-### What is a false positive?
+#### What is a false positive?
 
 > Legitimate activity incorrectly identified as suspicious or malicious.
 
-### What is a false negative?
+#### What is a false negative?
 
 > Malicious or relevant activity that the detection fails to identify.
 
-### Why are false positives dangerous?
+#### Why are false positives dangerous?
 
 > Excessive false positives create alert fatigue, consume analyst capacity, and can cause real threats to be overlooked.
 
-### How do you reduce false positives?
+#### How do you reduce false positives?
 
 > Understand the baseline, add contextual signals, use narrow exceptions, improve correlation, tune thresholds, and validate changes with positive and negative tests.
 
-### Should you simply increase a threshold to reduce alert volume?
+#### Should you simply increase a threshold to reduce alert volume?
 
 > No. Increasing thresholds can reduce noise but may also increase false negatives. The change should be evaluated against both detection quality and attack behavior.
 
-### What is a baseline?
+#### What is a baseline?
 
 > A representation of expected normal behavior for an entity, peer group, application, workload, or environment.
 
-### Why are dynamic thresholds useful?
+#### Why are dynamic thresholds useful?
 
 > They adapt to different behavioral patterns instead of applying one static threshold to every entity.
 
-### What is alert suppression?
+#### What is alert suppression?
 
 > Temporarily preventing repeated alerts for a defined condition or context.
 
-### What is alert deduplication?
+#### What is alert deduplication?
 
 > Combining identical or highly similar alerts so analysts do not investigate the same underlying activity repeatedly.
 
-### What is the difference between severity and confidence?
+#### What is the difference between severity and confidence?
 
 > Severity describes potential impact, while confidence describes how likely the observed behavior is malicious or meaningful.
 
-### How do you tune a high-volume detection?
+#### How do you tune a high-volume detection?
 
 > Analyze alert samples and closure reasons, identify common benign patterns, add contextual conditions or narrow exceptions, validate against known malicious cases, and monitor the result in a controlled rollout.
 
-### How do you optimize an expensive detection?
+#### How do you optimize an expensive detection?
 
 > Filter early, reduce the time window, select only necessary fields, optimize joins and aggregations, use indexed fields, pre-aggregate where appropriate, and measure query performance before and after the change.
 
-### What is detection performance regression?
+#### What is detection performance regression?
 
 > A situation where a detection remains logically correct but becomes significantly more expensive or slower after a change.
 
-### What is alert fatigue?
+#### What is alert fatigue?
 
 > A condition where excessive low-value alerts reduce analyst attention and increase the risk of missing meaningful threats.
 
 ---
 
-# 111. Quick Revision
+## 111. Quick Revision
 
 ```text
 Detection Tuning
@@ -2364,7 +2364,7 @@ Detection ROI
 
 ---
 
-# 112. Golden Rules
+## 112. Golden Rules
 
 ```text
 1. A detection that generates unlimited noise is not a successful detection.
@@ -2470,7 +2470,7 @@ Detection ROI
 
 ---
 
-# 113. Final Mental Model
+## 113. Final Mental Model
 
 Think of detection tuning as a control loop:
 
@@ -2526,7 +2526,7 @@ Analyst Usability
 
 ---
 
-# 114. Practical Tuning Workflow
+## 114. Practical Tuning Workflow
 
 Use this process whenever a production detection generates too much noise:
 
@@ -2566,7 +2566,7 @@ Use this process whenever a production detection generates too much noise:
 
 ---
 
-# 115. Example – Tuning a Suspicious Login Detection
+## 115. Example – Tuning a Suspicious Login Detection
 
 Initial rule:
 
@@ -2614,7 +2614,7 @@ Detection Quality ↑
 
 ---
 
-# 116. Example – Tuning a Network Scan Detection
+## 116. Example – Tuning a Network Scan Detection
 
 Initial:
 
@@ -2655,7 +2655,7 @@ Unexpected Workstation
 
 ---
 
-# 117. Example – Tuning an Endpoint Detection
+## 117. Example – Tuning an Endpoint Detection
 
 Initial:
 
@@ -2691,7 +2691,7 @@ Admin Automation → No Alert
 
 ---
 
-# 118. Example – Performance Optimization
+## 118. Example – Performance Optimization
 
 Initial query:
 
@@ -2730,7 +2730,7 @@ The detection should then be retested for correctness.
 
 ---
 
-# 119. Final Detection Quality Framework
+## 119. Final Detection Quality Framework
 
 A production detection should be evaluated across:
 
@@ -2762,7 +2762,7 @@ The final question is:
 
 ---
 
-# 120. Chapter Summary
+## 120. Chapter Summary
 
 This chapter covered:
 

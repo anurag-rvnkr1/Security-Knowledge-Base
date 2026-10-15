@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Traditional digital forensics often assumes that evidence exists on a physical endpoint or local disk.
 
@@ -46,7 +46,7 @@ Evidence is therefore:
 
 ---
 
-# Why Modern Platform Forensics Matters
+## Why Modern Platform Forensics Matters
 
 An incident may begin on one platform and move across several others.
 
@@ -78,7 +78,7 @@ A host-only investigation would miss significant portions of the attack.
 
 ---
 
-# Modern Forensic Architecture
+## Modern Forensic Architecture
 
 ```text id="q1d8cm"
                          Investigation
@@ -103,7 +103,7 @@ A host-only investigation would miss significant portions of the attack.
 
 ---
 
-# Core Challenges
+## Core Challenges
 
 Modern platform forensics introduces challenges such as:
 
@@ -122,7 +122,7 @@ Modern platform forensics introduces challenges such as:
 
 ---
 
-# Shared Responsibility Model
+## Shared Responsibility Model
 
 Cloud security is commonly divided between:
 
@@ -146,7 +146,7 @@ The exact responsibilities vary by service model.
 
 ---
 
-# Cloud Forensic Principles
+## Cloud Forensic Principles
 
 A cloud investigation should establish:
 
@@ -166,7 +166,7 @@ The identity is often as important as the IP address.
 
 ---
 
-# Cloud Evidence Categories
+## Cloud Evidence Categories
 
 | Evidence | Examples |
 |---|---|
@@ -183,7 +183,7 @@ The identity is often as important as the IP address.
 
 ---
 
-# Cloud Identity Forensics
+## Cloud Identity Forensics
 
 Identity is central to cloud investigations.
 
@@ -204,7 +204,7 @@ API Activity
 
 ---
 
-# Identity Investigation Model
+## Identity Investigation Model
 
 ```text id="2c0q8j"
 Identity
@@ -227,7 +227,7 @@ Data
 
 ---
 
-# Cloud Authentication
+## Cloud Authentication
 
 Investigate:
 
@@ -244,7 +244,7 @@ An unusual login does not automatically prove compromise.
 
 ---
 
-# API Forensics
+## API Forensics
 
 Cloud environments are heavily API-driven.
 
@@ -266,7 +266,7 @@ API logs can therefore provide highly valuable forensic evidence.
 
 ---
 
-# Cloud Audit Logs
+## Cloud Audit Logs
 
 Major providers offer activity/audit logging.
 
@@ -287,7 +287,7 @@ Exact services and retention depend on configuration.
 
 ---
 
-# AWS CloudTrail
+## AWS CloudTrail
 
 CloudTrail can provide evidence about AWS API activity.
 
@@ -306,7 +306,7 @@ Request Metadata
 
 ---
 
-# Azure Forensics
+## Azure Forensics
 
 Relevant evidence can include:
 
@@ -322,7 +322,7 @@ Network Logs
 
 ---
 
-# Google Cloud Forensics
+## Google Cloud Forensics
 
 Relevant evidence can include:
 
@@ -338,7 +338,7 @@ Storage Logs
 
 ---
 
-# Cloud Storage Forensics
+## Cloud Storage Forensics
 
 Cloud object storage may contain:
 
@@ -362,7 +362,7 @@ Access Method
 
 ---
 
-# Object Storage Access
+## Object Storage Access
 
 Examples of investigative questions:
 
@@ -378,7 +378,7 @@ Was it deleted?
 
 ---
 
-# Cloud Data Exfiltration
+## Cloud Data Exfiltration
 
 Potential evidence:
 
@@ -411,7 +411,7 @@ External Transfer
 
 ---
 
-# Cloud VM Forensics
+## Cloud VM Forensics
 
 Cloud VMs can provide:
 
@@ -430,7 +430,7 @@ The investigation should correlate guest-level and cloud-level evidence.
 
 ---
 
-# Cloud VM Evidence Model
+## Cloud VM Evidence Model
 
 ```text id="z3r5n8"
 Cloud Control Plane
@@ -449,7 +449,7 @@ Disk  Memory  Network
 
 ---
 
-# Cloud Snapshots
+## Cloud Snapshots
 
 Snapshots can preserve a point-in-time representation of storage.
 
@@ -468,7 +468,7 @@ Unexpected snapshots may deserve investigation.
 
 ---
 
-# Cloud Configuration Forensics
+## Cloud Configuration Forensics
 
 Configuration changes may be as important as file changes.
 
@@ -486,7 +486,7 @@ Logging Configuration
 
 ---
 
-# Logging Tampering
+## Logging Tampering
 
 Attackers may attempt to reduce visibility by modifying:
 
@@ -507,7 +507,7 @@ Identity Activity
 
 ---
 
-# Cloud Evidence Retention
+## Cloud Evidence Retention
 
 Organizations should define retention for:
 
@@ -524,7 +524,7 @@ Short retention can create major forensic gaps.
 
 ---
 
-# Cloud Evidence Gaps
+## Cloud Evidence Gaps
 
 Examples:
 
@@ -543,7 +543,7 @@ Document gaps explicitly.
 
 ---
 
-# Container Forensics
+## Container Forensics
 
 Containers are designed to be:
 
@@ -558,7 +558,7 @@ A container may disappear before investigators collect evidence.
 
 ---
 
-# Container Evidence Model
+## Container Evidence Model
 
 ```text id="c9h4w6"
 Container
@@ -580,7 +580,7 @@ Container
 
 ---
 
-# Docker Evidence
+## Docker Evidence
 
 Relevant artifacts may include:
 
@@ -597,7 +597,7 @@ Host Logs
 
 ---
 
-# Docker Container Metadata
+## Docker Container Metadata
 
 Investigate:
 
@@ -615,7 +615,7 @@ User
 
 ---
 
-# Container Images
+## Container Images
 
 Images can contain:
 
@@ -643,7 +643,7 @@ Which digest?
 
 ---
 
-# Image Digests
+## Image Digests
 
 Container images can be identified using cryptographic digests.
 
@@ -663,7 +663,7 @@ This is useful for forensic correlation.
 
 ---
 
-# Container Logs
+## Container Logs
 
 Container logs may contain:
 
@@ -680,7 +680,7 @@ Retention depends on runtime and logging architecture.
 
 ---
 
-# Container Volumes
+## Container Volumes
 
 Persistent volumes may contain:
 
@@ -694,7 +694,7 @@ Investigate volume ownership and lifecycle.
 
 ---
 
-# Container Network Forensics
+## Container Network Forensics
 
 Investigate:
 
@@ -712,7 +712,7 @@ Container networking can make attribution more complicated than traditional host
 
 ---
 
-# Kubernetes Forensics
+## Kubernetes Forensics
 
 Kubernetes adds another layer.
 
@@ -734,7 +734,7 @@ Audit Event
 
 ---
 
-# Kubernetes Investigation Model
+## Kubernetes Investigation Model
 
 ```text id="w0y6j1"
 Cluster
@@ -756,7 +756,7 @@ Cluster
 
 ---
 
-# Kubernetes API Audit
+## Kubernetes API Audit
 
 API audit evidence can help identify:
 
@@ -777,7 +777,7 @@ Create Service
 
 ---
 
-# Kubernetes Secrets
+## Kubernetes Secrets
 
 Secrets require careful investigation.
 
@@ -795,7 +795,7 @@ Do not unnecessarily reproduce sensitive secret values in reports.
 
 ---
 
-# Kubernetes Persistence
+## Kubernetes Persistence
 
 Potential mechanisms include:
 
@@ -813,7 +813,7 @@ Investigate against known-good configuration.
 
 ---
 
-# Ephemeral Workloads
+## Ephemeral Workloads
 
 A major forensic challenge:
 
@@ -840,7 +840,7 @@ Organizations should therefore implement:
 
 ---
 
-# Kubernetes Node Forensics
+## Kubernetes Node Forensics
 
 The node may contain evidence from workloads.
 
@@ -859,7 +859,7 @@ This should be done using approved procedures.
 
 ---
 
-# Container Forensic Workflow
+## Container Forensic Workflow
 
 ```text id="3u8w1k"
 Alert
@@ -900,7 +900,7 @@ Build Timeline
 
 ---
 
-# Mobile Forensics
+## Mobile Forensics
 
 Mobile devices contain highly personal and security-sensitive evidence.
 
@@ -923,7 +923,7 @@ Network
 
 ---
 
-# Mobile Forensic Principles
+## Mobile Forensic Principles
 
 Mobile evidence must be collected according to:
 
@@ -935,7 +935,7 @@ Mobile evidence must be collected according to:
 
 ---
 
-# Android Forensics
+## Android Forensics
 
 Android investigations may involve:
 
@@ -961,7 +961,7 @@ The exact available artifacts depend on:
 
 ---
 
-# iOS Forensics
+## iOS Forensics
 
 iOS evidence may involve:
 
@@ -980,7 +980,7 @@ Modern iOS security architecture significantly affects acquisition.
 
 ---
 
-# Mobile Application Forensics
+## Mobile Application Forensics
 
 Investigate application artifacts such as:
 
@@ -998,7 +998,7 @@ The exact artifacts vary by application and operating system.
 
 ---
 
-# Mobile Cloud Synchronization
+## Mobile Cloud Synchronization
 
 Mobile evidence may exist outside the physical device.
 
@@ -1024,7 +1024,7 @@ Complete Investigation
 
 ---
 
-# Mobile Network Evidence
+## Mobile Network Evidence
 
 Correlate:
 
@@ -1048,7 +1048,7 @@ This can identify suspicious application communications.
 
 ---
 
-# Mobile Evidence Challenges
+## Mobile Evidence Challenges
 
 Challenges include:
 
@@ -1064,7 +1064,7 @@ Challenges include:
 
 ---
 
-# Cloud + Container + Mobile Correlation
+## Cloud + Container + Mobile Correlation
 
 Modern incidents can cross all three environments.
 
@@ -1093,7 +1093,7 @@ Investigating only one environment would produce an incomplete picture.
 
 ---
 
-# Cross-Platform Timeline
+## Cross-Platform Timeline
 
 ```text id="7m1z4s"
 08:55 — Mobile authentication
@@ -1109,7 +1109,7 @@ This timeline should be validated with independent evidence.
 
 ---
 
-# Identity-Centric Investigation
+## Identity-Centric Investigation
 
 Modern investigations increasingly begin with identity.
 
@@ -1137,7 +1137,7 @@ Data
 
 ---
 
-# API Token Forensics
+## API Token Forensics
 
 Investigate:
 
@@ -1153,7 +1153,7 @@ Never expose live tokens in forensic reports.
 
 ---
 
-# Cloud Credential Exposure
+## Cloud Credential Exposure
 
 Potential evidence includes:
 
@@ -1169,7 +1169,7 @@ A credential may be compromised even if the associated user account appears legi
 
 ---
 
-# Cloud-to-Container Investigation
+## Cloud-to-Container Investigation
 
 Example:
 
@@ -1196,7 +1196,7 @@ Investigate every transition.
 
 ---
 
-# Container-to-Cloud Investigation
+## Container-to-Cloud Investigation
 
 A compromised workload may access cloud resources using:
 
@@ -1222,39 +1222,39 @@ Cloud Resource
 
 ---
 
-# Common Modern Forensic Mistakes
+## Common Modern Forensic Mistakes
 
-## Treating Cloud as a Single System
+### Treating Cloud as a Single System
 
 Cloud consists of many services and evidence sources.
 
-## Ignoring Identity
+### Ignoring Identity
 
 IP-based investigation alone is insufficient.
 
-## Assuming Containers Are Ephemeral and Therefore Unimportant
+### Assuming Containers Are Ephemeral and Therefore Unimportant
 
 Centralized telemetry may preserve critical evidence.
 
-## Collecting Only the Container
+### Collecting Only the Container
 
 The node and orchestration platform may contain essential evidence.
 
-## Ignoring Cloud Control Plane
+### Ignoring Cloud Control Plane
 
 Resource changes can reveal attacker actions.
 
-## Ignoring Mobile Cloud Data
+### Ignoring Mobile Cloud Data
 
 Important evidence may be synchronized externally.
 
-## Exposing Secrets in Reports
+### Exposing Secrets in Reports
 
 Secrets should be protected and redacted.
 
 ---
 
-# Cloud and Container Forensic Readiness
+## Cloud and Container Forensic Readiness
 
 Organizations should enable:
 
@@ -1273,7 +1273,7 @@ Time Synchronization
 
 ---
 
-# Evidence Preservation Priority
+## Evidence Preservation Priority
 
 When a workload is ephemeral:
 
@@ -1294,9 +1294,9 @@ The exact order depends on incident conditions.
 
 ---
 
-# Practical Lab 01 — Cloud Identity Investigation
+## Practical Lab 01 — Cloud Identity Investigation
 
-## Scenario
+### Scenario
 
 A cloud identity generated unusual API activity.
 
@@ -1323,7 +1323,7 @@ Unknown
 
 ---
 
-# Practical Lab 02 — Cloud Resource Investigation
+## Practical Lab 02 — Cloud Resource Investigation
 
 Scenario:
 
@@ -1346,7 +1346,7 @@ Determine whether the resource was legitimate.
 
 ---
 
-# Practical Lab 03 — Cloud Storage Investigation
+## Practical Lab 03 — Cloud Storage Investigation
 
 Investigate an unexpected object access event.
 
@@ -1364,7 +1364,7 @@ Authorization
 
 ---
 
-# Practical Lab 04 — Container Investigation
+## Practical Lab 04 — Container Investigation
 
 Scenario:
 
@@ -1385,7 +1385,7 @@ Host
 
 ---
 
-# Practical Lab 05 — Kubernetes Investigation
+## Practical Lab 05 — Kubernetes Investigation
 
 Scenario:
 
@@ -1407,7 +1407,7 @@ Node
 
 ---
 
-# Practical Lab 06 — Mobile Evidence Investigation
+## Practical Lab 06 — Mobile Evidence Investigation
 
 Using an authorized forensic dataset:
 
@@ -1426,7 +1426,7 @@ Construct a timeline without exposing unnecessary personal information.
 
 ---
 
-# Practical Lab 07 — Cross-Platform Investigation
+## Practical Lab 07 — Cross-Platform Investigation
 
 Scenario:
 
@@ -1457,7 +1457,7 @@ Determine:
 
 ---
 
-# Modern Platform Forensic Report
+## Modern Platform Forensic Report
 
 ```text id="8h5q2v"
 # Cloud / Container / Mobile Forensic Report
@@ -1531,7 +1531,7 @@ Time Window:
 
 ---
 
-# Example Finding
+## Example Finding
 
 ```text id="k1w7c3"
 Finding ID:
@@ -1561,7 +1561,7 @@ Device-level attribution was unavailable.
 
 ---
 
-# Cloud Forensics and Incident Response
+## Cloud Forensics and Incident Response
 
 ```text id="3z8x5m"
 Cloud Alert
@@ -1590,7 +1590,7 @@ Recovery
 
 ---
 
-# Container Forensics and Incident Response
+## Container Forensics and Incident Response
 
 ```text id="5p2n8c"
 Container Alert
@@ -1619,7 +1619,7 @@ Contain
 
 ---
 
-# Mobile Forensics and Incident Response
+## Mobile Forensics and Incident Response
 
 ```text id="4h9s6w"
 Mobile Alert
@@ -1645,7 +1645,7 @@ Scope
 
 ---
 
-# Enterprise Modern Forensics Architecture
+## Enterprise Modern Forensics Architecture
 
 ```text id="e4c7z2"
                          Security Operations
@@ -1679,9 +1679,9 @@ Scope
 
 ---
 
-# Evidence Confidence
+## Evidence Confidence
 
-## High Confidence
+### High Confidence
 
 Independent evidence agrees across platforms.
 
@@ -1695,59 +1695,59 @@ Network
 Workload
 ```
 
-## Medium Confidence
+### Medium Confidence
 
 Multiple related sources support the conclusion.
 
-## Low Confidence
+### Low Confidence
 
 Single provider artifact or unexplained anomaly.
 
-## Unknown
+### Unknown
 
 Evidence is insufficient.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. Why is cloud forensics different from traditional disk forensics?
+### 1. Why is cloud forensics different from traditional disk forensics?
 
 Because evidence is distributed across provider services, identities, APIs, workloads, and infrastructure rather than a single physical device.
 
 ---
 
-## 2. Why is identity especially important in cloud investigations?
+### 2. Why is identity especially important in cloud investigations?
 
 Cloud actions are often API-driven and strongly associated with identities, roles, tokens, and service accounts.
 
 ---
 
-## 3. What is CloudTrail?
+### 3. What is CloudTrail?
 
 An AWS service that records supported account activity and API events.
 
 ---
 
-## 4. What is the Azure equivalent of cloud activity logging?
+### 4. What is the Azure equivalent of cloud activity logging?
 
 Azure provides Activity Logs and Microsoft Entra audit/sign-in logging among other telemetry sources.
 
 ---
 
-## 5. What are Google Cloud Audit Logs?
+### 5. What are Google Cloud Audit Logs?
 
 Provider logging mechanisms that record supported activity involving Google Cloud resources and services.
 
 ---
 
-## 6. Why are containers difficult to investigate?
+### 6. Why are containers difficult to investigate?
 
 They can be short-lived and may disappear before local evidence is collected.
 
 ---
 
-## 7. What evidence should be preserved when a Kubernetes pod is suspicious?
+### 7. What evidence should be preserved when a Kubernetes pod is suspicious?
 
 At minimum:
 
@@ -1765,39 +1765,39 @@ Configuration
 
 ---
 
-## 8. Why is the container image important?
+### 8. Why is the container image important?
 
 It can establish the software and configuration baseline from which the workload originated.
 
 ---
 
-## 9. What is a Kubernetes ServiceAccount?
+### 9. What is a Kubernetes ServiceAccount?
 
 An identity used by workloads to interact with the Kubernetes API and, depending on configuration, other services.
 
 ---
 
-## 10. Why can mobile investigations require cloud evidence?
+### 10. Why can mobile investigations require cloud evidence?
 
 Applications frequently synchronize information to cloud services, and some important artifacts may exist outside the device.
 
 ---
 
-## 11. What is the shared responsibility model?
+### 11. What is the shared responsibility model?
 
 A security model dividing responsibilities between the cloud provider and customer depending on the service.
 
 ---
 
-## 12. What is a cloud forensic evidence gap?
+### 12. What is a cloud forensic evidence gap?
 
 A situation where required evidence is unavailable because of logging, retention, encryption, provider limitations, deletion, or other factors.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A cloud administrator account appears to have been compromised.
 
@@ -1826,9 +1826,9 @@ Then determine scope.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A suspicious Kubernetes pod disappeared before investigators could inspect it.
 
@@ -1849,9 +1849,9 @@ The absence of the pod does not necessarily mean the absence of evidence.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A mobile device shows an unusual cloud login.
 
@@ -1875,34 +1875,34 @@ Do not assume the mobile device itself was compromised.
 
 ---
 
-# Modern Forensics Maturity Model
+## Modern Forensics Maturity Model
 
-## Level 1 — Basic
+### Level 1 — Basic
 
 - Cloud audit logs
 - Container logs
 - Mobile evidence awareness
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Identity investigation
 - Cloud API analysis
 - Container metadata collection
 
-## Level 3 — Managed
+### Level 3 — Managed
 
 - Centralized cloud logging
 - Kubernetes audit
 - Mobile forensic procedures
 
-## Level 4 — Integrated
+### Level 4 — Integrated
 
 - Cloud + SIEM + EDR
 - Identity threat detection
 - Container runtime telemetry
 - Cross-platform investigation
 
-## Level 5 — Advanced
+### Level 5 — Advanced
 
 - Enterprise cloud forensics
 - Automated evidence preservation
@@ -1913,7 +1913,7 @@ Do not assume the mobile device itself was compromised.
 
 ---
 
-# Chapter Completion Checklist
+## Chapter Completion Checklist
 
 ```text id="w6f9x2"
 [ ] Understand cloud forensics
@@ -1953,7 +1953,7 @@ Do not assume the mobile device itself was compromised.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Modern digital forensics is no longer limited to physical disks and endpoints.
 
@@ -1997,65 +1997,65 @@ Remember:
 
 ---
 
-# References
+## References
 
-### AWS CloudTrail
+#### AWS CloudTrail
 
 https://docs.aws.amazon.com/awscloudtrail/
 
-### AWS Security Documentation
+#### AWS Security Documentation
 
 https://docs.aws.amazon.com/security/
 
-### Microsoft Entra Documentation
+#### Microsoft Entra Documentation
 
 https://learn.microsoft.com/entra/
 
-### Azure Activity Log
+#### Azure Activity Log
 
 https://learn.microsoft.com/azure/azure-monitor/essentials/activity-log
 
-### Microsoft Defender for Cloud
+#### Microsoft Defender for Cloud
 
 https://learn.microsoft.com/azure/defender-for-cloud/
 
-### Google Cloud Audit Logs
+#### Google Cloud Audit Logs
 
 https://cloud.google.com/logging/docs/audit
 
-### Google Cloud Security
+#### Google Cloud Security
 
 https://cloud.google.com/security
 
-### Docker Documentation
+#### Docker Documentation
 
 https://docs.docker.com/
 
-### Kubernetes Documentation
+#### Kubernetes Documentation
 
 https://kubernetes.io/docs/
 
-### Kubernetes Auditing
+#### Kubernetes Auditing
 
 https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/
 
-### NIST SP 800-86
+#### NIST SP 800-86
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### NIST SP 800-61
+#### NIST SP 800-61
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 
-### Android Security
+#### Android Security
 
 https://source.android.com/docs/security
 
-### Apple Platform Security
+#### Apple Platform Security
 
 https://support.apple.com/guide/security/welcome/web
 

@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 The **Open Worldwide Application Security Project (OWASP)** is an international, non-profit foundation dedicated to improving the security of software applications. It provides free resources, methodologies, documentation, tools, standards, and educational materials that help organizations, developers, security engineers, penetration testers, DevSecOps teams, and students build secure software.
 
@@ -16,7 +16,7 @@ Whether you're a beginner learning secure coding or an experienced penetration t
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Modern software powers almost every aspect of society, including:
 
@@ -49,7 +49,7 @@ Because OWASP recommendations are vendor-neutral and freely accessible, they are
 
 ---
 
-# History of OWASP
+## History of OWASP
 
 OWASP was founded in **2001** by **Mark Curphey** with the vision of making software security knowledge freely available to everyone.
 
@@ -70,7 +70,7 @@ Today, the OWASP Foundation:
 
 ---
 
-# Mission
+## Mission
 
 The mission of OWASP is simple:
 
@@ -91,7 +91,7 @@ Everything produced by OWASP is intended to be openly available without licensin
 
 ---
 
-# OWASP Foundation
+## OWASP Foundation
 
 The **OWASP Foundation** is a non-profit organization responsible for supporting and coordinating OWASP projects.
 
@@ -109,7 +109,7 @@ The Foundation is governed independently and is not owned by any software vendor
 
 ---
 
-# What is the OWASP Top 10?
+## What is the OWASP Top 10?
 
 The **OWASP Top 10** is one of the most influential cybersecurity awareness documents in the world.
 
@@ -130,7 +130,7 @@ The OWASP Top 10 is not simply a "list of attacks." Instead, it serves as an awa
 
 ---
 
-# Objectives of the OWASP Top 10
+## Objectives of the OWASP Top 10
 
 The primary goals are to:
 
@@ -144,7 +144,7 @@ The primary goals are to:
 
 ---
 
-# Who Should Learn OWASP?
+## Who Should Learn OWASP?
 
 OWASP knowledge is valuable for anyone involved in the software development lifecycle.
 
@@ -168,7 +168,7 @@ This includes:
 
 ---
 
-# OWASP Projects
+## OWASP Projects
 
 Although the OWASP Top 10 is the most famous publication, it represents only a small part of the OWASP ecosystem.
 
@@ -176,19 +176,19 @@ OWASP maintains dozens of projects that cover every stage of application securit
 
 Some of the most widely used projects include:
 
-## OWASP Top 10
+### OWASP Top 10
 
 The industry-standard awareness document describing the ten most critical web application security risks.
 
 ---
 
-## OWASP API Security Top 10
+### OWASP API Security Top 10
 
 Focuses specifically on vulnerabilities affecting REST APIs, GraphQL APIs, SOAP services, and modern API architectures.
 
 ---
 
-## OWASP ASVS (Application Security Verification Standard)
+### OWASP ASVS (Application Security Verification Standard)
 
 A comprehensive framework for verifying application security requirements across different assurance levels.
 
@@ -196,7 +196,7 @@ Widely used by enterprises to define secure development and testing requirements
 
 ---
 
-## OWASP Testing Guide
+### OWASP Testing Guide
 
 A detailed methodology for performing web application security testing.
 
@@ -213,7 +213,7 @@ It includes procedures for:
 
 ---
 
-## OWASP Web Security Testing Guide (WSTG)
+### OWASP Web Security Testing Guide (WSTG)
 
 Provides practical testing techniques and checklists for identifying security vulnerabilities in web applications.
 
@@ -221,7 +221,7 @@ It is frequently used by penetration testers and security consultants.
 
 ---
 
-## OWASP Cheat Sheet Series
+### OWASP Cheat Sheet Series
 
 One of the most valuable developer resources.
 
@@ -241,13 +241,13 @@ Each cheat sheet explains how to securely implement specific technologies or def
 
 ---
 
-## OWASP Dependency-Check
+### OWASP Dependency-Check
 
 An open-source tool that identifies vulnerable third-party libraries and software components used within applications.
 
 ---
 
-## OWASP Juice Shop
+### OWASP Juice Shop
 
 A deliberately vulnerable web application designed for security training.
 
@@ -255,25 +255,25 @@ It contains numerous realistic vulnerabilities that allow learners to practice s
 
 ---
 
-## OWASP WebGoat
+### OWASP WebGoat
 
 Another intentionally insecure application used to teach web application security concepts through guided lessons and practical exercises.
 
 ---
 
-## OWASP Mobile Top 10
+### OWASP Mobile Top 10
 
 Focuses on security risks affecting Android and iOS applications.
 
 ---
 
-## OWASP SAMM (Software Assurance Maturity Model)
+### OWASP SAMM (Software Assurance Maturity Model)
 
 A framework that helps organizations assess and improve the maturity of their secure software development lifecycle (SSDLC).
 
 ---
 
-## Key Takeaways
+### Key Takeaways
 
 - OWASP is the leading non-profit organization dedicated to application security.
 - It provides free, vendor-neutral resources used worldwide.
@@ -282,7 +282,7 @@ A framework that helps organizations assess and improve the maturity of their se
 - Learning OWASP is essential for developers, security engineers, penetration testers, DevSecOps professionals, and anyone involved in secure software development.
 
 ---
-# How the OWASP Top 10 Is Created
+## How the OWASP Top 10 Is Created
 
 Many beginners believe the OWASP Top 10 is simply a list of the "most dangerous attacks." In reality, it is a **data-driven awareness document** based on real vulnerability data collected from organizations worldwide.
 
@@ -315,13 +315,13 @@ are all categorized under **A03: Injection** because they share similar root cau
 
 ---
 
-# Factors Considered
+## Factors Considered
 
 OWASP does not rank vulnerabilities based on popularity alone.
 
 Several factors influence the final list, including:
 
-## Frequency
+### Frequency
 
 How often the vulnerability appears during security assessments.
 
@@ -331,7 +331,7 @@ If thousands of applications contain Broken Access Control, it becomes a strong 
 
 ---
 
-## Exploitability
+### Exploitability
 
 How easy it is for an attacker to exploit the weakness.
 
@@ -344,7 +344,7 @@ Questions include:
 
 ---
 
-## Technical Impact
+### Technical Impact
 
 What happens if exploitation succeeds?
 
@@ -359,7 +359,7 @@ Potential impacts include:
 
 ---
 
-## Business Impact
+### Business Impact
 
 Security incidents affect more than technology.
 
@@ -374,7 +374,7 @@ Business consequences include:
 
 ---
 
-# Why the List Changes
+## Why the List Changes
 
 Technology evolves rapidly.
 
@@ -391,9 +391,9 @@ As a result, OWASP periodically updates the Top 10 to reflect today's threat lan
 
 ---
 
-# Evolution of the OWASP Top 10
+## Evolution of the OWASP Top 10
 
-## 2003
+### 2003
 
 The first OWASP Top 10 introduced developers to common web application security issues.
 
@@ -405,7 +405,7 @@ Primary focus:
 
 ---
 
-## 2004
+### 2004
 
 Refinements were made based on industry feedback.
 
@@ -413,13 +413,13 @@ More organizations began using OWASP during security assessments.
 
 ---
 
-## 2007
+### 2007
 
 Injection vulnerabilities became a major concern due to increasing SQL Injection attacks.
 
 ---
 
-## 2010
+### 2010
 
 Greater emphasis was placed on:
 
@@ -429,7 +429,7 @@ Greater emphasis was placed on:
 
 ---
 
-## 2013
+### 2013
 
 Large-scale data breaches highlighted weaknesses in:
 
@@ -439,7 +439,7 @@ Large-scale data breaches highlighted weaknesses in:
 
 ---
 
-## 2017
+### 2017
 
 Several important changes occurred.
 
@@ -452,7 +452,7 @@ Modern web technologies significantly influenced the rankings.
 
 ---
 
-## 2021 (Current Version)
+### 2021 (Current Version)
 
 The current OWASP Top 10 reflects today's application landscape, including:
 
@@ -467,7 +467,7 @@ Several categories were renamed or reorganized to better reflect modern software
 
 ---
 
-# OWASP Top 10 (2021)
+## OWASP Top 10 (2021)
 
 The current categories are:
 
@@ -488,9 +488,9 @@ Each category represents a broad class of security weaknesses rather than a sing
 
 ---
 
-# High-Level Overview of Each Category
+## High-Level Overview of Each Category
 
-## A01 – Broken Access Control
+### A01 – Broken Access Control
 
 Occurs when users can perform actions or access resources beyond their intended permissions.
 
@@ -509,7 +509,7 @@ Common attacks:
 
 ---
 
-## A02 – Cryptographic Failures
+### A02 – Cryptographic Failures
 
 Occurs when sensitive information is not adequately protected.
 
@@ -528,7 +528,7 @@ Often leads to:
 
 ---
 
-## A03 – Injection
+### A03 – Injection
 
 One of the oldest and most dangerous vulnerability classes.
 
@@ -550,7 +550,7 @@ Potential consequences:
 
 ---
 
-## A04 – Insecure Design
+### A04 – Insecure Design
 
 Focuses on flaws in the application's architecture rather than coding mistakes.
 
@@ -565,7 +565,7 @@ These vulnerabilities often cannot be fixed with a simple patch because they ste
 
 ---
 
-## A05 – Security Misconfiguration
+### A05 – Security Misconfiguration
 
 Results from insecure default settings or improper configuration.
 
@@ -581,7 +581,7 @@ Misconfigurations remain one of the easiest attack vectors.
 
 ---
 
-## A06 – Vulnerable and Outdated Components
+### A06 – Vulnerable and Outdated Components
 
 Applications frequently depend on third-party libraries.
 
@@ -598,7 +598,7 @@ Supply-chain security has become increasingly important.
 
 ---
 
-## A07 – Identification and Authentication Failures
+### A07 – Identification and Authentication Failures
 
 Weak authentication mechanisms enable attackers to impersonate legitimate users.
 
@@ -614,7 +614,7 @@ Compromised authentication often leads directly to account takeover.
 
 ---
 
-## A08 – Software and Data Integrity Failures
+### A08 – Software and Data Integrity Failures
 
 Introduced in OWASP Top 10 (2021).
 
@@ -632,7 +632,7 @@ The SolarWinds incident highlighted the importance of software integrity.
 
 ---
 
-## A09 – Security Logging and Monitoring Failures
+### A09 – Security Logging and Monitoring Failures
 
 Organizations cannot respond to attacks they cannot detect.
 
@@ -648,7 +648,7 @@ Proper logging is essential for threat detection and digital forensics.
 
 ---
 
-## A10 – Server-Side Request Forgery (SSRF)
+### A10 – Server-Side Request Forgery (SSRF)
 
 Occurs when an application fetches attacker-controlled URLs without proper validation.
 
@@ -665,7 +665,7 @@ SSRF became increasingly important with the adoption of cloud infrastructure and
 
 ---
 
-# Why Recruiters Ask About OWASP
+## Why Recruiters Ask About OWASP
 
 Knowledge of the OWASP Top 10 demonstrates that a candidate understands common application security risks and secure development practices.
 
@@ -682,10 +682,10 @@ For cybersecurity, application security, DevSecOps, SOC, and VAPT roles, familia
 
 ---
 
-# Summary
+## Summary
 
 The OWASP Top 10 is a globally recognized, data-driven awareness document that identifies the most critical categories of web application security risks. It serves as a common language for developers, security engineers, testers, architects, and organizations to prioritize application security efforts. Understanding these categories is essential for secure software development, effective penetration testing, and success in cybersecurity interviews.
-# Secure Software Development Lifecycle (Secure SDLC)
+## Secure Software Development Lifecycle (Secure SDLC)
 
 Building secure software is significantly more effective than attempting to secure software after deployment. The **Secure Software Development Lifecycle (Secure SDLC)** integrates security into every phase of software development.
 
@@ -742,7 +742,7 @@ Security activities include:
 
 ---
 
-# OWASP Application Security Verification Standard (ASVS)
+## OWASP Application Security Verification Standard (ASVS)
 
 The **OWASP ASVS** is a comprehensive framework for verifying application security.
 
@@ -763,9 +763,9 @@ It provides detailed security requirements covering:
 - Configuration
 - Data Protection
 
-### ASVS Levels
+#### ASVS Levels
 
-## Level 1
+### Level 1
 
 Basic security suitable for low-risk applications.
 
@@ -776,7 +776,7 @@ Example:
 
 ---
 
-## Level 2
+### Level 2
 
 Standard security requirements for most enterprise applications.
 
@@ -789,7 +789,7 @@ Examples:
 
 ---
 
-## Level 3
+### Level 3
 
 Highest assurance level.
 
@@ -803,7 +803,7 @@ Used for:
 
 ---
 
-# OWASP Web Security Testing Guide (WSTG)
+## OWASP Web Security Testing Guide (WSTG)
 
 The WSTG is one of the world's most comprehensive manuals for web application penetration testing.
 
@@ -834,7 +834,7 @@ The WSTG is frequently used by:
 
 ---
 
-# OWASP Cheat Sheet Series
+## OWASP Cheat Sheet Series
 
 The Cheat Sheet Series provides concise implementation guidance for secure development.
 
@@ -861,7 +861,7 @@ Every developer should become familiar with these cheat sheets.
 
 ---
 
-# OWASP API Security Top 10
+## OWASP API Security Top 10
 
 Modern applications increasingly expose functionality through APIs.
 
@@ -884,7 +884,7 @@ API security has become one of the fastest-growing areas in application security
 
 ---
 
-# OWASP Juice Shop
+## OWASP Juice Shop
 
 OWASP Juice Shop is a deliberately vulnerable e-commerce application created for security education.
 
@@ -910,7 +910,7 @@ It is widely used in:
 
 ---
 
-# OWASP WebGoat
+## OWASP WebGoat
 
 WebGoat is another intentionally insecure application maintained by OWASP.
 
@@ -925,58 +925,58 @@ This makes it an excellent learning platform for beginners.
 
 ---
 
-# Recommended Security Tools
+## Recommended Security Tools
 
 Learning OWASP concepts is significantly easier when combined with hands-on practice.
 
-## Web Application Testing
+### Web Application Testing
 
 - Burp Suite
 - OWASP ZAP
 
-## Network Discovery
+### Network Discovery
 
 - Nmap
 - Masscan
 
-## Packet Analysis
+### Packet Analysis
 
 - Wireshark
 - tcpdump
 
-## Vulnerability Scanning
+### Vulnerability Scanning
 
 - Nessus
 - OpenVAS
 
-## Exploitation
+### Exploitation
 
 - Metasploit Framework
 
-## Directory Enumeration
+### Directory Enumeration
 
 - Gobuster
 - ffuf
 - dirsearch
 
-## Password Auditing
+### Password Auditing
 
 - Hydra
 - John the Ripper
 - Hashcat
 
-## API Testing
+### API Testing
 
 - Postman
 - Insomnia
 
-## Container Security
+### Container Security
 
 - Trivy
 - Grype
 - Docker Scout
 
-## Cloud Security
+### Cloud Security
 
 - ScoutSuite
 - Prowler
@@ -984,7 +984,7 @@ Learning OWASP concepts is significantly easier when combined with hands-on prac
 
 ---
 
-# Learning Roadmap
+## Learning Roadmap
 
 A recommended learning sequence for mastering OWASP concepts is:
 
@@ -1009,7 +1009,7 @@ A recommended learning sequence for mastering OWASP concepts is:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate all user input.
 - Implement least privilege.
@@ -1024,9 +1024,9 @@ A recommended learning sequence for mastering OWASP concepts is:
 
 ---
 
-# References
+## References
 
-## Official OWASP Resources
+### Official OWASP Resources
 
 - OWASP Foundation
 - OWASP Top 10
@@ -1038,7 +1038,7 @@ A recommended learning sequence for mastering OWASP concepts is:
 - OWASP API Security Top 10
 - OWASP Dependency-Check
 
-## Industry References
+### Industry References
 
 - NIST Cybersecurity Framework
 - MITRE ATT&CK
@@ -1051,7 +1051,7 @@ A recommended learning sequence for mastering OWASP concepts is:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - OWASP is the world's leading nonprofit organization for application security.
 - The OWASP Top 10 identifies the most critical categories of web application risks.
@@ -1064,7 +1064,7 @@ A recommended learning sequence for mastering OWASP concepts is:
 
 ---
 
-# Conclusion
+## Conclusion
 
 OWASP is more than just the "Top 10." It is a complete ecosystem of standards, methodologies, tools, educational resources, and community-driven projects that enable organizations and individuals to build, test, deploy, and maintain secure software.
 

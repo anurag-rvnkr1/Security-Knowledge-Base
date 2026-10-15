@@ -20,7 +20,7 @@ Understanding container architecture is fundamental to Docker, Kubernetes, conta
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Every container operation—creating an image, starting a container, managing resources, or enforcing security—depends on the underlying architecture.
 
@@ -39,7 +39,7 @@ Without understanding the architecture, containers often appear to function like
 
 ---
 
-# High-Level Container Architecture
+## High-Level Container Architecture
 
 ```
 +------------------------------------------------------+
@@ -63,9 +63,9 @@ Each layer has a distinct responsibility while working together to execute conta
 
 ---
 
-# Container Architecture Components
+## Container Architecture Components
 
-## 1. Physical Hardware
+### 1. Physical Hardware
 
 At the foundation is the physical infrastructure.
 
@@ -82,7 +82,7 @@ The hardware provides compute resources for the host operating system.
 
 ---
 
-## 2. Host Operating System
+### 2. Host Operating System
 
 The host operating system manages hardware resources and provides the Linux kernel used by containers.
 
@@ -108,7 +108,7 @@ Responsibilities include:
 
 ---
 
-## 3. Linux Kernel
+### 3. Linux Kernel
 
 The Linux kernel is the core of container technology.
 
@@ -143,7 +143,7 @@ Without Linux kernel features, modern containers would not exist.
 
 ---
 
-## 4. Namespaces
+### 4. Namespaces
 
 Namespaces provide isolation between containers.
 
@@ -189,7 +189,7 @@ Although both containers believe they have PID 1 and an `eth0` interface, they a
 
 ---
 
-## 5. Control Groups (cgroups)
+### 5. Control Groups (cgroups)
 
 Control Groups (cgroups) manage and limit resource usage.
 
@@ -227,7 +227,7 @@ Without cgroups, one container could consume all available system resources.
 
 ---
 
-## 6. Union File Systems
+### 6. Union File Systems
 
 Container images are built from multiple read-only layers.
 
@@ -273,7 +273,7 @@ Union file systems combine these layers into a single unified filesystem view.
 
 ---
 
-## 7. Container Runtime
+### 7. Container Runtime
 
 The runtime manages the complete lifecycle of containers.
 
@@ -299,7 +299,7 @@ The runtime acts as the bridge between container images and running processes.
 
 ---
 
-## 8. Container Images
+### 8. Container Images
 
 Images are immutable templates used to create containers.
 
@@ -321,7 +321,7 @@ Think of an image as a blueprint for creating containers.
 
 ---
 
-## 9. Running Containers
+### 9. Running Containers
 
 A running container is an instantiated image.
 
@@ -357,7 +357,7 @@ Multiple containers can be created from the same image.
 
 ---
 
-# Container Lifecycle
+## Container Lifecycle
 
 ```
 Dockerfile
@@ -415,9 +415,9 @@ The lifecycle illustrates how an application moves from source code to a running
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-### Shared Kernel
+#### Shared Kernel
 
 All containers running on the same host share a single Linux kernel.
 
@@ -425,7 +425,7 @@ This reduces resource usage and enables fast startup times.
 
 ---
 
-### Process Isolation
+#### Process Isolation
 
 Each container has its own process namespace.
 
@@ -433,7 +433,7 @@ Processes inside one container cannot normally see or interact with processes in
 
 ---
 
-### Filesystem Isolation
+#### Filesystem Isolation
 
 Containers receive their own filesystem view while sharing underlying image layers.
 
@@ -441,13 +441,13 @@ Changes made inside a running container affect only its writable layer unless pe
 
 ---
 
-### Resource Isolation
+#### Resource Isolation
 
 CPU, memory, storage, and other resources can be limited using cgroups to prevent one container from monopolizing host resources.
 
 ---
 
-### Immutability
+#### Immutability
 
 Container images are treated as immutable artifacts.
 
@@ -455,13 +455,13 @@ Applications are updated by creating new images and replacing existing container
 
 ---
 
-### Portability
+#### Portability
 
 A container image built on one Linux system can generally run on another compatible Linux system without modification, assuming compatible architecture and runtime.
 
 ---
 
-## How It Works
+### How It Works
 
 Container Architecture works by combining Linux kernel features with a container runtime to create isolated environments for applications. Instead of virtualizing hardware like traditional Virtual Machines (VMs), containers virtualize the operating system.
 
@@ -469,7 +469,7 @@ Every container uses the host operating system's kernel while maintaining its ow
 
 ---
 
-# Container Architecture Workflow
+## Container Architecture Workflow
 
 ```
 Application Source Code
@@ -521,7 +521,7 @@ Each layer contributes to creating a secure, lightweight, and isolated execution
 
 ---
 
-## Step 1 – Build the Container Image
+### Step 1 – Build the Container Image
 
 Developers package an application into a container image.
 
@@ -537,7 +537,7 @@ Images are immutable and reusable.
 
 ---
 
-## Step 2 – Load the Image
+### Step 2 – Load the Image
 
 The container runtime checks whether the image already exists locally.
 
@@ -579,7 +579,7 @@ This ensures the required application image is available before execution.
 
 ---
 
-## Step 3 – Create Namespaces
+### Step 3 – Create Namespaces
 
 Before starting the application, the runtime creates isolated namespaces.
 
@@ -616,7 +616,7 @@ Although both containers contain a process with PID 1, they are isolated from ea
 
 ---
 
-## Step 4 – Apply Resource Limits
+### Step 4 – Apply Resource Limits
 
 Control Groups (cgroups) allocate and restrict resources.
 
@@ -645,7 +645,7 @@ Resource limits prevent individual containers from consuming excessive system re
 
 ---
 
-## Step 5 – Mount the Filesystem
+### Step 5 – Mount the Filesystem
 
 The runtime assembles multiple image layers into a single unified filesystem.
 
@@ -671,7 +671,7 @@ This layered approach improves storage efficiency.
 
 ---
 
-## Step 6 – Configure Networking
+### Step 6 – Configure Networking
 
 Each container receives an isolated network namespace.
 
@@ -687,7 +687,7 @@ Containers communicate through configured container networks rather than directl
 
 ---
 
-## Step 7 – Start the Main Process
+### Step 7 – Start the Main Process
 
 After initialization:
 
@@ -713,7 +713,7 @@ If the primary process exits, the container also stops unless restarted by a man
 
 ---
 
-## Step 8 – Runtime Management
+### Step 8 – Runtime Management
 
 During execution, the runtime manages:
 
@@ -728,7 +728,7 @@ This ensures stable and predictable application execution.
 
 ---
 
-## Step 9 – Stop and Remove the Container
+### Step 9 – Stop and Remove the Container
 
 When the workload is no longer required:
 
@@ -754,9 +754,9 @@ Removing a container does not remove the original image unless explicitly reques
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Running Multiple Applications
+### Example 1 – Running Multiple Applications
 
 Scenario:
 
@@ -795,7 +795,7 @@ Benefits:
 
 ---
 
-## Example 2 – Resource Isolation
+### Example 2 – Resource Isolation
 
 Scenario:
 
@@ -831,7 +831,7 @@ Resource limits maintain system stability.
 
 ---
 
-## Example 3 – Filesystem Layers
+### Example 3 – Filesystem Layers
 
 Scenario:
 
@@ -861,7 +861,7 @@ Benefits:
 
 ---
 
-## Example 4 – Process Isolation
+### Example 4 – Process Isolation
 
 Scenario:
 
@@ -892,9 +892,9 @@ Failures are isolated to the affected container.
 
 ---
 
-# Hands-on Commands
+## Hands-on Commands
 
-## View Docker System Information
+### View Docker System Information
 
 ```bash
 docker info
@@ -911,7 +911,7 @@ Displays:
 
 ---
 
-## Display Docker Version
+### Display Docker Version
 
 ```bash
 docker version
@@ -921,7 +921,7 @@ Shows client and server version information.
 
 ---
 
-## List Running Containers
+### List Running Containers
 
 ```bash
 docker ps
@@ -931,7 +931,7 @@ Displays active containers.
 
 ---
 
-## List All Containers
+### List All Containers
 
 ```bash
 docker ps -a
@@ -941,7 +941,7 @@ Displays running and stopped containers.
 
 ---
 
-## Inspect a Container
+### Inspect a Container
 
 ```bash
 docker inspect <container_name>
@@ -958,7 +958,7 @@ Displays detailed JSON information including:
 
 ---
 
-## Inspect an Image
+### Inspect an Image
 
 ```bash
 docker inspect <image_name>
@@ -974,7 +974,7 @@ Shows image metadata including:
 
 ---
 
-## Display Running Processes
+### Display Running Processes
 
 ```bash
 docker top <container_name>
@@ -984,7 +984,7 @@ Shows processes running inside a container.
 
 ---
 
-## View Resource Usage
+### View Resource Usage
 
 ```bash
 docker stats
@@ -999,7 +999,7 @@ Displays real-time:
 
 ---
 
-## Display Image History
+### Display Image History
 
 ```bash
 docker history <image_name>
@@ -1009,7 +1009,7 @@ Shows the layers that make up an image.
 
 ---
 
-## Display Mounted Volumes
+### Display Mounted Volumes
 
 ```bash
 docker inspect <container_name>
@@ -1019,9 +1019,9 @@ Look for the **Mounts** section to view attached volumes and bind mounts.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Understand the Architecture
+#### 1. Understand the Architecture
 
 Learn how:
 
@@ -1035,25 +1035,25 @@ work together before moving to orchestration platforms like Kubernetes.
 
 ---
 
-### 2. Keep Containers Lightweight
+#### 2. Keep Containers Lightweight
 
 Use minimal base images and install only required software to reduce image size and attack surface.
 
 ---
 
-### 3. Limit Resource Consumption
+#### 3. Limit Resource Consumption
 
 Define CPU and memory limits to prevent resource exhaustion and improve host stability.
 
 ---
 
-### 4. Design Stateless Containers
+#### 4. Design Stateless Containers
 
 Store persistent data outside containers using volumes or external storage services whenever possible.
 
 ---
 
-### 5. Prefer Immutable Images
+#### 5. Prefer Immutable Images
 
 Never modify production containers directly.
 
@@ -1061,19 +1061,19 @@ Rebuild images and redeploy containers instead.
 
 ---
 
-### 6. Use Standardized Images
+#### 6. Use Standardized Images
 
 Adopt organization-approved base images to improve consistency, maintenance, and security.
 
 ---
 
-### 7. Monitor Resource Usage
+#### 7. Monitor Resource Usage
 
 Regularly observe CPU, memory, storage, and network utilization to identify bottlenecks and optimize performance.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Understanding container architecture is essential for building secure, scalable, and efficient containerized applications. Many operational problems arise from misunderstandings about how containers actually work beneath the surface.
 
@@ -1081,7 +1081,7 @@ The following are some of the most common architectural mistakes made by beginne
 
 ---
 
-### 1. Thinking Containers Have Their Own Kernel
+#### 1. Thinking Containers Have Their Own Kernel
 
 This is the most common misconception.
 
@@ -1125,7 +1125,7 @@ All containers on the same host share the host operating system's kernel.
 
 ---
 
-### 2. Treating Containers Like Virtual Machines
+#### 2. Treating Containers Like Virtual Machines
 
 Containers are **operating system-level virtualization**, not hardware virtualization.
 
@@ -1141,7 +1141,7 @@ Understanding this distinction is fundamental to container architecture.
 
 ---
 
-### 3. Ignoring Namespaces
+#### 3. Ignoring Namespaces
 
 Namespaces provide isolation between containers.
 
@@ -1156,7 +1156,7 @@ Namespaces are the primary mechanism that gives containers their isolated enviro
 
 ---
 
-### 4. Ignoring cgroups
+#### 4. Ignoring cgroups
 
 Without Control Groups (cgroups), a single container could consume:
 
@@ -1169,7 +1169,7 @@ Always define appropriate resource limits for production workloads.
 
 ---
 
-### 5. Assuming Containers Are Completely Isolated
+#### 5. Assuming Containers Are Completely Isolated
 
 Although containers provide strong process isolation, they still share:
 
@@ -1184,7 +1184,7 @@ For stronger isolation requirements, consider technologies such as virtual machi
 
 ---
 
-### 6. Modifying Running Containers
+#### 6. Modifying Running Containers
 
 Avoid treating running containers like traditional servers.
 
@@ -1228,7 +1228,7 @@ Immutable infrastructure is a core container principle.
 
 ---
 
-### 7. Misunderstanding Image Layers
+#### 7. Misunderstanding Image Layers
 
 Each Dockerfile instruction generally creates a new image layer.
 
@@ -1243,7 +1243,7 @@ Optimize layer ordering to maximize cache reuse.
 
 ---
 
-### 8. Using Large Base Images
+#### 8. Using Large Base Images
 
 Choosing unnecessarily large base images results in:
 
@@ -1256,7 +1256,7 @@ Prefer minimal, well-maintained images when appropriate.
 
 ---
 
-### 9. Forgetting That Containers Are Ephemeral
+#### 9. Forgetting That Containers Are Ephemeral
 
 Containers are designed to be temporary.
 
@@ -1283,7 +1283,7 @@ Persist important data using:
 
 ---
 
-### 10. Ignoring the Container Runtime
+#### 10. Ignoring the Container Runtime
 
 The runtime is responsible for creating and managing containers.
 
@@ -1299,7 +1299,7 @@ Modern environments frequently use `containerd` or `CRI-O` even if Docker is not
 
 ---
 
-### 11. Overlooking Host Operating System Security
+#### 11. Overlooking Host Operating System Security
 
 Because containers share the host kernel:
 
@@ -1311,7 +1311,7 @@ Container security begins with securing the host operating system.
 
 ---
 
-### 12. Misconfiguring Networking
+#### 12. Misconfiguring Networking
 
 Common networking mistakes include:
 
@@ -1325,7 +1325,7 @@ Understand container networking concepts before deploying production workloads.
 
 ---
 
-### 13. Assuming Every File Is Persistent
+#### 13. Assuming Every File Is Persistent
 
 Only data stored in external volumes or bind mounts survives container recreation.
 
@@ -1333,7 +1333,7 @@ Everything stored in the writable layer is temporary unless persisted intentiona
 
 ---
 
-### 14. Running Multiple Unrelated Services
+#### 14. Running Multiple Unrelated Services
 
 Example:
 
@@ -1363,7 +1363,7 @@ Instead, deploy separate containers for independent services.
 
 ---
 
-### 15. Learning Docker Commands Without Understanding Architecture
+#### 15. Learning Docker Commands Without Understanding Architecture
 
 Many engineers memorize commands such as:
 
@@ -1391,7 +1391,7 @@ Understanding architecture makes Docker, Kubernetes, and container security much
 
 ---
 
-# Container Architecture Checklist
+## Container Architecture Checklist
 
 | Item | Status |
 |------|:------:|
@@ -1413,9 +1413,9 @@ Understanding architecture makes Docker, Kubernetes, and container security much
 
 ---
 
-# References
+## References
 
-## OCI Standards
+### OCI Standards
 
 - Open Container Initiative (OCI) Runtime Specification
 - Open Container Initiative (OCI) Image Specification
@@ -1423,7 +1423,7 @@ Understanding architecture makes Docker, Kubernetes, and container security much
 
 ---
 
-## Linux Documentation
+### Linux Documentation
 
 - Linux Namespaces
 - Linux Control Groups (cgroups)
@@ -1433,7 +1433,7 @@ Understanding architecture makes Docker, Kubernetes, and container security much
 
 ---
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker Engine
 - Docker CLI
@@ -1444,7 +1444,7 @@ Understanding architecture makes Docker, Kubernetes, and container security much
 
 ---
 
-## Container Runtimes
+### Container Runtimes
 
 - containerd
 - CRI-O
@@ -1453,7 +1453,7 @@ Understanding architecture makes Docker, Kubernetes, and container security much
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Documentation
 - Container Runtime Interface (CRI)
@@ -1461,7 +1461,7 @@ Understanding architecture makes Docker, Kubernetes, and container security much
 
 ---
 
-## Security Resources
+### Security Resources
 
 - NIST SP 800-190 — Application Container Security Guide
 - OWASP Docker Security Cheat Sheet
@@ -1471,7 +1471,7 @@ Understanding architecture makes Docker, Kubernetes, and container security much
 
 ---
 
-## Books
+### Books
 
 - *Docker Deep Dive* — Nigel Poulton
 - *Container Security* — Liz Rice
@@ -1480,7 +1480,7 @@ Understanding architecture makes Docker, Kubernetes, and container security much
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Kubernetes Official Documentation

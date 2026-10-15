@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A SIEM becomes operationally valuable when it can answer questions such as:
 
@@ -50,7 +50,7 @@ Response
 
 ---
 
-# 2. What is a SIEM Use Case?
+## 2. What is a SIEM Use Case?
 
 A SIEM use case is a defined security monitoring objective implemented through:
 
@@ -94,7 +94,7 @@ and affected accounts
 
 ---
 
-# 3. Detection Scenario
+## 3. Detection Scenario
 
 A detection scenario describes a specific situation the SIEM should identify.
 
@@ -117,7 +117,7 @@ High
 
 ---
 
-# 4. Use Case Lifecycle
+## 4. Use Case Lifecycle
 
 A good use case follows:
 
@@ -145,7 +145,7 @@ Retire / Improve
 
 ---
 
-# 5. Use Case Requirements
+## 5. Use Case Requirements
 
 Each use case should define:
 
@@ -170,7 +170,7 @@ Owner
 
 ---
 
-# 6. Use Case Example
+## 6. Use Case Example
 
 ```yaml
 id: UC-AUTH-001
@@ -200,7 +200,7 @@ The exact thresholds should be tuned to the environment.
 
 ---
 
-# 7. Use Case Categories
+## 7. Use Case Categories
 
 Common SIEM use-case categories include:
 
@@ -222,7 +222,7 @@ Compliance
 
 ---
 
-# 8. Authentication Use Cases
+## 8. Authentication Use Cases
 
 Authentication is one of the highest-value SIEM monitoring areas.
 
@@ -243,7 +243,7 @@ Account Lockout
 
 ---
 
-# 9. Use Case – Brute Force
+## 9. Use Case – Brute Force
 
 Objective:
 
@@ -280,7 +280,7 @@ Possible Brute Force
 
 ---
 
-# 10. Brute Force Detection
+## 10. Brute Force Detection
 
 Conceptually:
 
@@ -298,7 +298,7 @@ Alert
 
 ---
 
-# 11. Brute Force False Positives
+## 11. Brute Force False Positives
 
 Possible causes:
 
@@ -322,7 +322,7 @@ Historical Behavior
 
 ---
 
-# 12. Use Case – Password Spraying
+## 12. Use Case – Password Spraying
 
 Password spraying differs from brute force.
 
@@ -354,7 +354,7 @@ Short time window
 
 ---
 
-# 13. Brute Force vs Password Spraying
+## 13. Brute Force vs Password Spraying
 
 ```text
 Brute Force
@@ -375,7 +375,7 @@ This distinction is frequently tested in SOC interviews.
 
 ---
 
-# 14. Use Case – Credential Stuffing
+## 14. Use Case – Credential Stuffing
 
 Credential stuffing uses previously compromised username/password combinations.
 
@@ -395,7 +395,7 @@ Unusual Login Patterns
 
 ---
 
-# 15. Use Case – Account Lockout
+## 15. Use Case – Account Lockout
 
 A large number of account lockouts may indicate:
 
@@ -422,7 +422,7 @@ Potential Attack
 
 ---
 
-# 16. Use Case – Successful Login After Failures
+## 16. Use Case – Successful Login After Failures
 
 Sequence:
 
@@ -454,7 +454,7 @@ MFA
 
 ---
 
-# 17. Use Case – Impossible Travel
+## 17. Use Case – Impossible Travel
 
 Example:
 
@@ -488,7 +488,7 @@ Geographic anomalies are signals, not automatic proof of compromise.
 
 ---
 
-# 18. Use Case – Unusual Login Time
+## 18. Use Case – Unusual Login Time
 
 Example:
 
@@ -514,7 +514,7 @@ Unusual Location
 
 ---
 
-# 19. Use Case – New Device Login
+## 19. Use Case – New Device Login
 
 Detection:
 
@@ -536,7 +536,7 @@ Sensitive Action
 
 ---
 
-# 20. Use Case – Privileged Account Login
+## 20. Use Case – Privileged Account Login
 
 Monitor:
 
@@ -560,7 +560,7 @@ Sensitive Action
 
 ---
 
-# 21. Use Case – Privilege Escalation
+## 21. Use Case – Privilege Escalation
 
 Signals:
 
@@ -584,7 +584,7 @@ Sensitive Action
 
 ---
 
-# 22. Use Case – MFA Manipulation
+## 22. Use Case – MFA Manipulation
 
 Monitor:
 
@@ -608,7 +608,7 @@ Sensitive Action
 
 ---
 
-# 23. Endpoint Use Cases
+## 23. Endpoint Use Cases
 
 Endpoint monitoring can detect:
 
@@ -626,7 +626,7 @@ Lateral Movement
 
 ---
 
-# 24. Use Case – Suspicious PowerShell
+## 24. Use Case – Suspicious PowerShell
 
 Basic:
 
@@ -648,7 +648,7 @@ Network Connection
 
 ---
 
-# 25. PowerShell Detection
+## 25. PowerShell Detection
 
 Telemetry:
 
@@ -671,7 +671,7 @@ suspicious behavior
 
 ---
 
-# 26. PowerShell False Positives
+## 26. PowerShell False Positives
 
 Legitimate:
 
@@ -691,7 +691,7 @@ PowerShell ≠ Malicious
 
 ---
 
-# 27. Use Case – Suspicious Command Shell
+## 27. Use Case – Suspicious Command Shell
 
 Detect:
 
@@ -711,7 +711,7 @@ Network Activity
 
 ---
 
-# 28. Use Case – Office Application Spawning Shell
+## 28. Use Case – Office Application Spawning Shell
 
 Potential sequence:
 
@@ -743,7 +743,7 @@ File Creation
 
 ---
 
-# 29. Use Case – Suspicious Process Chain
+## 29. Use Case – Suspicious Process Chain
 
 Example:
 
@@ -767,7 +767,7 @@ Potential Malware Execution
 
 ---
 
-# 30. Use Case – Unsigned Executable
+## 30. Use Case – Unsigned Executable
 
 Potential signals:
 
@@ -794,7 +794,7 @@ Network
 
 ---
 
-# 31. Use Case – Rare Process
+## 31. Use Case – Rare Process
 
 Detection:
 
@@ -819,7 +819,7 @@ Rare does not automatically mean malicious.
 
 ---
 
-# 32. Use Case – Persistence
+## 32. Use Case – Persistence
 
 Monitor:
 
@@ -844,7 +844,7 @@ External Connection
 
 ---
 
-# 33. Use Case – Scheduled Task
+## 33. Use Case – Scheduled Task
 
 Example:
 
@@ -864,7 +864,7 @@ Potential Persistence
 
 ---
 
-# 34. Use Case – Service Creation
+## 34. Use Case – Service Creation
 
 Monitor:
 
@@ -888,7 +888,7 @@ Network
 
 ---
 
-# 35. Use Case – Credential Access
+## 35. Use Case – Credential Access
 
 Signals:
 
@@ -912,7 +912,7 @@ Outbound Connection
 
 ---
 
-# 36. Use Case – Lateral Movement
+## 36. Use Case – Lateral Movement
 
 Monitor:
 
@@ -928,7 +928,7 @@ Remote Execution
 
 ---
 
-# 37. Use Case – Unusual RDP
+## 37. Use Case – Unusual RDP
 
 Detection:
 
@@ -950,7 +950,7 @@ Lateral Movement
 
 ---
 
-# 38. Use Case – Unusual SSH
+## 38. Use Case – Unusual SSH
 
 Detection:
 
@@ -975,7 +975,7 @@ Authentication
 
 ---
 
-# 39. Use Case – Lateral Movement Sequence
+## 39. Use Case – Lateral Movement Sequence
 
 ```text
 Credential Access
@@ -995,7 +995,7 @@ Possible Lateral Movement
 
 ---
 
-# 40. Network Use Cases
+## 40. Network Use Cases
 
 Network SIEM use cases include:
 
@@ -1013,7 +1013,7 @@ Rare Destination
 
 ---
 
-# 41. Use Case – Port Scanning
+## 41. Use Case – Port Scanning
 
 Signals:
 
@@ -1035,7 +1035,7 @@ within a short window.
 
 ---
 
-# 42. Port Scan Detection
+## 42. Port Scan Detection
 
 ```text
 source.ip = X
@@ -1049,7 +1049,7 @@ Thresholds should be tuned for the environment.
 
 ---
 
-# 43. Port Scan False Positives
+## 43. Port Scan False Positives
 
 Possible legitimate sources:
 
@@ -1065,7 +1065,7 @@ Allowlisting may be appropriate where justified.
 
 ---
 
-# 44. Use Case – Malicious IP
+## 44. Use Case – Malicious IP
 
 ```text
 Network Connection
@@ -1083,7 +1083,7 @@ Alert
 
 ---
 
-# 45. Use Case – Malicious Domain
+## 45. Use Case – Malicious Domain
 
 ```text
 DNS Query
@@ -1108,7 +1108,7 @@ Subsequent Connection
 
 ---
 
-# 46. Use Case – DNS Tunneling
+## 46. Use Case – DNS Tunneling
 
 Potential signals:
 
@@ -1125,7 +1125,7 @@ A single signal is not enough.
 
 ---
 
-# 47. DNS Tunneling Correlation
+## 47. DNS Tunneling Correlation
 
 ```text
 Host
@@ -1147,7 +1147,7 @@ Potential DNS Tunneling
 
 ---
 
-# 48. Use Case – Beaconing
+## 48. Use Case – Beaconing
 
 Beaconing can appear as:
 
@@ -1175,7 +1175,7 @@ Periodic traffic alone is not proof of C2.
 
 ---
 
-# 49. Use Case – Command and Control
+## 49. Use Case – Command and Control
 
 Combine:
 
@@ -1197,7 +1197,7 @@ High-Confidence C2 Candidate
 
 ---
 
-# 50. Use Case – Data Exfiltration
+## 50. Use Case – Data Exfiltration
 
 Signals:
 
@@ -1211,7 +1211,7 @@ Rare Destination
 
 ---
 
-# 51. Data Exfiltration Detection
+## 51. Data Exfiltration Detection
 
 Example:
 
@@ -1233,7 +1233,7 @@ Potential Exfiltration
 
 ---
 
-# 52. Data Transfer Baselines
+## 52. Data Transfer Baselines
 
 Instead of fixed thresholds only:
 
@@ -1265,7 +1265,7 @@ Data Sensitivity
 
 ---
 
-# 53. Web Use Cases
+## 53. Web Use Cases
 
 Web application monitoring:
 
@@ -1282,7 +1282,7 @@ API Abuse
 
 ---
 
-# 54. Use Case – SQL Injection
+## 54. Use Case – SQL Injection
 
 Potential signals:
 
@@ -1306,7 +1306,7 @@ WAF
 
 ---
 
-# 55. Use Case – Web Shell
+## 55. Use Case – Web Shell
 
 Potential signals:
 
@@ -1333,7 +1333,7 @@ Network
 
 ---
 
-# 56. Use Case – Authentication Attack on Web Application
+## 56. Use Case – Authentication Attack on Web Application
 
 ```text
 Many Failed Logins
@@ -1355,7 +1355,7 @@ High Failure Rate
 
 ---
 
-# 57. Email Use Cases
+## 57. Email Use Cases
 
 Common detections:
 
@@ -1372,7 +1372,7 @@ Suspicious Sender
 
 ---
 
-# 58. Use Case – Phishing
+## 58. Use Case – Phishing
 
 Correlation:
 
@@ -1394,7 +1394,7 @@ This is stronger than detecting the email alone.
 
 ---
 
-# 59. Use Case – Business Email Compromise
+## 59. Use Case – Business Email Compromise
 
 Signals:
 
@@ -1416,7 +1416,7 @@ Account Compromise
 
 ---
 
-# 60. Use Case – Malicious Email Attachment
+## 60. Use Case – Malicious Email Attachment
 
 Combine:
 
@@ -1438,7 +1438,7 @@ Potential Endpoint Compromise
 
 ---
 
-# 61. Cloud Security Use Cases
+## 61. Cloud Security Use Cases
 
 Monitor:
 
@@ -1455,7 +1455,7 @@ New Resources
 
 ---
 
-# 62. Use Case – Cloud Privilege Escalation
+## 62. Use Case – Cloud Privilege Escalation
 
 ```text
 User
@@ -1475,7 +1475,7 @@ Cloud Account Compromise
 
 ---
 
-# 63. Use Case – New Access Key
+## 63. Use Case – New Access Key
 
 Monitor:
 
@@ -1491,7 +1491,7 @@ Immediate API Activity
 
 ---
 
-# 64. Use Case – Cloud Storage Access
+## 64. Use Case – Cloud Storage Access
 
 Detect:
 
@@ -1507,7 +1507,7 @@ External Source
 
 ---
 
-# 65. Use Case – Security Group Modification
+## 65. Use Case – Security Group Modification
 
 Example:
 
@@ -1533,7 +1533,7 @@ Potential Attack Preparation
 
 ---
 
-# 66. Use Case – New Cloud Resource
+## 66. Use Case – New Cloud Resource
 
 Monitor:
 
@@ -1557,7 +1557,7 @@ What happened afterward?
 
 ---
 
-# 67. Ransomware Use Cases
+## 67. Ransomware Use Cases
 
 Ransomware detection should focus on behavior.
 
@@ -1575,7 +1575,7 @@ Multiple Hosts
 
 ---
 
-# 68. Ransomware Correlation
+## 68. Ransomware Correlation
 
 ```text
 Mass File Changes
@@ -1595,7 +1595,7 @@ Critical Risk
 
 ---
 
-# 69. Ransomware Detection Challenges
+## 69. Ransomware Detection Challenges
 
 Potential legitimate causes:
 
@@ -1611,7 +1611,7 @@ Context is essential.
 
 ---
 
-# 70. Insider Threat Use Cases
+## 70. Insider Threat Use Cases
 
 Potential signals:
 
@@ -1628,7 +1628,7 @@ Insider risk detections require careful privacy and governance considerations.
 
 ---
 
-# 71. Insider Threat Correlation
+## 71. Insider Threat Correlation
 
 ```text
 Employee
@@ -1652,7 +1652,7 @@ Do not automatically conclude malicious insider intent.
 
 ---
 
-# 72. Vulnerability-Driven Detection
+## 72. Vulnerability-Driven Detection
 
 Combine:
 
@@ -1682,7 +1682,7 @@ High-Priority Investigation
 
 ---
 
-# 73. Threat Intelligence + Vulnerability
+## 73. Threat Intelligence + Vulnerability
 
 Example:
 
@@ -1698,7 +1698,7 @@ This combination can significantly increase risk.
 
 ---
 
-# 74. Detection Scenario – Compromised Account
+## 74. Detection Scenario – Compromised Account
 
 ```text
 Unusual Login
@@ -1720,7 +1720,7 @@ Possible Account Takeover
 
 ---
 
-# 75. Detection Scenario – Malware
+## 75. Detection Scenario – Malware
 
 ```text
 Email Attachment
@@ -1742,7 +1742,7 @@ Possible Malware Infection
 
 ---
 
-# 76. Detection Scenario – Lateral Movement
+## 76. Detection Scenario – Lateral Movement
 
 ```text
 Credential Access
@@ -1762,7 +1762,7 @@ Possible Lateral Movement
 
 ---
 
-# 77. Detection Scenario – Exfiltration
+## 77. Detection Scenario – Exfiltration
 
 ```text
 Sensitive Access
@@ -1782,7 +1782,7 @@ Potential Data Exfiltration
 
 ---
 
-# 78. Detection Scenario – Ransomware
+## 78. Detection Scenario – Ransomware
 
 ```text
 Mass File Modification
@@ -1802,7 +1802,7 @@ Potential Ransomware
 
 ---
 
-# 79. Detection Scenario – Cloud Compromise
+## 79. Detection Scenario – Cloud Compromise
 
 ```text
 Unusual Cloud Login
@@ -1824,7 +1824,7 @@ Potential Cloud Account Takeover
 
 ---
 
-# 80. Detection Scenario – Phishing
+## 80. Detection Scenario – Phishing
 
 ```text
 Suspicious Email
@@ -1846,7 +1846,7 @@ Potential Phishing Compromise
 
 ---
 
-# 81. Detection Scenario – C2
+## 81. Detection Scenario – C2
 
 ```text
 Rare Domain
@@ -1868,7 +1868,7 @@ Potential C2
 
 ---
 
-# 82. Detection Scenario – Privilege Escalation
+## 82. Detection Scenario – Privilege Escalation
 
 ```text
 Normal User
@@ -1888,7 +1888,7 @@ Potential Privilege Abuse
 
 ---
 
-# 83. Detection Scenario – Reconnaissance
+## 83. Detection Scenario – Reconnaissance
 
 ```text
 One Host
@@ -1908,7 +1908,7 @@ Potential Network Scanning
 
 ---
 
-# 84. Use Case Prioritization
+## 84. Use Case Prioritization
 
 Not all use cases should be built immediately.
 
@@ -1927,7 +1927,7 @@ Regulatory Requirements
 
 ---
 
-# 85. High-Priority Use Cases
+## 85. High-Priority Use Cases
 
 Many organizations prioritize:
 
@@ -1948,7 +1948,7 @@ The exact priorities depend on the environment.
 
 ---
 
-# 86. Use Case Maturity
+## 86. Use Case Maturity
 
 A simple maturity model:
 
@@ -1971,7 +1971,7 @@ Automated Response
 
 ---
 
-# 87. Basic Alert
+## 87. Basic Alert
 
 ```text
 PowerShell detected
@@ -1979,7 +1979,7 @@ PowerShell detected
 
 ---
 
-# 88. Context-Enriched Alert
+## 88. Context-Enriched Alert
 
 ```text
 PowerShell detected
@@ -1999,7 +1999,7 @@ External connection
 
 ---
 
-# 89. Correlated Alert
+## 89. Correlated Alert
 
 ```text
 Office
@@ -2015,7 +2015,7 @@ External Connection
 
 ---
 
-# 90. Risk-Based Alert
+## 90. Risk-Based Alert
 
 ```text
 Suspicious PowerShell
@@ -2035,7 +2035,7 @@ Critical Risk
 
 ---
 
-# 91. Automated Response
+## 91. Automated Response
 
 ```text
 High-Confidence Malware
@@ -2051,7 +2051,7 @@ Endpoint Isolation
 
 ---
 
-# 92. Use Case Testing
+## 92. Use Case Testing
 
 Before production:
 
@@ -2066,7 +2066,7 @@ Test Delayed Events
 
 ---
 
-# 93. Positive Test
+## 93. Positive Test
 
 Expected malicious/suspicious behavior:
 
@@ -2077,7 +2077,7 @@ TRIGGER
 
 ---
 
-# 94. Negative Test
+## 94. Negative Test
 
 Expected legitimate behavior:
 
@@ -2088,7 +2088,7 @@ NO TRIGGER
 
 ---
 
-# 95. Edge Case Testing
+## 95. Edge Case Testing
 
 Test:
 
@@ -2105,7 +2105,7 @@ Delayed Events
 
 ---
 
-# 96. Detection Tuning
+## 96. Detection Tuning
 
 If too many alerts:
 
@@ -2123,7 +2123,7 @@ Retest
 
 ---
 
-# 97. Exception Management
+## 97. Exception Management
 
 Examples:
 
@@ -2148,7 +2148,7 @@ Avoid broad permanent exclusions.
 
 ---
 
-# 98. Detection Health
+## 98. Detection Health
 
 Monitor:
 
@@ -2164,7 +2164,7 @@ Recent Changes?
 
 ---
 
-# 99. Detection Drift
+## 99. Detection Drift
 
 A detection may become less effective because:
 
@@ -2186,7 +2186,7 @@ is necessary.
 
 ---
 
-# 100. Detection Use Case Documentation
+## 100. Detection Use Case Documentation
 
 Example:
 
@@ -2221,7 +2221,7 @@ response:
 
 ---
 
-# 101. Use Case Dashboard
+## 101. Use Case Dashboard
 
 A SOC dashboard can show:
 
@@ -2253,7 +2253,7 @@ Top Users
 
 ---
 
-# 102. Use Case KPIs
+## 102. Use Case KPIs
 
 Measure:
 
@@ -2270,7 +2270,7 @@ Data Quality
 
 ---
 
-# 103. Detection Effectiveness
+## 103. Detection Effectiveness
 
 A useful question:
 
@@ -2287,7 +2287,7 @@ How many alerts does it generate?
 
 ---
 
-# 104. Detection Precision
+## 104. Detection Precision
 
 Conceptually:
 
@@ -2301,7 +2301,7 @@ Higher precision generally means fewer false alarms among triggered alerts.
 
 ---
 
-# 105. Detection Recall
+## 105. Detection Recall
 
 Conceptually:
 
@@ -2317,7 +2317,7 @@ In security, improving one may affect the other.
 
 ---
 
-# 106. Precision vs Recall
+## 106. Precision vs Recall
 
 ```text
 High Precision
@@ -2338,7 +2338,7 @@ Response Cost
 
 ---
 
-# 107. Detection Latency
+## 107. Detection Latency
 
 Measure:
 
@@ -2356,7 +2356,7 @@ Large delays can reduce response effectiveness.
 
 ---
 
-# 108. Use Case Performance
+## 108. Use Case Performance
 
 Complex detections may consume significant resources.
 
@@ -2373,7 +2373,7 @@ Preprocessing
 
 ---
 
-# 109. Use Case Dependencies
+## 109. Use Case Dependencies
 
 Example:
 
@@ -2396,7 +2396,7 @@ Track dependencies.
 
 ---
 
-# 110. Use Case Failure
+## 110. Use Case Failure
 
 A detection can fail because:
 
@@ -2413,7 +2413,7 @@ Data Delay
 
 ---
 
-# 111. Practical Lab – Authentication
+## 111. Practical Lab – Authentication
 
 Create detections for:
 
@@ -2437,7 +2437,7 @@ Response
 
 ---
 
-# 112. Practical Lab – Endpoint
+## 112. Practical Lab – Endpoint
 
 Create:
 
@@ -2457,7 +2457,7 @@ ATT&CK
 
 ---
 
-# 113. Practical Lab – Network
+## 113. Practical Lab – Network
 
 Create:
 
@@ -2479,7 +2479,7 @@ Suspicious Traffic
 
 ---
 
-# 114. Practical Lab – Cloud
+## 114. Practical Lab – Cloud
 
 Create:
 
@@ -2493,7 +2493,7 @@ Security Group Change
 
 ---
 
-# 115. Practical Lab – Full Attack Chain
+## 115. Practical Lab – Full Attack Chain
 
 Simulate a controlled scenario:
 
@@ -2529,67 +2529,67 @@ Only use authorized test environments for attack simulation.
 
 ---
 
-# 116. Interview Questions
+## 116. Interview Questions
 
-### What is a SIEM use case?
+#### What is a SIEM use case?
 
 > A defined security monitoring objective implemented through telemetry, detection logic, correlation, alerting, investigation, and response.
 
-### What are common SIEM use cases?
+#### What are common SIEM use cases?
 
 > Authentication attacks, privilege abuse, malware, endpoint execution, lateral movement, command-and-control, data exfiltration, ransomware, phishing, cloud compromise, and suspicious administrative activity.
 
-### How would you create a SIEM use case?
+#### How would you create a SIEM use case?
 
 > Identify the threat, define the detection objective, identify required telemetry, normalize the data, design detection logic, test positive and negative cases, deploy, tune, and continuously monitor effectiveness.
 
-### How would you detect brute force?
+#### How would you detect brute force?
 
 > Count repeated authentication failures against the same account within a defined time window, enriched with source, device, application, and user context.
 
-### How is password spraying different?
+#### How is password spraying different?
 
 > Password spraying targets many accounts with relatively few attempts per account, so unique-user counts and common source analysis are important.
 
-### How would you detect account compromise?
+#### How would you detect account compromise?
 
 > Correlate unusual authentication, new devices or locations, MFA changes, privilege changes, and sensitive actions.
 
-### How would you detect suspicious PowerShell?
+#### How would you detect suspicious PowerShell?
 
 > Analyze PowerShell execution together with command line, parent process, user, host, network connections, and other suspicious behaviors.
 
-### How would you detect lateral movement?
+#### How would you detect lateral movement?
 
 > Monitor unusual remote authentication and remote-service activity, then correlate source host, destination host, account, process, and subsequent actions.
 
-### How would you detect C2?
+#### How would you detect C2?
 
 > Combine suspicious outbound connections, periodic behavior, rare destinations, DNS or proxy activity, endpoint process context, and threat intelligence.
 
-### How would you detect data exfiltration?
+#### How would you detect data exfiltration?
 
 > Correlate sensitive data access with abnormal outbound transfer volume, unusual destinations, compression or staging behavior, and user/process context.
 
-### How would you detect ransomware?
+#### How would you detect ransomware?
 
 > Monitor mass file modifications, encryption-like behavior, backup or recovery-control changes, suspicious processes, and activity across multiple systems.
 
-### What is detection tuning?
+#### What is detection tuning?
 
 > Adjusting logic, thresholds, exclusions, context, and correlation to improve detection quality and reduce unnecessary alerts.
 
-### What is detection precision?
+#### What is detection precision?
 
 > The proportion of triggered detections that are true positives.
 
-### What is detection recall?
+#### What is detection recall?
 
 > The proportion of relevant malicious activity that is successfully detected.
 
 ---
 
-# 117. Quick Revision
+## 117. Quick Revision
 
 ```text
 SIEM USE CASE
@@ -2643,7 +2643,7 @@ TUNING
 
 ---
 
-# 118. Golden Rules
+## 118. Golden Rules
 
 ```text
 1. Build use cases around threats, not around available logs alone.
@@ -2689,7 +2689,7 @@ TUNING
 
 ---
 
-# 119. Final Mental Model
+## 119. Final Mental Model
 
 Think of every SIEM use case as:
 
@@ -2747,7 +2747,7 @@ How do we measure whether it works?
 
 ---
 
-# 120. Chapter Summary
+## 120. Chapter Summary
 
 SIEM use cases are the practical bridge between security requirements and SOC operations.
 

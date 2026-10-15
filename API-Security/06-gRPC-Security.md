@@ -1,6 +1,6 @@
 # 06 - gRPC Security
 
-# Introduction
+## Introduction
 
 gRPC is a modern, high-performance Remote Procedure Call (RPC) framework developed by Google.
 
@@ -27,7 +27,7 @@ Understanding gRPC security is increasingly important because many enterprise ap
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -44,7 +44,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is gRPC?
+## What is gRPC?
 
 gRPC stands for
 
@@ -78,7 +78,7 @@ Binary Response
 
 ---
 
-# Why gRPC Was Created
+## Why gRPC Was Created
 
 Modern distributed applications require:
 
@@ -99,7 +99,7 @@ gRPC addresses these challenges using HTTP/2 and Protocol Buffers.
 
 ---
 
-# Evolution of APIs
+## Evolution of APIs
 
 ```
 RPC
@@ -133,7 +133,7 @@ Each generation improved scalability, interoperability, and developer productivi
 
 ---
 
-# gRPC Architecture
+## gRPC Architecture
 
 ```
               Client Application
@@ -163,7 +163,7 @@ The client invokes remote methods through generated stubs.
 
 ---
 
-# Client-Server Communication
+## Client-Server Communication
 
 ```
 Client
@@ -205,7 +205,7 @@ Both client and server exchange compact binary messages.
 
 ---
 
-# Key Components
+## Key Components
 
 A typical gRPC application consists of:
 
@@ -219,7 +219,7 @@ A typical gRPC application consists of:
 
 ---
 
-# What is RPC?
+## What is RPC?
 
 Remote Procedure Call allows a program to invoke a function running on another machine.
 
@@ -251,7 +251,7 @@ The developer interacts with the remote function similarly to a local function c
 
 ---
 
-# Service Definition
+## Service Definition
 
 Every gRPC service is defined in a Protocol Buffer file.
 
@@ -271,7 +271,7 @@ The service contract specifies available remote procedures.
 
 ---
 
-# Protocol Buffers (Protobuf)
+## Protocol Buffers (Protobuf)
 
 Protocol Buffers are Google's language-neutral serialization format.
 
@@ -287,7 +287,7 @@ Compared to JSON, Protobuf messages are significantly smaller and faster to proc
 
 ---
 
-# JSON vs Protocol Buffers
+## JSON vs Protocol Buffers
 
 | JSON | Protocol Buffers |
 |--------|-----------------|
@@ -301,7 +301,7 @@ Protobuf is optimized for machine-to-machine communication.
 
 ---
 
-# Example Protobuf Message
+## Example Protobuf Message
 
 ```protobuf
 message Customer {
@@ -325,7 +325,7 @@ Field numbers are critical for binary serialization.
 
 ---
 
-# Field Numbers
+## Field Numbers
 
 Example
 
@@ -347,7 +347,7 @@ Field numbers should never be reused after deployment because doing so may break
 
 ---
 
-# Generated Code
+## Generated Code
 
 The Protocol Buffer compiler automatically generates client and server code.
 
@@ -375,7 +375,7 @@ Developers write business logic instead of networking code.
 
 ---
 
-# HTTP/2
+## HTTP/2
 
 gRPC relies on HTTP/2 instead of HTTP/1.1.
 
@@ -391,7 +391,7 @@ These improvements significantly reduce latency.
 
 ---
 
-# HTTP/1.1 vs HTTP/2
+## HTTP/1.1 vs HTTP/2
 
 | HTTP/1.1 | HTTP/2 |
 |-----------|---------|
@@ -405,7 +405,7 @@ gRPC depends on these HTTP/2 capabilities.
 
 ---
 
-# Binary Framing
+## Binary Framing
 
 HTTP/2 transmits data as binary frames.
 
@@ -429,7 +429,7 @@ Binary framing improves efficiency and reduces parsing overhead.
 
 ---
 
-# Multiplexing
+## Multiplexing
 
 HTTP/2 allows multiple requests over one TCP connection.
 
@@ -451,7 +451,7 @@ Unlike HTTP/1.1, requests no longer block one another.
 
 ---
 
-# Header Compression
+## Header Compression
 
 HTTP/2 uses HPACK compression.
 
@@ -475,7 +475,7 @@ Benefits
 
 ---
 
-# gRPC Communication Flow
+## gRPC Communication Flow
 
 ```
 Client
@@ -517,7 +517,7 @@ The serialization process is handled automatically by generated code.
 
 ---
 
-# Unary RPC
+## Unary RPC
 
 Unary RPC is the simplest communication pattern.
 
@@ -545,7 +545,7 @@ Comparable to a REST request-response interaction.
 
 ---
 
-# Server Streaming RPC
+## Server Streaming RPC
 
 The client sends one request.
 
@@ -592,7 +592,7 @@ Common use cases
 
 ---
 
-# Client Streaming RPC
+## Client Streaming RPC
 
 The client sends multiple messages.
 
@@ -635,7 +635,7 @@ Common use cases
 
 ---
 
-# Bidirectional Streaming RPC
+## Bidirectional Streaming RPC
 
 Both client and server exchange messages simultaneously.
 
@@ -665,7 +665,7 @@ Applications include
 
 ---
 
-# gRPC Message Lifecycle
+## gRPC Message Lifecycle
 
 ```
 Application
@@ -703,7 +703,7 @@ This lifecycle is highly optimized for performance.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A payment platform processes transactions using gRPC.
 
@@ -739,7 +739,7 @@ Instead of multiple REST requests, backend microservices communicate using effic
 
 ---
 
-# Advantages of gRPC
+## Advantages of gRPC
 
 Benefits include:
 
@@ -755,7 +755,7 @@ Benefits include:
 
 ---
 
-# Limitations of gRPC
+## Limitations of gRPC
 
 Challenges include:
 
@@ -770,7 +770,7 @@ Despite these limitations, gRPC is an excellent choice for internal service-to-s
 
 ---
 
-# Common Enterprise Use Cases
+## Common Enterprise Use Cases
 
 gRPC is commonly used for:
 
@@ -805,7 +805,7 @@ Streaming
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - gRPC is a modern, high-performance RPC framework.
 - It uses Protocol Buffers for compact binary serialization.
@@ -816,7 +816,7 @@ Streaming
 
 ---
 
-# Protocol Buffers Deep Dive
+## Protocol Buffers Deep Dive
 
 Protocol Buffers (Protobuf) are the foundation of gRPC communication.
 
@@ -862,7 +862,7 @@ This design minimizes bandwidth usage and improves processing speed.
 
 ---
 
-# Why Protocol Buffers?
+## Why Protocol Buffers?
 
 Compared to traditional serialization formats, Protocol Buffers provide:
 
@@ -878,7 +878,7 @@ These characteristics make Protobuf ideal for distributed systems.
 
 ---
 
-# Protobuf File Structure
+## Protobuf File Structure
 
 Every Protocol Buffer definition is stored in a `.proto` file.
 
@@ -911,7 +911,7 @@ A `.proto` file typically contains:
 
 ---
 
-# Message Definition
+## Message Definition
 
 A message defines a structured data object.
 
@@ -933,7 +933,7 @@ Each message resembles a strongly typed class.
 
 ---
 
-# Field Types
+## Field Types
 
 Protocol Buffers support multiple data types.
 
@@ -952,7 +952,7 @@ Choosing the appropriate type improves efficiency and compatibility.
 
 ---
 
-# Field Numbers
+## Field Numbers
 
 Each field has a unique numeric identifier.
 
@@ -982,7 +982,7 @@ Field numbers are encoded into the binary message and are essential for serializ
 
 ---
 
-# Reserved Fields
+## Reserved Fields
 
 Deleted field numbers should be reserved.
 
@@ -998,7 +998,7 @@ This prevents accidental reuse and maintains compatibility with existing clients
 
 ---
 
-# Optional Fields
+## Optional Fields
 
 In Protocol Buffers v3, fields can be marked as optional.
 
@@ -1012,7 +1012,7 @@ Applications can determine whether the field was provided.
 
 ---
 
-# Repeated Fields
+## Repeated Fields
 
 Repeated fields represent collections.
 
@@ -1048,7 +1048,7 @@ Repeated fields are widely used for lists and arrays.
 
 ---
 
-# Nested Messages
+## Nested Messages
 
 Messages can contain other messages.
 
@@ -1072,7 +1072,7 @@ Nested structures improve organization and readability.
 
 ---
 
-# Enumerations
+## Enumerations
 
 Enums restrict values to predefined constants.
 
@@ -1099,7 +1099,7 @@ Benefits
 
 ---
 
-# Services
+## Services
 
 Services define available RPC methods.
 
@@ -1119,7 +1119,7 @@ Clients invoke these methods remotely through generated stubs.
 
 ---
 
-# Multiple RPC Methods
+## Multiple RPC Methods
 
 Example
 
@@ -1141,7 +1141,7 @@ A service may expose many operations.
 
 ---
 
-# Code Generation
+## Code Generation
 
 The Protocol Buffer compiler generates language-specific code.
 
@@ -1178,7 +1178,7 @@ Generated code ensures consistent serialization across platforms.
 
 ---
 
-# Backward Compatibility
+## Backward Compatibility
 
 One of Protobuf's strengths is schema evolution.
 
@@ -1192,7 +1192,7 @@ Existing clients continue to function because unknown fields are ignored.
 
 ---
 
-# Forward Compatibility
+## Forward Compatibility
 
 Older clients can communicate with newer servers.
 
@@ -1216,7 +1216,7 @@ This simplifies rolling upgrades in distributed systems.
 
 ---
 
-# Unsafe Changes
+## Unsafe Changes
 
 Avoid:
 
@@ -1230,7 +1230,7 @@ These changes may break compatibility.
 
 ---
 
-# Serialization Process
+## Serialization Process
 
 ```
 Application Object
@@ -1264,7 +1264,7 @@ Serialization is automatic through generated libraries.
 
 ---
 
-# Authentication in gRPC
+## Authentication in gRPC
 
 Authentication verifies the identity of clients before allowing RPC execution.
 
@@ -1281,7 +1281,7 @@ Authentication should occur before invoking business logic.
 
 ---
 
-# TLS in gRPC
+## TLS in gRPC
 
 Transport Layer Security (TLS) encrypts communication between client and server.
 
@@ -1315,7 +1315,7 @@ Production deployments should always use TLS.
 
 ---
 
-# Mutual TLS (mTLS)
+## Mutual TLS (mTLS)
 
 Mutual TLS authenticates both client and server.
 
@@ -1341,7 +1341,7 @@ Both parties verify each other's identity before communication begins.
 
 ---
 
-# TLS vs Mutual TLS
+## TLS vs Mutual TLS
 
 | TLS | Mutual TLS |
 |------|------------|
@@ -1354,7 +1354,7 @@ Many service mesh implementations rely on mTLS by default.
 
 ---
 
-# JWT Authentication
+## JWT Authentication
 
 Some gRPC applications use JWTs.
 
@@ -1388,7 +1388,7 @@ Tokens are typically transmitted as gRPC metadata.
 
 ---
 
-# Metadata
+## Metadata
 
 Metadata in gRPC is similar to HTTP headers.
 
@@ -1414,7 +1414,7 @@ Sensitive metadata should be validated and protected.
 
 ---
 
-# Authorization
+## Authorization
 
 Authentication identifies the caller.
 
@@ -1444,7 +1444,7 @@ Every RPC method should enforce authorization.
 
 ---
 
-# Role-Based Authorization
+## Role-Based Authorization
 
 Example
 
@@ -1476,7 +1476,7 @@ Authorization decisions should be performed server-side.
 
 ---
 
-# Service-to-Service Authentication
+## Service-to-Service Authentication
 
 Internal microservices frequently authenticate using:
 
@@ -1512,7 +1512,7 @@ This prevents unauthorized internal services from invoking privileged operations
 
 ---
 
-# Enterprise Identity Flow
+## Enterprise Identity Flow
 
 ```
 Client
@@ -1554,7 +1554,7 @@ Authentication and authorization should remain centralized whenever possible.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Protocol Buffers provide compact, efficient binary serialization.
 - `.proto` files define messages, services, enums, and RPC methods.
@@ -1565,7 +1565,7 @@ Authentication and authorization should remain centralized whenever possible.
 
 ---
 
-# gRPC Security Threats
+## gRPC Security Threats
 
 Although gRPC provides excellent performance and strong support for secure communication, it is **not secure by default**.
 
@@ -1584,7 +1584,7 @@ Understanding these attack vectors is critical for securing enterprise microserv
 
 ---
 
-# gRPC Attack Surface
+## gRPC Attack Surface
 
 A typical enterprise gRPC deployment exposes multiple attack surfaces.
 
@@ -1638,7 +1638,7 @@ Every layer requires security controls.
 
 ---
 
-# Common gRPC Threat Categories
+## Common gRPC Threat Categories
 
 ```
 Authentication
@@ -1666,7 +1666,7 @@ Many of these align with the OWASP API Security Top 10.
 
 ---
 
-# Insecure Authentication
+## Insecure Authentication
 
 Authentication weaknesses include:
 
@@ -1699,7 +1699,7 @@ Every exposed RPC should require appropriate authentication unless explicitly de
 
 ---
 
-# Broken Authorization
+## Broken Authorization
 
 Authentication alone is insufficient.
 
@@ -1735,7 +1735,7 @@ Every RPC method must verify permissions.
 
 ---
 
-# Broken Object Level Authorization (BOLA)
+## Broken Object Level Authorization (BOLA)
 
 Example
 
@@ -1771,7 +1771,7 @@ Resolvers or service handlers must verify object ownership.
 
 ---
 
-# Broken Function Level Authorization (BFLA)
+## Broken Function Level Authorization (BFLA)
 
 Administrative methods require strict authorization.
 
@@ -1791,7 +1791,7 @@ Only privileged users or services should invoke these operations.
 
 ---
 
-# Insecure Transport
+## Insecure Transport
 
 Production deployments should never expose plaintext gRPC.
 
@@ -1827,7 +1827,7 @@ Encryption protects credentials, tokens, and sensitive business data.
 
 ---
 
-# Weak TLS Configuration
+## Weak TLS Configuration
 
 Misconfigurations include:
 
@@ -1848,7 +1848,7 @@ Recommended
 
 ---
 
-# Mutual TLS Misconfiguration
+## Mutual TLS Misconfiguration
 
 Incorrect validation defeats the purpose of mTLS.
 
@@ -1863,7 +1863,7 @@ Every certificate should be fully validated before establishing trust.
 
 ---
 
-# Metadata Manipulation
+## Metadata Manipulation
 
 gRPC metadata resembles HTTP headers.
 
@@ -1885,7 +1885,7 @@ Applications must never trust client-supplied metadata without verification.
 
 ---
 
-# Protocol Buffer Security
+## Protocol Buffer Security
 
 Protocol Buffers improve efficiency but require secure implementation.
 
@@ -1902,7 +1902,7 @@ Servers should validate all incoming messages before processing.
 
 ---
 
-# Unsafe Deserialization
+## Unsafe Deserialization
 
 Although Protocol Buffers are safer than many object serialization formats, applications should still validate:
 
@@ -1916,7 +1916,7 @@ Never assume serialized input is trustworthy.
 
 ---
 
-# Input Validation
+## Input Validation
 
 Every RPC parameter requires validation.
 
@@ -1946,7 +1946,7 @@ Validation should occur before business logic execution.
 
 ---
 
-# Injection Attacks
+## Injection Attacks
 
 gRPC applications remain vulnerable if backend services process untrusted input insecurely.
 
@@ -1967,7 +1967,7 @@ Mitigation
 
 ---
 
-# HTTP/2 Attack Surface
+## HTTP/2 Attack Surface
 
 Because gRPC relies on HTTP/2, it inherits HTTP/2-specific risks.
 
@@ -1983,7 +1983,7 @@ Servers should enforce protocol-level limits and keep HTTP/2 implementations upd
 
 ---
 
-# Stream Exhaustion
+## Stream Exhaustion
 
 Attackers may open excessive concurrent streams.
 
@@ -2012,7 +2012,7 @@ Mitigations
 
 ---
 
-# Large Message Attacks
+## Large Message Attacks
 
 Oversized messages can exhaust memory.
 
@@ -2040,7 +2040,7 @@ Example controls
 
 ---
 
-# Compression Attacks
+## Compression Attacks
 
 Compression improves performance but may increase CPU usage.
 
@@ -2058,7 +2058,7 @@ Mitigation
 
 ---
 
-# Denial-of-Service (DoS)
+## Denial-of-Service (DoS)
 
 Attackers may attempt to overwhelm services.
 
@@ -2097,7 +2097,7 @@ Appropriate rate limiting and resource controls reduce these risks.
 
 ---
 
-# Business Logic Vulnerabilities
+## Business Logic Vulnerabilities
 
 Not all vulnerabilities are technical.
 
@@ -2115,7 +2115,7 @@ Business logic should be validated independently of transport security.
 
 ---
 
-# Service Discovery Exposure
+## Service Discovery Exposure
 
 Development environments sometimes expose internal service information.
 
@@ -2131,7 +2131,7 @@ Production environments should restrict access to these services.
 
 ---
 
-# gRPC Reflection
+## gRPC Reflection
 
 Reflection enables automatic service discovery.
 
@@ -2169,7 +2169,7 @@ Restrict reflection in production unless required.
 
 ---
 
-# Information Disclosure
+## Information Disclosure
 
 Avoid exposing:
 
@@ -2186,7 +2186,7 @@ Error responses should remain generic while detailed diagnostics are logged inte
 
 ---
 
-# Secure Error Handling
+## Secure Error Handling
 
 Incorrect
 
@@ -2208,7 +2208,7 @@ Detailed technical information belongs in server logs rather than client respons
 
 ---
 
-# Logging Requirements
+## Logging Requirements
 
 Log important security events.
 
@@ -2241,7 +2241,7 @@ Infrastructure
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -2260,7 +2260,7 @@ Detection thresholds should be based on expected application behavior.
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Typical telemetry pipeline
 
@@ -2315,7 +2315,7 @@ High-value correlation rules include:
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
                     Internet
@@ -2387,7 +2387,7 @@ This layered design combines network, transport, identity, application, and moni
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Transport Security
 
@@ -2423,7 +2423,7 @@ Operations
 
 ---
 
-# Hands-on Lab 1 – Inspect a gRPC Service
+## Hands-on Lab 1 – Inspect a gRPC Service
 
 **Objective**
 
@@ -2447,7 +2447,7 @@ Understand the structure of a gRPC service.
 
 ---
 
-# Hands-on Lab 2 – Review Transport Security
+## Hands-on Lab 2 – Review Transport Security
 
 **Objective**
 
@@ -2468,7 +2468,7 @@ Verify secure transport configuration.
 
 ---
 
-# Hands-on Lab 3 – Authorization Assessment
+## Hands-on Lab 3 – Authorization Assessment
 
 **Objective**
 
@@ -2489,7 +2489,7 @@ Verify authorization controls.
 
 ---
 
-# Common Security Mistakes
+## Common Security Mistakes
 
 Avoid:
 
@@ -2506,9 +2506,9 @@ Avoid:
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## TLS Handshake Failure
+### TLS Handshake Failure
 
 Possible causes
 
@@ -2519,7 +2519,7 @@ Possible causes
 
 ---
 
-## Authentication Failure
+### Authentication Failure
 
 Possible causes
 
@@ -2530,7 +2530,7 @@ Possible causes
 
 ---
 
-## Authorization Failure
+### Authorization Failure
 
 Possible causes
 
@@ -2541,7 +2541,7 @@ Possible causes
 
 ---
 
-## RPC Timeout
+### RPC Timeout
 
 Possible causes
 
@@ -2552,7 +2552,7 @@ Possible causes
 
 ---
 
-## Message Rejected
+### Message Rejected
 
 Possible causes
 
@@ -2563,9 +2563,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is gRPC?
 2. Why does gRPC use Protocol Buffers?
@@ -2580,7 +2580,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. How would you secure an enterprise gRPC deployment?
 12. Explain HTTP/2 stream flooding.
@@ -2595,7 +2595,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -2624,7 +2624,7 @@ Your organization is migrating internal REST services to gRPC.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we explored the security considerations of gRPC and Protocol Buffers.
 
@@ -2650,7 +2650,7 @@ gRPC combines high performance with strong security capabilities, but secure dep
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -2667,16 +2667,16 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - gRPC Documentation
 - Protocol Buffers Language Guide
 - HTTP/2 (RFC 9113)
 - TLS 1.3 (RFC 8446)
 
-## Security Standards
+### Security Standards
 
 - OWASP API Security Top 10
 - OWASP ASVS
@@ -2684,7 +2684,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - NIST SP 800-53
 - NIST SP 800-204
 
-## Further Reading
+### Further Reading
 
 - gRPC Security Best Practices
 - Envoy Proxy Documentation
@@ -2693,7 +2693,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 07 – HTTP Methods**
 

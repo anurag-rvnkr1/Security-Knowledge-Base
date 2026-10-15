@@ -851,7 +851,7 @@ Forensic prevention focuses on **forensic readiness**—designing cloud environm
 
 ---
 
-# Cloud Forensic Readiness Lifecycle
+## Cloud Forensic Readiness Lifecycle
 
 ```
 Secure Architecture
@@ -903,7 +903,7 @@ Preparing systems in advance significantly improves the quality and efficiency o
 
 ---
 
-# Enable Comprehensive Audit Logging
+## Enable Comprehensive Audit Logging
 
 Configure logging across every critical cloud service.
 
@@ -924,7 +924,7 @@ Comprehensive logging provides investigators with a complete view of system acti
 
 ---
 
-# Protect Log Integrity
+## Protect Log Integrity
 
 Logs should be protected from unauthorized modification or deletion.
 
@@ -941,7 +941,7 @@ Evidence must remain trustworthy throughout its lifecycle.
 
 ---
 
-# Synchronize System Time
+## Synchronize System Time
 
 Accurate timestamps are essential for reconstructing attack timelines.
 
@@ -958,7 +958,7 @@ Consistent timestamps simplify event correlation.
 
 ---
 
-# Centralize Evidence Collection
+## Centralize Evidence Collection
 
 Collect logs and telemetry into a centralized repository.
 
@@ -974,7 +974,7 @@ Centralized evidence reduces the risk of missing important artifacts.
 
 ---
 
-# Define Evidence Retention Policies
+## Define Evidence Retention Policies
 
 Retention policies should address:
 
@@ -988,7 +988,7 @@ Retention periods should balance investigative needs with storage costs.
 
 ---
 
-# Maintain Chain of Custody Procedures
+## Maintain Chain of Custody Procedures
 
 Document:
 
@@ -1003,7 +1003,7 @@ Maintaining chain of custody strengthens the credibility and admissibility of ev
 
 ---
 
-# Secure Cloud Configurations
+## Secure Cloud Configurations
 
 Reduce the likelihood of incidents by implementing:
 
@@ -1018,7 +1018,7 @@ Preventive controls reduce the need for forensic investigations.
 
 ---
 
-# Automate Evidence Preservation
+## Automate Evidence Preservation
 
 Where appropriate, automate actions such as:
 
@@ -1052,7 +1052,7 @@ Automation minimizes evidence loss during rapidly evolving incidents.
 
 ---
 
-# Prepare Incident Response Teams
+## Prepare Incident Response Teams
 
 Ensure responders understand:
 
@@ -1067,7 +1067,7 @@ Well-trained responders improve investigation quality.
 
 ---
 
-# Conduct Regular Readiness Assessments
+## Conduct Regular Readiness Assessments
 
 Evaluate:
 
@@ -1082,9 +1082,9 @@ Periodic assessments help identify and address forensic gaps before incidents oc
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Build for Forensic Readiness
+#### 1. Build for Forensic Readiness
 
 Design cloud environments with investigations in mind.
 
@@ -1099,7 +1099,7 @@ Preparation significantly reduces investigation time.
 
 ---
 
-### 2. Collect Multiple Evidence Sources
+#### 2. Collect Multiple Evidence Sources
 
 Do not rely on a single source of evidence.
 
@@ -1118,7 +1118,7 @@ Multiple evidence sources improve investigative accuracy.
 
 ---
 
-### 3. Preserve Evidence Before Remediation
+#### 3. Preserve Evidence Before Remediation
 
 Before modifying affected systems:
 
@@ -1132,7 +1132,7 @@ Evidence should be preserved whenever operationally feasible.
 
 ---
 
-### 4. Verify Evidence Integrity
+#### 4. Verify Evidence Integrity
 
 Use cryptographic hash functions and secure storage to confirm that evidence remains unchanged throughout the investigation.
 
@@ -1140,7 +1140,7 @@ Integrity verification strengthens confidence in investigative findings.
 
 ---
 
-### 5. Standardize Evidence Handling
+#### 5. Standardize Evidence Handling
 
 Develop documented procedures for:
 
@@ -1155,7 +1155,7 @@ Standardization promotes consistency and repeatability.
 
 ---
 
-### 6. Integrate Forensics with Incident Response
+#### 6. Integrate Forensics with Incident Response
 
 Forensic activities should align closely with incident response.
 
@@ -1172,7 +1172,7 @@ Integrated processes improve efficiency and reduce communication gaps.
 
 ---
 
-### 7. Secure Access to Evidence
+#### 7. Secure Access to Evidence
 
 Restrict evidence access using:
 
@@ -1185,7 +1185,7 @@ Only authorized personnel should access forensic data.
 
 ---
 
-### 8. Validate Forensic Procedures
+#### 8. Validate Forensic Procedures
 
 Regularly conduct:
 
@@ -1198,7 +1198,7 @@ Validation confirms that procedures remain effective.
 
 ---
 
-### 9. Document Every Investigation
+#### 9. Document Every Investigation
 
 Maintain thorough documentation including:
 
@@ -1214,7 +1214,7 @@ Well-documented investigations support audits, legal proceedings, and organizati
 
 ---
 
-### 10. Continuously Improve Forensic Capabilities
+#### 10. Continuously Improve Forensic Capabilities
 
 After every investigation:
 
@@ -1229,7 +1229,7 @@ Continuous improvement ensures that forensic capabilities evolve alongside cloud
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud Digital Forensics requires careful planning, disciplined evidence handling, and a thorough understanding of cloud-native technologies. Mistakes made during an investigation can result in lost evidence, inaccurate conclusions, delayed recovery, regulatory issues, or evidence becoming inadmissible in legal proceedings.
 
@@ -1237,7 +1237,7 @@ Understanding these common mistakes helps organizations improve forensic readine
 
 ---
 
-### 1. Not Preparing for Forensic Investigations
+#### 1. Not Preparing for Forensic Investigations
 
 Many organizations only think about digital forensics after an incident has already occurred.
 
@@ -1268,7 +1268,7 @@ Forensic readiness should be established before incidents occur.
 
 ---
 
-### 2. Failing to Enable Comprehensive Logging
+#### 2. Failing to Enable Comprehensive Logging
 
 Incomplete logging creates significant investigative blind spots.
 
@@ -1286,7 +1286,7 @@ Investigators can only analyze evidence that has been collected.
 
 ---
 
-### 3. Altering Evidence Before Preservation
+#### 3. Altering Evidence Before Preservation
 
 Modifying systems before preserving evidence may permanently destroy valuable information.
 
@@ -1302,7 +1302,7 @@ Evidence should be preserved whenever operationally feasible before remediation 
 
 ---
 
-### 4. Ignoring Volatile Evidence
+#### 4. Ignoring Volatile Evidence
 
 Certain evidence exists only while a system is running.
 
@@ -1319,7 +1319,7 @@ Volatile evidence should be collected early when appropriate and operationally f
 
 ---
 
-### 5. Breaking the Chain of Custody
+#### 5. Breaking the Chain of Custody
 
 Poor documentation regarding evidence handling may undermine investigation credibility.
 
@@ -1336,7 +1336,7 @@ A complete chain of custody supports accountability and legal defensibility.
 
 ---
 
-### 6. Not Verifying Evidence Integrity
+#### 6. Not Verifying Evidence Integrity
 
 Collected evidence should be protected against accidental or unauthorized modification.
 
@@ -1351,7 +1351,7 @@ Integrity verification helps demonstrate that evidence remains unchanged.
 
 ---
 
-### 7. Relying on a Single Evidence Source
+#### 7. Relying on a Single Evidence Source
 
 Drawing conclusions from only one log source increases the risk of inaccurate findings.
 
@@ -1370,7 +1370,7 @@ Correlating multiple sources improves confidence in investigative conclusions.
 
 ---
 
-### 8. Poor Time Synchronization
+#### 8. Poor Time Synchronization
 
 Unsynchronized clocks complicate event reconstruction.
 
@@ -1387,7 +1387,7 @@ Accurate time synchronization is fundamental to timeline analysis.
 
 ---
 
-### 9. Ignoring Cloud-Native Evidence
+#### 9. Ignoring Cloud-Native Evidence
 
 Traditional forensic techniques alone are insufficient.
 
@@ -1405,7 +1405,7 @@ Cloud-native evidence provides essential context.
 
 ---
 
-### 10. Inadequate Documentation
+#### 10. Inadequate Documentation
 
 Investigations should document:
 
@@ -1422,7 +1422,7 @@ Incomplete documentation reduces reproducibility and limits organizational learn
 
 ---
 
-### 11. Delaying Evidence Collection
+#### 11. Delaying Evidence Collection
 
 Cloud resources may be terminated automatically through:
 
@@ -1435,7 +1435,7 @@ Delayed collection increases the likelihood of evidence loss.
 
 ---
 
-### 12. Ignoring Legal and Compliance Requirements
+#### 12. Ignoring Legal and Compliance Requirements
 
 Different jurisdictions and industries impose varying requirements for:
 
@@ -1449,7 +1449,7 @@ Investigations should align with applicable legal, contractual, and regulatory o
 
 ---
 
-### 13. Treating Cloud Provider Logs as Complete Evidence
+#### 13. Treating Cloud Provider Logs as Complete Evidence
 
 Cloud provider logs are valuable but may not capture every aspect of an incident.
 
@@ -1465,7 +1465,7 @@ Combining multiple sources provides a more complete picture.
 
 ---
 
-### 14. Not Validating Findings
+#### 14. Not Validating Findings
 
 Before finalizing conclusions:
 
@@ -1479,7 +1479,7 @@ Validation reduces investigative errors and strengthens confidence in results.
 
 ---
 
-### 15. Failing to Learn from Investigations
+#### 15. Failing to Learn from Investigations
 
 Every investigation should improve future security.
 
@@ -1497,7 +1497,7 @@ Continuous improvement increases organizational resilience.
 
 ---
 
-## Cloud Digital Forensics Checklist
+### Cloud Digital Forensics Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1519,9 +1519,9 @@ Continuous improvement increases organizational resilience.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-86 – Guide to Integrating Forensic Techniques into Incident Response
 - NIST SP 800-61 Rev. 2 – Computer Security Incident Handling Guide
@@ -1535,7 +1535,7 @@ Continuous improvement increases organizational resilience.
 
 ---
 
-### Digital Forensics Frameworks
+#### Digital Forensics Frameworks
 
 - NIST Digital Forensics Framework
 - ACPO Good Practice Guide for Digital Evidence
@@ -1545,21 +1545,21 @@ Continuous improvement increases organizational resilience.
 
 ---
 
-### Cloud Security Documentation
+#### Cloud Security Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - AWS Security Incident Response Guide
 - AWS CloudTrail Documentation
 - AWS Well-Architected Framework – Security Pillar
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Microsoft Incident Response Documentation
 - Azure Monitor Documentation
 - Azure Well-Architected Framework – Security
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Google Cloud Logging Documentation
 - Google Cloud Incident Response Guidance
@@ -1567,7 +1567,7 @@ Continuous improvement increases organizational resilience.
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -1579,7 +1579,7 @@ Continuous improvement increases organizational resilience.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - NIST Guide to Integrating Forensic Techniques into Incident Response
 - MITRE ATT&CK Knowledge Base

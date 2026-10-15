@@ -59,7 +59,7 @@ What can be proven?
 
 ---
 
-# Why Digital Forensics Matters
+## Why Digital Forensics Matters
 
 Modern attacks leave evidence across multiple layers.
 
@@ -90,7 +90,7 @@ A mature forensic investigation correlates multiple sources to construct a defen
 
 ---
 
-# Objectives
+## Objectives
 
 This section is designed to teach you how to:
 
@@ -114,7 +114,7 @@ This section is designed to teach you how to:
 
 ---
 
-# Digital Forensics Investigation Lifecycle
+## Digital Forensics Investigation Lifecycle
 
 ```text
                  IDENTIFICATION
@@ -143,9 +143,9 @@ This section is designed to teach you how to:
 
 ---
 
-# Core Forensic Principles
+## Core Forensic Principles
 
-## 1. Preserve the Original
+### 1. Preserve the Original
 
 Whenever practical, the original evidence should remain protected.
 
@@ -169,7 +169,7 @@ Analysis
 
 ---
 
-## 2. Maintain Integrity
+### 2. Maintain Integrity
 
 Evidence should be protected from unauthorized alteration.
 
@@ -183,7 +183,7 @@ sha256sum evidence.img
 
 ---
 
-## 3. Maintain Chain of Custody
+### 3. Maintain Chain of Custody
 
 Every transfer of evidence should be documented.
 
@@ -208,7 +208,7 @@ Reported
 
 ---
 
-## 4. Separate Fact From Interpretation
+### 4. Separate Fact From Interpretation
 
 Example:
 
@@ -227,9 +227,9 @@ This distinction is critical.
 
 ---
 
-# Evidence Categories
+## Evidence Categories
 
-## Volatile Evidence
+### Volatile Evidence
 
 Evidence that may disappear or change quickly.
 
@@ -243,7 +243,7 @@ Examples:
 
 ---
 
-## Non-Volatile Evidence
+### Non-Volatile Evidence
 
 Evidence that persists after shutdown.
 
@@ -258,7 +258,7 @@ Examples:
 
 ---
 
-# Order of Volatility
+## Order of Volatility
 
 A simplified model:
 
@@ -289,7 +289,7 @@ The exact acquisition order depends on the investigation and operational environ
 
 ---
 
-# Major Evidence Sources
+## Major Evidence Sources
 
 | Source | Examples |
 |---|---|
@@ -308,7 +308,7 @@ The exact acquisition order depends on the investigation and operational environ
 
 ---
 
-# Major Forensic Domains
+## Major Forensic Domains
 
 This section covers ten major areas.
 
@@ -327,9 +327,9 @@ This section covers ten major areas.
 
 ---
 
-# Chapter Roadmap
+## Chapter Roadmap
 
-## 01 — Digital Forensics Fundamentals
+### 01 — Digital Forensics Fundamentals
 
 **File:**
 
@@ -357,7 +357,7 @@ Covers:
 
 ---
 
-## 02 — Forensic Acquisition and Evidence Preservation
+### 02 — Forensic Acquisition and Evidence Preservation
 
 **File:**
 
@@ -385,7 +385,7 @@ Covers:
 
 ---
 
-## 03 — Windows Forensics
+### 03 — Windows Forensics
 
 **File:**
 
@@ -417,7 +417,7 @@ Covers:
 
 ---
 
-## 04 — Linux Forensics
+### 04 — Linux Forensics
 
 **File:**
 
@@ -448,7 +448,7 @@ Covers:
 
 ---
 
-## 05 — Memory Forensics
+### 05 — Memory Forensics
 
 **File:**
 
@@ -478,7 +478,7 @@ Covers:
 
 ---
 
-## 06 — Disk and File-System Forensics
+### 06 — Disk and File-System Forensics
 
 **File:**
 
@@ -510,7 +510,7 @@ Covers:
 
 ---
 
-## 07 — Network and Network Traffic Forensics
+### 07 — Network and Network Traffic Forensics
 
 **File:**
 
@@ -542,7 +542,7 @@ Covers:
 
 ---
 
-## 08 — Cloud, Container and Mobile Forensics
+### 08 — Cloud, Container and Mobile Forensics
 
 **File:**
 
@@ -572,7 +572,7 @@ Covers:
 
 ---
 
-## 09 — Malware Forensics and Reverse Engineering
+### 09 — Malware Forensics and Reverse Engineering
 
 **File:**
 
@@ -603,7 +603,7 @@ Covers:
 
 ---
 
-## 10 — Forensic Timelines, Investigation and Case Studies
+### 10 — Forensic Timelines, Investigation and Case Studies
 
 **File:**
 
@@ -633,7 +633,7 @@ Covers:
 
 ---
 
-# Forensic Investigation Methodology
+## Forensic Investigation Methodology
 
 A practical investigation can follow:
 
@@ -676,7 +676,7 @@ A practical investigation can follow:
 
 ---
 
-# Evidence Correlation
+## Evidence Correlation
 
 The strongest investigations rarely rely on a single artifact.
 
@@ -707,19 +707,19 @@ Each artifact increases or decreases confidence in the investigation hypothesis.
 
 ---
 
-# Evidence Confidence
+## Evidence Confidence
 
 Use explicit confidence levels.
 
-### High Confidence
+#### High Confidence
 
 Multiple independent evidence sources agree.
 
-### Medium Confidence
+#### Medium Confidence
 
 Evidence strongly supports the conclusion but some gaps remain.
 
-### Low Confidence
+#### Low Confidence
 
 The evidence is suggestive but insufficient for a strong conclusion.
 
@@ -741,11 +741,11 @@ High
 
 ---
 
-# Forensic Tools
+## Forensic Tools
 
 Common tools include:
 
-### Disk
+#### Disk
 
 - Autopsy
 - The Sleuth Kit
@@ -753,20 +753,20 @@ Common tools include:
 - EnCase
 - X-Ways
 
-### Memory
+#### Memory
 
 - Volatility
 - WinPmem
 - LiME
 
-### Network
+#### Network
 
 - Wireshark
 - Zeek
 - NetworkMiner
 - tcpdump
 
-### Malware
+#### Malware
 
 - Ghidra
 - IDA
@@ -774,14 +774,14 @@ Common tools include:
 - capa
 - FLOSS
 
-### Acquisition
+#### Acquisition
 
 - FTK Imager
 - Guymager
 - dd
 - dc3dd
 
-### Timeline
+#### Timeline
 
 - Plaso
 - log2timeline
@@ -791,7 +791,7 @@ Tool selection should depend on evidence type, environment, legal requirements, 
 
 ---
 
-# Forensic Tooling Architecture
+## Forensic Tooling Architecture
 
 ```text
                     Evidence
@@ -816,7 +816,7 @@ Tool selection should depend on evidence type, environment, legal requirements, 
 
 ---
 
-# Forensic Reporting
+## Forensic Reporting
 
 A professional report should contain:
 
@@ -842,7 +842,7 @@ Appendices
 
 ---
 
-# Example Finding
+## Example Finding
 
 ```text
 Finding ID:
@@ -872,7 +872,7 @@ Investigate the associated account and destination infrastructure.
 
 ---
 
-# Evidence Limitations
+## Evidence Limitations
 
 Every professional forensic report should explicitly state limitations.
 
@@ -893,7 +893,7 @@ Failing to document the limitation is the problem.
 
 ---
 
-# Legal and Ethical Considerations
+## Legal and Ethical Considerations
 
 Digital forensic analysis must be performed within authorized boundaries.
 
@@ -914,7 +914,7 @@ Never collect or analyze systems without appropriate authorization.
 
 ---
 
-# Digital Forensics and Incident Response
+## Digital Forensics and Incident Response
 
 Digital forensics is closely integrated with incident response.
 
@@ -941,7 +941,7 @@ Investigation
 
 ---
 
-# Digital Forensics and Threat Hunting
+## Digital Forensics and Threat Hunting
 
 Threat hunters can use forensic artifacts to search historical activity.
 
@@ -965,7 +965,7 @@ Expanded Scope
 
 ---
 
-# Digital Forensics and Detection Engineering
+## Digital Forensics and Detection Engineering
 
 Forensic findings frequently become detection requirements.
 
@@ -987,7 +987,7 @@ Validation
 
 ---
 
-# Enterprise Forensic Readiness
+## Enterprise Forensic Readiness
 
 Forensic capability should be designed before an incident occurs.
 
@@ -1010,7 +1010,7 @@ Legal Procedures
 
 ---
 
-# Forensic Readiness Architecture
+## Forensic Readiness Architecture
 
 ```text
                     Enterprise
@@ -1041,11 +1041,11 @@ Legal Procedures
 
 ---
 
-# Practical Labs
+## Practical Labs
 
 This section will include hands-on investigations such as:
 
-### Lab 01 — Windows Artifact Investigation
+#### Lab 01 — Windows Artifact Investigation
 
 Investigate:
 
@@ -1055,7 +1055,7 @@ Investigate:
 - PowerShell
 - User activity
 
-### Lab 02 — Linux Compromise Investigation
+#### Lab 02 — Linux Compromise Investigation
 
 Investigate:
 
@@ -1065,7 +1065,7 @@ Investigate:
 - Processes
 - Persistence
 
-### Lab 03 — Memory Investigation
+#### Lab 03 — Memory Investigation
 
 Analyze:
 
@@ -1074,7 +1074,7 @@ Analyze:
 - Suspicious modules
 - Command lines
 
-### Lab 04 — Disk Investigation
+#### Lab 04 — Disk Investigation
 
 Investigate:
 
@@ -1083,7 +1083,7 @@ Investigate:
 - Persistence
 - User activity
 
-### Lab 05 — PCAP Investigation
+#### Lab 05 — PCAP Investigation
 
 Analyze:
 
@@ -1093,7 +1093,7 @@ Analyze:
 - Beaconing
 - Suspicious traffic
 
-### Lab 06 — Cloud Investigation
+#### Lab 06 — Cloud Investigation
 
 Analyze:
 
@@ -1102,7 +1102,7 @@ Analyze:
 - IAM
 - Storage access
 
-### Lab 07 — Malware Investigation
+#### Lab 07 — Malware Investigation
 
 Perform:
 
@@ -1111,7 +1111,7 @@ Perform:
 - IOC extraction
 - Behavioral analysis
 
-### Lab 08 — Full Timeline Investigation
+#### Lab 08 — Full Timeline Investigation
 
 Correlate:
 
@@ -1129,7 +1129,7 @@ to reconstruct a complete attack.
 
 ---
 
-# Interview Preparation
+## Interview Preparation
 
 Each chapter includes interview questions covering:
 
@@ -1148,7 +1148,7 @@ Each chapter includes interview questions covering:
 
 ---
 
-# Recommended Learning Path
+## Recommended Learning Path
 
 ```text
 Phase 1
@@ -1189,18 +1189,18 @@ End-to-End Investigations
 
 ---
 
-# Skills Developed
+## Skills Developed
 
 After completing this section, you should be able to demonstrate knowledge of:
 
-### Evidence
+#### Evidence
 
 - Evidence preservation
 - Acquisition
 - Integrity
 - Chain of custody
 
-### Endpoint
+#### Endpoint
 
 - Windows forensics
 - Linux forensics
@@ -1208,35 +1208,35 @@ After completing this section, you should be able to demonstrate knowledge of:
 - Logs
 - File systems
 
-### Memory
+#### Memory
 
 - Process analysis
 - Network analysis
 - Memory artifacts
 - Malware in memory
 
-### Network
+#### Network
 
 - PCAP analysis
 - DNS investigation
 - Protocol analysis
 - Network reconstruction
 
-### Cloud
+#### Cloud
 
 - Cloud audit logs
 - Identity investigation
 - API activity
 - Storage access
 
-### Malware
+#### Malware
 
 - Static analysis
 - Dynamic analysis
 - IOC extraction
 - Behavioral analysis
 
-### Investigation
+#### Investigation
 
 - Timeline reconstruction
 - Evidence correlation
@@ -1245,7 +1245,7 @@ After completing this section, you should be able to demonstrate knowledge of:
 
 ---
 
-# Forensic Investigation Checklist
+## Forensic Investigation Checklist
 
 ```text
 [ ] Scope defined
@@ -1268,39 +1268,39 @@ After completing this section, you should be able to demonstrate knowledge of:
 
 ---
 
-# Professional Principles
+## Professional Principles
 
-## Preserve First
+### Preserve First
 
 Do not unnecessarily alter evidence.
 
-## Verify Everything
+### Verify Everything
 
 Use hashes and independent evidence where appropriate.
 
-## Document Everything
+### Document Everything
 
 If an action matters, record it.
 
-## Separate Facts From Conclusions
+### Separate Facts From Conclusions
 
 Do not overstate evidence.
 
-## Maintain Reproducibility
+### Maintain Reproducibility
 
 Another qualified investigator should be able to understand how the conclusion was reached.
 
-## Minimize Assumptions
+### Minimize Assumptions
 
 Prefer evidence over speculation.
 
-## Protect Sensitive Data
+### Protect Sensitive Data
 
 Forensic evidence can contain highly sensitive information.
 
 ---
 
-# Repository Structure
+## Repository Structure
 
 ```text
 Digital-Forensics/
@@ -1321,7 +1321,7 @@ Digital-Forensics/
 
 ---
 
-# How to Use This Section
+## How to Use This Section
 
 For learning:
 
@@ -1350,7 +1350,7 @@ Publish
 
 ---
 
-# Relationship With Other Knowledge Base Sections
+## Relationship With Other Knowledge Base Sections
 
 Digital Forensics connects directly with several other domains.
 
@@ -1388,33 +1388,33 @@ It also connects to:
 
 ---
 
-# Maturity Model
+## Maturity Model
 
-## Level 1 — Basic
+### Level 1 — Basic
 
 - Manual artifact collection
 - Limited evidence handling
 - Basic investigation knowledge
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Documented acquisition
 - Standard procedures
 - Basic forensic tooling
 
-## Level 3 — Managed
+### Level 3 — Managed
 
 - Formal evidence processes
 - Centralized logging
 - Dedicated forensic capability
 
-## Level 4 — Integrated
+### Level 4 — Integrated
 
 - IR + forensics + hunting
 - Automated evidence collection
 - Centralized investigation workflows
 
-## Level 5 — Advanced
+### Level 5 — Advanced
 
 - Enterprise forensic readiness
 - Rapid acquisition
@@ -1424,7 +1424,7 @@ It also connects to:
 
 ---
 
-# Completion Checklist
+## Completion Checklist
 
 ```text
 [ ] 01 Fundamentals
@@ -1441,71 +1441,71 @@ It also connects to:
 
 ---
 
-# References
+## References
 
-### NIST
+#### NIST
 
 Guide to Integrating Forensic Techniques into Incident Response — NIST SP 800-86:
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### NIST
+#### NIST
 
 Computer Security Incident Handling Guide:
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### SWGDE
+#### SWGDE
 
 Scientific Working Group on Digital Evidence:
 
 https://www.swgde.org/
 
-### CISA
+#### CISA
 
 Cybersecurity and forensic resources:
 
 https://www.cisa.gov/
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 
-### The Sleuth Kit
+#### The Sleuth Kit
 
 https://www.sleuthkit.org/
 
-### Autopsy
+#### Autopsy
 
 https://www.autopsy.com/
 
-### Volatility
+#### Volatility
 
 https://volatilityfoundation.org/
 
-### Wireshark
+#### Wireshark
 
 https://www.wireshark.org/
 
-### Zeek
+#### Zeek
 
 https://zeek.org/
 
-### Ghidra
+#### Ghidra
 
 https://ghidra-sre.org/
 
-### YARA
+#### YARA
 
 https://virustotal.github.io/yara/
 
-### Plaso
+#### Plaso
 
 https://plaso.readthedocs.io/
 
 ---
 
-# Final Objective
+## Final Objective
 
 The objective of this section is not simply to learn forensic tools.
 

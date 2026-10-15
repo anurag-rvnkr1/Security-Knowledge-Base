@@ -1,12 +1,12 @@
 # 19-Broken-Access-Control.md
 
-# Part 1 — Fundamentals of Broken Access Control, Authorization Models, Trust Boundaries, and Enterprise Overview
+## Part 1 — Fundamentals of Broken Access Control, Authorization Models, Trust Boundaries, and Enterprise Overview
 
 > **"Authentication answers *'Who are you?'* Authorization answers *'What are you allowed to do?'* Broken Access Control occurs when an application fails to properly enforce those permissions."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Broken Access Control?
+## What is Broken Access Control?
 
 **Broken Access Control** occurs when an application allows users to perform actions or access resources beyond their intended permissions.
 
@@ -31,7 +31,7 @@ Instead of enforcing authorization rules consistently, the application unintenti
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 Many beginners confuse these concepts.
 
@@ -67,7 +67,7 @@ Authentication always comes **before** authorization.
 
 ---
 
-# Simple Example
+## Simple Example
 
 Imagine a corporate office.
 
@@ -102,7 +102,7 @@ A person may be an employee but still cannot enter every department.
 
 ---
 
-# Why Access Control Matters
+## Why Access Control Matters
 
 Every enterprise application contains sensitive resources.
 
@@ -128,7 +128,7 @@ Each resource requires different authorization rules.
 
 ---
 
-# Enterprise Authorization Model
+## Enterprise Authorization Model
 
 ```
 User
@@ -162,7 +162,7 @@ Authorization decisions should always occur on the server side.
 
 ---
 
-# Security Goal
+## Security Goal
 
 The objective of access control is simple:
 
@@ -192,7 +192,7 @@ Denied
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 One of the most important security principles.
 
@@ -216,7 +216,7 @@ Users should receive only the permissions necessary for their responsibilities.
 
 ---
 
-# Why Least Privilege Works
+## Why Least Privilege Works
 
 ```
 Compromised Account
@@ -234,7 +234,7 @@ Restricting permissions reduces the impact of account compromise.
 
 ---
 
-# Access Control Components
+## Access Control Components
 
 ```
 Access Control
@@ -258,7 +258,7 @@ Every component contributes to secure authorization.
 
 ---
 
-# Resources
+## Resources
 
 Resources include anything that requires protection.
 
@@ -275,7 +275,7 @@ Examples:
 
 ---
 
-# Actions
+## Actions
 
 Users perform actions on resources.
 
@@ -303,7 +303,7 @@ Each action may require different permissions.
 
 ---
 
-# Authorization Decision
+## Authorization Decision
 
 ```
 Request
@@ -341,7 +341,7 @@ Every protected request should undergo authorization checks.
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
 
 Applications contain multiple trust boundaries.
 
@@ -369,7 +369,7 @@ Authorization should never rely solely on data received from untrusted sources.
 
 ---
 
-# Server-Side Enforcement
+## Server-Side Enforcement
 
 ```
 User Request
@@ -395,7 +395,7 @@ The server—not the browser—must enforce access control decisions.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An HR application:
 
@@ -427,7 +427,7 @@ Different users require different capabilities.
 
 ---
 
-# Common Authorization Levels
+## Common Authorization Levels
 
 ```
 Guest
@@ -453,7 +453,7 @@ Higher privilege levels require stronger protection and additional review.
 
 ---
 
-# Access Matrix
+## Access Matrix
 
 | User Role | View Data | Edit Data | Delete Data | Admin Functions |
 |-----------|-----------|-----------|--------------|-----------------|
@@ -464,7 +464,7 @@ Higher privilege levels require stronger protection and additional review.
 
 ---
 
-# Why Broken Access Control Happens
+## Why Broken Access Control Happens
 
 Common reasons include:
 
@@ -478,7 +478,7 @@ Common reasons include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Broken Access Control can result in:
 
@@ -508,7 +508,7 @@ Reputation Damage
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Authorization should work alongside other controls.
 
@@ -540,7 +540,7 @@ No single control provides complete protection.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
 | Myth | Reality |
 |------|---------|
@@ -551,7 +551,7 @@ No single control provides complete protection.
 
 ---
 
-# Enterprise Workflow
+## Enterprise Workflow
 
 ```
 User Login
@@ -583,7 +583,7 @@ Audit Logging
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select a web application with multiple user roles.
 2. List all available resources.
@@ -595,7 +595,7 @@ Audit Logging
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Broken Access Control?
 2. What is the difference between authentication and authorization?
@@ -610,7 +610,7 @@ Audit Logging
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enforce authorization on the server for every protected request.
 - Apply the principle of least privilege to all users and services.
@@ -622,7 +622,7 @@ Audit Logging
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Confusing authentication with authorization.
 - Trusting client-side controls.
@@ -633,7 +633,7 @@ Audit Logging
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication verifies identity; authorization determines permissions.
 - Broken Access Control occurs when authorization rules are not properly enforced.
@@ -641,15 +641,15 @@ Audit Logging
 - Least privilege significantly reduces business risk.
 - Access control is a foundational security mechanism across all enterprise applications.
 
-# 19-Broken-Access-Control.md
+## 19-Broken-Access-Control.md
 
-# Part 2 — Access Control Models, Authorization Mechanisms, Privilege Escalation, IDOR, and Enterprise Design
+## Part 2 — Access Control Models, Authorization Mechanisms, Privilege Escalation, IDOR, and Enterprise Design
 
 > **"Access control is not a single security check—it is a collection of authorization rules applied consistently across every resource, operation, API, and business process."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -666,7 +666,7 @@ After completing this part, you will understand:
 
 ---
 
-# Access Control Models
+## Access Control Models
 
 Organizations use different models depending on business requirements.
 
@@ -690,7 +690,7 @@ Each model determines **how permissions are evaluated**.
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 RBAC assigns permissions to **roles**, and users inherit permissions from those roles.
 
@@ -723,7 +723,7 @@ RBAC is one of the most widely used authorization models in enterprise applicati
 
 ---
 
-# RBAC Architecture
+## RBAC Architecture
 
 ```
 Users
@@ -750,7 +750,7 @@ Benefits:
 
 ---
 
-# Attribute-Based Access Control (ABAC)
+## Attribute-Based Access Control (ABAC)
 
 ABAC evaluates multiple attributes before granting access.
 
@@ -785,7 +785,7 @@ Possible attributes include:
 
 ---
 
-# ABAC Example
+## ABAC Example
 
 ```
 Employee
@@ -813,7 +813,7 @@ ABAC offers greater flexibility than RBAC but is more complex to implement.
 
 ---
 
-# Discretionary Access Control (DAC)
+## Discretionary Access Control (DAC)
 
 In DAC, the resource owner determines who receives access.
 
@@ -841,7 +841,7 @@ Examples:
 
 ---
 
-# Mandatory Access Control (MAC)
+## Mandatory Access Control (MAC)
 
 MAC enforces access using centrally defined security classifications.
 
@@ -873,7 +873,7 @@ Often used in:
 
 ---
 
-# Rule-Based Access Control
+## Rule-Based Access Control
 
 Rules determine whether access is allowed.
 
@@ -905,7 +905,7 @@ Example rules:
 
 ---
 
-# Comparing Authorization Models
+## Comparing Authorization Models
 
 | Model | Best For | Flexibility | Complexity |
 |--------|----------|------------|------------|
@@ -917,7 +917,7 @@ Example rules:
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Privilege escalation occurs when users gain permissions beyond those intended.
 
@@ -941,7 +941,7 @@ Authorization failures often lead to privilege escalation.
 
 ---
 
-# Horizontal Privilege Escalation
+## Horizontal Privilege Escalation
 
 A user accesses resources belonging to another user with the same privilege level.
 
@@ -969,7 +969,7 @@ The privilege level remains the same, but ownership boundaries are violated.
 
 ---
 
-# Vertical Privilege Escalation
+## Vertical Privilege Escalation
 
 A lower-privileged user gains access to higher-privileged functionality.
 
@@ -993,7 +993,7 @@ This type of failure often has significant business impact.
 
 ---
 
-# Horizontal vs Vertical Escalation
+## Horizontal vs Vertical Escalation
 
 | Horizontal | Vertical |
 |------------|----------|
@@ -1004,7 +1004,7 @@ This type of failure often has significant business impact.
 
 ---
 
-# Insecure Direct Object Reference (IDOR)
+## Insecure Direct Object Reference (IDOR)
 
 IDOR occurs when an application exposes a reference to an internal object without properly verifying authorization.
 
@@ -1032,7 +1032,7 @@ The core issue is **missing or insufficient authorization**, not the identifier 
 
 ---
 
-# Object-Level Authorization
+## Object-Level Authorization
 
 Every object should undergo authorization validation.
 
@@ -1060,7 +1060,7 @@ Object ownership should never be assumed.
 
 ---
 
-# Function-Level Authorization
+## Function-Level Authorization
 
 Administrative functions require separate authorization checks.
 
@@ -1088,7 +1088,7 @@ Authentication alone is insufficient.
 
 ---
 
-# Record-Level Authorization
+## Record-Level Authorization
 
 Different users may access different records within the same system.
 
@@ -1116,7 +1116,7 @@ Each record should be evaluated independently.
 
 ---
 
-# API Authorization
+## API Authorization
 
 Modern applications frequently expose APIs.
 
@@ -1148,7 +1148,7 @@ Every API endpoint should consistently enforce authorization rules.
 
 ---
 
-# Enterprise Authorization Architecture
+## Enterprise Authorization Architecture
 
 ```
                  User
@@ -1188,7 +1188,7 @@ Centralized authorization improves consistency and maintainability.
 
 ---
 
-# Least Privilege in Practice
+## Least Privilege in Practice
 
 ```
 Employee
@@ -1214,7 +1214,7 @@ Permissions should be granted based on business needs—not convenience.
 
 ---
 
-# Authorization Lifecycle
+## Authorization Lifecycle
 
 ```
 User Created
@@ -1244,7 +1244,7 @@ Regular reviews help eliminate unnecessary privileges.
 
 ---
 
-# Common Authorization Weaknesses
+## Common Authorization Weaknesses
 
 | Weakness | Security Impact |
 |----------|-----------------|
@@ -1256,7 +1256,7 @@ Regular reviews help eliminate unnecessary privileges.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A banking application:
 
@@ -1300,7 +1300,7 @@ Each business function is protected by explicit authorization rules.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create three user roles for a sample application.
 2. Define permissions for each role.
@@ -1312,7 +1312,7 @@ Each business function is protected by explicit authorization rules.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is RBAC?
 2. How does ABAC differ from RBAC?
@@ -1327,7 +1327,7 @@ Each business function is protected by explicit authorization rules.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Perform authorization checks for every protected request.
 - Validate object ownership before granting access.
@@ -1339,7 +1339,7 @@ Each business function is protected by explicit authorization rules.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Checking authentication but not authorization.
 - Assuming object identifiers are sufficient for access.
@@ -1349,7 +1349,7 @@ Each business function is protected by explicit authorization rules.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Multiple authorization models exist, each suited to different business needs.
 - RBAC is common, while ABAC provides greater flexibility.
@@ -1357,15 +1357,15 @@ Each business function is protected by explicit authorization rules.
 - IDOR is fundamentally an authorization failure involving object access.
 - Consistent, server-side authorization checks are essential for protecting enterprise applications.
 
-# 19-Broken-Access-Control.md
+## 19-Broken-Access-Control.md
 
-# Part 3 — Authorization Testing, Common Access Control Weaknesses, Enterprise Architecture, and Defense Strategies
+## Part 3 — Authorization Testing, Common Access Control Weaknesses, Enterprise Architecture, and Defense Strategies
 
 > **"Authorization is not verified by a single successful login. Every request, every API call, every business function, and every object access must be independently authorized."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1382,7 +1382,7 @@ After completing this part, you will understand:
 
 ---
 
-# Authorization Testing Workflow
+## Authorization Testing Workflow
 
 Authorization testing follows a systematic process.
 
@@ -1418,7 +1418,7 @@ The objective is to verify that every authorization decision matches the applica
 
 ---
 
-# Types of Authorization Testing
+## Types of Authorization Testing
 
 ```
 Authorization Testing
@@ -1444,7 +1444,7 @@ Each area should be evaluated independently.
 
 ---
 
-# Object-Level Authorization
+## Object-Level Authorization
 
 Every object belongs to an authorized owner or group.
 
@@ -1476,7 +1476,7 @@ Authorization should be enforced for every object request.
 
 ---
 
-# Function-Level Authorization
+## Function-Level Authorization
 
 Sensitive functionality requires explicit permission checks.
 
@@ -1509,7 +1509,7 @@ Examples:
 
 ---
 
-# URL Authorization
+## URL Authorization
 
 Access control should never depend solely on whether a user can discover a URL.
 
@@ -1537,7 +1537,7 @@ Knowing or guessing a URL must not bypass authorization.
 
 ---
 
-# API Authorization
+## API Authorization
 
 Modern applications expose numerous APIs.
 
@@ -1569,7 +1569,7 @@ Every API endpoint requires independent authorization.
 
 ---
 
-# Record-Level Authorization
+## Record-Level Authorization
 
 Applications frequently store data for many users.
 
@@ -1593,7 +1593,7 @@ Each record should be evaluated separately.
 
 ---
 
-# Multi-Tenant Applications
+## Multi-Tenant Applications
 
 Cloud applications often serve multiple organizations.
 
@@ -1617,7 +1617,7 @@ Tenant data must remain isolated even though the same application serves multipl
 
 ---
 
-# Multi-Tenant Authorization
+## Multi-Tenant Authorization
 
 ```
 User
@@ -1647,7 +1647,7 @@ Multiple checks work together before access is granted.
 
 ---
 
-# Business Logic Authorization
+## Business Logic Authorization
 
 Authorization extends beyond pages and APIs.
 
@@ -1680,7 +1680,7 @@ Examples include:
 
 ---
 
-# Administrative Interfaces
+## Administrative Interfaces
 
 Administrative functionality should receive additional protection.
 
@@ -1708,7 +1708,7 @@ Administrative operations should be monitored and logged.
 
 ---
 
-# File Authorization
+## File Authorization
 
 Applications often manage sensitive files.
 
@@ -1740,7 +1740,7 @@ Every file request should undergo authorization validation.
 
 ---
 
-# Enterprise Authorization Flow
+## Enterprise Authorization Flow
 
 ```
                     User
@@ -1782,7 +1782,7 @@ Centralizing authorization improves consistency across the application.
 
 ---
 
-# Security Logging
+## Security Logging
 
 Authorization events should be logged.
 
@@ -1810,7 +1810,7 @@ Logging supports incident investigation and compliance requirements.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Security teams should monitor:
 
@@ -1834,7 +1834,7 @@ Repeated authorization failures may indicate probing or misconfiguration.
 
 ---
 
-# Secure Development Lifecycle
+## Secure Development Lifecycle
 
 Authorization should be considered during every SDLC phase.
 
@@ -1870,7 +1870,7 @@ Authorization should never be treated as an afterthought.
 
 ---
 
-# Enterprise Authorization Checklist
+## Enterprise Authorization Checklist
 
 ```
 ✓ Server-Side Authorization
@@ -1894,7 +1894,7 @@ Authorization should never be treated as an afterthought.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An online banking platform:
 
@@ -1934,7 +1934,7 @@ Each business operation is validated according to predefined authorization rules
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Authorization works alongside other security controls.
 
@@ -1970,7 +1970,7 @@ Multiple controls reduce overall risk.
 
 ---
 
-# Common Authorization Weaknesses
+## Common Authorization Weaknesses
 
 | Weakness | Security Impact |
 |----------|-----------------|
@@ -1983,7 +1983,7 @@ Multiple controls reduce overall risk.
 
 ---
 
-# Secure Design Principles
+## Secure Design Principles
 
 ```
 Default Deny
@@ -2009,7 +2009,7 @@ A secure design minimizes opportunities for authorization bypass.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an authorization matrix for a multi-role application.
 2. Identify object-level, function-level, and record-level resources.
@@ -2021,7 +2021,7 @@ A secure design minimizes opportunities for authorization bypass.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is object-level authorization?
 2. Why is function-level authorization important?
@@ -2036,7 +2036,7 @@ A secure design minimizes opportunities for authorization bypass.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply server-side authorization to every protected request.
 - Validate ownership for all user-controlled resources.
@@ -2049,7 +2049,7 @@ A secure design minimizes opportunities for authorization bypass.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming authenticated users are automatically authorized.
 - Protecting web pages but forgetting APIs.
@@ -2060,7 +2060,7 @@ A secure design minimizes opportunities for authorization bypass.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Every protected request requires an independent authorization decision.
 - Authorization applies to pages, APIs, objects, files, and business processes.
@@ -2068,15 +2068,15 @@ A secure design minimizes opportunities for authorization bypass.
 - Logging and monitoring strengthen authorization by improving visibility.
 - Secure authorization combines least privilege, default deny, centralized policy enforcement, and continuous review.
 
-# 19-Broken-Access-Control.md
+## 19-Broken-Access-Control.md
 
-# Part 4 — Enterprise Governance, Secure Authorization Architecture, Incident Response, Best Practices, and Chapter Summary
+## Part 4 — Enterprise Governance, Secure Authorization Architecture, Incident Response, Best Practices, and Chapter Summary
 
 > **"Broken Access Control is one of the most dangerous application security risks because it directly violates confidentiality, integrity, and trust. Strong authorization must be designed into the application—not added later."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2092,7 +2092,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Authorization Governance
+## Enterprise Authorization Governance
 
 Access control should be managed through organizational policies rather than ad hoc application logic.
 
@@ -2132,7 +2132,7 @@ Governance ensures consistent authorization across all enterprise applications.
 
 ---
 
-# Authorization Lifecycle
+## Authorization Lifecycle
 
 Access permissions change over time.
 
@@ -2168,7 +2168,7 @@ Proper lifecycle management helps prevent unnecessary or outdated privileges.
 
 ---
 
-# Joiner–Mover–Leaver (JML) Process
+## Joiner–Mover–Leaver (JML) Process
 
 Organizations should manage user access throughout employment.
 
@@ -2200,7 +2200,7 @@ Timely permission updates reduce security risks.
 
 ---
 
-# Separation of Duties (SoD)
+## Separation of Duties (SoD)
 
 Critical operations should require different authorized individuals.
 
@@ -2224,7 +2224,7 @@ Separating responsibilities reduces the risk of fraud and accidental misuse.
 
 ---
 
-# Principle of Default Deny
+## Principle of Default Deny
 
 Applications should deny access unless permission is explicitly granted.
 
@@ -2256,7 +2256,7 @@ This approach minimizes accidental exposure of sensitive resources.
 
 ---
 
-# Centralized Authorization
+## Centralized Authorization
 
 Large organizations often centralize authorization decisions.
 
@@ -2290,7 +2290,7 @@ Benefits include:
 
 ---
 
-# Enterprise Authorization Architecture
+## Enterprise Authorization Architecture
 
 ```
                  Internet
@@ -2338,7 +2338,7 @@ A centralized architecture promotes consistency across applications.
 
 ---
 
-# Authorization in APIs
+## Authorization in APIs
 
 API authorization should be enforced independently for every request.
 
@@ -2370,7 +2370,7 @@ Authorization decisions should never rely on assumptions from previous requests.
 
 ---
 
-# Authorization Caching
+## Authorization Caching
 
 Some systems temporarily cache authorization information for performance.
 
@@ -2402,7 +2402,7 @@ Cached permissions should expire appropriately and reflect permission changes pr
 
 ---
 
-# Access Reviews
+## Access Reviews
 
 Organizations should regularly review user permissions.
 
@@ -2434,7 +2434,7 @@ Regular reviews help maintain least privilege.
 
 ---
 
-# Privileged Access Management (PAM)
+## Privileged Access Management (PAM)
 
 Highly privileged accounts require additional protection.
 
@@ -2462,7 +2462,7 @@ Administrative actions should receive greater oversight than standard user activ
 
 ---
 
-# Security Logging
+## Security Logging
 
 Authorization-related events should be logged.
 
@@ -2477,7 +2477,7 @@ Examples include:
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Security teams should continuously monitor:
 
@@ -2501,7 +2501,7 @@ Monitoring supports rapid detection and investigation.
 
 ---
 
-# Incident Response
+## Incident Response
 
 If an authorization issue is discovered:
 
@@ -2541,7 +2541,7 @@ After remediation, organizations should review whether similar weaknesses exist 
 
 ---
 
-# Enterprise Security Metrics
+## Enterprise Security Metrics
 
 Useful authorization metrics include:
 
@@ -2556,7 +2556,7 @@ Useful authorization metrics include:
 
 ---
 
-# Authorization Review Checklist
+## Authorization Review Checklist
 
 ```
 ✓ Authentication Verified
@@ -2582,7 +2582,7 @@ Useful authorization metrics include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail platform:
 
@@ -2642,7 +2642,7 @@ Each action is evaluated independently according to business rules.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Authorization is one layer within a broader security architecture.
 
@@ -2686,7 +2686,7 @@ Combining multiple controls significantly improves resilience.
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2698,9 +2698,9 @@ Combining multiple controls significantly improves resilience.
 
 ---
 
-# Interview Revision
+## Interview Revision
 
-## Authentication vs Authorization
+### Authentication vs Authorization
 
 | Authentication | Authorization |
 |----------------|---------------|
@@ -2710,7 +2710,7 @@ Combining multiple controls significantly improves resilience.
 
 ---
 
-## Horizontal vs Vertical Privilege Escalation
+### Horizontal vs Vertical Privilege Escalation
 
 | Horizontal | Vertical |
 |------------|----------|
@@ -2720,7 +2720,7 @@ Combining multiple controls significantly improves resilience.
 
 ---
 
-## Common Authorization Models
+### Common Authorization Models
 
 ```
 RBAC
@@ -2746,7 +2746,7 @@ Each model serves different organizational requirements.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create an authorization matrix for a sample enterprise application.
 2. Define roles, permissions, and protected resources.
@@ -2758,7 +2758,7 @@ Each model serves different organizational requirements.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is Broken Access Control ranked as one of the highest OWASP risks?
 2. What is the principle of default deny?
@@ -2773,7 +2773,7 @@ Each model serves different organizational requirements.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enforce authorization on every protected server-side request.
 - Follow the principles of least privilege and default deny.
@@ -2786,7 +2786,7 @@ Each model serves different organizational requirements.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming authenticated users are automatically authorized.
 - Trusting client-side permission checks.
@@ -2798,7 +2798,7 @@ Each model serves different organizational requirements.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

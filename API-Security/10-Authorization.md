@@ -1,6 +1,6 @@
 # 10 - Authorization
 
-# Introduction
+## Introduction
 
 Authorization is the process of determining **what an authenticated identity is allowed to access or perform** within a system.
 
@@ -31,7 +31,7 @@ Poor authorization is consistently ranked among the most critical API security r
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -48,7 +48,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 ```
 User
@@ -80,7 +80,7 @@ Authentication always precedes authorization.
 
 ---
 
-# What is Authorization?
+## What is Authorization?
 
 Authorization evaluates whether an authenticated identity is permitted to perform a requested operation.
 
@@ -116,7 +116,7 @@ should typically be returned.
 
 ---
 
-# Authorization Workflow
+## Authorization Workflow
 
 ```
 Authenticated User
@@ -152,7 +152,7 @@ Every request to a protected resource should undergo authorization checks.
 
 ---
 
-# Authorization Components
+## Authorization Components
 
 ```
 Authorization
@@ -177,7 +177,7 @@ Definitions
 
 ---
 
-# Subjects
+## Subjects
 
 Subjects represent identities requesting access.
 
@@ -194,7 +194,7 @@ Each subject possesses specific permissions.
 
 ---
 
-# Resources
+## Resources
 
 Resources are protected objects.
 
@@ -212,7 +212,7 @@ Authorization determines whether access to each resource is permitted.
 
 ---
 
-# Actions
+## Actions
 
 Common actions include:
 
@@ -245,7 +245,7 @@ Actions often map directly to HTTP methods.
 
 ---
 
-# Authorization Policies
+## Authorization Policies
 
 Policies define access rules.
 
@@ -269,7 +269,7 @@ Policies should be centrally managed whenever possible.
 
 ---
 
-# Authorization Models
+## Authorization Models
 
 The most common models are:
 
@@ -289,7 +289,7 @@ Each model is suitable for different business requirements.
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 RBAC assigns permissions based on predefined roles.
 
@@ -311,7 +311,7 @@ Roles simplify permission management.
 
 ---
 
-# RBAC Example
+## RBAC Example
 
 | Role | Permissions |
 |------|-------------|
@@ -324,7 +324,7 @@ Users inherit permissions from their assigned roles.
 
 ---
 
-# RBAC Architecture
+## RBAC Architecture
 
 ```
 User
@@ -350,7 +350,7 @@ RBAC is the most widely implemented enterprise authorization model.
 
 ---
 
-# RBAC Advantages
+## RBAC Advantages
 
 Benefits
 
@@ -362,7 +362,7 @@ Benefits
 
 ---
 
-# RBAC Limitations
+## RBAC Limitations
 
 Challenges
 
@@ -375,7 +375,7 @@ Large enterprises often require additional authorization models alongside RBAC.
 
 ---
 
-# Attribute-Based Access Control (ABAC)
+## Attribute-Based Access Control (ABAC)
 
 ABAC evaluates attributes instead of relying solely on roles.
 
@@ -401,7 +401,7 @@ Environment
 
 ---
 
-# ABAC Decision Flow
+## ABAC Decision Flow
 
 ```
 Request
@@ -427,7 +427,7 @@ ABAC supports highly granular authorization decisions.
 
 ---
 
-# ABAC Example
+## ABAC Example
 
 ```
 IF
@@ -451,7 +451,7 @@ Multiple attributes contribute to the authorization decision.
 
 ---
 
-# ABAC Advantages
+## ABAC Advantages
 
 Benefits
 
@@ -463,7 +463,7 @@ Benefits
 
 ---
 
-# ABAC Challenges
+## ABAC Challenges
 
 Potential drawbacks
 
@@ -476,7 +476,7 @@ Effective governance is essential for successful ABAC deployments.
 
 ---
 
-# Access Control Lists (ACLs)
+## Access Control Lists (ACLs)
 
 ACLs associate permissions directly with resources.
 
@@ -500,7 +500,7 @@ ACLs are commonly used in file systems and object storage platforms.
 
 ---
 
-# ACL Workflow
+## ACL Workflow
 
 ```
 User
@@ -532,7 +532,7 @@ ACLs are resource-centric rather than identity-centric.
 
 ---
 
-# Policy-Based Access Control (PBAC)
+## Policy-Based Access Control (PBAC)
 
 PBAC evaluates centralized authorization policies.
 
@@ -560,7 +560,7 @@ Policy logic is separated from application code.
 
 ---
 
-# PBAC Components
+## PBAC Components
 
 | Component | Purpose |
 |------------|----------|
@@ -574,7 +574,7 @@ This architecture enables centralized authorization management.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial institution implements authorization as follows:
 
@@ -610,7 +610,7 @@ Static roles determine baseline permissions, while attributes provide contextual
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Users should receive only the permissions required to perform their responsibilities.
 
@@ -636,7 +636,7 @@ Least privilege reduces the potential impact of compromised accounts.
 
 ---
 
-# Need-to-Know Principle
+## Need-to-Know Principle
 
 Access should be granted only when required for legitimate business purposes.
 
@@ -671,7 +671,7 @@ Need-to-know complements least privilege.
 
 ---
 
-# Separation of Duties (SoD)
+## Separation of Duties (SoD)
 
 Critical operations should require multiple independent roles.
 
@@ -698,7 +698,7 @@ No single individual should control an entire high-risk process.
 
 ---
 
-# Privileged Access
+## Privileged Access
 
 Privileged accounts include:
 
@@ -718,7 +718,7 @@ Additional controls
 
 ---
 
-# Just-In-Time (JIT) Access
+## Just-In-Time (JIT) Access
 
 Instead of permanent administrative permissions,
 
@@ -748,7 +748,7 @@ JIT significantly reduces standing privileges.
 
 ---
 
-# Just-Enough Access (JEA)
+## Just-Enough Access (JEA)
 
 Users receive only the minimum permissions required for a specific task.
 
@@ -768,7 +768,7 @@ JEA minimizes unnecessary exposure.
 
 ---
 
-# Enterprise Authorization Architecture
+## Enterprise Authorization Architecture
 
 ```
                   User
@@ -816,7 +816,7 @@ Centralized authorization simplifies governance and auditing.
 
 ---
 
-# Best Practices
+## Best Practices
 
 Authorization
 
@@ -841,7 +841,7 @@ Development
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -857,7 +857,7 @@ Avoid:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authorization determines what authenticated identities may access.
 - Authentication and authorization are distinct but complementary.
@@ -867,7 +867,7 @@ Avoid:
 
 ---
 
-# Object-Level Authorization
+## Object-Level Authorization
 
 Object-Level Authorization determines whether an authenticated user is permitted to access a **specific resource instance**.
 
@@ -883,7 +883,7 @@ Authorization must verify not only that the user can access the resource type, b
 
 ---
 
-# Object-Level Authorization Flow
+## Object-Level Authorization Flow
 
 ```
             User
@@ -925,7 +925,7 @@ Every object request should perform an ownership or permission check.
 
 ---
 
-# Broken Object Level Authorization (BOLA)
+## Broken Object Level Authorization (BOLA)
 
 Broken Object Level Authorization (BOLA) occurs when an application fails to verify whether a user is authorized to access a specific object.
 
@@ -953,7 +953,7 @@ authorization has failed.
 
 ---
 
-# BOLA Example
+## BOLA Example
 
 Customer A
 
@@ -987,7 +987,7 @@ BOLA Vulnerability
 
 ---
 
-# Why BOLA Happens
+## Why BOLA Happens
 
 Common causes
 
@@ -1000,7 +1000,7 @@ Common causes
 
 ---
 
-# Secure Object Validation
+## Secure Object Validation
 
 Always verify
 
@@ -1034,7 +1034,7 @@ Authorization should never rely solely on client input.
 
 ---
 
-# Identifier Types
+## Identifier Types
 
 Common identifiers
 
@@ -1063,7 +1063,7 @@ they **do not replace authorization checks**.
 
 ---
 
-# Predictable Identifier Risks
+## Predictable Identifier Risks
 
 Sequential identifiers enable enumeration.
 
@@ -1081,7 +1081,7 @@ Attackers may attempt automated access across many identifiers.
 
 ---
 
-# UUID Benefits
+## UUID Benefits
 
 ```
 550e8400-e29b-41d4-a716-446655440000
@@ -1100,7 +1100,7 @@ Limitations
 
 ---
 
-# Function-Level Authorization
+## Function-Level Authorization
 
 Function-Level Authorization determines whether a user may perform a particular operation.
 
@@ -1122,7 +1122,7 @@ These operations often require elevated privileges.
 
 ---
 
-# Broken Function Level Authorization (BFLA)
+## Broken Function Level Authorization (BFLA)
 
 BFLA occurs when users can invoke privileged functionality without appropriate authorization.
 
@@ -1138,7 +1138,7 @@ administrative functionality becomes exposed.
 
 ---
 
-# BFLA Workflow
+## BFLA Workflow
 
 ```
 Authenticated User
@@ -1166,7 +1166,7 @@ Role and permission checks must precede privileged operations.
 
 ---
 
-# BOLA vs BFLA
+## BOLA vs BFLA
 
 | BOLA | BFLA |
 |------|------|
@@ -1179,7 +1179,7 @@ Both vulnerabilities frequently coexist.
 
 ---
 
-# Horizontal Privilege Escalation
+## Horizontal Privilege Escalation
 
 Users access resources belonging to other users with similar privilege levels.
 
@@ -1203,7 +1203,7 @@ Missing ownership verification.
 
 ---
 
-# Vertical Privilege Escalation
+## Vertical Privilege Escalation
 
 A lower-privileged user performs administrative actions.
 
@@ -1227,7 +1227,7 @@ Missing role verification.
 
 ---
 
-# Horizontal vs Vertical Escalation
+## Horizontal vs Vertical Escalation
 
 | Horizontal | Vertical |
 |------------|-----------|
@@ -1237,7 +1237,7 @@ Missing role verification.
 
 ---
 
-# Context-Aware Authorization
+## Context-Aware Authorization
 
 Modern authorization decisions often consider context.
 
@@ -1270,7 +1270,7 @@ Grant Access
 
 ---
 
-# Risk-Based Authorization
+## Risk-Based Authorization
 
 Authorization may adapt dynamically.
 
@@ -1304,7 +1304,7 @@ Risk signals improve security without unnecessarily impacting legitimate users.
 
 ---
 
-# Zero Trust Authorization
+## Zero Trust Authorization
 
 Zero Trust assumes that no request should be trusted automatically.
 
@@ -1317,7 +1317,7 @@ Principles
 
 ---
 
-# Zero Trust Authorization Flow
+## Zero Trust Authorization Flow
 
 ```
 Request
@@ -1351,7 +1351,7 @@ Authorization is evaluated continuously rather than only during login.
 
 ---
 
-# Policy Decision Point (PDP)
+## Policy Decision Point (PDP)
 
 The Policy Decision Point evaluates authorization policies.
 
@@ -1379,7 +1379,7 @@ The PDP should remain independent from application logic where practical.
 
 ---
 
-# Policy Enforcement Point (PEP)
+## Policy Enforcement Point (PEP)
 
 The Policy Enforcement Point applies the authorization decision.
 
@@ -1413,7 +1413,7 @@ The PEP ensures consistent enforcement across applications.
 
 ---
 
-# Policy Information Point (PIP)
+## Policy Information Point (PIP)
 
 The Policy Information Point supplies attributes used during authorization.
 
@@ -1429,7 +1429,7 @@ These attributes enable dynamic authorization decisions.
 
 ---
 
-# Authorization in Microservices
+## Authorization in Microservices
 
 ```
           Client
@@ -1459,7 +1459,7 @@ Centralized authorization avoids inconsistent policy enforcement.
 
 ---
 
-# Authorization in Cloud Environments
+## Authorization in Cloud Environments
 
 Cloud platforms commonly use policy-based authorization.
 
@@ -1480,7 +1480,7 @@ Access decisions may consider
 
 ---
 
-# API Authorization Best Practices
+## API Authorization Best Practices
 
 Validate
 
@@ -1500,7 +1500,7 @@ Never rely on
 
 ---
 
-# Authorization Logging
+## Authorization Logging
 
 Log
 
@@ -1518,7 +1518,7 @@ Avoid logging sensitive business data unless operationally required and appropri
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1537,7 +1537,7 @@ Behavioral baselines improve detection quality.
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Recommended telemetry
 
@@ -1583,7 +1583,7 @@ Example correlation rules
 
 ---
 
-# Enterprise Authorization Architecture
+## Enterprise Authorization Architecture
 
 ```
                   User
@@ -1645,7 +1645,7 @@ Example correlation rules
 
 ---
 
-# Hands-on Lab 1 – Object Authorization Review
+## Hands-on Lab 1 – Object Authorization Review
 
 **Objective**
 
@@ -1666,7 +1666,7 @@ Verify that users cannot access objects they do not own.
 
 ---
 
-# Hands-on Lab 2 – Function Authorization Review
+## Hands-on Lab 2 – Function Authorization Review
 
 **Objective**
 
@@ -1687,7 +1687,7 @@ Verify that privileged functions require appropriate permissions.
 
 ---
 
-# Hands-on Lab 3 – Policy Review
+## Hands-on Lab 3 – Policy Review
 
 **Objective**
 
@@ -1708,7 +1708,7 @@ Review enterprise authorization policies.
 
 ---
 
-# Common Security Mistakes
+## Common Security Mistakes
 
 Avoid
 
@@ -1725,9 +1725,9 @@ Avoid
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Unexpected 403 Forbidden
+### Unexpected 403 Forbidden
 
 Possible causes
 
@@ -1738,7 +1738,7 @@ Possible causes
 
 ---
 
-## User Can Access Another User's Data
+### User Can Access Another User's Data
 
 Possible causes
 
@@ -1749,7 +1749,7 @@ Possible causes
 
 ---
 
-## Administrative Function Accessible
+### Administrative Function Accessible
 
 Possible causes
 
@@ -1760,7 +1760,7 @@ Possible causes
 
 ---
 
-## Authorization Service Failure
+### Authorization Service Failure
 
 Possible causes
 
@@ -1771,7 +1771,7 @@ Possible causes
 
 ---
 
-## Cross-Tenant Access
+### Cross-Tenant Access
 
 Possible causes
 
@@ -1782,9 +1782,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is authorization?
 2. How does authorization differ from authentication?
@@ -1799,7 +1799,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. Compare RBAC and ABAC.
 12. Why are UUIDs not sufficient to prevent BOLA?
@@ -1814,7 +1814,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1843,7 +1843,7 @@ Your SOC observes repeated requests for sequential object identifiers followed b
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we explored enterprise authorization and access control.
 
@@ -1870,7 +1870,7 @@ Effective authorization ensures authenticated identities can access only the res
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1886,15 +1886,15 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 7644 – SCIM
 - NIST SP 800-162 – Guide to Attribute Based Access Control
 - XACML 3.0 Specification
 
-## Security Standards
+### Security Standards
 
 - OWASP API Security Top 10
 - OWASP ASVS
@@ -1902,7 +1902,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-53
 
-## Further Reading
+### Further Reading
 
 - Zero Trust Architecture (NIST SP 800-207)
 - Open Policy Agent (OPA) Documentation
@@ -1910,7 +1910,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 11 – JWT Security**
 

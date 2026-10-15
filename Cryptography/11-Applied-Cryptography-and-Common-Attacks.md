@@ -54,7 +54,7 @@ This chapter focuses on how cryptography fails in real applications and how secu
 
 ---
 
-# 1. Cryptographic Security in the Real World
+## 1. Cryptographic Security in the Real World
 
 A useful model is:
 
@@ -82,7 +82,7 @@ Security fails if any critical component is incorrectly designed.
 
 ---
 
-# 2. Common Cryptographic Failures
+## 2. Common Cryptographic Failures
 
 Typical weaknesses include:
 
@@ -110,7 +110,7 @@ Improper JWT Validation
 
 ---
 
-# 3. Attack Classification
+## 3. Attack Classification
 
 Cryptographic attacks can be grouped into:
 
@@ -126,7 +126,7 @@ Credential Attacks
 
 ---
 
-# 4. Brute-Force Attack
+## 4. Brute-Force Attack
 
 A brute-force attack attempts many possible keys or secrets.
 
@@ -152,7 +152,7 @@ which is infeasible under ordinary classical brute-force assumptions.
 
 ---
 
-# 5. Effective Key Strength
+## 5. Effective Key Strength
 
 A key's nominal size does not guarantee equivalent security.
 
@@ -178,7 +178,7 @@ Therefore:
 
 ---
 
-# 6. Dictionary Attack
+## 6. Dictionary Attack
 
 Instead of trying every possible value, an attacker tries likely passwords:
 
@@ -195,7 +195,7 @@ This is much faster than pure brute force against human-created passwords.
 
 ---
 
-# 7. Password Cracking
+## 7. Password Cracking
 
 An attacker with a password hash may perform:
 
@@ -219,7 +219,7 @@ the password is discovered.
 
 ---
 
-# 8. Offline Password Attack
+## 8. Offline Password Attack
 
 Suppose an attacker obtains:
 
@@ -239,7 +239,7 @@ Rate limiting on the login page does not protect against the offline cracking pr
 
 ---
 
-# 9. Online vs Offline Attacks
+## 9. Online vs Offline Attacks
 
 | Attack | Description |
 |---|---|
@@ -265,7 +265,7 @@ Strong Passwords
 
 ---
 
-# 10. Rainbow Tables
+## 10. Rainbow Tables
 
 A rainbow table is a precomputed structure used to accelerate certain password-hash lookups.
 
@@ -283,7 +283,7 @@ with appropriate unique salts and parameters.
 
 ---
 
-# 11. Salted Password Hashing
+## 11. Salted Password Hashing
 
 Correct conceptual design:
 
@@ -303,7 +303,7 @@ It does not need to be secret.
 
 ---
 
-# 12. Weak Password Hashing
+## 12. Weak Password Hashing
 
 Dangerous examples:
 
@@ -319,7 +319,7 @@ Prefer a password-specific KDF.
 
 ---
 
-# 13. Argon2
+## 13. Argon2
 
 Argon2 is a password-hashing/KDF family designed to increase the cost of password guessing.
 
@@ -335,9 +335,9 @@ This makes large-scale password cracking more expensive.
 
 ---
 
-# 14. Brute Force vs Dictionary Attack
+## 14. Brute Force vs Dictionary Attack
 
-### Brute Force
+#### Brute Force
 
 ```text
 aaaa
@@ -346,7 +346,7 @@ aaac
 ...
 ```
 
-### Dictionary
+#### Dictionary
 
 ```text
 password
@@ -355,7 +355,7 @@ summer2026
 companyname
 ```
 
-### Hybrid
+#### Hybrid
 
 ```text
 password1
@@ -367,7 +367,7 @@ Attackers often combine multiple strategies.
 
 ---
 
-# 15. Credential Stuffing
+## 15. Credential Stuffing
 
 Credential stuffing uses previously leaked username/password combinations against other services.
 
@@ -389,7 +389,7 @@ Cryptography alone cannot solve credential reuse.
 
 ---
 
-# 16. Password Spraying
+## 16. Password Spraying
 
 Password spraying tries a small number of common passwords against many accounts.
 
@@ -410,7 +410,7 @@ This avoids rapidly guessing many passwords against one account.
 
 ---
 
-# 17. Key Leakage
+## 17. Key Leakage
 
 A cryptographic key can be exposed through:
 
@@ -429,7 +429,7 @@ Developer Machines
 
 ---
 
-# 18. Hard-Coded Key
+## 18. Hard-Coded Key
 
 Bad:
 
@@ -447,7 +447,7 @@ The key becomes part of the application artifact and can potentially be recovere
 
 ---
 
-# 19. Secret in Git
+## 19. Secret in Git
 
 Example:
 
@@ -482,7 +482,7 @@ Rotate / Revoke the Exposed Secret
 
 ---
 
-# 20. Secret Scanning
+## 20. Secret Scanning
 
 Security teams can use tools such as:
 
@@ -505,7 +505,7 @@ Incident Response
 
 ---
 
-# 21. Key Exposure Response
+## 21. Key Exposure Response
 
 If a production key leaks:
 
@@ -523,7 +523,7 @@ If a production key leaks:
 
 ---
 
-# 22. Nonce Reuse Attack
+## 22. Nonce Reuse Attack
 
 Nonce reuse is one of the most important practical cryptographic failures.
 
@@ -546,7 +546,7 @@ can severely compromise the security guarantees of GCM.
 
 ---
 
-# 23. Why GCM Nonce Reuse Is Dangerous
+## 23. Why GCM Nonce Reuse Is Dangerous
 
 GCM combines:
 
@@ -570,7 +570,7 @@ Critical Cryptographic Failure
 
 ---
 
-# 24. ChaCha20-Poly1305 Nonce Reuse
+## 24. ChaCha20-Poly1305 Nonce Reuse
 
 The same general warning applies.
 
@@ -584,7 +584,7 @@ unless the construction explicitly defines a safe usage pattern.
 
 ---
 
-# 25. IV Reuse
+## 25. IV Reuse
 
 IV reuse can also be dangerous depending on the encryption mode.
 
@@ -594,7 +594,7 @@ Security requirements must always be evaluated for the specific mode.
 
 ---
 
-# 26. Static IV
+## 26. Static IV
 
 Suspicious code:
 
@@ -606,7 +606,7 @@ This is especially dangerous when reused across multiple encryption operations.
 
 ---
 
-# 27. Padding Oracle
+## 27. Padding Oracle
 
 Padding oracles are associated with certain block-cipher modes such as CBC.
 
@@ -628,7 +628,7 @@ The attacker uses the application's response as an oracle.
 
 ---
 
-# 28. Padding Oracle Impact
+## 28. Padding Oracle Impact
 
 Depending on the vulnerable construction and implementation, attackers may recover plaintext or manipulate ciphertext.
 
@@ -640,7 +640,7 @@ Modern applications should generally prefer AEAD modes.
 
 ---
 
-# 29. CBC Padding Example
+## 29. CBC Padding Example
 
 Suppose plaintext is:
 
@@ -664,7 +664,7 @@ If the application exposes whether padding is valid, it may create an oracle.
 
 ---
 
-# 30. Chosen-Plaintext Attack
+## 30. Chosen-Plaintext Attack
 
 In a chosen-plaintext attack, the attacker can obtain encryptions of messages selected by the attacker.
 
@@ -682,7 +682,7 @@ Security goals of modern encryption schemes are designed to withstand appropriat
 
 ---
 
-# 31. Chosen-Ciphertext Attack
+## 31. Chosen-Ciphertext Attack
 
 The attacker submits crafted ciphertexts and observes the system's response.
 
@@ -700,7 +700,7 @@ Poorly designed encryption schemes can leak information through this interface.
 
 ---
 
-# 32. Decryption Oracle
+## 32. Decryption Oracle
 
 A decryption oracle occurs when an attacker can submit ciphertext and learn information from the decryption process.
 
@@ -718,7 +718,7 @@ Authenticated encryption helps prevent many classes of unsafe decryption behavio
 
 ---
 
-# 33. Known-Plaintext Attack
+## 33. Known-Plaintext Attack
 
 The attacker knows:
 
@@ -734,7 +734,7 @@ Modern secure encryption algorithms are designed to resist appropriate known-pla
 
 ---
 
-# 34. Replay Attack
+## 34. Replay Attack
 
 A replay attack captures a valid message and sends it again.
 
@@ -754,7 +754,7 @@ then replays it.
 
 ---
 
-# 35. Cryptography and Replay Protection
+## 35. Cryptography and Replay Protection
 
 Encryption does not automatically prevent replay.
 
@@ -773,7 +773,7 @@ to establish freshness.
 
 ---
 
-# 36. Replay Attack Example
+## 36. Replay Attack Example
 
 ```text
 Client
@@ -799,7 +799,7 @@ If the server cannot distinguish the old message from a new one, replay may succ
 
 ---
 
-# 37. Replay Protection
+## 37. Replay Protection
 
 A system can use:
 
@@ -827,7 +827,7 @@ depending on the protocol.
 
 ---
 
-# 38. MITM Attack
+## 38. MITM Attack
 
 A Man-in-the-Middle attacker positions themselves between two parties:
 
@@ -851,7 +851,7 @@ Replace Keys
 
 ---
 
-# 39. Cryptographic Defense Against MITM
+## 39. Cryptographic Defense Against MITM
 
 Strong protocol design combines:
 
@@ -869,7 +869,7 @@ TLS is an example.
 
 ---
 
-# 40. Downgrade Attack
+## 40. Downgrade Attack
 
 An attacker attempts to force:
 
@@ -897,7 +897,7 @@ Weak Cipher
 
 ---
 
-# 41. Algorithm Confusion
+## 41. Algorithm Confusion
 
 Algorithm confusion occurs when an application accepts data under a different algorithm than intended.
 
@@ -917,7 +917,7 @@ If the server incorrectly uses an RSA public key as an HMAC secret, verification
 
 ---
 
-# 42. JWT
+## 42. JWT
 
 **JWT** stands for:
 
@@ -941,7 +941,7 @@ HEADER.PAYLOAD.SIGNATURE
 
 ---
 
-# 43. JWT Is Not Automatically Encryption
+## 43. JWT Is Not Automatically Encryption
 
 A normal signed JWT:
 
@@ -969,7 +969,7 @@ unless using an encryption mechanism such as JWE.
 
 ---
 
-# 44. JWT Signature
+## 44. JWT Signature
 
 Conceptually:
 
@@ -993,7 +993,7 @@ before trusting security-sensitive claims.
 
 ---
 
-# 45. JWT `alg` Header
+## 45. JWT `alg` Header
 
 A JWT header may contain:
 
@@ -1010,7 +1010,7 @@ The accepted algorithms should be explicitly configured.
 
 ---
 
-# 46. JWT Algorithm Allowlisting
+## 46. JWT Algorithm Allowlisting
 
 Better:
 
@@ -1033,7 +1033,7 @@ Accept whatever `alg` says
 
 ---
 
-# 47. JWT `none` Algorithm
+## 47. JWT `none` Algorithm
 
 Historically, implementations have been vulnerable when they accepted:
 
@@ -1051,7 +1051,7 @@ The general lesson is:
 
 ---
 
-# 48. JWT Weak Secret
+## 48. JWT Weak Secret
 
 HS256 uses a shared secret.
 
@@ -1067,7 +1067,7 @@ Use a strong high-entropy secret.
 
 ---
 
-# 49. JWT Key Confusion
+## 49. JWT Key Confusion
 
 Another class of vulnerability occurs when a server confuses:
 
@@ -1097,7 +1097,7 @@ must not be treated as interchangeable.
 
 ---
 
-# 50. JWT Verification Checklist
+## 50. JWT Verification Checklist
 
 ```text
 ☐ Explicitly allow algorithms
@@ -1114,7 +1114,7 @@ must not be treated as interchangeable.
 
 ---
 
-# 51. JWT Claim Validation
+## 51. JWT Claim Validation
 
 Important claims may include:
 
@@ -1131,7 +1131,7 @@ A valid signature alone does not guarantee the token is appropriate for the curr
 
 ---
 
-# 52. Timing Attack
+## 52. Timing Attack
 
 A timing attack exploits measurable differences in execution time.
 
@@ -1152,7 +1152,7 @@ An attacker may infer secret information.
 
 ---
 
-# 53. Constant-Time Comparison
+## 53. Constant-Time Comparison
 
 Use cryptographic comparison functions.
 
@@ -1171,7 +1171,7 @@ This is preferable to ordinary equality checks for security-sensitive values.
 
 ---
 
-# 54. Timing Attack Targets
+## 54. Timing Attack Targets
 
 Potential targets:
 
@@ -1188,7 +1188,7 @@ Timing attacks can be difficult in noisy network environments, but should still 
 
 ---
 
-# 55. Side-Channel Attack
+## 55. Side-Channel Attack
 
 A side-channel attack obtains information through behavior outside the intended cryptographic output.
 
@@ -1205,7 +1205,7 @@ Error Messages
 
 ---
 
-# 56. Cache Timing Attacks
+## 56. Cache Timing Attacks
 
 An attacker may infer secret-dependent operations by observing:
 
@@ -1219,7 +1219,7 @@ Constant-time implementations and side-channel-resistant libraries help mitigate
 
 ---
 
-# 57. Fault Attack
+## 57. Fault Attack
 
 Fault attacks deliberately cause incorrect computation.
 
@@ -1242,7 +1242,7 @@ Cause Incorrect Signature
 
 ---
 
-# 58. Differential Fault Analysis
+## 58. Differential Fault Analysis
 
 Differential Fault Analysis compares:
 
@@ -1258,7 +1258,7 @@ It is especially relevant to hardware security.
 
 ---
 
-# 59. Birthday Attack
+## 59. Birthday Attack
 
 For an n-bit hash:
 
@@ -1282,7 +1282,7 @@ under ideal assumptions.
 
 ---
 
-# 60. Hash Collision Attack
+## 60. Hash Collision Attack
 
 A collision occurs when:
 
@@ -1300,7 +1300,7 @@ Attackers may attempt to exploit collisions in systems where a hash is treated a
 
 ---
 
-# 61. Hash Substitution Attack
+## 61. Hash Substitution Attack
 
 Suppose a system trusts:
 
@@ -1326,7 +1326,7 @@ Use modern cryptographic hashes and authenticated integrity mechanisms where app
 
 ---
 
-# 62. Length-Extension Attack
+## 62. Length-Extension Attack
 
 Some hash constructions allow an attacker who knows:
 
@@ -1358,7 +1358,7 @@ instead.
 
 ---
 
-# 63. HMAC Defense
+## 63. HMAC Defense
 
 HMAC provides a standardized keyed-hash construction.
 
@@ -1378,7 +1378,7 @@ It is designed to avoid many problems associated with naive keyed hashing.
 
 ---
 
-# 64. Signature Forgery
+## 64. Signature Forgery
 
 A signature forgery occurs when an attacker produces a signature that the verifier accepts without possessing the legitimate private key.
 
@@ -1395,7 +1395,7 @@ Incorrect Verification
 
 ---
 
-# 65. ECDSA Nonce Failure
+## 65. ECDSA Nonce Failure
 
 ECDSA depends critically on secure per-signature nonce generation.
 
@@ -1411,7 +1411,7 @@ can leak information about the private key.
 
 ---
 
-# 66. Deterministic ECDSA
+## 66. Deterministic ECDSA
 
 One way to reduce dependence on runtime randomness is deterministic nonce generation, such as standardized deterministic ECDSA constructions.
 
@@ -1429,7 +1429,7 @@ This can reduce failures caused by poor runtime randomness.
 
 ---
 
-# 67. Certificate Attacks
+## 67. Certificate Attacks
 
 Certificate-related attacks can involve:
 
@@ -1445,7 +1445,7 @@ Improper Validation
 
 ---
 
-# 68. Trust Store Attack
+## 68. Trust Store Attack
 
 If an attacker can install a malicious root CA into a device:
 
@@ -1461,7 +1461,7 @@ Therefore trust-store modification is highly sensitive.
 
 ---
 
-# 69. CA Compromise
+## 69. CA Compromise
 
 A compromised CA private key can potentially allow unauthorized certificate issuance.
 
@@ -1478,7 +1478,7 @@ This is why CA private keys require extremely strong protection.
 
 ---
 
-# 70. Cryptographic API Misuse
+## 70. Cryptographic API Misuse
 
 Common mistakes:
 
@@ -1497,7 +1497,7 @@ Improper Signature Verification
 
 ---
 
-# 71. Example: Disabled TLS Verification
+## 71. Example: Disabled TLS Verification
 
 Dangerous:
 
@@ -1516,7 +1516,7 @@ Correct behavior is to maintain proper certificate verification.
 
 ---
 
-# 72. Example: Weak Random Token
+## 72. Example: Weak Random Token
 
 Bad:
 
@@ -1547,7 +1547,7 @@ where appropriate.
 
 ---
 
-# 73. Example: Static Encryption Key
+## 73. Example: Static Encryption Key
 
 Bad:
 
@@ -1571,7 +1571,7 @@ The exact design depends on the application.
 
 ---
 
-# 74. Example: Weak Hash
+## 74. Example: Weak Hash
 
 Bad:
 
@@ -1585,7 +1585,7 @@ For password storage, use a password-specific KDF instead.
 
 ---
 
-# 75. Example: Homemade MAC
+## 75. Example: Homemade MAC
 
 Bad:
 
@@ -1607,7 +1607,7 @@ hmac.new(
 
 ---
 
-# 76. Example: Encryption Without Integrity
+## 76. Example: Encryption Without Integrity
 
 Historically, applications sometimes used:
 
@@ -1635,7 +1635,7 @@ for modern application encryption where appropriate.
 
 ---
 
-# 77. Cryptographic Misconfiguration
+## 77. Cryptographic Misconfiguration
 
 Security teams should inspect:
 
@@ -1657,7 +1657,7 @@ A strong algorithm can still be deployed insecurely.
 
 ---
 
-# 78. Cryptographic Attack Chain
+## 78. Cryptographic Attack Chain
 
 A real attack might look like:
 
@@ -1679,7 +1679,7 @@ Cryptographic security must therefore be connected to identity and access contro
 
 ---
 
-# 79. Cloud Key Exposure
+## 79. Cloud Key Exposure
 
 Potential causes:
 
@@ -1704,7 +1704,7 @@ This may create excessive blast radius.
 
 ---
 
-# 80. Least Privilege for KMS
+## 80. Least Privilege for KMS
 
 Better:
 
@@ -1728,7 +1728,7 @@ All Keys
 
 ---
 
-# 81. Cryptographic Logging
+## 81. Cryptographic Logging
 
 Do not log:
 
@@ -1745,7 +1745,7 @@ Logs should contain enough information for investigation without becoming a secr
 
 ---
 
-# 82. Debug Logging Risk
+## 82. Debug Logging Risk
 
 Developers sometimes enable:
 
@@ -1767,7 +1767,7 @@ Security-sensitive values should be redacted.
 
 ---
 
-# 83. Secrets in Environment Variables
+## 83. Secrets in Environment Variables
 
 Environment variables are better than hard-coding in some architectures, but they are not automatically secure.
 
@@ -1786,7 +1786,7 @@ Use dedicated secret-management systems where appropriate.
 
 ---
 
-# 84. Secrets in Container Images
+## 84. Secrets in Container Images
 
 Bad:
 
@@ -1804,7 +1804,7 @@ The secret may become embedded in image layers or accessible to users with image
 
 ---
 
-# 85. Secrets in CI/CD
+## 85. Secrets in CI/CD
 
 CI/CD systems can accidentally expose:
 
@@ -1836,7 +1836,7 @@ Least Privilege
 
 ---
 
-# 86. Supply Chain Risk
+## 86. Supply Chain Risk
 
 Cryptographic libraries are part of the software supply chain.
 
@@ -1860,7 +1860,7 @@ Integrity Verification
 
 ---
 
-# 87. Cryptographic Library Selection
+## 87. Cryptographic Library Selection
 
 Prefer libraries that are:
 
@@ -1876,7 +1876,7 @@ Avoid implementing primitives from scratch unless there is a specialized reason 
 
 ---
 
-# 88. VAPT Methodology
+## 88. VAPT Methodology
 
 A practical cryptographic assessment can follow:
 
@@ -1893,7 +1893,7 @@ A practical cryptographic assessment can follow:
 
 ---
 
-# 89. Step 1 – Discover
+## 89. Step 1 – Discover
 
 Identify:
 
@@ -1912,7 +1912,7 @@ Cryptographic Libraries
 
 ---
 
-# 90. Step 2 – Identify Algorithms
+## 90. Step 2 – Identify Algorithms
 
 Determine:
 
@@ -1929,7 +1929,7 @@ Key Size
 
 ---
 
-# 91. Step 3 – Identify Secrets
+## 91. Step 3 – Identify Secrets
 
 Search authorized code and infrastructure for:
 
@@ -1947,7 +1947,7 @@ Use secret-scanning tools.
 
 ---
 
-# 92. Step 4 – Test TLS
+## 92. Step 4 – Test TLS
 
 Inspect:
 
@@ -1965,7 +1965,7 @@ Session Resumption
 
 ---
 
-# 93. Step 5 – Test Application Crypto
+## 93. Step 5 – Test Application Crypto
 
 Look for:
 
@@ -1983,7 +1983,7 @@ Custom Encryption
 
 ---
 
-# 94. Step 6 – Validate Findings
+## 94. Step 6 – Validate Findings
 
 Do not report:
 
@@ -2005,7 +2005,7 @@ What is the impact?
 
 ---
 
-# 95. Step 7 – Assess Impact
+## 95. Step 7 – Assess Impact
 
 Example:
 
@@ -2029,7 +2029,7 @@ Context matters.
 
 ---
 
-# 96. Severity
+## 96. Severity
 
 Potential severity levels:
 
@@ -2056,7 +2056,7 @@ Legacy non-security hash
 
 ---
 
-# 97. Burp Suite
+## 97. Burp Suite
 
 Burp Suite can assist with authorized web-security testing.
 
@@ -2075,7 +2075,7 @@ Certificate Handling
 
 ---
 
-# 98. JWT Testing in Burp
+## 98. JWT Testing in Burp
 
 Inspect:
 
@@ -2100,7 +2100,7 @@ Never assume that Base64URL decoding is cryptographic verification.
 
 ---
 
-# 99. Hashcat
+## 99. Hashcat
 
 Hashcat can perform authorized password-recovery and password-strength testing.
 
@@ -2117,7 +2117,7 @@ Only use recovered credentials within an authorized security assessment.
 
 ---
 
-# 100. John the Ripper
+## 100. John the Ripper
 
 John the Ripper is another password-auditing tool.
 
@@ -2132,7 +2132,7 @@ Security Assessments
 
 ---
 
-# 101. OpenSSL
+## 101. OpenSSL
 
 OpenSSL is useful for:
 
@@ -2153,7 +2153,7 @@ openssl version
 
 ---
 
-# 102. Nmap TLS Enumeration
+## 102. Nmap TLS Enumeration
 
 Authorized testing:
 
@@ -2171,7 +2171,7 @@ Key Exchange
 
 ---
 
-# 103. Wireshark
+## 103. Wireshark
 
 Use Wireshark to inspect:
 
@@ -2187,9 +2187,9 @@ Even when traffic is encrypted, metadata can reveal useful information.
 
 ---
 
-# 104. Practical Case Study – Leaked API Key
+## 104. Practical Case Study – Leaked API Key
 
-### Scenario
+#### Scenario
 
 A developer commits:
 
@@ -2199,7 +2199,7 @@ API_KEY=production-secret
 
 to GitHub.
 
-### Attack
+#### Attack
 
 An attacker finds the secret.
 
@@ -2211,7 +2211,7 @@ Secret
 API Access
 ```
 
-### Impact
+#### Impact
 
 Potential:
 
@@ -2222,7 +2222,7 @@ Cloud Resource Abuse
 Financial Loss
 ```
 
-### Remediation
+#### Remediation
 
 ```text
 Rotate Key
@@ -2235,9 +2235,9 @@ Use Secret Manager
 
 ---
 
-# 105. Practical Case Study – Weak JWT Secret
+## 105. Practical Case Study – Weak JWT Secret
 
-### Scenario
+#### Scenario
 
 Application uses:
 
@@ -2251,7 +2251,7 @@ with:
 secret123
 ```
 
-### Attack
+#### Attack
 
 Attacker obtains a JWT and performs offline guessing.
 
@@ -2265,7 +2265,7 @@ Modify Claims
 Privilege Escalation
 ```
 
-### Remediation
+#### Remediation
 
 ```text
 Strong Random Secret
@@ -2279,9 +2279,9 @@ Key Rotation
 
 ---
 
-# 106. Practical Case Study – Nonce Reuse
+## 106. Practical Case Study – Nonce Reuse
 
-### Scenario
+#### Scenario
 
 Application uses:
 
@@ -2291,7 +2291,7 @@ AES-GCM
 
 with a static nonce.
 
-### Problem
+#### Problem
 
 ```text
 Same Key
@@ -2301,7 +2301,7 @@ Same Nonce
 Multiple Messages
 ```
 
-### Impact
+#### Impact
 
 Potential:
 
@@ -2311,7 +2311,7 @@ Forgery
 Integrity Failure
 ```
 
-### Remediation
+#### Remediation
 
 ```text
 Unique Nonce
@@ -2323,9 +2323,9 @@ Automated Testing
 
 ---
 
-# 107. Practical Case Study – Disabled TLS Verification
+## 107. Practical Case Study – Disabled TLS Verification
 
-### Scenario
+#### Scenario
 
 Developer writes:
 
@@ -2336,11 +2336,11 @@ requests.get(
 )
 ```
 
-### Impact
+#### Impact
 
 An attacker capable of intercepting traffic may impersonate the server.
 
-### Remediation
+#### Remediation
 
 ```text
 Enable Certificate Verification
@@ -2352,9 +2352,9 @@ Use Trusted CA
 
 ---
 
-# 108. Practical Case Study – Weak Password Hashing
+## 108. Practical Case Study – Weak Password Hashing
 
-### Scenario
+#### Scenario
 
 Database stores:
 
@@ -2362,7 +2362,7 @@ Database stores:
 SHA256(password)
 ```
 
-### Attack
+#### Attack
 
 Database is leaked.
 
@@ -2372,7 +2372,7 @@ Attacker performs:
 Offline Password Guessing
 ```
 
-### Remediation
+#### Remediation
 
 Use:
 
@@ -2386,9 +2386,9 @@ with unique salts and suitable parameters.
 
 ---
 
-# 109. Practical Case Study – Padding Oracle
+## 109. Practical Case Study – Padding Oracle
 
-### Scenario
+#### Scenario
 
 Application:
 
@@ -2410,7 +2410,7 @@ Oracle
 Different Response
 ```
 
-### Remediation
+#### Remediation
 
 Prefer:
 
@@ -2422,9 +2422,9 @@ and ensure decryption/authentication failures do not create exploitable distinct
 
 ---
 
-# 110. Practical Case Study – Certificate Misconfiguration
+## 110. Practical Case Study – Certificate Misconfiguration
 
-### Scenario
+#### Scenario
 
 Server certificate:
 
@@ -2448,7 +2448,7 @@ This can enable MITM.
 
 ---
 
-# 111. Cryptographic Security Testing Matrix
+## 111. Cryptographic Security Testing Matrix
 
 | Area | Test |
 |---|---|
@@ -2474,7 +2474,7 @@ This can enable MITM.
 
 ---
 
-# 112. SOC Detection Opportunities
+## 112. SOC Detection Opportunities
 
 SOC teams can monitor:
 
@@ -2496,7 +2496,7 @@ Unusual API Usage
 
 ---
 
-# 113. Detection Example – Token Replay
+## 113. Detection Example – Token Replay
 
 Suppose the same token is used from:
 
@@ -2537,7 +2537,7 @@ rather than relying on one signal.
 
 ---
 
-# 114. Detection Example – KMS Abuse
+## 114. Detection Example – KMS Abuse
 
 Normal:
 
@@ -2566,7 +2566,7 @@ This should trigger investigation.
 
 ---
 
-# 115. Detection Example – Certificate Change
+## 115. Detection Example – Certificate Change
 
 ```text
 Domain:
@@ -2592,7 +2592,7 @@ Certificate changes should be monitored and correlated with deployment events.
 
 ---
 
-# 116. Secure Cryptographic Development Checklist
+## 116. Secure Cryptographic Development Checklist
 
 ```text
 ☐ Use trusted cryptographic libraries
@@ -2619,7 +2619,7 @@ Certificate changes should be monitored and correlated with deployment events.
 
 ---
 
-# 117. Secure Architecture
+## 117. Secure Architecture
 
 A mature system might look like:
 
@@ -2650,7 +2650,7 @@ Client ───────────────► API Gateway
 
 ---
 
-# 118. Cryptographic Incident Response
+## 118. Cryptographic Incident Response
 
 When a cryptographic failure is discovered:
 
@@ -2676,7 +2676,7 @@ Document
 
 ---
 
-# 119. Key Compromise Response
+## 119. Key Compromise Response
 
 If a private signing key is compromised:
 
@@ -2692,7 +2692,7 @@ If a private signing key is compromised:
 
 ---
 
-# 120. Data Encryption Key Compromise
+## 120. Data Encryption Key Compromise
 
 If a DEK is compromised:
 
@@ -2714,7 +2714,7 @@ The exact response depends on the encryption architecture.
 
 ---
 
-# 121. KMS Master Key Compromise
+## 121. KMS Master Key Compromise
 
 A high-level key compromise may affect many encrypted objects.
 
@@ -2734,7 +2734,7 @@ Envelope encryption can limit the amount of data directly encrypted by a high-le
 
 ---
 
-# 122. Cryptographic Dependency Updates
+## 122. Cryptographic Dependency Updates
 
 Security teams should monitor:
 
@@ -2753,7 +2753,7 @@ Cryptographic vulnerabilities can affect otherwise secure applications.
 
 ---
 
-# 123. Secure Failure
+## 123. Secure Failure
 
 When cryptographic verification fails:
 
@@ -2778,9 +2778,9 @@ Never:
 
 ---
 
-# 124. Fail-Open vs Fail-Closed
+## 124. Fail-Open vs Fail-Closed
 
-### Fail Open
+#### Fail Open
 
 ```text
 Verification Error
@@ -2790,7 +2790,7 @@ Allow Request
 
 Dangerous.
 
-### Fail Closed
+#### Fail Closed
 
 ```text
 Verification Error
@@ -2802,7 +2802,7 @@ Generally safer for security controls.
 
 ---
 
-# 125. Cryptographic Security Principles
+## 125. Cryptographic Security Principles
 
 Remember:
 
@@ -2821,7 +2821,7 @@ Remember:
 
 ---
 
-# 126. Practical Lab – JWT Inspection
+## 126. Practical Lab – JWT Inspection
 
 Create a test JWT in a controlled environment.
 
@@ -2847,7 +2847,7 @@ Then verify the signature using the correct algorithm and key.
 
 ---
 
-# 127. Practical Lab – JWT Algorithm Allowlisting
+## 127. Practical Lab – JWT Algorithm Allowlisting
 
 Build a test application that accepts:
 
@@ -2875,7 +2875,7 @@ Use a modern JWT library and test only against your own application.
 
 ---
 
-# 128. Practical Lab – Password KDF
+## 128. Practical Lab – Password KDF
 
 Create test passwords and derive password verifiers using a password-specific KDF.
 
@@ -2897,7 +2897,7 @@ Use synthetic passwords only.
 
 ---
 
-# 129. Practical Lab – Secret Scanning
+## 129. Practical Lab – Secret Scanning
 
 Create a test Git repository containing:
 
@@ -2919,7 +2919,7 @@ Use only fake credentials.
 
 ---
 
-# 130. Practical Lab – TLS Assessment
+## 130. Practical Lab – TLS Assessment
 
 Against an authorized lab server:
 
@@ -2947,7 +2947,7 @@ Signature Algorithm
 
 ---
 
-# 131. Practical Lab – Certificate Validation
+## 131. Practical Lab – Certificate Validation
 
 Create a test certificate with:
 
@@ -2969,7 +2969,7 @@ unless the client explicitly trusts the test CA and hostname configuration is co
 
 ---
 
-# 132. Practical Lab – Replay Testing
+## 132. Practical Lab – Replay Testing
 
 In your own test API:
 
@@ -2993,7 +2993,7 @@ Same Request ID
 
 ---
 
-# 133. Practical Lab – Timing Comparison
+## 133. Practical Lab – Timing Comparison
 
 Create a toy application that compares strings incorrectly using an early-exit loop.
 
@@ -3009,159 +3009,159 @@ This is an educational demonstration of constant-time comparison concepts.
 
 ---
 
-# 134. Interview Questions
+## 134. Interview Questions
 
-## What is a cryptographic attack?
+### What is a cryptographic attack?
 
 A cryptographic attack attempts to compromise confidentiality, integrity, authentication, or key security through mathematical, implementation, protocol, configuration, or operational weaknesses.
 
 ---
 
-## What is a brute-force attack?
+### What is a brute-force attack?
 
 Trying possible keys, passwords, or secrets until the correct value is found.
 
 ---
 
-## What is a dictionary attack?
+### What is a dictionary attack?
 
 Trying likely passwords from a predefined wordlist.
 
 ---
 
-## What is credential stuffing?
+### What is credential stuffing?
 
 Using credentials leaked from one service against another service.
 
 ---
 
-## What is a replay attack?
+### What is a replay attack?
 
 Capturing a valid message and sending it again to the target.
 
 ---
 
-## Does encryption prevent replay?
+### Does encryption prevent replay?
 
 No. Replay protection must be provided by the protocol/application using mechanisms such as nonces, counters, timestamps, or request identifiers.
 
 ---
 
-## What is a padding oracle?
+### What is a padding oracle?
 
 A vulnerability where observable differences in padding validation reveal information about encrypted data.
 
 ---
 
-## What is a chosen-plaintext attack?
+### What is a chosen-plaintext attack?
 
 An attacker can choose plaintexts and obtain their ciphertexts to analyze the encryption system.
 
 ---
 
-## What is a chosen-ciphertext attack?
+### What is a chosen-ciphertext attack?
 
 An attacker can submit selected ciphertexts and observe decryption behavior.
 
 ---
 
-## What is a timing attack?
+### What is a timing attack?
 
 An attack that extracts information from measurable differences in execution time.
 
 ---
 
-## What is a side-channel attack?
+### What is a side-channel attack?
 
 An attack that obtains information from implementation behavior rather than directly breaking the cryptographic mathematics.
 
 ---
 
-## Why is nonce reuse dangerous?
+### Why is nonce reuse dangerous?
 
 Certain cryptographic constructions, especially AEAD modes such as GCM, rely on nonce uniqueness. Reuse can compromise confidentiality and integrity.
 
 ---
 
-## Why shouldn't secrets be stored in Git?
+### Why shouldn't secrets be stored in Git?
 
 Git history can preserve secrets even after they are removed from the current version.
 
 ---
 
-## What should you do if a secret is committed?
+### What should you do if a secret is committed?
 
 Immediately revoke/rotate it, investigate usage, then remove the secret from the repository and improve secret-management controls.
 
 ---
 
-## What is algorithm confusion?
+### What is algorithm confusion?
 
 A vulnerability where an application accepts or interprets cryptographic data using an unintended algorithm.
 
 ---
 
-## What is JWT algorithm confusion?
+### What is JWT algorithm confusion?
 
 A JWT verification flaw where an attacker manipulates the algorithm selection so the server verifies the token using an unintended mechanism.
 
 ---
 
-## Is a JWT encrypted?
+### Is a JWT encrypted?
 
 Not necessarily. A normal JWS JWT is signed, not encrypted. Its payload is typically Base64URL encoded.
 
 ---
 
-## What is the `none` JWT attack?
+### What is the `none` JWT attack?
 
 It refers to historical implementations that incorrectly accepted unsigned JWTs using `alg=none`.
 
 ---
 
-## What is credential stuffing?
+### What is credential stuffing?
 
 Using previously leaked username/password combinations against another service.
 
 ---
 
-## What is a password spraying attack?
+### What is a password spraying attack?
 
 Trying a small number of common passwords against many accounts.
 
 ---
 
-## Why is SHA-256 not ideal for password storage?
+### Why is SHA-256 not ideal for password storage?
 
 SHA-256 is intentionally fast, making large-scale offline password guessing comparatively efficient. Password-specific KDFs are designed to make guessing more expensive.
 
 ---
 
-## What is a length-extension attack?
+### What is a length-extension attack?
 
 An attack against certain hash constructions where knowledge of a hash of `secret || message` can enable construction of a valid hash for an extended message.
 
 ---
 
-## How does HMAC help?
+### How does HMAC help?
 
 HMAC provides a standardized keyed authentication construction rather than relying on unsafe concatenation of a secret and message.
 
 ---
 
-## What is forward secrecy?
+### What is forward secrecy?
 
 Protection of previously established session secrets even if a long-term private key is compromised later, under the protocol's security assumptions.
 
 ---
 
-## What is fail-closed behavior?
+### What is fail-closed behavior?
 
 When a security verification fails, access is denied rather than allowed.
 
 ---
 
-# 135. Quick Revision Table
+## 135. Quick Revision Table
 
 | Attack / Weakness | Main Problem |
 |---|---|
@@ -3189,7 +3189,7 @@ When a security verification fails, access is denied rather than allowed.
 
 ---
 
-# 136. Cryptographic Security Testing Checklist
+## 136. Cryptographic Security Testing Checklist
 
 ```text
 RANDOMNESS
@@ -3249,7 +3249,7 @@ APPLICATION
 
 ---
 
-# 137. Secure Development Rules
+## 137. Secure Development Rules
 
 A developer should remember:
 
@@ -3282,9 +3282,9 @@ Avoid:
 
 ---
 
-# 138. Incident Response Cheat Sheet
+## 138. Incident Response Cheat Sheet
 
-### Secret Leak
+#### Secret Leak
 
 ```text
 Revoke
@@ -3295,7 +3295,7 @@ Revoke
 → Monitor
 ```
 
-### Private-Key Compromise
+#### Private-Key Compromise
 
 ```text
 Revoke Certificate
@@ -3305,7 +3305,7 @@ Revoke Certificate
 → Investigate Historical Impact
 ```
 
-### Nonce Reuse
+#### Nonce Reuse
 
 ```text
 Stop Affected Encryption
@@ -3315,7 +3315,7 @@ Stop Affected Encryption
 → Re-encrypt if Required
 ```
 
-### Weak Password Hashing
+#### Weak Password Hashing
 
 ```text
 Upgrade KDF
@@ -3324,7 +3324,7 @@ Upgrade KDF
 → Remove Legacy Hashing
 ```
 
-### TLS Misconfiguration
+#### TLS Misconfiguration
 
 ```text
 Disable Weak Protocols
@@ -3336,7 +3336,7 @@ Disable Weak Protocols
 
 ---
 
-# 139. Key Takeaways
+## 139. Key Takeaways
 
 ```text
 1. Most real-world cryptographic failures come from misuse, not broken mathematics.
@@ -3402,7 +3402,7 @@ Disable Weak Protocols
 
 ---
 
-# 140. Chapter Summary
+## 140. Chapter Summary
 
 This chapter covered the practical security side of cryptography:
 
@@ -3503,9 +3503,9 @@ The central principle is:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 12 – Modern Cryptography & Post-Quantum Cryptography
+### Chapter 12 – Modern Cryptography & Post-Quantum Cryptography
 
 The final chapter will bring the Cryptography section into modern and future-facing security.
 

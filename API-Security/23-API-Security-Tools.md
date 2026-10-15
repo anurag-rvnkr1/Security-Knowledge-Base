@@ -1,6 +1,6 @@
 # 23 - API Security Tools
 
-# Introduction
+## Introduction
 
 Modern API security relies on a combination of specialized tools that support every phase of the API lifecycle—from design and development to testing, deployment, monitoring, and incident response.
 
@@ -47,7 +47,7 @@ Secure APIs
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -62,7 +62,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# API Security Tool Categories
+## API Security Tool Categories
 
 API security tools generally fall into the following categories:
 
@@ -84,7 +84,7 @@ API security tools generally fall into the following categories:
 
 ---
 
-# Enterprise API Security Stack
+## Enterprise API Security Stack
 
 ```
                   Developers
@@ -134,7 +134,7 @@ API security tools generally fall into the following categories:
 
 ---
 
-# API Discovery Tools
+## API Discovery Tools
 
 API discovery identifies known, unknown, shadow, and deprecated APIs.
 
@@ -149,7 +149,7 @@ Common capabilities
 
 ---
 
-# Discovery Workflow
+## Discovery Workflow
 
 ```
 Network
@@ -179,7 +179,7 @@ Maintaining an accurate API inventory is foundational to API security.
 
 ---
 
-# API Documentation Tools
+## API Documentation Tools
 
 Documentation platforms help maintain consistent API definitions.
 
@@ -200,7 +200,7 @@ Benefits
 
 ---
 
-# API Client Tools
+## API Client Tools
 
 API clients support secure development and testing.
 
@@ -232,7 +232,7 @@ Response
 
 ---
 
-# HTTP Proxy Tools
+## HTTP Proxy Tools
 
 Intercepting proxies enable detailed inspection of API traffic.
 
@@ -266,7 +266,7 @@ These tools are invaluable during authorized penetration testing and debugging.
 
 ---
 
-# Traffic Analysis Tools
+## Traffic Analysis Tools
 
 Traffic analysis platforms help understand API communications.
 
@@ -281,7 +281,7 @@ Review
 
 ---
 
-# Packet Analysis Tools
+## Packet Analysis Tools
 
 Packet analyzers provide low-level visibility into network communication.
 
@@ -297,7 +297,7 @@ Packet analysis complements application-layer logging.
 
 ---
 
-# API Testing Tools
+## API Testing Tools
 
 Testing platforms support
 
@@ -311,7 +311,7 @@ Automation improves repeatability and consistency.
 
 ---
 
-# Security Testing Tools
+## Security Testing Tools
 
 Security assessment platforms commonly assist with
 
@@ -326,7 +326,7 @@ Automated results should always be manually verified before reporting.
 
 ---
 
-# API Fuzzing Tools
+## API Fuzzing Tools
 
 Fuzzing platforms automate
 
@@ -359,7 +359,7 @@ Analysis
 
 ---
 
-# Load Testing Tools
+## Load Testing Tools
 
 Load testing evaluates API behavior under expected and peak demand.
 
@@ -376,7 +376,7 @@ Load testing is distinct from security testing but supports resilience assessmen
 
 ---
 
-# Contract Testing Tools
+## Contract Testing Tools
 
 Contract testing verifies implementation consistency.
 
@@ -405,7 +405,7 @@ Benefits
 
 ---
 
-# Static Analysis Tools
+## Static Analysis Tools
 
 Static Application Security Testing (SAST) reviews source code without executing it.
 
@@ -421,7 +421,7 @@ SAST is most effective early in development.
 
 ---
 
-# Dynamic Analysis Tools
+## Dynamic Analysis Tools
 
 Dynamic Application Security Testing (DAST) evaluates running applications.
 
@@ -437,7 +437,7 @@ DAST complements SAST by observing deployed applications.
 
 ---
 
-# Software Composition Analysis (SCA)
+## Software Composition Analysis (SCA)
 
 SCA identifies risks within third-party libraries.
 
@@ -452,7 +452,7 @@ Keeping dependencies current reduces attack surface.
 
 ---
 
-# Secret Scanning Tools
+## Secret Scanning Tools
 
 Secret scanning helps identify accidentally exposed credentials.
 
@@ -468,7 +468,7 @@ Secrets should never be committed to source repositories.
 
 ---
 
-# Container Security Tools
+## Container Security Tools
 
 Container security platforms assess
 
@@ -483,7 +483,7 @@ Container security should begin during image creation.
 
 ---
 
-# Kubernetes Security Tools
+## Kubernetes Security Tools
 
 Evaluate
 
@@ -498,7 +498,7 @@ Kubernetes security tools improve visibility across containerized APIs.
 
 ---
 
-# Cloud Security Tools
+## Cloud Security Tools
 
 Review cloud environments for
 
@@ -513,7 +513,7 @@ Cloud-native APIs require continuous configuration monitoring.
 
 ---
 
-# API Gateway Platforms
+## API Gateway Platforms
 
 API gateways provide centralized control.
 
@@ -546,7 +546,7 @@ Responses
 
 ---
 
-# Web Application Firewalls (WAF)
+## Web Application Firewalls (WAF)
 
 WAF platforms inspect incoming requests before they reach backend services.
 
@@ -563,7 +563,7 @@ WAFs complement—not replace—secure API design.
 
 ---
 
-# Runtime API Protection
+## Runtime API Protection
 
 Runtime platforms monitor production traffic.
 
@@ -578,7 +578,7 @@ Capabilities
 
 ---
 
-# Monitoring Platforms
+## Monitoring Platforms
 
 Monitor
 
@@ -593,7 +593,7 @@ Continuous monitoring supports operational reliability and security.
 
 ---
 
-# Logging Platforms
+## Logging Platforms
 
 Recommended logs
 
@@ -610,7 +610,7 @@ Logs should be structured, timestamped, and protected against unauthorized modif
 
 ---
 
-# SIEM Platforms
+## SIEM Platforms
 
 Security Information and Event Management platforms provide
 
@@ -643,7 +643,7 @@ SOC
 
 ---
 
-# SOAR Platforms
+## SOAR Platforms
 
 Security Orchestration, Automation, and Response platforms extend SIEM capabilities.
 
@@ -660,7 +660,7 @@ SOAR improves operational efficiency for Security Operations Centers.
 
 ---
 
-# Tool Selection Criteria
+## Tool Selection Criteria
 
 When selecting API security tools, consider
 
@@ -678,7 +678,7 @@ When selecting API security tools, consider
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -720,7 +720,7 @@ Security tools should be integrated throughout the software development lifecycl
 
 ---
 
-# Enterprise API Security Workflow
+## Enterprise API Security Workflow
 
 ```
 Design
@@ -772,7 +772,7 @@ SOC
 
 ---
 
-# Best Practices
+## Best Practices
 
 Architecture
 
@@ -792,7 +792,7 @@ Operations
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid
 
@@ -806,7 +806,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective API security requires a layered ecosystem of complementary tools.
 - Discovery, testing, monitoring, and runtime protection are equally important.
@@ -816,7 +816,7 @@ Avoid
 
 ---
 
-# API Security Tool Comparison
+## API Security Tool Comparison
 
 Selecting the right API security tool depends on the organization's maturity, architecture, regulatory requirements, and security objectives.
 
@@ -824,7 +824,7 @@ No single platform addresses every security requirement.
 
 ---
 
-# Security Tool Matrix
+## Security Tool Matrix
 
 | Tool Category | Primary Purpose | SDLC Phase | Automation | Runtime Support |
 |---------------|-----------------|------------|------------|-----------------|
@@ -844,7 +844,7 @@ No single platform addresses every security requirement.
 
 ---
 
-# API Discovery Workflow
+## API Discovery Workflow
 
 ```
 Internet
@@ -874,7 +874,7 @@ A continuously updated API inventory reduces the likelihood of unmanaged or forg
 
 ---
 
-# Security Testing Workflow
+## Security Testing Workflow
 
 ```
 Developer
@@ -912,7 +912,7 @@ Security validation should occur throughout the development lifecycle rather tha
 
 ---
 
-# Runtime Protection Workflow
+## Runtime Protection Workflow
 
 ```
 Client
@@ -946,7 +946,7 @@ Layered runtime controls improve resilience against both accidental misuse and m
 
 ---
 
-# Enterprise API Security Architecture
+## Enterprise API Security Architecture
 
 ```
                    Developers
@@ -1020,7 +1020,7 @@ Layered runtime controls improve resilience against both accidental misuse and m
 
 ---
 
-# Secure Development Toolchain
+## Secure Development Toolchain
 
 Every API should ideally pass through multiple automated quality gates.
 
@@ -1068,7 +1068,7 @@ Each stage reduces the likelihood of vulnerabilities reaching production.
 
 ---
 
-# API Discovery Best Practices
+## API Discovery Best Practices
 
 Maintain visibility into:
 
@@ -1084,7 +1084,7 @@ Review inventories regularly to ensure they reflect the current environment.
 
 ---
 
-# API Gateway Best Practices
+## API Gateway Best Practices
 
 Recommended controls include:
 
@@ -1101,7 +1101,7 @@ The gateway should enforce policy consistently while keeping backend services fo
 
 ---
 
-# Logging Best Practices
+## Logging Best Practices
 
 Security-relevant events should include:
 
@@ -1119,7 +1119,7 @@ Avoid logging secrets, passwords, or sensitive tokens.
 
 ---
 
-# Monitoring Best Practices
+## Monitoring Best Practices
 
 Continuously monitor:
 
@@ -1136,7 +1136,7 @@ Trend analysis helps identify operational and security issues early.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 High-value API detections include:
 
@@ -1153,7 +1153,7 @@ High-value API detections include:
 
 ---
 
-# Example Detection Pipeline
+## Example Detection Pipeline
 
 ```
 API Gateway
@@ -1185,7 +1185,7 @@ SOC Investigation
 
 ---
 
-# SIEM Data Sources
+## SIEM Data Sources
 
 A mature API security program typically ingests telemetry from:
 
@@ -1204,9 +1204,9 @@ Correlating events across multiple sources provides richer investigative context
 
 ---
 
-# Sample Correlation Rules
+## Sample Correlation Rules
 
-## Rule 1 – Authentication Abuse
+### Rule 1 – Authentication Abuse
 
 ```
 100 Failed Logins
@@ -1226,7 +1226,7 @@ Possible Account Compromise
 
 ---
 
-## Rule 2 – Object Enumeration
+### Rule 2 – Object Enumeration
 
 ```
 Sequential IDs
@@ -1246,7 +1246,7 @@ Potential BOLA Enumeration
 
 ---
 
-## Rule 3 – Deprecated API Usage
+### Rule 3 – Deprecated API Usage
 
 ```
 Deprecated Endpoint
@@ -1266,7 +1266,7 @@ Security Review
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 Track metrics such as:
 
@@ -1285,7 +1285,7 @@ These metrics help evaluate both security posture and operational maturity.
 
 ---
 
-# Hands-on Lab 1 – Build an API Inventory
+## Hands-on Lab 1 – Build an API Inventory
 
 **Objective**
 
@@ -1307,7 +1307,7 @@ Create a structured inventory of authorized APIs.
 
 ---
 
-# Hands-on Lab 2 – Gateway Policy Review
+## Hands-on Lab 2 – Gateway Policy Review
 
 **Objective**
 
@@ -1329,7 +1329,7 @@ Review centralized API security controls.
 
 ---
 
-# Hands-on Lab 3 – Detection Rule Validation
+## Hands-on Lab 3 – Detection Rule Validation
 
 **Objective**
 
@@ -1351,9 +1351,9 @@ Evaluate API monitoring effectiveness.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Missing API Inventory Entries
+### Missing API Inventory Entries
 
 Possible causes
 
@@ -1364,7 +1364,7 @@ Possible causes
 
 ---
 
-## Security Tests Produce Inconsistent Results
+### Security Tests Produce Inconsistent Results
 
 Possible causes
 
@@ -1375,7 +1375,7 @@ Possible causes
 
 ---
 
-## Runtime Alerts Are Missing
+### Runtime Alerts Are Missing
 
 Possible causes
 
@@ -1386,7 +1386,7 @@ Possible causes
 
 ---
 
-## Gateway Policies Are Not Enforced
+### Gateway Policies Are Not Enforced
 
 Possible causes
 
@@ -1397,7 +1397,7 @@ Possible causes
 
 ---
 
-## Excessive False Positives
+### Excessive False Positives
 
 Possible causes
 
@@ -1408,9 +1408,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. Why is API discovery important?
 2. What is the role of an API Gateway?
@@ -1425,7 +1425,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. How would you design a secure API toolchain?
 12. Which controls belong at the API Gateway versus the backend service?
@@ -1440,7 +1440,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1472,7 +1472,7 @@ A SOC receives thousands of API-related alerts every day, but very few represent
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we explored the API security tooling ecosystem across development, testing, deployment, monitoring, and incident response.
 
@@ -1495,7 +1495,7 @@ A successful API security program relies on multiple integrated tools working to
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1511,16 +1511,16 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - OpenAPI Specification
 - OWASP API Security Top 10
 - OWASP ASVS
 - NIST Secure Software Development Framework (SSDF)
 
-## Further Reading
+### Further Reading
 
 - MITRE ATT&CK Framework
 - OWASP Cheat Sheet Series
@@ -1528,7 +1528,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 24 – Secure API Development**
 

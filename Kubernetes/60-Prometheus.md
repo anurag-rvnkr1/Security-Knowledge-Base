@@ -50,7 +50,7 @@ Grafana / Alerts
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -124,7 +124,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Prometheus?
+## What Is Prometheus?
 
 Prometheus is a monitoring platform that stores metrics as time-series data.
 
@@ -161,7 +161,7 @@ with values collected over time:
 
 ---
 
-# Why Prometheus?
+## Why Prometheus?
 
 Prometheus provides:
 
@@ -186,7 +186,7 @@ Infrastructure Monitoring
 
 ---
 
-# Prometheus Architecture
+## Prometheus Architecture
 
 A simplified architecture:
 
@@ -220,7 +220,7 @@ A simplified architecture:
 
 ---
 
-# Core Prometheus Components
+## Core Prometheus Components
 
 Important components include:
 
@@ -236,7 +236,7 @@ Alerting Integration
 
 ---
 
-# Prometheus Server
+## Prometheus Server
 
 The Prometheus server performs several tasks:
 
@@ -250,7 +250,7 @@ Execute PromQL
 
 ---
 
-# Pull-Based Monitoring
+## Pull-Based Monitoring
 
 Prometheus commonly uses a pull model.
 
@@ -282,9 +282,9 @@ Prometheus
 
 ---
 
-# Pull vs Push
+## Pull vs Push
 
-## Pull
+### Pull
 
 ```text
 Prometheus
@@ -294,7 +294,7 @@ Target
 
 Prometheus decides when to collect metrics.
 
-## Push
+### Push
 
 ```text
 Application
@@ -308,7 +308,7 @@ Prometheus primarily uses pull-based collection, although Pushgateway exists for
 
 ---
 
-# Why Pull?
+## Why Pull?
 
 Pull-based collection makes it easier for Prometheus to:
 
@@ -321,7 +321,7 @@ Inspect Scrape Health
 
 ---
 
-# Metrics Endpoint
+## Metrics Endpoint
 
 Applications commonly expose:
 
@@ -339,7 +339,7 @@ http_requests_total{method="GET",status="200"} 1520
 
 ---
 
-# Prometheus Text Format
+## Prometheus Text Format
 
 A basic metric:
 
@@ -358,7 +358,7 @@ requests_total{
 
 ---
 
-# Metric Names
+## Metric Names
 
 Metric names should describe what is measured.
 
@@ -374,7 +374,7 @@ Good metric names make queries easier to understand.
 
 ---
 
-# Labels
+## Labels
 
 Labels add dimensions to metrics.
 
@@ -396,7 +396,7 @@ status="500"
 
 ---
 
-# Labels vs Metric Names
+## Labels vs Metric Names
 
 Instead of creating:
 
@@ -425,7 +425,7 @@ Labels provide dimensions without creating many metric names.
 
 ---
 
-# Metric Types
+## Metric Types
 
 Prometheus commonly supports:
 
@@ -438,7 +438,7 @@ Summary
 
 ---
 
-# Counter
+## Counter
 
 A Counter represents a value that generally increases.
 
@@ -464,7 +464,7 @@ It can reset when the application restarts.
 
 ---
 
-# Counter Example
+## Counter Example
 
 ```text
 http_requests_total{
@@ -480,7 +480,7 @@ rate(http_requests_total[5m])
 
 ---
 
-# Gauge
+## Gauge
 
 A Gauge represents a value that can increase or decrease.
 
@@ -511,7 +511,7 @@ It can become:
 
 ---
 
-# Histogram
+## Histogram
 
 A Histogram measures observations across configurable buckets.
 
@@ -531,7 +531,7 @@ http_request_duration_seconds_bucket
 
 ---
 
-# Histogram Structure
+## Histogram Structure
 
 A Histogram generates metrics such as:
 
@@ -551,7 +551,7 @@ http_request_duration_seconds_bucket
 
 ---
 
-# Histogram Buckets
+## Histogram Buckets
 
 Example:
 
@@ -573,7 +573,7 @@ Requests ≤ 5s
 
 ---
 
-# Histogram Quantiles
+## Histogram Quantiles
 
 Prometheus can estimate quantiles using:
 
@@ -594,7 +594,7 @@ This estimates the 95th percentile latency.
 
 ---
 
-# Summary
+## Summary
 
 A Summary calculates quantiles on the client side and exposes:
 
@@ -610,7 +610,7 @@ Histograms are generally more useful when observations need to be aggregated acr
 
 ---
 
-# Prometheus Time-Series Database
+## Prometheus Time-Series Database
 
 Prometheus stores time-series data locally in its TSDB.
 
@@ -630,7 +630,7 @@ form a time series.
 
 ---
 
-# Example Time Series
+## Example Time Series
 
 ```text
 http_requests_total{
@@ -650,7 +650,7 @@ Values:
 
 ---
 
-# Prometheus Storage
+## Prometheus Storage
 
 Prometheus stores samples locally on disk.
 
@@ -666,7 +666,7 @@ Compaction
 
 ---
 
-# Retention
+## Retention
 
 Prometheus can retain data according to configured retention policies.
 
@@ -693,7 +693,7 @@ Business Needs
 
 ---
 
-# Prometheus Is Not Usually Your Only Long-Term Store
+## Prometheus Is Not Usually Your Only Long-Term Store
 
 For very large environments, organizations may use:
 
@@ -710,7 +710,7 @@ depending on architecture.
 
 ---
 
-# Scraping
+## Scraping
 
 Scraping is the process of retrieving metrics from a target.
 
@@ -728,7 +728,7 @@ Metrics Response
 
 ---
 
-# Scrape Interval
+## Scrape Interval
 
 Prometheus can scrape targets at a configured interval.
 
@@ -742,7 +742,7 @@ This means Prometheus attempts to collect metrics approximately every 15 seconds
 
 ---
 
-# Scrape Timeout
+## Scrape Timeout
 
 Example:
 
@@ -754,7 +754,7 @@ The timeout should not exceed the configured scrape interval.
 
 ---
 
-# Targets
+## Targets
 
 A target is an endpoint from which Prometheus collects metrics.
 
@@ -769,7 +769,7 @@ Kubernetes API-related exporters
 
 ---
 
-# Jobs
+## Jobs
 
 Prometheus groups scrape targets into jobs.
 
@@ -785,7 +785,7 @@ A job represents a collection of similar scrape targets.
 
 ---
 
-# Basic Prometheus Configuration
+## Basic Prometheus Configuration
 
 Example:
 
@@ -807,7 +807,7 @@ scrape_configs:
 
 ---
 
-# `prometheus.yml`
+## `prometheus.yml`
 
 The Prometheus configuration file commonly contains:
 
@@ -842,7 +842,7 @@ scrape_configs:
 
 ---
 
-# Static Targets
+## Static Targets
 
 You can define targets manually:
 
@@ -862,7 +862,7 @@ Kubernetes environments usually benefit from service discovery.
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 Kubernetes is dynamic.
 
@@ -882,7 +882,7 @@ Prometheus therefore supports service discovery.
 
 ---
 
-# Kubernetes Service Discovery
+## Kubernetes Service Discovery
 
 Prometheus can discover Kubernetes resources such as:
 
@@ -899,7 +899,7 @@ depending on configuration.
 
 ---
 
-# Kubernetes Discovery Flow
+## Kubernetes Discovery Flow
 
 ```text
 Kubernetes API
@@ -915,7 +915,7 @@ Scraping
 
 ---
 
-# Why Service Discovery Matters
+## Why Service Discovery Matters
 
 Suppose:
 
@@ -933,7 +933,7 @@ Prometheus should automatically discover the new endpoint.
 
 ---
 
-# Exporters
+## Exporters
 
 An exporter exposes metrics for a system that does not natively expose Prometheus metrics.
 
@@ -948,7 +948,7 @@ SNMP Exporter
 
 ---
 
-# Node Exporter
+## Node Exporter
 
 Node Exporter exposes host-level metrics.
 
@@ -977,7 +977,7 @@ Prometheus
 
 ---
 
-# kube-state-metrics
+## kube-state-metrics
 
 kube-state-metrics exposes metrics about Kubernetes object state.
 
@@ -1005,7 +1005,7 @@ Prometheus
 
 ---
 
-# Application Metrics
+## Application Metrics
 
 Applications can expose custom metrics.
 
@@ -1023,7 +1023,7 @@ orders_processed_total
 
 ---
 
-# Custom Application Metrics
+## Custom Application Metrics
 
 Suppose an order service exposes:
 
@@ -1037,7 +1037,7 @@ Prometheus can scrape these metrics.
 
 ---
 
-# PromQL
+## PromQL
 
 PromQL stands for:
 
@@ -1049,7 +1049,7 @@ It is used to query time-series data.
 
 ---
 
-# Basic PromQL
+## Basic PromQL
 
 Query a metric:
 
@@ -1061,7 +1061,7 @@ This returns the current `up` value for discovered targets.
 
 ---
 
-# `up`
+## `up`
 
 Usually:
 
@@ -1078,7 +1078,7 @@ up{job="node-exporter"} 1
 
 ---
 
-# Metric Selector
+## Metric Selector
 
 Example:
 
@@ -1088,7 +1088,7 @@ http_requests_total
 
 ---
 
-# Label Selector
+## Label Selector
 
 Example:
 
@@ -1100,7 +1100,7 @@ http_requests_total{
 
 ---
 
-# Multiple Labels
+## Multiple Labels
 
 ```promql
 http_requests_total{
@@ -1111,7 +1111,7 @@ http_requests_total{
 
 ---
 
-# Negative Match
+## Negative Match
 
 Example:
 
@@ -1123,7 +1123,7 @@ http_requests_total{
 
 ---
 
-# Regex Match
+## Regex Match
 
 Example:
 
@@ -1145,7 +1145,7 @@ This can match:
 
 ---
 
-# Regex Negative Match
+## Regex Negative Match
 
 ```promql
 http_requests_total{
@@ -1155,7 +1155,7 @@ http_requests_total{
 
 ---
 
-# Instant Vector
+## Instant Vector
 
 An instant vector represents a set of time series with a value at a particular point in time.
 
@@ -1167,7 +1167,7 @@ up
 
 ---
 
-# Range Vector
+## Range Vector
 
 A range vector contains samples over a time interval.
 
@@ -1181,7 +1181,7 @@ This represents the last five minutes of samples.
 
 ---
 
-# `rate()`
+## `rate()`
 
 `rate()` calculates the average per-second increase of a counter over a range.
 
@@ -1195,7 +1195,7 @@ This is commonly used for request rates.
 
 ---
 
-# `irate()`
+## `irate()`
 
 `irate()` calculates a per-second rate based on the most recent samples.
 
@@ -1209,7 +1209,7 @@ It can react faster to short-term changes but can be noisier than `rate()`.
 
 ---
 
-# `increase()`
+## `increase()`
 
 `increase()` calculates the total increase in a counter over a range.
 
@@ -1227,7 +1227,7 @@ Approximate number of requests during the last hour
 
 ---
 
-# `sum()`
+## `sum()`
 
 Add values together.
 
@@ -1239,7 +1239,7 @@ sum(http_requests_total)
 
 ---
 
-# `sum by`
+## `sum by`
 
 Group before summing.
 
@@ -1261,7 +1261,7 @@ This can produce:
 
 ---
 
-# `avg()`
+## `avg()`
 
 Calculate average:
 
@@ -1271,7 +1271,7 @@ avg(cpu_usage)
 
 ---
 
-# `max()`
+## `max()`
 
 Find maximum:
 
@@ -1281,7 +1281,7 @@ max(cpu_usage)
 
 ---
 
-# `min()`
+## `min()`
 
 Find minimum:
 
@@ -1291,7 +1291,7 @@ min(cpu_usage)
 
 ---
 
-# Aggregation by Namespace
+## Aggregation by Namespace
 
 Example:
 
@@ -1305,7 +1305,7 @@ This can help compare CPU usage across namespaces.
 
 ---
 
-# Aggregation by Pod
+## Aggregation by Pod
 
 Example:
 
@@ -1317,7 +1317,7 @@ sum by (pod) (
 
 ---
 
-# CPU Usage Query
+## CPU Usage Query
 
 A commonly used query pattern is:
 
@@ -1331,7 +1331,7 @@ The exact metric availability depends on your Kubernetes monitoring stack.
 
 ---
 
-# Memory Usage Query
+## Memory Usage Query
 
 Example:
 
@@ -1345,7 +1345,7 @@ Metric names can vary depending on the metric source and deployment.
 
 ---
 
-# HTTP Request Rate
+## HTTP Request Rate
 
 Example:
 
@@ -1357,7 +1357,7 @@ sum(
 
 ---
 
-# HTTP Error Rate
+## HTTP Error Rate
 
 Example:
 
@@ -1371,7 +1371,7 @@ sum(
 
 ---
 
-# HTTP Error Percentage
+## HTTP Error Percentage
 
 Conceptually:
 
@@ -1384,7 +1384,7 @@ sum(rate(http_requests_total[5m]))
 
 ---
 
-# P95 Latency
+## P95 Latency
 
 For a histogram:
 
@@ -1399,7 +1399,7 @@ histogram_quantile(
 
 ---
 
-# P99 Latency
+## P99 Latency
 
 ```promql
 histogram_quantile(
@@ -1412,7 +1412,7 @@ histogram_quantile(
 
 ---
 
-# Recording Rules
+## Recording Rules
 
 Recording rules precompute frequently used queries.
 
@@ -1435,7 +1435,7 @@ groups:
 
 ---
 
-# Why Recording Rules?
+## Why Recording Rules?
 
 They improve:
 
@@ -1449,7 +1449,7 @@ especially for expensive repeated queries.
 
 ---
 
-# Alerting Rules
+## Alerting Rules
 
 Prometheus can evaluate alert conditions.
 
@@ -1479,7 +1479,7 @@ groups:
 
 ---
 
-# `for`
+## `for`
 
 The `for` field prevents an alert from firing immediately.
 
@@ -1493,7 +1493,7 @@ means the condition must remain true for the specified duration before the alert
 
 ---
 
-# Alert States
+## Alert States
 
 Prometheus alerts can conceptually be:
 
@@ -1505,7 +1505,7 @@ Firing
 
 ---
 
-# Alert Flow
+## Alert Flow
 
 ```text
 Metric
@@ -1523,7 +1523,7 @@ Notification
 
 ---
 
-# Alertmanager
+## Alertmanager
 
 Alertmanager handles alert management.
 
@@ -1539,7 +1539,7 @@ Inhibition
 
 ---
 
-# Alert Grouping
+## Alert Grouping
 
 Suppose:
 
@@ -1559,7 +1559,7 @@ Alertmanager can group related alerts.
 
 ---
 
-# Alert Routing
+## Alert Routing
 
 Different alerts can go to different destinations.
 
@@ -1581,7 +1581,7 @@ SRE
 
 ---
 
-# Silencing
+## Silencing
 
 Silencing temporarily prevents notifications for matching alerts.
 
@@ -1595,7 +1595,7 @@ Known Incidents
 
 ---
 
-# Inhibition
+## Inhibition
 
 Inhibition suppresses lower-priority alerts when a related higher-priority alert is already firing.
 
@@ -1611,7 +1611,7 @@ This reduces alert noise.
 
 ---
 
-# Prometheus Operator
+## Prometheus Operator
 
 The Prometheus Operator simplifies running Prometheus on Kubernetes.
 
@@ -1627,7 +1627,7 @@ Alertmanager
 
 ---
 
-# ServiceMonitor
+## ServiceMonitor
 
 A `ServiceMonitor` tells the Prometheus Operator how to discover and scrape Services.
 
@@ -1643,7 +1643,7 @@ Prometheus
 
 ---
 
-# PodMonitor
+## PodMonitor
 
 A `PodMonitor` allows scraping Pods directly.
 
@@ -1659,7 +1659,7 @@ Prometheus
 
 ---
 
-# PrometheusRule
+## PrometheusRule
 
 A `PrometheusRule` can define:
 
@@ -1672,7 +1672,7 @@ in Kubernetes-native form.
 
 ---
 
-# ServiceMonitor vs PodMonitor
+## ServiceMonitor vs PodMonitor
 
 | Feature | ServiceMonitor | PodMonitor |
 |---|---|---|
@@ -1683,7 +1683,7 @@ in Kubernetes-native form.
 
 ---
 
-# Kubernetes Monitoring Stack
+## Kubernetes Monitoring Stack
 
 A common Kubernetes monitoring stack may contain:
 
@@ -1698,7 +1698,7 @@ Prometheus Operator
 
 ---
 
-# Prometheus and Metrics Server
+## Prometheus and Metrics Server
 
 They serve different purposes.
 
@@ -1724,7 +1724,7 @@ Alerting
 
 ---
 
-# Prometheus Storage
+## Prometheus Storage
 
 Prometheus uses a local time-series database.
 
@@ -1740,7 +1740,7 @@ Compaction
 
 ---
 
-# Retention by Time
+## Retention by Time
 
 Example configuration concept:
 
@@ -1750,7 +1750,7 @@ Example configuration concept:
 
 ---
 
-# Retention by Size
+## Retention by Size
 
 You can also configure storage constraints based on disk usage.
 
@@ -1764,7 +1764,7 @@ Use both time and size controls carefully.
 
 ---
 
-# Remote Write
+## Remote Write
 
 Prometheus can send samples to remote storage systems.
 
@@ -1782,7 +1782,7 @@ Prometheus
 
 ---
 
-# Why Remote Write?
+## Why Remote Write?
 
 Useful for:
 
@@ -1795,7 +1795,7 @@ Large-Scale Storage
 
 ---
 
-# Multi-Cluster Monitoring
+## Multi-Cluster Monitoring
 
 Suppose an organization has:
 
@@ -1815,7 +1815,7 @@ Prometheus C ─┘
 
 ---
 
-# Federation
+## Federation
 
 Prometheus federation allows one Prometheus server to retrieve selected metrics from another Prometheus server.
 
@@ -1833,7 +1833,7 @@ Federation can be useful for hierarchical monitoring architectures.
 
 ---
 
-# High Availability
+## High Availability
 
 A production monitoring system should consider:
 
@@ -1858,7 +1858,7 @@ with appropriate deduplication in the downstream metrics system.
 
 ---
 
-# Prometheus Scaling
+## Prometheus Scaling
 
 Prometheus performance is influenced by:
 
@@ -1873,7 +1873,7 @@ Retention
 
 ---
 
-# Cardinality
+## Cardinality
 
 Cardinality is the number of unique time series.
 
@@ -1905,7 +1905,7 @@ can explode the number of time series.
 
 ---
 
-# High Cardinality Example
+## High Cardinality Example
 
 Bad:
 
@@ -1925,7 +1925,7 @@ This can severely impact Prometheus.
 
 ---
 
-# Good Labels
+## Good Labels
 
 Prefer bounded dimensions:
 
@@ -1940,7 +1940,7 @@ region
 
 ---
 
-# Bad Labels
+## Bad Labels
 
 Avoid unbounded dimensions:
 
@@ -1955,7 +1955,7 @@ timestamp
 
 ---
 
-# Label Explosion
+## Label Explosion
 
 Too many unique label combinations can cause:
 
@@ -1968,7 +1968,7 @@ Prometheus Instability
 
 ---
 
-# Prometheus Security
+## Prometheus Security
 
 Prometheus can expose sensitive infrastructure information.
 
@@ -1983,7 +1983,7 @@ Query APIs
 
 ---
 
-# TLS
+## TLS
 
 Use TLS where required for:
 
@@ -1996,7 +1996,7 @@ Federation
 
 ---
 
-# Authentication
+## Authentication
 
 Prometheus endpoints should not automatically be assumed to be safe because they are internal.
 
@@ -2010,7 +2010,7 @@ Network Controls
 
 ---
 
-# RBAC
+## RBAC
 
 In Kubernetes, Prometheus often needs permissions to discover resources.
 
@@ -2022,7 +2022,7 @@ Least Privilege
 
 ---
 
-# Service Discovery Permissions
+## Service Discovery Permissions
 
 Prometheus may need access to Kubernetes resources such as:
 
@@ -2038,7 +2038,7 @@ depending on the configured discovery mechanism.
 
 ---
 
-# Prometheus and Secrets
+## Prometheus and Secrets
 
 Do not expose:
 
@@ -2053,7 +2053,7 @@ through metrics labels or metric values.
 
 ---
 
-# Never Put Secrets in Labels
+## Never Put Secrets in Labels
 
 Bad:
 
@@ -2065,7 +2065,7 @@ This creates a serious security problem.
 
 ---
 
-# Monitoring Sensitive Information
+## Monitoring Sensitive Information
 
 Be careful with:
 
@@ -2081,7 +2081,7 @@ Metrics should use low-cardinality, non-sensitive dimensions whenever possible.
 
 ---
 
-# Prometheus Performance Optimization
+## Prometheus Performance Optimization
 
 Important strategies:
 
@@ -2097,7 +2097,7 @@ Scale Storage
 
 ---
 
-# Scrape Interval Optimization
+## Scrape Interval Optimization
 
 Suppose:
 
@@ -2121,7 +2121,7 @@ Choose intervals based on monitoring requirements.
 
 ---
 
-# Metric Filtering
+## Metric Filtering
 
 If a target exposes unnecessary metrics, filtering can reduce:
 
@@ -2134,7 +2134,7 @@ Network
 
 ---
 
-# Query Optimization
+## Query Optimization
 
 Avoid unnecessarily expensive queries over huge time ranges.
 
@@ -2158,7 +2158,7 @@ where appropriate.
 
 ---
 
-# Prometheus Troubleshooting
+## Prometheus Troubleshooting
 
 Start with:
 
@@ -2182,7 +2182,7 @@ Prometheus UI
 
 ---
 
-# Target Health
+## Target Health
 
 Targets typically show:
 
@@ -2195,7 +2195,7 @@ A target being DOWN means Prometheus cannot successfully scrape it.
 
 ---
 
-# Common Scrape Failures
+## Common Scrape Failures
 
 Possible causes:
 
@@ -2211,7 +2211,7 @@ Service Discovery Error
 
 ---
 
-# Debugging a DOWN Target
+## Debugging a DOWN Target
 
 Check:
 
@@ -2228,7 +2228,7 @@ Application
 
 ---
 
-# Common Error: Connection Refused
+## Common Error: Connection Refused
 
 Possible causes:
 
@@ -2242,7 +2242,7 @@ Network Policy
 
 ---
 
-# Common Error: Timeout
+## Common Error: Timeout
 
 Possible causes:
 
@@ -2256,7 +2256,7 @@ Wrong Address
 
 ---
 
-# Common Error: 404
+## Common Error: 404
 
 Prometheus may be scraping:
 
@@ -2274,7 +2274,7 @@ Check the metrics path.
 
 ---
 
-# Common Error: 401 / 403
+## Common Error: 401 / 403
 
 Possible causes:
 
@@ -2286,7 +2286,7 @@ RBAC
 
 ---
 
-# Common Error: TLS
+## Common Error: TLS
 
 Potential causes:
 
@@ -2300,7 +2300,7 @@ TLS Configuration
 
 ---
 
-# PromQL Troubleshooting
+## PromQL Troubleshooting
 
 If a query returns no data:
 
@@ -2316,7 +2316,7 @@ Metric Availability
 
 ---
 
-# Query Debugging
+## Query Debugging
 
 Start simple:
 
@@ -2350,7 +2350,7 @@ incrementally.
 
 ---
 
-# Production Prometheus Architecture
+## Production Prometheus Architecture
 
 ```text
                         Kubernetes Cluster
@@ -2380,7 +2380,7 @@ incrementally.
 
 ---
 
-# Multi-Cluster Prometheus Architecture
+## Multi-Cluster Prometheus Architecture
 
 ```text
 Cluster A
@@ -2405,21 +2405,21 @@ Cluster B         │
 
 ---
 
-# Prometheus Best Practices
+## Prometheus Best Practices
 
-### 1. Keep Cardinality Controlled
+#### 1. Keep Cardinality Controlled
 
 Use bounded labels.
 
 ---
 
-### 2. Use Meaningful Metric Names
+#### 2. Use Meaningful Metric Names
 
 Follow consistent naming conventions.
 
 ---
 
-### 3. Prefer Counters for Events
+#### 3. Prefer Counters for Events
 
 Examples:
 
@@ -2431,7 +2431,7 @@ jobs_completed_total
 
 ---
 
-### 4. Use Gauges for Current State
+#### 4. Use Gauges for Current State
 
 Examples:
 
@@ -2443,25 +2443,25 @@ memory_usage
 
 ---
 
-### 5. Use Histograms for Latency
+#### 5. Use Histograms for Latency
 
 Histograms are particularly useful for request duration analysis.
 
 ---
 
-### 6. Use Service Discovery
+#### 6. Use Service Discovery
 
 Avoid static targets in dynamic Kubernetes environments where possible.
 
 ---
 
-### 7. Use Recording Rules
+#### 7. Use Recording Rules
 
 Precompute expensive, frequently used queries.
 
 ---
 
-### 8. Monitor Prometheus
+#### 8. Monitor Prometheus
 
 Monitor:
 
@@ -2477,7 +2477,7 @@ Storage
 
 ---
 
-### 9. Protect Prometheus
+#### 9. Protect Prometheus
 
 Use:
 
@@ -2490,7 +2490,7 @@ Network Controls
 
 ---
 
-### 10. Control Retention
+#### 10. Control Retention
 
 Balance:
 
@@ -2502,13 +2502,13 @@ Performance
 
 ---
 
-### 11. Avoid Secrets in Metrics
+#### 11. Avoid Secrets in Metrics
 
 Never expose secrets through labels or values.
 
 ---
 
-### 12. Test Alerts
+#### 12. Test Alerts
 
 Do not assume an alert works because the rule exists.
 
@@ -2516,7 +2516,7 @@ Generate controlled test conditions.
 
 ---
 
-# Production Checklist
+## Production Checklist
 
 ```text
 ☑ Prometheus deployed
@@ -2545,7 +2545,7 @@ Generate controlled test conditions.
 
 ---
 
-# Hands-on Lab 1 – Install Prometheus
+## Hands-on Lab 1 – Install Prometheus
 
 Deploy Prometheus in a disposable Kubernetes cluster.
 
@@ -2559,7 +2559,7 @@ Then access the Prometheus UI.
 
 ---
 
-# Hands-on Lab 2 – Check Targets
+## Hands-on Lab 2 – Check Targets
 
 Open:
 
@@ -2579,7 +2579,7 @@ for the expected targets.
 
 ---
 
-# Hands-on Lab 3 – Query `up`
+## Hands-on Lab 3 – Query `up`
 
 Run:
 
@@ -2596,7 +2596,7 @@ Unhealthy Targets
 
 ---
 
-# Hands-on Lab 4 – Node Exporter
+## Hands-on Lab 4 – Node Exporter
 
 Deploy Node Exporter.
 
@@ -2610,7 +2610,7 @@ up{job="node-exporter"}
 
 ---
 
-# Hands-on Lab 5 – CPU Metrics
+## Hands-on Lab 5 – CPU Metrics
 
 Find available CPU metrics.
 
@@ -2631,7 +2631,7 @@ mode
 
 ---
 
-# Hands-on Lab 6 – Memory Metrics
+## Hands-on Lab 6 – Memory Metrics
 
 Query an available node memory metric.
 
@@ -2645,7 +2645,7 @@ Compare memory availability across nodes.
 
 ---
 
-# Hands-on Lab 7 – Application Metrics
+## Hands-on Lab 7 – Application Metrics
 
 Create an application exposing:
 
@@ -2657,7 +2657,7 @@ Configure Prometheus to scrape it.
 
 ---
 
-# Hands-on Lab 8 – Request Rate
+## Hands-on Lab 8 – Request Rate
 
 Query:
 
@@ -2669,7 +2669,7 @@ Generate traffic and observe the rate change.
 
 ---
 
-# Hands-on Lab 9 – Error Rate
+## Hands-on Lab 9 – Error Rate
 
 Expose HTTP status labels.
 
@@ -2687,7 +2687,7 @@ Generate controlled failures.
 
 ---
 
-# Hands-on Lab 10 – Histogram Latency
+## Hands-on Lab 10 – Histogram Latency
 
 Create a histogram:
 
@@ -2712,7 +2712,7 @@ Observe P95 latency.
 
 ---
 
-# Hands-on Lab 11 – Recording Rule
+## Hands-on Lab 11 – Recording Rule
 
 Create:
 
@@ -2732,7 +2732,7 @@ Compare it with the original query.
 
 ---
 
-# Hands-on Lab 12 – Alerting Rule
+## Hands-on Lab 12 – Alerting Rule
 
 Create:
 
@@ -2754,7 +2754,7 @@ Firing
 
 ---
 
-# Hands-on Lab 13 – Alertmanager
+## Hands-on Lab 13 – Alertmanager
 
 Connect Prometheus to Alertmanager.
 
@@ -2778,7 +2778,7 @@ Notification
 
 ---
 
-# Hands-on Lab 14 – ServiceMonitor
+## Hands-on Lab 14 – ServiceMonitor
 
 If using Prometheus Operator:
 
@@ -2794,7 +2794,7 @@ Verify that Prometheus discovers and scrapes the application.
 
 ---
 
-# Hands-on Lab 15 – PodMonitor
+## Hands-on Lab 15 – PodMonitor
 
 Create:
 
@@ -2808,7 +2808,7 @@ Verify direct Pod discovery.
 
 ---
 
-# Hands-on Lab 16 – Cardinality Investigation
+## Hands-on Lab 16 – Cardinality Investigation
 
 Find metrics with many unique label combinations.
 
@@ -2830,7 +2830,7 @@ Query Performance
 
 ---
 
-# Hands-on Lab 17 – Prometheus Failure
+## Hands-on Lab 17 – Prometheus Failure
 
 Temporarily stop the Prometheus Pod in a disposable cluster.
 
@@ -2846,7 +2846,7 @@ Restore Prometheus and verify recovery.
 
 ---
 
-# Hands-on Lab 18 – Target Failure
+## Hands-on Lab 18 – Target Failure
 
 Stop a test application.
 
@@ -2866,7 +2866,7 @@ Investigate the target in the Prometheus UI.
 
 ---
 
-# Hands-on Lab 19 – Query Optimization
+## Hands-on Lab 19 – Query Optimization
 
 Create an expensive PromQL query.
 
@@ -2882,7 +2882,7 @@ Compare query performance.
 
 ---
 
-# Hands-on Lab 20 – Production Monitoring Stack
+## Hands-on Lab 20 – Production Monitoring Stack
 
 Build:
 
@@ -2913,9 +2913,9 @@ to create a complete observability environment.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. High Cardinality
+### 1. High Cardinality
 
 Avoid:
 
@@ -2929,13 +2929,13 @@ as labels.
 
 ---
 
-## 2. Using Counters as Gauges
+### 2. Using Counters as Gauges
 
 Do not use a Counter for values that naturally move up and down.
 
 ---
 
-## 3. Forgetting `rate()`
+### 3. Forgetting `rate()`
 
 Counter values alone do not tell you the request rate.
 
@@ -2947,7 +2947,7 @@ rate(counter[5m])
 
 ---
 
-## 4. Overly Complex Queries
+### 4. Overly Complex Queries
 
 Start simple:
 
@@ -2959,43 +2959,43 @@ then gradually add functions and aggregations.
 
 ---
 
-## 5. No Service Discovery
+### 5. No Service Discovery
 
 Static targets become difficult to manage in dynamic Kubernetes environments.
 
 ---
 
-## 6. No Retention Planning
+### 6. No Retention Planning
 
 Prometheus storage can grow rapidly.
 
 ---
 
-## 7. Ignoring Scrape Failures
+### 7. Ignoring Scrape Failures
 
 A target being DOWN means you are missing monitoring data.
 
 ---
 
-## 8. No Alert Testing
+### 8. No Alert Testing
 
 An untested alert is not a reliable alert.
 
 ---
 
-## 9. Exposing Prometheus Publicly
+### 9. Exposing Prometheus Publicly
 
 Prometheus can reveal sensitive infrastructure information.
 
 ---
 
-## 10. Storing Secrets in Metrics
+### 10. Storing Secrets in Metrics
 
 Never expose credentials through metric labels or values.
 
 ---
 
-## 11. Using Extremely Short Scrape Intervals Everywhere
+### 11. Using Extremely Short Scrape Intervals Everywhere
 
 This can unnecessarily increase:
 
@@ -3008,19 +3008,19 @@ Storage
 
 ---
 
-## 12. Using Extremely Long Scrape Intervals
+### 12. Using Extremely Long Scrape Intervals
 
 Important short-lived events may be missed or detected too late.
 
 ---
 
-## 13. No Cardinality Monitoring
+### 13. No Cardinality Monitoring
 
 Metric growth should be monitored.
 
 ---
 
-## 14. Assuming Prometheus Alone Solves Observability
+### 14. Assuming Prometheus Alone Solves Observability
 
 A mature platform also needs:
 
@@ -3032,9 +3032,9 @@ Events
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Prometheus
+### Prometheus
 
 ```text
 Metrics monitoring and alerting platform
@@ -3042,7 +3042,7 @@ Metrics monitoring and alerting platform
 
 ---
 
-## Scraping
+### Scraping
 
 ```text
 Prometheus retrieves metrics from targets
@@ -3050,7 +3050,7 @@ Prometheus retrieves metrics from targets
 
 ---
 
-## Target
+### Target
 
 ```text
 Endpoint from which Prometheus collects metrics
@@ -3058,7 +3058,7 @@ Endpoint from which Prometheus collects metrics
 
 ---
 
-## Exporter
+### Exporter
 
 ```text
 Component that exposes metrics for systems that do not natively expose Prometheus metrics
@@ -3066,7 +3066,7 @@ Component that exposes metrics for systems that do not natively expose Prometheu
 
 ---
 
-## Counter
+### Counter
 
 ```text
 Monotonically increasing event metric
@@ -3074,7 +3074,7 @@ Monotonically increasing event metric
 
 ---
 
-## Gauge
+### Gauge
 
 ```text
 Value that can increase or decrease
@@ -3082,7 +3082,7 @@ Value that can increase or decrease
 
 ---
 
-## Histogram
+### Histogram
 
 ```text
 Distribution of observations using buckets
@@ -3090,7 +3090,7 @@ Distribution of observations using buckets
 
 ---
 
-## Summary
+### Summary
 
 ```text
 Client-side summary/quantile metric type
@@ -3098,7 +3098,7 @@ Client-side summary/quantile metric type
 
 ---
 
-## PromQL
+### PromQL
 
 ```text
 Prometheus Query Language
@@ -3106,7 +3106,7 @@ Prometheus Query Language
 
 ---
 
-## `rate()`
+### `rate()`
 
 ```text
 Average per-second increase of a counter over a range
@@ -3114,7 +3114,7 @@ Average per-second increase of a counter over a range
 
 ---
 
-## `irate()`
+### `irate()`
 
 ```text
 Short-term per-second rate based on recent samples
@@ -3122,7 +3122,7 @@ Short-term per-second rate based on recent samples
 
 ---
 
-## `increase()`
+### `increase()`
 
 ```text
 Total increase of a counter over a range
@@ -3130,7 +3130,7 @@ Total increase of a counter over a range
 
 ---
 
-## Recording Rule
+### Recording Rule
 
 ```text
 Precomputed query result stored as a new time series
@@ -3138,7 +3138,7 @@ Precomputed query result stored as a new time series
 
 ---
 
-## Alerting Rule
+### Alerting Rule
 
 ```text
 Rule that creates an alert when an expression remains true
@@ -3146,7 +3146,7 @@ Rule that creates an alert when an expression remains true
 
 ---
 
-## Alertmanager
+### Alertmanager
 
 ```text
 Groups, routes, deduplicates, silences, and inhibits alerts
@@ -3154,7 +3154,7 @@ Groups, routes, deduplicates, silences, and inhibits alerts
 
 ---
 
-## ServiceMonitor
+### ServiceMonitor
 
 ```text
 Prometheus Operator resource for Service-based scraping
@@ -3162,7 +3162,7 @@ Prometheus Operator resource for Service-based scraping
 
 ---
 
-## PodMonitor
+### PodMonitor
 
 ```text
 Prometheus Operator resource for Pod-based scraping
@@ -3170,7 +3170,7 @@ Prometheus Operator resource for Pod-based scraping
 
 ---
 
-## kube-state-metrics
+### kube-state-metrics
 
 ```text
 Exports Kubernetes object state as metrics
@@ -3178,7 +3178,7 @@ Exports Kubernetes object state as metrics
 
 ---
 
-## Node Exporter
+### Node Exporter
 
 ```text
 Exports host-level metrics
@@ -3186,7 +3186,7 @@ Exports host-level metrics
 
 ---
 
-## Cardinality
+### Cardinality
 
 ```text
 Number of unique time series
@@ -3194,7 +3194,7 @@ Number of unique time series
 
 ---
 
-## Remote Write
+### Remote Write
 
 ```text
 Sends Prometheus samples to a remote metrics system
@@ -3202,7 +3202,7 @@ Sends Prometheus samples to a remote metrics system
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check Prometheus Pods:
 
@@ -3272,7 +3272,7 @@ kubectl get prometheusrule -A
 
 ---
 
-# Important PromQL Queries
+## Important PromQL Queries
 
 Check target health:
 
@@ -3352,9 +3352,9 @@ histogram_quantile(
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Prometheus?
 - Why is Prometheus commonly used with Kubernetes?
@@ -3375,7 +3375,7 @@ histogram_quantile(
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does Prometheus collect metrics?
 - Why does Prometheus use a pull model?
@@ -3397,7 +3397,7 @@ histogram_quantile(
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Prometheus architecture.
 - How does Prometheus service discovery work in Kubernetes?
@@ -3420,13 +3420,13 @@ histogram_quantile(
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > A Prometheus target is DOWN. How would you troubleshoot it?
 
-### Answer
+#### Answer
 
 Start from the target:
 
@@ -3469,13 +3469,13 @@ TLS Error
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Prometheus memory usage is continuously increasing. What would you investigate?
 
-### Answer
+#### Answer
 
 Check:
 
@@ -3499,13 +3499,13 @@ especially from unbounded labels.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > Why should request IDs not be Prometheus labels?
 
-### Answer
+#### Answer
 
 Request IDs are usually high-cardinality and effectively unbounded.
 
@@ -3531,13 +3531,13 @@ Use request IDs in logs/traces instead.
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > How would you calculate HTTP error rate?
 
-### Answer
+#### Answer
 
 For a counter such as:
 
@@ -3566,13 +3566,13 @@ sum(rate(http_requests_total[5m]))
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > What is the difference between `rate()` and `irate()`?
 
-### Answer
+#### Answer
 
 ```text
 rate()
@@ -3592,13 +3592,13 @@ Rate calculated using the most recent samples
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > How would you calculate P95 latency?
 
-### Answer
+#### Answer
 
 If latency is exposed as a Prometheus Histogram:
 
@@ -3615,13 +3615,13 @@ histogram_quantile(
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > What is the difference between Metrics Server and Prometheus?
 
-### Answer
+#### Answer
 
 Metrics Server primarily provides current Kubernetes resource metrics:
 
@@ -3658,13 +3658,13 @@ Alerting Integration
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How would you monitor Prometheus itself?
 
-### Answer
+#### Answer
 
 Monitor:
 
@@ -3695,13 +3695,13 @@ Remote Write Failures
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How would you design Prometheus for multiple Kubernetes clusters?
 
-### Answer
+#### Answer
 
 A possible architecture:
 
@@ -3737,13 +3737,13 @@ depending on scale and operational requirements.
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Why are Histograms often preferred over Summaries for distributed systems?
 
-### Answer
+#### Answer
 
 Histograms expose bucket counts that can be aggregated across instances.
 
@@ -3763,7 +3763,7 @@ Summaries calculate quantiles on individual instances, which makes aggregation o
 
 ---
 
-# Production Prometheus Architecture
+## Production Prometheus Architecture
 
 ```text
                               Kubernetes
@@ -3793,7 +3793,7 @@ Summaries calculate quantiles on individual instances, which makes aggregation o
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Prometheus is a powerful metrics monitoring platform built around time-series data.
 
@@ -3923,9 +3923,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 61 – Grafana
+## Chapter 61 – Grafana
 
 Topics will include:
 

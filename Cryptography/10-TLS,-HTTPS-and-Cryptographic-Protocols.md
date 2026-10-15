@@ -69,7 +69,7 @@ Key Management
 
 ---
 
-# 1. What is TLS?
+## 1. What is TLS?
 
 **TLS** stands for:
 
@@ -111,29 +111,29 @@ HTTPS
 
 ---
 
-# 2. What Does TLS Provide?
+## 2. What Does TLS Provide?
 
 TLS primarily provides:
 
-### Confidentiality
+#### Confidentiality
 
 Attackers should not be able to read protected application data.
 
-### Integrity
+#### Integrity
 
 Attackers should not be able to modify protected data without detection.
 
-### Authentication
+#### Authentication
 
 The client can authenticate the server using certificates and the public-key infrastructure.
 
-### Key Establishment
+#### Key Establishment
 
 The parties establish session keys for encrypted communication.
 
 ---
 
-# 3. What TLS Does Not Automatically Provide
+## 3. What TLS Does Not Automatically Provide
 
 TLS does not guarantee:
 
@@ -165,7 +165,7 @@ TLS protects the network connection, not the application's internal logic.
 
 ---
 
-# 4. SSL vs TLS
+## 4. SSL vs TLS
 
 SSL stands for:
 
@@ -193,7 +193,7 @@ or other obsolete protocol versions.
 
 ---
 
-# 5. TLS Versions
+## 5. TLS Versions
 
 Historically:
 
@@ -212,7 +212,7 @@ TLS 1.3 significantly simplified the protocol and removed many legacy cryptograp
 
 ---
 
-# 6. HTTPS
+## 6. HTTPS
 
 HTTPS means:
 
@@ -240,7 +240,7 @@ HTTP Request
 
 ---
 
-# 7. HTTPS URL
+## 7. HTTPS URL
 
 Example:
 
@@ -268,7 +268,7 @@ HTTPS commonly uses:
 
 ---
 
-# 8. TLS Handshake
+## 8. TLS Handshake
 
 The TLS handshake establishes the security parameters for the connection.
 
@@ -297,7 +297,7 @@ The actual protocol messages and extensions are more detailed, but this is the c
 
 ---
 
-# 9. ClientHello
+## 9. ClientHello
 
 The client begins the TLS handshake with:
 
@@ -320,7 +320,7 @@ ALPN
 
 ---
 
-# 10. TLS Randomness
+## 10. TLS Randomness
 
 TLS uses cryptographic randomness in several places.
 
@@ -338,7 +338,7 @@ Modern TLS uses a carefully defined key schedule rather than simply concatenatin
 
 ---
 
-# 11. SNI
+## 11. SNI
 
 **SNI** stands for:
 
@@ -358,7 +358,7 @@ This is important when a server hosts multiple HTTPS sites.
 
 ---
 
-# 12. Why SNI Exists
+## 12. Why SNI Exists
 
 A single server can host:
 
@@ -375,7 +375,7 @@ SNI helps provide this information.
 
 ---
 
-# 13. ALPN
+## 13. ALPN
 
 **ALPN** stands for:
 
@@ -401,7 +401,7 @@ ALPN → h2
 
 ---
 
-# 14. TLS Cipher Suite
+## 14. TLS Cipher Suite
 
 A TLS cipher suite historically represented a combination of:
 
@@ -424,7 +424,7 @@ TLS_CHACHA20_POLY1305_SHA256
 
 ---
 
-# 15. TLS 1.3 Cipher Suite
+## 15. TLS 1.3 Cipher Suite
 
 In TLS 1.3, the cipher suite primarily identifies:
 
@@ -454,7 +454,7 @@ It does not mean RSA key exchange.
 
 ---
 
-# 16. TLS 1.2 Cipher Suite
+## 16. TLS 1.2 Cipher Suite
 
 TLS 1.2 cipher-suite names can contain more components.
 
@@ -486,7 +486,7 @@ Hash / PRF-related use
 
 ---
 
-# 17. ECDHE in TLS
+## 17. ECDHE in TLS
 
 Modern TLS commonly uses:
 
@@ -510,7 +510,7 @@ Shared Secret
 
 ---
 
-# 18. Why ECDHE?
+## 18. Why ECDHE?
 
 ECDHE provides:
 
@@ -526,7 +526,7 @@ This is one reason it is widely used in modern TLS deployments.
 
 ---
 
-# 19. TLS Authentication
+## 19. TLS Authentication
 
 The server typically authenticates itself using:
 
@@ -542,7 +542,7 @@ The private key remains secret.
 
 ---
 
-# 20. Certificate Concept
+## 20. Certificate Concept
 
 A certificate can be viewed conceptually as:
 
@@ -572,7 +572,7 @@ CA Signature
 
 ---
 
-# 21. Certificate Authority
+## 21. Certificate Authority
 
 **CA** stands for:
 
@@ -596,7 +596,7 @@ Clients verify the CA signature using a trusted CA certificate.
 
 ---
 
-# 22. PKI
+## 22. PKI
 
 **PKI** stands for:
 
@@ -619,7 +619,7 @@ Certificate Lifecycle
 
 ---
 
-# 23. Certificate Chain
+## 23. Certificate Chain
 
 A typical certificate chain:
 
@@ -643,7 +643,7 @@ The client already has trusted root certificates in its trust store.
 
 ---
 
-# 24. Root CA
+## 24. Root CA
 
 A root CA is a trust anchor.
 
@@ -661,7 +661,7 @@ Root CA private keys require extremely strong protection.
 
 ---
 
-# 25. Intermediate CA
+## 25. Intermediate CA
 
 Intermediate CAs reduce the need to use the root CA private key for routine certificate issuance.
 
@@ -679,7 +679,7 @@ This limits exposure of the root key.
 
 ---
 
-# 26. Certificate Validation
+## 26. Certificate Validation
 
 A client should validate:
 
@@ -698,7 +698,7 @@ depending on the protocol and implementation.
 
 ---
 
-# 27. Hostname Verification
+## 27. Hostname Verification
 
 Suppose the user connects to:
 
@@ -718,7 +718,7 @@ Hostname verification prevents many impersonation attacks.
 
 ---
 
-# 28. Certificate Expiration
+## 28. Certificate Expiration
 
 Certificates have validity periods:
 
@@ -739,7 +739,7 @@ A properly configured client should reject an expired certificate unless an expl
 
 ---
 
-# 29. Certificate Key Usage
+## 29. Certificate Key Usage
 
 Certificates may specify permitted uses.
 
@@ -757,7 +757,7 @@ Incorrect key usage can indicate a configuration problem.
 
 ---
 
-# 30. Certificate Revocation
+## 30. Certificate Revocation
 
 A certificate may need to be revoked before expiration.
 
@@ -780,7 +780,7 @@ OCSP Stapling
 
 ---
 
-# 31. CRL
+## 31. CRL
 
 **CRL** stands for:
 
@@ -794,7 +794,7 @@ A client can retrieve and check the relevant list.
 
 ---
 
-# 32. OCSP
+## 32. OCSP
 
 **OCSP** stands for:
 
@@ -818,7 +818,7 @@ Good / Revoked / Unknown
 
 ---
 
-# 33. OCSP Stapling
+## 33. OCSP Stapling
 
 With OCSP stapling:
 
@@ -834,7 +834,7 @@ This can reduce client-side OCSP requests and improve privacy/performance.
 
 ---
 
-# 34. TLS Key Exchange
+## 34. TLS Key Exchange
 
 A simplified modern flow:
 
@@ -857,7 +857,7 @@ The shared secret is then processed through the TLS key schedule.
 
 ---
 
-# 35. TLS Key Schedule
+## 35. TLS Key Schedule
 
 TLS 1.3 uses HKDF-based key derivation.
 
@@ -879,7 +879,7 @@ This provides structured key separation.
 
 ---
 
-# 36. TLS 1.3 Secrets
+## 36. TLS 1.3 Secrets
 
 A simplified conceptual hierarchy:
 
@@ -897,7 +897,7 @@ The exact derivation includes transcript hashes and protocol-defined labels.
 
 ---
 
-# 37. Transcript Hash
+## 37. Transcript Hash
 
 TLS maintains a cryptographic representation of the handshake transcript.
 
@@ -919,7 +919,7 @@ This helps bind the handshake messages to the resulting cryptographic state.
 
 ---
 
-# 38. CertificateVerify
+## 38. CertificateVerify
 
 The server proves possession of its private key by signing appropriate handshake data.
 
@@ -939,7 +939,7 @@ The client verifies using the public key in the certificate.
 
 ---
 
-# 39. Finished Message
+## 39. Finished Message
 
 The `Finished` message provides cryptographic confirmation that the handshake has been correctly established.
 
@@ -957,7 +957,7 @@ Finished Verification
 
 ---
 
-# 40. Application Traffic Keys
+## 40. Application Traffic Keys
 
 After the handshake:
 
@@ -975,7 +975,7 @@ These keys protect application data.
 
 ---
 
-# 41. TLS Record Protection
+## 41. TLS Record Protection
 
 Application data is protected using an authenticated encryption construction.
 
@@ -1002,7 +1002,7 @@ Encrypted TLS Record
 
 ---
 
-# 42. TLS Nonces
+## 42. TLS Nonces
 
 TLS AEAD encryption requires correctly constructed nonces.
 
@@ -1017,7 +1017,7 @@ under the same traffic key.
 
 ---
 
-# 43. TLS Sequence Numbers
+## 43. TLS Sequence Numbers
 
 TLS maintains record sequence numbers.
 
@@ -1035,7 +1035,7 @@ These contribute to nonce construction and help maintain record ordering.
 
 ---
 
-# 44. TLS Record Integrity
+## 44. TLS Record Integrity
 
 An attacker modifying encrypted TLS records should cause authentication failure.
 
@@ -1053,7 +1053,7 @@ Connection / Record Rejected
 
 ---
 
-# 45. TLS 1.3 Removes Legacy Cryptography
+## 45. TLS 1.3 Removes Legacy Cryptography
 
 TLS 1.3 removed or eliminated many older mechanisms, including:
 
@@ -1068,7 +1068,7 @@ This significantly reduces the protocol's attack surface.
 
 ---
 
-# 46. Forward Secrecy in TLS
+## 46. Forward Secrecy in TLS
 
 With:
 
@@ -1090,7 +1090,7 @@ should not by itself reveal previously captured session traffic.
 
 ---
 
-# 47. Static RSA Problem
+## 47. Static RSA Problem
 
 Historically:
 
@@ -1110,7 +1110,7 @@ This is why ephemeral key exchange is preferred.
 
 ---
 
-# 48. TLS 1.2 vs TLS 1.3
+## 48. TLS 1.2 vs TLS 1.3
 
 | Feature | TLS 1.2 | TLS 1.3 |
 |---|---|---|
@@ -1125,7 +1125,7 @@ This is why ephemeral key exchange is preferred.
 
 ---
 
-# 49. TLS 1.3 Handshake
+## 49. TLS 1.3 Handshake
 
 Simplified:
 
@@ -1154,7 +1154,7 @@ The exact messages depend on the selected authentication and protocol features.
 
 ---
 
-# 50. TLS 1.3 1-RTT
+## 50. TLS 1.3 1-RTT
 
 A normal TLS 1.3 handshake can establish secure application traffic in approximately one round trip after the initial connection setup.
 
@@ -1178,7 +1178,7 @@ Secure Application Data
 
 ---
 
-# 51. 0-RTT
+## 51. 0-RTT
 
 TLS 1.3 supports:
 
@@ -1198,7 +1198,7 @@ Therefore sensitive non-idempotent operations should be handled carefully.
 
 ---
 
-# 52. Replay Attacks and 0-RTT
+## 52. Replay Attacks and 0-RTT
 
 Suppose a client sends:
 
@@ -1222,7 +1222,7 @@ requires careful design.
 
 ---
 
-# 53. TLS Session Resumption
+## 53. TLS Session Resumption
 
 TLS supports mechanisms that allow a client to reconnect efficiently.
 
@@ -1248,7 +1248,7 @@ Network Overhead
 
 ---
 
-# 54. PSK in TLS
+## 54. PSK in TLS
 
 TLS 1.3 uses PSK mechanisms for:
 
@@ -1261,7 +1261,7 @@ The PSK can be combined with fresh key exchange to provide strong security prope
 
 ---
 
-# 55. mTLS
+## 55. mTLS
 
 **mTLS** means:
 
@@ -1285,7 +1285,7 @@ Both sides authenticate using certificates.
 
 ---
 
-# 56. mTLS Architecture
+## 56. mTLS Architecture
 
 ```text
 Client Certificate
@@ -1303,7 +1303,7 @@ Both parties validate the other's certificate.
 
 ---
 
-# 57. mTLS Use Cases
+## 57. mTLS Use Cases
 
 Common use cases:
 
@@ -1319,7 +1319,7 @@ Internal Infrastructure
 
 ---
 
-# 58. HTTPS and HTTP/2
+## 58. HTTPS and HTTP/2
 
 HTTP/2 commonly runs over TLS.
 
@@ -1341,7 +1341,7 @@ TCP
 
 ---
 
-# 59. HTTP/3
+## 59. HTTP/3
 
 HTTP/3 uses:
 
@@ -1371,7 +1371,7 @@ UDP
 
 ---
 
-# 60. TLS and DNS
+## 60. TLS and DNS
 
 TLS protects communication after the endpoint connection is established.
 
@@ -1389,7 +1389,7 @@ These solve different problems.
 
 ---
 
-# 61. HSTS
+## 61. HSTS
 
 **HSTS** stands for:
 
@@ -1407,7 +1407,7 @@ Strict-Transport-Security: max-age=31536000
 
 ---
 
-# 62. HSTS Purpose
+## 62. HSTS Purpose
 
 Without HSTS:
 
@@ -1431,7 +1431,7 @@ HSTS helps protect against protocol downgrade and SSL-stripping attacks.
 
 ---
 
-# 63. HSTS Preload
+## 63. HSTS Preload
 
 Some browsers maintain preload lists of domains that should always use HTTPS.
 
@@ -1441,7 +1441,7 @@ However, organizations should understand the operational consequences before req
 
 ---
 
-# 64. SSL Stripping
+## 64. SSL Stripping
 
 An attacker may attempt:
 
@@ -1459,7 +1459,7 @@ HSTS mitigates this class of downgrade attack.
 
 ---
 
-# 65. TLS MITM Attack
+## 65. TLS MITM Attack
 
 A TLS MITM attacker attempts:
 
@@ -1477,7 +1477,7 @@ Proper certificate validation makes ordinary MITM attacks significantly harder.
 
 ---
 
-# 66. Certificate Validation Failure
+## 66. Certificate Validation Failure
 
 Bad client behavior:
 
@@ -1500,7 +1500,7 @@ It can expose the application to MITM attacks.
 
 ---
 
-# 67. Dangerous TLS Configuration
+## 67. Dangerous TLS Configuration
 
 Examples:
 
@@ -1517,7 +1517,7 @@ Weak Private-Key Protection
 
 ---
 
-# 68. Certificate Warning Bypass
+## 68. Certificate Warning Bypass
 
 Users sometimes click:
 
@@ -1533,7 +1533,7 @@ Security awareness and browser configuration therefore matter.
 
 ---
 
-# 69. Certificate Pinning
+## 69. Certificate Pinning
 
 Certificate pinning means restricting which certificates or public keys a client will trust for a specific service.
 
@@ -1555,7 +1555,7 @@ Connection Rejected
 
 ---
 
-# 70. Pinning Risks
+## 70. Pinning Risks
 
 Poorly implemented pinning can cause:
 
@@ -1571,7 +1571,7 @@ Applications should carefully evaluate whether pinning is appropriate.
 
 ---
 
-# 71. TLS Downgrade Attack
+## 71. TLS Downgrade Attack
 
 An attacker may attempt:
 
@@ -1597,7 +1597,7 @@ Servers should also disable obsolete versions.
 
 ---
 
-# 72. Weak Cipher Suites
+## 72. Weak Cipher Suites
 
 Avoid legacy configurations involving:
 
@@ -1614,7 +1614,7 @@ Exact acceptable configurations depend on protocol version and environment.
 
 ---
 
-# 73. Anonymous Cipher Suites
+## 73. Anonymous Cipher Suites
 
 Anonymous key exchange does not authenticate the communicating parties.
 
@@ -1624,7 +1624,7 @@ Avoid anonymous TLS configurations.
 
 ---
 
-# 74. TLS Compression
+## 74. TLS Compression
 
 TLS compression has historically contributed to attacks such as:
 
@@ -1636,7 +1636,7 @@ Modern secure configurations avoid vulnerable compression mechanisms.
 
 ---
 
-# 75. BEAST
+## 75. BEAST
 
 BEAST was an attack against certain older TLS 1.0 CBC configurations.
 
@@ -1654,7 +1654,7 @@ Modern TLS configurations avoid these legacy weaknesses.
 
 ---
 
-# 76. POODLE
+## 76. POODLE
 
 POODLE exploited weaknesses in SSL 3.0's CBC handling.
 
@@ -1666,7 +1666,7 @@ Disable obsolete SSL/TLS protocols.
 
 ---
 
-# 77. Heartbleed
+## 77. Heartbleed
 
 Heartbleed was a vulnerability in OpenSSL's implementation of the TLS heartbeat extension.
 
@@ -1690,7 +1690,7 @@ Lesson:
 
 ---
 
-# 78. TLS Security Layers
+## 78. TLS Security Layers
 
 Think of TLS security as:
 
@@ -1712,7 +1712,7 @@ A failure in any layer can undermine security.
 
 ---
 
-# 79. OpenSSL
+## 79. OpenSSL
 
 OpenSSL is widely used for TLS and cryptographic operations.
 
@@ -1730,7 +1730,7 @@ openssl s_client -connect example.com:443
 
 ---
 
-# 80. Inspect a TLS Certificate
+## 80. Inspect a TLS Certificate
 
 Example:
 
@@ -1749,7 +1749,7 @@ Server Certificate
 
 ---
 
-# 81. Check TLS Version
+## 81. Check TLS Version
 
 With OpenSSL, you can explicitly test protocol versions.
 
@@ -1773,7 +1773,7 @@ Only use such testing against systems you are authorized to assess.
 
 ---
 
-# 82. Check Certificate Details
+## 82. Check Certificate Details
 
 You can extract certificate information:
 
@@ -1797,7 +1797,7 @@ Signature Algorithm
 
 ---
 
-# 83. SAN
+## 83. SAN
 
 **SAN** stands for:
 
@@ -1817,7 +1817,7 @@ DNS:api.example.com
 
 ---
 
-# 84. TLS Testing Tools
+## 84. TLS Testing Tools
 
 Authorized security assessments may use:
 
@@ -1841,7 +1841,7 @@ Configuration Issues
 
 ---
 
-# 85. Nmap TLS Enumeration
+## 85. Nmap TLS Enumeration
 
 Example:
 
@@ -1855,7 +1855,7 @@ Only perform this against systems for which you have authorization.
 
 ---
 
-# 86. testssl.sh
+## 86. testssl.sh
 
 `testssl.sh` is a command-line tool for testing TLS configurations.
 
@@ -1873,7 +1873,7 @@ Use it only for authorized testing.
 
 ---
 
-# 87. Wireshark TLS Analysis
+## 87. Wireshark TLS Analysis
 
 Wireshark can help analyze:
 
@@ -1890,7 +1890,7 @@ Even when application data is encrypted, handshake metadata remains useful for t
 
 ---
 
-# 88. TLS Alerts
+## 88. TLS Alerts
 
 TLS can generate alert messages for problems such as:
 
@@ -1908,7 +1908,7 @@ These can be useful during incident investigation.
 
 ---
 
-# 89. TLS Alert Analysis
+## 89. TLS Alert Analysis
 
 Repeated:
 
@@ -1944,7 +1944,7 @@ Always correlate with other logs.
 
 ---
 
-# 90. TLS Logging
+## 90. TLS Logging
 
 Servers can log:
 
@@ -1968,7 +1968,7 @@ Authentication Tokens
 
 ---
 
-# 91. SOC Monitoring – TLS
+## 91. SOC Monitoring – TLS
 
 SOC teams can monitor:
 
@@ -1987,7 +1987,7 @@ Unusual TLS Destinations
 
 ---
 
-# 92. JA3 and TLS Fingerprinting
+## 92. JA3 and TLS Fingerprinting
 
 TLS clients can produce characteristic handshake patterns.
 
@@ -2012,7 +2012,7 @@ Fingerprints are indicators, not definitive identities.
 
 ---
 
-# 93. TLS and Malware Detection
+## 93. TLS and Malware Detection
 
 Malware may communicate through TLS to hide payloads.
 
@@ -2032,7 +2032,7 @@ Process
 
 ---
 
-# 94. TLS and Data Exfiltration
+## 94. TLS and Data Exfiltration
 
 Encrypted traffic can hide:
 
@@ -2059,7 +2059,7 @@ to detect suspicious behavior.
 
 ---
 
-# 95. Certificate Transparency
+## 95. Certificate Transparency
 
 Certificate Transparency (CT) provides publicly auditable logs of certificate issuance.
 
@@ -2079,7 +2079,7 @@ Security Alert
 
 ---
 
-# 96. Certificate Mis-Issuance
+## 96. Certificate Mis-Issuance
 
 Suppose:
 
@@ -2102,7 +2102,7 @@ Security teams should investigate unexpected certificates.
 
 ---
 
-# 97. TLS Private Key Protection
+## 97. TLS Private Key Protection
 
 The server's private key is extremely sensitive.
 
@@ -2120,7 +2120,7 @@ Modern TLS with ephemeral key exchange limits the impact on previously captured 
 
 ---
 
-# 98. TLS Key Rotation
+## 98. TLS Key Rotation
 
 Certificate/key rotation should be planned.
 
@@ -2144,7 +2144,7 @@ Avoid abrupt rotation without compatibility planning.
 
 ---
 
-# 99. TLS Certificate Automation
+## 99. TLS Certificate Automation
 
 Large organizations may automate:
 
@@ -2162,7 +2162,7 @@ But the automation pipeline itself becomes security-sensitive.
 
 ---
 
-# 100. Certificate Expiration Incident
+## 100. Certificate Expiration Incident
 
 If:
 
@@ -2182,7 +2182,7 @@ well before the expiration date.
 
 ---
 
-# 101. TLS Hardening Checklist
+## 101. TLS Hardening Checklist
 
 ```text
 ☐ Use TLS 1.3 where supported
@@ -2205,7 +2205,7 @@ well before the expiration date.
 
 ---
 
-# 102. TLS VAPT Checklist
+## 102. TLS VAPT Checklist
 
 ```text
 ☐ TLS version enumeration
@@ -2232,7 +2232,7 @@ well before the expiration date.
 
 ---
 
-# 103. HTTPS Application Testing
+## 103. HTTPS Application Testing
 
 Remember:
 
@@ -2262,22 +2262,22 @@ TLS should never be considered a replacement for application security.
 
 ---
 
-# 104. Common TLS Misconfigurations
+## 104. Common TLS Misconfigurations
 
-### 1. Disabled Certificate Validation
+#### 1. Disabled Certificate Validation
 
 ```text
 verify=False
 ```
 
-### 2. Old Protocol Versions
+#### 2. Old Protocol Versions
 
 ```text
 TLS 1.0
 TLS 1.1
 ```
 
-### 3. Weak Cipher Suites
+#### 3. Weak Cipher Suites
 
 ```text
 RC4
@@ -2286,13 +2286,13 @@ NULL
 EXPORT
 ```
 
-### 4. Expired Certificates
+#### 4. Expired Certificates
 
 ```text
 Certificate Expired
 ```
 
-### 5. Hostname Mismatch
+#### 5. Hostname Mismatch
 
 ```text
 Requested Host ≠ Certificate Identity
@@ -2300,7 +2300,7 @@ Requested Host ≠ Certificate Identity
 
 ---
 
-# 105. Common TLS Attacks
+## 105. Common TLS Attacks
 
 ```text
 MITM
@@ -2317,7 +2317,7 @@ Private-Key Compromise
 
 ---
 
-# 106. TLS Security Architecture
+## 106. TLS Security Architecture
 
 A production HTTPS system may look like:
 
@@ -2352,7 +2352,7 @@ depending on architecture.
 
 ---
 
-# 107. TLS Termination
+## 107. TLS Termination
 
 TLS termination means:
 
@@ -2376,7 +2376,7 @@ to protect traffic between internal components.
 
 ---
 
-# 108. End-to-End Encryption
+## 108. End-to-End Encryption
 
 In some architectures:
 
@@ -2398,7 +2398,7 @@ True end-to-end confidentiality depends on where encryption is terminated and wh
 
 ---
 
-# 109. mTLS in Microservices
+## 109. mTLS in Microservices
 
 Example:
 
@@ -2418,7 +2418,7 @@ This provides strong service identity when correctly configured.
 
 ---
 
-# 110. TLS and Zero Trust
+## 110. TLS and Zero Trust
 
 TLS/mTLS can support zero-trust architectures by providing:
 
@@ -2434,7 +2434,7 @@ But TLS alone does not implement complete Zero Trust.
 
 ---
 
-# 111. TLS Certificate Pinning in Mobile Apps
+## 111. TLS Certificate Pinning in Mobile Apps
 
 Mobile applications may use pinning in specific threat models.
 
@@ -2457,7 +2457,7 @@ Pinning should be designed with a safe rotation strategy.
 
 ---
 
-# 112. TLS and Reverse Proxies
+## 112. TLS and Reverse Proxies
 
 A common deployment:
 
@@ -2484,7 +2484,7 @@ Trust Boundaries
 
 ---
 
-# 113. X-Forwarded-Proto
+## 113. X-Forwarded-Proto
 
 Applications behind a TLS terminator may receive:
 
@@ -2498,7 +2498,7 @@ But forwarded headers must only be trusted from trusted proxies.
 
 ---
 
-# 114. Secure Cookie + HTTPS
+## 114. Secure Cookie + HTTPS
 
 Authentication cookies should commonly use:
 
@@ -2520,7 +2520,7 @@ Cookie flags provide additional browser-side protections.
 
 ---
 
-# 115. HTTPS and HSTS Together
+## 115. HTTPS and HSTS Together
 
 A strong web deployment can use:
 
@@ -2538,7 +2538,7 @@ These controls address different parts of web transport security.
 
 ---
 
-# 116. TLS Handshake Mental Model
+## 116. TLS Handshake Mental Model
 
 Remember:
 
@@ -2562,7 +2562,7 @@ Remember:
 
 ---
 
-# 117. Full TLS 1.3 Conceptual Flow
+## 117. Full TLS 1.3 Conceptual Flow
 
 ```text
 CLIENT                                      SERVER
@@ -2596,7 +2596,7 @@ Encrypted Application Data
 
 ---
 
-# 118. TLS Security Formula
+## 118. TLS Security Formula
 
 A useful mental model:
 
@@ -2618,7 +2618,7 @@ Secure Implementation
 
 ---
 
-# 119. Practical Lab – OpenSSL
+## 119. Practical Lab – OpenSSL
 
 Inspect a public HTTPS server:
 
@@ -2642,7 +2642,7 @@ Only use authorized targets for security testing.
 
 ---
 
-# 120. Practical Lab – TLS 1.3
+## 120. Practical Lab – TLS 1.3
 
 Test:
 
@@ -2662,7 +2662,7 @@ Cipher
 
 ---
 
-# 121. Practical Lab – Certificate
+## 121. Practical Lab – Certificate
 
 Extract certificate details:
 
@@ -2688,7 +2688,7 @@ Signature Algorithm
 
 ---
 
-# 122. Practical Lab – Nmap
+## 122. Practical Lab – Nmap
 
 Against an authorized host:
 
@@ -2709,7 +2709,7 @@ Key Exchange
 
 ---
 
-# 123. Practical Lab – Browser Certificate
+## 123. Practical Lab – Browser Certificate
 
 In a browser:
 
@@ -2733,7 +2733,7 @@ Signature
 
 ---
 
-# 124. Practical Lab – Wireshark
+## 124. Practical Lab – Wireshark
 
 Capture traffic to an authorized test server.
 
@@ -2757,7 +2757,7 @@ Observe that application data is not visible as plaintext when TLS is functionin
 
 ---
 
-# 125. Practical Lab – Test Certificate Validation
+## 125. Practical Lab – Test Certificate Validation
 
 Create a development environment with:
 
@@ -2784,7 +2784,7 @@ Do not disable verification simply to make the connection work.
 
 ---
 
-# 126. Practical Lab – HSTS
+## 126. Practical Lab – HSTS
 
 Inspect a site's headers:
 
@@ -2800,7 +2800,7 @@ Strict-Transport-Security
 
 ---
 
-# 127. Practical Lab – HTTP Redirect
+## 127. Practical Lab – HTTP Redirect
 
 Test:
 
@@ -2818,7 +2818,7 @@ A redirect alone is not equivalent to HSTS, but it is useful as part of HTTPS de
 
 ---
 
-# 128. Practical Lab – TLS Certificate Expiration
+## 128. Practical Lab – TLS Certificate Expiration
 
 Extract:
 
@@ -2838,123 +2838,123 @@ notAfter=
 
 ---
 
-# 129. Interview Questions
+## 129. Interview Questions
 
-## What is TLS?
+### What is TLS?
 
 TLS is a cryptographic protocol that provides secure communication through encryption, integrity protection, authentication, and secure key establishment.
 
 ---
 
-## What is HTTPS?
+### What is HTTPS?
 
 HTTPS is HTTP transmitted over TLS.
 
 ---
 
-## What is the difference between SSL and TLS?
+### What is the difference between SSL and TLS?
 
 SSL is the predecessor to TLS and is obsolete. Modern systems should use TLS.
 
 ---
 
-## What is the latest major TLS version?
+### What is the latest major TLS version?
 
 TLS 1.3 is the current major TLS version in widespread use.
 
 ---
 
-## What is ECDHE?
+### What is ECDHE?
 
 ECDHE is Elliptic Curve Diffie-Hellman Ephemeral and provides ephemeral key agreement with forward secrecy.
 
 ---
 
-## Why does TLS use certificates?
+### Why does TLS use certificates?
 
 Certificates bind a server's identity to its public key through a trusted PKI.
 
 ---
 
-## What is a CA?
+### What is a CA?
 
 A Certificate Authority issues and signs certificates within a PKI trust model.
 
 ---
 
-## What is a certificate chain?
+### What is a certificate chain?
 
 A certificate chain links a server certificate through intermediate CA certificates to a trusted root CA.
 
 ---
 
-## What is SNI?
+### What is SNI?
 
 Server Name Indication allows the client to indicate the hostname it wants during the TLS handshake.
 
 ---
 
-## What is ALPN?
+### What is ALPN?
 
 ALPN allows negotiation of the application protocol carried over TLS, such as HTTP/2.
 
 ---
 
-## What is forward secrecy?
+### What is forward secrecy?
 
 Forward secrecy prevents compromise of a long-term private key from revealing previously captured session traffic, assuming ephemeral key exchange and other protocol assumptions hold.
 
 ---
 
-## Why is ECDHE preferred over static RSA key exchange?
+### Why is ECDHE preferred over static RSA key exchange?
 
 ECDHE provides forward secrecy and is part of modern TLS designs, while static RSA key transport does not provide forward secrecy.
 
 ---
 
-## What is mTLS?
+### What is mTLS?
 
 Mutual TLS authenticates both the server and client using certificates.
 
 ---
 
-## What is HSTS?
+### What is HSTS?
 
 HSTS instructs compatible browsers to use HTTPS rather than HTTP for a domain.
 
 ---
 
-## What is certificate pinning?
+### What is certificate pinning?
 
 Pinning restricts a client to expected certificate or public-key identities for a service.
 
 ---
 
-## What is OCSP?
+### What is OCSP?
 
 OCSP is a protocol for obtaining the revocation status of certificates.
 
 ---
 
-## What is OCSP stapling?
+### What is OCSP stapling?
 
 The server provides a CA-signed OCSP response during TLS instead of requiring each client to query the OCSP responder directly.
 
 ---
 
-## What is TLS 0-RTT?
+### What is TLS 0-RTT?
 
 TLS 1.3 0-RTT allows certain early application data during session resumption, but that data has replay considerations.
 
 ---
 
-## Why can 0-RTT be dangerous?
+### Why can 0-RTT be dangerous?
 
 An attacker may replay early data, so applications should avoid using 0-RTT for operations where replay could cause harm unless appropriate replay protections exist.
 
 ---
 
-## What does TLS protect?
+### What does TLS protect?
 
 TLS protects the communication channel:
 
@@ -2968,25 +2968,25 @@ It does not automatically protect the application from vulnerabilities such as S
 
 ---
 
-## What is a TLS downgrade attack?
+### What is a TLS downgrade attack?
 
 An attacker attempts to force the connection to use an older protocol or weaker cryptographic configuration.
 
 ---
 
-## What is SSL stripping?
+### What is SSL stripping?
 
 An attacker attempts to prevent a user from reaching HTTPS and instead keeps the connection on HTTP.
 
 ---
 
-## How does HSTS help?
+### How does HSTS help?
 
 HSTS tells the browser to use HTTPS, reducing the opportunity for HTTP downgrade attacks.
 
 ---
 
-# 130. Quick Revision Table
+## 130. Quick Revision Table
 
 | Concept | Key Idea |
 |---|---|
@@ -3015,7 +3015,7 @@ HSTS tells the browser to use HTTPS, reducing the opportunity for HTTP downgrade
 
 ---
 
-# 131. Key Takeaways
+## 131. Key Takeaways
 
 ```text
 1. TLS protects communication over untrusted networks.
@@ -3081,7 +3081,7 @@ HSTS tells the browser to use HTTPS, reducing the opportunity for HTTP downgrade
 
 ---
 
-# 132. Chapter Summary
+## 132. Chapter Summary
 
 This chapter connected the cryptographic primitives from previous chapters to real-world secure communication.
 
@@ -3191,9 +3191,9 @@ The most important principle is:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 11 – Applied Cryptography & Common Attacks
+### Chapter 11 – Applied Cryptography & Common Attacks
 
 The next chapter will move from cryptographic theory and protocols into **real-world security failures and attacks**:
 

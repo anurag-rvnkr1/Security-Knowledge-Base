@@ -1,10 +1,10 @@
 # 11-Sites-and-Replication.md
 
-# Part 1 — Active Directory Sites and Replication Fundamentals
+## Part 1 — Active Directory Sites and Replication Fundamentals
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -23,7 +23,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Many beginners believe that Active Directory is organized only by Domains.
 
@@ -53,7 +53,7 @@ The physical structure is called **Active Directory Sites**.
 
 ---
 
-# Why Sites Exist
+## Why Sites Exist
 
 Imagine a company having offices in:
 
@@ -111,7 +111,7 @@ Sites solve this problem.
 
 ---
 
-# What is an Active Directory Site?
+## What is an Active Directory Site?
 
 A Site is
 
@@ -132,7 +132,7 @@ NOT based on
 
 ---
 
-# Important Concept
+## Important Concept
 
 Domains represent
 
@@ -156,7 +156,7 @@ Replication optimization
 
 ---
 
-# Domain vs Site
+## Domain vs Site
 
 | Domain | Site |
 |---------|------|
@@ -169,7 +169,7 @@ Replication optimization
 
 ---
 
-# Simple Example
+## Simple Example
 
 Company
 
@@ -209,7 +209,7 @@ Different physical locations.
 
 ---
 
-# Visual Representation
+## Visual Representation
 
 ```
                  Forest
@@ -240,7 +240,7 @@ Different Sites
 
 ---
 
-# Site Components
+## Site Components
 
 Every Site contains
 
@@ -254,7 +254,7 @@ Every Site contains
 
 ---
 
-# Site Object
+## Site Object
 
 Inside Active Directory,
 
@@ -271,7 +271,7 @@ It contains:
 
 ---
 
-# What is a Subnet?
+## What is a Subnet?
 
 A subnet defines
 
@@ -313,7 +313,7 @@ This computer belongs to Bangalore Site
 
 ---
 
-# Why IP Subnets Matter
+## Why IP Subnets Matter
 
 Without subnet definitions
 
@@ -335,7 +335,7 @@ WAN traffic
 
 ---
 
-# Site Awareness
+## Site Awareness
 
 One major feature of AD
 
@@ -362,7 +362,7 @@ This dramatically improves performance.
 
 ---
 
-# Example Authentication
+## Example Authentication
 
 Employee
 
@@ -400,7 +400,7 @@ Fast authentication.
 
 ---
 
-# Site-aware Services
+## Site-aware Services
 
 Active Directory automatically selects nearby
 
@@ -416,7 +416,7 @@ This minimizes WAN utilization.
 
 ---
 
-# Logical Structure vs Physical Structure
+## Logical Structure vs Physical Structure
 
 ```
 Logical
@@ -458,7 +458,7 @@ These structures are independent but work together.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company
 
@@ -510,7 +510,7 @@ Authentication stays local, while replication synchronizes changes across sites.
 
 ---
 
-# Benefits of Using Sites
+## Benefits of Using Sites
 
 - Faster user logons
 - Lower WAN traffic
@@ -523,9 +523,9 @@ Authentication stays local, while replication synchronizes changes across sites.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
-### Myth
+#### Myth
 
 Each office requires a separate domain.
 
@@ -539,7 +539,7 @@ Multiple sites.
 
 ---
 
-### Myth
+#### Myth
 
 Sites replace Organizational Units.
 
@@ -551,7 +551,7 @@ Sites organize networks.
 
 ---
 
-### Myth
+#### Myth
 
 Sites are security boundaries.
 
@@ -563,7 +563,7 @@ Sites are network topology objects.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Poorly configured Sites can lead to:
 
@@ -578,13 +578,13 @@ Proper Site design ensures that security-related changes—such as account locko
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore Sites and Services.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -592,7 +592,7 @@ Open:
 Active Directory Sites and Services
 ```
 
-### Step 2
+#### Step 2
 
 Expand:
 
@@ -606,7 +606,7 @@ Observe:
 - Servers
 - NTDS Settings
 
-### Step 3
+#### Step 3
 
 Create a new Site:
 
@@ -614,7 +614,7 @@ Create a new Site:
 Bangalore
 ```
 
-### Step 4
+#### Step 4
 
 Create an IP Subnet:
 
@@ -624,19 +624,19 @@ Create an IP Subnet:
 
 Associate it with the Bangalore Site.
 
-### Step 5
+#### Step 5
 
 Move a test Domain Controller into the new Site (in a lab environment).
 
-### Step 6
+#### Step 6
 
 Verify site membership and observe how clients discover the nearest Domain Controller.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Beginner
+#### Beginner
 
 **Q1:** What is an Active Directory Site?
 
@@ -668,7 +668,7 @@ Verify site membership and observe how clients discover the nearest Domain Contr
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design Sites around physical WAN topology.
 - Define every production subnet in Active Directory.
@@ -679,7 +679,7 @@ Verify site membership and observe how clients discover the nearest Domain Contr
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Leaving everything in **Default-First-Site-Name**.
 - Forgetting to create subnet objects.
@@ -689,7 +689,7 @@ Verify site membership and observe how clients discover the nearest Domain Contr
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Sites model the **physical** structure of an Active Directory environment.
 - Domains model the **logical and security** structure.
@@ -699,13 +699,13 @@ Verify site membership and observe how clients discover the nearest Domain Contr
 
 ---
 
-# 11-Sites-and-Replication.md
+## 11-Sites-and-Replication.md
 
-# Part 2 — Replication Topology, KCC, ISTG and Connection Objects
+## Part 2 — Replication Topology, KCC, ISTG and Connection Objects
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -724,7 +724,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 One of the biggest strengths of Active Directory is that **every writable Domain Controller can accept changes**.
 
@@ -746,7 +746,7 @@ The answer is:
 
 ---
 
-# What is Replication Topology?
+## What is Replication Topology?
 
 Replication Topology is the communication path used by Domain Controllers to exchange directory updates.
 
@@ -766,7 +766,7 @@ Each connection is carefully selected to minimize network traffic while ensuring
 
 ---
 
-# Why Not Full Mesh?
+## Why Not Full Mesh?
 
 Imagine:
 
@@ -791,7 +791,7 @@ Instead, Active Directory builds an optimized topology automatically.
 
 ---
 
-# Multi-Master Replication
+## Multi-Master Replication
 
 Every writable Domain Controller can:
 
@@ -828,7 +828,7 @@ No Domain Controller is permanently designated as the only write server for norm
 
 ---
 
-# Pull Replication
+## Pull Replication
 
 Active Directory uses a **Pull Model**.
 
@@ -857,7 +857,7 @@ Advantages
 
 ---
 
-# High-Level Replication Process
+## High-Level Replication Process
 
 ```
 Administrator
@@ -897,7 +897,7 @@ Entire Forest Updated
 
 ---
 
-# Intra-Site Replication
+## Intra-Site Replication
 
 Intra-site replication occurs **within the same Active Directory Site**.
 
@@ -924,7 +924,7 @@ Because of this assumption, Active Directory replicates aggressively.
 
 ---
 
-# Characteristics of Intra-Site Replication
+## Characteristics of Intra-Site Replication
 
 - Frequent synchronization
 - Automatic change notifications
@@ -934,7 +934,7 @@ Because of this assumption, Active Directory replicates aggressively.
 
 ---
 
-# Change Notification
+## Change Notification
 
 Suppose:
 
@@ -970,7 +970,7 @@ This greatly reduces the time required for updates to spread within a Site.
 
 ---
 
-# Example
+## Example
 
 ```
 DC1
@@ -1006,7 +1006,7 @@ This notification chain continues until all replication partners are synchronize
 
 ---
 
-# Inter-Site Replication
+## Inter-Site Replication
 
 Inter-site replication occurs between **different Active Directory Sites**.
 
@@ -1039,7 +1039,7 @@ Therefore Active Directory behaves differently.
 
 ---
 
-# Characteristics of Inter-Site Replication
+## Characteristics of Inter-Site Replication
 
 - Scheduled replication
 - WAN optimized
@@ -1049,7 +1049,7 @@ Therefore Active Directory behaves differently.
 
 ---
 
-# Intra-site vs Inter-site
+## Intra-site vs Inter-site
 
 | Feature | Intra-site | Inter-site |
 |----------|------------|------------|
@@ -1062,7 +1062,7 @@ Therefore Active Directory behaves differently.
 
 ---
 
-# Knowledge Consistency Checker (KCC)
+## Knowledge Consistency Checker (KCC)
 
 The **Knowledge Consistency Checker (KCC)** is a built-in Active Directory service that automatically creates and maintains replication topology.
 
@@ -1070,7 +1070,7 @@ Without KCC, administrators would have to manually configure thousands of replic
 
 ---
 
-# Responsibilities of KCC
+## Responsibilities of KCC
 
 The KCC:
 
@@ -1085,7 +1085,7 @@ Think of the KCC as an intelligent network planner for Active Directory replicat
 
 ---
 
-# KCC Example
+## KCC Example
 
 Suppose a new Domain Controller is added.
 
@@ -1113,7 +1113,7 @@ KCC automatically determines where DC4 should connect to ensure efficient replic
 
 ---
 
-# Connection Objects
+## Connection Objects
 
 A Connection Object defines **which Domain Controller replicates from which partner**.
 
@@ -1137,7 +1137,7 @@ Most Connection Objects are generated automatically by the KCC.
 
 ---
 
-# Manual Connection Objects
+## Manual Connection Objects
 
 Administrators can also create manual connections.
 
@@ -1152,7 +1152,7 @@ However, manual connections should be used only when necessary, as they override
 
 ---
 
-# Replication Partners
+## Replication Partners
 
 Every Domain Controller has one or more replication partners.
 
@@ -1178,7 +1178,7 @@ If one partner becomes unavailable, the KCC recalculates the topology to maintai
 
 ---
 
-# Inter-Site Topology Generator (ISTG)
+## Inter-Site Topology Generator (ISTG)
 
 When replication spans multiple Sites, another component becomes responsible.
 
@@ -1190,7 +1190,7 @@ The ISTG operates within each Site.
 
 ---
 
-# Responsibilities of ISTG
+## Responsibilities of ISTG
 
 The ISTG:
 
@@ -1204,7 +1204,7 @@ Think of the ISTG as the "cross-site traffic manager."
 
 ---
 
-# KCC vs ISTG
+## KCC vs ISTG
 
 | Component | Responsibility |
 |------------|----------------|
@@ -1215,7 +1215,7 @@ Both work together to provide efficient replication across the enterprise.
 
 ---
 
-# Automatic Topology Example
+## Automatic Topology Example
 
 ```
            Bangalore
@@ -1246,7 +1246,7 @@ Both work together to provide efficient replication across the enterprise.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational organization has:
 
@@ -1262,7 +1262,7 @@ The administrators only need to define Sites, subnets, and Site Links—the repl
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Healthy replication is essential for security.
 
@@ -1277,13 +1277,13 @@ Monitoring replication health helps ensure that security changes are applied con
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore replication topology.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -1291,7 +1291,7 @@ Open:
 Active Directory Sites and Services
 ```
 
-### Step 2
+#### Step 2
 
 Expand:
 
@@ -1315,15 +1315,15 @@ Servers
 NTDS Settings
 ```
 
-### Step 3
+#### Step 3
 
 View automatically created Connection Objects.
 
-### Step 4
+#### Step 4
 
 Identify replication partners for each Domain Controller.
 
-### Step 5
+#### Step 5
 
 Use:
 
@@ -1335,39 +1335,39 @@ Review inbound replication partners and verify successful replication.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is the KCC?
+#### Q1: What is the KCC?
 
 **Answer:** The Knowledge Consistency Checker automatically builds and maintains the Active Directory replication topology.
 
 ---
 
-### Q2: What is the ISTG?
+#### Q2: What is the ISTG?
 
 **Answer:** The Inter-Site Topology Generator creates and manages replication topology between different Active Directory Sites.
 
 ---
 
-### Q3: Does Active Directory use Push or Pull replication?
+#### Q3: Does Active Directory use Push or Pull replication?
 
 **Answer:** Pull replication. A Domain Controller requests updates from its replication partners.
 
 ---
 
-### Q4: Why is inter-site replication scheduled?
+#### Q4: Why is inter-site replication scheduled?
 
 **Answer:** To optimize WAN bandwidth and reduce unnecessary network traffic.
 
 ---
 
-### Q5: What are Connection Objects?
+#### Q5: What are Connection Objects?
 
 **Answer:** They define replication relationships between Domain Controllers and are typically generated automatically by the KCC.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Allow the KCC to manage topology automatically.
 - Avoid unnecessary manual Connection Objects.
@@ -1377,7 +1377,7 @@ Review inbound replication partners and verify successful replication.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Disabling automatic topology generation.
 - Creating excessive manual replication connections.
@@ -1387,7 +1387,7 @@ Review inbound replication partners and verify successful replication.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory uses **multi-master, pull-based replication**.
 - The **KCC** automatically builds replication topology within a Site.
@@ -1397,13 +1397,13 @@ Review inbound replication partners and verify successful replication.
 
 ---
 
-# 11-Sites-and-Replication.md
+## 11-Sites-and-Replication.md
 
-# Part 3 — Site Links, Site Link Costs, Replication Scheduling and Bridgehead Servers
+## Part 3 — Site Links, Site Link Costs, Replication Scheduling and Bridgehead Servers
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1422,7 +1422,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 In the previous part, we learned that:
 
@@ -1435,7 +1435,7 @@ This is accomplished using **Site Links**.
 
 ---
 
-# What is a Site Link?
+## What is a Site Link?
 
 A **Site Link** represents a logical network connection between two or more Active Directory Sites.
 
@@ -1451,7 +1451,7 @@ Without Site Links, Domain Controllers in different Sites cannot replicate with 
 
 ---
 
-# Simple Example
+## Simple Example
 
 Company Offices:
 
@@ -1483,7 +1483,7 @@ These Site Links tell Active Directory how information should flow.
 
 ---
 
-# Visual Representation
+## Visual Representation
 
 ```
          Bangalore
@@ -1501,7 +1501,7 @@ Replication follows the defined Site Links.
 
 ---
 
-# Site Link Components
+## Site Link Components
 
 Each Site Link contains:
 
@@ -1514,7 +1514,7 @@ Each Site Link contains:
 
 ---
 
-# Transport Protocols
+## Transport Protocols
 
 Historically, Active Directory supported:
 
@@ -1527,7 +1527,7 @@ SMTP is not used for Domain partition replication and is considered obsolete for
 
 ---
 
-# Site Link Cost
+## Site Link Cost
 
 Every Site Link has a **Cost**.
 
@@ -1541,7 +1541,7 @@ Higher Cost = Backup or Less Preferred Route
 
 ---
 
-# Example
+## Example
 
 ```
 Bangalore → Mumbai
@@ -1569,7 +1569,7 @@ The route with Cost 50 is selected.
 
 ---
 
-# Another Example
+## Another Example
 
 ```
            Bangalore
@@ -1587,7 +1587,7 @@ Traffic prefers Mumbai because the Site Link Cost is lower.
 
 ---
 
-# Why Costs Matter
+## Why Costs Matter
 
 Large organizations often have:
 
@@ -1601,7 +1601,7 @@ Site Link Costs help Active Directory choose the most efficient replication path
 
 ---
 
-# Site Link Bridge
+## Site Link Bridge
 
 Suppose:
 
@@ -1630,7 +1630,7 @@ This behavior is called **Site Link Transitivity**.
 
 ---
 
-# Site Link Bridge
+## Site Link Bridge
 
 A Site Link Bridge allows Active Directory to treat multiple Site Links as a continuous replication path.
 
@@ -1666,7 +1666,7 @@ without requiring a direct Site Link between A and C.
 
 ---
 
-# Bridge All Site Links
+## Bridge All Site Links
 
 By default:
 
@@ -1682,7 +1682,7 @@ In highly complex networks, administrators may disable this setting and manually
 
 ---
 
-# When Manual Site Link Bridges Are Used
+## When Manual Site Link Bridges Are Used
 
 Manual bridges are useful when:
 
@@ -1693,7 +1693,7 @@ Manual bridges are useful when:
 
 ---
 
-# Replication Schedule
+## Replication Schedule
 
 Not every organization wants replication 24 hours a day.
 
@@ -1716,7 +1716,7 @@ Replication can therefore be scheduled for:
 
 ---
 
-# Example Schedule
+## Example Schedule
 
 ```
 Monday
@@ -1738,7 +1738,7 @@ Administrators can configure these schedules according to business requirements.
 
 ---
 
-# Replication Interval
+## Replication Interval
 
 In addition to the schedule, Site Links define the **Replication Interval**.
 
@@ -1760,7 +1760,7 @@ Common intervals vary depending on:
 
 ---
 
-# Example Timeline
+## Example Timeline
 
 ```
 08:00
@@ -1788,7 +1788,7 @@ Replication
 
 ---
 
-# Bridgehead Server
+## Bridgehead Server
 
 A **Bridgehead Server** is the Domain Controller responsible for handling replication traffic between Sites.
 
@@ -1820,7 +1820,7 @@ DC2 communicates with another Bridgehead Server in the remote Site.
 
 ---
 
-# Visual Example
+## Visual Example
 
 ```
       Bangalore Site
@@ -1850,7 +1850,7 @@ Local Domain Controllers receive updates through normal intra-site replication.
 
 ---
 
-# Preferred Bridgehead Server
+## Preferred Bridgehead Server
 
 Administrators may specify a **Preferred Bridgehead Server**.
 
@@ -1865,7 +1865,7 @@ If no Preferred Bridgehead is configured, Active Directory automatically selects
 
 ---
 
-# Automatic Selection
+## Automatic Selection
 
 The ISTG evaluates:
 
@@ -1878,7 +1878,7 @@ and selects the most appropriate Bridgehead Server.
 
 ---
 
-# Hub-and-Spoke Topology
+## Hub-and-Spoke Topology
 
 A common enterprise design.
 
@@ -1906,7 +1906,7 @@ Disadvantages:
 
 ---
 
-# Full Mesh Topology
+## Full Mesh Topology
 
 Every Site connects to every other Site.
 
@@ -1937,7 +1937,7 @@ Disadvantages:
 
 ---
 
-# Ring Topology
+## Ring Topology
 
 ```
 A
@@ -1963,7 +1963,7 @@ Often used internally by the KCC for efficient replication with redundancy.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational company has:
 
@@ -1983,7 +1983,7 @@ This design minimizes WAN usage while maintaining directory consistency.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Poor Site Link configuration can result in:
 
@@ -1997,13 +1997,13 @@ Proper Site Link design ensures that security-critical changes are replicated qu
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Configure Site Links.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -2011,7 +2011,7 @@ Open:
 Active Directory Sites and Services
 ```
 
-### Step 2
+#### Step 2
 
 Navigate to:
 
@@ -2023,60 +2023,60 @@ Inter-Site Transports
 IP
 ```
 
-### Step 3
+#### Step 3
 
 View the existing Site Link.
 
-### Step 4
+#### Step 4
 
 Create a new Site Link connecting two lab Sites.
 
-### Step 5
+#### Step 5
 
 Assign:
 
 - Cost = 50
 - Replication Interval = 60 minutes
 
-### Step 6
+#### Step 6
 
 Review the schedule and verify the Site Link configuration.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is a Site Link?
+#### Q1: What is a Site Link?
 
 **Answer:** A Site Link defines the logical WAN connection between Active Directory Sites and controls inter-site replication.
 
 ---
 
-### Q2: What does Site Link Cost represent?
+#### Q2: What does Site Link Cost represent?
 
 **Answer:** It represents the relative preference of one replication path over another. Lower costs are preferred.
 
 ---
 
-### Q3: What is a Bridgehead Server?
+#### Q3: What is a Bridgehead Server?
 
 **Answer:** A Domain Controller selected to handle replication traffic between different Active Directory Sites.
 
 ---
 
-### Q4: What is Site Link Transitivity?
+#### Q4: What is Site Link Transitivity?
 
 **Answer:** It allows replication to flow across connected Site Links without requiring a direct Site Link between every pair of Sites.
 
 ---
 
-### Q5: Can replication be scheduled?
+#### Q5: Can replication be scheduled?
 
 **Answer:** Yes. Administrators can define both replication schedules and intervals for inter-site replication.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Assign Site Link Costs that reflect actual network quality.
 - Schedule replication according to WAN capacity and business needs.
@@ -2086,7 +2086,7 @@ Review the schedule and verify the Site Link configuration.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Using identical costs for all Site Links without considering network quality.
 - Creating unnecessary manual Bridgehead Servers.
@@ -2096,7 +2096,7 @@ Review the schedule and verify the Site Link configuration.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Site Links define how Sites communicate.
 - Site Link Costs determine preferred replication paths.
@@ -2106,13 +2106,13 @@ Review the schedule and verify the Site Link configuration.
 
 ---
 
-# 11-Sites-and-Replication.md
+## 11-Sites-and-Replication.md
 
-# Part 4 — Replication Troubleshooting, Monitoring, Best Practices and Enterprise Labs
+## Part 4 — Replication Troubleshooting, Monitoring, Best Practices and Enterprise Labs
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -2132,7 +2132,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Active Directory replication is the backbone of an enterprise Windows infrastructure.
 
@@ -2157,7 +2157,7 @@ Proper monitoring and troubleshooting are therefore critical responsibilities fo
 
 ---
 
-# Replication Troubleshooting Workflow
+## Replication Troubleshooting Workflow
 
 Whenever replication problems occur, follow a structured approach.
 
@@ -2223,7 +2223,7 @@ Never begin troubleshooting by making random configuration changes.
 
 ---
 
-# Common Causes of Replication Failure
+## Common Causes of Replication Failure
 
 Replication issues commonly result from:
 
@@ -2240,7 +2240,7 @@ Replication issues commonly result from:
 
 ---
 
-# Symptoms of Replication Problems
+## Symptoms of Replication Problems
 
 Users may report:
 
@@ -2255,7 +2255,7 @@ These symptoms often indicate replication issues.
 
 ---
 
-# Essential Troubleshooting Tool — repadmin
+## Essential Troubleshooting Tool — repadmin
 
 `repadmin` is one of the most important command-line tools for replication diagnostics.
 
@@ -2301,7 +2301,7 @@ Shows replication connection objects.
 
 ---
 
-# Example Output Interpretation
+## Example Output Interpretation
 
 Healthy output typically shows:
 
@@ -2314,7 +2314,7 @@ Repeated failures or long delays should be investigated immediately.
 
 ---
 
-# Essential Troubleshooting Tool — dcdiag
+## Essential Troubleshooting Tool — dcdiag
 
 `dcdiag` checks the health of Domain Controllers.
 
@@ -2350,7 +2350,7 @@ Runs detailed diagnostic tests.
 
 ---
 
-# Event Viewer
+## Event Viewer
 
 Many replication issues are recorded in Windows Event Logs.
 
@@ -2378,7 +2378,7 @@ Review these logs for warnings and errors related to replication.
 
 ---
 
-# DNS Verification
+## DNS Verification
 
 Active Directory depends heavily on DNS.
 
@@ -2393,7 +2393,7 @@ A large percentage of replication issues ultimately trace back to DNS problems.
 
 ---
 
-# Network Connectivity Checks
+## Network Connectivity Checks
 
 Verify:
 
@@ -2425,7 +2425,7 @@ Ensure that Domain Controllers can communicate over the necessary network ports.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Kerberos authentication requires synchronized clocks.
 
@@ -2439,7 +2439,7 @@ Verify that all Domain Controllers synchronize time from appropriate sources.
 
 ---
 
-# DFS Replication (DFSR)
+## DFS Replication (DFSR)
 
 Modern Active Directory environments use **DFS Replication (DFSR)** to replicate the SYSVOL folder.
 
@@ -2453,7 +2453,7 @@ Healthy DFSR ensures that all Domain Controllers present consistent Group Policy
 
 ---
 
-# SYSVOL Verification
+## SYSVOL Verification
 
 Administrators should verify:
 
@@ -2464,7 +2464,7 @@ Administrators should verify:
 
 ---
 
-# Replication Latency
+## Replication Latency
 
 Replication is not always instantaneous.
 
@@ -2490,15 +2490,15 @@ Administrators should distinguish between expected replication delay and actual 
 
 ---
 
-# Enterprise Troubleshooting Scenario 1
+## Enterprise Troubleshooting Scenario 1
 
-### Problem
+#### Problem
 
 A user changes their password in the Bangalore office.
 
 Authentication succeeds in Bangalore but fails in London.
 
-### Investigation
+#### Investigation
 
 - Check `repadmin /showrepl`.
 - Verify Site Link health.
@@ -2506,51 +2506,51 @@ Authentication succeeds in Bangalore but fails in London.
 - Review Directory Service logs.
 - Check replication schedule.
 
-### Resolution
+#### Resolution
 
 Restore inter-site replication and verify successful synchronization.
 
 ---
 
-# Enterprise Troubleshooting Scenario 2
+## Enterprise Troubleshooting Scenario 2
 
-### Problem
+#### Problem
 
 New Group Policy settings are applied at headquarters but not at a branch office.
 
-### Investigation
+#### Investigation
 
 - Verify SYSVOL replication.
 - Check DFS Replication logs.
 - Confirm Active Directory replication.
 - Validate Site Link schedule.
 
-### Resolution
+#### Resolution
 
 Resolve DFSR issues and confirm SYSVOL consistency.
 
 ---
 
-# Enterprise Troubleshooting Scenario 3
+## Enterprise Troubleshooting Scenario 3
 
-### Problem
+#### Problem
 
 A newly created user exists on one Domain Controller but not another.
 
-### Investigation
+#### Investigation
 
 - Verify replication partners.
 - Run `repadmin /replsummary`.
 - Review Event Viewer.
 - Check DNS registration.
 
-### Resolution
+#### Resolution
 
 Correct the underlying replication issue and verify object synchronization.
 
 ---
 
-# Replication Health Checklist
+## Replication Health Checklist
 
 Regularly verify:
 
@@ -2565,7 +2565,7 @@ Regularly verify:
 
 ---
 
-# Replication Monitoring Best Practices
+## Replication Monitoring Best Practices
 
 Large organizations often:
 
@@ -2580,7 +2580,7 @@ Automation tools and centralized monitoring platforms can help identify issues b
 
 ---
 
-# Disaster Recovery Considerations
+## Disaster Recovery Considerations
 
 During disaster recovery:
 
@@ -2595,7 +2595,7 @@ Avoid forcing replication without understanding the underlying cause.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global enterprise has:
 
@@ -2615,7 +2615,7 @@ This proactive approach minimizes outages and ensures consistent authentication 
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Replication directly impacts security operations.
 
@@ -2631,17 +2631,17 @@ During incident response, verifying replication health is essential to ensure co
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Verify Active Directory replication health.
 
-### Step 1
+#### Step 1
 
 Open Command Prompt with administrative privileges.
 
-### Step 2
+#### Step 2
 
 Run:
 
@@ -2653,7 +2653,7 @@ Review overall replication status.
 
 ---
 
-### Step 3
+#### Step 3
 
 Run:
 
@@ -2665,7 +2665,7 @@ Identify inbound replication partners.
 
 ---
 
-### Step 4
+#### Step 4
 
 Run:
 
@@ -2677,7 +2677,7 @@ Verify Domain Controller replication health.
 
 ---
 
-### Step 5
+#### Step 5
 
 Open:
 
@@ -2697,7 +2697,7 @@ Review recent replication-related events.
 
 ---
 
-### Step 6
+#### Step 6
 
 Verify:
 
@@ -2710,15 +2710,15 @@ Document your findings.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Which tool is commonly used to troubleshoot Active Directory replication?
+#### Q1: Which tool is commonly used to troubleshoot Active Directory replication?
 
 **Answer:** `repadmin`.
 
 ---
 
-### Q2: What command provides a summary of replication health?
+#### Q2: What command provides a summary of replication health?
 
 **Answer:**
 
@@ -2728,31 +2728,31 @@ repadmin /replsummary
 
 ---
 
-### Q3: Which tool checks Domain Controller health?
+#### Q3: Which tool checks Domain Controller health?
 
 **Answer:** `dcdiag`.
 
 ---
 
-### Q4: Why is DNS important for replication?
+#### Q4: Why is DNS important for replication?
 
 **Answer:** Domain Controllers rely on DNS to locate replication partners and other directory services. Incorrect DNS configuration is a common cause of replication failures.
 
 ---
 
-### Q5: What is replicated by DFS Replication in Active Directory?
+#### Q5: What is replicated by DFS Replication in Active Directory?
 
 **Answer:** The SYSVOL folder, which contains Group Policy templates and logon scripts.
 
 ---
 
-### Q6: Is delayed inter-site replication always a problem?
+#### Q6: Is delayed inter-site replication always a problem?
 
 **Answer:** No. Inter-site replication follows the configured Site Link schedule, so some delay may be expected.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Monitor replication regularly using `repadmin` and `dcdiag`.
 - Maintain accurate DNS configuration.
@@ -2765,7 +2765,7 @@ repadmin /replsummary
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming all replication is immediate.
 - Ignoring DNS warnings.
@@ -2777,7 +2777,7 @@ repadmin /replsummary
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory replication is essential for a consistent and secure directory service.
 - Use a structured troubleshooting methodology rather than trial-and-error.
@@ -2787,7 +2787,7 @@ repadmin /replsummary
 
 ---
 
-## Chapter Summary
+### Chapter Summary
 
 In this chapter, you learned:
 

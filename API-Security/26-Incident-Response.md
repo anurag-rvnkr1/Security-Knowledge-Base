@@ -1,6 +1,6 @@
 # 26 - API Incident Response
 
-# Introduction
+## Introduction
 
 API Incident Response (API IR) is the structured process of identifying, analyzing, containing, eradicating, recovering from, and learning after security incidents involving APIs.
 
@@ -49,7 +49,7 @@ Improved Security
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -65,7 +65,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What Is an API Security Incident?
+## What Is an API Security Incident?
 
 An API security incident is any event that threatens the confidentiality, integrity, or availability of an API or the data it processes.
 
@@ -84,7 +84,7 @@ Examples include
 
 ---
 
-# Incident Response Lifecycle
+## Incident Response Lifecycle
 
 ```
 Preparation
@@ -118,7 +118,7 @@ This lifecycle aligns with widely adopted security incident handling practices.
 
 ---
 
-# Preparation
+## Preparation
 
 Preparation is the most important phase because it determines how effectively an organization responds.
 
@@ -137,7 +137,7 @@ Preparation includes
 
 ---
 
-# API Asset Inventory
+## API Asset Inventory
 
 Maintain an accurate inventory of
 
@@ -154,7 +154,7 @@ Without an inventory, response efforts become significantly more difficult.
 
 ---
 
-# Incident Severity Levels
+## Incident Severity Levels
 
 | Severity | Example |
 |----------|----------|
@@ -168,7 +168,7 @@ Severity determines escalation and response priorities.
 
 ---
 
-# Incident Classification
+## Incident Classification
 
 Typical categories
 
@@ -187,7 +187,7 @@ Proper classification improves response consistency.
 
 ---
 
-# Detection
+## Detection
 
 Incidents may be detected through
 
@@ -218,7 +218,7 @@ SOC
 
 ---
 
-# Initial Triage
+## Initial Triage
 
 The first questions responders should answer are
 
@@ -234,7 +234,7 @@ Rapid triage supports timely containment.
 
 ---
 
-# Incident Analysis
+## Incident Analysis
 
 During analysis determine
 
@@ -269,7 +269,7 @@ Findings
 
 ---
 
-# Evidence Collection
+## Evidence Collection
 
 Collect evidence before making disruptive changes whenever possible.
 
@@ -288,7 +288,7 @@ Evidence should maintain integrity and chain of custody.
 
 ---
 
-# Timeline Reconstruction
+## Timeline Reconstruction
 
 Reconstructing events helps understand attacker actions.
 
@@ -320,7 +320,7 @@ Accurate timelines support both investigations and reporting.
 
 ---
 
-# Indicators of Compromise (IOCs)
+## Indicators of Compromise (IOCs)
 
 Common API-related IOCs include
 
@@ -335,7 +335,7 @@ Common API-related IOCs include
 
 ---
 
-# Indicators of Attack (IOAs)
+## Indicators of Attack (IOAs)
 
 Unlike IOCs, IOAs focus on attacker behavior.
 
@@ -353,7 +353,7 @@ Behavioral indicators often enable earlier detection.
 
 ---
 
-# Containment
+## Containment
 
 Containment limits further damage.
 
@@ -387,7 +387,7 @@ Containment should balance security with business continuity.
 
 ---
 
-# Short-Term vs Long-Term Containment
+## Short-Term vs Long-Term Containment
 
 | Short-Term | Long-Term |
 |------------|-----------|
@@ -400,7 +400,7 @@ Short-term actions stop the immediate threat, while long-term actions prevent re
 
 ---
 
-# Eradication
+## Eradication
 
 After containment, remove the root cause.
 
@@ -418,7 +418,7 @@ Eradication should be validated before recovery.
 
 ---
 
-# Credential Rotation
+## Credential Rotation
 
 Rotate compromised
 
@@ -433,7 +433,7 @@ Credential rotation reduces the likelihood of continued unauthorized access.
 
 ---
 
-# Recovery
+## Recovery
 
 Recovery restores secure operations.
 
@@ -467,7 +467,7 @@ Recovery should be gradual and carefully monitored.
 
 ---
 
-# Communication During Incidents
+## Communication During Incidents
 
 Stakeholders may include
 
@@ -483,7 +483,7 @@ Communication should be timely, accurate, and coordinated.
 
 ---
 
-# Regulatory Considerations
+## Regulatory Considerations
 
 Depending on jurisdiction and industry, organizations may have obligations regarding
 
@@ -497,7 +497,7 @@ Incident response processes should align with applicable legal and regulatory re
 
 ---
 
-# Digital Forensics
+## Digital Forensics
 
 Digital forensics supports incident investigation by preserving and analyzing evidence.
 
@@ -515,7 +515,7 @@ Forensic activities should preserve evidence integrity.
 
 ---
 
-# Chain of Custody
+## Chain of Custody
 
 Evidence should be tracked throughout its lifecycle.
 
@@ -547,7 +547,7 @@ Maintaining chain of custody supports legal and investigative requirements.
 
 ---
 
-# Threat Hunting
+## Threat Hunting
 
 Threat hunting proactively searches for hidden attacker activity.
 
@@ -563,7 +563,7 @@ Threat hunting complements reactive incident response.
 
 ---
 
-# Threat Hunting Workflow
+## Threat Hunting Workflow
 
 ```
 Hypothesis
@@ -591,7 +591,7 @@ Detection Improvement
 
 ---
 
-# Post-Incident Review
+## Post-Incident Review
 
 Every significant incident should conclude with a structured review.
 
@@ -609,7 +609,7 @@ The goal is continuous improvement, not assigning blame.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Determine
 
@@ -640,7 +640,7 @@ Root Cause
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Improve detections after every incident.
 
@@ -658,7 +658,7 @@ Each incident should strengthen future detection capabilities.
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Key telemetry sources
 
@@ -695,7 +695,7 @@ SOC
 
 ---
 
-# Enterprise Incident Response Architecture
+## Enterprise Incident Response Architecture
 
 ```
                  Clients
@@ -745,7 +745,7 @@ SOC
 
 ---
 
-# API Incident Response Playbook
+## API Incident Response Playbook
 
 Example workflow
 
@@ -764,7 +764,7 @@ Documenting playbooks ensures consistent responses across incidents.
 
 ---
 
-# Best Practices
+## Best Practices
 
 Preparation
 
@@ -791,7 +791,7 @@ Improvement
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid
 
@@ -805,7 +805,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Preparation is the foundation of effective incident response.
 - Rapid detection and accurate triage reduce business impact.
@@ -816,7 +816,7 @@ Avoid
 ---
 
 
-# Advanced API Incident Response Workflows
+## Advanced API Incident Response Workflows
 
 Enterprise incident response extends beyond reacting to alerts. Mature organizations establish repeatable workflows that coordinate security, engineering, operations, legal, compliance, and executive leadership.
 
@@ -858,7 +858,7 @@ Security Improvements
 
 ---
 
-# Incident Response Roles
+## Incident Response Roles
 
 Successful response requires clearly defined responsibilities.
 
@@ -878,7 +878,7 @@ Clearly assigned responsibilities reduce confusion during high-pressure situatio
 
 ---
 
-# Incident Escalation Matrix
+## Incident Escalation Matrix
 
 ```
 Alert
@@ -922,7 +922,7 @@ Escalation criteria should be documented before incidents occur.
 
 ---
 
-# API Breach Investigation Workflow
+## API Breach Investigation Workflow
 
 ```
 Detection
@@ -960,7 +960,7 @@ Each phase should be documented to preserve investigative integrity.
 
 ---
 
-# Authentication Incident Playbook
+## Authentication Incident Playbook
 
 Possible scenarios
 
@@ -982,7 +982,7 @@ Recommended actions
 
 ---
 
-# Authorization Incident Playbook
+## Authorization Incident Playbook
 
 Typical indicators
 
@@ -1022,7 +1022,7 @@ Authorization flaws should be corrected before restoring normal access.
 
 ---
 
-# API Data Exposure Response
+## API Data Exposure Response
 
 If unauthorized data access is suspected
 
@@ -1038,7 +1038,7 @@ Minimize unnecessary access to exposed data during the investigation.
 
 ---
 
-# API Key Compromise
+## API Key Compromise
 
 Possible indicators
 
@@ -1058,7 +1058,7 @@ Response actions
 
 ---
 
-# OAuth Token Compromise
+## OAuth Token Compromise
 
 ```
 Compromised Token
@@ -1084,7 +1084,7 @@ Where supported, revoke active refresh tokens in addition to access tokens.
 
 ---
 
-# API Gateway Incident Response
+## API Gateway Incident Response
 
 Investigate
 
@@ -1099,7 +1099,7 @@ The gateway often contains valuable evidence about attack progression.
 
 ---
 
-# WAF Incident Response
+## WAF Incident Response
 
 Review
 
@@ -1114,7 +1114,7 @@ Following containment, tune rules to improve future detection accuracy.
 
 ---
 
-# Cloud API Incident Response
+## Cloud API Incident Response
 
 Investigate
 
@@ -1129,7 +1129,7 @@ Cloud audit logs provide essential forensic evidence.
 
 ---
 
-# Kubernetes Incident Response
+## Kubernetes Incident Response
 
 Review
 
@@ -1144,7 +1144,7 @@ Cluster audit logs should be preserved during investigations.
 
 ---
 
-# Third-Party API Incidents
+## Third-Party API Incidents
 
 Third-party dependencies may contribute to security incidents.
 
@@ -1161,7 +1161,7 @@ Coordinate investigations with providers when appropriate.
 
 ---
 
-# Supply Chain Considerations
+## Supply Chain Considerations
 
 Potential risks include
 
@@ -1175,7 +1175,7 @@ Supply chain investigations should include software provenance and dependency an
 
 ---
 
-# Business Continuity
+## Business Continuity
 
 Security response should support operational continuity.
 
@@ -1203,7 +1203,7 @@ Critical business functions should receive recovery priority.
 
 ---
 
-# Crisis Communication
+## Crisis Communication
 
 Communication principles
 
@@ -1218,7 +1218,7 @@ Separate technical investigation from public communication activities.
 
 ---
 
-# Executive Reporting
+## Executive Reporting
 
 Executives typically require
 
@@ -1234,7 +1234,7 @@ Reports should focus on business outcomes rather than technical implementation d
 
 ---
 
-# Regulatory Documentation
+## Regulatory Documentation
 
 Maintain documentation covering
 
@@ -1249,7 +1249,7 @@ Well-maintained records simplify audits and post-incident reviews.
 
 ---
 
-# Threat Intelligence Integration
+## Threat Intelligence Integration
 
 Threat intelligence can support investigations by providing
 
@@ -1263,7 +1263,7 @@ Threat intelligence should supplement, not replace, internal evidence.
 
 ---
 
-# Purple Team Validation
+## Purple Team Validation
 
 Following major incidents, validate improvements through collaborative exercises.
 
@@ -1291,7 +1291,7 @@ These exercises verify that implemented controls are effective.
 
 ---
 
-# Incident Metrics
+## Incident Metrics
 
 Useful operational metrics
 
@@ -1310,7 +1310,7 @@ Metrics should drive measurable improvements rather than simply reporting activi
 
 ---
 
-# Incident Maturity Model
+## Incident Maturity Model
 
 | Level | Characteristics |
 |--------|-----------------|
@@ -1324,7 +1324,7 @@ Organizations should progressively mature both technical controls and operationa
 
 ---
 
-# Detection Engineering Improvements
+## Detection Engineering Improvements
 
 Every incident should result in one or more of the following:
 
@@ -1340,7 +1340,7 @@ Continuous refinement strengthens future resilience.
 
 ---
 
-# Enterprise API Incident Response Architecture
+## Enterprise API Incident Response Architecture
 
 ```
                   API Clients
@@ -1396,7 +1396,7 @@ Continuous refinement strengthens future resilience.
 
 ---
 
-# Hands-on Lab 1 – Incident Triage
+## Hands-on Lab 1 – Incident Triage
 
 **Objective**
 
@@ -1418,7 +1418,7 @@ Practice initial API incident triage.
 
 ---
 
-# Hands-on Lab 2 – Timeline Reconstruction
+## Hands-on Lab 2 – Timeline Reconstruction
 
 **Objective**
 
@@ -1440,7 +1440,7 @@ Build an incident timeline from available evidence.
 
 ---
 
-# Hands-on Lab 3 – Post-Incident Review
+## Hands-on Lab 3 – Post-Incident Review
 
 **Objective**
 
@@ -1462,9 +1462,9 @@ Conduct a structured lessons-learned exercise.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Unable to Determine Initial Entry Point
+### Unable to Determine Initial Entry Point
 
 Possible causes
 
@@ -1475,7 +1475,7 @@ Possible causes
 
 ---
 
-## Recovery Introduces New Issues
+### Recovery Introduces New Issues
 
 Possible causes
 
@@ -1486,7 +1486,7 @@ Possible causes
 
 ---
 
-## Incident Scope Continues to Expand
+### Incident Scope Continues to Expand
 
 Possible causes
 
@@ -1497,7 +1497,7 @@ Possible causes
 
 ---
 
-## Excessive Investigation Time
+### Excessive Investigation Time
 
 Possible causes
 
@@ -1508,7 +1508,7 @@ Possible causes
 
 ---
 
-## Repeat Incidents
+### Repeat Incidents
 
 Possible causes
 
@@ -1519,9 +1519,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What are the primary phases of an incident response lifecycle?
 2. Why is preparation considered the most important phase?
@@ -1536,7 +1536,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. How would you investigate a suspected API key compromise?
 12. How would you respond to a BOLA exploitation incident?
@@ -1551,7 +1551,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1583,7 +1583,7 @@ Following an incident, the SOC determines that detection occurred several hours 
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 This chapter examined enterprise API Incident Response from preparation through recovery and continuous improvement.
 
@@ -1609,7 +1609,7 @@ An effective API incident response capability combines preparation, visibility, 
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1625,16 +1625,16 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - NIST SP 800-61 Rev. 2 (Computer Security Incident Handling Guide)
 - NIST SP 800-53
 - OWASP API Security Top 10
 - OWASP ASVS
 
-## Further Reading
+### Further Reading
 
 - MITRE ATT&CK Framework
 - OWASP Cheat Sheet Series
@@ -1643,7 +1643,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 27 – API Security Interview Questions**
 

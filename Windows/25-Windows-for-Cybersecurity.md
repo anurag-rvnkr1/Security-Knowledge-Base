@@ -1,10 +1,10 @@
 # 25-Windows-for-Cybersecurity.md
 
-# Part 1 — Windows Security from a Cybersecurity Perspective, Attack Surface, MITRE ATT&CK, and Defensive Architecture
+## Part 1 — Windows Security from a Cybersecurity Perspective, Attack Surface, MITRE ATT&CK, and Defensive Architecture
 
 ---
 
-# Introduction
+## Introduction
 
 Microsoft Windows is the most widely deployed desktop and enterprise operating system in the world.
 
@@ -35,7 +35,7 @@ This chapter examines Windows security from the viewpoint of both defenders and 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -50,7 +50,7 @@ By the end of this section, you will understand:
 
 ---
 
-# Why Windows is Targeted
+## Why Windows is Targeted
 
 Windows environments often contain:
 
@@ -67,7 +67,7 @@ Compromising a Windows environment may allow attackers to access valuable organi
 
 ---
 
-# Typical Enterprise Environment
+## Typical Enterprise Environment
 
 ```text
 Internet
@@ -101,7 +101,7 @@ Multiple layers work together to provide secure access.
 
 ---
 
-# Windows Security Objectives
+## Windows Security Objectives
 
 The primary objectives are:
 
@@ -113,7 +113,7 @@ Known collectively as the **CIA Triad**.
 
 ---
 
-# CIA Triad
+## CIA Triad
 
 ```text
 Confidentiality
@@ -137,7 +137,7 @@ Every security control supports one or more of these objectives.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Windows security relies on multiple layers.
 
@@ -173,7 +173,7 @@ If one control fails, additional controls continue to provide protection.
 
 ---
 
-# Windows Attack Surface
+## Windows Attack Surface
 
 An attack surface includes every potential point through which an attacker can interact with a system.
 
@@ -195,7 +195,7 @@ Reducing unnecessary exposure decreases risk.
 
 ---
 
-# Attack Surface Diagram
+## Attack Surface Diagram
 
 ```text
 Internet
@@ -231,7 +231,7 @@ Every exposed component should have a business justification.
 
 ---
 
-# Windows Security Architecture
+## Windows Security Architecture
 
 Windows security consists of multiple integrated components.
 
@@ -263,7 +263,7 @@ Each layer contributes to the overall security posture.
 
 ---
 
-# Windows Security Components
+## Windows Security Components
 
 Examples include:
 
@@ -282,7 +282,7 @@ These technologies work together to protect systems.
 
 ---
 
-# Threat Actors
+## Threat Actors
 
 Common categories include:
 
@@ -298,7 +298,7 @@ Understanding threat actors helps organizations prioritize defenses.
 
 ---
 
-# Cyber Kill Chain
+## Cyber Kill Chain
 
 A simplified attack lifecycle:
 
@@ -350,7 +350,7 @@ Defenders aim to detect and disrupt attacks at every phase.
 
 ---
 
-# MITRE ATT&CK Framework
+## MITRE ATT&CK Framework
 
 The MITRE ATT&CK framework documents real-world adversary behavior.
 
@@ -374,7 +374,7 @@ The framework is widely used for detection engineering, threat hunting, purple t
 
 ---
 
-# Example ATT&CK Mapping
+## Example ATT&CK Mapping
 
 | Activity | ATT&CK Tactic |
 |-----------|---------------|
@@ -389,7 +389,7 @@ Mapping detections to ATT&CK improves security visibility.
 
 ---
 
-# Windows Security Lifecycle
+## Windows Security Lifecycle
 
 ```text
 Identify Assets
@@ -419,7 +419,7 @@ This aligns closely with common cybersecurity frameworks.
 
 ---
 
-# Security Controls
+## Security Controls
 
 Controls are generally classified as:
 
@@ -435,7 +435,7 @@ A mature security program combines multiple control types.
 
 ---
 
-# Preventive Controls
+## Preventive Controls
 
 Examples:
 
@@ -451,7 +451,7 @@ These controls reduce the likelihood of successful attacks.
 
 ---
 
-# Detective Controls
+## Detective Controls
 
 Examples:
 
@@ -466,7 +466,7 @@ Detection enables timely response.
 
 ---
 
-# Corrective Controls
+## Corrective Controls
 
 Examples:
 
@@ -481,7 +481,7 @@ Corrective actions help restore normal operations.
 
 ---
 
-# Administrative Controls
+## Administrative Controls
 
 Administrative controls include:
 
@@ -496,7 +496,7 @@ Technical controls are most effective when supported by administrative controls.
 
 ---
 
-# Physical Controls
+## Physical Controls
 
 Examples:
 
@@ -510,7 +510,7 @@ Physical security protects systems from unauthorized physical access.
 
 ---
 
-# Windows Security Layers
+## Windows Security Layers
 
 ```text
 Physical Security
@@ -548,7 +548,7 @@ Each layer strengthens overall resilience.
 
 ---
 
-# Enterprise Security Stack
+## Enterprise Security Stack
 
 A typical enterprise may deploy:
 
@@ -567,7 +567,7 @@ These technologies work together to provide comprehensive protection.
 
 ---
 
-# Common Attack Vectors
+## Common Attack Vectors
 
 Examples include:
 
@@ -586,7 +586,7 @@ User awareness and layered defenses reduce these risks.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global financial institution protects Windows endpoints using:
 
@@ -630,7 +630,7 @@ Each layer contributes to reducing the likelihood and impact of cyber attacks.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Successful attackers rarely rely on a single weakness.
 
@@ -646,7 +646,7 @@ Defenders should therefore implement layered security, continuous monitoring, an
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong Windows security helps organizations:
 
@@ -661,7 +661,7 @@ Weak security can result in operational disruption, legal consequences, and repu
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Reduce the Windows attack surface.
 - Remove unnecessary software and services.
@@ -676,9 +676,9 @@ Weak security can result in operational disruption, legal consequences, and repu
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Identify Attack Surface
+### Lab 1 — Identify Attack Surface
 
 Select a Windows workstation.
 
@@ -694,7 +694,7 @@ Recommend methods to reduce the attack surface.
 
 ---
 
-## Lab 2 — Map ATT&CK Techniques
+### Lab 2 — Map ATT&CK Techniques
 
 Choose five Windows attack scenarios and map each to the appropriate MITRE ATT&CK tactic.
 
@@ -702,7 +702,7 @@ Explain why each mapping is appropriate.
 
 ---
 
-## Lab 3 — Defense in Depth
+### Lab 3 — Defense in Depth
 
 Design a layered security architecture for a Windows enterprise containing:
 
@@ -715,7 +715,7 @@ Explain the purpose of each security layer.
 
 ---
 
-## Lab 4 — Security Controls
+### Lab 4 — Security Controls
 
 Create a table classifying ten Windows security technologies as:
 
@@ -729,7 +729,7 @@ Provide a brief justification for each classification.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows is a primary target because it powers critical enterprise infrastructure.
 - Defense in depth combines multiple complementary security controls.
@@ -740,7 +740,7 @@ Provide a brief justification for each classification.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is Windows commonly targeted by attackers?
 2. What is the Windows attack surface?
@@ -755,7 +755,7 @@ Provide a brief justification for each classification.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Security Documentation
@@ -769,13 +769,13 @@ Provide a brief justification for each classification.
 
 ---
 
-# 25-Windows-for-Cybersecurity.md
+## 25-Windows-for-Cybersecurity.md
 
-# Part 2 — Windows Authentication, Credential Security, Privilege Escalation, Credential Theft, and Identity Protection
+## Part 2 — Windows Authentication, Credential Security, Privilege Escalation, Credential Theft, and Identity Protection
 
 ---
 
-# Introduction
+## Introduction
 
 Authentication is the foundation of Windows security.
 
@@ -796,7 +796,7 @@ Understanding Windows authentication and credential protection is essential for 
 
 ---
 
-# Windows Authentication Overview
+## Windows Authentication Overview
 
 Authentication verifies identity.
 
@@ -813,7 +813,7 @@ Examples include:
 
 ---
 
-# Authentication Workflow
+## Authentication Workflow
 
 ```text
 User
@@ -845,7 +845,7 @@ Authorization determines **what** the user can access.
 
 ---
 
-# Windows Logon Process
+## Windows Logon Process
 
 A simplified domain logon process:
 
@@ -881,7 +881,7 @@ Several Windows components participate in authentication before the user receive
 
 ---
 
-# Authentication Components
+## Authentication Components
 
 | Component | Purpose |
 |------------|----------|
@@ -894,7 +894,7 @@ Several Windows components participate in authentication before the user receive
 
 ---
 
-# Local Authentication
+## Local Authentication
 
 Local accounts authenticate using the local Security Accounts Manager (SAM).
 
@@ -923,7 +923,7 @@ Characteristics:
 
 ---
 
-# Domain Authentication
+## Domain Authentication
 
 Domain authentication relies on Active Directory.
 
@@ -956,7 +956,7 @@ Benefits:
 
 ---
 
-# Security Accounts Manager (SAM)
+## Security Accounts Manager (SAM)
 
 The SAM database stores local account information.
 
@@ -971,7 +971,7 @@ The SAM database is protected by Windows and is not intended for direct access b
 
 ---
 
-# Local Security Authority Subsystem Service (LSASS)
+## Local Security Authority Subsystem Service (LSASS)
 
 LSASS is responsible for:
 
@@ -985,7 +985,7 @@ LSASS is one of the most security-critical Windows processes.
 
 ---
 
-# Access Tokens
+## Access Tokens
 
 After successful authentication, Windows creates an access token.
 
@@ -1001,7 +1001,7 @@ Applications use the access token when requesting access to resources.
 
 ---
 
-# Access Token Workflow
+## Access Token Workflow
 
 ```text
 Authentication
@@ -1027,7 +1027,7 @@ The access token remains associated with the user's processes until logoff.
 
 ---
 
-# Windows Security Identifiers (SIDs)
+## Windows Security Identifiers (SIDs)
 
 Every security principal receives a unique Security Identifier (SID).
 
@@ -1042,7 +1042,7 @@ Windows uses SIDs internally rather than display names for access control.
 
 ---
 
-# Credential Storage
+## Credential Storage
 
 Windows stores credentials differently depending on the authentication method.
 
@@ -1058,7 +1058,7 @@ Sensitive credential material should be protected using built-in security featur
 
 ---
 
-# Cached Credentials
+## Cached Credentials
 
 Domain users may authenticate while disconnected from the network if cached credentials are available.
 
@@ -1074,7 +1074,7 @@ Risks:
 
 ---
 
-# Windows Credential Manager
+## Windows Credential Manager
 
 Credential Manager securely stores credentials for:
 
@@ -1087,7 +1087,7 @@ Administrators should periodically review stored credentials.
 
 ---
 
-# Windows Hello for Business
+## Windows Hello for Business
 
 Windows Hello for Business provides modern authentication using:
 
@@ -1104,7 +1104,7 @@ Benefits include:
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 MFA requires more than one authentication factor.
 
@@ -1120,7 +1120,7 @@ Combining factors significantly reduces the risk of unauthorized access.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Users should receive only the permissions required for their job responsibilities.
 
@@ -1135,7 +1135,7 @@ Least privilege is a foundational security principle.
 
 ---
 
-# User Account Control (UAC)
+## User Account Control (UAC)
 
 User Account Control helps reduce unnecessary administrative access.
 
@@ -1165,7 +1165,7 @@ UAC encourages users to operate without administrative privileges during routine
 
 ---
 
-# Administrative Accounts
+## Administrative Accounts
 
 Organizations should separate:
 
@@ -1205,7 +1205,7 @@ Administrative accounts should be used only for privileged operations.
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Privilege escalation occurs when a user or process gains permissions beyond those originally intended.
 
@@ -1220,7 +1220,7 @@ Understanding privilege escalation helps defenders identify and mitigate potenti
 
 ---
 
-# Common Privilege Escalation Causes
+## Common Privilege Escalation Causes
 
 Examples:
 
@@ -1235,7 +1235,7 @@ Proper system hardening reduces these opportunities.
 
 ---
 
-# Credential Theft
+## Credential Theft
 
 Attackers frequently attempt to obtain credentials instead of exploiting software vulnerabilities.
 
@@ -1252,7 +1252,7 @@ Credential theft often precedes lateral movement.
 
 ---
 
-# Credential Theft Workflow
+## Credential Theft Workflow
 
 ```text
 Compromised User
@@ -1278,7 +1278,7 @@ Protecting credentials limits an attacker's ability to move through the environm
 
 ---
 
-# Credential Access Techniques
+## Credential Access Techniques
 
 Common techniques include:
 
@@ -1294,7 +1294,7 @@ Organizations should implement layered defenses against these techniques.
 
 ---
 
-# Pass-the-Hash
+## Pass-the-Hash
 
 Pass-the-Hash (PtH) is a technique where attackers attempt to authenticate using an NTLM password hash instead of the plaintext password.
 
@@ -1307,7 +1307,7 @@ Mitigation strategies include:
 
 ---
 
-# Pass-the-Ticket
+## Pass-the-Ticket
 
 In Pass-the-Ticket (PtT), attackers attempt to reuse stolen Kerberos tickets to access resources.
 
@@ -1320,7 +1320,7 @@ Mitigations include:
 
 ---
 
-# Credential Guard
+## Credential Guard
 
 Credential Guard uses virtualization-based security (VBS) to help isolate sensitive credential material from the rest of the operating system.
 
@@ -1334,7 +1334,7 @@ Credential Guard is recommended for supported enterprise systems.
 
 ---
 
-# Windows Defender Credential Protection
+## Windows Defender Credential Protection
 
 Modern Windows security includes protections such as:
 
@@ -1347,7 +1347,7 @@ These technologies work together to strengthen identity protection.
 
 ---
 
-# Protected LSASS
+## Protected LSASS
 
 Organizations can configure LSASS to run as a protected process where supported.
 
@@ -1361,7 +1361,7 @@ Compatibility testing should be performed before deployment.
 
 ---
 
-# Identity Protection Strategy
+## Identity Protection Strategy
 
 ```text
 Strong Passwords
@@ -1391,7 +1391,7 @@ Layered identity protection reduces the likelihood of successful credential comp
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational enterprise implements:
 
@@ -1409,7 +1409,7 @@ These controls help reduce credential theft and unauthorized privilege escalatio
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Identity is one of the most valuable assets in Windows environments.
 
@@ -1425,7 +1425,7 @@ Defenders should focus on protecting identities as rigorously as they protect sy
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong identity protection provides:
 
@@ -1439,7 +1439,7 @@ Weak credential security can lead to widespread compromise across the enterprise
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Enforce MFA for privileged accounts.
 - Prefer Kerberos over NTLM where possible.
@@ -1454,9 +1454,9 @@ Weak credential security can lead to widespread compromise across the enterprise
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review Access Tokens
+### Lab 1 — Review Access Tokens
 
 Use Windows tools to identify:
 
@@ -1468,7 +1468,7 @@ Explain how access tokens influence authorization.
 
 ---
 
-## Lab 2 — Authentication Comparison
+### Lab 2 — Authentication Comparison
 
 Create a comparison table covering:
 
@@ -1481,7 +1481,7 @@ Compare security, scalability, and enterprise use cases.
 
 ---
 
-## Lab 3 — Identity Protection Design
+### Lab 3 — Identity Protection Design
 
 Design an authentication architecture using:
 
@@ -1495,7 +1495,7 @@ Explain how each control contributes to defense in depth.
 
 ---
 
-## Lab 4 — Privilege Review
+### Lab 4 — Privilege Review
 
 Review a hypothetical environment with:
 
@@ -1507,7 +1507,7 @@ Recommend improvements based on least privilege and identity security principles
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication verifies identity, while authorization determines access.
 - LSASS and Active Directory are central to Windows authentication.
@@ -1518,7 +1518,7 @@ Recommend improvements based on least privilege and identity security principles
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is LSASS and why is it important?
 2. What is the difference between local and domain authentication?
@@ -1533,7 +1533,7 @@ Recommend improvements based on least privilege and identity security principles
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Security Documentation
@@ -1547,13 +1547,13 @@ Recommend improvements based on least privilege and identity security principles
 
 ---
 
-# 25-Windows-for-Cybersecurity.md
+## 25-Windows-for-Cybersecurity.md
 
-# Part 3 — Windows Malware, Persistence, Lateral Movement, Incident Response, Logging, Threat Hunting, and Security Monitoring
+## Part 3 — Windows Malware, Persistence, Lateral Movement, Incident Response, Logging, Threat Hunting, and Security Monitoring
 
 ---
 
-# Introduction
+## Introduction
 
 After gaining initial access, attackers rarely stop at compromising a single system.
 
@@ -1570,7 +1570,7 @@ Understanding attacker behavior helps defenders detect, investigate, and contain
 
 ---
 
-# Windows Attack Lifecycle
+## Windows Attack Lifecycle
 
 A simplified attack progression:
 
@@ -1618,7 +1618,7 @@ Each stage provides opportunities for detection and response.
 
 ---
 
-# Malware
+## Malware
 
 Malware is malicious software designed to disrupt operations, steal information, or provide unauthorized access.
 
@@ -1636,7 +1636,7 @@ Common categories include:
 
 ---
 
-# Malware Delivery Methods
+## Malware Delivery Methods
 
 Examples include:
 
@@ -1652,7 +1652,7 @@ Multiple controls should be used to reduce exposure.
 
 ---
 
-# Persistence
+## Persistence
 
 Persistence allows attackers to maintain access after reboot or user logoff.
 
@@ -1671,7 +1671,7 @@ Persistence techniques should be monitored and audited.
 
 ---
 
-# Common Persistence Locations
+## Common Persistence Locations
 
 | Location | Example |
 |-----------|----------|
@@ -1686,7 +1686,7 @@ Legitimate software also uses many of these mechanisms, so context is important 
 
 ---
 
-# Scheduled Tasks
+## Scheduled Tasks
 
 Scheduled Tasks are commonly used for:
 
@@ -1705,7 +1705,7 @@ Indicators to investigate:
 
 ---
 
-# Windows Services
+## Windows Services
 
 Services normally start automatically.
 
@@ -1720,7 +1720,7 @@ Service monitoring is an important defensive practice.
 
 ---
 
-# Registry Persistence
+## Registry Persistence
 
 Common registry locations include:
 
@@ -1734,7 +1734,7 @@ Administrators should regularly review these locations for unauthorized entries.
 
 ---
 
-# Lateral Movement
+## Lateral Movement
 
 Lateral movement is the process of moving from one system to another after initial compromise.
 
@@ -1749,7 +1749,7 @@ Limiting lateral movement significantly reduces enterprise risk.
 
 ---
 
-# Lateral Movement Workflow
+## Lateral Movement Workflow
 
 ```text
 Compromised Workstation
@@ -1775,7 +1775,7 @@ Segmentation and least privilege reduce attacker mobility.
 
 ---
 
-# Common Lateral Movement Techniques
+## Common Lateral Movement Techniques
 
 Examples include:
 
@@ -1791,7 +1791,7 @@ Remote administration should be restricted to authorized users.
 
 ---
 
-# Discovery
+## Discovery
 
 Before moving laterally, attackers often perform discovery activities.
 
@@ -1808,7 +1808,7 @@ Excessive enumeration may indicate suspicious activity.
 
 ---
 
-# Credential Access
+## Credential Access
 
 Attackers frequently target:
 
@@ -1822,7 +1822,7 @@ Credential access often precedes privilege escalation or lateral movement.
 
 ---
 
-# Data Collection
+## Data Collection
 
 Once valuable systems are identified, attackers may collect:
 
@@ -1837,7 +1837,7 @@ Monitoring unusual file access helps identify potential data theft.
 
 ---
 
-# Data Exfiltration
+## Data Exfiltration
 
 Common exfiltration methods include:
 
@@ -1851,7 +1851,7 @@ Network monitoring and Data Loss Prevention (DLP) solutions help detect suspicio
 
 ---
 
-# Windows Event Logging
+## Windows Event Logging
 
 Windows records events that support security monitoring.
 
@@ -1868,7 +1868,7 @@ Centralized collection improves visibility across the enterprise.
 
 ---
 
-# Important Security Events
+## Important Security Events
 
 Examples:
 
@@ -1893,7 +1893,7 @@ These events can help identify suspicious behavior when correlated with other te
 
 ---
 
-# Process Monitoring
+## Process Monitoring
 
 Administrators should monitor for:
 
@@ -1908,7 +1908,7 @@ Process monitoring is a key capability of modern Endpoint Detection and Response
 
 ---
 
-# PowerShell Monitoring
+## PowerShell Monitoring
 
 PowerShell is an important administrative tool and is also frequently abused by attackers.
 
@@ -1923,7 +1923,7 @@ These logs support investigations while respecting organizational privacy and co
 
 ---
 
-# Threat Hunting
+## Threat Hunting
 
 Threat hunting is a proactive process for identifying malicious activity that automated alerts may miss.
 
@@ -1957,7 +1957,7 @@ Threat hunting complements automated detection.
 
 ---
 
-# Threat Hunting Data Sources
+## Threat Hunting Data Sources
 
 Examples:
 
@@ -1975,7 +1975,7 @@ Combining multiple sources improves investigative accuracy.
 
 ---
 
-# Indicators of Compromise (IOCs)
+## Indicators of Compromise (IOCs)
 
 Examples:
 
@@ -1991,7 +1991,7 @@ IOCs should be validated before taking remediation actions.
 
 ---
 
-# Indicators of Attack (IOAs)
+## Indicators of Attack (IOAs)
 
 Unlike IOCs, Indicators of Attack focus on behavior.
 
@@ -2007,7 +2007,7 @@ Behavior-based detection can identify previously unknown threats.
 
 ---
 
-# Incident Response Lifecycle
+## Incident Response Lifecycle
 
 A common lifecycle:
 
@@ -2043,7 +2043,7 @@ Each phase should be documented and practiced regularly.
 
 ---
 
-# Containment
+## Containment
 
 Containment actions may include:
 
@@ -2057,7 +2057,7 @@ Containment should balance security with business continuity.
 
 ---
 
-# Eradication
+## Eradication
 
 Examples:
 
@@ -2071,7 +2071,7 @@ Root cause analysis helps prevent recurrence.
 
 ---
 
-# Recovery
+## Recovery
 
 Recovery activities include:
 
@@ -2085,7 +2085,7 @@ Recovery should be carefully planned to avoid reintroducing compromised systems.
 
 ---
 
-# Lessons Learned
+## Lessons Learned
 
 Following every incident:
 
@@ -2100,7 +2100,7 @@ Continuous improvement strengthens organizational resilience.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A security operations center (SOC) receives an alert for repeated failed logons followed by a successful administrative login from an unusual workstation.
 
@@ -2124,7 +2124,7 @@ This coordinated response limits the scope of the incident.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Modern attackers often combine multiple techniques:
 
@@ -2138,7 +2138,7 @@ Defenders should focus on visibility, rapid detection, and layered controls rath
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective monitoring and incident response help organizations:
 
@@ -2151,7 +2151,7 @@ Effective monitoring and incident response help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Enable comprehensive Windows logging.
 - Centralize logs in a SIEM.
@@ -2166,9 +2166,9 @@ Effective monitoring and incident response help organizations:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Event Log Investigation
+### Lab 1 — Event Log Investigation
 
 Review Windows Security logs and identify:
 
@@ -2181,7 +2181,7 @@ Explain why each event may be relevant during an investigation.
 
 ---
 
-## Lab 2 — Persistence Review
+### Lab 2 — Persistence Review
 
 Inspect a Windows system for:
 
@@ -2194,7 +2194,7 @@ Document legitimate and suspicious findings.
 
 ---
 
-## Lab 3 — Threat Hunting Scenario
+### Lab 3 — Threat Hunting Scenario
 
 Develop a hunting hypothesis:
 
@@ -2209,7 +2209,7 @@ Identify:
 
 ---
 
-## Lab 4 — Incident Response Exercise
+### Lab 4 — Incident Response Exercise
 
 Create a response plan for a ransomware incident affecting multiple Windows workstations.
 
@@ -2224,7 +2224,7 @@ Include:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Persistence allows attackers to maintain access after initial compromise.
 - Lateral movement is often used to reach high-value systems.
@@ -2235,7 +2235,7 @@ Include:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is persistence in Windows?
 2. Name common Windows persistence mechanisms.
@@ -2250,7 +2250,7 @@ Include:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Defender Documentation
@@ -2265,13 +2265,13 @@ Include:
 
 ---
 
-# 25-Windows-for-Cybersecurity.md
+## 25-Windows-for-Cybersecurity.md
 
-# Part 4 — Windows Hardening, Detection Engineering, SIEM Integration, Digital Forensics, Enterprise Best Practices, and Career Interview Preparation
+## Part 4 — Windows Hardening, Detection Engineering, SIEM Integration, Digital Forensics, Enterprise Best Practices, and Career Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Windows security does not end with installing antivirus software or enabling a firewall.
 
@@ -2289,7 +2289,7 @@ A mature Windows security program combines preventive, detective, and corrective
 
 ---
 
-# Windows Security Maturity Model
+## Windows Security Maturity Model
 
 ```text
 Deploy Windows
@@ -2327,7 +2327,7 @@ Security is an ongoing process rather than a one-time activity.
 
 ---
 
-# Windows Hardening
+## Windows Hardening
 
 Hardening is the process of reducing a system's attack surface while maintaining required functionality.
 
@@ -2342,7 +2342,7 @@ Objectives:
 
 ---
 
-# Hardening Checklist
+## Hardening Checklist
 
 | Area | Recommended Action |
 |------|---------------------|
@@ -2359,7 +2359,7 @@ Objectives:
 
 ---
 
-# Endpoint Security
+## Endpoint Security
 
 Enterprise endpoint protection typically includes:
 
@@ -2374,7 +2374,7 @@ Multiple layers improve endpoint resilience.
 
 ---
 
-# Secure Configuration Baselines
+## Secure Configuration Baselines
 
 Organizations often implement standardized security baselines.
 
@@ -2393,7 +2393,7 @@ Benefits:
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 A vulnerability management program generally includes:
 
@@ -2429,7 +2429,7 @@ Regular scanning helps identify systems requiring updates or configuration chang
 
 ---
 
-# Patch Management
+## Patch Management
 
 Patch management should follow a structured process.
 
@@ -2459,7 +2459,7 @@ Critical security updates should be prioritized according to organizational risk
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Detection engineering focuses on creating high-quality detections for malicious activity.
 
@@ -2476,7 +2476,7 @@ Detections should be tested, documented, and continuously improved.
 
 ---
 
-# Detection Development Process
+## Detection Development Process
 
 ```text
 Threat Intelligence
@@ -2514,7 +2514,7 @@ Well-designed detections balance accuracy with manageable alert volumes.
 
 ---
 
-# Sysmon
+## Sysmon
 
 Sysmon (System Monitor) extends Windows logging by recording detailed system activity.
 
@@ -2531,7 +2531,7 @@ Sysmon complements native Windows event logging.
 
 ---
 
-# Example Sysmon Events
+## Example Sysmon Events
 
 | Event ID | Description |
 |-----------|-------------|
@@ -2546,7 +2546,7 @@ Organizations typically deploy a standardized Sysmon configuration to collect re
 
 ---
 
-# Security Information and Event Management (SIEM)
+## Security Information and Event Management (SIEM)
 
 A SIEM platform aggregates and analyzes security logs from multiple systems.
 
@@ -2584,7 +2584,7 @@ Centralized analysis improves visibility across the enterprise.
 
 ---
 
-# SIEM Use Cases
+## SIEM Use Cases
 
 Common detections include:
 
@@ -2601,7 +2601,7 @@ Correlation across data sources improves detection fidelity.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 A SOC continuously monitors security events.
 
@@ -2639,7 +2639,7 @@ SOC analysts rely on accurate telemetry and well-tuned detections.
 
 ---
 
-# Detection Tuning
+## Detection Tuning
 
 Detection rules should be reviewed regularly to:
 
@@ -2653,7 +2653,7 @@ Continuous tuning improves operational effectiveness.
 
 ---
 
-# Digital Forensics
+## Digital Forensics
 
 Digital forensics involves collecting, preserving, analyzing, and reporting digital evidence.
 
@@ -2669,7 +2669,7 @@ Forensic activities should follow organizational and legal requirements.
 
 ---
 
-# Forensic Principles
+## Forensic Principles
 
 ```text
 Collect
@@ -2695,7 +2695,7 @@ Evidence integrity must be maintained throughout the investigation.
 
 ---
 
-# Windows Forensic Artifacts
+## Windows Forensic Artifacts
 
 Common artifacts include:
 
@@ -2715,7 +2715,7 @@ No single artifact provides a complete picture; investigators correlate multiple
 
 ---
 
-# Timeline Analysis
+## Timeline Analysis
 
 A simplified investigation:
 
@@ -2747,7 +2747,7 @@ Timeline analysis helps reconstruct attack progression.
 
 ---
 
-# Chain of Custody
+## Chain of Custody
 
 When evidence may be used in legal or disciplinary proceedings, maintain documentation showing:
 
@@ -2761,7 +2761,7 @@ Proper chain of custody supports evidence integrity and accountability.
 
 ---
 
-# Secure Logging
+## Secure Logging
 
 Logging should be:
 
@@ -2775,7 +2775,7 @@ Reliable logging supports investigations and compliance.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Examples:
 
@@ -2791,7 +2791,7 @@ Metrics help measure and improve security performance.
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```text
 Asset
@@ -2829,7 +2829,7 @@ Every phase contributes to reducing organizational risk.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A large enterprise secures Windows systems using:
 
@@ -2847,7 +2847,7 @@ This layered approach provides visibility, detection, and resilience against evo
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Modern defense depends on visibility.
 
@@ -2863,7 +2863,7 @@ No security control is perfect; resilience comes from combining multiple complem
 
 ---
 
-# Career Paths Using Windows Security Skills
+## Career Paths Using Windows Security Skills
 
 Windows security knowledge is valuable for roles such as:
 
@@ -2880,7 +2880,7 @@ Windows security knowledge is valuable for roles such as:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective Windows security programs help organizations:
 
@@ -2893,7 +2893,7 @@ Effective Windows security programs help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Apply recognized security baselines.
 - Keep Windows systems fully patched.
@@ -2908,9 +2908,9 @@ Effective Windows security programs help organizations:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Hardening Assessment
+### Lab 1 — Hardening Assessment
 
 Evaluate a Windows workstation against a security baseline.
 
@@ -2927,7 +2927,7 @@ Recommend improvements.
 
 ---
 
-## Lab 2 — Detection Rule Design
+### Lab 2 — Detection Rule Design
 
 Design detections for:
 
@@ -2945,7 +2945,7 @@ Document:
 
 ---
 
-## Lab 3 — Forensic Investigation
+### Lab 3 — Forensic Investigation
 
 Investigate a simulated Windows incident.
 
@@ -2961,7 +2961,7 @@ Build a timeline of events.
 
 ---
 
-## Lab 4 — Security Architecture Review
+### Lab 4 — Security Architecture Review
 
 Design a Windows enterprise security architecture including:
 
@@ -2977,7 +2977,7 @@ Explain how each component contributes to defense in depth.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2999,7 +2999,7 @@ These topics provide a strong foundation for defending Windows environments in m
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows security requires a layered, defense-in-depth approach.
 - Strong identity protection is essential for enterprise security.
@@ -3010,7 +3010,7 @@ These topics provide a strong foundation for defending Windows environments in m
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is defense in depth?
 2. What is Sysmon and why is it useful?
@@ -3025,7 +3025,7 @@ These topics provide a strong foundation for defending Windows environments in m
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Security Documentation
@@ -3041,7 +3041,7 @@ These topics provide a strong foundation for defending Windows environments in m
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 25 – Windows for Cybersecurity**.
 

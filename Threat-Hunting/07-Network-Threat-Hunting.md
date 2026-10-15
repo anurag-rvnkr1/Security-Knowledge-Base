@@ -40,7 +40,7 @@ The central principle is:
 
 ---
 
-# Why Network Threat Hunting Matters
+## Why Network Threat Hunting Matters
 
 Modern attacks frequently generate network activity.
 
@@ -79,7 +79,7 @@ Even when malware is unknown, network behavior can expose:
 
 ---
 
-# Network Hunting Architecture
+## Network Hunting Architecture
 
 A typical enterprise network-hunting architecture:
 
@@ -128,7 +128,7 @@ A typical enterprise network-hunting architecture:
 
 ---
 
-# Network Telemetry
+## Network Telemetry
 
 Different telemetry sources answer different questions.
 
@@ -149,7 +149,7 @@ No single data source provides complete visibility.
 
 ---
 
-# Network Telemetry Model
+## Network Telemetry Model
 
 A network event can be represented conceptually as:
 
@@ -188,7 +188,7 @@ Context is required.
 
 ---
 
-# Network Flow
+## Network Flow
 
 Network flow records summarize communication without storing every packet.
 
@@ -222,7 +222,7 @@ The surrounding context determines the significance.
 
 ---
 
-# NetFlow and IPFIX
+## NetFlow and IPFIX
 
 NetFlow/IPFIX can help identify:
 
@@ -238,7 +238,7 @@ Flow data is particularly useful for identifying behavioral patterns.
 
 ---
 
-# DNS Threat Hunting
+## DNS Threat Hunting
 
 DNS is one of the most valuable sources for threat hunting.
 
@@ -282,7 +282,7 @@ The pattern requires investigation.
 
 ---
 
-# DNS Hunting Signals
+## DNS Hunting Signals
 
 Useful signals include:
 
@@ -299,7 +299,7 @@ Useful signals include:
 
 ---
 
-# DNS Entropy
+## DNS Entropy
 
 Attackers may encode information into subdomains.
 
@@ -325,7 +325,7 @@ However, CDNs and legitimate applications can also generate long or random-looki
 
 ---
 
-# DNS Beaconing
+## DNS Beaconing
 
 Potential beacon:
 
@@ -353,7 +353,7 @@ Therefore:
 
 ---
 
-# NXDOMAIN Hunting
+## NXDOMAIN Hunting
 
 An unusual number of failed DNS queries may indicate:
 
@@ -385,7 +385,7 @@ DNS Queries
 
 ---
 
-# DNS Tunneling
+## DNS Tunneling
 
 DNS tunneling can encode data inside DNS queries or responses.
 
@@ -416,7 +416,7 @@ Potential indicators:
 
 ---
 
-# HTTP Threat Hunting
+## HTTP Threat Hunting
 
 HTTP telemetry can provide:
 
@@ -444,7 +444,7 @@ The hunter should investigate the surrounding behavior.
 
 ---
 
-# HTTP POST Hunting
+## HTTP POST Hunting
 
 POST requests are commonly used by legitimate applications.
 
@@ -472,7 +472,7 @@ Periodic Timing
 
 ---
 
-# HTTPS Hunting
+## HTTPS Hunting
 
 HTTPS encrypts application content.
 
@@ -498,7 +498,7 @@ Encryption does not eliminate network visibility.
 
 ---
 
-# TLS Metadata
+## TLS Metadata
 
 Useful TLS hunting attributes can include:
 
@@ -517,7 +517,7 @@ They should be treated as behavioral signals rather than definitive attribution.
 
 ---
 
-# Proxy Hunting
+## Proxy Hunting
 
 Enterprise proxies may provide:
 
@@ -557,7 +557,7 @@ Investigation
 
 ---
 
-# Firewall Hunting
+## Firewall Hunting
 
 Firewall logs can reveal:
 
@@ -584,7 +584,7 @@ Unexpected communication should be investigated.
 
 ---
 
-# Allowed vs Blocked Traffic
+## Allowed vs Blocked Traffic
 
 Blocked traffic can be valuable.
 
@@ -607,7 +607,7 @@ Therefore:
 
 ---
 
-# Internal Network Hunting
+## Internal Network Hunting
 
 Threat hunting should not stop at the Internet boundary.
 
@@ -634,7 +634,7 @@ Unexpected internal communication can indicate:
 
 ---
 
-# SMB Hunting
+## SMB Hunting
 
 SMB is legitimate in Windows environments.
 
@@ -662,7 +662,7 @@ Correlate with:
 
 ---
 
-# RDP Hunting
+## RDP Hunting
 
 RDP is widely used for administration.
 
@@ -694,7 +694,7 @@ Investigate:
 
 ---
 
-# WinRM Hunting
+## WinRM Hunting
 
 WinRM can support legitimate administration and remote execution.
 
@@ -713,7 +713,7 @@ A new workstation-to-server WinRM relationship can be significant.
 
 ---
 
-# Network Scanning
+## Network Scanning
 
 Scanning can be identified through connection patterns.
 
@@ -743,7 +743,7 @@ Always identify authorized scanning infrastructure.
 
 ---
 
-# Port Scanning
+## Port Scanning
 
 Conceptually:
 
@@ -773,9 +773,9 @@ Low Success Rate
 
 ---
 
-# Horizontal vs Vertical Scanning
+## Horizontal vs Vertical Scanning
 
-## Horizontal Scan
+### Horizontal Scan
 
 One port across many hosts:
 
@@ -788,7 +788,7 @@ Attacker
  └──► Host 4:445
 ```
 
-## Vertical Scan
+### Vertical Scan
 
 Many ports against one host:
 
@@ -805,7 +805,7 @@ These patterns can help identify reconnaissance.
 
 ---
 
-# C2 Hunting
+## C2 Hunting
 
 Command and control traffic may have characteristics such as:
 
@@ -836,7 +836,7 @@ Endpoint
 
 ---
 
-# Beaconing Analysis
+## Beaconing Analysis
 
 Beaconing can be analyzed through:
 
@@ -868,7 +868,7 @@ However, legitimate software also uses scheduled communication.
 
 ---
 
-# Beaconing Detection Model
+## Beaconing Detection Model
 
 ```text
 Connection
@@ -893,7 +893,7 @@ This produces a stronger signal than searching for a known C2 IP.
 
 ---
 
-# C2 Over Common Ports
+## C2 Over Common Ports
 
 Attackers may communicate over:
 
@@ -912,7 +912,7 @@ A useful rule:
 
 ---
 
-# User-Agent Hunting
+## User-Agent Hunting
 
 Unusual User-Agent strings can provide clues.
 
@@ -939,7 +939,7 @@ Frequency
 
 ---
 
-# Network-Based Malware Hunting
+## Network-Based Malware Hunting
 
 A suspicious endpoint may generate:
 
@@ -961,7 +961,7 @@ This can reveal a compromise even when endpoint malware signatures are unavailab
 
 ---
 
-# Network Data Exfiltration
+## Network Data Exfiltration
 
 Potential exfiltration signals include:
 
@@ -993,7 +993,7 @@ External Destination
 
 ---
 
-# Volume-Based Hunting
+## Volume-Based Hunting
 
 Example:
 
@@ -1013,7 +1013,7 @@ However, legitimate backups, software updates, and cloud synchronization can als
 
 ---
 
-# Data Staging
+## Data Staging
 
 Attackers may collect data before exfiltration.
 
@@ -1044,7 +1044,7 @@ Network Transfer
 
 ---
 
-# Cloud Exfiltration Hunting
+## Cloud Exfiltration Hunting
 
 Modern organizations frequently use:
 
@@ -1071,7 +1071,7 @@ Endpoint
 
 ---
 
-# Network Tunneling
+## Network Tunneling
 
 Tunneling can hide one protocol inside another.
 
@@ -1098,7 +1098,7 @@ Potential indicators:
 
 ---
 
-# ICMP Hunting
+## ICMP Hunting
 
 ICMP is commonly used for diagnostics.
 
@@ -1115,7 +1115,7 @@ But legitimate monitoring systems can generate significant ICMP traffic.
 
 ---
 
-# IPv6 Hunting
+## IPv6 Hunting
 
 Organizations should not ignore IPv6.
 
@@ -1131,7 +1131,7 @@ Security controls should provide equivalent visibility for IPv4 and IPv6.
 
 ---
 
-# Zeek
+## Zeek
 
 Zeek is a network security monitoring framework that produces rich protocol metadata.
 
@@ -1149,7 +1149,7 @@ smtp.log
 
 ---
 
-# Zeek Connection Hunting
+## Zeek Connection Hunting
 
 Conceptually:
 
@@ -1176,7 +1176,7 @@ The value comes from correlation.
 
 ---
 
-# Zeek DNS Hunting
+## Zeek DNS Hunting
 
 Example fields can include:
 
@@ -1209,7 +1209,7 @@ Investigate
 
 ---
 
-# Zeek HTTP Hunting
+## Zeek HTTP Hunting
 
 Potential fields include:
 
@@ -1233,7 +1233,7 @@ Useful for investigating:
 
 ---
 
-# IDS/IPS Hunting
+## IDS/IPS Hunting
 
 IDS/IPS systems provide alerts for known suspicious patterns.
 
@@ -1267,9 +1267,9 @@ Timeline
 
 ---
 
-# Signature vs Behavioral Network Detection
+## Signature vs Behavioral Network Detection
 
-## Signature
+### Signature
 
 ```text
 Known IOC
@@ -1279,7 +1279,7 @@ Match
 Alert
 ```
 
-## Behavioral
+### Behavioral
 
 ```text
 Rare Destination
@@ -1297,7 +1297,7 @@ Behavioral approaches can identify previously unknown activity.
 
 ---
 
-# Threat Intelligence Enrichment
+## Threat Intelligence Enrichment
 
 Network indicators can be enriched with:
 
@@ -1317,7 +1317,7 @@ Do not automatically classify an event as malicious based solely on reputation.
 
 ---
 
-# IP Reputation Limitations
+## IP Reputation Limitations
 
 Shared infrastructure creates false positives.
 
@@ -1345,7 +1345,7 @@ is stronger than reputation alone.
 
 ---
 
-# Domain Age
+## Domain Age
 
 Newly registered domains can be useful hunting signals.
 
@@ -1372,7 +1372,7 @@ Domain Age < X
 
 ---
 
-# JA3/JA4 and TLS Fingerprinting
+## JA3/JA4 and TLS Fingerprinting
 
 TLS fingerprinting can help identify similar TLS client behavior.
 
@@ -1397,9 +1397,9 @@ Applications and libraries can share fingerprints.
 
 ---
 
-# Network Investigation Workflow
+## Network Investigation Workflow
 
-## Step 1 — Identify the Communication
+### Step 1 — Identify the Communication
 
 ```text
 Source
@@ -1409,7 +1409,7 @@ Protocol
 Time
 ```
 
-## Step 2 — Identify the Host
+### Step 2 — Identify the Host
 
 ```text
 Hostname
@@ -1419,7 +1419,7 @@ Role
 Location
 ```
 
-## Step 3 — Identify the User
+### Step 3 — Identify the User
 
 ```text
 Account
@@ -1428,7 +1428,7 @@ Privilege
 Session
 ```
 
-## Step 4 — Identify the Process
+### Step 4 — Identify the Process
 
 Where endpoint telemetry exists:
 
@@ -1438,7 +1438,7 @@ Parent
 Command Line
 ```
 
-## Step 5 — Enrich Destination
+### Step 5 — Enrich Destination
 
 ```text
 Domain
@@ -1448,7 +1448,7 @@ Reputation
 Threat Intelligence
 ```
 
-## Step 6 — Analyze Behavior
+### Step 6 — Analyze Behavior
 
 ```text
 Frequency
@@ -1459,7 +1459,7 @@ Direction
 Protocol
 ```
 
-## Step 7 — Build Timeline
+### Step 7 — Build Timeline
 
 ```text
 DNS
@@ -1473,7 +1473,7 @@ File
 Persistence
 ```
 
-## Step 8 — Scope
+### Step 8 — Scope
 
 Search for:
 
@@ -1488,17 +1488,17 @@ Same Destination
 
 ---
 
-# Practical Lab 1 — DNS Anomaly Hunt
+## Practical Lab 1 — DNS Anomaly Hunt
 
-## Objective
+### Objective
 
 Identify endpoints generating unusual DNS activity.
 
-### Step 1
+#### Step 1
 
 Group DNS queries by host.
 
-### Step 2
+#### Step 2
 
 Calculate:
 
@@ -1509,11 +1509,11 @@ NXDOMAIN Count
 Unique Subdomains
 ```
 
-### Step 3
+#### Step 3
 
 Identify unusual hosts.
 
-### Step 4
+#### Step 4
 
 Investigate:
 
@@ -1524,15 +1524,15 @@ High Entropy
 High Frequency
 ```
 
-### Step 5
+#### Step 5
 
 Correlate with endpoint processes.
 
 ---
 
-# Practical Lab 2 — Beaconing Hunt
+## Practical Lab 2 — Beaconing Hunt
 
-## Objective
+### Objective
 
 Identify periodic network communication.
 
@@ -1567,7 +1567,7 @@ Questions:
 
 ---
 
-# Practical Lab 3 — Internal SMB Hunt
+## Practical Lab 3 — Internal SMB Hunt
 
 Search for:
 
@@ -1591,7 +1591,7 @@ Correlate with authentication and process activity.
 
 ---
 
-# Practical Lab 4 — Network Scanning Hunt
+## Practical Lab 4 — Network Scanning Hunt
 
 Identify hosts that contact unusually large numbers of destinations.
 
@@ -1619,7 +1619,7 @@ Unknown Endpoint
 
 ---
 
-# Practical Lab 5 — Large Outbound Transfer
+## Practical Lab 5 — Large Outbound Transfer
 
 Find:
 
@@ -1644,7 +1644,7 @@ Was the data transfer business-related?
 
 ---
 
-# Practical Lab 6 — Rare External Destination
+## Practical Lab 6 — Rare External Destination
 
 Find destinations contacted by very few endpoints.
 
@@ -1672,7 +1672,7 @@ Rare destinations can provide excellent hunting leads.
 
 ---
 
-# Practical Lab 7 — C2 Correlation
+## Practical Lab 7 — C2 Correlation
 
 Hypothesis:
 
@@ -1701,7 +1701,7 @@ Persistence
 
 ---
 
-# Practical Lab 8 — Exfiltration Investigation
+## Practical Lab 8 — Exfiltration Investigation
 
 Hypothesis:
 
@@ -1733,7 +1733,7 @@ timeline.
 
 ---
 
-# SIEM Query Concepts
+## SIEM Query Concepts
 
 A generic network hunting query may resemble:
 
@@ -1764,7 +1764,7 @@ last_seen
 
 ---
 
-# Example Splunk-Style Hunt
+## Example Splunk-Style Hunt
 
 Conceptual:
 
@@ -1784,7 +1784,7 @@ This is a hunting starting point and should be adapted to the organization's sch
 
 ---
 
-# Example DNS Hunt
+## Example DNS Hunt
 
 ```spl
 index=dns
@@ -1799,7 +1799,7 @@ Investigate hosts with unusually high DNS activity.
 
 ---
 
-# Example Rare Destination Hunt
+## Example Rare Destination Hunt
 
 ```spl
 index=network
@@ -1813,7 +1813,7 @@ It should then be enriched and investigated.
 
 ---
 
-# Network Hunting With Python
+## Network Hunting With Python
 
 Python can be useful for analyzing exported network telemetry.
 
@@ -1841,7 +1841,7 @@ This is particularly useful for exploratory hunting and offline analysis.
 
 ---
 
-# Network Hunting With Wireshark
+## Network Hunting With Wireshark
 
 Wireshark is useful when metadata is insufficient and packet-level analysis is required.
 
@@ -1889,7 +1889,7 @@ Use packet captures carefully and only within authorized environments.
 
 ---
 
-# PCAP Investigation Workflow
+## PCAP Investigation Workflow
 
 ```text
 PCAP
@@ -1921,7 +1921,7 @@ Correlate With Endpoint
 
 ---
 
-# Network Hunting and MITRE ATT&CK
+## Network Hunting and MITRE ATT&CK
 
 Useful techniques include:
 
@@ -1948,9 +1948,9 @@ ATT&CK mappings should be validated against the current ATT&CK knowledge base wh
 
 ---
 
-# Network Hunting Checklist
+## Network Hunting Checklist
 
-## DNS
+### DNS
 
 - [ ] Query volume reviewed
 - [ ] Rare domains reviewed
@@ -1960,7 +1960,7 @@ ATT&CK mappings should be validated against the current ATT&CK knowledge base wh
 - [ ] TXT queries reviewed
 - [ ] DNS resolver behavior checked
 
-## Web
+### Web
 
 - [ ] HTTP requests reviewed
 - [ ] HTTPS metadata reviewed
@@ -1968,7 +1968,7 @@ ATT&CK mappings should be validated against the current ATT&CK knowledge base wh
 - [ ] Rare destinations checked
 - [ ] Proxy logs correlated
 
-## Network Flow
+### Network Flow
 
 - [ ] Source identified
 - [ ] Destination identified
@@ -1977,7 +1977,7 @@ ATT&CK mappings should be validated against the current ATT&CK knowledge base wh
 - [ ] Bytes analyzed
 - [ ] Connection frequency analyzed
 
-## Internal Network
+### Internal Network
 
 - [ ] SMB reviewed
 - [ ] RDP reviewed
@@ -1985,7 +1985,7 @@ ATT&CK mappings should be validated against the current ATT&CK knowledge base wh
 - [ ] LDAP/Kerberos reviewed
 - [ ] Scanning behavior reviewed
 
-## C2
+### C2
 
 - [ ] Beaconing checked
 - [ ] Periodicity checked
@@ -1993,7 +1993,7 @@ ATT&CK mappings should be validated against the current ATT&CK knowledge base wh
 - [ ] Process-to-network relationship checked
 - [ ] DNS correlation completed
 
-## Exfiltration
+### Exfiltration
 
 - [ ] Outbound volume reviewed
 - [ ] Destination reputation checked
@@ -2003,51 +2003,51 @@ ATT&CK mappings should be validated against the current ATT&CK knowledge base wh
 
 ---
 
-# Common Network Hunting Mistakes
+## Common Network Hunting Mistakes
 
-## 1. Blocking Every Suspicious IP
+### 1. Blocking Every Suspicious IP
 
 Cloud and shared infrastructure can produce false positives.
 
 ---
 
-## 2. Hunting Only Known IOCs
+### 2. Hunting Only Known IOCs
 
 Unknown infrastructure will not match IOC lists.
 
 ---
 
-## 3. Ignoring Internal Traffic
+### 3. Ignoring Internal Traffic
 
 Lateral movement often occurs inside the trusted network.
 
 ---
 
-## 4. Ignoring DNS
+### 4. Ignoring DNS
 
 DNS often provides early clues about malicious infrastructure.
 
 ---
 
-## 5. Ignoring Blocked Connections
+### 5. Ignoring Blocked Connections
 
 Repeated blocked C2 attempts can reveal compromised hosts.
 
 ---
 
-## 6. Ignoring Endpoint Context
+### 6. Ignoring Endpoint Context
 
 Network activity becomes much stronger when tied to a process.
 
 ---
 
-## 7. Assuming HTTPS Means Invisible
+### 7. Assuming HTTPS Means Invisible
 
 Metadata remains available even when payload content is encrypted.
 
 ---
 
-# Network Detection Engineering
+## Network Detection Engineering
 
 Successful hunts should become detections where appropriate.
 
@@ -2092,7 +2092,7 @@ may become a detection candidate.
 
 ---
 
-# Network Detection Quality
+## Network Detection Quality
 
 A useful detection should answer:
 
@@ -2111,7 +2111,7 @@ A detection without investigation context creates unnecessary analyst workload.
 
 ---
 
-# Enterprise Network Visibility
+## Enterprise Network Visibility
 
 A mature environment should provide visibility across:
 
@@ -2141,9 +2141,9 @@ Cloud
 
 ---
 
-# Network Hunting Maturity Model
+## Network Hunting Maturity Model
 
-## Level 1 — Perimeter Monitoring
+### Level 1 — Perimeter Monitoring
 
 ```text
 Firewall
@@ -2153,7 +2153,7 @@ Proxy
 
 ---
 
-## Level 2 — Flow Visibility
+### Level 2 — Flow Visibility
 
 ```text
 NetFlow
@@ -2163,7 +2163,7 @@ DNS
 
 ---
 
-## Level 3 — Protocol Visibility
+### Level 3 — Protocol Visibility
 
 ```text
 Zeek
@@ -2176,7 +2176,7 @@ SSH
 
 ---
 
-## Level 4 — Behavioral Hunting
+### Level 4 — Behavioral Hunting
 
 ```text
 Baseline
@@ -2188,7 +2188,7 @@ Correlation
 
 ---
 
-## Level 5 — Detection Engineering
+### Level 5 — Detection Engineering
 
 ```text
 Threat Intelligence
@@ -2206,7 +2206,7 @@ Continuous Improvement
 
 ---
 
-# Professional Network Investigation Template
+## Professional Network Investigation Template
 
 ```text
 Incident ID:
@@ -2262,21 +2262,21 @@ Lessons Learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is network threat hunting?
+### 1. What is network threat hunting?
 
 Network threat hunting is the proactive investigation of network telemetry to identify suspicious or malicious communication that may not have generated an existing alert.
 
 ---
 
-## 2. What is NetFlow?
+### 2. What is NetFlow?
 
 NetFlow is flow-level network telemetry describing communication metadata such as source, destination, ports, protocol, timing, and traffic volume.
 
 ---
 
-## 3. What is the difference between NetFlow and PCAP?
+### 3. What is the difference between NetFlow and PCAP?
 
 NetFlow provides metadata about network conversations.
 
@@ -2284,7 +2284,7 @@ PCAP contains packet-level information and can provide significantly more detail
 
 ---
 
-## 4. Why is DNS useful for threat hunting?
+### 4. Why is DNS useful for threat hunting?
 
 DNS can reveal:
 
@@ -2297,13 +2297,13 @@ DNS can reveal:
 
 ---
 
-## 5. What is beaconing?
+### 5. What is beaconing?
 
 Beaconing is repeated communication between a host and another system, often with recognizable timing or periodicity.
 
 ---
 
-## 6. Is beaconing always malicious?
+### 6. Is beaconing always malicious?
 
 No.
 
@@ -2311,19 +2311,19 @@ Legitimate monitoring, update, synchronization, and cloud applications can gener
 
 ---
 
-## 7. How would you detect network scanning?
+### 7. How would you detect network scanning?
 
 I would look for unusually high numbers of destinations or ports contacted in a short period and distinguish authorized scanners from unexpected endpoints.
 
 ---
 
-## 8. What is DNS tunneling?
+### 8. What is DNS tunneling?
 
 DNS tunneling is the use of DNS queries or responses to transport information that is not ordinary DNS application data.
 
 ---
 
-## 9. How would you detect data exfiltration?
+### 9. How would you detect data exfiltration?
 
 I would correlate:
 
@@ -2341,13 +2341,13 @@ Unusual Process/User
 
 ---
 
-## 10. Why should blocked firewall traffic be investigated?
+### 10. Why should blocked firewall traffic be investigated?
 
 Repeated blocked communication can indicate a compromised endpoint attempting to reach malicious infrastructure.
 
 ---
 
-## 11. How would you hunt for lateral movement?
+### 11. How would you hunt for lateral movement?
 
 I would examine unusual internal connections involving:
 
@@ -2365,19 +2365,19 @@ and correlate them with authentication and endpoint telemetry.
 
 ---
 
-## 12. How does EDR improve network hunting?
+### 12. How does EDR improve network hunting?
 
 EDR can associate network connections with the process and user that generated them.
 
 ---
 
-## 13. What is beaconing jitter?
+### 13. What is beaconing jitter?
 
 Jitter is variation around an otherwise periodic communication interval. Attackers may introduce it to make communication less obviously periodic.
 
 ---
 
-## 14. Can HTTPS traffic be hunted?
+### 14. Can HTTPS traffic be hunted?
 
 Yes.
 
@@ -2385,7 +2385,7 @@ Even when payloads are encrypted, metadata such as destination, timing, SNI wher
 
 ---
 
-## 15. What is the biggest limitation of IOC-based network hunting?
+### 15. What is the biggest limitation of IOC-based network hunting?
 
 It can miss unknown infrastructure and previously unseen attacker behavior.
 
@@ -2393,7 +2393,7 @@ Behavioral and hypothesis-driven hunting provides broader coverage.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 1. **Network telemetry provides critical visibility into attacker communication.**
 2. **DNS is one of the most valuable sources for network hunting.**
@@ -2417,7 +2417,7 @@ The core mindset is:
 
 ---
 
-# References
+## References
 
 - MITRE ATT&CK — Enterprise  
   https://attack.mitre.org/

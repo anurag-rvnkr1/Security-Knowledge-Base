@@ -56,7 +56,7 @@ Backup / Restore
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -152,7 +152,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Cluster Administration?
+## What Is Cluster Administration?
 
 Cluster administration involves managing the Kubernetes infrastructure and its configuration throughout the cluster lifecycle.
 
@@ -182,7 +182,7 @@ Troubleshooting
 
 ---
 
-# Kubernetes Cluster Architecture
+## Kubernetes Cluster Architecture
 
 A typical Kubernetes cluster contains:
 
@@ -203,7 +203,7 @@ Server
 
 ---
 
-# Control Plane
+## Control Plane
 
 The control plane manages the overall state of the cluster.
 
@@ -219,7 +219,7 @@ cloud-controller-manager
 
 ---
 
-# Worker Node
+## Worker Node
 
 A worker node runs application workloads.
 
@@ -244,7 +244,7 @@ depending on the cluster design.
 
 ---
 
-# API Server
+## API Server
 
 The Kubernetes API Server is the primary entry point to the Kubernetes control plane.
 
@@ -263,7 +263,7 @@ API Server
 
 ---
 
-# API Server Responsibilities
+## API Server Responsibilities
 
 The API Server handles:
 
@@ -278,7 +278,7 @@ Object Persistence Coordination
 
 ---
 
-# Example API Request
+## Example API Request
 
 When you execute:
 
@@ -302,7 +302,7 @@ Response
 
 ---
 
-# etcd
+## etcd
 
 `etcd` is the distributed key-value store used by Kubernetes to persist cluster state.
 
@@ -329,7 +329,7 @@ Cluster Configuration
 
 ---
 
-# Why etcd Is Critical
+## Why etcd Is Critical
 
 If etcd becomes unavailable:
 
@@ -349,7 +349,7 @@ Critical Control Plane Component
 
 ---
 
-# etcd Best Practices
+## etcd Best Practices
 
 Protect etcd with:
 
@@ -366,7 +366,7 @@ Never expose etcd publicly.
 
 ---
 
-# Scheduler
+## Scheduler
 
 The scheduler determines which node should run a newly created Pod.
 
@@ -384,7 +384,7 @@ Pod Assigned
 
 ---
 
-# Scheduler Factors
+## Scheduler Factors
 
 The scheduler considers factors such as:
 
@@ -402,7 +402,7 @@ Priority
 
 ---
 
-# Controller Manager
+## Controller Manager
 
 The Controller Manager runs controllers that continuously reconcile desired state with actual state.
 
@@ -433,7 +433,7 @@ Create 1 Pod
 
 ---
 
-# Cloud Controller Manager
+## Cloud Controller Manager
 
 The Cloud Controller Manager integrates Kubernetes with supported cloud-provider functionality.
 
@@ -450,7 +450,7 @@ The exact responsibilities depend on the cloud provider and integration architec
 
 ---
 
-# kubelet
+## kubelet
 
 The kubelet runs on each worker node.
 
@@ -470,7 +470,7 @@ Containers
 
 ---
 
-# Container Runtime
+## Container Runtime
 
 The container runtime is responsible for running containers.
 
@@ -485,7 +485,7 @@ CRI-O
 
 ---
 
-# kube-proxy
+## kube-proxy
 
 `kube-proxy` traditionally implements service networking behavior on nodes.
 
@@ -501,7 +501,7 @@ Modern Kubernetes networking implementations can use alternative mechanisms depe
 
 ---
 
-# CNI
+## CNI
 
 CNI stands for:
 
@@ -523,7 +523,7 @@ The selected CNI determines important networking behavior and capabilities.
 
 ---
 
-# Cluster DNS
+## Cluster DNS
 
 Kubernetes commonly uses CoreDNS for cluster DNS.
 
@@ -537,7 +537,7 @@ Applications can use DNS instead of hard-coded Pod IP addresses.
 
 ---
 
-# CoreDNS
+## CoreDNS
 
 CoreDNS provides DNS resolution for Kubernetes services and other configured DNS records.
 
@@ -549,7 +549,7 @@ payment-service.payments.svc.cluster.local
 
 ---
 
-# Namespace Administration
+## Namespace Administration
 
 Namespaces logically separate Kubernetes resources.
 
@@ -567,7 +567,7 @@ kubectl create namespace production
 
 ---
 
-# Namespace Use Cases
+## Namespace Use Cases
 
 Namespaces can separate:
 
@@ -591,7 +591,7 @@ Policy Management
 
 ---
 
-# kubeconfig
+## kubeconfig
 
 `kubeconfig` contains configuration used by Kubernetes clients such as `kubectl`.
 
@@ -605,7 +605,7 @@ Contexts
 
 ---
 
-# View kubeconfig
+## View kubeconfig
 
 Run:
 
@@ -617,7 +617,7 @@ Be careful when exposing kubeconfig because it may contain authentication creden
 
 ---
 
-# Current Context
+## Current Context
 
 Check:
 
@@ -627,7 +627,7 @@ kubectl config current-context
 
 ---
 
-# List Contexts
+## List Contexts
 
 ```bash
 kubectl config get-contexts
@@ -635,7 +635,7 @@ kubectl config get-contexts
 
 ---
 
-# Switch Context
+## Switch Context
 
 ```bash
 kubectl config use-context <context-name>
@@ -645,7 +645,7 @@ Always verify the active context before running destructive commands.
 
 ---
 
-# Cluster Information
+## Cluster Information
 
 Run:
 
@@ -657,7 +657,7 @@ This can provide basic cluster endpoint information.
 
 ---
 
-# Kubernetes Version
+## Kubernetes Version
 
 Check client and server versions:
 
@@ -669,7 +669,7 @@ The exact output depends on the kubectl version.
 
 ---
 
-# Node Administration
+## Node Administration
 
 List nodes:
 
@@ -685,7 +685,7 @@ kubectl get nodes -o wide
 
 ---
 
-# Describe Node
+## Describe Node
 
 ```bash
 kubectl describe node <node-name>
@@ -705,7 +705,7 @@ Events
 
 ---
 
-# Node Labels
+## Node Labels
 
 Labels classify nodes.
 
@@ -725,7 +725,7 @@ zone=us-east-1a
 
 ---
 
-# Add a Label
+## Add a Label
 
 Example:
 
@@ -735,7 +735,7 @@ kubectl label node <node-name> environment=production
 
 ---
 
-# Node Conditions
+## Node Conditions
 
 Nodes can expose conditions such as:
 
@@ -749,7 +749,7 @@ NetworkUnavailable
 
 ---
 
-# Ready Condition
+## Ready Condition
 
 A healthy node commonly reports:
 
@@ -765,7 +765,7 @@ kubectl get nodes
 
 ---
 
-# Node Capacity
+## Node Capacity
 
 Capacity represents the total resources available on a node.
 
@@ -780,7 +780,7 @@ Pods
 
 ---
 
-# Node Allocatable
+## Node Allocatable
 
 Allocatable represents resources available for Kubernetes workloads after reserving resources for system components.
 
@@ -798,7 +798,7 @@ Allocatable
 
 ---
 
-# Node Resources
+## Node Resources
 
 Inspect:
 
@@ -816,7 +816,7 @@ Allocated resources
 
 ---
 
-# Node Cordon
+## Node Cordon
 
 Cordoning prevents new Pods from being scheduled onto a node.
 
@@ -828,7 +828,7 @@ Existing Pods generally continue running.
 
 ---
 
-# Node Drain
+## Node Drain
 
 Draining prepares a node for maintenance by evicting or deleting eligible Pods according to Kubernetes disruption rules and command options.
 
@@ -843,7 +843,7 @@ Use drain carefully in production.
 
 ---
 
-# Node Uncordon
+## Node Uncordon
 
 After maintenance:
 
@@ -855,7 +855,7 @@ The node can become eligible for new scheduling again.
 
 ---
 
-# Cordon vs Drain
+## Cordon vs Drain
 
 | Operation | Effect |
 |---|---|
@@ -865,7 +865,7 @@ The node can become eligible for new scheduling again.
 
 ---
 
-# Pod Eviction
+## Pod Eviction
 
 Pod eviction can occur because of:
 
@@ -880,7 +880,7 @@ Eviction behavior depends on the workload and cluster configuration.
 
 ---
 
-# Pod Disruption Budget
+## Pod Disruption Budget
 
 A Pod Disruption Budget (PDB) limits voluntary disruption.
 
@@ -913,7 +913,7 @@ Voluntary Disruptions
 
 ---
 
-# Service Administration
+## Service Administration
 
 List services:
 
@@ -934,7 +934,7 @@ ExternalName
 
 ---
 
-# Ingress
+## Ingress
 
 Ingress provides HTTP/HTTPS routing into Kubernetes services.
 
@@ -952,7 +952,7 @@ Pods
 
 ---
 
-# Gateway API
+## Gateway API
 
 Gateway API provides Kubernetes-native APIs for expressing more advanced traffic routing.
 
@@ -970,7 +970,7 @@ Pods
 
 ---
 
-# Storage Administration
+## Storage Administration
 
 Kubernetes storage administration includes:
 
@@ -983,7 +983,7 @@ CSI Drivers
 
 ---
 
-# CSI
+## CSI
 
 CSI stands for:
 
@@ -1009,7 +1009,7 @@ Storage System
 
 ---
 
-# Persistent Volume
+## Persistent Volume
 
 A PersistentVolume represents storage available to the cluster.
 
@@ -1019,7 +1019,7 @@ kubectl get pv
 
 ---
 
-# Persistent Volume Claim
+## Persistent Volume Claim
 
 A PVC requests storage.
 
@@ -1029,7 +1029,7 @@ kubectl get pvc -A
 
 ---
 
-# Storage Class
+## Storage Class
 
 StorageClasses define classes of storage and can enable dynamic provisioning.
 
@@ -1039,7 +1039,7 @@ kubectl get storageclass
 
 ---
 
-# RBAC
+## RBAC
 
 Role-Based Access Control controls what authenticated identities can do.
 
@@ -1054,7 +1054,7 @@ ClusterRoleBinding
 
 ---
 
-# Role
+## Role
 
 A Role defines permissions within a namespace.
 
@@ -1076,19 +1076,19 @@ rules:
 
 ---
 
-# ClusterRole
+## ClusterRole
 
 A ClusterRole can define permissions applicable across the cluster or reusable with namespace-scoped bindings.
 
 ---
 
-# RoleBinding
+## RoleBinding
 
 RoleBinding associates a Role or ClusterRole with subjects within a namespace.
 
 ---
 
-# ClusterRoleBinding
+## ClusterRoleBinding
 
 ClusterRoleBinding grants a ClusterRole to subjects at cluster scope.
 
@@ -1096,7 +1096,7 @@ Use cluster-wide permissions carefully.
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Service Accounts provide identities for workloads running in Kubernetes.
 
@@ -1110,7 +1110,7 @@ Applications can use Service Accounts when accessing the Kubernetes API or other
 
 ---
 
-# Authentication
+## Authentication
 
 Authentication answers:
 
@@ -1130,7 +1130,7 @@ External Identity Systems
 
 ---
 
-# Authorization
+## Authorization
 
 Authorization answers:
 
@@ -1148,7 +1148,7 @@ for authorization.
 
 ---
 
-# Admission
+## Admission
 
 Admission happens after authentication and authorization but before an object is persisted.
 
@@ -1178,7 +1178,7 @@ requests.
 
 ---
 
-# ConfigMaps
+## ConfigMaps
 
 ConfigMaps store non-sensitive configuration.
 
@@ -1196,7 +1196,7 @@ Configuration Files
 
 ---
 
-# Secrets
+## Secrets
 
 Secrets are intended for sensitive configuration data.
 
@@ -1220,7 +1220,7 @@ Least Privilege
 
 ---
 
-# Resource Quotas
+## Resource Quotas
 
 ResourceQuota limits resource consumption within a namespace.
 
@@ -1246,7 +1246,7 @@ spec:
 
 ---
 
-# LimitRange
+## LimitRange
 
 LimitRange can define default and allowed resource requests/limits within a namespace.
 
@@ -1276,7 +1276,7 @@ spec:
 
 ---
 
-# Scheduling Administration
+## Scheduling Administration
 
 Administrators manage scheduling through:
 
@@ -1294,7 +1294,7 @@ Resource Requests
 
 ---
 
-# Node Selector
+## Node Selector
 
 Example:
 
@@ -1308,7 +1308,7 @@ The Pod can only be scheduled onto nodes matching the label.
 
 ---
 
-# Node Affinity
+## Node Affinity
 
 Node affinity provides more expressive node selection.
 
@@ -1335,7 +1335,7 @@ affinity:
 
 ---
 
-# Taints
+## Taints
 
 Taints repel Pods from nodes unless the Pods tolerate them.
 
@@ -1347,7 +1347,7 @@ kubectl taint nodes <node-name> dedicated=security:NoSchedule
 
 ---
 
-# Tolerations
+## Tolerations
 
 A matching Pod can tolerate the taint.
 
@@ -1367,7 +1367,7 @@ tolerations:
 
 ---
 
-# Cluster Monitoring
+## Cluster Monitoring
 
 Cluster administrators should monitor:
 
@@ -1386,7 +1386,7 @@ Resource Usage
 
 ---
 
-# Cluster Metrics
+## Cluster Metrics
 
 Important metrics include:
 
@@ -1405,7 +1405,7 @@ etcd Health
 
 ---
 
-# Metrics Server
+## Metrics Server
 
 Metrics Server provides resource usage metrics commonly used by:
 
@@ -1428,7 +1428,7 @@ kubectl top pods -A
 
 ---
 
-# Cluster Events
+## Cluster Events
 
 Events provide information about important cluster activity.
 
@@ -1449,7 +1449,7 @@ Events are useful for troubleshooting but should not be treated as a long-term a
 
 ---
 
-# Cluster Logging
+## Cluster Logging
 
 Cluster logging collects:
 
@@ -1474,7 +1474,7 @@ Dashboard
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Kubernetes Audit Logs record API activity.
 
@@ -1502,7 +1502,7 @@ Audit Event
 
 ---
 
-# Why Audit Logs Matter
+## Why Audit Logs Matter
 
 Audit logs are useful for:
 
@@ -1516,7 +1516,7 @@ Troubleshooting
 
 ---
 
-# Control Plane Health
+## Control Plane Health
 
 Administrators should monitor:
 
@@ -1529,7 +1529,7 @@ Controller Manager
 
 ---
 
-# API Server Health
+## API Server Health
 
 The API Server should be monitored for:
 
@@ -1543,7 +1543,7 @@ Resource Usage
 
 ---
 
-# Scheduler Health
+## Scheduler Health
 
 Monitor:
 
@@ -1555,7 +1555,7 @@ Pending Pods
 
 ---
 
-# Controller Manager Health
+## Controller Manager Health
 
 Monitor:
 
@@ -1569,7 +1569,7 @@ depending on the metrics exposed by the deployment/version.
 
 ---
 
-# etcd Health
+## etcd Health
 
 Monitor:
 
@@ -1584,7 +1584,7 @@ Defragmentation Requirements
 
 ---
 
-# etcd Backup
+## etcd Backup
 
 Because etcd contains critical cluster state, backups are essential.
 
@@ -1600,7 +1600,7 @@ Secure Backup Storage
 
 ---
 
-# etcd Restore
+## etcd Restore
 
 A restore operation can recover Kubernetes control-plane state after a disaster.
 
@@ -1610,7 +1610,7 @@ Do not treat an untested backup as a reliable recovery plan.
 
 ---
 
-# Kubernetes PKI
+## Kubernetes PKI
 
 Kubernetes uses certificates for secure communication between components.
 
@@ -1626,7 +1626,7 @@ Control Plane Components
 
 ---
 
-# Certificate Management
+## Certificate Management
 
 Administrators should monitor:
 
@@ -1639,7 +1639,7 @@ CA Management
 
 ---
 
-# Certificate Expiration
+## Certificate Expiration
 
 An expired certificate can cause:
 
@@ -1651,7 +1651,7 @@ Cluster Availability Issues
 
 ---
 
-# Cluster Health Check
+## Cluster Health Check
 
 A basic workflow:
 
@@ -1669,7 +1669,7 @@ A basic workflow:
 
 ---
 
-# Check Nodes
+## Check Nodes
 
 ```bash
 kubectl get nodes
@@ -1685,7 +1685,7 @@ Unknown
 
 ---
 
-# Check System Pods
+## Check System Pods
 
 ```bash
 kubectl get pods -A
@@ -1701,7 +1701,7 @@ and other infrastructure namespaces.
 
 ---
 
-# Check Events
+## Check Events
 
 ```bash
 kubectl get events -A
@@ -1719,7 +1719,7 @@ Failed
 
 ---
 
-# Check Resources
+## Check Resources
 
 ```bash
 kubectl top nodes
@@ -1735,7 +1735,7 @@ if Metrics Server is available.
 
 ---
 
-# Resource Utilization
+## Resource Utilization
 
 Monitor:
 
@@ -1758,7 +1758,7 @@ Node Pressure
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Capacity planning estimates future resource requirements.
 
@@ -1774,7 +1774,7 @@ Failure Scenarios
 
 ---
 
-# Cluster Scaling
+## Cluster Scaling
 
 Scaling can occur at multiple levels:
 
@@ -1788,7 +1788,7 @@ Network
 
 ---
 
-# Horizontal Pod Scaling
+## Horizontal Pod Scaling
 
 HPA increases or decreases the number of Pods.
 
@@ -1802,7 +1802,7 @@ More / Fewer Pods
 
 ---
 
-# Cluster Autoscaler
+## Cluster Autoscaler
 
 Cluster Autoscaler adjusts worker node count based on scheduling requirements and configured policies.
 
@@ -1820,7 +1820,7 @@ New Node
 
 ---
 
-# Manual Node Scaling
+## Manual Node Scaling
 
 Administrators can add or remove nodes according to the platform or infrastructure tooling.
 
@@ -1838,7 +1838,7 @@ Scheduler Can Use Node
 
 ---
 
-# Cluster Upgrade
+## Cluster Upgrade
 
 Cluster upgrades should follow a controlled process:
 
@@ -1858,7 +1858,7 @@ Validate
 
 ---
 
-# Upgrade Preparation
+## Upgrade Preparation
 
 Before upgrading:
 
@@ -1876,7 +1876,7 @@ Check Backups
 
 ---
 
-# Node Upgrade
+## Node Upgrade
 
 A typical node maintenance sequence is:
 
@@ -1896,7 +1896,7 @@ Validate
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Back up important components such as:
 
@@ -1912,7 +1912,7 @@ The exact backup scope depends on the architecture.
 
 ---
 
-# Restore Strategy
+## Restore Strategy
 
 A recovery process should define:
 
@@ -1926,7 +1926,7 @@ Validation
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Disaster recovery planning should account for:
 
@@ -1942,7 +1942,7 @@ Credential Loss
 
 ---
 
-# High Availability
+## High Availability
 
 A production control plane may use multiple control-plane nodes.
 
@@ -1964,7 +1964,7 @@ The exact etcd topology depends on the Kubernetes distribution and deployment ar
 
 ---
 
-# HA Requirements
+## HA Requirements
 
 High availability requires considering:
 
@@ -1981,7 +1981,7 @@ DNS
 
 ---
 
-# Security Administration
+## Security Administration
 
 Cluster administrators must secure:
 
@@ -2000,7 +2000,7 @@ Audit Logs
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Grant only the permissions required.
 
@@ -2014,7 +2014,7 @@ for ordinary workloads or users unless genuinely necessary.
 
 ---
 
-# Network Policies
+## Network Policies
 
 NetworkPolicies control allowed network communication.
 
@@ -2038,7 +2038,7 @@ Everything
 
 ---
 
-# Pod Security
+## Pod Security
 
 Apply appropriate Pod Security Standards and organizational policies.
 
@@ -2046,7 +2046,7 @@ Avoid unnecessarily privileged workloads.
 
 ---
 
-# Image Security
+## Image Security
 
 Use:
 
@@ -2062,7 +2062,7 @@ where appropriate.
 
 ---
 
-# Runtime Security
+## Runtime Security
 
 Monitor:
 
@@ -2075,7 +2075,7 @@ Container Behavior
 
 ---
 
-# Cluster Administration Workflow
+## Cluster Administration Workflow
 
 A useful daily workflow:
 
@@ -2099,7 +2099,7 @@ Review Backups
 
 ---
 
-# Daily Health Checklist
+## Daily Health Checklist
 
 ```text
 ☑ All nodes healthy
@@ -2121,7 +2121,7 @@ Review Backups
 
 ---
 
-# Weekly Administration Checklist
+## Weekly Administration Checklist
 
 ```text
 ☑ Review alerts
@@ -2139,7 +2139,7 @@ Review Backups
 
 ---
 
-# Monthly Administration Checklist
+## Monthly Administration Checklist
 
 ```text
 ☑ Test restore process
@@ -2156,7 +2156,7 @@ Review Backups
 
 ---
 
-# Troubleshooting Framework
+## Troubleshooting Framework
 
 When something fails:
 
@@ -2184,7 +2184,7 @@ Document
 
 ---
 
-# Troubleshooting Pod Scheduling
+## Troubleshooting Pod Scheduling
 
 Check:
 
@@ -2205,7 +2205,7 @@ Resource Requests
 
 ---
 
-# Troubleshooting Node NotReady
+## Troubleshooting Node NotReady
 
 Run:
 
@@ -2227,7 +2227,7 @@ Container Runtime
 
 ---
 
-# Troubleshooting DNS
+## Troubleshooting DNS
 
 Check CoreDNS:
 
@@ -2245,7 +2245,7 @@ Run a test Pod and perform DNS lookup.
 
 ---
 
-# Troubleshooting Networking
+## Troubleshooting Networking
 
 Check:
 
@@ -2261,7 +2261,7 @@ Firewall
 
 ---
 
-# Troubleshooting Storage
+## Troubleshooting Storage
 
 Check:
 
@@ -2279,7 +2279,7 @@ kubectl describe pvc <pvc-name>
 
 ---
 
-# Troubleshooting API Access
+## Troubleshooting API Access
 
 Check:
 
@@ -2300,7 +2300,7 @@ kubectl auth can-i get pods
 
 ---
 
-# Troubleshooting RBAC
+## Troubleshooting RBAC
 
 Use:
 
@@ -2319,7 +2319,7 @@ Use impersonation only where authorized.
 
 ---
 
-# Troubleshooting Admission
+## Troubleshooting Admission
 
 If an API request is rejected:
 
@@ -2344,7 +2344,7 @@ Other Policy Engines
 
 ---
 
-# Troubleshooting Control Plane
+## Troubleshooting Control Plane
 
 Check:
 
@@ -2367,27 +2367,27 @@ Network
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Running Everything as cluster-admin
+### 1. Running Everything as cluster-admin
 
 This violates least privilege.
 
 ---
 
-## 2. Skipping Backups
+### 2. Skipping Backups
 
 Cluster state and application data require recovery planning.
 
 ---
 
-## 3. Never Testing Restores
+### 3. Never Testing Restores
 
 A backup is not useful if it cannot be restored.
 
 ---
 
-## 4. Draining Nodes Without Planning
+### 4. Draining Nodes Without Planning
 
 This can disrupt workloads.
 
@@ -2401,13 +2401,13 @@ Capacity Planning
 
 ---
 
-## 5. Ignoring Events
+### 5. Ignoring Events
 
 Events can provide immediate clues during troubleshooting.
 
 ---
 
-## 6. Ignoring Node Pressure
+### 6. Ignoring Node Pressure
 
 Monitor:
 
@@ -2419,57 +2419,57 @@ PIDPressure
 
 ---
 
-## 7. Exposing API Server or etcd
+### 7. Exposing API Server or etcd
 
 Restrict access.
 
 ---
 
-## 8. Hard-Coding Secrets
+### 8. Hard-Coding Secrets
 
 Use proper secret management.
 
 ---
 
-## 9. Ignoring Certificates
+### 9. Ignoring Certificates
 
 Expired certificates can cause severe failures.
 
 ---
 
-## 10. Upgrading Without Testing
+### 10. Upgrading Without Testing
 
 Validate compatibility first.
 
 ---
 
-## 11. No Capacity Planning
+### 11. No Capacity Planning
 
 A cluster can become saturated unexpectedly.
 
 ---
 
-## 12. No Disaster Recovery Testing
+### 12. No Disaster Recovery Testing
 
 Recovery must be practiced.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Automate Cluster Administration
+#### 1. Automate Cluster Administration
 
 Use infrastructure-as-code and configuration management where appropriate.
 
 ---
 
-### 2. Use Least Privilege
+#### 2. Use Least Privilege
 
 Keep administrative permissions tightly controlled.
 
 ---
 
-### 3. Monitor Everything Important
+#### 3. Monitor Everything Important
 
 Monitor:
 
@@ -2483,7 +2483,7 @@ Applications
 
 ---
 
-### 4. Back Up Critical State
+#### 4. Back Up Critical State
 
 Especially:
 
@@ -2495,7 +2495,7 @@ Configuration
 
 ---
 
-### 5. Test Restores
+#### 5. Test Restores
 
 Regularly validate:
 
@@ -2507,7 +2507,7 @@ Application Recovery
 
 ---
 
-### 6. Plan Upgrades
+#### 6. Plan Upgrades
 
 Maintain:
 
@@ -2521,13 +2521,13 @@ Testing
 
 ---
 
-### 7. Use Pod Disruption Budgets
+#### 7. Use Pod Disruption Budgets
 
 Protect critical replicated workloads during maintenance.
 
 ---
 
-### 8. Secure the API
+#### 8. Secure the API
 
 Use:
 
@@ -2541,13 +2541,13 @@ Network Restrictions
 
 ---
 
-### 9. Monitor Certificates
+#### 9. Monitor Certificates
 
 Automate expiry detection and rotation where possible.
 
 ---
 
-### 10. Document Runbooks
+#### 10. Document Runbooks
 
 Create procedures for:
 
@@ -2564,7 +2564,7 @@ Restore
 
 ---
 
-# Hands-on Lab 1 – Cluster Inspection
+## Hands-on Lab 1 – Cluster Inspection
 
 Run:
 
@@ -2579,7 +2579,7 @@ Document the cluster architecture.
 
 ---
 
-# Hands-on Lab 2 – Node Administration
+## Hands-on Lab 2 – Node Administration
 
 Select a disposable worker node.
 
@@ -2599,7 +2599,7 @@ kubectl uncordon <node-name>
 
 ---
 
-# Hands-on Lab 3 – Node Drain
+## Hands-on Lab 3 – Node Drain
 
 On a disposable environment:
 
@@ -2618,7 +2618,7 @@ PDB Behavior
 
 ---
 
-# Hands-on Lab 4 – Node Labels
+## Hands-on Lab 4 – Node Labels
 
 Add:
 
@@ -2637,7 +2637,7 @@ Verify placement.
 
 ---
 
-# Hands-on Lab 5 – Taints and Tolerations
+## Hands-on Lab 5 – Taints and Tolerations
 
 Taint a test node:
 
@@ -2663,7 +2663,7 @@ Compare scheduling behavior.
 
 ---
 
-# Hands-on Lab 6 – Resource Quota
+## Hands-on Lab 6 – Resource Quota
 
 Create a namespace.
 
@@ -2681,7 +2681,7 @@ Pod Creation Failure
 
 ---
 
-# Hands-on Lab 7 – LimitRange
+## Hands-on Lab 7 – LimitRange
 
 Create a LimitRange.
 
@@ -2691,7 +2691,7 @@ Observe the default requests and limits.
 
 ---
 
-# Hands-on Lab 8 – RBAC
+## Hands-on Lab 8 – RBAC
 
 Create:
 
@@ -2715,7 +2715,7 @@ kubectl auth can-i get pods
 
 ---
 
-# Hands-on Lab 9 – Audit Investigation
+## Hands-on Lab 9 – Audit Investigation
 
 Perform an authorized Kubernetes API action.
 
@@ -2732,7 +2732,7 @@ Timestamp
 
 ---
 
-# Hands-on Lab 10 – Cluster DNS
+## Hands-on Lab 10 – Cluster DNS
 
 Deploy a test Pod.
 
@@ -2746,7 +2746,7 @@ Verify CoreDNS functionality.
 
 ---
 
-# Hands-on Lab 11 – Service Networking
+## Hands-on Lab 11 – Service Networking
 
 Create:
 
@@ -2768,7 +2768,7 @@ Pod
 
 ---
 
-# Hands-on Lab 12 – Persistent Storage
+## Hands-on Lab 12 – Persistent Storage
 
 Create:
 
@@ -2782,7 +2782,7 @@ Verify that the Pod can use persistent storage.
 
 ---
 
-# Hands-on Lab 13 – Node Failure Simulation
+## Hands-on Lab 13 – Node Failure Simulation
 
 In a disposable environment, simulate a node outage.
 
@@ -2798,7 +2798,7 @@ Events
 
 ---
 
-# Hands-on Lab 14 – Cluster Monitoring
+## Hands-on Lab 14 – Cluster Monitoring
 
 Install or use an existing monitoring stack.
 
@@ -2815,7 +2815,7 @@ API Server
 
 ---
 
-# Hands-on Lab 15 – Cluster Events
+## Hands-on Lab 15 – Cluster Events
 
 Generate a controlled scheduling failure.
 
@@ -2829,7 +2829,7 @@ Identify the failure reason.
 
 ---
 
-# Hands-on Lab 16 – Certificate Inspection
+## Hands-on Lab 16 – Certificate Inspection
 
 Inspect the cluster's certificate configuration using the administration tools appropriate for your Kubernetes distribution.
 
@@ -2843,7 +2843,7 @@ Expiration
 
 ---
 
-# Hands-on Lab 17 – etcd Backup
+## Hands-on Lab 17 – etcd Backup
 
 In a test cluster where you have appropriate administrative access:
 
@@ -2857,7 +2857,7 @@ Document the procedure.
 
 ---
 
-# Hands-on Lab 18 – etcd Restore
+## Hands-on Lab 18 – etcd Restore
 
 Use a disposable test cluster.
 
@@ -2875,7 +2875,7 @@ Never experiment with restore procedures on production without an approved recov
 
 ---
 
-# Hands-on Lab 19 – Upgrade Simulation
+## Hands-on Lab 19 – Upgrade Simulation
 
 Create a test cluster.
 
@@ -2892,7 +2892,7 @@ Validation
 
 ---
 
-# Hands-on Lab 20 – Full Administration Exercise
+## Hands-on Lab 20 – Full Administration Exercise
 
 Build a Kubernetes environment containing:
 
@@ -2922,9 +2922,9 @@ Troubleshooting
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Cluster Administration
+### Cluster Administration
 
 ```text
 Operating and maintaining a Kubernetes cluster
@@ -2932,7 +2932,7 @@ Operating and maintaining a Kubernetes cluster
 
 ---
 
-## Control Plane
+### Control Plane
 
 ```text
 Manages cluster state
@@ -2940,7 +2940,7 @@ Manages cluster state
 
 ---
 
-## API Server
+### API Server
 
 ```text
 Primary Kubernetes API endpoint
@@ -2948,7 +2948,7 @@ Primary Kubernetes API endpoint
 
 ---
 
-## etcd
+### etcd
 
 ```text
 Persistent distributed key-value store for cluster state
@@ -2956,7 +2956,7 @@ Persistent distributed key-value store for cluster state
 
 ---
 
-## Scheduler
+### Scheduler
 
 ```text
 Assigns Pods to suitable nodes
@@ -2964,7 +2964,7 @@ Assigns Pods to suitable nodes
 
 ---
 
-## Controller Manager
+### Controller Manager
 
 ```text
 Runs reconciliation controllers
@@ -2972,7 +2972,7 @@ Runs reconciliation controllers
 
 ---
 
-## kubelet
+### kubelet
 
 ```text
 Manages Pods on a node
@@ -2980,7 +2980,7 @@ Manages Pods on a node
 
 ---
 
-## Container Runtime
+### Container Runtime
 
 ```text
 Runs containers
@@ -2988,7 +2988,7 @@ Runs containers
 
 ---
 
-## kube-proxy
+### kube-proxy
 
 ```text
 Implements service networking behavior on nodes in applicable configurations
@@ -2996,7 +2996,7 @@ Implements service networking behavior on nodes in applicable configurations
 
 ---
 
-## CNI
+### CNI
 
 ```text
 Provides container networking
@@ -3004,7 +3004,7 @@ Provides container networking
 
 ---
 
-## CoreDNS
+### CoreDNS
 
 ```text
 Provides Kubernetes DNS
@@ -3012,7 +3012,7 @@ Provides Kubernetes DNS
 
 ---
 
-## Cordon
+### Cordon
 
 ```text
 Prevents new Pods from scheduling on a node
@@ -3020,7 +3020,7 @@ Prevents new Pods from scheduling on a node
 
 ---
 
-## Drain
+### Drain
 
 ```text
 Evicts/deletes eligible workloads from a node for maintenance
@@ -3028,7 +3028,7 @@ Evicts/deletes eligible workloads from a node for maintenance
 
 ---
 
-## Uncordon
+### Uncordon
 
 ```text
 Allows scheduling on the node again
@@ -3036,7 +3036,7 @@ Allows scheduling on the node again
 
 ---
 
-## RBAC
+### RBAC
 
 ```text
 Controls authorization
@@ -3044,7 +3044,7 @@ Controls authorization
 
 ---
 
-## ResourceQuota
+### ResourceQuota
 
 ```text
 Limits namespace resource consumption
@@ -3052,7 +3052,7 @@ Limits namespace resource consumption
 
 ---
 
-## LimitRange
+### LimitRange
 
 ```text
 Defines resource defaults and constraints
@@ -3060,7 +3060,7 @@ Defines resource defaults and constraints
 
 ---
 
-## PDB
+### PDB
 
 ```text
 Limits voluntary disruption of replicated workloads
@@ -3068,7 +3068,7 @@ Limits voluntary disruption of replicated workloads
 
 ---
 
-## Audit Log
+### Audit Log
 
 ```text
 Records Kubernetes API activity
@@ -3076,7 +3076,7 @@ Records Kubernetes API activity
 
 ---
 
-## kubeconfig
+### kubeconfig
 
 ```text
 Client configuration containing clusters, users, and contexts
@@ -3084,7 +3084,7 @@ Client configuration containing clusters, users, and contexts
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Cluster information:
 
@@ -3274,9 +3274,9 @@ kubectl taint node <node> key=value:NoSchedule
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Kubernetes cluster administration?
 - What are the major Kubernetes control-plane components?
@@ -3305,7 +3305,7 @@ kubectl taint node <node> key=value:NoSchedule
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Explain the complete Kubernetes control-plane architecture.
 - How does `kubectl` communicate with the cluster?
@@ -3330,7 +3330,7 @@ kubectl taint node <node> key=value:NoSchedule
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a highly available Kubernetes control plane.
 - Explain how etcd contributes to cluster availability.
@@ -3351,13 +3351,13 @@ kubectl taint node <node> key=value:NoSchedule
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What happens when you run `kubectl apply -f deployment.yaml`?
 
-### Answer
+#### Answer
 
 Conceptually:
 
@@ -3393,13 +3393,13 @@ The API Server accepts and persists the desired state, controllers reconcile it,
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > A Pod is stuck in Pending. How do you troubleshoot it?
 
-### Answer
+#### Answer
 
 Run:
 
@@ -3431,13 +3431,13 @@ The most important first clue is usually the Pod's scheduling events.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > A Kubernetes node is NotReady. What do you check?
 
-### Answer
+#### Answer
 
 Start with:
 
@@ -3462,13 +3462,13 @@ Then inspect node-level logs and system services using the appropriate access me
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What is the difference between cordon and drain?
 
-### Answer
+#### Answer
 
 Cordon:
 
@@ -3498,13 +3498,13 @@ Uncordon
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > Why is etcd so important?
 
-### Answer
+#### Answer
 
 etcd stores Kubernetes cluster state.
 
@@ -3534,13 +3534,13 @@ is critical.
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > How would you safely maintain a production node?
 
-### Answer
+#### Answer
 
 First ensure sufficient workload redundancy.
 
@@ -3573,13 +3573,13 @@ Alerts
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How would you secure Kubernetes administration?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3607,13 +3607,13 @@ credentials unnecessarily.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > What would you monitor on a Kubernetes cluster?
 
-### Answer
+#### Answer
 
 Monitor:
 
@@ -3647,13 +3647,13 @@ Saturation
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How would you prepare for a Kubernetes upgrade?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3691,13 +3691,13 @@ Security Policies
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > How would you design a production Kubernetes administration strategy?
 
-### Answer
+#### Answer
 
 Build around:
 
@@ -3755,7 +3755,7 @@ Security Controls
 
 ---
 
-# Production Cluster Administration Checklist
+## Production Cluster Administration Checklist
 
 ```text
 ☑ Control plane HA
@@ -3787,7 +3787,7 @@ Security Controls
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Cluster administration is responsible for maintaining the health, security, availability, and performance of Kubernetes infrastructure.
 
@@ -3869,9 +3869,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 66 – Backup & Restore
+## Chapter 66 – Backup & Restore
 
 Topics will include:
 

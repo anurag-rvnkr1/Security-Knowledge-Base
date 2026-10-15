@@ -1,10 +1,10 @@
 # 06-Windows-File-Management.md
 
-# Part 1 — Windows File Management Fundamentals, File Explorer, Paths, Naming Conventions, and File Operations
+## Part 1 — Windows File Management Fundamentals, File Explorer, Paths, Naming Conventions, and File Operations
 
 ---
 
-# Introduction
+## Introduction
 
 Windows File Management is the process of organizing, creating, accessing, modifying, moving, protecting, and deleting files and folders within the Windows operating system.
 
@@ -24,7 +24,7 @@ While the previous chapter focused on **how Windows stores data internally (NTFS
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this part, you will understand:
 
@@ -40,7 +40,7 @@ By the end of this part, you will understand:
 
 ---
 
-# What is File Management?
+## What is File Management?
 
 File management is the process of:
 
@@ -59,7 +59,7 @@ Good file management improves productivity, security, and maintainability.
 
 ---
 
-# Windows File Hierarchy
+## Windows File Hierarchy
 
 Windows organizes data in a hierarchical structure.
 
@@ -80,7 +80,7 @@ Each folder can contain additional folders and files.
 
 ---
 
-# Root Directory
+## Root Directory
 
 The top-level directory of a volume is called the **root directory**.
 
@@ -104,7 +104,7 @@ Everything stored on a volume exists beneath its root directory.
 
 ---
 
-# Windows Drives
+## Windows Drives
 
 Examples:
 
@@ -131,7 +131,7 @@ Drive letters provide logical access to storage resources.
 
 ---
 
-# Folder Structure Example
+## Folder Structure Example
 
 ```text
 Projects
@@ -149,7 +149,7 @@ Organized folder structures improve navigation and collaboration.
 
 ---
 
-# File Explorer
+## File Explorer
 
 **File Explorer** is the primary graphical interface for managing files.
 
@@ -167,7 +167,7 @@ Common capabilities:
 
 ---
 
-# File Explorer Layout
+## File Explorer Layout
 
 ```text
 +-------------------------------------------+
@@ -201,7 +201,7 @@ The exact interface varies slightly across Windows versions.
 
 ---
 
-# Navigation Pane
+## Navigation Pane
 
 The Navigation Pane provides quick access to:
 
@@ -216,7 +216,7 @@ The Navigation Pane provides quick access to:
 
 ---
 
-# Address Bar
+## Address Bar
 
 Example:
 
@@ -228,7 +228,7 @@ The address bar shows the current folder location and allows quick navigation.
 
 ---
 
-# File Paths
+## File Paths
 
 A **path** specifies the location of a file or folder.
 
@@ -242,7 +242,7 @@ Windows uses paths to locate resources.
 
 ---
 
-# Absolute Path
+## Absolute Path
 
 An absolute path begins at the root of a drive.
 
@@ -256,7 +256,7 @@ Absolute paths uniquely identify a resource on a system.
 
 ---
 
-# Relative Path
+## Relative Path
 
 A relative path starts from the current working directory.
 
@@ -270,7 +270,7 @@ Relative paths are commonly used in scripts and applications.
 
 ---
 
-# Absolute vs Relative Paths
+## Absolute vs Relative Paths
 
 | Absolute Path | Relative Path |
 |---------------|---------------|
@@ -280,7 +280,7 @@ Relative paths are commonly used in scripts and applications.
 
 ---
 
-# Windows Path Separator
+## Windows Path Separator
 
 Windows uses:
 
@@ -298,7 +298,7 @@ Some programming languages and command-line tools may also accept `/`, but the n
 
 ---
 
-# File Names
+## File Names
 
 A file name generally consists of:
 
@@ -316,7 +316,7 @@ Extension
 
 ---
 
-# File Extensions
+## File Extensions
 
 The extension identifies the file type.
 
@@ -337,7 +337,7 @@ Examples:
 
 ---
 
-# Why File Extensions Matter
+## Why File Extensions Matter
 
 Extensions help Windows determine:
 
@@ -350,7 +350,7 @@ Incorrect or misleading extensions can pose security risks.
 
 ---
 
-# Reserved Characters
+## Reserved Characters
 
 Windows does not allow certain characters in file names.
 
@@ -380,7 +380,7 @@ Attempting to use these characters results in an error.
 
 ---
 
-# Reserved Names
+## Reserved Names
 
 Windows also reserves specific names.
 
@@ -404,7 +404,7 @@ These names cannot normally be used as standard file names.
 
 ---
 
-# File Properties
+## File Properties
 
 Right-click → **Properties** displays information such as:
 
@@ -419,7 +419,7 @@ Right-click → **Properties** displays information such as:
 
 ---
 
-# Common File Operations
+## Common File Operations
 
 Windows supports several basic operations.
 
@@ -455,7 +455,7 @@ These operations are often referred to collectively as CRUD (Create, Read, Updat
 
 ---
 
-# Creating Files
+## Creating Files
 
 Methods include:
 
@@ -468,7 +468,7 @@ Methods include:
 
 ---
 
-# Creating Folders
+## Creating Folders
 
 Methods:
 
@@ -492,7 +492,7 @@ Ctrl + Shift + N
 
 ---
 
-# Renaming Files
+## Renaming Files
 
 Methods:
 
@@ -505,9 +505,9 @@ Renaming changes the file name but generally does not alter its contents.
 
 ---
 
-# Copy vs Move
+## Copy vs Move
 
-## Copy
+### Copy
 
 ```text
 Original
@@ -525,7 +525,7 @@ The original remains unchanged.
 
 ---
 
-## Move
+### Move
 
 ```text
 Original
@@ -543,7 +543,7 @@ The file changes location.
 
 ---
 
-# Delete Operations
+## Delete Operations
 
 Deleting a file usually follows this process:
 
@@ -563,7 +563,7 @@ Depending on the operation (e.g., Shift + Delete, removable media, or certain ne
 
 ---
 
-# Enterprise Folder Structure Example
+## Enterprise Folder Structure Example
 
 ```text
 Company
@@ -585,7 +585,7 @@ Well-structured directories simplify permissions, backups, and collaboration.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Poor file management can introduce security risks.
 
@@ -606,7 +606,7 @@ Security teams encourage:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective file management improves:
 
@@ -621,7 +621,7 @@ Disorganized storage increases operational costs and the likelihood of human err
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use standardized folder structures.
 - Adopt meaningful file names.
@@ -633,9 +633,9 @@ Disorganized storage increases operational costs and the likelihood of human err
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Create a Project Structure
+### Lab 1 — Create a Project Structure
 
 Using File Explorer, create:
 
@@ -652,7 +652,7 @@ Discuss how this structure improves organization.
 
 ---
 
-## Lab 2 — Examine File Properties
+### Lab 2 — Examine File Properties
 
 1. Right-click any document.
 2. Select **Properties**.
@@ -667,7 +667,7 @@ Record:
 
 ---
 
-## Lab 3 — Practice File Operations
+### Lab 3 — Practice File Operations
 
 Create a test file and:
 
@@ -681,7 +681,7 @@ Observe how each operation affects the file's location and availability.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows organizes files using a hierarchical directory structure.
 - File Explorer is the primary graphical tool for file management.
@@ -692,7 +692,7 @@ Observe how each operation affects the file's location and availability.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Windows File Management?
 2. What is the difference between a file and a folder?
@@ -707,7 +707,7 @@ Observe how each operation affects the file's location and availability.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows File Explorer Documentation
@@ -717,13 +717,13 @@ Observe how each operation affects the file's location and availability.
 
 ---
 
-# 06-Windows-File-Management.md
+## 06-Windows-File-Management.md
 
-# Part 2 — Advanced File Explorer, Search, Libraries, File Attributes, Hidden Files, Compression, Shortcuts, and File Sharing
+## Part 2 — Advanced File Explorer, Search, Libraries, File Attributes, Hidden Files, Compression, Shortcuts, and File Sharing
 
 ---
 
-# Introduction
+## Introduction
 
 As organizations manage millions of files across endpoints, servers, and cloud storage, efficient file management becomes increasingly important.
 
@@ -742,7 +742,7 @@ These features are widely used in enterprise environments.
 
 ---
 
-# Windows File Explorer Overview
+## Windows File Explorer Overview
 
 Beyond basic navigation, File Explorer offers:
 
@@ -759,7 +759,7 @@ Beyond basic navigation, File Explorer offers:
 
 ---
 
-# File Explorer Components
+## File Explorer Components
 
 ```text
 +-----------------------------------------------------+
@@ -797,7 +797,7 @@ Each component helps users efficiently manage files.
 
 ---
 
-# Navigation Options
+## Navigation Options
 
 Users can browse using:
 
@@ -813,7 +813,7 @@ Users can browse using:
 
 ---
 
-# View Modes
+## View Modes
 
 Windows supports multiple display options.
 
@@ -832,7 +832,7 @@ Enterprise administrators frequently use **Details View** because it exposes add
 
 ---
 
-# Details View
+## Details View
 
 Example:
 
@@ -856,7 +856,7 @@ Additional columns may include:
 
 ---
 
-# Sorting Files
+## Sorting Files
 
 Files can be sorted by:
 
@@ -880,7 +880,7 @@ Sorting does not change file locations.
 
 ---
 
-# Grouping Files
+## Grouping Files
 
 Grouping organizes files into categories.
 
@@ -905,7 +905,7 @@ Useful grouping criteria include:
 
 ---
 
-# Filtering Files
+## Filtering Files
 
 Filters reduce visible results.
 
@@ -925,7 +925,7 @@ Filtering helps locate relevant files quickly.
 
 ---
 
-# Windows Search
+## Windows Search
 
 The File Explorer search box searches:
 
@@ -946,7 +946,7 @@ Matching Files
 
 ---
 
-# Search Workflow
+## Search Workflow
 
 ```text
 User Search
@@ -968,7 +968,7 @@ The Windows Search Index significantly improves search speed for indexed locatio
 
 ---
 
-# Search Operators
+## Search Operators
 
 Examples:
 
@@ -985,7 +985,7 @@ Search syntax can vary slightly depending on Windows version.
 
 ---
 
-# Windows Search Index
+## Windows Search Index
 
 Windows maintains an index of selected locations.
 
@@ -1014,7 +1014,7 @@ Common indexed locations:
 
 ---
 
-# Libraries
+## Libraries
 
 Libraries provide virtual collections of folders.
 
@@ -1034,7 +1034,7 @@ A library can include content from multiple physical folders while presenting it
 
 ---
 
-# Library Example
+## Library Example
 
 ```text
 Documents Library
@@ -1048,7 +1048,7 @@ Libraries do not duplicate files—they reference existing locations.
 
 ---
 
-# Hidden Files
+## Hidden Files
 
 Windows allows files and folders to be marked as **Hidden**.
 
@@ -1062,7 +1062,7 @@ Hidden files remain accessible if viewing hidden items is enabled.
 
 ---
 
-# Viewing Hidden Files
+## Viewing Hidden Files
 
 In File Explorer:
 
@@ -1082,7 +1082,7 @@ Use caution when modifying hidden files, as many are required for proper system 
 
 ---
 
-# Protected Operating System Files
+## Protected Operating System Files
 
 Windows hides certain critical system files separately from ordinary hidden files.
 
@@ -1096,7 +1096,7 @@ These files should generally not be modified manually.
 
 ---
 
-# File Attributes
+## File Attributes
 
 Windows supports several attributes.
 
@@ -1111,7 +1111,7 @@ Windows supports several attributes.
 
 ---
 
-# Viewing File Attributes
+## Viewing File Attributes
 
 Methods:
 
@@ -1129,7 +1129,7 @@ This command displays file attributes in the current directory.
 
 ---
 
-# NTFS Compression
+## NTFS Compression
 
 Compression reduces disk usage.
 
@@ -1153,7 +1153,7 @@ Compression is transparent to users and applications.
 
 ---
 
-# ZIP Compression
+## ZIP Compression
 
 Windows also supports compressed ZIP archives.
 
@@ -1180,7 +1180,7 @@ ZIP archives are useful for:
 
 ---
 
-# Shortcuts
+## Shortcuts
 
 A shortcut is a pointer to another file or folder.
 
@@ -1198,7 +1198,7 @@ Deleting a shortcut does **not** delete the original file.
 
 ---
 
-# Shortcut Example
+## Shortcut Example
 
 ```text
 Desktop Shortcut
@@ -1212,7 +1212,7 @@ Opening the shortcut opens the target file.
 
 ---
 
-# File Sharing
+## File Sharing
 
 Windows supports multiple sharing methods.
 
@@ -1228,7 +1228,7 @@ Enterprise environments typically rely on centrally managed network shares or cl
 
 ---
 
-# Network Shares
+## Network Shares
 
 Example:
 
@@ -1240,7 +1240,7 @@ Users access shared resources over the network based on assigned permissions.
 
 ---
 
-# Sharing Workflow
+## Sharing Workflow
 
 ```text
 User
@@ -1266,7 +1266,7 @@ NTFS permissions and share permissions may both influence access.
 
 ---
 
-# Offline Files
+## Offline Files
 
 Windows supports offline access for certain network resources.
 
@@ -1292,7 +1292,7 @@ This feature benefits users who work without continuous network connectivity.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A marketing team stores project files on a shared server.
 
@@ -1310,7 +1310,7 @@ Users collaborate without creating unnecessary duplicate copies.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Improper file sharing introduces security risks.
 
@@ -1332,7 +1332,7 @@ Security teams should monitor:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Advanced file management capabilities provide:
 
@@ -1345,7 +1345,7 @@ Advanced file management capabilities provide:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use standardized folder structures.
 - Configure Windows Search indexing for frequently accessed locations.
@@ -1357,9 +1357,9 @@ Advanced file management capabilities provide:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Explore Search Filters
+### Lab 1 — Explore Search Filters
 
 1. Open **File Explorer**.
 2. Navigate to a folder containing multiple file types.
@@ -1379,7 +1379,7 @@ Observe the filtered results.
 
 ---
 
-## Lab 2 — Display Hidden Files
+### Lab 2 — Display Hidden Files
 
 1. Open **File Explorer**.
 2. Select:
@@ -1402,7 +1402,7 @@ Do not modify system files.
 
 ---
 
-## Lab 3 — Create a ZIP Archive
+### Lab 3 — Create a ZIP Archive
 
 1. Create a folder containing several files.
 2. Right-click the folder.
@@ -1416,7 +1416,7 @@ Compare the original folder with the resulting archive.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - File Explorer provides powerful search, organization, and sharing capabilities.
 - Windows Search uses indexing to improve performance.
@@ -1427,7 +1427,7 @@ Compare the original folder with the resulting archive.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of Windows Search indexing?
 2. What is the difference between sorting and grouping files?
@@ -1442,7 +1442,7 @@ Compare the original folder with the resulting archive.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows File Explorer Documentation
@@ -1452,13 +1452,13 @@ Compare the original folder with the resulting archive.
 
 ---
 
-# 06-Windows-File-Management.md
+## 06-Windows-File-Management.md
 
-# Part 3 — File Ownership, File Permissions, Recycle Bin, File Recovery, Version History, OneDrive, Offline Files, and Enterprise File Governance
+## Part 3 — File Ownership, File Permissions, Recycle Bin, File Recovery, Version History, OneDrive, Offline Files, and Enterprise File Governance
 
 ---
 
-# Introduction
+## Introduction
 
 Managing files in an enterprise environment involves much more than creating and deleting documents.
 
@@ -1475,7 +1475,7 @@ This part explores the administrative and security aspects of Windows file manag
 
 ---
 
-# File Ownership
+## File Ownership
 
 Every file and folder on an NTFS volume has an **owner**.
 
@@ -1489,7 +1489,7 @@ Ownership determines who can modify permissions on an object.
 
 ---
 
-# Ownership Architecture
+## Ownership Architecture
 
 ```text
 File
@@ -1511,7 +1511,7 @@ The owner is stored as part of the file's security descriptor.
 
 ---
 
-# Viewing File Ownership
+## Viewing File Ownership
 
 To view ownership:
 
@@ -1539,7 +1539,7 @@ Administrators can review ownership when troubleshooting permission issues.
 
 ---
 
-# Changing Ownership
+## Changing Ownership
 
 Authorized administrators can change ownership when necessary.
 
@@ -1554,7 +1554,7 @@ Changing ownership should follow organizational policies and auditing requiremen
 
 ---
 
-# Ownership vs Permissions
+## Ownership vs Permissions
 
 | Ownership | Permissions |
 |------------|-------------|
@@ -1566,7 +1566,7 @@ Ownership and permissions are related but serve different purposes.
 
 ---
 
-# File Permissions Review
+## File Permissions Review
 
 Windows evaluates permissions whenever a user attempts to access a file.
 
@@ -1594,7 +1594,7 @@ Permissions are discussed in detail in the dedicated NTFS Permissions chapter.
 
 ---
 
-# Effective Access
+## Effective Access
 
 A user's actual permissions depend on:
 
@@ -1629,7 +1629,7 @@ Administrators should verify **effective access**, especially in complex environ
 
 ---
 
-# Recycle Bin
+## Recycle Bin
 
 The Recycle Bin provides a temporary recovery location for many deleted files.
 
@@ -1655,7 +1655,7 @@ This helps users recover accidentally deleted files.
 
 ---
 
-# When the Recycle Bin Is Bypassed
+## When the Recycle Bin Is Bypassed
 
 The Recycle Bin is typically bypassed when:
 
@@ -1668,7 +1668,7 @@ In these cases, the file is not placed in the Recycle Bin.
 
 ---
 
-# Emptying the Recycle Bin
+## Emptying the Recycle Bin
 
 ```text
 Recycle Bin
@@ -1686,7 +1686,7 @@ After the Recycle Bin is emptied, the file data may still remain recoverable unt
 
 ---
 
-# File Recovery
+## File Recovery
 
 Recovery success depends on:
 
@@ -1699,7 +1699,7 @@ The sooner recovery is attempted, the greater the chance of success.
 
 ---
 
-# Enterprise Recovery Methods
+## Enterprise Recovery Methods
 
 Organizations commonly recover files using:
 
@@ -1711,7 +1711,7 @@ Organizations commonly recover files using:
 
 ---
 
-# Version History
+## Version History
 
 Windows can preserve previous versions of files in supported scenarios.
 
@@ -1737,7 +1737,7 @@ Version History helps recover from accidental changes or corruption.
 
 ---
 
-# Previous Versions
+## Previous Versions
 
 Users can access previous versions by:
 
@@ -1758,7 +1758,7 @@ Availability depends on:
 
 ---
 
-# File History
+## File History
 
 File History automatically backs up selected user folders.
 
@@ -1790,7 +1790,7 @@ Network Location
 
 ---
 
-# OneDrive Integration
+## OneDrive Integration
 
 Modern Windows integrates with Microsoft OneDrive.
 
@@ -1805,7 +1805,7 @@ Benefits include:
 
 ---
 
-# OneDrive Synchronization
+## OneDrive Synchronization
 
 ```text
 Local File
@@ -1827,7 +1827,7 @@ Synchronization occurs automatically when connectivity is available.
 
 ---
 
-# OneDrive Status Icons
+## OneDrive Status Icons
 
 Common synchronization indicators include:
 
@@ -1843,7 +1843,7 @@ The exact appearance may vary slightly by Windows version.
 
 ---
 
-# Offline Files
+## Offline Files
 
 Offline Files allow users to continue working with selected network files while disconnected.
 
@@ -1873,7 +1873,7 @@ This feature is useful for laptops used outside the corporate network.
 
 ---
 
-# Synchronization Conflicts
+## Synchronization Conflicts
 
 Occasionally, multiple users modify the same file.
 
@@ -1905,7 +1905,7 @@ Organizations often use document management systems with version control to redu
 
 ---
 
-# File Locking
+## File Locking
 
 Windows may temporarily lock files to prevent conflicting modifications.
 
@@ -1931,7 +1931,7 @@ Some applications implement additional collaboration features beyond basic file 
 
 ---
 
-# Enterprise File Governance
+## Enterprise File Governance
 
 Organizations establish governance policies to manage information throughout its lifecycle.
 
@@ -1947,7 +1947,7 @@ Typical policies address:
 
 ---
 
-# Data Classification
+## Data Classification
 
 Example classification model:
 
@@ -1971,7 +1971,7 @@ Classification determines how files should be handled and protected.
 
 ---
 
-# File Retention
+## File Retention
 
 Retention policies specify how long files must be preserved.
 
@@ -1988,7 +1988,7 @@ Actual retention periods depend on legal, regulatory, and organizational require
 
 ---
 
-# Secure File Deletion
+## Secure File Deletion
 
 Simply deleting a file does not necessarily erase its contents.
 
@@ -2003,7 +2003,7 @@ Organizations should follow recognized standards for media sanitization.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A legal department manages confidential contracts.
 
@@ -2039,7 +2039,7 @@ This layered approach supports security, compliance, and business continuity.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Improper file management can expose organizations to risks such as:
 
@@ -2061,7 +2061,7 @@ Security teams monitor:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong file governance provides:
 
@@ -2074,7 +2074,7 @@ Strong file governance provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Assign ownership for critical business data.
 - Review permissions regularly.
@@ -2086,9 +2086,9 @@ Strong file governance provides:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review File Ownership
+### Lab 1 — Review File Ownership
 
 1. Right-click a test file.
 2. Open:
@@ -2112,7 +2112,7 @@ Record:
 
 ---
 
-## Lab 2 — Restore a Deleted File
+### Lab 2 — Restore a Deleted File
 
 1. Create a test file.
 2. Delete it normally.
@@ -2123,7 +2123,7 @@ Observe that it returns to its original location.
 
 ---
 
-## Lab 3 — Review OneDrive Status
+### Lab 3 — Review OneDrive Status
 
 If OneDrive is configured:
 
@@ -2135,7 +2135,7 @@ Discuss the differences between online-only and locally available files.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Every NTFS object has an owner.
 - Ownership and permissions are separate concepts.
@@ -2146,7 +2146,7 @@ Discuss the differences between online-only and locally available files.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is file ownership?
 2. What is the difference between ownership and permissions?
@@ -2161,7 +2161,7 @@ Discuss the differences between online-only and locally available files.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft OneDrive Documentation
@@ -2172,13 +2172,13 @@ Discuss the differences between online-only and locally available files.
 
 ---
 
-# 06-Windows-File-Management.md
+## 06-Windows-File-Management.md
 
-# Part 4 — File Management Automation, Command-Line Tools, PowerShell, Enterprise Administration, Best Practices, Chapter Summary, and Review
+## Part 4 — File Management Automation, Command-Line Tools, PowerShell, Enterprise Administration, Best Practices, Chapter Summary, and Review
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise environments may contain:
 
@@ -2205,7 +2205,7 @@ Automation improves efficiency, reduces human error, and enables scalable admini
 
 ---
 
-# Windows File Management Tools
+## Windows File Management Tools
 
 Windows includes several file management utilities.
 
@@ -2223,7 +2223,7 @@ Windows includes several file management utilities.
 
 ---
 
-# Command Prompt File Operations
+## Command Prompt File Operations
 
 Common CMD commands include:
 
@@ -2241,7 +2241,7 @@ Common CMD commands include:
 
 ---
 
-# Directory Navigation
+## Directory Navigation
 
 Example:
 
@@ -2257,7 +2257,7 @@ The current working directory changes as you navigate.
 
 ---
 
-# Creating Directories
+## Creating Directories
 
 ```cmd
 mkdir Projects
@@ -2279,7 +2279,7 @@ Created Successfully
 
 ---
 
-# Copying Files
+## Copying Files
 
 ```cmd
 copy report.txt D:\Backup\
@@ -2305,7 +2305,7 @@ Two Copies Exist
 
 ---
 
-# Moving Files
+## Moving Files
 
 ```cmd
 move report.txt D:\Archive\
@@ -2327,7 +2327,7 @@ Single File
 
 ---
 
-# Renaming Files
+## Renaming Files
 
 ```cmd
 ren report.txt report_old.txt
@@ -2337,7 +2337,7 @@ Only the file name changes; the file contents remain the same.
 
 ---
 
-# Deleting Files
+## Deleting Files
 
 ```cmd
 del report.txt
@@ -2359,7 +2359,7 @@ Use deletion commands carefully, as they may bypass the Recycle Bin depending on
 
 ---
 
-# Directory Listing
+## Directory Listing
 
 ```cmd
 dir
@@ -2383,7 +2383,7 @@ Displays files with various attributes, including hidden items.
 
 ---
 
-# PowerShell File Management
+## PowerShell File Management
 
 PowerShell provides object-oriented file management.
 
@@ -2402,7 +2402,7 @@ Common cmdlets include:
 
 ---
 
-# List Files
+## List Files
 
 ```powershell
 Get-ChildItem
@@ -2418,7 +2418,7 @@ PowerShell returns objects rather than plain text, enabling further processing.
 
 ---
 
-# Create a Folder
+## Create a Folder
 
 ```powershell
 New-Item -ItemType Directory -Name Projects
@@ -2434,7 +2434,7 @@ Created
 
 ---
 
-# Copy Files
+## Copy Files
 
 ```powershell
 Copy-Item report.docx D:\Backup\
@@ -2444,7 +2444,7 @@ PowerShell can also copy entire directory structures using appropriate parameter
 
 ---
 
-# Move Files
+## Move Files
 
 ```powershell
 Move-Item report.docx D:\Archive\
@@ -2452,7 +2452,7 @@ Move-Item report.docx D:\Archive\
 
 ---
 
-# Rename Files
+## Rename Files
 
 ```powershell
 Rename-Item report.docx report_final.docx
@@ -2460,7 +2460,7 @@ Rename-Item report.docx report_final.docx
 
 ---
 
-# Delete Files
+## Delete Files
 
 ```powershell
 Remove-Item report.docx
@@ -2470,7 +2470,7 @@ Use parameters such as `-WhatIf` to preview actions before making changes.
 
 ---
 
-# Reading File Contents
+## Reading File Contents
 
 ```powershell
 Get-Content notes.txt
@@ -2480,7 +2480,7 @@ This displays the contents of a text file in the console.
 
 ---
 
-# Searching for Files
+## Searching for Files
 
 Example:
 
@@ -2508,7 +2508,7 @@ Results
 
 ---
 
-# Filtering Results
+## Filtering Results
 
 PowerShell supports filtering by many properties.
 
@@ -2523,7 +2523,7 @@ This command returns files larger than 10 MB.
 
 ---
 
-# Robocopy
+## Robocopy
 
 **Robocopy (Robust File Copy)** is Microsoft's enterprise file-copy utility.
 
@@ -2544,7 +2544,7 @@ Advantages include:
 
 ---
 
-# Robocopy Workflow
+## Robocopy Workflow
 
 ```text
 Source
@@ -2570,7 +2570,7 @@ Robocopy is widely used for enterprise data migration and backup tasks.
 
 ---
 
-# Xcopy
+## Xcopy
 
 `xcopy` is an older command-line copy utility.
 
@@ -2584,7 +2584,7 @@ While still available in many Windows versions, Robocopy is generally preferred 
 
 ---
 
-# File Attributes
+## File Attributes
 
 Use the `attrib` command to view or modify attributes.
 
@@ -2604,7 +2604,7 @@ This marks the file as hidden.
 
 ---
 
-# Compact
+## Compact
 
 Manage NTFS compression using:
 
@@ -2620,7 +2620,7 @@ Administrators can:
 
 ---
 
-# Cipher
+## Cipher
 
 The `cipher` utility supports operations related to:
 
@@ -2638,7 +2638,7 @@ Review the available options before use.
 
 ---
 
-# Automation with Scripts
+## Automation with Scripts
 
 Administrators automate repetitive tasks using:
 
@@ -2671,7 +2671,7 @@ Email Results
 
 ---
 
-# Logging File Operations
+## Logging File Operations
 
 Automation should produce logs whenever practical.
 
@@ -2688,7 +2688,7 @@ Logs simplify troubleshooting and auditing.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A nightly backup job copies departmental files.
 
@@ -2716,7 +2716,7 @@ The process runs automatically using Task Scheduler or enterprise orchestration 
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers may automate file operations to:
 
@@ -2736,7 +2736,7 @@ Security teams monitor for:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Automation provides:
 
@@ -2751,7 +2751,7 @@ Poorly tested automation, however, can unintentionally modify or delete large am
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Test automation in non-production environments.
 - Use least-privilege service accounts.
@@ -2763,9 +2763,9 @@ Poorly tested automation, however, can unintentionally modify or delete large am
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Navigate with Command Prompt
+### Lab 1 — Navigate with Command Prompt
 
 Open **Command Prompt** and practice:
 
@@ -2783,7 +2783,7 @@ Observe how the current directory changes.
 
 ---
 
-## Lab 2 — PowerShell File Operations
+### Lab 2 — PowerShell File Operations
 
 Open **PowerShell** and run:
 
@@ -2802,7 +2802,7 @@ Remove-Item Demo
 
 ---
 
-## Lab 3 — Explore Robocopy
+### Lab 3 — Explore Robocopy
 
 Run:
 
@@ -2821,7 +2821,7 @@ Discuss why Robocopy is preferred for enterprise file transfers.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2853,7 +2853,7 @@ These skills form the foundation for effective Windows administration and prepar
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows provides both graphical and command-line tools for file management.
 - PowerShell offers object-oriented automation capabilities beyond traditional CMD.
@@ -2863,7 +2863,7 @@ These skills form the foundation for effective Windows administration and prepar
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between `copy` and `xcopy`?
 2. Why is Robocopy preferred in enterprise environments?
@@ -2878,7 +2878,7 @@ These skills form the foundation for effective Windows administration and prepar
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft PowerShell Documentation
@@ -2889,7 +2889,7 @@ These skills form the foundation for effective Windows administration and prepar
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 6 – Windows File Management**.
 

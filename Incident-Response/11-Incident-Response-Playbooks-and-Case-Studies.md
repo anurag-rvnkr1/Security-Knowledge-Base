@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Incident response becomes significantly more effective when responders have **repeatable playbooks** for common incident categories.
 
@@ -43,7 +43,7 @@ Instead, it should provide:
 
 ---
 
-# Why Playbooks Matter
+## Why Playbooks Matter
 
 Without playbooks, responders may:
 
@@ -58,7 +58,7 @@ A mature SOC uses playbooks as operational guidance.
 
 ---
 
-# Playbook Architecture
+## Playbook Architecture
 
 ```text
 Alert
@@ -93,7 +93,7 @@ Close
 
 ---
 
-# Playbook Structure
+## Playbook Structure
 
 Each playbook should ideally define:
 
@@ -115,7 +115,7 @@ Metrics
 
 ---
 
-# Severity and Escalation
+## Severity and Escalation
 
 A playbook should define escalation thresholds.
 
@@ -147,9 +147,9 @@ Organizations should customize severity definitions to their risk model.
 
 ---
 
-# Playbook 01 — Phishing
+## Playbook 01 — Phishing
 
-## Trigger
+### Trigger
 
 Potential phishing email detected.
 
@@ -163,7 +163,7 @@ Indicators:
 
 ---
 
-## Objective
+### Objective
 
 Determine:
 
@@ -175,7 +175,7 @@ Determine:
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 Phishing Alert
@@ -204,7 +204,7 @@ Search Enterprise
 
 ---
 
-## Evidence
+### Evidence
 
 Collect:
 
@@ -220,7 +220,7 @@ Collect:
 
 ---
 
-## Containment
+### Containment
 
 Potential actions:
 
@@ -233,7 +233,7 @@ Potential actions:
 
 ---
 
-## Validation
+### Validation
 
 Confirm:
 
@@ -247,15 +247,15 @@ Confirm:
 
 ---
 
-# Playbook 02 — Malware Detection
+## Playbook 02 — Malware Detection
 
-## Trigger
+### Trigger
 
 EDR detects suspicious malware.
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 EDR Alert
@@ -290,7 +290,7 @@ Recover
 
 ---
 
-## Evidence
+### Evidence
 
 - File hash
 - Process tree
@@ -304,7 +304,7 @@ Recover
 
 ---
 
-## Containment
+### Containment
 
 Possible actions:
 
@@ -316,7 +316,7 @@ C2 Blocking
 
 ---
 
-## Validation
+### Validation
 
 Search for:
 
@@ -328,15 +328,15 @@ Search for:
 
 ---
 
-# Playbook 03 — Compromised Account
+## Playbook 03 — Compromised Account
 
-## Trigger
+### Trigger
 
 Identity system detects suspicious account activity.
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 Identity Alert
@@ -365,7 +365,7 @@ Scope
 
 ---
 
-## Containment
+### Containment
 
 Potential actions:
 
@@ -379,15 +379,15 @@ Potential actions:
 
 ---
 
-# Playbook 04 — Privileged Account Compromise
+## Playbook 04 — Privileged Account Compromise
 
-## Trigger
+### Trigger
 
 Suspicious activity involving privileged identity.
 
 ---
 
-## Priority
+### Priority
 
 ```text
 CRITICAL
@@ -395,7 +395,7 @@ CRITICAL
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 Privileged Account Alert
@@ -421,7 +421,7 @@ Scope Accessed Systems
 
 ---
 
-## Investigate
+### Investigate
 
 Determine:
 
@@ -435,15 +435,15 @@ Determine:
 
 ---
 
-# Playbook 05 — Ransomware
+## Playbook 05 — Ransomware
 
-## Trigger
+### Trigger
 
 Evidence of mass encryption or ransomware behavior.
 
 ---
 
-## Priority
+### Priority
 
 ```text
 CRITICAL
@@ -451,7 +451,7 @@ CRITICAL
 
 ---
 
-## Immediate Objectives
+### Immediate Objectives
 
 ```text
 STOP SPREAD
@@ -462,7 +462,7 @@ PRESERVE EVIDENCE
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 Ransomware Alert
@@ -494,7 +494,7 @@ Recovery Planning
 
 ---
 
-## Important Questions
+### Important Questions
 
 ```text
 When did encryption begin?
@@ -508,15 +508,15 @@ Are domain controllers affected?
 
 ---
 
-# Playbook 06 — Data Exfiltration
+## Playbook 06 — Data Exfiltration
 
-## Trigger
+### Trigger
 
 Potential unauthorized data transfer.
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 Exfiltration Alert
@@ -542,7 +542,7 @@ Assess Scope
 
 ---
 
-## Investigate
+### Investigate
 
 Look for:
 
@@ -556,15 +556,15 @@ Look for:
 
 ---
 
-# Playbook 07 — Web Application Compromise
+## Playbook 07 — Web Application Compromise
 
-## Trigger
+### Trigger
 
 Evidence of successful exploitation.
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 WAF / Application Alert
@@ -590,7 +590,7 @@ Database
 
 ---
 
-## Investigate
+### Investigate
 
 Determine:
 
@@ -604,15 +604,15 @@ Was data accessed?
 
 ---
 
-# Playbook 08 — Web Shell
+## Playbook 08 — Web Shell
 
-## Trigger
+### Trigger
 
 Suspicious server-side file or web process spawning shell.
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 Web Shell Alert
@@ -638,7 +638,7 @@ Scope Server
 
 ---
 
-## Containment
+### Containment
 
 Potential actions:
 
@@ -650,15 +650,15 @@ Potential actions:
 
 ---
 
-# Playbook 09 — Cloud Account Compromise
+## Playbook 09 — Cloud Account Compromise
 
-## Trigger
+### Trigger
 
 Suspicious cloud authentication or API activity.
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 Cloud Alert
@@ -681,7 +681,7 @@ Persistence
 
 ---
 
-## Investigate
+### Investigate
 
 Look for:
 
@@ -695,9 +695,9 @@ Look for:
 
 ---
 
-# Playbook 10 — API Key Exposure
+## Playbook 10 — API Key Exposure
 
-## Trigger
+### Trigger
 
 Credential discovered in:
 
@@ -709,7 +709,7 @@ Credential discovered in:
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 Exposed Key
@@ -732,15 +732,15 @@ Investigate Usage
 
 ---
 
-# Playbook 11 — DDoS
+## Playbook 11 — DDoS
 
-## Trigger
+### Trigger
 
 Availability degradation caused by abnormal traffic.
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 Traffic Spike
@@ -763,7 +763,7 @@ Validate Service
 
 ---
 
-## Investigate
+### Investigate
 
 Determine:
 
@@ -776,15 +776,15 @@ Determine:
 
 ---
 
-# Playbook 12 — Insider Security Incident
+## Playbook 12 — Insider Security Incident
 
-## Trigger
+### Trigger
 
 Potential unauthorized activity by an internal user.
 
 ---
 
-## Principles
+### Principles
 
 Do not assume malicious intent.
 
@@ -810,15 +810,15 @@ Coordinate with appropriate legal, HR, privacy, and leadership teams.
 
 ---
 
-# Playbook 13 — Lost or Stolen Device
+## Playbook 13 — Lost or Stolen Device
 
-## Trigger
+### Trigger
 
 Corporate device reported lost or stolen.
 
 ---
 
-## Actions
+### Actions
 
 Potentially:
 
@@ -832,15 +832,15 @@ Potentially:
 
 ---
 
-# Playbook 14 — Suspicious OAuth Application
+## Playbook 14 — Suspicious OAuth Application
 
-## Trigger
+### Trigger
 
 Unexpected OAuth application consent.
 
 ---
 
-## Workflow
+### Workflow
 
 ```text
 OAuth Alert
@@ -866,15 +866,15 @@ Investigate Activity
 
 ---
 
-# Playbook 15 — Domain Controller Incident
+## Playbook 15 — Domain Controller Incident
 
-## Trigger
+### Trigger
 
 Potential compromise of domain-level infrastructure.
 
 ---
 
-## Priority
+### Priority
 
 ```text
 CRITICAL
@@ -882,7 +882,7 @@ CRITICAL
 
 ---
 
-## Investigate
+### Investigate
 
 Review:
 
@@ -897,7 +897,7 @@ Review:
 
 ---
 
-## Response
+### Response
 
 This requires coordinated identity, endpoint, network, and forensic response.
 
@@ -905,9 +905,9 @@ Avoid making broad destructive changes without a coordinated recovery strategy.
 
 ---
 
-# Case Study 01 — Phishing to Account Compromise
+## Case Study 01 — Phishing to Account Compromise
 
-## Scenario
+### Scenario
 
 An employee receives an email containing a credential-harvesting link.
 
@@ -935,7 +935,7 @@ Cloud application accessed
 
 ---
 
-## Investigation
+### Investigation
 
 The SOC correlates:
 
@@ -951,7 +951,7 @@ Cloud
 
 ---
 
-## Containment
+### Containment
 
 Actions:
 
@@ -965,15 +965,15 @@ Search Other Recipients
 
 ---
 
-## Lessons
+### Lessons
 
 The incident demonstrates why email, identity, and cloud telemetry must be correlated.
 
 ---
 
-# Case Study 02 — Malware to Lateral Movement
+## Case Study 02 — Malware to Lateral Movement
 
-## Scenario
+### Scenario
 
 EDR detects suspicious PowerShell.
 
@@ -1004,7 +1004,7 @@ Server Access
 
 ---
 
-## Investigation
+### Investigation
 
 The team discovers:
 
@@ -1014,7 +1014,7 @@ The team discovers:
 
 ---
 
-## Containment
+### Containment
 
 ```text
 Isolate Source
@@ -1026,15 +1026,15 @@ Search IOC
 
 ---
 
-## Lesson
+### Lesson
 
 The first infected host was not the full incident scope.
 
 ---
 
-# Case Study 03 — Web Application Compromise
+## Case Study 03 — Web Application Compromise
 
-## Scenario
+### Scenario
 
 A WAF detects suspicious requests.
 
@@ -1055,7 +1055,7 @@ Outbound Connection
 
 ---
 
-## Investigation
+### Investigation
 
 The team identifies:
 
@@ -1066,7 +1066,7 @@ The team identifies:
 
 ---
 
-## Response
+### Response
 
 ```text
 Preserve Evidence
@@ -1089,9 +1089,9 @@ Validate
 
 ---
 
-# Case Study 04 — Ransomware
+## Case Study 04 — Ransomware
 
-## Scenario
+### Scenario
 
 EDR reports rapid file modification.
 
@@ -1108,7 +1108,7 @@ show similar activity.
 
 ---
 
-## Investigation
+### Investigation
 
 The team finds:
 
@@ -1127,7 +1127,7 @@ Encryption
 
 ---
 
-## Response
+### Response
 
 Immediate priorities:
 
@@ -1150,9 +1150,9 @@ Monitor
 
 ---
 
-# Case Study 05 — Cloud Credential Compromise
+## Case Study 05 — Cloud Credential Compromise
 
-## Scenario
+### Scenario
 
 A cloud account creates an unfamiliar access key.
 
@@ -1170,7 +1170,7 @@ External Network Activity
 
 ---
 
-## Investigation
+### Investigation
 
 The team correlates:
 
@@ -1182,7 +1182,7 @@ The team correlates:
 
 ---
 
-## Response
+### Response
 
 ```text
 Disable Key
@@ -1195,9 +1195,9 @@ Monitor
 
 ---
 
-# Case Study 06 — Insider Data Exposure
+## Case Study 06 — Insider Data Exposure
 
-## Scenario
+### Scenario
 
 An employee accesses a sensitive dataset outside their normal role.
 
@@ -1221,7 +1221,7 @@ Export
 
 ---
 
-## Investigation
+### Investigation
 
 Determine:
 
@@ -1235,7 +1235,7 @@ Do not infer malicious intent without evidence.
 
 ---
 
-# Playbook Decision Tree
+## Playbook Decision Tree
 
 ```text
                    Alert
@@ -1273,65 +1273,65 @@ Do not infer malicious intent without evidence.
 
 ---
 
-# Playbook Quality Standards
+## Playbook Quality Standards
 
 A good playbook should be:
 
-### Actionable
+#### Actionable
 
 The responder knows what to do.
 
-### Specific
+#### Specific
 
 The workflow defines clear decision points.
 
-### Flexible
+#### Flexible
 
 It does not assume every environment is identical.
 
-### Measurable
+#### Measurable
 
 It defines useful metrics.
 
-### Auditable
+#### Auditable
 
 Actions are documented.
 
-### Tested
+#### Tested
 
 The workflow has been exercised.
 
 ---
 
-# Playbook Anti-Patterns
+## Playbook Anti-Patterns
 
-## Over-Automation
+### Over-Automation
 
 Automatically isolating every alert can create operational damage.
 
-## Under-Specification
+### Under-Specification
 
 A playbook saying "investigate further" is not useful.
 
-## No Escalation Criteria
+### No Escalation Criteria
 
 Responders may not know when to involve senior teams.
 
-## No Validation
+### No Validation
 
 Actions may be assumed successful.
 
-## No Ownership
+### No Ownership
 
 Nobody knows who performs the next step.
 
-## No Maintenance
+### No Maintenance
 
 Old playbooks become inaccurate.
 
 ---
 
-# Playbook Ownership
+## Playbook Ownership
 
 Every playbook should have:
 
@@ -1365,7 +1365,7 @@ Next Review:
 
 ---
 
-# Playbook Testing
+## Playbook Testing
 
 Use:
 
@@ -1396,39 +1396,39 @@ Improve
 
 ---
 
-# Playbook Metrics
+## Playbook Metrics
 
 Useful measurements include:
 
-### Time to Triage
+#### Time to Triage
 
 Alert creation → triage completion.
 
-### Time to Contain
+#### Time to Contain
 
 Incident identification → effective containment.
 
-### Time to Escalate
+#### Time to Escalate
 
 Detection → correct escalation.
 
-### Playbook Completion Rate
+#### Playbook Completion Rate
 
 Percentage of incidents where the expected workflow was followed.
 
-### Playbook Exception Rate
+#### Playbook Exception Rate
 
 How often responders had to deviate because the playbook was insufficient.
 
-### False Escalation Rate
+#### False Escalation Rate
 
 How often incidents were unnecessarily escalated.
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-# Lab — Build a Phishing Playbook
+## Lab — Build a Phishing Playbook
 
 Create a playbook containing:
 
@@ -1447,7 +1447,7 @@ Metrics
 
 ---
 
-# Practical Lab — Build a Ransomware Playbook
+## Practical Lab — Build a Ransomware Playbook
 
 Include:
 
@@ -1466,7 +1466,7 @@ Communications
 
 ---
 
-# Practical Lab — Build a Cloud Account Compromise Playbook
+## Practical Lab — Build a Cloud Account Compromise Playbook
 
 Include:
 
@@ -1484,7 +1484,7 @@ Monitoring
 
 ---
 
-# Practical Lab — Build a Web Application Incident Playbook
+## Practical Lab — Build a Web Application Incident Playbook
 
 Include:
 
@@ -1503,7 +1503,7 @@ Validation
 
 ---
 
-# Universal Incident Playbook Template
+## Universal Incident Playbook Template
 
 ```text
 # Incident Response Playbook
@@ -1543,7 +1543,7 @@ Validation
 
 ---
 
-# Incident Commander Checklist
+## Incident Commander Checklist
 
 ```text
 [ ] Incident declared
@@ -1562,19 +1562,19 @@ Validation
 
 ---
 
-# Incident Communications
+## Incident Communications
 
 Communications should distinguish:
 
-### Confirmed
+#### Confirmed
 
 What is known.
 
-### Suspected
+#### Suspected
 
 What is believed but not yet confirmed.
 
-### Unknown
+#### Unknown
 
 What remains under investigation.
 
@@ -1595,7 +1595,7 @@ This prevents speculation from becoming organizational fact.
 
 ---
 
-# Executive Incident Update Template
+## Executive Incident Update Template
 
 ```text
 Incident:
@@ -1634,7 +1634,7 @@ ________________
 
 ---
 
-# Incident Handoff
+## Incident Handoff
 
 A good handoff contains:
 
@@ -1654,7 +1654,7 @@ Owner
 
 ---
 
-# Shift Handoff Example
+## Shift Handoff Example
 
 ```text
 Incident:
@@ -1684,7 +1684,7 @@ Threat Hunting Team
 
 ---
 
-# Case Study Analysis Framework
+## Case Study Analysis Framework
 
 For any incident, ask:
 
@@ -1705,7 +1705,7 @@ For any incident, ask:
 
 ---
 
-# Lessons Learned
+## Lessons Learned
 
 A case study should not end with:
 
@@ -1731,7 +1731,7 @@ Validation
 
 ---
 
-# Incident Response Improvement Loop
+## Incident Response Improvement Loop
 
 ```text
 Incident
@@ -1757,15 +1757,15 @@ Lessons Learned
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is an incident response playbook?
+### 1. What is an incident response playbook?
 
 A documented workflow that provides repeatable guidance for detecting, investigating, containing, eradicating, and recovering from a particular incident type.
 
 ---
 
-## 2. Why are playbooks important?
+### 2. Why are playbooks important?
 
 They improve:
 
@@ -1778,7 +1778,7 @@ They improve:
 
 ---
 
-## 3. Should every response be fully automated?
+### 3. Should every response be fully automated?
 
 No.
 
@@ -1786,7 +1786,7 @@ High-impact containment actions may require human approval because automated act
 
 ---
 
-## 4. What makes a good playbook?
+### 4. What makes a good playbook?
 
 It should be:
 
@@ -1801,7 +1801,7 @@ Auditable
 
 ---
 
-## 5. What should a ransomware playbook prioritize?
+### 5. What should a ransomware playbook prioritize?
 
 Generally:
 
@@ -1816,7 +1816,7 @@ Recover
 
 ---
 
-## 6. What should a compromised-account playbook include?
+### 6. What should a compromised-account playbook include?
 
 ```text
 Authentication Review
@@ -1831,7 +1831,7 @@ Monitoring
 
 ---
 
-## 7. What should a web application playbook include?
+### 7. What should a web application playbook include?
 
 At minimum:
 
@@ -1849,7 +1849,7 @@ Recovery
 
 ---
 
-## 8. How do you test a playbook?
+### 8. How do you test a playbook?
 
 Use:
 
@@ -1861,7 +1861,7 @@ Use:
 
 ---
 
-## 9. What is a playbook exception?
+### 9. What is a playbook exception?
 
 A situation where the responder cannot safely or effectively follow the documented workflow and must adapt the response.
 
@@ -1869,7 +1869,7 @@ Exceptions should be documented and used to improve the playbook.
 
 ---
 
-## 10. Why should playbooks have owners?
+### 10. Why should playbooks have owners?
 
 Someone must be accountable for:
 
@@ -1881,7 +1881,7 @@ Someone must be accountable for:
 
 ---
 
-# Integration With SOC
+## Integration With SOC
 
 Playbooks connect detection to action:
 
@@ -1903,7 +1903,7 @@ Incident Response
 
 ---
 
-# Integration With Threat Hunting
+## Integration With Threat Hunting
 
 Hunting can identify gaps in existing playbooks.
 
@@ -1924,7 +1924,7 @@ New Detection
 
 ---
 
-# Integration With Detection Engineering
+## Integration With Detection Engineering
 
 Detection engineering should provide the signals that trigger playbooks.
 
@@ -1945,7 +1945,7 @@ Automated / Human Response
 
 ---
 
-# Enterprise Playbook Architecture
+## Enterprise Playbook Architecture
 
 ```text
                          Security Telemetry
@@ -1983,7 +1983,7 @@ Automated / Human Response
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Playbooks transform incident response from an improvised activity into a repeatable operational capability.
 
@@ -2009,43 +2009,43 @@ The strongest organizations continuously improve playbooks using real incidents,
 
 ---
 
-# References
+## References
 
-### NIST
+#### NIST
 
 Computer Security Incident Handling Guide:
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### CISA
+#### CISA
 
 Cybersecurity and incident response resources:
 
 https://www.cisa.gov/
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 
-### FIRST
+#### FIRST
 
 Incident Response and Security Team resources:
 
 https://www.first.org/
 
-### SANS
+#### SANS
 
 Incident response resources:
 
 https://www.sans.org/
 
-### CIS Controls
+#### CIS Controls
 
 https://www.cisecurity.org/controls
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 The goal of incident response playbooks is not simply to provide checklists.
 

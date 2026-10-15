@@ -1016,7 +1016,7 @@ A mature threat modeling program integrates with every phase of the Software Dev
 
 ---
 
-# Threat Prevention Lifecycle
+## Threat Prevention Lifecycle
 
 ```
 Business Requirements
@@ -1080,7 +1080,7 @@ Threat prevention is an ongoing process rather than a one-time activity.
 
 ---
 
-# Identify Critical Assets Early
+## Identify Critical Assets Early
 
 Successful threat prevention begins with identifying valuable assets.
 
@@ -1101,7 +1101,7 @@ Classify assets according to their sensitivity and business importance to priori
 
 ---
 
-# Design Secure Architectures
+## Design Secure Architectures
 
 Architectures should be designed with security in mind from the beginning.
 
@@ -1118,7 +1118,7 @@ Security-by-design reduces costly redesigns later in the project lifecycle.
 
 ---
 
-# Apply Strong Identity Security
+## Apply Strong Identity Security
 
 Identity is a primary target in cloud attacks.
 
@@ -1135,7 +1135,7 @@ Protect both human and machine identities.
 
 ---
 
-# Secure Trust Boundaries
+## Secure Trust Boundaries
 
 Every trust boundary should enforce:
 
@@ -1150,7 +1150,7 @@ Never assume requests crossing trust boundaries are inherently trustworthy.
 
 ---
 
-# Protect APIs
+## Protect APIs
 
 Secure APIs using:
 
@@ -1166,7 +1166,7 @@ APIs should expose only the functionality required by legitimate consumers.
 
 ---
 
-# Implement Least Privilege
+## Implement Least Privilege
 
 Apply least privilege across:
 
@@ -1181,7 +1181,7 @@ Review and remove unnecessary permissions regularly.
 
 ---
 
-# Encrypt Sensitive Data
+## Encrypt Sensitive Data
 
 Protect sensitive information:
 
@@ -1194,7 +1194,7 @@ Ensure encryption keys are managed securely using dedicated Key Management Servi
 
 ---
 
-# Protect Secrets
+## Protect Secrets
 
 Store secrets using centralized secret management solutions rather than embedding them in:
 
@@ -1208,7 +1208,7 @@ Rotate secrets regularly and monitor access.
 
 ---
 
-# Harden Cloud Infrastructure
+## Harden Cloud Infrastructure
 
 Reduce exploitable weaknesses by:
 
@@ -1223,7 +1223,7 @@ Infrastructure hardening reduces the available attack surface.
 
 ---
 
-# Validate Infrastructure as Code (IaC)
+## Validate Infrastructure as Code (IaC)
 
 Infrastructure templates should undergo automated security validation before deployment.
 
@@ -1240,7 +1240,7 @@ Integrate IaC scanning into CI/CD pipelines.
 
 ---
 
-# Secure Containers and Kubernetes
+## Secure Containers and Kubernetes
 
 Protect containerized workloads through:
 
@@ -1256,7 +1256,7 @@ Container security should be incorporated into threat models from the outset.
 
 ---
 
-# Secure Serverless Applications
+## Secure Serverless Applications
 
 Threat models should evaluate:
 
@@ -1271,7 +1271,7 @@ Serverless workloads require the same rigorous security analysis as traditional 
 
 ---
 
-# Continuously Monitor Threats
+## Continuously Monitor Threats
 
 Collect telemetry from:
 
@@ -1308,7 +1308,7 @@ Continuous monitoring ensures that new threats are identified as environments ev
 
 ---
 
-# Validate Through Security Testing
+## Validate Through Security Testing
 
 Threat model assumptions should be verified using:
 
@@ -1324,9 +1324,9 @@ Testing confirms that implemented controls effectively mitigate identified threa
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Integrate Threat Modeling into the SDLC
+#### 1. Integrate Threat Modeling into the SDLC
 
 Perform threat modeling during:
 
@@ -1341,7 +1341,7 @@ Early identification of threats reduces remediation costs.
 
 ---
 
-### 2. Keep Threat Models Updated
+#### 2. Keep Threat Models Updated
 
 Review threat models whenever:
 
@@ -1355,7 +1355,7 @@ Threat models should evolve with the environment.
 
 ---
 
-### 3. Focus on High-Value Assets
+#### 3. Focus on High-Value Assets
 
 Prioritize security efforts for systems that process or store:
 
@@ -1369,7 +1369,7 @@ Risk-based prioritization improves resource allocation.
 
 ---
 
-### 4. Use Established Threat Modeling Frameworks
+#### 4. Use Established Threat Modeling Frameworks
 
 Leverage recognized methodologies such as:
 
@@ -1383,7 +1383,7 @@ Structured frameworks improve consistency and completeness.
 
 ---
 
-### 5. Collaborate Across Teams
+#### 5. Collaborate Across Teams
 
 Threat modeling should involve:
 
@@ -1399,7 +1399,7 @@ Collaborative reviews produce more comprehensive threat analyses.
 
 ---
 
-### 6. Document Assumptions
+#### 6. Document Assumptions
 
 Clearly document:
 
@@ -1413,7 +1413,7 @@ Revisit assumptions periodically to ensure they remain valid.
 
 ---
 
-### 7. Prioritize Risks
+#### 7. Prioritize Risks
 
 Rank identified threats based on:
 
@@ -1427,7 +1427,7 @@ Address the highest-risk issues first.
 
 ---
 
-### 8. Automate Security Validation
+#### 8. Automate Security Validation
 
 Incorporate automated checks for:
 
@@ -1442,7 +1442,7 @@ Automation increases consistency and reduces manual errors.
 
 ---
 
-### 9. Validate Mitigations Regularly
+#### 9. Validate Mitigations Regularly
 
 Regularly verify that implemented controls continue to function as intended.
 
@@ -1457,7 +1457,7 @@ Security controls should be assessed throughout the system lifecycle.
 
 ---
 
-### 10. Treat Threat Modeling as a Continuous Process
+#### 10. Treat Threat Modeling as a Continuous Process
 
 Threat modeling should not conclude after deployment.
 
@@ -1473,7 +1473,7 @@ An iterative approach ensures that cloud defenses remain aligned with evolving t
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud Threat Modeling is most effective when it is continuous, collaborative, and integrated into the entire cloud development lifecycle. However, organizations often perform threat modeling incorrectly or treat it as a one-time compliance activity, leaving significant security gaps.
 
@@ -1481,7 +1481,7 @@ Recognizing these common mistakes helps organizations develop more accurate thre
 
 ---
 
-### 1. Performing Threat Modeling Too Late
+#### 1. Performing Threat Modeling Too Late
 
 One of the most frequent mistakes is conducting threat modeling after deployment.
 
@@ -1507,7 +1507,7 @@ Early threat modeling reduces remediation costs and minimizes architectural rede
 
 ---
 
-### 2. Ignoring Cloud-Specific Threats
+#### 2. Ignoring Cloud-Specific Threats
 
 Traditional threat models may overlook cloud-native risks such as:
 
@@ -1523,7 +1523,7 @@ Threat models should reflect the unique characteristics of cloud environments.
 
 ---
 
-### 3. Focusing Only on External Attackers
+#### 3. Focusing Only on External Attackers
 
 Threat models often emphasize internet-based attacks while ignoring:
 
@@ -1537,7 +1537,7 @@ Effective threat modeling considers both external and internal threat actors.
 
 ---
 
-### 4. Incomplete Asset Identification
+#### 4. Incomplete Asset Identification
 
 Failing to identify all valuable assets results in incomplete protection.
 
@@ -1555,7 +1555,7 @@ Every critical asset should be documented before threat analysis begins.
 
 ---
 
-### 5. Missing Trust Boundaries
+#### 5. Missing Trust Boundaries
 
 Not identifying trust boundaries may allow insecure communication between components.
 
@@ -1585,7 +1585,7 @@ Trust boundaries should be clearly documented in architecture diagrams.
 
 ---
 
-### 6. Ignoring Data Flows
+#### 6. Ignoring Data Flows
 
 Threat modeling that focuses only on infrastructure may overlook how sensitive data moves through the environment.
 
@@ -1602,7 +1602,7 @@ Understanding data movement helps identify opportunities for interception, tampe
 
 ---
 
-### 7. Assuming Existing Controls Eliminate Risk
+#### 7. Assuming Existing Controls Eliminate Risk
 
 Existing security controls reduce risk but rarely eliminate it.
 
@@ -1618,7 +1618,7 @@ Residual risk should always be documented and monitored.
 
 ---
 
-### 8. Not Prioritizing Risks
+#### 8. Not Prioritizing Risks
 
 Treating every identified threat as equally important can overwhelm security teams.
 
@@ -1633,7 +1633,7 @@ Focus remediation efforts on high-risk threats first.
 
 ---
 
-### 9. Failing to Update Threat Models
+#### 9. Failing to Update Threat Models
 
 Cloud environments change frequently.
 
@@ -1649,7 +1649,7 @@ Threat models should be reviewed whenever significant changes occur.
 
 ---
 
-### 10. Ignoring Third-Party Dependencies
+#### 10. Ignoring Third-Party Dependencies
 
 Modern cloud applications depend on numerous external services.
 
@@ -1665,7 +1665,7 @@ Each dependency introduces additional threats that should be incorporated into t
 
 ---
 
-### 11. Overlooking Machine Identities
+#### 11. Overlooking Machine Identities
 
 Organizations often focus on human users while overlooking:
 
@@ -1679,7 +1679,7 @@ Machine identities should receive the same level of protection as human identiti
 
 ---
 
-### 12. Insufficient Collaboration
+#### 12. Insufficient Collaboration
 
 Threat modeling performed exclusively by security teams may miss operational or business-specific risks.
 
@@ -1697,7 +1697,7 @@ Cross-functional collaboration improves the quality of threat analysis.
 
 ---
 
-### 13. Poor Documentation
+#### 13. Poor Documentation
 
 Undocumented threat models quickly lose value.
 
@@ -1716,7 +1716,7 @@ Well-maintained documentation supports audits, incident response, and future arc
 
 ---
 
-### 14. Ignoring Validation
+#### 14. Ignoring Validation
 
 Threat models should be validated through practical testing.
 
@@ -1733,7 +1733,7 @@ Validation ensures identified mitigations are effective.
 
 ---
 
-### 15. Treating Threat Modeling as a Compliance Exercise
+#### 15. Treating Threat Modeling as a Compliance Exercise
 
 Threat modeling should not be performed solely to satisfy regulatory or audit requirements.
 
@@ -1748,7 +1748,7 @@ Organizations that embed threat modeling into engineering processes gain signifi
 
 ---
 
-## Cloud Threat Modeling Checklist
+### Cloud Threat Modeling Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1770,9 +1770,9 @@ Organizations that embed threat modeling into engineering processes gain signifi
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
 - NIST SP 800-207 – Zero Trust Architecture
@@ -1784,7 +1784,7 @@ Organizations that embed threat modeling into engineering processes gain signifi
 
 ---
 
-### Threat Modeling Frameworks
+#### Threat Modeling Frameworks
 
 - Microsoft STRIDE
 - OWASP Threat Modeling Methodology
@@ -1796,26 +1796,26 @@ Organizations that embed threat modeling into engineering processes gain signifi
 
 ---
 
-### Cloud Security Documentation
+#### Cloud Security Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - AWS Well-Architected Framework – Security Pillar
 - AWS Security Reference Architecture
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Azure Well-Architected Framework – Security
 - Microsoft Cloud Adoption Framework
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Google Cloud Architecture Framework – Security
 - Google Cloud Security Foundations Guide
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Defense in Depth
 - Zero Trust Architecture
@@ -1827,7 +1827,7 @@ Organizations that embed threat modeling into engineering processes gain signifi
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - OWASP Threat Modeling Cheat Sheet
 - MITRE ATT&CK Knowledge Base

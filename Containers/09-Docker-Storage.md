@@ -30,7 +30,7 @@ Understanding Docker storage is fundamental for building reliable and production
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Imagine a PostgreSQL database running inside a container.
 
@@ -84,7 +84,7 @@ This separation of compute and storage is a core principle of containerized appl
 
 ---
 
-# Docker Storage Architecture
+## Docker Storage Architecture
 
 ```
                  Container
@@ -112,7 +112,7 @@ Docker routes storage operations through different mount types depending on the 
 
 ---
 
-# Types of Docker Storage
+## Types of Docker Storage
 
 Docker supports three primary mount types.
 
@@ -126,7 +126,7 @@ Each type is designed for different use cases.
 
 ---
 
-# Writable Layer
+## Writable Layer
 
 Every container has a writable layer.
 
@@ -152,7 +152,7 @@ The writable layer is suitable only for temporary runtime changes.
 
 ---
 
-# Docker Volumes
+## Docker Volumes
 
 A Docker Volume is the recommended mechanism for persistent storage.
 
@@ -185,7 +185,7 @@ Typical use cases:
 
 ---
 
-# Named Volumes
+## Named Volumes
 
 Named volumes have an explicit identifier.
 
@@ -218,7 +218,7 @@ Advantages:
 
 ---
 
-# Anonymous Volumes
+## Anonymous Volumes
 
 Anonymous volumes are created automatically when a mount point is specified without a name.
 
@@ -238,7 +238,7 @@ Characteristics:
 
 ---
 
-# Bind Mounts
+## Bind Mounts
 
 Bind mounts map a host file or directory directly into a container.
 
@@ -271,7 +271,7 @@ Typical use cases:
 
 ---
 
-# tmpfs Mounts
+## tmpfs Mounts
 
 A tmpfs mount stores data only in memory.
 
@@ -304,7 +304,7 @@ Currently supported on Linux.
 
 ---
 
-# Volume Lifecycle
+## Volume Lifecycle
 
 ```
 Create Volume
@@ -338,7 +338,7 @@ This independence from the container lifecycle makes volumes ideal for persisten
 
 ---
 
-# Bind Mount Workflow
+## Bind Mount Workflow
 
 ```
 Host Directory
@@ -360,7 +360,7 @@ Changes made in the host directory are immediately visible inside the container,
 
 ---
 
-# Volume vs Bind Mount
+## Volume vs Bind Mount
 
 | Feature | Volume | Bind Mount |
 |---------|--------|------------|
@@ -373,9 +373,9 @@ Changes made in the host directory are immediately visible inside the container,
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
-### Databases
+#### Databases
 
 ```
 PostgreSQL
@@ -391,7 +391,7 @@ Persistent Database
 
 ---
 
-### Web Development
+#### Web Development
 
 ```
 Source Code
@@ -411,7 +411,7 @@ Instant Updates
 
 ---
 
-### Shared Logs
+#### Shared Logs
 
 ```
 Application
@@ -427,7 +427,7 @@ Log Collector
 
 ---
 
-### Temporary Cache
+#### Temporary Cache
 
 ```
 Application
@@ -443,46 +443,46 @@ Memory
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-## Persistent Storage
+### Persistent Storage
 
 Volumes and bind mounts allow data to outlive individual containers.
 
 ---
 
-## Decoupling Storage
+### Decoupling Storage
 
 Application data should be stored separately from the container lifecycle.
 
 ---
 
-## Data Portability
+### Data Portability
 
 Volumes can be reused by multiple containers and backed up independently.
 
 ---
 
-## Host Integration
+### Host Integration
 
 Bind mounts allow containers to interact directly with files on the host system.
 
 ---
 
-## Temporary Storage
+### Temporary Storage
 
 The writable layer and tmpfs mounts are intended for non-persistent data.
 
 ---
 
-## Storage Flexibility
+### Storage Flexibility
 
 Docker offers multiple storage mechanisms to support development, testing, and production workloads.
 
 ---
 
 
-## How It Works
+### How It Works
 
 Docker storage separates **application execution** from **application data**. Containers are designed to be temporary, but application data often needs to persist long after a container has been stopped, replaced, or upgraded.
 
@@ -497,7 +497,7 @@ This allows applications to maintain persistent data while keeping containers di
 
 ---
 
-# Docker Storage Workflow
+## Docker Storage Workflow
 
 ```
 Application
@@ -533,7 +533,7 @@ The destination depends on the storage configuration used when the container sta
 
 ---
 
-# Step 1 – Container Starts
+## Step 1 – Container Starts
 
 Example:
 
@@ -553,7 +553,7 @@ Initially, all writes go to the writable layer unless another storage option is 
 
 ---
 
-# Step 2 – Writing Without a Volume
+## Step 2 – Writing Without a Volume
 
 Suppose PostgreSQL stores database files.
 
@@ -587,7 +587,7 @@ This is why production databases should never rely solely on the writable layer.
 
 ---
 
-# Step 3 – Writing with a Docker Volume
+## Step 3 – Writing with a Docker Volume
 
 Example:
 
@@ -635,7 +635,7 @@ The data survives container replacement.
 
 ---
 
-# Step 4 – Writing with a Bind Mount
+## Step 4 – Writing with a Bind Mount
 
 Example:
 
@@ -674,7 +674,7 @@ This is especially useful during application development.
 
 ---
 
-# Step 5 – Using tmpfs
+## Step 5 – Using tmpfs
 
 Example:
 
@@ -708,7 +708,7 @@ Suitable for temporary or sensitive information.
 
 ---
 
-# Step 6 – Reading Data
+## Step 6 – Reading Data
 
 When the application requests data:
 
@@ -739,7 +739,7 @@ The filesystem abstraction remains consistent.
 
 ---
 
-# Step 7 – Container Replacement
+## Step 7 – Container Replacement
 
 Suppose an application is upgraded.
 
@@ -775,9 +775,9 @@ Persistent data remains available across deployments.
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – PostgreSQL Database
+### Example 1 – PostgreSQL Database
 
 Command:
 
@@ -807,7 +807,7 @@ The database remains intact even if the container is recreated.
 
 ---
 
-## Example 2 – Local Development
+### Example 2 – Local Development
 
 Command:
 
@@ -841,7 +841,7 @@ Editing files on the host immediately affects the running container.
 
 ---
 
-## Example 3 – Shared Volume
+### Example 3 – Shared Volume
 
 Two containers share a common volume.
 
@@ -861,7 +861,7 @@ This enables controlled data sharing between applications.
 
 ---
 
-## Example 4 – Temporary Cache
+### Example 4 – Temporary Cache
 
 ```
 Application
@@ -883,9 +883,9 @@ The cache is automatically cleared when the container stops.
 
 ---
 
-# Hands-on Commands
+## Hands-on Commands
 
-## List Volumes
+### List Volumes
 
 ```bash
 docker volume ls
@@ -895,7 +895,7 @@ Displays all Docker-managed volumes.
 
 ---
 
-## Create a Volume
+### Create a Volume
 
 ```bash
 docker volume create myvolume
@@ -905,7 +905,7 @@ Creates a named volume.
 
 ---
 
-## Inspect a Volume
+### Inspect a Volume
 
 ```bash
 docker volume inspect myvolume
@@ -920,7 +920,7 @@ Displays:
 
 ---
 
-## Remove a Volume
+### Remove a Volume
 
 ```bash
 docker volume rm myvolume
@@ -930,7 +930,7 @@ Deletes an unused volume.
 
 ---
 
-## Remove Unused Volumes
+### Remove Unused Volumes
 
 ```bash
 docker volume prune
@@ -940,7 +940,7 @@ Deletes all unused volumes.
 
 ---
 
-## Run with a Named Volume
+### Run with a Named Volume
 
 ```bash
 docker run
@@ -954,7 +954,7 @@ Mounts the volume inside the container.
 
 ---
 
-## Run with a Bind Mount
+### Run with a Bind Mount
 
 ```bash
 docker run
@@ -968,7 +968,7 @@ Mounts a host directory into the container.
 
 ---
 
-## Run with a Read-Only Bind Mount
+### Run with a Read-Only Bind Mount
 
 ```bash
 docker run
@@ -982,7 +982,7 @@ The container can read the files but cannot modify them.
 
 ---
 
-## Run with tmpfs
+### Run with tmpfs
 
 ```bash
 docker run
@@ -996,7 +996,7 @@ Creates an in-memory temporary filesystem.
 
 ---
 
-## View Mounted Storage
+### View Mounted Storage
 
 ```bash
 docker inspect container_name
@@ -1011,9 +1011,9 @@ Review the **Mounts** section to see:
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Volumes for Persistent Data
+#### 1. Use Volumes for Persistent Data
 
 Applications such as:
 
@@ -1026,13 +1026,13 @@ should store important data in Docker volumes.
 
 ---
 
-### 2. Use Bind Mounts for Development
+#### 2. Use Bind Mounts for Development
 
 Bind mounts are ideal when developers need to edit source code on the host while the application runs inside the container.
 
 ---
 
-### 3. Avoid Storing Important Data in the Writable Layer
+#### 3. Avoid Storing Important Data in the Writable Layer
 
 The writable layer is temporary.
 
@@ -1040,7 +1040,7 @@ Always store critical application data in persistent storage.
 
 ---
 
-### 4. Use Read-Only Mounts When Appropriate
+#### 4. Use Read-Only Mounts When Appropriate
 
 Configuration files that do not need modification should be mounted as read-only.
 
@@ -1048,7 +1048,7 @@ This reduces the risk of accidental changes.
 
 ---
 
-### 5. Name Volumes Clearly
+#### 5. Name Volumes Clearly
 
 Instead of anonymous volumes, use descriptive names such as:
 
@@ -1066,7 +1066,7 @@ Named volumes are easier to identify and manage.
 
 ---
 
-### 6. Back Up Volumes Regularly
+#### 6. Back Up Volumes Regularly
 
 Volumes may contain business-critical data.
 
@@ -1074,7 +1074,7 @@ Implement regular backup procedures and verify recovery processes.
 
 ---
 
-### 7. Separate Application Code from Persistent Data
+#### 7. Separate Application Code from Persistent Data
 
 Keep source code, configuration, and persistent data in appropriate storage locations.
 
@@ -1082,13 +1082,13 @@ This improves maintainability, portability, and disaster recovery.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Persistent storage is one of the most critical aspects of containerized applications. Many production outages and data-loss incidents occur because storage is misunderstood or configured incorrectly. The following are the most common mistakes related to Docker storage, along with recommended practices to avoid them.
 
 ---
 
-# 1. Storing Important Data in the Writable Layer
+## 1. Storing Important Data in the Writable Layer
 
 This is the most common mistake.
 
@@ -1128,11 +1128,11 @@ Critical data should always reside outside the writable layer.
 
 ---
 
-# 2. Confusing Volumes with Bind Mounts
+## 2. Confusing Volumes with Bind Mounts
 
 Many engineers use bind mounts when Docker volumes are more appropriate.
 
-### Docker Volume
+#### Docker Volume
 
 ```
 Docker
@@ -1153,7 +1153,7 @@ Persistent Storage
 
 ---
 
-### Bind Mount
+#### Bind Mount
 
 ```
 Host Directory
@@ -1171,7 +1171,7 @@ Choose the storage mechanism that matches your use case.
 
 ---
 
-# 3. Forgetting Volume Backups
+## 3. Forgetting Volume Backups
 
 Volumes persist beyond the container lifecycle, but they are **not** automatically backed up.
 
@@ -1193,7 +1193,7 @@ Establish a regular backup and recovery strategy for production data.
 
 ---
 
-# 4. Mounting the Wrong Directory
+## 4. Mounting the Wrong Directory
 
 Example:
 
@@ -1213,7 +1213,7 @@ Always verify both the source and destination paths.
 
 ---
 
-# 5. Running Databases Without Persistent Storage
+## 5. Running Databases Without Persistent Storage
 
 Incorrect:
 
@@ -1235,7 +1235,7 @@ Without persistent storage, deleting the container also deletes the database.
 
 ---
 
-# 6. Giving Containers Unnecessary Write Access
+## 6. Giving Containers Unnecessary Write Access
 
 Configuration files rarely need write access.
 
@@ -1255,7 +1255,7 @@ Read-only mounts reduce the risk of accidental modification or compromise.
 
 ---
 
-# 7. Ignoring File Permissions
+## 7. Ignoring File Permissions
 
 A container process may not have permission to access mounted files.
 
@@ -1274,7 +1274,7 @@ Verify:
 
 ---
 
-# 8. Using Anonymous Volumes Without Tracking Them
+## 8. Using Anonymous Volumes Without Tracking Them
 
 Example:
 
@@ -1306,7 +1306,7 @@ Named volumes are generally easier to manage.
 
 ---
 
-# 9. Assuming Bind Mounts Are Portable
+## 9. Assuming Bind Mounts Are Portable
 
 Example:
 
@@ -1320,7 +1320,7 @@ Bind mounts depend on the host filesystem layout, while Docker volumes are more 
 
 ---
 
-# 10. Sharing Sensitive Host Directories
+## 10. Sharing Sensitive Host Directories
 
 Avoid mounting directories such as:
 
@@ -1344,7 +1344,7 @@ Grant containers access only to the files they genuinely require.
 
 ---
 
-# 11. Ignoring Volume Cleanup
+## 11. Ignoring Volume Cleanup
 
 Development environments often accumulate:
 
@@ -1362,7 +1362,7 @@ docker volume prune
 
 ---
 
-# 12. Using tmpfs for Persistent Data
+## 12. Using tmpfs for Persistent Data
 
 A `tmpfs` mount stores data in memory only.
 
@@ -1392,7 +1392,7 @@ Never store important application data there.
 
 ---
 
-# 13. Forgetting That Multiple Containers Can Share a Volume
+## 13. Forgetting That Multiple Containers Can Share a Volume
 
 Example:
 
@@ -1418,7 +1418,7 @@ Ensure applications are designed for shared storage when using shared volumes.
 
 ---
 
-# 14. Hardcoding Host Paths
+## 14. Hardcoding Host Paths
 
 Example:
 
@@ -1438,7 +1438,7 @@ Use environment variables, standardized project structures, or Compose configura
 
 ---
 
-# 15. Not Monitoring Storage Usage
+## 15. Not Monitoring Storage Usage
 
 Volumes can grow indefinitely.
 
@@ -1460,9 +1460,9 @@ Monitoring helps prevent unexpected outages due to full disks.
 
 ---
 
-# Docker Storage Quick Revision
+## Docker Storage Quick Revision
 
-## Storage Types
+### Storage Types
 
 | Storage | Best Use |
 |----------|----------|
@@ -1473,7 +1473,7 @@ Monitoring helps prevent unexpected outages due to full disks.
 
 ---
 
-## Storage Workflow
+### Storage Workflow
 
 ```
 Application
@@ -1493,7 +1493,7 @@ Persistent Storage
 
 ---
 
-## Common Volume Commands
+### Common Volume Commands
 
 ```bash
 docker volume ls
@@ -1509,7 +1509,7 @@ docker volume prune
 
 ---
 
-## Bind Mount Example
+### Bind Mount Example
 
 ```bash
 docker run
@@ -1521,7 +1521,7 @@ Maps a host directory into the container.
 
 ---
 
-## Volume Example
+### Volume Example
 
 ```bash
 docker run
@@ -1535,7 +1535,7 @@ Stores PostgreSQL data persistently in a Docker-managed volume.
 
 ---
 
-# Docker Storage Checklist
+## Docker Storage Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1557,9 +1557,9 @@ Stores PostgreSQL data persistently in a Docker-managed volume.
 
 ---
 
-# References
+## References
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker Storage Documentation
 - Docker Volumes Documentation
@@ -1569,7 +1569,7 @@ Stores PostgreSQL data persistently in a Docker-managed volume.
 
 ---
 
-## Linux Documentation
+### Linux Documentation
 
 - Linux Filesystems
 - OverlayFS Documentation
@@ -1578,7 +1578,7 @@ Stores PostgreSQL data persistently in a Docker-managed volume.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Persistent Volumes Documentation
 - Kubernetes Storage Classes
@@ -1586,7 +1586,7 @@ Stores PostgreSQL data persistently in a Docker-managed volume.
 
 ---
 
-## Security Resources
+### Security Resources
 
 - NIST SP 800-190 — Application Container Security Guide
 - OWASP Docker Security Cheat Sheet
@@ -1595,7 +1595,7 @@ Stores PostgreSQL data persistently in a Docker-managed volume.
 
 ---
 
-## Books
+### Books
 
 - *Docker Deep Dive* — Nigel Poulton
 - *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
@@ -1604,7 +1604,7 @@ Stores PostgreSQL data persistently in a Docker-managed volume.
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Docker Labs

@@ -1,6 +1,6 @@
 # 16 - Cross-Origin Resource Sharing (CORS)
 
-# Introduction
+## Introduction
 
 Cross-Origin Resource Sharing (CORS) is a browser security mechanism that allows controlled access to resources hosted on different origins.
 
@@ -18,7 +18,7 @@ CORS is one of the most misunderstood areas of API security and is frequently re
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -34,7 +34,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Same-Origin Policy (SOP)
+## Same-Origin Policy (SOP)
 
 The Same-Origin Policy is a browser security control that restricts JavaScript from accessing resources belonging to another origin.
 
@@ -62,7 +62,7 @@ All three components together define an origin.
 
 ---
 
-# Same-Origin Policy Example
+## Same-Origin Policy Example
 
 ```
 Current Website
@@ -108,7 +108,7 @@ Different protocol, hostname, or port creates a different origin.
 
 ---
 
-# What is an Origin?
+## What is an Origin?
 
 Examples
 
@@ -122,7 +122,7 @@ Examples
 
 ---
 
-# Why SOP Exists
+## Why SOP Exists
 
 Without SOP
 
@@ -152,7 +152,7 @@ SOP prevents one website from directly reading another website's responses.
 
 ---
 
-# Why CORS Exists
+## Why CORS Exists
 
 Modern applications commonly separate frontend and backend services.
 
@@ -180,7 +180,7 @@ CORS enables this interaction safely.
 
 ---
 
-# CORS Overview
+## CORS Overview
 
 ```
 Browser
@@ -217,7 +217,7 @@ The browser—not the server—enforces CORS.
 
 ---
 
-# Browser Enforcement
+## Browser Enforcement
 
 Important
 
@@ -241,7 +241,7 @@ Servers advertise CORS policies, but browsers decide whether JavaScript can acce
 
 ---
 
-# Simple Requests
+## Simple Requests
 
 Certain requests do not require a preflight request.
 
@@ -262,7 +262,7 @@ The browser directly sends the request and evaluates the response headers.
 
 ---
 
-# Preflight Requests
+## Preflight Requests
 
 Complex requests require permission before the actual request is sent.
 
@@ -290,7 +290,7 @@ Actual Request
 
 ---
 
-# When Preflight Occurs
+## When Preflight Occurs
 
 Examples
 
@@ -303,7 +303,7 @@ Examples
 
 ---
 
-# Preflight Workflow
+## Preflight Workflow
 
 ```
 Browser
@@ -350,7 +350,7 @@ Request
 
 ---
 
-# Origin Header
+## Origin Header
 
 Every cross-origin request includes an `Origin` header.
 
@@ -366,7 +366,7 @@ The server uses this value when evaluating its CORS policy.
 
 ---
 
-# Important CORS Headers
+## Important CORS Headers
 
 | Header | Purpose |
 |---------|----------|
@@ -379,7 +379,7 @@ The server uses this value when evaluating its CORS policy.
 
 ---
 
-# Access-Control-Allow-Origin
+## Access-Control-Allow-Origin
 
 This header specifies which origin is allowed.
 
@@ -395,7 +395,7 @@ Only the specified origin may access the response.
 
 ---
 
-# Wildcard Origin
+## Wildcard Origin
 
 Example
 
@@ -417,7 +417,7 @@ Not recommended for authenticated APIs.
 
 ---
 
-# Access-Control-Allow-Methods
+## Access-Control-Allow-Methods
 
 Defines permitted HTTP methods.
 
@@ -437,7 +437,7 @@ Only required methods should be allowed.
 
 ---
 
-# Access-Control-Allow-Headers
+## Access-Control-Allow-Headers
 
 Specifies which request headers clients may send.
 
@@ -455,7 +455,7 @@ Avoid unnecessarily broad permissions.
 
 ---
 
-# Access-Control-Allow-Credentials
+## Access-Control-Allow-Credentials
 
 Allows browsers to include credentials.
 
@@ -475,7 +475,7 @@ Credentials include:
 
 ---
 
-# Credentialed Requests
+## Credentialed Requests
 
 ```
 Browser
@@ -503,7 +503,7 @@ Credentialed requests require stricter CORS configuration.
 
 ---
 
-# Access-Control-Max-Age
+## Access-Control-Max-Age
 
 Browsers may cache successful preflight responses.
 
@@ -519,7 +519,7 @@ This reduces repeated `OPTIONS` requests.
 
 ---
 
-# Access-Control-Expose-Headers
+## Access-Control-Expose-Headers
 
 By default,
 
@@ -537,7 +537,7 @@ Only explicitly exposed headers become accessible.
 
 ---
 
-# CORS Request Lifecycle
+## CORS Request Lifecycle
 
 ```
 Browser
@@ -569,7 +569,7 @@ Browser Decision
 
 ---
 
-# CORS with API Gateways
+## CORS with API Gateways
 
 Many organizations centralize CORS policies within the API Gateway.
 
@@ -593,7 +593,7 @@ Centralized management improves consistency across services.
 
 ---
 
-# Enterprise CORS Architecture
+## Enterprise CORS Architecture
 
 ```
                  Browser
@@ -625,7 +625,7 @@ Centralized management improves consistency across services.
 
 ---
 
-# Best Practices
+## Best Practices
 
 Configuration
 
@@ -650,7 +650,7 @@ Operations
 
 ---
 
-# Common Security Mistakes
+## Common Security Mistakes
 
 Avoid
 
@@ -665,7 +665,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Same-Origin Policy protects browser users by default.
 - CORS selectively relaxes SOP using server-defined policies.
@@ -675,7 +675,7 @@ Avoid
 
 ---
 
-# CORS Misconfigurations
+## CORS Misconfigurations
 
 Incorrect CORS configurations are among the most common API security issues.
 
@@ -685,7 +685,7 @@ A vulnerable CORS policy can expose sensitive API responses to attacker-controll
 
 ---
 
-# Common CORS Misconfigurations
+## Common CORS Misconfigurations
 
 ```
                CORS
@@ -707,7 +707,7 @@ A vulnerable CORS policy can expose sensitive API responses to attacker-controll
 
 ---
 
-# Wildcard Origin
+## Wildcard Origin
 
 One of the most common mistakes is allowing every origin.
 
@@ -727,7 +727,7 @@ Consequences
 
 ---
 
-# Wildcard with Credentials
+## Wildcard with Credentials
 
 The following configuration is invalid and should never be used.
 
@@ -741,7 +741,7 @@ Modern browsers reject this combination because it would otherwise allow any web
 
 ---
 
-# Origin Reflection
+## Origin Reflection
 
 Some applications simply copy the incoming `Origin` header into the response.
 
@@ -769,7 +769,7 @@ any origin becomes trusted.
 
 ---
 
-# Reflection Attack
+## Reflection Attack
 
 ```
 Attacker Website
@@ -797,7 +797,7 @@ Reflection effectively bypasses the intended origin whitelist.
 
 ---
 
-# Weak Origin Validation
+## Weak Origin Validation
 
 Poor validation logic may allow attacker-controlled origins.
 
@@ -817,7 +817,7 @@ Correct validation must perform exact origin matching.
 
 ---
 
-# Subdomain Trust Mistakes
+## Subdomain Trust Mistakes
 
 Organizations sometimes trust every subdomain.
 
@@ -838,7 +838,7 @@ A compromised trusted subdomain can become a launch point for attacks.
 
 ---
 
-# Null Origin
+## Null Origin
 
 Some requests contain
 
@@ -856,7 +856,7 @@ Applications should not automatically trust the `null` origin.
 
 ---
 
-# Insecure Regular Expressions
+## Insecure Regular Expressions
 
 Improper regular expressions may unintentionally trust attacker domains.
 
@@ -876,7 +876,7 @@ Use strict validation instead of permissive patterns.
 
 ---
 
-# Overly Permissive Methods
+## Overly Permissive Methods
 
 Example
 
@@ -902,7 +902,7 @@ Least privilege applies to HTTP methods as well.
 
 ---
 
-# Overly Permissive Headers
+## Overly Permissive Headers
 
 Example
 
@@ -926,7 +926,7 @@ Only necessary headers should be permitted.
 
 ---
 
-# Excessive Header Exposure
+## Excessive Header Exposure
 
 Applications sometimes expose internal response headers.
 
@@ -946,7 +946,7 @@ Only expose headers required by client-side code.
 
 ---
 
-# Trusting Development Origins
+## Trusting Development Origins
 
 Example
 
@@ -962,7 +962,7 @@ Development origins should not remain enabled in production.
 
 ---
 
-# Multiple Trusted Origins
+## Multiple Trusted Origins
 
 Large organizations often require multiple origins.
 
@@ -980,7 +980,7 @@ Each origin should be reviewed individually.
 
 ---
 
-# Dynamic Origin Whitelisting
+## Dynamic Origin Whitelisting
 
 Preferred approach
 
@@ -1008,7 +1008,7 @@ Allow     Reject
 
 ---
 
-# Browser Behavior
+## Browser Behavior
 
 Even if the server returns data,
 
@@ -1036,7 +1036,7 @@ This distinction is important during testing.
 
 ---
 
-# CORS Does NOT Replace Authentication
+## CORS Does NOT Replace Authentication
 
 Incorrect assumption
 
@@ -1066,7 +1066,7 @@ CORS is **not** an authentication or authorization mechanism.
 
 ---
 
-# CORS Does NOT Protect APIs
+## CORS Does NOT Protect APIs
 
 API clients such as
 
@@ -1099,7 +1099,7 @@ Server-side security controls remain essential.
 
 ---
 
-# CORS and API Gateways
+## CORS and API Gateways
 
 Many enterprise gateways centrally evaluate origins.
 
@@ -1127,7 +1127,7 @@ Benefits
 
 ---
 
-# Secure CORS Workflow
+## Secure CORS Workflow
 
 ```
 Browser
@@ -1161,7 +1161,7 @@ Backend API
 
 ---
 
-# Secure Origin Validation
+## Secure Origin Validation
 
 Recommended process
 
@@ -1195,7 +1195,7 @@ Avoid partial matching.
 
 ---
 
-# Credentialed Requests
+## Credentialed Requests
 
 Credentialed requests require additional care.
 
@@ -1231,7 +1231,7 @@ All three controls should succeed before sensitive data is returned.
 
 ---
 
-# Secure Credential Configuration
+## Secure Credential Configuration
 
 Recommended
 
@@ -1251,7 +1251,7 @@ Avoid wildcard origins with authenticated sessions.
 
 ---
 
-# CORS Testing Methodology
+## CORS Testing Methodology
 
 Security reviewers should evaluate:
 
@@ -1268,7 +1268,7 @@ Testing should occur in an authorized environment.
 
 ---
 
-# Example Assessment Workflow
+## Example Assessment Workflow
 
 ```
 Identify Endpoint
@@ -1296,7 +1296,7 @@ Document Findings
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1313,7 +1313,7 @@ Recommended detections
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Collect telemetry from
 
@@ -1350,7 +1350,7 @@ SOC Alerts
 
 ---
 
-# Example Correlation Rules
+## Example Correlation Rules
 
 Rule 1
 
@@ -1408,7 +1408,7 @@ Reconnaissance Activity
 
 ---
 
-# Enterprise CORS Architecture
+## Enterprise CORS Architecture
 
 ```
                     Browser
@@ -1452,7 +1452,7 @@ Reconnaissance Activity
 
 ---
 
-# Hands-on Lab 1 – Origin Validation Review
+## Hands-on Lab 1 – Origin Validation Review
 
 **Objective**
 
@@ -1473,7 +1473,7 @@ Review CORS origin validation in an authorized environment.
 
 ---
 
-# Hands-on Lab 2 – Reflection Testing
+## Hands-on Lab 2 – Reflection Testing
 
 **Objective**
 
@@ -1494,7 +1494,7 @@ Identify origin reflection vulnerabilities.
 
 ---
 
-# Hands-on Lab 3 – Credentialed Requests
+## Hands-on Lab 3 – Credentialed Requests
 
 **Objective**
 
@@ -1515,9 +1515,9 @@ Review authenticated cross-origin behavior.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Browser Blocks Response
+### Browser Blocks Response
 
 Possible causes
 
@@ -1528,7 +1528,7 @@ Possible causes
 
 ---
 
-## Preflight Request Fails
+### Preflight Request Fails
 
 Possible causes
 
@@ -1539,7 +1539,7 @@ Possible causes
 
 ---
 
-## Credentialed Requests Fail
+### Credentialed Requests Fail
 
 Possible causes
 
@@ -1550,7 +1550,7 @@ Possible causes
 
 ---
 
-## Unexpected Origin Accepted
+### Unexpected Origin Accepted
 
 Possible causes
 
@@ -1561,7 +1561,7 @@ Possible causes
 
 ---
 
-## Browser Works but API Client Also Succeeds
+### Browser Works but API Client Also Succeeds
 
 Possible causes
 
@@ -1571,9 +1571,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is the Same-Origin Policy?
 2. What is CORS?
@@ -1588,7 +1588,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. Explain the CORS request lifecycle.
 12. Why is wildcard origin configuration dangerous for authenticated APIs?
@@ -1603,7 +1603,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1635,7 +1635,7 @@ An application trusts all `*.company.com` subdomains. A forgotten development su
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we explored Cross-Origin Resource Sharing (CORS) and its role in browser security.
 
@@ -1660,7 +1660,7 @@ Properly configured CORS policies allow legitimate cross-origin communication wh
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1676,21 +1676,21 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - Fetch Standard (WHATWG)
 - RFC 9110 – HTTP Semantics
 
-## Security Standards
+### Security Standards
 
 - OWASP Cross-Origin Resource Sharing Cheat Sheet
 - OWASP API Security Top 10
 - OWASP ASVS
 - NIST SP 800-53
 
-## Further Reading
+### Further Reading
 
 - MDN Web Docs – CORS
 - W3C Web Security Specifications
@@ -1698,7 +1698,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 17 – CSRF in APIs**
 

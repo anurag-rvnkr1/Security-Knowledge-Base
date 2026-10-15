@@ -55,7 +55,7 @@ Applications
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -139,7 +139,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is High Availability?
+## What Is High Availability?
 
 High Availability means designing a system so that failures do not cause unacceptable service interruption.
 
@@ -167,7 +167,7 @@ Service Continues
 
 ---
 
-# Availability
+## Availability
 
 Availability describes how often a service is operational and accessible.
 
@@ -180,7 +180,7 @@ Uptime / Total Time
 
 ---
 
-# Availability Example
+## Availability Example
 
 Suppose a service is available:
 
@@ -198,7 +198,7 @@ over the measurement period.
 
 ---
 
-# Common Availability Targets
+## Common Availability Targets
 
 Examples:
 
@@ -213,7 +213,7 @@ Each additional nine requires significantly more engineering effort.
 
 ---
 
-# Reliability vs Availability
+## Reliability vs Availability
 
 Reliability:
 
@@ -231,7 +231,7 @@ A system can be reliable but temporarily unavailable because of maintenance.
 
 ---
 
-# Fault Tolerance
+## Fault Tolerance
 
 Fault tolerance means a system can continue operating despite certain component failures.
 
@@ -249,7 +249,7 @@ Application Continues
 
 ---
 
-# Single Point of Failure
+## Single Point of Failure
 
 A Single Point of Failure (SPOF) is a component whose failure can cause the entire service to fail.
 
@@ -272,7 +272,7 @@ Application
 
 ---
 
-# Kubernetes HA Goal
+## Kubernetes HA Goal
 
 Remove or reduce critical SPOFs.
 
@@ -306,7 +306,7 @@ Worker-3
 
 ---
 
-# Kubernetes HA Layers
+## Kubernetes HA Layers
 
 HA can be considered at several layers:
 
@@ -328,7 +328,7 @@ Infrastructure
 
 ---
 
-# Control Plane HA
+## Control Plane HA
 
 A production Kubernetes control plane commonly uses multiple control-plane nodes.
 
@@ -348,7 +348,7 @@ Example:
 
 ---
 
-# API Server HA
+## API Server HA
 
 The Kubernetes API Server is generally stateless relative to etcd.
 
@@ -376,7 +376,7 @@ the load balancer can route traffic to healthy servers.
 
 ---
 
-# API Server Load Balancing
+## API Server Load Balancing
 
 A load balancer provides a stable endpoint:
 
@@ -394,7 +394,7 @@ API-3
 
 ---
 
-# API Server Health Checks
+## API Server Health Checks
 
 The load balancer should detect unhealthy API Servers.
 
@@ -412,7 +412,7 @@ Traffic is directed to healthy instances.
 
 ---
 
-# etcd HA
+## etcd HA
 
 etcd uses a distributed consensus model.
 
@@ -426,7 +426,7 @@ A production HA etcd cluster commonly uses an odd number of members:
 
 ---
 
-# Why Odd Number of etcd Members?
+## Why Odd Number of etcd Members?
 
 etcd requires quorum.
 
@@ -456,7 +456,7 @@ quorum is:
 
 ---
 
-# etcd Quorum
+## etcd Quorum
 
 The quorum formula is:
 
@@ -474,7 +474,7 @@ For example:
 
 ---
 
-# etcd Failure Tolerance
+## etcd Failure Tolerance
 
 A 3-member etcd cluster can generally tolerate:
 
@@ -492,7 +492,7 @@ as long as quorum remains available.
 
 ---
 
-# etcd Leader
+## etcd Leader
 
 etcd uses leader election.
 
@@ -521,7 +521,7 @@ New Leader
 
 ---
 
-# etcd Failure
+## etcd Failure
 
 If quorum is lost:
 
@@ -537,7 +537,7 @@ The API Server may no longer be able to reliably persist cluster state.
 
 ---
 
-# Control Plane Components
+## Control Plane Components
 
 HA control planes may run multiple instances of:
 
@@ -552,7 +552,7 @@ The exact deployment model depends on the Kubernetes distribution.
 
 ---
 
-# Scheduler HA
+## Scheduler HA
 
 Multiple scheduler instances can participate in leader election.
 
@@ -568,7 +568,7 @@ One may act as the active leader while others are available to take over.
 
 ---
 
-# Controller Manager HA
+## Controller Manager HA
 
 Similarly, multiple controller-manager instances can use leader election.
 
@@ -584,13 +584,13 @@ This provides redundancy.
 
 ---
 
-# Cloud Controller Manager HA
+## Cloud Controller Manager HA
 
 Cloud Controller Manager deployments can also use multiple instances depending on the cloud integration.
 
 ---
 
-# Worker Node HA
+## Worker Node HA
 
 Applications should not depend on a single worker node.
 
@@ -606,7 +606,7 @@ can provide workload redundancy.
 
 ---
 
-# Pod Replicas
+## Pod Replicas
 
 A Deployment can run multiple replicas.
 
@@ -630,7 +630,7 @@ Application
 
 ---
 
-# Why Multiple Replicas?
+## Why Multiple Replicas?
 
 If:
 
@@ -650,7 +650,7 @@ can continue serving requests.
 
 ---
 
-# Pod Distribution
+## Pod Distribution
 
 Simply running three replicas does not guarantee HA.
 
@@ -678,7 +678,7 @@ Node-3 → Pod-3
 
 ---
 
-# Pod Anti-Affinity
+## Pod Anti-Affinity
 
 Pod anti-affinity can discourage or require separating replicas across nodes.
 
@@ -701,7 +701,7 @@ affinity:
 
 ---
 
-# Topology Spread Constraints
+## Topology Spread Constraints
 
 Topology spread constraints provide another way to distribute workloads across failure domains.
 
@@ -724,7 +724,7 @@ topologySpreadConstraints:
 
 ---
 
-# Availability Zones
+## Availability Zones
 
 Cloud platforms commonly provide multiple Availability Zones.
 
@@ -745,7 +745,7 @@ Region
 
 ---
 
-# Multi-Zone Kubernetes
+## Multi-Zone Kubernetes
 
 A resilient application should distribute replicas across zones.
 
@@ -766,7 +766,7 @@ other zones remain available.
 
 ---
 
-# Failure Domains
+## Failure Domains
 
 Failure domains can include:
 
@@ -783,7 +783,7 @@ HA architecture should place replicas across appropriate failure domains.
 
 ---
 
-# Node Failure
+## Node Failure
 
 If one node fails:
 
@@ -814,7 +814,7 @@ Node-4 → Pod-1 replacement
 
 ---
 
-# Node Auto-Recovery
+## Node Auto-Recovery
 
 Depending on the environment, failed nodes may be:
 
@@ -828,7 +828,7 @@ through infrastructure automation or Cluster Autoscaler mechanisms.
 
 ---
 
-# Pod Readiness
+## Pod Readiness
 
 Readiness probes indicate whether a container is ready to receive traffic.
 
@@ -844,7 +844,7 @@ readinessProbe:
 
 ---
 
-# Why Readiness Matters
+## Why Readiness Matters
 
 Without readiness:
 
@@ -872,7 +872,7 @@ Traffic
 
 ---
 
-# Liveness Probe
+## Liveness Probe
 
 A liveness probe helps determine whether a container should be restarted.
 
@@ -888,7 +888,7 @@ livenessProbe:
 
 ---
 
-# Startup Probe
+## Startup Probe
 
 Startup probes protect slow-starting applications from premature liveness failures.
 
@@ -904,7 +904,7 @@ startupProbe:
 
 ---
 
-# Probe Comparison
+## Probe Comparison
 
 | Probe | Purpose |
 |---|---|
@@ -914,7 +914,7 @@ startupProbe:
 
 ---
 
-# Graceful Shutdown
+## Graceful Shutdown
 
 When a Pod is terminated:
 
@@ -932,7 +932,7 @@ Graceful shutdown reduces dropped requests.
 
 ---
 
-# terminationGracePeriodSeconds
+## terminationGracePeriodSeconds
 
 Example:
 
@@ -946,7 +946,7 @@ This gives the workload time to shut down gracefully.
 
 ---
 
-# Service HA
+## Service HA
 
 Services distribute traffic across healthy backend Pods.
 
@@ -964,7 +964,7 @@ Pod Pod Pod
 
 ---
 
-# Service and Readiness
+## Service and Readiness
 
 Services normally avoid routing traffic to Pods that are not considered ready for normal service endpoints.
 
@@ -980,7 +980,7 @@ helps maintain availability during deployments and failures.
 
 ---
 
-# Load Balancer HA
+## Load Balancer HA
 
 External traffic may use:
 
@@ -994,7 +994,7 @@ Avoid introducing a single externally reachable load balancer as an unmanaged SP
 
 ---
 
-# Ingress HA
+## Ingress HA
 
 Run multiple replicas of the Ingress controller where supported.
 
@@ -1009,7 +1009,7 @@ Ingress Controller
 
 ---
 
-# Gateway HA
+## Gateway HA
 
 Gateway implementations should also be deployed according to their controller's HA capabilities.
 
@@ -1025,7 +1025,7 @@ are resilient.
 
 ---
 
-# Stateful Application HA
+## Stateful Application HA
 
 Stateful applications require additional planning.
 
@@ -1043,7 +1043,7 @@ Running multiple Pods does not automatically make a database highly available.
 
 ---
 
-# Database HA
+## Database HA
 
 Database HA may require:
 
@@ -1058,7 +1058,7 @@ Backup
 
 ---
 
-# StatefulSet
+## StatefulSet
 
 StatefulSet provides:
 
@@ -1073,7 +1073,7 @@ It does not automatically provide database-level HA.
 
 ---
 
-# StatefulSet HA
+## StatefulSet HA
 
 A typical architecture:
 
@@ -1094,7 +1094,7 @@ Consistency
 
 ---
 
-# DaemonSet HA
+## DaemonSet HA
 
 DaemonSets run workloads on nodes.
 
@@ -1111,7 +1111,7 @@ Node failures reduce the number of DaemonSet instances automatically because the
 
 ---
 
-# Pod Disruption Budget
+## Pod Disruption Budget
 
 PDBs protect replicated applications from excessive voluntary disruption.
 
@@ -1136,7 +1136,7 @@ spec:
 
 ---
 
-# PDB and HA
+## PDB and HA
 
 PDB helps during:
 
@@ -1150,7 +1150,7 @@ It does not protect against every involuntary failure.
 
 ---
 
-# Horizontal Pod Autoscaler
+## Horizontal Pod Autoscaler
 
 HPA adjusts replicas based on metrics.
 
@@ -1168,7 +1168,7 @@ More Pods
 
 ---
 
-# Cluster Autoscaler
+## Cluster Autoscaler
 
 Cluster Autoscaler adjusts node capacity when scheduling requirements change.
 
@@ -1188,7 +1188,7 @@ New Nodes
 
 ---
 
-# Spare Capacity
+## Spare Capacity
 
 HA requires sufficient spare capacity.
 
@@ -1209,7 +1209,7 @@ Capacity Planning
 
 ---
 
-# N+1 Capacity
+## N+1 Capacity
 
 A common planning principle is:
 
@@ -1232,7 +1232,7 @@ This allows one node to fail while maintaining capacity.
 
 ---
 
-# Multi-Region Architecture
+## Multi-Region Architecture
 
 For major regional failures:
 
@@ -1252,7 +1252,7 @@ Global Traffic
 
 ---
 
-# Active-Passive
+## Active-Passive
 
 One region serves production.
 
@@ -1279,7 +1279,7 @@ Active
 
 ---
 
-# Active-Active
+## Active-Active
 
 Both regions serve traffic.
 
@@ -1296,7 +1296,7 @@ This is more complex, especially for stateful applications.
 
 ---
 
-# Multi-Cluster HA
+## Multi-Cluster HA
 
 Multiple Kubernetes clusters can provide additional failure isolation.
 
@@ -1314,7 +1314,7 @@ Cluster B
 
 ---
 
-# Multi-Cluster Challenges
+## Multi-Cluster Challenges
 
 Challenges include:
 
@@ -1331,7 +1331,7 @@ Cost
 
 ---
 
-# Backup vs High Availability
+## Backup vs High Availability
 
 HA:
 
@@ -1359,7 +1359,7 @@ Both are required.
 
 ---
 
-# HA vs Disaster Recovery
+## HA vs Disaster Recovery
 
 HA handles:
 
@@ -1385,7 +1385,7 @@ Region Failure
 
 ---
 
-# Monitoring HA
+## Monitoring HA
 
 Monitoring itself should be highly available.
 
@@ -1407,7 +1407,7 @@ External Alerting
 
 ---
 
-# Logging HA
+## Logging HA
 
 Logs should survive:
 
@@ -1421,7 +1421,7 @@ Use external or replicated log storage where required.
 
 ---
 
-# Security HA
+## Security HA
 
 Security systems should also avoid becoming SPOFs.
 
@@ -1436,7 +1436,7 @@ Security Monitoring
 
 ---
 
-# Admission Webhook HA
+## Admission Webhook HA
 
 If an admission webhook is critical:
 
@@ -1460,7 +1460,7 @@ are resilient.
 
 ---
 
-# DNS HA
+## DNS HA
 
 Cluster DNS should have multiple replicas.
 
@@ -1475,7 +1475,7 @@ CoreDNS
 
 ---
 
-# CNI HA
+## CNI HA
 
 Networking components should be deployed according to the CNI's supported HA architecture.
 
@@ -1490,7 +1490,7 @@ Network Policies
 
 ---
 
-# CSI HA
+## CSI HA
 
 Storage components may include:
 
@@ -1507,7 +1507,7 @@ Ensure critical control components are deployed according to supported HA guidan
 
 ---
 
-# Health Checks
+## Health Checks
 
 HA systems require health checks.
 
@@ -1523,7 +1523,7 @@ Resource Usage
 
 ---
 
-# Failure Detection
+## Failure Detection
 
 The system should detect:
 
@@ -1539,7 +1539,7 @@ quickly.
 
 ---
 
-# Automatic Recovery
+## Automatic Recovery
 
 Examples:
 
@@ -1565,7 +1565,7 @@ provided the workload and cluster state permit it.
 
 ---
 
-# Rolling Updates
+## Rolling Updates
 
 Deployments can update Pods gradually.
 
@@ -1583,7 +1583,7 @@ This helps reduce downtime.
 
 ---
 
-# Rolling Restart
+## Rolling Restart
 
 A controlled restart can be performed with:
 
@@ -1595,7 +1595,7 @@ Monitor the rollout afterward.
 
 ---
 
-# Check Rollout
+## Check Rollout
 
 ```bash
 kubectl rollout status deployment <deployment-name>
@@ -1603,7 +1603,7 @@ kubectl rollout status deployment <deployment-name>
 
 ---
 
-# Rollout History
+## Rollout History
 
 ```bash
 kubectl rollout history deployment <deployment-name>
@@ -1611,7 +1611,7 @@ kubectl rollout history deployment <deployment-name>
 
 ---
 
-# Rollback Application Deployment
+## Rollback Application Deployment
 
 For a Deployment:
 
@@ -1623,7 +1623,7 @@ This is an application rollout rollback, not a Kubernetes cluster-version rollba
 
 ---
 
-# Zero-Downtime Deployment
+## Zero-Downtime Deployment
 
 A typical pattern:
 
@@ -1650,7 +1650,7 @@ RollingUpdate Strategy
 
 ---
 
-# Deployment Strategy
+## Deployment Strategy
 
 Example:
 
@@ -1670,7 +1670,7 @@ This can help maintain availability during rollout, assuming enough capacity exi
 
 ---
 
-# Failure Simulation
+## Failure Simulation
 
 HA should be tested.
 
@@ -1688,7 +1688,7 @@ Use controlled environments and approved procedures.
 
 ---
 
-# Chaos Testing
+## Chaos Testing
 
 Chaos testing deliberately introduces failures to validate resilience.
 
@@ -1706,7 +1706,7 @@ Measure
 
 ---
 
-# HA Metrics
+## HA Metrics
 
 Important metrics include:
 
@@ -1724,7 +1724,7 @@ Storage Errors
 
 ---
 
-# SLA
+## SLA
 
 Service Level Agreement defines a contractual availability or performance commitment.
 
@@ -1736,7 +1736,7 @@ Example:
 
 ---
 
-# SLO
+## SLO
 
 Service Level Objective is the internal target.
 
@@ -1748,7 +1748,7 @@ SLO = 99.95%
 
 ---
 
-# SLI
+## SLI
 
 Service Level Indicator is the measured metric.
 
@@ -1760,7 +1760,7 @@ Successful Requests / Total Requests
 
 ---
 
-# SLI → SLO → SLA
+## SLI → SLO → SLA
 
 ```text
 SLI
@@ -1778,7 +1778,7 @@ Contractual Commitment
 
 ---
 
-# HA Design Process
+## HA Design Process
 
 Start with:
 
@@ -1797,7 +1797,7 @@ Start with:
 
 ---
 
-# HA Example
+## HA Example
 
 Suppose an API requires:
 
@@ -1822,9 +1822,9 @@ Backup
 
 ---
 
-# Common HA Mistakes
+## Common HA Mistakes
 
-## 1. Three Pods on One Node
+### 1. Three Pods on One Node
 
 ```text
 Node-1
@@ -1837,63 +1837,63 @@ Node failure destroys all replicas.
 
 ---
 
-## 2. One Worker Node
+### 2. One Worker Node
 
 This creates a major SPOF.
 
 ---
 
-## 3. No Spare Capacity
+### 3. No Spare Capacity
 
 A node failure may leave nowhere to schedule replacements.
 
 ---
 
-## 4. No Readiness Probes
+### 4. No Readiness Probes
 
 Traffic can reach unhealthy or initializing applications.
 
 ---
 
-## 5. No PDB
+### 5. No PDB
 
 Maintenance may disrupt too many replicas.
 
 ---
 
-## 6. Treating StatefulSets as Automatically HA
+### 6. Treating StatefulSets as Automatically HA
 
 StatefulSet does not provide database replication by itself.
 
 ---
 
-## 7. No Multi-Zone Distribution
+### 7. No Multi-Zone Distribution
 
 A zone outage can affect all replicas.
 
 ---
 
-## 8. Single Monitoring System
+### 8. Single Monitoring System
 
 If monitoring fails, operators may lose visibility.
 
 ---
 
-## 9. No Backup
+### 9. No Backup
 
 HA does not protect against all data-loss scenarios.
 
 ---
 
-## 10. No Failure Testing
+### 10. No Failure Testing
 
 An HA architecture that has never been tested is an assumption.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Eliminate SPOFs
+#### 1. Eliminate SPOFs
 
 Identify:
 
@@ -1907,7 +1907,7 @@ Application
 
 ---
 
-### 2. Spread Workloads
+#### 2. Spread Workloads
 
 Use:
 
@@ -1919,7 +1919,7 @@ Multiple Zones
 
 ---
 
-### 3. Use Multiple Replicas
+#### 3. Use Multiple Replicas
 
 For stateless workloads:
 
@@ -1929,31 +1929,31 @@ replicas > 1
 
 ---
 
-### 4. Maintain Spare Capacity
+#### 4. Maintain Spare Capacity
 
 Allow the cluster to tolerate expected failures.
 
 ---
 
-### 5. Use Readiness Probes
+#### 5. Use Readiness Probes
 
 Only send traffic to ready applications.
 
 ---
 
-### 6. Use PDBs
+#### 6. Use PDBs
 
 Protect workloads during voluntary disruption.
 
 ---
 
-### 7. Protect Stateful Systems
+#### 7. Protect Stateful Systems
 
 Use application-native replication and tested recovery.
 
 ---
 
-### 8. Monitor Everything
+#### 8. Monitor Everything
 
 Track:
 
@@ -1966,7 +1966,7 @@ Saturation
 
 ---
 
-### 9. Test Failures
+#### 9. Test Failures
 
 Practice:
 
@@ -1979,7 +1979,7 @@ Network Failure
 
 ---
 
-### 10. Combine HA With Backup
+#### 10. Combine HA With Backup
 
 HA reduces downtime.
 
@@ -1987,7 +1987,7 @@ Backup enables recovery.
 
 ---
 
-# Hands-on Lab 1 – Multiple Pod Replicas
+## Hands-on Lab 1 – Multiple Pod Replicas
 
 Create a Deployment:
 
@@ -2028,7 +2028,7 @@ kubectl get pods -o wide
 
 ---
 
-# Hands-on Lab 2 – Pod Failure
+## Hands-on Lab 2 – Pod Failure
 
 Delete one Pod:
 
@@ -2046,7 +2046,7 @@ Replacement Pod
 
 ---
 
-# Hands-on Lab 3 – Pod Anti-Affinity
+## Hands-on Lab 3 – Pod Anti-Affinity
 
 Configure anti-affinity so replicas prefer or require separate nodes.
 
@@ -2058,7 +2058,7 @@ kubectl get pods -o wide
 
 ---
 
-# Hands-on Lab 4 – Topology Spread
+## Hands-on Lab 4 – Topology Spread
 
 Deploy replicas across multiple zones or node labels in a suitable test environment.
 
@@ -2066,7 +2066,7 @@ Verify distribution.
 
 ---
 
-# Hands-on Lab 5 – Readiness Probe
+## Hands-on Lab 5 – Readiness Probe
 
 Create a Deployment with:
 
@@ -2081,7 +2081,7 @@ Observe Pod readiness.
 
 ---
 
-# Hands-on Lab 6 – Liveness Probe
+## Hands-on Lab 6 – Liveness Probe
 
 Configure:
 
@@ -2096,7 +2096,7 @@ Test the application's response to an unhealthy state in a disposable environmen
 
 ---
 
-# Hands-on Lab 7 – Startup Probe
+## Hands-on Lab 7 – Startup Probe
 
 Deploy a slow-starting test application.
 
@@ -2110,7 +2110,7 @@ Observe how startup and liveness behavior interact.
 
 ---
 
-# Hands-on Lab 8 – Pod Disruption Budget
+## Hands-on Lab 8 – Pod Disruption Budget
 
 Create:
 
@@ -2126,7 +2126,7 @@ Observe disruption behavior.
 
 ---
 
-# Hands-on Lab 9 – Rolling Deployment
+## Hands-on Lab 9 – Rolling Deployment
 
 Update an image:
 
@@ -2153,7 +2153,7 @@ Use a controlled, immutable image tag in production rather than relying on a mov
 
 ---
 
-# Hands-on Lab 10 – Rollback Application Deployment
+## Hands-on Lab 10 – Rollback Application Deployment
 
 Perform a Deployment update.
 
@@ -2171,7 +2171,7 @@ kubectl rollout undo deployment/web
 
 ---
 
-# Hands-on Lab 11 – Node Failure Simulation
+## Hands-on Lab 11 – Node Failure Simulation
 
 In a disposable environment:
 
@@ -2189,7 +2189,7 @@ Replica Recovery
 
 ---
 
-# Hands-on Lab 12 – Multi-Zone HA
+## Hands-on Lab 12 – Multi-Zone HA
 
 Create or use a cluster spanning multiple zones.
 
@@ -2213,7 +2213,7 @@ distribution.
 
 ---
 
-# Hands-on Lab 13 – Control Plane HA
+## Hands-on Lab 13 – Control Plane HA
 
 Create a test HA control plane.
 
@@ -2229,7 +2229,7 @@ and test failure of one API Server.
 
 ---
 
-# Hands-on Lab 14 – etcd Quorum
+## Hands-on Lab 14 – etcd Quorum
 
 Use a disposable etcd/Kubernetes environment.
 
@@ -2245,7 +2245,7 @@ Do not intentionally destroy production quorum.
 
 ---
 
-# Hands-on Lab 15 – API Server Load Balancing
+## Hands-on Lab 15 – API Server Load Balancing
 
 Configure a test load balancer in front of multiple API Servers.
 
@@ -2261,7 +2261,7 @@ continues working.
 
 ---
 
-# Hands-on Lab 16 – HA Monitoring
+## Hands-on Lab 16 – HA Monitoring
 
 Deploy monitoring with redundant components where supported.
 
@@ -2271,7 +2271,7 @@ Verify continued observability.
 
 ---
 
-# Hands-on Lab 17 – Stateful Application HA
+## Hands-on Lab 17 – Stateful Application HA
 
 Deploy a test database with its supported replication mechanism.
 
@@ -2287,7 +2287,7 @@ Failover
 
 ---
 
-# Hands-on Lab 18 – Backup + HA
+## Hands-on Lab 18 – Backup + HA
 
 Combine:
 
@@ -2315,7 +2315,7 @@ Compare HA and backup behavior.
 
 ---
 
-# Hands-on Lab 19 – Chaos Experiment
+## Hands-on Lab 19 – Chaos Experiment
 
 Create a controlled failure:
 
@@ -2333,7 +2333,7 @@ Availability
 
 ---
 
-# Hands-on Lab 20 – Full HA Exercise
+## Hands-on Lab 20 – Full HA Exercise
 
 Design:
 
@@ -2365,9 +2365,9 @@ Document recovery behavior.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## High Availability
+### High Availability
 
 ```text
 Ability to continue service despite expected failures
@@ -2375,7 +2375,7 @@ Ability to continue service despite expected failures
 
 ---
 
-## SPOF
+### SPOF
 
 ```text
 Single Point of Failure
@@ -2383,7 +2383,7 @@ Single Point of Failure
 
 ---
 
-## Fault Tolerance
+### Fault Tolerance
 
 ```text
 Ability to continue operating despite component failure
@@ -2391,7 +2391,7 @@ Ability to continue operating despite component failure
 
 ---
 
-## API Server HA
+### API Server HA
 
 ```text
 Multiple API Servers behind a stable endpoint/load balancer
@@ -2399,7 +2399,7 @@ Multiple API Servers behind a stable endpoint/load balancer
 
 ---
 
-## etcd HA
+### etcd HA
 
 ```text
 Multiple etcd members maintaining quorum
@@ -2407,7 +2407,7 @@ Multiple etcd members maintaining quorum
 
 ---
 
-## Quorum
+### Quorum
 
 ```text
 Majority required for consensus
@@ -2415,7 +2415,7 @@ Majority required for consensus
 
 ---
 
-## Pod Replicas
+### Pod Replicas
 
 ```text
 Multiple instances of an application
@@ -2423,7 +2423,7 @@ Multiple instances of an application
 
 ---
 
-## Pod Anti-Affinity
+### Pod Anti-Affinity
 
 ```text
 Separates workloads based on topology rules
@@ -2431,7 +2431,7 @@ Separates workloads based on topology rules
 
 ---
 
-## Topology Spread
+### Topology Spread
 
 ```text
 Distributes Pods across failure domains
@@ -2439,7 +2439,7 @@ Distributes Pods across failure domains
 
 ---
 
-## PDB
+### PDB
 
 ```text
 Limits voluntary disruption
@@ -2447,7 +2447,7 @@ Limits voluntary disruption
 
 ---
 
-## Readiness Probe
+### Readiness Probe
 
 ```text
 Determines whether a Pod should receive traffic
@@ -2455,7 +2455,7 @@ Determines whether a Pod should receive traffic
 
 ---
 
-## Liveness Probe
+### Liveness Probe
 
 ```text
 Helps determine whether a container should be restarted
@@ -2463,7 +2463,7 @@ Helps determine whether a container should be restarted
 
 ---
 
-## Startup Probe
+### Startup Probe
 
 ```text
 Protects slow-starting applications during initialization
@@ -2471,7 +2471,7 @@ Protects slow-starting applications during initialization
 
 ---
 
-## RPO
+### RPO
 
 ```text
 Acceptable data loss
@@ -2479,7 +2479,7 @@ Acceptable data loss
 
 ---
 
-## RTO
+### RTO
 
 ```text
 Target recovery time
@@ -2487,7 +2487,7 @@ Target recovery time
 
 ---
 
-## HA vs Backup
+### HA vs Backup
 
 ```text
 HA → Continue operating
@@ -2496,7 +2496,7 @@ Backup → Recover data
 
 ---
 
-## Active-Passive
+### Active-Passive
 
 ```text
 One active environment + standby
@@ -2504,7 +2504,7 @@ One active environment + standby
 
 ---
 
-## Active-Active
+### Active-Active
 
 ```text
 Multiple environments actively serving traffic
@@ -2512,7 +2512,7 @@ Multiple environments actively serving traffic
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check nodes:
 
@@ -2625,9 +2625,9 @@ kubectl top nodes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is High Availability?
 - Why is HA important in Kubernetes?
@@ -2649,7 +2649,7 @@ kubectl top nodes
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does Kubernetes recover from a failed Pod?
 - How does Kubernetes handle node failure?
@@ -2669,7 +2669,7 @@ kubectl top nodes
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a highly available Kubernetes cluster.
 - Design an HA control plane across three availability zones.
@@ -2690,13 +2690,13 @@ kubectl top nodes
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > How does Kubernetes provide high availability?
 
-### Answer
+#### Answer
 
 Kubernetes provides HA through multiple mechanisms:
 
@@ -2724,13 +2724,13 @@ These mechanisms address different failure scenarios.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Why should you run multiple API Servers?
 
-### Answer
+#### Answer
 
 The API Server is a critical control-plane component.
 
@@ -2760,13 +2760,13 @@ the cluster can continue serving API requests, assuming the rest of the control 
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > Why does etcd require quorum?
 
-### Answer
+#### Answer
 
 etcd uses distributed consensus.
 
@@ -2796,13 +2796,13 @@ which can significantly affect Kubernetes control-plane operation.
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > You have three application replicas. Are you highly available?
 
-### Answer
+#### Answer
 
 Not necessarily.
 
@@ -2827,13 +2827,13 @@ HA requires distributing replicas across appropriate failure domains.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How do you distribute Pods across zones?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2859,13 +2859,13 @@ This reduces correlated failure.
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > What is the purpose of a readiness probe?
 
-### Answer
+#### Answer
 
 It tells Kubernetes whether the application is ready to receive traffic.
 
@@ -2891,13 +2891,13 @@ This helps prevent requests from reaching unready applications.
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > Does a PDB guarantee zero downtime?
 
-### Answer
+#### Answer
 
 No.
 
@@ -2921,13 +2921,13 @@ Voluntary Disruption
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > What happens when an application Pod fails?
 
-### Answer
+#### Answer
 
 If it is managed by a controller such as a Deployment:
 
@@ -2945,13 +2945,13 @@ The Service can continue routing to healthy ready replicas.
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > What is the difference between HA and disaster recovery?
 
-### Answer
+#### Answer
 
 HA focuses on continuing service despite component failures:
 
@@ -2973,13 +2973,13 @@ Restore
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a highly available Kubernetes architecture.
 
-### Answer
+#### Answer
 
 A strong design could use:
 
@@ -3037,7 +3037,7 @@ Disaster Recovery
 
 ---
 
-# Production HA Checklist
+## Production HA Checklist
 
 ```text
 ☑ No critical SPOFs
@@ -3069,7 +3069,7 @@ Disaster Recovery
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 High Availability is a combination of:
 
@@ -3139,9 +3139,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 69 – Disaster Recovery
+## Chapter 69 – Disaster Recovery
 
 Topics will include:
 

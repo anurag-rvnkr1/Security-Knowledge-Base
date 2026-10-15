@@ -1,6 +1,6 @@
 # 15 - Rate Limiting
 
-# Introduction
+## Introduction
 
 Rate limiting is a security and traffic management technique that controls how many requests a client can make to an API during a defined time period.
 
@@ -18,7 +18,7 @@ Modern API Gateways enforce rate limiting before requests reach backend services
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -34,7 +34,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is Rate Limiting?
+## What is Rate Limiting?
 
 Rate limiting restricts how frequently a client may access an API.
 
@@ -70,7 +70,7 @@ HTTP 429
 
 ---
 
-# Why Rate Limiting is Important
+## Why Rate Limiting is Important
 
 Without rate limiting
 
@@ -118,7 +118,7 @@ Backend Protected
 
 ---
 
-# Rate Limiting Workflow
+## Rate Limiting Workflow
 
 ```
 Incoming Request
@@ -152,7 +152,7 @@ Within Limit?
 
 ---
 
-# Core Components
+## Core Components
 
 ```
           Rate Limiting
@@ -174,7 +174,7 @@ Within Limit?
 
 ---
 
-# Client Identification
+## Client Identification
 
 Requests can be limited by:
 
@@ -192,7 +192,7 @@ Authenticated identities are generally preferred over IP addresses alone.
 
 ---
 
-# Types of Limits
+## Types of Limits
 
 | Limit Type | Example |
 |------------|----------|
@@ -204,7 +204,7 @@ Authenticated identities are generally preferred over IP addresses alone.
 
 ---
 
-# Fixed Window Algorithm
+## Fixed Window Algorithm
 
 Requests are counted inside fixed time intervals.
 
@@ -238,7 +238,7 @@ Disadvantages
 
 ---
 
-# Sliding Window Algorithm
+## Sliding Window Algorithm
 
 The window continuously moves with time.
 
@@ -270,7 +270,7 @@ Disadvantages
 
 ---
 
-# Sliding Log Algorithm
+## Sliding Log Algorithm
 
 Every request timestamp is stored.
 
@@ -302,7 +302,7 @@ Disadvantages
 
 ---
 
-# Token Bucket Algorithm
+## Token Bucket Algorithm
 
 Tokens accumulate over time.
 
@@ -336,7 +336,7 @@ Advantages
 
 ---
 
-# Leaky Bucket Algorithm
+## Leaky Bucket Algorithm
 
 Requests enter a queue and leave at a constant rate.
 
@@ -363,7 +363,7 @@ Advantages
 
 ---
 
-# Algorithm Comparison
+## Algorithm Comparison
 
 | Algorithm | Burst Support | Complexity | Accuracy |
 |-----------|---------------|-----------:|----------|
@@ -375,7 +375,7 @@ Advantages
 
 ---
 
-# Burst Handling
+## Burst Handling
 
 Many APIs permit short bursts while enforcing long-term limits.
 
@@ -399,7 +399,7 @@ Benefits
 
 ---
 
-# Throttling
+## Throttling
 
 Throttling slows or delays requests instead of immediately rejecting them.
 
@@ -427,7 +427,7 @@ Useful when temporary congestion occurs.
 
 ---
 
-# Quotas
+## Quotas
 
 Quotas limit total API consumption over long periods.
 
@@ -443,7 +443,7 @@ Quotas are primarily used for governance and API monetization.
 
 ---
 
-# Rate Limiting vs Throttling vs Quotas
+## Rate Limiting vs Throttling vs Quotas
 
 | Feature | Purpose |
 |---------|----------|
@@ -453,7 +453,7 @@ Quotas are primarily used for governance and API monetization.
 
 ---
 
-# Distributed Rate Limiting
+## Distributed Rate Limiting
 
 In clustered environments, all gateway nodes must enforce the same limits.
 
@@ -481,7 +481,7 @@ In clustered environments, all gateway nodes must enforce the same limits.
 
 ---
 
-# Rate Limiting in Kubernetes
+## Rate Limiting in Kubernetes
 
 ```
 Internet
@@ -511,7 +511,7 @@ Shared counters prevent inconsistent enforcement across replicas.
 
 ---
 
-# Multi-Tenant Rate Limiting
+## Multi-Tenant Rate Limiting
 
 Each tenant may have independent policies.
 
@@ -541,7 +541,7 @@ This prevents one tenant from impacting another.
 
 ---
 
-# API Monetization
+## API Monetization
 
 Commercial APIs frequently associate limits with subscription plans.
 
@@ -571,7 +571,7 @@ Custom Policy
 
 ---
 
-# Priority-Based Traffic
+## Priority-Based Traffic
 
 ```
 Premium Customers
@@ -593,7 +593,7 @@ Critical business traffic should receive higher priority during congestion.
 
 ---
 
-# Adaptive Rate Limiting
+## Adaptive Rate Limiting
 
 Adaptive systems dynamically adjust limits.
 
@@ -624,7 +624,7 @@ Lower Limits
 
 ---
 
-# HTTP Response Headers
+## HTTP Response Headers
 
 Common headers
 
@@ -642,7 +642,7 @@ These help clients implement backoff and retry strategies.
 
 ---
 
-# HTTP 429 Response
+## HTTP 429 Response
 
 Example
 
@@ -656,7 +656,7 @@ Clients should respect the retry interval instead of immediately retrying.
 
 ---
 
-# Enterprise Rate-Limiting Architecture
+## Enterprise Rate-Limiting Architecture
 
 ```
                 Internet
@@ -700,7 +700,7 @@ Clients should respect the retry interval instead of immediately retrying.
 
 ---
 
-# Best Practices
+## Best Practices
 
 Architecture
 
@@ -725,7 +725,7 @@ Operations
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid
 
@@ -741,7 +741,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Rate limiting protects APIs from abuse while maintaining availability.
 - Token Bucket and Sliding Window are among the most commonly used algorithms in enterprise environments.
@@ -751,7 +751,7 @@ Avoid
 
 ---
 
-# Advanced Abuse Detection
+## Advanced Abuse Detection
 
 Traditional rate limiting blocks excessive request volume.
 
@@ -763,7 +763,7 @@ Advanced abuse detection combines behavioral analytics, identity analysis, reput
 
 ---
 
-# Modern API Threats
+## Modern API Threats
 
 ```
                     API Abuse
@@ -789,7 +789,7 @@ Traditional rate limiting alone cannot stop every attack.
 
 ---
 
-# Types of API Abuse
+## Types of API Abuse
 
 Common abuse patterns include:
 
@@ -806,7 +806,7 @@ Common abuse patterns include:
 
 ---
 
-# Credential Stuffing
+## Credential Stuffing
 
 Attackers reuse stolen username/password combinations.
 
@@ -839,7 +839,7 @@ Detection indicators
 
 ---
 
-# Password Spraying
+## Password Spraying
 
 Instead of attacking one account,
 
@@ -869,7 +869,7 @@ Detection indicators
 
 ---
 
-# API Scraping
+## API Scraping
 
 Scraping extracts large amounts of information.
 
@@ -902,7 +902,7 @@ Detection indicators
 
 ---
 
-# Business Logic Abuse
+## Business Logic Abuse
 
 Some attacks exploit intended functionality instead of software vulnerabilities.
 
@@ -918,7 +918,7 @@ These attacks require behavioral detection rather than signature matching.
 
 ---
 
-# API Enumeration
+## API Enumeration
 
 Attackers systematically discover endpoints.
 
@@ -940,7 +940,7 @@ Indicators
 
 ---
 
-# Slow API Attacks
+## Slow API Attacks
 
 Instead of flooding the API,
 
@@ -967,7 +967,7 @@ Mitigations
 
 ---
 
-# Distributed Bot Networks
+## Distributed Bot Networks
 
 Large attacks often originate from thousands of devices.
 
@@ -993,7 +993,7 @@ Per-IP rate limiting alone becomes ineffective.
 
 ---
 
-# Bot Detection
+## Bot Detection
 
 Modern gateways evaluate multiple signals.
 
@@ -1021,7 +1021,7 @@ Bot Score
 
 ---
 
-# Browser Fingerprinting
+## Browser Fingerprinting
 
 Browsers expose characteristics useful for identifying clients.
 
@@ -1038,7 +1038,7 @@ These signals assist in identifying automation but should be used with privacy c
 
 ---
 
-# Device Fingerprinting
+## Device Fingerprinting
 
 Applications may identify devices using:
 
@@ -1051,7 +1051,7 @@ Device fingerprints help detect suspicious account activity.
 
 ---
 
-# IP Reputation
+## IP Reputation
 
 Gateways may consult threat intelligence.
 
@@ -1079,7 +1079,7 @@ Block    Continue
 
 ---
 
-# Geo-Velocity Detection
+## Geo-Velocity Detection
 
 Impossible travel may indicate compromised accounts.
 
@@ -1113,7 +1113,7 @@ Alert
 
 ---
 
-# User Behavior Analytics (UBA)
+## User Behavior Analytics (UBA)
 
 UBA builds behavioral baselines.
 
@@ -1129,7 +1129,7 @@ Deviations may indicate compromise.
 
 ---
 
-# Behavioral Baselines
+## Behavioral Baselines
 
 ```
 Normal User
@@ -1155,7 +1155,7 @@ Unknown Device
 
 ---
 
-# Risk Scoring
+## Risk Scoring
 
 Each request receives a calculated risk score.
 
@@ -1193,7 +1193,7 @@ Block
 
 ---
 
-# Adaptive Authentication
+## Adaptive Authentication
 
 High-risk requests may require additional verification.
 
@@ -1217,7 +1217,7 @@ Adaptive authentication reduces unnecessary user friction.
 
 ---
 
-# Token Abuse Detection
+## Token Abuse Detection
 
 Monitor for:
 
@@ -1229,7 +1229,7 @@ Monitor for:
 
 ---
 
-# Refresh Token Abuse
+## Refresh Token Abuse
 
 Indicators
 
@@ -1253,7 +1253,7 @@ Refresh token reuse detection is a valuable control.
 
 ---
 
-# API Key Abuse
+## API Key Abuse
 
 Common indicators
 
@@ -1267,7 +1267,7 @@ Compromised API keys should be rotated immediately.
 
 ---
 
-# Machine Learning in API Security
+## Machine Learning in API Security
 
 Machine learning may identify anomalies such as:
 
@@ -1280,7 +1280,7 @@ Machine learning should complement, not replace, deterministic security controls
 
 ---
 
-# Rate-Limit Evasion Techniques
+## Rate-Limit Evasion Techniques
 
 Attackers may attempt to bypass rate limits.
 
@@ -1314,7 +1314,7 @@ Gateway
 
 ---
 
-# Defending Against Evasion
+## Defending Against Evasion
 
 Recommended controls
 
@@ -1330,7 +1330,7 @@ Layered defenses are more effective than any single control.
 
 ---
 
-# CAPTCHA Integration
+## CAPTCHA Integration
 
 Sensitive workflows may require human verification.
 
@@ -1345,7 +1345,7 @@ CAPTCHA should be applied selectively to minimize user impact.
 
 ---
 
-# Threat Intelligence Integration
+## Threat Intelligence Integration
 
 ```
 Threat Intelligence
@@ -1371,7 +1371,7 @@ Threat intelligence improves detection of known malicious infrastructure.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1390,7 +1390,7 @@ Recommended detections
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Recommended telemetry
 
@@ -1432,7 +1432,7 @@ SOC Alerts
 
 ---
 
-# Correlation Rules
+## Correlation Rules
 
 Example Rule 1
 
@@ -1490,7 +1490,7 @@ Reconnaissance Alert
 
 ---
 
-# Enterprise Abuse Detection Architecture
+## Enterprise Abuse Detection Architecture
 
 ```
                     Internet
@@ -1548,7 +1548,7 @@ Reconnaissance Alert
 
 ---
 
-# Hands-on Lab 1 – Credential Stuffing Detection
+## Hands-on Lab 1 – Credential Stuffing Detection
 
 **Objective**
 
@@ -1569,7 +1569,7 @@ Identify credential stuffing activity in an authorized lab.
 
 ---
 
-# Hands-on Lab 2 – API Scraping Analysis
+## Hands-on Lab 2 – API Scraping Analysis
 
 **Objective**
 
@@ -1590,7 +1590,7 @@ Identify scraping behavior.
 
 ---
 
-# Hands-on Lab 3 – Risk-Based Authentication
+## Hands-on Lab 3 – Risk-Based Authentication
 
 **Objective**
 
@@ -1611,9 +1611,9 @@ Evaluate adaptive authentication.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Excessive False Positives
+### Excessive False Positives
 
 Possible causes
 
@@ -1624,7 +1624,7 @@ Possible causes
 
 ---
 
-## Missed Bot Activity
+### Missed Bot Activity
 
 Possible causes
 
@@ -1635,7 +1635,7 @@ Possible causes
 
 ---
 
-## Frequent CAPTCHA Challenges
+### Frequent CAPTCHA Challenges
 
 Possible causes
 
@@ -1646,7 +1646,7 @@ Possible causes
 
 ---
 
-## Token Replay Not Detected
+### Token Replay Not Detected
 
 Possible causes
 
@@ -1657,7 +1657,7 @@ Possible causes
 
 ---
 
-## API Scraping Continues
+### API Scraping Continues
 
 Possible causes
 
@@ -1668,9 +1668,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is API abuse?
 2. How does credential stuffing differ from brute-force attacks?
@@ -1685,7 +1685,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. How would you detect password spraying?
 12. Explain how behavioral analytics identifies API abuse.
@@ -1700,7 +1700,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1732,7 +1732,7 @@ Multiple API keys begin making requests from infrastructure previously identifie
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this section, we expanded rate limiting into comprehensive API abuse detection.
 
@@ -1758,7 +1758,7 @@ Modern API protection requires layered defenses that combine rate limiting, beha
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1774,21 +1774,21 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 6585 – Additional HTTP Status Codes (HTTP 429)
 - RFC 9110 – HTTP Semantics
 
-## Security Standards
+### Security Standards
 
 - OWASP API Security Top 10
 - OWASP Automated Threats to Web Applications
 - OWASP Credential Stuffing Prevention Cheat Sheet
 - NIST SP 800-61 Rev. 2 – Computer Security Incident Handling Guide
 
-## Further Reading
+### Further Reading
 
 - MITRE ATT&CK Framework
 - OpenTelemetry Documentation
@@ -1796,7 +1796,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 16 – Cross-Origin Resource Sharing (CORS)**
 

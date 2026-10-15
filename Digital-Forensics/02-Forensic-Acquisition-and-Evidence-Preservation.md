@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Forensic acquisition is the process of obtaining digital evidence in a manner that preserves its integrity and supports reliable examination.
 
@@ -26,7 +26,7 @@ The fundamental principle is:
 
 ---
 
-# Acquisition and Preservation Lifecycle
+## Acquisition and Preservation Lifecycle
 
 ```text id="x6j8m2"
 Identify Evidence
@@ -58,7 +58,7 @@ Analyze
 
 ---
 
-# Why Acquisition Matters
+## Why Acquisition Matters
 
 Forensic analysis is only as reliable as the evidence being analyzed.
 
@@ -84,7 +84,7 @@ A controlled acquisition process attempts to prevent this chain.
 
 ---
 
-# Acquisition Objectives
+## Acquisition Objectives
 
 A good acquisition process should:
 
@@ -99,7 +99,7 @@ A good acquisition process should:
 
 ---
 
-# Evidence Identification
+## Evidence Identification
 
 Before collecting evidence, determine what may be relevant.
 
@@ -137,7 +137,7 @@ Cloud
 
 ---
 
-# Evidence Prioritization
+## Evidence Prioritization
 
 Not every source needs to be acquired immediately.
 
@@ -167,21 +167,21 @@ Highest Priority
 
 ---
 
-# Live vs Dead Acquisition
+## Live vs Dead Acquisition
 
 Two major acquisition models are:
 
-### Live Acquisition
+#### Live Acquisition
 
 Collection occurs while the system is operating.
 
-### Dead Acquisition
+#### Dead Acquisition
 
 Collection occurs after the system has been shut down or storage has been detached.
 
 ---
 
-# Live Acquisition
+## Live Acquisition
 
 Live acquisition can provide access to:
 
@@ -207,7 +207,7 @@ Running System
 
 ---
 
-# Risks of Live Acquisition
+## Risks of Live Acquisition
 
 Live collection can alter the system.
 
@@ -230,7 +230,7 @@ Therefore, live acquisition should be planned carefully.
 
 ---
 
-# Dead Acquisition
+## Dead Acquisition
 
 Dead acquisition generally involves:
 
@@ -260,7 +260,7 @@ But volatile evidence may already be lost.
 
 ---
 
-# Choosing the Acquisition Strategy
+## Choosing the Acquisition Strategy
 
 Ask:
 
@@ -284,7 +284,7 @@ The correct approach depends on the incident.
 
 ---
 
-# Forensic Imaging
+## Forensic Imaging
 
 Forensic imaging creates a controlled representation of storage media.
 
@@ -308,9 +308,9 @@ Verification
 
 ---
 
-# Physical vs Logical Acquisition
+## Physical vs Logical Acquisition
 
-## Physical Acquisition
+### Physical Acquisition
 
 Attempts to capture storage at the block level.
 
@@ -324,7 +324,7 @@ It can potentially include:
 
 ---
 
-## Logical Acquisition
+### Logical Acquisition
 
 Collects selected files or directories.
 
@@ -339,7 +339,7 @@ Logical acquisition may be faster but can omit evidence outside the selected sco
 
 ---
 
-# Physical vs Logical
+## Physical vs Logical
 
 | Characteristic | Physical | Logical |
 |---|---|---|
@@ -354,7 +354,7 @@ The choice should be based on investigation requirements.
 
 ---
 
-# File-System-Level Acquisition
+## File-System-Level Acquisition
 
 Another approach is collecting relevant file-system structures and artifacts.
 
@@ -371,7 +371,7 @@ This is often useful during rapid incident response.
 
 ---
 
-# Write Blockers
+## Write Blockers
 
 A hardware or software write-blocking mechanism can help prevent unintended modification of storage media during acquisition.
 
@@ -394,7 +394,7 @@ Write blockers are particularly important when working directly with removable s
 
 ---
 
-# Why Write Protection Matters
+## Why Write Protection Matters
 
 Without write protection, a forensic workstation may unintentionally:
 
@@ -408,19 +408,19 @@ Even unintended changes can complicate forensic interpretation.
 
 ---
 
-# Forensic Image Formats
+## Forensic Image Formats
 
 Common forensic image approaches include:
 
-### Raw
+#### Raw
 
 A direct representation of acquired storage blocks.
 
-### E01
+#### E01
 
 A commonly used forensic evidence format supporting metadata and integrity information.
 
-### AFF / AFF4
+#### AFF / AFF4
 
 Open forensic acquisition formats with capabilities that can support evidence management.
 
@@ -428,7 +428,7 @@ Tool and format selection should follow organizational procedures and interopera
 
 ---
 
-# Acquisition Metadata
+## Acquisition Metadata
 
 Record:
 
@@ -451,7 +451,7 @@ Destination
 
 ---
 
-# Evidence Hashing
+## Evidence Hashing
 
 Hash the acquired evidence.
 
@@ -471,7 +471,7 @@ Store the hash in the case record.
 
 ---
 
-# Why SHA-256?
+## Why SHA-256?
 
 SHA-256 provides a strong modern integrity mechanism.
 
@@ -489,7 +489,7 @@ If the same evidence is later hashed and produces a different value, investigate
 
 ---
 
-# Hash Verification
+## Hash Verification
 
 Verification should occur after acquisition and whenever evidence integrity must be demonstrated.
 
@@ -514,7 +514,7 @@ Compare
 
 ---
 
-# Hash Limitations
+## Hash Limitations
 
 Hashing proves that two inputs produce the same hash value under the selected algorithm.
 
@@ -529,7 +529,7 @@ Integrity and authenticity are related but different concepts.
 
 ---
 
-# Evidence Authenticity
+## Evidence Authenticity
 
 To strengthen authenticity, correlate:
 
@@ -543,7 +543,7 @@ To strengthen authenticity, correlate:
 
 ---
 
-# Chain of Custody
+## Chain of Custody
 
 Chain of custody provides an auditable history of evidence handling.
 
@@ -570,7 +570,7 @@ Returned / Archived
 
 ---
 
-# Chain-of-Custody Record
+## Chain-of-Custody Record
 
 Example:
 
@@ -605,7 +605,7 @@ Restricted evidence storage
 
 ---
 
-# Evidence Identification Labels
+## Evidence Identification Labels
 
 Every evidence item should have a unique identifier.
 
@@ -623,7 +623,7 @@ CASE-2026-014
 
 ---
 
-# Evidence Inventory
+## Evidence Inventory
 
 Maintain an evidence inventory.
 
@@ -636,7 +636,7 @@ Maintain an evidence inventory.
 
 ---
 
-# Evidence Storage
+## Evidence Storage
 
 Evidence repositories should provide:
 
@@ -650,7 +650,7 @@ Evidence repositories should provide:
 
 ---
 
-# Evidence Access Model
+## Evidence Access Model
 
 ```text id="1w9a1f"
 Evidence Repository
@@ -672,7 +672,7 @@ Access should be restricted to authorized personnel.
 
 ---
 
-# Working Copies
+## Working Copies
 
 Do not perform routine analysis on the original evidence.
 
@@ -696,7 +696,7 @@ This allows independent analysis without repeatedly touching the source.
 
 ---
 
-# Evidence Preservation vs Investigation Speed
+## Evidence Preservation vs Investigation Speed
 
 Incident response often creates tension:
 
@@ -719,7 +719,7 @@ The decision should consider:
 
 ---
 
-# Volatile Evidence
+## Volatile Evidence
 
 Before shutdown, consider whether the investigation requires:
 
@@ -733,11 +733,11 @@ Before shutdown, consider whether the investigation requires:
 
 ---
 
-# Memory Acquisition
+## Memory Acquisition
 
 Memory acquisition methods vary by operating system.
 
-### Windows
+#### Windows
 
 Tools may include:
 
@@ -745,7 +745,7 @@ Tools may include:
 - Magnet RAM Capture
 - Commercial forensic platforms
 
-### Linux
+#### Linux
 
 Tools may include:
 
@@ -757,7 +757,7 @@ The acquisition tool should be validated and appropriate for the investigation.
 
 ---
 
-# Memory Acquisition Risks
+## Memory Acquisition Risks
 
 Memory acquisition can:
 
@@ -779,7 +779,7 @@ Document:
 
 ---
 
-# Disk Acquisition
+## Disk Acquisition
 
 A controlled disk acquisition workflow:
 
@@ -807,7 +807,7 @@ Store
 
 ---
 
-# Example Device Documentation
+## Example Device Documentation
 
 ```bash id="jlv1xp"
 lsblk
@@ -823,7 +823,7 @@ These commands can help identify storage devices during authorized acquisition.
 
 ---
 
-# Windows Storage Identification
+## Windows Storage Identification
 
 Examples:
 
@@ -841,7 +841,7 @@ These are identification commands, not substitutes for a formal forensic acquisi
 
 ---
 
-# Remote Acquisition
+## Remote Acquisition
 
 Remote evidence collection can be useful when:
 
@@ -862,7 +862,7 @@ But remote collection introduces additional considerations:
 
 ---
 
-# Remote Acquisition Architecture
+## Remote Acquisition Architecture
 
 ```text id="4rvvgr"
 Remote Endpoint
@@ -882,7 +882,7 @@ Evidence Repository
 
 ---
 
-# Cloud Evidence Acquisition
+## Cloud Evidence Acquisition
 
 Cloud evidence differs from traditional disk acquisition.
 
@@ -911,7 +911,7 @@ Identity Provider
 
 ---
 
-# Cloud Acquisition Challenges
+## Cloud Acquisition Challenges
 
 Challenges include:
 
@@ -927,7 +927,7 @@ Challenges include:
 
 ---
 
-# Cloud Evidence Preservation
+## Cloud Evidence Preservation
 
 When an incident occurs:
 
@@ -955,7 +955,7 @@ Store
 
 ---
 
-# SaaS Evidence
+## SaaS Evidence
 
 SaaS applications may contain:
 
@@ -971,7 +971,7 @@ Investigators should understand the provider's logging and retention model befor
 
 ---
 
-# Container Evidence
+## Container Evidence
 
 Containers are ephemeral by design.
 
@@ -990,7 +990,7 @@ Network Telemetry
 
 ---
 
-# Container Preservation Challenge
+## Container Preservation Challenge
 
 ```text id="0brnq3"
 Container Running
@@ -1006,7 +1006,7 @@ Therefore, incident response procedures should account for container volatility.
 
 ---
 
-# Kubernetes Evidence
+## Kubernetes Evidence
 
 Potential evidence includes:
 
@@ -1022,7 +1022,7 @@ Potential evidence includes:
 
 ---
 
-# Mobile Evidence
+## Mobile Evidence
 
 Mobile devices contain:
 
@@ -1039,7 +1039,7 @@ Mobile acquisition is highly platform-dependent and should use appropriate autho
 
 ---
 
-# Evidence Preservation Notice
+## Evidence Preservation Notice
 
 A preservation request may be appropriate when evidence could expire or be deleted.
 
@@ -1058,7 +1058,7 @@ Application Logs
 
 ---
 
-# Log Retention
+## Log Retention
 
 A common forensic problem:
 
@@ -1079,7 +1079,7 @@ Forensic readiness therefore depends heavily on appropriate retention policies.
 
 ---
 
-# Log Preservation Strategy
+## Log Preservation Strategy
 
 Organizations should define:
 
@@ -1093,7 +1093,7 @@ Organizations should define:
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Evidence correlation depends on accurate time.
 
@@ -1115,7 +1115,7 @@ Conceptually:
 
 ---
 
-# Acquisition Documentation
+## Acquisition Documentation
 
 Every acquisition should record:
 
@@ -1136,7 +1136,7 @@ This is the forensic equivalent of maintaining an engineering change record.
 
 ---
 
-# Acquisition Failure
+## Acquisition Failure
 
 Acquisition can fail due to:
 
@@ -1153,7 +1153,7 @@ Failure should be documented rather than silently ignored.
 
 ---
 
-# Acquisition Validation
+## Acquisition Validation
 
 After acquisition:
 
@@ -1175,7 +1175,7 @@ Can artifacts be extracted?
 
 ---
 
-# Evidence Integrity Checklist
+## Evidence Integrity Checklist
 
 ```text id="9ukx0x"
 [ ] Source identified
@@ -1193,67 +1193,67 @@ Can artifacts be extracted?
 
 ---
 
-# Common Acquisition Mistakes
+## Common Acquisition Mistakes
 
-## Mistake 1 — No Documentation
+### Mistake 1 — No Documentation
 
 An image without acquisition metadata is difficult to validate.
 
-## Mistake 2 — No Hash
+### Mistake 2 — No Hash
 
 Integrity cannot be easily demonstrated.
 
-## Mistake 3 — Modifying the Original
+### Mistake 3 — Modifying the Original
 
 Analysis should generally occur on controlled working copies.
 
-## Mistake 4 — Ignoring Volatile Evidence
+### Mistake 4 — Ignoring Volatile Evidence
 
 Important state may disappear after shutdown.
 
-## Mistake 5 — Incorrect Scope
+### Mistake 5 — Incorrect Scope
 
 Collecting the wrong system creates false confidence.
 
-## Mistake 6 — Inadequate Storage
+### Mistake 6 — Inadequate Storage
 
 Large forensic images require appropriate capacity.
 
-## Mistake 7 — Poor Access Control
+### Mistake 7 — Poor Access Control
 
 Sensitive evidence should not be broadly accessible.
 
 ---
 
-# Common Preservation Misconfigurations
+## Common Preservation Misconfigurations
 
-### Short Retention
+#### Short Retention
 
 Important evidence disappears.
 
-### Mutable Logs
+#### Mutable Logs
 
 Attackers or administrators can alter historical data.
 
-### No Centralization
+#### No Centralization
 
 Evidence becomes fragmented.
 
-### Unsynchronized Clocks
+#### Unsynchronized Clocks
 
 Timeline reconstruction becomes unreliable.
 
-### No Audit Trail
+#### No Audit Trail
 
 Investigators cannot determine who accessed evidence.
 
-### No Backup
+#### No Backup
 
 A damaged evidence repository can destroy investigative capability.
 
 ---
 
-# Practical Lab 01 — Disk Image Integrity
+## Practical Lab 01 — Disk Image Integrity
 
 Create a test file:
 
@@ -1285,7 +1285,7 @@ This demonstrates the fundamental integrity-validation workflow.
 
 ---
 
-# Practical Lab 02 — Evidence Modification
+## Practical Lab 02 — Evidence Modification
 
 Create a file:
 
@@ -1317,7 +1317,7 @@ The objective is to understand why integrity verification is important.
 
 ---
 
-# Practical Lab 03 — Evidence Inventory
+## Practical Lab 03 — Evidence Inventory
 
 Create an evidence inventory containing:
 
@@ -1343,7 +1343,7 @@ Status
 
 ---
 
-# Practical Lab 04 — Chain of Custody
+## Practical Lab 04 — Chain of Custody
 
 Create a simulated chain-of-custody record.
 
@@ -1366,7 +1366,7 @@ Document every transfer.
 
 ---
 
-# Practical Lab 05 — Live Acquisition Planning
+## Practical Lab 05 — Live Acquisition Planning
 
 Scenario:
 
@@ -1391,7 +1391,7 @@ Document:
 
 ---
 
-# Practical Lab 06 — Cloud Evidence Preservation
+## Practical Lab 06 — Cloud Evidence Preservation
 
 Scenario:
 
@@ -1413,7 +1413,7 @@ Then create a preservation plan.
 
 ---
 
-# Practical Lab 07 — Container Evidence Preservation
+## Practical Lab 07 — Container Evidence Preservation
 
 Scenario:
 
@@ -1437,7 +1437,7 @@ Determine which evidence should be preserved before the workload is terminated.
 
 ---
 
-# Practical Lab 08 — Evidence Gap Analysis
+## Practical Lab 08 — Evidence Gap Analysis
 
 Scenario:
 
@@ -1454,7 +1454,7 @@ What confidence level should be assigned?
 
 ---
 
-# Acquisition Decision Matrix
+## Acquisition Decision Matrix
 
 | Situation | Possible Priority |
 |---|---|
@@ -1471,7 +1471,7 @@ The matrix is illustrative; actual priorities should follow organizational proce
 
 ---
 
-# Evidence Preservation Decision Tree
+## Evidence Preservation Decision Tree
 
 ```text id="db4cxg"
                 Evidence Identified
@@ -1503,7 +1503,7 @@ The matrix is illustrative; actual priorities should follow organizational proce
 
 ---
 
-# Forensic Acquisition Record
+## Forensic Acquisition Record
 
 ```text id="y70xla"
 # Forensic Acquisition Record
@@ -1551,7 +1551,7 @@ Verification Result:
 
 ---
 
-# Chain-of-Custody Template
+## Chain-of-Custody Template
 
 ```text id="s8xwvb"
 # Chain of Custody
@@ -1603,7 +1603,7 @@ Notes:
 
 ---
 
-# Evidence Handling Checklist
+## Evidence Handling Checklist
 
 ```text id="j73n6p"
 [ ] Authorization confirmed
@@ -1626,25 +1626,25 @@ Notes:
 
 ---
 
-# Forensic Readiness Requirements
+## Forensic Readiness Requirements
 
 An organization should prepare:
 
-### People
+#### People
 
 - Trained forensic analysts
 - Incident responders
 - Legal contacts
 - Evidence custodians
 
-### Process
+#### Process
 
 - Acquisition procedures
 - Preservation procedures
 - Chain-of-custody procedures
 - Evidence retention policies
 
-### Technology
+#### Technology
 
 - EDR
 - SIEM
@@ -1653,7 +1653,7 @@ An organization should prepare:
 - Evidence storage
 - Acquisition tools
 
-### Governance
+#### Governance
 
 - Authorization
 - Privacy
@@ -1663,7 +1663,7 @@ An organization should prepare:
 
 ---
 
-# Enterprise Evidence Architecture
+## Enterprise Evidence Architecture
 
 ```text id="x8gk3p"
                      Enterprise
@@ -1695,7 +1695,7 @@ An organization should prepare:
 
 ---
 
-# Evidence Retention
+## Evidence Retention
 
 Retention should account for:
 
@@ -1713,7 +1713,7 @@ Retention should be risk-based and governed.
 
 ---
 
-# Evidence Destruction
+## Evidence Destruction
 
 Evidence should never be casually deleted.
 
@@ -1733,7 +1733,7 @@ Legal holds may override normal retention schedules.
 
 ---
 
-# Privacy Considerations
+## Privacy Considerations
 
 Forensic evidence can contain:
 
@@ -1756,47 +1756,47 @@ Investigators should follow:
 
 ---
 
-# Professional Acquisition Principles
+## Professional Acquisition Principles
 
-## Principle 1
+### Principle 1
 
 > **Collect what is necessary to answer the investigative question.**
 
-## Principle 2
+### Principle 2
 
 > **Preserve original evidence whenever practical.**
 
-## Principle 3
+### Principle 3
 
 > **Document every important acquisition decision.**
 
-## Principle 4
+### Principle 4
 
 > **Verify evidence integrity.**
 
-## Principle 5
+### Principle 5
 
 > **Minimize unnecessary modification.**
 
-## Principle 6
+### Principle 6
 
 > **Maintain chain of custody.**
 
-## Principle 7
+### Principle 7
 
 > **Document limitations honestly.**
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is forensic acquisition?
+### 1. What is forensic acquisition?
 
 The controlled collection of digital evidence for examination while preserving its integrity and documenting the collection process.
 
 ---
 
-## 2. What is the difference between physical and logical acquisition?
+### 2. What is the difference between physical and logical acquisition?
 
 Physical acquisition generally captures storage at a lower/block level and may include deleted or unallocated data.
 
@@ -1804,19 +1804,19 @@ Logical acquisition collects selected files, directories, or application data.
 
 ---
 
-## 3. What is a write blocker?
+### 3. What is a write blocker?
 
 A mechanism designed to prevent unintended writes to evidence media during forensic access or acquisition.
 
 ---
 
-## 4. Why should evidence be hashed?
+### 4. Why should evidence be hashed?
 
 To provide a cryptographic integrity value that can be compared later to detect changes.
 
 ---
 
-## 5. Does hashing prove evidence authenticity?
+### 5. Does hashing prove evidence authenticity?
 
 No.
 
@@ -1824,19 +1824,19 @@ Hashing helps verify integrity. Authenticity requires additional evidence such a
 
 ---
 
-## 6. When would live acquisition be appropriate?
+### 6. When would live acquisition be appropriate?
 
 When volatile information such as memory, active processes, sessions, or network connections may be important to the investigation.
 
 ---
 
-## 7. What is the primary disadvantage of live acquisition?
+### 7. What is the primary disadvantage of live acquisition?
 
 The collection process itself can modify system state.
 
 ---
 
-## 8. What information belongs in a chain-of-custody record?
+### 8. What information belongs in a chain-of-custody record?
 
 At minimum:
 
@@ -1853,37 +1853,37 @@ Integrity
 
 ---
 
-## 9. What is forensic imaging?
+### 9. What is forensic imaging?
 
 Creating a controlled representation of storage media for forensic analysis.
 
 ---
 
-## 10. Why should analysts use working copies?
+### 10. Why should analysts use working copies?
 
 To protect original or master evidence from unnecessary modification during analysis.
 
 ---
 
-## 11. What is forensic readiness?
+### 11. What is forensic readiness?
 
 The ability of an organization to efficiently preserve and collect evidence when an incident occurs.
 
 ---
 
-## 12. Why are cloud investigations different?
+### 12. Why are cloud investigations different?
 
 Cloud environments may not expose physical infrastructure directly. Evidence is often distributed across provider APIs, identity systems, audit logs, storage, compute, and network services.
 
 ---
 
-## 13. What is an evidence gap?
+### 13. What is an evidence gap?
 
 A missing or unavailable evidence source that limits what can be confidently determined.
 
 ---
 
-## 14. What would you do if a forensic hash does not match?
+### 14. What would you do if a forensic hash does not match?
 
 Do not ignore it.
 
@@ -1899,9 +1899,9 @@ Then document and investigate the discrepancy.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > You are investigating a compromised workstation. The system is still running. What evidence would you consider before shutting it down?
 
@@ -1933,9 +1933,9 @@ The goal is to make an evidence-preserving decision rather than blindly choosing
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A disk image has been provided to you without a hash or acquisition record. Can you use it?
 
@@ -1952,35 +1952,35 @@ The investigator should:
 
 ---
 
-# Maturity Model
+## Maturity Model
 
-## Level 1 — Ad Hoc
+### Level 1 — Ad Hoc
 
 - Manual collection
 - No standardized acquisition
 - Limited documentation
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Standard acquisition procedures
 - Basic chain of custody
 - Hash verification
 
-## Level 3 — Managed
+### Level 3 — Managed
 
 - Central evidence repository
 - Formal procedures
 - Dedicated forensic tooling
 - Regular training
 
-## Level 4 — Integrated
+### Level 4 — Integrated
 
 - Enterprise forensic readiness
 - Automated evidence collection
 - IR integration
 - Cloud evidence preservation
 
-## Level 5 — Advanced
+### Level 5 — Advanced
 
 - Rapid enterprise acquisition
 - Automated preservation workflows
@@ -1989,7 +1989,7 @@ The investigator should:
 
 ---
 
-# Chapter Completion Checklist
+## Chapter Completion Checklist
 
 ```text id="s6d3h4"
 [ ] Understand forensic acquisition
@@ -2018,7 +2018,7 @@ The investigator should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Forensic acquisition is the foundation upon which the rest of an investigation depends.
 
@@ -2060,43 +2060,43 @@ The most important principles are:
 
 ---
 
-# References
+## References
 
-### NIST SP 800-86
+#### NIST SP 800-86
 
 Guide to Integrating Forensic Techniques into Incident Response:
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### NIST SP 800-61
+#### NIST SP 800-61
 
 Computer Security Incident Handling Guide:
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### SWGDE
+#### SWGDE
 
 Scientific Working Group on Digital Evidence:
 
 https://www.swgde.org/
 
-### The Sleuth Kit
+#### The Sleuth Kit
 
 https://www.sleuthkit.org/
 
-### Autopsy
+#### Autopsy
 
 https://www.autopsy.com/
 
-### Volatility Foundation
+#### Volatility Foundation
 
 https://volatilityfoundation.org/
 
-### CISA
+#### CISA
 
 https://www.cisa.gov/
 
-### ISO/IEC 27037
+#### ISO/IEC 27037
 
 Guidelines for identification, collection, acquisition, and preservation of digital evidence.
 

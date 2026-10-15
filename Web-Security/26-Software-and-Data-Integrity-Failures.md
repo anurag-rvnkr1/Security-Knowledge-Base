@@ -1,12 +1,12 @@
 # 26-Software-and-Data-Integrity-Failures.md
 
-# Part 1 — Fundamentals of Software & Data Integrity, Trust, Supply Chain Security, and Enterprise Overview
+## Part 1 — Fundamentals of Software & Data Integrity, Trust, Supply Chain Security, and Enterprise Overview
 
 > **"Integrity means ensuring that software, data, and systems remain accurate, complete, authentic, and unmodified unless an authorized change has occurred."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What are Software and Data Integrity Failures?
+## What are Software and Data Integrity Failures?
 
 Software and Data Integrity Failures occur when applications fail to verify that software, updates, configuration, or data have remained authentic and unaltered throughout their lifecycle.
 
@@ -40,7 +40,7 @@ Integrity protects systems against unauthorized or unintended modification.
 
 ---
 
-# CIA Triad Review
+## CIA Triad Review
 
 ```
 Cybersecurity
@@ -58,7 +58,7 @@ Integrity ensures information remains accurate and trustworthy.
 
 ---
 
-# What is Integrity?
+## What is Integrity?
 
 Integrity means information has not been altered without authorization.
 
@@ -82,7 +82,7 @@ Users and systems should be able to trust that data remains unchanged unless leg
 
 ---
 
-# Software Integrity
+## Software Integrity
 
 Software integrity ensures applications execute exactly as intended.
 
@@ -110,7 +110,7 @@ Every stage should preserve software authenticity.
 
 ---
 
-# Data Integrity
+## Data Integrity
 
 Data integrity ensures stored and transmitted information remains complete and accurate.
 
@@ -138,7 +138,7 @@ Integrity should be maintained throughout the data lifecycle.
 
 ---
 
-# Integrity vs Confidentiality
+## Integrity vs Confidentiality
 
 | Confidentiality | Integrity |
 |-----------------|-----------|
@@ -151,7 +151,7 @@ Both properties are essential for secure systems.
 
 ---
 
-# Why Integrity Matters
+## Why Integrity Matters
 
 ```
 Without Integrity
@@ -177,7 +177,7 @@ Organizations rely on accurate software and trustworthy data to operate safely.
 
 ---
 
-# Software Supply Chain
+## Software Supply Chain
 
 Modern applications depend on numerous components.
 
@@ -205,7 +205,7 @@ Each component contributes to the application's overall integrity.
 
 ---
 
-# Enterprise Software Supply Chain
+## Enterprise Software Supply Chain
 
 ```
 Developer
@@ -235,7 +235,7 @@ Integrity checks should exist throughout the entire supply chain.
 
 ---
 
-# Trust Relationships
+## Trust Relationships
 
 Applications depend on trusted relationships.
 
@@ -263,7 +263,7 @@ Trust should be established deliberately and reviewed periodically.
 
 ---
 
-# Chain of Trust
+## Chain of Trust
 
 ```
 Trusted Developer
@@ -293,7 +293,7 @@ Breaking any link weakens overall integrity.
 
 ---
 
-# Trusted Components
+## Trusted Components
 
 Organizations should evaluate software components before adoption.
 
@@ -319,7 +319,7 @@ Component selection should consider both functionality and security.
 
 ---
 
-# Integrity Verification
+## Integrity Verification
 
 Integrity verification confirms that software or data has not changed unexpectedly.
 
@@ -347,7 +347,7 @@ Verification should occur before software is executed or sensitive data is relie
 
 ---
 
-# Checksums
+## Checksums
 
 A checksum is a calculated value used to detect accidental or unauthorized changes.
 
@@ -375,7 +375,7 @@ Checksums help identify whether files remain unchanged.
 
 ---
 
-# Cryptographic Hashes
+## Cryptographic Hashes
 
 Hash functions generate a fixed-length representation of data.
 
@@ -397,7 +397,7 @@ Hashes are commonly used for integrity verification rather than confidentiality.
 
 ---
 
-# Digital Signatures
+## Digital Signatures
 
 Digital signatures help verify:
 
@@ -425,7 +425,7 @@ Digital signatures help establish confidence that software originates from an ex
 
 ---
 
-# Checksums vs Digital Signatures
+## Checksums vs Digital Signatures
 
 | Checksums | Digital Signatures |
 |-----------|--------------------|
@@ -436,7 +436,7 @@ Digital signatures help establish confidence that software originates from an ex
 
 ---
 
-# Data Integrity Lifecycle
+## Data Integrity Lifecycle
 
 ```
 Create
@@ -470,7 +470,7 @@ Integrity controls should exist throughout the lifecycle.
 
 ---
 
-# Enterprise Integrity Architecture
+## Enterprise Integrity Architecture
 
 ```
 Developer
@@ -500,7 +500,7 @@ Verification should occur before deployment into production.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial organization develops an online banking platform.
 
@@ -536,7 +536,7 @@ Every software release undergoes integrity validation before deployment.
 
 ---
 
-# Common Integrity Risks
+## Common Integrity Risks
 
 | Risk | Potential Impact |
 |------|------------------|
@@ -549,7 +549,7 @@ Every software release undergoes integrity validation before deployment.
 
 ---
 
-# Enterprise Integrity Workflow
+## Enterprise Integrity Workflow
 
 ```
 Source Code
@@ -583,7 +583,7 @@ Integrity should be maintained throughout development and operations.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the software supply chain for a sample application.
 2. Identify where integrity verification should occur.
@@ -595,7 +595,7 @@ Integrity should be maintained throughout development and operations.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is software integrity?
 2. What is data integrity?
@@ -610,7 +610,7 @@ Integrity should be maintained throughout development and operations.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Verify software before deployment.
 - Use trusted software sources and approved repositories.
@@ -622,7 +622,7 @@ Integrity should be maintained throughout development and operations.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting software without verification.
 - Ignoring integrity validation during deployments.
@@ -633,7 +633,7 @@ Integrity should be maintained throughout development and operations.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Integrity ensures software and data remain authentic, accurate, and unmodified without authorization.
 - Modern applications depend on trusted software supply chains.
@@ -641,15 +641,15 @@ Integrity should be maintained throughout development and operations.
 - Trust relationships should be carefully established and periodically reviewed.
 - Integrity verification should occur throughout the software development and deployment lifecycle.
 
-# 26-Software-and-Data-Integrity-Failures.md
+## 26-Software-and-Data-Integrity-Failures.md
 
-# Part 2 — Code Signing, Digital Signatures, Secure Build Pipelines, CI/CD Integrity, Artifact Repositories, and Supply Chain Security
+## Part 2 — Code Signing, Digital Signatures, Secure Build Pipelines, CI/CD Integrity, Artifact Repositories, and Supply Chain Security
 
 > **"A secure build pipeline ensures that only trusted source code becomes trusted software. Every stage—from source control to production—must preserve integrity."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -666,7 +666,7 @@ After completing this part, you will understand:
 
 ---
 
-# Secure Software Development Lifecycle (SSDLC)
+## Secure Software Development Lifecycle (SSDLC)
 
 Integrity begins long before deployment.
 
@@ -706,7 +706,7 @@ Each phase should include integrity controls.
 
 ---
 
-# Why Build Integrity Matters
+## Why Build Integrity Matters
 
 Without build integrity:
 
@@ -746,7 +746,7 @@ Secure Deployment
 
 ---
 
-# Secure Build Pipeline
+## Secure Build Pipeline
 
 A secure build pipeline transforms reviewed source code into deployable software.
 
@@ -782,7 +782,7 @@ Integrity should be maintained throughout the pipeline.
 
 ---
 
-# Enterprise Build Workflow
+## Enterprise Build Workflow
 
 ```
 Developer
@@ -816,7 +816,7 @@ Automation improves consistency while reducing manual errors.
 
 ---
 
-# Code Signing
+## Code Signing
 
 Code signing provides assurance that software originates from a trusted publisher and has not been altered after signing.
 
@@ -840,7 +840,7 @@ Recipients can verify the authenticity of the software before installation or ex
 
 ---
 
-# Benefits of Code Signing
+## Benefits of Code Signing
 
 ```
 Code Signing
@@ -860,7 +860,7 @@ Code Signing
 
 ---
 
-# Digital Signature Lifecycle
+## Digital Signature Lifecycle
 
 ```
 Software Created
@@ -894,7 +894,7 @@ Verification should occur before software is trusted.
 
 ---
 
-# Integrity Verification During Deployment
+## Integrity Verification During Deployment
 
 ```
 Artifact
@@ -920,7 +920,7 @@ Deployment should only proceed after successful verification.
 
 ---
 
-# Build Provenance
+## Build Provenance
 
 Build provenance records how software was produced.
 
@@ -948,7 +948,7 @@ This information improves traceability and incident response.
 
 ---
 
-# Reproducible Builds
+## Reproducible Builds
 
 A reproducible build aims to produce identical outputs when the same source code and build process are used.
 
@@ -976,7 +976,7 @@ Reproducibility helps verify build consistency.
 
 ---
 
-# CI/CD Pipeline Integrity
+## CI/CD Pipeline Integrity
 
 Continuous Integration and Continuous Deployment (CI/CD) pipelines should include integrity verification.
 
@@ -1012,7 +1012,7 @@ Security validation should be integrated into the pipeline rather than performed
 
 ---
 
-# CI/CD Security Controls
+## CI/CD Security Controls
 
 ```
 CI/CD Controls
@@ -1040,7 +1040,7 @@ Each control contributes to overall software integrity.
 
 ---
 
-# Artifact Repository
+## Artifact Repository
 
 An artifact repository stores verified build outputs.
 
@@ -1064,7 +1064,7 @@ Repositories improve consistency and support controlled software releases.
 
 ---
 
-# Benefits of Artifact Repositories
+## Benefits of Artifact Repositories
 
 | Benefit | Description |
 |----------|-------------|
@@ -1076,7 +1076,7 @@ Repositories improve consistency and support controlled software releases.
 
 ---
 
-# Release Approval Workflow
+## Release Approval Workflow
 
 ```
 Build Complete
@@ -1102,7 +1102,7 @@ Formal approval reduces deployment risk.
 
 ---
 
-# Supply Chain Verification
+## Supply Chain Verification
 
 Organizations should verify multiple aspects of software before deployment.
 
@@ -1128,7 +1128,7 @@ Verification should be part of every release process.
 
 ---
 
-# Trusted Build Infrastructure
+## Trusted Build Infrastructure
 
 ```
 Build Infrastructure
@@ -1152,7 +1152,7 @@ Build infrastructure should receive the same level of protection as production s
 
 ---
 
-# Configuration Integrity
+## Configuration Integrity
 
 Integrity also applies to configuration.
 
@@ -1180,7 +1180,7 @@ Unauthorized configuration changes can significantly affect application security
 
 ---
 
-# Enterprise Deployment Architecture
+## Enterprise Deployment Architecture
 
 ```
 Developer
@@ -1214,7 +1214,7 @@ Every transition should preserve integrity.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global e-commerce organization deploys applications using the following workflow:
 
@@ -1258,7 +1258,7 @@ Every production release is reviewed, verified, and traceable.
 
 ---
 
-# Common Build Integrity Risks
+## Common Build Integrity Risks
 
 | Risk | Potential Impact |
 |------|------------------|
@@ -1271,7 +1271,7 @@ Every production release is reviewed, verified, and traceable.
 
 ---
 
-# Enterprise Integrity Workflow
+## Enterprise Integrity Workflow
 
 ```
 Source Code
@@ -1307,7 +1307,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a secure CI/CD pipeline for a sample application.
 2. Identify where integrity verification should occur.
@@ -1319,7 +1319,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is code signing?
 2. Why are digital signatures important?
@@ -1334,7 +1334,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Protect build infrastructure with strong access controls.
 - Require peer review before merging production code.
@@ -1346,7 +1346,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Deploying software directly from unverified builds.
 - Allowing unrestricted access to build systems.
@@ -1357,7 +1357,7 @@ Deployment
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Build integrity ensures trusted source code becomes trusted software.
 - Code signing and digital signatures verify authenticity and integrity.
@@ -1365,15 +1365,15 @@ Deployment
 - Artifact repositories provide controlled storage and distribution of approved software.
 - Build provenance, reproducible builds, and strong governance improve traceability and supply chain security.
 
-# 26-Software-and-Data-Integrity-Failures.md
+## 26-Software-and-Data-Integrity-Failures.md
 
-# Part 3 — Data Integrity, Secure Updates, Serialization Integrity, Configuration Integrity, Backup Integrity, and Enterprise Monitoring
+## Part 3 — Data Integrity, Secure Updates, Serialization Integrity, Configuration Integrity, Backup Integrity, and Enterprise Monitoring
 
 > **"Protecting software integrity is only half the challenge. Organizations must also ensure that data, configurations, updates, and backups remain accurate, authentic, and trustworthy throughout their lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1390,7 +1390,7 @@ After completing this part, you will understand:
 
 ---
 
-# Data Integrity
+## Data Integrity
 
 Data integrity ensures that information remains:
 
@@ -1430,7 +1430,7 @@ Trusted Data
 
 ---
 
-# Types of Data Integrity
+## Types of Data Integrity
 
 ```
 Data Integrity
@@ -1452,7 +1452,7 @@ Each type contributes to reliable business operations.
 
 ---
 
-# Physical Integrity
+## Physical Integrity
 
 Physical integrity protects data from hardware or environmental failures.
 
@@ -1467,7 +1467,7 @@ Organizations mitigate these risks through redundancy and resilient infrastructu
 
 ---
 
-# Logical Integrity
+## Logical Integrity
 
 Logical integrity ensures data remains correct according to business rules.
 
@@ -1482,7 +1482,7 @@ Applications should validate data before accepting or processing it.
 
 ---
 
-# Data Validation
+## Data Validation
 
 Validation helps prevent accidental or malicious corruption.
 
@@ -1506,7 +1506,7 @@ Validation should occur at every trust boundary.
 
 ---
 
-# Integrity During Data Transmission
+## Integrity During Data Transmission
 
 Data should remain unchanged while moving between systems.
 
@@ -1530,7 +1530,7 @@ Integrity verification helps detect unauthorized modifications during transmissi
 
 ---
 
-# Data Processing Integrity
+## Data Processing Integrity
 
 ```
 Input
@@ -1556,7 +1556,7 @@ Each processing stage should preserve correctness.
 
 ---
 
-# Database Integrity
+## Database Integrity
 
 Relational databases commonly enforce integrity using constraints.
 
@@ -1580,7 +1580,7 @@ These mechanisms help maintain consistent and reliable data.
 
 ---
 
-# Transaction Integrity
+## Transaction Integrity
 
 Transactions should preserve consistency.
 
@@ -1608,7 +1608,7 @@ Either all required changes occur successfully, or none are applied.
 
 ---
 
-# Configuration Integrity
+## Configuration Integrity
 
 Configuration files directly influence application behavior.
 
@@ -1640,7 +1640,7 @@ Configuration changes should follow formal change management processes.
 
 ---
 
-# Why Configuration Integrity Matters
+## Why Configuration Integrity Matters
 
 ```
 Incorrect Configuration
@@ -1662,7 +1662,7 @@ Even small configuration errors can affect availability and security.
 
 ---
 
-# Secure Software Updates
+## Secure Software Updates
 
 Updates should only be obtained from trusted sources.
 
@@ -1690,7 +1690,7 @@ Updates should be verified before installation.
 
 ---
 
-# Secure Update Lifecycle
+## Secure Update Lifecycle
 
 ```
 Release Available
@@ -1724,7 +1724,7 @@ Organizations should avoid deploying updates directly into production without ap
 
 ---
 
-# Serialization Overview
+## Serialization Overview
 
 Serialization converts objects into a format suitable for storage or transmission.
 
@@ -1752,7 +1752,7 @@ Applications should validate serialized data before trusting it.
 
 ---
 
-# Serialization Integrity
+## Serialization Integrity
 
 Organizations should ensure that serialized data:
 
@@ -1776,7 +1776,7 @@ Trust decisions should never rely solely on the existence of serialized data.
 
 ---
 
-# Backup Integrity
+## Backup Integrity
 
 Backups must be both available and trustworthy.
 
@@ -1804,7 +1804,7 @@ Backups should be tested periodically to ensure they can be restored successfull
 
 ---
 
-# Backup Lifecycle
+## Backup Lifecycle
 
 ```
 Create Backup
@@ -1838,7 +1838,7 @@ Backup verification is as important as backup creation.
 
 ---
 
-# Enterprise Integrity Monitoring
+## Enterprise Integrity Monitoring
 
 Continuous monitoring helps detect unauthorized changes.
 
@@ -1866,7 +1866,7 @@ Monitoring supports rapid detection and response.
 
 ---
 
-# File Integrity Monitoring (FIM)
+## File Integrity Monitoring (FIM)
 
 File Integrity Monitoring identifies unexpected changes to important files.
 
@@ -1900,7 +1900,7 @@ FIM is commonly applied to:
 
 ---
 
-# Enterprise Change Management
+## Enterprise Change Management
 
 All significant changes should follow structured approval processes.
 
@@ -1936,7 +1936,7 @@ Formal change management improves accountability and reduces operational risk.
 
 ---
 
-# Integrity Logging
+## Integrity Logging
 
 Important integrity-related events should be recorded.
 
@@ -1970,7 +1970,7 @@ Examples include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A healthcare organization manages patient systems using:
 
@@ -2006,7 +2006,7 @@ Critical databases, configuration files, and application binaries are continuous
 
 ---
 
-# Common Data Integrity Risks
+## Common Data Integrity Risks
 
 | Risk | Potential Impact |
 |------|------------------|
@@ -2019,7 +2019,7 @@ Critical databases, configuration files, and application binaries are continuous
 
 ---
 
-# Enterprise Integrity Architecture
+## Enterprise Integrity Architecture
 
 ```
 Users
@@ -2053,7 +2053,7 @@ Every layer contributes to maintaining trustworthy data.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the lifecycle of business data from creation to archival.
 2. Identify where validation and integrity verification should occur.
@@ -2065,7 +2065,7 @@ Every layer contributes to maintaining trustworthy data.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is data integrity?
 2. What is logical integrity?
@@ -2080,7 +2080,7 @@ Every layer contributes to maintaining trustworthy data.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate data at every trust boundary.
 - Protect configuration files using version control and approval workflows.
@@ -2092,7 +2092,7 @@ Every layer contributes to maintaining trustworthy data.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting incoming data without validation.
 - Deploying software updates without verification.
@@ -2103,7 +2103,7 @@ Every layer contributes to maintaining trustworthy data.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Data integrity ensures information remains accurate, complete, and trustworthy.
 - Configuration, backups, and serialized data all require integrity verification.
@@ -2111,15 +2111,15 @@ Every layer contributes to maintaining trustworthy data.
 - File Integrity Monitoring helps detect unauthorized modifications to critical files.
 - Enterprise integrity depends on validation, monitoring, change management, and continuous operational oversight.
 
-# 26-Software-and-Data-Integrity-Failures.md
+## 26-Software-and-Data-Integrity-Failures.md
 
-# Part 4 — Enterprise Governance, Incident Response, Compliance, Secure SDLC Integration, and Chapter Summary
+## Part 4 — Enterprise Governance, Incident Response, Compliance, Secure SDLC Integration, and Chapter Summary
 
 > **"Integrity is not achieved through a single security control. It is maintained through governance, continuous verification, secure engineering practices, monitoring, and disciplined operational processes."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2135,7 +2135,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Integrity Governance
+## Enterprise Integrity Governance
 
 Integrity governance establishes policies, standards, and processes that ensure software and data remain trustworthy throughout their lifecycle.
 
@@ -2171,7 +2171,7 @@ Governance aligns technical controls with organizational goals.
 
 ---
 
-# Integrity Governance Framework
+## Integrity Governance Framework
 
 ```
 Governance
@@ -2197,7 +2197,7 @@ A structured governance framework promotes consistency across development and op
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 Integrity controls should be embedded into every phase of the Software Development Life Cycle.
 
@@ -2241,7 +2241,7 @@ Security is most effective when integrated from the beginning rather than added 
 
 ---
 
-# Integrity Controls Across the SDLC
+## Integrity Controls Across the SDLC
 
 | SDLC Phase | Integrity Control |
 |------------|-------------------|
@@ -2256,7 +2256,7 @@ Security is most effective when integrated from the beginning rather than added 
 
 ---
 
-# Change Management
+## Change Management
 
 Every production change should follow an approved workflow.
 
@@ -2296,7 +2296,7 @@ Structured change management minimizes operational risk.
 
 ---
 
-# Configuration Governance
+## Configuration Governance
 
 Configuration should be treated as a controlled organizational asset.
 
@@ -2328,7 +2328,7 @@ Configuration changes should always be traceable.
 
 ---
 
-# Release Governance
+## Release Governance
 
 Enterprise software releases typically follow controlled processes.
 
@@ -2360,7 +2360,7 @@ Every release should be documented and auditable.
 
 ---
 
-# Integrity Monitoring
+## Integrity Monitoring
 
 Continuous monitoring helps identify unexpected changes.
 
@@ -2388,7 +2388,7 @@ Monitoring should include software, configuration, and critical business data.
 
 ---
 
-# Incident Response for Integrity Events
+## Incident Response for Integrity Events
 
 When an integrity issue is identified:
 
@@ -2424,7 +2424,7 @@ Incident response should be documented and regularly exercised.
 
 ---
 
-# Incident Classification
+## Incident Classification
 
 Integrity incidents may involve:
 
@@ -2450,7 +2450,7 @@ Classification helps prioritize investigation and response.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Following recovery, organizations should determine:
 
@@ -2482,7 +2482,7 @@ Root cause analysis strengthens long-term resilience.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 Security programs should evolve based on operational experience.
 
@@ -2518,7 +2518,7 @@ Continuous improvement increases organizational maturity over time.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many regulations and standards emphasize integrity controls.
 
@@ -2546,7 +2546,7 @@ Good governance simplifies compliance efforts.
 
 ---
 
-# Enterprise Integrity Metrics
+## Enterprise Integrity Metrics
 
 Organizations monitor measurable indicators to assess integrity.
 
@@ -2561,7 +2561,7 @@ Organizations monitor measurable indicators to assess integrity.
 
 ---
 
-# Enterprise Integrity Dashboard
+## Enterprise Integrity Dashboard
 
 ```
 Integrity Dashboard
@@ -2589,7 +2589,7 @@ Dashboards provide operational visibility for security and management teams.
 
 ---
 
-# Enterprise Integrity Architecture
+## Enterprise Integrity Architecture
 
 ```
 Developers
@@ -2631,7 +2631,7 @@ Every stage contributes to maintaining software and data integrity.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution secures its software lifecycle using:
 
@@ -2675,7 +2675,7 @@ Software releases are tracked, reviewed, verified, and continuously monitored th
 
 ---
 
-# Enterprise Integrity Checklist
+## Enterprise Integrity Checklist
 
 ```
 ✓ Source Code Reviewed
@@ -2701,7 +2701,7 @@ Software releases are tracked, reviewed, verified, and continuously monitored th
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2714,9 +2714,9 @@ Software releases are tracked, reviewed, verified, and continuously monitored th
 
 ---
 
-# Interview Revision
+## Interview Revision
 
-## Software Integrity
+### Software Integrity
 
 ```
 Source Code
@@ -2740,7 +2740,7 @@ Monitoring
 
 ---
 
-## Data Integrity
+### Data Integrity
 
 ```
 Create
@@ -2768,7 +2768,7 @@ Use
 
 ---
 
-## Secure Software Supply Chain
+### Secure Software Supply Chain
 
 ```
 Developer
@@ -2796,7 +2796,7 @@ Production
 
 ---
 
-## Integrity Incident Response
+### Integrity Incident Response
 
 ```
 Detect
@@ -2820,7 +2820,7 @@ Improve
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise software supply chain with integrity verification at each stage.
 2. Develop a change management workflow for production deployments.
@@ -2832,7 +2832,7 @@ Improve
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are Software and Data Integrity Failures?
 2. Why is integrity a core principle of cybersecurity?
@@ -2847,7 +2847,7 @@ Improve
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate integrity controls throughout the Secure SDLC.
 - Protect build systems, artifact repositories, and deployment pipelines.
@@ -2859,7 +2859,7 @@ Improve
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting software without verification.
 - Skipping integrity checks during deployments.
@@ -2870,7 +2870,7 @@ Improve
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

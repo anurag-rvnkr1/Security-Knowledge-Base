@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A SIEM can collect billions of events, but collected data has little value if analysts cannot efficiently search and analyze it.
 
@@ -61,7 +61,7 @@ Conclusion
 
 ---
 
-# 2. What is SIEM Search?
+## 2. What is SIEM Search?
 
 SIEM search is the process of querying stored security telemetry to find events matching specific conditions.
 
@@ -88,7 +88,7 @@ Different SIEM platforms use different query languages.
 
 ---
 
-# 3. Why Search Matters
+## 3. Why Search Matters
 
 Search supports:
 
@@ -106,11 +106,11 @@ Reporting
 
 ---
 
-# 4. Search vs Detection
+## 4. Search vs Detection
 
 These concepts are closely related but different.
 
-## Search
+### Search
 
 An analyst manually asks:
 
@@ -118,7 +118,7 @@ An analyst manually asks:
 "Show me failed logins from this IP."
 ```
 
-## Detection
+### Detection
 
 The SIEM automatically asks:
 
@@ -139,9 +139,9 @@ Machine-driven
 
 ---
 
-# 5. Search vs Correlation
+## 5. Search vs Correlation
 
-### Search
+#### Search
 
 Find events matching conditions.
 
@@ -149,7 +149,7 @@ Find events matching conditions.
 source.ip = X
 ```
 
-### Correlation
+#### Correlation
 
 Connect multiple events.
 
@@ -165,7 +165,7 @@ Search can be used as the building block for correlation.
 
 ---
 
-# 6. The Security Question
+## 6. The Security Question
 
 Good investigations begin with a question.
 
@@ -205,7 +205,7 @@ Evidence
 
 ---
 
-# 7. Query Fundamentals
+## 7. Query Fundamentals
 
 Most SIEM queries use concepts such as:
 
@@ -241,7 +241,7 @@ failure
 
 ---
 
-# 8. Common Query Operators
+## 8. Common Query Operators
 
 Common operators include:
 
@@ -266,7 +266,7 @@ Exact syntax depends on the SIEM.
 
 ---
 
-# 9. Equality
+## 9. Equality
 
 Example:
 
@@ -282,7 +282,7 @@ Return events where outcome is failure.
 
 ---
 
-# 10. Inequality
+## 10. Inequality
 
 Example:
 
@@ -300,7 +300,7 @@ Be careful with missing/null fields because behavior differs between query langu
 
 ---
 
-# 11. Greater Than
+## 11. Greater Than
 
 Example:
 
@@ -312,7 +312,7 @@ Could identify events involving unusually large data volumes.
 
 ---
 
-# 12. Less Than
+## 12. Less Than
 
 Example:
 
@@ -326,7 +326,7 @@ The query alone does not prove malicious activity.
 
 ---
 
-# 13. AND
+## 13. AND
 
 ```text
 event.category = authentication
@@ -338,7 +338,7 @@ Both conditions must match.
 
 ---
 
-# 14. OR
+## 14. OR
 
 ```text
 event.action = login
@@ -350,7 +350,7 @@ Useful when different sources represent similar activity differently.
 
 ---
 
-# 15. NOT
+## 15. NOT
 
 Example:
 
@@ -367,7 +367,7 @@ Use exclusions carefully because attackers can abuse assumptions behind allowlis
 
 ---
 
-# 16. Parentheses
+## 16. Parentheses
 
 Complex queries should use explicit grouping.
 
@@ -387,7 +387,7 @@ This improves readability and avoids logical ambiguity.
 
 ---
 
-# 17. Time Range
+## 17. Time Range
 
 Time is one of the most important dimensions in SIEM search.
 
@@ -411,7 +411,7 @@ Irrelevant Results
 
 ---
 
-# 18. Start Narrow
+## 18. Start Narrow
 
 A good investigation strategy is:
 
@@ -440,7 +440,7 @@ Then expand if necessary.
 
 ---
 
-# 19. Query Example
+## 19. Query Example
 
 Question:
 
@@ -464,7 +464,7 @@ Today
 
 ---
 
-# 20. Query Example — Source IP
+## 20. Query Example — Source IP
 
 Question:
 
@@ -484,7 +484,7 @@ AND
 
 ---
 
-# 21. Query Example — Destination
+## 21. Query Example — Destination
 
 ```text
 destination.ip = "10.10.20.10"
@@ -502,7 +502,7 @@ Which protocols?
 
 ---
 
-# 22. Query Example — User
+## 22. Query Example — User
 
 ```text
 user.name = "alice"
@@ -523,7 +523,7 @@ Application
 
 ---
 
-# 23. Query Example — Host
+## 23. Query Example — Host
 
 ```text
 host.name = "WEB01"
@@ -541,7 +541,7 @@ Security Alerts
 
 ---
 
-# 24. Query Example — Process
+## 24. Query Example — Process
 
 ```text
 process.name = "powershell.exe"
@@ -561,7 +561,7 @@ Time?
 
 ---
 
-# 25. Query Example — Command Line
+## 25. Query Example — Command Line
 
 Search for suspicious command-line indicators.
 
@@ -581,7 +581,7 @@ A keyword match is an indicator, not proof of malicious activity.
 
 ---
 
-# 26. Query Example — Failed Authentication
+## 26. Query Example — Failed Authentication
 
 ```text
 event.category = authentication
@@ -608,7 +608,7 @@ User Error
 
 ---
 
-# 27. Aggregation
+## 27. Aggregation
 
 Aggregation summarizes large numbers of events.
 
@@ -638,7 +638,7 @@ Result:
 
 ---
 
-# 28. Count
+## 28. Count
 
 Conceptually:
 
@@ -658,7 +658,7 @@ Repeated Failures
 
 ---
 
-# 29. Group By
+## 29. Group By
 
 Example:
 
@@ -678,7 +678,7 @@ This identifies unusual concentrations.
 
 ---
 
-# 30. Top-N Analysis
+## 30. Top-N Analysis
 
 Example:
 
@@ -700,7 +700,7 @@ This is useful for prioritization.
 
 ---
 
-# 31. Unique Count
+## 31. Unique Count
 
 Sometimes total event count is less useful than unique entities.
 
@@ -731,7 +731,7 @@ COUNT(DISTINCT user)
 
 ---
 
-# 32. Cardinality
+## 32. Cardinality
 
 Cardinality refers to the number of unique values.
 
@@ -760,7 +760,7 @@ may suggest password spraying.
 
 ---
 
-# 33. Statistical Analysis
+## 33. Statistical Analysis
 
 SIEM queries can be used to identify:
 
@@ -783,7 +783,7 @@ Average bytes transferred per user
 
 ---
 
-# 34. Baseline
+## 34. Baseline
 
 A baseline describes normal behavior.
 
@@ -808,7 +808,7 @@ The difference is an anomaly candidate.
 
 ---
 
-# 35. Baseline Queries
+## 35. Baseline Queries
 
 Example:
 
@@ -827,7 +827,7 @@ Historical Pattern
 
 ---
 
-# 36. Rare Event Analysis
+## 36. Rare Event Analysis
 
 Search for events that occur infrequently.
 
@@ -845,7 +845,7 @@ Rare does not automatically mean malicious.
 
 ---
 
-# 37. Frequency Analysis
+## 37. Frequency Analysis
 
 Search for unusually frequent events.
 
@@ -870,7 +870,7 @@ Further investigation is required.
 
 ---
 
-# 38. Time-Series Analysis
+## 38. Time-Series Analysis
 
 Security events can be analyzed over time.
 
@@ -894,7 +894,7 @@ Logging Change
 
 ---
 
-# 39. Event Rate
+## 39. Event Rate
 
 Example:
 
@@ -920,7 +920,7 @@ Abuse
 
 ---
 
-# 40. Threshold Queries
+## 40. Threshold Queries
 
 Example:
 
@@ -943,7 +943,7 @@ Context improves signal quality.
 
 ---
 
-# 41. Query Optimization
+## 41. Query Optimization
 
 Poor:
 
@@ -967,7 +967,7 @@ Aggregate
 
 ---
 
-# 42. Time Filtering
+## 42. Time Filtering
 
 Always use the narrowest reasonable time range.
 
@@ -999,7 +999,7 @@ if required.
 
 ---
 
-# 43. Field Filtering
+## 43. Field Filtering
 
 Instead of searching all event fields:
 
@@ -1023,7 +1023,7 @@ This improves precision.
 
 ---
 
-# 44. Search Scope
+## 44. Search Scope
 
 Possible search scopes:
 
@@ -1040,7 +1040,7 @@ Narrowing scope improves efficiency.
 
 ---
 
-# 45. Search Performance
+## 45. Search Performance
 
 Large SIEM environments can contain:
 
@@ -1068,7 +1068,7 @@ Subqueries
 
 ---
 
-# 46. Wildcards
+## 46. Wildcards
 
 Example:
 
@@ -1090,7 +1090,7 @@ More specific queries are generally preferable.
 
 ---
 
-# 47. Full-Text Search
+## 47. Full-Text Search
 
 Example:
 
@@ -1114,7 +1114,7 @@ Structured Field Search
 
 ---
 
-# 48. Structured Search
+## 48. Structured Search
 
 Prefer:
 
@@ -1140,7 +1140,7 @@ More Consistent
 
 ---
 
-# 49. Query Languages
+## 49. Query Languages
 
 Different SIEMs use different query languages.
 
@@ -1168,7 +1168,7 @@ Correlate
 
 ---
 
-# 50. KQL
+## 50. KQL
 
 Kusto Query Language is widely associated with Microsoft security analytics.
 
@@ -1184,7 +1184,7 @@ This identifies authentication failures grouped by user.
 
 ---
 
-# 51. SPL
+## 51. SPL
 
 Splunk Search Processing Language can express searches such as:
 
@@ -1205,7 +1205,7 @@ Aggregate
 
 ---
 
-# 52. SQL-Style SIEM Queries
+## 52. SQL-Style SIEM Queries
 
 Some security platforms support SQL-like analytics.
 
@@ -1228,7 +1228,7 @@ Failure Count
 
 ---
 
-# 53. Query Portability
+## 53. Query Portability
 
 A query written for one SIEM may not work directly in another.
 
@@ -1256,7 +1256,7 @@ is platform-independent.
 
 ---
 
-# 54. Search Logic vs Query Syntax
+## 54. Search Logic vs Query Syntax
 
 Separate:
 
@@ -1292,7 +1292,7 @@ This makes detection engineering more portable.
 
 ---
 
-# 55. Event Analysis
+## 55. Event Analysis
 
 Searching finds events.
 
@@ -1326,7 +1326,7 @@ Is it malicious?
 
 ---
 
-# 56. Event Context
+## 56. Event Context
 
 Never analyze an event in isolation when more context is available.
 
@@ -1352,7 +1352,7 @@ Related alerts?
 
 ---
 
-# 57. Pivoting
+## 57. Pivoting
 
 Pivoting means using one discovered artifact to search for related activity.
 
@@ -1378,7 +1378,7 @@ Search Process
 
 ---
 
-# 58. Investigation Pivot Types
+## 58. Investigation Pivot Types
 
 Common pivots:
 
@@ -1398,7 +1398,7 @@ Session ID
 
 ---
 
-# 59. IP Pivot
+## 59. IP Pivot
 
 Start:
 
@@ -1426,7 +1426,7 @@ Actions
 
 ---
 
-# 60. User Pivot
+## 60. User Pivot
 
 Start:
 
@@ -1452,7 +1452,7 @@ User Activity Timeline
 
 ---
 
-# 61. Host Pivot
+## 61. Host Pivot
 
 Start:
 
@@ -1472,7 +1472,7 @@ Security Alerts
 
 ---
 
-# 62. Hash Pivot
+## 62. Hash Pivot
 
 If a suspicious file hash is discovered:
 
@@ -1492,7 +1492,7 @@ Did it connect externally?
 
 ---
 
-# 63. Domain Pivot
+## 63. Domain Pivot
 
 If a suspicious domain appears:
 
@@ -1514,7 +1514,7 @@ This may reveal the scope of activity.
 
 ---
 
-# 64. Timeline Analysis
+## 64. Timeline Analysis
 
 Timeline analysis organizes events chronologically.
 
@@ -1547,7 +1547,7 @@ The timeline provides an attack narrative.
 
 ---
 
-# 65. Timeline Sources
+## 65. Timeline Sources
 
 A timeline can combine:
 
@@ -1567,7 +1567,7 @@ This is one of the strongest advantages of centralized security analytics.
 
 ---
 
-# 66. Before-and-After Analysis
+## 66. Before-and-After Analysis
 
 For an important event:
 
@@ -1596,7 +1596,7 @@ Data Access
 
 ---
 
-# 67. Blast Radius
+## 67. Blast Radius
 
 Investigation should determine scope.
 
@@ -1620,7 +1620,7 @@ Which critical assets?
 
 ---
 
-# 68. Scope Query
+## 68. Scope Query
 
 Example:
 
@@ -1646,7 +1646,7 @@ LAPTOP01
 
 ---
 
-# 69. Evidence Quality
+## 69. Evidence Quality
 
 Not all events have equal reliability.
 
@@ -1683,7 +1683,7 @@ Multiple independent sources can provide stronger evidence.
 
 ---
 
-# 70. Event Corroboration
+## 70. Event Corroboration
 
 Suppose:
 
@@ -1714,7 +1714,7 @@ Higher Confidence
 
 ---
 
-# 71. Query Results
+## 71. Query Results
 
 A good query should answer a question.
 
@@ -1739,7 +1739,7 @@ destination.category = database
 
 ---
 
-# 72. Search Result Columns
+## 72. Search Result Columns
 
 Useful investigation columns include:
 
@@ -1762,7 +1762,7 @@ The best columns depend on the investigation.
 
 ---
 
-# 73. Saved Searches
+## 73. Saved Searches
 
 Frequently used queries can be saved.
 
@@ -1788,7 +1788,7 @@ Repeatability
 
 ---
 
-# 74. Search Templates
+## 74. Search Templates
 
 SOC teams can create templates.
 
@@ -1810,7 +1810,7 @@ This helps analysts investigate consistently.
 
 ---
 
-# 75. Query Documentation
+## 75. Query Documentation
 
 A useful query should document:
 
@@ -1826,7 +1826,7 @@ Known Limitations
 
 ---
 
-# 76. Detection Development Using Search
+## 76. Detection Development Using Search
 
 Detection engineering often begins with exploratory search.
 
@@ -1848,7 +1848,7 @@ Deploy
 
 ---
 
-# 77. Example: Brute Force
+## 77. Example: Brute Force
 
 Hypothesis:
 
@@ -1883,7 +1883,7 @@ within 5 minutes
 
 ---
 
-# 78. Example: Password Spraying
+## 78. Example: Password Spraying
 
 Hypothesis:
 
@@ -1919,7 +1919,7 @@ short time window
 
 ---
 
-# 79. Example: Suspicious PowerShell
+## 79. Example: Suspicious PowerShell
 
 Search:
 
@@ -1952,7 +1952,7 @@ Network Connection
 
 ---
 
-# 80. Example: Data Exfiltration
+## 80. Example: Data Exfiltration
 
 Search:
 
@@ -1985,7 +1985,7 @@ Was it authorized?
 
 ---
 
-# 81. Query Mistakes
+## 81. Query Mistakes
 
 Common mistakes:
 
@@ -2004,7 +2004,7 @@ Ignoring delayed events
 
 ---
 
-# 82. Boolean Logic Mistake
+## 82. Boolean Logic Mistake
 
 Incorrect:
 
@@ -2025,7 +2025,7 @@ Use parentheses.
 
 ---
 
-# 83. Time Range Mistake
+## 83. Time Range Mistake
 
 Analyst searches:
 
@@ -2051,7 +2051,7 @@ Clock Drift
 
 ---
 
-# 84. Field Mapping Mistake
+## 84. Field Mapping Mistake
 
 Analyst searches:
 
@@ -2085,7 +2085,7 @@ Data Pipeline Issue
 
 ---
 
-# 85. Empty Search Results
+## 85. Empty Search Results
 
 "No results" does not necessarily mean:
 
@@ -2111,7 +2111,7 @@ Always validate the data pipeline.
 
 ---
 
-# 86. Query Validation
+## 86. Query Validation
 
 Before trusting a query:
 
@@ -2127,7 +2127,7 @@ Before trusting a query:
 
 ---
 
-# 87. Search Performance Best Practices
+## 87. Search Performance Best Practices
 
 ```text
 1. Use narrow time windows.
@@ -2153,7 +2153,7 @@ Before trusting a query:
 
 ---
 
-# 88. Search and Privacy
+## 88. Search and Privacy
 
 Queries can expose sensitive information.
 
@@ -2172,7 +2172,7 @@ Analysts should access only data necessary for their authorized duties.
 
 ---
 
-# 89. Search Audit Logs
+## 89. Search Audit Logs
 
 SIEM platforms should ideally record administrative and security-relevant actions such as:
 
@@ -2195,7 +2195,7 @@ Investigation
 
 ---
 
-# 90. Query-Based Threat Hunting
+## 90. Query-Based Threat Hunting
 
 A hunt often starts with:
 
@@ -2227,7 +2227,7 @@ Look for related indicators
 
 ---
 
-# 91. Threat Hunting Loop
+## 91. Threat Hunting Loop
 
 ```text
 HYPOTHESIS
@@ -2251,7 +2251,7 @@ Threat hunting is iterative.
 
 ---
 
-# 92. Query-Based Detection Validation
+## 92. Query-Based Detection Validation
 
 After creating a detection:
 
@@ -2271,7 +2271,7 @@ Verify Alert Context
 
 ---
 
-# 93. Detection Debugging
+## 93. Detection Debugging
 
 If a detection does not trigger:
 
@@ -2299,7 +2299,7 @@ If a detection does not trigger:
 
 ---
 
-# 94. Query and Detection Relationship
+## 94. Query and Detection Relationship
 
 ```text
 QUERY
@@ -2319,7 +2319,7 @@ This is one of the most important workflows in SIEM engineering.
 
 ---
 
-# 95. Practical Lab
+## 95. Practical Lab
 
 Create a small SIEM lab with:
 
@@ -2356,7 +2356,7 @@ Practice:
 
 ---
 
-# 96. Practical Query Exercise
+## 96. Practical Query Exercise
 
 Given:
 
@@ -2395,7 +2395,7 @@ This warrants investigation but is not by itself proof of an attack.
 
 ---
 
-# 97. Practical Timeline Exercise
+## 97. Practical Timeline Exercise
 
 Given:
 
@@ -2429,7 +2429,7 @@ Potential Attack Stages
 
 ---
 
-# 98. Investigation Questions
+## 98. Investigation Questions
 
 For any suspicious event ask:
 
@@ -2448,7 +2448,7 @@ HOW FAR?
 
 ---
 
-# 99. Query Checklist
+## 99. Query Checklist
 
 Before executing:
 
@@ -2467,67 +2467,67 @@ Before executing:
 
 ---
 
-# 100. Interview Questions
+## 100. Interview Questions
 
-### What is SIEM search?
+#### What is SIEM search?
 
 > The process of querying security telemetry to identify events and patterns relevant to investigation, hunting, detection, or analysis.
 
-### Why is time range important?
+#### Why is time range important?
 
 > It reduces irrelevant data, improves query performance, and ensures the investigation covers the relevant activity window.
 
-### What is aggregation?
+#### What is aggregation?
 
 > Summarizing events using operations such as count, unique count, average, or grouping.
 
-### What is cardinality?
+#### What is cardinality?
 
 > The number of unique values in a field.
 
-### Why is cardinality useful?
+#### Why is cardinality useful?
 
 > It can distinguish patterns such as brute force against one account from password spraying across many accounts.
 
-### What is pivoting?
+#### What is pivoting?
 
 > Using a discovered artifact such as an IP, user, host, domain, or hash to search for related activity.
 
-### What is timeline analysis?
+#### What is timeline analysis?
 
 > Ordering events chronologically to reconstruct activity and understand an incident.
 
-### Why are structured fields preferred?
+#### Why are structured fields preferred?
 
 > They provide more precise and efficient searching than broad free-text searches.
 
-### What is a false "no results" situation?
+#### What is a false "no results" situation?
 
 > When a query returns nothing because of a data or query problem rather than because the activity did not occur.
 
-### How do you optimize SIEM queries?
+#### How do you optimize SIEM queries?
 
 > Use narrow time ranges, specific structured fields, appropriate indexes, efficient aggregations, and avoid unnecessary broad wildcard searches.
 
-### What is a detection hypothesis?
+#### What is a detection hypothesis?
 
 > A testable assumption about suspicious behavior that can be investigated through telemetry and potentially converted into a detection rule.
 
-### What is threat hunting?
+#### What is threat hunting?
 
 > Proactively searching telemetry for evidence of malicious or anomalous behavior based on a hypothesis.
 
-### How do search and detection engineering relate?
+#### How do search and detection engineering relate?
 
 > Analysts often use exploratory searches to identify and validate patterns before converting them into automated detection rules.
 
-### What should you do if a query returns no events?
+#### What should you do if a query returns no events?
 
 > Verify the time range, data source, field names, parser/normalization, ingestion health, retention, and query syntax before concluding there was no activity.
 
 ---
 
-# 101. Quick Revision
+## 101. Quick Revision
 
 ```text
 SEARCH
@@ -2569,7 +2569,7 @@ DETECTION
 
 ---
 
-# 102. Golden Rules
+## 102. Golden Rules
 
 ```text
 1. Start with a security question.
@@ -2615,7 +2615,7 @@ DETECTION
 
 ---
 
-# 103. Final Mental Model
+## 103. Final Mental Model
 
 Remember SIEM search using:
 
@@ -2669,7 +2669,7 @@ TUNE
 
 ---
 
-# 104. Chapter Summary
+## 104. Chapter Summary
 
 SIEM search is the bridge between **stored telemetry** and **security intelligence**.
 

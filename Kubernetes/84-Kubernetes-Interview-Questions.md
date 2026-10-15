@@ -45,7 +45,7 @@ This chapter provides a structured Kubernetes interview preparation guide contai
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -88,9 +88,9 @@ After completing this chapter, you should be able to:
 
 ---
 
-# Section 1 – Kubernetes Fundamentals
+## Section 1 – Kubernetes Fundamentals
 
-## 1. What is Kubernetes?
+### 1. What is Kubernetes?
 
 Kubernetes is an open-source container orchestration platform used to automate:
 
@@ -109,7 +109,7 @@ for containerized workloads.
 
 ---
 
-## 2. Why is Kubernetes used?
+### 2. Why is Kubernetes used?
 
 Kubernetes helps manage containerized applications across multiple machines.
 
@@ -129,7 +129,7 @@ Storage Orchestration
 
 ---
 
-## 3. What is a Kubernetes cluster?
+### 3. What is a Kubernetes cluster?
 
 A Kubernetes cluster consists of:
 
@@ -155,7 +155,7 @@ Conceptually:
 
 ---
 
-## 4. What is the Control Plane?
+### 4. What is the Control Plane?
 
 The Control Plane manages the overall Kubernetes cluster.
 
@@ -170,7 +170,7 @@ Controller Manager
 
 ---
 
-## 5. What is the Kubernetes API Server?
+### 5. What is the Kubernetes API Server?
 
 The API Server is the primary entry point to the Kubernetes control plane.
 
@@ -188,7 +188,7 @@ communicate with the Kubernetes API.
 
 ---
 
-## 6. What is etcd?
+### 6. What is etcd?
 
 etcd is a distributed key-value store used by Kubernetes to store cluster state.
 
@@ -205,7 +205,7 @@ Cluster Configuration
 
 ---
 
-## 7. What is the Scheduler?
+### 7. What is the Scheduler?
 
 The Scheduler selects an appropriate node for newly created Pods that do not yet have a node assignment.
 
@@ -225,7 +225,7 @@ Bind Pod
 
 ---
 
-## 8. What is the Controller Manager?
+### 8. What is the Controller Manager?
 
 The Controller Manager runs Kubernetes controllers that continuously reconcile desired state with actual state.
 
@@ -242,9 +242,9 @@ Endpoints
 
 ---
 
-# Section 2 – Worker Nodes
+## Section 2 – Worker Nodes
 
-## 9. What is a Worker Node?
+### 9. What is a Worker Node?
 
 A Worker Node runs application workloads.
 
@@ -258,7 +258,7 @@ Kube-Proxy
 
 ---
 
-## 10. What is Kubelet?
+### 10. What is Kubelet?
 
 Kubelet is the primary node agent.
 
@@ -273,7 +273,7 @@ Reports Pod status
 
 ---
 
-## 11. What is Kube-Proxy?
+### 11. What is Kube-Proxy?
 
 Kube-Proxy helps implement Kubernetes Service networking.
 
@@ -288,7 +288,7 @@ Modern Kubernetes environments may also use alternatives such as eBPF-based netw
 
 ---
 
-## 12. What is a Container Runtime?
+### 12. What is a Container Runtime?
 
 The Container Runtime runs containers.
 
@@ -301,9 +301,9 @@ CRI-O
 
 ---
 
-# Section 3 – Pods
+## Section 3 – Pods
 
-## 13. What is a Pod?
+### 13. What is a Pod?
 
 A Pod is the smallest deployable unit in Kubernetes.
 
@@ -329,7 +329,7 @@ Volumes
 
 ---
 
-## 14. Why are Pods ephemeral?
+### 14. Why are Pods ephemeral?
 
 Pods are designed to be replaceable.
 
@@ -347,7 +347,7 @@ Applications should therefore not depend on a Pod's permanent identity unless us
 
 ---
 
-## 15. What is a multi-container Pod?
+### 15. What is a multi-container Pod?
 
 A Pod can contain multiple closely related containers.
 
@@ -369,7 +369,7 @@ Security Agent
 
 ---
 
-## 16. Do containers inside a Pod have different IP addresses?
+### 16. Do containers inside a Pod have different IP addresses?
 
 Normally, containers in the same Pod share the Pod's network namespace and therefore use the same Pod IP.
 
@@ -383,9 +383,9 @@ using different ports.
 
 ---
 
-# Section 4 – Deployments and Controllers
+## Section 4 – Deployments and Controllers
 
-## 17. What is a ReplicaSet?
+### 17. What is a ReplicaSet?
 
 A ReplicaSet ensures that a specified number of Pod replicas exist.
 
@@ -404,7 +404,7 @@ The ReplicaSet attempts to maintain:
 
 ---
 
-## 18. What is a Deployment?
+### 18. What is a Deployment?
 
 A Deployment manages stateless application workloads and typically manages ReplicaSets.
 
@@ -419,7 +419,7 @@ Replica Management
 
 ---
 
-## 19. Deployment vs ReplicaSet?
+### 19. Deployment vs ReplicaSet?
 
 | Deployment | ReplicaSet |
 |---|---|
@@ -430,7 +430,7 @@ Replica Management
 
 ---
 
-## 20. What happens during a Deployment update?
+### 20. What happens during a Deployment update?
 
 Conceptually:
 
@@ -446,7 +446,7 @@ Old ReplicaSet Scaled Down
 
 ---
 
-## 21. What is a rolling update?
+### 21. What is a rolling update?
 
 A rolling update gradually replaces old Pods with new Pods.
 
@@ -470,7 +470,7 @@ v2 → v2 → v2
 
 ---
 
-## 22. How do you rollback a Deployment?
+### 22. How do you rollback a Deployment?
 
 ```bash
 kubectl rollout undo deployment/<deployment-name>
@@ -484,9 +484,9 @@ kubectl rollout history deployment/<deployment-name>
 
 ---
 
-# Section 5 – StatefulSets
+## Section 5 – StatefulSets
 
-## 23. What is a StatefulSet?
+### 23. What is a StatefulSet?
 
 StatefulSet manages workloads that require stable identity or persistent storage.
 
@@ -501,7 +501,7 @@ Persistent Storage Association
 
 ---
 
-## 24. Deployment vs StatefulSet?
+### 24. Deployment vs StatefulSet?
 
 | Deployment | StatefulSet |
 |---|---|
@@ -512,7 +512,7 @@ Persistent Storage Association
 
 ---
 
-## 25. Example StatefulSet Pod names
+### 25. Example StatefulSet Pod names
 
 ```text
 database-0
@@ -522,9 +522,9 @@ database-2
 
 ---
 
-# Section 6 – DaemonSets
+## Section 6 – DaemonSets
 
-## 26. What is a DaemonSet?
+### 26. What is a DaemonSet?
 
 A DaemonSet ensures that a Pod runs on eligible nodes.
 
@@ -539,7 +539,7 @@ Node Networking
 
 ---
 
-## 27. DaemonSet vs Deployment?
+### 27. DaemonSet vs Deployment?
 
 ```text
 Deployment
@@ -551,9 +551,9 @@ DaemonSet
 
 ---
 
-# Section 7 – Jobs and CronJobs
+## Section 7 – Jobs and CronJobs
 
-## 28. What is a Job?
+### 28. What is a Job?
 
 A Job runs a task until successful completion.
 
@@ -567,7 +567,7 @@ Data Processing
 
 ---
 
-## 29. What is a CronJob?
+### 29. What is a CronJob?
 
 A CronJob creates Jobs according to a schedule.
 
@@ -579,9 +579,9 @@ Every Day at 02:00
 
 ---
 
-# Section 8 – Services
+## Section 8 – Services
 
-## 30. What is a Kubernetes Service?
+### 30. What is a Kubernetes Service?
 
 A Service provides a stable network endpoint for a group of Pods.
 
@@ -595,7 +595,7 @@ Pods
 
 ---
 
-## 31. Why do we need Services?
+### 31. Why do we need Services?
 
 Pod IPs can change.
 
@@ -610,7 +610,7 @@ Service Discovery
 
 ---
 
-## 32. What are common Service types?
+### 32. What are common Service types?
 
 ```text
 ClusterIP
@@ -621,7 +621,7 @@ ExternalName
 
 ---
 
-## 33. What is ClusterIP?
+### 33. What is ClusterIP?
 
 ClusterIP exposes a Service internally within the cluster.
 
@@ -637,7 +637,7 @@ It is the default Service type.
 
 ---
 
-## 34. What is NodePort?
+### 34. What is NodePort?
 
 NodePort exposes a Service through a port on each eligible node.
 
@@ -655,13 +655,13 @@ Pods
 
 ---
 
-## 35. What is LoadBalancer?
+### 35. What is LoadBalancer?
 
 LoadBalancer exposes a Service through an external load-balancing mechanism, typically provided by the cloud/platform environment.
 
 ---
 
-## 36. What is ExternalName?
+### 36. What is ExternalName?
 
 ExternalName maps a Service name to an external DNS name.
 
@@ -675,9 +675,9 @@ spec:
 
 ---
 
-# Section 9 – Ingress
+## Section 9 – Ingress
 
-## 37. What is Ingress?
+### 37. What is Ingress?
 
 Ingress provides HTTP/HTTPS routing into Kubernetes Services.
 
@@ -693,7 +693,7 @@ Ingress
 
 ---
 
-## 38. What is an Ingress Controller?
+### 38. What is an Ingress Controller?
 
 An Ingress resource is only configuration.
 
@@ -710,9 +710,9 @@ Cloud Load Balancers
 
 ---
 
-# Section 10 – Gateway API
+## Section 10 – Gateway API
 
-## 39. What is Gateway API?
+### 39. What is Gateway API?
 
 Gateway API is a Kubernetes networking API family designed to provide expressive and role-oriented traffic management.
 
@@ -729,7 +729,7 @@ TLSRoute
 
 ---
 
-## 40. Ingress vs Gateway API?
+### 40. Ingress vs Gateway API?
 
 Ingress:
 
@@ -750,9 +750,9 @@ Supports Multiple Route Types
 
 ---
 
-# Section 11 – ConfigMaps and Secrets
+## Section 11 – ConfigMaps and Secrets
 
-## 41. What is a ConfigMap?
+### 41. What is a ConfigMap?
 
 ConfigMap stores non-sensitive configuration.
 
@@ -767,7 +767,7 @@ Configuration Files
 
 ---
 
-## 42. What is a Secret?
+### 42. What is a Secret?
 
 Secret is designed to store sensitive configuration such as:
 
@@ -782,7 +782,7 @@ However, Kubernetes Secrets are not automatically equivalent to a complete secre
 
 ---
 
-## 43. ConfigMap vs Secret?
+### 43. ConfigMap vs Secret?
 
 | ConfigMap | Secret |
 |---|---|
@@ -793,9 +793,9 @@ However, Kubernetes Secrets are not automatically equivalent to a complete secre
 
 ---
 
-# Section 12 – Namespaces
+## Section 12 – Namespaces
 
-## 44. What is a Namespace?
+### 44. What is a Namespace?
 
 A Namespace provides a logical boundary for namespaced Kubernetes resources.
 
@@ -818,9 +818,9 @@ Network Policies
 
 ---
 
-# Section 13 – Labels and Selectors
+## Section 13 – Labels and Selectors
 
-## 45. What are Labels?
+### 45. What are Labels?
 
 Labels are key-value metadata used to identify and organize resources.
 
@@ -834,7 +834,7 @@ labels:
 
 ---
 
-## 46. What are Selectors?
+### 46. What are Selectors?
 
 Selectors identify resources based on labels.
 
@@ -848,9 +848,9 @@ selector:
 
 ---
 
-# Section 14 – Annotations
+## Section 14 – Annotations
 
-## 47. What are Annotations?
+### 47. What are Annotations?
 
 Annotations store non-identifying metadata associated with resources.
 
@@ -865,9 +865,9 @@ Monitoring Tools
 
 ---
 
-# Section 15 – Kubernetes Networking
+## Section 15 – Kubernetes Networking
 
-## 48. What are the fundamental Kubernetes networking requirements?
+### 48. What are the fundamental Kubernetes networking requirements?
 
 A typical Kubernetes networking model expects:
 
@@ -880,7 +880,7 @@ Service Discovery
 
 ---
 
-## 49. What is a CNI plugin?
+### 49. What is a CNI plugin?
 
 CNI stands for Container Network Interface.
 
@@ -897,7 +897,7 @@ Antrea
 
 ---
 
-## 50. What is CoreDNS?
+### 50. What is CoreDNS?
 
 CoreDNS provides cluster DNS.
 
@@ -909,9 +909,9 @@ service.namespace.svc.cluster.local
 
 ---
 
-# Section 16 – NetworkPolicy
+## Section 16 – NetworkPolicy
 
-## 51. What is NetworkPolicy?
+### 51. What is NetworkPolicy?
 
 NetworkPolicy controls network traffic to and/or from Pods.
 
@@ -928,7 +928,7 @@ Database
 
 ---
 
-## 52. What happens if no NetworkPolicy exists?
+### 52. What happens if no NetworkPolicy exists?
 
 In many Kubernetes networking implementations, Pods are not isolated by NetworkPolicy by default.
 
@@ -936,7 +936,7 @@ Actual behavior depends on the CNI implementation and applied policies.
 
 ---
 
-## 53. NetworkPolicy vs Service Mesh?
+### 53. NetworkPolicy vs Service Mesh?
 
 NetworkPolicy primarily provides network-level enforcement.
 
@@ -954,15 +954,15 @@ They can complement each other.
 
 ---
 
-# Section 17 – Volumes and Storage
+## Section 17 – Volumes and Storage
 
-## 54. What is a Volume?
+### 54. What is a Volume?
 
 A Volume provides storage accessible to containers in a Pod.
 
 ---
 
-## 55. What is a PersistentVolume?
+### 55. What is a PersistentVolume?
 
 A PersistentVolume, or PV, is a cluster storage resource.
 
@@ -974,7 +974,7 @@ PersistentVolume
 
 ---
 
-## 56. What is a PersistentVolumeClaim?
+### 56. What is a PersistentVolumeClaim?
 
 PVC is a request for storage.
 
@@ -990,7 +990,7 @@ Storage
 
 ---
 
-## 57. What is a StorageClass?
+### 57. What is a StorageClass?
 
 StorageClass defines how storage should be provisioned.
 
@@ -998,7 +998,7 @@ It commonly enables dynamic provisioning.
 
 ---
 
-## 58. What is CSI?
+### 58. What is CSI?
 
 CSI stands for Container Storage Interface.
 
@@ -1006,9 +1006,9 @@ CSI allows storage vendors to integrate storage systems with Kubernetes.
 
 ---
 
-# Section 18 – Scheduling
+## Section 18 – Scheduling
 
-## 59. What is Kubernetes Scheduling?
+### 59. What is Kubernetes Scheduling?
 
 Scheduling determines which node should run a Pod.
 
@@ -1026,7 +1026,7 @@ Topology
 
 ---
 
-## 60. What is nodeSelector?
+### 60. What is nodeSelector?
 
 nodeSelector schedules Pods onto nodes having specific labels.
 
@@ -1039,7 +1039,7 @@ nodeSelector:
 
 ---
 
-## 61. What is Node Affinity?
+### 61. What is Node Affinity?
 
 Node Affinity provides more expressive node selection.
 
@@ -1052,7 +1052,7 @@ Preferred Rules
 
 ---
 
-## 62. What is Pod Affinity?
+### 62. What is Pod Affinity?
 
 Pod Affinity can place Pods near other Pods.
 
@@ -1068,7 +1068,7 @@ on the same topology domain.
 
 ---
 
-## 63. What is Pod Anti-Affinity?
+### 63. What is Pod Anti-Affinity?
 
 Pod Anti-Affinity helps spread Pods apart.
 
@@ -1082,21 +1082,21 @@ Replica 3 → Node C
 
 ---
 
-# Section 19 – Taints and Tolerations
+## Section 19 – Taints and Tolerations
 
-## 64. What is a Taint?
+### 64. What is a Taint?
 
 A taint marks a node so that Pods without a matching toleration are prevented from scheduling there, depending on the effect.
 
 ---
 
-## 65. What is a Toleration?
+### 65. What is a Toleration?
 
 A toleration allows a Pod to tolerate a matching node taint.
 
 ---
 
-## 66. Taint vs Toleration?
+### 66. Taint vs Toleration?
 
 ```text
 Taint
@@ -1108,9 +1108,9 @@ Toleration
 
 ---
 
-# Section 20 – Resources
+## Section 20 – Resources
 
-## 67. What are resource requests?
+### 67. What are resource requests?
 
 Requests specify the resources a Pod needs for scheduling.
 
@@ -1125,7 +1125,7 @@ resources:
 
 ---
 
-## 68. What are resource limits?
+### 68. What are resource limits?
 
 Limits specify the maximum resource usage allowed for a container.
 
@@ -1140,7 +1140,7 @@ resources:
 
 ---
 
-## 69. Requests vs Limits?
+### 69. Requests vs Limits?
 
 ```text
 Request
@@ -1152,9 +1152,9 @@ Limit
 
 ---
 
-# Section 21 – Autoscaling
+## Section 21 – Autoscaling
 
-## 70. What is HPA?
+### 70. What is HPA?
 
 Horizontal Pod Autoscaler changes the number of Pod replicas based on metrics.
 
@@ -1168,7 +1168,7 @@ Replicas ↑
 
 ---
 
-## 71. What is VPA?
+### 71. What is VPA?
 
 Vertical Pod Autoscaler adjusts resource requests and limits based on observed usage, depending on configuration and update mode.
 
@@ -1182,7 +1182,7 @@ Resource Recommendation / Update
 
 ---
 
-## 72. What is Cluster Autoscaler?
+### 72. What is Cluster Autoscaler?
 
 Cluster Autoscaler changes the number of nodes in the cluster based on scheduling and capacity requirements.
 
@@ -1198,9 +1198,9 @@ Add Nodes
 
 ---
 
-# Section 22 – Kubernetes Security
+## Section 22 – Kubernetes Security
 
-## 73. What is RBAC?
+### 73. What is RBAC?
 
 RBAC stands for Role-Based Access Control.
 
@@ -1214,7 +1214,7 @@ On Which Resources
 
 ---
 
-## 74. Role vs ClusterRole?
+### 74. Role vs ClusterRole?
 
 ```text
 Role
@@ -1228,7 +1228,7 @@ A ClusterRole can also be bound within a namespace using a RoleBinding.
 
 ---
 
-## 75. RoleBinding vs ClusterRoleBinding?
+### 75. RoleBinding vs ClusterRoleBinding?
 
 ```text
 RoleBinding
@@ -1240,19 +1240,19 @@ ClusterRoleBinding
 
 ---
 
-## 76. What is a ServiceAccount?
+### 76. What is a ServiceAccount?
 
 A ServiceAccount provides an identity for workloads running inside Kubernetes.
 
 ---
 
-## 77. What is an Admission Controller?
+### 77. What is an Admission Controller?
 
 Admission controllers intercept API requests after authentication/authorization and before persistence, allowing requests to be validated or mutated.
 
 ---
 
-## 78. What are Pod Security Standards?
+### 78. What are Pod Security Standards?
 
 Pod Security Standards define security profiles for Pods.
 
@@ -1266,9 +1266,9 @@ Restricted
 
 ---
 
-# Section 23 – Secret Management
+## Section 23 – Secret Management
 
-## 79. Are Kubernetes Secrets encrypted?
+### 79. Are Kubernetes Secrets encrypted?
 
 Kubernetes Secret objects are encoded rather than inherently encrypted merely because they are represented as base64.
 
@@ -1276,7 +1276,7 @@ Encryption at rest can be configured for Kubernetes data in etcd.
 
 ---
 
-## 80. How should secrets be secured?
+### 80. How should secrets be secured?
 
 Use:
 
@@ -1291,9 +1291,9 @@ Audit Logging
 
 ---
 
-# Section 24 – Image Security
+## Section 24 – Image Security
 
-## 81. How do you secure container images?
+### 81. How do you secure container images?
 
 Use:
 
@@ -1309,7 +1309,7 @@ Regular Updates
 
 ---
 
-## 82. What is an image digest?
+### 82. What is an image digest?
 
 An image digest uniquely identifies a specific image content.
 
@@ -1323,9 +1323,9 @@ Digest pinning improves deployment reproducibility.
 
 ---
 
-# Section 25 – Observability
+## Section 25 – Observability
 
-## 83. What are the three major observability signals?
+### 83. What are the three major observability signals?
 
 Commonly:
 
@@ -1337,19 +1337,19 @@ Traces
 
 ---
 
-## 84. What is Prometheus?
+### 84. What is Prometheus?
 
 Prometheus is a monitoring and metrics system widely used with Kubernetes.
 
 ---
 
-## 85. What is Grafana?
+### 85. What is Grafana?
 
 Grafana is a visualization and dashboarding platform that can display metrics and other observability data.
 
 ---
 
-## 86. What is Alertmanager?
+### 86. What is Alertmanager?
 
 Alertmanager handles Prometheus alerts and supports functions such as:
 
@@ -1363,7 +1363,7 @@ Notifications
 
 ---
 
-## 87. What is OpenTelemetry?
+### 87. What is OpenTelemetry?
 
 OpenTelemetry is a vendor-neutral observability framework for collecting and exporting telemetry such as:
 
@@ -1375,9 +1375,9 @@ Logs
 
 ---
 
-# Section 26 – Logging
+## Section 26 – Logging
 
-## 88. How do you view Pod logs?
+### 88. How do you view Pod logs?
 
 ```bash
 kubectl logs <pod>
@@ -1397,9 +1397,9 @@ kubectl logs <pod> --previous
 
 ---
 
-# Section 27 – Troubleshooting
+## Section 27 – Troubleshooting
 
-## 89. A Pod is stuck in Pending. What do you check?
+### 89. A Pod is stuck in Pending. What do you check?
 
 Check:
 
@@ -1423,7 +1423,7 @@ Resource Quotas
 
 ---
 
-## 90. A Pod is CrashLoopBackOff. What do you check?
+### 90. A Pod is CrashLoopBackOff. What do you check?
 
 Check:
 
@@ -1458,7 +1458,7 @@ Dependency Failure
 
 ---
 
-## 91. What does ImagePullBackOff mean?
+### 91. What does ImagePullBackOff mean?
 
 It means Kubernetes is repeatedly failing to pull the container image.
 
@@ -1476,7 +1476,7 @@ Image Does Not Exist
 
 ---
 
-## 92. A Service cannot reach a Pod. What do you check?
+### 92. A Service cannot reach a Pod. What do you check?
 
 Check:
 
@@ -1500,7 +1500,7 @@ DNS
 
 ---
 
-## 93. DNS is failing. What do you check?
+### 93. DNS is failing. What do you check?
 
 Check:
 
@@ -1520,9 +1520,9 @@ Also test DNS from a debugging Pod.
 
 ---
 
-# Section 28 – Production Questions
+## Section 28 – Production Questions
 
-## 94. How would you design a production Kubernetes cluster?
+### 94. How would you design a production Kubernetes cluster?
 
 Consider:
 
@@ -1543,7 +1543,7 @@ Upgrade Strategy
 
 ---
 
-## 95. How many control-plane nodes should a production cluster have?
+### 95. How many control-plane nodes should a production cluster have?
 
 A common HA design uses an odd number such as:
 
@@ -1558,7 +1558,7 @@ The correct number depends on availability requirements and failure-domain desig
 
 ---
 
-## 96. Why use multiple availability zones?
+### 96. Why use multiple availability zones?
 
 To reduce the impact of a failure affecting a single zone.
 
@@ -1574,9 +1574,9 @@ Workloads can be distributed across zones.
 
 ---
 
-# Section 29 – High Availability
+## Section 29 – High Availability
 
-## 97. How do you make Kubernetes highly available?
+### 97. How do you make Kubernetes highly available?
 
 Use:
 
@@ -1592,9 +1592,9 @@ Redundant Networking
 
 ---
 
-# Section 30 – Backup and Restore
+## Section 30 – Backup and Restore
 
-## 98. What should be backed up?
+### 98. What should be backed up?
 
 Important components include:
 
@@ -1611,7 +1611,7 @@ The exact backup strategy depends on the cluster architecture.
 
 ---
 
-## 99. Why is etcd backup important?
+### 99. Why is etcd backup important?
 
 etcd contains critical Kubernetes cluster state.
 
@@ -1619,9 +1619,9 @@ Loss of etcd data can result in loss of cluster configuration and object state.
 
 ---
 
-# Section 31 – Upgrades
+## Section 31 – Upgrades
 
-## 100. How do you upgrade Kubernetes safely?
+### 100. How do you upgrade Kubernetes safely?
 
 Typical process:
 
@@ -1643,9 +1643,9 @@ Monitor
 
 ---
 
-# Section 32 – Security Interview Questions
+## Section 32 – Security Interview Questions
 
-## 101. How would you secure a Kubernetes cluster?
+### 101. How would you secure a Kubernetes cluster?
 
 Use:
 
@@ -1664,13 +1664,13 @@ Node Hardening
 
 ---
 
-## 102. What is the principle of least privilege?
+### 102. What is the principle of least privilege?
 
 Grant only the permissions required to perform the intended operation.
 
 ---
 
-## 103. How do you secure the Kubernetes API Server?
+### 103. How do you secure the Kubernetes API Server?
 
 Controls can include:
 
@@ -1685,7 +1685,7 @@ Admission Controls
 
 ---
 
-## 104. How do you secure workloads?
+### 104. How do you secure workloads?
 
 Use:
 
@@ -1702,15 +1702,15 @@ Pod Security Standards
 
 ---
 
-# Section 33 – Scenario-Based Questions
+## Section 33 – Scenario-Based Questions
 
-## Scenario 1 – Pod Pending
+### Scenario 1 – Pod Pending
 
-### Question
+#### Question
 
 > A Pod remains in Pending state. What will you do?
 
-### Answer
+#### Answer
 
 Start with:
 
@@ -1736,13 +1736,13 @@ ResourceQuota
 
 ---
 
-# Scenario 2 – Pod CrashLoopBackOff
+## Scenario 2 – Pod CrashLoopBackOff
 
-### Question
+#### Question
 
 > A production Pod is repeatedly restarting.
 
-### Answer
+#### Answer
 
 Check:
 
@@ -1765,13 +1765,13 @@ Permissions
 
 ---
 
-# Scenario 3 – Service Returns Connection Refused
+## Scenario 3 – Service Returns Connection Refused
 
-### Question
+#### Question
 
 > The Service exists, but clients cannot connect.
 
-### Answer
+#### Answer
 
 Check:
 
@@ -1796,9 +1796,9 @@ kubectl get endpointslices
 
 ---
 
-# Scenario 4 – Service Has No Endpoints
+## Scenario 4 – Service Has No Endpoints
 
-### Question
+#### Question
 
 > Why does a Service have no endpoints?
 
@@ -1814,9 +1814,9 @@ Incorrect Namespace
 
 ---
 
-# Scenario 5 – Deployment Rollout Stuck
+## Scenario 5 – Deployment Rollout Stuck
 
-### Question
+#### Question
 
 > A Deployment update never completes.
 
@@ -1840,9 +1840,9 @@ Application Startup
 
 ---
 
-# Scenario 6 – Node NotReady
+## Scenario 6 – Node NotReady
 
-### Question
+#### Question
 
 > A node becomes NotReady.
 
@@ -1866,9 +1866,9 @@ Node Conditions
 
 ---
 
-# Scenario 7 – DNS Failure
+## Scenario 7 – DNS Failure
 
-### Question
+#### Question
 
 > Pods cannot resolve Kubernetes Services.
 
@@ -1885,9 +1885,9 @@ CNI
 
 ---
 
-# Scenario 8 – High Memory Usage
+## Scenario 8 – High Memory Usage
 
-### Question
+#### Question
 
 > A workload keeps consuming memory.
 
@@ -1911,9 +1911,9 @@ OOMKilled Events
 
 ---
 
-# Scenario 9 – HPA Not Scaling
+## Scenario 9 – HPA Not Scaling
 
-### Question
+#### Question
 
 > HPA exists but replicas do not increase.
 
@@ -1936,9 +1936,9 @@ Resource Availability
 
 ---
 
-# Scenario 10 – PVC Pending
+## Scenario 10 – PVC Pending
 
-### Question
+#### Question
 
 > A PVC is stuck in Pending.
 
@@ -1962,9 +1962,9 @@ Provisioner
 
 ---
 
-# Scenario 11 – ImagePullBackOff
+## Scenario 11 – ImagePullBackOff
 
-### Question
+#### Question
 
 > A Pod cannot start because the image cannot be pulled.
 
@@ -1987,9 +1987,9 @@ Network
 
 ---
 
-# Scenario 12 – Unauthorized API Request
+## Scenario 12 – Unauthorized API Request
 
-### Question
+#### Question
 
 > A Pod receives HTTP 403 when accessing the Kubernetes API.
 
@@ -2006,9 +2006,9 @@ Requested Verb
 
 ---
 
-# Scenario 13 – NetworkPolicy Blocks Traffic
+## Scenario 13 – NetworkPolicy Blocks Traffic
 
-### Question
+#### Question
 
 > Two Pods cannot communicate after a NetworkPolicy was applied.
 
@@ -2025,9 +2025,9 @@ Protocol
 
 ---
 
-# Scenario 14 – Node Has No Available Capacity
+## Scenario 14 – Node Has No Available Capacity
 
-### Question
+#### Question
 
 > New Pods cannot be scheduled because all nodes lack capacity.
 
@@ -2043,9 +2043,9 @@ Increase Node Size
 
 ---
 
-# Scenario 15 – Database Pod Restarted
+## Scenario 15 – Database Pod Restarted
 
-### Question
+#### Question
 
 > A database Pod restarted unexpectedly.
 
@@ -2068,11 +2068,11 @@ For stateful systems, protect persistent data and verify recovery behavior.
 
 ---
 
-# Section 34 – Security Scenarios
+## Section 34 – Security Scenarios
 
-## Scenario 16 – Compromised Pod
+### Scenario 16 – Compromised Pod
 
-### Question
+#### Question
 
 > You suspect a Pod has been compromised.
 
@@ -2102,9 +2102,9 @@ Do not destroy evidence before deciding what forensic information needs to be pr
 
 ---
 
-# Scenario 17 – Suspicious Service Account
+## Scenario 17 – Suspicious Service Account
 
-### Question
+#### Question
 
 > A ServiceAccount appears to have excessive permissions.
 
@@ -2127,9 +2127,9 @@ Then reduce permissions according to least privilege.
 
 ---
 
-# Scenario 18 – Exposed Kubernetes API
+## Scenario 18 – Exposed Kubernetes API
 
-### Question
+#### Question
 
 > The Kubernetes API Server is unnecessarily exposed to the public internet.
 
@@ -2150,9 +2150,9 @@ Credentials
 
 ---
 
-# Section 35 – Kubernetes Networking Interview
+## Section 35 – Kubernetes Networking Interview
 
-## 105. Explain Pod-to-Pod communication.
+### 105. Explain Pod-to-Pod communication.
 
 A typical Kubernetes networking model gives each Pod an IP address and allows Pods to communicate without requiring NAT between Pods.
 
@@ -2160,7 +2160,7 @@ The exact implementation is provided by the cluster's networking solution.
 
 ---
 
-## 106. Explain Service-to-Pod communication.
+### 106. Explain Service-to-Pod communication.
 
 ```text
 Client
@@ -2174,21 +2174,21 @@ Selected Pod
 
 ---
 
-## 107. What is kube-proxy?
+### 107. What is kube-proxy?
 
 kube-proxy helps implement Service networking on nodes in traditional Kubernetes networking architectures.
 
 ---
 
-## 108. What is CNI?
+### 108. What is CNI?
 
 CNI provides a standard interface for configuring container networking.
 
 ---
 
-# Section 36 – Storage Interview
+## Section 36 – Storage Interview
 
-## 109. PV vs PVC?
+### 109. PV vs PVC?
 
 ```text
 PV
@@ -2200,7 +2200,7 @@ PVC
 
 ---
 
-## 110. What is dynamic provisioning?
+### 110. What is dynamic provisioning?
 
 Dynamic provisioning automatically creates storage when a PVC requests it.
 
@@ -2218,9 +2218,9 @@ Storage
 
 ---
 
-# Section 37 – Scheduling Interview
+## Section 37 – Scheduling Interview
 
-## 111. NodeSelector vs NodeAffinity?
+### 111. NodeSelector vs NodeAffinity?
 
 ```text
 nodeSelector
@@ -2232,7 +2232,7 @@ NodeAffinity
 
 ---
 
-## 112. Taint vs Toleration?
+### 112. Taint vs Toleration?
 
 ```text
 Taint
@@ -2244,9 +2244,9 @@ Toleration
 
 ---
 
-# Section 38 – Autoscaling Interview
+## Section 38 – Autoscaling Interview
 
-## 113. HPA vs VPA vs Cluster Autoscaler?
+### 113. HPA vs VPA vs Cluster Autoscaler?
 
 | Autoscaler | Changes |
 |---|---|
@@ -2256,9 +2256,9 @@ Toleration
 
 ---
 
-# Section 39 – Kubernetes Objects Interview
+## Section 39 – Kubernetes Objects Interview
 
-## 114. What is the difference between a Deployment and StatefulSet?
+### 114. What is the difference between a Deployment and StatefulSet?
 
 Deployment:
 
@@ -2277,7 +2277,7 @@ Ordered Operations
 
 ---
 
-## 115. Deployment vs DaemonSet?
+### 115. Deployment vs DaemonSet?
 
 ```text
 Deployment
@@ -2289,7 +2289,7 @@ DaemonSet
 
 ---
 
-## 116. Job vs CronJob?
+### 116. Job vs CronJob?
 
 ```text
 Job
@@ -2301,9 +2301,9 @@ CronJob
 
 ---
 
-# Section 40 – Production Design
+## Section 40 – Production Design
 
-## 117. Design a production Kubernetes platform.
+### 117. Design a production Kubernetes platform.
 
 A production platform could look like:
 
@@ -2363,9 +2363,9 @@ Capacity Planning
 
 ---
 
-# Section 41 – Hands-on Interview Tasks
+## Section 41 – Hands-on Interview Tasks
 
-## Task 1 – Create a Deployment
+### Task 1 – Create a Deployment
 
 Create an NGINX Deployment with:
 
@@ -2382,7 +2382,7 @@ kubectl get pods
 
 ---
 
-## Task 2 – Expose the Deployment
+### Task 2 – Expose the Deployment
 
 Create a ClusterIP Service.
 
@@ -2394,7 +2394,7 @@ kubectl get svc
 
 ---
 
-## Task 3 – Scale the Deployment
+### Task 3 – Scale the Deployment
 
 ```bash
 kubectl scale deployment <name> --replicas=5
@@ -2402,7 +2402,7 @@ kubectl scale deployment <name> --replicas=5
 
 ---
 
-## Task 4 – Perform a Rolling Update
+### Task 4 – Perform a Rolling Update
 
 Update the image:
 
@@ -2418,7 +2418,7 @@ kubectl rollout status deployment/<name>
 
 ---
 
-## Task 5 – Rollback
+### Task 5 – Rollback
 
 ```bash
 kubectl rollout undo deployment/<name>
@@ -2426,7 +2426,7 @@ kubectl rollout undo deployment/<name>
 
 ---
 
-## Task 6 – Create a ConfigMap
+### Task 6 – Create a ConfigMap
 
 ```bash
 kubectl create configmap app-config \
@@ -2435,7 +2435,7 @@ kubectl create configmap app-config \
 
 ---
 
-## Task 7 – Create a Secret
+### Task 7 – Create a Secret
 
 ```bash
 kubectl create secret generic app-secret \
@@ -2446,7 +2446,7 @@ Use secure handling practices in real environments.
 
 ---
 
-## Task 8 – Debug a Pod
+### Task 8 – Debug a Pod
 
 Given:
 
@@ -2464,7 +2464,7 @@ kubectl describe pod
 
 ---
 
-## Task 9 – Debug a Service
+### Task 9 – Debug a Service
 
 Given:
 
@@ -2481,7 +2481,7 @@ Pod Labels
 
 ---
 
-## Task 10 – Configure NetworkPolicy
+### Task 10 – Configure NetworkPolicy
 
 Allow:
 
@@ -2493,9 +2493,9 @@ and deny unrelated traffic.
 
 ---
 
-# Section 42 – Frequently Confused Concepts
+## Section 42 – Frequently Confused Concepts
 
-## Pod vs Container
+### Pod vs Container
 
 ```text
 Container
@@ -2507,7 +2507,7 @@ Pod
 
 ---
 
-## Deployment vs StatefulSet
+### Deployment vs StatefulSet
 
 ```text
 Deployment
@@ -2519,7 +2519,7 @@ StatefulSet
 
 ---
 
-## Service vs Ingress
+### Service vs Ingress
 
 ```text
 Service
@@ -2531,7 +2531,7 @@ Ingress
 
 ---
 
-## ConfigMap vs Secret
+### ConfigMap vs Secret
 
 ```text
 ConfigMap
@@ -2543,7 +2543,7 @@ Secret
 
 ---
 
-## PV vs PVC
+### PV vs PVC
 
 ```text
 PV
@@ -2555,7 +2555,7 @@ PVC
 
 ---
 
-## Role vs ClusterRole
+### Role vs ClusterRole
 
 ```text
 Role
@@ -2567,7 +2567,7 @@ ClusterRole
 
 ---
 
-## RoleBinding vs ClusterRoleBinding
+### RoleBinding vs ClusterRoleBinding
 
 ```text
 RoleBinding
@@ -2579,7 +2579,7 @@ ClusterRoleBinding
 
 ---
 
-## HPA vs VPA
+### HPA vs VPA
 
 ```text
 HPA
@@ -2591,7 +2591,7 @@ VPA
 
 ---
 
-## NodeSelector vs Affinity
+### NodeSelector vs Affinity
 
 ```text
 NodeSelector
@@ -2603,7 +2603,7 @@ Affinity
 
 ---
 
-## Taint vs Toleration
+### Taint vs Toleration
 
 ```text
 Taint
@@ -2615,7 +2615,7 @@ Toleration
 
 ---
 
-## NetworkPolicy vs Service Mesh
+### NetworkPolicy vs Service Mesh
 
 ```text
 NetworkPolicy
@@ -2627,185 +2627,185 @@ Service Mesh
 
 ---
 
-# Section 43 – 1-Line Oral Interview Questions
+## Section 43 – 1-Line Oral Interview Questions
 
 These are particularly useful for rapid technical interviews.
 
-### What is Kubernetes?
+#### What is Kubernetes?
 
 Container orchestration platform for managing containerized workloads.
 
-### What is a Pod?
+#### What is a Pod?
 
 Smallest deployable unit in Kubernetes.
 
-### What is a Deployment?
+#### What is a Deployment?
 
 Controller for managing stateless application replicas and rollout history.
 
-### What is a ReplicaSet?
+#### What is a ReplicaSet?
 
 Ensures a desired number of Pod replicas exist.
 
-### What is StatefulSet?
+#### What is StatefulSet?
 
 Controller for workloads requiring stable identity and/or persistent storage.
 
-### What is DaemonSet?
+#### What is DaemonSet?
 
 Ensures a Pod runs on each eligible node.
 
-### What is a Service?
+#### What is a Service?
 
 Stable network endpoint for accessing a group of Pods.
 
-### What is ClusterIP?
+#### What is ClusterIP?
 
 Internal Service IP.
 
-### What is NodePort?
+#### What is NodePort?
 
 Exposes a Service through a port on nodes.
 
-### What is Ingress?
+#### What is Ingress?
 
 HTTP/HTTPS routing into Kubernetes Services.
 
-### What is Gateway API?
+#### What is Gateway API?
 
 Kubernetes API family for expressive traffic management.
 
-### What is ConfigMap?
+#### What is ConfigMap?
 
 Stores non-sensitive configuration.
 
-### What is Secret?
+#### What is Secret?
 
 Stores sensitive configuration data.
 
-### What is Namespace?
+#### What is Namespace?
 
 Logical boundary for namespaced resources.
 
-### What is CNI?
+#### What is CNI?
 
 Container Network Interface.
 
-### What is CoreDNS?
+#### What is CoreDNS?
 
 Cluster DNS service.
 
-### What is NetworkPolicy?
+#### What is NetworkPolicy?
 
 Controls allowed network traffic to/from Pods.
 
-### What is PV?
+#### What is PV?
 
 Persistent storage resource.
 
-### What is PVC?
+#### What is PVC?
 
 Request for persistent storage.
 
-### What is StorageClass?
+#### What is StorageClass?
 
 Defines storage provisioning behavior.
 
-### What is CSI?
+#### What is CSI?
 
 Container Storage Interface.
 
-### What is Scheduler?
+#### What is Scheduler?
 
 Assigns unscheduled Pods to nodes.
 
-### What is nodeSelector?
+#### What is nodeSelector?
 
 Simple node label-based scheduling constraint.
 
-### What is Node Affinity?
+#### What is Node Affinity?
 
 Advanced node selection rules.
 
-### What is Taint?
+#### What is Taint?
 
 Node-level scheduling restriction.
 
-### What is Toleration?
+#### What is Toleration?
 
 Pod configuration allowing it to tolerate a matching taint.
 
-### What is HPA?
+#### What is HPA?
 
 Scales Pod replicas.
 
-### What is VPA?
+#### What is VPA?
 
 Adjusts/recommends Pod resource allocation.
 
-### What is Cluster Autoscaler?
+#### What is Cluster Autoscaler?
 
 Adjusts cluster node count.
 
-### What is RBAC?
+#### What is RBAC?
 
 Role-Based Access Control.
 
-### What is ServiceAccount?
+#### What is ServiceAccount?
 
 Identity used by workloads.
 
-### What is an Admission Controller?
+#### What is an Admission Controller?
 
 Component that validates or mutates API requests during admission.
 
-### What is etcd?
+#### What is etcd?
 
 Distributed key-value store containing Kubernetes state.
 
-### What is Kubelet?
+#### What is Kubelet?
 
 Node agent responsible for running and monitoring Pods.
 
-### What is kube-proxy?
+#### What is kube-proxy?
 
 Component traditionally responsible for implementing Kubernetes Service networking.
 
-### What is a Container Runtime?
+#### What is a Container Runtime?
 
 Software that runs containers.
 
-### What is Prometheus?
+#### What is Prometheus?
 
 Metrics monitoring and alerting system.
 
-### What is Grafana?
+#### What is Grafana?
 
 Observability visualization platform.
 
-### What is OpenTelemetry?
+#### What is OpenTelemetry?
 
 Open observability framework for telemetry collection and export.
 
-### What is an Operator?
+#### What is an Operator?
 
 Application-specific Kubernetes controller that automates operational tasks.
 
-### What is a Service Mesh?
+#### What is a Service Mesh?
 
 Infrastructure layer for service-to-service communication.
 
 ---
 
-# Section 44 – Advanced Rapid-Fire Questions
+## Section 44 – Advanced Rapid-Fire Questions
 
-## 1. Why are Pods ephemeral?
+### 1. Why are Pods ephemeral?
 
 Because Kubernetes controllers replace failed or outdated Pods rather than treating individual Pods as permanent infrastructure.
 
 ---
 
-## 2. Why should applications not depend on Pod IPs?
+### 2. Why should applications not depend on Pod IPs?
 
 Pod IPs can change when Pods are recreated.
 
@@ -2813,63 +2813,63 @@ Use Services for stable connectivity.
 
 ---
 
-## 3. Why are readiness probes important?
+### 3. Why are readiness probes important?
 
 They determine whether a Pod should receive traffic.
 
 ---
 
-## 4. Why are liveness probes important?
+### 4. Why are liveness probes important?
 
 They can detect containers that need to be restarted.
 
 ---
 
-## 5. Why are startup probes useful?
+### 5. Why are startup probes useful?
 
 They allow slow-starting applications time to initialize before liveness/readiness behavior takes effect.
 
 ---
 
-## 6. Why use resource requests?
+### 6. Why use resource requests?
 
 They help the scheduler determine whether a node has sufficient capacity.
 
 ---
 
-## 7. Why use resource limits?
+### 7. Why use resource limits?
 
 They place boundaries on container resource consumption.
 
 ---
 
-## 8. Why use namespaces?
+### 8. Why use namespaces?
 
 They provide organization and a scope for many policies and resources.
 
 ---
 
-## 9. Why use NetworkPolicy?
+### 9. Why use NetworkPolicy?
 
 To reduce unauthorized network communication.
 
 ---
 
-## 10. Why use RBAC?
+### 10. Why use RBAC?
 
 To enforce least-privilege access to the Kubernetes API.
 
 ---
 
-# Section 45 – Senior-Level Scenario Questions
+## Section 45 – Senior-Level Scenario Questions
 
-## Scenario 19 – Cluster Outage
+### Scenario 19 – Cluster Outage
 
-### Question
+#### Question
 
 > Your entire production cluster becomes unavailable. What do you do?
 
-### Answer
+#### Answer
 
 Follow the incident response process:
 
@@ -2913,9 +2913,9 @@ Restore Data
 
 ---
 
-# Scenario 20 – etcd Failure
+## Scenario 20 – etcd Failure
 
-### Question
+#### Question
 
 > What happens if etcd becomes unavailable?
 
@@ -2934,9 +2934,9 @@ Existing workloads may continue running for some time depending on what componen
 
 ---
 
-# Scenario 21 – Node Failure
+## Scenario 21 – Node Failure
 
-### Question
+#### Question
 
 > What happens when a worker node fails?
 
@@ -2958,9 +2958,9 @@ Persistent workloads require appropriate storage and recovery design.
 
 ---
 
-# Scenario 22 – API Server High Latency
+## Scenario 22 – API Server High Latency
 
-### Question
+#### Question
 
 > The Kubernetes API Server is responding slowly.
 
@@ -2981,7 +2981,7 @@ Admission webhooks are particularly important because poorly performing webhooks
 
 ---
 
-# Scenario 23 – etcd High Latency
+## Scenario 23 – etcd High Latency
 
 Check:
 
@@ -3000,9 +3000,9 @@ etcd is sensitive to storage and network performance.
 
 ---
 
-# Scenario 24 – Kubernetes Security Incident
+## Scenario 24 – Kubernetes Security Incident
 
-### Question
+#### Question
 
 > You detect suspicious activity in a Kubernetes cluster. What evidence do you investigate?
 
@@ -3025,7 +3025,7 @@ Preserve relevant evidence before destructive remediation where possible.
 
 ---
 
-# Section 46 – Kubernetes Security Interview Checklist
+## Section 46 – Kubernetes Security Interview Checklist
 
 ```text
 ☑ Authentication
@@ -3051,7 +3051,7 @@ Preserve relevant evidence before destructive remediation where possible.
 
 ---
 
-# Section 47 – Kubernetes Troubleshooting Framework
+## Section 47 – Kubernetes Troubleshooting Framework
 
 When troubleshooting Kubernetes, follow:
 
@@ -3068,7 +3068,7 @@ When troubleshooting Kubernetes, follow:
 
 ---
 
-# Layered Troubleshooting Model
+## Layered Troubleshooting Model
 
 ```text
 Application
@@ -3094,9 +3094,9 @@ This prevents random troubleshooting.
 
 ---
 
-# Essential Troubleshooting Commands
+## Essential Troubleshooting Commands
 
-## Cluster
+### Cluster
 
 ```bash
 kubectl cluster-info
@@ -3108,7 +3108,7 @@ Note: `kubectl get componentstatuses` is deprecated in modern Kubernetes and may
 
 ---
 
-## Pods
+### Pods
 
 ```bash
 kubectl get pods -A
@@ -3119,7 +3119,7 @@ kubectl logs <pod> --previous
 
 ---
 
-## Deployments
+### Deployments
 
 ```bash
 kubectl get deployments -A
@@ -3129,7 +3129,7 @@ kubectl rollout history deployment/<name>
 
 ---
 
-## Services
+### Services
 
 ```bash
 kubectl get svc -A
@@ -3139,7 +3139,7 @@ kubectl get endpointslices -A
 
 ---
 
-## Nodes
+### Nodes
 
 ```bash
 kubectl get nodes
@@ -3148,7 +3148,7 @@ kubectl describe node <node>
 
 ---
 
-## Events
+### Events
 
 ```bash
 kubectl get events -A --sort-by=.lastTimestamp
@@ -3156,7 +3156,7 @@ kubectl get events -A --sort-by=.lastTimestamp
 
 ---
 
-## Resources
+### Resources
 
 ```bash
 kubectl top nodes
@@ -3165,7 +3165,7 @@ kubectl top pods -A
 
 ---
 
-## Storage
+### Storage
 
 ```bash
 kubectl get pv
@@ -3175,7 +3175,7 @@ kubectl get storageclass
 
 ---
 
-## RBAC
+### RBAC
 
 ```bash
 kubectl get roles -A
@@ -3186,7 +3186,7 @@ kubectl get clusterrolebindings
 
 ---
 
-# Section 48 – Interview Answer Framework
+## Section 48 – Interview Answer Framework
 
 For scenario questions, use:
 
@@ -3228,9 +3228,9 @@ This approach demonstrates practical troubleshooting rather than memorized comma
 
 ---
 
-# Section 49 – How to Answer Kubernetes Interview Questions
+## Section 49 – How to Answer Kubernetes Interview Questions
 
-## Basic Question
+### Basic Question
 
 Give:
 
@@ -3242,7 +3242,7 @@ One Example
 
 ---
 
-## Intermediate Question
+### Intermediate Question
 
 Give:
 
@@ -3256,7 +3256,7 @@ Example
 
 ---
 
-## Scenario Question
+### Scenario Question
 
 Give:
 
@@ -3276,7 +3276,7 @@ Validation
 
 ---
 
-## Architecture Question
+### Architecture Question
 
 Give:
 
@@ -3294,9 +3294,9 @@ Observability
 
 ---
 
-# Section 50 – Common Interview Mistakes
+## Section 50 – Common Interview Mistakes
 
-## Mistake 1
+### Mistake 1
 
 Saying:
 
@@ -3308,7 +3308,7 @@ Correct:
 
 ---
 
-## Mistake 2
+### Mistake 2
 
 Saying:
 
@@ -3320,7 +3320,7 @@ Base64 is encoding, not encryption.
 
 ---
 
-## Mistake 3
+### Mistake 3
 
 Saying:
 
@@ -3332,7 +3332,7 @@ HPA changes the number of Pod replicas.
 
 ---
 
-## Mistake 4
+### Mistake 4
 
 Saying:
 
@@ -3344,7 +3344,7 @@ VPA adjusts or recommends resource allocation for Pods.
 
 ---
 
-## Mistake 5
+### Mistake 5
 
 Saying:
 
@@ -3356,7 +3356,7 @@ A toleration allows a Pod to be scheduled onto a node with a matching taint; it 
 
 ---
 
-## Mistake 6
+### Mistake 6
 
 Saying:
 
@@ -3368,7 +3368,7 @@ NetworkPolicy controls network connectivity. It does not provide encryption.
 
 ---
 
-## Mistake 7
+### Mistake 7
 
 Saying:
 
@@ -3380,7 +3380,7 @@ A Service provides a stable virtual networking abstraction in front of selected 
 
 ---
 
-# Section 51 – Kubernetes Architecture Cheat Sheet
+## Section 51 – Kubernetes Architecture Cheat Sheet
 
 ```text
                          Kubernetes
@@ -3400,7 +3400,7 @@ A Service provides a stable virtual networking abstraction in front of selected 
 
 ---
 
-# Kubernetes Workload Cheat Sheet
+## Kubernetes Workload Cheat Sheet
 
 ```text
 Deployment
@@ -3421,7 +3421,7 @@ CronJob
 
 ---
 
-# Kubernetes Networking Cheat Sheet
+## Kubernetes Networking Cheat Sheet
 
 ```text
 Pod
@@ -3446,7 +3446,7 @@ NetworkPolicy
 
 ---
 
-# Kubernetes Storage Cheat Sheet
+## Kubernetes Storage Cheat Sheet
 
 ```text
 Pod
@@ -3462,7 +3462,7 @@ Storage Backend
 
 ---
 
-# Kubernetes Security Cheat Sheet
+## Kubernetes Security Cheat Sheet
 
 ```text
 Authentication
@@ -3482,7 +3482,7 @@ Audit
 
 ---
 
-# Kubernetes Scheduling Cheat Sheet
+## Kubernetes Scheduling Cheat Sheet
 
 ```text
 Pod
@@ -3502,7 +3502,7 @@ Node
 
 ---
 
-# Kubernetes Autoscaling Cheat Sheet
+## Kubernetes Autoscaling Cheat Sheet
 
 ```text
 HPA
@@ -3517,7 +3517,7 @@ Cluster Autoscaler
 
 ---
 
-# Kubernetes Observability Cheat Sheet
+## Kubernetes Observability Cheat Sheet
 
 ```text
 Logs
@@ -3542,7 +3542,7 @@ OpenTelemetry
 
 ---
 
-# Kubernetes Security Operations Cheat Sheet
+## Kubernetes Security Operations Cheat Sheet
 
 ```text
 Vulnerability
@@ -3562,7 +3562,7 @@ Lessons Learned
 
 ---
 
-# Top 25 Kubernetes Questions to Memorize
+## Top 25 Kubernetes Questions to Memorize
 
 1. What is Kubernetes?
 2. What is a Pod?
@@ -3592,7 +3592,7 @@ Lessons Learned
 
 ---
 
-# Top 25 Kubernetes Security Questions
+## Top 25 Kubernetes Security Questions
 
 1. How do you secure Kubernetes?
 2. What is RBAC?
@@ -3622,7 +3622,7 @@ Lessons Learned
 
 ---
 
-# Top 25 Troubleshooting Questions
+## Top 25 Troubleshooting Questions
 
 1. Pod stuck in Pending?
 2. Pod in CrashLoopBackOff?
@@ -3652,9 +3652,9 @@ Lessons Learned
 
 ---
 
-# Interview Preparation Strategy
+## Interview Preparation Strategy
 
-## Level 1 – Fundamentals
+### Level 1 – Fundamentals
 
 Master:
 
@@ -3669,7 +3669,7 @@ Secret
 
 ---
 
-## Level 2 – Networking
+### Level 2 – Networking
 
 Master:
 
@@ -3684,7 +3684,7 @@ NetworkPolicy
 
 ---
 
-## Level 3 – Storage
+### Level 3 – Storage
 
 Master:
 
@@ -3698,7 +3698,7 @@ CSI
 
 ---
 
-## Level 4 – Scheduling
+### Level 4 – Scheduling
 
 Master:
 
@@ -3714,7 +3714,7 @@ Tolerations
 
 ---
 
-## Level 5 – Security
+### Level 5 – Security
 
 Master:
 
@@ -3731,7 +3731,7 @@ Runtime Security
 
 ---
 
-## Level 6 – Operations
+### Level 6 – Operations
 
 Master:
 
@@ -3748,7 +3748,7 @@ Troubleshooting
 
 ---
 
-## Level 7 – Advanced
+### Level 7 – Advanced
 
 Master:
 
@@ -3764,9 +3764,9 @@ Production Architecture
 
 ---
 
-# 30-Minute Kubernetes Revision Plan
+## 30-Minute Kubernetes Revision Plan
 
-## 0–5 Minutes
+### 0–5 Minutes
 
 Architecture:
 
@@ -3782,7 +3782,7 @@ kube-proxy
 
 ---
 
-## 5–10 Minutes
+### 5–10 Minutes
 
 Workloads:
 
@@ -3797,7 +3797,7 @@ CronJob
 
 ---
 
-## 10–15 Minutes
+### 10–15 Minutes
 
 Networking:
 
@@ -3812,7 +3812,7 @@ NetworkPolicy
 
 ---
 
-## 15–20 Minutes
+### 15–20 Minutes
 
 Storage + Scheduling:
 
@@ -3830,7 +3830,7 @@ Limits
 
 ---
 
-## 20–25 Minutes
+### 20–25 Minutes
 
 Security:
 
@@ -3846,7 +3846,7 @@ NetworkPolicy
 
 ---
 
-## 25–30 Minutes
+### 25–30 Minutes
 
 Troubleshooting:
 
@@ -3863,7 +3863,7 @@ RBAC Failure
 
 ---
 
-# Final Interview Cheat Sheet
+## Final Interview Cheat Sheet
 
 ```text
 Kubernetes
@@ -3952,7 +3952,7 @@ Kubernetes
 
 ---
 
-# Final Takeaways
+## Final Takeaways
 
 For Kubernetes interviews, memorizing commands alone is not enough.
 
@@ -4021,9 +4021,9 @@ Validate
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 85 – Kubernetes Cheat Sheet
+## Chapter 85 – Kubernetes Cheat Sheet
 
 The next chapter will provide a compact command and concept reference covering:
 

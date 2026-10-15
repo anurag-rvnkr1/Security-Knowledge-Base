@@ -1,6 +1,6 @@
 # 27-Active-Directory-Interview-Questions.md
 
-# Part 1 — Active Directory Interview Questions (Beginner to Intermediate)
+## Part 1 — Active Directory Interview Questions (Beginner to Intermediate)
 
 > **Important Note**
 >
@@ -8,7 +8,7 @@
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -21,7 +21,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Interview Preparation Strategy
+## Interview Preparation Strategy
 
 Most companies evaluate candidates in four stages:
 
@@ -45,9 +45,9 @@ A strong candidate explains **why**, not just **what**.
 
 ---
 
-# Section 1 — Active Directory Fundamentals
+## Section 1 — Active Directory Fundamentals
 
-## Q1. What is Active Directory?
+### Q1. What is Active Directory?
 
 **Answer:**
 
@@ -55,7 +55,7 @@ Active Directory (AD) is Microsoft's centralized directory service that stores a
 
 ---
 
-## Q2. What are the primary functions of Active Directory?
+### Q2. What are the primary functions of Active Directory?
 
 **Answer:**
 
@@ -69,7 +69,7 @@ Active Directory (AD) is Microsoft's centralized directory service that stores a
 
 ---
 
-## Q3. What is a Domain?
+### Q3. What is a Domain?
 
 **Answer:**
 
@@ -77,7 +77,7 @@ A domain is a logical security boundary that contains users, computers, groups, 
 
 ---
 
-## Q4. What is a Domain Controller?
+### Q4. What is a Domain Controller?
 
 **Answer:**
 
@@ -85,7 +85,7 @@ A Domain Controller (DC) is a server running Active Directory Domain Services (A
 
 ---
 
-## Q5. What is a Forest?
+### Q5. What is a Forest?
 
 **Answer:**
 
@@ -93,7 +93,7 @@ A forest is the highest logical structure in Active Directory. It can contain on
 
 ---
 
-## Q6. What is a Tree?
+### Q6. What is a Tree?
 
 **Answer:**
 
@@ -101,7 +101,7 @@ A tree is a collection of domains that share a contiguous DNS namespace.
 
 ---
 
-## Q7. What is an Organizational Unit (OU)?
+### Q7. What is an Organizational Unit (OU)?
 
 **Answer:**
 
@@ -109,7 +109,7 @@ An Organizational Unit is a container used to organize directory objects and del
 
 ---
 
-## Q8. Difference between OU and Group?
+### Q8. Difference between OU and Group?
 
 | OU | Group |
 |----|-------|
@@ -119,7 +119,7 @@ An Organizational Unit is a container used to organize directory objects and del
 
 ---
 
-## Q9. What is LDAP?
+### Q9. What is LDAP?
 
 **Answer:**
 
@@ -127,7 +127,7 @@ LDAP (Lightweight Directory Access Protocol) is the protocol used to query and m
 
 ---
 
-## Q10. What is Kerberos?
+### Q10. What is Kerberos?
 
 **Answer:**
 
@@ -135,9 +135,9 @@ Kerberos is the default authentication protocol used by Active Directory. It use
 
 ---
 
-# Section 2 — Active Directory Objects
+## Section 2 — Active Directory Objects
 
-## Q11. Which objects are stored in Active Directory?
+### Q11. Which objects are stored in Active Directory?
 
 Examples include:
 
@@ -152,7 +152,7 @@ Examples include:
 
 ---
 
-## Q12. What is a Security Group?
+### Q12. What is a Security Group?
 
 **Answer:**
 
@@ -160,7 +160,7 @@ A Security Group is used to assign permissions to users and computers for access
 
 ---
 
-## Q13. What is a Distribution Group?
+### Q13. What is a Distribution Group?
 
 **Answer:**
 
@@ -168,7 +168,7 @@ A Distribution Group is used for email distribution and cannot be used to assign
 
 ---
 
-## Q14. Difference between Security Group and Distribution Group?
+### Q14. Difference between Security Group and Distribution Group?
 
 | Security Group | Distribution Group |
 |---------------|--------------------|
@@ -178,7 +178,7 @@ A Distribution Group is used for email distribution and cannot be used to assign
 
 ---
 
-## Q15. What is a Computer Account?
+### Q15. What is a Computer Account?
 
 **Answer:**
 
@@ -186,9 +186,9 @@ A computer account represents a device joined to the domain and allows it to par
 
 ---
 
-# Section 3 — Authentication
+## Section 3 — Authentication
 
-## Q16. What is Authentication?
+### Q16. What is Authentication?
 
 **Answer:**
 
@@ -196,7 +196,7 @@ Authentication verifies the identity of a user, computer, or service before acce
 
 ---
 
-## Q17. What is Authorization?
+### Q17. What is Authorization?
 
 **Answer:**
 
@@ -204,7 +204,7 @@ Authorization determines what authenticated users are permitted to access or per
 
 ---
 
-## Q18. Difference between Authentication and Authorization?
+### Q18. Difference between Authentication and Authorization?
 
 | Authentication | Authorization |
 |---------------|---------------|
@@ -213,7 +213,7 @@ Authorization determines what authenticated users are permitted to access or per
 
 ---
 
-## Q19. What is Single Sign-On (SSO)?
+### Q19. What is Single Sign-On (SSO)?
 
 **Answer:**
 
@@ -221,7 +221,7 @@ Single Sign-On allows users to authenticate once and access multiple authorized 
 
 ---
 
-## Q20. Why is DNS important for Active Directory?
+### Q20. Why is DNS important for Active Directory?
 
 **Answer:**
 
@@ -229,9 +229,9 @@ Active Directory relies on DNS to locate Domain Controllers and directory servic
 
 ---
 
-# Section 4 — Group Policy
+## Section 4 — Group Policy
 
-## Q21. What is Group Policy?
+### Q21. What is Group Policy?
 
 **Answer:**
 
@@ -239,7 +239,7 @@ Group Policy is a centralized management feature used to configure operating sys
 
 ---
 
-## Q22. Where can Group Policy be applied?
+### Q22. Where can Group Policy be applied?
 
 It can be linked to:
 
@@ -249,7 +249,7 @@ It can be linked to:
 
 ---
 
-## Q23. What is Group Policy inheritance?
+### Q23. What is Group Policy inheritance?
 
 **Answer:**
 
@@ -257,7 +257,7 @@ Inheritance allows policies applied at higher levels to flow down to child conta
 
 ---
 
-## Q24. Why use Group Policy?
+### Q24. Why use Group Policy?
 
 Benefits include:
 
@@ -269,7 +269,7 @@ Benefits include:
 
 ---
 
-## Q25. Can multiple GPOs apply to one computer?
+### Q25. Can multiple GPOs apply to one computer?
 
 **Answer:**
 
@@ -277,9 +277,9 @@ Yes. Multiple Group Policy Objects may apply based on scope and processing order
 
 ---
 
-# Section 5 — Domain Controllers
+## Section 5 — Domain Controllers
 
-## Q26. What services does a Domain Controller provide?
+### Q26. What services does a Domain Controller provide?
 
 - Authentication
 - Authorization
@@ -290,7 +290,7 @@ Yes. Multiple Group Policy Objects may apply based on scope and processing order
 
 ---
 
-## Q27. Why deploy multiple Domain Controllers?
+### Q27. Why deploy multiple Domain Controllers?
 
 **Answer:**
 
@@ -298,7 +298,7 @@ To improve availability, redundancy, load distribution, and fault tolerance.
 
 ---
 
-## Q28. What happens if one Domain Controller becomes unavailable?
+### Q28. What happens if one Domain Controller becomes unavailable?
 
 **Answer:**
 
@@ -306,7 +306,7 @@ Other healthy Domain Controllers can continue providing authentication and direc
 
 ---
 
-## Q29. What is Active Directory replication?
+### Q29. What is Active Directory replication?
 
 **Answer:**
 
@@ -314,7 +314,7 @@ Replication synchronizes directory changes between Domain Controllers to maintai
 
 ---
 
-## Q30. Why is replication important?
+### Q30. Why is replication important?
 
 **Answer:**
 
@@ -322,9 +322,9 @@ It ensures directory updates are available across the enterprise and supports re
 
 ---
 
-# Mini Scenario Questions
+## Mini Scenario Questions
 
-### Scenario 1
+#### Scenario 1
 
 A user cannot log in.
 
@@ -341,7 +341,7 @@ What would you verify first?
 
 ---
 
-### Scenario 2
+#### Scenario 2
 
 Group Policy is not applying.
 
@@ -357,7 +357,7 @@ What would you check?
 
 ---
 
-### Scenario 3
+#### Scenario 3
 
 Users in one office experience slow authentication.
 
@@ -373,7 +373,7 @@ What areas would you investigate?
 
 ---
 
-# Interview Tips
+## Interview Tips
 
 - Explain concepts in simple language.
 - Use enterprise examples.
@@ -383,7 +383,7 @@ What areas would you investigate?
 
 ---
 
-# Hands-on Practice
+## Hands-on Practice
 
 Create answers in your own words for:
 
@@ -395,7 +395,7 @@ Create answers in your own words for:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Master the fundamentals before advanced topics.
 - Structure answers clearly: **Definition → Purpose → Example**.
@@ -404,9 +404,9 @@ Create answers in your own words for:
 
 ---
 
-# 27-Active-Directory-Interview-Questions.md
+## 27-Active-Directory-Interview-Questions.md
 
-# Part 2 — Intermediate Active Directory Interview Questions (Administration, DNS, Replication, FSMO, GPO and Troubleshooting)
+## Part 2 — Intermediate Active Directory Interview Questions (Administration, DNS, Replication, FSMO, GPO and Troubleshooting)
 
 > **Important Note**
 >
@@ -414,7 +414,7 @@ Create answers in your own words for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -426,9 +426,9 @@ After completing this part, you will be able to:
 
 ---
 
-# Section 1 — DNS and Active Directory
+## Section 1 — DNS and Active Directory
 
-## Q31. Why is DNS essential for Active Directory?
+### Q31. Why is DNS essential for Active Directory?
 
 **Answer:**
 
@@ -436,7 +436,7 @@ Active Directory depends on DNS to locate Domain Controllers, Global Catalog ser
 
 ---
 
-## Q32. What happens if DNS is unavailable?
+### Q32. What happens if DNS is unavailable?
 
 **Answer:**
 
@@ -451,7 +451,7 @@ Potential impacts include:
 
 ---
 
-## Q33. What should you check during DNS troubleshooting?
+### Q33. What should you check during DNS troubleshooting?
 
 **Answer:**
 
@@ -464,7 +464,7 @@ Potential impacts include:
 
 ---
 
-## Q34. Why should clients use internal Active Directory DNS servers?
+### Q34. Why should clients use internal Active Directory DNS servers?
 
 **Answer:**
 
@@ -472,7 +472,7 @@ Internal DNS servers contain the Active Directory-specific records required for 
 
 ---
 
-## Q35. What are common symptoms of DNS problems?
+### Q35. What are common symptoms of DNS problems?
 
 Examples include:
 
@@ -484,9 +484,9 @@ Examples include:
 
 ---
 
-# Section 2 — Replication
+## Section 2 — Replication
 
-## Q36. What is Active Directory replication?
+### Q36. What is Active Directory replication?
 
 **Answer:**
 
@@ -494,7 +494,7 @@ Replication synchronizes directory changes between Domain Controllers so that al
 
 ---
 
-## Q37. Why is replication necessary?
+### Q37. Why is replication necessary?
 
 **Answer:**
 
@@ -508,7 +508,7 @@ Replication provides:
 
 ---
 
-## Q38. What information is replicated?
+### Q38. What information is replicated?
 
 Examples include:
 
@@ -521,7 +521,7 @@ Examples include:
 
 ---
 
-## Q39. What can happen if replication fails?
+### Q39. What can happen if replication fails?
 
 Possible effects include:
 
@@ -533,7 +533,7 @@ Possible effects include:
 
 ---
 
-## Q40. What should you investigate when replication problems occur?
+### Q40. What should you investigate when replication problems occur?
 
 **Answer:**
 
@@ -548,9 +548,9 @@ Review:
 
 ---
 
-# Section 3 — FSMO Roles
+## Section 3 — FSMO Roles
 
-## Q41. What are FSMO roles?
+### Q41. What are FSMO roles?
 
 **Answer:**
 
@@ -558,7 +558,7 @@ Flexible Single Master Operations (FSMO) roles are specialized Active Directory 
 
 ---
 
-## Q42. Name the five FSMO roles.
+### Q42. Name the five FSMO roles.
 
 **Answer:**
 
@@ -570,7 +570,7 @@ Flexible Single Master Operations (FSMO) roles are specialized Active Directory 
 
 ---
 
-## Q43. Why are FSMO roles important?
+### Q43. Why are FSMO roles important?
 
 **Answer:**
 
@@ -578,7 +578,7 @@ They ensure certain operations are performed by a single authoritative Domain Co
 
 ---
 
-## Q44. Which FSMO role assists with password-related operations?
+### Q44. Which FSMO role assists with password-related operations?
 
 **Answer:**
 
@@ -586,7 +586,7 @@ The **PDC Emulator** plays a key role in password-related activities and time sy
 
 ---
 
-## Q45. Which FSMO roles are forest-wide?
+### Q45. Which FSMO roles are forest-wide?
 
 **Answer:**
 
@@ -595,9 +595,9 @@ The **PDC Emulator** plays a key role in password-related activities and time sy
 
 ---
 
-# Section 4 — Group Policy
+## Section 4 — Group Policy
 
-## Q46. What is Group Policy processing?
+### Q46. What is Group Policy processing?
 
 **Answer:**
 
@@ -605,7 +605,7 @@ Group Policy processing is the evaluation and application of configured policies
 
 ---
 
-## Q47. Why might Group Policy fail to apply?
+### Q47. Why might Group Policy fail to apply?
 
 Possible reasons include:
 
@@ -618,7 +618,7 @@ Possible reasons include:
 
 ---
 
-## Q48. How would you troubleshoot a Group Policy issue?
+### Q48. How would you troubleshoot a Group Policy issue?
 
 **Answer:**
 
@@ -633,7 +633,7 @@ A structured approach includes:
 
 ---
 
-## Q49. Can multiple GPOs apply simultaneously?
+### Q49. Can multiple GPOs apply simultaneously?
 
 **Answer:**
 
@@ -641,7 +641,7 @@ Yes. Multiple Group Policy Objects may apply depending on inheritance, links, an
 
 ---
 
-## Q50. Why should Group Policies be documented?
+### Q50. Why should Group Policies be documented?
 
 **Answer:**
 
@@ -649,9 +649,9 @@ Documentation simplifies administration, auditing, troubleshooting, and future c
 
 ---
 
-# Section 5 — Domain Controllers
+## Section 5 — Domain Controllers
 
-## Q51. What should you verify if a Domain Controller appears unhealthy?
+### Q51. What should you verify if a Domain Controller appears unhealthy?
 
 **Answer:**
 
@@ -666,7 +666,7 @@ Review:
 
 ---
 
-## Q52. Why should organizations deploy multiple Domain Controllers?
+### Q52. Why should organizations deploy multiple Domain Controllers?
 
 **Answer:**
 
@@ -674,7 +674,7 @@ Multiple Domain Controllers provide redundancy, improve availability, distribute
 
 ---
 
-## Q53. What services commonly run on a Domain Controller?
+### Q53. What services commonly run on a Domain Controller?
 
 Examples include:
 
@@ -686,7 +686,7 @@ Examples include:
 
 ---
 
-## Q54. Why is time synchronization important?
+### Q54. Why is time synchronization important?
 
 **Answer:**
 
@@ -694,7 +694,7 @@ Kerberos authentication relies on consistent system time across domain-joined sy
 
 ---
 
-## Q55. What are common signs of Domain Controller issues?
+### Q55. What are common signs of Domain Controller issues?
 
 Examples include:
 
@@ -707,9 +707,9 @@ Examples include:
 
 ---
 
-# Section 6 — Troubleshooting Scenarios
+## Section 6 — Troubleshooting Scenarios
 
-## Q56. A user cannot log in, but everyone else can. What would you check?
+### Q56. A user cannot log in, but everyone else can. What would you check?
 
 **Suggested Answer:**
 
@@ -722,7 +722,7 @@ Examples include:
 
 ---
 
-## Q57. All users in one branch office experience slow authentication.
+### Q57. All users in one branch office experience slow authentication.
 
 What is your investigation plan?
 
@@ -736,7 +736,7 @@ What is your investigation plan?
 
 ---
 
-## Q58. A newly created user cannot access cloud resources in a hybrid environment.
+### Q58. A newly created user cannot access cloud resources in a hybrid environment.
 
 What would you verify?
 
@@ -750,7 +750,7 @@ What would you verify?
 
 ---
 
-## Q59. Password changes appear to take longer than expected.
+### Q59. Password changes appear to take longer than expected.
 
 Which areas would you investigate?
 
@@ -764,7 +764,7 @@ Which areas would you investigate?
 
 ---
 
-## Q60. Several users report that security settings are inconsistent across computers.
+### Q60. Several users report that security settings are inconsistent across computers.
 
 What would you check?
 
@@ -778,9 +778,9 @@ What would you check?
 
 ---
 
-# HR + Technical Questions
+## HR + Technical Questions
 
-## Q61. Why do you want to work with Active Directory?
+### Q61. Why do you want to work with Active Directory?
 
 **Sample Answer:**
 
@@ -788,7 +788,7 @@ I enjoy managing enterprise infrastructure, improving security, solving complex 
 
 ---
 
-## Q62. How do you handle production incidents?
+### Q62. How do you handle production incidents?
 
 **Sample Answer:**
 
@@ -805,7 +805,7 @@ I follow a structured process:
 
 ---
 
-## Q63. How do you prioritize multiple incidents?
+### Q63. How do you prioritize multiple incidents?
 
 **Sample Answer:**
 
@@ -813,7 +813,7 @@ I prioritize based on business impact, number of affected users, service critica
 
 ---
 
-# Interview Tips
+## Interview Tips
 
 - Avoid memorized definitions only.
 - Use enterprise examples whenever possible.
@@ -823,7 +823,7 @@ I prioritize based on business impact, number of affected users, service critica
 
 ---
 
-# Hands-on Practice
+## Hands-on Practice
 
 Practice answering:
 
@@ -835,7 +835,7 @@ Practice answering:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Intermediate interviews focus on administration, troubleshooting, and enterprise operations.
 - Structured troubleshooting demonstrates practical knowledge.
@@ -844,9 +844,9 @@ Practice answering:
 
 ---
 
-# 27-Active-Directory-Interview-Questions.md
+## 27-Active-Directory-Interview-Questions.md
 
-# Part 3 — Advanced Active Directory Interview Questions (Architecture, Security, Hybrid Identity, Disaster Recovery and Enterprise Scenarios)
+## Part 3 — Advanced Active Directory Interview Questions (Architecture, Security, Hybrid Identity, Disaster Recovery and Enterprise Scenarios)
 
 > **Important Note**
 >
@@ -854,7 +854,7 @@ Practice answering:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -867,9 +867,9 @@ After completing this part, you will be able to:
 
 ---
 
-# Section 1 — Active Directory Architecture
+## Section 1 — Active Directory Architecture
 
-## Q64. Explain the logical structure of Active Directory.
+### Q64. Explain the logical structure of Active Directory.
 
 **Answer:**
 
@@ -905,7 +905,7 @@ Users / Groups / Computers
 
 ---
 
-## Q65. Explain the physical structure of Active Directory.
+### Q65. Explain the physical structure of Active Directory.
 
 **Answer:**
 
@@ -921,7 +921,7 @@ The physical structure focuses on optimizing authentication and replication acro
 
 ---
 
-## Q66. What is the difference between logical and physical structures?
+### Q66. What is the difference between logical and physical structures?
 
 | Logical Structure | Physical Structure |
 |-------------------|-------------------|
@@ -931,7 +931,7 @@ The physical structure focuses on optimizing authentication and replication acro
 
 ---
 
-## Q67. Why should organizations use Organizational Units?
+### Q67. Why should organizations use Organizational Units?
 
 **Answer:**
 
@@ -945,7 +945,7 @@ OUs allow organizations to:
 
 ---
 
-## Q68. Why shouldn't permissions be assigned directly to users?
+### Q68. Why shouldn't permissions be assigned directly to users?
 
 **Answer:**
 
@@ -953,9 +953,9 @@ Assigning permissions to groups instead of individual users simplifies administr
 
 ---
 
-# Section 2 — Active Directory Security
+## Section 2 — Active Directory Security
 
-## Q69. What are the most important Active Directory security principles?
+### Q69. What are the most important Active Directory security principles?
 
 **Answer:**
 
@@ -969,7 +969,7 @@ Assigning permissions to groups instead of individual users simplifies administr
 
 ---
 
-## Q70. Why is Least Privilege important?
+### Q70. Why is Least Privilege important?
 
 **Answer:**
 
@@ -977,7 +977,7 @@ Least Privilege ensures users and administrators receive only the permissions ne
 
 ---
 
-## Q71. Why should privileged accounts receive additional protection?
+### Q71. Why should privileged accounts receive additional protection?
 
 **Answer:**
 
@@ -985,7 +985,7 @@ Privileged accounts have elevated access to critical systems. Organizations shou
 
 ---
 
-## Q72. What administrative best practices improve Active Directory security?
+### Q72. What administrative best practices improve Active Directory security?
 
 Examples include:
 
@@ -999,7 +999,7 @@ Examples include:
 
 ---
 
-## Q73. Why is auditing important?
+### Q73. Why is auditing important?
 
 **Answer:**
 
@@ -1007,9 +1007,9 @@ Auditing provides visibility into authentication, administrative changes, and se
 
 ---
 
-# Section 3 — Hybrid Identity
+## Section 3 — Hybrid Identity
 
-## Q74. What is Hybrid Identity?
+### Q74. What is Hybrid Identity?
 
 **Answer:**
 
@@ -1017,7 +1017,7 @@ Hybrid Identity integrates on-premises Active Directory with Microsoft Entra ID,
 
 ---
 
-## Q75. What are the benefits of Hybrid Identity?
+### Q75. What are the benefits of Hybrid Identity?
 
 Examples include:
 
@@ -1030,7 +1030,7 @@ Examples include:
 
 ---
 
-## Q76. What is Single Sign-On (SSO)?
+### Q76. What is Single Sign-On (SSO)?
 
 **Answer:**
 
@@ -1038,7 +1038,7 @@ Single Sign-On allows users to authenticate once and securely access multiple au
 
 ---
 
-## Q77. What is Multi-Factor Authentication (MFA)?
+### Q77. What is Multi-Factor Authentication (MFA)?
 
 **Answer:**
 
@@ -1046,7 +1046,7 @@ MFA requires users to provide multiple forms of verification before access is gr
 
 ---
 
-## Q78. Why is Conditional Access important?
+### Q78. Why is Conditional Access important?
 
 **Answer:**
 
@@ -1054,9 +1054,9 @@ Conditional Access evaluates identity, device status, location, and organization
 
 ---
 
-# Section 4 — Disaster Recovery
+## Section 4 — Disaster Recovery
 
-## Q79. Why are backups critical in Active Directory?
+### Q79. Why are backups critical in Active Directory?
 
 **Answer:**
 
@@ -1064,7 +1064,7 @@ Backups enable organizations to recover directory services after failures, corru
 
 ---
 
-## Q80. Why should backup restoration be tested?
+### Q80. Why should backup restoration be tested?
 
 **Answer:**
 
@@ -1072,7 +1072,7 @@ Testing confirms that backups are usable and that documented recovery procedures
 
 ---
 
-## Q81. What should a disaster recovery plan include?
+### Q81. What should a disaster recovery plan include?
 
 Examples include:
 
@@ -1085,7 +1085,7 @@ Examples include:
 
 ---
 
-## Q82. Why should organizations maintain multiple Domain Controllers?
+### Q82. Why should organizations maintain multiple Domain Controllers?
 
 **Answer:**
 
@@ -1093,7 +1093,7 @@ Multiple Domain Controllers provide redundancy, improve availability, and suppor
 
 ---
 
-## Q83. Why is documentation important during disaster recovery?
+### Q83. Why is documentation important during disaster recovery?
 
 **Answer:**
 
@@ -1101,9 +1101,9 @@ Documentation ensures recovery procedures are consistent, repeatable, auditable,
 
 ---
 
-# Section 5 — Enterprise Scenario Questions
+## Section 5 — Enterprise Scenario Questions
 
-## Q84. Several users across different sites report intermittent authentication failures.
+### Q84. Several users across different sites report intermittent authentication failures.
 
 How would you approach the problem?
 
@@ -1120,7 +1120,7 @@ How would you approach the problem?
 
 ---
 
-## Q85. Management reports that new employees cannot access Microsoft 365 after onboarding.
+### Q85. Management reports that new employees cannot access Microsoft 365 after onboarding.
 
 What would you investigate?
 
@@ -1136,7 +1136,7 @@ What would you investigate?
 
 ---
 
-## Q86. Users complain that password changes are inconsistent across locations.
+### Q86. Users complain that password changes are inconsistent across locations.
 
 How would you troubleshoot?
 
@@ -1151,7 +1151,7 @@ How would you troubleshoot?
 
 ---
 
-## Q87. An office reports that Group Policy changes are not being reflected on client computers.
+### Q87. An office reports that Group Policy changes are not being reflected on client computers.
 
 What areas should you review?
 
@@ -1166,7 +1166,7 @@ What areas should you review?
 
 ---
 
-## Q88. Senior management asks how you would improve Active Directory security over the next year.
+### Q88. Senior management asks how you would improve Active Directory security over the next year.
 
 **Suggested Answer:**
 
@@ -1183,9 +1183,9 @@ Potential improvements include:
 
 ---
 
-# Section 6 — Behavioral Questions
+## Section 6 — Behavioral Questions
 
-## Q89. Describe a challenging infrastructure issue you solved.
+### Q89. Describe a challenging infrastructure issue you solved.
 
 **Sample Answer:**
 
@@ -1203,7 +1203,7 @@ Use the **STAR** (Situation, Task, Action, Result) method.
 
 ---
 
-## Q90. How do you keep your Active Directory knowledge current?
+### Q90. How do you keep your Active Directory knowledge current?
 
 **Sample Answer:**
 
@@ -1211,7 +1211,7 @@ I regularly study Microsoft documentation, build virtual lab environments, pract
 
 ---
 
-# Rapid Fire Questions
+## Rapid Fire Questions
 
 | Question | Short Answer |
 |----------|--------------|
@@ -1226,7 +1226,7 @@ I regularly study Microsoft documentation, build virtual lab environments, pract
 
 ---
 
-# Enterprise Interview Tips
+## Enterprise Interview Tips
 
 - Explain *why* as well as *how*.
 - Use structured troubleshooting workflows.
@@ -1237,7 +1237,7 @@ I regularly study Microsoft documentation, build virtual lab environments, pract
 
 ---
 
-# Hands-on Practice
+## Hands-on Practice
 
 Prepare concise (2–3 minute) answers for:
 
@@ -1249,7 +1249,7 @@ Prepare concise (2–3 minute) answers for:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Advanced interviews emphasize architecture, governance, and operational decision-making.
 - Strong candidates explain trade-offs and justify recommendations.
@@ -1258,9 +1258,9 @@ Prepare concise (2–3 minute) answers for:
 
 ---
 
-# 27-Active-Directory-Interview-Questions.md
+## 27-Active-Directory-Interview-Questions.md
 
-# Part 4 — Expert Active Directory Interview Questions, HR & Managerial Questions, Interview Tips and Complete Chapter Summary
+## Part 4 — Expert Active Directory Interview Questions, HR & Managerial Questions, Interview Tips and Complete Chapter Summary
 
 > **Important Note**
 >
@@ -1268,7 +1268,7 @@ Prepare concise (2–3 minute) answers for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -1281,9 +1281,9 @@ After completing this part, you will be able to:
 
 ---
 
-# Section 1 — Expert Technical Questions
+## Section 1 — Expert Technical Questions
 
-## Q91. How would you design Active Directory for a multinational enterprise?
+### Q91. How would you design Active Directory for a multinational enterprise?
 
 **Sample Answer:**
 
@@ -1302,7 +1302,7 @@ The design should balance security, performance, and operational simplicity.
 
 ---
 
-## Q92. What factors influence Domain Controller placement?
+### Q92. What factors influence Domain Controller placement?
 
 **Sample Answer:**
 
@@ -1318,7 +1318,7 @@ Factors include:
 
 ---
 
-## Q93. How would you improve Active Directory performance?
+### Q93. How would you improve Active Directory performance?
 
 **Sample Answer:**
 
@@ -1334,7 +1334,7 @@ Possible improvements include:
 
 ---
 
-## Q94. How would you improve Active Directory security?
+### Q94. How would you improve Active Directory security?
 
 **Sample Answer:**
 
@@ -1351,7 +1351,7 @@ Security improvements include:
 
 ---
 
-## Q95. What is your troubleshooting methodology?
+### Q95. What is your troubleshooting methodology?
 
 **Sample Answer:**
 
@@ -1395,9 +1395,9 @@ This structured approach minimizes risk and supports consistent operations.
 
 ---
 
-# Section 2 — Architecture Discussion Questions
+## Section 2 — Architecture Discussion Questions
 
-## Q96. Why is Active Directory still important in cloud environments?
+### Q96. Why is Active Directory still important in cloud environments?
 
 **Sample Answer:**
 
@@ -1405,7 +1405,7 @@ Many organizations continue to operate hybrid environments where on-premises inf
 
 ---
 
-## Q97. How does Active Directory support enterprise security?
+### Q97. How does Active Directory support enterprise security?
 
 **Sample Answer:**
 
@@ -1422,7 +1422,7 @@ It supports security through:
 
 ---
 
-## Q98. What is the role of Microsoft Entra ID in hybrid identity?
+### Q98. What is the role of Microsoft Entra ID in hybrid identity?
 
 **Sample Answer:**
 
@@ -1430,7 +1430,7 @@ Microsoft Entra ID extends identity management into the cloud, enabling synchron
 
 ---
 
-## Q99. Why is documentation important for Active Directory?
+### Q99. Why is documentation important for Active Directory?
 
 **Sample Answer:**
 
@@ -1445,7 +1445,7 @@ Documentation:
 
 ---
 
-## Q100. How do you ensure operational stability?
+### Q100. How do you ensure operational stability?
 
 **Sample Answer:**
 
@@ -1462,9 +1462,9 @@ I focus on:
 
 ---
 
-# Section 3 — HR & Behavioral Questions
+## Section 3 — HR & Behavioral Questions
 
-## Q101. Tell me about yourself.
+### Q101. Tell me about yourself.
 
 **Sample Answer:**
 
@@ -1472,7 +1472,7 @@ I focus on:
 
 ---
 
-## Q102. Why do you want this role?
+### Q102. Why do you want this role?
 
 **Sample Answer:**
 
@@ -1480,7 +1480,7 @@ I focus on:
 
 ---
 
-## Q103. How do you handle production incidents?
+### Q103. How do you handle production incidents?
 
 **Sample Answer:**
 
@@ -1488,7 +1488,7 @@ I focus on:
 
 ---
 
-## Q104. Describe a difficult technical issue you resolved.
+### Q104. Describe a difficult technical issue you resolved.
 
 **Suggested Structure (STAR):**
 
@@ -1501,7 +1501,7 @@ Keep the explanation concise and focus on measurable outcomes and lessons learne
 
 ---
 
-## Q105. How do you prioritize multiple incidents?
+### Q105. How do you prioritize multiple incidents?
 
 **Sample Answer:**
 
@@ -1516,9 +1516,9 @@ I prioritize based on:
 
 ---
 
-# Section 4 — Managerial Questions
+## Section 4 — Managerial Questions
 
-## Q106. How do you reduce downtime?
+### Q106. How do you reduce downtime?
 
 **Answer:**
 
@@ -1533,7 +1533,7 @@ By:
 
 ---
 
-## Q107. How do you manage change?
+### Q107. How do you manage change?
 
 **Answer:**
 
@@ -1569,7 +1569,7 @@ Monitoring
 
 ---
 
-## Q108. How do you ensure compliance?
+### Q108. How do you ensure compliance?
 
 **Answer:**
 
@@ -1584,7 +1584,7 @@ Through:
 
 ---
 
-## Q109. How do you work with cybersecurity teams?
+### Q109. How do you work with cybersecurity teams?
 
 **Answer:**
 
@@ -1599,7 +1599,7 @@ I collaborate by:
 
 ---
 
-## Q110. What qualities make an excellent Active Directory administrator?
+### Q110. What qualities make an excellent Active Directory administrator?
 
 **Answer:**
 
@@ -1614,7 +1614,7 @@ I collaborate by:
 
 ---
 
-# Common Interview Mistakes
+## Common Interview Mistakes
 
 Avoid:
 
@@ -1627,7 +1627,7 @@ Avoid:
 
 ---
 
-# 30-Second Quick Revision
+## 30-Second Quick Revision
 
 | Topic | Remember |
 |--------|----------|
@@ -1644,7 +1644,7 @@ Avoid:
 
 ---
 
-# 10 Most Important Interview Questions
+## 10 Most Important Interview Questions
 
 1. What is Active Directory?
 2. How does Kerberos authentication work conceptually?
@@ -1659,9 +1659,9 @@ Avoid:
 
 ---
 
-# Final Interview Preparation Checklist
+## Final Interview Preparation Checklist
 
-## Technical Knowledge
+### Technical Knowledge
 
 - Active Directory architecture
 - Forests, Domains, Trees
@@ -1686,7 +1686,7 @@ Avoid:
 
 ---
 
-## Administration
+### Administration
 
 - User management
 - Group management
@@ -1699,7 +1699,7 @@ Avoid:
 
 ---
 
-## Security
+### Security
 
 - Least Privilege
 - MFA
@@ -1712,7 +1712,7 @@ Avoid:
 
 ---
 
-## Soft Skills
+### Soft Skills
 
 - Communication
 - Problem-solving
@@ -1725,7 +1725,7 @@ Avoid:
 
 ---
 
-# Final Tips
+## Final Tips
 
 Before any interview:
 
@@ -1738,7 +1738,7 @@ Before any interview:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

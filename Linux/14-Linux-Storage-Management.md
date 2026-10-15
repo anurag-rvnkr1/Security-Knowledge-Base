@@ -1,10 +1,10 @@
 # 14 - Linux Storage Management
 
-# Part 1 — Storage Fundamentals, Block Devices, Partitions, MBR vs GPT, Filesystems, and Storage Architecture
+## Part 1 — Storage Fundamentals, Block Devices, Partitions, MBR vs GPT, Filesystems, and Storage Architecture
 
 ---
 
-# Introduction
+## Introduction
 
 Storage is one of the most critical components of every Linux system.
 
@@ -32,7 +32,7 @@ Proper storage management improves:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -47,7 +47,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Linux Storage Architecture
+## Linux Storage Architecture
 
 ```text
 Application
@@ -79,7 +79,7 @@ Physical Storage
 
 ---
 
-# What is Storage?
+## What is Storage?
 
 Storage is where Linux permanently stores data.
 
@@ -98,7 +98,7 @@ Unlike RAM, storage retains data after power loss.
 
 ---
 
-# Types of Storage
+## Types of Storage
 
 | Storage Type | Example |
 |--------------|----------|
@@ -112,7 +112,7 @@ Unlike RAM, storage retains data after power loss.
 
 ---
 
-# HDD vs SSD vs NVMe
+## HDD vs SSD vs NVMe
 
 | Feature | HDD | SSD | NVMe SSD |
 |----------|-----|-----|-----------|
@@ -124,7 +124,7 @@ Unlike RAM, storage retains data after power loss.
 
 ---
 
-# Physical vs Virtual Storage
+## Physical vs Virtual Storage
 
 | Physical | Virtual |
 |----------|----------|
@@ -136,7 +136,7 @@ Linux manages both similarly once presented as block devices.
 
 ---
 
-# What is a Block Device?
+## What is a Block Device?
 
 A **block device** stores data in fixed-size blocks.
 
@@ -154,7 +154,7 @@ Applications do not write directly to raw disks in most cases; they interact thr
 
 ---
 
-# Character Devices vs Block Devices
+## Character Devices vs Block Devices
 
 | Character Device | Block Device |
 |------------------|--------------|
@@ -165,7 +165,7 @@ Applications do not write directly to raw disks in most cases; they interact thr
 
 ---
 
-# Linux Device Files
+## Linux Device Files
 
 Linux represents hardware as files.
 
@@ -189,7 +189,7 @@ Examples:
 
 ---
 
-# Common Storage Device Naming
+## Common Storage Device Naming
 
 | Device | Description |
 |----------|-------------|
@@ -201,7 +201,7 @@ Examples:
 
 ---
 
-# Viewing Storage Devices
+## Viewing Storage Devices
 
 Display block devices:
 
@@ -225,7 +225,7 @@ sda
 
 ---
 
-# Viewing Disk Information
+## Viewing Disk Information
 
 ```bash
 sudo fdisk -l
@@ -240,7 +240,7 @@ Provides information such as:
 
 ---
 
-# Storage Hierarchy
+## Storage Hierarchy
 
 ```text
 Disk
@@ -264,7 +264,7 @@ Files
 
 ---
 
-# What is a Partition?
+## What is a Partition?
 
 A partition divides a physical disk into logical sections.
 
@@ -289,7 +289,7 @@ Each partition can contain:
 
 ---
 
-# Why Partition a Disk?
+## Why Partition a Disk?
 
 Benefits include:
 
@@ -302,7 +302,7 @@ Benefits include:
 
 ---
 
-# Enterprise Partition Example
+## Enterprise Partition Example
 
 ```text
 Disk
@@ -324,7 +324,7 @@ This layout can improve security, manageability, and resilience.
 
 ---
 
-# Partition Table
+## Partition Table
 
 A partition table describes how a disk is divided.
 
@@ -335,7 +335,7 @@ Two primary standards:
 
 ---
 
-# MBR (Master Boot Record)
+## MBR (Master Boot Record)
 
 MBR is the traditional partitioning scheme.
 
@@ -347,7 +347,7 @@ Characteristics:
 
 ---
 
-# MBR Layout
+## MBR Layout
 
 ```text
 Disk
@@ -367,7 +367,7 @@ Partitions
 
 ---
 
-# GPT (GUID Partition Table)
+## GPT (GUID Partition Table)
 
 GPT is the modern partitioning standard.
 
@@ -380,7 +380,7 @@ Characteristics:
 
 ---
 
-# GPT Layout
+## GPT Layout
 
 ```text
 Primary GPT Header
@@ -400,7 +400,7 @@ Backup GPT Header
 
 ---
 
-# MBR vs GPT
+## MBR vs GPT
 
 | Feature | MBR | GPT |
 |----------|-----|-----|
@@ -412,7 +412,7 @@ Backup GPT Header
 
 ---
 
-# Choosing Between MBR and GPT
+## Choosing Between MBR and GPT
 
 | Use Case | Recommended |
 |----------|-------------|
@@ -425,7 +425,7 @@ Most modern enterprise deployments use GPT.
 
 ---
 
-# What is a Filesystem?
+## What is a Filesystem?
 
 A filesystem organizes data on storage.
 
@@ -433,7 +433,7 @@ Without a filesystem, the operating system cannot efficiently store or retrieve 
 
 ---
 
-# Filesystem Responsibilities
+## Filesystem Responsibilities
 
 A filesystem manages:
 
@@ -447,7 +447,7 @@ A filesystem manages:
 
 ---
 
-# Common Linux Filesystems
+## Common Linux Filesystems
 
 | Filesystem | Typical Use |
 |------------|-------------|
@@ -460,7 +460,7 @@ A filesystem manages:
 
 ---
 
-# ext4 Filesystem
+## ext4 Filesystem
 
 Features:
 
@@ -477,7 +477,7 @@ Suitable for:
 
 ---
 
-# XFS Filesystem
+## XFS Filesystem
 
 Features:
 
@@ -494,7 +494,7 @@ Suitable for:
 
 ---
 
-# Btrfs Filesystem
+## Btrfs Filesystem
 
 Features:
 
@@ -511,7 +511,7 @@ Common use cases:
 
 ---
 
-# Journaling Filesystems
+## Journaling Filesystems
 
 A journaling filesystem records metadata changes before committing them.
 
@@ -540,7 +540,7 @@ Benefits:
 
 ---
 
-# Filesystem Comparison
+## Filesystem Comparison
 
 | Feature | ext4 | XFS | Btrfs |
 |----------|------|-----|--------|
@@ -551,7 +551,7 @@ Benefits:
 
 ---
 
-# Enterprise Storage Layout
+## Enterprise Storage Layout
 
 ```text
 Physical Disk
@@ -579,7 +579,7 @@ Applications
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Storage architecture has direct security implications.
 
@@ -596,7 +596,7 @@ Dedicated partitions for areas such as `/var` can help contain excessive log gro
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper storage planning provides:
 
@@ -616,7 +616,7 @@ Poor storage design can result in:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use GPT for new deployments.
 - Select filesystems based on workload requirements.
@@ -628,7 +628,7 @@ Poor storage design can result in:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux represents storage devices as block devices under `/dev`.
 - Partitions divide disks into logical sections.
@@ -639,13 +639,13 @@ Poor storage design can result in:
 ---
 
 
-# 14 - Linux Storage Management
+## 14 - Linux Storage Management
 
-# Part 2 — Mounting, Unmounting, `/etc/fstab`, LVM, RAID, Swap Space, and Storage Configuration
+## Part 2 — Mounting, Unmounting, `/etc/fstab`, LVM, RAID, Swap Space, and Storage Configuration
 
 ---
 
-# Introduction
+## Introduction
 
 After creating partitions and filesystems, Linux must make them accessible through the directory hierarchy.
 
@@ -662,7 +662,7 @@ These concepts are fundamental in enterprise Linux deployments.
 
 ---
 
-# Storage Configuration Workflow
+## Storage Configuration Workflow
 
 ```text
 Physical Disk
@@ -690,7 +690,7 @@ Applications
 
 ---
 
-# What is Mounting?
+## What is Mounting?
 
 Mounting is the process of attaching a filesystem to a directory so that users and applications can access its contents.
 
@@ -698,7 +698,7 @@ Without mounting, a filesystem exists on disk but is not part of the active dire
 
 ---
 
-# Mount Point
+## Mount Point
 
 A **mount point** is an existing directory where a filesystem is attached.
 
@@ -730,7 +730,7 @@ its contents become accessible through:
 
 ---
 
-# Mounting Workflow
+## Mounting Workflow
 
 ```text
 Filesystem
@@ -750,7 +750,7 @@ Accessible to Users
 
 ---
 
-# Viewing Mounted Filesystems
+## Viewing Mounted Filesystems
 
 Display mounted filesystems:
 
@@ -776,7 +776,7 @@ TARGET     SOURCE
 
 ---
 
-# Viewing Block Devices
+## Viewing Block Devices
 
 ```bash
 lsblk
@@ -805,7 +805,7 @@ Useful columns include:
 
 ---
 
-# Manually Mounting a Filesystem
+## Manually Mounting a Filesystem
 
 Create a mount point:
 
@@ -833,7 +833,7 @@ mount | grep /data
 
 ---
 
-# Accessing Mounted Storage
+## Accessing Mounted Storage
 
 After mounting:
 
@@ -853,7 +853,7 @@ Applications interact with `/data` rather than the underlying block device.
 
 ---
 
-# Unmounting a Filesystem
+## Unmounting a Filesystem
 
 Detach a mounted filesystem:
 
@@ -871,7 +871,7 @@ sudo umount /dev/sdb1
 
 ---
 
-# Why Unmount?
+## Why Unmount?
 
 Unmounting helps ensure:
 
@@ -883,7 +883,7 @@ Unmount removable storage before disconnecting it.
 
 ---
 
-# Busy Filesystem
+## Busy Filesystem
 
 If unmounting fails:
 
@@ -913,7 +913,7 @@ Resolve the issue before retrying the unmount.
 
 ---
 
-# Persistent Mounts
+## Persistent Mounts
 
 Manual mounts are generally temporary.
 
@@ -925,7 +925,7 @@ To mount automatically during boot, configure:
 
 ---
 
-# `/etc/fstab`
+## `/etc/fstab`
 
 The `/etc/fstab` file defines filesystems that should be mounted automatically.
 
@@ -937,7 +937,7 @@ cat /etc/fstab
 
 ---
 
-# Example `/etc/fstab` Entry
+## Example `/etc/fstab` Entry
 
 ```text
 UUID=1234-5678
@@ -957,7 +957,7 @@ Each field has a specific meaning.
 
 ---
 
-# `/etc/fstab` Fields
+## `/etc/fstab` Fields
 
 | Field | Description |
 |--------|-------------|
@@ -970,7 +970,7 @@ Each field has a specific meaning.
 
 ---
 
-# Why Use UUID?
+## Why Use UUID?
 
 Device names may change after:
 
@@ -988,7 +988,7 @@ blkid
 
 ---
 
-# Testing `/etc/fstab`
+## Testing `/etc/fstab`
 
 After editing:
 
@@ -1002,7 +1002,7 @@ Always test before rebooting.
 
 ---
 
-# Common Mount Options
+## Common Mount Options
 
 | Option | Purpose |
 |---------|----------|
@@ -1017,7 +1017,7 @@ Security-sensitive filesystems often use additional restrictive mount options.
 
 ---
 
-# Logical Volume Manager (LVM)
+## Logical Volume Manager (LVM)
 
 LVM provides flexible storage management beyond traditional partitions.
 
@@ -1030,7 +1030,7 @@ Benefits include:
 
 ---
 
-# LVM Architecture
+## LVM Architecture
 
 ```text
 Physical Disk
@@ -1058,7 +1058,7 @@ Mount Point
 
 ---
 
-# LVM Components
+## LVM Components
 
 | Component | Description |
 |-----------|-------------|
@@ -1068,7 +1068,7 @@ Mount Point
 
 ---
 
-# Physical Volume (PV)
+## Physical Volume (PV)
 
 A Physical Volume is a disk or partition initialized for LVM.
 
@@ -1086,7 +1086,7 @@ pvs
 
 ---
 
-# Volume Group (VG)
+## Volume Group (VG)
 
 A Volume Group combines one or more Physical Volumes into a storage pool.
 
@@ -1104,7 +1104,7 @@ vgs
 
 ---
 
-# Logical Volume (LV)
+## Logical Volume (LV)
 
 Logical Volumes are allocated from a Volume Group.
 
@@ -1122,7 +1122,7 @@ lvs
 
 ---
 
-# LVM Workflow
+## LVM Workflow
 
 ```text
 Disk
@@ -1150,7 +1150,7 @@ Mount
 
 ---
 
-# Advantages of LVM
+## Advantages of LVM
 
 - Online expansion (supported by many filesystems)
 - Flexible storage allocation
@@ -1160,7 +1160,7 @@ Mount
 
 ---
 
-# RAID (Redundant Array of Independent Disks)
+## RAID (Redundant Array of Independent Disks)
 
 RAID combines multiple disks for one or more goals:
 
@@ -1170,7 +1170,7 @@ RAID combines multiple disks for one or more goals:
 
 ---
 
-# RAID Goals
+## RAID Goals
 
 ```text
 Multiple Disks
@@ -1190,7 +1190,7 @@ Availability
 
 ---
 
-# Common RAID Levels
+## Common RAID Levels
 
 | RAID | Purpose |
 |-------|----------|
@@ -1202,7 +1202,7 @@ Availability
 
 ---
 
-# RAID 0
+## RAID 0
 
 ```text
 Disk A
@@ -1226,7 +1226,7 @@ Disadvantages:
 
 ---
 
-# RAID 1
+## RAID 1
 
 ```text
 Disk A
@@ -1251,7 +1251,7 @@ Trade-off:
 
 ---
 
-# RAID 5
+## RAID 5
 
 ```text
 Disk A
@@ -1274,7 +1274,7 @@ Requires at least three disks.
 
 ---
 
-# RAID 10
+## RAID 10
 
 ```text
 Mirror
@@ -1293,7 +1293,7 @@ Often used for enterprise databases and virtualization platforms.
 
 ---
 
-# Software RAID
+## Software RAID
 
 Linux commonly manages software RAID using:
 
@@ -1309,7 +1309,7 @@ sudo mdadm --detail /dev/md0
 
 ---
 
-# Swap Space
+## Swap Space
 
 Swap extends available virtual memory by using disk space when RAM becomes constrained.
 
@@ -1317,7 +1317,7 @@ It is slower than RAM and should not be considered a substitute for sufficient p
 
 ---
 
-# Swap Workflow
+## Swap Workflow
 
 ```text
 RAM Full
@@ -1337,7 +1337,7 @@ RAM Available
 
 ---
 
-# Viewing Swap
+## Viewing Swap
 
 Display active swap:
 
@@ -1353,7 +1353,7 @@ free -h
 
 ---
 
-# Enabling Swap
+## Enabling Swap
 
 Example:
 
@@ -1369,7 +1369,7 @@ sudo swapoff /swapfile
 
 ---
 
-# Monitoring Disk Usage
+## Monitoring Disk Usage
 
 Filesystem usage:
 
@@ -1387,7 +1387,7 @@ These commands help identify storage consumption.
 
 ---
 
-# Enterprise Storage Layout
+## Enterprise Storage Layout
 
 ```text
 OS Disk
@@ -1413,7 +1413,7 @@ Separating workloads simplifies administration and improves resilience.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Storage configuration can strengthen security.
 
@@ -1427,7 +1427,7 @@ Examples include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-managed storage provides:
 
@@ -1440,7 +1440,7 @@ Well-managed storage provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use UUIDs in `/etc/fstab`.
 - Test `/etc/fstab` changes with `mount -a`.
@@ -1452,7 +1452,7 @@ Well-managed storage provides:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Mounting connects filesystems to the Linux directory hierarchy.
 - `/etc/fstab` enables persistent mounts across reboots.
@@ -1463,13 +1463,13 @@ Well-managed storage provides:
 
 ---
 
-# 14 - Linux Storage Management
+## 14 - Linux Storage Management
 
-# Part 3 — Filesystem Management, Disk Usage Analysis, Storage Troubleshooting, Performance Optimization, and Enterprise Monitoring
+## Part 3 — Filesystem Management, Disk Usage Analysis, Storage Troubleshooting, Performance Optimization, and Enterprise Monitoring
 
 ---
 
-# Introduction
+## Introduction
 
 Storage management does not end after creating partitions and mounting filesystems.
 
@@ -1495,7 +1495,7 @@ Poor storage management can lead to:
 
 ---
 
-# Enterprise Storage Management Lifecycle
+## Enterprise Storage Management Lifecycle
 
 ```text
 Provision Storage
@@ -1535,7 +1535,7 @@ Retire Storage
 
 ---
 
-# Filesystem Administration
+## Filesystem Administration
 
 Administrators routinely perform:
 
@@ -1548,7 +1548,7 @@ Administrators routinely perform:
 
 ---
 
-# Viewing Filesystem Information
+## Viewing Filesystem Information
 
 Display mounted filesystems:
 
@@ -1575,7 +1575,7 @@ Useful columns:
 
 ---
 
-# Understanding `df`
+## Understanding `df`
 
 ```bash
 df -h
@@ -1600,7 +1600,7 @@ Administrators should monitor high utilization before it affects applications.
 
 ---
 
-# Disk Usage Analysis with `du`
+## Disk Usage Analysis with `du`
 
 Determine directory size:
 
@@ -1624,7 +1624,7 @@ Example:
 
 ---
 
-# `df` vs `du`
+## `df` vs `du`
 
 | Command | Purpose |
 |----------|----------|
@@ -1635,7 +1635,7 @@ Both are important during storage investigations.
 
 ---
 
-# Finding Large Files
+## Finding Large Files
 
 Locate files larger than 500 MB:
 
@@ -1653,7 +1653,7 @@ Useful during emergency disk cleanup.
 
 ---
 
-# Sorting Large Files
+## Sorting Large Files
 
 Example:
 
@@ -1665,7 +1665,7 @@ Shows the largest files and directories first.
 
 ---
 
-# Finding Large Directories
+## Finding Large Directories
 
 ```bash
 du -sh /*
@@ -1681,7 +1681,7 @@ Helps identify where storage is being consumed.
 
 ---
 
-# Filesystem Creation
+## Filesystem Creation
 
 Create an ext4 filesystem:
 
@@ -1699,7 +1699,7 @@ sudo mkfs.xfs /dev/sdb1
 
 ---
 
-# Viewing Filesystem UUID
+## Viewing Filesystem UUID
 
 ```bash
 blkid
@@ -1715,7 +1715,7 @@ UUIDs are commonly referenced in `/etc/fstab`.
 
 ---
 
-# Filesystem Labels
+## Filesystem Labels
 
 Assign an ext4 label:
 
@@ -1733,7 +1733,7 @@ Labels provide a human-readable identifier.
 
 ---
 
-# Checking Filesystem Integrity
+## Checking Filesystem Integrity
 
 For ext2/3/4:
 
@@ -1751,7 +1751,7 @@ sudo fsck -f /dev/sdb1
 
 ---
 
-# Filesystem Repair Workflow
+## Filesystem Repair Workflow
 
 ```text
 Filesystem Issue
@@ -1779,7 +1779,7 @@ Verify
 
 ---
 
-# XFS Repair
+## XFS Repair
 
 XFS uses a different utility:
 
@@ -1791,7 +1791,7 @@ Unlike ext filesystems, `fsck` is not the primary repair tool for XFS.
 
 ---
 
-# Viewing Mounted Filesystems
+## Viewing Mounted Filesystems
 
 Modern method:
 
@@ -1815,7 +1815,7 @@ Provides a structured view of active mounts.
 
 ---
 
-# Monitoring Disk I/O
+## Monitoring Disk I/O
 
 Install the appropriate package for your distribution if necessary, then run:
 
@@ -1838,7 +1838,7 @@ Useful metrics include:
 
 ---
 
-# Monitoring Block Devices
+## Monitoring Block Devices
 
 Display block devices:
 
@@ -1854,7 +1854,7 @@ lsblk -f
 
 ---
 
-# Monitoring Storage Health
+## Monitoring Storage Health
 
 For drives supporting SMART, install the appropriate package (commonly `smartmontools`) and run:
 
@@ -1872,7 +1872,7 @@ SMART can help identify signs of impending hardware failure.
 
 ---
 
-# Storage Performance Factors
+## Storage Performance Factors
 
 Performance depends on:
 
@@ -1886,7 +1886,7 @@ Performance depends on:
 
 ---
 
-# Sequential vs Random I/O
+## Sequential vs Random I/O
 
 | Sequential I/O | Random I/O |
 |----------------|------------|
@@ -1896,7 +1896,7 @@ Performance depends on:
 
 ---
 
-# Storage Performance Workflow
+## Storage Performance Workflow
 
 ```text
 Application
@@ -1922,7 +1922,7 @@ Each layer can affect performance.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Administrators should monitor:
 
@@ -1936,7 +1936,7 @@ Capacity planning helps prevent unexpected outages.
 
 ---
 
-# Storage Threshold Example
+## Storage Threshold Example
 
 | Usage | Recommendation |
 |--------|----------------|
@@ -1949,7 +1949,7 @@ Thresholds vary by organization and workload.
 
 ---
 
-# Log File Growth
+## Log File Growth
 
 Large log files commonly consume storage.
 
@@ -1969,7 +1969,7 @@ Ensure log rotation is configured appropriately.
 
 ---
 
-# Storage Monitoring Workflow
+## Storage Monitoring Workflow
 
 ```text
 Filesystem
@@ -1997,7 +1997,7 @@ Verification
 
 ---
 
-# Enterprise Storage Monitoring
+## Enterprise Storage Monitoring
 
 Organizations commonly monitor:
 
@@ -2014,9 +2014,9 @@ Monitoring platforms generate alerts before critical thresholds are reached.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## `/var` Filesystem Full
+### `/var` Filesystem Full
 
 Symptoms:
 
@@ -2060,9 +2060,9 @@ Resolution:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Storage Expansion
+### Storage Expansion
 
 An application requires an additional 500 GB.
 
@@ -2092,7 +2092,7 @@ Modern filesystems and LVM often support online expansion, depending on the file
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Storage monitoring supports security by helping detect:
 
@@ -2106,7 +2106,7 @@ Security teams should monitor abnormal storage activity alongside traditional sy
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective filesystem management provides:
 
@@ -2119,7 +2119,7 @@ Effective filesystem management provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor storage usage continuously.
 - Configure alerts before filesystems become critically full.
@@ -2132,7 +2132,7 @@ Effective filesystem management provides:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - `df` reports filesystem utilization, while `du` measures directory usage.
 - `find` can identify unusually large files consuming storage.
@@ -2142,13 +2142,13 @@ Effective filesystem management provides:
 
 ---
 
-# 14 - Linux Storage Management
+## 14 - Linux Storage Management
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Linux storage management is a critical skill for:
 
@@ -2165,7 +2165,7 @@ Every enterprise relies on stable, scalable, and secure storage infrastructure t
 
 ---
 
-# Enterprise Storage Lifecycle
+## Enterprise Storage Lifecycle
 
 ```text
 Storage Planning
@@ -2209,7 +2209,7 @@ Retire Storage
 
 ---
 
-# Practical Lab 1 — Identify Storage Devices
+## Practical Lab 1 — Identify Storage Devices
 
 Display all block devices:
 
@@ -2223,7 +2223,7 @@ Display detailed partition information:
 sudo fdisk -l
 ```
 
-### Objectives
+#### Objectives
 
 - Identify disks and partitions
 - Observe mount points
@@ -2231,7 +2231,7 @@ sudo fdisk -l
 
 ---
 
-# Practical Lab 2 — View Filesystem Usage
+## Practical Lab 2 — View Filesystem Usage
 
 Display filesystem utilization:
 
@@ -2245,14 +2245,14 @@ Display filesystem type:
 df -Th
 ```
 
-### Questions
+#### Questions
 
 - Which filesystem has the highest usage?
 - Which mount point has the least free space?
 
 ---
 
-# Practical Lab 3 — Analyze Directory Usage
+## Practical Lab 3 — Analyze Directory Usage
 
 Check the size of `/var`:
 
@@ -2266,14 +2266,14 @@ Analyze first-level directories:
 du -h --max-depth=1 /
 ```
 
-### Objectives
+#### Objectives
 
 - Locate large directories
 - Understand storage distribution
 
 ---
 
-# Practical Lab 4 — Locate Large Files
+## Practical Lab 4 — Locate Large Files
 
 Find files larger than 1 GB:
 
@@ -2287,14 +2287,14 @@ Sort large files:
 du -ah / | sort -rh | head -20
 ```
 
-### Objectives
+#### Objectives
 
 - Identify storage-consuming files
 - Practice emergency disk cleanup
 
 ---
 
-# Practical Lab 5 — View Mounted Filesystems
+## Practical Lab 5 — View Mounted Filesystems
 
 Display mounted filesystems:
 
@@ -2308,14 +2308,14 @@ Alternative:
 mount
 ```
 
-### Objectives
+#### Objectives
 
 - Review mount points
 - Verify active filesystems
 
 ---
 
-# Practical Lab 6 — Create a Filesystem
+## Practical Lab 6 — Create a Filesystem
 
 Create an ext4 filesystem:
 
@@ -2333,7 +2333,7 @@ sudo mkfs.xfs /dev/sdb1
 
 ---
 
-# Practical Lab 7 — Mount and Unmount a Filesystem
+## Practical Lab 7 — Mount and Unmount a Filesystem
 
 Create a mount point:
 
@@ -2359,14 +2359,14 @@ Unmount:
 sudo umount /data
 ```
 
-### Objectives
+#### Objectives
 
 - Mount and unmount filesystems safely
 - Verify successful operations
 
 ---
 
-# Practical Lab 8 — View UUID Information
+## Practical Lab 8 — View UUID Information
 
 Display UUIDs:
 
@@ -2380,14 +2380,14 @@ Compare with:
 cat /etc/fstab
 ```
 
-### Objectives
+#### Objectives
 
 - Understand persistent storage identifiers
 - Review filesystem configuration
 
 ---
 
-# Practical Lab 9 — Validate `/etc/fstab`
+## Practical Lab 9 — Validate `/etc/fstab`
 
 Edit carefully using your preferred editor, then test:
 
@@ -2395,14 +2395,14 @@ Edit carefully using your preferred editor, then test:
 sudo mount -a
 ```
 
-### Objectives
+#### Objectives
 
 - Verify persistent mount configuration
 - Detect syntax errors before reboot
 
 ---
 
-# Practical Lab 10 — Explore LVM
+## Practical Lab 10 — Explore LVM
 
 Display Physical Volumes:
 
@@ -2422,14 +2422,14 @@ Display Logical Volumes:
 lvs
 ```
 
-### Objectives
+#### Objectives
 
 - Understand LVM hierarchy
 - Review available storage pools
 
 ---
 
-# Practical Lab 11 — Review RAID
+## Practical Lab 11 — Review RAID
 
 Display RAID details (if configured):
 
@@ -2443,14 +2443,14 @@ Detailed information:
 sudo mdadm --detail /dev/md0
 ```
 
-### Objectives
+#### Objectives
 
 - Identify RAID arrays
 - Review synchronization status
 
 ---
 
-# Practical Lab 12 — Monitor Swap
+## Practical Lab 12 — Monitor Swap
 
 Display swap:
 
@@ -2464,14 +2464,14 @@ View memory and swap:
 free -h
 ```
 
-### Objectives
+#### Objectives
 
 - Understand swap utilization
 - Compare RAM and swap usage
 
 ---
 
-# Practical Lab 13 — Check Filesystem Integrity
+## Practical Lab 13 — Check Filesystem Integrity
 
 For ext filesystems:
 
@@ -2489,7 +2489,7 @@ sudo xfs_repair /dev/sdb1
 
 ---
 
-# Practical Lab 14 — Monitor Disk Health
+## Practical Lab 14 — Monitor Disk Health
 
 Display SMART health:
 
@@ -2503,14 +2503,14 @@ Detailed information:
 sudo smartctl -a /dev/sda
 ```
 
-### Objectives
+#### Objectives
 
 - Detect potential hardware failures
 - Review disk health indicators
 
 ---
 
-# Practical Lab 15 — Storage Performance
+## Practical Lab 15 — Storage Performance
 
 Display I/O statistics:
 
@@ -2524,14 +2524,14 @@ Extended statistics:
 iostat -x
 ```
 
-### Objectives
+#### Objectives
 
 - Review disk utilization
 - Identify storage bottlenecks
 
 ---
 
-# Storage Troubleshooting Checklist
+## Storage Troubleshooting Checklist
 
 | Check | Command |
 |--------|---------|
@@ -2548,18 +2548,18 @@ iostat -x
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# Filesystem Reaches 100%
+## Filesystem Reaches 100%
 
-### Symptoms
+#### Symptoms
 
 - Applications stop writing data
 - Package installation fails
 - Logging stops
 - Services become unstable
 
-### Investigation
+#### Investigation
 
 ```text
 Run df
@@ -2585,11 +2585,11 @@ Archive or Remove Data
 Verify Free Space
 ```
 
-### Root Cause
+#### Root Cause
 
 Uncontrolled application log growth.
 
-### Resolution
+#### Resolution
 
 - Rotate logs
 - Archive old files
@@ -2598,11 +2598,11 @@ Uncontrolled application log growth.
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Disk Failure in RAID
+## Disk Failure in RAID
 
-### Investigation
+#### Investigation
 
 ```text
 Alert
@@ -2628,21 +2628,21 @@ Rebuild Array
 Verify Health
 ```
 
-### Business Benefit
+#### Business Benefit
 
 RAID redundancy maintains service availability while replacing failed hardware.
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# Production Storage Expansion
+## Production Storage Expansion
 
-### Scenario
+#### Scenario
 
 A database server approaches storage limits.
 
-### Workflow
+#### Workflow
 
 ```text
 Provision New Disk
@@ -2668,7 +2668,7 @@ Verify Capacity
 Update Documentation
 ```
 
-### Outcome
+#### Outcome
 
 - Minimal downtime
 - Increased storage capacity
@@ -2676,11 +2676,11 @@ Update Documentation
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Unexpected Storage Consumption
+## Unexpected Storage Consumption
 
-### Investigation
+#### Investigation
 
 ```text
 Alert
@@ -2710,7 +2710,7 @@ Identify Root Cause
 Resolve
 ```
 
-### Findings
+#### Findings
 
 - Debug logs left enabled
 - Temporary files not cleaned
@@ -2718,7 +2718,7 @@ Resolve
 
 ---
 
-# Common Storage Problems
+## Common Storage Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2733,7 +2733,7 @@ Resolve
 
 ---
 
-# Enterprise Monitoring Metrics
+## Enterprise Monitoring Metrics
 
 | Metric | Importance |
 |----------|------------|
@@ -2748,7 +2748,7 @@ Resolve
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Storage monitoring is an important security capability.
 
@@ -2766,7 +2766,7 @@ Full filesystems can also disrupt security controls by preventing logs from bein
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-managed storage provides:
 
@@ -2787,7 +2787,7 @@ Poor storage management can result in:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Standardize partition and filesystem layouts.
 - Prefer GPT for modern systems.
@@ -2802,7 +2802,7 @@ Poor storage management can result in:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2824,9 +2824,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is a block device?
 2. What is a partition?
@@ -2841,7 +2841,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the Linux storage hierarchy.
 2. Compare ext4, XFS, and Btrfs.
@@ -2856,7 +2856,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design an enterprise storage layout for a database server.
 2. Describe the steps to safely expand an LVM-backed filesystem.
@@ -2871,7 +2871,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux storage is organized through block devices, partitions, filesystems, and mount points.
 - GPT is the preferred partitioning scheme for modern systems.
@@ -2882,9 +2882,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man lsblk`
 - `man mount`
@@ -2902,7 +2902,7 @@ In this chapter, you learned:
 - `man smartctl`
 - `man iostat`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Red Hat Enterprise Linux Storage Administration Guide
 - Ubuntu Server Storage Documentation
@@ -2915,11 +2915,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **15-Linux-Shell-and-Bash-Scripting.md**
 
-## Topics Covered
+### Topics Covered
 
 - Shell Fundamentals
 - Types of Shells

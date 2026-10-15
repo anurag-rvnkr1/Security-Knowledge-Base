@@ -1,12 +1,12 @@
 # 23-Security-Misconfiguration.md
 
-# Part 1 — Fundamentals of Security Misconfiguration, Configuration Management, Secure Defaults, and Enterprise Overview
+## Part 1 — Fundamentals of Security Misconfiguration, Configuration Management, Secure Defaults, and Enterprise Overview
 
 > **"Even perfectly written code can become vulnerable if it is deployed with insecure configurations. Security Misconfiguration is often the result of unsafe defaults, forgotten settings, or inconsistent operational practices."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Security Misconfiguration?
+## What is Security Misconfiguration?
 
 **Security Misconfiguration** occurs when systems, applications, cloud resources, servers, or services are deployed or maintained with insecure settings.
 
@@ -37,7 +37,7 @@ Unlike coding vulnerabilities, these issues often arise from:
 
 ---
 
-# Why Configuration Matters
+## Why Configuration Matters
 
 Every application depends on many components.
 
@@ -69,7 +69,7 @@ A weakness in the configuration of any component can reduce the overall security
 
 ---
 
-# OWASP Perspective
+## OWASP Perspective
 
 Security Misconfiguration remains one of the most common application security risks because modern environments are increasingly complex.
 
@@ -86,7 +86,7 @@ Misconfigurations can occur in:
 
 ---
 
-# Configuration Lifecycle
+## Configuration Lifecycle
 
 ```
 Install
@@ -120,7 +120,7 @@ Security should be maintained throughout the entire lifecycle.
 
 ---
 
-# Secure Defaults
+## Secure Defaults
 
 Applications should begin with the safest possible configuration.
 
@@ -148,7 +148,7 @@ Features should be enabled intentionally rather than by default.
 
 ---
 
-# Common Sources of Misconfiguration
+## Common Sources of Misconfiguration
 
 ```
 Misconfiguration
@@ -176,7 +176,7 @@ Many incidents result from operational oversights rather than software defects.
 
 ---
 
-# Default Credentials
+## Default Credentials
 
 Some products include predefined administrative accounts.
 
@@ -200,7 +200,7 @@ Default credentials should be changed or removed before deployment.
 
 ---
 
-# Unnecessary Features
+## Unnecessary Features
 
 Unused functionality increases the attack surface.
 
@@ -218,7 +218,7 @@ Reducing unnecessary functionality simplifies security management.
 
 ---
 
-# Debug Configuration
+## Debug Configuration
 
 Development settings should not remain enabled in production.
 
@@ -242,7 +242,7 @@ Production systems should minimize unnecessary diagnostic information.
 
 ---
 
-# Verbose Error Messages
+## Verbose Error Messages
 
 Applications should avoid exposing internal implementation details.
 
@@ -266,7 +266,7 @@ Users receive an appropriate message, while administrators retain diagnostic inf
 
 ---
 
-# Attack Surface
+## Attack Surface
 
 Every enabled component increases potential exposure.
 
@@ -294,7 +294,7 @@ Reducing unnecessary exposure strengthens security.
 
 ---
 
-# Configuration Drift
+## Configuration Drift
 
 Over time, systems may gradually diverge from approved configurations.
 
@@ -322,7 +322,7 @@ Regular reviews help maintain consistency.
 
 ---
 
-# Environment Separation
+## Environment Separation
 
 Development and production environments should remain distinct.
 
@@ -346,7 +346,7 @@ Each environment should have security controls appropriate to its purpose.
 
 ---
 
-# Configuration Baselines
+## Configuration Baselines
 
 Organizations establish approved baseline configurations.
 
@@ -370,7 +370,7 @@ Baselines promote consistency across systems.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An e-commerce platform:
 
@@ -398,7 +398,7 @@ Each component should follow approved configuration standards.
 
 ---
 
-# Secure Deployment
+## Secure Deployment
 
 ```
 Code
@@ -424,7 +424,7 @@ Configuration validation is as important as code testing.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Secure Configuration
@@ -454,7 +454,7 @@ Configuration supports every other security control.
 
 ---
 
-# Common Misconfiguration Examples
+## Common Misconfiguration Examples
 
 | Misconfiguration | Potential Impact |
 |------------------|------------------|
@@ -467,7 +467,7 @@ Configuration supports every other security control.
 
 ---
 
-# Enterprise Configuration Workflow
+## Enterprise Configuration Workflow
 
 ```
 Security Policy
@@ -497,7 +497,7 @@ Configuration should be continuously managed rather than configured once and for
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select a sample web application.
 2. Identify all major infrastructure components.
@@ -509,7 +509,7 @@ Configuration should be continuously managed rather than configured once and for
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Security Misconfiguration?
 2. Why is secure configuration important?
@@ -524,7 +524,7 @@ Configuration should be continuously managed rather than configured once and for
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use secure default configurations.
 - Remove or disable unnecessary features and services.
@@ -536,7 +536,7 @@ Configuration should be continuously managed rather than configured once and for
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Deploying with default settings.
 - Leaving debug mode enabled in production.
@@ -547,7 +547,7 @@ Configuration should be continuously managed rather than configured once and for
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Security Misconfiguration arises from insecure settings rather than programming errors.
 - Secure defaults, hardened configurations, and environment separation reduce operational risk.
@@ -555,15 +555,15 @@ Configuration should be continuously managed rather than configured once and for
 - Removing unnecessary functionality minimizes the attack surface.
 - Regular reviews help maintain consistent and secure enterprise configurations.
 
-# 23-Security-Misconfiguration.md
+## 23-Security-Misconfiguration.md
 
-# Part 2 — Server Hardening, Environment Configuration, Cloud Misconfiguration, Containers, and Infrastructure Security
+## Part 2 — Server Hardening, Environment Configuration, Cloud Misconfiguration, Containers, and Infrastructure Security
 
 > **"Modern applications rarely fail because of a single server. They fail because one misconfigured component weakens the security of the entire ecosystem."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -580,7 +580,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Server Hardening?
+## What is Server Hardening?
 
 Server hardening is the process of reducing the attack surface by securely configuring a system before it is placed into production.
 
@@ -612,7 +612,7 @@ Hardening minimizes unnecessary exposure while preserving required functionality
 
 ---
 
-# Hardening Objectives
+## Hardening Objectives
 
 ```
 Server Hardening
@@ -636,7 +636,7 @@ Server Hardening
 
 ---
 
-# Operating System Configuration
+## Operating System Configuration
 
 A secure operating system forms the foundation of application security.
 
@@ -653,7 +653,7 @@ Areas commonly reviewed include:
 
 ---
 
-# Operating System Architecture
+## Operating System Architecture
 
 ```
 Application
@@ -675,7 +675,7 @@ Weak operating system configuration affects every application running above it.
 
 ---
 
-# Web Server Configuration
+## Web Server Configuration
 
 Typical enterprise deployment:
 
@@ -699,7 +699,7 @@ Web servers should expose only the functionality required for business operation
 
 ---
 
-# Web Server Configuration Checklist
+## Web Server Configuration Checklist
 
 ```
 ✓ Secure Protocols
@@ -723,7 +723,7 @@ Configuration should align with organizational security standards.
 
 ---
 
-# Database Configuration
+## Database Configuration
 
 Databases contain valuable organizational data and require dedicated configuration reviews.
 
@@ -750,7 +750,7 @@ Configuration areas include:
 
 ---
 
-# Database Security Layers
+## Database Security Layers
 
 ```
 Database
@@ -772,7 +772,7 @@ Database
 
 ---
 
-# Environment Separation
+## Environment Separation
 
 Different environments serve different purposes.
 
@@ -796,7 +796,7 @@ Production should use stronger security controls and isolated infrastructure.
 
 ---
 
-# Environment Configuration
+## Environment Configuration
 
 | Environment | Typical Purpose |
 |-------------|-----------------|
@@ -809,7 +809,7 @@ Configuration should be appropriate for each environment.
 
 ---
 
-# Cloud Misconfiguration
+## Cloud Misconfiguration
 
 Cloud platforms simplify deployment but introduce configuration responsibilities.
 
@@ -835,7 +835,7 @@ Security remains a shared responsibility between the cloud provider and the cust
 
 ---
 
-# Shared Responsibility Model
+## Shared Responsibility Model
 
 ```
 Cloud Provider
@@ -873,7 +873,7 @@ Responsibilities vary by service model (IaaS, PaaS, SaaS), but customers remain 
 
 ---
 
-# Common Cloud Misconfiguration Categories
+## Common Cloud Misconfiguration Categories
 
 ```
 Cloud Risks
@@ -897,7 +897,7 @@ Cloud Risks
 
 ---
 
-# Container Configuration
+## Container Configuration
 
 Containers package applications consistently across environments.
 
@@ -919,7 +919,7 @@ Containers should follow the same secure configuration principles as traditional
 
 ---
 
-# Container Security Checklist
+## Container Security Checklist
 
 ```
 ✓ Minimal Base Images
@@ -941,7 +941,7 @@ Containers should follow the same secure configuration principles as traditional
 
 ---
 
-# Configuration Drift
+## Configuration Drift
 
 Infrastructure changes over time.
 
@@ -969,7 +969,7 @@ Automated validation helps maintain consistency.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Infrastructure can be managed using version-controlled configuration files.
 
@@ -1002,7 +1002,7 @@ Benefits include:
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 Applications often require confidential values.
 
@@ -1018,7 +1018,7 @@ These secrets should be managed securely rather than embedded directly into appl
 
 ---
 
-# Secure Secrets Workflow
+## Secure Secrets Workflow
 
 ```
 Application
@@ -1040,7 +1040,7 @@ Centralized management reduces exposure and simplifies rotation.
 
 ---
 
-# Logging Configuration
+## Logging Configuration
 
 ```
 Application
@@ -1066,7 +1066,7 @@ Logs should contain sufficient operational detail without exposing sensitive inf
 
 ---
 
-# Enterprise Configuration Review
+## Enterprise Configuration Review
 
 ```
 Configuration Review
@@ -1094,7 +1094,7 @@ Regular reviews help maintain compliance with organizational standards.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial services platform:
 
@@ -1130,7 +1130,7 @@ Every component follows documented hardening and configuration standards.
 
 ---
 
-# Enterprise Configuration Lifecycle
+## Enterprise Configuration Lifecycle
 
 ```
 Security Standard
@@ -1162,7 +1162,7 @@ Improvement
 
 ---
 
-# Common Misconfigurations
+## Common Misconfigurations
 
 | Area | Example |
 |------|----------|
@@ -1175,7 +1175,7 @@ Improvement
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a typical enterprise web architecture.
 2. List each infrastructure component.
@@ -1187,7 +1187,7 @@ Improvement
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is server hardening?
 2. Why is operating system configuration important?
@@ -1202,7 +1202,7 @@ Improvement
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply documented hardening standards before deployment.
 - Use Infrastructure as Code for repeatable deployments.
@@ -1214,7 +1214,7 @@ Improvement
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming cloud services are secure without customer configuration.
 - Deploying containers with unnecessary software.
@@ -1225,7 +1225,7 @@ Improvement
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure configuration extends beyond applications to operating systems, databases, cloud platforms, and containers.
 - Server hardening reduces unnecessary exposure before systems enter production.
@@ -1233,15 +1233,15 @@ Improvement
 - Secure secrets management and centralized logging are foundational operational practices.
 - Continuous configuration reviews help prevent drift and maintain enterprise security.
 
-# 23-Security-Misconfiguration.md
+## 23-Security-Misconfiguration.md
 
-# Part 3 — Security Headers, TLS Configuration, Authentication Configuration, Logging, Monitoring, CI/CD, and Enterprise Configuration Management
+## Part 3 — Security Headers, TLS Configuration, Authentication Configuration, Logging, Monitoring, CI/CD, and Enterprise Configuration Management
 
 > **"Configuration security is not limited to servers. Every layer—from HTTP headers to CI/CD pipelines—must be configured correctly to maintain a secure application."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1258,7 +1258,7 @@ After completing this part, you will understand:
 
 ---
 
-# Configuration Across the Application Stack
+## Configuration Across the Application Stack
 
 Security configuration exists at multiple layers.
 
@@ -1306,7 +1306,7 @@ A weakness in any layer can affect the overall security posture.
 
 ---
 
-# HTTP Security Headers
+## HTTP Security Headers
 
 HTTP response headers instruct browsers on how to handle web content securely.
 
@@ -1330,7 +1330,7 @@ Proper header configuration helps reduce common web security risks.
 
 ---
 
-# Common Security Headers
+## Common Security Headers
 
 | Header | Purpose |
 |----------|----------|
@@ -1345,7 +1345,7 @@ Headers should be configured according to organizational requirements and applic
 
 ---
 
-# Security Header Flow
+## Security Header Flow
 
 ```
 Browser Request
@@ -1369,7 +1369,7 @@ Security Policies Applied
 
 ---
 
-# TLS Configuration
+## TLS Configuration
 
 Transport Layer Security protects data during transmission.
 
@@ -1393,7 +1393,7 @@ Secure TLS configuration is essential for protecting confidentiality and integri
 
 ---
 
-# Secure TLS Configuration
+## Secure TLS Configuration
 
 ```
 TLS
@@ -1415,7 +1415,7 @@ Organizations should follow current industry recommendations for supported proto
 
 ---
 
-# Certificate Lifecycle
+## Certificate Lifecycle
 
 ```
 Certificate Request
@@ -1445,7 +1445,7 @@ Expired or improperly deployed certificates can disrupt secure communication.
 
 ---
 
-# Authentication Configuration
+## Authentication Configuration
 
 Authentication systems require careful configuration.
 
@@ -1475,7 +1475,7 @@ Configuration should include:
 
 ---
 
-# Authentication Configuration Checklist
+## Authentication Configuration Checklist
 
 ```
 ✓ Strong Password Policy
@@ -1495,7 +1495,7 @@ Configuration should include:
 
 ---
 
-# Authorization Configuration
+## Authorization Configuration
 
 Authorization determines what authenticated users are allowed to access.
 
@@ -1523,7 +1523,7 @@ Authorization rules should be centrally managed and consistently enforced.
 
 ---
 
-# Authorization Principles
+## Authorization Principles
 
 ```
 Authorization
@@ -1543,7 +1543,7 @@ Authorization
 
 ---
 
-# Session Configuration
+## Session Configuration
 
 Secure session management protects authenticated users.
 
@@ -1577,7 +1577,7 @@ Session configuration should include:
 
 ---
 
-# Logging Configuration
+## Logging Configuration
 
 Logging supports security investigations and operational monitoring.
 
@@ -1605,7 +1605,7 @@ Logs should provide meaningful information without exposing sensitive data.
 
 ---
 
-# Logging Best Practices
+## Logging Best Practices
 
 ```
 Log
@@ -1629,7 +1629,7 @@ Sensitive information such as passwords or secret keys should never be recorded 
 
 ---
 
-# Monitoring Configuration
+## Monitoring Configuration
 
 Monitoring provides visibility into system health and security events.
 
@@ -1657,7 +1657,7 @@ Monitoring should detect abnormal behavior and support timely investigation.
 
 ---
 
-# Monitoring Components
+## Monitoring Components
 
 ```
 Monitoring
@@ -1681,7 +1681,7 @@ Monitoring
 
 ---
 
-# CI/CD Configuration
+## CI/CD Configuration
 
 Modern applications are frequently deployed using automated pipelines.
 
@@ -1713,7 +1713,7 @@ Configuration security is an essential part of the deployment process.
 
 ---
 
-# CI/CD Security Checklist
+## CI/CD Security Checklist
 
 ```
 ✓ Protected Branches
@@ -1737,7 +1737,7 @@ Automation should improve consistency without bypassing security requirements.
 
 ---
 
-# Configuration Compliance
+## Configuration Compliance
 
 Organizations compare deployed systems against approved standards.
 
@@ -1765,7 +1765,7 @@ Regular compliance reviews help maintain a consistent security posture.
 
 ---
 
-# Enterprise Configuration Management
+## Enterprise Configuration Management
 
 ```
 Configuration Management
@@ -1793,7 +1793,7 @@ Effective configuration management reduces human error and improves repeatabilit
 
 ---
 
-# Configuration Version Control
+## Configuration Version Control
 
 Configuration files should be managed similarly to application code.
 
@@ -1821,7 +1821,7 @@ Version history supports accountability and rollback when necessary.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An online banking platform:
 
@@ -1865,7 +1865,7 @@ Every layer uses approved configuration standards and is reviewed regularly.
 
 ---
 
-# Enterprise Configuration Workflow
+## Enterprise Configuration Workflow
 
 ```
 Security Standard
@@ -1897,7 +1897,7 @@ Continuous Monitoring
 
 ---
 
-# Common Configuration Weaknesses
+## Common Configuration Weaknesses
 
 | Area | Example |
 |------|----------|
@@ -1910,7 +1910,7 @@ Continuous Monitoring
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Review the architecture of a sample web application.
 2. Identify where HTTP headers, TLS, authentication, and logging are configured.
@@ -1922,7 +1922,7 @@ Continuous Monitoring
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are HTTP security headers important?
 2. What is the purpose of HSTS?
@@ -1937,7 +1937,7 @@ Continuous Monitoring
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Configure HTTP security headers according to application requirements.
 - Use modern TLS configurations and renew certificates before expiration.
@@ -1949,7 +1949,7 @@ Continuous Monitoring
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Missing or inconsistent security headers.
 - Weak TLS configurations or expired certificates.
@@ -1960,7 +1960,7 @@ Continuous Monitoring
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Security configuration extends across browsers, servers, applications, authentication systems, and deployment pipelines.
 - HTTP security headers and secure TLS configurations strengthen communication security.
@@ -1968,15 +1968,15 @@ Continuous Monitoring
 - Logging, monitoring, and CI/CD configuration are critical components of operational security.
 - Version-controlled configuration management improves consistency, traceability, and compliance.
 
-# 23-Security-Misconfiguration.md
+## 23-Security-Misconfiguration.md
 
-# Part 4 — Enterprise Governance, Compliance, Continuous Configuration Management, Incident Response, and Chapter Summary
+## Part 4 — Enterprise Governance, Compliance, Continuous Configuration Management, Incident Response, and Chapter Summary
 
 > **"Security misconfiguration is not a one-time deployment mistake—it is an ongoing operational risk that requires continuous governance, monitoring, and improvement."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1992,7 +1992,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Configuration Governance
+## Enterprise Configuration Governance
 
 Configuration governance ensures that all systems follow approved organizational standards.
 
@@ -2028,7 +2028,7 @@ Governance helps maintain consistency across infrastructure, applications, and c
 
 ---
 
-# Configuration Standards
+## Configuration Standards
 
 Organizations establish standardized configurations for different technology stacks.
 
@@ -2058,7 +2058,7 @@ Standardized configurations simplify management and reduce human error.
 
 ---
 
-# Configuration Baselines
+## Configuration Baselines
 
 A baseline is the approved secure configuration for a system.
 
@@ -2086,7 +2086,7 @@ Every deployed system should align with its approved baseline.
 
 ---
 
-# Configuration Compliance
+## Configuration Compliance
 
 Compliance verifies that systems remain aligned with organizational standards.
 
@@ -2114,7 +2114,7 @@ Regular compliance assessments reduce long-term operational risk.
 
 ---
 
-# Continuous Configuration Management
+## Continuous Configuration Management
 
 Configuration management should be continuous rather than event-driven.
 
@@ -2146,7 +2146,7 @@ This lifecycle helps organizations detect and correct deviations promptly.
 
 ---
 
-# Configuration Auditing
+## Configuration Auditing
 
 Audits verify whether systems remain securely configured.
 
@@ -2176,7 +2176,7 @@ Audit findings should be documented and tracked until resolved.
 
 ---
 
-# Configuration Drift Detection
+## Configuration Drift Detection
 
 Configuration drift occurs when deployed systems differ from approved baselines.
 
@@ -2208,7 +2208,7 @@ Automated monitoring helps identify drift before it becomes a security issue.
 
 ---
 
-# Change Management
+## Change Management
 
 Configuration changes should follow a structured approval process.
 
@@ -2244,7 +2244,7 @@ Emergency changes should also be documented and reviewed after implementation.
 
 ---
 
-# Secure Rollback
+## Secure Rollback
 
 If a configuration change causes issues:
 
@@ -2276,7 +2276,7 @@ Rollback procedures should be tested before they are needed.
 
 ---
 
-# Incident Response for Misconfiguration
+## Incident Response for Misconfiguration
 
 Configuration issues may require formal incident handling.
 
@@ -2312,7 +2312,7 @@ The objective is not only to restore services but also to prevent recurrence.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Questions to investigate:
 
@@ -2334,7 +2334,7 @@ Root cause analysis strengthens future operational processes.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Infrastructure
@@ -2364,7 +2364,7 @@ Continuous monitoring helps detect unexpected configuration changes and operatio
 
 ---
 
-# Enterprise Security Metrics
+## Enterprise Security Metrics
 
 Organizations monitor measurable indicators to improve configuration management.
 
@@ -2379,7 +2379,7 @@ Organizations monitor measurable indicators to improve configuration management.
 
 ---
 
-# Enterprise Dashboard
+## Enterprise Dashboard
 
 ```
 Configuration Dashboard
@@ -2407,7 +2407,7 @@ Dashboards provide visibility into the organization's configuration posture.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail organization:
 
@@ -2447,7 +2447,7 @@ Each layer is configured according to approved enterprise standards and continuo
 
 ---
 
-# Secure Configuration Lifecycle
+## Secure Configuration Lifecycle
 
 ```
 Requirements
@@ -2485,7 +2485,7 @@ Configuration management is a continuous operational process.
 
 ---
 
-# Enterprise Configuration Checklist
+## Enterprise Configuration Checklist
 
 ```
 ✓ Secure Defaults Applied
@@ -2511,7 +2511,7 @@ Configuration management is a continuous operational process.
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2523,9 +2523,9 @@ Configuration management is a continuous operational process.
 
 ---
 
-# Interview Revision
+## Interview Revision
 
-## Security Misconfiguration
+### Security Misconfiguration
 
 ```
 Unsafe Configuration
@@ -2545,7 +2545,7 @@ Operational Risk
 
 ---
 
-## Secure Configuration Lifecycle
+### Secure Configuration Lifecycle
 
 ```
 Plan
@@ -2577,7 +2577,7 @@ Improve
 
 ---
 
-## Enterprise Configuration
+### Enterprise Configuration
 
 ```
 Policies
@@ -2605,7 +2605,7 @@ Continuous Monitoring
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Choose a sample enterprise web application architecture.
 2. Identify configuration standards for each layer.
@@ -2618,7 +2618,7 @@ Continuous Monitoring
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Security Misconfiguration?
 2. Why are secure configuration baselines important?
@@ -2633,7 +2633,7 @@ Continuous Monitoring
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Establish secure configuration standards for all platforms.
 - Maintain approved baseline configurations.
@@ -2646,7 +2646,7 @@ Continuous Monitoring
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Leaving systems with default configurations.
 - Skipping configuration reviews during rapid deployments.
@@ -2657,7 +2657,7 @@ Continuous Monitoring
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

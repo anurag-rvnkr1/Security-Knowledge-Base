@@ -1,10 +1,10 @@
 # 05-Windows-File-System.md
 
-# Part 1 — Windows File System Fundamentals, Storage Architecture, NTFS Introduction, FAT, exFAT, and File System Concepts
+## Part 1 — Windows File System Fundamentals, Storage Architecture, NTFS Introduction, FAT, exFAT, and File System Concepts
 
 ---
 
-# Introduction
+## Introduction
 
 A **File System** is one of the most fundamental components of any operating system. It determines **how data is stored, organized, accessed, secured, and recovered** from storage devices.
 
@@ -25,7 +25,7 @@ This chapter begins with the foundations of Windows file systems before moving i
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this part, you will understand:
 
@@ -42,7 +42,7 @@ By the end of this part, you will understand:
 
 ---
 
-# What is a File System?
+## What is a File System?
 
 A **file system** is the method used by an operating system to organize and manage data stored on storage devices.
 
@@ -57,7 +57,7 @@ Without a file system, Windows would not know:
 
 ---
 
-# File System Responsibilities
+## File System Responsibilities
 
 A Windows file system is responsible for:
 
@@ -73,7 +73,7 @@ A Windows file system is responsible for:
 
 ---
 
-# High-Level Storage Architecture
+## High-Level Storage Architecture
 
 ```text
 Application
@@ -103,7 +103,7 @@ Applications never communicate directly with disks. All storage requests pass th
 
 ---
 
-# Data Storage Journey
+## Data Storage Journey
 
 When a user saves a file:
 
@@ -141,9 +141,9 @@ Data Stored
 
 ---
 
-# Physical Storage vs Logical Storage
+## Physical Storage vs Logical Storage
 
-## Physical Storage
+### Physical Storage
 
 Examples:
 
@@ -157,7 +157,7 @@ Physical storage refers to the actual hardware.
 
 ---
 
-## Logical Storage
+### Logical Storage
 
 Examples:
 
@@ -175,7 +175,7 @@ Logical storage represents partitions or volumes presented by the operating syst
 
 ---
 
-# Storage Hierarchy
+## Storage Hierarchy
 
 ```text
 Physical Disk
@@ -203,7 +203,7 @@ Files
 
 ---
 
-# Important File System Terminology
+## Important File System Terminology
 
 | Term | Description |
 |------|-------------|
@@ -218,7 +218,7 @@ Files
 
 ---
 
-# What is a Sector?
+## What is a Sector?
 
 A **sector** is the smallest physical storage unit on a disk.
 
@@ -247,7 +247,7 @@ Modern storage devices commonly use:
 
 ---
 
-# What is a Cluster?
+## What is a Cluster?
 
 Windows allocates storage using **clusters** rather than individual sectors.
 
@@ -271,7 +271,7 @@ A cluster contains one or more sectors.
 
 ---
 
-# Cluster Allocation
+## Cluster Allocation
 
 Example:
 
@@ -289,7 +289,7 @@ Unused space inside the allocated cluster is known as **slack space**.
 
 ---
 
-# Slack Space
+## Slack Space
 
 ```text
 4 KB Cluster
@@ -311,7 +311,7 @@ Slack space can contain remnants of previously stored data, making it important 
 
 ---
 
-# Windows File System Evolution
+## Windows File System Evolution
 
 ```text
 FAT
@@ -337,7 +337,7 @@ Each generation introduced improvements in scalability, reliability, and securit
 
 ---
 
-# FAT (File Allocation Table)
+## FAT (File Allocation Table)
 
 FAT was one of Microsoft's earliest file systems.
 
@@ -357,7 +357,7 @@ Limitations:
 
 ---
 
-# FAT32
+## FAT32
 
 FAT32 improved upon earlier FAT versions.
 
@@ -380,7 +380,7 @@ FAT32 is commonly used on removable media and embedded devices.
 
 ---
 
-# exFAT
+## exFAT
 
 exFAT (Extended File Allocation Table) was designed for modern flash storage.
 
@@ -401,7 +401,7 @@ Common uses:
 
 ---
 
-# FAT32 vs exFAT
+## FAT32 vs exFAT
 
 | Feature | FAT32 | exFAT |
 |----------|--------|--------|
@@ -413,7 +413,7 @@ Common uses:
 
 ---
 
-# NTFS (New Technology File System)
+## NTFS (New Technology File System)
 
 NTFS is the default Windows file system for modern desktop and server installations.
 
@@ -427,7 +427,7 @@ It was designed for:
 
 ---
 
-# NTFS Capabilities
+## NTFS Capabilities
 
 NTFS supports:
 
@@ -447,7 +447,7 @@ These capabilities make NTFS suitable for enterprise workloads.
 
 ---
 
-# Why NTFS Became the Standard
+## Why NTFS Became the Standard
 
 Compared to FAT-based systems, NTFS provides:
 
@@ -459,7 +459,7 @@ Compared to FAT-based systems, NTFS provides:
 
 ---
 
-# Windows Supported File Systems
+## Windows Supported File Systems
 
 | File System | Typical Usage |
 |-------------|---------------|
@@ -470,7 +470,7 @@ Compared to FAT-based systems, NTFS provides:
 
 ---
 
-# Choosing the Right File System
+## Choosing the Right File System
 
 | Scenario | Recommended File System |
 |----------|--------------------------|
@@ -481,7 +481,7 @@ Compared to FAT-based systems, NTFS provides:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A corporate laptop may use:
 
@@ -517,7 +517,7 @@ An external drive used for collaboration across Windows and macOS systems may us
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 The choice of file system affects security.
 
@@ -541,7 +541,7 @@ Security analysts often examine:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Selecting the correct file system improves:
 
@@ -556,7 +556,7 @@ Using an inappropriate file system can lead to reduced functionality, compatibil
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use NTFS for Windows operating system volumes.
 - Use exFAT for removable media requiring cross-platform compatibility.
@@ -568,9 +568,9 @@ Using an inappropriate file system can lead to reduced functionality, compatibil
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Identify the File System
+### Lab 1 — Identify the File System
 
 1. Open **File Explorer**.
 2. Right-click the **C:** drive.
@@ -583,7 +583,7 @@ Using an inappropriate file system can lead to reduced functionality, compatibil
 
 ---
 
-## Lab 2 — View Disk Layout
+### Lab 2 — View Disk Layout
 
 1. Press:
 
@@ -607,7 +607,7 @@ Observe the storage layout without making changes.
 
 ---
 
-## Lab 3 — Examine a USB Drive
+### Lab 3 — Examine a USB Drive
 
 Insert a USB drive and:
 
@@ -621,7 +621,7 @@ Discuss why FAT32, exFAT, or NTFS might have been chosen.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A file system organizes and manages stored data.
 - Windows supports FAT32, exFAT, NTFS, and ReFS for different scenarios.
@@ -632,7 +632,7 @@ Discuss why FAT32, exFAT, or NTFS might have been chosen.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a file system?
 2. What is the difference between a sector and a cluster?
@@ -647,7 +647,7 @@ Discuss why FAT32, exFAT, or NTFS might have been chosen.
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -658,13 +658,13 @@ Discuss why FAT32, exFAT, or NTFS might have been chosen.
 
 ---
 
-# 05-Windows-File-System.md
+## 05-Windows-File-System.md
 
-# Part 2 — NTFS Architecture, Master File Table (MFT), Metadata, File Records, Directories, Journaling, and NTFS Internals
+## Part 2 — NTFS Architecture, Master File Table (MFT), Metadata, File Records, Directories, Journaling, and NTFS Internals
 
 ---
 
-# Introduction
+## Introduction
 
 The **New Technology File System (NTFS)** is the default file system for modern Windows operating systems because it provides:
 
@@ -688,7 +688,7 @@ Understanding NTFS internals is essential for:
 
 ---
 
-# NTFS High-Level Architecture
+## NTFS High-Level Architecture
 
 ```text
 Application
@@ -722,7 +722,7 @@ The NTFS driver translates file operations into disk operations while maintainin
 
 ---
 
-# NTFS Internal Components
+## NTFS Internal Components
 
 ```text
 NTFS Volume
@@ -741,7 +741,7 @@ Each component contributes to reliable storage and fast file access.
 
 ---
 
-# NTFS Boot Sector
+## NTFS Boot Sector
 
 Every NTFS volume begins with a **boot sector**.
 
@@ -755,7 +755,7 @@ Responsibilities:
 
 ---
 
-# Simplified NTFS Layout
+## Simplified NTFS Layout
 
 ```text
 +--------------------------------------+
@@ -789,7 +789,7 @@ The exact layout varies depending on volume size and usage.
 
 ---
 
-# Master File Table (MFT)
+## Master File Table (MFT)
 
 The **Master File Table (MFT)** is the heart of NTFS.
 
@@ -799,7 +799,7 @@ Think of the MFT as a database containing information about everything stored on
 
 ---
 
-# MFT Architecture
+## MFT Architecture
 
 ```text
 Master File Table
@@ -816,7 +816,7 @@ Even the MFT itself is represented as a file.
 
 ---
 
-# Why the MFT is Important
+## Why the MFT is Important
 
 The MFT stores information such as:
 
@@ -832,7 +832,7 @@ Without the MFT, Windows would not know how files are organized on the disk.
 
 ---
 
-# MFT Record Structure (Simplified)
+## MFT Record Structure (Simplified)
 
 ```text
 MFT Record
@@ -856,7 +856,7 @@ A standard MFT record is typically **1024 bytes**, although this may vary depend
 
 ---
 
-# File Records
+## File Records
 
 Each file receives a unique MFT record.
 
@@ -882,7 +882,7 @@ Deleting a file generally marks its MFT entry as reusable rather than immediatel
 
 ---
 
-# Metadata
+## Metadata
 
 **Metadata** is "data about data."
 
@@ -902,7 +902,7 @@ Metadata enables Windows to manage files efficiently.
 
 ---
 
-# File Attributes
+## File Attributes
 
 NTFS stores file properties as **attributes**.
 
@@ -920,7 +920,7 @@ Common attributes include:
 
 ---
 
-# Resident vs Non-Resident Data
+## Resident vs Non-Resident Data
 
 Small files may be stored directly within the MFT record.
 
@@ -962,7 +962,7 @@ This is called **non-resident data**.
 
 ---
 
-# Directories in NTFS
+## Directories in NTFS
 
 Directories are specialized files that maintain indexes of other files and folders.
 
@@ -981,7 +981,7 @@ Internally, directory structures use indexed data for efficient lookups.
 
 ---
 
-# Directory Indexing
+## Directory Indexing
 
 NTFS indexes directories to improve search performance.
 
@@ -1005,7 +1005,7 @@ Large directories remain performant because Windows does not perform a simple se
 
 ---
 
-# NTFS Metadata Files
+## NTFS Metadata Files
 
 NTFS reserves several hidden metadata files.
 
@@ -1026,7 +1026,7 @@ These files are essential to NTFS operation.
 
 ---
 
-# MFT Mirror
+## MFT Mirror
 
 The **MFT Mirror** stores a copy of critical MFT records.
 
@@ -1038,7 +1038,7 @@ Purpose:
 
 ---
 
-# NTFS Bitmap
+## NTFS Bitmap
 
 The Bitmap tracks cluster allocation.
 
@@ -1054,7 +1054,7 @@ When creating a file, NTFS consults the bitmap to locate available clusters.
 
 ---
 
-# Journaling
+## Journaling
 
 NTFS is a **journaling file system**.
 
@@ -1080,7 +1080,7 @@ This improves recovery after unexpected shutdowns.
 
 ---
 
-# Why Journaling Matters
+## Why Journaling Matters
 
 Without journaling:
 
@@ -1114,7 +1114,7 @@ Journaling primarily protects **file system metadata**, not necessarily the cont
 
 ---
 
-# NTFS Transaction Log
+## NTFS Transaction Log
 
 The journal is stored in:
 
@@ -1132,7 +1132,7 @@ It records metadata transactions such as:
 
 ---
 
-# NTFS Consistency
+## NTFS Consistency
 
 NTFS maintains consistency through:
 
@@ -1146,7 +1146,7 @@ These mechanisms reduce the likelihood of corruption after crashes or power fail
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An employee saves a spreadsheet.
 
@@ -1190,7 +1190,7 @@ This process ensures the file system remains consistent even if an interruption 
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 NTFS metadata is valuable during investigations.
 
@@ -1214,7 +1214,7 @@ Understanding NTFS internals helps detect these activities.
 
 ---
 
-# Business Impact
+## Business Impact
 
 NTFS internals provide:
 
@@ -1229,7 +1229,7 @@ These features are critical for enterprise desktops, servers, and storage system
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use NTFS for Windows operating system volumes.
 - Monitor disk health and event logs.
@@ -1241,9 +1241,9 @@ These features are critical for enterprise desktops, servers, and storage system
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Identify NTFS Metadata
+### Lab 1 — Identify NTFS Metadata
 
 1. Open **Command Prompt**.
 2. Run:
@@ -1263,7 +1263,7 @@ Observe information such as:
 
 ---
 
-## Lab 2 — Examine File Properties
+### Lab 2 — Examine File Properties
 
 1. Create a text file.
 2. Right-click → **Properties**.
@@ -1279,7 +1279,7 @@ Discuss why "Size" and "Size on disk" may differ.
 
 ---
 
-## Lab 3 — Observe Directory Growth
+### Lab 3 — Observe Directory Growth
 
 1. Create a new folder.
 2. Add several files.
@@ -1293,7 +1293,7 @@ Discuss how NTFS indexes directories for efficient access.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Master File Table (MFT) is the core database of NTFS.
 - Every file and directory has at least one MFT record.
@@ -1304,7 +1304,7 @@ Discuss how NTFS indexes directories for efficient access.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the Master File Table (MFT)?
 2. Why is the MFT important?
@@ -1319,7 +1319,7 @@ Discuss how NTFS indexes directories for efficient access.
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -1329,13 +1329,13 @@ Discuss how NTFS indexes directories for efficient access.
 
 ---
 
-# 05-Windows-File-System.md
+## 05-Windows-File-System.md
 
-# Part 3 — NTFS Security, Alternate Data Streams (ADS), Compression, Encryption (EFS), Hard Links, Symbolic Links, Quotas, and Advanced NTFS Features
+## Part 3 — NTFS Security, Alternate Data Streams (ADS), Compression, Encryption (EFS), Hard Links, Symbolic Links, Quotas, and Advanced NTFS Features
 
 ---
 
-# Introduction
+## Introduction
 
 Beyond storing files efficiently, **NTFS** provides powerful enterprise features that improve:
 
@@ -1358,7 +1358,7 @@ Understanding these advanced features is essential for:
 
 ---
 
-# Advanced NTFS Features
+## Advanced NTFS Features
 
 Modern NTFS supports numerous enterprise capabilities.
 
@@ -1379,7 +1379,7 @@ NTFS
 
 ---
 
-# NTFS Security Model
+## NTFS Security Model
 
 NTFS secures files using **Access Control Lists (ACLs)**.
 
@@ -1409,7 +1409,7 @@ This access check is performed by Windows before a file is opened.
 
 ---
 
-# Access Control Lists (ACLs)
+## Access Control Lists (ACLs)
 
 Each NTFS object can contain an ACL that specifies who is allowed or denied access.
 
@@ -1428,7 +1428,7 @@ Each ACE defines permissions for a user or group.
 
 ---
 
-# Common NTFS Permissions
+## Common NTFS Permissions
 
 | Permission | Description |
 |------------|-------------|
@@ -1443,7 +1443,7 @@ These permissions can be inherited by child objects.
 
 ---
 
-# Permission Inheritance
+## Permission Inheritance
 
 Inheritance simplifies administration.
 
@@ -1467,7 +1467,7 @@ By default, new files and folders inherit permissions from their parent unless i
 
 ---
 
-# Effective Permissions
+## Effective Permissions
 
 A user's actual access depends on:
 
@@ -1480,7 +1480,7 @@ Administrators should evaluate **effective permissions** rather than only review
 
 ---
 
-# Alternate Data Streams (ADS)
+## Alternate Data Streams (ADS)
 
 NTFS supports **Alternate Data Streams (ADS)**.
 
@@ -1499,7 +1499,7 @@ The main file appears unchanged in File Explorer.
 
 ---
 
-# ADS Concept
+## ADS Concept
 
 ```text
 File
@@ -1521,7 +1521,7 @@ Applications typically access only the primary data stream unless explicitly ins
 
 ---
 
-# Legitimate Uses of ADS
+## Legitimate Uses of ADS
 
 Microsoft uses ADS for several purposes.
 
@@ -1535,7 +1535,7 @@ Not every ADS indicates malicious activity.
 
 ---
 
-# Cybersecurity Perspective: ADS
+## Cybersecurity Perspective: ADS
 
 Attackers have historically abused ADS to:
 
@@ -1548,7 +1548,7 @@ Modern security products often inspect ADS, but analysts should still consider t
 
 ---
 
-# Encrypting File System (EFS)
+## Encrypting File System (EFS)
 
 EFS provides file-level encryption on NTFS volumes.
 
@@ -1578,7 +1578,7 @@ Encryption and decryption are generally transparent to the authorized user.
 
 ---
 
-# EFS Characteristics
+## EFS Characteristics
 
 Benefits:
 
@@ -1595,7 +1595,7 @@ Limitations:
 
 ---
 
-# EFS vs BitLocker
+## EFS vs BitLocker
 
 | EFS | BitLocker |
 |------|-----------|
@@ -1608,7 +1608,7 @@ Organizations often deploy BitLocker for full-disk protection and EFS only where
 
 ---
 
-# NTFS Compression
+## NTFS Compression
 
 NTFS can compress files and folders to reduce storage consumption.
 
@@ -1632,7 +1632,7 @@ Compression occurs transparently.
 
 ---
 
-# Compression Benefits
+## Compression Benefits
 
 Advantages:
 
@@ -1647,7 +1647,7 @@ Potential trade-offs:
 
 ---
 
-# Sparse Files
+## Sparse Files
 
 A **sparse file** reserves logical space without physically allocating every byte.
 
@@ -1673,7 +1673,7 @@ Sparse files are commonly used by:
 
 ---
 
-# Hard Links
+## Hard Links
 
 A **hard link** creates another directory entry pointing to the same file data.
 
@@ -1698,7 +1698,7 @@ Characteristics:
 
 ---
 
-# Symbolic Links
+## Symbolic Links
 
 A **symbolic link** is a special file that references another file or directory.
 
@@ -1714,7 +1714,7 @@ Unlike hard links, symbolic links can point to objects on different volumes.
 
 ---
 
-# Hard Links vs Symbolic Links
+## Hard Links vs Symbolic Links
 
 | Hard Link | Symbolic Link |
 |------------|---------------|
@@ -1725,7 +1725,7 @@ Unlike hard links, symbolic links can point to objects on different volumes.
 
 ---
 
-# Junction Points
+## Junction Points
 
 A **junction point** links one directory to another directory.
 
@@ -1747,7 +1747,7 @@ Administrators use junctions to maintain compatibility with legacy software and 
 
 ---
 
-# Reparse Points
+## Reparse Points
 
 A **reparse point** stores special information used by the file system to redirect processing.
 
@@ -1760,7 +1760,7 @@ Used by:
 
 ---
 
-# Disk Quotas
+## Disk Quotas
 
 NTFS supports disk quotas for user storage management.
 
@@ -1786,7 +1786,7 @@ Administrators can prevent excessive disk consumption.
 
 ---
 
-# Quota Example
+## Quota Example
 
 | User | Quota | Used |
 |------|--------|------|
@@ -1798,7 +1798,7 @@ Quotas are especially useful on shared file servers.
 
 ---
 
-# File Attributes
+## File Attributes
 
 Common NTFS attributes include:
 
@@ -1813,7 +1813,7 @@ Common NTFS attributes include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A finance department stores confidential payroll files.
 
@@ -1845,7 +1845,7 @@ This layered approach provides confidentiality and accountability.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security analysts frequently investigate:
 
@@ -1861,7 +1861,7 @@ Threat actors may leverage advanced NTFS features to evade detection or establis
 
 ---
 
-# Business Impact
+## Business Impact
 
 Advanced NTFS capabilities help organizations:
 
@@ -1874,7 +1874,7 @@ Advanced NTFS capabilities help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Apply the principle of least privilege using NTFS permissions.
 - Review ACLs regularly.
@@ -1886,9 +1886,9 @@ Advanced NTFS capabilities help organizations:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review NTFS Permissions
+### Lab 1 — Review NTFS Permissions
 
 1. Create a test folder.
 2. Right-click → **Properties** → **Security**.
@@ -1903,7 +1903,7 @@ Do not modify permissions on production folders.
 
 ---
 
-## Lab 2 — Enable NTFS Compression
+### Lab 2 — Enable NTFS Compression
 
 1. Create a test folder.
 2. Open **Properties**.
@@ -1914,7 +1914,7 @@ Do not enable compression on production data without evaluating performance impl
 
 ---
 
-## Lab 3 — Review Disk Quota Settings
+### Lab 3 — Review Disk Quota Settings
 
 1. Open the **Properties** of an NTFS volume.
 2. Navigate to the **Quota** tab (if available).
@@ -1928,7 +1928,7 @@ Discuss enterprise use cases for quotas.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - NTFS provides advanced enterprise security and storage features.
 - ACLs control access to files and folders.
@@ -1939,7 +1939,7 @@ Discuss enterprise use cases for quotas.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an Access Control List (ACL)?
 2. What is the difference between an ACL and an ACE?
@@ -1954,7 +1954,7 @@ Discuss enterprise use cases for quotas.
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -1965,13 +1965,13 @@ Discuss enterprise use cases for quotas.
 
 ---
 
-# 05-Windows-File-System.md
+## 05-Windows-File-System.md
 
-# Part 4 — File System Forensics, NTFS Timestamps, File Recovery, ReFS, Enterprise Storage Best Practices, Chapter Summary, and Review
+## Part 4 — File System Forensics, NTFS Timestamps, File Recovery, ReFS, Enterprise Storage Best Practices, Chapter Summary, and Review
 
 ---
 
-# Introduction
+## Introduction
 
 Modern Windows file systems are not only designed to store data efficiently—they also preserve valuable metadata that can be used for:
 
@@ -1986,7 +1986,7 @@ Understanding how Windows records file activity helps administrators and securit
 
 ---
 
-# File System Forensics
+## File System Forensics
 
 **File system forensics** is the process of analyzing storage devices to determine:
 
@@ -2001,7 +2001,7 @@ Forensic investigators rely heavily on NTFS metadata because it often survives l
 
 ---
 
-# Digital Evidence Sources
+## Digital Evidence Sources
 
 ```text
 NTFS Volume
@@ -2021,7 +2021,7 @@ Each source provides different pieces of evidence.
 
 ---
 
-# NTFS Timestamps
+## NTFS Timestamps
 
 Every NTFS file contains multiple timestamps.
 
@@ -2038,7 +2038,7 @@ These timestamps help investigators build timelines.
 
 ---
 
-# MACB Timeline
+## MACB Timeline
 
 ```text
 File Created
@@ -2060,7 +2060,7 @@ Investigators compare these values to reconstruct user activity.
 
 ---
 
-# Timestamp Analysis Example
+## Timestamp Analysis Example
 
 | Event | Time |
 |--------|------|
@@ -2078,7 +2078,7 @@ Possible interpretation:
 
 ---
 
-# Security Information in NTFS
+## Security Information in NTFS
 
 NTFS stores security metadata such as:
 
@@ -2095,7 +2095,7 @@ This information helps determine:
 
 ---
 
-# Deleted Files
+## Deleted Files
 
 Deleting a file does **not** immediately erase its contents.
 
@@ -2125,7 +2125,7 @@ This behavior allows recovery tools to restore deleted files if the data has not
 
 ---
 
-# File Recovery
+## File Recovery
 
 Successful recovery depends on factors such as:
 
@@ -2138,7 +2138,7 @@ The longer a system continues to write data after deletion, the lower the probab
 
 ---
 
-# Unallocated Space
+## Unallocated Space
 
 When a file is deleted, its clusters often become **unallocated**.
 
@@ -2167,7 +2167,7 @@ Unallocated space may contain:
 
 ---
 
-# Slack Space Review
+## Slack Space Review
 
 Slack space exists because Windows allocates storage in clusters.
 
@@ -2185,7 +2185,7 @@ Slack space may contain remnants of previously stored information and is therefo
 
 ---
 
-# USN Change Journal
+## USN Change Journal
 
 The **Update Sequence Number (USN) Change Journal** records changes to files on NTFS volumes.
 
@@ -2201,7 +2201,7 @@ The journal assists administrators and forensic analysts in identifying file act
 
 ---
 
-# NTFS Log File
+## NTFS Log File
 
 Previously introduced as:
 
@@ -2215,7 +2215,7 @@ From a forensic perspective, it may also provide insight into recent file system
 
 ---
 
-# Alternate Data Streams Review
+## Alternate Data Streams Review
 
 Investigators should verify whether files contain:
 
@@ -2235,7 +2235,7 @@ Although ADS has legitimate uses, unexpected streams warrant investigation.
 
 ---
 
-# File Integrity
+## File Integrity
 
 Organizations verify file integrity using cryptographic hashes.
 
@@ -2251,7 +2251,7 @@ Hash values change whenever file contents change.
 
 ---
 
-# Integrity Verification Workflow
+## Integrity Verification Workflow
 
 ```text
 Original File
@@ -2281,7 +2281,7 @@ No → File Modified
 
 ---
 
-# ReFS (Resilient File System)
+## ReFS (Resilient File System)
 
 **ReFS** was introduced for high-availability enterprise workloads.
 
@@ -2296,7 +2296,7 @@ ReFS is commonly used in certain Windows Server and enterprise storage scenarios
 
 ---
 
-# ReFS Features
+## ReFS Features
 
 Advantages include:
 
@@ -2308,7 +2308,7 @@ Advantages include:
 
 ---
 
-# NTFS vs ReFS
+## NTFS vs ReFS
 
 | Feature | NTFS | ReFS |
 |----------|------|------|
@@ -2323,7 +2323,7 @@ The exact capabilities of ReFS depend on the Windows edition and version.
 
 ---
 
-# Enterprise Storage Architecture
+## Enterprise Storage Architecture
 
 Example:
 
@@ -2359,7 +2359,7 @@ Organizations often combine NTFS endpoints with resilient centralized storage.
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 A common enterprise backup approach follows the **3-2-1 principle**:
 
@@ -2371,7 +2371,7 @@ This improves resilience against hardware failures, ransomware, and accidental d
 
 ---
 
-# File System Monitoring
+## File System Monitoring
 
 Administrators commonly monitor:
 
@@ -2394,7 +2394,7 @@ Monitoring tools may include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A ransomware attack begins encrypting user documents.
 
@@ -2430,7 +2430,7 @@ The file system plays a central role in both detection and recovery.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 File systems are common targets for attackers.
 
@@ -2455,7 +2455,7 @@ Defensive measures include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A secure and well-managed file system provides:
 
@@ -2470,7 +2470,7 @@ Poor file system management can result in data loss, security breaches, and cost
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use NTFS for Windows operating system volumes.
 - Enable BitLocker for endpoint protection.
@@ -2483,9 +2483,9 @@ Poor file system management can result in data loss, security breaches, and cost
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View File Hash
+### Lab 1 — View File Hash
 
 Open **PowerShell** and run:
 
@@ -2501,7 +2501,7 @@ Record:
 
 ---
 
-## Lab 2 — Compare File Timestamps
+### Lab 2 — Compare File Timestamps
 
 1. Create a new text file.
 2. Edit it several times.
@@ -2517,7 +2517,7 @@ Discuss how the timestamps changed.
 
 ---
 
-## Lab 3 — Review NTFS Permissions
+### Lab 3 — Review NTFS Permissions
 
 Select a sensitive folder.
 
@@ -2532,7 +2532,7 @@ Discuss how these permissions support enterprise security.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2565,7 +2565,7 @@ These concepts provide the foundation for Windows storage management, digital fo
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - NTFS is the primary Windows file system because of its security, reliability, and scalability.
 - The Master File Table (MFT) stores metadata for every file and directory.
@@ -2577,7 +2577,7 @@ These concepts provide the foundation for Windows storage management, digital fo
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What information does the Master File Table (MFT) store?
 2. What are the four primary NTFS timestamps (MACB)?
@@ -2592,7 +2592,7 @@ These concepts provide the foundation for Windows storage management, digital fo
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Carrier, B. *File System Forensic Analysis*
@@ -2604,7 +2604,7 @@ These concepts provide the foundation for Windows storage management, digital fo
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 5 – Windows File System**.
 

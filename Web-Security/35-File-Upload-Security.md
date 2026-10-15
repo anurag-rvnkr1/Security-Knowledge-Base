@@ -1,12 +1,12 @@
 # 35-File-Upload-Security.md
 
-# Part 1 — Introduction to File Upload Security, Upload Architecture, File Types, Risks, and Enterprise File Handling
+## Part 1 — Introduction to File Upload Security, Upload Architecture, File Types, Risks, and Enterprise File Handling
 
 > **"File uploads are one of the most common attack surfaces in modern web applications. Every uploaded file should be considered untrusted until it has been thoroughly validated and processed."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is File Upload Security?
+## What is File Upload Security?
 
 File Upload Security refers to the design, implementation, and operational controls used to safely accept, validate, store, process, and serve files uploaded by users.
 
@@ -40,7 +40,7 @@ Examples include:
 
 ---
 
-# Why File Uploads Matter
+## Why File Uploads Matter
 
 Modern applications rely heavily on uploaded content.
 
@@ -70,7 +70,7 @@ Almost every enterprise application allows users to upload files in some form.
 
 ---
 
-# Why File Uploads Are Risky
+## Why File Uploads Are Risky
 
 Uploaded files originate from external users.
 
@@ -102,7 +102,7 @@ Without proper controls, uploaded content may affect application availability, i
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 User Device
@@ -124,7 +124,7 @@ Files cross a trust boundary when they enter the organization's environment.
 
 ---
 
-# Security Goals
+## Security Goals
 
 A secure upload system should ensure:
 
@@ -150,7 +150,7 @@ Security Goals
 
 ---
 
-# Upload Lifecycle
+## Upload Lifecycle
 
 ```
 User
@@ -188,7 +188,7 @@ Every stage should include appropriate security controls.
 
 ---
 
-# Enterprise Upload Architecture
+## Enterprise Upload Architecture
 
 ```
 Internet
@@ -226,7 +226,7 @@ Validation should occur before permanent storage whenever possible.
 
 ---
 
-# Common Upload Types
+## Common Upload Types
 
 ```
 Uploaded Files
@@ -256,7 +256,7 @@ Different file types require different validation approaches.
 
 ---
 
-# Common Storage Models
+## Common Storage Models
 
 ```
 Storage
@@ -278,7 +278,7 @@ Enterprise environments commonly separate upload services from storage services.
 
 ---
 
-# Upload Processing Pipeline
+## Upload Processing Pipeline
 
 ```
 Client
@@ -320,7 +320,7 @@ Each stage performs a specific responsibility.
 
 ---
 
-# File Metadata
+## File Metadata
 
 Metadata describes uploaded files.
 
@@ -340,7 +340,7 @@ Metadata should not be blindly trusted if supplied by the client.
 
 ---
 
-# File Types
+## File Types
 
 ```
 Documents
@@ -392,7 +392,7 @@ Media
 
 ---
 
-# Upload Sources
+## Upload Sources
 
 ```
 Sources
@@ -416,7 +416,7 @@ Security requirements remain important regardless of the upload source.
 
 ---
 
-# Upload Workflow
+## Upload Workflow
 
 ```
 Authenticated User
@@ -446,7 +446,7 @@ Authentication and authorization should occur before accepting uploads.
 
 ---
 
-# Authentication
+## Authentication
 
 Applications should verify user identity.
 
@@ -466,7 +466,7 @@ Anonymous uploads should be carefully evaluated based on business requirements.
 
 ---
 
-# Authorization
+## Authorization
 
 Being authenticated does not automatically authorize file uploads.
 
@@ -486,7 +486,7 @@ Authorization decisions should follow least-privilege principles.
 
 ---
 
-# File Identification
+## File Identification
 
 Every uploaded file should receive a unique identifier.
 
@@ -510,7 +510,7 @@ Unique identifiers simplify tracking, auditing, and retrieval.
 
 ---
 
-# File Naming
+## File Naming
 
 Original filenames are useful for display but should not necessarily determine storage names.
 
@@ -530,7 +530,7 @@ Applications often separate user-facing names from internal storage identifiers.
 
 ---
 
-# File Size
+## File Size
 
 Organizations commonly establish upload size limits.
 
@@ -554,7 +554,7 @@ Reasonable limits help protect storage and application resources.
 
 ---
 
-# Upload Limits
+## Upload Limits
 
 Examples include:
 
@@ -568,7 +568,7 @@ These limits vary according to business requirements.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A hospital allows patients to upload medical documents.
 
@@ -604,7 +604,7 @@ Only authenticated patients can upload records associated with their accounts.
 
 ---
 
-# Cloud Upload Architecture
+## Cloud Upload Architecture
 
 ```
 Client
@@ -634,7 +634,7 @@ Separating storage from application servers improves scalability and resilience.
 
 ---
 
-# Security Responsibilities
+## Security Responsibilities
 
 ```
 Application
@@ -660,7 +660,7 @@ Each responsibility contributes to overall upload security.
 
 ---
 
-# File Upload Components
+## File Upload Components
 
 ```
 Upload System
@@ -686,7 +686,7 @@ Upload System
 
 ---
 
-# Enterprise Design Principles
+## Enterprise Design Principles
 
 ```
 Design Principles
@@ -712,7 +712,7 @@ These principles guide secure upload architecture.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a complete enterprise file upload architecture.
 2. Identify every trust boundary in the upload process.
@@ -724,7 +724,7 @@ These principles guide secure upload architecture.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are file uploads considered a major attack surface?
 2. What is a trust boundary?
@@ -739,7 +739,7 @@ These principles guide secure upload architecture.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat every uploaded file as untrusted.
 - Authenticate users before allowing uploads.
@@ -752,7 +752,7 @@ These principles guide secure upload architecture.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting user-supplied metadata.
 - Using original filenames as storage identifiers.
@@ -764,7 +764,7 @@ These principles guide secure upload architecture.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - File uploads represent a significant trust boundary in web applications.
 - Every uploaded file should be treated as untrusted until validated and processed.
@@ -772,15 +772,15 @@ These principles guide secure upload architecture.
 - Metadata management and unique file identifiers improve security and operational control.
 - Defense in depth and Zero Trust principles are fundamental to enterprise file upload security.
 
-# 35-File-Upload-Security.md
+## 35-File-Upload-Security.md
 
-# Part 2 — File Validation, Content Inspection, Storage Security, Access Control, and Secure Upload Processing
+## Part 2 — File Validation, Content Inspection, Storage Security, Access Control, and Secure Upload Processing
 
 > **"The most important security principle for file uploads is simple: validate everything, trust nothing, and isolate uploaded content from the rest of the application."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -797,7 +797,7 @@ After completing this part, you will understand:
 
 ---
 
-# File Validation
+## File Validation
 
 Every uploaded file should pass through multiple validation stages before it is accepted.
 
@@ -825,7 +825,7 @@ Validation should occur before permanent storage whenever possible.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 No single validation mechanism is sufficient.
 
@@ -855,7 +855,7 @@ Multiple independent controls improve overall security.
 
 ---
 
-# Validation Pipeline
+## Validation Pipeline
 
 ```
 User
@@ -897,7 +897,7 @@ Each stage performs a distinct security function.
 
 ---
 
-# File Extension Validation
+## File Extension Validation
 
 Applications often check file extensions.
 
@@ -917,7 +917,7 @@ Extension validation improves usability but should **not** be the only validatio
 
 ---
 
-# Why Extensions Are Insufficient
+## Why Extensions Are Insufficient
 
 ```
 Filename
@@ -939,7 +939,7 @@ A filename alone does not reliably identify file content.
 
 ---
 
-# MIME Type
+## MIME Type
 
 MIME (Multipurpose Internet Mail Extensions) identifies the declared content type.
 
@@ -957,7 +957,7 @@ MIME information may originate from the client and should be verified rather tha
 
 ---
 
-# File Signature Validation
+## File Signature Validation
 
 Many file formats begin with recognizable binary patterns that help identify their format.
 
@@ -985,7 +985,7 @@ Signature validation provides stronger assurance than relying only on file names
 
 ---
 
-# Multiple Validation Checks
+## Multiple Validation Checks
 
 ```
 Validation
@@ -1009,7 +1009,7 @@ Combining these checks improves confidence in uploaded content.
 
 ---
 
-# File Size Validation
+## File Size Validation
 
 Applications should verify file size against business policies.
 
@@ -1037,7 +1037,7 @@ Size limits protect storage capacity and application resources.
 
 ---
 
-# Business Validation
+## Business Validation
 
 Validation should also enforce business requirements.
 
@@ -1063,7 +1063,7 @@ Upload Decision
 
 ---
 
-# Content Inspection
+## Content Inspection
 
 After basic validation, organizations may inspect uploaded content before storage or release.
 
@@ -1087,7 +1087,7 @@ Inspection provides an additional security layer beyond file identification.
 
 ---
 
-# Content Inspection Pipeline
+## Content Inspection Pipeline
 
 ```
 File
@@ -1117,7 +1117,7 @@ Each stage contributes to safer handling of uploaded content.
 
 ---
 
-# Metadata Extraction
+## Metadata Extraction
 
 Metadata can support search, auditing, and operational processes.
 
@@ -1136,7 +1136,7 @@ Applications should validate metadata before relying on it.
 
 ---
 
-# File Storage Architecture
+## File Storage Architecture
 
 ```
 Application
@@ -1162,7 +1162,7 @@ Storage should remain logically separated from application logic.
 
 ---
 
-# Storage Models
+## Storage Models
 
 ```
 Storage
@@ -1186,7 +1186,7 @@ Enterprise deployments commonly favor scalable object storage for uploaded conte
 
 ---
 
-# Secure Storage Principles
+## Secure Storage Principles
 
 ```
 Storage Security
@@ -1212,7 +1212,7 @@ Storage security protects uploaded content throughout its lifecycle.
 
 ---
 
-# Logical Isolation
+## Logical Isolation
 
 Uploaded files should be separated from application components.
 
@@ -1236,7 +1236,7 @@ Isolation reduces the impact of storage-related issues.
 
 ---
 
-# Access Control
+## Access Control
 
 Only authorized users should access uploaded files.
 
@@ -1264,7 +1264,7 @@ Access decisions should be enforced consistently.
 
 ---
 
-# Download Workflow
+## Download Workflow
 
 ```
 User
@@ -1294,7 +1294,7 @@ Authorization should be evaluated before serving content.
 
 ---
 
-# File Identifier
+## File Identifier
 
 Applications commonly reference files using unique identifiers.
 
@@ -1322,7 +1322,7 @@ Identifiers simplify management and auditing.
 
 ---
 
-# Storage Encryption
+## Storage Encryption
 
 Organizations frequently protect stored files using encryption.
 
@@ -1342,7 +1342,7 @@ Encryption helps protect confidentiality if storage media are exposed.
 
 ---
 
-# Encryption States
+## Encryption States
 
 ```
 Encryption
@@ -1358,7 +1358,7 @@ Both transmission and storage protections contribute to overall security.
 
 ---
 
-# Secure File Retrieval
+## Secure File Retrieval
 
 ```
 Client
@@ -1384,7 +1384,7 @@ The download path should apply the same security standards as the upload path.
 
 ---
 
-# File Lifecycle
+## File Lifecycle
 
 ```
 Upload
@@ -1418,7 +1418,7 @@ Every phase should follow organizational policies.
 
 ---
 
-# Retention Policies
+## Retention Policies
 
 Organizations often define retention requirements.
 
@@ -1434,7 +1434,7 @@ Retention periods depend on business, legal, and regulatory requirements.
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Upload and download operations should be logged.
 
@@ -1458,7 +1458,7 @@ Logs support investigations and compliance activities.
 
 ---
 
-# Events to Log
+## Events to Log
 
 | Event | Purpose |
 |--------|----------|
@@ -1473,7 +1473,7 @@ Sensitive file contents should generally **not** be stored in application logs.
 
 ---
 
-# Enterprise Upload Architecture
+## Enterprise Upload Architecture
 
 ```
 Internet
@@ -1519,7 +1519,7 @@ Each component has clearly defined security responsibilities.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A university allows students to upload assignment submissions.
 
@@ -1555,7 +1555,7 @@ Faculty members retrieve submissions only after authorization checks confirm the
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1568,7 +1568,7 @@ Faculty members retrieve submissions only after authorization checks confirm the
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a multi-stage upload validation pipeline.
 2. Compare extension validation, MIME validation, and file signature validation.
@@ -1580,7 +1580,7 @@ Faculty members retrieve submissions only after authorization checks confirm the
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is file extension validation alone insufficient?
 2. What is a MIME type?
@@ -1595,7 +1595,7 @@ Faculty members retrieve submissions only after authorization checks confirm the
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply multiple independent validation mechanisms.
 - Verify file extensions, MIME types, and file signatures.
@@ -1608,7 +1608,7 @@ Faculty members retrieve submissions only after authorization checks confirm the
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting file extensions alone.
 - Relying solely on client-supplied MIME types.
@@ -1620,7 +1620,7 @@ Faculty members retrieve submissions only after authorization checks confirm the
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure file uploads require layered validation rather than a single security check.
 - File extensions, MIME types, and file signatures each provide different validation signals.
@@ -1628,15 +1628,15 @@ Faculty members retrieve submissions only after authorization checks confirm the
 - Secure storage, encryption, retention policies, and audit logging strengthen enterprise upload security.
 - Validation, access control, and lifecycle management are essential components of a secure file handling system.
 
-# 35-File-Upload-Security.md
+## 35-File-Upload-Security.md
 
-# Part 3 — File Upload Security Threats, Common Vulnerabilities, Secure Processing, Monitoring, and Enterprise Security Operations
+## Part 3 — File Upload Security Threats, Common Vulnerabilities, Secure Processing, Monitoring, and Enterprise Security Operations
 
 > **"Secure file upload systems assume every uploaded file may be malicious until proven otherwise. Multiple defensive controls should protect every stage of the upload lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1653,7 +1653,7 @@ After completing this part, you will understand:
 
 ---
 
-# File Upload Threat Landscape
+## File Upload Threat Landscape
 
 File uploads introduce one of the largest attack surfaces in modern web applications.
 
@@ -1687,7 +1687,7 @@ Most risks arise from inadequate validation, weak access control, or insecure pr
 
 ---
 
-# Upload Attack Surface
+## Upload Attack Surface
 
 ```
 User
@@ -1725,7 +1725,7 @@ Every stage should implement appropriate security controls.
 
 ---
 
-# Untrusted Input
+## Untrusted Input
 
 Every uploaded file should be considered untrusted.
 
@@ -1749,7 +1749,7 @@ Validation should occur before the file is trusted or processed.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Multiple security controls should protect uploaded content.
 
@@ -1779,7 +1779,7 @@ No individual control should be relied upon exclusively.
 
 ---
 
-# Secure Processing Pipeline
+## Secure Processing Pipeline
 
 ```
 Upload
@@ -1813,7 +1813,7 @@ Each processing stage has clearly defined security responsibilities.
 
 ---
 
-# Resource Exhaustion
+## Resource Exhaustion
 
 Applications should protect themselves from excessive resource consumption.
 
@@ -1840,7 +1840,7 @@ Appropriate quotas and operational controls improve system availability.
 
 ---
 
-# Storage Abuse
+## Storage Abuse
 
 Storage should not be treated as unlimited.
 
@@ -1869,7 +1869,7 @@ Organizations commonly enforce:
 
 ---
 
-# Authorization Risks
+## Authorization Risks
 
 Authentication alone is insufficient.
 
@@ -1893,7 +1893,7 @@ Users should only upload files permitted by their assigned roles and business re
 
 ---
 
-# Download Authorization
+## Download Authorization
 
 Every download request should be authorized.
 
@@ -1921,7 +1921,7 @@ Ownership and business rules should be verified before serving content.
 
 ---
 
-# File Isolation
+## File Isolation
 
 Uploaded files should remain isolated from critical application components.
 
@@ -1945,7 +1945,7 @@ Isolation limits the impact of unexpected processing issues.
 
 ---
 
-# Metadata Integrity
+## Metadata Integrity
 
 Metadata supports secure file management.
 
@@ -1969,7 +1969,7 @@ Metadata should be generated or verified by the server whenever possible.
 
 ---
 
-# File Lifecycle Security
+## File Lifecycle Security
 
 ```
 Upload
@@ -2003,7 +2003,7 @@ Security controls should remain effective throughout the entire lifecycle.
 
 ---
 
-# Secure Storage Architecture
+## Secure Storage Architecture
 
 ```
 Internet
@@ -2033,7 +2033,7 @@ Separating services improves maintainability and security.
 
 ---
 
-# Temporary Storage
+## Temporary Storage
 
 Some upload workflows require temporary storage during processing.
 
@@ -2057,7 +2057,7 @@ Temporary locations should be protected and cleaned according to operational pol
 
 ---
 
-# Secure File Delivery
+## Secure File Delivery
 
 ```
 Client
@@ -2087,7 +2087,7 @@ Files should be delivered only after successful authorization.
 
 ---
 
-# Logging
+## Logging
 
 File upload activities should be logged.
 
@@ -2115,7 +2115,7 @@ Logs support operational visibility and security investigations.
 
 ---
 
-# Important Events to Log
+## Important Events to Log
 
 | Event | Purpose |
 |--------|----------|
@@ -2131,7 +2131,7 @@ Sensitive file contents should generally not appear in logs.
 
 ---
 
-# Monitoring
+## Monitoring
 
 Continuous monitoring strengthens operational security.
 
@@ -2159,7 +2159,7 @@ Monitoring enables early identification of abnormal upload activity.
 
 ---
 
-# Useful Security Metrics
+## Useful Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2173,7 +2173,7 @@ Monitoring enables early identification of abnormal upload activity.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies risks before implementation.
 
@@ -2201,7 +2201,7 @@ Threat modeling helps organizations design safer upload systems.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 Upload security should be integrated into the software development lifecycle.
 
@@ -2233,7 +2233,7 @@ Security should be considered throughout development, not only during deployment
 
 ---
 
-# Zero Trust for File Uploads
+## Zero Trust for File Uploads
 
 Zero Trust principles apply to uploaded content.
 
@@ -2269,7 +2269,7 @@ No uploaded file should be implicitly trusted.
 
 ---
 
-# Enterprise Upload Architecture
+## Enterprise Upload Architecture
 
 ```
                  Internet
@@ -2337,7 +2337,7 @@ This architecture separates upload handling, validation, storage, and monitoring
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational insurance company allows customers to upload claim documents.
 
@@ -2377,7 +2377,7 @@ The upload service validates files before storage, while claims adjusters retrie
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2390,7 +2390,7 @@ The upload service validates files before storage, while claims adjusters retrie
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a secure enterprise upload architecture.
 2. Identify trust boundaries in the upload lifecycle.
@@ -2402,7 +2402,7 @@ The upload service validates files before storage, while claims adjusters retrie
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are uploaded files considered untrusted?
 2. What is defense in depth for file uploads?
@@ -2417,7 +2417,7 @@ The upload service validates files before storage, while claims adjusters retrie
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat every uploaded file as untrusted input.
 - Apply layered validation and inspection before storage.
@@ -2430,7 +2430,7 @@ The upload service validates files before storage, while claims adjusters retrie
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting uploaded files without validation.
 - Allowing authenticated users unrestricted upload permissions.
@@ -2442,7 +2442,7 @@ The upload service validates files before storage, while claims adjusters retrie
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - File uploads introduce a significant trust boundary and require layered security controls.
 - Secure processing includes validation, inspection, isolation, authorization, and monitoring.
@@ -2450,15 +2450,15 @@ The upload service validates files before storage, while claims adjusters retrie
 - Logging, monitoring, and threat modeling strengthen enterprise file upload security.
 - Zero Trust and defense in depth are foundational principles for secure file handling.
 
-# 35-File-Upload-Security.md
+## 35-File-Upload-Security.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Compliance, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Compliance, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Secure file upload systems are built on the assumption that every uploaded file is untrusted. Long-term security depends on governance, secure architecture, continuous monitoring, and disciplined operational processes—not validation alone."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2475,7 +2475,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 Organizations should establish consistent policies for every application that accepts uploaded files.
 
@@ -2515,7 +2515,7 @@ Governance ensures secure and consistent implementation across teams.
 
 ---
 
-# File Upload Governance Framework
+## File Upload Governance Framework
 
 ```
 Governance
@@ -2545,7 +2545,7 @@ Well-defined governance reduces inconsistent implementations.
 
 ---
 
-# Upload Policy
+## Upload Policy
 
 Every organization should define:
 
@@ -2575,7 +2575,7 @@ Review
 
 ---
 
-# Data Classification
+## Data Classification
 
 Uploaded files often contain different sensitivity levels.
 
@@ -2597,7 +2597,7 @@ Security controls should align with the classification level.
 
 ---
 
-# Secure File Lifecycle
+## Secure File Lifecycle
 
 Every uploaded file should follow a controlled lifecycle.
 
@@ -2637,7 +2637,7 @@ Each phase should have documented operational procedures.
 
 ---
 
-# File Retention
+## File Retention
 
 Organizations should define retention requirements based on business and regulatory needs.
 
@@ -2667,7 +2667,7 @@ Deletion
 
 ---
 
-# Secure Deletion
+## Secure Deletion
 
 Files should be removed according to organizational policies.
 
@@ -2695,7 +2695,7 @@ Deletion activities should be traceable.
 
 ---
 
-# Access Governance
+## Access Governance
 
 Access to uploaded files should follow least privilege.
 
@@ -2723,7 +2723,7 @@ Access rights should be reviewed periodically.
 
 ---
 
-# Identity Integration
+## Identity Integration
 
 Enterprise upload systems commonly integrate with centralized identity services.
 
@@ -2747,7 +2747,7 @@ Centralized identity management simplifies administration.
 
 ---
 
-# Zero Trust File Handling
+## Zero Trust File Handling
 
 Zero Trust assumes no uploaded file is trusted automatically.
 
@@ -2787,7 +2787,7 @@ Trust is established only after verification.
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -2815,7 +2815,7 @@ These principles reduce organizational risk.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 File upload security should be integrated throughout software delivery.
 
@@ -2851,7 +2851,7 @@ Security becomes part of everyday engineering.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2893,7 +2893,7 @@ Upload-related configuration should be validated before production deployment.
 
 ---
 
-# Secure Configuration
+## Secure Configuration
 
 Configuration directly affects upload security.
 
@@ -2923,7 +2923,7 @@ Configuration changes should follow formal review processes.
 
 ---
 
-# Storage Governance
+## Storage Governance
 
 Storage systems require operational controls.
 
@@ -2951,7 +2951,7 @@ Secure storage extends beyond the upload process itself.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many industries require secure handling of uploaded documents.
 
@@ -2979,7 +2979,7 @@ Compliance requirements differ by jurisdiction and industry.
 
 ---
 
-# Monitoring
+## Monitoring
 
 Continuous monitoring supports both security and operations.
 
@@ -3007,7 +3007,7 @@ Monitoring helps detect unusual activity early.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -3022,7 +3022,7 @@ Monitoring helps detect unusual activity early.
 
 ---
 
-# Security Dashboard
+## Security Dashboard
 
 ```
 Upload Dashboard
@@ -3050,7 +3050,7 @@ Dashboards improve operational awareness.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 Upload-related events should integrate with enterprise monitoring.
 
@@ -3082,7 +3082,7 @@ Centralized monitoring strengthens detection capabilities.
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should maintain procedures for upload-related security incidents.
 
@@ -3118,7 +3118,7 @@ Response activities should follow established incident response plans.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -3148,7 +3148,7 @@ Lessons learned improve future implementations.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 File storage should support business continuity.
 
@@ -3176,7 +3176,7 @@ Recovery procedures should be tested periodically.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 Upload security should evolve over time.
 
@@ -3208,7 +3208,7 @@ Continuous improvement increases long-term resilience.
 
 ---
 
-# File Upload Security Maturity Model
+## File Upload Security Maturity Model
 
 ```
 Level 1
@@ -3244,7 +3244,7 @@ Organizations typically mature through increasingly comprehensive security contr
 
 ---
 
-# Enterprise Upload Architecture
+## Enterprise Upload Architecture
 
 ```
                     Internet
@@ -3312,7 +3312,7 @@ This architecture separates upload handling, storage, monitoring, and operationa
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational law firm allows attorneys to upload confidential legal documents.
 
@@ -3352,7 +3352,7 @@ Uploaded documents remain encrypted, access-controlled, monitored, and governed 
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Authentication Enabled
@@ -3382,7 +3382,7 @@ Uploaded documents remain encrypted, access-controlled, monitored, and governed 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -3395,9 +3395,9 @@ Uploaded documents remain encrypted, access-controlled, monitored, and governed 
 
 ---
 
-# File Upload Security Quick Revision
+## File Upload Security Quick Revision
 
-## Upload Lifecycle
+### Upload Lifecycle
 
 ```
 Upload
@@ -3429,7 +3429,7 @@ Deletion
 
 ---
 
-## Validation Layers
+### Validation Layers
 
 ```
 Authentication
@@ -3457,7 +3457,7 @@ Content Inspection
 
 ---
 
-## Secure Access
+### Secure Access
 
 ```
 Authentication
@@ -3477,7 +3477,7 @@ Download
 
 ---
 
-## Monitoring
+### Monitoring
 
 ```
 Application
@@ -3501,7 +3501,7 @@ SOC
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise file upload architecture with validation, storage, monitoring, and backup.
 2. Create a governance policy for uploaded files.
@@ -3513,7 +3513,7 @@ SOC
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should uploaded files always be treated as untrusted?
 2. What should be included in a file upload governance framework?
@@ -3528,7 +3528,7 @@ SOC
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat every uploaded file as untrusted.
 - Apply layered validation before permanent storage.
@@ -3542,7 +3542,7 @@ SOC
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting uploaded files after only one validation step.
 - Allowing unrestricted upload permissions.
@@ -3554,7 +3554,7 @@ SOC
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

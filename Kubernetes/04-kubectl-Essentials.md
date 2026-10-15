@@ -10,7 +10,7 @@ Whether you are a Developer, DevOps Engineer, Platform Engineer, SRE, or Securit
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -27,7 +27,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is kubectl?
+## What is kubectl?
 
 kubectl is the Kubernetes command-line client.
 
@@ -45,7 +45,7 @@ Everything ultimately communicates through the Kubernetes API Server.
 
 ---
 
-# kubectl Architecture
+## kubectl Architecture
 
 ```
 User
@@ -69,7 +69,7 @@ Every request goes through the API Server.
 
 ---
 
-# kubectl Request Flow
+## kubectl Request Flow
 
 Example:
 
@@ -105,7 +105,7 @@ Return Results
 
 ---
 
-# kubectl Syntax
+## kubectl Syntax
 
 General syntax:
 
@@ -125,7 +125,7 @@ kubectl delete deployment app
 
 ---
 
-# Common kubectl Commands
+## Common kubectl Commands
 
 | Command | Purpose |
 |----------|----------|
@@ -143,7 +143,7 @@ kubectl delete deployment app
 
 ---
 
-# Understanding Resources
+## Understanding Resources
 
 Everything in Kubernetes is represented as an API object.
 
@@ -173,7 +173,7 @@ kubectl manages these resources.
 
 ---
 
-# The get Command
+## The get Command
 
 Display Pods:
 
@@ -207,7 +207,7 @@ kubectl get all
 
 ---
 
-# Viewing All Namespaces
+## Viewing All Namespaces
 
 ```bash
 kubectl get pods -A
@@ -223,7 +223,7 @@ Useful for administrators managing the entire cluster.
 
 ---
 
-# Describe Command
+## Describe Command
 
 Provides detailed information.
 
@@ -245,7 +245,7 @@ Information includes:
 
 ---
 
-# Create Resources
+## Create Resources
 
 Imperative creation:
 
@@ -263,7 +263,7 @@ kubectl expose deployment nginx \
 
 ---
 
-# Declarative Management
+## Declarative Management
 
 Preferred approach:
 
@@ -293,7 +293,7 @@ Declarative management supports version control and automation.
 
 ---
 
-# Delete Resources
+## Delete Resources
 
 Delete Pod:
 
@@ -315,7 +315,7 @@ kubectl delete -f deployment.yaml
 
 ---
 
-# Viewing Logs
+## Viewing Logs
 
 View logs:
 
@@ -338,7 +338,7 @@ kubectl logs pod-name \
 
 ---
 
-# Executing Commands Inside Pods
+## Executing Commands Inside Pods
 
 Open a shell:
 
@@ -363,7 +363,7 @@ kubectl exec pod-name \
 
 ---
 
-# Port Forwarding
+## Port Forwarding
 
 Forward local port:
 
@@ -390,7 +390,7 @@ Useful for debugging applications without exposing them externally.
 
 ---
 
-# Copy Files
+## Copy Files
 
 Copy from Pod:
 
@@ -406,7 +406,7 @@ kubectl cp local.txt pod-name:/tmp/
 
 ---
 
-# Scaling Applications
+## Scaling Applications
 
 Scale Deployment:
 
@@ -435,7 +435,7 @@ Scheduler
 
 ---
 
-# Rolling Updates
+## Rolling Updates
 
 View rollout status:
 
@@ -457,7 +457,7 @@ kubectl rollout undo deployment nginx
 
 ---
 
-# Viewing Events
+## Viewing Events
 
 Display cluster events:
 
@@ -475,7 +475,7 @@ Events are invaluable for troubleshooting.
 
 ---
 
-# kubectl explain
+## kubectl explain
 
 Display API documentation.
 
@@ -495,7 +495,7 @@ This command is useful when writing YAML manifests.
 
 ---
 
-# kubeconfig
+## kubeconfig
 
 kubectl stores cluster connection details in:
 
@@ -529,7 +529,7 @@ kubectl config use-context <context-name>
 
 ---
 
-# Namespaces
+## Namespaces
 
 View:
 
@@ -554,7 +554,7 @@ Namespaces provide logical isolation within a cluster.
 
 ---
 
-# Output Formats
+## Output Formats
 
 Default:
 
@@ -591,7 +591,7 @@ kubectl get pods \
 
 ---
 
-# Label Selectors
+## Label Selectors
 
 Pods with label:
 
@@ -609,7 +609,7 @@ kubectl get pods \
 
 ---
 
-# Watching Resources
+## Watching Resources
 
 Continuously monitor:
 
@@ -621,7 +621,7 @@ Useful for observing deployments and Pod state transitions.
 
 ---
 
-# kubectl Workflow
+## kubectl Workflow
 
 ```
 Developer
@@ -645,7 +645,7 @@ Response
 
 ---
 
-# Most Frequently Used Commands
+## Most Frequently Used Commands
 
 ```bash
 kubectl get pods
@@ -675,9 +675,9 @@ kubectl config view
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Prefer Declarative Management
+#### 1. Prefer Declarative Management
 
 Use:
 
@@ -689,25 +689,25 @@ instead of repeatedly creating resources imperatively.
 
 ---
 
-### 2. Store YAML in Git
+#### 2. Store YAML in Git
 
 Treat Kubernetes manifests as Infrastructure as Code.
 
 ---
 
-### 3. Learn get, describe, logs, and events First
+#### 3. Learn get, describe, logs, and events First
 
 These four commands solve a large percentage of day-to-day troubleshooting tasks.
 
 ---
 
-### 4. Use Contexts Carefully
+#### 4. Use Contexts Carefully
 
 Always verify the current context before applying changes to avoid modifying the wrong cluster.
 
 ---
 
-### 5. Use Namespaces
+#### 5. Use Namespaces
 
 Separate:
 
@@ -720,7 +720,7 @@ to improve organization and reduce operational risk.
 
 ---
 
-## How kubectl Works Internally
+### How kubectl Works Internally
 
 Although `kubectl` appears to be a simple command-line tool, every command triggers a series of interactions with the Kubernetes Control Plane.
 
@@ -734,7 +734,7 @@ Understanding this workflow helps explain:
 
 ---
 
-# High-Level kubectl Workflow
+## High-Level kubectl Workflow
 
 Suppose a user executes:
 
@@ -784,7 +784,7 @@ Everything flows through the Kubernetes API Server.
 
 ---
 
-# Step 1 – Read kubeconfig
+## Step 1 – Read kubeconfig
 
 Before contacting the cluster, `kubectl` reads the **kubeconfig** file.
 
@@ -817,7 +817,7 @@ kubectl config view
 
 ---
 
-# Step 2 – Select Context
+## Step 2 – Select Context
 
 A kubeconfig may contain multiple clusters.
 
@@ -847,7 +847,7 @@ The selected context determines which cluster receives the request.
 
 ---
 
-# Step 3 – Connect to API Server
+## Step 3 – Connect to API Server
 
 ```
 kubectl
@@ -867,7 +867,7 @@ No request goes directly to Worker Nodes.
 
 ---
 
-# Step 4 – Authentication
+## Step 4 – Authentication
 
 The API Server verifies the client's identity.
 
@@ -893,7 +893,7 @@ If authentication fails:
 
 ---
 
-# Step 5 – Authorization
+## Step 5 – Authorization
 
 Once authenticated:
 
@@ -929,7 +929,7 @@ If authorization fails:
 
 ---
 
-# Step 6 – Admission Controllers
+## Step 6 – Admission Controllers
 
 Admission Controllers perform additional checks.
 
@@ -956,7 +956,7 @@ Possible actions:
 
 ---
 
-# Step 7 – API Processing
+## Step 7 – API Processing
 
 The API Server processes the request.
 
@@ -988,7 +988,7 @@ Remove Object
 
 ---
 
-# Step 8 – etcd
+## Step 8 – etcd
 
 If the request changes cluster state:
 
@@ -1011,7 +1011,7 @@ Read-only requests retrieve information from the current cluster state without m
 
 ---
 
-# Step 9 – Controllers React
+## Step 9 – Controllers React
 
 Suppose:
 
@@ -1037,7 +1037,7 @@ The Controller Manager begins reconciliation.
 
 ---
 
-# Step 10 – Scheduler
+## Step 10 – Scheduler
 
 Pods initially remain:
 
@@ -1065,7 +1065,7 @@ Node Assigned
 
 ---
 
-# Step 11 – kubelet
+## Step 11 – kubelet
 
 Worker Node:
 
@@ -1089,7 +1089,7 @@ The kubelet ensures the assigned Pod is created and maintained.
 
 ---
 
-# Step 12 – Status Returned
+## Step 12 – Status Returned
 
 The kubelet reports:
 
@@ -1119,7 +1119,7 @@ Running
 
 ---
 
-# Internal Request Flow
+## Internal Request Flow
 
 ```
 User
@@ -1189,9 +1189,9 @@ This is the complete lifecycle for many Kubernetes operations.
 
 ---
 
-# Imperative vs Declarative Commands
+## Imperative vs Declarative Commands
 
-## Imperative
+### Imperative
 
 Example:
 
@@ -1216,7 +1216,7 @@ Deployment Created
 
 ---
 
-## Declarative
+### Declarative
 
 Example:
 
@@ -1255,7 +1255,7 @@ Declarative workflows are preferred for production because they support:
 
 ---
 
-# Resource Discovery
+## Resource Discovery
 
 View available resource types:
 
@@ -1273,7 +1273,7 @@ These commands help explore cluster capabilities.
 
 ---
 
-# Advanced Output Options
+## Advanced Output Options
 
 Wide output:
 
@@ -1311,7 +1311,7 @@ These formats are useful for scripting and automation.
 
 ---
 
-# Dry Run
+## Dry Run
 
 Preview resource creation:
 
@@ -1329,7 +1329,7 @@ Benefits:
 
 ---
 
-# Explain API Objects
+## Explain API Objects
 
 Example:
 
@@ -1347,7 +1347,7 @@ Useful when writing YAML without referencing documentation.
 
 ---
 
-# Useful Debugging Commands
+## Useful Debugging Commands
 
 Describe Pod:
 
@@ -1377,9 +1377,9 @@ These commands are often the first tools used during troubleshooting.
 
 ---
 
-# Hands-on Exercise
+## Hands-on Exercise
 
-## Create a Deployment
+### Create a Deployment
 
 ```bash
 kubectl create deployment nginx \
@@ -1388,7 +1388,7 @@ kubectl create deployment nginx \
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 kubectl get deployments
@@ -1398,7 +1398,7 @@ kubectl get pods
 
 ---
 
-## Inspect
+### Inspect
 
 ```bash
 kubectl describe deployment nginx
@@ -1406,7 +1406,7 @@ kubectl describe deployment nginx
 
 ---
 
-## View YAML
+### View YAML
 
 ```bash
 kubectl get deployment nginx \
@@ -1415,7 +1415,7 @@ kubectl get deployment nginx \
 
 ---
 
-## Delete
+### Delete
 
 ```bash
 kubectl delete deployment nginx
@@ -1423,9 +1423,9 @@ kubectl delete deployment nginx
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Declarative Workflows
+#### 1. Use Declarative Workflows
 
 Store manifests in Git and use:
 
@@ -1437,13 +1437,13 @@ for deployments.
 
 ---
 
-### 2. Learn Resource Discovery Commands
+#### 2. Learn Resource Discovery Commands
 
 `kubectl api-resources` and `kubectl explain` are invaluable when learning Kubernetes APIs.
 
 ---
 
-### 3. Always Check Context
+#### 3. Always Check Context
 
 Before running commands:
 
@@ -1455,13 +1455,13 @@ to avoid modifying the wrong cluster.
 
 ---
 
-### 4. Use Output Formats for Automation
+#### 4. Use Output Formats for Automation
 
 Prefer JSON or YAML when integrating with scripts or CI/CD pipelines.
 
 ---
 
-### 5. Investigate Before Changing
+#### 5. Investigate Before Changing
 
 When troubleshooting:
 
@@ -1474,7 +1474,7 @@ Collect evidence before making changes.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 `kubectl` is one of the most frequently used tools in Kubernetes. While the commands are straightforward, misuse can lead to failed deployments, accidental production changes, or difficult troubleshooting sessions.
 
@@ -1482,7 +1482,7 @@ This section highlights the most common mistakes made by Kubernetes users and ho
 
 ---
 
-# 1. Running Commands Against the Wrong Cluster
+## 1. Running Commands Against the Wrong Cluster
 
 One of the most serious mistakes is applying changes to the wrong Kubernetes cluster.
 
@@ -1512,7 +1512,7 @@ before applying or deleting resources.
 
 ---
 
-# 2. Forgetting the Namespace
+## 2. Forgetting the Namespace
 
 Many commands default to the `default` namespace.
 
@@ -1538,7 +1538,7 @@ kubectl get pods -A
 
 ---
 
-# 3. Using Imperative Commands in Production
+## 3. Using Imperative Commands in Production
 
 Creating resources like this:
 
@@ -1563,7 +1563,7 @@ Benefits:
 
 ---
 
-# 4. Editing Live Resources Manually
+## 4. Editing Live Resources Manually
 
 Avoid repeatedly using:
 
@@ -1593,7 +1593,7 @@ This keeps infrastructure changes traceable and consistent.
 
 ---
 
-# 5. Ignoring Events
+## 5. Ignoring Events
 
 Many users check only logs.
 
@@ -1618,7 +1618,7 @@ Events often explain:
 
 ---
 
-# 6. Using `kubectl delete pod` to "Fix" Problems
+## 6. Using `kubectl delete pod` to "Fix" Problems
 
 Suppose a Pod is managed by a Deployment.
 
@@ -1640,7 +1640,7 @@ Investigate the root cause instead.
 
 ---
 
-# 7. Not Using `kubectl describe`
+## 7. Not Using `kubectl describe`
 
 `kubectl get` provides a summary.
 
@@ -1667,7 +1667,7 @@ This displays:
 
 ---
 
-# 8. Forgetting Resource Names
+## 8. Forgetting Resource Names
 
 Incorrect:
 
@@ -1685,7 +1685,7 @@ Understand which commands operate on which resource types.
 
 ---
 
-# 9. Ignoring Output Formats
+## 9. Ignoring Output Formats
 
 Many users only use the default table output.
 
@@ -1705,15 +1705,15 @@ These formats are invaluable for debugging, scripting, and understanding object 
 
 ---
 
-# 10. Misunderstanding `apply` vs `create`
+## 10. Misunderstanding `apply` vs `create`
 
-### `create`
+#### `create`
 
 Creates a new object.
 
 Fails if the object already exists.
 
-### `apply`
+#### `apply`
 
 Creates the object if it does not exist.
 
@@ -1723,7 +1723,7 @@ For ongoing management, `apply` is generally preferred.
 
 ---
 
-# 11. Not Using Labels and Selectors
+## 11. Not Using Labels and Selectors
 
 Instead of searching manually:
 
@@ -1741,7 +1741,7 @@ Labels become increasingly important as clusters grow.
 
 ---
 
-# 12. Ignoring RBAC Errors
+## 12. Ignoring RBAC Errors
 
 Receiving:
 
@@ -1757,7 +1757,7 @@ Verify your access with your cluster administrator or review RBAC configuration.
 
 ---
 
-# 13. Assuming Every Error Comes from Kubernetes
+## 13. Assuming Every Error Comes from Kubernetes
 
 Sometimes the problem is the application itself.
 
@@ -1781,7 +1781,7 @@ Always examine both Kubernetes resources and application logs.
 
 ---
 
-# 14. Forgetting to Watch Resources
+## 14. Forgetting to Watch Resources
 
 During deployments, instead of repeatedly running:
 
@@ -1799,7 +1799,7 @@ This continuously displays status changes in real time.
 
 ---
 
-# 15. Memorizing Commands Without Understanding the Workflow
+## 15. Memorizing Commands Without Understanding the Workflow
 
 Instead of memorizing:
 
@@ -1841,9 +1841,9 @@ Understanding the architecture makes troubleshooting much easier.
 
 ---
 
-# kubectl Quick Revision
+## kubectl Quick Revision
 
-## Request Flow
+### Request Flow
 
 ```
 User
@@ -1883,9 +1883,9 @@ Response
 
 ---
 
-## Essential Commands
+### Essential Commands
 
-### Cluster
+#### Cluster
 
 ```bash
 kubectl cluster-info
@@ -1895,7 +1895,7 @@ kubectl get nodes
 
 ---
 
-### Pods
+#### Pods
 
 ```bash
 kubectl get pods
@@ -1909,7 +1909,7 @@ kubectl exec -it <pod-name> -- /bin/sh
 
 ---
 
-### Deployments
+#### Deployments
 
 ```bash
 kubectl get deployments
@@ -1923,7 +1923,7 @@ kubectl rollout undo deployment <name>
 
 ---
 
-### Services
+#### Services
 
 ```bash
 kubectl get services
@@ -1933,7 +1933,7 @@ kubectl describe service <service-name>
 
 ---
 
-### Configuration
+#### Configuration
 
 ```bash
 kubectl config view
@@ -1947,7 +1947,7 @@ kubectl config use-context <context-name>
 
 ---
 
-### Events
+#### Events
 
 ```bash
 kubectl get events
@@ -1957,7 +1957,7 @@ kubectl get events -A
 
 ---
 
-### Output Formats
+#### Output Formats
 
 ```bash
 kubectl get pods -o wide
@@ -1969,7 +1969,7 @@ kubectl get pod <pod-name> -o json
 
 ---
 
-# kubectl Best Practices Checklist
+## kubectl Best Practices Checklist
 
 | Practice | Status |
 |----------|:------:|
@@ -1986,7 +1986,7 @@ kubectl get pod <pod-name> -o json
 
 ---
 
-# Interview Tips
+## Interview Tips
 
 Interviewers often expect you to know these commands without reference.
 
@@ -2018,9 +2018,9 @@ Be prepared to explain **what each command does**, **when to use it**, and **how
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - Kubernetes Documentation
 - kubectl Reference
@@ -2029,7 +2029,7 @@ Be prepared to explain **what each command does**, **when to use it**, and **how
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Learning Path
 - Kubernetes Best Practices
@@ -2037,7 +2037,7 @@ Be prepared to explain **what each command does**, **when to use it**, and **how
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 - Create a local cluster with Kind or Minikube.
 - Deploy a sample application.
@@ -2049,7 +2049,7 @@ Be prepared to explain **what each command does**, **when to use it**, and **how
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 User

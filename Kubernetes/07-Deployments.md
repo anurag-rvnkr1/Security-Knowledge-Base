@@ -17,7 +17,7 @@ In production Kubernetes clusters, applications are almost always deployed using
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -35,7 +35,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Deployments?
+## Why Deployments?
 
 Suppose you create a ReplicaSet.
 
@@ -72,7 +72,7 @@ A Deployment automates this process.
 
 ---
 
-# What is a Deployment?
+## What is a Deployment?
 
 A Deployment is a Kubernetes controller that manages ReplicaSets and Pods.
 
@@ -92,7 +92,7 @@ The Deployment is responsible for application lifecycle management.
 
 ---
 
-# Deployment Responsibilities
+## Deployment Responsibilities
 
 Deployments provide:
 
@@ -106,7 +106,7 @@ Deployments provide:
 
 ---
 
-# Deployment Architecture
+## Deployment Architecture
 
 ```
                Deployment
@@ -142,7 +142,7 @@ Pods
 
 ---
 
-# Deployment Hierarchy
+## Deployment Hierarchy
 
 ```
 Deployment
@@ -164,7 +164,7 @@ Each layer has a different responsibility.
 
 ---
 
-# Deployment YAML
+## Deployment YAML
 
 Example:
 
@@ -205,7 +205,7 @@ spec:
 
 ---
 
-# YAML Structure
+## YAML Structure
 
 ```
 Deployment
@@ -233,7 +233,7 @@ Pod Template
 
 ---
 
-# Creating a Deployment
+## Creating a Deployment
 
 Apply:
 
@@ -261,7 +261,7 @@ kubectl get pods
 
 ---
 
-# Deployment Lifecycle
+## Deployment Lifecycle
 
 ```
 Create Deployment
@@ -297,7 +297,7 @@ Delete
 
 ---
 
-# Deployment Creation Workflow
+## Deployment Creation Workflow
 
 ```
 Developer
@@ -329,7 +329,7 @@ Running
 
 ---
 
-# Scaling Deployments
+## Scaling Deployments
 
 Scale:
 
@@ -361,7 +361,7 @@ kubectl scale deployment nginx \
 
 ---
 
-# Updating an Application
+## Updating an Application
 
 Suppose current image:
 
@@ -386,7 +386,7 @@ Deployment automatically begins a rolling update.
 
 ---
 
-# Rolling Update
+## Rolling Update
 
 Instead of deleting all Pods:
 
@@ -428,7 +428,7 @@ Applications remain available during the update.
 
 ---
 
-# Rolling Update Workflow
+## Rolling Update Workflow
 
 ```
 Deployment
@@ -458,7 +458,7 @@ This process continues until all Pods are updated.
 
 ---
 
-# ReplicaSets During Updates
+## ReplicaSets During Updates
 
 Before update:
 
@@ -506,7 +506,7 @@ ReplicaSet A is retained for rollback history (subject to revision history limit
 
 ---
 
-# Rollback
+## Rollback
 
 Suppose update fails.
 
@@ -536,7 +536,7 @@ Application Restored
 
 ---
 
-# Deployment Status
+## Deployment Status
 
 Check rollout:
 
@@ -552,7 +552,7 @@ kubectl rollout history deployment nginx
 
 ---
 
-# Viewing Deployments
+## Viewing Deployments
 
 List:
 
@@ -576,7 +576,7 @@ The output includes:
 
 ---
 
-# Deleting Deployments
+## Deleting Deployments
 
 Delete:
 
@@ -604,7 +604,7 @@ Removed
 
 ---
 
-# Deployment Strategies
+## Deployment Strategies
 
 Kubernetes supports multiple deployment strategies.
 
@@ -624,7 +624,7 @@ RollingUpdate is the default.
 
 ---
 
-# RollingUpdate Strategy
+## RollingUpdate Strategy
 
 ```
 Old Pod
@@ -654,7 +654,7 @@ Advantages:
 
 ---
 
-# Recreate Strategy
+## Recreate Strategy
 
 ```
 Old Pods
@@ -679,7 +679,7 @@ Disadvantage:
 
 ---
 
-# Deployment vs ReplicaSet
+## Deployment vs ReplicaSet
 
 | Deployment | ReplicaSet |
 |------------|------------|
@@ -691,7 +691,7 @@ Disadvantage:
 
 ---
 
-# Deployment vs Pod
+## Deployment vs Pod
 
 | Deployment | Pod |
 |------------|-----|
@@ -702,7 +702,7 @@ Disadvantage:
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -762,7 +762,7 @@ kubectl delete deployment nginx
 
 ---
 
-# Deployment Architecture Summary
+## Deployment Architecture Summary
 
 ```
 Deployment
@@ -782,15 +782,15 @@ Containers
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Deployments for Stateless Applications
+#### 1. Use Deployments for Stateless Applications
 
 Deployments are the standard controller for web applications, APIs, and microservices.
 
 ---
 
-### 2. Use Versioned Images
+#### 2. Use Versioned Images
 
 Avoid:
 
@@ -806,7 +806,7 @@ image: nginx:1.29.1
 
 ---
 
-### 3. Monitor Rollouts
+#### 3. Monitor Rollouts
 
 Always verify:
 
@@ -818,21 +818,21 @@ after deploying a new version.
 
 ---
 
-### 4. Keep Revision History
+#### 4. Keep Revision History
 
 Revision history enables fast rollbacks when problems occur.
 
 ---
 
-### 5. Store Deployment Manifests in Git
+#### 5. Store Deployment Manifests in Git
 
 Use GitOps or Infrastructure as Code practices for reproducible deployments.
 
 ---
 
-# How Deployments Work Internally
+## How Deployments Work Internally
 
-## Overview
+### Overview
 
 A Deployment is one of the most intelligent controllers in Kubernetes.
 
@@ -842,7 +842,7 @@ The Deployment Controller continuously compares the desired application state wi
 
 ---
 
-# Complete Deployment Workflow
+## Complete Deployment Workflow
 
 Suppose a Deployment is created.
 
@@ -906,7 +906,7 @@ Application Running
 
 ---
 
-# Step 1 – User Creates Deployment
+## Step 1 – User Creates Deployment
 
 Example:
 
@@ -922,7 +922,7 @@ kubectl apply -f deployment.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -947,7 +947,7 @@ Deployment Stored
 
 ---
 
-# Step 3 – Store in etcd
+## Step 3 – Store in etcd
 
 ```
 API Server
@@ -969,7 +969,7 @@ No ReplicaSet Yet
 
 ---
 
-# Step 4 – Deployment Controller
+## Step 4 – Deployment Controller
 
 The Deployment Controller watches Deployment objects.
 
@@ -987,7 +987,7 @@ ReplicaSet
 
 ---
 
-# Step 5 – ReplicaSet Creation
+## Step 5 – ReplicaSet Creation
 
 Example:
 
@@ -1007,7 +1007,7 @@ replicas = 3
 
 ---
 
-# Step 6 – ReplicaSet Creates Pods
+## Step 6 – ReplicaSet Creates Pods
 
 ReplicaSet detects:
 
@@ -1031,7 +1031,7 @@ Pending
 
 ---
 
-# Step 7 – Scheduler
+## Step 7 – Scheduler
 
 Scheduler assigns Pods.
 
@@ -1049,7 +1049,7 @@ Worker Node
 
 ---
 
-# Step 8 – kubelet
+## Step 8 – kubelet
 
 Worker node:
 
@@ -1067,7 +1067,7 @@ Container Starts
 
 ---
 
-# Step 9 – Running
+## Step 9 – Running
 
 Final state:
 
@@ -1087,7 +1087,7 @@ Application becomes available.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 Deployment Controller continuously watches:
 
@@ -1107,7 +1107,7 @@ It reacts whenever changes occur.
 
 ---
 
-# Updating a Deployment
+## Updating a Deployment
 
 Suppose:
 
@@ -1140,7 +1140,7 @@ Template Changed
 
 ---
 
-# New ReplicaSet
+## New ReplicaSet
 
 Old state:
 
@@ -1178,7 +1178,7 @@ Updated Image
 
 ---
 
-# Rolling Update Workflow
+## Rolling Update Workflow
 
 ```
 ReplicaSet B
@@ -1212,7 +1212,7 @@ All Pods Running
 
 ---
 
-# Old ReplicaSet
+## Old ReplicaSet
 
 Deployment does **not** immediately delete the previous ReplicaSet.
 
@@ -1234,7 +1234,7 @@ This enables rollbacks.
 
 ---
 
-# Rollback Workflow
+## Rollback Workflow
 
 Suppose:
 
@@ -1278,7 +1278,7 @@ Application returns to the previous version.
 
 ---
 
-# Scaling Deployment
+## Scaling Deployment
 
 Command:
 
@@ -1311,7 +1311,7 @@ Create 3 Pods
 
 ---
 
-# Scaling Down
+## Scaling Down
 
 Command:
 
@@ -1336,7 +1336,7 @@ Delete Extra Pods
 
 ---
 
-# Deployment Conditions
+## Deployment Conditions
 
 Deployments report several conditions.
 
@@ -1353,7 +1353,7 @@ kubectl describe deployment nginx
 
 ---
 
-# Deployment Status
+## Deployment Status
 
 Check rollout:
 
@@ -1377,7 +1377,7 @@ Complete
 
 ---
 
-# Deployment History
+## Deployment History
 
 View revisions:
 
@@ -1401,7 +1401,7 @@ Revision 3
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Deployment
@@ -1425,7 +1425,7 @@ Containers
 
 ---
 
-# Rolling Update Internals
+## Rolling Update Internals
 
 Before update:
 
@@ -1483,7 +1483,7 @@ This gradual transition minimizes service disruption.
 
 ---
 
-# Hands-on Lab 1 – Create Deployment
+## Hands-on Lab 1 – Create Deployment
 
 Deployment YAML:
 
@@ -1531,7 +1531,7 @@ kubectl apply -f deployment.yaml
 
 ---
 
-# Hands-on Lab 2 – Verify
+## Hands-on Lab 2 – Verify
 
 ```bash
 kubectl get deployments
@@ -1557,7 +1557,7 @@ Pods
 
 ---
 
-# Hands-on Lab 3 – Scale
+## Hands-on Lab 3 – Scale
 
 ```bash
 kubectl scale deployment nginx \
@@ -1579,7 +1579,7 @@ kubectl scale deployment nginx \
 
 ---
 
-# Hands-on Lab 4 – Rolling Update
+## Hands-on Lab 4 – Rolling Update
 
 Update image:
 
@@ -1602,7 +1602,7 @@ kubectl get pods -w
 
 ---
 
-# Hands-on Lab 5 – Rollback
+## Hands-on Lab 5 – Rollback
 
 Rollback:
 
@@ -1618,15 +1618,15 @@ kubectl rollout history deployment nginx
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Always Use Deployments for Stateless Applications
+#### 1. Always Use Deployments for Stateless Applications
 
 Avoid standalone ReplicaSets unless you have a specific learning or troubleshooting objective.
 
 ---
 
-### 2. Monitor Rollouts
+#### 2. Monitor Rollouts
 
 Verify every update using:
 
@@ -1636,19 +1636,19 @@ kubectl rollout status
 
 ---
 
-### 3. Keep Image Tags Immutable
+#### 3. Keep Image Tags Immutable
 
 Use explicit version tags instead of mutable tags like `latest`.
 
 ---
 
-### 4. Review Deployment History
+#### 4. Review Deployment History
 
 Check revision history before performing rollbacks.
 
 ---
 
-### 5. Validate After Every Update
+#### 5. Validate After Every Update
 
 Confirm:
 
@@ -1659,7 +1659,7 @@ Confirm:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Deployments are the **most commonly used workload controller** in Kubernetes. While they simplify application management, many production incidents occur because of incorrect Deployment configurations or misunderstandings of how Deployments interact with ReplicaSets and Pods.
 
@@ -1667,7 +1667,7 @@ The following are the most common mistakes made when working with Deployments.
 
 ---
 
-# 1. Creating Standalone Pods Instead of Deployments
+## 1. Creating Standalone Pods Instead of Deployments
 
 Many beginners deploy applications like this:
 
@@ -1700,7 +1700,7 @@ Use Deployments for almost all stateless production applications.
 
 ---
 
-# 2. Editing Pods Directly
+## 2. Editing Pods Directly
 
 Incorrect workflow:
 
@@ -1744,7 +1744,7 @@ Always modify the Deployment rather than individual Pods.
 
 ---
 
-# 3. Using `latest` Image Tag
+## 3. Using `latest` Image Tag
 
 Avoid:
 
@@ -1768,7 +1768,7 @@ Use immutable image versions whenever possible.
 
 ---
 
-# 4. Not Monitoring Rollouts
+## 4. Not Monitoring Rollouts
 
 Many users execute:
 
@@ -1792,7 +1792,7 @@ kubectl get pods
 
 ---
 
-# 5. Ignoring ReplicaSets
+## 5. Ignoring ReplicaSets
 
 Some engineers believe Deployments manage Pods directly.
 
@@ -1814,7 +1814,7 @@ Understanding this relationship is essential for troubleshooting updates and rol
 
 ---
 
-# 6. Deleting Pods to Fix Problems
+## 6. Deleting Pods to Fix Problems
 
 Suppose:
 
@@ -1852,7 +1852,7 @@ Investigate the root cause instead.
 
 ---
 
-# 7. Forgetting Label Selectors
+## 7. Forgetting Label Selectors
 
 Deployment selector:
 
@@ -1886,7 +1886,7 @@ Selectors and template labels must match.
 
 ---
 
-# 8. Scaling Pods Manually
+## 8. Scaling Pods Manually
 
 Incorrect:
 
@@ -1909,7 +1909,7 @@ Scaling should occur at the Deployment level.
 
 ---
 
-# 9. Forgetting Rollback Capability
+## 9. Forgetting Rollback Capability
 
 Before major deployments:
 
@@ -1929,7 +1929,7 @@ Always confirm rollback procedures work before critical production releases.
 
 ---
 
-# 10. Ignoring Deployment Events
+## 10. Ignoring Deployment Events
 
 Many users only inspect application logs.
 
@@ -1950,7 +1950,7 @@ Events often reveal rollout problems.
 
 ---
 
-# 11. Misunderstanding Rolling Updates
+## 11. Misunderstanding Rolling Updates
 
 Incorrect assumption:
 
@@ -1992,7 +1992,7 @@ This process minimizes downtime.
 
 ---
 
-# 12. Updating Without Health Probes
+## 12. Updating Without Health Probes
 
 Without readiness probes:
 
@@ -2020,7 +2020,7 @@ Deployments work best when Pods implement:
 
 ---
 
-# 13. Ignoring Resource Requests and Limits
+## 13. Ignoring Resource Requests and Limits
 
 Pods without resource requests may be difficult to schedule or may compete unfairly for cluster resources.
 
@@ -2035,7 +2035,7 @@ for production workloads.
 
 ---
 
-# 14. Forgetting Namespace Context
+## 14. Forgetting Namespace Context
 
 Example:
 
@@ -2064,7 +2064,7 @@ or verify the current context and namespace.
 
 ---
 
-# 15. Using Deployments for Stateful Applications
+## 15. Using Deployments for Stateful Applications
 
 Deployments are designed for **stateless** applications.
 
@@ -2085,9 +2085,9 @@ Generally use **StatefulSets** for workloads such as:
 
 ---
 
-# Deployment Quick Revision
+## Deployment Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 Deployment
@@ -2107,7 +2107,7 @@ Containers
 
 ---
 
-## Deployment Workflow
+### Deployment Workflow
 
 ```
 Developer
@@ -2143,7 +2143,7 @@ Pods Running
 
 ---
 
-## Rolling Update
+### Rolling Update
 
 ```
 ReplicaSet A
@@ -2163,7 +2163,7 @@ Application Updated
 
 ---
 
-## Rollback
+### Rollback
 
 ```
 Current ReplicaSet
@@ -2179,7 +2179,7 @@ Application Restored
 
 ---
 
-## Scaling
+### Scaling
 
 ```
 Deployment
@@ -2199,7 +2199,7 @@ Desired Replicas
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 Create:
 
@@ -2263,7 +2263,7 @@ kubectl delete deployment nginx
 
 ---
 
-# Deployment Feature Comparison
+## Deployment Feature Comparison
 
 | Feature | Deployment |
 |----------|:----------:|
@@ -2278,7 +2278,7 @@ kubectl delete deployment nginx
 
 ---
 
-# Deployment Checklist
+## Deployment Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -2295,9 +2295,9 @@ kubectl delete deployment nginx
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a Deployment?
 - Why are Deployments preferred over ReplicaSets?
@@ -2307,7 +2307,7 @@ kubectl delete deployment nginx
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - Explain the Deployment lifecycle.
 - How does a Rolling Update work?
@@ -2317,7 +2317,7 @@ kubectl delete deployment nginx
 
 ---
 
-### Advanced
+#### Advanced
 
 - How does Kubernetes perform a rollback?
 - What triggers the creation of a new ReplicaSet?
@@ -2327,9 +2327,9 @@ kubectl delete deployment nginx
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Kubernetes Deployments Documentation
 - Deployment Concepts
@@ -2340,7 +2340,7 @@ kubectl delete deployment nginx
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Cloud Native Computing Foundation (CNCF)
 - Kubernetes Best Practices
@@ -2349,7 +2349,7 @@ kubectl delete deployment nginx
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - NIST SP 800-190 — Application Container Security Guide
@@ -2358,7 +2358,7 @@ kubectl delete deployment nginx
 
 ---
 
-## Recommended Books
+### Recommended Books
 
 - *Kubernetes Up & Running* — Kelsey Hightower, Brendan Burns & Joe Beda
 - *Kubernetes in Action* — Marko Lukša
@@ -2367,7 +2367,7 @@ kubectl delete deployment nginx
 
 ---
 
-## Recommended Hands-on Practice
+### Recommended Hands-on Practice
 
 1. Create a Deployment with three replicas.
 2. Observe the automatically created ReplicaSet.
@@ -2385,7 +2385,7 @@ kubectl get pods -w
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Deployment Created

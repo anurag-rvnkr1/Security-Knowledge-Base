@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 Detection engineering does not end when a rule is written.
 
@@ -36,7 +36,7 @@ The key question is:
 
 ---
 
-# 2. Why Detection Testing Matters
+## 2. Why Detection Testing Matters
 
 Without testing, a detection may:
 
@@ -54,9 +54,9 @@ Testing provides evidence.
 
 ---
 
-# 3. Detection Testing vs Detection Validation
+## 3. Detection Testing vs Detection Validation
 
-## Detection Testing
+### Detection Testing
 
 Determines whether:
 
@@ -68,7 +68,7 @@ Expected Detection
 
 occurs.
 
-## Detection Validation
+### Detection Validation
 
 Determines whether the detection provides:
 
@@ -82,7 +82,7 @@ Security Value
 
 ---
 
-# 4. Detection Testing Lifecycle
+## 4. Detection Testing Lifecycle
 
 ```text
 Threat
@@ -106,7 +106,7 @@ Improvement
 
 ---
 
-# 5. Detection Hypothesis
+## 5. Detection Hypothesis
 
 A detection hypothesis should describe:
 
@@ -129,7 +129,7 @@ connection that can be detected using endpoint telemetry.
 
 ---
 
-# 6. Test Objectives
+## 6. Test Objectives
 
 A detection test should answer:
 
@@ -145,7 +145,7 @@ Could analysts investigate it?
 
 ---
 
-# 7. Detection Test Levels
+## 7. Detection Test Levels
 
 Testing can occur at several levels:
 
@@ -161,7 +161,7 @@ Production Validation
 
 ---
 
-# 8. Unit Testing
+## 8. Unit Testing
 
 Tests a small part of detection logic.
 
@@ -177,7 +177,7 @@ Match
 
 ---
 
-# 9. Negative Unit Testing
+## 9. Negative Unit Testing
 
 Example:
 
@@ -193,7 +193,7 @@ This helps reduce false positives.
 
 ---
 
-# 10. Integration Testing
+## 10. Integration Testing
 
 Tests whether:
 
@@ -221,7 +221,7 @@ Detection
 
 ---
 
-# 11. End-to-End Testing
+## 11. End-to-End Testing
 
 Tests the complete pipeline:
 
@@ -243,7 +243,7 @@ SOC Workflow
 
 ---
 
-# 12. Telemetry Validation
+## 12. Telemetry Validation
 
 Before testing the rule, confirm:
 
@@ -259,7 +259,7 @@ A detection cannot work if its required telemetry is missing.
 
 ---
 
-# 13. Test Data Sources
+## 13. Test Data Sources
 
 Possible telemetry:
 
@@ -279,7 +279,7 @@ Firewall
 
 ---
 
-# 14. Test Environment
+## 14. Test Environment
 
 Prefer:
 
@@ -295,7 +295,7 @@ rather than uncontrolled production activity.
 
 ---
 
-# 15. Authorization
+## 15. Authorization
 
 Security testing should be:
 
@@ -309,7 +309,7 @@ Reversible
 
 ---
 
-# 16. Atomic Testing
+## 16. Atomic Testing
 
 Atomic testing validates a specific behavior or technique independently.
 
@@ -333,7 +333,7 @@ Can we detect this specific behavior?
 
 ---
 
-# 17. Atomic Test Characteristics
+## 17. Atomic Test Characteristics
 
 A good atomic test should define:
 
@@ -349,7 +349,7 @@ Cleanup
 
 ---
 
-# 18. Atomic Test Example
+## 18. Atomic Test Example
 
 Conceptual:
 
@@ -371,7 +371,7 @@ The test should use a safe, authorized simulation.
 
 ---
 
-# 19. Adversary Simulation
+## 19. Adversary Simulation
 
 Adversary simulation combines multiple behaviors:
 
@@ -391,7 +391,7 @@ This tests whether detections work across a realistic attack chain.
 
 ---
 
-# 20. Scenario-Based Testing
+## 20. Scenario-Based Testing
 
 Instead of testing isolated rules:
 
@@ -415,7 +415,7 @@ This reveals correlation gaps.
 
 ---
 
-# 21. Purple Teaming
+## 21. Purple Teaming
 
 Purple teaming combines:
 
@@ -452,7 +452,7 @@ Retest
 
 ---
 
-# 22. Red Team Role
+## 22. Red Team Role
 
 The offensive side may:
 
@@ -465,7 +465,7 @@ Identify Blind Spots
 
 ---
 
-# 23. Blue Team Role
+## 23. Blue Team Role
 
 The defensive side:
 
@@ -481,7 +481,7 @@ Improve Detections
 
 ---
 
-# 24. Purple Team Role
+## 24. Purple Team Role
 
 Purple teaming creates the feedback loop:
 
@@ -499,7 +499,7 @@ Retest
 
 ---
 
-# 25. Purple Team Objectives
+## 25. Purple Team Objectives
 
 Typical objectives:
 
@@ -515,7 +515,7 @@ Improve Coverage
 
 ---
 
-# 26. Purple Team Planning
+## 26. Purple Team Planning
 
 Before an exercise define:
 
@@ -534,7 +534,7 @@ Cleanup
 
 ---
 
-# 27. Scope
+## 27. Scope
 
 Define:
 
@@ -552,7 +552,7 @@ Avoid ambiguous scope.
 
 ---
 
-# 28. Success Criteria
+## 28. Success Criteria
 
 Example:
 
@@ -575,7 +575,7 @@ PASS
 
 ---
 
-# 29. Detection Test Matrix
+## 29. Detection Test Matrix
 
 | Test | Telemetry | Detection | Alert | Latency | Result |
 |---|---|---|---|---|---|
@@ -585,7 +585,7 @@ PASS
 
 ---
 
-# 30. Detection Coverage Test
+## 30. Detection Coverage Test
 
 For each technique:
 
@@ -605,7 +605,7 @@ Record the result.
 
 ---
 
-# 31. Coverage Categories
+## 31. Coverage Categories
 
 Use:
 
@@ -619,7 +619,7 @@ Not Applicable
 
 ---
 
-# 32. Detection Gap
+## 32. Detection Gap
 
 Example:
 
@@ -635,7 +635,7 @@ This is a detection engineering gap.
 
 ---
 
-# 33. Telemetry Gap
+## 33. Telemetry Gap
 
 Example:
 
@@ -651,7 +651,7 @@ This is a visibility/collection gap.
 
 ---
 
-# 34. Alert Context Gap
+## 34. Alert Context Gap
 
 Example:
 
@@ -667,7 +667,7 @@ The detection may technically work but remain difficult to investigate.
 
 ---
 
-# 35. Response Gap
+## 35. Response Gap
 
 Example:
 
@@ -683,7 +683,7 @@ The detection capability exists, but operational response is weak.
 
 ---
 
-# 36. Testing Pyramid
+## 36. Testing Pyramid
 
 A useful model:
 
@@ -702,7 +702,7 @@ Most routine tests should be automated at lower levels.
 
 ---
 
-# 37. Test Frequency
+## 37. Test Frequency
 
 Different tests can run at different frequencies:
 
@@ -725,7 +725,7 @@ Purple Team
 
 ---
 
-# 38. Regression Testing
+## 38. Regression Testing
 
 Whenever detection logic changes:
 
@@ -739,7 +739,7 @@ should run.
 
 ---
 
-# 39. Regression Example
+## 39. Regression Example
 
 Original:
 
@@ -765,7 +765,7 @@ Admin host
 
 ---
 
-# 40. Boundary Testing
+## 40. Boundary Testing
 
 Test around thresholds.
 
@@ -785,7 +785,7 @@ test:
 
 ---
 
-# 41. Time-Window Testing
+## 41. Time-Window Testing
 
 For a:
 
@@ -805,7 +805,7 @@ This catches timing bugs.
 
 ---
 
-# 42. Null Testing
+## 42. Null Testing
 
 Test missing values:
 
@@ -820,7 +820,7 @@ Detection behavior should be predictable.
 
 ---
 
-# 43. Duplicate Event Testing
+## 43. Duplicate Event Testing
 
 Duplicate telemetry can cause:
 
@@ -839,7 +839,7 @@ Repeated Twice
 
 ---
 
-# 44. Delayed Event Testing
+## 44. Delayed Event Testing
 
 Distributed systems can produce:
 
@@ -855,7 +855,7 @@ Detection logic should account for ingestion delay where appropriate.
 
 ---
 
-# 45. Out-of-Order Events
+## 45. Out-of-Order Events
 
 Example:
 
@@ -869,7 +869,7 @@ Sequence detections must account for event ordering problems.
 
 ---
 
-# 46. Missing Event Testing
+## 46. Missing Event Testing
 
 Test:
 
@@ -885,7 +885,7 @@ This can reveal fragile correlation logic.
 
 ---
 
-# 47. Replay Testing
+## 47. Replay Testing
 
 Replay historical or synthetic events:
 
@@ -901,7 +901,7 @@ Useful for regression and backtesting.
 
 ---
 
-# 48. Historical Incident Replay
+## 48. Historical Incident Replay
 
 Known incidents can be replayed to determine:
 
@@ -913,7 +913,7 @@ This is one of the most valuable validation methods.
 
 ---
 
-# 49. Detection Latency
+## 49. Detection Latency
 
 Measure:
 
@@ -931,7 +931,7 @@ Alert Time
 
 ---
 
-# 50. Detection Latency Formula
+## 50. Detection Latency Formula
 
 Conceptually:
 
@@ -954,7 +954,7 @@ Alerting Latency
 
 ---
 
-# 51. Mean Time to Detect
+## 51. Mean Time to Detect
 
 MTTD commonly represents:
 
@@ -966,7 +966,7 @@ Lower is generally better, but quality must not be sacrificed for speed.
 
 ---
 
-# 52. Detection Quality Metrics
+## 52. Detection Quality Metrics
 
 Track:
 
@@ -982,7 +982,7 @@ Coverage
 
 ---
 
-# 53. Precision
+## 53. Precision
 
 ```text
 Precision =
@@ -993,7 +993,7 @@ Measures how many alerts are actually meaningful.
 
 ---
 
-# 54. Recall
+## 54. Recall
 
 ```text
 Recall =
@@ -1004,7 +1004,7 @@ Measures how many relevant malicious events are detected.
 
 ---
 
-# 55. Detection Test Scoring
+## 55. Detection Test Scoring
 
 A simple internal score could consider:
 
@@ -1034,7 +1034,7 @@ The scoring methodology should be defined internally.
 
 ---
 
-# 56. False Positive Testing
+## 56. False Positive Testing
 
 Include known legitimate behaviors:
 
@@ -1050,7 +1050,7 @@ CI/CD
 
 ---
 
-# 57. False Negative Testing
+## 57. False Negative Testing
 
 Attempt reasonable variations:
 
@@ -1067,7 +1067,7 @@ The goal is to identify detection brittleness.
 
 ---
 
-# 58. Detection Evasion Testing
+## 58. Detection Evasion Testing
 
 Evaluate whether minor variations bypass detection.
 
@@ -1087,7 +1087,7 @@ Testing should remain authorized and controlled.
 
 ---
 
-# 59. Detection Robustness
+## 59. Detection Robustness
 
 A robust detection identifies:
 
@@ -1103,7 +1103,7 @@ Exact String
 
 ---
 
-# 60. Example of Brittle Detection
+## 60. Example of Brittle Detection
 
 Bad:
 
@@ -1125,7 +1125,7 @@ and evade it.
 
 ---
 
-# 61. Behavioral Detection
+## 61. Behavioral Detection
 
 Better:
 
@@ -1143,7 +1143,7 @@ This uses multiple behavioral signals.
 
 ---
 
-# 62. Purple Team Detection Loop
+## 62. Purple Team Detection Loop
 
 ```text
 Threat Intelligence
@@ -1169,7 +1169,7 @@ Retest
 
 ---
 
-# 63. Detection Gap Categories
+## 63. Detection Gap Categories
 
 Record:
 
@@ -1185,7 +1185,7 @@ Coverage Gap
 
 ---
 
-# 64. Correlation Gap
+## 64. Correlation Gap
 
 Example:
 
@@ -1207,7 +1207,7 @@ The individual detections work, but the attack chain is missed.
 
 ---
 
-# 65. Context Gap
+## 65. Context Gap
 
 Alert:
 
@@ -1229,7 +1229,7 @@ Analyst investigation becomes harder.
 
 ---
 
-# 66. Performance Gap
+## 66. Performance Gap
 
 Detection:
 
@@ -1247,7 +1247,7 @@ for an attack requiring rapid response.
 
 ---
 
-# 67. Response Gap
+## 67. Response Gap
 
 Detection:
 
@@ -1265,7 +1265,7 @@ No Escalation
 
 ---
 
-# 68. Purple Team Evidence
+## 68. Purple Team Evidence
 
 Capture:
 
@@ -1287,7 +1287,7 @@ Avoid storing unnecessary sensitive data.
 
 ---
 
-# 69. Detection Test Evidence
+## 69. Detection Test Evidence
 
 A test record can contain:
 
@@ -1317,7 +1317,7 @@ result: pass
 
 ---
 
-# 70. Test Result States
+## 70. Test Result States
 
 Use:
 
@@ -1331,7 +1331,7 @@ NOT APPLICABLE
 
 ---
 
-# 71. Blocked Test
+## 71. Blocked Test
 
 A test may be blocked because:
 
@@ -1346,7 +1346,7 @@ Do not classify blocked tests as passes.
 
 ---
 
-# 72. Detection Validation Report
+## 72. Detection Validation Report
 
 Include:
 
@@ -1366,7 +1366,7 @@ Retest Status
 
 ---
 
-# 73. Purple Team Report
+## 73. Purple Team Report
 
 A useful structure:
 
@@ -1384,7 +1384,7 @@ A useful structure:
 
 ---
 
-# 74. Example Purple Team Scenario
+## 74. Example Purple Team Scenario
 
 ```text
 Scenario:
@@ -1413,7 +1413,7 @@ Test each step.
 
 ---
 
-# 75. Scenario Coverage Matrix
+## 75. Scenario Coverage Matrix
 
 | Stage | Technique | Telemetry | Detection | Alert | Result |
 |---|---|---|---|---|---|
@@ -1424,7 +1424,7 @@ Test each step.
 
 ---
 
-# 76. Purple Team Improvement
+## 76. Purple Team Improvement
 
 After a failed test:
 
@@ -1442,7 +1442,7 @@ Retest
 
 ---
 
-# 77. Never Stop at the First Fix
+## 77. Never Stop at the First Fix
 
 After changing the rule:
 
@@ -1456,7 +1456,7 @@ Retest Regression
 
 ---
 
-# 78. Production Validation
+## 78. Production Validation
 
 After deployment:
 
@@ -1470,7 +1470,7 @@ Verify Analyst Context
 
 ---
 
-# 79. Detection Health Test
+## 79. Detection Health Test
 
 A detection can have:
 
@@ -1496,7 +1496,7 @@ Detection continues receiving telemetry.
 
 ---
 
-# 80. Detection Canary Validation
+## 80. Detection Canary Validation
 
 Deploy to:
 
@@ -1514,7 +1514,7 @@ Observed Alert Rate
 
 ---
 
-# 81. Alert Storm Detection
+## 81. Alert Storm Detection
 
 A failed rule may cause:
 
@@ -1528,7 +1528,7 @@ Detection testing should include volume safeguards.
 
 ---
 
-# 82. Alert Suppression Testing
+## 82. Alert Suppression Testing
 
 If suppression exists:
 
@@ -1542,7 +1542,7 @@ Expected malicious event
 
 ---
 
-# 83. Exception Testing
+## 83. Exception Testing
 
 For each exception:
 
@@ -1558,7 +1558,7 @@ Verify only intended events are suppressed.
 
 ---
 
-# 84. Testing Threat-Informed Coverage
+## 84. Testing Threat-Informed Coverage
 
 Use ATT&CK to identify:
 
@@ -1580,7 +1580,7 @@ This creates measurable threat-informed coverage.
 
 ---
 
-# 85. ATT&CK Coverage Validation
+## 85. ATT&CK Coverage Validation
 
 Do not report:
 
@@ -1600,7 +1600,7 @@ Test
 
 ---
 
-# 86. Coverage Confidence
+## 86. Coverage Confidence
 
 A useful internal model:
 
@@ -1622,7 +1622,7 @@ The exact terminology should be organization-specific.
 
 ---
 
-# 87. Detection Testing in CI/CD
+## 87. Detection Testing in CI/CD
 
 Automate:
 
@@ -1648,9 +1648,9 @@ Production Validation
 
 ---
 
-# 88. Automated vs Manual Testing
+## 88. Automated vs Manual Testing
 
-### Automate
+#### Automate
 
 ```text
 Syntax
@@ -1661,7 +1661,7 @@ Query
 Performance
 ```
 
-### Human-Led
+#### Human-Led
 
 ```text
 Threat Scenario
@@ -1672,7 +1672,7 @@ Response
 
 ---
 
-# 89. Test Automation
+## 89. Test Automation
 
 Example:
 
@@ -1691,7 +1691,7 @@ Merge Blocked
 
 ---
 
-# 90. Detection Test Coverage
+## 90. Detection Test Coverage
 
 Measure:
 
@@ -1713,7 +1713,7 @@ Test Coverage:
 
 ---
 
-# 91. Test Coverage Is Not Detection Coverage
+## 91. Test Coverage Is Not Detection Coverage
 
 Important distinction:
 
@@ -1727,7 +1727,7 @@ A detection may have tests but still cover only a narrow procedure.
 
 ---
 
-# 92. Test Quality
+## 92. Test Quality
 
 A high test count does not guarantee quality.
 
@@ -1743,7 +1743,7 @@ Documented
 
 ---
 
-# 93. Deterministic Testing
+## 93. Deterministic Testing
 
 Prefer predictable inputs and expected outputs.
 
@@ -1759,7 +1759,7 @@ when possible.
 
 ---
 
-# 94. Repeatability
+## 94. Repeatability
 
 A good test should produce consistent results:
 
@@ -1777,7 +1777,7 @@ Investigate
 
 ---
 
-# 95. Test Cleanup
+## 95. Test Cleanup
 
 Every simulation should define cleanup:
 
@@ -1791,7 +1791,7 @@ Network Changes
 
 ---
 
-# 96. Test Safety
+## 96. Test Safety
 
 Use:
 
@@ -1806,7 +1806,7 @@ Rollback
 
 ---
 
-# 97. Test Documentation
+## 97. Test Documentation
 
 Document:
 
@@ -1823,7 +1823,7 @@ Date
 
 ---
 
-# 98. Detection Test Naming
+## 98. Detection Test Naming
 
 Example:
 
@@ -1835,7 +1835,7 @@ TEST-CLOUD-IAM-003
 
 ---
 
-# 99. Detection Test IDs
+## 99. Detection Test IDs
 
 Stable IDs allow:
 
@@ -1849,7 +1849,7 @@ to remain linked.
 
 ---
 
-# 100. Detection-Test Mapping
+## 100. Detection-Test Mapping
 
 Example:
 
@@ -1864,7 +1864,7 @@ tests:
 
 ---
 
-# 101. Purple Team Test Mapping
+## 101. Purple Team Test Mapping
 
 Example:
 
@@ -1882,7 +1882,7 @@ detections:
 
 ---
 
-# 102. Detection Validation Dashboard
+## 102. Detection Validation Dashboard
 
 Useful metrics:
 
@@ -1899,7 +1899,7 @@ Telemetry Gaps
 
 ---
 
-# 103. Purple Team Metrics
+## 103. Purple Team Metrics
 
 Possible metrics:
 
@@ -1916,7 +1916,7 @@ Retest Success
 
 ---
 
-# 104. Detection Success Rate
+## 104. Detection Success Rate
 
 Conceptually:
 
@@ -1928,7 +1928,7 @@ Total Applicable Tests
 
 ---
 
-# 105. Retest Rate
+## 105. Retest Rate
 
 Track:
 
@@ -1942,7 +1942,7 @@ A failed test should remain visible until validated.
 
 ---
 
-# 106. Detection Gap Aging
+## 106. Detection Gap Aging
 
 Track:
 
@@ -1960,7 +1960,7 @@ This helps measure remediation speed.
 
 ---
 
-# 107. Purple Team Backlog
+## 107. Purple Team Backlog
 
 Example:
 
@@ -1980,9 +1980,9 @@ Priority: Medium
 
 ---
 
-# 108. Common Testing Mistakes
+## 108. Common Testing Mistakes
 
-## Mistake 1
+### Mistake 1
 
 Only testing whether the query runs.
 
@@ -1994,7 +1994,7 @@ Detection Works
 
 ---
 
-## Mistake 2
+### Mistake 2
 
 Only testing positive cases.
 
@@ -2008,7 +2008,7 @@ Edge
 
 ---
 
-## Mistake 3
+### Mistake 3
 
 Testing only one procedure.
 
@@ -2016,7 +2016,7 @@ Attackers can vary implementation.
 
 ---
 
-## Mistake 4
+### Mistake 4
 
 Ignoring telemetry.
 
@@ -2024,7 +2024,7 @@ A detection can fail before the query even executes.
 
 ---
 
-## Mistake 5
+### Mistake 5
 
 Ignoring timing.
 
@@ -2032,7 +2032,7 @@ Sequence detections depend on event ordering and windows.
 
 ---
 
-## Mistake 6
+### Mistake 6
 
 Ignoring duplicates.
 
@@ -2040,7 +2040,7 @@ Duplicate events can inflate counts.
 
 ---
 
-## Mistake 7
+### Mistake 7
 
 Ignoring false positives.
 
@@ -2048,7 +2048,7 @@ A detection that overwhelms analysts is operationally weak.
 
 ---
 
-## Mistake 8
+### Mistake 8
 
 No retesting.
 
@@ -2056,7 +2056,7 @@ A fix is not proven until validated.
 
 ---
 
-## Mistake 9
+### Mistake 9
 
 No production validation.
 
@@ -2064,7 +2064,7 @@ Staging may not represent production accurately.
 
 ---
 
-## Mistake 10
+### Mistake 10
 
 Treating purple teaming as an attack-only exercise.
 
@@ -2072,7 +2072,7 @@ The objective is defensive improvement.
 
 ---
 
-# 109. Practical Exercise – Unit Testing
+## 109. Practical Exercise – Unit Testing
 
 Create:
 
@@ -2098,7 +2098,7 @@ Edge → Defined Behavior
 
 ---
 
-# 110. Practical Exercise – Integration Test
+## 110. Practical Exercise – Integration Test
 
 Simulate:
 
@@ -2118,7 +2118,7 @@ Verify every stage.
 
 ---
 
-# 111. Practical Exercise – Historical Replay
+## 111. Practical Exercise – Historical Replay
 
 Take a known historical event dataset.
 
@@ -2139,7 +2139,7 @@ Latency
 
 ---
 
-# 112. Practical Exercise – Purple Team
+## 112. Practical Exercise – Purple Team
 
 Choose one relevant technique.
 
@@ -2160,7 +2160,7 @@ Retest
 
 ---
 
-# 113. Practical Exercise – Detection Resilience
+## 113. Practical Exercise – Detection Resilience
 
 Test variations in:
 
@@ -2184,7 +2184,7 @@ Missed
 
 ---
 
-# 114. Practical Exercise – End-to-End
+## 114. Practical Exercise – End-to-End
 
 Build:
 
@@ -2206,7 +2206,7 @@ Measure the complete latency.
 
 ---
 
-# 115. Test Case Template
+## 115. Test Case Template
 
 ```yaml
 test_id: TEST-001
@@ -2244,7 +2244,7 @@ result: pass
 
 ---
 
-# 116. Purple Team Scenario Template
+## 116. Purple Team Scenario Template
 
 ```yaml
 scenario_id: PT-001
@@ -2277,7 +2277,7 @@ status: completed
 
 ---
 
-# 117. Detection Validation Checklist
+## 117. Detection Validation Checklist
 
 ```text
 [ ] Threat scenario defined
@@ -2306,67 +2306,67 @@ status: completed
 
 ---
 
-# 118. Interview Questions
+## 118. Interview Questions
 
-### Why is detection testing important?
+#### Why is detection testing important?
 
 > It provides evidence that the detection actually observes and identifies the intended behavior instead of merely existing as configuration.
 
-### What is the difference between testing and validation?
+#### What is the difference between testing and validation?
 
 > Testing checks whether expected behavior triggers the detection; validation evaluates whether the resulting detection is reliable, timely, accurate, and useful to defenders.
 
-### What is atomic testing?
+#### What is atomic testing?
 
 > Testing an individual adversary behavior or technique in a controlled environment to verify the associated telemetry and detection.
 
-### What is purple teaming?
+#### What is purple teaming?
 
 > A collaborative process between offensive and defensive teams to simulate relevant adversary behavior, evaluate detection and response, identify gaps, and improve defenses.
 
-### What is a telemetry gap?
+#### What is a telemetry gap?
 
 > A situation where required data needed to detect a behavior is missing or unavailable.
 
-### What is a detection gap?
+#### What is a detection gap?
 
 > A situation where relevant telemetry exists but the organization lacks effective detection logic.
 
-### What is a correlation gap?
+#### What is a correlation gap?
 
 > A situation where individual events are visible but are not combined into a meaningful attack sequence.
 
-### Why test negative cases?
+#### Why test negative cases?
 
 > To determine whether legitimate activity incorrectly triggers the detection and to control false positives.
 
-### Why test boundary conditions?
+#### Why test boundary conditions?
 
 > Threshold and time-window logic can behave incorrectly around boundaries, causing false positives or false negatives.
 
-### What is regression testing?
+#### What is regression testing?
 
 > Re-running existing tests after changes to ensure previously correct behavior remains correct.
 
-### What is detection latency?
+#### What is detection latency?
 
 > The time between the underlying activity and the resulting actionable detection or alert.
 
-### Why test event delays?
+#### Why test event delays?
 
 > Distributed systems can deliver telemetry later than the event's actual occurrence, which can break time-based correlation.
 
-### What should a purple team exercise measure?
+#### What should a purple team exercise measure?
 
 > Telemetry visibility, detection success, alert quality, detection latency, investigation capability, response capability, and gaps.
 
-### Why is historical replay valuable?
+#### Why is historical replay valuable?
 
 > It allows teams to determine whether current detections would have identified previously observed incidents.
 
 ---
 
-# 119. Quick Revision
+## 119. Quick Revision
 
 ```text
 Detection Testing
@@ -2438,7 +2438,7 @@ Purple Team Loop
 
 ---
 
-# 120. Golden Rules
+## 120. Golden Rules
 
 ```text
 1. A detection that has never been tested is only a hypothesis.
@@ -2518,7 +2518,7 @@ Purple Team Loop
 
 ---
 
-# 121. Final Mental Model
+## 121. Final Mental Model
 
 Think of detection validation as:
 
@@ -2588,7 +2588,7 @@ IMPROVED DEFENSE
 
 ---
 
-# 122. Chapter Summary
+## 122. Chapter Summary
 
 This chapter covered:
 

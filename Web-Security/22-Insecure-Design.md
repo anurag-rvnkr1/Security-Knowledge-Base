@@ -1,12 +1,12 @@
 # 22-Insecure-Design.md
 
-# Part 1 — Fundamentals of Insecure Design, Secure Design Principles, Threat Modeling, and Enterprise Architecture
+## Part 1 — Fundamentals of Insecure Design, Secure Design Principles, Threat Modeling, and Enterprise Architecture
 
 > **"A secure application cannot be built by fixing code alone. If the design itself is insecure, every implementation built on top of it inherits that insecurity."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Insecure Design?
+## What is Insecure Design?
 
 **Insecure Design** refers to weaknesses that originate from poor architectural decisions, missing security requirements, or flawed business logic rather than coding mistakes.
 
@@ -31,7 +31,7 @@ Unlike implementation bugs, insecure design cannot usually be fixed with a simpl
 
 ---
 
-# Why OWASP Introduced Insecure Design
+## Why OWASP Introduced Insecure Design
 
 OWASP introduced **Insecure Design** as a separate category to emphasize that many security issues begin long before developers write code.
 
@@ -63,7 +63,7 @@ Security decisions made early have the greatest long-term impact.
 
 ---
 
-# Design vs Implementation
+## Design vs Implementation
 
 | Design | Implementation |
 |---------|----------------|
@@ -77,7 +77,7 @@ Both are essential, but they solve different problems.
 
 ---
 
-# Security by Design
+## Security by Design
 
 Security should be incorporated from the beginning.
 
@@ -113,7 +113,7 @@ Security should never be treated as a feature added at the end of development.
 
 ---
 
-# Real-World Analogy
+## Real-World Analogy
 
 Consider a building.
 
@@ -147,7 +147,7 @@ Secure Application
 
 ---
 
-# Characteristics of Insecure Design
+## Characteristics of Insecure Design
 
 ```
 Insecure Design
@@ -171,7 +171,7 @@ Insecure Design
 
 ---
 
-# Design Lifecycle
+## Design Lifecycle
 
 ```
 Business Need
@@ -201,7 +201,7 @@ Every stage should include security considerations.
 
 ---
 
-# Business Logic
+## Business Logic
 
 Business logic defines how an application operates.
 
@@ -219,7 +219,7 @@ Business logic should enforce security requirements as well as functional requir
 
 ---
 
-# Secure Business Logic
+## Secure Business Logic
 
 ```
 User Request
@@ -249,7 +249,7 @@ Security should be integrated into the workflow rather than added afterward.
 
 ---
 
-# Attack Surface
+## Attack Surface
 
 Every application exposes entry points.
 
@@ -279,7 +279,7 @@ Reducing unnecessary functionality reduces the attack surface.
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
 
 Applications frequently communicate across trust boundaries.
 
@@ -307,7 +307,7 @@ Each boundary requires verification rather than assumptions.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                 Users
@@ -343,7 +343,7 @@ Security should be designed into every architectural layer.
 
 ---
 
-# Secure Design Principles
+## Secure Design Principles
 
 ```
 Secure Design
@@ -371,7 +371,7 @@ These principles guide architects toward more resilient systems.
 
 ---
 
-# Secure Defaults
+## Secure Defaults
 
 Applications should start in the safest possible configuration.
 
@@ -399,7 +399,7 @@ Security should require explicit approval rather than implicit trust.
 
 ---
 
-# Complete Mediation
+## Complete Mediation
 
 Every access request should be verified.
 
@@ -427,7 +427,7 @@ Applications should not assume previous checks remain valid indefinitely.
 
 ---
 
-# Minimize Attack Surface
+## Minimize Attack Surface
 
 ```
 Application
@@ -443,7 +443,7 @@ Every unnecessary feature increases complexity and potential risk.
 
 ---
 
-# Fail Securely
+## Fail Securely
 
 ```
 Unexpected Error
@@ -465,7 +465,7 @@ Applications should fail in a manner that protects sensitive information and mai
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Authentication
@@ -495,7 +495,7 @@ Multiple coordinated security layers provide stronger protection than any single
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An online banking application:
 
@@ -531,7 +531,7 @@ Each stage contributes to the overall security of the process.
 
 ---
 
-# Common Causes of Insecure Design
+## Common Causes of Insecure Design
 
 | Cause | Example |
 |--------|----------|
@@ -544,7 +544,7 @@ Each stage contributes to the overall security of the process.
 
 ---
 
-# Enterprise Workflow
+## Enterprise Workflow
 
 ```
 Business Requirement
@@ -578,7 +578,7 @@ Security requirements should evolve alongside functional requirements.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select a sample web application.
 2. List its primary business processes.
@@ -590,7 +590,7 @@ Security requirements should evolve alongside functional requirements.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Insecure Design?
 2. How does Insecure Design differ from insecure implementation?
@@ -605,7 +605,7 @@ Security requirements should evolve alongside functional requirements.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Define security requirements alongside functional requirements.
 - Incorporate threat modeling early in the project.
@@ -617,7 +617,7 @@ Security requirements should evolve alongside functional requirements.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating security as a post-development activity.
 - Assuming secure code compensates for poor design.
@@ -628,7 +628,7 @@ Security requirements should evolve alongside functional requirements.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Insecure Design originates from flawed architecture, missing security requirements, or weak business logic.
 - Secure applications begin with secure requirements and architecture.
@@ -637,15 +637,15 @@ Security requirements should evolve alongside functional requirements.
 - Secure design principles provide the foundation for resilient enterprise applications.
 
 
-# 22-Insecure-Design.md
+## 22-Insecure-Design.md
 
-# Part 2 — Threat Modeling, Abuse Cases, Secure Design Patterns, Risk Assessment, and Business Logic Security
+## Part 2 — Threat Modeling, Abuse Cases, Secure Design Patterns, Risk Assessment, and Business Logic Security
 
 > **"The objective of secure design is not to predict every attack, but to build systems that remain secure even when unexpected situations occur."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -662,7 +662,7 @@ After completing this part, you will understand:
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling is a structured process used to identify potential security risks **before implementation begins**.
 
@@ -694,7 +694,7 @@ The earlier risks are identified, the less costly they are to address.
 
 ---
 
-# Why Threat Modeling Matters
+## Why Threat Modeling Matters
 
 Without threat modeling:
 
@@ -740,7 +740,7 @@ Threat modeling encourages proactive rather than reactive security.
 
 ---
 
-# Components of Threat Modeling
+## Components of Threat Modeling
 
 ```
 Threat Modeling
@@ -766,7 +766,7 @@ Each component contributes to a complete security assessment.
 
 ---
 
-# Identify Assets
+## Identify Assets
 
 Assets are resources that require protection.
 
@@ -798,7 +798,7 @@ Understanding assets helps prioritize security efforts.
 
 ---
 
-# Identify Entry Points
+## Identify Entry Points
 
 Applications receive input through multiple interfaces.
 
@@ -828,7 +828,7 @@ Each entry point should be evaluated independently.
 
 ---
 
-# Identify Trust Boundaries
+## Identify Trust Boundaries
 
 ```
 Browser
@@ -854,7 +854,7 @@ Whenever information crosses a trust boundary, validation and security checks sh
 
 ---
 
-# Threat Actors
+## Threat Actors
 
 Threat actors are entities capable of interacting with the system.
 
@@ -880,7 +880,7 @@ Different actors require different security controls.
 
 ---
 
-# Threat Modeling Workflow
+## Threat Modeling Workflow
 
 ```
 Identify Assets
@@ -914,7 +914,7 @@ Threat modeling should be repeated whenever significant architectural changes oc
 
 ---
 
-# Abuse Cases
+## Abuse Cases
 
 An abuse case describes how a system **could be intentionally misused**.
 
@@ -940,7 +940,7 @@ Thinking about misuse helps uncover missing protections.
 
 ---
 
-# Misuse Cases
+## Misuse Cases
 
 A misuse case focuses on **undesired system behavior**.
 
@@ -964,7 +964,7 @@ Designers should consider both intended and unintended behavior.
 
 ---
 
-# Business Logic Security
+## Business Logic Security
 
 Business logic defines organizational rules.
 
@@ -998,7 +998,7 @@ Each step should include appropriate validation and authorization.
 
 ---
 
-# Secure Business Workflow
+## Secure Business Workflow
 
 ```
 User
@@ -1032,7 +1032,7 @@ Security should be integrated into the workflow itself.
 
 ---
 
-# Business Rules
+## Business Rules
 
 Business rules enforce organizational policies.
 
@@ -1049,7 +1049,7 @@ These rules reduce business risk in addition to technical risk.
 
 ---
 
-# Risk Assessment
+## Risk Assessment
 
 Each identified threat should be evaluated.
 
@@ -1077,7 +1077,7 @@ Risk assessment helps prioritize limited security resources.
 
 ---
 
-# Example Risk Matrix
+## Example Risk Matrix
 
 | Likelihood | Impact | Priority |
 |------------|--------|----------|
@@ -1091,7 +1091,7 @@ Organizations may customize risk ratings according to their governance processes
 
 ---
 
-# Secure Design Patterns
+## Secure Design Patterns
 
 Secure design patterns provide reusable architectural approaches.
 
@@ -1119,7 +1119,7 @@ Patterns encourage consistency across applications.
 
 ---
 
-# Layered Architecture
+## Layered Architecture
 
 ```
 Presentation Layer
@@ -1145,7 +1145,7 @@ Separating responsibilities improves maintainability and security.
 
 ---
 
-# Separation of Responsibilities
+## Separation of Responsibilities
 
 ```
 Authentication
@@ -1171,7 +1171,7 @@ Each component should perform a clearly defined function.
 
 ---
 
-# Security Design Reviews
+## Security Design Reviews
 
 Architectural reviews should examine:
 
@@ -1199,7 +1199,7 @@ Reviews are most effective before implementation begins.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An online loan application:
 
@@ -1239,7 +1239,7 @@ Every stage incorporates both functional and security requirements.
 
 ---
 
-# Secure Decision Flow
+## Secure Decision Flow
 
 ```
 Request
@@ -1277,7 +1277,7 @@ Security decisions should occur before sensitive operations.
 
 ---
 
-# Common Design Weaknesses
+## Common Design Weaknesses
 
 | Weakness | Potential Impact |
 |----------|------------------|
@@ -1290,7 +1290,7 @@ Security decisions should occur before sensitive operations.
 
 ---
 
-# Enterprise Workflow
+## Enterprise Workflow
 
 ```
 Requirements
@@ -1328,7 +1328,7 @@ Threat modeling should be revisited whenever significant changes occur.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select a sample enterprise application.
 2. Identify its key assets.
@@ -1341,7 +1341,7 @@ Threat modeling should be revisited whenever significant changes occur.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is threat modeling?
 2. Why should threat modeling occur before implementation?
@@ -1356,7 +1356,7 @@ Threat modeling should be revisited whenever significant changes occur.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Perform threat modeling during system design.
 - Identify and classify critical assets.
@@ -1368,7 +1368,7 @@ Threat modeling should be revisited whenever significant changes occur.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Beginning implementation before evaluating threats.
 - Focusing only on technical vulnerabilities while ignoring business logic.
@@ -1379,7 +1379,7 @@ Threat modeling should be revisited whenever significant changes occur.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Threat modeling is a proactive approach to identifying security risks during design.
 - Assets, trust boundaries, entry points, and threat actors form the foundation of secure architecture reviews.
@@ -1387,15 +1387,15 @@ Threat modeling should be revisited whenever significant changes occur.
 - Business logic security is as important as technical security controls.
 - Secure design patterns, layered architecture, and regular design reviews improve long-term application security.
 
-# 22-Insecure-Design.md
+## 22-Insecure-Design.md
 
-# Part 3 — Secure Design Methodologies, Security Architecture, Zero Trust, Design Reviews, and Enterprise Governance
+## Part 3 — Secure Design Methodologies, Security Architecture, Zero Trust, Design Reviews, and Enterprise Governance
 
 > **"Secure design is not about building barriers everywhere—it is about making correct security decisions at every architectural layer."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1412,7 +1412,7 @@ After completing this part, you will understand:
 
 ---
 
-# Secure Design Methodology
+## Secure Design Methodology
 
 A secure application follows a structured design process.
 
@@ -1456,7 +1456,7 @@ Security decisions should be documented before development begins.
 
 ---
 
-# Security Requirements Engineering
+## Security Requirements Engineering
 
 Security requirements should be treated like functional requirements.
 
@@ -1486,7 +1486,7 @@ Examples of security requirements include:
 
 ---
 
-# Functional vs Security Requirements
+## Functional vs Security Requirements
 
 | Functional Requirement | Security Requirement |
 |------------------------|----------------------|
@@ -1500,7 +1500,7 @@ Security requirements support and protect functional requirements.
 
 ---
 
-# Secure Architecture
+## Secure Architecture
 
 ```
                  Internet
@@ -1550,7 +1550,7 @@ Each architectural layer performs a specific security function.
 
 ---
 
-# Layered Security
+## Layered Security
 
 ```
 User
@@ -1584,7 +1584,7 @@ No single layer should be responsible for all security.
 
 ---
 
-# Zero Trust Design
+## Zero Trust Design
 
 Zero Trust assumes that no request should be trusted automatically.
 
@@ -1616,7 +1616,7 @@ Trust is continuously verified rather than assumed.
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -1638,7 +1638,7 @@ These principles reduce reliance on implicit trust.
 
 ---
 
-# Security Zones
+## Security Zones
 
 Enterprise systems often separate workloads into different security zones.
 
@@ -1666,7 +1666,7 @@ Movement between zones should require appropriate security controls.
 
 ---
 
-# Segmentation
+## Segmentation
 
 ```
 Enterprise
@@ -1688,7 +1688,7 @@ Segmentation limits the impact of individual component failures.
 
 ---
 
-# Least Privilege by Design
+## Least Privilege by Design
 
 ```
 User
@@ -1710,7 +1710,7 @@ Permissions should be limited to operational needs.
 
 ---
 
-# Fail Securely
+## Fail Securely
 
 Unexpected situations should not bypass security controls.
 
@@ -1738,7 +1738,7 @@ Applications should deny access safely when required information is unavailable.
 
 ---
 
-# Secure Defaults
+## Secure Defaults
 
 Applications should begin with restrictive settings.
 
@@ -1766,7 +1766,7 @@ Explicit enablement reduces accidental exposure.
 
 ---
 
-# Separation of Duties
+## Separation of Duties
 
 Critical business processes should involve independent responsibilities.
 
@@ -1790,7 +1790,7 @@ This reduces the likelihood of fraud and operational errors.
 
 ---
 
-# Security Architecture Patterns
+## Security Architecture Patterns
 
 ```
 Patterns
@@ -1816,7 +1816,7 @@ Reusable patterns improve consistency across applications.
 
 ---
 
-# Security Design Review
+## Security Design Review
 
 A design review examines architecture before implementation.
 
@@ -1848,7 +1848,7 @@ Review findings should be documented and tracked.
 
 ---
 
-# Design Validation
+## Design Validation
 
 ```
 Architecture
@@ -1878,7 +1878,7 @@ Validation confirms that security objectives have been addressed before coding b
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 ```
 Security Policy
@@ -1908,7 +1908,7 @@ Governance promotes consistent security practices across teams.
 
 ---
 
-# Design Documentation
+## Design Documentation
 
 Architectural documentation should include:
 
@@ -1925,7 +1925,7 @@ Good documentation supports future maintenance and audits.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A healthcare management system:
 
@@ -1965,7 +1965,7 @@ Each component contributes to maintaining confidentiality and integrity.
 
 ---
 
-# Operational Security
+## Operational Security
 
 After deployment:
 
@@ -1997,7 +1997,7 @@ Secure design is an ongoing operational responsibility.
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2009,7 +2009,7 @@ Secure design is an ongoing operational responsibility.
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Security Requirements Defined
@@ -2035,7 +2035,7 @@ Secure design is an ongoing operational responsibility.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select a sample enterprise application.
 2. Draw its high-level architecture.
@@ -2048,7 +2048,7 @@ Secure design is an ongoing operational responsibility.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of security requirements engineering?
 2. Why should security be incorporated during architecture rather than after deployment?
@@ -2063,7 +2063,7 @@ Secure design is an ongoing operational responsibility.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Define security requirements during project planning.
 - Apply Zero Trust principles throughout the architecture.
@@ -2075,7 +2075,7 @@ Secure design is an ongoing operational responsibility.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Designing first and considering security later.
 - Relying solely on implementation controls.
@@ -2086,7 +2086,7 @@ Secure design is an ongoing operational responsibility.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure design begins with clear security requirements and structured architecture.
 - Zero Trust, least privilege, segmentation, and secure defaults strengthen enterprise systems.
@@ -2094,15 +2094,15 @@ Secure design is an ongoing operational responsibility.
 - Governance and documentation ensure consistency across development teams.
 - Secure design is an ongoing process that continues throughout the application's lifecycle.
 
-# 22-Insecure-Design.md
+## 22-Insecure-Design.md
 
-# Part 4 — Enterprise Governance, Secure SDLC, Incident Response, Operational Excellence, and Chapter Summary
+## Part 4 — Enterprise Governance, Secure SDLC, Incident Response, Operational Excellence, and Chapter Summary
 
 > **"Secure design is a continuous engineering discipline. Organizations that consistently build security into requirements, architecture, development, operations, and governance are significantly more resilient than those that rely solely on fixing vulnerabilities after deployment."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2119,7 +2119,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Security Governance
+## Enterprise Security Governance
 
 Governance ensures that secure design principles are consistently applied across every project.
 
@@ -2155,7 +2155,7 @@ Governance establishes consistency, accountability, and measurable security outc
 
 ---
 
-# Secure Software Development Lifecycle (SSDLC)
+## Secure Software Development Lifecycle (SSDLC)
 
 Security activities should occur throughout the entire development lifecycle.
 
@@ -2203,7 +2203,7 @@ Every phase contributes to the overall security posture.
 
 ---
 
-# Security Gates
+## Security Gates
 
 Organizations often introduce security checkpoints before progressing to the next phase.
 
@@ -2243,7 +2243,7 @@ Security gates help identify issues before they become expensive to correct.
 
 ---
 
-# Design Assurance
+## Design Assurance
 
 Design assurance verifies that security objectives have been achieved.
 
@@ -2271,7 +2271,7 @@ Verification should occur before implementation begins.
 
 ---
 
-# Architecture Governance
+## Architecture Governance
 
 Enterprise architecture should follow documented standards.
 
@@ -2301,7 +2301,7 @@ Standardization improves consistency across multiple development teams.
 
 ---
 
-# Change Management
+## Change Management
 
 Architectural changes should undergo security review.
 
@@ -2333,7 +2333,7 @@ Changes can introduce new risks and should be evaluated carefully.
 
 ---
 
-# Secure Design Documentation
+## Secure Design Documentation
 
 Security documentation should include:
 
@@ -2363,7 +2363,7 @@ Documentation supports maintenance, audits, and future enhancements.
 
 ---
 
-# Continuous Security Reviews
+## Continuous Security Reviews
 
 Applications evolve over time.
 
@@ -2395,7 +2395,7 @@ Security reviews should continue throughout the application's lifecycle.
 
 ---
 
-# Incident Response
+## Incident Response
 
 If a design-related weakness is discovered:
 
@@ -2439,7 +2439,7 @@ Addressing the underlying design issue helps prevent similar problems in the fut
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Questions to consider:
 
@@ -2461,7 +2461,7 @@ Understanding *why* the issue occurred is essential for long-term improvement.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Lessons Learned
@@ -2487,7 +2487,7 @@ Every security incident provides opportunities to strengthen future designs.
 
 ---
 
-# Enterprise Monitoring
+## Enterprise Monitoring
 
 Security operations should monitor:
 
@@ -2513,7 +2513,7 @@ Monitoring validates that security controls continue to operate effectively.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Organizations can measure secure design maturity using metrics.
 
@@ -2528,7 +2528,7 @@ Organizations can measure secure design maturity using metrics.
 
 ---
 
-# Enterprise Security Dashboard
+## Enterprise Security Dashboard
 
 ```
 Security Dashboard
@@ -2554,7 +2554,7 @@ Dashboards provide visibility into organizational security posture.
 
 ---
 
-# Enterprise Architecture Example
+## Enterprise Architecture Example
 
 ```
                    Internet
@@ -2608,7 +2608,7 @@ Each architectural layer contributes to the application's overall security.
 
 ---
 
-# Operational Security
+## Operational Security
 
 Security continues after deployment.
 
@@ -2640,7 +2640,7 @@ Secure operations maintain the effectiveness of the original design.
 
 ---
 
-# Enterprise Design Checklist
+## Enterprise Design Checklist
 
 ```
 ✓ Security Requirements Defined
@@ -2666,7 +2666,7 @@ Secure operations maintain the effectiveness of the original design.
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2678,9 +2678,9 @@ Secure operations maintain the effectiveness of the original design.
 
 ---
 
-# Interview Revision
+## Interview Revision
 
-## Insecure Design
+### Insecure Design
 
 ```
 Weak Requirements
@@ -2704,7 +2704,7 @@ Security Risk
 
 ---
 
-## Secure Design
+### Secure Design
 
 ```
 Security Requirements
@@ -2732,7 +2732,7 @@ Testing
 
 ---
 
-## Security Principles
+### Security Principles
 
 ```
 ✓ Least Privilege
@@ -2752,7 +2752,7 @@ Testing
 
 ---
 
-## Secure SDLC
+### Secure SDLC
 
 ```
 Requirements
@@ -2782,7 +2782,7 @@ Security should be integrated into every phase.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select a sample enterprise application.
 2. Review its security requirements.
@@ -2795,7 +2795,7 @@ Security should be integrated into every phase.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Insecure Design?
 2. How does Insecure Design differ from implementation vulnerabilities?
@@ -2810,7 +2810,7 @@ Security should be integrated into every phase.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Define security requirements alongside business requirements.
 - Perform threat modeling before implementation.
@@ -2823,7 +2823,7 @@ Security should be integrated into every phase.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating design reviews as optional.
 - Ignoring business logic during architecture planning.
@@ -2834,7 +2834,7 @@ Security should be integrated into every phase.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

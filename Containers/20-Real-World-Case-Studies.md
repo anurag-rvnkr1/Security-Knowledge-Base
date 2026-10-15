@@ -1,6 +1,6 @@
 # Chapter 20 – Real-World Case Studies
 
-# Overview
+## Overview
 
 Real-world case studies help bridge the gap between theory and practice by demonstrating how container technologies are used in production environments. They also highlight common architectural decisions, operational challenges, and security lessons learned.
 
@@ -19,7 +19,7 @@ These case studies are relevant for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -33,9 +33,9 @@ After completing this chapter, you should be able to:
 
 ---
 
-# Case Study 1 – E-Commerce Platform Migration
+## Case Study 1 – E-Commerce Platform Migration
 
-## Background
+### Background
 
 A retail company migrated its monolithic web application to Docker.
 
@@ -77,7 +77,7 @@ Redis
 
 ---
 
-## Challenges
+### Challenges
 
 - Environment inconsistency
 - Long deployment times
@@ -86,7 +86,7 @@ Redis
 
 ---
 
-## Solution
+### Solution
 
 The organization implemented:
 
@@ -99,7 +99,7 @@ The organization implemented:
 
 ---
 
-## Results
+### Results
 
 Benefits included:
 
@@ -111,7 +111,7 @@ Benefits included:
 
 ---
 
-## Lessons Learned
+### Lessons Learned
 
 - Standardize image creation.
 - Use immutable deployments.
@@ -120,9 +120,9 @@ Benefits included:
 
 ---
 
-# Case Study 2 – Image Size Optimization
+## Case Study 2 – Image Size Optimization
 
-## Problem
+### Problem
 
 A production image exceeded **2 GB**.
 
@@ -130,7 +130,7 @@ Deployment became slow.
 
 ---
 
-## Investigation
+### Investigation
 
 Analysis showed:
 
@@ -156,7 +156,7 @@ Large Image
 
 ---
 
-## Improvements
+### Improvements
 
 The engineering team:
 
@@ -167,7 +167,7 @@ The engineering team:
 
 ---
 
-## Results
+### Results
 
 ```
 2 GB
@@ -185,15 +185,15 @@ Benefits:
 
 ---
 
-## Lessons Learned
+### Lessons Learned
 
 Optimize images before production deployment.
 
 ---
 
-# Case Study 3 – Database Data Loss
+## Case Study 3 – Database Data Loss
 
-## Problem
+### Problem
 
 A database container was removed accidentally.
 
@@ -201,7 +201,7 @@ Application data disappeared.
 
 ---
 
-## Root Cause
+### Root Cause
 
 The database stored information only inside the container's writable layer.
 
@@ -219,7 +219,7 @@ Data Lost
 
 ---
 
-## Resolution
+### Resolution
 
 The database was reconfigured to use:
 
@@ -233,7 +233,7 @@ Persistent Storage
 
 ---
 
-## Lessons Learned
+### Lessons Learned
 
 Never store important application data exclusively in a container's writable layer.
 
@@ -241,9 +241,9 @@ Use persistent storage for databases and other stateful workloads.
 
 ---
 
-# Case Study 4 – Misconfigured Secrets
+## Case Study 4 – Misconfigured Secrets
 
-## Problem
+### Problem
 
 A developer embedded cloud credentials inside a Dockerfile.
 
@@ -263,7 +263,7 @@ The image was later shared internally.
 
 ---
 
-## Response
+### Response
 
 The organization:
 
@@ -274,7 +274,7 @@ The organization:
 
 ---
 
-## Lessons Learned
+### Lessons Learned
 
 Never embed secrets in:
 
@@ -285,15 +285,15 @@ Never embed secrets in:
 
 ---
 
-# Case Study 5 – Production Outage
+## Case Study 5 – Production Outage
 
-## Problem
+### Problem
 
 Users reported intermittent failures.
 
 ---
 
-## Investigation
+### Investigation
 
 Monitoring showed:
 
@@ -321,7 +321,7 @@ Logs identified a memory leak in the application.
 
 ---
 
-## Resolution
+### Resolution
 
 Developers:
 
@@ -332,7 +332,7 @@ Developers:
 
 ---
 
-## Lessons Learned
+### Lessons Learned
 
 Monitoring should include:
 
@@ -344,21 +344,21 @@ Monitoring should include:
 
 ---
 
-# Case Study 6 – Container Vulnerability
+## Case Study 6 – Container Vulnerability
 
-## Problem
+### Problem
 
 Routine image scanning identified several Critical CVEs in a production image.
 
 ---
 
-## Investigation
+### Investigation
 
 The vulnerabilities originated from an outdated base image.
 
 ---
 
-## Response
+### Response
 
 ```
 Update Base Image
@@ -378,13 +378,13 @@ Deploy
 
 ---
 
-## Results
+### Results
 
 The updated image contained significantly fewer known vulnerabilities.
 
 ---
 
-## Lessons Learned
+### Lessons Learned
 
 - Keep base images updated.
 - Scan images continuously.
@@ -392,15 +392,15 @@ The updated image contained significantly fewer known vulnerabilities.
 
 ---
 
-# Case Study 7 – Unauthorized Container Deployment
+## Case Study 7 – Unauthorized Container Deployment
 
-## Problem
+### Problem
 
 Operations discovered an unexpected container running in production.
 
 ---
 
-## Investigation
+### Investigation
 
 Evidence reviewed:
 
@@ -413,13 +413,13 @@ The investigation determined the deployment resulted from a misconfigured automa
 
 ---
 
-## Resolution
+### Resolution
 
 The automation configuration was corrected and deployment approval controls were strengthened.
 
 ---
 
-## Lessons Learned
+### Lessons Learned
 
 - Review deployment automation regularly.
 - Monitor deployment events.
@@ -428,9 +428,9 @@ The automation configuration was corrected and deployment approval controls were
 
 ---
 
-# Case Study 8 – Log Retention Issue
+## Case Study 8 – Log Retention Issue
 
-## Problem
+### Problem
 
 A production incident occurred several weeks earlier.
 
@@ -448,13 +448,13 @@ Important historical evidence was unavailable.
 
 ---
 
-## Resolution
+### Resolution
 
 The organization implemented centralized logging with defined retention policies.
 
 ---
 
-## Lessons Learned
+### Lessons Learned
 
 Logs should be:
 
@@ -465,15 +465,15 @@ Logs should be:
 
 ---
 
-# Case Study 9 – Registry Downtime
+## Case Study 9 – Registry Downtime
 
-## Problem
+### Problem
 
 The container registry became temporarily unavailable.
 
 ---
 
-## Impact
+### Impact
 
 Existing containers continued running.
 
@@ -485,7 +485,7 @@ However:
 
 ---
 
-## Resolution
+### Resolution
 
 The organization implemented:
 
@@ -496,15 +496,15 @@ The organization implemented:
 
 ---
 
-## Lessons Learned
+### Lessons Learned
 
 Treat the container registry as critical infrastructure.
 
 ---
 
-# Case Study 10 – Production Readiness Review
+## Case Study 10 – Production Readiness Review
 
-## Scenario
+### Scenario
 
 Before deployment, the engineering team performed a production readiness assessment.
 
@@ -548,19 +548,19 @@ Approved
 
 ---
 
-## Outcome
+### Outcome
 
 Potential deployment issues were identified and corrected before production release.
 
 ---
 
-## Lessons Learned
+### Lessons Learned
 
 Production readiness reviews reduce operational risk and improve deployment quality.
 
 ---
 
-# Common Themes Across Case Studies
+## Common Themes Across Case Studies
 
 ```
 Automation
@@ -590,9 +590,9 @@ Successful organizations consistently apply these principles throughout the cont
 
 ---
 
-# Engineering Takeaways
+## Engineering Takeaways
 
-## Design
+### Design
 
 - Build small images.
 - Separate application responsibilities.
@@ -600,7 +600,7 @@ Successful organizations consistently apply these principles throughout the cont
 
 ---
 
-## Security
+### Security
 
 - Scan images.
 - Protect secrets.
@@ -609,7 +609,7 @@ Successful organizations consistently apply these principles throughout the cont
 
 ---
 
-## Operations
+### Operations
 
 - Monitor continuously.
 - Centralize logging.
@@ -618,7 +618,7 @@ Successful organizations consistently apply these principles throughout the cont
 
 ---
 
-## Reliability
+### Reliability
 
 - Use health checks.
 - Implement backups.
@@ -627,7 +627,7 @@ Successful organizations consistently apply these principles throughout the cont
 
 ---
 
-# Reflection Questions
+## Reflection Questions
 
 1. Which case study most closely resembles a challenge you might encounter in production?
 2. What preventive controls could have reduced the impact?
@@ -637,7 +637,7 @@ Successful organizations consistently apply these principles throughout the cont
 
 ---
 
-# Production Success Checklist
+## Production Success Checklist
 
 | Area | Recommendation |
 |------|----------------|
@@ -654,7 +654,7 @@ Successful organizations consistently apply these principles throughout the cont
 
 ---
 
-# Summary
+## Summary
 
 Real-world container operations require much more than simply running Docker commands.
 
@@ -688,9 +688,9 @@ These practices lead to resilient, scalable, and maintainable container platform
 
 ---
 
-# Chapter 20 – Container Troubleshooting Playbook
+## Chapter 20 – Container Troubleshooting Playbook
 
-# Overview
+## Overview
 
 Even well-designed containerized applications experience issues in production. Effective troubleshooting requires a **structured, repeatable methodology** rather than guessing or making random configuration changes.
 
@@ -708,7 +708,7 @@ It is intended for:
 
 ---
 
-# Troubleshooting Philosophy
+## Troubleshooting Philosophy
 
 Avoid this approach:
 
@@ -762,7 +762,7 @@ The objective is to solve the **root cause**, not just the visible symptoms.
 
 ---
 
-# Universal Troubleshooting Workflow
+## Universal Troubleshooting Workflow
 
 ```
 Problem Reported
@@ -806,9 +806,9 @@ Document Findings
 
 ---
 
-# Scenario 1 – Container Will Not Start
+## Scenario 1 – Container Will Not Start
 
-## Symptoms
+### Symptoms
 
 - Container exits immediately.
 - Restart loop.
@@ -816,7 +816,7 @@ Document Findings
 
 ---
 
-## Investigation
+### Investigation
 
 Check all containers:
 
@@ -838,7 +838,7 @@ docker inspect container_name
 
 ---
 
-## Common Causes
+### Common Causes
 
 - Incorrect command
 - Missing dependencies
@@ -849,7 +849,7 @@ docker inspect container_name
 
 ---
 
-## Resolution
+### Resolution
 
 Fix the root cause.
 
@@ -859,9 +859,9 @@ Deploy a new container.
 
 ---
 
-# Scenario 2 – Container Continuously Restarts
+## Scenario 2 – Container Continuously Restarts
 
-## Investigation
+### Investigation
 
 ```
 Restart
@@ -901,7 +901,7 @@ docker stats
 
 ---
 
-## Possible Causes
+### Possible Causes
 
 - Memory exhaustion
 - Failed health checks
@@ -911,9 +911,9 @@ docker stats
 
 ---
 
-# Scenario 3 – Application Is Slow
+## Scenario 3 – Application Is Slow
 
-## Investigation
+### Investigation
 
 Check:
 
@@ -931,7 +931,7 @@ Review:
 
 ---
 
-## Possible Causes
+### Possible Causes
 
 - Resource limits
 - High traffic
@@ -941,9 +941,9 @@ Review:
 
 ---
 
-# Scenario 4 – Database Connection Failure
+## Scenario 4 – Database Connection Failure
 
-## Investigation Workflow
+### Investigation Workflow
 
 ```
 Application
@@ -981,7 +981,7 @@ docker network inspect
 
 ---
 
-## Resolution
+### Resolution
 
 Verify:
 
@@ -992,9 +992,9 @@ Verify:
 
 ---
 
-# Scenario 5 – Container Cannot Access Internet
+## Scenario 5 – Container Cannot Access Internet
 
-## Check
+### Check
 
 - Network configuration
 - DNS
@@ -1010,7 +1010,7 @@ docker inspect container_name
 
 ---
 
-# Scenario 6 – Port Already in Use
+## Scenario 6 – Port Already in Use
 
 Error:
 
@@ -1020,7 +1020,7 @@ Bind for 0.0.0.0:8080 failed
 
 ---
 
-## Investigation
+### Investigation
 
 Determine which service is using the port.
 
@@ -1038,7 +1038,7 @@ netstat -tulnp
 
 ---
 
-## Resolution
+### Resolution
 
 - Stop the conflicting service.
 - Choose another host port.
@@ -1046,9 +1046,9 @@ netstat -tulnp
 
 ---
 
-# Scenario 7 – Volume Data Missing
+## Scenario 7 – Volume Data Missing
 
-## Investigation
+### Investigation
 
 Inspect:
 
@@ -1066,7 +1066,7 @@ Verify:
 
 ---
 
-## Common Causes
+### Common Causes
 
 - Wrong volume
 - Container recreation
@@ -1075,7 +1075,7 @@ Verify:
 
 ---
 
-# Scenario 8 – High Disk Usage
+## Scenario 8 – High Disk Usage
 
 Check:
 
@@ -1095,7 +1095,7 @@ Review before deleting resources in production.
 
 ---
 
-# Scenario 9 – Container Networking Problems
+## Scenario 9 – Container Networking Problems
 
 Verify:
 
@@ -1116,7 +1116,7 @@ Common Issues
 
 ---
 
-# Scenario 10 – Image Build Failure
+## Scenario 10 – Image Build Failure
 
 Review:
 
@@ -1146,9 +1146,9 @@ Read the reported errors carefully to identify the failing instruction.
 
 ---
 
-# Common Docker Commands
+## Common Docker Commands
 
-## Containers
+### Containers
 
 ```bash
 docker ps
@@ -1166,7 +1166,7 @@ docker rm
 
 ---
 
-## Images
+### Images
 
 ```bash
 docker images
@@ -1182,7 +1182,7 @@ docker rmi
 
 ---
 
-## Logs
+### Logs
 
 ```bash
 docker logs
@@ -1192,7 +1192,7 @@ docker logs -f
 
 ---
 
-## Monitoring
+### Monitoring
 
 ```bash
 docker stats
@@ -1204,7 +1204,7 @@ docker events
 
 ---
 
-## Inspection
+### Inspection
 
 ```bash
 docker inspect
@@ -1212,7 +1212,7 @@ docker inspect
 
 ---
 
-## Networks
+### Networks
 
 ```bash
 docker network ls
@@ -1222,7 +1222,7 @@ docker network inspect
 
 ---
 
-## Volumes
+### Volumes
 
 ```bash
 docker volume ls
@@ -1232,7 +1232,7 @@ docker volume inspect
 
 ---
 
-## Cleanup
+### Cleanup
 
 ```bash
 docker system df
@@ -1242,7 +1242,7 @@ docker system prune
 
 ---
 
-# Root Cause Analysis Checklist
+## Root Cause Analysis Checklist
 
 When troubleshooting, ask:
 
@@ -1259,7 +1259,7 @@ Avoid assuming the first observed symptom is the root cause.
 
 ---
 
-# Troubleshooting Decision Tree
+## Troubleshooting Decision Tree
 
 ```
 Application Fails
@@ -1333,7 +1333,7 @@ Root Cause
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Reproduce the issue in a safe environment when possible.
 - Gather evidence before making changes.
@@ -1345,7 +1345,7 @@ Root Cause
 
 ---
 
-# Troubleshooting Checklist
+## Troubleshooting Checklist
 
 | Item | Verify |
 |------|--------|
@@ -1362,7 +1362,7 @@ Root Cause
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Successful troubleshooting follows this pattern:
 

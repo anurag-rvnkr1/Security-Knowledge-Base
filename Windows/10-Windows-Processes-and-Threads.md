@@ -1,10 +1,10 @@
 # 10-Windows-Processes-and-Threads.md
 
-# Part 1 — Windows Process Fundamentals, Threads, Process Architecture, Scheduling Basics, and Process Lifecycle
+## Part 1 — Windows Process Fundamentals, Threads, Process Architecture, Scheduling Basics, and Process Lifecycle
 
 ---
 
-# Introduction
+## Introduction
 
 Every application running on Windows is built upon one or more **processes**.
 
@@ -34,7 +34,7 @@ Nearly every Windows security investigation begins by examining running processe
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -50,7 +50,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is a Process?
+## What is a Process?
 
 A **process** is an executing instance of a program.
 
@@ -84,7 +84,7 @@ Examples of processes:
 
 ---
 
-# Program vs Process
+## Program vs Process
 
 These terms are often confused.
 
@@ -111,7 +111,7 @@ Running Notepad Process
 
 ---
 
-# What Does a Process Contain?
+## What Does a Process Contain?
 
 Every process includes multiple components.
 
@@ -133,7 +133,7 @@ Together, these components allow the process to execute independently from other
 
 ---
 
-# Process Isolation
+## Process Isolation
 
 Windows isolates processes from one another.
 
@@ -163,7 +163,7 @@ This isolation improves:
 
 ---
 
-# Why Process Isolation Matters
+## Why Process Isolation Matters
 
 Without isolation:
 
@@ -205,7 +205,7 @@ Crashes and errors are less likely to affect unrelated applications.
 
 ---
 
-# What is a Thread?
+## What is a Thread?
 
 A **thread** is the smallest unit of execution managed by the operating system.
 
@@ -225,7 +225,7 @@ Without a thread, a process cannot execute instructions.
 
 ---
 
-# Process vs Thread
+## Process vs Thread
 
 | Process | Thread |
 |----------|---------|
@@ -238,7 +238,7 @@ Processes provide isolation, while threads perform work.
 
 ---
 
-# Multiple Threads
+## Multiple Threads
 
 Many applications use multiple threads simultaneously.
 
@@ -258,7 +258,7 @@ Multiple threads improve responsiveness and performance.
 
 ---
 
-# Single-Threaded Example
+## Single-Threaded Example
 
 ```text
 Calculator
@@ -276,7 +276,7 @@ Simple applications may require only a single thread.
 
 ---
 
-# Multi-Threaded Example
+## Multi-Threaded Example
 
 ```text
 Browser
@@ -292,7 +292,7 @@ Each task can run concurrently using different threads.
 
 ---
 
-# Benefits of Multi-Threading
+## Benefits of Multi-Threading
 
 Advantages include:
 
@@ -306,7 +306,7 @@ Improper synchronization, however, can introduce bugs such as race conditions an
 
 ---
 
-# Process Creation
+## Process Creation
 
 The simplified process creation workflow:
 
@@ -342,7 +342,7 @@ Windows performs many additional initialization steps internally.
 
 ---
 
-# Process Lifecycle
+## Process Lifecycle
 
 A process typically moves through the following stages:
 
@@ -374,7 +374,7 @@ The scheduler determines when a process's threads execute.
 
 ---
 
-# Process States
+## Process States
 
 Common execution states include:
 
@@ -390,7 +390,7 @@ The exact internal state model is more detailed, but these states are useful con
 
 ---
 
-# Process Identifier (PID)
+## Process Identifier (PID)
 
 Every process receives a unique **Process Identifier (PID)**.
 
@@ -408,7 +408,7 @@ The PID uniquely identifies the process while it exists.
 
 ---
 
-# Why PIDs Matter
+## Why PIDs Matter
 
 Administrators use PIDs to:
 
@@ -422,7 +422,7 @@ Many Windows administration tools display PIDs.
 
 ---
 
-# Thread Identifier (TID)
+## Thread Identifier (TID)
 
 Each thread also receives a unique identifier.
 
@@ -442,7 +442,7 @@ A process may contain dozens—or even hundreds—of threads.
 
 ---
 
-# Parent and Child Processes
+## Parent and Child Processes
 
 Many processes create additional processes.
 
@@ -464,7 +464,7 @@ This relationship is called a **parent-child process relationship**.
 
 ---
 
-# Parent Process Example
+## Parent Process Example
 
 ```text
 Explorer.exe
@@ -478,7 +478,7 @@ Explorer starts Notepad, making Explorer the parent process.
 
 ---
 
-# Child Process Example
+## Child Process Example
 
 ```text
 cmd.exe
@@ -492,7 +492,7 @@ PowerShell becomes the child process of Command Prompt.
 
 ---
 
-# Process Tree
+## Process Tree
 
 Example:
 
@@ -511,7 +511,7 @@ Process trees are extremely valuable during incident response and malware analys
 
 ---
 
-# Process Memory Layout (Simplified)
+## Process Memory Layout (Simplified)
 
 A process typically contains:
 
@@ -543,7 +543,7 @@ Modern Windows uses virtual memory, and the actual layout is more complex than t
 
 ---
 
-# User Mode vs Kernel Mode
+## User Mode vs Kernel Mode
 
 Windows separates execution into two protection levels.
 
@@ -569,7 +569,7 @@ The operating system kernel executes in Kernel Mode with higher privileges.
 
 ---
 
-# Why User Mode Matters
+## Why User Mode Matters
 
 If an application crashes:
 
@@ -593,7 +593,7 @@ Process isolation and User Mode execution help prevent application failures from
 
 ---
 
-# Process Priority
+## Process Priority
 
 Windows assigns scheduling priorities to processes and threads.
 
@@ -612,7 +612,7 @@ The scheduler considers these priorities when allocating CPU time.
 
 ---
 
-# Windows Scheduler Overview
+## Windows Scheduler Overview
 
 The Windows scheduler determines which thread executes on the CPU.
 
@@ -642,7 +642,7 @@ The scheduler aims to balance responsiveness, fairness, and performance.
 
 ---
 
-# Context Switching
+## Context Switching
 
 A **context switch** occurs when the CPU changes from executing one thread to another.
 
@@ -666,7 +666,7 @@ Context switching enables multitasking but also introduces processing overhead.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A user opens Microsoft Outlook.
 
@@ -704,7 +704,7 @@ Background threads then handle tasks such as email synchronization, notification
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Processes are one of the primary indicators analyzed during security investigations.
 
@@ -722,7 +722,7 @@ Malware frequently disguises itself as legitimate processes or launches from tru
 
 ---
 
-# Business Impact
+## Business Impact
 
 Understanding process architecture helps organizations:
 
@@ -737,7 +737,7 @@ Reliable process management contributes to overall system stability and security
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor running processes using approved administrative tools.
 - Investigate unexpected parent-child relationships.
@@ -749,9 +749,9 @@ Reliable process management contributes to overall system stability and security
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Running Processes
+### Lab 1 — View Running Processes
 
 Open **Task Manager**.
 
@@ -770,7 +770,7 @@ Observe:
 
 ---
 
-## Lab 2 — View Process IDs
+### Lab 2 — View Process IDs
 
 Open **Command Prompt**.
 
@@ -789,7 +789,7 @@ Identify:
 
 ---
 
-## Lab 3 — View Process Tree (Optional)
+### Lab 3 — View Process Tree (Optional)
 
 Open **Resource Monitor** or **Process Explorer** (Microsoft Sysinternals, if available).
 
@@ -803,7 +803,7 @@ Document the relationships you observe.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A process is a running instance of a program.
 - Every process contains one or more threads.
@@ -815,7 +815,7 @@ Document the relationships you observe.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between a program and a process?
 2. What is a thread?
@@ -830,7 +830,7 @@ Document the relationships you observe.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Process Documentation
@@ -840,13 +840,13 @@ Document the relationships you observe.
 
 ---
 
-# 10-Windows-Processes-and-Threads.md
+## 10-Windows-Processes-and-Threads.md
 
-# Part 2 — Windows Process Internals, Memory Architecture, Handles, DLLs, Inter-Process Communication (IPC), and Scheduling
+## Part 2 — Windows Process Internals, Memory Architecture, Handles, DLLs, Inter-Process Communication (IPC), and Scheduling
 
 ---
 
-# Introduction
+## Introduction
 
 In the previous section, you learned that a process is a running instance of a program and that threads perform the actual execution.
 
@@ -866,7 +866,7 @@ Many advanced security techniques—including process injection, DLL hijacking, 
 
 ---
 
-# Internal Process Architecture
+## Internal Process Architecture
 
 A simplified Windows process contains several important components.
 
@@ -889,7 +889,7 @@ Each component plays a specific role during execution.
 
 ---
 
-# Executable Image
+## Executable Image
 
 Every process begins with an executable image.
 
@@ -920,7 +920,7 @@ The executable image contains:
 
 ---
 
-# Windows Loader
+## Windows Loader
 
 The Windows Loader prepares a process for execution.
 
@@ -961,7 +961,7 @@ Execution Begins
 
 ---
 
-# Virtual Address Space
+## Virtual Address Space
 
 Every process receives its own **virtual address space**.
 
@@ -985,7 +985,7 @@ Virtual memory isolates processes and allows each process to believe it owns a c
 
 ---
 
-# Why Virtual Memory Exists
+## Why Virtual Memory Exists
 
 Without virtual memory:
 
@@ -1028,7 +1028,7 @@ Benefits include:
 
 ---
 
-# Simplified Memory Layout
+## Simplified Memory Layout
 
 A typical process memory layout:
 
@@ -1064,7 +1064,7 @@ Actual layouts vary depending on the Windows version, architecture, and security
 
 ---
 
-# Code Segment
+## Code Segment
 
 The code segment contains executable instructions.
 
@@ -1080,7 +1080,7 @@ Normally, application code is not modified during execution.
 
 ---
 
-# Data Segment
+## Data Segment
 
 The data segment stores:
 
@@ -1104,7 +1104,7 @@ Data Segment
 
 ---
 
-# Heap
+## Heap
 
 The heap stores dynamically allocated memory.
 
@@ -1131,7 +1131,7 @@ Applications frequently use the heap for:
 
 ---
 
-# Stack
+## Stack
 
 Every thread has its own stack.
 
@@ -1158,7 +1158,7 @@ Stack
 
 ---
 
-# Stack vs Heap
+## Stack vs Heap
 
 | Stack | Heap |
 |--------|------|
@@ -1170,7 +1170,7 @@ Stack
 
 ---
 
-# Thread Stack Example
+## Thread Stack Example
 
 ```text
 main()
@@ -1194,7 +1194,7 @@ When a function returns, its stack frame is removed.
 
 ---
 
-# Dynamic Link Libraries (DLLs)
+## Dynamic Link Libraries (DLLs)
 
 Windows applications rarely contain all required functionality internally.
 
@@ -1226,7 +1226,7 @@ DLLs allow code sharing between multiple applications.
 
 ---
 
-# Benefits of DLLs
+## Benefits of DLLs
 
 Advantages include:
 
@@ -1240,7 +1240,7 @@ Many system functions are provided through DLLs rather than individual executabl
 
 ---
 
-# DLL Loading
+## DLL Loading
 
 Workflow:
 
@@ -1270,7 +1270,7 @@ Execution Continues
 
 ---
 
-# DLL Search Order
+## DLL Search Order
 
 When loading a DLL, Windows searches multiple locations.
 
@@ -1298,7 +1298,7 @@ Improper DLL loading can create security vulnerabilities.
 
 ---
 
-# DLL Hijacking
+## DLL Hijacking
 
 **DLL Hijacking** occurs when an application loads a malicious DLL instead of the intended legitimate DLL.
 
@@ -1329,7 +1329,7 @@ Mitigations include:
 
 ---
 
-# Process Handles
+## Process Handles
 
 A **handle** is a reference to an operating system object.
 
@@ -1347,7 +1347,7 @@ Examples:
 
 ---
 
-# Handle Example
+## Handle Example
 
 ```text
 Application
@@ -1373,7 +1373,7 @@ Closing handles when they are no longer needed helps prevent resource leaks.
 
 ---
 
-# Common Handle Types
+## Common Handle Types
 
 | Handle Type | Example |
 |--------------|----------|
@@ -1388,7 +1388,7 @@ Closing handles when they are no longer needed helps prevent resource leaks.
 
 ---
 
-# Handle Lifecycle
+## Handle Lifecycle
 
 ```text
 Request Resource
@@ -1414,7 +1414,7 @@ Applications that fail to close handles may experience resource exhaustion.
 
 ---
 
-# Environment Variables
+## Environment Variables
 
 Processes inherit environment variables from their parent process.
 
@@ -1436,7 +1436,7 @@ Applications use these variables to locate files and configure runtime behavior.
 
 ---
 
-# Parent-Child Environment
+## Parent-Child Environment
 
 ```text
 Explorer.exe
@@ -1454,7 +1454,7 @@ Child processes typically inherit the parent's environment unless it is modified
 
 ---
 
-# Security Token
+## Security Token
 
 Each process has an associated security token.
 
@@ -1469,7 +1469,7 @@ Whenever a process accesses a protected resource, Windows consults the security 
 
 ---
 
-# Inter-Process Communication (IPC)
+## Inter-Process Communication (IPC)
 
 Processes often need to exchange information.
 
@@ -1491,7 +1491,7 @@ IPC enables applications to cooperate while remaining isolated.
 
 ---
 
-# Common IPC Mechanisms
+## Common IPC Mechanisms
 
 | IPC Method | Typical Usage |
 |-------------|---------------|
@@ -1506,7 +1506,7 @@ IPC enables applications to cooperate while remaining isolated.
 
 ---
 
-# Named Pipes
+## Named Pipes
 
 Named Pipes allow processes to communicate using a named communication channel.
 
@@ -1528,7 +1528,7 @@ They are commonly used by Windows services and client-server applications.
 
 ---
 
-# Shared Memory
+## Shared Memory
 
 Shared memory provides high-performance communication.
 
@@ -1550,7 +1550,7 @@ Synchronization mechanisms are required to prevent data corruption.
 
 ---
 
-# Windows Messages
+## Windows Messages
 
 Graphical applications communicate using messages.
 
@@ -1576,7 +1576,7 @@ This event-driven architecture underpins the Windows graphical user interface.
 
 ---
 
-# Process Scheduling
+## Process Scheduling
 
 The Windows scheduler determines which thread executes next.
 
@@ -1592,7 +1592,7 @@ Scheduling is performed at the **thread** level rather than the process level.
 
 ---
 
-# Ready Queue
+## Ready Queue
 
 Threads ready to execute are placed in a queue.
 
@@ -1616,7 +1616,7 @@ When CPU time becomes available, the scheduler selects an appropriate thread.
 
 ---
 
-# Time Slice (Quantum)
+## Time Slice (Quantum)
 
 Each runnable thread receives a limited amount of CPU time.
 
@@ -1636,7 +1636,7 @@ This allows multiple applications to appear to run simultaneously.
 
 ---
 
-# Thread Priority
+## Thread Priority
 
 Threads inherit a base priority from their process, but Windows may adjust priorities dynamically.
 
@@ -1646,7 +1646,7 @@ Administrators should avoid assigning unnecessarily high priorities, as doing so
 
 ---
 
-# Processor Affinity
+## Processor Affinity
 
 Processor affinity allows a process or thread to prefer specific CPU cores.
 
@@ -1672,7 +1672,7 @@ Affinity can improve performance in specialized workloads but is rarely required
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An enterprise web browser launches.
 
@@ -1691,7 +1691,7 @@ The scheduler distributes these threads across available CPU cores to maintain a
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Understanding process internals helps analysts detect sophisticated attacks.
 
@@ -1708,7 +1708,7 @@ Security tools often monitor process creation, DLL loading, and inter-process in
 
 ---
 
-# Business Impact
+## Business Impact
 
 Knowledge of process internals enables organizations to:
 
@@ -1723,7 +1723,7 @@ Efficient process management contributes to reliable business operations.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor unexpected DLL loading behavior.
 - Investigate suspicious parent-child process relationships.
@@ -1735,9 +1735,9 @@ Efficient process management contributes to reliable business operations.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Loaded Modules
+### Lab 1 — View Loaded Modules
 
 Using **Process Explorer** (Microsoft Sysinternals, if available):
 
@@ -1749,7 +1749,7 @@ Document your observations.
 
 ---
 
-## Lab 2 — Display Environment Variables
+### Lab 2 — Display Environment Variables
 
 Open **Command Prompt**.
 
@@ -1770,7 +1770,7 @@ Observe how these variables influence command execution.
 
 ---
 
-## Lab 3 — View Handles (Optional)
+### Lab 3 — View Handles (Optional)
 
 Using **Process Explorer**:
 
@@ -1782,7 +1782,7 @@ Do not modify handles on production systems.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Every process has its own virtual address space.
 - Threads share process resources but maintain individual stacks.
@@ -1794,7 +1794,7 @@ Do not modify handles on production systems.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is virtual memory, and why is it important?
 2. What is the difference between the stack and the heap?
@@ -1809,7 +1809,7 @@ Do not modify handles on production systems.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Process Architecture Documentation
@@ -1819,13 +1819,13 @@ Do not modify handles on production systems.
 
 ---
 
-# 10-Windows-Processes-and-Threads.md
+## 10-Windows-Processes-and-Threads.md
 
-# Part 3 — Process Management, Thread Synchronization, Synchronization Objects, Process Monitoring, and Security Analysis
+## Part 3 — Process Management, Thread Synchronization, Synchronization Objects, Process Monitoring, and Security Analysis
 
 ---
 
-# Introduction
+## Introduction
 
 Modern Windows systems often run **hundreds of processes** and **thousands of threads** simultaneously.
 
@@ -1842,7 +1842,7 @@ This section explores process management, synchronization, monitoring tools, and
 
 ---
 
-# Windows Process Management
+## Windows Process Management
 
 Windows continuously manages processes throughout their lifecycle.
 
@@ -1879,7 +1879,7 @@ Terminate Process
 
 ---
 
-# Thread Scheduling Review
+## Thread Scheduling Review
 
 The scheduler works with **threads**, not processes.
 
@@ -1903,7 +1903,7 @@ Each runnable thread competes for CPU time according to its priority and schedul
 
 ---
 
-# Concurrency
+## Concurrency
 
 Concurrency means multiple tasks make progress during overlapping time periods.
 
@@ -1925,7 +1925,7 @@ Even on a single CPU core, Windows rapidly switches between threads to create th
 
 ---
 
-# Parallelism
+## Parallelism
 
 Parallelism occurs when multiple threads execute **at the same time** on different CPU cores.
 
@@ -1959,7 +1959,7 @@ Modern multi-core processors allow Windows to execute many threads in parallel.
 
 ---
 
-# Concurrency vs Parallelism
+## Concurrency vs Parallelism
 
 | Concurrency | Parallelism |
 |--------------|-------------|
@@ -1969,7 +1969,7 @@ Modern multi-core processors allow Windows to execute many threads in parallel.
 
 ---
 
-# Why Synchronization is Needed
+## Why Synchronization is Needed
 
 Multiple threads often access the same resource.
 
@@ -1993,7 +1993,7 @@ Without synchronization, simultaneous modifications can produce incorrect result
 
 ---
 
-# Race Condition
+## Race Condition
 
 A **race condition** occurs when multiple threads access shared data without proper coordination.
 
@@ -2023,7 +2023,7 @@ Race conditions can lead to inconsistent data and application errors.
 
 ---
 
-# Critical Section
+## Critical Section
 
 A **critical section** is code that must be executed by only one thread at a time.
 
@@ -2043,7 +2043,7 @@ Protecting critical sections prevents concurrent modification of shared resource
 
 ---
 
-# Synchronization Objects
+## Synchronization Objects
 
 Windows provides several synchronization mechanisms.
 
@@ -2063,7 +2063,7 @@ Each mechanism is designed for different synchronization requirements.
 
 ---
 
-# Mutex
+## Mutex
 
 A **Mutex (Mutual Exclusion)** allows only one thread or process to own a protected resource at a time.
 
@@ -2093,7 +2093,7 @@ Mutexes can synchronize access across processes.
 
 ---
 
-# Semaphore
+## Semaphore
 
 A semaphore allows a limited number of threads to access a shared resource simultaneously.
 
@@ -2125,7 +2125,7 @@ Semaphores are useful for limiting access to finite resources.
 
 ---
 
-# Event Object
+## Event Object
 
 Events notify waiting threads that an operation has occurred.
 
@@ -2149,7 +2149,7 @@ Events are widely used for thread coordination.
 
 ---
 
-# Critical Sections
+## Critical Sections
 
 Critical Sections synchronize threads **within the same process**.
 
@@ -2163,7 +2163,7 @@ They cannot be used directly between independent processes.
 
 ---
 
-# Slim Reader/Writer (SRW) Locks
+## Slim Reader/Writer (SRW) Locks
 
 SRW Locks support:
 
@@ -2192,7 +2192,7 @@ SRW Locks improve scalability for read-heavy workloads.
 
 ---
 
-# Condition Variables
+## Condition Variables
 
 Condition Variables allow threads to wait until a particular condition becomes true.
 
@@ -2218,7 +2218,7 @@ They are commonly used with critical sections or SRW locks.
 
 ---
 
-# Deadlock
+## Deadlock
 
 A **deadlock** occurs when two or more threads wait indefinitely for resources held by each other.
 
@@ -2244,7 +2244,7 @@ Neither thread can proceed.
 
 ---
 
-# Deadlock Example
+## Deadlock Example
 
 ```text
 Thread A
@@ -2274,7 +2274,7 @@ Both threads wait forever unless external intervention occurs.
 
 ---
 
-# Deadlock Prevention
+## Deadlock Prevention
 
 Common strategies include:
 
@@ -2288,7 +2288,7 @@ Good software design is the best defense against deadlocks.
 
 ---
 
-# Livelock
+## Livelock
 
 A **livelock** differs from a deadlock.
 
@@ -2316,7 +2316,7 @@ CPU usage may remain high even though useful work is not completed.
 
 ---
 
-# Starvation
+## Starvation
 
 Starvation occurs when a thread rarely receives CPU time or access to required resources.
 
@@ -2330,7 +2330,7 @@ Windows scheduling policies help reduce starvation, though application design al
 
 ---
 
-# Process Termination
+## Process Termination
 
 Processes may terminate because:
 
@@ -2360,7 +2360,7 @@ Terminate
 
 ---
 
-# Graceful vs Forced Termination
+## Graceful vs Forced Termination
 
 | Graceful | Forced |
 |-----------|---------|
@@ -2372,7 +2372,7 @@ Whenever possible, graceful termination is preferred.
 
 ---
 
-# Zombie Processes
+## Zombie Processes
 
 Traditional UNIX systems include **zombie processes**.
 
@@ -2382,7 +2382,7 @@ Instead, terminated processes remain only until the operating system completes r
 
 ---
 
-# Process Monitoring
+## Process Monitoring
 
 Administrators monitor processes to identify:
 
@@ -2397,7 +2397,7 @@ Continuous monitoring improves system stability and incident response.
 
 ---
 
-# Task Manager
+## Task Manager
 
 Task Manager provides:
 
@@ -2419,7 +2419,7 @@ It is the primary built-in tool for monitoring applications and system performan
 
 ---
 
-# Resource Monitor
+## Resource Monitor
 
 Resource Monitor provides more detailed information than Task Manager.
 
@@ -2434,7 +2434,7 @@ It helps diagnose resource bottlenecks.
 
 ---
 
-# Process Explorer
+## Process Explorer
 
 **Process Explorer** (Microsoft Sysinternals) provides advanced process analysis.
 
@@ -2451,7 +2451,7 @@ It is widely used by administrators and incident responders.
 
 ---
 
-# Process Monitor (ProcMon)
+## Process Monitor (ProcMon)
 
 **Process Monitor** captures real-time activity including:
 
@@ -2464,7 +2464,7 @@ ProcMon is invaluable for troubleshooting and malware investigations.
 
 ---
 
-# Process Resource Metrics
+## Process Resource Metrics
 
 Common metrics include:
 
@@ -2481,7 +2481,7 @@ These metrics help identify performance and security issues.
 
 ---
 
-# Suspicious Process Indicators
+## Suspicious Process Indicators
 
 Security analysts investigate processes exhibiting:
 
@@ -2497,7 +2497,7 @@ No single indicator proves malicious activity; multiple indicators should be cor
 
 ---
 
-# Process Tree Analysis
+## Process Tree Analysis
 
 Example:
 
@@ -2527,7 +2527,7 @@ Questions for analysts:
 
 ---
 
-# Memory Leaks
+## Memory Leaks
 
 A memory leak occurs when an application allocates memory but fails to release it after it is no longer needed.
 
@@ -2553,7 +2553,7 @@ Over time, memory leaks can degrade performance and reduce system stability.
 
 ---
 
-# Handle Leaks
+## Handle Leaks
 
 Handle leaks occur when applications repeatedly create handles without closing them.
 
@@ -2567,7 +2567,7 @@ Monitoring handle counts can help identify leaking applications.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An organization notices a server experiencing high CPU usage.
 
@@ -2605,7 +2605,7 @@ A structured investigation reduces downtime and minimizes business impact.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Processes are among the richest sources of endpoint telemetry.
 
@@ -2624,7 +2624,7 @@ Endpoint Detection and Response (EDR) platforms rely heavily on process telemetr
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective process monitoring enables organizations to:
 
@@ -2639,7 +2639,7 @@ Well-managed endpoints contribute to better operational resilience.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor high-risk processes continuously.
 - Investigate unexpected parent-child relationships.
@@ -2651,9 +2651,9 @@ Well-managed endpoints contribute to better operational resilience.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Monitor Process Resources
+### Lab 1 — Monitor Process Resources
 
 Open **Task Manager**.
 
@@ -2668,7 +2668,7 @@ Identify the top five processes consuming memory.
 
 ---
 
-## Lab 2 — Explore Process Explorer
+### Lab 2 — Explore Process Explorer
 
 Using **Process Explorer** (Microsoft Sysinternals):
 
@@ -2683,7 +2683,7 @@ Document your findings.
 
 ---
 
-## Lab 3 — Observe Process Activity
+### Lab 3 — Observe Process Activity
 
 Using **Process Monitor (ProcMon)**:
 
@@ -2696,7 +2696,7 @@ Observe file system and registry operations performed during startup.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows schedules threads, not processes.
 - Synchronization prevents data corruption when multiple threads access shared resources.
@@ -2707,7 +2707,7 @@ Observe file system and registry operations performed during startup.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between concurrency and parallelism?
 2. What is a race condition?
@@ -2722,7 +2722,7 @@ Observe file system and registry operations performed during startup.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Synchronization Documentation
@@ -2733,13 +2733,13 @@ Observe file system and registry operations performed during startup.
 
 ---
 
-# 10-Windows-Processes-and-Threads.md
+## 10-Windows-Processes-and-Threads.md
 
-# Part 4 — Enterprise Process Security, Malware Techniques, Process Forensics, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Process Security, Malware Techniques, Process Forensics, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Processes are at the center of almost every activity performed on a Windows system.
 
@@ -2757,7 +2757,7 @@ Because of this, processes are also one of the primary targets for attackers and
 
 ---
 
-# Enterprise Process Security
+## Enterprise Process Security
 
 Organizations continuously monitor processes to answer questions such as:
 
@@ -2773,7 +2773,7 @@ Continuous process monitoring forms an essential part of modern endpoint securit
 
 ---
 
-# Windows Process Security Model
+## Windows Process Security Model
 
 ```text
 Executable
@@ -2811,7 +2811,7 @@ Every stage offers opportunities for administrators and security tools to valida
 
 ---
 
-# Process Creation Monitoring
+## Process Creation Monitoring
 
 One of the most valuable security events is process creation.
 
@@ -2837,7 +2837,7 @@ Recording parent-child relationships and command-line arguments helps analysts r
 
 ---
 
-# Command-Line Arguments
+## Command-Line Arguments
 
 Processes often receive command-line arguments.
 
@@ -2859,7 +2859,7 @@ Security teams frequently review command-line arguments to understand what a pro
 
 ---
 
-# Digital Signatures
+## Digital Signatures
 
 Many Windows executables and enterprise applications are digitally signed.
 
@@ -2874,7 +2874,7 @@ A missing or invalid signature is not automatically malicious, but it may warran
 
 ---
 
-# Code Signing Workflow
+## Code Signing Workflow
 
 ```text
 Software Vendor
@@ -2900,7 +2900,7 @@ Organizations often use application control policies to permit only trusted soft
 
 ---
 
-# Legitimate vs Suspicious Process Example
+## Legitimate vs Suspicious Process Example
 
 | Legitimate | Potentially Suspicious |
 |------------|------------------------|
@@ -2914,7 +2914,7 @@ Analysts should evaluate multiple indicators before drawing conclusions.
 
 ---
 
-# Process Injection
+## Process Injection
 
 **Process Injection** is a technique where code is introduced into the memory of another process.
 
@@ -2940,7 +2940,7 @@ Legitimate software may also interact with other processes for debugging, access
 
 ---
 
-# Why Attackers Target Processes
+## Why Attackers Target Processes
 
 Attackers may target legitimate processes to:
 
@@ -2953,7 +2953,7 @@ Modern endpoint security solutions monitor for suspicious injection-related beha
 
 ---
 
-# DLL Search Order Abuse
+## DLL Search Order Abuse
 
 If an application searches for DLLs insecurely:
 
@@ -2977,7 +2977,7 @@ Secure DLL loading practices reduce the likelihood of this attack.
 
 ---
 
-# Reflective Loading (Conceptual)
+## Reflective Loading (Conceptual)
 
 Some advanced malware attempts to load code directly into memory without using the standard Windows loader.
 
@@ -3003,7 +3003,7 @@ Understanding this concept helps explain why behavioral monitoring is important 
 
 ---
 
-# Process Hollowing (Conceptual)
+## Process Hollowing (Conceptual)
 
 Process hollowing is a technique in which an attacker starts a legitimate process and then replaces its executable memory with different code.
 
@@ -3025,7 +3025,7 @@ Modern security products monitor for behavior associated with this and similar t
 
 ---
 
-# Living Off the Land (LOLBins)
+## Living Off the Land (LOLBins)
 
 Attackers sometimes misuse legitimate Windows utilities, commonly called **LOLBins (Living Off the Land Binaries)**.
 
@@ -3042,7 +3042,7 @@ These tools are legitimate administrative utilities. Analysts focus on **how** t
 
 ---
 
-# Behavioral Detection
+## Behavioral Detection
 
 Modern endpoint security emphasizes behavior over simple signatures.
 
@@ -3072,7 +3072,7 @@ Correlating multiple behaviors reduces false positives.
 
 ---
 
-# Process Forensics
+## Process Forensics
 
 During an investigation, analysts may collect information such as:
 
@@ -3091,7 +3091,7 @@ This information helps reconstruct system activity.
 
 ---
 
-# Basic Process Investigation Workflow
+## Basic Process Investigation Workflow
 
 ```text
 Alert Generated
@@ -3129,7 +3129,7 @@ A structured workflow improves consistency and supports repeatable investigation
 
 ---
 
-# Correlating Process Activity
+## Correlating Process Activity
 
 Process activity should be correlated with:
 
@@ -3161,7 +3161,7 @@ Correlation provides a more accurate understanding than examining a single data 
 
 ---
 
-# Process Timeline Example
+## Process Timeline Example
 
 ```text
 08:00
@@ -3203,7 +3203,7 @@ Timelines help identify suspicious sequences of events.
 
 ---
 
-# Indicators for Investigation
+## Indicators for Investigation
 
 Security teams commonly review:
 
@@ -3219,7 +3219,7 @@ These are indicators—not proof—of malicious activity.
 
 ---
 
-# Memory Forensics Overview
+## Memory Forensics Overview
 
 Memory analysis may reveal:
 
@@ -3235,7 +3235,7 @@ Memory acquisition and analysis should follow organizational policies and legal 
 
 ---
 
-# Enterprise Monitoring
+## Enterprise Monitoring
 
 Many organizations collect:
 
@@ -3267,7 +3267,7 @@ Centralized monitoring enables rapid detection across thousands of endpoints.
 
 ---
 
-# Incident Response Example
+## Incident Response Example
 
 SOC receives an alert.
 
@@ -3299,7 +3299,7 @@ Analysts validate whether the activity is expected before taking action.
 
 ---
 
-# Performance Troubleshooting
+## Performance Troubleshooting
 
 Not all process investigations involve security.
 
@@ -3315,7 +3315,7 @@ The same tools used in security investigations also support performance troubles
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A server experiences degraded performance.
 
@@ -3349,7 +3349,7 @@ Combining performance data with application logs helps identify root causes.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Processes remain one of the most valuable telemetry sources because they reveal:
 
@@ -3365,7 +3365,7 @@ Modern EDR platforms continuously analyze process behavior to detect attacks whi
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong process monitoring provides:
 
@@ -3380,7 +3380,7 @@ Poor visibility into process activity can delay incident response and increase b
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor process creation and termination events.
 - Collect command-line arguments where appropriate.
@@ -3393,9 +3393,9 @@ Poor visibility into process activity can delay incident response and increase b
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Examine Running Processes
+### Lab 1 — Examine Running Processes
 
 Open **Task Manager**.
 
@@ -3416,7 +3416,7 @@ Identify processes running under different user accounts.
 
 ---
 
-## Lab 2 — Verify Process Information
+### Lab 2 — Verify Process Information
 
 Using **Process Explorer** (Microsoft Sysinternals):
 
@@ -3431,7 +3431,7 @@ Document your observations.
 
 ---
 
-## Lab 3 — Build a Process Timeline
+### Lab 3 — Build a Process Timeline
 
 Launch the following applications one at a time:
 
@@ -3450,7 +3450,7 @@ Create a simple timeline of your observations.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3484,7 +3484,7 @@ These concepts form the foundation for understanding Windows services, malware b
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A process is a protected execution environment for one or more threads.
 - Threads are the units scheduled by the Windows scheduler.
@@ -3496,7 +3496,7 @@ These concepts form the foundation for understanding Windows services, malware b
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between a process and a thread?
 2. Why is virtual memory important?
@@ -3511,7 +3511,7 @@ These concepts form the foundation for understanding Windows services, malware b
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Process Documentation
@@ -3522,7 +3522,7 @@ These concepts form the foundation for understanding Windows services, malware b
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 10 – Windows Processes and Threads**.
 

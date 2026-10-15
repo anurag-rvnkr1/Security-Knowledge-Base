@@ -1,6 +1,6 @@
 # 09 - Authentication
 
-# Introduction
+## Introduction
 
 Authentication is the process of verifying the identity of a user, application, service, or device before granting access to resources.
 
@@ -46,7 +46,7 @@ What are you allowed to do?
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -63,7 +63,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is Authentication?
+## What is Authentication?
 
 Authentication verifies identity before allowing access.
 
@@ -99,7 +99,7 @@ Access Denied
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 These concepts are often confused.
 
@@ -134,7 +134,7 @@ Access Payroll System
 
 ---
 
-# Authentication Architecture
+## Authentication Architecture
 
 ```
                User
@@ -176,7 +176,7 @@ Access Payroll System
 
 ---
 
-# Identity
+## Identity
 
 Identity represents a unique entity.
 
@@ -206,7 +206,7 @@ UUID
 
 ---
 
-# Credentials
+## Credentials
 
 Credentials prove identity.
 
@@ -223,7 +223,7 @@ Credentials should always be protected.
 
 ---
 
-# Authentication Factors
+## Authentication Factors
 
 Authentication factors fall into three primary categories.
 
@@ -241,7 +241,7 @@ Know Have Are
 
 ---
 
-# Knowledge Factor
+## Knowledge Factor
 
 Something the user knows.
 
@@ -256,7 +256,7 @@ Knowledge factors are the most common but are also vulnerable to guessing, phish
 
 ---
 
-# Possession Factor
+## Possession Factor
 
 Something the user has.
 
@@ -272,7 +272,7 @@ Possession factors significantly improve security.
 
 ---
 
-# Inherence Factor
+## Inherence Factor
 
 Something the user is.
 
@@ -288,7 +288,7 @@ Biometric systems should include anti-spoofing protections.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 MFA combines multiple authentication factors.
 
@@ -330,7 +330,7 @@ MFA dramatically reduces the success rate of credential theft attacks.
 
 ---
 
-# Single-Factor Authentication
+## Single-Factor Authentication
 
 Example
 
@@ -352,7 +352,7 @@ Disadvantages
 
 ---
 
-# Two-Factor Authentication (2FA)
+## Two-Factor Authentication (2FA)
 
 2FA is a specific form of MFA using exactly two factors.
 
@@ -370,7 +370,7 @@ Both factors must be validated before access is granted.
 
 ---
 
-# Common Authentication Methods
+## Common Authentication Methods
 
 | Method | Typical Usage |
 |---------|---------------|
@@ -386,7 +386,7 @@ Both factors must be validated before access is granted.
 
 ---
 
-# Password-Based Authentication
+## Password-Based Authentication
 
 Password authentication remains the most common method.
 
@@ -422,7 +422,7 @@ Passwords should never be stored in plaintext.
 
 ---
 
-# Password Hashing
+## Password Hashing
 
 Applications should store password hashes instead of passwords.
 
@@ -446,7 +446,7 @@ If the database is compromised, attackers should not obtain usable plaintext pas
 
 ---
 
-# Modern Password Hashing Algorithms
+## Modern Password Hashing Algorithms
 
 Recommended algorithms
 
@@ -470,7 +470,7 @@ for password storage.
 
 ---
 
-# Password Salting
+## Password Salting
 
 A salt is a unique random value added before hashing.
 
@@ -500,7 +500,7 @@ Each password should use a unique salt.
 
 ---
 
-# Password Policies
+## Password Policies
 
 A strong password policy should include:
 
@@ -521,7 +521,7 @@ Long passphrases are generally easier to remember and harder to guess than short
 
 ---
 
-# Password Storage
+## Password Storage
 
 Only the following should be stored:
 
@@ -541,7 +541,7 @@ Never store:
 
 ---
 
-# Password Verification
+## Password Verification
 
 ```
 User Password
@@ -571,7 +571,7 @@ The original password is never recovered from storage.
 
 ---
 
-# Password Reset
+## Password Reset
 
 A secure reset process should include:
 
@@ -589,7 +589,7 @@ Avoid:
 
 ---
 
-# Password Change
+## Password Change
 
 Recommended workflow
 
@@ -617,7 +617,7 @@ High-risk accounts may also require MFA confirmation.
 
 ---
 
-# Account Registration
+## Account Registration
 
 Typical registration flow
 
@@ -649,7 +649,7 @@ Email verification helps confirm ownership of the supplied email address.
 
 ---
 
-# Email Verification
+## Email Verification
 
 ```
 Register
@@ -675,7 +675,7 @@ Verification links should:
 
 ---
 
-# Authentication Lifecycle
+## Authentication Lifecycle
 
 ```
 Identity Created
@@ -709,7 +709,7 @@ Authentication is an ongoing lifecycle rather than a single event.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A banking platform authenticates users using:
 
@@ -741,7 +741,7 @@ This layered approach combines strong authentication with secure token-based aut
 
 ---
 
-# Best Practices
+## Best Practices
 
 Authentication
 
@@ -767,7 +767,7 @@ Operations
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -783,7 +783,7 @@ Avoid:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication verifies identity before access is granted.
 - Authentication and authorization serve different purposes.
@@ -794,7 +794,7 @@ Avoid:
 
 ---
 
-# Passwordless Authentication
+## Passwordless Authentication
 
 Passwordless authentication eliminates traditional passwords and replaces them with stronger authentication mechanisms.
 
@@ -817,7 +817,7 @@ Benefits
 
 ---
 
-# Passwordless Authentication Flow
+## Passwordless Authentication Flow
 
 ```
           User
@@ -863,7 +863,7 @@ No password is transmitted or stored during authentication.
 
 ---
 
-# Passkeys
+## Passkeys
 
 Passkeys are a modern authentication technology based on public-key cryptography.
 
@@ -879,7 +879,7 @@ The private key never leaves the user's trusted device.
 
 ---
 
-# Passkey Registration
+## Passkey Registration
 
 ```
 User
@@ -911,7 +911,7 @@ Registration Complete
 
 ---
 
-# Passkey Authentication
+## Passkey Authentication
 
 ```
 Login
@@ -943,7 +943,7 @@ credential theft becomes significantly more difficult.
 
 ---
 
-# FIDO2
+## FIDO2
 
 FIDO2 is an open authentication standard developed by the FIDO Alliance.
 
@@ -961,7 +961,7 @@ Supports:
 
 ---
 
-# WebAuthn
+## WebAuthn
 
 Web Authentication (WebAuthn) is a W3C standard supported by modern browsers.
 
@@ -996,7 +996,7 @@ Benefits
 
 ---
 
-# Platform Authenticators
+## Platform Authenticators
 
 Examples
 
@@ -1009,7 +1009,7 @@ These authenticators are built into user devices.
 
 ---
 
-# Roaming Authenticators
+## Roaming Authenticators
 
 External authenticators include:
 
@@ -1023,7 +1023,7 @@ Useful for enterprise environments.
 
 ---
 
-# Certificate-Based Authentication
+## Certificate-Based Authentication
 
 Certificates authenticate users or devices using Public Key Infrastructure (PKI).
 
@@ -1056,7 +1056,7 @@ Commonly used for:
 
 ---
 
-# Mutual TLS (mTLS)
+## Mutual TLS (mTLS)
 
 Mutual TLS authenticates both parties.
 
@@ -1096,7 +1096,7 @@ Widely used for service-to-service communication.
 
 ---
 
-# API Key Authentication
+## API Key Authentication
 
 API keys uniquely identify applications accessing APIs.
 
@@ -1116,7 +1116,7 @@ not end users.
 
 ---
 
-# API Key Lifecycle
+## API Key Lifecycle
 
 ```
 Generate Key
@@ -1146,7 +1146,7 @@ Keys should be rotated regularly.
 
 ---
 
-# API Key Best Practices
+## API Key Best Practices
 
 Use
 
@@ -1166,7 +1166,7 @@ Avoid
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Service accounts authenticate applications rather than humans.
 
@@ -1197,7 +1197,7 @@ Security recommendations
 
 ---
 
-# Machine-to-Machine Authentication
+## Machine-to-Machine Authentication
 
 ```
 Application A
@@ -1227,7 +1227,7 @@ Machine identities should be managed separately from human users.
 
 ---
 
-# Single Sign-On (SSO)
+## Single Sign-On (SSO)
 
 Single Sign-On allows users to authenticate once and access multiple applications.
 
@@ -1266,7 +1266,7 @@ Benefits
 
 ---
 
-# Identity Provider (IdP)
+## Identity Provider (IdP)
 
 An Identity Provider manages authentication.
 
@@ -1288,7 +1288,7 @@ Responsibilities
 
 ---
 
-# Service Provider (SP)
+## Service Provider (SP)
 
 A Service Provider relies on an Identity Provider.
 
@@ -1316,7 +1316,7 @@ Examples
 
 ---
 
-# Federation
+## Federation
 
 Federation enables identity sharing across organizations.
 
@@ -1342,7 +1342,7 @@ Users authenticate with their home organization.
 
 ---
 
-# Kerberos
+## Kerberos
 
 Kerberos is a ticket-based authentication protocol.
 
@@ -1372,7 +1372,7 @@ Commonly used in Microsoft Active Directory environments.
 
 ---
 
-# Security Assertion Markup Language (SAML)
+## Security Assertion Markup Language (SAML)
 
 SAML is an XML-based authentication standard used primarily for enterprise SSO.
 
@@ -1404,7 +1404,7 @@ SAML is commonly used with:
 
 ---
 
-# Authentication Attacks
+## Authentication Attacks
 
 Common attacks include:
 
@@ -1421,7 +1421,7 @@ Common attacks include:
 
 ---
 
-# Brute Force Attack
+## Brute Force Attack
 
 ```
 Attacker
@@ -1453,7 +1453,7 @@ Mitigations
 
 ---
 
-# Credential Stuffing
+## Credential Stuffing
 
 Attackers reuse credentials leaked from unrelated breaches.
 
@@ -1478,7 +1478,7 @@ Mitigations
 
 ---
 
-# Password Spraying
+## Password Spraying
 
 Instead of many passwords against one account,
 
@@ -1507,7 +1507,7 @@ Mitigations
 
 ---
 
-# Phishing
+## Phishing
 
 ```
 Victim
@@ -1535,7 +1535,7 @@ Mitigations
 
 ---
 
-# MFA Fatigue Attack
+## MFA Fatigue Attack
 
 Attackers repeatedly trigger MFA prompts hoping the user approves one.
 
@@ -1564,7 +1564,7 @@ Mitigations
 
 ---
 
-# Replay Attack
+## Replay Attack
 
 Captured authentication data is resent.
 
@@ -1589,7 +1589,7 @@ Mitigations
 
 ---
 
-# Session Hijacking
+## Session Hijacking
 
 ```
 Session Cookie
@@ -1617,7 +1617,7 @@ Mitigations
 
 ---
 
-# Authentication Logging
+## Authentication Logging
 
 Log
 
@@ -1642,7 +1642,7 @@ Avoid logging:
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1662,7 +1662,7 @@ Detection thresholds should be tailored to normal enterprise behavior.
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Recommended log sources
 
@@ -1712,7 +1712,7 @@ Example correlation rules
 
 ---
 
-# Enterprise Authentication Architecture
+## Enterprise Authentication Architecture
 
 ```
                     Internet
@@ -1766,7 +1766,7 @@ Example correlation rules
 
 ---
 
-# Hands-on Lab 1 – Password Policy Assessment
+## Hands-on Lab 1 – Password Policy Assessment
 
 **Objective**
 
@@ -1787,7 +1787,7 @@ Review the password policy of an authorized application.
 
 ---
 
-# Hands-on Lab 2 – MFA Verification
+## Hands-on Lab 2 – MFA Verification
 
 **Objective**
 
@@ -1808,7 +1808,7 @@ Assess Multi-Factor Authentication implementation.
 
 ---
 
-# Hands-on Lab 3 – API Key Security Review
+## Hands-on Lab 3 – API Key Security Review
 
 **Objective**
 
@@ -1829,7 +1829,7 @@ Review API key management in an authorized environment.
 
 ---
 
-# Common Security Mistakes
+## Common Security Mistakes
 
 Avoid:
 
@@ -1846,9 +1846,9 @@ Avoid:
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Users Cannot Authenticate
+### Users Cannot Authenticate
 
 Possible causes
 
@@ -1859,7 +1859,7 @@ Possible causes
 
 ---
 
-## MFA Failures
+### MFA Failures
 
 Possible causes
 
@@ -1870,7 +1870,7 @@ Possible causes
 
 ---
 
-## API Key Rejected
+### API Key Rejected
 
 Possible causes
 
@@ -1881,7 +1881,7 @@ Possible causes
 
 ---
 
-## Certificate Authentication Failure
+### Certificate Authentication Failure
 
 Possible causes
 
@@ -1892,7 +1892,7 @@ Possible causes
 
 ---
 
-## Unexpected Account Lockouts
+### Unexpected Account Lockouts
 
 Possible causes
 
@@ -1903,9 +1903,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is authentication?
 2. How does authentication differ from authorization?
@@ -1920,7 +1920,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. Explain password salting.
 12. Compare passkeys and passwords.
@@ -1935,7 +1935,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1964,7 +1964,7 @@ An executive reports receiving repeated MFA approval prompts despite not attempt
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we explored authentication and enterprise identity verification.
 
@@ -1991,7 +1991,7 @@ Strong authentication forms the foundation of secure APIs, applications, cloud e
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -2007,9 +2007,9 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - FIDO2 Specifications
 - WebAuthn Level 3
@@ -2018,7 +2018,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - RFC 4120 – Kerberos
 - OASIS SAML 2.0
 
-## Security Standards
+### Security Standards
 
 - NIST SP 800-63 Digital Identity Guidelines
 - OWASP ASVS
@@ -2026,7 +2026,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - OWASP API Security Top 10
 - NIST Cybersecurity Framework (CSF)
 
-## Further Reading
+### Further Reading
 
 - FIDO Alliance Documentation
 - WebAuthn Developer Guide
@@ -2034,7 +2034,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 10 – Authorization**
 

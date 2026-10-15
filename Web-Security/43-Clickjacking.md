@@ -1,12 +1,12 @@
 # 43-Clickjacking.md
 
-# Part 1 — Introduction to Clickjacking, UI Redressing, Browser Security, and Defensive Design
+## Part 1 — Introduction to Clickjacking, UI Redressing, Browser Security, and Defensive Design
 
 > **"Clickjacking is a user interface security issue where users are tricked into interacting with web content different from what they perceive. Secure applications defend against clickjacking by controlling how their pages can be embedded, implementing browser security mechanisms, and designing trustworthy user interfaces."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Clickjacking?
+## What is Clickjacking?
 
 **Clickjacking** is a web security issue where a user is deceived into clicking or interacting with an interface element that is different from what appears on the screen.
 
@@ -48,7 +48,7 @@ The focus of this chapter is on **defensive architecture and secure browser beha
 
 ---
 
-# Why Clickjacking Matters
+## Why Clickjacking Matters
 
 Modern web applications expose many sensitive actions through graphical interfaces.
 
@@ -66,7 +66,7 @@ Protecting these interfaces helps preserve user intent.
 
 ---
 
-# UI Redressing
+## UI Redressing
 
 Clickjacking is often described as a **UI Redressing** problem.
 
@@ -90,7 +90,7 @@ The security objective is to ensure that the action the user believes they are p
 
 ---
 
-# Browser Rendering
+## Browser Rendering
 
 Browsers render multiple resources to create a webpage.
 
@@ -118,7 +118,7 @@ Some browser features allow one webpage to embed another under controlled circum
 
 ---
 
-# Frames
+## Frames
 
 A **frame** allows one web document to display another web document.
 
@@ -136,7 +136,7 @@ Frames improve interoperability for some legitimate business scenarios.
 
 ---
 
-# Iframes
+## Iframes
 
 The most common modern framing mechanism is the **iframe**.
 
@@ -160,7 +160,7 @@ Organizations should carefully control which pages are allowed to be embedded.
 
 ---
 
-# Legitimate Uses of Iframes
+## Legitimate Uses of Iframes
 
 Iframes have many valid uses.
 
@@ -177,7 +177,7 @@ Security controls should distinguish between legitimate embedding and unauthoriz
 
 ---
 
-# Browser Trust Boundary
+## Browser Trust Boundary
 
 ```
 Internet
@@ -199,7 +199,7 @@ The browser is responsible for enforcing several security mechanisms related to 
 
 ---
 
-# High-Level Clickjacking Workflow
+## High-Level Clickjacking Workflow
 
 Conceptually:
 
@@ -223,7 +223,7 @@ Defensive controls ensure that sensitive pages cannot be embedded or interacted 
 
 ---
 
-# Why Clickjacking Occurs
+## Why Clickjacking Occurs
 
 Clickjacking generally results from:
 
@@ -251,7 +251,7 @@ User Interaction
 
 ---
 
-# Sensitive User Actions
+## Sensitive User Actions
 
 Applications should pay particular attention to interfaces involving:
 
@@ -267,7 +267,7 @@ These actions benefit from additional browser protections.
 
 ---
 
-# Browser Security Controls
+## Browser Security Controls
 
 Modern browsers provide multiple mechanisms that help defend against clickjacking.
 
@@ -291,7 +291,7 @@ These mechanisms work together to reduce UI-related risks.
 
 ---
 
-# Trust Relationships
+## Trust Relationships
 
 ```
 User
@@ -313,7 +313,7 @@ Applications should preserve trust between user intent and application behavior.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Client
@@ -343,7 +343,7 @@ Clickjacking defenses are primarily enforced at the browser and web server layer
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 No single control completely addresses UI security.
 
@@ -375,7 +375,7 @@ Layered defenses improve resilience.
 
 ---
 
-# Secure UI Design Principles
+## Secure UI Design Principles
 
 ```
 Secure UI
@@ -401,7 +401,7 @@ Applications should minimize opportunities for misleading user interactions.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An online banking portal provides pages for transferring funds and changing account settings.
 
@@ -425,7 +425,7 @@ The organization ensures that sensitive pages cannot be embedded in unauthorized
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 Clickjacking Protection
@@ -451,7 +451,7 @@ Every component contributes to protecting user interactions.
 
 ---
 
-# Secure Design Goals
+## Secure Design Goals
 
 A secure application should provide:
 
@@ -464,7 +464,7 @@ A secure application should provide:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the browser rendering pipeline for a web application.
 2. Identify pages that contain sensitive user actions.
@@ -476,7 +476,7 @@ A secure application should provide:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Clickjacking?
 2. What is UI Redressing?
@@ -491,7 +491,7 @@ A secure application should provide:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Identify sensitive user interfaces during design.
 - Restrict page embedding where unnecessary.
@@ -504,7 +504,7 @@ A secure application should provide:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing unrestricted page embedding.
 - Assuming browsers always provide sufficient defaults.
@@ -515,7 +515,7 @@ A secure application should provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Clickjacking is a user interface security issue rather than a server-side vulnerability.
 - The objective is to protect user intent and prevent unintended interactions.
@@ -523,15 +523,15 @@ A secure application should provide:
 - Sensitive pages require stronger protection than ordinary informational pages.
 - Secure UI design, browser protections, and defense in depth provide effective enterprise mitigation.
 
-# 43-Clickjacking.md
+## 43-Clickjacking.md
 
-# Part 2 — Browser Framing, Security Headers, Frame Policies, CSP `frame-ancestors`, and Enterprise UI Protection
+## Part 2 — Browser Framing, Security Headers, Frame Policies, CSP `frame-ancestors`, and Enterprise UI Protection
 
 > **"Modern clickjacking defense relies on browser-enforced framing restrictions, secure response headers, clear trust relationships, and standardized security policies across enterprise applications."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -548,7 +548,7 @@ After completing this part, you will understand:
 
 ---
 
-# Browser Framing Lifecycle
+## Browser Framing Lifecycle
 
 When a browser loads a webpage, it determines whether additional documents should also be rendered.
 
@@ -580,7 +580,7 @@ Browser security policies influence whether embedded documents are permitted.
 
 ---
 
-# Frame Hierarchy
+## Frame Hierarchy
 
 ```
 Browser Window
@@ -606,7 +606,7 @@ Each embedded document exists within a hierarchy managed by the browser.
 
 ---
 
-# Parent and Child Documents
+## Parent and Child Documents
 
 ```
 Parent Page
@@ -626,7 +626,7 @@ Applications should carefully define which parent pages are trusted to embed sen
 
 ---
 
-# Browser Rendering Process
+## Browser Rendering Process
 
 ```
 HTTP Response
@@ -652,7 +652,7 @@ Before rendering content, browsers evaluate applicable security policies.
 
 ---
 
-# Browser Security Decision
+## Browser Security Decision
 
 Conceptually:
 
@@ -680,7 +680,7 @@ The browser determines whether embedding is permitted based on applicable polici
 
 ---
 
-# Response Headers
+## Response Headers
 
 Security headers instruct browsers how to safely process content.
 
@@ -708,7 +708,7 @@ Security headers provide browser-enforced protection without requiring applicati
 
 ---
 
-# X-Frame-Options
+## X-Frame-Options
 
 `X-Frame-Options` is an HTTP response header used to control whether a page may be displayed inside a frame.
 
@@ -734,7 +734,7 @@ Historically, this has been one of the primary browser mechanisms for reducing c
 
 ---
 
-# High-Level X-Frame-Options Behavior
+## High-Level X-Frame-Options Behavior
 
 ```
 Response
@@ -756,7 +756,7 @@ Modern applications should define framing behavior explicitly instead of relying
 
 ---
 
-# Content Security Policy (CSP)
+## Content Security Policy (CSP)
 
 Content Security Policy (CSP) provides a modern framework for controlling browser behavior.
 
@@ -780,7 +780,7 @@ CSP supports multiple browser security controls, including framing restrictions.
 
 ---
 
-# `frame-ancestors`
+## `frame-ancestors`
 
 The CSP **`frame-ancestors`** directive specifies which origins are permitted to embed a page.
 
@@ -806,7 +806,7 @@ It provides more flexibility than legacy framing controls and is widely recommen
 
 ---
 
-# Trusted Embedding Relationships
+## Trusted Embedding Relationships
 
 Some enterprise systems require legitimate embedding.
 
@@ -834,7 +834,7 @@ Embedding relationships should be explicitly documented and approved.
 
 ---
 
-# Framing Policy
+## Framing Policy
 
 ```
 Organization
@@ -856,7 +856,7 @@ Framing decisions should be centrally managed rather than configured independent
 
 ---
 
-# Sensitive Interfaces
+## Sensitive Interfaces
 
 Additional protections should be considered for interfaces involving:
 
@@ -882,7 +882,7 @@ User Interaction
 
 ---
 
-# Enterprise UI Protection
+## Enterprise UI Protection
 
 ```
 Browser
@@ -912,7 +912,7 @@ UI security complements—not replaces—server-side authorization.
 
 ---
 
-# Browser Enforcement
+## Browser Enforcement
 
 ```
 HTTP Response
@@ -934,7 +934,7 @@ The browser acts as an enforcement point for framing policies.
 
 ---
 
-# Layered Protection
+## Layered Protection
 
 ```
 Secure Headers
@@ -964,7 +964,7 @@ Each layer contributes to preserving trusted user interactions.
 
 ---
 
-# Security Header Governance
+## Security Header Governance
 
 Organizations should maintain standardized response-header policies.
 
@@ -992,7 +992,7 @@ Central governance helps ensure consistent browser protections across applicatio
 
 ---
 
-# Logging
+## Logging
 
 Relevant browser protection events should be logged where appropriate.
 
@@ -1016,7 +1016,7 @@ Logging supports troubleshooting and operational visibility.
 
 ---
 
-# Useful Operational Events
+## Useful Operational Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1031,7 +1031,7 @@ Sensitive user information should not be unnecessarily included in logs.
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -1057,7 +1057,7 @@ Monitoring helps verify that browser protection policies remain effective after 
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1070,7 +1070,7 @@ Monitoring helps verify that browser protection policies remain effective after 
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1104,7 +1104,7 @@ Browser protections complement application-layer security controls.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational HR platform provides employee self-service functionality.
 
@@ -1132,7 +1132,7 @@ The organization standardizes browser security headers across all applications, 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1145,7 +1145,7 @@ The organization standardizes browser security headers across all applications, 
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the browser framing hierarchy for an enterprise application.
 2. Identify pages that require framing restrictions.
@@ -1157,7 +1157,7 @@ The organization standardizes browser security headers across all applications, 
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of browser framing controls?
 2. What is the difference between a parent page and an iframe?
@@ -1172,7 +1172,7 @@ The organization standardizes browser security headers across all applications, 
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Define explicit framing policies for every application.
 - Use modern browser security mechanisms.
@@ -1185,7 +1185,7 @@ The organization standardizes browser security headers across all applications, 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Relying on browser defaults.
 - Allowing unrestricted page embedding.
@@ -1196,7 +1196,7 @@ The organization standardizes browser security headers across all applications, 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Browser framing is a legitimate capability that must be carefully controlled.
 - Security headers allow browsers to enforce trusted embedding behavior.
@@ -1204,15 +1204,15 @@ The organization standardizes browser security headers across all applications, 
 - Enterprise governance ensures consistent browser security across large environments.
 - Layered browser protections, monitoring, and standardized policies significantly strengthen clickjacking defenses.
 
-# 43-Clickjacking.md
+## 43-Clickjacking.md
 
-# Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, Monitoring, and Enterprise Defense
+## Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, Monitoring, and Enterprise Defense
 
 > **"Effective clickjacking prevention requires continuous validation of browser security policies, secure UI design, standardized governance, and ongoing monitoring throughout the application lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1229,7 +1229,7 @@ After completing this part, you will understand:
 
 ---
 
-# Detecting Clickjacking Risks
+## Detecting Clickjacking Risks
 
 Clickjacking risks are best identified during application design, security reviews, and deployment validation.
 
@@ -1257,7 +1257,7 @@ Detection focuses on ensuring that browser protections align with business requi
 
 ---
 
-# Security Review Process
+## Security Review Process
 
 Organizations should evaluate the complete browser interaction model.
 
@@ -1285,7 +1285,7 @@ Reviews should verify that browser behavior preserves intended user interactions
 
 ---
 
-# UI Inventory
+## UI Inventory
 
 Maintain an inventory of interfaces that perform sensitive operations.
 
@@ -1315,7 +1315,7 @@ High-risk interfaces should receive additional protection.
 
 ---
 
-# Browser Protection Inventory
+## Browser Protection Inventory
 
 Document browser security mechanisms used across applications.
 
@@ -1343,7 +1343,7 @@ An accurate inventory simplifies governance and compliance.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Every application should implement approved browser protection standards.
 
@@ -1371,7 +1371,7 @@ Consistency reduces operational drift.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies where user interaction could be manipulated.
 
@@ -1399,7 +1399,7 @@ The objective is to identify interfaces requiring stronger browser protections.
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 Security architects should ask:
 
@@ -1426,7 +1426,7 @@ Security Controls
 
 ---
 
-# Secure Browser Validation
+## Secure Browser Validation
 
 Organizations should verify browser security behavior throughout development.
 
@@ -1454,7 +1454,7 @@ Validation confirms that intended browser protections remain effective.
 
 ---
 
-# UI Security Testing
+## UI Security Testing
 
 Testing should verify that users interact only with trusted interfaces.
 
@@ -1478,7 +1478,7 @@ Testing should emphasize correctness, usability, and browser-enforced protection
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1506,7 +1506,7 @@ Each testing phase contributes to maintaining trusted user interactions.
 
 ---
 
-# Browser Compatibility Validation
+## Browser Compatibility Validation
 
 Different browsers may implement standards with varying levels of support.
 
@@ -1530,7 +1530,7 @@ Organizations should validate security behavior across supported browser version
 
 ---
 
-# Response Header Validation
+## Response Header Validation
 
 Security headers should be reviewed during testing and deployment.
 
@@ -1554,7 +1554,7 @@ Validation helps ensure consistent policy enforcement.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 Browser security should be integrated throughout software development.
 
@@ -1590,7 +1590,7 @@ Early integration reduces long-term operational risk.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -1624,7 +1624,7 @@ Browser security validation should become part of automated delivery pipelines.
 
 ---
 
-# Change Management
+## Change Management
 
 Updates affecting browser security policies should follow controlled procedures.
 
@@ -1656,7 +1656,7 @@ Formal change management improves reliability and traceability.
 
 ---
 
-# Logging
+## Logging
 
 Operational events related to browser security should be logged.
 
@@ -1680,7 +1680,7 @@ Logs improve operational awareness and support investigations.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1696,7 +1696,7 @@ Sensitive personal or authentication information should never be unnecessarily r
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1722,7 +1722,7 @@ Continuous monitoring confirms that browser protections remain effective after r
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1736,7 +1736,7 @@ Continuous monitoring confirms that browser protections remain effective after r
 
 ---
 
-# Governance
+## Governance
 
 Organizations should establish centralized browser security standards.
 
@@ -1766,7 +1766,7 @@ Governance promotes consistent browser protection across the enterprise.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1804,7 +1804,7 @@ Each layer contributes to secure browser behavior and trusted user interactions.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global financial institution provides online banking, loan management, and customer administration through several web applications.
 
@@ -1836,7 +1836,7 @@ The organization applies standardized browser security headers across all custom
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Sensitive Pages Identified
@@ -1862,7 +1862,7 @@ The organization applies standardized browser security headers across all custom
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1875,7 +1875,7 @@ The organization applies standardized browser security headers across all custom
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create an inventory of all pages containing sensitive actions.
 2. Document approved embedding relationships for each application.
@@ -1887,7 +1887,7 @@ The organization applies standardized browser security headers across all custom
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is clickjacking considered a UI security issue?
 2. Which interfaces require stronger browser protections?
@@ -1902,7 +1902,7 @@ The organization applies standardized browser security headers across all custom
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain an inventory of sensitive user interfaces.
 - Standardize browser security headers across applications.
@@ -1915,7 +1915,7 @@ The organization applies standardized browser security headers across all custom
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming browser defaults provide sufficient protection.
 - Applying inconsistent framing policies across applications.
@@ -1927,7 +1927,7 @@ The organization applies standardized browser security headers across all custom
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Clickjacking prevention requires continuous validation of browser security controls.
 - Security reviews should evaluate both technical controls and user interaction flows.
@@ -1935,15 +1935,15 @@ The organization applies standardized browser security headers across all custom
 - DevSecOps and Secure SDLC integrate browser security throughout development.
 - Governance, monitoring, and standardized policies improve enterprise-wide UI security.
 
-# 43-Clickjacking.md
+## 43-Clickjacking.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Clickjacking prevention is achieved through secure browser policies, controlled embedding, standardized governance, continuous validation, and user-centric interface design. Security is strongest when browser controls, application logic, and operational monitoring work together."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1965,7 +1965,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 Organizations should establish centralized governance for browser security and UI protection.
 
@@ -2001,7 +2001,7 @@ Governance ensures browser protections remain consistent across all applications
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Browser Security Governance
@@ -2031,7 +2031,7 @@ A centralized governance model reduces inconsistencies between development teams
 
 ---
 
-# Policy Governance
+## Policy Governance
 
 Browser security policies should be managed through formal processes.
 
@@ -2059,7 +2059,7 @@ Policy changes should be traceable, reviewed, and periodically reassessed.
 
 ---
 
-# Zero Trust for Browser Security
+## Zero Trust for Browser Security
 
 Zero Trust principles extend to browser interactions.
 
@@ -2098,7 +2098,7 @@ Each interaction should be independently protected.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Clickjacking prevention should combine multiple defensive controls.
 
@@ -2130,7 +2130,7 @@ Each layer contributes to preserving trusted user interactions.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Browser security should be integrated throughout software delivery.
 
@@ -2162,7 +2162,7 @@ UI security becomes part of everyday engineering practices.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Security-related web server and reverse proxy configurations should be managed as code whenever practical.
 
@@ -2190,7 +2190,7 @@ IaC improves repeatability, governance, and auditability.
 
 ---
 
-# Secure CI/CD
+## Secure CI/CD
 
 ```
 Developer
@@ -2228,7 +2228,7 @@ Automated validation reduces configuration-related deployment risks.
 
 ---
 
-# Documentation
+## Documentation
 
 Maintain documentation for:
 
@@ -2258,7 +2258,7 @@ Documentation supports operations, audits, and long-term maintainability.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many compliance frameworks expect organizations to protect web applications and user interactions.
 
@@ -2286,7 +2286,7 @@ Applicable requirements depend on organizational and regulatory obligations.
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Security-relevant operational events should be recorded.
 
@@ -2310,7 +2310,7 @@ Audit logs improve accountability and facilitate investigations.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2327,7 +2327,7 @@ Sensitive user information should not be unnecessarily stored in audit logs.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2353,7 +2353,7 @@ Monitoring confirms that browser security policies remain effective over time.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2368,7 +2368,7 @@ Monitoring confirms that browser security policies remain effective over time.
 
 ---
 
-# Browser Security Dashboard
+## Browser Security Dashboard
 
 ```
 Browser Security Dashboard
@@ -2396,7 +2396,7 @@ Dashboards provide centralized visibility into browser security posture.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2426,7 +2426,7 @@ SOC analysts correlate browser-related telemetry with application and infrastruc
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should maintain documented response procedures for browser security incidents.
 
@@ -2462,7 +2462,7 @@ A structured process reduces recovery time and supports organizational learning.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2492,7 +2492,7 @@ Root cause analysis should examine technical controls, operational processes, an
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2522,7 +2522,7 @@ Browser security should evolve alongside changing browser standards and applicat
 
 ---
 
-# Browser Security Maturity Model
+## Browser Security Maturity Model
 
 ```
 Level 1
@@ -2559,7 +2559,7 @@ Higher maturity reflects increased automation, governance, and operational consi
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2611,7 +2611,7 @@ This layered architecture supports secure browser behavior, centralized monitori
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial services company operates customer portals, employee dashboards, and administrative consoles.
 
@@ -2639,7 +2639,7 @@ The organization enforces standardized browser security policies, validates resp
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Sensitive Pages Identified
@@ -2665,7 +2665,7 @@ The organization enforces standardized browser security policies, validates resp
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2678,9 +2678,9 @@ The organization enforces standardized browser security policies, validates resp
 
 ---
 
-# Clickjacking Quick Revision
+## Clickjacking Quick Revision
 
-## Browser Security Flow
+### Browser Security Flow
 
 ```
 User
@@ -2704,7 +2704,7 @@ Trusted Interaction
 
 ---
 
-## Defense Layers
+### Defense Layers
 
 ```
 Security Headers
@@ -2728,7 +2728,7 @@ Application
 
 ---
 
-## Continuous Protection
+### Continuous Protection
 
 ```
 Monitor
@@ -2748,7 +2748,7 @@ Deploy
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise browser security architecture.
 2. Identify all pages containing sensitive user interactions.
@@ -2760,7 +2760,7 @@ Deploy
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is clickjacking?
 2. Why is clickjacking considered a UI security issue?
@@ -2775,7 +2775,7 @@ Deploy
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply browser security policies consistently across applications.
 - Review sensitive interfaces during architecture design.
@@ -2789,7 +2789,7 @@ Deploy
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Relying solely on browser defaults.
 - Applying inconsistent framing policies.
@@ -2801,7 +2801,7 @@ Deploy
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

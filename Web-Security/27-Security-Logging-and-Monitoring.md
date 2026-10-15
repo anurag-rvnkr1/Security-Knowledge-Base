@@ -1,12 +1,12 @@
 # 27-Security-Logging-and-Monitoring-Failures.md
 
-# Part 1 — Fundamentals of Security Logging & Monitoring, Logging Architecture, Security Events, and Enterprise Overview
+## Part 1 — Fundamentals of Security Logging & Monitoring, Logging Architecture, Security Events, and Enterprise Overview
 
 > **"You cannot detect, investigate, or respond to security incidents that you cannot see. Effective logging and monitoring transform isolated events into actionable security intelligence."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What are Security Logging and Monitoring Failures?
+## What are Security Logging and Monitoring Failures?
 
 Security Logging and Monitoring Failures occur when applications or systems fail to:
 
@@ -38,7 +38,7 @@ Without effective logging and monitoring, organizations may discover attacks lon
 
 ---
 
-# Why Logging Matters
+## Why Logging Matters
 
 Logging provides visibility into system activity.
 
@@ -76,7 +76,7 @@ Logs help organizations understand:
 
 ---
 
-# CIA Triad and Monitoring
+## CIA Triad and Monitoring
 
 ```
 Cybersecurity
@@ -100,7 +100,7 @@ Monitoring helps detect threats affecting all three security objectives.
 
 ---
 
-# Logging vs Monitoring
+## Logging vs Monitoring
 
 | Logging | Monitoring |
 |----------|------------|
@@ -113,7 +113,7 @@ Both capabilities complement each other.
 
 ---
 
-# What is a Security Event?
+## What is a Security Event?
 
 A security event is any observable occurrence relevant to system or application security.
 
@@ -132,7 +132,7 @@ Not every event is an incident, but every incident begins with one or more event
 
 ---
 
-# Security Event Lifecycle
+## Security Event Lifecycle
 
 ```
 Security Event
@@ -164,7 +164,7 @@ Investigation
 
 ---
 
-# Common Log Sources
+## Common Log Sources
 
 Enterprise environments collect logs from many systems.
 
@@ -198,7 +198,7 @@ A broader view improves detection and investigation.
 
 ---
 
-# Application Logs
+## Application Logs
 
 Applications should record important security-relevant activities.
 
@@ -230,7 +230,7 @@ Application
 
 ---
 
-# Infrastructure Logs
+## Infrastructure Logs
 
 Infrastructure also produces valuable security information.
 
@@ -260,7 +260,7 @@ Infrastructure logs complement application logs.
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Audit logs create an evidence trail for important activities.
 
@@ -288,7 +288,7 @@ Audit records support accountability and compliance.
 
 ---
 
-# Characteristics of Good Security Logs
+## Characteristics of Good Security Logs
 
 ```
 Security Logs
@@ -314,7 +314,7 @@ Quality logs are essential for reliable investigations.
 
 ---
 
-# Log Entry Structure
+## Log Entry Structure
 
 A well-designed log entry typically includes:
 
@@ -332,7 +332,7 @@ Sensitive data should not be unnecessarily included.
 
 ---
 
-# Log Levels
+## Log Levels
 
 Different log levels communicate the importance of events.
 
@@ -348,7 +348,7 @@ Organizations should define consistent logging standards.
 
 ---
 
-# Centralized Logging
+## Centralized Logging
 
 Enterprise environments commonly collect logs centrally.
 
@@ -376,7 +376,7 @@ Centralization simplifies correlation and investigation.
 
 ---
 
-# Enterprise Logging Architecture
+## Enterprise Logging Architecture
 
 ```
              Applications
@@ -410,7 +410,7 @@ Centralized architecture improves operational visibility.
 
 ---
 
-# Event Correlation
+## Event Correlation
 
 A single log rarely tells the full story.
 
@@ -442,7 +442,7 @@ Correlating events provides richer context.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 The SOC continuously monitors organizational security.
 
@@ -470,7 +470,7 @@ The SOC relies heavily on high-quality logging.
 
 ---
 
-# Why Monitoring Matters
+## Why Monitoring Matters
 
 Monitoring enables rapid detection of unusual activity.
 
@@ -498,7 +498,7 @@ Without monitoring, important events may remain unnoticed.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail company monitors:
 
@@ -534,7 +534,7 @@ Correlated events help analysts detect abnormal behavior and investigate inciden
 
 ---
 
-# Common Logging Failures
+## Common Logging Failures
 
 | Failure | Potential Impact |
 |----------|------------------|
@@ -547,7 +547,7 @@ Correlated events help analysts detect abnormal behavior and investigate inciden
 
 ---
 
-# Enterprise Logging Workflow
+## Enterprise Logging Workflow
 
 ```
 Application Event
@@ -583,7 +583,7 @@ Incident Response
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the logging architecture of a sample enterprise application.
 2. Identify all major log sources.
@@ -595,7 +595,7 @@ Incident Response
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is security logging?
 2. What is security monitoring?
@@ -610,7 +610,7 @@ Incident Response
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Log security-relevant events consistently across applications and infrastructure.
 - Use synchronized timestamps across systems.
@@ -622,7 +622,7 @@ Incident Response
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Logging too little or omitting security-relevant events.
 - Logging sensitive information unnecessarily.
@@ -633,7 +633,7 @@ Incident Response
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Logging records security events, while monitoring analyzes those events for actionable insights.
 - Effective logging supports detection, investigation, compliance, and incident response.
@@ -641,15 +641,15 @@ Incident Response
 - Event correlation helps identify meaningful patterns from multiple log sources.
 - High-quality logs are accurate, complete, protected, and continuously monitored.
 
-# 27-Security-Logging-and-Monitoring-Failures.md
+## 27-Security-Logging-and-Monitoring-Failures.md
 
-# Part 2 — Log Collection, SIEM, Detection Engineering, Alerting, Log Integrity, and Enterprise Monitoring
+## Part 2 — Log Collection, SIEM, Detection Engineering, Alerting, Log Integrity, and Enterprise Monitoring
 
 > **"Logs become valuable only when they are collected, protected, correlated, analyzed, and transformed into actionable security intelligence."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -666,7 +666,7 @@ After completing this part, you will understand:
 
 ---
 
-# Enterprise Log Collection
+## Enterprise Log Collection
 
 Organizations generate logs from hundreds or even thousands of systems.
 
@@ -698,7 +698,7 @@ Centralized collection enables efficient monitoring and investigation.
 
 ---
 
-# Log Collection Pipeline
+## Log Collection Pipeline
 
 ```
 Event Generated
@@ -728,7 +728,7 @@ Each stage should preserve log integrity and availability.
 
 ---
 
-# Log Aggregation
+## Log Aggregation
 
 Aggregation combines logs from multiple systems into a centralized platform.
 
@@ -760,7 +760,7 @@ Aggregation provides a unified view of organizational activity.
 
 ---
 
-# Benefits of Centralized Logging
+## Benefits of Centralized Logging
 
 ```
 Centralized Logging
@@ -782,7 +782,7 @@ Centralized Logging
 
 ---
 
-# Security Information and Event Management (SIEM)
+## Security Information and Event Management (SIEM)
 
 A SIEM platform collects, normalizes, correlates, and analyzes security events from multiple sources.
 
@@ -818,7 +818,7 @@ SIEM solutions support security operations by providing centralized visibility a
 
 ---
 
-# Core SIEM Functions
+## Core SIEM Functions
 
 ```
 SIEM
@@ -844,7 +844,7 @@ SIEM
 
 ---
 
-# Data Normalization
+## Data Normalization
 
 Different systems produce logs in different formats.
 
@@ -872,7 +872,7 @@ Normalization simplifies searching and correlation.
 
 ---
 
-# Event Correlation
+## Event Correlation
 
 Individual events may appear harmless in isolation.
 
@@ -900,7 +900,7 @@ Correlation combines multiple events into meaningful security observations.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Detection engineering focuses on creating reliable methods to identify suspicious or malicious activity using telemetry from applications, systems, and networks.
 
@@ -928,7 +928,7 @@ Effective detections aim to maximize useful alerts while minimizing unnecessary 
 
 ---
 
-# Detection Lifecycle
+## Detection Lifecycle
 
 ```
 Threat Understanding
@@ -962,7 +962,7 @@ Detection content should evolve as environments and threats change.
 
 ---
 
-# Detection Sources
+## Detection Sources
 
 ```
 Detection Data
@@ -990,7 +990,7 @@ Combining diverse telemetry improves detection coverage.
 
 ---
 
-# Alert Generation
+## Alert Generation
 
 When predefined conditions are met:
 
@@ -1018,7 +1018,7 @@ Alerts should represent meaningful situations requiring analyst attention.
 
 ---
 
-# Alert Severity
+## Alert Severity
 
 Organizations commonly prioritize alerts.
 
@@ -1034,7 +1034,7 @@ Severity should reflect organizational risk and business impact.
 
 ---
 
-# Alert Fatigue
+## Alert Fatigue
 
 Excessive low-value alerts can overwhelm analysts.
 
@@ -1058,7 +1058,7 @@ Reducing false positives is an important detection engineering goal.
 
 ---
 
-# Improving Detection Quality
+## Improving Detection Quality
 
 ```
 Detection Improvement
@@ -1082,7 +1082,7 @@ Well-maintained detections improve operational efficiency.
 
 ---
 
-# Log Integrity
+## Log Integrity
 
 Security logs themselves must be protected.
 
@@ -1110,7 +1110,7 @@ Unauthorized modification of logs can undermine investigations.
 
 ---
 
-# Protecting Logs
+## Protecting Logs
 
 ```
 Log Protection
@@ -1134,7 +1134,7 @@ Only authorized personnel should access sensitive security logs.
 
 ---
 
-# Log Retention
+## Log Retention
 
 Organizations define how long logs should be retained.
 
@@ -1162,7 +1162,7 @@ Retention requirements depend on operational, legal, and regulatory needs.
 
 ---
 
-# Monitoring Strategies
+## Monitoring Strategies
 
 Monitoring may include:
 
@@ -1190,7 +1190,7 @@ Continuous visibility helps reduce detection time.
 
 ---
 
-# Enterprise Monitoring Architecture
+## Enterprise Monitoring Architecture
 
 ```
 Applications
@@ -1230,7 +1230,7 @@ Security Operations Center
 
 ---
 
-# Security Dashboards
+## Security Dashboards
 
 SOC teams commonly monitor dashboards showing:
 
@@ -1260,7 +1260,7 @@ Dashboards improve situational awareness.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational manufacturing company collects logs from:
 
@@ -1296,7 +1296,7 @@ Correlated detections enable analysts to investigate suspicious authentication a
 
 ---
 
-# Common Monitoring Challenges
+## Common Monitoring Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1309,7 +1309,7 @@ Correlated detections enable analysts to investigate suspicious authentication a
 
 ---
 
-# Enterprise Detection Workflow
+## Enterprise Detection Workflow
 
 ```
 Security Event
@@ -1345,7 +1345,7 @@ Response
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise SIEM architecture.
 2. Identify five major log sources.
@@ -1357,7 +1357,7 @@ Response
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a SIEM?
 2. Why is log normalization necessary?
@@ -1372,7 +1372,7 @@ Response
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Centralize security logs from applications, infrastructure, and cloud platforms.
 - Normalize log formats before analysis.
@@ -1384,7 +1384,7 @@ Response
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Collecting logs without monitoring them.
 - Generating excessive low-value alerts.
@@ -1395,7 +1395,7 @@ Response
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Centralized log collection improves visibility and investigation capabilities.
 - SIEM platforms aggregate, normalize, correlate, and analyze security events.
@@ -1403,15 +1403,15 @@ Response
 - Protecting log integrity is essential for trustworthy investigations.
 - Effective monitoring depends on high-quality telemetry, tuned detections, and continuous operational improvement.
 
-# 27-Security-Logging-and-Monitoring-Failures.md
+## 27-Security-Logging-and-Monitoring-Failures.md
 
-# Part 3 — Threat Detection, Incident Detection, Threat Hunting, SOC Operations, Metrics, and Enterprise Monitoring
+## Part 3 — Threat Detection, Incident Detection, Threat Hunting, SOC Operations, Metrics, and Enterprise Monitoring
 
 > **"Logs record the past, monitoring observes the present, and detection enables organizations to respond before incidents escalate into major business disruptions."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1428,7 +1428,7 @@ After completing this part, you will understand:
 
 ---
 
-# Detection vs Monitoring
+## Detection vs Monitoring
 
 Although related, these activities serve different purposes.
 
@@ -1443,7 +1443,7 @@ Monitoring provides visibility, while detection transforms that visibility into 
 
 ---
 
-# Detection Lifecycle
+## Detection Lifecycle
 
 ```
 Security Event
@@ -1481,7 +1481,7 @@ Each phase contributes to reducing the time required to identify security incide
 
 ---
 
-# Threat Detection
+## Threat Detection
 
 Threat detection identifies activities that may indicate malicious or unauthorized behavior.
 
@@ -1509,7 +1509,7 @@ Detection relies on quality telemetry, reliable detection logic, and timely anal
 
 ---
 
-# Indicators of Compromise (IoCs)
+## Indicators of Compromise (IoCs)
 
 Indicators of Compromise represent evidence suggesting that a system may have been compromised.
 
@@ -1537,7 +1537,7 @@ IoCs support investigation but should be interpreted within the broader operatio
 
 ---
 
-# Indicators of Attack (IoAs)
+## Indicators of Attack (IoAs)
 
 Indicators of Attack focus on suspicious behaviors rather than known artifacts.
 
@@ -1561,7 +1561,7 @@ Behavioral analysis can help identify previously unseen attack techniques.
 
 ---
 
-# Detection Sources
+## Detection Sources
 
 ```
 Enterprise Telemetry
@@ -1593,7 +1593,7 @@ Comprehensive telemetry improves detection capability.
 
 ---
 
-# Detection Engineering Workflow
+## Detection Engineering Workflow
 
 ```
 Threat Research
@@ -1623,7 +1623,7 @@ Detection content should evolve alongside organizational infrastructure and thre
 
 ---
 
-# Threat Hunting
+## Threat Hunting
 
 Threat hunting is a structured, proactive activity that searches for evidence of suspicious activity that automated alerts may not have identified.
 
@@ -1655,7 +1655,7 @@ Threat hunting complements automated detection rather than replacing it.
 
 ---
 
-# Threat Hunting Process
+## Threat Hunting Process
 
 ```
 Define Hypothesis
@@ -1685,7 +1685,7 @@ Lessons learned from hunting exercises often improve future detection coverage.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 The SOC is responsible for monitoring, investigating, and coordinating responses to security events.
 
@@ -1717,7 +1717,7 @@ SOC teams operate continuously in many enterprise environments.
 
 ---
 
-# SOC Responsibilities
+## SOC Responsibilities
 
 ```
 SOC
@@ -1741,7 +1741,7 @@ SOC
 
 ---
 
-# Alert Triage
+## Alert Triage
 
 Not every alert represents a security incident.
 
@@ -1773,7 +1773,7 @@ Efficient triage helps analysts focus on meaningful events.
 
 ---
 
-# Incident Escalation
+## Incident Escalation
 
 When an event requires broader action:
 
@@ -1805,7 +1805,7 @@ Escalation procedures should be clearly documented.
 
 ---
 
-# Detection Coverage
+## Detection Coverage
 
 Organizations measure how well monitoring covers important systems.
 
@@ -1833,7 +1833,7 @@ Coverage gaps may leave important activity unobserved.
 
 ---
 
-# Detection Maturity
+## Detection Maturity
 
 ```
 Basic
@@ -1863,7 +1863,7 @@ Security monitoring capabilities mature over time through iterative improvements
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Organizations use metrics to evaluate monitoring effectiveness.
 
@@ -1878,7 +1878,7 @@ Organizations use metrics to evaluate monitoring effectiveness.
 
 ---
 
-# Security Dashboards
+## Security Dashboards
 
 Operational dashboards commonly display:
 
@@ -1908,7 +1908,7 @@ Dashboards improve situational awareness for analysts and leadership.
 
 ---
 
-# Enterprise Monitoring Strategy
+## Enterprise Monitoring Strategy
 
 ```
 Applications
@@ -1946,7 +1946,7 @@ Each layer contributes valuable security telemetry.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization monitors:
 
@@ -1982,7 +1982,7 @@ Correlated monitoring helps identify unusual authentication activity, unauthoriz
 
 ---
 
-# Common Detection Challenges
+## Common Detection Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1995,7 +1995,7 @@ Correlated monitoring helps identify unusual authentication activity, unauthoriz
 
 ---
 
-# Enterprise Detection Architecture
+## Enterprise Detection Architecture
 
 ```
 Log Sources
@@ -2031,7 +2031,7 @@ Incident Response
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a monitoring architecture for an enterprise application.
 2. Identify important log sources.
@@ -2043,7 +2043,7 @@ Incident Response
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is threat detection?
 2. What is the difference between monitoring and detection?
@@ -2058,7 +2058,7 @@ Incident Response
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Collect telemetry from diverse enterprise systems.
 - Continuously refine detection logic to improve quality.
@@ -2070,7 +2070,7 @@ Incident Response
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming every alert is a confirmed incident.
 - Ignoring false positive trends.
@@ -2081,7 +2081,7 @@ Incident Response
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Monitoring provides visibility, while detection identifies potentially malicious activity.
 - IoCs and IoAs offer different perspectives for identifying suspicious behavior.
@@ -2089,15 +2089,15 @@ Incident Response
 - Threat hunting proactively searches for threats that automated detections may miss.
 - Detection quality improves through continuous tuning, metrics, broader coverage, and operational feedback.
 
-# 27-Security-Logging-and-Monitoring-Failures.md
+## 27-Security-Logging-and-Monitoring-Failures.md
 
-# Part 4 — Enterprise Governance, Incident Response, Compliance, Continuous Improvement, and Chapter Summary
+## Part 4 — Enterprise Governance, Incident Response, Compliance, Continuous Improvement, and Chapter Summary
 
 > **"Logging is valuable only if it leads to detection, investigation, response, and continuous improvement. Mature organizations treat logging and monitoring as a core business capability—not merely a technical feature."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2113,7 +2113,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Logging Governance
+## Enterprise Logging Governance
 
 Logging governance defines organizational standards for generating, protecting, monitoring, and retaining security logs.
 
@@ -2149,7 +2149,7 @@ Governance ensures logging practices remain consistent across teams and systems.
 
 ---
 
-# Logging Governance Framework
+## Logging Governance Framework
 
 ```
 Governance
@@ -2175,7 +2175,7 @@ A governance framework establishes accountability and operational consistency.
 
 ---
 
-# Security Logging Lifecycle
+## Security Logging Lifecycle
 
 ```
 Generate
@@ -2213,7 +2213,7 @@ Each stage contributes to maintaining reliable and trustworthy security records.
 
 ---
 
-# Incident Response Integration
+## Incident Response Integration
 
 Security monitoring directly supports incident response.
 
@@ -2249,7 +2249,7 @@ Without effective logging, incident response becomes significantly more difficul
 
 ---
 
-# Incident Response Workflow
+## Incident Response Workflow
 
 ```
 Detection
@@ -2283,7 +2283,7 @@ Each phase relies on accurate and complete security telemetry.
 
 ---
 
-# Role of Logs During Investigations
+## Role of Logs During Investigations
 
 Security logs help investigators answer important questions.
 
@@ -2309,7 +2309,7 @@ Well-designed logs improve investigation speed and accuracy.
 
 ---
 
-# Log Retention
+## Log Retention
 
 Organizations should define appropriate retention periods.
 
@@ -2341,7 +2341,7 @@ Retention policies should align with business, legal, and regulatory requirement
 
 ---
 
-# Secure Log Storage
+## Secure Log Storage
 
 Logs should remain protected throughout their lifecycle.
 
@@ -2373,7 +2373,7 @@ Unauthorized access or modification can reduce the value of logs during investig
 
 ---
 
-# Log Access Control
+## Log Access Control
 
 Only authorized personnel should access sensitive logs.
 
@@ -2401,7 +2401,7 @@ Every access should itself be auditable.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many regulations require organizations to maintain security logging capabilities.
 
@@ -2429,7 +2429,7 @@ Comprehensive logging simplifies compliance and audit preparation.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Organizations evaluate monitoring effectiveness using measurable indicators.
 
@@ -2444,7 +2444,7 @@ Organizations evaluate monitoring effectiveness using measurable indicators.
 
 ---
 
-# Operational KPIs
+## Operational KPIs
 
 ```
 Security KPIs
@@ -2470,7 +2470,7 @@ KPIs help leadership understand the effectiveness of security operations.
 
 ---
 
-# Logging Maturity Model
+## Logging Maturity Model
 
 ```
 Level 1
@@ -2506,7 +2506,7 @@ Organizations mature over time by improving visibility, automation, and governan
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 Security monitoring should evolve continuously.
 
@@ -2542,7 +2542,7 @@ Operational experience should strengthen future detection capabilities.
 
 ---
 
-# Security Reviews
+## Security Reviews
 
 Organizations should periodically review:
 
@@ -2570,7 +2570,7 @@ Regular reviews help identify gaps before they become operational risks.
 
 ---
 
-# Enterprise Monitoring Architecture
+## Enterprise Monitoring Architecture
 
 ```
 Applications
@@ -2612,7 +2612,7 @@ This architecture supports both operational monitoring and strategic decision-ma
 
 ---
 
-# Enterprise Dashboard
+## Enterprise Dashboard
 
 ```
 SOC Dashboard
@@ -2640,7 +2640,7 @@ Dashboards provide security teams with real-time operational visibility.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global banking organization operates a centralized monitoring platform.
 
@@ -2684,7 +2684,7 @@ The organization continuously monitors authentication activity, administrative a
 
 ---
 
-# Enterprise Logging Checklist
+## Enterprise Logging Checklist
 
 ```
 ✓ Security Events Logged
@@ -2710,7 +2710,7 @@ The organization continuously monitors authentication activity, administrative a
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2723,9 +2723,9 @@ The organization continuously monitors authentication activity, administrative a
 
 ---
 
-# Interview Revision
+## Interview Revision
 
-## Security Logging
+### Security Logging
 
 ```
 Security Event
@@ -2749,7 +2749,7 @@ Analysis
 
 ---
 
-## Monitoring
+### Monitoring
 
 ```
 Logs
@@ -2773,7 +2773,7 @@ Response
 
 ---
 
-## SIEM
+### SIEM
 
 ```
 Collect
@@ -2797,7 +2797,7 @@ Alert
 
 ---
 
-## Incident Response
+### Incident Response
 
 ```
 Detect
@@ -2821,7 +2821,7 @@ Improve
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a centralized enterprise logging architecture.
 2. Classify log sources by importance.
@@ -2833,7 +2833,7 @@ Improve
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are Security Logging and Monitoring Failures?
 2. Why is centralized logging important?
@@ -2848,7 +2848,7 @@ Improve
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Log all security-relevant events consistently across applications and infrastructure.
 - Protect logs using strong access controls, encryption, and integrity safeguards.
@@ -2860,7 +2860,7 @@ Improve
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Generating logs without monitoring them.
 - Storing logs insecurely or allowing unauthorized access.
@@ -2871,7 +2871,7 @@ Improve
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

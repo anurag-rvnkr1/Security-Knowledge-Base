@@ -1,10 +1,10 @@
 # 09 - Address Resolution Protocol (ARP)
 
-# Part 1 — ARP Fundamentals, MAC Resolution, ARP Cache, Gratuitous ARP, Proxy ARP, and Enterprise Operations
+## Part 1 — ARP Fundamentals, MAC Resolution, ARP Cache, Gratuitous ARP, Proxy ARP, and Enterprise Operations
 
 ---
 
-# Overview
+## Overview
 
 Communication on an Ethernet network requires **both Layer 2 (MAC)** and **Layer 3 (IP)** addressing.
 
@@ -36,7 +36,7 @@ Understanding ARP is critical for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -52,7 +52,7 @@ After completing this chapter, you should be able to:
 
 ---
 
-# Why ARP Exists
+## Why ARP Exists
 
 IP addresses identify devices logically.
 
@@ -89,7 +89,7 @@ ARP performs this translation.
 
 ---
 
-# IP Address vs MAC Address
+## IP Address vs MAC Address
 
 | IP Address | MAC Address |
 |------------|-------------|
@@ -100,7 +100,7 @@ ARP performs this translation.
 
 ---
 
-# What is ARP?
+## What is ARP?
 
 **Address Resolution Protocol (ARP)** maps an IPv4 address to a MAC address within the same Layer 2 broadcast domain.
 
@@ -118,7 +118,7 @@ Once the MAC address is known, Ethernet communication can begin.
 
 ---
 
-# When ARP is Used
+## When ARP is Used
 
 ARP is required whenever a device needs to send an IPv4 packet over an Ethernet-like Layer 2 network and does not already know the destination MAC address.
 
@@ -134,7 +134,7 @@ If the destination is on another subnet, the host resolves the **default gateway
 
 ---
 
-# Same Network Communication
+## Same Network Communication
 
 Example:
 
@@ -164,7 +164,7 @@ PC A performs ARP to discover PC B's MAC address.
 
 ---
 
-# Different Network Communication
+## Different Network Communication
 
 Example:
 
@@ -204,7 +204,7 @@ The router then performs ARP on the destination network if necessary.
 
 ---
 
-# ARP Resolution Process
+## ARP Resolution Process
 
 Step-by-step:
 
@@ -246,7 +246,7 @@ Send Frame
 
 ---
 
-# ARP Request
+## ARP Request
 
 An ARP Request is a **broadcast** frame.
 
@@ -274,7 +274,7 @@ Every device on the VLAN receives the request.
 
 ---
 
-# ARP Reply
+## ARP Reply
 
 Only the device owning the requested IP responds.
 
@@ -294,7 +294,7 @@ The reply is normally **unicast** back to the requester.
 
 ---
 
-# Complete ARP Workflow
+## Complete ARP Workflow
 
 ```
 PC A
@@ -332,7 +332,7 @@ Communication Begins
 
 ---
 
-# ARP Cache
+## ARP Cache
 
 To avoid repeated broadcasts, operating systems store learned mappings in an **ARP cache**.
 
@@ -347,7 +347,7 @@ Future communication uses cached information until entries expire or are refresh
 
 ---
 
-# Dynamic ARP Entries
+## Dynamic ARP Entries
 
 Dynamic entries are:
 
@@ -360,7 +360,7 @@ This is the default behavior on most operating systems.
 
 ---
 
-# Static ARP Entries
+## Static ARP Entries
 
 Static entries are manually configured.
 
@@ -378,7 +378,7 @@ Disadvantages:
 
 ---
 
-# Gratuitous ARP
+## Gratuitous ARP
 
 A **Gratuitous ARP** is an ARP message sent for the sender's own IP address.
 
@@ -405,7 +405,7 @@ Common purposes:
 
 ---
 
-# Example — High Availability
+## Example — High Availability
 
 Consider:
 
@@ -433,7 +433,7 @@ This helps devices quickly learn the MAC address associated with the virtual gat
 
 ---
 
-# Proxy ARP
+## Proxy ARP
 
 With **Proxy ARP**, a router answers an ARP Request on behalf of another device.
 
@@ -465,7 +465,7 @@ Proxy ARP is less common in modern enterprise designs because proper routing and
 
 ---
 
-# ARP Packet Structure
+## ARP Packet Structure
 
 An ARP packet contains fields such as:
 
@@ -483,7 +483,7 @@ Understanding these fields helps during packet analysis and troubleshooting.
 
 ---
 
-# Broadcast Domain Impact
+## Broadcast Domain Impact
 
 ARP Requests are broadcasts.
 
@@ -505,7 +505,7 @@ Routers do not normally forward ARP broadcasts between broadcast domains.
 
 ---
 
-# Enterprise ARP Example
+## Enterprise ARP Example
 
 ```
 Employee Laptop
@@ -531,7 +531,7 @@ ARP occurs only where Layer 2 resolution is required. Once traffic crosses a rou
 
 ---
 
-# Common ARP Problems
+## Common ARP Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -543,7 +543,7 @@ ARP occurs only where Layer 2 resolution is required. Once traffic crosses a rou
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable ARP operation supports:
 
@@ -557,7 +557,7 @@ Even though ARP is simple, failures can disrupt business-critical services.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - ARP maps **IPv4 addresses** to **MAC addresses** within a local broadcast domain.
 - ARP Requests are **broadcast**, while ARP Replies are typically **unicast**.
@@ -566,13 +566,13 @@ Even though ARP is simple, failures can disrupt business-critical services.
 - **Proxy ARP** allows a router to respond on behalf of another device in specific scenarios.
 - ARP operates only within a Layer 2 broadcast domain and is not routed across networks.
 
-# 09 - Address Resolution Protocol (ARP)
+## 09 - Address Resolution Protocol (ARP)
 
-# Part 2 — ARP Cache, ARP Spoofing, ARP Poisoning, Man-in-the-Middle (MITM), Dynamic ARP Inspection (DAI), and Enterprise Security
+## Part 2 — ARP Cache, ARP Spoofing, ARP Poisoning, Man-in-the-Middle (MITM), Dynamic ARP Inspection (DAI), and Enterprise Security
 
 ---
 
-# Overview
+## Overview
 
 Although ARP is a simple protocol, it was designed for trusted local networks and **does not provide authentication**.
 
@@ -591,7 +591,7 @@ For this reason, ARP security is a critical topic for enterprise networking and 
 
 ---
 
-# ARP Cache Review
+## ARP Cache Review
 
 Every operating system maintains an **ARP cache**.
 
@@ -607,7 +607,7 @@ Instead of broadcasting every time, the host first checks this table.
 
 ---
 
-# ARP Cache Lifecycle
+## ARP Cache Lifecycle
 
 ```
 Need MAC Address
@@ -661,7 +661,7 @@ This process minimizes unnecessary broadcast traffic.
 
 ---
 
-# Cache Aging
+## Cache Aging
 
 Dynamic ARP entries are temporary.
 
@@ -695,7 +695,7 @@ The exact timeout depends on the operating system and device configuration.
 
 ---
 
-# Why ARP is Vulnerable
+## Why ARP is Vulnerable
 
 ARP was designed before modern security threats became common.
 
@@ -710,7 +710,7 @@ As a result, hosts generally accept unsolicited ARP replies and update their ARP
 
 ---
 
-# What is ARP Spoofing?
+## What is ARP Spoofing?
 
 **ARP Spoofing** is an attack in which an attacker sends forged ARP replies to associate their MAC address with another device's IP address.
 
@@ -728,7 +728,7 @@ Victims update their ARP cache with incorrect information.
 
 ---
 
-# What is ARP Poisoning?
+## What is ARP Poisoning?
 
 **ARP Poisoning** is the result of successful ARP spoofing.
 
@@ -744,7 +744,7 @@ Traffic intended for the gateway is now sent to the attacker.
 
 ---
 
-# ARP Spoofing Attack Workflow
+## ARP Spoofing Attack Workflow
 
 ```
 Victim
@@ -778,7 +778,7 @@ The attacker positions themselves between the victim and the legitimate gateway.
 
 ---
 
-# Man-in-the-Middle (MITM)
+## Man-in-the-Middle (MITM)
 
 One of the most common outcomes of ARP spoofing is a **Man-in-the-Middle (MITM)** attack.
 
@@ -808,7 +808,7 @@ The attacker can:
 
 ---
 
-# Two-Way ARP Poisoning
+## Two-Way ARP Poisoning
 
 To remain invisible, an attacker often poisons both devices.
 
@@ -832,7 +832,7 @@ Now all traffic flows through the attacker.
 
 ---
 
-# Potential Attack Consequences
+## Potential Attack Consequences
 
 Successful ARP poisoning may lead to:
 
@@ -848,7 +848,7 @@ Encrypted protocols such as HTTPS reduce the risk of content disclosure but do n
 
 ---
 
-# Example Attack Scenario
+## Example Attack Scenario
 
 ```
 Employee Laptop
@@ -876,7 +876,7 @@ The victim unknowingly forwards all traffic through the attacker's system.
 
 ---
 
-# Detecting ARP Spoofing
+## Detecting ARP Spoofing
 
 Indicators include:
 
@@ -891,7 +891,7 @@ Monitoring tools can help identify these anomalies.
 
 ---
 
-# Enterprise Detection Methods
+## Enterprise Detection Methods
 
 Organizations commonly detect suspicious ARP activity using:
 
@@ -906,7 +906,7 @@ Repeated ARP changes should be investigated promptly.
 
 ---
 
-# Dynamic ARP Inspection (DAI)
+## Dynamic ARP Inspection (DAI)
 
 **Dynamic ARP Inspection (DAI)** is a Layer 2 security feature available on many managed switches.
 
@@ -918,7 +918,7 @@ Purpose:
 
 ---
 
-# How DAI Works
+## How DAI Works
 
 Simplified process:
 
@@ -958,7 +958,7 @@ Only validated ARP messages are forwarded.
 
 ---
 
-# DHCP Snooping Review
+## DHCP Snooping Review
 
 DAI depends on **DHCP Snooping** in many enterprise deployments.
 
@@ -979,7 +979,7 @@ DAI compares incoming ARP packets against this trusted information.
 
 ---
 
-# Trusted vs Untrusted Ports
+## Trusted vs Untrusted Ports
 
 Enterprise switches classify interfaces as:
 
@@ -1007,7 +1007,7 @@ ARP validation is generally performed on untrusted access ports.
 
 ---
 
-# Static Hosts and DAI
+## Static Hosts and DAI
 
 Some environments contain devices using static IP addresses.
 
@@ -1015,7 +1015,7 @@ Since these hosts may not appear in the DHCP Snooping database, administrators m
 
 ---
 
-# Rate Limiting
+## Rate Limiting
 
 Switches can also limit ARP packet rates.
 
@@ -1027,7 +1027,7 @@ Benefits:
 
 ---
 
-# ARP Inspection Workflow
+## ARP Inspection Workflow
 
 ```
 Client Sends ARP
@@ -1067,7 +1067,7 @@ Log Event
 
 ---
 
-# Enterprise Security Controls
+## Enterprise Security Controls
 
 Recommended controls include:
 
@@ -1084,7 +1084,7 @@ These controls work together to reduce the risk of Layer 2 attacks.
 
 ---
 
-# Wireshark Analysis
+## Wireshark Analysis
 
 Useful display filter:
 
@@ -1094,7 +1094,7 @@ arp
 
 Typical observations:
 
-### ARP Request
+#### ARP Request
 
 ```
 Who has 192.168.10.1?
@@ -1102,7 +1102,7 @@ Who has 192.168.10.1?
 Tell 192.168.10.20
 ```
 
-### ARP Reply
+#### ARP Reply
 
 ```
 192.168.10.1
@@ -1120,7 +1120,7 @@ Suspicious indicators include:
 
 ---
 
-# Linux Verification
+## Linux Verification
 
 Display ARP/neighbor table:
 
@@ -1136,7 +1136,7 @@ arp -n
 
 ---
 
-# Windows Verification
+## Windows Verification
 
 Display ARP cache:
 
@@ -1152,7 +1152,7 @@ arp -d *
 
 ---
 
-# Cisco IOS Verification
+## Cisco IOS Verification
 
 Display ARP table:
 
@@ -1180,7 +1180,7 @@ show ip arp inspection interfaces
 
 ---
 
-# Common ARP Problems
+## Common ARP Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1192,7 +1192,7 @@ show ip arp inspection interfaces
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Employee
@@ -1222,7 +1222,7 @@ Result:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Securing ARP helps organizations:
 
@@ -1234,7 +1234,7 @@ Securing ARP helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - ARP lacks built-in authentication, making it susceptible to spoofing.
 - **ARP Spoofing** injects false ARP replies; **ARP Poisoning** is the resulting corruption of the ARP cache.
@@ -1244,13 +1244,13 @@ Securing ARP helps organizations:
 - Continuous monitoring, segmentation, and Layer 2 security features are essential for defending enterprise networks against ARP-based attacks.
 
 
-# 09 - Address Resolution Protocol (ARP)
+## 09 - Address Resolution Protocol (ARP)
 
-# Part 3 — Gratuitous ARP, Proxy ARP, High Availability, Virtualization, Cloud Networking, Containers, and Enterprise Operations
+## Part 3 — Gratuitous ARP, Proxy ARP, High Availability, Virtualization, Cloud Networking, Containers, and Enterprise Operations
 
 ---
 
-# Overview
+## Overview
 
 Modern enterprise networks extend far beyond traditional physical LANs.
 
@@ -1269,9 +1269,9 @@ Although the fundamental purpose of ARP remains the same—mapping IPv4 addresse
 
 ---
 
-# Gratuitous ARP (GARP)
+## Gratuitous ARP (GARP)
 
-## What is Gratuitous ARP?
+### What is Gratuitous ARP?
 
 A **Gratuitous ARP (GARP)** is an ARP message sent by a host **for its own IPv4 address**, without waiting for another device to request the mapping.
 
@@ -1301,7 +1301,7 @@ The message is typically broadcast so neighboring devices can update their ARP c
 
 ---
 
-# Why Gratuitous ARP Exists
+## Why Gratuitous ARP Exists
 
 GARP serves several operational purposes:
 
@@ -1313,7 +1313,7 @@ GARP serves several operational purposes:
 
 ---
 
-# Duplicate Address Detection (IPv4)
+## Duplicate Address Detection (IPv4)
 
 Suppose a server is configured with:
 
@@ -1345,7 +1345,7 @@ If another host already uses the same address, the administrator can detect the 
 
 ---
 
-# Updating Neighbor Caches
+## Updating Neighbor Caches
 
 A device's MAC address may change because of:
 
@@ -1376,7 +1376,7 @@ This minimizes connectivity disruption.
 
 ---
 
-# Gratuitous ARP During Failover
+## Gratuitous ARP During Failover
 
 Consider a redundant default gateway using an FHRP.
 
@@ -1408,7 +1408,7 @@ Without Gratuitous ARP, hosts may continue using an outdated MAC address until t
 
 ---
 
-# High Availability Protocols
+## High Availability Protocols
 
 Several First Hop Redundancy Protocols (FHRPs) rely on ARP cache updates during failover.
 
@@ -1422,9 +1422,9 @@ After the active gateway changes, these protocols typically trigger Gratuitous A
 
 ---
 
-# Proxy ARP
+## Proxy ARP
 
-## What is Proxy ARP?
+### What is Proxy ARP?
 
 **Proxy ARP** allows a router to answer ARP requests on behalf of another device.
 
@@ -1450,7 +1450,7 @@ The sender believes the destination is directly reachable, even though traffic m
 
 ---
 
-# Proxy ARP Workflow
+## Proxy ARP Workflow
 
 ```
 Client
@@ -1482,7 +1482,7 @@ The router acts as a proxy for the destination host.
 
 ---
 
-# Advantages of Proxy ARP
+## Advantages of Proxy ARP
 
 Historically, Proxy ARP offered:
 
@@ -1492,7 +1492,7 @@ Historically, Proxy ARP offered:
 
 ---
 
-# Limitations of Proxy ARP
+## Limitations of Proxy ARP
 
 Modern enterprise networks generally avoid relying on Proxy ARP because it can:
 
@@ -1505,7 +1505,7 @@ Proper IP addressing and routing are preferred.
 
 ---
 
-# ARP in Virtualization
+## ARP in Virtualization
 
 Virtualization platforms create virtual network interfaces that still require MAC addresses.
 
@@ -1541,7 +1541,7 @@ Communication between VMs on the same virtual network still depends on ARP.
 
 ---
 
-# Live Migration
+## Live Migration
 
 Virtual machines may move between physical hosts.
 
@@ -1575,7 +1575,7 @@ This helps neighboring systems quickly associate the VM's IP address with its ne
 
 ---
 
-# ARP and Virtual Switches
+## ARP and Virtual Switches
 
 Virtual switches perform Layer 2 forwarding similar to physical switches.
 
@@ -1591,7 +1591,7 @@ Operational concepts remain largely consistent with physical Ethernet switching.
 
 ---
 
-# ARP in Cloud Networking
+## ARP in Cloud Networking
 
 Public cloud providers abstract much of the underlying physical network.
 
@@ -1608,7 +1608,7 @@ Cloud platforms implement these functions using provider-specific networking arc
 
 ---
 
-# AWS Example
+## AWS Example
 
 ```
 EC2 Instance
@@ -1630,7 +1630,7 @@ From the instance's perspective, communication with local IPv4 peers still invol
 
 ---
 
-# Azure Example
+## Azure Example
 
 ```
 Virtual Machine
@@ -1652,7 +1652,7 @@ Azure similarly abstracts the physical infrastructure while presenting familiar 
 
 ---
 
-# Google Cloud Example
+## Google Cloud Example
 
 ```
 VM Instance
@@ -1674,7 +1674,7 @@ Although implementations differ across providers, IPv4 communication still depen
 
 ---
 
-# ARP in Containers
+## ARP in Containers
 
 Containers typically communicate through virtual Ethernet interfaces connected to a software bridge or virtual network.
 
@@ -1696,7 +1696,7 @@ When containers communicate over IPv4 within the same Layer 2 domain, ARP is use
 
 ---
 
-# Docker Networking
+## Docker Networking
 
 Typical bridge networking:
 
@@ -1726,7 +1726,7 @@ Bridge networking behaves similarly to a traditional Ethernet segment.
 
 ---
 
-# Kubernetes Networking
+## Kubernetes Networking
 
 Kubernetes networking depends on the selected Container Network Interface (CNI) plugin.
 
@@ -1752,7 +1752,7 @@ Depending on the CNI implementation, ARP may be involved for local Layer 2 commu
 
 ---
 
-# Enterprise Packet Flow
+## Enterprise Packet Flow
 
 Example:
 
@@ -1780,7 +1780,7 @@ ARP occurs whenever a device needs to resolve the MAC address of a local destina
 
 ---
 
-# ARP During Device Replacement
+## ARP During Device Replacement
 
 Scenario:
 
@@ -1826,7 +1826,7 @@ This helps avoid temporary connectivity issues caused by stale ARP entries.
 
 ---
 
-# Common Operational Issues
+## Common Operational Issues
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1838,7 +1838,7 @@ This helps avoid temporary connectivity issues caused by stale ARP entries.
 
 ---
 
-# Enterprise Troubleshooting Workflow
+## Enterprise Troubleshooting Workflow
 
 ```
 Verify Physical Connectivity
@@ -1876,7 +1876,7 @@ A structured workflow helps isolate whether the problem lies in Layer 1, Layer 2
 
 ---
 
-# Packet Capture Analysis
+## Packet Capture Analysis
 
 Useful Wireshark filter:
 
@@ -1896,7 +1896,7 @@ Repeated ARP requests without replies often indicate a connectivity or addressin
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use consistent IP address management (IPAM).
 - Minimize unnecessary broadcast domains through proper VLAN design.
@@ -1908,7 +1908,7 @@ Repeated ARP requests without replies often indicate a connectivity or addressin
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper ARP operation supports:
 
@@ -1921,7 +1921,7 @@ Proper ARP operation supports:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - **Gratuitous ARP** announces a host's own IPv4-to-MAC mapping and is commonly used for cache updates, duplicate address detection, and HA failover.
 - **Proxy ARP** allows a router to answer ARP requests on behalf of another device but is generally avoided in modern enterprise designs unless specifically required.
@@ -1929,13 +1929,13 @@ Proper ARP operation supports:
 - Infrastructure changes such as VM migration, NIC replacement, or gateway failover often trigger Gratuitous ARP to minimize disruption.
 - Understanding ARP behavior across traditional, virtualized, and cloud environments is essential for effective enterprise operations and troubleshooting.
 
-# 09 - Address Resolution Protocol (ARP)
+## 09 - Address Resolution Protocol (ARP)
 
-# Part 4 — Packet Analysis, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, and Chapter Review
+## Part 4 — Packet Analysis, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, and Chapter Review
 
 ---
 
-# Overview
+## Overview
 
 In production environments, understanding ARP theory alone is not sufficient.
 
@@ -1953,7 +1953,7 @@ This section combines networking operations with enterprise security practices.
 
 ---
 
-# ARP Packet Analysis
+## ARP Packet Analysis
 
 An ARP packet contains the following information:
 
@@ -1971,7 +1971,7 @@ An ARP packet contains the following information:
 
 ---
 
-# Example ARP Request
+## Example ARP Request
 
 Suppose:
 
@@ -2014,7 +2014,7 @@ This frame is broadcast to every device in the VLAN.
 
 ---
 
-# Example ARP Reply
+## Example ARP Reply
 
 Host:
 
@@ -2036,7 +2036,7 @@ The reply is generally sent directly to the requesting host.
 
 ---
 
-# Packet Flow Example
+## Packet Flow Example
 
 ```
 Laptop
@@ -2072,7 +2072,7 @@ Normal Communication Begins
 
 ---
 
-# Wireshark Analysis
+## Wireshark Analysis
 
 Display filter:
 
@@ -2100,7 +2100,7 @@ is at
 
 ---
 
-# Indicators of Normal Behavior
+## Indicators of Normal Behavior
 
 Healthy networks usually show:
 
@@ -2112,7 +2112,7 @@ Healthy networks usually show:
 
 ---
 
-# Indicators of Suspicious Behavior
+## Indicators of Suspicious Behavior
 
 Potential warning signs include:
 
@@ -2127,7 +2127,7 @@ These indicators warrant further investigation.
 
 ---
 
-# Cisco IOS Verification
+## Cisco IOS Verification
 
 Display ARP table:
 
@@ -2163,7 +2163,7 @@ These commands help validate Layer 2 forwarding and ARP behavior.
 
 ---
 
-# Linux Verification
+## Linux Verification
 
 Display neighbor table:
 
@@ -2191,7 +2191,7 @@ tcpdump -i eth0 arp
 
 ---
 
-# Windows Verification
+## Windows Verification
 
 Display ARP cache:
 
@@ -2219,7 +2219,7 @@ ipconfig /all
 
 ---
 
-# Enterprise Troubleshooting Workflow
+## Enterprise Troubleshooting Workflow
 
 When a host cannot reach another device on the local network:
 
@@ -2271,13 +2271,13 @@ Working through the network stack methodically helps identify the root cause eff
 
 ---
 
-# Troubleshooting Scenario 1
+## Troubleshooting Scenario 1
 
-## Symptom
+### Symptom
 
 A workstation cannot communicate with its default gateway.
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -2296,9 +2296,9 @@ Possible causes:
 
 ---
 
-# Troubleshooting Scenario 2
+## Troubleshooting Scenario 2
 
-## Symptom
+### Symptom
 
 Users intermittently lose connectivity.
 
@@ -2319,9 +2319,9 @@ Useful actions:
 
 ---
 
-# Troubleshooting Scenario 3
+## Troubleshooting Scenario 3
 
-## Symptom
+### Symptom
 
 A newly deployed server is unreachable.
 
@@ -2336,7 +2336,7 @@ Verify:
 
 ---
 
-# Practical Lab 1 — Observe ARP
+## Practical Lab 1 — Observe ARP
 
 Topology:
 
@@ -2363,7 +2363,7 @@ Tasks:
 
 ---
 
-# Practical Lab 2 — Gateway Resolution
+## Practical Lab 2 — Gateway Resolution
 
 Tasks:
 
@@ -2374,7 +2374,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — Dynamic ARP Inspection
+## Practical Lab 3 — Dynamic ARP Inspection
 
 Requirements:
 
@@ -2392,7 +2392,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — Duplicate IP Detection
+## Practical Lab 4 — Duplicate IP Detection
 
 Tasks:
 
@@ -2404,7 +2404,7 @@ Tasks:
 
 ---
 
-# SOC Detection Engineering
+## SOC Detection Engineering
 
 SOC teams often monitor ARP activity to identify:
 
@@ -2419,7 +2419,7 @@ ARP telemetry is especially valuable within internal enterprise networks where t
 
 ---
 
-# SIEM Detection Ideas
+## SIEM Detection Ideas
 
 Example detection logic:
 
@@ -2465,7 +2465,7 @@ Correlation with DHCP logs, switch events, and endpoint telemetry helps reduce f
 
 ---
 
-# Zeek Detection
+## Zeek Detection
 
 Zeek can monitor ARP traffic and generate logs useful for:
 
@@ -2478,7 +2478,7 @@ Analysts can combine Zeek data with DHCP, DNS, and authentication logs for riche
 
 ---
 
-# Suricata Detection
+## Suricata Detection
 
 Suricata can inspect Layer 2 traffic (depending on deployment architecture) and help identify:
 
@@ -2490,7 +2490,7 @@ Alerts should be correlated with switch logs and endpoint events before concludi
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Enable Dynamic ARP Inspection where supported.
 - Enable DHCP Snooping.
@@ -2504,13 +2504,13 @@ Alerts should be correlated with switch logs and endpoint events before concludi
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A financial institution reports intermittent application failures.
 
-### Investigation
+#### Investigation
 
 Analysts discover:
 
@@ -2518,7 +2518,7 @@ Analysts discover:
 - Packet captures show unsolicited ARP Replies.
 - Switch logs indicate abnormal ARP activity on one access port.
 
-### Resolution
+#### Resolution
 
 - Disconnect the offending device.
 - Clear affected ARP caches where necessary.
@@ -2529,57 +2529,57 @@ Analysts discover:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is ARP?
+#### What is ARP?
 
 ARP (Address Resolution Protocol) maps an IPv4 address to a MAC address on a local Layer 2 network.
 
 ---
 
-### Why is ARP required?
+#### Why is ARP required?
 
 Ethernet forwards frames using MAC addresses, while applications typically communicate using IP addresses. ARP bridges that gap.
 
 ---
 
-### Is ARP routable?
+#### Is ARP routable?
 
 No. ARP operates only within a local Layer 2 broadcast domain and is not forwarded by routers.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is Gratuitous ARP?
+#### What is Gratuitous ARP?
 
 A Gratuitous ARP is a host announcing its own IP-to-MAC mapping. It is commonly used for duplicate address detection, cache updates, and High Availability failover.
 
 ---
 
-### What is Proxy ARP?
+#### What is Proxy ARP?
 
 Proxy ARP allows a router to respond to ARP requests on behalf of another device.
 
 ---
 
-### What is Dynamic ARP Inspection?
+#### What is Dynamic ARP Inspection?
 
 Dynamic ARP Inspection validates ARP packets against trusted IP-to-MAC bindings (typically learned through DHCP Snooping) to help prevent ARP spoofing.
 
 ---
 
-## Advanced
+### Advanced
 
-### Explain ARP spoofing.
+#### Explain ARP spoofing.
 
 ARP spoofing is an attack in which forged ARP replies convince devices to associate a legitimate IP address with the attacker's MAC address, potentially enabling traffic interception or denial of service.
 
 ---
 
-### How would you troubleshoot ARP issues?
+#### How would you troubleshoot ARP issues?
 
 A structured answer should include:
 
@@ -2594,7 +2594,7 @@ A structured answer should include:
 
 ---
 
-### How would you secure ARP in an enterprise?
+#### How would you secure ARP in an enterprise?
 
 A strong response should include:
 
@@ -2609,14 +2609,14 @@ A strong response should include:
 
 ---
 
-# References
+## References
 
-## RFCs
+### RFCs
 
 - RFC 826 — Address Resolution Protocol (ARP)
 - RFC 5227 — IPv4 Address Conflict Detection
 
-## Organizations
+### Organizations
 
 - IETF
 - IEEE
@@ -2625,13 +2625,13 @@ A strong response should include:
 
 ---
 
-# Summary
+## Summary
 
 ARP enables IPv4 communication over Ethernet by resolving IP addresses to MAC addresses within a local broadcast domain. Although simple, ARP is fundamental to enterprise networking and can become a target for attacks such as ARP spoofing. Understanding ARP operation, security controls, packet analysis, and troubleshooting techniques is essential for network operations and cybersecurity teams.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -2671,7 +2671,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`10-DHCP.md`**, will cover:
 

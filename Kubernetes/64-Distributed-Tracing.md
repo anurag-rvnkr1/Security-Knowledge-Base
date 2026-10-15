@@ -46,7 +46,7 @@ A distributed trace represents the complete journey of one request.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -115,7 +115,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Distributed Tracing?
+## What Is Distributed Tracing?
 
 Distributed tracing tracks an individual request across multiple services.
 
@@ -150,7 +150,7 @@ form a trace.
 
 ---
 
-# Why Distributed Tracing?
+## Why Distributed Tracing?
 
 Consider a request:
 
@@ -189,7 +189,7 @@ Now the likely bottleneck is much easier to identify.
 
 ---
 
-# Distributed Tracing vs Traditional Logging
+## Distributed Tracing vs Traditional Logging
 
 Traditional logs:
 
@@ -217,7 +217,7 @@ allowing events across services to be correlated.
 
 ---
 
-# Trace
+## Trace
 
 A trace represents one end-to-end operation.
 
@@ -239,7 +239,7 @@ Database Span
 
 ---
 
-# Span
+## Span
 
 A span represents a single operation.
 
@@ -265,7 +265,7 @@ Each span has a start time and end time.
 
 ---
 
-# Span Duration
+## Span Duration
 
 If:
 
@@ -287,7 +287,7 @@ Span duration is useful for identifying slow operations.
 
 ---
 
-# Parent Span
+## Parent Span
 
 A parent span represents the operation that initiated a child operation.
 
@@ -304,7 +304,7 @@ The HTTP span is the parent.
 
 ---
 
-# Child Span
+## Child Span
 
 A child span represents an operation performed within a parent operation.
 
@@ -320,7 +320,7 @@ The database query is a child span.
 
 ---
 
-# Trace Tree
+## Trace Tree
 
 A trace can be represented as a tree.
 
@@ -340,7 +340,7 @@ HTTP Request
 
 ---
 
-# Trace Graph
+## Trace Graph
 
 A trace graph represents relationships between operations.
 
@@ -359,7 +359,7 @@ This makes service dependencies easier to understand.
 
 ---
 
-# Trace ID
+## Trace ID
 
 A Trace ID identifies the complete trace.
 
@@ -373,7 +373,7 @@ All related spans belonging to the same trace share the same Trace ID.
 
 ---
 
-# Span ID
+## Span ID
 
 A Span ID identifies one individual span.
 
@@ -396,7 +396,7 @@ Trace ID
 
 ---
 
-# Trace Context
+## Trace Context
 
 Trace context contains information required to propagate tracing information between services.
 
@@ -416,7 +416,7 @@ Service C
 
 ---
 
-# Context Propagation
+## Context Propagation
 
 Context propagation is one of the most important concepts in distributed tracing.
 
@@ -450,7 +450,7 @@ The complete request can be reconstructed.
 
 ---
 
-# W3C Trace Context
+## W3C Trace Context
 
 OpenTelemetry commonly uses the W3C Trace Context standard.
 
@@ -463,7 +463,7 @@ tracestate
 
 ---
 
-# `traceparent`
+## `traceparent`
 
 The `traceparent` header carries the primary tracing context.
 
@@ -482,7 +482,7 @@ Example:
 
 ---
 
-# `tracestate`
+## `tracestate`
 
 `tracestate` carries additional vendor-specific tracing state.
 
@@ -494,7 +494,7 @@ traceparent
 
 ---
 
-# Baggage
+## Baggage
 
 Baggage allows application-defined key-value information to propagate across service boundaries.
 
@@ -519,7 +519,7 @@ into baggage.
 
 ---
 
-# Span Attributes
+## Span Attributes
 
 Attributes describe a span.
 
@@ -533,7 +533,7 @@ http.response.status_code = 200
 
 ---
 
-# Kubernetes Span Attributes
+## Kubernetes Span Attributes
 
 A span may contain Kubernetes-related metadata such as:
 
@@ -548,7 +548,7 @@ depending on the instrumentation and Collector configuration.
 
 ---
 
-# Span Events
+## Span Events
 
 Events represent significant moments inside a span.
 
@@ -566,7 +566,7 @@ Payment Completed
 
 ---
 
-# Span Links
+## Span Links
 
 Span links associate one span with another span without requiring a parent-child relationship.
 
@@ -582,7 +582,7 @@ Fan-Out
 
 ---
 
-# Span Status
+## Span Status
 
 A span can indicate whether an operation succeeded or encountered an error.
 
@@ -598,7 +598,7 @@ Use status appropriately rather than marking every unusual event as an error.
 
 ---
 
-# Span Kind
+## Span Kind
 
 OpenTelemetry defines span kinds such as:
 
@@ -614,7 +614,7 @@ These describe the role of a span in an interaction.
 
 ---
 
-# Internal Span
+## Internal Span
 
 An internal span represents an operation within an application.
 
@@ -626,7 +626,7 @@ CalculateOrderTotal
 
 ---
 
-# Server Span
+## Server Span
 
 A server span represents handling an incoming request.
 
@@ -640,7 +640,7 @@ GET /orders
 
 ---
 
-# Client Span
+## Client Span
 
 A client span represents an outgoing request.
 
@@ -654,7 +654,7 @@ Payment API
 
 ---
 
-# Producer Span
+## Producer Span
 
 A producer span represents sending a message.
 
@@ -668,7 +668,7 @@ Kafka
 
 ---
 
-# Consumer Span
+## Consumer Span
 
 A consumer span represents processing a received message.
 
@@ -682,7 +682,7 @@ Notification Service
 
 ---
 
-# HTTP Tracing
+## HTTP Tracing
 
 HTTP requests are commonly traced automatically by OpenTelemetry instrumentation.
 
@@ -709,7 +709,7 @@ Use the semantic conventions applicable to the instrumentation version.
 
 ---
 
-# HTTP Distributed Trace
+## HTTP Distributed Trace
 
 ```text
 Client
@@ -728,7 +728,7 @@ All services can participate in one trace.
 
 ---
 
-# Database Tracing
+## Database Tracing
 
 Database operations can be represented as child spans.
 
@@ -746,7 +746,7 @@ Avoid recording sensitive query parameters or secrets.
 
 ---
 
-# Database Trace Example
+## Database Trace Example
 
 ```text
 GET /checkout
@@ -762,7 +762,7 @@ GET /checkout
 
 ---
 
-# gRPC Tracing
+## gRPC Tracing
 
 gRPC calls can also participate in distributed traces.
 
@@ -784,7 +784,7 @@ Tracing context can propagate through supported instrumentation.
 
 ---
 
-# Message Queue Tracing
+## Message Queue Tracing
 
 Distributed systems often use:
 
@@ -810,7 +810,7 @@ Producer and consumer spans help connect asynchronous operations.
 
 ---
 
-# Asynchronous Tracing
+## Asynchronous Tracing
 
 Asynchronous systems are more complex because:
 
@@ -828,7 +828,7 @@ Trace context must be propagated through the message metadata where supported.
 
 ---
 
-# Fan-Out
+## Fan-Out
 
 One request creates multiple operations.
 
@@ -843,7 +843,7 @@ Tracing helps visualize parallel work.
 
 ---
 
-# Fan-In
+## Fan-In
 
 Multiple operations converge into one operation.
 
@@ -859,7 +859,7 @@ Span links can be useful in some asynchronous fan-in designs.
 
 ---
 
-# Critical Path
+## Critical Path
 
 The critical path is the sequence of operations that determines overall request latency.
 
@@ -879,7 +879,7 @@ Service C may dominate the critical path.
 
 ---
 
-# Parallel Operations
+## Parallel Operations
 
 Suppose:
 
@@ -907,7 +907,7 @@ Tracing makes this relationship visible.
 
 ---
 
-# Waterfall View
+## Waterfall View
 
 A waterfall visualization shows spans over time.
 
@@ -926,7 +926,7 @@ This makes latency bottlenecks easy to identify.
 
 ---
 
-# Service Dependency Map
+## Service Dependency Map
 
 Tracing can reveal service relationships.
 
@@ -945,7 +945,7 @@ DB Payment Inventory
 
 ---
 
-# Service Map
+## Service Map
 
 A service map answers:
 
@@ -957,7 +957,7 @@ This is extremely useful in microservice environments.
 
 ---
 
-# Trace-to-Logs Correlation
+## Trace-to-Logs Correlation
 
 A trace can be correlated with logs using:
 
@@ -980,7 +980,7 @@ Logs
 
 ---
 
-# Logs With Trace IDs
+## Logs With Trace IDs
 
 Example:
 
@@ -995,7 +995,7 @@ Now the log can be associated with the exact trace.
 
 ---
 
-# Metrics-to-Traces Correlation
+## Metrics-to-Traces Correlation
 
 Suppose:
 
@@ -1019,7 +1019,7 @@ Slow Span
 
 ---
 
-# Traces-to-Metrics Correlation
+## Traces-to-Metrics Correlation
 
 A trace can help identify:
 
@@ -1033,7 +1033,7 @@ which can then be correlated with service-level metrics.
 
 ---
 
-# Exemplars
+## Exemplars
 
 Exemplars connect metrics with specific trace examples.
 
@@ -1059,7 +1059,7 @@ Slow request
 
 ---
 
-# Why Exemplars Matter
+## Why Exemplars Matter
 
 Without exemplars:
 
@@ -1083,7 +1083,7 @@ This shortens troubleshooting time.
 
 ---
 
-# Sampling
+## Sampling
 
 Tracing can produce enormous amounts of data.
 
@@ -1099,7 +1099,7 @@ Sampling decides which traces to retain.
 
 ---
 
-# Head Sampling
+## Head Sampling
 
 Head sampling makes the decision early.
 
@@ -1127,7 +1127,7 @@ The sampler may not know whether the request later fails.
 
 ---
 
-# Tail Sampling
+## Tail Sampling
 
 Tail sampling makes the decision after seeing more of the trace.
 
@@ -1151,7 +1151,7 @@ Keep Critical Services
 
 ---
 
-# Sampling Strategy
+## Sampling Strategy
 
 A practical strategy may be:
 
@@ -1165,7 +1165,7 @@ The actual percentages should be determined from workload, cost, and troubleshoo
 
 ---
 
-# Sampling Important Traces
+## Sampling Important Traces
 
 Consider retaining traces when:
 
@@ -1179,7 +1179,7 @@ Security Investigation
 
 ---
 
-# Trace Storage
+## Trace Storage
 
 Tracing backends may store:
 
@@ -1202,7 +1202,7 @@ Zipkin
 
 ---
 
-# Tempo
+## Tempo
 
 Grafana Tempo is a distributed tracing backend designed for storing and querying traces.
 
@@ -1222,7 +1222,7 @@ Grafana
 
 ---
 
-# Jaeger
+## Jaeger
 
 Jaeger is an open-source distributed tracing system.
 
@@ -1240,7 +1240,7 @@ Jaeger
 
 ---
 
-# Zipkin
+## Zipkin
 
 Zipkin is another distributed tracing system.
 
@@ -1254,7 +1254,7 @@ Trace Visualization
 
 ---
 
-# OpenTelemetry + Tracing
+## OpenTelemetry + Tracing
 
 A common modern architecture:
 
@@ -1279,7 +1279,7 @@ Grafana / UI
 
 ---
 
-# Kubernetes Distributed Tracing
+## Kubernetes Distributed Tracing
 
 A Kubernetes application may contain:
 
@@ -1295,7 +1295,7 @@ Distributed tracing can connect all components.
 
 ---
 
-# Kubernetes Trace Example
+## Kubernetes Trace Example
 
 ```text
 User
@@ -1317,7 +1317,7 @@ A single trace can represent this complete path.
 
 ---
 
-# Kubernetes Metadata
+## Kubernetes Metadata
 
 Tracing can be enriched with:
 
@@ -1345,7 +1345,7 @@ Node
 
 ---
 
-# Kubernetes Incident Investigation
+## Kubernetes Incident Investigation
 
 Suppose:
 
@@ -1377,7 +1377,7 @@ Query
 
 ---
 
-# Trace Security
+## Trace Security
 
 Traces may contain:
 
@@ -1393,7 +1393,7 @@ Treat trace data as sensitive operational data.
 
 ---
 
-# PII Protection
+## PII Protection
 
 Avoid storing unnecessary:
 
@@ -1409,7 +1409,7 @@ Use filtering and redaction where appropriate.
 
 ---
 
-# Authentication Headers
+## Authentication Headers
 
 Never record:
 
@@ -1423,7 +1423,7 @@ If instrumentation captures sensitive headers, configure appropriate sanitizatio
 
 ---
 
-# Query Parameters
+## Query Parameters
 
 Be careful with:
 
@@ -1437,7 +1437,7 @@ Filter or sanitize sensitive parameters.
 
 ---
 
-# Trace Retention
+## Trace Retention
 
 Trace data can grow rapidly.
 
@@ -1455,7 +1455,7 @@ Do not automatically retain every trace forever.
 
 ---
 
-# Trace Cardinality
+## Trace Cardinality
 
 High-cardinality attributes can increase backend cost and query complexity.
 
@@ -1471,7 +1471,7 @@ especially when used as dimensions in systems where high cardinality creates ope
 
 ---
 
-# Performance Overhead
+## Performance Overhead
 
 Tracing introduces overhead:
 
@@ -1486,7 +1486,7 @@ Automatic instrumentation should be evaluated for production impact.
 
 ---
 
-# Reducing Trace Overhead
+## Reducing Trace Overhead
 
 Use:
 
@@ -1500,7 +1500,7 @@ Selective Instrumentation
 
 ---
 
-# Production Architecture
+## Production Architecture
 
 A production Kubernetes tracing architecture can look like:
 
@@ -1533,7 +1533,7 @@ A production Kubernetes tracing architecture can look like:
 
 ---
 
-# High Availability
+## High Availability
 
 Tracing infrastructure should avoid a single point of failure.
 
@@ -1552,7 +1552,7 @@ Trace Backend
 
 ---
 
-# Collector Scaling
+## Collector Scaling
 
 Scale Collectors based on:
 
@@ -1567,7 +1567,7 @@ Export Latency
 
 ---
 
-# Backend Scaling
+## Backend Scaling
 
 Trace backend scaling depends on:
 
@@ -1581,7 +1581,7 @@ Replication
 
 ---
 
-# Sampling Architecture
+## Sampling Architecture
 
 A scalable architecture can use:
 
@@ -1599,7 +1599,7 @@ This centralizes sampling decisions.
 
 ---
 
-# Trace Pipeline
+## Trace Pipeline
 
 A typical pipeline:
 
@@ -1627,7 +1627,7 @@ Trace Backend
 
 ---
 
-# Distributed Tracing and Incident Response
+## Distributed Tracing and Incident Response
 
 During an incident:
 
@@ -1651,7 +1651,7 @@ This is one of the most powerful observability workflows.
 
 ---
 
-# Distributed Tracing and SRE
+## Distributed Tracing and SRE
 
 Tracing helps SRE teams investigate:
 
@@ -1666,7 +1666,7 @@ Database Bottlenecks
 
 ---
 
-# Distributed Tracing and SOC
+## Distributed Tracing and SOC
 
 Tracing can also support security investigations.
 
@@ -1688,7 +1688,7 @@ This can help reconstruct request paths during an authorized investigation.
 
 ---
 
-# Trace-Based Security Investigation
+## Trace-Based Security Investigation
 
 Potential workflow:
 
@@ -1710,71 +1710,71 @@ Tracing should complement, not replace, security telemetry and audit logs.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. No Context Propagation
+### 1. No Context Propagation
 
 Services produce disconnected traces.
 
 ---
 
-## 2. Sampling Everything
+### 2. Sampling Everything
 
 This can create unnecessary storage and cost.
 
 ---
 
-## 3. Sampling Too Aggressively
+### 3. Sampling Too Aggressively
 
 Important error traces may be lost.
 
 ---
 
-## 4. Recording Sensitive Data
+### 4. Recording Sensitive Data
 
 Traces can accidentally expose secrets or personal data.
 
 ---
 
-## 5. High-Cardinality Attributes
+### 5. High-Cardinality Attributes
 
 Too many unique dimensions can make systems expensive and difficult to query.
 
 ---
 
-## 6. No Trace-to-Log Correlation
+### 6. No Trace-to-Log Correlation
 
 Engineers lose an important troubleshooting path.
 
 ---
 
-## 7. No Metrics Correlation
+### 7. No Metrics Correlation
 
 Tracing should work with metrics rather than replace them.
 
 ---
 
-## 8. No Collector HA
+### 8. No Collector HA
 
 A single Collector can become a failure point.
 
 ---
 
-## 9. Ignoring Async Workflows
+### 9. Ignoring Async Workflows
 
 Message queues require careful context propagation.
 
 ---
 
-## 10. No Retention Strategy
+### 10. No Retention Strategy
 
 Trace storage can grow rapidly.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## No Trace Appears
+### No Trace Appears
 
 Check:
 
@@ -1791,7 +1791,7 @@ Sampling
 
 ---
 
-# Trace Appears Incomplete
+## Trace Appears Incomplete
 
 Check:
 
@@ -1805,7 +1805,7 @@ Async Context
 
 ---
 
-# Services Have Separate Traces
+## Services Have Separate Traces
 
 Possible causes:
 
@@ -1818,7 +1818,7 @@ Headers Removed
 
 ---
 
-# Trace Is Missing Important Spans
+## Trace Is Missing Important Spans
 
 Check:
 
@@ -1832,7 +1832,7 @@ Backend
 
 ---
 
-# Trace Shows Wrong Service
+## Trace Shows Wrong Service
 
 Check:
 
@@ -1844,7 +1844,7 @@ Instrumentation Configuration
 
 ---
 
-# High Trace Volume
+## High Trace Volume
 
 Investigate:
 
@@ -1858,7 +1858,7 @@ Repeated Requests
 
 ---
 
-# Slow Trace Queries
+## Slow Trace Queries
 
 Possible causes:
 
@@ -1871,7 +1871,7 @@ Backend Resource Constraints
 
 ---
 
-# Trace Backend Unavailable
+## Trace Backend Unavailable
 
 Check:
 
@@ -1888,9 +1888,9 @@ Backend Health
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Standardize Service Names
+#### 1. Standardize Service Names
 
 Use consistent:
 
@@ -1902,19 +1902,19 @@ values.
 
 ---
 
-### 2. Propagate Context Everywhere
+#### 2. Propagate Context Everywhere
 
 Ensure supported service-to-service communication carries trace context.
 
 ---
 
-### 3. Use Semantic Conventions
+#### 3. Use Semantic Conventions
 
 Standardized attributes make traces easier to analyze.
 
 ---
 
-### 4. Correlate Metrics, Logs, and Traces
+#### 4. Correlate Metrics, Logs, and Traces
 
 Build:
 
@@ -1930,13 +1930,13 @@ connections.
 
 ---
 
-### 5. Use Sampling
+#### 5. Use Sampling
 
 Retain important traces while controlling cost.
 
 ---
 
-### 6. Protect Sensitive Data
+#### 6. Protect Sensitive Data
 
 Redact:
 
@@ -1949,7 +1949,7 @@ Secrets
 
 ---
 
-### 7. Monitor Trace Infrastructure
+#### 7. Monitor Trace Infrastructure
 
 Monitor:
 
@@ -1964,13 +1964,13 @@ Dropped Spans
 
 ---
 
-### 8. Use HA
+#### 8. Use HA
 
 Avoid a single Collector or backend instance becoming a critical failure point.
 
 ---
 
-### 9. Instrument Critical Paths
+#### 9. Instrument Critical Paths
 
 Prioritize:
 
@@ -1984,7 +1984,7 @@ External APIs
 
 ---
 
-### 10. Document Trace Operations
+#### 10. Document Trace Operations
 
 Define:
 
@@ -1997,7 +1997,7 @@ How to Troubleshoot
 
 ---
 
-# Hands-on Lab 1 – Basic Trace
+## Hands-on Lab 1 – Basic Trace
 
 Create a simple HTTP application.
 
@@ -2020,7 +2020,7 @@ Status
 
 ---
 
-# Hands-on Lab 2 – Parent and Child Spans
+## Hands-on Lab 2 – Parent and Child Spans
 
 Create:
 
@@ -2036,7 +2036,7 @@ Verify the span hierarchy.
 
 ---
 
-# Hands-on Lab 3 – Microservice Trace
+## Hands-on Lab 3 – Microservice Trace
 
 Deploy:
 
@@ -2062,7 +2062,7 @@ appears as one distributed trace.
 
 ---
 
-# Hands-on Lab 4 – Context Propagation
+## Hands-on Lab 4 – Context Propagation
 
 Inspect:
 
@@ -2076,7 +2076,7 @@ Verify that the same Trace ID is propagated.
 
 ---
 
-# Hands-on Lab 5 – HTTP Tracing
+## Hands-on Lab 5 – HTTP Tracing
 
 Generate:
 
@@ -2100,7 +2100,7 @@ Service
 
 ---
 
-# Hands-on Lab 6 – Database Tracing
+## Hands-on Lab 6 – Database Tracing
 
 Create:
 
@@ -2122,7 +2122,7 @@ Parent Span
 
 ---
 
-# Hands-on Lab 7 – gRPC Tracing
+## Hands-on Lab 7 – gRPC Tracing
 
 Create:
 
@@ -2138,7 +2138,7 @@ Verify distributed trace propagation.
 
 ---
 
-# Hands-on Lab 8 – Message Queue Tracing
+## Hands-on Lab 8 – Message Queue Tracing
 
 Create:
 
@@ -2154,7 +2154,7 @@ Propagate trace context through the message.
 
 ---
 
-# Hands-on Lab 9 – Trace-to-Log Correlation
+## Hands-on Lab 9 – Trace-to-Log Correlation
 
 Configure application logs with:
 
@@ -2167,7 +2167,7 @@ Find logs from a specific trace.
 
 ---
 
-# Hands-on Lab 10 – Metrics-to-Traces
+## Hands-on Lab 10 – Metrics-to-Traces
 
 Create:
 
@@ -2189,7 +2189,7 @@ Trace
 
 ---
 
-# Hands-on Lab 11 – Kubernetes Metadata
+## Hands-on Lab 11 – Kubernetes Metadata
 
 Deploy the application in Kubernetes.
 
@@ -2207,7 +2207,7 @@ metadata to telemetry where supported.
 
 ---
 
-# Hands-on Lab 12 – Sampling
+## Hands-on Lab 12 – Sampling
 
 Generate:
 
@@ -2227,7 +2227,7 @@ Stored Traces
 
 ---
 
-# Hands-on Lab 13 – Tail Sampling
+## Hands-on Lab 13 – Tail Sampling
 
 Configure a test policy:
 
@@ -2241,7 +2241,7 @@ Verify the result.
 
 ---
 
-# Hands-on Lab 14 – Slow Database
+## Hands-on Lab 14 – Slow Database
 
 Create an intentionally slow test query in a disposable environment.
 
@@ -2259,7 +2259,7 @@ Identify the database as the bottleneck.
 
 ---
 
-# Hands-on Lab 15 – Error Trace
+## Hands-on Lab 15 – Error Trace
 
 Generate an application error.
 
@@ -2274,7 +2274,7 @@ Logs
 
 ---
 
-# Hands-on Lab 16 – Fan-Out
+## Hands-on Lab 16 – Fan-Out
 
 Create:
 
@@ -2291,7 +2291,7 @@ Observe parallel spans.
 
 ---
 
-# Hands-on Lab 17 – Trace Backend
+## Hands-on Lab 17 – Trace Backend
 
 Deploy:
 
@@ -2305,7 +2305,7 @@ Send traces to the backend.
 
 ---
 
-# Hands-on Lab 18 – Collector HA
+## Hands-on Lab 18 – Collector HA
 
 Deploy multiple Collector replicas.
 
@@ -2315,7 +2315,7 @@ Verify trace ingestion continues according to your architecture.
 
 ---
 
-# Hands-on Lab 19 – Sensitive Data Filtering
+## Hands-on Lab 19 – Sensitive Data Filtering
 
 Generate a fake:
 
@@ -2329,7 +2329,7 @@ Verify it does not appear in the stored trace.
 
 ---
 
-# Hands-on Lab 20 – End-to-End Incident
+## Hands-on Lab 20 – End-to-End Incident
 
 Simulate:
 
@@ -2361,9 +2361,9 @@ Root Cause
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Distributed Tracing
+### Distributed Tracing
 
 ```text
 Tracks a request across distributed services
@@ -2371,7 +2371,7 @@ Tracks a request across distributed services
 
 ---
 
-## Trace
+### Trace
 
 ```text
 Complete distributed operation
@@ -2379,7 +2379,7 @@ Complete distributed operation
 
 ---
 
-## Span
+### Span
 
 ```text
 Individual operation inside a trace
@@ -2387,7 +2387,7 @@ Individual operation inside a trace
 
 ---
 
-## Trace ID
+### Trace ID
 
 ```text
 Identifies the complete trace
@@ -2395,7 +2395,7 @@ Identifies the complete trace
 
 ---
 
-## Span ID
+### Span ID
 
 ```text
 Identifies one span
@@ -2403,7 +2403,7 @@ Identifies one span
 
 ---
 
-## Parent Span
+### Parent Span
 
 ```text
 Span that initiated another operation
@@ -2411,7 +2411,7 @@ Span that initiated another operation
 
 ---
 
-## Child Span
+### Child Span
 
 ```text
 Operation performed within a parent span
@@ -2419,7 +2419,7 @@ Operation performed within a parent span
 
 ---
 
-## Context Propagation
+### Context Propagation
 
 ```text
 Transfers trace context between services
@@ -2427,7 +2427,7 @@ Transfers trace context between services
 
 ---
 
-## `traceparent`
+### `traceparent`
 
 ```text
 W3C header carrying trace context
@@ -2435,7 +2435,7 @@ W3C header carrying trace context
 
 ---
 
-## `tracestate`
+### `tracestate`
 
 ```text
 Additional tracing state
@@ -2443,7 +2443,7 @@ Additional tracing state
 
 ---
 
-## Baggage
+### Baggage
 
 ```text
 Application-defined key-value context propagated across services
@@ -2451,7 +2451,7 @@ Application-defined key-value context propagated across services
 
 ---
 
-## Span Attribute
+### Span Attribute
 
 ```text
 Structured metadata attached to a span
@@ -2459,7 +2459,7 @@ Structured metadata attached to a span
 
 ---
 
-## Span Event
+### Span Event
 
 ```text
 Timestamped event inside a span
@@ -2467,7 +2467,7 @@ Timestamped event inside a span
 
 ---
 
-## Span Link
+### Span Link
 
 ```text
 Relationship between spans without normal parent-child hierarchy
@@ -2475,7 +2475,7 @@ Relationship between spans without normal parent-child hierarchy
 
 ---
 
-## Sampling
+### Sampling
 
 ```text
 Selecting which traces to retain
@@ -2483,7 +2483,7 @@ Selecting which traces to retain
 
 ---
 
-## Head Sampling
+### Head Sampling
 
 ```text
 Sampling decision made early
@@ -2491,7 +2491,7 @@ Sampling decision made early
 
 ---
 
-## Tail Sampling
+### Tail Sampling
 
 ```text
 Sampling decision made after more trace data is available
@@ -2499,7 +2499,7 @@ Sampling decision made after more trace data is available
 
 ---
 
-## Service Map
+### Service Map
 
 ```text
 Shows service-to-service relationships
@@ -2507,7 +2507,7 @@ Shows service-to-service relationships
 
 ---
 
-## Critical Path
+### Critical Path
 
 ```text
 Operations that determine overall request latency
@@ -2515,7 +2515,7 @@ Operations that determine overall request latency
 
 ---
 
-## Exemplar
+### Exemplar
 
 ```text
 Connects a metric measurement to a representative trace
@@ -2523,7 +2523,7 @@ Connects a metric measurement to a representative trace
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check tracing namespace:
 
@@ -2573,9 +2573,9 @@ kubectl describe deployment \
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is distributed tracing?
 - Why is distributed tracing required?
@@ -2596,7 +2596,7 @@ kubectl describe deployment \
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does distributed tracing work across microservices?
 - How does OpenTelemetry propagate trace context?
@@ -2621,7 +2621,7 @@ kubectl describe deployment \
 
 ---
 
-## Advanced
+### Advanced
 
 - Design distributed tracing for a large Kubernetes environment.
 - Explain end-to-end trace propagation across microservices.
@@ -2641,13 +2641,13 @@ kubectl describe deployment \
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What is distributed tracing?
 
-### Answer
+#### Answer
 
 Distributed tracing is an observability technique that follows an individual request across multiple services and infrastructure components.
 
@@ -2667,13 +2667,13 @@ Together these operations form one distributed trace.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > What is the difference between a trace and a span?
 
-### Answer
+#### Answer
 
 A trace represents the complete end-to-end operation.
 
@@ -2689,13 +2689,13 @@ Trace
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > How does tracing work between two microservices?
 
-### Answer
+#### Answer
 
 The first service creates a span and propagates trace context through the request.
 
@@ -2711,13 +2711,13 @@ Service B extracts the context and creates a child span belonging to the same tr
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What is the purpose of `traceparent`?
 
-### Answer
+#### Answer
 
 `traceparent` is a W3C Trace Context HTTP header used to propagate tracing information between services.
 
@@ -2733,13 +2733,13 @@ This allows distributed services to connect their spans into one trace.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > A request takes 10 seconds. How would distributed tracing help?
 
-### Answer
+#### Answer
 
 Open the trace and inspect the waterfall:
 
@@ -2754,13 +2754,13 @@ The trace immediately indicates that the database operation is dominating latenc
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > What is the difference between head and tail sampling?
 
-### Answer
+#### Answer
 
 Head sampling decides whether to retain a trace near the beginning:
 
@@ -2792,13 +2792,13 @@ Important Services
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How do you correlate logs with traces?
 
-### Answer
+#### Answer
 
 Include:
 
@@ -2823,13 +2823,13 @@ This allows engineers to move from a trace to detailed application logs.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > What are exemplars?
 
-### Answer
+#### Answer
 
 Exemplars associate a metric measurement with a representative trace.
 
@@ -2849,13 +2849,13 @@ They make it easier to move from aggregated metrics to individual requests.
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How would you trace Kafka-based asynchronous communication?
 
-### Answer
+#### Answer
 
 Use producer and consumer spans and propagate trace context through message metadata.
 
@@ -2871,13 +2871,13 @@ For asynchronous relationships where parent-child relationships are not sufficie
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design distributed tracing for Kubernetes.
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2914,7 +2914,7 @@ Trace-to-Log Correlation
 
 ---
 
-# Production Distributed Tracing Checklist
+## Production Distributed Tracing Checklist
 
 ```text
 ☑ OpenTelemetry instrumentation
@@ -2942,7 +2942,7 @@ Trace-to-Log Correlation
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Distributed tracing provides visibility into the complete journey of a request across distributed systems.
 
@@ -3043,9 +3043,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 65 – Cluster Administration
+## Chapter 65 – Cluster Administration
 
 Topics will include:
 

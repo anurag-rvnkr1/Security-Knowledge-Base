@@ -1,12 +1,12 @@
 # 53-Bot-Protection.md
 
-# Part 1 — Introduction to Bot Protection, Automated Traffic Management, Enterprise Defense, and Operational Security
+## Part 1 — Introduction to Bot Protection, Automated Traffic Management, Enterprise Defense, and Operational Security
 
 > **"Bot Protection is a defensive security capability that identifies, classifies, monitors, and manages automated traffic to protect web applications, APIs, and digital services while allowing legitimate automated clients to operate."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Bot Protection?
+## What is Bot Protection?
 
 Bot Protection is a collection of defensive technologies, policies, and operational processes used to distinguish legitimate automated traffic from unwanted or suspicious automation.
 
@@ -48,7 +48,7 @@ Bot protection aims to preserve application availability, protect business funct
 
 ---
 
-# Why Organizations Deploy Bot Protection
+## Why Organizations Deploy Bot Protection
 
 Modern Internet-facing applications receive requests from both human users and automated systems.
 
@@ -64,7 +64,7 @@ Organizations deploy bot protection to:
 
 ---
 
-# Human and Automated Traffic
+## Human and Automated Traffic
 
 ```
 Incoming Traffic
@@ -90,7 +90,7 @@ Many organizations rely on legitimate automation for normal business operations.
 
 ---
 
-# Legitimate Bots
+## Legitimate Bots
 
 Examples of beneficial automated clients include:
 
@@ -116,7 +116,7 @@ These systems provide important operational and business functions.
 
 ---
 
-# Unwanted Automated Traffic (Conceptual)
+## Unwanted Automated Traffic (Conceptual)
 
 Some automated traffic may create operational challenges.
 
@@ -144,7 +144,7 @@ Bot protection policies should focus on identifying abnormal behavior while mini
 
 ---
 
-# Position of Bot Protection
+## Position of Bot Protection
 
 ```
 Internet
@@ -174,7 +174,7 @@ Bot protection commonly operates alongside other defensive controls.
 
 ---
 
-# High-Level Request Flow
+## High-Level Request Flow
 
 ```
 Incoming Request
@@ -200,7 +200,7 @@ Each request is evaluated according to organizational policies before reaching b
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 External Clients
@@ -218,7 +218,7 @@ Bot protection helps strengthen the external security boundary of Internet-facin
 
 ---
 
-# Enterprise Bot Protection Architecture
+## Enterprise Bot Protection Architecture
 
 ```
                   Internet
@@ -260,7 +260,7 @@ Bot protection integrates with multiple layers of enterprise infrastructure.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Authentication
@@ -294,7 +294,7 @@ Bot protection complements—not replaces—other security controls.
 
 ---
 
-# Responsibilities of Bot Protection
+## Responsibilities of Bot Protection
 
 Bot protection commonly provides:
 
@@ -310,7 +310,7 @@ Secure application development remains essential.
 
 ---
 
-# Components of a Bot Protection Platform
+## Components of a Bot Protection Platform
 
 ```
 Bot Protection
@@ -336,7 +336,7 @@ Each component contributes to effective traffic management.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail company protects its customer portal and APIs using centralized bot protection.
 
@@ -364,7 +364,7 @@ Security teams monitor traffic behavior, classify automated clients, and continu
 
 ---
 
-# Benefits of Bot Protection
+## Benefits of Bot Protection
 
 ```
 Business Benefits
@@ -388,7 +388,7 @@ Business Benefits
 
 ---
 
-# Relationship with Other Security Controls
+## Relationship with Other Security Controls
 
 ```
 Network Firewall
@@ -418,7 +418,7 @@ Each control addresses a different aspect of enterprise security and availabilit
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise architecture showing where bot protection is deployed.
 2. Identify trusted and untrusted traffic sources.
@@ -430,7 +430,7 @@ Each control addresses a different aspect of enterprise security and availabilit
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Bot Protection?
 2. Why do organizations deploy bot protection?
@@ -445,7 +445,7 @@ Each control addresses a different aspect of enterprise security and availabilit
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Deploy bot protection in front of Internet-facing services.
 - Differentiate between legitimate and unwanted automation.
@@ -458,7 +458,7 @@ Each control addresses a different aspect of enterprise security and availabilit
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating every automated request as malicious.
 - Ignoring legitimate business automation.
@@ -470,7 +470,7 @@ Each control addresses a different aspect of enterprise security and availabilit
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Bot Protection is a defensive capability for managing automated traffic.
 - Legitimate and unwanted automation should be distinguished through policy and analysis.
@@ -478,15 +478,15 @@ Each control addresses a different aspect of enterprise security and availabilit
 - It complements authentication, rate limiting, WAFs, and secure application development.
 - Continuous monitoring, governance, and policy refinement improve long-term effectiveness.
 
-# 53-Bot-Protection.md
+## 53-Bot-Protection.md
 
-# Part 2 — Bot Detection, Client Classification, Policy Management, Logging, Monitoring, and Enterprise Operations
+## Part 2 — Bot Detection, Client Classification, Policy Management, Logging, Monitoring, and Enterprise Operations
 
 > **"Effective Bot Protection relies on accurate client classification, well-defined security policies, continuous monitoring, and operational governance to distinguish legitimate automation from suspicious or excessive automated activity."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -503,7 +503,7 @@ After completing this part, you will understand:
 
 ---
 
-# Bot Detection Workflow
+## Bot Detection Workflow
 
 Every incoming request should follow a structured evaluation process.
 
@@ -535,7 +535,7 @@ Consistent processing helps ensure predictable operational behavior.
 
 ---
 
-# Request Lifecycle
+## Request Lifecycle
 
 ```
 Client
@@ -565,7 +565,7 @@ Requests are analyzed before application resources are consumed.
 
 ---
 
-# Client Classification
+## Client Classification
 
 Bot protection platforms classify clients according to organizational policies.
 
@@ -591,7 +591,7 @@ Classification enables appropriate handling of different traffic sources.
 
 ---
 
-# Bot Identification Factors
+## Bot Identification Factors
 
 Bot protection systems may evaluate multiple characteristics.
 
@@ -621,7 +621,7 @@ No single characteristic should be relied upon in isolation.
 
 ---
 
-# Behavioral Analysis (Conceptual)
+## Behavioral Analysis (Conceptual)
 
 Rather than focusing on individual requests, organizations often evaluate traffic behavior over time.
 
@@ -649,7 +649,7 @@ Behavioral analysis helps identify unusual traffic patterns while reducing unnec
 
 ---
 
-# Policy Categories
+## Policy Categories
 
 ```
 Bot Protection Policies
@@ -675,7 +675,7 @@ Policies should align with business requirements and service objectives.
 
 ---
 
-# Policy Evaluation Workflow
+## Policy Evaluation Workflow
 
 ```
 Incoming Request
@@ -707,7 +707,7 @@ Organizations should review policies regularly to maintain effectiveness.
 
 ---
 
-# Legitimate Automation Management
+## Legitimate Automation Management
 
 Some automated clients perform essential business functions.
 
@@ -733,7 +733,7 @@ Approved automation should be documented and periodically reviewed.
 
 ---
 
-# Operational Decision Flow
+## Operational Decision Flow
 
 ```
 Traffic Received
@@ -759,7 +759,7 @@ Operational decisions should be based on documented organizational policies.
 
 ---
 
-# Logging
+## Logging
 
 Bot protection events should be centrally recorded.
 
@@ -787,7 +787,7 @@ Logs support investigations, operational visibility, and compliance activities.
 
 ---
 
-# Common Log Events
+## Common Log Events
 
 | Event | Purpose |
 |--------|----------|
@@ -803,7 +803,7 @@ Sensitive information should be protected according to organizational logging po
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Bot Protection
@@ -829,7 +829,7 @@ Continuous monitoring enables security teams to understand traffic behavior and 
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -844,7 +844,7 @@ Continuous monitoring enables security teams to understand traffic behavior and 
 
 ---
 
-# High Availability
+## High Availability
 
 Enterprise deployments should eliminate single points of failure.
 
@@ -876,7 +876,7 @@ High availability improves operational resilience.
 
 ---
 
-# Scalability
+## Scalability
 
 Large organizations require scalable bot protection architectures.
 
@@ -904,7 +904,7 @@ Distributed deployments support growing traffic volumes.
 
 ---
 
-# Enterprise Operations
+## Enterprise Operations
 
 Operational teams commonly manage:
 
@@ -934,7 +934,7 @@ Operational governance supports long-term effectiveness.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational airline protects its booking platform, customer APIs, and loyalty services using centrally managed bot protection.
 
@@ -958,7 +958,7 @@ Operations teams continuously analyze traffic trends, review client classificati
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -971,7 +971,7 @@ Operations teams continuously analyze traffic trends, review client classificati
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the request evaluation workflow for bot protection.
 2. Classify different categories of automated clients.
@@ -983,7 +983,7 @@ Operations teams continuously analyze traffic trends, review client classificati
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is client classification?
 2. Why shouldn't all bots be treated as malicious?
@@ -998,7 +998,7 @@ Operations teams continuously analyze traffic trends, review client classificati
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain separate policies for different client categories.
 - Continuously review automated traffic patterns.
@@ -1011,7 +1011,7 @@ Operations teams continuously analyze traffic trends, review client classificati
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating every automated client as suspicious.
 - Ignoring legitimate operational automation.
@@ -1023,7 +1023,7 @@ Operations teams continuously analyze traffic trends, review client classificati
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective bot protection relies on structured client classification and policy evaluation.
 - Behavioral analysis provides additional operational context.
@@ -1031,15 +1031,15 @@ Operations teams continuously analyze traffic trends, review client classificati
 - High availability and scalability are essential for enterprise environments.
 - Continuous governance and policy refinement improve long-term operational effectiveness.
 
-# 53-Bot-Protection.md
+## 53-Bot-Protection.md
 
-# Part 3 — Enterprise Governance, Threat Modeling, Secure SDLC, DevSecOps, Logging, Monitoring, and Operational Excellence
+## Part 3 — Enterprise Governance, Threat Modeling, Secure SDLC, DevSecOps, Logging, Monitoring, and Operational Excellence
 
 > **"Bot Protection becomes significantly more effective when integrated into enterprise governance, Secure SDLC, DevSecOps practices, continuous monitoring, and risk-based operational processes."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1056,7 +1056,7 @@ After completing this part, you will understand:
 
 ---
 
-# Reviewing Bot Protection Architecture
+## Reviewing Bot Protection Architecture
 
 Organizations should periodically review how bot protection is deployed across applications, APIs, and Internet-facing services.
 
@@ -1084,7 +1084,7 @@ Architecture reviews should occur whenever major infrastructure or application c
 
 ---
 
-# Bot Protection Security Review
+## Bot Protection Security Review
 
 Every request processing stage should be evaluated.
 
@@ -1120,7 +1120,7 @@ Review areas include:
 
 ---
 
-# Protected Service Inventory
+## Protected Service Inventory
 
 Maintain an inventory of all protected services.
 
@@ -1150,7 +1150,7 @@ An accurate inventory simplifies governance and operational planning.
 
 ---
 
-# Infrastructure Component Inventory
+## Infrastructure Component Inventory
 
 Document all infrastructure participating in bot protection.
 
@@ -1180,7 +1180,7 @@ Comprehensive documentation supports maintenance and incident response.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Bot protection policies should remain consistent across environments.
 
@@ -1204,7 +1204,7 @@ Configuration drift can produce inconsistent traffic handling and operational ri
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling helps identify where automated traffic enters enterprise systems and where protection should be applied.
 
@@ -1232,7 +1232,7 @@ The objective is to understand request flow, trust boundaries, and policy enforc
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 Security teams should periodically review:
 
@@ -1263,7 +1263,7 @@ Continuous Review
 
 ---
 
-# Policy Governance
+## Policy Governance
 
 Bot protection policies should follow structured governance.
 
@@ -1295,7 +1295,7 @@ Every policy change should be documented and traceable.
 
 ---
 
-# Policy Lifecycle
+## Policy Lifecycle
 
 ```
 Requirements
@@ -1329,7 +1329,7 @@ Policy management is a continuous operational process.
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 Bot protection should be considered throughout software development.
 
@@ -1365,7 +1365,7 @@ Development and security teams should collaborate during every phase.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -1399,7 +1399,7 @@ Automation improves deployment consistency and operational reliability.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Organizations should continuously evaluate traffic growth and infrastructure capacity.
 
@@ -1427,7 +1427,7 @@ Capacity planning supports long-term service availability.
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Bot protection events should be centrally recorded.
 
@@ -1455,7 +1455,7 @@ Logs support operational analysis, investigations, compliance, and auditing.
 
 ---
 
-# Important Log Events
+## Important Log Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1472,7 +1472,7 @@ Sensitive information should never be unnecessarily stored in logs.
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Bot Protection
@@ -1498,7 +1498,7 @@ Continuous monitoring improves visibility into traffic behavior and service heal
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1513,7 +1513,7 @@ Continuous monitoring improves visibility into traffic behavior and service heal
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                    Internet
@@ -1555,7 +1555,7 @@ Bot protection integrates with enterprise security infrastructure while providin
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial services organization protects online banking, customer APIs, and digital payment services using centrally managed bot protection.
 
@@ -1583,7 +1583,7 @@ Operations teams continuously review traffic classifications, monitor dashboards
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Protected Service Inventory Updated
@@ -1609,7 +1609,7 @@ Operations teams continuously review traffic classifications, monitor dashboards
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1622,7 +1622,7 @@ Operations teams continuously review traffic classifications, monitor dashboards
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Document every application protected by bot protection.
 2. Draw the complete request processing architecture.
@@ -1634,7 +1634,7 @@ Operations teams continuously review traffic classifications, monitor dashboards
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should bot protection architecture be reviewed regularly?
 2. What belongs in a protected service inventory?
@@ -1649,7 +1649,7 @@ Operations teams continuously review traffic classifications, monitor dashboards
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Review bot protection architecture periodically.
 - Maintain a complete inventory of protected services.
@@ -1663,7 +1663,7 @@ Operations teams continuously review traffic classifications, monitor dashboards
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing undocumented policy changes.
 - Ignoring legitimate automated business services.
@@ -1675,7 +1675,7 @@ Operations teams continuously review traffic classifications, monitor dashboards
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise bot protection requires governance, documentation, and continuous improvement.
 - Threat modeling helps determine where bot protection should be applied.
@@ -1683,15 +1683,15 @@ Operations teams continuously review traffic classifications, monitor dashboards
 - Centralized logging and monitoring improve operational visibility.
 - Capacity planning and regular reviews help maintain reliable and secure services.
 
-# 53-Bot-Protection.md
+## 53-Bot-Protection.md
 
-# Part 4 — Enterprise Governance, Zero Trust, Incident Response, Security Maturity, Best Practices, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, Incident Response, Security Maturity, Best Practices, and Chapter Summary
 
 > **"A mature Bot Protection program combines intelligent traffic analysis, centralized governance, continuous monitoring, and secure operational practices to protect applications while preserving legitimate business automation."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1712,7 +1712,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 Bot protection should be governed through standardized enterprise policies and operational procedures.
 
@@ -1752,7 +1752,7 @@ Governance ensures consistency across applications, APIs, cloud services, and ge
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Bot Protection Governance
@@ -1782,7 +1782,7 @@ A formal governance model improves accountability and operational consistency.
 
 ---
 
-# Zero Trust and Bot Protection
+## Zero Trust and Bot Protection
 
 Zero Trust principles remain applicable even when bot protection is deployed.
 
@@ -1814,7 +1814,7 @@ Passing bot protection does not eliminate the need for authentication, authoriza
 
 ---
 
-# Layered Security Architecture
+## Layered Security Architecture
 
 ```
 Internet
@@ -1856,7 +1856,7 @@ Each layer contributes to a comprehensive security strategy.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Identity Verification
@@ -1890,7 +1890,7 @@ Multiple independent controls reduce operational risk.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Bot protection configurations should be managed using Infrastructure as Code whenever feasible.
 
@@ -1924,7 +1924,7 @@ Benefits include:
 
 ---
 
-# Secure CI/CD Integration
+## Secure CI/CD Integration
 
 ```
 Developer
@@ -1958,7 +1958,7 @@ Automated validation helps reduce deployment errors and configuration inconsiste
 
 ---
 
-# Configuration Lifecycle
+## Configuration Lifecycle
 
 ```
 Planning
@@ -1992,7 +1992,7 @@ Configuration management should remain an ongoing operational activity.
 
 ---
 
-# Documentation
+## Documentation
 
 Organizations should maintain documentation for:
 
@@ -2022,7 +2022,7 @@ Accurate documentation supports governance, maintenance, and compliance.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Common compliance activities include:
 
@@ -2048,7 +2048,7 @@ Compliance requirements vary according to industry standards and organizational 
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Operationally significant activities should be centrally recorded.
 
@@ -2076,7 +2076,7 @@ Audit logs support investigations, accountability, and regulatory reporting.
 
 ---
 
-# Important Audit Events
+## Important Audit Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2093,7 +2093,7 @@ Sensitive information should be handled according to organizational logging poli
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2123,7 +2123,7 @@ Continuous monitoring enables proactive operational management and rapid identif
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2138,7 +2138,7 @@ Continuous monitoring enables proactive operational management and rapid identif
 
 ---
 
-# Enterprise Dashboard
+## Enterprise Dashboard
 
 ```
 Security Dashboard
@@ -2166,7 +2166,7 @@ Dashboards provide a centralized operational view of bot-related activity.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Bot Protection
@@ -2196,7 +2196,7 @@ SOC analysts correlate bot-protection telemetry with authentication, application
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should establish documented procedures for responding to bot-related operational events.
 
@@ -2232,7 +2232,7 @@ Clearly defined processes improve consistency and reduce operational impact.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Operational Event
@@ -2266,7 +2266,7 @@ The objective is to improve technology, operational procedures, and governance.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2296,7 +2296,7 @@ Bot protection policies should evolve alongside application growth and changing 
 
 ---
 
-# Bot Protection Security Maturity Model
+## Bot Protection Security Maturity Model
 
 ```
 Level 1
@@ -2333,7 +2333,7 @@ Higher maturity levels emphasize automation, governance, operational visibility,
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                       Internet
@@ -2375,7 +2375,7 @@ This architecture enables centralized client classification, monitoring, and pol
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider protects patient portals, appointment scheduling systems, and mobile APIs using enterprise bot-protection infrastructure.
 
@@ -2399,7 +2399,7 @@ Security teams continuously review client classifications, monitor dashboards, v
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Protected Service Inventory Maintained
@@ -2425,7 +2425,7 @@ Security teams continuously review client classifications, monitor dashboards, v
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2438,9 +2438,9 @@ Security teams continuously review client classifications, monitor dashboards, v
 
 ---
 
-# Bot Protection Quick Revision
+## Bot Protection Quick Revision
 
-## Request Flow
+### Request Flow
 
 ```
 Client
@@ -2468,7 +2468,7 @@ Response
 
 ---
 
-## Layered Security
+### Layered Security
 
 ```
 Authentication
@@ -2496,7 +2496,7 @@ Monitoring
 
 ---
 
-## Continuous Improvement Cycle
+### Continuous Improvement Cycle
 
 ```
 Metrics
@@ -2516,7 +2516,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise bot-protection architecture for a multi-tier application.
 2. Identify trust boundaries and client-classification points.
@@ -2528,7 +2528,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the primary purpose of Bot Protection?
 2. Why should legitimate bots be distinguished from other automated traffic?
@@ -2543,7 +2543,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Deploy bot protection in front of Internet-facing services.
 - Maintain centralized governance and standardized client-classification policies.
@@ -2557,7 +2557,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating every automated client as malicious.
 - Ignoring legitimate business automation.
@@ -2569,7 +2569,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

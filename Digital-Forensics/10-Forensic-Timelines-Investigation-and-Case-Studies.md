@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 A forensic investigation rarely depends on one artifact.
 
@@ -50,7 +50,7 @@ Conclusion
 
 ---
 
-# Why Forensic Timelines Matter
+## Why Forensic Timelines Matter
 
 A single event rarely explains an incident.
 
@@ -73,7 +73,7 @@ Together they may describe an intrusion.
 
 ---
 
-# Investigation Architecture
+## Investigation Architecture
 
 ```text id="m4h7z2"
                     Investigation
@@ -106,7 +106,7 @@ Together they may describe an intrusion.
 
 ---
 
-# Investigation Questions
+## Investigation Questions
 
 A mature investigation should answer:
 
@@ -128,7 +128,7 @@ What should be changed?
 
 ---
 
-# Timeline Fundamentals
+## Timeline Fundamentals
 
 A forensic timeline is an ordered representation of events.
 
@@ -147,7 +147,7 @@ Example:
 
 ---
 
-# Event Types
+## Event Types
 
 Common event categories include:
 
@@ -171,7 +171,7 @@ Application Event
 
 ---
 
-# Timeline Sources
+## Timeline Sources
 
 | Source | Example Evidence |
 |---|---|
@@ -189,7 +189,7 @@ Application Event
 
 ---
 
-# Timeline Normalization
+## Timeline Normalization
 
 Different systems may use different:
 
@@ -215,7 +215,7 @@ Record the original timestamp as well as the normalized value when practical.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Enterprise investigations depend heavily on synchronized clocks.
 
@@ -232,7 +232,7 @@ Delayed Log Ingestion
 
 ---
 
-# Clock Drift
+## Clock Drift
 
 Suppose:
 
@@ -248,7 +248,7 @@ If the systems are expected to be synchronized, investigate the discrepancy befo
 
 ---
 
-# Timestamp Confidence
+## Timestamp Confidence
 
 A timestamp should be assessed alongside:
 
@@ -263,7 +263,7 @@ Corroborating Evidence
 
 ---
 
-# MACB Timeline Model
+## MACB Timeline Model
 
 A common forensic timeline model is:
 
@@ -278,7 +278,7 @@ Not every artifact supports every timestamp.
 
 ---
 
-# MACB Example
+## MACB Example
 
 ```text id="g7x1m8"
 File:
@@ -297,7 +297,7 @@ Interpretation should consider:
 
 ---
 
-# Timeline Granularity
+## Timeline Granularity
 
 Timelines can operate at different levels:
 
@@ -317,7 +317,7 @@ Do not imply precision that the source does not provide.
 
 ---
 
-# Super-Timeline
+## Super-Timeline
 
 A super-timeline combines multiple artifact types into one chronological dataset.
 
@@ -336,7 +336,7 @@ Cloud ─────────────────┘
 
 ---
 
-# Why Super-Timelines Matter
+## Why Super-Timelines Matter
 
 A super-timeline allows investigators to identify relationships such as:
 
@@ -356,7 +356,7 @@ rather than investigating each artifact independently.
 
 ---
 
-# Timeline Construction Workflow
+## Timeline Construction Workflow
 
 ```text id="6j2p8v"
 Collect Evidence
@@ -385,7 +385,7 @@ Investigate
 
 ---
 
-# Timeline Event Structure
+## Timeline Event Structure
 
 A useful event record may contain:
 
@@ -407,7 +407,7 @@ Confidence
 
 ---
 
-# Example Timeline Table
+## Example Timeline Table
 
 | Time | Host | User | Event | Source | Confidence |
 |---|---|---|---|---|---|
@@ -419,7 +419,7 @@ Confidence
 
 ---
 
-# Evidence Correlation
+## Evidence Correlation
 
 Correlation means connecting related observations.
 
@@ -439,7 +439,7 @@ File Created
 
 ---
 
-# Evidence Correlation Matrix
+## Evidence Correlation Matrix
 
 | Evidence | Supports |
 |---|---|
@@ -454,9 +454,9 @@ File Created
 
 ---
 
-# Direct vs Indirect Evidence
+## Direct vs Indirect Evidence
 
-## Direct Evidence
+### Direct Evidence
 
 Evidence directly showing an event.
 
@@ -467,7 +467,7 @@ EDR:
 Process X created Process Y.
 ```
 
-## Indirect Evidence
+### Indirect Evidence
 
 Evidence supporting an inference.
 
@@ -481,7 +481,7 @@ Both can be valuable, but they should not be treated as equivalent.
 
 ---
 
-# Evidence Hierarchy
+## Evidence Hierarchy
 
 A practical model:
 
@@ -505,9 +505,9 @@ Investigators should clearly distinguish these levels.
 
 ---
 
-# Fact vs Hypothesis vs Conclusion
+## Fact vs Hypothesis vs Conclusion
 
-## Fact
+### Fact
 
 Directly supported by evidence.
 
@@ -515,7 +515,7 @@ Directly supported by evidence.
 A successful SSH authentication occurred at 09:01.
 ```
 
-## Hypothesis
+### Hypothesis
 
 A possible explanation.
 
@@ -523,7 +523,7 @@ A possible explanation.
 The account may have been compromised.
 ```
 
-## Conclusion
+### Conclusion
 
 An evidence-supported determination.
 
@@ -533,7 +533,7 @@ The available evidence strongly supports unauthorized use of the account.
 
 ---
 
-# Investigation Hypotheses
+## Investigation Hypotheses
 
 Instead of collecting evidence randomly, establish hypotheses.
 
@@ -557,7 +557,7 @@ Then test each hypothesis.
 
 ---
 
-# Hypothesis Matrix
+## Hypothesis Matrix
 
 | Hypothesis | Supporting Evidence | Contradicting Evidence |
 |---|---|---|
@@ -568,7 +568,7 @@ Then test each hypothesis.
 
 ---
 
-# IOC Pivoting
+## IOC Pivoting
 
 An IOC can be used to discover related activity.
 
@@ -587,7 +587,7 @@ Username
 
 ---
 
-# IOC Pivot Workflow
+## IOC Pivot Workflow
 
 ```text id="1c7n4x"
 Known IOC
@@ -613,7 +613,7 @@ Identify Related Hosts
 
 ---
 
-# IOC Pivot Example
+## IOC Pivot Example
 
 Suppose a suspicious domain is identified.
 
@@ -640,7 +640,7 @@ What happened afterward?
 
 ---
 
-# Entity-Based Investigation
+## Entity-Based Investigation
 
 Modern investigations benefit from entity relationships.
 
@@ -674,7 +674,7 @@ User
 
 ---
 
-# Attack Graph
+## Attack Graph
 
 A simplified attack graph:
 
@@ -707,7 +707,7 @@ Not every incident follows this exact sequence.
 
 ---
 
-# MITRE ATT&CK Mapping
+## MITRE ATT&CK Mapping
 
 Observed actions can be mapped to ATT&CK.
 
@@ -737,7 +737,7 @@ Only map techniques supported by evidence.
 
 ---
 
-# Attack Reconstruction
+## Attack Reconstruction
 
 A reconstruction should describe:
 
@@ -762,7 +762,7 @@ Impact
 
 ---
 
-# Example Reconstruction
+## Example Reconstruction
 
 ```text id="7y2n5c"
 09:01
@@ -794,7 +794,7 @@ Each event should reference supporting evidence.
 
 ---
 
-# Attack Narrative
+## Attack Narrative
 
 A professional narrative should avoid unsupported claims.
 
@@ -808,7 +808,7 @@ Strong:
 
 ---
 
-# Negative Evidence
+## Negative Evidence
 
 Negative evidence means the absence of an expected artifact or event.
 
@@ -828,7 +828,7 @@ Absence can be informative, but:
 
 ---
 
-# Why Negative Evidence Matters
+## Why Negative Evidence Matters
 
 Suppose a malware investigation finds:
 
@@ -844,7 +844,7 @@ However, missing telemetry must be distinguished from confirmed absence.
 
 ---
 
-# Evidence Gaps
+## Evidence Gaps
 
 Document:
 
@@ -861,7 +861,7 @@ Missing EDR
 
 ---
 
-# Evidence Gap Matrix
+## Evidence Gap Matrix
 
 | Gap | Potential Impact |
 |---|---|
@@ -874,29 +874,29 @@ Missing EDR
 
 ---
 
-# Confidence Assessment
+## Confidence Assessment
 
 A forensic conclusion should include confidence.
 
-## High
+### High
 
 Multiple independent evidence sources agree.
 
-## Medium
+### Medium
 
 Several related artifacts support the conclusion.
 
-## Low
+### Low
 
 Limited or ambiguous evidence.
 
-## Unknown
+### Unknown
 
 Evidence is insufficient.
 
 ---
 
-# Confidence Matrix
+## Confidence Matrix
 
 | Evidence | Reliability | Corroboration |
 |---|---|---|
@@ -909,7 +909,7 @@ This is an investigative framework rather than a universal scoring standard.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Root cause asks:
 
@@ -932,7 +932,7 @@ Insecure Application
 
 ---
 
-# Root Cause vs Initial Access
+## Root Cause vs Initial Access
 
 These are not necessarily identical.
 
@@ -948,7 +948,7 @@ Credential reused across services + weak MFA controls
 
 ---
 
-# Contributing Factors
+## Contributing Factors
 
 A mature report identifies:
 
@@ -975,7 +975,7 @@ Insufficient authentication monitoring
 
 ---
 
-# Blast Radius
+## Blast Radius
 
 Determine the scope of the incident.
 
@@ -994,7 +994,7 @@ Data
 
 ---
 
-# Scope Analysis
+## Scope Analysis
 
 A useful structure:
 
@@ -1018,7 +1018,7 @@ Not Observed
 
 ---
 
-# Containment Evidence
+## Containment Evidence
 
 Forensic investigators should document when containment occurs.
 
@@ -1037,7 +1037,7 @@ Containment actions can change the evidence environment.
 
 ---
 
-# Before vs After Containment
+## Before vs After Containment
 
 ```text id="0p6k9w"
 Before
@@ -1061,7 +1061,7 @@ Record the time and action.
 
 ---
 
-# Evidence Preservation During Response
+## Evidence Preservation During Response
 
 Containment and preservation can conflict.
 
@@ -1081,9 +1081,9 @@ must be evaluated.
 
 ---
 
-# Case Study 01 — Compromised Linux Server
+## Case Study 01 — Compromised Linux Server
 
-## Scenario
+### Scenario
 
 A production Linux server generates a security alert.
 
@@ -1099,7 +1099,7 @@ Network Connections
 
 ---
 
-## Timeline
+### Timeline
 
 ```text id="x4r7m2"
 09:01 — Successful SSH authentication
@@ -1112,7 +1112,7 @@ Network Connections
 
 ---
 
-## Investigation
+### Investigation
 
 Correlate:
 
@@ -1140,7 +1140,7 @@ Network
 
 ---
 
-## Assessment
+### Assessment
 
 The evidence supports:
 
@@ -1159,9 +1159,9 @@ The investigation should continue to determine:
 
 ---
 
-# Case Study 02 — Windows Endpoint Compromise
+## Case Study 02 — Windows Endpoint Compromise
 
-## Scenario
+### Scenario
 
 An endpoint security alert identifies suspicious PowerShell activity.
 
@@ -1179,7 +1179,7 @@ Memory
 
 ---
 
-## Timeline
+### Timeline
 
 ```text id="4q7x2n"
 10:01 — User logs in
@@ -1193,7 +1193,7 @@ Memory
 
 ---
 
-## Investigation
+### Investigation
 
 Correlate:
 
@@ -1215,7 +1215,7 @@ Child Process
 
 ---
 
-## Assessment
+### Assessment
 
 The evidence indicates suspicious execution requiring:
 
@@ -1227,9 +1227,9 @@ The evidence indicates suspicious execution requiring:
 
 ---
 
-# Case Study 03 — Cloud Identity Compromise
+## Case Study 03 — Cloud Identity Compromise
 
-## Scenario
+### Scenario
 
 A cloud account performs unexpected administrative operations.
 
@@ -1244,7 +1244,7 @@ Resource History
 
 ---
 
-## Timeline
+### Timeline
 
 ```text id="1w8c6p"
 14:01 — Authentication
@@ -1257,7 +1257,7 @@ Resource History
 
 ---
 
-## Investigation
+### Investigation
 
 ```text id="f0x7s3"
 Identity
@@ -1277,7 +1277,7 @@ Data
 
 ---
 
-## Assessment
+### Assessment
 
 The investigation should establish:
 
@@ -1290,9 +1290,9 @@ The investigation should establish:
 
 ---
 
-# Case Study 04 — Container Compromise
+## Case Study 04 — Container Compromise
 
-## Scenario
+### Scenario
 
 A production Kubernetes workload communicates with an unexpected external destination.
 
@@ -1309,7 +1309,7 @@ Node Telemetry
 
 ---
 
-## Timeline
+### Timeline
 
 ```text id="6p3r9x"
 11:01 — Pod deployed
@@ -1322,7 +1322,7 @@ Node Telemetry
 
 ---
 
-## Investigation
+### Investigation
 
 ```text id="c8m2v5"
 Deployment
@@ -1342,9 +1342,9 @@ Then investigate the node and cluster identity.
 
 ---
 
-# Case Study 05 — Malware Infection
+## Case Study 05 — Malware Infection
 
-## Scenario
+### Scenario
 
 An employee receives a suspicious attachment.
 
@@ -1361,7 +1361,7 @@ Memory
 
 ---
 
-## Timeline
+### Timeline
 
 ```text id="8x3m7c"
 09:00 — Email received
@@ -1375,7 +1375,7 @@ Memory
 
 ---
 
-## Investigation
+### Investigation
 
 ```text id="2q7v9n"
 Email
@@ -1398,9 +1398,9 @@ Memory
 
 ---
 
-# Case Study 06 — Data Exfiltration
+## Case Study 06 — Data Exfiltration
 
-## Scenario
+### Scenario
 
 A database server sends an unusually large amount of data externally.
 
@@ -1417,7 +1417,7 @@ Cloud Logs
 
 ---
 
-## Timeline
+### Timeline
 
 ```text id="4z8n2p"
 20:01 — User authentication
@@ -1430,7 +1430,7 @@ Cloud Logs
 
 ---
 
-## Investigation Questions
+### Investigation Questions
 
 ```text id="w5q7c1"
 Who accessed the data?
@@ -1444,7 +1444,7 @@ Was the transfer authorized?
 
 ---
 
-# Case Study 07 — Multi-Stage Enterprise Incident
+## Case Study 07 — Multi-Stage Enterprise Incident
 
 A complex incident may look like:
 
@@ -1496,7 +1496,7 @@ Application
 
 ---
 
-# Investigation Workbook
+## Investigation Workbook
 
 A practical investigation workbook can contain:
 
@@ -1518,7 +1518,7 @@ Recommendations
 
 ---
 
-# Evidence Inventory
+## Evidence Inventory
 
 | ID | Evidence | Source | Hash | Status |
 |---|---|---|---|---|
@@ -1529,7 +1529,7 @@ Recommendations
 
 ---
 
-# IOC Inventory
+## IOC Inventory
 
 ```text id="j2x8v6"
 Hash:
@@ -1555,7 +1555,7 @@ Related Hosts
 
 ---
 
-# Finding Register
+## Finding Register
 
 | ID | Finding | Evidence | Confidence | Status |
 |---|---|---|---|---|
@@ -1565,7 +1565,7 @@ Related Hosts
 
 ---
 
-# Timeline Investigation Checklist
+## Timeline Investigation Checklist
 
 ```text id="8r2m5w"
 [ ] Identify incident start
@@ -1589,7 +1589,7 @@ Related Hosts
 
 ---
 
-# Professional Investigation Narrative
+## Professional Investigation Narrative
 
 A final narrative should answer:
 
@@ -1612,7 +1612,7 @@ Only include stages supported by evidence.
 
 ---
 
-# Executive Summary Template
+## Executive Summary Template
 
 ```text id="4h7x1q"
 ## Executive Summary
@@ -1637,7 +1637,7 @@ Recommended improvements include [TOP RECOMMENDATIONS].
 
 ---
 
-# Technical Summary Template
+## Technical Summary Template
 
 ```text id="p8n3y6"
 ## Technical Summary
@@ -1667,7 +1667,7 @@ Recommended improvements include [TOP RECOMMENDATIONS].
 
 ---
 
-# Root Cause Report
+## Root Cause Report
 
 ```text id="m6z4w2"
 Primary Root Cause:
@@ -1688,7 +1688,7 @@ Recommended Corrective Actions:
 
 ---
 
-# Evidence Gap Report
+## Evidence Gap Report
 
 ```text id="q1c7v9"
 Evidence Gap:
@@ -1708,7 +1708,7 @@ Reduced network-behavior confidence from High to Medium.
 
 ---
 
-# Lessons Learned
+## Lessons Learned
 
 A post-investigation review should examine:
 
@@ -1724,7 +1724,7 @@ What should be retained longer?
 
 ---
 
-# From Investigation to Detection
+## From Investigation to Detection
 
 Forensic findings should create defensive improvements.
 
@@ -1752,7 +1752,7 @@ Production
 
 ---
 
-# From Investigation to Threat Hunting
+## From Investigation to Threat Hunting
 
 ```text id="v5q9c2"
 Case Finding
@@ -1772,7 +1772,7 @@ Scope Expansion
 
 ---
 
-# From Investigation to Forensic Readiness
+## From Investigation to Forensic Readiness
 
 If investigators repeatedly lack:
 
@@ -1789,7 +1789,7 @@ those gaps should become organizational improvement items.
 
 ---
 
-# Enterprise Forensic Architecture
+## Enterprise Forensic Architecture
 
 ```text id="m8k3v7"
                          Security Operations
@@ -1829,7 +1829,7 @@ those gaps should become organizational improvement items.
 
 ---
 
-# Forensic Reporting Principles
+## Forensic Reporting Principles
 
 A professional report should be:
 
@@ -1853,7 +1853,7 @@ Unexplained Technical Terms
 
 ---
 
-# Reporting Language
+## Reporting Language
 
 Prefer:
 
@@ -1877,7 +1877,7 @@ unless the evidence genuinely supports that level of certainty.
 
 ---
 
-# Investigation Quality Model
+## Investigation Quality Model
 
 ```text id="3p7x9m"
 Evidence Quality
@@ -1899,36 +1899,36 @@ Weak evidence can limit even excellent analysis.
 
 ---
 
-# Forensic Investigation Maturity Model
+## Forensic Investigation Maturity Model
 
-## Level 1 — Basic
+### Level 1 — Basic
 
 - Manual timeline
 - Basic evidence collection
 - Individual artifact analysis
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Standard evidence inventory
 - Timeline templates
 - IOC tracking
 - Investigation procedures
 
-## Level 3 — Managed
+### Level 3 — Managed
 
 - Centralized forensic platform
 - EDR/SIEM integration
 - Formal case management
 - Evidence retention
 
-## Level 4 — Integrated
+### Level 4 — Integrated
 
 - Automated correlation
 - Threat hunting integration
 - Detection engineering feedback
 - Cloud/container integration
 
-## Level 5 — Advanced
+### Level 5 — Advanced
 
 - Enterprise forensic readiness
 - Automated timeline generation
@@ -1938,27 +1938,27 @@ Weak evidence can limit even excellent analysis.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is a forensic timeline?
+### 1. What is a forensic timeline?
 
 A chronological representation of events reconstructed from one or more evidence sources.
 
 ---
 
-## 2. What is a super-timeline?
+### 2. What is a super-timeline?
 
 A timeline that combines events from multiple forensic artifact sources into a unified chronological view.
 
 ---
 
-## 3. Why is time normalization important?
+### 3. Why is time normalization important?
 
 Because systems may use different time zones, clock settings, and timestamp formats.
 
 ---
 
-## 4. What is MACB?
+### 4. What is MACB?
 
 A forensic timestamp model commonly representing:
 
@@ -1971,69 +1971,69 @@ B — Birth / Creation
 
 ---
 
-## 5. What is evidence correlation?
+### 5. What is evidence correlation?
 
 Connecting independent evidence sources to determine whether they support the same event or hypothesis.
 
 ---
 
-## 6. What is IOC pivoting?
+### 6. What is IOC pivoting?
 
 Using a known indicator to search across other evidence sources and identify related activity.
 
 ---
 
-## 7. What is negative evidence?
+### 7. What is negative evidence?
 
 The absence of an expected event or artifact, interpreted carefully within the limits of available telemetry.
 
 ---
 
-## 8. Why is negative evidence dangerous?
+### 8. Why is negative evidence dangerous?
 
 Because missing telemetry may look identical to absence of activity.
 
 ---
 
-## 9. What is root cause?
+### 9. What is root cause?
 
 The underlying condition that allowed an incident to occur or succeed.
 
 ---
 
-## 10. What is blast radius?
+### 10. What is blast radius?
 
 The scope of systems, accounts, applications, data, and infrastructure affected by an incident.
 
 ---
 
-## 11. Why should forensic reports distinguish facts from hypotheses?
+### 11. Why should forensic reports distinguish facts from hypotheses?
 
 Because evidence-supported observations and analytical interpretations have different levels of certainty.
 
 ---
 
-## 12. Why should investigators document evidence gaps?
+### 12. Why should investigators document evidence gaps?
 
 Because missing telemetry affects the reliability and scope of conclusions.
 
 ---
 
-## 13. How do you build an attack timeline?
+### 13. How do you build an attack timeline?
 
 Collect evidence, validate it, extract events, normalize time, correlate related events, and reconstruct the sequence.
 
 ---
 
-## 14. What makes a forensic conclusion strong?
+### 14. What makes a forensic conclusion strong?
 
 Multiple independent evidence sources that consistently support the same conclusion.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > You have three different timestamps for the same event.
 
@@ -2052,9 +2052,9 @@ Then establish the most defensible normalized timeline.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > There is no evidence of lateral movement.
 
@@ -2079,9 +2079,9 @@ Evidence Gaps
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A suspicious IP appears in firewall logs but no endpoint is identified.
 
@@ -2101,9 +2101,9 @@ Do not attribute the activity to a host without sufficient evidence.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A compromised account accessed multiple systems.
 
@@ -2130,7 +2130,7 @@ Then determine:
 
 ---
 
-# Final Digital Forensics Investigation Checklist
+## Final Digital Forensics Investigation Checklist
 
 ```text id="q8m2v6"
 [ ] Case authorized
@@ -2166,7 +2166,7 @@ Then determine:
 
 ---
 
-# Complete Digital Forensics Workflow
+## Complete Digital Forensics Workflow
 
 The entire Digital-Forensics section can now be represented as:
 
@@ -2209,7 +2209,7 @@ The entire Digital-Forensics section can now be represented as:
 
 ---
 
-# Digital Forensics Knowledge Map
+## Digital Forensics Knowledge Map
 
 ```text id="8p4x7m"
                     Digital Forensics
@@ -2243,7 +2243,7 @@ Windows Linux Memory  PCAP DNS Flow     Identity API Storage
 
 ---
 
-# Digital Forensics and SOC Integration
+## Digital Forensics and SOC Integration
 
 Digital forensics should not operate independently.
 
@@ -2279,7 +2279,7 @@ Security Improvement
 
 ---
 
-# Digital Forensics and Threat Hunting
+## Digital Forensics and Threat Hunting
 
 Forensic investigations generate new hunt hypotheses.
 
@@ -2304,7 +2304,7 @@ Scope Expansion
 
 ---
 
-# Digital Forensics and Detection Engineering
+## Digital Forensics and Detection Engineering
 
 A mature security organization continuously converts forensic findings into detections.
 
@@ -2332,7 +2332,7 @@ Monitor
 
 ---
 
-# Digital Forensics and Security Architecture
+## Digital Forensics and Security Architecture
 
 Repeated forensic findings should influence architecture.
 
@@ -2362,7 +2362,7 @@ Identity / Cloud Controls
 
 ---
 
-# Final Digital Forensics Principles
+## Final Digital Forensics Principles
 
 ```text
 1. Preserve before analyzing.
@@ -2385,7 +2385,7 @@ Identity / Cloud Controls
 
 ---
 
-# Final Chapter Completion Checklist
+## Final Chapter Completion Checklist
 
 ```text id="6m8x2q"
 [ ] Understand forensic timelines
@@ -2416,7 +2416,7 @@ Identity / Cloud Controls
 
 ---
 
-# Digital Forensics Section Completion
+## Digital Forensics Section Completion
 
 With this chapter completed, the Digital-Forensics folder now contains:
 
@@ -2465,73 +2465,73 @@ This provides the foundation for moving from **individual artifact analysis** to
 
 ---
 
-# References
+## References
 
-### NIST SP 800-86 — Guide to Integrating Forensic Techniques into Incident Response
+#### NIST SP 800-86 — Guide to Integrating Forensic Techniques into Incident Response
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### NIST SP 800-61 — Incident Response
+#### NIST SP 800-61 — Incident Response
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 
-### CISA
+#### CISA
 
 https://www.cisa.gov/
 
-### The Sleuth Kit
+#### The Sleuth Kit
 
 https://www.sleuthkit.org/
 
-### Autopsy
+#### Autopsy
 
 https://www.autopsy.com/
 
-### Volatility
+#### Volatility
 
 https://volatility3.readthedocs.io/
 
-### Wireshark
+#### Wireshark
 
 https://www.wireshark.org/
 
-### Zeek
+#### Zeek
 
 https://zeek.org/
 
-### Ghidra
+#### Ghidra
 
 https://ghidra-sre.org/
 
-### YARA
+#### YARA
 
 https://yara.readthedocs.io/
 
-### Microsoft Sysinternals
+#### Microsoft Sysinternals
 
 https://learn.microsoft.com/sysinternals/
 
-### Linux Kernel Documentation
+#### Linux Kernel Documentation
 
 https://docs.kernel.org/
 
-### Kubernetes Documentation
+#### Kubernetes Documentation
 
 https://kubernetes.io/docs/
 
-### AWS Security Documentation
+#### AWS Security Documentation
 
 https://docs.aws.amazon.com/security/
 
-### Microsoft Security
+#### Microsoft Security
 
 https://learn.microsoft.com/security/
 
-### Google Cloud Security
+#### Google Cloud Security
 
 https://cloud.google.com/security
 

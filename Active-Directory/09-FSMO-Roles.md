@@ -1,10 +1,10 @@
 # 09-FSMO-Roles.md
 
-# Part 1 — Introduction to FSMO Roles, Multi-Master Replication, Single-Master Operations, and Enterprise Fundamentals
+## Part 1 — Introduction to FSMO Roles, Multi-Master Replication, Single-Master Operations, and Enterprise Fundamentals
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -18,7 +18,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Introduction
+## Introduction
 
 One of the biggest strengths of Active Directory is **Multi-Master Replication**.
 
@@ -54,7 +54,7 @@ Every writable Domain Controller can normally process updates.
 
 ---
 
-# What is Multi-Master Replication?
+## What is Multi-Master Replication?
 
 Unlike traditional directory services that rely on one central server, Active Directory allows all writable Domain Controllers to:
 
@@ -97,7 +97,7 @@ Both changes are replicated throughout the environment.
 
 ---
 
-# Advantages of Multi-Master Replication
+## Advantages of Multi-Master Replication
 
 Benefits include:
 
@@ -110,7 +110,7 @@ Benefits include:
 
 ---
 
-# The Problem with Multi-Master
+## The Problem with Multi-Master
 
 Some operations **cannot** safely occur on multiple Domain Controllers at the same time.
 
@@ -148,7 +148,7 @@ This would create duplicate Security Identifiers (SIDs), leading to inconsistenc
 
 ---
 
-# Another Example
+## Another Example
 
 Suppose two administrators modify the Active Directory schema simultaneously.
 
@@ -176,7 +176,7 @@ Conflicts like these could corrupt directory consistency if there were no coordi
 
 ---
 
-# Microsoft's Solution
+## Microsoft's Solution
 
 Microsoft introduced **Flexible Single Master Operations (FSMO)**.
 
@@ -216,7 +216,7 @@ Replicated
 
 ---
 
-# What Does FSMO Mean?
+## What Does FSMO Mean?
 
 FSMO stands for:
 
@@ -230,7 +230,7 @@ Breaking it down:
 
 ---
 
-# Why "Flexible"?
+## Why "Flexible"?
 
 Roles are **not permanently tied** to one Domain Controller.
 
@@ -243,7 +243,7 @@ Administrators can:
 
 ---
 
-# Single-Master Operations
+## Single-Master Operations
 
 Only a few Active Directory operations require a single authority.
 
@@ -259,7 +259,7 @@ Everything else continues to use multi-master replication.
 
 ---
 
-# The Five FSMO Roles
+## The Five FSMO Roles
 
 There are **five** FSMO roles.
 
@@ -285,7 +285,7 @@ Each Domain
 
 ---
 
-# Forest-Wide FSMO Roles
+## Forest-Wide FSMO Roles
 
 These roles exist **once per forest**.
 
@@ -305,7 +305,7 @@ Regardless of the number of domains, there is only one of each.
 
 ---
 
-# Domain-Wide FSMO Roles
+## Domain-Wide FSMO Roles
 
 Every domain has:
 
@@ -330,7 +330,7 @@ Each domain maintains its own set.
 
 ---
 
-# Example Forest
+## Example Forest
 
 ```text
 Forest
@@ -378,7 +378,7 @@ Domain Naming Master
 
 ---
 
-# Why Not Use One DC for Everything?
+## Why Not Use One DC for Everything?
 
 Small environments often host all five FSMO roles on one Domain Controller.
 
@@ -393,7 +393,7 @@ Reasons include:
 
 ---
 
-# Everyday Changes vs FSMO Operations
+## Everyday Changes vs FSMO Operations
 
 Most administrative tasks do **not** require FSMO roles.
 
@@ -417,7 +417,7 @@ FSMO roles are involved only in specific specialized operations.
 
 ---
 
-# Analogy
+## Analogy
 
 Imagine a university.
 
@@ -436,7 +436,7 @@ The Registrar functions like an FSMO role—handling only specialized tasks that
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -477,7 +477,7 @@ This balances performance with consistency.
 
 ---
 
-# FSMO Role Placement
+## FSMO Role Placement
 
 Typical recommendations:
 
@@ -525,7 +525,7 @@ Large enterprises may further distribute roles based on operational needs and di
 
 ---
 
-# Benefits of FSMO Roles
+## Benefits of FSMO Roles
 
 FSMO roles provide:
 
@@ -538,9 +538,9 @@ FSMO roles provide:
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
-## Myth 1
+### Myth 1
 
 > Every Active Directory change uses an FSMO role.
 
@@ -550,7 +550,7 @@ Most changes are handled through multi-master replication.
 
 ---
 
-## Myth 2
+### Myth 2
 
 > Only one Domain Controller can accept changes.
 
@@ -560,7 +560,7 @@ All writable Domain Controllers accept normal updates.
 
 ---
 
-## Myth 3
+### Myth 3
 
 > FSMO roles never move.
 
@@ -570,7 +570,7 @@ Administrators can transfer roles during planned maintenance or seize them durin
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 FSMO role holders are highly important infrastructure.
 
@@ -587,7 +587,7 @@ Compromising an FSMO role holder can have organization-wide consequences.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -599,13 +599,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Identify FSMO roles in your environment.
 
-### Tasks
+#### Tasks
 
 1. Open a command prompt with administrative privileges.
 2. Run:
@@ -622,7 +622,7 @@ netdom query fsmo
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are FSMO roles?
 2. Why does Active Directory use multi-master replication?
@@ -637,7 +637,7 @@ netdom query fsmo
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory primarily uses multi-master replication for everyday administrative changes.
 - Certain sensitive operations require a single authoritative Domain Controller, implemented through FSMO roles.
@@ -647,13 +647,13 @@ netdom query fsmo
 
 ---
 
-# 09-FSMO-Roles.md
+## 09-FSMO-Roles.md
 
-# Part 2 — Deep Dive into the Five FSMO Roles, Responsibilities, Operations, Failure Impact, and Enterprise Examples
+## Part 2 — Deep Dive into the Five FSMO Roles, Responsibilities, Operations, Failure Impact, and Enterprise Examples
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -665,7 +665,7 @@ After completing this part, you will be able to:
 
 ---
 
-# The Five FSMO Roles
+## The Five FSMO Roles
 
 Active Directory contains five FSMO roles.
 
@@ -688,9 +688,9 @@ Each role has a unique responsibility.
 
 ---
 
-# 1. Schema Master
+## 1. Schema Master
 
-## Purpose
+### Purpose
 
 The **Schema Master** controls all modifications to the Active Directory Schema.
 
@@ -698,7 +698,7 @@ There is **only one Schema Master per forest**.
 
 ---
 
-# What is the Active Directory Schema?
+## What is the Active Directory Schema?
 
 The schema defines:
 
@@ -729,7 +729,7 @@ Every Domain Controller uses the same schema.
 
 ---
 
-# Why Only One Schema Master?
+## Why Only One Schema Master?
 
 Imagine:
 
@@ -777,7 +777,7 @@ All Domain Controllers
 
 ---
 
-# Common Schema Changes
+## Common Schema Changes
 
 Examples include:
 
@@ -792,7 +792,7 @@ Schema modifications are relatively rare in production environments.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company installs:
 
@@ -820,7 +820,7 @@ All Domain Controllers then recognize the new schema objects.
 
 ---
 
-# What Happens if the Schema Master Fails?
+## What Happens if the Schema Master Fails?
 
 Normal operations continue.
 
@@ -840,9 +840,9 @@ However:
 
 ---
 
-# 2. Domain Naming Master
+## 2. Domain Naming Master
 
-## Purpose
+### Purpose
 
 The **Domain Naming Master** controls changes to the forest namespace.
 
@@ -850,7 +850,7 @@ There is **only one Domain Naming Master per forest**.
 
 ---
 
-# Responsibilities
+## Responsibilities
 
 The Domain Naming Master authorizes:
 
@@ -862,7 +862,7 @@ The Domain Naming Master authorizes:
 
 ---
 
-# Example
+## Example
 
 Current forest:
 
@@ -902,7 +902,7 @@ Replication
 
 ---
 
-# Failure Impact
+## Failure Impact
 
 If the Domain Naming Master is unavailable:
 
@@ -916,7 +916,7 @@ However:
 
 ---
 
-# Forest-Wide FSMO Summary
+## Forest-Wide FSMO Summary
 
 | FSMO Role | Responsibility |
 |-----------|----------------|
@@ -927,9 +927,9 @@ These two roles affect the **entire forest**.
 
 ---
 
-# 3. RID Master
+## 3. RID Master
 
-## Purpose
+### Purpose
 
 The **RID Master** allocates pools of Relative Identifiers (RIDs) to Domain Controllers.
 
@@ -937,7 +937,7 @@ There is **one RID Master per domain**.
 
 ---
 
-# Understanding a SID
+## Understanding a SID
 
 Every security principal receives a **Security Identifier (SID)**.
 
@@ -957,7 +957,7 @@ is the **Relative Identifier (RID)**.
 
 ---
 
-# SID Structure
+## SID Structure
 
 ```text
 Domain SID
@@ -975,7 +975,7 @@ Every object must have a unique SID.
 
 ---
 
-# Why the RID Master Exists
+## Why the RID Master Exists
 
 Suppose three Domain Controllers create users simultaneously.
 
@@ -1033,7 +1033,7 @@ Each Domain Controller receives a unique RID pool.
 
 ---
 
-# RID Pool Allocation
+## RID Pool Allocation
 
 Example:
 
@@ -1069,7 +1069,7 @@ Each Domain Controller creates new objects locally until its assigned pool is ne
 
 ---
 
-# Failure Impact
+## Failure Impact
 
 If the RID Master becomes unavailable:
 
@@ -1091,9 +1091,9 @@ Existing authentication continues normally.
 
 ---
 
-# 4. PDC Emulator
+## 4. PDC Emulator
 
-## Purpose
+### Purpose
 
 The **Primary Domain Controller (PDC) Emulator** is the busiest and most critical FSMO role in most environments.
 
@@ -1101,7 +1101,7 @@ There is **one PDC Emulator per domain**.
 
 ---
 
-# Responsibilities
+## Responsibilities
 
 The PDC Emulator handles:
 
@@ -1114,7 +1114,7 @@ The PDC Emulator handles:
 
 ---
 
-# Password Changes
+## Password Changes
 
 Scenario:
 
@@ -1148,7 +1148,7 @@ If DC-03 has not yet received replication, it can consult the PDC Emulator befor
 
 ---
 
-# Password Workflow
+## Password Workflow
 
 ```text
 Password Changed
@@ -1174,7 +1174,7 @@ This helps reduce authentication failures after recent password changes.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Kerberos requires clocks to remain closely synchronized.
 
@@ -1208,7 +1208,7 @@ The forest root PDC Emulator is typically configured to synchronize with a relia
 
 ---
 
-# Why Time Matters
+## Why Time Matters
 
 If system clocks differ significantly:
 
@@ -1232,7 +1232,7 @@ Accurate time synchronization is essential for Kerberos authentication.
 
 ---
 
-# Group Policy Coordination
+## Group Policy Coordination
 
 The PDC Emulator also plays an important role in Group Policy editing.
 
@@ -1240,7 +1240,7 @@ When administrators edit GPOs, management tools often prefer contacting the PDC 
 
 ---
 
-# Legacy Compatibility
+## Legacy Compatibility
 
 Older Windows systems and certain legacy applications historically relied on PDC behavior.
 
@@ -1248,7 +1248,7 @@ The PDC Emulator preserves compatibility with these environments while supportin
 
 ---
 
-# Failure Impact
+## Failure Impact
 
 If the PDC Emulator is unavailable:
 
@@ -1264,9 +1264,9 @@ Most users can still authenticate using replicated information.
 
 ---
 
-# 5. Infrastructure Master
+## 5. Infrastructure Master
 
-## Purpose
+### Purpose
 
 The **Infrastructure Master** updates references to objects located in other domains.
 
@@ -1274,7 +1274,7 @@ There is **one Infrastructure Master per domain**.
 
 ---
 
-# Cross-Domain References
+## Cross-Domain References
 
 Example:
 
@@ -1294,7 +1294,7 @@ The Infrastructure Master ensures cross-domain object references remain accurate
 
 ---
 
-# Example
+## Example
 
 User:
 
@@ -1318,7 +1318,7 @@ The Infrastructure Master updates references so group memberships and object ref
 
 ---
 
-# Failure Impact
+## Failure Impact
 
 If the Infrastructure Master is unavailable:
 
@@ -1333,7 +1333,7 @@ In a single-domain forest, this role has minimal operational impact because ther
 
 ---
 
-# FSMO Role Comparison
+## FSMO Role Comparison
 
 | FSMO Role | Scope | Primary Responsibility |
 |-----------|-------|------------------------|
@@ -1345,7 +1345,7 @@ In a single-domain forest, this role has minimal operational impact because ther
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Because FSMO role holders perform critical directory operations:
 
@@ -1363,7 +1363,7 @@ Compromising a PDC Emulator or Schema Master can have significant operational an
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -1375,13 +1375,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore FSMO role responsibilities.
 
-### Tasks
+#### Tasks
 
 1. Run:
 
@@ -1403,7 +1403,7 @@ netdom query fsmo
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of the Schema Master?
 2. Why is there only one Schema Master in a forest?
@@ -1418,7 +1418,7 @@ netdom query fsmo
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Schema Master controls all Active Directory schema modifications across the forest.
 - The Domain Naming Master manages the creation and removal of domains and application partitions.
@@ -1429,13 +1429,13 @@ netdom query fsmo
 
 ---
 
-# 09-FSMO-Roles.md
+## 09-FSMO-Roles.md
 
-# Part 3 — FSMO Role Management, Transfer, Seizure, Placement, Monitoring, Troubleshooting, and Disaster Recovery
+## Part 3 — FSMO Role Management, Transfer, Seizure, Placement, Monitoring, Troubleshooting, and Disaster Recovery
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -1449,7 +1449,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Managing FSMO Roles
+## Managing FSMO Roles
 
 FSMO roles are not permanently assigned to a Domain Controller.
 
@@ -1464,7 +1464,7 @@ Administrators can:
 
 ---
 
-# Identifying FSMO Role Holders
+## Identifying FSMO Role Holders
 
 The quickest method is:
 
@@ -1486,7 +1486,7 @@ This command displays the current role owners.
 
 ---
 
-# PowerShell Method
+## PowerShell Method
 
 Modern environments commonly use the Active Directory PowerShell module.
 
@@ -1506,7 +1506,7 @@ These commands provide detailed information about the current FSMO role holders.
 
 ---
 
-# Viewing FSMO Roles Graphically
+## Viewing FSMO Roles Graphically
 
 Several Microsoft administrative tools can display FSMO roles.
 
@@ -1521,7 +1521,7 @@ Each tool is responsible for viewing or managing specific roles.
 
 ---
 
-# FSMO Role Transfer
+## FSMO Role Transfer
 
 A **transfer** is a planned movement of a role from one healthy Domain Controller to another.
 
@@ -1535,7 +1535,7 @@ Typical reasons include:
 
 ---
 
-# Transfer Workflow
+## Transfer Workflow
 
 ```text
 Healthy DC
@@ -1561,7 +1561,7 @@ The original role holder is online and cooperates during the transfer.
 
 ---
 
-# Example
+## Example
 
 Current:
 
@@ -1587,7 +1587,7 @@ No directory inconsistency occurs because the transfer is coordinated.
 
 ---
 
-# FSMO Role Seizure
+## FSMO Role Seizure
 
 A **seizure** is an emergency operation.
 
@@ -1599,7 +1599,7 @@ It should be used only when:
 
 ---
 
-# Seizure Workflow
+## Seizure Workflow
 
 ```text
 DC01
@@ -1629,7 +1629,7 @@ Unlike a transfer, the failed server is unavailable.
 
 ---
 
-# Transfer vs Seizure
+## Transfer vs Seizure
 
 | Transfer | Seizure |
 |-----------|----------|
@@ -1643,7 +1643,7 @@ Always choose **transfer** when possible.
 
 ---
 
-# Important Warning
+## Important Warning
 
 After a role has been **seized**, the failed Domain Controller **must not** simply be brought back online if it still believes it owns that FSMO role.
 
@@ -1669,7 +1669,7 @@ Rejoin Domain
 
 ---
 
-# Which Roles Are Commonly Seized?
+## Which Roles Are Commonly Seized?
 
 Possible scenarios:
 
@@ -1715,9 +1715,9 @@ The decision depends on business requirements and recovery objectives.
 
 ---
 
-# FSMO Role Placement
+## FSMO Role Placement
 
-## Small Environment
+### Small Environment
 
 Example:
 
@@ -1737,7 +1737,7 @@ Advantages:
 
 ---
 
-# Medium Environment
+## Medium Environment
 
 Example:
 
@@ -1773,7 +1773,7 @@ Provides better redundancy during maintenance.
 
 ---
 
-# Large Enterprise
+## Large Enterprise
 
 Example:
 
@@ -1826,7 +1826,7 @@ Placement depends on:
 
 ---
 
-# Infrastructure Master Consideration
+## Infrastructure Master Consideration
 
 Historically, Microsoft recommended that the Infrastructure Master should **not** reside on a Global Catalog server in a multi-domain forest unless every Domain Controller is also a Global Catalog.
 
@@ -1836,7 +1836,7 @@ Always evaluate your forest design before deciding role placement.
 
 ---
 
-# FSMO Role Monitoring
+## FSMO Role Monitoring
 
 Administrators should regularly monitor:
 
@@ -1852,7 +1852,7 @@ Proactive monitoring helps prevent outages.
 
 ---
 
-# Monitoring Workflow
+## Monitoring Workflow
 
 ```text
 Monitoring System
@@ -1880,7 +1880,7 @@ Administrator
 
 ---
 
-# Event Logs
+## Event Logs
 
 Useful log sources include:
 
@@ -1894,7 +1894,7 @@ These logs often contain events related to replication, authentication, and FSMO
 
 ---
 
-# Replication Health
+## Replication Health
 
 FSMO roles depend on healthy replication.
 
@@ -1928,7 +1928,7 @@ If replication fails:
 
 ---
 
-# Time Synchronization Monitoring
+## Time Synchronization Monitoring
 
 The PDC Emulator should maintain accurate time.
 
@@ -1954,7 +1954,7 @@ Incorrect time can disrupt Kerberos authentication across the domain.
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Every FSMO role holder should be included in:
 
@@ -1967,7 +1967,7 @@ Backups simplify recovery after failures.
 
 ---
 
-# Disaster Recovery Planning
+## Disaster Recovery Planning
 
 Organizations should document:
 
@@ -1982,7 +1982,7 @@ Regular testing ensures procedures remain effective.
 
 ---
 
-# Common FSMO Problems
+## Common FSMO Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1995,7 +1995,7 @@ Regular testing ensures procedures remain effective.
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```text
 Problem Reported
@@ -2033,7 +2033,7 @@ This structured approach helps isolate the root cause.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -2086,7 +2086,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 FSMO role holders are attractive targets because of their importance.
 
@@ -2105,7 +2105,7 @@ Compromising an FSMO role holder can affect the entire domain or forest dependin
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -2118,7 +2118,7 @@ Avoid:
 
 ---
 
-# Best Practices Checklist
+## Best Practices Checklist
 
 ✔ Keep Domain Controllers healthy.
 
@@ -2140,13 +2140,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Practice identifying and planning FSMO management.
 
-### Tasks
+#### Tasks
 
 1. Run:
 
@@ -2179,7 +2179,7 @@ to identify domain-wide roles.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between transferring and seizing an FSMO role?
 2. When should an FSMO role be seized?
@@ -2194,7 +2194,7 @@ to identify domain-wide roles.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - FSMO roles can be transferred during planned maintenance or seized during unrecoverable failures.
 - Transfers are coordinated and preferred; seizures are emergency operations.
@@ -2204,13 +2204,13 @@ to identify domain-wide roles.
 
 ---
 
-# 09-FSMO-Roles.md
+## 09-FSMO-Roles.md
 
-# Part 4 — Best Practices, Security, Troubleshooting, Final Revision, Interview Preparation, and Chapter Summary
+## Part 4 — Best Practices, Security, Troubleshooting, Final Revision, Interview Preparation, and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -2223,7 +2223,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Designing an Enterprise FSMO Strategy
+## Designing an Enterprise FSMO Strategy
 
 A well-designed FSMO strategy considers:
 
@@ -2239,9 +2239,9 @@ FSMO planning should be part of the overall Active Directory architecture.
 
 ---
 
-# Recommended Role Placement
+## Recommended Role Placement
 
-## Small Business
+### Small Business
 
 Typical environment:
 
@@ -2270,7 +2270,7 @@ This design is simple while still providing redundancy through replication and b
 
 ---
 
-## Medium Enterprise
+### Medium Enterprise
 
 Example:
 
@@ -2306,7 +2306,7 @@ This allows maintenance to occur with minimal operational impact.
 
 ---
 
-## Large Enterprise
+### Large Enterprise
 
 Example:
 
@@ -2344,7 +2344,7 @@ Role placement should align with the organization's replication topology and dis
 
 ---
 
-# FSMO Maintenance Checklist
+## FSMO Maintenance Checklist
 
 Administrators should regularly verify:
 
@@ -2368,7 +2368,7 @@ Administrators should regularly verify:
 
 ---
 
-# High Availability Considerations
+## High Availability Considerations
 
 FSMO roles do not eliminate the need for multiple Domain Controllers.
 
@@ -2398,7 +2398,7 @@ Routine authentication continues even if a non-critical FSMO role is temporarily
 
 ---
 
-# Disaster Recovery Planning
+## Disaster Recovery Planning
 
 A documented recovery plan should include:
 
@@ -2434,7 +2434,7 @@ Recovery procedures should be tested periodically.
 
 ---
 
-# System State Backup
+## System State Backup
 
 Every Domain Controller should receive regular **System State** backups.
 
@@ -2450,7 +2450,7 @@ These backups are essential for recovering Domain Controllers after failures.
 
 ---
 
-# FSMO Health Validation
+## FSMO Health Validation
 
 Administrators should routinely verify:
 
@@ -2482,9 +2482,9 @@ Routine validation reduces the likelihood of unexpected outages.
 
 ---
 
-# Common Failure Scenarios
+## Common Failure Scenarios
 
-## Scenario 1
+### Scenario 1
 
 RID Master unavailable.
 
@@ -2495,7 +2495,7 @@ Symptoms:
 
 ---
 
-## Scenario 2
+### Scenario 2
 
 PDC Emulator unavailable.
 
@@ -2507,7 +2507,7 @@ Symptoms:
 
 ---
 
-## Scenario 3
+### Scenario 3
 
 Schema Master unavailable.
 
@@ -2518,7 +2518,7 @@ Symptoms:
 
 ---
 
-## Scenario 4
+### Scenario 4
 
 Domain Naming Master unavailable.
 
@@ -2529,7 +2529,7 @@ Symptoms:
 
 ---
 
-## Scenario 5
+### Scenario 5
 
 Infrastructure Master unavailable.
 
@@ -2540,7 +2540,7 @@ Symptoms:
 
 ---
 
-# FSMO Troubleshooting Checklist
+## FSMO Troubleshooting Checklist
 
 When troubleshooting:
 
@@ -2564,7 +2564,7 @@ When troubleshooting:
 
 ---
 
-# Useful Administrative Commands
+## Useful Administrative Commands
 
 Display FSMO roles:
 
@@ -2600,7 +2600,7 @@ These tools assist in verifying role ownership and directory health.
 
 ---
 
-# Enterprise Monitoring
+## Enterprise Monitoring
 
 Organizations should monitor:
 
@@ -2617,7 +2617,7 @@ Monitoring enables early detection of issues before they affect users.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -2667,7 +2667,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 FSMO role holders are among the most sensitive assets in an Active Directory environment.
 
@@ -2687,9 +2687,9 @@ Protecting FSMO role holders helps safeguard the integrity of the entire directo
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
-## Myth 1
+### Myth 1
 
 > All five FSMO roles are equally critical every day.
 
@@ -2699,7 +2699,7 @@ The PDC Emulator is generally involved in more day-to-day activities than the ot
 
 ---
 
-## Myth 2
+### Myth 2
 
 > Losing a Schema Master immediately stops user logons.
 
@@ -2709,7 +2709,7 @@ Normal authentication continues because schema updates are infrequent.
 
 ---
 
-## Myth 3
+### Myth 3
 
 > Every Domain Controller owns an FSMO role.
 
@@ -2719,7 +2719,7 @@ A Domain Controller may host multiple roles or none at all.
 
 ---
 
-## Myth 4
+### Myth 4
 
 > FSMO roles replace Active Directory replication.
 
@@ -2729,7 +2729,7 @@ FSMO roles complement multi-master replication by handling only specific operati
 
 ---
 
-# Common Administrative Mistakes
+## Common Administrative Mistakes
 
 Avoid:
 
@@ -2743,7 +2743,7 @@ Avoid:
 
 ---
 
-# Best Practices Checklist
+## Best Practices Checklist
 
 ✔ Document FSMO role holders.
 
@@ -2767,7 +2767,7 @@ Avoid:
 
 ---
 
-# Complete Chapter Summary
+## Complete Chapter Summary
 
 In this chapter, you learned:
 
@@ -2793,7 +2793,7 @@ FSMO roles solve the small set of directory operations that cannot safely occur 
 
 ---
 
-# Final Revision Table
+## Final Revision Table
 
 | FSMO Role | Scope | Primary Responsibility |
 |------------|-------|------------------------|
@@ -2805,7 +2805,7 @@ FSMO roles solve the small set of directory operations that cannot safely occur 
 
 ---
 
-# Decision Matrix
+## Decision Matrix
 
 | Administrative Task | FSMO Role Involved |
 |---------------------|--------------------|
@@ -2818,13 +2818,13 @@ FSMO roles solve the small set of directory operations that cannot safely occur 
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Verify FSMO health and prepare a maintenance plan.
 
-### Tasks
+#### Tasks
 
 1. Identify all FSMO role holders:
 
@@ -2864,7 +2864,7 @@ repadmin /syncall
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are FSMO roles necessary in a multi-master directory?
 2. Which FSMO roles are forest-wide?
@@ -2879,7 +2879,7 @@ repadmin /syncall
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – FSMO Roles
 - Microsoft Learn – Active Directory Domain Services
@@ -2891,7 +2891,7 @@ repadmin /syncall
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 09 – FSMO Roles**.
 

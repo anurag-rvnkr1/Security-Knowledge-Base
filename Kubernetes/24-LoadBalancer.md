@@ -19,7 +19,7 @@ Unlike a NodePort Service, where users connect directly to a Node, a LoadBalance
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -36,7 +36,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need LoadBalancer?
+## Why Do We Need LoadBalancer?
 
 Suppose users access:
 
@@ -57,7 +57,7 @@ Problems:
 
 ---
 
-# Solution
+## Solution
 
 Use a cloud Load Balancer.
 
@@ -81,7 +81,7 @@ Users connect through one stable endpoint.
 
 ---
 
-# What is a LoadBalancer Service?
+## What is a LoadBalancer Service?
 
 A LoadBalancer Service creates an external load balancer that forwards requests to backend Kubernetes Services.
 
@@ -107,7 +107,7 @@ Pods
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                     Internet
@@ -151,7 +151,7 @@ Pods
 
 ---
 
-# LoadBalancer Characteristics
+## LoadBalancer Characteristics
 
 - External public IP
 - Automatic cloud integration
@@ -163,7 +163,7 @@ Pods
 
 ---
 
-# Service Hierarchy
+## Service Hierarchy
 
 ```
 LoadBalancer
@@ -190,7 +190,7 @@ unless configured otherwise by supported implementations.
 
 ---
 
-# LoadBalancer Workflow
+## LoadBalancer Workflow
 
 ```
 Client
@@ -218,7 +218,7 @@ Pod
 
 ---
 
-# LoadBalancer YAML
+## LoadBalancer YAML
 
 ```yaml
 apiVersion: v1
@@ -246,7 +246,7 @@ spec:
 
 ---
 
-# YAML Breakdown
+## YAML Breakdown
 
 ```
 LoadBalancer
@@ -274,7 +274,7 @@ Container
 
 ---
 
-# External IP Allocation
+## External IP Allocation
 
 Cloud provider allocates:
 
@@ -302,7 +302,7 @@ EXTERNAL-IP
 
 ---
 
-# Cloud Controller Manager
+## Cloud Controller Manager
 
 The **Cloud Controller Manager (CCM)** communicates with the cloud provider's APIs.
 
@@ -333,7 +333,7 @@ Load Balancer
 
 ---
 
-# Health Checks
+## Health Checks
 
 Cloud Load Balancer continuously checks:
 
@@ -359,7 +359,7 @@ Removed
 
 ---
 
-# Traffic Distribution
+## Traffic Distribution
 
 Suppose:
 
@@ -397,7 +397,7 @@ Each Node forwards traffic to backend Pods.
 
 ---
 
-# Pod Scaling
+## Pod Scaling
 
 Current:
 
@@ -427,7 +427,7 @@ Traffic Balanced
 
 ---
 
-# Pod Failure
+## Pod Failure
 
 Suppose:
 
@@ -457,7 +457,7 @@ No client changes are required.
 
 ---
 
-# Worker Node Failure
+## Worker Node Failure
 
 Suppose:
 
@@ -485,7 +485,7 @@ Continue Routing
 
 ---
 
-# External Traffic Flow
+## External Traffic Flow
 
 ```
 Internet
@@ -513,7 +513,7 @@ Pod
 
 ---
 
-# Internal Communication
+## Internal Communication
 
 Pods inside the cluster usually communicate through:
 
@@ -525,7 +525,7 @@ They typically do **not** use the external LoadBalancer address.
 
 ---
 
-# LoadBalancer vs NodePort
+## LoadBalancer vs NodePort
 
 | NodePort | LoadBalancer |
 |-----------|--------------|
@@ -535,7 +535,7 @@ They typically do **not** use the external LoadBalancer address.
 
 ---
 
-# LoadBalancer vs ClusterIP
+## LoadBalancer vs ClusterIP
 
 | ClusterIP | LoadBalancer |
 |------------|--------------|
@@ -545,7 +545,7 @@ They typically do **not** use the external LoadBalancer address.
 
 ---
 
-# LoadBalancer vs Ingress
+## LoadBalancer vs Ingress
 
 | LoadBalancer | Ingress |
 |---------------|----------|
@@ -555,7 +555,7 @@ They typically do **not** use the external LoadBalancer address.
 
 ---
 
-# Viewing Services
+## Viewing Services
 
 ```bash
 kubectl get svc
@@ -579,7 +579,7 @@ LoadBalancer
 
 ---
 
-# Describe Service
+## Describe Service
 
 ```bash
 kubectl describe svc web
@@ -594,7 +594,7 @@ Observe:
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -622,7 +622,7 @@ kubectl delete svc web
 
 ---
 
-# LoadBalancer Architecture Summary
+## LoadBalancer Architecture Summary
 
 ```
 Internet
@@ -650,9 +650,9 @@ Pods
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use LoadBalancer in Cloud Environments
+#### 1. Use LoadBalancer in Cloud Environments
 
 Ideal for:
 
@@ -662,19 +662,19 @@ Ideal for:
 
 ---
 
-### 2. Use Ingress for Multiple Applications
+#### 2. Use Ingress for Multiple Applications
 
 Avoid creating many separate public load balancers when HTTP/HTTPS routing can be centralized.
 
 ---
 
-### 3. Enable Health Checks
+#### 3. Enable Health Checks
 
 Ensure backend Pods expose proper readiness probes so unhealthy Pods are not added to the Service endpoints.
 
 ---
 
-### 4. Secure Public Endpoints
+#### 4. Secure Public Endpoints
 
 Use:
 
@@ -685,15 +685,15 @@ Use:
 
 ---
 
-### 5. Monitor Cloud Costs
+#### 5. Monitor Cloud Costs
 
 Every cloud Load Balancer may incur additional charges.
 
 ---
 
-# How LoadBalancer Works Internally
+## How LoadBalancer Works Internally
 
-## Overview
+### Overview
 
 A **LoadBalancer Service** is the highest-level Kubernetes Service type used to expose applications to external users.
 
@@ -733,7 +733,7 @@ Pods
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                     Internet
@@ -782,7 +782,7 @@ Pods
 
 ---
 
-# Complete Internal Workflow
+## Complete Internal Workflow
 
 ```
 Developer
@@ -822,7 +822,7 @@ Traffic Starts
 
 ---
 
-# Step 1 – Create LoadBalancer Service
+## Step 1 – Create LoadBalancer Service
 
 Example:
 
@@ -840,7 +840,7 @@ kubectl apply -f service.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -861,7 +861,7 @@ Service Stored
 
 ---
 
-# Step 3 – Service Controller
+## Step 3 – Service Controller
 
 The Service Controller:
 
@@ -889,7 +889,7 @@ At this stage, the Service is still internal.
 
 ---
 
-# Step 4 – Cloud Controller Manager (CCM)
+## Step 4 – Cloud Controller Manager (CCM)
 
 The Cloud Controller Manager continuously watches the API Server.
 
@@ -915,7 +915,7 @@ Cloud API
 
 ---
 
-# Step 5 – Cloud Provider API
+## Step 5 – Cloud Provider API
 
 Examples:
 
@@ -928,7 +928,7 @@ The cloud platform provisions the external load balancer.
 
 ---
 
-# Step 6 – Public IP Allocation
+## Step 6 – Public IP Allocation
 
 The cloud provider assigns:
 
@@ -956,7 +956,7 @@ EXTERNAL-IP
 
 ---
 
-# Step 7 – Register Worker Nodes
+## Step 7 – Register Worker Nodes
 
 The Load Balancer registers backend Nodes.
 
@@ -984,7 +984,7 @@ The Load Balancer sends traffic to Nodes, **not directly to Pods**.
 
 ---
 
-# Step 8 – Health Checks
+## Step 8 – Health Checks
 
 The cloud Load Balancer periodically checks each registered Node.
 
@@ -1014,7 +1014,7 @@ Removed From Rotation
 
 ---
 
-# Step 9 – NodePort
+## Step 9 – NodePort
 
 Traffic reaches:
 
@@ -1036,7 +1036,7 @@ The NodePort forwards traffic to the Service.
 
 ---
 
-# Step 10 – kube-proxy
+## Step 10 – kube-proxy
 
 kube-proxy matches the incoming packet.
 
@@ -1060,7 +1060,7 @@ Linux kernel rules perform the forwarding.
 
 ---
 
-# Step 11 – EndpointSlice
+## Step 11 – EndpointSlice
 
 Suppose:
 
@@ -1098,7 +1098,7 @@ One Pod is selected.
 
 ---
 
-# Step 12 – Backend Pod
+## Step 12 – Backend Pod
 
 The request reaches:
 
@@ -1118,7 +1118,7 @@ The response follows the reverse path.
 
 ---
 
-# Complete Packet Flow
+## Complete Packet Flow
 
 ```
 Client
@@ -1158,7 +1158,7 @@ Application
 
 ---
 
-# Scaling
+## Scaling
 
 Current:
 
@@ -1198,7 +1198,7 @@ The Load Balancer does not need to know individual Pod IPs.
 
 ---
 
-# Pod Failure
+## Pod Failure
 
 Suppose:
 
@@ -1228,7 +1228,7 @@ Clients experience minimal disruption.
 
 ---
 
-# Node Failure
+## Node Failure
 
 Suppose:
 
@@ -1264,7 +1264,7 @@ Worker 3
 
 ---
 
-# Cluster Autoscaling
+## Cluster Autoscaling
 
 Suppose:
 
@@ -1286,7 +1286,7 @@ New Nodes become eligible for traffic after registration and health checks.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Internet
@@ -1322,7 +1322,7 @@ Pod
 
 ---
 
-# AWS Example
+## AWS Example
 
 ```
 Internet
@@ -1346,7 +1346,7 @@ Pods
 
 ---
 
-# Azure Example
+## Azure Example
 
 ```
 Internet
@@ -1366,7 +1366,7 @@ Pods
 
 ---
 
-# Google Cloud Example
+## Google Cloud Example
 
 ```
 Internet
@@ -1386,7 +1386,7 @@ Pods
 
 ---
 
-# Bare-Metal Clusters
+## Bare-Metal Clusters
 
 On bare-metal Kubernetes:
 
@@ -1410,7 +1410,7 @@ These projects provide LoadBalancer functionality in environments without a clou
 
 ---
 
-# Session Affinity
+## Session Affinity
 
 Optional configuration:
 
@@ -1432,9 +1432,9 @@ Useful for applications requiring sticky sessions.
 
 ---
 
-# externalTrafficPolicy
+## externalTrafficPolicy
 
-### Cluster (Default)
+#### Cluster (Default)
 
 ```
 Load Balancer
@@ -1459,7 +1459,7 @@ Cons:
 
 ---
 
-### Local
+#### Local
 
 ```
 Load Balancer
@@ -1483,7 +1483,7 @@ Cons:
 
 ---
 
-# Hands-on Lab 1 – Create Deployment
+## Hands-on Lab 1 – Create Deployment
 
 ```bash
 kubectl create deployment nginx \
@@ -1493,7 +1493,7 @@ kubectl create deployment nginx \
 
 ---
 
-# Hands-on Lab 2 – Create LoadBalancer Service
+## Hands-on Lab 2 – Create LoadBalancer Service
 
 ```bash
 kubectl expose deployment nginx \
@@ -1511,7 +1511,7 @@ Observe the assigned external IP (cloud environments).
 
 ---
 
-# Hands-on Lab 3 – Describe Service
+## Hands-on Lab 3 – Describe Service
 
 ```bash
 kubectl describe svc nginx
@@ -1526,7 +1526,7 @@ Inspect:
 
 ---
 
-# Hands-on Lab 4 – Inspect EndpointSlices
+## Hands-on Lab 4 – Inspect EndpointSlices
 
 ```bash
 kubectl get endpointslices
@@ -1536,7 +1536,7 @@ Observe backend Pod IPs.
 
 ---
 
-# Hands-on Lab 5 – Scale Deployment
+## Hands-on Lab 5 – Scale Deployment
 
 ```bash
 kubectl scale deployment nginx \
@@ -1553,9 +1553,9 @@ Verify automatic updates.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Expecting LoadBalancer to Work Everywhere
+### 1. Expecting LoadBalancer to Work Everywhere
 
 On bare-metal clusters:
 
@@ -1571,33 +1571,33 @@ Install a LoadBalancer implementation such as MetalLB if cloud integration is un
 
 ---
 
-## 2. Forgetting Cloud Costs
+### 2. Forgetting Cloud Costs
 
 Each cloud Load Balancer may incur ongoing charges.
 
 ---
 
-## 3. Creating One LoadBalancer per Microservice
+### 3. Creating One LoadBalancer per Microservice
 
 For HTTP/HTTPS workloads, consider using an Ingress Controller to expose multiple Services through a single external endpoint.
 
 ---
 
-## 4. Ignoring Health Checks
+### 4. Ignoring Health Checks
 
 Unhealthy Nodes or Pods should be excluded using readiness probes and cloud health checks.
 
 ---
 
-## 5. Misunderstanding Traffic Flow
+### 5. Misunderstanding Traffic Flow
 
 The Load Balancer forwards traffic to **Nodes**, while kube-proxy and EndpointSlices handle forwarding to **Pods**.
 
 ---
 
-# LoadBalancer Quick Revision
+## LoadBalancer Quick Revision
 
-## Service Hierarchy
+### Service Hierarchy
 
 ```
 LoadBalancer
@@ -1617,7 +1617,7 @@ Pods
 
 ---
 
-## Packet Flow
+### Packet Flow
 
 ```
 Internet
@@ -1649,7 +1649,7 @@ Pod
 
 ---
 
-## Cloud Integration
+### Cloud Integration
 
 ```
 Service
@@ -1669,7 +1669,7 @@ Load Balancer
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Services:
 
@@ -1703,9 +1703,9 @@ kubectl delete svc nginx
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a LoadBalancer Service?
 - How does it differ from NodePort?
@@ -1713,7 +1713,7 @@ kubectl delete svc nginx
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - What is the role of the Cloud Controller Manager?
 - Why does a LoadBalancer Service automatically create a NodePort?
@@ -1721,7 +1721,7 @@ kubectl delete svc nginx
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the complete packet flow from the Internet to a backend Pod through a LoadBalancer Service.
 - Why does the Load Balancer target Nodes instead of Pods?
@@ -1731,9 +1731,9 @@ kubectl delete svc nginx
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Services
 - LoadBalancer Services
@@ -1743,7 +1743,7 @@ kubectl delete svc nginx
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Networking
 - SIG Network
@@ -1752,7 +1752,7 @@ kubectl delete svc nginx
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Production Networking
@@ -1761,7 +1761,7 @@ kubectl delete svc nginx
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Deploy a multi-replica application.
 2. Expose it with a LoadBalancer Service.
@@ -1773,7 +1773,7 @@ kubectl delete svc nginx
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Internet

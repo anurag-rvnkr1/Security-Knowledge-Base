@@ -360,7 +360,7 @@ This approach supports secure, repeatable, and auditable cloud infrastructure de
 
 ---
 
-# Infrastructure as Code Security Lifecycle
+## Infrastructure as Code Security Lifecycle
 
 ```
 Infrastructure Requirements
@@ -430,7 +430,7 @@ Each stage contributes to maintaining secure and compliant cloud infrastructure.
 
 ---
 
-## Step 1 – Define Infrastructure Requirements
+### Step 1 – Define Infrastructure Requirements
 
 Infrastructure planning begins by identifying:
 
@@ -445,7 +445,7 @@ These requirements guide the secure design of infrastructure.
 
 ---
 
-## Step 2 – Develop Infrastructure as Code
+### Step 2 – Develop Infrastructure as Code
 
 Engineers define cloud resources using IaC templates.
 
@@ -465,7 +465,7 @@ Infrastructure definitions should follow organizational coding and security stan
 
 ---
 
-## Step 3 – Store IaC in Version Control
+### Step 3 – Store IaC in Version Control
 
 Infrastructure code should be managed in a secure version control system.
 
@@ -482,7 +482,7 @@ Version control provides traceability and enables controlled infrastructure chan
 
 ---
 
-## Step 4 – Perform Peer Review
+### Step 4 – Perform Peer Review
 
 Infrastructure code should undergo peer review before deployment.
 
@@ -500,7 +500,7 @@ Peer reviews reduce configuration errors and improve knowledge sharing.
 
 ---
 
-## Step 5 – Perform Automated Security Scanning
+### Step 5 – Perform Automated Security Scanning
 
 IaC templates are scanned automatically for security issues.
 
@@ -518,7 +518,7 @@ Automated scanning prevents insecure infrastructure from progressing through the
 
 ---
 
-## Step 6 – Validate Policies
+### Step 6 – Validate Policies
 
 Policy as Code engines evaluate infrastructure against organizational requirements.
 
@@ -534,7 +534,7 @@ Infrastructure that violates policy is rejected before deployment.
 
 ---
 
-## Step 7 – Deploy Through CI/CD
+### Step 7 – Deploy Through CI/CD
 
 Approved infrastructure is provisioned using automated deployment pipelines.
 
@@ -551,7 +551,7 @@ Automation ensures consistency across development, testing, and production envir
 
 ---
 
-## Step 8 – Monitor Infrastructure
+### Step 8 – Monitor Infrastructure
 
 After deployment, continuously monitor:
 
@@ -567,7 +567,7 @@ Monitoring ensures infrastructure remains secure throughout its lifecycle.
 
 ---
 
-## Step 9 – Detect Configuration Drift
+### Step 9 – Detect Configuration Drift
 
 Compare deployed infrastructure with approved IaC definitions.
 
@@ -584,9 +584,9 @@ Drift detection restores infrastructure consistency and prevents long-term secur
 
 ---
 
-## Practical Example
+### Practical Example
 
-### Example 1 – Secure Storage Deployment
+#### Example 1 – Secure Storage Deployment
 
 Scenario:
 
@@ -610,7 +610,7 @@ Outcome:
 
 ---
 
-### Example 2 – Virtual Network Deployment
+#### Example 2 – Virtual Network Deployment
 
 Scenario:
 
@@ -632,7 +632,7 @@ Outcome:
 
 ---
 
-### Example 3 – Kubernetes Cluster Provisioning
+#### Example 3 – Kubernetes Cluster Provisioning
 
 Scenario:
 
@@ -656,7 +656,7 @@ Outcome:
 
 ---
 
-### Example 4 – Configuration Drift Detection
+#### Example 4 – Configuration Drift Detection
 
 Scenario:
 
@@ -679,13 +679,13 @@ Outcome:
 
 ---
 
-## Detection
+### Detection
 
 Continuous detection is essential for maintaining secure infrastructure throughout its lifecycle.
 
 ---
 
-### Configuration Detection
+#### Configuration Detection
 
 Monitor for:
 
@@ -700,7 +700,7 @@ Continuous validation reduces the likelihood of insecure infrastructure.
 
 ---
 
-### Secrets Detection
+#### Secrets Detection
 
 Identify:
 
@@ -715,7 +715,7 @@ Secrets scanning should occur before every deployment.
 
 ---
 
-### Policy Violation Detection
+#### Policy Violation Detection
 
 Detect:
 
@@ -730,7 +730,7 @@ Policy engines provide immediate feedback during deployment.
 
 ---
 
-### Identity Detection
+#### Identity Detection
 
 Monitor:
 
@@ -745,7 +745,7 @@ Identity monitoring strengthens infrastructure governance.
 
 ---
 
-### Runtime Detection
+#### Runtime Detection
 
 Observe deployed infrastructure for:
 
@@ -760,7 +760,7 @@ Runtime monitoring complements pre-deployment validation.
 
 ---
 
-### Detection Best Practices
+#### Detection Best Practices
 
 - Scan every Infrastructure as Code template before deployment.
 - Store all infrastructure definitions in version control.
@@ -775,7 +775,7 @@ Runtime monitoring complements pre-deployment validation.
 
 ---
 
-## Prevention
+### Prevention
 
 Infrastructure as Code (IaC) Security focuses on preventing insecure cloud infrastructure from being deployed in the first place. By embedding security controls into the infrastructure development lifecycle, organizations can eliminate configuration errors before resources reach production.
 
@@ -783,7 +783,7 @@ Preventive controls reduce operational risk, improve deployment consistency, str
 
 ---
 
-# Infrastructure as Code Security Prevention Lifecycle
+## Infrastructure as Code Security Prevention Lifecycle
 
 ```
 Infrastructure Requirements
@@ -841,7 +841,7 @@ Each stage introduces preventive controls that reduce the likelihood of insecure
 
 ---
 
-# Design Secure Infrastructure
+## Design Secure Infrastructure
 
 Infrastructure security begins during architecture and design.
 
@@ -860,7 +860,7 @@ A secure architecture reduces downstream remediation efforts.
 
 ---
 
-# Adopt Secure IaC Coding Standards
+## Adopt Secure IaC Coding Standards
 
 Infrastructure definitions should follow standardized development practices.
 
@@ -878,7 +878,7 @@ Standardization improves maintainability and reduces security risks.
 
 ---
 
-# Protect Version Control Systems
+## Protect Version Control Systems
 
 Infrastructure repositories should implement:
 
@@ -893,7 +893,7 @@ Protecting infrastructure code is critical because it defines production environ
 
 ---
 
-# Enforce Peer Reviews
+## Enforce Peer Reviews
 
 Require independent review before merging infrastructure changes.
 
@@ -911,7 +911,7 @@ Peer reviews improve quality and reduce deployment errors.
 
 ---
 
-# Automate IaC Security Scanning
+## Automate IaC Security Scanning
 
 Every infrastructure template should undergo automated validation.
 
@@ -952,7 +952,7 @@ Automated scanning provides consistent and repeatable security validation.
 
 ---
 
-# Implement Policy as Code
+## Implement Policy as Code
 
 Represent governance and security requirements as executable policies.
 
@@ -969,7 +969,7 @@ Automated policy enforcement prevents non-compliant deployments.
 
 ---
 
-# Secure Secrets Management
+## Secure Secrets Management
 
 Infrastructure code should never contain embedded secrets.
 
@@ -988,7 +988,7 @@ Implement regular secret rotation and fine-grained access controls.
 
 ---
 
-# Standardize Deployment Pipelines
+## Standardize Deployment Pipelines
 
 Infrastructure should only be deployed through approved CI/CD pipelines.
 
@@ -1005,7 +1005,7 @@ Standardized deployment processes improve security and traceability.
 
 ---
 
-# Monitor Infrastructure Continuously
+## Monitor Infrastructure Continuously
 
 Continuously monitor for:
 
@@ -1020,7 +1020,7 @@ Continuous monitoring ensures infrastructure remains aligned with approved defin
 
 ---
 
-# Train Infrastructure Teams
+## Train Infrastructure Teams
 
 Provide ongoing education on:
 
@@ -1036,9 +1036,9 @@ Well-trained teams reduce the likelihood of introducing security weaknesses.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Treat Infrastructure as Software
+#### 1. Treat Infrastructure as Software
 
 Apply software engineering principles to infrastructure.
 
@@ -1055,7 +1055,7 @@ Infrastructure should be developed with the same rigor as application code.
 
 ---
 
-### 2. Shift Infrastructure Security Left
+#### 2. Shift Infrastructure Security Left
 
 Validate infrastructure before deployment rather than after provisioning.
 
@@ -1063,7 +1063,7 @@ Early detection minimizes operational disruption and remediation costs.
 
 ---
 
-### 3. Use Secure Default Configurations
+#### 3. Use Secure Default Configurations
 
 Infrastructure templates should enable secure settings by default, such as:
 
@@ -1077,7 +1077,7 @@ Secure defaults reduce the risk of accidental misconfiguration.
 
 ---
 
-### 4. Automate Security Validation
+#### 4. Automate Security Validation
 
 Integrate automated validation into every infrastructure pipeline.
 
@@ -1093,7 +1093,7 @@ Automation improves consistency and scalability.
 
 ---
 
-### 5. Continuously Detect Configuration Drift
+#### 5. Continuously Detect Configuration Drift
 
 Regularly compare deployed infrastructure against approved IaC definitions.
 
@@ -1108,7 +1108,7 @@ Drift detection preserves infrastructure integrity.
 
 ---
 
-### 6. Apply Least Privilege
+#### 6. Apply Least Privilege
 
 Restrict permissions for:
 
@@ -1122,7 +1122,7 @@ Least privilege reduces the impact of compromised identities.
 
 ---
 
-### 7. Secure the Supply Chain
+#### 7. Secure the Supply Chain
 
 Protect infrastructure dependencies by:
 
@@ -1136,7 +1136,7 @@ Supply chain security extends beyond application dependencies to infrastructure 
 
 ---
 
-### 8. Integrate with Security Operations
+#### 8. Integrate with Security Operations
 
 Coordinate IaC Security with:
 
@@ -1151,7 +1151,7 @@ Integrated processes improve visibility and accelerate remediation.
 
 ---
 
-### 9. Measure IaC Security Performance
+#### 9. Measure IaC Security Performance
 
 Track metrics including:
 
@@ -1167,7 +1167,7 @@ Metrics provide measurable insight into IaC security maturity.
 
 ---
 
-### 10. Continuously Improve Templates
+#### 10. Continuously Improve Templates
 
 Regularly:
 
@@ -1182,7 +1182,7 @@ Continuous improvement keeps infrastructure resilient against evolving risks.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Infrastructure as Code (IaC) provides consistency, scalability, and automation, but insecure development practices can rapidly propagate vulnerabilities across entire cloud environments. Since IaC templates are reusable, a single mistake can be replicated hundreds or thousands of times.
 
@@ -1190,7 +1190,7 @@ Understanding and avoiding these common mistakes significantly improves cloud se
 
 ---
 
-### 1. Hardcoding Secrets
+#### 1. Hardcoding Secrets
 
 One of the most critical IaC security mistakes is embedding sensitive information directly into infrastructure definitions.
 
@@ -1229,7 +1229,7 @@ Sensitive information should always be stored in dedicated secrets management so
 
 ---
 
-### 2. Skipping IaC Security Scanning
+#### 2. Skipping IaC Security Scanning
 
 Deploying infrastructure without automated security validation allows insecure configurations into production.
 
@@ -1245,7 +1245,7 @@ Security scanning should be mandatory before every deployment.
 
 ---
 
-### 3. Excessive IAM Permissions
+#### 3. Excessive IAM Permissions
 
 Granting broad permissions to users, service accounts, or automation pipelines increases the attack surface.
 
@@ -1260,7 +1260,7 @@ Apply the Principle of Least Privilege (PoLP) and review permissions regularly.
 
 ---
 
-### 4. Ignoring Configuration Drift
+#### 4. Ignoring Configuration Drift
 
 Manual changes made directly in cloud consoles create inconsistencies between deployed infrastructure and approved IaC templates.
 
@@ -1275,7 +1275,7 @@ Continuously detect and remediate configuration drift.
 
 ---
 
-### 5. Weak Network Configurations
+#### 5. Weak Network Configurations
 
 Insecure networking remains a frequent source of cloud breaches.
 
@@ -1291,7 +1291,7 @@ Network configurations should be validated before deployment.
 
 ---
 
-### 6. Disabling Encryption
+#### 6. Disabling Encryption
 
 Failing to enable encryption for storage, databases, or backups exposes sensitive information.
 
@@ -1307,7 +1307,7 @@ Encryption should be enabled by default in infrastructure templates.
 
 ---
 
-### 7. Missing Logging and Monitoring
+#### 7. Missing Logging and Monitoring
 
 Infrastructure without adequate logging reduces visibility into security events.
 
@@ -1323,7 +1323,7 @@ Logging should be configured automatically during infrastructure provisioning.
 
 ---
 
-### 8. Deploying Outside Approved Pipelines
+#### 8. Deploying Outside Approved Pipelines
 
 Manual deployments bypass security controls such as:
 
@@ -1337,7 +1337,7 @@ Production infrastructure should only be deployed through approved CI/CD pipelin
 
 ---
 
-### 9. Using Untrusted Modules
+#### 9. Using Untrusted Modules
 
 Third-party IaC modules may contain:
 
@@ -1355,7 +1355,7 @@ Organizations should:
 
 ---
 
-### 10. Poor Version Control Practices
+#### 10. Poor Version Control Practices
 
 Common repository issues include:
 
@@ -1369,7 +1369,7 @@ Infrastructure code should follow secure software development practices.
 
 ---
 
-### 11. Ignoring Compliance Requirements
+#### 11. Ignoring Compliance Requirements
 
 Infrastructure templates should enforce organizational and regulatory requirements.
 
@@ -1385,7 +1385,7 @@ Compliance validation should be automated within deployment pipelines.
 
 ---
 
-### 12. Lack of Standardization
+#### 12. Lack of Standardization
 
 Allowing each team to define infrastructure differently leads to:
 
@@ -1398,7 +1398,7 @@ Reusable modules and standardized templates promote consistency.
 
 ---
 
-### 13. Weak Change Management
+#### 13. Weak Change Management
 
 Infrastructure changes without proper approval or documentation increase operational and security risks.
 
@@ -1414,7 +1414,7 @@ Structured change management reduces deployment failures.
 
 ---
 
-### 14. Treating IaC as a One-Time Activity
+#### 14. Treating IaC as a One-Time Activity
 
 Infrastructure code requires ongoing maintenance.
 
@@ -1430,7 +1430,7 @@ Continuous improvement keeps infrastructure aligned with evolving threats and cl
 
 ---
 
-### 15. Focusing Only on Deployment-Time Security
+#### 15. Focusing Only on Deployment-Time Security
 
 Infrastructure remains exposed after deployment if runtime security is neglected.
 
@@ -1447,7 +1447,7 @@ IaC Security should extend throughout the operational lifecycle.
 
 ---
 
-## Infrastructure as Code Security Checklist
+### Infrastructure as Code Security Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1469,9 +1469,9 @@ IaC Security should extend throughout the operational lifecycle.
 
 ---
 
-## References
+### References
 
-### International Standards
+#### International Standards
 
 - ISO/IEC 27001 — Information Security Management Systems (ISMS)
 - ISO/IEC 27002 — Information Security Controls
@@ -1480,7 +1480,7 @@ IaC Security should extend throughout the operational lifecycle.
 
 ---
 
-### NIST Publications
+#### NIST Publications
 
 - NIST Cybersecurity Framework (CSF) 2.0
 - NIST SP 800-53 Rev. 5 — Security and Privacy Controls
@@ -1490,7 +1490,7 @@ IaC Security should extend throughout the operational lifecycle.
 
 ---
 
-### Cloud-Native and DevSecOps Guidance
+#### Cloud-Native and DevSecOps Guidance
 
 - Cloud Native Computing Foundation (CNCF) Security Whitepaper
 - Open Policy Agent (OPA)
@@ -1500,7 +1500,7 @@ IaC Security should extend throughout the operational lifecycle.
 
 ---
 
-### Infrastructure as Code Best Practices
+#### Infrastructure as Code Best Practices
 
 - Terraform Best Practices
 - OpenTofu Documentation
@@ -1512,9 +1512,9 @@ IaC Security should extend throughout the operational lifecycle.
 
 ---
 
-### Cloud Provider Security Documentation
+#### Cloud Provider Security Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - AWS CloudFormation
 - AWS Config
@@ -1522,7 +1522,7 @@ IaC Security should extend throughout the operational lifecycle.
 - AWS Security Hub
 - AWS Well-Architected Framework – Security Pillar
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Azure Resource Manager (ARM)
 - Azure Bicep
@@ -1530,7 +1530,7 @@ IaC Security should extend throughout the operational lifecycle.
 - Microsoft Defender for Cloud
 - Azure Resource Graph
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Google Cloud Infrastructure Manager
 - Google Cloud Asset Inventory
@@ -1539,7 +1539,7 @@ IaC Security should extend throughout the operational lifecycle.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - CIS Benchmarks
 - Cloud Security Alliance (CSA) Research

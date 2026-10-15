@@ -18,7 +18,7 @@ It provides automation for tasks that would otherwise require significant manual
 
 ---
 
-# Why Kubernetes Was Created
+## Why Kubernetes Was Created
 
 Before Kubernetes, organizations often managed containers manually.
 
@@ -76,7 +76,7 @@ Kubernetes was designed to solve these operational challenges.
 
 ---
 
-# What is Container Orchestration?
+## What is Container Orchestration?
 
 Container orchestration is the automated management of containerized applications.
 
@@ -97,7 +97,7 @@ Instead of manually managing containers, Kubernetes continuously maintains the d
 
 ---
 
-# Why "K8s"?
+## Why "K8s"?
 
 The word:
 
@@ -123,9 +123,9 @@ K8s
 
 ---
 
-# Evolution of Application Deployment
+## Evolution of Application Deployment
 
-## Traditional Deployment
+### Traditional Deployment
 
 ```
 Physical Server
@@ -143,7 +143,7 @@ Problems:
 
 ---
 
-## Virtual Machines
+### Virtual Machines
 
 ```
 Physical Server
@@ -179,7 +179,7 @@ Challenges:
 
 ---
 
-## Containers
+### Containers
 
 ```
 Host OS
@@ -205,7 +205,7 @@ Managing large numbers of containers.
 
 ---
 
-## Kubernetes
+### Kubernetes
 
 ```
 Cluster
@@ -233,7 +233,7 @@ Benefits:
 
 ---
 
-# Why Organizations Use Kubernetes
+## Why Organizations Use Kubernetes
 
 Major organizations adopt Kubernetes because it provides:
 
@@ -250,7 +250,7 @@ Major organizations adopt Kubernetes because it provides:
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 Imagine an e-commerce platform.
 
@@ -309,7 +309,7 @@ Resources are used more efficiently.
 
 ---
 
-# Kubernetes Goals
+## Kubernetes Goals
 
 Kubernetes is designed to:
 
@@ -323,15 +323,15 @@ Kubernetes is designed to:
 
 ---
 
-# Key Features
+## Key Features
 
-## Automated Deployment
+### Automated Deployment
 
 Deploy applications using declarative YAML manifests.
 
 ---
 
-## Self-Healing
+### Self-Healing
 
 If a Pod fails:
 
@@ -351,7 +351,7 @@ Applications recover automatically without manual intervention.
 
 ---
 
-## Horizontal Scaling
+### Horizontal Scaling
 
 ```
 2 Pods
@@ -372,7 +372,7 @@ Scaling can be:
 
 ---
 
-## Rolling Updates
+### Rolling Updates
 
 Instead of replacing every application instance simultaneously:
 
@@ -392,7 +392,7 @@ This minimizes downtime.
 
 ---
 
-## Rollback
+### Rollback
 
 If deployment fails:
 
@@ -416,13 +416,13 @@ Applications can return to a previously working version.
 
 ---
 
-## Service Discovery
+### Service Discovery
 
 Applications communicate using stable service names instead of changing IP addresses.
 
 ---
 
-## Load Balancing
+### Load Balancing
 
 Traffic is distributed across multiple Pods.
 
@@ -444,13 +444,13 @@ Pod C
 
 ---
 
-## Resource Scheduling
+### Resource Scheduling
 
 Kubernetes determines where Pods should run based on available cluster resources and scheduling policies.
 
 ---
 
-# Kubernetes Architecture (High-Level)
+## Kubernetes Architecture (High-Level)
 
 ```
                 Kubernetes Cluster
@@ -478,7 +478,7 @@ A deeper exploration of the architecture is covered in the next chapter.
 
 ---
 
-# Kubernetes Components (Preview)
+## Kubernetes Components (Preview)
 
 Control Plane:
 
@@ -498,7 +498,7 @@ Each component has a specific responsibility for maintaining the cluster.
 
 ---
 
-# Kubernetes Objects
+## Kubernetes Objects
 
 Common Kubernetes objects include:
 
@@ -517,7 +517,7 @@ These objects define the desired state of applications and infrastructure.
 
 ---
 
-# Kubernetes Ecosystem
+## Kubernetes Ecosystem
 
 ```
 Application
@@ -550,7 +550,7 @@ Supporting tools often include:
 
 ---
 
-# Benefits
+## Benefits
 
 Organizations adopting Kubernetes commonly achieve:
 
@@ -565,7 +565,7 @@ Organizations adopting Kubernetes commonly achieve:
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
 Kubernetes is widely used for:
 
@@ -581,7 +581,7 @@ Kubernetes is widely used for:
 
 ---
 
-# Important Terminology
+## Important Terminology
 
 | Term | Description |
 |------|-------------|
@@ -595,7 +595,7 @@ Kubernetes is widely used for:
 
 ---
 
-# Kubernetes Workflow
+## Kubernetes Workflow
 
 ```
 Developer
@@ -629,45 +629,45 @@ Kubernetes continuously monitors the cluster to ensure the running state matches
 
 ---
 
-# Key Principles
+## Key Principles
 
-## Declarative Configuration
+### Declarative Configuration
 
 Describe the desired state instead of issuing imperative step-by-step instructions.
 
 ---
 
-## Desired State
+### Desired State
 
 Kubernetes continuously works to maintain the state defined in configuration.
 
 ---
 
-## Self-Healing
+### Self-Healing
 
 Failed Pods are replaced automatically.
 
 ---
 
-## Automation
+### Automation
 
 Routine operational tasks are automated to reduce manual effort.
 
 ---
 
-## Scalability
+### Scalability
 
 Applications can grow or shrink based on workload demands.
 
 ---
 
-## Portability
+### Portability
 
 Applications can run across different infrastructure providers with minimal changes.
 
 ---
 
-## How Kubernetes Works
+### How Kubernetes Works
 
 Kubernetes operates using a **declarative model**. Instead of telling Kubernetes **how** to perform every action, you declare **what** the desired state of the application should be. Kubernetes continuously compares the **desired state** with the **current state** and automatically performs the actions required to make them match.
 
@@ -675,7 +675,7 @@ This is one of the biggest differences between Kubernetes and traditional infras
 
 ---
 
-# Desired State vs Current State
+## Desired State vs Current State
 
 Suppose you want your application to always have **3 running Pods**.
 
@@ -725,7 +725,7 @@ The cluster automatically returns to the desired state.
 
 ---
 
-# Kubernetes Control Loop
+## Kubernetes Control Loop
 
 Kubernetes continuously runs reconciliation loops.
 
@@ -761,7 +761,7 @@ This process runs continuously throughout the lifetime of the cluster.
 
 ---
 
-# High-Level Kubernetes Workflow
+## High-Level Kubernetes Workflow
 
 ```
 Developer
@@ -803,7 +803,7 @@ Every deployment follows this general workflow.
 
 ---
 
-# Step 1 – Developer Creates a Manifest
+## Step 1 – Developer Creates a Manifest
 
 Example:
 
@@ -823,7 +823,7 @@ This file describes the desired state.
 
 ---
 
-# Step 2 – kubectl Sends Request
+## Step 2 – kubectl Sends Request
 
 Command:
 
@@ -845,7 +845,7 @@ The API Server is the entry point for all cluster operations.
 
 ---
 
-# Step 3 – API Server Validates Request
+## Step 3 – API Server Validates Request
 
 The API Server performs checks such as:
 
@@ -870,7 +870,7 @@ Stored
 
 ---
 
-# Step 4 – Desired State Stored in etcd
+## Step 4 – Desired State Stored in etcd
 
 ```
 API Server
@@ -890,7 +890,7 @@ It acts as Kubernetes' distributed key-value database.
 
 ---
 
-# Step 5 – Scheduler Selects a Node
+## Step 5 – Scheduler Selects a Node
 
 The Scheduler determines:
 
@@ -918,7 +918,7 @@ It decides **where** the Pod should run.
 
 ---
 
-# Step 6 – kubelet Starts the Pod
+## Step 6 – kubelet Starts the Pod
 
 The selected worker node receives instructions.
 
@@ -942,7 +942,7 @@ The kubelet communicates with the container runtime to start the workload.
 
 ---
 
-# Step 7 – Pod Becomes Running
+## Step 7 – Pod Becomes Running
 
 ```
 Pod
@@ -960,7 +960,7 @@ If readiness probes are configured, traffic is sent only after the Pod reports i
 
 ---
 
-# Step 8 – Continuous Monitoring
+## Step 8 – Continuous Monitoring
 
 Kubernetes never stops monitoring.
 
@@ -986,7 +986,7 @@ Continue
 
 ---
 
-# Self-Healing Example
+## Self-Healing Example
 
 Suppose one Pod crashes.
 
@@ -1028,7 +1028,7 @@ The application returns to its desired state automatically.
 
 ---
 
-# Scaling Example
+## Scaling Example
 
 Current state:
 
@@ -1064,7 +1064,7 @@ Scaling is handled automatically by Kubernetes.
 
 ---
 
-# Rolling Update Example
+## Rolling Update Example
 
 Current version:
 
@@ -1114,7 +1114,7 @@ This minimizes downtime and risk during deployments.
 
 ---
 
-# Rollback Example
+## Rollback Example
 
 Deployment:
 
@@ -1148,7 +1148,7 @@ Application Healthy
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 Pods receive dynamic IP addresses.
 
@@ -1170,7 +1170,7 @@ Applications communicate through Services, which provide stable endpoints.
 
 ---
 
-# Load Balancing
+## Load Balancing
 
 ```
 Incoming Request
@@ -1192,7 +1192,7 @@ The Service distributes traffic among healthy Pods.
 
 ---
 
-# Automatic Recovery
+## Automatic Recovery
 
 Suppose a worker node fails.
 
@@ -1226,7 +1226,7 @@ Kubernetes recreates workloads on other available nodes.
 
 ---
 
-# Kubernetes Reconciliation
+## Kubernetes Reconciliation
 
 Everything in Kubernetes revolves around reconciliation.
 
@@ -1258,7 +1258,7 @@ Controllers continuously work to maintain the declared configuration.
 
 ---
 
-# Real-World Deployment Workflow
+## Real-World Deployment Workflow
 
 ```
 Developer
@@ -1308,9 +1308,9 @@ Modern organizations typically integrate Kubernetes with automated delivery pipe
 
 ---
 
-# Hands-on Commands
+## Hands-on Commands
 
-## Check Cluster Information
+### Check Cluster Information
 
 ```bash
 kubectl cluster-info
@@ -1318,7 +1318,7 @@ kubectl cluster-info
 
 ---
 
-## View Nodes
+### View Nodes
 
 ```bash
 kubectl get nodes
@@ -1326,7 +1326,7 @@ kubectl get nodes
 
 ---
 
-## View Pods
+### View Pods
 
 ```bash
 kubectl get pods
@@ -1334,7 +1334,7 @@ kubectl get pods
 
 ---
 
-## View Deployments
+### View Deployments
 
 ```bash
 kubectl get deployments
@@ -1342,7 +1342,7 @@ kubectl get deployments
 
 ---
 
-## View Services
+### View Services
 
 ```bash
 kubectl get services
@@ -1350,7 +1350,7 @@ kubectl get services
 
 ---
 
-## Apply Configuration
+### Apply Configuration
 
 ```bash
 kubectl apply -f deployment.yaml
@@ -1358,7 +1358,7 @@ kubectl apply -f deployment.yaml
 
 ---
 
-## Delete Resources
+### Delete Resources
 
 ```bash
 kubectl delete -f deployment.yaml
@@ -1366,7 +1366,7 @@ kubectl delete -f deployment.yaml
 
 ---
 
-## Describe Resource
+### Describe Resource
 
 ```bash
 kubectl describe pod pod-name
@@ -1376,7 +1376,7 @@ Provides detailed information about the selected resource.
 
 ---
 
-## View Logs
+### View Logs
 
 ```bash
 kubectl logs pod-name
@@ -1386,33 +1386,33 @@ Displays application output from the Pod.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Declarative Configuration
+#### 1. Use Declarative Configuration
 
 Store manifests in version control and apply them consistently.
 
 ---
 
-### 2. Treat Infrastructure as Code
+#### 2. Treat Infrastructure as Code
 
 Manage Kubernetes manifests alongside application code where appropriate.
 
 ---
 
-### 3. Keep Deployments Immutable
+#### 3. Keep Deployments Immutable
 
 Update images and redeploy rather than modifying running Pods.
 
 ---
 
-### 4. Configure Health Checks
+#### 4. Configure Health Checks
 
 Use readiness and liveness probes to improve reliability.
 
 ---
 
-### 5. Monitor Continuously
+#### 5. Monitor Continuously
 
 Track:
 
@@ -1425,19 +1425,19 @@ Track:
 
 ---
 
-### 6. Automate Deployments
+#### 6. Automate Deployments
 
 Use CI/CD pipelines to improve consistency and reduce manual errors.
 
 ---
 
-### 7. Document Cluster Architecture
+#### 7. Document Cluster Architecture
 
 Maintain diagrams, manifests, runbooks, and recovery procedures.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Kubernetes automates many operational tasks, but it does **not** eliminate the need for good engineering practices. Many production issues occur because teams misunderstand Kubernetes concepts or apply traditional infrastructure approaches to cloud-native environments.
 
@@ -1445,7 +1445,7 @@ The following are some of the most common mistakes made by beginners and even ex
 
 ---
 
-# 1. Treating Kubernetes Like Docker
+## 1. Treating Kubernetes Like Docker
 
 One of the biggest misconceptions is assuming Kubernetes is simply "Docker at scale."
 
@@ -1479,7 +1479,7 @@ Think of Kubernetes as a **container orchestration platform**, not merely a way 
 
 ---
 
-# 2. Not Understanding Pods
+## 2. Not Understanding Pods
 
 Many beginners assume:
 
@@ -1503,7 +1503,7 @@ A Pod is the smallest deployable Kubernetes object, not the individual container
 
 ---
 
-# 3. Using Imperative Commands for Everything
+## 3. Using Imperative Commands for Everything
 
 Incorrect workflow:
 
@@ -1538,7 +1538,7 @@ Declarative configuration improves:
 
 ---
 
-# 4. Editing Production Objects Manually
+## 4. Editing Production Objects Manually
 
 Avoid repeatedly modifying live resources using:
 
@@ -1568,7 +1568,7 @@ This keeps infrastructure consistent and auditable.
 
 ---
 
-# 5. Ignoring Namespaces
+## 5. Ignoring Namespaces
 
 Deploying everything into:
 
@@ -1600,7 +1600,7 @@ Namespaces provide logical isolation within a cluster.
 
 ---
 
-# 6. Using the `latest` Image Tag
+## 6. Using the `latest` Image Tag
 
 Avoid:
 
@@ -1622,7 +1622,7 @@ Benefits:
 
 ---
 
-# 7. Forgetting Resource Requests and Limits
+## 7. Forgetting Resource Requests and Limits
 
 Without resource controls:
 
@@ -1651,7 +1651,7 @@ Always define appropriate:
 
 ---
 
-# 8. Ignoring Health Probes
+## 8. Ignoring Health Probes
 
 Applications may appear running while actually being unusable.
 
@@ -1681,7 +1681,7 @@ Use:
 
 ---
 
-# 9. Hardcoding Configuration
+## 9. Hardcoding Configuration
 
 Avoid embedding:
 
@@ -1701,7 +1701,7 @@ for runtime configuration.
 
 ---
 
-# 10. Running Everything as Cluster Administrator
+## 10. Running Everything as Cluster Administrator
 
 Granting every user cluster-admin permissions increases risk.
 
@@ -1723,7 +1723,7 @@ Grant only the permissions required.
 
 ---
 
-# 11. Ignoring Logs and Events
+## 11. Ignoring Logs and Events
 
 Many engineers check only Pods.
 
@@ -1741,7 +1741,7 @@ Events frequently explain scheduling failures and deployment issues.
 
 ---
 
-# 12. Not Understanding Desired State
+## 12. Not Understanding Desired State
 
 Some engineers manually restart Pods to "fix" problems.
 
@@ -1765,7 +1765,7 @@ Investigate the underlying issue instead of relying on repeated manual restarts.
 
 ---
 
-# 13. Ignoring Persistent Storage
+## 13. Ignoring Persistent Storage
 
 Containers and Pods are replaceable.
 
@@ -1780,7 +1780,7 @@ for persistent workloads.
 
 ---
 
-# 14. Skipping Monitoring
+## 14. Skipping Monitoring
 
 Production clusters should continuously monitor:
 
@@ -1797,7 +1797,7 @@ Without monitoring, failures may remain undetected until users report them.
 
 ---
 
-# 15. Deploying Without Rollback Planning
+## 15. Deploying Without Rollback Planning
 
 Every deployment should include:
 
@@ -1821,9 +1821,9 @@ Always verify that rollback procedures are documented and tested.
 
 ---
 
-# Kubernetes Quick Revision
+## Kubernetes Quick Revision
 
-## Kubernetes Workflow
+### Kubernetes Workflow
 
 ```
 Developer
@@ -1859,7 +1859,7 @@ Pod Running
 
 ---
 
-## Desired State Model
+### Desired State Model
 
 ```
 Desired State
@@ -1885,7 +1885,7 @@ This reconciliation loop is fundamental to Kubernetes.
 
 ---
 
-## Kubernetes Benefits
+### Kubernetes Benefits
 
 - Automated deployment
 - Self-healing
@@ -1899,7 +1899,7 @@ This reconciliation loop is fundamental to Kubernetes.
 
 ---
 
-## Common kubectl Commands
+### Common kubectl Commands
 
 ```bash
 kubectl cluster-info
@@ -1923,7 +1923,7 @@ kubectl delete -f deployment.yaml
 
 ---
 
-# Kubernetes Fundamentals Checklist
+## Kubernetes Fundamentals Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1945,9 +1945,9 @@ kubectl delete -f deployment.yaml
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Resources
+### Official Kubernetes Resources
 
 - Kubernetes Documentation
 - Kubernetes Concepts
@@ -1957,7 +1957,7 @@ kubectl delete -f deployment.yaml
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Cloud Native Computing Foundation (CNCF)
 - Kubernetes Learning Path
@@ -1966,7 +1966,7 @@ kubectl delete -f deployment.yaml
 
 ---
 
-## Security Standards
+### Security Standards
 
 - Kubernetes Hardening Guidance
 - CIS Kubernetes Benchmark
@@ -1976,7 +1976,7 @@ kubectl delete -f deployment.yaml
 
 ---
 
-## Recommended Books
+### Recommended Books
 
 - *Kubernetes Up & Running* — Kelsey Hightower, Brendan Burns & Joe Beda
 - *Kubernetes in Action* — Marko Lukša
@@ -1985,7 +1985,7 @@ kubectl delete -f deployment.yaml
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 - Install a local Kubernetes cluster (Kind, Minikube, or k3d).
 - Deploy a simple application.

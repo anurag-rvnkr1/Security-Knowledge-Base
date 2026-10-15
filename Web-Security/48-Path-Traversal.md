@@ -1,12 +1,12 @@
 # 48-Path-Traversal.md
 
-# Part 1 — Introduction to Path Traversal, File Systems, Directory Structure, and Secure File Access
+## Part 1 — Introduction to Path Traversal, File Systems, Directory Structure, and Secure File Access
 
 > **"Path Traversal is a file access security issue that occurs when applications improperly validate file paths, potentially allowing unintended access outside the intended directory. Secure applications validate file references, enforce access policies, and ensure that file operations remain confined to approved locations."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Path Traversal?
+## What is Path Traversal?
 
 Path Traversal is a **file access and directory validation issue** where improper handling of file paths may allow an application to operate outside its intended file boundaries.
 
@@ -52,7 +52,7 @@ Secure applications ensure that requested files remain within explicitly approve
 
 ---
 
-# Why Applications Access Files
+## Why Applications Access Files
 
 Modern applications interact with files for many legitimate purposes.
 
@@ -87,7 +87,7 @@ File access should always follow organizational security policies.
 
 ---
 
-# Understanding File Systems
+## Understanding File Systems
 
 A file system organizes information into directories and files.
 
@@ -111,7 +111,7 @@ Applications rely on predictable file organization for reliable operation.
 
 ---
 
-# Directory Structure
+## Directory Structure
 
 Directories organize files into logical locations.
 
@@ -137,7 +137,7 @@ Each directory should have a clearly defined business purpose.
 
 ---
 
-# Absolute Paths
+## Absolute Paths
 
 An absolute path begins from the root of the file system.
 
@@ -163,7 +163,7 @@ Absolute paths uniquely identify file locations.
 
 ---
 
-# Relative Paths
+## Relative Paths
 
 Relative paths begin from the application's current working location.
 
@@ -185,7 +185,7 @@ Applications should resolve relative paths safely before accessing resources.
 
 ---
 
-# File Access Lifecycle
+## File Access Lifecycle
 
 ```
 Client Request
@@ -219,7 +219,7 @@ Each stage contributes to secure and predictable file operations.
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 External Input
@@ -241,7 +241,7 @@ File path information originating from users should always be treated as untrust
 
 ---
 
-# Sources of File Requests
+## Sources of File Requests
 
 ```
 Application Inputs
@@ -267,7 +267,7 @@ Every source should undergo validation before influencing file operations.
 
 ---
 
-# Secure File Access Workflow
+## Secure File Access Workflow
 
 ```
 Incoming Request
@@ -297,7 +297,7 @@ Validation should ensure that only intended files are accessed.
 
 ---
 
-# Enterprise File Architecture
+## Enterprise File Architecture
 
 ```
 Client
@@ -327,7 +327,7 @@ File validation should occur before requests reach storage resources.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Secure file access should complement other application security controls.
 
@@ -359,7 +359,7 @@ Multiple security layers reduce reliance on any single control.
 
 ---
 
-# Secure File Access Principles
+## Secure File Access Principles
 
 ```
 Secure File Handling
@@ -387,7 +387,7 @@ File operations should remain predictable and policy-driven.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization stores patient reports, medical images, invoices, and audit logs in dedicated storage locations.
 
@@ -415,7 +415,7 @@ Applications validate file requests against approved storage locations before re
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 File Access Pipeline
@@ -443,7 +443,7 @@ Each component contributes to secure file handling.
 
 ---
 
-# Secure File Access Goals
+## Secure File Access Goals
 
 Applications should provide:
 
@@ -456,7 +456,7 @@ Applications should provide:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the directory structure of a sample enterprise application.
 2. Identify every component that accesses files.
@@ -468,7 +468,7 @@ Applications should provide:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Path Traversal?
 2. Why do applications access files?
@@ -483,7 +483,7 @@ Applications should provide:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat every file path received from external sources as untrusted.
 - Validate and normalize file paths before use.
@@ -496,7 +496,7 @@ Applications should provide:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting externally supplied file paths.
 - Allowing unrestricted directory access.
@@ -508,7 +508,7 @@ Applications should provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Path Traversal is fundamentally a file access and directory validation issue.
 - Applications should validate file paths before accessing the file system.
@@ -516,15 +516,15 @@ Applications should provide:
 - Secure file access relies on validation, authorization, approved directories, and least privilege.
 - Enterprise governance, monitoring, and standardized file handling improve application resilience.
 
-# 48-Path-Traversal.md
+## 48-Path-Traversal.md
 
-# Part 2 — File Path Resolution, Canonicalization, File Permissions, Secure Storage, Validation Pipeline, and Enterprise File Architecture
+## Part 2 — File Path Resolution, Canonicalization, File Permissions, Secure Storage, Validation Pipeline, and Enterprise File Architecture
 
 > **"Secure file handling depends on canonical path validation, strict authorization, least-privilege permissions, approved storage locations, and continuous monitoring throughout the file access lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -542,7 +542,7 @@ After completing this part, you will understand:
 
 ---
 
-# File Path Resolution
+## File Path Resolution
 
 Before accessing a resource, applications should resolve the requested path into a predictable location.
 
@@ -570,7 +570,7 @@ Resolving paths consistently helps applications enforce directory restrictions.
 
 ---
 
-# Canonical Paths
+## Canonical Paths
 
 A canonical path is the normalized, fully resolved representation of a file location.
 
@@ -594,7 +594,7 @@ Security decisions should be based on canonical paths rather than raw user input
 
 ---
 
-# Why Canonicalization Matters
+## Why Canonicalization Matters
 
 Different textual representations may refer to the same file location.
 
@@ -618,7 +618,7 @@ Canonicalization simplifies policy enforcement and reduces ambiguity.
 
 ---
 
-# Path Normalization
+## Path Normalization
 
 Normalization creates a consistent representation of file paths.
 
@@ -642,7 +642,7 @@ Normalization should occur before authorization and file access checks.
 
 ---
 
-# Directory Boundaries
+## Directory Boundaries
 
 Applications should explicitly define which directories are approved for access.
 
@@ -666,7 +666,7 @@ Any request outside approved boundaries should be rejected according to applicat
 
 ---
 
-# Approved Storage Areas
+## Approved Storage Areas
 
 ```
 Enterprise Storage
@@ -690,7 +690,7 @@ Each storage area should have clearly documented access policies.
 
 ---
 
-# Secure File Validation Pipeline
+## Secure File Validation Pipeline
 
 ```
 Incoming Request
@@ -728,7 +728,7 @@ Each validation step contributes to secure file operations.
 
 ---
 
-# File Permissions
+## File Permissions
 
 File permissions determine which users or services can access resources.
 
@@ -750,7 +750,7 @@ Permissions should follow the principle of least privilege.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Applications should receive only the permissions required for normal operation.
 
@@ -774,7 +774,7 @@ Limiting permissions reduces the impact of configuration mistakes and operationa
 
 ---
 
-# Access Control
+## Access Control
 
 Authorization should occur before file operations begin.
 
@@ -798,7 +798,7 @@ Access decisions should rely on business rules rather than file paths alone.
 
 ---
 
-# Secure Storage Design
+## Secure Storage Design
 
 ```
 Application
@@ -824,7 +824,7 @@ Applications should interact with storage through controlled interfaces rather t
 
 ---
 
-# File Metadata
+## File Metadata
 
 Files contain metadata in addition to content.
 
@@ -850,7 +850,7 @@ Metadata supports administration, auditing, and lifecycle management.
 
 ---
 
-# File Lifecycle
+## File Lifecycle
 
 ```
 Create
@@ -880,7 +880,7 @@ Security controls should apply throughout the entire lifecycle.
 
 ---
 
-# Enterprise Storage Architecture
+## Enterprise Storage Architecture
 
 ```
 Internet
@@ -910,7 +910,7 @@ Validation should always occur before storage resources are accessed.
 
 ---
 
-# Logging
+## Logging
 
 File-related operations should generate audit records.
 
@@ -934,7 +934,7 @@ Logs improve accountability, operational visibility, and compliance.
 
 ---
 
-# Important File Events
+## Important File Events
 
 | Event | Purpose |
 |--------|----------|
@@ -950,7 +950,7 @@ Sensitive information should not be written to logs unless required and properly
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -976,7 +976,7 @@ Continuous monitoring helps identify reliability and operational issues.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -990,7 +990,7 @@ Continuous monitoring helps identify reliability and operational issues.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global insurance company stores customer documents, claim reports, scanned forms, and policy records in separate storage locations.
 
@@ -1026,7 +1026,7 @@ Applications validate requests, confirm authorization, resolve canonical paths, 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1039,7 +1039,7 @@ Applications validate requests, confirm authorization, resolve canonical paths, 
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a secure enterprise storage architecture.
 2. Identify approved storage locations.
@@ -1051,7 +1051,7 @@ Applications validate requests, confirm authorization, resolve canonical paths, 
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a canonical path?
 2. Why is path normalization important?
@@ -1066,7 +1066,7 @@ Applications validate requests, confirm authorization, resolve canonical paths, 
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Canonicalize file paths before making security decisions.
 - Restrict access to approved storage locations.
@@ -1079,7 +1079,7 @@ Applications validate requests, confirm authorization, resolve canonical paths, 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Validating raw paths instead of canonical paths.
 - Granting excessive file system permissions.
@@ -1091,7 +1091,7 @@ Applications validate requests, confirm authorization, resolve canonical paths, 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Canonicalization provides a consistent basis for secure path validation.
 - File operations should remain within explicitly approved directory boundaries.
@@ -1099,15 +1099,15 @@ Applications validate requests, confirm authorization, resolve canonical paths, 
 - Enterprise storage architecture should emphasize centralized governance, monitoring, and predictable validation.
 - Continuous logging and operational visibility strengthen long-term file system security.
 
-# 48-Path-Traversal.md
+## 48-Path-Traversal.md
 
-# Part 3 — Threat Modeling, Secure SDLC, DevSecOps, Secure File Operations, Monitoring, and Enterprise Defense
+## Part 3 — Threat Modeling, Secure SDLC, DevSecOps, Secure File Operations, Monitoring, and Enterprise Defense
 
 > **"Preventing Path Traversal requires secure file access architecture, strict path validation, canonicalization, least-privilege permissions, continuous monitoring, and governance integrated throughout the software development lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1124,7 +1124,7 @@ After completing this part, you will understand:
 
 ---
 
-# Detecting Path Traversal Risks
+## Detecting Path Traversal Risks
 
 Organizations should periodically review every application component that performs file operations.
 
@@ -1152,7 +1152,7 @@ The objective is to verify that every file request remains confined to approved 
 
 ---
 
-# File Access Security Review
+## File Access Security Review
 
 Every file access workflow should be documented and reviewed.
 
@@ -1184,7 +1184,7 @@ Security reviews should confirm that every stage enforces organizational securit
 
 ---
 
-# File Inventory
+## File Inventory
 
 Maintain an inventory of files and storage locations used by the application.
 
@@ -1214,7 +1214,7 @@ A comprehensive inventory supports governance, maintenance, and security assessm
 
 ---
 
-# Storage Component Inventory
+## Storage Component Inventory
 
 Document every component involved in file handling.
 
@@ -1244,7 +1244,7 @@ This inventory simplifies architecture reviews and incident investigations.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 File handling policies should remain consistent across all environments.
 
@@ -1272,7 +1272,7 @@ Consistent configuration reduces operational risk and improves reliability.
 
 ---
 
-# Architecture Review
+## Architecture Review
 
 Security reviews should evaluate:
 
@@ -1303,7 +1303,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies trust boundaries and file access decisions.
 
@@ -1331,7 +1331,7 @@ The goal is to ensure that every file operation follows approved business rules.
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 Security teams should consider:
 
@@ -1358,7 +1358,7 @@ Security Controls
 
 ---
 
-# Secure File Validation
+## Secure File Validation
 
 Applications should validate every file request before interacting with storage.
 
@@ -1390,7 +1390,7 @@ Validation should produce predictable and policy-compliant file operations.
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1418,7 +1418,7 @@ Testing should verify correctness, reliability, and security throughout the file
 
 ---
 
-# Secure File Lifecycle
+## Secure File Lifecycle
 
 ```
 Design
@@ -1452,7 +1452,7 @@ Security controls should accompany every lifecycle phase.
 
 ---
 
-# Storage Governance
+## Storage Governance
 
 Organizations should establish governance for storage resources.
 
@@ -1482,7 +1482,7 @@ Governance improves consistency and operational resilience.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 File security should be integrated throughout software development.
 
@@ -1518,7 +1518,7 @@ Security activities should occur continuously rather than only before release.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -1552,7 +1552,7 @@ Automated validation strengthens deployment quality and consistency.
 
 ---
 
-# Change Management
+## Change Management
 
 Changes affecting storage or file access should follow a controlled process.
 
@@ -1584,7 +1584,7 @@ Formal change management improves accountability and reduces operational risk.
 
 ---
 
-# Logging
+## Logging
 
 Applications should record important file-related operational events.
 
@@ -1608,7 +1608,7 @@ Logs support operational analysis, investigations, and compliance reporting.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1625,7 +1625,7 @@ Sensitive file contents should never be unnecessarily recorded in logs.
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1651,7 +1651,7 @@ Continuous monitoring helps detect operational issues before they affect busines
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1665,7 +1665,7 @@ Continuous monitoring helps detect operational issues before they affect busines
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                 Internet
@@ -1719,7 +1719,7 @@ This layered architecture separates validation, storage, monitoring, and governa
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization manages customer statements, loan documents, compliance reports, and audit records using centralized storage services.
 
@@ -1755,7 +1755,7 @@ File requests are validated against approved directories, permissions follow the
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Approved Storage Documented
@@ -1781,7 +1781,7 @@ File requests are validated against approved directories, permissions follow the
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1794,7 +1794,7 @@ File requests are validated against approved directories, permissions follow the
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create a diagram of an enterprise file access architecture.
 2. Identify every approved storage location.
@@ -1806,7 +1806,7 @@ File requests are validated against approved directories, permissions follow the
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Path Traversal?
 2. Why is canonicalization important before file access?
@@ -1821,7 +1821,7 @@ File requests are validated against approved directories, permissions follow the
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate and canonicalize file paths before any file operation.
 - Restrict access to approved storage directories only.
@@ -1834,7 +1834,7 @@ File requests are validated against approved directories, permissions follow the
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Making authorization decisions before path validation.
 - Using inconsistent storage configurations across environments.
@@ -1846,7 +1846,7 @@ File requests are validated against approved directories, permissions follow the
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Path Traversal prevention relies on validated file paths, canonicalization, authorization, and controlled storage access.
 - Threat modeling helps identify trust boundaries in file operations.
@@ -1854,15 +1854,15 @@ File requests are validated against approved directories, permissions follow the
 - Storage governance, logging, and monitoring improve enterprise resilience.
 - Continuous review and standardized architecture strengthen long-term file system security.
 
-# 48-Path-Traversal.md
+## 48-Path-Traversal.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Secure file handling is achieved through trusted path validation, canonicalization, least-privilege access, centralized governance, continuous monitoring, and disciplined software engineering practices. File operations should always remain confined to explicitly authorized resources."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1884,7 +1884,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise File Governance
+## Enterprise File Governance
 
 Organizations should establish centralized governance for all file access operations.
 
@@ -1924,7 +1924,7 @@ Governance ensures consistency, accountability, and predictable file access acro
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 File Security Governance
@@ -1954,7 +1954,7 @@ A formal governance framework reduces operational risk and improves long-term ma
 
 ---
 
-# Directory Governance
+## Directory Governance
 
 Critical application directories should be centrally managed.
 
@@ -1982,7 +1982,7 @@ Each directory should have documented ownership, purpose, and access policies.
 
 ---
 
-# Zero Trust for File Access
+## Zero Trust for File Access
 
 Zero Trust principles apply to every file operation.
 
@@ -2025,7 +2025,7 @@ Every request should be independently evaluated.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 File security should complement broader application security.
 
@@ -2057,7 +2057,7 @@ No single security mechanism should be relied upon exclusively.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 File security should be integrated throughout software delivery.
 
@@ -2089,7 +2089,7 @@ Security becomes a continuous engineering activity rather than a final checkpoin
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Storage infrastructure should be managed using version-controlled configuration.
 
@@ -2117,7 +2117,7 @@ IaC enables repeatable deployments and simplifies auditing.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2155,7 +2155,7 @@ Automated validation improves deployment quality and consistency.
 
 ---
 
-# Documentation
+## Documentation
 
 Organizations should maintain documentation covering:
 
@@ -2185,7 +2185,7 @@ Well-maintained documentation supports governance and operational continuity.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Organizations should establish policies supporting secure file management.
 
@@ -2213,7 +2213,7 @@ Specific compliance requirements vary depending on applicable regulatory, contra
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Important file-related activities should be recorded.
 
@@ -2237,7 +2237,7 @@ Audit logging supports investigations, operational analysis, and compliance.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2254,7 +2254,7 @@ Sensitive file contents should never be unnecessarily recorded in audit logs.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2280,7 +2280,7 @@ Continuous monitoring improves reliability and operational awareness.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2295,7 +2295,7 @@ Continuous monitoring improves reliability and operational awareness.
 
 ---
 
-# File Security Dashboard
+## File Security Dashboard
 
 ```
 Storage Dashboard
@@ -2323,7 +2323,7 @@ Dashboards provide centralized operational visibility into file handling activit
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2353,7 +2353,7 @@ SOC analysts correlate file access events with authentication, network, endpoint
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should prepare documented procedures for file-related security incidents.
 
@@ -2389,7 +2389,7 @@ Structured response procedures minimize operational disruption.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2419,7 +2419,7 @@ Root cause analysis should evaluate architecture, implementation, governance, an
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2449,7 +2449,7 @@ Continuous improvement strengthens enterprise security over time.
 
 ---
 
-# Path Traversal Security Maturity Model
+## Path Traversal Security Maturity Model
 
 ```
 Level 1
@@ -2486,7 +2486,7 @@ Organizations should gradually improve automation, governance, monitoring, and o
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2534,7 +2534,7 @@ This architecture separates validation, storage, monitoring, and governance resp
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational manufacturing company stores engineering drawings, quality reports, compliance documents, invoices, and operational manuals in centralized storage platforms.
 
@@ -2570,7 +2570,7 @@ All storage locations are centrally managed, directory policies are documented, 
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Storage Inventory Documented
@@ -2596,7 +2596,7 @@ All storage locations are centrally managed, directory policies are documented, 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2609,9 +2609,9 @@ All storage locations are centrally managed, directory policies are documented, 
 
 ---
 
-# Path Traversal Quick Revision
+## Path Traversal Quick Revision
 
-## Secure File Access Lifecycle
+### Secure File Access Lifecycle
 
 ```
 Client Request
@@ -2643,7 +2643,7 @@ File Access
 
 ---
 
-## Defense Layers
+### Defense Layers
 
 ```
 Authentication
@@ -2671,7 +2671,7 @@ Monitoring
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Metrics
@@ -2691,7 +2691,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise file access architecture.
 2. Document all approved storage directories.
@@ -2703,7 +2703,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Path Traversal?
 2. Why is canonical path validation important?
@@ -2718,7 +2718,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate and canonicalize all file paths before access.
 - Restrict file operations to approved directories.
@@ -2732,7 +2732,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting externally supplied file paths.
 - Skipping canonicalization before authorization.
@@ -2744,7 +2744,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

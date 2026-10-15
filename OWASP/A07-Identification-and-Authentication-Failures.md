@@ -2,7 +2,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Every secure application must answer three fundamental questions before granting access to protected resources:
 
@@ -22,7 +22,7 @@ OWASP A07 focuses on weaknesses in **identity verification and authentication me
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Almost every application requires users to authenticate.
 
@@ -41,7 +41,7 @@ If authentication is weak, attackers may gain access **without exploiting tradit
 
 ---
 
-# Authentication Architecture
+## Authentication Architecture
 
 A simplified authentication flow:
 
@@ -68,9 +68,9 @@ Each stage depends on the previous one.
 
 ---
 
-# Identification
+## Identification
 
-## Overview
+### Overview
 
 Identification is the process by which a user claims an identity.
 
@@ -100,9 +100,9 @@ The application now knows **who the user claims to be**, but has not yet verifie
 
 ---
 
-# Authentication
+## Authentication
 
-## Overview
+### Overview
 
 Authentication verifies that the claimed identity is genuine.
 
@@ -121,9 +121,9 @@ Authentication answers:
 
 ---
 
-# Authorization
+## Authorization
 
-## Overview
+### Overview
 
 Authorization determines which resources an authenticated user may access.
 
@@ -167,7 +167,7 @@ Authorization decisions occur **after successful authentication**.
 
 ---
 
-# Identification vs Authentication vs Authorization
+## Identification vs Authentication vs Authorization
 
 | Concept | Question Answered | Example |
 |----------|------------------|---------|
@@ -185,13 +185,13 @@ These are separate security processes.
 
 ---
 
-# Authentication Factors
+## Authentication Factors
 
 Authentication is based on one or more factors.
 
 ---
 
-## 1. Something You Know
+### 1. Something You Know
 
 Examples:
 
@@ -209,7 +209,7 @@ Password
 
 ---
 
-## 2. Something You Have
+### 2. Something You Have
 
 Examples:
 
@@ -228,7 +228,7 @@ Security Key
 
 ---
 
-## 3. Something You Are
+### 3. Something You Are
 
 Examples:
 
@@ -247,7 +247,7 @@ Fingerprint
 
 ---
 
-## 4. Somewhere You Are (Contextual)
+### 4. Somewhere You Are (Contextual)
 
 Examples:
 
@@ -260,7 +260,7 @@ Used primarily as a **risk signal**, not a standalone authentication factor.
 
 ---
 
-## 5. Something You Do (Behavioral)
+### 5. Something You Do (Behavioral)
 
 Examples:
 
@@ -273,7 +273,7 @@ Behavioral biometrics are often used for continuous authentication and fraud det
 
 ---
 
-# Single-Factor Authentication (SFA)
+## Single-Factor Authentication (SFA)
 
 Only one authentication factor is used.
 
@@ -305,7 +305,7 @@ Disadvantages:
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 MFA requires two or more **different** authentication factors.
 
@@ -349,13 +349,13 @@ Even if a password is stolen, attackers still require the second factor.
 
 ---
 
-# Multi-Step vs Multi-Factor
+## Multi-Step vs Multi-Factor
 
 These terms are often confused.
 
 ---
 
-## Multi-Step Authentication
+### Multi-Step Authentication
 
 Example:
 
@@ -373,7 +373,7 @@ This is **not** true MFA.
 
 ---
 
-## True Multi-Factor Authentication
+### True Multi-Factor Authentication
 
 Example:
 
@@ -389,7 +389,7 @@ Two different authentication factors are involved.
 
 ---
 
-# Identity Lifecycle
+## Identity Lifecycle
 
 Identity management begins before authentication and continues until the account is removed.
 
@@ -433,7 +433,7 @@ Every stage should be secured.
 
 ---
 
-# Registration Security
+## Registration Security
 
 Secure registration should include:
 
@@ -452,7 +452,7 @@ Avoid:
 
 ---
 
-# Account Recovery
+## Account Recovery
 
 Password recovery is a common attack target.
 
@@ -488,7 +488,7 @@ Common mistakes include:
 
 ---
 
-# Identity Proofing
+## Identity Proofing
 
 Some applications require stronger verification before creating an account.
 
@@ -504,7 +504,7 @@ The required level depends on the application's risk profile.
 
 ---
 
-# Authentication Architecture Example
+## Authentication Architecture Example
 
 ```
                 User
@@ -538,7 +538,7 @@ Each step should include appropriate validation, logging, and error handling.
 
 ---
 
-# Common Authentication Failures
+## Common Authentication Failures
 
 Examples include:
 
@@ -557,7 +557,7 @@ These weaknesses often lead directly to account compromise.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Authentication failures can result in:
 
@@ -573,7 +573,7 @@ Authentication failures can result in:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Identification, authentication, and authorization are distinct but closely related security concepts.
 - Authentication verifies identity using one or more authentication factors.
@@ -581,9 +581,9 @@ Authentication failures can result in:
 - The identity lifecycle includes registration, authentication, account recovery, and deprovisioning.
 - Weak authentication mechanisms are a leading cause of account compromise and should be designed with layered security controls from the outset.
 
-# Password Security
+## Password Security
 
-## Overview
+### Overview
 
 Passwords remain the most widely used authentication mechanism.
 
@@ -593,7 +593,7 @@ Because passwords are frequently targeted by attackers, secure password handling
 
 ---
 
-# Password Lifecycle
+## Password Lifecycle
 
 ```
 User Creates Password
@@ -631,7 +631,7 @@ At no point should the original plaintext password be stored or recoverable.
 
 ---
 
-# Strong Password Characteristics
+## Strong Password Characteristics
 
 A secure password should be:
 
@@ -651,7 +651,7 @@ Long passphrases are generally easier for users to remember and harder for attac
 
 ---
 
-# Weak Password Examples
+## Weak Password Examples
 
 ```
 password
@@ -674,7 +674,7 @@ Weak passwords are vulnerable to:
 
 ---
 
-# Password Policies
+## Password Policies
 
 A modern password policy should emphasize strength without creating unnecessary complexity.
 
@@ -691,7 +691,7 @@ Forced periodic password changes are generally discouraged unless there is evide
 
 ---
 
-# Why Passwords Should Never Be Stored in Plaintext
+## Why Passwords Should Never Be Stored in Plaintext
 
 Imagine the database contains:
 
@@ -709,9 +709,9 @@ Instead, applications should store only **password hashes**.
 
 ---
 
-# Hashing
+## Hashing
 
-## Overview
+### Overview
 
 A hash function converts data into a fixed-length value.
 
@@ -733,7 +733,7 @@ The original password should not be recoverable from the hash.
 
 ---
 
-# Encryption vs Hashing
+## Encryption vs Hashing
 
 | Encryption | Hashing |
 |------------|---------|
@@ -745,7 +745,7 @@ Passwords should be **hashed**, not encrypted.
 
 ---
 
-# Password Verification
+## Password Verification
 
 Registration:
 
@@ -787,9 +787,9 @@ The application compares hashes, not plaintext passwords.
 
 ---
 
-# Salt
+## Salt
 
-## Overview
+### Overview
 
 A salt is a random value added to each password before hashing.
 
@@ -811,7 +811,7 @@ Every user should have a unique salt.
 
 ---
 
-# Why Salt Matters
+## Why Salt Matters
 
 Without salt:
 
@@ -859,7 +859,7 @@ Different hashes make large-scale attacks such as rainbow table attacks signific
 
 ---
 
-# Pepper
+## Pepper
 
 A pepper is an additional secret value stored separately from the password database.
 
@@ -885,7 +885,7 @@ If implemented, the pepper should be protected using secure key management.
 
 ---
 
-# Password Hashing Algorithms
+## Password Hashing Algorithms
 
 General-purpose hash functions such as MD5 and SHA-1 are **not appropriate for password storage** because they are too fast.
 
@@ -893,7 +893,7 @@ Modern password hashing algorithms are intentionally computationally expensive t
 
 ---
 
-## Argon2
+### Argon2
 
 Argon2 is widely regarded as the modern recommendation for password hashing.
 
@@ -906,7 +906,7 @@ Features:
 
 ---
 
-## bcrypt
+### bcrypt
 
 bcrypt has been widely used for many years.
 
@@ -918,7 +918,7 @@ Advantages:
 
 ---
 
-## scrypt
+### scrypt
 
 scrypt is another memory-hard password hashing algorithm.
 
@@ -929,7 +929,7 @@ Advantages:
 
 ---
 
-## PBKDF2
+### PBKDF2
 
 PBKDF2 remains widely supported and is commonly used in enterprise environments.
 
@@ -937,7 +937,7 @@ It increases computational cost through many hashing iterations.
 
 ---
 
-# Comparison of Password Hashing Algorithms
+## Comparison of Password Hashing Algorithms
 
 | Algorithm | Recommended | Memory Hard | Adaptive Cost |
 |-----------|-------------|-------------|---------------|
@@ -950,7 +950,7 @@ It increases computational cost through many hashing iterations.
 
 ---
 
-# Password Managers
+## Password Managers
 
 Password managers help users create and store:
 
@@ -968,7 +968,7 @@ Organizations should encourage, not discourage, password manager usage.
 
 ---
 
-# Passwordless Authentication
+## Passwordless Authentication
 
 Passwords are vulnerable to:
 
@@ -988,7 +988,7 @@ Examples include:
 
 ---
 
-# Passkeys
+## Passkeys
 
 Passkeys are a modern, phishing-resistant authentication method based on public-key cryptography.
 
@@ -1016,7 +1016,7 @@ The **private key never leaves the user's device**.
 
 ---
 
-# Authentication with Passkeys
+## Authentication with Passkeys
 
 ```
 Server
@@ -1042,7 +1042,7 @@ No password is transmitted or stored on the server.
 
 ---
 
-# FIDO2
+## FIDO2
 
 FIDO2 is an open authentication standard designed to support strong, phishing-resistant authentication.
 
@@ -1059,7 +1059,7 @@ FIDO2 enables authentication using:
 
 ---
 
-# WebAuthn
+## WebAuthn
 
 WebAuthn is a web standard that allows browsers to communicate securely with authenticators.
 
@@ -1073,7 +1073,7 @@ Supported authenticators include:
 
 ---
 
-# Hardware Security Keys
+## Hardware Security Keys
 
 Examples include:
 
@@ -1111,7 +1111,7 @@ Advantages:
 
 ---
 
-# One-Time Passwords (OTP)
+## One-Time Passwords (OTP)
 
 OTPs provide temporary authentication codes.
 
@@ -1122,7 +1122,7 @@ Common types:
 
 ---
 
-# Time-Based One-Time Password (TOTP)
+## Time-Based One-Time Password (TOTP)
 
 Example:
 
@@ -1146,7 +1146,7 @@ Examples of authenticator applications include those implementing the TOTP stand
 
 ---
 
-# SMS OTP
+## SMS OTP
 
 SMS-based OTPs remain common but have limitations.
 
@@ -1161,7 +1161,7 @@ Where possible, authenticator apps or security keys provide stronger protection.
 
 ---
 
-# Push Authentication
+## Push Authentication
 
 Authentication flow:
 
@@ -1192,7 +1192,7 @@ Repeated prompts may lead users to approve malicious requests ("MFA fatigue").
 
 ---
 
-# Authentication Method Comparison
+## Authentication Method Comparison
 
 | Method | Security | Phishing Resistance | User Convenience |
 |---------|----------|--------------------|------------------|
@@ -1205,7 +1205,7 @@ Repeated prompts may lead users to approve malicious requests ("MFA fatigue").
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Passwords should always be stored using modern password hashing algorithms such as Argon2, bcrypt, scrypt, or PBKDF2.
 - Salts protect against precomputed attacks, while peppers add an additional layer of defense when managed securely.
@@ -1213,7 +1213,7 @@ Repeated prompts may lead users to approve malicious requests ("MFA fatigue").
 - Passwordless authentication eliminates many risks associated with shared secrets.
 - FIDO2, WebAuthn, passkeys, and hardware security keys provide strong, phishing-resistant authentication and represent the direction of modern identity systems.
 
-# Enterprise Authentication Protocols and Session Management
+## Enterprise Authentication Protocols and Session Management
 
 Modern authentication does not end after a user enters their password.
 
@@ -1230,7 +1230,7 @@ This is accomplished using:
 
 ---
 
-# Authentication vs Session Management
+## Authentication vs Session Management
 
 Authentication proves identity.
 
@@ -1268,7 +1268,7 @@ Without secure session management, authentication becomes meaningless.
 
 ---
 
-# What is a Session?
+## What is a Session?
 
 A session is the server's way of remembering an authenticated user.
 
@@ -1320,7 +1320,7 @@ Every Request Includes Cookie
 
 ---
 
-# Session Architecture
+## Session Architecture
 
 ```
            User
@@ -1355,7 +1355,7 @@ Authenticated User
 
 ---
 
-# Session Identifier
+## Session Identifier
 
 The session ID acts as the user's identity after login.
 
@@ -1386,7 +1386,7 @@ Predictable identifiers enable session guessing attacks.
 
 ---
 
-# Cookies
+## Cookies
 
 Sessions are commonly maintained using HTTP cookies.
 
@@ -1402,7 +1402,7 @@ The browser automatically includes the cookie in future requests.
 
 ---
 
-# Cookie Flow
+## Cookie Flow
 
 ```
 Login
@@ -1434,9 +1434,9 @@ Server Validates Session
 
 ---
 
-# Important Cookie Attributes
+## Important Cookie Attributes
 
-## HttpOnly
+### HttpOnly
 
 ```
 Set-Cookie:
@@ -1450,7 +1450,7 @@ Helps reduce the impact of Cross-Site Scripting (XSS).
 
 ---
 
-## Secure
+### Secure
 
 ```
 Set-Cookie:
@@ -1464,7 +1464,7 @@ Never send authentication cookies over HTTP.
 
 ---
 
-## SameSite
+### SameSite
 
 Controls when cookies are sent with cross-site requests.
 
@@ -1482,7 +1482,7 @@ Helps reduce Cross-Site Request Forgery (CSRF).
 
 ---
 
-# Cookie Security
+## Cookie Security
 
 Good:
 
@@ -1508,7 +1508,7 @@ The appropriate value depends on application requirements.
 
 ---
 
-# Session Timeout
+## Session Timeout
 
 Sessions should expire automatically.
 
@@ -1534,7 +1534,7 @@ Benefits:
 
 ---
 
-# Session Rotation
+## Session Rotation
 
 After authentication:
 
@@ -1554,9 +1554,9 @@ Changing the session ID after login helps prevent session fixation.
 
 ---
 
-# Session Fixation
+## Session Fixation
 
-## Overview
+### Overview
 
 In a session fixation attack, the attacker causes the victim to authenticate using a session ID already known to the attacker.
 
@@ -1580,7 +1580,7 @@ Attacker Reuses Session
 
 ---
 
-## Prevention
+### Prevention
 
 - Generate a new session after login.
 - Rotate session IDs after privilege changes.
@@ -1588,9 +1588,9 @@ Attacker Reuses Session
 
 ---
 
-# Session Hijacking
+## Session Hijacking
 
-## Overview
+### Overview
 
 Instead of stealing passwords, attackers steal authenticated sessions.
 
@@ -1621,7 +1621,7 @@ Attack methods include:
 
 ---
 
-# Session Management Best Practices
+## Session Management Best Practices
 
 - Use HTTPS everywhere.
 - Rotate session identifiers.
@@ -1633,7 +1633,7 @@ Attack methods include:
 
 ---
 
-# Token-Based Authentication
+## Token-Based Authentication
 
 Many modern APIs use tokens instead of server-side sessions.
 
@@ -1666,9 +1666,9 @@ Common in:
 
 ---
 
-# JSON Web Token (JWT)
+## JSON Web Token (JWT)
 
-## Overview
+### Overview
 
 JWT is a compact token format used to securely transmit claims.
 
@@ -1694,7 +1694,7 @@ xxxxx.yyyyy.zzzzz
 
 ---
 
-# JWT Architecture
+## JWT Architecture
 
 ```
 User Login
@@ -1726,7 +1726,7 @@ Access Granted
 
 ---
 
-# JWT Claims
+## JWT Claims
 
 Typical claims:
 
@@ -1757,7 +1757,7 @@ Never store sensitive secrets inside the JWT payload because it is only encoded,
 
 ---
 
-# Access Tokens
+## Access Tokens
 
 Access tokens authorize API requests.
 
@@ -1781,7 +1781,7 @@ Characteristics:
 
 ---
 
-# Refresh Tokens
+## Refresh Tokens
 
 Refresh tokens obtain new access tokens without requiring the user to log in again.
 
@@ -1805,9 +1805,9 @@ Refresh tokens should:
 
 ---
 
-# OAuth 2.0
+## OAuth 2.0
 
-## Overview
+### Overview
 
 OAuth 2.0 is an authorization framework.
 
@@ -1831,7 +1831,7 @@ The website never learns the user's Google password.
 
 ---
 
-# OAuth 2.0 Components
+## OAuth 2.0 Components
 
 ```
 Resource Owner
@@ -1853,7 +1853,7 @@ Each component has a distinct role in the authorization process.
 
 ---
 
-# OAuth Authorization Flow
+## OAuth Authorization Flow
 
 ```
 User
@@ -1887,7 +1887,7 @@ The Authorization Code Flow with PKCE is widely recommended for web and mobile a
 
 ---
 
-# OpenID Connect (OIDC)
+## OpenID Connect (OIDC)
 
 OAuth answers:
 
@@ -1907,7 +1907,7 @@ It introduces the **ID Token**, which contains information about the authenticat
 
 ---
 
-# SAML
+## SAML
 
 Security Assertion Markup Language (SAML) is an XML-based protocol commonly used for enterprise Single Sign-On.
 
@@ -1938,7 +1938,7 @@ Application
 
 ---
 
-# Identity Provider (IdP)
+## Identity Provider (IdP)
 
 An Identity Provider authenticates users and issues authentication assertions or tokens.
 
@@ -1946,7 +1946,7 @@ Examples include enterprise identity platforms that support standards such as SA
 
 ---
 
-# Service Provider (SP)
+## Service Provider (SP)
 
 The Service Provider is the application that trusts the Identity Provider.
 
@@ -1970,7 +1970,7 @@ Application Access
 
 ---
 
-# Single Sign-On (SSO)
+## Single Sign-On (SSO)
 
 SSO allows users to authenticate once and access multiple applications.
 
@@ -1999,7 +1999,7 @@ Benefits:
 
 ---
 
-# Common Authentication Mistakes
+## Common Authentication Mistakes
 
 - Weak session identifiers
 - Missing HTTPS
@@ -2015,7 +2015,7 @@ Benefits:
 
 ---
 
-# Enterprise Authentication Flow
+## Enterprise Authentication Flow
 
 ```
                 User
@@ -2043,7 +2043,7 @@ Benefits:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication verifies identity, while session management preserves that authenticated state.
 - Sessions and cookies must be protected using secure identifiers, HTTPS, and appropriate cookie attributes.
@@ -2053,7 +2053,7 @@ Benefits:
 - SAML and Single Sign-On enable centralized authentication for enterprise environments.
 - Secure session and token management are as important as the initial authentication process.
 
-# Authentication Attacks
+## Authentication Attacks
 
 Modern authentication systems are constantly targeted by attackers because compromising an account often provides direct access to sensitive data without requiring exploitation of software vulnerabilities.
 
@@ -2068,9 +2068,9 @@ The most common attacks target:
 
 ---
 
-# Credential Stuffing
+## Credential Stuffing
 
-## Overview
+### Overview
 
 Credential stuffing is an attack where previously leaked username/password combinations are automatically tested against another application.
 
@@ -2100,7 +2100,7 @@ Successful Login
 
 ---
 
-## Why Credential Stuffing Works
+### Why Credential Stuffing Works
 
 Users frequently reuse passwords.
 
@@ -2130,7 +2130,7 @@ Account Compromised
 
 ---
 
-## Detection Indicators
+### Detection Indicators
 
 Possible indicators include:
 
@@ -2143,7 +2143,7 @@ Possible indicators include:
 
 ---
 
-## Prevention
+### Prevention
 
 - Multi-Factor Authentication
 - Password managers
@@ -2154,9 +2154,9 @@ Possible indicators include:
 
 ---
 
-# Password Spraying
+## Password Spraying
 
-## Overview
+### Overview
 
 Instead of trying many passwords for one account, attackers try one common password against many accounts.
 
@@ -2184,7 +2184,7 @@ This avoids triggering traditional account lockout policies.
 
 ---
 
-## Detection
+### Detection
 
 Look for:
 
@@ -2195,7 +2195,7 @@ Look for:
 
 ---
 
-## Prevention
+### Prevention
 
 - MFA
 - Strong password policies
@@ -2205,9 +2205,9 @@ Look for:
 
 ---
 
-# Brute Force Attack
+## Brute Force Attack
 
-## Overview
+### Overview
 
 A brute force attack systematically tries many password combinations until one succeeds.
 
@@ -2233,21 +2233,21 @@ Correct Password
 
 ---
 
-## Types
+### Types
 
-### Simple Brute Force
+#### Simple Brute Force
 
 Every possible combination is attempted.
 
 ---
 
-### Dictionary Attack
+#### Dictionary Attack
 
 Uses lists of common passwords.
 
 ---
 
-### Hybrid Attack
+#### Hybrid Attack
 
 Combines:
 
@@ -2268,7 +2268,7 @@ P@ssword123
 
 ---
 
-## Prevention
+### Prevention
 
 - MFA
 - Account lockout
@@ -2279,9 +2279,9 @@ P@ssword123
 
 ---
 
-# Account Enumeration
+## Account Enumeration
 
-## Overview
+### Overview
 
 Applications sometimes reveal whether a username exists.
 
@@ -2303,7 +2303,7 @@ Attackers can identify valid accounts before attempting password attacks.
 
 ---
 
-## Secure Response
+### Secure Response
 
 Always return a generic message:
 
@@ -2315,9 +2315,9 @@ Avoid revealing which field was incorrect.
 
 ---
 
-# MFA Fatigue Attack
+## MFA Fatigue Attack
 
-## Overview
+### Overview
 
 Attackers repeatedly trigger MFA push notifications until a user approves one by mistake.
 
@@ -2357,7 +2357,7 @@ Account Access
 
 ---
 
-## Prevention
+### Prevention
 
 - Number matching
 - User education
@@ -2367,9 +2367,9 @@ Account Access
 
 ---
 
-# SIM Swapping
+## SIM Swapping
 
-## Overview
+### Overview
 
 Attackers convince a mobile carrier to transfer a victim's phone number to a SIM card they control.
 
@@ -2389,7 +2389,7 @@ Account Compromise
 
 ---
 
-## Prevention
+### Prevention
 
 - Prefer authenticator apps or hardware keys over SMS
 - Carrier account PINs
@@ -2398,7 +2398,7 @@ Account Compromise
 
 ---
 
-# Authentication Bypass
+## Authentication Bypass
 
 Authentication bypass occurs when an attacker gains access without completing the intended authentication process.
 
@@ -2412,7 +2412,7 @@ Examples include:
 
 ---
 
-# Session Theft
+## Session Theft
 
 Attackers may steal authenticated sessions through:
 
@@ -2424,11 +2424,11 @@ Attackers may steal authenticated sessions through:
 
 ---
 
-# Detection
+## Detection
 
 Authentication monitoring should include:
 
-## Login Events
+### Login Events
 
 Monitor:
 
@@ -2443,7 +2443,7 @@ Monitor:
 
 ---
 
-## Behavioral Analytics
+### Behavioral Analytics
 
 Look for:
 
@@ -2457,7 +2457,7 @@ Look for:
 
 ---
 
-## Security Logs
+### Security Logs
 
 Important authentication events include:
 
@@ -2483,13 +2483,13 @@ Session Destroyed
 
 ---
 
-# Prevention
+## Prevention
 
 A secure authentication system should implement layered controls.
 
 ---
 
-## Strong Authentication
+### Strong Authentication
 
 - MFA
 - Passkeys
@@ -2498,7 +2498,7 @@ A secure authentication system should implement layered controls.
 
 ---
 
-## Password Security
+### Password Security
 
 - Argon2, bcrypt, scrypt, or PBKDF2
 - Unique salts
@@ -2508,7 +2508,7 @@ A secure authentication system should implement layered controls.
 
 ---
 
-## Session Security
+### Session Security
 
 - HTTPS
 - Secure cookies
@@ -2520,7 +2520,7 @@ A secure authentication system should implement layered controls.
 
 ---
 
-## Monitoring
+### Monitoring
 
 - Centralized logging
 - SIEM integration
@@ -2530,7 +2530,7 @@ A secure authentication system should implement layered controls.
 
 ---
 
-# Best Practices
+## Best Practices
 
 ✔ Enforce MFA for all privileged accounts.
 
@@ -2554,15 +2554,15 @@ A secure authentication system should implement layered controls.
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Objective
+### Objective
 
 Evaluate the authentication security of a web application.
 
 ---
 
-## Scenario
+### Scenario
 
 The application provides:
 
@@ -2574,7 +2574,7 @@ The application provides:
 
 ---
 
-## Tasks
+### Tasks
 
 1. Review the password policy.
 2. Verify passwords are securely hashed.
@@ -2589,7 +2589,7 @@ The application provides:
 
 ---
 
-## Expected Learning Outcomes
+### Expected Learning Outcomes
 
 After completing this lab, you should be able to:
 
@@ -2601,11 +2601,11 @@ After completing this lab, you should be able to:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is the difference between identification, authentication, and authorization?
+#### What is the difference between identification, authentication, and authorization?
 
 - **Identification** is claiming an identity (e.g., username or email).
 - **Authentication** verifies that claimed identity (e.g., password, MFA, passkey).
@@ -2613,41 +2613,41 @@ After completing this lab, you should be able to:
 
 ---
 
-### Why should passwords be hashed instead of encrypted?
+#### Why should passwords be hashed instead of encrypted?
 
 Hashing is a one-way process designed for password verification. Encryption is reversible with a key, making it unsuitable as the primary mechanism for password storage.
 
 ---
 
-### What is Multi-Factor Authentication (MFA)?
+#### What is Multi-Factor Authentication (MFA)?
 
 MFA requires two or more different authentication factors (such as a password and a hardware security key), making account compromise significantly more difficult.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is credential stuffing?
+#### What is credential stuffing?
 
 Credential stuffing uses leaked username/password pairs from previous data breaches to attempt automated logins on other services where users may have reused the same credentials.
 
 ---
 
-### Why is Argon2 recommended for password hashing?
+#### Why is Argon2 recommended for password hashing?
 
 Argon2 is memory-hard, configurable, and specifically designed for secure password storage, making offline password cracking more expensive for attackers.
 
 ---
 
-### Explain the difference between OAuth 2.0 and OpenID Connect.
+#### Explain the difference between OAuth 2.0 and OpenID Connect.
 
 OAuth 2.0 is an authorization framework that allows delegated access to resources. OpenID Connect builds on OAuth 2.0 by adding an identity layer for user authentication through ID tokens.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you design a secure authentication system?
+#### How would you design a secure authentication system?
 
 A secure design should include:
 
@@ -2663,7 +2663,7 @@ A secure design should include:
 
 ---
 
-### How would you investigate suspected credential stuffing in a SOC?
+#### How would you investigate suspected credential stuffing in a SOC?
 
 A structured approach includes:
 
@@ -2678,9 +2678,9 @@ A structured approach includes:
 
 ---
 
-# References
+## References
 
-## OWASP
+### OWASP
 
 - OWASP Top 10 (2021)
 - OWASP Authentication Cheat Sheet
@@ -2688,18 +2688,18 @@ A structured approach includes:
 - OWASP Password Storage Cheat Sheet
 - OWASP Multifactor Authentication Cheat Sheet
 
-## NIST
+### NIST
 
 - NIST SP 800-63 Digital Identity Guidelines
 - NIST Cybersecurity Framework (CSF)
 - NIST Secure Software Development Framework (SSDF)
 
-## FIDO Alliance
+### FIDO Alliance
 
 - FIDO2 Specifications
 - WebAuthn Guidance
 
-## IETF
+### IETF
 
 - OAuth 2.0
 - OpenID Connect
@@ -2707,6 +2707,6 @@ A structured approach includes:
 
 ---
 
-# Summary
+## Summary
 
 Identification and Authentication Failures remain one of the most common causes of account compromise. Secure authentication requires more than strong passwords—it demands a layered approach that includes modern password hashing, phishing-resistant MFA, secure session management, robust account recovery, continuous monitoring, and risk-based controls. Organizations should adopt standards such as OAuth 2.0, OpenID Connect, WebAuthn, and FIDO2 where appropriate, while continuously monitoring authentication events to detect and respond to credential attacks and unauthorized access attempts.

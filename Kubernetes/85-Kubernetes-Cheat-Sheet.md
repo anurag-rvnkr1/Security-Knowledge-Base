@@ -43,7 +43,7 @@ Operations
 
 ---
 
-# 1. Kubernetes Architecture
+## 1. Kubernetes Architecture
 
 ```text
                          Kubernetes Cluster
@@ -63,7 +63,7 @@ Operations
 
 ---
 
-# 2. Core Components
+## 2. Core Components
 
 | Component | Purpose |
 |---|---|
@@ -77,7 +77,7 @@ Operations
 
 ---
 
-# 3. Essential kubectl Syntax
+## 3. Essential kubectl Syntax
 
 ```bash
 kubectl <command> <resource> <name> [options]
@@ -95,7 +95,7 @@ kubectl apply -f app.yaml
 
 ---
 
-# 4. Cluster Information
+## 4. Cluster Information
 
 Check cluster information:
 
@@ -129,7 +129,7 @@ kubectl config view
 
 ---
 
-# 5. Context Management
+## 5. Context Management
 
 List contexts:
 
@@ -157,7 +157,7 @@ kubectl config set-context --current --namespace=<namespace>
 
 ---
 
-# 6. Namespace Commands
+## 6. Namespace Commands
 
 List namespaces:
 
@@ -185,7 +185,7 @@ kubectl get all -n production
 
 ---
 
-# 7. YAML Management
+## 7. YAML Management
 
 Apply configuration:
 
@@ -213,7 +213,7 @@ kubectl get deployment app -o yaml
 
 ---
 
-# 8. Pod Commands
+## 8. Pod Commands
 
 List Pods:
 
@@ -247,7 +247,7 @@ kubectl get pod <pod> -o wide
 
 ---
 
-# 9. Pod Logs
+## 9. Pod Logs
 
 View logs:
 
@@ -287,7 +287,7 @@ kubectl logs <pod> --since=1h
 
 ---
 
-# 10. Execute Commands Inside Pods
+## 10. Execute Commands Inside Pods
 
 Open a shell:
 
@@ -315,7 +315,7 @@ kubectl exec -it <pod> -c <container> -- /bin/sh
 
 ---
 
-# 11. Pod Debugging
+## 11. Pod Debugging
 
 Inspect:
 
@@ -343,7 +343,7 @@ kubectl logs <pod> --previous
 
 ---
 
-# 12. Pod Status Cheat Sheet
+## 12. Pod Status Cheat Sheet
 
 | Status | Meaning |
 |---|---|
@@ -366,7 +366,7 @@ Terminating
 
 ---
 
-# 13. Deployment Commands
+## 13. Deployment Commands
 
 List Deployments:
 
@@ -394,7 +394,7 @@ kubectl describe deployment nginx
 
 ---
 
-# 14. Deployment Rollouts
+## 14. Deployment Rollouts
 
 Check rollout:
 
@@ -440,7 +440,7 @@ kubectl rollout restart deployment/nginx
 
 ---
 
-# 15. Update Deployment Image
+## 15. Update Deployment Image
 
 ```bash
 kubectl set image deployment/nginx nginx=nginx:<version>
@@ -454,7 +454,7 @@ kubectl set image deployment/web web=nginx:1.29
 
 ---
 
-# 16. ReplicaSet Commands
+## 16. ReplicaSet Commands
 
 List:
 
@@ -470,7 +470,7 @@ kubectl describe replicaset <name>
 
 ---
 
-# 17. StatefulSet Commands
+## 17. StatefulSet Commands
 
 List:
 
@@ -492,7 +492,7 @@ kubectl rollout restart statefulset/<name>
 
 ---
 
-# 18. DaemonSet Commands
+## 18. DaemonSet Commands
 
 List:
 
@@ -508,7 +508,7 @@ kubectl describe daemonset <name>
 
 ---
 
-# 19. Job Commands
+## 19. Job Commands
 
 List Jobs:
 
@@ -530,7 +530,7 @@ kubectl delete job <name>
 
 ---
 
-# 20. CronJob Commands
+## 20. CronJob Commands
 
 List:
 
@@ -552,7 +552,7 @@ kubectl patch cronjob <name> -p '{"spec":{"suspend":true}}'
 
 ---
 
-# 21. Service Commands
+## 21. Service Commands
 
 List Services:
 
@@ -574,7 +574,7 @@ kubectl get svc <service> -o yaml
 
 ---
 
-# 22. Service Types
+## 22. Service Types
 
 ```text
 ClusterIP
@@ -585,7 +585,7 @@ ExternalName
 
 ---
 
-# 23. Expose a Deployment
+## 23. Expose a Deployment
 
 Create ClusterIP Service:
 
@@ -605,7 +605,7 @@ kubectl expose deployment nginx \
 
 ---
 
-# 24. Endpoints
+## 24. Endpoints
 
 Check Endpoints:
 
@@ -623,7 +623,7 @@ This is one of the first places to check when a Service cannot reach Pods.
 
 ---
 
-# 25. Ingress Commands
+## 25. Ingress Commands
 
 List Ingress:
 
@@ -657,7 +657,7 @@ Pod
 
 ---
 
-# 26. Gateway API Commands
+## 26. Gateway API Commands
 
 List GatewayClasses:
 
@@ -686,7 +686,7 @@ kubectl describe httproute <name>
 
 ---
 
-# 27. ConfigMap Commands
+## 27. ConfigMap Commands
 
 List:
 
@@ -715,7 +715,7 @@ kubectl get configmap app-config -o yaml
 
 ---
 
-# 28. Secret Commands
+## 28. Secret Commands
 
 List:
 
@@ -753,7 +753,7 @@ Do not expose secret values in shell history, logs, tickets, or chat.
 
 ---
 
-# 29. Labels
+## 29. Labels
 
 Show labels:
 
@@ -775,7 +775,7 @@ kubectl label pod <pod> environment-
 
 ---
 
-# 30. Selectors
+## 30. Selectors
 
 List Pods by label:
 
@@ -791,7 +791,7 @@ kubectl get pods -l 'app=frontend,environment=production'
 
 ---
 
-# 31. Annotations
+## 31. Annotations
 
 Add annotation:
 
@@ -807,7 +807,7 @@ kubectl annotate pod <pod> description-
 
 ---
 
-# 32. Node Commands
+## 32. Node Commands
 
 List nodes:
 
@@ -835,7 +835,7 @@ kubectl get nodes --show-labels
 
 ---
 
-# 33. Node Labels
+## 33. Node Labels
 
 Add label:
 
@@ -851,7 +851,7 @@ kubectl label node <node> disktype-
 
 ---
 
-# 34. Node Scheduling Control
+## 34. Node Scheduling Control
 
 Cordon:
 
@@ -875,7 +875,7 @@ kubectl uncordon <node>
 
 ---
 
-# 35. Node Taints
+## 35. Node Taints
 
 Add taint:
 
@@ -899,7 +899,7 @@ NoExecute
 
 ---
 
-# 36. Scheduling Cheat Sheet
+## 36. Scheduling Cheat Sheet
 
 ```text
 nodeSelector
@@ -923,7 +923,7 @@ Toleration
 
 ---
 
-# 37. Resource Requests
+## 37. Resource Requests
 
 Example:
 
@@ -942,7 +942,7 @@ Requests influence scheduling.
 
 ---
 
-# 38. Resource Limits
+## 38. Resource Limits
 
 Example:
 
@@ -961,7 +961,7 @@ Limits define resource boundaries.
 
 ---
 
-# 39. Resource Monitoring
+## 39. Resource Monitoring
 
 If Metrics Server is installed:
 
@@ -983,7 +983,7 @@ kubectl top pods -A
 
 ---
 
-# 40. HPA Commands
+## 40. HPA Commands
 
 List:
 
@@ -1008,7 +1008,7 @@ kubectl autoscale deployment nginx \
 
 ---
 
-# 41. VPA
+## 41. VPA
 
 VPA availability and update behavior depend on the VPA implementation installed in the cluster.
 
@@ -1020,7 +1020,7 @@ kubectl get vpa
 
 ---
 
-# 42. Cluster Autoscaler
+## 42. Cluster Autoscaler
 
 Cluster Autoscaler is usually deployed as a cluster component rather than controlled through a simple universal `kubectl autoscale` command.
 
@@ -1040,7 +1040,7 @@ Pod Scheduled
 
 ---
 
-# 43. Storage Commands
+## 43. Storage Commands
 
 List PVs:
 
@@ -1068,7 +1068,7 @@ kubectl get storageclass
 
 ---
 
-# 44. PersistentVolume
+## 44. PersistentVolume
 
 Describe:
 
@@ -1084,7 +1084,7 @@ kubectl get pv <pv> -o yaml
 
 ---
 
-# 45. PersistentVolumeClaim
+## 45. PersistentVolumeClaim
 
 Describe:
 
@@ -1108,7 +1108,7 @@ Lost
 
 ---
 
-# 46. StorageClass
+## 46. StorageClass
 
 List:
 
@@ -1136,7 +1136,7 @@ Look for:
 
 ---
 
-# 47. CSI Troubleshooting
+## 47. CSI Troubleshooting
 
 Check CSI-related Pods:
 
@@ -1158,7 +1158,7 @@ kubectl describe csidriver <name>
 
 ---
 
-# 48. Network Commands
+## 48. Network Commands
 
 List Services:
 
@@ -1180,7 +1180,7 @@ kubectl get endpointslices -A
 
 ---
 
-# 49. DNS
+## 49. DNS
 
 Typical Service DNS:
 
@@ -1196,7 +1196,7 @@ backend.production.svc.cluster.local
 
 ---
 
-# 50. DNS Troubleshooting
+## 50. DNS Troubleshooting
 
 Check CoreDNS:
 
@@ -1224,7 +1224,7 @@ nslookup kubernetes.default.svc.cluster.local
 
 ---
 
-# 51. CNI
+## 51. CNI
 
 Common CNI implementations include:
 
@@ -1245,7 +1245,7 @@ Look for networking components in the relevant namespace.
 
 ---
 
-# 52. NetworkPolicy
+## 52. NetworkPolicy
 
 List:
 
@@ -1267,7 +1267,7 @@ kubectl describe networkpolicy <name>
 
 ---
 
-# 53. NetworkPolicy Mental Model
+## 53. NetworkPolicy Mental Model
 
 ```text
 Source
@@ -1293,7 +1293,7 @@ Egress
 
 ---
 
-# 54. RBAC Commands
+## 54. RBAC Commands
 
 List Roles:
 
@@ -1321,7 +1321,7 @@ kubectl get clusterrolebindings
 
 ---
 
-# 55. Check Permissions
+## 55. Check Permissions
 
 Test:
 
@@ -1344,7 +1344,7 @@ kubectl auth can-i get pods -n production
 
 ---
 
-# 56. RBAC Mental Model
+## 56. RBAC Mental Model
 
 ```text
 Subject
@@ -1372,7 +1372,7 @@ delete
 
 ---
 
-# 57. ServiceAccount Commands
+## 57. ServiceAccount Commands
 
 List:
 
@@ -1394,7 +1394,7 @@ kubectl create serviceaccount app-sa
 
 ---
 
-# 58. Security Context
+## 58. Security Context
 
 Inspect Pod:
 
@@ -1420,7 +1420,7 @@ seccompProfile
 
 ---
 
-# 59. Pod Security
+## 59. Pod Security
 
 Namespaces can be labeled for Pod Security admission enforcement.
 
@@ -1435,7 +1435,7 @@ Before applying cluster-wide policies, test workloads carefully because restrict
 
 ---
 
-# 60. Admission Control
+## 60. Admission Control
 
 Admission happens after authentication/authorization and before the object is persisted.
 
@@ -1455,7 +1455,7 @@ Persistence
 
 ---
 
-# 61. Audit Logs
+## 61. Audit Logs
 
 Kubernetes audit logs record API activity according to the configured audit policy.
 
@@ -1470,7 +1470,7 @@ Incident Response
 
 ---
 
-# 62. Image Security
+## 62. Image Security
 
 Best practices:
 
@@ -1494,7 +1494,7 @@ over mutable tags for highly controlled production deployments.
 
 ---
 
-# 63. Runtime Security
+## 63. Runtime Security
 
 Monitor:
 
@@ -1511,7 +1511,7 @@ Runtime security tools can complement Kubernetes-native controls.
 
 ---
 
-# 64. Logging
+## 64. Logging
 
 Application logs:
 
@@ -1529,7 +1529,7 @@ Node-level logs may require access to the node operating system and depend on th
 
 ---
 
-# 65. Events
+## 65. Events
 
 List events:
 
@@ -1561,7 +1561,7 @@ Admission Errors
 
 ---
 
-# 66. Debugging Pods
+## 66. Debugging Pods
 
 Run a temporary debugging Pod:
 
@@ -1588,7 +1588,7 @@ Use a purpose-built debugging image if the application container does not contai
 
 ---
 
-# 67. Port Forwarding
+## 67. Port Forwarding
 
 Forward local port:
 
@@ -1612,7 +1612,7 @@ Internal Dashboards
 
 ---
 
-# 68. Copy Files
+## 68. Copy Files
 
 Copy from Pod:
 
@@ -1634,7 +1634,7 @@ kubectl cp <pod>:/path/file ./file -c <container>
 
 ---
 
-# 69. Labels and Filtering
+## 69. Labels and Filtering
 
 ```bash
 kubectl get pods -l app=api
@@ -1648,7 +1648,7 @@ kubectl get pods -l 'environment!=production'
 
 ---
 
-# 70. JSONPath
+## 70. JSONPath
 
 Get Pod IP:
 
@@ -1673,7 +1673,7 @@ kubectl get pod <pod> \
 
 ---
 
-# 71. Custom Columns
+## 71. Custom Columns
 
 ```bash
 kubectl get pods \
@@ -1682,7 +1682,7 @@ kubectl get pods \
 
 ---
 
-# 72. Wide Output
+## 72. Wide Output
 
 ```bash
 kubectl get pods -o wide
@@ -1699,7 +1699,7 @@ Status
 
 ---
 
-# 73. Sorting
+## 73. Sorting
 
 Sort Pods:
 
@@ -1717,7 +1717,7 @@ kubectl get nodes \
 
 ---
 
-# 74. Resource Shortcuts
+## 74. Resource Shortcuts
 
 Common resource abbreviations:
 
@@ -1746,7 +1746,7 @@ kubectl get deploy
 
 ---
 
-# 75. Get All Resources
+## 75. Get All Resources
 
 ```bash
 kubectl get all
@@ -1762,7 +1762,7 @@ Remember that `get all` does not literally include every Kubernetes resource typ
 
 ---
 
-# 76. Delete Resources
+## 76. Delete Resources
 
 Delete Pod:
 
@@ -1792,7 +1792,7 @@ Use namespace deletion carefully because it can remove many namespaced resources
 
 ---
 
-# 77. Force Deletion
+## 77. Force Deletion
 
 Avoid force deletion unless you understand the consequences.
 
@@ -1806,7 +1806,7 @@ Potentially dangerous in stateful or storage-sensitive workloads.
 
 ---
 
-# 78. Resource Quotas
+## 78. Resource Quotas
 
 List:
 
@@ -1822,7 +1822,7 @@ kubectl describe resourcequota <name>
 
 ---
 
-# 79. LimitRanges
+## 79. LimitRanges
 
 List:
 
@@ -1838,7 +1838,7 @@ kubectl describe limitrange <name>
 
 ---
 
-# 80. PriorityClasses
+## 80. PriorityClasses
 
 List:
 
@@ -1854,7 +1854,7 @@ kubectl describe priorityclass <name>
 
 ---
 
-# 81. Scheduling Inspection
+## 81. Scheduling Inspection
 
 Check Pod scheduling events:
 
@@ -1875,7 +1875,7 @@ Volume constraints
 
 ---
 
-# 82. Drain a Node Safely
+## 82. Drain a Node Safely
 
 Typical workflow:
 
@@ -1907,7 +1907,7 @@ Critical workloads
 
 ---
 
-# 83. PodDisruptionBudget
+## 83. PodDisruptionBudget
 
 List:
 
@@ -1925,9 +1925,9 @@ PDBs help limit voluntary disruptions.
 
 ---
 
-# 84. Probes
+## 84. Probes
 
-## Readiness
+### Readiness
 
 ```yaml
 readinessProbe:
@@ -1944,7 +1944,7 @@ Should this Pod receive traffic?
 
 ---
 
-## Liveness
+### Liveness
 
 ```yaml
 livenessProbe:
@@ -1961,7 +1961,7 @@ Should this container be restarted?
 
 ---
 
-## Startup
+### Startup
 
 ```yaml
 startupProbe:
@@ -1978,7 +1978,7 @@ Has the application finished starting?
 
 ---
 
-# 85. Probe Cheat Sheet
+## 85. Probe Cheat Sheet
 
 ```text
 Startup
@@ -1993,7 +1993,7 @@ Liveness
 
 ---
 
-# 86. Rolling Update Parameters
+## 86. Rolling Update Parameters
 
 Typical Deployment settings:
 
@@ -2007,7 +2007,7 @@ strategy:
 
 ---
 
-# 87. Deployment Strategy
+## 87. Deployment Strategy
 
 ```text
 RollingUpdate
@@ -2019,7 +2019,7 @@ Recreate
 
 ---
 
-# 88. YAML Skeleton – Pod
+## 88. YAML Skeleton – Pod
 
 ```yaml
 apiVersion: v1
@@ -2034,7 +2034,7 @@ spec:
 
 ---
 
-# 89. YAML Skeleton – Deployment
+## 89. YAML Skeleton – Deployment
 
 ```yaml
 apiVersion: apps/v1
@@ -2060,7 +2060,7 @@ spec:
 
 ---
 
-# 90. YAML Skeleton – Service
+## 90. YAML Skeleton – Service
 
 ```yaml
 apiVersion: v1
@@ -2077,7 +2077,7 @@ spec:
 
 ---
 
-# 91. YAML Skeleton – ConfigMap
+## 91. YAML Skeleton – ConfigMap
 
 ```yaml
 apiVersion: v1
@@ -2090,7 +2090,7 @@ data:
 
 ---
 
-# 92. YAML Skeleton – Secret
+## 92. YAML Skeleton – Secret
 
 ```yaml
 apiVersion: v1
@@ -2107,7 +2107,7 @@ Do not commit real credentials into Git.
 
 ---
 
-# 93. YAML Skeleton – PVC
+## 93. YAML Skeleton – PVC
 
 ```yaml
 apiVersion: v1
@@ -2124,7 +2124,7 @@ spec:
 
 ---
 
-# 94. YAML Skeleton – NetworkPolicy
+## 94. YAML Skeleton – NetworkPolicy
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -2149,7 +2149,7 @@ spec:
 
 ---
 
-# 95. YAML Skeleton – ServiceAccount
+## 95. YAML Skeleton – ServiceAccount
 
 ```yaml
 apiVersion: v1
@@ -2160,7 +2160,7 @@ metadata:
 
 ---
 
-# 96. YAML Skeleton – Role
+## 96. YAML Skeleton – Role
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -2179,7 +2179,7 @@ rules:
 
 ---
 
-# 97. YAML Skeleton – RoleBinding
+## 97. YAML Skeleton – RoleBinding
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -2197,7 +2197,7 @@ roleRef:
 
 ---
 
-# 98. YAML Skeleton – HPA
+## 98. YAML Skeleton – HPA
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -2222,7 +2222,7 @@ spec:
 
 ---
 
-# 99. Helm Commands
+## 99. Helm Commands
 
 Check Helm:
 
@@ -2286,7 +2286,7 @@ helm uninstall <release>
 
 ---
 
-# 100. Helm Inspection
+## 100. Helm Inspection
 
 Show values:
 
@@ -2320,7 +2320,7 @@ helm lint <chart>
 
 ---
 
-# 101. Kustomize Commands
+## 101. Kustomize Commands
 
 Build manifests:
 
@@ -2342,7 +2342,7 @@ kubectl delete -k .
 
 ---
 
-# 102. GitOps Cheat Sheet
+## 102. GitOps Cheat Sheet
 
 Typical flow:
 
@@ -2367,7 +2367,7 @@ Flux
 
 ---
 
-# 103. Operators
+## 103. Operators
 
 Operator pattern:
 
@@ -2395,7 +2395,7 @@ kubectl api-resources
 
 ---
 
-# 104. Service Mesh
+## 104. Service Mesh
 
 Common technologies:
 
@@ -2419,7 +2419,7 @@ Circuit Breaking
 
 ---
 
-# 105. Istio Commands
+## 105. Istio Commands
 
 Check Istio workloads:
 
@@ -2459,7 +2459,7 @@ istioctl proxy-config listeners <pod> -n <namespace>
 
 ---
 
-# 106. Linkerd Commands
+## 106. Linkerd Commands
 
 Check Linkerd:
 
@@ -2481,7 +2481,7 @@ linkerd viz top deploy/<deployment> -n <namespace>
 
 ---
 
-# 107. Prometheus Quick Reference
+## 107. Prometheus Quick Reference
 
 Common metric concepts:
 
@@ -2494,7 +2494,7 @@ Summary
 
 ---
 
-# 108. PromQL Examples
+## 108. PromQL Examples
 
 CPU usage:
 
@@ -2524,7 +2524,7 @@ Always verify metric names because they depend on the exporters and monitoring s
 
 ---
 
-# 109. Grafana
+## 109. Grafana
 
 Typical workflow:
 
@@ -2550,7 +2550,7 @@ Application Metrics
 
 ---
 
-# 110. Alertmanager
+## 110. Alertmanager
 
 Alert flow:
 
@@ -2579,7 +2579,7 @@ depending on configuration.
 
 ---
 
-# 111. OpenTelemetry
+## 111. OpenTelemetry
 
 Telemetry:
 
@@ -2601,7 +2601,7 @@ Backend
 
 ---
 
-# 112. Distributed Tracing
+## 112. Distributed Tracing
 
 Example:
 
@@ -2619,7 +2619,7 @@ A trace connects these operations into one request journey.
 
 ---
 
-# 113. Production Monitoring Checklist
+## 113. Production Monitoring Checklist
 
 Monitor:
 
@@ -2644,7 +2644,7 @@ Monitor:
 
 ---
 
-# 114. Backup Cheat Sheet
+## 114. Backup Cheat Sheet
 
 Back up:
 
@@ -2661,7 +2661,7 @@ Do not assume that backing up Kubernetes object definitions alone protects appli
 
 ---
 
-# 115. Disaster Recovery
+## 115. Disaster Recovery
 
 Basic DR workflow:
 
@@ -2687,7 +2687,7 @@ Monitor
 
 ---
 
-# 116. Upgrade Checklist
+## 116. Upgrade Checklist
 
 ```text
 ☑ Read release notes
@@ -2704,7 +2704,7 @@ Monitor
 
 ---
 
-# 117. High Availability
+## 117. High Availability
 
 Production HA usually involves:
 
@@ -2720,7 +2720,7 @@ Redundant Storage
 
 ---
 
-# 118. Production Best Practices
+## 118. Production Best Practices
 
 ```text
 ☑ Use declarative configuration
@@ -2746,7 +2746,7 @@ Redundant Storage
 
 ---
 
-# 119. Kubernetes Troubleshooting Flow
+## 119. Kubernetes Troubleshooting Flow
 
 ```text
 Problem
@@ -2788,7 +2788,7 @@ Validate
 
 ---
 
-# 120. Pending Pod Flow
+## 120. Pending Pod Flow
 
 ```text
 Pod Pending
@@ -2816,7 +2816,7 @@ Quota?
 
 ---
 
-# 121. CrashLoopBackOff Flow
+## 121. CrashLoopBackOff Flow
 
 ```text
 CrashLoopBackOff
@@ -2844,7 +2844,7 @@ OOMKilled?
 
 ---
 
-# 122. ImagePullBackOff Flow
+## 122. ImagePullBackOff Flow
 
 ```text
 ImagePullBackOff
@@ -2868,7 +2868,7 @@ Check Image Availability
 
 ---
 
-# 123. Service Failure Flow
+## 123. Service Failure Flow
 
 ```text
 Client
@@ -2894,7 +2894,7 @@ DNS?
 
 ---
 
-# 124. DNS Failure Flow
+## 124. DNS Failure Flow
 
 ```text
 DNS Failure
@@ -2914,7 +2914,7 @@ Upstream DNS?
 
 ---
 
-# 125. PVC Failure Flow
+## 125. PVC Failure Flow
 
 ```text
 PVC Pending
@@ -2936,7 +2936,7 @@ PV
 
 ---
 
-# 126. RBAC Failure Flow
+## 126. RBAC Failure Flow
 
 ```text
 403 Forbidden
@@ -2964,7 +2964,7 @@ kubectl auth can-i
 
 ---
 
-# 127. Node Failure Flow
+## 127. Node Failure Flow
 
 ```text
 Node NotReady
@@ -2986,7 +2986,7 @@ Certificates
 
 ---
 
-# 128. Security Incident Flow
+## 128. Security Incident Flow
 
 ```text
 Detection
@@ -3012,7 +3012,7 @@ Root Cause Analysis
 
 ---
 
-# 129. Kubernetes Security Quick Reference
+## 129. Kubernetes Security Quick Reference
 
 ```text
 Authentication
@@ -3048,7 +3048,7 @@ Runtime Security
 
 ---
 
-# 130. Kubernetes Networking Quick Reference
+## 130. Kubernetes Networking Quick Reference
 
 ```text
 Pod
@@ -3076,7 +3076,7 @@ Gateway Controller
 
 ---
 
-# 131. Kubernetes Storage Quick Reference
+## 131. Kubernetes Storage Quick Reference
 
 ```text
 Application
@@ -3094,7 +3094,7 @@ Storage Backend
 
 ---
 
-# 132. Kubernetes Scheduling Quick Reference
+## 132. Kubernetes Scheduling Quick Reference
 
 ```text
 Pod
@@ -3116,7 +3116,7 @@ Node
 
 ---
 
-# 133. Autoscaling Quick Reference
+## 133. Autoscaling Quick Reference
 
 ```text
 HPA
@@ -3131,7 +3131,7 @@ Cluster Autoscaler
 
 ---
 
-# 134. Workload Quick Reference
+## 134. Workload Quick Reference
 
 ```text
 Pod
@@ -3155,7 +3155,7 @@ CronJob
 
 ---
 
-# 135. Service Quick Reference
+## 135. Service Quick Reference
 
 ```text
 ClusterIP
@@ -3173,7 +3173,7 @@ ExternalName
 
 ---
 
-# 136. Storage Access Modes
+## 136. Storage Access Modes
 
 Common access modes:
 
@@ -3188,7 +3188,7 @@ Actual support depends on the storage driver and backend.
 
 ---
 
-# 137. PersistentVolume Reclaim Policies
+## 137. PersistentVolume Reclaim Policies
 
 Common policies:
 
@@ -3201,7 +3201,7 @@ Delete
 
 ---
 
-# 138. Service Discovery
+## 138. Service Discovery
 
 Inside a namespace:
 
@@ -3223,7 +3223,7 @@ service-name.namespace.svc.cluster.local
 
 ---
 
-# 139. Kubernetes API Object Structure
+## 139. Kubernetes API Object Structure
 
 Typical object:
 
@@ -3250,7 +3250,7 @@ status
 
 ---
 
-# 140. Declarative vs Imperative
+## 140. Declarative vs Imperative
 
 Imperative:
 
@@ -3268,7 +3268,7 @@ Production workflows generally favor declarative configuration and version contr
 
 ---
 
-# 141. Desired State vs Actual State
+## 141. Desired State vs Actual State
 
 Kubernetes continuously reconciles:
 
@@ -3296,7 +3296,7 @@ This is one of the most important Kubernetes concepts.
 
 ---
 
-# 142. Labels vs Annotations
+## 142. Labels vs Annotations
 
 ```text
 Labels
@@ -3308,7 +3308,7 @@ Annotations
 
 ---
 
-# 143. Requests vs Limits
+## 143. Requests vs Limits
 
 ```text
 Request
@@ -3320,7 +3320,7 @@ Limit
 
 ---
 
-# 144. Readiness vs Liveness
+## 144. Readiness vs Liveness
 
 ```text
 Readiness
@@ -3335,7 +3335,7 @@ Startup
 
 ---
 
-# 145. Authentication vs Authorization
+## 145. Authentication vs Authorization
 
 ```text
 Authentication
@@ -3347,7 +3347,7 @@ Authorization
 
 ---
 
-# 146. Ingress vs Gateway API
+## 146. Ingress vs Gateway API
 
 ```text
 Ingress
@@ -3359,7 +3359,7 @@ Gateway API
 
 ---
 
-# 147. Service vs EndpointSlice
+## 147. Service vs EndpointSlice
 
 ```text
 Service
@@ -3371,7 +3371,7 @@ EndpointSlice
 
 ---
 
-# 148. PV vs PVC
+## 148. PV vs PVC
 
 ```text
 PV
@@ -3383,7 +3383,7 @@ PVC
 
 ---
 
-# 149. Static vs Dynamic Provisioning
+## 149. Static vs Dynamic Provisioning
 
 ```text
 Static
@@ -3395,7 +3395,7 @@ Dynamic
 
 ---
 
-# 150. Service Mesh Quick Reference
+## 150. Service Mesh Quick Reference
 
 ```text
 Application
@@ -3423,9 +3423,9 @@ Observability
 
 ---
 
-# 151. Kubernetes Production Checklist
+## 151. Kubernetes Production Checklist
 
-## Cluster
+### Cluster
 
 ```text
 ☐ HA control plane
@@ -3435,7 +3435,7 @@ Observability
 ☐ Upgrade strategy
 ```
 
-## Workloads
+### Workloads
 
 ```text
 ☐ Resource requests
@@ -3446,7 +3446,7 @@ Observability
 ☐ PodDisruptionBudgets
 ```
 
-## Networking
+### Networking
 
 ```text
 ☐ CNI
@@ -3457,7 +3457,7 @@ Observability
 ☐ Egress controls
 ```
 
-## Security
+### Security
 
 ```text
 ☐ RBAC
@@ -3471,7 +3471,7 @@ Observability
 ☐ Runtime security
 ```
 
-## Storage
+### Storage
 
 ```text
 ☐ CSI
@@ -3481,7 +3481,7 @@ Observability
 ☐ Capacity monitoring
 ```
 
-## Observability
+### Observability
 
 ```text
 ☐ Metrics
@@ -3493,7 +3493,7 @@ Observability
 
 ---
 
-# 152. Emergency Command Reference
+## 152. Emergency Command Reference
 
 Check cluster:
 
@@ -3570,7 +3570,7 @@ kubectl auth can-i get pods
 
 ---
 
-# 153. Commands to Avoid Using Blindly
+## 153. Commands to Avoid Using Blindly
 
 Be careful with:
 
@@ -3613,165 +3613,165 @@ before executing destructive commands.
 
 ---
 
-# 154. Interview One-Liners
+## 154. Interview One-Liners
 
-### Kubernetes
+#### Kubernetes
 
 ```text
 Container orchestration platform.
 ```
 
-### Pod
+#### Pod
 
 ```text
 Smallest deployable Kubernetes unit.
 ```
 
-### Deployment
+#### Deployment
 
 ```text
 Manages stateless application replicas and rollouts.
 ```
 
-### StatefulSet
+#### StatefulSet
 
 ```text
 Manages workloads requiring stable identity and storage.
 ```
 
-### DaemonSet
+#### DaemonSet
 
 ```text
 Runs a Pod on each eligible node.
 ```
 
-### Service
+#### Service
 
 ```text
 Provides stable networking for selected Pods.
 ```
 
-### Ingress
+#### Ingress
 
 ```text
 Routes HTTP/HTTPS traffic to Services.
 ```
 
-### Gateway API
+#### Gateway API
 
 ```text
 Role-oriented Kubernetes networking API family.
 ```
 
-### ConfigMap
+#### ConfigMap
 
 ```text
 Non-sensitive configuration.
 ```
 
-### Secret
+#### Secret
 
 ```text
 Object designed for sensitive configuration data.
 ```
 
-### CNI
+#### CNI
 
 ```text
 Container networking interface.
 ```
 
-### CoreDNS
+#### CoreDNS
 
 ```text
 Cluster DNS.
 ```
 
-### NetworkPolicy
+#### NetworkPolicy
 
 ```text
 Controls network traffic to and from Pods.
 ```
 
-### PV
+#### PV
 
 ```text
 Persistent storage resource.
 ```
 
-### PVC
+#### PVC
 
 ```text
 Request for persistent storage.
 ```
 
-### StorageClass
+#### StorageClass
 
 ```text
 Defines storage provisioning behavior.
 ```
 
-### CSI
+#### CSI
 
 ```text
 Standard interface for storage integrations.
 ```
 
-### Scheduler
+#### Scheduler
 
 ```text
 Assigns unscheduled Pods to nodes.
 ```
 
-### RBAC
+#### RBAC
 
 ```text
 Role-based authorization model.
 ```
 
-### ServiceAccount
+#### ServiceAccount
 
 ```text
 Identity used by workloads.
 ```
 
-### HPA
+#### HPA
 
 ```text
 Scales Pod replicas.
 ```
 
-### VPA
+#### VPA
 
 ```text
 Adjusts or recommends Pod resource allocation.
 ```
 
-### Cluster Autoscaler
+#### Cluster Autoscaler
 
 ```text
 Adjusts cluster node count.
 ```
 
-### Prometheus
+#### Prometheus
 
 ```text
 Metrics monitoring and alerting system.
 ```
 
-### Grafana
+#### Grafana
 
 ```text
 Observability visualization platform.
 ```
 
-### OpenTelemetry
+#### OpenTelemetry
 
 ```text
 Vendor-neutral telemetry framework.
 ```
 
-### Service Mesh
+#### Service Mesh
 
 ```text
 Infrastructure layer for service-to-service communication.
@@ -3779,7 +3779,7 @@ Infrastructure layer for service-to-service communication.
 
 ---
 
-# 155. Top 20 Commands to Memorize
+## 155. Top 20 Commands to Memorize
 
 ```bash
 kubectl get pods
@@ -3863,7 +3863,7 @@ kubectl top pods
 
 ---
 
-# 156. Top 10 Troubleshooting Commands
+## 156. Top 10 Troubleshooting Commands
 
 ```bash
 kubectl get pods -A
@@ -3907,7 +3907,7 @@ kubectl top pods -A
 
 ---
 
-# 157. 10-Step Production Troubleshooting Method
+## 157. 10-Step Production Troubleshooting Method
 
 ```text
 1. Identify the symptom
@@ -3924,7 +3924,7 @@ kubectl top pods -A
 
 ---
 
-# 158. Final Kubernetes Mental Model
+## 158. Final Kubernetes Mental Model
 
 ```text
                      KUBERNETES
@@ -3976,15 +3976,15 @@ kubectl top pods -A
 
 ---
 
-# 159. Final Revision
+## 159. Final Revision
 
-## Kubernetes
+### Kubernetes
 
 ```text
 Container Orchestration
 ```
 
-## Control Plane
+### Control Plane
 
 ```text
 API Server
@@ -3993,7 +3993,7 @@ Scheduler
 Controllers
 ```
 
-## Worker Node
+### Worker Node
 
 ```text
 Kubelet
@@ -4001,7 +4001,7 @@ Container Runtime
 Networking
 ```
 
-## Workloads
+### Workloads
 
 ```text
 Pod
@@ -4012,7 +4012,7 @@ Job
 CronJob
 ```
 
-## Networking
+### Networking
 
 ```text
 Service
@@ -4023,7 +4023,7 @@ CoreDNS
 NetworkPolicy
 ```
 
-## Storage
+### Storage
 
 ```text
 Volume
@@ -4033,7 +4033,7 @@ StorageClass
 CSI
 ```
 
-## Scheduling
+### Scheduling
 
 ```text
 Scheduler
@@ -4046,7 +4046,7 @@ Requests
 Limits
 ```
 
-## Autoscaling
+### Autoscaling
 
 ```text
 HPA
@@ -4054,7 +4054,7 @@ VPA
 Cluster Autoscaler
 ```
 
-## Security
+### Security
 
 ```text
 Authentication
@@ -4068,7 +4068,7 @@ Runtime Security
 Audit
 ```
 
-## Observability
+### Observability
 
 ```text
 Logs
@@ -4080,7 +4080,7 @@ Alertmanager
 OpenTelemetry
 ```
 
-## Operations
+### Operations
 
 ```text
 Backup
@@ -4092,7 +4092,7 @@ Maintenance
 Optimization
 ```
 
-## Advanced
+### Advanced
 
 ```text
 GitOps
@@ -4105,7 +4105,7 @@ Service Mesh
 
 ---
 
-# 160. Final Takeaway
+## 160. Final Takeaway
 
 The most important Kubernetes commands are not the ones you memorize.
 
@@ -4172,7 +4172,7 @@ Recoverability
 
 ---
 
-# Course Completion
+## Course Completion
 
 With this chapter, the Kubernetes interview and cheat-sheet section is complete.
 

@@ -1,13 +1,12 @@
 # Security Policy
 
-Thank you for helping keep **Cybersecurity Notes** secure.
+Thank you for helping keep **Security Knowledge Base** secure.
 
 This repository is an educational knowledge base focused on defensive cybersecurity, secure engineering, and responsible security research. While it primarily contains documentation and reference material, we take the integrity of the repository and any supporting code or examples seriously.
 
 ---
 
-# Supported Versions
-
+## Supported Versions
 The latest version of the repository is actively maintained.
 
 | Version                  |    Supported   |
@@ -20,8 +19,7 @@ Please use the latest version whenever possible.
 
 ---
 
-# Reporting a Security Vulnerability
-
+## Reporting a Security Vulnerability
 If you discover a security issue related to this repository (for example, in sample code, scripts, workflows, or project infrastructure), **please report it privately** instead of opening a public GitHub Issue.
 
 A good report should include:
@@ -38,8 +36,7 @@ Please avoid including sensitive information such as credentials, tokens, API ke
 
 ---
 
-# Responsible Disclosure
-
+## Responsible Disclosure
 We ask all researchers to follow responsible disclosure practices.
 
 Please:
@@ -51,8 +48,7 @@ Please:
 
 ---
 
-# Out of Scope
-
+## Out of Scope
 The following are generally considered out of scope for this repository:
 
 * Typos or grammatical mistakes
@@ -64,8 +60,7 @@ The following are generally considered out of scope for this repository:
 
 ---
 
-# Response Process
-
+## Response Process
 When a valid security report is received, the general process is:
 
 1. Acknowledge receipt.
@@ -78,8 +73,7 @@ When a valid security report is received, the general process is:
 
 ---
 
-# Response Targets
-
+## Response Targets
 While response times may vary depending on availability, the project aims for the following targets:
 
 | Action                   | Target Time                    |
@@ -93,8 +87,7 @@ These targets are goals rather than guarantees.
 
 ---
 
-# Security Best Practices
-
+## Security Best Practices
 When contributing code or examples:
 
 * Do not commit secrets, credentials, or API keys.
@@ -108,8 +101,7 @@ When contributing code or examples:
 
 ---
 
-# Educational Content Disclaimer
-
+## Educational Content Disclaimer
 This repository is intended for:
 
 * Education
@@ -124,8 +116,7 @@ Readers are responsible for ensuring that any testing or experimentation is perf
 
 ---
 
-# Dependency Security
-
+## Dependency Security
 If this repository contains scripts or tools:
 
 * Dependencies should be updated regularly.
@@ -134,16 +125,14 @@ If this repository contains scripts or tools:
 
 ---
 
-# Safe Harbor
-
+## Safe Harbor
 We appreciate responsible security research performed in good faith.
 
 Nothing in this policy is intended to discourage legitimate security research conducted ethically and within the bounds of applicable laws and authorization.
 
 ---
 
-# Credits
-
+## Credits
 We sincerely appreciate members of the cybersecurity community who responsibly report issues and help improve the quality and security of this repository.
 
-Thank you for helping make **Cybersecurity Notes** a trusted learning resource for everyone.
+Thank you for helping make **Security Knowledge Base** a trustworthy learning resource.

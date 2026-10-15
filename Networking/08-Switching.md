@@ -1,10 +1,10 @@
 # 08 - Switching
 
-# Part 1 — Layer 2 Switching Fundamentals, Switch Architecture, MAC Addresses, CAM Tables, and Frame Forwarding
+## Part 1 — Layer 2 Switching Fundamentals, Switch Architecture, MAC Addresses, CAM Tables, and Frame Forwarding
 
 ---
 
-# Overview
+## Overview
 
 Switching is the foundation of every modern Local Area Network (LAN).
 
@@ -30,7 +30,7 @@ Understanding switching is essential for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -45,7 +45,7 @@ After completing this chapter, you should be able to:
 
 ---
 
-# What is Switching?
+## What is Switching?
 
 **Switching** is the process of forwarding Ethernet frames between devices within the same Layer 2 network based on **MAC addresses**.
 
@@ -69,7 +69,7 @@ The switch examines the **destination MAC address** and forwards the frame only 
 
 ---
 
-# Why Switching is Important
+## Why Switching is Important
 
 Switching provides:
 
@@ -84,7 +84,7 @@ Without switches, all devices would share the same communication medium, leading
 
 ---
 
-# Hub vs Switch vs Router
+## Hub vs Switch vs Router
 
 | Feature | Hub | Switch | Router |
 |----------|-----|--------|--------|
@@ -96,7 +96,7 @@ Without switches, all devices would share the same communication medium, leading
 
 ---
 
-# Hub Operation
+## Hub Operation
 
 A hub simply repeats electrical signals.
 
@@ -133,7 +133,7 @@ Hubs are rarely used in modern enterprise networks.
 
 ---
 
-# Switch Operation
+## Switch Operation
 
 Switches learn MAC addresses and forward frames only where needed.
 
@@ -160,7 +160,7 @@ Benefits:
 
 ---
 
-# Router Operation
+## Router Operation
 
 Routers connect separate Layer 3 networks.
 
@@ -180,7 +180,7 @@ Traffic between different IP networks must pass through a router or another Laye
 
 ---
 
-# Switch Architecture
+## Switch Architecture
 
 A simplified enterprise switch consists of:
 
@@ -201,7 +201,7 @@ A simplified enterprise switch consists of:
 
 ---
 
-## CPU
+### CPU
 
 Handles:
 
@@ -213,7 +213,7 @@ Handles:
 
 ---
 
-## RAM
+### RAM
 
 Stores:
 
@@ -224,7 +224,7 @@ Stores:
 
 ---
 
-## Switching ASICs
+### Switching ASICs
 
 Modern enterprise switches use specialized hardware called **Application-Specific Integrated Circuits (ASICs)**.
 
@@ -239,7 +239,7 @@ ASICs allow switches to forward millions of frames per second.
 
 ---
 
-# Ethernet Frame Review
+## Ethernet Frame Review
 
 An Ethernet frame contains:
 
@@ -267,7 +267,7 @@ The switch primarily examines the **destination MAC address** to decide where to
 
 ---
 
-# MAC Address Review
+## MAC Address Review
 
 Every Ethernet network interface has a **48-bit MAC address**.
 
@@ -291,9 +291,9 @@ The first 24 bits identify the manufacturer, and the remaining 24 bits identify 
 
 ---
 
-# MAC Address Types
+## MAC Address Types
 
-## Unicast
+### Unicast
 
 Sent to one device.
 
@@ -307,7 +307,7 @@ PC B
 
 ---
 
-## Broadcast
+### Broadcast
 
 Sent to all devices within the broadcast domain.
 
@@ -319,7 +319,7 @@ FF:FF:FF:FF:FF:FF
 
 ---
 
-## Multicast
+### Multicast
 
 Sent to a specific group of interested devices.
 
@@ -331,7 +331,7 @@ Common uses:
 
 ---
 
-# What is a CAM Table?
+## What is a CAM Table?
 
 The **Content Addressable Memory (CAM) Table** stores mappings between MAC addresses and switch ports.
 
@@ -347,7 +347,7 @@ The switch uses the CAM table to forward frames efficiently.
 
 ---
 
-# MAC Learning Process
+## MAC Learning Process
 
 When a frame arrives:
 
@@ -375,7 +375,7 @@ The switch continuously learns the location of connected devices.
 
 ---
 
-# Frame Forwarding Process
+## Frame Forwarding Process
 
 Once the switch knows the destination MAC:
 
@@ -403,7 +403,7 @@ Only the destination interface receives the frame.
 
 ---
 
-# Unknown Unicast
+## Unknown Unicast
 
 If the destination MAC is **not** in the CAM table:
 
@@ -427,7 +427,7 @@ When the destination replies, the switch learns its MAC address and updates the 
 
 ---
 
-# Broadcast Forwarding
+## Broadcast Forwarding
 
 Broadcast traffic is sent to every port in the same broadcast domain (or VLAN).
 
@@ -453,7 +453,7 @@ Typical examples:
 
 ---
 
-# Multicast Forwarding
+## Multicast Forwarding
 
 Basic switches flood multicast traffic similarly to broadcasts.
 
@@ -461,7 +461,7 @@ Enterprise switches often support features such as **IGMP Snooping** to forward 
 
 ---
 
-# CAM Table Aging
+## CAM Table Aging
 
 Devices may disconnect or move.
 
@@ -487,7 +487,7 @@ The exact aging time is vendor and configuration dependent.
 
 ---
 
-# Collision Domains
+## Collision Domains
 
 A **collision domain** is a network segment where simultaneous transmissions can interfere.
 
@@ -505,7 +505,7 @@ This enables full-duplex communication and eliminates collisions under normal op
 
 ---
 
-# Broadcast Domains
+## Broadcast Domains
 
 By default:
 
@@ -523,13 +523,13 @@ This topic is covered in the next section.
 
 ---
 
-# Switching Methods
+## Switching Methods
 
 Enterprise switches use different forwarding methods.
 
 ---
 
-## Store-and-Forward
+### Store-and-Forward
 
 Process:
 
@@ -554,7 +554,7 @@ Most modern enterprise switches use this method.
 
 ---
 
-## Cut-Through Switching
+### Cut-Through Switching
 
 Process:
 
@@ -576,7 +576,7 @@ Disadvantages:
 
 ---
 
-## Fragment-Free Switching
+### Fragment-Free Switching
 
 This method waits for the first portion of the frame (typically enough to avoid forwarding most collision fragments) before forwarding.
 
@@ -584,7 +584,7 @@ It provides a compromise between latency and error handling.
 
 ---
 
-# Enterprise Switching Example
+## Enterprise Switching Example
 
 ```
                  Core Switch
@@ -605,7 +605,7 @@ This hierarchical design:
 
 ---
 
-# Common Switching Problems
+## Common Switching Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -618,7 +618,7 @@ This hierarchical design:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient switching provides:
 
@@ -631,7 +631,7 @@ Efficient switching provides:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Switches operate primarily at **OSI Layer 2** using **MAC addresses**.
 - The **CAM table** maps MAC addresses to switch ports for efficient forwarding.
@@ -640,13 +640,13 @@ Efficient switching provides:
 - Store-and-forward is the most common enterprise switching method due to its reliability.
 - Each switch port forms its own collision domain, while broadcast domains are separated using VLANs.
 
-# 08 - Switching
+## 08 - Switching
 
-# Part 2 — VLANs, IEEE 802.1Q Trunking, Inter-VLAN Routing, Voice VLANs, and Enterprise Network Segmentation
+## Part 2 — VLANs, IEEE 802.1Q Trunking, Inter-VLAN Routing, Voice VLANs, and Enterprise Network Segmentation
 
 ---
 
-# Overview
+## Overview
 
 A modern enterprise rarely operates as a single flat Layer 2 network.
 
@@ -663,7 +663,7 @@ Without VLANs, every connected device belongs to the same broadcast domain, maki
 
 ---
 
-# What is a VLAN?
+## What is a VLAN?
 
 A **Virtual Local Area Network (VLAN)** is a logical Layer 2 network created on a switch.
 
@@ -686,7 +686,7 @@ Each VLAN acts as a separate broadcast domain.
 
 ---
 
-# Why VLANs are Needed
+## Why VLANs are Needed
 
 Without VLANs:
 
@@ -748,7 +748,7 @@ Benefits:
 
 ---
 
-# Broadcast Domains
+## Broadcast Domains
 
 Remember:
 
@@ -786,7 +786,7 @@ Broadcasts from VLAN 10 are **not** forwarded into VLAN 20.
 
 ---
 
-# Collision Domains vs Broadcast Domains
+## Collision Domains vs Broadcast Domains
 
 | Feature | Collision Domain | Broadcast Domain |
 |----------|-----------------|------------------|
@@ -796,7 +796,7 @@ Broadcasts from VLAN 10 are **not** forwarded into VLAN 20.
 
 ---
 
-# VLAN Identification
+## VLAN Identification
 
 Each VLAN has a unique **VLAN ID**.
 
@@ -822,7 +822,7 @@ Common examples:
 
 ---
 
-# Access Ports
+## Access Ports
 
 An **access port** belongs to a single VLAN.
 
@@ -853,7 +853,7 @@ Characteristics:
 
 ---
 
-# Trunk Ports
+## Trunk Ports
 
 A **trunk port** carries traffic for multiple VLANs.
 
@@ -887,7 +887,7 @@ All travel over the same physical connection.
 
 ---
 
-# IEEE 802.1Q Trunking
+## IEEE 802.1Q Trunking
 
 The most widely used VLAN trunking standard is:
 
@@ -927,7 +927,7 @@ The VLAN tag identifies which VLAN the frame belongs to while it traverses a tru
 
 ---
 
-# VLAN Tag Fields
+## VLAN Tag Fields
 
 The 802.1Q tag contains:
 
@@ -939,7 +939,7 @@ For most networking tasks, the VLAN Identifier is the primary field of interest.
 
 ---
 
-# Native VLAN
+## Native VLAN
 
 On an 802.1Q trunk, one VLAN is designated as the **native VLAN**.
 
@@ -957,7 +957,7 @@ Best practices:
 
 ---
 
-# VLAN Tagging Example
+## VLAN Tagging Example
 
 ```
 Switch A
@@ -991,7 +991,7 @@ End devices connected to access ports typically receive untagged frames.
 
 ---
 
-# Inter-VLAN Communication
+## Inter-VLAN Communication
 
 Devices in different VLANs cannot communicate directly because each VLAN is a separate Layer 2 broadcast domain.
 
@@ -1017,7 +1017,7 @@ A Layer 3 device is required to route traffic between VLANs.
 
 ---
 
-# Inter-VLAN Routing
+## Inter-VLAN Routing
 
 Example:
 
@@ -1041,7 +1041,7 @@ Process:
 
 ---
 
-# Router-on-a-Stick
+## Router-on-a-Stick
 
 A common inter-VLAN routing design for smaller networks uses a single router interface configured with multiple subinterfaces.
 
@@ -1070,7 +1070,7 @@ Limitations:
 
 ---
 
-# Layer 3 Switch
+## Layer 3 Switch
 
 Modern enterprise networks often use **Layer 3 switches** for inter-VLAN routing.
 
@@ -1091,7 +1091,7 @@ Advantages:
 
 ---
 
-# Voice VLAN
+## Voice VLAN
 
 IP phones commonly use a dedicated **Voice VLAN**.
 
@@ -1124,7 +1124,7 @@ Voice traffic can be prioritized independently of user data.
 
 ---
 
-# Management VLAN
+## Management VLAN
 
 Network devices often use a dedicated **Management VLAN** for administrative access.
 
@@ -1157,7 +1157,7 @@ Access to the management VLAN should be tightly controlled.
 
 ---
 
-# VLAN Planning
+## VLAN Planning
 
 Example enterprise allocation:
 
@@ -1176,7 +1176,7 @@ Planning should leave room for future growth and maintain consistent numbering c
 
 ---
 
-# VLAN Best Practices
+## VLAN Best Practices
 
 - Separate departments into dedicated VLANs.
 - Isolate guest users from internal resources.
@@ -1189,7 +1189,7 @@ Planning should leave room for future growth and maintain consistent numbering c
 
 ---
 
-# Common VLAN Problems
+## Common VLAN Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1202,7 +1202,7 @@ Planning should leave room for future growth and maintain consistent numbering c
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
                     Core Layer
@@ -1224,7 +1224,7 @@ This design:
 
 ---
 
-# Practical Lab 1 — Create VLANs
+## Practical Lab 1 — Create VLANs
 
 Objective:
 
@@ -1241,7 +1241,7 @@ Assign access ports to the appropriate VLANs and verify connectivity within each
 
 ---
 
-# Practical Lab 2 — Configure a Trunk
+## Practical Lab 2 — Configure a Trunk
 
 Tasks:
 
@@ -1252,7 +1252,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — Inter-VLAN Routing
+## Practical Lab 3 — Inter-VLAN Routing
 
 Using a Layer 3 switch or Router-on-a-Stick:
 
@@ -1263,7 +1263,7 @@ Using a Layer 3 switch or Router-on-a-Stick:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A **VLAN** is a logical Layer 2 network that creates a separate broadcast domain.
 - **Access ports** carry traffic for a single VLAN, while **trunk ports** carry multiple VLANs.
@@ -1272,13 +1272,13 @@ Using a Layer 3 switch or Router-on-a-Stick:
 - Dedicated **Voice VLANs** and **Management VLANs** improve security, performance, and operational efficiency.
 - Proper VLAN planning and trunk configuration are essential for scalable enterprise networks.
 
-# 08 - Switching
+## 08 - Switching
 
-# Part 3 — Spanning Tree Protocol (STP), RSTP, MSTP, BPDU, Root Bridge Election, and Enterprise Layer 2 Redundancy
+## Part 3 — Spanning Tree Protocol (STP), RSTP, MSTP, BPDU, Root Bridge Election, and Enterprise Layer 2 Redundancy
 
 ---
 
-# Overview
+## Overview
 
 Redundancy is essential in enterprise networks.
 
@@ -1299,7 +1299,7 @@ To solve this problem, Ethernet networks use the **Spanning Tree Protocol (STP)*
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you should be able to:
 
@@ -1315,7 +1315,7 @@ After completing this section, you should be able to:
 
 ---
 
-# Why Redundant Links Are Needed
+## Why Redundant Links Are Needed
 
 Enterprise networks require redundancy.
 
@@ -1339,7 +1339,7 @@ Without redundancy, a single cable failure can disconnect an entire part of the 
 
 ---
 
-# The Layer 2 Loop Problem
+## The Layer 2 Loop Problem
 
 Consider:
 
@@ -1364,7 +1364,7 @@ Consequences include:
 
 ---
 
-# Broadcast Storm
+## Broadcast Storm
 
 A broadcast storm occurs when broadcast frames are replicated repeatedly because of a switching loop.
 
@@ -1398,7 +1398,7 @@ The amount of traffic increases rapidly, consuming available bandwidth and devic
 
 ---
 
-# MAC Address Table Instability
+## MAC Address Table Instability
 
 Switches learn MAC addresses based on incoming frames.
 
@@ -1430,7 +1430,7 @@ This condition is known as **MAC address table instability** (or MAC flapping).
 
 ---
 
-# Duplicate Frames
+## Duplicate Frames
 
 Because loops allow multiple copies of the same frame to circulate, destination devices may receive duplicate frames.
 
@@ -1442,7 +1442,7 @@ Potential impacts:
 
 ---
 
-# What is STP?
+## What is STP?
 
 **Spanning Tree Protocol (STP)** prevents Layer 2 loops by logically blocking redundant links while preserving them as backup paths.
 
@@ -1468,7 +1468,7 @@ The blocked link is not used for normal forwarding but can become active if anot
 
 ---
 
-# IEEE Standards
+## IEEE Standards
 
 | Standard | Name |
 |----------|------|
@@ -1478,7 +1478,7 @@ The blocked link is not used for normal forwarding but can become active if anot
 
 ---
 
-# STP Goals
+## STP Goals
 
 - Prevent switching loops
 - Eliminate broadcast storms
@@ -1488,7 +1488,7 @@ The blocked link is not used for normal forwarding but can become active if anot
 
 ---
 
-# Root Bridge
+## Root Bridge
 
 Every STP topology elects one switch as the **Root Bridge**.
 
@@ -1508,7 +1508,7 @@ All path calculations are performed relative to the Root Bridge.
 
 ---
 
-# Bridge ID (BID)
+## Bridge ID (BID)
 
 STP elects the Root Bridge using the **Bridge ID**.
 
@@ -1526,7 +1526,7 @@ The switch with the **lowest Bridge ID** becomes the Root Bridge.
 
 ---
 
-# Root Bridge Election
+## Root Bridge Election
 
 Election process:
 
@@ -1556,7 +1556,7 @@ Administrators often lower the priority of a core switch so it becomes the prefe
 
 ---
 
-# Root Port
+## Root Port
 
 Each **non-root switch** selects one **Root Port**.
 
@@ -1579,7 +1579,7 @@ Each non-root switch has exactly one Root Port.
 
 ---
 
-# Designated Port
+## Designated Port
 
 Every network segment has one **Designated Port**.
 
@@ -1592,7 +1592,7 @@ The Designated Port is selected based on the lowest path cost to the Root Bridge
 
 ---
 
-# Blocked (Alternate) Port
+## Blocked (Alternate) Port
 
 Ports that would create a Layer 2 loop are placed into a non-forwarding role.
 
@@ -1614,7 +1614,7 @@ The blocked link remains available for failover if the active path fails.
 
 ---
 
-# STP Port Roles
+## STP Port Roles
 
 | Port Role | Purpose |
 |-----------|----------|
@@ -1627,7 +1627,7 @@ Classic STP often refers to blocked ports simply as **non-designated** or **bloc
 
 ---
 
-# STP Port States (IEEE 802.1D)
+## STP Port States (IEEE 802.1D)
 
 Ports transition through several states before forwarding traffic.
 
@@ -1651,7 +1651,7 @@ A disabled port is administratively or operationally down and does not participa
 
 ---
 
-## Blocking
+### Blocking
 
 Characteristics:
 
@@ -1661,7 +1661,7 @@ Characteristics:
 
 ---
 
-## Listening
+### Listening
 
 The switch:
 
@@ -1672,7 +1672,7 @@ The switch:
 
 ---
 
-## Learning
+### Learning
 
 The switch:
 
@@ -1682,7 +1682,7 @@ The switch:
 
 ---
 
-## Forwarding
+### Forwarding
 
 The port:
 
@@ -1692,7 +1692,7 @@ The port:
 
 ---
 
-# BPDU (Bridge Protocol Data Unit)
+## BPDU (Bridge Protocol Data Unit)
 
 STP switches exchange **Bridge Protocol Data Units (BPDUs)**.
 
@@ -1707,7 +1707,7 @@ These messages allow switches to build and maintain a loop-free topology.
 
 ---
 
-# Path Cost
+## Path Cost
 
 STP selects paths based on **path cost**.
 
@@ -1726,7 +1726,7 @@ Example:
 
 ---
 
-# STP Convergence
+## STP Convergence
 
 Convergence is the process of recalculating the spanning tree after a topology change.
 
@@ -1740,7 +1740,7 @@ During convergence:
 
 ---
 
-# Rapid Spanning Tree Protocol (RSTP)
+## Rapid Spanning Tree Protocol (RSTP)
 
 **RSTP (IEEE 802.1w)** improves upon classic STP.
 
@@ -1755,7 +1755,7 @@ RSTP is widely deployed in modern campus environments.
 
 ---
 
-# RSTP Port Roles
+## RSTP Port Roles
 
 RSTP introduces:
 
@@ -1768,7 +1768,7 @@ Alternate ports provide an immediately available backup path, reducing failover 
 
 ---
 
-# RSTP Port States
+## RSTP Port States
 
 RSTP simplifies the port states:
 
@@ -1788,7 +1788,7 @@ The older Blocking, Listening, and Disabled operational behavior is consolidated
 
 ---
 
-# Multiple Spanning Tree Protocol (MSTP)
+## Multiple Spanning Tree Protocol (MSTP)
 
 Large enterprise networks often deploy many VLANs.
 
@@ -1826,7 +1826,7 @@ Benefits:
 
 ---
 
-# Enterprise STP Design
+## Enterprise STP Design
 
 Example:
 
@@ -1848,7 +1848,7 @@ Recommended practice:
 
 ---
 
-# Common STP Problems
+## Common STP Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1860,7 +1860,7 @@ Recommended practice:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Explicitly configure the Root Bridge.
 - Configure a secondary Root Bridge for redundancy.
@@ -1872,7 +1872,7 @@ Recommended practice:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Redundant Layer 2 links improve availability but can create switching loops.
 - **STP** prevents loops by logically blocking redundant paths.
@@ -1882,13 +1882,13 @@ Recommended practice:
 - **RSTP** provides much faster convergence than classic STP.
 - **MSTP** improves scalability by allowing multiple VLANs to share spanning tree instances.
 
-# 08 - Switching
+## 08 - Switching
 
-# Part 4 — EtherChannel, Layer 2 Security, Enterprise Hardening, Troubleshooting, Practical Labs, Interview Questions, and Chapter Review
+## Part 4 — EtherChannel, Layer 2 Security, Enterprise Hardening, Troubleshooting, Practical Labs, Interview Questions, and Chapter Review
 
 ---
 
-# Overview
+## Overview
 
 Enterprise switches are expected to provide much more than basic Layer 2 connectivity.
 
@@ -1907,9 +1907,9 @@ This section focuses on enterprise switching technologies and security mechanism
 
 ---
 
-# EtherChannel
+## EtherChannel
 
-## What is EtherChannel?
+### What is EtherChannel?
 
 **EtherChannel** is a technology that combines multiple physical Ethernet links into a single logical connection.
 
@@ -1935,7 +1935,7 @@ One Logical Link
 
 ---
 
-## Why EtherChannel?
+### Why EtherChannel?
 
 Benefits include:
 
@@ -1949,7 +1949,7 @@ Instead of configuring four individual interfaces, administrators manage one log
 
 ---
 
-# EtherChannel Protocols
+## EtherChannel Protocols
 
 There are two primary negotiation protocols.
 
@@ -1962,7 +1962,7 @@ Modern enterprise environments typically prefer **LACP** because it supports mul
 
 ---
 
-# LACP Modes
+## LACP Modes
 
 | Mode | Description |
 |------|-------------|
@@ -1973,7 +1973,7 @@ A successful LACP EtherChannel requires at least one side to operate in **Active
 
 ---
 
-# EtherChannel Requirements
+## EtherChannel Requirements
 
 Member interfaces should have matching characteristics:
 
@@ -1988,7 +1988,7 @@ Configuration mismatches can prevent the EtherChannel from forming.
 
 ---
 
-# Load Balancing
+## Load Balancing
 
 EtherChannel distributes traffic across member links using a hashing algorithm.
 
@@ -2004,9 +2004,9 @@ Traffic from an individual flow generally remains on a single member link to pre
 
 ---
 
-# Port Security
+## Port Security
 
-## What is Port Security?
+### What is Port Security?
 
 Port Security restricts which devices may connect to a switch port by controlling permitted MAC addresses.
 
@@ -2028,7 +2028,7 @@ Unknown devices can be restricted or blocked based on the configured policy.
 
 ---
 
-# Port Security Features
+## Port Security Features
 
 Administrators can:
 
@@ -2039,7 +2039,7 @@ Administrators can:
 
 ---
 
-# Sticky MAC
+## Sticky MAC
 
 Sticky MAC automatically learns MAC addresses and retains them as secure entries.
 
@@ -2051,7 +2051,7 @@ Benefits:
 
 ---
 
-# Port Security Violation Modes
+## Port Security Violation Modes
 
 | Mode | Behavior |
 |------|----------|
@@ -2063,7 +2063,7 @@ The appropriate mode depends on operational and security requirements.
 
 ---
 
-# BPDU Guard
+## BPDU Guard
 
 **BPDU Guard** protects edge (access) ports.
 
@@ -2088,7 +2088,7 @@ Benefits:
 
 ---
 
-# Root Guard
+## Root Guard
 
 Root Guard prevents an unauthorized switch from becoming the Root Bridge.
 
@@ -2114,7 +2114,7 @@ Deploy Root Guard on ports where the current Root Bridge should not change.
 
 ---
 
-# Loop Guard
+## Loop Guard
 
 Loop Guard helps prevent certain Layer 2 loops caused by lost BPDUs.
 
@@ -2122,7 +2122,7 @@ If expected BPDUs stop arriving unexpectedly, Loop Guard places the port into a 
 
 ---
 
-# UDLD (Unidirectional Link Detection)
+## UDLD (Unidirectional Link Detection)
 
 A fiber or copper link may fail in only one direction.
 
@@ -2146,7 +2146,7 @@ UDLD detects unidirectional link failures and helps prevent forwarding inconsist
 
 ---
 
-# Storm Control
+## Storm Control
 
 Storm Control limits excessive:
 
@@ -2163,7 +2163,7 @@ Benefits:
 
 ---
 
-# Layer 2 Security Threats
+## Layer 2 Security Threats
 
 Common Layer 2 attacks include:
 
@@ -2179,9 +2179,9 @@ These attacks target switching infrastructure rather than higher-layer services.
 
 ---
 
-# MAC Flooding Attack
+## MAC Flooding Attack
 
-## Attack Overview
+### Attack Overview
 
 An attacker transmits a large number of frames with spoofed source MAC addresses.
 
@@ -2205,7 +2205,7 @@ The switch's CAM table can become saturated.
 
 ---
 
-## Impact
+### Impact
 
 When the CAM table cannot learn new entries, the switch may begin flooding unknown unicast traffic.
 
@@ -2217,7 +2217,7 @@ Potential consequences:
 
 ---
 
-## Mitigation
+### Mitigation
 
 - Port Security
 - MAC address limits
@@ -2227,7 +2227,7 @@ Potential consequences:
 
 ---
 
-# ARP Spoofing (ARP Poisoning)
+## ARP Spoofing (ARP Poisoning)
 
 An attacker sends forged ARP messages to associate their MAC address with another device's IP address.
 
@@ -2254,7 +2254,7 @@ Potential consequences:
 
 ---
 
-## Mitigation
+### Mitigation
 
 - Dynamic ARP Inspection (DAI)
 - DHCP Snooping
@@ -2264,23 +2264,23 @@ Potential consequences:
 
 ---
 
-# VLAN Hopping
+## VLAN Hopping
 
 VLAN hopping attempts to access traffic from another VLAN.
 
 Common techniques include:
 
-### 1. Switch Spoofing
+#### 1. Switch Spoofing
 
 The attacker attempts to negotiate a trunk connection.
 
-### 2. Double Tagging
+#### 2. Double Tagging
 
 The attacker crafts specially tagged frames in an attempt to cross VLAN boundaries under specific misconfigurations.
 
 ---
 
-## Mitigation
+### Mitigation
 
 - Disable Dynamic Trunking Protocol (DTP) where unnecessary.
 - Manually configure access ports.
@@ -2290,7 +2290,7 @@ The attacker crafts specially tagged frames in an attempt to cross VLAN boundari
 
 ---
 
-# DHCP Starvation
+## DHCP Starvation
 
 An attacker sends numerous DHCP requests using spoofed MAC addresses.
 
@@ -2314,7 +2314,7 @@ No IP Address
 
 ---
 
-## Mitigation
+### Mitigation
 
 - DHCP Snooping
 - Rate limiting
@@ -2323,7 +2323,7 @@ No IP Address
 
 ---
 
-# Rogue DHCP Server
+## Rogue DHCP Server
 
 An unauthorized DHCP server may assign:
 
@@ -2335,7 +2335,7 @@ This can redirect or disrupt user traffic.
 
 ---
 
-## Mitigation
+### Mitigation
 
 - DHCP Snooping
 - Trusted DHCP interfaces
@@ -2344,7 +2344,7 @@ This can redirect or disrupt user traffic.
 
 ---
 
-# Enterprise Switching Best Practices
+## Enterprise Switching Best Practices
 
 - Use dedicated management VLANs.
 - Disable unused ports.
@@ -2359,7 +2359,7 @@ This can redirect or disrupt user traffic.
 
 ---
 
-# Cisco IOS Verification Commands
+## Cisco IOS Verification Commands
 
 Display MAC address table:
 
@@ -2401,7 +2401,7 @@ These commands are commonly used to verify Layer 2 operation and security featur
 
 ---
 
-# Linux Verification
+## Linux Verification
 
 View neighbor cache:
 
@@ -2423,7 +2423,7 @@ tcpdump -i eth0
 
 ---
 
-# Windows Verification
+## Windows Verification
 
 Display ARP cache:
 
@@ -2445,7 +2445,7 @@ getmac
 
 ---
 
-# Wireshark Analysis
+## Wireshark Analysis
 
 Useful display filters:
 
@@ -2476,7 +2476,7 @@ Wireshark is invaluable for validating switching behavior and diagnosing Layer 2
 
 ---
 
-# Practical Lab 1 — VLANs and Trunking
+## Practical Lab 1 — VLANs and Trunking
 
 Objectives:
 
@@ -2488,7 +2488,7 @@ Objectives:
 
 ---
 
-# Practical Lab 2 — STP Verification
+## Practical Lab 2 — STP Verification
 
 Tasks:
 
@@ -2500,7 +2500,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — EtherChannel
+## Practical Lab 3 — EtherChannel
 
 Tasks:
 
@@ -2511,7 +2511,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — Port Security
+## Practical Lab 4 — Port Security
 
 Tasks:
 
@@ -2522,9 +2522,9 @@ Tasks:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A financial organization operates:
 
@@ -2540,7 +2540,7 @@ Requirements:
 - Guest Wi-Fi
 - Secure Layer 2 infrastructure
 
-### Solution
+#### Solution
 
 - VLAN segmentation for departments
 - Layer 3 switching for inter-VLAN routing
@@ -2555,7 +2555,7 @@ This architecture provides a scalable and resilient campus network while reducin
 
 ---
 
-# Troubleshooting Methodology
+## Troubleshooting Methodology
 
 When diagnosing switching issues:
 
@@ -2603,51 +2603,51 @@ A systematic approach reduces troubleshooting time and helps isolate the root ca
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is a switch?
+#### What is a switch?
 
 A switch is a Layer 2 device that forwards Ethernet frames using MAC addresses.
 
 ---
 
-### What is a VLAN?
+#### What is a VLAN?
 
 A VLAN is a logical Layer 2 network that creates a separate broadcast domain within a switch.
 
 ---
 
-### What is a trunk port?
+#### What is a trunk port?
 
 A trunk port carries traffic for multiple VLANs using IEEE 802.1Q tagging.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### Explain STP.
+#### Explain STP.
 
 STP prevents Layer 2 loops by electing a Root Bridge and placing redundant links into a non-forwarding state.
 
 ---
 
-### What is EtherChannel?
+#### What is EtherChannel?
 
 EtherChannel combines multiple physical links into a single logical interface to improve bandwidth and redundancy.
 
 ---
 
-### What is Port Security?
+#### What is Port Security?
 
 Port Security restricts access to a switch port by limiting or validating connected MAC addresses.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you secure an enterprise switching environment?
+#### How would you secure an enterprise switching environment?
 
 A strong answer includes:
 
@@ -2663,7 +2663,7 @@ A strong answer includes:
 
 ---
 
-### How would you troubleshoot an STP issue?
+#### How would you troubleshoot an STP issue?
 
 An effective process includes:
 
@@ -2676,9 +2676,9 @@ An effective process includes:
 
 ---
 
-# References
+## References
 
-## IEEE Standards
+### IEEE Standards
 
 - IEEE 802.1D — Spanning Tree Protocol
 - IEEE 802.1Q — VLAN Tagging
@@ -2686,7 +2686,7 @@ An effective process includes:
 - IEEE 802.1s — Multiple Spanning Tree Protocol
 - IEEE 802.1AX — Link Aggregation (LACP)
 
-## Organizations
+### Organizations
 
 - IEEE
 - IETF
@@ -2695,13 +2695,13 @@ An effective process includes:
 
 ---
 
-# Summary
+## Summary
 
 Switching forms the foundation of enterprise LANs by enabling efficient Layer 2 communication. Features such as VLANs, STP, EtherChannel, and Layer 2 security controls allow organizations to build scalable, resilient, and secure campus networks. Proper design, hardening, and operational monitoring are essential to maintain high availability and defend against common Layer 2 threats.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -2743,7 +2743,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`09-ARP.md`**, will explore:
 

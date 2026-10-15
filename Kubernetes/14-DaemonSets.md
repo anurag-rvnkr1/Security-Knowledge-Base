@@ -22,7 +22,7 @@ DaemonSets are commonly used for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -39,7 +39,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why DaemonSets?
+## Why DaemonSets?
 
 Imagine a cluster.
 
@@ -83,7 +83,7 @@ A Deployment controls the **number of Pods**, not where they run.
 
 ---
 
-# Solution
+## Solution
 
 Use a DaemonSet.
 
@@ -127,7 +127,7 @@ Every eligible Node receives a Pod.
 
 ---
 
-# What is a DaemonSet?
+## What is a DaemonSet?
 
 A DaemonSet is a controller that ensures a Pod runs on every eligible Node.
 
@@ -145,7 +145,7 @@ One Pod Per Node
 
 ---
 
-# DaemonSet Architecture
+## DaemonSet Architecture
 
 ```
                  DaemonSet
@@ -169,7 +169,7 @@ If more Nodes are added, more Pods are created automatically.
 
 ---
 
-# DaemonSet Responsibilities
+## DaemonSet Responsibilities
 
 DaemonSets:
 
@@ -182,7 +182,7 @@ DaemonSets:
 
 ---
 
-# Deployment vs DaemonSet
+## Deployment vs DaemonSet
 
 | Deployment | DaemonSet |
 |------------|-----------|
@@ -193,7 +193,7 @@ DaemonSets:
 
 ---
 
-# ReplicaSet vs DaemonSet
+## ReplicaSet vs DaemonSet
 
 | ReplicaSet | DaemonSet |
 |-------------|-----------|
@@ -203,7 +203,7 @@ DaemonSets:
 
 ---
 
-# DaemonSet Workflow
+## DaemonSet Workflow
 
 ```
 DaemonSet
@@ -231,7 +231,7 @@ Replace if Needed
 
 ---
 
-# DaemonSet YAML
+## DaemonSet YAML
 
 ```yaml
 apiVersion: apps/v1
@@ -269,7 +269,7 @@ spec:
 
 ---
 
-# YAML Structure
+## YAML Structure
 
 ```
 DaemonSet
@@ -297,7 +297,7 @@ The number of Pods depends on the number of eligible Nodes.
 
 ---
 
-# Scheduling Process
+## Scheduling Process
 
 Suppose:
 
@@ -325,7 +325,7 @@ One Pod per Node.
 
 ---
 
-# New Node Added
+## New Node Added
 
 Current:
 
@@ -357,7 +357,7 @@ Automatically.
 
 ---
 
-# Node Removed
+## Node Removed
 
 Suppose:
 
@@ -379,7 +379,7 @@ No manual cleanup required.
 
 ---
 
-# Node Failure
+## Node Failure
 
 Suppose:
 
@@ -405,9 +405,9 @@ Pod Created Again
 
 ---
 
-# Common DaemonSet Use Cases
+## Common DaemonSet Use Cases
 
-## Logging
+### Logging
 
 ```
 Node
@@ -423,7 +423,7 @@ ElasticSearch
 
 ---
 
-## Monitoring
+### Monitoring
 
 ```
 Node
@@ -439,7 +439,7 @@ Prometheus
 
 ---
 
-## Security
+### Security
 
 ```
 Node
@@ -455,7 +455,7 @@ Security Events
 
 ---
 
-## Networking
+### Networking
 
 ```
 Node
@@ -473,7 +473,7 @@ Examples:
 
 ---
 
-## Storage
+### Storage
 
 ```
 Node
@@ -487,7 +487,7 @@ Storage plugins commonly use DaemonSets.
 
 ---
 
-# Node Selectors
+## Node Selectors
 
 Sometimes:
 
@@ -521,7 +521,7 @@ Ignored
 
 ---
 
-# Taints & Tolerations
+## Taints & Tolerations
 
 Suppose:
 
@@ -553,7 +553,7 @@ Useful for cluster-level agents.
 
 ---
 
-# Rolling Updates
+## Rolling Updates
 
 DaemonSets support rolling updates.
 
@@ -579,7 +579,7 @@ Node-by-node updates minimize disruption.
 
 ---
 
-# Update Strategy
+## Update Strategy
 
 Default:
 
@@ -597,7 +597,7 @@ With `OnDelete`, Pods are updated only when they are manually deleted.
 
 ---
 
-# Viewing DaemonSets
+## Viewing DaemonSets
 
 List:
 
@@ -619,7 +619,7 @@ kubectl describe daemonset fluentd
 
 ---
 
-# Updating DaemonSet
+## Updating DaemonSet
 
 Edit:
 
@@ -635,7 +635,7 @@ kubectl apply -f daemonset.yaml
 
 ---
 
-# Deleting DaemonSet
+## Deleting DaemonSet
 
 Delete:
 
@@ -657,7 +657,7 @@ The managed Pods are deleted unless orphaning behavior is explicitly requested.
 
 ---
 
-# DaemonSet Lifecycle
+## DaemonSet Lifecycle
 
 ```
 Create
@@ -685,7 +685,7 @@ Delete
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -719,7 +719,7 @@ kubectl delete ds fluentd
 
 ---
 
-# DaemonSet Architecture Summary
+## DaemonSet Architecture Summary
 
 ```
 DaemonSet
@@ -739,9 +739,9 @@ System Service
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use DaemonSets for Node-Level Services
+#### 1. Use DaemonSets for Node-Level Services
 
 Examples:
 
@@ -752,19 +752,19 @@ Examples:
 
 ---
 
-### 2. Use Node Selectors
+#### 2. Use Node Selectors
 
 Schedule Pods only on compatible Nodes.
 
 ---
 
-### 3. Configure Tolerations Carefully
+#### 3. Configure Tolerations Carefully
 
 Only allow Pods onto tainted Nodes when required.
 
 ---
 
-### 4. Monitor DaemonSet Status
+#### 4. Monitor DaemonSet Status
 
 Check:
 
@@ -776,15 +776,15 @@ to verify desired, current, ready, and available Pods.
 
 ---
 
-### 5. Keep DaemonSet Containers Lightweight
+#### 5. Keep DaemonSet Containers Lightweight
 
 DaemonSet Pods run on many or all Nodes, so optimize CPU and memory usage.
 
 ---
 
-# How DaemonSets Work Internally
+## How DaemonSets Work Internally
 
-## Overview
+### Overview
 
 A DaemonSet continuously monitors the Kubernetes cluster and ensures that **every eligible Node** runs exactly one DaemonSet Pod.
 
@@ -803,7 +803,7 @@ This behavior makes DaemonSets ideal for **Node-level infrastructure services**.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                  Kubernetes Cluster
@@ -835,7 +835,7 @@ Every eligible Node receives one DaemonSet Pod.
 
 ---
 
-# Complete Workflow
+## Complete Workflow
 
 ```
 Developer
@@ -887,7 +887,7 @@ Running
 
 ---
 
-# Step 1 – DaemonSet Creation
+## Step 1 – DaemonSet Creation
 
 Example:
 
@@ -903,7 +903,7 @@ kubectl apply -f daemonset.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -928,7 +928,7 @@ DaemonSet Stored
 
 ---
 
-# Step 3 – Store in etcd
+## Step 3 – Store in etcd
 
 ```
 API Server
@@ -950,7 +950,7 @@ No Pods Yet
 
 ---
 
-# Step 4 – DaemonSet Controller
+## Step 4 – DaemonSet Controller
 
 The DaemonSet Controller continuously watches:
 
@@ -970,7 +970,7 @@ Its responsibility is to ensure every eligible Node has the required Pod.
 
 ---
 
-# Step 5 – Node Discovery
+## Step 5 – Node Discovery
 
 Suppose:
 
@@ -1000,7 +1000,7 @@ Each Node is evaluated.
 
 ---
 
-# Step 6 – Eligibility Check
+## Step 6 – Eligibility Check
 
 The controller checks:
 
@@ -1029,7 +1029,7 @@ Ignored
 
 ---
 
-# Step 7 – Pod Creation
+## Step 7 – Pod Creation
 
 Eligible Node:
 
@@ -1057,7 +1057,7 @@ DaemonSet Pod
 
 ---
 
-# Step 8 – Scheduler
+## Step 8 – Scheduler
 
 Normally:
 
@@ -1087,7 +1087,7 @@ The controller determines **which Node** should receive the Pod.
 
 ---
 
-# Step 9 – kubelet
+## Step 9 – kubelet
 
 Worker Node:
 
@@ -1109,7 +1109,7 @@ Start Pod
 
 ---
 
-# Final State
+## Final State
 
 ```
 Cluster
@@ -1143,7 +1143,7 @@ Desired state achieved.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 DaemonSet Controller never stops.
 
@@ -1167,7 +1167,7 @@ This is Kubernetes' reconciliation loop.
 
 ---
 
-# New Node Added
+## New Node Added
 
 Current:
 
@@ -1203,7 +1203,7 @@ Automatically.
 
 ---
 
-# Node Removed
+## Node Removed
 
 Suppose:
 
@@ -1229,7 +1229,7 @@ The DaemonSet now targets only the remaining eligible Nodes.
 
 ---
 
-# Node Failure
+## Node Failure
 
 Current:
 
@@ -1261,7 +1261,7 @@ If the Node is permanently removed from the cluster, the corresponding Pod disap
 
 ---
 
-# Pod Failure
+## Pod Failure
 
 Suppose:
 
@@ -1297,7 +1297,7 @@ The DaemonSet restores the desired state.
 
 ---
 
-# Node Labels
+## Node Labels
 
 Example:
 
@@ -1327,7 +1327,7 @@ Only matching Nodes receive Pods.
 
 ---
 
-# Node Affinity
+## Node Affinity
 
 More advanced scheduling:
 
@@ -1355,7 +1355,7 @@ Affinity provides more flexible placement than node selectors.
 
 ---
 
-# Taints & Tolerations
+## Taints & Tolerations
 
 Suppose:
 
@@ -1387,7 +1387,7 @@ Many infrastructure DaemonSets include tolerations so they can run on control pl
 
 ---
 
-# Rolling Updates
+## Rolling Updates
 
 Suppose:
 
@@ -1433,7 +1433,7 @@ The rollout proceeds node by node.
 
 ---
 
-# Update Strategy
+## Update Strategy
 
 Default:
 
@@ -1451,7 +1451,7 @@ With `OnDelete`, Pods are updated only after they are manually deleted.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 API Server
@@ -1475,7 +1475,7 @@ Containers
 
 ---
 
-# Logging Example
+## Logging Example
 
 ```
 DaemonSet
@@ -1497,7 +1497,7 @@ Every Node forwards logs.
 
 ---
 
-# Monitoring Example
+## Monitoring Example
 
 ```
 DaemonSet
@@ -1515,7 +1515,7 @@ Every Node exports metrics.
 
 ---
 
-# Security Example
+## Security Example
 
 ```
 DaemonSet
@@ -1533,7 +1533,7 @@ Every Node performs runtime security monitoring.
 
 ---
 
-# CNI Example
+## CNI Example
 
 ```
 DaemonSet
@@ -1551,7 +1551,7 @@ Network plugins typically require one Pod on each Node.
 
 ---
 
-# CSI Example
+## CSI Example
 
 ```
 DaemonSet
@@ -1569,7 +1569,7 @@ Storage plugins commonly use DaemonSets for Node-level operations.
 
 ---
 
-# Hands-on Lab 1 – Create DaemonSet
+## Hands-on Lab 1 – Create DaemonSet
 
 Example:
 
@@ -1615,7 +1615,7 @@ kubectl apply -f daemonset.yaml
 
 ---
 
-# Hands-on Lab 2 – Verify
+## Hands-on Lab 2 – Verify
 
 ```bash
 kubectl get ds
@@ -1635,7 +1635,7 @@ Each Node
 
 ---
 
-# Hands-on Lab 3 – Add New Node
+## Hands-on Lab 3 – Add New Node
 
 If using a lab cluster:
 
@@ -1653,7 +1653,7 @@ A new DaemonSet Pod is scheduled automatically.
 
 ---
 
-# Hands-on Lab 4 – Rolling Update
+## Hands-on Lab 4 – Rolling Update
 
 Update image:
 
@@ -1672,7 +1672,7 @@ Observe Pods updating one node at a time.
 
 ---
 
-# Hands-on Lab 5 – Describe DaemonSet
+## Hands-on Lab 5 – Describe DaemonSet
 
 ```bash
 kubectl describe ds fluentd
@@ -1688,9 +1688,9 @@ Review:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using Deployments Instead of DaemonSets
+### 1. Using Deployments Instead of DaemonSets
 
 Incorrect:
 
@@ -1714,7 +1714,7 @@ Monitoring Agent
 
 ---
 
-## 2. Forgetting Node Selectors
+### 2. Forgetting Node Selectors
 
 Without scheduling constraints:
 
@@ -1730,7 +1730,7 @@ Ensure this is the intended behavior.
 
 ---
 
-## 3. Missing Tolerations
+### 3. Missing Tolerations
 
 Control plane nodes often have taints.
 
@@ -1750,7 +1750,7 @@ No Pod
 
 ---
 
-## 4. Heavy Resource Usage
+### 4. Heavy Resource Usage
 
 DaemonSets run on many or all Nodes.
 
@@ -1758,7 +1758,7 @@ An inefficient DaemonSet can consume significant cluster resources.
 
 ---
 
-## 5. Assuming Replica Count
+### 5. Assuming Replica Count
 
 DaemonSets do **not** use:
 
@@ -1770,9 +1770,9 @@ The number of Pods depends on the number of eligible Nodes.
 
 ---
 
-# DaemonSets Quick Revision
+## DaemonSets Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 DaemonSet
@@ -1788,7 +1788,7 @@ One Pod Per Node
 
 ---
 
-## Workflow
+### Workflow
 
 ```
 DaemonSet
@@ -1812,7 +1812,7 @@ Update
 
 ---
 
-## Common Use Cases
+### Common Use Cases
 
 ```
 Logging
@@ -1836,7 +1836,7 @@ Security
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 Create:
 
@@ -1883,9 +1883,9 @@ kubectl delete ds fluentd
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a DaemonSet?
 - How is a DaemonSet different from a Deployment?
@@ -1893,7 +1893,7 @@ kubectl delete ds fluentd
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - How does a DaemonSet determine where to schedule Pods?
 - What happens when a new Node joins the cluster?
@@ -1901,7 +1901,7 @@ kubectl delete ds fluentd
 
 ---
 
-### Advanced
+#### Advanced
 
 - How does the DaemonSet Controller reconcile cluster state?
 - What role do taints and tolerations play with DaemonSets?
@@ -1911,9 +1911,9 @@ kubectl delete ds fluentd
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - DaemonSets
 - Workload Controllers
@@ -1924,7 +1924,7 @@ kubectl delete ds fluentd
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Best Practices
 - Kubernetes Scheduling Guide
@@ -1932,7 +1932,7 @@ kubectl delete ds fluentd
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - NSA/CISA Kubernetes Hardening Guidance
@@ -1941,7 +1941,7 @@ kubectl delete ds fluentd
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Deploy a DaemonSet that runs a simple container on every Node.
 2. Observe Pod placement with `kubectl get pods -o wide`.
@@ -1953,7 +1953,7 @@ kubectl delete ds fluentd
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Developer

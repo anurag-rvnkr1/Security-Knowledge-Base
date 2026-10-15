@@ -1,10 +1,10 @@
 # 22 - Linux Hardening
 
-# Part 1 — Linux Hardening Fundamentals, Attack Surface Reduction, Security Principles, and Enterprise Baselines
+## Part 1 — Linux Hardening Fundamentals, Attack Surface Reduction, Security Principles, and Enterprise Baselines
 
 ---
 
-# Introduction
+## Introduction
 
 Linux is considered one of the most secure operating systems, but **default installations are not automatically secure**.
 
@@ -26,7 +26,7 @@ Hardening is a continuous lifecycle rather than a one-time task.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this chapter, you will understand:
 
@@ -42,7 +42,7 @@ By the end of this chapter, you will understand:
 
 ---
 
-# What is Linux Hardening?
+## What is Linux Hardening?
 
 Linux hardening is the process of improving the security posture of a Linux system by reducing vulnerabilities and limiting opportunities for attackers.
 
@@ -50,7 +50,7 @@ The goal is to make successful attacks significantly more difficult while preser
 
 ---
 
-# Hardening Lifecycle
+## Hardening Lifecycle
 
 ```text
 Install
@@ -86,7 +86,7 @@ Repeat
 
 ---
 
-# Why Hardening Matters
+## Why Hardening Matters
 
 Without hardening, systems may contain:
 
@@ -102,7 +102,7 @@ These weaknesses can be exploited by attackers.
 
 ---
 
-# Enterprise Security Objectives
+## Enterprise Security Objectives
 
 Hardening supports the **CIA Triad**.
 
@@ -114,13 +114,13 @@ Hardening supports the **CIA Triad**.
 
 ---
 
-# Security Principles
+## Security Principles
 
 Effective hardening is based on established security principles.
 
 ---
 
-# Principle of Least Privilege (PoLP)
+## Principle of Least Privilege (PoLP)
 
 Users, applications, and services should receive **only the permissions necessary** to perform their tasks.
 
@@ -144,7 +144,7 @@ Benefits:
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Security should consist of multiple layers.
 
@@ -176,7 +176,7 @@ If one layer fails, additional controls continue protecting the system.
 
 ---
 
-# Zero Trust
+## Zero Trust
 
 Modern enterprise security increasingly follows a **Zero Trust** approach.
 
@@ -190,7 +190,7 @@ Core concepts:
 
 ---
 
-# Secure by Default
+## Secure by Default
 
 Whenever practical:
 
@@ -202,7 +202,7 @@ Whenever practical:
 
 ---
 
-# Attack Surface
+## Attack Surface
 
 The attack surface includes every point through which an attacker may attempt to compromise a system.
 
@@ -219,7 +219,7 @@ Examples:
 
 ---
 
-# Attack Surface Diagram
+## Attack Surface Diagram
 
 ```text
 Linux Server
@@ -238,7 +238,7 @@ Every exposed component increases the potential attack surface.
 
 ---
 
-# Attack Surface Reduction
+## Attack Surface Reduction
 
 Hardening focuses on minimizing unnecessary exposure.
 
@@ -253,7 +253,7 @@ Typical actions include:
 
 ---
 
-# Enterprise Hardening Workflow
+## Enterprise Hardening Workflow
 
 ```text
 Inventory
@@ -281,7 +281,7 @@ Continuous Improvement
 
 ---
 
-# Security Baselines
+## Security Baselines
 
 A **security baseline** defines the minimum acceptable security configuration for systems.
 
@@ -297,7 +297,7 @@ Baselines typically specify:
 
 ---
 
-# Baseline Benefits
+## Baseline Benefits
 
 | Benefit | Description |
 |----------|-------------|
@@ -308,7 +308,7 @@ Baselines typically specify:
 
 ---
 
-# System Inventory
+## System Inventory
 
 Before hardening, identify:
 
@@ -323,7 +323,7 @@ Before hardening, identify:
 
 ---
 
-# Useful Inventory Commands
+## Useful Inventory Commands
 
 Operating system:
 
@@ -369,7 +369,7 @@ who
 
 ---
 
-# Risk Assessment
+## Risk Assessment
 
 Evaluate:
 
@@ -385,7 +385,7 @@ Prioritize high-risk systems first.
 
 ---
 
-# Hardening Priorities
+## Hardening Priorities
 
 ```text
 Critical Systems
@@ -413,7 +413,7 @@ Applications
 
 ---
 
-# Removing Unnecessary Software
+## Removing Unnecessary Software
 
 Unused software increases:
 
@@ -432,7 +432,7 @@ Always verify dependencies before removing packages.
 
 ---
 
-# Reviewing Installed Packages
+## Reviewing Installed Packages
 
 Ubuntu/Debian:
 
@@ -450,7 +450,7 @@ Review packages regularly to identify obsolete or unnecessary software.
 
 ---
 
-# Removing Packages
+## Removing Packages
 
 Ubuntu/Debian:
 
@@ -468,7 +468,7 @@ Use caution when removing packages required by other applications.
 
 ---
 
-# Service Hardening
+## Service Hardening
 
 Every running service:
 
@@ -480,7 +480,7 @@ Disable services that are not required.
 
 ---
 
-# Viewing Active Services
+## Viewing Active Services
 
 ```bash
 systemctl list-units --type=service --state=running
@@ -488,7 +488,7 @@ systemctl list-units --type=service --state=running
 
 ---
 
-# Disable Unused Service
+## Disable Unused Service
 
 ```bash
 sudo systemctl disable service-name
@@ -504,7 +504,7 @@ Verify that disabling the service will not impact required business functionalit
 
 ---
 
-# Open Ports
+## Open Ports
 
 Each listening port represents a potential entry point.
 
@@ -523,7 +523,7 @@ Questions to ask:
 
 ---
 
-# User Account Review
+## User Account Review
 
 Review local accounts:
 
@@ -540,7 +540,7 @@ Identify:
 
 ---
 
-# Administrative Access
+## Administrative Access
 
 Administrative privileges should be granted only to authorized personnel.
 
@@ -550,7 +550,7 @@ Avoid using shared administrative accounts whenever possible.
 
 ---
 
-# Security Policy
+## Security Policy
 
 Organizations typically define policies covering:
 
@@ -566,7 +566,7 @@ Hardening should align with organizational policy.
 
 ---
 
-# Hardening Documentation
+## Hardening Documentation
 
 Document:
 
@@ -580,7 +580,7 @@ Documentation supports audits and simplifies troubleshooting.
 
 ---
 
-# Enterprise Hardening Workflow
+## Enterprise Hardening Workflow
 
 ```text
 Policy
@@ -612,7 +612,7 @@ Audit
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently exploit:
 
@@ -626,7 +626,7 @@ Reducing the attack surface makes exploitation more difficult and limits the imp
 
 ---
 
-# Business Impact
+## Business Impact
 
 A hardened Linux environment helps organizations:
 
@@ -639,7 +639,7 @@ A hardened Linux environment helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Maintain a documented security baseline.
 - Remove unnecessary software and services.
@@ -652,7 +652,7 @@ A hardened Linux environment helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux hardening reduces the system's attack surface.
 - Security should be layered using defense in depth.
@@ -662,13 +662,13 @@ A hardened Linux environment helps organizations:
 
 ---
 
-# 22 - Linux Hardening
+## 22 - Linux Hardening
 
-# Part 2 — User & Account Hardening, Password Policies, Filesystem Hardening, Kernel Hardening, and Package Security
+## Part 2 — User & Account Hardening, Password Policies, Filesystem Hardening, Kernel Hardening, and Package Security
 
 ---
 
-# Introduction
+## Introduction
 
 Most successful Linux compromises do not begin with sophisticated kernel exploits.
 
@@ -685,7 +685,7 @@ This section focuses on strengthening these critical security areas.
 
 ---
 
-# User Account Hardening
+## User Account Hardening
 
 User accounts are one of the primary attack targets.
 
@@ -699,7 +699,7 @@ Every account should be:
 
 ---
 
-# Account Lifecycle
+## Account Lifecycle
 
 ```text
 Create
@@ -727,7 +727,7 @@ Delete
 
 ---
 
-# Review Local Accounts
+## Review Local Accounts
 
 Display all local accounts:
 
@@ -750,7 +750,7 @@ Questions to ask:
 
 ---
 
-# Identify Accounts with Login Shells
+## Identify Accounts with Login Shells
 
 ```bash
 grep "/bin/bash" /etc/passwd
@@ -766,7 +766,7 @@ Review whether each interactive account is still necessary.
 
 ---
 
-# Lock an Account
+## Lock an Account
 
 Temporarily disable logins:
 
@@ -784,7 +784,7 @@ Locking is often preferred over deletion when preserving ownership of files or a
 
 ---
 
-# Disable an Account
+## Disable an Account
 
 Expire the account immediately:
 
@@ -796,7 +796,7 @@ This prevents future logins while retaining account information.
 
 ---
 
-# Delete an Account
+## Delete an Account
 
 Remove a user:
 
@@ -814,7 +814,7 @@ Ensure important data is backed up before deleting accounts.
 
 ---
 
-# Password Policies
+## Password Policies
 
 Strong password policies reduce the risk of:
 
@@ -825,7 +825,7 @@ Strong password policies reduce the risk of:
 
 ---
 
-# Password Policy Components
+## Password Policy Components
 
 | Control | Purpose |
 |----------|----------|
@@ -837,7 +837,7 @@ Strong password policies reduce the risk of:
 
 ---
 
-# Password Aging
+## Password Aging
 
 View password settings:
 
@@ -863,7 +863,7 @@ Specific values should follow organizational policy and applicable regulations.
 
 ---
 
-# Minimum Password Length
+## Minimum Password Length
 
 Many distributions use PAM modules such as `pam_pwquality` to enforce password quality.
 
@@ -878,7 +878,7 @@ Exact configuration depends on the Linux distribution and authentication stack.
 
 ---
 
-# Secure Password Practices
+## Secure Password Practices
 
 Recommendations:
 
@@ -890,7 +890,7 @@ Recommendations:
 
 ---
 
-# Administrative Access
+## Administrative Access
 
 Instead of sharing privileged accounts:
 
@@ -918,7 +918,7 @@ Benefits:
 
 ---
 
-# Review sudo Access
+## Review sudo Access
 
 List a user's sudo privileges:
 
@@ -936,7 +936,7 @@ Audit privileged access regularly.
 
 ---
 
-# Filesystem Hardening
+## Filesystem Hardening
 
 Improper filesystem permissions can expose sensitive information or allow privilege escalation.
 
@@ -950,7 +950,7 @@ Important areas include:
 
 ---
 
-# Critical Files
+## Critical Files
 
 | File | Purpose |
 |------|----------|
@@ -961,7 +961,7 @@ Important areas include:
 
 ---
 
-# Protect `/etc/shadow`
+## Protect `/etc/shadow`
 
 Verify permissions:
 
@@ -973,7 +973,7 @@ Only privileged users should have access to password hashes.
 
 ---
 
-# Home Directory Permissions
+## Home Directory Permissions
 
 Check permissions:
 
@@ -985,7 +985,7 @@ Restrict unnecessary access to user home directories according to organizational
 
 ---
 
-# Temporary Directories
+## Temporary Directories
 
 Common temporary locations:
 
@@ -999,7 +999,7 @@ These directories require careful management because many applications use them.
 
 ---
 
-# Mount Options
+## Mount Options
 
 Additional filesystem protection can be provided through mount options.
 
@@ -1015,7 +1015,7 @@ These options are often applied to locations such as `/tmp` when compatible with
 
 ---
 
-# Example `/etc/fstab`
+## Example `/etc/fstab`
 
 ```text
 UUID=...
@@ -1033,7 +1033,7 @@ Always test mount option changes before deploying them broadly.
 
 ---
 
-# SUID and SGID Review
+## SUID and SGID Review
 
 Locate SUID files:
 
@@ -1051,7 +1051,7 @@ Review whether elevated permissions are still required.
 
 ---
 
-# World-Writable Files
+## World-Writable Files
 
 Locate world-writable files:
 
@@ -1063,7 +1063,7 @@ Unexpected world-writable files should be investigated.
 
 ---
 
-# Kernel Hardening
+## Kernel Hardening
 
 The Linux kernel provides security controls that can reduce attack opportunities.
 
@@ -1076,7 +1076,7 @@ Common areas include:
 
 ---
 
-# sysctl
+## sysctl
 
 Kernel parameters can be viewed using:
 
@@ -1092,7 +1092,7 @@ sysctl net.ipv4.ip_forward
 
 ---
 
-# Temporary Configuration
+## Temporary Configuration
 
 Example:
 
@@ -1104,7 +1104,7 @@ Changes made this way are not persistent after reboot.
 
 ---
 
-# Persistent Configuration
+## Persistent Configuration
 
 Store settings in configuration files such as:
 
@@ -1126,7 +1126,7 @@ sudo sysctl --system
 
 ---
 
-# Common Kernel Parameters
+## Common Kernel Parameters
 
 | Parameter | Purpose |
 |-----------|----------|
@@ -1140,7 +1140,7 @@ Recommended values depend on the server's role and organizational security requi
 
 ---
 
-# Address Space Layout Randomization (ASLR)
+## Address Space Layout Randomization (ASLR)
 
 ASLR randomizes memory locations used by processes.
 
@@ -1157,7 +1157,7 @@ cat /proc/sys/kernel/randomize_va_space
 
 ---
 
-# Package Security
+## Package Security
 
 Keeping software current is one of the most effective security controls.
 
@@ -1170,7 +1170,7 @@ Benefits:
 
 ---
 
-# Update Package Metadata
+## Update Package Metadata
 
 Ubuntu/Debian:
 
@@ -1186,7 +1186,7 @@ sudo dnf check-update
 
 ---
 
-# Upgrade Installed Packages
+## Upgrade Installed Packages
 
 Ubuntu/Debian:
 
@@ -1204,7 +1204,7 @@ Test updates in staging environments before deploying to production where possib
 
 ---
 
-# Verify Package Integrity
+## Verify Package Integrity
 
 Many package managers verify digital signatures to ensure packages originate from trusted repositories.
 
@@ -1212,7 +1212,7 @@ Avoid installing software from untrusted or unknown sources.
 
 ---
 
-# Remove Unused Packages
+## Remove Unused Packages
 
 Ubuntu/Debian:
 
@@ -1230,7 +1230,7 @@ Removing unnecessary software reduces the attack surface.
 
 ---
 
-# Enterprise Patch Management
+## Enterprise Patch Management
 
 Typical workflow:
 
@@ -1264,7 +1264,7 @@ Monitoring
 
 ---
 
-# Hardening Workflow
+## Hardening Workflow
 
 ```text
 Users
@@ -1292,7 +1292,7 @@ Validation
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently target:
 
@@ -1306,7 +1306,7 @@ Strengthening these areas significantly reduces the likelihood and impact of com
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong account and system hardening:
 
@@ -1319,7 +1319,7 @@ Strong account and system hardening:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Remove or disable inactive accounts promptly.
 - Review privileged access regularly.
@@ -1332,7 +1332,7 @@ Strong account and system hardening:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - User accounts are a primary attack target and require continuous review.
 - Password policies help defend against credential-based attacks.
@@ -1344,13 +1344,13 @@ Strong account and system hardening:
 ---
 
 
-# 22 - Linux Hardening
+## 22 - Linux Hardening
 
-# Part 3 — Network Hardening, SSH Hardening, Service Hardening, Logging, Auditing, Security Monitoring, and Compliance
+## Part 3 — Network Hardening, SSH Hardening, Service Hardening, Logging, Auditing, Security Monitoring, and Compliance
 
 ---
 
-# Introduction
+## Introduction
 
 After securing user accounts, filesystems, and the kernel, the next priority is protecting the system from network-based attacks.
 
@@ -1367,7 +1367,7 @@ These controls significantly reduce the likelihood of unauthorized access and im
 
 ---
 
-# Network Hardening
+## Network Hardening
 
 Network hardening reduces unnecessary exposure by limiting communication to only required services.
 
@@ -1381,7 +1381,7 @@ Objectives:
 
 ---
 
-# Network Hardening Workflow
+## Network Hardening Workflow
 
 ```text
 Identify Services
@@ -1409,7 +1409,7 @@ Audit
 
 ---
 
-# Review Listening Ports
+## Review Listening Ports
 
 Display listening ports:
 
@@ -1434,7 +1434,7 @@ Questions:
 
 ---
 
-# Verify Open Ports
+## Verify Open Ports
 
 Example output:
 
@@ -1450,7 +1450,7 @@ Unexpected ports should be investigated immediately.
 
 ---
 
-# Firewall Strategy
+## Firewall Strategy
 
 Firewalls should follow a **default deny** philosophy whenever practical.
 
@@ -1478,7 +1478,7 @@ Only explicitly authorized services should be reachable.
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Enterprise environments rarely place all systems on one network.
 
@@ -1513,7 +1513,7 @@ Benefits:
 
 ---
 
-# Restrict Administrative Access
+## Restrict Administrative Access
 
 SSH should ideally be accessible only from:
 
@@ -1526,7 +1526,7 @@ Avoid exposing administrative services unnecessarily.
 
 ---
 
-# Disable Unused Network Services
+## Disable Unused Network Services
 
 Examples may include:
 
@@ -1540,7 +1540,7 @@ Replace legacy protocols with secure alternatives such as SSH or SFTP where appr
 
 ---
 
-# SSH Hardening
+## SSH Hardening
 
 SSH is one of the most frequently targeted Linux services.
 
@@ -1555,7 +1555,7 @@ Recommended hardening measures include:
 
 ---
 
-# SSH Hardening Workflow
+## SSH Hardening Workflow
 
 ```text
 Install
@@ -1583,7 +1583,7 @@ Monitoring
 
 ---
 
-# Review SSH Configuration
+## Review SSH Configuration
 
 Configuration file:
 
@@ -1599,7 +1599,7 @@ sudo sshd -t
 
 ---
 
-# Recommended SSH Controls
+## Recommended SSH Controls
 
 | Control | Benefit |
 |----------|----------|
@@ -1613,7 +1613,7 @@ Specific settings should align with organizational security policies.
 
 ---
 
-# Service Hardening
+## Service Hardening
 
 Every running service represents a potential attack vector.
 
@@ -1632,7 +1632,7 @@ Questions:
 
 ---
 
-# Disable Unused Services
+## Disable Unused Services
 
 Stop immediately:
 
@@ -1650,7 +1650,7 @@ Confirm that disabling the service will not affect business operations.
 
 ---
 
-# Service Hardening Workflow
+## Service Hardening Workflow
 
 ```text
 Inventory
@@ -1674,7 +1674,7 @@ Monitor
 
 ---
 
-# Logging
+## Logging
 
 Security logging provides visibility into system activity.
 
@@ -1689,7 +1689,7 @@ Important log sources include:
 
 ---
 
-# Common Log Locations
+## Common Log Locations
 
 | Distribution | Authentication Log |
 |--------------|--------------------|
@@ -1704,7 +1704,7 @@ journalctl
 
 ---
 
-# Authentication Monitoring
+## Authentication Monitoring
 
 Examples:
 
@@ -1724,7 +1724,7 @@ Equivalent log locations vary by distribution.
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Linux systems may use the Linux Audit Framework (`auditd`) for detailed event logging.
 
@@ -1737,7 +1737,7 @@ Common audit targets include:
 
 ---
 
-# Audit Workflow
+## Audit Workflow
 
 ```text
 User Action
@@ -1761,7 +1761,7 @@ Analysis
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Continuous monitoring helps detect:
 
@@ -1775,7 +1775,7 @@ Monitoring should be proactive rather than reactive.
 
 ---
 
-# Monitoring Workflow
+## Monitoring Workflow
 
 ```text
 Events
@@ -1803,7 +1803,7 @@ Response
 
 ---
 
-# File Integrity Monitoring
+## File Integrity Monitoring
 
 Critical files can be monitored for unexpected changes.
 
@@ -1827,7 +1827,7 @@ Unexpected modifications should trigger investigation.
 
 ---
 
-# Configuration Drift
+## Configuration Drift
 
 Configuration drift occurs when systems gradually diverge from the approved security baseline.
 
@@ -1842,7 +1842,7 @@ Regular audits help detect and correct drift.
 
 ---
 
-# Compliance
+## Compliance
 
 Hardening often supports compliance requirements.
 
@@ -1860,7 +1860,7 @@ Specific requirements depend on the organization's regulatory obligations.
 
 ---
 
-# Security Baseline Validation
+## Security Baseline Validation
 
 Validation checklist:
 
@@ -1898,7 +1898,7 @@ Documentation
 
 ---
 
-# Change Management
+## Change Management
 
 Hardening changes should follow a structured process.
 
@@ -1938,7 +1938,7 @@ Benefits:
 
 ---
 
-# Incident Response Readiness
+## Incident Response Readiness
 
 A hardened system should support rapid incident response through:
 
@@ -1952,7 +1952,7 @@ Preparation before an incident is critical.
 
 ---
 
-# Enterprise Hardening Architecture
+## Enterprise Hardening Architecture
 
 ```text
 Internet
@@ -1988,7 +1988,7 @@ Security Monitoring
 
 ---
 
-# Security Review Checklist
+## Security Review Checklist
 
 | Control | Status |
 |----------|--------|
@@ -2005,7 +2005,7 @@ Security Monitoring
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Most enterprise attacks rely on multiple weaknesses rather than a single vulnerability.
 
@@ -2021,7 +2021,7 @@ Layered hardening significantly reduces attacker success rates and improves dete
 
 ---
 
-# Business Impact
+## Business Impact
 
 Network and service hardening help organizations:
 
@@ -2034,7 +2034,7 @@ Network and service hardening help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Expose only required network services.
 - Restrict administrative access to trusted networks.
@@ -2047,7 +2047,7 @@ Network and service hardening help organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Network hardening reduces exposure to external threats.
 - SSH requires careful configuration and monitoring.
@@ -2058,13 +2058,13 @@ Network and service hardening help organizations:
 
 ---
 
-# 22 - Linux Hardening
+## 22 - Linux Hardening
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Hardening Checklists, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Hardening Checklists, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Linux hardening is not a single command or configuration.
 
@@ -2082,7 +2082,7 @@ This chapter concludes with practical exercises, enterprise scenarios, comprehen
 
 ---
 
-# Enterprise Hardening Lifecycle
+## Enterprise Hardening Lifecycle
 
 ```text
 Asset Inventory
@@ -2118,7 +2118,7 @@ Continuous Improvement
 
 ---
 
-# Practical Lab 1 — Identify System Information
+## Practical Lab 1 — Identify System Information
 
 Display operating system details:
 
@@ -2146,7 +2146,7 @@ Objectives:
 
 ---
 
-# Practical Lab 2 — Inventory Installed Packages
+## Practical Lab 2 — Inventory Installed Packages
 
 Ubuntu/Debian:
 
@@ -2168,7 +2168,7 @@ Objectives:
 
 ---
 
-# Practical Lab 3 — Review Running Services
+## Practical Lab 3 — Review Running Services
 
 List running services:
 
@@ -2184,7 +2184,7 @@ Objectives:
 
 ---
 
-# Practical Lab 4 — Review Open Network Ports
+## Practical Lab 4 — Review Open Network Ports
 
 Display listening ports:
 
@@ -2200,7 +2200,7 @@ Objectives:
 
 ---
 
-# Practical Lab 5 — Audit User Accounts
+## Practical Lab 5 — Audit User Accounts
 
 List all users:
 
@@ -2222,7 +2222,7 @@ Objectives:
 
 ---
 
-# Practical Lab 6 — Review Password Aging
+## Practical Lab 6 — Review Password Aging
 
 Display password policy:
 
@@ -2239,7 +2239,7 @@ Objectives:
 
 ---
 
-# Practical Lab 7 — Review Sudo Access
+## Practical Lab 7 — Review Sudo Access
 
 Check privileges:
 
@@ -2260,7 +2260,7 @@ Objectives:
 
 ---
 
-# Practical Lab 8 — Review Filesystem Permissions
+## Practical Lab 8 — Review Filesystem Permissions
 
 Check sensitive files:
 
@@ -2285,7 +2285,7 @@ Objectives:
 
 ---
 
-# Practical Lab 9 — Find SUID and SGID Files
+## Practical Lab 9 — Find SUID and SGID Files
 
 Locate SUID binaries:
 
@@ -2306,7 +2306,7 @@ Objectives:
 
 ---
 
-# Practical Lab 10 — Identify World-Writable Files
+## Practical Lab 10 — Identify World-Writable Files
 
 ```bash
 find / -type f -perm -0002 2>/dev/null
@@ -2319,7 +2319,7 @@ Objectives:
 
 ---
 
-# Practical Lab 11 — Review Kernel Parameters
+## Practical Lab 11 — Review Kernel Parameters
 
 Display all kernel parameters:
 
@@ -2340,7 +2340,7 @@ Objectives:
 
 ---
 
-# Practical Lab 12 — Validate SSH Configuration
+## Practical Lab 12 — Validate SSH Configuration
 
 Review active configuration:
 
@@ -2361,7 +2361,7 @@ Objectives:
 
 ---
 
-# Practical Lab 13 — Review Authentication Logs
+## Practical Lab 13 — Review Authentication Logs
 
 Ubuntu/Debian:
 
@@ -2382,7 +2382,7 @@ Objectives:
 
 ---
 
-# Practical Lab 14 — Review Firewall Configuration
+## Practical Lab 14 — Review Firewall Configuration
 
 Examples:
 
@@ -2403,7 +2403,7 @@ Objectives:
 
 ---
 
-# Practical Lab 15 — Perform a Basic Hardening Audit
+## Practical Lab 15 — Perform a Basic Hardening Audit
 
 Create a checklist covering:
 
@@ -2425,9 +2425,9 @@ Objectives:
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# Internet-Facing Web Server
+## Internet-Facing Web Server
 
 Architecture:
 
@@ -2467,9 +2467,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Secure Administrative Access
+## Secure Administrative Access
 
 Architecture:
 
@@ -2499,9 +2499,9 @@ Controls:
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# Patch Management
+## Patch Management
 
 Workflow:
 
@@ -2540,9 +2540,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Configuration Drift Detection
+## Configuration Drift Detection
 
 Workflow:
 
@@ -2581,9 +2581,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 5
+## Enterprise Case Study 5
 
-# Compliance Readiness
+## Compliance Readiness
 
 Quarterly audit validates:
 
@@ -2600,7 +2600,7 @@ Results are documented and reviewed before external audits.
 
 ---
 
-# Enterprise Hardening Checklist
+## Enterprise Hardening Checklist
 
 | Control | Status |
 |----------|--------|
@@ -2627,7 +2627,7 @@ Results are documented and reviewed before external audits.
 
 ---
 
-# Common Hardening Mistakes
+## Common Hardening Mistakes
 
 | Mistake | Risk | Better Practice |
 |----------|------|-----------------|
@@ -2642,7 +2642,7 @@ Results are documented and reviewed before external audits.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Linux hardening is a preventive control that complements detection and response.
 
@@ -2663,7 +2663,7 @@ Security teams should combine hardening with:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Comprehensive hardening helps organizations:
 
@@ -2677,7 +2677,7 @@ Comprehensive hardening helps organizations:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2701,9 +2701,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is Linux hardening?
 2. Why is attack surface reduction important?
@@ -2718,7 +2718,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the Linux hardening lifecycle.
 2. How would you review user accounts on a Linux server?
@@ -2733,7 +2733,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a hardening strategy for a production Linux environment.
 2. Explain how you would secure SSH access for hundreds of servers.
@@ -2748,7 +2748,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Hardening is an ongoing lifecycle, not a one-time activity.
 - Security baselines promote consistency across systems.
@@ -2759,9 +2759,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man sysctl`
 - `man passwd`
@@ -2772,7 +2772,7 @@ In this chapter, you learned:
 - `man journalctl`
 - `man find`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - CIS Benchmarks for Linux
 - Linux Foundation Documentation
@@ -2786,11 +2786,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **23-Linux-for-Cybersecurity.md**
 
-## Topics Covered
+### Topics Covered
 
 - Linux in Cybersecurity
 - Red Team vs Blue Team

@@ -1,12 +1,12 @@
 # 64-Web-Security-Best-Practices.md
 
-# Part 1 — Introduction to Web Security Best Practices, Security Principles, Secure Development, Risk Reduction, and Enterprise Foundations
+## Part 1 — Introduction to Web Security Best Practices, Security Principles, Secure Development, Risk Reduction, and Enterprise Foundations
 
 > **"Web Security Best Practices are proven, repeatable recommendations that help organizations design, develop, deploy, operate, and continuously improve secure web applications throughout their entire lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What are Web Security Best Practices?
+## What are Web Security Best Practices?
 
 Web Security Best Practices are established guidelines that help organizations consistently reduce security risks while improving the confidentiality, integrity, availability, and resilience of web applications.
 
@@ -55,7 +55,7 @@ Best practices provide a standardized approach that can be applied across differ
 
 ---
 
-# Why Best Practices Matter
+## Why Best Practices Matter
 
 Modern web applications interact with users, APIs, cloud platforms, databases, third-party services, and enterprise infrastructure.
 
@@ -72,7 +72,7 @@ Applying consistent best practices helps organizations:
 
 ---
 
-# Objectives of Security Best Practices
+## Objectives of Security Best Practices
 
 ```
 Security Objectives
@@ -100,7 +100,7 @@ These objectives guide security decisions throughout the software lifecycle.
 
 ---
 
-# Security Throughout the SDLC
+## Security Throughout the SDLC
 
 Security should be integrated into every development phase.
 
@@ -136,7 +136,7 @@ Security becomes more effective and cost-efficient when considered early.
 
 ---
 
-# Security by Design
+## Security by Design
 
 Security should be incorporated into system architecture rather than added after deployment.
 
@@ -168,7 +168,7 @@ Early security planning reduces technical debt and future remediation efforts.
 
 ---
 
-# Secure by Default
+## Secure by Default
 
 Applications should operate securely without requiring manual security configuration after deployment.
 
@@ -192,7 +192,7 @@ Secure defaults reduce the likelihood of configuration-related risks.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Multiple independent security controls provide stronger protection than relying on a single safeguard.
 
@@ -224,7 +224,7 @@ If one layer fails, additional layers continue providing protection.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Every identity, service, and application component should receive only the permissions necessary to perform its intended function.
 
@@ -248,7 +248,7 @@ Limiting privileges reduces potential impact from mistakes or unauthorized activ
 
 ---
 
-# Fail Securely
+## Fail Securely
 
 Systems should transition into a secure state whenever unexpected conditions occur.
 
@@ -272,7 +272,7 @@ Security should never depend on successful execution alone.
 
 ---
 
-# Separation of Duties
+## Separation of Duties
 
 Critical operations should be divided among different roles.
 
@@ -296,7 +296,7 @@ Separation of duties reduces operational and security risks.
 
 ---
 
-# Risk-Based Security
+## Risk-Based Security
 
 Organizations should prioritize security improvements according to business risk.
 
@@ -324,7 +324,7 @@ Resources should focus on protecting the most critical business assets.
 
 ---
 
-# Standardization
+## Standardization
 
 Standardized security practices improve consistency across teams.
 
@@ -352,7 +352,7 @@ Consistency simplifies maintenance and security reviews.
 
 ---
 
-# Secure Configuration
+## Secure Configuration
 
 Secure configuration establishes a reliable security baseline.
 
@@ -380,7 +380,7 @@ Configurations should be documented, reviewed, and periodically validated.
 
 ---
 
-# Enterprise Security Culture
+## Enterprise Security Culture
 
 Security is a shared organizational responsibility.
 
@@ -412,7 +412,7 @@ A strong security culture supports long-term resilience.
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```
 Business Objectives
@@ -450,7 +450,7 @@ Every phase contributes to maintaining a secure application environment.
 
 ---
 
-# Enterprise Best Practice Architecture
+## Enterprise Best Practice Architecture
 
 ```
                Business Goals
@@ -496,7 +496,7 @@ This architecture illustrates how security best practices span governance, devel
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail company develops customer portals, internal applications, supplier systems, and mobile services.
 
@@ -532,7 +532,7 @@ The organization establishes secure coding standards, architecture reviews, acce
 
 ---
 
-# Benefits of Following Best Practices
+## Benefits of Following Best Practices
 
 ```
 Benefits
@@ -558,7 +558,7 @@ Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Identify where security activities should occur during the SDLC.
 2. Draw a layered security model for an enterprise web application.
@@ -570,7 +570,7 @@ Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are Web Security Best Practices?
 2. Why should security be integrated into the SDLC?
@@ -585,7 +585,7 @@ Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security from the planning phase onward.
 - Apply secure-by-default configurations.
@@ -598,7 +598,7 @@ Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating security as a final testing activity.
 - Granting unnecessary permissions.
@@ -610,7 +610,7 @@ Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Web Security Best Practices provide standardized guidance for building and operating secure applications.
 - Security should be integrated throughout the entire software development lifecycle.
@@ -618,15 +618,15 @@ Benefits
 - Standardization and governance improve consistency and operational resilience.
 - A strong security culture and continuous improvement are essential for long-term cybersecurity success.
 
-# 64-Web-Security-Best-Practices.md
+## 64-Web-Security-Best-Practices.md
 
-# Part 2 — Secure Authentication, Authorization, Session Security, Input Validation, Data Protection, and Secure Communication
+## Part 2 — Secure Authentication, Authorization, Session Security, Input Validation, Data Protection, and Secure Communication
 
 > **"Strong identity management, secure data handling, robust session management, and validated user input form the foundation of secure web applications."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -643,7 +643,7 @@ After completing this part, you will understand:
 
 ---
 
-# Authentication Best Practices
+## Authentication Best Practices
 
 Authentication verifies the identity of users, services, or systems before granting access.
 
@@ -671,7 +671,7 @@ Authentication mechanisms should be designed to protect against unauthorized acc
 
 ---
 
-# Authentication Principles
+## Authentication Principles
 
 ```
 Authentication
@@ -699,7 +699,7 @@ Organizations should establish consistent authentication standards across all ap
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 Using multiple authentication factors increases confidence in identity verification.
 
@@ -723,7 +723,7 @@ MFA is particularly valuable for administrative, privileged, and remote access s
 
 ---
 
-# Credential Management
+## Credential Management
 
 Credentials should be managed securely throughout their lifecycle.
 
@@ -755,7 +755,7 @@ Proper credential lifecycle management reduces long-term security risk.
 
 ---
 
-# Authorization Best Practices
+## Authorization Best Practices
 
 Authorization determines what authenticated users are permitted to access.
 
@@ -779,7 +779,7 @@ Authorization should always be enforced on the server side.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Permissions should be limited to the minimum necessary for business functions.
 
@@ -803,7 +803,7 @@ Least privilege minimizes the impact of accidental misuse or unauthorized activi
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 ```
 User
@@ -825,7 +825,7 @@ Roles should reflect organizational responsibilities rather than individual user
 
 ---
 
-# Access Governance
+## Access Governance
 
 ```
 Access Governance
@@ -853,7 +853,7 @@ Regular reviews help ensure permissions remain appropriate.
 
 ---
 
-# Session Management Best Practices
+## Session Management Best Practices
 
 A session represents an authenticated interaction between a user and an application.
 
@@ -881,7 +881,7 @@ Sessions should be protected throughout their lifecycle.
 
 ---
 
-# Session Security Principles
+## Session Security Principles
 
 ```
 Session Security
@@ -909,7 +909,7 @@ Applications should terminate sessions appropriately after logout or prolonged i
 
 ---
 
-# Input Validation
+## Input Validation
 
 Input validation ensures that application data conforms to expected formats before processing.
 
@@ -933,7 +933,7 @@ Validation should occur on both client and server sides, with server-side valida
 
 ---
 
-# Input Validation Principles
+## Input Validation Principles
 
 ```
 Validation
@@ -961,7 +961,7 @@ Input validation reduces unexpected application behavior and improves reliabilit
 
 ---
 
-# Output Encoding
+## Output Encoding
 
 Applications should safely render data before presenting it to users.
 
@@ -985,7 +985,7 @@ Output handling should preserve application integrity while displaying informati
 
 ---
 
-# Data Protection Best Practices
+## Data Protection Best Practices
 
 Sensitive information requires protection throughout its lifecycle.
 
@@ -1017,7 +1017,7 @@ Data protection should align with business requirements and organizational polic
 
 ---
 
-# Data Classification
+## Data Classification
 
 ```
 Business Data
@@ -1045,7 +1045,7 @@ Classification helps determine appropriate protection measures.
 
 ---
 
-# Encryption Best Practices
+## Encryption Best Practices
 
 Encryption protects information during storage and transmission.
 
@@ -1069,7 +1069,7 @@ Encryption should be managed using approved organizational standards and sound k
 
 ---
 
-# Secure Communication
+## Secure Communication
 
 Applications should communicate over authenticated and protected channels.
 
@@ -1097,7 +1097,7 @@ Secure communication helps maintain confidentiality and integrity between system
 
 ---
 
-# API Security Fundamentals
+## API Security Fundamentals
 
 APIs should follow the same security principles as web applications.
 
@@ -1129,7 +1129,7 @@ API security should include consistent identity verification, access control, mo
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```
 Identity
@@ -1163,7 +1163,7 @@ Each stage contributes to protecting users and business resources.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational insurance company provides customer portals, broker applications, internal administrative systems, and partner APIs.
 
@@ -1199,7 +1199,7 @@ The organization standardizes authentication, role-based authorization, secure s
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1214,7 +1214,7 @@ The organization standardizes authentication, role-based authorization, secure s
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1227,7 +1227,7 @@ The organization standardizes authentication, role-based authorization, secure s
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise authentication and authorization workflow.
 2. Map organizational roles to RBAC permissions.
@@ -1239,7 +1239,7 @@ The organization standardizes authentication, role-based authorization, secure s
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is strong authentication important?
 2. What is the difference between authentication and authorization?
@@ -1254,7 +1254,7 @@ The organization standardizes authentication, role-based authorization, secure s
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Standardize authentication across applications.
 - Require stronger authentication for privileged access where appropriate.
@@ -1267,7 +1267,7 @@ The organization standardizes authentication, role-based authorization, secure s
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Granting broad permissions by default.
 - Relying solely on client-side validation.
@@ -1279,7 +1279,7 @@ The organization standardizes authentication, role-based authorization, secure s
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Strong authentication and authorization form the foundation of secure access control.
 - Secure session management protects authenticated users throughout their interactions.
@@ -1287,15 +1287,15 @@ The organization standardizes authentication, role-based authorization, secure s
 - Data classification, encryption, and secure communication protect sensitive information.
 - Consistent identity, access, and API security practices strengthen enterprise web application security.
 
-# 64-Web-Security-Best-Practices.md
+## 64-Web-Security-Best-Practices.md
 
-# Part 3 — Secure Deployment, Monitoring, Logging, Vulnerability Management, Incident Preparedness, Third-Party Security, and Continuous Improvement
+## Part 3 — Secure Deployment, Monitoring, Logging, Vulnerability Management, Incident Preparedness, Third-Party Security, and Continuous Improvement
 
 > **"Building a secure application is only the beginning. Long-term security depends on secure deployment, continuous monitoring, effective vulnerability management, operational readiness, and an ongoing commitment to improvement."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1312,7 +1312,7 @@ After completing this part, you will understand:
 
 ---
 
-# Secure Deployment
+## Secure Deployment
 
 Applications should be deployed using standardized and controlled deployment processes.
 
@@ -1340,7 +1340,7 @@ A controlled deployment process helps maintain application stability and securit
 
 ---
 
-# Deployment Objectives
+## Deployment Objectives
 
 ```
 Secure Deployment
@@ -1368,7 +1368,7 @@ Deployment activities should follow documented organizational procedures.
 
 ---
 
-# Security Configuration Management
+## Security Configuration Management
 
 Secure configuration establishes a consistent and repeatable security baseline.
 
@@ -1400,7 +1400,7 @@ Configuration changes should be documented, approved, and periodically reviewed.
 
 ---
 
-# Configuration Baseline
+## Configuration Baseline
 
 ```
 Configuration Baseline
@@ -1428,7 +1428,7 @@ Maintaining standardized baselines reduces configuration drift.
 
 ---
 
-# Logging Best Practices
+## Logging Best Practices
 
 Logging provides operational visibility and supports troubleshooting, auditing, and incident response.
 
@@ -1456,7 +1456,7 @@ Logs should capture meaningful operational and security-related events.
 
 ---
 
-# Types of Logs
+## Types of Logs
 
 ```
 Enterprise Logs
@@ -1484,7 +1484,7 @@ Centralized logging simplifies operational analysis.
 
 ---
 
-# Logging Principles
+## Logging Principles
 
 ```
 Logging
@@ -1512,7 +1512,7 @@ Logs should be protected against unauthorized modification.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Continuous monitoring improves awareness of application health and security posture.
 
@@ -1540,7 +1540,7 @@ Monitoring should include both operational and security perspectives.
 
 ---
 
-# Monitoring Components
+## Monitoring Components
 
 ```
 Monitoring
@@ -1568,7 +1568,7 @@ Monitoring should provide timely visibility into important operational condition
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Vulnerability management is an ongoing process of identifying, assessing, prioritizing, and addressing security weaknesses.
 
@@ -1600,7 +1600,7 @@ The objective is to reduce organizational risk through structured management rat
 
 ---
 
-# Vulnerability Management Lifecycle
+## Vulnerability Management Lifecycle
 
 ```
 Assets
@@ -1634,7 +1634,7 @@ The lifecycle should be repeated regularly.
 
 ---
 
-# Patch Management
+## Patch Management
 
 Patch management helps maintain secure and reliable software.
 
@@ -1666,7 +1666,7 @@ Patches should be tested before production deployment whenever practical.
 
 ---
 
-# Third-Party Security
+## Third-Party Security
 
 Modern web applications frequently depend on external software, services, and vendors.
 
@@ -1698,7 +1698,7 @@ Third-party dependencies should be evaluated according to organizational risk ma
 
 ---
 
-# Third-Party Governance
+## Third-Party Governance
 
 ```
 Third-Party Security
@@ -1726,7 +1726,7 @@ Third-party governance should continue throughout the relationship.
 
 ---
 
-# Backup Best Practices
+## Backup Best Practices
 
 Reliable backups support operational resilience and business continuity.
 
@@ -1754,7 +1754,7 @@ Backup procedures should be documented and reviewed regularly.
 
 ---
 
-# Incident Preparedness
+## Incident Preparedness
 
 Preparation improves organizational readiness before incidents occur.
 
@@ -1782,7 +1782,7 @@ Prepared organizations respond more effectively during unexpected events.
 
 ---
 
-# Security Awareness
+## Security Awareness
 
 Security awareness strengthens the human aspect of organizational security.
 
@@ -1810,7 +1810,7 @@ Awareness should be continuous rather than a one-time activity.
 
 ---
 
-# Security Awareness Topics
+## Security Awareness Topics
 
 ```
 Awareness Program
@@ -1838,7 +1838,7 @@ Regular education reinforces secure behaviors across the organization.
 
 ---
 
-# Continuous Security Improvement
+## Continuous Security Improvement
 
 Security programs should evolve as technology, business requirements, and risks change.
 
@@ -1870,7 +1870,7 @@ Continuous improvement strengthens long-term resilience.
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```
 Development
@@ -1904,7 +1904,7 @@ Each stage contributes to maintaining a secure production environment.
 
 ---
 
-# Enterprise Best Practice Architecture
+## Enterprise Best Practice Architecture
 
 ```
                   Users
@@ -1950,7 +1950,7 @@ This architecture illustrates how deployment, monitoring, governance, and operat
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational logistics company manages customer portals, shipment tracking services, partner APIs, and internal business applications.
 
@@ -1982,7 +1982,7 @@ Operations teams maintain standardized deployment procedures, centralized loggin
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1997,7 +1997,7 @@ Operations teams maintain standardized deployment procedures, centralized loggin
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2010,7 +2010,7 @@ Operations teams maintain standardized deployment procedures, centralized loggin
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a secure deployment workflow for a web application.
 2. Create a configuration baseline checklist.
@@ -2022,7 +2022,7 @@ Operations teams maintain standardized deployment procedures, centralized loggin
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is secure deployment important?
 2. What is configuration management?
@@ -2037,7 +2037,7 @@ Operations teams maintain standardized deployment procedures, centralized loggin
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Follow standardized deployment procedures.
 - Maintain secure configuration baselines.
@@ -2050,7 +2050,7 @@ Operations teams maintain standardized deployment procedures, centralized loggin
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Deploying without standardized security validation.
 - Allowing configuration drift across environments.
@@ -2062,7 +2062,7 @@ Operations teams maintain standardized deployment procedures, centralized loggin
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure deployment and configuration management establish a strong production foundation.
 - Logging and monitoring provide visibility necessary for operations, auditing, and incident response.
@@ -2070,15 +2070,15 @@ Operations teams maintain standardized deployment procedures, centralized loggin
 - Third-party governance and backup validation strengthen resilience.
 - Continuous improvement and ongoing security awareness are essential components of mature web security programs.
 
-# 64-Web-Security-Best-Practices.md
+## 64-Web-Security-Best-Practices.md
 
-# Part 4 — Enterprise Governance, Security Maturity, Operational Excellence, Business Continuity, and Chapter Summary
+## Part 4 — Enterprise Governance, Security Maturity, Operational Excellence, Business Continuity, and Chapter Summary
 
 > **"Security best practices become truly effective when they are consistently governed, regularly measured, continuously improved, and embedded into the organization's culture, technology, and business processes."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2095,7 +2095,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Security Governance
+## Enterprise Security Governance
 
 Security governance establishes accountability, direction, and oversight for implementing and maintaining security best practices.
 
@@ -2127,7 +2127,7 @@ Governance ensures that security decisions support both business objectives and 
 
 ---
 
-# Security Governance Framework
+## Security Governance Framework
 
 ```
 Security Governance
@@ -2155,7 +2155,7 @@ A structured governance framework enables consistent security practices across p
 
 ---
 
-# Security Reviews
+## Security Reviews
 
 Regular reviews verify that security controls remain effective as applications and infrastructure evolve.
 
@@ -2187,7 +2187,7 @@ Reviews should be scheduled periodically and after significant architectural or 
 
 ---
 
-# Security Audit Integration
+## Security Audit Integration
 
 Security best practices support internal and external audit activities.
 
@@ -2215,7 +2215,7 @@ Well-documented security practices simplify audit preparation and compliance ver
 
 ---
 
-# Compliance Alignment
+## Compliance Alignment
 
 Security best practices help organizations meet regulatory, contractual, and organizational obligations.
 
@@ -2243,7 +2243,7 @@ Compliance should be integrated into normal operational processes rather than tr
 
 ---
 
-# Business Continuity Integration
+## Business Continuity Integration
 
 Business continuity ensures that critical business services remain available during disruptive events.
 
@@ -2271,7 +2271,7 @@ Security best practices strengthen business continuity by reducing operational r
 
 ---
 
-# Disaster Recovery Considerations
+## Disaster Recovery Considerations
 
 Disaster recovery focuses on restoring technology services after major disruptions.
 
@@ -2299,7 +2299,7 @@ Recovery plans should be documented, tested, and updated regularly.
 
 ---
 
-# Operational Excellence
+## Operational Excellence
 
 Operational excellence combines secure processes, effective governance, and continuous improvement.
 
@@ -2331,7 +2331,7 @@ Operational excellence promotes long-term reliability and resilience.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Organizations should monitor measurable indicators to evaluate the effectiveness of security best practices.
 
@@ -2348,7 +2348,7 @@ Organizations should monitor measurable indicators to evaluate the effectiveness
 
 ---
 
-# Security Best Practices Maturity Model
+## Security Best Practices Maturity Model
 
 ```
 Level 1
@@ -2386,7 +2386,7 @@ Organizations improve maturity by strengthening governance, automation, measurem
 
 ---
 
-# Characteristics of a Mature Security Program
+## Characteristics of a Mature Security Program
 
 ```
 Mature Security Program
@@ -2416,7 +2416,7 @@ These characteristics help organizations maintain secure and resilient web envir
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
                 Business Goals
@@ -2468,7 +2468,7 @@ This architecture demonstrates how governance, technology, and operational proce
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization manages patient portals, telemedicine platforms, administrative applications, and partner integrations.
 
@@ -2508,7 +2508,7 @@ The organization enforces standardized development practices, centralized identi
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Security Policies Approved
@@ -2534,7 +2534,7 @@ The organization enforces standardized development practices, centralized identi
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2547,9 +2547,9 @@ The organization enforces standardized development practices, centralized identi
 
 ---
 
-# Web Security Best Practices Quick Revision
+## Web Security Best Practices Quick Revision
 
-## Secure Development Lifecycle
+### Secure Development Lifecycle
 
 ```
 Requirements
@@ -2581,7 +2581,7 @@ Continuous Improvement
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 ```
 Identity
@@ -2609,7 +2609,7 @@ Governance
 
 ---
 
-## Continuous Improvement Cycle
+### Continuous Improvement Cycle
 
 ```
 Assessment
@@ -2637,7 +2637,7 @@ Improvement
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create an enterprise security governance framework for a web application portfolio.
 2. Perform a conceptual review of an application's security controls using a best-practices checklist.
@@ -2649,7 +2649,7 @@ Improvement
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are Web Security Best Practices?
 2. Why is security governance important?
@@ -2664,7 +2664,7 @@ Improvement
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security into every phase of the software lifecycle.
 - Maintain documented security policies, standards, and procedures.
@@ -2677,7 +2677,7 @@ Improvement
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating security as solely a technical responsibility.
 - Performing security reviews only after incidents.
@@ -2689,7 +2689,7 @@ Improvement
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

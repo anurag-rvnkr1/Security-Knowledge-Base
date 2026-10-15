@@ -1138,7 +1138,7 @@ Core Zero Trust principles include:
 
 ---
 
-# Defense-in-Depth for Zero Trust
+## Defense-in-Depth for Zero Trust
 
 ```
                  User / Device
@@ -1196,7 +1196,7 @@ Every layer independently evaluates access before resources are exposed.
 
 ---
 
-# Strengthen Identity Security
+## Strengthen Identity Security
 
 Identity is the foundation of Zero Trust.
 
@@ -1213,7 +1213,7 @@ Every identity should be uniquely attributable and regularly reviewed.
 
 ---
 
-# Enforce Least Privilege
+## Enforce Least Privilege
 
 Grant users and services only the permissions required for their tasks.
 
@@ -1228,7 +1228,7 @@ Review permissions periodically to remove unnecessary access.
 
 ---
 
-# Verify Device Compliance
+## Verify Device Compliance
 
 Access decisions should consider device health.
 
@@ -1256,7 +1256,7 @@ Non-compliant devices should receive restricted access or be denied entirely.
 
 ---
 
-# Implement Context-Aware Access
+## Implement Context-Aware Access
 
 Evaluate contextual signals before granting access.
 
@@ -1273,7 +1273,7 @@ Context-aware policies improve security while minimizing unnecessary user disrup
 
 ---
 
-# Secure Administrative Access
+## Secure Administrative Access
 
 Protect privileged accounts by requiring:
 
@@ -1287,7 +1287,7 @@ Administrative access should be tightly controlled and continuously monitored.
 
 ---
 
-# Implement Microsegmentation
+## Implement Microsegmentation
 
 Divide cloud environments into smaller trust zones.
 
@@ -1309,7 +1309,7 @@ Microsegmentation limits lateral movement after compromise.
 
 ---
 
-# Secure Service-to-Service Communication
+## Secure Service-to-Service Communication
 
 Cloud-native services should authenticate each other.
 
@@ -1325,7 +1325,7 @@ Every workload should verify the identity of communicating services.
 
 ---
 
-# Encrypt Data Everywhere
+## Encrypt Data Everywhere
 
 Protect information:
 
@@ -1337,7 +1337,7 @@ Secure encryption key management is equally important to effective encryption.
 
 ---
 
-# Continuously Monitor Access
+## Continuously Monitor Access
 
 Monitor:
 
@@ -1369,7 +1369,7 @@ Continuous monitoring enables rapid identification of suspicious behavior.
 
 ---
 
-# Automate Policy Enforcement
+## Automate Policy Enforcement
 
 Use centralized policy engines to enforce consistent security decisions.
 
@@ -1385,7 +1385,7 @@ Automation reduces human error and improves consistency.
 
 ---
 
-# Protect APIs with Zero Trust Principles
+## Protect APIs with Zero Trust Principles
 
 Apply Zero Trust controls to every API.
 
@@ -1402,7 +1402,7 @@ APIs should never rely on network location for trust.
 
 ---
 
-# Continuously Review Access
+## Continuously Review Access
 
 Regularly review:
 
@@ -1417,9 +1417,9 @@ Timely reviews reduce unnecessary exposure.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Verify Every Access Request
+#### 1. Verify Every Access Request
 
 Authenticate, authorize, and validate every request regardless of where it originates.
 
@@ -1427,7 +1427,7 @@ Do not assume internal traffic is trustworthy.
 
 ---
 
-### 2. Require Multi-Factor Authentication
+#### 2. Require Multi-Factor Authentication
 
 Enable MFA for:
 
@@ -1440,7 +1440,7 @@ MFA should be enforced consistently across cloud environments.
 
 ---
 
-### 3. Apply Least Privilege
+#### 3. Apply Least Privilege
 
 Grant only the minimum permissions required for users, applications, and services.
 
@@ -1448,7 +1448,7 @@ Regularly review and revoke unnecessary privileges.
 
 ---
 
-### 4. Continuously Evaluate Risk
+#### 4. Continuously Evaluate Risk
 
 Assess access decisions using:
 
@@ -1462,7 +1462,7 @@ Higher-risk requests should require additional verification or be denied.
 
 ---
 
-### 5. Segment Cloud Resources
+#### 5. Segment Cloud Resources
 
 Separate workloads into security zones using:
 
@@ -1476,7 +1476,7 @@ Segmentation reduces the impact of successful attacks.
 
 ---
 
-### 6. Secure Machine Identities
+#### 6. Secure Machine Identities
 
 Protect service accounts, workload identities, and API credentials.
 
@@ -1484,7 +1484,7 @@ Rotate credentials regularly and avoid long-lived secrets.
 
 ---
 
-### 7. Monitor Continuously
+#### 7. Monitor Continuously
 
 Collect telemetry from:
 
@@ -1499,7 +1499,7 @@ Correlate events using centralized SIEM platforms.
 
 ---
 
-### 8. Protect Administrative Accounts
+#### 8. Protect Administrative Accounts
 
 Require:
 
@@ -1512,7 +1512,7 @@ Administrative identities should receive the highest level of protection.
 
 ---
 
-### 9. Automate Security Decisions
+#### 9. Automate Security Decisions
 
 Use policy engines and automation to:
 
@@ -1525,7 +1525,7 @@ Automation improves consistency and response speed.
 
 ---
 
-### 10. Continuously Improve the Zero Trust Architecture
+#### 10. Continuously Improve the Zero Trust Architecture
 
 Regularly perform:
 
@@ -1540,7 +1540,7 @@ Zero Trust is an ongoing operational model that evolves alongside the organizati
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Zero Trust is often misunderstood as a single technology or product. In reality, it is a security strategy that requires coordinated implementation across identity, devices, applications, networks, workloads, data, and continuous monitoring.
 
@@ -1550,7 +1550,7 @@ Understanding these common mistakes helps organizations build an effective and m
 
 ---
 
-### 1. Treating Zero Trust as a Product
+#### 1. Treating Zero Trust as a Product
 
 One of the most common misconceptions is believing that purchasing a single security product automatically implements Zero Trust.
 
@@ -1580,7 +1580,7 @@ Multiple Integrated Controls ✓
 
 ---
 
-### 2. Trusting Internal Networks
+#### 2. Trusting Internal Networks
 
 Traditional security assumes that internal traffic is trustworthy.
 
@@ -1603,7 +1603,7 @@ Every connection should be:
 
 ---
 
-### 3. Excessive Permissions
+#### 3. Excessive Permissions
 
 Granting users or services broad administrative privileges increases the impact of account compromise.
 
@@ -1618,7 +1618,7 @@ Apply the Principle of Least Privilege and review permissions regularly.
 
 ---
 
-### 4. Ignoring Service Identities
+#### 4. Ignoring Service Identities
 
 Organizations often secure human users while overlooking:
 
@@ -1632,7 +1632,7 @@ Machine identities require the same level of protection as human identities.
 
 ---
 
-### 5. Weak Device Validation
+#### 5. Weak Device Validation
 
 Authenticating users without verifying device security introduces unnecessary risk.
 
@@ -1647,7 +1647,7 @@ Device posture should influence every access decision.
 
 ---
 
-### 6. Using Long-Lived Credentials
+#### 6. Using Long-Lived Credentials
 
 Long-lived credentials increase the window of opportunity for attackers.
 
@@ -1662,7 +1662,7 @@ Use short-lived credentials, credential rotation, and managed identity services 
 
 ---
 
-### 7. Missing Continuous Verification
+#### 7. Missing Continuous Verification
 
 Authenticating users only during login is inconsistent with Zero Trust principles.
 
@@ -1678,7 +1678,7 @@ Trust should be continuously reassessed throughout the session.
 
 ---
 
-### 8. Poor Network Segmentation
+#### 8. Poor Network Segmentation
 
 Flat cloud networks enable attackers to move laterally after compromising a single workload.
 
@@ -1694,7 +1694,7 @@ Segmentation reduces the blast radius of security incidents.
 
 ---
 
-### 9. Ignoring Monitoring and Telemetry
+#### 9. Ignoring Monitoring and Telemetry
 
 Without continuous visibility, organizations may fail to detect:
 
@@ -1708,7 +1708,7 @@ Comprehensive monitoring is fundamental to Zero Trust.
 
 ---
 
-### 10. Inconsistent Policy Enforcement
+#### 10. Inconsistent Policy Enforcement
 
 Applying different access policies across cloud platforms or environments creates security gaps.
 
@@ -1723,7 +1723,7 @@ Consistency is essential in hybrid and multi-cloud deployments.
 
 ---
 
-### 11. Protecting Only Human Users
+#### 11. Protecting Only Human Users
 
 Zero Trust must also secure:
 
@@ -1739,7 +1739,7 @@ Every identity should be authenticated and authorized.
 
 ---
 
-### 12. Ignoring Third-Party Access
+#### 12. Ignoring Third-Party Access
 
 Partners, contractors, and external vendors often require cloud access.
 
@@ -1755,7 +1755,7 @@ Third-party access should follow the same Zero Trust principles as internal user
 
 ---
 
-### 13. Weak Administrative Controls
+#### 13. Weak Administrative Controls
 
 Administrative accounts remain prime targets for attackers.
 
@@ -1771,7 +1771,7 @@ Administrative identities should receive enhanced protection.
 
 ---
 
-### 14. Failing to Review Access Regularly
+#### 14. Failing to Review Access Regularly
 
 Access permissions often accumulate over time.
 
@@ -1787,7 +1787,7 @@ Periodic access reviews support ongoing compliance and risk reduction.
 
 ---
 
-### 15. Assuming Zero Trust Eliminates All Risk
+#### 15. Assuming Zero Trust Eliminates All Risk
 
 Zero Trust significantly reduces risk but does not eliminate it.
 
@@ -1804,7 +1804,7 @@ Zero Trust complements, rather than replaces, other cybersecurity practices.
 
 ---
 
-## Zero Trust Implementation Checklist
+### Zero Trust Implementation Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1826,9 +1826,9 @@ Zero Trust complements, rather than replaces, other cybersecurity practices.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-207 – Zero Trust Architecture
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
@@ -1840,20 +1840,20 @@ Zero Trust complements, rather than replaces, other cybersecurity practices.
 
 ---
 
-### Zero Trust Documentation
+#### Zero Trust Documentation
 
-#### NIST
+##### NIST
 
 - Zero Trust Architecture (SP 800-207)
 - Identity and Access Management Publications
 
-#### Cloud Providers
+##### Cloud Providers
 
 - AWS Zero Trust Guidance
 - Microsoft Zero Trust Documentation
 - Google Cloud Zero Trust Architecture
 
-#### Industry Guidance
+##### Industry Guidance
 
 - Cloud Security Alliance (CSA)
 - Center for Internet Security (CIS)
@@ -1862,7 +1862,7 @@ Zero Trust complements, rather than replaces, other cybersecurity practices.
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -1875,7 +1875,7 @@ Zero Trust complements, rather than replaces, other cybersecurity practices.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - NIST Zero Trust Architecture (SP 800-207)
 - CIS Benchmarks

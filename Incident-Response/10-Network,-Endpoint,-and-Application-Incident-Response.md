@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Modern incidents rarely remain confined to a single technology layer.
 
@@ -62,7 +62,7 @@ Effective incident response therefore requires correlation across:
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 A security team that investigates only one layer may miss the rest of the attack.
 
@@ -91,7 +91,7 @@ Investigating only the WAF alert would produce an incomplete incident.
 
 ---
 
-# Incident Response Layers
+## Incident Response Layers
 
 ```text id="8o5y0j"
                  Enterprise
@@ -115,7 +115,7 @@ Each layer provides different evidence.
 
 ---
 
-# Network Incident Response
+## Network Incident Response
 
 Network incidents involve suspicious or malicious communication across:
 
@@ -131,7 +131,7 @@ Network incidents involve suspicious or malicious communication across:
 
 ---
 
-# Network Incident Categories
+## Network Incident Categories
 
 Common examples:
 
@@ -148,7 +148,7 @@ Common examples:
 
 ---
 
-# Network Investigation Model
+## Network Investigation Model
 
 ```text id="9y9e4v"
 Source
@@ -174,7 +174,7 @@ Identity / Asset
 
 ---
 
-# Network Evidence
+## Network Evidence
 
 Potential sources:
 
@@ -192,7 +192,7 @@ Potential sources:
 
 ---
 
-# Firewall Investigation
+## Firewall Investigation
 
 Firewall logs can help establish:
 
@@ -230,7 +230,7 @@ A single allowed connection does not prove compromise.
 
 ---
 
-# DNS Investigation
+## DNS Investigation
 
 DNS is valuable for identifying:
 
@@ -256,7 +256,7 @@ DNS
 
 ---
 
-# Network Beaconing
+## Network Beaconing
 
 Repeated connections at predictable intervals may indicate automated communication.
 
@@ -282,7 +282,7 @@ Periodic communication can also occur legitimately, so context is essential.
 
 ---
 
-# Network Scanning
+## Network Scanning
 
 Potential indicators:
 
@@ -306,7 +306,7 @@ Investigate whether the source is:
 
 ---
 
-# Lateral Movement
+## Lateral Movement
 
 Network evidence can help identify:
 
@@ -335,7 +335,7 @@ Legitimate administrative traffic must be distinguished from malicious activity.
 
 ---
 
-# Network Containment
+## Network Containment
 
 Potential controls:
 
@@ -352,7 +352,7 @@ Containment should be proportional to the incident.
 
 ---
 
-# DDoS Incidents
+## DDoS Incidents
 
 DDoS incidents primarily target availability.
 
@@ -388,7 +388,7 @@ Coordinate with network providers when required.
 
 ---
 
-# Endpoint Incident Response
+## Endpoint Incident Response
 
 Endpoints include:
 
@@ -402,7 +402,7 @@ Endpoints include:
 
 ---
 
-# Endpoint Incident Categories
+## Endpoint Incident Categories
 
 Examples:
 
@@ -418,7 +418,7 @@ Examples:
 
 ---
 
-# Endpoint Investigation Model
+## Endpoint Investigation Model
 
 ```text id="9x1q2u"
 Host
@@ -434,7 +434,7 @@ Host
 
 ---
 
-# Process Investigation
+## Process Investigation
 
 Analyze:
 
@@ -466,7 +466,7 @@ This process chain should be investigated in context.
 
 ---
 
-# Command-Line Investigation
+## Command-Line Investigation
 
 Command-line telemetry can reveal:
 
@@ -487,7 +487,7 @@ Command lines should be correlated with:
 
 ---
 
-# Endpoint Persistence
+## Endpoint Persistence
 
 Common areas include:
 
@@ -508,7 +508,7 @@ Linux
 
 ---
 
-# Endpoint Containment
+## Endpoint Containment
 
 Potential actions:
 
@@ -522,7 +522,7 @@ Process termination should be considered carefully when evidence preservation ma
 
 ---
 
-# Endpoint Recovery
+## Endpoint Recovery
 
 Recovery may involve:
 
@@ -550,7 +550,7 @@ Production
 
 ---
 
-# Application Incident Response
+## Application Incident Response
 
 Applications are frequently exposed to the Internet and therefore represent a major attack surface.
 
@@ -565,7 +565,7 @@ Examples:
 
 ---
 
-# Application Incident Categories
+## Application Incident Categories
 
 Examples:
 
@@ -582,7 +582,7 @@ Examples:
 
 ---
 
-# Application Investigation Model
+## Application Investigation Model
 
 ```text id="0ip4f1"
 Request
@@ -604,7 +604,7 @@ Trace the attack through each layer.
 
 ---
 
-# Web Application Logs
+## Web Application Logs
 
 Useful fields include:
 
@@ -638,7 +638,7 @@ This may warrant investigation for credential attack activity.
 
 ---
 
-# Request Correlation
+## Request Correlation
 
 Application logs should ideally contain a request or correlation ID.
 
@@ -661,7 +661,7 @@ This allows investigators to trace one transaction across multiple components.
 
 ---
 
-# Web Shell Investigation
+## Web Shell Investigation
 
 A web shell may provide attackers with server-side command execution.
 
@@ -689,7 +689,7 @@ This process relationship can be highly suspicious depending on the application 
 
 ---
 
-# Web Shell Response
+## Web Shell Response
 
 Potential steps:
 
@@ -706,7 +706,7 @@ Potential steps:
 
 ---
 
-# API Incident Response
+## API Incident Response
 
 APIs introduce additional attack surfaces:
 
@@ -720,7 +720,7 @@ APIs introduce additional attack surfaces:
 
 ---
 
-# API Abuse Indicators
+## API Abuse Indicators
 
 Potential indicators:
 
@@ -734,7 +734,7 @@ Potential indicators:
 
 ---
 
-# API Investigation
+## API Investigation
 
 Trace:
 
@@ -767,7 +767,7 @@ Timestamp
 
 ---
 
-# Database Incident Response
+## Database Incident Response
 
 Databases may contain the most sensitive organizational information.
 
@@ -783,7 +783,7 @@ Investigate:
 
 ---
 
-# Database Investigation Model
+## Database Investigation Model
 
 ```text id="9f0c5f"
 Identity
@@ -803,7 +803,7 @@ Result
 
 ---
 
-# Suspicious Database Activity
+## Suspicious Database Activity
 
 Examples:
 
@@ -821,7 +821,7 @@ A legitimate analytics job may generate large queries.
 
 ---
 
-# Database Containment
+## Database Containment
 
 Potential actions:
 
@@ -836,7 +836,7 @@ Avoid destructive changes before evidence requirements are understood.
 
 ---
 
-# Application Secrets
+## Application Secrets
 
 Applications often contain:
 
@@ -864,7 +864,7 @@ Rotate
 
 ---
 
-# CI/CD Incident Response
+## CI/CD Incident Response
 
 A compromised pipeline can become a supply-chain incident.
 
@@ -898,7 +898,7 @@ Production
 
 ---
 
-# CI/CD Containment
+## CI/CD Containment
 
 Potential actions:
 
@@ -911,7 +911,7 @@ Potential actions:
 
 ---
 
-# Network + Endpoint Correlation
+## Network + Endpoint Correlation
 
 Example:
 
@@ -937,7 +937,7 @@ This correlation strengthens the incident hypothesis.
 
 ---
 
-# Endpoint + Application Correlation
+## Endpoint + Application Correlation
 
 Example:
 
@@ -961,7 +961,7 @@ This can reveal application-to-host compromise.
 
 ---
 
-# Application + Database Correlation
+## Application + Database Correlation
 
 ```text id="4kg4b0"
 HTTP Request
@@ -980,7 +980,7 @@ Correlating request and database logs can determine whether an attack resulted i
 
 ---
 
-# Network + Application + Identity
+## Network + Application + Identity
 
 A mature investigation correlates:
 
@@ -1004,7 +1004,7 @@ This produces an end-to-end attack path.
 
 ---
 
-# Incident Correlation Architecture
+## Incident Correlation Architecture
 
 ```text id="6x8c9y"
                    SIEM
@@ -1026,7 +1026,7 @@ This produces an end-to-end attack path.
 
 ---
 
-# Network Containment Decision Matrix
+## Network Containment Decision Matrix
 
 | Condition | Potential Action |
 |---|---|
@@ -1039,7 +1039,7 @@ This produces an end-to-end attack path.
 
 ---
 
-# Endpoint Containment Decision Matrix
+## Endpoint Containment Decision Matrix
 
 | Condition | Potential Action |
 |---|---|
@@ -1051,7 +1051,7 @@ This produces an end-to-end attack path.
 
 ---
 
-# Application Containment Decision Matrix
+## Application Containment Decision Matrix
 
 | Condition | Potential Action |
 |---|---|
@@ -1064,115 +1064,115 @@ This produces an end-to-end attack path.
 
 ---
 
-# Common Network Incident Mistakes
+## Common Network Incident Mistakes
 
-## 1. Blocking Only One IP
+### 1. Blocking Only One IP
 
 Attackers can change infrastructure.
 
-## 2. Ignoring Internal Traffic
+### 2. Ignoring Internal Traffic
 
 Lateral movement often occurs internally.
 
-## 3. Ignoring DNS
+### 3. Ignoring DNS
 
 DNS can provide important C2 evidence.
 
-## 4. Blocking Critical Infrastructure Without Coordination
+### 4. Blocking Critical Infrastructure Without Coordination
 
 Containment can create outages.
 
-## 5. Assuming Encrypted Traffic Is Invisible
+### 5. Assuming Encrypted Traffic Is Invisible
 
 Metadata can remain valuable.
 
 ---
 
-# Common Endpoint Incident Mistakes
+## Common Endpoint Incident Mistakes
 
-## 1. Killing the Process Immediately
+### 1. Killing the Process Immediately
 
 Evidence may be lost.
 
-## 2. Rebooting Before Evidence Collection
+### 2. Rebooting Before Evidence Collection
 
 Volatile evidence may disappear.
 
-## 3. Ignoring Parent Processes
+### 3. Ignoring Parent Processes
 
 Process lineage provides important context.
 
-## 4. Ignoring Persistence
+### 4. Ignoring Persistence
 
 Malware may return.
 
-## 5. Rebuilding Without Understanding Root Cause
+### 5. Rebuilding Without Understanding Root Cause
 
 Other systems may remain compromised.
 
 ---
 
-# Common Application Incident Mistakes
+## Common Application Incident Mistakes
 
-## 1. Looking Only at WAF Alerts
+### 1. Looking Only at WAF Alerts
 
 The application and host may also be compromised.
 
-## 2. Ignoring Database Logs
+### 2. Ignoring Database Logs
 
 Data impact may be missed.
 
-## 3. Deleting Suspicious Files
+### 3. Deleting Suspicious Files
 
 Evidence may be destroyed.
 
-## 4. Rotating One Secret
+### 4. Rotating One Secret
 
 Other application secrets may remain exposed.
 
-## 5. Ignoring CI/CD
+### 5. Ignoring CI/CD
 
 The attacker may have modified the software supply chain.
 
 ---
 
-# Common Misconfigurations
+## Common Misconfigurations
 
-### No Centralized Logging
+#### No Centralized Logging
 
 Makes cross-layer correlation difficult.
 
-### No Request IDs
+#### No Request IDs
 
 Makes application tracing harder.
 
-### Short Log Retention
+#### Short Log Retention
 
 Historical evidence disappears.
 
-### No EDR
+#### No EDR
 
 Endpoint visibility is limited.
 
-### Flat Network
+#### Flat Network
 
 Lateral movement becomes easier.
 
-### Excessive Application Privileges
+#### Excessive Application Privileges
 
 Compromise has greater impact.
 
-### Secrets in Source Code
+#### Secrets in Source Code
 
 Credential exposure becomes easier.
 
-### No Database Auditing
+#### No Database Auditing
 
 Data access cannot be reconstructed reliably.
 
 ---
 
-# Detection Strategy
+## Detection Strategy
 
 A mature architecture should correlate:
 
@@ -1208,32 +1208,32 @@ Identity
 
 ---
 
-# Practical Commands
+## Practical Commands
 
 These commands are intended for authorized defensive investigation.
 
-## Windows
+### Windows
 
-### Network Connections
+#### Network Connections
 
 ```powershell id="rqj8c8"
 Get-NetTCPConnection
 ```
 
-### Processes
+#### Processes
 
 ```powershell id="2kv0k5"
 Get-Process
 ```
 
-### Process Details
+#### Process Details
 
 ```powershell id="e9f5ti"
 Get-CimInstance Win32_Process |
 Select-Object ProcessId, ParentProcessId, Name, CommandLine
 ```
 
-### DNS Cache
+#### DNS Cache
 
 ```powershell id="qg2gqj"
 Get-DnsClientCache
@@ -1241,27 +1241,27 @@ Get-DnsClientCache
 
 ---
 
-# Linux
+## Linux
 
-### Network Connections
+#### Network Connections
 
 ```bash id="nq6rji"
 ss -tunap
 ```
 
-### Processes
+#### Processes
 
 ```bash id="y8d4u7"
 ps aux
 ```
 
-### Listening Services
+#### Listening Services
 
 ```bash id="7xk8w2"
 ss -lntup
 ```
 
-### DNS Resolution
+#### DNS Resolution
 
 ```bash id="v7p3lk"
 dig example.com
@@ -1269,7 +1269,7 @@ dig example.com
 
 ---
 
-# Web Server Investigation
+## Web Server Investigation
 
 For Apache/Nginx environments, locate configured access/error logs according to the deployment.
 
@@ -1290,11 +1290,11 @@ Search carefully for:
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-# Lab — Multi-Layer Web Application Incident
+## Lab — Multi-Layer Web Application Incident
 
-## Scenario
+### Scenario
 
 The SOC receives a WAF alert:
 
@@ -1320,7 +1320,7 @@ The application also accesses a sensitive database.
 
 ---
 
-# Task 1 — Investigate the Network
+## Task 1 — Investigate the Network
 
 Determine:
 
@@ -1335,7 +1335,7 @@ Frequency
 
 ---
 
-# Task 2 — Investigate the Endpoint
+## Task 2 — Investigate the Endpoint
 
 Determine:
 
@@ -1351,7 +1351,7 @@ Persistence
 
 ---
 
-# Task 3 — Investigate the Application
+## Task 3 — Investigate the Application
 
 Search:
 
@@ -1367,7 +1367,7 @@ Status
 
 ---
 
-# Task 4 — Investigate the Database
+## Task 4 — Investigate the Database
 
 Determine:
 
@@ -1382,7 +1382,7 @@ Export
 
 ---
 
-# Task 5 — Determine Impact
+## Task 5 — Determine Impact
 
 Answer:
 
@@ -1396,7 +1396,7 @@ Was data exfiltrated?
 
 ---
 
-# Task 6 — Containment
+## Task 6 — Containment
 
 Design controls for:
 
@@ -1410,7 +1410,7 @@ Identity
 
 ---
 
-# Expected Attack Chain
+## Expected Attack Chain
 
 ```text id="g8l7o8"
 Internet
@@ -1437,9 +1437,9 @@ Shell / Malicious Process
 
 ---
 
-# Advanced Lab — API Compromise
+## Advanced Lab — API Compromise
 
-## Scenario
+### Scenario
 
 An API begins generating unusual traffic.
 
@@ -1467,7 +1467,7 @@ Investigate:
 
 ---
 
-# Professional Network Incident Record
+## Professional Network Incident Record
 
 ```text id="n8f7e1"
 Incident ID:
@@ -1512,9 +1512,9 @@ ________________________
 
 ---
 
-# Multi-Layer Investigation Checklist
+## Multi-Layer Investigation Checklist
 
-## Network
+### Network
 
 ```text id="6c4z7p"
 [ ] Source identified
@@ -1526,7 +1526,7 @@ ________________________
 [ ] Network scope assessed
 ```
 
-## Endpoint
+### Endpoint
 
 ```text id="p5j2pr"
 [ ] Process tree reviewed
@@ -1537,7 +1537,7 @@ ________________________
 [ ] Credentials assessed
 ```
 
-## Application
+### Application
 
 ```text id="n7h1j3"
 [ ] Request identified
@@ -1548,7 +1548,7 @@ ________________________
 [ ] Host relationship established
 ```
 
-## Database
+### Database
 
 ```text id="f0o9lq"
 [ ] Account identified
@@ -1560,34 +1560,34 @@ ________________________
 
 ---
 
-# Maturity Model
+## Maturity Model
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 - Individual log investigation
 - Manual endpoint response
 - Limited application visibility
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Centralized logs
 - EDR
 - Standard application response
 
-## Level 3 — Defined
+### Level 3 — Defined
 
 - Cross-layer correlation
 - Request IDs
 - Network segmentation
 - Database auditing
 
-## Level 4 — Measured
+### Level 4 — Measured
 
 - Detection coverage
 - Response metrics
 - Attack-path analysis
 
-## Level 5 — Optimized
+### Level 5 — Optimized
 
 - Automated correlation
 - Identity-aware detection
@@ -1596,39 +1596,39 @@ ________________________
 
 ---
 
-# Metrics
+## Metrics
 
-### Network MTTD
+#### Network MTTD
 
 Time to detect suspicious network activity.
 
-### Endpoint MTTC
+#### Endpoint MTTC
 
 Time to contain a compromised endpoint.
 
-### Application Detection Coverage
+#### Application Detection Coverage
 
 Percentage of critical applications with sufficient security telemetry.
 
-### Cross-Layer Correlation Rate
+#### Cross-Layer Correlation Rate
 
 Percentage of incidents where network, endpoint, identity, and application evidence can be correlated.
 
-### Recovery Validation Rate
+#### Recovery Validation Rate
 
 Percentage of recovered systems passing security validation.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. Why should network and endpoint evidence be correlated?
+### 1. Why should network and endpoint evidence be correlated?
 
 Because network telemetry identifies communication while endpoint telemetry can identify the process responsible for that communication.
 
 ---
 
-## 2. How would you investigate a web server compromise?
+### 2. How would you investigate a web server compromise?
 
 ```text id="o1p4os"
 WAF
@@ -1648,13 +1648,13 @@ Database
 
 ---
 
-## 3. What is a web shell?
+### 3. What is a web shell?
 
 A malicious server-side component that provides unauthorized command or functionality to an attacker.
 
 ---
 
-## 4. What would indicate a possible web shell?
+### 4. What would indicate a possible web shell?
 
 Examples include:
 
@@ -1665,13 +1665,13 @@ Examples include:
 
 ---
 
-## 5. Why are request IDs useful?
+### 5. Why are request IDs useful?
 
 They allow investigators to correlate a single application request across multiple services.
 
 ---
 
-## 6. How would you investigate an API abuse incident?
+### 6. How would you investigate an API abuse incident?
 
 Correlate:
 
@@ -1693,7 +1693,7 @@ Database
 
 ---
 
-## 7. How would you investigate database compromise?
+### 7. How would you investigate database compromise?
 
 Review:
 
@@ -1706,31 +1706,31 @@ Review:
 
 ---
 
-## 8. Why is a WAF alert not sufficient to determine compromise?
+### 8. Why is a WAF alert not sufficient to determine compromise?
 
 A WAF can identify suspicious requests, but it does not necessarily establish whether the application was successfully exploited or whether the host and database were affected.
 
 ---
 
-## 9. What is cross-layer correlation?
+### 9. What is cross-layer correlation?
 
 Connecting evidence from multiple infrastructure layers to reconstruct an end-to-end attack.
 
 ---
 
-## 10. Why are application secrets important?
+### 10. Why are application secrets important?
 
 Application compromise may expose credentials that allow attackers to access databases, APIs, cloud infrastructure, or other systems.
 
 ---
 
-## 11. How can CI/CD become part of an incident?
+### 11. How can CI/CD become part of an incident?
 
 An attacker may compromise source repositories, build systems, runners, artifacts, or deployment credentials and use them to introduce malicious changes into production.
 
 ---
 
-## 12. How would you respond to suspicious outbound traffic from a web server?
+### 12. How would you respond to suspicious outbound traffic from a web server?
 
 ```text id="4i6w1m"
 Identify Process
@@ -1750,7 +1750,7 @@ Scope Environment
 
 ---
 
-# Integration With Threat Hunting
+## Integration With Threat Hunting
 
 Network and application incidents provide excellent hunt opportunities.
 
@@ -1774,7 +1774,7 @@ Potential Campaign
 
 ---
 
-# Integration With Detection Engineering
+## Integration With Detection Engineering
 
 Investigation findings can produce detections such as:
 
@@ -1787,7 +1787,7 @@ Investigation findings can produce detections such as:
 
 ---
 
-# Enterprise Incident Response Architecture
+## Enterprise Incident Response Architecture
 
 ```text id="o7k4qf"
                          Internet
@@ -1822,7 +1822,7 @@ Investigation findings can produce detections such as:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Network, endpoint, and application incidents must be investigated as interconnected events.
 
@@ -1868,9 +1868,9 @@ The most important principles are:
 
 ---
 
-# References
+## References
 
-### NIST
+#### NIST
 
 Computer Security Incident Handling Guide:
 
@@ -1880,11 +1880,11 @@ Guide to Integrating Forensic Techniques:
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### CISA
+#### CISA
 
 https://www.cisa.gov/
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 Network Service Scanning:
 
@@ -1898,7 +1898,7 @@ Exfiltration:
 
 https://attack.mitre.org/tactics/TA0010/
 
-### OWASP
+#### OWASP
 
 Web Security:
 
@@ -1908,21 +1908,21 @@ API Security:
 
 https://owasp.org/www-project-api-security/
 
-### CIS Controls
+#### CIS Controls
 
 https://www.cisecurity.org/controls
 
-### FIRST
+#### FIRST
 
 https://www.first.org/
 
-### SANS
+#### SANS
 
 https://www.sans.org/
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 A complete incident investigation should connect:
 

@@ -23,7 +23,7 @@ These components form the foundation of every containerized application.
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Every container operation depends on one or more of these components.
 
@@ -47,7 +47,7 @@ A clear understanding of these components enables you to:
 
 ---
 
-# High-Level Container Components
+## High-Level Container Components
 
 ```
                  Container Image
@@ -87,7 +87,7 @@ Each component contributes to the lifecycle and operation of a container.
 
 ---
 
-# Component 1 – Container Image
+## Component 1 – Container Image
 
 A **container image** is an immutable, read-only template used to create containers.
 
@@ -102,7 +102,7 @@ It contains:
 
 Think of an image as a blueprint or template from which one or more containers can be created.
 
-### Characteristics
+#### Characteristics
 
 - Read-only
 - Immutable
@@ -134,7 +134,7 @@ Final Image
 
 ---
 
-# Component 2 – Container
+## Component 2 – Container
 
 A **container** is a running instance of an image.
 
@@ -170,7 +170,7 @@ Multiple containers can be created from the same image.
 
 ---
 
-# Component 3 – Container Registry
+## Component 3 – Container Registry
 
 A **container registry** stores and distributes container images.
 
@@ -217,7 +217,7 @@ Registries simplify image sharing, versioning, and deployment.
 
 ---
 
-# Component 4 – Image Layers
+## Component 4 – Image Layers
 
 Container images consist of multiple stacked layers.
 
@@ -250,7 +250,7 @@ The final image combines these layers into a unified view.
 
 ---
 
-# Component 5 – Container Runtime
+## Component 5 – Container Runtime
 
 The runtime is responsible for executing and managing containers.
 
@@ -276,7 +276,7 @@ The runtime acts as the execution engine for containers.
 
 ---
 
-# Component 6 – Volumes
+## Component 6 – Volumes
 
 Volumes provide persistent storage for containers.
 
@@ -316,7 +316,7 @@ Common use cases:
 
 ---
 
-# Component 7 – Networks
+## Component 7 – Networks
 
 Container networks enable communication between containers and external systems.
 
@@ -346,7 +346,7 @@ Networking provides service discovery, routing, and secure communication.
 
 ---
 
-# Component 8 – Linux Namespaces
+## Component 8 – Linux Namespaces
 
 Namespaces isolate system resources between containers.
 
@@ -383,7 +383,7 @@ Each container has its own isolated environment.
 
 ---
 
-# Component 9 – Control Groups (cgroups)
+## Component 9 – Control Groups (cgroups)
 
 Control Groups (cgroups) manage resource allocation.
 
@@ -421,7 +421,7 @@ cgroups prevent resource exhaustion by enforcing limits.
 
 ---
 
-# Component 10 – Init Process
+## Component 10 – Init Process
 
 Every running container starts with a primary process.
 
@@ -446,7 +446,7 @@ If PID 1 exits, the container stops unless restarted by an external controller.
 
 ---
 
-# Relationship Between Components
+## Relationship Between Components
 
 ```
 Dockerfile
@@ -498,9 +498,9 @@ Each component builds upon the previous one to create a complete containerized e
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-## Immutable Images
+### Immutable Images
 
 Images are never modified after creation.
 
@@ -512,7 +512,7 @@ To update an application:
 
 ---
 
-## Ephemeral Containers
+### Ephemeral Containers
 
 Containers are designed to be temporary.
 
@@ -520,13 +520,13 @@ Persistent data should always be stored outside the writable container layer.
 
 ---
 
-## Layer Reuse
+### Layer Reuse
 
 Multiple images can reuse common base layers, reducing storage requirements and improving build performance.
 
 ---
 
-## Isolation
+### Isolation
 
 Containers isolate:
 
@@ -540,7 +540,7 @@ This isolation enables multiple applications to run safely on the same host.
 
 ---
 
-## Portability
+### Portability
 
 Images built on one compatible environment can be deployed consistently across:
 
@@ -552,7 +552,7 @@ Images built on one compatible environment can be deployed consistently across:
 
 ---
 
-## Component Dependencies
+### Component Dependencies
 
 Most container components depend on one another.
 
@@ -569,7 +569,7 @@ Understanding these relationships simplifies troubleshooting and architecture de
 
 ---
 
-## How It Works
+### How It Works
 
 Every container is created by combining several core components that work together in a defined sequence. A container does not start by itself—it begins as application source code, is packaged into an image, stored in a registry, executed by a container runtime, and finally runs as an isolated process on the host operating system.
 
@@ -577,7 +577,7 @@ Understanding how these components interact makes it much easier to troubleshoot
 
 ---
 
-# Container Component Workflow
+## Container Component Workflow
 
 ```
 Application Source Code
@@ -635,7 +635,7 @@ Each component performs a specific function before the application becomes opera
 
 ---
 
-## Step 1 – Create the Application
+### Step 1 – Create the Application
 
 The process begins with application source code.
 
@@ -660,7 +660,7 @@ These requirements are documented in a Dockerfile.
 
 ---
 
-## Step 2 – Build the Image
+### Step 2 – Build the Image
 
 The Docker Engine reads the Dockerfile and builds a container image.
 
@@ -700,7 +700,7 @@ The completed image is immutable and ready for deployment.
 
 ---
 
-## Step 3 – Store the Image
+### Step 3 – Store the Image
 
 The image can be stored locally or pushed to a registry.
 
@@ -728,7 +728,7 @@ Registries allow teams to distribute standardized application images securely.
 
 ---
 
-## Step 4 – Pull the Image
+### Step 4 – Pull the Image
 
 When a container is launched, the runtime checks whether the image exists locally.
 
@@ -766,7 +766,7 @@ This ensures that the correct image version is available.
 
 ---
 
-## Step 5 – Create the Container
+### Step 5 – Create the Container
 
 The runtime creates a new container using the image.
 
@@ -783,7 +783,7 @@ The image itself remains unchanged.
 
 ---
 
-## Step 6 – Apply Namespaces
+### Step 6 – Apply Namespaces
 
 Namespaces isolate container resources.
 
@@ -822,7 +822,7 @@ Although both containers contain a process with PID 1, they operate independentl
 
 ---
 
-## Step 7 – Apply cgroups
+### Step 7 – Apply cgroups
 
 Control Groups (cgroups) limit resource consumption.
 
@@ -847,7 +847,7 @@ Without these limits, one workload could negatively impact others running on the
 
 ---
 
-## Step 8 – Configure Networking
+### Step 8 – Configure Networking
 
 Every container receives network connectivity.
 
@@ -883,7 +883,7 @@ Containers can communicate securely through container networks.
 
 ---
 
-## Step 9 – Mount Volumes
+### Step 9 – Mount Volumes
 
 If persistent storage is required:
 
@@ -909,7 +909,7 @@ Without a volume, application data stored inside the writable layer is lost when
 
 ---
 
-## Step 10 – Start the Main Process
+### Step 10 – Start the Main Process
 
 Finally, the runtime launches the application.
 
@@ -931,9 +931,9 @@ The container remains active while its primary process continues running.
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Running a Web Server
+### Example 1 – Running a Web Server
 
 A developer builds an Nginx image.
 
@@ -972,7 +972,7 @@ The same image can run consistently on:
 
 ---
 
-## Example 2 – Shared Base Images
+### Example 2 – Shared Base Images
 
 Three applications use Ubuntu as the base image.
 
@@ -994,7 +994,7 @@ The shared base layer saves disk space and speeds up downloads.
 
 ---
 
-## Example 3 – Persistent Database
+### Example 3 – Persistent Database
 
 A PostgreSQL container uses a Docker volume.
 
@@ -1014,7 +1014,7 @@ Even if the container is replaced, the database remains intact.
 
 ---
 
-## Example 4 – Multiple Containers
+### Example 4 – Multiple Containers
 
 A microservices application consists of:
 
@@ -1041,9 +1041,9 @@ Benefits:
 
 ---
 
-# Hands-on Commands
+## Hands-on Commands
 
-## List Local Images
+### List Local Images
 
 ```bash
 docker images
@@ -1053,7 +1053,7 @@ Displays all locally available container images.
 
 ---
 
-## Pull an Image
+### Pull an Image
 
 ```bash
 docker pull ubuntu
@@ -1063,7 +1063,7 @@ Downloads the Ubuntu image from a registry.
 
 ---
 
-## Run a Container
+### Run a Container
 
 ```bash
 docker run ubuntu
@@ -1073,7 +1073,7 @@ Creates and starts a container from the Ubuntu image.
 
 ---
 
-## Run an Interactive Shell
+### Run an Interactive Shell
 
 ```bash
 docker run -it ubuntu bash
@@ -1083,7 +1083,7 @@ Starts a container and opens a Bash shell inside it.
 
 ---
 
-## View Running Containers
+### View Running Containers
 
 ```bash
 docker ps
@@ -1093,7 +1093,7 @@ Shows active containers.
 
 ---
 
-## Inspect a Container
+### Inspect a Container
 
 ```bash
 docker inspect <container_name>
@@ -1109,7 +1109,7 @@ Displays:
 
 ---
 
-## View Mounted Volumes
+### View Mounted Volumes
 
 ```bash
 docker inspect <container_name>
@@ -1119,7 +1119,7 @@ Review the **Mounts** section to identify attached volumes.
 
 ---
 
-## View Network Information
+### View Network Information
 
 ```bash
 docker network ls
@@ -1129,7 +1129,7 @@ Lists all Docker networks.
 
 ---
 
-## Display Volume Information
+### Display Volume Information
 
 ```bash
 docker volume ls
@@ -1139,7 +1139,7 @@ Lists Docker-managed volumes.
 
 ---
 
-## View Running Processes
+### View Running Processes
 
 ```bash
 docker top <container_name>
@@ -1149,9 +1149,9 @@ Displays the process tree inside a container.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Understand Every Component
+#### 1. Understand Every Component
 
 Do not think of a container as a single object.
 
@@ -1169,7 +1169,7 @@ work together.
 
 ---
 
-### 2. Use Official Images
+#### 2. Use Official Images
 
 Prefer trusted, verified images from reputable publishers.
 
@@ -1177,25 +1177,25 @@ Avoid unknown or unmaintained images.
 
 ---
 
-### 3. Reuse Image Layers
+#### 3. Reuse Image Layers
 
 Structure Dockerfiles to maximize layer caching and reduce build times.
 
 ---
 
-### 4. Store Persistent Data Outside Containers
+#### 4. Store Persistent Data Outside Containers
 
 Use volumes or external storage for any data that must survive container replacement.
 
 ---
 
-### 5. Apply Resource Limits
+#### 5. Apply Resource Limits
 
 Configure CPU and memory limits to improve host stability and workload isolation.
 
 ---
 
-### 6. Use Versioned Images
+#### 6. Use Versioned Images
 
 Avoid relying solely on the `latest` tag.
 
@@ -1203,19 +1203,19 @@ Use explicit version numbers for predictable deployments.
 
 ---
 
-### 7. Understand Component Relationships
+#### 7. Understand Component Relationships
 
 Troubleshooting becomes much easier when you understand how each container component depends on the others.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Container components work together as an integrated ecosystem. Misunderstanding the role of any single component can lead to deployment failures, security weaknesses, performance issues, or data loss. The following are some of the most common mistakes engineers make when working with container components.
 
 ---
 
-### 1. Confusing Images and Containers
+#### 1. Confusing Images and Containers
 
 A common misconception is treating an image and a container as the same thing.
 
@@ -1256,7 +1256,7 @@ Think of an image as a **class** in programming and a container as an **object (
 
 ---
 
-### 2. Assuming Data Is Stored in the Image
+#### 2. Assuming Data Is Stored in the Image
 
 Images do **not** store runtime data.
 
@@ -1292,7 +1292,7 @@ Persistent data belongs in **volumes**, not images.
 
 ---
 
-### 3. Ignoring Image Layers
+#### 3. Ignoring Image Layers
 
 Every Dockerfile instruction typically creates a new image layer.
 
@@ -1307,7 +1307,7 @@ Optimize Dockerfiles to reuse layers effectively.
 
 ---
 
-### 4. Treating the Writable Layer as Permanent Storage
+#### 4. Treating the Writable Layer as Permanent Storage
 
 The writable layer exists only for the lifetime of the container.
 
@@ -1334,7 +1334,7 @@ for persistent information.
 
 ---
 
-### 5. Using Public Registries Without Verification
+#### 5. Using Public Registries Without Verification
 
 Downloading arbitrary images from public registries can introduce:
 
@@ -1351,7 +1351,7 @@ Always:
 
 ---
 
-### 6. Ignoring the Container Runtime
+#### 6. Ignoring the Container Runtime
 
 Many engineers interact only with the Docker CLI and overlook the runtime responsible for executing containers.
 
@@ -1365,7 +1365,7 @@ is especially important when working with Kubernetes.
 
 ---
 
-### 7. Misunderstanding Namespaces
+#### 7. Misunderstanding Namespaces
 
 Without namespaces, containers would not have isolated:
 
@@ -1379,7 +1379,7 @@ Namespaces are fundamental to container isolation and should not be viewed as op
 
 ---
 
-### 8. Not Configuring Resource Limits
+#### 8. Not Configuring Resource Limits
 
 Failing to configure cgroups may allow one container to consume excessive:
 
@@ -1392,7 +1392,7 @@ This can degrade performance for other workloads on the same host.
 
 ---
 
-### 9. Overlooking Network Configuration
+#### 9. Overlooking Network Configuration
 
 Common networking mistakes include:
 
@@ -1406,7 +1406,7 @@ A solid understanding of container networking is essential for reliable deployme
 
 ---
 
-### 10. Running Multiple Unrelated Services in One Container
+#### 10. Running Multiple Unrelated Services in One Container
 
 Example:
 
@@ -1436,7 +1436,7 @@ Deploy independent services in separate containers.
 
 ---
 
-### 11. Forgetting That Containers Are Ephemeral
+#### 11. Forgetting That Containers Are Ephemeral
 
 Containers are designed to be disposable.
 
@@ -1462,7 +1462,7 @@ Avoid repairing running containers manually.
 
 ---
 
-### 12. Ignoring Image Updates
+#### 12. Ignoring Image Updates
 
 Container images age over time.
 
@@ -1476,7 +1476,7 @@ Rebuild and redeploy images regularly using updated base images.
 
 ---
 
-### 13. Misusing Environment Variables
+#### 13. Misusing Environment Variables
 
 Environment variables are convenient for configuration, but they are **not** suitable for storing sensitive information such as:
 
@@ -1489,7 +1489,7 @@ Use a dedicated secrets management solution for sensitive data.
 
 ---
 
-### 14. Believing Components Work Independently
+#### 14. Believing Components Work Independently
 
 Container components depend on each other.
 
@@ -1527,7 +1527,7 @@ Understanding these relationships simplifies debugging and system design.
 
 ---
 
-### 15. Memorizing Commands Without Understanding Components
+#### 15. Memorizing Commands Without Understanding Components
 
 Many engineers memorize commands such as:
 
@@ -1555,7 +1555,7 @@ Conceptual understanding is far more valuable than memorizing commands alone.
 
 ---
 
-# Container Components Checklist
+## Container Components Checklist
 
 | Component | Status |
 |-----------|:------:|
@@ -1577,9 +1577,9 @@ Conceptual understanding is far more valuable than memorizing commands alone.
 
 ---
 
-# References
+## References
 
-## OCI Standards
+### OCI Standards
 
 - Open Container Initiative (OCI) Image Specification
 - Open Container Initiative (OCI) Runtime Specification
@@ -1587,7 +1587,7 @@ Conceptual understanding is far more valuable than memorizing commands alone.
 
 ---
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker Engine
 - Docker CLI
@@ -1598,7 +1598,7 @@ Conceptual understanding is far more valuable than memorizing commands alone.
 
 ---
 
-## Linux Documentation
+### Linux Documentation
 
 - Linux Namespaces
 - Linux cgroups
@@ -1607,7 +1607,7 @@ Conceptual understanding is far more valuable than memorizing commands alone.
 
 ---
 
-## Container Runtimes
+### Container Runtimes
 
 - containerd
 - CRI-O
@@ -1616,7 +1616,7 @@ Conceptual understanding is far more valuable than memorizing commands alone.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Documentation
 - Cloud Native Computing Foundation (CNCF)
@@ -1624,7 +1624,7 @@ Conceptual understanding is far more valuable than memorizing commands alone.
 
 ---
 
-## Security Resources
+### Security Resources
 
 - NIST SP 800-190 — Application Container Security Guide
 - OWASP Docker Security Cheat Sheet
@@ -1634,7 +1634,7 @@ Conceptual understanding is far more valuable than memorizing commands alone.
 
 ---
 
-## Books
+### Books
 
 - *Docker Deep Dive* — Nigel Poulton
 - *Container Security* — Liz Rice
@@ -1643,7 +1643,7 @@ Conceptual understanding is far more valuable than memorizing commands alone.
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Kubernetes Official Documentation

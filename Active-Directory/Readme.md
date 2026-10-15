@@ -14,8 +14,7 @@ Whether you are preparing for interviews, managing enterprise infrastructure, or
 
 ---
 
-# 🎯 Objectives
-
+## 🎯 Objectives
 By completing this handbook, you will be able to:
 
 * Understand Active Directory architecture and components.
@@ -32,8 +31,7 @@ By completing this handbook, you will be able to:
 
 ---
 
-# 👥 Intended Audience
-
+## 👥 Intended Audience
 This handbook is suitable for:
 
 * Students
@@ -56,8 +54,7 @@ This handbook is suitable for:
 
 ---
 
-# 📚 Prerequisites
-
+## 📚 Prerequisites
 To get the most from this handbook, you should have basic knowledge of:
 
 * Windows Operating System
@@ -73,8 +70,7 @@ No prior Active Directory experience is required.
 
 ---
 
-# 📂 Repository Structure
-
+## 📂 Repository Structure
 ```text
 Active-Directory/
 
@@ -111,8 +107,7 @@ Resources.md
 
 ---
 
-# 📖 Learning Path
-
+## 📖 Learning Path
 The handbook follows a structured progression:
 
 ### 🟢 Beginner
@@ -169,8 +164,7 @@ The handbook follows a structured progression:
 
 ---
 
-# 📘 Topics Covered
-
+## 📘 Topics Covered
 This handbook includes comprehensive coverage of:
 
 * Active Directory Fundamentals
@@ -209,8 +203,7 @@ This handbook includes comprehensive coverage of:
 
 ---
 
-# 🧪 Hands-on Learning
-
+## 🧪 Hands-on Learning
 Throughout the handbook you will find:
 
 * Enterprise examples
@@ -229,8 +222,7 @@ Throughout the handbook you will find:
 
 ---
 
-# 🔐 Security Focus
-
+## 🔐 Security Focus
 A dedicated emphasis is placed on securing enterprise Active Directory environments, including:
 
 * Least Privilege
@@ -251,8 +243,7 @@ A dedicated emphasis is placed on securing enterprise Active Directory environme
 
 ---
 
-# 💼 Enterprise Skills You'll Build
-
+## 💼 Enterprise Skills You'll Build
 After completing this handbook, you'll be able to:
 
 * Deploy Active Directory
@@ -270,8 +261,7 @@ After completing this handbook, you'll be able to:
 
 ---
 
-# 🎯 Career Paths
-
+## 🎯 Career Paths
 This handbook supports careers such as:
 
 * Windows Administrator
@@ -289,8 +279,7 @@ This handbook supports careers such as:
 
 ---
 
-# ⭐ Key Features
-
+## ⭐ Key Features
 * Beginner → Expert progression
 * Enterprise-focused content
 * Cybersecurity-oriented approach
@@ -306,8 +295,7 @@ This handbook supports careers such as:
 
 ---
 
-# 📚 Recommended Learning Order
-
+## 📚 Recommended Learning Order
 1. Complete chapters sequentially.
 2. Build a virtual Active Directory lab.
 3. Practice each administrative task.
@@ -321,16 +309,14 @@ This handbook supports careers such as:
 
 ---
 
-# ⚠️ Ethical Use
-
+## ⚠️ Ethical Use
 This handbook discusses Active Directory attack techniques for educational, defensive, and authorized security assessment purposes only.
 
 Always perform testing in environments that you own or where you have explicit permission. Unauthorized access, exploitation, or misuse of these techniques may violate organizational policies and applicable laws.
 
 ---
 
-# 🤝 Contributing
-
+## 🤝 Contributing
 Contributions are welcome.
 
 You can contribute by:
@@ -348,16 +334,14 @@ Please ensure contributions are accurate, well-documented, and aligned with ente
 
 ---
 
-# 📜 License
-
+## 📜 License
 This repository is intended for educational and professional learning purposes.
 
 Review the repository's license before reusing or redistributing its contents.
 
 ---
 
-# 🚀 Final Goal
-
+## 🚀 Final Goal
 The objective of this handbook is not only to teach Active Directory but to help you think like an enterprise administrator and security professional.
 
 By the end of this journey, you should be able to confidently design, administer, troubleshoot, secure, monitor, and defend enterprise Active Directory environments while being well-prepared for real-world infrastructure and cybersecurity roles.

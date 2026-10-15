@@ -1,10 +1,10 @@
 # 08-Group-Policy-Basics.md
 
-# Part 1 — Introduction to Group Policy, Architecture, Components, and Enterprise Fundamentals
+## Part 1 — Introduction to Group Policy, Architecture, Components, and Enterprise Fundamentals
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -18,7 +18,7 @@ After completing this part, you will be able to:
 
 ---
 
-# What is Group Policy?
+## What is Group Policy?
 
 **Group Policy** is Microsoft's centralized management framework that allows administrators to configure and enforce settings for:
 
@@ -34,7 +34,7 @@ Instead of configuring every computer manually, administrators configure policie
 
 ---
 
-# Why Does Group Policy Exist?
+## Why Does Group Policy Exist?
 
 Imagine an organization with:
 
@@ -78,7 +78,7 @@ This approach is:
 
 ---
 
-# Group Policy Solution
+## Group Policy Solution
 
 Using Group Policy:
 
@@ -106,7 +106,7 @@ One configuration can be applied across thousands of devices.
 
 ---
 
-# Real-World Analogy
+## Real-World Analogy
 
 Imagine a school.
 
@@ -130,7 +130,7 @@ Group Policy works similarly in enterprise IT.
 
 ---
 
-# What Can Group Policy Manage?
+## What Can Group Policy Manage?
 
 Group Policy can configure:
 
@@ -156,7 +156,7 @@ Hundreds of thousands of configurable settings are available through Administrat
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -187,7 +187,7 @@ Group Policy applies these settings automatically to the correct users and compu
 
 ---
 
-# What is a Group Policy Object (GPO)?
+## What is a Group Policy Object (GPO)?
 
 A **Group Policy Object (GPO)** is a collection of configuration settings that can be linked to:
 
@@ -215,7 +215,7 @@ Finance Computers
 
 ---
 
-# Components of a GPO
+## Components of a GPO
 
 Every GPO consists of two major components:
 
@@ -233,7 +233,7 @@ These work together to store configuration and policy data.
 
 ---
 
-# Group Policy Container (GPC)
+## Group Policy Container (GPC)
 
 The **Group Policy Container (GPC)** is stored inside Active Directory.
 
@@ -249,7 +249,7 @@ The GPC is replicated through Active Directory replication.
 
 ---
 
-# Group Policy Template (GPT)
+## Group Policy Template (GPT)
 
 The **Group Policy Template (GPT)** is stored inside the **SYSVOL** folder on Domain Controllers.
 
@@ -265,7 +265,7 @@ The GPT is replicated using DFS Replication (DFSR) in modern environments.
 
 ---
 
-# GPC and GPT Together
+## GPC and GPT Together
 
 ```text
 Group Policy Object
@@ -287,7 +287,7 @@ Both components are required for a functioning GPO.
 
 ---
 
-# Group Policy Storage
+## Group Policy Storage
 
 Simplified architecture:
 
@@ -327,7 +327,7 @@ Clients retrieve both components during policy processing.
 
 ---
 
-# Local Group Policy
+## Local Group Policy
 
 Every Windows computer includes a **Local Group Policy**.
 
@@ -340,7 +340,7 @@ Characteristics:
 
 ---
 
-# Domain Group Policy
+## Domain Group Policy
 
 When a computer joins an Active Directory domain:
 
@@ -360,7 +360,7 @@ Domain-based policies can supplement or override local settings depending on pro
 
 ---
 
-# Group Policy Architecture
+## Group Policy Architecture
 
 ```text
 Administrator
@@ -394,7 +394,7 @@ This centralized architecture enables consistent configuration across the enterp
 
 ---
 
-# User Configuration vs Computer Configuration
+## User Configuration vs Computer Configuration
 
 Every GPO contains two main sections.
 
@@ -410,7 +410,7 @@ Group Policy
 
 ---
 
-# Computer Configuration
+## Computer Configuration
 
 Applies to the **computer** regardless of who signs in.
 
@@ -427,7 +427,7 @@ Applied during computer startup and periodic refresh.
 
 ---
 
-# User Configuration
+## User Configuration
 
 Applies to the **user account**.
 
@@ -444,7 +444,7 @@ Applied when the user signs in and during policy refresh.
 
 ---
 
-# Example
+## Example
 
 Computer:
 
@@ -480,7 +480,7 @@ Only users targeted by that policy receive the wallpaper.
 
 ---
 
-# Where Can GPOs Be Linked?
+## Where Can GPOs Be Linked?
 
 A Group Policy Object may be linked to:
 
@@ -500,7 +500,7 @@ The same GPO can also be linked to multiple locations if appropriate.
 
 ---
 
-# Group Policy Management Console (GPMC)
+## Group Policy Management Console (GPMC)
 
 Administrators manage GPOs using the **Group Policy Management Console (GPMC)**.
 
@@ -518,7 +518,7 @@ Common tasks include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -566,7 +566,7 @@ Each OU receives only the relevant configurations.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Group Policy is one of the most important security management tools in Active Directory.
 
@@ -586,7 +586,7 @@ Consistent policy enforcement significantly reduces configuration drift across t
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -599,13 +599,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore the Group Policy infrastructure.
 
-### Tasks
+#### Tasks
 
 1. Open **Group Policy Management Console (GPMC)**.
 2. Identify:
@@ -620,7 +620,7 @@ Explore the Group Policy infrastructure.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Group Policy?
 2. Why is Group Policy used?
@@ -635,7 +635,7 @@ Explore the Group Policy infrastructure.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Group Policy provides centralized management for Windows and Active Directory environments.
 - A GPO consists of a Group Policy Container (GPC) and a Group Policy Template (GPT).
@@ -645,13 +645,13 @@ Explore the Group Policy infrastructure.
 
 ---
 
-# 08-Group-Policy-Basics.md
+## 08-Group-Policy-Basics.md
 
-# Part 2 — Group Policy Processing, LSDOU, Inheritance, Enforcement, Block Inheritance, Loopback Processing, and GPO Linking
+## Part 2 — Group Policy Processing, LSDOU, Inheritance, Enforcement, Block Inheritance, Loopback Processing, and GPO Linking
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -666,7 +666,7 @@ After completing this part, you will be able to:
 
 ---
 
-# How Group Policy is Processed
+## How Group Policy is Processed
 
 When a computer starts or a user logs on, Windows processes applicable Group Policies in a specific order.
 
@@ -704,7 +704,7 @@ This ensures both the computer and user receive their respective configurations.
 
 ---
 
-# Group Policy Processing Order
+## Group Policy Processing Order
 
 Policies are processed in the following order:
 
@@ -734,7 +734,7 @@ This is known as the **LSDOU** order.
 
 ---
 
-# LSDOU Explained
+## LSDOU Explained
 
 | Letter | Meaning |
 |---------|----------|
@@ -748,7 +748,7 @@ Policies processed later generally take precedence when multiple settings confli
 
 ---
 
-# Visual Representation
+## Visual Representation
 
 ```text
 Windows Computer
@@ -782,7 +782,7 @@ Each stage adds or overrides settings according to policy processing rules.
 
 ---
 
-# Why Processing Order Matters
+## Why Processing Order Matters
 
 Suppose three different GPOs configure the desktop wallpaper.
 
@@ -820,7 +820,7 @@ The child OU policy is processed last and therefore wins if the settings conflic
 
 ---
 
-# Group Policy Inheritance
+## Group Policy Inheritance
 
 Inheritance allows child containers to automatically receive policies linked to parent containers.
 
@@ -842,7 +842,7 @@ If a security policy is linked to **Corporate**, both **Finance** and **HR** inh
 
 ---
 
-# Benefits of Inheritance
+## Benefits of Inheritance
 
 Inheritance provides:
 
@@ -856,7 +856,7 @@ Without inheritance, administrators would have to configure each OU individually
 
 ---
 
-# GPO Linking
+## GPO Linking
 
 A GPO is not active until it is linked.
 
@@ -878,7 +878,7 @@ The same GPO may be linked to multiple locations when appropriate.
 
 ---
 
-# Example
+## Example
 
 ```text
 Finance Security GPO
@@ -892,7 +892,7 @@ Every user and computer inside the Finance OU receives the policy, subject to se
 
 ---
 
-# Multiple GPOs
+## Multiple GPOs
 
 Multiple GPOs can be linked to the same OU.
 
@@ -916,7 +916,7 @@ The client evaluates all applicable GPOs during processing.
 
 ---
 
-# GPO Link Order
+## GPO Link Order
 
 If multiple GPOs configure the same setting, link order influences which setting takes precedence.
 
@@ -942,7 +942,7 @@ When conflicting settings exist, the GPO with the highest precedence (lowest lin
 
 ---
 
-# Group Policy Inheritance Example
+## Group Policy Inheritance Example
 
 ```text
 company.com
@@ -986,7 +986,7 @@ A server in the **Servers** OU receives all three policies unless inheritance is
 
 ---
 
-# Block Inheritance
+## Block Inheritance
 
 Sometimes an OU should not receive parent policies.
 
@@ -1012,7 +1012,7 @@ Research does not inherit most parent-linked GPOs.
 
 ---
 
-# When Block Inheritance is Useful
+## When Block Inheritance is Useful
 
 Appropriate scenarios include:
 
@@ -1025,7 +1025,7 @@ It should be used sparingly in production.
 
 ---
 
-# Enforced (No Override)
+## Enforced (No Override)
 
 An administrator may require a GPO to apply even if Block Inheritance exists.
 
@@ -1047,7 +1047,7 @@ Critical security settings continue to apply.
 
 ---
 
-# Enforced vs Block Inheritance
+## Enforced vs Block Inheritance
 
 | Feature | Block Inheritance | Enforced |
 |----------|-------------------|-----------|
@@ -1057,7 +1057,7 @@ Critical security settings continue to apply.
 
 ---
 
-# Example
+## Example
 
 ```text
 Domain
@@ -1081,7 +1081,7 @@ The password policy is still applied because it is enforced.
 
 ---
 
-# Group Policy Precedence
+## Group Policy Precedence
 
 When multiple policies configure the same setting:
 
@@ -1109,7 +1109,7 @@ The policy processed later usually overrides earlier conflicting settings.
 
 ---
 
-# Group Policy Refresh
+## Group Policy Refresh
 
 Policies are refreshed automatically.
 
@@ -1128,7 +1128,7 @@ Manual refresh is useful after creating or modifying GPOs.
 
 ---
 
-# Computer Startup Processing
+## Computer Startup Processing
 
 ```text
 Computer Starts
@@ -1154,7 +1154,7 @@ Computer Configuration is processed before the user logs on.
 
 ---
 
-# User Logon Processing
+## User Logon Processing
 
 ```text
 User Signs In
@@ -1176,9 +1176,9 @@ User Configuration settings are processed after authentication.
 
 ---
 
-# Synchronous vs Asynchronous Processing
+## Synchronous vs Asynchronous Processing
 
-### Synchronous Processing
+#### Synchronous Processing
 
 The system waits for policy processing to complete before continuing.
 
@@ -1200,7 +1200,7 @@ Useful when policies must be fully applied before user interaction.
 
 ---
 
-### Asynchronous Processing
+#### Asynchronous Processing
 
 The system continues startup while policies are processed in the background.
 
@@ -1222,7 +1222,7 @@ This generally provides faster logon experiences.
 
 ---
 
-# Loopback Processing
+## Loopback Processing
 
 Normally:
 
@@ -1233,7 +1233,7 @@ Loopback Processing changes this behavior.
 
 ---
 
-# Why Loopback Exists
+## Why Loopback Exists
 
 Consider a training room.
 
@@ -1257,11 +1257,11 @@ Loopback makes this possible.
 
 ---
 
-# Loopback Modes
+## Loopback Modes
 
 There are two modes.
 
-## Merge Mode
+### Merge Mode
 
 Normal user policies apply first.
 
@@ -1281,7 +1281,7 @@ Combined Result
 
 ---
 
-## Replace Mode
+### Replace Mode
 
 The user's normal User Configuration is ignored.
 
@@ -1305,7 +1305,7 @@ Desktop Ready
 
 ---
 
-# Enterprise Examples
+## Enterprise Examples
 
 Common Loopback use cases:
 
@@ -1321,7 +1321,7 @@ These environments require consistent user experiences regardless of who signs i
 
 ---
 
-# Policy Conflict Example
+## Policy Conflict Example
 
 Domain:
 
@@ -1341,7 +1341,7 @@ The Server OU policy takes precedence because it is processed later.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security teams commonly use Group Policy to:
 
@@ -1358,7 +1358,7 @@ Proper understanding of inheritance and precedence helps prevent accidental weak
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -1371,13 +1371,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Observe Group Policy inheritance and processing.
 
-### Tasks
+#### Tasks
 
 1. Create a test OU named `Lab`.
 2. Create a child OU named `Workstations`.
@@ -1398,7 +1398,7 @@ gpupdate /force
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What does LSDOU stand for?
 2. In what order are Group Policies processed?
@@ -1413,7 +1413,7 @@ gpupdate /force
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Group Policy follows the LSDOU processing order: Local → Site → Domain → OU.
 - Child OU policies generally override conflicting parent policies.
@@ -1424,13 +1424,13 @@ gpupdate /force
 
 ---
 
-# 08-Group-Policy-Basics.md
+## 08-Group-Policy-Basics.md
 
-# Part 3 — Administrative Templates, Security Filtering, WMI Filtering, Group Policy Preferences, Processing, Troubleshooting, and Enterprise Design
+## Part 3 — Administrative Templates, Security Filtering, WMI Filtering, Group Policy Preferences, Processing, Troubleshooting, and Enterprise Design
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -1444,7 +1444,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Administrative Templates
+## Administrative Templates
 
 One of the most commonly used components of Group Policy is **Administrative Templates**.
 
@@ -1466,7 +1466,7 @@ Examples include:
 
 ---
 
-# Administrative Templates Architecture
+## Administrative Templates Architecture
 
 ```text
 Administrator
@@ -1492,7 +1492,7 @@ Most Administrative Template settings ultimately write values to the Windows Reg
 
 ---
 
-# ADMX and ADML Files
+## ADMX and ADML Files
 
 Modern Administrative Templates use:
 
@@ -1523,7 +1523,7 @@ These files define which settings appear in the Group Policy editor.
 
 ---
 
-# Central Store
+## Central Store
 
 Large enterprises typically maintain a **Central Store**.
 
@@ -1553,7 +1553,7 @@ All administrators use the same template versions.
 
 ---
 
-# Registry-Based Policies
+## Registry-Based Policies
 
 Many policies configure registry values automatically.
 
@@ -1583,7 +1583,7 @@ Administrators should configure registry-based settings through Group Policy rat
 
 ---
 
-# Security Filtering
+## Security Filtering
 
 By default, a linked GPO applies to authenticated users and computers within its scope.
 
@@ -1593,7 +1593,7 @@ This is achieved through **Security Filtering**.
 
 ---
 
-# Security Filtering Example
+## Security Filtering Example
 
 ```text
 Finance OU
@@ -1615,7 +1615,7 @@ Only members of the specified security group receive the policy.
 
 ---
 
-# Benefits of Security Filtering
+## Benefits of Security Filtering
 
 - Targeted deployment
 - Reduced number of GPOs
@@ -1625,7 +1625,7 @@ Only members of the specified security group receive the policy.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1651,7 +1651,7 @@ Only laptops in the Finance department receive the BitLocker configuration.
 
 ---
 
-# WMI Filtering
+## WMI Filtering
 
 **Windows Management Instrumentation (WMI) Filtering** allows GPOs to apply only if specific system conditions are met.
 
@@ -1666,7 +1666,7 @@ Example conditions:
 
 ---
 
-# Example
+## Example
 
 ```text
 Windows 11 Devices
@@ -1680,7 +1680,7 @@ Windows 10 devices ignore the policy because they do not meet the WMI filter cri
 
 ---
 
-# WMI Filtering Workflow
+## WMI Filtering Workflow
 
 ```text
 Client
@@ -1712,7 +1712,7 @@ Skip GPO
 
 ---
 
-# Example Use Cases
+## Example Use Cases
 
 Common WMI filtering scenarios:
 
@@ -1726,7 +1726,7 @@ Common WMI filtering scenarios:
 
 ---
 
-# Security Filtering vs WMI Filtering
+## Security Filtering vs WMI Filtering
 
 | Security Filtering | WMI Filtering |
 |-------------------|---------------|
@@ -1739,7 +1739,7 @@ Many enterprises use both together.
 
 ---
 
-# Group Policy Preferences (GPP)
+## Group Policy Preferences (GPP)
 
 Group Policy **Preferences** provide additional configuration capabilities beyond standard policy settings.
 
@@ -1758,7 +1758,7 @@ Examples include:
 
 ---
 
-# Preferences vs Policies
+## Preferences vs Policies
 
 | Policy | Preference |
 |----------|------------|
@@ -1769,7 +1769,7 @@ Examples include:
 
 ---
 
-# Common Group Policy Preferences
+## Common Group Policy Preferences
 
 Examples:
 
@@ -1807,7 +1807,7 @@ Help Desk Portal
 
 ---
 
-# Item-Level Targeting
+## Item-Level Targeting
 
 Group Policy Preferences support **Item-Level Targeting (ILT).**
 
@@ -1833,7 +1833,7 @@ This provides granular deployment without creating many separate GPOs.
 
 ---
 
-# Group Policy Processing Lifecycle
+## Group Policy Processing Lifecycle
 
 Policies are processed during:
 
@@ -1857,7 +1857,7 @@ Background refresh ensures that clients periodically receive updated policies.
 
 ---
 
-# Foreground Processing
+## Foreground Processing
 
 Occurs during:
 
@@ -1868,7 +1868,7 @@ Used when settings must be applied before the user begins working.
 
 ---
 
-# Background Processing
+## Background Processing
 
 Occurs automatically after the system is running.
 
@@ -1883,7 +1883,7 @@ Some policy types still require a restart or logoff to take effect.
 
 ---
 
-# Group Policy Caching
+## Group Policy Caching
 
 Modern Windows versions support Group Policy caching to improve logon performance in many scenarios.
 
@@ -1896,7 +1896,7 @@ Benefits include:
 
 ---
 
-# Enterprise GPO Design
+## Enterprise GPO Design
 
 Microsoft generally recommends:
 
@@ -1928,7 +1928,7 @@ Avoid placing every configuration into a single large GPO.
 
 ---
 
-# Recommended Naming Convention
+## Recommended Naming Convention
 
 Examples:
 
@@ -1950,7 +1950,7 @@ Clear naming simplifies administration and troubleshooting.
 
 ---
 
-# GPO Documentation
+## GPO Documentation
 
 Document:
 
@@ -1968,7 +1968,7 @@ Good documentation reduces operational risk.
 
 ---
 
-# Troubleshooting Tools
+## Troubleshooting Tools
 
 Useful tools include:
 
@@ -1983,7 +1983,7 @@ Useful tools include:
 
 ---
 
-# gpresult
+## gpresult
 
 Example:
 
@@ -2003,7 +2003,7 @@ Useful for diagnosing policy application.
 
 ---
 
-# Resultant Set of Policy (RSoP)
+## Resultant Set of Policy (RSoP)
 
 RSoP helps determine the **effective** policies applied to a user or computer.
 
@@ -2029,7 +2029,7 @@ This is one of the most valuable troubleshooting tools for administrators.
 
 ---
 
-# Common Group Policy Problems
+## Common Group Policy Problems
 
 Examples:
 
@@ -2044,7 +2044,7 @@ Examples:
 
 ---
 
-# Troubleshooting Checklist
+## Troubleshooting Checklist
 
 ✔ Verify OU placement.
 
@@ -2076,7 +2076,7 @@ gpresult /r
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Company:
 
@@ -2125,7 +2125,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security teams commonly deploy:
 
@@ -2142,7 +2142,7 @@ Proper use of Security Filtering and WMI Filtering helps ensure that security po
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -2156,7 +2156,7 @@ Avoid:
 
 ---
 
-# Best Practices Checklist
+## Best Practices Checklist
 
 ✔ Maintain a Central Store for ADMX templates.
 
@@ -2178,13 +2178,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Deploy and troubleshoot targeted Group Policy settings.
 
-### Tasks
+#### Tasks
 
 1. Create a GPO named `SEC-Workstation-Baseline`.
 2. Configure a simple Administrative Template setting (e.g., disable Control Panel access in a lab environment).
@@ -2207,7 +2207,7 @@ gpresult /r
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are Administrative Templates?
 2. What is the purpose of ADMX and ADML files?
@@ -2222,7 +2222,7 @@ gpresult /r
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Administrative Templates provide centralized configuration for thousands of Windows and application settings.
 - ADMX/ADML files define available policy settings, and the Central Store ensures consistency across administrators.
@@ -2233,13 +2233,13 @@ gpresult /r
 
 ---
 
-# 08-Group-Policy-Basics.md
+## 08-Group-Policy-Basics.md
 
-# Part 4 — Enterprise Deployment, Security Hardening, Troubleshooting, Best Practices, Final Revision, and Chapter Summary
+## Part 4 — Enterprise Deployment, Security Hardening, Troubleshooting, Best Practices, Final Revision, and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -2252,7 +2252,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Enterprise Group Policy Strategy
+## Enterprise Group Policy Strategy
 
 Large organizations rarely use a single Group Policy Object.
 
@@ -2288,7 +2288,7 @@ Each category contains separate GPOs with clearly defined purposes.
 
 ---
 
-# Example Enterprise Structure
+## Example Enterprise Structure
 
 ```text
 company.com
@@ -2332,7 +2332,7 @@ Each Organizational Unit receives only the GPOs relevant to its role.
 
 ---
 
-# Example GPO Layout
+## Example GPO Layout
 
 ```text
 Domain
@@ -2364,7 +2364,7 @@ This modular design improves maintainability and troubleshooting.
 
 ---
 
-# Security Baseline GPO
+## Security Baseline GPO
 
 A **Security Baseline** GPO provides a consistent foundation for all managed systems.
 
@@ -2383,7 +2383,7 @@ Typical settings include:
 
 ---
 
-# Workstation Baseline
+## Workstation Baseline
 
 Typical workstation policies:
 
@@ -2419,7 +2419,7 @@ These settings establish a secure default configuration for client devices.
 
 ---
 
-# Server Hardening GPO
+## Server Hardening GPO
 
 Servers require different policies than workstations.
 
@@ -2436,7 +2436,7 @@ Typical server settings:
 
 ---
 
-# Domain Controller Policies
+## Domain Controller Policies
 
 Domain Controllers are the most critical systems in an Active Directory environment.
 
@@ -2470,7 +2470,7 @@ Domain Controllers should receive dedicated hardening GPOs rather than general w
 
 ---
 
-# Department-Specific GPOs
+## Department-Specific GPOs
 
 Example:
 
@@ -2510,7 +2510,7 @@ Different departments can receive tailored configurations while sharing a common
 
 ---
 
-# Layered Policy Design
+## Layered Policy Design
 
 Enterprise environments commonly apply multiple GPO layers.
 
@@ -2538,7 +2538,7 @@ This layered approach reduces duplication and simplifies maintenance.
 
 ---
 
-# Change Management
+## Change Management
 
 Before deploying a new GPO:
 
@@ -2570,7 +2570,7 @@ Following a formal change process minimizes operational risk.
 
 ---
 
-# GPO Testing Environment
+## GPO Testing Environment
 
 Never deploy major changes directly to production.
 
@@ -2596,7 +2596,7 @@ Pilot deployments help identify compatibility issues before organization-wide ro
 
 ---
 
-# GPO Backup and Restore
+## GPO Backup and Restore
 
 Administrators should regularly back up important GPOs.
 
@@ -2612,7 +2612,7 @@ The Group Policy Management Console provides built-in backup and restore capabil
 
 ---
 
-# GPO Version Control
+## GPO Version Control
 
 Track:
 
@@ -2628,7 +2628,7 @@ Good version control improves accountability and troubleshooting.
 
 ---
 
-# Performance Considerations
+## Performance Considerations
 
 Excessive or poorly designed GPOs can affect:
 
@@ -2647,7 +2647,7 @@ Recommendations:
 
 ---
 
-# Group Policy Security Hardening
+## Group Policy Security Hardening
 
 Security teams often deploy GPOs to enforce:
 
@@ -2666,7 +2666,7 @@ These controls improve the organization's overall security posture.
 
 ---
 
-# Monitoring Group Policy
+## Monitoring Group Policy
 
 Administrators should monitor:
 
@@ -2681,7 +2681,7 @@ Centralized monitoring supports faster detection of configuration issues.
 
 ---
 
-# Common Group Policy Issues
+## Common Group Policy Issues
 
 | Issue | Possible Cause |
 |--------|----------------|
@@ -2694,7 +2694,7 @@ Centralized monitoring supports faster detection of configuration issues.
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```text
 Problem Reported
@@ -2736,7 +2736,7 @@ A structured process reduces troubleshooting time.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -2777,7 +2777,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently attempt to abuse or modify Group Policy because it can affect thousands of systems.
 
@@ -2802,7 +2802,7 @@ Recommended protections:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -2816,7 +2816,7 @@ Avoid:
 
 ---
 
-# Best Practices Checklist
+## Best Practices Checklist
 
 ✔ Use clear naming conventions.
 
@@ -2840,7 +2840,7 @@ Avoid:
 
 ---
 
-# Complete Chapter Summary
+## Complete Chapter Summary
 
 In this chapter, you learned:
 
@@ -2873,7 +2873,7 @@ Group Policy is one of the most powerful features of Active Directory. Proper pl
 
 ---
 
-# Final Revision Table
+## Final Revision Table
 
 | Topic | Key Point |
 |--------|-----------|
@@ -2898,13 +2898,13 @@ Group Policy is one of the most powerful features of Active Directory. Proper pl
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design and deploy a secure Group Policy structure for a fictional enterprise.
 
-### Scenario
+#### Scenario
 
 Your organization contains:
 
@@ -2917,7 +2917,7 @@ Your organization contains:
 - SQL Servers
 - Windows 11 Workstations
 
-### Tasks
+#### Tasks
 
 1. Create separate OUs for each department and server role.
 2. Create modular GPOs:
@@ -2945,7 +2945,7 @@ gpresult /r
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between the GPC and GPT?
 2. Explain the LSDOU processing order.
@@ -2960,7 +2960,7 @@ gpresult /r
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Group Policy Overview
 - Microsoft Learn – Group Policy Management
@@ -2972,7 +2972,7 @@ gpresult /r
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 08 – Group Policy Basics**.
 

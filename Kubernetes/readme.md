@@ -6,8 +6,7 @@
 
 ---
 
-# About This Handbook
-
+## About This Handbook
 Kubernetes has become the de facto standard for container orchestration across cloud-native environments. It enables organizations to deploy, scale, manage, and secure containerized workloads efficiently across clusters.
 
 This handbook is designed to take you from **zero Kubernetes knowledge** to an **industry-ready Kubernetes Engineer**, covering architecture, administration, security, troubleshooting, production deployments, incident response, and real-world best practices.
@@ -27,8 +26,7 @@ This handbook is suitable for:
 
 ---
 
-# Prerequisites
-
+## Prerequisites
 Before starting this handbook, you should understand:
 
 - Linux Fundamentals
@@ -42,8 +40,7 @@ Completing the **Container Handbook** first is highly recommended.
 
 ---
 
-# Learning Roadmap
-
+## Learning Roadmap
 ```
 Linux
 
@@ -94,8 +91,7 @@ Cloud Native Engineering
 
 ---
 
-# Chapters
-
+## Chapters
 ## Module 1 — Kubernetes Fundamentals
 
 - Chapter 1 – Introduction to Kubernetes
@@ -250,8 +246,7 @@ Cloud Native Engineering
 
 ---
 
-# Learning Outcomes
-
+## Learning Outcomes
 After completing this handbook, you will be able to:
 
 - Understand Kubernetes architecture.
@@ -268,8 +263,7 @@ After completing this handbook, you will be able to:
 
 ---
 
-# Recommended Tools
-
+## Recommended Tools
 - kubectl
 - Minikube
 - Kind
@@ -291,8 +285,7 @@ After completing this handbook, you will be able to:
 
 ---
 
-# Who Should Read This?
-
+## Who Should Read This?
 This handbook is ideal for anyone preparing for roles such as:
 
 - Kubernetes Administrator
@@ -307,8 +300,7 @@ This handbook is ideal for anyone preparing for roles such as:
 
 ---
 
-# Suggested Learning Path
-
+## Suggested Learning Path
 ```
 Containers
 
@@ -355,8 +347,7 @@ Cloud Native Engineering
 
 ---
 
-# Best Way to Use This Handbook
-
+## Best Way to Use This Handbook
 For every chapter:
 
 1. Read the concepts thoroughly.

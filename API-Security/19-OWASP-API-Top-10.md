@@ -1,6 +1,6 @@
 # 19 - OWASP API Security Top 10
 
-# Introduction
+## Introduction
 
 The **OWASP API Security Top 10** is the industry's most widely recognized awareness document for identifying and mitigating the most critical security risks affecting modern APIs.
 
@@ -21,7 +21,7 @@ The current version is **OWASP API Security Top 10 (2023)**.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -35,7 +35,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Why OWASP API Security Top 10 Matters
+## Why OWASP API Security Top 10 Matters
 
 ```
                  API
@@ -61,7 +61,7 @@ The framework provides practical guidance throughout the software development li
 
 ---
 
-# OWASP API Security Top 10 (2023)
+## OWASP API Security Top 10 (2023)
 
 | ID | Risk |
 |----|------|
@@ -78,9 +78,9 @@ The framework provides practical guidance throughout the software development li
 
 ---
 
-# API1 – Broken Object Level Authorization (BOLA)
+## API1 – Broken Object Level Authorization (BOLA)
 
-## Overview
+### Overview
 
 BOLA occurs when an API allows users to access objects they do not own because object ownership is not properly validated.
 
@@ -88,7 +88,7 @@ It is one of the most common and impactful API vulnerabilities.
 
 ---
 
-# BOLA Attack Example
+## BOLA Attack Example
 
 ```
 User A
@@ -114,7 +114,7 @@ Changing a resource identifier should never grant access to another user's data.
 
 ---
 
-# Why BOLA Happens
+## Why BOLA Happens
 
 Common causes include:
 
@@ -126,7 +126,7 @@ Common causes include:
 
 ---
 
-# BOLA Workflow
+## BOLA Workflow
 
 ```
 Authenticated User
@@ -152,7 +152,7 @@ Allowed   Data Exposure
 
 ---
 
-# BOLA Mitigations
+## BOLA Mitigations
 
 - Verify object ownership on every request.
 - Enforce authorization in backend services.
@@ -163,7 +163,7 @@ Allowed   Data Exposure
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Employee
@@ -187,9 +187,9 @@ Unauthorized Disclosure
 
 ---
 
-# API2 – Broken Authentication
+## API2 – Broken Authentication
 
-## Overview
+### Overview
 
 Broken Authentication allows attackers to compromise user identities.
 
@@ -205,7 +205,7 @@ Examples
 
 ---
 
-# Authentication Attack
+## Authentication Attack
 
 ```
 Attacker
@@ -229,7 +229,7 @@ Account Compromise
 
 ---
 
-# Authentication Mitigations
+## Authentication Mitigations
 
 - MFA
 - Strong password policy
@@ -242,9 +242,9 @@ Account Compromise
 
 ---
 
-# API3 – Broken Object Property Level Authorization (BOPLA)
+## API3 – Broken Object Property Level Authorization (BOPLA)
 
-## Overview
+### Overview
 
 BOPLA occurs when users can read or modify object properties that should not be accessible.
 
@@ -252,7 +252,7 @@ This combines risks historically associated with excessive data exposure and mas
 
 ---
 
-# Example
+## Example
 
 Expected response
 
@@ -278,7 +278,7 @@ Sensitive properties should not be exposed unless explicitly authorized.
 
 ---
 
-# Property Modification
+## Property Modification
 
 ```
 PATCH
@@ -294,7 +294,7 @@ Applications should ignore or reject unauthorized properties.
 
 ---
 
-# BOPLA Mitigations
+## BOPLA Mitigations
 
 - Response filtering
 - DTOs
@@ -305,9 +305,9 @@ Applications should ignore or reject unauthorized properties.
 
 ---
 
-# API4 – Unrestricted Resource Consumption
+## API4 – Unrestricted Resource Consumption
 
-## Overview
+### Overview
 
 Attackers consume excessive resources until the application becomes unavailable or incurs excessive operational costs.
 
@@ -321,7 +321,7 @@ Examples
 
 ---
 
-# Resource Consumption Attack
+## Resource Consumption Attack
 
 ```
 Attacker
@@ -345,7 +345,7 @@ Service Degradation
 
 ---
 
-# Resource Consumption Controls
+## Resource Consumption Controls
 
 - Rate limiting
 - Quotas
@@ -358,15 +358,15 @@ Service Degradation
 
 ---
 
-# API5 – Broken Function Level Authorization (BFLA)
+## API5 – Broken Function Level Authorization (BFLA)
 
-## Overview
+### Overview
 
 BFLA occurs when users access functions outside their authorized role.
 
 ---
 
-# Example
+## Example
 
 ```
 Employee
@@ -388,7 +388,7 @@ Authorization must validate the user's permissions for every function.
 
 ---
 
-# Function Authorization Workflow
+## Function Authorization Workflow
 
 ```
 Authenticated User
@@ -414,7 +414,7 @@ Allow    Reject
 
 ---
 
-# BFLA Mitigations
+## BFLA Mitigations
 
 - RBAC
 - ABAC
@@ -425,9 +425,9 @@ Allow    Reject
 
 ---
 
-# API6 – Unrestricted Access to Sensitive Business Flows
+## API6 – Unrestricted Access to Sensitive Business Flows
 
-## Overview
+### Overview
 
 Some APIs expose business processes that can be abused through automation.
 
@@ -442,7 +442,7 @@ Examples include
 
 ---
 
-# Business Flow Abuse
+## Business Flow Abuse
 
 ```
 Bot
@@ -468,7 +468,7 @@ The API behaves as designed, but the business outcome is undesirable.
 
 ---
 
-# Business Flow Controls
+## Business Flow Controls
 
 - Rate limiting
 - CAPTCHA where appropriate
@@ -480,9 +480,9 @@ The API behaves as designed, but the business outcome is undesirable.
 
 ---
 
-# API7 – Server Side Request Forgery (SSRF)
+## API7 – Server Side Request Forgery (SSRF)
 
-## Overview
+### Overview
 
 SSRF occurs when an application fetches attacker-controlled URLs without proper validation.
 
@@ -510,7 +510,7 @@ SSRF may expose internal systems or cloud instance metadata.
 
 ---
 
-# SSRF Mitigations
+## SSRF Mitigations
 
 - Allowlist destinations
 - Disable unnecessary outbound access
@@ -522,9 +522,9 @@ SSRF may expose internal systems or cloud instance metadata.
 
 ---
 
-# API8 – Security Misconfiguration
+## API8 – Security Misconfiguration
 
-## Overview
+### Overview
 
 Security misconfiguration includes insecure defaults and operational mistakes.
 
@@ -540,7 +540,7 @@ Examples
 
 ---
 
-# Misconfiguration Example
+## Misconfiguration Example
 
 ```
 Production
@@ -560,7 +560,7 @@ Information Disclosure
 
 ---
 
-# Misconfiguration Controls
+## Misconfiguration Controls
 
 - Secure defaults
 - Infrastructure as Code
@@ -571,9 +571,9 @@ Information Disclosure
 
 ---
 
-# API9 – Improper Inventory Management
+## API9 – Improper Inventory Management
 
-## Overview
+### Overview
 
 Organizations frequently lose visibility into deployed APIs.
 
@@ -587,7 +587,7 @@ Examples
 
 ---
 
-# API Inventory
+## API Inventory
 
 ```
 Known APIs
@@ -609,7 +609,7 @@ Unmanaged APIs often become attractive attack targets.
 
 ---
 
-# Inventory Controls
+## Inventory Controls
 
 - API catalog
 - Asset discovery
@@ -620,9 +620,9 @@ Unmanaged APIs often become attractive attack targets.
 
 ---
 
-# API10 – Unsafe Consumption of APIs
+## API10 – Unsafe Consumption of APIs
 
-## Overview
+### Overview
 
 Applications often trust responses from third-party APIs without sufficient validation.
 
@@ -646,7 +646,7 @@ External APIs should always be treated as untrusted inputs.
 
 ---
 
-# Unsafe Consumption Controls
+## Unsafe Consumption Controls
 
 - Validate third-party responses
 - Verify schemas
@@ -659,7 +659,7 @@ External APIs should always be treated as untrusted inputs.
 
 ---
 
-# Risk Mapping
+## Risk Mapping
 
 | OWASP Risk | Primary Security Control |
 |-------------|--------------------------|
@@ -676,7 +676,7 @@ External APIs should always be treated as untrusted inputs.
 
 ---
 
-# Enterprise Defense-in-Depth
+## Enterprise Defense-in-Depth
 
 ```
                     Internet
@@ -738,7 +738,7 @@ External APIs should always be treated as untrusted inputs.
 
 ---
 
-# OWASP API Top 10 and SDLC
+## OWASP API Top 10 and SDLC
 
 ```
 Requirements
@@ -772,7 +772,7 @@ Each OWASP API risk should be addressed throughout the software development life
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The OWASP API Security Top 10 identifies the most significant API security risks.
 - Authorization failures remain among the highest-impact vulnerabilities.
@@ -782,7 +782,7 @@ Each OWASP API risk should be addressed throughout the software development life
 
 ---
 
-# Real-World Attack Scenarios
+## Real-World Attack Scenarios
 
 The OWASP API Security Top 10 is based on vulnerabilities repeatedly observed in production environments.
 
@@ -790,7 +790,7 @@ Understanding how these vulnerabilities are exploited helps security teams desig
 
 ---
 
-# Attack Chain Example
+## Attack Chain Example
 
 ```
 Reconnaissance
@@ -828,7 +828,7 @@ Multiple API vulnerabilities are often chained together during a real attack.
 
 ---
 
-# Scenario 1 – BOLA Attack
+## Scenario 1 – BOLA Attack
 
 Target
 
@@ -874,7 +874,7 @@ Mitigation
 
 ---
 
-# Scenario 2 – Broken Authentication
+## Scenario 2 – Broken Authentication
 
 Target
 
@@ -920,7 +920,7 @@ Mitigation
 
 ---
 
-# Scenario 3 – BOPLA
+## Scenario 3 – BOPLA
 
 Target
 
@@ -957,7 +957,7 @@ Mitigation
 
 ---
 
-# Scenario 4 – Resource Exhaustion
+## Scenario 4 – Resource Exhaustion
 
 Target
 
@@ -998,7 +998,7 @@ Mitigation
 
 ---
 
-# Scenario 5 – Function Authorization
+## Scenario 5 – Function Authorization
 
 Target
 
@@ -1033,7 +1033,7 @@ Mitigation
 
 ---
 
-# Scenario 6 – Business Logic Abuse
+## Scenario 6 – Business Logic Abuse
 
 Target
 
@@ -1068,7 +1068,7 @@ Mitigation
 
 ---
 
-# Scenario 7 – SSRF
+## Scenario 7 – SSRF
 
 Target
 
@@ -1107,7 +1107,7 @@ Mitigation
 
 ---
 
-# Scenario 8 – Security Misconfiguration
+## Scenario 8 – Security Misconfiguration
 
 Target
 
@@ -1142,7 +1142,7 @@ Mitigation
 
 ---
 
-# Scenario 9 – Inventory Management
+## Scenario 9 – Inventory Management
 
 Target
 
@@ -1179,7 +1179,7 @@ Mitigation
 
 ---
 
-# Scenario 10 – Unsafe API Consumption
+## Scenario 10 – Unsafe API Consumption
 
 Target
 
@@ -1210,7 +1210,7 @@ Mitigation
 
 ---
 
-# Mapping Risks to MITRE ATT&CK
+## Mapping Risks to MITRE ATT&CK
 
 | OWASP API Risk | Relevant ATT&CK Techniques (Examples) |
 |----------------|----------------------------------------|
@@ -1229,7 +1229,7 @@ The exact ATT&CK techniques vary depending on implementation and attack path.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 OWASP risks should be considered during threat modeling.
 
@@ -1259,7 +1259,7 @@ Residual Risk
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 ```
 Requirements
@@ -1297,7 +1297,7 @@ OWASP guidance should be incorporated into every development phase.
 
 ---
 
-# Secure Coding Checklist
+## Secure Coding Checklist
 
 Developers should verify:
 
@@ -1314,7 +1314,7 @@ Developers should verify:
 
 ---
 
-# API Security Testing
+## API Security Testing
 
 Testing should include:
 
@@ -1331,7 +1331,7 @@ Testing should include:
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections for each OWASP risk.
 
@@ -1350,7 +1350,7 @@ Recommended detections for each OWASP risk.
 
 ---
 
-# Detection Workflow
+## Detection Workflow
 
 ```
 API Gateway
@@ -1382,9 +1382,9 @@ SOC
 
 ---
 
-# High-Value Detection Rules
+## High-Value Detection Rules
 
-## Rule 1 – Possible BOLA
+### Rule 1 – Possible BOLA
 
 ```
 User
@@ -1408,7 +1408,7 @@ High Severity Alert
 
 ---
 
-## Rule 2 – Broken Authentication
+### Rule 2 – Broken Authentication
 
 ```
 Failed Logins
@@ -1428,7 +1428,7 @@ Possible Account Takeover
 
 ---
 
-## Rule 3 – Function Abuse
+### Rule 3 – Function Abuse
 
 ```
 Normal User
@@ -1448,7 +1448,7 @@ Privilege Escalation Attempt
 
 ---
 
-## Rule 4 – SSRF
+### Rule 4 – SSRF
 
 ```
 API
@@ -1468,7 +1468,7 @@ Critical Alert
 
 ---
 
-## Rule 5 – Business Logic Abuse
+### Rule 5 – Business Logic Abuse
 
 ```
 Single User
@@ -1488,7 +1488,7 @@ Fraud Investigation
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Recommended log sources
 
@@ -1505,7 +1505,7 @@ Recommended log sources
 
 ---
 
-# Enterprise Correlation
+## Enterprise Correlation
 
 ```
 Gateway Logs
@@ -1541,7 +1541,7 @@ SOC Investigation
 
 ---
 
-# SOC Monitoring Dashboard
+## SOC Monitoring Dashboard
 
 Recommended widgets
 
@@ -1558,7 +1558,7 @@ Recommended widgets
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                      Internet
@@ -1622,7 +1622,7 @@ Recommended widgets
 
 ---
 
-# Hands-on Lab 1 – Object Authorization Assessment
+## Hands-on Lab 1 – Object Authorization Assessment
 
 **Objective**
 
@@ -1644,7 +1644,7 @@ Assess object-level authorization in an authorized environment.
 
 ---
 
-# Hands-on Lab 2 – Business Logic Testing
+## Hands-on Lab 2 – Business Logic Testing
 
 **Objective**
 
@@ -1666,7 +1666,7 @@ Evaluate business rule enforcement.
 
 ---
 
-# Hands-on Lab 3 – SSRF Assessment
+## Hands-on Lab 3 – SSRF Assessment
 
 **Objective**
 
@@ -1687,9 +1687,9 @@ Review outbound request controls in an authorized environment.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Excessive Authorization Failures
+### Excessive Authorization Failures
 
 Possible causes
 
@@ -1700,7 +1700,7 @@ Possible causes
 
 ---
 
-## High Authentication Failures
+### High Authentication Failures
 
 Possible causes
 
@@ -1711,7 +1711,7 @@ Possible causes
 
 ---
 
-## Unexpected Outbound Requests
+### Unexpected Outbound Requests
 
 Possible causes
 
@@ -1722,7 +1722,7 @@ Possible causes
 
 ---
 
-## Deprecated API Traffic
+### Deprecated API Traffic
 
 Possible causes
 
@@ -1733,7 +1733,7 @@ Possible causes
 
 ---
 
-## Resource Consumption Alerts
+### Resource Consumption Alerts
 
 Possible causes
 
@@ -1744,9 +1744,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is the OWASP API Security Top 10?
 2. What is Broken Object Level Authorization (BOLA)?
@@ -1761,7 +1761,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. How would you prevent BOLA in a REST API?
 12. Explain the differences between API1, API3, and API5.
@@ -1776,7 +1776,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1808,7 +1808,7 @@ An internal integration consumes data from a third-party API without validating 
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we examined the **OWASP API Security Top 10 (2023)** and explored how each risk manifests in enterprise environments.
 
@@ -1829,7 +1829,7 @@ The OWASP API Security Top 10 should serve as a foundational framework for desig
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1845,22 +1845,22 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - OWASP API Security Top 10 (2023)
 - OpenAPI Specification
 - RFC 9110 – HTTP Semantics
 
-## Security Standards
+### Security Standards
 
 - OWASP ASVS
 - OWASP Web Security Testing Guide (WSTG)
 - NIST SP 800-53
 - NIST Secure Software Development Framework (SSDF)
 
-## Further Reading
+### Further Reading
 
 - MITRE ATT&CK Framework
 - OWASP Cheat Sheet Series
@@ -1868,7 +1868,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 20 – API Vulnerability Testing**
 

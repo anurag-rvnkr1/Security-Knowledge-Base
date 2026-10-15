@@ -1,12 +1,12 @@
 # 57-CI-CD-Security.md
 
-# Part 1 — Introduction to CI/CD Security, Secure Software Delivery Pipelines, Pipeline Architecture, and Security Foundations
+## Part 1 — Introduction to CI/CD Security, Secure Software Delivery Pipelines, Pipeline Architecture, and Security Foundations
 
 > **"CI/CD Security is the practice of protecting Continuous Integration and Continuous Delivery/Deployment pipelines, ensuring that source code, build systems, deployment processes, artifacts, and infrastructure remain trustworthy throughout the software delivery lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is CI/CD Security?
+## What is CI/CD Security?
 
 CI/CD Security focuses on protecting every component involved in software delivery.
 
@@ -62,7 +62,7 @@ Security is integrated throughout the pipeline rather than applied only before p
 
 ---
 
-# Why CI/CD Security Matters
+## Why CI/CD Security Matters
 
 Modern organizations release software rapidly using automated pipelines.
 
@@ -80,7 +80,7 @@ CI/CD Security helps reduce these risks through governance, automation, and cont
 
 ---
 
-# Understanding CI
+## Understanding CI
 
 Continuous Integration (CI) is the practice of regularly integrating code changes into a shared repository where automated validation occurs.
 
@@ -108,7 +108,7 @@ Frequent integration enables early detection of integration issues.
 
 ---
 
-# Understanding Continuous Delivery
+## Understanding Continuous Delivery
 
 Continuous Delivery prepares validated software for release.
 
@@ -132,7 +132,7 @@ Deployment is typically initiated after required approvals.
 
 ---
 
-# Understanding Continuous Deployment
+## Understanding Continuous Deployment
 
 Continuous Deployment automatically deploys validated changes according to organizational policies.
 
@@ -156,7 +156,7 @@ Organizations choose deployment strategies according to business requirements an
 
 ---
 
-# CI vs CD
+## CI vs CD
 
 | Characteristic | Continuous Integration | Continuous Delivery | Continuous Deployment |
 |---------------|------------------------|---------------------|------------------------|
@@ -167,7 +167,7 @@ Organizations choose deployment strategies according to business requirements an
 
 ---
 
-# CI/CD Security Principles
+## CI/CD Security Principles
 
 ```
 CI/CD Security
@@ -195,7 +195,7 @@ These principles establish a secure foundation for software delivery.
 
 ---
 
-# Security by Design
+## Security by Design
 
 Pipeline security should be considered during architecture and implementation.
 
@@ -223,7 +223,7 @@ Secure architectures reduce long-term operational risk.
 
 ---
 
-# Shared Responsibility
+## Shared Responsibility
 
 Protecting a CI/CD pipeline requires collaboration across multiple teams.
 
@@ -255,7 +255,7 @@ Each group contributes to maintaining pipeline integrity.
 
 ---
 
-# Components of a CI/CD Pipeline
+## Components of a CI/CD Pipeline
 
 ```
 Pipeline Components
@@ -283,7 +283,7 @@ Each component should be protected according to organizational policies.
 
 ---
 
-# Secure Pipeline Workflow
+## Secure Pipeline Workflow
 
 ```
 Requirements
@@ -321,7 +321,7 @@ Security checks should be integrated throughout the workflow.
 
 ---
 
-# Pipeline Assets
+## Pipeline Assets
 
 Important assets include:
 
@@ -351,7 +351,7 @@ These assets should be inventoried and protected.
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
 
 Every trust transition within a pipeline deserves careful review.
 
@@ -379,7 +379,7 @@ Security controls should be evaluated wherever trust changes.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 CI/CD Security relies on multiple protective layers.
 
@@ -415,7 +415,7 @@ No single control should be relied upon exclusively.
 
 ---
 
-# Enterprise CI/CD Architecture
+## Enterprise CI/CD Architecture
 
 ```
                 Business Requirements
@@ -461,7 +461,7 @@ The architecture integrates governance, validation, deployment, and operational 
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global healthcare organization develops cloud-native clinical applications.
 
@@ -497,7 +497,7 @@ Every software change follows documented review procedures, automated validation
 
 ---
 
-# Benefits of CI/CD Security
+## Benefits of CI/CD Security
 
 ```
 Business Benefits
@@ -523,7 +523,7 @@ Business Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the architecture of a CI/CD pipeline.
 2. Identify important pipeline assets.
@@ -535,7 +535,7 @@ Business Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is CI/CD Security?
 2. Why is CI/CD Security important?
@@ -550,7 +550,7 @@ Business Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design pipeline security from the beginning.
 - Protect every pipeline component using layered controls.
@@ -563,7 +563,7 @@ Business Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating CI/CD Security as only a deployment concern.
 - Ignoring pipeline components outside production.
@@ -575,7 +575,7 @@ Business Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - CI/CD Security protects the complete software delivery pipeline from development through production.
 - Pipeline assets, trust boundaries, and governance are fundamental to secure software delivery.
@@ -583,15 +583,15 @@ Business Benefits
 - Security by Design, Defense in Depth, and shared responsibility strengthen pipeline resilience.
 - Effective CI/CD Security combines architecture, automation, governance, and continuous monitoring.
 
-# 57-CI-CD-Security.md
+## 57-CI-CD-Security.md
 
-# Part 2 — Secure Source Control, Build Security, Artifact Management, Secrets Protection, Infrastructure as Code, and Enterprise Pipeline Governance
+## Part 2 — Secure Source Control, Build Security, Artifact Management, Secrets Protection, Infrastructure as Code, and Enterprise Pipeline Governance
 
 > **"A secure CI/CD pipeline protects not only the deployed application but also every stage that produces it—from source code and build systems to deployment artifacts and infrastructure definitions."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -608,7 +608,7 @@ After completing this part, you will understand:
 
 ---
 
-# Source Control Security
+## Source Control Security
 
 Source control is the foundation of modern software delivery and should be protected with strong governance.
 
@@ -636,7 +636,7 @@ Every change entering the repository should follow established review and approv
 
 ---
 
-# Source Repository Protection
+## Source Repository Protection
 
 ```
 Repository Security
@@ -664,7 +664,7 @@ Repositories contain critical organizational assets and require continuous prote
 
 ---
 
-# Secure Code Reviews
+## Secure Code Reviews
 
 Peer reviews improve software quality and support secure development.
 
@@ -692,7 +692,7 @@ Code reviews should evaluate correctness, maintainability, and adherence to orga
 
 ---
 
-# Branch Protection
+## Branch Protection
 
 Critical branches should follow controlled governance.
 
@@ -720,7 +720,7 @@ Organizations commonly require documented approvals before integrating productio
 
 ---
 
-# Build System Security
+## Build System Security
 
 The build environment transforms source code into deployable software.
 
@@ -744,7 +744,7 @@ Protecting the integrity of the build process helps ensure trustworthy software 
 
 ---
 
-# Build Environment Components
+## Build Environment Components
 
 ```
 Build Environment
@@ -772,7 +772,7 @@ Every component should be governed and regularly reviewed.
 
 ---
 
-# Build Security Principles
+## Build Security Principles
 
 ```
 Build Security
@@ -800,7 +800,7 @@ Applying these principles strengthens pipeline integrity.
 
 ---
 
-# Artifact Repository Security
+## Artifact Repository Security
 
 Build outputs should be stored securely.
 
@@ -824,7 +824,7 @@ Artifact repositories should maintain integrity, traceability, and controlled ac
 
 ---
 
-# Artifact Lifecycle
+## Artifact Lifecycle
 
 ```
 Artifact Creation
@@ -858,7 +858,7 @@ A documented lifecycle supports governance and operational consistency.
 
 ---
 
-# Artifact Governance
+## Artifact Governance
 
 ```
 Artifact Repository
@@ -886,7 +886,7 @@ Well-managed repositories improve traceability throughout software delivery.
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 Pipelines often require sensitive credentials.
 
@@ -919,7 +919,7 @@ Secrets should be centrally managed and protected throughout their lifecycle.
 
 ---
 
-# Secrets Lifecycle
+## Secrets Lifecycle
 
 ```
 Creation
@@ -945,7 +945,7 @@ Organizations should establish documented processes for managing secrets securel
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Infrastructure definitions should follow the same engineering practices as application code.
 
@@ -973,7 +973,7 @@ IaC enables repeatable and consistent infrastructure provisioning.
 
 ---
 
-# IaC Governance
+## IaC Governance
 
 ```
 Infrastructure Governance
@@ -1001,7 +1001,7 @@ Governance helps maintain reliable and secure infrastructure.
 
 ---
 
-# Secure Release Management
+## Secure Release Management
 
 Release management coordinates the movement of validated software into production.
 
@@ -1029,7 +1029,7 @@ Releases should follow organizational policies and documented approval processes
 
 ---
 
-# Release Governance
+## Release Governance
 
 ```
 Release Governance
@@ -1057,7 +1057,7 @@ Effective governance reduces deployment risk.
 
 ---
 
-# Enterprise CI/CD Workflow
+## Enterprise CI/CD Workflow
 
 ```
 Business Requirements
@@ -1103,7 +1103,7 @@ Every stage contributes to secure and reliable software delivery.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail organization manages multiple customer-facing applications.
 
@@ -1135,7 +1135,7 @@ All source code changes undergo peer review and automated validation before arti
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1150,7 +1150,7 @@ All source code changes undergo peer review and automated validation before arti
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1163,7 +1163,7 @@ All source code changes undergo peer review and automated validation before arti
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the workflow from source control to deployment.
 2. Identify critical assets within the build environment.
@@ -1175,7 +1175,7 @@ All source code changes undergo peer review and automated validation before arti
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is source control security important?
 2. What is the purpose of branch protection?
@@ -1190,7 +1190,7 @@ All source code changes undergo peer review and automated validation before arti
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Protect repositories using strong authentication and authorization.
 - Require peer reviews before merging significant changes.
@@ -1203,7 +1203,7 @@ All source code changes undergo peer review and automated validation before arti
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing unrestricted repository access.
 - Bypassing peer review for production code.
@@ -1215,7 +1215,7 @@ All source code changes undergo peer review and automated validation before arti
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Source control, build systems, artifact repositories, and infrastructure definitions are all critical components of CI/CD Security.
 - Strong governance and peer review improve software integrity throughout the delivery lifecycle.
@@ -1223,15 +1223,15 @@ All source code changes undergo peer review and automated validation before arti
 - Secure release management reduces operational risk through documented validation and approval processes.
 - Mature CI/CD Security programs combine governance, automation, monitoring, and continuous operational improvement.
 
-# 57-CI-CD-Security.md
+## 57-CI-CD-Security.md
 
-# Part 3 — Pipeline Monitoring, Identity & Access Management, Compliance, Incident Response, Risk Management, and Enterprise Operational Security
+## Part 3 — Pipeline Monitoring, Identity & Access Management, Compliance, Incident Response, Risk Management, and Enterprise Operational Security
 
 > **"A secure CI/CD pipeline requires continuous monitoring, strong identity management, comprehensive logging, governance, and operational visibility to maintain trust throughout the software delivery lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1248,7 +1248,7 @@ After completing this part, you will understand:
 
 ---
 
-# Identity and Access Management (IAM)
+## Identity and Access Management (IAM)
 
 Identity is the foundation of CI/CD Security.
 
@@ -1278,7 +1278,7 @@ Proper identity management improves accountability and reduces unauthorized acce
 
 ---
 
-# CI/CD Identity Types
+## CI/CD Identity Types
 
 ```
 Pipeline Identities
@@ -1306,7 +1306,7 @@ Each identity should receive only the permissions necessary for its role.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Least Privilege limits permissions to only what is required.
 
@@ -1330,7 +1330,7 @@ Reducing unnecessary privileges minimizes operational and security risks.
 
 ---
 
-# Access Control Model
+## Access Control Model
 
 ```
 Identity
@@ -1356,7 +1356,7 @@ Access decisions should be consistently enforced across all pipeline components.
 
 ---
 
-# Privileged Access Governance
+## Privileged Access Governance
 
 Administrative access should receive additional oversight.
 
@@ -1384,7 +1384,7 @@ Organizations should regularly review privileged accounts and permissions.
 
 ---
 
-# Pipeline Monitoring
+## Pipeline Monitoring
 
 Continuous monitoring provides visibility into software delivery activities.
 
@@ -1412,7 +1412,7 @@ Monitoring enables rapid detection of operational issues and unexpected pipeline
 
 ---
 
-# Monitoring Components
+## Monitoring Components
 
 ```
 Monitoring
@@ -1440,7 +1440,7 @@ A centralized monitoring approach improves visibility.
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Pipeline activities should generate meaningful operational logs.
 
@@ -1468,7 +1468,7 @@ Logs support troubleshooting, governance, and operational investigations.
 
 ---
 
-# Important Audit Events
+## Important Audit Events
 
 ```
 Audit Events
@@ -1496,7 +1496,7 @@ Maintaining an audit trail improves accountability and supports governance.
 
 ---
 
-# Log Management
+## Log Management
 
 ```
 Event Collection
@@ -1522,7 +1522,7 @@ Organizations should define retention and access policies according to business 
 
 ---
 
-# Compliance Integration
+## Compliance Integration
 
 CI/CD Security contributes to organizational compliance by documenting engineering activities.
 
@@ -1550,7 +1550,7 @@ Automated documentation improves consistency and reduces manual effort.
 
 ---
 
-# Compliance Documentation
+## Compliance Documentation
 
 ```
 Documentation
@@ -1578,7 +1578,7 @@ Comprehensive documentation simplifies governance and audit activities.
 
 ---
 
-# Change Management
+## Change Management
 
 Every significant pipeline modification should follow a documented change management process.
 
@@ -1610,7 +1610,7 @@ Structured change management helps maintain pipeline stability.
 
 ---
 
-# Risk Management
+## Risk Management
 
 Pipeline risks should be identified and managed throughout the software lifecycle.
 
@@ -1642,7 +1642,7 @@ Risk assessments should be updated whenever major architectural or operational c
 
 ---
 
-# Risk Categories
+## Risk Categories
 
 ```
 Pipeline Risks
@@ -1670,7 +1670,7 @@ Categorizing risks helps prioritize mitigation efforts.
 
 ---
 
-# Incident Response
+## Incident Response
 
 Operational readiness includes a documented incident response process.
 
@@ -1702,7 +1702,7 @@ Lessons learned should feed back into future pipeline improvements.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Pipeline Monitoring
@@ -1728,7 +1728,7 @@ Continuous improvement strengthens pipeline resilience over time.
 
 ---
 
-# Enterprise CI/CD Security Architecture
+## Enterprise CI/CD Security Architecture
 
 ```
                  Source Repository
@@ -1780,7 +1780,7 @@ Operational monitoring and governance complement automated delivery.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational insurance company operates hundreds of software delivery pipelines.
 
@@ -1816,7 +1816,7 @@ Engineering teams continuously monitor build performance, repository activity, d
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1831,7 +1831,7 @@ Engineering teams continuously monitor build performance, repository activity, d
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1844,7 +1844,7 @@ Engineering teams continuously monitor build performance, repository activity, d
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a monitoring architecture for an enterprise CI/CD environment.
 2. Identify critical identities used throughout the pipeline.
@@ -1856,7 +1856,7 @@ Engineering teams continuously monitor build performance, repository activity, d
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is Identity and Access Management important in CI/CD Security?
 2. What is the Principle of Least Privilege?
@@ -1871,7 +1871,7 @@ Engineering teams continuously monitor build performance, repository activity, d
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply strong IAM controls across the entire pipeline.
 - Enforce least-privilege access for users and services.
@@ -1884,7 +1884,7 @@ Engineering teams continuously monitor build performance, repository activity, d
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Granting excessive permissions to pipeline users or services.
 - Maintaining isolated logging systems.
@@ -1896,7 +1896,7 @@ Engineering teams continuously monitor build performance, repository activity, d
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Strong identity management and least-privilege access are foundational to CI/CD Security.
 - Continuous monitoring, centralized logging, and governance improve operational visibility.
@@ -1904,15 +1904,15 @@ Engineering teams continuously monitor build performance, repository activity, d
 - Incident response and continuous improvement strengthen long-term pipeline resilience.
 - Mature CI/CD Security combines automation with governance, monitoring, and operational excellence.
 
-# 57-CI-CD-Security.md
+## 57-CI-CD-Security.md
 
-# Part 4 — Enterprise Governance, Zero Trust, Software Supply Chain Security, Security Maturity, Best Practices, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, Software Supply Chain Security, Security Maturity, Best Practices, and Chapter Summary
 
 > **"CI/CD Security is not limited to protecting the deployment pipeline—it establishes trust across the entire software supply chain by combining governance, automation, identity, monitoring, and continuous improvement."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1929,7 +1929,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise CI/CD Governance
+## Enterprise CI/CD Governance
 
 Enterprise governance ensures every software delivery pipeline follows consistent security standards.
 
@@ -1961,7 +1961,7 @@ Governance aligns engineering activities with organizational risk management and
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 CI/CD Governance
@@ -1991,7 +1991,7 @@ Standardized governance improves consistency across teams and projects.
 
 ---
 
-# Zero Trust in CI/CD
+## Zero Trust in CI/CD
 
 Zero Trust principles apply to every pipeline component.
 
@@ -2019,7 +2019,7 @@ Every access request should be verified before interacting with critical pipelin
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -2047,7 +2047,7 @@ These principles strengthen the overall security posture of CI/CD environments.
 
 ---
 
-# Software Supply Chain Security
+## Software Supply Chain Security
 
 Modern software delivery depends on numerous internal and external components.
 
@@ -2077,7 +2077,7 @@ Protecting each component improves confidence in the integrity of delivered soft
 
 ---
 
-# Supply Chain Governance
+## Supply Chain Governance
 
 ```
 Component Selection
@@ -2111,7 +2111,7 @@ Governance should be applied consistently throughout the software supply chain.
 
 ---
 
-# Software Bill of Materials (SBOM)
+## Software Bill of Materials (SBOM)
 
 An SBOM documents the software components that make up an application.
 
@@ -2141,7 +2141,7 @@ Maintaining an SBOM improves software inventory management, governance, and oper
 
 ---
 
-# Benefits of an SBOM
+## Benefits of an SBOM
 
 ```
 SBOM Benefits
@@ -2169,7 +2169,7 @@ An accurate SBOM supports informed decision-making throughout the software lifec
 
 ---
 
-# Pipeline Resilience
+## Pipeline Resilience
 
 CI/CD pipelines should be designed for reliability as well as security.
 
@@ -2201,7 +2201,7 @@ Resilient pipeline design minimizes operational disruption.
 
 ---
 
-# Backup and Recovery
+## Backup and Recovery
 
 Critical CI/CD assets should be protected through documented backup and recovery procedures.
 
@@ -2229,7 +2229,7 @@ Regular testing helps ensure recovery processes remain effective.
 
 ---
 
-# Business Continuity
+## Business Continuity
 
 Pipeline availability supports ongoing software delivery.
 
@@ -2257,7 +2257,7 @@ Business continuity planning should include pipeline infrastructure and supporti
 
 ---
 
-# Enterprise Security Maturity Model
+## Enterprise Security Maturity Model
 
 ```
 Level 1
@@ -2294,7 +2294,7 @@ Organizations mature by improving governance, automation, monitoring, and collab
 
 ---
 
-# Characteristics of Mature CI/CD Security
+## Characteristics of Mature CI/CD Security
 
 ```
 Mature CI/CD Security
@@ -2322,7 +2322,7 @@ Mature CI/CD Security
 
 ---
 
-# Enterprise CI/CD Architecture
+## Enterprise CI/CD Architecture
 
 ```
                  Business Requirements
@@ -2372,7 +2372,7 @@ The architecture demonstrates how governance, monitoring, and secure software de
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization manages hundreds of development teams delivering cloud-native applications.
 
@@ -2408,7 +2408,7 @@ All repositories follow standardized governance, build environments are centrall
 
 ---
 
-# Enterprise Readiness Checklist
+## Enterprise Readiness Checklist
 
 ```
 ✓ Secure Repository Governance Established
@@ -2434,7 +2434,7 @@ All repositories follow standardized governance, build environments are centrall
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2447,9 +2447,9 @@ All repositories follow standardized governance, build environments are centrall
 
 ---
 
-# CI/CD Security Quick Revision
+## CI/CD Security Quick Revision
 
-## Secure Pipeline
+### Secure Pipeline
 
 ```
 Source Control
@@ -2477,7 +2477,7 @@ Monitoring
 
 ---
 
-## Core Security Principles
+### Core Security Principles
 
 ```
 Security by Design
@@ -2505,7 +2505,7 @@ Continuous Improvement
 
 ---
 
-## Operational Lifecycle
+### Operational Lifecycle
 
 ```
 Planning
@@ -2533,7 +2533,7 @@ Optimization
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise CI/CD architecture for a cloud-native application.
 2. Identify trust boundaries across the software delivery pipeline.
@@ -2545,7 +2545,7 @@ Optimization
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is CI/CD Security?
 2. Why should CI/CD pipelines follow Zero Trust principles?
@@ -2560,7 +2560,7 @@ Optimization
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design CI/CD pipelines with security from the outset.
 - Apply Zero Trust principles across all pipeline components.
@@ -2573,7 +2573,7 @@ Optimization
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating CI/CD Security as only a deployment concern.
 - Overlooking software supply chain governance.
@@ -2585,7 +2585,7 @@ Optimization
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

@@ -51,7 +51,7 @@ The objective is to build an organization that can **respond effectively even wh
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 During a major security incident, time is limited.
 
@@ -86,7 +86,7 @@ Preparation reduces the amount of decision-making that must happen from scratch.
 
 ---
 
-# Incident Response Readiness Model
+## Incident Response Readiness Model
 
 A mature IR program can be viewed as several interconnected capabilities.
 
@@ -116,11 +116,11 @@ A mature IR program can be viewed as several interconnected capabilities.
 
 ---
 
-# Preparation Objectives
+## Preparation Objectives
 
 An enterprise should be able to answer the following questions **before an incident occurs**:
 
-### People
+#### People
 
 - Who leads an incident?
 - Who investigates endpoints?
@@ -129,7 +129,7 @@ An enterprise should be able to answer the following questions **before an incid
 - Who communicates with executives?
 - Who contacts legal?
 
-### Technology
+#### Technology
 
 - What telemetry is available?
 - Is EDR deployed?
@@ -137,21 +137,21 @@ An enterprise should be able to answer the following questions **before an incid
 - Are authentication logs retained?
 - Are cloud audit logs enabled?
 
-### Process
+#### Process
 
 - How is an incident declared?
 - How is severity assigned?
 - How is escalation performed?
 - Who can authorize containment?
 
-### Evidence
+#### Evidence
 
 - Where are logs stored?
 - How are logs preserved?
 - How is chain of custody maintained?
 - How are forensic images handled?
 
-### Recovery
+#### Recovery
 
 - Are backups available?
 - Are backups isolated?
@@ -162,7 +162,7 @@ If the organization cannot answer these questions, there are likely readiness ga
 
 ---
 
-# Incident Response Policy
+## Incident Response Policy
 
 An **incident response policy** establishes the organization's formal commitment to responding to cybersecurity incidents.
 
@@ -188,7 +188,7 @@ The policy should answer:
 
 ---
 
-# Incident Response Plan
+## Incident Response Plan
 
 The IR plan translates policy into an operational framework.
 
@@ -231,7 +231,7 @@ It should not exist only as a document stored on a potentially compromised inter
 
 ---
 
-# Incident Response Plan Components
+## Incident Response Plan Components
 
 A practical plan should contain:
 
@@ -257,7 +257,7 @@ Review Process
 
 ---
 
-# Roles and Responsibilities
+## Roles and Responsibilities
 
 Preparation requires clearly defined ownership.
 
@@ -288,7 +288,7 @@ The important principle is:
 
 ---
 
-# RACI for Incident Response
+## RACI for Incident Response
 
 A RACI model can help define ownership.
 
@@ -314,7 +314,7 @@ The exact assignment depends on the organization's structure.
 
 ---
 
-# Incident Response Contact Matrix
+## Incident Response Contact Matrix
 
 Maintain a contact matrix that is accessible during an incident.
 
@@ -354,7 +354,7 @@ If the organization loses access to its primary identity or email environment, a
 
 ---
 
-# Emergency Communication
+## Emergency Communication
 
 A mature IR plan should define secure communication channels.
 
@@ -384,7 +384,7 @@ Incident Team
 
 ---
 
-# Asset Inventory
+## Asset Inventory
 
 Incident response depends heavily on knowing what exists.
 
@@ -423,13 +423,13 @@ Backup Status
 
 ---
 
-# Critical Asset Identification
+## Critical Asset Identification
 
 Not every system has equal business importance.
 
 Organizations should identify:
 
-### Tier 0
+#### Tier 0
 
 Identity and security infrastructure.
 
@@ -440,7 +440,7 @@ Examples:
 - Privileged access systems
 - Certificate authorities
 
-### Tier 1
+#### Tier 1
 
 Critical business infrastructure.
 
@@ -450,7 +450,7 @@ Examples:
 - Payment systems
 - Core applications
 
-### Tier 2
+#### Tier 2
 
 Important supporting systems.
 
@@ -460,7 +460,7 @@ Examples:
 - File servers
 - Department systems
 
-### Tier 3
+#### Tier 3
 
 Lower-criticality systems.
 
@@ -474,7 +474,7 @@ This classification helps determine response priorities.
 
 ---
 
-# Crown Jewels
+## Crown Jewels
 
 The organization should identify its **crown jewels**.
 
@@ -496,7 +496,7 @@ During an incident, responders need to determine quickly:
 
 ---
 
-# Dependency Mapping
+## Dependency Mapping
 
 Critical services may depend on multiple systems.
 
@@ -519,7 +519,7 @@ Dependency mapping therefore improves containment decisions.
 
 ---
 
-# Logging Readiness
+## Logging Readiness
 
 Logging is one of the most important IR preparation activities.
 
@@ -542,7 +542,7 @@ Email ───────────┤
 
 ---
 
-# Endpoint Logging
+## Endpoint Logging
 
 Useful endpoint telemetry includes:
 
@@ -573,7 +573,7 @@ Linux environments may use:
 
 ---
 
-# Network Logging
+## Network Logging
 
 Important sources include:
 
@@ -605,7 +605,7 @@ Monitoring
 
 ---
 
-# Identity Logging
+## Identity Logging
 
 Identity telemetry is essential for investigating modern attacks.
 
@@ -624,27 +624,27 @@ Collect relevant information about:
 
 ---
 
-# Cloud Logging
+## Cloud Logging
 
 Cloud environments require dedicated audit visibility.
 
 Examples:
 
-### AWS
+#### AWS
 
 - CloudTrail
 - VPC Flow Logs
 - GuardDuty
 - IAM events
 
-### Microsoft Cloud
+#### Microsoft Cloud
 
 - Entra ID sign-in logs
 - Audit logs
 - Defender telemetry
 - Azure activity logs
 
-### Google Cloud
+#### Google Cloud
 
 - Cloud Audit Logs
 - VPC Flow Logs
@@ -654,7 +654,7 @@ Without cloud audit logging, cloud incident investigation can become severely li
 
 ---
 
-# Log Retention
+## Log Retention
 
 Logs must remain available long enough to support investigations.
 
@@ -684,7 +684,7 @@ If an attacker remained undetected for months but logs were retained for only se
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Incident timelines depend on accurate timestamps.
 
@@ -716,7 +716,7 @@ even though the events occurred only seconds apart.
 
 ---
 
-# EDR Readiness
+## EDR Readiness
 
 Endpoint Detection and Response can significantly improve investigation capability.
 
@@ -749,7 +749,7 @@ Can historical telemetry be queried?
 
 ---
 
-# SIEM Readiness
+## SIEM Readiness
 
 The SIEM should support:
 
@@ -774,7 +774,7 @@ How quickly can queries run?
 
 ---
 
-# Evidence Readiness
+## Evidence Readiness
 
 Evidence handling should be designed before incidents.
 
@@ -806,7 +806,7 @@ The organization should define:
 
 ---
 
-# Chain of Custody
+## Chain of Custody
 
 Chain of custody documents the handling of evidence.
 
@@ -855,7 +855,7 @@ Purpose
 
 ---
 
-# Backup Readiness
+## Backup Readiness
 
 Backups are critical to recovery.
 
@@ -877,7 +877,7 @@ Ransomware response particularly depends on backup resilience.
 
 ---
 
-# Backup Architecture
+## Backup Architecture
 
 A simplified resilient model:
 
@@ -900,7 +900,7 @@ Backups should not depend entirely on the same identity and administrative infra
 
 ---
 
-# Recovery Readiness
+## Recovery Readiness
 
 Organizations should identify:
 
@@ -911,13 +911,13 @@ Organizations should identify:
 - Recovery time objectives
 - Recovery point objectives
 
-### RTO
+#### RTO
 
 **Recovery Time Objective**
 
 How quickly a service should be restored.
 
-### RPO
+#### RPO
 
 **Recovery Point Objective**
 
@@ -936,13 +936,13 @@ This means the organization targets a recovery point no more than approximately 
 
 ---
 
-# Incident Playbooks
+## Incident Playbooks
 
 Playbooks turn general response procedures into actionable workflows.
 
 Example:
 
-## Phishing Playbook
+### Phishing Playbook
 
 ```text
 Phishing Report
@@ -979,7 +979,7 @@ Close / Escalate
 
 ---
 
-# Recommended Playbooks
+## Recommended Playbooks
 
 Organizations should consider maintaining playbooks for:
 
@@ -1004,7 +1004,7 @@ Privileged Account Compromise
 
 ---
 
-# Communication Playbooks
+## Communication Playbooks
 
 Technical playbooks are not enough.
 
@@ -1036,7 +1036,7 @@ The communication procedure should define:
 
 ---
 
-# Legal and Regulatory Readiness
+## Legal and Regulatory Readiness
 
 Some incidents may trigger:
 
@@ -1068,7 +1068,7 @@ Jurisdiction and contractual requirements vary, so organizations should establis
 
 ---
 
-# Cyber Insurance Readiness
+## Cyber Insurance Readiness
 
 Organizations with cyber insurance should understand:
 
@@ -1084,7 +1084,7 @@ Do not wait until a major incident to discover that a policy requires a specific
 
 ---
 
-# Third-Party Incident Response
+## Third-Party Incident Response
 
 Organizations often depend on external providers.
 
@@ -1111,7 +1111,7 @@ Third Party
 
 ---
 
-# Third-Party Risk Questions
+## Third-Party Risk Questions
 
 Before an incident, determine:
 
@@ -1125,7 +1125,7 @@ Before an incident, determine:
 
 ---
 
-# Tabletop Exercises
+## Tabletop Exercises
 
 A tabletop exercise is a discussion-based simulation of an incident.
 
@@ -1149,7 +1149,7 @@ The goal is to test **decision-making and coordination**.
 
 ---
 
-# Tabletop Exercise Structure
+## Tabletop Exercise Structure
 
 ```text
 Scenario
@@ -1178,7 +1178,7 @@ Lessons Learned
 
 ---
 
-# Purple Team Exercises
+## Purple Team Exercises
 
 Purple teaming validates whether security controls actually detect attacker behavior.
 
@@ -1209,121 +1209,121 @@ This creates a continuous validation cycle.
 
 ---
 
-# Incident Response Readiness Testing
+## Incident Response Readiness Testing
 
 Readiness can be tested through:
 
-### Tabletop Exercises
+#### Tabletop Exercises
 
 Test communication and decisions.
 
-### Technical Simulations
+#### Technical Simulations
 
 Test actual response procedures.
 
-### Purple Team
+#### Purple Team
 
 Test detections against simulated adversary behavior.
 
-### Recovery Exercises
+#### Recovery Exercises
 
 Test backup restoration.
 
-### Forensic Exercises
+#### Forensic Exercises
 
 Test evidence acquisition and analysis.
 
-### Communication Exercises
+#### Communication Exercises
 
 Test executive and external communications.
 
 ---
 
-# Common Preparation Gaps
+## Common Preparation Gaps
 
-## 1. Security Tools Without Coverage
+### 1. Security Tools Without Coverage
 
 An organization may own EDR but have large numbers of unmanaged endpoints.
 
-### Problem
+#### Problem
 
 Tool ownership does not equal visibility.
 
 ---
 
-## 2. Logs Without Retention
+### 2. Logs Without Retention
 
 Logs may exist but disappear before an incident is discovered.
 
-### Problem
+#### Problem
 
 Historical investigation becomes impossible.
 
 ---
 
-## 3. Backups Without Recovery Tests
+### 3. Backups Without Recovery Tests
 
 Backups may be corrupted, inaccessible, or incomplete.
 
-### Problem
+#### Problem
 
 Recovery assumptions are unverified.
 
 ---
 
-## 4. Plans Without Exercises
+### 4. Plans Without Exercises
 
 A well-written IR plan may fail during a real incident.
 
-### Problem
+#### Problem
 
 Roles and communication have never been tested.
 
 ---
 
-## 5. Excessive Administrative Access
+### 5. Excessive Administrative Access
 
 Responders may be unable to contain an incident because required permissions are unclear.
 
-### Problem
+#### Problem
 
 Response actions are delayed.
 
 ---
 
-## 6. No Out-of-Band Communication
+### 6. No Out-of-Band Communication
 
 The organization's primary communication environment may be compromised.
 
-### Problem
+#### Problem
 
 Responders cannot coordinate securely.
 
 ---
 
-## 7. No Asset Ownership
+### 7. No Asset Ownership
 
 The team cannot quickly identify who owns the affected system.
 
-### Problem
+#### Problem
 
 Containment decisions are delayed.
 
 ---
 
-## 8. No Cloud Visibility
+### 8. No Cloud Visibility
 
 Cloud resources may operate without adequate audit logs.
 
-### Problem
+#### Problem
 
 Cloud investigation becomes severely limited.
 
 ---
 
-# IR Readiness Checklist
+## IR Readiness Checklist
 
-## Governance
+### Governance
 
 ```text
 [ ] IR policy exists
@@ -1337,7 +1337,7 @@ Cloud investigation becomes severely limited.
 
 ---
 
-## People
+### People
 
 ```text
 [ ] Incident Commander identified
@@ -1353,7 +1353,7 @@ Cloud investigation becomes severely limited.
 
 ---
 
-## Technology
+### Technology
 
 ```text
 [ ] SIEM deployed
@@ -1368,7 +1368,7 @@ Cloud investigation becomes severely limited.
 
 ---
 
-## Evidence
+### Evidence
 
 ```text
 [ ] Evidence collection procedure
@@ -1382,7 +1382,7 @@ Cloud investigation becomes severely limited.
 
 ---
 
-## Recovery
+### Recovery
 
 ```text
 [ ] Critical services identified
@@ -1396,7 +1396,7 @@ Cloud investigation becomes severely limited.
 
 ---
 
-## Exercises
+### Exercises
 
 ```text
 [ ] Tabletop exercises
@@ -1408,15 +1408,15 @@ Cloud investigation becomes severely limited.
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-# Lab — Build an Incident Response Readiness Plan
+## Lab — Build an Incident Response Readiness Plan
 
-## Objective
+### Objective
 
 Design a basic IR readiness program for a fictional organization.
 
-### Environment
+#### Environment
 
 Assume an organization has:
 
@@ -1434,7 +1434,7 @@ Production Database
 
 ---
 
-## Task 1 — Identify Critical Assets
+### Task 1 — Identify Critical Assets
 
 Create a table:
 
@@ -1448,7 +1448,7 @@ Create a table:
 
 ---
 
-## Task 2 — Identify Telemetry
+### Task 2 — Identify Telemetry
 
 Determine whether the environment provides:
 
@@ -1466,7 +1466,7 @@ Determine whether the environment provides:
 
 ---
 
-## Task 3 — Create an Escalation Model
+### Task 3 — Create an Escalation Model
 
 Example:
 
@@ -1484,7 +1484,7 @@ SEV-1
 
 ---
 
-## Task 4 — Create a Ransomware Playbook
+### Task 4 — Create a Ransomware Playbook
 
 Define:
 
@@ -1501,7 +1501,7 @@ Define:
 
 ---
 
-## Task 5 — Identify Readiness Gaps
+### Task 5 — Identify Readiness Gaps
 
 Document:
 
@@ -1524,9 +1524,9 @@ Example:
 
 ---
 
-# Advanced Lab
+## Advanced Lab
 
-## Scenario
+### Scenario
 
 A company discovers suspicious authentication activity against a privileged cloud account.
 
@@ -1552,7 +1552,7 @@ Privilege modification
 Cloud API activity
 ```
 
-### Your task
+#### Your task
 
 Develop a readiness-based response plan answering:
 
@@ -1580,21 +1580,21 @@ Develop a readiness-based response plan answering:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is incident response preparation?
+### 1. What is incident response preparation?
 
 It is the process of establishing the people, processes, technologies, evidence capabilities, communication mechanisms, and recovery procedures required to respond effectively to cybersecurity incidents.
 
 ---
 
-## 2. Why is preparation important?
+### 2. Why is preparation important?
 
 Preparation reduces response time, prevents confusion, improves evidence preservation, and allows organizations to make informed decisions during high-pressure incidents.
 
 ---
 
-## 3. What should an incident response plan contain?
+### 3. What should an incident response plan contain?
 
 At minimum:
 
@@ -1613,7 +1613,7 @@ At minimum:
 
 ---
 
-## 4. What is an asset inventory and why is it important?
+### 4. What is an asset inventory and why is it important?
 
 An asset inventory identifies systems, applications, identities, and infrastructure owned or managed by an organization.
 
@@ -1621,13 +1621,13 @@ It is essential because responders must know what they are protecting and who ow
 
 ---
 
-## 5. Why are critical assets important?
+### 5. Why are critical assets important?
 
 Critical assets require prioritized protection and response because their compromise may create significant business, security, or regulatory impact.
 
 ---
 
-## 6. What is the difference between RTO and RPO?
+### 6. What is the difference between RTO and RPO?
 
 **RTO** defines the target time for restoring a service.
 
@@ -1635,7 +1635,7 @@ Critical assets require prioritized protection and response because their compro
 
 ---
 
-## 7. Why are backups not enough?
+### 7. Why are backups not enough?
 
 Backups may be:
 
@@ -1649,19 +1649,19 @@ Therefore restoration must be tested.
 
 ---
 
-## 8. What is a tabletop exercise?
+### 8. What is a tabletop exercise?
 
 A tabletop exercise is a discussion-based simulation where participants walk through an incident scenario and make decisions without necessarily performing the technical actions themselves.
 
 ---
 
-## 9. What is a purple-team exercise?
+### 9. What is a purple-team exercise?
 
 A purple-team exercise combines adversary simulation with defensive validation to determine whether security controls detect and respond to simulated attacker behavior.
 
 ---
 
-## 10. What logs should an organization collect for incident response?
+### 10. What logs should an organization collect for incident response?
 
 Depending on the environment:
 
@@ -1679,31 +1679,31 @@ Depending on the environment:
 
 ---
 
-## 11. Why is time synchronization important?
+### 11. Why is time synchronization important?
 
 Accurate timestamps allow investigators to correlate activity across multiple systems and reconstruct reliable incident timelines.
 
 ---
 
-## 12. Why should organizations maintain out-of-band communication?
+### 12. Why should organizations maintain out-of-band communication?
 
 During some incidents, internal email, identity systems, collaboration tools, or other communication infrastructure may itself be compromised or unavailable.
 
 ---
 
-## 13. What is chain of custody?
+### 13. What is chain of custody?
 
 Chain of custody documents who collected, handled, transferred, stored, and analyzed evidence to preserve its integrity and accountability.
 
 ---
 
-## 14. What is the purpose of an incident response playbook?
+### 14. What is the purpose of an incident response playbook?
 
 A playbook provides repeatable, actionable procedures for handling a specific incident type.
 
 ---
 
-## 15. What is the most important aspect of IR readiness?
+### 15. What is the most important aspect of IR readiness?
 
 There is no single control.
 
@@ -1727,7 +1727,7 @@ Practice
 
 ---
 
-# Enterprise IR Readiness Architecture
+## Enterprise IR Readiness Architecture
 
 A mature environment may look like:
 
@@ -1773,11 +1773,11 @@ A mature environment may look like:
 
 ---
 
-# Readiness Metrics
+## Readiness Metrics
 
 Organizations can measure IR preparedness using metrics such as:
 
-### Coverage
+#### Coverage
 
 ```text
 EDR Coverage
@@ -1785,7 +1785,7 @@ EDR Coverage
 Protected Endpoints / Total Endpoints
 ```
 
-### Logging Coverage
+#### Logging Coverage
 
 ```text
 Logging Coverage
@@ -1793,7 +1793,7 @@ Logging Coverage
 Assets With Required Logs / Critical Assets
 ```
 
-### Playbook Coverage
+#### Playbook Coverage
 
 ```text
 Playbook Coverage
@@ -1803,7 +1803,7 @@ Incident Types With Tested Playbooks
 Priority Incident Types
 ```
 
-### Exercise Completion
+#### Exercise Completion
 
 ```text
 Exercise Completion
@@ -1825,9 +1825,9 @@ Metrics should measure meaningful capability rather than simply the number of do
 
 ---
 
-# Readiness Maturity Model
+## Readiness Maturity Model
 
-## Level 1 — Ad Hoc
+### Level 1 — Ad Hoc
 
 ```text
 No formal plan
@@ -1835,7 +1835,7 @@ Limited logging
 Unclear responsibilities
 ```
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 ```text
 Basic IR plan
@@ -1843,7 +1843,7 @@ Basic logging
 Defined escalation
 ```
 
-## Level 3 — Defined
+### Level 3 — Defined
 
 ```text
 Formal IR program
@@ -1852,7 +1852,7 @@ Exercises
 Evidence procedures
 ```
 
-## Level 4 — Measured
+### Level 4 — Measured
 
 ```text
 Coverage metrics
@@ -1861,7 +1861,7 @@ Recovery testing
 Detection validation
 ```
 
-## Level 5 — Optimized
+### Level 5 — Optimized
 
 ```text
 Continuous validation
@@ -1873,7 +1873,7 @@ Continuous improvement
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Incident response preparation is the foundation of effective response.
 
@@ -1914,9 +1914,9 @@ A mature organization should not wait for a breach to discover that:
 
 ---
 
-# References
+## References
 
-### NIST
+#### NIST
 
 **Computer Security Incident Handling Guide — SP 800-61**
 
@@ -1926,31 +1926,31 @@ https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
 https://www.nist.gov/cyberframework
 
-### CISA
+#### CISA
 
 Cybersecurity and incident response resources:
 
 https://www.cisa.gov/
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 Threat-informed defense and adversary behavior:
 
 https://attack.mitre.org/
 
-### CIS
+#### CIS
 
 CIS Critical Security Controls:
 
 https://www.cisecurity.org/controls
 
-### FIRST
+#### FIRST
 
 Incident response and security team resources:
 
 https://www.first.org/
 
-### SANS
+#### SANS
 
 Incident response resources:
 
@@ -1958,7 +1958,7 @@ https://www.sans.org/
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Effective incident response is not created when an incident begins.
 

@@ -1,6 +1,6 @@
 # 17 - Cross-Site Request Forgery (CSRF) in APIs
 
-# Introduction
+## Introduction
 
 Cross-Site Request Forgery (CSRF) is a web security attack in which a victim's browser is tricked into sending unintended authenticated requests to a trusted application.
 
@@ -16,7 +16,7 @@ Modern APIs using stateless authentication (such as properly implemented Bearer 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -32,7 +32,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is CSRF?
+## What is CSRF?
 
 A CSRF attack forces a victim's authenticated browser to perform actions without the user's intention.
 
@@ -66,7 +66,7 @@ Action Performed
 
 ---
 
-# Why CSRF Works
+## Why CSRF Works
 
 Browsers automatically attach certain credentials to requests.
 
@@ -80,7 +80,7 @@ If the server cannot distinguish legitimate user actions from forged requests, t
 
 ---
 
-# Browser Trust Model
+## Browser Trust Model
 
 ```
 User
@@ -110,7 +110,7 @@ The browser behaves correctly according to web standards—the server must valid
 
 ---
 
-# CSRF Attack Prerequisites
+## CSRF Attack Prerequisites
 
 A successful CSRF attack typically requires:
 
@@ -122,7 +122,7 @@ A successful CSRF attack typically requires:
 
 ---
 
-# Typical CSRF Targets
+## Typical CSRF Targets
 
 Examples
 
@@ -136,7 +136,7 @@ Examples
 
 ---
 
-# CSRF Attack Flow
+## CSRF Attack Flow
 
 ```
 Victim
@@ -172,7 +172,7 @@ Transaction Executes
 
 ---
 
-# Example Scenario
+## Example Scenario
 
 ```
 Victim
@@ -200,7 +200,7 @@ Sensitive Action
 
 ---
 
-# Why APIs Can Be Vulnerable
+## Why APIs Can Be Vulnerable
 
 REST APIs are vulnerable when:
 
@@ -212,7 +212,7 @@ APIs using Authorization headers with manually supplied Bearer Tokens are genera
 
 ---
 
-# CSRF vs XSS
+## CSRF vs XSS
 
 | CSRF | XSS |
 |------|-----|
@@ -223,7 +223,7 @@ APIs using Authorization headers with manually supplied Bearer Tokens are genera
 
 ---
 
-# CSRF vs CORS
+## CSRF vs CORS
 
 | CSRF | CORS |
 |------|------|
@@ -235,7 +235,7 @@ CORS does **not** prevent CSRF attacks by itself.
 
 ---
 
-# Session Cookies
+## Session Cookies
 
 ```
 User Login
@@ -265,7 +265,7 @@ This automatic behavior is the core reason CSRF attacks are possible.
 
 ---
 
-# Stateful Authentication
+## Stateful Authentication
 
 ```
 Browser
@@ -287,7 +287,7 @@ CSRF primarily affects stateful authentication models.
 
 ---
 
-# Stateless Authentication
+## Stateless Authentication
 
 ```
 Browser
@@ -309,7 +309,7 @@ Since browsers do not automatically attach Authorization headers to cross-origin
 
 ---
 
-# Safe vs Unsafe HTTP Methods
+## Safe vs Unsafe HTTP Methods
 
 Safe methods
 
@@ -328,7 +328,7 @@ CSRF protection should focus on state-changing operations.
 
 ---
 
-# Why GET Should Not Modify State
+## Why GET Should Not Modify State
 
 Incorrect
 
@@ -351,7 +351,7 @@ GET requests should remain idempotent and free of side effects.
 
 ---
 
-# HTML Form CSRF
+## HTML Form CSRF
 
 An attacker-controlled page may automatically submit a hidden form.
 
@@ -377,7 +377,7 @@ Server Executes Action
 
 ---
 
-# Image-Based CSRF
+## Image-Based CSRF
 
 Historically, some applications exposed state-changing actions via GET requests.
 
@@ -393,7 +393,7 @@ State-changing operations must never rely on GET requests.
 
 ---
 
-# Auto-Submitting Forms
+## Auto-Submitting Forms
 
 ```
 Hidden Form
@@ -419,7 +419,7 @@ The victim often sees no visible indication.
 
 ---
 
-# API Gateway Perspective
+## API Gateway Perspective
 
 ```
 Browser
@@ -445,7 +445,7 @@ Without CSRF validation, the gateway cannot distinguish legitimate and forged re
 
 ---
 
-# Modern Browser Security
+## Modern Browser Security
 
 Modern browsers include several protections.
 
@@ -460,7 +460,7 @@ However, applications must still implement server-side defenses.
 
 ---
 
-# Best Practices
+## Best Practices
 
 Authentication
 
@@ -482,7 +482,7 @@ Operations
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid
 
@@ -497,7 +497,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - CSRF exploits automatic browser credential transmission.
 - Cookie-based authentication is the primary risk factor.
@@ -507,7 +507,7 @@ Avoid
 
 ---
 
-# Anti-CSRF Tokens
+## Anti-CSRF Tokens
 
 The most widely used defense against CSRF is the anti-CSRF token.
 
@@ -541,7 +541,7 @@ If the token is missing or invalid, the request is rejected.
 
 ---
 
-# Why Anti-CSRF Tokens Work
+## Why Anti-CSRF Tokens Work
 
 An attacker can cause the victim's browser to send cookies automatically.
 
@@ -575,7 +575,7 @@ Attack Fails
 
 ---
 
-# Characteristics of Secure CSRF Tokens
+## Characteristics of Secure CSRF Tokens
 
 A secure token should be:
 
@@ -595,7 +595,7 @@ Avoid:
 
 ---
 
-# Synchronizer Token Pattern
+## Synchronizer Token Pattern
 
 The Synchronizer Token Pattern stores the token on the server.
 
@@ -635,7 +635,7 @@ Disadvantages
 
 ---
 
-# Double-Submit Cookie Pattern
+## Double-Submit Cookie Pattern
 
 Stateless applications commonly use the Double-Submit Cookie pattern.
 
@@ -671,7 +671,7 @@ If both values match, the request is accepted.
 
 ---
 
-# Double-Submit Workflow
+## Double-Submit Workflow
 
 ```
 User
@@ -703,7 +703,7 @@ Accept Request
 
 ---
 
-# Per-Session vs Per-Request Tokens
+## Per-Session vs Per-Request Tokens
 
 | Token Type | Advantages | Disadvantages |
 |------------|------------|---------------|
@@ -714,7 +714,7 @@ Many enterprise applications use per-session tokens with periodic rotation.
 
 ---
 
-# Token Rotation
+## Token Rotation
 
 Regular token rotation reduces exposure.
 
@@ -742,7 +742,7 @@ Rotation is especially useful after authentication events or privilege changes.
 
 ---
 
-# Token Validation Process
+## Token Validation Process
 
 ```
 Incoming Request
@@ -772,7 +772,7 @@ Allow      Reject
 
 ---
 
-# Where Should Tokens Be Sent?
+## Where Should Tokens Be Sent?
 
 Common approaches
 
@@ -784,7 +784,7 @@ For APIs consumed by browser-based JavaScript applications, custom headers are g
 
 ---
 
-# Custom Request Headers
+## Custom Request Headers
 
 Example
 
@@ -800,7 +800,7 @@ Custom headers cannot be added by standard HTML forms alone, making them a usefu
 
 ---
 
-# Hidden Form Fields
+## Hidden Form Fields
 
 Traditional web applications often embed tokens.
 
@@ -820,7 +820,7 @@ The server validates the submitted token before processing the request.
 
 ---
 
-# Token Expiration
+## Token Expiration
 
 Tokens should have reasonable lifetimes.
 
@@ -844,7 +844,7 @@ Very long-lived tokens increase risk if disclosed.
 
 ---
 
-# SameSite Cookies
+## SameSite Cookies
 
 Modern browsers support the `SameSite` cookie attribute.
 
@@ -860,7 +860,7 @@ This is one of the most effective browser-level CSRF mitigations.
 
 ---
 
-# SameSite Modes
+## SameSite Modes
 
 | Mode | Behavior |
 |------|----------|
@@ -870,7 +870,7 @@ This is one of the most effective browser-level CSRF mitigations.
 
 ---
 
-# SameSite=Strict
+## SameSite=Strict
 
 ```
 Browser
@@ -898,7 +898,7 @@ Disadvantages
 
 ---
 
-# SameSite=Lax
+## SameSite=Lax
 
 ```
 Top-Level Navigation
@@ -920,7 +920,7 @@ Lax offers a balance between usability and security for many applications.
 
 ---
 
-# SameSite=None
+## SameSite=None
 
 ```
 Cross-Site Requests
@@ -938,7 +938,7 @@ This mode should be used only when cross-site cookies are genuinely required.
 
 ---
 
-# Secure Cookie Attribute
+## Secure Cookie Attribute
 
 Sensitive cookies should include:
 
@@ -956,7 +956,7 @@ This instructs browsers to send the cookie only over HTTPS.
 
 ---
 
-# HttpOnly Attribute
+## HttpOnly Attribute
 
 ```
 Set-Cookie
@@ -975,7 +975,7 @@ Important
 
 ---
 
-# Secure Cookie Configuration
+## Secure Cookie Configuration
 
 Example
 
@@ -993,7 +993,7 @@ Production deployments should choose the appropriate `SameSite` value based on a
 
 ---
 
-# Origin Validation
+## Origin Validation
 
 Servers can validate the `Origin` header.
 
@@ -1023,7 +1023,7 @@ Origin validation provides an additional layer of protection but should compleme
 
 ---
 
-# Referer Validation
+## Referer Validation
 
 Some applications validate the `Referer` header.
 
@@ -1048,7 +1048,7 @@ Considerations
 
 ---
 
-# Combining Multiple Defenses
+## Combining Multiple Defenses
 
 A layered approach provides the strongest protection.
 
@@ -1082,7 +1082,7 @@ Protected API
 
 ---
 
-# CSRF Protection in REST APIs
+## CSRF Protection in REST APIs
 
 REST APIs using cookie-based authentication should implement:
 
@@ -1095,7 +1095,7 @@ REST APIs using Authorization headers instead of cookies generally have signific
 
 ---
 
-# CSRF Protection in GraphQL APIs
+## CSRF Protection in GraphQL APIs
 
 GraphQL mutations change application state.
 
@@ -1117,7 +1117,7 @@ Mutations authenticated with cookies require the same CSRF protections as REST e
 
 ---
 
-# CSRF and Single Page Applications (SPAs)
+## CSRF and Single Page Applications (SPAs)
 
 Typical workflow
 
@@ -1149,7 +1149,7 @@ The frontend framework automatically includes the token in protected requests.
 
 ---
 
-# Enterprise API Gateway Architecture
+## Enterprise API Gateway Architecture
 
 ```
                    Browser
@@ -1189,7 +1189,7 @@ The gateway can enforce Origin policies, while the application validates CSRF to
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1206,7 +1206,7 @@ Recommended detections
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Collect telemetry from
 
@@ -1247,7 +1247,7 @@ SOC Investigation
 
 ---
 
-# Example Correlation Rules
+## Example Correlation Rules
 
 Rule 1
 
@@ -1305,7 +1305,7 @@ Critical Alert
 
 ---
 
-# Hands-on Lab 1 – Token Validation
+## Hands-on Lab 1 – Token Validation
 
 **Objective**
 
@@ -1327,7 +1327,7 @@ Verify CSRF token enforcement.
 
 ---
 
-# Hands-on Lab 2 – SameSite Cookie Review
+## Hands-on Lab 2 – SameSite Cookie Review
 
 **Objective**
 
@@ -1348,7 +1348,7 @@ Inspect cookie protection settings.
 
 ---
 
-# Hands-on Lab 3 – Origin Validation
+## Hands-on Lab 3 – Origin Validation
 
 **Objective**
 
@@ -1369,9 +1369,9 @@ Evaluate Origin validation.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Legitimate Requests Rejected
+### Legitimate Requests Rejected
 
 Possible causes
 
@@ -1382,7 +1382,7 @@ Possible causes
 
 ---
 
-## Browser Not Sending Cookies
+### Browser Not Sending Cookies
 
 Possible causes
 
@@ -1393,7 +1393,7 @@ Possible causes
 
 ---
 
-## CSRF Protection Bypass Suspected
+### CSRF Protection Bypass Suspected
 
 Possible causes
 
@@ -1404,7 +1404,7 @@ Possible causes
 
 ---
 
-## Excessive CSRF Validation Failures
+### Excessive CSRF Validation Failures
 
 Possible causes
 
@@ -1415,7 +1415,7 @@ Possible causes
 
 ---
 
-## SPA Requests Failing
+### SPA Requests Failing
 
 Possible causes
 
@@ -1426,9 +1426,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is Cross-Site Request Forgery (CSRF)?
 2. Why are cookie-based applications vulnerable to CSRF?
@@ -1443,7 +1443,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. Compare `SameSite=Strict`, `Lax`, and `None`.
 12. How would you implement CSRF protection in a SPA?
@@ -1458,7 +1458,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1490,7 +1490,7 @@ Security monitoring reports a spike in rejected state-changing requests with inv
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we explored CSRF attacks against browser-based APIs and applications.
 
@@ -1516,7 +1516,7 @@ Modern CSRF protection relies on layered defenses that combine secure cookie con
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1532,21 +1532,21 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 6265 – HTTP State Management Mechanism
 - RFC 9110 – HTTP Semantics
 
-## Security Standards
+### Security Standards
 
 - OWASP Cross-Site Request Forgery Prevention Cheat Sheet
 - OWASP API Security Top 10
 - OWASP ASVS
 - NIST SP 800-53
 
-## Further Reading
+### Further Reading
 
 - Browser Cookie Specifications
 - MDN Web Docs – SameSite Cookies
@@ -1554,7 +1554,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 18 – API Input Validation**
 

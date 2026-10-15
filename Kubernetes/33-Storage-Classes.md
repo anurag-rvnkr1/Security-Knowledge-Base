@@ -61,7 +61,7 @@ Storage Backend
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -81,7 +81,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need StorageClasses?
+## Why Do We Need StorageClasses?
 
 Without StorageClasses:
 
@@ -129,7 +129,7 @@ The infrastructure can create storage automatically.
 
 ---
 
-# What is a StorageClass?
+## What is a StorageClass?
 
 A **StorageClass** is a Kubernetes object that defines a category of storage and the parameters required to provision it.
 
@@ -144,7 +144,7 @@ It can specify:
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```text
                     Application
@@ -177,9 +177,9 @@ It can specify:
 
 ---
 
-# Static vs Dynamic Provisioning
+## Static vs Dynamic Provisioning
 
-## Static Provisioning
+### Static Provisioning
 
 ```text
 Administrator
@@ -199,7 +199,7 @@ PVC binds to PV
 
 ---
 
-## Dynamic Provisioning
+### Dynamic Provisioning
 
 ```text
 Developer
@@ -233,7 +233,7 @@ Dynamic provisioning is the preferred approach for most modern production enviro
 
 ---
 
-# StorageClass YAML
+## StorageClass YAML
 
 Example:
 
@@ -258,7 +258,7 @@ The exact `provisioner` depends on the storage implementation.
 
 ---
 
-# StorageClass Components
+## StorageClass Components
 
 A StorageClass commonly contains:
 
@@ -275,7 +275,7 @@ StorageClass
 
 ---
 
-# Provisioner
+## Provisioner
 
 The `provisioner` identifies the component responsible for creating storage.
 
@@ -310,7 +310,7 @@ The exact provisioner name is implementation-specific.
 
 ---
 
-# Parameters
+## Parameters
 
 StorageClasses can pass parameters to the provisioner.
 
@@ -335,7 +335,7 @@ The supported parameters depend on the provisioner.
 
 ---
 
-# Reclaim Policy
+## Reclaim Policy
 
 StorageClasses can define the default reclaim behavior of dynamically created PVs.
 
@@ -353,7 +353,7 @@ Retain
 
 ---
 
-## Delete
+### Delete
 
 ```text
 PVC Deleted
@@ -371,7 +371,7 @@ Useful when storage should automatically be cleaned up.
 
 ---
 
-## Retain
+### Retain
 
 ```text
 PVC Deleted
@@ -389,7 +389,7 @@ Useful for critical data where accidental deletion must be avoided.
 
 ---
 
-# Volume Binding Mode
+## Volume Binding Mode
 
 StorageClasses can define when a dynamically provisioned volume should be created and bound.
 
@@ -407,7 +407,7 @@ WaitForFirstConsumer
 
 ---
 
-# Immediate
+## Immediate
 
 With:
 
@@ -437,7 +437,7 @@ PVC Bound
 
 ---
 
-# WaitForFirstConsumer
+## WaitForFirstConsumer
 
 With:
 
@@ -482,7 +482,7 @@ This is especially important when storage is constrained by topology, such as:
 
 ---
 
-# Why WaitForFirstConsumer Matters
+## Why WaitForFirstConsumer Matters
 
 Imagine a cluster:
 
@@ -522,7 +522,7 @@ The Pod may not be able to attach the volume.
 
 ---
 
-# Allow Volume Expansion
+## Allow Volume Expansion
 
 A StorageClass may support volume expansion:
 
@@ -556,7 +556,7 @@ Shrinking a PVC is generally not supported.
 
 ---
 
-# Allowed Topologies
+## Allowed Topologies
 
 A StorageClass can restrict where storage may be provisioned.
 
@@ -576,7 +576,7 @@ This is useful for:
 
 ---
 
-# Default StorageClass
+## Default StorageClass
 
 A Kubernetes cluster can have a **default StorageClass**.
 
@@ -590,7 +590,7 @@ Kubernetes may use the default StorageClass.
 
 ---
 
-# View StorageClasses
+## View StorageClasses
 
 ```bash
 kubectl get storageclass
@@ -612,7 +612,7 @@ fast-storage    example.com/csi    Delete
 
 ---
 
-# Describe StorageClass
+## Describe StorageClass
 
 ```bash
 kubectl describe storageclass fast-storage
@@ -626,7 +626,7 @@ kubectl describe sc fast-storage
 
 ---
 
-# Marking a Default StorageClass
+## Marking a Default StorageClass
 
 A StorageClass is commonly marked as default using an annotation.
 
@@ -652,7 +652,7 @@ The default class is typically shown with:
 
 ---
 
-# PVC Using a StorageClass
+## PVC Using a StorageClass
 
 Example:
 
@@ -703,7 +703,7 @@ PVC Bound
 
 ---
 
-# PVC Without StorageClass
+## PVC Without StorageClass
 
 Example:
 
@@ -733,7 +733,7 @@ Dynamic Provisioning
 
 ---
 
-# Explicitly Requesting No StorageClass
+## Explicitly Requesting No StorageClass
 
 A PVC can explicitly disable dynamic provisioning with:
 
@@ -767,7 +767,7 @@ This distinction is important during troubleshooting.
 
 ---
 
-# Multiple StorageClasses
+## Multiple StorageClasses
 
 A cluster can have multiple storage classes.
 
@@ -793,7 +793,7 @@ Applications select the appropriate class.
 
 ---
 
-# Example Architecture
+## Example Architecture
 
 ```text
                    Kubernetes Cluster
@@ -812,7 +812,7 @@ Applications select the appropriate class.
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 Consider a database.
 
@@ -860,7 +860,7 @@ The application does not need to know how the underlying storage is created.
 
 ---
 
-# StorageClass and CSI
+## StorageClass and CSI
 
 Modern Kubernetes storage commonly follows:
 
@@ -886,7 +886,7 @@ The CSI driver performs the storage operations.
 
 ---
 
-# StorageClass Parameters vs PVC Parameters
+## StorageClass Parameters vs PVC Parameters
 
 PVC generally specifies:
 
@@ -936,7 +936,7 @@ Specific topology
 
 ---
 
-# StorageClass Lifecycle
+## StorageClass Lifecycle
 
 StorageClass itself does not represent a physical disk.
 
@@ -968,7 +968,7 @@ PVC Bound
 
 ---
 
-# Hands-on Lab 1 – View StorageClasses
+## Hands-on Lab 1 – View StorageClasses
 
 Run:
 
@@ -991,7 +991,7 @@ Identify:
 
 ---
 
-# Hands-on Lab 2 – Describe a StorageClass
+## Hands-on Lab 2 – Describe a StorageClass
 
 ```bash
 kubectl describe sc <storage-class-name>
@@ -1009,7 +1009,7 @@ Allow Volume Expansion
 
 ---
 
-# Hands-on Lab 3 – Create a PVC
+## Hands-on Lab 3 – Create a PVC
 
 Create:
 
@@ -1046,7 +1046,7 @@ kubectl get pvc
 
 ---
 
-# Hands-on Lab 4 – Observe Dynamic Provisioning
+## Hands-on Lab 4 – Observe Dynamic Provisioning
 
 Run:
 
@@ -1074,7 +1074,7 @@ being created automatically if the StorageClass and provisioner are configured c
 
 ---
 
-# Hands-on Lab 5 – Inspect Events
+## Hands-on Lab 5 – Inspect Events
 
 If the PVC remains Pending:
 
@@ -1098,7 +1098,7 @@ Common causes include:
 
 ---
 
-# Hands-on Lab 6 – Test PVC Expansion
+## Hands-on Lab 6 – Test PVC Expansion
 
 If your StorageClass supports expansion:
 
@@ -1126,9 +1126,9 @@ Observe the new capacity.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Confusing StorageClass with Storage
+### 1. Confusing StorageClass with Storage
 
 A StorageClass is **not a disk**.
 
@@ -1144,7 +1144,7 @@ Physical Storage
 
 ---
 
-## 2. Assuming Every Cluster Has the Same StorageClasses
+### 2. Assuming Every Cluster Has the Same StorageClasses
 
 StorageClasses depend on:
 
@@ -1157,7 +1157,7 @@ A StorageClass available in one cluster may not exist in another.
 
 ---
 
-## 3. Using the Wrong Provisioner
+### 3. Using the Wrong Provisioner
 
 If the provisioner does not exist:
 
@@ -1171,13 +1171,13 @@ Pending
 
 ---
 
-## 4. Forgetting the Default StorageClass
+### 4. Forgetting the Default StorageClass
 
 A PVC without an explicit StorageClass may remain Pending if no suitable default provisioning mechanism exists.
 
 ---
 
-## 5. Using Immediate Binding for Topology-Constrained Storage
+### 5. Using Immediate Binding for Topology-Constrained Storage
 
 This can create storage in a location where the Pod cannot run.
 
@@ -1191,13 +1191,13 @@ when appropriate.
 
 ---
 
-## 6. Assuming Volume Expansion Always Works
+### 6. Assuming Volume Expansion Always Works
 
 Both the StorageClass and underlying CSI driver must support expansion.
 
 ---
 
-## 7. Assuming StorageClass Creates a PV Immediately
+### 7. Assuming StorageClass Creates a PV Immediately
 
 With:
 
@@ -1211,9 +1211,9 @@ That can be expected behavior.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Static Provisioning
+### Static Provisioning
 
 ```text
 Administrator
@@ -1233,7 +1233,7 @@ Pod
 
 ---
 
-## Dynamic Provisioning
+### Dynamic Provisioning
 
 ```text
 PVC
@@ -1261,7 +1261,7 @@ Pod
 
 ---
 
-## Important Fields
+### Important Fields
 
 ```text
 provisioner
@@ -1274,7 +1274,7 @@ allowedTopologies
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 List StorageClasses:
 
@@ -1314,9 +1314,9 @@ kubectl get sc <name> -o yaml
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 * What is a StorageClass?
 * Why do we need StorageClasses?
@@ -1324,7 +1324,7 @@ kubectl get sc <name> -o yaml
 
 ---
 
-## Intermediate
+### Intermediate
 
 * What is dynamic provisioning?
 * What is a provisioner?
@@ -1334,7 +1334,7 @@ kubectl get sc <name> -o yaml
 
 ---
 
-## Advanced
+### Advanced
 
 * Explain the complete workflow from PVC creation to dynamic PV provisioning.
 * Why is `WaitForFirstConsumer` important for topology-aware storage?
@@ -1346,7 +1346,7 @@ kubectl get sc <name> -o yaml
 
 ---
 
-# Production StorageClass Design
+## Production StorageClass Design
 
 A production cluster may have:
 
@@ -1396,9 +1396,9 @@ This allows application teams to request storage based on workload requirements 
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Define Storage Classes Based on Workload
+#### 1. Define Storage Classes Based on Workload
 
 Create classes such as:
 
@@ -1413,19 +1413,19 @@ only when they represent meaningful differences in storage behavior.
 
 ---
 
-### 2. Prefer CSI-Based Storage
+#### 2. Prefer CSI-Based Storage
 
 Modern Kubernetes environments should generally use actively maintained CSI drivers rather than legacy in-tree storage integrations.
 
 ---
 
-### 3. Use WaitForFirstConsumer Where Appropriate
+#### 3. Use WaitForFirstConsumer Where Appropriate
 
 Especially for topology-aware storage.
 
 ---
 
-### 4. Carefully Choose Reclaim Policies
+#### 4. Carefully Choose Reclaim Policies
 
 For disposable application data:
 
@@ -1441,7 +1441,7 @@ Retain
 
 ---
 
-### 5. Enable Expansion Where Supported
+#### 5. Enable Expansion Where Supported
 
 Use:
 
@@ -1453,7 +1453,7 @@ when the storage backend supports safe online or offline expansion as appropriat
 
 ---
 
-### 6. Monitor Provisioning Failures
+#### 6. Monitor Provisioning Failures
 
 Monitor:
 
@@ -1465,9 +1465,9 @@ Monitor:
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 * Storage Classes
 * Persistent Volumes
@@ -1478,7 +1478,7 @@ Monitor:
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 * Kubernetes SIG Storage
 * Container Storage Interface
@@ -1487,7 +1487,7 @@ Monitor:
 
 ---
 
-## CSI Ecosystem
+### CSI Ecosystem
 
 StorageClass behavior depends heavily on the CSI driver being used.
 
@@ -1506,7 +1506,7 @@ Always consult the documentation for the specific CSI driver when configuring pr
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. List all StorageClasses in your cluster.
 2. Identify the default StorageClass.
@@ -1521,7 +1521,7 @@ Always consult the documentation for the specific CSI driver when configuring pr
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```text
                     PVC
@@ -1566,9 +1566,9 @@ Represents the provisioned storage
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 34 – Dynamic Provisioning
+## Chapter 34 – Dynamic Provisioning
 
 Topics:
 

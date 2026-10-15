@@ -1,10 +1,10 @@
 # 26-Windows-Troubleshooting.md
 
-# Part 1 — Windows Troubleshooting Fundamentals, Methodology, Startup Issues, and Diagnostic Tools
+## Part 1 — Windows Troubleshooting Fundamentals, Methodology, Startup Issues, and Diagnostic Tools
 
 ---
 
-# Introduction
+## Introduction
 
 Troubleshooting is one of the most important skills for Windows administrators, system engineers, SOC analysts, and IT support professionals.
 
@@ -21,7 +21,7 @@ A structured troubleshooting methodology is more effective than guessing or maki
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -36,7 +36,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is Troubleshooting?
+## What is Troubleshooting?
 
 Troubleshooting is the systematic process of identifying, analyzing, and resolving technical issues.
 
@@ -52,7 +52,7 @@ Successful troubleshooting balances technical investigation with business priori
 
 ---
 
-# Enterprise Troubleshooting Process
+## Enterprise Troubleshooting Process
 
 ```text
 Problem Reported
@@ -94,7 +94,7 @@ This structured process minimizes unnecessary changes and reduces the likelihood
 
 ---
 
-# Root Cause Analysis (RCA)
+## Root Cause Analysis (RCA)
 
 Root Cause Analysis focuses on identifying the underlying reason for a problem rather than treating only its symptoms.
 
@@ -124,7 +124,7 @@ Correcting only the application would not prevent future failures.
 
 ---
 
-# Types of Windows Problems
+## Types of Windows Problems
 
 Common categories include:
 
@@ -145,7 +145,7 @@ Understanding the category narrows the investigation.
 
 ---
 
-# Troubleshooting Principles
+## Troubleshooting Principles
 
 Follow these principles:
 
@@ -159,7 +159,7 @@ Follow these principles:
 
 ---
 
-# Information Gathering
+## Information Gathering
 
 Collect information before making changes.
 
@@ -176,7 +176,7 @@ Accurate information reduces troubleshooting time.
 
 ---
 
-# Scope Identification
+## Scope Identification
 
 Determine whether the issue affects:
 
@@ -200,7 +200,7 @@ The broader the scope, the more likely the issue involves shared infrastructure.
 
 ---
 
-# Common Sources of Evidence
+## Common Sources of Evidence
 
 Examples:
 
@@ -217,7 +217,7 @@ Evidence should be preserved before remediation where practical.
 
 ---
 
-# Windows Startup Process Review
+## Windows Startup Process Review
 
 A simplified startup sequence:
 
@@ -257,7 +257,7 @@ Failures at different stages require different troubleshooting approaches.
 
 ---
 
-# Startup Failure Categories
+## Startup Failure Categories
 
 | Stage | Possible Issue |
 |--------|----------------|
@@ -272,7 +272,7 @@ Identifying the failing stage accelerates diagnosis.
 
 ---
 
-# Windows Recovery Environment (WinRE)
+## Windows Recovery Environment (WinRE)
 
 Windows Recovery Environment provides recovery tools when normal startup fails.
 
@@ -289,7 +289,7 @@ WinRE is an essential recovery platform for administrators.
 
 ---
 
-# Windows Recovery Workflow
+## Windows Recovery Workflow
 
 ```text
 Startup Failure
@@ -319,7 +319,7 @@ Recovery actions should be documented for future reference.
 
 ---
 
-# Safe Mode
+## Safe Mode
 
 Safe Mode starts Windows with a minimal set of drivers and services.
 
@@ -335,7 +335,7 @@ Safe Mode helps isolate issues caused by drivers, services, or startup applicati
 
 ---
 
-# Startup Repair
+## Startup Repair
 
 Startup Repair automatically checks for problems such as:
 
@@ -348,7 +348,7 @@ Automatic repair may not resolve all issues, but it is often an effective first 
 
 ---
 
-# System Restore
+## System Restore
 
 System Restore returns system configuration to an earlier restore point.
 
@@ -363,7 +363,7 @@ It does **not** replace a comprehensive backup strategy.
 
 ---
 
-# Startup Settings
+## Startup Settings
 
 Startup Settings provides options such as:
 
@@ -376,7 +376,7 @@ These options assist advanced troubleshooting.
 
 ---
 
-# Boot Logging
+## Boot Logging
 
 Boot logging records drivers loaded during startup.
 
@@ -390,7 +390,7 @@ The log can help identify driver loading issues.
 
 ---
 
-# Blue Screen of Death (BSOD)
+## Blue Screen of Death (BSOD)
 
 A Blue Screen of Death (BSOD) indicates a critical system error requiring Windows to stop to prevent further damage.
 
@@ -406,7 +406,7 @@ BSOD investigation often involves Event Viewer, memory dump analysis, and driver
 
 ---
 
-# Memory Dumps
+## Memory Dumps
 
 Windows can generate crash dumps after a system failure.
 
@@ -423,7 +423,7 @@ Crash dumps support advanced troubleshooting and forensic analysis.
 
 ---
 
-# Event Viewer
+## Event Viewer
 
 Event Viewer is one of the most important troubleshooting tools.
 
@@ -440,7 +440,7 @@ Review events surrounding the time of the incident.
 
 ---
 
-# Reliability Monitor
+## Reliability Monitor
 
 Reliability Monitor provides a timeline of:
 
@@ -454,7 +454,7 @@ It offers an easy-to-understand historical view of system stability.
 
 ---
 
-# Device Manager
+## Device Manager
 
 Device Manager helps identify:
 
@@ -471,7 +471,7 @@ Common indicators:
 
 ---
 
-# System Information (msinfo32)
+## System Information (msinfo32)
 
 `msinfo32` displays detailed information about:
 
@@ -485,7 +485,7 @@ This information is useful when documenting system configurations.
 
 ---
 
-# System Configuration (msconfig)
+## System Configuration (msconfig)
 
 `msconfig` assists with:
 
@@ -498,7 +498,7 @@ It is commonly used to identify software conflicts.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A department reports that twenty Windows workstations fail to start after a recent driver deployment.
 
@@ -520,7 +520,7 @@ This minimizes business disruption while preventing additional failures.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Not every system failure is caused by hardware or software defects.
 
@@ -537,7 +537,7 @@ Investigators should preserve evidence when malicious activity is suspected.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient troubleshooting helps organizations:
 
@@ -550,7 +550,7 @@ Efficient troubleshooting helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow a structured troubleshooting methodology.
 - Preserve evidence before making major changes.
@@ -565,9 +565,9 @@ Efficient troubleshooting helps organizations:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Startup Failure Investigation
+### Lab 1 — Startup Failure Investigation
 
 A Windows workstation displays:
 
@@ -582,7 +582,7 @@ Document:
 
 ---
 
-## Lab 2 — Safe Mode
+### Lab 2 — Safe Mode
 
 Boot a Windows VM into:
 
@@ -593,7 +593,7 @@ Identify differences between the two modes.
 
 ---
 
-## Lab 3 — Event Viewer Investigation
+### Lab 3 — Event Viewer Investigation
 
 Review recent:
 
@@ -606,7 +606,7 @@ Explain their potential impact.
 
 ---
 
-## Lab 4 — Root Cause Analysis
+### Lab 4 — Root Cause Analysis
 
 An application crashes daily.
 
@@ -619,7 +619,7 @@ Use a structured troubleshooting methodology to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Troubleshooting should follow a structured methodology.
 - Root Cause Analysis focuses on long-term resolution.
@@ -630,7 +630,7 @@ Use a structured troubleshooting methodology to:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Root Cause Analysis?
 2. What tools are available in Windows Recovery Environment?
@@ -645,7 +645,7 @@ Use a structured troubleshooting methodology to:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Troubleshooting Documentation
@@ -660,13 +660,13 @@ Use a structured troubleshooting methodology to:
 ---
 
 
-# 26-Windows-Troubleshooting.md
+## 26-Windows-Troubleshooting.md
 
-# Part 2 — Performance Troubleshooting, Memory, CPU, Disk, Network, Windows Update, and Driver Issues
+## Part 2 — Performance Troubleshooting, Memory, CPU, Disk, Network, Windows Update, and Driver Issues
 
 ---
 
-# Introduction
+## Introduction
 
 Performance problems are among the most common Windows issues encountered in enterprise environments.
 
@@ -685,7 +685,7 @@ Effective troubleshooting requires identifying the actual bottleneck rather than
 
 ---
 
-# Performance Troubleshooting Methodology
+## Performance Troubleshooting Methodology
 
 ```text
 Identify Symptoms
@@ -719,7 +719,7 @@ Performance optimization should always be based on measurable data.
 
 ---
 
-# Common Performance Bottlenecks
+## Common Performance Bottlenecks
 
 | Component | Typical Symptoms |
 |------------|------------------|
@@ -734,7 +734,7 @@ Performance optimization should always be based on measurable data.
 
 ---
 
-# Task Manager
+## Task Manager
 
 Task Manager provides real-time visibility into:
 
@@ -756,7 +756,7 @@ Task Manager is often the first tool used during performance investigations.
 
 ---
 
-# Task Manager Tabs
+## Task Manager Tabs
 
 | Tab | Purpose |
 |------|----------|
@@ -770,7 +770,7 @@ Task Manager is often the first tool used during performance investigations.
 
 ---
 
-# Resource Monitor
+## Resource Monitor
 
 Resource Monitor provides more detailed information than Task Manager.
 
@@ -791,7 +791,7 @@ resmon
 
 ---
 
-# Performance Monitor
+## Performance Monitor
 
 Performance Monitor (PerfMon) collects detailed performance metrics.
 
@@ -811,7 +811,7 @@ perfmon
 
 ---
 
-# Common Performance Counters
+## Common Performance Counters
 
 | Counter | Description |
 |----------|-------------|
@@ -826,7 +826,7 @@ Performance counters should be interpreted together rather than individually.
 
 ---
 
-# CPU Troubleshooting
+## CPU Troubleshooting
 
 Symptoms:
 
@@ -845,7 +845,7 @@ Possible causes:
 
 ---
 
-# CPU Investigation Workflow
+## CPU Investigation Workflow
 
 ```text
 High CPU
@@ -879,7 +879,7 @@ Avoid terminating critical Windows processes unless their function is understood
 
 ---
 
-# Memory Troubleshooting
+## Memory Troubleshooting
 
 Memory issues often present as:
 
@@ -897,7 +897,7 @@ Possible causes:
 
 ---
 
-# Virtual Memory
+## Virtual Memory
 
 Windows uses virtual memory when physical RAM is insufficient.
 
@@ -921,7 +921,7 @@ Heavy paging usually indicates a memory bottleneck.
 
 ---
 
-# Memory Diagnostics
+## Memory Diagnostics
 
 Windows Memory Diagnostic can identify some hardware memory problems.
 
@@ -940,7 +940,7 @@ Hardware faults may require vendor-specific diagnostics for confirmation.
 
 ---
 
-# Disk Troubleshooting
+## Disk Troubleshooting
 
 Symptoms:
 
@@ -959,7 +959,7 @@ Possible causes:
 
 ---
 
-# Check Disk (CHKDSK)
+## Check Disk (CHKDSK)
 
 CHKDSK checks file system integrity.
 
@@ -981,7 +981,7 @@ CHKDSK may require a reboot for the system drive.
 
 ---
 
-# Storage Health
+## Storage Health
 
 Administrators should monitor:
 
@@ -995,7 +995,7 @@ Proactive monitoring reduces unexpected failures.
 
 ---
 
-# Network Troubleshooting
+## Network Troubleshooting
 
 Common symptoms:
 
@@ -1008,7 +1008,7 @@ Common symptoms:
 
 ---
 
-# Network Troubleshooting Workflow
+## Network Troubleshooting Workflow
 
 ```text
 Verify Physical Connection
@@ -1042,7 +1042,7 @@ Always verify basic connectivity before investigating complex issues.
 
 ---
 
-# Useful Network Commands
+## Useful Network Commands
 
 | Command | Purpose |
 |----------|----------|
@@ -1057,7 +1057,7 @@ Always verify basic connectivity before investigating complex issues.
 
 ---
 
-# DNS Troubleshooting
+## DNS Troubleshooting
 
 Common issues:
 
@@ -1077,7 +1077,7 @@ Flushing the DNS cache resolves some name resolution issues.
 
 ---
 
-# Windows Firewall
+## Windows Firewall
 
 Firewall misconfiguration may cause:
 
@@ -1096,7 +1096,7 @@ Do not disable the firewall as a troubleshooting shortcut without proper authori
 
 ---
 
-# Driver Troubleshooting
+## Driver Troubleshooting
 
 Driver problems can cause:
 
@@ -1114,7 +1114,7 @@ Review:
 
 ---
 
-# Device Manager
+## Device Manager
 
 Common indicators:
 
@@ -1128,7 +1128,7 @@ Driver updates should come from trusted sources.
 
 ---
 
-# Driver Rollback
+## Driver Rollback
 
 If a recently installed driver causes problems:
 
@@ -1152,7 +1152,7 @@ Rollback restores the previously installed driver when available.
 
 ---
 
-# Windows Update Troubleshooting
+## Windows Update Troubleshooting
 
 Common problems:
 
@@ -1172,7 +1172,7 @@ Investigate:
 
 ---
 
-# Windows Update Workflow
+## Windows Update Workflow
 
 ```text
 Update Failure
@@ -1206,7 +1206,7 @@ Escalate persistent issues according to organizational procedures.
 
 ---
 
-# Windows Update Services
+## Windows Update Services
 
 Important services include:
 
@@ -1218,7 +1218,7 @@ These services should be running unless intentionally managed otherwise.
 
 ---
 
-# Startup Applications
+## Startup Applications
 
 Too many startup programs increase boot time.
 
@@ -1240,7 +1240,7 @@ Only disable applications that are not required for business operations.
 
 ---
 
-# Service Troubleshooting
+## Service Troubleshooting
 
 Common issues:
 
@@ -1259,7 +1259,7 @@ Review dependencies before changing service configurations.
 
 ---
 
-# Performance Baselines
+## Performance Baselines
 
 A baseline provides expected system behavior.
 
@@ -1276,7 +1276,7 @@ Comparing current performance to a baseline helps identify anomalies.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A help desk receives reports that Windows laptops have become slow after Patch Tuesday.
 
@@ -1295,7 +1295,7 @@ Actions taken:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Performance degradation may indicate:
 
@@ -1309,7 +1309,7 @@ Security investigations should be considered when no legitimate cause is found.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Resolving performance issues quickly helps organizations:
 
@@ -1321,7 +1321,7 @@ Resolving performance issues quickly helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Establish performance baselines.
 - Monitor systems continuously.
@@ -1336,9 +1336,9 @@ Resolving performance issues quickly helps organizations:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — CPU Investigation
+### Lab 1 — CPU Investigation
 
 Identify the top five CPU-consuming processes.
 
@@ -1351,7 +1351,7 @@ Document:
 
 ---
 
-## Lab 2 — Memory Analysis
+### Lab 2 — Memory Analysis
 
 Using Task Manager and Resource Monitor:
 
@@ -1361,7 +1361,7 @@ Using Task Manager and Resource Monitor:
 
 ---
 
-## Lab 3 — Network Troubleshooting
+### Lab 3 — Network Troubleshooting
 
 Perform:
 
@@ -1374,7 +1374,7 @@ Document results and explain each command.
 
 ---
 
-## Lab 4 — Windows Update Investigation
+### Lab 4 — Windows Update Investigation
 
 A workstation repeatedly fails to install updates.
 
@@ -1389,7 +1389,7 @@ Create a troubleshooting checklist covering:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Performance troubleshooting should be data-driven.
 - Task Manager, Resource Monitor, and Performance Monitor are essential diagnostic tools.
@@ -1400,7 +1400,7 @@ Create a troubleshooting checklist covering:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of Resource Monitor?
 2. How does Performance Monitor differ from Task Manager?
@@ -1415,7 +1415,7 @@ Create a troubleshooting checklist covering:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Performance Monitor Documentation
@@ -1429,13 +1429,13 @@ Create a troubleshooting checklist covering:
 
 ---
 
-# 26-Windows-Troubleshooting.md
+## 26-Windows-Troubleshooting.md
 
-# Part 3 — Active Directory, Group Policy, Security, Application, and Enterprise Troubleshooting
+## Part 3 — Active Directory, Group Policy, Security, Application, and Enterprise Troubleshooting
 
 ---
 
-# Introduction
+## Introduction
 
 In enterprise environments, many Windows issues extend beyond a single computer.
 
@@ -1454,7 +1454,7 @@ Enterprise troubleshooting requires understanding how these technologies interac
 
 ---
 
-# Enterprise Troubleshooting Workflow
+## Enterprise Troubleshooting Workflow
 
 ```text
 Problem Reported
@@ -1496,7 +1496,7 @@ A repeatable methodology minimizes downtime and improves consistency.
 
 ---
 
-# Active Directory Troubleshooting
+## Active Directory Troubleshooting
 
 Common Active Directory (AD) issues include:
 
@@ -1511,7 +1511,7 @@ Most AD issues involve multiple infrastructure components.
 
 ---
 
-# Active Directory Authentication Workflow
+## Active Directory Authentication Workflow
 
 ```text
 User
@@ -1545,7 +1545,7 @@ A failure at any stage can prevent successful logon.
 
 ---
 
-# Common Active Directory Problems
+## Common Active Directory Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1558,7 +1558,7 @@ A failure at any stage can prevent successful logon.
 
 ---
 
-# DNS Troubleshooting in Active Directory
+## DNS Troubleshooting in Active Directory
 
 DNS is a foundational dependency for AD.
 
@@ -1574,7 +1574,7 @@ Incorrect DNS configuration is a frequent cause of authentication problems.
 
 ---
 
-# Domain Controller Health
+## Domain Controller Health
 
 Administrators should verify:
 
@@ -1589,7 +1589,7 @@ Healthy Domain Controllers are essential for reliable enterprise operations.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Kerberos relies on accurate system time.
 
@@ -1613,7 +1613,7 @@ Excessive clock skew may cause authentication failures.
 
 ---
 
-# Group Policy Troubleshooting
+## Group Policy Troubleshooting
 
 Common issues include:
 
@@ -1628,7 +1628,7 @@ Review policy processing before making configuration changes.
 
 ---
 
-# Group Policy Troubleshooting Workflow
+## Group Policy Troubleshooting Workflow
 
 ```text
 Problem
@@ -1664,7 +1664,7 @@ Resolution
 
 ---
 
-# GPResult
+## GPResult
 
 Useful commands:
 
@@ -1680,7 +1680,7 @@ These reports display applied and denied Group Policy Objects.
 
 ---
 
-# Resultant Set of Policy (RSoP)
+## Resultant Set of Policy (RSoP)
 
 RSoP displays the effective policy applied to a user or computer.
 
@@ -1693,7 +1693,7 @@ Benefits:
 
 ---
 
-# Event Viewer for Group Policy
+## Event Viewer for Group Policy
 
 Useful logs:
 
@@ -1721,7 +1721,7 @@ This log provides detailed Group Policy processing information.
 
 ---
 
-# Authentication Troubleshooting
+## Authentication Troubleshooting
 
 Common symptoms:
 
@@ -1735,7 +1735,7 @@ Investigation should include identity systems and infrastructure dependencies.
 
 ---
 
-# Account Lockout Investigation
+## Account Lockout Investigation
 
 Possible causes:
 
@@ -1749,7 +1749,7 @@ Review security logs to identify the source.
 
 ---
 
-# Kerberos Troubleshooting
+## Kerberos Troubleshooting
 
 Verify:
 
@@ -1763,7 +1763,7 @@ Kerberos depends on several supporting services functioning correctly.
 
 ---
 
-# Windows Security Troubleshooting
+## Windows Security Troubleshooting
 
 Security-related issues may involve:
 
@@ -1778,7 +1778,7 @@ Investigations should determine whether controls are functioning as intended or 
 
 ---
 
-# Windows Defender
+## Windows Defender
 
 Common issues:
 
@@ -1792,7 +1792,7 @@ Verify policy settings before making changes.
 
 ---
 
-# Firewall Troubleshooting
+## Firewall Troubleshooting
 
 Review:
 
@@ -1806,7 +1806,7 @@ Avoid disabling the firewall except in controlled troubleshooting scenarios with
 
 ---
 
-# BitLocker Recovery
+## BitLocker Recovery
 
 Recovery may be required when:
 
@@ -1819,7 +1819,7 @@ Recovery keys should be stored securely according to organizational policy.
 
 ---
 
-# Application Troubleshooting
+## Application Troubleshooting
 
 Common application problems:
 
@@ -1834,7 +1834,7 @@ Begin with application logs and Windows Event Logs.
 
 ---
 
-# Application Troubleshooting Workflow
+## Application Troubleshooting Workflow
 
 ```text
 Application Error
@@ -1866,7 +1866,7 @@ Validate
 
 ---
 
-# Compatibility Issues
+## Compatibility Issues
 
 Some applications require:
 
@@ -1879,7 +1879,7 @@ Verify prerequisites before reinstalling applications.
 
 ---
 
-# File Permission Issues
+## File Permission Issues
 
 Common symptoms:
 
@@ -1897,7 +1897,7 @@ Review:
 
 ---
 
-# Printer Troubleshooting
+## Printer Troubleshooting
 
 Common problems:
 
@@ -1915,7 +1915,7 @@ Print Spooler
 
 ---
 
-# Remote Desktop Troubleshooting
+## Remote Desktop Troubleshooting
 
 Verify:
 
@@ -1929,7 +1929,7 @@ Review Security and Terminal Services logs for authentication failures.
 
 ---
 
-# File Share Troubleshooting
+## File Share Troubleshooting
 
 Checklist:
 
@@ -1944,7 +1944,7 @@ Both share and NTFS permissions affect access.
 
 ---
 
-# Microsoft Services Troubleshooting
+## Microsoft Services Troubleshooting
 
 Examples:
 
@@ -1963,7 +1963,7 @@ Investigations should include:
 
 ---
 
-# Enterprise Monitoring
+## Enterprise Monitoring
 
 Organizations commonly monitor:
 
@@ -1980,7 +1980,7 @@ Continuous monitoring enables early detection of problems.
 
 ---
 
-# Enterprise Incident Workflow
+## Enterprise Incident Workflow
 
 ```text
 Alert
@@ -2018,7 +2018,7 @@ This workflow aligns with operational and security best practices.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Following a password policy update, multiple users report they cannot access file shares.
 
@@ -2038,7 +2038,7 @@ Resolution:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers may intentionally create symptoms resembling operational failures.
 
@@ -2054,7 +2054,7 @@ Administrators should consider malicious activity when troubleshooting unexplain
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient enterprise troubleshooting helps:
 
@@ -2066,7 +2066,7 @@ Efficient enterprise troubleshooting helps:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Standardize troubleshooting procedures.
 - Verify DNS before investigating Active Directory.
@@ -2081,9 +2081,9 @@ Efficient enterprise troubleshooting helps:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Group Policy Investigation
+### Lab 1 — Group Policy Investigation
 
 A Finance department desktop policy is not applying.
 
@@ -2099,7 +2099,7 @@ Document the root cause.
 
 ---
 
-## Lab 2 — Active Directory Authentication
+### Lab 2 — Active Directory Authentication
 
 A user cannot log in to the domain.
 
@@ -2113,7 +2113,7 @@ Create a troubleshooting checklist covering:
 
 ---
 
-## Lab 3 — File Share Access
+### Lab 3 — File Share Access
 
 A user receives "Access Denied" when opening a shared folder.
 
@@ -2128,7 +2128,7 @@ Recommend corrective actions.
 
 ---
 
-## Lab 4 — Enterprise Incident
+### Lab 4 — Enterprise Incident
 
 A department reports:
 
@@ -2140,7 +2140,7 @@ Develop a structured investigation plan to determine whether the issue is relate
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise troubleshooting requires understanding dependencies between Windows services and infrastructure.
 - DNS is critical to Active Directory functionality.
@@ -2151,7 +2151,7 @@ Develop a structured investigation plan to determine whether the issue is relate
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is DNS critical for Active Directory?
 2. What information does GPResult provide?
@@ -2166,7 +2166,7 @@ Develop a structured investigation plan to determine whether the issue is relate
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Active Directory Documentation
@@ -2180,13 +2180,13 @@ Develop a structured investigation plan to determine whether the issue is relate
 
 ---
 
-# 26-Windows-Troubleshooting.md
+## 26-Windows-Troubleshooting.md
 
-# Part 4 — Advanced Troubleshooting Scenarios, Sysinternals, Disaster Recovery, Enterprise Operations, and Chapter Summary
+## Part 4 — Advanced Troubleshooting Scenarios, Sysinternals, Disaster Recovery, Enterprise Operations, and Chapter Summary
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise troubleshooting extends beyond fixing individual Windows systems.
 
@@ -2203,7 +2203,7 @@ The objective is not only to restore functionality, but also to strengthen the o
 
 ---
 
-# Advanced Troubleshooting Methodology
+## Advanced Troubleshooting Methodology
 
 A mature troubleshooting workflow emphasizes structured analysis and verification.
 
@@ -2257,7 +2257,7 @@ Improve Process
 
 ---
 
-# Evidence Collection
+## Evidence Collection
 
 Before making significant changes, collect relevant evidence.
 
@@ -2276,7 +2276,7 @@ Preserving evidence is particularly important if malicious activity is suspected
 
 ---
 
-# Advanced Troubleshooting Tools
+## Advanced Troubleshooting Tools
 
 | Tool | Purpose |
 |------|----------|
@@ -2290,7 +2290,7 @@ Preserving evidence is particularly important if malicious activity is suspected
 
 ---
 
-# Microsoft Sysinternals Suite
+## Microsoft Sysinternals Suite
 
 The Sysinternals Suite is a collection of advanced troubleshooting and diagnostic tools developed by Microsoft.
 
@@ -2313,7 +2313,7 @@ These tools are widely used by Windows administrators, incident responders, and 
 
 ---
 
-# Process Explorer
+## Process Explorer
 
 Process Explorer expands upon Task Manager by providing:
 
@@ -2329,7 +2329,7 @@ It is valuable for identifying suspicious or resource-intensive processes.
 
 ---
 
-# Process Monitor
+## Process Monitor
 
 Process Monitor (ProcMon) captures real-time activity related to:
 
@@ -2357,7 +2357,7 @@ It is particularly useful when diagnosing application failures or configuration 
 
 ---
 
-# Autoruns
+## Autoruns
 
 Autoruns identifies programs configured to start automatically.
 
@@ -2375,7 +2375,7 @@ Reviewing startup entries can reveal misconfigurations or unauthorized persisten
 
 ---
 
-# TCPView
+## TCPView
 
 TCPView displays:
 
@@ -2389,7 +2389,7 @@ Unexpected connections should be investigated before taking action.
 
 ---
 
-# RAMMap
+## RAMMap
 
 RAMMap provides detailed memory usage information.
 
@@ -2405,7 +2405,7 @@ It helps identify unusual memory consumption patterns.
 
 ---
 
-# Advanced Performance Investigation
+## Advanced Performance Investigation
 
 A structured workflow:
 
@@ -2437,7 +2437,7 @@ Changes should be validated against established performance baselines.
 
 ---
 
-# Application Dependency Analysis
+## Application Dependency Analysis
 
 Many enterprise applications depend on:
 
@@ -2453,7 +2453,7 @@ Dependency mapping helps isolate the true source of failures.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Disaster Recovery (DR) focuses on restoring business operations after significant disruptions.
 
@@ -2469,7 +2469,7 @@ Recovery planning should be documented and tested regularly.
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 A comprehensive backup strategy should include:
 
@@ -2487,7 +2487,7 @@ Organizations commonly follow the **3-2-1** backup principle:
 
 ---
 
-# Recovery Objectives
+## Recovery Objectives
 
 Two important business metrics:
 
@@ -2500,7 +2500,7 @@ Recovery strategies should align with business requirements.
 
 ---
 
-# Business Continuity vs Disaster Recovery
+## Business Continuity vs Disaster Recovery
 
 | Business Continuity | Disaster Recovery |
 |---------------------|------------------|
@@ -2512,7 +2512,7 @@ Both are essential components of enterprise resilience.
 
 ---
 
-# Change Management
+## Change Management
 
 Many incidents result from configuration changes.
 
@@ -2554,7 +2554,7 @@ Controlled changes reduce operational risk.
 
 ---
 
-# Knowledge Management
+## Knowledge Management
 
 Every resolved issue should contribute to organizational knowledge.
 
@@ -2571,7 +2571,7 @@ A searchable knowledge base accelerates future troubleshooting.
 
 ---
 
-# Escalation
+## Escalation
 
 Escalation should occur when:
 
@@ -2585,7 +2585,7 @@ Timely escalation minimizes operational impact.
 
 ---
 
-# Major Incident Management
+## Major Incident Management
 
 For high-impact outages:
 
@@ -2625,13 +2625,13 @@ Coordination is as important as technical expertise.
 
 ---
 
-# Advanced Troubleshooting Scenario 1
+## Advanced Troubleshooting Scenario 1
 
-## Problem
+### Problem
 
 Several branch offices cannot authenticate to the domain.
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -2641,19 +2641,19 @@ Review:
 - Time synchronization
 - Replication health
 
-### Resolution
+#### Resolution
 
 Restore connectivity, verify replication, and validate user authentication.
 
 ---
 
-# Advanced Troubleshooting Scenario 2
+## Advanced Troubleshooting Scenario 2
 
-## Problem
+### Problem
 
 Users experience intermittent access to an internal web application.
 
-### Investigation
+#### Investigation
 
 Evaluate:
 
@@ -2668,13 +2668,13 @@ Identify the dependency causing service disruption.
 
 ---
 
-# Advanced Troubleshooting Scenario 3
+## Advanced Troubleshooting Scenario 3
 
-## Problem
+### Problem
 
 Following a software deployment, multiple systems experience high CPU utilization.
 
-### Investigation
+#### Investigation
 
 Collect:
 
@@ -2687,13 +2687,13 @@ Determine whether the issue is caused by software defects, configuration, or env
 
 ---
 
-# Advanced Troubleshooting Scenario 4
+## Advanced Troubleshooting Scenario 4
 
-## Problem
+### Problem
 
 An EDR alert indicates unusual PowerShell activity on several workstations.
 
-### Investigation
+#### Investigation
 
 Perform:
 
@@ -2707,7 +2707,7 @@ Coordinate with the security team to determine whether the activity is authorize
 
 ---
 
-# Enterprise Operations
+## Enterprise Operations
 
 Operational excellence requires:
 
@@ -2724,7 +2724,7 @@ Proactive operations reduce the frequency and severity of incidents.
 
 ---
 
-# Enterprise Monitoring Dashboard
+## Enterprise Monitoring Dashboard
 
 Typical enterprise dashboards monitor:
 
@@ -2741,7 +2741,7 @@ Centralized dashboards improve operational awareness.
 
 ---
 
-# Automation
+## Automation
 
 PowerShell automation can simplify repetitive troubleshooting tasks.
 
@@ -2757,7 +2757,7 @@ Automation should include logging and error handling.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Operational troubleshooting and cybersecurity are closely related.
 
@@ -2774,7 +2774,7 @@ Investigations should balance system recovery with evidence preservation.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Advanced troubleshooting capabilities help organizations:
 
@@ -2787,7 +2787,7 @@ Advanced troubleshooting capabilities help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Maintain current documentation.
 - Standardize troubleshooting procedures.
@@ -2802,9 +2802,9 @@ Advanced troubleshooting capabilities help organizations:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Process Explorer
+### Lab 1 — Process Explorer
 
 Use Process Explorer to identify:
 
@@ -2817,7 +2817,7 @@ Document your observations.
 
 ---
 
-## Lab 2 — Autoruns Review
+### Lab 2 — Autoruns Review
 
 Review startup entries using Autoruns.
 
@@ -2831,7 +2831,7 @@ Explain how you would investigate unknown entries.
 
 ---
 
-## Lab 3 — Disaster Recovery Planning
+### Lab 3 — Disaster Recovery Planning
 
 Create a disaster recovery plan for a Windows enterprise.
 
@@ -2846,7 +2846,7 @@ Include:
 
 ---
 
-## Lab 4 — Major Incident Exercise
+### Lab 4 — Major Incident Exercise
 
 A Domain Controller fails during business hours.
 
@@ -2860,7 +2860,7 @@ Develop a response plan covering:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2883,7 +2883,7 @@ These skills are essential for Windows administrators, system engineers, and cyb
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective troubleshooting follows a repeatable methodology.
 - Root Cause Analysis prevents recurring issues.
@@ -2894,7 +2894,7 @@ These skills are essential for Windows administrators, system engineers, and cyb
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of Process Explorer?
 2. How does Process Monitor differ from Event Viewer?
@@ -2909,7 +2909,7 @@ These skills are essential for Windows administrators, system engineers, and cyb
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Sysinternals Documentation
@@ -2923,7 +2923,7 @@ These skills are essential for Windows administrators, system engineers, and cyb
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 26 – Windows Troubleshooting**.
 

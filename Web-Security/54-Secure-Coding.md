@@ -1,12 +1,12 @@
 # 54-Secure-Coding.md
 
-# Part 1 — Introduction to Secure Coding, Security Principles, Secure SDLC, and Enterprise Development Practices
+## Part 1 — Introduction to Secure Coding, Security Principles, Secure SDLC, and Enterprise Development Practices
 
 > **"Secure Coding is the practice of designing, implementing, testing, and maintaining software in a manner that minimizes security risks, protects sensitive data, and reduces vulnerabilities throughout the software development lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -21,7 +21,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Secure Coding?
+## What is Secure Coding?
 
 Secure Coding is the disciplined process of writing software that resists security weaknesses while maintaining functionality, performance, and maintainability.
 
@@ -53,7 +53,7 @@ Security should be considered throughout the software lifecycle rather than adde
 
 ---
 
-# Why Secure Coding is Important
+## Why Secure Coding is Important
 
 Applications process sensitive business information, customer data, financial transactions, and operational workloads.
 
@@ -69,7 +69,7 @@ Secure coding helps organizations:
 
 ---
 
-# Security Throughout the SDLC
+## Security Throughout the SDLC
 
 ```
 Business Requirements
@@ -107,7 +107,7 @@ Security activities should be integrated into every phase instead of being limit
 
 ---
 
-# Security by Design
+## Security by Design
 
 Security by Design means considering security requirements during architecture and design rather than after implementation.
 
@@ -135,7 +135,7 @@ Early security planning reduces long-term risk and development effort.
 
 ---
 
-# Core Secure Coding Principles
+## Core Secure Coding Principles
 
 ```
 Secure Coding Principles
@@ -163,7 +163,7 @@ These principles guide secure software development regardless of programming lan
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Applications, services, and users should operate with only the permissions necessary to perform their intended functions.
 
@@ -187,7 +187,7 @@ Reducing unnecessary privileges limits the impact of security incidents.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Authentication
@@ -217,7 +217,7 @@ Multiple independent controls improve application resilience.
 
 ---
 
-# Secure Defaults
+## Secure Defaults
 
 Applications should be secure immediately after deployment.
 
@@ -232,7 +232,7 @@ Examples include:
 
 ---
 
-# Fail Securely
+## Fail Securely
 
 Applications should handle unexpected conditions without exposing sensitive information.
 
@@ -260,7 +260,7 @@ Graceful failure reduces information exposure and supports troubleshooting.
 
 ---
 
-# Common Sources of Software Vulnerabilities
+## Common Sources of Software Vulnerabilities
 
 Many software weaknesses originate from design, implementation, or operational issues.
 
@@ -290,7 +290,7 @@ Early identification and mitigation improve software quality.
 
 ---
 
-# Secure Coding Responsibilities
+## Secure Coding Responsibilities
 
 ```
 Development Team
@@ -318,7 +318,7 @@ Secure coding is a shared responsibility across development, security, operation
 
 ---
 
-# Enterprise Secure Coding Architecture
+## Enterprise Secure Coding Architecture
 
 ```
                  Business Requirements
@@ -364,7 +364,7 @@ Security activities continue after deployment through monitoring and continuous 
 
 ---
 
-# Relationship with Other Security Controls
+## Relationship with Other Security Controls
 
 ```
 Network Firewall
@@ -394,7 +394,7 @@ Infrastructure controls provide external protection, while secure coding reduces
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization develops customer-facing applications using an enterprise secure coding program.
 
@@ -426,7 +426,7 @@ Development teams follow coding standards, perform peer reviews, integrate autom
 
 ---
 
-# Benefits of Secure Coding
+## Benefits of Secure Coding
 
 ```
 Business Benefits
@@ -452,7 +452,7 @@ Business Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Review an application's development lifecycle.
 2. Identify where secure coding activities should occur.
@@ -464,7 +464,7 @@ Business Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Secure Coding?
 2. Why should security be integrated into the SDLC?
@@ -479,7 +479,7 @@ Business Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security into every SDLC phase.
 - Follow documented secure coding standards.
@@ -492,7 +492,7 @@ Business Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating security as the final testing phase.
 - Assuming infrastructure controls alone provide sufficient protection.
@@ -504,7 +504,7 @@ Business Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure Coding is a continuous engineering practice rather than a single activity.
 - Security should be integrated throughout the Secure SDLC.
@@ -512,15 +512,15 @@ Business Benefits
 - Secure coding complements testing, monitoring, and operational security.
 - Enterprise success depends on governance, consistent standards, and continuous improvement.
 
-# 54-Secure-Coding.md
+## 54-Secure-Coding.md
 
-# Part 2 — Secure Input Handling, Data Validation, Error Handling, Secrets Management, Dependencies, and Secure Development Practices
+## Part 2 — Secure Input Handling, Data Validation, Error Handling, Secrets Management, Dependencies, and Secure Development Practices
 
 > **"Most application vulnerabilities originate from improper handling of data, insecure configurations, or weak development practices. Secure Coding focuses on preventing these issues before software reaches production."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -537,7 +537,7 @@ After completing this part, you will understand:
 
 ---
 
-# Secure Input Handling
+## Secure Input Handling
 
 Applications should treat all externally supplied data as untrusted until it has been validated according to business requirements.
 
@@ -573,7 +573,7 @@ Potential input sources include:
 
 ---
 
-# Input Trust Boundaries
+## Input Trust Boundaries
 
 ```
 Internet
@@ -599,7 +599,7 @@ Every trust boundary requires appropriate validation before data is processed.
 
 ---
 
-# Input Validation Principles
+## Input Validation Principles
 
 Validation should verify that incoming data conforms to expected requirements.
 
@@ -635,7 +635,7 @@ Validation improves application reliability and reduces unexpected behavior.
 
 ---
 
-# Types of Validation
+## Types of Validation
 
 ```
 Validation
@@ -663,7 +663,7 @@ Each validation layer addresses different quality and security requirements.
 
 ---
 
-# Positive Validation
+## Positive Validation
 
 Positive validation verifies that data matches explicitly permitted values or formats.
 
@@ -687,7 +687,7 @@ Allow-list based validation is generally easier to maintain and reason about tha
 
 ---
 
-# Data Normalization
+## Data Normalization
 
 Applications should normalize data before applying validation where appropriate.
 
@@ -719,7 +719,7 @@ Normalization improves consistency across application components.
 
 ---
 
-# Output Encoding
+## Output Encoding
 
 Output encoding ensures that data is safely represented within its intended output context.
 
@@ -755,7 +755,7 @@ Encoding should always match the destination context.
 
 ---
 
-# Business Rule Validation
+## Business Rule Validation
 
 Technical validation alone is insufficient.
 
@@ -787,7 +787,7 @@ Examples include:
 
 ---
 
-# Error Handling
+## Error Handling
 
 Applications should respond gracefully to unexpected conditions.
 
@@ -815,7 +815,7 @@ Error responses should assist legitimate users without exposing internal impleme
 
 ---
 
-# Secure Error Responses
+## Secure Error Responses
 
 Applications should avoid exposing:
 
@@ -843,7 +843,7 @@ Detailed Internal Logging
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Application logging supports:
 
@@ -871,7 +871,7 @@ Logs should balance operational usefulness with privacy and security.
 
 ---
 
-# Sensitive Data Protection
+## Sensitive Data Protection
 
 Applications should identify sensitive information throughout the software lifecycle.
 
@@ -901,7 +901,7 @@ Handling requirements depend on organizational policies and applicable regulatio
 
 ---
 
-# Data Protection Lifecycle
+## Data Protection Lifecycle
 
 ```
 Collection
@@ -931,7 +931,7 @@ Security considerations should exist at every lifecycle stage.
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 Applications often require credentials or cryptographic material to communicate with other services.
 
@@ -964,7 +964,7 @@ Secrets should be managed using dedicated secret-management solutions rather tha
 
 ---
 
-# Secure Configuration
+## Secure Configuration
 
 Configuration should be managed separately from application code.
 
@@ -994,7 +994,7 @@ Configuration management should support:
 
 ---
 
-# Dependency Management
+## Dependency Management
 
 Modern software frequently relies on third-party libraries and frameworks.
 
@@ -1018,7 +1018,7 @@ Dependencies should be reviewed, maintained, and updated according to organizati
 
 ---
 
-# Dependency Governance
+## Dependency Governance
 
 ```
 Dependency Request
@@ -1048,7 +1048,7 @@ Regular maintenance helps reduce operational and security risks.
 
 ---
 
-# Enterprise Secure Development Workflow
+## Enterprise Secure Development Workflow
 
 ```
 Requirements
@@ -1086,7 +1086,7 @@ Each stage contributes to secure and reliable software delivery.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization develops an appointment management platform.
 
@@ -1118,7 +1118,7 @@ Development teams validate all external inputs, protect sensitive patient inform
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1131,7 +1131,7 @@ Development teams validate all external inputs, protect sensitive patient inform
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Identify every external input accepted by an application.
 2. Document validation requirements for each input.
@@ -1143,7 +1143,7 @@ Development teams validate all external inputs, protect sensitive patient inform
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should all external input be treated as untrusted?
 2. What is positive validation?
@@ -1158,7 +1158,7 @@ Development teams validate all external inputs, protect sensitive patient inform
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate all external inputs consistently.
 - Normalize data before applying business rules where appropriate.
@@ -1172,7 +1172,7 @@ Development teams validate all external inputs, protect sensitive patient inform
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting client-supplied data.
 - Relying only on client-side validation.
@@ -1185,7 +1185,7 @@ Development teams validate all external inputs, protect sensitive patient inform
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Every external input should be validated before processing.
 - Validation includes technical checks, normalization, and business rule verification.
@@ -1193,15 +1193,15 @@ Development teams validate all external inputs, protect sensitive patient inform
 - Secure error handling protects users while supporting operational troubleshooting.
 - Secrets, dependencies, and configuration require disciplined governance throughout the Secure SDLC.
 
-# 54-Secure-Coding.md
+## 54-Secure-Coding.md
 
-# Part 3 — Secure Code Reviews, Secure SDLC, DevSecOps, Security Testing, Governance, and Operational Excellence
+## Part 3 — Secure Code Reviews, Secure SDLC, DevSecOps, Security Testing, Governance, and Operational Excellence
 
 > **"Secure Coding is not complete when code is written. Enterprise software security depends on structured reviews, automated testing, governance, continuous monitoring, and continuous improvement throughout the Secure SDLC."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1219,7 +1219,7 @@ After completing this part, you will understand:
 
 ---
 
-# Secure Code Reviews
+## Secure Code Reviews
 
 Code reviews help identify security, quality, and maintainability issues before software reaches production.
 
@@ -1247,7 +1247,7 @@ Security-focused reviews should be part of every development cycle.
 
 ---
 
-# Objectives of Secure Code Reviews
+## Objectives of Secure Code Reviews
 
 ```
 Code Review Objectives
@@ -1275,7 +1275,7 @@ Reviews improve software quality while reducing future remediation costs.
 
 ---
 
-# Secure Review Checklist
+## Secure Review Checklist
 
 During reviews, teams should verify:
 
@@ -1305,7 +1305,7 @@ A standardized checklist promotes consistent review quality.
 
 ---
 
-# Four-Eyes Principle
+## Four-Eyes Principle
 
 Enterprise development commonly follows the "four-eyes principle."
 
@@ -1329,7 +1329,7 @@ Independent review reduces the likelihood of introducing security weaknesses.
 
 ---
 
-# Security Design Reviews
+## Security Design Reviews
 
 Security should be reviewed before implementation begins.
 
@@ -1357,7 +1357,7 @@ Design reviews reduce costly changes later in the project lifecycle.
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 ```
 Requirements
@@ -1391,7 +1391,7 @@ Security activities should be embedded into every development phase.
 
 ---
 
-# DevSecOps
+## DevSecOps
 
 DevSecOps integrates security into automated software delivery pipelines.
 
@@ -1427,7 +1427,7 @@ Automation improves consistency, repeatability, and operational efficiency.
 
 ---
 
-# Automated Security Validation
+## Automated Security Validation
 
 Security validation may include:
 
@@ -1457,7 +1457,7 @@ Automation supports early identification of issues while complementing manual re
 
 ---
 
-# Static Application Security Testing (SAST)
+## Static Application Security Testing (SAST)
 
 SAST analyzes application source code or compiled artifacts without executing the application.
 
@@ -1492,7 +1492,7 @@ SAST complements—but does not replace—other testing methods.
 
 ---
 
-# Dynamic Application Security Testing (DAST)
+## Dynamic Application Security Testing (DAST)
 
 DAST evaluates a running application from the outside.
 
@@ -1520,7 +1520,7 @@ DAST helps evaluate runtime behavior and complements source-code analysis.
 
 ---
 
-# Software Composition Analysis (SCA)
+## Software Composition Analysis (SCA)
 
 Modern applications frequently depend on third-party software components.
 
@@ -1548,7 +1548,7 @@ SCA helps organizations maintain visibility into software components and their l
 
 ---
 
-# Comparing Security Testing Approaches
+## Comparing Security Testing Approaches
 
 | Technique | Primary Focus | Typical Stage |
 |-----------|---------------|---------------|
@@ -1561,7 +1561,7 @@ Each technique provides unique insights and should be used together as part of a
 
 ---
 
-# Security Governance
+## Security Governance
 
 Secure coding should follow documented organizational standards.
 
@@ -1591,7 +1591,7 @@ Governance ensures consistent implementation across teams.
 
 ---
 
-# Secure Coding Standards
+## Secure Coding Standards
 
 Organizations should establish standards covering:
 
@@ -1610,7 +1610,7 @@ Documented standards improve consistency and maintainability.
 
 ---
 
-# Developer Training
+## Developer Training
 
 ```
 Developer Training
@@ -1636,7 +1636,7 @@ Regular education helps teams adopt evolving secure development practices.
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Applications should generate meaningful operational and security logs.
 
@@ -1664,7 +1664,7 @@ Logging supports troubleshooting, audits, and incident response.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 ```
 Applications
@@ -1690,7 +1690,7 @@ Continuous monitoring helps identify operational issues and supports security in
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1705,7 +1705,7 @@ Continuous monitoring helps identify operational issues and supports security in
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Security activities should scale with development.
 
@@ -1733,7 +1733,7 @@ Capacity planning supports predictable software delivery.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                 Business Requirements
@@ -1781,7 +1781,7 @@ Security is integrated throughout the delivery pipeline rather than being isolat
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational insurance company develops customer self-service applications using a standardized Secure SDLC.
 
@@ -1817,7 +1817,7 @@ Security engineers collaborate with developers, architecture teams, and operatio
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Coding Standards Published
@@ -1843,7 +1843,7 @@ Security engineers collaborate with developers, architecture teams, and operatio
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1856,7 +1856,7 @@ Security engineers collaborate with developers, architecture teams, and operatio
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a Secure SDLC workflow for an enterprise application.
 2. Create a secure code review checklist.
@@ -1868,7 +1868,7 @@ Security engineers collaborate with developers, architecture teams, and operatio
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are secure code reviews important?
 2. What is the purpose of the four-eyes principle?
@@ -1883,7 +1883,7 @@ Security engineers collaborate with developers, architecture teams, and operatio
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Perform peer reviews for all production code.
 - Integrate security into every SDLC phase.
@@ -1897,7 +1897,7 @@ Security engineers collaborate with developers, architecture teams, and operatio
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating code review as optional.
 - Depending on only one security testing technique.
@@ -1909,7 +1909,7 @@ Security engineers collaborate with developers, architecture teams, and operatio
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure code reviews are a foundational component of secure software development.
 - Secure SDLC and DevSecOps integrate security throughout the development lifecycle.
@@ -1917,15 +1917,15 @@ Security engineers collaborate with developers, architecture teams, and operatio
 - Governance, documentation, and training enable consistent secure coding practices.
 - Continuous monitoring and operational metrics help organizations mature their Secure Coding programs.
 
-# 54-Secure-Coding.md
+## 54-Secure-Coding.md
 
-# Part 4 — Enterprise Governance, Zero Trust, Secure Development Governance, Security Maturity, Best Practices, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, Secure Development Governance, Security Maturity, Best Practices, and Chapter Summary
 
 > **"Secure Coding is most effective when it becomes an organizational culture supported by governance, automation, continuous monitoring, and continuous improvement throughout the software lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1946,7 +1946,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 Secure coding should be governed through documented organizational standards rather than individual developer preferences.
 
@@ -1986,7 +1986,7 @@ Governance promotes consistency across teams, business units, and projects.
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Secure Coding Governance
@@ -2016,7 +2016,7 @@ A mature governance model establishes accountability throughout the Secure SDLC.
 
 ---
 
-# Zero Trust and Secure Coding
+## Zero Trust and Secure Coding
 
 Zero Trust principles should influence application development from the earliest design stages.
 
@@ -2048,7 +2048,7 @@ Applications should continuously verify identity, permissions, and business rule
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Secure coding supports multiple defensive layers.
 
@@ -2084,7 +2084,7 @@ Each layer contributes independently to application security.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Application infrastructure should be managed using version-controlled definitions wherever appropriate.
 
@@ -2118,7 +2118,7 @@ Benefits include:
 
 ---
 
-# Secure CI/CD Governance
+## Secure CI/CD Governance
 
 ```
 Developer
@@ -2152,7 +2152,7 @@ Security gates should be integrated throughout the deployment pipeline.
 
 ---
 
-# Configuration Lifecycle
+## Configuration Lifecycle
 
 ```
 Planning
@@ -2186,7 +2186,7 @@ Configuration management should follow the same governance principles as applica
 
 ---
 
-# Documentation
+## Documentation
 
 Organizations should maintain documentation covering:
 
@@ -2216,7 +2216,7 @@ Comprehensive documentation supports knowledge sharing and operational continuit
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Common governance activities include:
 
@@ -2242,7 +2242,7 @@ Compliance objectives differ between industries and regulatory environments.
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Development activities should generate appropriate audit records.
 
@@ -2270,7 +2270,7 @@ Audit records support accountability and incident investigations.
 
 ---
 
-# Important Audit Events
+## Important Audit Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2287,7 +2287,7 @@ Sensitive credentials, secrets, and confidential business information should nev
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2313,7 +2313,7 @@ Continuous monitoring provides visibility into application health, deployment qu
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2328,7 +2328,7 @@ Continuous monitoring provides visibility into application health, deployment qu
 
 ---
 
-# Enterprise Dashboard
+## Enterprise Dashboard
 
 ```
 Engineering Dashboard
@@ -2356,7 +2356,7 @@ Dashboards help engineering and security teams monitor development quality and o
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2386,7 +2386,7 @@ The SOC correlates application events with network, endpoint, authentication, an
 
 ---
 
-# Incident Response
+## Incident Response
 
 Applications should be supported by documented incident response procedures.
 
@@ -2422,7 +2422,7 @@ Clearly defined workflows improve response consistency and reduce recovery time.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Security Event
@@ -2456,7 +2456,7 @@ Root cause analysis should identify process improvements in addition to technica
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2486,7 +2486,7 @@ Secure coding practices should evolve alongside technology, frameworks, and busi
 
 ---
 
-# Secure Coding Security Maturity Model
+## Secure Coding Security Maturity Model
 
 ```
 Level 1
@@ -2524,7 +2524,7 @@ Organizations advance by strengthening governance, automation, collaboration, an
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                 Business Requirements
@@ -2570,7 +2570,7 @@ This architecture integrates secure coding practices with enterprise governance 
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational pharmaceutical company develops laboratory management and research applications using an enterprise Secure SDLC.
 
@@ -2606,7 +2606,7 @@ Engineering teams follow standardized coding guidelines, perform mandatory peer 
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Secure Coding Standards Published
@@ -2632,7 +2632,7 @@ Engineering teams follow standardized coding guidelines, perform mandatory peer 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2645,9 +2645,9 @@ Engineering teams follow standardized coding guidelines, perform mandatory peer 
 
 ---
 
-# Secure Coding Quick Revision
+## Secure Coding Quick Revision
 
-## Secure SDLC
+### Secure SDLC
 
 ```
 Requirements
@@ -2679,7 +2679,7 @@ Monitoring
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 ```
 Authentication
@@ -2703,7 +2703,7 @@ Monitoring
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Metrics
@@ -2723,7 +2723,7 @@ Training
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise Secure SDLC for a business application.
 2. Create a secure code review checklist aligned with organizational standards.
@@ -2735,7 +2735,7 @@ Training
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is secure coding considered a continuous process?
 2. How does enterprise governance improve software security?
@@ -2750,7 +2750,7 @@ Training
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security into every phase of the SDLC.
 - Maintain organization-wide secure coding standards.
@@ -2764,7 +2764,7 @@ Training
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating secure coding as a one-time activity.
 - Skipping peer reviews for urgent releases.
@@ -2776,7 +2776,7 @@ Training
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

@@ -10,7 +10,7 @@ The questions are grouped into categories commonly used during technical intervi
 
 ---
 
-# Interview Coverage
+## Interview Coverage
 
 This chapter covers:
 
@@ -36,7 +36,7 @@ This chapter covers:
 
 ---
 
-# Difficulty Levels
+## Difficulty Levels
 
 | Level | Description |
 |---------|------------|
@@ -47,9 +47,9 @@ This chapter covers:
 
 ---
 
-# Beginner Interview Questions
+## Beginner Interview Questions
 
-## Q1. What is a container?
+### Q1. What is a container?
 
 **Answer**
 
@@ -57,7 +57,7 @@ A container is a lightweight, isolated runtime environment that packages an appl
 
 ---
 
-## Q2. What problem do containers solve?
+### Q2. What problem do containers solve?
 
 **Answer**
 
@@ -65,7 +65,7 @@ Containers eliminate the "it works on my machine" problem by ensuring applicatio
 
 ---
 
-## Q3. What is Docker?
+### Q3. What is Docker?
 
 **Answer**
 
@@ -73,7 +73,7 @@ Docker is an open platform for building, packaging, distributing, and running co
 
 ---
 
-## Q4. Difference between Containers and Virtual Machines?
+### Q4. Difference between Containers and Virtual Machines?
 
 **Answer**
 
@@ -87,7 +87,7 @@ Docker is an open platform for building, packaging, distributing, and running co
 
 ---
 
-## Q5. What is a Docker Image?
+### Q5. What is a Docker Image?
 
 **Answer**
 
@@ -95,7 +95,7 @@ A Docker image is a read-only template containing the application, dependencies,
 
 ---
 
-## Q6. What is a Docker Container?
+### Q6. What is a Docker Container?
 
 **Answer**
 
@@ -103,7 +103,7 @@ A Docker container is a running instance of a Docker image.
 
 ---
 
-## Q7. What is Docker Hub?
+### Q7. What is Docker Hub?
 
 **Answer**
 
@@ -111,7 +111,7 @@ Docker Hub is Docker's official public registry used to store and distribute con
 
 ---
 
-## Q8. What is Docker Compose?
+### Q8. What is Docker Compose?
 
 **Answer**
 
@@ -119,7 +119,7 @@ Docker Compose is a tool used to define and manage multi-container applications 
 
 ---
 
-## Q9. What is a Dockerfile?
+### Q9. What is a Dockerfile?
 
 **Answer**
 
@@ -127,7 +127,7 @@ A Dockerfile is a text file containing instructions used to build Docker images 
 
 ---
 
-## Q10. Why are containers lightweight?
+### Q10. Why are containers lightweight?
 
 **Answer**
 
@@ -135,9 +135,9 @@ Containers share the host operating system kernel instead of running separate gu
 
 ---
 
-# Intermediate Interview Questions
+## Intermediate Interview Questions
 
-## Q11. Explain Docker Architecture.
+### Q11. Explain Docker Architecture.
 
 **Answer**
 
@@ -167,7 +167,7 @@ The Docker client communicates with the Docker Engine, which manages images and 
 
 ---
 
-## Q12. What is the difference between COPY and ADD?
+### Q12. What is the difference between COPY and ADD?
 
 **Answer**
 
@@ -184,7 +184,7 @@ COPY is usually recommended because its behavior is simpler and more predictable
 
 ---
 
-## Q13. What is the difference between CMD and ENTRYPOINT?
+### Q13. What is the difference between CMD and ENTRYPOINT?
 
 **Answer**
 
@@ -206,7 +206,7 @@ CMD ["app.py"]
 
 ---
 
-## Q14. What is a Docker Volume?
+### Q14. What is a Docker Volume?
 
 **Answer**
 
@@ -214,7 +214,7 @@ A Docker volume is Docker-managed persistent storage that exists independently o
 
 ---
 
-## Q15. What is a Bind Mount?
+### Q15. What is a Bind Mount?
 
 **Answer**
 
@@ -222,7 +222,7 @@ A bind mount maps a file or directory from the host system directly into a conta
 
 ---
 
-## Q16. Why are Volumes preferred over the Writable Layer?
+### Q16. Why are Volumes preferred over the Writable Layer?
 
 **Answer**
 
@@ -230,7 +230,7 @@ Because data stored in the writable layer is removed when the container is delet
 
 ---
 
-## Q17. What is Port Mapping?
+### Q17. What is Port Mapping?
 
 **Answer**
 
@@ -246,7 +246,7 @@ Host port 8080 forwards traffic to port 80 inside the container.
 
 ---
 
-## Q18. What is a Docker Registry?
+### Q18. What is a Docker Registry?
 
 **Answer**
 
@@ -254,7 +254,7 @@ A Docker registry is a repository service used to store and distribute container
 
 ---
 
-## Q19. What is the purpose of Image Tags?
+### Q19. What is the purpose of Image Tags?
 
 **Answer**
 
@@ -262,7 +262,7 @@ Tags identify different versions of the same image and simplify version manageme
 
 ---
 
-## Q20. Why should production avoid `latest`?
+### Q20. Why should production avoid `latest`?
 
 **Answer**
 
@@ -272,9 +272,9 @@ Version-specific tags provide deterministic deployments.
 
 ---
 
-# Advanced Interview Questions
+## Advanced Interview Questions
 
-## Q21. What Linux features make containers possible?
+### Q21. What Linux features make containers possible?
 
 **Answer**
 
@@ -289,7 +289,7 @@ Key Linux technologies include:
 
 ---
 
-## Q22. Explain Namespaces.
+### Q22. Explain Namespaces.
 
 **Answer**
 
@@ -306,7 +306,7 @@ allowing containers to operate independently.
 
 ---
 
-## Q23. What are cgroups?
+### Q23. What are cgroups?
 
 **Answer**
 
@@ -314,7 +314,7 @@ Control Groups (cgroups) limit and account for resource usage such as CPU, memor
 
 ---
 
-## Q24. What is OverlayFS?
+### Q24. What is OverlayFS?
 
 **Answer**
 
@@ -322,7 +322,7 @@ OverlayFS is a union filesystem that combines multiple image layers into a singl
 
 ---
 
-## Q25. Why should containers run as non-root?
+### Q25. Why should containers run as non-root?
 
 **Answer**
 
@@ -330,7 +330,7 @@ Running as a non-root user reduces privileges and limits the potential impact of
 
 ---
 
-## Q26. What is Container Escape?
+### Q26. What is Container Escape?
 
 **Answer**
 
@@ -338,7 +338,7 @@ Container escape is a security event where a process breaks out of the container
 
 ---
 
-## Q27. What is Immutable Infrastructure?
+### Q27. What is Immutable Infrastructure?
 
 **Answer**
 
@@ -346,7 +346,7 @@ Instead of modifying running systems, immutable infrastructure replaces them wit
 
 ---
 
-## Q28. What is a CVE?
+### Q28. What is a CVE?
 
 **Answer**
 
@@ -354,7 +354,7 @@ A CVE (Common Vulnerabilities and Exposures) is a publicly assigned identifier f
 
 ---
 
-## Q29. What is CVSS?
+### Q29. What is CVSS?
 
 **Answer**
 
@@ -362,7 +362,7 @@ The Common Vulnerability Scoring System (CVSS) provides a standardized method fo
 
 ---
 
-## Q30. Why should images be scanned?
+### Q30. Why should images be scanned?
 
 **Answer**
 
@@ -370,7 +370,7 @@ To identify known vulnerabilities, outdated packages, and security issues before
 
 ---
 
-## Quick Oral Interview Questions
+### Quick Oral Interview Questions
 
 These are commonly asked rapid-fire questions during technical interviews.
 
@@ -394,21 +394,21 @@ These are commonly asked rapid-fire questions during technical interviews.
 
 ---
 
-## Intermediate Scenario Questions
+### Intermediate Scenario Questions
 
 These questions evaluate how you think, troubleshoot, and apply container concepts in real-world situations rather than simply recalling definitions. Interviewers often use scenario-based questions to assess practical experience.
 
 ---
 
-# Scenario 1 – Container Keeps Restarting
+## Scenario 1 – Container Keeps Restarting
 
-### Question
+#### Question
 
 Your Docker container restarts continuously after deployment.
 
 How would you troubleshoot it?
 
-### Answer
+#### Answer
 
 Follow a structured approach:
 
@@ -467,15 +467,15 @@ Never assume the restart itself is the problem—identify the root cause.
 
 ---
 
-# Scenario 2 – High CPU Usage
+## Scenario 2 – High CPU Usage
 
-### Question
+#### Question
 
 A production container suddenly consumes 100% CPU.
 
 How would you investigate?
 
-### Answer
+#### Answer
 
 Investigation workflow:
 
@@ -513,15 +513,15 @@ Check:
 
 ---
 
-# Scenario 3 – Container Cannot Reach Database
+## Scenario 3 – Container Cannot Reach Database
 
-### Question
+#### Question
 
 Your application container cannot connect to the database.
 
 How would you troubleshoot?
 
-### Answer
+#### Answer
 
 Verify:
 
@@ -571,15 +571,15 @@ Common causes:
 
 ---
 
-# Scenario 4 – Image Contains Critical Vulnerabilities
+## Scenario 4 – Image Contains Critical Vulnerabilities
 
-### Question
+#### Question
 
 Your vulnerability scanner reports several Critical CVEs.
 
 What should you do?
 
-### Answer
+#### Answer
 
 ```
 Review Findings
@@ -613,15 +613,15 @@ Avoid deploying images with unresolved critical vulnerabilities unless there is 
 
 ---
 
-# Scenario 5 – Container Running as Root
+## Scenario 5 – Container Running as Root
 
-### Question
+#### Question
 
 A security review reveals all containers run as root.
 
 How would you address it?
 
-### Answer
+#### Answer
 
 Modify the Dockerfile:
 
@@ -635,15 +635,15 @@ Verify application functionality under reduced privileges before deployment.
 
 ---
 
-# Scenario 6 – Sensitive Data Found in Image
+## Scenario 6 – Sensitive Data Found in Image
 
-### Question
+#### Question
 
 An API key is discovered inside a Docker image.
 
 What should happen next?
 
-### Answer
+#### Answer
 
 Immediate actions:
 
@@ -677,15 +677,15 @@ Never rely solely on deleting the image—the credential should be considered co
 
 ---
 
-# Scenario 7 – Container Compromise
+## Scenario 7 – Container Compromise
 
-### Question
+#### Question
 
 A runtime security tool reports suspicious activity inside a container.
 
 How would you respond?
 
-### Answer
+#### Answer
 
 Typical workflow:
 
@@ -727,15 +727,15 @@ Evidence sources:
 
 ---
 
-# Scenario 8 – Large Docker Images
+## Scenario 8 – Large Docker Images
 
-### Question
+#### Question
 
 Your image size exceeds 2 GB.
 
 How would you reduce it?
 
-### Answer
+#### Answer
 
 Possible improvements:
 
@@ -753,15 +753,15 @@ Benefits:
 
 ---
 
-# Scenario 9 – Frequent Container Restarts
+## Scenario 9 – Frequent Container Restarts
 
-### Question
+#### Question
 
 Containers restart multiple times every hour.
 
 How would you determine the cause?
 
-### Answer
+#### Answer
 
 Review:
 
@@ -789,15 +789,15 @@ Do not simply increase restart limits—identify why the application exits.
 
 ---
 
-# Scenario 10 – Registry Becomes Unavailable
+## Scenario 10 – Registry Becomes Unavailable
 
-### Question
+#### Question
 
 Your production registry is temporarily unavailable.
 
 What is the impact?
 
-### Answer
+#### Answer
 
 Running containers generally continue operating because images are already present locally.
 
@@ -811,11 +811,11 @@ High-availability registry architectures reduce this risk.
 
 ---
 
-# Advanced Production Questions
+## Advanced Production Questions
 
-## Q31. Explain the Container Lifecycle.
+### Q31. Explain the Container Lifecycle.
 
-### Answer
+#### Answer
 
 ```
 Build
@@ -853,9 +853,9 @@ Each phase should be monitored and secured.
 
 ---
 
-## Q32. Explain Immutable Infrastructure.
+### Q32. Explain Immutable Infrastructure.
 
-### Answer
+#### Answer
 
 Infrastructure components are replaced rather than modified.
 
@@ -883,9 +883,9 @@ Advantages:
 
 ---
 
-## Q33. How would you secure a production container?
+### Q33. How would you secure a production container?
 
-### Answer
+#### Answer
 
 Typical controls include:
 
@@ -903,9 +903,9 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-## Q34. What happens when a container is deleted?
+### Q34. What happens when a container is deleted?
 
-### Answer
+#### Answer
 
 The container and its writable layer are removed.
 
@@ -918,9 +918,9 @@ remains unless explicitly removed.
 
 ---
 
-## Q35. What is the difference between a Volume and a Bind Mount?
+### Q35. What is the difference between a Volume and a Bind Mount?
 
-### Answer
+#### Answer
 
 | Volume | Bind Mount |
 |---------|------------|
@@ -930,9 +930,9 @@ remains unless explicitly removed.
 
 ---
 
-## Q36. Why is image versioning important?
+### Q36. Why is image versioning important?
 
-### Answer
+#### Answer
 
 Image versioning enables:
 
@@ -957,9 +957,9 @@ myapp:2.0
 
 ---
 
-## Q37. What is an SBOM?
+### Q37. What is an SBOM?
 
-### Answer
+#### Answer
 
 A **Software Bill of Materials (SBOM)** is an inventory of software components contained within an application or container image.
 
@@ -972,9 +972,9 @@ It improves:
 
 ---
 
-## Q38. What is Defense in Depth?
+### Q38. What is Defense in Depth?
 
-### Answer
+#### Answer
 
 Security is applied at multiple layers.
 
@@ -1006,17 +1006,17 @@ If one control fails, others continue providing protection.
 
 ---
 
-## Q39. What is the Principle of Least Privilege?
+### Q39. What is the Principle of Least Privilege?
 
-### Answer
+#### Answer
 
 Users, containers, and applications should receive only the permissions necessary to perform their intended functions.
 
 ---
 
-## Q40. Why is Monitoring Important?
+### Q40. Why is Monitoring Important?
 
-### Answer
+#### Answer
 
 Monitoring enables teams to:
 
@@ -1030,7 +1030,7 @@ It reduces Mean Time to Detect (MTTD) and Mean Time to Resolve (MTTR).
 
 ---
 
-# Rapid-Fire Advanced Questions
+## Rapid-Fire Advanced Questions
 
 | Question | Expected Answer |
 |----------|-----------------|
@@ -1047,21 +1047,21 @@ It reduces Mean Time to Detect (MTTD) and Mean Time to Resolve (MTTR).
 
 ---
 
-## Security Scenario Questions
+### Security Scenario Questions
 
 Security scenario questions are commonly asked for **Cybersecurity Engineer**, **DevSecOps Engineer**, **Cloud Security Engineer**, **SOC Analyst**, **Platform Engineer**, and **Site Reliability Engineer (SRE)** roles. These questions assess your ability to think critically, apply security principles, and respond effectively to real-world situations.
 
 ---
 
-# Scenario 11 – Container Escape Attempt
+## Scenario 11 – Container Escape Attempt
 
-### Question
+#### Question
 
 A runtime security tool alerts that a process inside a container is attempting to access the host filesystem.
 
 How would you respond?
 
-### Answer
+#### Answer
 
 Investigation workflow:
 
@@ -1110,9 +1110,9 @@ Determine whether the alert represents:
 
 ---
 
-# Scenario 12 – Cryptomining Detected
+## Scenario 12 – Cryptomining Detected
 
-### Question
+#### Question
 
 A container suddenly begins consuming 100% CPU.
 
@@ -1120,7 +1120,7 @@ Runtime monitoring detects a cryptocurrency mining process.
 
 What should you do?
 
-### Answer
+#### Answer
 
 ```
 Confirm Alert
@@ -1165,15 +1165,15 @@ to determine whether additional systems were affected.
 
 ---
 
-# Scenario 13 – Public Docker Image is Compromised
+## Scenario 13 – Public Docker Image is Compromised
 
-### Question
+#### Question
 
 A security advisory announces that a Docker image your organization uses contains malicious code.
 
 What actions should be taken?
 
-### Answer
+#### Answer
 
 ```
 Identify Affected Images
@@ -1212,15 +1212,15 @@ Additional actions:
 
 ---
 
-# Scenario 14 – Exposed Docker API
+## Scenario 14 – Exposed Docker API
 
-### Question
+#### Question
 
 An organization's Docker API is exposed to the Internet without proper authentication.
 
 Why is this dangerous?
 
-### Answer
+#### Answer
 
 An exposed Docker API could allow an attacker to:
 
@@ -1240,15 +1240,15 @@ Recommended actions:
 
 ---
 
-# Scenario 15 – Secret Found in Git Repository
+## Scenario 15 – Secret Found in Git Repository
 
-### Question
+#### Question
 
 A Dockerfile containing cloud credentials is accidentally committed to Git.
 
 What should happen?
 
-### Answer
+#### Answer
 
 ```
 Remove Secret
@@ -1278,15 +1278,15 @@ Even if the commit is removed, the credential should be considered compromised.
 
 ---
 
-# Scenario 16 – Registry Credentials Stolen
+## Scenario 16 – Registry Credentials Stolen
 
-### Question
+#### Question
 
 Registry credentials have been compromised.
 
 What is your response?
 
-### Answer
+#### Answer
 
 ```
 Disable Credentials
@@ -1316,15 +1316,15 @@ Investigate whether unauthorized images were uploaded.
 
 ---
 
-# Scenario 17 – Supply Chain Attack
+## Scenario 17 – Supply Chain Attack
 
-### Question
+#### Question
 
 An attacker compromises a CI/CD pipeline and inserts malicious code into container images.
 
 How would you detect and respond?
 
-### Answer
+#### Answer
 
 Investigation includes:
 
@@ -1364,15 +1364,15 @@ Improve controls by:
 
 ---
 
-# Scenario 18 – Unauthorized Container Deployment
+## Scenario 18 – Unauthorized Container Deployment
 
-### Question
+#### Question
 
 An unknown container appears in production.
 
 How would you investigate?
 
-### Answer
+#### Answer
 
 Review:
 
@@ -1405,15 +1405,15 @@ Determine:
 
 ---
 
-# Scenario 19 – Data Exfiltration
+## Scenario 19 – Data Exfiltration
 
-### Question
+#### Question
 
 Monitoring detects unusually large outbound network traffic.
 
 How would you investigate?
 
-### Answer
+#### Answer
 
 ```
 Alert
@@ -1452,15 +1452,15 @@ Determine:
 
 ---
 
-# Scenario 20 – Ransomware in a Container
+## Scenario 20 – Ransomware in a Container
 
-### Question
+#### Question
 
 A container begins encrypting files stored in mounted volumes.
 
 What should you do?
 
-### Answer
+#### Answer
 
 ```
 Contain
@@ -1490,11 +1490,11 @@ Recovery should use trusted images and validated backups.
 
 ---
 
-# Troubleshooting Questions
+## Troubleshooting Questions
 
-## Q41. Why won't my container start?
+### Q41. Why won't my container start?
 
-### Answer
+#### Answer
 
 Possible causes include:
 
@@ -1517,9 +1517,9 @@ docker ps -a
 
 ---
 
-## Q42. Why can't two containers communicate?
+### Q42. Why can't two containers communicate?
 
-### Answer
+#### Answer
 
 Verify:
 
@@ -1531,9 +1531,9 @@ Verify:
 
 ---
 
-## Q43. Why is my image extremely large?
+### Q43. Why is my image extremely large?
 
-### Answer
+#### Answer
 
 Common causes:
 
@@ -1551,9 +1551,9 @@ Use:
 
 ---
 
-## Q44. Why are my changes lost after deleting the container?
+### Q44. Why are my changes lost after deleting the container?
 
-### Answer
+#### Answer
 
 Data stored in the container's writable layer is removed when the container is deleted.
 
@@ -1566,9 +1566,9 @@ for persistent data.
 
 ---
 
-## Q45. Why is memory usage continuously increasing?
+### Q45. Why is memory usage continuously increasing?
 
-### Answer
+#### Answer
 
 Possible causes:
 
@@ -1588,11 +1588,11 @@ along with application logs and profiling tools.
 
 ---
 
-# Expert-Level Questions
+## Expert-Level Questions
 
-## Q46. Explain the complete Docker image lifecycle.
+### Q46. Explain the complete Docker image lifecycle.
 
-### Answer
+#### Answer
 
 ```
 Dockerfile
@@ -1636,9 +1636,9 @@ Retirement
 
 ---
 
-## Q47. Explain the complete Container Security Lifecycle.
+### Q47. Explain the complete Container Security Lifecycle.
 
-### Answer
+#### Answer
 
 ```
 Secure Development
@@ -1678,9 +1678,9 @@ Continuous Improvement
 
 ---
 
-## Q48. What is Zero Trust for Containers?
+### Q48. What is Zero Trust for Containers?
 
-### Answer
+#### Answer
 
 Zero Trust assumes no workload is automatically trusted.
 
@@ -1694,9 +1694,9 @@ Core principles include:
 
 ---
 
-## Q49. How would you build a production-ready container platform?
+### Q49. How would you build a production-ready container platform?
 
-### Answer
+#### Answer
 
 Typical components include:
 
@@ -1713,9 +1713,9 @@ Typical components include:
 
 ---
 
-## Q50. What are the biggest security risks in container environments?
+### Q50. What are the biggest security risks in container environments?
 
-### Answer
+#### Answer
 
 Examples include:
 
@@ -1734,19 +1734,19 @@ Mitigation requires layered security controls rather than reliance on a single d
 
 ---
 
-# HR & Behavioral Questions
+## HR & Behavioral Questions
 
-## Q51. Why do you want to learn Docker and Containers?
+### Q51. Why do you want to learn Docker and Containers?
 
-### Sample Answer
+#### Sample Answer
 
 Containers have become a core technology for modern software development, cloud computing, and DevSecOps. Learning Docker enables me to build consistent, scalable, and secure applications while improving deployment automation and operational efficiency.
 
 ---
 
-## Q52. Tell me about a Docker project you worked on.
+### Q52. Tell me about a Docker project you worked on.
 
-### Sample Answer
+#### Sample Answer
 
 Discuss:
 
@@ -1761,9 +1761,9 @@ Focus on your own contributions.
 
 ---
 
-## Q53. Describe a production issue you resolved.
+### Q53. Describe a production issue you resolved.
 
-### Sample Answer
+#### Sample Answer
 
 Structure your answer using:
 
@@ -1787,9 +1787,9 @@ The STAR method helps provide clear and structured responses.
 
 ---
 
-## Q54. How do you stay updated with container security?
+### Q54. How do you stay updated with container security?
 
-### Sample Answer
+#### Sample Answer
 
 Mention resources such as:
 
@@ -1805,17 +1805,17 @@ Mention resources such as:
 
 ---
 
-## Q55. What would you do if you didn't know the answer during an interview?
+### Q55. What would you do if you didn't know the answer during an interview?
 
-### Sample Answer
+#### Sample Answer
 
 Remain honest, explain how you would investigate the problem, discuss your troubleshooting approach, and demonstrate your willingness to learn rather than guessing.
 
 ---
 
-# Interview Tips
+## Interview Tips
 
-## Before the Interview
+### Before the Interview
 
 - Review Docker fundamentals.
 - Practice common Docker commands.
@@ -1827,7 +1827,7 @@ Remain honest, explain how you would investigate the problem, discuss your troub
 
 ---
 
-## During the Interview
+### During the Interview
 
 - Clarify the question if needed.
 - Think aloud while solving problems.
@@ -1838,7 +1838,7 @@ Remain honest, explain how you would investigate the problem, discuss your troub
 
 ---
 
-## Technical Interview Strategy
+### Technical Interview Strategy
 
 When answering scenario questions, follow a consistent framework:
 
@@ -1874,7 +1874,7 @@ This demonstrates a systematic engineering mindset.
 
 ---
 
-# Final Container Interview Checklist
+## Final Container Interview Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1901,9 +1901,9 @@ This demonstrates a systematic engineering mindset.
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - Docker Documentation
 - Kubernetes Documentation
@@ -1911,7 +1911,7 @@ This demonstrates a systematic engineering mindset.
 
 ---
 
-## Security Standards
+### Security Standards
 
 - NIST SP 800-190 — Application Container Security Guide
 - CIS Docker Benchmark
@@ -1920,7 +1920,7 @@ This demonstrates a systematic engineering mindset.
 
 ---
 
-## Recommended Books
+### Recommended Books
 
 - *Docker Deep Dive* — Nigel Poulton
 - *Container Security* — Liz Rice
@@ -1929,7 +1929,7 @@ This demonstrates a systematic engineering mindset.
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 - Build and secure Docker applications.
 - Practice troubleshooting intentionally broken containers.

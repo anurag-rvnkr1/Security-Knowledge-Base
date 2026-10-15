@@ -2,7 +2,7 @@
 
 ---
 
-# Overview
+## Overview
 
 **Broken Access Control** is the **#1 risk in the OWASP Top 10 (2021)** and one of the most common and dangerous vulnerabilities found in modern web applications.
 
@@ -28,7 +28,7 @@ OWASP reports that **Broken Access Control appears in more applications than any
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Improper access control can completely compromise an application's security.
 
@@ -63,7 +63,7 @@ returns another customer's statement without authorization checks, the applicati
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 Many beginners confuse these concepts.
 
@@ -97,7 +97,7 @@ A user can be successfully authenticated while still having very limited permiss
 
 ---
 
-# Access Control Fundamentals
+## Access Control Fundamentals
 
 Access control consists of rules that determine whether a request should be allowed.
 
@@ -119,7 +119,7 @@ If any authorization check is skipped, Broken Access Control becomes possible.
 
 ---
 
-# Authorization Flow
+## Authorization Flow
 
 ```
            Client
@@ -154,9 +154,9 @@ A secure application performs authorization checks **on every protected request*
 
 ---
 
-# Architecture / Diagram
+## Architecture / Diagram
 
-## Example Secure Architecture
+### Example Secure Architecture
 
 ```
              User
@@ -185,7 +185,7 @@ A secure application performs authorization checks **on every protected request*
 
 ---
 
-## Insecure Architecture
+### Insecure Architecture
 
 ```
 User
@@ -213,13 +213,13 @@ This is one of the most common design mistakes in web applications.
 
 ---
 
-# Key Concepts
+## Key Concepts
 
 Understanding Broken Access Control requires familiarity with several authorization concepts.
 
 ---
 
-## Subject
+### Subject
 
 The entity requesting access.
 
@@ -233,7 +233,7 @@ Examples:
 
 ---
 
-## Object
+### Object
 
 The resource being accessed.
 
@@ -249,7 +249,7 @@ Examples:
 
 ---
 
-## Action
+### Action
 
 The operation requested.
 
@@ -265,7 +265,7 @@ Examples:
 
 ---
 
-## Policy
+### Policy
 
 The rule defining who can perform which action.
 
@@ -284,7 +284,7 @@ Cannot:
 
 ---
 
-## Permission
+### Permission
 
 A permission represents a specific capability.
 
@@ -308,7 +308,7 @@ Applications often combine multiple permissions into roles.
 
 ---
 
-## Role
+### Role
 
 A role is a collection of permissions.
 
@@ -336,7 +336,7 @@ Customer
 
 ---
 
-## Principle of Least Privilege
+### Principle of Least Privilege
 
 One of the most important security principles.
 
@@ -372,7 +372,7 @@ Least privilege significantly reduces the impact of compromised accounts.
 
 ---
 
-# Common Indicators of Broken Access Control
+## Common Indicators of Broken Access Control
 
 Security testers often look for patterns such as:
 
@@ -391,7 +391,7 @@ These indicators often suggest authorization weaknesses that require further tes
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Broken Access Control is the **#1 OWASP Top 10 (2021)** risk.
 - Authentication verifies **identity**, while authorization verifies **permissions**.
@@ -400,7 +400,7 @@ These indicators often suggest authorization weaknesses that require further tes
 - Applying the **Principle of Least Privilege** is one of the most effective ways to reduce authorization-related risks.
 - Missing or inconsistent authorization checks can lead to data exposure, privilege escalation, and full application compromise.
 
-# Types of Broken Access Control
+## Types of Broken Access Control
 
 Broken Access Control can appear in many different forms. Although the root cause is always the same—**the application fails to properly enforce authorization**—the way attackers exploit it varies.
 
@@ -408,9 +408,9 @@ Understanding these attack patterns is essential for penetration testers, develo
 
 ---
 
-# 1. Vertical Privilege Escalation
+## 1. Vertical Privilege Escalation
 
-## Overview
+### Overview
 
 Vertical Privilege Escalation occurs when a lower-privileged user gains access to functionality reserved for higher-privileged users.
 
@@ -435,7 +435,7 @@ A normal user should never be able to reach administrator functions.
 
 ---
 
-## Example
+### Example
 
 Application roles:
 
@@ -472,7 +472,7 @@ If the page loads successfully, the application suffers from **Vertical Privileg
 
 ---
 
-## Example HTTP Request
+### Example HTTP Request
 
 ```
 GET /admin HTTP/1.1
@@ -496,7 +496,7 @@ Welcome Administrator
 
 ---
 
-## Impact
+### Impact
 
 An attacker may gain the ability to:
 
@@ -509,9 +509,9 @@ An attacker may gain the ability to:
 
 ---
 
-# 2. Horizontal Privilege Escalation
+## 2. Horizontal Privilege Escalation
 
-## Overview
+### Overview
 
 Horizontal Privilege Escalation occurs when a user accesses another user’s resources while remaining at the same privilege level.
 
@@ -529,7 +529,7 @@ Neither should access the other's information.
 
 ---
 
-## Example
+### Example
 
 Alice logs in.
 
@@ -563,7 +563,7 @@ This is Horizontal Privilege Escalation.
 
 ---
 
-## Impact
+### Impact
 
 Possible consequences include:
 
@@ -576,9 +576,9 @@ Possible consequences include:
 
 ---
 
-# 3. Insecure Direct Object Reference (IDOR)
+## 3. Insecure Direct Object Reference (IDOR)
 
-## Overview
+### Overview
 
 IDOR is one of the most common forms of Broken Access Control.
 
@@ -595,7 +595,7 @@ Examples of identifiers include:
 
 ---
 
-## Vulnerable Example
+### Vulnerable Example
 
 Alice requests:
 
@@ -625,7 +625,7 @@ No authorization check was performed.
 
 ---
 
-## Secure Logic
+### Secure Logic
 
 Instead of trusting the ID:
 
@@ -651,9 +651,9 @@ Never assume that an object ID alone proves authorization.
 
 ---
 
-# 4. Forced Browsing
+## 4. Forced Browsing
 
-## Overview
+### Overview
 
 Forced Browsing occurs when users directly request hidden URLs that are not linked in the application's interface.
 
@@ -663,7 +663,7 @@ It is not.
 
 ---
 
-## Example
+### Example
 
 Visible pages:
 
@@ -695,7 +695,7 @@ If the server does not enforce authorization, the attacker gains access.
 
 ---
 
-## Common Discovery Methods
+### Common Discovery Methods
 
 Attackers use:
 
@@ -712,9 +712,9 @@ Attackers use:
 
 ---
 
-# 5. Parameter Tampering
+## 5. Parameter Tampering
 
-## Overview
+### Overview
 
 Applications often rely on parameters such as:
 
@@ -732,7 +732,7 @@ If these values determine authorization without server-side validation, attacker
 
 ---
 
-## Example
+### Example
 
 Original request:
 
@@ -754,7 +754,7 @@ If accepted, the application has failed to validate authorization.
 
 ---
 
-## Another Example
+### Another Example
 
 ```
 GET /download?file=report.pdf
@@ -770,7 +770,7 @@ Without validation, confidential files become accessible.
 
 ---
 
-# 6. File Access Vulnerabilities
+## 6. File Access Vulnerabilities
 
 Applications often store files using predictable names.
 
@@ -794,7 +794,7 @@ If ownership isn't checked, private documents become public.
 
 ---
 
-## Secure Workflow
+### Secure Workflow
 
 ```
 Request File
@@ -816,7 +816,7 @@ Never rely solely on file names or paths for authorization.
 
 ---
 
-# 7. HTTP Method Manipulation
+## 7. HTTP Method Manipulation
 
 Some applications secure only one HTTP method.
 
@@ -852,7 +852,7 @@ Every HTTP method accessing a protected resource must enforce the same authoriza
 
 ---
 
-# 8. JWT Role Manipulation
+## 8. JWT Role Manipulation
 
 Applications using JSON Web Tokens (JWTs) may include user roles in the token payload.
 
@@ -885,7 +885,7 @@ If the modified token is accepted, the attacker gains elevated privileges.
 
 ---
 
-# 9. API Authorization Issues
+## 9. API Authorization Issues
 
 Modern APIs are frequent targets of Broken Access Control.
 
@@ -911,7 +911,7 @@ This is one of the most common API vulnerabilities and is a major focus of the *
 
 ---
 
-# Attack Flow
+## Attack Flow
 
 ```
 Attacker
@@ -951,7 +951,7 @@ Sensitive Data Returned
 
 ---
 
-# Common Root Causes
+## Common Root Causes
 
 Broken Access Control often results from:
 
@@ -967,7 +967,7 @@ Broken Access Control often results from:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - **Vertical Privilege Escalation** allows a user to gain higher-level privileges.
 - **Horizontal Privilege Escalation** allows a user to access another user's resources.
@@ -977,15 +977,15 @@ Broken Access Control often results from:
 - Every request to a protected resource should undergo authentication (if required) **and** authorization checks.
 - Modern APIs require strict object-level and function-level authorization to prevent unauthorized access.
 
-# Real-World Examples of Broken Access Control
+## Real-World Examples of Broken Access Control
 
 Understanding how Broken Access Control has been exploited in real systems helps illustrate why it is the highest-ranked OWASP risk.
 
 ---
 
-# Example 1: Insecure Direct Object Reference (IDOR)
+## Example 1: Insecure Direct Object Reference (IDOR)
 
-## Scenario
+### Scenario
 
 An e-commerce application allows users to download invoices.
 
@@ -1021,7 +1021,7 @@ The application failed to verify that the authenticated user actually owns invoi
 
 ---
 
-## Root Cause
+### Root Cause
 
 The application trusted the object identifier.
 
@@ -1052,7 +1052,7 @@ without validating ownership.
 
 ---
 
-## Impact
+### Impact
 
 Possible exposure:
 
@@ -1064,7 +1064,7 @@ Possible exposure:
 
 ---
 
-# Example 2: Admin Panel Exposure
+## Example 2: Admin Panel Exposure
 
 Suppose an administrator dashboard exists at:
 
@@ -1098,7 +1098,7 @@ the application is vulnerable.
 
 ---
 
-# Example 3: API Authorization Failure
+## Example 3: API Authorization Failure
 
 Modern applications expose REST APIs.
 
@@ -1121,7 +1121,7 @@ This is commonly referred to as **Broken Object Level Authorization (BOLA)**.
 
 ---
 
-# Example 4: File Download Vulnerability
+## Example 4: File Download Vulnerability
 
 Application:
 
@@ -1139,7 +1139,7 @@ If confidential files are downloaded without authorization, access control has f
 
 ---
 
-# Example 5: Role Manipulation
+## Example 5: Role Manipulation
 
 Suppose an application sends:
 
@@ -1165,7 +1165,7 @@ Remember:
 
 ---
 
-# Detecting Broken Access Control
+## Detecting Broken Access Control
 
 Broken Access Control often cannot be discovered through automated scanners alone.
 
@@ -1175,7 +1175,7 @@ A tester should attempt to perform actions that should **not** be allowed.
 
 ---
 
-# Detection Methodology
+## Detection Methodology
 
 ```
 Login
@@ -1207,9 +1207,9 @@ Yes → Vulnerable
 
 ---
 
-# Manual Testing Checklist
+## Manual Testing Checklist
 
-## 1. Test Object IDs
+### 1. Test Object IDs
 
 Original request:
 
@@ -1231,7 +1231,7 @@ Questions:
 
 ---
 
-## 2. Test Hidden URLs
+### 2. Test Hidden URLs
 
 Examples:
 
@@ -1259,7 +1259,7 @@ Expected:
 
 ---
 
-## 3. Test HTTP Methods
+### 3. Test HTTP Methods
 
 Original:
 
@@ -1283,7 +1283,7 @@ Some applications secure only one method.
 
 ---
 
-## 4. Test Role Changes
+### 4. Test Role Changes
 
 Login as:
 
@@ -1300,7 +1300,7 @@ Attempt to:
 
 ---
 
-## 5. Test API Endpoints
+### 5. Test API Endpoints
 
 Example:
 
@@ -1322,13 +1322,13 @@ Observe:
 
 ---
 
-# Using Burp Suite
+## Using Burp Suite
 
 Burp Suite is one of the best tools for testing authorization.
 
 ---
 
-## Step 1
+### Step 1
 
 Configure browser proxy.
 
@@ -1346,13 +1346,13 @@ Application
 
 ---
 
-## Step 2
+### Step 2
 
 Login normally.
 
 ---
 
-## Step 3
+### Step 3
 
 Capture requests.
 
@@ -1364,7 +1364,7 @@ GET /profile?id=25
 
 ---
 
-## Step 4
+### Step 4
 
 Send request to Repeater.
 
@@ -1382,7 +1382,7 @@ Send to Repeater
 
 ---
 
-## Step 5
+### Step 5
 
 Modify values.
 
@@ -1404,7 +1404,7 @@ Observe responses.
 
 ---
 
-## Step 6
+### Step 6
 
 Test privileges.
 
@@ -1426,7 +1426,7 @@ Observe differences.
 
 ---
 
-# Burp Suite Features
+## Burp Suite Features
 
 Useful modules:
 
@@ -1440,7 +1440,7 @@ Repeater is especially valuable for authorization testing because it allows cont
 
 ---
 
-# Detection Using OWASP WSTG
+## Detection Using OWASP WSTG
 
 The OWASP Web Security Testing Guide recommends testing:
 
@@ -1457,7 +1457,7 @@ The OWASP Web Security Testing Guide recommends testing:
 
 ---
 
-# Automated Detection
+## Automated Detection
 
 Automated scanners can help identify potential authorization issues but often produce false positives or miss complex business logic flaws.
 
@@ -1473,7 +1473,7 @@ Manual verification is always required.
 
 ---
 
-# Common Indicators
+## Common Indicators
 
 Watch for:
 
@@ -1488,7 +1488,7 @@ Watch for:
 
 ---
 
-# Security Testing Tips
+## Security Testing Tips
 
 - Test with multiple user accounts.
 - Compare responses between different privilege levels.
@@ -1499,14 +1499,14 @@ Watch for:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Broken Access Control is primarily identified through **manual authorization testing**.
 - Changing object identifiers, URLs, HTTP methods, roles, and session tokens are common testing techniques.
 - Burp Suite Repeater is one of the most effective tools for validating authorization controls.
 - Automated tools can assist, but they cannot replace careful manual analysis of application behavior.
 
-# Prevention
+## Prevention
 
 Preventing Broken Access Control requires implementing authorization as a **server-side security mechanism** rather than relying on client-side restrictions.
 
@@ -1514,9 +1514,9 @@ A secure application should enforce authorization checks for **every request** t
 
 ---
 
-# Core Security Principles
+## Core Security Principles
 
-## 1. Deny by Default
+### 1. Deny by Default
 
 The safest approach is to deny access unless it is explicitly permitted.
 
@@ -1538,7 +1538,7 @@ else
 
 ---
 
-## 2. Verify Authorization on Every Request
+### 2. Verify Authorization on Every Request
 
 Never assume that because a user has logged in once, every future request is authorized.
 
@@ -1561,7 +1561,7 @@ Skipping the authorization step creates security vulnerabilities.
 
 ---
 
-## 3. Never Trust the Client
+### 3. Never Trust the Client
 
 Everything coming from the browser can be modified.
 
@@ -1585,7 +1585,7 @@ The server must independently verify the user's actual role instead of trusting 
 
 ---
 
-## 4. Enforce Ownership Checks
+### 4. Enforce Ownership Checks
 
 When accessing user-specific resources:
 
@@ -1609,7 +1609,7 @@ Even if an attacker changes the invoice ID, the query returns only records they 
 
 ---
 
-## 5. Use Role-Based Access Control (RBAC)
+### 5. Use Role-Based Access Control (RBAC)
 
 Instead of checking permissions everywhere manually, assign permissions through roles.
 
@@ -1642,7 +1642,7 @@ Customer
 
 ---
 
-## 6. Apply the Principle of Least Privilege
+### 6. Apply the Principle of Least Privilege
 
 Grant users only the permissions required for their responsibilities.
 
@@ -1650,9 +1650,9 @@ Avoid giving broad administrative rights when limited permissions are sufficient
 
 ---
 
-# Secure Coding Examples
+## Secure Coding Examples
 
-## Python (Django)
+### Python (Django)
 
 ```python
 from django.http import HttpResponseForbidden
@@ -1675,7 +1675,7 @@ The query automatically ensures that users can access only their own invoices.
 
 ---
 
-## Java (Spring Boot)
+### Java (Spring Boot)
 
 ```java
 @GetMapping("/invoice/{id}")
@@ -1703,7 +1703,7 @@ public ResponseEntity<?> getInvoice(
 
 ---
 
-## Node.js (Express)
+### Node.js (Express)
 
 ```javascript
 app.get("/invoice/:id", async (req, res) => {
@@ -1724,7 +1724,7 @@ app.get("/invoice/:id", async (req, res) => {
 
 ---
 
-# Best Practices
+## Best Practices
 
 ✔ Validate authorization on every request.
 
@@ -1758,9 +1758,9 @@ app.get("/invoice/:id", async (req, res) => {
 
 ---
 
-# Useful Commands
+## Useful Commands
 
-## Directory Enumeration
+### Directory Enumeration
 
 ```bash
 ffuf -u https://example.com/FUZZ \
@@ -1769,7 +1769,7 @@ ffuf -u https://example.com/FUZZ \
 
 ---
 
-## Gobuster
+### Gobuster
 
 ```bash
 gobuster dir \
@@ -1779,7 +1779,7 @@ gobuster dir \
 
 ---
 
-## cURL
+### cURL
 
 ```bash
 curl \
@@ -1789,7 +1789,7 @@ https://example.com/api/user/10
 
 ---
 
-## Compare Different Users
+### Compare Different Users
 
 ```bash
 curl \
@@ -1805,23 +1805,23 @@ curl \
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Objective
+### Objective
 
 Identify an IDOR vulnerability using **OWASP Juice Shop**.
 
 ---
 
-## Steps
+### Steps
 
-### Step 1
+#### Step 1
 
 Log in as a normal user.
 
 ---
 
-### Step 2
+#### Step 2
 
 Open Burp Suite.
 
@@ -1829,7 +1829,7 @@ Enable proxy interception.
 
 ---
 
-### Step 3
+#### Step 3
 
 Navigate to:
 
@@ -1841,13 +1841,13 @@ Capture the request.
 
 ---
 
-### Step 4
+#### Step 4
 
 Send the request to **Repeater**.
 
 ---
 
-### Step 5
+#### Step 5
 
 Modify:
 
@@ -1865,7 +1865,7 @@ Observe whether another user's data is returned.
 
 ---
 
-### Step 6
+#### Step 6
 
 Record:
 
@@ -1877,7 +1877,7 @@ Record:
 
 ---
 
-## Expected Learning Outcomes
+### Expected Learning Outcomes
 
 You should understand:
 
@@ -1888,11 +1888,11 @@ You should understand:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is Broken Access Control?
+#### What is Broken Access Control?
 
 **Answer:**
 
@@ -1900,7 +1900,7 @@ A vulnerability where users can access resources or perform actions beyond their
 
 ---
 
-### Difference between Authentication and Authorization?
+#### Difference between Authentication and Authorization?
 
 Authentication verifies identity.
 
@@ -1908,33 +1908,33 @@ Authorization determines permissions.
 
 ---
 
-### What is IDOR?
+#### What is IDOR?
 
 IDOR (Insecure Direct Object Reference) occurs when an application exposes object identifiers and fails to verify that the requesting user is authorized to access the referenced object.
 
 ---
 
-### What is Vertical Privilege Escalation?
+#### What is Vertical Privilege Escalation?
 
 A lower-privileged user gains access to higher-privileged functionality, such as an admin dashboard.
 
 ---
 
-### What is Horizontal Privilege Escalation?
+#### What is Horizontal Privilege Escalation?
 
 A user accesses another user's resources while remaining at the same privilege level.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### Why is Broken Access Control ranked #1 in OWASP Top 10 (2021)?
+#### Why is Broken Access Control ranked #1 in OWASP Top 10 (2021)?
 
 Because it is one of the most widespread vulnerabilities across modern applications and can lead to severe consequences, including data breaches, privilege escalation, and unauthorized access.
 
 ---
 
-### How would you test for Broken Access Control?
+#### How would you test for Broken Access Control?
 
 - Test different user roles.
 - Modify object IDs.
@@ -1946,15 +1946,15 @@ Because it is one of the most widespread vulnerabilities across modern applicati
 
 ---
 
-### Why is client-side authorization insecure?
+#### Why is client-side authorization insecure?
 
 Because attackers can modify client-side code, requests, and parameters. Authorization decisions must always be enforced on the server.
 
 ---
 
-## Advanced
+### Advanced
 
-### Explain RBAC and ABAC.
+#### Explain RBAC and ABAC.
 
 **RBAC (Role-Based Access Control):** Permissions are grouped into roles (e.g., Admin, Manager, User), and users inherit permissions based on their assigned role.
 
@@ -1962,21 +1962,21 @@ Because attackers can modify client-side code, requests, and parameters. Authori
 
 ---
 
-### How can microservices complicate access control?
+#### How can microservices complicate access control?
 
 Each service must consistently enforce authorization. If one service omits or incorrectly implements access checks, attackers may bypass controls through internal APIs or service-to-service communication.
 
 ---
 
-### How do JWTs relate to Broken Access Control?
+#### How do JWTs relate to Broken Access Control?
 
 JWTs can carry user identity and role information. If the server fails to validate JWT signatures, trusts client-modified claims, or makes authorization decisions based solely on unverified token contents, attackers may gain unauthorized privileges.
 
 ---
 
-# References
+## References
 
-## OWASP
+### OWASP
 
 - OWASP Top 10 (2021)
 - OWASP Web Security Testing Guide (WSTG)
@@ -1985,13 +1985,13 @@ JWTs can carry user identity and role information. If the server fails to valida
 - OWASP Juice Shop
 - OWASP WebGoat
 
-## MITRE
+### MITRE
 
 - CWE-284: Improper Access Control
 - CWE-639: Authorization Bypass Through User-Controlled Key
 - CWE-285: Improper Authorization
 
-## Standards
+### Standards
 
 - NIST SP 800-53
 - NIST Cybersecurity Framework (CSF)
@@ -2000,7 +2000,7 @@ JWTs can carry user identity and role information. If the server fails to valida
 
 ---
 
-# Summary
+## Summary
 
 Broken Access Control is the most prevalent and impactful web application security risk in the OWASP Top 10 (2021). It arises when applications fail to properly enforce authorization, allowing users to access resources or perform actions beyond their intended permissions.
 

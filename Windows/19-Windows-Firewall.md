@@ -1,10 +1,10 @@
 # 19-Windows-Firewall.md
 
-# Part 1 — Windows Defender Firewall Fundamentals, Architecture, Profiles, Rule Processing, and Windows Filtering Platform (WFP)
+## Part 1 — Windows Defender Firewall Fundamentals, Architecture, Profiles, Rule Processing, and Windows Filtering Platform (WFP)
 
 ---
 
-# Introduction
+## Introduction
 
 A firewall is one of the most important security controls in any operating system.
 
@@ -14,7 +14,7 @@ Unlike perimeter firewalls that protect an entire network, Windows Defender Fire
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -30,7 +30,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is a Firewall?
+## What is a Firewall?
 
 A firewall is a security mechanism that monitors network traffic and decides whether to allow or block communication based on predefined rules.
 
@@ -44,7 +44,7 @@ Its primary objectives are:
 
 ---
 
-# Why Windows Firewall is Important
+## Why Windows Firewall is Important
 
 Without a firewall:
 
@@ -86,7 +86,7 @@ The firewall acts as a security checkpoint for every network connection.
 
 ---
 
-# Host-Based Firewall
+## Host-Based Firewall
 
 Windows Defender Firewall is a **host-based firewall**.
 
@@ -103,7 +103,7 @@ Both are commonly used together in enterprise environments.
 
 ---
 
-# Windows Defender Firewall
+## Windows Defender Firewall
 
 Windows Defender Firewall provides:
 
@@ -121,7 +121,7 @@ It is enabled by default in supported Windows installations.
 
 ---
 
-# Windows Firewall Architecture
+## Windows Firewall Architecture
 
 ```text
 Applications
@@ -151,7 +151,7 @@ Windows Filtering Platform performs packet inspection before traffic reaches app
 
 ---
 
-# Firewall Components
+## Firewall Components
 
 Major components include:
 
@@ -165,7 +165,7 @@ Major components include:
 
 ---
 
-# Base Filtering Engine (BFE)
+## Base Filtering Engine (BFE)
 
 The **Base Filtering Engine (BFE)** is the core service responsible for:
 
@@ -178,7 +178,7 @@ If the BFE service is unavailable, Windows Firewall cannot function correctly.
 
 ---
 
-# Windows Firewall Service
+## Windows Firewall Service
 
 Service name:
 
@@ -197,7 +197,7 @@ The service should remain enabled at all times.
 
 ---
 
-# Windows Filtering Platform (WFP)
+## Windows Filtering Platform (WFP)
 
 WFP is the underlying packet-processing framework used by Windows networking components.
 
@@ -213,7 +213,7 @@ Many security products integrate directly with WFP.
 
 ---
 
-# WFP Architecture
+## WFP Architecture
 
 ```text
 Network Packet
@@ -239,7 +239,7 @@ Filtering occurs at multiple stages of packet processing.
 
 ---
 
-# WFP Layers
+## WFP Layers
 
 Examples include:
 
@@ -254,7 +254,7 @@ Each layer provides different filtering capabilities.
 
 ---
 
-# Stateful Packet Inspection (SPI)
+## Stateful Packet Inspection (SPI)
 
 Windows Defender Firewall uses **Stateful Packet Inspection**.
 
@@ -280,7 +280,7 @@ The firewall understands the state of network connections.
 
 ---
 
-# Stateless vs Stateful
+## Stateless vs Stateful
 
 | Stateless | Stateful |
 |-----------|-----------|
@@ -292,7 +292,7 @@ Stateful inspection improves security while maintaining performance.
 
 ---
 
-# Firewall Profiles
+## Firewall Profiles
 
 Windows Firewall supports three profiles.
 
@@ -310,7 +310,7 @@ Each profile has independent firewall rules.
 
 ---
 
-# Domain Profile
+## Domain Profile
 
 Used when:
 
@@ -322,7 +322,7 @@ Enterprise environments primarily use the Domain profile.
 
 ---
 
-# Private Profile
+## Private Profile
 
 Designed for trusted networks.
 
@@ -336,7 +336,7 @@ Allows more permissive communication than the Public profile.
 
 ---
 
-# Public Profile
+## Public Profile
 
 Designed for untrusted networks.
 
@@ -351,7 +351,7 @@ This profile applies the most restrictive firewall configuration.
 
 ---
 
-# Profile Selection
+## Profile Selection
 
 ```text
 Network Detected
@@ -379,7 +379,7 @@ Windows automatically selects the appropriate profile.
 
 ---
 
-# Firewall Rule Types
+## Firewall Rule Types
 
 Common rule types include:
 
@@ -395,7 +395,7 @@ Rules can be combined for granular control.
 
 ---
 
-# Program Rules
+## Program Rules
 
 Example:
 
@@ -415,7 +415,7 @@ Program rules identify applications by executable path.
 
 ---
 
-# Port Rules
+## Port Rules
 
 Example:
 
@@ -435,7 +435,7 @@ Port-based filtering controls communication regardless of application.
 
 ---
 
-# Protocol Rules
+## Protocol Rules
 
 Examples:
 
@@ -448,7 +448,7 @@ Protocols define how network communication occurs.
 
 ---
 
-# Service Rules
+## Service Rules
 
 Rules may apply to Windows services.
 
@@ -466,7 +466,7 @@ Service-specific rules reduce unnecessary exposure.
 
 ---
 
-# Inbound Rules
+## Inbound Rules
 
 Inbound rules control traffic entering the computer.
 
@@ -492,7 +492,7 @@ Unsolicited inbound traffic is blocked by default unless permitted.
 
 ---
 
-# Outbound Rules
+## Outbound Rules
 
 Outbound rules control traffic leaving the computer.
 
@@ -514,7 +514,7 @@ Organizations may restrict outbound communication to approved destinations.
 
 ---
 
-# Firewall Rule Processing
+## Firewall Rule Processing
 
 Windows evaluates firewall rules using policy precedence.
 
@@ -546,7 +546,7 @@ The most specific applicable rule is used.
 
 ---
 
-# Default Firewall Behavior
+## Default Firewall Behavior
 
 Typical defaults:
 
@@ -559,7 +559,7 @@ Organizations often customize outbound policies for higher security.
 
 ---
 
-# Allow Rules
+## Allow Rules
 
 Allow rules explicitly permit traffic.
 
@@ -577,7 +577,7 @@ chrome.exe
 
 ---
 
-# Block Rules
+## Block Rules
 
 Block rules explicitly deny traffic.
 
@@ -595,7 +595,7 @@ Blocking unnecessary services reduces attack surface.
 
 ---
 
-# Firewall Logging
+## Firewall Logging
 
 Windows Firewall can log:
 
@@ -607,7 +607,7 @@ Logs assist with troubleshooting and security investigations.
 
 ---
 
-# Firewall Management Tools
+## Firewall Management Tools
 
 Administrators manage the firewall using:
 
@@ -621,7 +621,7 @@ Enterprise environments typically automate configuration.
 
 ---
 
-# Windows Defender Firewall with Advanced Security
+## Windows Defender Firewall with Advanced Security
 
 Launch:
 
@@ -640,7 +640,7 @@ It is the primary graphical administration tool.
 
 ---
 
-# Enterprise Firewall Architecture
+## Enterprise Firewall Architecture
 
 ```text
 Application
@@ -670,7 +670,7 @@ Host-based and network firewalls complement one another.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company deploys Windows Defender Firewall across 5,000 laptops.
 
@@ -686,7 +686,7 @@ This significantly reduces unauthorized network access.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Windows Defender Firewall helps defend against:
 
@@ -701,7 +701,7 @@ Combined with endpoint detection, it forms an important defensive layer.
 
 ---
 
-# Business Impact
+## Business Impact
 
 A properly configured firewall provides:
 
@@ -716,7 +716,7 @@ Firewall policies directly contribute to organizational security.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Keep Windows Defender Firewall enabled.
 - Enable all three firewall profiles.
@@ -731,9 +731,9 @@ Firewall policies directly contribute to organizational security.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Open Windows Defender Firewall
+### Lab 1 — Open Windows Defender Firewall
 
 Launch:
 
@@ -749,7 +749,7 @@ Review:
 
 ---
 
-## Lab 2 — Review Firewall Profiles
+### Lab 2 — Review Firewall Profiles
 
 Open:
 
@@ -769,7 +769,7 @@ Document:
 
 ---
 
-## Lab 3 — Review Existing Rules
+### Lab 3 — Review Existing Rules
 
 Identify:
 
@@ -781,7 +781,7 @@ Record whether they are enabled.
 
 ---
 
-## Lab 4 — Verify Firewall Service
+### Lab 4 — Verify Firewall Service
 
 Run:
 
@@ -793,7 +793,7 @@ Confirm the service is running.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows Defender Firewall is a host-based firewall.
 - Windows Filtering Platform performs packet filtering.
@@ -806,7 +806,7 @@ Confirm the service is running.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Windows Defender Firewall?
 2. Explain the difference between host-based and network firewalls.
@@ -821,7 +821,7 @@ Confirm the service is running.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Defender Firewall Documentation
@@ -834,13 +834,13 @@ Confirm the service is running.
 ---
 
 *
-# 19-Windows-Firewall.md
+## 19-Windows-Firewall.md
 
-# Part 2 — Advanced Firewall Rules, Connection Security Rules, IPsec, PowerShell Firewall Management, Logging, and Enterprise Deployment
+## Part 2 — Advanced Firewall Rules, Connection Security Rules, IPsec, PowerShell Firewall Management, Logging, and Enterprise Deployment
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise environments require firewall policies that go beyond simply allowing or blocking ports.
 
@@ -859,7 +859,7 @@ These capabilities allow organizations to build highly secure endpoint communica
 
 ---
 
-# Advanced Firewall Rules
+## Advanced Firewall Rules
 
 A firewall rule can contain multiple conditions.
 
@@ -900,7 +900,7 @@ Domain
 
 ---
 
-# Rule Components
+## Rule Components
 
 | Component | Purpose |
 |-----------|----------|
@@ -916,7 +916,7 @@ Domain
 
 ---
 
-# Application-Based Filtering
+## Application-Based Filtering
 
 Application rules identify traffic by executable rather than port.
 
@@ -940,7 +940,7 @@ Benefits:
 
 ---
 
-# Service-Based Filtering
+## Service-Based Filtering
 
 Instead of allowing every application:
 
@@ -966,7 +966,7 @@ This reduces unnecessary exposure.
 
 ---
 
-# IP Address Filtering
+## IP Address Filtering
 
 Firewall rules may restrict communication based on:
 
@@ -989,7 +989,7 @@ Only systems from the approved subnet may connect.
 
 ---
 
-# Interface Types
+## Interface Types
 
 Rules may apply only to:
 
@@ -1011,7 +1011,7 @@ This prevents SMB exposure on public Wi-Fi.
 
 ---
 
-# Edge Traversal
+## Edge Traversal
 
 Edge Traversal determines whether traffic can pass through NAT devices.
 
@@ -1037,7 +1037,7 @@ Enable only when explicitly required.
 
 ---
 
-# Authentication-Based Firewall Rules
+## Authentication-Based Firewall Rules
 
 Firewall rules may require authenticated users or computers.
 
@@ -1063,7 +1063,7 @@ This prevents anonymous connections.
 
 ---
 
-# Connection Security Rules
+## Connection Security Rules
 
 Unlike firewall rules, Connection Security Rules do **not** directly allow or block traffic.
 
@@ -1077,7 +1077,7 @@ Common uses:
 
 ---
 
-# Connection Security Rule Types
+## Connection Security Rule Types
 
 Windows supports:
 
@@ -1091,7 +1091,7 @@ Windows supports:
 
 ---
 
-# IPsec Overview
+## IPsec Overview
 
 Internet Protocol Security (IPsec) secures IP communication.
 
@@ -1103,7 +1103,7 @@ Provides:
 
 ---
 
-# IPsec Security Services
+## IPsec Security Services
 
 ```text
 Computer A
@@ -1127,7 +1127,7 @@ Computer B
 
 ---
 
-# IPsec Modes
+## IPsec Modes
 
 | Mode | Purpose |
 |------|----------|
@@ -1136,7 +1136,7 @@ Computer B
 
 ---
 
-# Transport Mode
+## Transport Mode
 
 ```text
 Original Header
@@ -1150,7 +1150,7 @@ Typically used between hosts.
 
 ---
 
-# Tunnel Mode
+## Tunnel Mode
 
 ```text
 Entire Packet
@@ -1168,7 +1168,7 @@ Commonly used for VPNs and gateway-to-gateway communication.
 
 ---
 
-# Authentication Methods
+## Authentication Methods
 
 Supported methods include:
 
@@ -1180,7 +1180,7 @@ Enterprise deployments generally prefer Kerberos or certificates.
 
 ---
 
-# Firewall and IPsec Integration
+## Firewall and IPsec Integration
 
 Workflow:
 
@@ -1210,7 +1210,7 @@ Transmission
 
 ---
 
-# PowerShell Firewall Management
+## PowerShell Firewall Management
 
 PowerShell provides comprehensive firewall administration.
 
@@ -1222,7 +1222,7 @@ NetSecurity
 
 ---
 
-# View Firewall Profiles
+## View Firewall Profiles
 
 ```powershell
 Get-NetFirewallProfile
@@ -1236,7 +1236,7 @@ Displays:
 
 ---
 
-# Enable Firewall
+## Enable Firewall
 
 ```powershell
 Set-NetFirewallProfile `
@@ -1246,7 +1246,7 @@ Set-NetFirewallProfile `
 
 ---
 
-# Disable Firewall (Testing Only)
+## Disable Firewall (Testing Only)
 
 ```powershell
 Set-NetFirewallProfile `
@@ -1258,7 +1258,7 @@ Disabling the firewall should be avoided on production systems.
 
 ---
 
-# View Firewall Rules
+## View Firewall Rules
 
 ```powershell
 Get-NetFirewallRule
@@ -1266,7 +1266,7 @@ Get-NetFirewallRule
 
 ---
 
-# Search for a Rule
+## Search for a Rule
 
 ```powershell
 Get-NetFirewallRule `
@@ -1275,7 +1275,7 @@ Get-NetFirewallRule `
 
 ---
 
-# Create a Firewall Rule
+## Create a Firewall Rule
 
 Example:
 
@@ -1290,7 +1290,7 @@ New-NetFirewallRule `
 
 ---
 
-# Remove a Rule
+## Remove a Rule
 
 ```powershell
 Remove-NetFirewallRule `
@@ -1299,7 +1299,7 @@ Remove-NetFirewallRule `
 
 ---
 
-# Disable a Rule
+## Disable a Rule
 
 ```powershell
 Disable-NetFirewallRule `
@@ -1308,7 +1308,7 @@ Disable-NetFirewallRule `
 
 ---
 
-# Enable a Rule
+## Enable a Rule
 
 ```powershell
 Enable-NetFirewallRule `
@@ -1317,7 +1317,7 @@ Enable-NetFirewallRule `
 
 ---
 
-# Export Firewall Policy
+## Export Firewall Policy
 
 Example:
 
@@ -1329,7 +1329,7 @@ Useful before major configuration changes.
 
 ---
 
-# Import Firewall Policy
+## Import Firewall Policy
 
 ```powershell
 netsh advfirewall import C:\FirewallPolicy.wfw
@@ -1337,7 +1337,7 @@ netsh advfirewall import C:\FirewallPolicy.wfw
 
 ---
 
-# Firewall Logging
+## Firewall Logging
 
 Windows Firewall can record:
 
@@ -1354,7 +1354,7 @@ Logging supports:
 
 ---
 
-# Firewall Log Location
+## Firewall Log Location
 
 Default location:
 
@@ -1364,7 +1364,7 @@ Default location:
 
 ---
 
-# Firewall Log Fields
+## Firewall Log Fields
 
 Typical entries include:
 
@@ -1384,7 +1384,7 @@ ALLOW TCP 192.168.1.25 10.0.0.10 51542 443
 
 ---
 
-# Monitoring Firewall Activity
+## Monitoring Firewall Activity
 
 Administrators should monitor:
 
@@ -1396,7 +1396,7 @@ Administrators should monitor:
 
 ---
 
-# Enterprise Firewall Deployment
+## Enterprise Firewall Deployment
 
 Large organizations commonly deploy firewall policies using:
 
@@ -1409,7 +1409,7 @@ Centralized management ensures consistent security across endpoints.
 
 ---
 
-# Group Policy Deployment
+## Group Policy Deployment
 
 ```text
 Administrator
@@ -1433,7 +1433,7 @@ Firewall Updated
 
 ---
 
-# Firewall Policy Lifecycle
+## Firewall Policy Lifecycle
 
 ```text
 Design
@@ -1465,7 +1465,7 @@ Update
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial institution deploys firewall policies that:
 
@@ -1479,7 +1479,7 @@ These controls reduce lateral movement and improve auditability.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Proper firewall configuration helps mitigate:
 
@@ -1494,7 +1494,7 @@ Firewall logs are also valuable during incident investigations.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Advanced firewall management provides:
 
@@ -1507,7 +1507,7 @@ Advanced firewall management provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use application-based rules whenever possible.
 - Restrict administrative ports to trusted networks.
@@ -1522,9 +1522,9 @@ Advanced firewall management provides:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — List Firewall Profiles
+### Lab 1 — List Firewall Profiles
 
 Run:
 
@@ -1540,7 +1540,7 @@ Record:
 
 ---
 
-## Lab 2 — Create a Test Rule
+### Lab 2 — Create a Test Rule
 
 Create an inbound rule allowing TCP port 8443.
 
@@ -1552,7 +1552,7 @@ Get-NetFirewallRule
 
 ---
 
-## Lab 3 — Review Firewall Logs
+### Lab 3 — Review Firewall Logs
 
 Locate:
 
@@ -1567,7 +1567,7 @@ Review recent entries and identify:
 
 ---
 
-## Lab 4 — Export Firewall Configuration
+### Lab 4 — Export Firewall Configuration
 
 Run:
 
@@ -1579,7 +1579,7 @@ Verify that the backup file is created.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Advanced firewall rules support granular filtering based on applications, services, users, IP addresses, and interfaces.
 - Connection Security Rules configure IPsec authentication and encryption rather than directly allowing or blocking traffic.
@@ -1589,7 +1589,7 @@ Verify that the backup file is created.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between a Firewall Rule and a Connection Security Rule?
 2. What is IPsec and why is it used?
@@ -1604,7 +1604,7 @@ Verify that the backup file is created.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Defender Firewall Documentation
@@ -1615,13 +1615,13 @@ Verify that the backup file is created.
 
 ---
 
-# 19-Windows-Firewall.md
+## 19-Windows-Firewall.md
 
-# Part 3 — Firewall Troubleshooting, Security Monitoring, Enterprise Hardening, Incident Response, and Best Practices
+## Part 3 — Firewall Troubleshooting, Security Monitoring, Enterprise Hardening, Incident Response, and Best Practices
 
 ---
 
-# Introduction
+## Introduction
 
 Deploying Windows Defender Firewall is only the beginning of securing an enterprise environment.
 
@@ -1639,7 +1639,7 @@ A properly monitored firewall becomes both a preventive and detective security c
 
 ---
 
-# Firewall Troubleshooting Methodology
+## Firewall Troubleshooting Methodology
 
 A structured troubleshooting approach reduces downtime and avoids unnecessary configuration changes.
 
@@ -1677,7 +1677,7 @@ Document Findings
 
 ---
 
-# Common Firewall Issues
+## Common Firewall Issues
 
 | Issue | Possible Cause |
 |---------|----------------|
@@ -1691,7 +1691,7 @@ Document Findings
 
 ---
 
-# Step 1 — Verify Network Connectivity
+## Step 1 — Verify Network Connectivity
 
 Before investigating the firewall, verify basic connectivity.
 
@@ -1724,7 +1724,7 @@ Expected output includes:
 
 ---
 
-# Step 2 — Verify Active Firewall Profile
+## Step 2 — Verify Active Firewall Profile
 
 Determine which firewall profile is active.
 
@@ -1744,7 +1744,7 @@ If the wrong profile is selected, unexpected firewall behavior may occur.
 
 ---
 
-# Step 3 — Verify Firewall Status
+## Step 3 — Verify Firewall Status
 
 ```powershell
 Get-NetFirewallProfile
@@ -1759,7 +1759,7 @@ Review:
 
 ---
 
-# Step 4 — Search Firewall Rules
+## Step 4 — Search Firewall Rules
 
 Example:
 
@@ -1779,7 +1779,7 @@ Check:
 
 ---
 
-# Step 5 — Verify Port Accessibility
+## Step 5 — Verify Port Accessibility
 
 Example:
 
@@ -1805,7 +1805,7 @@ A failed result indicates that traffic is being blocked somewhere along the comm
 
 ---
 
-# Step 6 — Review Firewall Logs
+## Step 6 — Review Firewall Logs
 
 Firewall logs help determine:
 
@@ -1823,7 +1823,7 @@ Default location:
 
 ---
 
-# Example Firewall Log
+## Example Firewall Log
 
 ```text
 2026-07-15
@@ -1849,7 +1849,7 @@ Interpretation:
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```text
 User Reports Problem
@@ -1885,7 +1885,7 @@ Resolve
 
 ---
 
-# Firewall Monitoring
+## Firewall Monitoring
 
 Continuous monitoring should include:
 
@@ -1900,7 +1900,7 @@ Firewall monitoring is a valuable source of threat intelligence.
 
 ---
 
-# Indicators of Suspicious Firewall Activity
+## Indicators of Suspicious Firewall Activity
 
 Potential indicators include:
 
@@ -1916,7 +1916,7 @@ These indicators require further investigation and correlation with other teleme
 
 ---
 
-# Detecting Port Scanning
+## Detecting Port Scanning
 
 Example pattern:
 
@@ -1952,7 +1952,7 @@ Sequential probing of multiple ports is a common reconnaissance technique.
 
 ---
 
-# Detecting Brute-Force Attempts
+## Detecting Brute-Force Attempts
 
 Indicators include:
 
@@ -1965,7 +1965,7 @@ Correlation improves detection accuracy.
 
 ---
 
-# Detecting Malware Communication
+## Detecting Malware Communication
 
 Suspicious indicators:
 
@@ -1979,7 +1979,7 @@ Firewall logs should be correlated with endpoint telemetry.
 
 ---
 
-# Firewall and SIEM Integration
+## Firewall and SIEM Integration
 
 Typical architecture:
 
@@ -2015,7 +2015,7 @@ Centralized analysis enables enterprise-wide visibility.
 
 ---
 
-# Common SIEM Correlation Example
+## Common SIEM Correlation Example
 
 ```text
 Firewall
@@ -2049,7 +2049,7 @@ Multiple related events provide stronger evidence than isolated logs.
 
 ---
 
-# Firewall Hardening
+## Firewall Hardening
 
 Security hardening recommendations:
 
@@ -2066,7 +2066,7 @@ Hardening reduces the attack surface.
 
 ---
 
-# Administrative Access Protection
+## Administrative Access Protection
 
 Restrict administrative protocols:
 
@@ -2081,7 +2081,7 @@ Administrative services should never be broadly exposed.
 
 ---
 
-# Firewall Rule Review
+## Firewall Rule Review
 
 Questions to ask during reviews:
 
@@ -2095,7 +2095,7 @@ Periodic reviews improve security posture.
 
 ---
 
-# Incident Response Using Firewall Data
+## Incident Response Using Firewall Data
 
 Firewall logs help investigators determine:
 
@@ -2109,7 +2109,7 @@ Firewall telemetry is often one of the first evidence sources examined.
 
 ---
 
-# Firewall Incident Response Workflow
+## Firewall Incident Response Workflow
 
 ```text
 Alert
@@ -2145,7 +2145,7 @@ Recover
 
 ---
 
-# Enterprise Security Example
+## Enterprise Security Example
 
 A SOC receives alerts showing:
 
@@ -2160,7 +2160,7 @@ Because Windows Defender Firewall restricted inbound access and Defender quarant
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Windows Defender Firewall is valuable for detecting:
 
@@ -2175,7 +2175,7 @@ Combined with endpoint telemetry, firewall events significantly improve detectio
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective firewall monitoring provides:
 
@@ -2190,7 +2190,7 @@ Firewall telemetry supports both operational troubleshooting and cybersecurity i
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Keep firewall logging enabled.
 - Integrate firewall events with SIEM.
@@ -2205,9 +2205,9 @@ Firewall telemetry supports both operational troubleshooting and cybersecurity i
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Test Connectivity
+### Lab 1 — Test Connectivity
 
 Run:
 
@@ -2225,7 +2225,7 @@ Document:
 
 ---
 
-## Lab 2 — Review Active Firewall Profile
+### Lab 2 — Review Active Firewall Profile
 
 Run:
 
@@ -2240,7 +2240,7 @@ Identify:
 
 ---
 
-## Lab 3 — Examine Firewall Logs
+### Lab 3 — Examine Firewall Logs
 
 Locate:
 
@@ -2257,7 +2257,7 @@ Identify:
 
 ---
 
-## Lab 4 — Audit Firewall Rules
+### Lab 4 — Audit Firewall Rules
 
 Run:
 
@@ -2276,7 +2276,7 @@ Document recommended improvements.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Troubleshooting should follow a structured methodology.
 - Firewall logs provide valuable operational and security visibility.
@@ -2287,7 +2287,7 @@ Document recommended improvements.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. How would you troubleshoot an application blocked by Windows Firewall?
 2. Which PowerShell command tests TCP connectivity?
@@ -2302,7 +2302,7 @@ Document recommended improvements.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Defender Firewall Documentation
@@ -2313,13 +2313,13 @@ Document recommended improvements.
 
 ---
 
-# 19-Windows-Firewall.md
+## 19-Windows-Firewall.md
 
-# Part 4 — Enterprise Firewall Architecture, Compliance, Best Practices, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Firewall Architecture, Compliance, Best Practices, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Windows Defender Firewall is a critical component of enterprise endpoint security. However, its effectiveness depends on thoughtful architecture, centralized management, continuous monitoring, and regular policy reviews.
 
@@ -2337,7 +2337,7 @@ This chapter concludes by examining how Windows Defender Firewall fits into an e
 
 ---
 
-# Enterprise Firewall Architecture
+## Enterprise Firewall Architecture
 
 Modern enterprise environments use multiple firewall layers.
 
@@ -2361,7 +2361,7 @@ Each layer performs a different security function.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Windows Defender Firewall supports a layered defense strategy.
 
@@ -2405,7 +2405,7 @@ No single control is sufficient to stop every attack.
 
 ---
 
-# Zero Trust Networking
+## Zero Trust Networking
 
 Zero Trust assumes that no network or device is automatically trusted.
 
@@ -2421,7 +2421,7 @@ Windows Defender Firewall helps enforce Zero Trust by restricting communication 
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Network segmentation limits communication between systems.
 
@@ -2451,7 +2451,7 @@ Compromising one system does not automatically grant access to every network seg
 
 ---
 
-# Micro-Segmentation
+## Micro-Segmentation
 
 Micro-segmentation applies firewall policies at the endpoint level.
 
@@ -2481,7 +2481,7 @@ Each endpoint independently enforces communication restrictions.
 
 ---
 
-# East-West vs North-South Traffic
+## East-West vs North-South Traffic
 
 Understanding traffic direction is important.
 
@@ -2494,7 +2494,7 @@ Many modern attacks spread using East-West movement, making endpoint firewalls e
 
 ---
 
-# Firewall Policy Design Principles
+## Firewall Policy Design Principles
 
 A well-designed firewall policy should be:
 
@@ -2509,7 +2509,7 @@ Complex or undocumented rule sets increase operational risk.
 
 ---
 
-# Rule Naming Standards
+## Rule Naming Standards
 
 Adopt descriptive naming conventions.
 
@@ -2541,7 +2541,7 @@ Clear naming improves maintenance and auditing.
 
 ---
 
-# Firewall Change Management
+## Firewall Change Management
 
 Firewall changes should follow a controlled process.
 
@@ -2577,7 +2577,7 @@ Emergency changes should also be documented and reviewed after implementation.
 
 ---
 
-# Rule Lifecycle Management
+## Rule Lifecycle Management
 
 Firewall rules should have a defined lifecycle.
 
@@ -2613,7 +2613,7 @@ Unused or obsolete rules should be removed promptly.
 
 ---
 
-# Firewall Policy Auditing
+## Firewall Policy Auditing
 
 Periodic audits should verify:
 
@@ -2628,7 +2628,7 @@ Regular audits reduce configuration drift.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Windows Defender Firewall contributes to compliance with many security frameworks.
 
@@ -2647,7 +2647,7 @@ Firewall controls alone are not sufficient but support several compliance requir
 
 ---
 
-# Example Compliance Mapping
+## Example Compliance Mapping
 
 | Framework | Firewall Contribution |
 |-----------|------------------------|
@@ -2660,7 +2660,7 @@ Firewall controls alone are not sufficient but support several compliance requir
 
 ---
 
-# Firewall Documentation
+## Firewall Documentation
 
 Maintain documentation for:
 
@@ -2675,7 +2675,7 @@ Good documentation simplifies audits and troubleshooting.
 
 ---
 
-# Firewall Metrics
+## Firewall Metrics
 
 Organizations should monitor metrics such as:
 
@@ -2691,7 +2691,7 @@ Metrics help measure operational effectiveness.
 
 ---
 
-# High Availability Considerations
+## High Availability Considerations
 
 Although Windows Defender Firewall is endpoint-based, supporting infrastructure should be resilient.
 
@@ -2707,7 +2707,7 @@ Supporting services are essential for enterprise-scale deployments.
 
 ---
 
-# Integrating Firewall with Security Operations
+## Integrating Firewall with Security Operations
 
 Typical enterprise workflow:
 
@@ -2743,7 +2743,7 @@ Integration enables centralized visibility and faster investigations.
 
 ---
 
-# Threat Hunting Using Firewall Data
+## Threat Hunting Using Firewall Data
 
 Firewall telemetry can support hunts for:
 
@@ -2758,7 +2758,7 @@ Firewall logs become more valuable when correlated with endpoint and identity da
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A manufacturing company notices unusual outbound HTTPS connections from several engineering workstations.
 
@@ -2796,7 +2796,7 @@ The investigation reveals a previously unknown malware sample attempting to comm
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers often attempt to:
 
@@ -2810,7 +2810,7 @@ Continuous monitoring and centralized policy enforcement reduce the likelihood o
 
 ---
 
-# Business Impact
+## Business Impact
 
 A mature firewall strategy provides:
 
@@ -2826,7 +2826,7 @@ Effective firewall management supports both cybersecurity and business continuit
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Keep Windows Defender Firewall enabled on all profiles.
 - Use least-privilege network access.
@@ -2841,9 +2841,9 @@ Effective firewall management supports both cybersecurity and business continuit
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review Rule Naming
+### Lab 1 — Review Rule Naming
 
 Review existing firewall rules.
 
@@ -2857,7 +2857,7 @@ Recommend improved naming conventions.
 
 ---
 
-## Lab 2 — Review Firewall Profiles
+### Lab 2 — Review Firewall Profiles
 
 Using:
 
@@ -2875,7 +2875,7 @@ Ensure all required profiles are enabled.
 
 ---
 
-## Lab 3 — Create a Firewall Audit Report
+### Lab 3 — Create a Firewall Audit Report
 
 Include:
 
@@ -2889,7 +2889,7 @@ Present findings in a structured report.
 
 ---
 
-## Lab 4 — Design an Enterprise Firewall Policy
+### Lab 4 — Design an Enterprise Firewall Policy
 
 Create a policy for:
 
@@ -2909,7 +2909,7 @@ Document:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2935,7 +2935,7 @@ Windows Defender Firewall is a foundational endpoint security control that helps
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows Defender Firewall is a host-based firewall integrated with Windows Filtering Platform.
 - Domain, Private, and Public profiles enable context-aware security policies.
@@ -2947,7 +2947,7 @@ Windows Defender Firewall is a foundational endpoint security control that helps
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the role of Windows Defender Firewall in enterprise security?
 2. Explain the difference between North-South and East-West traffic.
@@ -2962,7 +2962,7 @@ Windows Defender Firewall is a foundational endpoint security control that helps
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Defender Firewall Documentation
@@ -2977,7 +2977,7 @@ Windows Defender Firewall is a foundational endpoint security control that helps
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 19 – Windows Firewall**.
 

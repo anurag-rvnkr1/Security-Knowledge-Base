@@ -39,7 +39,7 @@ The fundamental objective is:
 
 ---
 
-# Hunting Query Engineering Lifecycle
+## Hunting Query Engineering Lifecycle
 
 ```text
 Threat Intelligence
@@ -77,7 +77,7 @@ Detection
 
 ---
 
-# Why Query Engineering Matters
+## Why Query Engineering Matters
 
 Enterprise SIEM environments may contain:
 
@@ -104,7 +104,7 @@ A good query reduces the search space while preserving meaningful evidence.
 
 ---
 
-# Query Engineering Principles
+## Query Engineering Principles
 
 A strong hunting query should answer:
 
@@ -126,7 +126,7 @@ How can I validate the result?
 
 ---
 
-# Query Anatomy
+## Query Anatomy
 
 Most security queries contain several logical stages:
 
@@ -160,7 +160,7 @@ Investigation Output
 
 ---
 
-# Example
+## Example
 
 Suppose the hypothesis is:
 
@@ -198,7 +198,7 @@ Apply Threshold
 
 ---
 
-# Query Development Methodology
+## Query Development Methodology
 
 Use the following process:
 
@@ -220,7 +220,7 @@ Use the following process:
 
 ---
 
-# Step 1 — Define the Hypothesis
+## Step 1 — Define the Hypothesis
 
 Bad:
 
@@ -244,7 +244,7 @@ The stronger hypothesis produces a better query.
 
 ---
 
-# Step 2 — Define Required Evidence
+## Step 2 — Define Required Evidence
 
 For the PowerShell hypothesis:
 
@@ -272,7 +272,7 @@ destination.ip
 
 ---
 
-# Step 3 — Identify Data Sources
+## Step 3 — Identify Data Sources
 
 Potential sources:
 
@@ -290,7 +290,7 @@ Do not assume one data source contains the entire attack story.
 
 ---
 
-# Step 4 — Map Fields
+## Step 4 — Map Fields
 
 Example:
 
@@ -311,7 +311,7 @@ Field names differ by platform.
 
 ---
 
-# Field Mapping
+## Field Mapping
 
 A field mapping table helps maintain query portability.
 
@@ -329,7 +329,7 @@ Maintain a documented mapping layer where possible.
 
 ---
 
-# Query Reliability
+## Query Reliability
 
 Not all fields are equally trustworthy.
 
@@ -353,7 +353,7 @@ Therefore query engineering must consider field coverage.
 
 ---
 
-# Field Coverage
+## Field Coverage
 
 Calculate:
 
@@ -375,7 +375,7 @@ The second field should be treated carefully.
 
 ---
 
-# Query Testing
+## Query Testing
 
 Before using a field:
 
@@ -397,7 +397,7 @@ Check null rate
 
 ---
 
-# Start Broad
+## Start Broad
 
 Example:
 
@@ -419,7 +419,7 @@ Do not immediately build a complex query without validating the underlying data.
 
 ---
 
-# Narrow Gradually
+## Narrow Gradually
 
 ```text
 PowerShell
@@ -441,11 +441,11 @@ Each step increases specificity.
 
 ---
 
-# Query Precision vs Recall
+## Query Precision vs Recall
 
 Two important concepts:
 
-## Precision
+### Precision
 
 Percentage of returned results that are actually relevant.
 
@@ -456,7 +456,7 @@ Relevant Results
 All Results
 ```
 
-## Recall
+### Recall
 
 Percentage of relevant activity that the query successfully finds.
 
@@ -469,7 +469,7 @@ All Relevant Activity
 
 ---
 
-# Example
+## Example
 
 Query A:
 
@@ -499,7 +499,7 @@ But it may miss other attacks.
 
 ---
 
-# Hunting Requires Balance
+## Hunting Requires Balance
 
 ```text
 Broad Query
@@ -517,7 +517,7 @@ Experienced hunters often begin broad and progressively narrow.
 
 ---
 
-# Time Range Engineering
+## Time Range Engineering
 
 Time range is one of the most important query parameters.
 
@@ -533,7 +533,7 @@ Insider Activity  → Longer historical windows
 
 ---
 
-# Search Recent Data First
+## Search Recent Data First
 
 For initial investigation:
 
@@ -549,7 +549,7 @@ This improves both performance and analyst focus.
 
 ---
 
-# Time Window Selection
+## Time Window Selection
 
 Example:
 
@@ -571,7 +571,7 @@ Therefore test multiple windows when appropriate.
 
 ---
 
-# Time Bucketing
+## Time Bucketing
 
 Instead of:
 
@@ -600,7 +600,7 @@ The spike becomes obvious.
 
 ---
 
-# Sliding Windows
+## Sliding Windows
 
 A sliding window evaluates activity across overlapping intervals.
 
@@ -616,7 +616,7 @@ This can identify activity that does not align with fixed buckets.
 
 ---
 
-# Threshold Engineering
+## Threshold Engineering
 
 A threshold should be based on evidence.
 
@@ -642,7 +642,7 @@ multiple unique users
 
 ---
 
-# Static Thresholds
+## Static Thresholds
 
 Example:
 
@@ -664,7 +664,7 @@ Disadvantages:
 
 ---
 
-# Dynamic Thresholds
+## Dynamic Thresholds
 
 Dynamic thresholds use historical behavior.
 
@@ -682,7 +682,7 @@ The deviation becomes suspicious.
 
 ---
 
-# Statistical Thresholds
+## Statistical Thresholds
 
 Possible methods include:
 
@@ -699,7 +699,7 @@ Robust methods are often preferable when data contains outliers.
 
 ---
 
-# Cardinality
+## Cardinality
 
 Cardinality refers to the number of unique values.
 
@@ -732,7 +732,7 @@ because the first pattern may indicate spraying.
 
 ---
 
-# Distinct Counts
+## Distinct Counts
 
 Security queries frequently use distinct counts.
 
@@ -756,7 +756,7 @@ Both can be important.
 
 ---
 
-# Aggregation
+## Aggregation
 
 Aggregation converts many events into useful summaries.
 
@@ -775,7 +775,7 @@ This produces analyst-friendly output.
 
 ---
 
-# Example Aggregation
+## Example Aggregation
 
 ```text
 Source IP       Failures    Users    Hosts
@@ -789,7 +789,7 @@ The first source deserves investigation.
 
 ---
 
-# Grouping Strategy
+## Grouping Strategy
 
 Choose grouping fields based on the hypothesis.
 
@@ -821,7 +821,7 @@ destination
 
 ---
 
-# Query Cost
+## Query Cost
 
 Query cost can be influenced by:
 
@@ -840,7 +840,7 @@ Storage Architecture
 
 ---
 
-# Query Optimization
+## Query Optimization
 
 General strategy:
 
@@ -862,7 +862,7 @@ Correlate
 
 ---
 
-# Filter Early
+## Filter Early
 
 Less efficient:
 
@@ -893,7 +893,7 @@ Analysis
 
 ---
 
-# Indexed Fields
+## Indexed Fields
 
 Use fields supported efficiently by the SIEM's storage/search architecture.
 
@@ -912,7 +912,7 @@ Exact optimization mechanisms vary between platforms.
 
 ---
 
-# Avoid Unnecessary Regex
+## Avoid Unnecessary Regex
 
 Regex can be computationally expensive.
 
@@ -932,7 +932,7 @@ Then apply regex only when necessary.
 
 ---
 
-# Regex Safety
+## Regex Safety
 
 Avoid unnecessarily complex expressions.
 
@@ -952,7 +952,7 @@ Simple pattern matching
 
 ---
 
-# Case Normalization
+## Case Normalization
 
 Different systems may record:
 
@@ -974,7 +974,7 @@ Then compare against normalized values.
 
 ---
 
-# String Matching
+## String Matching
 
 Prefer exact matching where possible.
 
@@ -994,7 +994,7 @@ The second can create noise.
 
 ---
 
-# Wildcards
+## Wildcards
 
 Wildcards are useful but can increase search cost.
 
@@ -1010,7 +1010,7 @@ consider identifying the exact field and normalized values.
 
 ---
 
-# Query Layering
+## Query Layering
 
 Complex hunts should often be divided into stages:
 
@@ -1038,7 +1038,7 @@ This makes troubleshooting easier.
 
 ---
 
-# Reusable Query Components
+## Reusable Query Components
 
 Create reusable building blocks:
 
@@ -1055,7 +1055,7 @@ Then combine them.
 
 ---
 
-# Query Templates
+## Query Templates
 
 Example:
 
@@ -1072,7 +1072,7 @@ Templates improve consistency across analysts.
 
 ---
 
-# IOC Query Engineering
+## IOC Query Engineering
 
 Given:
 
@@ -1101,7 +1101,7 @@ depending on telemetry.
 
 ---
 
-# IOC Normalization
+## IOC Normalization
 
 Indicators may appear as:
 
@@ -1120,7 +1120,7 @@ Normalize before searching.
 
 ---
 
-# Domain Matching
+## Domain Matching
 
 Searching:
 
@@ -1142,7 +1142,7 @@ But avoid matching unrelated domains accidentally.
 
 ---
 
-# Hash Hunting
+## Hash Hunting
 
 Common hashes:
 
@@ -1164,7 +1164,7 @@ depending on available data.
 
 ---
 
-# TTP Hunting
+## TTP Hunting
 
 IOC hunting:
 
@@ -1191,7 +1191,7 @@ TTP hunting is generally more resilient to infrastructure changes.
 
 ---
 
-# Process Tree Queries
+## Process Tree Queries
 
 A process alone may not be suspicious.
 
@@ -1225,7 +1225,7 @@ Command Line
 
 ---
 
-# Parent-Child Hunting
+## Parent-Child Hunting
 
 Common suspicious relationships may include:
 
@@ -1247,7 +1247,7 @@ Context is essential.
 
 ---
 
-# Living-off-the-Land Hunting
+## Living-off-the-Land Hunting
 
 Attackers may use legitimate tools.
 
@@ -1285,7 +1285,7 @@ Frequency
 
 ---
 
-# Command-Line Query Engineering
+## Command-Line Query Engineering
 
 Command lines can be high-value telemetry.
 
@@ -1305,7 +1305,7 @@ Use environment-specific tuning.
 
 ---
 
-# DNS Query Engineering
+## DNS Query Engineering
 
 Example hypothesis:
 
@@ -1333,7 +1333,7 @@ Unique Domains
 
 ---
 
-# Beacon Query Logic
+## Beacon Query Logic
 
 ```text
 Repeated Domain
@@ -1359,7 +1359,7 @@ for stronger evidence.
 
 ---
 
-# Authentication Query Engineering
+## Authentication Query Engineering
 
 Important fields:
 
@@ -1385,7 +1385,7 @@ Device Spread
 
 ---
 
-# Lateral Movement Query
+## Lateral Movement Query
 
 Hypothesis:
 
@@ -1413,7 +1413,7 @@ Host A
 
 ---
 
-# Identity Graph Hunting
+## Identity Graph Hunting
 
 Example:
 
@@ -1433,7 +1433,7 @@ Unexpected relationships deserve investigation.
 
 ---
 
-# Cloud Query Engineering
+## Cloud Query Engineering
 
 Cloud telemetry often contains:
 
@@ -1461,7 +1461,7 @@ Resource Exposure
 
 ---
 
-# Cloud API Sequence Hunting
+## Cloud API Sequence Hunting
 
 Example:
 
@@ -1484,7 +1484,7 @@ The sequence is what creates concern.
 
 ---
 
-# Sequence Detection
+## Sequence Detection
 
 Some attacks are better represented as sequences:
 
@@ -1516,7 +1516,7 @@ Credential Access
 
 ---
 
-# Sequence Windows
+## Sequence Windows
 
 Define a reasonable time window:
 
@@ -1532,7 +1532,7 @@ The window should reflect the behavior being investigated.
 
 ---
 
-# Correlation Keys
+## Correlation Keys
 
 Common correlation keys:
 
@@ -1551,7 +1551,7 @@ Choose keys carefully.
 
 ---
 
-# Correlation Pitfall
+## Correlation Pitfall
 
 Correlating only on:
 
@@ -1585,7 +1585,7 @@ depending on the use case.
 
 ---
 
-# Sessionization
+## Sessionization
 
 Sessionization groups related events into logical sessions.
 
@@ -1604,7 +1604,7 @@ This makes investigations easier.
 
 ---
 
-# Sequence-Based Hunting
+## Sequence-Based Hunting
 
 Conceptual sequence:
 
@@ -1624,7 +1624,7 @@ Query each stage and connect them.
 
 ---
 
-# Rare Event Hunting
+## Rare Event Hunting
 
 A rare event may be valuable.
 
@@ -1645,7 +1645,7 @@ But:
 
 ---
 
-# Frequency Analysis
+## Frequency Analysis
 
 Example:
 
@@ -1662,7 +1662,7 @@ The rare `mshta.exe` activity deserves contextual review.
 
 ---
 
-# Peer Group Analysis
+## Peer Group Analysis
 
 Compare an entity with similar entities.
 
@@ -1679,7 +1679,7 @@ A behavior may be normal for one peer group but abnormal for another.
 
 ---
 
-# User Peer Baselines
+## User Peer Baselines
 
 Example:
 
@@ -1703,7 +1703,7 @@ Context is required.
 
 ---
 
-# Host Peer Baselines
+## Host Peer Baselines
 
 Compare:
 
@@ -1719,7 +1719,7 @@ Different systems have different normal behaviors.
 
 ---
 
-# Negative Hunting
+## Negative Hunting
 
 Sometimes search for absence.
 
@@ -1736,7 +1736,7 @@ Absence can be a security signal.
 
 ---
 
-# Telemetry Gap Hunting
+## Telemetry Gap Hunting
 
 Example:
 
@@ -1758,7 +1758,7 @@ Telemetry gaps may occur because of:
 
 ---
 
-# Query Validation With Known Benign Data
+## Query Validation With Known Benign Data
 
 Run the query against normal activity.
 
@@ -1780,7 +1780,7 @@ This identifies false positives.
 
 ---
 
-# Query Validation With Known Malicious Data
+## Query Validation With Known Malicious Data
 
 Use:
 
@@ -1793,7 +1793,7 @@ Confirm the query detects the intended behavior.
 
 ---
 
-# Purple-Team Validation
+## Purple-Team Validation
 
 ```text
 Adversary Simulation
@@ -1818,7 +1818,7 @@ This validates the complete detection chain.
 
 ---
 
-# Query Unit Testing
+## Query Unit Testing
 
 Treat important queries like software.
 
@@ -1836,7 +1836,7 @@ Time Boundary
 
 ---
 
-# Example Test Matrix
+## Example Test Matrix
 
 | Test | Expected Result |
 |---|---|
@@ -1849,7 +1849,7 @@ Time Boundary
 
 ---
 
-# Query Documentation
+## Query Documentation
 
 Every production hunting query should explain:
 
@@ -1870,7 +1870,7 @@ Last Review
 
 ---
 
-# Query Versioning
+## Query Versioning
 
 Use version control.
 
@@ -1899,7 +1899,7 @@ Added critical asset context
 
 ---
 
-# Query Portability
+## Query Portability
 
 Different platforms have different query languages.
 
@@ -1917,7 +1917,7 @@ The logic should be portable even when syntax is not.
 
 ---
 
-# Portable Hunt Logic
+## Portable Hunt Logic
 
 Example:
 
@@ -1940,7 +1940,7 @@ The implementation changes by SIEM.
 
 ---
 
-# Sigma as an Abstraction Layer
+## Sigma as an Abstraction Layer
 
 Sigma can describe detection logic:
 
@@ -1960,7 +1960,7 @@ This supports detection-as-code workflows.
 
 ---
 
-# Detection-as-Code
+## Detection-as-Code
 
 Treat detections as software artifacts.
 
@@ -1989,7 +1989,7 @@ Version History
 
 ---
 
-# Query-as-Code
+## Query-as-Code
 
 A mature organization can maintain:
 
@@ -2014,7 +2014,7 @@ Benefits:
 
 ---
 
-# Pull Request Workflow
+## Pull Request Workflow
 
 ```text
 Analyst
@@ -2037,7 +2037,7 @@ Deploy
 
 ---
 
-# Query Naming Convention
+## Query Naming Convention
 
 Example:
 
@@ -2052,7 +2052,7 @@ Naming should be consistent across the organization.
 
 ---
 
-# Query Metadata
+## Query Metadata
 
 Recommended:
 
@@ -2073,7 +2073,7 @@ data_sources:
 
 ---
 
-# False Positive Engineering
+## False Positive Engineering
 
 Every query should identify expected benign behavior.
 
@@ -2102,7 +2102,7 @@ Expected Schedule
 
 ---
 
-# Suppression vs Exclusion
+## Suppression vs Exclusion
 
 Exclusion:
 
@@ -2120,7 +2120,7 @@ Suppression is often safer than permanently excluding activity.
 
 ---
 
-# Allowlist Risk
+## Allowlist Risk
 
 An allowlist can become dangerous.
 
@@ -2136,7 +2136,7 @@ Review allowlists regularly.
 
 ---
 
-# Query Drift
+## Query Drift
 
 Environment changes can break queries.
 
@@ -2154,7 +2154,7 @@ Queries must be periodically reviewed.
 
 ---
 
-# Schema Drift
+## Schema Drift
 
 Example:
 
@@ -2172,7 +2172,7 @@ Monitor query health.
 
 ---
 
-# Query Health Monitoring
+## Query Health Monitoring
 
 Track:
 
@@ -2191,7 +2191,7 @@ It may mean "broken telemetry."
 
 ---
 
-# Hunting Query Performance Metrics
+## Hunting Query Performance Metrics
 
 Useful metrics:
 
@@ -2206,7 +2206,7 @@ Failure Rate
 
 ---
 
-# Query Result Quality
+## Query Result Quality
 
 A good result should be:
 
@@ -2234,7 +2234,7 @@ Reason
 
 ---
 
-# Explainability
+## Explainability
 
 Avoid black-box hunting queries where analysts cannot explain why an event was selected.
 
@@ -2244,7 +2244,7 @@ A hunter should be able to answer:
 
 ---
 
-# Risk Scoring
+## Risk Scoring
 
 Multiple weak signals can be combined.
 
@@ -2279,7 +2279,7 @@ This should rank highly.
 
 ---
 
-# Multi-Signal Hunting
+## Multi-Signal Hunting
 
 Instead of:
 
@@ -2305,7 +2305,7 @@ The combined evidence is stronger.
 
 ---
 
-# Query Chaining
+## Query Chaining
 
 One query can produce candidates for another.
 
@@ -2330,7 +2330,7 @@ This reduces unnecessary global searches.
 
 ---
 
-# Pivoting
+## Pivoting
 
 Threat hunting is iterative.
 
@@ -2357,21 +2357,21 @@ Each pivot produces new investigative context.
 
 ---
 
-# Example Hunt — Suspicious PowerShell
+## Example Hunt — Suspicious PowerShell
 
-## Hypothesis
+### Hypothesis
 
 An attacker may be using PowerShell to execute commands on an endpoint.
 
-## Query stages
+### Query stages
 
-### Stage 1
+#### Stage 1
 
 ```text
 process.name = powershell.exe
 ```
 
-### Stage 2
+#### Stage 2
 
 Add:
 
@@ -2379,7 +2379,7 @@ Add:
 process.command_line
 ```
 
-### Stage 3
+#### Stage 3
 
 Add:
 
@@ -2387,7 +2387,7 @@ Add:
 parent process
 ```
 
-### Stage 4
+#### Stage 4
 
 Add:
 
@@ -2395,7 +2395,7 @@ Add:
 network activity
 ```
 
-### Stage 5
+#### Stage 5
 
 Add:
 
@@ -2419,9 +2419,9 @@ Privileged User
 
 ---
 
-# Example Hunt — Password Spraying
+## Example Hunt — Password Spraying
 
-## Hypothesis
+### Hypothesis
 
 An external source may be attempting credentials against many accounts.
 
@@ -2456,9 +2456,9 @@ Post-Login Activity
 
 ---
 
-# Example Hunt — DNS Tunneling
+## Example Hunt — DNS Tunneling
 
-## Hypothesis
+### Hypothesis
 
 A compromised endpoint may be transferring information through DNS.
 
@@ -2489,9 +2489,9 @@ Host
 
 ---
 
-# Example Hunt — Cloud Privilege Escalation
+## Example Hunt — Cloud Privilege Escalation
 
-## Hypothesis
+### Hypothesis
 
 A cloud identity may be escalating permissions.
 
@@ -2521,9 +2521,9 @@ Resource
 
 ---
 
-# Example Hunt — Lateral Movement
+## Example Hunt — Lateral Movement
 
-## Hypothesis
+### Hypothesis
 
 A compromised account may be accessing multiple internal hosts.
 
@@ -2549,42 +2549,42 @@ Then compare against historical behavior.
 
 ---
 
-# Query Engineering Checklist
+## Query Engineering Checklist
 
-## Hypothesis
+### Hypothesis
 
 - [ ] Is the hypothesis explicit?
 - [ ] Is it testable?
 - [ ] Is the expected behavior defined?
 
-## Data
+### Data
 
 - [ ] Correct data source?
 - [ ] Required fields available?
 - [ ] Telemetry coverage validated?
 
-## Logic
+### Logic
 
 - [ ] Correct filters?
 - [ ] Correct aggregation?
 - [ ] Correct time window?
 - [ ] Correct correlation key?
 
-## Performance
+### Performance
 
 - [ ] Narrow time range?
 - [ ] Filters applied early?
 - [ ] Expensive regex minimized?
 - [ ] Aggregations reasonable?
 
-## Quality
+### Quality
 
 - [ ] False positives tested?
 - [ ] Known malicious activity tested?
 - [ ] Edge cases tested?
 - [ ] Output actionable?
 
-## Maintenance
+### Maintenance
 
 - [ ] Documented?
 - [ ] Versioned?
@@ -2594,69 +2594,69 @@ Then compare against historical behavior.
 
 ---
 
-# Common Query Engineering Mistakes
+## Common Query Engineering Mistakes
 
-## 1. Searching Everything
+### 1. Searching Everything
 
 Massive searches are rarely the best first step.
 
 ---
 
-## 2. Overfitting
+### 2. Overfitting
 
 A query designed around one exact incident may fail against similar attacks.
 
 ---
 
-## 3. Overly Broad Matching
+### 3. Overly Broad Matching
 
 Broad patterns create noise.
 
 ---
 
-## 4. Ignoring Field Coverage
+### 4. Ignoring Field Coverage
 
 A query cannot reliably detect what telemetry does not capture.
 
 ---
 
-## 5. Hard-Coded Thresholds
+### 5. Hard-Coded Thresholds
 
 Static thresholds can fail as environments change.
 
 ---
 
-## 6. Excessive Regex
+### 6. Excessive Regex
 
 Structured fields should be preferred.
 
 ---
 
-## 7. Expensive Joins
+### 7. Expensive Joins
 
 Large joins can severely impact performance.
 
 ---
 
-## 8. No Testing
+### 8. No Testing
 
 Queries should be validated before operational use.
 
 ---
 
-## 9. No Documentation
+### 9. No Documentation
 
 Another analyst should be able to understand the query.
 
 ---
 
-## 10. No Version Control
+### 10. No Version Control
 
 Security logic should be auditable.
 
 ---
 
-# Professional Hunt Query Template
+## Professional Hunt Query Template
 
 ```text
 Hunt ID:
@@ -2708,31 +2708,31 @@ Last Review:
 
 ---
 
-# Query Engineering Maturity
+## Query Engineering Maturity
 
-## Level 1 — Ad Hoc
+### Level 1 — Ad Hoc
 
 Analysts manually search logs.
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 Common hunting queries are documented.
 
-## Level 3 — Standardized
+### Level 3 — Standardized
 
 Queries use common schemas and naming conventions.
 
-## Level 4 — Version Controlled
+### Level 4 — Version Controlled
 
 Queries are maintained as code.
 
-## Level 5 — Automated
+### Level 5 — Automated
 
 Queries are tested, deployed, monitored, and continuously improved.
 
 ---
 
-# Enterprise Query Architecture
+## Enterprise Query Architecture
 
 ```text
                     THREAT INTELLIGENCE
@@ -2765,7 +2765,7 @@ Queries are tested, deployed, monitored, and continuously improved.
 
 ---
 
-# Detection Engineering Handoff
+## Detection Engineering Handoff
 
 A successful hunt should produce reusable security knowledge.
 
@@ -2793,7 +2793,7 @@ Monitor
 
 ---
 
-# Final Takeaways
+## Final Takeaways
 
 1. **A hunting query is an implementation of a security hypothesis.**
 2. **Start with the behavior you want to understand, not the query language.**
@@ -2817,7 +2817,7 @@ The core principle is:
 
 ---
 
-# References
+## References
 
 - MITRE ATT&CK  
   https://attack.mitre.org/

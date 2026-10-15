@@ -42,7 +42,7 @@ for these scenarios.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -66,7 +66,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need Pod Affinity?
+## Why Do We Need Pod Affinity?
 
 Suppose a cluster contains:
 
@@ -103,7 +103,7 @@ Pod Affinity can express:
 
 ---
 
-# Why Do We Need Pod Anti-Affinity?
+## Why Do We Need Pod Anti-Affinity?
 
 Consider a Deployment with three replicas:
 
@@ -147,9 +147,9 @@ This improves resilience.
 
 ---
 
-# Core Concept
+## Core Concept
 
-## Pod Affinity
+### Pod Affinity
 
 ```text
 Pod A
@@ -165,7 +165,7 @@ Schedule Pod A nearby
 
 ---
 
-## Pod Anti-Affinity
+### Pod Anti-Affinity
 
 ```text
 Pod A
@@ -181,7 +181,7 @@ Avoid those Nodes
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```text
                   Kubernetes Scheduler
@@ -204,7 +204,7 @@ Avoid those Nodes
 
 ---
 
-# Example Cluster
+## Example Cluster
 
 ```text
 Node 1
@@ -236,7 +236,7 @@ app=backend
 
 ---
 
-# Pod Affinity Structure
+## Pod Affinity Structure
 
 A typical configuration:
 
@@ -262,7 +262,7 @@ This means:
 
 ---
 
-# Pod Anti-Affinity Structure
+## Pod Anti-Affinity Structure
 
 ```yaml
 affinity:
@@ -286,7 +286,7 @@ This means:
 
 ---
 
-# Required vs Preferred
+## Required vs Preferred
 
 Like Node Affinity, Pod Affinity and Anti-Affinity support:
 
@@ -302,7 +302,7 @@ preferredDuringSchedulingIgnoredDuringExecution
 
 ---
 
-# Required
+## Required
 
 Required means:
 
@@ -322,7 +322,7 @@ Pending
 
 ---
 
-# Preferred
+## Preferred
 
 Preferred means:
 
@@ -342,7 +342,7 @@ Can still select another feasible Node
 
 ---
 
-# topologyKey
+## topologyKey
 
 `topologyKey` is one of the most important concepts in Pod Affinity and Anti-Affinity.
 
@@ -366,7 +366,7 @@ topology.kubernetes.io/region
 
 ---
 
-# topologyKey: hostname
+## topologyKey: hostname
 
 Example:
 
@@ -390,7 +390,7 @@ Hostname domain
 
 ---
 
-# topologyKey: zone
+## topologyKey: zone
 
 Example:
 
@@ -414,7 +414,7 @@ Zone B
 
 ---
 
-# topologyKey: region
+## topologyKey: region
 
 Example:
 
@@ -426,7 +426,7 @@ This evaluates the relationship at the regional level.
 
 ---
 
-# Why topologyKey Matters
+## Why topologyKey Matters
 
 Consider:
 
@@ -464,7 +464,7 @@ The scope is therefore different.
 
 ---
 
-# Pod Affinity Example
+## Pod Affinity Example
 
 Suppose a backend Pod exists:
 
@@ -496,7 +496,7 @@ The frontend Pod must be scheduled in a Node topology domain where a matching ba
 
 ---
 
-# Same-Node Affinity
+## Same-Node Affinity
 
 Using:
 
@@ -517,7 +517,7 @@ Node 1
 
 ---
 
-# Same-Zone Affinity
+## Same-Zone Affinity
 
 Using:
 
@@ -543,7 +543,7 @@ They need to satisfy the relationship within the same topology domain.
 
 ---
 
-# Pod Anti-Affinity
+## Pod Anti-Affinity
 
 Pod Anti-Affinity does the opposite.
 
@@ -581,7 +581,7 @@ that already contains a matching web Pod
 
 ---
 
-# Example
+## Example
 
 Existing:
 
@@ -615,7 +615,7 @@ Node 2
 
 ---
 
-# High Availability Pattern
+## High Availability Pattern
 
 Deployment:
 
@@ -659,7 +659,7 @@ remain available.
 
 ---
 
-# Zone-Level Anti-Affinity
+## Zone-Level Anti-Affinity
 
 For stronger resilience:
 
@@ -686,7 +686,7 @@ This protects against an entire zone failure.
 
 ---
 
-# Important Distinction
+## Important Distinction
 
 Node-level anti-affinity:
 
@@ -714,11 +714,11 @@ Zone failure
 
 ---
 
-# Pod Affinity vs Node Affinity
+## Pod Affinity vs Node Affinity
 
 These are different.
 
-## Node Affinity
+### Node Affinity
 
 Uses:
 
@@ -734,7 +734,7 @@ disk=ssd
 
 ---
 
-## Pod Affinity
+### Pod Affinity
 
 Uses:
 
@@ -750,7 +750,7 @@ app=backend
 
 ---
 
-# Comparison
+## Comparison
 
 | Feature | Node Affinity | Pod Affinity |
 |---|---|---|
@@ -762,7 +762,7 @@ app=backend
 
 ---
 
-# Pod Affinity vs Anti-Affinity
+## Pod Affinity vs Anti-Affinity
 
 | Feature | Pod Affinity | Pod Anti-Affinity |
 |---|---|---|
@@ -773,7 +773,7 @@ app=backend
 
 ---
 
-# Label Selector
+## Label Selector
 
 Pod Affinity depends on identifying the Pods involved.
 
@@ -795,7 +795,7 @@ app=backend
 
 ---
 
-# matchExpressions
+## matchExpressions
 
 Pod Affinity also supports label selector expressions.
 
@@ -829,7 +829,7 @@ app=cache
 
 ---
 
-# Namespace Considerations
+## Namespace Considerations
 
 Pod Affinity and Anti-Affinity can specify the namespaces in which matching Pods should be considered.
 
@@ -845,7 +845,7 @@ This can prevent relationships from accidentally considering Pods in unrelated n
 
 ---
 
-# namespaceSelector
+## namespaceSelector
 
 More flexible configurations can use:
 
@@ -859,7 +859,7 @@ This is useful in multi-tenant environments.
 
 ---
 
-# Namespace Scope
+## Namespace Scope
 
 If you do not intentionally configure namespace selection, carefully understand which Pods are considered by the affinity rule.
 
@@ -867,7 +867,7 @@ For production systems, explicitly defining the intended scope can make scheduli
 
 ---
 
-# Required Pod Affinity Example
+## Required Pod Affinity Example
 
 ```yaml
 apiVersion: v1
@@ -907,7 +907,7 @@ spec:
 
 ---
 
-# Required Pod Anti-Affinity Example
+## Required Pod Anti-Affinity Example
 
 ```yaml
 apiVersion: v1
@@ -947,7 +947,7 @@ spec:
 
 ---
 
-# Preferred Pod Anti-Affinity
+## Preferred Pod Anti-Affinity
 
 ```yaml
 affinity:
@@ -979,7 +979,7 @@ but does not make separation mandatory.
 
 ---
 
-# Weight
+## Weight
 
 Preferred affinity and anti-affinity rules use:
 
@@ -997,7 +997,7 @@ Higher weight indicates a stronger preference.
 
 ---
 
-# Combining Affinity and Anti-Affinity
+## Combining Affinity and Anti-Affinity
 
 A workload can use both.
 
@@ -1033,7 +1033,7 @@ Pod
 
 ---
 
-# Real-World Example – Frontend and Backend
+## Real-World Example – Frontend and Backend
 
 Suppose:
 
@@ -1078,7 +1078,7 @@ The Pods are in the same zone, potentially reducing network latency compared wit
 
 ---
 
-# Real-World Example – Database Replicas
+## Real-World Example – Database Replicas
 
 Database replicas:
 
@@ -1104,7 +1104,7 @@ This discourages or prevents multiple replicas from sharing a Node, depending on
 
 ---
 
-# Real-World Example – Multi-Zone Application
+## Real-World Example – Multi-Zone Application
 
 Application replicas:
 
@@ -1120,7 +1120,7 @@ For precise replica distribution, Kubernetes **topology spread constraints** may
 
 ---
 
-# Pod Affinity and Scheduler
+## Pod Affinity and Scheduler
 
 The Scheduler evaluates Pod Affinity and Anti-Affinity during scheduling.
 
@@ -1152,7 +1152,7 @@ Select Node
 
 ---
 
-# Scheduling Failure
+## Scheduling Failure
 
 Suppose:
 
@@ -1188,7 +1188,7 @@ Pending
 
 ---
 
-# Anti-Affinity Failure
+## Anti-Affinity Failure
 
 Suppose:
 
@@ -1228,7 +1228,7 @@ Pending
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
 Check:
 
@@ -1256,7 +1256,7 @@ FailedScheduling
 
 ---
 
-# Check Pod Labels
+## Check Pod Labels
 
 ```bash
 kubectl get pods --show-labels
@@ -1266,7 +1266,7 @@ This helps confirm that the Pods actually match the affinity selector.
 
 ---
 
-# Check Node Topology Labels
+## Check Node Topology Labels
 
 ```bash
 kubectl get nodes \
@@ -1277,7 +1277,7 @@ kubectl get nodes \
 
 ---
 
-# Check Pod Placement
+## Check Pod Placement
 
 ```bash
 kubectl get pods -o wide
@@ -1287,7 +1287,7 @@ This displays the Node on which each Pod is running.
 
 ---
 
-# Hands-on Lab 1 – Create Backend Pod
+## Hands-on Lab 1 – Create Backend Pod
 
 Create:
 
@@ -1321,7 +1321,7 @@ kubectl apply -f backend.yaml
 
 ---
 
-# Hands-on Lab 2 – Create Frontend with Pod Affinity
+## Hands-on Lab 2 – Create Frontend with Pod Affinity
 
 Create:
 
@@ -1375,7 +1375,7 @@ kubectl get pods -o wide
 
 ---
 
-# Hands-on Lab 3 – Test Required Anti-Affinity
+## Hands-on Lab 3 – Test Required Anti-Affinity
 
 Create multiple replicas with:
 
@@ -1401,7 +1401,7 @@ Observe how Pods are distributed across Nodes.
 
 ---
 
-# Hands-on Lab 4 – Force an Anti-Affinity Failure
+## Hands-on Lab 4 – Force an Anti-Affinity Failure
 
 Use more replicas than available Nodes.
 
@@ -1433,7 +1433,7 @@ kubectl describe pod <pod-name>
 
 ---
 
-# Hands-on Lab 5 – Preferred Anti-Affinity
+## Hands-on Lab 5 – Preferred Anti-Affinity
 
 Change:
 
@@ -1453,7 +1453,7 @@ Observe that Kubernetes can colocate Pods when necessary.
 
 ---
 
-# Hands-on Lab 6 – Zone-Based Affinity
+## Hands-on Lab 6 – Zone-Based Affinity
 
 If your cluster has multiple zones:
 
@@ -1472,7 +1472,7 @@ Observe placement.
 
 ---
 
-# Hands-on Lab 7 – Inspect Labels
+## Hands-on Lab 7 – Inspect Labels
 
 Run:
 
@@ -1500,9 +1500,9 @@ Node topology labels
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Confusing Pod Affinity with Node Affinity
+### 1. Confusing Pod Affinity with Node Affinity
 
 Pod Affinity:
 
@@ -1518,7 +1518,7 @@ Pod → Node Labels
 
 ---
 
-## 2. Forgetting topologyKey
+### 2. Forgetting topologyKey
 
 Pod Affinity and Anti-Affinity require a topology domain.
 
@@ -1526,7 +1526,7 @@ Without a meaningful topology key, the intended placement relationship cannot be
 
 ---
 
-## 3. Using Required Anti-Affinity Too Aggressively
+### 3. Using Required Anti-Affinity Too Aggressively
 
 Example:
 
@@ -1542,7 +1542,7 @@ At least one replica may remain Pending.
 
 ---
 
-## 4. Using hostname When You Really Need Zone Separation
+### 4. Using hostname When You Really Need Zone Separation
 
 ```text
 hostname
@@ -1560,7 +1560,7 @@ may be more appropriate.
 
 ---
 
-## 5. Assuming Anti-Affinity Automatically Guarantees Perfect Distribution
+### 5. Assuming Anti-Affinity Automatically Guarantees Perfect Distribution
 
 Anti-affinity can prevent co-location based on the specified topology, but it is not the same as a precise balancing mechanism.
 
@@ -1572,7 +1572,7 @@ Pod Topology Spread Constraints
 
 ---
 
-## 6. Forgetting Pod Labels
+### 6. Forgetting Pod Labels
 
 Affinity depends on matching Pod labels.
 
@@ -1584,7 +1584,7 @@ kubectl get pods --show-labels
 
 ---
 
-## 7. Ignoring Namespace Scope
+### 7. Ignoring Namespace Scope
 
 Matching Pods may come from namespaces depending on the affinity configuration.
 
@@ -1592,7 +1592,7 @@ Explicitly define the intended scope when necessary.
 
 ---
 
-## 8. Making Every Rule Required
+### 8. Making Every Rule Required
 
 Hard constraints can make workloads unschedulable.
 
@@ -1600,7 +1600,7 @@ Use preferred rules where flexibility is acceptable.
 
 ---
 
-# Pod Affinity vs Pod Anti-Affinity
+## Pod Affinity vs Pod Anti-Affinity
 
 ```text
 Pod Affinity
@@ -1632,7 +1632,7 @@ Move away from Pod B
 
 ---
 
-# topologyKey Quick Reference
+## topologyKey Quick Reference
 
 | topologyKey | Typical Meaning |
 |---|---|
@@ -1644,7 +1644,7 @@ The exact labels available depend on the cluster and infrastructure.
 
 ---
 
-# Required vs Preferred Quick Reference
+## Required vs Preferred Quick Reference
 
 ```text
 Required
@@ -1672,9 +1672,9 @@ No Match = Try Another Feasible Option
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Pod Affinity
+### Pod Affinity
 
 ```text
 Attract
@@ -1686,7 +1686,7 @@ Co-locate
 
 ---
 
-## Pod Anti-Affinity
+### Pod Anti-Affinity
 
 ```text
 Repel
@@ -1698,7 +1698,7 @@ Separate
 
 ---
 
-## Required
+### Required
 
 ```text
 Must satisfy
@@ -1706,7 +1706,7 @@ Must satisfy
 
 ---
 
-## Preferred
+### Preferred
 
 ```text
 Try to satisfy
@@ -1714,7 +1714,7 @@ Try to satisfy
 
 ---
 
-## topologyKey
+### topologyKey
 
 ```text
 Defines topology domain
@@ -1722,7 +1722,7 @@ Defines topology domain
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Pods:
 
@@ -1762,9 +1762,9 @@ kubectl get nodes -L kubernetes.io/hostname
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Pod Affinity?
 - What is Pod Anti-Affinity?
@@ -1774,7 +1774,7 @@ kubectl get nodes -L kubernetes.io/hostname
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Explain required vs preferred Pod Affinity.
 - How does Pod Affinity identify other Pods?
@@ -1785,7 +1785,7 @@ kubectl get nodes -L kubernetes.io/hostname
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Pod Affinity scheduling process.
 - Compare Pod Affinity with Node Affinity.
@@ -1799,7 +1799,7 @@ kubectl get nodes -L kubernetes.io/hostname
 
 ---
 
-# Production Design Example
+## Production Design Example
 
 A highly available application might use:
 
@@ -1860,15 +1860,15 @@ However, when the primary objective is controlled and balanced distribution acro
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Anti-Affinity for High Availability
+#### 1. Use Anti-Affinity for High Availability
 
 Separate critical replicas across Nodes or zones.
 
 ---
 
-### 2. Prefer Soft Rules When Appropriate
+#### 2. Prefer Soft Rules When Appropriate
 
 Use:
 
@@ -1880,13 +1880,13 @@ when temporary co-location is acceptable.
 
 ---
 
-### 3. Use Required Rules for Genuine Requirements
+#### 3. Use Required Rules for Genuine Requirements
 
 Do not unnecessarily make workloads unschedulable.
 
 ---
 
-### 4. Choose topologyKey Carefully
+#### 4. Choose topologyKey Carefully
 
 Use:
 
@@ -1906,7 +1906,7 @@ for zone-level separation.
 
 ---
 
-### 5. Use Topology Spread for Precise Distribution
+#### 5. Use Topology Spread for Precise Distribution
 
 For workloads that need balanced replica distribution, evaluate:
 
@@ -1918,13 +1918,13 @@ rather than relying solely on anti-affinity.
 
 ---
 
-### 6. Keep Label Selectors Precise
+#### 6. Keep Label Selectors Precise
 
 A broad selector can unintentionally affect many workloads.
 
 ---
 
-### 7. Test Failure Scenarios
+#### 7. Test Failure Scenarios
 
 Simulate:
 
@@ -1942,9 +1942,9 @@ to verify that your placement strategy actually improves availability.
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Assigning Pods to Nodes
 - Inter-Pod Affinity and Anti-Affinity
@@ -1955,7 +1955,7 @@ to verify that your placement strategy actually improves availability.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes SIG Scheduling
 - Kubernetes Scheduling Framework
@@ -1963,7 +1963,7 @@ to verify that your placement strategy actually improves availability.
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create Pods with meaningful labels.
 2. Experiment with required Pod Affinity.
@@ -1980,7 +1980,7 @@ to verify that your placement strategy actually improves availability.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```text
                   Pod Scheduling
@@ -2060,9 +2060,9 @@ However, for precise replica distribution across topology domains, Kubernetes **
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 40 – Taints & Tolerations
+## Chapter 40 – Taints & Tolerations
 
 Topics will include:
 
@@ -2092,4 +2092,3 @@ Topics will include:
 - References
 
 ----
-```

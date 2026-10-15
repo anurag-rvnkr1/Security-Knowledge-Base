@@ -38,7 +38,7 @@ Every Kubernetes cluster **must** have a compatible CNI plugin.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -55,7 +55,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need CNI?
+## Why Do We Need CNI?
 
 Imagine:
 
@@ -81,7 +81,7 @@ The **CNI plugin** does.
 
 ---
 
-# Kubernetes Without CNI
+## Kubernetes Without CNI
 
 ```
 Worker Node
@@ -103,7 +103,7 @@ The Pod may exist, but networking will not function.
 
 ---
 
-# Kubernetes With CNI
+## Kubernetes With CNI
 
 ```
 Worker Node
@@ -131,7 +131,7 @@ Communication Enabled
 
 ---
 
-# What is CNI?
+## What is CNI?
 
 **Container Network Interface (CNI)** is an open specification that defines how container runtimes configure networking.
 
@@ -141,7 +141,7 @@ Originally developed for container networking, it is now maintained under the CN
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                 Kubernetes
@@ -181,7 +181,7 @@ Originally developed for container networking, it is now maintained under the CN
 
 ---
 
-# Kubernetes Networking Stack
+## Kubernetes Networking Stack
 
 ```
 Application
@@ -209,7 +209,7 @@ Physical Network
 
 ---
 
-# CNI Responsibilities
+## CNI Responsibilities
 
 A CNI plugin performs:
 
@@ -222,7 +222,7 @@ A CNI plugin performs:
 
 ---
 
-# Pod Creation Workflow
+## Pod Creation Workflow
 
 ```
 kubectl apply
@@ -258,7 +258,7 @@ Pod Ready
 
 ---
 
-# Step-by-Step Networking
+## Step-by-Step Networking
 
 Suppose:
 
@@ -282,7 +282,7 @@ The CNI configures networking.
 
 ---
 
-# Network Namespace
+## Network Namespace
 
 Each Pod receives:
 
@@ -301,7 +301,7 @@ Containers within the Pod share this namespace.
 
 ---
 
-# Virtual Ethernet Pair (veth)
+## Virtual Ethernet Pair (veth)
 
 The CNI creates:
 
@@ -327,7 +327,7 @@ The other remains on the Node.
 
 ---
 
-# Linux Bridge
+## Linux Bridge
 
 Many CNI plugins connect Pods through a bridge.
 
@@ -347,7 +347,7 @@ The bridge switches traffic between local Pods.
 
 ---
 
-# IP Address Assignment
+## IP Address Assignment
 
 The CNI allocates an IP.
 
@@ -365,7 +365,7 @@ Every Pod receives a unique IP address within the cluster.
 
 ---
 
-# IPAM (IP Address Management)
+## IPAM (IP Address Management)
 
 Most CNI plugins use an **IPAM** component.
 
@@ -386,7 +386,7 @@ Pod IP
 
 ---
 
-# Route Configuration
+## Route Configuration
 
 The CNI adds routing entries.
 
@@ -404,7 +404,7 @@ This enables Pods on different Nodes to communicate.
 
 ---
 
-# Packet Flow
+## Packet Flow
 
 ```
 Pod
@@ -432,7 +432,7 @@ Destination Pod
 
 ---
 
-# Overlay Networks
+## Overlay Networks
 
 Many CNI plugins create an **overlay network**.
 
@@ -454,7 +454,7 @@ Overlay networking allows Pods on different Nodes to communicate without requiri
 
 ---
 
-# Underlay Networks
+## Underlay Networks
 
 Some CNIs use the physical network directly.
 
@@ -474,7 +474,7 @@ This avoids encapsulation but requires network infrastructure capable of routing
 
 ---
 
-# CNI Configuration
+## CNI Configuration
 
 CNI configuration files are commonly stored under:
 
@@ -490,7 +490,7 @@ These files describe:
 
 ---
 
-# CNI Binaries
+## CNI Binaries
 
 Plugin executables are typically stored in:
 
@@ -502,7 +502,7 @@ The container runtime executes these binaries when creating or deleting Pod netw
 
 ---
 
-# CNI Commands
+## CNI Commands
 
 The CNI specification defines operations such as:
 
@@ -526,7 +526,7 @@ CHECK
 
 ---
 
-# Popular CNI Plugins
+## Popular CNI Plugins
 
 | Plugin | Highlights |
 |----------|------------|
@@ -539,7 +539,7 @@ CHECK
 
 ---
 
-# Calico
+## Calico
 
 Features:
 
@@ -551,7 +551,7 @@ Features:
 
 ---
 
-# Cilium
+## Cilium
 
 Features:
 
@@ -563,7 +563,7 @@ Features:
 
 ---
 
-# Flannel
+## Flannel
 
 Features:
 
@@ -576,7 +576,7 @@ Flannel does **not** natively implement Kubernetes Network Policies.
 
 ---
 
-# Weave Net
+## Weave Net
 
 Features:
 
@@ -587,7 +587,7 @@ Features:
 
 ---
 
-# Antrea
+## Antrea
 
 Features:
 
@@ -598,7 +598,7 @@ Features:
 
 ---
 
-# CNI Architecture Summary
+## CNI Architecture Summary
 
 ```
 Kubernetes
@@ -630,7 +630,7 @@ Pod
 
 ---
 
-# View CNI Pods
+## View CNI Pods
 
 ```bash
 kubectl get pods -A
@@ -652,7 +652,7 @@ antrea-agent
 
 ---
 
-# View CNI Configuration
+## View CNI Configuration
 
 ```bash
 ls /etc/cni/net.d/
@@ -660,7 +660,7 @@ ls /etc/cni/net.d/
 
 ---
 
-# View CNI Binaries
+## View CNI Binaries
 
 ```bash
 ls /opt/cni/bin/
@@ -668,7 +668,7 @@ ls /opt/cni/bin/
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 View Nodes:
 
@@ -696,9 +696,9 @@ kubectl describe node <node-name>
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Choose the Right CNI
+#### 1. Choose the Right CNI
 
 Select a plugin based on:
 
@@ -710,19 +710,19 @@ Select a plugin based on:
 
 ---
 
-### 2. Monitor IP Usage
+#### 2. Monitor IP Usage
 
 Prevent Pod CIDR exhaustion.
 
 ---
 
-### 3. Secure Pod Networking
+#### 3. Secure Pod Networking
 
 Use Network Policies where supported.
 
 ---
 
-### 4. Keep CNI Updated
+#### 4. Keep CNI Updated
 
 Networking plugins receive important:
 
@@ -732,15 +732,15 @@ Networking plugins receive important:
 
 ---
 
-### 5. Test Multi-Node Connectivity
+#### 5. Test Multi-Node Connectivity
 
 Verify Pod-to-Pod communication across Nodes after cluster changes.
 
 ---
 
-# Chapter 29 – How CNI Plugins Work Internally
+## Chapter 29 – How CNI Plugins Work Internally
 
-## Overview
+### Overview
 
 Installing a CNI plugin is only the beginning.
 
@@ -772,7 +772,7 @@ This chapter explains exactly how that happens.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -789,7 +789,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                Kubernetes API
@@ -841,7 +841,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Complete Workflow
+## Complete Workflow
 
 ```
 kubectl apply
@@ -881,7 +881,7 @@ Pod Starts
 
 ---
 
-# Step 1 – Pod Creation
+## Step 1 – Pod Creation
 
 Example:
 
@@ -893,7 +893,7 @@ The API Server stores the Pod definition.
 
 ---
 
-# Step 2 – Scheduler
+## Step 2 – Scheduler
 
 The Scheduler selects the most suitable Node.
 
@@ -909,7 +909,7 @@ The Pod is assigned to that Node.
 
 ---
 
-# Step 3 – kubelet
+## Step 3 – kubelet
 
 The kubelet on the selected Node notices the assignment.
 
@@ -932,7 +932,7 @@ Must Exist
 
 ---
 
-# Step 4 – Container Runtime
+## Step 4 – Container Runtime
 
 The container runtime (for example, containerd or CRI-O):
 
@@ -954,7 +954,7 @@ Network Namespace
 
 ---
 
-# Pause Container
+## Pause Container
 
 Every Pod contains a hidden **pause container**.
 
@@ -968,7 +968,7 @@ All application containers join these namespaces.
 
 ---
 
-# Step 5 – CNI ADD Command
+## Step 5 – CNI ADD Command
 
 The container runtime invokes the CNI plugin.
 
@@ -988,7 +988,7 @@ The CNI receives details such as:
 
 ---
 
-# CNI ADD Workflow
+## CNI ADD Workflow
 
 ```
 Container Runtime
@@ -1004,7 +1004,7 @@ Configure Networking
 
 ---
 
-# Step 6 – Create Network Namespace
+## Step 6 – Create Network Namespace
 
 The CNI enters the Pod's network namespace.
 
@@ -1028,7 +1028,7 @@ Loopback Interface
 
 ---
 
-# Step 7 – Create veth Pair
+## Step 7 – Create veth Pair
 
 The CNI creates a virtual Ethernet pair.
 
@@ -1054,7 +1054,7 @@ The other stays on the host.
 
 ---
 
-# Step 8 – Connect to Linux Bridge
+## Step 8 – Connect to Linux Bridge
 
 Many CNIs attach the host-side interface to a bridge.
 
@@ -1078,7 +1078,7 @@ Local Pod communication now becomes possible.
 
 ---
 
-# Step 9 – IPAM Allocation
+## Step 9 – IPAM Allocation
 
 The CNI contacts its IP Address Management (IPAM) component.
 
@@ -1106,7 +1106,7 @@ The IP is reserved until the Pod is deleted.
 
 ---
 
-# Step 10 – Configure Interfaces
+## Step 10 – Configure Interfaces
 
 Inside the Pod:
 
@@ -1128,7 +1128,7 @@ Both interfaces become active.
 
 ---
 
-# Step 11 – Configure Routes
+## Step 11 – Configure Routes
 
 Example routing table:
 
@@ -1148,7 +1148,7 @@ The Pod can now communicate beyond its namespace.
 
 ---
 
-# Step 12 – Configure ARP
+## Step 12 – Configure ARP
 
 The Linux kernel updates:
 
@@ -1160,7 +1160,7 @@ Network communication becomes possible.
 
 ---
 
-# Step 13 – Return Success
+## Step 13 – Return Success
 
 The CNI reports:
 
@@ -1184,7 +1184,7 @@ Containers Start
 
 ---
 
-# Pod Ready
+## Pod Ready
 
 Final state:
 
@@ -1210,7 +1210,7 @@ Reachable
 
 ---
 
-# Packet Flow (Same Node)
+## Packet Flow (Same Node)
 
 ```
 Pod A
@@ -1240,7 +1240,7 @@ Traffic never leaves the Node.
 
 ---
 
-# Packet Flow (Different Nodes)
+## Packet Flow (Different Nodes)
 
 ```
 Pod A
@@ -1266,7 +1266,7 @@ The CNI handles inter-node transport.
 
 ---
 
-# Overlay Networking
+## Overlay Networking
 
 Most CNIs use encapsulation.
 
@@ -1292,7 +1292,7 @@ Node 2
 
 ---
 
-# Underlay Networking
+## Underlay Networking
 
 Some CNIs use direct routing.
 
@@ -1312,7 +1312,7 @@ Requires the network infrastructure to understand Pod CIDRs.
 
 ---
 
-# CNI DEL Command
+## CNI DEL Command
 
 When a Pod is deleted:
 
@@ -1337,7 +1337,7 @@ The plugin:
 
 ---
 
-# CNI DEL Workflow
+## CNI DEL Workflow
 
 ```
 Delete Pod
@@ -1361,7 +1361,7 @@ Cleanup Complete
 
 ---
 
-# CNI CHECK Command
+## CNI CHECK Command
 
 Some plugins support:
 
@@ -1379,7 +1379,7 @@ Support is optional.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 API Server
@@ -1423,7 +1423,7 @@ Pod Ready
 
 ---
 
-# CNI Configuration Files
+## CNI Configuration Files
 
 Typical location:
 
@@ -1443,7 +1443,7 @@ Example:
 
 ---
 
-# CNI Binary Directory
+## CNI Binary Directory
 
 Typical location:
 
@@ -1462,7 +1462,7 @@ Contains plugin executables such as:
 
 ---
 
-# Hands-on Lab 1 – View CNI Configuration
+## Hands-on Lab 1 – View CNI Configuration
 
 ```bash
 ls /etc/cni/net.d/
@@ -1472,7 +1472,7 @@ Observe available network configuration files.
 
 ---
 
-# Hands-on Lab 2 – View Installed Plugins
+## Hands-on Lab 2 – View Installed Plugins
 
 ```bash
 ls /opt/cni/bin/
@@ -1482,7 +1482,7 @@ Review installed CNI binaries.
 
 ---
 
-# Hands-on Lab 3 – Inspect Pod Networking
+## Hands-on Lab 3 – Inspect Pod Networking
 
 Create a Pod:
 
@@ -1501,7 +1501,7 @@ Observe the assigned Pod IP.
 
 ---
 
-# Hands-on Lab 4 – Inspect Interfaces
+## Hands-on Lab 4 – Inspect Interfaces
 
 Inside the Pod:
 
@@ -1516,7 +1516,7 @@ Observe:
 
 ---
 
-# Hands-on Lab 5 – Inspect Routes
+## Hands-on Lab 5 – Inspect Routes
 
 Inside the Pod:
 
@@ -1532,9 +1532,9 @@ Observe:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Assuming Kubernetes Configures Networking
+### 1. Assuming Kubernetes Configures Networking
 
 Incorrect:
 
@@ -1562,7 +1562,7 @@ CNI Configures Network
 
 ---
 
-## 2. Forgetting the Pause Container
+### 2. Forgetting the Pause Container
 
 The pause container owns the Pod's shared network namespace.
 
@@ -1570,7 +1570,7 @@ Without it, containers in the Pod could not share networking.
 
 ---
 
-## 3. Ignoring IPAM
+### 3. Ignoring IPAM
 
 Every Pod IP comes from an IPAM component.
 
@@ -1578,7 +1578,7 @@ Duplicate IP addresses are prevented through IPAM management.
 
 ---
 
-## 4. Confusing Bridge with Overlay
+### 4. Confusing Bridge with Overlay
 
 Bridge:
 
@@ -1596,7 +1596,7 @@ They solve different networking problems.
 
 ---
 
-## 5. Forgetting Cleanup
+### 5. Forgetting Cleanup
 
 A correct CNI implementation must release:
 
@@ -1608,9 +1608,9 @@ when Pods are deleted.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Pod Creation
+### Pod Creation
 
 ```
 Scheduler
@@ -1634,7 +1634,7 @@ Pod Ready
 
 ---
 
-## Networking Setup
+### Networking Setup
 
 ```
 Network Namespace
@@ -1658,7 +1658,7 @@ Routes
 
 ---
 
-## Pod Deletion
+### Pod Deletion
 
 ```
 Delete Pod
@@ -1678,7 +1678,7 @@ Cleanup
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 View Pod IPs:
 
@@ -1718,9 +1718,9 @@ kubectl exec -it <pod> -- ip route
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a CNI plugin?
 - Why is a CNI required in Kubernetes?
@@ -1728,7 +1728,7 @@ kubectl exec -it <pod> -- ip route
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - What happens when the CNI `ADD` command is executed?
 - Why does Kubernetes use a pause container?
@@ -1736,7 +1736,7 @@ kubectl exec -it <pod> -- ip route
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the complete Pod networking lifecycle from scheduling to a running Pod.
 - Compare overlay and underlay networking.
@@ -1746,9 +1746,9 @@ kubectl exec -it <pod> -- ip route
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - CNI Specification
 - Kubernetes Networking
@@ -1757,7 +1757,7 @@ kubectl exec -it <pod> -- ip route
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Container Network Interface
 - SIG Network
@@ -1765,7 +1765,7 @@ kubectl exec -it <pod> -- ip route
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - Kubernetes Production Networking
 - CIS Kubernetes Benchmark
@@ -1773,7 +1773,7 @@ kubectl exec -it <pod> -- ip route
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 kubectl

@@ -65,7 +65,7 @@ The goal is to transform fragmented telemetry into an evidence-backed incident n
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Poor scoping is one of the most dangerous incident response failures.
 
@@ -109,11 +109,11 @@ The original endpoint was only the **entry point into the investigation**, not t
 
 ---
 
-# Analysis vs Scoping
+## Analysis vs Scoping
 
 These concepts are closely related but different.
 
-## Incident Analysis
+### Incident Analysis
 
 Determines:
 
@@ -129,7 +129,7 @@ It focuses on:
 - Persistence
 - Network activity
 
-## Incident Scoping
+### Incident Scoping
 
 Determines:
 
@@ -164,57 +164,57 @@ A useful model:
 
 ---
 
-# Investigation Objectives
+## Investigation Objectives
 
 A mature investigation should establish:
 
-### Initial Access
+#### Initial Access
 
 How did the attacker enter?
 
-### Execution
+#### Execution
 
 What code or commands were executed?
 
-### Persistence
+#### Persistence
 
 How did the attacker maintain access?
 
-### Privilege Escalation
+#### Privilege Escalation
 
 Did the attacker obtain higher privileges?
 
-### Credential Access
+#### Credential Access
 
 Were credentials or tokens stolen?
 
-### Discovery
+#### Discovery
 
 What did the attacker learn about the environment?
 
-### Lateral Movement
+#### Lateral Movement
 
 Did the attacker move to other systems?
 
-### Command and Control
+#### Command and Control
 
 How did the attacker communicate externally?
 
-### Collection
+#### Collection
 
 What information was gathered?
 
-### Exfiltration
+#### Exfiltration
 
 Was information transferred outside the environment?
 
-### Impact
+#### Impact
 
 What damage or business disruption occurred?
 
 ---
 
-# Investigation Model
+## Investigation Model
 
 ```text
                      INCIDENT
@@ -248,7 +248,7 @@ What damage or business disruption occurred?
 
 ---
 
-# Attack Timeline
+## Attack Timeline
 
 The timeline is one of the most important investigative artifacts.
 
@@ -284,7 +284,7 @@ This provides a much stronger understanding than examining individual alerts.
 
 ---
 
-# Timeline Data Sources
+## Timeline Data Sources
 
 Potential sources include:
 
@@ -308,7 +308,7 @@ Network Captures
 
 ---
 
-# Timeline Construction
+## Timeline Construction
 
 A practical timeline table:
 
@@ -325,23 +325,23 @@ Confidence should reflect the strength of the evidence.
 
 ---
 
-# Evidence Confidence
+## Evidence Confidence
 
 Investigators should distinguish between:
 
-### Confirmed
+#### Confirmed
 
 Direct evidence establishes the activity.
 
-### Highly Likely
+#### Highly Likely
 
 Multiple independent indicators support the conclusion.
 
-### Possible
+#### Possible
 
 Evidence suggests the activity but does not prove it.
 
-### Unknown
+#### Unknown
 
 Available evidence is insufficient.
 
@@ -368,7 +368,7 @@ This prevents overstatement.
 
 ---
 
-# Initial Access
+## Initial Access
 
 Determining the initial access vector is one of the most important investigative objectives.
 
@@ -389,7 +389,7 @@ Drive-by Compromise
 
 ---
 
-# Initial Access Investigation
+## Initial Access Investigation
 
 Ask:
 
@@ -413,7 +413,7 @@ Was the service internet-facing?
 
 ---
 
-# Example: Phishing Initial Access
+## Example: Phishing Initial Access
 
 ```text
 External Email
@@ -446,7 +446,7 @@ Evidence might include:
 
 ---
 
-# Example: Exploitation Initial Access
+## Example: Exploitation Initial Access
 
 ```text
 Internet
@@ -479,7 +479,7 @@ Investigators should determine:
 
 ---
 
-# Execution Analysis
+## Execution Analysis
 
 After initial access, determine what the attacker executed.
 
@@ -499,7 +499,7 @@ Potential execution mechanisms include:
 
 ---
 
-# Process Tree Analysis
+## Process Tree Analysis
 
 A process tree provides valuable context.
 
@@ -529,7 +529,7 @@ Context matters.
 
 ---
 
-# Parent-Child Relationships
+## Parent-Child Relationships
 
 Investigators should examine:
 
@@ -552,7 +552,7 @@ Select-Object ProcessId, ParentProcessId, Name, CommandLine
 
 ---
 
-# Command-Line Analysis
+## Command-Line Analysis
 
 Command lines can reveal:
 
@@ -576,7 +576,7 @@ It should trigger contextual investigation.
 
 ---
 
-# Credential Access
+## Credential Access
 
 Credential theft may be central to the attack.
 
@@ -608,7 +608,7 @@ Were they subsequently used elsewhere?
 
 ---
 
-# Identity Pivoting
+## Identity Pivoting
 
 A compromised endpoint can be used to investigate identity activity.
 
@@ -632,7 +632,7 @@ This technique can reveal lateral movement.
 
 ---
 
-# Lateral Movement
+## Lateral Movement
 
 Lateral movement occurs when an attacker moves from one compromised system to another.
 
@@ -650,7 +650,7 @@ Common mechanisms include:
 
 ---
 
-# Lateral Movement Investigation
+## Lateral Movement Investigation
 
 Look for:
 
@@ -681,7 +681,7 @@ ADMIN-03
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Determine whether the attacker increased privileges.
 
@@ -711,7 +711,7 @@ Investigate:
 
 ---
 
-# Persistence
+## Persistence
 
 Persistence allows an attacker to maintain access.
 
@@ -733,7 +733,7 @@ New Accounts
 
 ---
 
-# Persistence Investigation
+## Persistence Investigation
 
 Ask:
 
@@ -755,7 +755,7 @@ Does removing it affect legitimate operations?
 
 ---
 
-# Scheduled Task Example
+## Scheduled Task Example
 
 Windows:
 
@@ -783,7 +783,7 @@ and appropriate system-wide cron locations.
 
 ---
 
-# Service Investigation
+## Service Investigation
 
 Windows:
 
@@ -806,7 +806,7 @@ systemctl list-units --type=service
 
 ---
 
-# Discovery Activity
+## Discovery Activity
 
 Attackers often perform discovery before moving further.
 
@@ -831,7 +831,7 @@ Investigators may search for commands and telemetry associated with:
 
 ---
 
-# Command and Control
+## Command and Control
 
 Determine whether compromised systems communicated with attacker infrastructure.
 
@@ -858,7 +858,7 @@ Look for:
 
 ---
 
-# DNS Investigation
+## DNS Investigation
 
 Example:
 
@@ -890,7 +890,7 @@ Useful evidence:
 
 ---
 
-# Network Connection Analysis
+## Network Connection Analysis
 
 Windows:
 
@@ -920,7 +920,7 @@ Has this host contacted it before?
 
 ---
 
-# Data Collection
+## Data Collection
 
 Attackers may gather data before exfiltration.
 
@@ -950,7 +950,7 @@ External Destination
 
 ---
 
-# Data Staging
+## Data Staging
 
 Data staging occurs when information is gathered into a location before transfer.
 
@@ -984,7 +984,7 @@ Investigate:
 
 ---
 
-# Exfiltration Investigation
+## Exfiltration Investigation
 
 Possible channels include:
 
@@ -1025,7 +1025,7 @@ rather than assuming either success or failure.
 
 ---
 
-# Cloud Investigation
+## Cloud Investigation
 
 Cloud incidents require a separate investigation dimension.
 
@@ -1064,7 +1064,7 @@ Investigate:
 
 ---
 
-# Cloud Scope
+## Cloud Scope
 
 Determine:
 
@@ -1081,7 +1081,7 @@ A compromised cloud administrator account can potentially affect a large number 
 
 ---
 
-# Identity Scope
+## Identity Scope
 
 Identity scope should include:
 
@@ -1099,7 +1099,7 @@ Sessions
 
 ---
 
-# Endpoint Scope
+## Endpoint Scope
 
 For a compromised endpoint, determine:
 
@@ -1120,7 +1120,7 @@ Then pivot to similar activity across the environment.
 
 ---
 
-# Enterprise Scope Expansion
+## Enterprise Scope Expansion
 
 A useful method is:
 
@@ -1152,7 +1152,7 @@ This creates an iterative investigation.
 
 ---
 
-# IOC Pivoting
+## IOC Pivoting
 
 Suppose investigators identify:
 
@@ -1190,7 +1190,7 @@ Each pivot may reveal new evidence.
 
 ---
 
-# Entity Relationship Model
+## Entity Relationship Model
 
 Incident investigations can be represented as relationships.
 
@@ -1217,7 +1217,7 @@ This graph-based thinking is particularly useful in SIEM and EDR investigations.
 
 ---
 
-# Attack Graph
+## Attack Graph
 
 A larger incident may resemble:
 
@@ -1250,7 +1250,7 @@ This provides a high-level representation of the attack path.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Root cause analysis asks:
 
@@ -1271,11 +1271,11 @@ Possible root causes:
 
 ---
 
-# Root Cause vs Trigger
+## Root Cause vs Trigger
 
 These should not be confused.
 
-### Trigger
+#### Trigger
 
 The immediate event that started the incident.
 
@@ -1283,7 +1283,7 @@ Example:
 
 > Employee clicked a phishing link.
 
-### Root Cause
+#### Root Cause
 
 The underlying condition that enabled the attack.
 
@@ -1297,7 +1297,7 @@ The root cause explains **why the attack was able to succeed**.
 
 ---
 
-# Five Whys
+## Five Whys
 
 A simple root-cause technique:
 
@@ -1327,7 +1327,7 @@ This reveals a deeper remediation opportunity.
 
 ---
 
-# Scope Categories
+## Scope Categories
 
 An incident can be scoped across multiple dimensions.
 
@@ -1356,7 +1356,7 @@ An incident can be scoped across multiple dimensions.
 
 ---
 
-# Scope Confidence
+## Scope Confidence
 
 Not every scope determination is equally certain.
 
@@ -1384,7 +1384,7 @@ This is much more useful than declaring the environment simply "compromised."
 
 ---
 
-# Negative Evidence
+## Negative Evidence
 
 Negative findings can be valuable.
 
@@ -1408,7 +1408,7 @@ If telemetry was unavailable, the correct conclusion may be:
 
 ---
 
-# Evidence Gaps
+## Evidence Gaps
 
 An investigation should explicitly document missing evidence.
 
@@ -1426,124 +1426,124 @@ These gaps affect confidence in the final conclusions.
 
 ---
 
-# Common Investigation Mistakes
+## Common Investigation Mistakes
 
-## 1. Stopping at the First Compromised Host
+### 1. Stopping at the First Compromised Host
 
 The first host may only be the initial foothold.
 
-## 2. Focusing Only on Malware
+### 2. Focusing Only on Malware
 
 The real issue may be identity compromise.
 
-## 3. Ignoring Authentication
+### 3. Ignoring Authentication
 
 Attackers frequently use legitimate credentials.
 
-## 4. Assuming IOC = Full Scope
+### 4. Assuming IOC = Full Scope
 
 Finding one malicious IP does not reveal every attacker-controlled resource.
 
-## 5. Ignoring Cloud
+### 5. Ignoring Cloud
 
 Cloud environments may contain the highest-value data.
 
-## 6. Ignoring Service Accounts
+### 6. Ignoring Service Accounts
 
 Attackers may abuse non-human identities.
 
-## 7. Failing to Build a Timeline
+### 7. Failing to Build a Timeline
 
 Individual alerts rarely tell the whole story.
 
-## 8. Confusing Correlation With Causation
+### 8. Confusing Correlation With Causation
 
 Two events occurring close together does not automatically prove that one caused the other.
 
-## 9. Ignoring Unknowns
+### 9. Ignoring Unknowns
 
 Investigations should explicitly identify what cannot be determined.
 
-## 10. Modifying Evidence Too Early
+### 10. Modifying Evidence Too Early
 
 Containment and investigation actions should consider forensic impact.
 
 ---
 
-# Common Scoping Misconfigurations
+## Common Scoping Misconfigurations
 
-### Incomplete EDR Coverage
+#### Incomplete EDR Coverage
 
 Some hosts cannot be investigated.
 
-### Short Log Retention
+#### Short Log Retention
 
 Historical activity disappears.
 
-### Missing Cloud Audit Logs
+#### Missing Cloud Audit Logs
 
 Cloud actions cannot be reconstructed.
 
-### Poor Asset Inventory
+#### Poor Asset Inventory
 
 Affected systems cannot be identified reliably.
 
-### No Centralized Identity Logging
+#### No Centralized Identity Logging
 
 Account activity cannot be correlated.
 
-### Unsynchronized Clocks
+#### Unsynchronized Clocks
 
 Timelines become unreliable.
 
-### Incomplete DNS Visibility
+#### Incomplete DNS Visibility
 
 C2 and infrastructure relationships become harder to identify.
 
 ---
 
-# Practical Commands
+## Practical Commands
 
 These commands support authorized investigation.
 
 ---
 
-## Windows
+### Windows
 
-### Processes
+#### Processes
 
 ```powershell
 Get-CimInstance Win32_Process |
 Select-Object ProcessId,ParentProcessId,Name,CommandLine
 ```
 
-### Network Connections
+#### Network Connections
 
 ```powershell
 Get-NetTCPConnection |
 Select-Object LocalAddress,LocalPort,RemoteAddress,RemotePort,State,OwningProcess
 ```
 
-### Scheduled Tasks
+#### Scheduled Tasks
 
 ```powershell
 Get-ScheduledTask
 ```
 
-### Services
+#### Services
 
 ```powershell
 Get-CimInstance Win32_Service |
 Select-Object Name,State,StartMode,StartName,PathName
 ```
 
-### Local Administrators
+#### Local Administrators
 
 ```powershell
 Get-LocalGroupMember -Group "Administrators"
 ```
 
-### Recent Security Events
+#### Recent Security Events
 
 ```powershell
 Get-WinEvent -LogName Security -MaxEvents 200
@@ -1551,45 +1551,45 @@ Get-WinEvent -LogName Security -MaxEvents 200
 
 ---
 
-# Linux
+## Linux
 
-### Processes
+#### Processes
 
 ```bash
 ps aux --forest
 ```
 
-### Network Connections
+#### Network Connections
 
 ```bash
 ss -tunap
 ```
 
-### Listening Services
+#### Listening Services
 
 ```bash
 ss -lntup
 ```
 
-### Logged-In Users
+#### Logged-In Users
 
 ```bash
 w
 ```
 
-### Recent Login Activity
+#### Recent Login Activity
 
 ```bash
 last
 ```
 
-### Authentication Logs
+#### Authentication Logs
 
 ```bash
 grep -i "authentication" /var/log/auth.log
 ```
 
-### Cron
+#### Cron
 
 ```bash
 crontab -l
@@ -1597,15 +1597,15 @@ crontab -l
 
 ---
 
-# File Investigation
+## File Investigation
 
-### Linux
+#### Linux
 
 ```bash
 find /tmp -type f -mtime -1 -ls
 ```
 
-### Windows
+#### Windows
 
 ```powershell
 Get-ChildItem $env:TEMP -File |
@@ -1616,7 +1616,7 @@ These searches should be adapted to the specific investigation and environment.
 
 ---
 
-# Hash Collection
+## Hash Collection
 
 Windows:
 
@@ -1634,11 +1634,11 @@ Hashes should be recorded as investigation artifacts.
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-# Lab — Reconstructing a Multi-Stage Attack
+## Lab — Reconstructing a Multi-Stage Attack
 
-## Scenario
+### Scenario
 
 A fictional enterprise detects suspicious PowerShell activity on:
 
@@ -1666,9 +1666,9 @@ updates-example.example
 
 ---
 
-# Evidence Provided
+## Evidence Provided
 
-### Endpoint
+#### Endpoint
 
 ```text
 10:42
@@ -1681,28 +1681,28 @@ PowerShell executed script.ps1
 Network connection established
 ```
 
-### Identity
+#### Identity
 
 ```text
 10:51
 analyst01 authenticated to FILE-02
 ```
 
-### Network
+#### Network
 
 ```text
 10:52
 WS-104 → FILE-02 SMB
 ```
 
-### File Server
+#### File Server
 
 ```text
 11:02
 Large archive created
 ```
 
-### Firewall
+#### Firewall
 
 ```text
 11:15
@@ -1711,7 +1711,7 @@ FILE-02 → external destination
 
 ---
 
-# Task 1 — Build Timeline
+## Task 1 — Build Timeline
 
 Construct:
 
@@ -1727,7 +1727,7 @@ Construct:
 
 ---
 
-# Task 2 — Identify Attack Stages
+## Task 2 — Identify Attack Stages
 
 Map the activity to:
 
@@ -1745,7 +1745,7 @@ Only mark stages supported by evidence.
 
 ---
 
-# Task 3 — Determine Scope
+## Task 3 — Determine Scope
 
 Investigate:
 
@@ -1760,7 +1760,7 @@ External destination
 
 ---
 
-# Task 4 — Determine Unknowns
+## Task 4 — Determine Unknowns
 
 For example:
 
@@ -1776,7 +1776,7 @@ Were additional systems compromised?
 
 ---
 
-# Task 5 — Determine Containment Requirements
+## Task 5 — Determine Containment Requirements
 
 Possible actions:
 
@@ -1791,7 +1791,7 @@ Search environment for related activity
 
 ---
 
-# Task 6 — Root Cause
+## Task 6 — Root Cause
 
 Determine whether the underlying cause was:
 
@@ -1805,7 +1805,7 @@ Do not select a root cause without supporting evidence.
 
 ---
 
-# Expected Investigation Report
+## Expected Investigation Report
 
 ```text
 Incident:
@@ -1854,7 +1854,7 @@ Detection improvements
 
 ---
 
-# Advanced Lab — Scope Expansion
+## Advanced Lab — Scope Expansion
 
 Start with one known IOC:
 
@@ -1907,9 +1907,9 @@ This demonstrates an important IR principle:
 
 ---
 
-# Investigation Checklist
+## Investigation Checklist
 
-## Initial Analysis
+### Initial Analysis
 
 ```text
 [ ] Incident validated
@@ -1920,7 +1920,7 @@ This demonstrates an important IR principle:
 [ ] Initial timestamp identified
 ```
 
-## Timeline
+### Timeline
 
 ```text
 [ ] Initial access identified
@@ -1933,7 +1933,7 @@ This demonstrates an important IR principle:
 [ ] Exfiltration investigated
 ```
 
-## Scope
+### Scope
 
 ```text
 [ ] Hosts identified
@@ -1945,7 +1945,7 @@ This demonstrates an important IR principle:
 [ ] Data affected identified
 ```
 
-## Confidence
+### Confidence
 
 ```text
 [ ] Confirmed findings documented
@@ -1957,27 +1957,27 @@ This demonstrates an important IR principle:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is incident scoping?
+### 1. What is incident scoping?
 
 Incident scoping determines the breadth of a compromise, including affected hosts, users, identities, applications, cloud resources, networks, and data.
 
 ---
 
-## 2. Why is scoping important?
+### 2. Why is scoping important?
 
 Because the initially detected system may only represent one part of a larger attack.
 
 ---
 
-## 3. What is an attack timeline?
+### 3. What is an attack timeline?
 
 An attack timeline is a chronological reconstruction of relevant events used to understand how an incident progressed.
 
 ---
 
-## 4. What evidence can be used to build an incident timeline?
+### 4. What evidence can be used to build an incident timeline?
 
 Examples include:
 
@@ -1996,19 +1996,19 @@ Examples include:
 
 ---
 
-## 5. How do you identify initial access?
+### 5. How do you identify initial access?
 
 Investigate the earliest known suspicious activity and determine how the attacker obtained their first foothold.
 
 ---
 
-## 6. What is lateral movement?
+### 6. What is lateral movement?
 
 Lateral movement is the process of an attacker moving from one compromised system or identity to another.
 
 ---
 
-## 7. How do you investigate lateral movement?
+### 7. How do you investigate lateral movement?
 
 Correlate:
 
@@ -2021,25 +2021,25 @@ Correlate:
 
 ---
 
-## 8. What is persistence?
+### 8. What is persistence?
 
 Persistence refers to mechanisms that allow an attacker to maintain access after initial compromise or system restart.
 
 ---
 
-## 9. Why are service accounts important during scoping?
+### 9. Why are service accounts important during scoping?
 
 Service accounts may have broad permissions and can provide attackers with access to multiple systems.
 
 ---
 
-## 10. What is root cause analysis?
+### 10. What is root cause analysis?
 
 Root cause analysis identifies the underlying weakness that enabled or facilitated the incident.
 
 ---
 
-## 11. What is the difference between a trigger and a root cause?
+### 11. What is the difference between a trigger and a root cause?
 
 The trigger is the immediate event that initiated the incident.
 
@@ -2047,19 +2047,19 @@ The root cause is the deeper condition that allowed the incident to occur or suc
 
 ---
 
-## 12. What should you do when evidence is incomplete?
+### 12. What should you do when evidence is incomplete?
 
 Document the limitation and clearly classify the finding as unknown or unconfirmed rather than making unsupported assumptions.
 
 ---
 
-## 13. Why should investigators search beyond the initial host?
+### 13. Why should investigators search beyond the initial host?
 
 Attackers commonly use compromised systems for credential theft, lateral movement, persistence, and access to additional systems.
 
 ---
 
-## 14. How can you scope a compromise using an IOC?
+### 14. How can you scope a compromise using an IOC?
 
 Pivot from the IOC into:
 
@@ -2077,7 +2077,7 @@ Then identify related activity and newly discovered indicators.
 
 ---
 
-## 15. What is the difference between evidence and inference?
+### 15. What is the difference between evidence and inference?
 
 Evidence is directly observable information.
 
@@ -2087,7 +2087,7 @@ Professional incident reports should clearly distinguish them.
 
 ---
 
-# Professional Incident Analysis Template
+## Professional Incident Analysis Template
 
 ```text
 Incident ID:
@@ -2150,7 +2150,7 @@ Incident Commander:
 
 ---
 
-# Detection Engineering Feedback
+## Detection Engineering Feedback
 
 Incident analysis should improve future detection.
 
@@ -2190,7 +2190,7 @@ Potential improvements:
 
 ---
 
-# Threat Hunting Feedback
+## Threat Hunting Feedback
 
 Incident scoping can also create new hunting hypotheses.
 
@@ -2219,34 +2219,34 @@ This is why incident response and threat hunting should operate as complementary
 
 ---
 
-# Incident Analysis Maturity
+## Incident Analysis Maturity
 
-## Level 1 — Basic
+### Level 1 — Basic
 
 - Single-host investigation
 - Limited timeline
 - Manual log review
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Standard timeline
 - IOC pivots
 - Basic scoping
 
-## Level 3 — Defined
+### Level 3 — Defined
 
 - Cross-source correlation
 - Identity investigation
 - Network and endpoint integration
 
-## Level 4 — Measured
+### Level 4 — Measured
 
 - Investigation metrics
 - Evidence confidence
 - Automated enrichment
 - Scope validation
 
-## Level 5 — Optimized
+### Level 5 — Optimized
 
 - Graph-based investigation
 - Automated pivoting
@@ -2255,31 +2255,31 @@ This is why incident response and threat hunting should operate as complementary
 
 ---
 
-# Key Metrics
+## Key Metrics
 
 Useful investigation metrics include:
 
-### Time to Scope
+#### Time to Scope
 
 How long it takes to establish the likely incident boundary.
 
-### Time to Root Cause
+#### Time to Root Cause
 
 How long it takes to determine the underlying cause.
 
-### Investigation Coverage
+#### Investigation Coverage
 
 Percentage of relevant telemetry sources examined.
 
-### Evidence Completeness
+#### Evidence Completeness
 
 Percentage of required evidence successfully collected.
 
-### Scope Accuracy
+#### Scope Accuracy
 
 How often initial scope estimates match later findings.
 
-### Unknown Rate
+#### Unknown Rate
 
 Number of major questions that remain unanswered because of evidence limitations.
 
@@ -2287,7 +2287,7 @@ Metrics should improve investigation quality rather than encourage premature clo
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Incident analysis transforms raw evidence into an understanding of what happened.
 
@@ -2337,41 +2337,41 @@ The most important principles are:
 
 ---
 
-# References
+## References
 
-### NIST
+#### NIST
 
 **Computer Security Incident Handling Guide — SP 800-61**
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 
-### CISA
+#### CISA
 
 https://www.cisa.gov/
 
-### FIRST
+#### FIRST
 
 https://www.first.org/
 
-### SANS
+#### SANS
 
 https://www.sans.org/
 
-### CIS Controls
+#### CIS Controls
 
 https://www.cisecurity.org/controls
 
-### Sigma
+#### Sigma
 
 https://sigmahq.io/
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 A security incident rarely presents itself as a complete story.
 

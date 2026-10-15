@@ -1,12 +1,12 @@
 # 07-Web-Servers.md
 
-# Part 1 — Introduction to Web Servers, Architecture, Request Processing, Server Components, and Enterprise Web Server Fundamentals
+## Part 1 — Introduction to Web Servers, Architecture, Request Processing, Server Components, and Enterprise Web Server Fundamentals
 
 > **"A web server is the backbone of every web application. It receives client requests, processes them, serves resources, communicates with applications, and enforces critical security controls before any webpage reaches the user's browser."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Whenever you open a website:
 
@@ -65,7 +65,7 @@ The **Web Server** is the first system that receives the request.
 
 ---
 
-# What is a Web Server?
+## What is a Web Server?
 
 A **Web Server** is software (and sometimes the underlying hardware) that accepts HTTP/HTTPS requests, processes them or forwards them to applications, and returns responses to clients.
 
@@ -82,7 +82,7 @@ A web server can:
 
 ---
 
-# Physical vs Software Web Server
+## Physical vs Software Web Server
 
 The term **Web Server** may refer to:
 
@@ -118,7 +118,7 @@ Website
 
 ---
 
-# Static Content
+## Static Content
 
 Static content is delivered exactly as stored.
 
@@ -155,7 +155,7 @@ No application logic is required.
 
 ---
 
-# Dynamic Content
+## Dynamic Content
 
 Dynamic content is generated at runtime.
 
@@ -191,7 +191,7 @@ The response depends on user data or application logic.
 
 ---
 
-# Static vs Dynamic Content
+## Static vs Dynamic Content
 
 | Static Content | Dynamic Content |
 |----------------|-----------------|
@@ -203,7 +203,7 @@ The response depends on user data or application logic.
 
 ---
 
-# Responsibilities of a Web Server
+## Responsibilities of a Web Server
 
 A modern web server performs many tasks.
 
@@ -249,7 +249,7 @@ Response
 
 ---
 
-# High-Level Web Server Architecture
+## High-Level Web Server Architecture
 
 ```
                 Browser
@@ -270,7 +270,7 @@ Response
 
 ---
 
-# Request Lifecycle
+## Request Lifecycle
 
 A request follows several stages.
 
@@ -320,7 +320,7 @@ Browser
 
 ---
 
-# Web Server Components
+## Web Server Components
 
 A web server contains multiple modules.
 
@@ -350,7 +350,7 @@ Web Server
 
 ---
 
-# Listener
+## Listener
 
 The Listener waits for incoming network connections.
 
@@ -374,7 +374,7 @@ When a client connects, the request enters the processing pipeline.
 
 ---
 
-# Request Parser
+## Request Parser
 
 The parser extracts information from incoming requests.
 
@@ -399,7 +399,7 @@ The parser identifies:
 
 ---
 
-# Routing
+## Routing
 
 The web server determines where the request should go.
 
@@ -425,7 +425,7 @@ Routing rules define this behavior.
 
 ---
 
-# Static File Handler
+## Static File Handler
 
 Handles requests for stored files.
 
@@ -453,7 +453,7 @@ Static file delivery is highly optimized.
 
 ---
 
-# Reverse Proxy
+## Reverse Proxy
 
 Modern web servers commonly act as reverse proxies.
 
@@ -477,7 +477,7 @@ The client communicates only with the web server.
 
 ---
 
-# Why Reverse Proxy?
+## Why Reverse Proxy?
 
 Advantages include:
 
@@ -490,7 +490,7 @@ Advantages include:
 
 ---
 
-# Reverse Proxy Example
+## Reverse Proxy Example
 
 ```
 Internet
@@ -510,7 +510,7 @@ Requests are distributed among backend servers.
 
 ---
 
-# Compression Module
+## Compression Module
 
 Responses can be compressed before transmission.
 
@@ -540,7 +540,7 @@ Common algorithms include Gzip and Brotli.
 
 ---
 
-# Caching
+## Caching
 
 Frequently requested resources may be cached.
 
@@ -580,7 +580,7 @@ Caching improves scalability and reduces backend load.
 
 ---
 
-# Logging Module
+## Logging Module
 
 Every request can be recorded.
 
@@ -604,7 +604,7 @@ Logs support:
 
 ---
 
-# Popular Web Servers
+## Popular Web Servers
 
 | Web Server | Description |
 |-------------|-------------|
@@ -616,7 +616,7 @@ Logs support:
 
 ---
 
-# Apache HTTP Server
+## Apache HTTP Server
 
 Characteristics:
 
@@ -634,7 +634,7 @@ Common uses:
 
 ---
 
-# Nginx
+## Nginx
 
 Characteristics:
 
@@ -653,7 +653,7 @@ Widely used for:
 
 ---
 
-# Microsoft IIS
+## Microsoft IIS
 
 Runs on Windows Server.
 
@@ -666,7 +666,7 @@ Common enterprise integrations:
 
 ---
 
-# Caddy
+## Caddy
 
 Known for:
 
@@ -679,7 +679,7 @@ Popular for smaller deployments and development environments.
 
 ---
 
-# Enterprise Deployment Example
+## Enterprise Deployment Example
 
 ```
 Internet
@@ -709,7 +709,7 @@ Multiple web servers improve availability and scalability.
 
 ---
 
-# Web Server Security Responsibilities
+## Web Server Security Responsibilities
 
 A web server is the first line of defense.
 
@@ -725,7 +725,7 @@ Responsibilities include:
 
 ---
 
-# Real Enterprise Example
+## Real Enterprise Example
 
 An employee opens:
 
@@ -779,7 +779,7 @@ The web server validates and routes every request before it reaches the applicat
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Install a web server such as **Nginx** or **Apache** in a lab environment.
 
@@ -793,7 +793,7 @@ Practice:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a Web Server?
 2. What is the difference between static and dynamic content?
@@ -808,7 +808,7 @@ Practice:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Keep web server software updated.
 - Disable unnecessary modules.
@@ -821,7 +821,7 @@ Practice:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Exposing backend application servers directly to the Internet.
 - Running outdated web server software.
@@ -832,7 +832,7 @@ Practice:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A web server receives, processes, and responds to HTTP/HTTPS requests.
 - Modern web servers handle routing, caching, compression, logging, TLS termination, and reverse proxying.
@@ -1800,15 +1800,15 @@ Using Nginx or Apache:
 - Load balancing distributes traffic, improves availability, and supports enterprise-scale deployments.
 
 ```
-# 07-Web-Servers.md
+## 07-Web-Servers.md
 
-# Part 3 — Web Server Configuration, Security Headers, TLS Configuration, Authentication, Logging, Caching, Compression, and Enterprise Hardening
+## Part 3 — Web Server Configuration, Security Headers, TLS Configuration, Authentication, Logging, Caching, Compression, and Enterprise Hardening
 
 > **"A properly configured web server is one of the strongest security controls in a web application. Most successful attacks exploit misconfigurations rather than flaws in the web server software itself."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1827,7 +1827,7 @@ After completing this part, you will understand:
 
 ---
 
-# Why Configuration Matters
+## Why Configuration Matters
 
 A web server's security depends heavily on its configuration.
 
@@ -1851,7 +1851,7 @@ Even fully patched software can become vulnerable due to insecure settings.
 
 ---
 
-# Typical Configuration File
+## Typical Configuration File
 
 Every web server loads configuration during startup.
 
@@ -1885,7 +1885,7 @@ Configuration commonly defines:
 
 ---
 
-# Configuration Hierarchy
+## Configuration Hierarchy
 
 ```
 Global Configuration
@@ -1907,7 +1907,7 @@ More specific rules generally override broader settings.
 
 ---
 
-# Example Configuration Structure
+## Example Configuration Structure
 
 ```
 Main Configuration
@@ -1929,7 +1929,7 @@ Main Configuration
 
 ---
 
-# Listening Configuration
+## Listening Configuration
 
 The server defines which ports it accepts connections on.
 
@@ -1953,7 +1953,7 @@ Production environments should prioritize HTTPS.
 
 ---
 
-# Document Root
+## Document Root
 
 The Document Root is the directory containing public web content.
 
@@ -1979,7 +1979,7 @@ Only intended public files should be placed here.
 
 ---
 
-# Virtual Host Configuration
+## Virtual Host Configuration
 
 Each website can have independent settings.
 
@@ -2007,7 +2007,7 @@ Each virtual host may define:
 
 ---
 
-# Default Virtual Host
+## Default Virtual Host
 
 If no matching host is found:
 
@@ -2027,7 +2027,7 @@ The default site should not expose unnecessary information.
 
 ---
 
-# Directory Configuration
+## Directory Configuration
 
 Servers apply rules to directories.
 
@@ -2052,7 +2052,7 @@ Access Decision
 
 ---
 
-# Directory Listing
+## Directory Listing
 
 Unsafe configuration:
 
@@ -2076,7 +2076,7 @@ This may reveal sensitive files.
 
 ---
 
-# Secure Directory Listing
+## Secure Directory Listing
 
 Preferred behavior:
 
@@ -2100,7 +2100,7 @@ Disable directory indexing unless explicitly required.
 
 ---
 
-# File Permissions
+## File Permissions
 
 The web server should have only the permissions it requires.
 
@@ -2132,7 +2132,7 @@ Follow the principle of least privilege.
 
 ---
 
-# MIME Types
+## MIME Types
 
 The server identifies file types using MIME headers.
 
@@ -2151,7 +2151,7 @@ Correct MIME types help browsers process content safely.
 
 ---
 
-# TLS Configuration
+## TLS Configuration
 
 HTTPS requires proper TLS configuration.
 
@@ -2180,7 +2180,7 @@ Key configuration items include:
 
 ---
 
-# Strong TLS Configuration
+## Strong TLS Configuration
 
 Recommended practices:
 
@@ -2192,7 +2192,7 @@ Recommended practices:
 
 ---
 
-# Certificate Configuration
+## Certificate Configuration
 
 The server loads:
 
@@ -2212,7 +2212,7 @@ Protect private keys from unauthorized access.
 
 ---
 
-# HTTP Security Headers
+## HTTP Security Headers
 
 Security headers instruct browsers how to behave.
 
@@ -2234,7 +2234,7 @@ Browser Protection
 
 ---
 
-# Common Security Headers
+## Common Security Headers
 
 | Header | Purpose |
 |----------|----------|
@@ -2247,7 +2247,7 @@ Browser Protection
 
 ---
 
-# Strict-Transport-Security (HSTS)
+## Strict-Transport-Security (HSTS)
 
 Purpose:
 
@@ -2271,7 +2271,7 @@ HSTS helps prevent protocol downgrade attacks.
 
 ---
 
-# Content Security Policy (CSP)
+## Content Security Policy (CSP)
 
 CSP limits what content a browser may load.
 
@@ -2299,7 +2299,7 @@ Benefits:
 
 ---
 
-# X-Content-Type-Options
+## X-Content-Type-Options
 
 Purpose:
 
@@ -2319,7 +2319,7 @@ This reduces certain content interpretation risks.
 
 ---
 
-# Referrer-Policy
+## Referrer-Policy
 
 Controls what information is shared when navigating.
 
@@ -2339,7 +2339,7 @@ This helps reduce unnecessary information disclosure.
 
 ---
 
-# Permissions-Policy
+## Permissions-Policy
 
 Restricts browser capabilities.
 
@@ -2355,7 +2355,7 @@ Only approved features are available to webpages.
 
 ---
 
-# Authentication
+## Authentication
 
 Web servers can enforce authentication before requests reach applications.
 
@@ -2369,7 +2369,7 @@ Common methods:
 
 ---
 
-# Basic Authentication
+## Basic Authentication
 
 ```
 Browser
@@ -2391,7 +2391,7 @@ Basic Authentication should only be used over HTTPS.
 
 ---
 
-# Client Certificate Authentication
+## Client Certificate Authentication
 
 ```
 Browser
@@ -2417,7 +2417,7 @@ Common in:
 
 ---
 
-# Access Control
+## Access Control
 
 Servers can restrict access based on:
 
@@ -2446,7 +2446,7 @@ Denied
 
 ---
 
-# IP-Based Restrictions
+## IP-Based Restrictions
 
 Example:
 
@@ -2462,7 +2462,7 @@ External requests are denied before reaching the application.
 
 ---
 
-# Logging
+## Logging
 
 Every request should be logged.
 
@@ -2479,7 +2479,7 @@ Typical fields:
 
 ---
 
-# Access Log Example
+## Access Log Example
 
 ```
 Client
@@ -2505,7 +2505,7 @@ Access logs support:
 
 ---
 
-# Error Logs
+## Error Logs
 
 Error logs record operational issues.
 
@@ -2521,7 +2521,7 @@ These logs are essential during troubleshooting.
 
 ---
 
-# Compression
+## Compression
 
 Responses can be compressed.
 
@@ -2550,7 +2550,7 @@ Compression improves page load times and reduces bandwidth consumption.
 
 ---
 
-# Caching
+## Caching
 
 The server may cache frequently requested content.
 
@@ -2586,7 +2586,7 @@ Proper cache configuration improves scalability.
 
 ---
 
-# Cache-Control Headers
+## Cache-Control Headers
 
 Servers communicate caching behavior using headers.
 
@@ -2602,7 +2602,7 @@ These influence browser and intermediary caching.
 
 ---
 
-# Enterprise Hardening Checklist
+## Enterprise Hardening Checklist
 
 ```
 ✓ HTTPS Enabled
@@ -2628,7 +2628,7 @@ These influence browser and intermediary caching.
 
 ---
 
-# Enterprise Deployment Example
+## Enterprise Deployment Example
 
 ```
 Internet
@@ -2666,7 +2666,7 @@ Security is applied in multiple layers before requests reach backend systems.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 In a lab environment:
 
@@ -2682,7 +2682,7 @@ In a lab environment:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is web server configuration critical?
 2. What is a Document Root?
@@ -2697,7 +2697,7 @@ In a lab environment:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enable HTTPS for all production services.
 - Use modern TLS configurations.
@@ -2711,7 +2711,7 @@ In a lab environment:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Leaving directory indexing enabled.
 - Using weak or outdated TLS configurations.
@@ -2723,7 +2723,7 @@ In a lab environment:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure web server configuration is essential for protecting web applications.
 - Virtual hosts, document roots, TLS, logging, compression, and caching are core server features.
@@ -2731,15 +2731,15 @@ In a lab environment:
 - Strong authentication and access controls reduce unauthorized access.
 - Enterprise hardening combines secure configuration, monitoring, logging, and layered defenses.
 
-# 07-Web-Servers.md
+## 07-Web-Servers.md
 
-# Part 4 — Web Server Security, Common Attacks, Monitoring, Incident Response, Enterprise Best Practices, and Chapter Summary
+## Part 4 — Web Server Security, Common Attacks, Monitoring, Incident Response, Enterprise Best Practices, and Chapter Summary
 
 > **"A web server is one of the most exposed components of an organization's infrastructure. Proper monitoring, hardening, and incident response are essential because even a small misconfiguration can become an entry point for attackers."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2756,7 +2756,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Web Server Attack Surface
+## Web Server Attack Surface
 
 Everything exposed by a web server becomes part of its attack surface.
 
@@ -2792,7 +2792,7 @@ Every exposed component should be secured and monitored.
 
 ---
 
-# Common Web Server Attacks
+## Common Web Server Attacks
 
 Attackers frequently target:
 
@@ -2809,7 +2809,7 @@ Attackers frequently target:
 
 ---
 
-# Information Disclosure
+## Information Disclosure
 
 Poor configuration may expose sensitive information.
 
@@ -2839,7 +2839,7 @@ Information disclosure often assists attackers during reconnaissance.
 
 ---
 
-# Example
+## Example
 
 Unsafe response:
 
@@ -2855,7 +2855,7 @@ An attacker may use version information to identify publicly known vulnerabiliti
 
 ---
 
-# Directory Traversal
+## Directory Traversal
 
 Improper path validation may allow attackers to access unintended files.
 
@@ -2877,7 +2877,7 @@ Proper input validation and path normalization help prevent this class of issue.
 
 ---
 
-# Default Files
+## Default Files
 
 Administrators sometimes forget to remove:
 
@@ -2897,7 +2897,7 @@ Attackers actively search for such files.
 
 ---
 
-# Default Credentials
+## Default Credentials
 
 Some services are deployed with:
 
@@ -2921,7 +2921,7 @@ Always change default credentials before production deployment.
 
 ---
 
-# File Upload Abuse
+## File Upload Abuse
 
 Applications allowing uploads may be abused if validation is weak.
 
@@ -2942,7 +2942,7 @@ Servers should validate:
 
 ---
 
-# HTTP Flood Attack
+## HTTP Flood Attack
 
 A large number of legitimate-looking HTTP requests overwhelm the server.
 
@@ -2966,7 +2966,7 @@ This is a common Layer 7 Denial-of-Service technique.
 
 ---
 
-# Slow HTTP Attack
+## Slow HTTP Attack
 
 Instead of sending many requests:
 
@@ -2994,7 +2994,7 @@ Servers should use appropriate connection and request timeouts.
 
 ---
 
-# Brute Force Attack
+## Brute Force Attack
 
 Attackers repeatedly attempt authentication.
 
@@ -3019,7 +3019,7 @@ Mitigations include:
 
 ---
 
-# Server Fingerprinting
+## Server Fingerprinting
 
 Attackers identify technologies in use.
 
@@ -3049,7 +3049,7 @@ Reducing unnecessary version disclosure can make reconnaissance more difficult.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Continuous monitoring is essential.
 
@@ -3066,7 +3066,7 @@ Monitor:
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Web Server
@@ -3096,7 +3096,7 @@ Centralized logging enables efficient analysis and investigation.
 
 ---
 
-# Access Log Analysis
+## Access Log Analysis
 
 Security teams review:
 
@@ -3128,7 +3128,7 @@ Patterns may indicate scanning or attack activity.
 
 ---
 
-# Suspicious Indicators
+## Suspicious Indicators
 
 Examples include:
 
@@ -3166,7 +3166,7 @@ Possible DoS Attack
 
 ---
 
-# Web Server Metrics
+## Web Server Metrics
 
 Important operational metrics:
 
@@ -3183,7 +3183,7 @@ Important operational metrics:
 
 ---
 
-# Incident Response Workflow
+## Incident Response Workflow
 
 ```
 Alert
@@ -3219,7 +3219,7 @@ Post-Incident Review
 
 ---
 
-# Log Preservation
+## Log Preservation
 
 During investigations:
 
@@ -3251,7 +3251,7 @@ Avoid modifying evidence during collection.
 
 ---
 
-# Indicators of Compromise (IOCs)
+## Indicators of Compromise (IOCs)
 
 Examples:
 
@@ -3265,7 +3265,7 @@ Examples:
 
 ---
 
-# Enterprise Web Server Architecture
+## Enterprise Web Server Architecture
 
 ```
 Internet
@@ -3311,7 +3311,7 @@ This layered architecture improves both resilience and security.
 
 ---
 
-# Web Server Hardening Checklist
+## Web Server Hardening Checklist
 
 ```
 ✓ HTTPS Everywhere
@@ -3345,7 +3345,7 @@ This layered architecture improves both resilience and security.
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Maintain regular backups of:
 
@@ -3360,7 +3360,7 @@ Backups should be encrypted, tested periodically, and stored securely.
 
 ---
 
-# High Availability
+## High Availability
 
 Production services should avoid single points of failure.
 
@@ -3386,7 +3386,7 @@ If one server becomes unavailable, traffic is redirected to healthy servers.
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 Website Down
@@ -3428,7 +3428,7 @@ A structured approach reduces troubleshooting time.
 
 ---
 
-# Real Enterprise Example
+## Real Enterprise Example
 
 An e-commerce platform experiences a sudden increase in traffic.
 
@@ -3480,7 +3480,7 @@ Attack Blocked
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 In a controlled lab environment:
 
@@ -3496,7 +3496,7 @@ In a controlled lab environment:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a web server attack surface?
 2. What is server fingerprinting?
@@ -3511,7 +3511,7 @@ In a controlled lab environment:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Keep web server software and operating systems fully updated.
 - Minimize exposed services and remove unused modules.
@@ -3524,7 +3524,7 @@ In a controlled lab environment:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Leaving default credentials unchanged.
 - Publishing backup or configuration files in web-accessible directories.
@@ -3536,7 +3536,7 @@ In a controlled lab environment:
 
 ---
 
-# Quick Revision
+## Quick Revision
 
 ```
 Browser
@@ -3618,7 +3618,7 @@ SOC
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3631,6 +3631,3 @@ In this chapter, you learned:
 - Common web server attacks, monitoring strategies, incident response workflows, and troubleshooting techniques.
 
 A strong understanding of web servers is essential for web developers, DevOps engineers, system administrators, penetration testers, SOC analysts, and cybersecurity professionals because every web application ultimately depends on secure and reliable web server infrastructure.
-
-
-```

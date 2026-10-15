@@ -1,10 +1,10 @@
 # 15-Active-Directory-Certificate-Services-(AD-CS).md
 
-# Part 1 — Introduction to Active Directory Certificate Services (AD CS), PKI Fundamentals and Enterprise Architecture
+## Part 1 — Introduction to Active Directory Certificate Services (AD CS), PKI Fundamentals and Enterprise Architecture
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -22,7 +22,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Modern enterprises rely heavily on encryption and digital identity.
 
@@ -54,7 +54,7 @@ In Windows enterprise environments, certificates are managed using:
 
 ---
 
-# What is AD CS?
+## What is AD CS?
 
 Active Directory Certificate Services (AD CS) is a Windows Server role that enables organizations to build and manage a **Public Key Infrastructure (PKI)**.
 
@@ -78,7 +78,7 @@ AD CS provides trusted digital identities for:
 
 ---
 
-# What is PKI?
+## What is PKI?
 
 PKI stands for:
 
@@ -98,7 +98,7 @@ that enables secure digital communication and identity verification.
 
 ---
 
-# Why is PKI Needed?
+## Why is PKI Needed?
 
 Without PKI:
 
@@ -143,7 +143,7 @@ PKI establishes trust between communicating parties.
 
 ---
 
-# Real-World Analogy
+## Real-World Analogy
 
 Imagine applying for a passport.
 
@@ -187,7 +187,7 @@ The certificate proves the server's identity.
 
 ---
 
-# Public Key Cryptography
+## Public Key Cryptography
 
 PKI relies on **asymmetric cryptography**.
 
@@ -203,7 +203,7 @@ Public Key
 
 ---
 
-# Private Key
+## Private Key
 
 Characteristics:
 
@@ -230,7 +230,7 @@ Only the owner should possess the private key.
 
 ---
 
-# Public Key
+## Public Key
 
 Characteristics:
 
@@ -258,7 +258,7 @@ Available to Everyone
 
 ---
 
-# Public Key Pair
+## Public Key Pair
 
 ```
           Key Pair
@@ -276,7 +276,7 @@ The security of PKI depends primarily on protecting the private key.
 
 ---
 
-# What is a Digital Certificate?
+## What is a Digital Certificate?
 
 A digital certificate is an electronic document that binds an identity to a public key.
 
@@ -293,7 +293,7 @@ It typically contains:
 
 ---
 
-# Simplified Certificate Structure
+## Simplified Certificate Structure
 
 ```
 Certificate
@@ -317,7 +317,7 @@ Certificate
 
 ---
 
-# Certificate Authority (CA)
+## Certificate Authority (CA)
 
 A Certificate Authority is a trusted entity that:
 
@@ -331,7 +331,7 @@ Think of the CA as a trusted passport office for digital identities.
 
 ---
 
-# Certificate Issuance Process
+## Certificate Issuance Process
 
 ```
 Server
@@ -363,7 +363,7 @@ Server Installs Certificate
 
 ---
 
-# Root Certificate Authority
+## Root Certificate Authority
 
 The **Root CA** is the highest trust anchor in a PKI hierarchy.
 
@@ -392,7 +392,7 @@ Characteristics:
 
 ---
 
-# Why Keep the Root CA Offline?
+## Why Keep the Root CA Offline?
 
 If the Root CA is compromised:
 
@@ -404,7 +404,7 @@ An offline Root CA reduces the exposure of the most trusted signing authority.
 
 ---
 
-# Subordinate (Issuing) CA
+## Subordinate (Issuing) CA
 
 Instead of issuing certificates directly from the Root CA,
 
@@ -426,7 +426,7 @@ The Subordinate CA performs day-to-day certificate issuance.
 
 ---
 
-# Enterprise PKI Hierarchy
+## Enterprise PKI Hierarchy
 
 ```
              Offline Root CA
@@ -452,7 +452,7 @@ This layered approach improves both security and operational flexibility.
 
 ---
 
-# Types of Certificates
+## Types of Certificates
 
 Common enterprise certificates include:
 
@@ -470,7 +470,7 @@ Each certificate type is designed for a specific purpose.
 
 ---
 
-# Certificate Lifecycle
+## Certificate Lifecycle
 
 Certificates follow a lifecycle.
 
@@ -510,7 +510,7 @@ Proper lifecycle management is essential for maintaining trust.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -539,7 +539,7 @@ AD CS is used to issue certificates for:
 
 ---
 
-# Common Uses of AD CS
+## Common Uses of AD CS
 
 AD CS supports:
 
@@ -555,7 +555,7 @@ AD CS supports:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Digital certificates establish trust.
 
@@ -576,13 +576,13 @@ Security teams should:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore certificate management on a Windows computer.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -598,7 +598,7 @@ Review:
 
 ---
 
-### Step 2
+#### Step 2
 
 Inspect a certificate.
 
@@ -612,7 +612,7 @@ Observe:
 
 ---
 
-### Step 3
+#### Step 3
 
 Open:
 
@@ -624,7 +624,7 @@ Review user certificates.
 
 ---
 
-### Step 4
+#### Step 4
 
 Compare:
 
@@ -635,45 +635,45 @@ Document the differences.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is AD CS?
+#### Q1: What is AD CS?
 
 **Answer:** Active Directory Certificate Services is a Windows Server role that provides Public Key Infrastructure (PKI) services, including issuing and managing digital certificates.
 
 ---
 
-### Q2: What is PKI?
+#### Q2: What is PKI?
 
 **Answer:** Public Key Infrastructure is the framework of technologies, policies, and procedures used to manage digital certificates and public key cryptography.
 
 ---
 
-### Q3: What is the role of a Certificate Authority?
+#### Q3: What is the role of a Certificate Authority?
 
 **Answer:** A Certificate Authority verifies identities and issues, signs, renews, and revokes digital certificates.
 
 ---
 
-### Q4: Why is an offline Root CA recommended?
+#### Q4: Why is an offline Root CA recommended?
 
 **Answer:** It minimizes exposure of the most trusted signing authority, reducing the risk of compromise.
 
 ---
 
-### Q5: What is the difference between a Root CA and a Subordinate CA?
+#### Q5: What is the difference between a Root CA and a Subordinate CA?
 
 **Answer:** The Root CA is the trust anchor that signs subordinate CAs, while the Subordinate (Issuing) CA performs routine certificate issuance.
 
 ---
 
-### Q6: Why is protecting the private key important?
+#### Q6: Why is protecting the private key important?
 
 **Answer:** The private key is the foundation of certificate security. If it is compromised, attackers may impersonate the certificate owner or misuse the associated identity.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Keep the Root CA offline whenever practical.
 - Use dedicated Issuing CAs for daily operations.
@@ -685,7 +685,7 @@ Document the differences.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Using the Root CA for everyday certificate issuance.
 - Allowing private keys to be exported without necessity.
@@ -696,7 +696,7 @@ Document the differences.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - AD CS provides enterprise Public Key Infrastructure services.
 - PKI establishes digital trust using certificates and asymmetric cryptography.
@@ -706,13 +706,13 @@ Document the differences.
 
 ---
 
-# 15-Active-Directory-Certificate-Services-(AD-CS).md
+## 15-Active-Directory-Certificate-Services-(AD-CS).md
 
-# Part 2 — Certificate Templates, Enrollment, Auto Enrollment, CRL, AIA and Enterprise Certificate Management
+## Part 2 — Certificate Templates, Enrollment, Auto Enrollment, CRL, AIA and Enterprise Certificate Management
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -730,7 +730,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 In Part 1, we learned:
 
@@ -745,7 +745,7 @@ Now we will explore **how certificates are actually issued and managed** in an e
 
 ---
 
-# What is Certificate Enrollment?
+## What is Certificate Enrollment?
 
 Certificate Enrollment is the process through which a user, computer, or service obtains a digital certificate from a Certificate Authority.
 
@@ -759,7 +759,7 @@ The process includes:
 
 ---
 
-# Certificate Enrollment Workflow
+## Certificate Enrollment Workflow
 
 ```
 User / Computer
@@ -803,7 +803,7 @@ Certificate Installed
 
 ---
 
-# Certificate Request
+## Certificate Request
 
 Before a certificate is issued, the client generates:
 
@@ -821,7 +821,7 @@ The private key remains securely stored on the client.
 
 ---
 
-# Certificate Signing Request (CSR)
+## Certificate Signing Request (CSR)
 
 A CSR typically contains:
 
@@ -836,7 +836,7 @@ The CSR does **not** contain the private key.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A new web server is deployed.
 
@@ -868,7 +868,7 @@ Enable HTTPS
 
 ---
 
-# What are Certificate Templates?
+## What are Certificate Templates?
 
 Certificate Templates define:
 
@@ -885,7 +885,7 @@ Templates provide standardized certificate configurations across the enterprise.
 
 ---
 
-# Why Templates are Important
+## Why Templates are Important
 
 Without templates:
 
@@ -909,7 +909,7 @@ Templates improve consistency and reduce administrative errors.
 
 ---
 
-# Common Certificate Templates
+## Common Certificate Templates
 
 | Template | Purpose |
 |-----------|----------|
@@ -924,7 +924,7 @@ Templates improve consistency and reduce administrative errors.
 
 ---
 
-# Template Components
+## Template Components
 
 A template defines:
 
@@ -950,7 +950,7 @@ Certificate Template
 
 ---
 
-# Certificate Enrollment Permissions
+## Certificate Enrollment Permissions
 
 Templates specify who may:
 
@@ -982,7 +982,7 @@ Permissions should follow the Principle of Least Privilege.
 
 ---
 
-# Manual Enrollment
+## Manual Enrollment
 
 In manual enrollment:
 
@@ -1011,7 +1011,7 @@ Suitable for:
 
 ---
 
-# Automatic Enrollment
+## Automatic Enrollment
 
 Automatic Enrollment (Auto Enrollment) allows Windows computers and users to receive certificates automatically.
 
@@ -1035,7 +1035,7 @@ This greatly simplifies certificate management in large environments.
 
 ---
 
-# Auto Enrollment Requirements
+## Auto Enrollment Requirements
 
 Auto Enrollment typically requires:
 
@@ -1047,7 +1047,7 @@ Auto Enrollment typically requires:
 
 ---
 
-# Auto Enrollment Workflow
+## Auto Enrollment Workflow
 
 ```
 User Logs In
@@ -1085,7 +1085,7 @@ Installed Automatically
 
 ---
 
-# Benefits of Auto Enrollment
+## Benefits of Auto Enrollment
 
 - Eliminates manual certificate requests
 - Reduces administrative effort
@@ -1095,7 +1095,7 @@ Installed Automatically
 
 ---
 
-# Certificate Renewal
+## Certificate Renewal
 
 Certificates have expiration dates.
 
@@ -1121,7 +1121,7 @@ Timely renewal prevents service interruptions.
 
 ---
 
-# Certificate Revocation
+## Certificate Revocation
 
 Sometimes a certificate must be invalidated before it expires.
 
@@ -1137,7 +1137,7 @@ In such cases, the CA revokes the certificate.
 
 ---
 
-# Certificate Revocation Workflow
+## Certificate Revocation Workflow
 
 ```
 Certificate Compromised
@@ -1163,7 +1163,7 @@ Revocation ensures compromised certificates are no longer trusted.
 
 ---
 
-# Certificate Revocation List (CRL)
+## Certificate Revocation List (CRL)
 
 A Certificate Revocation List is a signed list of revoked certificates published by the Certificate Authority.
 
@@ -1191,7 +1191,7 @@ Reject Certificate
 
 ---
 
-# CRL Contents
+## CRL Contents
 
 A CRL typically includes:
 
@@ -1203,7 +1203,7 @@ A CRL typically includes:
 
 ---
 
-# CRL Distribution Point (CDP)
+## CRL Distribution Point (CDP)
 
 Clients need to know where the CRL is located.
 
@@ -1233,7 +1233,7 @@ A highly available CDP is essential for reliable certificate validation.
 
 ---
 
-# Authority Information Access (AIA)
+## Authority Information Access (AIA)
 
 Authority Information Access tells clients where they can obtain information about the issuing Certificate Authority.
 
@@ -1262,7 +1262,7 @@ Build Trust Chain
 
 ---
 
-# Online Certificate Status Protocol (OCSP)
+## Online Certificate Status Protocol (OCSP)
 
 Instead of downloading an entire CRL,
 
@@ -1292,7 +1292,7 @@ OCSP provides faster revocation checking than downloading large CRLs.
 
 ---
 
-# CRL vs OCSP
+## CRL vs OCSP
 
 | Feature | CRL | OCSP |
 |----------|-----|------|
@@ -1304,7 +1304,7 @@ OCSP provides faster revocation checking than downloading large CRLs.
 
 ---
 
-# Certificate Stores
+## Certificate Stores
 
 Windows maintains certificates in logical stores.
 
@@ -1326,7 +1326,7 @@ Different stores serve different trust purposes.
 
 ---
 
-# User vs Computer Certificate Stores
+## User vs Computer Certificate Stores
 
 | Store | Used For |
 |--------|----------|
@@ -1337,7 +1337,7 @@ Applications use the appropriate store depending on the certificate type.
 
 ---
 
-# Enterprise Certificate Lifecycle
+## Enterprise Certificate Lifecycle
 
 ```
 Template Created
@@ -1377,7 +1377,7 @@ Archived
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Organization:
 
@@ -1402,7 +1402,7 @@ Implementation:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Certificate management directly affects enterprise security.
 
@@ -1420,13 +1420,13 @@ Improper certificate management can lead to unauthorized access or service outag
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore certificate templates and certificate stores.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -1438,7 +1438,7 @@ Review available certificate templates.
 
 ---
 
-### Step 2
+#### Step 2
 
 Inspect a template.
 
@@ -1451,7 +1451,7 @@ Observe:
 
 ---
 
-### Step 3
+#### Step 3
 
 Open:
 
@@ -1467,7 +1467,7 @@ Review:
 
 ---
 
-### Step 4
+#### Step 4
 
 Identify a certificate.
 
@@ -1481,7 +1481,7 @@ Document:
 
 ---
 
-### Step 5
+#### Step 5
 
 Compare:
 
@@ -1492,45 +1492,45 @@ Record differences.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is a Certificate Template?
+#### Q1: What is a Certificate Template?
 
 **Answer:** A predefined configuration that controls how certificates are issued, including permissions, validity, key usage, and enrollment settings.
 
 ---
 
-### Q2: What is Auto Enrollment?
+#### Q2: What is Auto Enrollment?
 
 **Answer:** A feature that automatically enrolls eligible users and computers for certificates using Active Directory, Group Policy, and Enterprise CAs.
 
 ---
 
-### Q3: Why is a CSR required?
+#### Q3: Why is a CSR required?
 
 **Answer:** It securely submits the public key and identity information to the Certificate Authority while keeping the private key on the client.
 
 ---
 
-### Q4: What is a CRL?
+#### Q4: What is a CRL?
 
 **Answer:** A digitally signed list of revoked certificates published by a Certificate Authority.
 
 ---
 
-### Q5: What is the purpose of AIA?
+#### Q5: What is the purpose of AIA?
 
 **Answer:** AIA provides information that helps clients locate the issuing CA certificate and build a certificate trust chain.
 
 ---
 
-### Q6: How does OCSP differ from a CRL?
+#### Q6: How does OCSP differ from a CRL?
 
 **Answer:** OCSP provides real-time certificate status for an individual certificate, whereas a CRL is a periodically published list of revoked certificates.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use Enterprise CAs with certificate templates.
 - Enable Auto Enrollment for eligible users and computers.
@@ -1542,7 +1542,7 @@ Record differences.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Granting Auto Enrollment permissions too broadly.
 - Forgetting to renew certificates before expiration.
@@ -1553,7 +1553,7 @@ Record differences.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Certificate Templates standardize certificate issuance.
 - Auto Enrollment simplifies large-scale certificate deployment.
@@ -1563,13 +1563,13 @@ Record differences.
 
 ---
 
-# 15-Active-Directory-Certificate-Services-(AD-CS).md
+## 15-Active-Directory-Certificate-Services-(AD-CS).md
 
-# Part 3 — Certificate Validation, Certificate Chains, EKU, Key Usage, HSM, NDES, CEP/CES and Enterprise PKI Security
+## Part 3 — Certificate Validation, Certificate Chains, EKU, Key Usage, HSM, NDES, CEP/CES and Enterprise PKI Security
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1589,7 +1589,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 In the previous parts, we learned:
 
@@ -1607,7 +1607,7 @@ Now we will study **how certificates are validated**, how Windows determines whe
 
 ---
 
-# Certificate Validation
+## Certificate Validation
 
 When a client receives a certificate,
 
@@ -1639,7 +1639,7 @@ Secure Connection
 
 ---
 
-# Certificate Validation Process
+## Certificate Validation Process
 
 Windows typically verifies:
 
@@ -1655,7 +1655,7 @@ Only after these checks succeed is the certificate trusted.
 
 ---
 
-# Certificate Validation Workflow
+## Certificate Validation Workflow
 
 ```
 Certificate Received
@@ -1699,7 +1699,7 @@ Certificate Trusted
 
 ---
 
-# Certificate Chain
+## Certificate Chain
 
 Certificates form a hierarchy.
 
@@ -1725,7 +1725,7 @@ Every certificate must ultimately trace back to a trusted Root CA.
 
 ---
 
-# Chain of Trust
+## Chain of Trust
 
 ```
 Root CA
@@ -1751,7 +1751,7 @@ Trust flows from the Root CA down to the end-entity certificate.
 
 ---
 
-# Why Certificate Chains Matter
+## Why Certificate Chains Matter
 
 Suppose a web server presents:
 
@@ -1791,7 +1791,7 @@ validation fails.
 
 ---
 
-# Root Certificate Store
+## Root Certificate Store
 
 Windows maintains a store of trusted Root CAs.
 
@@ -1808,7 +1808,7 @@ Only certificates chaining to a trusted root are considered valid.
 
 ---
 
-# Intermediate Certificates
+## Intermediate Certificates
 
 Most enterprise deployments use Intermediate (Subordinate) CAs.
 
@@ -1833,7 +1833,7 @@ Advantages:
 
 ---
 
-# Certificate Path Example
+## Certificate Path Example
 
 ```
 Client
@@ -1859,7 +1859,7 @@ Trusted
 
 ---
 
-# Key Usage (KU)
+## Key Usage (KU)
 
 A certificate contains a **Key Usage** extension that specifies how its key may be used.
 
@@ -1875,7 +1875,7 @@ This prevents certificates from being used for unintended purposes.
 
 ---
 
-# Example
+## Example
 
 A CA certificate may include:
 
@@ -1897,7 +1897,7 @@ Different certificate types require different key usages.
 
 ---
 
-# Enhanced Key Usage (EKU)
+## Enhanced Key Usage (EKU)
 
 EKU provides more detailed information about a certificate's intended purpose.
 
@@ -1914,7 +1914,7 @@ Examples include:
 
 ---
 
-# Why EKU Matters
+## Why EKU Matters
 
 Suppose a Code Signing certificate is presented during HTTPS.
 
@@ -1940,7 +1940,7 @@ but not for that purpose.
 
 ---
 
-# Subject Alternative Name (SAN)
+## Subject Alternative Name (SAN)
 
 Modern certificates often include multiple identities.
 
@@ -1966,7 +1966,7 @@ SAN allows one certificate to identify multiple DNS names.
 
 ---
 
-# SAN Example
+## SAN Example
 
 A certificate may contain:
 
@@ -1988,7 +1988,7 @@ Applications check SAN during certificate validation.
 
 ---
 
-# Certificate Thumbprint
+## Certificate Thumbprint
 
 Every certificate has a unique fingerprint called a:
 
@@ -2007,7 +2007,7 @@ Administrators frequently compare thumbprints to confirm certificate identity.
 
 ---
 
-# Hardware Security Module (HSM)
+## Hardware Security Module (HSM)
 
 A Hardware Security Module is a specialized device used to protect cryptographic keys.
 
@@ -2029,7 +2029,7 @@ The key remains protected inside dedicated hardware.
 
 ---
 
-# Benefits of HSM
+## Benefits of HSM
 
 - Strong physical protection
 - Tamper resistance
@@ -2041,7 +2041,7 @@ High-security organizations commonly protect CA private keys using HSMs.
 
 ---
 
-# Network Device Enrollment Service (NDES)
+## Network Device Enrollment Service (NDES)
 
 Network devices often cannot perform standard Active Directory enrollment.
 
@@ -2072,7 +2072,7 @@ Certificate Issued
 
 ---
 
-# Certificate Enrollment Policy (CEP)
+## Certificate Enrollment Policy (CEP)
 
 CEP allows clients to discover:
 
@@ -2100,7 +2100,7 @@ Select Template
 
 ---
 
-# Certificate Enrollment Web Service (CES)
+## Certificate Enrollment Web Service (CES)
 
 CES enables certificate enrollment over web services.
 
@@ -2129,7 +2129,7 @@ Enterprise CA
 
 ---
 
-# Enterprise PKI Architecture
+## Enterprise PKI Architecture
 
 ```
                  Offline Root CA
@@ -2171,7 +2171,7 @@ CES
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -2199,7 +2199,7 @@ Certificates are used for:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Certificate trust is only as strong as the PKI protecting it.
 
@@ -2218,13 +2218,13 @@ Compromise of a Certificate Authority can affect trust across the enterprise.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore certificate chains and certificate validation.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -2234,7 +2234,7 @@ certlm.msc
 
 ---
 
-### Step 2
+#### Step 2
 
 Open a Web Server or Domain Controller certificate.
 
@@ -2247,7 +2247,7 @@ Review:
 
 ---
 
-### Step 3
+#### Step 3
 
 Select:
 
@@ -2271,7 +2271,7 @@ End Certificate
 
 ---
 
-### Step 4
+#### Step 4
 
 Inspect:
 
@@ -2283,51 +2283,51 @@ Document their values.
 
 ---
 
-### Step 5
+#### Step 5
 
 Identify the Trusted Root Certification Authority used for the certificate chain.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is a Certificate Chain?
+#### Q1: What is a Certificate Chain?
 
 **Answer:** A sequence of certificates linking an end-entity certificate to a trusted Root Certificate Authority.
 
 ---
 
-### Q2: Why is the Root CA important?
+#### Q2: Why is the Root CA important?
 
 **Answer:** It serves as the trust anchor for the entire PKI hierarchy.
 
 ---
 
-### Q3: What is the difference between Key Usage and Enhanced Key Usage?
+#### Q3: What is the difference between Key Usage and Enhanced Key Usage?
 
 **Answer:** Key Usage defines permitted cryptographic operations, while Enhanced Key Usage specifies the intended application or purpose of the certificate.
 
 ---
 
-### Q4: What is the purpose of the Subject Alternative Name (SAN)?
+#### Q4: What is the purpose of the Subject Alternative Name (SAN)?
 
 **Answer:** SAN allows a certificate to represent multiple identities, such as multiple DNS names.
 
 ---
 
-### Q5: Why are HSMs used?
+#### Q5: Why are HSMs used?
 
 **Answer:** HSMs securely generate and protect cryptographic keys, especially the private keys of Certificate Authorities.
 
 ---
 
-### Q6: What is NDES used for?
+#### Q6: What is NDES used for?
 
 **Answer:** NDES enables network devices, such as routers and switches, to obtain certificates from an Enterprise CA.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Keep the Root CA offline whenever practical.
 - Protect CA private keys using HSMs for high-security deployments.
@@ -2339,7 +2339,7 @@ Identify the Trusted Root Certification Authority used for the certificate chain
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting certificates without validating the complete chain.
 - Using certificates for purposes outside their EKU.
@@ -2350,7 +2350,7 @@ Identify the Trusted Root Certification Authority used for the certificate chain
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Certificate validation verifies trust before secure communication begins.
 - Every certificate must chain to a trusted Root CA.
@@ -2361,13 +2361,13 @@ Identify the Trusted Root Certification Authority used for the certificate chain
 
 ---
 
-# 15-Active-Directory-Certificate-Services-(AD-CS).md
+## 15-Active-Directory-Certificate-Services-(AD-CS).md
 
-# Part 4 — AD CS Security, PKI Hardening, Troubleshooting, Enterprise Monitoring and Chapter Summary
+## Part 4 — AD CS Security, PKI Hardening, Troubleshooting, Enterprise Monitoring and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -2384,7 +2384,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Active Directory Certificate Services (AD CS) forms the trust foundation of an enterprise.
 
@@ -2406,7 +2406,7 @@ Therefore, enterprise PKI requires continuous monitoring, strong security contro
 
 ---
 
-# PKI Security Objectives
+## PKI Security Objectives
 
 A secure PKI should provide:
 
@@ -2420,7 +2420,7 @@ These objectives help maintain trust throughout the enterprise.
 
 ---
 
-# Protecting the Certificate Authority
+## Protecting the Certificate Authority
 
 The Certificate Authority is one of the most sensitive systems in Active Directory.
 
@@ -2436,7 +2436,7 @@ Recommended protections include:
 
 ---
 
-# Secure CA Architecture
+## Secure CA Architecture
 
 ```
                  Offline Root CA
@@ -2464,7 +2464,7 @@ The Root CA should remain offline except when administrative operations require 
 
 ---
 
-# Administrative Separation
+## Administrative Separation
 
 Separate administrative responsibilities whenever possible.
 
@@ -2481,7 +2481,7 @@ This reduces the risk of excessive privilege.
 
 ---
 
-# Backup the Certificate Authority
+## Backup the Certificate Authority
 
 Regular backups should include:
 
@@ -2495,7 +2495,7 @@ Without these components, recovering a failed CA can be difficult.
 
 ---
 
-# CA Backup Workflow
+## CA Backup Workflow
 
 ```
 Certificate Authority
@@ -2529,7 +2529,7 @@ Backups should be encrypted and stored securely.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Suppose the Issuing CA fails.
 
@@ -2563,7 +2563,7 @@ Recovery procedures should be tested regularly rather than assumed to work.
 
 ---
 
-# Certificate Expiration Monitoring
+## Certificate Expiration Monitoring
 
 Certificates eventually expire.
 
@@ -2594,7 +2594,7 @@ If certificates are not renewed:
 
 ---
 
-# Revocation Monitoring
+## Revocation Monitoring
 
 Certificates should be revoked immediately when:
 
@@ -2608,7 +2608,7 @@ Prompt revocation helps maintain trust.
 
 ---
 
-# Monitoring CRLs
+## Monitoring CRLs
 
 Certificate Revocation Lists should be monitored for:
 
@@ -2622,7 +2622,7 @@ Clients must be able to retrieve current revocation information.
 
 ---
 
-# Monitoring OCSP
+## Monitoring OCSP
 
 For organizations using OCSP:
 
@@ -2638,7 +2638,7 @@ A non-responsive OCSP service can affect certificate validation.
 
 ---
 
-# Certificate Auditing
+## Certificate Auditing
 
 Regularly review:
 
@@ -2653,7 +2653,7 @@ Auditing helps detect configuration errors and unauthorized activity.
 
 ---
 
-# Enterprise PKI Monitoring
+## Enterprise PKI Monitoring
 
 Typical monitoring architecture:
 
@@ -2689,7 +2689,7 @@ Monitoring should include both operational health and security events.
 
 ---
 
-# Common PKI Problems
+## Common PKI Problems
 
 Administrators often encounter:
 
@@ -2705,7 +2705,7 @@ Administrators often encounter:
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 Certificate Error
@@ -2757,7 +2757,7 @@ Following a structured process helps isolate the root cause efficiently.
 
 ---
 
-# Example: Expired Certificate
+## Example: Expired Certificate
 
 Symptoms:
 
@@ -2785,7 +2785,7 @@ Verify Operation
 
 ---
 
-# Example: Missing Intermediate Certificate
+## Example: Missing Intermediate Certificate
 
 ```
 Client
@@ -2811,7 +2811,7 @@ Install the required intermediate certificate and verify the chain.
 
 ---
 
-# Example: Incorrect SAN
+## Example: Incorrect SAN
 
 A certificate contains:
 
@@ -2839,7 +2839,7 @@ Ensure the certificate includes the required Subject Alternative Names.
 
 ---
 
-# PKI Disaster Recovery Planning
+## PKI Disaster Recovery Planning
 
 A disaster recovery plan should include:
 
@@ -2856,7 +2856,7 @@ Recovery documentation should be tested periodically.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -2889,7 +2889,7 @@ Benefits:
 
 ---
 
-# PKI Hardening Checklist
+## PKI Hardening Checklist
 
 ```
 ✓ Offline Root CA
@@ -2919,7 +2919,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 PKI is a high-value target.
 
@@ -2947,13 +2947,13 @@ A compromised Certificate Authority can undermine trust across the enterprise, m
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review an enterprise PKI deployment.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -2969,7 +2969,7 @@ Review:
 
 ---
 
-### Step 2
+#### Step 2
 
 Open:
 
@@ -2981,7 +2981,7 @@ Review Certificate Services logs.
 
 ---
 
-### Step 3
+#### Step 3
 
 Inspect:
 
@@ -2997,7 +2997,7 @@ Review:
 
 ---
 
-### Step 4
+#### Step 4
 
 Verify:
 
@@ -3009,7 +3009,7 @@ Verify:
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a PKI diagram for your environment showing:
 
@@ -3022,45 +3022,45 @@ Create a PKI diagram for your environment showing:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is an Offline Root CA recommended?
+#### Q1: Why is an Offline Root CA recommended?
 
 **Answer:** It reduces the attack surface by protecting the highest trust anchor from routine network exposure.
 
 ---
 
-### Q2: What should be backed up on a Certificate Authority?
+#### Q2: What should be backed up on a Certificate Authority?
 
 **Answer:** The CA database, private keys, configuration, registry settings, and related documentation.
 
 ---
 
-### Q3: Why is certificate expiration monitoring important?
+#### Q3: Why is certificate expiration monitoring important?
 
 **Answer:** Expired certificates can disrupt secure communications, authentication, and application availability.
 
 ---
 
-### Q4: What should you verify when troubleshooting certificate errors?
+#### Q4: What should you verify when troubleshooting certificate errors?
 
 **Answer:** Expiration, certificate chain, revocation status, EKU, SAN, and relevant event logs.
 
 ---
 
-### Q5: Why is PKI monitoring important?
+#### Q5: Why is PKI monitoring important?
 
 **Answer:** It helps detect operational issues, unauthorized certificate activity, and security incidents before they significantly affect the environment.
 
 ---
 
-### Q6: What is one major risk of a compromised CA?
+#### Q6: What is one major risk of a compromised CA?
 
 **Answer:** Unauthorized certificates could be issued, potentially allowing attackers to impersonate trusted systems and undermine the PKI trust model.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain an offline Root CA.
 - Use dedicated Issuing CAs for operational certificate issuance.
@@ -3074,7 +3074,7 @@ Create a PKI diagram for your environment showing:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Leaving the Root CA online permanently.
 - Failing to back up the CA database and keys.
@@ -3086,7 +3086,7 @@ Create a PKI diagram for your environment showing:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - AD CS provides the foundation of trust for enterprise PKI.
 - Protecting Certificate Authorities is critical to organizational security.
@@ -3096,7 +3096,7 @@ Create a PKI diagram for your environment showing:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3119,13 +3119,13 @@ You now have a comprehensive understanding of how Active Directory Certificate S
 
 ---
 
-# 15-Active-Directory-Certificate-Services-(AD-CS).md
+## 15-Active-Directory-Certificate-Services-(AD-CS).md
 
-# Part 4 — AD CS Security, PKI Hardening, Troubleshooting, Enterprise Monitoring and Chapter Summary
+## Part 4 — AD CS Security, PKI Hardening, Troubleshooting, Enterprise Monitoring and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -3142,7 +3142,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Active Directory Certificate Services (AD CS) forms the trust foundation of an enterprise.
 
@@ -3164,7 +3164,7 @@ Therefore, enterprise PKI requires continuous monitoring, strong security contro
 
 ---
 
-# PKI Security Objectives
+## PKI Security Objectives
 
 A secure PKI should provide:
 
@@ -3178,7 +3178,7 @@ These objectives help maintain trust throughout the enterprise.
 
 ---
 
-# Protecting the Certificate Authority
+## Protecting the Certificate Authority
 
 The Certificate Authority is one of the most sensitive systems in Active Directory.
 
@@ -3194,7 +3194,7 @@ Recommended protections include:
 
 ---
 
-# Secure CA Architecture
+## Secure CA Architecture
 
 ```
                  Offline Root CA
@@ -3222,7 +3222,7 @@ The Root CA should remain offline except when administrative operations require 
 
 ---
 
-# Administrative Separation
+## Administrative Separation
 
 Separate administrative responsibilities whenever possible.
 
@@ -3239,7 +3239,7 @@ This reduces the risk of excessive privilege.
 
 ---
 
-# Backup the Certificate Authority
+## Backup the Certificate Authority
 
 Regular backups should include:
 
@@ -3253,7 +3253,7 @@ Without these components, recovering a failed CA can be difficult.
 
 ---
 
-# CA Backup Workflow
+## CA Backup Workflow
 
 ```
 Certificate Authority
@@ -3287,7 +3287,7 @@ Backups should be encrypted and stored securely.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Suppose the Issuing CA fails.
 
@@ -3321,7 +3321,7 @@ Recovery procedures should be tested regularly rather than assumed to work.
 
 ---
 
-# Certificate Expiration Monitoring
+## Certificate Expiration Monitoring
 
 Certificates eventually expire.
 
@@ -3352,7 +3352,7 @@ If certificates are not renewed:
 
 ---
 
-# Revocation Monitoring
+## Revocation Monitoring
 
 Certificates should be revoked immediately when:
 
@@ -3366,7 +3366,7 @@ Prompt revocation helps maintain trust.
 
 ---
 
-# Monitoring CRLs
+## Monitoring CRLs
 
 Certificate Revocation Lists should be monitored for:
 
@@ -3380,7 +3380,7 @@ Clients must be able to retrieve current revocation information.
 
 ---
 
-# Monitoring OCSP
+## Monitoring OCSP
 
 For organizations using OCSP:
 
@@ -3396,7 +3396,7 @@ A non-responsive OCSP service can affect certificate validation.
 
 ---
 
-# Certificate Auditing
+## Certificate Auditing
 
 Regularly review:
 
@@ -3411,7 +3411,7 @@ Auditing helps detect configuration errors and unauthorized activity.
 
 ---
 
-# Enterprise PKI Monitoring
+## Enterprise PKI Monitoring
 
 Typical monitoring architecture:
 
@@ -3447,7 +3447,7 @@ Monitoring should include both operational health and security events.
 
 ---
 
-# Common PKI Problems
+## Common PKI Problems
 
 Administrators often encounter:
 
@@ -3463,7 +3463,7 @@ Administrators often encounter:
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 Certificate Error
@@ -3515,7 +3515,7 @@ Following a structured process helps isolate the root cause efficiently.
 
 ---
 
-# Example: Expired Certificate
+## Example: Expired Certificate
 
 Symptoms:
 
@@ -3543,7 +3543,7 @@ Verify Operation
 
 ---
 
-# Example: Missing Intermediate Certificate
+## Example: Missing Intermediate Certificate
 
 ```
 Client
@@ -3569,7 +3569,7 @@ Install the required intermediate certificate and verify the chain.
 
 ---
 
-# Example: Incorrect SAN
+## Example: Incorrect SAN
 
 A certificate contains:
 
@@ -3597,7 +3597,7 @@ Ensure the certificate includes the required Subject Alternative Names.
 
 ---
 
-# PKI Disaster Recovery Planning
+## PKI Disaster Recovery Planning
 
 A disaster recovery plan should include:
 
@@ -3614,7 +3614,7 @@ Recovery documentation should be tested periodically.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -3647,7 +3647,7 @@ Benefits:
 
 ---
 
-# PKI Hardening Checklist
+## PKI Hardening Checklist
 
 ```
 ✓ Offline Root CA
@@ -3677,7 +3677,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 PKI is a high-value target.
 
@@ -3705,13 +3705,13 @@ A compromised Certificate Authority can undermine trust across the enterprise, m
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review an enterprise PKI deployment.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -3727,7 +3727,7 @@ Review:
 
 ---
 
-### Step 2
+#### Step 2
 
 Open:
 
@@ -3739,7 +3739,7 @@ Review Certificate Services logs.
 
 ---
 
-### Step 3
+#### Step 3
 
 Inspect:
 
@@ -3755,7 +3755,7 @@ Review:
 
 ---
 
-### Step 4
+#### Step 4
 
 Verify:
 
@@ -3767,7 +3767,7 @@ Verify:
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a PKI diagram for your environment showing:
 
@@ -3780,45 +3780,45 @@ Create a PKI diagram for your environment showing:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is an Offline Root CA recommended?
+#### Q1: Why is an Offline Root CA recommended?
 
 **Answer:** It reduces the attack surface by protecting the highest trust anchor from routine network exposure.
 
 ---
 
-### Q2: What should be backed up on a Certificate Authority?
+#### Q2: What should be backed up on a Certificate Authority?
 
 **Answer:** The CA database, private keys, configuration, registry settings, and related documentation.
 
 ---
 
-### Q3: Why is certificate expiration monitoring important?
+#### Q3: Why is certificate expiration monitoring important?
 
 **Answer:** Expired certificates can disrupt secure communications, authentication, and application availability.
 
 ---
 
-### Q4: What should you verify when troubleshooting certificate errors?
+#### Q4: What should you verify when troubleshooting certificate errors?
 
 **Answer:** Expiration, certificate chain, revocation status, EKU, SAN, and relevant event logs.
 
 ---
 
-### Q5: Why is PKI monitoring important?
+#### Q5: Why is PKI monitoring important?
 
 **Answer:** It helps detect operational issues, unauthorized certificate activity, and security incidents before they significantly affect the environment.
 
 ---
 
-### Q6: What is one major risk of a compromised CA?
+#### Q6: What is one major risk of a compromised CA?
 
 **Answer:** Unauthorized certificates could be issued, potentially allowing attackers to impersonate trusted systems and undermine the PKI trust model.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain an offline Root CA.
 - Use dedicated Issuing CAs for operational certificate issuance.
@@ -3832,7 +3832,7 @@ Create a PKI diagram for your environment showing:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Leaving the Root CA online permanently.
 - Failing to back up the CA database and keys.
@@ -3844,7 +3844,7 @@ Create a PKI diagram for your environment showing:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - AD CS provides the foundation of trust for enterprise PKI.
 - Protecting Certificate Authorities is critical to organizational security.
@@ -3854,7 +3854,7 @@ Create a PKI diagram for your environment showing:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

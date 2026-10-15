@@ -44,7 +44,7 @@ ChaCha20-Poly1305
 
 ---
 
-# 1. What is Symmetric Cryptography?
+## 1. What is Symmetric Cryptography?
 
 Symmetric cryptography uses a shared secret key.
 
@@ -76,7 +76,7 @@ The key must be protected from unauthorized parties.
 
 ---
 
-# 2. Basic Symmetric Encryption Model
+## 2. Basic Symmetric Encryption Model
 
 Let:
 
@@ -109,7 +109,7 @@ for a valid encryption/decryption pair.
 
 ---
 
-# 3. Main Characteristics
+## 3. Main Characteristics
 
 Symmetric cryptography generally provides:
 
@@ -130,7 +130,7 @@ This is known as the **key distribution problem**.
 
 ---
 
-# 4. Symmetric Key Distribution Problem
+## 4. Symmetric Key Distribution Problem
 
 Suppose:
 
@@ -177,7 +177,7 @@ Key management systems
 
 ---
 
-# 5. Symmetric vs Asymmetric Cryptography
+## 5. Symmetric vs Asymmetric Cryptography
 
 | Feature | Symmetric | Asymmetric |
 |---|---|---|
@@ -192,7 +192,7 @@ Modern protocols often combine both.
 
 ---
 
-# 6. Hybrid Encryption
+## 6. Hybrid Encryption
 
 A common architecture is:
 
@@ -216,7 +216,7 @@ For example, TLS can use public-key mechanisms during connection establishment a
 
 ---
 
-# 7. Types of Symmetric Ciphers
+## 7. Types of Symmetric Ciphers
 
 Symmetric cryptography can broadly be divided into:
 
@@ -228,7 +228,7 @@ Stream Ciphers
 
 ---
 
-# 8. Block Cipher
+## 8. Block Cipher
 
 A block cipher processes data in fixed-size blocks.
 
@@ -259,7 +259,7 @@ DES
 
 ---
 
-# 9. Stream Cipher
+## 9. Stream Cipher
 
 A stream cipher encrypts data using a generated keystream.
 
@@ -289,7 +289,7 @@ was widely used but is now considered insecure and should not be used in modern 
 
 ---
 
-# 10. Block Cipher vs Stream Cipher
+## 10. Block Cipher vs Stream Cipher
 
 | Property | Block Cipher | Stream Cipher |
 |---|---|---|
@@ -303,7 +303,7 @@ The distinction can become less rigid in modern constructions, but it remains us
 
 ---
 
-# 11. DES
+## 11. DES
 
 **DES (Data Encryption Standard)** was historically one of the most important symmetric block ciphers.
 
@@ -318,7 +318,7 @@ The original key representation is 64 bits, but 8 bits are used for parity, leav
 
 ---
 
-# 12. DES Structure
+## 12. DES Structure
 
 DES uses a Feistel-style structure with multiple rounds.
 
@@ -340,7 +340,7 @@ DES was once considered secure but is now obsolete.
 
 ---
 
-# 13. Why DES is Insecure
+## 13. Why DES is Insecure
 
 The major problem is its small effective key size:
 
@@ -358,7 +358,7 @@ Do not use DES.
 
 ---
 
-# 14. 3DES
+## 14. 3DES
 
 **Triple DES (3DES)** applies the DES primitive multiple times.
 
@@ -388,7 +388,7 @@ Use AES instead.
 
 ---
 
-# 15. AES
+## 15. AES
 
 **AES (Advanced Encryption Standard)** is one of the most widely used modern symmetric encryption algorithms.
 
@@ -420,7 +420,7 @@ Secure Storage
 
 ---
 
-# 16. AES Variants
+## 16. AES Variants
 
 AES supports three standard key sizes:
 
@@ -440,7 +440,7 @@ regardless of key size.
 
 ---
 
-# 17. AES Rounds
+## 17. AES Rounds
 
 AES uses a different number of rounds depending on key size.
 
@@ -463,7 +463,7 @@ The final round omits MixColumns.
 
 ---
 
-# 18. AES Internal Structure
+## 18. AES Internal Structure
 
 A simplified view:
 
@@ -495,7 +495,7 @@ The exact internal mathematics is more detailed than this conceptual representat
 
 ---
 
-# 19. SubBytes
+## 19. SubBytes
 
 SubBytes applies a nonlinear substitution to each byte using the AES S-box.
 
@@ -517,7 +517,7 @@ Confusion
 
 ---
 
-# 20. ShiftRows
+## 20. ShiftRows
 
 ShiftRows rearranges the bytes in the AES state matrix.
 
@@ -545,7 +545,7 @@ This contributes to diffusion.
 
 ---
 
-# 21. MixColumns
+## 21. MixColumns
 
 MixColumns transforms each column of the AES state using finite-field arithmetic.
 
@@ -563,7 +563,7 @@ This spreads the influence of individual bytes across the state.
 
 ---
 
-# 22. AddRoundKey
+## 22. AddRoundKey
 
 AddRoundKey combines the current state with a round key using XOR.
 
@@ -579,7 +579,7 @@ This introduces secret-key material into each round.
 
 ---
 
-# 23. AES Key Expansion
+## 23. AES Key Expansion
 
 The original AES key is expanded into multiple round keys.
 
@@ -601,7 +601,7 @@ Each round uses the appropriate round key.
 
 ---
 
-# 24. AES Security
+## 24. AES Security
 
 AES is considered secure when:
 
@@ -632,7 +632,7 @@ These are system-level concerns.
 
 ---
 
-# 25. AES Key Size Selection
+## 25. AES Key Size Selection
 
 Common choices:
 
@@ -657,7 +657,7 @@ Long-Term Security Requirements
 
 ---
 
-# 26. Block Cipher Modes of Operation
+## 26. Block Cipher Modes of Operation
 
 A block cipher alone is not normally enough to encrypt arbitrary-length messages safely.
 
@@ -676,7 +676,7 @@ The mode can dramatically affect security.
 
 ---
 
-# 27. ECB Mode
+## 27. ECB Mode
 
 **Electronic Codebook (ECB)** encrypts each block independently.
 
@@ -692,7 +692,7 @@ Identical plaintext blocks produce identical ciphertext blocks.
 
 ---
 
-# 28. ECB Pattern Leakage
+## 28. ECB Pattern Leakage
 
 If:
 
@@ -716,7 +716,7 @@ ECB should generally not be used for encrypting structured data.
 
 ---
 
-# 29. ECB Diagram
+## 29. ECB Diagram
 
 ```text
 Plaintext:
@@ -737,7 +737,7 @@ The repeated structure remains visible.
 
 ---
 
-# 30. CBC Mode
+## 30. CBC Mode
 
 **Cipher Block Chaining (CBC)** chains blocks together.
 
@@ -763,7 +763,7 @@ C2
 
 ---
 
-# 31. CBC Encryption Formula
+## 31. CBC Encryption Formula
 
 For the first block:
 
@@ -791,7 +791,7 @@ Pi = D(K, Ci) XOR C(i-1)
 
 ---
 
-# 32. CBC IV
+## 32. CBC IV
 
 CBC requires an initialization vector.
 
@@ -801,7 +801,7 @@ However, for secure CBC encryption, the IV must be generated according to the se
 
 ---
 
-# 33. CBC Padding
+## 33. CBC Padding
 
 Because AES has:
 
@@ -831,7 +831,7 @@ The exact padding depends on the block size and plaintext length.
 
 ---
 
-# 34. CBC Padding Oracle
+## 34. CBC Padding Oracle
 
 CBC implementations can become vulnerable to **padding oracle attacks** when they expose information about padding validity through distinguishable behavior.
 
@@ -858,7 +858,7 @@ The lesson is:
 
 ---
 
-# 35. CTR Mode
+## 35. CTR Mode
 
 **Counter (CTR) mode** turns a block cipher into a stream-like construction.
 
@@ -879,7 +879,7 @@ Keystream
 
 ---
 
-# 36. CTR Encryption
+## 36. CTR Encryption
 
 For block `i`:
 
@@ -895,7 +895,7 @@ Ciphertext_i = Plaintext_i XOR Keystream_i
 
 ---
 
-# 37. CTR Nonce Reuse
+## 37. CTR Nonce Reuse
 
 Reusing the same nonce/counter combination with the same key is dangerous.
 
@@ -924,7 +924,7 @@ Never reuse a CTR nonce/counter combination with the same key.
 
 ---
 
-# 38. GCM
+## 38. GCM
 
 **Galois/Counter Mode (GCM)** combines:
 
@@ -954,7 +954,7 @@ Authentication of ciphertext and associated data
 
 ---
 
-# 39. AES-GCM
+## 39. AES-GCM
 
 AES-GCM is one of the most widely used modern authenticated-encryption constructions.
 
@@ -976,7 +976,7 @@ Ciphertext + Authentication Tag
 
 ---
 
-# 40. GCM Authentication Tag
+## 40. GCM Authentication Tag
 
 GCM produces an authentication tag.
 
@@ -1002,7 +1002,7 @@ The application should not treat unauthenticated plaintext as trustworthy.
 
 ---
 
-# 41. GCM Nonce Requirements
+## 41. GCM Nonce Requirements
 
 Nonce management is critical.
 
@@ -1018,7 +1018,7 @@ This is one of the most important practical rules when using AES-GCM.
 
 ---
 
-# 42. Associated Authenticated Data
+## 42. Associated Authenticated Data
 
 GCM can authenticate data without encrypting it.
 
@@ -1043,7 +1043,7 @@ AES-GCM ─────┤
 
 ---
 
-# 43. AEAD
+## 43. AEAD
 
 **Authenticated Encryption with Associated Data** combines:
 
@@ -1066,7 +1066,7 @@ AEAD is generally preferred over manually combining separate encryption and auth
 
 ---
 
-# 44. ChaCha20
+## 44. ChaCha20
 
 **ChaCha20** is a modern stream cipher designed by Daniel J. Bernstein.
 
@@ -1082,7 +1082,7 @@ It is designed for high performance and strong security.
 
 ---
 
-# 45. ChaCha20-Poly1305
+## 45. ChaCha20-Poly1305
 
 ChaCha20 is commonly paired with:
 
@@ -1110,7 +1110,7 @@ Authentication
 
 ---
 
-# 46. AES-GCM vs ChaCha20-Poly1305
+## 46. AES-GCM vs ChaCha20-Poly1305
 
 | Feature | AES-GCM | ChaCha20-Poly1305 |
 |---|---|---|
@@ -1126,7 +1126,7 @@ Both are widely used modern AEAD constructions.
 
 ---
 
-# 47. Stream Cipher Key Reuse
+## 47. Stream Cipher Key Reuse
 
 For stream-like encryption:
 
@@ -1150,15 +1150,15 @@ management is essential.
 
 ---
 
-# 48. Initialization Vector vs Nonce
+## 48. Initialization Vector vs Nonce
 
 These terms are related but not always interchangeable.
 
-### IV
+#### IV
 
 An input used to initialize certain cryptographic modes.
 
-### Nonce
+#### Nonce
 
 A value intended to be used once in a particular cryptographic context.
 
@@ -1176,7 +1176,7 @@ Do not assume every IV or nonce follows the same rule.
 
 ---
 
-# 49. Padding
+## 49. Padding
 
 Padding adds extra bytes so plaintext fits the required block size.
 
@@ -1201,7 +1201,7 @@ do not require traditional block-padding because they operate in stream-like/AEA
 
 ---
 
-# 50. PKCS#7 Padding
+## 50. PKCS#7 Padding
 
 For a block size of 16 bytes:
 
@@ -1229,7 +1229,7 @@ a complete padding block may be added:
 
 ---
 
-# 51. Padding Mistakes
+## 51. Padding Mistakes
 
 Common problems include:
 
@@ -1244,7 +1244,7 @@ Using modern AEAD modes avoids many of these issues.
 
 ---
 
-# 52. Encryption Does Not Automatically Mean Authentication
+## 52. Encryption Does Not Automatically Mean Authentication
 
 This is a critical concept.
 
@@ -1276,7 +1276,7 @@ where appropriate.
 
 ---
 
-# 53. Encrypt-then-MAC
+## 53. Encrypt-then-MAC
 
 One historical construction is:
 
@@ -1298,7 +1298,7 @@ However, modern applications should usually use standardized AEAD constructions 
 
 ---
 
-# 54. MAC-then-Encrypt
+## 54. MAC-then-Encrypt
 
 Conceptually:
 
@@ -1318,7 +1318,7 @@ Modern protocol design generally favors robust AEAD constructions.
 
 ---
 
-# 55. Encrypt-and-MAC
+## 55. Encrypt-and-MAC
 
 Conceptually:
 
@@ -1341,7 +1341,7 @@ instead of inventing cryptographic composition.
 
 ---
 
-# 56. Why AEAD is Preferred
+## 56. Why AEAD is Preferred
 
 AEAD provides a well-defined interface:
 
@@ -1375,7 +1375,7 @@ returns plaintext only if authentication succeeds.
 
 ---
 
-# 57. Secure Symmetric Encryption Model
+## 57. Secure Symmetric Encryption Model
 
 A modern conceptual model is:
 
@@ -1399,7 +1399,7 @@ The receiver verifies the tag before accepting the plaintext.
 
 ---
 
-# 58. Key Management
+## 58. Key Management
 
 The encryption algorithm is only one part of the system.
 
@@ -1418,7 +1418,7 @@ A strong algorithm with a leaked key provides no meaningful confidentiality.
 
 ---
 
-# 59. Key Generation
+## 59. Key Generation
 
 Keys should be generated using cryptographically secure randomness.
 
@@ -1434,7 +1434,7 @@ Use a cryptographically secure source provided by the operating system or a trus
 
 ---
 
-# 60. Python Secure Randomness
+## 60. Python Secure Randomness
 
 Python provides:
 
@@ -1450,7 +1450,7 @@ For security-sensitive randomness, use APIs designed for cryptographic purposes.
 
 ---
 
-# 61. AES Key Storage
+## 61. AES Key Storage
 
 Avoid:
 
@@ -1472,7 +1472,7 @@ depending on the environment.
 
 ---
 
-# 62. Key Rotation
+## 62. Key Rotation
 
 Keys should be rotated according to:
 
@@ -1488,7 +1488,7 @@ Rotation should not be treated as a substitute for preventing key compromise.
 
 ---
 
-# 63. Key Compromise
+## 63. Key Compromise
 
 If a symmetric key is compromised:
 
@@ -1518,7 +1518,7 @@ Key separation
 
 ---
 
-# 64. Key Separation
+## 64. Key Separation
 
 Do not unnecessarily use one key for unrelated purposes.
 
@@ -1537,7 +1537,7 @@ This reduces cross-protocol and cross-purpose risks.
 
 ---
 
-# 65. Key Derivation with HKDF
+## 65. Key Derivation with HKDF
 
 A simplified model:
 
@@ -1555,7 +1555,7 @@ This allows applications to derive independent keys for different purposes.
 
 ---
 
-# 66. Data at Rest
+## 66. Data at Rest
 
 Symmetric encryption is commonly used to protect stored data.
 
@@ -1581,7 +1581,7 @@ Storage
 
 ---
 
-# 67. Data in Transit
+## 67. Data in Transit
 
 Symmetric encryption is also used for network traffic.
 
@@ -1600,7 +1600,7 @@ After the TLS handshake establishes appropriate session keys, symmetric AEAD com
 
 ---
 
-# 68. Data in Use
+## 68. Data in Use
 
 Traditional encryption does not automatically protect data while an application is actively processing plaintext.
 
@@ -1627,7 +1627,7 @@ Access Control
 
 ---
 
-# 69. Disk Encryption
+## 69. Disk Encryption
 
 Disk encryption protects data stored on a device.
 
@@ -1653,7 +1653,7 @@ An already-compromised running system
 
 ---
 
-# 70. Database Encryption
+## 70. Database Encryption
 
 Database systems may use:
 
@@ -1669,7 +1669,7 @@ Application-level encryption may provide stronger separation from database admin
 
 ---
 
-# 71. Envelope Encryption
+## 71. Envelope Encryption
 
 Envelope encryption uses a hierarchy of keys.
 
@@ -1693,7 +1693,7 @@ This is widely used in cloud and enterprise key management.
 
 ---
 
-# 72. Envelope Encryption Flow
+## 72. Envelope Encryption Flow
 
 ```text
                 Master / KEK
@@ -1712,7 +1712,7 @@ The master key does not need to directly encrypt every data block.
 
 ---
 
-# 73. Why Envelope Encryption is Useful
+## 73. Why Envelope Encryption is Useful
 
 It allows:
 
@@ -1730,7 +1730,7 @@ A KMS can manage higher-level keys while applications use short-lived or data-sp
 
 ---
 
-# 74. Key Wrapping
+## 74. Key Wrapping
 
 Key wrapping protects one cryptographic key using another key.
 
@@ -1748,7 +1748,7 @@ This is useful when securely storing or transporting encryption keys.
 
 ---
 
-# 75. Cryptographic Context
+## 75. Cryptographic Context
 
 Keys should often be associated with a specific context or purpose.
 
@@ -1765,7 +1765,7 @@ This can help prevent accidental cross-use of keys.
 
 ---
 
-# 76. Nonce Management
+## 76. Nonce Management
 
 Nonce generation must be carefully designed.
 
@@ -1784,9 +1784,9 @@ For high-volume systems, blindly generating random nonces may create collision r
 
 ---
 
-# 77. Deterministic vs Randomized Encryption
+## 77. Deterministic vs Randomized Encryption
 
-### Deterministic
+#### Deterministic
 
 Same plaintext + same key:
 
@@ -1794,7 +1794,7 @@ Same plaintext + same key:
 Same ciphertext
 ```
 
-### Randomized
+#### Randomized
 
 Same plaintext + same key:
 
@@ -1808,7 +1808,7 @@ Modern encryption modes use nonces/IVs to ensure secure separation between encry
 
 ---
 
-# 78. Ciphertext Expansion
+## 78. Ciphertext Expansion
 
 Encryption may add overhead.
 
@@ -1832,7 +1832,7 @@ Applications should account for this when designing storage or network protocols
 
 ---
 
-# 79. Authentication Tag
+## 79. Authentication Tag
 
 An authentication tag allows the recipient to verify that ciphertext and associated authenticated data have not been modified.
 
@@ -1852,7 +1852,7 @@ The tag is not a secret key.
 
 ---
 
-# 80. Tag Verification
+## 80. Tag Verification
 
 A secure application should:
 
@@ -1869,7 +1869,7 @@ It should not expose sensitive information through detailed verification errors.
 
 ---
 
-# 81. Timing Considerations
+## 81. Timing Considerations
 
 Cryptographic comparisons should use appropriate constant-time comparison functions where timing side channels could otherwise expose secret information.
 
@@ -1885,7 +1885,7 @@ for suitable constant-time-style comparison use cases.
 
 ---
 
-# 82. Side-Channel Considerations
+## 82. Side-Channel Considerations
 
 Symmetric cryptographic implementations can leak information through:
 
@@ -1903,7 +1903,7 @@ Application developers should prefer established libraries rather than implement
 
 ---
 
-# 83. Hardware Acceleration
+## 83. Hardware Acceleration
 
 Modern CPUs may provide hardware acceleration for AES.
 
@@ -1925,7 +1925,7 @@ while maintaining strong security when correctly implemented.
 
 ---
 
-# 84. AES-GCM vs CBC
+## 84. AES-GCM vs CBC
 
 | Property | AES-GCM | AES-CBC |
 |---|---|---|
@@ -1941,7 +1941,7 @@ For new application designs, authenticated encryption such as AES-GCM is general
 
 ---
 
-# 85. AES-GCM vs CTR
+## 85. AES-GCM vs CTR
 
 | Property | AES-GCM | AES-CTR |
 |---|---|---|
@@ -1954,7 +1954,7 @@ For new application designs, authenticated encryption such as AES-GCM is general
 
 ---
 
-# 86. AES-GCM vs ChaCha20-Poly1305
+## 86. AES-GCM vs ChaCha20-Poly1305
 
 Both provide:
 
@@ -1979,7 +1979,7 @@ Do not choose based solely on algorithm popularity.
 
 ---
 
-# 87. Secure Symmetric Cryptography Checklist
+## 87. Secure Symmetric Cryptography Checklist
 
 ```text
 ☐ Use modern algorithms
@@ -2000,7 +2000,7 @@ Do not choose based solely on algorithm popularity.
 
 ---
 
-# 88. Common Symmetric Cryptography Mistakes
+## 88. Common Symmetric Cryptography Mistakes
 
 ```text
 ❌ Using ECB
@@ -2019,7 +2019,7 @@ Do not choose based solely on algorithm popularity.
 
 ---
 
-# 89. Passwords as Encryption Keys
+## 89. Passwords as Encryption Keys
 
 Avoid directly using:
 
@@ -2057,7 +2057,7 @@ depending on the application.
 
 ---
 
-# 90. Symmetric Cryptography in TLS
+## 90. Symmetric Cryptography in TLS
 
 A simplified TLS model:
 
@@ -2092,7 +2092,7 @@ Protect Data
 
 ---
 
-# 91. Symmetric Cryptography in VPNs
+## 91. Symmetric Cryptography in VPNs
 
 VPN protocols use cryptographic mechanisms to protect traffic.
 
@@ -2116,7 +2116,7 @@ Symmetric encryption protects the bulk traffic because it is efficient.
 
 ---
 
-# 92. Symmetric Cryptography in Cloud KMS
+## 92. Symmetric Cryptography in Cloud KMS
 
 Cloud platforms commonly use:
 
@@ -2144,7 +2144,7 @@ Store Ciphertext + Encrypted DEK
 
 ---
 
-# 93. Symmetric Cryptography in Application Security
+## 93. Symmetric Cryptography in Application Security
 
 Common use cases:
 
@@ -2170,7 +2170,7 @@ Access Control
 
 ---
 
-# 94. VAPT Testing Checklist
+## 94. VAPT Testing Checklist
 
 When assessing an application:
 
@@ -2190,7 +2190,7 @@ When assessing an application:
 
 ---
 
-# 95. Example VAPT Findings
+## 95. Example VAPT Findings
 
 Potential findings:
 
@@ -2219,7 +2219,7 @@ Impact
 
 ---
 
-# 96. Secure Encryption Architecture
+## 96. Secure Encryption Architecture
 
 A strong modern architecture might look like:
 
@@ -2248,7 +2248,7 @@ A strong modern architecture might look like:
 
 ---
 
-# 97. Production Design Principles
+## 97. Production Design Principles
 
 For production applications:
 
@@ -2276,27 +2276,27 @@ For production applications:
 
 ---
 
-# 98. Common Interview Questions
+## 98. Common Interview Questions
 
-## What is symmetric encryption?
+### What is symmetric encryption?
 
 Symmetric encryption uses shared secret key material for encryption and decryption.
 
 ---
 
-## Why is symmetric encryption faster than asymmetric encryption?
+### Why is symmetric encryption faster than asymmetric encryption?
 
 Symmetric algorithms are generally computationally more efficient and are therefore suitable for encrypting large amounts of data.
 
 ---
 
-## What is AES?
+### What is AES?
 
 AES is a standardized symmetric block cipher with a 128-bit block size and 128-, 192-, or 256-bit keys.
 
 ---
 
-## What is the difference between AES-128 and AES-256?
+### What is the difference between AES-128 and AES-256?
 
 They use different key sizes:
 
@@ -2309,67 +2309,67 @@ Both use a 128-bit block size.
 
 ---
 
-## Why is DES insecure?
+### Why is DES insecure?
 
 Its effective 56-bit key size is too small to resist modern exhaustive key search.
 
 ---
 
-## Why is ECB insecure?
+### Why is ECB insecure?
 
 ECB encrypts blocks independently, so identical plaintext blocks produce identical ciphertext blocks and can reveal structural patterns.
 
 ---
 
-## What is CBC?
+### What is CBC?
 
 CBC is a block cipher mode in which each plaintext block is XORed with the previous ciphertext block before encryption, with an IV used for the first block.
 
 ---
 
-## What is CTR mode?
+### What is CTR mode?
 
 CTR mode uses a block cipher to generate a keystream from nonce/counter values and XORs that keystream with plaintext.
 
 ---
 
-## Why is nonce reuse dangerous?
+### Why is nonce reuse dangerous?
 
 For constructions such as CTR and GCM, nonce reuse can reuse keystream material or undermine authentication, potentially exposing plaintext relationships or compromising security.
 
 ---
 
-## What is GCM?
+### What is GCM?
 
 GCM is an authenticated-encryption mode based on counter-mode encryption and GHASH authentication.
 
 ---
 
-## What is AEAD?
+### What is AEAD?
 
 AEAD provides authenticated encryption with associated data, combining confidentiality and integrity/authentication.
 
 ---
 
-## Why is AES-GCM preferred over AES-CBC for many modern applications?
+### Why is AES-GCM preferred over AES-CBC for many modern applications?
 
 AES-GCM provides authenticated encryption directly, while CBC provides confidentiality but does not inherently authenticate ciphertext.
 
 ---
 
-## What is ChaCha20-Poly1305?
+### What is ChaCha20-Poly1305?
 
 It is an AEAD construction combining the ChaCha20 stream cipher with the Poly1305 authenticator.
 
 ---
 
-## What is envelope encryption?
+### What is envelope encryption?
 
 Envelope encryption encrypts data using a data encryption key and then protects that key using another key, often managed by a KMS or HSM.
 
 ---
 
-# 99. Quick Revision Table
+## 99. Quick Revision Table
 
 | Concept | Key Idea |
 |---|---|
@@ -2395,7 +2395,7 @@ Envelope encryption encrypts data using a data encryption key and then protects 
 
 ---
 
-# 100. Key Takeaways
+## 100. Key Takeaways
 
 The most important concepts from this chapter are:
 
@@ -2439,7 +2439,7 @@ The most important concepts from this chapter are:
 
 ---
 
-# 101. Chapter Summary
+## 101. Chapter Summary
 
 This chapter covered the foundations and practical use of symmetric-key cryptography.
 
@@ -2488,9 +2488,9 @@ The central principle is:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 04 – Asymmetric-Key Cryptography
+### Chapter 04 – Asymmetric-Key Cryptography
 
 The next chapter moves from shared-secret cryptography to **public-key cryptography**.
 

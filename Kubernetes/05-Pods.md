@@ -21,7 +21,7 @@ it always runs inside a Pod.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -40,7 +40,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is a Pod?
+## What is a Pod?
 
 A Pod is a logical wrapper around one or more containers.
 
@@ -67,7 +67,7 @@ Containers inside the same Pod work together.
 
 ---
 
-# Why Kubernetes Uses Pods
+## Why Kubernetes Uses Pods
 
 Suppose Kubernetes managed containers directly.
 
@@ -97,7 +97,7 @@ The Pod becomes the deployment unit.
 
 ---
 
-# Pod Characteristics
+## Pod Characteristics
 
 A Pod:
 
@@ -111,7 +111,7 @@ A Pod:
 
 ---
 
-# Pod Architecture
+## Pod Architecture
 
 ```
                 Pod
@@ -137,7 +137,7 @@ A Pod:
 
 ---
 
-# Single-Container Pod
+## Single-Container Pod
 
 Most Pods contain one container.
 
@@ -167,7 +167,7 @@ Python API
 
 ---
 
-# Multi-Container Pod
+## Multi-Container Pod
 
 Sometimes multiple containers work together.
 
@@ -190,7 +190,7 @@ Both containers:
 
 ---
 
-# Pod Networking
+## Pod Networking
 
 Every Pod receives:
 
@@ -226,7 +226,7 @@ No external networking is required between containers in the same Pod.
 
 ---
 
-# Shared Storage
+## Shared Storage
 
 Containers share mounted volumes.
 
@@ -250,7 +250,7 @@ Both containers can access the same files.
 
 ---
 
-# Pod Lifecycle
+## Pod Lifecycle
 
 ```
 Create
@@ -276,7 +276,7 @@ Every Pod follows this lifecycle.
 
 ---
 
-# Pod Phases
+## Pod Phases
 
 Common Pod phases include:
 
@@ -302,7 +302,7 @@ Unknown
 
 ---
 
-## Pending
+### Pending
 
 The Pod has been accepted by Kubernetes but is not yet running.
 
@@ -314,7 +314,7 @@ Possible reasons:
 
 ---
 
-## Running
+### Running
 
 The Pod is executing.
 
@@ -330,7 +330,7 @@ Application Available
 
 ---
 
-## Succeeded
+### Succeeded
 
 All containers exited successfully.
 
@@ -341,7 +341,7 @@ Common for:
 
 ---
 
-## Failed
+### Failed
 
 One or more containers terminated unsuccessfully.
 
@@ -353,7 +353,7 @@ Possible causes:
 
 ---
 
-## Unknown
+### Unknown
 
 Kubernetes cannot determine Pod state.
 
@@ -361,7 +361,7 @@ Usually caused by communication issues with the node.
 
 ---
 
-# Pod Lifecycle Example
+## Pod Lifecycle Example
 
 ```
 Create YAML
@@ -389,7 +389,7 @@ Deleted
 
 ---
 
-# Pod Scheduling
+## Pod Scheduling
 
 Pods begin in:
 
@@ -427,7 +427,7 @@ Pod Running
 
 ---
 
-# Pod IP Address
+## Pod IP Address
 
 Each Pod gets:
 
@@ -455,7 +455,7 @@ These IPs are generally dynamic and should not be relied upon directly by applic
 
 ---
 
-# Pod Communication
+## Pod Communication
 
 Pods communicate through:
 
@@ -473,7 +473,7 @@ Because Pod IPs can change when Pods are recreated.
 
 ---
 
-# Pod Restart Policy
+## Pod Restart Policy
 
 Supported restart policies:
 
@@ -495,7 +495,7 @@ Restart behavior depends on the workload type and controller.
 
 ---
 
-# Pod YAML Structure
+## Pod YAML Structure
 
 Example:
 
@@ -519,7 +519,7 @@ This is the minimum structure required for a simple Pod.
 
 ---
 
-# Creating a Pod
+## Creating a Pod
 
 ```bash
 kubectl apply -f pod.yaml
@@ -545,7 +545,7 @@ kubectl logs nginx
 
 ---
 
-# Deleting a Pod
+## Deleting a Pod
 
 ```bash
 kubectl delete pod nginx
@@ -555,7 +555,7 @@ If the Pod is managed by a Deployment or ReplicaSet, Kubernetes recreates it aut
 
 ---
 
-# Pod vs Container
+## Pod vs Container
 
 | Pod | Container |
 |------|-----------|
@@ -566,7 +566,7 @@ If the Pod is managed by a Deployment or ReplicaSet, Kubernetes recreates it aut
 
 ---
 
-# Pod vs Virtual Machine
+## Pod vs Virtual Machine
 
 | Pod | Virtual Machine |
 |------|-----------------|
@@ -577,7 +577,7 @@ If the Pod is managed by a Deployment or ReplicaSet, Kubernetes recreates it aut
 
 ---
 
-# Pod Use Cases
+## Pod Use Cases
 
 Pods are used for:
 
@@ -592,7 +592,7 @@ Pods are used for:
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -632,7 +632,7 @@ kubectl exec -it nginx -- /bin/sh
 
 ---
 
-# Pod Architecture Summary
+## Pod Architecture Summary
 
 ```
 Pod
@@ -656,33 +656,33 @@ Application
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Prefer One Main Application Container Per Pod
+#### 1. Prefer One Main Application Container Per Pod
 
 Most workloads should follow the single-container Pod model unless there is a strong architectural reason to colocate containers.
 
 ---
 
-### 2. Treat Pods as Ephemeral
+#### 2. Treat Pods as Ephemeral
 
 Pods are designed to be replaced rather than repaired.
 
 ---
 
-### 3. Do Not Depend on Pod IPs
+#### 3. Do Not Depend on Pod IPs
 
 Use Kubernetes Services for stable network access.
 
 ---
 
-### 4. Keep Pods Small and Focused
+#### 4. Keep Pods Small and Focused
 
 A Pod should have a clear responsibility.
 
 ---
 
-### 5. Use Controllers
+#### 5. Use Controllers
 
 In production, avoid creating standalone Pods for long-running applications.
 
@@ -696,7 +696,7 @@ These controllers manage Pod lifecycle automatically.
 
 ---
 
-## How Pods Work Internally
+### How Pods Work Internally
 
 Although a Pod appears to be a simple Kubernetes object, several Kubernetes components work together behind the scenes to create, monitor, and maintain it.
 
@@ -704,7 +704,7 @@ Understanding this internal workflow is essential for troubleshooting, performan
 
 ---
 
-# Pod Creation Workflow
+## Pod Creation Workflow
 
 Suppose a user creates a Pod.
 
@@ -768,7 +768,7 @@ Every Pod follows this lifecycle.
 
 ---
 
-# Step 1 – User Creates a Pod
+## Step 1 – User Creates a Pod
 
 Example:
 
@@ -797,7 +797,7 @@ kubectl apply -f pod.yaml
 
 ---
 
-# Step 2 – API Server Receives Request
+## Step 2 – API Server Receives Request
 
 Workflow:
 
@@ -818,7 +818,7 @@ The API Server:
 
 ---
 
-# Step 3 – Pod Stored in etcd
+## Step 3 – Pod Stored in etcd
 
 ```
 API Server
@@ -842,7 +842,7 @@ The Pod has not yet been assigned to a worker node.
 
 ---
 
-# Step 4 – Scheduler Detects Pending Pod
+## Step 4 – Scheduler Detects Pending Pod
 
 Initially:
 
@@ -866,7 +866,7 @@ Scheduler evaluates:
 
 ---
 
-# Step 5 – Scheduler Selects Worker Node
+## Step 5 – Scheduler Selects Worker Node
 
 Example:
 
@@ -892,7 +892,7 @@ The Scheduler writes the selected node assignment back to the API Server.
 
 ---
 
-# Step 6 – kubelet Receives Assignment
+## Step 6 – kubelet Receives Assignment
 
 Worker Node:
 
@@ -915,7 +915,7 @@ Responsibilities include:
 
 ---
 
-# Step 7 – Image Pull
+## Step 7 – Image Pull
 
 The kubelet asks the container runtime to pull the image if it is not already available locally.
 
@@ -947,7 +947,7 @@ Use Local Image
 
 ---
 
-# Step 8 – Container Creation
+## Step 8 – Container Creation
 
 The container runtime creates:
 
@@ -967,7 +967,7 @@ The **Pod Sandbox** provides the shared environment for all containers within th
 
 ---
 
-# Step 9 – Networking
+## Step 9 – Networking
 
 Each Pod receives:
 
@@ -999,7 +999,7 @@ localhost
 
 ---
 
-# Step 10 – Storage
+## Step 10 – Storage
 
 If volumes are defined:
 
@@ -1019,7 +1019,7 @@ Every container in the Pod can access the mounted volume according to its config
 
 ---
 
-# Step 11 – Container Startup
+## Step 11 – Container Startup
 
 The runtime executes:
 
@@ -1053,7 +1053,7 @@ Restart (depending on restart policy)
 
 ---
 
-# Step 12 – kubelet Monitoring
+## Step 12 – kubelet Monitoring
 
 The kubelet continuously monitors:
 
@@ -1067,7 +1067,7 @@ Status updates are sent back to the API Server.
 
 ---
 
-# Pod Networking Internals
+## Pod Networking Internals
 
 Inside a Pod:
 
@@ -1099,7 +1099,7 @@ Containers do **not** require separate Services to communicate within the same P
 
 ---
 
-# Pod Storage Internals
+## Pod Storage Internals
 
 Example:
 
@@ -1123,7 +1123,7 @@ Shared storage enables containers to exchange files and data.
 
 ---
 
-# Pod Scheduling Lifecycle
+## Pod Scheduling Lifecycle
 
 ```
 Pod Created
@@ -1159,7 +1159,7 @@ Running
 
 ---
 
-# Pod Deletion
+## Pod Deletion
 
 Command:
 
@@ -1209,7 +1209,7 @@ New Pod Created
 
 ---
 
-# Pod Restart
+## Pod Restart
 
 Suppose the application crashes.
 
@@ -1233,7 +1233,7 @@ The behavior depends on the configured restart policy and the managing controlle
 
 ---
 
-# Pod Lifecycle Diagram
+## Pod Lifecycle Diagram
 
 ```
 Pending
@@ -1261,7 +1261,7 @@ Deleted
 
 ---
 
-# Pod Conditions
+## Pod Conditions
 
 Common Pod conditions include:
 
@@ -1280,9 +1280,9 @@ These conditions help explain where a Pod is in its lifecycle.
 
 ---
 
-# Hands-on Exercise
+## Hands-on Exercise
 
-## Create a Pod
+### Create a Pod
 
 ```yaml
 apiVersion: v1
@@ -1309,7 +1309,7 @@ kubectl apply -f pod.yaml
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 kubectl get pods
@@ -1317,7 +1317,7 @@ kubectl get pods
 
 ---
 
-## Inspect
+### Inspect
 
 ```bash
 kubectl describe pod nginx
@@ -1325,7 +1325,7 @@ kubectl describe pod nginx
 
 ---
 
-## View Logs
+### View Logs
 
 ```bash
 kubectl logs nginx
@@ -1333,7 +1333,7 @@ kubectl logs nginx
 
 ---
 
-## Execute a Command
+### Execute a Command
 
 ```bash
 kubectl exec -it nginx -- /bin/sh
@@ -1343,7 +1343,7 @@ If `/bin/sh` is unavailable in the image, use the appropriate shell provided by 
 
 ---
 
-## Delete
+### Delete
 
 ```bash
 kubectl delete pod nginx
@@ -1351,7 +1351,7 @@ kubectl delete pod nginx
 
 ---
 
-# Useful kubectl Commands
+## Useful kubectl Commands
 
 View Pods:
 
@@ -1397,33 +1397,33 @@ kubectl get pods -w
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Let Controllers Manage Long-Running Pods
+#### 1. Let Controllers Manage Long-Running Pods
 
 Create Deployments instead of standalone Pods for production workloads.
 
 ---
 
-### 2. Keep Images Small
+#### 2. Keep Images Small
 
 Smaller images generally reduce image pull time and improve deployment speed.
 
 ---
 
-### 3. Define Resource Requests and Limits
+#### 3. Define Resource Requests and Limits
 
 This improves scheduling decisions and cluster stability.
 
 ---
 
-### 4. Configure Health Probes
+#### 4. Configure Health Probes
 
 Use readiness, liveness, and startup probes where appropriate to improve reliability.
 
 ---
 
-### 5. Observe Before Acting
+#### 5. Observe Before Acting
 
 When troubleshooting, inspect:
 
@@ -1436,9 +1436,9 @@ before making changes.
 
 ---
 
-# Multi-Container Pods
+## Multi-Container Pods
 
-## Overview
+### Overview
 
 Although most Kubernetes Pods contain a **single container**, Kubernetes allows a Pod to run **multiple containers** that work together as a single unit.
 
@@ -1454,9 +1454,9 @@ A multi-container Pod is useful when containers have a **strong dependency** on 
 
 ---
 
-# Single vs Multi-Container Pods
+## Single vs Multi-Container Pods
 
-## Single-Container Pod
+### Single-Container Pod
 
 ```
 Pod
@@ -1476,7 +1476,7 @@ Most production applications follow this pattern.
 
 ---
 
-## Multi-Container Pod
+### Multi-Container Pod
 
 ```
 Pod
@@ -1506,7 +1506,7 @@ Both containers cooperate to perform one logical task.
 
 ---
 
-# Why Use Multiple Containers?
+## Why Use Multiple Containers?
 
 Typical reasons include:
 
@@ -1520,7 +1520,7 @@ Typical reasons include:
 
 ---
 
-# Shared Network
+## Shared Network
 
 Every container shares:
 
@@ -1550,7 +1550,7 @@ Communication occurs over `localhost` because all containers share the same netw
 
 ---
 
-# Shared Storage
+## Shared Storage
 
 Containers may share volumes.
 
@@ -1590,7 +1590,7 @@ Reads Logs
 
 ---
 
-# Multi-Container Pod YAML
+## Multi-Container Pod YAML
 
 Example:
 
@@ -1624,7 +1624,7 @@ This Pod contains two containers.
 
 ---
 
-# Viewing Containers
+## Viewing Containers
 
 Display Pods:
 
@@ -1642,7 +1642,7 @@ The output lists both containers.
 
 ---
 
-# Viewing Logs
+## Viewing Logs
 
 Specify the container:
 
@@ -1662,7 +1662,7 @@ Without specifying `-c`, Kubernetes cannot determine which container's logs you 
 
 ---
 
-# Executing Commands
+## Executing Commands
 
 Example:
 
@@ -1682,7 +1682,7 @@ Always specify the container name when multiple containers are present.
 
 ---
 
-# Container Startup
+## Container Startup
 
 Containers within a Pod are generally started by Kubernetes as part of the Pod startup process, but applications should **not rely on a particular startup order** between regular containers.
 
@@ -1690,7 +1690,7 @@ If initialization must occur before application containers start, use **Init Con
 
 ---
 
-# Multi-Container Communication
+## Multi-Container Communication
 
 Example:
 
@@ -1724,11 +1724,11 @@ No Kubernetes Service is required for communication within the same Pod.
 
 ---
 
-# Common Multi-Container Patterns
+## Common Multi-Container Patterns
 
 ---
 
-## 1. Sidecar Pattern
+### 1. Sidecar Pattern
 
 A sidecar extends the functionality of the main application.
 
@@ -1753,7 +1753,7 @@ This is the most common multi-container pattern.
 
 ---
 
-## 2. Ambassador Pattern
+### 2. Ambassador Pattern
 
 An ambassador container acts as a local proxy.
 
@@ -1777,7 +1777,7 @@ Examples:
 
 ---
 
-## 3. Adapter Pattern
+### 3. Adapter Pattern
 
 An adapter transforms application output.
 
@@ -1799,7 +1799,7 @@ Example:
 
 ---
 
-# Example Architecture
+## Example Architecture
 
 ```
                  Pod
@@ -1827,7 +1827,7 @@ Example:
 
 ---
 
-# Advantages
+## Advantages
 
 - Shared networking
 - Shared storage
@@ -1838,7 +1838,7 @@ Example:
 
 ---
 
-# Disadvantages
+## Disadvantages
 
 - Containers cannot scale independently.
 - Increased resource sharing complexity.
@@ -1849,9 +1849,9 @@ Use multiple containers only when they represent a single logical workload.
 
 ---
 
-# Hands-on Exercise
+## Hands-on Exercise
 
-## Create a Multi-Container Pod
+### Create a Multi-Container Pod
 
 Example:
 
@@ -1889,7 +1889,7 @@ kubectl apply -f pod.yaml
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 kubectl get pods
@@ -1897,7 +1897,7 @@ kubectl get pods
 
 ---
 
-## Describe
+### Describe
 
 ```bash
 kubectl describe pod demo
@@ -1905,7 +1905,7 @@ kubectl describe pod demo
 
 ---
 
-## Logs
+### Logs
 
 ```bash
 kubectl logs demo \
@@ -1914,7 +1914,7 @@ kubectl logs demo \
 
 ---
 
-## Execute
+### Execute
 
 ```bash
 kubectl exec -it demo \
@@ -1923,7 +1923,7 @@ kubectl exec -it demo \
 
 ---
 
-## Delete
+### Delete
 
 ```bash
 kubectl delete pod demo
@@ -1931,41 +1931,41 @@ kubectl delete pod demo
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Multiple Containers Only When Necessary
+#### 1. Use Multiple Containers Only When Necessary
 
 If containers can operate independently, deploy them in separate Pods.
 
 ---
 
-### 2. Keep One Main Application Container
+#### 2. Keep One Main Application Container
 
 Supporting containers should complement—not replace—the primary application.
 
 ---
 
-### 3. Use Shared Volumes Carefully
+#### 3. Use Shared Volumes Carefully
 
 Only share data that must be accessed by multiple containers.
 
 ---
 
-### 4. Prefer localhost Communication
+#### 4. Prefer localhost Communication
 
 Containers inside the same Pod should communicate over the shared network namespace.
 
 ---
 
-### 5. Avoid Tight Coupling
+#### 5. Avoid Tight Coupling
 
 If two containers require independent scaling, upgrades, or lifecycles, they likely belong in separate Pods.
 
 ---
 
-# Init Containers
+## Init Containers
 
-## Overview
+### Overview
 
 An **Init Container** is a special type of container that runs **before** the regular application containers in a Pod.
 
@@ -1980,7 +1980,7 @@ Init Containers are commonly used to perform setup tasks that must finish before
 
 ---
 
-# Why Init Containers?
+## Why Init Containers?
 
 Many applications require preparation before they can run.
 
@@ -1998,7 +1998,7 @@ Instead of embedding this logic in the application container, Kubernetes allows 
 
 ---
 
-# Pod Startup Sequence
+## Pod Startup Sequence
 
 ```
 Create Pod
@@ -2024,7 +2024,7 @@ Application containers **do not start** until all Init Containers complete succe
 
 ---
 
-# Architecture
+## Architecture
 
 ```
                 Pod
@@ -2050,7 +2050,7 @@ Application containers **do not start** until all Init Containers complete succe
 
 ---
 
-# Execution Order
+## Execution Order
 
 Example:
 
@@ -2082,7 +2082,7 @@ Execution is always sequential.
 
 ---
 
-# Init Container Example
+## Init Container Example
 
 ```yaml
 apiVersion: v1
@@ -2116,7 +2116,7 @@ The application container starts **only after** the `setup` Init Container exits
 
 ---
 
-# Multiple Init Containers
+## Multiple Init Containers
 
 Example:
 
@@ -2151,7 +2151,7 @@ app
 
 ---
 
-# Shared Volumes
+## Shared Volumes
 
 Init Containers commonly prepare shared storage.
 
@@ -2187,7 +2187,7 @@ Application Reads File
 
 ---
 
-# Waiting for Dependencies
+## Waiting for Dependencies
 
 A common pattern is ensuring a dependency is available before starting the application.
 
@@ -2217,7 +2217,7 @@ This improves startup reliability without modifying application code.
 
 ---
 
-# Pod Lifecycle with Init Containers
+## Pod Lifecycle with Init Containers
 
 ```
 Pod Created
@@ -2263,7 +2263,7 @@ Continue
 
 ---
 
-# Viewing Init Containers
+## Viewing Init Containers
 
 Describe the Pod:
 
@@ -2279,7 +2279,7 @@ Output includes:
 
 ---
 
-# Viewing Pod Status
+## Viewing Pod Status
 
 ```bash
 kubectl get pods
@@ -2315,7 +2315,7 @@ Meaning:
 
 ---
 
-# Viewing Logs
+## Viewing Logs
 
 View logs from an Init Container:
 
@@ -2328,7 +2328,7 @@ This is particularly useful when initialization fails.
 
 ---
 
-# Shared Storage Example
+## Shared Storage Example
 
 ```
 Init Container
@@ -2364,7 +2364,7 @@ Mounted by both the Init Container and the application container.
 
 ---
 
-# Restart Behavior
+## Restart Behavior
 
 If an Init Container fails:
 
@@ -2392,7 +2392,7 @@ Only after successful completion do application containers start.
 
 ---
 
-# Init Containers vs Regular Containers
+## Init Containers vs Regular Containers
 
 | Init Container | Regular Container |
 |----------------|-------------------|
@@ -2404,7 +2404,7 @@ Only after successful completion do application containers start.
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
 Init Containers are commonly used for:
 
@@ -2418,9 +2418,9 @@ Init Containers are commonly used for:
 
 ---
 
-# Hands-on Exercise
+## Hands-on Exercise
 
-## Pod with Init Container
+### Pod with Init Container
 
 ```yaml
 apiVersion: v1
@@ -2458,7 +2458,7 @@ kubectl apply -f init.yaml
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 kubectl get pods
@@ -2466,7 +2466,7 @@ kubectl get pods
 
 ---
 
-## Describe
+### Describe
 
 ```bash
 kubectl describe pod init-demo
@@ -2474,7 +2474,7 @@ kubectl describe pod init-demo
 
 ---
 
-## View Init Container Logs
+### View Init Container Logs
 
 ```bash
 kubectl logs init-demo \
@@ -2483,7 +2483,7 @@ kubectl logs init-demo \
 
 ---
 
-## Delete
+### Delete
 
 ```bash
 kubectl delete pod init-demo
@@ -2491,7 +2491,7 @@ kubectl delete pod init-demo
 
 ---
 
-# Advantages
+## Advantages
 
 - Clean separation of initialization logic
 - Improved application portability
@@ -2501,7 +2501,7 @@ kubectl delete pod init-demo
 
 ---
 
-# Limitations
+## Limitations
 
 - Init Containers cannot run alongside application containers.
 - They increase startup time if initialization is lengthy.
@@ -2509,41 +2509,41 @@ kubectl delete pod init-demo
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Keep Init Containers Lightweight
+#### 1. Keep Init Containers Lightweight
 
 Perform only initialization tasks required before application startup.
 
 ---
 
-### 2. Avoid Long-Running Processes
+#### 2. Avoid Long-Running Processes
 
 Init Containers should exit after completing their work.
 
 ---
 
-### 3. Share Data Through Volumes
+#### 3. Share Data Through Volumes
 
 Use shared volumes instead of attempting inter-container communication during initialization.
 
 ---
 
-### 4. Log Initialization Steps
+#### 4. Log Initialization Steps
 
 Meaningful logs simplify troubleshooting when initialization fails.
 
 ---
 
-### 5. Make Initialization Idempotent
+#### 5. Make Initialization Idempotent
 
 Initialization tasks should be safe to retry because Kubernetes may execute them multiple times after failures.
 
 ---
 
-# Health Probes
+## Health Probes
 
-## Overview
+### Overview
 
 Running containers are **not necessarily healthy containers**.
 
@@ -2565,7 +2565,7 @@ These checks improve application reliability, availability, and automated recove
 
 ---
 
-# Why Health Probes?
+## Why Health Probes?
 
 Without probes:
 
@@ -2605,7 +2605,7 @@ Recovery Action
 
 ---
 
-# Types of Health Probes
+## Types of Health Probes
 
 Kubernetes supports three probe types:
 
@@ -2625,9 +2625,9 @@ Each probe has a different responsibility.
 
 ---
 
-# Startup Probe
+## Startup Probe
 
-## Purpose
+### Purpose
 
 Determines whether an application has **finished starting**.
 
@@ -2664,7 +2664,7 @@ Until the Startup Probe succeeds:
 
 ---
 
-# Startup Probe Example
+## Startup Probe Example
 
 ```yaml
 startupProbe:
@@ -2684,9 +2684,9 @@ This allows the application additional time to initialize.
 
 ---
 
-# Readiness Probe
+## Readiness Probe
 
-## Purpose
+### Purpose
 
 Determines whether a Pod is **ready to receive traffic**.
 
@@ -2730,7 +2730,7 @@ The container keeps running, but Kubernetes stops routing new traffic to it thro
 
 ---
 
-# Readiness Probe Example
+## Readiness Probe Example
 
 ```yaml
 readinessProbe:
@@ -2748,9 +2748,9 @@ readinessProbe:
 
 ---
 
-# Liveness Probe
+## Liveness Probe
 
-## Purpose
+### Purpose
 
 Determines whether the application is still functioning.
 
@@ -2780,7 +2780,7 @@ Unlike the Readiness Probe, a failed Liveness Probe causes Kubernetes to restart
 
 ---
 
-# Liveness Probe Example
+## Liveness Probe Example
 
 ```yaml
 livenessProbe:
@@ -2798,7 +2798,7 @@ livenessProbe:
 
 ---
 
-# Probe Comparison
+## Probe Comparison
 
 | Probe | Purpose | Failure Result |
 |--------|---------|----------------|
@@ -2808,7 +2808,7 @@ livenessProbe:
 
 ---
 
-# Probe Lifecycle
+## Probe Lifecycle
 
 ```
 Container Starts
@@ -2848,7 +2848,7 @@ Continue Running
 
 ---
 
-# HTTP Probe
+## HTTP Probe
 
 Uses an HTTP request.
 
@@ -2874,7 +2874,7 @@ Suitable for:
 
 ---
 
-# TCP Probe
+## TCP Probe
 
 Checks whether a TCP port accepts connections.
 
@@ -2896,7 +2896,7 @@ Suitable for:
 
 ---
 
-# Exec Probe
+## Exec Probe
 
 Runs a command inside the container.
 
@@ -2918,7 +2918,7 @@ Useful when application health cannot be determined through HTTP or TCP.
 
 ---
 
-# Probe Timing Parameters
+## Probe Timing Parameters
 
 Common parameters:
 
@@ -2934,7 +2934,7 @@ These values should be tuned according to application behavior.
 
 ---
 
-# Complete Example
+## Complete Example
 
 ```yaml
 containers:
@@ -2972,7 +2972,7 @@ This configuration enables all three probe types.
 
 ---
 
-# Probe Workflow
+## Probe Workflow
 
 ```
 Application Starts
@@ -3004,7 +3004,7 @@ Monitor Continuously
 
 ---
 
-# Viewing Probe Status
+## Viewing Probe Status
 
 Describe the Pod:
 
@@ -3021,7 +3021,7 @@ Look for:
 
 ---
 
-# Troubleshooting Probe Failures
+## Troubleshooting Probe Failures
 
 Useful commands:
 
@@ -3049,9 +3049,9 @@ Restart
 
 ---
 
-# Common Probe Scenarios
+## Common Probe Scenarios
 
-## Slow Startup
+### Slow Startup
 
 ```
 Application
@@ -3075,7 +3075,7 @@ Application Ready
 
 ---
 
-## Temporary Database Outage
+### Temporary Database Outage
 
 ```
 Database Down
@@ -3101,7 +3101,7 @@ The container is not restarted.
 
 ---
 
-## Application Deadlock
+### Application Deadlock
 
 ```
 Application
@@ -3121,7 +3121,7 @@ Restart Container
 
 ---
 
-# Hands-on Exercise
+## Hands-on Exercise
 
 Create a Pod:
 
@@ -3173,33 +3173,33 @@ kubectl describe pod nginx
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Configure Readiness and Liveness Separately
+#### 1. Configure Readiness and Liveness Separately
 
 They solve different operational problems.
 
 ---
 
-### 2. Use Startup Probes for Slow Applications
+#### 2. Use Startup Probes for Slow Applications
 
 Prevent premature restarts during initialization.
 
 ---
 
-### 3. Choose Appropriate Endpoints
+#### 3. Choose Appropriate Endpoints
 
 Health endpoints should verify application health without performing expensive operations.
 
 ---
 
-### 4. Tune Probe Timings
+#### 4. Tune Probe Timings
 
 Avoid values that are too aggressive or too slow.
 
 ---
 
-### 5. Monitor Probe Failures
+#### 5. Monitor Probe Failures
 
 Frequent probe failures often indicate application or infrastructure issues that require investigation.
 

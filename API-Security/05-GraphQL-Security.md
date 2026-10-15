@@ -1,7 +1,6 @@
 # 05 - GraphQL Security
 
-# Introduction
-
+## Introduction
 GraphQL is a modern API query language and runtime developed by Facebook (now Meta) to address many of the limitations of traditional REST APIs.
 
 Unlike REST, where clients interact with multiple endpoints, GraphQL exposes a **single endpoint** that allows clients to request exactly the data they need.
@@ -38,8 +37,7 @@ Understanding GraphQL security is essential for:
 
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 After completing this chapter, you will be able to:
 
 - Understand GraphQL fundamentals.
@@ -55,8 +53,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is GraphQL?
-
+## What is GraphQL?
 GraphQL is both:
 
 - A query language for APIs.
@@ -84,8 +81,7 @@ Clients specify exactly which fields they want.
 
 ---
 
-# Why GraphQL Was Created
-
+## Why GraphQL Was Created
 REST APIs often require multiple requests to gather related information.
 
 Example
@@ -120,8 +116,7 @@ This reduces latency and network overhead.
 
 ---
 
-# REST vs GraphQL
-
+## REST vs GraphQL
 REST
 
 ```
@@ -152,8 +147,7 @@ Exact Data Returned
 
 ---
 
-# GraphQL Architecture
-
+## GraphQL Architecture
 ```
                 Client
 
@@ -188,8 +182,7 @@ The GraphQL server processes queries using **Resolvers**, which retrieve data fr
 
 ---
 
-# GraphQL Components
-
+## GraphQL Components
 A GraphQL system consists of:
 
 - Schema
@@ -205,8 +198,7 @@ Each component contributes to the overall functionality of the API.
 
 ---
 
-# GraphQL Schema
-
+## GraphQL Schema
 The schema defines everything the API supports.
 
 It specifies:
@@ -237,8 +229,7 @@ Schema
 
 ---
 
-# GraphQL Type System
-
+## GraphQL Type System
 GraphQL is strongly typed.
 
 Example
@@ -267,8 +258,7 @@ Applications can also define custom types.
 
 ---
 
-# Object Types
-
+## Object Types
 Objects represent business entities.
 
 Example
@@ -305,8 +295,7 @@ This enables rich relationships between entities.
 
 ---
 
-# GraphQL Queries
-
+## GraphQL Queries
 Queries retrieve data.
 
 Example
@@ -342,8 +331,7 @@ Queries should not modify server data.
 
 ---
 
-# GraphQL Mutations
-
+## GraphQL Mutations
 Mutations modify data.
 
 Example
@@ -386,8 +374,7 @@ in REST.
 
 ---
 
-# GraphQL Subscriptions
-
+## GraphQL Subscriptions
 Subscriptions enable real-time communication.
 
 Architecture
@@ -424,8 +411,7 @@ Subscriptions commonly use WebSockets instead of HTTP polling.
 
 ---
 
-# GraphQL Resolvers
-
+## GraphQL Resolvers
 Resolvers execute business logic.
 
 Example
@@ -460,8 +446,7 @@ Poorly designed resolvers are a common source of GraphQL vulnerabilities.
 
 ---
 
-# GraphQL Execution Flow
-
+## GraphQL Execution Flow
 ```
 Client
 
@@ -498,8 +483,7 @@ Each stage provides opportunities for validation and security enforcement.
 
 ---
 
-# GraphQL Request Example
-
+## GraphQL Request Example
 ```http
 POST /graphql
 
@@ -518,8 +502,7 @@ The entire GraphQL query is transmitted within the request body.
 
 ---
 
-# GraphQL Response Example
-
+## GraphQL Response Example
 ```json
 {
   "data": {
@@ -535,8 +518,7 @@ Unlike REST, GraphQL always returns a response object with structured data and, 
 
 ---
 
-# Advantages of GraphQL
-
+## Advantages of GraphQL
 Benefits include:
 
 - Single endpoint
@@ -553,8 +535,7 @@ These characteristics make GraphQL attractive for modern applications.
 
 ---
 
-# Disadvantages of GraphQL
-
+## Disadvantages of GraphQL
 Challenges include:
 
 - Complex authorization
@@ -570,8 +551,7 @@ Security controls must account for these characteristics.
 
 ---
 
-# Enterprise Example
-
+## Enterprise Example
 A global e-commerce platform exposes a GraphQL API.
 
 ```
@@ -608,8 +588,7 @@ Instead of calling three REST endpoints, the client retrieves all required infor
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - GraphQL is a query language and runtime for APIs.
 - It exposes a single endpoint instead of multiple REST endpoints.
 - Clients request exactly the data they require.
@@ -620,8 +599,7 @@ Instead of calling three REST endpoints, the client retrieves all required infor
 
 ---
 
-# GraphQL Schema Design
-
+## GraphQL Schema Design
 A GraphQL schema defines the complete structure of a GraphQL API.
 
 It specifies:
@@ -644,8 +622,7 @@ Unlike REST, where documentation is often external, GraphQL APIs are largely sel
 
 ---
 
-# GraphQL Schema Architecture
-
+## GraphQL Schema Architecture
 ```
                  GraphQL Schema
 
@@ -668,8 +645,7 @@ Every GraphQL request is validated against the schema before execution.
 
 ---
 
-# Root Types
-
+## Root Types
 Every GraphQL schema begins with one or more root operation types.
 
 ```
@@ -688,8 +664,7 @@ These act as entry points into the GraphQL API.
 
 ---
 
-# Query Root
-
+## Query Root
 The Query root exposes read operations.
 
 Example
@@ -710,8 +685,7 @@ Clients begin all read operations here.
 
 ---
 
-# Mutation Root
-
+## Mutation Root
 Mutations perform write operations.
 
 Example
@@ -732,8 +706,7 @@ Mutations should change application state.
 
 ---
 
-# Subscription Root
-
+## Subscription Root
 Subscriptions provide real-time communication.
 
 Example
@@ -750,8 +723,7 @@ Applications receive updates whenever subscribed events occur.
 
 ---
 
-# Scalar Types
-
+## Scalar Types
 GraphQL includes built-in scalar types.
 
 | Scalar | Description |
@@ -778,8 +750,7 @@ type User {
 
 ---
 
-# Custom Scalars
-
+## Custom Scalars
 Applications often define custom scalar types.
 
 Example
@@ -798,8 +769,7 @@ These improve validation and consistency.
 
 ---
 
-# Input Types
-
+## Input Types
 Input types define structured data accepted by mutations.
 
 Example
@@ -824,8 +794,7 @@ Input types improve readability and validation.
 
 ---
 
-# Object Relationships
-
+## Object Relationships
 GraphQL naturally models relationships.
 
 Example
@@ -862,8 +831,7 @@ Nested relationships reduce the number of requests required.
 
 ---
 
-# One-to-One Relationship
-
+## One-to-One Relationship
 Example
 
 ```
@@ -886,8 +854,7 @@ type User {
 
 ---
 
-# One-to-Many Relationship
-
+## One-to-Many Relationship
 Example
 
 ```
@@ -910,8 +877,7 @@ type Customer {
 
 ---
 
-# Many-to-Many Relationship
-
+## Many-to-Many Relationship
 Example
 
 ```
@@ -930,8 +896,7 @@ GraphQL handles complex relationships efficiently through nested resolvers.
 
 ---
 
-# Nested Queries
-
+## Nested Queries
 One of GraphQL's strengths is retrieving related data in a single request.
 
 Example
@@ -976,8 +941,7 @@ Response
 
 ---
 
-# Deeply Nested Queries
-
+## Deeply Nested Queries
 GraphQL supports deep nesting.
 
 Example
@@ -1006,8 +970,7 @@ While powerful, excessive nesting can create significant performance and securit
 
 ---
 
-# Fragments
-
+## Fragments
 Fragments allow reusable field selections.
 
 Without fragments
@@ -1060,8 +1023,7 @@ Fragments reduce duplication and improve maintainability.
 
 ---
 
-# Variables
-
+## Variables
 Variables make GraphQL queries reusable.
 
 Instead of
@@ -1101,8 +1063,7 @@ Benefits
 
 ---
 
-# Aliases
-
+## Aliases
 Aliases rename returned fields.
 
 Example
@@ -1135,8 +1096,7 @@ Aliases improve readability when querying similar fields multiple times.
 
 ---
 
-# Directives
-
+## Directives
 Directives modify query execution.
 
 Common directives
@@ -1169,8 +1129,7 @@ Directives allow dynamic query behavior.
 
 ---
 
-# Interfaces
-
+## Interfaces
 Interfaces define common fields shared by multiple object types.
 
 Example
@@ -1199,8 +1158,7 @@ Interfaces encourage consistent API design.
 
 ---
 
-# Union Types
-
+## Union Types
 Union types allow fields to return multiple object types.
 
 Example
@@ -1225,8 +1183,7 @@ This is useful for search functionality and polymorphic responses.
 
 ---
 
-# Enums
-
+## Enums
 Enums define a fixed set of allowed values.
 
 Example
@@ -1247,8 +1204,7 @@ Enums reduce invalid inputs and improve validation.
 
 ---
 
-# Schema Validation
-
+## Schema Validation
 Every incoming GraphQL query is validated before execution.
 
 Validation checks include:
@@ -1289,8 +1245,7 @@ Validation prevents many malformed requests from reaching business logic.
 
 ---
 
-# GraphQL Introspection
-
+## GraphQL Introspection
 One of GraphQL's most powerful features is **Introspection**.
 
 It allows clients to discover:
@@ -1318,8 +1273,7 @@ Tools such as GraphiQL, Apollo Studio, and GraphQL Playground rely on introspect
 
 ---
 
-# Benefits of Introspection
-
+## Benefits of Introspection
 Advantages include:
 
 - Self-documenting APIs
@@ -1333,8 +1287,7 @@ For internal APIs, introspection greatly improves developer experience.
 
 ---
 
-# Risks of Introspection
-
+## Risks of Introspection
 If exposed in production, introspection may reveal:
 
 - Hidden object types
@@ -1370,8 +1323,7 @@ Many organizations disable or restrict introspection in production environments.
 
 ---
 
-# Query Execution Process
-
+## Query Execution Process
 ```
 Client
 
@@ -1416,8 +1368,7 @@ Each stage should include appropriate validation and security checks.
 
 ---
 
-# Resolver Execution
-
+## Resolver Execution
 Resolvers are executed for each requested field.
 
 Example
@@ -1446,8 +1397,7 @@ Poorly optimized resolvers can create unnecessary database queries and increase 
 
 ---
 
-# N+1 Query Problem
-
+## N+1 Query Problem
 One of the most common GraphQL performance issues is the **N+1 Query Problem**.
 
 Example
@@ -1490,8 +1440,7 @@ Solutions include:
 
 ---
 
-# Enterprise GraphQL Architecture
-
+## Enterprise GraphQL Architecture
 ```
                  Internet
 
@@ -1552,8 +1501,7 @@ This architecture enables centralized security, routing, and observability while
 
 ---
 
-# Enterprise Best Practices
-
+## Enterprise Best Practices
 Schema Design
 
 - Keep schemas simple and intuitive.
@@ -1580,8 +1528,7 @@ Security
 
 ---
 
-# Common Mistakes
-
+## Common Mistakes
 Avoid:
 
 - Exposing unnecessary fields
@@ -1596,8 +1543,7 @@ Avoid:
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - The GraphQL schema defines the complete API contract.
 - Root types provide entry points for queries, mutations, and subscriptions.
 - Object relationships enable powerful nested data retrieval.
@@ -1607,8 +1553,7 @@ Avoid:
 
 ---
 
-# GraphQL Authentication
-
+## GraphQL Authentication
 Authentication verifies the identity of the client before allowing access to GraphQL resources.
 
 Unlike REST, GraphQL typically exposes a **single endpoint**, meaning authentication must be enforced consistently regardless of which query or mutation is executed.
@@ -1624,8 +1569,7 @@ Common authentication mechanisms include:
 
 ---
 
-# Authentication Flow
-
+## Authentication Flow
 ```
 Client
 
@@ -1668,8 +1612,7 @@ Authentication occurs before GraphQL query execution.
 
 ---
 
-# JWT Authentication
-
+## JWT Authentication
 JWT is the most common authentication mechanism.
 
 Example
@@ -1715,8 +1658,7 @@ JWTs should:
 
 ---
 
-# Session-Based Authentication
-
+## Session-Based Authentication
 Some enterprise applications still use sessions.
 
 ```
@@ -1752,8 +1694,7 @@ Disadvantages
 
 ---
 
-# API Key Authentication
-
+## API Key Authentication
 Applications sometimes authenticate using API keys.
 
 Example
@@ -1776,8 +1717,7 @@ Best practices
 
 ---
 
-# OAuth 2.0
-
+## OAuth 2.0
 OAuth allows delegated authorization.
 
 ```
@@ -1809,8 +1749,7 @@ OAuth is commonly used for:
 
 ---
 
-# Authentication Middleware
-
+## Authentication Middleware
 Authentication should occur before GraphQL execution.
 
 ```
@@ -1845,8 +1784,7 @@ Unauthenticated requests should never reach sensitive business logic.
 
 ---
 
-# Authorization
-
+## Authorization
 Authentication identifies the user.
 
 Authorization determines what that user is allowed to access.
@@ -1877,8 +1815,7 @@ Authorization must be enforced even if authentication succeeds.
 
 ---
 
-# Why Authorization Is Critical
-
+## Why Authorization Is Critical
 Consider this query.
 
 ```graphql
@@ -1908,8 +1845,7 @@ The resolver must determine whether the requester is authorized to access:
 
 ---
 
-# Resolver-Level Authorization
-
+## Resolver-Level Authorization
 Every resolver should verify permissions.
 
 Example
@@ -1938,8 +1874,7 @@ Authorization should not rely solely on frontend controls.
 
 ---
 
-# Role-Based Access Control (RBAC)
-
+## Role-Based Access Control (RBAC)
 Roles determine accessible operations.
 
 Example
@@ -1972,8 +1907,7 @@ Resolvers should verify roles before returning data.
 
 ---
 
-# Attribute-Based Access Control (ABAC)
-
+## Attribute-Based Access Control (ABAC)
 Authorization decisions may depend on multiple attributes.
 
 Examples
@@ -2007,8 +1941,7 @@ ABAC enables fine-grained authorization.
 
 ---
 
-# Field-Level Authorization
-
+## Field-Level Authorization
 One of GraphQL's biggest security challenges is field-level authorization.
 
 Example
@@ -2053,8 +1986,7 @@ Authorization decisions may differ for each field.
 
 ---
 
-# Object-Level Authorization
-
+## Object-Level Authorization
 Users should access only permitted objects.
 
 Example
@@ -2083,8 +2015,7 @@ Resolvers should verify ownership before returning objects.
 
 ---
 
-# Broken Object Level Authorization (BOLA)
-
+## Broken Object Level Authorization (BOLA)
 BOLA is one of the most common GraphQL vulnerabilities.
 
 Example
@@ -2119,8 +2050,7 @@ Proper ownership validation prevents this attack.
 
 ---
 
-# Broken Function Level Authorization (BFLA)
-
+## Broken Function Level Authorization (BFLA)
 Example
 
 ```graphql
@@ -2148,8 +2078,7 @@ Resolvers must verify privileges before executing sensitive operations.
 
 ---
 
-# GraphQL Introspection Security
-
+## GraphQL Introspection Security
 Introspection provides valuable documentation but may expose sensitive information.
 
 Example
@@ -2174,8 +2103,7 @@ Attackers can discover:
 
 ---
 
-# Restricting Introspection
-
+## Restricting Introspection
 Development
 
 ```
@@ -2200,8 +2128,7 @@ Many organizations disable introspection for public production environments whil
 
 ---
 
-# GraphQL Playground Security
-
+## GraphQL Playground Security
 GraphQL Playground, GraphiQL, and Apollo Sandbox provide interactive interfaces.
 
 Benefits
@@ -2222,8 +2149,7 @@ Interactive tools should not be publicly exposed without proper authentication.
 
 ---
 
-# Query Complexity Attacks
-
+## Query Complexity Attacks
 One of GraphQL's unique attack vectors is excessive query complexity.
 
 Example
@@ -2264,8 +2190,7 @@ A single request may trigger hundreds or thousands of backend operations.
 
 ---
 
-# Query Depth Attack
-
+## Query Depth Attack
 Attackers intentionally create deeply nested queries.
 
 Example
@@ -2306,8 +2231,7 @@ This recursive structure can consume excessive CPU and memory.
 
 ---
 
-# Query Cost Analysis
-
+## Query Cost Analysis
 Modern GraphQL servers often calculate query cost before execution.
 
 ```
@@ -2338,8 +2262,7 @@ This prevents expensive operations from overwhelming backend services.
 
 ---
 
-# Query Depth Limiting
-
+## Query Depth Limiting
 Depth limiting prevents excessive nesting.
 
 Example
@@ -2370,8 +2293,7 @@ Depth limits reduce denial-of-service risks.
 
 ---
 
-# Alias Abuse
-
+## Alias Abuse
 Aliases allow multiple requests within a single GraphQL query.
 
 Example
@@ -2398,8 +2320,7 @@ Mitigation
 
 ---
 
-# Batching Attacks
-
+## Batching Attacks
 Some GraphQL servers accept batched requests.
 
 Example
@@ -2427,8 +2348,7 @@ Mitigations
 
 ---
 
-# Denial-of-Service (DoS)
-
+## Denial-of-Service (DoS)
 GraphQL DoS attacks commonly exploit:
 
 - Deep nesting
@@ -2461,8 +2381,7 @@ Resource Exhaustion
 
 ---
 
-# Secure Resolver Design
-
+## Secure Resolver Design
 Resolvers should:
 
 - Validate input
@@ -2478,8 +2397,7 @@ Resolvers represent the primary security boundary within GraphQL.
 
 ---
 
-# Input Validation
-
+## Input Validation
 Validate every argument.
 
 Example
@@ -2503,8 +2421,7 @@ Never trust client-provided input.
 
 ---
 
-# Error Handling
-
+## Error Handling
 Avoid exposing internal implementation details.
 
 Incorrect
@@ -2535,8 +2452,7 @@ Detailed errors should be logged internally rather than returned to clients.
 
 ---
 
-# Logging and Monitoring
-
+## Logging and Monitoring
 Security-relevant events should be logged.
 
 Examples
@@ -2569,8 +2485,7 @@ These logs support detection engineering and incident response.
 
 ---
 
-# Detection Engineering
-
+## Detection Engineering
 Security teams should monitor for:
 
 | Detection | Indicator |
@@ -2588,8 +2503,7 @@ Alerts should be correlated with source IPs, user identities, and application lo
 
 ---
 
-# SIEM Integration
-
+## SIEM Integration
 Typical GraphQL events forwarded to a SIEM include:
 
 ```
@@ -2635,8 +2549,7 @@ Useful detection rules include:
 
 ---
 
-# Enterprise GraphQL Security Architecture
-
+## Enterprise GraphQL Security Architecture
 ```
                   Internet
 
@@ -2703,8 +2616,7 @@ This layered architecture helps protect GraphQL APIs against both application-la
 
 ---
 
-# Enterprise Best Practices
-
+## Enterprise Best Practices
 Authentication
 
 - Enforce HTTPS.
@@ -2735,8 +2647,7 @@ Operations
 
 ---
 
-# Common Security Mistakes
-
+## Common Security Mistakes
 Avoid:
 
 - Missing resolver authorization
@@ -2752,8 +2663,7 @@ Avoid:
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - Authentication verifies identity, while authorization determines permitted actions.
 - Authorization must be enforced at the resolver, object, and field levels.
 - GraphQL introduces unique attack vectors such as introspection abuse, query complexity attacks, deep nesting, alias abuse, and batching attacks.
@@ -2762,8 +2672,7 @@ Avoid:
 
 ---
 
-# GraphQL Vulnerability Assessment
-
+## GraphQL Vulnerability Assessment
 GraphQL security assessments differ significantly from traditional REST API testing.
 
 Because GraphQL exposes a single endpoint with a flexible query language, security testing focuses on:
@@ -2782,8 +2691,7 @@ A comprehensive assessment should evaluate both the GraphQL engine and the under
 
 ---
 
-# GraphQL Security Assessment Methodology
-
+## GraphQL Security Assessment Methodology
 A structured methodology improves consistency and coverage.
 
 ```
@@ -2842,8 +2750,7 @@ Each phase builds upon the previous one.
 
 ---
 
-# Phase 1 – Endpoint Discovery
-
+## Phase 1 – Endpoint Discovery
 Unlike REST APIs with multiple endpoints, GraphQL commonly exposes one endpoint.
 
 Common endpoint names
@@ -2874,8 +2781,7 @@ Discovery methods include:
 
 ---
 
-# Phase 2 – Identify GraphQL
-
+## Phase 2 – Identify GraphQL
 Indicators include:
 
 HTTP Request
@@ -2906,8 +2812,7 @@ This confirms GraphQL support.
 
 ---
 
-# Phase 3 – Introspection Testing
-
+## Phase 3 – Introspection Testing
 Determine whether introspection is enabled.
 
 Example
@@ -2954,8 +2859,7 @@ If enabled, enumerate:
 
 ---
 
-# Phase 4 – Schema Enumeration
-
+## Phase 4 – Schema Enumeration
 Collect information such as:
 
 ```
@@ -2984,8 +2888,7 @@ This helps identify high-value attack targets.
 
 ---
 
-# Phase 5 – Authentication Testing
-
+## Phase 5 – Authentication Testing
 Verify whether authentication is required.
 
 Test:
@@ -3015,8 +2918,7 @@ Unexpected success indicates a serious security issue.
 
 ---
 
-# Phase 6 – Authorization Testing
-
+## Phase 6 – Authorization Testing
 Authorization is one of the highest-risk areas.
 
 Test whether users can access:
@@ -3045,8 +2947,7 @@ Determine whether ownership and permissions are enforced.
 
 ---
 
-# Broken Object Level Authorization (BOLA)
-
+## Broken Object Level Authorization (BOLA)
 GraphQL is susceptible to BOLA when resolvers fail to validate ownership.
 
 Attack
@@ -3081,8 +2982,7 @@ or equivalent authorization error.
 
 ---
 
-# Broken Function Level Authorization (BFLA)
-
+## Broken Function Level Authorization (BFLA)
 Administrative mutations should be restricted.
 
 Example
@@ -3099,8 +2999,7 @@ Verify that only authorized roles can execute sensitive operations.
 
 ---
 
-# Phase 7 – Input Validation Testing
-
+## Phase 7 – Input Validation Testing
 Test every argument.
 
 Examples
@@ -3127,8 +3026,7 @@ Determine whether validation occurs before resolver execution.
 
 ---
 
-# SQL Injection Testing
-
+## SQL Injection Testing
 Resolvers frequently interact with databases.
 
 Test inputs such as:
@@ -3155,8 +3053,7 @@ Never concatenate user input directly into SQL statements.
 
 ---
 
-# NoSQL Injection Testing
-
+## NoSQL Injection Testing
 Applications using MongoDB or similar databases require separate testing.
 
 Example payloads
@@ -3179,8 +3076,7 @@ Verify that resolvers reject malicious operators where appropriate.
 
 ---
 
-# Command Injection Testing
-
+## Command Injection Testing
 Resolvers may invoke operating system commands.
 
 Example payload
@@ -3201,8 +3097,7 @@ Secure applications avoid passing untrusted input to system commands.
 
 ---
 
-# XML Injection
-
+## XML Injection
 If GraphQL integrates with SOAP or XML-based services, test for:
 
 - XML Injection
@@ -3213,8 +3108,7 @@ Input validation and secure XML parser configuration are essential.
 
 ---
 
-# Server-Side Request Forgery (SSRF)
-
+## Server-Side Request Forgery (SSRF)
 Resolvers sometimes fetch external resources.
 
 Example
@@ -3249,8 +3143,7 @@ Validate URLs and restrict outbound network access.
 
 ---
 
-# File Upload Testing
-
+## File Upload Testing
 Some GraphQL implementations support file uploads.
 
 Verify:
@@ -3265,8 +3158,7 @@ Large uploads should be rate limited.
 
 ---
 
-# Query Depth Testing
-
+## Query Depth Testing
 Attempt progressively deeper queries.
 
 Example
@@ -3315,8 +3207,7 @@ Unlimited nesting may lead to resource exhaustion.
 
 ---
 
-# Query Complexity Testing
-
+## Query Complexity Testing
 Construct increasingly expensive queries.
 
 ```
@@ -3343,8 +3234,7 @@ Servers should reject overly expensive requests.
 
 ---
 
-# Alias Abuse Testing
-
+## Alias Abuse Testing
 Aliases can multiply resolver executions.
 
 Example
@@ -3365,8 +3255,7 @@ Attempt large numbers of aliases to determine whether server-side limits exist.
 
 ---
 
-# Batch Request Testing
-
+## Batch Request Testing
 Some implementations allow multiple operations per request.
 
 ```
@@ -3390,8 +3279,7 @@ Verify:
 
 ---
 
-# Denial-of-Service Testing
-
+## Denial-of-Service Testing
 Assess resource exhaustion risks.
 
 Potential vectors
@@ -3408,8 +3296,7 @@ Testing should be carefully controlled in authorized environments to avoid disru
 
 ---
 
-# Business Logic Testing
-
+## Business Logic Testing
 Business logic flaws cannot be detected automatically.
 
 Examples
@@ -3426,8 +3313,7 @@ These issues often have significant business impact.
 
 ---
 
-# Sensitive Data Exposure
-
+## Sensitive Data Exposure
 Review responses for unnecessary information.
 
 Potential exposure
@@ -3445,8 +3331,7 @@ GraphQL responses should contain only the fields requested and authorized.
 
 ---
 
-# Error Handling Assessment
-
+## Error Handling Assessment
 Incorrect
 
 ```json
@@ -3475,8 +3360,7 @@ Detailed diagnostics belong in server logs rather than client responses.
 
 ---
 
-# Logging Assessment
-
+## Logging Assessment
 Verify that the application logs:
 
 Authentication
@@ -3507,8 +3391,7 @@ Comprehensive logging supports incident response and forensic analysis.
 
 ---
 
-# Detection Engineering
-
+## Detection Engineering
 Recommended detection rules
 
 | Detection | Indicator |
@@ -3526,8 +3409,7 @@ Detection rules should be tuned to reduce false positives while identifying genu
 
 ---
 
-# SIEM Integration
-
+## SIEM Integration
 Security telemetry should include:
 
 ```
@@ -3573,8 +3455,7 @@ High-value alerts include:
 
 ---
 
-# Enterprise Assessment Workflow
-
+## Enterprise Assessment Workflow
 ```
 Planning
 
@@ -3623,8 +3504,7 @@ A structured workflow improves repeatability and reporting quality.
 
 ---
 
-# Hands-on Lab 1 – Identify a GraphQL Endpoint
-
+## Hands-on Lab 1 – Identify a GraphQL Endpoint
 Objective
 
 Identify and verify a GraphQL endpoint in an authorized testing environment.
@@ -3644,8 +3524,7 @@ Learning Outcomes
 
 ---
 
-# Hands-on Lab 2 – Authorization Review
-
+## Hands-on Lab 2 – Authorization Review
 Objective
 
 Verify object-level and field-level authorization.
@@ -3665,8 +3544,7 @@ Learning Outcomes
 
 ---
 
-# Hands-on Lab 3 – Query Limit Verification
-
+## Hands-on Lab 3 – Query Limit Verification
 Objective
 
 Confirm that query depth and complexity protections are implemented.
@@ -3686,8 +3564,7 @@ Learning Outcomes
 
 ---
 
-# Common Security Mistakes
-
+## Common Security Mistakes
 Avoid:
 
 - Public introspection in production
@@ -3703,10 +3580,8 @@ Avoid:
 
 ---
 
-# Troubleshooting
-
-## Authentication Failure
-
+## Troubleshooting
+### Authentication Failure
 Possible causes
 
 - Missing token
@@ -3716,8 +3591,7 @@ Possible causes
 
 ---
 
-## Authorization Failure
-
+### Authorization Failure
 Possible causes
 
 - Missing role
@@ -3727,8 +3601,7 @@ Possible causes
 
 ---
 
-## Query Rejected
-
+### Query Rejected
 Possible causes
 
 - Query depth exceeded
@@ -3738,8 +3611,7 @@ Possible causes
 
 ---
 
-## Slow Query Execution
-
+### Slow Query Execution
 Possible causes
 
 - N+1 query problem
@@ -3749,8 +3621,7 @@ Possible causes
 
 ---
 
-## File Upload Failure
-
+### File Upload Failure
 Possible causes
 
 - Unsupported file type
@@ -3760,10 +3631,8 @@ Possible causes
 
 ---
 
-# Interview Questions
-
-## Fundamental
-
+## Interview Questions
+### Fundamental
 1. What is GraphQL?
 2. How does GraphQL differ from REST?
 3. What is a GraphQL schema?
@@ -3777,8 +3646,7 @@ Possible causes
 
 ---
 
-## Intermediate
-
+### Intermediate
 11. How would you secure a GraphQL API?
 12. Explain resolver-level authorization.
 13. How would you prevent alias abuse?
@@ -3792,8 +3660,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
-
+### Scenario-Based
 **Scenario 1**
 
 A production GraphQL API experiences a sudden increase in CPU utilization.
@@ -3821,8 +3688,7 @@ Your organization is deploying a public GraphQL API.
 
 ---
 
-# Chapter Summary
-
+## Chapter Summary
 In this chapter, we examined GraphQL security assessment methodologies and common attack vectors.
 
 We covered:
@@ -3848,8 +3714,7 @@ GraphQL's flexibility offers significant benefits but also introduces unique sec
 
 ---
 
-# Chapter Review
-
+## Chapter Review
 You should now be able to answer:
 
 - How do you identify and assess a GraphQL endpoint?
@@ -3865,17 +3730,14 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
-
-## Standards
-
+## References
+### Standards
 - GraphQL Specification
 - GraphQL over HTTP Specification
 - Protocol Buffers Language Guide (for comparison)
 - RFC 9110 – HTTP Semantics
 
-## Security Standards
-
+### Security Standards
 - OWASP API Security Top 10
 - OWASP ASVS
 - OWASP Web Security Testing Guide (WSTG)
@@ -3883,8 +3745,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - NIST SP 800-53
 - NIST SP 800-204
 
-## Further Reading
-
+### Further Reading
 - GraphQL Best Practices
 - Apollo Security Documentation
 - GraphQL Foundation Documentation
@@ -3892,8 +3753,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
-
+## What's Next?
 ➡️ **Chapter 06 – gRPC Security**
 
 In the next chapter, we will explore:

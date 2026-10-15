@@ -9,20 +9,15 @@ The format follows the principles of **Keep a Changelog** and adheres to **Seman
 
 ---
 
-# [Unreleased]
-
+## [Unreleased]
 ## Added
 
-* Future documentation improvements.
-* New cybersecurity learning modules.
-* Additional practical labs.
-* Expanded detection engineering content.
-* Community contributions.
+* Refined the static handbook reader, collection browsing, and generated full-text search.
+* Added catalogue generation and repository-content validation guidance.
 
 ---
 
-# [1.0.0] - 2026-07-22
-
+## [1.0.0] - 2026-07-22
 ## 🎉 Initial Release
 
 ### Added
@@ -124,8 +119,7 @@ The format follows the principles of **Keep a Changelog** and adheres to **Seman
 
 ---
 
-# Versioning Strategy
-
+## Versioning Strategy
 This repository follows **Semantic Versioning**.
 
 ### Major Releases (X.0.0)
@@ -169,8 +163,7 @@ Examples:
 
 ---
 
-# Release Philosophy
-
+## Release Philosophy
 Every release aims to improve at least one of the following:
 
 * Technical accuracy
@@ -183,8 +176,7 @@ Every release aims to improve at least one of the following:
 
 ---
 
-# Future Roadmap
-
+## Future Roadmap
 Planned improvements include:
 
 * Interactive diagrams
@@ -209,4 +201,4 @@ Planned improvements include:
 
 Thank you to everyone who contributes, reviews, reports issues, and helps improve this repository.
 
-Every contribution—large or small—helps make **Cybersecurity Notes** a better learning resource for the global cybersecurity community.
+Every contribution—large or small—helps make **Security Knowledge Base** a better learning resource for the security community.

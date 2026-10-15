@@ -53,7 +53,7 @@ RBAC
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -91,7 +91,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is a Service Account?
+## What Is a Service Account?
 
 A Service Account is a Kubernetes API identity intended primarily for workloads and automation.
 
@@ -111,7 +111,7 @@ The Pod can then authenticate to the Kubernetes API using that identity when req
 
 ---
 
-# Human User vs Service Account
+## Human User vs Service Account
 
 | Identity | Typical Purpose |
 |---|---|
@@ -142,7 +142,7 @@ Kubernetes API
 
 ---
 
-# Why Service Accounts Exist
+## Why Service Accounts Exist
 
 Applications sometimes need to interact with Kubernetes.
 
@@ -177,7 +177,7 @@ This provides a clearer security boundary.
 
 ---
 
-# Service Account Architecture
+## Service Account Architecture
 
 ```text
                     Pod
@@ -214,7 +214,7 @@ Authorization
 
 ---
 
-# Service Account Identity
+## Service Account Identity
 
 A Service Account identity commonly has the format:
 
@@ -240,7 +240,7 @@ system:serviceaccount
 
 ---
 
-# Creating a Service Account
+## Creating a Service Account
 
 Using `kubectl`:
 
@@ -256,7 +256,7 @@ kubectl get serviceaccount backend-sa
 
 ---
 
-# YAML Definition
+## YAML Definition
 
 ```yaml
 apiVersion: v1
@@ -278,7 +278,7 @@ kubectl apply -f serviceaccount.yaml
 
 ---
 
-# List Service Accounts
+## List Service Accounts
 
 ```bash
 kubectl get serviceaccounts
@@ -298,7 +298,7 @@ kubectl get serviceaccounts -A
 
 ---
 
-# Describe Service Account
+## Describe Service Account
 
 ```bash
 kubectl describe serviceaccount backend-sa
@@ -308,7 +308,7 @@ This can show information associated with the Service Account.
 
 ---
 
-# Default Service Account
+## Default Service Account
 
 Every namespace has a:
 
@@ -335,7 +335,7 @@ Modern Kubernetes versions do not generally create long-lived Secret-based Servi
 
 ---
 
-# Default Service Account Usage
+## Default Service Account Usage
 
 If a Pod does not specify:
 
@@ -381,7 +381,7 @@ unless another identity is configured.
 
 ---
 
-# Why Avoid Default Service Account for Applications?
+## Why Avoid Default Service Account for Applications?
 
 Using the default identity for unrelated applications makes identity management less precise.
 
@@ -405,7 +405,7 @@ This allows each workload to receive different permissions.
 
 ---
 
-# Assign Service Account to a Pod
+## Assign Service Account to a Pod
 
 ```yaml
 apiVersion: v1
@@ -435,7 +435,7 @@ kubectl apply -f backend.yaml
 
 ---
 
-# Verify Service Account
+## Verify Service Account
 
 Run:
 
@@ -451,7 +451,7 @@ serviceAccountName: backend-sa
 
 ---
 
-# Service Account and Deployment
+## Service Account and Deployment
 
 For a Deployment:
 
@@ -501,7 +501,7 @@ backend-sa
 
 ---
 
-# Service Account Tokens
+## Service Account Tokens
 
 A workload may need a credential to authenticate to the Kubernetes API.
 
@@ -535,7 +535,7 @@ Container
 
 ---
 
-# Bound Service Account Tokens
+## Bound Service Account Tokens
 
 Modern Service Account tokens can be:
 
@@ -549,7 +549,7 @@ This reduces the risk associated with indefinitely valid credentials.
 
 ---
 
-# TokenRequest API
+## TokenRequest API
 
 Kubernetes provides:
 
@@ -569,7 +569,7 @@ Binding information
 
 ---
 
-# Token Audience
+## Token Audience
 
 The audience identifies the intended recipient of a token.
 
@@ -585,7 +585,7 @@ A token intended for one service should not automatically be trusted by an unrel
 
 ---
 
-# Token Expiration
+## Token Expiration
 
 Modern Service Account tokens are designed to be short-lived.
 
@@ -605,7 +605,7 @@ Short-lived credentials reduce the window in which a stolen credential can be ab
 
 ---
 
-# Token Rotation
+## Token Rotation
 
 Projected Service Account tokens can be refreshed as they approach expiration.
 
@@ -625,7 +625,7 @@ Applications should avoid assuming that a token remains valid forever.
 
 ---
 
-# Projected Service Account Token
+## Projected Service Account Token
 
 A Pod can receive a Service Account token through a projected volume.
 
@@ -643,7 +643,7 @@ The application reads the token from the filesystem.
 
 ---
 
-# Example Projected Token Configuration
+## Example Projected Token Configuration
 
 A simplified example:
 
@@ -669,7 +669,7 @@ The token can then be mounted into the container.
 
 ---
 
-# Token Security
+## Token Security
 
 Treat Service Account tokens as:
 
@@ -689,7 +689,7 @@ Store them in ConfigMaps
 
 ---
 
-# `automountServiceAccountToken`
+## `automountServiceAccountToken`
 
 By default, Kubernetes may make Service Account credentials available to Pods depending on configuration.
 
@@ -701,7 +701,7 @@ automountServiceAccountToken: false
 
 ---
 
-# Example
+## Example
 
 ```yaml
 apiVersion: v1
@@ -727,7 +727,7 @@ This is a useful security hardening measure for workloads that do not need Kuber
 
 ---
 
-# Pod-Level vs ServiceAccount-Level Configuration
+## Pod-Level vs ServiceAccount-Level Configuration
 
 You can specify:
 
@@ -755,7 +755,7 @@ A Pod-level setting can explicitly control the behavior for that workload.
 
 ---
 
-# When Should You Use a Service Account Token?
+## When Should You Use a Service Account Token?
 
 A workload may need Kubernetes API credentials if it must:
 
@@ -780,7 +780,7 @@ Automation Controller
 
 ---
 
-# When Should You Not Use a Service Account Token?
+## When Should You Not Use a Service Account Token?
 
 A normal application such as:
 
@@ -804,7 +804,7 @@ can reduce credential exposure.
 
 ---
 
-# Service Account + RBAC
+## Service Account + RBAC
 
 A Service Account only establishes identity.
 
@@ -836,7 +836,7 @@ No additional permissions
 
 ---
 
-# Example RBAC
+## Example RBAC
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -896,7 +896,7 @@ roleRef:
 
 ---
 
-# Effective Architecture
+## Effective Architecture
 
 ```text
 Backend Pod
@@ -919,7 +919,7 @@ production namespace
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 The Service Account should receive:
 
@@ -947,7 +947,7 @@ get ConfigMaps
 
 ---
 
-# Dedicated Service Accounts
+## Dedicated Service Accounts
 
 A dedicated Service Account gives workloads distinct identities.
 
@@ -972,7 +972,7 @@ Easier credential isolation
 
 ---
 
-# Service Accounts for Applications
+## Service Accounts for Applications
 
 Example:
 
@@ -988,7 +988,7 @@ Only grant the permissions required by the application.
 
 ---
 
-# Service Accounts for Controllers
+## Service Accounts for Controllers
 
 Controllers often need to:
 
@@ -1009,7 +1009,7 @@ Dedicated RBAC
 
 ---
 
-# Service Accounts for Operators
+## Service Accounts for Operators
 
 Operators can require significant privileges because they manage Kubernetes resources.
 
@@ -1029,7 +1029,7 @@ Review these permissions carefully.
 
 ---
 
-# Service Accounts for CI/CD
+## Service Accounts for CI/CD
 
 A CI/CD pipeline can use a dedicated identity:
 
@@ -1055,7 +1055,7 @@ unless an exceptional and well-justified requirement exists.
 
 ---
 
-# Service Accounts for Monitoring
+## Service Accounts for Monitoring
 
 A monitoring agent may need:
 
@@ -1075,7 +1075,7 @@ rather than a general administrative identity.
 
 ---
 
-# Service Account for Security Tools
+## Service Account for Security Tools
 
 Security agents may need additional permissions for:
 
@@ -1090,7 +1090,7 @@ These should still be reviewed using least privilege.
 
 ---
 
-# Workload Identity
+## Workload Identity
 
 Workload identity is a broader concept:
 
@@ -1118,7 +1118,7 @@ Cloud Resource
 
 ---
 
-# Why Workload Identity Matters
+## Why Workload Identity Matters
 
 Without workload identity, applications may use static cloud credentials:
 
@@ -1151,7 +1151,7 @@ Exact implementation varies by cloud provider.
 
 ---
 
-# Kubernetes Service Account vs Cloud Identity
+## Kubernetes Service Account vs Cloud Identity
 
 These are related but not identical.
 
@@ -1171,7 +1171,7 @@ The exact integration depends on the cloud platform.
 
 ---
 
-# Service Account Token Theft
+## Service Account Token Theft
 
 If an attacker compromises a Pod and obtains its Service Account credential:
 
@@ -1201,7 +1201,7 @@ is an important defense against token theft.
 
 ---
 
-# Reducing Token Theft Impact
+## Reducing Token Theft Impact
 
 Use:
 
@@ -1234,7 +1234,7 @@ Audit Logging
 
 ---
 
-# Service Account Token Attack Path
+## Service Account Token Attack Path
 
 ```text
 Application Vulnerability
@@ -1258,7 +1258,7 @@ Least Privilege
 
 ---
 
-# Service Account Security Architecture
+## Service Account Security Architecture
 
 ```text
                     Workload
@@ -1285,7 +1285,7 @@ Least Privilege
 
 ---
 
-# Service Account Namespace Scope
+## Service Account Namespace Scope
 
 Service Accounts are namespace-scoped.
 
@@ -1305,7 +1305,7 @@ Even if the names are identical.
 
 ---
 
-# Same Name, Different Namespace
+## Same Name, Different Namespace
 
 ```text
 production
@@ -1319,7 +1319,7 @@ These are separate Service Accounts.
 
 ---
 
-# Service Account and Pod Namespace
+## Service Account and Pod Namespace
 
 A Pod generally uses a Service Account from its own namespace.
 
@@ -1335,7 +1335,7 @@ production/backend-sa
 
 ---
 
-# Service Account and Deployment
+## Service Account and Deployment
 
 The Service Account is configured in:
 
@@ -1365,7 +1365,7 @@ can result in new Pods being created with the updated identity.
 
 ---
 
-# Service Account and Jobs
+## Service Account and Jobs
 
 A Job can also specify:
 
@@ -1383,7 +1383,7 @@ This is useful for automation workloads.
 
 ---
 
-# Service Account and CronJobs
+## Service Account and CronJobs
 
 CronJobs can specify the Service Account in their Pod template:
 
@@ -1405,7 +1405,7 @@ Use a dedicated identity for scheduled automation.
 
 ---
 
-# Service Account and Init Containers
+## Service Account and Init Containers
 
 Init Containers share the Pod's identity configuration.
 
@@ -1419,7 +1419,7 @@ the containers in that Pod operate under the Pod's configured Service Account id
 
 ---
 
-# Service Account and Sidecars
+## Service Account and Sidecars
 
 Sidecars also run within the same Pod.
 
@@ -1429,7 +1429,7 @@ Avoid unnecessarily giving a sidecar access to Kubernetes API credentials.
 
 ---
 
-# Service Account and Multi-Container Pods
+## Service Account and Multi-Container Pods
 
 All containers in a Pod share the Pod's Service Account identity.
 
@@ -1451,7 +1451,7 @@ If one container can access the credential, it may potentially act using the Pod
 
 ---
 
-# Important Security Principle
+## Important Security Principle
 
 Do not assume:
 
@@ -1471,7 +1471,7 @@ They share the Pod's identity configuration.
 
 ---
 
-# Service Account Token File
+## Service Account Token File
 
 Applications using projected Service Account credentials can typically access the token from the mounted filesystem location configured by Kubernetes.
 
@@ -1485,7 +1485,7 @@ However, applications should rely on the configured credential mechanism rather 
 
 ---
 
-# Inspect Service Account Files
+## Inspect Service Account Files
 
 Inside a test Pod:
 
@@ -1506,7 +1506,7 @@ depending on the Pod configuration.
 
 ---
 
-# Important Warning
+## Important Warning
 
 Do not print Service Account tokens during normal testing.
 
@@ -1522,7 +1522,7 @@ If you must inspect token behavior in a controlled lab, protect the output and i
 
 ---
 
-# Service Account CA Certificate
+## Service Account CA Certificate
 
 The projected Service Account volume may also contain:
 
@@ -1534,7 +1534,7 @@ which can help clients verify the Kubernetes API server certificate.
 
 ---
 
-# Service Account Namespace File
+## Service Account Namespace File
 
 The projected volume can also expose:
 
@@ -1546,7 +1546,7 @@ which identifies the Pod's namespace.
 
 ---
 
-# Service Account Token Security Layers
+## Service Account Token Security Layers
 
 Protect Service Account credentials through:
 
@@ -1562,9 +1562,9 @@ Protect Service Account credentials through:
 
 ---
 
-# Service Account Troubleshooting
+## Service Account Troubleshooting
 
-## Check Service Account
+### Check Service Account
 
 ```bash
 kubectl get serviceaccount
@@ -1572,7 +1572,7 @@ kubectl get serviceaccount
 
 ---
 
-# Check Pod Service Account
+## Check Pod Service Account
 
 ```bash
 kubectl get pod <pod> \
@@ -1581,7 +1581,7 @@ kubectl get pod <pod> \
 
 ---
 
-# Describe Pod
+## Describe Pod
 
 ```bash
 kubectl describe pod <pod>
@@ -1595,7 +1595,7 @@ Service Account
 
 ---
 
-# Check RBAC
+## Check RBAC
 
 ```bash
 kubectl auth can-i --list \
@@ -1604,7 +1604,7 @@ kubectl auth can-i --list \
 
 ---
 
-# Check Specific Permission
+## Check Specific Permission
 
 ```bash
 kubectl auth can-i get pods \
@@ -1613,7 +1613,7 @@ kubectl auth can-i get pods \
 
 ---
 
-# Check Secret Access
+## Check Secret Access
 
 ```bash
 kubectl auth can-i get secrets \
@@ -1630,7 +1630,7 @@ unless Secret access is genuinely required.
 
 ---
 
-# Check API Connectivity
+## Check API Connectivity
 
 From a test Pod that is intentionally configured to access the API:
 
@@ -1644,7 +1644,7 @@ Do not expose the token.
 
 ---
 
-# Service Account Authentication Failure
+## Service Account Authentication Failure
 
 Possible causes:
 
@@ -1661,7 +1661,7 @@ TLS configuration
 
 ---
 
-# RBAC vs Service Account Problem
+## RBAC vs Service Account Problem
 
 Suppose:
 
@@ -1683,7 +1683,7 @@ Check:
 
 ---
 
-# Hands-on Lab 1 – Create Service Account
+## Hands-on Lab 1 – Create Service Account
 
 Create:
 
@@ -1713,7 +1713,7 @@ kubectl get serviceaccount app-sa
 
 ---
 
-# Hands-on Lab 2 – Assign Service Account to Pod
+## Hands-on Lab 2 – Assign Service Account to Pod
 
 Create:
 
@@ -1751,7 +1751,7 @@ kubectl get pod sa-demo -o yaml
 
 ---
 
-# Hands-on Lab 3 – Inspect Identity
+## Hands-on Lab 3 – Inspect Identity
 
 Run:
 
@@ -1768,7 +1768,7 @@ app-sa
 
 ---
 
-# Hands-on Lab 4 – Create Role
+## Hands-on Lab 4 – Create Role
 
 Create:
 
@@ -1804,7 +1804,7 @@ rules:
 
 ---
 
-# Hands-on Lab 5 – Bind Service Account
+## Hands-on Lab 5 – Bind Service Account
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1842,7 +1842,7 @@ kubectl apply -f rolebinding.yaml
 
 ---
 
-# Hands-on Lab 6 – Test Permissions
+## Hands-on Lab 6 – Test Permissions
 
 Run:
 
@@ -1872,7 +1872,7 @@ no
 
 ---
 
-# Hands-on Lab 7 – Disable Token Mounting
+## Hands-on Lab 7 – Disable Token Mounting
 
 Create:
 
@@ -1918,7 +1918,7 @@ automountServiceAccountToken: false
 
 ---
 
-# Hands-on Lab 8 – Compare Pods
+## Hands-on Lab 8 – Compare Pods
 
 Compare:
 
@@ -1950,7 +1950,7 @@ The credential projection behavior should differ based on the configuration.
 
 ---
 
-# Hands-on Lab 9 – Test Service Account Scope
+## Hands-on Lab 9 – Test Service Account Scope
 
 Create:
 
@@ -1981,7 +1981,7 @@ Service Accounts are namespace-scoped.
 
 ---
 
-# Hands-on Lab 10 – Test RBAC Blast Radius
+## Hands-on Lab 10 – Test RBAC Blast Radius
 
 Give:
 
@@ -2013,7 +2013,7 @@ The expected result should demonstrate least privilege.
 
 ---
 
-# Hands-on Lab 11 – Service Account for a Deployment
+## Hands-on Lab 11 – Service Account for a Deployment
 
 Create:
 
@@ -2070,7 +2070,7 @@ kubectl get pod <pod-name> \
 
 ---
 
-# Hands-on Lab 12 – Service Account for a Job
+## Hands-on Lab 12 – Service Account for a Job
 
 Create:
 
@@ -2112,7 +2112,7 @@ Observe the Job's Pod configuration.
 
 ---
 
-# Hands-on Lab 13 – Service Account Security Review
+## Hands-on Lab 13 – Service Account Security Review
 
 For each Service Account, answer:
 
@@ -2131,9 +2131,9 @@ This is a useful production security review exercise.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using the Default Service Account Everywhere
+### 1. Using the Default Service Account Everywhere
 
 Avoid using:
 
@@ -2145,7 +2145,7 @@ for unrelated workloads when dedicated identities are more appropriate.
 
 ---
 
-## 2. Giving `cluster-admin`
+### 2. Giving `cluster-admin`
 
 Avoid:
 
@@ -2159,7 +2159,7 @@ unless there is a strong, documented requirement.
 
 ---
 
-## 3. Mounting Tokens Unnecessarily
+### 3. Mounting Tokens Unnecessarily
 
 If the application does not need Kubernetes API access:
 
@@ -2169,7 +2169,7 @@ automountServiceAccountToken: false
 
 ---
 
-## 4. Sharing Service Accounts
+### 4. Sharing Service Accounts
 
 Avoid:
 
@@ -2185,7 +2185,7 @@ Prefer separate identities where different permissions are required.
 
 ---
 
-## 5. Exposing Tokens
+### 5. Exposing Tokens
 
 Never log:
 
@@ -2195,7 +2195,7 @@ Service Account token
 
 ---
 
-## 6. Putting Tokens in Git
+### 6. Putting Tokens in Git
 
 Never commit:
 
@@ -2207,13 +2207,13 @@ Credential
 
 ---
 
-## 7. Ignoring RBAC
+### 7. Ignoring RBAC
 
 Creating a Service Account does not automatically grant application-specific permissions.
 
 ---
 
-## 8. Forgetting Namespace Scope
+### 8. Forgetting Namespace Scope
 
 These are different:
 
@@ -2229,33 +2229,33 @@ development/app-sa
 
 ---
 
-## 9. Giving Sidecars Unnecessary Access
+### 9. Giving Sidecars Unnecessary Access
 
 All containers in a Pod share the Pod's Service Account identity.
 
 ---
 
-## 10. Assuming Tokens Are Permanent
+### 10. Assuming Tokens Are Permanent
 
 Modern Service Account credentials are designed around short-lived, renewable tokens.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Dedicated Service Accounts
+#### 1. Use Dedicated Service Accounts
 
 Create workload-specific identities.
 
 ---
 
-### 2. Follow Least Privilege
+#### 2. Follow Least Privilege
 
 Grant only the permissions required.
 
 ---
 
-### 3. Disable Token Mounting When Unnecessary
+#### 3. Disable Token Mounting When Unnecessary
 
 ```yaml
 automountServiceAccountToken: false
@@ -2263,25 +2263,25 @@ automountServiceAccountToken: false
 
 ---
 
-### 4. Use Short-Lived Tokens
+#### 4. Use Short-Lived Tokens
 
 Prefer modern bound Service Account token mechanisms.
 
 ---
 
-### 5. Restrict Token Audience
+#### 5. Restrict Token Audience
 
 Use appropriate audience values for tokens where supported.
 
 ---
 
-### 6. Avoid Long-Lived Static Credentials
+#### 6. Avoid Long-Lived Static Credentials
 
 Do not create unnecessary permanent credentials.
 
 ---
 
-### 7. Audit Service Account Permissions
+#### 7. Audit Service Account Permissions
 
 Regularly inspect:
 
@@ -2292,19 +2292,19 @@ ClusterRoleBindings
 
 ---
 
-### 8. Protect Service Account Tokens
+#### 8. Protect Service Account Tokens
 
 Treat them as credentials.
 
 ---
 
-### 9. Separate Workloads
+#### 9. Separate Workloads
 
 Use separate identities when workloads have different privilege requirements.
 
 ---
 
-### 10. Combine Service Account Security with Pod Security
+#### 10. Combine Service Account Security with Pod Security
 
 Use:
 
@@ -2319,13 +2319,13 @@ Runtime monitoring
 
 ---
 
-### 11. Use Workload Identity for Cloud Access
+#### 11. Use Workload Identity for Cloud Access
 
 Where supported, prefer temporary identity-based cloud access over static cloud credentials.
 
 ---
 
-### 12. Monitor API Usage
+#### 12. Monitor API Usage
 
 Track:
 
@@ -2341,7 +2341,7 @@ through appropriate auditing and monitoring.
 
 ---
 
-# Service Account Security Checklist
+## Service Account Security Checklist
 
 ```text
 ☑ Dedicated Service Account
@@ -2360,7 +2360,7 @@ through appropriate auditing and monitoring.
 
 ---
 
-# Service Account Architecture
+## Service Account Architecture
 
 A secure application architecture:
 
@@ -2400,7 +2400,7 @@ For an application that does not need API access:
 
 ---
 
-# Service Account Threat Model
+## Service Account Threat Model
 
 Potential threats include:
 
@@ -2431,7 +2431,7 @@ Workload Identity
 
 ---
 
-# Attack Scenario
+## Attack Scenario
 
 Suppose:
 
@@ -2493,7 +2493,7 @@ This demonstrates why:
 
 ---
 
-# Advanced Security Consideration
+## Advanced Security Consideration
 
 A compromised Service Account with:
 
@@ -2517,7 +2517,7 @@ Privilege escalation potential
 
 ---
 
-# Service Account and Pod Security
+## Service Account and Pod Security
 
 Service Account security is only one layer.
 
@@ -2539,7 +2539,7 @@ Runtime Security
 
 ---
 
-# Service Account and NetworkPolicy
+## Service Account and NetworkPolicy
 
 RBAC controls:
 
@@ -2571,7 +2571,7 @@ Use both where appropriate.
 
 ---
 
-# Service Account and Runtime Security
+## Service Account and Runtime Security
 
 Runtime security can detect suspicious behavior such as:
 
@@ -2587,7 +2587,7 @@ This adds another defense layer.
 
 ---
 
-# Service Account and Audit Logging
+## Service Account and Audit Logging
 
 Audit logs can help identify:
 
@@ -2602,9 +2602,9 @@ This is valuable during incident response.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Service Account
+### Service Account
 
 ```text
 Workload identity
@@ -2612,7 +2612,7 @@ Workload identity
 
 ---
 
-## Default Service Account
+### Default Service Account
 
 ```text
 Namespace default identity
@@ -2620,7 +2620,7 @@ Namespace default identity
 
 ---
 
-## Service Account Identity
+### Service Account Identity
 
 ```text
 system:serviceaccount:<namespace>:<name>
@@ -2628,7 +2628,7 @@ system:serviceaccount:<namespace>:<name>
 
 ---
 
-## Service Account Token
+### Service Account Token
 
 ```text
 Credential used for Kubernetes API authentication
@@ -2636,7 +2636,7 @@ Credential used for Kubernetes API authentication
 
 ---
 
-## TokenRequest
+### TokenRequest
 
 ```text
 Mechanism for obtaining Service Account tokens
@@ -2644,7 +2644,7 @@ Mechanism for obtaining Service Account tokens
 
 ---
 
-## Projected Token
+### Projected Token
 
 ```text
 Credential provided through a projected volume
@@ -2652,7 +2652,7 @@ Credential provided through a projected volume
 
 ---
 
-## Token Audience
+### Token Audience
 
 ```text
 Intended recipient of a token
@@ -2660,7 +2660,7 @@ Intended recipient of a token
 
 ---
 
-## Token Expiration
+### Token Expiration
 
 ```text
 Limits credential lifetime
@@ -2668,7 +2668,7 @@ Limits credential lifetime
 
 ---
 
-## `automountServiceAccountToken`
+### `automountServiceAccountToken`
 
 ```text
 Controls automatic token projection
@@ -2676,7 +2676,7 @@ Controls automatic token projection
 
 ---
 
-## RBAC
+### RBAC
 
 ```text
 Controls Service Account permissions
@@ -2684,7 +2684,7 @@ Controls Service Account permissions
 
 ---
 
-## Workload Identity
+### Workload Identity
 
 ```text
 Maps workload identity to external resource permissions
@@ -2692,7 +2692,7 @@ Maps workload identity to external resource permissions
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Create Service Account:
 
@@ -2766,9 +2766,9 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is a Service Account?
 - Why are Service Accounts used?
@@ -2781,7 +2781,7 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does a Service Account authenticate to the Kubernetes API?
 - What is the TokenRequest API?
@@ -2796,7 +2796,7 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Service Account authentication flow.
 - How would you secure Service Accounts in production?
@@ -2815,13 +2815,13 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > A frontend application does not communicate with the Kubernetes API. Should it have a Service Account token mounted?
 
-### Answer
+#### Answer
 
 There is generally no need for the frontend to receive Kubernetes API credentials.
 
@@ -2845,13 +2845,13 @@ Reduced Attack Surface
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > A backend application needs to read one ConfigMap. How would you configure access?
 
-### Answer
+#### Answer
 
 Create:
 
@@ -2909,13 +2909,13 @@ unless required.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > A Pod is compromised and the attacker obtains its Service Account token. What determines how much access the attacker has?
 
-### Answer
+#### Answer
 
 The attacker's effective access is determined primarily by the permissions granted to that Service Account through:
 
@@ -2948,13 +2948,13 @@ Limited Permissions
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > Why should different applications use different Service Accounts?
 
-### Answer
+#### Answer
 
 Because separate identities provide:
 
@@ -2978,13 +2978,13 @@ If the backend is compromised, the attacker does not automatically inherit permi
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How would you secure a Service Account used by a CI/CD pipeline?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3008,7 +3008,7 @@ Where the platform supports it, use workload or cloud identity mechanisms instea
 
 ---
 
-# Production Service Account Checklist
+## Production Service Account Checklist
 
 ```text
 ☑ Dedicated Service Account
@@ -3030,7 +3030,7 @@ Where the platform supports it, use workload or cloud identity mechanisms instea
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create a dedicated Service Account.
 2. Assign it to a Pod.
@@ -3057,9 +3057,9 @@ Where the platform supports it, use workload or cloud identity mechanisms instea
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Service Accounts
 - Configure Service Accounts for Pods
@@ -3073,7 +3073,7 @@ Where the platform supports it, use workload or cloud identity mechanisms instea
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 A Service Account is a Kubernetes identity intended primarily for:
 
@@ -3247,9 +3247,9 @@ The central principle to remember is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 50 – Admission Controllers
+## Chapter 50 – Admission Controllers
 
 Topics will include:
 

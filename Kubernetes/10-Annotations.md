@@ -21,7 +21,7 @@ Annotations allow Kubernetes and external tools to attach additional metadata to
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -38,7 +38,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is an Annotation?
+## What is an Annotation?
 
 An Annotation is a **key-value pair** stored in the metadata section of a Kubernetes object.
 
@@ -60,7 +60,7 @@ Annotations provide additional information about an object but are **not used to
 
 ---
 
-# Annotation Architecture
+## Annotation Architecture
 
 ```
 Deployment
@@ -86,7 +86,7 @@ Deployment
 
 ---
 
-# Why Annotations?
+## Why Annotations?
 
 Imagine a Deployment.
 
@@ -120,7 +120,7 @@ Metadata
 
 ---
 
-# Labels vs Annotations
+## Labels vs Annotations
 
 | Labels | Annotations |
 |----------|-------------|
@@ -132,7 +132,7 @@ Metadata
 
 ---
 
-# Annotation Syntax
+## Annotation Syntax
 
 General format:
 
@@ -156,7 +156,7 @@ annotations:
 
 ---
 
-# Where Can Annotations Be Used?
+## Where Can Annotations Be Used?
 
 Annotations can be attached to almost every Kubernetes object.
 
@@ -177,7 +177,7 @@ Examples:
 
 ---
 
-# Deployment Example
+## Deployment Example
 
 ```yaml
 apiVersion: apps/v1
@@ -199,7 +199,7 @@ spec:
 
 ---
 
-# Pod Example
+## Pod Example
 
 ```yaml
 metadata:
@@ -213,7 +213,7 @@ metadata:
 
 ---
 
-# Service Example
+## Service Example
 
 ```yaml
 metadata:
@@ -225,7 +225,7 @@ metadata:
 
 ---
 
-# Viewing Annotations
+## Viewing Annotations
 
 Describe an object:
 
@@ -250,7 +250,7 @@ metadata:
 
 ---
 
-# Creating Annotations
+## Creating Annotations
 
 Example:
 
@@ -272,7 +272,7 @@ kubectl apply -f deployment.yaml
 
 ---
 
-# Adding Annotations
+## Adding Annotations
 
 Command:
 
@@ -283,7 +283,7 @@ owner=platform-team
 
 ---
 
-# Updating Annotations
+## Updating Annotations
 
 ```bash
 kubectl annotate deployment frontend \
@@ -292,7 +292,7 @@ owner=security-team --overwrite
 
 ---
 
-# Removing Annotations
+## Removing Annotations
 
 ```bash
 kubectl annotate deployment frontend \
@@ -301,7 +301,7 @@ owner-
 
 ---
 
-# Common Annotation Examples
+## Common Annotation Examples
 
 ```
 owner=platform
@@ -319,7 +319,7 @@ git-commit=9fd1234
 
 ---
 
-# CI/CD Example
+## CI/CD Example
 
 Pipeline:
 
@@ -355,7 +355,7 @@ This makes it easy to determine which build produced a deployment.
 
 ---
 
-# GitOps Example
+## GitOps Example
 
 GitOps tools often record deployment metadata.
 
@@ -385,7 +385,7 @@ annotations:
 
 ---
 
-# Monitoring Example
+## Monitoring Example
 
 Monitoring platforms may use annotations for:
 
@@ -406,7 +406,7 @@ annotations:
 
 ---
 
-# Ingress Example
+## Ingress Example
 
 Many Ingress controllers use annotations to configure behavior.
 
@@ -436,7 +436,7 @@ Examples include:
 
 ---
 
-# Service Mesh Example
+## Service Mesh Example
 
 Service mesh platforms can read annotations to enable or configure features.
 
@@ -456,7 +456,7 @@ The exact annotations depend on the service mesh implementation.
 
 ---
 
-# Security Tool Example
+## Security Tool Example
 
 Security scanners may attach metadata such as:
 
@@ -478,9 +478,9 @@ Last Scan Time
 
 ---
 
-# Annotation Best Practices
+## Annotation Best Practices
 
-### 1. Store Operational Metadata
+#### 1. Store Operational Metadata
 
 Good examples:
 
@@ -492,7 +492,7 @@ Good examples:
 
 ---
 
-### 2. Do Not Use Annotations for Selection
+#### 2. Do Not Use Annotations for Selection
 
 If you need:
 
@@ -504,13 +504,13 @@ you need a **Label**, not an Annotation.
 
 ---
 
-### 3. Keep Metadata Accurate
+#### 3. Keep Metadata Accurate
 
 Update annotations when ownership, build versions, or operational details change.
 
 ---
 
-### 4. Use Descriptive Keys
+#### 4. Use Descriptive Keys
 
 Prefer:
 
@@ -534,16 +534,16 @@ temp
 
 ---
 
-### 5. Follow Organizational Standards
+#### 5. Follow Organizational Standards
 
 Establish consistent annotation conventions across teams to simplify automation and tooling.
 
 ---
 
 
-# How Annotations Work Internally
+## How Annotations Work Internally
 
-## Overview
+### Overview
 
 Although **Annotations** look similar to **Labels**, they serve a completely different purpose inside Kubernetes.
 
@@ -564,7 +564,7 @@ Kubernetes itself generally **does not use Annotations to identify resources**. 
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                  Kubernetes Object
@@ -588,7 +588,7 @@ Controllers                External Tools
 
 ---
 
-# Internal Storage
+## Internal Storage
 
 Every Kubernetes object contains metadata.
 
@@ -630,7 +630,7 @@ Both are stored together as part of the Kubernetes object in **etcd**.
 
 ---
 
-# API Server Workflow
+## API Server Workflow
 
 Suppose a Deployment is created.
 
@@ -664,7 +664,7 @@ The metadata includes:
 
 ---
 
-# Annotation Retrieval
+## Annotation Retrieval
 
 Command:
 
@@ -693,7 +693,7 @@ Annotations Displayed
 
 ---
 
-# Why Controllers Ignore Annotations
+## Why Controllers Ignore Annotations
 
 Example:
 
@@ -733,7 +733,7 @@ The same applies to:
 
 ---
 
-# Tool Integration
+## Tool Integration
 
 Annotations are commonly read by external controllers and automation systems.
 
@@ -759,7 +759,7 @@ Unlike Labels, Annotations are often interpreted by software outside the Kuberne
 
 ---
 
-# CI/CD Workflow
+## CI/CD Workflow
 
 ```
 Git Commit
@@ -797,7 +797,7 @@ Operations teams can later determine exactly which pipeline produced the deploym
 
 ---
 
-# GitOps Workflow
+## GitOps Workflow
 
 ```
 Git Repository
@@ -833,7 +833,7 @@ GitOps platforms often use annotations to track synchronization state and deploy
 
 ---
 
-# Monitoring Workflow
+## Monitoring Workflow
 
 Monitoring platform:
 
@@ -867,7 +867,7 @@ Operations teams can associate alerts with documentation and ownership.
 
 ---
 
-# Ingress Controller Workflow
+## Ingress Controller Workflow
 
 Example:
 
@@ -899,7 +899,7 @@ Each controller defines its own supported annotations.
 
 ---
 
-# Service Mesh Workflow
+## Service Mesh Workflow
 
 ```
 Pod
@@ -923,7 +923,7 @@ Examples include:
 
 ---
 
-# Backup Workflow
+## Backup Workflow
 
 Backup tools often store metadata.
 
@@ -955,7 +955,7 @@ Timestamp
 
 ---
 
-# Security Workflow
+## Security Workflow
 
 Security scanners:
 
@@ -983,7 +983,7 @@ Possible metadata:
 
 ---
 
-# Metadata Flow
+## Metadata Flow
 
 ```
 Developer
@@ -1011,7 +1011,7 @@ Tools Read Metadata
 
 ---
 
-# Annotation Size
+## Annotation Size
 
 Unlike Labels, Annotations may contain larger values.
 
@@ -1027,7 +1027,7 @@ However, extremely large annotations should be avoided because they increase the
 
 ---
 
-# Labels vs Annotations Internally
+## Labels vs Annotations Internally
 
 ```
 Labels
@@ -1063,7 +1063,7 @@ Humans
 
 ---
 
-# Hands-on Lab 1 – Create Deployment
+## Hands-on Lab 1 – Create Deployment
 
 Example:
 
@@ -1087,7 +1087,7 @@ kubectl apply -f deployment.yaml
 
 ---
 
-# Hands-on Lab 2 – View Annotations
+## Hands-on Lab 2 – View Annotations
 
 ```bash
 kubectl describe deployment frontend
@@ -1110,7 +1110,7 @@ metadata:
 
 ---
 
-# Hands-on Lab 3 – Add Annotation
+## Hands-on Lab 3 – Add Annotation
 
 ```bash
 kubectl annotate deployment frontend \
@@ -1126,7 +1126,7 @@ kubectl get deployment frontend \
 
 ---
 
-# Hands-on Lab 4 – Update Annotation
+## Hands-on Lab 4 – Update Annotation
 
 ```bash
 kubectl annotate deployment frontend \
@@ -1138,7 +1138,7 @@ Verify the updated value.
 
 ---
 
-# Hands-on Lab 5 – Remove Annotation
+## Hands-on Lab 5 – Remove Annotation
 
 ```bash
 kubectl annotate deployment frontend \
@@ -1154,9 +1154,9 @@ kubectl get deployment frontend \
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using Annotations for Selection
+### 1. Using Annotations for Selection
 
 Incorrect:
 
@@ -1182,13 +1182,13 @@ Selectors
 
 ---
 
-## 2. Storing Important Operational Data Only in Annotations
+### 2. Storing Important Operational Data Only in Annotations
 
 Annotations are useful metadata, but they should not replace proper documentation, source control, or configuration management.
 
 ---
 
-## 3. Putting Large Files in Annotations
+### 3. Putting Large Files in Annotations
 
 Avoid storing:
 
@@ -1201,7 +1201,7 @@ Use ConfigMaps, Secrets, or external storage instead.
 
 ---
 
-## 4. Inconsistent Annotation Names
+### 4. Inconsistent Annotation Names
 
 Poor:
 
@@ -1227,7 +1227,7 @@ documentation
 
 ---
 
-## 5. Confusing Labels and Annotations
+### 5. Confusing Labels and Annotations
 
 Rule of thumb:
 
@@ -1245,9 +1245,9 @@ Annotation
 
 ---
 
-# Annotations Quick Revision
+## Annotations Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 Object
@@ -1267,7 +1267,7 @@ Tools
 
 ---
 
-## Workflow
+### Workflow
 
 ```
 Deployment
@@ -1299,7 +1299,7 @@ CI/CD
 
 ---
 
-## Common Annotation Examples
+### Common Annotation Examples
 
 ```
 owner=platform
@@ -1317,7 +1317,7 @@ ticket=SEC-104
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View YAML:
 
@@ -1356,9 +1356,9 @@ owner-
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is an Annotation?
 - How is an Annotation different from a Label?
@@ -1366,7 +1366,7 @@ owner-
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - Why can't Annotations be used with selectors?
 - How do CI/CD systems use Annotations?
@@ -1374,7 +1374,7 @@ owner-
 
 ---
 
-### Advanced
+#### Advanced
 
 - Why are Labels indexed but Annotations are not?
 - What happens internally when an Annotation is added?
@@ -1384,9 +1384,9 @@ owner-
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Annotations
 - Labels and Selectors
@@ -1396,7 +1396,7 @@ owner-
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Best Practices
 - Cloud Native Computing Foundation (CNCF)
@@ -1404,7 +1404,7 @@ owner-
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Production Best Practices
@@ -1413,7 +1413,7 @@ owner-
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create a Deployment with Labels and Annotations.
 2. View object metadata using `kubectl get -o yaml`.
@@ -1424,7 +1424,7 @@ owner-
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Kubernetes Object

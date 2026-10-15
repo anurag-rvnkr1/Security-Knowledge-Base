@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A SIEM primarily tells us:
 
@@ -48,7 +48,7 @@ Investigation
 
 ---
 
-# 2. What is Threat Intelligence?
+## 2. What is Threat Intelligence?
 
 Threat intelligence is information about threats that is collected, analyzed, contextualized, and used to support security decisions.
 
@@ -72,11 +72,11 @@ Context
 
 ---
 
-# 3. Threat Intelligence vs Threat Data
+## 3. Threat Intelligence vs Threat Data
 
 These terms should not be treated as identical.
 
-## Threat Data
+### Threat Data
 
 Raw observations:
 
@@ -86,7 +86,7 @@ malicious.example
 SHA256 = abc123...
 ```
 
-## Threat Intelligence
+### Threat Intelligence
 
 Interpreted information:
 
@@ -123,7 +123,7 @@ Intelligence
 
 ---
 
-# 4. Why Threat Intelligence Matters to SIEM
+## 4. Why Threat Intelligence Matters to SIEM
 
 Without intelligence:
 
@@ -146,7 +146,7 @@ The second event is much more actionable.
 
 ---
 
-# 5. Threat Intelligence Types
+## 5. Threat Intelligence Types
 
 Threat intelligence is commonly discussed at different levels:
 
@@ -159,7 +159,7 @@ Technical
 
 ---
 
-# 6. Strategic Threat Intelligence
+## 6. Strategic Threat Intelligence
 
 Focuses on high-level business decisions.
 
@@ -183,7 +183,7 @@ Risk Teams
 
 ---
 
-# 7. Operational Threat Intelligence
+## 7. Operational Threat Intelligence
 
 Focuses on campaigns and adversary activity.
 
@@ -207,7 +207,7 @@ Security Operations
 
 ---
 
-# 8. Tactical Threat Intelligence
+## 8. Tactical Threat Intelligence
 
 Focuses on attacker techniques.
 
@@ -229,7 +229,7 @@ MITRE ATT&CK
 
 ---
 
-# 9. Technical Threat Intelligence
+## 9. Technical Threat Intelligence
 
 Focuses on machine-readable indicators.
 
@@ -249,7 +249,7 @@ This is especially useful for SIEM automation.
 
 ---
 
-# 10. What is an IOC?
+## 10. What is an IOC?
 
 IOC means:
 
@@ -275,7 +275,7 @@ User-Agent
 
 ---
 
-# 11. IOC Categories
+## 11. IOC Categories
 
 Common IOC categories:
 
@@ -292,7 +292,7 @@ Infrastructure
 
 ---
 
-# 12. IP Address IOC
+## 12. IP Address IOC
 
 Example:
 
@@ -327,7 +327,7 @@ NATed
 
 ---
 
-# 13. Domain IOC
+## 13. Domain IOC
 
 Example:
 
@@ -348,7 +348,7 @@ Domains can change rapidly, so freshness matters.
 
 ---
 
-# 14. URL IOC
+## 14. URL IOC
 
 Example:
 
@@ -367,7 +367,7 @@ Protocol
 
 ---
 
-# 15. File Hash IOC
+## 15. File Hash IOC
 
 Common hashes:
 
@@ -388,7 +388,7 @@ Hash matching can provide high-confidence identification of known files.
 
 ---
 
-# 16. Hash Limitations
+## 16. Hash Limitations
 
 A hash changes when the file changes.
 
@@ -406,7 +406,7 @@ This is why behavior-based detections are important.
 
 ---
 
-# 17. Email IOC
+## 17. Email IOC
 
 Examples:
 
@@ -422,7 +422,7 @@ Email investigations often combine multiple indicators.
 
 ---
 
-# 18. Certificate IOC
+## 18. Certificate IOC
 
 Attackers may use certificates associated with suspicious infrastructure.
 
@@ -439,7 +439,7 @@ Fingerprint
 
 ---
 
-# 19. User-Agent IOC
+## 19. User-Agent IOC
 
 Suspicious user agents may indicate:
 
@@ -455,7 +455,7 @@ However, user agents can easily be spoofed.
 
 ---
 
-# 20. File Name IOC
+## 20. File Name IOC
 
 Example:
 
@@ -479,7 +479,7 @@ Behavior
 
 ---
 
-# 21. IOC Confidence
+## 21. IOC Confidence
 
 Not every indicator has equal reliability.
 
@@ -500,7 +500,7 @@ Confidence should influence how the SOC responds.
 
 ---
 
-# 22. IOC Reputation
+## 22. IOC Reputation
 
 An intelligence provider may assign reputation such as:
 
@@ -521,7 +521,7 @@ as malicious.
 
 ---
 
-# 23. IOC Lifecycle
+## 23. IOC Lifecycle
 
 Indicators have a lifecycle:
 
@@ -545,7 +545,7 @@ Retired
 
 ---
 
-# 24. IOC Aging
+## 24. IOC Aging
 
 Indicators become less useful over time.
 
@@ -577,7 +577,7 @@ should be considered together.
 
 ---
 
-# 25. IOC Expiration
+## 25. IOC Expiration
 
 An organization can define expiration:
 
@@ -596,7 +596,7 @@ The exact lifecycle depends on the indicator type and confidence.
 
 ---
 
-# 26. Threat Intelligence Sources
+## 26. Threat Intelligence Sources
 
 Threat intelligence can come from:
 
@@ -614,7 +614,7 @@ Community Sources
 
 ---
 
-# 27. Internal Threat Intelligence
+## 27. Internal Threat Intelligence
 
 One of the most valuable sources is your own environment.
 
@@ -631,7 +631,7 @@ Incident Response Findings
 
 ---
 
-# 28. Open-Source Intelligence
+## 28. Open-Source Intelligence
 
 OSINT can provide:
 
@@ -655,7 +655,7 @@ Confidence
 
 ---
 
-# 29. Commercial Intelligence
+## 29. Commercial Intelligence
 
 Commercial feeds may provide:
 
@@ -678,7 +678,7 @@ Feed quality must still be measured.
 
 ---
 
-# 30. Threat Intelligence Quality
+## 30. Threat Intelligence Quality
 
 Evaluate a feed based on:
 
@@ -695,7 +695,7 @@ Source Transparency
 
 ---
 
-# 31. IOC Feed
+## 31. IOC Feed
 
 An IOC feed may contain:
 
@@ -732,7 +732,7 @@ Recent
 
 ---
 
-# 32. Feed Ingestion
+## 32. Feed Ingestion
 
 Typical architecture:
 
@@ -756,7 +756,7 @@ Threat Intelligence Provider
 
 ---
 
-# 33. Threat Intelligence Platform
+## 33. Threat Intelligence Platform
 
 A TIP may centralize:
 
@@ -775,7 +775,7 @@ The SIEM can consume intelligence from the TIP.
 
 ---
 
-# 34. SIEM + TIP Architecture
+## 34. SIEM + TIP Architecture
 
 ```text
                Threat Sources
@@ -801,7 +801,7 @@ The SIEM can consume intelligence from the TIP.
 
 ---
 
-# 35. IOC Normalization
+## 35. IOC Normalization
 
 Different sources may represent the same indicator differently.
 
@@ -823,7 +823,7 @@ This improves matching.
 
 ---
 
-# 36. IP Normalization
+## 36. IP Normalization
 
 Consider:
 
@@ -838,7 +838,7 @@ Normalization prevents inconsistent matching.
 
 ---
 
-# 37. Domain Normalization
+## 37. Domain Normalization
 
 Consider:
 
@@ -854,7 +854,7 @@ Careful normalization is necessary to avoid false matches.
 
 ---
 
-# 38. URL Normalization
+## 38. URL Normalization
 
 URL matching may require handling:
 
@@ -873,7 +873,7 @@ Over-normalization can also remove meaningful distinctions.
 
 ---
 
-# 39. Hash Normalization
+## 39. Hash Normalization
 
 Hashes should be normalized by:
 
@@ -901,7 +901,7 @@ represent the same hexadecimal value.
 
 ---
 
-# 40. IOC Matching
+## 40. IOC Matching
 
 The SIEM can compare telemetry against threat intelligence.
 
@@ -921,7 +921,7 @@ Alert
 
 ---
 
-# 41. IP Matching
+## 41. IP Matching
 
 ```text
 Firewall Event
@@ -943,7 +943,7 @@ Alert
 
 ---
 
-# 42. Hash Matching
+## 42. Hash Matching
 
 ```text
 Endpoint Event
@@ -961,7 +961,7 @@ High-Confidence Detection
 
 ---
 
-# 43. Domain Matching
+## 43. Domain Matching
 
 ```text
 DNS
@@ -984,7 +984,7 @@ What happened afterward?
 
 ---
 
-# 44. IOC Enrichment
+## 44. IOC Enrichment
 
 Not every IOC match should immediately create a high-priority alert.
 
@@ -1010,7 +1010,7 @@ Alert
 
 ---
 
-# 45. IOC Match Quality
+## 45. IOC Match Quality
 
 A match should consider:
 
@@ -1027,7 +1027,7 @@ Frequency
 
 ---
 
-# 46. Context Matters
+## 46. Context Matters
 
 Suppose:
 
@@ -1047,7 +1047,7 @@ Context determines response.
 
 ---
 
-# 47. Direction Matters
+## 47. Direction Matters
 
 For an IP:
 
@@ -1081,7 +1081,7 @@ Different context, different interpretation.
 
 ---
 
-# 48. Threat Intelligence + Asset Criticality
+## 48. Threat Intelligence + Asset Criticality
 
 Example:
 
@@ -1101,7 +1101,7 @@ Isolated Test Machine
 
 ---
 
-# 49. Threat Intelligence + User Context
+## 49. Threat Intelligence + User Context
 
 Example:
 
@@ -1121,7 +1121,7 @@ Same indicator
 
 ---
 
-# 50. IOC-Based Detection
+## 50. IOC-Based Detection
 
 Basic:
 
@@ -1154,7 +1154,7 @@ generate high-risk alert
 
 ---
 
-# 51. Threat Intelligence Confidence
+## 51. Threat Intelligence Confidence
 
 Example:
 
@@ -1173,7 +1173,7 @@ A match from Feed A may deserve more immediate action.
 
 ---
 
-# 52. Multiple-Source Confirmation
+## 52. Multiple-Source Confirmation
 
 An indicator appearing in multiple independent sources may increase confidence.
 
@@ -1195,7 +1195,7 @@ But source independence matters.
 
 ---
 
-# 53. Threat Intelligence Correlation
+## 53. Threat Intelligence Correlation
 
 Example:
 
@@ -1215,7 +1215,7 @@ High-Confidence Alert
 
 ---
 
-# 54. IOC and Behavioral Detection
+## 54. IOC and Behavioral Detection
 
 IOC:
 
@@ -1234,7 +1234,7 @@ Strong detection may combine both.
 
 ---
 
-# 55. IOC Limitations
+## 55. IOC Limitations
 
 IOC-based detection can fail when attackers:
 
@@ -1254,9 +1254,9 @@ Therefore:
 
 ---
 
-# 56. Indicator of Attack vs Indicator of Compromise
+## 56. Indicator of Attack vs Indicator of Compromise
 
-### IOC
+#### IOC
 
 Evidence that may indicate compromise.
 
@@ -1268,7 +1268,7 @@ Known C2 domain
 Known malicious IP
 ```
 
-### Indicator of Attack
+#### Indicator of Attack
 
 Evidence of attacker behavior.
 
@@ -1285,7 +1285,7 @@ Behavioral indicators can be useful even when no known IOC exists.
 
 ---
 
-# 57. IOC vs IOA
+## 57. IOC vs IOA
 
 ```text
 IOC
@@ -1299,15 +1299,15 @@ Modern SOCs benefit from both.
 
 ---
 
-# 58. Threat Intelligence Confidence vs Detection Confidence
+## 58. Threat Intelligence Confidence vs Detection Confidence
 
 These are different.
 
-### TI Confidence
+#### TI Confidence
 
 How confident the intelligence provider is about the indicator.
 
-### Detection Confidence
+#### Detection Confidence
 
 How confident the SOC is that the observed activity represents malicious behavior.
 
@@ -1327,7 +1327,7 @@ Detection confidence may be lower.
 
 ---
 
-# 59. Threat Intelligence Expiration
+## 59. Threat Intelligence Expiration
 
 Old indicators can become:
 
@@ -1352,7 +1352,7 @@ are important.
 
 ---
 
-# 60. Threat Intelligence False Positives
+## 60. Threat Intelligence False Positives
 
 Possible causes:
 
@@ -1369,7 +1369,7 @@ Compromised-but-recovered Infrastructure
 
 ---
 
-# 61. Avoid Blind Blocking
+## 61. Avoid Blind Blocking
 
 A dangerous workflow is:
 
@@ -1401,7 +1401,7 @@ Automated blocking should be reserved for well-understood, high-confidence scena
 
 ---
 
-# 62. Threat Intelligence Scoring
+## 62. Threat Intelligence Scoring
 
 An organization may score an IOC based on:
 
@@ -1431,7 +1431,7 @@ This is an illustrative model, not a universal formula.
 
 ---
 
-# 63. Threat Intelligence Tags
+## 63. Threat Intelligence Tags
 
 Useful tags:
 
@@ -1451,7 +1451,7 @@ Tags enable filtering and detection.
 
 ---
 
-# 64. Malware Family Context
+## 64. Malware Family Context
 
 Example:
 
@@ -1473,7 +1473,7 @@ This helps analysts investigate beyond the raw indicator.
 
 ---
 
-# 65. Threat Actor Context
+## 65. Threat Actor Context
 
 Threat intelligence may associate indicators with:
 
@@ -1489,7 +1489,7 @@ Attribution should be treated carefully because it can be uncertain.
 
 ---
 
-# 66. Attribution Confidence
+## 66. Attribution Confidence
 
 Example:
 
@@ -1519,7 +1519,7 @@ Spoofed
 
 ---
 
-# 67. STIX
+## 67. STIX
 
 **STIX** is a standardized language/model for representing cyber threat intelligence.
 
@@ -1537,7 +1537,7 @@ Observables
 
 ---
 
-# 68. STIX Objects
+## 68. STIX Objects
 
 Conceptually:
 
@@ -1559,7 +1559,7 @@ This allows richer intelligence relationships than simple IOC lists.
 
 ---
 
-# 69. TAXII
+## 69. TAXII
 
 **TAXII** is a protocol used to exchange cyber threat intelligence.
 
@@ -1576,7 +1576,7 @@ Threat Intelligence Provider
 
 ---
 
-# 70. STIX + TAXII
+## 70. STIX + TAXII
 
 Simple mental model:
 
@@ -1594,7 +1594,7 @@ They are complementary concepts.
 
 ---
 
-# 71. SIEM Threat Intelligence Pipeline
+## 71. SIEM Threat Intelligence Pipeline
 
 ```text
              TI Sources
@@ -1634,7 +1634,7 @@ They are complementary concepts.
 
 ---
 
-# 72. Feed Failure
+## 72. Feed Failure
 
 What happens if the threat feed stops updating?
 
@@ -1659,7 +1659,7 @@ API Availability
 
 ---
 
-# 73. Feed Health Monitoring
+## 73. Feed Health Monitoring
 
 Example:
 
@@ -1692,7 +1692,7 @@ Investigate Feed Health
 
 ---
 
-# 74. Feed Quality Metrics
+## 74. Feed Quality Metrics
 
 Track:
 
@@ -1708,7 +1708,7 @@ Detection Yield
 
 ---
 
-# 75. Match Rate
+## 75. Match Rate
 
 If:
 
@@ -1744,7 +1744,7 @@ Overly Broad Matching
 
 ---
 
-# 76. Detection Yield
+## 76. Detection Yield
 
 Measure:
 
@@ -1760,7 +1760,7 @@ This helps determine whether the feed is actually useful.
 
 ---
 
-# 77. Threat Intelligence Tuning
+## 77. Threat Intelligence Tuning
 
 If a feed generates too much noise:
 
@@ -1780,7 +1780,7 @@ Do not simply discard the entire feed.
 
 ---
 
-# 78. Threat Intelligence Use Cases
+## 78. Threat Intelligence Use Cases
 
 Common SIEM use cases:
 
@@ -1799,7 +1799,7 @@ Campaign Tracking
 
 ---
 
-# 79. Use Case – Malicious IP
+## 79. Use Case – Malicious IP
 
 ```text
 Firewall Event
@@ -1817,7 +1817,7 @@ Alert
 
 ---
 
-# 80. Use Case – Malicious Domain
+## 80. Use Case – Malicious Domain
 
 ```text
 DNS Event
@@ -1833,7 +1833,7 @@ Alert
 
 ---
 
-# 81. Use Case – Malware Hash
+## 81. Use Case – Malware Hash
 
 ```text
 EDR Event
@@ -1849,7 +1849,7 @@ High-Confidence Alert
 
 ---
 
-# 82. Use Case – Phishing
+## 82. Use Case – Phishing
 
 Combine:
 
@@ -1871,7 +1871,7 @@ Threat Intelligence
 
 ---
 
-# 83. Use Case – C2
+## 83. Use Case – C2
 
 Combine:
 
@@ -1893,7 +1893,7 @@ High-Confidence C2 Detection
 
 ---
 
-# 84. Threat Intelligence and Detection Engineering
+## 84. Threat Intelligence and Detection Engineering
 
 Threat intelligence can directly support detection development.
 
@@ -1917,7 +1917,7 @@ Deploy
 
 ---
 
-# 85. Threat Intelligence and Threat Hunting
+## 85. Threat Intelligence and Threat Hunting
 
 Example:
 
@@ -1941,7 +1941,7 @@ This turns intelligence into proactive hunting.
 
 ---
 
-# 86. Historical Retro-Hunting
+## 86. Historical Retro-Hunting
 
 When a new IOC becomes known:
 
@@ -1963,7 +1963,7 @@ Retention determines how far back you can search.
 
 ---
 
-# 87. IOC Retro-Hunting Example
+## 87. IOC Retro-Hunting Example
 
 New domain:
 
@@ -1993,7 +1993,7 @@ Connections
 
 ---
 
-# 88. First Seen / Last Seen
+## 88. First Seen / Last Seen
 
 Useful intelligence fields:
 
@@ -2016,7 +2016,7 @@ This can help establish timelines.
 
 ---
 
-# 89. Threat Intelligence and Incident Response
+## 89. Threat Intelligence and Incident Response
 
 During an incident:
 
@@ -2038,7 +2038,7 @@ Contain
 
 ---
 
-# 90. IOC Blocking
+## 90. IOC Blocking
 
 Possible automated response:
 
@@ -2068,7 +2068,7 @@ Automation should include safeguards and authorization.
 
 ---
 
-# 91. Threat Intelligence + SOAR
+## 91. Threat Intelligence + SOAR
 
 Example:
 
@@ -2094,7 +2094,7 @@ This connects intelligence to automated response.
 
 ---
 
-# 92. Practical Lab
+## 92. Practical Lab
 
 Build a simple IOC enrichment workflow.
 
@@ -2134,7 +2134,7 @@ Generate Alert
 
 ---
 
-# 93. Practical IOC Exercise
+## 93. Practical IOC Exercise
 
 Given:
 
@@ -2174,7 +2174,7 @@ What happened before and after?
 
 ---
 
-# 94. Practical Threat Intelligence Exercise
+## 94. Practical Threat Intelligence Exercise
 
 Suppose a threat report identifies:
 
@@ -2207,7 +2207,7 @@ IOC Timeline
 
 ---
 
-# 95. Practical Detection Exercise
+## 95. Practical Detection Exercise
 
 Create:
 
@@ -2238,67 +2238,67 @@ MITRE Technique
 
 ---
 
-# 96. Interview Questions
+## 96. Interview Questions
 
-### What is threat intelligence?
+#### What is threat intelligence?
 
 > Information about threats that has been collected, analyzed, contextualized, and made useful for security decisions.
 
-### What is an IOC?
+#### What is an IOC?
 
 > An observable artifact that may indicate malicious activity or compromise, such as an IP, domain, URL, or file hash.
 
-### What are common IOC types?
+#### What are common IOC types?
 
 > IP addresses, domains, URLs, file hashes, email addresses, certificates, filenames, and other observable artifacts.
 
-### What is the difference between threat data and threat intelligence?
+#### What is the difference between threat data and threat intelligence?
 
 > Threat data is raw information; threat intelligence adds analysis, context, confidence, relationships, and actionable meaning.
 
-### What is the difference between IOC and IOA?
+#### What is the difference between IOC and IOA?
 
 > An IOC is an artifact associated with compromise, while an IOA focuses on behavior indicating an attack.
 
-### Why is IOC age important?
+#### Why is IOC age important?
 
 > Indicators can become stale, reassigned, or benign, so old indicators may become less reliable.
 
-### What is IOC enrichment?
+#### What is IOC enrichment?
 
 > Adding contextual information such as reputation, confidence, threat family, source, first seen, and last seen to an indicator or event.
 
-### What is STIX?
+#### What is STIX?
 
 > A standardized framework for representing and sharing structured cyber threat intelligence.
 
-### What is TAXII?
+#### What is TAXII?
 
 > A protocol used to exchange cyber threat intelligence, commonly with STIX-formatted information.
 
-### Why shouldn't every IOC match automatically create a critical alert?
+#### Why shouldn't every IOC match automatically create a critical alert?
 
 > Because indicators vary in confidence, freshness, context, and reliability, and many can generate false positives.
 
-### How would you integrate threat intelligence with a SIEM?
+#### How would you integrate threat intelligence with a SIEM?
 
 > Ingest feeds through APIs or supported protocols, normalize and validate indicators, store them in a searchable intelligence repository, enrich telemetry, match indicators against events, correlate results with context, and generate prioritized alerts.
 
-### What is IOC expiration?
+#### What is IOC expiration?
 
 > Removing or deactivating indicators after they become stale or no longer meet intelligence criteria.
 
-### What is retro-hunting?
+#### What is retro-hunting?
 
 > Searching historical security telemetry for newly discovered indicators or behaviors to determine whether they were previously present.
 
-### How do you evaluate a threat intelligence feed?
+#### How do you evaluate a threat intelligence feed?
 
 > Consider accuracy, freshness, coverage, false positives, context, update reliability, source quality, and detection yield.
 
 ---
 
-# 97. Quick Revision
+## 97. Quick Revision
 
 ```text
 THREAT INTELLIGENCE
@@ -2346,7 +2346,7 @@ IOC LIFECYCLE
 
 ---
 
-# 98. Golden Rules
+## 98. Golden Rules
 
 ```text
 1. Threat intelligence is more valuable when it has context.
@@ -2392,7 +2392,7 @@ IOC LIFECYCLE
 
 ---
 
-# 99. Final Mental Model
+## 99. Final Mental Model
 
 Think about threat intelligence integration as:
 
@@ -2452,7 +2452,7 @@ WHAT ACTION?
 
 ---
 
-# 100. Chapter Summary
+## 100. Chapter Summary
 
 Threat intelligence extends SIEM visibility beyond the organization's own telemetry.
 

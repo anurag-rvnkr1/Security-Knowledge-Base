@@ -1,10 +1,10 @@
 # 12-Kerberos-and-NTLM.md
 
-# Part 1 — Windows Authentication Fundamentals
+## Part 1 — Windows Authentication Fundamentals
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -23,7 +23,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Every day, millions of users log into Windows computers.
 
@@ -47,7 +47,7 @@ This entire process is called **Authentication**.
 
 ---
 
-# What is Authentication?
+## What is Authentication?
 
 Authentication is the process of verifying the identity of a user, computer, or service.
 
@@ -72,7 +72,7 @@ All require authentication.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 These two terms are often confused.
 
@@ -87,7 +87,7 @@ They are completely different.
 
 ---
 
-# Example
+## Example
 
 A user logs into Windows.
 
@@ -127,7 +127,7 @@ Authorization
 
 ---
 
-# Real-Life Analogy
+## Real-Life Analogy
 
 Airport Example
 
@@ -157,7 +157,7 @@ Identity and permissions are separate decisions.
 
 ---
 
-# Identity in Active Directory
+## Identity in Active Directory
 
 Every security principal has an identity.
 
@@ -189,7 +189,7 @@ Windows uses SIDs internally rather than usernames.
 
 ---
 
-# Authentication Components
+## Authentication Components
 
 The authentication process involves several components.
 
@@ -219,7 +219,7 @@ Access Granted
 
 ---
 
-# Windows Authentication Protocols
+## Windows Authentication Protocols
 
 Microsoft Active Directory primarily supports:
 
@@ -244,7 +244,7 @@ NTLM (Fallback)
 
 ---
 
-# Why Two Protocols?
+## Why Two Protocols?
 
 Historically:
 
@@ -270,7 +270,7 @@ Modern Active Directory environments use Kerberos by default, while NTLM remains
 
 ---
 
-# Evolution of Windows Authentication
+## Evolution of Windows Authentication
 
 ```
 Windows NT
@@ -314,7 +314,7 @@ Kerberos Preferred
 
 ---
 
-# What is Kerberos?
+## What is Kerberos?
 
 Kerberos is a secure, ticket-based authentication protocol.
 
@@ -332,7 +332,7 @@ Kerberos is the default authentication protocol in Active Directory.
 
 ---
 
-# What is NTLM?
+## What is NTLM?
 
 NTLM (NT LAN Manager) is Microsoft's older challenge-response authentication protocol.
 
@@ -347,7 +347,7 @@ NTLM is still supported but should be minimized where possible.
 
 ---
 
-# Authentication Flow Overview
+## Authentication Flow Overview
 
 High-level process:
 
@@ -381,7 +381,7 @@ Desktop Loaded
 
 ---
 
-# What is a Security Token?
+## What is a Security Token?
 
 After successful authentication, Windows creates an **Access Token** (also called a Security Token).
 
@@ -398,7 +398,7 @@ Applications use this token to determine what the user is allowed to access.
 
 ---
 
-# Simplified Authentication Process
+## Simplified Authentication Process
 
 ```
 User
@@ -432,7 +432,7 @@ User Logged In
 
 ---
 
-# Single Sign-On (SSO)
+## Single Sign-On (SSO)
 
 One of Kerberos' biggest advantages is **Single Sign-On**.
 
@@ -488,7 +488,7 @@ The user authenticates once and can access multiple domain resources without rep
 
 ---
 
-# Domain Logon Example
+## Domain Logon Example
 
 User:
 
@@ -552,7 +552,7 @@ No Additional Password Prompt
 
 ---
 
-# Authentication in a Multi-Site Environment
+## Authentication in a Multi-Site Environment
 
 Suppose an organization has:
 
@@ -575,7 +575,7 @@ This minimizes WAN traffic and improves logon performance.
 
 ---
 
-# Local Account vs Domain Account
+## Local Account vs Domain Account
 
 | Local Account | Domain Account |
 |--------------|----------------|
@@ -586,22 +586,22 @@ This minimizes WAN traffic and improves logon performance.
 
 ---
 
-# Authentication Factors
+## Authentication Factors
 
 Authentication can rely on:
 
-### Something You Know
+#### Something You Know
 
 - Password
 - PIN
 
-### Something You Have
+#### Something You Have
 
 - Smart Card
 - Hardware Token
 - Security Key
 
-### Something You Are
+#### Something You Are
 
 - Fingerprint
 - Face Recognition
@@ -611,7 +611,7 @@ Modern enterprise environments often combine multiple factors.
 
 ---
 
-# Enterprise Authentication Example
+## Enterprise Authentication Example
 
 A multinational organization:
 
@@ -657,7 +657,7 @@ The user authenticates once while securely accessing multiple services.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Authentication is the first line of defense.
 
@@ -679,21 +679,21 @@ Organizations should:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Observe authentication behavior.
 
-### Step 1
+#### Step 1
 
 Join a Windows client to an Active Directory domain.
 
-### Step 2
+#### Step 2
 
 Log on using a domain account.
 
-### Step 3
+#### Step 3
 
 Open Command Prompt and run:
 
@@ -703,7 +703,7 @@ whoami
 
 Verify the logged-in domain user.
 
-### Step 4
+#### Step 4
 
 Run:
 
@@ -713,7 +713,7 @@ whoami /groups
 
 Review group memberships contained in the access token.
 
-### Step 5
+#### Step 5
 
 Run:
 
@@ -725,39 +725,39 @@ View the privileges assigned to the current logon session.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is authentication?
+#### Q1: What is authentication?
 
 **Answer:** Authentication is the process of verifying the identity of a user, computer, or service.
 
 ---
 
-### Q2: What is authorization?
+#### Q2: What is authorization?
 
 **Answer:** Authorization determines what an authenticated user is allowed to access.
 
 ---
 
-### Q3: Which authentication protocol is preferred in Active Directory?
+#### Q3: Which authentication protocol is preferred in Active Directory?
 
 **Answer:** Kerberos.
 
 ---
 
-### Q4: Why is Kerberos preferred over NTLM?
+#### Q4: Why is Kerberos preferred over NTLM?
 
 **Answer:** Kerberos provides ticket-based authentication, mutual authentication, better security, and Single Sign-On.
 
 ---
 
-### Q5: What is a Security Token?
+#### Q5: What is a Security Token?
 
 **Answer:** A security token contains the user's SID, group memberships, privileges, and other information used by Windows to authorize access.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use Kerberos wherever possible.
 - Reduce NTLM usage to legacy compatibility scenarios.
@@ -768,7 +768,7 @@ View the privileges assigned to the current logon session.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Confusing authentication with authorization.
 - Assuming Kerberos and NTLM are interchangeable.
@@ -778,7 +778,7 @@ View the privileges assigned to the current logon session.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication verifies identity; authorization determines permissions.
 - Active Directory primarily uses Kerberos, with NTLM available for compatibility.
@@ -788,13 +788,13 @@ View the privileges assigned to the current logon session.
 
 ---
 
-# 12-Kerberos-and-NTLM.md
+## 12-Kerberos-and-NTLM.md
 
-# Part 2 — Kerberos Architecture, Ticket Granting, KDC, AS, TGS, PAC and Authentication Flow
+## Part 2 — Kerberos Architecture, Ticket Granting, KDC, AS, TGS, PAC and Authentication Flow
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -813,7 +813,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Kerberos is one of the most important technologies in Active Directory.
 
@@ -827,7 +827,7 @@ These tickets prove the user's identity securely.
 
 ---
 
-# What is Kerberos?
+## What is Kerberos?
 
 Kerberos is:
 
@@ -844,7 +844,7 @@ Kerberos provides:
 
 ---
 
-# Why Ticket-Based Authentication?
+## Why Ticket-Based Authentication?
 
 Imagine logging into ten different servers.
 
@@ -904,7 +904,7 @@ The password is used only during the initial authentication process.
 
 ---
 
-# Kerberos Components
+## Kerberos Components
 
 Kerberos consists of several major components.
 
@@ -934,7 +934,7 @@ Application Server
 
 ---
 
-# Key Distribution Center (KDC)
+## Key Distribution Center (KDC)
 
 The **Key Distribution Center (KDC)** is the heart of Kerberos.
 
@@ -949,7 +949,7 @@ The KDC has two logical services:
 
 ---
 
-# KDC Responsibilities
+## KDC Responsibilities
 
 The KDC:
 
@@ -963,7 +963,7 @@ Without the KDC, Kerberos authentication cannot occur.
 
 ---
 
-# Authentication Server (AS)
+## Authentication Server (AS)
 
 The Authentication Server performs the initial authentication.
 
@@ -977,7 +977,7 @@ Think of the AS as the "identity verifier."
 
 ---
 
-# Ticket Granting Server (TGS)
+## Ticket Granting Server (TGS)
 
 After the user has a TGT, they no longer need to authenticate with their password for every service.
 
@@ -993,7 +993,7 @@ Think of the TGS as the "ticket issuer."
 
 ---
 
-# Kerberos Ticket Types
+## Kerberos Ticket Types
 
 Kerberos primarily uses two ticket types.
 
@@ -1019,7 +1019,7 @@ Access Resource
 
 ---
 
-# Ticket Granting Ticket (TGT)
+## Ticket Granting Ticket (TGT)
 
 The **Ticket Granting Ticket** is issued immediately after successful authentication.
 
@@ -1035,7 +1035,7 @@ It is presented only to the TGS.
 
 ---
 
-# Service Ticket
+## Service Ticket
 
 When the user wants to access a service such as:
 
@@ -1051,7 +1051,7 @@ The Service Ticket is presented to the destination service to prove the user's i
 
 ---
 
-# Privilege Attribute Certificate (PAC)
+## Privilege Attribute Certificate (PAC)
 
 A Service Ticket contains a structure called the **Privilege Attribute Certificate (PAC).**
 
@@ -1067,7 +1067,7 @@ Windows uses the PAC to determine what the authenticated user is authorized to d
 
 ---
 
-# Service Principal Name (SPN)
+## Service Principal Name (SPN)
 
 Every Kerberos-enabled service is identified by a **Service Principal Name (SPN).**
 
@@ -1087,7 +1087,7 @@ SPNs uniquely identify services within Active Directory.
 
 ---
 
-# Kerberos Authentication Flow
+## Kerberos Authentication Flow
 
 The complete authentication process occurs in three phases:
 
@@ -1121,7 +1121,7 @@ Let's examine each phase.
 
 ---
 
-# Phase 1 — Initial Authentication
+## Phase 1 — Initial Authentication
 
 ```
 User
@@ -1153,7 +1153,7 @@ The client now possesses a Ticket Granting Ticket.
 
 ---
 
-# Phase 2 — Request Service Ticket
+## Phase 2 — Request Service Ticket
 
 Suppose the user wants to access:
 
@@ -1183,7 +1183,7 @@ The TGS verifies the TGT and issues a Service Ticket.
 
 ---
 
-# Phase 3 — Access Resource
+## Phase 3 — Access Resource
 
 ```
 Client
@@ -1209,7 +1209,7 @@ The user gains access without entering the password again.
 
 ---
 
-# Complete Kerberos Flow
+## Complete Kerberos Flow
 
 ```
           User
@@ -1264,7 +1264,7 @@ The user gains access without entering the password again.
 
 ---
 
-# Ticket Lifetime
+## Ticket Lifetime
 
 Kerberos tickets are temporary.
 
@@ -1284,7 +1284,7 @@ Ticket lifetime is configurable through Group Policy.
 
 ---
 
-# Ticket Cache
+## Ticket Cache
 
 Windows stores Kerberos tickets in memory.
 
@@ -1312,7 +1312,7 @@ This avoids repeated authentication requests.
 
 ---
 
-# Viewing Kerberos Tickets
+## Viewing Kerberos Tickets
 
 Administrators can inspect cached tickets using:
 
@@ -1331,7 +1331,7 @@ Example output includes:
 
 ---
 
-# Mutual Authentication
+## Mutual Authentication
 
 Unlike many legacy authentication methods,
 
@@ -1353,7 +1353,7 @@ This reduces the risk of impersonation attacks.
 
 ---
 
-# Encryption in Kerberos
+## Encryption in Kerberos
 
 Kerberos supports modern encryption algorithms.
 
@@ -1366,7 +1366,7 @@ Older environments may still support legacy algorithms for compatibility, but mo
 
 ---
 
-# Enterprise Authentication Example
+## Enterprise Authentication Example
 
 Company:
 
@@ -1424,7 +1424,7 @@ Alice authenticates once while securely accessing multiple enterprise resources.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Kerberos provides several important security benefits:
 
@@ -1444,21 +1444,21 @@ To strengthen Kerberos security:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Inspect Kerberos tickets.
 
-### Step 1
+#### Step 1
 
 Log into a domain-joined Windows computer.
 
-### Step 2
+#### Step 2
 
 Open Command Prompt.
 
-### Step 3
+#### Step 3
 
 Run:
 
@@ -1473,11 +1473,11 @@ Observe:
 - Expiration Time
 - Encryption Type
 
-### Step 4
+#### Step 4
 
 Access a network file share.
 
-### Step 5
+#### Step 5
 
 Run:
 
@@ -1491,39 +1491,39 @@ Notice that a new Service Ticket has been added for the accessed service.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is the Key Distribution Center (KDC)?
+#### Q1: What is the Key Distribution Center (KDC)?
 
 **Answer:** The KDC is the Kerberos service running on Domain Controllers that authenticates users and issues Kerberos tickets.
 
 ---
 
-### Q2: What is a Ticket Granting Ticket (TGT)?
+#### Q2: What is a Ticket Granting Ticket (TGT)?
 
 **Answer:** A TGT is issued after successful authentication and allows a user to request Service Tickets without repeatedly entering credentials.
 
 ---
 
-### Q3: What is a Service Ticket?
+#### Q3: What is a Service Ticket?
 
 **Answer:** A Service Ticket allows an authenticated client to access a specific network service, such as a file server or SQL Server.
 
 ---
 
-### Q4: What is the role of the Ticket Granting Server (TGS)?
+#### Q4: What is the role of the Ticket Granting Server (TGS)?
 
 **Answer:** The TGS validates the user's TGT and issues Service Tickets for requested services.
 
 ---
 
-### Q5: What information is stored in the Privilege Attribute Certificate (PAC)?
+#### Q5: What information is stored in the Privilege Attribute Certificate (PAC)?
 
 **Answer:** The PAC contains authorization-related information such as the user's SID, group memberships, privileges, and logon details.
 
 ---
 
-### Q6: What command displays Kerberos tickets?
+#### Q6: What command displays Kerberos tickets?
 
 **Answer:**
 
@@ -1533,7 +1533,7 @@ klist
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use Kerberos as the default authentication protocol.
 - Prefer AES-based encryption.
@@ -1544,7 +1544,7 @@ klist
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Confusing the KDC with the Domain Controller (the KDC is a service hosted on a Domain Controller).
 - Assuming the TGT is sent directly to application servers.
@@ -1554,7 +1554,7 @@ klist
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Kerberos is a secure, ticket-based authentication protocol used by Active Directory.
 - Every Domain Controller hosts a Key Distribution Center (KDC).
@@ -1565,13 +1565,13 @@ klist
 
 ---
 
-# 12-Kerberos-and-NTLM.md
+## 12-Kerberos-and-NTLM.md
 
-# Part 3 — NTLM Authentication, NTLM Authentication Flow, Comparison with Kerberos, and Authentication Fallback
+## Part 3 — NTLM Authentication, NTLM Authentication Flow, Comparison with Kerberos, and Authentication Fallback
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1590,7 +1590,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Before Active Directory adopted Kerberos, Microsoft Windows primarily used **NTLM (NT LAN Manager)** for authentication.
 
@@ -1607,7 +1607,7 @@ Understanding NTLM is essential because security professionals frequently encoun
 
 ---
 
-# What is NTLM?
+## What is NTLM?
 
 NTLM (NT LAN Manager) is Microsoft's legacy authentication protocol.
 
@@ -1617,7 +1617,7 @@ Instead, it uses a **challenge-response** mechanism to verify a user's identity 
 
 ---
 
-# Evolution of NTLM
+## Evolution of NTLM
 
 ```
 LAN Manager (LM)
@@ -1645,7 +1645,7 @@ Modern Windows environments primarily use NTLMv2 where NTLM is required.
 
 ---
 
-# Why Was NTLM Created?
+## Why Was NTLM Created?
 
 In early Windows networks:
 
@@ -1661,7 +1661,7 @@ Microsoft developed NTLM to provide:
 
 ---
 
-# Basic NTLM Components
+## Basic NTLM Components
 
 ```
 User
@@ -1683,7 +1683,7 @@ Unlike Kerberos, there is no Key Distribution Center (KDC) or ticketing system.
 
 ---
 
-# NTLM Authentication Principle
+## NTLM Authentication Principle
 
 NTLM works using three main steps:
 
@@ -1695,7 +1695,7 @@ This is commonly called the **NTLM Challenge-Response Process**.
 
 ---
 
-# High-Level NTLM Flow
+## High-Level NTLM Flow
 
 ```
 Client
@@ -1739,7 +1739,7 @@ Authentication Result
 
 ---
 
-# Step 1 — Negotiate
+## Step 1 — Negotiate
 
 The client contacts the server.
 
@@ -1759,7 +1759,7 @@ The negotiation message includes:
 
 ---
 
-# Step 2 — Challenge
+## Step 2 — Challenge
 
 The server generates a random number.
 
@@ -1787,7 +1787,7 @@ Client
 
 ---
 
-# Why Use a Challenge?
+## Why Use a Challenge?
 
 Without a random challenge:
 
@@ -1797,7 +1797,7 @@ The random challenge ensures that every authentication attempt is unique.
 
 ---
 
-# Step 3 — Response
+## Step 3 — Response
 
 The client:
 
@@ -1821,7 +1821,7 @@ The user's actual password is **never transmitted**.
 
 ---
 
-# Validation
+## Validation
 
 The server forwards the response to the Domain Controller.
 
@@ -1845,7 +1845,7 @@ Authentication Failed
 
 ---
 
-# Complete NTLM Authentication Flow
+## Complete NTLM Authentication Flow
 
 ```
         Client
@@ -1893,7 +1893,7 @@ Authentication Failed
 
 ---
 
-# NTLM Password Storage
+## NTLM Password Storage
 
 Windows does **not** store user passwords in plaintext.
 
@@ -1915,7 +1915,7 @@ During authentication, Windows compares cryptographic values rather than passwor
 
 ---
 
-# NTLMv1 vs NTLMv2
+## NTLMv1 vs NTLMv2
 
 | Feature | NTLMv1 | NTLMv2 |
 |----------|---------|---------|
@@ -1929,7 +1929,7 @@ Modern enterprise environments should disable NTLMv1 whenever possible.
 
 ---
 
-# Kerberos vs NTLM
+## Kerberos vs NTLM
 
 | Feature | Kerberos | NTLM |
 |----------|-----------|------|
@@ -1944,7 +1944,7 @@ Modern enterprise environments should disable NTLMv1 whenever possible.
 
 ---
 
-# Authentication Negotiation
+## Authentication Negotiation
 
 When a Windows client accesses a domain resource:
 
@@ -1968,7 +1968,7 @@ This automatic selection process is handled by Windows.
 
 ---
 
-# When Does Windows Use NTLM?
+## When Does Windows Use NTLM?
 
 Windows may use NTLM when:
 
@@ -1981,7 +1981,7 @@ Windows may use NTLM when:
 
 ---
 
-# Example 1 — Local Login
+## Example 1 — Local Login
 
 ```
 User
@@ -2003,7 +2003,7 @@ No Active Directory is involved.
 
 ---
 
-# Example 2 — Legacy File Server
+## Example 2 — Legacy File Server
 
 ```
 Domain User
@@ -2021,7 +2021,7 @@ Because the device does not support Kerberos.
 
 ---
 
-# Example 3 — Workgroup Computer
+## Example 3 — Workgroup Computer
 
 ```
 PC A
@@ -2043,7 +2043,7 @@ Since there is no Domain Controller or KDC, Kerberos cannot be used.
 
 ---
 
-# Example 4 — SPN Problem
+## Example 4 — SPN Problem
 
 ```
 Client
@@ -2069,7 +2069,7 @@ This is a common troubleshooting scenario.
 
 ---
 
-# NTLM Authentication in an Enterprise
+## NTLM Authentication in an Enterprise
 
 Consider an organization with:
 
@@ -2109,7 +2109,7 @@ The organization continues using NTLM until the application is upgraded.
 
 ---
 
-# Advantages of NTLM
+## Advantages of NTLM
 
 - Simple protocol
 - Works without Kerberos
@@ -2119,7 +2119,7 @@ The organization continues using NTLM until the application is upgraded.
 
 ---
 
-# Limitations of NTLM
+## Limitations of NTLM
 
 - No ticketing system
 - Limited Single Sign-On
@@ -2130,7 +2130,7 @@ The organization continues using NTLM until the application is upgraded.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 From a defensive standpoint:
 
@@ -2146,21 +2146,21 @@ NTLM itself is not inherently malicious, but reducing unnecessary NTLM usage dec
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Identify whether Kerberos or NTLM is being used.
 
-### Step 1
+#### Step 1
 
 Join a Windows client to a domain.
 
-### Step 2
+#### Step 2
 
 Access a domain file share.
 
-### Step 3
+#### Step 3
 
 Run:
 
@@ -2170,11 +2170,11 @@ klist
 
 If a Service Ticket appears, Kerberos is likely being used.
 
-### Step 4
+#### Step 4
 
 Review the Security log in Event Viewer on the server to determine the authentication package used for recent logon events.
 
-### Step 5
+#### Step 5
 
 Document:
 
@@ -2185,21 +2185,21 @@ Document:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What does NTLM stand for?
+#### Q1: What does NTLM stand for?
 
 **Answer:** NT LAN Manager.
 
 ---
 
-### Q2: Does NTLM use tickets?
+#### Q2: Does NTLM use tickets?
 
 **Answer:** No. NTLM uses a challenge-response authentication mechanism.
 
 ---
 
-### Q3: What are the three phases of NTLM authentication?
+#### Q3: What are the three phases of NTLM authentication?
 
 **Answer:**
 
@@ -2209,25 +2209,25 @@ Document:
 
 ---
 
-### Q4: Which is more secure: Kerberos or NTLM?
+#### Q4: Which is more secure: Kerberos or NTLM?
 
 **Answer:** Kerberos.
 
 ---
 
-### Q5: Why might Windows fall back to NTLM?
+#### Q5: Why might Windows fall back to NTLM?
 
 **Answer:** Kerberos may be unavailable due to local accounts, workgroup systems, missing SPNs, unsupported applications, or other compatibility scenarios.
 
 ---
 
-### Q6: Should NTLMv1 be used today?
+#### Q6: Should NTLMv1 be used today?
 
 **Answer:** No. Organizations should disable NTLMv1 and use NTLMv2 only when NTLM is absolutely necessary.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use Kerberos as the primary authentication protocol.
 - Disable NTLMv1 across the enterprise.
@@ -2238,7 +2238,7 @@ Document:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming all Windows authentication uses Kerberos.
 - Believing NTLM transmits plaintext passwords.
@@ -2248,7 +2248,7 @@ Document:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - NTLM is Microsoft's legacy challenge-response authentication protocol.
 - Kerberos is the preferred authentication protocol in Active Directory.
@@ -2258,13 +2258,13 @@ Document:
 
 ---
 
-# 12-Kerberos-and-NTLM.md
+## 12-Kerberos-and-NTLM.md
 
-# Part 4 — Kerberos Delegation, SPNs, Authentication Troubleshooting, Enterprise Security and Best Practices
+## Part 4 — Kerberos Delegation, SPNs, Authentication Troubleshooting, Enterprise Security and Best Practices
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -2282,7 +2282,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 So far, we have learned:
 
@@ -2295,7 +2295,7 @@ In this final part, we will explore how enterprise applications authenticate use
 
 ---
 
-# What is Delegation?
+## What is Delegation?
 
 Delegation allows a service to access another service **on behalf of an authenticated user**.
 
@@ -2339,7 +2339,7 @@ This enables seamless multi-tier applications.
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 An employee opens:
 
@@ -2357,13 +2357,13 @@ Instead of asking the user to authenticate repeatedly, Kerberos delegation allow
 
 ---
 
-# Types of Kerberos Delegation
+## Types of Kerberos Delegation
 
 Active Directory supports three primary delegation models.
 
 ---
 
-# 1. Unconstrained Delegation
+## 1. Unconstrained Delegation
 
 ```
 User
@@ -2379,12 +2379,12 @@ Any Service
 
 The server can request tickets to **any** service for the user.
 
-### Advantages
+#### Advantages
 
 - Simple configuration
 - Supports many legacy applications
 
-### Disadvantages
+#### Disadvantages
 
 - Broad trust
 - Large attack surface
@@ -2392,7 +2392,7 @@ The server can request tickets to **any** service for the user.
 
 ---
 
-# 2. Constrained Delegation
+## 2. Constrained Delegation
 
 ```
 User
@@ -2408,7 +2408,7 @@ Only SQL Server
 
 The administrator explicitly specifies which services may receive delegated credentials.
 
-### Advantages
+#### Advantages
 
 - Better security
 - Reduced attack surface
@@ -2416,7 +2416,7 @@ The administrator explicitly specifies which services may receive delegated cred
 
 ---
 
-# 3. Resource-Based Constrained Delegation (RBCD)
+## 3. Resource-Based Constrained Delegation (RBCD)
 
 Instead of configuring the front-end server,
 
@@ -2431,7 +2431,7 @@ This model is easier to manage in many modern environments and provides greater 
 
 ---
 
-# Delegation Comparison
+## Delegation Comparison
 
 | Feature | Unconstrained | Constrained | Resource-Based Constrained |
 |----------|---------------|-------------|----------------------------|
@@ -2442,7 +2442,7 @@ This model is easier to manage in many modern environments and provides greater 
 
 ---
 
-# Service Principal Names (SPNs)
+## Service Principal Names (SPNs)
 
 Every Kerberos-enabled service must have a unique identifier.
 
@@ -2470,7 +2470,7 @@ MSSQLSvc/SQL01:1433
 
 ---
 
-# Why SPNs Matter
+## Why SPNs Matter
 
 When a client requests a Service Ticket,
 
@@ -2502,7 +2502,7 @@ Possible NTLM fallback
 
 ---
 
-# SPN Lookup Process
+## SPN Lookup Process
 
 ```
 Client
@@ -2539,7 +2539,7 @@ or NTLM Fallback
 
 ---
 
-# Viewing SPNs
+## Viewing SPNs
 
 Administrators commonly use:
 
@@ -2557,7 +2557,7 @@ This lists the SPNs registered to the specified account.
 
 ---
 
-# Registering SPNs
+## Registering SPNs
 
 Example command:
 
@@ -2571,7 +2571,7 @@ Avoid manually creating duplicate SPNs.
 
 ---
 
-# Duplicate SPNs
+## Duplicate SPNs
 
 Duplicate SPNs cause:
 
@@ -2599,7 +2599,7 @@ Only one object should own a particular SPN.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Kerberos depends on accurate system clocks.
 
@@ -2625,7 +2625,7 @@ Time synchronization is therefore essential.
 
 ---
 
-# Ticket Cache
+## Ticket Cache
 
 Windows stores Kerberos tickets in memory.
 
@@ -2657,7 +2657,7 @@ klist
 
 ---
 
-# Purging Cached Tickets
+## Purging Cached Tickets
 
 For troubleshooting:
 
@@ -2671,9 +2671,9 @@ New tickets are obtained as needed.
 
 ---
 
-# Common Kerberos Authentication Issues
+## Common Kerberos Authentication Issues
 
-### DNS Problems
+#### DNS Problems
 
 Symptoms:
 
@@ -2683,7 +2683,7 @@ Symptoms:
 
 ---
 
-### Incorrect SPNs
+#### Incorrect SPNs
 
 Symptoms:
 
@@ -2693,7 +2693,7 @@ Symptoms:
 
 ---
 
-### Clock Skew
+#### Clock Skew
 
 Symptoms:
 
@@ -2703,7 +2703,7 @@ Symptoms:
 
 ---
 
-### Expired Tickets
+#### Expired Tickets
 
 Symptoms:
 
@@ -2713,7 +2713,7 @@ Symptoms:
 
 ---
 
-### Trust Problems
+#### Trust Problems
 
 Symptoms:
 
@@ -2723,7 +2723,7 @@ Symptoms:
 
 ---
 
-# Authentication Troubleshooting Workflow
+## Authentication Troubleshooting Workflow
 
 ```
 Authentication Failure
@@ -2775,7 +2775,7 @@ Resolve Issue
 
 ---
 
-# Useful Troubleshooting Commands
+## Useful Troubleshooting Commands
 
 Display cached tickets:
 
@@ -2817,7 +2817,7 @@ repadmin /replsummary
 
 ---
 
-# Event Viewer
+## Event Viewer
 
 Authentication events are commonly found in:
 
@@ -2839,7 +2839,7 @@ Useful information includes:
 
 ---
 
-# Enterprise Authentication Example
+## Enterprise Authentication Example
 
 Company:
 
@@ -2902,7 +2902,7 @@ The user authenticates once and securely accesses multiple enterprise services.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Kerberos is one of the most security-sensitive components of Active Directory.
 
@@ -2922,17 +2922,17 @@ These practices reduce the risk of authentication failures and strengthen the ov
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore Kerberos authentication.
 
-### Step 1
+#### Step 1
 
 Log into a domain-joined Windows computer.
 
-### Step 2
+#### Step 2
 
 Open Command Prompt.
 
@@ -2950,7 +2950,7 @@ Review:
 
 ---
 
-### Step 3
+#### Step 3
 
 Run:
 
@@ -2962,7 +2962,7 @@ Observe registered SPNs.
 
 ---
 
-### Step 4
+#### Step 4
 
 Purge cached tickets:
 
@@ -2972,7 +2972,7 @@ klist purge
 
 ---
 
-### Step 5
+#### Step 5
 
 Access a domain resource such as:
 
@@ -2982,7 +2982,7 @@ Access a domain resource such as:
 
 ---
 
-### Step 6
+#### Step 6
 
 Run:
 
@@ -2996,33 +2996,33 @@ Observe that new Service Tickets have been issued.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is Kerberos Delegation?
+#### Q1: What is Kerberos Delegation?
 
 **Answer:** Delegation allows a service to access another service on behalf of an authenticated user.
 
 ---
 
-### Q2: What is an SPN?
+#### Q2: What is an SPN?
 
 **Answer:** A Service Principal Name uniquely identifies a service instance so the KDC can issue the correct Kerberos Service Ticket.
 
 ---
 
-### Q3: What happens if an SPN is missing?
+#### Q3: What happens if an SPN is missing?
 
 **Answer:** Kerberos cannot locate the target service, which may result in authentication failure or a fallback to NTLM if applicable.
 
 ---
 
-### Q4: Why is time synchronization important?
+#### Q4: Why is time synchronization important?
 
 **Answer:** Kerberos relies on closely synchronized clocks to validate tickets and reduce the risk of replay attacks.
 
 ---
 
-### Q5: Which command displays cached Kerberos tickets?
+#### Q5: Which command displays cached Kerberos tickets?
 
 **Answer:**
 
@@ -3032,7 +3032,7 @@ klist
 
 ---
 
-### Q6: Which command lists SPNs?
+#### Q6: Which command lists SPNs?
 
 **Answer:**
 
@@ -3042,13 +3042,13 @@ setspn -L <AccountName>
 
 ---
 
-### Q7: Which delegation model is generally recommended?
+#### Q7: Which delegation model is generally recommended?
 
 **Answer:** Constrained Delegation or Resource-Based Constrained Delegation, depending on the application and administrative requirements.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use Kerberos as the primary authentication protocol.
 - Minimize NTLM usage.
@@ -3061,7 +3061,7 @@ setspn -L <AccountName>
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Creating duplicate SPNs.
 - Ignoring time synchronization issues.
@@ -3072,7 +3072,7 @@ setspn -L <AccountName>
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Kerberos delegation enables secure multi-tier authentication.
 - SPNs uniquely identify services for Kerberos ticket issuance.
@@ -3083,7 +3083,7 @@ setspn -L <AccountName>
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

@@ -27,7 +27,7 @@ Common uses include:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -44,7 +44,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Sidecar Containers?
+## Why Sidecar Containers?
 
 Imagine a web application.
 
@@ -76,7 +76,7 @@ Problems:
 
 ---
 
-# Better Solution
+## Better Solution
 
 ```
 Application
@@ -102,7 +102,7 @@ The application remains unchanged.
 
 ---
 
-# Another Example
+## Another Example
 
 Application needs:
 
@@ -130,7 +130,7 @@ Embedding all these capabilities into the application increases complexity.
 
 ---
 
-# Solution
+## Solution
 
 ```
 Application
@@ -146,7 +146,7 @@ Extra Features
 
 ---
 
-# What is a Sidecar Container?
+## What is a Sidecar Container?
 
 A Sidecar Container runs alongside the primary application container.
 
@@ -164,7 +164,7 @@ Both containers work together.
 
 ---
 
-# Pod Architecture
+## Pod Architecture
 
 ```
                  Pod
@@ -188,7 +188,7 @@ Both containers work together.
 
 ---
 
-# Shared Network
+## Shared Network
 
 Containers inside a Pod share:
 
@@ -214,7 +214,7 @@ Containers communicate without external networking.
 
 ---
 
-# Shared Storage
+## Shared Storage
 
 Containers can share volumes.
 
@@ -250,7 +250,7 @@ ElasticSearch
 
 ---
 
-# Lifecycle
+## Lifecycle
 
 Unlike Init Containers:
 
@@ -292,7 +292,7 @@ Sidecar Stops
 
 ---
 
-# Sidecar vs Init Container
+## Sidecar vs Init Container
 
 | Sidecar | Init Container |
 |----------|----------------|
@@ -303,7 +303,7 @@ Sidecar Stops
 
 ---
 
-# Sidecar vs Main Container
+## Sidecar vs Main Container
 
 | Main Container | Sidecar |
 |----------------|----------|
@@ -313,7 +313,7 @@ Sidecar Stops
 
 ---
 
-# Communication
+## Communication
 
 Containers communicate through:
 
@@ -339,7 +339,7 @@ No Service is required.
 
 ---
 
-# Shared Process Example
+## Shared Process Example
 
 ```
 Application
@@ -363,7 +363,7 @@ Upload
 
 ---
 
-# Logging Sidecar
+## Logging Sidecar
 
 ```
 Application
@@ -385,7 +385,7 @@ One of the most common Sidecar patterns.
 
 ---
 
-# Monitoring Sidecar
+## Monitoring Sidecar
 
 ```
 Application
@@ -405,7 +405,7 @@ Prometheus
 
 ---
 
-# Reverse Proxy Sidecar
+## Reverse Proxy Sidecar
 
 ```
 Internet
@@ -428,7 +428,7 @@ The Sidecar handles:
 
 ---
 
-# Service Mesh Sidecar
+## Service Mesh Sidecar
 
 Example:
 
@@ -458,7 +458,7 @@ The application remains unaware of the proxy.
 
 ---
 
-# Security Sidecar
+## Security Sidecar
 
 ```
 Application
@@ -474,7 +474,7 @@ Threat Detection
 
 ---
 
-# Backup Sidecar
+## Backup Sidecar
 
 ```
 Application
@@ -494,7 +494,7 @@ Cloud Storage
 
 ---
 
-# File Synchronization
+## File Synchronization
 
 ```
 Application
@@ -514,7 +514,7 @@ Remote Storage
 
 ---
 
-# Metrics Exporter
+## Metrics Exporter
 
 ```
 Application
@@ -534,7 +534,7 @@ Prometheus
 
 ---
 
-# Sidecar YAML
+## Sidecar YAML
 
 Example:
 
@@ -572,7 +572,7 @@ Same Pod
 
 ---
 
-# Native Sidecar Containers
+## Native Sidecar Containers
 
 Modern Kubernetes introduces **native sidecar containers**, allowing specific containers to start during Pod initialization while remaining active for the lifetime of the Pod.
 
@@ -586,9 +586,9 @@ Benefits include:
 
 ---
 
-# Common Sidecar Use Cases
+## Common Sidecar Use Cases
 
-## Log Shipping
+### Log Shipping
 
 ```
 Application
@@ -600,7 +600,7 @@ Fluent Bit
 
 ---
 
-## Metrics
+### Metrics
 
 ```
 Application
@@ -612,7 +612,7 @@ Exporter
 
 ---
 
-## Proxy
+### Proxy
 
 ```
 NGINX
@@ -624,7 +624,7 @@ Application
 
 ---
 
-## Service Mesh
+### Service Mesh
 
 ```
 Envoy
@@ -636,7 +636,7 @@ Application
 
 ---
 
-## Secrets Sync
+### Secrets Sync
 
 ```
 Vault Agent
@@ -648,7 +648,7 @@ Application
 
 ---
 
-## Backup
+### Backup
 
 ```
 Application
@@ -660,7 +660,7 @@ Backup Sidecar
 
 ---
 
-# Viewing Containers
+## Viewing Containers
 
 Describe Pod:
 
@@ -680,7 +680,7 @@ logger
 
 ---
 
-# Logs
+## Logs
 
 Application:
 
@@ -698,7 +698,7 @@ kubectl logs sidecar-demo \
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -733,7 +733,7 @@ kubectl delete pod sidecar-demo
 
 ---
 
-# Sidecar Architecture Summary
+## Sidecar Architecture Summary
 
 ```
 Pod
@@ -757,21 +757,21 @@ Shared Storage
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Keep Sidecars Focused
+#### 1. Keep Sidecars Focused
 
 One Sidecar should perform one supporting responsibility.
 
 ---
 
-### 2. Use Shared Volumes
+#### 2. Use Shared Volumes
 
 Exchange files using Kubernetes volumes instead of external storage when appropriate.
 
 ---
 
-### 3. Monitor Resource Usage
+#### 3. Monitor Resource Usage
 
 Sidecars consume CPU and memory independently.
 
@@ -779,13 +779,13 @@ Configure appropriate resource requests and limits.
 
 ---
 
-### 4. Avoid Business Logic
+#### 4. Avoid Business Logic
 
 Business functionality belongs in the main application container.
 
 ---
 
-### 5. Use Sidecars for Cross-Cutting Concerns
+#### 5. Use Sidecars for Cross-Cutting Concerns
 
 Examples:
 
@@ -797,9 +797,9 @@ Examples:
 
 ---
 
-# How Sidecar Containers Work Internally
+## How Sidecar Containers Work Internally
 
-## Overview
+### Overview
 
 A Sidecar Container is **not a special Kubernetes resource**.
 
@@ -817,7 +817,7 @@ This tight integration allows Sidecars to extend application functionality witho
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                       Pod
@@ -843,7 +843,7 @@ Both containers run inside the same Pod.
 
 ---
 
-# Complete Workflow
+## Complete Workflow
 
 ```
 Developer
@@ -891,7 +891,7 @@ Pod Running
 
 ---
 
-# Step 1 – Pod Creation
+## Step 1 – Pod Creation
 
 Example:
 
@@ -907,7 +907,7 @@ The Pod specification contains multiple containers.
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -929,7 +929,7 @@ Pod Stored
 
 ---
 
-# Step 3 – Scheduler
+## Step 3 – Scheduler
 
 Unlike Deployments or DaemonSets:
 
@@ -951,7 +951,7 @@ Both containers are always scheduled together.
 
 ---
 
-# Step 4 – kubelet
+## Step 4 – kubelet
 
 The kubelet receives:
 
@@ -975,7 +975,7 @@ It prepares:
 
 ---
 
-# Step 5 – Image Pull
+## Step 5 – Image Pull
 
 Example:
 
@@ -999,7 +999,7 @@ Both images must be available before startup.
 
 ---
 
-# Step 6 – Container Startup
+## Step 6 – Container Startup
 
 After preparation:
 
@@ -1023,7 +1023,7 @@ Both containers become part of the same Pod.
 
 ---
 
-# Pod Networking
+## Pod Networking
 
 Every Pod receives:
 
@@ -1057,7 +1057,7 @@ Both containers communicate using the loopback interface.
 
 ---
 
-# Shared Network Namespace
+## Shared Network Namespace
 
 Inside a Pod:
 
@@ -1077,7 +1077,7 @@ No Kubernetes Service is required for communication within the Pod.
 
 ---
 
-# Shared Storage
+## Shared Storage
 
 Example:
 
@@ -1101,7 +1101,7 @@ Both containers access the same files.
 
 ---
 
-# Shared Volume Workflow
+## Shared Volume Workflow
 
 ```
 Application
@@ -1127,7 +1127,7 @@ This is the most common Sidecar pattern.
 
 ---
 
-# Logging Example
+## Logging Example
 
 ```
 Application
@@ -1149,7 +1149,7 @@ Application code never changes.
 
 ---
 
-# Monitoring Example
+## Monitoring Example
 
 ```
 Application
@@ -1169,7 +1169,7 @@ Prometheus
 
 ---
 
-# Reverse Proxy Example
+## Reverse Proxy Example
 
 ```
 Client
@@ -1192,7 +1192,7 @@ The proxy handles:
 
 ---
 
-# Service Mesh Example
+## Service Mesh Example
 
 ```
 Client
@@ -1240,7 +1240,7 @@ without changing the application.
 
 ---
 
-# Secret Synchronization
+## Secret Synchronization
 
 ```
 Vault
@@ -1262,7 +1262,7 @@ The application reads secrets from files instead of calling Vault directly.
 
 ---
 
-# Configuration Synchronization
+## Configuration Synchronization
 
 ```
 Git Repository
@@ -1284,7 +1284,7 @@ Configuration updates become available without rebuilding the application image.
 
 ---
 
-# Backup Example
+## Backup Example
 
 ```
 Application
@@ -1304,7 +1304,7 @@ Object Storage
 
 ---
 
-# Crash Scenario
+## Crash Scenario
 
 Suppose:
 
@@ -1328,7 +1328,7 @@ The Sidecar generally continues running unless the Pod itself is terminated.
 
 ---
 
-# Sidecar Crash
+## Sidecar Crash
 
 Suppose:
 
@@ -1352,7 +1352,7 @@ The application container may continue running, but the Pod's readiness and over
 
 ---
 
-# Pod Termination
+## Pod Termination
 
 ```
 Pod Deleted
@@ -1378,7 +1378,7 @@ All containers terminate together.
 
 ---
 
-# Resource Allocation
+## Resource Allocation
 
 Each container has independent resources.
 
@@ -1412,7 +1412,7 @@ The Pod's scheduling requirements consider the combined resource requests of all
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 API Server
@@ -1444,7 +1444,7 @@ Shared Resources
 
 ---
 
-# Native Sidecars
+## Native Sidecars
 
 Modern Kubernetes introduces **Native Sidecar Containers**.
 
@@ -1459,7 +1459,7 @@ Unlike traditional sidecars, native sidecars can be started during Pod initializ
 
 ---
 
-# Hands-on Lab 1 – Basic Sidecar
+## Hands-on Lab 1 – Basic Sidecar
 
 ```yaml
 apiVersion: v1
@@ -1499,7 +1499,7 @@ kubectl apply -f sidecar.yaml
 
 ---
 
-# Hands-on Lab 2 – View Containers
+## Hands-on Lab 2 – View Containers
 
 ```bash
 kubectl describe pod sidecar-demo
@@ -1519,7 +1519,7 @@ logger
 
 ---
 
-# Hands-on Lab 3 – View Logs
+## Hands-on Lab 3 – View Logs
 
 Application:
 
@@ -1537,7 +1537,7 @@ kubectl logs sidecar-demo \
 
 ---
 
-# Hands-on Lab 4 – Shared Volume
+## Hands-on Lab 4 – Shared Volume
 
 Create:
 
@@ -1561,7 +1561,7 @@ Verify shared data access.
 
 ---
 
-# Hands-on Lab 5 – Test Localhost Communication
+## Hands-on Lab 5 – Test Localhost Communication
 
 Application:
 
@@ -1579,9 +1579,9 @@ Verify that containers communicate over `localhost`.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Putting Business Logic in the Sidecar
+### 1. Putting Business Logic in the Sidecar
 
 Incorrect:
 
@@ -1607,7 +1607,7 @@ The Sidecar should provide supporting functionality.
 
 ---
 
-## 2. Ignoring Resource Usage
+### 2. Ignoring Resource Usage
 
 Each Sidecar consumes:
 
@@ -1620,7 +1620,7 @@ Configure resource requests and limits appropriately.
 
 ---
 
-## 3. Assuming Separate Networking
+### 3. Assuming Separate Networking
 
 Incorrect:
 
@@ -1648,7 +1648,7 @@ localhost
 
 ---
 
-## 4. Forgetting Shared Volumes
+### 4. Forgetting Shared Volumes
 
 Without a shared volume:
 
@@ -1672,7 +1672,7 @@ Use shared volumes for file-based communication.
 
 ---
 
-## 5. Overloading a Single Sidecar
+### 5. Overloading a Single Sidecar
 
 Avoid one Sidecar handling:
 
@@ -1686,9 +1686,9 @@ Prefer focused, single-responsibility containers when practical.
 
 ---
 
-# Sidecar Containers Quick Revision
+## Sidecar Containers Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 Pod
@@ -1712,7 +1712,7 @@ Shared Volumes
 
 ---
 
-## Workflow
+### Workflow
 
 ```
 Create Pod
@@ -1740,7 +1740,7 @@ Running Together
 
 ---
 
-## Communication
+### Communication
 
 ```
 localhost
@@ -1752,7 +1752,7 @@ Shared Volumes
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Pods:
 
@@ -1786,9 +1786,9 @@ kubectl delete pod sidecar-demo
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a Sidecar Container?
 - Why are Sidecar Containers useful?
@@ -1796,7 +1796,7 @@ kubectl delete pod sidecar-demo
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - How do Sidecars communicate with application containers?
 - What resources are shared within a Pod?
@@ -1804,7 +1804,7 @@ kubectl delete pod sidecar-demo
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain how Kubernetes manages Sidecar Containers internally.
 - Why are Sidecars widely used in service meshes?
@@ -1814,9 +1814,9 @@ kubectl delete pod sidecar-demo
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Sidecar Containers
 - Multi-Container Pods
@@ -1826,7 +1826,7 @@ kubectl delete pod sidecar-demo
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Best Practices
 - Pod Design Patterns
@@ -1835,7 +1835,7 @@ kubectl delete pod sidecar-demo
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - Istio Documentation
 - Envoy Proxy Documentation
@@ -1844,7 +1844,7 @@ kubectl delete pod sidecar-demo
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create a Pod with an application container and a logging Sidecar.
 2. Share log files using an `emptyDir` volume.
@@ -1856,7 +1856,7 @@ kubectl delete pod sidecar-demo
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Developer

@@ -1,10 +1,10 @@
 # 21-Windows-Automation.md
 
-# Part 1 — Windows Automation Fundamentals, Automation Architecture, PowerShell Automation, Task Scheduler, and Enterprise Automation
+## Part 1 — Windows Automation Fundamentals, Automation Architecture, PowerShell Automation, Task Scheduler, and Enterprise Automation
 
 ---
 
-# Introduction
+## Introduction
 
 Modern IT environments consist of hundreds or even hundreds of thousands of endpoints, servers, virtual machines, cloud resources, and applications.
 
@@ -32,7 +32,7 @@ Automation has become one of the most important skills for System Administrators
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this chapter, you will understand:
 
@@ -47,7 +47,7 @@ By the end of this chapter, you will understand:
 
 ---
 
-# What is Automation?
+## What is Automation?
 
 Automation is the process of using software or scripts to perform tasks without manual intervention.
 
@@ -89,7 +89,7 @@ Creates Report
 
 ---
 
-# Benefits of Automation
+## Benefits of Automation
 
 Automation provides numerous advantages.
 
@@ -105,7 +105,7 @@ Automation provides numerous advantages.
 
 ---
 
-# Manual Administration vs Automation
+## Manual Administration vs Automation
 
 | Manual | Automated |
 |---------|-----------|
@@ -117,7 +117,7 @@ Automation provides numerous advantages.
 
 ---
 
-# Common Automation Tasks
+## Common Automation Tasks
 
 Organizations automate tasks such as:
 
@@ -134,7 +134,7 @@ Organizations automate tasks such as:
 
 ---
 
-# Enterprise Automation Architecture
+## Enterprise Automation Architecture
 
 ```text
 Administrator
@@ -168,7 +168,7 @@ Automation servers orchestrate and monitor tasks across the enterprise.
 
 ---
 
-# Automation Lifecycle
+## Automation Lifecycle
 
 ```text
 Identify Task
@@ -206,7 +206,7 @@ Automation should follow the same disciplined lifecycle as software development.
 
 ---
 
-# Choosing Tasks for Automation
+## Choosing Tasks for Automation
 
 Good candidates include:
 
@@ -220,7 +220,7 @@ Avoid automating tasks that require frequent human judgment unless clear safegua
 
 ---
 
-# PowerShell as an Automation Platform
+## PowerShell as an Automation Platform
 
 PowerShell is Microsoft's primary automation framework.
 
@@ -239,7 +239,7 @@ PowerShell integrates with nearly every Windows component.
 
 ---
 
-# PowerShell Pipeline
+## PowerShell Pipeline
 
 One of PowerShell's strengths is object-based pipelines.
 
@@ -255,7 +255,7 @@ Unlike traditional shells, PowerShell passes structured objects instead of plain
 
 ---
 
-# Variables
+## Variables
 
 Variables store reusable data.
 
@@ -277,7 +277,7 @@ Variables improve script readability and maintainability.
 
 ---
 
-# Arrays
+## Arrays
 
 Arrays hold multiple values.
 
@@ -300,7 +300,7 @@ foreach ($Server in $Servers)
 
 ---
 
-# Loops
+## Loops
 
 Automation often requires repetitive processing.
 
@@ -318,7 +318,7 @@ Loops eliminate repetitive manual commands.
 
 ---
 
-# Conditional Logic
+## Conditional Logic
 
 Example:
 
@@ -333,7 +333,7 @@ Automation scripts can make decisions based on system state.
 
 ---
 
-# Functions
+## Functions
 
 Functions improve modularity.
 
@@ -354,7 +354,7 @@ Advantages:
 
 ---
 
-# Error Handling
+## Error Handling
 
 Automation should anticipate failures.
 
@@ -375,7 +375,7 @@ Proper error handling prevents automation from terminating unexpectedly.
 
 ---
 
-# Logging
+## Logging
 
 Every automation workflow should produce logs.
 
@@ -394,7 +394,7 @@ Benefits:
 
 ---
 
-# Task Scheduler
+## Task Scheduler
 
 Windows Task Scheduler automates execution based on defined triggers.
 
@@ -409,7 +409,7 @@ Common use cases:
 
 ---
 
-# Task Scheduler Architecture
+## Task Scheduler Architecture
 
 ```text
 Trigger
@@ -437,7 +437,7 @@ Logs
 
 ---
 
-# Task Components
+## Task Components
 
 | Component | Purpose |
 |-----------|----------|
@@ -449,7 +449,7 @@ Logs
 
 ---
 
-# Common Triggers
+## Common Triggers
 
 Examples:
 
@@ -464,7 +464,7 @@ Examples:
 
 ---
 
-# Example Scheduled PowerShell Task
+## Example Scheduled PowerShell Task
 
 ```text
 Every Night
@@ -492,7 +492,7 @@ Email Report
 
 ---
 
-# Creating a Scheduled Task (PowerShell)
+## Creating a Scheduled Task (PowerShell)
 
 ```powershell
 New-ScheduledTaskAction `
@@ -509,7 +509,7 @@ Tasks can be created and managed programmatically.
 
 ---
 
-# Event-Based Automation
+## Event-Based Automation
 
 Tasks may start when specific Windows events occur.
 
@@ -535,7 +535,7 @@ This enables responsive automation for operational and security events.
 
 ---
 
-# Enterprise Automation Example
+## Enterprise Automation Example
 
 Every morning at 2:00 AM:
 
@@ -567,7 +567,7 @@ Routine health checks become consistent and predictable.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Automation is essential for:
 
@@ -583,7 +583,7 @@ However, automation scripts themselves must be protected because attackers often
 
 ---
 
-# Business Impact
+## Business Impact
 
 Automation delivers:
 
@@ -597,7 +597,7 @@ Automation delivers:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Store automation scripts in version control.
 - Digitally sign production scripts.
@@ -612,27 +612,27 @@ Automation delivers:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Create a Simple Loop
+### Lab 1 — Create a Simple Loop
 
 Write a PowerShell script that displays the names of five servers stored in an array.
 
 ---
 
-## Lab 2 — Create a Function
+### Lab 2 — Create a Function
 
 Create a function that returns the status of the Print Spooler service.
 
 ---
 
-## Lab 3 — Add Error Handling
+### Lab 3 — Add Error Handling
 
 Modify a script to gracefully handle attempts to query a non-existent service.
 
 ---
 
-## Lab 4 — Design a Scheduled Task
+### Lab 4 — Design a Scheduled Task
 
 Design a task that:
 
@@ -643,7 +643,7 @@ Design a task that:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Automation improves speed, consistency, and scalability.
 - PowerShell is the primary Windows automation platform.
@@ -654,7 +654,7 @@ Design a task that:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is automation, and why is it important?
 2. Why is PowerShell preferred for Windows automation?
@@ -669,7 +669,7 @@ Design a task that:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft PowerShell Documentation
@@ -681,13 +681,13 @@ Design a task that:
 
 ---
 
-# 21-Windows-Automation.md
+## 21-Windows-Automation.md
 
-# Part 2 — Advanced PowerShell Scripting, Desired State Configuration (DSC), Background Jobs, Workflow Automation, and Enterprise Script Development
+## Part 2 — Advanced PowerShell Scripting, Desired State Configuration (DSC), Background Jobs, Workflow Automation, and Enterprise Script Development
 
 ---
 
-# Introduction
+## Introduction
 
 As organizations grow, simple scripts are no longer sufficient.
 
@@ -707,7 +707,7 @@ Modern Windows automation emphasizes **maintainability**, **idempotency**, **rep
 
 ---
 
-# Enterprise Automation Principles
+## Enterprise Automation Principles
 
 High-quality automation should be:
 
@@ -723,7 +723,7 @@ High-quality automation should be:
 
 ---
 
-# Modular Script Design
+## Modular Script Design
 
 Large scripts should be divided into reusable modules.
 
@@ -761,7 +761,7 @@ Reusable Components
 
 ---
 
-# Script Structure
+## Script Structure
 
 A professional PowerShell script often follows this layout:
 
@@ -793,7 +793,7 @@ This structure improves readability and maintenance.
 
 ---
 
-# Parameters
+## Parameters
 
 Scripts should accept parameters rather than hard-coded values.
 
@@ -816,7 +816,7 @@ Benefits:
 
 ---
 
-# Advanced Functions
+## Advanced Functions
 
 PowerShell functions can behave like built-in cmdlets.
 
@@ -845,7 +845,7 @@ Advanced functions support:
 
 ---
 
-# Parameter Validation
+## Parameter Validation
 
 Example:
 
@@ -860,7 +860,7 @@ Validation prevents invalid input from causing runtime failures.
 
 ---
 
-# Comment-Based Help
+## Comment-Based Help
 
 Professional scripts include built-in documentation.
 
@@ -890,7 +890,7 @@ Get-Help
 
 ---
 
-# Error Handling Best Practices
+## Error Handling Best Practices
 
 Use structured exception handling.
 
@@ -917,7 +917,7 @@ Benefits:
 
 ---
 
-# Logging Best Practices
+## Logging Best Practices
 
 Logs should capture:
 
@@ -953,7 +953,7 @@ Finish
 
 ---
 
-# Desired State Configuration (DSC)
+## Desired State Configuration (DSC)
 
 Desired State Configuration (DSC) is PowerShell's configuration management platform.
 
@@ -979,7 +979,7 @@ Correct Configuration Applied
 
 ---
 
-# Benefits of DSC
+## Benefits of DSC
 
 DSC provides:
 
@@ -991,7 +991,7 @@ DSC provides:
 
 ---
 
-# DSC Components
+## DSC Components
 
 | Component | Purpose |
 |-----------|----------|
@@ -1002,7 +1002,7 @@ DSC provides:
 
 ---
 
-# Local Configuration Manager (LCM)
+## Local Configuration Manager (LCM)
 
 Every DSC-enabled node includes the **Local Configuration Manager**.
 
@@ -1015,7 +1015,7 @@ Responsibilities:
 
 ---
 
-# DSC Workflow
+## DSC Workflow
 
 ```text
 Administrator
@@ -1043,7 +1043,7 @@ Desired State Maintained
 
 ---
 
-# Example DSC Resource
+## Example DSC Resource
 
 ```powershell
 Service Spooler
@@ -1057,7 +1057,7 @@ If the service stops unexpectedly, DSC can restore it automatically.
 
 ---
 
-# Configuration Drift
+## Configuration Drift
 
 Configuration drift occurs when systems no longer match approved configurations.
 
@@ -1087,7 +1087,7 @@ Preventing drift improves consistency and compliance.
 
 ---
 
-# Background Jobs
+## Background Jobs
 
 PowerShell supports asynchronous execution through background jobs.
 
@@ -1104,7 +1104,7 @@ The console remains available while the job runs.
 
 ---
 
-# Job Management
+## Job Management
 
 Useful cmdlets:
 
@@ -1118,7 +1118,7 @@ Useful cmdlets:
 
 ---
 
-# Background Job Workflow
+## Background Job Workflow
 
 ```text
 Administrator
@@ -1142,7 +1142,7 @@ Remove Job
 
 ---
 
-# Scheduled Automation with PowerShell
+## Scheduled Automation with PowerShell
 
 Task Scheduler and PowerShell are commonly combined.
 
@@ -1174,7 +1174,7 @@ Notify Administrator
 
 ---
 
-# Script Signing
+## Script Signing
 
 Production scripts should be digitally signed.
 
@@ -1189,7 +1189,7 @@ Unsigned production scripts increase operational risk.
 
 ---
 
-# Source Control
+## Source Control
 
 Automation code should be stored in version control systems such as Git.
 
@@ -1225,7 +1225,7 @@ Production
 
 ---
 
-# Script Testing
+## Script Testing
 
 Before deployment:
 
@@ -1241,7 +1241,7 @@ Testing reduces production failures.
 
 ---
 
-# Enterprise Workflow Automation
+## Enterprise Workflow Automation
 
 Example:
 
@@ -1277,7 +1277,7 @@ Automation reduces onboarding time and improves consistency.
 
 ---
 
-# Automation Security
+## Automation Security
 
 Automation accounts should:
 
@@ -1292,7 +1292,7 @@ Protecting automation credentials is essential.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company must verify disk space across 2,500 Windows servers.
 
@@ -1330,7 +1330,7 @@ The process completes in minutes instead of requiring manual inspection.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Automation supports cybersecurity by:
 
@@ -1345,7 +1345,7 @@ Attackers also automate their operations, making defensive automation increasing
 
 ---
 
-# Business Impact
+## Business Impact
 
 Enterprise automation provides:
 
@@ -1359,7 +1359,7 @@ Enterprise automation provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Design automation to be idempotent.
 - Separate reusable functions into modules.
@@ -1374,9 +1374,9 @@ Enterprise automation provides:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Create an Advanced Function
+### Lab 1 — Create an Advanced Function
 
 Write a function that accepts a computer name as a parameter and retrieves:
 
@@ -1387,7 +1387,7 @@ Write a function that accepts a computer name as a parameter and retrieves:
 
 ---
 
-## Lab 2 — Create a Background Job
+### Lab 2 — Create a Background Job
 
 Run:
 
@@ -1402,7 +1402,7 @@ Retrieve and review the output.
 
 ---
 
-## Lab 3 — Design a DSC Configuration
+### Lab 3 — Design a DSC Configuration
 
 Create a DSC design that ensures:
 
@@ -1414,7 +1414,7 @@ Explain how DSC maintains compliance.
 
 ---
 
-## Lab 4 — Automation Review
+### Lab 4 — Automation Review
 
 Review an existing PowerShell script and identify:
 
@@ -1426,7 +1426,7 @@ Review an existing PowerShell script and identify:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise scripts should be modular and reusable.
 - DSC enforces desired configuration states across systems.
@@ -1437,7 +1437,7 @@ Review an existing PowerShell script and identify:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Desired State Configuration (DSC)?
 2. What is the role of the Local Configuration Manager (LCM)?
@@ -1452,7 +1452,7 @@ Review an existing PowerShell script and identify:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft PowerShell Documentation
@@ -1464,13 +1464,13 @@ Review an existing PowerShell script and identify:
 
 ---
 
-# 21-Windows-Automation.md
+## 21-Windows-Automation.md
 
-# Part 3 — PowerShell Remoting Automation, Scheduled Jobs, Event-Driven Automation, Security Automation, and Incident Response Automation
+## Part 3 — PowerShell Remoting Automation, Scheduled Jobs, Event-Driven Automation, Security Automation, and Incident Response Automation
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise automation extends beyond executing local scripts.
 
@@ -1489,7 +1489,7 @@ PowerShell Remoting, scheduled jobs, and event-driven automation enable organiza
 
 ---
 
-# Remote Automation with PowerShell
+## Remote Automation with PowerShell
 
 PowerShell Remoting enables administrators to execute automation across one or many systems simultaneously.
 
@@ -1523,7 +1523,7 @@ This approach eliminates the need to log on to each computer individually.
 
 ---
 
-# Executing Commands on Multiple Computers
+## Executing Commands on Multiple Computers
 
 Example:
 
@@ -1545,7 +1545,7 @@ PowerShell distributes the command to each target and returns structured objects
 
 ---
 
-# Persistent Remote Sessions
+## Persistent Remote Sessions
 
 Creating persistent sessions improves efficiency when executing multiple commands.
 
@@ -1574,7 +1574,7 @@ Persistent sessions reduce authentication overhead.
 
 ---
 
-# Fan-Out Automation
+## Fan-Out Automation
 
 A single administrator can automate tasks across many systems.
 
@@ -1606,7 +1606,7 @@ This pattern is commonly called **fan-out administration**.
 
 ---
 
-# Parallel Processing
+## Parallel Processing
 
 Long-running automation can benefit from parallel execution.
 
@@ -1626,7 +1626,7 @@ Parallel execution reduces total processing time for large-scale administrative 
 
 ---
 
-# Collecting Remote Results
+## Collecting Remote Results
 
 Automation should centralize results.
 
@@ -1656,7 +1656,7 @@ Structured data simplifies reporting and analysis.
 
 ---
 
-# Scheduled Jobs
+## Scheduled Jobs
 
 PowerShell Scheduled Jobs combine PowerShell with Task Scheduler.
 
@@ -1670,7 +1670,7 @@ Advantages include:
 
 ---
 
-# Scheduled Job Workflow
+## Scheduled Job Workflow
 
 ```text
 Trigger
@@ -1694,7 +1694,7 @@ Review Results
 
 ---
 
-# Event-Driven Automation
+## Event-Driven Automation
 
 Rather than executing scripts on a schedule, event-driven automation responds immediately to specific system events.
 
@@ -1724,7 +1724,7 @@ This reduces response time compared to periodic checks.
 
 ---
 
-# Event Sources
+## Event Sources
 
 Common automation triggers include:
 
@@ -1739,7 +1739,7 @@ Common automation triggers include:
 
 ---
 
-# Example Security Workflow
+## Example Security Workflow
 
 ```text
 Multiple Failed Logons
@@ -1769,7 +1769,7 @@ Automation assists analysts by collecting context before manual investigation be
 
 ---
 
-# Log Collection Automation
+## Log Collection Automation
 
 Routine log collection supports:
 
@@ -1800,7 +1800,7 @@ Centralized collection improves visibility across the enterprise.
 
 ---
 
-# Compliance Automation
+## Compliance Automation
 
 Automation can verify:
 
@@ -1826,7 +1826,7 @@ Automated compliance checks reduce manual audit effort.
 
 ---
 
-# Patch Verification Automation
+## Patch Verification Automation
 
 Example workflow:
 
@@ -1854,7 +1854,7 @@ Automation helps maintain a consistent patch posture.
 
 ---
 
-# Security Baseline Validation
+## Security Baseline Validation
 
 Organizations can automate validation of baseline settings.
 
@@ -1871,7 +1871,7 @@ These checks support security hardening and compliance.
 
 ---
 
-# Threat Hunting Automation
+## Threat Hunting Automation
 
 Automation can search systems for indicators such as:
 
@@ -1886,7 +1886,7 @@ Automation accelerates enterprise-wide investigations.
 
 ---
 
-# Automated IOC Collection
+## Automated IOC Collection
 
 Example workflow:
 
@@ -1918,7 +1918,7 @@ Indicators of Compromise (IOCs) should be validated and reviewed before containm
 
 ---
 
-# Automated Incident Response
+## Automated Incident Response
 
 Automation assists—not replaces—incident responders.
 
@@ -1956,7 +1956,7 @@ Human approval should remain part of high-impact response actions.
 
 ---
 
-# Automation in a SOC
+## Automation in a SOC
 
 Security Operations Centers commonly automate:
 
@@ -1973,7 +1973,7 @@ Automation reduces repetitive work, allowing analysts to focus on investigation.
 
 ---
 
-# Safe Automation
+## Safe Automation
 
 Before automating any action:
 
@@ -1991,7 +1991,7 @@ Production automation should avoid destructive actions without appropriate safeg
 
 ---
 
-# Automation Approval Model
+## Automation Approval Model
 
 ```text
 Automation Request
@@ -2021,7 +2021,7 @@ This governance process reduces operational risk.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial institution detects repeated failed RDP logons.
 
@@ -2059,7 +2059,7 @@ Analysts receive contextual information immediately, reducing investigation time
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Automation supports defensive security by:
 
@@ -2074,7 +2074,7 @@ Automation should complement human decision-making rather than replace it.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Security automation provides:
 
@@ -2089,7 +2089,7 @@ Organizations benefit from faster response and improved operational resilience.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Automate repetitive administrative tasks first.
 - Validate all automation in a test environment.
@@ -2104,9 +2104,9 @@ Organizations benefit from faster response and improved operational resilience.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Execute a Remote Command
+### Lab 1 — Execute a Remote Command
 
 Using PowerShell Remoting, retrieve:
 
@@ -2124,7 +2124,7 @@ Document:
 
 ---
 
-## Lab 2 — Design an Event-Driven Workflow
+### Lab 2 — Design an Event-Driven Workflow
 
 Create a workflow that responds to repeated failed logon events by:
 
@@ -2136,7 +2136,7 @@ Describe each step and the required Windows components.
 
 ---
 
-## Lab 3 — Compliance Validation Script
+### Lab 3 — Compliance Validation Script
 
 Design a PowerShell script that verifies:
 
@@ -2149,7 +2149,7 @@ Generate a report indicating compliance for each item.
 
 ---
 
-## Lab 4 — Threat Hunting Plan
+### Lab 4 — Threat Hunting Plan
 
 Design an automation workflow that searches all Windows endpoints for:
 
@@ -2161,7 +2161,7 @@ Describe how results should be centralized and reviewed.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - PowerShell Remoting enables enterprise-scale automation.
 - Scheduled and event-driven automation support proactive operations.
@@ -2172,7 +2172,7 @@ Describe how results should be centralized and reviewed.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the benefit of PowerShell Remoting for automation?
 2. What is event-driven automation?
@@ -2187,7 +2187,7 @@ Describe how results should be centralized and reviewed.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft PowerShell Documentation
@@ -2201,13 +2201,13 @@ Describe how results should be centralized and reviewed.
 
 ---
 
-# 21-Windows-Automation.md
+## 21-Windows-Automation.md
 
-# Part 4 — Enterprise Automation Strategy, Governance, Troubleshooting, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Automation Strategy, Governance, Troubleshooting, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Automation is no longer optional in enterprise IT.
 
@@ -2227,7 +2227,7 @@ Enterprise automation therefore requires proper governance, testing, monitoring,
 
 ---
 
-# Enterprise Automation Maturity Model
+## Enterprise Automation Maturity Model
 
 Organizations typically progress through several stages of automation maturity.
 
@@ -2264,7 +2264,7 @@ Self-Healing Systems
 
 ---
 
-# Automation Governance
+## Automation Governance
 
 Automation governance ensures that scripts and workflows remain secure, reliable, and aligned with business objectives.
 
@@ -2281,7 +2281,7 @@ Governance includes:
 
 ---
 
-# Automation Lifecycle
+## Automation Lifecycle
 
 ```text
 Business Requirement
@@ -2327,7 +2327,7 @@ Automation should follow the same engineering discipline as application developm
 
 ---
 
-# Change Management
+## Change Management
 
 Automation changes should never be deployed directly into production.
 
@@ -2366,7 +2366,7 @@ Benefits:
 
 ---
 
-# Version Control
+## Version Control
 
 Store automation scripts in a version control system.
 
@@ -2407,7 +2407,7 @@ Production
 
 ---
 
-# Documentation Standards
+## Documentation Standards
 
 Every automation project should document:
 
@@ -2426,7 +2426,7 @@ Good documentation reduces operational risk.
 
 ---
 
-# Code Reviews
+## Code Reviews
 
 Peer reviews help identify:
 
@@ -2441,7 +2441,7 @@ Code review improves reliability and maintainability.
 
 ---
 
-# Secure Credential Management
+## Secure Credential Management
 
 Never embed credentials directly in scripts.
 
@@ -2463,7 +2463,7 @@ Secrets should be protected throughout their lifecycle.
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Automation commonly runs under dedicated service accounts.
 
@@ -2480,7 +2480,7 @@ Dedicated accounts improve accountability.
 
 ---
 
-# Automation Logging
+## Automation Logging
 
 Automation should log:
 
@@ -2517,7 +2517,7 @@ Archive
 
 ---
 
-# Monitoring Automation
+## Monitoring Automation
 
 Administrators should monitor:
 
@@ -2532,7 +2532,7 @@ Automation that is not monitored may silently fail.
 
 ---
 
-# Performance Optimization
+## Performance Optimization
 
 Large automation environments should:
 
@@ -2547,7 +2547,7 @@ Efficient automation reduces infrastructure load.
 
 ---
 
-# Common Automation Problems
+## Common Automation Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2560,7 +2560,7 @@ Efficient automation reduces infrastructure load.
 
 ---
 
-# Troubleshooting Methodology
+## Troubleshooting Methodology
 
 ```text
 Identify Problem
@@ -2598,7 +2598,7 @@ A structured approach improves troubleshooting efficiency.
 
 ---
 
-# Debugging PowerShell Scripts
+## Debugging PowerShell Scripts
 
 Useful techniques:
 
@@ -2620,7 +2620,7 @@ Verbose output assists during development and troubleshooting.
 
 ---
 
-# Measuring Script Performance
+## Measuring Script Performance
 
 Example:
 
@@ -2634,7 +2634,7 @@ This cmdlet measures execution time and helps identify performance bottlenecks.
 
 ---
 
-# Automation Risk Assessment
+## Automation Risk Assessment
 
 Before deployment, evaluate:
 
@@ -2651,7 +2651,7 @@ Risk assessments reduce production incidents.
 
 ---
 
-# Automation Metrics
+## Automation Metrics
 
 Track metrics such as:
 
@@ -2667,7 +2667,7 @@ These metrics demonstrate operational value.
 
 ---
 
-# Automation Dashboard
+## Automation Dashboard
 
 Example enterprise dashboard:
 
@@ -2703,7 +2703,7 @@ Dashboards provide operational visibility for administrators and management.
 
 ---
 
-# Enterprise Automation Architecture
+## Enterprise Automation Architecture
 
 ```text
 Administrators
@@ -2745,7 +2745,7 @@ Centralization improves scalability, governance, and monitoring.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An international healthcare provider automates:
 
@@ -2766,7 +2766,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Automation should never bypass security controls.
 
@@ -2785,7 +2785,7 @@ Secure automation strengthens organizational resilience.
 
 ---
 
-# Business Impact
+## Business Impact
 
 A mature automation program provides:
 
@@ -2801,7 +2801,7 @@ Automation becomes a strategic business capability rather than simply a technica
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Adopt automation gradually using high-value use cases.
 - Use version control for all scripts.
@@ -2816,9 +2816,9 @@ Automation becomes a strategic business capability rather than simply a technica
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Measure Script Performance
+### Lab 1 — Measure Script Performance
 
 Run:
 
@@ -2832,7 +2832,7 @@ Record the execution time and discuss factors that may affect performance.
 
 ---
 
-## Lab 2 — Add Verbose Logging
+### Lab 2 — Add Verbose Logging
 
 Modify an existing PowerShell script to include:
 
@@ -2846,7 +2846,7 @@ Run the script using the `-Verbose` switch and review the output.
 
 ---
 
-## Lab 3 — Automation Risk Review
+### Lab 3 — Automation Risk Review
 
 Evaluate a sample automation workflow.
 
@@ -2860,7 +2860,7 @@ Identify:
 
 ---
 
-## Lab 4 — Design an Enterprise Automation Platform
+### Lab 4 — Design an Enterprise Automation Platform
 
 Design an architecture including:
 
@@ -2878,7 +2878,7 @@ Explain how each component contributes to reliability and security.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2901,7 +2901,7 @@ Automation enables organizations to manage Windows environments more efficiently
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Automation reduces repetitive manual work and operational errors.
 - PowerShell is the foundation of Windows automation.
@@ -2913,7 +2913,7 @@ Automation enables organizations to manage Windows environments more efficiently
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is automation important in enterprise Windows environments?
 2. What are the benefits of Desired State Configuration (DSC)?
@@ -2928,7 +2928,7 @@ Automation enables organizations to manage Windows environments more efficiently
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft PowerShell Documentation
@@ -2943,7 +2943,7 @@ Automation enables organizations to manage Windows environments more efficiently
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 21 – Windows Automation**.
 

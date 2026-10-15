@@ -1,12 +1,12 @@
 # 62-Web-Incident-Response.md
 
-# Part 1 — Introduction to Web Incident Response, Incident Lifecycle, Preparation, Detection, and Enterprise Foundations
+## Part 1 — Introduction to Web Incident Response, Incident Lifecycle, Preparation, Detection, and Enterprise Foundations
 
 > **"Web Incident Response is the structured process of preparing for, identifying, managing, and recovering from security incidents affecting web applications while minimizing business impact and restoring normal operations."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Web Incident Response?
+## What is Web Incident Response?
 
 Web Incident Response (Web IR) is the coordinated process used to detect, analyze, contain, recover from, and learn from security incidents affecting web applications.
 
@@ -55,7 +55,7 @@ The objective is to minimize disruption while preserving the confidentiality, in
 
 ---
 
-# Why Incident Response Matters
+## Why Incident Response Matters
 
 Organizations rely on web applications for critical business operations.
 
@@ -72,7 +72,7 @@ An effective incident response program helps:
 
 ---
 
-# Security Event vs Security Incident
+## Security Event vs Security Incident
 
 | Security Event | Security Incident |
 |---------------|-------------------|
@@ -85,7 +85,7 @@ Every incident begins as one or more observable events, but not every event beco
 
 ---
 
-# Incident Response Objectives
+## Incident Response Objectives
 
 ```
 Incident Response
@@ -111,7 +111,7 @@ Incident Response
 
 ---
 
-# Incident Response Lifecycle
+## Incident Response Lifecycle
 
 ```
 Preparation
@@ -141,7 +141,7 @@ Each phase builds upon the previous phase to ensure an organized response.
 
 ---
 
-# Enterprise Incident Response Process
+## Enterprise Incident Response Process
 
 ```
 Security Event
@@ -177,7 +177,7 @@ Post-Incident Review
 
 ---
 
-# Incident Response Team
+## Incident Response Team
 
 Incident response requires collaboration across multiple departments.
 
@@ -209,7 +209,7 @@ Each team contributes specialized expertise during an incident.
 
 ---
 
-# Roles and Responsibilities
+## Roles and Responsibilities
 
 | Team | Responsibility |
 |------|----------------|
@@ -224,7 +224,7 @@ Each team contributes specialized expertise during an incident.
 
 ---
 
-# Preparation Phase
+## Preparation Phase
 
 Preparation is the foundation of every successful incident response program.
 
@@ -252,7 +252,7 @@ Preparation ensures that people, processes, and technology are ready before an i
 
 ---
 
-# Preparation Activities
+## Preparation Activities
 
 ```
 Preparation
@@ -280,7 +280,7 @@ Organizations should periodically review and update preparation activities.
 
 ---
 
-# Detection
+## Detection
 
 Detection identifies potentially significant security events.
 
@@ -308,7 +308,7 @@ Early detection reduces the potential impact of incidents.
 
 ---
 
-# Detection Sources
+## Detection Sources
 
 ```
 Detection Sources
@@ -336,7 +336,7 @@ Multiple sources improve detection accuracy.
 
 ---
 
-# Identification
+## Identification
 
 Identification determines whether an observed event should be classified as a security incident.
 
@@ -360,7 +360,7 @@ Organizations should use documented criteria to support consistent decisions.
 
 ---
 
-# Incident Classification
+## Incident Classification
 
 Incidents should be categorized according to business impact and operational urgency.
 
@@ -382,7 +382,7 @@ Classification helps prioritize resources and response activities.
 
 ---
 
-# Classification Criteria
+## Classification Criteria
 
 ```
 Evaluation
@@ -410,7 +410,7 @@ Classification criteria should be documented and consistently applied.
 
 ---
 
-# Incident Severity Matrix
+## Incident Severity Matrix
 
 | Severity | Typical Characteristics |
 |----------|--------------------------|
@@ -423,7 +423,7 @@ Severity should be determined using organizational policies rather than assumpti
 
 ---
 
-# Communication During Incidents
+## Communication During Incidents
 
 Clear communication is essential throughout the incident lifecycle.
 
@@ -451,7 +451,7 @@ Communication plans should identify who communicates, when updates are provided,
 
 ---
 
-# Documentation
+## Documentation
 
 Every incident should be documented.
 
@@ -479,7 +479,7 @@ Accurate documentation supports investigations, audits, and future improvements.
 
 ---
 
-# Enterprise Incident Response Architecture
+## Enterprise Incident Response Architecture
 
 ```
                 Web Applications
@@ -519,7 +519,7 @@ Accurate documentation supports investigations, audits, and future improvements.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational insurance company operates customer portals, partner APIs, and internal business applications.
 
@@ -551,7 +551,7 @@ Monitoring platforms identify abnormal application behavior. Security analysts r
 
 ---
 
-# Benefits of Incident Response
+## Benefits of Incident Response
 
 ```
 Benefits
@@ -577,7 +577,7 @@ Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise incident response workflow for a web application.
 2. Define roles and responsibilities for each response team.
@@ -589,7 +589,7 @@ Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Web Incident Response?
 2. What is the difference between a security event and a security incident?
@@ -604,7 +604,7 @@ Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Establish documented incident response policies.
 - Clearly define team roles and responsibilities.
@@ -617,7 +617,7 @@ Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Responding without documented procedures.
 - Delaying incident classification.
@@ -629,7 +629,7 @@ Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Web Incident Response provides a structured approach to managing security incidents affecting web applications.
 - Preparation, detection, identification, and classification are essential early phases.
@@ -637,15 +637,15 @@ Benefits
 - Clear communication and documentation improve operational effectiveness.
 - Continuous improvement strengthens future incident readiness.
 
-# 62-Web-Incident-Response.md
+## 62-Web-Incident-Response.md
 
-# Part 2 — Incident Analysis, Containment, Evidence Preservation, Eradication, Recovery, and Enterprise Coordination
+## Part 2 — Incident Analysis, Containment, Evidence Preservation, Eradication, Recovery, and Enterprise Coordination
 
 > **"An effective incident response program relies on structured analysis, coordinated containment, evidence preservation, systematic recovery, and continuous communication to minimize business disruption."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -662,7 +662,7 @@ After completing this part, you will understand:
 
 ---
 
-# Incident Analysis
+## Incident Analysis
 
 Incident analysis determines the scope, impact, and characteristics of a confirmed incident.
 
@@ -690,7 +690,7 @@ Analysis should follow documented procedures to ensure consistency and accuracy.
 
 ---
 
-# Analysis Objectives
+## Analysis Objectives
 
 ```
 Incident Analysis
@@ -716,7 +716,7 @@ Incident Analysis
 
 ---
 
-# Information Collection
+## Information Collection
 
 Collecting relevant information supports informed decision-making.
 
@@ -744,7 +744,7 @@ Information should be collected systematically while maintaining integrity.
 
 ---
 
-# Sources of Information
+## Sources of Information
 
 ```
 Information Sources
@@ -772,7 +772,7 @@ Using multiple information sources improves the quality of the investigation.
 
 ---
 
-# Incident Validation
+## Incident Validation
 
 Not every alert represents a confirmed incident.
 
@@ -800,7 +800,7 @@ Validation prevents unnecessary escalation and ensures appropriate resource allo
 
 ---
 
-# Scope Assessment
+## Scope Assessment
 
 Understanding the scope helps determine response priorities.
 
@@ -830,7 +830,7 @@ The scope should be updated as new information becomes available.
 
 ---
 
-# Business Impact Assessment
+## Business Impact Assessment
 
 Business impact assessment evaluates how the incident affects organizational operations.
 
@@ -858,7 +858,7 @@ Impact assessments should involve technical and business stakeholders.
 
 ---
 
-# Impact Categories
+## Impact Categories
 
 ```
 Business Impact
@@ -886,7 +886,7 @@ These categories help prioritize recovery efforts.
 
 ---
 
-# Evidence Preservation
+## Evidence Preservation
 
 Evidence preservation ensures that relevant information remains accurate and available for analysis, auditing, and lessons learned.
 
@@ -914,7 +914,7 @@ Evidence handling procedures should align with organizational policies.
 
 ---
 
-# Types of Evidence
+## Types of Evidence
 
 ```
 Evidence
@@ -942,7 +942,7 @@ Evidence should be organized and retained according to documented procedures.
 
 ---
 
-# Evidence Handling Principles
+## Evidence Handling Principles
 
 ```
 Evidence Handling
@@ -970,7 +970,7 @@ Proper evidence management supports reliable investigations.
 
 ---
 
-# Containment
+## Containment
 
 Containment limits the operational impact of an incident while maintaining essential business services whenever possible.
 
@@ -998,7 +998,7 @@ Containment activities should be coordinated across relevant teams.
 
 ---
 
-# Containment Objectives
+## Containment Objectives
 
 ```
 Containment
@@ -1024,7 +1024,7 @@ Containment
 
 ---
 
-# Containment Workflow
+## Containment Workflow
 
 ```
 Incident
@@ -1054,7 +1054,7 @@ Containment effectiveness should be continuously monitored.
 
 ---
 
-# Enterprise Coordination
+## Enterprise Coordination
 
 Effective response requires coordinated decision-making.
 
@@ -1086,7 +1086,7 @@ Clearly defined responsibilities improve response efficiency.
 
 ---
 
-# Stakeholder Communication
+## Stakeholder Communication
 
 Communication should remain accurate, timely, and consistent throughout the incident.
 
@@ -1114,7 +1114,7 @@ Communication frequency should match the incident's severity and business impact
 
 ---
 
-# Communication Principles
+## Communication Principles
 
 ```
 Communication
@@ -1140,7 +1140,7 @@ Communication
 
 ---
 
-# Eradication
+## Eradication
 
 Eradication focuses on removing the underlying cause of the incident after containment has stabilized the environment.
 
@@ -1168,7 +1168,7 @@ Corrective actions should follow approved organizational procedures.
 
 ---
 
-# Recovery
+## Recovery
 
 Recovery restores business services to normal operation.
 
@@ -1196,7 +1196,7 @@ Recovery should be completed in a controlled and documented manner.
 
 ---
 
-# Recovery Validation
+## Recovery Validation
 
 ```
 Recovery Validation
@@ -1224,7 +1224,7 @@ Validation confirms that services operate as expected.
 
 ---
 
-# Operational Documentation
+## Operational Documentation
 
 Documentation should be maintained throughout every response phase.
 
@@ -1256,7 +1256,7 @@ Comprehensive documentation supports governance, audits, and future improvements
 
 ---
 
-# Enterprise Incident Response Architecture
+## Enterprise Incident Response Architecture
 
 ```
              Monitoring & Detection
@@ -1294,7 +1294,7 @@ Comprehensive documentation supports governance, audits, and future improvements
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider identifies abnormal application behavior through centralized monitoring.
 
@@ -1326,7 +1326,7 @@ Security analysts coordinate with application, infrastructure, and business team
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1341,7 +1341,7 @@ Security analysts coordinate with application, infrastructure, and business team
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1354,7 +1354,7 @@ Security analysts coordinate with application, infrastructure, and business team
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Develop an incident analysis workflow for an enterprise web application.
 2. Identify information sources that support incident validation.
@@ -1366,7 +1366,7 @@ Security analysts coordinate with application, infrastructure, and business team
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of incident analysis?
 2. Why is incident validation necessary?
@@ -1381,7 +1381,7 @@ Security analysts coordinate with application, infrastructure, and business team
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate incidents before escalating response activities.
 - Preserve relevant evidence using documented procedures.
@@ -1394,7 +1394,7 @@ Security analysts coordinate with application, infrastructure, and business team
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Acting before validating the incident.
 - Incomplete evidence collection or documentation.
@@ -1406,7 +1406,7 @@ Security analysts coordinate with application, infrastructure, and business team
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Incident analysis establishes the scope, impact, and priorities for response.
 - Evidence preservation supports reliable investigations and governance.
@@ -1414,15 +1414,15 @@ Security analysts coordinate with application, infrastructure, and business team
 - Recovery should be carefully validated before normal operations resume.
 - Effective coordination, communication, and documentation are essential for successful incident response.
 
-# 62-Web-Incident-Response.md
+## 62-Web-Incident-Response.md
 
-# Part 3 — Post-Incident Activities, Root Cause Analysis, Compliance, Reporting, Lessons Learned, and Continuous Improvement
+## Part 3 — Post-Incident Activities, Root Cause Analysis, Compliance, Reporting, Lessons Learned, and Continuous Improvement
 
 > **"The true value of incident response is realized after recovery, when organizations analyze what happened, improve defenses, strengthen governance, and reduce the likelihood of future incidents."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1439,7 +1439,7 @@ After completing this part, you will understand:
 
 ---
 
-# Post-Incident Activities
+## Post-Incident Activities
 
 Once normal operations have been restored, organizations should perform structured post-incident activities.
 
@@ -1471,7 +1471,7 @@ Post-incident activities strengthen future response capabilities.
 
 ---
 
-# Objectives of Post-Incident Review
+## Objectives of Post-Incident Review
 
 ```
 Post-Incident Review
@@ -1497,7 +1497,7 @@ Post-Incident Review
 
 ---
 
-# Root Cause Analysis (RCA)
+## Root Cause Analysis (RCA)
 
 Root Cause Analysis identifies the underlying factors that contributed to an incident.
 
@@ -1529,7 +1529,7 @@ The objective is to understand *why* the incident occurred—not to assign blame
 
 ---
 
-# RCA Process
+## RCA Process
 
 ```
 Incident
@@ -1561,7 +1561,7 @@ Track Completion
 
 ---
 
-# Common Categories of Root Causes
+## Common Categories of Root Causes
 
 ```
 Root Causes
@@ -1589,7 +1589,7 @@ Organizations should evaluate multiple contributing factors rather than assuming
 
 ---
 
-# Timeline Reconstruction
+## Timeline Reconstruction
 
 Building an accurate timeline improves understanding of the incident.
 
@@ -1617,7 +1617,7 @@ Timeline reconstruction supports reporting, audits, and future improvements.
 
 ---
 
-# Lessons Learned Meeting
+## Lessons Learned Meeting
 
 After significant incidents, organizations should conduct a structured review.
 
@@ -1645,7 +1645,7 @@ Lessons learned meetings encourage continuous organizational learning.
 
 ---
 
-# Discussion Areas
+## Discussion Areas
 
 ```
 Lessons Learned
@@ -1671,7 +1671,7 @@ Lessons Learned
 
 ---
 
-# Corrective and Preventive Actions (CAPA)
+## Corrective and Preventive Actions (CAPA)
 
 Corrective and Preventive Actions help reduce the likelihood of similar incidents.
 
@@ -1699,7 +1699,7 @@ Corrective actions resolve identified weaknesses, while preventive actions reduc
 
 ---
 
-# CAPA Workflow
+## CAPA Workflow
 
 ```
 Issue
@@ -1727,7 +1727,7 @@ Closure
 
 ---
 
-# Incident Reporting
+## Incident Reporting
 
 Incident reports provide a complete record of the response.
 
@@ -1755,7 +1755,7 @@ Reports support operational reviews, governance, and audit activities.
 
 ---
 
-# Typical Incident Report Contents
+## Typical Incident Report Contents
 
 ```
 Incident Report
@@ -1785,7 +1785,7 @@ Reports should be factual, clear, and well-structured.
 
 ---
 
-# Compliance Integration
+## Compliance Integration
 
 Incident response supports organizational compliance requirements.
 
@@ -1813,7 +1813,7 @@ Proper documentation helps demonstrate adherence to organizational policies and 
 
 ---
 
-# Audit Readiness
+## Audit Readiness
 
 ```
 Audit Readiness
@@ -1841,7 +1841,7 @@ Maintaining complete records simplifies future audits.
 
 ---
 
-# Risk Management Integration
+## Risk Management Integration
 
 Incident response findings should influence organizational risk management.
 
@@ -1869,7 +1869,7 @@ Risk assessments should be updated whenever significant incidents occur.
 
 ---
 
-# Knowledge Management
+## Knowledge Management
 
 Organizations should retain knowledge gained during incidents.
 
@@ -1897,7 +1897,7 @@ Knowledge sharing improves future response efficiency.
 
 ---
 
-# Updating Documentation
+## Updating Documentation
 
 Following every major incident, organizations should review and update:
 
@@ -1927,7 +1927,7 @@ Documentation should accurately reflect operational practices.
 
 ---
 
-# Continuous Improvement Cycle
+## Continuous Improvement Cycle
 
 ```
 Incident
@@ -1957,7 +1957,7 @@ Continuous improvement is an ongoing operational process.
 
 ---
 
-# Enterprise Incident Response Architecture
+## Enterprise Incident Response Architecture
 
 ```
              Incident Recovery
@@ -1995,7 +1995,7 @@ Continuous improvement is an ongoing operational process.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational e-commerce company experiences an incident affecting customer-facing services.
 
@@ -2027,7 +2027,7 @@ Engineering, operations, security, and business teams jointly review the inciden
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2042,7 +2042,7 @@ Engineering, operations, security, and business teams jointly review the inciden
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2055,7 +2055,7 @@ Engineering, operations, security, and business teams jointly review the inciden
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Conduct a mock post-incident review for a web application.
 2. Create a root cause analysis template.
@@ -2067,7 +2067,7 @@ Engineering, operations, security, and business teams jointly review the inciden
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of a post-incident review?
 2. What is Root Cause Analysis (RCA)?
@@ -2082,7 +2082,7 @@ Engineering, operations, security, and business teams jointly review the inciden
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Conduct structured post-incident reviews after significant incidents.
 - Perform evidence-based root cause analysis.
@@ -2095,7 +2095,7 @@ Engineering, operations, security, and business teams jointly review the inciden
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Closing incidents without a formal review.
 - Assuming the first identified issue is the root cause.
@@ -2107,7 +2107,7 @@ Engineering, operations, security, and business teams jointly review the inciden
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Post-incident activities are essential for long-term organizational resilience.
 - Root Cause Analysis identifies underlying factors that contributed to incidents.
@@ -2115,15 +2115,15 @@ Engineering, operations, security, and business teams jointly review the inciden
 - Comprehensive reporting supports governance, compliance, and audits.
 - Continuous improvement transforms incident response into an evolving organizational capability.
 
-# 62-Web-Incident-Response.md
+## 62-Web-Incident-Response.md
 
-# Part 4 — Enterprise Governance, Incident Response Maturity, Business Continuity, Operational Excellence, and Chapter Summary
+## Part 4 — Enterprise Governance, Incident Response Maturity, Business Continuity, Operational Excellence, and Chapter Summary
 
 > **"A mature Web Incident Response program continuously evolves through governance, preparedness, collaboration, operational excellence, and lessons learned to strengthen organizational resilience."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2140,7 +2140,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Incident Response Governance
+## Enterprise Incident Response Governance
 
 Governance establishes policies, responsibilities, oversight, and accountability for incident response activities.
 
@@ -2172,7 +2172,7 @@ Governance ensures that incident response activities remain aligned with organiz
 
 ---
 
-# Incident Response Governance Framework
+## Incident Response Governance Framework
 
 ```
 Incident Governance
@@ -2200,7 +2200,7 @@ A structured governance framework enables consistent response across the organiz
 
 ---
 
-# Incident Response Automation
+## Incident Response Automation
 
 Automation supports repetitive operational activities while allowing responders to focus on decision-making.
 
@@ -2232,7 +2232,7 @@ Automation improves consistency and reduces response delays.
 
 ---
 
-# Automation Objectives
+## Automation Objectives
 
 ```
 Automation
@@ -2260,7 +2260,7 @@ Automation should complement—not replace—human oversight.
 
 ---
 
-# Business Continuity Integration
+## Business Continuity Integration
 
 Incident response and business continuity should operate together.
 
@@ -2288,7 +2288,7 @@ Coordinating these functions minimizes disruption to critical business services.
 
 ---
 
-# Disaster Recovery Coordination
+## Disaster Recovery Coordination
 
 Disaster recovery focuses on restoring technology services following significant disruptions.
 
@@ -2316,7 +2316,7 @@ Recovery plans should be documented, reviewed, and tested periodically.
 
 ---
 
-# Operational Readiness
+## Operational Readiness
 
 Organizations should maintain continuous readiness for future incidents.
 
@@ -2344,7 +2344,7 @@ Readiness reduces uncertainty during real-world incidents.
 
 ---
 
-# Readiness Components
+## Readiness Components
 
 ```
 Operational Readiness
@@ -2370,7 +2370,7 @@ Operational Readiness
 
 ---
 
-# Incident Response Exercises
+## Incident Response Exercises
 
 Regular exercises improve coordination and preparedness.
 
@@ -2398,7 +2398,7 @@ Exercises should involve technical, operational, and business stakeholders.
 
 ---
 
-# Types of Exercises
+## Types of Exercises
 
 ```
 Exercises
@@ -2426,7 +2426,7 @@ The objective is to improve readiness rather than evaluate individual performanc
 
 ---
 
-# Performance Measurement
+## Performance Measurement
 
 Organizations should measure the effectiveness of their incident response program.
 
@@ -2454,7 +2454,7 @@ Performance indicators should support both operational and business objectives.
 
 ---
 
-# Common Operational Metrics
+## Common Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2469,7 +2469,7 @@ Performance indicators should support both operational and business objectives.
 
 ---
 
-# Incident Response Maturity Model
+## Incident Response Maturity Model
 
 ```
 Level 1
@@ -2506,7 +2506,7 @@ Organizations mature by improving governance, automation, coordination, and cont
 
 ---
 
-# Characteristics of a Mature Incident Response Program
+## Characteristics of a Mature Incident Response Program
 
 ```
 Mature Program
@@ -2534,7 +2534,7 @@ Mature Program
 
 ---
 
-# Enterprise Incident Response Architecture
+## Enterprise Incident Response Architecture
 
 ```
              Web Applications
@@ -2576,7 +2576,7 @@ This architecture illustrates how technical, operational, and business functions
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution maintains an enterprise-wide incident response program supporting customer portals, online banking platforms, and internal business systems.
 
@@ -2608,7 +2608,7 @@ Following every major incident, security, infrastructure, development, legal, co
 
 ---
 
-# Enterprise Incident Response Checklist
+## Enterprise Incident Response Checklist
 
 ```
 ✓ Incident Response Policy Approved
@@ -2634,7 +2634,7 @@ Following every major incident, security, infrastructure, development, legal, co
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2647,9 +2647,9 @@ Following every major incident, security, infrastructure, development, legal, co
 
 ---
 
-# Web Incident Response Quick Revision
+## Web Incident Response Quick Revision
 
-## Incident Lifecycle
+### Incident Lifecycle
 
 ```
 Preparation
@@ -2681,7 +2681,7 @@ Lessons Learned
 
 ---
 
-## Response Workflow
+### Response Workflow
 
 ```
 Event
@@ -2709,7 +2709,7 @@ Review
 
 ---
 
-## Continuous Improvement Cycle
+### Continuous Improvement Cycle
 
 ```
 Incident
@@ -2737,7 +2737,7 @@ Improvement
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise incident response governance framework.
 2. Create a communication and escalation matrix for different incident severity levels.
@@ -2749,7 +2749,7 @@ Improvement
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Web Incident Response?
 2. Why is governance important for incident response?
@@ -2764,7 +2764,7 @@ Improvement
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain documented and regularly reviewed incident response procedures.
 - Clearly define ownership, roles, and escalation paths.
@@ -2777,7 +2777,7 @@ Improvement
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating incident response as only a technical responsibility.
 - Performing exercises infrequently or not reviewing outcomes.
@@ -2789,7 +2789,7 @@ Improvement
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

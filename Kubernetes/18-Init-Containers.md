@@ -24,7 +24,7 @@ Init Containers are commonly used for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -41,7 +41,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Init Containers?
+## Why Init Containers?
 
 Imagine an application.
 
@@ -65,7 +65,7 @@ The application crashes because its dependency is unavailable.
 
 ---
 
-# Another Example
+## Another Example
 
 ```
 Application
@@ -95,7 +95,7 @@ Crash
 
 ---
 
-# Solution
+## Solution
 
 Use Init Containers.
 
@@ -121,7 +121,7 @@ Application Starts
 
 ---
 
-# What is an Init Container?
+## What is an Init Container?
 
 An Init Container is a container that performs initialization tasks before the application begins.
 
@@ -147,7 +147,7 @@ Running
 
 ---
 
-# Pod Architecture
+## Pod Architecture
 
 ```
                     Pod
@@ -179,7 +179,7 @@ Running
 
 ---
 
-# Init Container Characteristics
+## Init Container Characteristics
 
 Init Containers:
 
@@ -191,7 +191,7 @@ Init Containers:
 
 ---
 
-# Init Container vs Regular Container
+## Init Container vs Regular Container
 
 | Init Container | Regular Container |
 |---------------|-------------------|
@@ -203,7 +203,7 @@ Init Containers:
 
 ---
 
-# Multiple Init Containers
+## Multiple Init Containers
 
 Pods can contain multiple Init Containers.
 
@@ -241,7 +241,7 @@ Each Init Container waits for the previous one to finish.
 
 ---
 
-# Init Container Workflow
+## Init Container Workflow
 
 ```
 Create Pod
@@ -273,7 +273,7 @@ Running
 
 ---
 
-# Init Container YAML
+## Init Container YAML
 
 ```yaml
 apiVersion: v1
@@ -309,7 +309,7 @@ spec:
 
 ---
 
-# YAML Structure
+## YAML Structure
 
 ```
 Pod
@@ -339,7 +339,7 @@ Separate Section
 
 ---
 
-# Execution Sequence
+## Execution Sequence
 
 ```
 Pod Created
@@ -359,7 +359,7 @@ Application Starts
 
 ---
 
-# Failure Handling
+## Failure Handling
 
 Suppose:
 
@@ -385,7 +385,7 @@ The Pod remains in the initialization phase until the Init Container succeeds.
 
 ---
 
-# Restart Behavior
+## Restart Behavior
 
 If an Init Container fails:
 
@@ -413,7 +413,7 @@ The retry behavior follows the Pod's `restartPolicy`.
 
 ---
 
-# Pod Status
+## Pod Status
 
 During initialization:
 
@@ -459,7 +459,7 @@ Running
 
 ---
 
-# Viewing Init Container Logs
+## Viewing Init Container Logs
 
 ```bash
 kubectl logs pod-name \
@@ -478,7 +478,7 @@ Container Name
 
 ---
 
-# Shared Volumes
+## Shared Volumes
 
 Init Containers commonly prepare data.
 
@@ -498,7 +498,7 @@ Application Container
 
 ---
 
-# Example
+## Example
 
 Init Container:
 
@@ -522,7 +522,7 @@ Start
 
 ---
 
-# File Permission Example
+## File Permission Example
 
 Init Container:
 
@@ -546,7 +546,7 @@ Success
 
 ---
 
-# Download Example
+## Download Example
 
 ```
 Init Container
@@ -568,7 +568,7 @@ The application starts only after the required files exist.
 
 ---
 
-# Wait for Database Example
+## Wait for Database Example
 
 ```
 Init Container
@@ -592,7 +592,7 @@ Start Application
 
 ---
 
-# DNS Check Example
+## DNS Check Example
 
 ```
 Init Container
@@ -612,7 +612,7 @@ Application Starts
 
 ---
 
-# Migration Example
+## Migration Example
 
 ```
 Init Container
@@ -632,9 +632,9 @@ Application Starts
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
-## Database Readiness
+### Database Readiness
 
 ```
 Init
@@ -650,7 +650,7 @@ Database Ready
 
 ---
 
-## Configuration Generation
+### Configuration Generation
 
 ```
 Template
@@ -666,7 +666,7 @@ Application
 
 ---
 
-## Download Files
+### Download Files
 
 ```
 Internet
@@ -682,7 +682,7 @@ Volume
 
 ---
 
-## Directory Creation
+### Directory Creation
 
 ```
 Init
@@ -698,7 +698,7 @@ Shared Volume
 
 ---
 
-## Secret Validation
+### Secret Validation
 
 ```
 Init
@@ -714,7 +714,7 @@ Start App
 
 ---
 
-# Viewing Init Containers
+## Viewing Init Containers
 
 Describe Pod:
 
@@ -732,7 +732,7 @@ section.
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -767,7 +767,7 @@ kubectl delete pod init-demo
 
 ---
 
-# Init Container Lifecycle
+## Init Container Lifecycle
 
 ```
 Create Pod
@@ -799,7 +799,7 @@ Running
 
 ---
 
-# Init Container Architecture Summary
+## Init Container Architecture Summary
 
 ```
 Pod
@@ -819,41 +819,41 @@ Application Container
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Keep Init Containers Small
+#### 1. Keep Init Containers Small
 
 They should perform only initialization tasks.
 
 ---
 
-### 2. Separate Initialization Logic
+#### 2. Separate Initialization Logic
 
 Avoid embedding initialization scripts inside the main application container.
 
 ---
 
-### 3. Use Shared Volumes
+#### 3. Use Shared Volumes
 
 Exchange files between Init Containers and application containers using shared volumes.
 
 ---
 
-### 4. Monitor Initialization Failures
+#### 4. Monitor Initialization Failures
 
 Inspect Init Container logs whenever a Pod remains in the `Init` state.
 
 ---
 
-### 5. Make Initialization Idempotent
+#### 5. Make Initialization Idempotent
 
 Initialization scripts should safely handle repeated execution because they may be retried after failures.
 
 ---
 
-# How Init Containers Work Internally
+## How Init Containers Work Internally
 
-## Overview
+### Overview
 
 Init Containers are executed **before** any regular application container starts.
 
@@ -868,7 +868,7 @@ Unlike regular containers, Init Containers are **temporary** and exist only duri
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                     Pod
@@ -904,7 +904,7 @@ Unlike regular containers, Init Containers are **temporary** and exist only duri
 
 ---
 
-# Complete Workflow
+## Complete Workflow
 
 ```
 Developer
@@ -960,7 +960,7 @@ Running
 
 ---
 
-# Step 1 – Pod Creation
+## Step 1 – Pod Creation
 
 Example:
 
@@ -978,7 +978,7 @@ kubectl apply -f pod.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -1002,7 +1002,7 @@ Pod Stored
 
 ---
 
-# Step 3 – Scheduler
+## Step 3 – Scheduler
 
 The Scheduler selects an appropriate worker Node.
 
@@ -1022,7 +1022,7 @@ The Pod is assigned to the selected Node.
 
 ---
 
-# Step 4 – kubelet Receives Pod
+## Step 4 – kubelet Receives Pod
 
 ```
 API Server
@@ -1045,7 +1045,7 @@ The kubelet inspects:
 
 ---
 
-# Step 5 – Start First Init Container
+## Step 5 – Start First Init Container
 
 Suppose:
 
@@ -1065,7 +1065,7 @@ Application containers remain in a waiting state.
 
 ---
 
-# Step 6 – Wait for Completion
+## Step 6 – Wait for Completion
 
 Possible outcomes:
 
@@ -1091,7 +1091,7 @@ Only Exit Code **0** allows initialization to continue.
 
 ---
 
-# Step 7 – Start Next Init Container
+## Step 7 – Start Next Init Container
 
 Suppose:
 
@@ -1117,7 +1117,7 @@ Execution is strictly sequential.
 
 ---
 
-# Multiple Init Containers
+## Multiple Init Containers
 
 Example:
 
@@ -1153,7 +1153,7 @@ Application Container
 
 ---
 
-# Sequential Execution
+## Sequential Execution
 
 ```
 Init 1
@@ -1187,7 +1187,7 @@ Parallel execution is **not supported**.
 
 ---
 
-# Shared Volumes
+## Shared Volumes
 
 A common pattern:
 
@@ -1207,7 +1207,7 @@ Both containers mount the same volume.
 
 ---
 
-# Example
+## Example
 
 Init Container:
 
@@ -1231,7 +1231,7 @@ Read Config
 
 ---
 
-# Volume Workflow
+## Volume Workflow
 
 ```
 emptyDir
@@ -1253,7 +1253,7 @@ The volume persists for the lifetime of the Pod.
 
 ---
 
-# Failure Workflow
+## Failure Workflow
 
 Suppose:
 
@@ -1283,7 +1283,7 @@ Init:Error
 
 ---
 
-# Retry Behavior
+## Retry Behavior
 
 If:
 
@@ -1317,7 +1317,7 @@ The kubelet follows the Pod's restart policy.
 
 ---
 
-# Pod Status During Initialization
+## Pod Status During Initialization
 
 Example:
 
@@ -1355,7 +1355,7 @@ Running
 
 ---
 
-# kubelet Responsibilities
+## kubelet Responsibilities
 
 The kubelet ensures:
 
@@ -1384,7 +1384,7 @@ Application
 
 ---
 
-# Logging
+## Logging
 
 Each Init Container has independent logs.
 
@@ -1399,7 +1399,7 @@ Different Init Containers have separate log streams.
 
 ---
 
-# Restart Scenario
+## Restart Scenario
 
 Suppose:
 
@@ -1423,7 +1423,7 @@ However, if the **entire Pod is recreated** (for example, deleted and recreated 
 
 ---
 
-# Image Pull Sequence
+## Image Pull Sequence
 
 Suppose:
 
@@ -1449,7 +1449,7 @@ Containers are started according to the Pod lifecycle after required images are 
 
 ---
 
-# Resource Allocation
+## Resource Allocation
 
 Init Containers may have different resource requests than application containers.
 
@@ -1481,7 +1481,7 @@ Kubernetes schedules the Pod considering both init and application container res
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Developer
@@ -1517,7 +1517,7 @@ Application Container
 
 ---
 
-# Database Example
+## Database Example
 
 ```
 Init
@@ -1537,7 +1537,7 @@ Start API
 
 ---
 
-# File Download Example
+## File Download Example
 
 ```
 Init
@@ -1557,7 +1557,7 @@ AI Application
 
 ---
 
-# Configuration Example
+## Configuration Example
 
 ```
 Init
@@ -1577,7 +1577,7 @@ Application
 
 ---
 
-# Permission Example
+## Permission Example
 
 ```
 Init
@@ -1597,7 +1597,7 @@ Application Reads
 
 ---
 
-# Secret Validation Example
+## Secret Validation Example
 
 ```
 Init
@@ -1617,7 +1617,7 @@ Application Starts
 
 ---
 
-# Hands-on Lab 1 – Basic Init Container
+## Hands-on Lab 1 – Basic Init Container
 
 ```yaml
 apiVersion: v1
@@ -1659,7 +1659,7 @@ kubectl apply -f init-demo.yaml
 
 ---
 
-# Hands-on Lab 2 – View Pod Status
+## Hands-on Lab 2 – View Pod Status
 
 ```bash
 kubectl get pods -w
@@ -1677,7 +1677,7 @@ Running
 
 ---
 
-# Hands-on Lab 3 – View Init Logs
+## Hands-on Lab 3 – View Init Logs
 
 ```bash
 kubectl logs init-demo \
@@ -1688,7 +1688,7 @@ Observe the initialization output.
 
 ---
 
-# Hands-on Lab 4 – Shared Volume
+## Hands-on Lab 4 – Shared Volume
 
 Use an `emptyDir` volume.
 
@@ -1708,7 +1708,7 @@ Verify that the file created by the Init Container is available to the applicati
 
 ---
 
-# Hands-on Lab 5 – Simulate Failure
+## Hands-on Lab 5 – Simulate Failure
 
 Change the command:
 
@@ -1726,9 +1726,9 @@ Pod remains in the initialization phase until the failure is resolved.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using Init Containers for Long-Running Services
+### 1. Using Init Containers for Long-Running Services
 
 Incorrect:
 
@@ -1750,7 +1750,7 @@ Init Containers must terminate successfully.
 
 ---
 
-## 2. Expecting Parallel Execution
+### 2. Expecting Parallel Execution
 
 Incorrect:
 
@@ -1780,7 +1780,7 @@ Init 2
 
 ---
 
-## 3. Forgetting Shared Volumes
+### 3. Forgetting Shared Volumes
 
 Without a shared volume:
 
@@ -1802,7 +1802,7 @@ when data must be shared.
 
 ---
 
-## 4. Ignoring Exit Codes
+### 4. Ignoring Exit Codes
 
 Only:
 
@@ -1814,15 +1814,15 @@ allows Kubernetes to proceed to the next Init Container or application container
 
 ---
 
-## 5. Expecting Init Containers to Run on Every Container Restart
+### 5. Expecting Init Containers to Run on Every Container Restart
 
 Init Containers execute **once per Pod lifecycle**, not every time an application container restarts.
 
 ---
 
-# Init Containers Quick Revision
+## Init Containers Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 Pod
@@ -1842,7 +1842,7 @@ Application Container
 
 ---
 
-## Lifecycle
+### Lifecycle
 
 ```
 Create
@@ -1870,7 +1870,7 @@ Running
 
 ---
 
-## Execution Rules
+### Execution Rules
 
 ```
 Sequential
@@ -1886,7 +1886,7 @@ Must Succeed
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Pods:
 
@@ -1920,9 +1920,9 @@ kubectl delete pod init-demo
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is an Init Container?
 - How is an Init Container different from a regular container?
@@ -1930,7 +1930,7 @@ kubectl delete pod init-demo
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - Can multiple Init Containers run simultaneously?
 - How do Init Containers share data with application containers?
@@ -1938,7 +1938,7 @@ kubectl delete pod init-demo
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the internal execution flow of Init Containers.
 - Why are Init Containers useful for dependency management?
@@ -1948,9 +1948,9 @@ kubectl delete pod init-demo
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Init Containers
 - Pod Lifecycle
@@ -1960,7 +1960,7 @@ kubectl delete pod init-demo
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Best Practices
 - Pod Design Patterns
@@ -1968,7 +1968,7 @@ kubectl delete pod init-demo
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Production Best Practices
@@ -1977,7 +1977,7 @@ kubectl delete pod init-demo
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create a Pod with multiple Init Containers.
 2. Observe sequential execution using `kubectl get pods -w`.
@@ -1988,7 +1988,7 @@ kubectl delete pod init-demo
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Developer

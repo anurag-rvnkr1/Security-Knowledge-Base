@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Computer networking is the foundation of modern information technology. Every application, cloud service, operating system, cybersecurity control, and enterprise infrastructure depends on reliable and secure network communication.
 
@@ -16,7 +16,7 @@ This handbook provides an enterprise-level understanding of networking, progress
 
 ---
 
-# Why Networking Matters in Cybersecurity
+## Why Networking Matters in Cybersecurity
 
 Almost every cyber attack involves the network.
 
@@ -39,7 +39,7 @@ Understanding networking enables defenders to detect, investigate, and respond t
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this networking handbook, you should be able to:
 
@@ -58,7 +58,7 @@ After completing this networking handbook, you should be able to:
 
 ---
 
-# Networking Learning Roadmap
+## Networking Learning Roadmap
 
 ```
 Networking Fundamentals
@@ -129,7 +129,7 @@ Monitoring & Troubleshooting
 
 ---
 
-# Who Should Read This?
+## Who Should Read This?
 
 This handbook is suitable for:
 
@@ -150,7 +150,7 @@ This handbook is suitable for:
 
 ---
 
-# Prerequisites
+## Prerequisites
 
 No prior networking knowledge is required.
 
@@ -165,9 +165,9 @@ is sufficient to begin.
 
 ---
 
-# Topics Covered
+## Topics Covered
 
-## Networking Fundamentals
+### Networking Fundamentals
 
 - Introduction to Computer Networks
 - Types of Networks
@@ -178,7 +178,7 @@ is sufficient to begin.
 
 ---
 
-## OSI Model
+### OSI Model
 
 - Seven Layers
 - Layer Responsibilities
@@ -189,7 +189,7 @@ is sufficient to begin.
 
 ---
 
-## TCP/IP Model
+### TCP/IP Model
 
 - Internet Architecture
 - Layer Functions
@@ -198,7 +198,7 @@ is sufficient to begin.
 
 ---
 
-## Ethernet
+### Ethernet
 
 - Frames
 - MAC Addresses
@@ -207,7 +207,7 @@ is sufficient to begin.
 
 ---
 
-## IP Addressing
+### IP Addressing
 
 - IPv4
 - IPv6
@@ -219,7 +219,7 @@ is sufficient to begin.
 
 ---
 
-## Subnetting
+### Subnetting
 
 - CIDR
 - Subnet Masks
@@ -230,7 +230,7 @@ is sufficient to begin.
 
 ---
 
-## Routing
+### Routing
 
 - Static Routing
 - Dynamic Routing
@@ -240,7 +240,7 @@ is sufficient to begin.
 
 ---
 
-## Switching
+### Switching
 
 - Layer 2 Switching
 - VLANs
@@ -250,7 +250,7 @@ is sufficient to begin.
 
 ---
 
-## Core Protocols
+### Core Protocols
 
 - TCP
 - UDP
@@ -270,7 +270,7 @@ is sufficient to begin.
 
 ---
 
-## Network Devices
+### Network Devices
 
 - Hub
 - Switch
@@ -285,7 +285,7 @@ is sufficient to begin.
 
 ---
 
-## Enterprise Networking
+### Enterprise Networking
 
 - VLAN Architecture
 - DMZ
@@ -297,7 +297,7 @@ is sufficient to begin.
 
 ---
 
-## Cloud Networking
+### Cloud Networking
 
 - VPC
 - Subnets
@@ -310,7 +310,7 @@ is sufficient to begin.
 
 ---
 
-## Network Security
+### Network Security
 
 - Firewalls
 - Zero Trust
@@ -323,7 +323,7 @@ is sufficient to begin.
 
 ---
 
-## Monitoring
+### Monitoring
 
 - Wireshark
 - tcpdump
@@ -336,7 +336,7 @@ is sufficient to begin.
 
 ---
 
-## Troubleshooting
+### Troubleshooting
 
 - Ping
 - Traceroute
@@ -352,7 +352,7 @@ is sufficient to begin.
 
 ---
 
-## Enterprise Case Studies
+### Enterprise Case Studies
 
 - Corporate Network Design
 - Hybrid Cloud Connectivity
@@ -363,7 +363,7 @@ is sufficient to begin.
 
 ---
 
-# Folder Structure
+## Folder Structure
 
 ```text
 Networking/
@@ -427,7 +427,7 @@ Networking/
 
 ---
 
-# Recommended Labs
+## Recommended Labs
 
 This handbook includes practical exercises using:
 
@@ -447,7 +447,7 @@ This handbook includes practical exercises using:
 
 ---
 
-# Recommended Learning Path
+## Recommended Learning Path
 
 ```
 Networking Fundamentals
@@ -494,7 +494,7 @@ Troubleshooting
 
 ---
 
-# Interview Preparation
+## Interview Preparation
 
 This networking handbook is designed to prepare readers for interviews at organizations including:
 
@@ -534,15 +534,15 @@ It also aligns with the knowledge expected for certifications such as:
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - IEEE 802 Standards
 - IETF RFC Series
 - ISO/IEC Networking Standards
 
-## Vendor Documentation
+### Vendor Documentation
 
 - Cisco
 - Juniper
@@ -553,7 +553,7 @@ It also aligns with the knowledge expected for certifications such as:
 - Google Cloud
 - Red Hat
 
-## Learning Resources
+### Learning Resources
 
 - RFC Editor
 - Wireshark Documentation
@@ -564,6 +564,6 @@ It also aligns with the knowledge expected for certifications such as:
 
 ---
 
-# Summary
+## Summary
 
 Networking is the backbone of every modern digital system. A strong understanding of networking enables professionals to build secure infrastructures, troubleshoot complex connectivity issues, detect cyber threats, and defend enterprise environments effectively. This handbook provides a structured progression from foundational concepts to advanced enterprise networking, emphasizing practical knowledge, secure design, and real-world applicability for cybersecurity professionals, network engineers, and interview candidates.

@@ -1,10 +1,10 @@
 # 25 - Linux Interview Questions
 
-# Part 1 — Linux Fundamentals Interview Questions (Beginner to Intermediate)
+## Part 1 — Linux Fundamentals Interview Questions (Beginner to Intermediate)
 
 ---
 
-# Introduction
+## Introduction
 
 Linux interview questions are designed to evaluate:
 
@@ -19,7 +19,7 @@ This chapter covers interview questions from **fresher to enterprise-level Linux
 
 ---
 
-# Interview Preparation Strategy
+## Interview Preparation Strategy
 
 Enterprise interviewers generally evaluate candidates in this order:
 
@@ -65,7 +65,7 @@ Hands-on Assessment
 
 ---
 
-# Types of Linux Interview Questions
+## Types of Linux Interview Questions
 
 | Level | Focus |
 |--------|-------|
@@ -77,9 +77,9 @@ Hands-on Assessment
 
 ---
 
-# Q1. What is Linux?
+## Q1. What is Linux?
 
-### Answer
+#### Answer
 
 Linux is an open-source, Unix-like operating system kernel created by **Linus Torvalds** in 1991.
 
@@ -103,9 +103,9 @@ Linux is widely used for:
 
 ---
 
-# Q2. What is the Linux Kernel?
+## Q2. What is the Linux Kernel?
 
-### Answer
+#### Answer
 
 The kernel is the core component of the operating system.
 
@@ -138,9 +138,9 @@ Hardware
 
 ---
 
-# Q3. What is the Shell?
+## Q3. What is the Shell?
 
-### Answer
+#### Answer
 
 The shell is a command interpreter that allows users to communicate with the Linux kernel.
 
@@ -154,7 +154,7 @@ Popular shells include:
 
 ---
 
-# Q4. What is the difference between Linux and Unix?
+## Q4. What is the difference between Linux and Unix?
 
 | Linux | Unix |
 |--------|------|
@@ -165,9 +165,9 @@ Popular shells include:
 
 ---
 
-# Q5. What are Linux distributions?
+## Q5. What are Linux distributions?
 
-### Answer
+#### Answer
 
 A Linux distribution combines the Linux kernel with software packages and tools.
 
@@ -184,9 +184,9 @@ Examples:
 
 ---
 
-# Q6. Explain the Linux boot process.
+## Q6. Explain the Linux boot process.
 
-### Answer
+#### Answer
 
 ```text
 BIOS/UEFI
@@ -218,9 +218,9 @@ Login Prompt
 
 ---
 
-# Q7. What is systemd?
+## Q7. What is systemd?
 
-### Answer
+#### Answer
 
 `systemd` is the initialization system used by most modern Linux distributions.
 
@@ -244,9 +244,9 @@ systemctl restart ssh
 
 ---
 
-# Q8. What is the Linux filesystem?
+## Q8. What is the Linux filesystem?
 
-### Answer
+#### Answer
 
 Linux uses a hierarchical directory structure beginning at the root directory:
 
@@ -269,9 +269,9 @@ Important directories:
 
 ---
 
-# Q9. What is an inode?
+## Q9. What is an inode?
 
-### Answer
+#### Answer
 
 An inode stores metadata about a file, including:
 
@@ -285,7 +285,7 @@ The filename itself is stored in the directory entry, not in the inode.
 
 ---
 
-# Q10. What is the difference between a hard link and a symbolic link?
+## Q10. What is the difference between a hard link and a symbolic link?
 
 | Hard Link | Symbolic Link |
 |------------|---------------|
@@ -296,9 +296,9 @@ The filename itself is stored in the directory entry, not in the inode.
 
 ---
 
-# Q11. What are file permissions?
+## Q11. What are file permissions?
 
-### Answer
+#### Answer
 
 Linux permissions determine who can:
 
@@ -324,9 +324,9 @@ Example:
 
 ---
 
-# Q12. Explain chmod.
+## Q12. Explain chmod.
 
-### Answer
+#### Answer
 
 `chmod` changes file permissions.
 
@@ -360,9 +360,9 @@ Read + Execute
 
 ---
 
-# Q13. Explain chown.
+## Q13. Explain chown.
 
-### Answer
+#### Answer
 
 `chown` changes file ownership.
 
@@ -374,7 +374,7 @@ sudo chown user:group file.txt
 
 ---
 
-# Q14. Difference between chmod and chown?
+## Q14. Difference between chmod and chown?
 
 | chmod | chown |
 |--------|--------|
@@ -383,9 +383,9 @@ sudo chown user:group file.txt
 
 ---
 
-# Q15. What is sudo?
+## Q15. What is sudo?
 
-### Answer
+#### Answer
 
 `sudo` allows authorized users to execute commands with elevated privileges according to system policy.
 
@@ -397,9 +397,9 @@ sudo apt update
 
 ---
 
-# Q16. What is the root user?
+## Q16. What is the root user?
 
-### Answer
+#### Answer
 
 The `root` user is the superuser with unrestricted administrative privileges.
 
@@ -411,9 +411,9 @@ Enterprise best practice:
 
 ---
 
-# Q17. What is PATH?
+## Q17. What is PATH?
 
-### Answer
+#### Answer
 
 `PATH` is an environment variable containing directories searched for executable commands.
 
@@ -425,7 +425,7 @@ echo $PATH
 
 ---
 
-# Q18. What is the difference between absolute and relative paths?
+## Q18. What is the difference between absolute and relative paths?
 
 | Absolute Path | Relative Path |
 |---------------|---------------|
@@ -448,9 +448,9 @@ documents/file.txt
 
 ---
 
-# Q19. How do you display the current working directory?
+## Q19. How do you display the current working directory?
 
-### Answer
+#### Answer
 
 ```bash
 pwd
@@ -458,9 +458,9 @@ pwd
 
 ---
 
-# Q20. How do you list files?
+## Q20. How do you list files?
 
-### Answer
+#### Answer
 
 ```bash
 ls
@@ -480,9 +480,9 @@ ls -la
 
 ---
 
-# Q21. How do you create directories?
+## Q21. How do you create directories?
 
-### Answer
+#### Answer
 
 ```bash
 mkdir directory_name
@@ -496,7 +496,7 @@ mkdir -p parent/child
 
 ---
 
-# Q22. How do you copy, move, and remove files?
+## Q22. How do you copy, move, and remove files?
 
 Copy:
 
@@ -526,9 +526,9 @@ Use recursive deletion carefully, especially with elevated privileges.
 
 ---
 
-# Q23. How do you search for files?
+## Q23. How do you search for files?
 
-### Answer
+#### Answer
 
 ```bash
 find /path -name filename
@@ -542,9 +542,9 @@ find /home -name report.txt
 
 ---
 
-# Q24. How do you search inside files?
+## Q24. How do you search inside files?
 
-### Answer
+#### Answer
 
 ```bash
 grep "pattern" filename
@@ -558,7 +558,7 @@ grep -R "pattern" directory
 
 ---
 
-# Q25. How do you display file contents?
+## Q25. How do you display file contents?
 
 Commands:
 
@@ -584,7 +584,7 @@ tail
 
 ---
 
-# Q26. What is the difference between cat and less?
+## Q26. What is the difference between cat and less?
 
 | cat | less |
 |------|-------|
@@ -593,7 +593,7 @@ tail
 
 ---
 
-# Q27. How do you check disk usage?
+## Q27. How do you check disk usage?
 
 Filesystem usage:
 
@@ -609,7 +609,7 @@ du -sh directory
 
 ---
 
-# Q28. How do you check memory usage?
+## Q28. How do you check memory usage?
 
 ```bash
 free -h
@@ -617,7 +617,7 @@ free -h
 
 ---
 
-# Q29. How do you check CPU and process usage?
+## Q29. How do you check CPU and process usage?
 
 Interactive:
 
@@ -635,7 +635,7 @@ htop
 
 ---
 
-# Q30. How do you check system uptime?
+## Q30. How do you check system uptime?
 
 ```bash
 uptime
@@ -643,7 +643,7 @@ uptime
 
 ---
 
-# Interview Tips
+## Interview Tips
 
 - Explain concepts before giving commands.
 - Mention practical use cases.
@@ -653,7 +653,7 @@ uptime
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Master Linux fundamentals before advanced topics.
 - Understand both concepts and commands.
@@ -662,13 +662,13 @@ uptime
 
 ---
 
-# 25 - Linux Interview Questions
+## 25 - Linux Interview Questions
 
-# Part 2 — Processes, Services, Networking, Storage, Shell Scripting, and Security Interview Questions
+## Part 2 — Processes, Services, Networking, Storage, Shell Scripting, and Security Interview Questions
 
 ---
 
-# Introduction
+## Introduction
 
 After verifying Linux fundamentals, interviewers typically assess your ability to manage:
 
@@ -693,13 +693,13 @@ These topics are frequently asked in interviews for:
 
 ---
 
-# Section 1 — Process Management
+## Section 1 — Process Management
 
 ---
 
-# Q31. What is a process?
+## Q31. What is a process?
 
-### Answer
+#### Answer
 
 A process is an instance of a running program.
 
@@ -728,7 +728,7 @@ Running Process (PID 1234)
 
 ---
 
-# Q32. Difference between a process and a thread?
+## Q32. Difference between a process and a thread?
 
 | Process | Thread |
 |----------|--------|
@@ -739,9 +739,9 @@ Running Process (PID 1234)
 
 ---
 
-# Q33. How do you view running processes?
+## Q33. How do you view running processes?
 
-### Answer
+#### Answer
 
 ```bash
 ps aux
@@ -763,9 +763,9 @@ htop
 
 ---
 
-# Q34. What is a zombie process?
+## Q34. What is a zombie process?
 
-### Answer
+#### Answer
 
 A zombie process has completed execution, but its parent process has not yet collected its exit status.
 
@@ -778,7 +778,7 @@ Characteristics:
 
 ---
 
-# Q35. How do you terminate a process?
+## Q35. How do you terminate a process?
 
 Graceful termination:
 
@@ -798,7 +798,7 @@ Use `SIGTERM` (`kill`) first and `SIGKILL` (`kill -9`) only when necessary.
 
 ---
 
-# Q36. What is the difference between SIGTERM and SIGKILL?
+## Q36. What is the difference between SIGTERM and SIGKILL?
 
 | SIGTERM | SIGKILL |
 |----------|----------|
@@ -808,13 +808,13 @@ Use `SIGTERM` (`kill`) first and `SIGKILL` (`kill -9`) only when necessary.
 
 ---
 
-# Section 2 — Services
+## Section 2 — Services
 
 ---
 
-# Q37. What is a service?
+## Q37. What is a service?
 
-### Answer
+#### Answer
 
 A service (daemon) is a background process that provides functionality such as:
 
@@ -826,7 +826,7 @@ A service (daemon) is a background process that provides functionality such as:
 
 ---
 
-# Q38. How do you check service status?
+## Q38. How do you check service status?
 
 ```bash
 systemctl status ssh
@@ -834,7 +834,7 @@ systemctl status ssh
 
 ---
 
-# Q39. How do you start, stop, and restart a service?
+## Q39. How do you start, stop, and restart a service?
 
 Start:
 
@@ -862,7 +862,7 @@ systemctl reload service-name
 
 ---
 
-# Q40. How do you enable a service at boot?
+## Q40. How do you enable a service at boot?
 
 ```bash
 systemctl enable service-name
@@ -876,7 +876,7 @@ systemctl disable service-name
 
 ---
 
-# Q41. How do you list failed services?
+## Q41. How do you list failed services?
 
 ```bash
 systemctl --failed
@@ -884,7 +884,7 @@ systemctl --failed
 
 ---
 
-# Q42. Where do you check service logs?
+## Q42. Where do you check service logs?
 
 ```bash
 journalctl -u service-name
@@ -892,11 +892,11 @@ journalctl -u service-name
 
 ---
 
-# Section 3 — Networking
+## Section 3 — Networking
 
 ---
 
-# Q43. How do you display IP addresses?
+## Q43. How do you display IP addresses?
 
 ```bash
 ip addr
@@ -904,7 +904,7 @@ ip addr
 
 ---
 
-# Q44. How do you display the routing table?
+## Q44. How do you display the routing table?
 
 ```bash
 ip route
@@ -912,7 +912,7 @@ ip route
 
 ---
 
-# Q45. Difference between TCP and UDP?
+## Q45. Difference between TCP and UDP?
 
 | TCP | UDP |
 |------|------|
@@ -924,7 +924,7 @@ ip route
 
 ---
 
-# Q46. How do you test connectivity?
+## Q46. How do you test connectivity?
 
 ```bash
 ping hostname
@@ -932,7 +932,7 @@ ping hostname
 
 ---
 
-# Q47. How do you trace the network path?
+## Q47. How do you trace the network path?
 
 ```bash
 traceroute hostname
@@ -946,7 +946,7 @@ tracepath hostname
 
 ---
 
-# Q48. How do you view listening ports?
+## Q48. How do you view listening ports?
 
 ```bash
 ss -tulpn
@@ -954,7 +954,7 @@ ss -tulpn
 
 ---
 
-# Q49. How do you troubleshoot DNS?
+## Q49. How do you troubleshoot DNS?
 
 Typical steps:
 
@@ -966,7 +966,7 @@ Typical steps:
 
 ---
 
-# Q50. Difference between public IP and private IP?
+## Q50. Difference between public IP and private IP?
 
 | Public IP | Private IP |
 |------------|------------|
@@ -982,11 +982,11 @@ Private IPv4 ranges:
 
 ---
 
-# Section 4 — Storage
+## Section 4 — Storage
 
 ---
 
-# Q51. How do you check disk usage?
+## Q51. How do you check disk usage?
 
 Filesystem usage:
 
@@ -1002,9 +1002,9 @@ du -sh directory
 
 ---
 
-# Q52. What is a mount point?
+## Q52. What is a mount point?
 
-### Answer
+#### Answer
 
 A mount point is a directory where a filesystem is attached to the directory tree.
 
@@ -1024,9 +1024,9 @@ Mounted Filesystem
 
 ---
 
-# Q53. What is `/etc/fstab`?
+## Q53. What is `/etc/fstab`?
 
-### Answer
+#### Answer
 
 `/etc/fstab` defines filesystems that should be mounted automatically during boot.
 
@@ -1040,9 +1040,9 @@ It typically includes:
 
 ---
 
-# Q54. What is an inode?
+## Q54. What is an inode?
 
-### Answer
+#### Answer
 
 An inode stores metadata about a file, such as:
 
@@ -1055,7 +1055,7 @@ An inode stores metadata about a file, such as:
 
 ---
 
-# Q55. What causes "No space left on device" even when disk space appears available?
+## Q55. What causes "No space left on device" even when disk space appears available?
 
 Possible causes include:
 
@@ -1070,13 +1070,13 @@ Mention both disk space (`df -h`) and inode usage (`df -i`).
 
 ---
 
-# Section 5 — Shell Scripting
+## Section 5 — Shell Scripting
 
 ---
 
-# Q56. What is a shell script?
+## Q56. What is a shell script?
 
-### Answer
+#### Answer
 
 A shell script is a text file containing shell commands executed sequentially.
 
@@ -1089,7 +1089,7 @@ echo "Hello, Linux!"
 
 ---
 
-# Q57. How do you make a script executable?
+## Q57. How do you make a script executable?
 
 ```bash
 chmod +x script.sh
@@ -1103,7 +1103,7 @@ Execute:
 
 ---
 
-# Q58. Difference between `$0`, `$1`, and `$#`?
+## Q58. Difference between `$0`, `$1`, and `$#`?
 
 | Variable | Meaning |
 |-----------|----------|
@@ -1113,7 +1113,7 @@ Execute:
 
 ---
 
-# Q59. How do you use variables?
+## Q59. How do you use variables?
 
 ```bash
 NAME="Anurag"
@@ -1123,7 +1123,7 @@ echo "$NAME"
 
 ---
 
-# Q60. What are common control structures in Bash?
+## Q60. What are common control structures in Bash?
 
 Examples:
 
@@ -1153,13 +1153,13 @@ case
 
 ---
 
-# Section 6 — Security
+## Section 6 — Security
 
 ---
 
-# Q61. What is the principle of least privilege?
+## Q61. What is the principle of least privilege?
 
-### Answer
+#### Answer
 
 Users and processes should receive only the permissions required to perform their tasks.
 
@@ -1171,15 +1171,15 @@ Benefits:
 
 ---
 
-# Q62. What is `sudo`?
+## Q62. What is `sudo`?
 
-### Answer
+#### Answer
 
 `sudo` allows authorized users to execute commands with elevated privileges according to defined policies.
 
 ---
 
-# Q63. Difference between authentication and authorization?
+## Q63. Difference between authentication and authorization?
 
 | Authentication | Authorization |
 |----------------|---------------|
@@ -1188,9 +1188,9 @@ Benefits:
 
 ---
 
-# Q64. What is SSH?
+## Q64. What is SSH?
 
-### Answer
+#### Answer
 
 Secure Shell (SSH) provides encrypted remote administration and secure file transfer.
 
@@ -1203,7 +1203,7 @@ Common uses:
 
 ---
 
-# Q65. How do you view failed SSH login attempts?
+## Q65. How do you view failed SSH login attempts?
 
 Ubuntu/Debian:
 
@@ -1219,9 +1219,9 @@ grep "Failed password" /var/log/secure
 
 ---
 
-# Q66. What is a firewall?
+## Q66. What is a firewall?
 
-### Answer
+#### Answer
 
 A firewall filters network traffic according to defined security rules.
 
@@ -1233,7 +1233,7 @@ Common Linux firewall frameworks:
 
 ---
 
-# Q67. Why should you avoid logging in directly as root?
+## Q67. Why should you avoid logging in directly as root?
 
 Reasons:
 
@@ -1248,9 +1248,9 @@ Preferred approach:
 
 ---
 
-# Q68. What is log analysis?
+## Q68. What is log analysis?
 
-### Answer
+#### Answer
 
 Log analysis is the process of reviewing system and application logs to identify:
 
@@ -1262,9 +1262,9 @@ Log analysis is the process of reviewing system and application logs to identify
 
 ---
 
-# Q69. What is root cause analysis (RCA)?
+## Q69. What is root cause analysis (RCA)?
 
-### Answer
+#### Answer
 
 Root cause analysis identifies the underlying cause of an incident rather than only addressing its symptoms.
 
@@ -1296,7 +1296,7 @@ Prevention
 
 ---
 
-# Q70. Why is documentation important after troubleshooting?
+## Q70. Why is documentation important after troubleshooting?
 
 Documentation helps:
 
@@ -1308,7 +1308,7 @@ Documentation helps:
 
 ---
 
-# Interview Tips
+## Interview Tips
 
 - Explain your reasoning before listing commands.
 - Mention validation steps after making changes.
@@ -1318,7 +1318,7 @@ Documentation helps:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Process and service management are foundational Linux administration skills.
 - Networking and storage questions often assess troubleshooting ability.
@@ -1329,13 +1329,13 @@ Documentation helps:
 ---
 
 
-# 25 - Linux Interview Questions
+## 25 - Linux Interview Questions
 
-# Part 3 — Advanced Linux Administration, Troubleshooting Scenarios, Cybersecurity, DevOps, Cloud, and Enterprise Scenario-Based Interview Questions
+## Part 3 — Advanced Linux Administration, Troubleshooting Scenarios, Cybersecurity, DevOps, Cloud, and Enterprise Scenario-Based Interview Questions
 
 ---
 
-# Introduction
+## Introduction
 
 Senior Linux interviews focus less on memorizing commands and more on:
 
@@ -1353,13 +1353,13 @@ Many questions are scenario-based to evaluate how you think under pressure.
 
 ---
 
-# Advanced Linux Administration
+## Advanced Linux Administration
 
 ---
 
-# Q71. A Linux server suddenly becomes slow. How would you troubleshoot it?
+## Q71. A Linux server suddenly becomes slow. How would you troubleshoot it?
 
-### Answer
+#### Answer
 
 Follow a structured approach:
 
@@ -1435,9 +1435,9 @@ Never say "I would reboot the server first."
 
 ---
 
-# Q72. Users report they cannot access a website hosted on your Linux server. What will you check?
+## Q72. Users report they cannot access a website hosted on your Linux server. What will you check?
 
-### Answer
+#### Answer
 
 Possible investigation:
 
@@ -1497,9 +1497,9 @@ Possible causes:
 
 ---
 
-# Q73. A filesystem is 100% full. What will you do?
+## Q73. A filesystem is 100% full. What will you do?
 
-### Answer
+#### Answer
 
 Steps:
 
@@ -1530,9 +1530,9 @@ Implement cleanup carefully and validate afterwards.
 
 ---
 
-# Q74. The system cannot boot after an update. What are your steps?
+## Q74. The system cannot boot after an update. What are your steps?
 
-### Answer
+#### Answer
 
 Possible workflow:
 
@@ -1574,9 +1574,9 @@ Investigate:
 
 ---
 
-# Q75. How would you troubleshoot high memory usage?
+## Q75. How would you troubleshoot high memory usage?
 
-### Answer
+#### Answer
 
 Commands:
 
@@ -1602,13 +1602,13 @@ Look for:
 
 ---
 
-# Linux Troubleshooting Scenarios
+## Linux Troubleshooting Scenarios
 
 ---
 
-# Q76. SSH suddenly stops working. How would you investigate?
+## Q76. SSH suddenly stops working. How would you investigate?
 
-### Answer
+#### Answer
 
 Check:
 
@@ -1639,9 +1639,9 @@ sshd -t
 
 ---
 
-# Q77. DNS resolution fails but IP connectivity works. What does that indicate?
+## Q77. DNS resolution fails but IP connectivity works. What does that indicate?
 
-### Answer
+#### Answer
 
 This suggests a DNS-related problem rather than a general network failure.
 
@@ -1655,9 +1655,9 @@ Investigate:
 
 ---
 
-# Q78. Applications are timing out intermittently. How would you approach this?
+## Q78. Applications are timing out intermittently. How would you approach this?
 
-### Answer
+#### Answer
 
 Investigate:
 
@@ -1673,9 +1673,9 @@ Avoid focusing on only one subsystem until evidence supports it.
 
 ---
 
-# Q79. A service starts successfully but exits immediately. What are possible causes?
+## Q79. A service starts successfully but exits immediately. What are possible causes?
 
-### Answer
+#### Answer
 
 Possible causes:
 
@@ -1698,9 +1698,9 @@ journalctl -u service-name
 
 ---
 
-# Q80. What information should be included in an incident report?
+## Q80. What information should be included in an incident report?
 
-### Answer
+#### Answer
 
 A complete report should include:
 
@@ -1717,13 +1717,13 @@ A complete report should include:
 
 ---
 
-# Cybersecurity Interview Questions
+## Cybersecurity Interview Questions
 
 ---
 
-# Q81. Why is Linux widely used in cybersecurity?
+## Q81. Why is Linux widely used in cybersecurity?
 
-### Answer
+#### Answer
 
 Reasons include:
 
@@ -1736,9 +1736,9 @@ Reasons include:
 
 ---
 
-# Q82. What are common Linux log files used during investigations?
+## Q82. What are common Linux log files used during investigations?
 
-### Answer
+#### Answer
 
 Examples:
 
@@ -1752,9 +1752,9 @@ Examples:
 
 ---
 
-# Q83. Explain the Principle of Least Privilege.
+## Q83. Explain the Principle of Least Privilege.
 
-### Answer
+#### Answer
 
 Provide users and processes with only the permissions necessary to perform their tasks.
 
@@ -1767,9 +1767,9 @@ Benefits:
 
 ---
 
-# Q84. How do you detect repeated SSH brute-force attempts?
+## Q84. How do you detect repeated SSH brute-force attempts?
 
-### Answer
+#### Answer
 
 Review authentication logs for repeated failed login attempts.
 
@@ -1790,9 +1790,9 @@ Investigate:
 
 ---
 
-# Q85. What is log correlation?
+## Q85. What is log correlation?
 
-### Answer
+#### Answer
 
 Log correlation is the process of combining events from multiple systems to identify patterns, relationships, and root causes.
 
@@ -1820,13 +1820,13 @@ Incident Timeline
 
 ---
 
-# DevOps & Cloud Interview Questions
+## DevOps & Cloud Interview Questions
 
 ---
 
-# Q86. Why is Linux the preferred operating system for cloud platforms?
+## Q86. Why is Linux the preferred operating system for cloud platforms?
 
-### Answer
+#### Answer
 
 Reasons:
 
@@ -1840,9 +1840,9 @@ Reasons:
 
 ---
 
-# Q87. What is Infrastructure as Code (IaC)?
+## Q87. What is Infrastructure as Code (IaC)?
 
-### Answer
+#### Answer
 
 Infrastructure as Code manages infrastructure through version-controlled configuration files rather than manual processes.
 
@@ -1855,9 +1855,9 @@ Common tools:
 
 ---
 
-# Q88. What is a container?
+## Q88. What is a container?
 
-### Answer
+#### Answer
 
 A container packages an application with its dependencies while sharing the host operating system kernel.
 
@@ -1875,9 +1875,9 @@ Common platforms:
 
 ---
 
-# Q89. What is Kubernetes?
+## Q89. What is Kubernetes?
 
-### Answer
+#### Answer
 
 Kubernetes is a container orchestration platform used to deploy, scale, and manage containerized applications.
 
@@ -1891,9 +1891,9 @@ Key features:
 
 ---
 
-# Q90. Why is shell scripting important for DevOps?
+## Q90. Why is shell scripting important for DevOps?
 
-### Answer
+#### Answer
 
 Shell scripting enables:
 
@@ -1908,13 +1908,13 @@ It reduces manual effort and improves consistency.
 
 ---
 
-# Enterprise Scenario-Based Questions
+## Enterprise Scenario-Based Questions
 
 ---
 
-# Q91. A production server is compromised. What are your first steps?
+## Q91. A production server is compromised. What are your first steps?
 
-### Answer
+#### Answer
 
 High-level response:
 
@@ -1951,9 +1951,9 @@ Focus on:
 
 ---
 
-# Q92. Users report intermittent application outages. What would you check?
+## Q92. Users report intermittent application outages. What would you check?
 
-### Answer
+#### Answer
 
 Investigate:
 
@@ -1968,9 +1968,9 @@ Investigate:
 
 ---
 
-# Q93. A service repeatedly crashes after startup. How do you troubleshoot?
+## Q93. A service repeatedly crashes after startup. How do you troubleshoot?
 
-### Answer
+#### Answer
 
 Review:
 
@@ -1986,9 +1986,9 @@ Validate changes before restarting again.
 
 ---
 
-# Q94. How do you reduce Mean Time to Resolution (MTTR)?
+## Q94. How do you reduce Mean Time to Resolution (MTTR)?
 
-### Answer
+#### Answer
 
 Strategies:
 
@@ -2002,7 +2002,7 @@ Strategies:
 
 ---
 
-# Q95. What is the difference between a workaround and a permanent fix?
+## Q95. What is the difference between a workaround and a permanent fix?
 
 | Workaround | Permanent Fix |
 |------------|---------------|
@@ -2012,7 +2012,7 @@ Strategies:
 
 ---
 
-# HR + Technical Tips
+## HR + Technical Tips
 
 Interviewers may ask:
 
@@ -2031,7 +2031,7 @@ Structure your answers using the **STAR** method:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow a structured troubleshooting methodology.
 - Validate before implementing changes.
@@ -2044,7 +2044,7 @@ Structure your answers using the **STAR** method:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Advanced interviews emphasize reasoning over memorization.
 - Scenario-based questions test real-world operational thinking.
@@ -2054,13 +2054,13 @@ Structure your answers using the **STAR** method:
 ---
 
 
-# 25 - Linux Interview Questions
+## 25 - Linux Interview Questions
 
-# Part 4 — Hands-on Command Challenges, Rapid-Fire Interview Questions, HR Questions, Mock Interview, Final Revision Sheet, and References
+## Part 4 — Hands-on Command Challenges, Rapid-Fire Interview Questions, HR Questions, Mock Interview, Final Revision Sheet, and References
 
 ---
 
-# Introduction
+## Introduction
 
 This final part focuses on what most companies evaluate during the last technical interview or practical assessment.
 
@@ -2086,15 +2086,15 @@ These questions are suitable for:
 
 ---
 
-# Section 1 — Hands-on Command Challenges
+## Section 1 — Hands-on Command Challenges
 
 ---
 
-# Challenge 1
+## Challenge 1
 
-## Display the current working directory.
+### Display the current working directory.
 
-### Solution
+#### Solution
 
 ```bash
 pwd
@@ -2102,11 +2102,11 @@ pwd
 
 ---
 
-# Challenge 2
+## Challenge 2
 
-## Display all files including hidden files.
+### Display all files including hidden files.
 
-### Solution
+#### Solution
 
 ```bash
 ls -la
@@ -2114,9 +2114,9 @@ ls -la
 
 ---
 
-# Challenge 3
+## Challenge 3
 
-## Create the following directory structure.
+### Create the following directory structure.
 
 ```text
 Projects
@@ -2124,7 +2124,7 @@ Projects
     └── Notes
 ```
 
-### Solution
+#### Solution
 
 ```bash
 mkdir -p Projects/Linux/Notes
@@ -2132,11 +2132,11 @@ mkdir -p Projects/Linux/Notes
 
 ---
 
-# Challenge 4
+## Challenge 4
 
-## Create an empty file named `report.txt`.
+### Create an empty file named `report.txt`.
 
-### Solution
+#### Solution
 
 ```bash
 touch report.txt
@@ -2144,11 +2144,11 @@ touch report.txt
 
 ---
 
-# Challenge 5
+## Challenge 5
 
-## Copy `report.txt` to the backup directory.
+### Copy `report.txt` to the backup directory.
 
-### Solution
+#### Solution
 
 ```bash
 cp report.txt backup/
@@ -2156,11 +2156,11 @@ cp report.txt backup/
 
 ---
 
-# Challenge 6
+## Challenge 6
 
-## Move a file into another directory.
+### Move a file into another directory.
 
-### Solution
+#### Solution
 
 ```bash
 mv report.txt Documents/
@@ -2168,11 +2168,11 @@ mv report.txt Documents/
 
 ---
 
-# Challenge 7
+## Challenge 7
 
-## Rename a file.
+### Rename a file.
 
-### Solution
+#### Solution
 
 ```bash
 mv report.txt final_report.txt
@@ -2180,11 +2180,11 @@ mv report.txt final_report.txt
 
 ---
 
-# Challenge 8
+## Challenge 8
 
-## Find every `.log` file under `/var`.
+### Find every `.log` file under `/var`.
 
-### Solution
+#### Solution
 
 ```bash
 find /var -name "*.log"
@@ -2192,11 +2192,11 @@ find /var -name "*.log"
 
 ---
 
-# Challenge 9
+## Challenge 9
 
-## Search recursively for the word "error".
+### Search recursively for the word "error".
 
-### Solution
+#### Solution
 
 ```bash
 grep -R "error" .
@@ -2204,11 +2204,11 @@ grep -R "error" .
 
 ---
 
-# Challenge 10
+## Challenge 10
 
-## Display the last 20 lines of a log file.
+### Display the last 20 lines of a log file.
 
-### Solution
+#### Solution
 
 ```bash
 tail -20 logfile.log
@@ -2216,11 +2216,11 @@ tail -20 logfile.log
 
 ---
 
-# Challenge 11
+## Challenge 11
 
-## Follow a log file in real time.
+### Follow a log file in real time.
 
-### Solution
+#### Solution
 
 ```bash
 tail -f logfile.log
@@ -2228,11 +2228,11 @@ tail -f logfile.log
 
 ---
 
-# Challenge 12
+## Challenge 12
 
-## Find the top five CPU-consuming processes.
+### Find the top five CPU-consuming processes.
 
-### Solution
+#### Solution
 
 ```bash
 ps aux --sort=-%cpu | head -5
@@ -2240,11 +2240,11 @@ ps aux --sort=-%cpu | head -5
 
 ---
 
-# Challenge 13
+## Challenge 13
 
-## Display memory usage.
+### Display memory usage.
 
-### Solution
+#### Solution
 
 ```bash
 free -h
@@ -2252,11 +2252,11 @@ free -h
 
 ---
 
-# Challenge 14
+## Challenge 14
 
-## Display disk usage.
+### Display disk usage.
 
-### Solution
+#### Solution
 
 ```bash
 df -h
@@ -2264,11 +2264,11 @@ df -h
 
 ---
 
-# Challenge 15
+## Challenge 15
 
-## Display directory sizes.
+### Display directory sizes.
 
-### Solution
+#### Solution
 
 ```bash
 du -sh *
@@ -2276,11 +2276,11 @@ du -sh *
 
 ---
 
-# Challenge 16
+## Challenge 16
 
-## Check the status of the SSH service.
+### Check the status of the SSH service.
 
-### Solution
+#### Solution
 
 ```bash
 systemctl status ssh
@@ -2288,11 +2288,11 @@ systemctl status ssh
 
 ---
 
-# Challenge 17
+## Challenge 17
 
-## Display failed services.
+### Display failed services.
 
-### Solution
+#### Solution
 
 ```bash
 systemctl --failed
@@ -2300,11 +2300,11 @@ systemctl --failed
 
 ---
 
-# Challenge 18
+## Challenge 18
 
-## View logs for a service.
+### View logs for a service.
 
-### Solution
+#### Solution
 
 ```bash
 journalctl -u ssh
@@ -2312,11 +2312,11 @@ journalctl -u ssh
 
 ---
 
-# Challenge 19
+## Challenge 19
 
-## Display IP addresses.
+### Display IP addresses.
 
-### Solution
+#### Solution
 
 ```bash
 ip addr
@@ -2324,11 +2324,11 @@ ip addr
 
 ---
 
-# Challenge 20
+## Challenge 20
 
-## Display the routing table.
+### Display the routing table.
 
-### Solution
+#### Solution
 
 ```bash
 ip route
@@ -2336,11 +2336,11 @@ ip route
 
 ---
 
-# Section 2 — Rapid-Fire Linux Questions
+## Section 2 — Rapid-Fire Linux Questions
 
 ---
 
-## Q1
+### Q1
 
 What command shows the current directory?
 
@@ -2352,7 +2352,7 @@ pwd
 
 ---
 
-## Q2
+### Q2
 
 Which command displays running processes?
 
@@ -2364,7 +2364,7 @@ ps
 
 ---
 
-## Q3
+### Q3
 
 Which command displays disk usage?
 
@@ -2376,7 +2376,7 @@ df -h
 
 ---
 
-## Q4
+### Q4
 
 Which command changes permissions?
 
@@ -2388,7 +2388,7 @@ chmod
 
 ---
 
-## Q5
+### Q5
 
 Which command changes file ownership?
 
@@ -2400,7 +2400,7 @@ chown
 
 ---
 
-## Q6
+### Q6
 
 Where is DNS configuration stored?
 
@@ -2412,7 +2412,7 @@ Where is DNS configuration stored?
 
 ---
 
-## Q7
+### Q7
 
 Where are system configuration files stored?
 
@@ -2424,7 +2424,7 @@ Where are system configuration files stored?
 
 ---
 
-## Q8
+### Q8
 
 What command displays kernel information?
 
@@ -2436,7 +2436,7 @@ uname -a
 
 ---
 
-## Q9
+### Q9
 
 Which command displays system uptime?
 
@@ -2448,7 +2448,7 @@ uptime
 
 ---
 
-## Q10
+### Q10
 
 Which command displays kernel messages?
 
@@ -2460,7 +2460,7 @@ dmesg
 
 ---
 
-## Q11
+### Q11
 
 Which command displays system logs managed by systemd?
 
@@ -2472,7 +2472,7 @@ journalctl
 
 ---
 
-## Q12
+### Q12
 
 How do you display listening ports?
 
@@ -2484,7 +2484,7 @@ ss -tulpn
 
 ---
 
-## Q13
+### Q13
 
 How do you display mounted filesystems?
 
@@ -2496,7 +2496,7 @@ mount
 
 ---
 
-## Q14
+### Q14
 
 Which command lists block devices?
 
@@ -2508,7 +2508,7 @@ lsblk
 
 ---
 
-## Q15
+### Q15
 
 Which command displays filesystem UUIDs?
 
@@ -2520,27 +2520,27 @@ blkid
 
 ---
 
-# Section 3 — HR + Technical Questions
+## Section 3 — HR + Technical Questions
 
 ---
 
-## Tell me about yourself.
+### Tell me about yourself.
 
-### Sample Answer
+#### Sample Answer
 
 "I am a Computer Science graduate with strong Linux, networking, and cybersecurity fundamentals. I enjoy solving technical problems, automating routine tasks with shell scripting, and continuously improving my skills in Linux administration, cloud technologies, and information security. I am looking for an opportunity where I can contribute to reliable and secure infrastructure while continuing to grow professionally."
 
 ---
 
-## Why Linux?
+### Why Linux?
 
-### Sample Answer
+#### Sample Answer
 
 "Linux powers a significant portion of enterprise servers, cloud platforms, and cybersecurity infrastructure. I enjoy working with the command line, understanding how systems operate internally, and using Linux to automate and troubleshoot complex environments."
 
 ---
 
-## What is your greatest strength?
+### What is your greatest strength?
 
 Example:
 
@@ -2554,7 +2554,7 @@ Support your answer with a real example whenever possible.
 
 ---
 
-## What is your weakness?
+### What is your weakness?
 
 Choose a genuine but manageable area for improvement.
 
@@ -2564,9 +2564,9 @@ Example:
 
 ---
 
-## How do you handle production incidents?
+### How do you handle production incidents?
 
-### Suggested Approach
+#### Suggested Approach
 
 ```text
 Stay Calm
@@ -2602,7 +2602,7 @@ Prevent Recurrence
 
 ---
 
-## How do you prioritize tasks?
+### How do you prioritize tasks?
 
 Suggested order:
 
@@ -2614,7 +2614,7 @@ Suggested order:
 
 ---
 
-## Why should we hire you?
+### Why should we hire you?
 
 Example:
 
@@ -2622,55 +2622,55 @@ Example:
 
 ---
 
-# Section 4 — Mock Technical Interview
+## Section 4 — Mock Technical Interview
 
 ---
 
-## Interviewer
+### Interviewer
 
 Explain the Linux boot process.
 
-### Candidate
+#### Candidate
 
 "The Linux boot process begins with BIOS or UEFI initializing hardware. The bootloader, such as GRUB, loads the Linux kernel and initramfs. The kernel initializes hardware, mounts the root filesystem, and starts `systemd`, which launches system services and presents the login prompt."
 
 ---
 
-## Interviewer
+### Interviewer
 
 How do you troubleshoot a server running slowly?
 
-### Candidate
+#### Candidate
 
 "I first determine the scope of the issue, then check system load, CPU, memory, storage, and network resources. I review logs, identify resource-intensive processes or configuration changes, determine the root cause, implement a fix, and validate that the issue has been resolved."
 
 ---
 
-## Interviewer
+### Interviewer
 
 A service fails to start after a configuration change. What do you do?
 
-### Candidate
+#### Candidate
 
 "I review the service status and logs, validate the configuration syntax if supported, compare recent changes with the last known good configuration, correct the issue, restart or reload the service, and verify normal operation."
 
 ---
 
-## Interviewer
+### Interviewer
 
 What is the Principle of Least Privilege?
 
-### Candidate
+#### Candidate
 
 "It means users and processes should receive only the permissions required to perform their intended tasks. This reduces the attack surface, limits the impact of compromised accounts, and improves security."
 
 ---
 
-# Section 5 — Final Linux Revision Sheet
+## Section 5 — Final Linux Revision Sheet
 
 ---
 
-## Boot Process
+### Boot Process
 
 ```text
 BIOS / UEFI
@@ -2702,7 +2702,7 @@ Login
 
 ---
 
-## Essential Directories
+### Essential Directories
 
 | Directory | Purpose |
 |-----------|----------|
@@ -2716,7 +2716,7 @@ Login
 
 ---
 
-## Frequently Used Commands
+### Frequently Used Commands
 
 | Task | Command |
 |------|---------|
@@ -2733,7 +2733,7 @@ Login
 
 ---
 
-## Troubleshooting Workflow
+### Troubleshooting Workflow
 
 ```text
 Observe
@@ -2765,7 +2765,7 @@ Document
 
 ---
 
-## Security Best Practices
+### Security Best Practices
 
 - Use `sudo` instead of logging in as `root`.
 - Apply the Principle of Least Privilege.
@@ -2778,7 +2778,7 @@ Document
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 This chapter covered:
 
@@ -2796,16 +2796,16 @@ This chapter covered:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - Linux Foundation Documentation
 - Red Hat Enterprise Linux Documentation
 - Ubuntu Server Guide
 - Debian Administrator's Handbook
 
-## Manual Pages
+### Manual Pages
 
 - `man bash`
 - `man systemctl`
@@ -2818,7 +2818,7 @@ This chapter covered:
 - `man chmod`
 - `man chown`
 
-## Best Practices
+### Best Practices
 
 - NIST Cybersecurity Framework (CSF)
 - CIS Benchmarks for Linux
@@ -2827,7 +2827,7 @@ This chapter covered:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Strong Linux interviews test both conceptual understanding and practical skills.
 - Explain your reasoning clearly before discussing commands.
@@ -2837,11 +2837,11 @@ This chapter covered:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **26-Linux-Cheat-Sheet.md**
 
-## Topics Covered
+### Topics Covered
 
 - Essential Linux Commands
 - File & Directory Management

@@ -40,7 +40,7 @@ These labs are suitable for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By completing these labs, you should be able to:
 
@@ -73,7 +73,7 @@ By completing these labs, you should be able to:
 
 ---
 
-# Lab Environment
+## Lab Environment
 
 You can perform these labs using one of the following environments:
 
@@ -89,7 +89,7 @@ For advanced labs, a real multi-node cluster is preferable.
 
 ---
 
-# Recommended Local Tools
+## Recommended Local Tools
 
 Install:
 
@@ -117,7 +117,7 @@ OpenTelemetry
 
 ---
 
-# Lab Rules
+## Lab Rules
 
 Follow these principles:
 
@@ -136,9 +136,9 @@ The most valuable part of a lab is often the troubleshooting exercise.
 
 ---
 
-# Lab 1 – Create Your First Kubernetes Cluster
+## Lab 1 – Create Your First Kubernetes Cluster
 
-## Objective
+### Objective
 
 Create a local Kubernetes cluster.
 
@@ -169,7 +169,7 @@ Ready
 
 ---
 
-## Verification
+### Verification
 
 ```bash
 kubectl get nodes -o wide
@@ -177,7 +177,7 @@ kubectl get nodes -o wide
 
 ---
 
-## Challenge
+### Challenge
 
 Answer:
 
@@ -188,9 +188,9 @@ Answer:
 
 ---
 
-# Lab 2 – Create a Pod
+## Lab 2 – Create a Pod
 
-## Objective
+### Objective
 
 Create a simple NGINX Pod.
 
@@ -207,7 +207,7 @@ kubectl get pods
 
 ---
 
-## Inspect
+### Inspect
 
 ```bash
 kubectl describe pod nginx
@@ -221,7 +221,7 @@ kubectl get pod nginx -o yaml
 
 ---
 
-## Test
+### Test
 
 ```bash
 kubectl port-forward pod/nginx 8080:80
@@ -235,7 +235,7 @@ http://localhost:8080
 
 ---
 
-## Cleanup
+### Cleanup
 
 ```bash
 kubectl delete pod nginx
@@ -243,9 +243,9 @@ kubectl delete pod nginx
 
 ---
 
-# Lab 3 – Create a Deployment
+## Lab 3 – Create a Deployment
 
-## Objective
+### Objective
 
 Create a Deployment with three replicas.
 
@@ -269,7 +269,7 @@ kubectl get pods -o wide
 
 ---
 
-# Lab 4 – Create a Deployment Using YAML
+## Lab 4 – Create a Deployment Using YAML
 
 Create:
 
@@ -314,7 +314,7 @@ kubectl get pods
 
 ---
 
-# Lab 5 – Scale a Deployment
+## Lab 5 – Scale a Deployment
 
 Scale from:
 
@@ -342,9 +342,9 @@ kubectl scale deployment web --replicas=2
 
 ---
 
-# Lab 6 – Rolling Update
+## Lab 6 – Rolling Update
 
-## Objective
+### Objective
 
 Update the NGINX version.
 
@@ -369,7 +369,7 @@ kubectl rollout status deployment/web
 
 ---
 
-# Lab 7 – Rollback
+## Lab 7 – Rollback
 
 Check history:
 
@@ -391,7 +391,7 @@ kubectl rollout status deployment/web
 
 ---
 
-# Lab 8 – Create a ClusterIP Service
+## Lab 8 – Create a ClusterIP Service
 
 Expose the Deployment:
 
@@ -409,7 +409,7 @@ kubectl get svc
 
 ---
 
-# Lab 9 – Test Service Connectivity
+## Lab 9 – Test Service Connectivity
 
 Run a temporary Pod:
 
@@ -434,7 +434,7 @@ NGINX response
 
 ---
 
-# Lab 10 – Investigate Service Endpoints
+## Lab 10 – Investigate Service Endpoints
 
 Check:
 
@@ -456,7 +456,7 @@ Questions:
 
 ---
 
-# Lab 11 – Break the Service
+## Lab 11 – Break the Service
 
 Change the Pod label so it no longer matches the Service selector.
 
@@ -483,7 +483,7 @@ Fix the labels and verify recovery.
 
 ---
 
-# Lab 12 – NodePort Service
+## Lab 12 – NodePort Service
 
 Create:
 
@@ -509,7 +509,7 @@ minikube service web
 
 ---
 
-# Lab 13 – ConfigMap
+## Lab 13 – ConfigMap
 
 Create:
 
@@ -533,7 +533,7 @@ kubectl describe configmap app-config
 
 ---
 
-# Lab 14 – Inject ConfigMap as Environment Variables
+## Lab 14 – Inject ConfigMap as Environment Variables
 
 Create a Pod:
 
@@ -571,7 +571,7 @@ kubectl exec config-test -- env
 
 ---
 
-# Lab 15 – Secret
+## Lab 15 – Secret
 
 Create:
 
@@ -597,7 +597,7 @@ Do not expose secret values unnecessarily.
 
 ---
 
-# Lab 16 – Mount a Secret
+## Lab 16 – Mount a Secret
 
 Example:
 
@@ -632,7 +632,7 @@ kubectl exec secret-test -- ls /etc/app-secret
 
 ---
 
-# Lab 17 – PersistentVolumeClaim
+## Lab 17 – PersistentVolumeClaim
 
 Create:
 
@@ -664,7 +664,7 @@ kubectl get pv
 
 ---
 
-# Lab 18 – Dynamic Provisioning
+## Lab 18 – Dynamic Provisioning
 
 Check StorageClasses:
 
@@ -694,7 +694,7 @@ PV
 
 ---
 
-# Lab 19 – Persistent Data
+## Lab 19 – Persistent Data
 
 Create a Pod using the PVC.
 
@@ -722,7 +722,7 @@ persistent-data
 
 ---
 
-# Lab 20 – Storage Failure Simulation
+## Lab 20 – Storage Failure Simulation
 
 Break the PVC configuration.
 
@@ -745,7 +745,7 @@ Use events to identify the cause.
 
 ---
 
-# Lab 21 – Node Labels
+## Lab 21 – Node Labels
 
 Label a node:
 
@@ -761,7 +761,7 @@ kubectl get nodes --show-labels
 
 ---
 
-# Lab 22 – NodeSelector
+## Lab 22 – NodeSelector
 
 Create:
 
@@ -783,7 +783,7 @@ Confirm the Pod runs on the labeled node.
 
 ---
 
-# Lab 23 – Node Affinity
+## Lab 23 – Node Affinity
 
 Example:
 
@@ -807,7 +807,7 @@ kubectl describe pod <pod>
 
 ---
 
-# Lab 24 – Taints and Tolerations
+## Lab 24 – Taints and Tolerations
 
 Taint a node:
 
@@ -843,7 +843,7 @@ The Pod should now be eligible for that tainted node, subject to other schedulin
 
 ---
 
-# Lab 25 – Pod Anti-Affinity
+## Lab 25 – Pod Anti-Affinity
 
 Deploy multiple replicas with anti-affinity.
 
@@ -869,7 +869,7 @@ kubectl get pods -o wide
 
 ---
 
-# Lab 26 – Resource Requests
+## Lab 26 – Resource Requests
 
 Create:
 
@@ -890,7 +890,7 @@ kubectl describe pod <pod>
 
 ---
 
-# Lab 27 – Resource Limits
+## Lab 27 – Resource Limits
 
 Add:
 
@@ -905,7 +905,7 @@ Observe resource behavior.
 
 ---
 
-# Lab 28 – Simulate OOMKilled
+## Lab 28 – Simulate OOMKilled
 
 Create a container with a small memory limit and intentionally allocate more memory than permitted.
 
@@ -926,7 +926,7 @@ Learn why resource limits must be chosen carefully.
 
 ---
 
-# Lab 29 – HPA
+## Lab 29 – HPA
 
 Create a Deployment with CPU requests.
 
@@ -955,7 +955,7 @@ kubectl get hpa
 
 ---
 
-# Lab 30 – Generate Load
+## Lab 30 – Generate Load
 
 Inside the cluster, generate HTTP traffic against the Service.
 
@@ -975,9 +975,9 @@ Observe replica changes.
 
 ---
 
-# Lab 31 – NetworkPolicy
+## Lab 31 – NetworkPolicy
 
-## Objective
+### Objective
 
 Create:
 
@@ -996,7 +996,7 @@ Deny unrelated Pods.
 
 ---
 
-## Step 1
+### Step 1
 
 Create backend:
 
@@ -1007,7 +1007,7 @@ labels:
 
 ---
 
-## Step 2
+### Step 2
 
 Create frontend:
 
@@ -1018,7 +1018,7 @@ labels:
 
 ---
 
-## Step 3
+### Step 3
 
 Apply NetworkPolicy.
 
@@ -1026,7 +1026,7 @@ Test connectivity before and after the policy.
 
 ---
 
-# Lab 32 – Default Deny
+## Lab 32 – Default Deny
 
 Create namespace-wide default deny:
 
@@ -1048,7 +1048,7 @@ Then create explicit allow rules.
 
 ---
 
-# Lab 33 – DNS Testing
+## Lab 33 – DNS Testing
 
 Create a debug Pod:
 
@@ -1073,7 +1073,7 @@ nslookup web.default.svc.cluster.local
 
 ---
 
-# Lab 34 – Break DNS
+## Lab 34 – Break DNS
 
 Apply a restrictive NetworkPolicy that prevents DNS traffic.
 
@@ -1101,7 +1101,7 @@ Restore DNS connectivity.
 
 ---
 
-# Lab 35 – RBAC
+## Lab 35 – RBAC
 
 Create ServiceAccount:
 
@@ -1121,7 +1121,7 @@ Bind it using RoleBinding.
 
 ---
 
-# Lab 36 – Test RBAC
+## Lab 36 – Test RBAC
 
 Check:
 
@@ -1153,7 +1153,7 @@ no
 
 ---
 
-# Lab 37 – Least Privilege
+## Lab 37 – Least Privilege
 
 Start with an overly broad Role.
 
@@ -1181,7 +1181,7 @@ Compare the security posture.
 
 ---
 
-# Lab 38 – ServiceAccount Security
+## Lab 38 – ServiceAccount Security
 
 Create a workload with a dedicated ServiceAccount.
 
@@ -1201,7 +1201,7 @@ serviceAccountName
 
 ---
 
-# Lab 39 – Pod Security
+## Lab 39 – Pod Security
 
 Create a namespace:
 
@@ -1222,7 +1222,7 @@ Observe the admission rejection.
 
 ---
 
-# Lab 40 – Security Context
+## Lab 40 – Security Context
 
 Create a Pod using:
 
@@ -1248,7 +1248,7 @@ Test whether the application works under these restrictions.
 
 ---
 
-# Lab 41 – Image Security Scanning
+## Lab 41 – Image Security Scanning
 
 Install a scanner such as Trivy.
 
@@ -1271,7 +1271,7 @@ Investigate critical vulnerabilities.
 
 ---
 
-# Lab 42 – Image Digest Pinning
+## Lab 42 – Image Digest Pinning
 
 Inspect image information and identify the digest.
 
@@ -1293,7 +1293,7 @@ Supply Chain Security
 
 ---
 
-# Lab 43 – Deployment Probes
+## Lab 43 – Deployment Probes
 
 Create:
 
@@ -1314,7 +1314,7 @@ Startup behavior
 
 ---
 
-# Lab 44 – Break Readiness
+## Lab 44 – Break Readiness
 
 Configure an incorrect readiness endpoint.
 
@@ -1329,7 +1329,7 @@ The Pod may remain running but should not receive Service traffic when readiness
 
 ---
 
-# Lab 45 – Break Liveness
+## Lab 45 – Break Liveness
 
 Configure an intentionally failing liveness probe.
 
@@ -1349,7 +1349,7 @@ Look for restart activity.
 
 ---
 
-# Lab 46 – CrashLoopBackOff Investigation
+## Lab 46 – CrashLoopBackOff Investigation
 
 Create a Pod that exits repeatedly.
 
@@ -1378,7 +1378,7 @@ kubectl describe pod <pod>
 
 ---
 
-# Lab 47 – ImagePullBackOff Investigation
+## Lab 47 – ImagePullBackOff Investigation
 
 Deploy an invalid image:
 
@@ -1402,7 +1402,7 @@ Identify the exact image pull error.
 
 ---
 
-# Lab 48 – Pending Pod Investigation
+## Lab 48 – Pending Pod Investigation
 
 Create a Pod with impossible resource requests.
 
@@ -1435,7 +1435,7 @@ FailedScheduling
 
 ---
 
-# Lab 49 – Node Maintenance
+## Lab 49 – Node Maintenance
 
 Choose a worker node.
 
@@ -1469,7 +1469,7 @@ Verify new scheduling.
 
 ---
 
-# Lab 50 – PodDisruptionBudget
+## Lab 50 – PodDisruptionBudget
 
 Deploy multiple replicas.
 
@@ -1493,7 +1493,7 @@ Observe how voluntary disruptions are constrained.
 
 ---
 
-# Lab 51 – Monitoring with Metrics Server
+## Lab 51 – Monitoring with Metrics Server
 
 Check:
 
@@ -1511,7 +1511,7 @@ If unavailable, install Metrics Server according to your local cluster distribut
 
 ---
 
-# Lab 52 – Prometheus Installation
+## Lab 52 – Prometheus Installation
 
 Install Prometheus using Helm or a Kubernetes monitoring stack.
 
@@ -1532,7 +1532,7 @@ kubectl get pods -A
 
 ---
 
-# Lab 53 – Grafana
+## Lab 53 – Grafana
 
 Deploy Grafana.
 
@@ -1552,7 +1552,7 @@ Configure Prometheus as a data source.
 
 ---
 
-# Lab 54 – Create a Kubernetes Dashboard
+## Lab 54 – Create a Kubernetes Dashboard
 
 Create dashboards for:
 
@@ -1568,7 +1568,7 @@ Application Requests
 
 ---
 
-# Lab 55 – Alerting
+## Lab 55 – Alerting
 
 Create an alert for:
 
@@ -1598,7 +1598,7 @@ Notification
 
 ---
 
-# Lab 56 – Logging
+## Lab 56 – Logging
 
 Deploy an application that produces logs.
 
@@ -1622,7 +1622,7 @@ Search / Dashboard
 
 ---
 
-# Lab 57 – Helm
+## Lab 57 – Helm
 
 Create a Helm chart:
 
@@ -1640,7 +1640,7 @@ templates/
 
 ---
 
-# Lab 58 – Helm Template
+## Lab 58 – Helm Template
 
 Render without installing:
 
@@ -1652,7 +1652,7 @@ Inspect generated Kubernetes manifests.
 
 ---
 
-# Lab 59 – Helm Install
+## Lab 59 – Helm Install
 
 Install:
 
@@ -1669,7 +1669,7 @@ kubectl get all
 
 ---
 
-# Lab 60 – Helm Upgrade and Rollback
+## Lab 60 – Helm Upgrade and Rollback
 
 Change:
 
@@ -1697,7 +1697,7 @@ helm rollback myapp <revision>
 
 ---
 
-# Lab 61 – Kustomize
+## Lab 61 – Kustomize
 
 Create:
 
@@ -1733,7 +1733,7 @@ kubectl apply -k overlays/dev
 
 ---
 
-# Lab 62 – GitOps
+## Lab 62 – GitOps
 
 Set up a Git repository containing:
 
@@ -1761,7 +1761,7 @@ Change the replica count in Git and observe reconciliation.
 
 ---
 
-# Lab 63 – GitOps Drift
+## Lab 63 – GitOps Drift
 
 Manually change the Deployment:
 
@@ -1775,7 +1775,7 @@ Observe the GitOps controller reconcile the cluster.
 
 ---
 
-# Lab 64 – Operator Exploration
+## Lab 64 – Operator Exploration
 
 Find installed CRDs:
 
@@ -1803,7 +1803,7 @@ Reconciliation
 
 ---
 
-# Lab 65 – Service Mesh
+## Lab 65 – Service Mesh
 
 Install a service mesh in a dedicated lab cluster.
 
@@ -1828,7 +1828,7 @@ Tracing
 
 ---
 
-# Lab 66 – mTLS
+## Lab 66 – mTLS
 
 Verify that service-to-service communication uses mutual TLS according to the selected service mesh configuration.
 
@@ -1843,7 +1843,7 @@ Policy
 
 ---
 
-# Lab 67 – Distributed Tracing
+## Lab 67 – Distributed Tracing
 
 Deploy an application with OpenTelemetry instrumentation.
 
@@ -1867,7 +1867,7 @@ Slow Dependencies
 
 ---
 
-# Lab 68 – Kubernetes API Security
+## Lab 68 – Kubernetes API Security
 
 Use:
 
@@ -1886,7 +1886,7 @@ Questions:
 
 ---
 
-# Lab 69 – Secret Access Audit
+## Lab 69 – Secret Access Audit
 
 Identify which ServiceAccounts can read Secrets.
 
@@ -1903,7 +1903,7 @@ Look for overly broad permissions.
 
 ---
 
-# Lab 70 – Network Segmentation
+## Lab 70 – Network Segmentation
 
 Create namespaces:
 
@@ -1925,7 +1925,7 @@ Implement with NetworkPolicies.
 
 ---
 
-# Lab 71 – Secure Database
+## Lab 71 – Secure Database
 
 Deploy a database workload with:
 
@@ -1944,7 +1944,7 @@ Document the security model.
 
 ---
 
-# Lab 72 – Multi-Tenant Namespace
+## Lab 72 – Multi-Tenant Namespace
 
 Create:
 
@@ -1971,7 +1971,7 @@ Team A cannot access Team B resources
 
 ---
 
-# Lab 73 – ResourceQuota
+## Lab 73 – ResourceQuota
 
 Create:
 
@@ -1999,7 +1999,7 @@ Attempt to exceed the quota.
 
 ---
 
-# Lab 74 – LimitRange
+## Lab 74 – LimitRange
 
 Create namespace defaults:
 
@@ -2023,7 +2023,7 @@ Observe how containers without explicit resources receive defaults.
 
 ---
 
-# Lab 75 – PriorityClass
+## Lab 75 – PriorityClass
 
 Create:
 
@@ -2048,7 +2048,7 @@ Preemption
 
 ---
 
-# Lab 76 – Preemption
+## Lab 76 – Preemption
 
 Create:
 
@@ -2073,7 +2073,7 @@ PodDisruptionBudget
 
 ---
 
-# Lab 77 – Topology Spread Constraints
+## Lab 77 – Topology Spread Constraints
 
 Deploy multiple replicas across nodes or zones.
 
@@ -2097,7 +2097,7 @@ kubectl get pods -o wide
 
 ---
 
-# Lab 78 – StatefulSet
+## Lab 78 – StatefulSet
 
 Deploy a StatefulSet with three replicas.
 
@@ -2113,7 +2113,7 @@ Observe creation order and stable identities.
 
 ---
 
-# Lab 79 – StatefulSet Storage
+## Lab 79 – StatefulSet Storage
 
 Attach a PVC template:
 
@@ -2131,7 +2131,7 @@ Observe one storage claim per StatefulSet Pod.
 
 ---
 
-# Lab 80 – DaemonSet
+## Lab 80 – DaemonSet
 
 Deploy a node-level agent.
 
@@ -2152,7 +2152,7 @@ Observe one Pod per eligible node.
 
 ---
 
-# Lab 81 – Job
+## Lab 81 – Job
 
 Create a Job:
 
@@ -2182,7 +2182,7 @@ kubectl get jobs
 
 ---
 
-# Lab 82 – CronJob
+## Lab 82 – CronJob
 
 Create a CronJob that runs every minute.
 
@@ -2197,7 +2197,7 @@ Inspect generated Pods.
 
 ---
 
-# Lab 83 – Troubleshooting Challenge
+## Lab 83 – Troubleshooting Challenge
 
 Create a Deployment containing several intentional problems:
 
@@ -2220,7 +2220,7 @@ Document root causes
 
 ---
 
-# Lab 84 – Networking Troubleshooting Challenge
+## Lab 84 – Networking Troubleshooting Challenge
 
 Build:
 
@@ -2243,7 +2243,7 @@ Troubleshoot without recreating the entire cluster.
 
 ---
 
-# Lab 85 – Storage Troubleshooting Challenge
+## Lab 85 – Storage Troubleshooting Challenge
 
 Create a PVC with an incorrect StorageClass.
 
@@ -2265,7 +2265,7 @@ Fix the configuration.
 
 ---
 
-# Lab 86 – Scheduling Troubleshooting Challenge
+## Lab 86 – Scheduling Troubleshooting Challenge
 
 Create a Pod with:
 
@@ -2289,7 +2289,7 @@ Identify the scheduling constraint.
 
 ---
 
-# Lab 87 – Security Troubleshooting Challenge
+## Lab 87 – Security Troubleshooting Challenge
 
 Create a Pod that requires:
 
@@ -2307,7 +2307,7 @@ Modify the workload to operate securely without unnecessary privileges.
 
 ---
 
-# Lab 88 – RBAC Troubleshooting Challenge
+## Lab 88 – RBAC Troubleshooting Challenge
 
 Create a ServiceAccount with:
 
@@ -2337,7 +2337,7 @@ to prove why the request fails.
 
 ---
 
-# Lab 89 – Production Simulation
+## Lab 89 – Production Simulation
 
 Build a mini production application:
 
@@ -2375,7 +2375,7 @@ Monitoring
 
 ---
 
-# Lab 90 – Production Failure Simulation
+## Lab 90 – Production Failure Simulation
 
 Intentionally introduce:
 
@@ -2402,7 +2402,7 @@ Document
 
 ---
 
-# Lab 91 – Blue/Green Deployment
+## Lab 91 – Blue/Green Deployment
 
 Deploy:
 
@@ -2441,7 +2441,7 @@ Release Validation
 
 ---
 
-# Lab 92 – Canary Deployment
+## Lab 92 – Canary Deployment
 
 Deploy:
 
@@ -2471,7 +2471,7 @@ Stop rollout if metrics degrade.
 
 ---
 
-# Lab 93 – Zero-Downtime Deployment
+## Lab 93 – Zero-Downtime Deployment
 
 Configure:
 
@@ -2489,7 +2489,7 @@ Verify that application availability is maintained during the rollout.
 
 ---
 
-# Lab 94 – Backup and Restore Exercise
+## Lab 94 – Backup and Restore Exercise
 
 Create critical resources:
 
@@ -2518,7 +2518,7 @@ Networking
 
 ---
 
-# Lab 95 – Disaster Recovery Exercise
+## Lab 95 – Disaster Recovery Exercise
 
 Simulate:
 
@@ -2551,9 +2551,9 @@ RPO
 
 ---
 
-# Lab 96 – RTO and RPO
+## Lab 96 – RTO and RPO
 
-## RTO
+### RTO
 
 Recovery Time Objective:
 
@@ -2561,7 +2561,7 @@ Recovery Time Objective:
 How quickly must service be restored?
 ```
 
-## RPO
+### RPO
 
 Recovery Point Objective:
 
@@ -2578,7 +2578,7 @@ RPO = 15 minutes
 
 ---
 
-# Lab 97 – Cluster Upgrade Simulation
+## Lab 97 – Cluster Upgrade Simulation
 
 Using a disposable test cluster:
 
@@ -2607,7 +2607,7 @@ Applications
 
 ---
 
-# Lab 98 – Security Assessment Lab
+## Lab 98 – Security Assessment Lab
 
 Perform an authorized Kubernetes security assessment.
 
@@ -2638,7 +2638,7 @@ Recommendation
 
 ---
 
-# Lab 99 – Kubernetes Forensics Lab
+## Lab 99 – Kubernetes Forensics Lab
 
 Simulate a compromised Pod.
 
@@ -2671,15 +2671,15 @@ Containment
 
 ---
 
-# Lab 100 – Final Kubernetes Capstone
+## Lab 100 – Final Kubernetes Capstone
 
-## Objective
+### Objective
 
 Build and operate a production-style Kubernetes application from beginning to end.
 
 ---
 
-## Architecture
+### Architecture
 
 ```text
                          Users
@@ -2712,16 +2712,16 @@ Build and operate a production-style Kubernetes application from beginning to en
 
 ---
 
-## Required Features
+### Required Features
 
-### Workloads
+#### Workloads
 
 ```text
 Deployment
 StatefulSet
 ```
 
-### Networking
+#### Networking
 
 ```text
 Service
@@ -2730,14 +2730,14 @@ NetworkPolicy
 CoreDNS
 ```
 
-### Configuration
+#### Configuration
 
 ```text
 ConfigMap
 Secret
 ```
 
-### Storage
+#### Storage
 
 ```text
 PVC
@@ -2745,7 +2745,7 @@ StorageClass
 CSI
 ```
 
-### Scheduling
+#### Scheduling
 
 ```text
 Affinity
@@ -2755,7 +2755,7 @@ Tolerations
 Topology
 ```
 
-### Security
+#### Security
 
 ```text
 RBAC
@@ -2765,7 +2765,7 @@ NetworkPolicy
 Image Security
 ```
 
-### Resources
+#### Resources
 
 ```text
 Requests
@@ -2774,7 +2774,7 @@ ResourceQuota
 LimitRange
 ```
 
-### Reliability
+#### Reliability
 
 ```text
 Readiness
@@ -2784,7 +2784,7 @@ PodDisruptionBudget
 HPA
 ```
 
-### Observability
+#### Observability
 
 ```text
 Metrics
@@ -2796,7 +2796,7 @@ Dashboards
 
 ---
 
-# Capstone Phase 1 – Application Deployment
+## Capstone Phase 1 – Application Deployment
 
 Deploy:
 
@@ -2814,7 +2814,7 @@ kubectl get pods -A
 
 ---
 
-# Capstone Phase 2 – Networking
+## Capstone Phase 2 – Networking
 
 Configure:
 
@@ -2835,7 +2835,7 @@ Backend → Database
 
 ---
 
-# Capstone Phase 3 – Security
+## Capstone Phase 3 – Security
 
 Implement:
 
@@ -2850,7 +2850,7 @@ Dropped Capabilities
 
 ---
 
-# Capstone Phase 4 – Storage
+## Capstone Phase 4 – Storage
 
 Configure:
 
@@ -2869,7 +2869,7 @@ kubectl get pvc
 
 ---
 
-# Capstone Phase 5 – Scheduling
+## Capstone Phase 5 – Scheduling
 
 Implement:
 
@@ -2889,7 +2889,7 @@ kubectl get pods -o wide
 
 ---
 
-# Capstone Phase 6 – Scaling
+## Capstone Phase 6 – Scaling
 
 Configure:
 
@@ -2909,7 +2909,7 @@ kubectl get pods
 
 ---
 
-# Capstone Phase 7 – Observability
+## Capstone Phase 7 – Observability
 
 Deploy:
 
@@ -2933,7 +2933,7 @@ Restarts
 
 ---
 
-# Capstone Phase 8 – Failure Testing
+## Capstone Phase 8 – Failure Testing
 
 Introduce:
 
@@ -2957,7 +2957,7 @@ User Impact
 
 ---
 
-# Capstone Phase 9 – Disaster Recovery
+## Capstone Phase 9 – Disaster Recovery
 
 Delete the application namespace.
 
@@ -2980,7 +2980,7 @@ RPO
 
 ---
 
-# Capstone Phase 10 – Documentation
+## Capstone Phase 10 – Documentation
 
 Document:
 
@@ -2999,9 +2999,9 @@ Known Risks
 
 ---
 
-# Lab Completion Checklist
+## Lab Completion Checklist
 
-## Fundamentals
+### Fundamentals
 
 ```text
 ☐ Cluster
@@ -3014,7 +3014,7 @@ Known Risks
 ☐ CronJob
 ```
 
-## Networking
+### Networking
 
 ```text
 ☐ Service
@@ -3027,7 +3027,7 @@ Known Risks
 ☐ NetworkPolicy
 ```
 
-## Storage
+### Storage
 
 ```text
 ☐ Volume
@@ -3038,7 +3038,7 @@ Known Risks
 ☐ CSI
 ```
 
-## Scheduling
+### Scheduling
 
 ```text
 ☐ Scheduler
@@ -3052,7 +3052,7 @@ Known Risks
 ☐ Topology Spread
 ```
 
-## Security
+### Security
 
 ```text
 ☐ Authentication
@@ -3066,7 +3066,7 @@ Known Risks
 ☐ Runtime Security
 ```
 
-## Observability
+### Observability
 
 ```text
 ☐ Logging
@@ -3079,7 +3079,7 @@ Known Risks
 ☐ Distributed Tracing
 ```
 
-## Operations
+### Operations
 
 ```text
 ☐ Backup
@@ -3091,7 +3091,7 @@ Known Risks
 ☐ Optimization
 ```
 
-## Advanced
+### Advanced
 
 ```text
 ☐ Helm
@@ -3104,9 +3104,9 @@ Known Risks
 
 ---
 
-# Practical Skill Levels
+## Practical Skill Levels
 
-## Level 1 – Beginner
+### Level 1 – Beginner
 
 You can:
 
@@ -3120,7 +3120,7 @@ Scale Workloads
 
 ---
 
-## Level 2 – Intermediate
+### Level 2 – Intermediate
 
 You can:
 
@@ -3136,7 +3136,7 @@ Implement RBAC
 
 ---
 
-## Level 3 – Advanced
+### Level 3 – Advanced
 
 You can:
 
@@ -3151,7 +3151,7 @@ Design DR
 
 ---
 
-## Level 4 – Production
+### Level 4 – Production
 
 You can:
 
@@ -3167,7 +3167,7 @@ Recover From Failures
 
 ---
 
-# Final Practical Challenge
+## Final Practical Challenge
 
 Without referring to documentation, build the following:
 
@@ -3230,7 +3230,7 @@ and recover each component without rebuilding the entire cluster.
 
 ---
 
-# Final Takeaways
+## Final Takeaways
 
 The fastest way to learn Kubernetes is:
 
@@ -3287,9 +3287,9 @@ That transition from **theoretical knowledge to systematic troubleshooting** is 
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 87 – Real-World Case Studies
+### Chapter 87 – Real-World Case Studies
 
 The next chapter will cover practical Kubernetes scenarios based on production-style environments, including:
 

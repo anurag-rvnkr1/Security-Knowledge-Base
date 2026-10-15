@@ -4,7 +4,7 @@
 
 ---
 
-# 1. What Is an IOC?
+## 1. What Is an IOC?
 
 **IOC** stands for **Indicator of Compromise**.
 
@@ -42,7 +42,7 @@ Detection
 
 ---
 
-# 2. IOC vs Indicator
+## 2. IOC vs Indicator
 
 An **indicator** is a broader term for an observable value associated with activity.
 
@@ -63,7 +63,7 @@ The exact terminology can vary between security teams and platforms.
 
 ---
 
-# 3. Why IOC Detection Matters
+## 3. Why IOC Detection Matters
 
 IOC detection is particularly useful for:
 
@@ -88,7 +88,7 @@ Easy to Share
 
 ---
 
-# 4. Common IOC Types
+## 4. Common IOC Types
 
 Major categories:
 
@@ -104,7 +104,7 @@ Application IOCs
 
 ---
 
-# 5. IP Address IOC
+## 5. IP Address IOC
 
 Example:
 
@@ -131,7 +131,7 @@ THEN alert
 
 ---
 
-# 6. Domain IOC
+## 6. Domain IOC
 
 Example:
 
@@ -158,7 +158,7 @@ Tracking Infrastructure
 
 ---
 
-# 7. URL IOC
+## 7. URL IOC
 
 A URL provides more detail:
 
@@ -185,7 +185,7 @@ Fragment
 
 ---
 
-# 8. File Hash IOC
+## 8. File Hash IOC
 
 Common hashes:
 
@@ -211,7 +211,7 @@ Hash-based detection is highly precise when the hash is trustworthy.
 
 ---
 
-# 9. Why Hashes Are Limited
+## 9. Why Hashes Are Limited
 
 A tiny file modification can produce a completely different hash.
 
@@ -235,7 +235,7 @@ Behavioral detection can detect related variants.
 
 ---
 
-# 10. Email IOC
+## 10. Email IOC
 
 Examples:
 
@@ -260,7 +260,7 @@ Malicious Attachment
 
 ---
 
-# 11. File Name IOC
+## 11. File Name IOC
 
 Example:
 
@@ -286,7 +286,7 @@ Parent Process
 
 ---
 
-# 12. File Path IOC
+## 12. File Path IOC
 
 Example:
 
@@ -300,7 +300,7 @@ But hardcoded paths can become unreliable when attackers change location.
 
 ---
 
-# 13. Registry IOC
+## 13. Registry IOC
 
 On Windows, suspicious registry artifacts may be useful indicators.
 
@@ -326,7 +326,7 @@ Context
 
 ---
 
-# 14. Certificate IOC
+## 14. Certificate IOC
 
 TLS certificates can sometimes be associated with malicious infrastructure.
 
@@ -345,7 +345,7 @@ Certificate-based detection can provide additional infrastructure context.
 
 ---
 
-# 15. User-Agent IOC
+## 15. User-Agent IOC
 
 A suspicious or known malicious user agent may be useful.
 
@@ -374,7 +374,7 @@ is stronger.
 
 ---
 
-# 16. Network IOC Categories
+## 16. Network IOC Categories
 
 Network indicators include:
 
@@ -394,7 +394,7 @@ Fingerprints should be treated carefully because legitimate applications can sha
 
 ---
 
-# 17. Host IOC Categories
+## 17. Host IOC Categories
 
 Host indicators include:
 
@@ -414,7 +414,7 @@ Again, context is critical.
 
 ---
 
-# 18. IOC Confidence
+## 18. IOC Confidence
 
 Not every IOC is equally trustworthy.
 
@@ -442,7 +442,7 @@ Very High Confidence
 
 ---
 
-# 19. IOC Confidence Sources
+## 19. IOC Confidence Sources
 
 Confidence can depend on:
 
@@ -458,7 +458,7 @@ False Positive History
 
 ---
 
-# 20. IOC Freshness
+## 20. IOC Freshness
 
 IOCs have a lifecycle.
 
@@ -478,7 +478,7 @@ An old IOC should not automatically remain a high-confidence blocking or alertin
 
 ---
 
-# 21. IOC Aging
+## 21. IOC Aging
 
 Example:
 
@@ -500,7 +500,7 @@ Threat intelligence must be continuously evaluated.
 
 ---
 
-# 22. IOC Expiration
+## 22. IOC Expiration
 
 An IOC may have:
 
@@ -532,7 +532,7 @@ Active
 
 ---
 
-# 23. IOC Lifecycle
+## 23. IOC Lifecycle
 
 A professional IOC lifecycle:
 
@@ -556,7 +556,7 @@ Expiration / Retirement
 
 ---
 
-# 24. IOC Discovery
+## 24. IOC Discovery
 
 IOCs may originate from:
 
@@ -575,7 +575,7 @@ Network Detection
 
 ---
 
-# 25. IOC Validation
+## 25. IOC Validation
 
 Before deployment, ask:
 
@@ -595,7 +595,7 @@ What evidence supports it?
 
 ---
 
-# 26. IOC Enrichment
+## 26. IOC Enrichment
 
 Add:
 
@@ -617,7 +617,7 @@ This makes the indicator more useful.
 
 ---
 
-# 27. IOC Reputation
+## 27. IOC Reputation
 
 An indicator may have a reputation:
 
@@ -632,7 +632,7 @@ Reputation can change over time.
 
 ---
 
-# 28. IOC Context
+## 28. IOC Context
 
 Example:
 
@@ -660,7 +660,7 @@ Now confidence increases.
 
 ---
 
-# 29. Indicator Matching
+## 29. Indicator Matching
 
 Common matching methods:
 
@@ -678,7 +678,7 @@ Normalized Match
 
 ---
 
-# 30. Exact Matching
+## 30. Exact Matching
 
 Example:
 
@@ -696,7 +696,7 @@ Predictable
 
 ---
 
-# 31. Set-Based Matching
+## 31. Set-Based Matching
 
 Maintain a set:
 
@@ -715,7 +715,7 @@ This is commonly more manageable than embedding hundreds of indicators directly 
 
 ---
 
-# 32. Lookup Tables
+## 32. Lookup Tables
 
 A lookup structure may contain:
 
@@ -742,7 +742,7 @@ Example:
 
 ---
 
-# 33. Indicator Normalization
+## 33. Indicator Normalization
 
 Before matching, normalize data.
 
@@ -769,7 +769,7 @@ may require format normalization.
 
 ---
 
-# 34. Domain Normalization
+## 34. Domain Normalization
 
 Consider:
 
@@ -797,7 +797,7 @@ may represent the same domain depending on processing.
 
 ---
 
-# 35. URL Normalization
+## 35. URL Normalization
 
 URLs may vary by:
 
@@ -815,7 +815,7 @@ Normalization helps avoid missed matches.
 
 ---
 
-# 36. IP Normalization
+## 36. IP Normalization
 
 Consider:
 
@@ -830,7 +830,7 @@ Ensure the matching system handles the formats correctly.
 
 ---
 
-# 37. Hash Normalization
+## 37. Hash Normalization
 
 Hashes should generally be normalized consistently:
 
@@ -850,15 +850,15 @@ SHA-256
 
 ---
 
-# 38. Exact vs Broad IOC Matching
+## 38. Exact vs Broad IOC Matching
 
-### Exact
+#### Exact
 
 ```text
 domain = example.invalid
 ```
 
-### Broad
+#### Broad
 
 ```text
 domain contains "example"
@@ -874,7 +874,7 @@ Use the narrowest reliable matching strategy.
 
 ---
 
-# 39. Indicator Allowlisting
+## 39. Indicator Allowlisting
 
 Some indicators may be known benign.
 
@@ -897,7 +897,7 @@ Reviewed
 
 ---
 
-# 40. Why Broad Allowlisting Is Dangerous
+## 40. Why Broad Allowlisting Is Dangerous
 
 Bad:
 
@@ -919,7 +919,7 @@ Large Detection Blind Spot
 
 ---
 
-# 41. Shared Infrastructure Problem
+## 41. Shared Infrastructure Problem
 
 An IP may host:
 
@@ -945,7 +945,7 @@ Context matters.
 
 ---
 
-# 42. CDN Problem
+## 42. CDN Problem
 
 CDNs can serve:
 
@@ -960,7 +960,7 @@ Domain-level context can therefore be more useful than an IP-only match in some 
 
 ---
 
-# 43. Cloud Infrastructure Problem
+## 43. Cloud Infrastructure Problem
 
 Cloud providers use dynamic infrastructure.
 
@@ -976,7 +976,7 @@ Therefore cloud IOCs should be monitored for freshness.
 
 ---
 
-# 44. False Positives in IOC Detection
+## 44. False Positives in IOC Detection
 
 Causes include:
 
@@ -994,7 +994,7 @@ Proxies
 
 ---
 
-# 45. False Negative in IOC Detection
+## 45. False Negative in IOC Detection
 
 An IOC detection can miss activity because:
 
@@ -1010,15 +1010,15 @@ Indicator Not Yet Known
 
 ---
 
-# 46. IOC Detection vs Behavioral Detection
+## 46. IOC Detection vs Behavioral Detection
 
-### IOC
+#### IOC
 
 ```text
 Known Bad
 ```
 
-### Behavioral
+#### Behavioral
 
 ```text
 Suspicious Activity
@@ -1039,7 +1039,7 @@ Behavior can remain useful when infrastructure changes.
 
 ---
 
-# 47. Signature Detection
+## 47. Signature Detection
 
 A signature identifies a known recognizable pattern.
 
@@ -1055,7 +1055,7 @@ Known Attack Pattern
 
 ---
 
-# 48. Signature Matching
+## 48. Signature Matching
 
 Conceptually:
 
@@ -1071,7 +1071,7 @@ Alert
 
 ---
 
-# 49. Signature Advantages
+## 49. Signature Advantages
 
 ```text
 Fast
@@ -1082,7 +1082,7 @@ Easy to Validate
 
 ---
 
-# 50. Signature Limitations
+## 50. Signature Limitations
 
 Signatures can fail against:
 
@@ -1097,7 +1097,7 @@ New Variants
 
 ---
 
-# 51. Polymorphic Malware
+## 51. Polymorphic Malware
 
 The underlying malicious functionality may remain similar while the representation changes.
 
@@ -1118,7 +1118,7 @@ Hash-only detection may miss B and C.
 
 ---
 
-# 52. Obfuscation
+## 52. Obfuscation
 
 Attackers may modify:
 
@@ -1136,7 +1136,7 @@ Behavioral detection can help identify the underlying activity.
 
 ---
 
-# 53. Indicator Chaining
+## 53. Indicator Chaining
 
 Combine multiple indicators.
 
@@ -1158,7 +1158,7 @@ High Confidence
 
 ---
 
-# 54. IOC Correlation
+## 54. IOC Correlation
 
 Example:
 
@@ -1176,7 +1176,7 @@ This is much stronger than a single IOC match.
 
 ---
 
-# 55. IOC Severity
+## 55. IOC Severity
 
 Not every IOC match should produce the same severity.
 
@@ -1210,7 +1210,7 @@ Context determines priority.
 
 ---
 
-# 56. IOC Risk Scoring
+## 56. IOC Risk Scoring
 
 Example:
 
@@ -1235,7 +1235,7 @@ Critical Investigation
 
 ---
 
-# 57. Threat Intelligence Integration
+## 57. Threat Intelligence Integration
 
 Typical pipeline:
 
@@ -1259,7 +1259,7 @@ Detection
 
 ---
 
-# 58. Threat Intelligence Feed Types
+## 58. Threat Intelligence Feed Types
 
 Possible sources:
 
@@ -1276,7 +1276,7 @@ Research Teams
 
 ---
 
-# 59. Feed Quality
+## 59. Feed Quality
 
 Evaluate:
 
@@ -1293,7 +1293,7 @@ Attribution Quality
 
 ---
 
-# 60. Feed Noise
+## 60. Feed Noise
 
 Adding every available feed can create:
 
@@ -1309,7 +1309,7 @@ More intelligence does not automatically mean better intelligence.
 
 ---
 
-# 61. Intelligence Prioritization
+## 61. Intelligence Prioritization
 
 Prioritize indicators based on:
 
@@ -1325,9 +1325,9 @@ Asset Exposure
 
 ---
 
-# 62. Internal vs External Intelligence
+## 62. Internal vs External Intelligence
 
-### External
+#### External
 
 ```text
 Vendor
@@ -1336,7 +1336,7 @@ Government
 Research
 ```
 
-### Internal
+#### Internal
 
 ```text
 Incident
@@ -1350,7 +1350,7 @@ Internal intelligence is often highly relevant because it reflects the organizat
 
 ---
 
-# 63. IOC Deployment Locations
+## 63. IOC Deployment Locations
 
 IOCs can be used in:
 
@@ -1369,7 +1369,7 @@ Cloud Security
 
 ---
 
-# 64. Detection vs Blocking
+## 64. Detection vs Blocking
 
 IOC matching can support:
 
@@ -1394,7 +1394,7 @@ Potential False Positive
 
 ---
 
-# 65. Detection-Only IOC
+## 65. Detection-Only IOC
 
 Useful when:
 
@@ -1412,7 +1412,7 @@ Investigate
 
 ---
 
-# 66. High-Confidence Blocking IOC
+## 66. High-Confidence Blocking IOC
 
 Potentially:
 
@@ -1434,7 +1434,7 @@ depending on organizational policy.
 
 ---
 
-# 67. IOC Expiration Strategy
+## 67. IOC Expiration Strategy
 
 Example:
 
@@ -1454,7 +1454,7 @@ Exact expiration periods should depend on threat type and intelligence quality.
 
 ---
 
-# 68. IOC Metadata
+## 68. IOC Metadata
 
 Recommended fields:
 
@@ -1478,7 +1478,7 @@ Owner
 
 ---
 
-# 69. Indicator Status
+## 69. Indicator Status
 
 Useful states:
 
@@ -1494,7 +1494,7 @@ Retired
 
 ---
 
-# 70. IOC Versioning
+## 70. IOC Versioning
 
 When intelligence changes:
 
@@ -1510,7 +1510,7 @@ Versioning supports auditability.
 
 ---
 
-# 71. IOC Provenance
+## 71. IOC Provenance
 
 Provenance answers:
 
@@ -1525,7 +1525,7 @@ This is essential for trustworthy threat intelligence.
 
 ---
 
-# 72. IOC Chain of Evidence
+## 72. IOC Chain of Evidence
 
 Example:
 
@@ -1549,7 +1549,7 @@ The stronger the evidence chain, the stronger the confidence.
 
 ---
 
-# 73. Indicator Relationship Graph
+## 73. Indicator Relationship Graph
 
 Indicators can be related:
 
@@ -1569,7 +1569,7 @@ This helps analysts understand campaigns rather than isolated indicators.
 
 ---
 
-# 74. Indicator Clustering
+## 74. Indicator Clustering
 
 Group indicators by:
 
@@ -1594,7 +1594,7 @@ Campaign X
 
 ---
 
-# 75. Indicator Deduplication
+## 75. Indicator Deduplication
 
 Different feeds may provide the same indicator.
 
@@ -1617,7 +1617,7 @@ Last Seen
 
 ---
 
-# 76. Indicator Conflict
+## 76. Indicator Conflict
 
 One feed says:
 
@@ -1645,7 +1645,7 @@ Internal Observations
 
 ---
 
-# 77. IOC Intelligence Scoring
+## 77. IOC Intelligence Scoring
 
 Conceptual model:
 
@@ -1666,7 +1666,7 @@ The exact scoring model should be designed for the organization's needs.
 
 ---
 
-# 78. IOC Matching Pipeline
+## 78. IOC Matching Pipeline
 
 ```text
 Raw Event
@@ -1690,7 +1690,7 @@ Continue Enrich
 
 ---
 
-# 79. IOC Detection Example – DNS
+## 79. IOC Detection Example – DNS
 
 Input:
 
@@ -1729,7 +1729,7 @@ for better investigation.
 
 ---
 
-# 80. IOC Detection Example – File
+## 80. IOC Detection Example – File
 
 ```text
 File Created
@@ -1747,7 +1747,7 @@ Endpoint Alert
 
 ---
 
-# 81. IOC Detection Example – Network
+## 81. IOC Detection Example – Network
 
 ```text
 Outbound Connection
@@ -1767,7 +1767,7 @@ Risk
 
 ---
 
-# 82. IOC Detection Example – Email
+## 82. IOC Detection Example – Email
 
 ```text
 Incoming Email
@@ -1785,7 +1785,7 @@ Alert
 
 ---
 
-# 83. IOC + Behavior Example
+## 83. IOC + Behavior Example
 
 ```text
 Known C2 Domain
@@ -1799,7 +1799,7 @@ High Confidence C2 Detection
 
 ---
 
-# 84. IOC + Identity Example
+## 84. IOC + Identity Example
 
 ```text
 Known Malicious IP
@@ -1815,7 +1815,7 @@ High-Risk Account Compromise
 
 ---
 
-# 85. IOC + Endpoint Example
+## 85. IOC + Endpoint Example
 
 ```text
 Known Malware Hash
@@ -1829,7 +1829,7 @@ Potential Host Compromise
 
 ---
 
-# 86. IOC + Cloud Example
+## 86. IOC + Cloud Example
 
 ```text
 Known Malicious IP
@@ -1845,7 +1845,7 @@ Potential Cloud Account Takeover
 
 ---
 
-# 87. Detection Resilience
+## 87. Detection Resilience
 
 A strong IOC program should not depend exclusively on indicators.
 
@@ -1869,7 +1869,7 @@ IOC Changes
 
 ---
 
-# 88. IOC Rotation
+## 88. IOC Rotation
 
 Attackers may rotate:
 
@@ -1891,7 +1891,7 @@ Behavioral Detection
 
 ---
 
-# 89. Threat Infrastructure Changes
+## 89. Threat Infrastructure Changes
 
 Infrastructure can change quickly:
 
@@ -1917,69 +1917,69 @@ is required.
 
 ---
 
-# 90. Common IOC Detection Mistakes
+## 90. Common IOC Detection Mistakes
 
-## Mistake 1
+### Mistake 1
 
 Treating every IOC as equally trustworthy.
 
 ---
 
-## Mistake 2
+### Mistake 2
 
 Never expiring indicators.
 
 ---
 
-## Mistake 3
+### Mistake 3
 
 Using broad IP allowlists.
 
 ---
 
-## Mistake 4
+### Mistake 4
 
 Relying only on hashes.
 
 ---
 
-## Mistake 5
+### Mistake 5
 
 Ignoring shared infrastructure.
 
 ---
 
-## Mistake 6
+### Mistake 6
 
 Alerting on every low-confidence IOC.
 
 ---
 
-## Mistake 7
+### Mistake 7
 
 Not recording IOC provenance.
 
 ---
 
-## Mistake 8
+### Mistake 8
 
 Failing to normalize indicators.
 
 ---
 
-## Mistake 9
+### Mistake 9
 
 Not deduplicating feeds.
 
 ---
 
-## Mistake 10
+### Mistake 10
 
 Using threat feeds without measuring quality.
 
 ---
 
-# 91. IOC Detection Checklist
+## 91. IOC Detection Checklist
 
 ```text
 [ ] Indicator type identified
@@ -2001,55 +2001,55 @@ Using threat feeds without measuring quality.
 
 ---
 
-# 92. Interview Questions
+## 92. Interview Questions
 
-### What is an IOC?
+#### What is an IOC?
 
 > An Indicator of Compromise is an observable artifact associated with potentially malicious activity or a known compromise.
 
-### Give examples of IOCs.
+#### Give examples of IOCs.
 
 > IP addresses, domains, URLs, file hashes, malicious email addresses, filenames, certificates, registry artifacts, and other observable indicators.
 
-### Why are hashes useful?
+#### Why are hashes useful?
 
 > They can precisely identify known files when the hash is reliable.
 
-### Why are hashes insufficient?
+#### Why are hashes insufficient?
 
 > Any file modification produces a different hash, so modified variants can evade hash-based detection.
 
-### What is IOC freshness?
+#### What is IOC freshness?
 
 > The relevance of an indicator based on how recently it has been observed or validated as malicious.
 
-### Why should IOCs expire?
+#### Why should IOCs expire?
 
 > Threat infrastructure changes, indicators can become stale, and permanent indicators increase false positives.
 
-### What is IOC enrichment?
+#### What is IOC enrichment?
 
 > Adding context such as threat actor, campaign, malware family, confidence, timestamps, source, and related indicators.
 
-### Why is IOC normalization important?
+#### Why is IOC normalization important?
 
 > It ensures equivalent indicators are represented consistently and can be matched reliably.
 
-### What is IOC provenance?
+#### What is IOC provenance?
 
 > Information describing where an indicator originated and what evidence supports it.
 
-### Why shouldn't every IOC automatically block traffic?
+#### Why shouldn't every IOC automatically block traffic?
 
 > Some indicators may be stale, incorrect, shared, or low-confidence, so blocking can cause operational impact.
 
-### How do you improve IOC detection?
+#### How do you improve IOC detection?
 
 > Combine IOCs with behavioral detection, contextual enrichment, correlation, confidence scoring, and regular intelligence updates.
 
 ---
 
-# 93. Quick Revision
+## 93. Quick Revision
 
 ```text
 IOC
@@ -2097,7 +2097,7 @@ Hybrid Detection
 
 ---
 
-# 94. Golden Rules
+## 94. Golden Rules
 
 ```text
 1. Not every indicator is equally trustworthy.
@@ -2153,7 +2153,7 @@ Hybrid Detection
 
 ---
 
-# 95. Final Mental Model
+## 95. Final Mental Model
 
 Think of IOC detection as:
 
@@ -2207,7 +2207,7 @@ Resilient Detection
 
 ---
 
-# 96. Chapter Summary
+## 96. Chapter Summary
 
 This chapter covered:
 

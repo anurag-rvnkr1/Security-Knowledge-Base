@@ -21,7 +21,7 @@ Examples of configuration include:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -39,7 +39,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why ConfigMaps?
+## Why ConfigMaps?
 
 Imagine an application.
 
@@ -79,7 +79,7 @@ This violates one of the principles of cloud-native application design.
 
 ---
 
-# Better Solution
+## Better Solution
 
 Separate:
 
@@ -105,7 +105,7 @@ Now configuration can change independently of the application image.
 
 ---
 
-# What is a ConfigMap?
+## What is a ConfigMap?
 
 A ConfigMap is a Kubernetes API object that stores configuration as **key-value pairs**.
 
@@ -137,7 +137,7 @@ Applications consume these values at runtime.
 
 ---
 
-# ConfigMap Architecture
+## ConfigMap Architecture
 
 ```
                 ConfigMap
@@ -163,7 +163,7 @@ A ConfigMap can be consumed in multiple ways.
 
 ---
 
-# Why Separate Configuration?
+## Why Separate Configuration?
 
 Following the **Twelve-Factor App** methodology:
 
@@ -192,7 +192,7 @@ Benefits:
 
 ---
 
-# ConfigMap Structure
+## ConfigMap Structure
 
 ```yaml
 apiVersion: v1
@@ -214,7 +214,7 @@ data:
 
 ---
 
-# YAML Breakdown
+## YAML Breakdown
 
 ```
 ConfigMap
@@ -234,7 +234,7 @@ Key-Value Pairs
 
 ---
 
-# Creating a ConfigMap
+## Creating a ConfigMap
 
 Apply:
 
@@ -256,7 +256,7 @@ kubectl get cm
 
 ---
 
-# Viewing ConfigMaps
+## Viewing ConfigMaps
 
 List:
 
@@ -279,7 +279,7 @@ kubectl get configmap app-config \
 
 ---
 
-# Creating from Command Line
+## Creating from Command Line
 
 Single key:
 
@@ -298,7 +298,7 @@ kubectl create configmap app-config \
 
 ---
 
-# Creating from a File
+## Creating from a File
 
 Suppose:
 
@@ -317,7 +317,7 @@ The file becomes part of the ConfigMap.
 
 ---
 
-# Creating from a Directory
+## Creating from a Directory
 
 Suppose:
 
@@ -342,7 +342,7 @@ Each file becomes a separate key.
 
 ---
 
-# Using ConfigMaps as Environment Variables
+## Using ConfigMaps as Environment Variables
 
 Example:
 
@@ -376,7 +376,7 @@ Container
 
 ---
 
-# Importing All Keys
+## Importing All Keys
 
 Instead of referencing keys individually:
 
@@ -392,7 +392,7 @@ All keys become environment variables.
 
 ---
 
-# Environment Variable Example
+## Environment Variable Example
 
 ConfigMap:
 
@@ -418,7 +418,7 @@ LOG_LEVEL=INFO
 
 ---
 
-# Using ConfigMaps as Volumes
+## Using ConfigMaps as Volumes
 
 A ConfigMap can also be mounted as files.
 
@@ -446,7 +446,7 @@ volumeMounts:
 
 ---
 
-# Volume Architecture
+## Volume Architecture
 
 ```
 ConfigMap
@@ -468,7 +468,7 @@ Each key becomes a file.
 
 ---
 
-# Mounted Files
+## Mounted Files
 
 Example ConfigMap:
 
@@ -492,7 +492,7 @@ Each file contains the corresponding value.
 
 ---
 
-# ConfigMaps and Multiple Pods
+## ConfigMaps and Multiple Pods
 
 One ConfigMap can be shared.
 
@@ -516,7 +516,7 @@ This ensures consistent configuration.
 
 ---
 
-# ConfigMap Lifecycle
+## ConfigMap Lifecycle
 
 ```
 Create
@@ -544,7 +544,7 @@ Delete
 
 ---
 
-# ConfigMap Scope
+## ConfigMap Scope
 
 ConfigMaps are **Namespace-scoped**.
 
@@ -570,7 +570,7 @@ Each Namespace has its own ConfigMaps.
 
 ---
 
-# Updating a ConfigMap
+## Updating a ConfigMap
 
 Modify:
 
@@ -588,7 +588,7 @@ kubectl apply -f configmap.yaml
 
 ---
 
-# ConfigMap Limitations
+## ConfigMap Limitations
 
 ConfigMaps are intended for configuration, not large datasets.
 
@@ -602,7 +602,7 @@ General considerations:
 
 ---
 
-# ConfigMaps vs Secrets
+## ConfigMaps vs Secrets
 
 | ConfigMap | Secret |
 |------------|---------|
@@ -613,7 +613,7 @@ General considerations:
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
 ConfigMaps commonly store:
 
@@ -630,7 +630,7 @@ ConfigMaps commonly store:
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -672,7 +672,7 @@ kubectl delete configmap app-config
 
 ---
 
-# ConfigMap Architecture Summary
+## ConfigMap Architecture Summary
 
 ```
 ConfigMap
@@ -692,21 +692,21 @@ Application
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Keep Configuration Outside Container Images
+#### 1. Keep Configuration Outside Container Images
 
 Build once, configure at deployment time.
 
 ---
 
-### 2. Store Only Non-Sensitive Data
+#### 2. Store Only Non-Sensitive Data
 
 Passwords and API keys belong in **Secrets**.
 
 ---
 
-### 3. Organize ConfigMaps by Application
+#### 3. Organize ConfigMaps by Application
 
 Example:
 
@@ -722,7 +722,7 @@ Avoid one large ConfigMap for unrelated applications.
 
 ---
 
-### 4. Use Environment Variables for Simple Settings
+#### 4. Use Environment Variables for Simple Settings
 
 Examples:
 
@@ -732,7 +732,7 @@ Examples:
 
 ---
 
-### 5. Use Volume Mounts for Configuration Files
+#### 5. Use Volume Mounts for Configuration Files
 
 Examples:
 
@@ -743,9 +743,9 @@ Examples:
 
 ---
 
-# How ConfigMaps Work Internally
+## How ConfigMaps Work Internally
 
-## Overview
+### Overview
 
 A ConfigMap is much more than a simple collection of key-value pairs.
 
@@ -761,7 +761,7 @@ Understanding this internal workflow is essential for troubleshooting configurat
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                  ConfigMap
@@ -793,7 +793,7 @@ Understanding this internal workflow is essential for troubleshooting configurat
 
 ---
 
-# Complete Workflow
+## Complete Workflow
 
 Suppose a ConfigMap is created.
 
@@ -835,7 +835,7 @@ Application
 
 ---
 
-# Step 1 – Create ConfigMap
+## Step 1 – Create ConfigMap
 
 Example:
 
@@ -863,7 +863,7 @@ kubectl apply -f configmap.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -888,7 +888,7 @@ ConfigMap Stored
 
 ---
 
-# Step 3 – etcd Storage
+## Step 3 – etcd Storage
 
 Internally:
 
@@ -920,7 +920,7 @@ production
 
 ---
 
-# Step 4 – Pod Creation
+## Step 4 – Pod Creation
 
 Suppose a Pod references:
 
@@ -946,7 +946,7 @@ ConfigMap Lookup
 
 ---
 
-# Step 5 – kubelet
+## Step 5 – kubelet
 
 Worker node:
 
@@ -966,7 +966,7 @@ kubelet retrieves the ConfigMap before starting the container.
 
 ---
 
-# Step 6 – Container Startup
+## Step 6 – Container Startup
 
 Depending on configuration:
 
@@ -992,7 +992,7 @@ Both methods are supported.
 
 ---
 
-# Environment Variable Flow
+## Environment Variable Flow
 
 ```
 ConfigMap
@@ -1026,7 +1026,7 @@ The values are available immediately when the container starts.
 
 ---
 
-# Volume Mount Flow
+## Volume Mount Flow
 
 ```
 ConfigMap
@@ -1052,7 +1052,7 @@ Each key becomes a file.
 
 ---
 
-# Example
+## Example
 
 ConfigMap:
 
@@ -1082,7 +1082,7 @@ production
 
 ---
 
-# Multiple Keys
+## Multiple Keys
 
 ConfigMap:
 
@@ -1114,7 +1114,7 @@ Each file contains the corresponding value.
 
 ---
 
-# ConfigMap Sharing
+## ConfigMap Sharing
 
 A single ConfigMap can be used by many Pods.
 
@@ -1138,7 +1138,7 @@ This promotes consistent configuration across replicas.
 
 ---
 
-# Namespace Scope
+## Namespace Scope
 
 ConfigMaps are Namespace-scoped.
 
@@ -1164,7 +1164,7 @@ These are separate ConfigMaps.
 
 ---
 
-# ConfigMap Lookup
+## ConfigMap Lookup
 
 Suppose:
 
@@ -1196,7 +1196,7 @@ Pods can only reference ConfigMaps in the **same Namespace**.
 
 ---
 
-# ConfigMap Update
+## ConfigMap Update
 
 Modify:
 
@@ -1222,7 +1222,7 @@ What happens next depends on how the ConfigMap is consumed.
 
 ---
 
-# Environment Variable Updates
+## Environment Variable Updates
 
 Suppose:
 
@@ -1254,7 +1254,7 @@ or recreate the Pod through the controller.
 
 ---
 
-# Volume Updates
+## Volume Updates
 
 Mounted ConfigMaps behave differently.
 
@@ -1276,7 +1276,7 @@ Kubernetes periodically refreshes projected ConfigMap volumes.
 
 ---
 
-# Immutable ConfigMaps
+## Immutable ConfigMaps
 
 Large production clusters can mark ConfigMaps as immutable.
 
@@ -1304,7 +1304,7 @@ Create New
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Developer
@@ -1336,7 +1336,7 @@ Application
 
 ---
 
-# ConfigMap Access Modes
+## ConfigMap Access Modes
 
 ```
 ConfigMap
@@ -1354,7 +1354,7 @@ Each approach has different operational characteristics.
 
 ---
 
-# Command-Line Arguments
+## Command-Line Arguments
 
 Example:
 
@@ -1400,7 +1400,7 @@ Application
 
 ---
 
-# Failure Scenario
+## Failure Scenario
 
 Suppose:
 
@@ -1430,7 +1430,7 @@ The Pod may remain in a waiting state until the referenced ConfigMap exists (or 
 
 ---
 
-# Hands-on Lab 1 – Create ConfigMap
+## Hands-on Lab 1 – Create ConfigMap
 
 ```bash
 kubectl create configmap app-config \
@@ -1446,7 +1446,7 @@ kubectl get cm
 
 ---
 
-# Hands-on Lab 2 – Use Environment Variables
+## Hands-on Lab 2 – Use Environment Variables
 
 Create a Pod:
 
@@ -1480,7 +1480,7 @@ LOG_LEVEL
 
 ---
 
-# Hands-on Lab 3 – Mount as Volume
+## Hands-on Lab 3 – Mount as Volume
 
 Example:
 
@@ -1518,7 +1518,7 @@ kubectl exec -it <pod-name> -- cat /etc/config/APP_ENV
 
 ---
 
-# Hands-on Lab 4 – Update ConfigMap
+## Hands-on Lab 4 – Update ConfigMap
 
 Edit:
 
@@ -1533,7 +1533,7 @@ Observe:
 
 ---
 
-# Hands-on Lab 5 – Immutable ConfigMap
+## Hands-on Lab 5 – Immutable ConfigMap
 
 Example:
 
@@ -1565,9 +1565,9 @@ Immutable
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Storing Passwords
+### 1. Storing Passwords
 
 Incorrect:
 
@@ -1587,7 +1587,7 @@ Secret
 
 ---
 
-## 2. Expecting Environment Variables to Update Automatically
+### 2. Expecting Environment Variables to Update Automatically
 
 ```
 ConfigMap Updated
@@ -1605,7 +1605,7 @@ Restart the Pod to load updated environment variables.
 
 ---
 
-## 3. Assuming Volume Updates Restart the Application
+### 3. Assuming Volume Updates Restart the Application
 
 Kubernetes updates mounted files.
 
@@ -1613,7 +1613,7 @@ It does **not** restart the application or force it to reload configuration.
 
 ---
 
-## 4. Sharing One Large ConfigMap
+### 4. Sharing One Large ConfigMap
 
 Avoid:
 
@@ -1639,7 +1639,7 @@ This improves maintainability.
 
 ---
 
-## 5. Hardcoding Configuration
+### 5. Hardcoding Configuration
 
 Incorrect:
 
@@ -1663,9 +1663,9 @@ ConfigMap
 
 ---
 
-# ConfigMaps Quick Revision
+## ConfigMaps Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 ConfigMap
@@ -1693,7 +1693,7 @@ Application
 
 ---
 
-## Access Methods
+### Access Methods
 
 ```
 ConfigMap
@@ -1707,7 +1707,7 @@ ConfigMap
 
 ---
 
-## Update Behavior
+### Update Behavior
 
 ```
 Environment Variables
@@ -1731,7 +1731,7 @@ Application Must Reload If Needed
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 Create:
 
@@ -1772,9 +1772,9 @@ kubectl delete configmap app-config
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a ConfigMap?
 - Why should ConfigMaps be used?
@@ -1782,7 +1782,7 @@ kubectl delete configmap app-config
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - What are the ways to consume a ConfigMap?
 - How are ConfigMaps mounted as volumes?
@@ -1790,7 +1790,7 @@ kubectl delete configmap app-config
 
 ---
 
-### Advanced
+#### Advanced
 
 - Why don't environment variables update automatically?
 - How does kubelet keep mounted ConfigMaps up to date?
@@ -1800,9 +1800,9 @@ kubectl delete configmap app-config
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - ConfigMaps
 - Inject Data into Applications
@@ -1812,7 +1812,7 @@ kubectl delete configmap app-config
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Best Practices
 - Kubernetes Configuration Management
@@ -1820,7 +1820,7 @@ kubectl delete configmap app-config
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - NIST SP 800-190
@@ -1829,7 +1829,7 @@ kubectl delete configmap app-config
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create ConfigMaps using YAML, literals, files, and directories.
 2. Consume ConfigMaps through environment variables and volume mounts.
@@ -1841,7 +1841,7 @@ kubectl delete configmap app-config
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Developer

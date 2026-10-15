@@ -1,10 +1,10 @@
 # 20 - Enterprise Networking
 
-# Part 1 — Enterprise Network Fundamentals, Campus Network Architecture, Three-Tier Design, Spine-Leaf Architecture, Core, Distribution, Access Layers, High Availability, and Enterprise Network Design Principles
+## Part 1 — Enterprise Network Fundamentals, Campus Network Architecture, Three-Tier Design, Spine-Leaf Architecture, Core, Distribution, Access Layers, High Availability, and Enterprise Network Design Principles
 
 ---
 
-# Overview
+## Overview
 
 Enterprise networking is the foundation of modern digital organizations. Every business service—including email, cloud applications, VoIP, ERP systems, databases, security platforms, remote access, and Internet connectivity—depends on a reliable, scalable, and secure network infrastructure.
 
@@ -25,7 +25,7 @@ Enterprise networking focuses not only on connectivity but also on **performance
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -43,7 +43,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is an Enterprise Network?
+## What is an Enterprise Network?
 
 An **Enterprise Network** is a large-scale communication infrastructure that interconnects users, applications, devices, branch offices, cloud services, and data centers.
 
@@ -68,7 +68,7 @@ Enterprise networks are designed for continuous operation and business-critical 
 
 ---
 
-# Characteristics of Enterprise Networks
+## Characteristics of Enterprise Networks
 
 Enterprise networks are built to provide:
 
@@ -85,7 +85,7 @@ Enterprise networks are built to provide:
 
 ---
 
-# Enterprise Network Components
+## Enterprise Network Components
 
 Typical components include:
 
@@ -104,7 +104,7 @@ Typical components include:
 
 ---
 
-# Enterprise Network Goals
+## Enterprise Network Goals
 
 Organizations design networks to achieve:
 
@@ -118,7 +118,7 @@ Organizations design networks to achieve:
 
 ---
 
-# Enterprise Network Architecture
+## Enterprise Network Architecture
 
 A typical enterprise network includes multiple functional domains.
 
@@ -150,7 +150,7 @@ Each layer performs specialized functions that improve scalability and simplify 
 
 ---
 
-# Campus Network Architecture
+## Campus Network Architecture
 
 A campus network connects buildings, departments, and users within an organization.
 
@@ -194,7 +194,7 @@ Campus networks are common in:
 
 ---
 
-# Enterprise Network Domains
+## Enterprise Network Domains
 
 Large organizations typically divide infrastructure into several domains.
 
@@ -226,7 +226,7 @@ Each domain has dedicated technologies and operational requirements.
 
 ---
 
-# Three-Tier Architecture
+## Three-Tier Architecture
 
 The three-tier model is one of the most widely adopted enterprise network designs.
 
@@ -246,7 +246,7 @@ This hierarchical approach improves scalability, redundancy, and fault isolation
 
 ---
 
-# Benefits of Three-Tier Architecture
+## Benefits of Three-Tier Architecture
 
 Advantages include:
 
@@ -259,7 +259,7 @@ Advantages include:
 
 ---
 
-# Core Layer
+## Core Layer
 
 The Core Layer forms the high-speed backbone of the enterprise.
 
@@ -275,7 +275,7 @@ The Core Layer should avoid complex filtering or policy enforcement whenever pos
 
 ---
 
-# Core Layer Design Principles
+## Core Layer Design Principles
 
 Core devices should provide:
 
@@ -290,7 +290,7 @@ Typical hardware includes high-performance chassis switches or modular routers.
 
 ---
 
-# Distribution Layer
+## Distribution Layer
 
 The Distribution Layer connects the Access Layer to the Core Layer.
 
@@ -308,7 +308,7 @@ This layer often serves as the policy boundary for the campus network.
 
 ---
 
-# Distribution Layer Functions
+## Distribution Layer Functions
 
 Common functions include:
 
@@ -321,7 +321,7 @@ Common functions include:
 
 ---
 
-# Access Layer
+## Access Layer
 
 The Access Layer provides connectivity for end devices.
 
@@ -339,7 +339,7 @@ This layer is the primary point where users enter the network.
 
 ---
 
-# Access Layer Responsibilities
+## Access Layer Responsibilities
 
 Typical functions include:
 
@@ -352,7 +352,7 @@ Typical functions include:
 
 ---
 
-# Three-Tier Packet Flow
+## Three-Tier Packet Flow
 
 ```
 Client
@@ -382,7 +382,7 @@ Traffic follows predictable paths, simplifying operations and troubleshooting.
 
 ---
 
-# Spine-Leaf Architecture
+## Spine-Leaf Architecture
 
 Traditional three-tier designs work well for campus environments, while modern data centers increasingly use **Spine-Leaf** architectures.
 
@@ -402,7 +402,7 @@ Every Leaf switch connects to every Spine switch.
 
 ---
 
-# Benefits of Spine-Leaf
+## Benefits of Spine-Leaf
 
 Advantages include:
 
@@ -416,7 +416,7 @@ Spine-Leaf architectures are common in virtualization and cloud environments.
 
 ---
 
-# Spine Layer
+## Spine Layer
 
 The Spine Layer provides the high-speed switching fabric.
 
@@ -429,7 +429,7 @@ Characteristics:
 
 ---
 
-# Leaf Layer
+## Leaf Layer
 
 Leaf switches connect directly to:
 
@@ -443,7 +443,7 @@ Leaf switches provide the edge connectivity within the data center.
 
 ---
 
-# Three-Tier vs Spine-Leaf
+## Three-Tier vs Spine-Leaf
 
 | Feature | Three-Tier | Spine-Leaf |
 |----------|------------|------------|
@@ -457,7 +457,7 @@ Organizations often use both architectures simultaneously in different parts of 
 
 ---
 
-# High Availability (HA)
+## High Availability (HA)
 
 Enterprise networks must continue operating even when components fail.
 
@@ -470,7 +470,7 @@ High Availability objectives include:
 
 ---
 
-# Redundancy
+## Redundancy
 
 Redundancy provides backup components for critical infrastructure.
 
@@ -512,7 +512,7 @@ Redundant paths improve resilience and reduce service interruptions.
 
 ---
 
-# Types of Redundancy
+## Types of Redundancy
 
 Organizations commonly implement:
 
@@ -527,7 +527,7 @@ Each type addresses different failure scenarios.
 
 ---
 
-# Fault Tolerance
+## Fault Tolerance
 
 Fault tolerance enables continued operation despite hardware or software failures.
 
@@ -543,7 +543,7 @@ Fault-tolerant designs reduce operational risk.
 
 ---
 
-# Network Resiliency
+## Network Resiliency
 
 Resilient networks can quickly recover from disruptions.
 
@@ -557,7 +557,7 @@ Characteristics:
 
 ---
 
-# Scalability
+## Scalability
 
 Enterprise networks should accommodate:
 
@@ -572,7 +572,7 @@ Designing for scalability reduces the need for disruptive redesigns.
 
 ---
 
-# Enterprise Design Principles
+## Enterprise Design Principles
 
 Successful enterprise networks follow these principles:
 
@@ -588,7 +588,7 @@ Successful enterprise networks follow these principles:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A well-designed enterprise network enables organizations to:
 
@@ -602,7 +602,7 @@ A well-designed enterprise network enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -617,7 +617,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise networks provide scalable, secure, and resilient connectivity for business operations.
 - The three-tier architecture remains the standard for campus networks.
@@ -629,11 +629,11 @@ Organizations should:
 ---
 
 
-# Part 2 — Enterprise WAN, MPLS, SD-WAN, Software-Defined Networking (SDN), Software-Defined Access (SDA), Data Center Networking, Cloud Connectivity, and Modern Enterprise Architectures
+## Part 2 — Enterprise WAN, MPLS, SD-WAN, Software-Defined Networking (SDN), Software-Defined Access (SDA), Data Center Networking, Cloud Connectivity, and Modern Enterprise Architectures
 
 ---
 
-# Introduction
+## Introduction
 
 Modern enterprises rarely operate from a single location. Organizations maintain headquarters, branch offices, manufacturing facilities, cloud environments, remote employees, and multiple data centers spread across regions or countries.
 
@@ -652,7 +652,7 @@ These technologies enable organizations to build scalable, policy-driven, and au
 
 ---
 
-# Enterprise WAN
+## Enterprise WAN
 
 A **Wide Area Network (WAN)** connects geographically separated sites.
 
@@ -673,7 +673,7 @@ WANs enable secure communication between distributed business locations.
 
 ---
 
-# Characteristics of Enterprise WANs
+## Characteristics of Enterprise WANs
 
 Enterprise WANs provide:
 
@@ -687,7 +687,7 @@ Enterprise WANs provide:
 
 ---
 
-# WAN Technologies
+## WAN Technologies
 
 Organizations commonly deploy:
 
@@ -704,7 +704,7 @@ Many enterprises combine multiple WAN technologies.
 
 ---
 
-# MPLS (Multiprotocol Label Switching)
+## MPLS (Multiprotocol Label Switching)
 
 MPLS forwards packets using labels instead of performing traditional IP routing lookups at every hop.
 
@@ -740,7 +740,7 @@ This improves forwarding efficiency and supports traffic engineering.
 
 ---
 
-# MPLS Components
+## MPLS Components
 
 Key MPLS devices include:
 
@@ -752,7 +752,7 @@ Key MPLS devices include:
 
 ---
 
-# MPLS Packet Flow
+## MPLS Packet Flow
 
 ```
 Ingress LER
@@ -786,7 +786,7 @@ This process reduces routing overhead inside the provider network.
 
 ---
 
-# Advantages of MPLS
+## Advantages of MPLS
 
 Benefits include:
 
@@ -801,7 +801,7 @@ MPLS remains widely used for business-critical applications despite the growth o
 
 ---
 
-# MPLS Limitations
+## MPLS Limitations
 
 Challenges include:
 
@@ -814,7 +814,7 @@ Organizations increasingly supplement or replace MPLS with Internet-based SD-WAN
 
 ---
 
-# SD-WAN (Software-Defined Wide Area Network)
+## SD-WAN (Software-Defined Wide Area Network)
 
 SD-WAN separates the control plane from the underlying WAN transport and uses centralized policies to intelligently route traffic.
 
@@ -842,7 +842,7 @@ This approach improves agility and simplifies WAN management.
 
 ---
 
-# SD-WAN Architecture
+## SD-WAN Architecture
 
 Core components include:
 
@@ -856,7 +856,7 @@ The controller defines policies while edge devices enforce them.
 
 ---
 
-# SD-WAN Features
+## SD-WAN Features
 
 Modern SD-WAN solutions provide:
 
@@ -870,7 +870,7 @@ Modern SD-WAN solutions provide:
 
 ---
 
-# Dynamic Path Selection
+## Dynamic Path Selection
 
 Traffic is routed according to link quality.
 
@@ -900,7 +900,7 @@ Real-time path selection improves application performance.
 
 ---
 
-# SD-WAN Transport Options
+## SD-WAN Transport Options
 
 SD-WAN can simultaneously use:
 
@@ -915,7 +915,7 @@ This flexibility increases resiliency and reduces dependency on a single transpo
 
 ---
 
-# MPLS vs SD-WAN
+## MPLS vs SD-WAN
 
 | Feature | MPLS | SD-WAN |
 |----------|------|---------|
@@ -930,7 +930,7 @@ Many enterprises adopt hybrid architectures that combine both technologies.
 
 ---
 
-# Software-Defined Networking (SDN)
+## Software-Defined Networking (SDN)
 
 Software-Defined Networking separates the control plane from the data plane.
 
@@ -966,7 +966,7 @@ This separation enables centralized policy management and automation.
 
 ---
 
-# SDN Architecture
+## SDN Architecture
 
 Three primary layers:
 
@@ -986,7 +986,7 @@ Each layer has distinct responsibilities.
 
 ---
 
-# SDN Components
+## SDN Components
 
 | Component | Purpose |
 |-----------|----------|
@@ -996,7 +996,7 @@ Each layer has distinct responsibilities.
 
 ---
 
-# Benefits of SDN
+## Benefits of SDN
 
 Advantages include:
 
@@ -1011,7 +1011,7 @@ SDN enables organizations to treat networking as software rather than manual dev
 
 ---
 
-# Southbound and Northbound APIs
+## Southbound and Northbound APIs
 
 SDN controllers communicate through APIs.
 
@@ -1039,7 +1039,7 @@ This architecture enables integration with orchestration and automation platform
 
 ---
 
-# Software-Defined Access (SDA)
+## Software-Defined Access (SDA)
 
 Software-Defined Access extends SDN concepts into enterprise campus networks.
 
@@ -1055,7 +1055,7 @@ SDA simplifies large campus deployments.
 
 ---
 
-# SDA Components
+## SDA Components
 
 Typical components include:
 
@@ -1069,7 +1069,7 @@ Together they create a policy-driven campus network.
 
 ---
 
-# Enterprise Fabric
+## Enterprise Fabric
 
 An enterprise fabric provides:
 
@@ -1082,7 +1082,7 @@ Fabric networking reduces operational complexity while improving security.
 
 ---
 
-# Data Center Networking
+## Data Center Networking
 
 Modern data centers support:
 
@@ -1096,7 +1096,7 @@ Data center networking prioritizes high bandwidth, low latency, and automation.
 
 ---
 
-# Data Center Architecture
+## Data Center Architecture
 
 Typical architecture:
 
@@ -1128,7 +1128,7 @@ Spine-Leaf designs provide predictable latency and horizontal scalability.
 
 ---
 
-# East-West vs North-South Traffic
+## East-West vs North-South Traffic
 
 | Traffic Type | Description |
 |--------------|-------------|
@@ -1139,7 +1139,7 @@ Virtualized environments generate significant east-west traffic.
 
 ---
 
-# Network Virtualization
+## Network Virtualization
 
 Network virtualization abstracts logical networks from physical infrastructure.
 
@@ -1158,7 +1158,7 @@ Benefits:
 
 ---
 
-# Overlay Networks
+## Overlay Networks
 
 Overlay networks create logical connectivity independent of the physical topology.
 
@@ -1178,7 +1178,7 @@ Examples include VXLAN-based overlays in modern data centers.
 
 ---
 
-# Cloud Connectivity
+## Cloud Connectivity
 
 Enterprises connect to cloud providers through:
 
@@ -1192,7 +1192,7 @@ Reliable cloud connectivity is essential for hybrid workloads.
 
 ---
 
-# Hybrid Cloud Architecture
+## Hybrid Cloud Architecture
 
 ```
 Headquarters
@@ -1222,7 +1222,7 @@ Hybrid architectures enable organizations to distribute workloads across on-prem
 
 ---
 
-# Multi-Cloud Networking
+## Multi-Cloud Networking
 
 Organizations increasingly operate across multiple cloud providers.
 
@@ -1252,7 +1252,7 @@ A consistent networking and security strategy simplifies multi-cloud operations.
 
 ---
 
-# Network Automation
+## Network Automation
 
 Automation reduces manual configuration tasks.
 
@@ -1269,7 +1269,7 @@ Automation improves consistency and reduces operational errors.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Network infrastructure can be managed through version-controlled code.
 
@@ -1285,7 +1285,7 @@ IaC is increasingly common in cloud and large-scale enterprise environments.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Modern enterprise networking enables organizations to:
 
@@ -1299,7 +1299,7 @@ Modern enterprise networking enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -1314,7 +1314,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise WANs connect geographically distributed business locations.
 - MPLS provides reliable, private connectivity, while SD-WAN adds flexibility and application-aware routing.
@@ -1326,11 +1326,11 @@ Organizations should:
 ---
 
 
-# Part 3 — Enterprise Network Security, Segmentation, Zero Trust, Network Access Control (NAC), Monitoring, Detection Engineering, Compliance, and Enterprise Operations
+## Part 3 — Enterprise Network Security, Segmentation, Zero Trust, Network Access Control (NAC), Monitoring, Detection Engineering, Compliance, and Enterprise Operations
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise networks are among the most valuable assets of an organization because they connect users, applications, servers, cloud platforms, business partners, and Internet services. As organizations become increasingly digital, enterprise networks are frequent targets for cyberattacks.
 
@@ -1349,7 +1349,7 @@ To defend against these threats, organizations implement multiple layers of secu
 
 ---
 
-# Enterprise Security Objectives
+## Enterprise Security Objectives
 
 Enterprise network security aims to provide:
 
@@ -1366,7 +1366,7 @@ These objectives align with the CIA Triad and Zero Trust security principles.
 
 ---
 
-# Defense-in-Depth
+## Defense-in-Depth
 
 Defense-in-Depth uses multiple independent security controls.
 
@@ -1406,7 +1406,7 @@ If one layer fails, additional controls continue protecting the organization.
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 Modern enterprise security consists of multiple integrated technologies.
 
@@ -1446,7 +1446,7 @@ Every layer contributes to the organization's overall security posture.
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Segmentation divides a network into isolated security zones.
 
@@ -1496,7 +1496,7 @@ Segmentation limits unauthorized access and reduces lateral movement.
 
 ---
 
-# Benefits of Segmentation
+## Benefits of Segmentation
 
 Advantages include:
 
@@ -1509,7 +1509,7 @@ Advantages include:
 
 ---
 
-# Microsegmentation
+## Microsegmentation
 
 Microsegmentation extends segmentation to individual workloads or applications.
 
@@ -1543,7 +1543,7 @@ Even systems within the same VLAN or subnet can have different security policies
 
 ---
 
-# Zero Trust Network Architecture (ZTNA)
+## Zero Trust Network Architecture (ZTNA)
 
 Zero Trust assumes that no user, device, or application should be trusted automatically.
 
@@ -1559,7 +1559,7 @@ Network location alone should not determine access.
 
 ---
 
-# Zero Trust Workflow
+## Zero Trust Workflow
 
 ```
 User
@@ -1589,7 +1589,7 @@ Every access request is evaluated before permission is granted.
 
 ---
 
-# Identity-Based Access
+## Identity-Based Access
 
 Modern enterprise networks use identity rather than IP address as the primary security control.
 
@@ -1607,7 +1607,7 @@ Identity-aware networking improves both security and operational flexibility.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Users and devices should receive only the permissions necessary to perform their tasks.
 
@@ -1633,7 +1633,7 @@ Limiting privileges reduces the impact of compromised accounts.
 
 ---
 
-# Network Access Control (NAC)
+## Network Access Control (NAC)
 
 NAC verifies the identity and security posture of devices before granting network access.
 
@@ -1651,7 +1651,7 @@ Non-compliant devices can be denied access or placed in a restricted network.
 
 ---
 
-# NAC Workflow
+## NAC Workflow
 
 ```
 Device Connects
@@ -1679,7 +1679,7 @@ Network Access
 
 ---
 
-# Dynamic Network Segmentation
+## Dynamic Network Segmentation
 
 NAC solutions can dynamically assign network access based on policy.
 
@@ -1713,7 +1713,7 @@ Dynamic segmentation improves flexibility and security.
 
 ---
 
-# Secure Remote Access
+## Secure Remote Access
 
 Enterprise remote users typically connect using:
 
@@ -1729,7 +1729,7 @@ Secure remote access should include:
 
 ---
 
-# Enterprise Authentication
+## Enterprise Authentication
 
 Centralized authentication platforms commonly integrate with:
 
@@ -1743,7 +1743,7 @@ These systems provide consistent identity management across the enterprise.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 MFA requires multiple verification factors.
 
@@ -1758,7 +1758,7 @@ MFA significantly reduces the effectiveness of credential theft.
 
 ---
 
-# Network Monitoring
+## Network Monitoring
 
 Enterprise monitoring provides visibility into:
 
@@ -1772,7 +1772,7 @@ Continuous monitoring enables proactive operations.
 
 ---
 
-# Network Telemetry
+## Network Telemetry
 
 Important telemetry sources include:
 
@@ -1789,7 +1789,7 @@ Combining multiple telemetry sources improves operational visibility.
 
 ---
 
-# Centralized Logging
+## Centralized Logging
 
 ```
 Routers
@@ -1823,7 +1823,7 @@ Centralized logging supports troubleshooting, compliance, and incident response.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Security teams monitor:
 
@@ -1840,7 +1840,7 @@ Correlating multiple data sources improves detection accuracy.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Detection Engineering involves creating high-quality rules to identify malicious activity while minimizing false positives.
 
@@ -1859,9 +1859,9 @@ Detection logic should be continuously reviewed and improved.
 
 ---
 
-# SIEM Correlation Examples
+## SIEM Correlation Examples
 
-### Unauthorized Administrator Login
+#### Unauthorized Administrator Login
 
 ```
 Administrative Login
@@ -1881,7 +1881,7 @@ Critical Alert
 
 ---
 
-### Port Scanning
+#### Port Scanning
 
 ```
 Single Host
@@ -1901,7 +1901,7 @@ High Severity Alert
 
 ---
 
-### VPN Brute Force
+#### VPN Brute Force
 
 ```
 Multiple Failed Logins
@@ -1921,7 +1921,7 @@ SOC Alert
 
 ---
 
-### Data Exfiltration
+#### Data Exfiltration
 
 ```
 Large Outbound Transfer
@@ -1941,7 +1941,7 @@ Investigation
 
 ---
 
-# Threat Intelligence Integration
+## Threat Intelligence Integration
 
 Threat intelligence enhances enterprise monitoring by identifying:
 
@@ -1955,7 +1955,7 @@ Threat intelligence should be correlated with internal telemetry rather than use
 
 ---
 
-# Incident Response Integration
+## Incident Response Integration
 
 Network monitoring supports every phase of incident response.
 
@@ -1987,7 +1987,7 @@ Timely telemetry accelerates investigations and reduces attacker dwell time.
 
 ---
 
-# Configuration Management
+## Configuration Management
 
 Maintain:
 
@@ -2001,7 +2001,7 @@ Configuration management reduces operational errors and supports compliance.
 
 ---
 
-# Patch Management
+## Patch Management
 
 Enterprise network devices should follow a structured patching process.
 
@@ -2018,7 +2018,7 @@ Prompt patching reduces exposure to known vulnerabilities.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Monitor long-term trends such as:
 
@@ -2033,7 +2033,7 @@ Capacity planning helps organizations scale before performance becomes a problem
 
 ---
 
-# High Availability Operations
+## High Availability Operations
 
 Critical services should support:
 
@@ -2049,7 +2049,7 @@ Regular failover testing ensures resilience during real incidents.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Enterprise networking contributes to compliance with:
 
@@ -2071,7 +2071,7 @@ Common requirements include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A secure enterprise network enables organizations to:
 
@@ -2085,7 +2085,7 @@ A secure enterprise network enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -2102,7 +2102,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise network security relies on layered defenses rather than a single security control.
 - Segmentation and microsegmentation reduce the attack surface and limit lateral movement.
@@ -2113,11 +2113,11 @@ Organizations should:
 
 ---
 
-# Part 4 — Enterprise Troubleshooting, Verification Commands, Detection Engineering, Practical Labs, Enterprise Case Study, Interview Questions, RFC/IEEE References, Summary, and Chapter Review
+## Part 4 — Enterprise Troubleshooting, Verification Commands, Detection Engineering, Practical Labs, Enterprise Case Study, Interview Questions, RFC/IEEE References, Summary, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise networks support mission-critical business operations. Even a brief network outage can disrupt communication, halt production, interrupt cloud services, impact customer transactions, and result in significant financial loss.
 
@@ -2137,7 +2137,7 @@ A disciplined operational approach minimizes downtime and improves service relia
 
 ---
 
-# Enterprise Troubleshooting Methodology
+## Enterprise Troubleshooting Methodology
 
 Use a structured workflow for all enterprise incidents.
 
@@ -2193,7 +2193,7 @@ Following a repeatable process helps reduce troubleshooting time and prevents un
 
 ---
 
-# Initial Health Checks
+## Initial Health Checks
 
 Before investigating individual applications or endpoints, verify overall infrastructure health.
 
@@ -2214,7 +2214,7 @@ Check:
 
 ---
 
-# End-to-End Packet Flow
+## End-to-End Packet Flow
 
 ```
 Client
@@ -2248,7 +2248,7 @@ Every hop should be verified independently during troubleshooting.
 
 ---
 
-# Network Verification Workflow
+## Network Verification Workflow
 
 Verify:
 
@@ -2265,7 +2265,7 @@ This layered approach isolates failures efficiently.
 
 ---
 
-# Packet Analysis
+## Packet Analysis
 
 Packet captures remain one of the most effective troubleshooting tools.
 
@@ -2285,7 +2285,7 @@ Packet captures should be collected as close as possible to the affected system.
 
 ---
 
-# Wireshark Filters
+## Wireshark Filters
 
 Useful display filters include:
 
@@ -2359,7 +2359,7 @@ These filters assist in quickly isolating common networking issues.
 
 ---
 
-# Enterprise Log Analysis
+## Enterprise Log Analysis
 
 Important log sources include:
 
@@ -2378,7 +2378,7 @@ Combining multiple log sources provides complete visibility into network behavio
 
 ---
 
-# Network Device Verification
+## Network Device Verification
 
 Verify:
 
@@ -2395,7 +2395,7 @@ Verify:
 
 ---
 
-# Cisco IOS Verification Commands
+## Cisco IOS Verification Commands
 
 Interface Status
 
@@ -2489,7 +2489,7 @@ These commands provide a quick operational overview of Cisco-based enterprise en
 
 ---
 
-# Linux Verification Commands
+## Linux Verification Commands
 
 IP Configuration
 
@@ -2555,7 +2555,7 @@ tcpdump
 
 ---
 
-# Windows Verification Commands
+## Windows Verification Commands
 
 IP Configuration
 
@@ -2617,18 +2617,18 @@ These commands are commonly used by enterprise support engineers.
 
 ---
 
-# Common Troubleshooting Scenarios
+## Common Troubleshooting Scenarios
 
 ---
 
-## Scenario 1 — Users Cannot Access the Internet
+### Scenario 1 — Users Cannot Access the Internet
 
-### Symptoms
+#### Symptoms
 
 - Internal communication works.
 - External websites are unreachable.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2640,14 +2640,14 @@ Verify:
 
 ---
 
-## Scenario 2 — Inter-VLAN Communication Failure
+### Scenario 2 — Inter-VLAN Communication Failure
 
-### Symptoms
+#### Symptoms
 
 - Devices communicate within the same VLAN.
 - Communication between VLANs fails.
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -2659,13 +2659,13 @@ Check:
 
 ---
 
-## Scenario 3 — Branch Office Offline
+### Scenario 3 — Branch Office Offline
 
-### Symptoms
+#### Symptoms
 
 - Remote users cannot reach headquarters.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2677,15 +2677,15 @@ Verify:
 
 ---
 
-## Scenario 4 — High Network Latency
+### Scenario 4 — High Network Latency
 
-### Symptoms
+#### Symptoms
 
 - Slow applications
 - Voice quality degradation
 - Video conferencing issues
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -2697,13 +2697,13 @@ Review:
 
 ---
 
-## Scenario 5 — Authentication Failure
+### Scenario 5 — Authentication Failure
 
-### Symptoms
+#### Symptoms
 
 - Users cannot access enterprise resources.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2716,13 +2716,13 @@ Verify:
 
 ---
 
-## Scenario 6 — Wireless Connectivity Issues
+### Scenario 6 — Wireless Connectivity Issues
 
-### Symptoms
+#### Symptoms
 
 - Users disconnect frequently.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2735,7 +2735,7 @@ Verify:
 
 ---
 
-# Enterprise Performance Monitoring
+## Enterprise Performance Monitoring
 
 Monitor:
 
@@ -2754,7 +2754,7 @@ Long-term trend analysis enables proactive maintenance and capacity planning.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Enterprise network telemetry supports detection of:
 
@@ -2772,9 +2772,9 @@ Detection logic should combine multiple indicators to improve accuracy.
 
 ---
 
-# SIEM Correlation Examples
+## SIEM Correlation Examples
 
-### Port Scanning
+#### Port Scanning
 
 ```
 Single Source
@@ -2794,7 +2794,7 @@ SOC Alert
 
 ---
 
-### Unauthorized Configuration Change
+#### Unauthorized Configuration Change
 
 ```
 Administrator Login
@@ -2814,7 +2814,7 @@ Critical Alert
 
 ---
 
-### Data Exfiltration
+#### Data Exfiltration
 
 ```
 Large Outbound Transfer
@@ -2834,7 +2834,7 @@ Investigation
 
 ---
 
-### VPN Abuse
+#### VPN Abuse
 
 ```
 Impossible Travel
@@ -2854,7 +2854,7 @@ High-Risk Alert
 
 ---
 
-# Zeek Integration
+## Zeek Integration
 
 Zeek provides network visibility across enterprise environments.
 
@@ -2871,7 +2871,7 @@ These logs support threat hunting, incident response, and forensic investigation
 
 ---
 
-# Suricata Integration
+## Suricata Integration
 
 Suricata can detect:
 
@@ -2886,7 +2886,7 @@ When integrated with a SIEM, Suricata provides high-value security alerts.
 
 ---
 
-# Threat Hunting Ideas
+## Threat Hunting Ideas
 
 SOC analysts can investigate:
 
@@ -2904,7 +2904,7 @@ Threat hunting complements automated detections by identifying subtle attacker b
 
 ---
 
-# Practical Lab 1 — Enterprise Campus Network
+## Practical Lab 1 — Enterprise Campus Network
 
 Objective:
 
@@ -2920,7 +2920,7 @@ Tasks:
 
 ---
 
-# Practical Lab 2 — SD-WAN Deployment
+## Practical Lab 2 — SD-WAN Deployment
 
 Tasks:
 
@@ -2932,7 +2932,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — Network Monitoring
+## Practical Lab 3 — Network Monitoring
 
 Tasks:
 
@@ -2944,7 +2944,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — SIEM Integration
+## Practical Lab 4 — SIEM Integration
 
 Tasks:
 
@@ -2956,7 +2956,7 @@ Tasks:
 
 ---
 
-# Practical Lab 5 — Enterprise Incident Response
+## Practical Lab 5 — Enterprise Incident Response
 
 Tasks:
 
@@ -2968,13 +2968,13 @@ Tasks:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A global manufacturing company experiences intermittent connectivity between its headquarters, cloud applications, and several branch offices during peak business hours.
 
-### Investigation
+#### Investigation
 
 The network operations team discovers:
 
@@ -2983,7 +2983,7 @@ The network operations team discovers:
 - QoS policies do not prioritize business-critical ERP traffic.
 - Excessive backup synchronization occurs during production hours.
 
-### Resolution
+#### Resolution
 
 - Restore the failed MPLS connection.
 - Implement application-aware SD-WAN policies.
@@ -2991,7 +2991,7 @@ The network operations team discovers:
 - Reschedule backup synchronization outside business hours.
 - Deploy bandwidth monitoring with proactive threshold alerts.
 
-### Outcome
+#### Outcome
 
 - Improved application performance.
 - Reduced latency and packet loss.
@@ -3001,38 +3001,38 @@ The network operations team discovers:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is the purpose of the Core Layer?
+#### What is the purpose of the Core Layer?
 
 The Core Layer provides high-speed, low-latency connectivity between major sections of the enterprise network and acts as the backbone of the infrastructure.
 
 ---
 
-### Why is network segmentation important?
+#### Why is network segmentation important?
 
 Segmentation reduces the attack surface, limits lateral movement, improves performance, and simplifies policy enforcement.
 
 ---
 
-### What is the difference between MPLS and SD-WAN?
+#### What is the difference between MPLS and SD-WAN?
 
 - **MPLS** provides private, provider-managed WAN connectivity with predictable performance.
 - **SD-WAN** intelligently manages traffic across multiple transport types using centralized policies and application awareness.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### Why should enterprise logs be centralized?
+#### Why should enterprise logs be centralized?
 
 Centralized logging enables correlation, long-term retention, faster troubleshooting, compliance reporting, and efficient incident response.
 
 ---
 
-### How would you troubleshoot intermittent WAN connectivity?
+#### How would you troubleshoot intermittent WAN connectivity?
 
 A structured approach includes:
 
@@ -3046,27 +3046,27 @@ A structured approach includes:
 
 ---
 
-### What telemetry sources are commonly used for enterprise monitoring?
+#### What telemetry sources are commonly used for enterprise monitoring?
 
 Common sources include Syslog, SNMP, NetFlow, IPFIX, sFlow, firewall logs, DNS logs, VPN logs, and wireless controller logs.
 
 ---
 
-## Advanced
+### Advanced
 
-### How does Zero Trust improve enterprise networking?
+#### How does Zero Trust improve enterprise networking?
 
 Zero Trust enforces continuous identity verification, device validation, least privilege, and policy-based access, reducing the impact of compromised credentials and limiting lateral movement.
 
 ---
 
-### Why is Detection Engineering important in enterprise networks?
+#### Why is Detection Engineering important in enterprise networks?
 
 Detection Engineering creates high-quality, continuously refined detection logic that identifies malicious activity while minimizing false positives and improving SOC efficiency.
 
 ---
 
-### How would you investigate suspected data exfiltration?
+#### How would you investigate suspected data exfiltration?
 
 A comprehensive investigation includes:
 
@@ -3080,7 +3080,7 @@ A comprehensive investigation includes:
 
 ---
 
-# RFC and IEEE References
+## RFC and IEEE References
 
 Key standards related to enterprise networking include:
 
@@ -3095,13 +3095,13 @@ Key standards related to enterprise networking include:
 
 ---
 
-# Summary
+## Summary
 
 Enterprise networking integrates campus networks, WAN technologies, cloud connectivity, security controls, automation, and monitoring into a resilient infrastructure capable of supporting modern business operations. Successful enterprise environments rely on structured architectures, high availability, proactive monitoring, strong security controls, and well-defined operational procedures. Integrating networking telemetry with SOC workflows enables rapid detection, investigation, and response to operational and security events.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -3127,7 +3127,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`21-Cloud-Networking.md`**, covers:
 

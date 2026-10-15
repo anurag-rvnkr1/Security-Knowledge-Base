@@ -1,12 +1,12 @@
 # 50-File-Inclusion.md
 
-# Part 1 — Introduction to File Inclusion, Resource Loading, File References, and Secure File Handling
+## Part 1 — Introduction to File Inclusion, Resource Loading, File References, and Secure File Handling
 
 > **"File Inclusion is a security issue that can occur when applications improperly handle references to files that are loaded or processed. Secure applications strictly control which resources may be accessed, validate file references, and ensure that only trusted application resources are included."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is File Inclusion?
+## What is File Inclusion?
 
 File Inclusion is a **resource loading and file reference security issue** where improper validation of file references may allow an application to include unintended resources.
 
@@ -56,7 +56,7 @@ Secure applications ensure that only approved resources are included during exec
 
 ---
 
-# Why Applications Include Files
+## Why Applications Include Files
 
 Modern applications commonly include files to improve modularity and maintainability.
 
@@ -91,7 +91,7 @@ Applications should include only trusted resources.
 
 ---
 
-# Understanding Resource Inclusion
+## Understanding Resource Inclusion
 
 Applications often separate functionality into reusable components.
 
@@ -117,7 +117,7 @@ Each included resource should originate from an approved location.
 
 ---
 
-# File Reference Lifecycle
+## File Reference Lifecycle
 
 ```
 User Request
@@ -147,7 +147,7 @@ Every stage contributes to secure resource handling.
 
 ---
 
-# Trusted Resources
+## Trusted Resources
 
 Applications should distinguish between trusted application resources and untrusted external input.
 
@@ -167,7 +167,7 @@ Resource selection should remain under application control.
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 External Input
@@ -189,7 +189,7 @@ External input should never directly determine which application resources are l
 
 ---
 
-# Sources of File References
+## Sources of File References
 
 ```
 Application Inputs
@@ -215,7 +215,7 @@ Every externally influenced value should be validated before being used in resou
 
 ---
 
-# Secure Resource Loading Workflow
+## Secure Resource Loading Workflow
 
 ```
 Incoming Request
@@ -245,7 +245,7 @@ Applications should rely on approved resource lists rather than unrestricted fil
 
 ---
 
-# Resource Loading Architecture
+## Resource Loading Architecture
 
 ```
 Client
@@ -275,7 +275,7 @@ The resource loader should interact only with approved application resources.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Secure resource inclusion should complement broader application security controls.
 
@@ -307,7 +307,7 @@ Multiple layers improve resilience against configuration mistakes and unexpected
 
 ---
 
-# Secure File Inclusion Principles
+## Secure File Inclusion Principles
 
 ```
 Secure Resource Design
@@ -335,7 +335,7 @@ Resource inclusion should remain predictable and policy-driven.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational e-commerce platform loads templates, localization files, invoices, and shared components from centralized repositories.
 
@@ -363,7 +363,7 @@ The application validates resource identifiers, uses approved repositories, and 
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 Resource Loading Pipeline
@@ -391,7 +391,7 @@ Each component contributes to secure resource management.
 
 ---
 
-# Secure Resource Handling Goals
+## Secure Resource Handling Goals
 
 Applications should provide:
 
@@ -404,7 +404,7 @@ Applications should provide:
 
 ---
 
-# Conceptual Overview
+## Conceptual Overview
 
 ```
 Business Request
@@ -434,7 +434,7 @@ Business logic should always determine which resources are available for inclusi
 
 ---
 
-# Enterprise Repository Design
+## Enterprise Repository Design
 
 ```
 Enterprise Repository
@@ -460,7 +460,7 @@ Repositories should have defined ownership, version control, and access policies
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the resource loading architecture of a sample enterprise application.
 2. Identify every component that loads application resources.
@@ -472,7 +472,7 @@ Repositories should have defined ownership, version control, and access policies
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is File Inclusion?
 2. Why do applications include files?
@@ -487,7 +487,7 @@ Repositories should have defined ownership, version control, and access policies
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat externally influenced file references as untrusted.
 - Load resources only from approved repositories.
@@ -500,7 +500,7 @@ Repositories should have defined ownership, version control, and access policies
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing unrestricted resource selection.
 - Trusting externally supplied file references.
@@ -512,7 +512,7 @@ Repositories should have defined ownership, version control, and access policies
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - File Inclusion is fundamentally a resource loading and trust-boundary security issue.
 - Applications should validate file references before loading resources.
@@ -520,15 +520,15 @@ Repositories should have defined ownership, version control, and access policies
 - Secure resource loading relies on trusted repositories, allowlisted references, validation, least privilege, and centralized governance.
 - Enterprise monitoring, documentation, and standardized resource management improve application resilience.
 
-# 50-File-Inclusion.md
+## 50-File-Inclusion.md
 
-# Part 2 — Resource Resolution, Allowlists, Repository Management, Secure Configuration, Logging, Monitoring, and Enterprise Architecture
+## Part 2 — Resource Resolution, Allowlists, Repository Management, Secure Configuration, Logging, Monitoring, and Enterprise Architecture
 
 > **"Secure file inclusion depends on trusted repositories, validated resource references, allowlisted resources, centralized configuration, least-privilege access, and continuous monitoring throughout the resource loading lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -545,7 +545,7 @@ After completing this part, you will understand:
 
 ---
 
-# Resource Resolution
+## Resource Resolution
 
 Applications should resolve every resource request into a trusted, approved location before processing.
 
@@ -573,7 +573,7 @@ Resolution should produce a predictable resource location before loading begins.
 
 ---
 
-# Canonical Resource Resolution
+## Canonical Resource Resolution
 
 Applications should normalize resource references before making security decisions.
 
@@ -597,7 +597,7 @@ Security controls should evaluate canonical resource references rather than raw 
 
 ---
 
-# Why Canonicalization Matters
+## Why Canonicalization Matters
 
 Different reference formats may represent the same application resource.
 
@@ -621,7 +621,7 @@ Canonicalization reduces ambiguity and improves policy enforcement.
 
 ---
 
-# Allowlisted Resource Selection
+## Allowlisted Resource Selection
 
 Applications should maintain a predefined set of approved resources.
 
@@ -647,7 +647,7 @@ Only approved resources should be eligible for inclusion.
 
 ---
 
-# Repository Boundaries
+## Repository Boundaries
 
 Every repository should have clearly defined responsibilities.
 
@@ -673,7 +673,7 @@ Applications should restrict resource loading to these approved repositories.
 
 ---
 
-# Resource Validation Pipeline
+## Resource Validation Pipeline
 
 ```
 Incoming Request
@@ -711,7 +711,7 @@ Each validation stage contributes to secure resource management.
 
 ---
 
-# Repository Permissions
+## Repository Permissions
 
 Repositories should follow the principle of least privilege.
 
@@ -733,7 +733,7 @@ Permissions should be granted only when required for legitimate business operati
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Applications should receive only the repository permissions necessary for normal functionality.
 
@@ -757,7 +757,7 @@ Limiting permissions reduces operational risk.
 
 ---
 
-# Configuration Management
+## Configuration Management
 
 Resource-loading behavior should be centrally configured.
 
@@ -785,7 +785,7 @@ Configuration should remain consistent across all environments.
 
 ---
 
-# Secure Resource Workflow
+## Secure Resource Workflow
 
 ```
 User Request
@@ -815,7 +815,7 @@ Business logic should determine which resources may be loaded.
 
 ---
 
-# Resource Metadata
+## Resource Metadata
 
 Resources often contain metadata in addition to content.
 
@@ -841,7 +841,7 @@ Metadata supports auditing, lifecycle management, and governance.
 
 ---
 
-# Resource Lifecycle
+## Resource Lifecycle
 
 ```
 Design
@@ -875,7 +875,7 @@ Security controls should accompany every stage of the lifecycle.
 
 ---
 
-# Enterprise Resource Architecture
+## Enterprise Resource Architecture
 
 ```
 Internet
@@ -905,7 +905,7 @@ Resource validation should always occur before repository access.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Authentication
@@ -935,7 +935,7 @@ Independent security controls improve resilience and operational reliability.
 
 ---
 
-# Logging
+## Logging
 
 Resource-related operations should generate audit records.
 
@@ -959,7 +959,7 @@ Logs improve accountability, troubleshooting, and governance.
 
 ---
 
-# Important Resource Events
+## Important Resource Events
 
 | Event | Purpose |
 |--------|----------|
@@ -975,7 +975,7 @@ Sensitive resource contents should not be unnecessarily recorded in logs.
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -1001,7 +1001,7 @@ Continuous monitoring helps maintain operational stability.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1015,7 +1015,7 @@ Continuous monitoring helps maintain operational stability.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider stores templates, multilingual content, compliance documents, and reporting components in centralized repositories.
 
@@ -1047,7 +1047,7 @@ Applications validate every resource reference, resolve it to an approved reposi
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1060,7 +1060,7 @@ Applications validate every resource reference, resolve it to an approved reposi
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise resource-loading architecture.
 2. Identify all approved repositories.
@@ -1072,7 +1072,7 @@ Applications validate every resource reference, resolve it to an approved reposi
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is resource resolution?
 2. Why is canonicalization important for resource references?
@@ -1087,7 +1087,7 @@ Applications validate every resource reference, resolve it to an approved reposi
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Resolve and validate every resource reference before loading.
 - Use allowlists for approved resources.
@@ -1100,7 +1100,7 @@ Applications validate every resource reference, resolve it to an approved reposi
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Validating raw references instead of canonical references.
 - Allowing unrestricted repository access.
@@ -1112,7 +1112,7 @@ Applications validate every resource reference, resolve it to an approved reposi
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Canonical resource resolution provides a consistent foundation for secure validation.
 - Resource loading should be limited to approved repositories and allowlisted resources.
@@ -1120,15 +1120,15 @@ Applications validate every resource reference, resolve it to an approved reposi
 - Enterprise repository architecture should emphasize governance, monitoring, and predictable resource handling.
 - Continuous logging and operational visibility strengthen long-term resource security.
 
-# 50-File-Inclusion.md
+## 50-File-Inclusion.md
 
-# Part 3 — Threat Modeling, Secure SDLC, DevSecOps, Secure Resource Management, Monitoring, and Enterprise Defense
+## Part 3 — Threat Modeling, Secure SDLC, DevSecOps, Secure Resource Management, Monitoring, and Enterprise Defense
 
 > **"Preventing File Inclusion vulnerabilities requires secure resource management, trusted repositories, validated references, least-privilege access, continuous monitoring, and governance integrated throughout the software development lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1145,7 +1145,7 @@ After completing this part, you will understand:
 
 ---
 
-# Detecting File Inclusion Risks
+## Detecting File Inclusion Risks
 
 Organizations should periodically review every application component responsible for loading resources.
 
@@ -1173,7 +1173,7 @@ The objective is to verify that applications load resources only from approved r
 
 ---
 
-# Resource Loading Security Review
+## Resource Loading Security Review
 
 Every resource loading workflow should be documented and reviewed.
 
@@ -1209,7 +1209,7 @@ Security reviews should verify that every stage follows organizational security 
 
 ---
 
-# Resource Inventory
+## Resource Inventory
 
 Maintain a complete inventory of application resources.
 
@@ -1239,7 +1239,7 @@ A complete inventory supports governance, maintenance, and security reviews.
 
 ---
 
-# Repository Component Inventory
+## Repository Component Inventory
 
 Document every component involved in resource loading.
 
@@ -1269,7 +1269,7 @@ Documented dependencies simplify architecture reviews and incident investigation
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Resource loading policies should remain consistent across environments.
 
@@ -1297,7 +1297,7 @@ Configuration consistency reduces operational risk and deployment issues.
 
 ---
 
-# Architecture Review
+## Architecture Review
 
 Security reviews should evaluate:
 
@@ -1328,7 +1328,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies trust boundaries associated with resource loading.
 
@@ -1360,7 +1360,7 @@ The objective is to ensure that application-controlled logic determines resource
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 Security architects should ask:
 
@@ -1387,7 +1387,7 @@ Security Controls
 
 ---
 
-# Secure Resource Validation
+## Secure Resource Validation
 
 Applications should validate every resource reference before loading.
 
@@ -1419,7 +1419,7 @@ Validation should ensure that only approved resources are processed.
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1447,7 +1447,7 @@ Testing should verify correctness, reliability, and secure resource management.
 
 ---
 
-# Secure Resource Lifecycle
+## Secure Resource Lifecycle
 
 ```
 Requirements
@@ -1485,7 +1485,7 @@ Security controls should accompany every lifecycle stage.
 
 ---
 
-# Repository Governance
+## Repository Governance
 
 Organizations should establish governance for resource repositories.
 
@@ -1515,7 +1515,7 @@ Governance improves consistency across engineering teams.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 File inclusion security should be integrated throughout software development.
 
@@ -1551,7 +1551,7 @@ Security activities should begin during application design.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -1585,7 +1585,7 @@ Automation strengthens deployment quality and improves consistency.
 
 ---
 
-# Change Management
+## Change Management
 
 Changes affecting repositories or resource-loading behavior should follow a controlled process.
 
@@ -1617,7 +1617,7 @@ Formal change management improves accountability and operational resilience.
 
 ---
 
-# Logging
+## Logging
 
 Applications should record important resource-loading events.
 
@@ -1641,7 +1641,7 @@ Logs support investigations, troubleshooting, governance, and compliance.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1658,7 +1658,7 @@ Sensitive application resources should not be unnecessarily disclosed in logs.
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1684,7 +1684,7 @@ Continuous monitoring helps detect operational issues before they affect busines
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1698,7 +1698,7 @@ Continuous monitoring helps detect operational issues before they affect busines
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -1746,7 +1746,7 @@ This layered architecture separates validation, repositories, monitoring, and go
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization maintains customer portals, multilingual interfaces, regulatory reports, and shared UI components using centralized resource repositories.
 
@@ -1778,7 +1778,7 @@ Every resource request is validated, mapped to an approved repository, reviewed 
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Resource Inventory Documented
@@ -1804,7 +1804,7 @@ Every resource request is validated, mapped to an approved repository, reviewed 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1817,7 +1817,7 @@ Every resource request is validated, mapped to an approved repository, reviewed 
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create an inventory of every repository used by an application.
 2. Draw the complete resource-loading architecture.
@@ -1829,7 +1829,7 @@ Every resource request is validated, mapped to an approved repository, reviewed 
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is File Inclusion?
 2. Why should applications validate resource references?
@@ -1844,7 +1844,7 @@ Every resource request is validated, mapped to an approved repository, reviewed 
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate every resource reference before loading.
 - Restrict resource loading to approved repositories.
@@ -1858,7 +1858,7 @@ Every resource request is validated, mapped to an approved repository, reviewed 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing uncontrolled resource selection.
 - Trusting externally influenced references.
@@ -1870,7 +1870,7 @@ Every resource request is validated, mapped to an approved repository, reviewed 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure file inclusion depends on validated references, trusted repositories, and allowlisted resources.
 - Threat modeling identifies trust boundaries surrounding resource loading.
@@ -1878,15 +1878,15 @@ Every resource request is validated, mapped to an approved repository, reviewed 
 - Repository governance, logging, and monitoring improve operational resilience.
 - Continuous review and standardized architecture strengthen enterprise defenses against File Inclusion risks.
 
-# 50-File-Inclusion.md
+## 50-File-Inclusion.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Secure File Inclusion is achieved through trusted resource repositories, validated resource references, least-privilege access, centralized governance, continuous monitoring, and secure software engineering practices."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1908,7 +1908,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Resource Governance
+## Enterprise Resource Governance
 
 Organizations should establish centralized governance for every application component responsible for loading resources.
 
@@ -1948,7 +1948,7 @@ Governance ensures that resource loading remains predictable, auditable, and con
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Resource Governance
@@ -1978,7 +1978,7 @@ A governance framework provides consistency and accountability throughout the ap
 
 ---
 
-# Resource Loading Governance
+## Resource Loading Governance
 
 Applications should load resources only through approved mechanisms.
 
@@ -2006,7 +2006,7 @@ Direct or unrestricted resource loading should be avoided.
 
 ---
 
-# Zero Trust for Resource Loading
+## Zero Trust for Resource Loading
 
 Zero Trust principles apply to every resource request.
 
@@ -2049,7 +2049,7 @@ Every request should be independently evaluated.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Secure resource loading should be reinforced by multiple security layers.
 
@@ -2085,7 +2085,7 @@ Multiple controls reduce the likelihood of configuration errors resulting in una
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Resource security should be embedded throughout the software delivery lifecycle.
 
@@ -2117,7 +2117,7 @@ Security becomes an ongoing engineering practice rather than a final testing ste
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Repository infrastructure and configuration should be managed through version-controlled definitions.
 
@@ -2145,7 +2145,7 @@ IaC improves consistency, traceability, and repeatability.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2183,7 +2183,7 @@ Automated validation helps enforce organizational resource-loading policies.
 
 ---
 
-# Documentation
+## Documentation
 
 Maintain documentation covering:
 
@@ -2213,7 +2213,7 @@ Accurate documentation supports governance, audits, and long-term maintenance.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Organizations should maintain policies supporting secure resource management.
 
@@ -2241,7 +2241,7 @@ Specific compliance requirements depend on applicable regulations and organizati
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Applications should generate audit records for significant resource-loading events.
 
@@ -2265,7 +2265,7 @@ Audit logging supports investigations, operational troubleshooting, and complian
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2282,7 +2282,7 @@ Sensitive resource contents should not be unnecessarily exposed in logs.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2308,7 +2308,7 @@ Continuous monitoring enables early detection of operational issues and policy v
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2323,7 +2323,7 @@ Continuous monitoring enables early detection of operational issues and policy v
 
 ---
 
-# Resource Monitoring Dashboard
+## Resource Monitoring Dashboard
 
 ```
 Repository Dashboard
@@ -2351,7 +2351,7 @@ Dashboards provide centralized visibility into repository health and operational
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2381,7 +2381,7 @@ SOC analysts correlate resource-loading events with authentication, endpoint, ne
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should maintain documented procedures for resource-loading incidents.
 
@@ -2417,7 +2417,7 @@ A structured response process improves resilience and supports continual improve
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2447,7 +2447,7 @@ Root cause analysis should evaluate implementation, configuration, governance, a
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2477,7 +2477,7 @@ Security practices should evolve with changing business and technology requireme
 
 ---
 
-# File Inclusion Security Maturity Model
+## File Inclusion Security Maturity Model
 
 ```
 Level 1
@@ -2514,7 +2514,7 @@ Higher maturity levels emphasize governance, automation, monitoring, and standar
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2562,7 +2562,7 @@ This architecture separates validation, repository access, monitoring, and gover
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational insurance provider manages customer portals, multilingual interfaces, reporting templates, and policy documents using centralized repositories.
 
@@ -2594,7 +2594,7 @@ Every resource request is validated against approved policies, loaded only from 
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Repository Inventory Documented
@@ -2620,7 +2620,7 @@ Every resource request is validated against approved policies, loaded only from 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2633,9 +2633,9 @@ Every resource request is validated against approved policies, loaded only from 
 
 ---
 
-# File Inclusion Quick Revision
+## File Inclusion Quick Revision
 
-## Secure Resource Loading Lifecycle
+### Secure Resource Loading Lifecycle
 
 ```
 Client Request
@@ -2667,7 +2667,7 @@ Business Response
 
 ---
 
-## Defense Layers
+### Defense Layers
 
 ```
 Authentication
@@ -2699,7 +2699,7 @@ Monitoring
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Metrics
@@ -2719,7 +2719,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise resource-loading architecture.
 2. Identify every approved repository used by the application.
@@ -2731,7 +2731,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is File Inclusion?
 2. Why should applications validate resource references?
@@ -2746,7 +2746,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Load resources only from approved repositories.
 - Treat externally influenced file references as untrusted.
@@ -2760,7 +2760,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing unrestricted resource selection.
 - Trusting user-controlled resource references.
@@ -2772,7 +2772,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

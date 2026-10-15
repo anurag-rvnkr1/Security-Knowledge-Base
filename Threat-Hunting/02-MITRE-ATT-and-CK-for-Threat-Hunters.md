@@ -60,7 +60,7 @@ A simplified threat-hunting workflow is:
 
 ---
 
-# 1. What Is MITRE ATT&CK?
+## 1. What Is MITRE ATT&CK?
 
 MITRE ATT&CK stands for:
 
@@ -91,7 +91,7 @@ This behavioral approach makes ATT&CK particularly useful for threat hunting and
 
 ---
 
-# 2. Why ATT&CK Matters to Threat Hunters
+## 2. Why ATT&CK Matters to Threat Hunters
 
 Threat hunting often starts with incomplete information.
 
@@ -144,7 +144,7 @@ Can we hunt it?
 
 ---
 
-# 3. ATT&CK Core Concepts
+## 3. ATT&CK Core Concepts
 
 The most important concepts for hunters are:
 
@@ -166,7 +166,7 @@ Let's examine each one.
 
 ---
 
-# 4. Tactics
+## 4. Tactics
 
 A **tactic** represents the adversary's high-level objective.
 
@@ -203,7 +203,7 @@ The attacker wants credentials.
 
 ---
 
-# 5. Techniques
+## 5. Techniques
 
 A **technique** describes how an attacker can accomplish a tactical objective.
 
@@ -239,7 +239,7 @@ Technique
 
 ---
 
-# 6. Sub-Techniques
+## 6. Sub-Techniques
 
 Sub-techniques provide additional detail.
 
@@ -260,7 +260,7 @@ This level is particularly useful for threat hunters because telemetry requireme
 
 ---
 
-# 7. Procedures
+## 7. Procedures
 
 A **procedure** describes how a particular threat actor or piece of software has been observed implementing a technique.
 
@@ -289,7 +289,7 @@ Procedures make ATT&CK more practical because they connect abstract techniques t
 
 ---
 
-# 8. ATT&CK Relationship Model
+## 8. ATT&CK Relationship Model
 
 A simplified relationship is:
 
@@ -325,7 +325,7 @@ Execution
 
 ---
 
-# 9. Enterprise ATT&CK
+## 9. Enterprise ATT&CK
 
 For enterprise threat hunting, the **Enterprise ATT&CK** knowledge base is particularly important.
 
@@ -343,11 +343,11 @@ This makes it highly relevant to modern SOC environments.
 
 ---
 
-# 10. ATT&CK Tactics
+## 10. ATT&CK Tactics
 
 A threat hunter should understand the major Enterprise tactics.
 
-## Reconnaissance
+### Reconnaissance
 
 The adversary gathers information before attempting an attack.
 
@@ -360,7 +360,7 @@ Examples:
 
 ---
 
-## Resource Development
+### Resource Development
 
 The adversary prepares infrastructure and resources.
 
@@ -374,7 +374,7 @@ Examples:
 
 ---
 
-## Initial Access
+### Initial Access
 
 The attacker attempts to gain an initial foothold.
 
@@ -387,7 +387,7 @@ Examples:
 
 ---
 
-## Execution
+### Execution
 
 The attacker executes malicious code or commands.
 
@@ -401,7 +401,7 @@ Examples:
 
 ---
 
-## Persistence
+### Persistence
 
 The attacker attempts to maintain access.
 
@@ -415,7 +415,7 @@ Examples:
 
 ---
 
-## Privilege Escalation
+### Privilege Escalation
 
 The attacker attempts to obtain higher privileges.
 
@@ -428,7 +428,7 @@ Examples:
 
 ---
 
-## Defense Evasion
+### Defense Evasion
 
 The attacker attempts to avoid detection.
 
@@ -442,7 +442,7 @@ Examples:
 
 ---
 
-## Credential Access
+### Credential Access
 
 The attacker attempts to obtain credentials.
 
@@ -456,7 +456,7 @@ Examples:
 
 ---
 
-## Discovery
+### Discovery
 
 The attacker learns about the environment.
 
@@ -470,7 +470,7 @@ Examples:
 
 ---
 
-## Lateral Movement
+### Lateral Movement
 
 The attacker moves from one system to another.
 
@@ -485,7 +485,7 @@ Examples:
 
 ---
 
-## Collection
+### Collection
 
 The attacker gathers useful information.
 
@@ -499,7 +499,7 @@ Examples:
 
 ---
 
-## Command and Control
+### Command and Control
 
 The attacker communicates with compromised infrastructure.
 
@@ -513,7 +513,7 @@ Examples:
 
 ---
 
-## Exfiltration
+### Exfiltration
 
 The attacker removes data from the environment.
 
@@ -525,7 +525,7 @@ Examples:
 
 ---
 
-## Impact
+### Impact
 
 The attacker attempts to disrupt or manipulate systems.
 
@@ -538,7 +538,7 @@ Examples:
 
 ---
 
-# 11. ATT&CK as a Threat Hunting Framework
+## 11. ATT&CK as a Threat Hunting Framework
 
 ATT&CK should not simply be treated as a list of techniques.
 
@@ -562,7 +562,7 @@ Detection
 
 ---
 
-# 12. Example: PowerShell Hunting
+## 12. Example: PowerShell Hunting
 
 Suppose threat intelligence indicates that an adversary frequently uses PowerShell.
 
@@ -611,45 +611,45 @@ Related Events
 
 ---
 
-# 13. ATT&CK Data Sources
+## 13. ATT&CK Data Sources
 
 ATT&CK can help determine what evidence may be required for a particular technique.
 
 Examples of useful telemetry include:
 
-### Process
+#### Process
 
 - Process creation
 - Process termination
 - Parent-child relationships
 - Command-line arguments
 
-### Network
+#### Network
 
 - Network connections
 - DNS queries
 - Proxy connections
 - Firewall events
 
-### Authentication
+#### Authentication
 
 - Logons
 - Authentication attempts
 - Account changes
 - Privilege changes
 
-### Files
+#### Files
 
 - File creation
 - File modification
 - File deletion
 
-### Registry
+#### Registry
 
 - Registry modification
 - Registry queries
 
-### Cloud
+#### Cloud
 
 - API activity
 - IAM events
@@ -657,7 +657,7 @@ Examples of useful telemetry include:
 
 ---
 
-# 14. Data Source vs Data Component
+## 14. Data Source vs Data Component
 
 This distinction is important.
 
@@ -691,7 +691,7 @@ For threat hunters, this helps answer:
 
 ---
 
-# 15. ATT&CK-Based Hunt Hypothesis
+## 15. ATT&CK-Based Hunt Hypothesis
 
 A strong hypothesis can be created directly from ATT&CK.
 
@@ -726,7 +726,7 @@ This creates a repeatable process.
 
 ---
 
-# 16. ATT&CK-Based Hunting Methodology
+## 16. ATT&CK-Based Hunting Methodology
 
 Use the following workflow:
 
@@ -758,7 +758,7 @@ Use the following workflow:
 
 ---
 
-# 17. Hunting From Threat Intelligence
+## 17. Hunting From Threat Intelligence
 
 Threat intelligence can provide:
 
@@ -792,9 +792,9 @@ Instead of searching only for the actor's known IP addresses, hunt for their kno
 
 ---
 
-# 18. IOC Hunting vs ATT&CK Hunting
+## 18. IOC Hunting vs ATT&CK Hunting
 
-## IOC Hunting
+### IOC Hunting
 
 ```text
 Known IP
@@ -816,7 +816,7 @@ Limitations:
 
 ---
 
-## ATT&CK-Based Hunting
+### ATT&CK-Based Hunting
 
 ```text
 Behavior
@@ -837,7 +837,7 @@ Advantages:
 
 ---
 
-# 19. Example: Credential Dumping Hunt
+## 19. Example: Credential Dumping Hunt
 
 Suppose intelligence indicates that an attacker may perform credential dumping.
 
@@ -880,7 +880,7 @@ The goal is to identify whether the behavior is legitimate administrative activi
 
 ---
 
-# 20. Example: Lateral Movement Hunt
+## 20. Example: Lateral Movement Hunt
 
 Possible technique:
 
@@ -921,7 +921,7 @@ Subsequent Activity
 
 ---
 
-# 21. ATT&CK Navigator
+## 21. ATT&CK Navigator
 
 **ATT&CK Navigator** is a visualization tool that can be used to represent ATT&CK techniques.
 
@@ -952,7 +952,7 @@ This makes security coverage easier to communicate.
 
 ---
 
-# 22. Detection Coverage
+## 22. Detection Coverage
 
 One of the most useful applications of ATT&CK is measuring detection coverage.
 
@@ -981,7 +981,7 @@ Example:
 
 ---
 
-# 23. Detection Gap Analysis
+## 23. Detection Gap Analysis
 
 ATT&CK can expose gaps.
 
@@ -1005,15 +1005,15 @@ This is extremely important for security engineering.
 
 ---
 
-# 24. Hunt Coverage vs Detection Coverage
+## 24. Hunt Coverage vs Detection Coverage
 
 These should not be confused.
 
-### Detection Coverage
+#### Detection Coverage
 
 Can the security system automatically identify the behavior?
 
-### Hunt Coverage
+#### Hunt Coverage
 
 Can an analyst manually search for the behavior?
 
@@ -1037,7 +1037,7 @@ This means the organization can investigate the behavior but does not yet have r
 
 ---
 
-# 25. ATT&CK and Detection Engineering
+## 25. ATT&CK and Detection Engineering
 
 Threat hunting frequently produces detection opportunities.
 
@@ -1073,7 +1073,7 @@ SOC
 
 ---
 
-# 26. ATT&CK and SIEM
+## 26. ATT&CK and SIEM
 
 SIEM platforms can use ATT&CK mappings to classify detections.
 
@@ -1101,7 +1101,7 @@ This helps SOC analysts understand the potential stage of an attack.
 
 ---
 
-# 27. ATT&CK and EDR
+## 27. ATT&CK and EDR
 
 EDR telemetry is particularly useful for hunting endpoint techniques.
 
@@ -1139,7 +1139,7 @@ Command and Control
 
 ---
 
-# 28. ATT&CK and Threat Intelligence
+## 28. ATT&CK and Threat Intelligence
 
 Threat intelligence becomes significantly more useful when mapped to ATT&CK.
 
@@ -1169,7 +1169,7 @@ The security team can then hunt for behavior rather than relying only on static 
 
 ---
 
-# 29. ATT&CK and Threat Actor Profiling
+## 29. ATT&CK and Threat Actor Profiling
 
 Threat actor profiles can be represented as technique collections.
 
@@ -1198,13 +1198,13 @@ A hunter can prioritize hunts based on the techniques associated with relevant a
 
 ---
 
-# 30. ATT&CK-Based Threat Hunting Example
+## 30. ATT&CK-Based Threat Hunting Example
 
-## Scenario
+### Scenario
 
 A financial organization is concerned about ransomware.
 
-### Step 1 — Threat Intelligence
+#### Step 1 — Threat Intelligence
 
 Known ransomware operations commonly use:
 
@@ -1216,7 +1216,7 @@ Known ransomware operations commonly use:
 - Data collection
 - Data destruction/encryption
 
-### Step 2 — ATT&CK Mapping
+#### Step 2 — ATT&CK Mapping
 
 ```text
 Initial Access
@@ -1234,7 +1234,7 @@ Collection
 Impact
 ```
 
-### Step 3 — Hunt Hypotheses
+#### Step 3 — Hunt Hypotheses
 
 Examples:
 
@@ -1256,7 +1256,7 @@ Unusual file modification at scale may indicate
 ransomware activity.
 ```
 
-### Step 4 — Telemetry
+#### Step 4 — Telemetry
 
 Collect:
 
@@ -1270,7 +1270,7 @@ Network
 File Activity
 ```
 
-### Step 5 — Investigation
+#### Step 5 — Investigation
 
 Correlate:
 
@@ -1290,7 +1290,7 @@ File Activity
 
 ---
 
-# 31. ATT&CK-Based Hunt Chain
+## 31. ATT&CK-Based Hunt Chain
 
 Threat hunters should think in terms of attack chains rather than isolated events.
 
@@ -1320,7 +1320,7 @@ This is why **cross-technique correlation** is important.
 
 ---
 
-# 32. Technique Chaining
+## 32. Technique Chaining
 
 Individual behaviors may be ambiguous.
 
@@ -1352,7 +1352,7 @@ Technique chaining increases confidence.
 
 ---
 
-# 33. ATT&CK-Based Correlation
+## 33. ATT&CK-Based Correlation
 
 A useful hunting model is:
 
@@ -1393,11 +1393,11 @@ Their sequence and context can make the activity suspicious.
 
 ---
 
-# 34. ATT&CK and the Cyber Kill Chain
+## 34. ATT&CK and the Cyber Kill Chain
 
 MITRE ATT&CK and the Cyber Kill Chain are related but different models.
 
-### Cyber Kill Chain
+#### Cyber Kill Chain
 
 Provides a high-level attack progression.
 
@@ -1417,7 +1417,7 @@ Command & Control
 Actions on Objectives
 ```
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 Provides much greater behavioral detail.
 
@@ -1435,7 +1435,7 @@ A security team can use both frameworks together.
 
 ---
 
-# 35. ATT&CK and the Pyramid of Pain
+## 35. ATT&CK and the Pyramid of Pain
 
 The Pyramid of Pain illustrates the increasing difficulty attackers face when defenders detect higher-level adversary characteristics.
 
@@ -1463,33 +1463,33 @@ This reinforces the value of behavior-focused hunting.
 
 ---
 
-# 36. ATT&CK-Based Hunt Prioritization
+## 36. ATT&CK-Based Hunt Prioritization
 
 Not every technique deserves equal hunting effort.
 
 Prioritize based on:
 
-### Threat Relevance
+#### Threat Relevance
 
 Is the technique used by relevant adversaries?
 
-### Business Impact
+#### Business Impact
 
 Could exploitation cause significant damage?
 
-### Exposure
+#### Exposure
 
 Are affected systems internet-facing or highly privileged?
 
-### Telemetry
+#### Telemetry
 
 Can the organization actually observe the behavior?
 
-### Detection Gap
+#### Detection Gap
 
 Is there currently weak or missing detection?
 
-### Likelihood
+#### Likelihood
 
 How realistic is the attack scenario?
 
@@ -1510,7 +1510,7 @@ Feasibility
 
 ---
 
-# 37. ATT&CK Coverage Matrix
+## 37. ATT&CK Coverage Matrix
 
 A simple internal matrix can track security capabilities.
 
@@ -1535,24 +1535,24 @@ This is useful for security program maturity assessments.
 
 ---
 
-# 38. Practical Hunt: PowerShell
+## 38. Practical Hunt: PowerShell
 
-## Objective
+### Objective
 
 Identify potentially suspicious PowerShell execution.
 
-## ATT&CK
+### ATT&CK
 
 ```text
 T1059.001
 PowerShell
 ```
 
-## Hypothesis
+### Hypothesis
 
 > An attacker may use PowerShell to execute commands on a compromised Windows endpoint.
 
-## Telemetry
+### Telemetry
 
 - Process creation
 - Command line
@@ -1562,7 +1562,7 @@ PowerShell
 - Host
 - Network activity
 
-## Investigation
+### Investigation
 
 Look for combinations such as:
 
@@ -1582,7 +1582,7 @@ Unusual parent
 External connection
 ```
 
-## Validation
+### Validation
 
 Determine:
 
@@ -1593,7 +1593,7 @@ Determine:
 - Did the process connect externally?
 - What happened afterward?
 
-## Detection Opportunity
+### Detection Opportunity
 
 A validated malicious pattern can become:
 
@@ -1607,17 +1607,17 @@ EDR Detection
 
 ---
 
-# 39. Practical Hunt: Lateral Movement
+## 39. Practical Hunt: Lateral Movement
 
-## Objective
+### Objective
 
 Identify potential lateral movement.
 
-## Hypothesis
+### Hypothesis
 
 > A compromised account may authenticate to multiple internal systems in a short period of time.
 
-## Telemetry
+### Telemetry
 
 - Authentication events
 - Windows Security logs
@@ -1625,7 +1625,7 @@ Identify potential lateral movement.
 - EDR
 - Network flows
 
-## Investigation
+### Investigation
 
 ```text
 User
@@ -1651,17 +1651,17 @@ Look for:
 
 ---
 
-# 40. Practical Hunt: Suspicious DNS
+## 40. Practical Hunt: Suspicious DNS
 
-## ATT&CK Context
+### ATT&CK Context
 
 DNS can be abused for command-and-control and data transfer.
 
-## Hypothesis
+### Hypothesis
 
 > A compromised endpoint may communicate with an attacker-controlled infrastructure through abnormal DNS activity.
 
-## Telemetry
+### Telemetry
 
 - DNS queries
 - Query frequency
@@ -1670,7 +1670,7 @@ DNS can be abused for command-and-control and data transfer.
 - NXDOMAIN responses
 - Client host
 
-## Investigation
+### Investigation
 
 Look for:
 
@@ -1690,7 +1690,7 @@ Context and additional evidence are required.
 
 ---
 
-# 41. ATT&CK-Based Threat Hunting Checklist
+## 41. ATT&CK-Based Threat Hunting Checklist
 
 Before a hunt:
 
@@ -1729,9 +1729,9 @@ After the hunt:
 
 ---
 
-# 42. Common Mistakes
+## 42. Common Mistakes
 
-## Treating ATT&CK as a Checklist
+### Treating ATT&CK as a Checklist
 
 Bad approach:
 
@@ -1748,7 +1748,7 @@ your environment and threat model.
 
 ---
 
-## Mapping Everything to ATT&CK
+### Mapping Everything to ATT&CK
 
 Not every event needs an ATT&CK mapping.
 
@@ -1756,7 +1756,7 @@ Use ATT&CK when it adds analytical or operational value.
 
 ---
 
-## Confusing Technique With Detection
+### Confusing Technique With Detection
 
 A technique describes adversary behavior.
 
@@ -1770,13 +1770,13 @@ Detection
 
 ---
 
-## Ignoring Telemetry
+### Ignoring Telemetry
 
 You cannot reliably hunt a technique if the required telemetry is unavailable.
 
 ---
 
-## Hunting Only One Technique
+### Hunting Only One Technique
 
 Attackers use multiple techniques.
 
@@ -1784,7 +1784,7 @@ Correlating techniques often produces stronger evidence.
 
 ---
 
-## Assuming ATT&CK Mapping Proves Maliciousness
+### Assuming ATT&CK Mapping Proves Maliciousness
 
 ATT&CK techniques can describe legitimate administrative behavior.
 
@@ -1800,7 +1800,7 @@ Context determines risk.
 
 ---
 
-# 43. Best Practices
+## 43. Best Practices
 
 - Use ATT&CK as a behavioral knowledge base.
 - Start hunts with realistic threat scenarios.
@@ -1820,17 +1820,17 @@ Context determines risk.
 
 ---
 
-# 44. Interview Questions
+## 44. Interview Questions
 
-## Beginner
+### Beginner
 
-### What is MITRE ATT&CK?
+#### What is MITRE ATT&CK?
 
 MITRE ATT&CK is a knowledge base that documents adversary tactics, techniques, sub-techniques, and observed procedures based on real-world behavior.
 
 ---
 
-### What is a tactic?
+#### What is a tactic?
 
 A tactic represents an adversary's high-level objective.
 
@@ -1842,39 +1842,39 @@ Credential Access
 
 ---
 
-### What is a technique?
+#### What is a technique?
 
 A technique describes how an adversary may accomplish a tactical objective.
 
 ---
 
-### What is a sub-technique?
+#### What is a sub-technique?
 
 A sub-technique provides a more specific implementation of a parent technique.
 
 ---
 
-### What is a procedure?
+#### What is a procedure?
 
 A procedure describes how a specific threat actor or software has been observed implementing a technique.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### How does ATT&CK help threat hunters?
+#### How does ATT&CK help threat hunters?
 
 It helps hunters translate adversary behavior into hunt hypotheses, identify relevant telemetry, develop queries, map findings, and measure detection coverage.
 
 ---
 
-### What is ATT&CK data source information used for?
+#### What is ATT&CK data source information used for?
 
 It helps identify the types of security telemetry that can provide evidence for particular adversary techniques.
 
 ---
 
-### How would you create a hunt from an ATT&CK technique?
+#### How would you create a hunt from an ATT&CK technique?
 
 ```text
 Technique
@@ -1896,15 +1896,15 @@ Detection
 
 ---
 
-### What is ATT&CK coverage?
+#### What is ATT&CK coverage?
 
 ATT&CK coverage describes how effectively an organization can observe, hunt, detect, or respond to adversary techniques.
 
 ---
 
-## Advanced
+### Advanced
 
-### What is the difference between detection coverage and hunt coverage?
+#### What is the difference between detection coverage and hunt coverage?
 
 Detection coverage indicates whether automated controls can identify a technique.
 
@@ -1912,19 +1912,19 @@ Hunt coverage indicates whether analysts have sufficient telemetry and methodolo
 
 ---
 
-### Why should threat hunters focus on techniques instead of only IOCs?
+#### Why should threat hunters focus on techniques instead of only IOCs?
 
 IOCs can change rapidly. Techniques and behaviors are generally more stable and therefore provide more durable hunting opportunities.
 
 ---
 
-### How can ATT&CK help identify telemetry gaps?
+#### How can ATT&CK help identify telemetry gaps?
 
 For each prioritized technique, security teams can determine which data sources and data components are required. If those telemetry sources are unavailable, the organization has an observability gap.
 
 ---
 
-### How would you measure ATT&CK-based detection maturity?
+#### How would you measure ATT&CK-based detection maturity?
 
 Consider:
 
@@ -1940,9 +1940,9 @@ Consider:
 
 ---
 
-# 45. Practical Exercise
+## 45. Practical Exercise
 
-## Scenario
+### Scenario
 
 You are a threat hunter at an enterprise organization.
 
@@ -1966,53 +1966,53 @@ DNS Logs
 Firewall Logs
 ```
 
-### Task
+#### Task
 
 Create a hunt plan.
 
-### Step 1
+#### Step 1
 
 Map each behavior to ATT&CK.
 
-### Step 2
+#### Step 2
 
 Create hypotheses.
 
-### Step 3
+#### Step 3
 
 Identify required telemetry.
 
-### Step 4
+#### Step 4
 
 Develop queries.
 
-### Step 5
+#### Step 5
 
 Search historical data.
 
-### Step 6
+#### Step 6
 
 Correlate findings.
 
-### Step 7
+#### Step 7
 
 Determine whether activity is malicious.
 
-### Step 8
+#### Step 8
 
 Identify detection gaps.
 
-### Step 9
+#### Step 9
 
 Create detection recommendations.
 
-### Step 10
+#### Step 10
 
 Document the investigation.
 
 ---
 
-# 46. Hunt Report Template
+## 46. Hunt Report Template
 
 ```markdown
 # Threat Hunt Report
@@ -2066,7 +2066,7 @@ Document the investigation.
 
 ---
 
-# 47. ATT&CK-to-Hunt Mapping
+## 47. ATT&CK-to-Hunt Mapping
 
 The core relationship to remember is:
 
@@ -2105,7 +2105,7 @@ This is the central methodology for using ATT&CK as a threat hunter.
 
 ---
 
-# 48. Chapter Summary
+## 48. Chapter Summary
 
 MITRE ATT&CK provides threat hunters with a structured language for understanding adversary behavior.
 
@@ -2183,7 +2183,7 @@ Better Hunting
 
 ---
 
-# References
+## References
 
 - MITRE ATT&CK — https://attack.mitre.org/
 - MITRE ATT&CK Enterprise — https://attack.mitre.org/matrices/enterprise/

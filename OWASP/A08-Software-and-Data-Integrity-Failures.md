@@ -2,7 +2,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Software and Data Integrity Failures occur when an application cannot verify that:
 
@@ -22,7 +22,7 @@ If the answer is **No**, attackers may execute arbitrary code, inject malicious 
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Modern applications are built from numerous components:
 
@@ -54,7 +54,7 @@ A compromise anywhere in this chain can affect every deployed application.
 
 ---
 
-# What is Integrity?
+## What is Integrity?
 
 Integrity is one of the three pillars of the CIA Triad.
 
@@ -76,7 +76,7 @@ Integrity ensures that information and software remain:
 
 ---
 
-# Integrity vs Confidentiality
+## Integrity vs Confidentiality
 
 | Confidentiality | Integrity |
 |-----------------|-----------|
@@ -92,7 +92,7 @@ Confidentiality alone does not guarantee integrity.
 
 ---
 
-# Trust Chain
+## Trust Chain
 
 Software passes through multiple trusted entities before reaching production.
 
@@ -128,7 +128,7 @@ Breaking trust at any point compromises downstream systems.
 
 ---
 
-# Integrity Architecture
+## Integrity Architecture
 
 ```
           Developer
@@ -159,7 +159,7 @@ Each transition should include integrity verification.
 
 ---
 
-# Types of Integrity Failures
+## Types of Integrity Failures
 
 ```
 Software Integrity Failures
@@ -178,7 +178,7 @@ Software Integrity Failures
 
 ---
 
-# Root Causes
+## Root Causes
 
 Common causes include:
 
@@ -194,7 +194,7 @@ Common causes include:
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 Imagine an organization downloads software updates automatically.
 
@@ -234,7 +234,7 @@ The trusted update mechanism itself becomes the attack vector.
 
 ---
 
-# Software Supply Chain
+## Software Supply Chain
 
 Modern applications rely on thousands of external components.
 
@@ -256,7 +256,7 @@ Every dependency increases the trusted computing base.
 
 ---
 
-# Trusted vs Untrusted Components
+## Trusted vs Untrusted Components
 
 ```
 Trusted?
@@ -298,7 +298,7 @@ Organizations should define clear trust policies before introducing new software
 
 ---
 
-# Data Integrity
+## Data Integrity
 
 Integrity is not limited to software.
 
@@ -315,7 +315,7 @@ These inputs must be validated before use.
 
 ---
 
-# Data Flow Integrity
+## Data Flow Integrity
 
 ```
 Client
@@ -341,7 +341,7 @@ Skipping validation allows malicious or corrupted data to influence application 
 
 ---
 
-# Configuration Integrity
+## Configuration Integrity
 
 Configuration files influence application behavior.
 
@@ -371,7 +371,7 @@ Configuration files should be protected with appropriate permissions and change 
 
 ---
 
-# Build Integrity
+## Build Integrity
 
 Every software build should be reproducible and verifiable.
 
@@ -399,7 +399,7 @@ Unexpected differences between builds should be investigated.
 
 ---
 
-# Artifact Integrity
+## Artifact Integrity
 
 Artifacts include:
 
@@ -419,7 +419,7 @@ Before deployment, verify:
 
 ---
 
-# Integrity Verification Methods
+## Integrity Verification Methods
 
 Common verification mechanisms include:
 
@@ -439,7 +439,7 @@ Using multiple verification mechanisms provides stronger assurance than relying 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Integrity failures may lead to:
 
@@ -455,7 +455,7 @@ Integrity failures may lead to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Integrity ensures software and data remain authentic and unmodified.
 - Every stage of the software supply chain must preserve trust.
@@ -463,11 +463,11 @@ Integrity failures may lead to:
 - Software, configuration, dependencies, and data all require integrity protection.
 - Weak integrity controls can enable large-scale compromises without exploiting traditional application vulnerabilities.
 
-# Insecure Deserialization
+## Insecure Deserialization
 
 ---
 
-# Overview
+## Overview
 
 Serialization and deserialization are common techniques used to exchange, store, or transmit application data.
 
@@ -485,7 +485,7 @@ When applications deserialize **untrusted input** without proper validation, att
 
 ---
 
-# What is Serialization?
+## What is Serialization?
 
 Serialization converts an object or data structure into a format that can be stored or transmitted.
 
@@ -526,7 +526,7 @@ Serialized JSON:
 
 ---
 
-# What is Deserialization?
+## What is Deserialization?
 
 Deserialization reconstructs the original object from serialized data.
 
@@ -546,7 +546,7 @@ The application can then use the object normally.
 
 ---
 
-# Serialization Workflow
+## Serialization Workflow
 
 ```
 Application
@@ -580,7 +580,7 @@ This process is safe only when the serialized data is trusted or properly valida
 
 ---
 
-# Common Serialization Formats
+## Common Serialization Formats
 
 | Format | Typical Use Case |
 |---------|------------------|
@@ -596,7 +596,7 @@ Each format has different security considerations.
 
 ---
 
-# Safe vs Unsafe Formats
+## Safe vs Unsafe Formats
 
 Generally:
 
@@ -628,7 +628,7 @@ The risk depends more on **how data is deserialized** than on the format itself.
 
 ---
 
-# Why Deserialization is Dangerous
+## Why Deserialization is Dangerous
 
 During deserialization, the runtime may:
 
@@ -643,7 +643,7 @@ If these operations occur on attacker-controlled data, unexpected behavior may f
 
 ---
 
-# Attack Overview
+## Attack Overview
 
 ```
 Attacker
@@ -671,7 +671,7 @@ Privilege Escalation / RCE / DoS
 
 ---
 
-# Real-World Scenario
+## Real-World Scenario
 
 Imagine an application stores user preferences in a serialized cookie.
 
@@ -709,7 +709,7 @@ Possible impacts include privilege escalation, unauthorized access, or applicati
 
 ---
 
-# Java Serialization
+## Java Serialization
 
 Traditional Java serialization uses:
 
@@ -728,7 +728,7 @@ Historically, unsafe deserialization of untrusted Java objects has led to seriou
 
 ---
 
-# Java Deserialization Flow
+## Java Deserialization Flow
 
 ```
 Serialized Object
@@ -750,9 +750,9 @@ If untrusted objects are accepted, the application may instantiate unexpected cl
 
 ---
 
-# Gadget Chains
+## Gadget Chains
 
-## Overview
+### Overview
 
 A gadget chain is a sequence of existing methods that perform unintended actions when combined during deserialization.
 
@@ -780,7 +780,7 @@ Attackers do not necessarily inject new code—they abuse existing application o
 
 ---
 
-# Why Gadget Chains Exist
+## Why Gadget Chains Exist
 
 Large applications often include many third-party libraries.
 
@@ -797,7 +797,7 @@ A vulnerable chain may span multiple components, making it difficult to identify
 
 ---
 
-# Python Pickle
+## Python Pickle
 
 Python's `pickle` module can serialize arbitrary Python objects.
 
@@ -827,7 +827,7 @@ Because `pickle` can recreate complex objects, it should never be used with untr
 
 ---
 
-# Python Example Workflow
+## Python Example Workflow
 
 ```
 User Upload
@@ -849,7 +849,7 @@ Use safer formats such as JSON for untrusted data whenever possible.
 
 ---
 
-# .NET BinaryFormatter
+## .NET BinaryFormatter
 
 Historically, `.NET BinaryFormatter` supported object serialization.
 
@@ -871,7 +871,7 @@ Applications should migrate to safer serialization mechanisms.
 
 ---
 
-# PHP Object Injection
+## PHP Object Injection
 
 PHP applications may deserialize objects using functions such as:
 
@@ -901,7 +901,7 @@ Magic methods (such as constructors or destructors) may execute during object li
 
 ---
 
-# YAML Deserialization
+## YAML Deserialization
 
 YAML is frequently used for:
 
@@ -915,7 +915,7 @@ Secure parsers should be configured to process only basic data types unless obje
 
 ---
 
-# XML Deserialization
+## XML Deserialization
 
 XML itself is not inherently unsafe.
 
@@ -925,7 +925,7 @@ XML processing should also defend against related risks such as XML External Ent
 
 ---
 
-# JSON Deserialization
+## JSON Deserialization
 
 JSON generally represents primitive data:
 
@@ -947,7 +947,7 @@ Do not assume JSON input is trustworthy.
 
 ---
 
-# Deserialization Risks
+## Deserialization Risks
 
 Improper deserialization may lead to:
 
@@ -964,7 +964,7 @@ The exact impact depends on the application's implementation and available code 
 
 ---
 
-# Unsafe Workflow
+## Unsafe Workflow
 
 ```
 Receive Request
@@ -990,7 +990,7 @@ No validation occurs before processing.
 
 ---
 
-# Secure Workflow
+## Secure Workflow
 
 ```
 Receive Request
@@ -1020,7 +1020,7 @@ Validation should occur as early as practical.
 
 ---
 
-# Signs of Risk During Code Review
+## Signs of Risk During Code Review
 
 Reviewers should pay attention to:
 
@@ -1034,7 +1034,7 @@ Reviewers should pay attention to:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Insecure deserialization has resulted in:
 
@@ -1049,7 +1049,7 @@ Because deserialization often occurs in trusted application code, successful exp
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Serialization converts objects into transferable or storable formats.
 - Deserialization reconstructs objects for application use.
@@ -1058,11 +1058,11 @@ Because deserialization often occurs in trusted application code, successful exp
 - Use schema validation, trusted serializers, and least-privilege design to reduce deserialization risk.
 - Prefer simple data formats (such as JSON) for untrusted input when practical, and avoid reconstructing arbitrary object graphs from external data.
 
-# Software Supply Chain Integrity
+## Software Supply Chain Integrity
 
 ---
 
-# Overview
+## Overview
 
 Modern applications depend on software produced by many different parties.
 
@@ -1112,7 +1112,7 @@ This entire path is known as the **software supply chain**.
 
 ---
 
-# Trust in Software
+## Trust in Software
 
 Software should never be trusted simply because it exists.
 
@@ -1128,7 +1128,7 @@ Trust should always be established through verification rather than assumption.
 
 ---
 
-# Software Integrity Verification
+## Software Integrity Verification
 
 ```
 Software
@@ -1154,9 +1154,9 @@ If any verification step fails, deployment should stop until the issue is invest
 
 ---
 
-# Hash Functions
+## Hash Functions
 
-## Overview
+### Overview
 
 Hash functions produce a fixed-length digest representing data.
 
@@ -1178,7 +1178,7 @@ If the file changes—even by a single byte—the resulting hash changes.
 
 ---
 
-# Why Hashes Matter
+## Why Hashes Matter
 
 Imagine downloading software from the internet.
 
@@ -1222,7 +1222,7 @@ A matching hash indicates the file has not been altered since the vendor generat
 
 ---
 
-# Checksums
+## Checksums
 
 A checksum is a value used to detect accidental or unauthorized modifications.
 
@@ -1236,9 +1236,9 @@ Legacy algorithms such as **MD5** and **SHA-1** should not be relied upon for mo
 
 ---
 
-# Digital Signatures
+## Digital Signatures
 
-## Overview
+### Overview
 
 Hashes verify integrity, but they do not identify **who created the file**.
 
@@ -1286,7 +1286,7 @@ Trusted?
 
 ---
 
-# Code Signing
+## Code Signing
 
 Code signing applies a digital signature to software before distribution.
 
@@ -1318,7 +1318,7 @@ Benefits include:
 
 ---
 
-# Signing Certificates
+## Signing Certificates
 
 Code signing relies on cryptographic certificates issued by trusted Certificate Authorities (CAs).
 
@@ -1344,7 +1344,7 @@ Protecting signing keys is therefore critical.
 
 ---
 
-# Package Integrity
+## Package Integrity
 
 Package managers often support integrity verification.
 
@@ -1382,7 +1382,7 @@ Organizations should:
 
 ---
 
-# Artifact Signing
+## Artifact Signing
 
 Artifacts include:
 
@@ -1410,7 +1410,7 @@ Unsigned or unexpectedly modified artifacts should be investigated before use.
 
 ---
 
-# Container Image Integrity
+## Container Image Integrity
 
 Containers should originate from trusted registries.
 
@@ -1436,7 +1436,7 @@ Organizations should avoid relying on mutable tags such as `latest` in productio
 
 ---
 
-# Secure Boot
+## Secure Boot
 
 Secure Boot protects the startup process by ensuring that only trusted boot components execute.
 
@@ -1464,7 +1464,7 @@ This helps prevent unauthorized boot-time malware.
 
 ---
 
-# Trusted Platform Module (TPM)
+## Trusted Platform Module (TPM)
 
 A TPM is a hardware security component that securely stores cryptographic material and measures aspects of the system state.
 
@@ -1477,7 +1477,7 @@ Common uses include:
 
 ---
 
-# Platform Attestation
+## Platform Attestation
 
 Attestation allows one system to verify another system's integrity.
 
@@ -1505,7 +1505,7 @@ This is commonly used in cloud computing and zero-trust environments.
 
 ---
 
-# Sigstore
+## Sigstore
 
 Sigstore is an open-source ecosystem for signing and verifying software artifacts.
 
@@ -1519,7 +1519,7 @@ Developers can verify that an artifact was produced by the expected identity and
 
 ---
 
-# Cosign
+## Cosign
 
 Cosign is a popular tool within the Sigstore ecosystem for signing and verifying container images and other artifacts.
 
@@ -1545,7 +1545,7 @@ Integrating verification into CI/CD pipelines helps prevent unauthorized artifac
 
 ---
 
-# SLSA (Supply-chain Levels for Software Artifacts)
+## SLSA (Supply-chain Levels for Software Artifacts)
 
 SLSA is a security framework designed to strengthen software build integrity.
 
@@ -1561,7 +1561,7 @@ Higher SLSA levels generally provide stronger assurances about the software buil
 
 ---
 
-# Build Provenance
+## Build Provenance
 
 Build provenance records how software was produced.
 
@@ -1596,7 +1596,7 @@ This information helps organizations verify that an artifact originated from an 
 
 ---
 
-# in-toto Attestations
+## in-toto Attestations
 
 in-toto is a framework for recording and verifying each step of the software supply chain.
 
@@ -1630,7 +1630,7 @@ Each stage produces signed metadata, allowing consumers to verify that required 
 
 ---
 
-# Reproducible Builds
+## Reproducible Builds
 
 A reproducible build produces identical outputs when built from the same source code and environment.
 
@@ -1662,7 +1662,7 @@ Matching outputs increase confidence that the build process has not introduced u
 
 ---
 
-# Secure Update Mechanisms
+## Secure Update Mechanisms
 
 Applications should verify updates before installation.
 
@@ -1690,9 +1690,9 @@ Applications should reject updates that fail verification.
 
 ---
 
-# Real-World Case Studies
+## Real-World Case Studies
 
-## SolarWinds (2020)
+### SolarWinds (2020)
 
 Attackers compromised the software build process.
 
@@ -1716,7 +1716,7 @@ This incident demonstrated that trusted software updates can become large-scale 
 
 ---
 
-## XZ Utils (2024)
+### XZ Utils (2024)
 
 Attackers gradually gained influence within an open-source project and introduced a backdoor into a widely used compression library.
 
@@ -1724,7 +1724,7 @@ The incident highlighted the importance of maintainer trust, code review, and in
 
 ---
 
-## Codecov (2021)
+### Codecov (2021)
 
 Attackers modified the Codecov Bash uploader.
 
@@ -1746,7 +1746,7 @@ This showed how compromising development tooling can impact many organizations s
 
 ---
 
-## NotPetya via MeDoc (2017)
+### NotPetya via MeDoc (2017)
 
 Attackers compromised the update mechanism of the MeDoc accounting software.
 
@@ -1766,7 +1766,7 @@ The attack spread rapidly across organizations and caused widespread operational
 
 ---
 
-# Enterprise Supply Chain Security Principles
+## Enterprise Supply Chain Security Principles
 
 A mature software supply chain should include:
 
@@ -1783,7 +1783,7 @@ A mature software supply chain should include:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Software integrity depends on verifying both the origin and integrity of every component.
 - Hashes detect modification, while digital signatures also verify authenticity.
@@ -1791,7 +1791,7 @@ A mature software supply chain should include:
 - Frameworks and technologies such as Sigstore, Cosign, SLSA, in-toto, Secure Boot, and TPM strengthen software supply chain security.
 - Real-world incidents such as SolarWinds, XZ Utils, Codecov, and NotPetya demonstrate that attacks on trusted software distribution channels can have global consequences.
 
-# Detection
+## Detection
 
 Software and Data Integrity Failures are often difficult to detect because attackers abuse
 trusted processes rather than exploiting traditional application vulnerabilities.
@@ -1810,7 +1810,7 @@ Early detection requires visibility across the entire Software Development Lifec
 
 ---
 
-# Detection Architecture
+## Detection Architecture
 
 ```
              Source Code
@@ -1841,11 +1841,11 @@ Every stage should include integrity verification and security monitoring.
 
 ---
 
-# What Should Be Monitored?
+## What Should Be Monitored?
 
 Organizations should continuously monitor:
 
-## Source Code
+### Source Code
 
 - Unauthorized commits
 - Suspicious pull requests
@@ -1855,7 +1855,7 @@ Organizations should continuously monitor:
 
 ---
 
-## Dependencies
+### Dependencies
 
 Monitor for:
 
@@ -1868,7 +1868,7 @@ Monitor for:
 
 ---
 
-## CI/CD Pipeline
+### CI/CD Pipeline
 
 Monitor:
 
@@ -1881,7 +1881,7 @@ Monitor:
 
 ---
 
-## Build Systems
+### Build Systems
 
 Review:
 
@@ -1896,7 +1896,7 @@ Unexpected differences may indicate compromise.
 
 ---
 
-## Artifact Repository
+### Artifact Repository
 
 Verify:
 
@@ -1910,7 +1910,7 @@ Artifacts should never be trusted solely because they exist in a repository.
 
 ---
 
-## Container Images
+### Container Images
 
 Monitor:
 
@@ -1922,7 +1922,7 @@ Monitor:
 
 ---
 
-## Production Systems
+### Production Systems
 
 Look for:
 
@@ -1934,7 +1934,7 @@ Look for:
 
 ---
 
-# Integrity Monitoring Workflow
+## Integrity Monitoring Workflow
 
 ```
 Software Created
@@ -1968,7 +1968,7 @@ Continuous verification is more effective than one-time validation.
 
 ---
 
-# Detection Tools
+## Detection Tools
 
 | Tool | Purpose |
 |------|----------|
@@ -1986,13 +1986,13 @@ Continuous verification is more effective than one-time validation.
 
 ---
 
-# Prevention
+## Prevention
 
 The best defense is to establish trust at every stage of software development.
 
 ---
 
-# Secure Software Development Lifecycle (SSDLC)
+## Secure Software Development Lifecycle (SSDLC)
 
 Security should be integrated throughout development.
 
@@ -2028,7 +2028,7 @@ Integrity verification belongs at every phase.
 
 ---
 
-# Secure CI/CD
+## Secure CI/CD
 
 Protect:
 
@@ -2048,7 +2048,7 @@ Recommendations:
 
 ---
 
-# Secure Source Code Management
+## Secure Source Code Management
 
 Implement:
 
@@ -2062,7 +2062,7 @@ Implement:
 
 ---
 
-# Secure Dependency Management
+## Secure Dependency Management
 
 Organizations should:
 
@@ -2075,7 +2075,7 @@ Organizations should:
 
 ---
 
-# Secure Build Systems
+## Secure Build Systems
 
 Every build should be:
 
@@ -2094,7 +2094,7 @@ Avoid:
 
 ---
 
-# Artifact Protection
+## Artifact Protection
 
 Before deployment:
 
@@ -2122,7 +2122,7 @@ Reject artifacts that fail any verification step.
 
 ---
 
-# Secure Update Mechanisms
+## Secure Update Mechanisms
 
 Software updates should:
 
@@ -2136,7 +2136,7 @@ Never install unsigned updates automatically.
 
 ---
 
-# Data Integrity Protection
+## Data Integrity Protection
 
 Protect critical data using:
 
@@ -2148,7 +2148,7 @@ Protect critical data using:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 ✔ Verify every software artifact before deployment.
 
@@ -2176,15 +2176,15 @@ Protect critical data using:
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Objective
+### Objective
 
 Evaluate the integrity of a software delivery pipeline.
 
 ---
 
-## Scenario
+### Scenario
 
 Application Components:
 
@@ -2197,7 +2197,7 @@ Application Components:
 
 ---
 
-## Tasks
+### Tasks
 
 1. Generate an SBOM.
 2. Scan dependencies.
@@ -2210,7 +2210,7 @@ Application Components:
 
 ---
 
-## Expected Learning Outcomes
+### Expected Learning Outcomes
 
 After completing this lab, you should be able to:
 
@@ -2222,51 +2222,51 @@ After completing this lab, you should be able to:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is software integrity?
+#### What is software integrity?
 
 Software integrity ensures that software has not been modified without authorization and originates from a trusted source.
 
 ---
 
-### What is a digital signature?
+#### What is a digital signature?
 
 A digital signature uses asymmetric cryptography to verify both the integrity and authenticity of software or data.
 
 ---
 
-### What is code signing?
+#### What is code signing?
 
 Code signing is the process of digitally signing executables or software packages so users and systems can verify the publisher and detect tampering.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### Why are hashes alone insufficient for software verification?
+#### Why are hashes alone insufficient for software verification?
 
 Hashes detect whether data has changed but do not identify who created the software. Digital signatures combine integrity verification with publisher authentication.
 
 ---
 
-### What is build provenance?
+#### What is build provenance?
 
 Build provenance records how, where, and from which source code an artifact was produced, helping verify that it came from an expected and trusted build process.
 
 ---
 
-### Why is SBOM important?
+#### Why is SBOM important?
 
 An SBOM provides a complete inventory of software components, enabling organizations to quickly identify applications affected by newly disclosed vulnerabilities and improve supply chain visibility.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you secure an enterprise CI/CD pipeline?
+#### How would you secure an enterprise CI/CD pipeline?
 
 A secure CI/CD pipeline should include:
 
@@ -2283,7 +2283,7 @@ A secure CI/CD pipeline should include:
 
 ---
 
-### How would you respond to a suspected software supply chain compromise?
+#### How would you respond to a suspected software supply chain compromise?
 
 A structured response includes:
 
@@ -2298,32 +2298,32 @@ A structured response includes:
 
 ---
 
-# References
+## References
 
-## OWASP
+### OWASP
 
 - OWASP Top 10 (2021)
 - OWASP Software Supply Chain Security Guidance
 - OWASP Dependency-Check
 
-## NIST
+### NIST
 
 - NIST Secure Software Development Framework (SSDF)
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-53
 
-## CISA
+### CISA
 
 - Secure by Design
 - Secure by Demand
 - Software Supply Chain Guidance
 
-## OpenSSF
+### OpenSSF
 
 - OpenSSF Scorecard
 - OpenSSF Best Practices
 
-## Supply Chain Security
+### Supply Chain Security
 
 - Sigstore
 - Cosign
@@ -2334,7 +2334,7 @@ A structured response includes:
 
 ---
 
-# Summary
+## Summary
 
 Software and Data Integrity Failures arise when organizations place implicit trust in software, data, or build processes without verifying their authenticity and integrity. Modern applications rely heavily on complex software supply chains, making secure development practices, artifact signing, dependency governance, SBOM generation, and protected CI/CD pipelines essential.
 

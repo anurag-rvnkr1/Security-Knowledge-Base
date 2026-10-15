@@ -1,10 +1,10 @@
 # 04 - Linux Boot Process
 
-# Part 1 — Linux Boot Process Overview, Power-On Sequence, BIOS vs UEFI, POST, Firmware Initialization, Boot Devices, and Secure Boot
+## Part 1 — Linux Boot Process Overview, Power-On Sequence, BIOS vs UEFI, POST, Firmware Initialization, Boot Devices, and Secure Boot
 
 ---
 
-# Introduction
+## Introduction
 
 Every time a Linux system starts, it follows a carefully orchestrated sequence of events known as the **boot process**. This sequence transforms an unpowered machine into a fully operational operating system capable of running applications and serving users.
 
@@ -23,7 +23,7 @@ Many startup problems—including kernel panics, bootloader corruption, misconfi
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -38,7 +38,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is Booting?
+## What is Booting?
 
 **Booting** is the process of starting a computer and loading an operating system into memory.
 
@@ -50,7 +50,7 @@ The operating system begins with only firmware available. Each component loads t
 
 ---
 
-# High-Level Boot Process
+## High-Level Boot Process
 
 ```text
 Power On
@@ -87,7 +87,7 @@ Every stage depends on the successful completion of the previous stage.
 
 ---
 
-# Boot Process Responsibilities
+## Boot Process Responsibilities
 
 | Stage | Primary Responsibility |
 |--------|------------------------|
@@ -102,7 +102,7 @@ Every stage depends on the successful completion of the previous stage.
 
 ---
 
-# Stage 1 — Power-On
+## Stage 1 — Power-On
 
 When the power button is pressed:
 
@@ -116,7 +116,7 @@ At this stage, no operating system is loaded.
 
 ---
 
-# CPU Reset
+## CPU Reset
 
 Immediately after power-on:
 
@@ -140,7 +140,7 @@ The processor starts executing instructions stored in firmware.
 
 ---
 
-# Firmware
+## Firmware
 
 Firmware is low-level software permanently stored on the motherboard.
 
@@ -159,7 +159,7 @@ Responsibilities include:
 
 ---
 
-# BIOS (Basic Input/Output System)
+## BIOS (Basic Input/Output System)
 
 BIOS is the traditional firmware used by older computer systems.
 
@@ -198,7 +198,7 @@ Linux
 
 ---
 
-# UEFI (Unified Extensible Firmware Interface)
+## UEFI (Unified Extensible Firmware Interface)
 
 UEFI is the modern replacement for BIOS.
 
@@ -216,7 +216,7 @@ Most modern Linux systems use UEFI.
 
 ---
 
-# BIOS vs UEFI
+## BIOS vs UEFI
 
 | Feature | BIOS | UEFI |
 |----------|------|------|
@@ -229,7 +229,7 @@ Most modern Linux systems use UEFI.
 
 ---
 
-# POST (Power-On Self-Test)
+## POST (Power-On Self-Test)
 
 POST verifies that critical hardware is functioning before the operating system loads.
 
@@ -247,7 +247,7 @@ If a serious fault is detected, booting stops.
 
 ---
 
-# POST Workflow
+## POST Workflow
 
 ```text
 Power On
@@ -283,7 +283,7 @@ Continue Boot
 
 ---
 
-# POST Errors
+## POST Errors
 
 Common POST issues include:
 
@@ -299,7 +299,7 @@ Manufacturers often use beep codes or diagnostic LEDs to indicate failures.
 
 ---
 
-# Hardware Initialization
+## Hardware Initialization
 
 Firmware initializes hardware components such as:
 
@@ -315,7 +315,7 @@ Only after initialization can the operating system communicate with these device
 
 ---
 
-# Boot Device Discovery
+## Boot Device Discovery
 
 Firmware searches for bootable devices in a configured order.
 
@@ -349,7 +349,7 @@ Administrators can configure boot order in firmware settings.
 
 ---
 
-# Boot Priority
+## Boot Priority
 
 Example:
 
@@ -365,7 +365,7 @@ The first bootable device found is used.
 
 ---
 
-# Network Boot (PXE)
+## Network Boot (PXE)
 
 Large organizations frequently install operating systems over the network using **PXE (Preboot Execution Environment)**.
 
@@ -380,7 +380,7 @@ PXE is widely used in enterprise data centers and educational environments.
 
 ---
 
-# Boot Modes
+## Boot Modes
 
 Modern firmware commonly supports:
 
@@ -395,7 +395,7 @@ Whenever possible, modern Linux installations should use:
 
 ---
 
-# Secure Boot
+## Secure Boot
 
 Secure Boot is a UEFI security feature that verifies digital signatures before executing boot components.
 
@@ -410,7 +410,7 @@ Unsigned or tampered boot components can be blocked.
 
 ---
 
-# Secure Boot Workflow
+## Secure Boot Workflow
 
 ```text
 Power On
@@ -440,7 +440,7 @@ This chain of trust helps defend against low-level malware.
 
 ---
 
-# Benefits of Secure Boot
+## Benefits of Secure Boot
 
 - Prevents unauthorized bootloaders
 - Reduces bootkit risk
@@ -450,7 +450,7 @@ This chain of trust helps defend against low-level malware.
 
 ---
 
-# Secure Boot Limitations
+## Secure Boot Limitations
 
 Secure Boot is not a replacement for operating system security.
 
@@ -466,7 +466,7 @@ It is one layer in a broader defense-in-depth strategy.
 
 ---
 
-# Enterprise Boot Considerations
+## Enterprise Boot Considerations
 
 Organizations typically standardize on:
 
@@ -482,7 +482,7 @@ These practices improve consistency and reduce operational risk.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers may target early boot stages to establish persistence or evade detection.
 
@@ -503,7 +503,7 @@ Defensive measures include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A secure and reliable boot process helps organizations:
 
@@ -515,7 +515,7 @@ A secure and reliable boot process helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use UEFI with GPT on modern systems.
 - Enable Secure Boot when supported by hardware and workloads.
@@ -527,7 +527,7 @@ A secure and reliable boot process helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Booting is a staged process that transforms powered hardware into a running operating system.
 - Firmware initializes hardware before the operating system loads.
@@ -537,11 +537,11 @@ A secure and reliable boot process helps organizations:
 
 ---
 
-# Part 2 — GRUB2 Architecture, EFI System Partition (ESP), Kernel Loading, initramfs, Kernel Parameters, and Early Userspace Initialization
+## Part 2 — GRUB2 Architecture, EFI System Partition (ESP), Kernel Loading, initramfs, Kernel Parameters, and Early Userspace Initialization
 
 ---
 
-# Introduction
+## Introduction
 
 Once the firmware has completed hardware initialization and selected a bootable device, control is transferred to the **bootloader**.
 
@@ -551,7 +551,7 @@ This stage is critical because any failure here prevents Linux from starting.
 
 ---
 
-# What is a Bootloader?
+## What is a Bootloader?
 
 A **bootloader** is a small program that loads the operating system into memory after firmware initialization.
 
@@ -566,7 +566,7 @@ Responsibilities include:
 
 ---
 
-# Bootloader Workflow
+## Bootloader Workflow
 
 ```text
 Firmware
@@ -602,7 +602,7 @@ Transfer Control to Kernel
 
 ---
 
-# Common Linux Bootloaders
+## Common Linux Bootloaders
 
 | Bootloader | Common Usage |
 |------------|--------------|
@@ -616,7 +616,7 @@ Among these, **GRUB2** is the most widely used in enterprise Linux.
 
 ---
 
-# GRUB2 (Grand Unified Bootloader 2)
+## GRUB2 (Grand Unified Bootloader 2)
 
 GRUB2 is a flexible and feature-rich bootloader.
 
@@ -632,7 +632,7 @@ Capabilities include:
 
 ---
 
-# GRUB2 Architecture
+## GRUB2 Architecture
 
 ```text
 Firmware
@@ -656,7 +656,7 @@ GRUB2 uses modular components, allowing support for various filesystems and boot
 
 ---
 
-# GRUB2 Configuration Files
+## GRUB2 Configuration Files
 
 Common configuration locations:
 
@@ -671,7 +671,7 @@ Common configuration locations:
 
 ---
 
-# Regenerating GRUB Configuration
+## Regenerating GRUB Configuration
 
 Ubuntu/Debian:
 
@@ -689,7 +689,7 @@ UEFI systems may use a different output path depending on the distribution.
 
 ---
 
-# GRUB Boot Menu
+## GRUB Boot Menu
 
 Typical entries:
 
@@ -712,7 +712,7 @@ The menu allows users to:
 
 ---
 
-# Advanced Boot Options
+## Advanced Boot Options
 
 Enterprise administrators often keep multiple kernel versions installed.
 
@@ -738,7 +738,7 @@ Retaining older kernels provides a fallback if a newer kernel causes compatibili
 
 ---
 
-# EFI System Partition (ESP)
+## EFI System Partition (ESP)
 
 On UEFI systems, boot files are stored in the **EFI System Partition (ESP)**.
 
@@ -754,7 +754,7 @@ The ESP contains EFI executables and boot manager data.
 
 ---
 
-# EFI Partition Layout
+## EFI Partition Layout
 
 ```text
 EFI System Partition
@@ -772,7 +772,7 @@ Each operating system stores its EFI boot files in its own directory.
 
 ---
 
-# Multiple Operating Systems
+## Multiple Operating Systems
 
 A single ESP can support multiple operating systems.
 
@@ -798,7 +798,7 @@ UEFI firmware selects which bootloader to launch.
 
 ---
 
-# Loading the Linux Kernel
+## Loading the Linux Kernel
 
 After the bootloader finishes configuration, it loads:
 
@@ -810,7 +810,7 @@ The kernel is decompressed into memory and execution begins.
 
 ---
 
-# Kernel Loading Workflow
+## Kernel Loading Workflow
 
 ```text
 GRUB
@@ -838,7 +838,7 @@ Mount Root Filesystem
 
 ---
 
-# Linux Kernel Image
+## Linux Kernel Image
 
 The kernel image is commonly stored in:
 
@@ -861,7 +861,7 @@ Associated files may include:
 
 ---
 
-# initramfs
+## initramfs
 
 The **Initial RAM Filesystem (initramfs)** is a temporary root filesystem loaded into RAM before the real root filesystem is mounted.
 
@@ -869,7 +869,7 @@ Its purpose is to provide the tools and drivers needed during early boot.
 
 ---
 
-# Why initramfs is Required
+## Why initramfs is Required
 
 Without initramfs, the kernel may not have the drivers necessary to access:
 
@@ -883,7 +883,7 @@ initramfs bridges the gap between kernel startup and mounting the permanent root
 
 ---
 
-# initramfs Workflow
+## initramfs Workflow
 
 ```text
 Kernel
@@ -915,7 +915,7 @@ Switch to Real Root
 
 ---
 
-# Contents of initramfs
+## Contents of initramfs
 
 Typical contents include:
 
@@ -931,7 +931,7 @@ The exact contents depend on the system configuration.
 
 ---
 
-# Switching Root Filesystem
+## Switching Root Filesystem
 
 Once the permanent root filesystem is available:
 
@@ -959,7 +959,7 @@ Control is transferred from the temporary environment to the installed operating
 
 ---
 
-# Kernel Parameters
+## Kernel Parameters
 
 Kernel parameters are options passed by the bootloader to modify kernel behavior during startup.
 
@@ -997,7 +997,7 @@ Boot into rescue mode using `systemd`.
 
 ---
 
-# Viewing Kernel Parameters
+## Viewing Kernel Parameters
 
 Display the parameters used during the current boot:
 
@@ -1013,7 +1013,7 @@ BOOT_IMAGE=/vmlinuz root=/dev/sda2 ro quiet splash
 
 ---
 
-# Temporary Kernel Parameter Changes
+## Temporary Kernel Parameter Changes
 
 GRUB allows temporary edits before boot.
 
@@ -1039,7 +1039,7 @@ Changes made this way apply only to the current boot session.
 
 ---
 
-# Persistent Kernel Parameters
+## Persistent Kernel Parameters
 
 Persistent changes should be made through GRUB configuration.
 
@@ -1061,7 +1061,7 @@ Always test configuration changes in a controlled environment before deploying t
 
 ---
 
-# Early Userspace Initialization
+## Early Userspace Initialization
 
 After the real root filesystem is mounted:
 
@@ -1074,7 +1074,7 @@ This marks the transition from kernel initialization to normal operating system 
 
 ---
 
-# Boot Sequence So Far
+## Boot Sequence So Far
 
 ```text
 Power On
@@ -1108,7 +1108,7 @@ The remaining stages involve service initialization, login managers, and user se
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 The bootloader and early userspace are attractive targets for attackers because they execute before most security software.
 
@@ -1130,7 +1130,7 @@ Mitigations include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable bootloader configuration and early userspace initialization help organizations:
 
@@ -1142,7 +1142,7 @@ Reliable bootloader configuration and early userspace initialization help organi
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Protect GRUB with administrative controls where appropriate.
 - Keep multiple known-good kernel versions available.
@@ -1154,7 +1154,7 @@ Reliable bootloader configuration and early userspace initialization help organi
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - GRUB2 is the most common Linux bootloader.
 - The EFI System Partition stores boot files on UEFI systems.
@@ -1165,11 +1165,11 @@ Reliable bootloader configuration and early userspace initialization help organi
 ---
 
 
-# Part 3 — systemd Initialization, Targets, Services, Login Managers, Boot Targets, Startup Sequence, and Service Dependencies
+## Part 3 — systemd Initialization, Targets, Services, Login Managers, Boot Targets, Startup Sequence, and Service Dependencies
 
 ---
 
-# Introduction
+## Introduction
 
 After the Linux kernel has initialized the hardware, loaded the required drivers, and mounted the root filesystem, it starts the **first userspace process**.
 
@@ -1181,7 +1181,7 @@ Understanding `systemd` is essential because almost every Linux server, workstat
 
 ---
 
-# What is systemd?
+## What is systemd?
 
 **systemd** is the default **init system** for most modern Linux distributions.
 
@@ -1202,7 +1202,7 @@ systemd provides:
 
 ---
 
-# Why systemd Was Introduced
+## Why systemd Was Introduced
 
 Older initialization systems started services sequentially.
 
@@ -1244,7 +1244,7 @@ This significantly improves startup performance.
 
 ---
 
-# PID 1
+## PID 1
 
 The kernel starts **systemd** as **Process ID 1 (PID 1)**.
 
@@ -1266,7 +1266,7 @@ Because PID 1 is the parent of nearly all userspace processes, its stability is 
 
 ---
 
-# Boot Sequence After Kernel Initialization
+## Boot Sequence After Kernel Initialization
 
 ```text
 Kernel
@@ -1302,7 +1302,7 @@ User Login
 
 ---
 
-# Responsibilities of systemd
+## Responsibilities of systemd
 
 systemd performs numerous initialization tasks.
 
@@ -1320,7 +1320,7 @@ Major responsibilities include:
 
 ---
 
-# systemd Architecture
+## systemd Architecture
 
 ```text
                     systemd
@@ -1344,7 +1344,7 @@ Each component is managed through **unit files**.
 
 ---
 
-# systemd Unit Files
+## systemd Unit Files
 
 A **unit** is a configuration object understood by systemd.
 
@@ -1364,7 +1364,7 @@ Common unit types include:
 
 ---
 
-# Service Units
+## Service Units
 
 A service unit controls a background process.
 
@@ -1384,7 +1384,7 @@ Each service is described by a unit file.
 
 ---
 
-# Location of Unit Files
+## Location of Unit Files
 
 Typical locations include:
 
@@ -1402,7 +1402,7 @@ Administrator-created units are generally stored in:
 
 ---
 
-# Viewing Services
+## Viewing Services
 
 List active services:
 
@@ -1418,7 +1418,7 @@ systemctl list-unit-files
 
 ---
 
-# Managing Services
+## Managing Services
 
 Start a service:
 
@@ -1446,7 +1446,7 @@ sudo systemctl reload nginx
 
 ---
 
-# Enable and Disable Services
+## Enable and Disable Services
 
 Enable service at boot:
 
@@ -1464,7 +1464,7 @@ Enabled services start automatically during boot.
 
 ---
 
-# Check Service Status
+## Check Service Status
 
 Example:
 
@@ -1484,7 +1484,7 @@ This command is frequently used during troubleshooting.
 
 ---
 
-# Boot Targets
+## Boot Targets
 
 A **target** represents a desired system state.
 
@@ -1502,7 +1502,7 @@ Examples:
 
 ---
 
-# Traditional Runlevels vs systemd Targets
+## Traditional Runlevels vs systemd Targets
 
 | SysV Runlevel | systemd Target |
 |---------------|----------------|
@@ -1516,7 +1516,7 @@ This mapping simplifies migration from older Linux systems.
 
 ---
 
-# Default Target
+## Default Target
 
 Display the default boot target:
 
@@ -1538,7 +1538,7 @@ sudo systemctl set-default multi-user.target
 
 ---
 
-# Boot Target Workflow
+## Boot Target Workflow
 
 ```text
 Kernel
@@ -1562,7 +1562,7 @@ User Login
 
 ---
 
-# Service Dependencies
+## Service Dependencies
 
 Some services require others before they can start.
 
@@ -1588,7 +1588,7 @@ systemd automatically resolves dependencies using unit metadata.
 
 ---
 
-# Dependency Types
+## Dependency Types
 
 Common dependency directives:
 
@@ -1603,7 +1603,7 @@ Proper dependency configuration ensures predictable startup behavior.
 
 ---
 
-# Parallel Startup
+## Parallel Startup
 
 systemd analyzes dependencies and starts independent services concurrently.
 
@@ -1627,7 +1627,7 @@ This reduces overall boot time.
 
 ---
 
-# Login Managers
+## Login Managers
 
 Once the system reaches the appropriate target, user login becomes available.
 
@@ -1644,7 +1644,7 @@ Server systems often boot directly to a text console.
 
 ---
 
-# Login Workflow
+## Login Workflow
 
 ```text
 systemd
@@ -1670,7 +1670,7 @@ Successful authentication begins the user session.
 
 ---
 
-# User Sessions
+## User Sessions
 
 After login:
 
@@ -1694,7 +1694,7 @@ Each logged-in user receives an independent session with its own processes and p
 
 ---
 
-# Journal Logging
+## Journal Logging
 
 systemd integrates logging through **journald**.
 
@@ -1720,7 +1720,7 @@ These logs are invaluable for diagnosing startup and service issues.
 
 ---
 
-# Boot Performance Analysis
+## Boot Performance Analysis
 
 Measure total boot time:
 
@@ -1744,7 +1744,7 @@ Userspace
 
 ---
 
-# Slow Boot Analysis
+## Slow Boot Analysis
 
 Identify slow-starting services:
 
@@ -1766,7 +1766,7 @@ This helps administrators optimize startup performance.
 
 ---
 
-# Critical Chain Analysis
+## Critical Chain Analysis
 
 View dependency timing:
 
@@ -1778,7 +1778,7 @@ This command highlights services that directly affect boot completion.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Because systemd controls service startup, attackers may attempt to:
 
@@ -1798,7 +1798,7 @@ Detection strategies include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper service management enables organizations to:
 
@@ -1810,7 +1810,7 @@ Proper service management enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Enable only required services.
 - Disable unused or unnecessary services.
@@ -1823,7 +1823,7 @@ Proper service management enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - `systemd` is the default initialization system for most modern Linux distributions.
 - It starts as PID 1 and manages the entire userspace startup process.
@@ -1833,11 +1833,11 @@ Proper service management enables organizations to:
 
 ---
 
-# Part 4 — Boot Troubleshooting, Recovery Mode, Emergency Mode, Kernel Panic, Boot Security, Practical Labs, Chapter Summary, Interview Questions, and References
+## Part 4 — Boot Troubleshooting, Recovery Mode, Emergency Mode, Kernel Panic, Boot Security, Practical Labs, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Even well-maintained Linux systems can occasionally fail to boot because of:
 
@@ -1855,7 +1855,7 @@ This section covers common boot failures, recovery techniques, boot security, an
 
 ---
 
-# Common Boot Failure Stages
+## Common Boot Failure Stages
 
 Boot problems generally occur in one of the following stages:
 
@@ -1888,7 +1888,7 @@ Identifying the stage where the failure occurs significantly reduces troubleshoo
 
 ---
 
-# Common Boot Problems
+## Common Boot Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1902,7 +1902,7 @@ Identifying the stage where the failure occurs significantly reduces troubleshoo
 
 ---
 
-# Troubleshooting Methodology
+## Troubleshooting Methodology
 
 Use a structured approach:
 
@@ -1932,7 +1932,7 @@ Avoid making multiple changes simultaneously, as this complicates root-cause ana
 
 ---
 
-# Recovery Mode
+## Recovery Mode
 
 Most Linux distributions provide a **Recovery Mode** accessible through the GRUB menu.
 
@@ -1948,7 +1948,7 @@ Recovery mode is intended for maintenance and troubleshooting.
 
 ---
 
-# Accessing Recovery Mode
+## Accessing Recovery Mode
 
 Typical workflow:
 
@@ -1976,7 +1976,7 @@ Menu names may vary slightly between distributions.
 
 ---
 
-# Emergency Mode
+## Emergency Mode
 
 `emergency.target` is a minimal boot environment intended for severe system failures.
 
@@ -1991,7 +1991,7 @@ It allows administrators to perform critical repairs.
 
 ---
 
-# Rescue Mode
+## Rescue Mode
 
 `rescue.target` provides a single-user environment with more services than emergency mode.
 
@@ -2006,7 +2006,7 @@ Comparison:
 
 ---
 
-# Booting into Rescue Mode
+## Booting into Rescue Mode
 
 Temporary kernel parameter:
 
@@ -2018,7 +2018,7 @@ Or select the appropriate GRUB recovery option if available.
 
 ---
 
-# GRUB Rescue Shell
+## GRUB Rescue Shell
 
 If GRUB cannot locate its configuration, it may enter the `grub rescue>` prompt.
 
@@ -2040,7 +2040,7 @@ Common causes include:
 
 ---
 
-# Reinstalling GRUB (Example)
+## Reinstalling GRUB (Example)
 
 The exact procedure varies by distribution and firmware mode.
 
@@ -2058,7 +2058,7 @@ Always follow the official documentation for your distribution.
 
 ---
 
-# Kernel Panic
+## Kernel Panic
 
 A **kernel panic** occurs when the kernel encounters a fatal error from which it cannot safely recover.
 
@@ -2073,7 +2073,7 @@ Kernel panics require investigation before the system is returned to production.
 
 ---
 
-# Common Causes of Kernel Panic
+## Common Causes of Kernel Panic
 
 | Cause | Example |
 |--------|----------|
@@ -2086,7 +2086,7 @@ Kernel panics require investigation before the system is returned to production.
 
 ---
 
-# Filesystem Recovery
+## Filesystem Recovery
 
 If filesystem corruption is suspected:
 
@@ -2100,7 +2100,7 @@ Perform repairs only after ensuring reliable backups are available.
 
 ---
 
-# Boot Log Analysis
+## Boot Log Analysis
 
 Useful commands:
 
@@ -2126,7 +2126,7 @@ These logs often identify failing services, hardware errors, or driver problems.
 
 ---
 
-# Investigating Failed Services
+## Investigating Failed Services
 
 Display failed services:
 
@@ -2150,7 +2150,7 @@ Replace `<service>` with the actual service name.
 
 ---
 
-# Boot Performance Troubleshooting
+## Boot Performance Troubleshooting
 
 Measure startup duration:
 
@@ -2174,7 +2174,7 @@ Use these tools to identify startup bottlenecks.
 
 ---
 
-# Safe Mode Practices
+## Safe Mode Practices
 
 During recovery:
 
@@ -2186,7 +2186,7 @@ During recovery:
 
 ---
 
-# Boot Security
+## Boot Security
 
 Protecting the boot process is critical because compromise at this stage can bypass many operating system security controls.
 
@@ -2201,7 +2201,7 @@ Recommended protections include:
 
 ---
 
-# Protecting GRUB
+## Protecting GRUB
 
 Organizations may choose to restrict unauthorized modification of boot parameters by:
 
@@ -2214,7 +2214,7 @@ These controls help reduce the risk of unauthorized boot-time changes.
 
 ---
 
-# Firmware Security
+## Firmware Security
 
 Recommended practices:
 
@@ -2226,7 +2226,7 @@ Recommended practices:
 
 ---
 
-# Enterprise Boot Monitoring
+## Enterprise Boot Monitoring
 
 Security teams commonly monitor:
 
@@ -2242,7 +2242,7 @@ Monitoring supports early detection of persistence mechanisms and unauthorized c
 
 ---
 
-# Practical Lab 1 — Examine the Current Boot
+## Practical Lab 1 — Examine the Current Boot
 
 Commands:
 
@@ -2257,7 +2257,7 @@ Objective:
 
 ---
 
-# Practical Lab 2 — Identify Failed Services
+## Practical Lab 2 — Identify Failed Services
 
 Commands:
 
@@ -2272,7 +2272,7 @@ Objective:
 
 ---
 
-# Practical Lab 3 — Review Kernel Messages
+## Practical Lab 3 — Review Kernel Messages
 
 Command:
 
@@ -2286,7 +2286,7 @@ Objective:
 
 ---
 
-# Practical Lab 4 — Inspect GRUB Configuration
+## Practical Lab 4 — Inspect GRUB Configuration
 
 Common locations:
 
@@ -2303,7 +2303,7 @@ Objective:
 
 ---
 
-# Practical Lab 5 — Analyze Boot Dependencies
+## Practical Lab 5 — Analyze Boot Dependencies
 
 Commands:
 
@@ -2318,7 +2318,7 @@ Objective:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2340,9 +2340,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What happens immediately after pressing the power button?
 2. What is the purpose of POST?
@@ -2357,7 +2357,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the Linux boot sequence from firmware to login.
 2. Compare recovery mode and emergency mode.
@@ -2372,7 +2372,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Describe how you would recover a Linux server stuck at the `grub rescue>` prompt.
 2. How would you troubleshoot a system that panics after a kernel update?
@@ -2387,7 +2387,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Linux boot process consists of multiple stages, each with distinct responsibilities.
 - Understanding where a failure occurs is essential for efficient troubleshooting.
@@ -2397,9 +2397,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - Linux Kernel Documentation
 - GNU GRUB Manual
@@ -2408,7 +2408,7 @@ In this chapter, you learned:
 - Red Hat Enterprise Linux Documentation
 - Rocky Linux Documentation
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - UEFI Specification
 - CIS Linux Benchmarks
@@ -2418,7 +2418,7 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **05-Linux-File-System.md**
 

@@ -1,12 +1,12 @@
 # 20-Cryptographic-Failures.md
 
-# Part 1 — Fundamentals of Cryptographic Failures, Data Protection, Encryption Concepts, and Enterprise Overview
+## Part 1 — Fundamentals of Cryptographic Failures, Data Protection, Encryption Concepts, and Enterprise Overview
 
 > **"Cryptography is not about hiding information—it is about ensuring that only authorized parties can read, verify, and trust information throughout its lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What are Cryptographic Failures?
+## What are Cryptographic Failures?
 
 **Cryptographic Failures** occur when sensitive information is not adequately protected due to incorrect, weak, or missing use of cryptographic controls.
 
@@ -38,7 +38,7 @@ These failures may involve:
 
 ---
 
-# Why Cryptography Matters
+## Why Cryptography Matters
 
 Modern applications continuously process sensitive information.
 
@@ -68,7 +68,7 @@ Without proper cryptographic protection, unauthorized parties may gain access to
 
 ---
 
-# Security Goals of Cryptography
+## Security Goals of Cryptography
 
 Cryptography supports multiple security objectives.
 
@@ -90,7 +90,7 @@ Together, these goals help establish trust in digital systems.
 
 ---
 
-# Confidentiality
+## Confidentiality
 
 Confidentiality ensures that information is accessible only to authorized parties.
 
@@ -120,7 +120,7 @@ Original Data
 
 ---
 
-# Integrity
+## Integrity
 
 Integrity ensures that information has not been altered unexpectedly.
 
@@ -150,7 +150,7 @@ Integrity Failure
 
 ---
 
-# Authenticity
+## Authenticity
 
 Authenticity verifies the identity of the communicating party.
 
@@ -174,7 +174,7 @@ Users should have confidence that they are communicating with the intended syste
 
 ---
 
-# Non-Repudiation
+## Non-Repudiation
 
 Non-repudiation provides evidence that a specific action occurred.
 
@@ -198,7 +198,7 @@ This supports accountability in business transactions.
 
 ---
 
-# Plaintext vs Ciphertext
+## Plaintext vs Ciphertext
 
 ```
 Plaintext
@@ -228,7 +228,7 @@ Plaintext
 
 ---
 
-# Encryption Overview
+## Encryption Overview
 
 Encryption transforms readable information into a protected form.
 
@@ -256,7 +256,7 @@ Encryption reduces the likelihood of unauthorized disclosure.
 
 ---
 
-# Keys
+## Keys
 
 Cryptographic systems depend on keys.
 
@@ -280,7 +280,7 @@ The security of encrypted data depends heavily on protecting cryptographic keys.
 
 ---
 
-# Why Key Management Matters
+## Why Key Management Matters
 
 ```
 Strong Encryption
@@ -298,7 +298,7 @@ A strong algorithm cannot compensate for exposed or poorly managed keys.
 
 ---
 
-# Data at Rest
+## Data at Rest
 
 Data stored on devices or servers is referred to as **data at rest**.
 
@@ -324,7 +324,7 @@ Examples:
 
 ---
 
-# Data in Transit
+## Data in Transit
 
 Information moving across networks is known as **data in transit**.
 
@@ -344,7 +344,7 @@ Protecting data during transmission helps prevent interception and unauthorized 
 
 ---
 
-# Data in Use
+## Data in Use
 
 Data currently being processed by an application is known as **data in use**.
 
@@ -368,7 +368,7 @@ Protecting data during processing is also an important consideration.
 
 ---
 
-# Data Protection Lifecycle
+## Data Protection Lifecycle
 
 ```
 Create
@@ -398,7 +398,7 @@ Sensitive information should be protected throughout its entire lifecycle.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An online banking application handles:
 
@@ -430,7 +430,7 @@ Each stage may require cryptographic protections appropriate to the data being h
 
 ---
 
-# Trust Model
+## Trust Model
 
 ```
 User
@@ -460,7 +460,7 @@ Multiple security controls work together to protect information.
 
 ---
 
-# Cryptography in Enterprise Systems
+## Cryptography in Enterprise Systems
 
 ```
 Enterprise
@@ -488,7 +488,7 @@ Cryptography is integrated into many different enterprise technologies.
 
 ---
 
-# Common Causes of Cryptographic Failures
+## Common Causes of Cryptographic Failures
 
 Examples include:
 
@@ -502,7 +502,7 @@ Examples include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Cryptographic failures can result in:
 
@@ -532,7 +532,7 @@ Reputation Damage
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
 | Myth | Reality |
 |------|---------|
@@ -543,7 +543,7 @@ Reputation Damage
 
 ---
 
-# Enterprise Workflow
+## Enterprise Workflow
 
 ```
 Sensitive Data
@@ -577,7 +577,7 @@ Organizations should classify data before determining appropriate protections.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. List different types of sensitive information in a sample web application.
 2. Categorize the data as:
@@ -592,7 +592,7 @@ Organizations should classify data before determining appropriate protections.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are Cryptographic Failures?
 2. Why was this OWASP category renamed from "Sensitive Data Exposure"?
@@ -607,7 +607,7 @@ Organizations should classify data before determining appropriate protections.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Identify and classify sensitive data before selecting cryptographic controls.
 - Protect data throughout its lifecycle.
@@ -619,7 +619,7 @@ Organizations should classify data before determining appropriate protections.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming encryption alone guarantees security.
 - Storing sensitive information without protection.
@@ -630,7 +630,7 @@ Organizations should classify data before determining appropriate protections.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cryptographic Failures involve the incorrect, weak, or missing use of cryptographic protections.
 - Cryptography supports confidentiality, integrity, authenticity, and non-repudiation.
@@ -638,15 +638,15 @@ Organizations should classify data before determining appropriate protections.
 - Strong cryptography requires secure key management.
 - Enterprise security combines cryptography with other security controls to protect business-critical information.
 
-# 20-Cryptographic-Failures.md
+## 20-Cryptographic-Failures.md
 
-# Part 2 — Encryption Types, Hashing, Digital Signatures, Key Management, Certificates, and Enterprise Cryptography
+## Part 2 — Encryption Types, Hashing, Digital Signatures, Key Management, Certificates, and Enterprise Cryptography
 
 > **"Strong cryptography is not achieved by selecting a secure algorithm alone. Security depends equally on proper key management, trusted certificates, secure implementation, and correct operational practices."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -663,7 +663,7 @@ After completing this part, you will understand:
 
 ---
 
-# Types of Cryptography
+## Types of Cryptography
 
 Modern cryptography consists of several complementary techniques.
 
@@ -687,7 +687,7 @@ Each serves a different security purpose.
 
 ---
 
-# Symmetric Encryption
+## Symmetric Encryption
 
 Symmetric encryption uses **one shared key** for both encryption and decryption.
 
@@ -723,7 +723,7 @@ Both communicating parties must securely possess the same secret key.
 
 ---
 
-# Characteristics of Symmetric Encryption
+## Characteristics of Symmetric Encryption
 
 Advantages:
 
@@ -740,7 +740,7 @@ Challenges:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Database
@@ -762,7 +762,7 @@ Organizations commonly use symmetric encryption to protect stored data.
 
 ---
 
-# Asymmetric Encryption
+## Asymmetric Encryption
 
 Asymmetric encryption uses **two mathematically related keys**.
 
@@ -780,7 +780,7 @@ The keys have different purposes and should never be confused.
 
 ---
 
-# Asymmetric Encryption Workflow
+## Asymmetric Encryption Workflow
 
 ```
 Sender
@@ -814,7 +814,7 @@ The private key must remain confidential.
 
 ---
 
-# Symmetric vs Asymmetric Encryption
+## Symmetric vs Asymmetric Encryption
 
 | Symmetric | Asymmetric |
 |------------|------------|
@@ -825,7 +825,7 @@ The private key must remain confidential.
 
 ---
 
-# Hybrid Cryptography
+## Hybrid Cryptography
 
 Modern secure communication often combines both approaches.
 
@@ -853,7 +853,7 @@ This combines the strengths of each technique.
 
 ---
 
-# Hash Functions
+## Hash Functions
 
 Hash functions transform data into a fixed-length value.
 
@@ -873,7 +873,7 @@ Hashes are designed for integrity verification rather than encryption.
 
 ---
 
-# Properties of Hash Functions
+## Properties of Hash Functions
 
 A secure hash function should exhibit:
 
@@ -902,7 +902,7 @@ Desired characteristics include:
 
 ---
 
-# Integrity Verification
+## Integrity Verification
 
 ```
 Original File
@@ -940,7 +940,7 @@ Matching hashes indicate the content has not changed.
 
 ---
 
-# Encryption vs Hashing
+## Encryption vs Hashing
 
 | Encryption | Hashing |
 |------------|----------|
@@ -951,7 +951,7 @@ Matching hashes indicate the content has not changed.
 
 ---
 
-# Digital Signatures
+## Digital Signatures
 
 Digital signatures help verify authenticity and integrity.
 
@@ -981,7 +981,7 @@ Digital signatures provide confidence that content originates from the expected 
 
 ---
 
-# Why Digital Signatures Matter
+## Why Digital Signatures Matter
 
 ```
 Document
@@ -1007,7 +1007,7 @@ Verification failures indicate that integrity or authenticity cannot be confirme
 
 ---
 
-# Public Key Infrastructure (PKI)
+## Public Key Infrastructure (PKI)
 
 PKI provides a framework for managing digital certificates and trust relationships.
 
@@ -1031,7 +1031,7 @@ PKI enables secure communication across untrusted networks.
 
 ---
 
-# Digital Certificates
+## Digital Certificates
 
 Certificates associate a public key with an identity.
 
@@ -1055,7 +1055,7 @@ Certificates help browsers and applications establish trust.
 
 ---
 
-# Certificate Chain
+## Certificate Chain
 
 ```
 Root Authority
@@ -1077,7 +1077,7 @@ Each level contributes to establishing trust.
 
 ---
 
-# Certificate Validation
+## Certificate Validation
 
 Before establishing secure communication:
 
@@ -1109,7 +1109,7 @@ Certificates should be valid, trusted, and unexpired.
 
 ---
 
-# Key Management Lifecycle
+## Key Management Lifecycle
 
 Cryptographic keys require management throughout their lifecycle.
 
@@ -1141,7 +1141,7 @@ Improper key management can undermine otherwise strong cryptographic systems.
 
 ---
 
-# Key Rotation
+## Key Rotation
 
 Organizations periodically replace cryptographic keys.
 
@@ -1165,7 +1165,7 @@ Regular rotation limits the impact of long-term key exposure.
 
 ---
 
-# Secure Key Storage
+## Secure Key Storage
 
 Keys should be protected separately from encrypted data.
 
@@ -1193,7 +1193,7 @@ Separating keys from protected data reduces overall risk.
 
 ---
 
-# Random Number Generation
+## Random Number Generation
 
 Many cryptographic operations rely on unpredictable random values.
 
@@ -1213,7 +1213,7 @@ Predictable randomness can weaken cryptographic protections.
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 Applications often rely on sensitive secrets.
 
@@ -1229,7 +1229,7 @@ Secrets should be managed securely throughout their lifecycle.
 
 ---
 
-# Enterprise Cryptography
+## Enterprise Cryptography
 
 ```
 Enterprise
@@ -1257,7 +1257,7 @@ Cryptography is integrated into numerous enterprise technologies.
 
 ---
 
-# Enterprise Cryptographic Workflow
+## Enterprise Cryptographic Workflow
 
 ```
 Sensitive Data
@@ -1293,7 +1293,7 @@ Audit
 
 ---
 
-# Common Cryptographic Weaknesses
+## Common Cryptographic Weaknesses
 
 | Weakness | Security Impact |
 |----------|-----------------|
@@ -1306,7 +1306,7 @@ Audit
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. List where a sample application uses cryptography.
 2. Classify each use as:
@@ -1322,7 +1322,7 @@ Audit
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between symmetric and asymmetric encryption?
 2. Why is symmetric encryption generally faster?
@@ -1337,7 +1337,7 @@ Audit
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use well-established cryptographic algorithms and libraries.
 - Separate encrypted data from cryptographic keys.
@@ -1349,7 +1349,7 @@ Audit
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Confusing encryption with hashing.
 - Hardcoding secrets into application code.
@@ -1360,7 +1360,7 @@ Audit
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Symmetric and asymmetric encryption serve different purposes and are often used together.
 - Hashing supports integrity verification rather than confidentiality.
@@ -1368,15 +1368,15 @@ Audit
 - PKI and certificates establish trust in secure communications.
 - Strong cryptography depends on secure key management, certificate validation, and proper operational practices.
 
-# 20-Cryptographic-Failures.md
+## 20-Cryptographic-Failures.md
 
-# Part 3 — Password Security, TLS, Secrets Management, Secure Storage, Enterprise Implementation, and Cryptographic Best Practices
+## Part 3 — Password Security, TLS, Secrets Management, Secure Storage, Enterprise Implementation, and Cryptographic Best Practices
 
 > **"Most cryptographic failures are not caused by broken mathematics—they result from weak implementation, poor operational practices, insecure secret management, or incorrect deployment."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1393,7 +1393,7 @@ After completing this part, you will understand:
 
 ---
 
-# Password Storage
+## Password Storage
 
 Passwords should **never** be stored in plaintext.
 
@@ -1433,7 +1433,7 @@ Even if the database is compromised, properly hashed passwords are significantly
 
 ---
 
-# Why Passwords Should Not Be Encrypted
+## Why Passwords Should Not Be Encrypted
 
 Many beginners ask:
 
@@ -1471,7 +1471,7 @@ There is typically no operational need to recover the original password.
 
 ---
 
-# Salting
+## Salting
 
 A **salt** is unique data combined with a password before hashing.
 
@@ -1501,7 +1501,7 @@ Benefits include:
 
 ---
 
-# Example Concept
+## Example Concept
 
 Two users choose the same password.
 
@@ -1561,7 +1561,7 @@ Although the passwords are identical, the stored hashes differ.
 
 ---
 
-# Password Hashing vs Encryption
+## Password Hashing vs Encryption
 
 | Password Hashing | Encryption |
 |------------------|------------|
@@ -1572,7 +1572,7 @@ Although the passwords are identical, the stored hashes differ.
 
 ---
 
-# Key Derivation Functions (KDFs)
+## Key Derivation Functions (KDFs)
 
 Password hashing should use algorithms specifically designed for password protection.
 
@@ -1598,7 +1598,7 @@ Characteristics:
 
 ---
 
-# Password Security Lifecycle
+## Password Security Lifecycle
 
 ```
 User Creates Password
@@ -1632,7 +1632,7 @@ Password security is a continuous lifecycle.
 
 ---
 
-# Transport Layer Security (TLS)
+## Transport Layer Security (TLS)
 
 TLS protects information transmitted across networks.
 
@@ -1662,7 +1662,7 @@ TLS helps protect:
 
 ---
 
-# TLS Handshake (Conceptual)
+## TLS Handshake (Conceptual)
 
 Before secure communication begins:
 
@@ -1690,7 +1690,7 @@ This process establishes trust before transmitting sensitive information.
 
 ---
 
-# Data at Rest vs Data in Transit
+## Data at Rest vs Data in Transit
 
 ```
 Data at Rest
@@ -1720,7 +1720,7 @@ Both categories require appropriate cryptographic protection.
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 Applications depend on numerous sensitive secrets.
 
@@ -1746,7 +1746,7 @@ Secrets should never be treated as ordinary configuration values.
 
 ---
 
-# Hardcoded Secrets
+## Hardcoded Secrets
 
 Poor practice:
 
@@ -1776,7 +1776,7 @@ Separating secrets from application code reduces operational risk.
 
 ---
 
-# Secret Lifecycle
+## Secret Lifecycle
 
 ```
 Generate
@@ -1806,7 +1806,7 @@ Every secret should have a clearly defined lifecycle.
 
 ---
 
-# Enterprise Secrets Architecture
+## Enterprise Secrets Architecture
 
 ```
 Application
@@ -1832,7 +1832,7 @@ Applications retrieve only the secrets required for their current operation.
 
 ---
 
-# Hardware Security Modules (HSM)
+## Hardware Security Modules (HSM)
 
 Some organizations use dedicated hardware to protect highly sensitive cryptographic keys.
 
@@ -1858,7 +1858,7 @@ The objective is to reduce exposure of sensitive keys.
 
 ---
 
-# Enterprise Key Management
+## Enterprise Key Management
 
 ```
 Generate Keys
@@ -1892,7 +1892,7 @@ Key management should be governed by organizational policy.
 
 ---
 
-# Cryptographic Architecture
+## Cryptographic Architecture
 
 ```
                     User
@@ -1938,7 +1938,7 @@ Cryptography supports multiple layers within enterprise systems.
 
 ---
 
-# Secure Development Practices
+## Secure Development Practices
 
 Developers should:
 
@@ -1962,7 +1962,7 @@ Developers should:
 
 ---
 
-# Common Cryptographic Weaknesses
+## Common Cryptographic Weaknesses
 
 | Weakness | Potential Impact |
 |----------|------------------|
@@ -1976,7 +1976,7 @@ Developers should:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A healthcare platform:
 
@@ -2012,7 +2012,7 @@ Multiple cryptographic controls work together to protect patient information.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Cryptography complements other controls.
 
@@ -2048,7 +2048,7 @@ No single security control protects every asset.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Identify every secret used by a sample application.
 2. Categorize each secret according to its purpose.
@@ -2060,7 +2060,7 @@ No single security control protects every asset.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should passwords be hashed instead of encrypted?
 2. What is a salt?
@@ -2075,7 +2075,7 @@ No single security control protects every asset.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Store passwords using dedicated password hashing algorithms with unique salts.
 - Protect all sensitive network communications using TLS.
@@ -2087,7 +2087,7 @@ No single security control protects every asset.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Storing passwords in plaintext or with general-purpose reversible encryption.
 - Hardcoding secrets into repositories.
@@ -2098,7 +2098,7 @@ No single security control protects every asset.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Passwords should be protected using secure password hashing techniques with unique salts.
 - TLS protects sensitive information during transmission.
@@ -2106,15 +2106,15 @@ No single security control protects every asset.
 - HSMs and centralized key management strengthen enterprise cryptographic security.
 - Most cryptographic failures arise from implementation and operational mistakes rather than weaknesses in modern cryptographic algorithms.
 
-# 20-Cryptographic-Failures.md
+## 20-Cryptographic-Failures.md
 
-# Part 4 — Enterprise Governance, Incident Response, Compliance, Best Practices, and Chapter Summary
+## Part 4 — Enterprise Governance, Incident Response, Compliance, Best Practices, and Chapter Summary
 
 > **"Strong cryptography is a combination of secure algorithms, proper implementation, disciplined key management, operational maturity, and continuous monitoring. Weakness in any one of these areas can compromise the entire security model."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2130,7 +2130,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Cryptographic Governance
+## Enterprise Cryptographic Governance
 
 Organizations should establish centralized policies governing the use of cryptography.
 
@@ -2170,7 +2170,7 @@ Governance ensures consistent and secure cryptographic practices across all appl
 
 ---
 
-# Cryptographic Asset Inventory
+## Cryptographic Asset Inventory
 
 Organizations should maintain an inventory of all cryptographic assets.
 
@@ -2200,7 +2200,7 @@ Maintaining an inventory helps organizations manage rotation, renewal, and retir
 
 ---
 
-# Cryptographic Lifecycle
+## Cryptographic Lifecycle
 
 Every cryptographic asset follows a lifecycle.
 
@@ -2240,7 +2240,7 @@ Assets should never remain active indefinitely without review.
 
 ---
 
-# Certificate Management
+## Certificate Management
 
 Certificates require continuous management.
 
@@ -2276,7 +2276,7 @@ Expired or improperly managed certificates can disrupt secure communication and 
 
 ---
 
-# Key Escrow (Conceptual)
+## Key Escrow (Conceptual)
 
 Some organizations maintain controlled recovery procedures for specific cryptographic keys.
 
@@ -2300,7 +2300,7 @@ Access to escrowed material should follow strict organizational policies and app
 
 ---
 
-# Cryptographic Incident Response
+## Cryptographic Incident Response
 
 When a cryptographic issue is identified:
 
@@ -2340,7 +2340,7 @@ Rapid response helps reduce the impact of key exposure or configuration issues.
 
 ---
 
-# Example Incident
+## Example Incident
 
 ```
 API Secret Exposure
@@ -2374,7 +2374,7 @@ The goal is to restore secure operations while minimizing disruption.
 
 ---
 
-# Cryptographic Monitoring
+## Cryptographic Monitoring
 
 Security teams should monitor:
 
@@ -2398,7 +2398,7 @@ Continuous monitoring improves operational resilience.
 
 ---
 
-# Logging
+## Logging
 
 Important cryptographic events include:
 
@@ -2415,7 +2415,7 @@ Logs support auditing and incident investigations.
 
 ---
 
-# Enterprise Cryptographic Architecture
+## Enterprise Cryptographic Architecture
 
 ```
                   Internet
@@ -2463,7 +2463,7 @@ Security is achieved through multiple coordinated layers.
 
 ---
 
-# Enterprise Security Operations
+## Enterprise Security Operations
 
 Security teams typically perform:
 
@@ -2495,7 +2495,7 @@ Operational discipline is as important as algorithm selection.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many industry frameworks encourage or require:
 
@@ -2510,7 +2510,7 @@ Cryptography supports these objectives but should be implemented according to ap
 
 ---
 
-# Enterprise Security Metrics
+## Enterprise Security Metrics
 
 Useful metrics include:
 
@@ -2525,7 +2525,7 @@ Useful metrics include:
 
 ---
 
-# Operational Checklist
+## Operational Checklist
 
 ```
 ✓ Sensitive Data Identified
@@ -2551,7 +2551,7 @@ Useful metrics include:
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2563,9 +2563,9 @@ Useful metrics include:
 
 ---
 
-# Interview Revision
+## Interview Revision
 
-## Confidentiality
+### Confidentiality
 
 ```
 Sensitive Data
@@ -2581,7 +2581,7 @@ Authorized Access
 
 ---
 
-## Integrity
+### Integrity
 
 ```
 Original Data
@@ -2601,7 +2601,7 @@ Detect Changes
 
 ---
 
-## Authenticity
+### Authenticity
 
 ```
 Trusted Identity
@@ -2617,7 +2617,7 @@ Trusted Communication
 
 ---
 
-## Data Protection
+### Data Protection
 
 ```
 Data at Rest
@@ -2645,7 +2645,7 @@ Application Processing
 
 ---
 
-## Cryptographic Lifecycle
+### Cryptographic Lifecycle
 
 ```
 Generate
@@ -2673,7 +2673,7 @@ Destroy
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create an inventory of cryptographic assets for a sample enterprise application.
 2. Identify where encryption, password hashing, certificates, and secrets are used.
@@ -2685,7 +2685,7 @@ Destroy
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are Cryptographic Failures in the OWASP Top 10?
 2. Why is key management as important as encryption?
@@ -2700,7 +2700,7 @@ Destroy
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Classify sensitive data before selecting cryptographic controls.
 - Use trusted, well-maintained cryptographic libraries and protocols.
@@ -2713,7 +2713,7 @@ Destroy
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming encryption alone provides complete security.
 - Hardcoding secrets into source code or configuration files.
@@ -2725,7 +2725,7 @@ Destroy
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

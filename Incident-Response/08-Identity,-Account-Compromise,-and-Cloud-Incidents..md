@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Identity has become one of the most important security boundaries in modern environments.
 
@@ -42,7 +42,7 @@ Identity incidents require investigation across authentication, authorization, s
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Traditional incident response often starts with:
 
@@ -69,7 +69,7 @@ A single compromised identity can therefore have a much larger blast radius than
 
 ---
 
-# Identity Attack Surface
+## Identity Attack Surface
 
 ```text
                     Identity
@@ -89,7 +89,7 @@ Every layer can become an attack target.
 
 ---
 
-# Identity Incident Categories
+## Identity Incident Categories
 
 Common categories include:
 
@@ -109,9 +109,9 @@ Common categories include:
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
-## Authentication
+### Authentication
 
 Answers:
 
@@ -125,7 +125,7 @@ Examples:
 - Hardware key
 - Biometrics
 
-## Authorization
+### Authorization
 
 Answers:
 
@@ -156,7 +156,7 @@ A successful login does not automatically mean the requested action is authorize
 
 ---
 
-# Identity Incident Architecture
+## Identity Incident Architecture
 
 ```text
                  Identity Provider
@@ -179,7 +179,7 @@ A successful login does not automatically mean the requested action is authorize
 
 ---
 
-# Identity Evidence Sources
+## Identity Evidence Sources
 
 Important evidence may include:
 
@@ -199,7 +199,7 @@ Important evidence may include:
 
 ---
 
-# Account Compromise Investigation
+## Account Compromise Investigation
 
 A practical investigation begins with:
 
@@ -227,7 +227,7 @@ Actions Performed
 
 ---
 
-# Authentication Timeline
+## Authentication Timeline
 
 Build a timeline such as:
 
@@ -246,7 +246,7 @@ The timeline can reveal where the compromise began and what happened afterward.
 
 ---
 
-# Impossible Travel
+## Impossible Travel
 
 Impossible-travel detections identify authentication events that appear geographically or temporally inconsistent.
 
@@ -274,7 +274,7 @@ Therefore, impossible travel should be treated as an investigative signal rather
 
 ---
 
-# Unusual Login Context
+## Unusual Login Context
 
 Investigate:
 
@@ -308,7 +308,7 @@ This warrants investigation.
 
 ---
 
-# MFA Events
+## MFA Events
 
 MFA telemetry can reveal:
 
@@ -321,7 +321,7 @@ MFA telemetry can reveal:
 
 ---
 
-# MFA Fatigue
+## MFA Fatigue
 
 MFA fatigue occurs when attackers repeatedly trigger authentication requests hoping the user eventually approves one.
 
@@ -353,7 +353,7 @@ Defensive controls include:
 
 ---
 
-# Phishing-Resistant Authentication
+## Phishing-Resistant Authentication
 
 Stronger authentication mechanisms can reduce certain credential phishing risks.
 
@@ -368,7 +368,7 @@ These mechanisms can provide stronger resistance against phishing than passwords
 
 ---
 
-# Password Spraying
+## Password Spraying
 
 Password spraying attempts a small number of commonly used passwords across many accounts.
 
@@ -388,7 +388,7 @@ This differs from brute force against one account.
 
 ---
 
-# Password Spraying Detection
+## Password Spraying Detection
 
 Potential signals:
 
@@ -409,7 +409,7 @@ Detection should consider legitimate authentication infrastructure and shared NA
 
 ---
 
-# Brute Force
+## Brute Force
 
 Brute force typically focuses many authentication attempts against one or more accounts.
 
@@ -423,7 +423,7 @@ Potential signals:
 
 ---
 
-# Credential Stuffing
+## Credential Stuffing
 
 Credential stuffing uses credentials obtained from previous breaches.
 
@@ -449,7 +449,7 @@ Controls include:
 
 ---
 
-# Session Hijacking
+## Session Hijacking
 
 A stolen session token may allow access without the attacker needing the user's password.
 
@@ -475,7 +475,7 @@ This makes session telemetry important.
 
 ---
 
-# Token Theft
+## Token Theft
 
 Potential token types include:
 
@@ -499,7 +499,7 @@ Reauthenticate
 
 ---
 
-# OAuth Abuse
+## OAuth Abuse
 
 OAuth applications can receive permissions to access resources.
 
@@ -531,7 +531,7 @@ Mailbox / Files / APIs
 
 ---
 
-# OAuth Incident Response
+## OAuth Incident Response
 
 Potential actions:
 
@@ -546,7 +546,7 @@ Potential actions:
 
 ---
 
-# Privileged Account Compromise
+## Privileged Account Compromise
 
 Privileged identity compromise should receive high priority.
 
@@ -574,7 +574,7 @@ Emergency Protection
 
 ---
 
-# Service Account Compromise
+## Service Account Compromise
 
 Service accounts are often overlooked.
 
@@ -589,7 +589,7 @@ A compromised service account can create significant persistence.
 
 ---
 
-# Service Account Investigation
+## Service Account Investigation
 
 Determine:
 
@@ -604,7 +604,7 @@ Which processes use it?
 
 ---
 
-# Identity Blast Radius
+## Identity Blast Radius
 
 A useful investigation model:
 
@@ -626,7 +626,7 @@ Potential Impact
 
 ---
 
-# Active Directory Incidents
+## Active Directory Incidents
 
 Active Directory remains a critical enterprise identity system.
 
@@ -643,7 +643,7 @@ Potential incidents include:
 
 ---
 
-# Active Directory Investigation
+## Active Directory Investigation
 
 Investigate:
 
@@ -677,7 +677,7 @@ Domain Resources
 
 ---
 
-# Domain-Level Compromise
+## Domain-Level Compromise
 
 A domain-level incident is significantly more serious than an isolated endpoint compromise.
 
@@ -694,7 +694,7 @@ Containment and recovery require specialized coordination.
 
 ---
 
-# Cloud Identity
+## Cloud Identity
 
 Cloud environments introduce identities such as:
 
@@ -722,7 +722,7 @@ Cloud Resource
 
 ---
 
-# Cloud Credential Types
+## Cloud Credential Types
 
 Potential credentials include:
 
@@ -737,7 +737,7 @@ Each requires different containment procedures.
 
 ---
 
-# Cloud API Activity
+## Cloud API Activity
 
 API logs can reveal:
 
@@ -765,7 +765,7 @@ Audit Log
 
 ---
 
-# Cloud Privilege Escalation
+## Cloud Privilege Escalation
 
 Potential indicators:
 
@@ -793,7 +793,7 @@ Administrative Access
 
 ---
 
-# Cloud Containment
+## Cloud Containment
 
 Potential actions:
 
@@ -811,7 +811,7 @@ Exact mechanisms differ across cloud providers.
 
 ---
 
-# API Key Exposure
+## API Key Exposure
 
 API keys may be exposed through:
 
@@ -842,7 +842,7 @@ Investigate
 
 ---
 
-# Secrets in CI/CD
+## Secrets in CI/CD
 
 CI/CD environments may contain:
 
@@ -856,7 +856,7 @@ An attacker compromising CI/CD credentials may gain access to production infrast
 
 ---
 
-# Identity and CI/CD Architecture
+## Identity and CI/CD Architecture
 
 ```text
 Developer
@@ -877,7 +877,7 @@ CI/CD
 
 ---
 
-# Identity Persistence
+## Identity Persistence
 
 Attackers may maintain access through:
 
@@ -895,7 +895,7 @@ Therefore:
 
 ---
 
-# Identity Eradication
+## Identity Eradication
 
 A mature identity eradication process includes:
 
@@ -923,7 +923,7 @@ Validate
 
 ---
 
-# Account Recovery
+## Account Recovery
 
 Before restoring an account:
 
@@ -940,7 +940,7 @@ Before restoring an account:
 
 ---
 
-# Cloud Incident Recovery
+## Cloud Incident Recovery
 
 Recovery should verify:
 
@@ -963,42 +963,42 @@ Resources
 
 ---
 
-# Identity Detection
+## Identity Detection
 
 Useful detection categories include:
 
-### Authentication
+#### Authentication
 
 - Impossible travel
 - New device
 - New location
 - Unusual time
 
-### Privilege
+#### Privilege
 
 - New admin
 - Role escalation
 - Group modification
 
-### Session
+#### Session
 
 - Token anomalies
 - Concurrent unusual sessions
 
-### Cloud
+#### Cloud
 
 - New access key
 - New service principal
 - Suspicious API activity
 
-### OAuth
+#### OAuth
 
 - Suspicious consent
 - High-risk scopes
 
 ---
 
-# Detection Example
+## Detection Example
 
 A suspicious identity sequence:
 
@@ -1025,7 +1025,7 @@ Correlation across these events is more valuable than analyzing each alert indep
 
 ---
 
-# Identity Incident Correlation
+## Identity Incident Correlation
 
 ```text
 Authentication
@@ -1048,103 +1048,103 @@ Cloud Activity│
 
 ---
 
-# Common Identity Incident Mistakes
+## Common Identity Incident Mistakes
 
-## 1. Resetting Only the Password
+### 1. Resetting Only the Password
 
 Tokens may remain valid.
 
-## 2. Ignoring Sessions
+### 2. Ignoring Sessions
 
 Existing sessions may provide continued access.
 
-## 3. Ignoring OAuth
+### 3. Ignoring OAuth
 
 Third-party applications may retain permissions.
 
-## 4. Ignoring Service Accounts
+### 4. Ignoring Service Accounts
 
 Non-human identities may remain compromised.
 
-## 5. Ignoring Privileges
+### 5. Ignoring Privileges
 
 An attacker may have escalated access before detection.
 
-## 6. Ignoring Cloud Activity
+### 6. Ignoring Cloud Activity
 
 Cloud APIs may provide independent attacker access.
 
-## 7. Trusting Location Alone
+### 7. Trusting Location Alone
 
 VPNs and proxies can make location misleading.
 
-## 8. Failing to Review Persistence
+### 8. Failing to Review Persistence
 
 New keys or accounts may provide continued access.
 
 ---
 
-# Common Misconfigurations
+## Common Misconfigurations
 
-### No MFA
+#### No MFA
 
 Password compromise becomes significantly more dangerous.
 
-### Weak MFA
+#### Weak MFA
 
 Legacy or easily phished methods may increase risk.
 
-### Excessive Privileges
+#### Excessive Privileges
 
 A compromised user can cause greater damage.
 
-### Long-Lived Credentials
+#### Long-Lived Credentials
 
 Stolen credentials remain useful for longer.
 
-### No Session Revocation
+#### No Session Revocation
 
 Attackers may retain access after password resets.
 
-### No Cloud Audit Logging
+#### No Cloud Audit Logging
 
 Identity investigations become difficult.
 
-### Unmonitored Service Accounts
+#### Unmonitored Service Accounts
 
 Non-human identities become blind spots.
 
-### Unrestricted OAuth Consent
+#### Unrestricted OAuth Consent
 
 Users may authorize risky applications.
 
 ---
 
-# Practical Commands
+## Practical Commands
 
 These examples are for authorized administrative and defensive investigation.
 
-## Windows
+### Windows
 
-### Current User
+#### Current User
 
 ```powershell id="5zcr6s"
 whoami
 ```
 
-### Groups
+#### Groups
 
 ```powershell id="5ykc9j"
 whoami /groups
 ```
 
-### Logged-On Sessions
+#### Logged-On Sessions
 
 ```powershell id="1e8vvi"
 quser
 ```
 
-### Local Administrators
+#### Local Administrators
 
 ```powershell id="b8t0v3"
 Get-LocalGroupMember Administrators
@@ -1152,27 +1152,27 @@ Get-LocalGroupMember Administrators
 
 ---
 
-# Linux
+## Linux
 
-### Current Identity
+#### Current Identity
 
 ```bash id="xv0lry"
 id
 ```
 
-### Current User
+#### Current User
 
 ```bash id="v3a8qb"
 whoami
 ```
 
-### Logged-In Users
+#### Logged-In Users
 
 ```bash id="u3n3je"
 who
 ```
 
-### SSH Keys
+#### SSH Keys
 
 ```bash id="7xq8od"
 ls -la ~/.ssh/
@@ -1180,7 +1180,7 @@ ls -la ~/.ssh/
 
 ---
 
-# Identity Investigation Queries
+## Identity Investigation Queries
 
 A generic investigation query should correlate:
 
@@ -1206,11 +1206,11 @@ This is more useful than simply searching for failed logins.
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-# Lab — Compromised Enterprise Identity
+## Lab — Compromised Enterprise Identity
 
-## Scenario
+### Scenario
 
 SOC detects:
 
@@ -1230,7 +1230,7 @@ Events:
 
 ---
 
-# Task 1 — Assess
+## Task 1 — Assess
 
 Determine:
 
@@ -1243,7 +1243,7 @@ Is the attacker still active?
 
 ---
 
-# Task 2 — Contain
+## Task 2 — Contain
 
 Design actions covering:
 
@@ -1257,7 +1257,7 @@ Cloud Access
 
 ---
 
-# Task 3 — Scope
+## Task 3 — Scope
 
 Search for:
 
@@ -1273,7 +1273,7 @@ Privilege changes
 
 ---
 
-# Task 4 — Eradicate
+## Task 4 — Eradicate
 
 Remove:
 
@@ -1284,7 +1284,7 @@ Remove:
 
 ---
 
-# Task 5 — Recover
+## Task 5 — Recover
 
 Restore the identity only after:
 
@@ -1298,7 +1298,7 @@ Monitoring
 
 ---
 
-# Expected Investigation
+## Expected Investigation
 
 ```text
 Initial Access:
@@ -1326,9 +1326,9 @@ Investigate initial credential theft
 
 ---
 
-# Advanced Lab — Cloud Identity Compromise
+## Advanced Lab — Cloud Identity Compromise
 
-## Scenario
+### Scenario
 
 A cloud user creates:
 
@@ -1357,7 +1357,7 @@ Investigate:
 
 ---
 
-# Advanced Identity Investigation Model
+## Advanced Identity Investigation Model
 
 ```text
 Identity
@@ -1381,9 +1381,9 @@ Identity
 
 ---
 
-# Identity Incident Checklist
+## Identity Incident Checklist
 
-## Detection
+### Detection
 
 ```text
 [ ] Alert validated
@@ -1392,7 +1392,7 @@ Identity
 [ ] Device identified
 ```
 
-## Scope
+### Scope
 
 ```text
 [ ] Credentials reviewed
@@ -1403,7 +1403,7 @@ Identity
 [ ] Service accounts reviewed
 ```
 
-## Containment
+### Containment
 
 ```text
 [ ] Sessions revoked
@@ -1413,7 +1413,7 @@ Identity
 [ ] Suspicious applications restricted
 ```
 
-## Eradication
+### Eradication
 
 ```text
 [ ] Persistence removed
@@ -1422,7 +1422,7 @@ Identity
 [ ] Root cause fixed
 ```
 
-## Recovery
+### Recovery
 
 ```text
 [ ] MFA validated
@@ -1433,7 +1433,7 @@ Identity
 
 ---
 
-# Identity Incident Record
+## Identity Incident Record
 
 ```text
 Incident ID:
@@ -1482,35 +1482,35 @@ ________________________
 
 ---
 
-# Identity Maturity
+## Identity Maturity
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 - Basic authentication logs
 - Manual account disabling
 - Limited MFA
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - MFA
 - Standard account response
 - Basic identity monitoring
 
-## Level 3 — Defined
+### Level 3 — Defined
 
 - Conditional access
 - Privileged identity management
 - Centralized identity telemetry
 - Cloud audit logging
 
-## Level 4 — Measured
+### Level 4 — Measured
 
 - Risk-based authentication
 - Identity analytics
 - Session monitoring
 - Automated response
 
-## Level 5 — Optimized
+### Level 5 — Optimized
 
 - Phishing-resistant authentication
 - Continuous identity risk evaluation
@@ -1520,47 +1520,47 @@ ________________________
 
 ---
 
-# Identity Security Metrics
+## Identity Security Metrics
 
-### MFA Coverage
+#### MFA Coverage
 
 Percentage of applicable identities protected by MFA.
 
-### Privileged Account Coverage
+#### Privileged Account Coverage
 
 Percentage of privileged identities under enhanced controls.
 
-### Credential Rotation Time
+#### Credential Rotation Time
 
 Time required to rotate compromised credentials.
 
-### Session Revocation Time
+#### Session Revocation Time
 
 Time between compromise identification and session invalidation.
 
-### Identity Incident MTTD
+#### Identity Incident MTTD
 
 Mean time to detect identity compromise.
 
-### Identity Incident MTTC
+#### Identity Incident MTTC
 
 Mean time to contain identity compromise.
 
-### Privilege Exposure
+#### Privilege Exposure
 
 Amount of unnecessary privilege present in the environment.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. Why are identity incidents difficult?
+### 1. Why are identity incidents difficult?
 
 Because a compromised identity can access many independent systems without requiring traditional malware.
 
 ---
 
-## 2. What is the difference between authentication and authorization?
+### 2. What is the difference between authentication and authorization?
 
 Authentication establishes identity.
 
@@ -1568,7 +1568,7 @@ Authorization determines what the identity is allowed to access or perform.
 
 ---
 
-## 3. Is a successful login proof of compromise?
+### 3. Is a successful login proof of compromise?
 
 No.
 
@@ -1576,13 +1576,13 @@ A successful login must be evaluated using context such as device, source, time,
 
 ---
 
-## 4. What is MFA fatigue?
+### 4. What is MFA fatigue?
 
 Repeated MFA prompts designed to pressure a user into approving an authentication request.
 
 ---
 
-## 5. How would you respond to a compromised privileged account?
+### 5. How would you respond to a compromised privileged account?
 
 Priorities include:
 
@@ -1599,19 +1599,19 @@ Monitor
 
 ---
 
-## 6. Why isn't a password reset always sufficient?
+### 6. Why isn't a password reset always sufficient?
 
 Existing sessions, refresh tokens, API keys, OAuth grants, certificates, or other credentials may remain valid.
 
 ---
 
-## 7. What is OAuth abuse?
+### 7. What is OAuth abuse?
 
 Unauthorized or malicious use of delegated application permissions to access resources.
 
 ---
 
-## 8. How would you investigate a compromised cloud identity?
+### 8. How would you investigate a compromised cloud identity?
 
 Review:
 
@@ -1625,31 +1625,31 @@ Review:
 
 ---
 
-## 9. What is a service account?
+### 9. What is a service account?
 
 A non-human identity used by applications, services, workloads, or automation.
 
 ---
 
-## 10. Why are service accounts dangerous?
+### 10. Why are service accounts dangerous?
 
 They may have long-lived credentials, broad permissions, and limited monitoring.
 
 ---
 
-## 11. What is password spraying?
+### 11. What is password spraying?
 
 Attempting a small number of common passwords against many accounts rather than repeatedly attacking one account.
 
 ---
 
-## 12. What is credential stuffing?
+### 12. What is credential stuffing?
 
 Using previously leaked username/password combinations against other services.
 
 ---
 
-## 13. What is identity persistence?
+### 13. What is identity persistence?
 
 Mechanisms that allow an attacker to maintain access after the original credential or session has been removed.
 
@@ -1664,7 +1664,7 @@ Examples include:
 
 ---
 
-## 14. What would you investigate after discovering an attacker-created API key?
+### 14. What would you investigate after discovering an attacker-created API key?
 
 Determine:
 
@@ -1681,7 +1681,7 @@ Does it still exist?
 
 ---
 
-# Integration With Threat Hunting
+## Integration With Threat Hunting
 
 Identity incidents provide strong hunt opportunities.
 
@@ -1705,7 +1705,7 @@ Potential Campaign
 
 ---
 
-# Integration With Detection Engineering
+## Integration With Detection Engineering
 
 Forensic and incident findings can become detections:
 
@@ -1732,7 +1732,7 @@ Other examples:
 
 ---
 
-# Enterprise Identity Incident Architecture
+## Enterprise Identity Incident Architecture
 
 ```text
                        Identity Provider
@@ -1772,7 +1772,7 @@ Other examples:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Identity is one of the most important security boundaries in modern enterprise environments.
 
@@ -1821,9 +1821,9 @@ The most important principles are:
 
 ---
 
-# References
+## References
 
-### NIST
+#### NIST
 
 Computer Security Incident Handling Guide:
 
@@ -1833,13 +1833,13 @@ Digital Identity Guidelines:
 
 https://pages.nist.gov/800-63-3/
 
-### CISA
+#### CISA
 
 Identity and access management resources:
 
 https://www.cisa.gov/
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 Credential Access:
 
@@ -1853,27 +1853,27 @@ Privilege Escalation:
 
 https://attack.mitre.org/tactics/TA0004/
 
-### OWASP
+#### OWASP
 
 Authentication guidance:
 
 https://owasp.org/www-project-authentication-cheat-sheet/
 
-### Cloud Security Alliance
+#### Cloud Security Alliance
 
 https://cloudsecurityalliance.org/
 
-### CIS Controls
+#### CIS Controls
 
 https://www.cisecurity.org/controls
 
-### FIRST
+#### FIRST
 
 https://www.first.org/
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Identity incidents should be investigated as complete attack paths rather than isolated authentication events.
 

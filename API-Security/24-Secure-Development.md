@@ -1,6 +1,6 @@
 # 24 - Secure API Development
 
-# Introduction
+## Introduction
 
 Secure API Development is the practice of designing, implementing, testing, deploying, and maintaining APIs that are resilient against modern security threats throughout their entire lifecycle.
 
@@ -45,7 +45,7 @@ Secure API
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -62,7 +62,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Security by Design
+## Security by Design
 
 Security should begin before the first line of code is written.
 
@@ -94,7 +94,7 @@ Design decisions have a greater impact on security than individual code changes.
 
 ---
 
-# Secure Development Lifecycle (SSDLC)
+## Secure Development Lifecycle (SSDLC)
 
 ```
 Requirements
@@ -136,7 +136,7 @@ Every stage includes security activities.
 
 ---
 
-# Core Secure Development Principles
+## Core Secure Development Principles
 
 Enterprise APIs should follow these principles:
 
@@ -153,7 +153,7 @@ These principles reduce both attack opportunities and operational risk.
 
 ---
 
-# Secure API Design
+## Secure API Design
 
 Before implementation, define:
 
@@ -185,7 +185,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies risks before development.
 
@@ -220,7 +220,7 @@ Questions to consider
 
 ---
 
-# Data Classification
+## Data Classification
 
 Not all data requires the same level of protection.
 
@@ -235,7 +235,7 @@ Security controls should match the sensitivity of the data being processed.
 
 ---
 
-# Secure API Architecture
+## Secure API Architecture
 
 ```
 Internet
@@ -269,7 +269,7 @@ Security controls should exist at multiple layers.
 
 ---
 
-# Secure Coding Principles
+## Secure Coding Principles
 
 Developers should:
 
@@ -284,7 +284,7 @@ Developers should:
 
 ---
 
-# Input Validation
+## Input Validation
 
 Every external input should be considered untrusted.
 
@@ -318,7 +318,7 @@ Reject invalid input before business logic executes.
 
 ---
 
-# Allowlist Validation
+## Allowlist Validation
 
 Prefer allowlists over denylists.
 
@@ -344,7 +344,7 @@ Allowlists reduce unexpected behavior.
 
 ---
 
-# Output Encoding
+## Output Encoding
 
 Output encoding helps prevent interpretation issues when API responses are consumed by downstream systems or rendered in user interfaces.
 
@@ -359,7 +359,7 @@ Encoding should occur in the correct output context.
 
 ---
 
-# Secure Error Handling
+## Secure Error Handling
 
 Poor error handling exposes valuable information.
 
@@ -392,7 +392,7 @@ Detailed diagnostics belong in logs, not client responses.
 
 ---
 
-# Authentication Implementation
+## Authentication Implementation
 
 Authentication should include
 
@@ -407,7 +407,7 @@ Authentication verifies identity—it does not grant permissions.
 
 ---
 
-# Authorization Implementation
+## Authorization Implementation
 
 Enforce authorization
 
@@ -438,7 +438,7 @@ Never rely on client-side authorization checks.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Applications and services should receive only the permissions required to perform their intended functions.
 
@@ -453,7 +453,7 @@ Reducing privileges limits the impact of compromise.
 
 ---
 
-# Secret Management
+## Secret Management
 
 Never hard-code secrets into source code.
 
@@ -486,7 +486,7 @@ Rotate secrets regularly and control access.
 
 ---
 
-# Cryptography
+## Cryptography
 
 Use well-established cryptographic algorithms and libraries.
 
@@ -502,7 +502,7 @@ Avoid creating custom cryptographic implementations.
 
 ---
 
-# Secure Session Management
+## Secure Session Management
 
 Review
 
@@ -517,7 +517,7 @@ Sessions should expire appropriately based on application risk.
 
 ---
 
-# File Upload Security
+## File Upload Security
 
 Implement controls for
 
@@ -532,7 +532,7 @@ Uploaded files should never be implicitly trusted.
 
 ---
 
-# Logging and Auditing
+## Logging and Auditing
 
 Log security-relevant events such as
 
@@ -547,7 +547,7 @@ Logs should support investigations while protecting sensitive information.
 
 ---
 
-# Secure Dependency Management
+## Secure Dependency Management
 
 Review dependencies for
 
@@ -561,7 +561,7 @@ Outdated dependencies can introduce avoidable risk.
 
 ---
 
-# Secure Configuration
+## Secure Configuration
 
 Secure defaults should include
 
@@ -576,7 +576,7 @@ Configuration should be version-controlled and reviewed.
 
 ---
 
-# API Versioning Strategy
+## API Versioning Strategy
 
 Version APIs intentionally.
 
@@ -600,7 +600,7 @@ Recommendations
 
 ---
 
-# Rate Limiting
+## Rate Limiting
 
 Protect against abuse by enforcing limits on
 
@@ -615,7 +615,7 @@ Rate limiting should complement authentication and authorization.
 
 ---
 
-# Secure Deployment
+## Secure Deployment
 
 Before deployment verify
 
@@ -630,7 +630,7 @@ Deployment should be repeatable and automated where practical.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Manage infrastructure securely using code.
 
@@ -646,7 +646,7 @@ Infrastructure should follow the same governance as application code.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -688,7 +688,7 @@ Security validation should occur continuously.
 
 ---
 
-# Zero Trust for APIs
+## Zero Trust for APIs
 
 Zero Trust principles include
 
@@ -703,7 +703,7 @@ Zero Trust minimizes implicit trust relationships.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Internet
@@ -741,7 +741,7 @@ Multiple independent controls provide greater resilience.
 
 ---
 
-# Secure Development Checklist
+## Secure Development Checklist
 
 Before release, confirm:
 
@@ -758,7 +758,7 @@ Before release, confirm:
 
 ---
 
-# Best Practices
+## Best Practices
 
 Development
 
@@ -778,7 +778,7 @@ Operations
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid
 
@@ -793,7 +793,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure API development begins with secure design.
 - Security should be integrated into every SDLC phase.
@@ -803,7 +803,7 @@ Avoid
 
 ---
 
-# Secure Coding Patterns
+## Secure Coding Patterns
 
 Secure coding transforms security principles into consistent implementation practices.
 
@@ -843,7 +843,7 @@ Secure API
 
 ---
 
-# Defensive Programming
+## Defensive Programming
 
 Defensive programming assumes that every external interaction may be invalid or malicious.
 
@@ -874,7 +874,7 @@ Process
 
 ---
 
-# Secure Request Processing Pipeline
+## Secure Request Processing Pipeline
 
 ```
 Incoming Request
@@ -920,7 +920,7 @@ Each stage provides an independent security control.
 
 ---
 
-# Principle of Complete Mediation
+## Principle of Complete Mediation
 
 Every request should be evaluated independently.
 
@@ -959,7 +959,7 @@ Every protected request requires authorization.
 
 ---
 
-# Secure Object Access
+## Secure Object Access
 
 Object ownership should always be verified before processing.
 
@@ -985,7 +985,7 @@ This prevents Broken Object Level Authorization (BOLA).
 
 ---
 
-# Input Validation Pipeline
+## Input Validation Pipeline
 
 ```
 Client Input
@@ -1019,7 +1019,7 @@ Validation should occur before business logic executes.
 
 ---
 
-# Canonicalization
+## Canonicalization
 
 Normalize data before validation.
 
@@ -1050,7 +1050,7 @@ Validation performed before normalization may produce inconsistent results.
 
 ---
 
-# Secure Business Logic
+## Secure Business Logic
 
 Business rules should be enforced server-side.
 
@@ -1066,7 +1066,7 @@ Client-side validation improves usability but does not provide security.
 
 ---
 
-# Idempotent Operations
+## Idempotent Operations
 
 Some API operations should safely handle repeated requests.
 
@@ -1100,7 +1100,7 @@ Idempotency helps prevent duplicate processing during retries.
 
 ---
 
-# Secure API Responses
+## Secure API Responses
 
 Responses should contain only the information required by the client.
 
@@ -1117,7 +1117,7 @@ Practice the principle of minimum disclosure.
 
 ---
 
-# Secure Error Responses
+## Secure Error Responses
 
 Example response categories
 
@@ -1133,7 +1133,7 @@ Detailed technical information should remain in server logs.
 
 ---
 
-# Secure Logging Strategy
+## Secure Logging Strategy
 
 Security logs should record
 
@@ -1166,7 +1166,7 @@ SOC
 
 ---
 
-# Sensitive Data Handling
+## Sensitive Data Handling
 
 Sensitive information should receive additional protection throughout its lifecycle.
 
@@ -1188,7 +1188,7 @@ Consider
 
 ---
 
-# Privacy by Design
+## Privacy by Design
 
 Privacy considerations should be incorporated during system design.
 
@@ -1204,7 +1204,7 @@ Security and privacy are complementary objectives.
 
 ---
 
-# API Version Governance
+## API Version Governance
 
 Manage API evolution using documented governance.
 
@@ -1234,7 +1234,7 @@ Deprecated APIs should be monitored until fully retired.
 
 ---
 
-# Secure Configuration Management
+## Secure Configuration Management
 
 Configuration should include
 
@@ -1248,7 +1248,7 @@ Configuration drift should be monitored continuously.
 
 ---
 
-# Feature Flags and Security
+## Feature Flags and Security
 
 Feature flags should never bypass security controls.
 
@@ -1276,7 +1276,7 @@ Security controls should remain active regardless of feature state.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -1326,7 +1326,7 @@ Security gates should prevent deployments that fail established security require
 
 ---
 
-# Secure Code Review
+## Secure Code Review
 
 Review for
 
@@ -1343,7 +1343,7 @@ Security reviews complement automated analysis.
 
 ---
 
-# Secure Release Checklist
+## Secure Release Checklist
 
 Before deployment verify
 
@@ -1362,7 +1362,7 @@ Before deployment verify
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1379,7 +1379,7 @@ Recommended detections
 
 ---
 
-# Detection Pipeline
+## Detection Pipeline
 
 ```
 API Gateway
@@ -1413,7 +1413,7 @@ Effective detections combine application, infrastructure, and identity telemetry
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Recommended telemetry sources
 
@@ -1453,7 +1453,7 @@ SOC Investigation
 
 ---
 
-# Enterprise Secure Development Architecture
+## Enterprise Secure Development Architecture
 
 ```
                    Developers
@@ -1525,7 +1525,7 @@ SOC Investigation
 
 ---
 
-# Hands-on Lab 1 – Secure Design Review
+## Hands-on Lab 1 – Secure Design Review
 
 **Objective**
 
@@ -1547,7 +1547,7 @@ Evaluate an API design before implementation.
 
 ---
 
-# Hands-on Lab 2 – Secure Development Checklist
+## Hands-on Lab 2 – Secure Development Checklist
 
 **Objective**
 
@@ -1569,7 +1569,7 @@ Validate a secure implementation before deployment.
 
 ---
 
-# Hands-on Lab 3 – Security Gate Validation
+## Hands-on Lab 3 – Security Gate Validation
 
 **Objective**
 
@@ -1591,9 +1591,9 @@ Verify DevSecOps security controls.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Authorization Checks Are Inconsistent
+### Authorization Checks Are Inconsistent
 
 Possible causes
 
@@ -1604,7 +1604,7 @@ Possible causes
 
 ---
 
-## Validation Rejects Legitimate Requests
+### Validation Rejects Legitimate Requests
 
 Possible causes
 
@@ -1615,7 +1615,7 @@ Possible causes
 
 ---
 
-## Sensitive Information Appears in Logs
+### Sensitive Information Appears in Logs
 
 Possible causes
 
@@ -1626,7 +1626,7 @@ Possible causes
 
 ---
 
-## Security Gates Delay Releases
+### Security Gates Delay Releases
 
 Possible causes
 
@@ -1637,7 +1637,7 @@ Possible causes
 
 ---
 
-## Configuration Drift Detected
+### Configuration Drift Detected
 
 Possible causes
 
@@ -1648,9 +1648,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is Security by Design?
 2. Why should all input be treated as untrusted?
@@ -1665,7 +1665,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. How would you design a secure request processing pipeline?
 12. How does idempotency improve API reliability and security?
@@ -1680,7 +1680,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1712,7 +1712,7 @@ A payment service occasionally processes duplicate transactions after clients re
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 This chapter focused on building secure APIs from the earliest design stages through deployment and operations.
 
@@ -1738,7 +1738,7 @@ Secure API development is an ongoing process that combines sound architecture, d
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1754,16 +1754,16 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - OWASP API Security Top 10
 - OWASP ASVS
 - NIST Secure Software Development Framework (SSDF)
 - NIST SP 800-53
 
-## Further Reading
+### Further Reading
 
 - OWASP Cheat Sheet Series
 - OpenTelemetry Specification
@@ -1772,7 +1772,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 25 – API Monitoring and Logging**
 

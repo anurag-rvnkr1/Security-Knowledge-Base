@@ -1,6 +1,6 @@
 # 28-Active-Directory-Cheat-Sheet.md
 
-# Part 1 — Ultimate Active Directory Cheat Sheet (Quick Revision Guide)
+## Part 1 — Ultimate Active Directory Cheat Sheet (Quick Revision Guide)
 
 > **Purpose**
 >
@@ -8,7 +8,7 @@
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will have a quick reference for:
 
@@ -23,7 +23,7 @@ After completing this part, you will have a quick reference for:
 
 ---
 
-# Active Directory Overview
+## Active Directory Overview
 
 | Item | Description |
 |------|-------------|
@@ -35,7 +35,7 @@ After completing this part, you will have a quick reference for:
 
 ---
 
-# Core Components
+## Core Components
 
 ```
 Forest
@@ -55,7 +55,7 @@ Users / Groups / Computers
 
 ---
 
-# Logical Components
+## Logical Components
 
 | Component | Purpose |
 |-----------|---------|
@@ -69,7 +69,7 @@ Users / Groups / Computers
 
 ---
 
-# Physical Components
+## Physical Components
 
 | Component | Purpose |
 |-----------|---------|
@@ -81,7 +81,7 @@ Users / Groups / Computers
 
 ---
 
-# Authentication
+## Authentication
 
 ```
 User
@@ -105,7 +105,7 @@ Access Granted
 
 ---
 
-# Authentication Protocols
+## Authentication Protocols
 
 | Protocol | Purpose |
 |----------|----------|
@@ -116,7 +116,7 @@ Access Granted
 
 ---
 
-# Authorization
+## Authorization
 
 ```
 Authentication
@@ -136,7 +136,7 @@ Authorization determines **what you can access**.
 
 ---
 
-# Important Ports
+## Important Ports
 
 | Service | Port |
 |----------|------|
@@ -149,7 +149,7 @@ Authorization determines **what you can access**.
 
 ---
 
-# Active Directory Objects
+## Active Directory Objects
 
 | Object | Purpose |
 |---------|----------|
@@ -163,7 +163,7 @@ Authorization determines **what you can access**.
 
 ---
 
-# Group Types
+## Group Types
 
 | Type | Purpose |
 |------|----------|
@@ -172,7 +172,7 @@ Authorization determines **what you can access**.
 
 ---
 
-# Group Scopes
+## Group Scopes
 
 | Scope | Usage |
 |--------|-------|
@@ -182,7 +182,7 @@ Authorization determines **what you can access**.
 
 ---
 
-# FSMO Roles
+## FSMO Roles
 
 | Role | Scope |
 |------|--------|
@@ -194,7 +194,7 @@ Authorization determines **what you can access**.
 
 ---
 
-# Replication
+## Replication
 
 ```
 Directory Change
@@ -220,7 +220,7 @@ Purpose:
 
 ---
 
-# Group Policy
+## Group Policy
 
 Can be linked to:
 
@@ -238,7 +238,7 @@ Common Uses:
 
 ---
 
-# DNS Quick Facts
+## DNS Quick Facts
 
 - Required for Active Directory
 - Locates Domain Controllers
@@ -248,7 +248,7 @@ Common Uses:
 
 ---
 
-# Global Catalog
+## Global Catalog
 
 Purpose:
 
@@ -259,7 +259,7 @@ Purpose:
 
 ---
 
-# Organizational Units
+## Organizational Units
 
 Purpose:
 
@@ -270,7 +270,7 @@ Purpose:
 
 ---
 
-# Trust Types
+## Trust Types
 
 | Trust | Purpose |
 |--------|----------|
@@ -282,7 +282,7 @@ Purpose:
 
 ---
 
-# Common Administrative Tools
+## Common Administrative Tools
 
 | Tool | Purpose |
 |------|----------|
@@ -296,7 +296,7 @@ Purpose:
 
 ---
 
-# Microsoft Entra ID
+## Microsoft Entra ID
 
 Purpose:
 
@@ -309,7 +309,7 @@ Purpose:
 
 ---
 
-# Security Principles
+## Security Principles
 
 - Least Privilege
 - Defense in Depth
@@ -321,7 +321,7 @@ Purpose:
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 Identify Problem
@@ -357,7 +357,7 @@ Document
 
 ---
 
-# Common Problems
+## Common Problems
 
 | Problem | First Thing to Check |
 |----------|----------------------|
@@ -370,7 +370,7 @@ Document
 
 ---
 
-# Interview Keywords
+## Interview Keywords
 
 Know these terms:
 
@@ -393,7 +393,7 @@ Know these terms:
 
 ---
 
-# Memory Trick
+## Memory Trick
 
 ```
 Forest
@@ -421,7 +421,7 @@ Remember:
 
 ---
 
-# 15-Second Revision
+## 15-Second Revision
 
 - Forest = Highest boundary
 - Domain = Security boundary
@@ -436,7 +436,7 @@ Remember:
 
 ---
 
-# Beginner Interview Revision
+## Beginner Interview Revision
 
 You should confidently answer:
 
@@ -453,7 +453,7 @@ You should confidently answer:
 
 ---
 
-# Administrator Revision
+## Administrator Revision
 
 Know how to:
 
@@ -468,7 +468,7 @@ Know how to:
 
 ---
 
-# Security Revision
+## Security Revision
 
 Remember:
 
@@ -483,7 +483,7 @@ Remember:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory is Microsoft's centralized identity platform.
 - DNS, Kerberos, LDAP, and Group Policy are foundational technologies.
@@ -493,9 +493,9 @@ Remember:
 
 ---
 
-# 28-Active-Directory-Cheat-Sheet.md
+## 28-Active-Directory-Cheat-Sheet.md
 
-# Part 2 — Active Directory Administration, PowerShell, Security and Troubleshooting Cheat Sheet
+## Part 2 — Active Directory Administration, PowerShell, Security and Troubleshooting Cheat Sheet
 
 > **Purpose**
 >
@@ -503,7 +503,7 @@ Remember:
 
 ---
 
-# Active Directory Administrative Workflow
+## Active Directory Administrative Workflow
 
 ```
 Create User
@@ -535,7 +535,7 @@ Audit
 
 ---
 
-# Daily Administrator Checklist
+## Daily Administrator Checklist
 
 | Task | Purpose |
 |------|---------|
@@ -550,7 +550,7 @@ Audit
 
 ---
 
-# Weekly Administrator Checklist
+## Weekly Administrator Checklist
 
 - Review inactive user accounts
 - Review inactive computer accounts
@@ -563,7 +563,7 @@ Audit
 
 ---
 
-# Monthly Administrator Checklist
+## Monthly Administrator Checklist
 
 - Test backup restoration procedures
 - Review access permissions
@@ -576,7 +576,7 @@ Audit
 
 ---
 
-# User Administration
+## User Administration
 
 Typical lifecycle:
 
@@ -610,7 +610,7 @@ Monitor
 
 ---
 
-# Group Administration
+## Group Administration
 
 Best practices:
 
@@ -622,7 +622,7 @@ Best practices:
 
 ---
 
-# Computer Administration
+## Computer Administration
 
 Typical tasks:
 
@@ -635,7 +635,7 @@ Typical tasks:
 
 ---
 
-# Organizational Unit Administration
+## Organizational Unit Administration
 
 Use OUs to:
 
@@ -663,9 +663,9 @@ Company
 
 ---
 
-# PowerShell Cheat Sheet
+## PowerShell Cheat Sheet
 
-## Get AD User
+### Get AD User
 
 ```powershell
 Get-ADUser username
@@ -677,7 +677,7 @@ Retrieve user information.
 
 ---
 
-## Get All Users
+### Get All Users
 
 ```powershell
 Get-ADUser -Filter *
@@ -689,7 +689,7 @@ List all users.
 
 ---
 
-## Get AD Computer
+### Get AD Computer
 
 ```powershell
 Get-ADComputer -Filter *
@@ -701,7 +701,7 @@ List computers.
 
 ---
 
-## Get AD Groups
+### Get AD Groups
 
 ```powershell
 Get-ADGroup -Filter *
@@ -713,7 +713,7 @@ List groups.
 
 ---
 
-## Get Group Members
+### Get Group Members
 
 ```powershell
 Get-ADGroupMember "IT Admins"
@@ -725,7 +725,7 @@ View members of a group.
 
 ---
 
-## Unlock User Account
+### Unlock User Account
 
 ```powershell
 Unlock-ADAccount username
@@ -737,7 +737,7 @@ Unlock a locked account.
 
 ---
 
-## Disable User
+### Disable User
 
 ```powershell
 Disable-ADAccount username
@@ -749,7 +749,7 @@ Disable an account.
 
 ---
 
-## Enable User
+### Enable User
 
 ```powershell
 Enable-ADAccount username
@@ -761,7 +761,7 @@ Enable an account.
 
 ---
 
-## Reset Password
+### Reset Password
 
 ```powershell
 Set-ADAccountPassword
@@ -777,9 +777,9 @@ Reset a user's password.
 
 ---
 
-# Active Directory Security Cheat Sheet
+## Active Directory Security Cheat Sheet
 
-## Least Privilege
+### Least Privilege
 
 ```
 Only Required Permissions
@@ -791,7 +791,7 @@ Reduced Risk
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 ```
 Identity
@@ -815,7 +815,7 @@ Auditing
 
 ---
 
-## Multi-Factor Authentication
+### Multi-Factor Authentication
 
 ```
 Password
@@ -831,7 +831,7 @@ Authentication
 
 ---
 
-## Zero Trust
+### Zero Trust
 
 ```
 Never Trust
@@ -847,7 +847,7 @@ Grant Access
 
 ---
 
-## Privileged Accounts
+### Privileged Accounts
 
 Recommendations:
 
@@ -860,7 +860,7 @@ Recommendations:
 
 ---
 
-# Active Directory Health Checks
+## Active Directory Health Checks
 
 Review:
 
@@ -876,9 +876,9 @@ Review:
 
 ---
 
-# Troubleshooting Quick Guide
+## Troubleshooting Quick Guide
 
-## Login Failure
+### Login Failure
 
 Check:
 
@@ -890,7 +890,7 @@ Check:
 
 ---
 
-## Group Policy Failure
+### Group Policy Failure
 
 Check:
 
@@ -902,7 +902,7 @@ Check:
 
 ---
 
-## DNS Issues
+### DNS Issues
 
 Check:
 
@@ -913,7 +913,7 @@ Check:
 
 ---
 
-## Replication Issues
+### Replication Issues
 
 Check:
 
@@ -925,7 +925,7 @@ Check:
 
 ---
 
-## Hybrid Identity Issues
+### Hybrid Identity Issues
 
 Check:
 
@@ -937,7 +937,7 @@ Check:
 
 ---
 
-# Event Logs to Review
+## Event Logs to Review
 
 | Log | Purpose |
 |-----|----------|
@@ -949,7 +949,7 @@ Check:
 
 ---
 
-# Important Active Directory Services
+## Important Active Directory Services
 
 | Service | Purpose |
 |----------|----------|
@@ -961,7 +961,7 @@ Check:
 
 ---
 
-# Security Monitoring Checklist
+## Security Monitoring Checklist
 
 Monitor:
 
@@ -976,7 +976,7 @@ Monitor:
 
 ---
 
-# Backup Checklist
+## Backup Checklist
 
 ```
 Backup Completed
@@ -1004,7 +1004,7 @@ Document Results
 
 ---
 
-# Incident Response Workflow
+## Incident Response Workflow
 
 ```
 Detect
@@ -1036,7 +1036,7 @@ Review
 
 ---
 
-# Change Management Workflow
+## Change Management Workflow
 
 ```
 Request
@@ -1064,7 +1064,7 @@ Documentation
 
 ---
 
-# Quick Architecture Diagram
+## Quick Architecture Diagram
 
 ```
                  Forest
@@ -1086,7 +1086,7 @@ Documentation
 
 ---
 
-# Active Directory Best Practices
+## Active Directory Best Practices
 
 - Use multiple Domain Controllers.
 - Keep DNS healthy.
@@ -1101,7 +1101,7 @@ Documentation
 
 ---
 
-# 60-Second Administrator Revision
+## 60-Second Administrator Revision
 
 Remember:
 
@@ -1121,7 +1121,7 @@ Remember:
 
 ---
 
-# Interview Flash Cards
+## Interview Flash Cards
 
 | Question | Answer |
 |----------|--------|
@@ -1138,7 +1138,7 @@ Remember:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Standardized administration improves operational consistency.
 - PowerShell simplifies repetitive Active Directory management tasks.
@@ -1148,9 +1148,9 @@ Remember:
 
 ---
 
-# 28-Active-Directory-Cheat-Sheet.md
+## 28-Active-Directory-Cheat-Sheet.md
 
-# Part 3 — Active Directory Security, Hybrid Identity, PowerShell, Ports, Services and Interview Revision Cheat Sheet
+## Part 3 — Active Directory Security, Hybrid Identity, PowerShell, Ports, Services and Interview Revision Cheat Sheet
 
 > **Purpose**
 >
@@ -1158,7 +1158,7 @@ Remember:
 
 ---
 
-# Active Directory Security Model
+## Active Directory Security Model
 
 ```
 Identity
@@ -1188,7 +1188,7 @@ Security begins with **identity** and continues throughout the user's lifecycle.
 
 ---
 
-# Identity Lifecycle
+## Identity Lifecycle
 
 ```
 Hire
@@ -1228,7 +1228,7 @@ Archive
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 User
@@ -1262,7 +1262,7 @@ Multiple security layers reduce organizational risk.
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 Always remember:
 
@@ -1284,7 +1284,7 @@ Continuous Validation
 
 ---
 
-# Authentication Flow
+## Authentication Flow
 
 ```
 User
@@ -1316,7 +1316,7 @@ Access
 
 ---
 
-# Kerberos Quick Revision
+## Kerberos Quick Revision
 
 Purpose:
 
@@ -1345,7 +1345,7 @@ Service Access
 
 ---
 
-# LDAP Quick Revision
+## LDAP Quick Revision
 
 Purpose:
 
@@ -1361,7 +1361,7 @@ Examples:
 
 ---
 
-# DNS Quick Revision
+## DNS Quick Revision
 
 DNS provides:
 
@@ -1378,7 +1378,7 @@ Without DNS:
 
 ---
 
-# Group Policy Quick Revision
+## Group Policy Quick Revision
 
 Applied to:
 
@@ -1396,7 +1396,7 @@ Common configurations:
 
 ---
 
-# FSMO Roles
+## FSMO Roles
 
 | Role | Responsibility |
 |------|----------------|
@@ -1408,7 +1408,7 @@ Common configurations:
 
 ---
 
-# Replication
+## Replication
 
 Purpose:
 
@@ -1428,7 +1428,7 @@ Replication ensures all Domain Controllers maintain consistent directory informa
 
 ---
 
-# Global Catalog
+## Global Catalog
 
 Purpose:
 
@@ -1439,7 +1439,7 @@ Purpose:
 
 ---
 
-# Organizational Units
+## Organizational Units
 
 Remember:
 
@@ -1463,7 +1463,7 @@ OUs are **not** security boundaries.
 
 ---
 
-# Group Scope Revision
+## Group Scope Revision
 
 | Scope | Typical Usage |
 |--------|---------------|
@@ -1473,7 +1473,7 @@ OUs are **not** security boundaries.
 
 ---
 
-# Common Administrative Tools
+## Common Administrative Tools
 
 | Tool | Purpose |
 |------|----------|
@@ -1488,7 +1488,7 @@ OUs are **not** security boundaries.
 
 ---
 
-# Frequently Used PowerShell Cmdlets
+## Frequently Used PowerShell Cmdlets
 
 | Cmdlet | Purpose |
 |---------|----------|
@@ -1508,7 +1508,7 @@ OUs are **not** security boundaries.
 
 ---
 
-# Common Active Directory Ports
+## Common Active Directory Ports
 
 | Protocol | Port | Purpose |
 |-----------|-----:|----------|
@@ -1523,7 +1523,7 @@ OUs are **not** security boundaries.
 
 ---
 
-# Important Windows Services
+## Important Windows Services
 
 | Service | Purpose |
 |----------|----------|
@@ -1535,7 +1535,7 @@ OUs are **not** security boundaries.
 
 ---
 
-# Hybrid Identity
+## Hybrid Identity
 
 ```
 On-Premises AD
@@ -1559,7 +1559,7 @@ Cloud Applications
 
 ---
 
-# Microsoft Entra ID Features
+## Microsoft Entra ID Features
 
 - Single Sign-On (SSO)
 - Multi-Factor Authentication (MFA)
@@ -1571,7 +1571,7 @@ Cloud Applications
 
 ---
 
-# Conditional Access
+## Conditional Access
 
 Evaluates:
 
@@ -1604,9 +1604,9 @@ Block
 
 ---
 
-# Troubleshooting Checklist
+## Troubleshooting Checklist
 
-## User Cannot Log In
+### User Cannot Log In
 
 Check:
 
@@ -1619,7 +1619,7 @@ Check:
 
 ---
 
-## Replication Problems
+### Replication Problems
 
 Review:
 
@@ -1631,7 +1631,7 @@ Review:
 
 ---
 
-## Group Policy Problems
+### Group Policy Problems
 
 Verify:
 
@@ -1643,7 +1643,7 @@ Verify:
 
 ---
 
-## DNS Problems
+### DNS Problems
 
 Review:
 
@@ -1654,7 +1654,7 @@ Review:
 
 ---
 
-# Event Logs
+## Event Logs
 
 Most useful logs:
 
@@ -1668,7 +1668,7 @@ Most useful logs:
 
 ---
 
-# Backup Checklist
+## Backup Checklist
 
 ```
 Backup
@@ -1692,7 +1692,7 @@ Document
 
 ---
 
-# Disaster Recovery Checklist
+## Disaster Recovery Checklist
 
 - Backup available
 - Recovery documentation
@@ -1704,7 +1704,7 @@ Document
 
 ---
 
-# Security Checklist
+## Security Checklist
 
 Daily:
 
@@ -1730,7 +1730,7 @@ Monthly:
 
 ---
 
-# Active Directory Best Practices
+## Active Directory Best Practices
 
 - Deploy multiple Domain Controllers.
 - Use Role-Based Access Control (RBAC).
@@ -1745,9 +1745,9 @@ Monthly:
 
 ---
 
-# One-Page Interview Revision
+## One-Page Interview Revision
 
-## Core Concepts
+### Core Concepts
 
 - Active Directory
 - Forest
@@ -1760,7 +1760,7 @@ Monthly:
 
 ---
 
-## Authentication
+### Authentication
 
 - Kerberos
 - LDAP
@@ -1769,7 +1769,7 @@ Monthly:
 
 ---
 
-## Administration
+### Administration
 
 - User management
 - Group management
@@ -1780,7 +1780,7 @@ Monthly:
 
 ---
 
-## Security
+### Security
 
 - MFA
 - Conditional Access
@@ -1790,7 +1790,7 @@ Monthly:
 
 ---
 
-## Troubleshooting
+### Troubleshooting
 
 - DNS
 - Replication
@@ -1800,7 +1800,7 @@ Monthly:
 
 ---
 
-# 2-Minute Interview Revision
+## 2-Minute Interview Revision
 
 If you only have two minutes before an interview, remember:
 
@@ -1817,7 +1817,7 @@ If you only have two minutes before an interview, remember:
 
 ---
 
-# Memory Map
+## Memory Map
 
 ```
                 Active Directory
@@ -1845,7 +1845,7 @@ If you only have two minutes before an interview, remember:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory administration combines identity management, security, networking, and troubleshooting.
 - DNS, Kerberos, LDAP, Group Policy, and replication form the foundation of AD.
@@ -1855,9 +1855,9 @@ If you only have two minutes before an interview, remember:
 
 ---
 
-# 28-Active-Directory-Cheat-Sheet.md
+## 28-Active-Directory-Cheat-Sheet.md
 
-# Part 4 — Ultimate One-Page Active Directory Cheat Sheet, Memory Maps, Final Revision and Chapter Summary
+## Part 4 — Ultimate One-Page Active Directory Cheat Sheet, Memory Maps, Final Revision and Chapter Summary
 
 > **Purpose**
 >
@@ -1865,7 +1865,7 @@ If you only have two minutes before an interview, remember:
 
 ---
 
-# The Complete Active Directory Mind Map
+## The Complete Active Directory Mind Map
 
 ```
                          Active Directory
@@ -1892,7 +1892,7 @@ If you only have two minutes before an interview, remember:
 
 ---
 
-# Active Directory in One Minute
+## Active Directory in One Minute
 
 ```
 Users
@@ -1925,7 +1925,7 @@ Remember:
 
 ---
 
-# Core Components Summary
+## Core Components Summary
 
 | Component | Purpose |
 |-----------|---------|
@@ -1942,7 +1942,7 @@ Remember:
 
 ---
 
-# Authentication Quick Flow
+## Authentication Quick Flow
 
 ```
 User
@@ -1974,7 +1974,7 @@ Application
 
 ---
 
-# Administrative Workflow
+## Administrative Workflow
 
 ```
 Create User
@@ -2006,7 +2006,7 @@ Audit
 
 ---
 
-# Hybrid Identity Workflow
+## Hybrid Identity Workflow
 
 ```
 Active Directory
@@ -2030,7 +2030,7 @@ Cloud Applications
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 Identify
@@ -2068,7 +2068,7 @@ Never skip validation.
 
 ---
 
-# Active Directory Security Pyramid
+## Active Directory Security Pyramid
 
 ```
              Monitoring
@@ -2088,7 +2088,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-# 25 Most Important Interview Terms
+## 25 Most Important Interview Terms
 
 | Term | Remember |
 |------|----------|
@@ -2120,7 +2120,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-# 15 Most Common Administrator Tasks
+## 15 Most Common Administrator Tasks
 
 - Create users
 - Disable users
@@ -2140,9 +2140,9 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-# Active Directory Health Checklist
+## Active Directory Health Checklist
 
-## Daily
+### Daily
 
 - Review authentication failures
 - Verify Domain Controller health
@@ -2152,7 +2152,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-## Weekly
+### Weekly
 
 - Review replication
 - Check inactive accounts
@@ -2162,7 +2162,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-## Monthly
+### Monthly
 
 - Test backup restoration
 - Audit permissions
@@ -2172,9 +2172,9 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-# Top Troubleshooting Checklist
+## Top Troubleshooting Checklist
 
-## Authentication
+### Authentication
 
 - User account
 - Password
@@ -2184,7 +2184,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-## DNS
+### DNS
 
 - Service status
 - Zone health
@@ -2193,7 +2193,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-## Replication
+### Replication
 
 - Domain Controller health
 - Site topology
@@ -2202,7 +2202,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-## Group Policy
+### Group Policy
 
 - OU placement
 - GPO link
@@ -2211,7 +2211,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-## Hybrid Identity
+### Hybrid Identity
 
 - Synchronization
 - User provisioning
@@ -2220,9 +2220,9 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
-## Identity
+### Identity
 
 - Use standardized naming conventions.
 - Remove unused accounts promptly.
@@ -2230,7 +2230,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-## Security
+### Security
 
 - Apply Least Privilege.
 - Require MFA for privileged accounts.
@@ -2239,7 +2239,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-## Infrastructure
+### Infrastructure
 
 - Deploy multiple Domain Controllers.
 - Maintain healthy DNS.
@@ -2248,7 +2248,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-## Operations
+### Operations
 
 - Follow change management.
 - Document every significant change.
@@ -2257,7 +2257,7 @@ Security should be layered rather than relying on a single control.
 
 ---
 
-# Common Interview Mistakes
+## Common Interview Mistakes
 
 Avoid:
 
@@ -2270,7 +2270,7 @@ Avoid:
 
 ---
 
-# Final Interview Strategy
+## Final Interview Strategy
 
 When answering technical questions:
 
@@ -2304,7 +2304,7 @@ Best Practice
 
 ---
 
-# Active Directory Revision Roadmap
+## Active Directory Revision Roadmap
 
 ```
 Fundamentals
@@ -2352,7 +2352,7 @@ Best Practices
 
 ---
 
-# Final Memory Map
+## Final Memory Map
 
 ```
                     ACTIVE DIRECTORY
@@ -2385,7 +2385,7 @@ Best Practices
 
 ---
 
-# Final Revision (30 Seconds)
+## Final Revision (30 Seconds)
 
 Remember these ten facts:
 
@@ -2402,7 +2402,7 @@ Remember these ten facts:
 
 ---
 
-# Complete Handbook Summary
+## Complete Handbook Summary
 
 You have now completed a comprehensive Active Directory learning journey covering:
 

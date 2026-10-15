@@ -1,12 +1,12 @@
 # 56-DevSecOps.md
 
-# Part 1 — Introduction to DevSecOps, Secure Software Delivery, Shift Left Security, and Enterprise Security Automation
+## Part 1 — Introduction to DevSecOps, Secure Software Delivery, Shift Left Security, and Enterprise Security Automation
 
 > **"DevSecOps integrates security into every stage of the software delivery lifecycle by making security a shared responsibility across development, operations, and security teams through automation, collaboration, and continuous improvement."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is DevSecOps?
+## What is DevSecOps?
 
 DevSecOps is the practice of integrating security into software development and operations throughout the entire Software Development Lifecycle (SDLC).
 
@@ -54,7 +54,7 @@ Instead of treating security as a separate final stage, DevSecOps embeds securit
 
 ---
 
-# Why DevSecOps is Important
+## Why DevSecOps is Important
 
 Modern software is developed rapidly using cloud platforms, APIs, containers, Infrastructure as Code, and continuous deployment.
 
@@ -70,7 +70,7 @@ DevSecOps helps organizations:
 
 ---
 
-# Evolution of Software Delivery
+## Evolution of Software Delivery
 
 ```
 Traditional Development
@@ -92,7 +92,7 @@ Security evolves from a separate activity into a continuous engineering practice
 
 ---
 
-# Traditional Software Delivery
+## Traditional Software Delivery
 
 ```
 Requirements
@@ -122,7 +122,7 @@ In traditional models, security often occurred late in the lifecycle, increasing
 
 ---
 
-# DevOps Lifecycle
+## DevOps Lifecycle
 
 ```
 Plan
@@ -160,7 +160,7 @@ DevOps improves collaboration and delivery speed through automation.
 
 ---
 
-# DevSecOps Lifecycle
+## DevSecOps Lifecycle
 
 ```
 Plan
@@ -210,7 +210,7 @@ Security activities are integrated continuously instead of being isolated.
 
 ---
 
-# Shift Left Security
+## Shift Left Security
 
 Shift Left Security means introducing security earlier in software development.
 
@@ -242,7 +242,7 @@ Earlier detection generally reduces the complexity and cost of addressing securi
 
 ---
 
-# Shared Responsibility
+## Shared Responsibility
 
 DevSecOps encourages shared ownership of security.
 
@@ -270,7 +270,7 @@ Every stakeholder contributes to secure software delivery.
 
 ---
 
-# Core Principles of DevSecOps
+## Core Principles of DevSecOps
 
 ```
 DevSecOps Principles
@@ -298,7 +298,7 @@ These principles form the foundation of mature DevSecOps programs.
 
 ---
 
-# Security by Design
+## Security by Design
 
 Security considerations begin during planning and architecture.
 
@@ -326,7 +326,7 @@ Designing security early reduces long-term risk.
 
 ---
 
-# Automation
+## Automation
 
 Automation improves consistency and reduces manual effort.
 
@@ -354,7 +354,7 @@ Automation complements—not replaces—human review and governance.
 
 ---
 
-# Continuous Security
+## Continuous Security
 
 Security validation should occur repeatedly throughout software delivery.
 
@@ -382,7 +382,7 @@ Continuous validation supports rapid yet secure releases.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 DevSecOps supports layered security.
 
@@ -414,7 +414,7 @@ Multiple independent safeguards improve resilience.
 
 ---
 
-# Enterprise DevSecOps Architecture
+## Enterprise DevSecOps Architecture
 
 ```
                 Business Requirements
@@ -462,7 +462,7 @@ Security is integrated into every major engineering activity.
 
 ---
 
-# Responsibilities in DevSecOps
+## Responsibilities in DevSecOps
 
 ```
 Development
@@ -506,7 +506,7 @@ Clear responsibilities improve collaboration and accountability.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial services company develops customer-facing banking applications using DevSecOps.
 
@@ -538,7 +538,7 @@ Development teams collaborate with security engineers throughout the SDLC, integ
 
 ---
 
-# Benefits of DevSecOps
+## Benefits of DevSecOps
 
 ```
 Business Benefits
@@ -564,7 +564,7 @@ Business Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a DevSecOps lifecycle for an enterprise application.
 2. Identify where security activities occur.
@@ -576,7 +576,7 @@ Business Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is DevSecOps?
 2. How does DevSecOps differ from DevOps?
@@ -591,7 +591,7 @@ Business Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security into every SDLC phase.
 - Automate repetitive validation where appropriate.
@@ -604,7 +604,7 @@ Business Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating security as a final deployment activity.
 - Relying only on automated validation.
@@ -616,7 +616,7 @@ Business Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - DevSecOps integrates security into the complete software delivery lifecycle.
 - Shift Left Security enables earlier identification of security concerns.
@@ -624,15 +624,15 @@ Business Benefits
 - Security remains a shared responsibility across development, security, operations, and business teams.
 - Mature DevSecOps programs combine governance, automation, and continuous improvement to deliver secure and reliable software.
 
-# 56-DevSecOps.md
+## 56-DevSecOps.md
 
-# Part 2 — Secure CI/CD, Security Automation, Pipeline Governance, Infrastructure as Code, and Enterprise DevSecOps Workflows
+## Part 2 — Secure CI/CD, Security Automation, Pipeline Governance, Infrastructure as Code, and Enterprise DevSecOps Workflows
 
 > **"DevSecOps transforms security from an isolated review activity into an automated, repeatable, and measurable engineering practice integrated throughout the CI/CD pipeline."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -649,7 +649,7 @@ After completing this part, you will understand:
 
 ---
 
-# Continuous Integration (CI)
+## Continuous Integration (CI)
 
 Continuous Integration is the practice of regularly integrating code changes into a shared repository where automated validation is performed.
 
@@ -677,7 +677,7 @@ Frequent integration helps identify issues earlier and improves software quality
 
 ---
 
-# Benefits of Continuous Integration
+## Benefits of Continuous Integration
 
 ```
 Continuous Integration
@@ -703,7 +703,7 @@ Continuous Integration
 
 ---
 
-# Continuous Delivery (CD)
+## Continuous Delivery (CD)
 
 Continuous Delivery prepares software for deployment through automated and repeatable release processes.
 
@@ -731,7 +731,7 @@ Delivery pipelines should include security validation before production deployme
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -769,7 +769,7 @@ Security controls should be integrated into every pipeline stage.
 
 ---
 
-# Pipeline Stages
+## Pipeline Stages
 
 ```
 Pipeline
@@ -797,7 +797,7 @@ Each stage contributes to secure software delivery.
 
 ---
 
-# Security Automation
+## Security Automation
 
 Automation improves consistency and repeatability.
 
@@ -825,7 +825,7 @@ Automation reduces manual effort while improving development speed.
 
 ---
 
-# Automated Security Activities
+## Automated Security Activities
 
 Security automation commonly includes:
 
@@ -855,7 +855,7 @@ Automation should complement human review rather than replace it.
 
 ---
 
-# Pipeline Security
+## Pipeline Security
 
 Development pipelines themselves should be protected.
 
@@ -885,7 +885,7 @@ Pipeline infrastructure is a critical enterprise asset.
 
 ---
 
-# Source Control Governance
+## Source Control Governance
 
 Source repositories should follow organizational governance.
 
@@ -913,7 +913,7 @@ Governance improves traceability and accountability.
 
 ---
 
-# Branch Protection (Conceptual)
+## Branch Protection (Conceptual)
 
 Organizations often establish policies that help protect important branches.
 
@@ -947,7 +947,7 @@ Main Branch
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Infrastructure definitions should be treated similarly to application code.
 
@@ -975,7 +975,7 @@ Infrastructure changes should follow the same governance processes as software c
 
 ---
 
-# IaC Lifecycle
+## IaC Lifecycle
 
 ```
 Design
@@ -1005,7 +1005,7 @@ Infrastructure definitions should be reviewed and maintained continuously.
 
 ---
 
-# Configuration Management
+## Configuration Management
 
 Configuration should remain separate from application logic.
 
@@ -1029,7 +1029,7 @@ Proper configuration management supports consistency across environments.
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 Applications and pipelines frequently require credentials.
 
@@ -1062,7 +1062,7 @@ Sensitive values should be managed through dedicated secrets-management systems.
 
 ---
 
-# Dependency Management
+## Dependency Management
 
 Modern software depends heavily on third-party components.
 
@@ -1086,7 +1086,7 @@ Dependency governance reduces operational and security risks.
 
 ---
 
-# Dependency Governance Workflow
+## Dependency Governance Workflow
 
 ```
 Dependency Request
@@ -1116,7 +1116,7 @@ Dependencies should be evaluated throughout their lifecycle.
 
 ---
 
-# Secure Release Process
+## Secure Release Process
 
 ```
 Development
@@ -1146,7 +1146,7 @@ Security reviews should be proportional to organizational policies and risk.
 
 ---
 
-# Enterprise DevSecOps Workflow
+## Enterprise DevSecOps Workflow
 
 ```
 Business Requirements
@@ -1192,7 +1192,7 @@ This workflow integrates development, security, and operational activities.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational e-commerce company develops cloud-native customer applications.
 
@@ -1224,7 +1224,7 @@ Every code change undergoes peer review, automated validation, dependency govern
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1239,7 +1239,7 @@ Every code change undergoes peer review, automated validation, dependency govern
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1252,7 +1252,7 @@ Every code change undergoes peer review, automated validation, dependency govern
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a secure CI/CD pipeline for an enterprise application.
 2. Identify security validation points throughout the pipeline.
@@ -1264,7 +1264,7 @@ Every code change undergoes peer review, automated validation, dependency govern
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Continuous Integration?
 2. How does Continuous Delivery differ from Continuous Integration?
@@ -1279,7 +1279,7 @@ Every code change undergoes peer review, automated validation, dependency govern
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security validation into every pipeline stage.
 - Require peer reviews before merging production code.
@@ -1292,7 +1292,7 @@ Every code change undergoes peer review, automated validation, dependency govern
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating CI/CD as purely a deployment mechanism.
 - Embedding secrets directly into repositories or pipeline definitions.
@@ -1304,7 +1304,7 @@ Every code change undergoes peer review, automated validation, dependency govern
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure CI/CD pipelines integrate automated validation, governance, and operational monitoring.
 - Infrastructure as Code, secrets management, and dependency governance are essential DevSecOps practices.
@@ -1312,15 +1312,15 @@ Every code change undergoes peer review, automated validation, dependency govern
 - Pipeline security is as important as application security.
 - Continuous measurement and governance enable mature DevSecOps operations.
 
-# 56-DevSecOps.md
+## 56-DevSecOps.md
 
-# Part 3 — Security Governance, Continuous Monitoring, Compliance, Incident Response, Metrics, and Enterprise DevSecOps Operations
+## Part 3 — Security Governance, Continuous Monitoring, Compliance, Incident Response, Metrics, and Enterprise DevSecOps Operations
 
 > **"DevSecOps extends beyond secure software delivery by incorporating governance, continuous monitoring, compliance, operational visibility, and continuous improvement into everyday engineering practices."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1337,7 +1337,7 @@ After completing this part, you will understand:
 
 ---
 
-# Security Governance
+## Security Governance
 
 Governance ensures that DevSecOps practices remain consistent across projects and teams.
 
@@ -1369,7 +1369,7 @@ Governance aligns technical decisions with business, security, and regulatory re
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 DevSecOps Governance
@@ -1399,7 +1399,7 @@ A mature governance framework establishes repeatable and measurable security pro
 
 ---
 
-# Security Policies
+## Security Policies
 
 Organizations should establish documented security policies covering:
 
@@ -1429,7 +1429,7 @@ Policies provide a consistent foundation for engineering teams.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 Continuous monitoring validates that systems continue to operate securely after deployment.
 
@@ -1457,7 +1457,7 @@ Monitoring supports rapid identification of operational issues and security-rela
 
 ---
 
-# Observability
+## Observability
 
 Observability improves understanding of application behavior through operational telemetry.
 
@@ -1479,7 +1479,7 @@ Together, these data sources provide visibility into application health and syst
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Applications and infrastructure should generate meaningful operational logs.
 
@@ -1507,7 +1507,7 @@ Logs should support troubleshooting, operational visibility, and governance whil
 
 ---
 
-# Logging Best Practices
+## Logging Best Practices
 
 ```
 Logging
@@ -1535,7 +1535,7 @@ Well-designed logging improves operational efficiency and audit readiness.
 
 ---
 
-# Compliance Integration
+## Compliance Integration
 
 DevSecOps supports compliance by embedding required controls into engineering workflows.
 
@@ -1563,7 +1563,7 @@ Compliance activities become part of routine development rather than isolated pr
 
 ---
 
-# Compliance Workflow
+## Compliance Workflow
 
 ```
 Business Requirements
@@ -1593,7 +1593,7 @@ Automating evidence collection simplifies compliance efforts.
 
 ---
 
-# Change Management
+## Change Management
 
 Every significant change should follow a structured review process.
 
@@ -1625,7 +1625,7 @@ Controlled change management reduces operational risk.
 
 ---
 
-# Configuration Governance
+## Configuration Governance
 
 ```
 Configuration
@@ -1655,7 +1655,7 @@ Configuration governance helps maintain consistency across environments.
 
 ---
 
-# Operational Readiness Reviews
+## Operational Readiness Reviews
 
 Before production deployment, organizations often verify operational readiness.
 
@@ -1688,7 +1688,7 @@ Production
 
 ---
 
-# Incident Response Integration
+## Incident Response Integration
 
 DevSecOps supports incident response through documentation, monitoring, and collaboration.
 
@@ -1720,7 +1720,7 @@ Operational feedback should improve future engineering practices.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -1750,7 +1750,7 @@ Lessons learned strengthen future development and operational processes.
 
 ---
 
-# Continuous Feedback Loop
+## Continuous Feedback Loop
 
 ```
 Development
@@ -1776,7 +1776,7 @@ Continuous feedback is central to DevSecOps maturity.
 
 ---
 
-# Enterprise Dashboards
+## Enterprise Dashboards
 
 Operational dashboards improve visibility into engineering health.
 
@@ -1806,7 +1806,7 @@ Dashboards help engineering and leadership teams make informed decisions.
 
 ---
 
-# Key Operational Metrics
+## Key Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1821,7 +1821,7 @@ Dashboards help engineering and leadership teams make informed decisions.
 
 ---
 
-# Enterprise DevSecOps Architecture
+## Enterprise DevSecOps Architecture
 
 ```
               Business Requirements
@@ -1873,7 +1873,7 @@ This architecture integrates governance, delivery, and operational excellence.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization maintains several cloud-native patient applications.
 
@@ -1905,7 +1905,7 @@ Engineering teams monitor production systems continuously, review operational me
 
 ---
 
-# Enterprise Readiness Checklist
+## Enterprise Readiness Checklist
 
 ```
 ✓ Governance Framework Established
@@ -1931,7 +1931,7 @@ Engineering teams monitor production systems continuously, review operational me
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1944,7 +1944,7 @@ Engineering teams monitor production systems continuously, review operational me
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a governance framework for a DevSecOps program.
 2. Create a conceptual monitoring architecture.
@@ -1956,7 +1956,7 @@ Engineering teams monitor production systems continuously, review operational me
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Security Governance in DevSecOps?
 2. Why is continuous monitoring important?
@@ -1971,7 +1971,7 @@ Engineering teams monitor production systems continuously, review operational me
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Establish organization-wide DevSecOps governance.
 - Centralize monitoring and logging.
@@ -1984,7 +1984,7 @@ Engineering teams monitor production systems continuously, review operational me
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating monitoring as an afterthought.
 - Maintaining fragmented logging systems.
@@ -1996,7 +1996,7 @@ Engineering teams monitor production systems continuously, review operational me
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - DevSecOps extends beyond development into governance, operations, monitoring, and continuous improvement.
 - Centralized logging, observability, and monitoring improve operational visibility.
@@ -2004,15 +2004,15 @@ Engineering teams monitor production systems continuously, review operational me
 - Operational metrics provide measurable insight into software delivery performance.
 - Continuous feedback and lessons learned drive long-term DevSecOps maturity.
 
-# 56-DevSecOps.md
+## 56-DevSecOps.md
 
-# Part 4 — Enterprise DevSecOps Maturity, Zero Trust Integration, Secure Supply Chain, Operational Excellence, and Chapter Summary
+## Part 4 — Enterprise DevSecOps Maturity, Zero Trust Integration, Secure Supply Chain, Operational Excellence, and Chapter Summary
 
 > **"A mature DevSecOps program continuously integrates security, governance, automation, monitoring, and operational feedback into every stage of software delivery, enabling organizations to release software rapidly without compromising security or reliability."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2029,7 +2029,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise DevSecOps Governance
+## Enterprise DevSecOps Governance
 
 Enterprise DevSecOps requires standardized governance across development, security, and operations.
 
@@ -2065,7 +2065,7 @@ Governance ensures that security practices remain consistent across projects, te
 
 ---
 
-# Governance Components
+## Governance Components
 
 ```
 Enterprise Governance
@@ -2095,7 +2095,7 @@ A well-defined governance framework supports scalable and repeatable engineering
 
 ---
 
-# Zero Trust Integration
+## Zero Trust Integration
 
 DevSecOps complements Zero Trust by validating every stage of software delivery and system access.
 
@@ -2131,7 +2131,7 @@ Every action should be authenticated, authorized, and appropriately monitored.
 
 ---
 
-# Zero Trust Principles in DevSecOps
+## Zero Trust Principles in DevSecOps
 
 ```
 Zero Trust
@@ -2159,7 +2159,7 @@ Applying these principles improves resilience throughout the software delivery l
 
 ---
 
-# Secure Software Supply Chain
+## Secure Software Supply Chain
 
 Modern software relies on numerous internal and external components.
 
@@ -2185,7 +2185,7 @@ Organizations should manage the integrity and provenance of every software compo
 
 ---
 
-# Supply Chain Governance
+## Supply Chain Governance
 
 ```
 Component Selection
@@ -2219,7 +2219,7 @@ Governance reduces operational and software supply chain risk.
 
 ---
 
-# Software Bill of Materials (SBOM)
+## Software Bill of Materials (SBOM)
 
 An SBOM is a structured inventory of software components used to build an application.
 
@@ -2251,7 +2251,7 @@ Maintaining an accurate SBOM improves software visibility and lifecycle manageme
 
 ---
 
-# Benefits of an SBOM
+## Benefits of an SBOM
 
 ```
 SBOM Benefits
@@ -2279,7 +2279,7 @@ SBOMs support governance, maintenance, and incident response activities.
 
 ---
 
-# Continuous Verification
+## Continuous Verification
 
 Security verification should continue throughout the application lifecycle.
 
@@ -2311,7 +2311,7 @@ Continuous verification helps ensure that systems remain aligned with security r
 
 ---
 
-# Operational Excellence
+## Operational Excellence
 
 Operational excellence combines automation, governance, monitoring, and continuous learning.
 
@@ -2347,7 +2347,7 @@ A culture of continuous improvement strengthens both engineering quality and sec
 
 ---
 
-# Enterprise DevSecOps Security Maturity Model
+## Enterprise DevSecOps Security Maturity Model
 
 ```
 Level 1
@@ -2384,7 +2384,7 @@ Organizations progress by improving automation, governance, collaboration, and m
 
 ---
 
-# Characteristics of Mature DevSecOps
+## Characteristics of Mature DevSecOps
 
 ```
 Mature DevSecOps
@@ -2412,7 +2412,7 @@ Mature DevSecOps
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                  Business Objectives
@@ -2464,7 +2464,7 @@ This architecture demonstrates how governance, automation, and monitoring work t
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global telecommunications provider delivers cloud-native customer services through an enterprise DevSecOps platform.
 
@@ -2496,7 +2496,7 @@ Development, security, and operations teams collaborate using standardized gover
 
 ---
 
-# Enterprise Readiness Checklist
+## Enterprise Readiness Checklist
 
 ```
 ✓ Security Integrated into SDLC
@@ -2522,7 +2522,7 @@ Development, security, and operations teams collaborate using standardized gover
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2535,9 +2535,9 @@ Development, security, and operations teams collaborate using standardized gover
 
 ---
 
-# DevSecOps Quick Revision
+## DevSecOps Quick Revision
 
-## Core Lifecycle
+### Core Lifecycle
 
 ```
 Plan
@@ -2577,7 +2577,7 @@ Improve
 
 ---
 
-## Core Principles
+### Core Principles
 
 ```
 Automation
@@ -2605,7 +2605,7 @@ Governance
 
 ---
 
-## Continuous Improvement Loop
+### Continuous Improvement Loop
 
 ```
 Operational Feedback
@@ -2629,7 +2629,7 @@ Future Releases
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise DevSecOps architecture for a multi-tier application.
 2. Identify governance checkpoints throughout the SDLC.
@@ -2641,7 +2641,7 @@ Future Releases
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is DevSecOps, and how does it differ from traditional DevOps?
 2. Why is Shift Left Security important?
@@ -2656,7 +2656,7 @@ Future Releases
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security throughout the entire SDLC.
 - Establish organization-wide DevSecOps governance.
@@ -2669,7 +2669,7 @@ Future Releases
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating DevSecOps as only a collection of automation tools.
 - Delaying security activities until after development.
@@ -2681,7 +2681,7 @@ Future Releases
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

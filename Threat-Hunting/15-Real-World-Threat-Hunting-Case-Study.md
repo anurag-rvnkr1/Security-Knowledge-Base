@@ -36,9 +36,9 @@ All infrastructure, identities, domains, IP addresses, timestamps, and organizat
 
 ---
 
-# Case Study Scenario
+## Case Study Scenario
 
-## Organization
+### Organization
 
 Consider a fictional enterprise:
 
@@ -70,7 +70,7 @@ Security Stack:
 
 ---
 
-# Security Team
+## Security Team
 
 The organization has:
 
@@ -86,7 +86,7 @@ Threat Intelligence Analysts
 
 ---
 
-# Existing Architecture
+## Existing Architecture
 
 ```text
                     INTERNET
@@ -118,7 +118,7 @@ Threat Intelligence Analysts
 
 ---
 
-# Threat Intelligence Trigger
+## Threat Intelligence Trigger
 
 The threat intelligence team receives information about an active campaign targeting organizations in the same industry.
 
@@ -149,7 +149,7 @@ Instead, the threat hunters must investigate the **behavior**.
 
 ---
 
-# Hunt Objective
+## Hunt Objective
 
 The threat-hunting team defines the objective:
 
@@ -157,7 +157,7 @@ The threat-hunting team defines the objective:
 
 ---
 
-# Hunt Hypothesis
+## Hunt Hypothesis
 
 The primary hypothesis becomes:
 
@@ -165,7 +165,7 @@ The primary hypothesis becomes:
 
 ---
 
-# Secondary Hypotheses
+## Secondary Hypotheses
 
 The team creates additional hypotheses:
 
@@ -194,7 +194,7 @@ The attacker may stage or exfiltrate information.
 
 ---
 
-# MITRE ATT&CK Mapping
+## MITRE ATT&CK Mapping
 
 Potential techniques:
 
@@ -213,7 +213,7 @@ The exact mapping should be validated against the observed behavior.
 
 ---
 
-# Hunt Scope
+## Hunt Scope
 
 The team defines:
 
@@ -239,7 +239,7 @@ Privileged and sensitive users first
 
 ---
 
-# Phase 1 — Telemetry Validation
+## Phase 1 — Telemetry Validation
 
 Before hunting, the team validates available data.
 
@@ -257,7 +257,7 @@ Email
 
 ---
 
-# Telemetry Health
+## Telemetry Health
 
 Example:
 
@@ -277,7 +277,7 @@ The team confirms that the required data is available.
 
 ---
 
-# Phase 2 — Identity Hunt
+## Phase 2 — Identity Hunt
 
 The first hypothesis is:
 
@@ -298,7 +298,7 @@ Privileged Login
 
 ---
 
-# Initial Identity Finding
+## Initial Identity Finding
 
 One account stands out:
 
@@ -332,7 +332,7 @@ Unusual Time
 
 ---
 
-# Authentication Timeline
+## Authentication Timeline
 
 ```text
 01:42:13
@@ -357,7 +357,7 @@ It is not yet proof of compromise.
 
 ---
 
-# Investigation Question
+## Investigation Question
 
 The analyst asks:
 
@@ -377,7 +377,7 @@ No corresponding approved travel or device registration is found.
 
 ---
 
-# Initial Assessment
+## Initial Assessment
 
 Confidence:
 
@@ -401,7 +401,7 @@ The team does not yet declare compromise.
 
 ---
 
-# Phase 3 — Entity Pivot
+## Phase 3 — Entity Pivot
 
 The analyst pivots from:
 
@@ -435,7 +435,7 @@ Graph:
 
 ---
 
-# Source IP Investigation
+## Source IP Investigation
 
 The source IP is:
 
@@ -459,7 +459,7 @@ The IP is not previously associated with Northstar.
 
 ---
 
-# IP Reuse Analysis
+## IP Reuse Analysis
 
 The analyst asks:
 
@@ -479,7 +479,7 @@ This increases suspicion.
 
 ---
 
-# Phase 4 — Device Investigation
+## Phase 4 — Device Investigation
 
 The new device identifier is:
 
@@ -504,7 +504,7 @@ No managed endpoint exists with this identity.
 
 ---
 
-# Investigation Finding
+## Investigation Finding
 
 The identity appears to have been used from:
 
@@ -524,7 +524,7 @@ Medium → Medium/High
 
 ---
 
-# Phase 5 — Endpoint Correlation
+## Phase 5 — Endpoint Correlation
 
 The analyst now searches for activity associated with the user around the authentication event.
 
@@ -548,7 +548,7 @@ FIN-LT-221
 
 ---
 
-# Process Investigation
+## Process Investigation
 
 The timeline contains:
 
@@ -568,7 +568,7 @@ network connection
 
 ---
 
-# Process Tree
+## Process Tree
 
 ```text
 WINWORD.EXE
@@ -583,7 +583,7 @@ This parent-child relationship is unusual for the user's normal activity.
 
 ---
 
-# Command-Line Investigation
+## Command-Line Investigation
 
 The command line contains suspicious scripting behavior.
 
@@ -607,7 +607,7 @@ The full command line is preserved in the investigation record according to evid
 
 ---
 
-# Endpoint Baseline
+## Endpoint Baseline
 
 Historical activity for `alex.morgan` shows:
 
@@ -626,7 +626,7 @@ This is significant.
 
 ---
 
-# Phase 6 — Network Investigation
+## Phase 6 — Network Investigation
 
 The analyst pivots from the endpoint to network activity.
 
@@ -644,7 +644,7 @@ Proxy
 
 ---
 
-# DNS Finding
+## DNS Finding
 
 The endpoint queried:
 
@@ -664,7 +664,7 @@ Only associated with one endpoint
 
 ---
 
-# DNS Timeline
+## DNS Timeline
 
 ```text
 01:52:03
@@ -688,7 +688,7 @@ The interval is approximately:
 
 ---
 
-# Beaconing Hypothesis
+## Beaconing Hypothesis
 
 The team now considers:
 
@@ -700,7 +700,7 @@ However:
 
 ---
 
-# DNS Correlation
+## DNS Correlation
 
 The analyst correlates:
 
@@ -718,7 +718,7 @@ The DNS activity occurs shortly after the suspicious PowerShell process starts.
 
 ---
 
-# Combined Evidence
+## Combined Evidence
 
 ```text
 Unusual Authentication
@@ -743,7 +743,7 @@ This is significantly more concerning than any individual event.
 
 ---
 
-# Phase 7 — User Behavior Analysis
+## Phase 7 — User Behavior Analysis
 
 The analyst reviews the previous 30 days.
 
@@ -778,7 +778,7 @@ The deviation is substantial.
 
 ---
 
-# Phase 8 — Cloud Investigation
+## Phase 8 — Cloud Investigation
 
 The cloud security team investigates the cloud session.
 
@@ -795,7 +795,7 @@ The user normally does not perform these actions at that time.
 
 ---
 
-# Cloud API Timeline
+## Cloud API Timeline
 
 ```text
 01:45
@@ -813,7 +813,7 @@ Sensitive Resource Query
 
 ---
 
-# Identity + Endpoint + Cloud Correlation
+## Identity + Endpoint + Cloud Correlation
 
 The investigation now shows:
 
@@ -835,7 +835,7 @@ Cloud Discovery
 
 ---
 
-# Phase 9 — Lateral Movement Hunt
+## Phase 9 — Lateral Movement Hunt
 
 The team investigates whether the compromised identity accessed other systems.
 
@@ -853,7 +853,7 @@ Authentication
 
 ---
 
-# Lateral Movement Finding
+## Lateral Movement Finding
 
 The account accessed:
 
@@ -866,7 +866,7 @@ These systems are outside the user's normal access pattern.
 
 ---
 
-# Relationship Baseline
+## Relationship Baseline
 
 Historical relationship:
 
@@ -889,7 +889,7 @@ This is suspicious.
 
 ---
 
-# Phase 10 — Privilege Investigation
+## Phase 10 — Privilege Investigation
 
 The team checks whether privileges changed.
 
@@ -909,7 +909,7 @@ This is an important negative finding.
 
 ---
 
-# Negative Evidence
+## Negative Evidence
 
 The investigation records:
 
@@ -922,7 +922,7 @@ Negative evidence is still useful.
 
 ---
 
-# Phase 11 — Persistence Hunt
+## Phase 11 — Persistence Hunt
 
 The team searches for persistence.
 
@@ -947,7 +947,7 @@ Role Changes
 
 ---
 
-# Persistence Result
+## Persistence Result
 
 No confirmed persistence mechanism is identified.
 
@@ -963,7 +963,7 @@ The investigation continues.
 
 ---
 
-# Phase 12 — Data Access
+## Phase 12 — Data Access
 
 The team investigates sensitive data access.
 
@@ -978,7 +978,7 @@ Database Access
 
 ---
 
-# Data Access Finding
+## Data Access Finding
 
 The account accessed several finance-related files.
 
@@ -986,7 +986,7 @@ The access was unusual for the user's historical behavior.
 
 ---
 
-# Data Staging Investigation
+## Data Staging Investigation
 
 The endpoint shows:
 
@@ -1000,7 +1000,7 @@ An archive is created in a temporary directory.
 
 ---
 
-# Staging Hypothesis
+## Staging Hypothesis
 
 The team considers:
 
@@ -1008,7 +1008,7 @@ The team considers:
 
 ---
 
-# Exfiltration Investigation
+## Exfiltration Investigation
 
 Network telemetry is reviewed.
 
@@ -1026,7 +1026,7 @@ Network Connection
 
 ---
 
-# Important Limitation
+## Important Limitation
 
 The available telemetry does not conclusively establish that sensitive data was successfully exfiltrated.
 
@@ -1046,7 +1046,7 @@ This distinction is essential.
 
 ---
 
-# Phase 13 — Attack Timeline
+## Phase 13 — Attack Timeline
 
 The team reconstructs the complete sequence.
 
@@ -1097,7 +1097,7 @@ Outbound Connection
 
 ---
 
-# Attack Chain
+## Attack Chain
 
 Conceptually:
 
@@ -1128,7 +1128,7 @@ Potential Exfiltration
 
 ---
 
-# Phase 14 — Threat Assessment
+## Phase 14 — Threat Assessment
 
 The investigation now has multiple correlated signals.
 
@@ -1150,7 +1150,7 @@ Evidence:
 
 ---
 
-# Confidence Assessment
+## Confidence Assessment
 
 The team assesses:
 
@@ -1165,7 +1165,7 @@ Multiple independent telemetry sources support the same attack narrative.
 
 ---
 
-# Incident Escalation
+## Incident Escalation
 
 The hunt is converted into an incident.
 
@@ -1181,7 +1181,7 @@ Incident Response
 
 ---
 
-# Incident Scope
+## Incident Scope
 
 The team identifies:
 
@@ -1205,7 +1205,7 @@ Finance documents
 
 ---
 
-# Phase 15 — Containment
+## Phase 15 — Containment
 
 Containment should follow organizational incident-response procedures.
 
@@ -1224,7 +1224,7 @@ Actions must be authorized and carefully logged.
 
 ---
 
-# Important Principle
+## Important Principle
 
 Do not immediately destroy evidence.
 
@@ -1241,7 +1241,7 @@ before appropriate evidence preservation and incident-response procedures.
 
 ---
 
-# Phase 16 — Evidence Preservation
+## Phase 16 — Evidence Preservation
 
 Preserve relevant:
 
@@ -1269,7 +1269,7 @@ Action
 
 ---
 
-# Phase 17 — Root Cause Investigation
+## Phase 17 — Root Cause Investigation
 
 The team investigates how the attacker obtained access.
 
@@ -1286,7 +1286,7 @@ Compromised Device
 
 ---
 
-# Email Investigation
+## Email Investigation
 
 Search the user's mailbox around the preceding days.
 
@@ -1303,7 +1303,7 @@ Suspicious Sender
 
 ---
 
-# Example Finding
+## Example Finding
 
 The user received an unexpected document shortly before the compromise.
 
@@ -1313,7 +1313,7 @@ This provides a plausible initial-access path.
 
 ---
 
-# Attack Narrative
+## Attack Narrative
 
 The investigation develops the following hypothesis:
 
@@ -1337,11 +1337,11 @@ Potential Exfiltration
 
 ---
 
-# Confidence Boundaries
+## Confidence Boundaries
 
 The team distinguishes between:
 
-## Confirmed
+### Confirmed
 
 ```text
 Valid account was used unusually.
@@ -1350,14 +1350,14 @@ Lateral movement occurred.
 Sensitive data was accessed.
 ```
 
-## Likely
+### Likely
 
 ```text
 Credential theft occurred.
 PowerShell was attacker-controlled.
 ```
 
-## Possible
+### Possible
 
 ```text
 Sensitive data was exfiltrated.
@@ -1367,7 +1367,7 @@ This prevents overclaiming.
 
 ---
 
-# Phase 18 — Detection Gap Analysis
+## Phase 18 — Detection Gap Analysis
 
 The organization asks:
 
@@ -1375,7 +1375,7 @@ The organization asks:
 
 ---
 
-# Existing Detections
+## Existing Detections
 
 The environment already had:
 
@@ -1389,7 +1389,7 @@ But none produced a high-priority incident.
 
 ---
 
-# Gap 1 — Identity Detection
+## Gap 1 — Identity Detection
 
 Existing detection required:
 
@@ -1409,7 +1409,7 @@ Not Triggered
 
 ---
 
-# Gap 2 — PowerShell Detection
+## Gap 2 — PowerShell Detection
 
 The existing rule detected known suspicious command patterns.
 
@@ -1427,7 +1427,7 @@ No Alert
 
 ---
 
-# Gap 3 — Identity + Endpoint Correlation
+## Gap 3 — Identity + Endpoint Correlation
 
 No rule correlated:
 
@@ -1443,7 +1443,7 @@ This became a major detection gap.
 
 ---
 
-# Gap 4 — Cloud Correlation
+## Gap 4 — Cloud Correlation
 
 Cloud activity was analyzed separately.
 
@@ -1459,7 +1459,7 @@ Cloud
 
 ---
 
-# Detection Engineering Opportunity
+## Detection Engineering Opportunity
 
 Create a new detection:
 
@@ -1467,7 +1467,7 @@ Create a new detection:
 
 ---
 
-# Detection Logic
+## Detection Logic
 
 Conceptually:
 
@@ -1485,7 +1485,7 @@ The combined score should exceed a defined risk threshold.
 
 ---
 
-# Detection Model
+## Detection Model
 
 ```text
 Identity Anomaly
@@ -1515,7 +1515,7 @@ The exact scoring system must be tuned for the environment.
 
 ---
 
-# Detection Testing
+## Detection Testing
 
 The detection is tested against:
 
@@ -1530,7 +1530,7 @@ Service Account
 
 ---
 
-# False Positive Testing
+## False Positive Testing
 
 A legitimate user may:
 
@@ -1546,7 +1546,7 @@ Therefore the detection should not trigger solely on one anomaly.
 
 ---
 
-# Detection Correlation
+## Detection Correlation
 
 The improved model uses:
 
@@ -1562,7 +1562,7 @@ Asset Criticality
 
 ---
 
-# Detection Output
+## Detection Output
 
 Example:
 
@@ -1589,7 +1589,7 @@ Investigate identity and endpoint immediately.
 
 ---
 
-# Phase 19 — Threat Intelligence Update
+## Phase 19 — Threat Intelligence Update
 
 The incident produces new intelligence.
 
@@ -1608,7 +1608,7 @@ Only validated indicators should be shared as confirmed intelligence.
 
 ---
 
-# Intelligence Confidence
+## Intelligence Confidence
 
 Example:
 
@@ -1630,7 +1630,7 @@ Do not infer attribution without sufficient evidence.
 
 ---
 
-# Phase 20 — Detection Improvement
+## Phase 20 — Detection Improvement
 
 The organization creates:
 
@@ -1646,7 +1646,7 @@ New Intelligence
 
 ---
 
-# New Hunt Playbook
+## New Hunt Playbook
 
 Future hunts will search for:
 
@@ -1662,37 +1662,37 @@ Cloud Activity
 
 ---
 
-# Phase 21 — Lessons Learned
+## Phase 21 — Lessons Learned
 
 The team identifies:
 
-### Lesson 1
+#### Lesson 1
 
 Single-event detection was insufficient.
 
-### Lesson 2
+#### Lesson 2
 
 Identity telemetry was critical.
 
-### Lesson 3
+#### Lesson 3
 
 Cross-domain correlation increased confidence.
 
-### Lesson 4
+#### Lesson 4
 
 Behavior-based hunting found activity that IOC-based detection missed.
 
-### Lesson 5
+#### Lesson 5
 
 Telemetry quality enabled investigation.
 
-### Lesson 6
+#### Lesson 6
 
 Detection gaps should be converted into engineering tasks.
 
 ---
 
-# Phase 22 — Control Improvements
+## Phase 22 — Control Improvements
 
 Potential improvements:
 
@@ -1710,7 +1710,7 @@ User Awareness
 
 ---
 
-# Phase 23 — Metrics
+## Phase 23 — Metrics
 
 The team records:
 
@@ -1744,7 +1744,7 @@ Real organizations should populate these values from actual incident data.
 
 ---
 
-# Full Investigation Architecture
+## Full Investigation Architecture
 
 ```text
                     THREAT INTELLIGENCE
@@ -1790,7 +1790,7 @@ Real organizations should populate these values from actual incident data.
 
 ---
 
-# End-to-End Hunt Record
+## End-to-End Hunt Record
 
 ```text
 Hunt ID:
@@ -1845,17 +1845,17 @@ Detection and hunting workflow improved
 
 ---
 
-# Practical Lab — Reproduce the Case Study
+## Practical Lab — Reproduce the Case Study
 
 This scenario can be reproduced safely in an isolated lab.
 
-## Objective
+### Objective
 
 Build a complete investigation pipeline.
 
 ---
 
-## Lab Architecture
+### Lab Architecture
 
 ```text
                     Analyst
@@ -1880,7 +1880,7 @@ Build a complete investigation pipeline.
 
 ---
 
-# Lab Requirements
+## Lab Requirements
 
 Potential components:
 
@@ -1898,7 +1898,7 @@ Use only systems and accounts you are authorized to test.
 
 ---
 
-# Lab Phase 1 — Generate Telemetry
+## Lab Phase 1 — Generate Telemetry
 
 Generate benign, authorized activity such as:
 
@@ -1912,7 +1912,7 @@ File Access
 
 ---
 
-# Lab Phase 2 — Establish Baseline
+## Lab Phase 2 — Establish Baseline
 
 Record:
 
@@ -1926,7 +1926,7 @@ Normal Cloud Activity
 
 ---
 
-# Lab Phase 3 — Execute Authorized Simulation
+## Lab Phase 3 — Execute Authorized Simulation
 
 Use controlled security-testing techniques.
 
@@ -1944,7 +1944,7 @@ Do not use uncontrolled malware or unauthorized infrastructure.
 
 ---
 
-# Lab Phase 4 — Hunt
+## Lab Phase 4 — Hunt
 
 Run:
 
@@ -1958,7 +1958,7 @@ Lateral Movement Hunt
 
 ---
 
-# Lab Phase 5 — Correlate
+## Lab Phase 5 — Correlate
 
 Connect:
 
@@ -1978,7 +1978,7 @@ Cloud Session
 
 ---
 
-# Lab Phase 6 — Build Timeline
+## Lab Phase 6 — Build Timeline
 
 Create:
 
@@ -1992,13 +1992,13 @@ Interpretation
 
 ---
 
-# Lab Phase 7 — Detection
+## Lab Phase 7 — Detection
 
 Create a detection based on the discovered behavior.
 
 ---
 
-# Lab Phase 8 — Validate
+## Lab Phase 8 — Validate
 
 Run:
 
@@ -2011,7 +2011,7 @@ Regression Test
 
 ---
 
-# Lab Phase 9 — Document
+## Lab Phase 9 — Document
 
 Produce:
 
@@ -2024,7 +2024,7 @@ Lessons Learned
 
 ---
 
-# Case Study Decision Tree
+## Case Study Decision Tree
 
 ```text
 Unusual Authentication
@@ -2065,7 +2065,7 @@ normality       │
 
 ---
 
-# Analyst Decision Framework
+## Analyst Decision Framework
 
 When an anomaly appears, ask:
 
@@ -2081,7 +2081,7 @@ When an anomaly appears, ask:
 
 ---
 
-# Evidence Confidence Model
+## Evidence Confidence Model
 
 A useful conceptual model:
 
@@ -2105,7 +2105,7 @@ Confirmed
 
 ---
 
-# Avoiding Confirmation Bias
+## Avoiding Confirmation Bias
 
 Threat hunters must avoid forcing evidence into an expected narrative.
 
@@ -2125,7 +2125,7 @@ What additional evidence would prove or disprove it?
 
 ---
 
-# Alternative Explanation Analysis
+## Alternative Explanation Analysis
 
 For example:
 
@@ -2148,7 +2148,7 @@ The hunter should test alternatives.
 
 ---
 
-# Competing Hypotheses
+## Competing Hypotheses
 
 Example:
 
@@ -2168,7 +2168,7 @@ Evidence should determine which explanation is best supported.
 
 ---
 
-# Hypothesis Scoring
+## Hypothesis Scoring
 
 Conceptually:
 
@@ -2185,7 +2185,7 @@ Do not treat a numerical score as proof.
 
 ---
 
-# Threat Hunting and Incident Response
+## Threat Hunting and Incident Response
 
 Threat hunting may discover an incident before automated detection does.
 
@@ -2210,7 +2210,7 @@ This is one of the most valuable outcomes of proactive hunting.
 
 ---
 
-# Threat Hunting and Detection Engineering
+## Threat Hunting and Detection Engineering
 
 The case study demonstrates:
 
@@ -2232,7 +2232,7 @@ Monitor
 
 ---
 
-# Threat Hunting and Threat Intelligence
+## Threat Hunting and Threat Intelligence
 
 The relationship is bidirectional.
 
@@ -2250,7 +2250,7 @@ Threat Intelligence
 
 ---
 
-# Threat Hunting and SOC Operations
+## Threat Hunting and SOC Operations
 
 The SOC provides:
 
@@ -2266,7 +2266,7 @@ Threat hunters convert these into deeper investigations.
 
 ---
 
-# Threat Hunting and Security Architecture
+## Threat Hunting and Security Architecture
 
 Hunting can reveal:
 
@@ -2283,7 +2283,7 @@ These become architecture improvement opportunities.
 
 ---
 
-# Enterprise Threat Hunting Feedback Loop
+## Enterprise Threat Hunting Feedback Loop
 
 ```text
              ┌─────────────────────┐
@@ -2315,7 +2315,7 @@ These become architecture improvement opportunities.
 
 ---
 
-# What Makes This a Realistic Investigation?
+## What Makes This a Realistic Investigation?
 
 Real investigations rarely look like:
 
@@ -2351,22 +2351,22 @@ Threat hunting is therefore fundamentally an **evidence-correlation discipline**
 
 ---
 
-# Professional Threat Hunting Checklist
+## Professional Threat Hunting Checklist
 
-## Intelligence
+### Intelligence
 
 - [ ] Threat intelligence reviewed
 - [ ] Threat relevance assessed
 - [ ] TTPs identified
 - [ ] Indicators normalized
 
-## Hypothesis
+### Hypothesis
 
 - [ ] Hypothesis written
 - [ ] Alternative explanations considered
 - [ ] Required evidence identified
 
-## Telemetry
+### Telemetry
 
 - [ ] Identity available
 - [ ] Endpoint available
@@ -2375,7 +2375,7 @@ Threat hunting is therefore fundamentally an **evidence-correlation discipline**
 - [ ] Cloud available
 - [ ] Email available where relevant
 
-## Investigation
+### Investigation
 
 - [ ] Initial query
 - [ ] Entity pivot
@@ -2383,14 +2383,14 @@ Threat hunting is therefore fundamentally an **evidence-correlation discipline**
 - [ ] Baseline comparison
 - [ ] Timeline
 
-## Validation
+### Validation
 
 - [ ] Supporting evidence
 - [ ] Contradicting evidence
 - [ ] False positives
 - [ ] Confidence assessed
 
-## Outcome
+### Outcome
 
 - [ ] Incident escalated if required
 - [ ] Detection gap documented
@@ -2400,7 +2400,7 @@ Threat hunting is therefore fundamentally an **evidence-correlation discipline**
 
 ---
 
-# Threat Hunting Report Template
+## Threat Hunting Report Template
 
 ```text
 # Threat Hunting Report
@@ -2457,7 +2457,7 @@ Duration:
 
 ---
 
-# Executive Summary Template
+## Executive Summary Template
 
 A senior-level summary should answer:
 
@@ -2481,7 +2481,7 @@ Avoid overwhelming executives with raw technical events.
 
 ---
 
-# Technical Summary Template
+## Technical Summary Template
 
 ```text
 Initial Signal
@@ -2503,43 +2503,43 @@ Include evidence and timestamps.
 
 ---
 
-# Lessons for Security Engineers
+## Lessons for Security Engineers
 
 This case demonstrates several important principles.
 
-### Identity is a Security Boundary
+#### Identity is a Security Boundary
 
 Valid credentials can bypass many perimeter controls.
 
-### Endpoint Context Matters
+#### Endpoint Context Matters
 
 A login alone may be ambiguous.
 
-### Network Context Matters
+#### Network Context Matters
 
 External communication can strengthen or weaken a hypothesis.
 
-### Cloud Context Matters
+#### Cloud Context Matters
 
 Modern attacks often cross traditional security boundaries.
 
-### Correlation Matters
+#### Correlation Matters
 
 Multiple weak signals can become a strong investigation.
 
-### Baselines Matter
+#### Baselines Matter
 
 Normal behavior provides essential context.
 
-### Detection Engineering Matters
+#### Detection Engineering Matters
 
 Hunts should improve future automated detection.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. Walk me through a complete threat hunt.
+### 1. Walk me through a complete threat hunt.
 
 A strong answer should cover:
 
@@ -2558,13 +2558,13 @@ Threat intelligence
 
 ---
 
-## 2. What would make you escalate a hunt to incident response?
+### 2. What would make you escalate a hunt to incident response?
 
 When multiple independent signals provide sufficient evidence that malicious activity may have occurred, particularly when critical assets, identities, persistence, lateral movement, or data access are involved.
 
 ---
 
-## 3. How do you avoid false positives?
+### 3. How do you avoid false positives?
 
 Use:
 
@@ -2578,31 +2578,31 @@ Use:
 
 ---
 
-## 4. What if your hypothesis is wrong?
+### 4. What if your hypothesis is wrong?
 
 Document the contradictory evidence, test alternative explanations, revise the hypothesis, and continue the investigation based on the strongest available evidence.
 
 ---
 
-## 5. How do you prove an account is compromised?
+### 5. How do you prove an account is compromised?
 
 You generally cannot prove compromise from one anomaly alone. Build evidence across authentication, device, endpoint, network, identity, and post-authentication behavior.
 
 ---
 
-## 6. Why is cross-domain correlation important?
+### 6. Why is cross-domain correlation important?
 
 Attackers operate across identity, endpoints, networks, applications, and cloud environments. Correlation allows analysts to reconstruct the broader attack chain.
 
 ---
 
-## 7. What is the difference between suspicious and confirmed malicious activity?
+### 7. What is the difference between suspicious and confirmed malicious activity?
 
 Suspicious activity indicates that behavior is unusual or concerning. Confirmed malicious activity requires stronger evidence established through investigation or an appropriate incident-response process.
 
 ---
 
-## 8. What should happen after a successful hunt?
+### 8. What should happen after a successful hunt?
 
 Potential outcomes include:
 
@@ -2617,7 +2617,7 @@ New Playbook
 
 ---
 
-## 9. How would you measure threat-hunting effectiveness?
+### 9. How would you measure threat-hunting effectiveness?
 
 Possible metrics include:
 
@@ -2633,7 +2633,7 @@ Detection Improvements
 
 ---
 
-## 10. How would you explain this investigation to management?
+### 10. How would you explain this investigation to management?
 
 Focus on:
 
@@ -2651,7 +2651,7 @@ Avoid unnecessary technical detail.
 
 ---
 
-# Final Threat Hunting Section Takeaways
+## Final Threat Hunting Section Takeaways
 
 The complete Threat Hunting section can now be viewed as:
 
@@ -2691,7 +2691,7 @@ This progression moves from foundational knowledge to practical enterprise execu
 
 ---
 
-# Threat Hunting Operating Model
+## Threat Hunting Operating Model
 
 ```text
                     THREAT INTELLIGENCE
@@ -2740,7 +2740,7 @@ This progression moves from foundational knowledge to practical enterprise execu
 
 ---
 
-# Final Takeaways
+## Final Takeaways
 
 1. **Threat hunting is an evidence-driven investigative process.**
 2. **A good hunt starts with a clear and testable hypothesis.**
@@ -2767,7 +2767,7 @@ The central principle of this entire section is:
 
 ---
 
-# References
+## References
 
 - MITRE ATT&CK  
   https://attack.mitre.org/

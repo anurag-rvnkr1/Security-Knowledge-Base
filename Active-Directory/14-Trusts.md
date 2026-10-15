@@ -1,10 +1,10 @@
 # 14-Trusts.md
 
-# Part 1 — Active Directory Trust Fundamentals, Types of Trusts and Enterprise Authentication
+## Part 1 — Active Directory Trust Fundamentals, Types of Trusts and Enterprise Authentication
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -21,7 +21,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Modern enterprises rarely operate with a single Active Directory domain.
 
@@ -58,7 +58,7 @@ The answer is:
 
 ---
 
-# What is a Trust?
+## What is a Trust?
 
 A **Trust** is a secure relationship between two Active Directory domains or forests that allows authentication requests to be accepted across security boundaries.
 
@@ -76,7 +76,7 @@ according to my authorization rules.
 
 ---
 
-# Simple Analogy
+## Simple Analogy
 
 Imagine two office buildings.
 
@@ -122,7 +122,7 @@ The employee's identity is recognized only because the buildings trust each othe
 
 ---
 
-# Why Trusts are Required
+## Why Trusts are Required
 
 Without trusts:
 
@@ -162,7 +162,7 @@ The trust enables authentication, while authorization still determines what the 
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 Trusts provide authentication.
 
@@ -194,7 +194,7 @@ A trust does **not** automatically grant permissions.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -234,7 +234,7 @@ the trust allows the employee's existing identity to be used.
 
 ---
 
-# Trust Relationship
+## Trust Relationship
 
 A trust relationship looks like this:
 
@@ -250,7 +250,7 @@ The domains recognize each other's authentication process according to the confi
 
 ---
 
-# Trust Terminology
+## Trust Terminology
 
 Common terms include:
 
@@ -264,7 +264,7 @@ Common terms include:
 
 ---
 
-# Understanding Trust Direction
+## Understanding Trust Direction
 
 Trusts have a direction.
 
@@ -292,7 +292,7 @@ Users from Domain A can potentially access resources in Domain B, subject to per
 
 ---
 
-# One-Way Trust
+## One-Way Trust
 
 ```
 Domain A
@@ -310,7 +310,7 @@ Characteristics:
 
 ---
 
-# Example
+## Example
 
 ```
 Head Office
@@ -324,7 +324,7 @@ Researchers can access selected Head Office resources only if the trust and perm
 
 ---
 
-# Two-Way Trust
+## Two-Way Trust
 
 ```
 Domain A
@@ -340,7 +340,7 @@ Users from either domain can authenticate across the trust, provided authorizati
 
 ---
 
-# One-Way vs Two-Way
+## One-Way vs Two-Way
 
 | Feature | One-Way | Two-Way |
 |----------|----------|----------|
@@ -350,7 +350,7 @@ Users from either domain can authenticate across the trust, provided authorizati
 
 ---
 
-# What is Transitivity?
+## What is Transitivity?
 
 A transitive trust extends trust relationships automatically.
 
@@ -382,7 +382,7 @@ Domain A can authenticate with Domain C through Domain B.
 
 ---
 
-# Transitive Trust
+## Transitive Trust
 
 ```
 Domain A
@@ -402,7 +402,7 @@ This simplifies administration in large Active Directory environments.
 
 ---
 
-# Non-Transitive Trust
+## Non-Transitive Trust
 
 A non-transitive trust does **not** extend beyond the directly connected domains.
 
@@ -424,9 +424,9 @@ A separate trust would be required.
 
 ---
 
-# Trust Visualization
+## Trust Visualization
 
-### Transitive
+#### Transitive
 
 ```
 A
@@ -448,7 +448,7 @@ D
 
 ---
 
-### Non-Transitive
+#### Non-Transitive
 
 ```
 A
@@ -470,7 +470,7 @@ D
 
 ---
 
-# Default Trusts in Active Directory
+## Default Trusts in Active Directory
 
 Within a single forest:
 
@@ -492,7 +492,7 @@ Administrators typically do not need to create these manually.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 corp.example.com
@@ -512,7 +512,7 @@ Active Directory automatically establishes the appropriate parent-child trust.
 
 ---
 
-# Authentication Across Domains
+## Authentication Across Domains
 
 Example:
 
@@ -542,7 +542,7 @@ The SQL Server then checks the user's permissions before granting access.
 
 ---
 
-# Enterprise Authentication Flow
+## Enterprise Authentication Flow
 
 ```
 User
@@ -578,7 +578,7 @@ Access Granted
 
 ---
 
-# Benefits of Trusts
+## Benefits of Trusts
 
 - Single identity across multiple domains
 - Reduced account duplication
@@ -590,7 +590,7 @@ Access Granted
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Trusts expand authentication boundaries.
 
@@ -615,13 +615,13 @@ Remember:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore trust relationships in Active Directory.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -631,7 +631,7 @@ Active Directory Domains and Trusts
 
 ---
 
-### Step 2
+#### Step 2
 
 Select your domain.
 
@@ -649,7 +649,7 @@ Observe existing trust relationships.
 
 ---
 
-### Step 3
+#### Step 3
 
 Identify:
 
@@ -659,7 +659,7 @@ Identify:
 
 ---
 
-### Step 4
+#### Step 4
 
 Record:
 
@@ -669,51 +669,51 @@ Record:
 
 ---
 
-### Step 5
+#### Step 5
 
 Draw the trust topology for your environment.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is an Active Directory Trust?
+#### Q1: What is an Active Directory Trust?
 
 **Answer:** A secure relationship between domains or forests that allows authentication across security boundaries.
 
 ---
 
-### Q2: Does a trust automatically grant resource access?
+#### Q2: Does a trust automatically grant resource access?
 
 **Answer:** No. A trust enables authentication, while permissions determine authorization.
 
 ---
 
-### Q3: What is the difference between a one-way and two-way trust?
+#### Q3: What is the difference between a one-way and two-way trust?
 
 **Answer:** A one-way trust allows authentication in a single direction, whereas a two-way trust allows authentication in both directions.
 
 ---
 
-### Q4: What is a transitive trust?
+#### Q4: What is a transitive trust?
 
 **Answer:** A trust that automatically extends through other trusted domains.
 
 ---
 
-### Q5: What is a non-transitive trust?
+#### Q5: What is a non-transitive trust?
 
 **Answer:** A trust that applies only to the directly connected domains and does not extend further.
 
 ---
 
-### Q6: Are parent-child trusts created automatically?
+#### Q6: Are parent-child trusts created automatically?
 
 **Answer:** Yes. Active Directory automatically creates transitive parent-child trusts within the same forest.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Create trusts only when there is a valid business requirement.
 - Prefer transitive trusts within a forest.
@@ -724,7 +724,7 @@ Draw the trust topology for your environment.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming a trust grants permissions.
 - Creating unnecessary trust relationships.
@@ -734,7 +734,7 @@ Draw the trust topology for your environment.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Trusts enable authentication between Active Directory domains and forests.
 - Authentication and authorization are separate processes.
@@ -745,13 +745,13 @@ Draw the trust topology for your environment.
 
 ---
 
-# 14-Trusts.md
+## 14-Trusts.md
 
-# Part 2 — Types of Active Directory Trusts, Trust Paths and Cross-Forest Authentication
+## Part 2 — Types of Active Directory Trusts, Trust Paths and Cross-Forest Authentication
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -768,7 +768,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 In Part 1, we learned:
 
@@ -781,7 +781,7 @@ Now we will study the different **types of Active Directory Trusts** used in ent
 
 ---
 
-# Types of Active Directory Trusts
+## Types of Active Directory Trusts
 
 Active Directory supports several trust types.
 
@@ -798,7 +798,7 @@ Each trust type solves a different business requirement.
 
 ---
 
-# Parent-Child Trust
+## Parent-Child Trust
 
 A Parent-Child Trust is automatically created when a new child domain is added.
 
@@ -833,7 +833,7 @@ Characteristics:
 
 ---
 
-# Parent-Child Authentication
+## Parent-Child Authentication
 
 ```
 User
@@ -859,7 +859,7 @@ The user authenticates using the existing trust relationship.
 
 ---
 
-# Tree-Root Trust
+## Tree-Root Trust
 
 A forest may contain multiple domain trees.
 
@@ -883,7 +883,7 @@ A Tree-Root Trust is automatically created between the root domains.
 
 ---
 
-# Tree-Root Characteristics
+## Tree-Root Characteristics
 
 - Automatic
 - Two-way
@@ -892,7 +892,7 @@ A Tree-Root Trust is automatically created between the root domains.
 
 ---
 
-# Example
+## Example
 
 ```
 Forest
@@ -910,7 +910,7 @@ Users can authenticate across both trees using the trust relationship.
 
 ---
 
-# Shortcut Trust
+## Shortcut Trust
 
 Large enterprises may contain many domains.
 
@@ -940,7 +940,7 @@ Authentication must traverse each trust.
 
 ---
 
-# Shortcut Trust Solution
+## Shortcut Trust Solution
 
 Instead of:
 
@@ -974,7 +974,7 @@ Authentication becomes shorter and more efficient.
 
 ---
 
-# Benefits of Shortcut Trusts
+## Benefits of Shortcut Trusts
 
 - Faster authentication
 - Reduced authentication traffic
@@ -983,7 +983,7 @@ Authentication becomes shorter and more efficient.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1027,7 +1027,7 @@ This reduces authentication latency.
 
 ---
 
-# External Trust
+## External Trust
 
 An External Trust connects Active Directory to a domain **outside the current forest**.
 
@@ -1054,7 +1054,7 @@ Characteristics:
 
 ---
 
-# Example Scenario
+## Example Scenario
 
 A company acquires another organization that has its own independent Active Directory domain.
 
@@ -1064,7 +1064,7 @@ an External Trust enables controlled authentication between the two domains.
 
 ---
 
-# Forest Trust
+## Forest Trust
 
 A Forest Trust connects two separate Active Directory forests.
 
@@ -1089,7 +1089,7 @@ Forest Trusts allow authentication between them.
 
 ---
 
-# Forest Trust Example
+## Forest Trust Example
 
 ```
 Contoso Forest
@@ -1103,7 +1103,7 @@ Employees can authenticate across forests if permissions allow.
 
 ---
 
-# Forest Trust Characteristics
+## Forest Trust Characteristics
 
 - Connects forests
 - Typically transitive between the two forests
@@ -1112,7 +1112,7 @@ Employees can authenticate across forests if permissions allow.
 
 ---
 
-# Realm Trust
+## Realm Trust
 
 A Realm Trust connects Active Directory with a non-Windows Kerberos realm.
 
@@ -1135,7 +1135,7 @@ Common scenarios include:
 
 ---
 
-# Trust Type Comparison
+## Trust Type Comparison
 
 | Trust Type | Automatic | Transitive | Typical Use |
 |-------------|-----------|------------|-------------|
@@ -1148,7 +1148,7 @@ Common scenarios include:
 
 ---
 
-# Authentication Path
+## Authentication Path
 
 Without a shortcut:
 
@@ -1176,7 +1176,7 @@ Authentication crosses every trust.
 
 ---
 
-# Optimized Authentication
+## Optimized Authentication
 
 With a shortcut trust:
 
@@ -1200,7 +1200,7 @@ The authentication path is significantly shorter.
 
 ---
 
-# Trust Path
+## Trust Path
 
 The **Trust Path** is the sequence of trust relationships followed during authentication.
 
@@ -1226,7 +1226,7 @@ Authentication travels through the trust path until the target domain is reached
 
 ---
 
-# Enterprise Authentication Example
+## Enterprise Authentication Example
 
 Company:
 
@@ -1298,7 +1298,7 @@ Access Granted
 
 ---
 
-# Enterprise Design Considerations
+## Enterprise Design Considerations
 
 When designing trust relationships:
 
@@ -1316,7 +1316,7 @@ Avoid creating unnecessary trust relationships simply for convenience.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Trusts increase connectivity between security boundaries.
 
@@ -1337,13 +1337,13 @@ Security recommendations:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore trust types in an Active Directory lab.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -1353,7 +1353,7 @@ Active Directory Domains and Trusts
 
 ---
 
-### Step 2
+#### Step 2
 
 Review existing trust relationships.
 
@@ -1367,7 +1367,7 @@ Identify whether each trust is:
 
 ---
 
-### Step 3
+#### Step 3
 
 Draw the trust topology.
 
@@ -1387,7 +1387,7 @@ Forest
 
 ---
 
-### Step 4
+#### Step 4
 
 Identify:
 
@@ -1398,51 +1398,51 @@ Identify:
 
 ---
 
-### Step 5
+#### Step 5
 
 Discuss where a Shortcut Trust could improve authentication efficiency.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is a Parent-Child Trust?
+#### Q1: What is a Parent-Child Trust?
 
 **Answer:** An automatically created, two-way, transitive trust between a parent domain and a newly created child domain.
 
 ---
 
-### Q2: What is the purpose of a Shortcut Trust?
+#### Q2: What is the purpose of a Shortcut Trust?
 
 **Answer:** To shorten authentication paths and improve performance in large Active Directory forests.
 
 ---
 
-### Q3: What is an External Trust?
+#### Q3: What is an External Trust?
 
 **Answer:** A manually created, typically non-transitive trust between a domain in one forest and a domain outside that forest.
 
 ---
 
-### Q4: What is a Forest Trust?
+#### Q4: What is a Forest Trust?
 
 **Answer:** A trust relationship that allows authentication between two separate Active Directory forests.
 
 ---
 
-### Q5: When would you use a Realm Trust?
+#### Q5: When would you use a Realm Trust?
 
 **Answer:** To integrate Active Directory with a non-Windows Kerberos realm, such as an MIT Kerberos environment.
 
 ---
 
-### Q6: What is a Trust Path?
+#### Q6: What is a Trust Path?
 
 **Answer:** The sequence of trust relationships that authentication follows to reach the target domain.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use automatic trusts where appropriate.
 - Deploy Shortcut Trusts only when authentication paths become unnecessarily long.
@@ -1453,7 +1453,7 @@ Discuss where a Shortcut Trust could improve authentication efficiency.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Creating unnecessary trust relationships.
 - Forgetting to remove obsolete trusts.
@@ -1463,7 +1463,7 @@ Discuss where a Shortcut Trust could improve authentication efficiency.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory supports multiple trust types for different enterprise scenarios.
 - Parent-Child and Tree-Root Trusts are automatically created within a forest.
@@ -1474,13 +1474,13 @@ Discuss where a Shortcut Trust could improve authentication efficiency.
 
 ---
 
-# 14-Trusts.md
+## 14-Trusts.md
 
-# Part 3 — Trust Authentication, SID History, Name Suffix Routing, Selective Authentication and Security
+## Part 3 — Trust Authentication, SID History, Name Suffix Routing, Selective Authentication and Security
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1497,7 +1497,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 In the previous parts, we learned:
 
@@ -1510,7 +1510,7 @@ Now we will study how authentication actually works across trusts and how enterp
 
 ---
 
-# Authentication Across a Trust
+## Authentication Across a Trust
 
 Suppose we have two trusted domains:
 
@@ -1562,7 +1562,7 @@ Notice that the user authenticates in their home domain first.
 
 ---
 
-# Authentication Sequence
+## Authentication Sequence
 
 The complete sequence is:
 
@@ -1604,7 +1604,7 @@ It also checks permissions.
 
 ---
 
-# Authentication vs Resource Authorization
+## Authentication vs Resource Authorization
 
 Consider this example:
 
@@ -1634,7 +1634,7 @@ Permissions determine what the authenticated user may access.
 
 ---
 
-# Cross-Forest Authentication
+## Cross-Forest Authentication
 
 Example:
 
@@ -1690,7 +1690,7 @@ Access Granted
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company merger:
 
@@ -1716,7 +1716,7 @@ Employees authenticate using their existing accounts while accessing approved sh
 
 ---
 
-# Security Identifier (SID)
+## Security Identifier (SID)
 
 Every security principal receives a unique:
 
@@ -1742,7 +1742,7 @@ Windows uses the SID—not the username—to determine permissions.
 
 ---
 
-# Why SID Matters
+## Why SID Matters
 
 Two users may have identical names:
 
@@ -1772,7 +1772,7 @@ This guarantees unique identity within Windows security.
 
 ---
 
-# What is SID History?
+## What is SID History?
 
 During migrations,
 
@@ -1804,7 +1804,7 @@ This allows access to resources that still reference the old SID.
 
 ---
 
-# Migration Example
+## Migration Example
 
 Before migration:
 
@@ -1842,7 +1842,7 @@ Resources that still grant permissions to SID A remain accessible.
 
 ---
 
-# Benefits of SID History
+## Benefits of SID History
 
 - Simplifies domain migrations
 - Reduces permission changes
@@ -1852,7 +1852,7 @@ Resources that still grant permissions to SID A remain accessible.
 
 ---
 
-# SID History Risks
+## SID History Risks
 
 Although useful,
 
@@ -1869,7 +1869,7 @@ Organizations should periodically review and remove unnecessary SID History entr
 
 ---
 
-# SID Filtering
+## SID Filtering
 
 To reduce trust-related risks,
 
@@ -1903,7 +1903,7 @@ SID Filtering is especially important for trusts with external organizations.
 
 ---
 
-# Name Suffix Routing
+## Name Suffix Routing
 
 In Forest Trusts,
 
@@ -1933,7 +1933,7 @@ This is called:
 
 ---
 
-# Example
+## Example
 
 ```
 Forest A
@@ -1951,7 +1951,7 @@ The trusting forest recognizes the suffix and forwards authentication appropriat
 
 ---
 
-# User Principal Name (UPN)
+## User Principal Name (UPN)
 
 A User Principal Name is a user-friendly logon name.
 
@@ -1975,7 +1975,7 @@ Benefits:
 
 ---
 
-# Selective Authentication
+## Selective Authentication
 
 By default,
 
@@ -1995,7 +1995,7 @@ each server explicitly controls which trusted users may authenticate.
 
 ---
 
-# Standard Authentication
+## Standard Authentication
 
 ```
 Trusted Domain
@@ -2011,7 +2011,7 @@ Authentication Allowed
 
 ---
 
-# Selective Authentication
+## Selective Authentication
 
 ```
 Trusted Domain
@@ -2035,7 +2035,7 @@ Only designated servers accept authentication from trusted users.
 
 ---
 
-# Advantages of Selective Authentication
+## Advantages of Selective Authentication
 
 - Better security
 - Reduced attack surface
@@ -2045,7 +2045,7 @@ Only designated servers accept authentication from trusted users.
 
 ---
 
-# Enterprise Scenario
+## Enterprise Scenario
 
 A company partners with an external vendor.
 
@@ -2074,7 +2074,7 @@ Selective Authentication enforces this restriction.
 
 ---
 
-# Cross-Trust Authentication Diagram
+## Cross-Trust Authentication Diagram
 
 ```
 User
@@ -2110,7 +2110,7 @@ Resource Access
 
 ---
 
-# Enterprise Trust Architecture
+## Enterprise Trust Architecture
 
 ```
                     Forest A
@@ -2140,7 +2140,7 @@ Authentication occurs only through established trust relationships.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Trusts are powerful but introduce security considerations.
 
@@ -2158,13 +2158,13 @@ Proper trust management helps reduce opportunities for unauthorized lateral move
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore trust security concepts.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -2174,7 +2174,7 @@ Active Directory Domains and Trusts
 
 ---
 
-### Step 2
+#### Step 2
 
 Select an existing trust.
 
@@ -2186,7 +2186,7 @@ Review:
 
 ---
 
-### Step 3
+#### Step 3
 
 Document:
 
@@ -2196,7 +2196,7 @@ Document:
 
 ---
 
-### Step 4
+#### Step 4
 
 Research:
 
@@ -2208,51 +2208,51 @@ Discuss where each would be appropriate in your environment.
 
 ---
 
-### Step 5
+#### Step 5
 
 Draw the authentication flow between two trusted domains.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is SID History?
+#### Q1: What is SID History?
 
 **Answer:** SID History stores previous SIDs on a migrated account so it can continue accessing resources that still reference the old SID.
 
 ---
 
-### Q2: Why is SID History useful?
+#### Q2: Why is SID History useful?
 
 **Answer:** It simplifies domain migrations by preserving access to existing resources during transition.
 
 ---
 
-### Q3: What is SID Filtering?
+#### Q3: What is SID Filtering?
 
 **Answer:** SID Filtering helps prevent unexpected or unauthorized SIDs from being accepted across trust boundaries.
 
 ---
 
-### Q4: What is Selective Authentication?
+#### Q4: What is Selective Authentication?
 
 **Answer:** A trust configuration that allows administrators to explicitly choose which servers trusted users may authenticate to.
 
 ---
 
-### Q5: What is a UPN?
+#### Q5: What is a UPN?
 
 **Answer:** A User Principal Name is a user-friendly logon name in the format `user@domain`.
 
 ---
 
-### Q6: Does a trust automatically provide authorization?
+#### Q6: Does a trust automatically provide authorization?
 
 **Answer:** No. Trusts provide authentication. Authorization is still determined by permissions on the target resource.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enable Selective Authentication for external partner forests where appropriate.
 - Review SID History after migration projects.
@@ -2263,7 +2263,7 @@ Draw the authentication flow between two trusted domains.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming trust equals unrestricted access.
 - Leaving SID History indefinitely after migrations.
@@ -2273,7 +2273,7 @@ Draw the authentication flow between two trusted domains.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Trusts allow authentication across domains and forests.
 - SIDs uniquely identify security principals.
@@ -2284,13 +2284,13 @@ Draw the authentication flow between two trusted domains.
 
 ---
 
-# 14-Trusts.md
+## 14-Trusts.md
 
-# Part 4 — Trust Management, Troubleshooting, Enterprise Monitoring, Best Practices and Chapter Summary
+## Part 4 — Trust Management, Troubleshooting, Enterprise Monitoring, Best Practices and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -2308,7 +2308,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Trusts form the backbone of authentication between multiple Active Directory domains and forests.
 
@@ -2327,7 +2327,7 @@ A poorly managed trust can become a significant security risk.
 
 ---
 
-# Trust Lifecycle
+## Trust Lifecycle
 
 A trust typically follows this lifecycle:
 
@@ -2381,7 +2381,7 @@ Every trust should have a documented business purpose.
 
 ---
 
-# Trust Validation
+## Trust Validation
 
 After creating a trust, administrators should verify that it functions correctly.
 
@@ -2399,7 +2399,7 @@ Successful validation confirms that authentication works as expected.
 
 ---
 
-# Trust Verification Process
+## Trust Verification Process
 
 ```
 Trust Created
@@ -2431,7 +2431,7 @@ Trust Operational
 
 ---
 
-# Active Directory Domains and Trusts
+## Active Directory Domains and Trusts
 
 Trust relationships are managed using:
 
@@ -2451,7 +2451,7 @@ Administrators can:
 
 ---
 
-# Common Trust Problems
+## Common Trust Problems
 
 Several issues can prevent successful authentication.
 
@@ -2468,7 +2468,7 @@ Common causes include:
 
 ---
 
-# DNS Problems
+## DNS Problems
 
 Trusts depend heavily on DNS.
 
@@ -2500,7 +2500,7 @@ Administrators should verify:
 
 ---
 
-# Network Connectivity
+## Network Connectivity
 
 Authentication requires communication between Domain Controllers.
 
@@ -2529,7 +2529,7 @@ Verify:
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Kerberos requires synchronized clocks.
 
@@ -2553,7 +2553,7 @@ Ensure all systems synchronize with reliable time sources.
 
 ---
 
-# Broken Trust Relationship
+## Broken Trust Relationship
 
 Sometimes a trust may become invalid.
 
@@ -2573,7 +2573,7 @@ Possible causes include:
 
 ---
 
-# Authentication Failure Workflow
+## Authentication Failure Workflow
 
 ```
 User
@@ -2615,7 +2615,7 @@ Following a structured workflow reduces troubleshooting time.
 
 ---
 
-# Monitoring Trusts
+## Monitoring Trusts
 
 Security teams should regularly monitor:
 
@@ -2630,7 +2630,7 @@ Monitoring helps identify misconfigurations and suspicious behavior.
 
 ---
 
-# Event Logs
+## Event Logs
 
 Relevant logs include:
 
@@ -2662,7 +2662,7 @@ Administrators should review:
 
 ---
 
-# Enterprise Monitoring
+## Enterprise Monitoring
 
 Many organizations forward Domain Controller logs to a SIEM.
 
@@ -2701,7 +2701,7 @@ Benefits include:
 
 ---
 
-# Enterprise Trust Architecture
+## Enterprise Trust Architecture
 
 Example:
 
@@ -2725,7 +2725,7 @@ Each region authenticates locally while maintaining secure trust relationships a
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Company:
 
@@ -2778,7 +2778,7 @@ Result:
 
 ---
 
-# Trust Security Recommendations
+## Trust Security Recommendations
 
 Organizations should:
 
@@ -2794,7 +2794,7 @@ Organizations should:
 
 ---
 
-# Trust Design Principles
+## Trust Design Principles
 
 ```
 Business Need
@@ -2820,7 +2820,7 @@ Good trust design prioritizes security over convenience.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Trusts extend authentication boundaries.
 
@@ -2845,13 +2845,13 @@ A well-designed trust architecture reduces risk while supporting legitimate busi
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review and validate trust relationships.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -2861,7 +2861,7 @@ Active Directory Domains and Trusts
 
 ---
 
-### Step 2
+#### Step 2
 
 Review all configured trusts.
 
@@ -2874,7 +2874,7 @@ Document:
 
 ---
 
-### Step 3
+#### Step 3
 
 Validate a trust using the management console.
 
@@ -2882,13 +2882,13 @@ Record the validation results.
 
 ---
 
-### Step 4
+#### Step 4
 
 Review Security and Directory Service logs for authentication events related to trusted domains.
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a simple trust topology diagram.
 
@@ -2918,45 +2918,45 @@ Forest B
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Which MMC snap-in is used to manage Active Directory trusts?
+#### Q1: Which MMC snap-in is used to manage Active Directory trusts?
 
 **Answer:** Active Directory Domains and Trusts.
 
 ---
 
-### Q2: What should you verify after creating a trust?
+#### Q2: What should you verify after creating a trust?
 
 **Answer:** DNS resolution, trust validation, authentication, permissions, and network connectivity.
 
 ---
 
-### Q3: What is one common cause of cross-domain authentication failure?
+#### Q3: What is one common cause of cross-domain authentication failure?
 
 **Answer:** DNS misconfiguration.
 
 ---
 
-### Q4: Why is trust monitoring important?
+#### Q4: Why is trust monitoring important?
 
 **Answer:** It helps detect authentication issues, configuration problems, unauthorized changes, and suspicious activity.
 
 ---
 
-### Q5: Does a Forest Trust automatically grant permissions to resources?
+#### Q5: Does a Forest Trust automatically grant permissions to resources?
 
 **Answer:** No. It enables authentication across forests, but authorization is still controlled by resource permissions.
 
 ---
 
-### Q6: What security practice helps reduce unnecessary authentication exposure across trusts?
+#### Q6: What security practice helps reduce unnecessary authentication exposure across trusts?
 
 **Answer:** Using Selective Authentication where appropriate and regularly auditing trust relationships.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Create trusts only for approved business requirements.
 - Document ownership and purpose of every trust.
@@ -2968,7 +2968,7 @@ Forest B
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Leaving unused trusts active after mergers or migrations.
 - Assuming a valid trust guarantees resource access.
@@ -2978,7 +2978,7 @@ Forest B
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Trusts enable secure authentication across Active Directory domains and forests.
 - Trusts require ongoing validation, monitoring, and maintenance.
@@ -2988,7 +2988,7 @@ Forest B
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

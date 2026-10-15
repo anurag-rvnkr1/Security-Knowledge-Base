@@ -66,7 +66,7 @@ A simplified architecture is:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -133,7 +133,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is a Backup?
+## What Is a Backup?
 
 A backup is a recoverable copy of important data or configuration stored separately from the primary environment.
 
@@ -161,7 +161,7 @@ Restore Service
 
 ---
 
-# Why Kubernetes Backups Matter
+## Why Kubernetes Backups Matter
 
 Kubernetes itself is not a backup system.
 
@@ -200,7 +200,7 @@ Recovery
 
 ---
 
-# What Should Be Backed Up?
+## What Should Be Backed Up?
 
 A production backup strategy should consider:
 
@@ -216,7 +216,7 @@ Application-Specific Data
 
 ---
 
-# Kubernetes State
+## Kubernetes State
 
 Important Kubernetes objects may include:
 
@@ -240,7 +240,7 @@ Custom Resources
 
 ---
 
-# etcd
+## etcd
 
 `etcd` contains Kubernetes control-plane state.
 
@@ -258,7 +258,7 @@ Therefore, an etcd backup can be a critical component of Kubernetes control-plan
 
 ---
 
-# etcd Backup
+## etcd Backup
 
 An etcd snapshot captures the etcd database state at a point in time.
 
@@ -276,7 +276,7 @@ Backup Storage
 
 ---
 
-# etcd Snapshot
+## etcd Snapshot
 
 A common command using `etcdctl` is:
 
@@ -290,7 +290,7 @@ Do not run restore commands against production without a tested recovery plan.
 
 ---
 
-# Verify etcd Snapshot
+## Verify etcd Snapshot
 
 Depending on your etcd version:
 
@@ -304,7 +304,7 @@ Always verify the snapshot using the version-appropriate tooling.
 
 ---
 
-# etcd Restore
+## etcd Restore
 
 Conceptually:
 
@@ -329,7 +329,7 @@ Correct Cluster Configuration
 
 ---
 
-# Important etcd Restore Principle
+## Important etcd Restore Principle
 
 An etcd restore is not simply:
 
@@ -341,7 +341,7 @@ It can involve reconstructing the control-plane datastore and ensuring that the 
 
 ---
 
-# Kubernetes Resource Backup
+## Kubernetes Resource Backup
 
 Another approach is backing up Kubernetes API resources.
 
@@ -366,7 +366,7 @@ Storage
 
 ---
 
-# Resource Backup vs etcd Backup
+## Resource Backup vs etcd Backup
 
 | Feature | Resource Backup | etcd Backup |
 |---|---|---|
@@ -381,7 +381,7 @@ Both approaches can be useful depending on recovery requirements.
 
 ---
 
-# Persistent Volume Backup
+## Persistent Volume Backup
 
 Persistent Volumes contain application data.
 
@@ -407,7 +407,7 @@ must be considered separately.
 
 ---
 
-# Volume Snapshot
+## Volume Snapshot
 
 A volume snapshot captures storage at a point in time.
 
@@ -425,7 +425,7 @@ Snapshot Storage
 
 ---
 
-# CSI VolumeSnapshot
+## CSI VolumeSnapshot
 
 Kubernetes supports VolumeSnapshot resources through the CSI ecosystem.
 
@@ -449,7 +449,7 @@ The actual snapshot capability depends on the installed CSI driver.
 
 ---
 
-# VolumeSnapshotClass
+## VolumeSnapshotClass
 
 A VolumeSnapshotClass defines snapshot behavior for a CSI driver.
 
@@ -467,7 +467,7 @@ Storage Backend
 
 ---
 
-# Snapshot vs Backup
+## Snapshot vs Backup
 
 A snapshot is usually:
 
@@ -491,7 +491,7 @@ Snapshot ≠ Complete Disaster Recovery
 
 ---
 
-# Backup vs High Availability
+## Backup vs High Availability
 
 High availability:
 
@@ -526,7 +526,7 @@ You need both for strong resilience.
 
 ---
 
-# Recovery
+## Recovery
 
 Recovery is the process of returning systems and data to an operational state after failure.
 
@@ -548,7 +548,7 @@ Resume Operations
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Disaster Recovery (DR) is the broader strategy for recovering from major failures.
 
@@ -565,7 +565,7 @@ Control Plane Failure
 
 ---
 
-# RPO
+## RPO
 
 RPO means:
 
@@ -587,7 +587,7 @@ means the recovery strategy should aim to lose no more than approximately 15 min
 
 ---
 
-# RTO
+## RTO
 
 RTO means:
 
@@ -609,7 +609,7 @@ means the recovery plan should aim to restore the service within approximately o
 
 ---
 
-# RPO vs RTO
+## RPO vs RTO
 
 | Concept | Question |
 |---|---|
@@ -618,7 +618,7 @@ means the recovery plan should aim to restore the service within approximately o
 
 ---
 
-# Example
+## Example
 
 Suppose:
 
@@ -636,7 +636,7 @@ Maximum target recovery time ≈ 1 hour
 
 ---
 
-# Backup Frequency
+## Backup Frequency
 
 Backup frequency should match the RPO.
 
@@ -658,7 +658,7 @@ you may require much more frequent backups or replication.
 
 ---
 
-# Full Backup
+## Full Backup
 
 A full backup contains the selected complete dataset.
 
@@ -685,7 +685,7 @@ Higher Network Usage
 
 ---
 
-# Incremental Backup
+## Incremental Backup
 
 An incremental backup stores changes since a previous backup according to the backup system's model.
 
@@ -713,7 +713,7 @@ Faster Frequent Backups
 
 ---
 
-# Differential Backup
+## Differential Backup
 
 A differential backup stores changes since a selected full backup.
 
@@ -733,7 +733,7 @@ The exact backup capabilities depend on the backup system being used.
 
 ---
 
-# Backup Retention
+## Backup Retention
 
 Retention defines how long backups are kept.
 
@@ -757,7 +757,7 @@ Recovery Requirements
 
 ---
 
-# Backup Storage
+## Backup Storage
 
 Backups should ideally be stored separately from the production cluster.
 
@@ -773,7 +773,7 @@ Air-Gapped Storage
 
 ---
 
-# Object Storage
+## Object Storage
 
 Common object storage patterns include:
 
@@ -795,7 +795,7 @@ Object Storage
 
 ---
 
-# Why External Backup Storage?
+## Why External Backup Storage?
 
 If the cluster is destroyed:
 
@@ -813,7 +813,7 @@ External Storage
 
 ---
 
-# Cross-Region Backup
+## Cross-Region Backup
 
 For regional disaster recovery:
 
@@ -835,7 +835,7 @@ Regional Outage
 
 ---
 
-# Cross-Cluster Restore
+## Cross-Cluster Restore
 
 Backups can sometimes be restored into another Kubernetes cluster.
 
@@ -860,7 +860,7 @@ Development
 
 ---
 
-# Velero
+## Velero
 
 Velero is a popular open-source tool for backing up and restoring Kubernetes resources and, depending on configuration and plugins, persistent volume data.
 
@@ -879,7 +879,7 @@ Object Storage   Volume Backup
 
 ---
 
-# Velero Components
+## Velero Components
 
 A Velero deployment commonly includes:
 
@@ -895,7 +895,7 @@ Exact capabilities depend on the Velero version, plugins, and configuration.
 
 ---
 
-# Velero Backup
+## Velero Backup
 
 A simplified example:
 
@@ -907,7 +907,7 @@ This creates a backup according to the configured Velero policies and storage lo
 
 ---
 
-# List Backups
+## List Backups
 
 ```bash
 velero backup get
@@ -915,7 +915,7 @@ velero backup get
 
 ---
 
-# Describe Backup
+## Describe Backup
 
 ```bash
 velero backup describe production-backup
@@ -923,7 +923,7 @@ velero backup describe production-backup
 
 ---
 
-# Backup Logs
+## Backup Logs
 
 ```bash
 velero backup logs production-backup
@@ -940,7 +940,7 @@ Permission Problems
 
 ---
 
-# Restore
+## Restore
 
 A simplified restore command:
 
@@ -953,7 +953,7 @@ Always test restore procedures in a controlled environment first.
 
 ---
 
-# List Restores
+## List Restores
 
 ```bash
 velero restore get
@@ -961,7 +961,7 @@ velero restore get
 
 ---
 
-# Describe Restore
+## Describe Restore
 
 ```bash
 velero restore describe <restore-name>
@@ -969,7 +969,7 @@ velero restore describe <restore-name>
 
 ---
 
-# Restore Logs
+## Restore Logs
 
 ```bash
 velero restore logs <restore-name>
@@ -977,7 +977,7 @@ velero restore logs <restore-name>
 
 ---
 
-# Scheduled Backups
+## Scheduled Backups
 
 Automated backups reduce reliance on manual operations.
 
@@ -1002,7 +1002,7 @@ Verify the syntax supported by your installed Velero version.
 
 ---
 
-# Backup Schedule
+## Backup Schedule
 
 A production schedule could be:
 
@@ -1020,7 +1020,7 @@ The exact policy depends on RPO, compliance, and cost requirements.
 
 ---
 
-# Backup Encryption
+## Backup Encryption
 
 Backups should be encrypted.
 
@@ -1034,7 +1034,7 @@ Encryption at Rest
 
 ---
 
-# Encryption in Transit
+## Encryption in Transit
 
 Use:
 
@@ -1054,7 +1054,7 @@ where supported.
 
 ---
 
-# Encryption at Rest
+## Encryption at Rest
 
 Backup storage should use encryption such as:
 
@@ -1068,7 +1068,7 @@ depending on the platform.
 
 ---
 
-# Immutable Backups
+## Immutable Backups
 
 An immutable backup cannot be modified or deleted during a defined retention period.
 
@@ -1082,7 +1082,7 @@ Compromised Credentials
 
 ---
 
-# Ransomware Protection
+## Ransomware Protection
 
 A strong strategy can include:
 
@@ -1102,7 +1102,7 @@ Offline / Air-Gapped Copies
 
 ---
 
-# Air-Gapped Backup
+## Air-Gapped Backup
 
 An air-gapped backup is isolated from the primary production environment.
 
@@ -1122,7 +1122,7 @@ This can reduce the risk of an attacker compromising both production and backups
 
 ---
 
-# Backup Security
+## Backup Security
 
 Protect:
 
@@ -1136,7 +1136,7 @@ Backup APIs
 
 ---
 
-# Backup RBAC
+## Backup RBAC
 
 Only authorized identities should be able to:
 
@@ -1150,7 +1150,7 @@ Access Backup Data
 
 ---
 
-# Backup Credentials
+## Backup Credentials
 
 Use dedicated identities.
 
@@ -1164,7 +1164,7 @@ for routine backup operations.
 
 ---
 
-# Backup Monitoring
+## Backup Monitoring
 
 Monitor:
 
@@ -1180,7 +1180,7 @@ Snapshot Failures
 
 ---
 
-# Backup Alerts
+## Backup Alerts
 
 Useful alerts include:
 
@@ -1195,7 +1195,7 @@ Backup Job Stuck
 
 ---
 
-# Backup Verification
+## Backup Verification
 
 A backup should not be considered reliable merely because the backup command succeeded.
 
@@ -1210,7 +1210,7 @@ Application Validation
 
 ---
 
-# Restore Testing
+## Restore Testing
 
 The most important backup practice is:
 
@@ -1232,7 +1232,7 @@ Validate
 
 ---
 
-# Restore Testing Frequency
+## Restore Testing Frequency
 
 Testing frequency should match:
 
@@ -1248,7 +1248,7 @@ Critical systems should be tested regularly.
 
 ---
 
-# Namespace Restore
+## Namespace Restore
 
 A namespace can sometimes be restored selectively.
 
@@ -1271,7 +1271,7 @@ when required.
 
 ---
 
-# Application Restore
+## Application Restore
 
 Application recovery may require:
 
@@ -1289,7 +1289,7 @@ All dependencies must be considered.
 
 ---
 
-# Cluster Restore
+## Cluster Restore
 
 A full cluster restore may involve:
 
@@ -1306,7 +1306,7 @@ The exact procedure depends on how the cluster was provisioned and managed.
 
 ---
 
-# etcd Disaster Recovery
+## etcd Disaster Recovery
 
 Conceptual process:
 
@@ -1332,7 +1332,7 @@ This must be adapted to the cluster topology and Kubernetes distribution.
 
 ---
 
-# Persistent Data Recovery
+## Persistent Data Recovery
 
 Restoring Kubernetes objects does not automatically restore application data.
 
@@ -1353,7 +1353,7 @@ Therefore, application data backups must be handled separately.
 
 ---
 
-# Database Backups
+## Database Backups
 
 Stateful applications such as databases should generally use database-aware backup strategies.
 
@@ -1369,7 +1369,7 @@ A database-aware backup can provide better consistency than simply copying live 
 
 ---
 
-# Application-Consistent Backup
+## Application-Consistent Backup
 
 For stateful systems:
 
@@ -1395,7 +1395,7 @@ depending on the application.
 
 ---
 
-# Crash-Consistent Backup
+## Crash-Consistent Backup
 
 A crash-consistent snapshot represents storage as it might appear after a sudden system failure.
 
@@ -1403,7 +1403,7 @@ This can be useful, but it does not necessarily guarantee application-level cons
 
 ---
 
-# Backup Consistency
+## Backup Consistency
 
 Always ask:
 
@@ -1417,7 +1417,7 @@ Database-consistent?
 
 ---
 
-# Backup Architecture
+## Backup Architecture
 
 A mature architecture may look like:
 
@@ -1446,7 +1446,7 @@ A mature architecture may look like:
 
 ---
 
-# Backup Lifecycle
+## Backup Lifecycle
 
 ```text
 Create
@@ -1468,7 +1468,7 @@ Expire
 
 ---
 
-# Backup Policy
+## Backup Policy
 
 A policy should define:
 
@@ -1485,7 +1485,7 @@ Recovery Process
 
 ---
 
-# Example Backup Policy
+## Example Backup Policy
 
 ```text
 Production:
@@ -1519,7 +1519,7 @@ This is only an example; actual intervals should be determined from RPO/RTO requ
 
 ---
 
-# Backup Dependencies
+## Backup Dependencies
 
 A backup system can depend on:
 
@@ -1538,9 +1538,9 @@ Therefore, backup infrastructure itself must be monitored.
 
 ---
 
-# Backup Failure Scenarios
+## Backup Failure Scenarios
 
-## Object Storage Unavailable
+### Object Storage Unavailable
 
 ```text
 Backup
@@ -1560,7 +1560,7 @@ Alerting
 
 ---
 
-# Credential Failure
+## Credential Failure
 
 ```text
 Backup Tool
@@ -1579,7 +1579,7 @@ Secret
 
 ---
 
-# Storage Full
+## Storage Full
 
 ```text
 Backup
@@ -1597,7 +1597,7 @@ Archive
 
 ---
 
-# Snapshot Failure
+## Snapshot Failure
 
 Possible causes:
 
@@ -1611,7 +1611,7 @@ Capacity
 
 ---
 
-# Restore Failure
+## Restore Failure
 
 Possible causes:
 
@@ -1628,7 +1628,7 @@ Secrets
 
 ---
 
-# Version Compatibility
+## Version Compatibility
 
 Restoring backups across Kubernetes versions requires careful compatibility testing.
 
@@ -1646,7 +1646,7 @@ Backup Tool
 
 ---
 
-# Backup and CRDs
+## Backup and CRDs
 
 Custom Resources may depend on their CRDs.
 
@@ -1668,7 +1668,7 @@ CRD
 
 ---
 
-# Backup and Operators
+## Backup and Operators
 
 Operators may recreate resources automatically.
 
@@ -1683,7 +1683,7 @@ Controller Reconciliation
 
 ---
 
-# Backup and Secrets
+## Backup and Secrets
 
 Secrets are sensitive.
 
@@ -1698,13 +1698,13 @@ Retention
 
 ---
 
-# Backup and ConfigMaps
+## Backup and ConfigMaps
 
 ConfigMaps are generally less sensitive than Secrets, but still important for application recovery.
 
 ---
 
-# Backup and RBAC
+## Backup and RBAC
 
 Restore:
 
@@ -1722,7 +1722,7 @@ Be careful with restoring broad permissions.
 
 ---
 
-# Backup and Network Policies
+## Backup and Network Policies
 
 NetworkPolicies can be essential to application functionality.
 
@@ -1730,7 +1730,7 @@ A restore strategy should include them where required.
 
 ---
 
-# Backup and Ingress
+## Backup and Ingress
 
 If applications rely on Ingress resources, include:
 
@@ -1745,7 +1745,7 @@ where applicable.
 
 ---
 
-# Backup and Gateway API
+## Backup and Gateway API
 
 For Gateway API deployments, consider:
 
@@ -1762,7 +1762,7 @@ as applicable.
 
 ---
 
-# Backup and StorageClasses
+## Backup and StorageClasses
 
 StorageClasses may be required for PVC recreation.
 
@@ -1770,7 +1770,7 @@ However, they may be cluster-specific and should be reviewed before restoring in
 
 ---
 
-# Backup and CSI
+## Backup and CSI
 
 CSI drivers are infrastructure dependencies.
 
@@ -1778,7 +1778,7 @@ A restored PVC may fail if the required CSI driver is not available.
 
 ---
 
-# Backup and CNI
+## Backup and CNI
 
 Network restoration may depend on:
 
@@ -1792,7 +1792,7 @@ DNS
 
 ---
 
-# Disaster Recovery Architecture
+## Disaster Recovery Architecture
 
 A strong DR architecture may use:
 
@@ -1810,7 +1810,7 @@ Secondary Cluster
 
 ---
 
-# Active-Passive DR
+## Active-Passive DR
 
 ```text
 Primary
@@ -1826,7 +1826,7 @@ The secondary environment is not actively serving all production traffic.
 
 ---
 
-# Active-Active DR
+## Active-Active DR
 
 ```text
 Region A
@@ -1843,7 +1843,7 @@ This is more complex and requires careful data consistency design.
 
 ---
 
-# Backup vs Replication
+## Backup vs Replication
 
 Replication:
 
@@ -1873,7 +1873,7 @@ Replication ≠ Backup
 
 ---
 
-# Immutable Backup Strategy
+## Immutable Backup Strategy
 
 A strong production strategy can be:
 
@@ -1891,7 +1891,7 @@ Offline / Air-Gapped Copy
 
 ---
 
-# Recovery Workflow
+## Recovery Workflow
 
 During an incident:
 
@@ -1921,7 +1921,7 @@ Monitor
 
 ---
 
-# Recovery Validation
+## Recovery Validation
 
 After restore, verify:
 
@@ -1943,7 +1943,7 @@ Security Policies
 
 ---
 
-# Application Validation
+## Application Validation
 
 Do not stop at:
 
@@ -1963,7 +1963,7 @@ External Dependencies
 
 ---
 
-# Recovery Runbook
+## Recovery Runbook
 
 A recovery runbook should contain:
 
@@ -1980,7 +1980,7 @@ Escalation
 
 ---
 
-# Recovery Documentation
+## Recovery Documentation
 
 Document:
 
@@ -1998,83 +1998,83 @@ Owner
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Backing Up Only YAML
+### 1. Backing Up Only YAML
 
 Kubernetes manifests do not contain all application data.
 
 ---
 
-## 2. No etcd Backup
+### 2. No etcd Backup
 
 Control-plane recovery becomes much harder.
 
 ---
 
-## 3. No Persistent Data Backup
+### 3. No Persistent Data Backup
 
 A restored Deployment does not restore database contents.
 
 ---
 
-## 4. Backups Stored in the Same Cluster
+### 4. Backups Stored in the Same Cluster
 
 Cluster destruction could destroy the backups too.
 
 ---
 
-## 5. No Restore Testing
+### 5. No Restore Testing
 
 Untested backups may be unusable.
 
 ---
 
-## 6. No Encryption
+### 6. No Encryption
 
 Backup data can contain sensitive information.
 
 ---
 
-## 7. No Retention Policy
+### 7. No Retention Policy
 
 Storage can grow uncontrollably.
 
 ---
 
-## 8. No Immutable Copy
+### 8. No Immutable Copy
 
 Attackers who compromise backup credentials may delete backups.
 
 ---
 
-## 9. Ignoring CRDs
+### 9. Ignoring CRDs
 
 Custom Resources may fail to restore without their CRDs.
 
 ---
 
-## 10. Ignoring CSI
+### 10. Ignoring CSI
 
 Persistent volumes may not recover without the correct storage driver.
 
 ---
 
-## 11. Ignoring Secrets
+### 11. Ignoring Secrets
 
 Applications may start but fail to authenticate to dependencies.
 
 ---
 
-## 12. Ignoring DNS and Networking
+### 12. Ignoring DNS and Networking
 
 Restored Pods may be running but unreachable.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Define RPO and RTO
+#### 1. Define RPO and RTO
 
 Backup design should start with:
 
@@ -2085,7 +2085,7 @@ How quickly must we recover?
 
 ---
 
-### 2. Back Up Both State and Data
+#### 2. Back Up Both State and Data
 
 Use:
 
@@ -2097,7 +2097,7 @@ Application Data Backup
 
 ---
 
-### 3. Store Backups Outside the Cluster
+#### 3. Store Backups Outside the Cluster
 
 Prefer:
 
@@ -2108,7 +2108,7 @@ Secondary Region
 
 ---
 
-### 4. Encrypt Backups
+#### 4. Encrypt Backups
 
 Use encryption:
 
@@ -2119,7 +2119,7 @@ At Rest
 
 ---
 
-### 5. Use Immutable Backups
+#### 5. Use Immutable Backups
 
 Protect against:
 
@@ -2130,13 +2130,13 @@ Malicious Deletion
 
 ---
 
-### 6. Automate Backups
+#### 6. Automate Backups
 
 Use scheduled backup jobs.
 
 ---
 
-### 7. Monitor Backups
+#### 7. Monitor Backups
 
 Alert when:
 
@@ -2148,7 +2148,7 @@ Storage Is Full
 
 ---
 
-### 8. Test Restores
+#### 8. Test Restores
 
 A good cycle is:
 
@@ -2162,19 +2162,19 @@ Validate
 
 ---
 
-### 9. Use Application-Aware Backups
+#### 9. Use Application-Aware Backups
 
 For databases, use appropriate database-consistent methods.
 
 ---
 
-### 10. Document Recovery
+#### 10. Document Recovery
 
 Maintain a tested recovery runbook.
 
 ---
 
-# Hands-on Lab 1 – Kubernetes Resource Backup
+## Hands-on Lab 1 – Kubernetes Resource Backup
 
 Create test resources:
 
@@ -2190,7 +2190,7 @@ Export and document their configuration.
 
 ---
 
-# Hands-on Lab 2 – etcd Snapshot
+## Hands-on Lab 2 – etcd Snapshot
 
 In a disposable cluster:
 
@@ -2206,7 +2206,7 @@ Document the exact commands for your cluster version.
 
 ---
 
-# Hands-on Lab 3 – PVC Snapshot
+## Hands-on Lab 3 – PVC Snapshot
 
 Create:
 
@@ -2228,7 +2228,7 @@ is ready.
 
 ---
 
-# Hands-on Lab 4 – Restore PVC From Snapshot
+## Hands-on Lab 4 – Restore PVC From Snapshot
 
 Create a new PVC from the snapshot.
 
@@ -2238,7 +2238,7 @@ Verify the test data.
 
 ---
 
-# Hands-on Lab 5 – Install Velero
+## Hands-on Lab 5 – Install Velero
 
 Install Velero in a test cluster.
 
@@ -2252,7 +2252,7 @@ using an appropriate object-storage backend.
 
 ---
 
-# Hands-on Lab 6 – Velero Backup
+## Hands-on Lab 6 – Velero Backup
 
 Create:
 
@@ -2268,7 +2268,7 @@ velero backup get
 
 ---
 
-# Hands-on Lab 7 – Inspect Backup
+## Hands-on Lab 7 – Inspect Backup
 
 Run:
 
@@ -2292,7 +2292,7 @@ Warnings
 
 ---
 
-# Hands-on Lab 8 – Velero Restore
+## Hands-on Lab 8 – Velero Restore
 
 Create a restore:
 
@@ -2309,7 +2309,7 @@ velero restore get
 
 ---
 
-# Hands-on Lab 9 – Namespace Restore
+## Hands-on Lab 9 – Namespace Restore
 
 Back up a test namespace.
 
@@ -2328,7 +2328,7 @@ Secrets
 
 ---
 
-# Hands-on Lab 10 – Persistent Data Backup
+## Hands-on Lab 10 – Persistent Data Backup
 
 Create a test application with a PVC.
 
@@ -2346,7 +2346,7 @@ Verify the file.
 
 ---
 
-# Hands-on Lab 11 – Scheduled Backup
+## Hands-on Lab 11 – Scheduled Backup
 
 Create an automated backup schedule.
 
@@ -2362,7 +2362,7 @@ are created according to the schedule.
 
 ---
 
-# Hands-on Lab 12 – Backup Failure
+## Hands-on Lab 12 – Backup Failure
 
 Intentionally make the backup storage unavailable in a disposable environment.
 
@@ -2377,7 +2377,7 @@ Retry
 
 ---
 
-# Hands-on Lab 13 – Restore Failure
+## Hands-on Lab 13 – Restore Failure
 
 Create a controlled restore failure.
 
@@ -2393,7 +2393,7 @@ CRDs
 
 ---
 
-# Hands-on Lab 14 – Cross-Cluster Restore
+## Hands-on Lab 14 – Cross-Cluster Restore
 
 Create:
 
@@ -2413,7 +2413,7 @@ Validate application behavior.
 
 ---
 
-# Hands-on Lab 15 – Backup Encryption
+## Hands-on Lab 15 – Backup Encryption
 
 Configure encrypted backup storage.
 
@@ -2427,7 +2427,7 @@ Access Control
 
 ---
 
-# Hands-on Lab 16 – Immutable Backup
+## Hands-on Lab 16 – Immutable Backup
 
 Configure a test object-storage bucket with an appropriate immutability/retention mechanism.
 
@@ -2435,7 +2435,7 @@ Verify that a retained backup cannot be deleted before its retention period expi
 
 ---
 
-# Hands-on Lab 17 – Disaster Recovery Exercise
+## Hands-on Lab 17 – Disaster Recovery Exercise
 
 Simulate:
 
@@ -2466,7 +2466,7 @@ Actual Data Loss
 
 ---
 
-# Hands-on Lab 18 – RPO Exercise
+## Hands-on Lab 18 – RPO Exercise
 
 Create backups every:
 
@@ -2484,7 +2484,7 @@ Actual Recovery Point
 
 ---
 
-# Hands-on Lab 19 – RTO Exercise
+## Hands-on Lab 19 – RTO Exercise
 
 Document the complete restore procedure.
 
@@ -2498,7 +2498,7 @@ Compare it with the required RTO.
 
 ---
 
-# Hands-on Lab 20 – Production Backup Architecture
+## Hands-on Lab 20 – Production Backup Architecture
 
 Build:
 
@@ -2534,9 +2534,9 @@ DR Runbook
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Backup
+### Backup
 
 ```text
 Recoverable copy of important data/state
@@ -2544,7 +2544,7 @@ Recoverable copy of important data/state
 
 ---
 
-## Restore
+### Restore
 
 ```text
 Recovering data/state from backup
@@ -2552,7 +2552,7 @@ Recovering data/state from backup
 
 ---
 
-## RPO
+### RPO
 
 ```text
 Maximum acceptable data loss
@@ -2560,7 +2560,7 @@ Maximum acceptable data loss
 
 ---
 
-## RTO
+### RTO
 
 ```text
 Target maximum recovery time
@@ -2568,7 +2568,7 @@ Target maximum recovery time
 
 ---
 
-## etcd Snapshot
+### etcd Snapshot
 
 ```text
 Point-in-time copy of etcd database state
@@ -2576,7 +2576,7 @@ Point-in-time copy of etcd database state
 
 ---
 
-## Volume Snapshot
+### Volume Snapshot
 
 ```text
 Point-in-time copy of storage volume
@@ -2584,7 +2584,7 @@ Point-in-time copy of storage volume
 
 ---
 
-## Velero
+### Velero
 
 ```text
 Kubernetes backup and restore tool
@@ -2592,7 +2592,7 @@ Kubernetes backup and restore tool
 
 ---
 
-## Full Backup
+### Full Backup
 
 ```text
 Complete selected dataset
@@ -2600,7 +2600,7 @@ Complete selected dataset
 
 ---
 
-## Incremental Backup
+### Incremental Backup
 
 ```text
 Changes since a previous backup according to the backup model
@@ -2608,7 +2608,7 @@ Changes since a previous backup according to the backup model
 
 ---
 
-## Retention
+### Retention
 
 ```text
 How long backups are preserved
@@ -2616,7 +2616,7 @@ How long backups are preserved
 
 ---
 
-## Immutable Backup
+### Immutable Backup
 
 ```text
 Backup protected from modification/deletion during retention
@@ -2624,7 +2624,7 @@ Backup protected from modification/deletion during retention
 
 ---
 
-## Air-Gapped Backup
+### Air-Gapped Backup
 
 ```text
 Backup isolated from production environment
@@ -2632,7 +2632,7 @@ Backup isolated from production environment
 
 ---
 
-## Application-Consistent Backup
+### Application-Consistent Backup
 
 ```text
 Backup coordinated with application state
@@ -2640,7 +2640,7 @@ Backup coordinated with application state
 
 ---
 
-## Crash-Consistent Backup
+### Crash-Consistent Backup
 
 ```text
 Storage state suitable for recovery after an unexpected interruption
@@ -2648,7 +2648,7 @@ Storage state suitable for recovery after an unexpected interruption
 
 ---
 
-## Disaster Recovery
+### Disaster Recovery
 
 ```text
 Strategy for recovering from major failures
@@ -2656,7 +2656,7 @@ Strategy for recovering from major failures
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check etcd snapshot:
 
@@ -2751,9 +2751,9 @@ kubectl get storageclass
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Kubernetes backup?
 - Why do Kubernetes clusters need backups?
@@ -2774,7 +2774,7 @@ kubectl get storageclass
 
 ---
 
-## Intermediate
+### Intermediate
 
 - What should be backed up in Kubernetes?
 - Does backing up Kubernetes YAML also back up Persistent Volume data?
@@ -2795,7 +2795,7 @@ kubectl get storageclass
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a Kubernetes backup strategy for production.
 - Design a disaster recovery architecture across two regions.
@@ -2816,13 +2816,13 @@ kubectl get storageclass
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What should be backed up in Kubernetes?
 
-### Answer
+#### Answer
 
 A complete strategy should consider:
 
@@ -2846,13 +2846,13 @@ Backing up only YAML files is not enough for stateful workloads.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > What is the difference between an etcd backup and a PVC backup?
 
-### Answer
+#### Answer
 
 An etcd backup protects Kubernetes control-plane state:
 
@@ -2876,13 +2876,13 @@ They solve different recovery problems.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > What is RPO?
 
-### Answer
+#### Answer
 
 RPO means Recovery Point Objective.
 
@@ -2898,13 +2898,13 @@ means the recovery design should aim to limit data loss to approximately 15 minu
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What is RTO?
 
-### Answer
+#### Answer
 
 RTO means Recovery Time Objective.
 
@@ -2920,13 +2920,13 @@ means the recovery process should target restoration within approximately one ho
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > Are snapshots a replacement for backups?
 
-### Answer
+#### Answer
 
 No.
 
@@ -2950,13 +2950,13 @@ Snapshot ≠ Complete Backup Strategy
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > Why should backups be stored outside the Kubernetes cluster?
 
-### Answer
+#### Answer
 
 If the cluster is destroyed:
 
@@ -2977,13 +2977,13 @@ External Backup Storage
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > What happens if you restore Kubernetes YAML but not the database data?
 
-### Answer
+#### Answer
 
 The Pods may start successfully:
 
@@ -3008,13 +3008,13 @@ Therefore, application state and persistent data must be backed up separately.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How do you protect backups from ransomware?
 
-### Answer
+#### Answer
 
 Use multiple layers:
 
@@ -3038,13 +3038,13 @@ Do not rely on a single backup copy.
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How do you know whether a backup actually works?
 
-### Answer
+#### Answer
 
 Perform restore testing.
 
@@ -3064,13 +3064,13 @@ A successful backup command alone does not prove recoverability.
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a production Kubernetes backup strategy.
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3107,7 +3107,7 @@ DR Runbooks
 
 ---
 
-# Production Backup Checklist
+## Production Backup Checklist
 
 ```text
 ☑ RPO defined
@@ -3136,7 +3136,7 @@ DR Runbooks
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Kubernetes backup and restore should protect both:
 
@@ -3203,9 +3203,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 67 – Upgrades
+## Chapter 67 – Upgrades
 
 Topics will include:
 

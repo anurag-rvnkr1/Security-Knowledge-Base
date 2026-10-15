@@ -1,10 +1,10 @@
 # 15-PowerShell-and-Scripting.md
 
-# Part 1 — PowerShell Fundamentals, Architecture, Syntax, Cmdlets, Pipeline, Objects, and Basic Scripting
+## Part 1 — PowerShell Fundamentals, Architecture, Syntax, Cmdlets, Pipeline, Objects, and Basic Scripting
 
 ---
 
-# Introduction
+## Introduction
 
 PowerShell is Microsoft's modern command-line shell and scripting language built on the **.NET platform**. It is designed specifically for system administration, automation, configuration management, cloud administration, cybersecurity, and DevOps.
 
@@ -25,7 +25,7 @@ Almost every enterprise Windows environment relies on PowerShell for automation.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -45,7 +45,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is PowerShell?
+## What is PowerShell?
 
 PowerShell is:
 
@@ -70,7 +70,7 @@ It allows administrators to manage:
 
 ---
 
-# Why PowerShell is Important
+## Why PowerShell is Important
 
 Enterprise administrators may manage:
 
@@ -103,7 +103,7 @@ Automation saves time, improves consistency, and reduces human error.
 
 ---
 
-# Windows PowerShell vs PowerShell
+## Windows PowerShell vs PowerShell
 
 | Windows PowerShell | PowerShell |
 |--------------------|------------|
@@ -116,7 +116,7 @@ Modern environments increasingly adopt PowerShell 7 while maintaining compatibil
 
 ---
 
-# PowerShell Architecture
+## PowerShell Architecture
 
 ```text
 Administrator
@@ -146,7 +146,7 @@ PowerShell uses the .NET runtime to expose Windows functionality through consist
 
 ---
 
-# Starting PowerShell
+## Starting PowerShell
 
 Common methods:
 
@@ -182,7 +182,7 @@ Running PowerShell as Administrator is required for many system-level operations
 
 ---
 
-# Interactive Shell
+## Interactive Shell
 
 PowerShell can execute commands interactively.
 
@@ -202,7 +202,7 @@ Interactive mode is useful for administration and troubleshooting.
 
 ---
 
-# What is a Cmdlet?
+## What is a Cmdlet?
 
 A **cmdlet** (pronounced *command-let*) is a lightweight PowerShell command.
 
@@ -230,7 +230,7 @@ The consistent naming convention makes PowerShell easier to learn.
 
 ---
 
-# Approved Verbs
+## Approved Verbs
 
 PowerShell uses standardized verbs.
 
@@ -253,7 +253,7 @@ Using approved verbs improves script readability and consistency.
 
 ---
 
-# Nouns
+## Nouns
 
 The noun identifies the resource being managed.
 
@@ -275,7 +275,7 @@ Together, the verb and noun clearly describe the action.
 
 ---
 
-# Discovering Commands
+## Discovering Commands
 
 Find commands:
 
@@ -299,7 +299,7 @@ This is often the first step when learning a new module.
 
 ---
 
-# Getting Help
+## Getting Help
 
 PowerShell includes an extensive help system.
 
@@ -323,7 +323,7 @@ Get-Help Get-Service -Online
 
 ---
 
-# Updating Help
+## Updating Help
 
 Download the latest help files:
 
@@ -337,7 +337,7 @@ Keeping help files current ensures access to the latest documentation.
 
 ---
 
-# PowerShell Modules
+## PowerShell Modules
 
 Modules package related cmdlets.
 
@@ -359,7 +359,7 @@ Modules extend PowerShell's capabilities.
 
 ---
 
-# Importing Modules
+## Importing Modules
 
 Load a module manually:
 
@@ -371,7 +371,7 @@ PowerShell often imports modules automatically when needed.
 
 ---
 
-# Aliases
+## Aliases
 
 Aliases are shortcuts for cmdlets.
 
@@ -395,7 +395,7 @@ Although convenient interactively, full cmdlet names are recommended in producti
 
 ---
 
-# Variables
+## Variables
 
 Variables store information.
 
@@ -415,7 +415,7 @@ Variables begin with the `$` symbol.
 
 ---
 
-# Variable Examples
+## Variable Examples
 
 Store numbers:
 
@@ -439,7 +439,7 @@ Variables can also store complex objects.
 
 ---
 
-# Comments
+## Comments
 
 Single-line comment:
 
@@ -461,7 +461,7 @@ Comments improve readability and maintainability.
 
 ---
 
-# Objects
+## Objects
 
 Unlike traditional shells, PowerShell works with **objects**, not plain text.
 
@@ -483,7 +483,7 @@ Objects enable powerful filtering and automation.
 
 ---
 
-# Properties
+## Properties
 
 Display object properties:
 
@@ -509,7 +509,7 @@ Understanding object properties is fundamental to effective scripting.
 
 ---
 
-# Methods
+## Methods
 
 Objects also contain methods.
 
@@ -531,7 +531,7 @@ Availability depends on the object type.
 
 ---
 
-# The Pipeline
+## The Pipeline
 
 The pipeline (`|`) passes objects from one command to another.
 
@@ -551,7 +551,7 @@ This is one of PowerShell's most powerful features.
 
 ---
 
-# Pipeline Example
+## Pipeline Example
 
 ```powershell
 Get-Service | Sort-Object Status
@@ -575,7 +575,7 @@ Objects retain their properties throughout the pipeline.
 
 ---
 
-# Selecting Data
+## Selecting Data
 
 Display selected properties:
 
@@ -588,7 +588,7 @@ Output is easier to read and focuses on relevant information.
 
 ---
 
-# Sorting Data
+## Sorting Data
 
 Example:
 
@@ -601,7 +601,7 @@ This lists processes using the most CPU time first.
 
 ---
 
-# Filtering Data
+## Filtering Data
 
 Filter running services:
 
@@ -614,7 +614,7 @@ Filtering reduces unnecessary output and improves script efficiency.
 
 ---
 
-# Formatting Output
+## Formatting Output
 
 Display information as a table:
 
@@ -634,7 +634,7 @@ Formatting is intended for display, not further processing.
 
 ---
 
-# Redirecting Output
+## Redirecting Output
 
 Save output to a file:
 
@@ -654,7 +654,7 @@ Output redirection is useful for reporting and documentation.
 
 ---
 
-# Running Scripts
+## Running Scripts
 
 PowerShell scripts use the extension:
 
@@ -672,7 +672,7 @@ Scripts can automate repetitive administrative tasks.
 
 ---
 
-# Execution Policy
+## Execution Policy
 
 PowerShell includes an execution policy to help prevent accidental script execution.
 
@@ -695,7 +695,7 @@ Execution Policy is **not** a security boundary; it is a safety feature.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A systems administrator needs to verify that a critical service is running on multiple servers.
 
@@ -725,7 +725,7 @@ Automation reduces manual effort and provides consistent reporting.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 PowerShell is widely used by:
 
@@ -747,7 +747,7 @@ Because PowerShell is powerful, attackers may also abuse it. Organizations shoul
 
 ---
 
-# Business Impact
+## Business Impact
 
 PowerShell enables organizations to:
 
@@ -762,7 +762,7 @@ Automation increases efficiency and scalability across enterprise environments.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use full cmdlet names in production scripts.
 - Include comments and documentation.
@@ -775,9 +775,9 @@ Automation increases efficiency and scalability across enterprise environments.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Explore Available Cmdlets
+### Lab 1 — Explore Available Cmdlets
 
 Run:
 
@@ -795,7 +795,7 @@ Identify at least five service-related cmdlets.
 
 ---
 
-## Lab 2 — Explore Objects
+### Lab 2 — Explore Objects
 
 Run:
 
@@ -812,7 +812,7 @@ Observe how PowerShell represents process information as objects.
 
 ---
 
-## Lab 3 — Practice the Pipeline
+### Lab 3 — Practice the Pipeline
 
 Run:
 
@@ -826,7 +826,7 @@ Review the filtered and sorted output.
 
 ---
 
-## Lab 4 — Use the Help System
+### Lab 4 — Use the Help System
 
 Run:
 
@@ -838,7 +838,7 @@ Study the provided examples and experiment with one in a test environment.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - PowerShell is Microsoft's automation and scripting platform.
 - Cmdlets follow a consistent Verb-Noun naming convention.
@@ -850,7 +850,7 @@ Study the provided examples and experiment with one in a test environment.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is PowerShell?
 2. What is the difference between Windows PowerShell and PowerShell 7?
@@ -865,7 +865,7 @@ Study the provided examples and experiment with one in a test environment.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft PowerShell Documentation
@@ -876,13 +876,13 @@ Study the provided examples and experiment with one in a test environment.
 
 ---
 
-# 15-Windows-PowerShell-and-Scripting.md
+## 15-Windows-PowerShell-and-Scripting.md
 
-# Part 2 — Variables, Data Types, Operators, Control Flow, Functions, Error Handling, and Advanced Scripting
+## Part 2 — Variables, Data Types, Operators, Control Flow, Functions, Error Handling, and Advanced Scripting
 
 ---
 
-# Introduction
+## Introduction
 
 PowerShell becomes truly powerful when commands are combined into reusable scripts.
 
@@ -900,7 +900,7 @@ This section introduces the core scripting concepts required to build reliable P
 
 ---
 
-# Script Execution Flow
+## Script Execution Flow
 
 A PowerShell script generally follows this workflow.
 
@@ -936,7 +936,7 @@ Understanding this flow helps in designing readable and maintainable scripts.
 
 ---
 
-# Variables
+## Variables
 
 Variables store values in memory.
 
@@ -960,7 +960,7 @@ Variables can hold almost any .NET object.
 
 ---
 
-# Variable Naming
+## Variable Naming
 
 Good naming conventions improve readability.
 
@@ -992,7 +992,7 @@ Meaningful names make scripts easier to maintain.
 
 ---
 
-# Displaying Variables
+## Displaying Variables
 
 ```powershell
 $User = "Alice"
@@ -1014,7 +1014,7 @@ Variables can also be embedded within strings.
 
 ---
 
-# Variable Scope
+## Variable Scope
 
 Variables exist within different scopes.
 
@@ -1035,7 +1035,7 @@ Use broader scopes only when necessary.
 
 ---
 
-# Built-in Variables
+## Built-in Variables
 
 Common automatic variables include:
 
@@ -1057,7 +1057,7 @@ $PSVersionTable
 
 ---
 
-# Data Types
+## Data Types
 
 PowerShell supports many data types.
 
@@ -1077,7 +1077,7 @@ PowerShell automatically converts types when appropriate.
 
 ---
 
-# Strings
+## Strings
 
 ```powershell
 $Message = "Hello World"
@@ -1101,7 +1101,7 @@ $Second = "PowerShell"
 
 ---
 
-# Numbers
+## Numbers
 
 ```powershell
 $A = 10
@@ -1123,7 +1123,7 @@ $A / $B
 
 ---
 
-# Arrays
+## Arrays
 
 Arrays store multiple values.
 
@@ -1149,7 +1149,7 @@ $Servers.Count
 
 ---
 
-# Hashtables
+## Hashtables
 
 Hashtables store key-value pairs.
 
@@ -1171,7 +1171,7 @@ Hashtables are frequently used for configuration data.
 
 ---
 
-# Operators
+## Operators
 
 PowerShell supports several categories of operators.
 
@@ -1185,7 +1185,7 @@ PowerShell supports several categories of operators.
 
 ---
 
-# Comparison Operators
+## Comparison Operators
 
 | Operator | Meaning |
 |----------|---------|
@@ -1210,7 +1210,7 @@ True
 
 ---
 
-# Logical Operators
+## Logical Operators
 
 Examples:
 
@@ -1226,7 +1226,7 @@ Logical operators combine multiple conditions.
 
 ---
 
-# If Statement
+## If Statement
 
 Basic syntax:
 
@@ -1250,7 +1250,7 @@ if ($Age -ge 18)
 
 ---
 
-# If-Else Statement
+## If-Else Statement
 
 ```powershell
 if ($Status -eq "Running")
@@ -1267,7 +1267,7 @@ This allows scripts to take different actions based on conditions.
 
 ---
 
-# ElseIf
+## ElseIf
 
 ```powershell
 if ($Score -ge 90)
@@ -1288,7 +1288,7 @@ Useful when multiple conditions must be evaluated.
 
 ---
 
-# Switch Statement
+## Switch Statement
 
 `switch` simplifies evaluation of multiple possible values.
 
@@ -1305,7 +1305,7 @@ switch ($Day)
 
 ---
 
-# Loops
+## Loops
 
 PowerShell supports several loop types.
 
@@ -1318,7 +1318,7 @@ PowerShell supports several loop types.
 
 ---
 
-# For Loop
+## For Loop
 
 ```powershell
 for ($i = 1; $i -le 5; $i++)
@@ -1339,7 +1339,7 @@ Output:
 
 ---
 
-# Foreach Loop
+## Foreach Loop
 
 ```powershell
 $Servers = @("DC01","WEB01","SQL01")
@@ -1354,7 +1354,7 @@ foreach ($Server in $Servers)
 
 ---
 
-# While Loop
+## While Loop
 
 ```powershell
 $i = 1
@@ -1370,7 +1370,7 @@ The condition is checked before each iteration.
 
 ---
 
-# Do-While Loop
+## Do-While Loop
 
 ```powershell
 $i = 1
@@ -1387,7 +1387,7 @@ The loop executes at least once, regardless of the condition.
 
 ---
 
-# Functions
+## Functions
 
 Functions package reusable code.
 
@@ -1408,7 +1408,7 @@ Get-Greeting
 
 ---
 
-# Function Parameters
+## Function Parameters
 
 ```powershell
 function Get-Welcome
@@ -1431,7 +1431,7 @@ Parameters make functions flexible and reusable.
 
 ---
 
-# Returning Values
+## Returning Values
 
 ```powershell
 function Get-Square
@@ -1456,7 +1456,7 @@ Returns:
 
 ---
 
-# Script Parameters
+## Script Parameters
 
 Scripts can also accept parameters.
 
@@ -1478,7 +1478,7 @@ Execute:
 
 ---
 
-# Error Handling
+## Error Handling
 
 Unexpected errors occur in automation.
 
@@ -1494,7 +1494,7 @@ Proper error handling makes scripts more reliable.
 
 ---
 
-# Try-Catch
+## Try-Catch
 
 ```powershell
 try
@@ -1513,7 +1513,7 @@ catch
 
 ---
 
-# Finally Block
+## Finally Block
 
 ```powershell
 try
@@ -1534,7 +1534,7 @@ The `finally` block executes whether an error occurs or not.
 
 ---
 
-# Throw
+## Throw
 
 Generate a custom error.
 
@@ -1546,7 +1546,7 @@ Useful for validating user input and enforcing business logic.
 
 ---
 
-# Error Variable
+## Error Variable
 
 View recent errors:
 
@@ -1564,7 +1564,7 @@ The `$Error` collection helps troubleshoot script failures.
 
 ---
 
-# Reading User Input
+## Reading User Input
 
 ```powershell
 $Name = Read-Host "Enter Name"
@@ -1580,7 +1580,7 @@ The entered value is stored in `$Name`.
 
 ---
 
-# Writing Output
+## Writing Output
 
 Display information:
 
@@ -1598,7 +1598,7 @@ For scripts intended to be reused or piped into other commands, prefer `Write-Ou
 
 ---
 
-# Reading Files
+## Reading Files
 
 Read a text file:
 
@@ -1610,7 +1610,7 @@ Each line becomes an object in the output collection.
 
 ---
 
-# Writing Files
+## Writing Files
 
 Write content:
 
@@ -1626,7 +1626,7 @@ Add-Content Report.txt "Finished Successfully"
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A systems administrator needs to verify disk space on multiple servers.
 
@@ -1660,7 +1660,7 @@ This approach automates a repetitive operational task.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 PowerShell scripts are frequently used to:
 
@@ -1675,7 +1675,7 @@ Security teams should ensure scripts include proper validation, logging, and err
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-written PowerShell scripts provide:
 
@@ -1690,7 +1690,7 @@ Reusable automation contributes to operational efficiency across the enterprise.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use descriptive variable names.
 - Modularize scripts using functions.
@@ -1703,9 +1703,9 @@ Reusable automation contributes to operational efficiency across the enterprise.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Create Variables
+### Lab 1 — Create Variables
 
 Write a script that stores:
 
@@ -1717,7 +1717,7 @@ Display all values.
 
 ---
 
-## Lab 2 — Practice Loops
+### Lab 2 — Practice Loops
 
 Create an array containing five server names.
 
@@ -1725,7 +1725,7 @@ Use a `foreach` loop to display each name.
 
 ---
 
-## Lab 3 — Build a Function
+### Lab 3 — Build a Function
 
 Create a function that accepts a username and displays:
 
@@ -1737,7 +1737,7 @@ Test it with multiple values.
 
 ---
 
-## Lab 4 — Handle Errors
+### Lab 4 — Handle Errors
 
 Write a script that attempts to read a file that does not exist.
 
@@ -1745,7 +1745,7 @@ Use `try/catch` to display a friendly error message instead of terminating unexp
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Variables store data and objects.
 - Arrays and hashtables organize collections of information.
@@ -1757,7 +1757,7 @@ Use `try/catch` to display a friendly error message instead of terminating unexp
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between an array and a hashtable?
 2. What are PowerShell automatic variables?
@@ -1772,7 +1772,7 @@ Use `try/catch` to display a friendly error message instead of terminating unexp
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft PowerShell Documentation
@@ -1782,13 +1782,13 @@ Use `try/catch` to display a friendly error message instead of terminating unexp
 
 ---
 
-# 15-Windows-PowerShell-and-Scripting.md
+## 15-Windows-PowerShell-and-Scripting.md
 
-# Part 3 — PowerShell Remoting, CIM/WMI, Jobs, Modules, Security, Automation, and Enterprise Administration
+## Part 3 — PowerShell Remoting, CIM/WMI, Jobs, Modules, Security, Automation, and Enterprise Administration
 
 ---
 
-# Introduction
+## Introduction
 
 One of PowerShell's greatest strengths is its ability to manage systems remotely and automate administration across hundreds or thousands of computers.
 
@@ -1806,7 +1806,7 @@ PowerShell remoting and automation are fundamental technologies for:
 
 ---
 
-# Enterprise Automation
+## Enterprise Automation
 
 Traditional administration:
 
@@ -1852,7 +1852,7 @@ Automation significantly reduces administrative effort.
 
 ---
 
-# PowerShell Remoting
+## PowerShell Remoting
 
 PowerShell Remoting allows administrators to execute commands on remote computers.
 
@@ -1882,7 +1882,7 @@ PowerShell Remoting is built on the **WS-Management (WSMan)** protocol by defaul
 
 ---
 
-# Requirements for Remoting
+## Requirements for Remoting
 
 Typical requirements include:
 
@@ -1896,7 +1896,7 @@ Authentication and authorization must also be configured correctly.
 
 ---
 
-# Enable PowerShell Remoting
+## Enable PowerShell Remoting
 
 Run PowerShell as Administrator.
 
@@ -1913,7 +1913,7 @@ This command typically:
 
 ---
 
-# Verify WinRM
+## Verify WinRM
 
 Check WinRM service status:
 
@@ -1931,7 +1931,7 @@ WinRM is the communication service used by PowerShell Remoting.
 
 ---
 
-# Test Remote Connectivity
+## Test Remote Connectivity
 
 ```powershell
 Test-WSMan Server01
@@ -1941,7 +1941,7 @@ Successful output indicates that the remote computer is responding to WSMan requ
 
 ---
 
-# Enter-PSSession
+## Enter-PSSession
 
 Start an interactive remote session.
 
@@ -1975,7 +1975,7 @@ Exit-PSSession
 
 ---
 
-# Invoke-Command
+## Invoke-Command
 
 Execute commands remotely without opening an interactive session.
 
@@ -1991,7 +1991,7 @@ This is commonly used for enterprise automation.
 
 ---
 
-# Multiple Remote Computers
+## Multiple Remote Computers
 
 Example:
 
@@ -2007,7 +2007,7 @@ One command can manage multiple systems simultaneously.
 
 ---
 
-# PowerShell Sessions
+## PowerShell Sessions
 
 Persistent remote sessions improve efficiency.
 
@@ -2037,7 +2037,7 @@ Persistent sessions avoid repeatedly creating new connections.
 
 ---
 
-# Copy Files to Remote Systems
+## Copy Files to Remote Systems
 
 Example:
 
@@ -2052,7 +2052,7 @@ This simplifies administrative file distribution.
 
 ---
 
-# Background Jobs
+## Background Jobs
 
 Jobs allow commands to run in the background.
 
@@ -2068,7 +2068,7 @@ Jobs free the console for additional work.
 
 ---
 
-# Managing Jobs
+## Managing Jobs
 
 View jobs:
 
@@ -2092,7 +2092,7 @@ Jobs are useful for long-running operations.
 
 ---
 
-# Scheduled Tasks with PowerShell
+## Scheduled Tasks with PowerShell
 
 PowerShell can create and manage scheduled tasks.
 
@@ -2113,7 +2113,7 @@ Task automation reduces repetitive administrative work.
 
 ---
 
-# WMI
+## WMI
 
 **Windows Management Instrumentation (WMI)** provides management information about Windows systems.
 
@@ -2130,7 +2130,7 @@ Historically, WMI has been widely used in Windows administration.
 
 ---
 
-# CIM
+## CIM
 
 The **Common Information Model (CIM)** is the modern management interface used by PowerShell.
 
@@ -2150,7 +2150,7 @@ Get-WmiObject
 
 ---
 
-# Get Computer Information
+## Get Computer Information
 
 Example:
 
@@ -2167,7 +2167,7 @@ Information returned includes:
 
 ---
 
-# Operating System Information
+## Operating System Information
 
 ```powershell
 Get-CimInstance Win32_OperatingSystem
@@ -2183,7 +2183,7 @@ Example properties:
 
 ---
 
-# BIOS Information
+## BIOS Information
 
 ```powershell
 Get-CimInstance Win32_BIOS
@@ -2197,7 +2197,7 @@ Useful information:
 
 ---
 
-# Logical Disks
+## Logical Disks
 
 ```powershell
 Get-CimInstance Win32_LogicalDisk
@@ -2214,7 +2214,7 @@ Useful for storage monitoring.
 
 ---
 
-# Installed Software
+## Installed Software
 
 One method:
 
@@ -2226,7 +2226,7 @@ Depending on the environment, administrators may also query registry locations o
 
 ---
 
-# Event Logs
+## Event Logs
 
 Retrieve system events:
 
@@ -2246,7 +2246,7 @@ PowerShell provides powerful event log filtering capabilities.
 
 ---
 
-# Managing Services
+## Managing Services
 
 View services:
 
@@ -2274,7 +2274,7 @@ Start-Service Spooler
 
 ---
 
-# Managing Processes
+## Managing Processes
 
 View processes:
 
@@ -2292,7 +2292,7 @@ Always verify the target process before terminating it.
 
 ---
 
-# Managing Files
+## Managing Files
 
 Copy:
 
@@ -2322,7 +2322,7 @@ These cmdlets support automation across file systems.
 
 ---
 
-# PowerShell Modules
+## PowerShell Modules
 
 List loaded modules:
 
@@ -2346,7 +2346,7 @@ Modules organize related cmdlets into reusable components.
 
 ---
 
-# PowerShell Gallery
+## PowerShell Gallery
 
 The PowerShell Gallery is Microsoft's online repository for modules and scripts.
 
@@ -2366,7 +2366,7 @@ Only install trusted modules from reputable publishers.
 
 ---
 
-# Script Signing
+## Script Signing
 
 PowerShell supports digitally signed scripts.
 
@@ -2380,7 +2380,7 @@ Signed scripts are especially valuable in enterprise environments.
 
 ---
 
-# Logging
+## Logging
 
 Organizations often enable PowerShell logging for:
 
@@ -2400,7 +2400,7 @@ These capabilities improve visibility into PowerShell activity.
 
 ---
 
-# PowerShell Security
+## PowerShell Security
 
 Administrators should:
 
@@ -2415,7 +2415,7 @@ PowerShell itself is a legitimate administration tool; misuse should be detected
 
 ---
 
-# Desired State Configuration (DSC)
+## Desired State Configuration (DSC)
 
 PowerShell Desired State Configuration (DSC) helps ensure systems remain in a defined configuration.
 
@@ -2441,7 +2441,7 @@ DSC supports infrastructure consistency and configuration management.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An administrator needs to collect disk space information from 250 servers.
 
@@ -2475,7 +2475,7 @@ PowerShell performs the task in minutes instead of hours.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 PowerShell is widely used during security operations.
 
@@ -2499,7 +2499,7 @@ Security teams should monitor PowerShell activity using logging, endpoint detect
 
 ---
 
-# Business Impact
+## Business Impact
 
 Enterprise PowerShell automation provides:
 
@@ -2514,7 +2514,7 @@ Automation enables IT teams to manage large infrastructures efficiently.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use CIM cmdlets instead of legacy WMI cmdlets for new scripts.
 - Limit remoting access to authorized administrators.
@@ -2527,9 +2527,9 @@ Automation enables IT teams to manage large infrastructures efficiently.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Query System Information
+### Lab 1 — Query System Information
 
 Run:
 
@@ -2545,7 +2545,7 @@ Record:
 
 ---
 
-## Lab 2 — Retrieve Operating System Details
+### Lab 2 — Retrieve Operating System Details
 
 Run:
 
@@ -2561,7 +2561,7 @@ Identify:
 
 ---
 
-## Lab 3 — Create a Background Job
+### Lab 3 — Create a Background Job
 
 Run:
 
@@ -2583,7 +2583,7 @@ Observe how jobs execute independently of the interactive console.
 
 ---
 
-## Lab 4 — Explore Available Modules
+### Lab 4 — Explore Available Modules
 
 Run:
 
@@ -2599,7 +2599,7 @@ Get-Command -Module <ModuleName>
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - PowerShell Remoting enables centralized administration of remote systems.
 - WinRM provides the communication framework for remoting.
@@ -2611,7 +2611,7 @@ Get-Command -Module <ModuleName>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is PowerShell Remoting?
 2. What service does PowerShell Remoting use by default?
@@ -2626,7 +2626,7 @@ Get-Command -Module <ModuleName>
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft PowerShell Documentation
@@ -2637,13 +2637,13 @@ Get-Command -Module <ModuleName>
 
 ---
 
-# 15-Windows-PowerShell-and-Scripting.md
+## 15-Windows-PowerShell-and-Scripting.md
 
-# Part 4 — Enterprise Automation, Best Practices, Debugging, Troubleshooting, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Automation, Best Practices, Debugging, Troubleshooting, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 PowerShell is one of the most widely used automation platforms in enterprise IT.
 
@@ -2662,7 +2662,7 @@ This section focuses on enterprise scripting practices, debugging, troubleshooti
 
 ---
 
-# Automation Lifecycle
+## Automation Lifecycle
 
 Enterprise automation typically follows a structured lifecycle.
 
@@ -2702,7 +2702,7 @@ Following a lifecycle reduces operational risk and improves script quality.
 
 ---
 
-# Script Design Principles
+## Script Design Principles
 
 Well-designed scripts should be:
 
@@ -2718,7 +2718,7 @@ Scripts should solve one clearly defined problem rather than many unrelated task
 
 ---
 
-# Script Structure
+## Script Structure
 
 A recommended script layout:
 
@@ -2754,7 +2754,7 @@ Consistent structure improves maintainability.
 
 ---
 
-# Comment-Based Help
+## Comment-Based Help
 
 PowerShell supports built-in documentation within scripts.
 
@@ -2781,7 +2781,7 @@ Comment-based help integrates with `Get-Help`.
 
 ---
 
-# Logging
+## Logging
 
 Production scripts should generate logs.
 
@@ -2799,7 +2799,7 @@ Logs simplify troubleshooting and auditing.
 
 ---
 
-# Transcript Logging
+## Transcript Logging
 
 PowerShell can record console activity.
 
@@ -2819,7 +2819,7 @@ Transcripts capture commands and output for later review.
 
 ---
 
-# Input Validation
+## Input Validation
 
 Always validate user input.
 
@@ -2843,7 +2843,7 @@ Validation reduces runtime errors and improves script reliability.
 
 ---
 
-# Parameter Attributes
+## Parameter Attributes
 
 Example:
 
@@ -2862,7 +2862,7 @@ Benefits:
 
 ---
 
-# Secure Credentials
+## Secure Credentials
 
 Avoid hardcoding passwords.
 
@@ -2882,7 +2882,7 @@ This prompts securely for credentials.
 
 ---
 
-# Credential Object
+## Credential Object
 
 Example:
 
@@ -2896,7 +2896,7 @@ Protect credential objects appropriately and avoid storing plaintext secrets.
 
 ---
 
-# Error Reporting
+## Error Reporting
 
 Good scripts should report:
 
@@ -2909,7 +2909,7 @@ Meaningful error messages reduce troubleshooting time.
 
 ---
 
-# Verbose Output
+## Verbose Output
 
 Display additional execution details:
 
@@ -2927,7 +2927,7 @@ Verbose output assists during testing without cluttering normal execution.
 
 ---
 
-# Warning Messages
+## Warning Messages
 
 Example:
 
@@ -2939,7 +2939,7 @@ Warnings indicate potential issues that do not necessarily stop execution.
 
 ---
 
-# Debug Messages
+## Debug Messages
 
 Example:
 
@@ -2957,7 +2957,7 @@ Debug output is useful during script development.
 
 ---
 
-# Breakpoints
+## Breakpoints
 
 PowerShell supports breakpoints.
 
@@ -2975,7 +2975,7 @@ Breakpoints are valuable for diagnosing complex scripts.
 
 ---
 
-# Measuring Execution Time
+## Measuring Execution Time
 
 Measure script performance:
 
@@ -2989,7 +2989,7 @@ The cmdlet reports execution duration, helping identify performance bottlenecks.
 
 ---
 
-# Exporting Data
+## Exporting Data
 
 Export to CSV:
 
@@ -3004,7 +3004,7 @@ CSV is widely used for reporting and importing into spreadsheets.
 
 ---
 
-# Importing Data
+## Importing Data
 
 Read CSV data:
 
@@ -3018,7 +3018,7 @@ This is commonly used to process lists of servers or users.
 
 ---
 
-# Working with JSON
+## Working with JSON
 
 Convert to JSON:
 
@@ -3038,7 +3038,7 @@ JSON is commonly used with REST APIs and cloud services.
 
 ---
 
-# Working with XML
+## Working with XML
 
 Export:
 
@@ -3056,7 +3056,7 @@ CLI XML preserves PowerShell object properties and types.
 
 ---
 
-# Scheduled Automation
+## Scheduled Automation
 
 PowerShell scripts are often scheduled to run automatically.
 
@@ -3072,7 +3072,7 @@ Automation reduces repetitive manual tasks.
 
 ---
 
-# PowerShell and Task Scheduler
+## PowerShell and Task Scheduler
 
 Typical workflow:
 
@@ -3100,7 +3100,7 @@ Scheduled tasks support unattended execution.
 
 ---
 
-# Enterprise Reporting
+## Enterprise Reporting
 
 PowerShell can generate reports in formats such as:
 
@@ -3120,7 +3120,7 @@ Reports commonly include:
 
 ---
 
-# Performance Optimization
+## Performance Optimization
 
 Improve script performance by:
 
@@ -3135,7 +3135,7 @@ Optimization becomes increasingly important in large environments.
 
 ---
 
-# Code Reuse
+## Code Reuse
 
 Avoid duplicating code.
 
@@ -3157,7 +3157,7 @@ Reusable components improve maintainability.
 
 ---
 
-# Version Control
+## Version Control
 
 Store scripts in version control systems such as Git.
 
@@ -3173,7 +3173,7 @@ Version control is considered a standard enterprise practice.
 
 ---
 
-# Script Testing
+## Script Testing
 
 Before production deployment:
 
@@ -3188,7 +3188,7 @@ Testing should occur in a non-production environment whenever possible.
 
 ---
 
-# Common Scripting Mistakes
+## Common Scripting Mistakes
 
 Examples include:
 
@@ -3205,7 +3205,7 @@ Avoiding these issues improves script quality and security.
 
 ---
 
-# Troubleshooting Methodology
+## Troubleshooting Methodology
 
 ```text
 Identify Issue
@@ -3243,7 +3243,7 @@ A structured approach accelerates problem resolution.
 
 ---
 
-# Enterprise Automation Example
+## Enterprise Automation Example
 
 A company manages 500 Windows servers.
 
@@ -3285,7 +3285,7 @@ Automation replaces hours of manual work with a repeatable process.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 PowerShell is an essential tool for defensive security.
 
@@ -3310,7 +3310,7 @@ Organizations should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 PowerShell automation provides:
 
@@ -3326,7 +3326,7 @@ Automation enables IT teams to manage growing environments without proportional 
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow approved PowerShell naming conventions.
 - Use comment-based help.
@@ -3341,9 +3341,9 @@ Automation enables IT teams to manage growing environments without proportional 
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Create a CSV Report
+### Lab 1 — Create a CSV Report
 
 Write a script that exports all running services to:
 
@@ -3355,7 +3355,7 @@ Verify the output in a spreadsheet application.
 
 ---
 
-## Lab 2 — Measure Performance
+### Lab 2 — Measure Performance
 
 Run:
 
@@ -3369,7 +3369,7 @@ Record the execution time and compare it with another cmdlet of your choice.
 
 ---
 
-## Lab 3 — Create a Parameterized Script
+### Lab 3 — Create a Parameterized Script
 
 Create a script that accepts a computer name as a mandatory parameter and displays:
 
@@ -3381,7 +3381,7 @@ Use `Get-CimInstance` where appropriate.
 
 ---
 
-## Lab 4 — Enable Transcript Logging
+### Lab 4 — Enable Transcript Logging
 
 Start a transcript:
 
@@ -3401,7 +3401,7 @@ Review the generated log file.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3431,7 +3431,7 @@ PowerShell is one of the most powerful administration and automation platforms a
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - PowerShell is object-oriented and designed for automation.
 - Cmdlets, pipelines, and functions are the building blocks of PowerShell scripting.
@@ -3443,7 +3443,7 @@ PowerShell is one of the most powerful administration and automation platforms a
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between `Write-Host` and `Write-Output`?
 2. Why are PowerShell objects more useful than plain text?
@@ -3458,7 +3458,7 @@ PowerShell is one of the most powerful administration and automation platforms a
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft PowerShell Documentation
@@ -3470,7 +3470,7 @@ PowerShell is one of the most powerful administration and automation platforms a
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 15 – PowerShell and Scripting**.
 

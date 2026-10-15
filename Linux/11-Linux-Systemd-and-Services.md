@@ -1,10 +1,10 @@
 # 11 - Linux Systemd and Services
 
-# Part 1 — Introduction to `systemd`, Boot Targets, Units, Unit Types, Service Architecture, and Basic Service Management
+## Part 1 — Introduction to `systemd`, Boot Targets, Units, Unit Types, Service Architecture, and Basic Service Management
 
 ---
 
-# Introduction
+## Introduction
 
 Modern Linux systems rely on **systemd** as their initialization (init) system and service manager.
 
@@ -32,7 +32,7 @@ PID 1
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -47,7 +47,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is systemd?
+## What is systemd?
 
 `systemd` is:
 
@@ -69,7 +69,7 @@ It manages:
 
 ---
 
-# Evolution of Linux Init Systems
+## Evolution of Linux Init Systems
 
 ```text
 System V Init
@@ -98,7 +98,7 @@ Earlier systems relied on sequential startup scripts.
 
 ---
 
-# Why systemd Was Introduced
+## Why systemd Was Introduced
 
 Older init systems had limitations:
 
@@ -116,7 +116,7 @@ Older init systems had limitations:
 
 ---
 
-# systemd Architecture
+## systemd Architecture
 
 ```text
               Linux Kernel
@@ -144,7 +144,7 @@ Older init systems had limitations:
 
 ---
 
-# Responsibilities of systemd
+## Responsibilities of systemd
 
 `systemd` is responsible for:
 
@@ -160,7 +160,7 @@ Older init systems had limitations:
 
 ---
 
-# Understanding Services
+## Understanding Services
 
 A **service** is a long-running background process that performs a specific function.
 
@@ -178,7 +178,7 @@ Examples:
 
 ---
 
-# Service Lifecycle
+## Service Lifecycle
 
 ```text
 Installed
@@ -214,7 +214,7 @@ Removed
 
 ---
 
-# Understanding Units
+## Understanding Units
 
 Everything managed by `systemd` is represented as a **unit**.
 
@@ -240,7 +240,7 @@ A unit is a configuration object that tells `systemd` how to manage a resource.
 
 ---
 
-# Unit Types
+## Unit Types
 
 | Unit Type | Extension | Purpose |
 |-----------|-----------|----------|
@@ -257,7 +257,7 @@ A unit is a configuration object that tells `systemd` how to manage a resource.
 
 ---
 
-# Service Units
+## Service Units
 
 Examples:
 
@@ -278,7 +278,7 @@ These define how services are:
 
 ---
 
-# Target Units
+## Target Units
 
 Targets replace traditional runlevels.
 
@@ -292,7 +292,7 @@ Targets group related units into operational states.
 
 ---
 
-# Boot Process Overview
+## Boot Process Overview
 
 ```text
 Firmware
@@ -324,7 +324,7 @@ Login Available
 
 ---
 
-# Traditional Runlevels
+## Traditional Runlevels
 
 Older Linux systems used runlevels.
 
@@ -340,7 +340,7 @@ Modern systems use targets instead.
 
 ---
 
-# systemd Targets
+## systemd Targets
 
 | Target | Purpose |
 |----------|----------|
@@ -353,7 +353,7 @@ Modern systems use targets instead.
 
 ---
 
-# Target Relationships
+## Target Relationships
 
 ```text
 graphical.target
@@ -381,7 +381,7 @@ Targets build upon one another to provide progressively more functionality.
 
 ---
 
-# Viewing Current Target
+## Viewing Current Target
 
 Display the active target:
 
@@ -397,7 +397,7 @@ graphical.target
 
 ---
 
-# Viewing Active Units
+## Viewing Active Units
 
 Display active units:
 
@@ -413,7 +413,7 @@ systemctl --type=service
 
 ---
 
-# Listing All Services
+## Listing All Services
 
 Include inactive units:
 
@@ -425,7 +425,7 @@ This is useful for identifying installed but inactive services.
 
 ---
 
-# Checking Service Status
+## Checking Service Status
 
 Syntax:
 
@@ -449,7 +449,7 @@ Typical output includes:
 
 ---
 
-# Service States
+## Service States
 
 Common service states include:
 
@@ -464,7 +464,7 @@ Common service states include:
 
 ---
 
-# Starting a Service
+## Starting a Service
 
 Syntax:
 
@@ -482,7 +482,7 @@ The service begins immediately without changing its boot-time behavior.
 
 ---
 
-# Stopping a Service
+## Stopping a Service
 
 ```bash
 sudo systemctl stop ssh
@@ -492,7 +492,7 @@ This terminates the running service gracefully when supported.
 
 ---
 
-# Restarting a Service
+## Restarting a Service
 
 ```bash
 sudo systemctl restart ssh
@@ -506,7 +506,7 @@ Useful after:
 
 ---
 
-# Reloading a Service
+## Reloading a Service
 
 Some services support configuration reloads without a full restart.
 
@@ -522,7 +522,7 @@ This applies configuration changes while minimizing disruption.
 
 ---
 
-# Checking Whether a Service is Running
+## Checking Whether a Service is Running
 
 ```bash
 systemctl is-active ssh
@@ -542,7 +542,7 @@ inactive
 
 ---
 
-# Checking Whether a Service is Enabled
+## Checking Whether a Service is Enabled
 
 ```bash
 systemctl is-enabled ssh
@@ -562,7 +562,7 @@ disabled
 
 ---
 
-# Enable a Service at Boot
+## Enable a Service at Boot
 
 ```bash
 sudo systemctl enable ssh
@@ -572,7 +572,7 @@ This configures the service to start automatically during boot.
 
 ---
 
-# Disable a Service at Boot
+## Disable a Service at Boot
 
 ```bash
 sudo systemctl disable ssh
@@ -582,7 +582,7 @@ The service remains installed but will no longer start automatically after reboo
 
 ---
 
-# Difference Between Start and Enable
+## Difference Between Start and Enable
 
 | Command | Effect |
 |----------|---------|
@@ -595,7 +595,7 @@ The service remains installed but will no longer start automatically after reboo
 
 ---
 
-# Viewing Failed Services
+## Viewing Failed Services
 
 Display failed units:
 
@@ -615,7 +615,7 @@ This provides a quick overview of services requiring investigation.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A production application stack:
 
@@ -641,7 +641,7 @@ If one service fails, `systemd` can often detect the failure and apply configure
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security-critical services managed by `systemd` include:
 
@@ -662,7 +662,7 @@ SOC analysts frequently verify:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable service management enables organizations to:
 
@@ -675,7 +675,7 @@ Reliable service management enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Enable only required services.
 - Disable unnecessary services to reduce attack surface.
@@ -687,7 +687,7 @@ Reliable service management enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - `systemd` is the default init system on most modern Linux distributions.
 - `systemd` runs as PID 1 and manages system services.
@@ -698,11 +698,11 @@ Reliable service management enables organizations to:
 
 ---
 
-# Part 2 — Unit Files, Dependencies, Service Configuration, Logging with `journalctl`, and Advanced Service Management
+## Part 2 — Unit Files, Dependencies, Service Configuration, Logging with `journalctl`, and Advanced Service Management
 
 ---
 
-# Introduction
+## Introduction
 
 While `systemctl` is used to control services, the **behavior** of those services is defined by **unit files**.
 
@@ -720,7 +720,7 @@ Understanding unit files is essential for troubleshooting, automation, and secur
 
 ---
 
-# Unit File Architecture
+## Unit File Architecture
 
 ```text
              systemctl
@@ -754,7 +754,7 @@ Understanding unit files is essential for troubleshooting, automation, and secur
 
 ---
 
-# Unit File Locations
+## Unit File Locations
 
 Common locations:
 
@@ -769,7 +769,7 @@ Common locations:
 
 ---
 
-# Viewing a Unit File
+## Viewing a Unit File
 
 Display the unit definition:
 
@@ -787,7 +787,7 @@ This shows the active configuration, including any drop-in overrides.
 
 ---
 
-# Typical Unit File Structure
+## Typical Unit File Structure
 
 ```ini
 [Unit]
@@ -804,7 +804,7 @@ Every section has a specific purpose.
 
 ---
 
-# Main Sections
+## Main Sections
 
 | Section | Purpose |
 |----------|----------|
@@ -814,7 +814,7 @@ Every section has a specific purpose.
 
 ---
 
-# The `[Unit]` Section
+## The `[Unit]` Section
 
 Example:
 
@@ -838,7 +838,7 @@ Common directives:
 
 ---
 
-# Dependency Relationships
+## Dependency Relationships
 
 ```text
 Database
@@ -858,7 +858,7 @@ The web server depends on networking.
 
 ---
 
-# `Requires=` vs `Wants=`
+## `Requires=` vs `Wants=`
 
 | Directive | Behavior |
 |-----------|----------|
@@ -875,7 +875,7 @@ The service expects PostgreSQL to be available.
 
 ---
 
-# `After=` and `Before=`
+## `After=` and `Before=`
 
 These directives control **startup order**, not whether another unit is started.
 
@@ -899,7 +899,7 @@ The application starts after networking is available.
 
 ---
 
-# The `[Service]` Section
+## The `[Service]` Section
 
 This section defines how the service runs.
 
@@ -915,7 +915,7 @@ Group=appgroup
 
 ---
 
-# Important Service Directives
+## Important Service Directives
 
 | Directive | Purpose |
 |-----------|----------|
@@ -930,7 +930,7 @@ Group=appgroup
 
 ---
 
-# `ExecStart`
+## `ExecStart`
 
 Example:
 
@@ -954,7 +954,7 @@ Application
 
 ---
 
-# Running Services as Non-Root
+## Running Services as Non-Root
 
 Example:
 
@@ -974,7 +974,7 @@ Avoid running services as `root` unless necessary.
 
 ---
 
-# Working Directory
+## Working Directory
 
 Example:
 
@@ -992,7 +992,7 @@ Useful for:
 
 ---
 
-# Environment Variables
+## Environment Variables
 
 Example:
 
@@ -1005,7 +1005,7 @@ Applications can read these variables at runtime.
 
 ---
 
-# Restart Policies
+## Restart Policies
 
 Common options:
 
@@ -1027,7 +1027,7 @@ This improves service resilience.
 
 ---
 
-# The `[Install]` Section
+## The `[Install]` Section
 
 Example:
 
@@ -1040,7 +1040,7 @@ This specifies how the unit integrates into the boot process when enabled.
 
 ---
 
-# Enabling a Unit
+## Enabling a Unit
 
 ```bash
 sudo systemctl enable example.service
@@ -1050,7 +1050,7 @@ Internally, `systemd` creates the appropriate boot-time links so the service sta
 
 ---
 
-# Reloading systemd Configuration
+## Reloading systemd Configuration
 
 After creating or modifying a unit file:
 
@@ -1062,7 +1062,7 @@ This reloads unit definitions without rebooting.
 
 ---
 
-# Restarting the Service
+## Restarting the Service
 
 ```bash
 sudo systemctl restart example.service
@@ -1072,7 +1072,7 @@ Always restart or reload the service after updating its configuration, as approp
 
 ---
 
-# Viewing Service Logs
+## Viewing Service Logs
 
 `systemd` integrates with the system journal.
 
@@ -1086,7 +1086,7 @@ Displays journal entries from the local system.
 
 ---
 
-# View Logs for One Service
+## View Logs for One Service
 
 Example:
 
@@ -1104,7 +1104,7 @@ Useful for troubleshooting service startup and runtime issues.
 
 ---
 
-# Display Recent Entries
+## Display Recent Entries
 
 Example:
 
@@ -1122,7 +1122,7 @@ journal entries.
 
 ---
 
-# Follow Logs in Real Time
+## Follow Logs in Real Time
 
 Equivalent to `tail -f`:
 
@@ -1138,7 +1138,7 @@ journalctl -fu nginx
 
 ---
 
-# View Boot Logs
+## View Boot Logs
 
 Current boot:
 
@@ -1156,7 +1156,7 @@ Useful after reboot-related failures.
 
 ---
 
-# Filter by Priority
+## Filter by Priority
 
 Example:
 
@@ -1173,7 +1173,7 @@ Show:
 
 ---
 
-# Common Priority Levels
+## Common Priority Levels
 
 | Priority | Meaning |
 |----------|----------|
@@ -1188,7 +1188,7 @@ Show:
 
 ---
 
-# Viewing Unit Properties
+## Viewing Unit Properties
 
 Display detailed configuration:
 
@@ -1206,7 +1206,7 @@ Examples of information returned:
 
 ---
 
-# Listing Dependencies
+## Listing Dependencies
 
 Display dependency tree:
 
@@ -1218,7 +1218,7 @@ This helps identify services required before the selected service starts.
 
 ---
 
-# Masking a Service
+## Masking a Service
 
 Prevent a service from being started manually or automatically:
 
@@ -1230,7 +1230,7 @@ This creates a stronger restriction than simply disabling the service.
 
 ---
 
-# Unmasking a Service
+## Unmasking a Service
 
 Restore normal operation:
 
@@ -1240,7 +1240,7 @@ sudo systemctl unmask example.service
 
 ---
 
-# Difference Between Disable and Mask
+## Difference Between Disable and Mask
 
 | Command | Effect |
 |----------|---------|
@@ -1249,7 +1249,7 @@ sudo systemctl unmask example.service
 
 ---
 
-# Viewing Failed Units
+## Viewing Failed Units
 
 ```bash
 systemctl --failed
@@ -1283,7 +1283,7 @@ Verify Health
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Production stack:
 
@@ -1333,7 +1333,7 @@ Proper dependency configuration reduces startup failures during reboots.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security teams monitor for:
 
@@ -1349,7 +1349,7 @@ Adversaries sometimes create malicious unit files to achieve persistence after a
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper service configuration enables organizations to:
 
@@ -1362,7 +1362,7 @@ Proper service configuration enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Store administrator-managed unit files under `/etc/systemd/system/`.
 - Run services with dedicated non-privileged accounts whenever possible.
@@ -1374,7 +1374,7 @@ Proper service configuration enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Unit files define how `systemd` manages services.
 - `[Unit]`, `[Service]`, and `[Install]` are the primary sections of service unit files.
@@ -1385,11 +1385,11 @@ Proper service configuration enables organizations to:
 ---
 
 
-# Part 3 — Creating Custom Services, Timers vs Cron, Service Troubleshooting, Enterprise Operations, and Security Monitoring
+## Part 3 — Creating Custom Services, Timers vs Cron, Service Troubleshooting, Enterprise Operations, and Security Monitoring
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise environments rarely rely only on vendor-provided services.
 
@@ -1408,7 +1408,7 @@ Instead of manually starting these applications after every reboot, administrato
 
 ---
 
-# Enterprise Service Deployment Workflow
+## Enterprise Service Deployment Workflow
 
 ```text
 Application Developed
@@ -1448,7 +1448,7 @@ Production
 
 ---
 
-# Creating a Custom Service
+## Creating a Custom Service
 
 Suppose we have the following application:
 
@@ -1466,7 +1466,7 @@ Instead of starting it manually after every reboot, create a systemd service.
 
 ---
 
-# Step 1 — Create a Dedicated Service Account
+## Step 1 — Create a Dedicated Service Account
 
 Example:
 
@@ -1482,7 +1482,7 @@ Benefits:
 
 ---
 
-# Step 2 — Create the Service File
+## Step 2 — Create the Service File
 
 Create:
 
@@ -1511,7 +1511,7 @@ WantedBy=multi-user.target
 
 ---
 
-# Understanding the Example
+## Understanding the Example
 
 | Directive | Purpose |
 |-----------|----------|
@@ -1527,7 +1527,7 @@ WantedBy=multi-user.target
 
 ---
 
-# Step 3 — Reload systemd
+## Step 3 — Reload systemd
 
 ```bash
 sudo systemctl daemon-reload
@@ -1537,7 +1537,7 @@ This reloads unit definitions.
 
 ---
 
-# Step 4 — Enable the Service
+## Step 4 — Enable the Service
 
 ```bash
 sudo systemctl enable demoapp
@@ -1547,7 +1547,7 @@ Starts automatically after reboot.
 
 ---
 
-# Step 5 — Start the Service
+## Step 5 — Start the Service
 
 ```bash
 sudo systemctl start demoapp
@@ -1561,7 +1561,7 @@ systemctl status demoapp
 
 ---
 
-# Service Startup Flow
+## Service Startup Flow
 
 ```text
 System Boot
@@ -1585,7 +1585,7 @@ Application Running
 
 ---
 
-# Service Types
+## Service Types
 
 The `Type=` directive tells `systemd` how to determine when a service has started.
 
@@ -1602,7 +1602,7 @@ Common values:
 
 ---
 
-# Example — One-Time Task
+## Example — One-Time Task
 
 ```ini
 Type=oneshot
@@ -1619,7 +1619,7 @@ Suitable for:
 
 ---
 
-# Restart Policies
+## Restart Policies
 
 Example:
 
@@ -1655,7 +1655,7 @@ Automatic restart improves service availability.
 
 ---
 
-# Restart Delay
+## Restart Delay
 
 Example:
 
@@ -1675,7 +1675,7 @@ Useful for avoiding rapid restart loops.
 
 ---
 
-# Environment Files
+## Environment Files
 
 Instead of hardcoding variables:
 
@@ -1704,7 +1704,7 @@ Benefits:
 
 ---
 
-# Timers
+## Timers
 
 `systemd` timers provide scheduled execution similar to cron.
 
@@ -1726,7 +1726,7 @@ Unlike cron, timers are native `systemd` units.
 
 ---
 
-# Timer Components
+## Timer Components
 
 Example:
 
@@ -1746,7 +1746,7 @@ Two unit files work together.
 
 ---
 
-# Example Timer Service
+## Example Timer Service
 
 ```ini
 [Unit]
@@ -1759,7 +1759,7 @@ ExecStart=/usr/local/bin/backup.sh
 
 ---
 
-# Example Timer
+## Example Timer
 
 ```ini
 [Unit]
@@ -1774,7 +1774,7 @@ WantedBy=timers.target
 
 ---
 
-# Enable Timer
+## Enable Timer
 
 ```bash
 sudo systemctl enable backup.timer
@@ -1788,7 +1788,7 @@ sudo systemctl start backup.timer
 
 ---
 
-# View Active Timers
+## View Active Timers
 
 ```bash
 systemctl list-timers
@@ -1810,7 +1810,7 @@ UNIT
 
 ---
 
-# Timers vs Cron
+## Timers vs Cron
 
 | Feature | systemd Timer | cron |
 |----------|---------------|------|
@@ -1824,7 +1824,7 @@ Both remain widely used in Linux environments.
 
 ---
 
-# Service Troubleshooting Workflow
+## Service Troubleshooting Workflow
 
 ```text
 Service Fails
@@ -1860,7 +1860,7 @@ Validate
 
 ---
 
-# Step 1 — Check Service Status
+## Step 1 — Check Service Status
 
 ```bash
 systemctl status nginx
@@ -1875,7 +1875,7 @@ Look for:
 
 ---
 
-# Step 2 — Review Logs
+## Step 2 — Review Logs
 
 ```bash
 journalctl -u nginx
@@ -1890,7 +1890,7 @@ Common issues include:
 
 ---
 
-# Step 3 — Verify Unit File
+## Step 3 — Verify Unit File
 
 Display:
 
@@ -1907,7 +1907,7 @@ Confirm:
 
 ---
 
-# Step 4 — Validate Configuration
+## Step 4 — Validate Configuration
 
 Many services provide a configuration validation command.
 
@@ -1921,7 +1921,7 @@ Always use the validation command appropriate for the specific application.
 
 ---
 
-# Step 5 — Reload or Restart
+## Step 5 — Reload or Restart
 
 Reload:
 
@@ -1939,9 +1939,9 @@ Choose the least disruptive option supported by the service.
 
 ---
 
-# Enterprise Scenario 1
+## Enterprise Scenario 1
 
-## Web Server Deployment
+### Web Server Deployment
 
 ```text
 systemd
@@ -1971,9 +1971,9 @@ Benefits:
 
 ---
 
-# Enterprise Scenario 2
+## Enterprise Scenario 2
 
-## Monitoring Agent
+### Monitoring Agent
 
 Security monitoring service:
 
@@ -1990,9 +1990,9 @@ Requirements:
 
 ---
 
-# Enterprise Scenario 3
+## Enterprise Scenario 3
 
-## Nightly Backup
+### Nightly Backup
 
 ```text
 backup.timer
@@ -2018,9 +2018,9 @@ Advantages:
 
 ---
 
-# Enterprise Scenario 4
+## Enterprise Scenario 4
 
-## High Availability
+### High Availability
 
 Application:
 
@@ -2053,7 +2053,7 @@ This reduces service interruption caused by transient failures.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 SOC teams monitor:
 
@@ -2069,7 +2069,7 @@ Persistence through malicious systemd services is a recognized attacker techniqu
 
 ---
 
-# Detecting Unauthorized Services
+## Detecting Unauthorized Services
 
 Review enabled services:
 
@@ -2087,7 +2087,7 @@ Investigate unfamiliar services before taking action.
 
 ---
 
-# Detecting Unauthorized Timers
+## Detecting Unauthorized Timers
 
 Display timers:
 
@@ -2103,7 +2103,7 @@ Unexpected scheduled tasks may indicate:
 
 ---
 
-# Enterprise Operations Checklist
+## Enterprise Operations Checklist
 
 | Check | Verify |
 |---------|---------|
@@ -2120,7 +2120,7 @@ Unexpected scheduled tasks may indicate:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers may attempt to:
 
@@ -2140,7 +2140,7 @@ Security teams should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-managed services provide:
 
@@ -2153,7 +2153,7 @@ Well-managed services provide:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Run services with dedicated non-privileged accounts.
 - Store configuration outside the unit file when practical.
@@ -2165,7 +2165,7 @@ Well-managed services provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Custom services integrate applications into the `systemd` ecosystem.
 - Timers provide a native scheduling alternative to cron.
@@ -2175,11 +2175,11 @@ Well-managed services provide:
 
 ---
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 This chapter covered how `systemd` manages services, startup targets, dependencies, logging, timers, and custom applications.
 
@@ -2199,7 +2199,7 @@ A strong understanding of `systemd` is essential for Linux Administration, DevOp
 
 ---
 
-# Enterprise Service Management Workflow
+## Enterprise Service Management Workflow
 
 ```text
 Application Installed
@@ -2249,7 +2249,7 @@ Production Deployment
 
 ---
 
-# Practical Lab 1 — View Running Services
+## Practical Lab 1 — View Running Services
 
 List active services:
 
@@ -2270,7 +2270,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 2 — Check Service Status
+## Practical Lab 2 — Check Service Status
 
 Example:
 
@@ -2292,7 +2292,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 3 — Start and Stop Services
+## Practical Lab 3 — Start and Stop Services
 
 Start:
 
@@ -2326,7 +2326,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 4 — Enable and Disable Services
+## Practical Lab 4 — Enable and Disable Services
 
 Enable at boot:
 
@@ -2352,7 +2352,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 5 — View Boot Target
+## Practical Lab 5 — View Boot Target
 
 Display current default target:
 
@@ -2372,7 +2372,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 6 — Inspect a Unit File
+## Practical Lab 6 — Inspect a Unit File
 
 Display:
 
@@ -2393,7 +2393,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 7 — Create a Custom Service
+## Practical Lab 7 — Create a Custom Service
 
 Create:
 
@@ -2446,7 +2446,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 8 — View Logs
+## Practical Lab 8 — View Logs
 
 Entire journal:
 
@@ -2478,7 +2478,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 9 — View Failed Services
+## Practical Lab 9 — View Failed Services
 
 ```bash
 systemctl --failed
@@ -2502,7 +2502,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 10 — List Dependencies
+## Practical Lab 10 — List Dependencies
 
 Example:
 
@@ -2516,7 +2516,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 11 — Mask and Unmask
+## Practical Lab 11 — Mask and Unmask
 
 Mask:
 
@@ -2548,7 +2548,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 12 — Create a Timer
+## Practical Lab 12 — Create a Timer
 
 Service:
 
@@ -2580,7 +2580,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 13 — Review Service Properties
+## Practical Lab 13 — Review Service Properties
 
 Display:
 
@@ -2602,7 +2602,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 14 — Complete Troubleshooting Exercise
+## Practical Lab 14 — Complete Troubleshooting Exercise
 
 Workflow:
 
@@ -2652,9 +2652,9 @@ Learning Objectives
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# Web Server Failure
+## Web Server Failure
 
 Scenario
 
@@ -2715,9 +2715,9 @@ Business Impact
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Monitoring Agent Failure
+## Monitoring Agent Failure
 
 Scenario
 
@@ -2778,9 +2778,9 @@ Business Benefit
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# Unauthorized Service
+## Unauthorized Service
 
 SOC analysts discover:
 
@@ -2843,9 +2843,9 @@ Business Benefit
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Failed Database Dependency
+## Failed Database Dependency
 
 Application startup:
 
@@ -2878,7 +2878,7 @@ Reliable startup ordering.
 
 ---
 
-# Common systemd Administration Mistakes
+## Common systemd Administration Mistakes
 
 | Mistake | Impact |
 |----------|--------|
@@ -2893,7 +2893,7 @@ Reliable startup ordering.
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 | Item | Verify |
 |------|---------|
@@ -2910,7 +2910,7 @@ Reliable startup ordering.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Adversaries frequently use `systemd` for persistence by:
 
@@ -2930,7 +2930,7 @@ Defensive measures include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective service management provides:
 
@@ -2944,7 +2944,7 @@ Effective service management provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use dedicated service accounts whenever possible.
 - Store administrator-managed unit files in `/etc/systemd/system/`.
@@ -2959,7 +2959,7 @@ Effective service management provides:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2981,9 +2981,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is `systemd`?
 2. Why does `systemd` run as PID 1?
@@ -2998,7 +2998,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the structure of a `.service` unit file.
 2. What is the difference between `Requires=` and `Wants=`?
@@ -3013,7 +3013,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a secure deployment strategy for a custom Linux service.
 2. Explain how `systemd` dependency management improves reliability.
@@ -3028,7 +3028,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - `systemd` is the standard service manager for most modern Linux distributions.
 - Unit files define how services are started, stopped, and supervised.
@@ -3040,9 +3040,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man systemd`
 - `man systemctl`
@@ -3052,7 +3052,7 @@ In this chapter, you learned:
 - `man journalctl`
 - `man systemd.target`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - freedesktop.org systemd Documentation
@@ -3064,11 +3064,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **12-Linux-Package-Management.md**
 
-## Topics Covered
+### Topics Covered
 
 - Introduction to Linux Package Management
 - Package Managers (APT, DNF, YUM, Zypper, Pacman)

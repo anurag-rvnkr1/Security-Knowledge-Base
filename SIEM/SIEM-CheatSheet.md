@@ -4,9 +4,9 @@
 
 ---
 
-# 1. SIEM Fundamentals
+## 1. SIEM Fundamentals
 
-## SIEM
+### SIEM
 
 **SIEM = Security Information and Event Management**
 
@@ -32,7 +32,7 @@ Investigate
 Respond
 ```
 
-## Main SIEM Functions
+### Main SIEM Functions
 
 ```text
 Log Collection
@@ -51,7 +51,7 @@ Compliance
 
 ---
 
-# 2. SIEM vs SOC vs SOAR vs XDR
+## 2. SIEM vs SOC vs SOAR vs XDR
 
 | Technology | Primary Purpose |
 |---|---|
@@ -78,7 +78,7 @@ SOC  → Operate everything
 
 ---
 
-# 3. SIEM Architecture
+## 3. SIEM Architecture
 
 ```text
 Data Sources
@@ -110,7 +110,7 @@ Response
 
 ---
 
-# 4. Common SIEM Data Sources
+## 4. Common SIEM Data Sources
 
 ```text
 Windows
@@ -137,7 +137,7 @@ SaaS
 
 ---
 
-# 5. High-Value Log Sources
+## 5. High-Value Log Sources
 
 Usually high-value:
 
@@ -167,7 +167,7 @@ EDR → Endpoint behavior
 
 ---
 
-# 6. Log Lifecycle
+## 6. Log Lifecycle
 
 ```text
 Generate
@@ -195,7 +195,7 @@ Retain / Archive
 
 ---
 
-# 7. Raw Log vs Parsed Log
+## 7. Raw Log vs Parsed Log
 
 Raw:
 
@@ -215,7 +215,7 @@ source.ip = 10.0.0.5
 
 ---
 
-# 8. Parsing
+## 8. Parsing
 
 **Parsing = converting raw log data into structured fields.**
 
@@ -243,7 +243,7 @@ Vendor Update
 
 ---
 
-# 9. Normalization
+## 9. Normalization
 
 Different vendors:
 
@@ -270,7 +270,7 @@ Cross-Vendor Visibility
 
 ---
 
-# 10. Common Normalized Fields
+## 10. Common Normalized Fields
 
 ```text
 @timestamp
@@ -306,7 +306,7 @@ network.protocol
 
 ---
 
-# 11. Event Categories
+## 11. Event Categories
 
 ```text
 Authentication
@@ -323,7 +323,7 @@ Privilege
 
 ---
 
-# 12. Event Outcome
+## 12. Event Outcome
 
 ```text
 success
@@ -340,7 +340,7 @@ event.outcome = failure
 
 ---
 
-# 13. Enrichment
+## 13. Enrichment
 
 **Enrichment = adding useful context to an event.**
 
@@ -382,7 +382,7 @@ Business Criticality
 
 ---
 
-# 14. SIEM Query Basics
+## 14. SIEM Query Basics
 
 Typical query workflow:
 
@@ -402,7 +402,7 @@ Always start with a reasonable time range.
 
 ---
 
-# 15. Common Search Operations
+## 15. Common Search Operations
 
 ```text
 =
@@ -422,7 +422,7 @@ Exact syntax depends on the SIEM.
 
 ---
 
-# 16. Query Optimization
+## 16. Query Optimization
 
 Prefer:
 
@@ -448,7 +448,7 @@ High Cardinality
 
 ---
 
-# 17. Detection Engineering
+## 17. Detection Engineering
 
 Detection engineering converts:
 
@@ -484,7 +484,7 @@ Version
 
 ---
 
-# 18. Detection-as-Code
+## 18. Detection-as-Code
 
 Treat detections as software.
 
@@ -512,7 +512,7 @@ Collaboration
 
 ---
 
-# 19. Detection Lifecycle
+## 19. Detection Lifecycle
 
 ```text
 Threat
@@ -538,9 +538,9 @@ Retirement
 
 ---
 
-# 20. Positive vs Negative Testing
+## 20. Positive vs Negative Testing
 
-### Positive
+#### Positive
 
 Suspicious behavior:
 
@@ -548,7 +548,7 @@ Suspicious behavior:
 Expected → ALERT
 ```
 
-### Negative
+#### Negative
 
 Legitimate behavior:
 
@@ -568,7 +568,7 @@ High Volume
 
 ---
 
-# 21. Detection Tuning
+## 21. Detection Tuning
 
 If noisy:
 
@@ -590,7 +590,7 @@ Never blindly disable a noisy detection.
 
 ---
 
-# 22. False Positive
+## 22. False Positive
 
 ```text
 Detection Triggered
@@ -612,7 +612,7 @@ Malware
 
 ---
 
-# 23. False Negative
+## 23. False Negative
 
 ```text
 Malicious Activity
@@ -624,7 +624,7 @@ False negatives are dangerous because the attacker may remain undetected.
 
 ---
 
-# 24. Precision
+## 24. Precision
 
 ```text
 Precision =
@@ -641,7 +641,7 @@ More triggered alerts are useful
 
 ---
 
-# 25. Recall
+## 25. Recall
 
 ```text
 Recall =
@@ -658,7 +658,7 @@ More relevant malicious activity is detected
 
 ---
 
-# 26. Precision vs Recall
+## 26. Precision vs Recall
 
 ```text
 Precision
@@ -679,7 +679,7 @@ Response Cost
 
 ---
 
-# 27. Detection Latency
+## 27. Detection Latency
 
 ```text
 Event Occurs
@@ -699,7 +699,7 @@ Detection Latency
 
 ---
 
-# 28. Ingestion Latency
+## 28. Ingestion Latency
 
 ```text
 Event Generated
@@ -717,7 +717,7 @@ Ingestion Latency
 
 ---
 
-# 29. EPS
+## 29. EPS
 
 **EPS = Events Per Second**
 
@@ -732,7 +732,7 @@ Design for peak traffic.
 
 ---
 
-# 30. SIEM Capacity
+## 30. SIEM Capacity
 
 Consider:
 
@@ -749,7 +749,7 @@ Growth
 
 ---
 
-# 31. Storage Tiers
+## 31. Storage Tiers
 
 ```text
 HOT
@@ -761,7 +761,7 @@ COLD
 ARCHIVE
 ```
 
-### Hot
+#### Hot
 
 ```text
 Fast Search
@@ -769,13 +769,13 @@ Recent Data
 Real-Time Detection
 ```
 
-### Warm
+#### Warm
 
 ```text
 Recent Historical Data
 ```
 
-### Cold/Archive
+#### Cold/Archive
 
 ```text
 Long-Term Retention
@@ -785,7 +785,7 @@ Forensics
 
 ---
 
-# 32. Retention
+## 32. Retention
 
 Retention depends on:
 
@@ -799,7 +799,7 @@ Storage Cost
 
 ---
 
-# 33. Data Quality
+## 33. Data Quality
 
 Important dimensions:
 
@@ -819,7 +819,7 @@ Poor Detection
 
 ---
 
-# 34. Schema Drift
+## 34. Schema Drift
 
 Example:
 
@@ -849,7 +849,7 @@ Version Control
 
 ---
 
-# 35. Ingestion Health
+## 35. Ingestion Health
 
 Monitor:
 
@@ -865,7 +865,7 @@ Errors
 
 ---
 
-# 36. SIEM Health
+## 36. SIEM Health
 
 Monitor:
 
@@ -883,7 +883,7 @@ Connectors
 
 ---
 
-# 37. Data Loss
+## 37. Data Loss
 
 Example:
 
@@ -900,7 +900,7 @@ Potential:
 
 ---
 
-# 38. Clock Synchronization
+## 38. Clock Synchronization
 
 Use:
 
@@ -921,7 +921,7 @@ Incorrect Investigations
 
 ---
 
-# 39. Correlation
+## 39. Correlation
 
 Correlation combines multiple signals.
 
@@ -945,7 +945,7 @@ Possible Account Compromise
 
 ---
 
-# 40. Correlation Types
+## 40. Correlation Types
 
 ```text
 Time-Based
@@ -958,7 +958,7 @@ Cross-Source
 
 ---
 
-# 41. Time-Based Correlation
+## 41. Time-Based Correlation
 
 ```text
 Event A
@@ -969,7 +969,7 @@ within 10 minutes
 
 ---
 
-# 42. Entity-Based Correlation
+## 42. Entity-Based Correlation
 
 Group by:
 
@@ -983,7 +983,7 @@ Cloud Resource
 
 ---
 
-# 43. Sequence-Based Correlation
+## 43. Sequence-Based Correlation
 
 ```text
 Phishing
@@ -997,7 +997,7 @@ C2
 
 ---
 
-# 44. Threshold-Based Detection
+## 44. Threshold-Based Detection
 
 Example:
 
@@ -1008,7 +1008,7 @@ within 10 minutes
 
 ---
 
-# 45. Risk-Based Correlation
+## 45. Risk-Based Correlation
 
 Example:
 
@@ -1028,7 +1028,7 @@ Total:
 
 ---
 
-# 46. Risk Scoring
+## 46. Risk Scoring
 
 Risk can consider:
 
@@ -1045,7 +1045,7 @@ Historical Risk
 
 ---
 
-# 47. Risk Decay
+## 47. Risk Decay
 
 Old activity can gradually lose weight:
 
@@ -1063,7 +1063,7 @@ This prevents stale events from permanently increasing risk.
 
 ---
 
-# 48. Alert
+## 48. Alert
 
 An alert is:
 
@@ -1088,7 +1088,7 @@ Recommended next step?
 
 ---
 
-# 49. Alert vs Incident
+## 49. Alert vs Incident
 
 ```text
 Alert
@@ -1102,7 +1102,7 @@ Not every alert becomes an incident.
 
 ---
 
-# 50. Alert Fatigue
+## 50. Alert Fatigue
 
 Caused by:
 
@@ -1127,7 +1127,7 @@ Enrichment
 
 ---
 
-# 51. Alert Grouping
+## 51. Alert Grouping
 
 Instead of:
 
@@ -1145,7 +1145,7 @@ create:
 
 ---
 
-# 52. Alert Deduplication
+## 52. Alert Deduplication
 
 Group repeated alerts using:
 
@@ -1161,7 +1161,7 @@ Short Time Window
 
 ---
 
-# 53. Authentication Use Cases
+## 53. Authentication Use Cases
 
 Important:
 
@@ -1179,7 +1179,7 @@ New Device
 
 ---
 
-# 54. Brute Force
+## 54. Brute Force
 
 ```text
 One Account
@@ -1197,7 +1197,7 @@ Alice
 
 ---
 
-# 55. Password Spraying
+## 55. Password Spraying
 
 ```text
 One Source
@@ -1219,7 +1219,7 @@ Password Spray
 
 ---
 
-# 56. Credential Stuffing
+## 56. Credential Stuffing
 
 ```text
 Compromised Credential Lists
@@ -1231,7 +1231,7 @@ Usually involves reuse of previously exposed credentials.
 
 ---
 
-# 57. Successful Login After Failures
+## 57. Successful Login After Failures
 
 ```text
 Failure
@@ -1261,7 +1261,7 @@ User
 
 ---
 
-# 58. Impossible Travel
+## 58. Impossible Travel
 
 ```text
 Login A
@@ -1285,7 +1285,7 @@ Geolocation Accuracy
 
 ---
 
-# 59. Privileged Account Monitoring
+## 59. Privileged Account Monitoring
 
 Monitor:
 
@@ -1309,7 +1309,7 @@ Sensitive Action
 
 ---
 
-# 60. Endpoint Use Cases
+## 60. Endpoint Use Cases
 
 ```text
 Malware
@@ -1325,7 +1325,7 @@ Rare Process
 
 ---
 
-# 61. Suspicious PowerShell
+## 61. Suspicious PowerShell
 
 Weak:
 
@@ -1347,7 +1347,7 @@ External Network
 
 ---
 
-# 62. Suspicious Process Chain
+## 62. Suspicious Process Chain
 
 Example:
 
@@ -1369,7 +1369,7 @@ Malware Execution
 
 ---
 
-# 63. Persistence
+## 63. Persistence
 
 Monitor:
 
@@ -1384,7 +1384,7 @@ Cloud Credentials
 
 ---
 
-# 64. Credential Access
+## 64. Credential Access
 
 Monitor:
 
@@ -1398,7 +1398,7 @@ Credential Dumping Indicators
 
 ---
 
-# 65. Lateral Movement
+## 65. Lateral Movement
 
 Monitor:
 
@@ -1413,7 +1413,7 @@ Administrative Shares
 
 ---
 
-# 66. Network Use Cases
+## 66. Network Use Cases
 
 ```text
 Port Scan
@@ -1428,7 +1428,7 @@ Rare Destination
 
 ---
 
-# 67. Port Scan
+## 67. Port Scan
 
 Potential pattern:
 
@@ -1450,7 +1450,7 @@ within a short window.
 
 ---
 
-# 68. DNS Tunneling
+## 68. DNS Tunneling
 
 Potential signals:
 
@@ -1465,7 +1465,7 @@ Unusual Record Types
 
 ---
 
-# 69. Beaconing
+## 69. Beaconing
 
 Potential:
 
@@ -1490,7 +1490,7 @@ Periodic behavior alone is not proof of C2.
 
 ---
 
-# 70. C2
+## 70. C2
 
 Potential combination:
 
@@ -1506,7 +1506,7 @@ Threat Intelligence
 
 ---
 
-# 71. Data Exfiltration
+## 71. Data Exfiltration
 
 Potential sequence:
 
@@ -1522,7 +1522,7 @@ External Destination
 
 ---
 
-# 72. Web Use Cases
+## 72. Web Use Cases
 
 ```text
 SQL Injection
@@ -1536,7 +1536,7 @@ Suspicious User Agent
 
 ---
 
-# 73. Email Use Cases
+## 73. Email Use Cases
 
 ```text
 Phishing
@@ -1549,7 +1549,7 @@ Credential Harvesting
 
 ---
 
-# 74. Phishing Attack Chain
+## 74. Phishing Attack Chain
 
 ```text
 Email
@@ -1567,7 +1567,7 @@ Cross-source correlation is stronger than email-only detection.
 
 ---
 
-# 75. Cloud Use Cases
+## 75. Cloud Use Cases
 
 ```text
 Unusual Cloud Login
@@ -1583,7 +1583,7 @@ Cryptomining
 
 ---
 
-# 76. Cloud Account Compromise
+## 76. Cloud Account Compromise
 
 ```text
 Unusual Login
@@ -1599,7 +1599,7 @@ Sensitive API Calls
 
 ---
 
-# 77. Cloud Storage Exfiltration
+## 77. Cloud Storage Exfiltration
 
 ```text
 Sensitive Object
@@ -1613,7 +1613,7 @@ External Source
 
 ---
 
-# 78. Ransomware
+## 78. Ransomware
 
 Behavioral signals:
 
@@ -1629,7 +1629,7 @@ Multiple Hosts
 
 ---
 
-# 79. Ransomware Correlation
+## 79. Ransomware Correlation
 
 ```text
 Mass File Modification
@@ -1649,7 +1649,7 @@ High-Risk Ransomware Candidate
 
 ---
 
-# 80. Insider Risk
+## 80. Insider Risk
 
 Potential:
 
@@ -1667,7 +1667,7 @@ Do not automatically infer malicious intent from anomalous employee behavior.
 
 ---
 
-# 81. Threat Intelligence
+## 81. Threat Intelligence
 
 Threat Intelligence enriches:
 
@@ -1692,7 +1692,7 @@ Context
 
 ---
 
-# 82. IOC
+## 82. IOC
 
 IOC = Indicator of Compromise
 
@@ -1708,7 +1708,7 @@ Email Address
 
 ---
 
-# 83. IOC Lifecycle
+## 83. IOC Lifecycle
 
 ```text
 Collect
@@ -1728,7 +1728,7 @@ Expire / Review
 
 ---
 
-# 84. IOC Limitations
+## 84. IOC Limitations
 
 IOC matches can become:
 
@@ -1743,7 +1743,7 @@ Behavior-based detection should complement IOCs.
 
 ---
 
-# 85. MITRE ATT&CK
+## 85. MITRE ATT&CK
 
 ATT&CK provides a knowledge base of adversary tactics and techniques.
 
@@ -1759,7 +1759,7 @@ Sub-technique
 
 ---
 
-# 86. Common ATT&CK Tactics
+## 86. Common ATT&CK Tactics
 
 ```text
 Reconnaissance
@@ -1780,7 +1780,7 @@ Impact
 
 ---
 
-# 87. Common Techniques
+## 87. Common Techniques
 
 Examples:
 
@@ -1798,7 +1798,7 @@ Exfiltration Over C2 Channel
 
 ---
 
-# 88. ATT&CK Detection Mapping
+## 88. ATT&CK Detection Mapping
 
 ```text
 Technique
@@ -1814,7 +1814,7 @@ Coverage
 
 ---
 
-# 89. Detection Coverage
+## 89. Detection Coverage
 
 Ask:
 
@@ -1830,7 +1830,7 @@ Which detections are high confidence?
 
 ---
 
-# 90. Threat Hunting
+## 90. Threat Hunting
 
 Threat hunting is:
 
@@ -1858,7 +1858,7 @@ Detection
 
 ---
 
-# 91. Hunt Example
+## 91. Hunt Example
 
 Hypothesis:
 
@@ -1879,7 +1879,7 @@ Time
 
 ---
 
-# 92. Hunt → Detection
+## 92. Hunt → Detection
 
 ```text
 Hunt Finding
@@ -1893,7 +1893,7 @@ Production
 
 ---
 
-# 93. Detection → Hunt
+## 93. Detection → Hunt
 
 ```text
 Interesting Alert
@@ -1907,7 +1907,7 @@ Threat Hunt
 
 ---
 
-# 94. Investigation
+## 94. Investigation
 
 Basic workflow:
 
@@ -1931,7 +1931,7 @@ Recover
 
 ---
 
-# 95. Investigation Questions
+## 95. Investigation Questions
 
 ```text
 What happened?
@@ -1961,7 +1961,7 @@ What data was accessed?
 
 ---
 
-# 96. Timeline
+## 96. Timeline
 
 Example:
 
@@ -1978,7 +1978,7 @@ Timeline reconstruction is central to investigation.
 
 ---
 
-# 97. Incident Response
+## 97. Incident Response
 
 ```text
 Preparation
@@ -1998,7 +1998,7 @@ Lessons Learned
 
 ---
 
-# 98. Triage
+## 98. Triage
 
 Triage asks:
 
@@ -2018,7 +2018,7 @@ What should happen next?
 
 ---
 
-# 99. Severity
+## 99. Severity
 
 A typical model:
 
@@ -2043,7 +2043,7 @@ Scope
 
 ---
 
-# 100. Containment
+## 100. Containment
 
 Possible actions:
 
@@ -2060,7 +2060,7 @@ Actions should be authorized and appropriately controlled.
 
 ---
 
-# 101. Eradication
+## 101. Eradication
 
 Remove:
 
@@ -2074,7 +2074,7 @@ Malicious Configuration
 
 ---
 
-# 102. Recovery
+## 102. Recovery
 
 ```text
 Restore
@@ -2085,7 +2085,7 @@ Return to Production
 
 ---
 
-# 103. SIEM Engineering
+## 103. SIEM Engineering
 
 Core areas:
 
@@ -2105,7 +2105,7 @@ Reliability
 
 ---
 
-# 104. Query Optimization
+## 104. Query Optimization
 
 ```text
 Filter Early
@@ -2123,7 +2123,7 @@ Avoid High Cardinality
 
 ---
 
-# 105. High Cardinality
+## 105. High Cardinality
 
 Examples:
 
@@ -2138,7 +2138,7 @@ Grouping by many unique values can be expensive.
 
 ---
 
-# 106. Log Bursts
+## 106. Log Bursts
 
 Possible causes:
 
@@ -2155,7 +2155,7 @@ Architecture should tolerate bursts.
 
 ---
 
-# 107. Backpressure
+## 107. Backpressure
 
 ```text
 Producer
@@ -2173,7 +2173,7 @@ Queue Buffers Events
 
 ---
 
-# 108. Queue Benefits
+## 108. Queue Benefits
 
 ```text
 Buffering
@@ -2185,7 +2185,7 @@ Replay
 
 ---
 
-# 109. High Availability
+## 109. High Availability
 
 Avoid unnecessary:
 
@@ -2198,7 +2198,7 @@ Single Critical Dependency
 
 ---
 
-# 110. Disaster Recovery
+## 110. Disaster Recovery
 
 Plan for:
 
@@ -2213,7 +2213,7 @@ Credential Failure
 
 ---
 
-# 111. RTO
+## 111. RTO
 
 ```text
 Recovery Time Objective
@@ -2223,7 +2223,7 @@ How quickly service should be restored.
 
 ---
 
-# 112. RPO
+## 112. RPO
 
 ```text
 Recovery Point Objective
@@ -2233,7 +2233,7 @@ Maximum acceptable data-loss window.
 
 ---
 
-# 113. Detection-as-Code Pipeline
+## 113. Detection-as-Code Pipeline
 
 ```text
 Commit
@@ -2253,7 +2253,7 @@ Production
 
 ---
 
-# 114. Shadow Mode
+## 114. Shadow Mode
 
 New rule:
 
@@ -2273,7 +2273,7 @@ Useful for noisy detections.
 
 ---
 
-# 115. Canary Deployment
+## 115. Canary Deployment
 
 ```text
 Deploy to Small Scope
@@ -2287,7 +2287,7 @@ Expand
 
 ---
 
-# 116. Rollback
+## 116. Rollback
 
 Always have:
 
@@ -2299,7 +2299,7 @@ Rollback Procedure
 
 ---
 
-# 117. SIEM Security
+## 117. SIEM Security
 
 Protect:
 
@@ -2315,7 +2315,7 @@ Service Accounts
 
 ---
 
-# 118. Least Privilege
+## 118. Least Privilege
 
 Example:
 
@@ -2336,7 +2336,7 @@ unless genuinely necessary and appropriately controlled.
 
 ---
 
-# 119. SIEM Audit Logging
+## 119. SIEM Audit Logging
 
 Monitor:
 
@@ -2351,7 +2351,7 @@ Privilege Changes
 
 ---
 
-# 120. SIEM Should Monitor Itself
+## 120. SIEM Should Monitor Itself
 
 Monitor:
 
@@ -2367,7 +2367,7 @@ Configuration Changes
 
 ---
 
-# 121. Cloud SIEM
+## 121. Cloud SIEM
 
 Important cloud telemetry:
 
@@ -2385,7 +2385,7 @@ SaaS
 
 ---
 
-# 122. Cloud Control Plane
+## 122. Cloud Control Plane
 
 Examples:
 
@@ -2400,7 +2400,7 @@ Modify Storage
 
 ---
 
-# 123. Cloud IAM
+## 123. Cloud IAM
 
 Monitor:
 
@@ -2415,7 +2415,7 @@ MFA Change
 
 ---
 
-# 124. Cloud API
+## 124. Cloud API
 
 Monitor:
 
@@ -2431,7 +2431,7 @@ Outcome
 
 ---
 
-# 125. Cloud Network
+## 125. Cloud Network
 
 Useful telemetry:
 
@@ -2445,7 +2445,7 @@ Proxy
 
 ---
 
-# 126. Kubernetes
+## 126. Kubernetes
 
 Monitor:
 
@@ -2461,7 +2461,7 @@ Cluster Changes
 
 ---
 
-# 127. Multi-Cloud
+## 127. Multi-Cloud
 
 Challenges:
 
@@ -2484,7 +2484,7 @@ Common Data Model
 
 ---
 
-# 128. Zero Trust + SIEM
+## 128. Zero Trust + SIEM
 
 Zero Trust:
 
@@ -2506,7 +2506,7 @@ Behavior
 
 ---
 
-# 129. SOAR
+## 129. SOAR
 
 SOAR:
 
@@ -2533,7 +2533,7 @@ Case Update
 
 ---
 
-# 130. SOAR Example
+## 130. SOAR Example
 
 ```text
 Malicious IP
@@ -2555,7 +2555,7 @@ Create Case
 
 ---
 
-# 131. Human-in-the-Loop
+## 131. Human-in-the-Loop
 
 ```text
 Low Risk
@@ -2570,7 +2570,7 @@ High-Impact Action
 
 ---
 
-# 132. SOAR Safety
+## 132. SOAR Safety
 
 Consider:
 
@@ -2585,7 +2585,7 @@ Audit
 
 ---
 
-# 133. Idempotency
+## 133. Idempotency
 
 Repeated execution should remain safe.
 
@@ -2603,7 +2603,7 @@ No destructive duplicate effect
 
 ---
 
-# 134. UEBA
+## 134. UEBA
 
 UEBA:
 
@@ -2623,7 +2623,7 @@ Cloud Resources
 
 ---
 
-# 135. UEBA Baseline
+## 135. UEBA Baseline
 
 Learn:
 
@@ -2644,7 +2644,7 @@ Deviation
 
 ---
 
-# 136. UEBA Example
+## 136. UEBA Example
 
 Normal:
 
@@ -2672,7 +2672,7 @@ Behavioral Anomaly
 
 ---
 
-# 137. UEBA + SIEM
+## 137. UEBA + SIEM
 
 ```text
 SIEM Event
@@ -2692,7 +2692,7 @@ Higher Confidence
 
 ---
 
-# 138. UEBA Challenges
+## 138. UEBA Challenges
 
 ```text
 Cold Start
@@ -2706,7 +2706,7 @@ Data Quality
 
 ---
 
-# 139. XDR
+## 139. XDR
 
 XDR integrates:
 
@@ -2728,7 +2728,7 @@ Response
 
 ---
 
-# 140. SIEM + XDR
+## 140. SIEM + XDR
 
 ```text
 XDR
@@ -2744,7 +2744,7 @@ SOC
 
 ---
 
-# 141. AI in SOC
+## 141. AI in SOC
 
 AI can assist with:
 
@@ -2760,7 +2760,7 @@ Prioritization
 
 ---
 
-# 142. AI Investigation
+## 142. AI Investigation
 
 ```text
 Alert
@@ -2780,7 +2780,7 @@ Always validate AI conclusions.
 
 ---
 
-# 143. AI Risks
+## 143. AI Risks
 
 ```text
 Hallucination
@@ -2793,7 +2793,7 @@ Excessive Permissions
 
 ---
 
-# 144. AI Guardrails
+## 144. AI Guardrails
 
 ```text
 Least Privilege
@@ -2807,7 +2807,7 @@ Rollback
 
 ---
 
-# 145. Agentic SOC
+## 145. Agentic SOC
 
 Conceptually:
 
@@ -2833,7 +2833,7 @@ AI Agent ≠ Unlimited Access
 
 ---
 
-# 146. Attack Graph
+## 146. Attack Graph
 
 ```text
 User
@@ -2860,7 +2860,7 @@ Investigation
 
 ---
 
-# 147. Modern Correlation
+## 147. Modern Correlation
 
 Traditional:
 
@@ -2886,7 +2886,7 @@ Behavior
 
 ---
 
-# 148. Modern SOC Feedback Loop
+## 148. Modern SOC Feedback Loop
 
 ```text
 Threat
@@ -2908,7 +2908,7 @@ Better Detection
 
 ---
 
-# 149. SOC Maturity
+## 149. SOC Maturity
 
 Conceptual model:
 
@@ -2922,7 +2922,7 @@ Level 5 → AI-Assisted / Automated SOC
 
 ---
 
-# 150. SOC Metrics
+## 150. SOC Metrics
 
 Important:
 
@@ -2940,7 +2940,7 @@ Incident Rate
 
 ---
 
-# 151. MTTD
+## 151. MTTD
 
 ```text
 Mean Time to Detect
@@ -2954,7 +2954,7 @@ Detection
 
 ---
 
-# 152. MTTR
+## 152. MTTR
 
 Depending on organizational definition:
 
@@ -2972,7 +2972,7 @@ Always define the metric before comparing it.
 
 ---
 
-# 153. Detection Coverage
+## 153. Detection Coverage
 
 Measure coverage across:
 
@@ -2986,7 +2986,7 @@ Attack Stages
 
 ---
 
-# 154. Modern SOC Stack
+## 154. Modern SOC Stack
 
 ```text
 SIEM
@@ -3006,9 +3006,9 @@ AI
 
 ---
 
-# 155. Common Attack Chains
+## 155. Common Attack Chains
 
-## Account Takeover
+### Account Takeover
 
 ```text
 Password Spray
@@ -3022,7 +3022,7 @@ Privilege Change
 Sensitive Access
 ```
 
-## Malware
+### Malware
 
 ```text
 Phishing
@@ -3036,7 +3036,7 @@ Payload
 C2
 ```
 
-## Lateral Movement
+### Lateral Movement
 
 ```text
 Credential Access
@@ -3048,7 +3048,7 @@ New Host
 Remote Execution
 ```
 
-## Exfiltration
+### Exfiltration
 
 ```text
 Sensitive Access
@@ -3060,7 +3060,7 @@ Large Transfer
 External Destination
 ```
 
-## Ransomware
+### Ransomware
 
 ```text
 Initial Access
@@ -3078,7 +3078,7 @@ Impact
 
 ---
 
-# 156. Most Important SOC Correlations
+## 156. Most Important SOC Correlations
 
 ```text
 Failed Login
@@ -3132,7 +3132,7 @@ Privilege Escalation
 
 ---
 
-# 157. SIEM Troubleshooting Framework
+## 157. SIEM Troubleshooting Framework
 
 If a detection is not firing:
 
@@ -3160,7 +3160,7 @@ If a detection is not firing:
 
 ---
 
-# 158. If Logs Stop
+## 158. If Logs Stop
 
 Check:
 
@@ -3182,7 +3182,7 @@ SIEM
 
 ---
 
-# 159. If Rule Suddenly Becomes Noisy
+## 159. If Rule Suddenly Becomes Noisy
 
 Check:
 
@@ -3207,7 +3207,7 @@ Monitor
 
 ---
 
-# 160. If SIEM Performance Drops
+## 160. If SIEM Performance Drops
 
 Check:
 
@@ -3225,7 +3225,7 @@ Large Queries
 
 ---
 
-# 161. If Alerts Suddenly Increase
+## 161. If Alerts Suddenly Increase
 
 Check:
 
@@ -3241,87 +3241,87 @@ Connector Issue?
 
 ---
 
-# 162. Interview One-Liners
+## 162. Interview One-Liners
 
-### What is SIEM?
+#### What is SIEM?
 
 > A platform that collects, normalizes, correlates, analyzes, and detects security events to support monitoring and incident response.
 
-### What is correlation?
+#### What is correlation?
 
 > Combining multiple events or signals to identify a higher-confidence security pattern.
 
-### What is normalization?
+#### What is normalization?
 
 > Converting vendor-specific fields into a common structure.
 
-### What is enrichment?
+#### What is enrichment?
 
 > Adding contextual information such as threat intelligence, asset criticality, GeoIP, or user information.
 
-### What is a detection rule?
+#### What is a detection rule?
 
 > Logic that identifies suspicious or security-relevant behavior from telemetry.
 
-### What is a use case?
+#### What is a use case?
 
 > A defined security monitoring objective implemented through telemetry, detection, alerting, investigation, and response.
 
-### What is alert fatigue?
+#### What is alert fatigue?
 
 > Excessive low-value alerts that reduce analyst effectiveness.
 
-### How do you reduce false positives?
+#### How do you reduce false positives?
 
 > Improve context, thresholds, correlation, exceptions, enrichment, and behavioral analysis.
 
-### What is threat hunting?
+#### What is threat hunting?
 
 > Proactive, hypothesis-driven investigation for previously undetected threats.
 
-### What is MITRE ATT&CK?
+#### What is MITRE ATT&CK?
 
 > A knowledge base describing adversary tactics and techniques used to model and improve threat-informed detection.
 
-### What is SOAR?
+#### What is SOAR?
 
 > A platform for security orchestration, automation, and response.
 
-### What is UEBA?
+#### What is UEBA?
 
 > Behavioral analytics for identifying anomalous activity involving users and entities.
 
-### What is XDR?
+#### What is XDR?
 
 > An integrated detection and response approach spanning multiple security domains.
 
-### What is detection-as-code?
+#### What is detection-as-code?
 
 > Managing detection rules as version-controlled, testable software artifacts.
 
-### What is RTO?
+#### What is RTO?
 
 > Target time for restoring a service after disruption.
 
-### What is RPO?
+#### What is RPO?
 
 > Maximum acceptable data-loss window.
 
-### What is EPS?
+#### What is EPS?
 
 > Events Per Second.
 
-### What is MTTD?
+#### What is MTTD?
 
 > Mean Time to Detect.
 
-### What is MTTR?
+#### What is MTTR?
 
 > Mean Time to Respond or Resolve, depending on the organization's definition.
 
 ---
 
-# 163. Top 20 SIEM Interview Questions
+## 163. Top 20 SIEM Interview Questions
 
 ```text
 1. What is SIEM?
@@ -3367,9 +3367,9 @@ Connector Issue?
 
 ---
 
-# 164. Rapid Interview Answers
+## 164. Rapid Interview Answers
 
-### Brute Force
+#### Brute Force
 
 ```text
 Many failed attempts
@@ -3377,63 +3377,63 @@ against one account
 within a short time.
 ```
 
-### Password Spraying
+#### Password Spraying
 
 ```text
 Attempts against many
 accounts from a common source.
 ```
 
-### Lateral Movement
+#### Lateral Movement
 
 ```text
 Movement from one compromised
 system/account to another.
 ```
 
-### C2
+#### C2
 
 ```text
 Communication between compromised
 systems and attacker infrastructure.
 ```
 
-### Exfiltration
+#### Exfiltration
 
 ```text
 Unauthorized transfer of data
 outside the environment.
 ```
 
-### Persistence
+#### Persistence
 
 ```text
 Techniques used to maintain
 access after compromise.
 ```
 
-### Privilege Escalation
+#### Privilege Escalation
 
 ```text
 Obtaining higher privileges
 than originally authorized.
 ```
 
-### UEBA
+#### UEBA
 
 ```text
 Detect deviations from
 normal user/entity behavior.
 ```
 
-### SOAR
+#### SOAR
 
 ```text
 Automate security workflows
 and response actions.
 ```
 
-### Detection Engineering
+#### Detection Engineering
 
 ```text
 Design, test, deploy, tune,
@@ -3442,7 +3442,7 @@ and maintain security detections.
 
 ---
 
-# 165. SIEM Architecture in One Diagram
+## 165. SIEM Architecture in One Diagram
 
 ```text
 ┌──────────────────────────────────────────────┐
@@ -3497,7 +3497,7 @@ and maintain security detections.
 
 ---
 
-# 166. Ultimate SIEM Mental Model
+## 166. Ultimate SIEM Mental Model
 
 Remember:
 
@@ -3533,7 +3533,7 @@ IMPROVE
 
 ---
 
-# 167. SIEM Golden Rules
+## 167. SIEM Golden Rules
 
 ```text
 1. A SIEM is only as good as its telemetry.
@@ -3607,7 +3607,7 @@ IMPROVE
 
 ---
 
-# 168. Final SIEM Cheat Code
+## 168. Final SIEM Cheat Code
 
 When you see any SIEM problem, think:
 
@@ -3676,7 +3676,7 @@ LEARN CONTINUOUSLY
 
 ---
 
-# 169. Final Revision Map
+## 169. Final Revision Map
 
 ```text
 SIEM FUNDAMENTALS
@@ -3722,7 +3722,7 @@ AI-ASSISTED SOC
 
 ---
 
-# 170. Final Takeaway
+## 170. Final Takeaway
 
 The entire SIEM domain can be reduced to five questions:
 

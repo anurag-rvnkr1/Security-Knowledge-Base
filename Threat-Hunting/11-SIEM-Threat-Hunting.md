@@ -51,7 +51,7 @@ The core principle is:
 
 ---
 
-# Why SIEM Threat Hunting Matters
+## Why SIEM Threat Hunting Matters
 
 Enterprise environments generate enormous amounts of telemetry.
 
@@ -111,7 +111,7 @@ Detection
 
 ---
 
-# SIEM Architecture
+## SIEM Architecture
 
 A typical enterprise SIEM architecture looks like:
 
@@ -156,23 +156,23 @@ A typical enterprise SIEM architecture looks like:
 
 ---
 
-# SIEM Core Functions
+## SIEM Core Functions
 
 A SIEM typically provides:
 
-## Collection
+### Collection
 
 Gather telemetry from multiple systems.
 
-## Parsing
+### Parsing
 
 Extract fields from raw events.
 
-## Normalization
+### Normalization
 
 Map different vendor formats into consistent fields.
 
-## Enrichment
+### Enrichment
 
 Add:
 
@@ -183,25 +183,25 @@ Add:
 - Business criticality
 - Identity context
 
-## Search
+### Search
 
 Allow analysts to investigate historical and real-time data.
 
-## Correlation
+### Correlation
 
 Connect related events.
 
-## Detection
+### Detection
 
 Generate alerts from suspicious patterns.
 
-## Visualization
+### Visualization
 
 Provide dashboards and investigation views.
 
 ---
 
-# SIEM vs Threat Hunting
+## SIEM vs Threat Hunting
 
 These concepts should not be confused.
 
@@ -240,7 +240,7 @@ The SIEM is one of the primary tools used to execute that process.
 
 ---
 
-# SIEM Data Pipeline
+## SIEM Data Pipeline
 
 ```text
 Source
@@ -271,7 +271,7 @@ Each stage can introduce problems.
 
 ---
 
-# Log Collection
+## Log Collection
 
 Sources may send logs using:
 
@@ -299,7 +299,7 @@ Agent-based collection
 
 ---
 
-# Collection Reliability
+## Collection Reliability
 
 A security team should know:
 
@@ -323,7 +323,7 @@ A missing log source can create a major blind spot.
 
 ---
 
-# Telemetry Health
+## Telemetry Health
 
 Monitor:
 
@@ -355,7 +355,7 @@ This may indicate:
 
 ---
 
-# Log Parsing
+## Log Parsing
 
 Raw log:
 
@@ -379,7 +379,7 @@ Structured data is easier to hunt.
 
 ---
 
-# Normalization
+## Normalization
 
 Different systems may represent the same concept differently.
 
@@ -409,7 +409,7 @@ This allows cross-source hunting.
 
 ---
 
-# Common Normalized Fields
+## Common Normalized Fields
 
 A useful schema may include:
 
@@ -436,7 +436,7 @@ Field names vary by platform.
 
 ---
 
-# ECS
+## ECS
 
 Elastic Common Schema (ECS) provides a standardized field model for many security and observability events.
 
@@ -456,7 +456,7 @@ Standardized schemas improve cross-source analytics.
 
 ---
 
-# CIM
+## CIM
 
 Splunk's Common Information Model (CIM) provides normalized data models for Splunk environments.
 
@@ -476,7 +476,7 @@ Normalization allows searches to work across multiple data sources.
 
 ---
 
-# OCSF
+## OCSF
 
 The Open Cybersecurity Schema Framework provides a vendor-agnostic approach to cybersecurity event normalization.
 
@@ -496,7 +496,7 @@ The exact schema implementation depends on the organization's architecture.
 
 ---
 
-# Sigma
+## Sigma
 
 Sigma is a generic detection-rule format designed to describe log-based detections in a vendor-neutral manner.
 
@@ -515,7 +515,7 @@ This improves portability.
 
 ---
 
-# SIEM Threat-Hunting Workflow
+## SIEM Threat-Hunting Workflow
 
 ```text
 Hunt Question
@@ -553,7 +553,7 @@ Detection / Control
 
 ---
 
-# Hunt Questions
+## Hunt Questions
 
 Good hunt questions are specific.
 
@@ -577,7 +577,7 @@ Better:
 
 ---
 
-# Hypothesis-Driven Hunting
+## Hypothesis-Driven Hunting
 
 Example:
 
@@ -604,7 +604,7 @@ Suspicious Process
 
 ---
 
-# Query Development
+## Query Development
 
 Start broad.
 
@@ -640,7 +640,7 @@ This iterative process reduces blind spots.
 
 ---
 
-# Broad-to-Narrow Hunting
+## Broad-to-Narrow Hunting
 
 ```text
 All Events
@@ -660,7 +660,7 @@ High-Confidence Activity
 
 ---
 
-# Narrow-to-Broad Hunting
+## Narrow-to-Broad Hunting
 
 Sometimes the investigation starts with a known indicator.
 
@@ -687,7 +687,7 @@ Both approaches are useful.
 
 ---
 
-# SIEM Search Strategy
+## SIEM Search Strategy
 
 A professional hunt should consider:
 
@@ -706,7 +706,7 @@ Avoid immediately running extremely expensive queries across years of data.
 
 ---
 
-# Time Windows
+## Time Windows
 
 Time range should match the hypothesis.
 
@@ -728,7 +728,7 @@ Weeks–Months
 
 ---
 
-# Time Bucketing
+## Time Bucketing
 
 Instead of viewing thousands of events individually:
 
@@ -758,7 +758,7 @@ Successes
 
 ---
 
-# Statistical Baselines
+## Statistical Baselines
 
 A baseline can include:
 
@@ -786,7 +786,7 @@ The anomaly is worth investigating.
 
 ---
 
-# Baseline Challenges
+## Baseline Challenges
 
 Baselines can be distorted by:
 
@@ -802,7 +802,7 @@ Baselines should therefore evolve.
 
 ---
 
-# SIEM Enrichment
+## SIEM Enrichment
 
 Useful enrichment includes:
 
@@ -837,7 +837,7 @@ Business Criticality
 
 ---
 
-# Asset Context
+## Asset Context
 
 Suppose two systems contact the same suspicious domain:
 
@@ -855,7 +855,7 @@ Asset criticality changes investigation priority.
 
 ---
 
-# User Context
+## User Context
 
 Likewise:
 
@@ -871,7 +871,7 @@ The same authentication anomaly may have very different risk.
 
 ---
 
-# Correlation
+## Correlation
 
 Correlation connects events across time and systems.
 
@@ -903,7 +903,7 @@ A SIEM can help reconstruct this chain.
 
 ---
 
-# Correlation Example
+## Correlation Example
 
 ```text
 08:10 Email Received
@@ -922,7 +922,7 @@ Together they may represent a compromise.
 
 ---
 
-# Entity-Based Hunting
+## Entity-Based Hunting
 
 Instead of focusing only on events, investigate entities:
 
@@ -951,7 +951,7 @@ This supports relationship-based investigations.
 
 ---
 
-# Entity Resolution
+## Entity Resolution
 
 Different logs may represent the same entity differently.
 
@@ -968,7 +968,7 @@ Identity resolution should map these where appropriate.
 
 ---
 
-# SIEM Investigation Graph
+## SIEM Investigation Graph
 
 ```text
              User
@@ -985,7 +985,7 @@ Graph thinking helps analysts understand attack paths.
 
 ---
 
-# Splunk Threat Hunting
+## Splunk Threat Hunting
 
 Splunk Search Processing Language (SPL) can be used for investigation.
 
@@ -999,7 +999,7 @@ index=auth
 
 ---
 
-# Splunk Authentication Hunt
+## Splunk Authentication Hunt
 
 ```spl
 index=auth action=failure
@@ -1012,7 +1012,7 @@ index=auth action=failure
 
 ---
 
-# Splunk Rare Destination Hunt
+## Splunk Rare Destination Hunt
 
 ```spl
 index=network
@@ -1028,7 +1028,7 @@ This is only a starting point.
 
 ---
 
-# Splunk Process Hunting
+## Splunk Process Hunting
 
 ```spl
 index=endpoint
@@ -1040,7 +1040,7 @@ Add command-line analysis when available.
 
 ---
 
-# Splunk Correlation
+## Splunk Correlation
 
 Conceptually:
 
@@ -1062,7 +1062,7 @@ Prefer efficient correlation approaches such as:
 
 ---
 
-# Microsoft Sentinel
+## Microsoft Sentinel
 
 Microsoft Sentinel provides SIEM and security analytics capabilities integrated with Azure and Microsoft security telemetry.
 
@@ -1082,7 +1082,7 @@ Exact tables depend on the connected data sources and deployment.
 
 ---
 
-# Sentinel Hunting Example
+## Sentinel Hunting Example
 
 ```kusto
 SigninLogs
@@ -1095,7 +1095,7 @@ SigninLogs
 
 ---
 
-# Sentinel Authentication Hunt
+## Sentinel Authentication Hunt
 
 ```kusto
 SigninLogs
@@ -1111,7 +1111,7 @@ Tune thresholds according to organizational behavior.
 
 ---
 
-# Sentinel Endpoint Correlation
+## Sentinel Endpoint Correlation
 
 Conceptually:
 
@@ -1125,7 +1125,7 @@ Then correlate with network and identity telemetry.
 
 ---
 
-# Elastic Security
+## Elastic Security
 
 Elastic can provide:
 
@@ -1141,7 +1141,7 @@ ECS makes normalized security analysis easier.
 
 ---
 
-# Elastic Query Example
+## Elastic Query Example
 
 Conceptually:
 
@@ -1159,7 +1159,7 @@ user.name
 
 ---
 
-# SIEM Detection vs Hunt
+## SIEM Detection vs Hunt
 
 A detection asks:
 
@@ -1196,7 +1196,7 @@ Unknown Findings
 
 ---
 
-# Detection Engineering Lifecycle
+## Detection Engineering Lifecycle
 
 ```text
 Hunt Finding
@@ -1227,7 +1227,7 @@ This is one of the most important outputs of mature threat hunting.
 
 ---
 
-# Detection Quality
+## Detection Quality
 
 A good SIEM detection should provide:
 
@@ -1242,7 +1242,7 @@ Stable Logic
 
 ---
 
-# Detection Metadata
+## Detection Metadata
 
 A professional detection should include:
 
@@ -1263,7 +1263,7 @@ Last Review
 
 ---
 
-# Sigma Detection
+## Sigma Detection
 
 A simplified Sigma rule structure:
 
@@ -1287,7 +1287,7 @@ Real-world rules should include stronger conditions and environment-specific fie
 
 ---
 
-# Detection Testing
+## Detection Testing
 
 Before production:
 
@@ -1312,7 +1312,7 @@ Production
 
 ---
 
-# SIEM Alert Fatigue
+## SIEM Alert Fatigue
 
 Too many alerts can overwhelm analysts.
 
@@ -1335,7 +1335,7 @@ A detection program must reduce unnecessary alert volume.
 
 ---
 
-# Alert Prioritization
+## Alert Prioritization
 
 Prioritize using:
 
@@ -1355,7 +1355,7 @@ Behavioral Context
 
 ---
 
-# Risk-Based Alerting
+## Risk-Based Alerting
 
 A conceptual model:
 
@@ -1388,7 +1388,7 @@ should receive significantly higher priority.
 
 ---
 
-# SIEM Data Quality
+## SIEM Data Quality
 
 A SIEM is only as effective as its telemetry.
 
@@ -1410,7 +1410,7 @@ Are logs searchable within required timeframes?
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Accurate timestamps are critical for incident reconstruction.
 
@@ -1428,7 +1428,7 @@ may be incorrectly ordered.
 
 ---
 
-# Log Retention
+## Log Retention
 
 Retention should reflect:
 
@@ -1442,7 +1442,7 @@ Different data may require different retention periods.
 
 ---
 
-# Hot vs Cold Data
+## Hot vs Cold Data
 
 Conceptually:
 
@@ -1465,7 +1465,7 @@ Hunters should know where historical data resides.
 
 ---
 
-# SIEM Performance
+## SIEM Performance
 
 Poor queries can consume substantial resources.
 
@@ -1491,7 +1491,7 @@ Efficient filters
 
 ---
 
-# Query Optimization
+## Query Optimization
 
 Bad:
 
@@ -1519,7 +1519,7 @@ Aggregate
 
 ---
 
-# High-Cardinality Fields
+## High-Cardinality Fields
 
 Fields such as:
 
@@ -1536,7 +1536,7 @@ Use aggregation carefully.
 
 ---
 
-# SIEM Hunting With Threat Intelligence
+## SIEM Hunting With Threat Intelligence
 
 A threat-intelligence workflow:
 
@@ -1567,7 +1567,7 @@ Related Indicators
 
 ---
 
-# IOC Retro-Hunting
+## IOC Retro-Hunting
 
 Given:
 
@@ -1591,7 +1591,7 @@ Then scope the environment.
 
 ---
 
-# IOC Limitations
+## IOC Limitations
 
 Indicators can become:
 
@@ -1613,7 +1613,7 @@ Context
 
 ---
 
-# SIEM Investigation Timeline
+## SIEM Investigation Timeline
 
 A good investigation should produce:
 
@@ -1643,9 +1643,9 @@ The SIEM should help construct this timeline.
 
 ---
 
-# Practical Lab 1 — Password Spray
+## Practical Lab 1 — Password Spray
 
-## Objective
+### Objective
 
 Identify a possible password-spraying source.
 
@@ -1668,9 +1668,9 @@ Investigate the successful account.
 
 ---
 
-# Practical Lab 2 — Suspicious PowerShell
+## Practical Lab 2 — Suspicious PowerShell
 
-## Objective
+### Objective
 
 Identify unusual PowerShell execution.
 
@@ -1696,7 +1696,7 @@ Prioritize unusual parent-child relationships.
 
 ---
 
-# Practical Lab 3 — DNS Beaconing
+## Practical Lab 3 — DNS Beaconing
 
 Search:
 
@@ -1717,7 +1717,7 @@ Correlate with network connections.
 
 ---
 
-# Practical Lab 4 — Suspicious Privilege Change
+## Practical Lab 4 — Suspicious Privilege Change
 
 Search:
 
@@ -1738,7 +1738,7 @@ Determine whether the change was authorized.
 
 ---
 
-# Practical Lab 5 — IOC Retro-Hunt
+## Practical Lab 5 — IOC Retro-Hunt
 
 Given:
 
@@ -1770,7 +1770,7 @@ Processes
 
 ---
 
-# Practical Lab 6 — Multi-Source Correlation
+## Practical Lab 6 — Multi-Source Correlation
 
 Hypothesis:
 
@@ -1795,7 +1795,7 @@ Build one unified timeline.
 
 ---
 
-# Practical Lab 7 — Logging Blind Spot
+## Practical Lab 7 — Logging Blind Spot
 
 Find a source that suddenly stops sending telemetry.
 
@@ -1820,7 +1820,7 @@ Investigate:
 
 ---
 
-# Practical Lab 8 — Rare Administrative Activity
+## Practical Lab 8 — Rare Administrative Activity
 
 Identify:
 
@@ -1843,7 +1843,7 @@ Network
 
 ---
 
-# Practical Lab 9 — Detection Validation
+## Practical Lab 9 — Detection Validation
 
 Take a known detection.
 
@@ -1873,7 +1873,7 @@ Latency
 
 ---
 
-# Practical Lab 10 — Hunt-to-Detection
+## Practical Lab 10 — Hunt-to-Detection
 
 Start with a hunt finding:
 
@@ -1906,7 +1906,7 @@ This demonstrates the full threat-hunting lifecycle.
 
 ---
 
-# SIEM Investigation Methodology
+## SIEM Investigation Methodology
 
 Use the following workflow:
 
@@ -1928,25 +1928,25 @@ Use the following workflow:
 
 ---
 
-# SIEM Threat-Hunting Maturity
+## SIEM Threat-Hunting Maturity
 
-## Level 1 — Centralized Logs
+### Level 1 — Centralized Logs
 
 Logs are collected but mainly searched manually.
 
-## Level 2 — Structured Search
+### Level 2 — Structured Search
 
 Analysts use normalized fields and repeatable queries.
 
-## Level 3 — Hypothesis-Driven Hunting
+### Level 3 — Hypothesis-Driven Hunting
 
 Threat hunters proactively investigate behaviors.
 
-## Level 4 — Detection Engineering
+### Level 4 — Detection Engineering
 
 Hunt findings become repeatable detections.
 
-## Level 5 — Continuous Detection Improvement
+### Level 5 — Continuous Detection Improvement
 
 Detections, hunts, intelligence, and incident response continuously improve one another.
 
@@ -1966,7 +1966,7 @@ Improved Hunt
 
 ---
 
-# SIEM Operating Model
+## SIEM Operating Model
 
 A mature SOC may divide responsibilities across:
 
@@ -1983,9 +1983,9 @@ But these teams should share findings.
 
 ---
 
-# Threat Hunter's SIEM Checklist
+## Threat Hunter's SIEM Checklist
 
-## Data
+### Data
 
 - [ ] Critical sources connected
 - [ ] Logs arriving
@@ -1994,7 +1994,7 @@ But these teams should share findings.
 - [ ] Retention sufficient
 - [ ] Data quality monitored
 
-## Hunting
+### Hunting
 
 - [ ] Hypothesis defined
 - [ ] Data sources identified
@@ -2003,7 +2003,7 @@ But these teams should share findings.
 - [ ] Results validated
 - [ ] Correlation performed
 
-## Investigation
+### Investigation
 
 - [ ] User
 - [ ] Host
@@ -2014,7 +2014,7 @@ But these teams should share findings.
 - [ ] Resource
 - [ ] Timeline
 
-## Detection
+### Detection
 
 - [ ] Finding validated
 - [ ] Rule documented
@@ -2025,57 +2025,57 @@ But these teams should share findings.
 
 ---
 
-# Common SIEM Hunting Mistakes
+## Common SIEM Hunting Mistakes
 
-## 1. Searching Without a Hypothesis
+### 1. Searching Without a Hypothesis
 
 Large searches generate noise.
 
 ---
 
-## 2. Ignoring Data Quality
+### 2. Ignoring Data Quality
 
 Missing telemetry can produce false confidence.
 
 ---
 
-## 3. Searching Too Much Data
+### 3. Searching Too Much Data
 
 Large unbounded queries waste resources.
 
 ---
 
-## 4. Treating Every Anomaly as Malicious
+### 4. Treating Every Anomaly as Malicious
 
 Anomalies are investigation candidates.
 
 ---
 
-## 5. Ignoring Asset Context
+### 5. Ignoring Asset Context
 
 A critical server deserves different priority than a test workstation.
 
 ---
 
-## 6. Ignoring Identity Context
+### 6. Ignoring Identity Context
 
 User privilege and role matter.
 
 ---
 
-## 7. Failing to Document Hunts
+### 7. Failing to Document Hunts
 
 A hunt that exists only in an analyst's head cannot become organizational knowledge.
 
 ---
 
-## 8. Not Converting Findings Into Detections
+### 8. Not Converting Findings Into Detections
 
 Repeated successful hunts should often become automated detections.
 
 ---
 
-# Professional SIEM Hunt Record
+## Professional SIEM Hunt Record
 
 ```text
 Hunt ID:
@@ -2133,7 +2133,7 @@ Lessons Learned:
 
 ---
 
-# SIEM Detection Record
+## SIEM Detection Record
 
 ```text
 Detection ID:
@@ -2177,15 +2177,15 @@ Status:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is a SIEM?
+### 1. What is a SIEM?
 
 A SIEM is a security platform that collects, normalizes, analyzes, searches, correlates, and presents security telemetry to support detection and investigation.
 
 ---
 
-## 2. Is a SIEM the same as a threat-hunting platform?
+### 2. Is a SIEM the same as a threat-hunting platform?
 
 No.
 
@@ -2193,25 +2193,25 @@ A SIEM is a primary source of centralized security telemetry and analytical capa
 
 ---
 
-## 3. What is log normalization?
+### 3. What is log normalization?
 
 Normalization maps different vendor-specific event formats into common fields and structures.
 
 ---
 
-## 4. Why is normalization important?
+### 4. Why is normalization important?
 
 It allows analysts and detection rules to query similar security concepts consistently across multiple data sources.
 
 ---
 
-## 5. What is Sigma?
+### 5. What is Sigma?
 
 Sigma is a vendor-neutral format for describing log-based detection rules.
 
 ---
 
-## 6. What is the difference between detection and hunting?
+### 6. What is the difference between detection and hunting?
 
 Detection looks for known or defined suspicious patterns.
 
@@ -2219,7 +2219,7 @@ Hunting proactively searches for suspicious or previously unknown behavior based
 
 ---
 
-## 7. What is correlation?
+### 7. What is correlation?
 
 Correlation connects events based on relationships such as:
 
@@ -2237,13 +2237,13 @@ to reconstruct activity.
 
 ---
 
-## 8. Why is asset context important?
+### 8. Why is asset context important?
 
 It helps determine the business significance and risk of an event.
 
 ---
 
-## 9. How would you investigate a suspicious IP in a SIEM?
+### 9. How would you investigate a suspicious IP in a SIEM?
 
 I would search historical:
 
@@ -2261,7 +2261,7 @@ activity and determine affected users, hosts, processes, and timeline.
 
 ---
 
-## 10. How do you avoid SIEM performance problems?
+### 10. How do you avoid SIEM performance problems?
 
 Use:
 
@@ -2278,13 +2278,13 @@ and avoid unnecessarily expensive searches.
 
 ---
 
-## 11. What is alert fatigue?
+### 11. What is alert fatigue?
 
 Alert fatigue occurs when analysts receive excessive low-value alerts, reducing their ability to identify genuinely important incidents.
 
 ---
 
-## 12. How do you improve detection quality?
+### 12. How do you improve detection quality?
 
 Use:
 
@@ -2300,13 +2300,13 @@ Continuous Tuning
 
 ---
 
-## 13. What should happen after a successful hunt?
+### 13. What should happen after a successful hunt?
 
 The finding should be validated, documented, shared with relevant teams, and considered for detection engineering or control improvement.
 
 ---
 
-## 14. What is a SIEM data-quality problem?
+### 14. What is a SIEM data-quality problem?
 
 Examples include:
 
@@ -2319,13 +2319,13 @@ Examples include:
 
 ---
 
-## 15. What is the most important SIEM hunting principle?
+### 15. What is the most important SIEM hunting principle?
 
 > **The SIEM is not valuable merely because it contains massive amounts of data; it is valuable when analysts can transform that data into reliable security decisions.**
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 1. **A SIEM is a foundational platform for security visibility.**
 2. **Threat hunting is a methodology, not merely a search operation.**
@@ -2349,7 +2349,7 @@ The core mindset is:
 
 ---
 
-# References
+## References
 
 - NIST SP 800-92 — Guide to Computer Security Log Management  
   https://csrc.nist.gov/publications/detail/sp/800-92/final

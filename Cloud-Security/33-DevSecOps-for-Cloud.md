@@ -371,7 +371,7 @@ This approach enables organizations to deliver software rapidly while continuous
 
 ---
 
-# Cloud DevSecOps Lifecycle
+## Cloud DevSecOps Lifecycle
 
 ```
 Planning
@@ -453,7 +453,7 @@ Each phase contributes to a secure and reliable software delivery pipeline.
 
 ---
 
-## Step 1 – Plan Security Requirements
+### Step 1 – Plan Security Requirements
 
 Security begins during project planning.
 
@@ -470,7 +470,7 @@ Security requirements should be treated as functional requirements rather than o
 
 ---
 
-## Step 2 – Develop Secure Code
+### Step 2 – Develop Secure Code
 
 Developers follow secure coding practices.
 
@@ -489,7 +489,7 @@ Security awareness among developers reduces vulnerabilities early in the lifecyc
 
 ---
 
-## Step 3 – Commit Code to Version Control
+### Step 3 – Commit Code to Version Control
 
 Source code is committed to a centralized repository.
 
@@ -506,7 +506,7 @@ Version control provides traceability and supports collaborative development.
 
 ---
 
-## Step 4 – Continuous Integration (CI)
+### Step 4 – Continuous Integration (CI)
 
 Every code change automatically triggers a CI pipeline.
 
@@ -524,7 +524,7 @@ Automated validation prevents vulnerable code from progressing further in the pi
 
 ---
 
-## Step 5 – Perform Automated Security Testing
+### Step 5 – Perform Automated Security Testing
 
 Security testing is integrated directly into the CI pipeline.
 
@@ -541,7 +541,7 @@ Builds that fail security requirements should be blocked until issues are remedi
 
 ---
 
-## Step 6 – Validate Infrastructure as Code
+### Step 6 – Validate Infrastructure as Code
 
 Infrastructure definitions are scanned before deployment.
 
@@ -558,7 +558,7 @@ Secure IaC prevents insecure infrastructure from being provisioned.
 
 ---
 
-## Step 7 – Secure Deployment
+### Step 7 – Secure Deployment
 
 Continuous Delivery (CD) pipelines deploy validated applications.
 
@@ -575,7 +575,7 @@ Deployments should be repeatable, automated, and auditable.
 
 ---
 
-## Step 8 – Runtime Monitoring
+### Step 8 – Runtime Monitoring
 
 Security continues after deployment.
 
@@ -594,7 +594,7 @@ Continuous monitoring provides visibility into production environments.
 
 ---
 
-## Step 9 – Continuous Feedback
+### Step 9 – Continuous Feedback
 
 Lessons learned from production environments should improve future development.
 
@@ -612,9 +612,9 @@ Continuous feedback strengthens both software quality and security.
 
 ---
 
-## Practical Example
+### Practical Example
 
-### Example 1 – Secure Web Application Deployment
+#### Example 1 – Secure Web Application Deployment
 
 Scenario:
 
@@ -639,7 +639,7 @@ Outcome:
 
 ---
 
-### Example 2 – Infrastructure as Code Validation
+#### Example 2 – Infrastructure as Code Validation
 
 Scenario:
 
@@ -662,7 +662,7 @@ Outcome:
 
 ---
 
-### Example 3 – Secrets Detection
+#### Example 3 – Secrets Detection
 
 Scenario:
 
@@ -685,7 +685,7 @@ Outcome:
 
 ---
 
-### Example 4 – Container Security
+#### Example 4 – Container Security
 
 Scenario:
 
@@ -706,13 +706,13 @@ Outcome:
 
 ---
 
-## Detection
+### Detection
 
 Continuous detection enables DevSecOps teams to identify vulnerabilities, policy violations, and operational risks throughout the software delivery lifecycle.
 
 ---
 
-### Source Code Detection
+#### Source Code Detection
 
 Detect:
 
@@ -728,7 +728,7 @@ Early detection reduces remediation effort.
 
 ---
 
-### Dependency Detection
+#### Dependency Detection
 
 Monitor for:
 
@@ -742,7 +742,7 @@ Dependency management reduces software supply chain risk.
 
 ---
 
-### Infrastructure Detection
+#### Infrastructure Detection
 
 Continuously identify:
 
@@ -757,7 +757,7 @@ Infrastructure scanning strengthens cloud security posture.
 
 ---
 
-### Container Detection
+#### Container Detection
 
 Monitor container workloads for:
 
@@ -772,7 +772,7 @@ Container monitoring should continue throughout the application lifecycle.
 
 ---
 
-### Runtime Detection
+#### Runtime Detection
 
 Observe production environments for:
 
@@ -788,7 +788,7 @@ Runtime monitoring complements pre-deployment security testing.
 
 ---
 
-### Detection Best Practices
+#### Detection Best Practices
 
 - Integrate security scanning into every CI pipeline.
 - Scan Infrastructure as Code before deployment.
@@ -803,7 +803,7 @@ Runtime monitoring complements pre-deployment security testing.
 
 ---
 
-## Prevention
+### Prevention
 
 Cloud DevSecOps emphasizes preventing security issues before they reach production. Rather than relying solely on post-deployment monitoring or periodic security reviews, preventive controls are embedded throughout the software development and cloud infrastructure lifecycle.
 
@@ -811,7 +811,7 @@ By automating security validation and enforcing secure development practices, or
 
 ---
 
-# Cloud DevSecOps Prevention Lifecycle
+## Cloud DevSecOps Prevention Lifecycle
 
 ```
 Security Requirements
@@ -869,7 +869,7 @@ This lifecycle ensures security is continuously integrated into development and 
 
 ---
 
-# Define Security Requirements Early
+## Define Security Requirements Early
 
 Security requirements should be established during project planning.
 
@@ -887,7 +887,7 @@ Early planning reduces costly redesign later in the development lifecycle.
 
 ---
 
-# Adopt Secure Coding Practices
+## Adopt Secure Coding Practices
 
 Developers should consistently follow secure coding principles.
 
@@ -906,7 +906,7 @@ Secure coding minimizes application-level vulnerabilities.
 
 ---
 
-# Protect Source Code Repositories
+## Protect Source Code Repositories
 
 Secure version control systems by implementing:
 
@@ -922,7 +922,7 @@ Source code repositories are critical assets and should receive strong protectio
 
 ---
 
-# Automate Security Testing
+## Automate Security Testing
 
 Every pipeline execution should automatically perform security validation.
 
@@ -969,7 +969,7 @@ Automated testing enables rapid identification and remediation of security issue
 
 ---
 
-# Secure Infrastructure as Code
+## Secure Infrastructure as Code
 
 Validate Infrastructure as Code templates before deployment.
 
@@ -986,7 +986,7 @@ Secure IaC prevents insecure infrastructure from being provisioned.
 
 ---
 
-# Protect Secrets
+## Protect Secrets
 
 Never hardcode secrets into source code.
 
@@ -1003,7 +1003,7 @@ Rotate secrets regularly and grant access based on the principle of least privil
 
 ---
 
-# Secure CI/CD Pipelines
+## Secure CI/CD Pipelines
 
 Protect build and deployment systems through:
 
@@ -1019,7 +1019,7 @@ A compromised CI/CD pipeline can affect every downstream deployment.
 
 ---
 
-# Secure Software Supply Chain
+## Secure Software Supply Chain
 
 Reduce supply chain risk by:
 
@@ -1034,7 +1034,7 @@ Supply chain security is an essential component of modern DevSecOps.
 
 ---
 
-# Monitor Production Continuously
+## Monitor Production Continuously
 
 Even after deployment, continuously monitor:
 
@@ -1051,7 +1051,7 @@ Runtime monitoring complements preventive security controls.
 
 ---
 
-# Train Development Teams
+## Train Development Teams
 
 Provide regular education on:
 
@@ -1067,9 +1067,9 @@ Knowledgeable teams are better equipped to prevent vulnerabilities before they a
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Shift Security Left
+#### 1. Shift Security Left
 
 Integrate security from the earliest stages of development rather than waiting until testing or deployment.
 
@@ -1077,7 +1077,7 @@ Early detection reduces remediation cost and accelerates secure delivery.
 
 ---
 
-### 2. Treat Security as Code
+#### 2. Treat Security as Code
 
 Represent security controls as code wherever possible.
 
@@ -1094,7 +1094,7 @@ This approach improves consistency, automation, and version control.
 
 ---
 
-### 3. Automate Everything Practical
+#### 3. Automate Everything Practical
 
 Automate repetitive security activities such as:
 
@@ -1110,7 +1110,7 @@ Automation reduces manual errors and improves scalability.
 
 ---
 
-### 4. Enforce Least Privilege
+#### 4. Enforce Least Privilege
 
 Apply least privilege across:
 
@@ -1125,7 +1125,7 @@ Regularly review and revoke unnecessary permissions.
 
 ---
 
-### 5. Scan Dependencies Continuously
+#### 5. Scan Dependencies Continuously
 
 Continuously evaluate third-party packages for:
 
@@ -1138,7 +1138,7 @@ Keep dependencies updated to reduce software supply chain risk.
 
 ---
 
-### 6. Maintain Immutable Artifacts
+#### 6. Maintain Immutable Artifacts
 
 Build deployment artifacts once and promote the same verified artifact through testing and production environments.
 
@@ -1151,7 +1151,7 @@ Benefits include:
 
 ---
 
-### 7. Secure Every Deployment
+#### 7. Secure Every Deployment
 
 Every deployment should validate:
 
@@ -1166,7 +1166,7 @@ Automated validation helps prevent insecure releases.
 
 ---
 
-### 8. Integrate DevSecOps with Security Operations
+#### 8. Integrate DevSecOps with Security Operations
 
 Ensure collaboration among:
 
@@ -1181,7 +1181,7 @@ Integrated workflows improve both prevention and response.
 
 ---
 
-### 9. Measure Security Performance
+#### 9. Measure Security Performance
 
 Track metrics such as:
 
@@ -1198,7 +1198,7 @@ Metrics provide insight into DevSecOps maturity and areas for improvement.
 
 ---
 
-### 10. Foster a Security-First Culture
+#### 10. Foster a Security-First Culture
 
 Encourage:
 
@@ -1213,7 +1213,7 @@ A strong security culture is essential for sustainable DevSecOps adoption.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 DevSecOps is not simply the addition of security tools to an existing DevOps pipeline. It is a cultural, operational, and technical transformation that integrates security into every phase of software development and cloud operations.
 
@@ -1223,7 +1223,7 @@ The following are some of the most common mistakes observed in cloud DevSecOps i
 
 ---
 
-### 1. Treating Security as a Final Phase
+#### 1. Treating Security as a Final Phase
 
 Many organizations continue to perform security reviews only before production deployment.
 
@@ -1238,7 +1238,7 @@ Security should begin during planning and continue throughout the software lifec
 
 ---
 
-### 2. Lack of Developer Security Awareness
+#### 2. Lack of Developer Security Awareness
 
 Developers without adequate security knowledge may unintentionally introduce vulnerabilities such as:
 
@@ -1253,7 +1253,7 @@ Regular secure coding education significantly reduces these risks.
 
 ---
 
-### 3. Hardcoding Secrets
+#### 3. Hardcoding Secrets
 
 Embedding secrets directly into source code remains one of the most common security mistakes.
 
@@ -1270,7 +1270,7 @@ Secrets should always be stored in dedicated secrets management solutions.
 
 ---
 
-### 4. Ignoring Dependency Risks
+#### 4. Ignoring Dependency Risks
 
 Modern applications depend heavily on third-party libraries.
 
@@ -1286,7 +1286,7 @@ Software Composition Analysis (SCA) should be integrated into every CI pipeline.
 
 ---
 
-### 5. Skipping Infrastructure as Code Validation
+#### 5. Skipping Infrastructure as Code Validation
 
 Deploying Infrastructure as Code without security validation can introduce:
 
@@ -1301,7 +1301,7 @@ Every infrastructure definition should undergo automated security scanning befor
 
 ---
 
-### 6. Weak CI/CD Pipeline Security
+#### 6. Weak CI/CD Pipeline Security
 
 The CI/CD pipeline itself is a high-value target.
 
@@ -1318,7 +1318,7 @@ Protecting the pipeline is as important as protecting the application.
 
 ---
 
-### 7. Ignoring Container Security
+#### 7. Ignoring Container Security
 
 Organizations sometimes scan application code but overlook container images.
 
@@ -1335,7 +1335,7 @@ Container security should span both build-time and runtime.
 
 ---
 
-### 8. Poor Kubernetes Security
+#### 8. Poor Kubernetes Security
 
 Common Kubernetes governance failures include:
 
@@ -1350,7 +1350,7 @@ Kubernetes environments require dedicated security controls beyond container sec
 
 ---
 
-### 9. Manual Security Processes
+#### 9. Manual Security Processes
 
 Manual reviews alone cannot keep pace with modern deployment frequencies.
 
@@ -1365,7 +1365,7 @@ Automation should handle repetitive security tasks wherever practical.
 
 ---
 
-### 10. Ignoring Runtime Security
+#### 10. Ignoring Runtime Security
 
 Pre-deployment testing cannot identify every threat.
 
@@ -1382,7 +1382,7 @@ Runtime monitoring complements Shift Left practices.
 
 ---
 
-### 11. Poor Visibility Across the Pipeline
+#### 11. Poor Visibility Across the Pipeline
 
 Security teams should maintain visibility into:
 
@@ -1399,7 +1399,7 @@ Limited visibility creates detection gaps and delays incident response.
 
 ---
 
-### 12. Weak Policy Enforcement
+#### 12. Weak Policy Enforcement
 
 Organizations sometimes define security policies without enforcing them.
 
@@ -1415,7 +1415,7 @@ Policy enforcement should be automated wherever possible.
 
 ---
 
-### 13. Measuring Speed Instead of Secure Outcomes
+#### 13. Measuring Speed Instead of Secure Outcomes
 
 Deployment frequency alone does not indicate DevSecOps maturity.
 
@@ -1433,7 +1433,7 @@ Balanced metrics encourage both speed and security.
 
 ---
 
-### 14. Lack of Cross-Team Collaboration
+#### 14. Lack of Cross-Team Collaboration
 
 DevSecOps requires collaboration between:
 
@@ -1449,7 +1449,7 @@ Security silos reduce the effectiveness of DevSecOps initiatives.
 
 ---
 
-### 15. Treating DevSecOps as a Tool Rather Than a Culture
+#### 15. Treating DevSecOps as a Tool Rather Than a Culture
 
 Purchasing security tools alone does not establish DevSecOps.
 
@@ -1467,7 +1467,7 @@ Culture is the foundation of sustainable DevSecOps.
 
 ---
 
-## Cloud DevSecOps Checklist
+### Cloud DevSecOps Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1489,9 +1489,9 @@ Culture is the foundation of sustainable DevSecOps.
 
 ---
 
-## References
+### References
 
-### International Standards
+#### International Standards
 
 - ISO/IEC 27001 — Information Security Management Systems (ISMS)
 - ISO/IEC 27002 — Information Security Controls
@@ -1500,7 +1500,7 @@ Culture is the foundation of sustainable DevSecOps.
 
 ---
 
-### NIST Publications
+#### NIST Publications
 
 - NIST Secure Software Development Framework (SSDF) SP 800-218
 - NIST Cybersecurity Framework (CSF) 2.0
@@ -1510,7 +1510,7 @@ Culture is the foundation of sustainable DevSecOps.
 
 ---
 
-### OWASP Resources
+#### OWASP Resources
 
 - OWASP Top 10
 - OWASP API Security Top 10
@@ -1521,7 +1521,7 @@ Culture is the foundation of sustainable DevSecOps.
 
 ---
 
-### CNCF and Cloud-Native Security
+#### CNCF and Cloud-Native Security
 
 - CNCF Cloud Native Security Whitepaper
 - Kubernetes Security Best Practices
@@ -1532,7 +1532,7 @@ Culture is the foundation of sustainable DevSecOps.
 
 ---
 
-### Supply Chain Security
+#### Supply Chain Security
 
 - SLSA (Supply-chain Levels for Software Artifacts)
 - in-toto Framework
@@ -1542,9 +1542,9 @@ Culture is the foundation of sustainable DevSecOps.
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - AWS CodePipeline
 - AWS CodeBuild
@@ -1553,7 +1553,7 @@ Culture is the foundation of sustainable DevSecOps.
 - AWS Security Hub
 - AWS Well-Architected Framework – Security Pillar
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Azure DevOps
 - Microsoft Defender for Cloud
@@ -1561,7 +1561,7 @@ Culture is the foundation of sustainable DevSecOps.
 - Azure Container Registry
 - Azure Kubernetes Service (AKS) Security Guidance
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Cloud Build
 - Artifact Registry
@@ -1571,7 +1571,7 @@ Culture is the foundation of sustainable DevSecOps.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - NIST Secure Software Development Framework (SSDF)
 - OWASP DevSecOps Guideline

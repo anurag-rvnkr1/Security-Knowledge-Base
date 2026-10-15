@@ -1377,7 +1377,7 @@ Organizations should apply the principles of **Zero Trust**, **Defense in Depth*
 
 ---
 
-# Defense-in-Depth for Kubernetes
+## Defense-in-Depth for Kubernetes
 
 ```
                  Users / CI/CD
@@ -1441,7 +1441,7 @@ Each security layer reduces risk and limits the blast radius of a successful att
 
 ---
 
-# Secure the Control Plane
+## Secure the Control Plane
 
 The control plane manages the entire cluster and should receive the highest level of protection.
 
@@ -1458,7 +1458,7 @@ Protecting the control plane helps prevent cluster-wide compromise.
 
 ---
 
-# Protect the API Server
+## Protect the API Server
 
 The API Server is the primary entry point for cluster management.
 
@@ -1475,7 +1475,7 @@ Only authorized users and services should communicate with the API Server.
 
 ---
 
-# Encrypt etcd
+## Encrypt etcd
 
 Because etcd stores sensitive cluster data, it should always be protected.
 
@@ -1502,7 +1502,7 @@ Enable encryption at rest and restrict direct access.
 
 ---
 
-# Enforce Role-Based Access Control (RBAC)
+## Enforce Role-Based Access Control (RBAC)
 
 Apply Least Privilege to every identity.
 
@@ -1530,7 +1530,7 @@ RBAC is one of the most important Kubernetes security controls.
 
 ---
 
-# Secure Service Accounts
+## Secure Service Accounts
 
 Applications should use dedicated service accounts with narrowly scoped permissions.
 
@@ -1544,7 +1544,7 @@ Rotate credentials and audit service account usage regularly.
 
 ---
 
-# Use Admission Controllers
+## Use Admission Controllers
 
 Admission Controllers should enforce organizational security policies.
 
@@ -1560,7 +1560,7 @@ Policy enforcement prevents insecure workloads from entering the cluster.
 
 ---
 
-# Enforce Pod Security Standards
+## Enforce Pod Security Standards
 
 Every workload should follow secure pod configuration practices.
 
@@ -1577,7 +1577,7 @@ Secure pod configurations reduce attack surfaces.
 
 ---
 
-# Secure Container Images
+## Secure Container Images
 
 Only deploy trusted images.
 
@@ -1593,7 +1593,7 @@ Reject images that fail organizational security policies.
 
 ---
 
-# Protect Kubernetes Secrets
+## Protect Kubernetes Secrets
 
 Sensitive information should never be stored in:
 
@@ -1619,7 +1619,7 @@ Rotate credentials regularly and audit secret access.
 
 ---
 
-# Implement Network Policies
+## Implement Network Policies
 
 Restrict communication between workloads.
 
@@ -1645,7 +1645,7 @@ Default-deny network policies provide a strong security baseline.
 
 ---
 
-# Protect Worker Nodes
+## Protect Worker Nodes
 
 Worker nodes execute application workloads and therefore require continuous protection.
 
@@ -1662,7 +1662,7 @@ Compromised nodes may expose multiple workloads.
 
 ---
 
-# Secure Persistent Storage
+## Secure Persistent Storage
 
 Persistent storage should include:
 
@@ -1676,7 +1676,7 @@ Storage security remains critical because data persists beyond pod lifetimes.
 
 ---
 
-# Enable Runtime Security
+## Enable Runtime Security
 
 Runtime monitoring should detect:
 
@@ -1691,7 +1691,7 @@ Behavior-based detection provides visibility beyond image scanning.
 
 ---
 
-# Monitor Continuously
+## Monitor Continuously
 
 Monitor:
 
@@ -1725,9 +1725,9 @@ Continuous monitoring enables rapid detection and response.
 
 ---
 
-# Best Practices
+## Best Practices
 
-## 1. Enable RBAC Everywhere
+### 1. Enable RBAC Everywhere
 
 Grant only the permissions required for each user, service account, and workload.
 
@@ -1735,7 +1735,7 @@ Review permissions regularly.
 
 ---
 
-## 2. Protect the API Server
+### 2. Protect the API Server
 
 Require:
 
@@ -1748,7 +1748,7 @@ The API Server should never be unnecessarily exposed.
 
 ---
 
-## 3. Encrypt Sensitive Data
+### 3. Encrypt Sensitive Data
 
 Encrypt:
 
@@ -1761,7 +1761,7 @@ Protect encryption keys using an appropriate Key Management Service (KMS).
 
 ---
 
-## 4. Deploy Only Trusted Images
+### 4. Deploy Only Trusted Images
 
 Require:
 
@@ -1774,7 +1774,7 @@ Block deployments that fail security validation.
 
 ---
 
-## 5. Secure Pod Configurations
+### 5. Secure Pod Configurations
 
 Configure pods to:
 
@@ -1788,7 +1788,7 @@ Pod security significantly reduces workload risk.
 
 ---
 
-## 6. Apply Network Segmentation
+### 6. Apply Network Segmentation
 
 Use Network Policies to restrict communication between namespaces and workloads.
 
@@ -1796,7 +1796,7 @@ Permit only required traffic.
 
 ---
 
-## 7. Protect Secrets
+### 7. Protect Secrets
 
 Store credentials securely and rotate them periodically.
 
@@ -1804,7 +1804,7 @@ Monitor secret access continuously.
 
 ---
 
-## 8. Enable Comprehensive Audit Logging
+### 8. Enable Comprehensive Audit Logging
 
 Record:
 
@@ -1819,7 +1819,7 @@ Forward logs to the organization's SIEM.
 
 ---
 
-## 9. Continuously Monitor Runtime Activity
+### 9. Continuously Monitor Runtime Activity
 
 Monitor:
 
@@ -1833,7 +1833,7 @@ Behavioral monitoring complements preventive controls.
 
 ---
 
-## 10. Maintain Cluster Hygiene
+### 10. Maintain Cluster Hygiene
 
 Regularly:
 
@@ -1848,7 +1848,7 @@ Routine maintenance strengthens long-term security.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Kubernetes environments are complex, distributed, and highly dynamic. Small configuration errors can expose an entire cluster to compromise. Most successful Kubernetes attacks exploit weak configurations, excessive permissions, or inadequate operational security rather than flaws in Kubernetes itself.
 
@@ -1856,7 +1856,7 @@ Understanding these common mistakes helps organizations build secure and resilie
 
 ---
 
-### 1. Granting Cluster Administrator Privileges Unnecessarily
+#### 1. Granting Cluster Administrator Privileges Unnecessarily
 
 One of the most common security issues is assigning the **cluster-admin** role to users or service accounts that do not require full administrative access.
 
@@ -1884,7 +1884,7 @@ Grant only the minimum permissions required to perform specific tasks.
 
 ---
 
-### 2. Running Pods as Root
+#### 2. Running Pods as Root
 
 Containers executing with root privileges increase the impact of workload compromise.
 
@@ -1908,7 +1908,7 @@ Configure workloads to:
 
 ---
 
-### 3. Using the Default Service Account
+#### 3. Using the Default Service Account
 
 Many workloads unintentionally use the default service account.
 
@@ -1922,7 +1922,7 @@ Each workload should use a dedicated service account with narrowly scoped permis
 
 ---
 
-### 4. Leaving the API Server Publicly Accessible
+#### 4. Leaving the API Server Publicly Accessible
 
 Exposing the Kubernetes API Server directly to the internet significantly increases attack opportunities.
 
@@ -1942,7 +1942,7 @@ Restrict access using:
 
 ---
 
-### 5. Storing Secrets in Plain Text
+#### 5. Storing Secrets in Plain Text
 
 Sensitive information should never be stored in:
 
@@ -1968,7 +1968,7 @@ Use Kubernetes Secrets together with external secrets management solutions.
 
 ---
 
-### 6. Ignoring Image Security
+#### 6. Ignoring Image Security
 
 Deploying images without security validation introduces software supply chain risks.
 
@@ -1983,7 +1983,7 @@ Every image should be scanned and verified before deployment.
 
 ---
 
-### 7. Disabling Admission Policies
+#### 7. Disabling Admission Policies
 
 Admission Controllers enforce organizational security standards.
 
@@ -1998,7 +1998,7 @@ Policy enforcement should remain enabled in production environments.
 
 ---
 
-### 8. Weak Network Segmentation
+#### 8. Weak Network Segmentation
 
 Allowing unrestricted communication between workloads enables lateral movement.
 
@@ -2022,7 +2022,7 @@ Implement default-deny Network Policies and explicitly allow only required traff
 
 ---
 
-### 9. Leaving etcd Unencrypted
+#### 9. Leaving etcd Unencrypted
 
 etcd stores highly sensitive cluster information.
 
@@ -2037,7 +2037,7 @@ Enable encryption at rest and restrict administrative access.
 
 ---
 
-### 10. Ignoring Worker Node Security
+#### 10. Ignoring Worker Node Security
 
 Organizations often focus on Kubernetes while overlooking the operating systems hosting worker nodes.
 
@@ -2052,7 +2052,7 @@ Compromise of a worker node may expose every workload running on it.
 
 ---
 
-### 11. Failing to Monitor Runtime Activity
+#### 11. Failing to Monitor Runtime Activity
 
 Image scanning alone cannot detect runtime attacks.
 
@@ -2068,7 +2068,7 @@ Runtime monitoring should complement preventive security controls.
 
 ---
 
-### 12. Poor Namespace Management
+#### 12. Poor Namespace Management
 
 Using a single namespace for every workload increases operational and security risks.
 
@@ -2084,7 +2084,7 @@ Namespace isolation improves governance and access control.
 
 ---
 
-### 13. Ignoring Audit Logs
+#### 13. Ignoring Audit Logs
 
 Audit logs contain critical security information.
 
@@ -2100,7 +2100,7 @@ Forward audit logs to a centralized SIEM for continuous analysis.
 
 ---
 
-### 14. Delaying Kubernetes Updates
+#### 14. Delaying Kubernetes Updates
 
 Older Kubernetes versions may contain:
 
@@ -2113,7 +2113,7 @@ Maintain a regular cluster upgrade strategy.
 
 ---
 
-### 15. Assuming Kubernetes Is Secure by Default
+#### 15. Assuming Kubernetes Is Secure by Default
 
 Kubernetes provides powerful security capabilities but requires proper configuration.
 
@@ -2132,7 +2132,7 @@ Security must be intentionally designed, implemented, and maintained.
 
 ---
 
-## Kubernetes Security Checklist
+### Kubernetes Security Checklist
 
 | Control | Status |
 |---------|--------|
@@ -2154,9 +2154,9 @@ Security must be intentionally designed, implemented, and maintained.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-190 – Application Container Security Guide
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
@@ -2170,7 +2170,7 @@ Security must be intentionally designed, implemented, and maintained.
 
 ---
 
-### Kubernetes Documentation
+#### Kubernetes Documentation
 
 - Kubernetes Official Documentation
 - Kubernetes Security Documentation
@@ -2184,34 +2184,34 @@ Security must be intentionally designed, implemented, and maintained.
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
-#### Amazon Web Services
+##### Amazon Web Services
 
 - Amazon Elastic Kubernetes Service (EKS)
 - AWS Security Best Practices for EKS
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Azure Kubernetes Service (AKS)
 - Microsoft Defender for Containers
 
-#### Google Cloud Platform
+##### Google Cloud Platform
 
 - Google Kubernetes Engine (GKE)
 - GKE Security Best Practices
 
-#### Oracle Cloud Infrastructure
+##### Oracle Cloud Infrastructure
 
 - Oracle Container Engine for Kubernetes (OKE)
 
-#### IBM Cloud
+##### IBM Cloud
 
 - IBM Cloud Kubernetes Service Documentation
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -2226,7 +2226,7 @@ Security must be intentionally designed, implemented, and maintained.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - MITRE ATT&CK Framework
 - MITRE D3FEND

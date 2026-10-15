@@ -56,7 +56,7 @@ The developer can work with Pods in that namespace without automatically receivi
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -98,7 +98,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Authorization?
+## What Is Authorization?
 
 Authorization is the process of determining whether an authenticated identity is permitted to perform an action.
 
@@ -120,7 +120,7 @@ The API Server rejects the request.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 | Concept | Question | Example |
 |---|---|---|
@@ -143,7 +143,7 @@ Allowed / Denied
 
 ---
 
-# Kubernetes Authorization
+## Kubernetes Authorization
 
 Kubernetes supports multiple authorization mechanisms.
 
@@ -160,7 +160,7 @@ RBAC is the standard authorization mechanism used in most modern Kubernetes envi
 
 ---
 
-# What Is RBAC?
+## What Is RBAC?
 
 RBAC allows permissions to be assigned based on roles.
 
@@ -198,7 +198,7 @@ Pod Read Permissions
 
 ---
 
-# RBAC Architecture
+## RBAC Architecture
 
 ```text
                     Subject
@@ -222,7 +222,7 @@ Pod Read Permissions
 
 ---
 
-# Four Main RBAC Objects
+## Four Main RBAC Objects
 
 The four core RBAC resources are:
 
@@ -255,7 +255,7 @@ Connects Subject → ClusterRole
 
 ---
 
-# Role
+## Role
 
 A `Role` defines permissions within a namespace.
 
@@ -307,7 +307,7 @@ development
 
 ---
 
-# Role Is Namespace-Scoped
+## Role Is Namespace-Scoped
 
 A Role belongs to a namespace.
 
@@ -335,7 +335,7 @@ staging
 
 ---
 
-# ClusterRole
+## ClusterRole
 
 A `ClusterRole` is a cluster-level RBAC object.
 
@@ -379,7 +379,7 @@ rules:
 
 ---
 
-# Role vs ClusterRole
+## Role vs ClusterRole
 
 | Feature | Role | ClusterRole |
 |---|---|---|
@@ -391,7 +391,7 @@ rules:
 
 ---
 
-# RoleBinding
+## RoleBinding
 
 A `RoleBinding` grants permissions defined by a Role or ClusterRole to subjects.
 
@@ -441,7 +441,7 @@ development namespace
 
 ---
 
-# RoleBinding with ClusterRole
+## RoleBinding with ClusterRole
 
 A RoleBinding can reference a ClusterRole.
 
@@ -463,7 +463,7 @@ This is a very useful RBAC pattern.
 
 ---
 
-# ClusterRoleBinding
+## ClusterRoleBinding
 
 A `ClusterRoleBinding` grants a ClusterRole across the cluster.
 
@@ -499,7 +499,7 @@ Now Alice receives the ClusterRole's permissions cluster-wide, subject to the re
 
 ---
 
-# RoleBinding vs ClusterRoleBinding
+## RoleBinding vs ClusterRoleBinding
 
 This distinction is extremely important.
 
@@ -531,7 +531,7 @@ Alice → Pod Reader → all applicable namespaces
 
 ---
 
-# Subjects
+## Subjects
 
 A RoleBinding or ClusterRoleBinding can grant permissions to subjects.
 
@@ -545,7 +545,7 @@ ServiceAccount
 
 ---
 
-# User
+## User
 
 Example:
 
@@ -563,7 +563,7 @@ The username must match the identity presented during authentication.
 
 ---
 
-# Group
+## Group
 
 Example:
 
@@ -587,7 +587,7 @@ OIDC
 
 ---
 
-# ServiceAccount
+## ServiceAccount
 
 Example:
 
@@ -605,7 +605,7 @@ This grants permissions to the workload identity.
 
 ---
 
-# Service Account Identity
+## Service Account Identity
 
 A Service Account commonly has the identity:
 
@@ -617,7 +617,7 @@ RBAC can bind permissions to this identity.
 
 ---
 
-# RBAC Rules
+## RBAC Rules
 
 An RBAC rule typically contains:
 
@@ -636,7 +636,7 @@ nonResourceURLs
 
 ---
 
-# API Groups
+## API Groups
 
 Kubernetes APIs are organized into API groups.
 
@@ -665,7 +665,7 @@ nodes
 
 ---
 
-# Apps API Group
+## Apps API Group
 
 Deployments are in:
 
@@ -687,7 +687,7 @@ resources:
 
 ---
 
-# RBAC API Group
+## RBAC API Group
 
 RBAC resources belong to:
 
@@ -697,7 +697,7 @@ rbac.authorization.k8s.io
 
 ---
 
-# Networking API Group
+## Networking API Group
 
 NetworkPolicy belongs to:
 
@@ -707,7 +707,7 @@ networking.k8s.io
 
 ---
 
-# Batch API Group
+## Batch API Group
 
 Jobs and CronJobs use:
 
@@ -717,7 +717,7 @@ batch
 
 ---
 
-# Resource
+## Resource
 
 The `resources` field identifies what the identity can access.
 
@@ -744,7 +744,7 @@ namespaces
 
 ---
 
-# Resource Names
+## Resource Names
 
 RBAC can restrict permissions to specific resource names.
 
@@ -760,7 +760,7 @@ This can restrict a rule to a particular named resource.
 
 ---
 
-# Example
+## Example
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -800,7 +800,7 @@ rather than all Secrets in the namespace.
 
 ---
 
-# Important Limitation
+## Important Limitation
 
 When using `resourceNames`, certain operations that don't identify a specific resource name, such as some list/watch requests, may not match the rule as expected.
 
@@ -820,7 +820,7 @@ kubectl get secret app-secret
 
 ---
 
-# Verbs
+## Verbs
 
 Verbs define allowed actions.
 
@@ -839,7 +839,7 @@ deletecollection
 
 ---
 
-# Read Permissions
+## Read Permissions
 
 Common read verbs:
 
@@ -863,7 +863,7 @@ verbs:
 
 ---
 
-# Write Permissions
+## Write Permissions
 
 Common write verbs:
 
@@ -876,7 +876,7 @@ delete
 
 ---
 
-# Wildcards
+## Wildcards
 
 RBAC supports wildcards.
 
@@ -902,7 +902,7 @@ Avoid wildcards unless the broad access is explicitly required.
 
 ---
 
-# Example of Overly Broad RBAC
+## Example of Overly Broad RBAC
 
 ```yaml
 rules:
@@ -926,7 +926,7 @@ Do not use this for ordinary applications.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 The preferred approach is:
 
@@ -958,7 +958,7 @@ cluster-admin
 
 ---
 
-# RBAC Permission Model
+## RBAC Permission Model
 
 Think of permissions as:
 
@@ -986,7 +986,7 @@ development namespace
 
 ---
 
-# Namespace Scope
+## Namespace Scope
 
 A RoleBinding in:
 
@@ -1004,7 +1004,7 @@ You need another binding if the permissions are required there.
 
 ---
 
-# Multi-Namespace Access
+## Multi-Namespace Access
 
 Suppose a developer needs:
 
@@ -1035,7 +1035,7 @@ The same ClusterRole can be reused through multiple RoleBindings.
 
 ---
 
-# Reusable ClusterRole
+## Reusable ClusterRole
 
 A ClusterRole can define reusable permissions:
 
@@ -1057,7 +1057,7 @@ This avoids duplicating the same permission rules.
 
 ---
 
-# Cluster-Scoped Resources
+## Cluster-Scoped Resources
 
 Some resources are cluster-scoped.
 
@@ -1075,7 +1075,7 @@ These cannot be accessed through a normal namespace-scoped Role.
 
 ---
 
-# ClusterRole for Nodes
+## ClusterRole for Nodes
 
 Example:
 
@@ -1111,7 +1111,7 @@ Nodes are cluster-scoped.
 
 ---
 
-# ClusterRoleBinding for Nodes
+## ClusterRoleBinding for Nodes
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1141,7 +1141,7 @@ roleRef:
 
 ---
 
-# Default Kubernetes Roles
+## Default Kubernetes Roles
 
 Kubernetes provides several default ClusterRoles.
 
@@ -1158,7 +1158,7 @@ These have different privilege levels.
 
 ---
 
-# `cluster-admin`
+## `cluster-admin`
 
 The:
 
@@ -1172,7 +1172,7 @@ Treat access to it as highly sensitive.
 
 ---
 
-# `admin`
+## `admin`
 
 The:
 
@@ -1184,7 +1184,7 @@ role provides broad administrative permissions within namespaces when granted th
 
 ---
 
-# `edit`
+## `edit`
 
 The:
 
@@ -1196,7 +1196,7 @@ role provides permissions to manage many resources within a namespace.
 
 ---
 
-# `view`
+## `view`
 
 The:
 
@@ -1208,7 +1208,7 @@ role provides read-only access to many resources.
 
 ---
 
-# Default Roles Are Not Always Enough
+## Default Roles Are Not Always Enough
 
 Built-in roles are useful, but production environments often require custom roles.
 
@@ -1227,7 +1227,7 @@ edit
 
 ---
 
-# Role Aggregation
+## Role Aggregation
 
 Kubernetes supports aggregation labels that can add rules to built-in aggregated ClusterRoles.
 
@@ -1243,7 +1243,7 @@ This can be useful for extending standard roles carefully.
 
 ---
 
-# Example Aggregation
+## Example Aggregation
 
 Conceptually:
 
@@ -1261,7 +1261,7 @@ Use aggregation carefully because it changes the permissions of a built-in role.
 
 ---
 
-# RBAC for Developers
+## RBAC for Developers
 
 A developer may need:
 
@@ -1284,7 +1284,7 @@ get all Secrets
 
 ---
 
-# Example Developer Role
+## Example Developer Role
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1336,7 +1336,7 @@ rules:
 
 ---
 
-# RBAC for Applications
+## RBAC for Applications
 
 An application should receive only the permissions required for its function.
 
@@ -1360,7 +1360,7 @@ just because the application interacts with Kubernetes.
 
 ---
 
-# Example Application Role
+## Example Application Role
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1390,7 +1390,7 @@ rules:
 
 ---
 
-# RBAC for CI/CD
+## RBAC for CI/CD
 
 A CI/CD system may need:
 
@@ -1413,7 +1413,7 @@ Use a dedicated identity.
 
 ---
 
-# CI/CD Security
+## CI/CD Security
 
 Bad:
 
@@ -1437,7 +1437,7 @@ Specific namespace
 
 ---
 
-# RBAC for Security Teams
+## RBAC for Security Teams
 
 Security teams may need:
 
@@ -1459,7 +1459,7 @@ if read-only access is sufficient.
 
 ---
 
-# RBAC for Monitoring
+## RBAC for Monitoring
 
 Monitoring agents may require:
 
@@ -1475,7 +1475,7 @@ They should receive only the permissions necessary for discovery and monitoring.
 
 ---
 
-# RBAC for Operators
+## RBAC for Operators
 
 Operators and controllers may need broad permissions because they manage Kubernetes resources.
 
@@ -1497,7 +1497,7 @@ Dedicated ClusterRoleBinding
 
 ---
 
-# RBAC and Secrets
+## RBAC and Secrets
 
 Secrets require special care.
 
@@ -1525,7 +1525,7 @@ unless necessary.
 
 ---
 
-# RBAC and ConfigMaps
+## RBAC and ConfigMaps
 
 ConfigMaps are usually less sensitive than Secrets, but they can still contain:
 
@@ -1540,7 +1540,7 @@ Follow least privilege for them as well.
 
 ---
 
-# RBAC and Nodes
+## RBAC and Nodes
 
 Node permissions are highly sensitive.
 
@@ -1556,7 +1556,7 @@ But permissions to modify certain cluster resources can significantly increase p
 
 ---
 
-# Dangerous RBAC Permissions
+## Dangerous RBAC Permissions
 
 Pay special attention to permissions involving:
 
@@ -1577,7 +1577,7 @@ Some of these can provide paths to sensitive access or privilege escalation depe
 
 ---
 
-# `pods/exec`
+## `pods/exec`
 
 The:
 
@@ -1593,7 +1593,7 @@ Treat it as sensitive.
 
 ---
 
-# RBAC Subresources
+## RBAC Subresources
 
 Some Kubernetes resources have subresources.
 
@@ -1610,7 +1610,7 @@ Permissions may need to explicitly reference the subresource.
 
 ---
 
-# Example
+## Example
 
 ```yaml
 resources:
@@ -1626,7 +1626,7 @@ This can allow reading Pod logs.
 
 ---
 
-# Pod Logs vs Pod Exec
+## Pod Logs vs Pod Exec
 
 ```text
 pods/log
@@ -1654,7 +1654,7 @@ These should not be treated as equivalent privileges.
 
 ---
 
-# RBAC Evaluation
+## RBAC Evaluation
 
 When Kubernetes evaluates a request, it considers:
 
@@ -1688,7 +1688,7 @@ Denied
 
 ---
 
-# RBAC Is Additive
+## RBAC Is Additive
 
 A key concept:
 
@@ -1714,7 +1714,7 @@ in the normal RBAC model.
 
 ---
 
-# Example
+## Example
 
 Role A:
 
@@ -1745,7 +1745,7 @@ to override the granted permission.
 
 ---
 
-# RBAC Cannot Explicitly Deny
+## RBAC Cannot Explicitly Deny
 
 Kubernetes RBAC is primarily:
 
@@ -1771,7 +1771,7 @@ is extremely important.
 
 ---
 
-# Effective Permissions
+## Effective Permissions
 
 Suppose Alice has:
 
@@ -1795,7 +1795,7 @@ not just one Role.
 
 ---
 
-# RBAC Auditing
+## RBAC Auditing
 
 Regularly review:
 
@@ -1818,7 +1818,7 @@ broad ClusterRoleBindings
 
 ---
 
-# Find ClusterRoleBindings
+## Find ClusterRoleBindings
 
 ```bash
 kubectl get clusterrolebindings
@@ -1832,7 +1832,7 @@ kubectl describe clusterrolebinding <name>
 
 ---
 
-# Find RoleBindings
+## Find RoleBindings
 
 ```bash
 kubectl get rolebindings -A
@@ -1842,7 +1842,7 @@ This is useful for organization-wide review.
 
 ---
 
-# Find Roles
+## Find Roles
 
 ```bash
 kubectl get roles -A
@@ -1850,7 +1850,7 @@ kubectl get roles -A
 
 ---
 
-# Find ClusterRoles
+## Find ClusterRoles
 
 ```bash
 kubectl get clusterroles
@@ -1858,7 +1858,7 @@ kubectl get clusterroles
 
 ---
 
-# Check a User's Permissions
+## Check a User's Permissions
 
 Use:
 
@@ -1870,7 +1870,7 @@ This shows the permissions available to the current identity, subject to the API
 
 ---
 
-# Check Another Identity
+## Check Another Identity
 
 For testing:
 
@@ -1891,7 +1891,7 @@ Use impersonation only when your own identity has permission to impersonate the 
 
 ---
 
-# Check Service Account Permissions
+## Check Service Account Permissions
 
 ```bash
 kubectl auth can-i --list \
@@ -1900,7 +1900,7 @@ kubectl auth can-i --list \
 
 ---
 
-# RBAC Troubleshooting
+## RBAC Troubleshooting
 
 Suppose:
 
@@ -1943,7 +1943,7 @@ ClusterRoles
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```text
 403 Forbidden
@@ -1969,7 +1969,7 @@ Check verb
 
 ---
 
-# Common RBAC Error
+## Common RBAC Error
 
 Suppose the Role contains:
 
@@ -1993,7 +1993,7 @@ The permission will not match.
 
 ---
 
-# API Group Mistake
+## API Group Mistake
 
 Core resources use:
 
@@ -2029,7 +2029,7 @@ apiGroups:
 
 ---
 
-# Verb Mistake
+## Verb Mistake
 
 Suppose the Role grants:
 
@@ -2049,7 +2049,7 @@ The request will be denied.
 
 ---
 
-# Namespace Mistake
+## Namespace Mistake
 
 Suppose a RoleBinding exists in:
 
@@ -2067,7 +2067,7 @@ The permission does not automatically transfer to production.
 
 ---
 
-# RoleBinding Subject Mistake
+## RoleBinding Subject Mistake
 
 Verify:
 
@@ -2093,7 +2093,7 @@ subjects:
 
 ---
 
-# RoleRef Mistake
+## RoleRef Mistake
 
 A RoleBinding contains:
 
@@ -2113,7 +2113,7 @@ The referenced RBAC object must exist and be correct.
 
 ---
 
-# Hands-on Lab 1 – Create Read-Only Role
+## Hands-on Lab 1 – Create Read-Only Role
 
 Create:
 
@@ -2155,7 +2155,7 @@ kubectl apply -f pod-reader.yaml
 
 ---
 
-# Hands-on Lab 2 – Create Service Account
+## Hands-on Lab 2 – Create Service Account
 
 ```bash
 kubectl create serviceaccount rbac-demo
@@ -2169,7 +2169,7 @@ kubectl get serviceaccount rbac-demo
 
 ---
 
-# Hands-on Lab 3 – Create RoleBinding
+## Hands-on Lab 3 – Create RoleBinding
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -2205,7 +2205,7 @@ kubectl apply -f rolebinding.yaml
 
 ---
 
-# Hands-on Lab 4 – Test Permissions
+## Hands-on Lab 4 – Test Permissions
 
 Run:
 
@@ -2235,7 +2235,7 @@ no
 
 ---
 
-# Hands-on Lab 5 – Create Namespace-Scoped Access
+## Hands-on Lab 5 – Create Namespace-Scoped Access
 
 Create:
 
@@ -2273,7 +2273,7 @@ kubectl auth can-i get pods \
 
 ---
 
-# Hands-on Lab 6 – Test Namespace Isolation
+## Hands-on Lab 6 – Test Namespace Isolation
 
 Test another namespace:
 
@@ -2287,7 +2287,7 @@ The result should demonstrate that a namespace-scoped RoleBinding does not autom
 
 ---
 
-# Hands-on Lab 7 – ClusterRole + RoleBinding
+## Hands-on Lab 7 – ClusterRole + RoleBinding
 
 Create a ClusterRole:
 
@@ -2333,7 +2333,7 @@ Namespace-scoped permission
 
 ---
 
-# Hands-on Lab 8 – ClusterRoleBinding
+## Hands-on Lab 8 – ClusterRoleBinding
 
 Create a test ClusterRole and ClusterRoleBinding.
 
@@ -2359,7 +2359,7 @@ Cluster-wide grant
 
 ---
 
-# Hands-on Lab 9 – Test Resource Names
+## Hands-on Lab 9 – Test Resource Names
 
 Create:
 
@@ -2407,7 +2407,7 @@ Compare the results.
 
 ---
 
-# Hands-on Lab 10 – Test `pods/log`
+## Hands-on Lab 10 – Test `pods/log`
 
 Create a Role:
 
@@ -2455,7 +2455,7 @@ pods
 
 ---
 
-# Hands-on Lab 11 – Test `pods/exec`
+## Hands-on Lab 11 – Test `pods/exec`
 
 Create a test Role that explicitly grants:
 
@@ -2475,7 +2475,7 @@ Remove the permission after the exercise.
 
 ---
 
-# Hands-on Lab 12 – RBAC Audit
+## Hands-on Lab 12 – RBAC Audit
 
 List all ClusterRoleBindings:
 
@@ -2505,7 +2505,7 @@ Scope
 
 ---
 
-# Hands-on Lab 13 – Find Broad Permissions
+## Hands-on Lab 13 – Find Broad Permissions
 
 Inspect:
 
@@ -2533,9 +2533,9 @@ Identify overly broad custom roles in a test environment.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Giving `cluster-admin` to Applications
+### 1. Giving `cluster-admin` to Applications
 
 Avoid:
 
@@ -2547,7 +2547,7 @@ cluster-admin
 
 ---
 
-## 2. Using Wildcards
+### 2. Using Wildcards
 
 Avoid:
 
@@ -2563,7 +2563,7 @@ unless explicitly justified.
 
 ---
 
-## 3. Confusing Role and RoleBinding
+### 3. Confusing Role and RoleBinding
 
 Remember:
 
@@ -2581,7 +2581,7 @@ Grants those permissions
 
 ---
 
-## 4. Confusing ClusterRole and ClusterRoleBinding
+### 4. Confusing ClusterRole and ClusterRoleBinding
 
 A ClusterRole defines permissions.
 
@@ -2589,7 +2589,7 @@ A ClusterRoleBinding grants them cluster-wide.
 
 ---
 
-## 5. Forgetting Namespace Scope
+### 5. Forgetting Namespace Scope
 
 A RoleBinding in:
 
@@ -2605,7 +2605,7 @@ production
 
 ---
 
-## 6. Granting Secret Access Unnecessarily
+### 6. Granting Secret Access Unnecessarily
 
 Secrets contain sensitive information.
 
@@ -2619,13 +2619,13 @@ permissions.
 
 ---
 
-## 7. Granting `pods/exec`
+### 7. Granting `pods/exec`
 
 `pods/exec` can provide interactive command execution and should be treated as sensitive.
 
 ---
 
-## 8. Ignoring Existing Bindings
+### 8. Ignoring Existing Bindings
 
 RBAC permissions are additive.
 
@@ -2633,7 +2633,7 @@ A user may receive permissions from multiple bindings.
 
 ---
 
-## 9. Using the Wrong API Group
+### 9. Using the Wrong API Group
 
 For example:
 
@@ -2655,7 +2655,7 @@ not:
 
 ---
 
-## 10. Using the Wrong Verb
+### 10. Using the Wrong Verb
 
 `get` does not imply:
 
@@ -2665,21 +2665,21 @@ delete
 
 ---
 
-## 11. Assuming RBAC Has Deny Rules
+### 11. Assuming RBAC Has Deny Rules
 
 RBAC is allow-oriented and does not provide a normal deny override.
 
 ---
 
-## 12. Forgetting Service Account Namespace
+### 12. Forgetting Service Account Namespace
 
 For Service Accounts, ensure the binding references the correct namespace.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Follow Least Privilege
+#### 1. Follow Least Privilege
 
 Grant only:
 
@@ -2693,7 +2693,7 @@ Required Namespace
 
 ---
 
-### 2. Prefer Role Over ClusterRole When Possible
+#### 2. Prefer Role Over ClusterRole When Possible
 
 If access only needs to exist inside one namespace:
 
@@ -2705,13 +2705,13 @@ is usually simpler.
 
 ---
 
-### 3. Prefer RoleBinding Over ClusterRoleBinding When Possible
+#### 3. Prefer RoleBinding Over ClusterRoleBinding When Possible
 
 A namespace-scoped grant reduces blast radius.
 
 ---
 
-### 4. Use Groups for Human Users
+#### 4. Use Groups for Human Users
 
 Instead of binding dozens of individual users:
 
@@ -2723,25 +2723,25 @@ Role
 
 ---
 
-### 5. Use Dedicated Service Accounts
+#### 5. Use Dedicated Service Accounts
 
 One workload or workload class should have an appropriate identity.
 
 ---
 
-### 6. Avoid Wildcards
+#### 6. Avoid Wildcards
 
 Explicit permissions are easier to audit.
 
 ---
 
-### 7. Protect Secrets
+#### 7. Protect Secrets
 
 Grant Secret access only to workloads that require it.
 
 ---
 
-### 8. Review Privileged RBAC Regularly
+#### 8. Review Privileged RBAC Regularly
 
 Audit:
 
@@ -2755,7 +2755,7 @@ Node access
 
 ---
 
-### 9. Use `kubectl auth can-i`
+#### 9. Use `kubectl auth can-i`
 
 Before assuming a permission exists:
 
@@ -2765,7 +2765,7 @@ kubectl auth can-i ...
 
 ---
 
-### 10. Monitor RBAC Changes
+#### 10. Monitor RBAC Changes
 
 Security-sensitive changes include:
 
@@ -2778,13 +2778,13 @@ ClusterRole modification
 
 ---
 
-### 11. Separate Human and Workload Identities
+#### 11. Separate Human and Workload Identities
 
 Do not share administrative credentials with applications.
 
 ---
 
-### 12. Keep Production Access Narrow
+#### 12. Keep Production Access Narrow
 
 A developer who needs:
 
@@ -2800,7 +2800,7 @@ production
 
 ---
 
-# RBAC Design Pattern
+## RBAC Design Pattern
 
 A clean production model can be:
 
@@ -2824,7 +2824,7 @@ A clean production model can be:
 
 ---
 
-# Application RBAC Pattern
+## Application RBAC Pattern
 
 ```text
 Application
@@ -2853,7 +2853,7 @@ cluster-admin
 
 ---
 
-# CI/CD RBAC Pattern
+## CI/CD RBAC Pattern
 
 ```text
 CI/CD System
@@ -2884,7 +2884,7 @@ Avoid unrelated permissions.
 
 ---
 
-# Security Team RBAC Pattern
+## Security Team RBAC Pattern
 
 ```text
 Security Analyst
@@ -2913,7 +2913,7 @@ The exact permissions should match operational requirements.
 
 ---
 
-# RBAC Review Strategy
+## RBAC Review Strategy
 
 A periodic RBAC review can follow:
 
@@ -2932,7 +2932,7 @@ A periodic RBAC review can follow:
 
 ---
 
-# RBAC Security Architecture
+## RBAC Security Architecture
 
 ```text
                     Authentication
@@ -2961,9 +2961,9 @@ A periodic RBAC review can follow:
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## RBAC
+### RBAC
 
 ```text
 Role-Based Access Control
@@ -2971,7 +2971,7 @@ Role-Based Access Control
 
 ---
 
-## Role
+### Role
 
 ```text
 Namespace-scoped permission definition
@@ -2979,7 +2979,7 @@ Namespace-scoped permission definition
 
 ---
 
-## ClusterRole
+### ClusterRole
 
 ```text
 Cluster-level permission definition
@@ -2987,7 +2987,7 @@ Cluster-level permission definition
 
 ---
 
-## RoleBinding
+### RoleBinding
 
 ```text
 Grants a Role or ClusterRole within a namespace
@@ -2995,7 +2995,7 @@ Grants a Role or ClusterRole within a namespace
 
 ---
 
-## ClusterRoleBinding
+### ClusterRoleBinding
 
 ```text
 Grants a ClusterRole cluster-wide
@@ -3003,7 +3003,7 @@ Grants a ClusterRole cluster-wide
 
 ---
 
-## Subject
+### Subject
 
 ```text
 User
@@ -3013,7 +3013,7 @@ ServiceAccount
 
 ---
 
-## Resource
+### Resource
 
 ```text
 Pods
@@ -3026,7 +3026,7 @@ Jobs
 
 ---
 
-## Verb
+### Verb
 
 ```text
 get
@@ -3040,7 +3040,7 @@ delete
 
 ---
 
-## API Group
+### API Group
 
 ```text
 apps
@@ -3051,7 +3051,7 @@ rbac.authorization.k8s.io
 
 ---
 
-## Least Privilege
+### Least Privilege
 
 ```text
 Only the permissions required
@@ -3059,7 +3059,7 @@ Only the permissions required
 
 ---
 
-## RBAC Is Additive
+### RBAC Is Additive
 
 ```text
 Role A
@@ -3071,7 +3071,7 @@ Combined Permissions
 
 ---
 
-## No Normal Deny Rule
+### No Normal Deny Rule
 
 ```text
 RBAC
@@ -3081,7 +3081,7 @@ Allow-oriented
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 List Roles:
 
@@ -3165,9 +3165,9 @@ kubectl auth can-i get pods \
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is RBAC?
 - What is authorization?
@@ -3182,7 +3182,7 @@ kubectl auth can-i get pods \
 
 ---
 
-## Intermediate
+### Intermediate
 
 - What is the difference between Role and ClusterRole?
 - What is the difference between RoleBinding and ClusterRoleBinding?
@@ -3200,7 +3200,7 @@ kubectl auth can-i get pods \
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Kubernetes RBAC evaluation process.
 - How would you design RBAC for a multi-team Kubernetes cluster?
@@ -3221,13 +3221,13 @@ kubectl auth can-i get pods \
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > A developer needs to view Pods and Deployments only in the `development` namespace. How would you implement access?
 
-### Answer
+#### Answer
 
 Create a Role:
 
@@ -3317,13 +3317,13 @@ No production access is granted.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > A CI/CD system needs to deploy applications to the `production` namespace. Should you give it `cluster-admin`?
 
-### Answer
+#### Answer
 
 No.
 
@@ -3371,13 +3371,13 @@ This reduces blast radius if the CI/CD credentials are compromised.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > A Service Account can access Secrets even though you did not grant it Secret permissions directly. How can this happen?
 
-### Answer
+#### Answer
 
 RBAC permissions are additive.
 
@@ -3422,13 +3422,13 @@ kubectl auth can-i get secrets \
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > A user receives `403 Forbidden` when attempting to delete a Pod. They can successfully list Pods. What is likely wrong?
 
-### Answer
+#### Answer
 
 Authentication is working.
 
@@ -3474,13 +3474,13 @@ permission if deletion is genuinely required.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How would you reduce the impact of a compromised application Service Account?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3522,7 +3522,7 @@ Response
 
 ---
 
-# Production RBAC Checklist
+## Production RBAC Checklist
 
 ```text
 ☑ Use least privilege
@@ -3544,7 +3544,7 @@ Response
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create a test namespace.
 2. Create a Service Account.
@@ -3575,9 +3575,9 @@ Response
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Kubernetes RBAC Authorization
 - Using RBAC Authorization
@@ -3592,7 +3592,7 @@ Response
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 RBAC is Kubernetes' primary authorization mechanism.
 
@@ -3784,9 +3784,9 @@ This forms the foundation for controlling access to Kubernetes resources securel
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 49 – Service Accounts
+## Chapter 49 – Service Accounts
 
 Topics will include:
 

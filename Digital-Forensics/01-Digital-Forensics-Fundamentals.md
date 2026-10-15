@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Digital forensics is the disciplined process of:
 
@@ -47,7 +47,7 @@ The goal is to produce **evidence-supported conclusions**.
 
 ---
 
-# Why Digital Forensics Matters
+## Why Digital Forensics Matters
 
 Modern systems generate enormous amounts of evidence.
 
@@ -118,7 +118,7 @@ The investigator's job is to correlate these sources.
 
 ---
 
-# Digital Evidence
+## Digital Evidence
 
 Digital evidence is information stored or transmitted in digital form that can support an investigation.
 
@@ -140,15 +140,15 @@ Examples include:
 
 ---
 
-# Evidence vs Artifact
+## Evidence vs Artifact
 
 These terms are often used interchangeably, but they are useful to distinguish.
 
-### Evidence
+#### Evidence
 
 Information relevant to answering an investigative question.
 
-### Artifact
+#### Artifact
 
 A specific observable piece of digital information.
 
@@ -174,7 +174,7 @@ An artifact becomes valuable when interpreted in context.
 
 ---
 
-# Example
+## Example
 
 Suppose an investigator finds:
 
@@ -202,47 +202,47 @@ The combination provides significantly stronger evidence.
 
 ---
 
-# Forensic Questions
+## Forensic Questions
 
 Every investigation should begin with questions.
 
 Examples:
 
-### Initial Access
+#### Initial Access
 
 > How did the attacker enter the environment?
 
-### Execution
+#### Execution
 
 > What code or commands were executed?
 
-### Persistence
+#### Persistence
 
 > Did the attacker establish persistence?
 
-### Identity
+#### Identity
 
 > Which account was used?
 
-### Lateral Movement
+#### Lateral Movement
 
 > Which systems were accessed?
 
-### Data Access
+#### Data Access
 
 > What information was accessed?
 
-### Exfiltration
+#### Exfiltration
 
 > Was data transferred outside the environment?
 
-### Timeline
+#### Timeline
 
 > When did each event occur?
 
 ---
 
-# Investigation Hypothesis
+## Investigation Hypothesis
 
 A forensic investigation should often be hypothesis-driven.
 
@@ -275,23 +275,23 @@ The investigator should attempt to **confirm or disprove** the hypothesis.
 
 ---
 
-# Fact vs Hypothesis vs Conclusion
+## Fact vs Hypothesis vs Conclusion
 
 This distinction is fundamental.
 
-## Fact
+### Fact
 
 Directly supported by evidence.
 
 > Account USER01 authenticated to SERVER02 at 10:31 UTC.
 
-## Hypothesis
+### Hypothesis
 
 A possible explanation.
 
 > The account may have been compromised.
 
-## Conclusion
+### Conclusion
 
 An evidence-supported assessment.
 
@@ -299,7 +299,7 @@ An evidence-supported assessment.
 
 ---
 
-# Forensic Investigation Lifecycle
+## Forensic Investigation Lifecycle
 
 A practical forensic lifecycle is:
 
@@ -332,7 +332,7 @@ These stages may overlap depending on the investigation.
 
 ---
 
-# Phase 1 — Identification
+## Phase 1 — Identification
 
 Determine:
 
@@ -356,7 +356,7 @@ Identify Evidence
 
 ---
 
-# Phase 2 — Preservation
+## Phase 2 — Preservation
 
 Preserve evidence before unnecessary modification occurs.
 
@@ -373,7 +373,7 @@ The objective is to minimize evidence alteration.
 
 ---
 
-# Phase 3 — Acquisition
+## Phase 3 — Acquisition
 
 Acquire evidence in a controlled manner.
 
@@ -393,7 +393,7 @@ Whenever practical, preserve the original and analyze verified working copies.
 
 ---
 
-# Phase 4 — Examination
+## Phase 4 — Examination
 
 Extract relevant information.
 
@@ -411,7 +411,7 @@ Relevant Files
 
 ---
 
-# Phase 5 — Analysis
+## Phase 5 — Analysis
 
 Determine what the artifacts mean.
 
@@ -433,7 +433,7 @@ may establish a meaningful event.
 
 ---
 
-# Phase 6 — Interpretation
+## Phase 6 — Interpretation
 
 Convert technical findings into an understandable assessment.
 
@@ -458,7 +458,7 @@ Interpretation:
 
 ---
 
-# Phase 7 — Reporting
+## Phase 7 — Reporting
 
 Document:
 
@@ -474,7 +474,7 @@ Document:
 
 ---
 
-# Phase 8 — Presentation
+## Phase 8 — Presentation
 
 Findings may need to be communicated to:
 
@@ -491,13 +491,13 @@ The level of technical detail should match the audience.
 
 ---
 
-# Evidence Categories
+## Evidence Categories
 
 Digital evidence can be classified in several ways.
 
 ---
 
-# Volatile Evidence
+## Volatile Evidence
 
 Volatile evidence can disappear or change quickly.
 
@@ -526,7 +526,7 @@ Evidence May Be Lost
 
 ---
 
-# Non-Volatile Evidence
+## Non-Volatile Evidence
 
 Examples:
 
@@ -543,7 +543,7 @@ Files and logs can still change.
 
 ---
 
-# Remote Evidence
+## Remote Evidence
 
 Evidence may exist outside the local system.
 
@@ -562,7 +562,7 @@ This is increasingly important in cloud environments.
 
 ---
 
-# Order of Volatility
+## Order of Volatility
 
 A simplified conceptual model:
 
@@ -593,7 +593,7 @@ The exact acquisition order should be determined by the investigation.
 
 ---
 
-# Evidence Integrity
+## Evidence Integrity
 
 A forensic investigator must be able to answer:
 
@@ -617,7 +617,7 @@ The hash can be recorded as part of evidence documentation.
 
 ---
 
-# Hashing
+## Hashing
 
 Common cryptographic hashes include:
 
@@ -628,7 +628,7 @@ MD5 and SHA-1 may still appear in legacy forensic workflows, but modern integrit
 
 ---
 
-# Hash Verification
+## Hash Verification
 
 Example workflow:
 
@@ -658,7 +658,7 @@ If the expected and calculated hashes differ, investigate before relying on the 
 
 ---
 
-# Chain of Custody
+## Chain of Custody
 
 Chain of custody records who handled evidence and when.
 
@@ -679,7 +679,7 @@ Storage Location
 
 ---
 
-# Example Chain-of-Custody Record
+## Example Chain-of-Custody Record
 
 ```text
 Evidence ID:
@@ -709,7 +709,7 @@ Controlled evidence repository
 
 ---
 
-# Why Chain of Custody Matters
+## Why Chain of Custody Matters
 
 Without proper documentation, investigators may have difficulty demonstrating:
 
@@ -721,25 +721,25 @@ Without proper documentation, investigators may have difficulty demonstrating:
 
 ---
 
-# Forensic Acquisition
+## Forensic Acquisition
 
 Acquisition means obtaining evidence for examination.
 
 Common approaches:
 
-### Dead Acquisition
+#### Dead Acquisition
 
 The system is powered down and storage is acquired.
 
-### Live Acquisition
+#### Live Acquisition
 
 Evidence is collected while the system is running.
 
-### Remote Acquisition
+#### Remote Acquisition
 
 Evidence is collected over a controlled network connection.
 
-### Cloud Acquisition
+#### Cloud Acquisition
 
 Evidence is collected from cloud services and APIs.
 
@@ -747,7 +747,7 @@ Each approach has advantages and limitations.
 
 ---
 
-# Live vs Dead Acquisition
+## Live vs Dead Acquisition
 
 | Characteristic | Live | Dead |
 |---|---|---|
@@ -762,7 +762,7 @@ The correct approach depends on the investigation.
 
 ---
 
-# Forensic Imaging
+## Forensic Imaging
 
 A forensic image is a controlled representation of storage media.
 
@@ -789,7 +789,7 @@ Analysis
 
 ---
 
-# Write Protection
+## Write Protection
 
 A write blocker can help prevent accidental writes to evidence media during acquisition.
 
@@ -809,7 +809,7 @@ The specific acquisition method should follow organizational procedures and vali
 
 ---
 
-# Evidence Storage
+## Evidence Storage
 
 Evidence repositories should provide:
 
@@ -825,17 +825,17 @@ Evidence should not simply be stored on an analyst's desktop.
 
 ---
 
-# Evidence Handling Principles
+## Evidence Handling Principles
 
-## Original Evidence
+### Original Evidence
 
 Preserve and protect.
 
-## Master Copy
+### Master Copy
 
 Controlled reference copy.
 
-## Working Copy
+### Working Copy
 
 Copy used for analysis.
 
@@ -855,7 +855,7 @@ Analysis     Analysis
 
 ---
 
-# Forensic Repeatability
+## Forensic Repeatability
 
 Another qualified investigator should be able to understand:
 
@@ -869,7 +869,7 @@ Another qualified investigator should be able to understand:
 
 ---
 
-# Evidence Source Matrix
+## Evidence Source Matrix
 
 | Source | Example Evidence | Common Questions |
 |---|---|---|
@@ -886,7 +886,7 @@ Another qualified investigator should be able to understand:
 
 ---
 
-# Time and Timestamp Analysis
+## Time and Timestamp Analysis
 
 Time is one of the most important dimensions of forensic investigation.
 
@@ -902,7 +902,7 @@ Always determine the timestamp format before interpretation.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Investigators should understand:
 
@@ -927,7 +927,7 @@ If clocks are not synchronized, apparent event ordering can be misleading.
 
 ---
 
-# Timestamp Normalization
+## Timestamp Normalization
 
 A practical investigation may normalize events to UTC.
 
@@ -948,7 +948,7 @@ The original timestamp should still be preserved in forensic notes.
 
 ---
 
-# MACB Concept
+## MACB Concept
 
 File-system analysis often considers:
 
@@ -965,7 +965,7 @@ Do not assume that every timestamp means exactly what its label suggests.
 
 ---
 
-# File Metadata
+## File Metadata
 
 Useful metadata may include:
 
@@ -982,7 +982,7 @@ Useful metadata may include:
 
 ---
 
-# Windows Forensics Overview
+## Windows Forensics Overview
 
 Important Windows evidence sources include:
 
@@ -1007,7 +1007,7 @@ These are explored in detail in Chapter 03.
 
 ---
 
-# Linux Forensics Overview
+## Linux Forensics Overview
 
 Important Linux evidence sources include:
 
@@ -1029,7 +1029,7 @@ These are explored in Chapter 04.
 
 ---
 
-# Memory Forensics Overview
+## Memory Forensics Overview
 
 Memory can reveal:
 
@@ -1045,7 +1045,7 @@ Memory analysis is covered in Chapter 05.
 
 ---
 
-# Disk Forensics Overview
+## Disk Forensics Overview
 
 Disk forensics investigates:
 
@@ -1061,7 +1061,7 @@ Covered in Chapter 06.
 
 ---
 
-# Network Forensics Overview
+## Network Forensics Overview
 
 Network forensics examines:
 
@@ -1078,7 +1078,7 @@ Covered in Chapter 07.
 
 ---
 
-# Cloud Forensics Overview
+## Cloud Forensics Overview
 
 Cloud investigations may involve:
 
@@ -1102,7 +1102,7 @@ Covered in Chapter 08.
 
 ---
 
-# Malware Forensics Overview
+## Malware Forensics Overview
 
 Malware investigations combine:
 
@@ -1122,7 +1122,7 @@ Covered in Chapter 09.
 
 ---
 
-# Timeline Analysis
+## Timeline Analysis
 
 Timeline reconstruction combines multiple evidence sources.
 
@@ -1142,7 +1142,7 @@ The timeline allows investigators to reconstruct the attack sequence.
 
 ---
 
-# Entity Correlation
+## Entity Correlation
 
 Investigations can be represented as relationships.
 
@@ -1166,7 +1166,7 @@ This model helps investigators identify relationships that are not obvious from 
 
 ---
 
-# IOC Pivoting
+## IOC Pivoting
 
 Suppose a suspicious domain is identified.
 
@@ -1187,7 +1187,7 @@ The objective is to determine whether the indicator appears elsewhere.
 
 ---
 
-# Evidence Correlation Example
+## Evidence Correlation Example
 
 Suppose:
 
@@ -1214,7 +1214,7 @@ Together they may form a suspicious sequence.
 
 ---
 
-# Negative Evidence
+## Negative Evidence
 
 Absence of evidence can sometimes be useful, but it must be interpreted carefully.
 
@@ -1242,7 +1242,7 @@ is different from:
 
 ---
 
-# Evidence Gaps
+## Evidence Gaps
 
 Document missing evidence.
 
@@ -1261,7 +1261,7 @@ Medium.
 
 ---
 
-# Forensic Confidence Model
+## Forensic Confidence Model
 
 A useful conceptual model:
 
@@ -1286,33 +1286,33 @@ High Confidence
 
 ---
 
-# Common Forensic Mistakes
+## Common Forensic Mistakes
 
-## Mistake 1 — Analyzing the Original
+### Mistake 1 — Analyzing the Original
 
 Working directly on original evidence can modify it.
 
 ---
 
-## Mistake 2 — Ignoring Volatile Evidence
+### Mistake 2 — Ignoring Volatile Evidence
 
 Powering down a compromised system may destroy useful memory evidence.
 
 ---
 
-## Mistake 3 — No Hash Verification
+### Mistake 3 — No Hash Verification
 
 Without integrity verification, evidence handling becomes harder to validate.
 
 ---
 
-## Mistake 4 — Poor Documentation
+### Mistake 4 — Poor Documentation
 
 If investigators cannot reproduce the analysis, the finding becomes weaker.
 
 ---
 
-## Mistake 5 — Starting With a Conclusion
+### Mistake 5 — Starting With a Conclusion
 
 Investigators should avoid confirmation bias.
 
@@ -1326,13 +1326,13 @@ Better approach:
 
 ---
 
-## Mistake 6 — Ignoring Time Zones
+### Mistake 6 — Ignoring Time Zones
 
 This can produce an incorrect attack timeline.
 
 ---
 
-## Mistake 7 — Trusting One Artifact
+### Mistake 7 — Trusting One Artifact
 
 Artifacts can be misleading or incomplete.
 
@@ -1340,49 +1340,49 @@ Correlate multiple sources.
 
 ---
 
-## Mistake 8 — Ignoring Evidence Limitations
+### Mistake 8 — Ignoring Evidence Limitations
 
 Missing telemetry should be documented.
 
 ---
 
-# Common Evidence-Handling Misconfigurations
+## Common Evidence-Handling Misconfigurations
 
-### Missing NTP
+#### Missing NTP
 
 Different systems have inconsistent timestamps.
 
-### Short Log Retention
+#### Short Log Retention
 
 Historical evidence disappears.
 
-### No Centralized Logging
+#### No Centralized Logging
 
 Investigators cannot reconstruct events.
 
-### Excessive Privileges
+#### Excessive Privileges
 
 Too many people can modify evidence.
 
-### No Evidence Repository
+#### No Evidence Repository
 
 Evidence is scattered across analyst systems.
 
-### No Chain-of-Custody Process
+#### No Chain-of-Custody Process
 
 Transfers cannot be reliably demonstrated.
 
 ---
 
-# Forensic Command Examples
+## Forensic Command Examples
 
 > Commands should be executed only against systems and evidence you are authorized to investigate.
 
 ---
 
-## Linux
+### Linux
 
-### Identify System
+#### Identify System
 
 ```bash
 hostname
@@ -1390,21 +1390,21 @@ uname -a
 uptime
 ```
 
-### Current Users
+#### Current Users
 
 ```bash
 who
 w
 ```
 
-### Processes
+#### Processes
 
 ```bash
 ps aux
 ps -ef
 ```
 
-### Network
+#### Network
 
 ```bash
 ss -tulpn
@@ -1412,14 +1412,14 @@ ip addr
 ip route
 ```
 
-### Authentication Logs
+#### Authentication Logs
 
 ```bash
 last
 lastlog
 ```
 
-### Hash File
+#### Hash File
 
 ```bash
 sha256sum suspicious.bin
@@ -1427,39 +1427,39 @@ sha256sum suspicious.bin
 
 ---
 
-# Windows
+## Windows
 
-### System Information
+#### System Information
 
 ```powershell
 Get-ComputerInfo
 ```
 
-### Processes
+#### Processes
 
 ```powershell
 Get-Process
 ```
 
-### Network Connections
+#### Network Connections
 
 ```powershell
 Get-NetTCPConnection
 ```
 
-### Logged-On Users
+#### Logged-On Users
 
 ```powershell
 Get-CimInstance Win32_LoggedOnUser
 ```
 
-### File Hash
+#### File Hash
 
 ```powershell
 Get-FileHash .\suspicious.exe -Algorithm SHA256
 ```
 
-### Event Logs
+#### Event Logs
 
 ```powershell
 Get-WinEvent -LogName Security -MaxEvents 20
@@ -1469,9 +1469,9 @@ These commands are examples for controlled forensic triage. Formal acquisition s
 
 ---
 
-# Practical Lab 01 — Basic Forensic Investigation
+## Practical Lab 01 — Basic Forensic Investigation
 
-## Scenario
+### Scenario
 
 A workstation is suspected of compromise.
 
@@ -1488,7 +1488,7 @@ Authentication Events
 
 ---
 
-## Objective
+### Objective
 
 Determine:
 
@@ -1501,7 +1501,7 @@ Determine:
 
 ---
 
-## Investigation Workflow
+### Investigation Workflow
 
 ```text
 System Information
@@ -1527,7 +1527,7 @@ Timeline
 
 ---
 
-# Practical Lab 02 — Evidence Integrity
+## Practical Lab 02 — Evidence Integrity
 
 Create a sample evidence file.
 
@@ -1551,7 +1551,7 @@ The objective is to understand the concept of evidence integrity verification.
 
 ---
 
-# Practical Lab 03 — Timeline Reconstruction
+## Practical Lab 03 — Timeline Reconstruction
 
 Given:
 
@@ -1586,7 +1586,7 @@ Then identify:
 
 ---
 
-# Practical Lab 04 — Evidence Correlation
+## Practical Lab 04 — Evidence Correlation
 
 Given:
 
@@ -1619,7 +1619,7 @@ Evidence Gaps
 
 ---
 
-# Professional Forensic Investigation Template
+## Professional Forensic Investigation Template
 
 ```text
 # Digital Forensic Investigation
@@ -1668,7 +1668,7 @@ Organization:
 
 ---
 
-# Evidence Collection Checklist
+## Evidence Collection Checklist
 
 ```text
 [ ] Authorization confirmed
@@ -1691,7 +1691,7 @@ Organization:
 
 ---
 
-# Forensic Analyst Workflow
+## Forensic Analyst Workflow
 
 ```text
                 CASE
@@ -1729,41 +1729,41 @@ Organization:
 
 ---
 
-# Forensic Analyst Roles
+## Forensic Analyst Roles
 
 Depending on the organization, responsibilities may include:
 
-### Forensic Analyst
+#### Forensic Analyst
 
 Performs evidence examination and analysis.
 
-### Incident Responder
+#### Incident Responder
 
 Coordinates containment and recovery.
 
-### Threat Hunter
+#### Threat Hunter
 
 Searches for related attacker activity.
 
-### Malware Analyst
+#### Malware Analyst
 
 Examines malicious files and behavior.
 
-### Detection Engineer
+#### Detection Engineer
 
 Converts forensic findings into detections.
 
-### Incident Commander
+#### Incident Commander
 
 Coordinates the overall response.
 
-### Legal / Compliance
+#### Legal / Compliance
 
 Provides guidance regarding legal and regulatory requirements.
 
 ---
 
-# Digital Forensics and Incident Response
+## Digital Forensics and Incident Response
 
 Digital forensics often provides the detailed evidence required by incident response.
 
@@ -1794,7 +1794,7 @@ Forensic Investigation
 
 ---
 
-# Digital Forensics and Threat Hunting
+## Digital Forensics and Threat Hunting
 
 Forensic findings can become hunting hypotheses.
 
@@ -1818,7 +1818,7 @@ Related Hosts
 
 ---
 
-# Digital Forensics and Detection Engineering
+## Digital Forensics and Detection Engineering
 
 Forensic investigations often identify missing detections.
 
@@ -1845,7 +1845,7 @@ Validation
 
 ---
 
-# Forensic Readiness
+## Forensic Readiness
 
 Organizations should prepare before an incident.
 
@@ -1873,7 +1873,7 @@ Trained Analysts
 
 ---
 
-# Enterprise Forensic Architecture
+## Enterprise Forensic Architecture
 
 ```text
                          Enterprise
@@ -1904,37 +1904,37 @@ Trained Analysts
 
 ---
 
-# Forensic Reporting Principles
+## Forensic Reporting Principles
 
 A professional report should be:
 
-### Accurate
+#### Accurate
 
 Do not make unsupported claims.
 
-### Reproducible
+#### Reproducible
 
 Document how conclusions were reached.
 
-### Objective
+#### Objective
 
 Separate facts from assumptions.
 
-### Clear
+#### Clear
 
 Make technical findings understandable.
 
-### Complete
+#### Complete
 
 Document relevant limitations.
 
-### Defensible
+#### Defensible
 
 Ensure conclusions are supported by evidence.
 
 ---
 
-# Example Finding Format
+## Example Finding Format
 
 ```text
 Finding ID:
@@ -1968,15 +1968,15 @@ Memory image was unavailable.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is digital forensics?
+### 1. What is digital forensics?
 
 Digital forensics is the systematic identification, preservation, acquisition, examination, analysis, interpretation, and reporting of digital evidence.
 
 ---
 
-## 2. What is the difference between volatile and non-volatile evidence?
+### 2. What is the difference between volatile and non-volatile evidence?
 
 Volatile evidence can disappear or change rapidly, such as RAM and active network connections.
 
@@ -1984,25 +1984,25 @@ Non-volatile evidence generally persists across shutdown, such as disk contents 
 
 ---
 
-## 3. What is chain of custody?
+### 3. What is chain of custody?
 
 A documented record of evidence possession, handling, transfer, storage, and integrity throughout an investigation.
 
 ---
 
-## 4. Why are hashes used in digital forensics?
+### 4. Why are hashes used in digital forensics?
 
 Hashes provide a way to verify that evidence or forensic copies have not changed between acquisition and analysis.
 
 ---
 
-## 5. What is a forensic image?
+### 5. What is a forensic image?
 
 A controlled representation of storage media created for forensic examination while preserving the original evidence.
 
 ---
 
-## 6. What is the difference between live and dead acquisition?
+### 6. What is the difference between live and dead acquisition?
 
 Live acquisition occurs while a system is running and can capture volatile information.
 
@@ -2010,7 +2010,7 @@ Dead acquisition generally examines storage after the system has been powered do
 
 ---
 
-## 7. Why is memory important?
+### 7. Why is memory important?
 
 Memory may contain information that does not exist on disk, including:
 
@@ -2022,43 +2022,43 @@ Memory may contain information that does not exist on disk, including:
 
 ---
 
-## 8. Why is time synchronization important?
+### 8. Why is time synchronization important?
 
 Investigators correlate events from multiple systems. Inconsistent clocks can produce incorrect timelines.
 
 ---
 
-## 9. What is forensic triage?
+### 9. What is forensic triage?
 
 Forensic triage is the process of rapidly identifying the most relevant evidence and systems for investigation.
 
 ---
 
-## 10. What is evidence correlation?
+### 10. What is evidence correlation?
 
 Combining multiple artifacts or data sources to establish relationships and increase confidence in a finding.
 
 ---
 
-## 11. What is negative evidence?
+### 11. What is negative evidence?
 
 The absence of an expected artifact or event. It must be interpreted carefully because the absence may result from logging or collection limitations.
 
 ---
 
-## 12. What is forensic readiness?
+### 12. What is forensic readiness?
 
 The organizational ability to efficiently collect, preserve, analyze, and report digital evidence when an incident occurs.
 
 ---
 
-## 13. Why should investigators separate facts from conclusions?
+### 13. Why should investigators separate facts from conclusions?
 
 Because forensic conclusions must be evidence-based. Mixing assumptions with facts increases confirmation bias and weakens investigative accuracy.
 
 ---
 
-## 14. What should a forensic report contain?
+### 14. What should a forensic report contain?
 
 At minimum:
 
@@ -2076,9 +2076,9 @@ Recommendations
 
 ---
 
-# Common Interview Scenario
+## Common Interview Scenario
 
-### Question
+#### Question
 
 > A workstation is suspected of compromise. What would you do first?
 
@@ -2103,9 +2103,9 @@ The exact operational sequence may change depending on safety, business impact, 
 
 ---
 
-# Common Interview Scenario
+## Common Interview Scenario
 
-### Question
+#### Question
 
 > You find a suspicious executable. Does that prove compromise?
 
@@ -2133,34 +2133,34 @@ Only after correlating sufficient evidence should an investigator assess whether
 
 ---
 
-# Maturity Model
+## Maturity Model
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 - Manual investigations
 - Limited documentation
 - Limited forensic tooling
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Standard acquisition procedures
 - Basic evidence handling
 - Defined investigators
 
-## Level 3 — Managed
+### Level 3 — Managed
 
 - Formal forensic processes
 - Centralized evidence
 - Enterprise telemetry
 - Documented chain of custody
 
-## Level 4 — Integrated
+### Level 4 — Integrated
 
 - IR + forensics + threat hunting
 - Automated collection
 - Centralized investigation workflows
 
-## Level 5 — Advanced
+### Level 5 — Advanced
 
 - Enterprise forensic readiness
 - Rapid acquisition
@@ -2170,7 +2170,7 @@ Only after correlating sufficient evidence should an investigator assess whether
 
 ---
 
-# Chapter Completion Checklist
+## Chapter Completion Checklist
 
 ```text
 [ ] Understand digital forensics
@@ -2197,7 +2197,7 @@ Only after correlating sufficient evidence should an investigator assess whether
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Digital forensics is fundamentally an **evidence discipline**.
 
@@ -2239,43 +2239,43 @@ They are the ones that produce **defensible conclusions from relevant, validated
 
 ---
 
-# References
+## References
 
-### NIST SP 800-86
+#### NIST SP 800-86
 
 Guide to Integrating Forensic Techniques into Incident Response:
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### NIST SP 800-61
+#### NIST SP 800-61
 
 Computer Security Incident Handling Guide:
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### SWGDE
+#### SWGDE
 
 Scientific Working Group on Digital Evidence:
 
 https://www.swgde.org/
 
-### CISA
+#### CISA
 
 https://www.cisa.gov/
 
-### The Sleuth Kit
+#### The Sleuth Kit
 
 https://www.sleuthkit.org/
 
-### Autopsy
+#### Autopsy
 
 https://www.autopsy.com/
 
-### Volatility
+#### Volatility
 
 https://volatilityfoundation.org/
 
-### Wireshark
+#### Wireshark
 
 https://www.wireshark.org/
 

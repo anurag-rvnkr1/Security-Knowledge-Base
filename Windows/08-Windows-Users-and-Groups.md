@@ -1,10 +1,10 @@
 # 08-Windows-Users-and-Groups.md
 
-# Part 1 — Windows User Accounts, Authentication Fundamentals, User Profiles, Security Identifiers (SIDs), and Account Types
+## Part 1 — Windows User Accounts, Authentication Fundamentals, User Profiles, Security Identifiers (SIDs), and Account Types
 
 ---
 
-# Introduction
+## Introduction
 
 Every interaction with Windows begins with a **user account**.
 
@@ -33,7 +33,7 @@ This chapter focuses on **local Windows users and groups**. Domain identities an
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this part, you will understand:
 
@@ -50,7 +50,7 @@ By the end of this part, you will understand:
 
 ---
 
-# Windows Identity Model
+## Windows Identity Model
 
 Windows identifies every user using a unique identity.
 
@@ -82,7 +82,7 @@ The username is what users recognize, while the **SID** is what Windows primaril
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 These concepts are often confused.
 
@@ -120,7 +120,7 @@ Authorization
 
 ---
 
-# What is a User Account?
+## What is a User Account?
 
 A Windows user account represents a digital identity that allows someone or something to interact with the operating system.
 
@@ -136,7 +136,7 @@ A user account contains information such as:
 
 ---
 
-# Types of Windows Accounts
+## Types of Windows Accounts
 
 Windows supports multiple account types.
 
@@ -155,7 +155,7 @@ Each serves a different purpose.
 
 ---
 
-# Local User Account
+## Local User Account
 
 A **local user account** exists only on one Windows computer.
 
@@ -182,7 +182,7 @@ Stored Locally
 
 ---
 
-# Microsoft Account
+## Microsoft Account
 
 A Microsoft account is an online identity used with Windows and Microsoft services.
 
@@ -201,7 +201,7 @@ Benefits:
 
 ---
 
-# Domain User Account
+## Domain User Account
 
 A domain user account is managed centrally by **Active Directory Domain Services (AD DS)**.
 
@@ -232,7 +232,7 @@ This topic is covered in detail in the Active Directory chapter.
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Service accounts allow Windows services and applications to run securely.
 
@@ -247,7 +247,7 @@ Unlike interactive users, service accounts are intended for applications rather 
 
 ---
 
-# Built-in Windows Accounts
+## Built-in Windows Accounts
 
 Windows creates several built-in accounts automatically.
 
@@ -264,7 +264,7 @@ Organizations should review and secure built-in accounts according to policy.
 
 ---
 
-# Virtual Accounts
+## Virtual Accounts
 
 Windows can create virtual service identities for certain services.
 
@@ -279,7 +279,7 @@ Virtual accounts help minimize the need for manually managed service credentials
 
 ---
 
-# User Account Lifecycle
+## User Account Lifecycle
 
 ```text
 Create
@@ -313,7 +313,7 @@ Administrators should manage accounts throughout their lifecycle.
 
 ---
 
-# User Profiles
+## User Profiles
 
 A **user profile** stores a user's personal environment.
 
@@ -329,7 +329,7 @@ Typical contents include:
 
 ---
 
-# User Profile Location
+## User Profile Location
 
 Default path:
 
@@ -345,7 +345,7 @@ C:\Users\Alice
 
 ---
 
-# User Profile Structure
+## User Profile Structure
 
 ```text
 C:\Users\Alice
@@ -364,7 +364,7 @@ Each profile is isolated from other users by NTFS permissions.
 
 ---
 
-# AppData Folder
+## AppData Folder
 
 The **AppData** directory stores application-specific data.
 
@@ -380,7 +380,7 @@ AppData
 
 ---
 
-# Local
+## Local
 
 Stores machine-specific data.
 
@@ -394,7 +394,7 @@ Typically not synchronized between devices.
 
 ---
 
-# Roaming
+## Roaming
 
 Stores user-specific settings that can roam with the user in supported enterprise environments.
 
@@ -408,7 +408,7 @@ Historically used with roaming profiles in Active Directory environments.
 
 ---
 
-# LocalLow
+## LocalLow
 
 Stores data for applications running with lower integrity levels.
 
@@ -419,7 +419,7 @@ Examples:
 
 ---
 
-# Default User Profile
+## Default User Profile
 
 Windows maintains a default profile used when creating new user profiles.
 
@@ -433,7 +433,7 @@ New user accounts inherit the initial profile configuration from this template.
 
 ---
 
-# Public Profile
+## Public Profile
 
 Windows also includes a shared profile.
 
@@ -447,7 +447,7 @@ Contents may be accessible to multiple local users depending on permissions.
 
 ---
 
-# Security Identifier (SID)
+## Security Identifier (SID)
 
 A **Security Identifier (SID)** uniquely identifies every security principal.
 
@@ -462,7 +462,7 @@ Windows uses SIDs internally rather than usernames.
 
 ---
 
-# SID Example
+## SID Example
 
 Example format:
 
@@ -476,7 +476,7 @@ Even if a username changes, its SID remains the same.
 
 ---
 
-# Why Windows Uses SIDs
+## Why Windows Uses SIDs
 
 Imagine this scenario:
 
@@ -504,7 +504,7 @@ Because permissions reference the SID, renaming an account does not invalidate e
 
 ---
 
-# Viewing SIDs
+## Viewing SIDs
 
 Using Command Prompt:
 
@@ -526,7 +526,7 @@ PowerShell can also display SIDs using object-based commands (covered in later c
 
 ---
 
-# Security Principals
+## Security Principals
 
 Windows refers to identities that can be authenticated as **security principals**.
 
@@ -542,7 +542,7 @@ Each security principal has a SID.
 
 ---
 
-# Logon Process Overview
+## Logon Process Overview
 
 Simplified workflow:
 
@@ -578,7 +578,7 @@ The authentication mechanisms themselves (such as NTLM and Kerberos) are covered
 
 ---
 
-# Password Policies
+## Password Policies
 
 Organizations typically enforce password requirements.
 
@@ -595,7 +595,7 @@ Modern guidance increasingly emphasizes long, unique passwords and multi-factor 
 
 ---
 
-# Account Lockout
+## Account Lockout
 
 Repeated failed authentication attempts may trigger account lockout.
 
@@ -621,7 +621,7 @@ Lockout policies help reduce brute-force attacks.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A new employee joins an organization.
 
@@ -659,7 +659,7 @@ Identity management is often integrated with HR onboarding processes.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Compromised user accounts are one of the most common attack vectors.
 
@@ -682,7 +682,7 @@ Security teams should monitor:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper user account management enables:
 
@@ -697,7 +697,7 @@ Poor identity management can lead to unauthorized access, data breaches, and ope
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Apply the principle of least privilege.
 - Use separate administrative accounts for administrative tasks.
@@ -710,9 +710,9 @@ Poor identity management can lead to unauthorized access, data breaches, and ope
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Current User
+### Lab 1 — View Current User
 
 Open **Command Prompt**.
 
@@ -731,7 +731,7 @@ Record:
 
 ---
 
-## Lab 2 — Explore User Profile
+### Lab 2 — Explore User Profile
 
 Navigate to:
 
@@ -751,7 +751,7 @@ Do **not** modify system profile folders.
 
 ---
 
-## Lab 3 — Review Account Information
+### Lab 3 — Review Account Information
 
 Run:
 
@@ -774,7 +774,7 @@ Observe:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows uses accounts to identify users and services.
 - Authentication verifies identity; authorization determines access.
@@ -785,7 +785,7 @@ Observe:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between authentication and authorization?
 2. What is a Security Identifier (SID)?
@@ -800,7 +800,7 @@ Observe:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Security Documentation
@@ -810,13 +810,13 @@ Observe:
 
 ---
 
-# 08-Windows-Users-and-Groups.md
+## 08-Windows-Users-and-Groups.md
 
-# Part 2 — Windows Groups, Built-in Security Groups, Privileges, User Rights, Account Management, and Local Security Policies
+## Part 2 — Windows Groups, Built-in Security Groups, Privileges, User Rights, Account Management, and Local Security Policies
 
 ---
 
-# Introduction
+## Introduction
 
 Managing hundreds or thousands of individual user permissions quickly becomes difficult and error-prone.
 
@@ -845,7 +845,7 @@ Groups simplify administration, improve security, and make enterprise management
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -862,7 +862,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is a Group?
+## What is a Group?
 
 A **group** is a security principal that contains multiple users.
 
@@ -888,7 +888,7 @@ Windows evaluates permissions based on the user's group memberships.
 
 ---
 
-# Advantages of Groups
+## Advantages of Groups
 
 Using groups provides:
 
@@ -901,7 +901,7 @@ Using groups provides:
 
 ---
 
-# Types of Windows Groups
+## Types of Windows Groups
 
 Windows supports multiple types of groups.
 
@@ -922,7 +922,7 @@ Active Directory group scopes are covered later.
 
 ---
 
-# Local Groups
+## Local Groups
 
 Local groups exist only on a single Windows computer.
 
@@ -949,7 +949,7 @@ Local Users
 
 ---
 
-# Security Groups
+## Security Groups
 
 Security groups are used to assign permissions.
 
@@ -975,7 +975,7 @@ Adding a new employee simply requires adding the user to the group.
 
 ---
 
-# Distribution Groups
+## Distribution Groups
 
 Distribution groups are used primarily for email systems.
 
@@ -989,7 +989,7 @@ Examples include departmental mailing lists.
 
 ---
 
-# Group Membership
+## Group Membership
 
 A user can belong to multiple groups.
 
@@ -1008,7 +1008,7 @@ Windows combines permissions from all applicable group memberships.
 
 ---
 
-# Built-in Windows Groups
+## Built-in Windows Groups
 
 Windows automatically creates several built-in groups.
 
@@ -1028,7 +1028,7 @@ Common examples include:
 
 ---
 
-# Administrators Group
+## Administrators Group
 
 Members of the **Administrators** group can perform tasks such as:
 
@@ -1044,7 +1044,7 @@ Because of these powerful capabilities, administrator membership should be tight
 
 ---
 
-# Users Group
+## Users Group
 
 Most users belong to the **Users** group.
 
@@ -1063,7 +1063,7 @@ Restrictions include:
 
 ---
 
-# Guests Group
+## Guests Group
 
 The **Guests** group provides highly restricted access.
 
@@ -1071,7 +1071,7 @@ Modern Windows installations typically disable the Guest account by default for 
 
 ---
 
-# Backup Operators
+## Backup Operators
 
 Members of this group can:
 
@@ -1083,7 +1083,7 @@ These permissions are intended for backup-related tasks and should be assigned c
 
 ---
 
-# Remote Desktop Users
+## Remote Desktop Users
 
 Members can log on using Remote Desktop (subject to other policies and configuration).
 
@@ -1107,7 +1107,7 @@ Desktop Session
 
 ---
 
-# Event Log Readers
+## Event Log Readers
 
 Allows users to read Windows Event Logs without granting full administrative rights.
 
@@ -1120,7 +1120,7 @@ Useful for:
 
 ---
 
-# Special Identity Groups
+## Special Identity Groups
 
 Windows also defines dynamic identities that cannot typically be managed manually.
 
@@ -1139,7 +1139,7 @@ These identities are evaluated dynamically by Windows.
 
 ---
 
-# Nested Groups
+## Nested Groups
 
 In Active Directory environments, groups can contain other groups.
 
@@ -1163,7 +1163,7 @@ This topic is explored further in the Active Directory chapter.
 
 ---
 
-# Group Membership Evaluation
+## Group Membership Evaluation
 
 When a user logs in:
 
@@ -1187,7 +1187,7 @@ The resulting access token contains the user's security identifiers (SIDs) and g
 
 ---
 
-# User Rights vs Permissions
+## User Rights vs Permissions
 
 These terms are different.
 
@@ -1199,7 +1199,7 @@ These terms are different.
 
 ---
 
-# Examples of User Rights
+## Examples of User Rights
 
 Examples include:
 
@@ -1216,7 +1216,7 @@ These are assigned through Local Security Policy or Group Policy.
 
 ---
 
-# Privileges
+## Privileges
 
 Privileges are special capabilities granted to users or groups.
 
@@ -1232,7 +1232,7 @@ Many privileges are exercised only when required and subject to Windows security
 
 ---
 
-# Local Security Policy
+## Local Security Policy
 
 Windows includes **Local Security Policy** for configuring security settings on standalone systems.
 
@@ -1252,7 +1252,7 @@ Categories include:
 
 ---
 
-# User Rights Assignment
+## User Rights Assignment
 
 Location:
 
@@ -1280,7 +1280,7 @@ These settings determine which users or groups can perform specific system actio
 
 ---
 
-# Account Policies
+## Account Policies
 
 Account Policies include:
 
@@ -1298,7 +1298,7 @@ Typical password settings:
 
 ---
 
-# Account Lockout Policy
+## Account Lockout Policy
 
 Example:
 
@@ -1322,7 +1322,7 @@ Proper lockout settings reduce brute-force attacks while minimizing disruption t
 
 ---
 
-# Local Users and Groups Console
+## Local Users and Groups Console
 
 Administrative console:
 
@@ -1341,7 +1341,7 @@ Available on supported Windows editions (not typically included in Windows Home 
 
 ---
 
-# NET USER
+## NET USER
 
 Display users.
 
@@ -1381,7 +1381,7 @@ net user Alice /delete
 
 ---
 
-# NET LOCALGROUP
+## NET LOCALGROUP
 
 Display local groups.
 
@@ -1409,7 +1409,7 @@ net localgroup Administrators Alice /delete
 
 ---
 
-# Computer Management
+## Computer Management
 
 Another management interface:
 
@@ -1433,7 +1433,7 @@ Computer Management centralizes several administrative tools into a single conso
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A new Finance employee joins the company.
 
@@ -1467,7 +1467,7 @@ Adding the user to the appropriate groups automatically grants the required acce
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Improper group management is a common cause of privilege escalation.
 
@@ -1491,7 +1491,7 @@ Privileged group membership changes are high-value events in enterprise monitori
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective group management enables organizations to:
 
@@ -1506,7 +1506,7 @@ Poorly managed groups increase operational risk and the likelihood of unauthoriz
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Assign permissions to groups rather than individual users whenever practical.
 - Follow the Principle of Least Privilege (PoLP).
@@ -1519,9 +1519,9 @@ Poorly managed groups increase operational risk and the likelihood of unauthoriz
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Local Groups
+### Lab 1 — View Local Groups
 
 Open **Command Prompt**.
 
@@ -1535,7 +1535,7 @@ Identify the built-in groups available on your system.
 
 ---
 
-## Lab 2 — View User Details
+### Lab 2 — View User Details
 
 Run:
 
@@ -1553,7 +1553,7 @@ Observe:
 
 ---
 
-## Lab 3 — Explore Local Security Policy
+### Lab 3 — Explore Local Security Policy
 
 If available on your edition of Windows:
 
@@ -1577,7 +1577,7 @@ Review the configured rights without making changes.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Groups simplify permission management.
 - Built-in groups provide predefined administrative roles.
@@ -1588,7 +1588,7 @@ Review the configured rights without making changes.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are groups preferred over assigning permissions directly to users?
 2. What is the difference between a local group and a domain group?
@@ -1603,7 +1603,7 @@ Review the configured rights without making changes.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Security Documentation
@@ -1613,13 +1613,13 @@ Review the configured rights without making changes.
 
 ---
 
-# 08-Windows-Users-and-Groups.md
+## 08-Windows-Users-and-Groups.md
 
-# Part 3 — User Account Control (UAC), Access Tokens, Credential Management, Authentication Process, Logon Types, and Enterprise Identity Security
+## Part 3 — User Account Control (UAC), Access Tokens, Credential Management, Authentication Process, Logon Types, and Enterprise Identity Security
 
 ---
 
-# Introduction
+## Introduction
 
 Creating users and assigning them to groups is only one part of Windows identity management.
 
@@ -1645,7 +1645,7 @@ Understanding these concepts is essential for:
 
 ---
 
-# Authentication Workflow
+## Authentication Workflow
 
 A simplified Windows authentication process:
 
@@ -1681,7 +1681,7 @@ If authentication fails, Windows denies access and records the attempt in the Se
 
 ---
 
-# Authentication vs Authorization Review
+## Authentication vs Authorization Review
 
 ```text
 Authentication
@@ -1703,7 +1703,7 @@ Both are required before a protected resource can be accessed.
 
 ---
 
-# Windows Logon Components
+## Windows Logon Components
 
 Several Windows components participate during sign-in.
 
@@ -1739,7 +1739,7 @@ Each component has a defined responsibility in the authentication process.
 
 ---
 
-# Local Security Authority (LSA)
+## Local Security Authority (LSA)
 
 The **Local Security Authority (LSA)** is responsible for enforcing the local security policy.
 
@@ -1755,7 +1755,7 @@ The LSA is a core Windows security component.
 
 ---
 
-# Security Accounts Manager (SAM)
+## Security Accounts Manager (SAM)
 
 The **Security Accounts Manager (SAM)** stores information about local user accounts.
 
@@ -1772,7 +1772,7 @@ Domain authentication is handled differently through Active Directory.
 
 ---
 
-# Authentication Methods
+## Authentication Methods
 
 Windows supports multiple authentication methods.
 
@@ -1791,7 +1791,7 @@ Organizations often combine these with Multi-Factor Authentication (MFA).
 
 ---
 
-# Windows Hello
+## Windows Hello
 
 Windows Hello provides modern authentication using:
 
@@ -1809,7 +1809,7 @@ The exact implementation varies depending on device capabilities and organizatio
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 Authentication factors fall into three broad categories:
 
@@ -1841,7 +1841,7 @@ MFA significantly improves account security by requiring more than one factor.
 
 ---
 
-# What is an Access Token?
+## What is an Access Token?
 
 An **Access Token** is created after successful authentication.
 
@@ -1851,7 +1851,7 @@ Windows uses the access token whenever the user attempts to access protected res
 
 ---
 
-# Access Token Workflow
+## Access Token Workflow
 
 ```text
 Authenticate User
@@ -1877,7 +1877,7 @@ The access token remains associated with processes started by that user unless a
 
 ---
 
-# Access Token Contents
+## Access Token Contents
 
 Typical contents include:
 
@@ -1892,7 +1892,7 @@ Windows compares this information with security descriptors when making authoriz
 
 ---
 
-# Access Check
+## Access Check
 
 Whenever a user accesses a resource:
 
@@ -1920,7 +1920,7 @@ This process is transparent to the user and occurs repeatedly during normal syst
 
 ---
 
-# Standard User Token
+## Standard User Token
 
 A standard user receives an access token containing:
 
@@ -1932,7 +1932,7 @@ The user cannot perform administrative tasks without elevation.
 
 ---
 
-# Administrator Token
+## Administrator Token
 
 Administrative users have administrative capabilities, but modern Windows protects these using **User Account Control (UAC)**.
 
@@ -1940,7 +1940,7 @@ This reduces unnecessary use of elevated privileges during everyday activities.
 
 ---
 
-# User Account Control (UAC)
+## User Account Control (UAC)
 
 **User Account Control (UAC)** helps prevent unauthorized system changes.
 
@@ -1948,7 +1948,7 @@ Instead of granting full administrative privileges to every application automati
 
 ---
 
-# UAC Workflow
+## UAC Workflow
 
 ```text
 Administrator Starts Program
@@ -1978,7 +1978,7 @@ Only the approved process is elevated—not every running application.
 
 ---
 
-# Why UAC Exists
+## Why UAC Exists
 
 Without UAC:
 
@@ -2016,7 +2016,7 @@ This reduces the impact of accidental or malicious actions.
 
 ---
 
-# UAC Prompt Types
+## UAC Prompt Types
 
 Common prompts include:
 
@@ -2030,7 +2030,7 @@ Behavior can vary according to local or domain security policy.
 
 ---
 
-# Integrity Levels
+## Integrity Levels
 
 Windows assigns integrity levels to processes.
 
@@ -2056,7 +2056,7 @@ Higher-integrity processes have greater authority than lower-integrity processes
 
 ---
 
-# Integrity Level Example
+## Integrity Level Example
 
 ```text
 Web Browser
@@ -2078,7 +2078,7 @@ Integrity levels help isolate applications and reduce unintended interactions.
 
 ---
 
-# Credential Manager
+## Credential Manager
 
 Windows stores certain credentials using **Credential Manager**.
 
@@ -2093,7 +2093,7 @@ Credential Manager simplifies repeated authentication to trusted resources.
 
 ---
 
-# Credential Types
+## Credential Types
 
 Windows supports several credential categories.
 
@@ -2109,7 +2109,7 @@ Stored credentials should be reviewed periodically.
 
 ---
 
-# Secure Credential Practices
+## Secure Credential Practices
 
 Organizations should:
 
@@ -2121,7 +2121,7 @@ Organizations should:
 
 ---
 
-# Logon Types
+## Logon Types
 
 Windows supports multiple logon scenarios.
 
@@ -2138,7 +2138,7 @@ Each logon type is recorded differently in Windows security logs.
 
 ---
 
-# Interactive Logon
+## Interactive Logon
 
 ```text
 Keyboard
@@ -2160,7 +2160,7 @@ This is the most common logon type for end users.
 
 ---
 
-# Network Logon
+## Network Logon
 
 Example:
 
@@ -2184,7 +2184,7 @@ The user may not receive a full desktop session.
 
 ---
 
-# Remote Interactive Logon
+## Remote Interactive Logon
 
 Example:
 
@@ -2204,7 +2204,7 @@ Used by administrators, help desk staff, and remote workers.
 
 ---
 
-# Service Logon
+## Service Logon
 
 ```text
 Windows Service
@@ -2226,7 +2226,7 @@ Applications often use service logons to operate in the background.
 
 ---
 
-# Batch Logon
+## Batch Logon
 
 Scheduled tasks frequently use batch logons.
 
@@ -2250,7 +2250,7 @@ Proper credential protection is essential for scheduled automation.
 
 ---
 
-# Account Disable vs Delete
+## Account Disable vs Delete
 
 | Disable | Delete |
 |----------|---------|
@@ -2262,7 +2262,7 @@ Many organizations disable accounts before permanently removing them.
 
 ---
 
-# Account Lifecycle Review
+## Account Lifecycle Review
 
 ```text
 Create
@@ -2296,7 +2296,7 @@ Regular reviews help identify unused or excessive privileges.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A new administrator receives two accounts.
 
@@ -2319,7 +2319,7 @@ This reduces exposure of privileged credentials during routine activities.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Identity attacks remain among the most common enterprise threats.
 
@@ -2345,7 +2345,7 @@ No single event should be interpreted in isolation; analysts should correlate id
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong identity management provides:
 
@@ -2360,7 +2360,7 @@ Weak authentication practices increase the likelihood of compromise and operatio
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Implement Multi-Factor Authentication (MFA).
 - Use separate accounts for administration.
@@ -2373,9 +2373,9 @@ Weak authentication practices increase the likelihood of compromise and operatio
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Identify Your Security Context
+### Lab 1 — Identify Your Security Context
 
 Open **Command Prompt**.
 
@@ -2397,7 +2397,7 @@ Observe:
 
 ---
 
-## Lab 2 — Review Credential Manager
+### Lab 2 — Review Credential Manager
 
 Open:
 
@@ -2415,7 +2415,7 @@ Do not modify production credentials unless authorized.
 
 ---
 
-## Lab 3 — Observe UAC
+### Lab 3 — Observe UAC
 
 Attempt to launch an application that requires administrative privileges.
 
@@ -2427,7 +2427,7 @@ Observe:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication verifies identity; authorization determines access.
 - LSA and SAM are fundamental Windows security components.
@@ -2438,7 +2438,7 @@ Observe:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an access token?
 2. What information does an access token contain?
@@ -2453,7 +2453,7 @@ Observe:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Security Documentation
@@ -2463,13 +2463,13 @@ Observe:
 
 ---
 
-# 08-Windows-Users-and-Groups.md
+## 08-Windows-Users-and-Groups.md
 
-# Part 4 — Enterprise User Administration, Identity Best Practices, Auditing, Security Monitoring, Chapter Review, and Interview Preparation
+## Part 4 — Enterprise User Administration, Identity Best Practices, Auditing, Security Monitoring, Chapter Review, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Managing Windows users and groups extends beyond simply creating accounts.
 
@@ -2488,7 +2488,7 @@ Effective identity management is one of the most important aspects of Windows se
 
 ---
 
-# Enterprise Identity Lifecycle
+## Enterprise Identity Lifecycle
 
 A typical enterprise identity lifecycle follows:
 
@@ -2536,7 +2536,7 @@ This lifecycle ensures accounts are managed consistently and securely from creat
 
 ---
 
-# User Provisioning
+## User Provisioning
 
 Provisioning is the process of creating and configuring new user accounts.
 
@@ -2554,7 +2554,7 @@ Automation is commonly used in enterprise environments to reduce errors and impr
 
 ---
 
-# User Deprovisioning
+## User Deprovisioning
 
 Deprovisioning is the secure removal of user access.
 
@@ -2592,7 +2592,7 @@ Organizations often disable accounts immediately and permanently delete them onl
 
 ---
 
-# Joiners, Movers, and Leavers (JML)
+## Joiners, Movers, and Leavers (JML)
 
 Many organizations follow the **Joiners, Movers, and Leavers (JML)** model.
 
@@ -2606,7 +2606,7 @@ Proper JML processes reduce security risks associated with outdated permissions.
 
 ---
 
-# Principle of Least Privilege (PoLP)
+## Principle of Least Privilege (PoLP)
 
 The **Principle of Least Privilege** states:
 
@@ -2634,7 +2634,7 @@ Applying PoLP reduces the impact of compromised accounts.
 
 ---
 
-# Separation of Duties
+## Separation of Duties
 
 Some responsibilities should be divided among different individuals.
 
@@ -2660,7 +2660,7 @@ Separating critical tasks reduces fraud and insider risk.
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 Role-Based Access Control assigns permissions based on job roles rather than individual users.
 
@@ -2686,7 +2686,7 @@ When a new HR employee joins, administrators assign the user to the HR role inst
 
 ---
 
-# Privileged Access Management (PAM)
+## Privileged Access Management (PAM)
 
 Privileged accounts should receive additional protection.
 
@@ -2707,7 +2707,7 @@ Typical PAM controls include:
 
 ---
 
-# Shared Accounts
+## Shared Accounts
 
 Shared accounts present several challenges.
 
@@ -2722,7 +2722,7 @@ Whenever possible, organizations should provide each administrator with an indiv
 
 ---
 
-# Service Account Management
+## Service Account Management
 
 Service accounts should be:
 
@@ -2736,7 +2736,7 @@ Where supported, organizations may use managed service account technologies to s
 
 ---
 
-# Password Management
+## Password Management
 
 Good password practices include:
 
@@ -2750,7 +2750,7 @@ Organizations should avoid insecure practices such as password sharing or storin
 
 ---
 
-# Account Auditing
+## Account Auditing
 
 Administrators should regularly review:
 
@@ -2766,7 +2766,7 @@ Periodic reviews help identify unnecessary or excessive access.
 
 ---
 
-# Authentication Auditing
+## Authentication Auditing
 
 Windows can audit authentication events.
 
@@ -2783,7 +2783,7 @@ These events support security monitoring and forensic investigations.
 
 ---
 
-# Example Audit Workflow
+## Example Audit Workflow
 
 ```text
 Authentication Event
@@ -2813,7 +2813,7 @@ Enterprise monitoring platforms aggregate authentication events from multiple sy
 
 ---
 
-# Detecting Suspicious Activity
+## Detecting Suspicious Activity
 
 Security teams may investigate events such as:
 
@@ -2829,7 +2829,7 @@ Individual events should always be analyzed within the broader security context.
 
 ---
 
-# Account Lockout Monitoring
+## Account Lockout Monitoring
 
 Example:
 
@@ -2858,7 +2858,7 @@ Account lockouts may indicate:
 
 ---
 
-# Insider Threat Considerations
+## Insider Threat Considerations
 
 Identity monitoring also helps detect insider threats.
 
@@ -2874,7 +2874,7 @@ Behavior should be evaluated alongside business context before conclusions are d
 
 ---
 
-# Compliance Requirements
+## Compliance Requirements
 
 Many regulations require strong identity management.
 
@@ -2891,7 +2891,7 @@ Identity management contributes significantly to regulatory compliance programs.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A finance employee transfers to the marketing department.
 
@@ -2925,7 +2925,7 @@ Access is adjusted based on the employee's new role rather than accumulating per
 
 ---
 
-# Security Monitoring Example
+## Security Monitoring Example
 
 SOC analysts observe:
 
@@ -2957,7 +2957,7 @@ Analysts correlate endpoint, authentication, and network data before determining
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong user administration provides:
 
@@ -2973,7 +2973,7 @@ Poor identity management increases the likelihood of security incidents and oper
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Implement Role-Based Access Control (RBAC).
 - Follow the Principle of Least Privilege (PoLP).
@@ -2988,9 +2988,9 @@ Poor identity management increases the likelihood of security incidents and oper
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review Local Users
+### Lab 1 — Review Local Users
 
 Open **Command Prompt**.
 
@@ -3008,7 +3008,7 @@ Identify:
 
 ---
 
-## Lab 2 — Review Group Membership
+### Lab 2 — Review Group Membership
 
 Run:
 
@@ -3026,7 +3026,7 @@ Identify the groups associated with your account.
 
 ---
 
-## Lab 3 — Audit Account Information
+### Lab 3 — Audit Account Information
 
 Run:
 
@@ -3045,7 +3045,7 @@ Document your observations.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3077,7 +3077,7 @@ These concepts provide the foundation for understanding Windows authorization, N
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Every Windows user and group is represented internally by a Security Identifier (SID).
 - Authentication verifies identity, while authorization determines resource access.
@@ -3089,7 +3089,7 @@ These concepts provide the foundation for understanding Windows authorization, N
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between a user account and a group?
 2. Why does Windows use Security Identifiers (SIDs)?
@@ -3104,7 +3104,7 @@ These concepts provide the foundation for understanding Windows authorization, N
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Security Documentation
@@ -3117,7 +3117,7 @@ These concepts provide the foundation for understanding Windows authorization, N
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 8 – Windows Users and Groups**.
 

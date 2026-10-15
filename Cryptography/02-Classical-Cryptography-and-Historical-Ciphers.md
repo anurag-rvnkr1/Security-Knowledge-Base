@@ -39,7 +39,7 @@ Modern Cryptography
 
 ---
 
-# 1. What is Classical Cryptography?
+## 1. What is Classical Cryptography?
 
 Classical cryptography refers to historical cryptographic techniques that were developed before modern computer-based cryptography.
 
@@ -68,7 +68,7 @@ One-Time Pad
 
 ---
 
-# 2. Why Study Classical Cryptography?
+## 2. Why Study Classical Cryptography?
 
 Classical ciphers are insecure by modern standards, but they teach important concepts.
 
@@ -98,7 +98,7 @@ These concepts eventually influenced modern cryptographic design.
 
 ---
 
-# 3. Basic Cipher Model
+## 3. Basic Cipher Model
 
 A classical encryption system can be represented as:
 
@@ -128,7 +128,7 @@ Plaintext
 
 ---
 
-# 4. Cryptographic Alphabet
+## 4. Cryptographic Alphabet
 
 Classical ciphers commonly operate on an alphabet.
 
@@ -160,7 +160,7 @@ C → 2
 
 ---
 
-# 5. Caesar Cipher
+## 5. Caesar Cipher
 
 The **Caesar cipher** is one of the simplest substitution ciphers.
 
@@ -189,7 +189,7 @@ KHOOR
 
 ---
 
-# 6. Caesar Cipher Formula
+## 6. Caesar Cipher Formula
 
 Represent letters as:
 
@@ -222,7 +222,7 @@ P = (C - K) mod 26
 
 ---
 
-# 7. Caesar Cipher Example
+## 7. Caesar Cipher Example
 
 Plaintext:
 
@@ -254,7 +254,7 @@ KHOOR
 
 ---
 
-# 8. Caesar Cipher Weakness
+## 8. Caesar Cipher Weakness
 
 The Caesar cipher has only:
 
@@ -278,7 +278,7 @@ Brute-Force Attack
 
 ---
 
-# 9. Caesar Cipher Brute Force
+## 9. Caesar Cipher Brute Force
 
 Given:
 
@@ -302,7 +302,7 @@ This demonstrates the importance of a sufficiently large keyspace.
 
 ---
 
-# 10. ROT13
+## 10. ROT13
 
 **ROT13** is a Caesar cipher using a shift of:
 
@@ -342,7 +342,7 @@ because:
 
 ---
 
-# 11. Atbash Cipher
+## 11. Atbash Cipher
 
 The **Atbash cipher** replaces each letter with its reverse-alphabet counterpart.
 
@@ -370,7 +370,7 @@ Atbash does not use a secret key in the modern cryptographic sense and has an ex
 
 ---
 
-# 12. Monoalphabetic Substitution Cipher
+## 12. Monoalphabetic Substitution Cipher
 
 A substitution cipher replaces each plaintext character with another character.
 
@@ -396,7 +396,7 @@ Unlike Caesar, the mapping can be arbitrary.
 
 ---
 
-# 13. Keyspace of Substitution Ciphers
+## 13. Keyspace of Substitution Ciphers
 
 For an alphabet of 26 unique characters, there can theoretically be:
 
@@ -420,7 +420,7 @@ However, a large theoretical keyspace does not automatically make a cipher secur
 
 ---
 
-# 14. Frequency Analysis
+## 14. Frequency Analysis
 
 Natural languages have statistical patterns.
 
@@ -447,7 +447,7 @@ Frequency Analysis
 
 ---
 
-# 15. Frequency Analysis Example
+## 15. Frequency Analysis Example
 
 Suppose ciphertext contains:
 
@@ -469,7 +469,7 @@ This demonstrates how language structure can weaken classical ciphers.
 
 ---
 
-# 16. Cryptanalysis of Substitution Ciphers
+## 16. Cryptanalysis of Substitution Ciphers
 
 A cryptanalyst may analyze:
 
@@ -503,7 +503,7 @@ ING
 
 ---
 
-# 17. Bigrams and Trigrams
+## 17. Bigrams and Trigrams
 
 A **bigram** is a sequence of two characters.
 
@@ -530,7 +530,7 @@ Frequency patterns can help cryptanalysts recover substitution mappings.
 
 ---
 
-# 18. Pattern Analysis
+## 18. Pattern Analysis
 
 Suppose a ciphertext word has the pattern:
 
@@ -558,7 +558,7 @@ Pattern analysis is another tool used in classical cryptanalysis.
 
 ---
 
-# 19. Affine Cipher
+## 19. Affine Cipher
 
 The Affine cipher is a mathematical substitution cipher.
 
@@ -581,7 +581,7 @@ The value `a` must be relatively prime to `26`.
 
 ---
 
-# 20. Affine Cipher Example
+## 20. Affine Cipher Example
 
 Suppose:
 
@@ -613,7 +613,7 @@ The entire alphabet can be transformed using the same formula.
 
 ---
 
-# 21. Why Must `a` Be Coprime to 26?
+## 21. Why Must `a` Be Coprime to 26?
 
 The multiplication step must be reversible modulo 26.
 
@@ -644,7 +644,7 @@ If `a` is not relatively prime to 26, the transformation may not be uniquely rev
 
 ---
 
-# 22. Vigenère Cipher
+## 22. Vigenère Cipher
 
 The **Vigenère cipher** improves upon simple monoalphabetic substitution by using multiple Caesar shifts.
 
@@ -670,7 +670,7 @@ Each key character determines a different shift.
 
 ---
 
-# 23. Vigenère Encryption
+## 23. Vigenère Encryption
 
 Using:
 
@@ -699,7 +699,7 @@ Multiple shifts based on key
 
 ---
 
-# 24. Vigenère Example
+## 24. Vigenère Example
 
 Plaintext:
 
@@ -750,7 +750,7 @@ LXFOPV
 
 ---
 
-# 25. Vigenère Cipher Weakness
+## 25. Vigenère Cipher Weakness
 
 The Vigenère cipher is stronger than a simple substitution cipher but has weaknesses when the key repeats.
 
@@ -772,7 +772,7 @@ and then perform frequency analysis separately on each position.
 
 ---
 
-# 26. Kasiski Examination
+## 26. Kasiski Examination
 
 The **Kasiski examination** is a classical cryptanalytic technique used to estimate the key length of repeating-key polyalphabetic ciphers such as Vigenère.
 
@@ -792,7 +792,7 @@ Once the key length is estimated, the ciphertext can be split into groups for fr
 
 ---
 
-# 27. Index of Coincidence
+## 27. Index of Coincidence
 
 The **Index of Coincidence (IC)** is a statistical technique used in classical cryptanalysis.
 
@@ -812,7 +812,7 @@ It can also help estimate the period of some polyalphabetic ciphers.
 
 ---
 
-# 28. Transposition Ciphers
+## 28. Transposition Ciphers
 
 Unlike substitution ciphers, transposition ciphers do not replace characters.
 
@@ -836,7 +836,7 @@ Only their positions change.
 
 ---
 
-# 29. Substitution vs Transposition
+## 29. Substitution vs Transposition
 
 | Property | Substitution | Transposition |
 |---|---|---|
@@ -848,7 +848,7 @@ Only their positions change.
 
 ---
 
-# 30. Rail Fence Cipher
+## 30. Rail Fence Cipher
 
 The Rail Fence cipher writes text in a zigzag pattern across multiple rows.
 
@@ -864,7 +864,7 @@ The characters are then read row by row to produce the ciphertext.
 
 ---
 
-# 31. Rail Fence Example
+## 31. Rail Fence Example
 
 Plaintext:
 
@@ -886,7 +886,7 @@ The ciphertext is produced by reading each rail sequentially.
 
 ---
 
-# 32. Columnar Transposition
+## 32. Columnar Transposition
 
 A columnar transposition writes plaintext into rows and reads columns according to a key.
 
@@ -909,7 +909,7 @@ Positions change.
 
 ---
 
-# 33. Double Transposition
+## 33. Double Transposition
 
 A stronger classical technique applies transposition twice.
 
@@ -929,7 +929,7 @@ Although stronger than a single simple transposition, it is still not considered
 
 ---
 
-# 34. Playfair Cipher
+## 34. Playfair Cipher
 
 The Playfair cipher encrypts pairs of letters rather than individual letters.
 
@@ -955,19 +955,19 @@ Typically, `I` and `J` share a position depending on the variant.
 
 ---
 
-# 35. Playfair Rules
+## 35. Playfair Rules
 
 For each pair of letters:
 
-### Same Row
+#### Same Row
 
 Move each letter to the right.
 
-### Same Column
+#### Same Column
 
 Move each letter downward.
 
-### Rectangle
+#### Rectangle
 
 Replace each letter with the letter in the same row but the other letter's column.
 
@@ -975,7 +975,7 @@ This makes Playfair a digraph substitution cipher.
 
 ---
 
-# 36. One-Time Pad
+## 36. One-Time Pad
 
 The **One-Time Pad (OTP)** is one of the most important concepts in theoretical cryptography.
 
@@ -992,7 +992,7 @@ Key Kept Secret
 
 ---
 
-# 37. One-Time Pad Model
+## 37. One-Time Pad Model
 
 ```text
 Plaintext
@@ -1026,7 +1026,7 @@ the original plaintext can be recovered.
 
 ---
 
-# 38. Why One-Time Pad is Secure
+## 38. Why One-Time Pad is Secure
 
 If the key is:
 
@@ -1056,7 +1056,7 @@ Perfect Secrecy
 
 ---
 
-# 39. Why One-Time Pads Are Difficult
+## 39. Why One-Time Pads Are Difficult
 
 The major challenge is key management.
 
@@ -1088,7 +1088,7 @@ This makes OTP impractical for most modern general-purpose systems.
 
 ---
 
-# 40. XOR and Cryptography
+## 40. XOR and Cryptography
 
 XOR is an important operation in cryptography.
 
@@ -1111,7 +1111,7 @@ This property is used by the One-Time Pad and many modern cryptographic construc
 
 ---
 
-# 41. Reusing a One-Time Pad Key
+## 41. Reusing a One-Time Pad Key
 
 Reusing an OTP key destroys its security.
 
@@ -1142,7 +1142,7 @@ This can reveal relationships between the plaintexts.
 
 ---
 
-# 42. Two-Time Pad Attack
+## 42. Two-Time Pad Attack
 
 Reusing a one-time pad key is therefore known as a:
 
@@ -1167,7 +1167,7 @@ This demonstrates why nonce/key uniqueness is extremely important in cryptograph
 
 ---
 
-# 43. Substitution and Transposition Together
+## 43. Substitution and Transposition Together
 
 Classical cryptographic systems can combine:
 
@@ -1189,7 +1189,7 @@ Diffusion
 
 ---
 
-# 44. Confusion
+## 44. Confusion
 
 **Confusion** makes the relationship between:
 
@@ -1209,7 +1209,7 @@ Substitution contributes to confusion.
 
 ---
 
-# 45. Diffusion
+## 45. Diffusion
 
 **Diffusion** spreads the influence of each plaintext element across many ciphertext elements.
 
@@ -1223,7 +1223,7 @@ Avalanche Effect
 
 ---
 
-# 46. Avalanche Effect
+## 46. Avalanche Effect
 
 A secure cryptographic transformation should exhibit strong avalanche behavior.
 
@@ -1247,7 +1247,7 @@ A small input change should cause many output bits to change.
 
 ---
 
-# 47. Classical Cryptanalysis
+## 47. Classical Cryptanalysis
 
 Cryptanalysis attempts to recover:
 
@@ -1276,7 +1276,7 @@ Statistical Analysis
 
 ---
 
-# 48. Brute-Force Attack
+## 48. Brute-Force Attack
 
 A brute-force attack tests possible keys.
 
@@ -1300,7 +1300,7 @@ This works well when the keyspace is small.
 
 ---
 
-# 49. Known-Plaintext Attack
+## 49. Known-Plaintext Attack
 
 In a known-plaintext attack, the attacker knows some plaintext and its corresponding ciphertext.
 
@@ -1320,7 +1320,7 @@ Cipher Structure
 
 ---
 
-# 50. Chosen-Plaintext Attack
+## 50. Chosen-Plaintext Attack
 
 The attacker can choose plaintexts and observe their corresponding ciphertexts.
 
@@ -1341,7 +1341,7 @@ Modern cryptographic algorithms are designed with such powerful attack models in
 
 ---
 
-# 51. Ciphertext-Only Attack
+## 51. Ciphertext-Only Attack
 
 The attacker only has access to ciphertext.
 
@@ -1365,7 +1365,7 @@ Classical ciphers often perform poorly against ciphertext-only analysis.
 
 ---
 
-# 52. Attack Model Comparison
+## 52. Attack Model Comparison
 
 | Attack | Attacker Knows |
 |---|---|
@@ -1377,7 +1377,7 @@ Classical ciphers often perform poorly against ciphertext-only analysis.
 
 ---
 
-# 53. Cryptographic Keyspace
+## 53. Cryptographic Keyspace
 
 Keyspace is critical.
 
@@ -1400,7 +1400,7 @@ This is one reason modern cryptography relies on much larger security parameters
 
 ---
 
-# 54. Security Through Keyspace
+## 54. Security Through Keyspace
 
 A large keyspace helps resist brute force, but key size alone does not guarantee security.
 
@@ -1424,7 +1424,7 @@ Security ≠ Key Size Alone
 
 ---
 
-# 55. Historical Cipher: Enigma
+## 55. Historical Cipher: Enigma
 
 The **Enigma machine** was used by Germany during World War II.
 
@@ -1443,7 +1443,7 @@ Its historical cryptanalysis played an important role in the development of mode
 
 ---
 
-# 56. Enigma's Important Lesson
+## 56. Enigma's Important Lesson
 
 The Enigma story demonstrates that security depends on more than the theoretical complexity of a system.
 
@@ -1473,7 +1473,7 @@ Algorithm Security
 
 ---
 
-# 57. Codebreaking and Cryptanalysis
+## 57. Codebreaking and Cryptanalysis
 
 Historical cryptanalysis demonstrated the importance of:
 
@@ -1489,7 +1489,7 @@ These ideas eventually influenced modern computer science and information securi
 
 ---
 
-# 58. Classical Cipher Weaknesses
+## 58. Classical Cipher Weaknesses
 
 Many classical ciphers suffer from:
 
@@ -1507,7 +1507,7 @@ They were not designed for modern adversarial environments.
 
 ---
 
-# 59. Why Modern Cryptography is Different
+## 59. Why Modern Cryptography is Different
 
 Modern cryptography operates on:
 
@@ -1525,7 +1525,7 @@ Modern algorithms are designed against much stronger attackers.
 
 ---
 
-# 60. Classical vs Modern Cryptography
+## 60. Classical vs Modern Cryptography
 
 | Feature | Classical | Modern |
 |---|---|---|
@@ -1540,7 +1540,7 @@ Modern algorithms are designed against much stronger attackers.
 
 ---
 
-# 61. From Classical Ciphers to Modern Block Ciphers
+## 61. From Classical Ciphers to Modern Block Ciphers
 
 The evolution can be simplified as:
 
@@ -1560,9 +1560,9 @@ Modern block ciphers such as AES use sophisticated transformations to achieve st
 
 ---
 
-# 62. Important Classical Concepts
+## 62. Important Classical Concepts
 
-### Substitution
+#### Substitution
 
 ```text
 A → D
@@ -1570,7 +1570,7 @@ A → D
 
 Characters are replaced.
 
-### Transposition
+#### Transposition
 
 ```text
 ABCDEF
@@ -1580,14 +1580,14 @@ BDAFCE
 
 Positions are rearranged.
 
-### Polyalphabetic Substitution
+#### Polyalphabetic Substitution
 
 ```text
 Different shifts
 for different positions
 ```
 
-### One-Time Pad
+#### One-Time Pad
 
 ```text
 Random key
@@ -1599,7 +1599,7 @@ Message-length key
 
 ---
 
-# 63. Classical Cryptography Timeline
+## 63. Classical Cryptography Timeline
 
 A simplified historical progression:
 
@@ -1631,7 +1631,7 @@ Post-Quantum Cryptography
 
 ---
 
-# 64. Practical Python – Caesar Cipher
+## 64. Practical Python – Caesar Cipher
 
 A simple educational implementation:
 
@@ -1662,7 +1662,7 @@ KHOOR
 
 ---
 
-# 65. Practical Python – Caesar Decryption
+## 65. Practical Python – Caesar Decryption
 
 ```python
 def caesar_decrypt(text, shift):
@@ -1680,7 +1680,7 @@ HELLO
 
 ---
 
-# 66. Practical Python – Caesar Brute Force
+## 66. Practical Python – Caesar Brute Force
 
 ```python
 def brute_force_caesar(ciphertext):
@@ -1698,7 +1698,7 @@ This demonstrates why a small keyspace is dangerous.
 
 ---
 
-# 67. Practical Python – XOR Demonstration
+## 67. Practical Python – XOR Demonstration
 
 ```python
 message = b"HELLO"
@@ -1729,7 +1729,7 @@ This demonstrates the basic XOR property used by the One-Time Pad.
 
 ---
 
-# 68. Practical Exercise – Frequency Analysis
+## 68. Practical Exercise – Frequency Analysis
 
 Take a sufficiently long ciphertext produced using a monoalphabetic substitution cipher.
 
@@ -1748,7 +1748,7 @@ Try to infer the substitution mapping.
 
 ---
 
-# 69. Practical Exercise – Vigenère
+## 69. Practical Exercise – Vigenère
 
 Encrypt:
 
@@ -1768,7 +1768,7 @@ Observe how repeating the key produces repeated shift patterns.
 
 ---
 
-# 70. Practical Exercise – One-Time Pad
+## 70. Practical Exercise – One-Time Pad
 
 Take:
 
@@ -1793,7 +1793,7 @@ to recover the original plaintext.
 
 ---
 
-# 71. Practical Exercise – Key Reuse
+## 71. Practical Exercise – Key Reuse
 
 Consider:
 
@@ -1818,7 +1818,7 @@ This demonstrates the danger of reusing a one-time pad key.
 
 ---
 
-# 72. Classical Cryptography Attack Workflow
+## 72. Classical Cryptography Attack Workflow
 
 A simplified workflow:
 
@@ -1848,87 +1848,87 @@ Brute Force     Statistical Analysis
 
 ---
 
-# 73. Lessons for Modern Security
+## 73. Lessons for Modern Security
 
 Classical cryptography teaches several important lessons.
 
-### Lesson 1
+#### Lesson 1
 
 Small keyspaces are vulnerable to brute force.
 
-### Lesson 2
+#### Lesson 2
 
 Patterns can leak information.
 
-### Lesson 3
+#### Lesson 3
 
 Statistical properties can weaken cryptographic systems.
 
-### Lesson 4
+#### Lesson 4
 
 Key reuse can be catastrophic.
 
-### Lesson 5
+#### Lesson 5
 
 Encryption alone does not automatically provide authentication.
 
-### Lesson 6
+#### Lesson 6
 
 The entire system matters—not just the cipher.
 
 ---
 
-# 74. Common Interview Questions
+## 74. Common Interview Questions
 
-## What is a Caesar cipher?
+### What is a Caesar cipher?
 
 A substitution cipher that shifts every alphabetic character by a fixed number of positions.
 
 ---
 
-## Why is Caesar cipher insecure?
+### Why is Caesar cipher insecure?
 
 It has an extremely small keyspace and can easily be brute-forced.
 
 ---
 
-## What is frequency analysis?
+### What is frequency analysis?
 
 A cryptanalysis technique that uses statistical patterns in language to infer plaintext or substitution mappings.
 
 ---
 
-## What is the difference between substitution and transposition?
+### What is the difference between substitution and transposition?
 
 Substitution replaces characters, while transposition rearranges their positions.
 
 ---
 
-## What is the Vigenère cipher?
+### What is the Vigenère cipher?
 
 A polyalphabetic substitution cipher that uses a repeating keyword to apply different Caesar shifts.
 
 ---
 
-## What is the weakness of a repeating-key Vigenère cipher?
+### What is the weakness of a repeating-key Vigenère cipher?
 
 Repeated key patterns can create statistical structure that allows attackers to estimate the key length and recover the key.
 
 ---
 
-## What is a One-Time Pad?
+### What is a One-Time Pad?
 
 A theoretically perfectly secret encryption scheme when a truly random key equal in length to the message is used only once and kept secret.
 
 ---
 
-## Why is OTP rarely used in general-purpose systems?
+### Why is OTP rarely used in general-purpose systems?
 
 Secure generation, distribution, storage, and destruction of message-length random keys are operationally difficult.
 
 ---
 
-## What happens if an OTP key is reused?
+### What happens if an OTP key is reused?
 
 The attacker can XOR ciphertexts together and eliminate the reused key:
 
@@ -1938,19 +1938,19 @@ C1 XOR C2 = P1 XOR P2
 
 ---
 
-## What is cryptanalysis?
+### What is cryptanalysis?
 
 The study of analyzing cryptographic systems to recover information or identify weaknesses without legitimate access to the protected secret.
 
 ---
 
-## What is the difference between brute force and cryptanalysis?
+### What is the difference between brute force and cryptanalysis?
 
 Brute force systematically tries possible keys, while cryptanalysis uses structural, mathematical, statistical, or implementation weaknesses to reduce the effort required to recover information.
 
 ---
 
-# 75. Security Checklist
+## 75. Security Checklist
 
 When evaluating a classical or legacy cryptographic system:
 
@@ -1977,7 +1977,7 @@ For modern systems:
 
 ---
 
-# 76. Classical Algorithms You Should Recognize
+## 76. Classical Algorithms You Should Recognize
 
 ```text
 Caesar
@@ -1996,7 +1996,7 @@ You do not need to use these for production security, but understanding them hel
 
 ---
 
-# 77. Algorithms You Should NOT Use for Modern Security
+## 77. Algorithms You Should NOT Use for Modern Security
 
 For new security designs, avoid obsolete algorithms such as:
 
@@ -2014,7 +2014,7 @@ Use modern, standardized alternatives instead.
 
 ---
 
-# 78. From Classical to Modern Security
+## 78. From Classical to Modern Security
 
 The historical progression teaches a fundamental principle:
 
@@ -2040,7 +2040,7 @@ Modern cryptography is the result of decades of mathematical research, cryptanal
 
 ---
 
-# 79. Key Takeaways
+## 79. Key Takeaways
 
 ```text
 1. Classical ciphers are historically important but insecure today.
@@ -2072,7 +2072,7 @@ Modern cryptography is the result of decades of mathematical research, cryptanal
 
 ---
 
-# 80. Chapter Summary
+## 80. Chapter Summary
 
 This chapter introduced the historical foundations of cryptography.
 
@@ -2117,9 +2117,9 @@ These lessons directly influenced the design of modern cryptographic algorithms.
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 03 – Symmetric-Key Cryptography
+### Chapter 03 – Symmetric-Key Cryptography
 
 The next chapter moves from historical ciphers to modern encryption systems.
 

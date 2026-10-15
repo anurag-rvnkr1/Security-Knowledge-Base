@@ -37,8 +37,7 @@ It progresses from fundamental concepts to platform-specific hunting, query engi
 
 ---
 
-# Overview
-
+## Overview
 Threat hunting goes beyond waiting for alerts.
 
 Traditional security monitoring can be represented as:
@@ -109,8 +108,7 @@ A mature security program combines both approaches:
 
 ---
 
-# What You Will Learn
-
+## What You Will Learn
 This section covers the complete threat-hunting lifecycle:
 
 - Threat hunting fundamentals
@@ -137,8 +135,7 @@ This section covers the complete threat-hunting lifecycle:
 
 ---
 
-# Threat Hunting Lifecycle
-
+## Threat Hunting Lifecycle
 The overall methodology used throughout this section is:
 
 ```text
@@ -194,8 +191,7 @@ The overall methodology used throughout this section is:
 
 ---
 
-# Chapter Roadmap
-
+## Chapter Roadmap
 The 15 chapters are intentionally ordered from foundational concepts to advanced enterprise practice.
 
 ```text
@@ -218,8 +214,7 @@ Real-World Investigation
 
 ---
 
-# Chapter Index
-
+## Chapter Index
 ## 01 — Threat Hunting Fundamentals
 
 **File:** [`01-Threat-Hunting-Fundamentals.md`](./01-Threat-Hunting-Fundamentals.md)
@@ -252,7 +247,7 @@ Understand how professional threat hunters formulate hypotheses and investigate 
 
 ## 02 — MITRE ATT&CK for Threat Hunters
 
-**File:** [`02-MITRE-ATTACK-for-Threat-Hunters.md`](./02-MITRE-ATTACK-for-Threat-Hunters.md)
+**File:** [`02-MITRE-ATT-and-CK-for-Threat-Hunters.md`](./02-MITRE-ATT-and-CK-for-Threat-Hunters.md)
 
 Explains how MITRE ATT&CK can be used to structure and prioritize threat-hunting activities.
 
@@ -749,8 +744,7 @@ Understand how a professional threat-hunting investigation progresses from a wea
 
 ---
 
-# Core Skills
-
+## Core Skills
 After completing this section, you should be comfortable with:
 
 ### Threat Analysis
@@ -823,8 +817,7 @@ After completing this section, you should be comfortable with:
 
 ---
 
-# Telemetry Covered
-
+## Telemetry Covered
 This section works across multiple security telemetry sources.
 
 ```text
@@ -851,8 +844,7 @@ This section works across multiple security telemetry sources.
 
 ---
 
-# MITRE ATT&CK Integration
-
+## MITRE ATT&CK Integration
 MITRE ATT&CK is used throughout this section as a common language for adversary behavior.
 
 The hunting workflow can be represented as:
@@ -894,8 +886,7 @@ ATT&CK mappings should be treated as analytical guidance rather than proof that 
 
 ---
 
-# Threat Hunting Methodology
-
+## Threat Hunting Methodology
 The recommended methodology throughout this section is:
 
 ## 1. Understand the Threat
@@ -979,8 +970,7 @@ Convert findings into:
 
 ---
 
-# Query Engineering
-
+## Query Engineering
 Hunting at enterprise scale requires efficient query engineering.
 
 The fundamental progression is:
@@ -1022,8 +1012,7 @@ Important principles include:
 
 ---
 
-# Detection Engineering
-
+## Detection Engineering
 Threat hunting and detection engineering form a continuous feedback loop.
 
 ```text
@@ -1052,8 +1041,7 @@ A successful hunt should often produce a detection improvement.
 
 ---
 
-# Practical Labs
-
+## Practical Labs
 The section includes practical exercises around:
 
 ### Endpoint
@@ -1095,8 +1083,7 @@ The section includes practical exercises around:
 
 ---
 
-# Hunting Playbooks
-
+## Hunting Playbooks
 The playbook collection covers scenarios such as:
 
 ```text
@@ -1133,8 +1120,7 @@ Application
 
 ---
 
-# Case Study
-
+## Case Study
 The final chapter demonstrates a complete investigation involving:
 
 ```text
@@ -1179,8 +1165,7 @@ This demonstrates the relationship between proactive hunting and the broader sec
 
 ---
 
-# Professional Hunt Workflow
-
+## Professional Hunt Workflow
 A professional threat hunter should be able to move through the following workflow:
 
 ```text
@@ -1235,8 +1220,7 @@ A professional threat hunter should be able to move through the following workfl
 
 ---
 
-# Threat Hunting Maturity
-
+## Threat Hunting Maturity
 ## Level 1 — Reactive
 
 Hunting occurs primarily after an alert or incident.
@@ -1263,8 +1247,7 @@ Threat hunting, detection engineering, purple teaming, telemetry monitoring, and
 
 ---
 
-# Recommended Learning Path
-
+## Recommended Learning Path
 For someone learning threat hunting from the beginning:
 
 ### Phase 1 — Foundations
@@ -1272,7 +1255,7 @@ For someone learning threat hunting from the beginning:
 Start with:
 
 1. `01-Threat-Hunting-Fundamentals.md`
-2. `02-MITRE-ATTACK-for-Threat-Hunters.md`
+2. `02-MITRE-ATT-and-CK-for-Threat-Hunters.md`
 3. `03-Threat-Intelligence-and-Hunt-Hypotheses.md`
 
 ### Phase 2 — Core Telemetry
@@ -1309,8 +1292,7 @@ Finish with:
 
 ---
 
-# Tools and Technologies
-
+## Tools and Technologies
 This section is designed to be applicable across multiple security platforms.
 
 ## SIEM
@@ -1369,15 +1351,14 @@ Examples:
 
 ---
 
-# Repository Structure
-
+## Repository Structure
 ```text
 Threat-Hunting/
 │
 ├── README.md
 │
 ├── 01-Threat-Hunting-Fundamentals.md
-├── 02-MITRE-ATTACK-for-Threat-Hunters.md
+├── 02-MITRE-ATT-and-CK-for-Threat-Hunters.md
 ├── 03-Threat-Intelligence-and-Hunt-Hypotheses.md
 ├── 04-Windows-Threat-Hunting.md
 ├── 05-Linux-Threat-Hunting.md
@@ -1395,8 +1376,7 @@ Threat-Hunting/
 
 ---
 
-# How to Use This Section
-
+## How to Use This Section
 This section can be used in several ways.
 
 ## As a Learning Path
@@ -1438,8 +1418,7 @@ The complete section demonstrates understanding of:
 
 ---
 
-# Learning Outcomes
-
+## Learning Outcomes
 After completing this section, you should be able to:
 
 - Explain threat hunting and its role in security operations.
@@ -1466,8 +1445,7 @@ After completing this section, you should be able to:
 
 ---
 
-# Security Principles
-
+## Security Principles
 All hunting and laboratory activities should follow these principles:
 
 ### Authorization
@@ -1496,8 +1474,7 @@ Adversary simulations and attack techniques should only be performed in authoriz
 
 ---
 
-# Professional Hunting Philosophy
-
+## Professional Hunting Philosophy
 A strong threat hunter does not ask only:
 
 > **"Is this malicious?"**
@@ -1536,8 +1513,7 @@ This mindset is fundamental to effective threat hunting.
 
 ---
 
-# The Threat Hunting Feedback Loop
-
+## The Threat Hunting Feedback Loop
 The ultimate objective is continuous improvement:
 
 ```text
@@ -1572,8 +1548,7 @@ The ultimate objective is continuous improvement:
 
 ---
 
-# Section Completion Checklist
-
+## Section Completion Checklist
 - [x] Threat Hunting Fundamentals
 - [x] MITRE ATT&CK for Threat Hunters
 - [x] Threat Intelligence and Hunt Hypotheses
@@ -1594,8 +1569,7 @@ The ultimate objective is continuous improvement:
 
 ---
 
-# References
-
+## References
 ## Threat Hunting & ATT&CK
 
 - [MITRE ATT&CK](https://attack.mitre.org/)
@@ -1635,8 +1609,7 @@ The ultimate objective is continuous improvement:
 
 ---
 
-# About This Section
-
+## About This Section
 This Threat Hunting section is part of **Cybersecurity-Notes**, an open cybersecurity knowledge base covering security engineering, SOC operations, penetration testing, detection engineering, cloud security, digital forensics, incident response, and related security disciplines.
 
 The objective is to maintain a practical, technically rigorous, and continuously improving reference for cybersecurity learners, security engineers, SOC analysts, threat hunters, detection engineers, and security professionals.

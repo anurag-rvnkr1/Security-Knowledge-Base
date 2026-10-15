@@ -1,10 +1,10 @@
 # 23-Active-Directory.md
 
-# Part 1 — Active Directory Fundamentals, Architecture, Components, and Enterprise Identity Management
+## Part 1 — Active Directory Fundamentals, Architecture, Components, and Enterprise Identity Management
 
 ---
 
-# Introduction
+## Introduction
 
 Modern enterprise environments may contain hundreds, thousands, or even hundreds of thousands of users, computers, printers, servers, and applications.
 
@@ -18,7 +18,7 @@ Today, Active Directory remains one of the most important technologies in enterp
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -38,7 +38,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is Active Directory?
+## What is Active Directory?
 
 **Active Directory Domain Services (AD DS)** is Microsoft's centralized directory service used to:
 
@@ -55,7 +55,7 @@ Instead of remembering information for every system individually, Active Directo
 
 ---
 
-# Why Active Directory Exists
+## Why Active Directory Exists
 
 Without Active Directory:
 
@@ -110,7 +110,7 @@ Centralized administration significantly reduces operational overhead.
 
 ---
 
-# Enterprise Benefits
+## Enterprise Benefits
 
 Active Directory provides:
 
@@ -125,7 +125,7 @@ Active Directory provides:
 
 ---
 
-# Identity Management
+## Identity Management
 
 Identity management answers questions such as:
 
@@ -139,7 +139,7 @@ Active Directory stores this information within the directory database.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 These terms are frequently confused.
 
@@ -174,7 +174,7 @@ Access Granted
 
 ---
 
-# Active Directory Database
+## Active Directory Database
 
 Directory information is stored in the **NTDS.dit** database.
 
@@ -192,7 +192,7 @@ Every Domain Controller maintains a copy of this database.
 
 ---
 
-# Active Directory Architecture
+## Active Directory Architecture
 
 AD consists of logical and physical components.
 
@@ -232,7 +232,7 @@ Replication
 
 ---
 
-# Active Directory Objects
+## Active Directory Objects
 
 Everything stored inside AD is called an **object**.
 
@@ -249,7 +249,7 @@ Common object types include:
 
 ---
 
-# Active Directory Attributes
+## Active Directory Attributes
 
 Objects contain attributes.
 
@@ -269,7 +269,7 @@ Attributes describe the properties of an object.
 
 ---
 
-# Distinguished Name (DN)
+## Distinguished Name (DN)
 
 Each object has a unique Distinguished Name.
 
@@ -289,7 +289,7 @@ DN identifies the object's exact location within the directory hierarchy.
 
 ---
 
-# Organizational Units (OUs)
+## Organizational Units (OUs)
 
 Organizational Units organize directory objects.
 
@@ -324,7 +324,7 @@ Benefits:
 
 ---
 
-# Domains
+## Domains
 
 A domain is the core administrative boundary in Active Directory.
 
@@ -346,7 +346,7 @@ All domain objects share the same directory database and security policies.
 
 ---
 
-# Trees
+## Trees
 
 A tree is a collection of related domains sharing a common namespace.
 
@@ -372,7 +372,7 @@ Domains automatically trust each other within the same tree.
 
 ---
 
-# Forests
+## Forests
 
 A forest is the highest-level logical structure.
 
@@ -405,7 +405,7 @@ A forest is the security boundary of Active Directory.
 
 ---
 
-# Logical Structure Overview
+## Logical Structure Overview
 
 ```text
 Forest
@@ -431,7 +431,7 @@ Logical structures organize directory information independently of physical netw
 
 ---
 
-# Physical Structure
+## Physical Structure
 
 The physical structure consists of:
 
@@ -444,7 +444,7 @@ These components optimize authentication and replication traffic.
 
 ---
 
-# Domain Controllers (DCs)
+## Domain Controllers (DCs)
 
 A Domain Controller is a Windows Server running Active Directory Domain Services.
 
@@ -461,7 +461,7 @@ Every authentication request typically communicates with a Domain Controller.
 
 ---
 
-# Domain Controller Architecture
+## Domain Controller Architecture
 
 ```text
 User Login
@@ -485,7 +485,7 @@ Access Granted
 
 ---
 
-# Read-Only Domain Controller (RODC)
+## Read-Only Domain Controller (RODC)
 
 RODCs contain a read-only copy of the directory database.
 
@@ -500,7 +500,7 @@ RODCs are commonly deployed in locations with limited physical security.
 
 ---
 
-# Global Catalog (GC)
+## Global Catalog (GC)
 
 The Global Catalog stores a partial copy of every object in the forest.
 
@@ -513,7 +513,7 @@ Benefits:
 
 ---
 
-# Active Directory Sites
+## Active Directory Sites
 
 Sites represent the physical network topology.
 
@@ -549,7 +549,7 @@ Sites reduce authentication latency and optimize replication.
 
 ---
 
-# Site Replication
+## Site Replication
 
 ```text
 Site A
@@ -575,7 +575,7 @@ Replication keeps Domain Controllers synchronized.
 
 ---
 
-# Multi-Master Replication
+## Multi-Master Replication
 
 Unlike traditional databases with a single write server, Active Directory uses **multi-master replication**.
 
@@ -597,7 +597,7 @@ This improves availability and fault tolerance.
 
 ---
 
-# Lightweight Directory Access Protocol (LDAP)
+## Lightweight Directory Access Protocol (LDAP)
 
 LDAP is the protocol used to query and manage directory information.
 
@@ -619,7 +619,7 @@ LDAPS should be preferred for secure communication.
 
 ---
 
-# DNS and Active Directory
+## DNS and Active Directory
 
 Active Directory depends heavily on DNS.
 
@@ -634,7 +634,7 @@ Without functioning DNS, Active Directory authentication is severely impacted.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational company has:
 
@@ -666,7 +666,7 @@ Employees authenticate using their nearest Domain Controller while maintaining a
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Active Directory is frequently targeted because it controls:
 
@@ -682,7 +682,7 @@ Protecting AD is therefore a top priority for defenders.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Active Directory enables:
 
@@ -696,7 +696,7 @@ Active Directory enables:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Design a logical OU structure.
 - Limit Domain Administrator accounts.
@@ -711,9 +711,9 @@ Active Directory enables:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Explore Active Directory Objects
+### Lab 1 — Explore Active Directory Objects
 
 Using **Active Directory Users and Computers (ADUC)**:
 
@@ -728,7 +728,7 @@ Document the hierarchy.
 
 ---
 
-## Lab 2 — Draw an AD Forest
+### Lab 2 — Draw an AD Forest
 
 Create a diagram containing:
 
@@ -741,7 +741,7 @@ Explain the purpose of each component.
 
 ---
 
-## Lab 3 — Compare Logical vs Physical Structure
+### Lab 3 — Compare Logical vs Physical Structure
 
 Create a comparison table explaining:
 
@@ -756,7 +756,7 @@ Describe whether each is a logical or physical component.
 
 ---
 
-## Lab 4 — DNS Dependency
+### Lab 4 — DNS Dependency
 
 Explain how DNS assists:
 
@@ -767,7 +767,7 @@ Explain how DNS assists:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory centralizes identity and access management.
 - Domains are the primary administrative boundary.
@@ -778,7 +778,7 @@ Explain how DNS assists:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Active Directory?
 2. What is the purpose of a Domain Controller?
@@ -793,7 +793,7 @@ Explain how DNS assists:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Active Directory Documentation
@@ -806,13 +806,13 @@ Explain how DNS assists:
 - *Mastering Active Directory* (Dishan Francis)
 
 ---
-# 23-Active-Directory.md
+## 23-Active-Directory.md
 
-# Part 2 — Active Directory Authentication, Kerberos, NTLM, DNS Integration, FSMO Roles, Trusts, and Replication
+## Part 2 — Active Directory Authentication, Kerberos, NTLM, DNS Integration, FSMO Roles, Trusts, and Replication
 
 ---
 
-# Introduction
+## Introduction
 
 The primary purpose of Active Directory is to provide secure authentication and authorization for enterprise resources.
 
@@ -829,7 +829,7 @@ Understanding this authentication process is essential for Windows administrator
 
 ---
 
-# Active Directory Authentication Flow
+## Active Directory Authentication Flow
 
 A simplified authentication process:
 
@@ -861,7 +861,7 @@ Authentication should occur securely and efficiently with minimal user interacti
 
 ---
 
-# Authentication Components
+## Authentication Components
 
 | Component | Purpose |
 |------------|----------|
@@ -874,7 +874,7 @@ Authentication should occur securely and efficiently with minimal user interacti
 
 ---
 
-# Kerberos Authentication
+## Kerberos Authentication
 
 Kerberos is the default authentication protocol in Active Directory environments.
 
@@ -890,7 +890,7 @@ Kerberos authenticates users without repeatedly sending passwords across the net
 
 ---
 
-# Kerberos Terminology
+## Kerberos Terminology
 
 | Component | Description |
 |------------|-------------|
@@ -904,7 +904,7 @@ The Key Distribution Center (KDC) runs on every Domain Controller.
 
 ---
 
-# Kerberos Authentication Process
+## Kerberos Authentication Process
 
 ```text
 User Login
@@ -934,7 +934,7 @@ The user's password is used to verify identity during the initial authentication
 
 ---
 
-# Step 1 — Initial Authentication (AS Exchange)
+## Step 1 — Initial Authentication (AS Exchange)
 
 ```text
 User
@@ -960,7 +960,7 @@ The Authentication Service (AS) validates the user's credentials and issues a Ti
 
 ---
 
-# Step 2 — Ticket Request (TGS Exchange)
+## Step 2 — Ticket Request (TGS Exchange)
 
 ```text
 User
@@ -986,7 +986,7 @@ The Ticket Granting Service (TGS) issues a ticket for the requested service.
 
 ---
 
-# Step 3 — Resource Access
+## Step 3 — Resource Access
 
 ```text
 User
@@ -1012,7 +1012,7 @@ The server validates the ticket before granting access.
 
 ---
 
-# Kerberos Ticket Lifetime
+## Kerberos Ticket Lifetime
 
 Typical enterprise environments configure ticket lifetimes to balance usability and security.
 
@@ -1026,7 +1026,7 @@ Administrators can configure these values through Group Policy.
 
 ---
 
-# Single Sign-On (SSO)
+## Single Sign-On (SSO)
 
 Kerberos enables users to authenticate once and access multiple services without repeatedly entering credentials.
 
@@ -1060,7 +1060,7 @@ This improves both user experience and security.
 
 ---
 
-# Mutual Authentication
+## Mutual Authentication
 
 Kerberos verifies:
 
@@ -1071,7 +1071,7 @@ This helps reduce the risk of impersonation attacks.
 
 ---
 
-# NTLM Authentication
+## NTLM Authentication
 
 NTLM is the legacy Windows authentication protocol.
 
@@ -1085,7 +1085,7 @@ NTLM may still be used when:
 
 ---
 
-# Kerberos vs NTLM
+## Kerberos vs NTLM
 
 | Kerberos | NTLM |
 |-----------|------|
@@ -1100,7 +1100,7 @@ Organizations should reduce NTLM usage where feasible.
 
 ---
 
-# DNS Integration
+## DNS Integration
 
 Active Directory relies heavily on DNS.
 
@@ -1115,7 +1115,7 @@ Without properly functioning DNS, users may experience authentication failures.
 
 ---
 
-# Service (SRV) Records
+## Service (SRV) Records
 
 DNS Service (SRV) records advertise Active Directory services.
 
@@ -1129,7 +1129,7 @@ Clients query these records to locate the appropriate Domain Controller.
 
 ---
 
-# Domain Join Process
+## Domain Join Process
 
 ```text
 Computer
@@ -1159,7 +1159,7 @@ A successful domain join depends on network connectivity, DNS, and appropriate p
 
 ---
 
-# Active Directory Replication
+## Active Directory Replication
 
 Every Domain Controller maintains a copy of the Active Directory database.
 
@@ -1185,7 +1185,7 @@ Replication ensures consistency throughout the environment.
 
 ---
 
-# Replication Benefits
+## Replication Benefits
 
 Replication provides:
 
@@ -1197,7 +1197,7 @@ Replication provides:
 
 ---
 
-# Replication Types
+## Replication Types
 
 | Type | Description |
 |------|-------------|
@@ -1208,7 +1208,7 @@ Intra-site replication is generally optimized for speed, while inter-site replic
 
 ---
 
-# Replication Workflow
+## Replication Workflow
 
 ```text
 Administrator
@@ -1236,7 +1236,7 @@ Consistent Directory
 
 ---
 
-# Flexible Single Master Operations (FSMO)
+## Flexible Single Master Operations (FSMO)
 
 Although Active Directory uses multi-master replication, some operations must be performed by only one Domain Controller.
 
@@ -1246,9 +1246,9 @@ There are five FSMO roles.
 
 ---
 
-# Forest-Wide FSMO Roles
+## Forest-Wide FSMO Roles
 
-## Schema Master
+### Schema Master
 
 Responsibilities:
 
@@ -1260,7 +1260,7 @@ Only one Schema Master exists per forest.
 
 ---
 
-## Domain Naming Master
+### Domain Naming Master
 
 Responsibilities:
 
@@ -1272,9 +1272,9 @@ Only one Domain Naming Master exists per forest.
 
 ---
 
-# Domain-Wide FSMO Roles
+## Domain-Wide FSMO Roles
 
-## RID Master
+### RID Master
 
 Responsibilities:
 
@@ -1285,7 +1285,7 @@ Every security principal requires a unique SID.
 
 ---
 
-## PDC Emulator
+### PDC Emulator
 
 Responsibilities include:
 
@@ -1299,7 +1299,7 @@ The PDC Emulator is one of the busiest FSMO roles.
 
 ---
 
-## Infrastructure Master
+### Infrastructure Master
 
 Responsibilities:
 
@@ -1310,7 +1310,7 @@ This role is particularly important in multi-domain environments.
 
 ---
 
-# FSMO Overview
+## FSMO Overview
 
 | FSMO Role | Scope |
 |------------|-------|
@@ -1322,7 +1322,7 @@ This role is particularly important in multi-domain environments.
 
 ---
 
-# Active Directory Trusts
+## Active Directory Trusts
 
 A trust allows users in one domain or forest to access resources in another.
 
@@ -1340,7 +1340,7 @@ Trusts simplify resource sharing across administrative boundaries.
 
 ---
 
-# Types of Trusts
+## Types of Trusts
 
 | Trust Type | Purpose |
 |-------------|----------|
@@ -1355,7 +1355,7 @@ Trusts should be configured only when required by business needs.
 
 ---
 
-# Trust Direction
+## Trust Direction
 
 Trusts may be:
 
@@ -1377,7 +1377,7 @@ Direction determines which domain accepts authentication requests.
 
 ---
 
-# Active Directory Sites and Authentication
+## Active Directory Sites and Authentication
 
 Clients normally authenticate against the nearest Domain Controller.
 
@@ -1401,7 +1401,7 @@ This minimizes network latency and reduces WAN traffic.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Kerberos requires accurate time synchronization.
 
@@ -1429,7 +1429,7 @@ Consistent time is also important for event correlation and forensic investigati
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global organization has offices in:
 
@@ -1450,7 +1450,7 @@ This design improves performance and resilience.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Authentication infrastructure is frequently targeted by attackers.
 
@@ -1467,7 +1467,7 @@ Understanding authentication workflows helps defenders detect abnormal behavior 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper Active Directory authentication design provides:
 
@@ -1481,7 +1481,7 @@ Proper Active Directory authentication design provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Prefer Kerberos over NTLM.
 - Maintain healthy DNS infrastructure.
@@ -1496,9 +1496,9 @@ Proper Active Directory authentication design provides:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Observe Kerberos Tickets
+### Lab 1 — Observe Kerberos Tickets
 
 Run:
 
@@ -1514,7 +1514,7 @@ Identify:
 
 ---
 
-## Lab 2 — Verify FSMO Roles
+### Lab 2 — Verify FSMO Roles
 
 Run:
 
@@ -1526,7 +1526,7 @@ Document the server holding each FSMO role.
 
 ---
 
-## Lab 3 — Review Replication Topology
+### Lab 3 — Review Replication Topology
 
 Using **Active Directory Sites and Services**:
 
@@ -1536,7 +1536,7 @@ Using **Active Directory Sites and Services**:
 
 ---
 
-## Lab 4 — Compare Kerberos and NTLM
+### Lab 4 — Compare Kerberos and NTLM
 
 Create a comparison table covering:
 
@@ -1548,7 +1548,7 @@ Create a comparison table covering:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Kerberos is the preferred authentication protocol for Active Directory.
 - DNS is essential for locating Domain Controllers and directory services.
@@ -1559,7 +1559,7 @@ Create a comparison table covering:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Explain the Kerberos authentication process.
 2. What is a Ticket Granting Ticket (TGT)?
@@ -1574,7 +1574,7 @@ Create a comparison table covering:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Active Directory Documentation
@@ -1589,13 +1589,13 @@ Create a comparison table covering:
 
 ---
 
-# 23-Active-Directory.md
+## 23-Active-Directory.md
 
-# Part 3 — Active Directory Administration, Users, Groups, Organizational Units, Group Scope, Delegation, and Administrative Best Practices
+## Part 3 — Active Directory Administration, Users, Groups, Organizational Units, Group Scope, Delegation, and Administrative Best Practices
 
 ---
 
-# Introduction
+## Introduction
 
 After deploying Active Directory, administrators spend most of their time managing:
 
@@ -1611,7 +1611,7 @@ Proper administration ensures that users have the correct access while maintaini
 
 ---
 
-# Active Directory Administrative Tools
+## Active Directory Administrative Tools
 
 Common administration tools include:
 
@@ -1628,7 +1628,7 @@ Each tool serves a specific administrative purpose.
 
 ---
 
-# Active Directory Users
+## Active Directory Users
 
 A user object represents an identity that can authenticate and access enterprise resources.
 
@@ -1646,7 +1646,7 @@ User accounts typically include:
 
 ---
 
-# User Account Lifecycle
+## User Account Lifecycle
 
 ```text
 Request
@@ -1684,7 +1684,7 @@ The lifecycle should align with organizational HR and security processes.
 
 ---
 
-# Creating User Accounts
+## Creating User Accounts
 
 Information commonly required:
 
@@ -1699,7 +1699,7 @@ Accounts should follow standardized naming conventions.
 
 ---
 
-# User Naming Standards
+## User Naming Standards
 
 Example:
 
@@ -1714,7 +1714,7 @@ Consistent naming simplifies administration and auditing.
 
 ---
 
-# User Account States
+## User Account States
 
 | State | Description |
 |---------|-------------|
@@ -1727,7 +1727,7 @@ Inactive accounts should be reviewed regularly.
 
 ---
 
-# Password Management
+## Password Management
 
 Administrators should:
 
@@ -1741,7 +1741,7 @@ Password reset procedures should follow organizational security policies.
 
 ---
 
-# Computer Objects
+## Computer Objects
 
 Each domain-joined computer has a computer object.
 
@@ -1757,7 +1757,7 @@ Computer accounts authenticate to the domain similarly to user accounts.
 
 ---
 
-# Organizational Units (OUs)
+## Organizational Units (OUs)
 
 Organizational Units organize objects logically.
 
@@ -1786,11 +1786,11 @@ Benefits include:
 
 ---
 
-# Designing OU Structures
+## Designing OU Structures
 
 Common approaches:
 
-### Department-Based
+#### Department-Based
 
 ```text
 Company
@@ -1808,7 +1808,7 @@ HR
 IT
 ```
 
-### Location-Based
+#### Location-Based
 
 ```text
 Company
@@ -1826,7 +1826,7 @@ USA
 Germany
 ```
 
-### Function-Based
+#### Function-Based
 
 ```text
 Company
@@ -1848,7 +1848,7 @@ The design should reflect administrative requirements rather than the organizati
 
 ---
 
-# Groups
+## Groups
 
 Groups simplify permission management.
 
@@ -1870,7 +1870,7 @@ This approach is easier to manage and audit.
 
 ---
 
-# Types of Groups
+## Types of Groups
 
 | Group Type | Purpose |
 |-------------|----------|
@@ -1881,7 +1881,7 @@ Only Security Groups can be used for permission assignments.
 
 ---
 
-# Group Scope
+## Group Scope
 
 There are three primary security group scopes.
 
@@ -1895,7 +1895,7 @@ Choosing the appropriate scope improves scalability and replication efficiency.
 
 ---
 
-# Group Scope Overview
+## Group Scope Overview
 
 ```text
 Global Groups
@@ -1917,7 +1917,7 @@ A commonly recommended approach is to assign users to Global Groups, nest those 
 
 ---
 
-# AGDLP Model
+## AGDLP Model
 
 A widely used permission model is **AGDLP**:
 
@@ -1946,7 +1946,7 @@ Benefits:
 
 ---
 
-# AGUDLP Model
+## AGUDLP Model
 
 In multi-domain environments, the **AGUDLP** model is often used:
 
@@ -1974,7 +1974,7 @@ Universal Groups facilitate access across domains within the same forest.
 
 ---
 
-# Nested Groups
+## Nested Groups
 
 Groups may contain other groups.
 
@@ -1996,7 +1996,7 @@ Nested groups simplify permission management but should be documented to avoid u
 
 ---
 
-# Delegation of Administration
+## Delegation of Administration
 
 Delegation allows administrative responsibilities to be assigned without granting full Domain Administrator privileges.
 
@@ -2018,7 +2018,7 @@ This follows the principle of least privilege.
 
 ---
 
-# Common Delegated Tasks
+## Common Delegated Tasks
 
 Examples:
 
@@ -2034,7 +2034,7 @@ Delegation reduces operational risk.
 
 ---
 
-# Administrative Roles
+## Administrative Roles
 
 Examples:
 
@@ -2050,7 +2050,7 @@ Highly privileged groups should contain only approved personnel.
 
 ---
 
-# Built-in Administrative Groups
+## Built-in Administrative Groups
 
 Common built-in groups include:
 
@@ -2067,7 +2067,7 @@ Membership should be reviewed regularly.
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Applications often require dedicated accounts.
 
@@ -2083,7 +2083,7 @@ Service accounts should not be shared between unrelated applications.
 
 ---
 
-# Bulk Administration
+## Bulk Administration
 
 PowerShell simplifies repetitive tasks.
 
@@ -2099,7 +2099,7 @@ Automation reduces manual effort and improves consistency.
 
 ---
 
-# User Provisioning Workflow
+## User Provisioning Workflow
 
 ```text
 HR Request
@@ -2129,7 +2129,7 @@ Standardized provisioning improves security and operational efficiency.
 
 ---
 
-# User Deprovisioning Workflow
+## User Deprovisioning Workflow
 
 ```text
 Termination Notice
@@ -2159,7 +2159,7 @@ Prompt deprovisioning reduces the risk of unauthorized access.
 
 ---
 
-# Auditing Administrative Changes
+## Auditing Administrative Changes
 
 Monitor events such as:
 
@@ -2174,7 +2174,7 @@ Auditing supports investigations and compliance.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company with 8,000 employees organizes its directory as follows:
 
@@ -2208,7 +2208,7 @@ Domain Administrator access is reserved for a small number of senior administrat
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Improper administration may result in:
 
@@ -2223,7 +2223,7 @@ Applying least privilege and proper delegation significantly reduces these risks
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective administration provides:
 
@@ -2237,7 +2237,7 @@ Effective administration provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use standardized naming conventions.
 - Design OUs around administrative needs.
@@ -2252,9 +2252,9 @@ Effective administration provides:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Create an OU Structure
+### Lab 1 — Create an OU Structure
 
 Design an OU hierarchy for an organization with:
 
@@ -2269,7 +2269,7 @@ Explain your design decisions.
 
 ---
 
-## Lab 2 — Design a Group Strategy
+### Lab 2 — Design a Group Strategy
 
 Using the AGDLP model, create:
 
@@ -2281,7 +2281,7 @@ Map users to resources through groups.
 
 ---
 
-## Lab 3 — Delegation Exercise
+### Lab 3 — Delegation Exercise
 
 Design a delegation model allowing Help Desk staff to:
 
@@ -2293,7 +2293,7 @@ Explain why Domain Administrator privileges are unnecessary.
 
 ---
 
-## Lab 4 — User Lifecycle
+### Lab 4 — User Lifecycle
 
 Document the complete lifecycle for:
 
@@ -2305,7 +2305,7 @@ Include security controls at each stage.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory administration centers on users, groups, computers, and OUs.
 - Organizational Units simplify management and Group Policy application.
@@ -2316,7 +2316,7 @@ Include security controls at each stage.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an Organizational Unit (OU)?
 2. What is the difference between Security Groups and Distribution Groups?
@@ -2331,7 +2331,7 @@ Include security controls at each stage.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Active Directory Documentation
@@ -2345,13 +2345,13 @@ Include security controls at each stage.
 
 ---
 
-# 23-Active-Directory.md
+## 23-Active-Directory.md
 
-# Part 4 — Active Directory Security, Attacks, Hardening, Monitoring, Troubleshooting, and Enterprise Best Practices
+## Part 4 — Active Directory Security, Attacks, Hardening, Monitoring, Troubleshooting, and Enterprise Best Practices
 
 ---
 
-# Introduction
+## Introduction
 
 Active Directory is one of the most valuable assets in a Windows enterprise.
 
@@ -2372,7 +2372,7 @@ This section focuses on securing Active Directory through hardening, monitoring,
 
 ---
 
-# Active Directory Threat Landscape
+## Active Directory Threat Landscape
 
 Common attack objectives include:
 
@@ -2387,7 +2387,7 @@ Attackers frequently attempt to compromise AD because it provides centralized co
 
 ---
 
-# Common Attack Path
+## Common Attack Path
 
 ```text
 Phishing
@@ -2421,7 +2421,7 @@ Breaking the attack chain at any stage reduces overall risk.
 
 ---
 
-# Privileged Accounts
+## Privileged Accounts
 
 Privileged accounts require enhanced protection.
 
@@ -2443,7 +2443,7 @@ Recommendations:
 
 ---
 
-# Tiered Administration
+## Tiered Administration
 
 Separate administrative activities into security tiers.
 
@@ -2489,7 +2489,7 @@ Tiered administration reduces opportunities for credential theft and privilege e
 
 ---
 
-# Securing Domain Controllers
+## Securing Domain Controllers
 
 Domain Controllers should receive the highest level of protection.
 
@@ -2508,7 +2508,7 @@ Only authorized administrators should manage Domain Controllers.
 
 ---
 
-# Protecting Administrative Credentials
+## Protecting Administrative Credentials
 
 Administrative credentials should never be used for:
 
@@ -2539,7 +2539,7 @@ Separate accounts reduce exposure.
 
 ---
 
-# Active Directory Hardening
+## Active Directory Hardening
 
 Key hardening measures include:
 
@@ -2556,7 +2556,7 @@ Hardening should be continuously reviewed and updated.
 
 ---
 
-# Secure Administrative Workstations (SAWs)
+## Secure Administrative Workstations (SAWs)
 
 Administrative tasks should be performed from dedicated systems.
 
@@ -2571,7 +2571,7 @@ Administrative workstations should not be used for general productivity tasks.
 
 ---
 
-# Group Policy Security
+## Group Policy Security
 
 Use Group Policy to enforce:
 
@@ -2587,7 +2587,7 @@ Group Policy enables consistent enforcement across the domain.
 
 ---
 
-# Monitoring Active Directory
+## Monitoring Active Directory
 
 Monitor for:
 
@@ -2604,7 +2604,7 @@ Continuous monitoring improves detection of suspicious activity.
 
 ---
 
-# Important Security Events
+## Important Security Events
 
 Examples of Windows Security Event IDs:
 
@@ -2628,7 +2628,7 @@ These events should be forwarded to a centralized logging or SIEM platform for a
 
 ---
 
-# Auditing Active Directory
+## Auditing Active Directory
 
 Audit regularly:
 
@@ -2645,7 +2645,7 @@ Routine audits improve security posture and compliance.
 
 ---
 
-# Active Directory Backup
+## Active Directory Backup
 
 Backups should include:
 
@@ -2659,7 +2659,7 @@ Backups should be encrypted, tested, and stored securely.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Recovery planning should address:
 
@@ -2673,7 +2673,7 @@ Organizations should regularly test recovery procedures.
 
 ---
 
-# Active Directory Recycle Bin
+## Active Directory Recycle Bin
 
 The Active Directory Recycle Bin allows recovery of deleted directory objects without requiring an authoritative restore.
 
@@ -2687,7 +2687,7 @@ The feature should be enabled early in the lifecycle of a new forest after valid
 
 ---
 
-# Replication Health Monitoring
+## Replication Health Monitoring
 
 Monitor for:
 
@@ -2706,7 +2706,7 @@ Healthy replication is essential for consistent authentication.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Incorrect system time can cause:
 
@@ -2719,7 +2719,7 @@ Time should be synchronized using a reliable enterprise time source.
 
 ---
 
-# Common Active Directory Attacks
+## Common Active Directory Attacks
 
 Administrators should understand common attack techniques, including:
 
@@ -2737,7 +2737,7 @@ Understanding these attacks helps defenders detect suspicious activity and imple
 
 ---
 
-# Defensive Measures
+## Defensive Measures
 
 Recommended protections include:
 
@@ -2756,7 +2756,7 @@ Defense should rely on multiple complementary controls.
 
 ---
 
-# Active Directory Health Checks
+## Active Directory Health Checks
 
 Perform regular health checks for:
 
@@ -2773,7 +2773,7 @@ Routine validation helps identify problems before they affect users.
 
 ---
 
-# Troubleshooting Active Directory
+## Troubleshooting Active Directory
 
 General troubleshooting workflow:
 
@@ -2813,7 +2813,7 @@ Structured troubleshooting reduces downtime.
 
 ---
 
-# Common Issues
+## Common Issues
 
 | Problem | Possible Cause | Resolution |
 |----------|----------------|------------|
@@ -2828,7 +2828,7 @@ Always determine the root cause before applying corrective actions.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational enterprise operates:
 
@@ -2852,7 +2852,7 @@ The organization significantly reduces the likelihood of unauthorized privilege 
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Active Directory often represents the "crown jewels" of a Windows enterprise.
 
@@ -2869,7 +2869,7 @@ A layered security strategy provides the strongest protection.
 
 ---
 
-# Business Impact
+## Business Impact
 
 A secure Active Directory environment provides:
 
@@ -2885,7 +2885,7 @@ Compromise of Active Directory can disrupt nearly every business function, makin
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Minimize privileged account membership.
 - Use dedicated administrative accounts.
@@ -2900,9 +2900,9 @@ Compromise of Active Directory can disrupt nearly every business function, makin
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review Privileged Groups
+### Lab 1 — Review Privileged Groups
 
 Using **Active Directory Users and Computers**:
 
@@ -2916,7 +2916,7 @@ Identify whether all members require their assigned privileges.
 
 ---
 
-## Lab 2 — Design a Tiered Administration Model
+### Lab 2 — Design a Tiered Administration Model
 
 Create a three-tier administrative model for:
 
@@ -2928,7 +2928,7 @@ Assign appropriate administrative roles to each tier.
 
 ---
 
-## Lab 3 — Active Directory Health Checklist
+### Lab 3 — Active Directory Health Checklist
 
 Develop a weekly checklist covering:
 
@@ -2943,7 +2943,7 @@ Explain how each check contributes to security and availability.
 
 ---
 
-## Lab 4 — Incident Response Scenario
+### Lab 4 — Incident Response Scenario
 
 Assume an administrator account has been added unexpectedly to the **Domain Admins** group.
 
@@ -2958,7 +2958,7 @@ Document the response process, including:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2982,7 +2982,7 @@ These concepts form the foundation of enterprise identity and access management 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory centralizes authentication and authorization.
 - Kerberos is the preferred authentication protocol.
@@ -2994,7 +2994,7 @@ These concepts form the foundation of enterprise identity and access management 
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of Active Directory?
 2. Explain the difference between a forest, tree, and domain.
@@ -3009,7 +3009,7 @@ These concepts form the foundation of enterprise identity and access management 
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Active Directory Documentation
@@ -3024,7 +3024,7 @@ These concepts form the foundation of enterprise identity and access management 
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 23 – Active Directory**.
 

@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A modern organization may have:
 
@@ -36,7 +36,7 @@ CLOUD
 
 ---
 
-# 2. SIEM Deployment Models
+## 2. SIEM Deployment Models
 
 Common deployment models:
 
@@ -51,7 +51,7 @@ Each has different operational requirements.
 
 ---
 
-# 3. On-Premises SIEM
+## 3. On-Premises SIEM
 
 Typical architecture:
 
@@ -88,7 +88,7 @@ Availability
 
 ---
 
-# 4. Cloud SIEM
+## 4. Cloud SIEM
 
 Architecture:
 
@@ -126,7 +126,7 @@ Data Residency
 
 ---
 
-# 5. Hybrid SIEM
+## 5. Hybrid SIEM
 
 Common enterprise architecture:
 
@@ -148,7 +148,7 @@ This is common when organizations operate both legacy and cloud infrastructure.
 
 ---
 
-# 6. SIEM Architecture Layers
+## 6. SIEM Architecture Layers
 
 A production SIEM can be divided into:
 
@@ -169,7 +169,7 @@ A production SIEM can be divided into:
 
 ---
 
-# 7. Data Sources
+## 7. Data Sources
 
 Typical sources:
 
@@ -194,7 +194,7 @@ SaaS
 
 ---
 
-# 8. Collection Layer
+## 8. Collection Layer
 
 Collectors receive telemetry from:
 
@@ -218,7 +218,7 @@ Monitored
 
 ---
 
-# 9. Collector Placement
+## 9. Collector Placement
 
 Collectors can be placed:
 
@@ -241,7 +241,7 @@ Cost
 
 ---
 
-# 10. Agent-Based Collection
+## 10. Agent-Based Collection
 
 An endpoint agent may collect:
 
@@ -264,7 +264,7 @@ Local Filtering
 
 ---
 
-# 11. Agentless Collection
+## 11. Agentless Collection
 
 Common methods:
 
@@ -284,7 +284,7 @@ Centralized Management
 
 ---
 
-# 12. Syslog
+## 12. Syslog
 
 Syslog is widely used for:
 
@@ -310,7 +310,7 @@ SIEM
 
 ---
 
-# 13. Secure Log Transport
+## 13. Secure Log Transport
 
 Security telemetry should be protected using appropriate controls such as:
 
@@ -326,7 +326,7 @@ Avoid sending sensitive telemetry over untrusted channels without protection.
 
 ---
 
-# 14. Log Transport Reliability
+## 14. Log Transport Reliability
 
 Monitor:
 
@@ -342,7 +342,7 @@ Certificates
 
 ---
 
-# 15. Certificate Expiration
+## 15. Certificate Expiration
 
 Secure collectors may fail when:
 
@@ -362,7 +362,7 @@ before failure.
 
 ---
 
-# 16. Cloud Logging
+## 16. Cloud Logging
 
 Cloud environments generate:
 
@@ -381,7 +381,7 @@ These are essential for cloud security monitoring.
 
 ---
 
-# 17. Cloud Control Plane
+## 17. Cloud Control Plane
 
 Cloud control-plane activity includes:
 
@@ -398,7 +398,7 @@ Monitor these activities carefully.
 
 ---
 
-# 18. Cloud Identity Logs
+## 18. Cloud Identity Logs
 
 Monitor:
 
@@ -416,7 +416,7 @@ Identity is one of the highest-value cloud telemetry sources.
 
 ---
 
-# 19. Cloud API Monitoring
+## 19. Cloud API Monitoring
 
 Cloud attackers often interact with APIs rather than traditional endpoints.
 
@@ -434,7 +434,7 @@ Outcome
 
 ---
 
-# 20. Cloud Account Compromise
+## 20. Cloud Account Compromise
 
 Potential sequence:
 
@@ -458,7 +458,7 @@ Potential Cloud Account Takeover
 
 ---
 
-# 21. Cloud IAM
+## 21. Cloud IAM
 
 IAM controls:
 
@@ -482,7 +482,7 @@ Permission Removal
 
 ---
 
-# 22. Privilege Escalation in Cloud
+## 22. Privilege Escalation in Cloud
 
 Potential signals:
 
@@ -500,7 +500,7 @@ This should receive careful investigation.
 
 ---
 
-# 23. Access Key Monitoring
+## 23. Access Key Monitoring
 
 Monitor:
 
@@ -522,7 +522,7 @@ Immediate External API Activity
 
 ---
 
-# 24. Cloud Storage Monitoring
+## 24. Cloud Storage Monitoring
 
 Monitor sensitive storage access:
 
@@ -547,7 +547,7 @@ Large Download
 
 ---
 
-# 25. Cloud Network Monitoring
+## 25. Cloud Network Monitoring
 
 Useful sources:
 
@@ -562,7 +562,7 @@ Network Security Controls
 
 ---
 
-# 26. Network Flow Logs
+## 26. Network Flow Logs
 
 Flow telemetry can reveal:
 
@@ -588,7 +588,7 @@ Exfiltration
 
 ---
 
-# 27. Cloud DNS
+## 27. Cloud DNS
 
 Monitor:
 
@@ -612,7 +612,7 @@ Anomalous Activity
 
 ---
 
-# 28. Cloud Firewall
+## 28. Cloud Firewall
 
 Monitor:
 
@@ -636,7 +636,7 @@ Unexpected Allow Rules
 
 ---
 
-# 29. Public Exposure Detection
+## 29. Public Exposure Detection
 
 Example:
 
@@ -658,7 +658,7 @@ If the system is critical, prioritize accordingly.
 
 ---
 
-# 30. Cloud Resource Changes
+## 30. Cloud Resource Changes
 
 Monitor:
 
@@ -683,7 +683,7 @@ What Happened Next?
 
 ---
 
-# 31. Cryptomining Detection
+## 31. Cryptomining Detection
 
 Potential signals:
 
@@ -713,7 +713,7 @@ Potential Cryptomining
 
 ---
 
-# 32. Container Security
+## 32. Container Security
 
 Modern SIEMs may ingest:
 
@@ -728,7 +728,7 @@ Application Logs
 
 ---
 
-# 33. Kubernetes Audit Logs
+## 33. Kubernetes Audit Logs
 
 Monitor:
 
@@ -744,7 +744,7 @@ Cluster Configuration
 
 ---
 
-# 34. Kubernetes Privilege Abuse
+## 34. Kubernetes Privilege Abuse
 
 Potential sequence:
 
@@ -766,7 +766,7 @@ Potential Privilege Abuse
 
 ---
 
-# 35. Container Escape Monitoring
+## 35. Container Escape Monitoring
 
 Potential signals may include:
 
@@ -782,7 +782,7 @@ Detection should be based on available endpoint and runtime telemetry.
 
 ---
 
-# 36. SaaS Security
+## 36. SaaS Security
 
 Monitor important SaaS activity:
 
@@ -809,7 +809,7 @@ Storage
 
 ---
 
-# 37. SaaS Account Compromise
+## 37. SaaS Account Compromise
 
 Potential sequence:
 
@@ -827,7 +827,7 @@ External Sharing
 
 ---
 
-# 38. Cloud-Native SIEM Architecture
+## 38. Cloud-Native SIEM Architecture
 
 Conceptually:
 
@@ -849,7 +849,7 @@ Response
 
 ---
 
-# 39. Multi-Cloud Monitoring
+## 39. Multi-Cloud Monitoring
 
 Organizations may operate:
 
@@ -873,7 +873,7 @@ into common concepts.
 
 ---
 
-# 40. Multi-Cloud Challenges
+## 40. Multi-Cloud Challenges
 
 ```text
 Different APIs
@@ -888,7 +888,7 @@ Normalization becomes especially important.
 
 ---
 
-# 41. Cloud Regions
+## 41. Cloud Regions
 
 Security telemetry may be distributed across:
 
@@ -911,7 +911,7 @@ are correctly designed.
 
 ---
 
-# 42. Data Residency
+## 42. Data Residency
 
 Some organizations must keep data within specific:
 
@@ -927,7 +927,7 @@ SIEM architecture must account for applicable legal and contractual requirements
 
 ---
 
-# 43. Cloud SIEM Cost
+## 43. Cloud SIEM Cost
 
 Major cost drivers:
 
@@ -942,7 +942,7 @@ Data Transfer
 
 ---
 
-# 44. Cloud Cost Optimization
+## 44. Cloud Cost Optimization
 
 Strategies:
 
@@ -957,7 +957,7 @@ Prioritize High-Value Telemetry
 
 ---
 
-# 45. SIEM Deployment Security
+## 45. SIEM Deployment Security
 
 Protect:
 
@@ -973,7 +973,7 @@ Connectors
 
 ---
 
-# 46. Least Privilege
+## 46. Least Privilege
 
 Give components only required permissions.
 
@@ -993,7 +993,7 @@ permissions.
 
 ---
 
-# 47. Service Accounts
+## 47. Service Accounts
 
 Use dedicated service accounts for:
 
@@ -1015,7 +1015,7 @@ Key Rotation
 
 ---
 
-# 48. Secrets Management
+## 48. Secrets Management
 
 Store credentials using:
 
@@ -1035,7 +1035,7 @@ Plaintext Tokens
 
 ---
 
-# 49. Network Segmentation
+## 49. Network Segmentation
 
 Separate:
 
@@ -1052,7 +1052,7 @@ SIEM collectors should not unnecessarily expose management interfaces.
 
 ---
 
-# 50. Firewall Rules
+## 50. Firewall Rules
 
 Allow only required:
 
@@ -1067,7 +1067,7 @@ Avoid overly broad rules.
 
 ---
 
-# 51. SIEM High Availability
+## 51. SIEM High Availability
 
 A production architecture should avoid:
 
@@ -1082,7 +1082,7 @@ where availability requirements justify redundancy.
 
 ---
 
-# 52. Collector Redundancy
+## 52. Collector Redundancy
 
 ```text
 Sources
@@ -1096,7 +1096,7 @@ Sources
 
 ---
 
-# 53. Storage Redundancy
+## 53. Storage Redundancy
 
 Use appropriate:
 
@@ -1111,7 +1111,7 @@ depending on platform.
 
 ---
 
-# 54. Disaster Recovery
+## 54. Disaster Recovery
 
 Plan for:
 
@@ -1126,7 +1126,7 @@ Configuration Loss
 
 ---
 
-# 55. SIEM Backup
+## 55. SIEM Backup
 
 Back up:
 
@@ -1144,7 +1144,7 @@ Retention of raw logs should follow the organization's retention strategy.
 
 ---
 
-# 56. Disaster Recovery Testing
+## 56. Disaster Recovery Testing
 
 Do not only create backups.
 
@@ -1166,9 +1166,9 @@ Can analysts search?
 
 ---
 
-# 57. RTO and RPO
+## 57. RTO and RPO
 
-## RTO
+### RTO
 
 ```text
 Recovery Time Objective
@@ -1176,7 +1176,7 @@ Recovery Time Objective
 
 How quickly service should be restored.
 
-## RPO
+### RPO
 
 ```text
 Recovery Point Objective
@@ -1186,7 +1186,7 @@ How much data loss is acceptable.
 
 ---
 
-# 58. Example
+## 58. Example
 
 ```text
 RTO:
@@ -1209,7 +1209,7 @@ Exact objectives should be business-defined.
 
 ---
 
-# 59. SIEM Operations
+## 59. SIEM Operations
 
 Daily operations include:
 
@@ -1225,7 +1225,7 @@ Open Incidents
 
 ---
 
-# 60. Daily SIEM Checklist
+## 60. Daily SIEM Checklist
 
 ```text
 ☐ Check data sources
@@ -1241,7 +1241,7 @@ Open Incidents
 
 ---
 
-# 61. Weekly Operations
+## 61. Weekly Operations
 
 Review:
 
@@ -1258,7 +1258,7 @@ Threat Trends
 
 ---
 
-# 62. Monthly Operations
+## 62. Monthly Operations
 
 Review:
 
@@ -1276,7 +1276,7 @@ Use Case Effectiveness
 
 ---
 
-# 63. SIEM Maintenance
+## 63. SIEM Maintenance
 
 Maintenance may include:
 
@@ -1293,7 +1293,7 @@ Storage Expansion
 
 ---
 
-# 64. Change Windows
+## 64. Change Windows
 
 Major changes should use:
 
@@ -1309,7 +1309,7 @@ Rollback
 
 ---
 
-# 65. SIEM Upgrade
+## 65. SIEM Upgrade
 
 Before upgrade:
 
@@ -1333,7 +1333,7 @@ Validate Integrations
 
 ---
 
-# 66. Integration Monitoring
+## 66. Integration Monitoring
 
 Monitor:
 
@@ -1350,7 +1350,7 @@ Case Management
 
 ---
 
-# 67. Connector Failure
+## 67. Connector Failure
 
 Example:
 
@@ -1370,7 +1370,7 @@ Data Source Health Alert
 
 ---
 
-# 68. Certificate Monitoring
+## 68. Certificate Monitoring
 
 Track:
 
@@ -1386,7 +1386,7 @@ Alert before expiration.
 
 ---
 
-# 69. API Rate Limits
+## 69. API Rate Limits
 
 Cloud and SaaS APIs may impose:
 
@@ -1407,7 +1407,7 @@ Design collectors to handle rate limits.
 
 ---
 
-# 70. API Pagination
+## 70. API Pagination
 
 Large API responses may use:
 
@@ -1421,7 +1421,7 @@ Collectors must correctly process pagination to avoid missing data.
 
 ---
 
-# 71. API Retry Strategy
+## 71. API Retry Strategy
 
 Transient failures may require:
 
@@ -1436,7 +1436,7 @@ Avoid aggressive retries that overload the source.
 
 ---
 
-# 72. Cloud Event Delays
+## 72. Cloud Event Delays
 
 Cloud telemetry may not always arrive instantly.
 
@@ -1450,7 +1450,7 @@ Processing Time
 
 ---
 
-# 73. Out-of-Order Events
+## 73. Out-of-Order Events
 
 Events may arrive:
 
@@ -1469,7 +1469,7 @@ Correlation engines should account for event-time differences where necessary.
 
 ---
 
-# 74. Time Window Design
+## 74. Time Window Design
 
 Example:
 
@@ -1495,7 +1495,7 @@ Choose windows based on attacker behavior and telemetry characteristics.
 
 ---
 
-# 75. Cloud Detection – Unusual Login
+## 75. Cloud Detection – Unusual Login
 
 Detection inputs:
 
@@ -1521,7 +1521,7 @@ Privileged User
 
 ---
 
-# 76. Cloud Detection – IAM Change
+## 76. Cloud Detection – IAM Change
 
 ```text
 IAM Policy Change
@@ -1539,7 +1539,7 @@ High-Risk Cloud Activity
 
 ---
 
-# 77. Cloud Detection – Storage Exfiltration
+## 77. Cloud Detection – Storage Exfiltration
 
 ```text
 Sensitive Object Access
@@ -1559,7 +1559,7 @@ Potential Exfiltration
 
 ---
 
-# 78. Cloud Detection – Security Group Exposure
+## 78. Cloud Detection – Security Group Exposure
 
 ```text
 Security Group Change
@@ -1577,7 +1577,7 @@ Potential Security Exposure
 
 ---
 
-# 79. Cloud Detection – Cryptomining
+## 79. Cloud Detection – Cryptomining
 
 ```text
 New Compute Resource
@@ -1595,7 +1595,7 @@ Potential Cryptomining
 
 ---
 
-# 80. Cloud Detection – API Abuse
+## 80. Cloud Detection – API Abuse
 
 ```text
 Rare API Calls
@@ -1615,7 +1615,7 @@ Potential API Abuse
 
 ---
 
-# 81. Cloud Threat Model
+## 81. Cloud Threat Model
 
 Consider:
 
@@ -1645,7 +1645,7 @@ Data
 
 ---
 
-# 82. Identity-Centric Security
+## 82. Identity-Centric Security
 
 Modern cloud security increasingly focuses on:
 
@@ -1667,7 +1667,7 @@ IP Address
 
 ---
 
-# 83. Zero Trust and SIEM
+## 83. Zero Trust and SIEM
 
 Zero Trust principles include:
 
@@ -1690,7 +1690,7 @@ Behavior
 
 ---
 
-# 84. SIEM and Zero Trust
+## 84. SIEM and Zero Trust
 
 Example:
 
@@ -1714,7 +1714,7 @@ Unusual Access
 
 ---
 
-# 85. Cloud Security Posture + SIEM
+## 85. Cloud Security Posture + SIEM
 
 Security posture tools may identify:
 
@@ -1738,7 +1738,7 @@ to prioritize risk.
 
 ---
 
-# 86. SIEM + Vulnerability Management
+## 86. SIEM + Vulnerability Management
 
 Example:
 
@@ -1760,7 +1760,7 @@ This is more useful than looking at vulnerability severity alone.
 
 ---
 
-# 87. SIEM + EDR
+## 87. SIEM + EDR
 
 EDR provides:
 
@@ -1794,7 +1794,7 @@ creates stronger investigation context.
 
 ---
 
-# 88. SIEM + NDR
+## 88. SIEM + NDR
 
 NDR provides network behavior.
 
@@ -1816,7 +1816,7 @@ Higher Confidence
 
 ---
 
-# 89. SIEM + Email Security
+## 89. SIEM + Email Security
 
 Combine:
 
@@ -1834,7 +1834,7 @@ This can detect the full attack chain.
 
 ---
 
-# 90. SIEM + Threat Intelligence
+## 90. SIEM + Threat Intelligence
 
 Threat intelligence can enrich:
 
@@ -1858,7 +1858,7 @@ Relevance
 
 ---
 
-# 91. SIEM + SOAR
+## 91. SIEM + SOAR
 
 Typical workflow:
 
@@ -1878,7 +1878,7 @@ Response
 
 ---
 
-# 92. Automated Cloud Response
+## 92. Automated Cloud Response
 
 Possible approved actions:
 
@@ -1894,7 +1894,7 @@ High-impact actions should use appropriate safeguards and authorization.
 
 ---
 
-# 93. Cloud Incident Workflow
+## 93. Cloud Incident Workflow
 
 ```text
 Cloud Alert
@@ -1916,7 +1916,7 @@ Recovery
 
 ---
 
-# 94. Multi-Account Cloud Environments
+## 94. Multi-Account Cloud Environments
 
 Large environments may have:
 
@@ -1941,7 +1941,7 @@ context.
 
 ---
 
-# 95. Multi-Tenant SIEM
+## 95. Multi-Tenant SIEM
 
 For service providers or large organizations:
 
@@ -1962,7 +1962,7 @@ Alert Isolation
 
 ---
 
-# 96. SIEM Governance
+## 96. SIEM Governance
 
 Govern:
 
@@ -1978,7 +1978,7 @@ Integrations
 
 ---
 
-# 97. Privacy Considerations
+## 97. Privacy Considerations
 
 Security telemetry may contain:
 
@@ -2005,7 +2005,7 @@ according to applicable requirements.
 
 ---
 
-# 98. Operational Documentation
+## 98. Operational Documentation
 
 Maintain:
 
@@ -2022,7 +2022,7 @@ Retention Policy
 
 ---
 
-# 99. Architecture Diagram
+## 99. Architecture Diagram
 
 Example:
 
@@ -2053,7 +2053,7 @@ Example:
 
 ---
 
-# 100. Deployment Checklist
+## 100. Deployment Checklist
 
 ```text
 ☐ Architecture designed
@@ -2075,7 +2075,7 @@ Example:
 
 ---
 
-# 101. Production Readiness Checklist
+## 101. Production Readiness Checklist
 
 Before going live:
 
@@ -2096,7 +2096,7 @@ Documentation
 
 ---
 
-# 102. Practical Lab – Hybrid SIEM
+## 102. Practical Lab – Hybrid SIEM
 
 Design:
 
@@ -2121,7 +2121,7 @@ Endpoint Detection
 
 ---
 
-# 103. Practical Lab – Cloud Account Compromise
+## 103. Practical Lab – Cloud Account Compromise
 
 Simulate:
 
@@ -2151,7 +2151,7 @@ Use only authorized test environments.
 
 ---
 
-# 104. Practical Lab – SIEM Failure
+## 104. Practical Lab – SIEM Failure
 
 Simulate:
 
@@ -2177,7 +2177,7 @@ How is missing data handled?
 
 ---
 
-# 105. Practical Lab – Disaster Recovery
+## 105. Practical Lab – Disaster Recovery
 
 Define:
 
@@ -2204,67 +2204,67 @@ Can analysts investigate?
 
 ---
 
-# 106. Interview Questions
+## 106. Interview Questions
 
-### What are common SIEM deployment models?
+#### What are common SIEM deployment models?
 
 > On-premises, cloud, hybrid, and managed SIEM deployments.
 
-### What is a hybrid SIEM?
+#### What is a hybrid SIEM?
 
 > A SIEM architecture that collects and correlates telemetry from both on-premises and cloud environments.
 
-### What cloud logs are important for SIEM?
+#### What cloud logs are important for SIEM?
 
 > Identity, control-plane/API, network, storage, application, container, database, and security-control logs.
 
-### Why are cloud identity logs important?
+#### Why are cloud identity logs important?
 
 > Cloud attacks frequently involve compromised identities and API access, making authentication, role changes, session activity, and privilege changes critical telemetry.
 
-### How would you detect cloud account compromise?
+#### How would you detect cloud account compromise?
 
 > Correlate unusual login behavior, device/location changes, MFA changes, privilege escalation, access-key activity, and sensitive API or resource actions.
 
-### What is RTO?
+#### What is RTO?
 
 > Recovery Time Objective—the target time within which a service should be restored after disruption.
 
-### What is RPO?
+#### What is RPO?
 
 > Recovery Point Objective—the maximum acceptable amount of data loss measured in time.
 
-### Why is high availability important for SIEM?
+#### Why is high availability important for SIEM?
 
 > If the SIEM or its ingestion pipeline fails, the SOC may lose visibility and detection capability during an attack.
 
-### How do you secure SIEM collectors?
+#### How do you secure SIEM collectors?
 
 > Use least privilege, secure transport, network segmentation, authentication, credential protection, monitoring, and appropriate hardening.
 
-### What is cloud SIEM cost optimization?
+#### What is cloud SIEM cost optimization?
 
 > Reducing unnecessary ingestion, storage, queries, duplication, and transfer while preserving telemetry required for security and compliance.
 
-### What is the difference between control-plane and data-plane activity?
+#### What is the difference between control-plane and data-plane activity?
 
 > Control-plane activity manages resources and configuration, while data-plane activity generally represents actions performed on or against the resources themselves.
 
-### Why should cloud API activity be monitored?
+#### Why should cloud API activity be monitored?
 
 > Attackers can perform significant actions through cloud APIs without traditional endpoint activity, so API telemetry provides visibility into identity and resource manipulation.
 
-### How would you monitor Kubernetes with a SIEM?
+#### How would you monitor Kubernetes with a SIEM?
 
 > Ingest Kubernetes audit logs, container/runtime telemetry, identity activity, network logs, and relevant cloud logs, then build detections around privilege changes, suspicious workload activity, secret access, and unusual cluster actions.
 
-### Why should the SIEM monitor itself?
+#### Why should the SIEM monitor itself?
 
 > Because SIEM failures, connector failures, logging disablement, and unauthorized configuration changes can create critical visibility gaps.
 
 ---
 
-# 107. Quick Revision
+## 107. Quick Revision
 
 ```text
 SIEM DEPLOYMENT
@@ -2312,7 +2312,7 @@ ZERO TRUST
 
 ---
 
-# 108. Golden Rules
+## 108. Golden Rules
 
 ```text
 1. Design SIEM architecture around the environment, not the product alone.
@@ -2368,7 +2368,7 @@ ZERO TRUST
 
 ---
 
-# 109. Final Mental Model
+## 109. Final Mental Model
 
 A modern enterprise SIEM should provide visibility across:
 
@@ -2415,7 +2415,7 @@ A modern enterprise SIEM should provide visibility across:
 
 ---
 
-# 110. Cloud Security Mental Model
+## 110. Cloud Security Mental Model
 
 Think about cloud security through:
 
@@ -2453,7 +2453,7 @@ What happened afterward?
 
 ---
 
-# 111. Operational Mental Model
+## 111. Operational Mental Model
 
 A production SIEM must continuously answer:
 
@@ -2479,7 +2479,7 @@ Can the system recover from failure?
 
 ---
 
-# 112. Chapter Summary
+## 112. Chapter Summary
 
 SIEM deployment and operations extend beyond simply installing a security platform.
 

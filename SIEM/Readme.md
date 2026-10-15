@@ -58,8 +58,7 @@ It is designed to explain **how security monitoring works end-to-end**.
 
 ---
 
-# 🎯 What You Will Learn
-
+## 🎯 What You Will Learn
 By completing this SIEM section, you will understand:
 
 ```text
@@ -93,8 +92,7 @@ How modern SOC architectures operate
 
 ---
 
-# 🛡️ Why SIEM Matters
-
+## 🛡️ Why SIEM Matters
 Modern organizations generate enormous amounts of security telemetry.
 
 For example:
@@ -159,8 +157,7 @@ This is one of the fundamental purposes of SIEM:
 
 ---
 
-# 🔍 SIEM Core Functions
-
+## 🔍 SIEM Core Functions
 A SIEM typically performs several major functions:
 
 ```text
@@ -183,8 +180,7 @@ A SIEM typically performs several major functions:
 
 ---
 
-# 🧩 SIEM vs SOC vs SOAR vs XDR
-
+## 🧩 SIEM vs SOC vs SOAR vs XDR
 These terms are related but are not interchangeable.
 
 ## SIEM
@@ -260,8 +256,7 @@ The exact boundaries depend on the vendor and architecture.
 
 ---
 
-# 🏗️ SIEM Data Pipeline
-
+## 🏗️ SIEM Data Pipeline
 A simplified SIEM architecture:
 
 ```text
@@ -310,8 +305,7 @@ A simplified SIEM architecture:
 
 ---
 
-# 📚 15-Chapter Roadmap
-
+## 📚 15-Chapter Roadmap
 This SIEM section contains **15 chapters** covering the complete SIEM lifecycle.
 
 ---
@@ -832,8 +826,7 @@ The goal is to understand how SIEM is evolving beyond traditional log collection
 
 ---
 
-# 🔄 Complete SIEM Lifecycle
-
+## 🔄 Complete SIEM Lifecycle
 The entire SIEM workflow can be summarized as:
 
 ```text
@@ -900,8 +893,7 @@ This creates a continuous security improvement loop.
 
 ---
 
-# 🧠 SIEM Mental Model
-
+## 🧠 SIEM Mental Model
 A simple way to understand SIEM:
 
 ```text
@@ -940,8 +932,7 @@ TUNING
 
 ---
 
-# 🏢 Typical SIEM Data Sources
-
+## 🏢 Typical SIEM Data Sources
 A production SIEM may ingest telemetry from:
 
 ```text
@@ -978,8 +969,7 @@ A production SIEM may ingest telemetry from:
 
 ---
 
-# 🔥 Example Detection Scenario
-
+## 🔥 Example Detection Scenario
 Suppose an attacker attempts to compromise an employee account.
 
 The SIEM might receive:
@@ -1035,8 +1025,7 @@ Behavior
 
 ---
 
-# 🚨 SIEM Alert Lifecycle
-
+## 🚨 SIEM Alert Lifecycle
 ```text
 Raw Event
    ↓
@@ -1067,8 +1056,7 @@ Response
 
 ---
 
-# 📊 Alert Severity
-
+## 📊 Alert Severity
 Organizations commonly classify alerts using levels such as:
 
 ```text
@@ -1095,8 +1083,7 @@ A suspicious event on a critical domain controller should not necessarily receiv
 
 ---
 
-# 🎯 Detection Engineering Philosophy
-
+## 🎯 Detection Engineering Philosophy
 Good detection engineering aims for:
 
 ```text
@@ -1129,8 +1116,7 @@ The second approach provides substantially more context.
 
 ---
 
-# 🧪 Detection Development Lifecycle
-
+## 🧪 Detection Development Lifecycle
 ```text
 Threat
  ↓
@@ -1159,8 +1145,7 @@ Retirement
 
 ---
 
-# 🗺️ MITRE ATT&CK Integration
-
+## 🗺️ MITRE ATT&CK Integration
 SIEM detections can be mapped to:
 
 ```text
@@ -1193,8 +1178,7 @@ This helps security teams measure detection coverage.
 
 ---
 
-# 🔎 Threat Hunting
-
+## 🔎 Threat Hunting
 Threat hunting is proactive.
 
 Traditional monitoring:
@@ -1239,8 +1223,7 @@ Privileged Accounts
 
 ---
 
-# 🤖 SIEM + SOAR
-
+## 🤖 SIEM + SOAR
 SIEM:
 
 ```text
@@ -1274,8 +1257,7 @@ Automation should be carefully controlled to avoid causing unnecessary business 
 
 ---
 
-# 👤 SIEM + UEBA
-
+## 👤 SIEM + UEBA
 UEBA:
 
 ```text
@@ -1308,8 +1290,7 @@ UEBA adds behavioral context to traditional detection.
 
 ---
 
-# ☁️ SIEM in Cloud Environments
-
+## ☁️ SIEM in Cloud Environments
 Cloud environments generate telemetry such as:
 
 ```text
@@ -1338,8 +1319,7 @@ Cloud Application
 
 ---
 
-# 📦 SIEM Data Quality
-
+## 📦 SIEM Data Quality
 Poor data quality produces poor detections.
 
 Common problems:
@@ -1362,8 +1342,7 @@ Therefore:
 
 ---
 
-# ⏱️ Time Synchronization
-
+## ⏱️ Time Synchronization
 Accurate timestamps are critical for:
 
 ```text
@@ -1380,8 +1359,7 @@ A few minutes of timestamp drift can make multi-system investigations significan
 
 ---
 
-# 🗃️ SIEM Retention
-
+## 🗃️ SIEM Retention
 Retention decisions depend on:
 
 ```text
@@ -1411,8 +1389,7 @@ Long-Term Retention
 
 ---
 
-# 💰 SIEM Cost Considerations
-
+## 💰 SIEM Cost Considerations
 SIEM cost can be heavily influenced by:
 
 ```text
@@ -1446,8 +1423,7 @@ Useful Detections
 
 ---
 
-# ⚠️ Common SIEM Problems
-
+## ⚠️ Common SIEM Problems
 ```text
 Alert Fatigue
 Too Many False Positives
@@ -1466,8 +1442,7 @@ Poor Rule Maintenance
 
 ---
 
-# 🛠️ SIEM Engineering Priorities
-
+## 🛠️ SIEM Engineering Priorities
 A mature SIEM program should continuously improve:
 
 ```text
@@ -1485,8 +1460,7 @@ Response Speed
 
 ---
 
-# 🧑‍💻 SIEM Roles
-
+## 🧑‍💻 SIEM Roles
 Knowledge from this section is relevant to:
 
 ```text
@@ -1505,8 +1479,7 @@ Security Architect
 
 ---
 
-# 📈 SOC Analyst Skill Progression
-
+## 📈 SOC Analyst Skill Progression
 ```text
 Level 1 – SOC Analyst
 │
@@ -1547,8 +1520,7 @@ SIEM / Detection Engineer
 
 ---
 
-# 🧪 Practical Learning Philosophy
-
+## 🧪 Practical Learning Philosophy
 Each chapter should ideally be studied through:
 
 ```text
@@ -1593,8 +1565,7 @@ Containment
 
 ---
 
-# 🧰 Suggested SIEM Platforms to Study
-
+## 🧰 Suggested SIEM Platforms to Study
 The concepts in this repository are designed to be platform-independent, but practical experience can be gained through platforms such as:
 
 ```text
@@ -1611,8 +1582,7 @@ The objective is to understand the **underlying SIEM concepts**, not become depe
 
 ---
 
-# 🧪 Recommended Hands-On Environment
-
+## 🧪 Recommended Hands-On Environment
 A practical home lab can contain:
 
 ```text
@@ -1658,8 +1628,7 @@ Web server logs
 
 ---
 
-# 🔐 Authorized Security Testing
-
+## 🔐 Authorized Security Testing
 All SIEM experiments involving:
 
 ```text
@@ -1692,8 +1661,7 @@ Attack
 
 ---
 
-# 🎓 Interview Preparation
-
+## 🎓 Interview Preparation
 This section is designed to prepare for questions such as:
 
 ```text
@@ -1758,8 +1726,7 @@ How do you handle high-volume logs?
 
 ---
 
-# 📋 SIEM Analyst Investigation Framework
-
+## 📋 SIEM Analyst Investigation Framework
 When an alert appears, ask:
 
 ```text
@@ -1806,8 +1773,7 @@ What should be done?
 
 ---
 
-# 🔬 Investigation Pivot Model
-
+## 🔬 Investigation Pivot Model
 A SOC analyst may pivot through:
 
 ```text
@@ -1854,8 +1820,7 @@ What files were accessed?
 
 ---
 
-# 🧠 Detection Engineering Mindset
-
+## 🧠 Detection Engineering Mindset
 A good detection should answer:
 
 ```text
@@ -1884,8 +1849,7 @@ How will we measure its effectiveness?
 
 ---
 
-# 📊 SIEM Maturity Model
-
+## 📊 SIEM Maturity Model
 ## Level 1 — Basic Logging
 
 ```text
@@ -1960,8 +1924,7 @@ AI-Assisted Investigation
 
 ---
 
-# 🌐 SIEM Across the Enterprise
-
+## 🌐 SIEM Across the Enterprise
 A mature SIEM may monitor:
 
 ```text
@@ -1999,8 +1962,7 @@ MFA                 macOS                Proxy
 
 ---
 
-# 🔄 Continuous Detection Improvement
-
+## 🔄 Continuous Detection Improvement
 A mature SOC should continuously learn from incidents:
 
 ```text
@@ -2029,8 +1991,7 @@ Therefore:
 
 ---
 
-# 📌 Key Concepts to Remember
-
+## 📌 Key Concepts to Remember
 ```text
 SIEM
 → Centralized security monitoring and analysis platform
@@ -2086,8 +2047,7 @@ Detection Engineering
 
 ---
 
-# 🗂️ Complete Chapter Structure
-
+## 🗂️ Complete Chapter Structure
 ```text
 SIEM/
 │
@@ -2126,8 +2086,7 @@ SIEM/
 
 ---
 
-# 🧭 Recommended Study Order
-
+## 🧭 Recommended Study Order
 Follow the chapters sequentially:
 
 ```text
@@ -2194,8 +2153,7 @@ Build Modern SOC Capabilities
 
 ---
 
-# 🏁 End Goal
-
+## 🏁 End Goal
 After completing all 15 chapters, you should be able to understand a complete SIEM workflow:
 
 ```text
@@ -2264,8 +2222,7 @@ After completing all 15 chapters, you should be able to understand a complete SI
 
 ---
 
-# 🚀 Final Objective
-
+## 🚀 Final Objective
 The objective of this SIEM section is to develop the ability to move from:
 
 ```text

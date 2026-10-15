@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 Traditional security monitoring often focuses on:
 
@@ -60,7 +60,7 @@ Application Behavior
 
 ---
 
-# 2. Cloud Detection Engineering
+## 2. Cloud Detection Engineering
 
 Cloud detection focuses on activity across:
 
@@ -79,7 +79,7 @@ Configuration
 
 ---
 
-# 3. Cloud Shared Responsibility
+## 3. Cloud Shared Responsibility
 
 Cloud security is divided between:
 
@@ -112,7 +112,7 @@ The exact responsibility depends on the service model.
 
 ---
 
-# 4. Cloud Control Plane
+## 4. Cloud Control Plane
 
 The cloud control plane records administrative operations such as:
 
@@ -131,7 +131,7 @@ Control-plane logs are therefore extremely valuable for detection.
 
 ---
 
-# 5. Cloud Audit Logs
+## 5. Cloud Audit Logs
 
 Common information:
 
@@ -158,7 +158,7 @@ Using which identity?
 
 ---
 
-# 6. Cloud Identity Detection
+## 6. Cloud Identity Detection
 
 Cloud identities include:
 
@@ -174,7 +174,7 @@ Federated Identities
 
 ---
 
-# 7. Cloud Account Takeover
+## 7. Cloud Account Takeover
 
 Possible sequence:
 
@@ -196,7 +196,7 @@ This should be treated as a behavioral chain rather than independent alerts.
 
 ---
 
-# 8. Cloud Privilege Escalation
+## 8. Cloud Privilege Escalation
 
 Potential signals:
 
@@ -220,7 +220,7 @@ Sensitive Resource Access
 
 ---
 
-# 9. IAM Policy Changes
+## 9. IAM Policy Changes
 
 Monitor:
 
@@ -243,7 +243,7 @@ that is unexpected or occurs outside normal change workflows.
 
 ---
 
-# 10. Excessive Permissions
+## 10. Excessive Permissions
 
 Detection can identify:
 
@@ -269,7 +269,7 @@ Such broad permission changes require strong contextual review.
 
 ---
 
-# 11. Access Key Detection
+## 11. Access Key Detection
 
 Monitor:
 
@@ -295,7 +295,7 @@ Sensitive API Calls
 
 ---
 
-# 12. Cloud Resource Creation
+## 12. Cloud Resource Creation
 
 Monitor creation of:
 
@@ -324,7 +324,7 @@ Command and Control
 
 ---
 
-# 13. Cryptomining Detection
+## 13. Cryptomining Detection
 
 Potential signals:
 
@@ -350,7 +350,7 @@ Suspicious External Destination
 
 ---
 
-# 14. Cloud Storage Detection
+## 14. Cloud Storage Detection
 
 Monitor:
 
@@ -365,7 +365,7 @@ External Sharing
 
 ---
 
-# 15. Public Storage Exposure
+## 15. Public Storage Exposure
 
 Potential detection:
 
@@ -391,7 +391,7 @@ Compliance Event
 
 ---
 
-# 16. Mass Cloud Data Access
+## 16. Mass Cloud Data Access
 
 Potential sequence:
 
@@ -415,7 +415,7 @@ Data Theft
 
 ---
 
-# 17. Cloud Network Detection
+## 17. Cloud Network Detection
 
 Monitor:
 
@@ -431,7 +431,7 @@ Unexpected Egress
 
 ---
 
-# 18. Security Group Changes
+## 18. Security Group Changes
 
 Potentially suspicious:
 
@@ -454,7 +454,7 @@ The exact risk depends on architecture and intended exposure.
 
 ---
 
-# 19. Cloud Egress Detection
+## 19. Cloud Egress Detection
 
 Monitor:
 
@@ -468,7 +468,7 @@ Sensitive Workload
 
 ---
 
-# 20. Cloud Metadata Services
+## 20. Cloud Metadata Services
 
 Cloud workloads may interact with metadata services.
 
@@ -484,7 +484,7 @@ Such activity can be important during cloud compromise investigations.
 
 ---
 
-# 21. Serverless Detection
+## 21. Serverless Detection
 
 Serverless environments include:
 
@@ -510,7 +510,7 @@ External Destination
 
 ---
 
-# 22. Serverless Persistence
+## 22. Serverless Persistence
 
 Potential sequence:
 
@@ -528,7 +528,7 @@ This may provide a persistence mechanism.
 
 ---
 
-# 23. Serverless Abuse
+## 23. Serverless Abuse
 
 Potential signals:
 
@@ -544,7 +544,7 @@ Context is required because legitimate deployments can produce the same events.
 
 ---
 
-# 24. Cloud API Detection
+## 24. Cloud API Detection
 
 APIs are central to cloud operations.
 
@@ -562,7 +562,7 @@ Sequence
 
 ---
 
-# 25. API Enumeration
+## 25. API Enumeration
 
 Potential pattern:
 
@@ -582,7 +582,7 @@ Discovery
 
 ---
 
-# 26. API Abuse
+## 26. API Abuse
 
 Potential signals:
 
@@ -596,7 +596,7 @@ Privilege-Sensitive Operations
 
 ---
 
-# 27. Application Detection Engineering
+## 27. Application Detection Engineering
 
 Application detection focuses on:
 
@@ -614,7 +614,7 @@ Errors
 
 ---
 
-# 28. Application Telemetry
+## 28. Application Telemetry
 
 Useful fields:
 
@@ -636,7 +636,7 @@ Resource
 
 ---
 
-# 29. Application Logs
+## 29. Application Logs
 
 Application logs should answer:
 
@@ -651,7 +651,7 @@ What resource was affected?
 
 ---
 
-# 30. Structured Logging
+## 30. Structured Logging
 
 Prefer structured events:
 
@@ -670,7 +670,7 @@ Structured logs simplify detection and correlation.
 
 ---
 
-# 31. Authentication Detection
+## 31. Authentication Detection
 
 Monitor:
 
@@ -685,7 +685,7 @@ Session Revocation
 
 ---
 
-# 32. Application Account Takeover
+## 32. Application Account Takeover
 
 Potential sequence:
 
@@ -703,7 +703,7 @@ Sensitive API Access
 
 ---
 
-# 33. Session Anomalies
+## 33. Session Anomalies
 
 Monitor:
 
@@ -717,7 +717,7 @@ Unexpected Token Use
 
 ---
 
-# 34. Authorization Detection
+## 34. Authorization Detection
 
 Important events:
 
@@ -731,7 +731,7 @@ Unauthorized Resource Access
 
 ---
 
-# 35. Broken Access Control Detection
+## 35. Broken Access Control Detection
 
 Potential pattern:
 
@@ -747,7 +747,7 @@ This can indicate attempted authorization abuse.
 
 ---
 
-# 36. API Enumeration
+## 36. API Enumeration
 
 Example:
 
@@ -764,7 +764,7 @@ Legitimate applications can also generate predictable IDs, so context matters.
 
 ---
 
-# 37. API Abuse Detection
+## 37. API Abuse Detection
 
 Monitor:
 
@@ -780,7 +780,7 @@ Response Size
 
 ---
 
-# 38. HTTP Error Patterns
+## 38. HTTP Error Patterns
 
 Potential indicators:
 
@@ -802,7 +802,7 @@ Application Abuse
 
 ---
 
-# 39. Status Code Sequences
+## 39. Status Code Sequences
 
 Example:
 
@@ -837,7 +837,7 @@ Credential Guessing
 
 ---
 
-# 40. Request Rate Detection
+## 40. Request Rate Detection
 
 Example:
 
@@ -860,7 +860,7 @@ Context determines the result.
 
 ---
 
-# 41. User-Agent Detection
+## 41. User-Agent Detection
 
 Potential signals:
 
@@ -875,7 +875,7 @@ User-Agent alone should rarely be considered sufficient evidence.
 
 ---
 
-# 42. Application Data Access
+## 42. Application Data Access
 
 Monitor:
 
@@ -889,7 +889,7 @@ Administrative Queries
 
 ---
 
-# 43. Data Exfiltration Through APIs
+## 43. Data Exfiltration Through APIs
 
 Potential sequence:
 
@@ -907,7 +907,7 @@ Large Outbound Transfer
 
 ---
 
-# 44. Application Abuse Correlation
+## 44. Application Abuse Correlation
 
 Combine:
 
@@ -935,7 +935,7 @@ Large Egress
 
 ---
 
-# 45. Application Error Correlation
+## 45. Application Error Correlation
 
 A sequence such as:
 
@@ -951,7 +951,7 @@ can sometimes indicate exploitation or discovery.
 
 ---
 
-# 46. Exploit Detection
+## 46. Exploit Detection
 
 Detection can combine:
 
@@ -969,7 +969,7 @@ This provides stronger evidence than matching a single request pattern.
 
 ---
 
-# 47. Container Detection Engineering
+## 47. Container Detection Engineering
 
 Containers introduce a different execution model:
 
@@ -987,7 +987,7 @@ Volume
 
 ---
 
-# 48. Container Telemetry
+## 48. Container Telemetry
 
 Useful fields:
 
@@ -1008,7 +1008,7 @@ Service Account
 
 ---
 
-# 49. Container Image Detection
+## 49. Container Image Detection
 
 Monitor:
 
@@ -1023,7 +1023,7 @@ Image Digest Change
 
 ---
 
-# 50. Image Tagging Risk
+## 50. Image Tagging Risk
 
 Avoid relying exclusively on:
 
@@ -1043,7 +1043,7 @@ where supported.
 
 ---
 
-# 51. Container Creation
+## 51. Container Creation
 
 Potentially suspicious:
 
@@ -1059,7 +1059,7 @@ External Network
 
 ---
 
-# 52. Privileged Containers
+## 52. Privileged Containers
 
 Monitor:
 
@@ -1075,7 +1075,7 @@ These configurations can provide significantly greater host access.
 
 ---
 
-# 53. Container Escape Detection
+## 53. Container Escape Detection
 
 Potential signals:
 
@@ -1093,7 +1093,7 @@ Detection requires environment-specific telemetry.
 
 ---
 
-# 54. Container Process Detection
+## 54. Container Process Detection
 
 Monitor:
 
@@ -1108,7 +1108,7 @@ Package Installation
 
 ---
 
-# 55. Container Shell Detection
+## 55. Container Shell Detection
 
 Example:
 
@@ -1126,7 +1126,7 @@ This may indicate post-exploitation.
 
 ---
 
-# 56. Container Network Detection
+## 56. Container Network Detection
 
 Monitor:
 
@@ -1140,7 +1140,7 @@ DNS
 
 ---
 
-# 57. Container-to-Container Communication
+## 57. Container-to-Container Communication
 
 A compromised container may attempt:
 
@@ -1157,7 +1157,7 @@ Unexpected relationships can be detected through network telemetry.
 
 ---
 
-# 58. Kubernetes Detection
+## 58. Kubernetes Detection
 
 Kubernetes introduces:
 
@@ -1174,7 +1174,7 @@ API Server
 
 ---
 
-# 59. Kubernetes Audit Logs
+## 59. Kubernetes Audit Logs
 
 Important events:
 
@@ -1192,7 +1192,7 @@ API Requests
 
 ---
 
-# 60. Kubernetes RBAC Detection
+## 60. Kubernetes RBAC Detection
 
 Monitor:
 
@@ -1206,7 +1206,7 @@ Privilege Expansion
 
 ---
 
-# 61. Kubernetes Secret Access
+## 61. Kubernetes Secret Access
 
 Secrets may contain:
 
@@ -1227,7 +1227,7 @@ especially from unusual identities or workloads.
 
 ---
 
-# 62. Kubernetes Exec Detection
+## 62. Kubernetes Exec Detection
 
 A potentially important signal:
 
@@ -1251,7 +1251,7 @@ matters.
 
 ---
 
-# 63. Kubernetes Service Account Abuse
+## 63. Kubernetes Service Account Abuse
 
 Potential sequence:
 
@@ -1269,7 +1269,7 @@ Sensitive Resource
 
 ---
 
-# 64. Kubernetes Persistence
+## 64. Kubernetes Persistence
 
 Potential methods may involve:
 
@@ -1285,7 +1285,7 @@ Detection should focus on unexpected administrative changes.
 
 ---
 
-# 65. Kubernetes Discovery
+## 65. Kubernetes Discovery
 
 Potential behavior:
 
@@ -1301,7 +1301,7 @@ A burst of enumeration by an unusual identity can be significant.
 
 ---
 
-# 66. Container + Kubernetes Correlation
+## 66. Container + Kubernetes Correlation
 
 Example:
 
@@ -1319,7 +1319,7 @@ This is stronger than any one event.
 
 ---
 
-# 67. CI/CD Detection
+## 67. CI/CD Detection
 
 Modern workloads often originate from:
 
@@ -1347,7 +1347,7 @@ Deployment Changes
 
 ---
 
-# 68. Pipeline Credential Abuse
+## 68. Pipeline Credential Abuse
 
 Potential:
 
@@ -1365,7 +1365,7 @@ Malicious Artifact
 
 ---
 
-# 69. Supply Chain Detection
+## 69. Supply Chain Detection
 
 Monitor:
 
@@ -1380,7 +1380,7 @@ Registry Activity
 
 ---
 
-# 70. Infrastructure-as-Code Detection
+## 70. Infrastructure-as-Code Detection
 
 Monitor:
 
@@ -1397,7 +1397,7 @@ Unexpected infrastructure changes can be highly valuable detection signals.
 
 ---
 
-# 71. Configuration Drift
+## 71. Configuration Drift
 
 Example:
 
@@ -1419,7 +1419,7 @@ Attack
 
 ---
 
-# 72. Cloud + Application Correlation
+## 72. Cloud + Application Correlation
 
 Example:
 
@@ -1435,7 +1435,7 @@ Sensitive Data Access
 
 ---
 
-# 73. Cloud + Container Correlation
+## 73. Cloud + Container Correlation
 
 Example:
 
@@ -1451,7 +1451,7 @@ External Network
 
 ---
 
-# 74. Application + Container Correlation
+## 74. Application + Container Correlation
 
 Example:
 
@@ -1469,7 +1469,7 @@ This can indicate application compromise.
 
 ---
 
-# 75. Application + Identity Correlation
+## 75. Application + Identity Correlation
 
 Example:
 
@@ -1483,7 +1483,7 @@ Large Data Export
 
 ---
 
-# 76. Cloud + Identity + Application
+## 76. Cloud + Identity + Application
 
 Example:
 
@@ -1499,7 +1499,7 @@ Sensitive Data Export
 
 ---
 
-# 77. Cloud + Identity + Endpoint
+## 77. Cloud + Identity + Endpoint
 
 Example:
 
@@ -1515,7 +1515,7 @@ Cloud API Access
 
 ---
 
-# 78. Container + Network + Identity
+## 78. Container + Network + Identity
 
 Example:
 
@@ -1531,7 +1531,7 @@ Potential cluster compromise.
 
 ---
 
-# 79. Modern Attack Chain
+## 79. Modern Attack Chain
 
 A realistic cloud-native attack may look like:
 
@@ -1559,7 +1559,7 @@ Detection engineering must therefore cross multiple domains.
 
 ---
 
-# 80. Cloud Detection Architecture
+## 80. Cloud Detection Architecture
 
 ```text
 Cloud Audit Logs
@@ -1587,7 +1587,7 @@ Alert
 
 ---
 
-# 81. Application Detection Architecture
+## 81. Application Detection Architecture
 
 ```text
 HTTP/API
@@ -1609,7 +1609,7 @@ Detection
 
 ---
 
-# 82. Container Detection Architecture
+## 82. Container Detection Architecture
 
 ```text
 Image
@@ -1629,7 +1629,7 @@ Correlation
 
 ---
 
-# 83. Cloud Identity Resolution
+## 83. Cloud Identity Resolution
 
 A cloud user may appear as:
 
@@ -1646,7 +1646,7 @@ Detection systems need to preserve the original identity context.
 
 ---
 
-# 84. Cloud Session Context
+## 84. Cloud Session Context
 
 Useful fields:
 
@@ -1663,7 +1663,7 @@ Credential Type
 
 ---
 
-# 85. Application Request Correlation
+## 85. Application Request Correlation
 
 Use:
 
@@ -1685,7 +1685,7 @@ Network Event
 
 ---
 
-# 86. Distributed Tracing
+## 86. Distributed Tracing
 
 Modern applications often use:
 
@@ -1699,7 +1699,7 @@ This can help connect activity across microservices.
 
 ---
 
-# 87. Microservice Detection
+## 87. Microservice Detection
 
 Example:
 
@@ -1717,7 +1717,7 @@ Suspicious behavior can propagate across services.
 
 ---
 
-# 88. Microservice Anomaly
+## 88. Microservice Anomaly
 
 Example:
 
@@ -1742,7 +1742,7 @@ Supply Chain Issue
 
 ---
 
-# 89. Database Detection
+## 89. Database Detection
 
 Monitor:
 
@@ -1758,7 +1758,7 @@ Administrative Commands
 
 ---
 
-# 90. Database + Application Correlation
+## 90. Database + Application Correlation
 
 Example:
 
@@ -1778,7 +1778,7 @@ Potential data exfiltration.
 
 ---
 
-# 91. Secrets Detection
+## 91. Secrets Detection
 
 Sensitive secrets include:
 
@@ -1802,7 +1802,7 @@ Secret Export
 
 ---
 
-# 92. Secret Access Detection
+## 92. Secret Access Detection
 
 Potential sequence:
 
@@ -1820,7 +1820,7 @@ This can indicate credential theft or abuse.
 
 ---
 
-# 93. Cloud Resource Relationship Graph
+## 93. Cloud Resource Relationship Graph
 
 Example:
 
@@ -1842,7 +1842,7 @@ Graph relationships provide useful investigation context.
 
 ---
 
-# 94. Cloud Asset Criticality
+## 94. Cloud Asset Criticality
 
 Not every cloud resource has equal importance.
 
@@ -1860,7 +1860,7 @@ Risk scoring should account for business importance.
 
 ---
 
-# 95. Cloud Baselines
+## 95. Cloud Baselines
 
 Baseline:
 
@@ -1877,7 +1877,7 @@ Then detect meaningful deviations.
 
 ---
 
-# 96. Application Baselines
+## 96. Application Baselines
 
 Baseline:
 
@@ -1891,7 +1891,7 @@ Normal Access Pattern
 
 ---
 
-# 97. Container Baselines
+## 97. Container Baselines
 
 Baseline:
 
@@ -1906,7 +1906,7 @@ Service Accounts
 
 ---
 
-# 98. Kubernetes Baselines
+## 98. Kubernetes Baselines
 
 Baseline:
 
@@ -1921,7 +1921,7 @@ Service Accounts
 
 ---
 
-# 99. Behavioral Detection
+## 99. Behavioral Detection
 
 Behavioral detection can identify:
 
@@ -1939,9 +1939,9 @@ activity.
 
 ---
 
-# 100. Static vs Behavioral Detection
+## 100. Static vs Behavioral Detection
 
-### Static
+#### Static
 
 ```text
 Known Malicious IP
@@ -1949,7 +1949,7 @@ Known Hash
 Known Domain
 ```
 
-### Behavioral
+#### Behavioral
 
 ```text
 Unusual API Access
@@ -1962,7 +1962,7 @@ Behavioral detection is often more resilient to changing infrastructure.
 
 ---
 
-# 101. Cloud Detection Exceptions
+## 101. Cloud Detection Exceptions
 
 Examples:
 
@@ -1983,7 +1983,7 @@ Auditable
 
 ---
 
-# 102. Application Detection Exceptions
+## 102. Application Detection Exceptions
 
 Examples:
 
@@ -1996,7 +1996,7 @@ Internal Automation
 
 ---
 
-# 103. Container Detection Exceptions
+## 103. Container Detection Exceptions
 
 Examples:
 
@@ -2008,7 +2008,7 @@ Known Platform Agent
 
 ---
 
-# 104. Kubernetes Detection Exceptions
+## 104. Kubernetes Detection Exceptions
 
 Examples:
 
@@ -2021,7 +2021,7 @@ Monitoring Agent
 
 ---
 
-# 105. Detection Testing
+## 105. Detection Testing
 
 Test:
 
@@ -2037,7 +2037,7 @@ Data Export
 
 ---
 
-# 106. Positive Cloud Test
+## 106. Positive Cloud Test
 
 Example:
 
@@ -2053,7 +2053,7 @@ Detection Trigger
 
 ---
 
-# 107. Positive Application Test
+## 107. Positive Application Test
 
 Example:
 
@@ -2069,7 +2069,7 @@ Application Detection
 
 ---
 
-# 108. Positive Container Test
+## 108. Positive Container Test
 
 Example:
 
@@ -2085,7 +2085,7 @@ Container Detection
 
 ---
 
-# 109. Positive Kubernetes Test
+## 109. Positive Kubernetes Test
 
 Example:
 
@@ -2101,7 +2101,7 @@ Kubernetes Detection
 
 ---
 
-# 110. Negative Testing
+## 110. Negative Testing
 
 Validate that normal:
 
@@ -2118,7 +2118,7 @@ do not create excessive alerts.
 
 ---
 
-# 111. Detection Latency
+## 111. Detection Latency
 
 Measure:
 
@@ -2136,7 +2136,7 @@ Alert
 
 ---
 
-# 112. Cloud Detection Challenges
+## 112. Cloud Detection Challenges
 
 Common challenges:
 
@@ -2152,7 +2152,7 @@ Identity Complexity
 
 ---
 
-# 113. Application Detection Challenges
+## 113. Application Detection Challenges
 
 ```text
 High Request Volume
@@ -2165,7 +2165,7 @@ Legitimate Automation
 
 ---
 
-# 114. Container Detection Challenges
+## 114. Container Detection Challenges
 
 ```text
 Ephemeral Containers
@@ -2178,7 +2178,7 @@ High Deployment Frequency
 
 ---
 
-# 115. Kubernetes Detection Challenges
+## 115. Kubernetes Detection Challenges
 
 ```text
 High API Volume
@@ -2191,7 +2191,7 @@ Large Cluster State
 
 ---
 
-# 116. Detection Performance
+## 116. Detection Performance
 
 Optimize:
 
@@ -2216,7 +2216,7 @@ Complex Regex
 
 ---
 
-# 117. Detection-as-Code Metadata
+## 117. Detection-as-Code Metadata
 
 Example:
 
@@ -2247,7 +2247,7 @@ status: production
 
 ---
 
-# 118. Cloud Detection Checklist
+## 118. Cloud Detection Checklist
 
 ```text
 [ ] Cloud audit logs enabled
@@ -2273,59 +2273,59 @@ status: production
 
 ---
 
-# 119. Interview Questions
+## 119. Interview Questions
 
-### Why are cloud audit logs important?
+#### Why are cloud audit logs important?
 
 > They record control-plane operations such as identity changes, resource creation, policy modification, and sensitive API activity.
 
-### What is cloud control-plane activity?
+#### What is cloud control-plane activity?
 
 > Administrative operations used to create, modify, delete, or configure cloud resources and services.
 
-### How would you detect cloud account takeover?
+#### How would you detect cloud account takeover?
 
 > Correlate unusual authentication, new device or location, credential or access-key changes, privilege changes, and sensitive API activity.
 
-### How would you detect suspicious container activity?
+#### How would you detect suspicious container activity?
 
 > Monitor image provenance, container creation, privilege configuration, process execution, network behavior, and unexpected access to host resources.
 
-### What is Kubernetes audit logging?
+#### What is Kubernetes audit logging?
 
 > Logging of API-server operations such as resource creation, RBAC changes, secret access, exec operations, and other cluster management activity.
 
-### Why are privileged containers important?
+#### Why are privileged containers important?
 
 > They may have significantly greater access to the host or underlying infrastructure and therefore increase the impact of a compromise.
 
-### How would you detect API abuse?
+#### How would you detect API abuse?
 
 > Combine request rate, endpoint diversity, authentication context, response patterns, source, user, and resource sensitivity.
 
-### How would you detect data exfiltration through an API?
+#### How would you detect data exfiltration through an API?
 
 > Correlate unusual authentication, sensitive resource access, high-volume API requests, large responses, and unusual outbound network activity.
 
-### What is configuration drift?
+#### What is configuration drift?
 
 > A deviation between the intended configuration and the observed configuration.
 
-### Why are cloud identities difficult to correlate?
+#### Why are cloud identities difficult to correlate?
 
 > Cloud environments can involve users, roles, temporary credentials, service accounts, federated identities, and sessions representing the same logical actor.
 
-### How can containers complicate detection?
+#### How can containers complicate detection?
 
 > Containers are often short-lived, dynamically created, and share infrastructure, making traditional host-based assumptions less reliable.
 
-### What is the importance of request IDs and trace IDs?
+#### What is the importance of request IDs and trace IDs?
 
 > They allow events across distributed application components and services to be connected into a single transaction or activity chain.
 
 ---
 
-# 120. Quick Revision
+## 120. Quick Revision
 
 ```text
 Cloud Detection
@@ -2397,7 +2397,7 @@ Workload Identity
 
 ---
 
-# 121. Golden Rules
+## 121. Golden Rules
 
 ```text
 1. Cloud detection starts with control-plane visibility.
@@ -2483,7 +2483,7 @@ Workload Identity
 
 ---
 
-# 122. Final Mental Model
+## 122. Final Mental Model
 
 Modern environments can be understood as:
 
@@ -2559,7 +2559,7 @@ Investigation
 
 ---
 
-# 123. Chapter Summary
+## 123. Chapter Summary
 
 This chapter covered:
 

@@ -1,12 +1,12 @@
 # 14-CORS.md
 
-# Part 1 — Cross-Origin Resource Sharing (CORS) Fundamentals, Browser Workflow, Origin Validation, and Enterprise Web APIs
+## Part 1 — Cross-Origin Resource Sharing (CORS) Fundamentals, Browser Workflow, Origin Validation, and Enterprise Web APIs
 
 > **"Cross-Origin Resource Sharing (CORS) is not a security feature that relaxes security—it is a controlled mechanism that allows servers to explicitly tell browsers which cross-origin requests may access their resources."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is CORS?
+## What is CORS?
 
 **Cross-Origin Resource Sharing (CORS)** is a browser security mechanism that allows a server to specify whether resources can be shared with web pages from different origins.
 
@@ -53,7 +53,7 @@ Block
 
 ---
 
-# Why CORS Exists
+## Why CORS Exists
 
 Modern web applications often separate services.
 
@@ -81,7 +81,7 @@ Without a controlled mechanism, JavaScript running on the frontend would be unab
 
 ---
 
-# SOP vs CORS
+## SOP vs CORS
 
 ```
 Same-Origin Policy
@@ -113,7 +113,7 @@ Instead, it extends browser behavior in a controlled manner.
 
 ---
 
-# Browser Security Model
+## Browser Security Model
 
 ```
 JavaScript
@@ -151,7 +151,7 @@ The browser remains responsible for enforcing the policy.
 
 ---
 
-# Who Controls CORS?
+## Who Controls CORS?
 
 The **server** defines the policy.
 
@@ -177,7 +177,7 @@ Clients cannot simply "turn off" CORS in normal browsing.
 
 ---
 
-# Origin Review
+## Origin Review
 
 An origin consists of:
 
@@ -201,7 +201,7 @@ https://api.example.com:443
 
 ---
 
-# Same-Origin Example
+## Same-Origin Example
 
 ```
 https://app.example.com
@@ -225,7 +225,7 @@ Normal Browser Access
 
 ---
 
-# Cross-Origin Example
+## Cross-Origin Example
 
 ```
 https://app.example.com
@@ -247,7 +247,7 @@ The browser evaluates CORS before exposing the response to JavaScript.
 
 ---
 
-# High-Level CORS Flow
+## High-Level CORS Flow
 
 ```
 JavaScript
@@ -283,7 +283,7 @@ Restrict Response
 
 ---
 
-# Why Browsers Need CORS
+## Why Browsers Need CORS
 
 Without CORS:
 
@@ -327,7 +327,7 @@ Browser Exposes Response
 
 ---
 
-# Browser Enforcement
+## Browser Enforcement
 
 Even if the server returns data:
 
@@ -363,7 +363,7 @@ The browser may receive the network response but refuse to expose it to the page
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                  Browser
@@ -389,7 +389,7 @@ The browser may receive the network response but refuse to expose it to the page
 
 ---
 
-# Why APIs Use CORS
+## Why APIs Use CORS
 
 Modern APIs often serve:
 
@@ -403,7 +403,7 @@ Controlled cross-origin access allows these systems to communicate securely thro
 
 ---
 
-# Request Flow
+## Request Flow
 
 ```
 User
@@ -439,7 +439,7 @@ Browser Decision
 
 ---
 
-# Server Response
+## Server Response
 
 The server includes CORS-related HTTP response headers indicating its policy.
 
@@ -465,7 +465,7 @@ The browser checks these headers before exposing the response.
 
 ---
 
-# Browser Decision Tree
+## Browser Decision Tree
 
 ```
 Cross-Origin Request
@@ -497,7 +497,7 @@ Block JavaScript Access
 
 ---
 
-# Important Principle
+## Important Principle
 
 CORS protects **browser-based JavaScript**.
 
@@ -525,7 +525,7 @@ Servers must still perform authentication and authorization.
 
 ---
 
-# Common CORS Misconceptions
+## Common CORS Misconceptions
 
 | Myth | Reality |
 |------|---------|
@@ -537,7 +537,7 @@ Servers must still perform authentication and authorization.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company hosts:
 
@@ -565,7 +565,7 @@ The browser validates that declaration before exposing the response to JavaScrip
 
 ---
 
-# CORS Request Lifecycle
+## CORS Request Lifecycle
 
 ```
 Page Loaded
@@ -601,7 +601,7 @@ Restrict Response
 
 ---
 
-# Security Goals of CORS
+## Security Goals of CORS
 
 CORS aims to:
 
@@ -613,7 +613,7 @@ CORS aims to:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser:
 
@@ -626,7 +626,7 @@ Using your browser:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is CORS?
 2. Why was CORS introduced?
@@ -641,7 +641,7 @@ Using your browser:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Keep the Same-Origin Policy as the default security boundary.
 - Allow only trusted origins where appropriate.
@@ -652,7 +652,7 @@ Using your browser:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming CORS is an authentication mechanism.
 - Believing CORS protects APIs from all attackers.
@@ -662,7 +662,7 @@ Using your browser:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - CORS is a controlled extension to the Same-Origin Policy.
 - Servers declare which cross-origin browser requests may access resources.
@@ -670,15 +670,15 @@ Using your browser:
 - CORS applies primarily to browser-based cross-origin JavaScript requests.
 - Authentication, authorization, and business logic remain server-side responsibilities.
 
-# 14-CORS.md
+## 14-CORS.md
 
-# Part 2 — CORS HTTP Headers, Simple Requests, Preflight Requests, Browser Validation, Credentials, and Enterprise API Design
+## Part 2 — CORS HTTP Headers, Simple Requests, Preflight Requests, Browser Validation, Credentials, and Enterprise API Design
 
 > **"CORS is implemented through HTTP headers exchanged between the browser and the server. The browser evaluates these headers before deciding whether JavaScript may access a cross-origin response."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -695,7 +695,7 @@ After completing this part, you will understand:
 
 ---
 
-# How CORS Works
+## How CORS Works
 
 CORS operates through HTTP request and response headers.
 
@@ -733,7 +733,7 @@ Restrict Response
 
 ---
 
-# CORS Request Lifecycle
+## CORS Request Lifecycle
 
 ```
 Page
@@ -767,7 +767,7 @@ The browser always performs the final decision.
 
 ---
 
-# Important CORS Headers
+## Important CORS Headers
 
 The most common response headers include:
 
@@ -782,7 +782,7 @@ The most common response headers include:
 
 ---
 
-# Access-Control-Allow-Origin
+## Access-Control-Allow-Origin
 
 This response header identifies which origin may access the response.
 
@@ -814,7 +814,7 @@ Expose Response
 
 ---
 
-# Example
+## Example
 
 Frontend:
 
@@ -832,7 +832,7 @@ The API explicitly identifies which origin is permitted to access the response.
 
 ---
 
-# Origin Matching
+## Origin Matching
 
 ```
 Browser Origin
@@ -868,7 +868,7 @@ Restrict Access
 
 ---
 
-# Wildcard Origin
+## Wildcard Origin
 
 Some servers use:
 
@@ -890,7 +890,7 @@ While this may be appropriate for certain public resources, it is generally **no
 
 ---
 
-# Access-Control-Allow-Methods
+## Access-Control-Allow-Methods
 
 Servers indicate which HTTP methods are permitted.
 
@@ -925,7 +925,7 @@ Yes / No
 
 ---
 
-# Access-Control-Allow-Headers
+## Access-Control-Allow-Headers
 
 Applications sometimes send additional request headers.
 
@@ -940,7 +940,7 @@ The server specifies which request headers are acceptable.
 
 ---
 
-# Access-Control-Expose-Headers
+## Access-Control-Expose-Headers
 
 Browsers do not automatically expose every response header to JavaScript.
 
@@ -964,7 +964,7 @@ JavaScript
 
 ---
 
-# Access-Control-Allow-Credentials
+## Access-Control-Allow-Credentials
 
 Some applications require credentials such as cookies or authentication information.
 
@@ -994,7 +994,7 @@ Credentialed requests require careful configuration.
 
 ---
 
-# Important Credential Rule
+## Important Credential Rule
 
 Conceptually:
 
@@ -1014,7 +1014,7 @@ Sensitive applications should explicitly identify trusted origins when credentia
 
 ---
 
-# Simple Requests
+## Simple Requests
 
 Certain cross-origin requests are considered **simple requests** by browsers.
 
@@ -1040,7 +1040,7 @@ Simple requests generally do **not** require a preflight request.
 
 ---
 
-# Typical Characteristics
+## Typical Characteristics
 
 Simple requests generally involve:
 
@@ -1052,7 +1052,7 @@ The browser determines whether a request qualifies as "simple."
 
 ---
 
-# Non-Simple Requests
+## Non-Simple Requests
 
 More complex requests require additional validation.
 
@@ -1076,7 +1076,7 @@ Preflight Required
 
 ---
 
-# What is a Preflight Request?
+## What is a Preflight Request?
 
 A preflight request asks the server whether a future request is permitted.
 
@@ -1106,7 +1106,7 @@ Actual Request
 
 ---
 
-# Why Preflight Exists
+## Why Preflight Exists
 
 Without preflight:
 
@@ -1144,7 +1144,7 @@ This helps browsers determine whether the cross-origin request is allowed.
 
 ---
 
-# Preflight Workflow
+## Preflight Workflow
 
 ```
 JavaScript
@@ -1192,7 +1192,7 @@ Stop
 
 ---
 
-# OPTIONS Request
+## OPTIONS Request
 
 The browser automatically generates the preflight request when required.
 
@@ -1220,7 +1220,7 @@ Applications generally do not create these requests manually.
 
 ---
 
-# Browser Validation
+## Browser Validation
 
 After receiving the preflight response:
 
@@ -1252,7 +1252,7 @@ If validation succeeds, the browser proceeds with the actual request.
 
 ---
 
-# Access-Control-Max-Age
+## Access-Control-Max-Age
 
 Browsers may cache successful preflight decisions.
 
@@ -1276,7 +1276,7 @@ This improves performance by avoiding unnecessary repeated checks.
 
 ---
 
-# Enterprise API Example
+## Enterprise API Example
 
 ```
 Customer Portal
@@ -1322,7 +1322,7 @@ The API Gateway commonly centralizes CORS policy management.
 
 ---
 
-# Enterprise Multi-Service Architecture
+## Enterprise Multi-Service Architecture
 
 ```
                  Browser
@@ -1348,7 +1348,7 @@ Each service may define its own CORS policy.
 
 ---
 
-# Browser Decision Matrix
+## Browser Decision Matrix
 
 | Check | Result |
 |--------|--------|
@@ -1360,7 +1360,7 @@ Each service may define its own CORS policy.
 
 ---
 
-# Security Considerations
+## Security Considerations
 
 Proper CORS configuration should:
 
@@ -1372,7 +1372,7 @@ Proper CORS configuration should:
 
 ---
 
-# Common Configuration Mistakes
+## Common Configuration Mistakes
 
 | Mistake | Risk |
 |----------|------|
@@ -1384,7 +1384,7 @@ Proper CORS configuration should:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using Developer Tools:
 
@@ -1401,7 +1401,7 @@ Using Developer Tools:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of `Access-Control-Allow-Origin`?
 2. What is a simple request?
@@ -1416,7 +1416,7 @@ Using Developer Tools:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Explicitly allow only trusted origins.
 - Minimize allowed HTTP methods.
@@ -1428,7 +1428,7 @@ Using Developer Tools:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating CORS as an authentication mechanism.
 - Allowing every origin unnecessarily.
@@ -1438,7 +1438,7 @@ Using Developer Tools:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - CORS is implemented through HTTP headers exchanged between browsers and servers.
 - The browser validates origins, methods, headers, and credentials before exposing responses.
@@ -1446,15 +1446,15 @@ Using Developer Tools:
 - Proper CORS configuration balances functionality with security.
 - Enterprise environments often centralize CORS policies through API gateways or reverse proxies.
 
-# 14-CORS.md
+## 14-CORS.md
 
-# Part 3 — Advanced CORS, Credentials, Preflight Caching, Security Risks, Misconfigurations, Enterprise Architecture, and Secure Design
+## Part 3 — Advanced CORS, Credentials, Preflight Caching, Security Risks, Misconfigurations, Enterprise Architecture, and Secure Design
 
 > **"Most CORS vulnerabilities are not caused by the browser—they are caused by incorrect server configurations that unintentionally trust untrusted origins."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1471,7 +1471,7 @@ After completing this part, you will understand:
 
 ---
 
-# Credentialed Requests
+## Credentialed Requests
 
 Some web applications need to include authentication information when making cross-origin requests.
 
@@ -1509,7 +1509,7 @@ Response
 
 ---
 
-# Credentials and Browser Security
+## Credentials and Browser Security
 
 Credentialed requests require additional browser validation.
 
@@ -1533,7 +1533,7 @@ The browser applies stricter rules before exposing responses.
 
 ---
 
-# Authentication Flow
+## Authentication Flow
 
 ```
 User
@@ -1567,7 +1567,7 @@ Authentication and CORS are independent security mechanisms.
 
 ---
 
-# Important Principle
+## Important Principle
 
 Authentication answers:
 
@@ -1591,7 +1591,7 @@ Each solves a different security problem.
 
 ---
 
-# Dynamic Origin Validation
+## Dynamic Origin Validation
 
 Many enterprise applications allow multiple trusted origins.
 
@@ -1629,7 +1629,7 @@ The server should validate the origin against an approved allowlist.
 
 ---
 
-# Origin Reflection
+## Origin Reflection
 
 A dangerous configuration pattern is blindly reflecting the incoming origin.
 
@@ -1659,7 +1659,7 @@ Servers should validate origins before allowing access.
 
 ---
 
-# Secure Origin Validation
+## Secure Origin Validation
 
 ```
 Incoming Origin
@@ -1697,7 +1697,7 @@ Explicit allowlists are significantly safer than unrestricted reflection.
 
 ---
 
-# Wildcard Origins
+## Wildcard Origins
 
 Conceptually:
 
@@ -1715,7 +1715,7 @@ Sensitive APIs should generally avoid unrestricted wildcard policies.
 
 ---
 
-# Credential Rule
+## Credential Rule
 
 When credentials are involved:
 
@@ -1739,7 +1739,7 @@ Explicit origin validation is essential.
 
 ---
 
-# Preflight Caching
+## Preflight Caching
 
 Browsers may cache successful preflight responses.
 
@@ -1767,7 +1767,7 @@ Caching reduces unnecessary network traffic.
 
 ---
 
-# Preflight Cache Lifecycle
+## Preflight Cache Lifecycle
 
 ```
 First Request
@@ -1797,7 +1797,7 @@ Eventually the cache expires and the browser performs another preflight.
 
 ---
 
-# Enterprise API Gateway
+## Enterprise API Gateway
 
 Many organizations centralize CORS handling.
 
@@ -1821,7 +1821,7 @@ Centralized policy management improves consistency.
 
 ---
 
-# Reverse Proxy Architecture
+## Reverse Proxy Architecture
 
 ```
 Browser
@@ -1843,7 +1843,7 @@ The reverse proxy may apply consistent CORS headers before forwarding requests.
 
 ---
 
-# Microservice Environment
+## Microservice Environment
 
 ```
 Customer Portal
@@ -1867,7 +1867,7 @@ Each backend service should follow consistent organizational CORS policies.
 
 ---
 
-# Browser Validation Flow
+## Browser Validation Flow
 
 ```
 Cross-Origin Request
@@ -1897,9 +1897,9 @@ Every required validation step must succeed before the response becomes availabl
 
 ---
 
-# Common Misconfiguration 1
+## Common Misconfiguration 1
 
-## Allowing Every Origin
+### Allowing Every Origin
 
 ```
 Everyone
@@ -1917,9 +1917,9 @@ This unnecessarily broad trust model increases exposure.
 
 ---
 
-# Common Misconfiguration 2
+## Common Misconfiguration 2
 
-## Blind Origin Reflection
+### Blind Origin Reflection
 
 ```
 Attacker Origin
@@ -1941,9 +1941,9 @@ Reflection without validation should be avoided.
 
 ---
 
-# Common Misconfiguration 3
+## Common Misconfiguration 3
 
-## Excessive Allowed Methods
+### Excessive Allowed Methods
 
 Example:
 
@@ -1967,9 +1967,9 @@ Allow only methods that the application genuinely requires.
 
 ---
 
-# Common Misconfiguration 4
+## Common Misconfiguration 4
 
-## Excessive Allowed Headers
+### Excessive Allowed Headers
 
 Allowing unnecessary request headers increases configuration complexity and may broaden the attack surface.
 
@@ -1977,9 +1977,9 @@ Apply the principle of least privilege.
 
 ---
 
-# Common Misconfiguration 5
+## Common Misconfiguration 5
 
-## Inconsistent Policies
+### Inconsistent Policies
 
 ```
 API A
@@ -2001,7 +2001,7 @@ Inconsistent CORS behavior creates operational confusion and increases the chanc
 
 ---
 
-# Least Privilege for CORS
+## Least Privilege for CORS
 
 ```
 Allow
@@ -2023,7 +2023,7 @@ The least privilege principle applies to CORS just as it does to authorization.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                      Browser
@@ -2061,7 +2061,7 @@ The least privilege principle applies to CORS just as it does to authorization.
 
 ---
 
-# Security Review Checklist
+## Security Review Checklist
 
 ```
 ✓ Approved Origin List
@@ -2083,7 +2083,7 @@ The least privilege principle applies to CORS just as it does to authorization.
 
 ---
 
-# Logging
+## Logging
 
 Organizations should log:
 
@@ -2098,7 +2098,7 @@ Logs assist with troubleshooting and security investigations.
 
 ---
 
-# Monitoring
+## Monitoring
 
 Useful operational metrics include:
 
@@ -2112,7 +2112,7 @@ Useful operational metrics include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retailer deploys:
 
@@ -2158,7 +2158,7 @@ The API Gateway:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using browser Developer Tools:
 
@@ -2171,7 +2171,7 @@ Using browser Developer Tools:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a credentialed CORS request?
 2. Why must authentication and CORS be treated separately?
@@ -2186,7 +2186,7 @@ Using browser Developer Tools:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain an explicit allowlist of trusted origins.
 - Centralize CORS policies using API gateways or reverse proxies where appropriate.
@@ -2198,7 +2198,7 @@ Using browser Developer Tools:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Blindly reflecting the `Origin` header.
 - Using unrestricted wildcard policies for sensitive APIs.
@@ -2209,7 +2209,7 @@ Using browser Developer Tools:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Credentialed CORS requests require stricter browser validation.
 - Dynamic origin validation should rely on explicit allowlists rather than blind reflection.
@@ -2217,15 +2217,15 @@ Using browser Developer Tools:
 - Least privilege should guide CORS configuration for origins, methods, headers, and credentials.
 - Most CORS vulnerabilities stem from insecure server configuration rather than flaws in the browser.
 
-# 14-CORS.md
+## 14-CORS.md
 
-# Part 4 — Enterprise CORS Governance, Security Testing, Troubleshooting, Best Practices, Architecture Review, and Chapter Summary
+## Part 4 — Enterprise CORS Governance, Security Testing, Troubleshooting, Best Practices, Architecture Review, and Chapter Summary
 
 > **"A secure CORS implementation follows the principle of least privilege: explicitly trust only what is necessary, validate every origin, and never confuse browser security with application security."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2241,7 +2241,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise CORS Governance
+## Enterprise CORS Governance
 
 In enterprise environments, CORS policies should be centrally governed rather than configured independently by every application team.
 
@@ -2269,7 +2269,7 @@ Central governance reduces configuration drift and security risks.
 
 ---
 
-# CORS Policy Lifecycle
+## CORS Policy Lifecycle
 
 ```
 Requirement
@@ -2307,7 +2307,7 @@ CORS should be reviewed whenever APIs, domains, or authentication mechanisms cha
 
 ---
 
-# API Gateway Architecture
+## API Gateway Architecture
 
 Many organizations terminate CORS processing at an API Gateway.
 
@@ -2345,7 +2345,7 @@ This ensures consistent behavior across services.
 
 ---
 
-# Reverse Proxy Deployment
+## Reverse Proxy Deployment
 
 ```
 Browser
@@ -2371,7 +2371,7 @@ Reverse proxies simplify policy management by providing a single enforcement poi
 
 ---
 
-# Microservice Example
+## Microservice Example
 
 ```
 Customer Portal
@@ -2397,7 +2397,7 @@ Each backend service can remain focused on business logic while the gateway appl
 
 ---
 
-# Enterprise Trust Model
+## Enterprise Trust Model
 
 ```
 Known Origins
@@ -2427,7 +2427,7 @@ Trust should always be explicit.
 
 ---
 
-# Security Review Questions
+## Security Review Questions
 
 During architecture reviews, ask:
 
@@ -2442,7 +2442,7 @@ During architecture reviews, ask:
 
 ---
 
-# CORS Security Testing
+## CORS Security Testing
 
 A security assessment should verify:
 
@@ -2468,7 +2468,7 @@ Testing should always be conducted in authorized environments.
 
 ---
 
-# Conceptual Testing Workflow
+## Conceptual Testing Workflow
 
 ```
 Identify API
@@ -2498,7 +2498,7 @@ The objective is to confirm that browser behavior matches the intended security 
 
 ---
 
-# Browser Developer Tools
+## Browser Developer Tools
 
 Useful sections include:
 
@@ -2520,7 +2520,7 @@ These tools help inspect request headers, response headers, and browser behavior
 
 ---
 
-# What to Inspect
+## What to Inspect
 
 When reviewing a request, examine:
 
@@ -2534,7 +2534,7 @@ When reviewing a request, examine:
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Organizations should log:
 
@@ -2562,7 +2562,7 @@ Logging assists with troubleshooting and compliance reviews.
 
 ---
 
-# Monitoring Metrics
+## Monitoring Metrics
 
 Useful operational metrics include:
 
@@ -2577,7 +2577,7 @@ Useful operational metrics include:
 
 ---
 
-# Enterprise Troubleshooting
+## Enterprise Troubleshooting
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2589,7 +2589,7 @@ Useful operational metrics include:
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 Cross-Origin Failure
@@ -2623,7 +2623,7 @@ Investigate systematically rather than changing multiple settings simultaneously
 
 ---
 
-# Secure Deployment Checklist
+## Secure Deployment Checklist
 
 ```
 ✓ HTTPS Enabled
@@ -2649,7 +2649,7 @@ Investigate systematically rather than changing multiple settings simultaneously
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global financial institution deploys:
 
@@ -2696,7 +2696,7 @@ The API Gateway:
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 CORS is only one component of web security.
 
@@ -2736,7 +2736,7 @@ Each layer complements the others.
 
 ---
 
-# CORS Does NOT Replace
+## CORS Does NOT Replace
 
 CORS does **not** replace:
 
@@ -2753,7 +2753,7 @@ These remain essential server-side responsibilities.
 
 ---
 
-# Common Enterprise Mistakes
+## Common Enterprise Mistakes
 
 ```
 Allow Everyone
@@ -2795,9 +2795,9 @@ Consistency is critical.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## CORS Workflow
+### CORS Workflow
 
 ```
 JavaScript
@@ -2833,7 +2833,7 @@ Restrict
 
 ---
 
-## Preflight
+### Preflight
 
 ```
 Complex Request
@@ -2853,7 +2853,7 @@ Actual Request
 
 ---
 
-## Enterprise Deployment
+### Enterprise Deployment
 
 ```
 Browser
@@ -2873,7 +2873,7 @@ Microservices
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Open Developer Tools.
 2. Visit a web application using a cross-origin API.
@@ -2886,7 +2886,7 @@ Microservices
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What problem does CORS solve?
 2. How does CORS differ from the Same-Origin Policy?
@@ -2901,7 +2901,7 @@ Microservices
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain explicit allowlists for trusted origins.
 - Apply least privilege to origins, methods, and headers.
@@ -2914,7 +2914,7 @@ Microservices
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting every origin without business justification.
 - Blindly reflecting the incoming `Origin` header.
@@ -2926,7 +2926,7 @@ Microservices
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

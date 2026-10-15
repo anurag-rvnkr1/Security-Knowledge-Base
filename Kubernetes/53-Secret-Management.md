@@ -47,7 +47,7 @@ Audit Logging
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -95,7 +95,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is a Kubernetes Secret?
+## What Is a Kubernetes Secret?
 
 A Kubernetes Secret is an API object designed to hold small amounts of sensitive data.
 
@@ -123,7 +123,7 @@ A Secret can then be consumed by workloads.
 
 ---
 
-# Why Secrets Are Needed
+## Why Secrets Are Needed
 
 Applications often need credentials.
 
@@ -162,7 +162,7 @@ Credential
 
 ---
 
-# Secret Management Architecture
+## Secret Management Architecture
 
 A basic architecture:
 
@@ -199,7 +199,7 @@ Pod
 
 ---
 
-# Secret vs ConfigMap
+## Secret vs ConfigMap
 
 This distinction is important.
 
@@ -217,7 +217,7 @@ Sensitive configuration
 
 Examples:
 
-### ConfigMap
+#### ConfigMap
 
 ```text
 APP_ENV=production
@@ -225,7 +225,7 @@ LOG_LEVEL=info
 APP_PORT=8080
 ```
 
-### Secret
+#### Secret
 
 ```text
 DB_PASSWORD
@@ -235,7 +235,7 @@ PRIVATE_KEY
 
 ---
 
-# Important Security Note
+## Important Security Note
 
 Kubernetes Secret data is commonly represented using:
 
@@ -253,7 +253,7 @@ Base64 ≠ Encryption
 
 ---
 
-# Base64 Encoding
+## Base64 Encoding
 
 Example:
 
@@ -283,7 +283,7 @@ Confidentiality
 
 ---
 
-# Base64 Decoding
+## Base64 Decoding
 
 Linux:
 
@@ -301,7 +301,7 @@ This demonstrates why Base64 should never be treated as encryption.
 
 ---
 
-# Secret Structure
+## Secret Structure
 
 A typical Secret:
 
@@ -325,7 +325,7 @@ data:
 
 ---
 
-# `data`
+## `data`
 
 The:
 
@@ -345,7 +345,7 @@ data:
 
 ---
 
-# `stringData`
+## `stringData`
 
 Kubernetes also supports:
 
@@ -379,7 +379,7 @@ Kubernetes processes the values into Secret data.
 
 ---
 
-# `data` vs `stringData`
+## `data` vs `stringData`
 
 | Field | Input |
 |---|---|
@@ -392,7 +392,7 @@ However, the resulting Secret remains sensitive.
 
 ---
 
-# Secret Types
+## Secret Types
 
 Kubernetes supports several Secret types.
 
@@ -409,7 +409,7 @@ service-account-token
 
 ---
 
-# Opaque
+## Opaque
 
 The default generic Secret type is:
 
@@ -427,7 +427,7 @@ It can store arbitrary application data.
 
 ---
 
-# TLS Secret
+## TLS Secret
 
 TLS certificates can be stored using:
 
@@ -446,7 +446,7 @@ are stored.
 
 ---
 
-# Docker Registry Secret
+## Docker Registry Secret
 
 A registry credential Secret may use:
 
@@ -462,7 +462,7 @@ imagePullSecrets:
 
 ---
 
-# Basic Authentication Secret
+## Basic Authentication Secret
 
 A Secret can represent basic authentication credentials using:
 
@@ -472,7 +472,7 @@ kubernetes.io/basic-auth
 
 ---
 
-# SSH Authentication Secret
+## SSH Authentication Secret
 
 SSH credentials can use:
 
@@ -482,7 +482,7 @@ kubernetes.io/ssh-auth
 
 ---
 
-# Service Account Token Secrets
+## Service Account Token Secrets
 
 Historically, Service Account tokens could be stored in Secret objects.
 
@@ -498,7 +498,7 @@ Long-lived manually managed Service Account token Secrets should generally be av
 
 ---
 
-# Creating a Secret
+## Creating a Secret
 
 Using literals:
 
@@ -510,7 +510,7 @@ kubectl create secret generic app-secret \
 
 ---
 
-# List Secrets
+## List Secrets
 
 ```bash
 kubectl get secrets
@@ -518,7 +518,7 @@ kubectl get secrets
 
 ---
 
-# Get Secret
+## Get Secret
 
 ```bash
 kubectl get secret app-secret
@@ -528,7 +528,7 @@ Avoid casually printing Secret contents in shared terminals or logs.
 
 ---
 
-# Inspect Secret Metadata
+## Inspect Secret Metadata
 
 ```bash
 kubectl describe secret app-secret
@@ -538,7 +538,7 @@ This normally shows metadata and key names without directly displaying values.
 
 ---
 
-# Retrieve Secret Data
+## Retrieve Secret Data
 
 ```bash
 kubectl get secret app-secret \
@@ -553,7 +553,7 @@ Use caution.
 
 ---
 
-# Secret From File
+## Secret From File
 
 Create:
 
@@ -570,7 +570,7 @@ kubectl create secret generic app-secret \
 
 ---
 
-# Secret From Environment File
+## Secret From Environment File
 
 Example:
 
@@ -592,7 +592,7 @@ They should generally not be committed to Git.
 
 ---
 
-# Consuming Secrets
+## Consuming Secrets
 
 Secrets can be consumed through:
 
@@ -606,7 +606,7 @@ External Secret Integrations
 
 ---
 
-# Secret as Environment Variable
+## Secret as Environment Variable
 
 Example:
 
@@ -632,7 +632,7 @@ DB_PASSWORD
 
 ---
 
-# Secret as Volume
+## Secret as Volume
 
 Example:
 
@@ -662,7 +662,7 @@ The Secret becomes available as files.
 
 ---
 
-# Environment Variable vs Volume
+## Environment Variable vs Volume
 
 | Method | Advantage | Risk |
 |---|---|---|
@@ -682,7 +682,7 @@ Operational Requirements
 
 ---
 
-# Secret Volume
+## Secret Volume
 
 Suppose the Secret contains:
 
@@ -702,7 +702,7 @@ The application can read these files.
 
 ---
 
-# Secret Updates
+## Secret Updates
 
 Kubernetes can update Secret-backed volumes when the Secret changes, subject to how the volume is consumed and implementation details.
 
@@ -732,7 +732,7 @@ depending on its implementation.
 
 ---
 
-# Environment Variable Rotation
+## Environment Variable Rotation
 
 Secret values injected as environment variables are not dynamically updated inside an already-running process.
 
@@ -750,7 +750,7 @@ A Pod restart is generally needed for the process to receive the new environment
 
 ---
 
-# Secret Rotation
+## Secret Rotation
 
 Secret rotation means replacing a credential with a new credential.
 
@@ -764,7 +764,7 @@ New Password
 
 ---
 
-# Why Rotate Secrets?
+## Why Rotate Secrets?
 
 Secret rotation reduces the impact of:
 
@@ -778,7 +778,7 @@ Security Incidents
 
 ---
 
-# Rotation Strategy
+## Rotation Strategy
 
 A basic strategy:
 
@@ -798,7 +798,7 @@ Revoke Old Credential
 
 ---
 
-# Zero-Downtime Rotation
+## Zero-Downtime Rotation
 
 For systems that support multiple credentials:
 
@@ -825,7 +825,7 @@ This can avoid downtime.
 
 ---
 
-# Secret Lifecycle
+## Secret Lifecycle
 
 A mature lifecycle is:
 
@@ -847,7 +847,7 @@ Delete
 
 ---
 
-# Encryption at Rest
+## Encryption at Rest
 
 Kubernetes Secrets are stored in:
 
@@ -867,7 +867,7 @@ Encryption at rest can protect Secret data stored in the cluster datastore.
 
 ---
 
-# Encryption at Rest Architecture
+## Encryption at Rest Architecture
 
 Without encryption at rest:
 
@@ -893,7 +893,7 @@ etcd
 
 ---
 
-# EncryptionConfiguration
+## EncryptionConfiguration
 
 Kubernetes can configure encryption at rest using an:
 
@@ -905,7 +905,7 @@ This specifies encryption providers for resources stored by the API Server.
 
 ---
 
-# Example Concept
+## Example Concept
 
 A simplified conceptual configuration:
 
@@ -937,7 +937,7 @@ The exact provider and operational configuration should be selected carefully fo
 
 ---
 
-# Encryption Providers
+## Encryption Providers
 
 Kubernetes supports multiple encryption approaches depending on version and configuration.
 
@@ -952,7 +952,7 @@ identity
 
 ---
 
-# KMS
+## KMS
 
 KMS means:
 
@@ -976,7 +976,7 @@ External Key Management
 
 ---
 
-# Why KMS Matters
+## Why KMS Matters
 
 Instead of relying entirely on keys stored with the cluster:
 
@@ -997,7 +997,7 @@ Separation of Duties
 
 ---
 
-# KMS Architecture
+## KMS Architecture
 
 Conceptually:
 
@@ -1017,7 +1017,7 @@ etcd
 
 ---
 
-# Protect etcd
+## Protect etcd
 
 etcd contains critical Kubernetes state.
 
@@ -1034,7 +1034,7 @@ Backups
 
 ---
 
-# RBAC and Secrets
+## RBAC and Secrets
 
 Secrets are protected by Kubernetes authorization mechanisms.
 
@@ -1048,7 +1048,7 @@ is a sensitive permission.
 
 ---
 
-# Dangerous RBAC
+## Dangerous RBAC
 
 Avoid giving broad permissions such as:
 
@@ -1068,7 +1068,7 @@ unless genuinely required.
 
 ---
 
-# Why `list` Is Sensitive
+## Why `list` Is Sensitive
 
 A user who can list Secrets may potentially access many sensitive objects.
 
@@ -1082,7 +1082,7 @@ Highly sensitive
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Instead of:
 
@@ -1104,7 +1104,7 @@ where feasible.
 
 ---
 
-# Secret Access Model
+## Secret Access Model
 
 ```text
 User / ServiceAccount
@@ -1118,7 +1118,7 @@ Allowed / Denied
 
 ---
 
-# Service Account Access
+## Service Account Access
 
 Applications commonly access Secrets through their Pod identity.
 
@@ -1144,7 +1144,7 @@ across the cluster.
 
 ---
 
-# Secret Exposure Through Environment Variables
+## Secret Exposure Through Environment Variables
 
 Environment variables can potentially appear through:
 
@@ -1167,7 +1167,7 @@ print(os.environ)
 
 ---
 
-# Secret Exposure Through Logs
+## Secret Exposure Through Logs
 
 Never log:
 
@@ -1193,7 +1193,7 @@ Database authentication failed
 
 ---
 
-# Secret Exposure Through Error Messages
+## Secret Exposure Through Error Messages
 
 Applications should avoid including secrets in:
 
@@ -1207,7 +1207,7 @@ Metrics labels
 
 ---
 
-# Secret Exposure Through Kubernetes Manifests
+## Secret Exposure Through Kubernetes Manifests
 
 Avoid putting real secrets directly into:
 
@@ -1222,7 +1222,7 @@ Issue trackers
 
 ---
 
-# Git Secret Management
+## Git Secret Management
 
 Never commit:
 
@@ -1238,7 +1238,7 @@ Even private repositories require careful secret handling.
 
 ---
 
-# `.gitignore`
+## `.gitignore`
 
 Sensitive local files can be excluded:
 
@@ -1259,7 +1259,7 @@ does not remove secrets that were already committed.
 
 ---
 
-# If a Secret Is Committed
+## If a Secret Is Committed
 
 Assume compromise.
 
@@ -1278,7 +1278,7 @@ Deleting the file in a later commit is not sufficient because Git history may st
 
 ---
 
-# Secret Scanning
+## Secret Scanning
 
 Use secret scanning to detect:
 
@@ -1302,7 +1302,7 @@ Cloud-native scanners
 
 ---
 
-# Sealed Secrets
+## Sealed Secrets
 
 A popular approach is:
 
@@ -1332,7 +1332,7 @@ Kubernetes Secret
 
 ---
 
-# Why Sealed Secrets?
+## Why Sealed Secrets?
 
 Instead of committing:
 
@@ -1350,7 +1350,7 @@ The cluster controller can decrypt it.
 
 ---
 
-# Important Sealed Secrets Limitation
+## Important Sealed Secrets Limitation
 
 The encryption system must itself be protected.
 
@@ -1366,7 +1366,7 @@ Therefore, key management remains critical.
 
 ---
 
-# External Secret Management
+## External Secret Management
 
 A stronger enterprise architecture often stores secrets outside Kubernetes.
 
@@ -1383,7 +1383,7 @@ The application retrieves or synchronizes credentials through an integration.
 
 ---
 
-# External Secrets Operator
+## External Secrets Operator
 
 The:
 
@@ -1410,7 +1410,7 @@ Pod
 
 ---
 
-# Why External Secret Managers?
+## Why External Secret Managers?
 
 They can provide:
 
@@ -1425,7 +1425,7 @@ Cross-Platform Access
 
 ---
 
-# HashiCorp Vault
+## HashiCorp Vault
 
 Vault is a dedicated secrets-management platform.
 
@@ -1443,7 +1443,7 @@ Encryption
 
 ---
 
-# Vault Dynamic Credentials
+## Vault Dynamic Credentials
 
 Instead of storing a permanent database password:
 
@@ -1461,7 +1461,7 @@ This reduces the value of stolen credentials.
 
 ---
 
-# Cloud Secret Managers
+## Cloud Secret Managers
 
 Cloud platforms provide managed secret systems.
 
@@ -1477,7 +1477,7 @@ Applications can authenticate using workload identity mechanisms and retrieve se
 
 ---
 
-# Workload Identity
+## Workload Identity
 
 Workload identity allows a workload to authenticate to cloud services using an identity associated with the workload.
 
@@ -1501,7 +1501,7 @@ Static Cloud Access Keys
 
 ---
 
-# Short-Lived Credentials
+## Short-Lived Credentials
 
 Prefer:
 
@@ -1533,7 +1533,7 @@ Never expires
 
 ---
 
-# Secrets Store CSI Driver
+## Secrets Store CSI Driver
 
 The:
 
@@ -1560,11 +1560,11 @@ Application
 
 ---
 
-# External Secrets vs CSI
+## External Secrets vs CSI
 
 These approaches differ.
 
-### External Secrets
+#### External Secrets
 
 Often:
 
@@ -1576,7 +1576,7 @@ Kubernetes Secret
 Pod
 ```
 
-### Secrets Store CSI Driver
+#### Secrets Store CSI Driver
 
 Often:
 
@@ -1600,7 +1600,7 @@ Operational Model
 
 ---
 
-# Secret Architecture Comparison
+## Secret Architecture Comparison
 
 | Approach | Storage | Rotation | Complexity |
 |---|---|---|---|
@@ -1612,7 +1612,7 @@ Operational Model
 
 ---
 
-# Secret Security Architecture
+## Secret Security Architecture
 
 A mature architecture:
 
@@ -1639,7 +1639,7 @@ A mature architecture:
 
 ---
 
-# Secret Access Defense in Depth
+## Secret Access Defense in Depth
 
 ```text
 Authentication
@@ -1657,7 +1657,7 @@ Audit
 
 ---
 
-# Secret Rotation Architecture
+## Secret Rotation Architecture
 
 ```text
 Secret Manager
@@ -1683,7 +1683,7 @@ Revoke Old Credential
 
 ---
 
-# Secret Incident Response
+## Secret Incident Response
 
 If a credential is exposed:
 
@@ -1702,7 +1702,7 @@ If a credential is exposed:
 
 ---
 
-# Example Incident
+## Example Incident
 
 Suppose:
 
@@ -1734,7 +1734,7 @@ Investigate Usage
 
 ---
 
-# Secret Access Auditing
+## Secret Access Auditing
 
 Monitor:
 
@@ -1750,7 +1750,7 @@ Kubernetes audit logging can help provide visibility into API access.
 
 ---
 
-# Secret Management and CI/CD
+## Secret Management and CI/CD
 
 Avoid:
 
@@ -1774,7 +1774,7 @@ Deployment
 
 ---
 
-# CI/CD Secret Best Practices
+## CI/CD Secret Best Practices
 
 Use:
 
@@ -1798,7 +1798,7 @@ Secrets in Build Logs
 
 ---
 
-# Secret Management and GitOps
+## Secret Management and GitOps
 
 GitOps introduces an important challenge:
 
@@ -1821,7 +1821,7 @@ Secret Manager Integration
 
 ---
 
-# SOPS
+## SOPS
 
 SOPS can encrypt sensitive configuration files before storing them in Git.
 
@@ -1841,7 +1841,7 @@ Decryption During Deployment
 
 ---
 
-# Secret Management Threat Model
+## Secret Management Threat Model
 
 Potential threats:
 
@@ -1874,7 +1874,7 @@ Workload Identity
 
 ---
 
-# Troubleshooting Secret Access
+## Troubleshooting Secret Access
 
 If a Pod cannot access a Secret:
 
@@ -1891,7 +1891,7 @@ If a Pod cannot access a Secret:
 
 ---
 
-# Check Secret
+## Check Secret
 
 ```bash
 kubectl get secret app-secret
@@ -1899,7 +1899,7 @@ kubectl get secret app-secret
 
 ---
 
-# Check Secret Keys
+## Check Secret Keys
 
 ```bash
 kubectl describe secret app-secret
@@ -1907,7 +1907,7 @@ kubectl describe secret app-secret
 
 ---
 
-# Check Pod
+## Check Pod
 
 ```bash
 kubectl describe pod <pod>
@@ -1924,7 +1924,7 @@ Volume errors
 
 ---
 
-# Check External Secrets
+## Check External Secrets
 
 If using an external secret system, inspect the relevant resource:
 
@@ -1936,7 +1936,7 @@ The exact command depends on the installed controller and API version.
 
 ---
 
-# Check Secret Volume
+## Check Secret Volume
 
 Inside the Pod:
 
@@ -1948,7 +1948,7 @@ Do not print sensitive files unnecessarily.
 
 ---
 
-# Common Secret Error
+## Common Secret Error
 
 ```text
 secret "app-secret" not found
@@ -1968,7 +1968,7 @@ Secrets are namespace-scoped.
 
 ---
 
-# Common Secret Error
+## Common Secret Error
 
 Environment variable is empty.
 
@@ -1992,7 +1992,7 @@ Namespace matches
 
 ---
 
-# Common Secret Error
+## Common Secret Error
 
 External Secret is not synchronized.
 
@@ -2008,7 +2008,7 @@ Secret manager permissions
 
 ---
 
-# Hands-on Lab 1 – Create a Secret
+## Hands-on Lab 1 – Create a Secret
 
 Create:
 
@@ -2026,7 +2026,7 @@ kubectl get secret app-secret
 
 ---
 
-# Hands-on Lab 2 – Inspect Secret
+## Hands-on Lab 2 – Inspect Secret
 
 Run:
 
@@ -2053,7 +2053,7 @@ Decode it only in your disposable lab environment.
 
 ---
 
-# Hands-on Lab 3 – Use Secret as Environment Variable
+## Hands-on Lab 3 – Use Secret as Environment Variable
 
 Create:
 
@@ -2095,7 +2095,7 @@ kubectl apply -f secret-env.yaml
 
 ---
 
-# Hands-on Lab 4 – Use Secret as Volume
+## Hands-on Lab 4 – Use Secret as Volume
 
 Create:
 
@@ -2142,7 +2142,7 @@ kubectl exec -it secret-volume -- \
 
 ---
 
-# Hands-on Lab 5 – Test Secret Rotation
+## Hands-on Lab 5 – Test Secret Rotation
 
 1. Create a Secret.
 2. Mount it as a volume.
@@ -2153,7 +2153,7 @@ kubectl exec -it secret-volume -- \
 
 ---
 
-# Hands-on Lab 6 – RBAC Secret Access
+## Hands-on Lab 6 – RBAC Secret Access
 
 Create a dedicated ServiceAccount:
 
@@ -2181,7 +2181,7 @@ Verify least privilege.
 
 ---
 
-# Hands-on Lab 7 – Secret Exposure Review
+## Hands-on Lab 7 – Secret Exposure Review
 
 Search a test application for:
 
@@ -2196,7 +2196,7 @@ Remove all sensitive output.
 
 ---
 
-# Hands-on Lab 8 – Secret Scanning
+## Hands-on Lab 8 – Secret Scanning
 
 Install a secret scanning tool in a disposable repository.
 
@@ -2214,7 +2214,7 @@ Never use real production credentials for this exercise.
 
 ---
 
-# Hands-on Lab 9 – Encryption at Rest
+## Hands-on Lab 9 – Encryption at Rest
 
 In a disposable cluster or local Kubernetes environment, inspect whether:
 
@@ -2234,7 +2234,7 @@ if you administer the control plane.
 
 ---
 
-# Hands-on Lab 10 – External Secret Architecture
+## Hands-on Lab 10 – External Secret Architecture
 
 Deploy an external secret manager integration in a lab environment.
 
@@ -2254,9 +2254,9 @@ Observe synchronization and rotation behavior.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Treating Base64 as Encryption
+### 1. Treating Base64 as Encryption
 
 Remember:
 
@@ -2272,13 +2272,13 @@ Encryption
 
 ---
 
-## 2. Committing Secrets to Git
+### 2. Committing Secrets to Git
 
 Never store production credentials directly in source control.
 
 ---
 
-## 3. Logging Secrets
+### 3. Logging Secrets
 
 Avoid:
 
@@ -2292,7 +2292,7 @@ in logs.
 
 ---
 
-## 4. Giving Broad Secret Permissions
+### 4. Giving Broad Secret Permissions
 
 Avoid unnecessary:
 
@@ -2304,7 +2304,7 @@ permissions.
 
 ---
 
-## 5. Using Long-Lived Credentials
+### 5. Using Long-Lived Credentials
 
 Prefer:
 
@@ -2316,7 +2316,7 @@ where possible.
 
 ---
 
-## 6. Forgetting Namespace Scope
+### 6. Forgetting Namespace Scope
 
 A Secret in:
 
@@ -2332,19 +2332,19 @@ namespace-b
 
 ---
 
-## 7. Assuming Secret Volume Updates Mean Application Updates
+### 7. Assuming Secret Volume Updates Mean Application Updates
 
 The mounted value may update, but the application must actually reload it.
 
 ---
 
-## 8. Assuming Environment Variables Rotate Automatically
+### 8. Assuming Environment Variables Rotate Automatically
 
 Existing processes generally continue using their current environment values.
 
 ---
 
-## 9. Storing Secrets in Container Images
+### 9. Storing Secrets in Container Images
 
 Never bake credentials into:
 
@@ -2355,7 +2355,7 @@ Container Image
 
 ---
 
-## 10. Storing Secrets in Helm Values
+### 10. Storing Secrets in Helm Values
 
 Avoid plaintext production credentials in:
 
@@ -2365,21 +2365,21 @@ values.yaml
 
 ---
 
-## 11. Sharing One Credential Across Many Applications
+### 11. Sharing One Credential Across Many Applications
 
 Use separate credentials whenever possible.
 
 ---
 
-## 12. Never Rotating Credentials
+### 12. Never Rotating Credentials
 
 Long-lived credentials increase exposure time.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Never Hardcode Secrets
+#### 1. Never Hardcode Secrets
 
 Use:
 
@@ -2391,7 +2391,7 @@ External Secret
 
 ---
 
-### 2. Encrypt Secrets at Rest
+#### 2. Encrypt Secrets at Rest
 
 Protect:
 
@@ -2403,7 +2403,7 @@ using appropriate encryption mechanisms.
 
 ---
 
-### 3. Use KMS Where Appropriate
+#### 3. Use KMS Where Appropriate
 
 External key management can strengthen:
 
@@ -2415,7 +2415,7 @@ Auditing
 
 ---
 
-### 4. Use Least-Privilege RBAC
+#### 4. Use Least-Privilege RBAC
 
 Restrict:
 
@@ -2425,7 +2425,7 @@ Who can read Secrets
 
 ---
 
-### 5. Prefer External Secret Management for Sensitive Production Environments
+#### 5. Prefer External Secret Management for Sensitive Production Environments
 
 Examples:
 
@@ -2438,7 +2438,7 @@ Google Secret Manager
 
 ---
 
-### 6. Rotate Credentials
+#### 6. Rotate Credentials
 
 Establish:
 
@@ -2450,7 +2450,7 @@ Ownership
 
 ---
 
-### 7. Prefer Short-Lived Credentials
+#### 7. Prefer Short-Lived Credentials
 
 Reduce:
 
@@ -2462,13 +2462,13 @@ where possible.
 
 ---
 
-### 8. Use Workload Identity
+#### 8. Use Workload Identity
 
 Avoid embedding cloud access keys into Pods.
 
 ---
 
-### 9. Scan Source Code
+#### 9. Scan Source Code
 
 Use:
 
@@ -2480,7 +2480,7 @@ in CI/CD.
 
 ---
 
-### 10. Protect Logs
+#### 10. Protect Logs
 
 Never expose:
 
@@ -2492,7 +2492,7 @@ Private Keys
 
 ---
 
-### 11. Use Git-Safe Secret Management
+#### 11. Use Git-Safe Secret Management
 
 Consider:
 
@@ -2505,7 +2505,7 @@ Secret Managers
 
 ---
 
-### 12. Audit Secret Access
+#### 12. Audit Secret Access
 
 Monitor:
 
@@ -2517,7 +2517,7 @@ Unexpected Access
 
 ---
 
-### 13. Separate Credentials
+#### 13. Separate Credentials
 
 Use separate credentials for:
 
@@ -2529,7 +2529,7 @@ Production
 
 ---
 
-### 14. Build an Incident Response Process
+#### 14. Build an Incident Response Process
 
 If a secret leaks:
 
@@ -2544,7 +2544,7 @@ Document
 
 ---
 
-# Production Secret Architecture
+## Production Secret Architecture
 
 A strong enterprise design:
 
@@ -2581,7 +2581,7 @@ Network Security
 
 ---
 
-# Defense-in-Depth
+## Defense-in-Depth
 
 ```text
                 Secret
@@ -2606,7 +2606,7 @@ Network Security
 
 ---
 
-# Secret Threat Model
+## Secret Threat Model
 
 | Threat | Example | Control |
 |---|---|---|
@@ -2621,9 +2621,9 @@ Network Security
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Secret
+### Secret
 
 ```text
 Sensitive configuration object
@@ -2631,7 +2631,7 @@ Sensitive configuration object
 
 ---
 
-## `data`
+### `data`
 
 ```text
 Base64-encoded values
@@ -2639,7 +2639,7 @@ Base64-encoded values
 
 ---
 
-## `stringData`
+### `stringData`
 
 ```text
 String input converted into Secret data
@@ -2647,7 +2647,7 @@ String input converted into Secret data
 
 ---
 
-## Base64
+### Base64
 
 ```text
 Encoding, not encryption
@@ -2655,7 +2655,7 @@ Encoding, not encryption
 
 ---
 
-## `Opaque`
+### `Opaque`
 
 ```text
 Generic Secret type
@@ -2663,7 +2663,7 @@ Generic Secret type
 
 ---
 
-## TLS Secret
+### TLS Secret
 
 ```text
 kubernetes.io/tls
@@ -2671,7 +2671,7 @@ kubernetes.io/tls
 
 ---
 
-## Image Pull Secret
+### Image Pull Secret
 
 ```text
 kubernetes.io/dockerconfigjson
@@ -2679,7 +2679,7 @@ kubernetes.io/dockerconfigjson
 
 ---
 
-## Secret Volume
+### Secret Volume
 
 ```text
 Expose Secret as files
@@ -2687,7 +2687,7 @@ Expose Secret as files
 
 ---
 
-## Secret Environment Variable
+### Secret Environment Variable
 
 ```text
 Expose Secret as process environment
@@ -2695,7 +2695,7 @@ Expose Secret as process environment
 
 ---
 
-## Encryption at Rest
+### Encryption at Rest
 
 ```text
 Protect stored Secret data
@@ -2703,7 +2703,7 @@ Protect stored Secret data
 
 ---
 
-## KMS
+### KMS
 
 ```text
 External key management
@@ -2711,7 +2711,7 @@ External key management
 
 ---
 
-## External Secret Manager
+### External Secret Manager
 
 ```text
 Dedicated system for managing credentials
@@ -2719,7 +2719,7 @@ Dedicated system for managing credentials
 
 ---
 
-## Workload Identity
+### Workload Identity
 
 ```text
 Workload-based authentication to external services
@@ -2727,7 +2727,7 @@ Workload-based authentication to external services
 
 ---
 
-## Rotation
+### Rotation
 
 ```text
 Replace credentials periodically or after compromise
@@ -2735,7 +2735,7 @@ Replace credentials periodically or after compromise
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Create Secret:
 
@@ -2816,9 +2816,9 @@ kubectl get role,rolebinding
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is a Kubernetes Secret?
 - Why are Secrets used?
@@ -2834,7 +2834,7 @@ kubectl get role,rolebinding
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How do you create a Secret using `kubectl`?
 - How do you mount a Secret as a volume?
@@ -2853,7 +2853,7 @@ kubectl get role,rolebinding
 
 ---
 
-## Advanced
+### Advanced
 
 - How would you design enterprise-grade Kubernetes Secret management?
 - How would you protect Secrets stored in etcd?
@@ -2873,13 +2873,13 @@ kubectl get role,rolebinding
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > Are Kubernetes Secrets encrypted because their values are Base64 encoded?
 
-### Answer
+#### Answer
 
 No.
 
@@ -2913,13 +2913,13 @@ External Secret Management
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > A Secret was accidentally committed to Git. What should you do?
 
-### Answer
+#### Answer
 
 Treat it as compromised.
 
@@ -2940,13 +2940,13 @@ Deleting the file in a later Git commit is not enough because the old value may 
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > How would you securely provide database credentials to a production Pod?
 
-### Answer
+#### Answer
 
 Prefer a dedicated external secret manager where practical:
 
@@ -2974,13 +2974,13 @@ For cloud-native environments, workload identity can avoid storing long-lived cl
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > A Kubernetes Secret was rotated, but the application is still using the old password. Why?
 
-### Answer
+#### Answer
 
 If the Secret was injected as an environment variable:
 
@@ -3008,13 +3008,13 @@ If the Secret is mounted as a volume, the mounted content may update, but the ap
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How would you prevent developers from reading production Secrets?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3054,7 +3054,7 @@ Allowed
 
 ---
 
-# Production Secret Management Checklist
+## Production Secret Management Checklist
 
 ```text
 ☑ Never hardcode credentials
@@ -3079,7 +3079,7 @@ Allowed
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create a Kubernetes Secret.
 2. Inspect its metadata.
@@ -3106,9 +3106,9 @@ Allowed
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Secrets
 - Secret Types
@@ -3123,7 +3123,7 @@ Allowed
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Kubernetes Secrets provide a mechanism for distributing sensitive configuration to workloads.
 
@@ -3321,9 +3321,9 @@ Credentials
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 54 – Image Security
+## Chapter 54 – Image Security
 
 Topics will include:
 

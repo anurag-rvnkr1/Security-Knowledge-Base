@@ -913,7 +913,7 @@ A mature cloud penetration testing program integrates with:
 
 ---
 
-# Cloud Penetration Testing Improvement Lifecycle
+## Cloud Penetration Testing Improvement Lifecycle
 
 ```
 Threat Modeling
@@ -971,7 +971,7 @@ Every penetration test should strengthen future security rather than simply prod
 
 ---
 
-# Define a Clear Testing Scope
+## Define a Clear Testing Scope
 
 Clearly define:
 
@@ -987,7 +987,7 @@ A well-defined scope reduces operational risk and ensures testing remains aligne
 
 ---
 
-# Integrate Penetration Testing into the SDLC
+## Integrate Penetration Testing into the SDLC
 
 Perform penetration testing:
 
@@ -1002,7 +1002,7 @@ Security testing should become a routine part of software delivery.
 
 ---
 
-# Secure Identity and Access Management
+## Secure Identity and Access Management
 
 Many cloud compromises begin with identity-related weaknesses.
 
@@ -1019,7 +1019,7 @@ Identity security significantly reduces exploitable attack paths.
 
 ---
 
-# Harden Cloud Infrastructure
+## Harden Cloud Infrastructure
 
 Reduce exploitable weaknesses by:
 
@@ -1034,7 +1034,7 @@ Infrastructure hardening reduces opportunities for successful exploitation.
 
 ---
 
-# Secure Cloud Networking
+## Secure Cloud Networking
 
 Protect network communications using:
 
@@ -1049,7 +1049,7 @@ Proper segmentation limits attacker movement after initial compromise.
 
 ---
 
-# Protect APIs
+## Protect APIs
 
 Secure APIs through:
 
@@ -1065,7 +1065,7 @@ APIs should undergo regular penetration testing due to their exposure and busine
 
 ---
 
-# Secure Containers and Kubernetes
+## Secure Containers and Kubernetes
 
 Implement preventive controls including:
 
@@ -1081,7 +1081,7 @@ Cloud-native workloads require continuous security validation.
 
 ---
 
-# Protect Secrets
+## Protect Secrets
 
 Store secrets using centralized secret management services rather than embedding them in:
 
@@ -1095,7 +1095,7 @@ Rotate secrets regularly and monitor access.
 
 ---
 
-# Strengthen Logging and Monitoring
+## Strengthen Logging and Monitoring
 
 Enable comprehensive logging for:
 
@@ -1131,7 +1131,7 @@ Monitoring enables rapid detection of attacker activity identified during penetr
 
 ---
 
-# Validate Security Controls
+## Validate Security Controls
 
 Regularly verify the effectiveness of:
 
@@ -1146,7 +1146,7 @@ Security controls should be tested rather than assumed to be effective.
 
 ---
 
-# Remediate Findings Promptly
+## Remediate Findings Promptly
 
 Prioritize remediation according to:
 
@@ -1160,7 +1160,7 @@ Critical findings should receive immediate attention.
 
 ---
 
-# Perform Continuous Security Assessments
+## Perform Continuous Security Assessments
 
 Cloud environments change rapidly.
 
@@ -1178,9 +1178,9 @@ Continuous assessment supports long-term resilience.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Obtain Proper Authorization
+#### 1. Obtain Proper Authorization
 
 Always secure documented approval before beginning penetration testing.
 
@@ -1195,7 +1195,7 @@ Testing without authorization is unacceptable.
 
 ---
 
-### 2. Combine Automated and Manual Testing
+#### 2. Combine Automated and Manual Testing
 
 Automated scanners identify known weaknesses efficiently.
 
@@ -1211,7 +1211,7 @@ Both approaches are necessary for comprehensive assessments.
 
 ---
 
-### 3. Test Production Carefully
+#### 3. Test Production Carefully
 
 Production testing should follow strict operational controls.
 
@@ -1227,7 +1227,7 @@ Minimize operational disruption while maintaining realistic testing.
 
 ---
 
-### 4. Focus on High-Risk Assets
+#### 4. Focus on High-Risk Assets
 
 Prioritize testing of:
 
@@ -1243,7 +1243,7 @@ Risk-based testing maximizes security value.
 
 ---
 
-### 5. Validate Cloud-Specific Controls
+#### 5. Validate Cloud-Specific Controls
 
 Assess:
 
@@ -1259,7 +1259,7 @@ Cloud-native controls require dedicated evaluation.
 
 ---
 
-### 6. Test Detection Capabilities
+#### 6. Test Detection Capabilities
 
 Penetration testing should verify whether:
 
@@ -1272,7 +1272,7 @@ Detection validation strengthens defensive readiness.
 
 ---
 
-### 7. Document Findings Thoroughly
+#### 7. Document Findings Thoroughly
 
 Every finding should include:
 
@@ -1287,7 +1287,7 @@ Clear reporting accelerates remediation efforts.
 
 ---
 
-### 8. Verify Remediation
+#### 8. Verify Remediation
 
 After vulnerabilities are fixed:
 
@@ -1300,7 +1300,7 @@ Remediation should always be verified before findings are closed.
 
 ---
 
-### 9. Measure Program Effectiveness
+#### 9. Measure Program Effectiveness
 
 Track metrics such as:
 
@@ -1314,7 +1314,7 @@ Metrics support continuous improvement.
 
 ---
 
-### 10. Continuously Improve Security
+#### 10. Continuously Improve Security
 
 Every penetration test should contribute to stronger security by:
 
@@ -1329,7 +1329,7 @@ Penetration testing should become an integral part of organizational security ma
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud Penetration Testing provides significant security value when performed correctly. However, organizations often make mistakes that reduce the effectiveness of testing, increase operational risk, or create a false sense of security.
 
@@ -1337,7 +1337,7 @@ Understanding these common mistakes helps organizations conduct safer, more comp
 
 ---
 
-### 1. Performing Penetration Testing Without Authorization
+#### 1. Performing Penetration Testing Without Authorization
 
 One of the most serious mistakes is conducting penetration testing without documented approval.
 
@@ -1365,7 +1365,7 @@ Authorization protects both the testing team and the organization.
 
 ---
 
-### 2. Defining an Incomplete Scope
+#### 2. Defining an Incomplete Scope
 
 Testing only a portion of the cloud environment leaves important attack paths unexplored.
 
@@ -1384,7 +1384,7 @@ The testing scope should accurately represent the production environment.
 
 ---
 
-### 3. Relying Solely on Automated Tools
+#### 3. Relying Solely on Automated Tools
 
 Automated scanners are valuable but cannot identify every security weakness.
 
@@ -1400,7 +1400,7 @@ Manual testing complements automation by validating exploitability and business 
 
 ---
 
-### 4. Ignoring Cloud Provider Policies
+#### 4. Ignoring Cloud Provider Policies
 
 Each cloud provider publishes guidance regarding permitted penetration testing activities.
 
@@ -1415,7 +1415,7 @@ Organizations should ensure testing complies with provider policies and contract
 
 ---
 
-### 5. Testing Only Infrastructure
+#### 5. Testing Only Infrastructure
 
 Cloud penetration testing should include:
 
@@ -1433,7 +1433,7 @@ Limiting assessments to infrastructure provides an incomplete security evaluatio
 
 ---
 
-### 6. Overlooking IAM Misconfigurations
+#### 6. Overlooking IAM Misconfigurations
 
 Identity is frequently the primary attack vector in cloud environments.
 
@@ -1449,7 +1449,7 @@ IAM should be thoroughly assessed during every engagement.
 
 ---
 
-### 7. Ignoring Post-Exploitation
+#### 7. Ignoring Post-Exploitation
 
 Stopping immediately after initial access fails to demonstrate the true business impact of a compromise.
 
@@ -1465,7 +1465,7 @@ Activities should remain within the approved scope and Rules of Engagement.
 
 ---
 
-### 8. Failing to Test Detection Capabilities
+#### 8. Failing to Test Detection Capabilities
 
 Penetration testing should validate whether existing monitoring systems detect attacker activity.
 
@@ -1481,7 +1481,7 @@ Testing detection is as important as identifying vulnerabilities.
 
 ---
 
-### 9. Not Validating Remediation
+#### 9. Not Validating Remediation
 
 Closing findings without retesting creates uncertainty.
 
@@ -1496,7 +1496,7 @@ Retesting should be a mandatory step before findings are considered resolved.
 
 ---
 
-### 10. Ignoring Cloud-Native Technologies
+#### 10. Ignoring Cloud-Native Technologies
 
 Modern cloud environments include services beyond traditional virtual machines.
 
@@ -1514,7 +1514,7 @@ Cloud-native technologies require specialized testing approaches.
 
 ---
 
-### 11. Poor Documentation
+#### 11. Poor Documentation
 
 Incomplete reports reduce the value of penetration testing.
 
@@ -1533,7 +1533,7 @@ Comprehensive reporting supports effective remediation and future assessments.
 
 ---
 
-### 12. Conducting Tests Too Infrequently
+#### 12. Conducting Tests Too Infrequently
 
 Cloud environments change rapidly.
 
@@ -1550,7 +1550,7 @@ Regular testing improves long-term security resilience.
 
 ---
 
-### 13. Ignoring Third-Party Integrations
+#### 13. Ignoring Third-Party Integrations
 
 Cloud applications often depend on external services.
 
@@ -1566,7 +1566,7 @@ These integrations should be evaluated for security risks where they fall within
 
 ---
 
-### 14. Failing to Prioritize Findings
+#### 14. Failing to Prioritize Findings
 
 Treating every finding equally delays remediation of the most significant risks.
 
@@ -1583,7 +1583,7 @@ Risk-based prioritization improves remediation effectiveness.
 
 ---
 
-### 15. Viewing Penetration Testing as a Compliance Requirement
+#### 15. Viewing Penetration Testing as a Compliance Requirement
 
 Penetration testing should not be performed solely to satisfy audits or regulatory requirements.
 
@@ -1599,7 +1599,7 @@ Organizations that integrate penetration testing into continuous security improv
 
 ---
 
-## Cloud Penetration Testing Checklist
+### Cloud Penetration Testing Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1621,9 +1621,9 @@ Organizations that integrate penetration testing into continuous security improv
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-115 – Technical Guide to Information Security Testing and Assessment
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
@@ -1635,7 +1635,7 @@ Organizations that integrate penetration testing into continuous security improv
 
 ---
 
-### Penetration Testing Methodologies
+#### Penetration Testing Methodologies
 
 - OWASP Web Security Testing Guide (WSTG)
 - OWASP Application Security Verification Standard (ASVS)
@@ -1646,27 +1646,27 @@ Organizations that integrate penetration testing into continuous security improv
 
 ---
 
-### Cloud Security Documentation
+#### Cloud Security Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - AWS Penetration Testing Policy
 - AWS Security Best Practices
 - AWS Well-Architected Framework – Security Pillar
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Microsoft Cloud Penetration Testing Guidance
 - Azure Well-Architected Framework – Security
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Google Cloud Security Best Practices
 - Google Cloud Architecture Framework – Security
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -1678,7 +1678,7 @@ Organizations that integrate penetration testing into continuous security improv
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - OWASP Web Security Testing Guide
 - OWASP API Security Top 10

@@ -1,10 +1,10 @@
 # 11-Windows-Services.md
 
-# Part 1 — Windows Services Fundamentals, Service Architecture, Service Control Manager (SCM), Service Lifecycle, and Startup Types
+## Part 1 — Windows Services Fundamentals, Service Architecture, Service Control Manager (SCM), Service Lifecycle, and Startup Types
 
 ---
 
-# Introduction
+## Introduction
 
 Many essential Windows functions continue running even when **no user is logged in**.
 
@@ -44,7 +44,7 @@ Many enterprise servers run hundreds of services simultaneously.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -59,7 +59,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is a Windows Service?
+## What is a Windows Service?
 
 A **Windows Service** is a long-running background application managed by the operating system.
 
@@ -90,7 +90,7 @@ Runs in Background
 
 ---
 
-# Why Windows Uses Services
+## Why Windows Uses Services
 
 Instead of placing every function inside the operating system kernel, Windows separates many features into services.
 
@@ -124,7 +124,7 @@ This modular design improves flexibility and maintainability.
 
 ---
 
-# Characteristics of Windows Services
+## Characteristics of Windows Services
 
 Most services:
 
@@ -139,7 +139,7 @@ Services may continue operating regardless of whether an interactive user sessio
 
 ---
 
-# Service vs Application
+## Service vs Application
 
 | Application | Service |
 |-------------|----------|
@@ -151,7 +151,7 @@ Services may continue operating regardless of whether an interactive user sessio
 
 ---
 
-# Common Windows Services
+## Common Windows Services
 
 | Service | Purpose |
 |----------|----------|
@@ -166,7 +166,7 @@ Services may continue operating regardless of whether an interactive user sessio
 
 ---
 
-# Examples of Enterprise Services
+## Examples of Enterprise Services
 
 Enterprise environments commonly use services for:
 
@@ -183,7 +183,7 @@ Most enterprise software installs one or more Windows services.
 
 ---
 
-# Service Architecture
+## Service Architecture
 
 Simplified architecture:
 
@@ -207,7 +207,7 @@ The Service Control Manager coordinates service operation.
 
 ---
 
-# What is the Service Control Manager (SCM)?
+## What is the Service Control Manager (SCM)?
 
 The **Service Control Manager (SCM)** is a core Windows component responsible for managing services.
 
@@ -224,7 +224,7 @@ The SCM begins operating early during the Windows boot process.
 
 ---
 
-# Simplified SCM Workflow
+## Simplified SCM Workflow
 
 ```text
 System Boots
@@ -252,7 +252,7 @@ Monitor Running Services
 
 ---
 
-# Where Service Information is Stored
+## Where Service Information is Stored
 
 Service configuration is primarily stored in the Windows Registry.
 
@@ -284,7 +284,7 @@ Each service has its own registry key containing configuration information.
 
 ---
 
-# Service Components
+## Service Components
 
 Each Windows service typically includes:
 
@@ -303,7 +303,7 @@ Service
 
 ---
 
-# Service Name vs Display Name
+## Service Name vs Display Name
 
 Every service has:
 
@@ -334,7 +334,7 @@ Scripts and command-line tools often use the service name.
 
 ---
 
-# Service Lifecycle
+## Service Lifecycle
 
 A simplified service lifecycle:
 
@@ -370,7 +370,7 @@ Not every service supports every state.
 
 ---
 
-# Service States
+## Service States
 
 Common service states include:
 
@@ -386,7 +386,7 @@ Common service states include:
 
 ---
 
-# Startup Types
+## Startup Types
 
 Windows supports multiple startup configurations.
 
@@ -401,7 +401,7 @@ Choosing the appropriate startup type affects boot performance and resource usag
 
 ---
 
-# Automatic Startup
+## Automatic Startup
 
 ```text
 System Boot
@@ -423,7 +423,7 @@ Critical operating system services typically use Automatic startup.
 
 ---
 
-# Automatic (Delayed Start)
+## Automatic (Delayed Start)
 
 Some non-critical services are configured for delayed startup.
 
@@ -447,7 +447,7 @@ Delayed startup reduces resource contention during boot.
 
 ---
 
-# Manual Startup
+## Manual Startup
 
 Manual services start only when needed.
 
@@ -473,7 +473,7 @@ Many services remain stopped until another application requires them.
 
 ---
 
-# Disabled Startup
+## Disabled Startup
 
 Disabled services cannot be started normally.
 
@@ -493,7 +493,7 @@ Disabling essential services may prevent Windows or applications from functionin
 
 ---
 
-# Service Dependencies
+## Service Dependencies
 
 Many services rely on other services.
 
@@ -515,7 +515,7 @@ If Service B is unavailable, Service A may fail to start.
 
 ---
 
-# Dependency Example
+## Dependency Example
 
 ```text
 Application Service
@@ -537,7 +537,7 @@ Dependencies ensure required components are available before dependent services 
 
 ---
 
-# Dependency Tree
+## Dependency Tree
 
 ```text
 Service A
@@ -553,7 +553,7 @@ Stopping a lower-level dependency may affect multiple higher-level services.
 
 ---
 
-# Why Dependencies Matter
+## Why Dependencies Matter
 
 Without dependency management:
 
@@ -589,7 +589,7 @@ Normal Operation
 
 ---
 
-# Service Failure During Boot
+## Service Failure During Boot
 
 If an essential service fails:
 
@@ -613,7 +613,7 @@ Modern Windows includes recovery mechanisms for many service failures.
 
 ---
 
-# Viewing Services
+## Viewing Services
 
 Administrators commonly use:
 
@@ -631,7 +631,7 @@ This graphical console displays:
 
 ---
 
-# Services Management Console
+## Services Management Console
 
 The Services console allows administrators to:
 
@@ -646,7 +646,7 @@ It is one of the most frequently used administrative tools.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An organization deploys endpoint protection software.
 
@@ -676,7 +676,7 @@ Even if users log off, the protection service remains active.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently interact with services because they:
 
@@ -697,7 +697,7 @@ Service monitoring is an important part of endpoint security.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper service management helps organizations:
 
@@ -712,7 +712,7 @@ Misconfigured services can interrupt critical business operations.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Leave critical Windows services at their default startup configuration unless a documented business need exists.
 - Review service dependencies before disabling services.
@@ -724,9 +724,9 @@ Misconfigured services can interrupt critical business operations.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Running Services
+### Lab 1 — View Running Services
 
 Open:
 
@@ -744,7 +744,7 @@ Identify five services configured for Automatic startup.
 
 ---
 
-## Lab 2 — View Service Properties
+### Lab 2 — View Service Properties
 
 Select a service such as:
 
@@ -764,7 +764,7 @@ Do not modify production settings.
 
 ---
 
-## Lab 3 — Explore Service Dependencies
+### Lab 3 — Explore Service Dependencies
 
 Within the Services console:
 
@@ -778,7 +778,7 @@ Document the dependency relationships.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows Services are background applications managed by the Service Control Manager.
 - Services usually operate without user interaction.
@@ -789,7 +789,7 @@ Document the dependency relationships.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a Windows Service?
 2. What is the Service Control Manager (SCM)?
@@ -804,7 +804,7 @@ Document the dependency relationships.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Services Documentation
@@ -814,13 +814,13 @@ Document the dependency relationships.
 
 ---
 
-# 11-Windows-Services.md
+## 11-Windows-Services.md
 
-# Part 2 — Service Accounts, Service Management Tools, Recovery Options, Windows Service Security, and Service Configuration
+## Part 2 — Service Accounts, Service Management Tools, Recovery Options, Windows Service Security, and Service Configuration
 
 ---
 
-# Introduction
+## Introduction
 
 In Part 1, you learned what Windows Services are, how the **Service Control Manager (SCM)** manages them, and how startup types and dependencies influence service operation.
 
@@ -836,7 +836,7 @@ These concepts are essential for Windows administration, server management, cybe
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Every Windows service runs under a **security context** known as a **service account**.
 
@@ -868,7 +868,7 @@ Access Windows Resources
 
 ---
 
-# Why Service Accounts Matter
+## Why Service Accounts Matter
 
 Without a service account:
 
@@ -902,7 +902,7 @@ Following the Principle of Least Privilege helps reduce the impact of compromise
 
 ---
 
-# Common Built-in Service Accounts
+## Common Built-in Service Accounts
 
 Windows provides several built-in accounts specifically for services.
 
@@ -916,7 +916,7 @@ Each account is designed for different operational requirements.
 
 ---
 
-# Local System Account
+## Local System Account
 
 The **Local System** account has extensive privileges on the local computer.
 
@@ -930,7 +930,7 @@ Because of its privileges, administrators should avoid using Local System unless
 
 ---
 
-# Local Service Account
+## Local Service Account
 
 The **Local Service** account is designed for services requiring minimal local privileges.
 
@@ -944,7 +944,7 @@ This account helps improve system security.
 
 ---
 
-# Network Service Account
+## Network Service Account
 
 The **Network Service** account:
 
@@ -971,7 +971,7 @@ Computer Account Authentication
 
 ---
 
-# Domain Service Accounts
+## Domain Service Accounts
 
 In enterprise environments, services may run under dedicated **domain accounts**.
 
@@ -999,7 +999,7 @@ Administrators should avoid using standard user accounts for services whenever p
 
 ---
 
-# Managed Service Accounts (Overview)
+## Managed Service Accounts (Overview)
 
 Modern Windows environments support managed service accounts.
 
@@ -1014,7 +1014,7 @@ A deeper discussion appears in the Active Directory chapter.
 
 ---
 
-# Service Log On Configuration
+## Service Log On Configuration
 
 Each service includes a **Log On** configuration.
 
@@ -1038,7 +1038,7 @@ Changing a service account may require restarting the service.
 
 ---
 
-# Service Management Tools
+## Service Management Tools
 
 Windows offers several methods for managing services.
 
@@ -1055,7 +1055,7 @@ Administrators often combine multiple tools depending on the task.
 
 ---
 
-# Using Services Console
+## Using Services Console
 
 The Services console supports:
 
@@ -1072,7 +1072,7 @@ It is the standard graphical management interface.
 
 ---
 
-# Using SC.EXE
+## Using SC.EXE
 
 `sc.exe` (Service Controller) is a command-line utility for managing services.
 
@@ -1090,7 +1090,7 @@ sc query wuauserv
 
 ---
 
-# Starting a Service
+## Starting a Service
 
 Example:
 
@@ -1118,7 +1118,7 @@ Service Started
 
 ---
 
-# Stopping a Service
+## Stopping a Service
 
 Example:
 
@@ -1130,7 +1130,7 @@ Stopping critical services may interrupt system functionality or business applic
 
 ---
 
-# Creating a Service (Conceptual)
+## Creating a Service (Conceptual)
 
 Applications can register services with Windows.
 
@@ -1156,7 +1156,7 @@ Creating services generally requires administrative privileges.
 
 ---
 
-# Deleting a Service
+## Deleting a Service
 
 A service can be removed after it is no longer required.
 
@@ -1178,7 +1178,7 @@ Deleting essential Windows services can make the operating system unstable.
 
 ---
 
-# PowerShell Service Management
+## PowerShell Service Management
 
 PowerShell provides powerful service management cmdlets.
 
@@ -1210,7 +1210,7 @@ PowerShell automation is covered in detail in a later chapter.
 
 ---
 
-# Viewing Service Status
+## Viewing Service Status
 
 Common service statuses include:
 
@@ -1224,7 +1224,7 @@ Common service statuses include:
 
 ---
 
-# Service Recovery
+## Service Recovery
 
 Windows can automatically recover failed services.
 
@@ -1239,7 +1239,7 @@ These settings help improve system availability.
 
 ---
 
-# Recovery Workflow
+## Recovery Workflow
 
 ```text
 Service Failure
@@ -1263,7 +1263,7 @@ Normal Operation Restored
 
 ---
 
-# Recovery Options
+## Recovery Options
 
 Administrators may configure different actions for:
 
@@ -1301,7 +1301,7 @@ Recovery strategies should match business requirements.
 
 ---
 
-# Service Failure Example
+## Service Failure Example
 
 A backup service unexpectedly terminates.
 
@@ -1329,7 +1329,7 @@ Automatic recovery reduces operational disruption.
 
 ---
 
-# Service Security
+## Service Security
 
 Windows protects services using security descriptors and access control.
 
@@ -1345,7 +1345,7 @@ Only authorized users should have administrative control over services.
 
 ---
 
-# Service Permissions
+## Service Permissions
 
 Like files and registry keys, services have permissions.
 
@@ -1364,7 +1364,7 @@ Possible operations include:
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Service accounts should receive only the permissions required.
 
@@ -1384,7 +1384,7 @@ Avoid granting administrative privileges without a documented business need.
 
 ---
 
-# Service Configuration
+## Service Configuration
 
 Administrators commonly configure:
 
@@ -1399,7 +1399,7 @@ Changes should follow organizational change management procedures.
 
 ---
 
-# Service Dependencies Review
+## Service Dependencies Review
 
 Before changing a service:
 
@@ -1427,7 +1427,7 @@ Failure to review dependencies may disrupt multiple applications.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A monitoring agent runs as a Windows service.
 
@@ -1457,7 +1457,7 @@ This configuration improves reliability while limiting privileges.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers sometimes attempt to:
 
@@ -1471,7 +1471,7 @@ Security teams should monitor for unexpected service creation and configuration 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper service configuration provides:
 
@@ -1486,7 +1486,7 @@ Poorly configured services can interrupt critical business functions.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use the least-privileged service account that satisfies operational requirements.
 - Prefer dedicated service accounts for enterprise applications.
@@ -1498,9 +1498,9 @@ Poorly configured services can interrupt critical business functions.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Service Account
+### Lab 1 — View Service Account
 
 Open:
 
@@ -1520,7 +1520,7 @@ Identify the account used by the service.
 
 ---
 
-## Lab 2 — Manage a Service with PowerShell
+### Lab 2 — Manage a Service with PowerShell
 
 Open **Windows PowerShell** as Administrator.
 
@@ -1536,7 +1536,7 @@ Do not stop essential production services.
 
 ---
 
-## Lab 3 — Review Recovery Settings
+### Lab 3 — Review Recovery Settings
 
 Open:
 
@@ -1562,7 +1562,7 @@ Document your observations.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Every Windows service runs under a service account.
 - Local System has extensive privileges and should be used carefully.
@@ -1574,7 +1574,7 @@ Document your observations.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a service account?
 2. What is the difference between Local System and Local Service?
@@ -1589,7 +1589,7 @@ Document your observations.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Services Documentation
@@ -1600,13 +1600,13 @@ Document your observations.
 
 ---
 
-# 11-Windows-Services.md
+## 11-Windows-Services.md
 
-# Part 3 — Windows Service Internals, Service Hosting, svchost.exe, Service Security Monitoring, and Troubleshooting
+## Part 3 — Windows Service Internals, Service Hosting, svchost.exe, Service Security Monitoring, and Troubleshooting
 
 ---
 
-# Introduction
+## Introduction
 
 In the previous sections, you learned:
 
@@ -1630,7 +1630,7 @@ Understanding service internals is valuable for:
 
 ---
 
-# Windows Service Internals
+## Windows Service Internals
 
 A Windows Service is an executable program that communicates with the **Service Control Manager (SCM)** through a defined interface.
 
@@ -1660,7 +1660,7 @@ The SCM controls the service lifecycle while the service performs its assigned t
 
 ---
 
-# Service Process Model
+## Service Process Model
 
 Services do not all execute in the same way.
 
@@ -1690,7 +1690,7 @@ Shared Host Process
 
 ---
 
-# What is svchost.exe?
+## What is svchost.exe?
 
 Many Windows services run inside a process called:
 
@@ -1704,7 +1704,7 @@ It allows multiple services to share a common process instead of each requiring 
 
 ---
 
-# Why Service Host Exists
+## Why Service Host Exists
 
 Without a shared host:
 
@@ -1730,7 +1730,7 @@ This approach improves resource utilization while maintaining service organizati
 
 ---
 
-# Modern Service Hosting
+## Modern Service Hosting
 
 Older versions of Windows often grouped many services into a small number of `svchost.exe` processes.
 
@@ -1745,7 +1745,7 @@ Benefits include:
 
 ---
 
-# Service Hosting Example
+## Service Hosting Example
 
 ```text
 svchost.exe
@@ -1766,7 +1766,7 @@ Each Service Host instance may contain one or more related services.
 
 ---
 
-# Dedicated Service Processes
+## Dedicated Service Processes
 
 Some applications install services that execute in dedicated processes.
 
@@ -1788,7 +1788,7 @@ This simplifies isolation and troubleshooting.
 
 ---
 
-# Service Registration
+## Service Registration
 
 When a service is installed:
 
@@ -1816,7 +1816,7 @@ The Service Control Manager reads service configuration during startup.
 
 ---
 
-# Service Executable Path
+## Service Executable Path
 
 Every service specifies an executable.
 
@@ -1838,7 +1838,7 @@ Security teams often verify executable paths during investigations.
 
 ---
 
-# Service Start Sequence
+## Service Start Sequence
 
 Simplified startup sequence:
 
@@ -1870,7 +1870,7 @@ Initialization failures may prevent the service from reaching the Running state.
 
 ---
 
-# Service Control Requests
+## Service Control Requests
 
 The SCM communicates with services using control requests.
 
@@ -1888,7 +1888,7 @@ Not every service supports every control request.
 
 ---
 
-# Service Status Reporting
+## Service Status Reporting
 
 Services periodically report their status to the SCM.
 
@@ -1914,7 +1914,7 @@ If a service becomes unresponsive during startup or shutdown, Windows may log an
 
 ---
 
-# Viewing Hosted Services
+## Viewing Hosted Services
 
 Using **Task Manager** or **Process Explorer**, administrators can determine:
 
@@ -1934,7 +1934,7 @@ This assists in troubleshooting shared service processes.
 
 ---
 
-# Viewing Services from Command Line
+## Viewing Services from Command Line
 
 Display running services:
 
@@ -1956,7 +1956,7 @@ sc qc wuauserv
 
 ---
 
-# Using TASKLIST
+## Using TASKLIST
 
 Windows can display which services are hosted inside a process.
 
@@ -1980,7 +1980,7 @@ This is useful during troubleshooting and incident response.
 
 ---
 
-# Service Logging
+## Service Logging
 
 Many services generate information through:
 
@@ -1993,7 +1993,7 @@ Administrators should review logs before restarting or reinstalling services.
 
 ---
 
-# Common Service Problems
+## Common Service Problems
 
 Examples include:
 
@@ -2009,7 +2009,7 @@ A structured troubleshooting approach helps identify the root cause.
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```text
 Service Fails
@@ -2045,7 +2045,7 @@ Escalate if Needed
 
 ---
 
-# Dependency Failure
+## Dependency Failure
 
 Example:
 
@@ -2073,7 +2073,7 @@ Always verify dependencies before modifying or restarting services.
 
 ---
 
-# Startup Timeout
+## Startup Timeout
 
 Some services require additional time during initialization.
 
@@ -2099,7 +2099,7 @@ Repeated startup failures may indicate application or configuration problems.
 
 ---
 
-# Service Permissions Review
+## Service Permissions Review
 
 Administrators should verify:
 
@@ -2113,7 +2113,7 @@ Improper permissions can increase security risk.
 
 ---
 
-# Service Executable Security
+## Service Executable Security
 
 Protect service executables using:
 
@@ -2126,7 +2126,7 @@ Replacing a legitimate service executable could allow unauthorized code to execu
 
 ---
 
-# Monitoring Services
+## Monitoring Services
 
 Enterprise monitoring platforms commonly track:
 
@@ -2142,7 +2142,7 @@ Monitoring helps detect both operational issues and potential security incidents
 
 ---
 
-# Service Monitoring Workflow
+## Service Monitoring Workflow
 
 ```text
 Service Event
@@ -2172,7 +2172,7 @@ This centralized approach supports rapid detection across enterprise environment
 
 ---
 
-# Performance Monitoring
+## Performance Monitoring
 
 Administrators may monitor:
 
@@ -2187,7 +2187,7 @@ Performance trends help identify degraded services before outages occur.
 
 ---
 
-# Service Hardening
+## Service Hardening
 
 Service hardening reduces risk by limiting what services can access.
 
@@ -2203,7 +2203,7 @@ These measures reduce the potential impact of service compromise.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A monitoring platform detects that a critical backup service has stopped.
 
@@ -2241,7 +2241,7 @@ A documented response process minimizes downtime.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers may attempt to abuse services for:
 
@@ -2262,7 +2262,7 @@ Monitoring service behavior helps identify suspicious activity early.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable service management provides:
 
@@ -2277,7 +2277,7 @@ Critical enterprise applications often depend on properly functioning Windows se
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor critical service availability.
 - Investigate repeated service failures.
@@ -2289,9 +2289,9 @@ Critical enterprise applications often depend on properly functioning Windows se
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Hosted Services
+### Lab 1 — View Hosted Services
 
 Open **Command Prompt**.
 
@@ -2311,7 +2311,7 @@ Identify a `svchost.exe` instance hosting multiple services.
 
 ---
 
-## Lab 2 — Review Service Configuration
+### Lab 2 — Review Service Configuration
 
 Run:
 
@@ -2330,7 +2330,7 @@ Document the configuration.
 
 ---
 
-## Lab 3 — Examine Service Logs
+### Lab 3 — Examine Service Logs
 
 Open:
 
@@ -2356,7 +2356,7 @@ Record the Event ID and description for one service-related event.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Many Windows services execute inside `svchost.exe`, while others use dedicated processes.
 - The Service Control Manager communicates with services through control requests.
@@ -2366,7 +2366,7 @@ Record the Event ID and description for one service-related event.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is `svchost.exe`?
 2. Why do multiple services sometimes share the same process?
@@ -2381,7 +2381,7 @@ Record the Event ID and description for one service-related event.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Services Documentation
@@ -2391,13 +2391,13 @@ Record the Event ID and description for one service-related event.
 
 ---
 
-# 11-Windows-Services.md
+## 11-Windows-Services.md
 
-# Part 4 — Enterprise Service Administration, Malware Persistence, Service Forensics, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Service Administration, Malware Persistence, Service Forensics, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Windows Services are among the most important components of the Windows operating system.
 
@@ -2422,7 +2422,7 @@ This chapter concludes with enterprise service administration, security monitori
 
 ---
 
-# Enterprise Service Administration
+## Enterprise Service Administration
 
 Large organizations rarely manage services manually on each computer.
 
@@ -2461,7 +2461,7 @@ Centralized management improves consistency and reduces administrative effort.
 
 ---
 
-# Service Inventory
+## Service Inventory
 
 Organizations should maintain an inventory of:
 
@@ -2486,7 +2486,7 @@ A documented inventory simplifies audits and incident response.
 
 ---
 
-# Baseline Configuration
+## Baseline Configuration
 
 Administrators establish a **baseline** describing expected service configurations.
 
@@ -2516,7 +2516,7 @@ Future deviations can be investigated.
 
 ---
 
-# Configuration Drift
+## Configuration Drift
 
 Over time, service configurations may change unintentionally.
 
@@ -2547,7 +2547,7 @@ Regular reviews help identify unexpected changes.
 
 ---
 
-# Service Auditing
+## Service Auditing
 
 Organizations should periodically audit:
 
@@ -2563,7 +2563,7 @@ Audits help verify that services remain aligned with security policies.
 
 ---
 
-# Change Management
+## Change Management
 
 Service modifications should follow a documented process.
 
@@ -2599,7 +2599,7 @@ Formal change management reduces operational risk.
 
 ---
 
-# Backup Considerations
+## Backup Considerations
 
 Service configuration should be included in disaster recovery planning.
 
@@ -2614,7 +2614,7 @@ Recovery planning reduces downtime after failures.
 
 ---
 
-# Malware Persistence Through Services
+## Malware Persistence Through Services
 
 Attackers sometimes attempt to establish persistence by creating or modifying Windows services.
 
@@ -2640,7 +2640,7 @@ Security teams monitor for unexpected service creation and configuration changes
 
 ---
 
-# Indicators of Suspicious Services
+## Indicators of Suspicious Services
 
 Analysts may investigate services exhibiting:
 
@@ -2655,7 +2655,7 @@ These indicators should be evaluated together with other evidence.
 
 ---
 
-# Service Name Masquerading
+## Service Name Masquerading
 
 Attackers may choose names that resemble legitimate services.
 
@@ -2681,7 +2681,7 @@ Careful review of spelling, executable paths, and digital signatures helps disti
 
 ---
 
-# Unauthorized Service Modification
+## Unauthorized Service Modification
 
 Potential changes include:
 
@@ -2694,7 +2694,7 @@ Unexpected modifications should be reviewed promptly.
 
 ---
 
-# Service Executable Verification
+## Service Executable Verification
 
 When investigating a service, verify:
 
@@ -2726,7 +2726,7 @@ File verification strengthens confidence that the service executable has not bee
 
 ---
 
-# Service Forensics
+## Service Forensics
 
 Service-related investigations commonly collect:
 
@@ -2745,7 +2745,7 @@ This information supports incident response and root cause analysis.
 
 ---
 
-# Service Investigation Workflow
+## Service Investigation Workflow
 
 ```text
 Alert
@@ -2781,7 +2781,7 @@ Contain and Remediate (if necessary)
 
 ---
 
-# Correlating Service Activity
+## Correlating Service Activity
 
 Service activity should be analyzed alongside:
 
@@ -2813,7 +2813,7 @@ Correlation provides stronger evidence than isolated events.
 
 ---
 
-# Service Event Logging
+## Service Event Logging
 
 Windows records many service events in the **System** log.
 
@@ -2830,7 +2830,7 @@ Event IDs vary depending on the event and Windows version. Analysts should verif
 
 ---
 
-# Service Performance Monitoring
+## Service Performance Monitoring
 
 Administrators monitor:
 
@@ -2845,7 +2845,7 @@ Trend analysis helps identify recurring issues before they affect business opera
 
 ---
 
-# High Availability Considerations
+## High Availability Considerations
 
 For business-critical services:
 
@@ -2873,7 +2873,7 @@ High availability solutions depend on application design and infrastructure capa
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A banking application depends on three services.
 
@@ -2900,7 +2900,7 @@ If the monitoring platform detects repeated failures:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Services are frequently monitored because they may indicate:
 
@@ -2914,7 +2914,7 @@ Security teams combine service telemetry with process, registry, authentication,
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong service administration provides:
 
@@ -2929,7 +2929,7 @@ Weak service management can increase downtime, security exposure, and recovery t
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Maintain an approved inventory of installed services.
 - Review automatic services regularly.
@@ -2943,9 +2943,9 @@ Weak service management can increase downtime, security exposure, and recovery t
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review Automatic Services
+### Lab 1 — Review Automatic Services
 
 Open:
 
@@ -2964,7 +2964,7 @@ Record five examples and describe their purpose.
 
 ---
 
-## Lab 2 — Collect Service Information
+### Lab 2 — Collect Service Information
 
 Using **PowerShell**:
 
@@ -2982,7 +2982,7 @@ Choose a service and document:
 
 ---
 
-## Lab 3 — Build a Service Inventory
+### Lab 3 — Build a Service Inventory
 
 Create a table containing:
 
@@ -2993,7 +2993,7 @@ Populate the table with ten services from a lab or personal Windows system.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3023,7 +3023,7 @@ These concepts prepare you for advanced topics involving the Windows Registry, A
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows Services provide continuous background functionality.
 - The Service Control Manager manages the entire service lifecycle.
@@ -3036,7 +3036,7 @@ These concepts prepare you for advanced topics involving the Windows Registry, A
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the Service Control Manager (SCM)?
 2. What are the common Windows service startup types?
@@ -3051,7 +3051,7 @@ These concepts prepare you for advanced topics involving the Windows Registry, A
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Services Documentation
@@ -3063,7 +3063,7 @@ These concepts prepare you for advanced topics involving the Windows Registry, A
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 11 – Windows Services**.
 

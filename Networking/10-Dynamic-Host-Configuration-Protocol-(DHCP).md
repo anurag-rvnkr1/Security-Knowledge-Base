@@ -1,10 +1,10 @@
 # 10 - Dynamic Host Configuration Protocol (DHCP)
 
-# Part 1 — DHCP Fundamentals, Architecture, DORA Process, Lease Allocation, and Enterprise Operations
+## Part 1 — DHCP Fundamentals, Architecture, DORA Process, Lease Allocation, and Enterprise Operations
 
 ---
 
-# Overview
+## Overview
 
 Modern enterprise networks may contain **thousands to millions of devices** including:
 
@@ -33,7 +33,7 @@ DHCP automatically provides network configuration to clients, allowing devices t
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -48,7 +48,7 @@ After completing this chapter, you should be able to:
 
 ---
 
-# What is DHCP?
+## What is DHCP?
 
 **Dynamic Host Configuration Protocol (DHCP)** is an application-layer protocol that automatically assigns IP configuration information to network devices.
 
@@ -66,7 +66,7 @@ Instead of configuring every device manually, a DHCP server supplies these value
 
 ---
 
-# Why DHCP is Important
+## Why DHCP is Important
 
 Without DHCP:
 
@@ -110,7 +110,7 @@ Benefits include:
 
 ---
 
-# Evolution of DHCP
+## Evolution of DHCP
 
 Before DHCP, many networks used **BOOTP (Bootstrap Protocol)**.
 
@@ -127,7 +127,7 @@ Modern DHCP implementations remain compatible with many BOOTP concepts while pro
 
 ---
 
-# DHCP Architecture
+## DHCP Architecture
 
 A DHCP deployment typically consists of:
 
@@ -151,9 +151,9 @@ The client requests configuration, while the DHCP server allocates addressing in
 
 ---
 
-# DHCP Components
+## DHCP Components
 
-## DHCP Client
+### DHCP Client
 
 The client is any device requesting configuration.
 
@@ -168,7 +168,7 @@ Examples:
 
 ---
 
-## DHCP Server
+### DHCP Server
 
 The DHCP server maintains:
 
@@ -182,7 +182,7 @@ The server determines which IP address is assigned to each client.
 
 ---
 
-## Relay Agent (Optional)
+### Relay Agent (Optional)
 
 When clients and servers reside on different networks, a **DHCP Relay Agent** forwards DHCP messages across routers.
 
@@ -208,7 +208,7 @@ Without a relay agent, DHCP broadcasts normally do not cross routers.
 
 ---
 
-# DHCP Ports
+## DHCP Ports
 
 DHCP uses UDP.
 
@@ -231,11 +231,11 @@ UDP
 
 ---
 
-# DHCP Address Allocation Methods
+## DHCP Address Allocation Methods
 
 DHCP supports multiple allocation strategies.
 
-## Dynamic Allocation
+### Dynamic Allocation
 
 Addresses are leased temporarily.
 
@@ -265,13 +265,13 @@ This is the most common enterprise deployment.
 
 ---
 
-## Automatic Allocation
+### Automatic Allocation
 
 The first assigned address is permanently associated with the client until manually changed by the administrator.
 
 ---
 
-## Manual Allocation (Reservation)
+### Manual Allocation (Reservation)
 
 Specific MAC addresses receive predefined IP addresses.
 
@@ -303,7 +303,7 @@ Typical use cases:
 
 ---
 
-# DHCP Scope
+## DHCP Scope
 
 A **scope** defines the range of addresses available for assignment.
 
@@ -323,7 +323,7 @@ The DHCP server leases addresses only from this configured range unless reservat
 
 ---
 
-# Exclusion Range
+## Exclusion Range
 
 Certain addresses should never be leased dynamically.
 
@@ -359,7 +359,7 @@ These addresses are excluded from the dynamic pool.
 
 ---
 
-# DHCP Lease
+## DHCP Lease
 
 A **lease** is the temporary assignment of an IP address to a client.
 
@@ -385,7 +385,7 @@ At lease expiration, the address may be renewed or returned to the available poo
 
 ---
 
-# Lease Database
+## Lease Database
 
 The DHCP server maintains a database containing:
 
@@ -400,7 +400,7 @@ This database prevents duplicate assignments and tracks active clients.
 
 ---
 
-# The DORA Process
+## The DORA Process
 
 DHCP uses a four-step exchange known as **DORA**:
 
@@ -424,7 +424,7 @@ This sequence allows clients to obtain valid network configuration.
 
 ---
 
-# Step 1 — DHCP Discover
+## Step 1 — DHCP Discover
 
 A new client does not yet have an IP address.
 
@@ -446,7 +446,7 @@ Since the client lacks an address, it cannot send a unicast request to a known s
 
 ---
 
-# Step 2 — DHCP Offer
+## Step 2 — DHCP Offer
 
 One or more DHCP servers may respond with an offer.
 
@@ -474,7 +474,7 @@ The offer typically includes:
 
 ---
 
-# Step 3 — DHCP Request
+## Step 3 — DHCP Request
 
 The client selects one offer and broadcasts a request indicating the chosen server and requested address.
 
@@ -496,7 +496,7 @@ Other DHCP servers withdraw any outstanding offers.
 
 ---
 
-# Step 4 — DHCP Acknowledgment (ACK)
+## Step 4 — DHCP Acknowledgment (ACK)
 
 The selected server confirms the lease.
 
@@ -512,7 +512,7 @@ The client configures its network interface and can begin communication.
 
 ---
 
-# Complete DORA Workflow
+## Complete DORA Workflow
 
 ```
 Client
@@ -552,7 +552,7 @@ Client Configures Interface
 
 ---
 
-# What Information Does DHCP Provide?
+## What Information Does DHCP Provide?
 
 Typical configuration includes:
 
@@ -569,7 +569,7 @@ Additional parameters are delivered using DHCP options.
 
 ---
 
-# DHCP Message Types
+## DHCP Message Types
 
 | Message | Purpose |
 |----------|----------|
@@ -584,7 +584,7 @@ Additional parameters are delivered using DHCP options.
 
 ---
 
-# Broadcast vs Unicast
+## Broadcast vs Unicast
 
 During initial configuration:
 
@@ -624,7 +624,7 @@ The exact behavior depends on the client state and DHCP flags.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Employee Laptop
@@ -664,7 +664,7 @@ No manual configuration is required.
 
 ---
 
-# Common DHCP Problems
+## Common DHCP Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -676,7 +676,7 @@ No manual configuration is required.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable DHCP services enable:
 
@@ -691,7 +691,7 @@ A DHCP outage can prevent new devices from joining the network and disrupt norma
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - DHCP automatically assigns IP configuration to network devices.
 - It replaces time-consuming manual IP configuration.
@@ -701,13 +701,13 @@ A DHCP outage can prevent new devices from joining the network and disrupt norma
 - Scopes, exclusions, and leases allow administrators to manage address distribution efficiently.
 - DHCP is a foundational service in modern enterprise, campus, data center, and cloud-connected networks.
 
-# 10 - Dynamic Host Configuration Protocol (DHCP)
+## 10 - Dynamic Host Configuration Protocol (DHCP)
 
-# Part 2 — DHCP Lease Lifecycle, Renewal Process, Relay Agents, DHCP Options, DHCPv6, High Availability, and Enterprise Architecture
+## Part 2 — DHCP Lease Lifecycle, Renewal Process, Relay Agents, DHCP Options, DHCPv6, High Availability, and Enterprise Architecture
 
 ---
 
-# Overview
+## Overview
 
 Receiving an IP address is only the beginning of the DHCP process.
 
@@ -726,7 +726,7 @@ Understanding these mechanisms is essential for designing scalable and resilient
 
 ---
 
-# DHCP Lease Lifecycle
+## DHCP Lease Lifecycle
 
 A DHCP lease is **temporary** unless configured as a reservation.
 
@@ -768,7 +768,7 @@ This allows efficient reuse of available IP addresses.
 
 ---
 
-# Lease Timers
+## Lease Timers
 
 A lease contains several important timers.
 
@@ -792,7 +792,7 @@ These timers control how and when a client renews its address.
 
 ---
 
-# T1 — Renewal Timer
+## T1 — Renewal Timer
 
 At approximately **50% of the lease duration**, the client attempts to renew its lease with the original DHCP server.
 
@@ -814,7 +814,7 @@ The renewal is typically sent as a **unicast** message to the server that grante
 
 ---
 
-# T2 — Rebinding Timer
+## T2 — Rebinding Timer
 
 If the original server does not respond, the client waits until approximately **87.5% of the lease duration**.
 
@@ -836,7 +836,7 @@ At this stage, the client attempts to contact **any available DHCP server**.
 
 ---
 
-# Lease Expiration
+## Lease Expiration
 
 If renewal attempts fail:
 
@@ -856,7 +856,7 @@ The client can no longer use the expired lease and must request a new configurat
 
 ---
 
-# Lease Renewal Workflow
+## Lease Renewal Workflow
 
 ```
 Client
@@ -886,7 +886,7 @@ If the renewal succeeds, communication continues without interruption.
 
 ---
 
-# Lease Rebinding Workflow
+## Lease Rebinding Workflow
 
 ```
 Original DHCP Server
@@ -920,7 +920,7 @@ This mechanism improves availability during server failures.
 
 ---
 
-# DHCP Release
+## DHCP Release
 
 A client may voluntarily return its address.
 
@@ -948,7 +948,7 @@ This commonly occurs during a graceful shutdown or interface deactivation.
 
 ---
 
-# DHCP Decline
+## DHCP Decline
 
 Sometimes a client detects that an offered address is already in use.
 
@@ -974,7 +974,7 @@ The server marks the address as unusable until further validation or administrat
 
 ---
 
-# DHCP NAK (Negative Acknowledgment)
+## DHCP NAK (Negative Acknowledgment)
 
 A server sends a **DHCP NAK** when:
 
@@ -1007,7 +1007,7 @@ Restart DORA
 
 ---
 
-# DHCP Inform
+## DHCP Inform
 
 Some devices already have an IP address (for example, through static configuration) but still want additional DHCP options.
 
@@ -1033,9 +1033,9 @@ The IP address itself is not reassigned.
 
 ---
 
-# DHCP Relay Agent
+## DHCP Relay Agent
 
-## Why Relay Agents Are Needed
+### Why Relay Agents Are Needed
 
 Routers normally **do not forward broadcasts**.
 
@@ -1065,7 +1065,7 @@ A relay agent solves this limitation.
 
 ---
 
-# Relay Agent Operation
+## Relay Agent Operation
 
 ```
 Client
@@ -1091,7 +1091,7 @@ The relay converts the broadcast into a unicast message destined for the DHCP se
 
 ---
 
-# Cisco Relay Configuration
+## Cisco Relay Configuration
 
 On Cisco devices, a relay agent is commonly configured using:
 
@@ -1105,7 +1105,7 @@ The `ip helper-address` command forwards DHCP requests (and certain other UDP br
 
 ---
 
-# Enterprise Relay Example
+## Enterprise Relay Example
 
 ```
 Branch Office
@@ -1135,7 +1135,7 @@ Organizations often centralize DHCP services while using relay agents in remote 
 
 ---
 
-# DHCP Options
+## DHCP Options
 
 DHCP provides more than just an IP address.
 
@@ -1143,7 +1143,7 @@ Additional configuration parameters are delivered using **DHCP Options**.
 
 ---
 
-# Common DHCP Options
+## Common DHCP Options
 
 | Option | Purpose |
 |----------|----------|
@@ -1162,7 +1162,7 @@ Additional options exist for specialized enterprise applications.
 
 ---
 
-# Example DHCP Configuration
+## Example DHCP Configuration
 
 ```
 IP Address
@@ -1200,7 +1200,7 @@ The client receives all these values automatically during the DHCP exchange.
 
 ---
 
-# DHCP Reservations
+## DHCP Reservations
 
 Critical devices should often receive consistent addresses.
 
@@ -1217,7 +1217,7 @@ A reservation binds a specific MAC address to a predefined IP address.
 
 ---
 
-# DHCPv6
+## DHCPv6
 
 IPv6 networks use **DHCPv6**, which differs from IPv4 DHCP in several important ways.
 
@@ -1232,7 +1232,7 @@ Neighbor Discovery (ND) replaces ARP in IPv6 environments.
 
 ---
 
-# DHCPv6 Message Flow
+## DHCPv6 Message Flow
 
 A simplified DHCPv6 exchange:
 
@@ -1256,7 +1256,7 @@ Although conceptually similar to DORA, DHCPv6 uses different message types.
 
 ---
 
-# SLAAC vs DHCPv6
+## SLAAC vs DHCPv6
 
 IPv6 hosts can obtain configuration using different approaches.
 
@@ -1271,9 +1271,9 @@ Many enterprise environments use both Router Advertisements (RA) and DHCPv6 toge
 
 ---
 
-# Stateful vs Stateless DHCPv6
+## Stateful vs Stateless DHCPv6
 
-### Stateful DHCPv6
+#### Stateful DHCPv6
 
 The DHCPv6 server assigns the IPv6 address and maintains lease information.
 
@@ -1291,13 +1291,13 @@ Tracks Lease
 
 ---
 
-### Stateless DHCPv6
+#### Stateless DHCPv6
 
 The client generates its own address (often via SLAAC), while the DHCPv6 server supplies only additional configuration such as DNS servers.
 
 ---
 
-# Enterprise DHCP Architecture
+## Enterprise DHCP Architecture
 
 Large organizations rarely rely on a single DHCP server.
 
@@ -1335,7 +1335,7 @@ This design improves scalability and resilience.
 
 ---
 
-# High Availability (HA)
+## High Availability (HA)
 
 DHCP is a critical infrastructure service.
 
@@ -1350,7 +1350,7 @@ High Availability minimizes these risks.
 
 ---
 
-# DHCP Failover
+## DHCP Failover
 
 Many enterprise DHCP implementations support failover.
 
@@ -1382,7 +1382,7 @@ This helps maintain uninterrupted address assignment.
 
 ---
 
-# Load Balancing
+## Load Balancing
 
 Some environments distribute DHCP requests across multiple servers.
 
@@ -1397,7 +1397,7 @@ The implementation varies depending on the DHCP platform and vendor.
 
 ---
 
-# Enterprise Deployment Example
+## Enterprise Deployment Example
 
 ```
 50 Branch Offices
@@ -1427,7 +1427,7 @@ This design supports centralized management while ensuring high availability.
 
 ---
 
-# Common Enterprise Considerations
+## Common Enterprise Considerations
 
 Administrators should plan for:
 
@@ -1443,7 +1443,7 @@ Careful planning prevents address exhaustion and service disruption.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable DHCP infrastructure enables:
 
@@ -1458,7 +1458,7 @@ A resilient DHCP architecture is essential for modern campus, data center, and h
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - DHCP leases progress through **renewal (T1)**, **rebinding (T2)**, and **expiration**.
 - Clients can **Release**, **Decline**, or **Inform** the server depending on operational needs.
@@ -1467,13 +1467,13 @@ A resilient DHCP architecture is essential for modern campus, data center, and h
 - **DHCPv6** supports IPv6 environments and complements Router Advertisements.
 - Enterprise deployments typically use **redundant DHCP servers**, **relay agents**, and **high-availability designs** to ensure reliable address management.
 
-# 10 - Dynamic Host Configuration Protocol (DHCP)
+## 10 - Dynamic Host Configuration Protocol (DHCP)
 
-# Part 3 — DHCP Security, DHCP Snooping, Rogue DHCP, Starvation Attacks, Option 82, Virtualization, Cloud Networking, and Enterprise Best Practices
+## Part 3 — DHCP Security, DHCP Snooping, Rogue DHCP, Starvation Attacks, Option 82, Virtualization, Cloud Networking, and Enterprise Best Practices
 
 ---
 
-# Overview
+## Overview
 
 DHCP is one of the most important infrastructure services in an enterprise network.
 
@@ -1492,7 +1492,7 @@ Modern enterprise networks protect DHCP using switch-based security features suc
 
 ---
 
-# DHCP Security Challenges
+## DHCP Security Challenges
 
 Common DHCP-related threats include:
 
@@ -1508,9 +1508,9 @@ Without proper controls, these threats can impact an entire broadcast domain.
 
 ---
 
-# DHCP Starvation Attack
+## DHCP Starvation Attack
 
-## What is DHCP Starvation?
+### What is DHCP Starvation?
 
 A DHCP starvation attack attempts to **exhaust all available IP addresses** in a DHCP scope.
 
@@ -1550,7 +1550,7 @@ Legitimate users are then unable to obtain an IP address.
 
 ---
 
-# Attack Workflow
+## Attack Workflow
 
 ```
 Attacker
@@ -1578,7 +1578,7 @@ Legitimate Client Receives No Address
 
 ---
 
-# Business Impact
+## Business Impact
 
 A successful starvation attack may result in:
 
@@ -1591,7 +1591,7 @@ A successful starvation attack may result in:
 
 ---
 
-# Detection
+## Detection
 
 Indicators of starvation attacks include:
 
@@ -1605,7 +1605,7 @@ Monitoring systems should alert on unusual lease growth.
 
 ---
 
-# Mitigation
+## Mitigation
 
 Recommended controls include:
 
@@ -1619,9 +1619,9 @@ Recommended controls include:
 
 ---
 
-# Rogue DHCP Server
+## Rogue DHCP Server
 
-## What is a Rogue DHCP Server?
+### What is a Rogue DHCP Server?
 
 A rogue DHCP server is an **unauthorized DHCP server** connected to the network.
 
@@ -1643,7 +1643,7 @@ The client may accept whichever valid offer arrives first.
 
 ---
 
-# Rogue DHCP Attack
+## Rogue DHCP Attack
 
 The attacker provides malicious configuration:
 
@@ -1671,7 +1671,7 @@ Traffic can then be intercepted or redirected.
 
 ---
 
-# Business Impact
+## Business Impact
 
 A rogue DHCP server may:
 
@@ -1683,7 +1683,7 @@ A rogue DHCP server may:
 
 ---
 
-# Detection
+## Detection
 
 Possible indicators:
 
@@ -1697,9 +1697,9 @@ Packet captures and switch logs are valuable for identifying rogue servers.
 
 ---
 
-# DHCP Snooping
+## DHCP Snooping
 
-## What is DHCP Snooping?
+### What is DHCP Snooping?
 
 **DHCP Snooping** is a Layer 2 security feature available on managed switches.
 
@@ -1713,7 +1713,7 @@ DHCP Snooping also builds a trusted IP-to-MAC binding database used by other sec
 
 ---
 
-# DHCP Snooping Operation
+## DHCP Snooping Operation
 
 ```
 DHCP Packet
@@ -1753,7 +1753,7 @@ Allow or Drop
 
 ---
 
-# Trusted Ports
+## Trusted Ports
 
 Trusted ports typically connect to:
 
@@ -1780,7 +1780,7 @@ Only trusted ports are allowed to send DHCP server responses.
 
 ---
 
-# Untrusted Ports
+## Untrusted Ports
 
 Access ports connected to endpoints are usually configured as **untrusted**.
 
@@ -1802,7 +1802,7 @@ Clients can send DHCP Discover messages, but they cannot behave as DHCP servers.
 
 ---
 
-# DHCP Snooping Binding Table
+## DHCP Snooping Binding Table
 
 The switch records validated DHCP information.
 
@@ -1816,7 +1816,7 @@ This table is fundamental for Dynamic ARP Inspection (DAI) and IP Source Guard.
 
 ---
 
-# DHCP Snooping Workflow
+## DHCP Snooping Workflow
 
 ```
 Client
@@ -1848,7 +1848,7 @@ Traffic Allowed
 
 ---
 
-# Rate Limiting
+## Rate Limiting
 
 DHCP Snooping can limit the number of DHCP packets accepted on an access port.
 
@@ -1863,9 +1863,9 @@ Administrators should choose limits appropriate for the expected client density.
 
 ---
 
-# Option 82 (Relay Agent Information)
+## Option 82 (Relay Agent Information)
 
-## What is Option 82?
+### What is Option 82?
 
 **DHCP Option 82** allows a relay agent or switch to insert additional information into DHCP requests before forwarding them to the server.
 
@@ -1878,7 +1878,7 @@ This helps the DHCP server identify where the request originated.
 
 ---
 
-# Option 82 Workflow
+## Option 82 Workflow
 
 ```
 Client
@@ -1910,7 +1910,7 @@ DHCP ACK
 
 ---
 
-# Benefits of Option 82
+## Benefits of Option 82
 
 Option 82 enables:
 
@@ -1924,7 +1924,7 @@ It is commonly used in service provider and large enterprise environments.
 
 ---
 
-# DHCP Snooping and DAI
+## DHCP Snooping and DAI
 
 DHCP Snooping works closely with **Dynamic ARP Inspection (DAI)**.
 
@@ -1948,7 +1948,7 @@ Together, these features help prevent ARP spoofing attacks.
 
 ---
 
-# DHCP Snooping and IP Source Guard
+## DHCP Snooping and IP Source Guard
 
 Another related feature is **IP Source Guard**.
 
@@ -1980,7 +1980,7 @@ Traffic that does not match the trusted binding can be blocked.
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
 User Device
@@ -2014,7 +2014,7 @@ Multiple Layer 2 security features work together to provide defense in depth.
 
 ---
 
-# DHCP in Virtualization
+## DHCP in Virtualization
 
 Virtualization platforms frequently provide integrated DHCP capabilities.
 
@@ -2029,7 +2029,7 @@ Virtual DHCP services simplify lab and development environments, while productio
 
 ---
 
-# VMware Example
+## VMware Example
 
 ```
 Virtual Machine
@@ -2051,7 +2051,7 @@ Administrators can also configure VMs to use external enterprise DHCP servers.
 
 ---
 
-# Hyper-V Example
+## Hyper-V Example
 
 ```
 VM
@@ -2069,7 +2069,7 @@ The Hyper-V virtual switch forwards DHCP traffic to the configured DHCP infrastr
 
 ---
 
-# Docker Networking
+## Docker Networking
 
 Docker bridge networks may include an integrated IP address management (IPAM) component that allocates addresses to containers.
 
@@ -2095,7 +2095,7 @@ The mechanism differs from traditional enterprise DHCP but serves a similar purp
 
 ---
 
-# Kubernetes Networking
+## Kubernetes Networking
 
 Kubernetes typically relies on its CNI (Container Network Interface) plugin to assign addresses to Pods.
 
@@ -2109,13 +2109,13 @@ Administrators should understand the networking model used by their chosen CNI.
 
 ---
 
-# DHCP in Public Cloud
+## DHCP in Public Cloud
 
 Public cloud providers automate address assignment through platform-managed networking services.
 
 Examples include:
 
-### AWS
+#### AWS
 
 ```
 EC2 Instance
@@ -2131,7 +2131,7 @@ Private IPv4 Assigned
 
 ---
 
-### Microsoft Azure
+#### Microsoft Azure
 
 ```
 Virtual Machine
@@ -2147,7 +2147,7 @@ Private Address Assigned
 
 ---
 
-### Google Cloud Platform
+#### Google Cloud Platform
 
 ```
 VM Instance
@@ -2165,7 +2165,7 @@ While the user experience resembles DHCP, the implementation is often tightly in
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -2182,7 +2182,7 @@ Organizations should:
 
 ---
 
-# Common DHCP Security Issues
+## Common DHCP Security Issues
 
 | Issue | Possible Cause |
 |--------|----------------|
@@ -2194,7 +2194,7 @@ Organizations should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Securing DHCP helps organizations:
 
@@ -2209,7 +2209,7 @@ Reliable DHCP security contributes directly to enterprise resilience.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - **DHCP starvation attacks** attempt to exhaust available address pools using spoofed MAC addresses.
 - **Rogue DHCP servers** can redirect traffic by providing malicious network configuration.
@@ -2219,13 +2219,13 @@ Reliable DHCP security contributes directly to enterprise resilience.
 - DHCP Snooping integrates with **Dynamic ARP Inspection (DAI)** and **IP Source Guard** to strengthen Layer 2 security.
 - Modern virtualization platforms and cloud providers automate IP address management, though implementation details differ from traditional on-premises DHCP.
 
-# 10 - Dynamic Host Configuration Protocol (DHCP)
+## 10 - Dynamic Host Configuration Protocol (DHCP)
 
-# Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, and Chapter Review
+## Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, and Chapter Review
 
 ---
 
-# Overview
+## Overview
 
 Deploying DHCP is only one aspect of enterprise network management.
 
@@ -2243,7 +2243,7 @@ This section combines operational networking with security monitoring and incide
 
 ---
 
-# DHCP Packet Analysis
+## DHCP Packet Analysis
 
 DHCP is based on the BOOTP message format and exchanges several message types between clients and servers.
 
@@ -2264,7 +2264,7 @@ A typical DHCP packet contains fields such as:
 
 ---
 
-# DORA Packet Flow
+## DORA Packet Flow
 
 The complete DHCP exchange follows the DORA sequence.
 
@@ -2308,7 +2308,7 @@ Each stage can be observed using packet capture tools such as Wireshark.
 
 ---
 
-# DHCP Discover
+## DHCP Discover
 
 Characteristics:
 
@@ -2320,7 +2320,7 @@ Characteristics:
 
 ---
 
-# DHCP Offer
+## DHCP Offer
 
 The server responds with:
 
@@ -2335,7 +2335,7 @@ If multiple DHCP servers respond, the client selects one offer.
 
 ---
 
-# DHCP Request
+## DHCP Request
 
 The client requests the selected lease.
 
@@ -2347,7 +2347,7 @@ Purpose:
 
 ---
 
-# DHCP ACK
+## DHCP ACK
 
 The server confirms:
 
@@ -2359,9 +2359,9 @@ The client then configures its network interface.
 
 ---
 
-# Wireshark Analysis
+## Wireshark Analysis
 
-## Display Filter
+### Display Filter
 
 ```text
 dhcp
@@ -2377,7 +2377,7 @@ bootp
 
 ---
 
-# Typical Packet Sequence
+## Typical Packet Sequence
 
 ```
 Frame 1
@@ -2407,7 +2407,7 @@ A successful DORA exchange should contain these four messages in order.
 
 ---
 
-# Useful Wireshark Fields
+## Useful Wireshark Fields
 
 During analysis, examine:
 
@@ -2425,7 +2425,7 @@ During analysis, examine:
 
 ---
 
-# Cisco IOS Verification
+## Cisco IOS Verification
 
 Display DHCP bindings:
 
@@ -2473,7 +2473,7 @@ These commands help verify both DHCP services and associated security features.
 
 ---
 
-# Linux Verification
+## Linux Verification
 
 Display interface configuration:
 
@@ -2513,7 +2513,7 @@ sudo tcpdump -i eth0 port 67 or port 68
 
 ---
 
-# Windows Verification
+## Windows Verification
 
 Display full network configuration:
 
@@ -2547,7 +2547,7 @@ ipconfig /flushdns
 
 ---
 
-# Enterprise Troubleshooting Workflow
+## Enterprise Troubleshooting Workflow
 
 When a client fails to obtain an IP address:
 
@@ -2595,13 +2595,13 @@ Following a structured process helps isolate issues efficiently.
 
 ---
 
-# Troubleshooting Scenario 1
+## Troubleshooting Scenario 1
 
-## Symptom
+### Symptom
 
 A new laptop receives an **APIPA address (169.254.x.x)**.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2620,9 +2620,9 @@ Possible causes include:
 
 ---
 
-# Troubleshooting Scenario 2
+## Troubleshooting Scenario 2
 
-## Symptom
+### Symptom
 
 Users receive incorrect DNS server addresses.
 
@@ -2642,9 +2642,9 @@ Actions:
 
 ---
 
-# Troubleshooting Scenario 3
+## Troubleshooting Scenario 3
 
-## Symptom
+### Symptom
 
 Users at a remote branch cannot obtain addresses.
 
@@ -2658,7 +2658,7 @@ Verify:
 
 ---
 
-# Practical Lab 1 — Observe the DORA Process
+## Practical Lab 1 — Observe the DORA Process
 
 Topology:
 
@@ -2689,7 +2689,7 @@ Tasks:
 
 ---
 
-# Practical Lab 2 — Configure DHCP Relay
+## Practical Lab 2 — Configure DHCP Relay
 
 Topology:
 
@@ -2718,7 +2718,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — DHCP Snooping
+## Practical Lab 3 — DHCP Snooping
 
 Requirements:
 
@@ -2734,7 +2734,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — DHCP Starvation (Controlled Lab)
+## Practical Lab 4 — DHCP Starvation (Controlled Lab)
 
 **Warning:** Perform only in an isolated lab environment.
 
@@ -2749,7 +2749,7 @@ The purpose of this lab is to understand defensive controls, not to attack produ
 
 ---
 
-# SOC Detection Engineering
+## SOC Detection Engineering
 
 Security Operations Centers (SOCs) should monitor for:
 
@@ -2764,7 +2764,7 @@ Correlating DHCP events with switch logs and endpoint telemetry improves detecti
 
 ---
 
-# SIEM Detection Ideas
+## SIEM Detection Ideas
 
 Example 1:
 
@@ -2820,7 +2820,7 @@ Notify Network Operations
 
 ---
 
-# Zeek Monitoring
+## Zeek Monitoring
 
 Zeek can provide visibility into:
 
@@ -2834,7 +2834,7 @@ This information can be correlated with authentication, DNS, and endpoint logs f
 
 ---
 
-# Suricata Monitoring
+## Suricata Monitoring
 
 Depending on deployment architecture, Suricata can help identify:
 
@@ -2847,7 +2847,7 @@ Alerts should be validated using packet captures and infrastructure logs before 
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use redundant DHCP servers.
 - Implement DHCP failover where supported.
@@ -2862,13 +2862,13 @@ Alerts should be validated using packet captures and infrastructure logs before 
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A multinational organization reports that new employees cannot join the corporate network.
 
-### Investigation
+#### Investigation
 
 Network engineers discover:
 
@@ -2876,7 +2876,7 @@ Network engineers discover:
 - A compromised endpoint generated thousands of DHCP Discover messages.
 - DHCP Snooping was disabled on one access switch.
 
-### Resolution
+#### Resolution
 
 - Isolate the compromised endpoint.
 - Reclaim expired leases.
@@ -2887,17 +2887,17 @@ Network engineers discover:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is DHCP?
+#### What is DHCP?
 
 DHCP (Dynamic Host Configuration Protocol) automatically assigns IP configuration to network devices.
 
 ---
 
-### What does DORA stand for?
+#### What does DORA stand for?
 
 - Discover
 - Offer
@@ -2906,7 +2906,7 @@ DHCP (Dynamic Host Configuration Protocol) automatically assigns IP configuratio
 
 ---
 
-### Which transport protocol and ports does DHCP use?
+#### Which transport protocol and ports does DHCP use?
 
 DHCP uses **UDP**:
 
@@ -2915,35 +2915,35 @@ DHCP uses **UDP**:
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is a DHCP lease?
+#### What is a DHCP lease?
 
 A lease is the temporary assignment of an IP address and related configuration to a client.
 
 ---
 
-### What is a DHCP relay agent?
+#### What is a DHCP relay agent?
 
 A DHCP relay agent forwards DHCP requests between clients and servers on different IP subnets.
 
 ---
 
-### What is DHCP Snooping?
+#### What is DHCP Snooping?
 
 DHCP Snooping is a Layer 2 security feature that prevents rogue DHCP servers and builds trusted IP-to-MAC binding tables.
 
 ---
 
-## Advanced
+### Advanced
 
-### Explain a DHCP starvation attack.
+#### Explain a DHCP starvation attack.
 
 A DHCP starvation attack exhausts the available address pool by sending numerous DHCP Discover messages with spoofed MAC addresses, preventing legitimate clients from obtaining leases.
 
 ---
 
-### How would you troubleshoot a client that receives an APIPA address?
+#### How would you troubleshoot a client that receives an APIPA address?
 
 A strong answer should include:
 
@@ -2957,7 +2957,7 @@ A strong answer should include:
 
 ---
 
-### How would you secure DHCP in an enterprise?
+#### How would you secure DHCP in an enterprise?
 
 A comprehensive response should mention:
 
@@ -2973,16 +2973,16 @@ A comprehensive response should mention:
 
 ---
 
-# References
+## References
 
-## RFCs
+### RFCs
 
 - RFC 2131 — Dynamic Host Configuration Protocol
 - RFC 2132 — DHCP Options and BOOTP Vendor Extensions
 - RFC 3315 (Obsoleted by RFC 8415) — DHCP for IPv6
 - RFC 8415 — DHCP for IPv6 (Current Specification)
 
-## Organizations
+### Organizations
 
 - IETF
 - IEEE
@@ -2991,13 +2991,13 @@ A comprehensive response should mention:
 
 ---
 
-# Summary
+## Summary
 
 DHCP is a foundational enterprise service that automates IP address allocation and network configuration. Understanding lease management, relay agents, security mechanisms such as DHCP Snooping, and enterprise troubleshooting techniques enables administrators to deploy scalable, resilient, and secure networks. Continuous monitoring and integration with broader security controls are essential for protecting DHCP infrastructure against operational failures and malicious activity.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -3037,7 +3037,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`11-DNS.md`**, will cover:
 

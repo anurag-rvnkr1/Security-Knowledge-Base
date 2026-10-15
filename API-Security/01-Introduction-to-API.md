@@ -1,7 +1,6 @@
 # 01 - Introduction to APIs 
 
-# Introduction
-
+## Introduction
 Application Programming Interfaces (APIs) are the backbone of modern software systems. Nearly every application we use today—whether it's a mobile banking app, an e-commerce website, a social media platform, a ride-sharing service, or a cloud infrastructure management console—relies on APIs to exchange data and perform operations.
 
 In today's interconnected digital ecosystem, APIs enable applications, services, devices, and organizations to communicate securely and efficiently without exposing their internal implementation details. They provide standardized interfaces that simplify software integration, improve scalability, accelerate development, and foster innovation.
@@ -14,8 +13,7 @@ This chapter introduces the fundamental concepts of APIs, explains how they func
 
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 By the end of this chapter, you will be able to:
 
 - Understand what an API is.
@@ -31,8 +29,7 @@ By the end of this chapter, you will be able to:
 
 ---
 
-# What is an API?
-
+## What is an API?
 API stands for:
 
 > **Application Programming Interface**
@@ -52,8 +49,7 @@ This abstraction allows different systems to interact without needing to underst
 
 ---
 
-# Simple Definition
-
+## Simple Definition
 An API is a secure communication bridge between two software applications.
 
 It defines:
@@ -66,8 +62,7 @@ It defines:
 
 ---
 
-# Real-World Analogy
-
+## Real-World Analogy
 Imagine dining at a restaurant.
 
 ```
@@ -109,8 +104,7 @@ The API safely manages communication.
 
 ---
 
-# Why Do APIs Exist?
-
+## Why Do APIs Exist?
 Without APIs, software systems would require direct integration with internal components, leading to tightly coupled architectures that are difficult to maintain, secure, and scale.
 
 APIs solve this by introducing a standardized communication layer.
@@ -128,14 +122,12 @@ Benefits include:
 
 ---
 
-# APIs in Everyday Life
-
+## APIs in Everyday Life
 You interact with APIs hundreds or even thousands of times every day, often without realizing it.
 
 Examples include:
 
-## Banking
-
+### Banking
 ```
 Mobile Banking App
         │
@@ -148,8 +140,7 @@ Core Banking System
 
 ---
 
-## Online Shopping
-
+### Online Shopping
 ```
 Website
      │
@@ -162,8 +153,7 @@ Inventory Database
 
 ---
 
-## Food Delivery
-
+### Food Delivery
 ```
 Customer App
       │
@@ -176,8 +166,7 @@ Restaurant Management System
 
 ---
 
-## Ride Sharing
-
+### Ride Sharing
 ```
 Passenger App
       │
@@ -190,8 +179,7 @@ Driver Matching Service
 
 ---
 
-## Cloud Platforms
-
+### Cloud Platforms
 ```
 Administrator
         │
@@ -209,8 +197,7 @@ Every button you click often triggers one or more API calls behind the scenes.
 
 ---
 
-# APIs are Everywhere
-
+## APIs are Everywhere
 Modern technology heavily depends on APIs.
 
 Examples include:
@@ -235,8 +222,7 @@ APIs have become the universal communication mechanism between software systems.
 
 ---
 
-# Components of an API
-
+## Components of an API
 Every API interaction generally involves the following components:
 
 ```
@@ -264,8 +250,7 @@ Every API interaction generally involves the following components:
 
 ---
 
-## Client
-
+### Client
 The client initiates requests.
 
 Examples:
@@ -279,8 +264,7 @@ Examples:
 
 ---
 
-## API Server
-
+### API Server
 The API receives requests.
 
 Responsibilities include:
@@ -295,8 +279,7 @@ Responsibilities include:
 
 ---
 
-## Business Logic
-
+### Business Logic
 The application performs:
 
 - Calculations
@@ -307,8 +290,7 @@ The application performs:
 
 ---
 
-## Database
-
+### Database
 Stores:
 
 - User information
@@ -322,8 +304,7 @@ The API acts as a controlled gateway to this data rather than exposing the datab
 
 ---
 
-# API Communication Flow
-
+## API Communication Flow
 A typical API interaction follows these steps:
 
 ```
@@ -355,10 +336,8 @@ Every request follows a predictable lifecycle, enabling consistent communication
 
 ---
 
-# API Consumer vs API Provider
-
-## API Consumer
-
+## API Consumer vs API Provider
+### API Consumer
 The consumer is the application or service that uses an API.
 
 Examples:
@@ -371,8 +350,7 @@ Examples:
 
 ---
 
-## API Provider
-
+### API Provider
 The provider owns and exposes the API.
 
 Examples:
@@ -385,8 +363,7 @@ Examples:
 
 ---
 
-## Communication Example
-
+### Communication Example
 ```
 Mobile Banking App
         │
@@ -408,8 +385,7 @@ The bank provides the API.
 
 ---
 
-# Characteristics of a Good API
-
+## Characteristics of a Good API
 Well-designed APIs share several important characteristics:
 
 - Simple to use
@@ -427,8 +403,7 @@ These characteristics improve both developer experience and operational security
 
 ---
 
-# Enterprise Example
-
+## Enterprise Example
 Consider an online banking platform.
 
 Instead of allowing the mobile application to access the database directly, the bank exposes APIs such as:
@@ -457,8 +432,7 @@ This architecture protects sensitive financial systems from direct exposure.
 
 ---
 
-# Why Security Matters
-
+## Why Security Matters
 Because APIs expose business functionality directly, they often become the primary target for attackers.
 
 Common attacker objectives include:
@@ -477,8 +451,7 @@ As organizations adopt microservices, cloud-native architectures, and mobile-fir
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - APIs enable software systems to communicate through standardized interfaces.
 - APIs abstract internal implementation details from consumers.
 - Almost every modern application relies on APIs.
@@ -489,18 +462,15 @@ As organizations adopt microservices, cloud-native architectures, and mobile-fir
 
 ---
 
-# 01 - Introduction to APIs
-
-# Evolution of APIs
-
+## 01 - Introduction to APIs
+## Evolution of APIs
 APIs have evolved significantly over the past several decades. Initially, software applications were designed to run independently on a single computer. As businesses grew and networks became more common, applications needed standardized ways to exchange information.
 
 The evolution of APIs closely follows the evolution of distributed computing.
 
 ---
 
-## Phase 1 — Local Library APIs
-
+### Phase 1 — Local Library APIs
 Early software primarily communicated through libraries and operating system functions.
 
 ```
@@ -535,8 +505,7 @@ Characteristics:
 
 ---
 
-## Phase 2 — Remote Procedure Calls (RPC)
-
+### Phase 2 — Remote Procedure Calls (RPC)
 Organizations later required applications running on different computers to communicate.
 
 Remote Procedure Calls (RPC) allowed one computer to execute a function on another computer as if it were a local function.
@@ -571,8 +540,7 @@ Examples:
 
 ---
 
-## Phase 3 — SOAP Web Services
-
+### Phase 3 — SOAP Web Services
 As enterprise software expanded, organizations required standardized communication across different programming languages and operating systems.
 
 SOAP (Simple Object Access Protocol) became one of the first enterprise API standards.
@@ -605,8 +573,7 @@ Disadvantages:
 
 ---
 
-## Phase 4 — REST APIs
-
+### Phase 4 — REST APIs
 REST (Representational State Transfer) revolutionized API development by using standard HTTP methods.
 
 Instead of complex XML messages, REST commonly uses JSON, making communication lightweight and developer-friendly.
@@ -634,8 +601,7 @@ REST is currently the most widely adopted API architecture.
 
 ---
 
-## Phase 5 — GraphQL
-
+### Phase 5 — GraphQL
 As applications became more complex, developers wanted greater flexibility.
 
 GraphQL allows clients to request exactly the data they need.
@@ -666,8 +632,7 @@ Advantages:
 
 ---
 
-## Phase 6 — gRPC
-
+### Phase 6 — gRPC
 Modern cloud-native systems require extremely fast communication between microservices.
 
 Google developed gRPC to address this need.
@@ -698,12 +663,10 @@ Widely used in:
 
 ---
 
-# Why APIs Became Popular
-
+## Why APIs Became Popular
 Several factors contributed to the widespread adoption of APIs.
 
-## Digital Transformation
-
+### Digital Transformation
 Organizations shifted from standalone software to interconnected digital ecosystems.
 
 Examples:
@@ -716,8 +679,7 @@ Examples:
 
 ---
 
-## Mobile Applications
-
+### Mobile Applications
 Mobile apps rely almost entirely on APIs.
 
 ```
@@ -734,8 +696,7 @@ Every user action triggers one or more API requests.
 
 ---
 
-## Cloud Computing
-
+### Cloud Computing
 Cloud providers expose nearly all infrastructure functionality through APIs.
 
 Examples:
@@ -750,8 +711,7 @@ Every cloud management console internally calls APIs.
 
 ---
 
-## Microservices
-
+### Microservices
 Instead of one large application, modern systems consist of hundreds of independent services.
 
 ```
@@ -772,8 +732,7 @@ Communication between these services occurs almost entirely through APIs.
 
 ---
 
-## Third-Party Integrations
-
+### Third-Party Integrations
 Organizations integrate with numerous external providers.
 
 Examples:
@@ -789,14 +748,12 @@ APIs make these integrations possible without sharing internal systems.
 
 ---
 
-# Types of APIs
-
+## Types of APIs
 APIs can be categorized based on accessibility.
 
 ---
 
-## Public APIs
-
+### Public APIs
 Accessible to external developers.
 
 Examples:
@@ -814,8 +771,7 @@ Characteristics:
 
 ---
 
-## Private APIs
-
+### Private APIs
 Used only within an organization.
 
 ```
@@ -836,8 +792,7 @@ Characteristics:
 
 ---
 
-## Partner APIs
-
+### Partner APIs
 Shared with trusted business partners.
 
 Examples:
@@ -851,8 +806,7 @@ Access is restricted through contracts and authentication.
 
 ---
 
-## Composite APIs
-
+### Composite APIs
 Combine multiple services into a single API request.
 
 Instead of calling:
@@ -883,8 +837,7 @@ Benefits:
 
 ---
 
-# API Styles
-
+## API Styles
 Modern applications commonly use several API styles.
 
 | API Style | Primary Format | Typical Use Cases |
@@ -901,12 +854,10 @@ Each style has its own strengths, trade-offs, and security considerations.
 
 ---
 
-# API Communication Models
-
+## API Communication Models
 ---
 
-## Request–Response
-
+### Request–Response
 The most common communication model.
 
 ```
@@ -927,8 +878,7 @@ Used by:
 
 ---
 
-## Streaming
-
+### Streaming
 Continuous exchange of information between client and server.
 
 ```
@@ -946,8 +896,7 @@ Examples:
 
 ---
 
-## Publish–Subscribe
-
+### Publish–Subscribe
 Applications publish events while other systems subscribe to receive them.
 
 ```
@@ -970,8 +919,7 @@ Examples:
 
 ---
 
-# Anatomy of an API Request
-
+## Anatomy of an API Request
 Every API request contains several important components.
 
 ```
@@ -1004,8 +952,7 @@ Components include:
 
 ---
 
-# Anatomy of an API Response
-
+## Anatomy of an API Response
 A response contains:
 
 ```
@@ -1029,8 +976,7 @@ Typical response elements:
 
 ---
 
-# Common HTTP Status Codes
-
+## Common HTTP Status Codes
 | Code | Meaning |
 |------|----------|
 | 200 | OK |
@@ -1055,8 +1001,7 @@ Understanding these status codes is essential for troubleshooting, penetration t
 
 ---
 
-# Enterprise API Ecosystem
-
+## Enterprise API Ecosystem
 A modern enterprise rarely operates a single API.
 
 Instead, it manages hundreds or even thousands of APIs serving different business functions.
@@ -1096,8 +1041,7 @@ Securing each layer is critical to protecting the overall API ecosystem.
 
 ---
 
-# Real-World Example
-
+## Real-World Example
 Consider an online shopping application.
 
 When a customer views a product page, the frontend may invoke multiple APIs:
@@ -1115,8 +1059,7 @@ This demonstrates how APIs enable modular, scalable, and maintainable enterprise
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - APIs have evolved from local libraries to cloud-native communication platforms.
 - REST is the dominant API architecture, but SOAP, GraphQL, and gRPC remain widely used.
 - APIs can be public, private, partner, or composite.
@@ -1126,10 +1069,8 @@ This demonstrates how APIs enable modular, scalable, and maintainable enterprise
 
 ---
 
-# 01 - Introduction to APIs (Part 3)
-
-# Understanding API Internals
-
+## 01 - Introduction to APIs (Part 3)
+## Understanding API Internals
 Although APIs appear simple from the outside, every API request passes through multiple internal components before a response is returned.
 
 A single request often traverses authentication services, authorization engines, business logic, caches, databases, logging systems, monitoring agents, and security controls.
@@ -1138,8 +1079,7 @@ Understanding this internal workflow helps security professionals identify where
 
 ---
 
-# Internal API Request Processing
-
+## Internal API Request Processing
 A typical enterprise API request follows this sequence:
 
 ```
@@ -1181,8 +1121,7 @@ Each layer contributes to the security, scalability, and reliability of the API.
 
 ---
 
-# API Endpoint
-
+## API Endpoint
 An endpoint is a specific URL where an API exposes a particular function.
 
 Examples:
@@ -1216,8 +1155,7 @@ Examples:
 
 ---
 
-# API Resources
-
+## API Resources
 In RESTful design, APIs expose **resources** rather than actions.
 
 Examples of resources:
@@ -1256,8 +1194,7 @@ DELETE /users/12
 
 ---
 
-# Request Lifecycle
-
+## Request Lifecycle
 Consider the following request.
 
 ```
@@ -1310,8 +1247,7 @@ Any weakness in these stages may introduce security vulnerabilities.
 
 ---
 
-# API Contracts
-
+## API Contracts
 An API contract defines how clients and servers communicate.
 
 It specifies:
@@ -1345,8 +1281,7 @@ Well-defined contracts reduce implementation errors and improve interoperability
 
 ---
 
-# API Documentation
-
+## API Documentation
 Good APIs are accompanied by comprehensive documentation.
 
 Typical documentation includes:
@@ -1372,16 +1307,14 @@ Poor documentation often leads to implementation mistakes and insecure integrati
 
 ---
 
-# API Versioning
-
+## API Versioning
 APIs evolve over time.
 
 Changing an API without versioning can break existing applications.
 
 Common versioning strategies:
 
-## URI Versioning
-
+### URI Versioning
 ```
 /api/v1/users
 
@@ -1390,24 +1323,21 @@ Common versioning strategies:
 
 ---
 
-## Header Versioning
-
+### Header Versioning
 ```
 API-Version: 2
 ```
 
 ---
 
-## Query Parameter Versioning
-
+### Query Parameter Versioning
 ```
 /users?version=2
 ```
 
 ---
 
-## Content Negotiation
-
+### Content Negotiation
 ```
 Accept:
 application/vnd.company.v2+json
@@ -1417,8 +1347,7 @@ URI versioning is the most commonly used approach because it is explicit and eas
 
 ---
 
-# API Payloads
-
+## API Payloads
 The payload is the data exchanged between the client and server.
 
 Example Request
@@ -1445,8 +1374,7 @@ Older enterprise systems frequently use XML.
 
 ---
 
-# Why APIs Are Attractive Targets
-
+## Why APIs Are Attractive Targets
 APIs expose valuable business functionality directly to users and other systems.
 
 Unlike traditional web pages, APIs often provide structured access to sensitive information.
@@ -1466,8 +1394,7 @@ If compromised, attackers can directly manipulate business operations.
 
 ---
 
-# API Attack Surface
-
+## API Attack Surface
 The attack surface includes every publicly or internally accessible API component.
 
 ```
@@ -1490,8 +1417,7 @@ Attackers look for weaknesses across the entire API ecosystem rather than target
 
 ---
 
-# Common API Security Risks
-
+## Common API Security Risks
 Some of the most frequently encountered API security risks include:
 
 - Broken Authentication
@@ -1514,8 +1440,7 @@ These topics are explored in detail throughout later chapters.
 
 ---
 
-# Why Attackers Prefer APIs
-
+## Why Attackers Prefer APIs
 APIs are attractive because they:
 
 - Return structured data
@@ -1530,8 +1455,7 @@ Automation tools can test thousands of API requests in minutes.
 
 ---
 
-# Enterprise API Security Architecture
-
+## Enterprise API Security Architecture
 A secure enterprise API ecosystem typically looks like this.
 
 ```
@@ -1574,8 +1498,7 @@ Every layer contributes to reducing the attack surface and improving visibility 
 
 ---
 
-# Security Controls Throughout the API Lifecycle
-
+## Security Controls Throughout the API Lifecycle
 Security should be implemented at every stage of an API's lifecycle.
 
 | Phase | Security Activities |
@@ -1592,8 +1515,7 @@ Security is not a one-time task—it is a continuous process.
 
 ---
 
-# Business Impact of Insecure APIs
-
+## Business Impact of Insecure APIs
 Poorly secured APIs can lead to severe business consequences.
 
 Examples include:
@@ -1613,8 +1535,7 @@ For many organizations, APIs are among their most valuable digital assets, makin
 
 ---
 
-# Enterprise Case Study
-
+## Enterprise Case Study
 An international retail company exposes APIs for:
 
 - Customer accounts
@@ -1640,8 +1561,7 @@ This illustrates how a single authorization flaw can escalate into a major secur
 
 ---
 
-# Best Practices Introduced
-
+## Best Practices Introduced
 Even before exploring advanced API security topics, organizations should follow several foundational practices:
 
 - Expose only necessary endpoints.
@@ -1659,8 +1579,7 @@ These practices significantly reduce the likelihood of common attacks.
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - API requests pass through multiple internal security and processing layers before reaching business logic.
 - Endpoints expose specific business functions and collectively form the API attack surface.
 - API contracts and documentation promote secure, consistent integrations.
@@ -1671,18 +1590,15 @@ These practices significantly reduce the likelihood of common attacks.
 
 ---
 
-# 01 - Introduction to APIs 
-
-# Hands-on Lab 1 – Your First API Request
-
+## 01 - Introduction to APIs
+## Hands-on Lab 1 – Your First API Request
 One of the easiest ways to understand APIs is by interacting with a public API.
 
 In this lab, we'll use a simple REST API that returns sample user information.
 
 ---
 
-## Objective
-
+### Objective
 Learn how to:
 
 - Send an HTTP request
@@ -1693,8 +1609,7 @@ Learn how to:
 
 ---
 
-## Using curl
-
+### Using curl
 Example:
 
 ```bash
@@ -1714,8 +1629,7 @@ Example Response
 
 ---
 
-## Understanding the Response
-
+### Understanding the Response
 | Field | Description |
 |--------|-------------|
 | id | Unique user identifier |
@@ -1725,8 +1639,7 @@ Example Response
 
 ---
 
-# Hands-on Lab 2 – Viewing Response Headers
-
+## Hands-on Lab 2 – Viewing Response Headers
 Use curl to display headers.
 
 ```bash
@@ -1757,8 +1670,7 @@ These headers provide valuable metadata for both developers and security analyst
 
 ---
 
-# Hands-on Lab 3 – Sending a POST Request
-
+## Hands-on Lab 3 – Sending a POST Request
 Example
 
 ```bash
@@ -1787,8 +1699,7 @@ The server acknowledges creation of a new resource.
 
 ---
 
-# Hands-on Lab 4 – Using Postman
-
+## Hands-on Lab 4 – Using Postman
 Postman is one of the most widely used API development and testing tools.
 
 Typical workflow:
@@ -1826,8 +1737,7 @@ Things to inspect:
 
 ---
 
-# Hands-on Lab 5 – Browser Developer Tools
-
+## Hands-on Lab 5 – Browser Developer Tools
 Most browsers allow inspection of API calls.
 
 Steps:
@@ -1866,8 +1776,7 @@ This is one of the easiest ways to learn how modern applications communicate wit
 
 ---
 
-# Enterprise Example
-
+## Enterprise Example
 Consider an e-commerce website.
 
 When a customer visits the homepage, multiple APIs are invoked.
@@ -1892,8 +1801,7 @@ Although the user sees a single webpage, numerous API requests work together beh
 
 ---
 
-# Enterprise API Workflow
-
+## Enterprise API Workflow
 ```
 Customer
 
@@ -1956,8 +1864,7 @@ This layered architecture provides scalability, reliability, and multiple securi
 
 ---
 
-# API Security Tools
-
+## API Security Tools
 During later chapters, we'll use several industry-standard tools.
 
 | Tool | Purpose |
@@ -1981,12 +1888,10 @@ Each tool will be introduced in detail in later chapters.
 
 ---
 
-# API Security Best Practices
-
+## API Security Best Practices
 Organizations should adopt secure practices from the beginning of the API lifecycle.
 
-## Design
-
+### Design
 - Use secure-by-design principles.
 - Document every endpoint.
 - Perform threat modeling.
@@ -1994,8 +1899,7 @@ Organizations should adopt secure practices from the beginning of the API lifecy
 
 ---
 
-## Development
-
+### Development
 - Validate all inputs.
 - Sanitize outputs.
 - Use secure coding standards.
@@ -2003,8 +1907,7 @@ Organizations should adopt secure practices from the beginning of the API lifecy
 
 ---
 
-## Authentication
-
+### Authentication
 - Require authentication for protected resources.
 - Prefer modern authentication mechanisms.
 - Enforce strong password policies.
@@ -2012,8 +1915,7 @@ Organizations should adopt secure practices from the beginning of the API lifecy
 
 ---
 
-## Authorization
-
+### Authorization
 - Apply least privilege.
 - Validate authorization on every request.
 - Avoid client-side authorization decisions.
@@ -2021,8 +1923,7 @@ Organizations should adopt secure practices from the beginning of the API lifecy
 
 ---
 
-## Data Protection
-
+### Data Protection
 - Use HTTPS everywhere.
 - Encrypt sensitive information.
 - Minimize sensitive data exposure.
@@ -2030,8 +1931,7 @@ Organizations should adopt secure practices from the beginning of the API lifecy
 
 ---
 
-## Monitoring
-
+### Monitoring
 - Log all important API activity.
 - Detect anomalies.
 - Monitor authentication failures.
@@ -2040,8 +1940,7 @@ Organizations should adopt secure practices from the beginning of the API lifecy
 
 ---
 
-## Maintenance
-
+### Maintenance
 - Update dependencies regularly.
 - Remove deprecated APIs.
 - Rotate secrets and keys.
@@ -2049,8 +1948,7 @@ Organizations should adopt secure practices from the beginning of the API lifecy
 
 ---
 
-# Common Beginner Mistakes
-
+## Common Beginner Mistakes
 Many developers make avoidable mistakes when first working with APIs.
 
 Examples include:
@@ -2070,10 +1968,8 @@ Understanding these mistakes early helps establish secure development habits.
 
 ---
 
-# Troubleshooting
-
-## Request Returns 404
-
+## Troubleshooting
+### Request Returns 404
 Possible causes:
 
 - Incorrect endpoint
@@ -2083,8 +1979,7 @@ Possible causes:
 
 ---
 
-## Request Returns 401
-
+### Request Returns 401
 Possible causes:
 
 - Missing authentication
@@ -2093,8 +1988,7 @@ Possible causes:
 
 ---
 
-## Request Returns 403
-
+### Request Returns 403
 Possible causes:
 
 - Insufficient permissions
@@ -2103,8 +1997,7 @@ Possible causes:
 
 ---
 
-## Request Returns 500
-
+### Request Returns 500
 Possible causes:
 
 - Application bug
@@ -2114,8 +2007,7 @@ Possible causes:
 
 ---
 
-## Slow API Response
-
+### Slow API Response
 Possible causes:
 
 - High server load
@@ -2125,10 +2017,8 @@ Possible causes:
 
 ---
 
-# Interview Questions
-
-## Basic
-
+## Interview Questions
+### Basic
 1. What is an API?
 
 2. Why are APIs used?
@@ -2151,8 +2041,7 @@ Possible causes:
 
 ---
 
-## Intermediate
-
+### Intermediate
 11. Explain the API request lifecycle.
 
 12. Differentiate API consumer and provider.
@@ -2175,8 +2064,7 @@ Possible causes:
 
 ---
 
-## Scenario-Based
-
+### Scenario-Based
 **Scenario 1**
 
 An API suddenly begins returning 500 Internal Server Error responses.
@@ -2201,8 +2089,7 @@ What risks does this pose, and how would you mitigate them?
 
 ---
 
-# Chapter Summary
-
+## Chapter Summary
 In this chapter, we established the foundation for understanding APIs and their role in modern software systems.
 
 We learned:
@@ -2224,8 +2111,7 @@ This foundational knowledge prepares us for the remaining chapters, where we wil
 
 ---
 
-# Chapter Review
-
+## Chapter Review
 You should now be able to answer the following questions:
 
 - What is an API?
@@ -2243,16 +2129,13 @@ If you can confidently answer these questions, you are ready to continue.
 
 ---
 
-# References
-
-## Standards
-
+## References
+### Standards
 - RFC 9110 – HTTP Semantics
 - RFC 9112 – HTTP/1.1
 - RFC 8259 – JSON Data Interchange Format
 
-## Security Frameworks
-
+### Security Frameworks
 - OWASP API Security Top 10
 - OWASP ASVS
 - NIST Cybersecurity Framework (CSF)
@@ -2260,8 +2143,7 @@ If you can confidently answer these questions, you are ready to continue.
 - NIST SP 800-204 (Microservices Security)
 - CIS Controls v8
 
-## Further Reading
-
+### Further Reading
 - OpenAPI Specification
 - REST Architectural Style
 - GraphQL Specification
@@ -2271,8 +2153,7 @@ If you can confidently answer these questions, you are ready to continue.
 
 ---
 
-# What's Next?
-
+## What's Next?
 ➡️ **Chapter 02 – API Architecture**
 
 In the next chapter, we will explore:

@@ -4,7 +4,7 @@
 
 ---
 
-# Repository Structure
+## Repository Structure
 
 Linux/
 
@@ -38,9 +38,9 @@ Linux/
 
 ---
 
-# Chapter Progression
+## Chapter Progression
 
-## Chapter 01 — Linux Fundamentals
+### Chapter 01 — Linux Fundamentals
 
 - History of Unix
 - Evolution of Linux
@@ -62,7 +62,7 @@ Linux/
 
 ---
 
-## Chapter 02 — Linux Installation
+### Chapter 02 — Linux Installation
 
 - Hardware Requirements
 - Installation Methods
@@ -81,7 +81,7 @@ Linux/
 
 ---
 
-## Chapter 03 — Linux Architecture
+### Chapter 03 — Linux Architecture
 
 - User Space
 - Kernel Space
@@ -99,7 +99,7 @@ Linux/
 
 ---
 
-## Chapter 04 — Linux Boot Process
+### Chapter 04 — Linux Boot Process
 
 - BIOS
 - UEFI
@@ -113,7 +113,7 @@ Linux/
 
 ---
 
-## Chapter 05 — Linux File System
+### Chapter 05 — Linux File System
 
 - FHS
 - ext4
@@ -130,7 +130,7 @@ Linux/
 
 ---
 
-## Chapter 06 — Linux File Management
+### Chapter 06 — Linux File Management
 
 - pwd
 - ls
@@ -155,7 +155,7 @@ Linux/
 
 ---
 
-## Chapter 07 — Linux Text Processing
+### Chapter 07 — Linux Text Processing
 
 - cat
 - less
@@ -178,7 +178,7 @@ Linux/
 
 ---
 
-## Chapter 08 — Users and Groups
+### Chapter 08 — Users and Groups
 
 - root
 - sudo
@@ -199,7 +199,7 @@ Linux/
 
 ---
 
-## Chapter 09 — Permissions and ACL
+### Chapter 09 — Permissions and ACL
 
 - chmod
 - chown
@@ -217,7 +217,7 @@ Linux/
 
 ---
 
-## Chapter 10 — Processes
+### Chapter 10 — Processes
 
 - Process Lifecycle
 - PID
@@ -239,7 +239,7 @@ Linux/
 
 ---
 
-## Chapter 11 — Systemd
+### Chapter 11 — Systemd
 
 - systemd
 - systemctl
@@ -252,7 +252,7 @@ Linux/
 
 ---
 
-## Chapter 12 — Package Management
+### Chapter 12 — Package Management
 
 - apt
 - dpkg
@@ -266,7 +266,7 @@ Linux/
 
 ---
 
-## Chapter 13 — Linux Networking
+### Chapter 13 — Linux Networking
 
 - Interfaces
 - ip
@@ -285,7 +285,7 @@ Linux/
 
 ---
 
-## Chapter 14 — Storage Management
+### Chapter 14 — Storage Management
 
 - fdisk
 - parted
@@ -300,7 +300,7 @@ Linux/
 
 ---
 
-## Chapter 15 — Bash Scripting
+### Chapter 15 — Bash Scripting
 
 - Variables
 - Arrays
@@ -315,7 +315,7 @@ Linux/
 
 ---
 
-## Chapter 16 — System Monitoring
+### Chapter 16 — System Monitoring
 
 - top
 - htop
@@ -330,7 +330,7 @@ Linux/
 
 ---
 
-## Chapter 17 — Logging
+### Chapter 17 — Logging
 
 - journald
 - journalctl
@@ -343,7 +343,7 @@ Linux/
 
 ---
 
-## Chapter 18 — Linux Security
+### Chapter 18 — Linux Security
 
 - PAM
 - SELinux
@@ -356,7 +356,7 @@ Linux/
 
 ---
 
-## Chapter 19 — Firewalls
+### Chapter 19 — Firewalls
 
 - iptables
 - nftables
@@ -367,7 +367,7 @@ Linux/
 
 ---
 
-## Chapter 20 — SSH
+### Chapter 20 — SSH
 
 - SSH
 - SCP
@@ -380,7 +380,7 @@ Linux/
 
 ---
 
-## Chapter 21 — Automation
+### Chapter 21 — Automation
 
 - Cron
 - Crontab
@@ -391,7 +391,7 @@ Linux/
 
 ---
 
-## Chapter 22 — Linux Hardening
+### Chapter 22 — Linux Hardening
 
 - CIS Benchmarks
 - SSH Hardening
@@ -404,7 +404,7 @@ Linux/
 
 ---
 
-## Chapter 23 — Linux for Cybersecurity
+### Chapter 23 — Linux for Cybersecurity
 
 - Linux Enumeration
 - Privilege Escalation
@@ -420,7 +420,7 @@ Linux/
 
 ---
 
-## Chapter 24 — Linux Troubleshooting
+### Chapter 24 — Linux Troubleshooting
 
 - Boot Failures
 - Service Failures
@@ -434,7 +434,7 @@ Linux/
 
 ---
 
-## Chapter 25 — Linux Interview Questions
+### Chapter 25 — Linux Interview Questions
 
 - Beginner Questions
 - Intermediate Questions
@@ -448,7 +448,7 @@ Linux/
 
 ---
 
-## Chapter 26 — Linux Cheat Sheet
+### Chapter 26 — Linux Cheat Sheet
 
 - Commands
 - File System
@@ -464,9 +464,9 @@ Linux/
 
 ---
 
-## Resources.md
+### Resources.md
 
-### Official Documentation
+#### Official Documentation
 
 - Linux Foundation
 - GNU Project
@@ -477,7 +477,7 @@ Linux/
 - Arch Linux Wiki
 - SUSE Documentation
 
-### Security References
+#### Security References
 
 - NIST
 - CIS Benchmarks
@@ -485,7 +485,7 @@ Linux/
 - OWASP
 - NSA Linux Hardening Guide
 
-### Standards
+#### Standards
 
 - POSIX
 - Filesystem Hierarchy Standard (FHS)
@@ -493,7 +493,7 @@ Linux/
 
 ---
 
-# Writing Standards
+## Writing Standards
 
 Every chapter will include:
 
@@ -516,7 +516,7 @@ Every chapter will include:
 
 ---
 
-# Estimated Size
+## Estimated Size
 
 | Section | Approx. Pages |
 |----------|--------------:|

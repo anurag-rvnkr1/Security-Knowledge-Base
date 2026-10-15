@@ -1,12 +1,12 @@
 # 01-Introduction-to-Web-Security.md
 
-# Part 1 — Introduction to Web Security
+## Part 1 — Introduction to Web Security
 
 > **"Every click on a website starts a chain of network communications, browser processing, server logic, and security decisions. Web Security is the science of protecting every step of that process."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -25,7 +25,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is Web Security?
+## What is Web Security?
 
 **Web Security** is the practice of protecting:
 
@@ -51,7 +51,7 @@ It combines principles from:
 
 ---
 
-# Simple Definition
+## Simple Definition
 
 Imagine a bank website.
 
@@ -66,7 +66,7 @@ Web Security ensures all of these expectations are met.
 
 ---
 
-# Real-World Examples
+## Real-World Examples
 
 Every day, millions of users interact with:
 
@@ -90,7 +90,7 @@ If these systems are insecure, attackers may steal:
 
 ---
 
-# Why is Web Security Important?
+## Why is Web Security Important?
 
 Without Web Security:
 
@@ -126,7 +126,7 @@ A single vulnerability can affect millions of users worldwide.
 
 ---
 
-# Modern Internet
+## Modern Internet
 
 Today, almost every service is web-based.
 
@@ -146,7 +146,7 @@ Every one of these services requires strong web security.
 
 ---
 
-# What Needs Protection?
+## What Needs Protection?
 
 Web Security protects multiple components.
 
@@ -180,7 +180,7 @@ Every component can become an attack target.
 
 ---
 
-# What is a Web Application?
+## What is a Web Application?
 
 A **web application** is software accessed through a web browser over the Internet or an internal network.
 
@@ -197,7 +197,7 @@ Unlike traditional desktop software, web applications run primarily on servers a
 
 ---
 
-# Website vs Web Application
+## Website vs Web Application
 
 | Website | Web Application |
 |----------|-----------------|
@@ -208,7 +208,7 @@ Unlike traditional desktop software, web applications run primarily on servers a
 
 ---
 
-# Evolution of the Web
+## Evolution of the Web
 
 ```
 Static HTML Pages
@@ -242,7 +242,7 @@ As web technologies evolved, the security challenges also became more complex.
 
 ---
 
-# Who Uses Web Applications?
+## Who Uses Web Applications?
 
 ```
 Customers
@@ -266,7 +266,7 @@ Every user and connected system introduces potential security considerations.
 
 ---
 
-# Common Components of a Web Application
+## Common Components of a Web Application
 
 ```
 Browser
@@ -300,7 +300,7 @@ Each component has its own security responsibilities.
 
 ---
 
-# Web Security Goals
+## Web Security Goals
 
 The primary goals include:
 
@@ -314,7 +314,7 @@ The primary goals include:
 
 ---
 
-# CIA Triad
+## CIA Triad
 
 The **CIA Triad** is the foundation of information security.
 
@@ -330,7 +330,7 @@ Integrity ◄──────► Availability
 
 ---
 
-## 1. Confidentiality
+### 1. Confidentiality
 
 Protect information from unauthorized disclosure.
 
@@ -349,7 +349,7 @@ Controls include:
 
 ---
 
-## 2. Integrity
+### 2. Integrity
 
 Ensure data remains accurate and unaltered unless changed by authorized users.
 
@@ -366,7 +366,7 @@ Controls include:
 
 ---
 
-## 3. Availability
+### 3. Availability
 
 Ensure systems remain accessible to authorized users when needed.
 
@@ -380,7 +380,7 @@ Controls include:
 
 ---
 
-# Additional Security Principles
+## Additional Security Principles
 
 Modern web applications also focus on:
 
@@ -393,7 +393,7 @@ Modern web applications also focus on:
 
 ---
 
-# Authentication
+## Authentication
 
 Authentication answers:
 
@@ -408,7 +408,7 @@ Examples:
 
 ---
 
-# Authorization
+## Authorization
 
 Authorization answers:
 
@@ -434,7 +434,7 @@ Cannot Manage Users
 
 ---
 
-# Accountability
+## Accountability
 
 Every important action should be traceable.
 
@@ -449,7 +449,7 @@ Logging supports incident response and compliance.
 
 ---
 
-# Privacy
+## Privacy
 
 Privacy focuses on protecting personal information and handling it responsibly.
 
@@ -462,7 +462,7 @@ Examples:
 
 ---
 
-# The Web Security Mindset
+## The Web Security Mindset
 
 Security is not a single feature.
 
@@ -502,7 +502,7 @@ Incident Response
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
 | Myth | Reality |
 |------|----------|
@@ -513,7 +513,7 @@ Incident Response
 
 ---
 
-# Real Enterprise Example
+## Real Enterprise Example
 
 Consider an online retail platform.
 
@@ -553,7 +553,7 @@ If an attacker compromises any critical stage, it can affect customer trust, bus
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Observe the websites you use daily and identify:
 
@@ -567,7 +567,7 @@ Document your observations and think about what security controls each page migh
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Web Security?
 2. Why is Web Security important?
@@ -582,7 +582,7 @@ Document your observations and think about what security controls each page migh
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design security into applications from the beginning.
 - Use HTTPS for all web traffic.
@@ -595,7 +595,7 @@ Document your observations and think about what security controls each page migh
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating security as an afterthought.
 - Exposing sensitive information unnecessarily.
@@ -606,7 +606,7 @@ Document your observations and think about what security controls each page migh
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Web Security protects web applications, users, and data.
 - Modern applications consist of multiple interconnected components.
@@ -1378,15 +1378,15 @@ Think about how each component could be protected.
 
 ```
 
-# 01-Introduction-to-Web-Security.md
+## 01-Introduction-to-Web-Security.md
 
-# Part 4 — Careers, Enterprise Applications, Emerging Trends, Final Revision, and Chapter Summary
+## Part 4 — Careers, Enterprise Applications, Emerging Trends, Final Revision, and Chapter Summary
 
 > **"Web Security is no longer just about protecting websites—it is about protecting digital businesses, cloud-native applications, APIs, users, identities, and data across an ever-evolving threat landscape."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1401,7 +1401,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Web Security in the Enterprise
+## Web Security in the Enterprise
 
 Every modern organization depends on web applications.
 
@@ -1422,7 +1422,7 @@ Protecting these applications is critical to business continuity.
 
 ---
 
-# Industries That Rely on Web Security
+## Industries That Rely on Web Security
 
 | Industry | Example Applications |
 |-----------|----------------------|
@@ -1439,7 +1439,7 @@ Protecting these applications is critical to business continuity.
 
 ---
 
-# Enterprise Security Objectives
+## Enterprise Security Objectives
 
 Organizations aim to:
 
@@ -1453,7 +1453,7 @@ Organizations aim to:
 
 ---
 
-# Web Security Career Paths
+## Web Security Career Paths
 
 ```
 Beginner
@@ -1501,7 +1501,7 @@ Chief Information Security Officer (CISO)
 
 ---
 
-# Common Job Roles
+## Common Job Roles
 
 | Role | Primary Responsibility |
 |------|-------------------------|
@@ -1516,9 +1516,9 @@ Chief Information Security Officer (CISO)
 
 ---
 
-# Skills Required
+## Skills Required
 
-## Technical Skills
+### Technical Skills
 
 - Networking
 - HTTP/HTTPS
@@ -1536,7 +1536,7 @@ Chief Information Security Officer (CISO)
 
 ---
 
-## Security Skills
+### Security Skills
 
 - Risk Assessment
 - Vulnerability Management
@@ -1549,7 +1549,7 @@ Chief Information Security Officer (CISO)
 
 ---
 
-## Soft Skills
+### Soft Skills
 
 - Communication
 - Analytical Thinking
@@ -1561,7 +1561,7 @@ Chief Information Security Officer (CISO)
 
 ---
 
-# Common Security Tools
+## Common Security Tools
 
 Examples include:
 
@@ -1578,7 +1578,7 @@ Each tool serves a different purpose within the software development and securit
 
 ---
 
-# Modern Web Security Challenges
+## Modern Web Security Challenges
 
 Organizations must defend against:
 
@@ -1595,7 +1595,7 @@ Organizations must defend against:
 
 ---
 
-# Emerging Trends
+## Emerging Trends
 
 Current areas of focus include:
 
@@ -1612,7 +1612,7 @@ Current areas of focus include:
 
 ---
 
-# Security Mindset
+## Security Mindset
 
 A good security professional asks questions such as:
 
@@ -1625,7 +1625,7 @@ A good security professional asks questions such as:
 
 ---
 
-# The Attacker vs Defender Perspective
+## The Attacker vs Defender Perspective
 
 | Attacker | Defender |
 |-----------|-----------|
@@ -1639,7 +1639,7 @@ Understanding both perspectives helps improve defensive strategies.
 
 ---
 
-# Security Is a Continuous Process
+## Security Is a Continuous Process
 
 ```
 Plan
@@ -1673,7 +1673,7 @@ Security is never "finished."
 
 ---
 
-# Common Beginner Mistakes
+## Common Beginner Mistakes
 
 Avoid:
 
@@ -1686,7 +1686,7 @@ Avoid:
 
 ---
 
-# Learning Roadmap
+## Learning Roadmap
 
 ```
 Networking
@@ -1752,9 +1752,9 @@ This handbook follows the same progression.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Web Security Protects
+### Web Security Protects
 
 - Users
 - Applications
@@ -1766,7 +1766,7 @@ This handbook follows the same progression.
 
 ---
 
-## Security Goals
+### Security Goals
 
 - Confidentiality
 - Integrity
@@ -1778,7 +1778,7 @@ This handbook follows the same progression.
 
 ---
 
-## Core Concepts
+### Core Concepts
 
 - Threat
 - Vulnerability
@@ -1793,7 +1793,7 @@ This handbook follows the same progression.
 
 ---
 
-## Enterprise Principles
+### Enterprise Principles
 
 - Continuous Monitoring
 - Threat Modeling
@@ -1805,7 +1805,7 @@ This handbook follows the same progression.
 
 ---
 
-# Chapter Memory Map
+## Chapter Memory Map
 
 ```
                   WEB SECURITY
@@ -1833,7 +1833,7 @@ This handbook follows the same progression.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Web Security?
 2. Why is Web Security important?
@@ -1848,7 +1848,7 @@ This handbook follows the same progression.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Learn how the web works before studying vulnerabilities.
 - Build security into every stage of development.
@@ -1859,7 +1859,7 @@ This handbook follows the same progression.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Relying solely on automated tools.
 - Ignoring architecture and design.
@@ -1869,7 +1869,7 @@ This handbook follows the same progression.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -1888,5 +1888,3 @@ In this chapter, you learned:
 - Security mindset and learning roadmap
 
 This chapter establishes the foundation for the rest of the handbook. The next chapter explains **how the web actually works**, starting from entering a URL in a browser and following every step until a webpage is rendered. Understanding this process is essential before learning about web vulnerabilities and defenses.
- 
-```

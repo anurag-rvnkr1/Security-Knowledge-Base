@@ -32,7 +32,7 @@ A successful incident response program combines **people, processes, technology,
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 A security control can fail.
 
@@ -112,11 +112,11 @@ The earlier an organization identifies and contains malicious activity, the lowe
 
 ---
 
-# Event vs Alert vs Incident
+## Event vs Alert vs Incident
 
 One of the most important concepts in incident response is understanding the difference between an **event**, an **alert**, and an **incident**.
 
-## Security Event
+### Security Event
 
 A security event is an observable activity.
 
@@ -136,7 +136,7 @@ A security event is not necessarily malicious.
 
 ---
 
-## Security Alert
+### Security Alert
 
 An alert is generated when a security control identifies activity that may require investigation.
 
@@ -155,7 +155,7 @@ An alert is a **signal**, not automatically a confirmed incident.
 
 ---
 
-## Security Incident
+### Security Incident
 
 An incident is a confirmed or sufficiently suspected security event that requires coordinated response.
 
@@ -193,7 +193,7 @@ The distinction is critical.
 
 ---
 
-# Incident Response Lifecycle
+## Incident Response Lifecycle
 
 A practical incident response lifecycle consists of several interconnected phases.
 
@@ -252,7 +252,7 @@ The lifecycle should be considered a **continuous feedback loop**, not a linear 
 
 ---
 
-# 1. Preparation
+## 1. Preparation
 
 Preparation occurs before an incident.
 
@@ -280,7 +280,7 @@ Without preparation, responders are forced to make important decisions during a 
 
 ---
 
-# 2. Detection and Identification
+## 2. Detection and Identification
 
 The organization identifies potentially malicious activity.
 
@@ -313,7 +313,7 @@ This may become the initial incident trigger.
 
 ---
 
-# 3. Triage
+## 3. Triage
 
 Triage determines whether the alert or event requires further investigation.
 
@@ -343,7 +343,7 @@ Triage should be fast but evidence-driven.
 
 ---
 
-# 4. Classification
+## 4. Classification
 
 The incident should be categorized.
 
@@ -373,7 +373,7 @@ Classification helps determine:
 
 ---
 
-# 5. Analysis and Scoping
+## 5. Analysis and Scoping
 
 The response team determines the extent of the compromise.
 
@@ -413,7 +413,7 @@ to:
 
 ---
 
-# 6. Containment
+## 6. Containment
 
 Containment limits attacker activity.
 
@@ -435,7 +435,7 @@ Containment must consider business impact and evidence preservation.
 
 ---
 
-# 7. Eradication
+## 7. Eradication
 
 Eradication removes the attacker's presence.
 
@@ -457,7 +457,7 @@ Eradication should address the **root cause**, not merely the visible symptom.
 
 ---
 
-# 8. Recovery
+## 8. Recovery
 
 Recovery returns the environment to a trusted operational state.
 
@@ -487,7 +487,7 @@ Important recovery questions:
 
 ---
 
-# 9. Lessons Learned
+## 9. Lessons Learned
 
 After the incident, the organization should determine:
 
@@ -509,11 +509,11 @@ The goal is to **improve the security system**.
 
 ---
 
-# Incident Response vs Incident Management
+## Incident Response vs Incident Management
 
 These terms are related but not identical.
 
-## Incident Response
+### Incident Response
 
 Focuses primarily on:
 
@@ -524,7 +524,7 @@ Focuses primarily on:
 - Recovery
 - Evidence
 
-## Incident Management
+### Incident Management
 
 Includes the broader organizational coordination:
 
@@ -560,7 +560,7 @@ Business Incident Management
 
 ---
 
-# Incident Response Team
+## Incident Response Team
 
 A mature incident response capability usually involves multiple specialists.
 
@@ -590,7 +590,7 @@ A mature incident response capability usually involves multiple specialists.
 
 ---
 
-# Incident Commander
+## Incident Commander
 
 The Incident Commander coordinates the response.
 
@@ -611,7 +611,7 @@ The Incident Commander does not necessarily perform every technical investigatio
 
 ---
 
-# SOC Analyst
+## SOC Analyst
 
 The SOC is often the first security team to encounter an incident.
 
@@ -628,7 +628,7 @@ Responsibilities may include:
 
 ---
 
-# Incident Responder
+## Incident Responder
 
 The incident responder performs deeper investigation and response.
 
@@ -645,7 +645,7 @@ Responsibilities may include:
 
 ---
 
-# Threat Hunter
+## Threat Hunter
 
 Threat hunters help identify additional attacker activity that automated detections may have missed.
 
@@ -677,7 +677,7 @@ This is where incident response and threat hunting strongly overlap.
 
 ---
 
-# Digital Forensics
+## Digital Forensics
 
 Forensics focuses on evidence acquisition and analysis.
 
@@ -695,7 +695,7 @@ Potential evidence includes:
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Incident response frequently exposes detection gaps.
 
@@ -730,13 +730,13 @@ This creates a valuable feedback loop.
 
 ---
 
-# Incident Severity
+## Incident Severity
 
 Severity determines the urgency and resources required.
 
 A sample model:
 
-## SEV-1 — Critical
+### SEV-1 — Critical
 
 Examples:
 
@@ -757,7 +757,7 @@ Full IR activation
 
 ---
 
-## SEV-2 — High
+### SEV-2 — High
 
 Examples:
 
@@ -776,7 +776,7 @@ Containment priority
 
 ---
 
-## SEV-3 — Medium
+### SEV-3 — Medium
 
 Examples:
 
@@ -793,7 +793,7 @@ Focused investigation
 
 ---
 
-## SEV-4 — Low
+### SEV-4 — Low
 
 Examples:
 
@@ -812,7 +812,7 @@ Severity should be reassessed as new evidence becomes available.
 
 ---
 
-# Severity Decision Factors
+## Severity Decision Factors
 
 Severity should not depend on a single indicator.
 
@@ -853,9 +853,9 @@ Factors include:
 
 ---
 
-# Common Incident Categories
+## Common Incident Categories
 
-## Phishing
+### Phishing
 
 Malicious emails attempt to:
 
@@ -866,7 +866,7 @@ Malicious emails attempt to:
 
 ---
 
-## Credential Compromise
+### Credential Compromise
 
 Examples:
 
@@ -878,7 +878,7 @@ Examples:
 
 ---
 
-## Malware
+### Malware
 
 Examples:
 
@@ -891,7 +891,7 @@ Examples:
 
 ---
 
-## Ransomware
+### Ransomware
 
 Typical sequence:
 
@@ -915,7 +915,7 @@ Encryption
 
 ---
 
-## Web Application Compromise
+### Web Application Compromise
 
 Examples:
 
@@ -927,7 +927,7 @@ Examples:
 
 ---
 
-## Cloud Compromise
+### Cloud Compromise
 
 Examples:
 
@@ -940,7 +940,7 @@ Examples:
 
 ---
 
-## Insider Threat
+### Insider Threat
 
 Potential scenarios:
 
@@ -952,7 +952,7 @@ Potential scenarios:
 
 ---
 
-# Detection Sources
+## Detection Sources
 
 Incident detection can originate from many sources.
 
@@ -987,7 +987,7 @@ Examples:
 
 ---
 
-# Incident Identification Without Alerts
+## Incident Identification Without Alerts
 
 Not every incident is automatically detected.
 
@@ -1017,7 +1017,7 @@ This demonstrates why human reporting remains important.
 
 ---
 
-# Evidence-Based Investigation
+## Evidence-Based Investigation
 
 Incident response should separate observations from assumptions.
 
@@ -1042,23 +1042,23 @@ The timeline creates an evidence-backed narrative.
 
 ---
 
-# Facts vs Hypotheses
+## Facts vs Hypotheses
 
 A responder should distinguish:
 
-### Confirmed
+#### Confirmed
 
 Evidence directly demonstrates the activity.
 
-### Highly Likely
+#### Highly Likely
 
 Multiple indicators strongly support the conclusion.
 
-### Possible
+#### Possible
 
 Evidence exists but is insufficient for confirmation.
 
-### Unknown
+#### Unknown
 
 Available evidence does not establish the answer.
 
@@ -1085,7 +1085,7 @@ This distinction is extremely important in professional incident reporting.
 
 ---
 
-# Incident Timeline
+## Incident Timeline
 
 Timeline reconstruction is one of the most useful IR techniques.
 
@@ -1139,7 +1139,7 @@ The timeline allows responders to understand:
 
 ---
 
-# Dwell Time
+## Dwell Time
 
 **Dwell time** is the period during which an attacker remains inside an environment before detection or containment.
 
@@ -1169,29 +1169,29 @@ Reducing dwell time is a major security objective.
 
 ---
 
-# Mean Time Metrics
+## Mean Time Metrics
 
 Organizations frequently measure incident response performance using metrics such as:
 
-### MTTD
+#### MTTD
 
 **Mean Time to Detect**
 
 How long it takes to identify an incident.
 
-### MTTA
+#### MTTA
 
 **Mean Time to Acknowledge**
 
 How long it takes for the security team to acknowledge an alert.
 
-### MTTC
+#### MTTC
 
 **Mean Time to Contain**
 
 How long it takes to prevent further attacker activity.
 
-### MTTR
+#### MTTR
 
 **Mean Time to Respond/Recover**
 
@@ -1223,7 +1223,7 @@ Organizations should define metrics consistently before comparing performance.
 
 ---
 
-# Incident Communication
+## Incident Communication
 
 Technical response is only one part of incident management.
 
@@ -1254,7 +1254,7 @@ Technical details should not be unnecessarily distributed to people who do not r
 
 ---
 
-# Incident Documentation
+## Incident Documentation
 
 A professional incident record should contain:
 
@@ -1310,7 +1310,7 @@ Closure Date:
 
 ---
 
-# Incident Status
+## Incident Status
 
 A standardized incident status model can improve coordination.
 
@@ -1360,11 +1360,11 @@ Incident response is therefore dynamic.
 
 ---
 
-# Common Incident Response Misconfigurations
+## Common Incident Response Misconfigurations
 
 Poor preparation can significantly increase incident impact.
 
-## 1. No Centralized Logging
+### 1. No Centralized Logging
 
 Without centralized logs:
 
@@ -1374,7 +1374,7 @@ Without centralized logs:
 
 ---
 
-## 2. Incomplete Endpoint Visibility
+### 2. Incomplete Endpoint Visibility
 
 Some systems may lack:
 
@@ -1387,7 +1387,7 @@ This creates investigation blind spots.
 
 ---
 
-## 3. No Asset Inventory
+### 3. No Asset Inventory
 
 Responders may not know:
 
@@ -1397,13 +1397,13 @@ Responders may not know:
 
 ---
 
-## 4. No Incident Severity Model
+### 4. No Incident Severity Model
 
 Without predefined severity criteria, teams may disagree about urgency.
 
 ---
 
-## 5. No Escalation Procedure
+### 5. No Escalation Procedure
 
 A SOC analyst may identify a critical incident but not know:
 
@@ -1413,31 +1413,31 @@ A SOC analyst may identify a critical incident but not know:
 
 ---
 
-## 6. No Tested Backups
+### 6. No Tested Backups
 
 Backups are not sufficient if restoration has never been validated.
 
 ---
 
-## 7. No Incident Playbooks
+### 7. No Incident Playbooks
 
 Responders may waste time deciding basic response steps during an active attack.
 
 ---
 
-## 8. No Tabletop Exercises
+### 8. No Tabletop Exercises
 
 Plans that have never been tested may fail during real incidents.
 
 ---
 
-# Prevention and Preparedness
+## Prevention and Preparedness
 
 Incident response begins before an incident.
 
 Organizations should maintain:
 
-### Asset Visibility
+#### Asset Visibility
 
 Know:
 
@@ -1448,7 +1448,7 @@ Know:
 - Identities
 - Critical systems
 
-### Logging
+#### Logging
 
 Collect appropriate:
 
@@ -1458,7 +1458,7 @@ Collect appropriate:
 - Cloud audit logs
 - Application logs
 
-### Detection
+#### Detection
 
 Deploy:
 
@@ -1468,7 +1468,7 @@ Deploy:
 - Email security
 - Cloud security monitoring
 
-### Access Control
+#### Access Control
 
 Use:
 
@@ -1477,7 +1477,7 @@ Use:
 - Privileged access management
 - Strong authentication
 
-### Backup
+#### Backup
 
 Maintain:
 
@@ -1485,7 +1485,7 @@ Maintain:
 - Tested recovery procedures
 - Multiple recovery points
 
-### Exercises
+#### Exercises
 
 Conduct:
 
@@ -1496,17 +1496,17 @@ Conduct:
 
 ---
 
-# Best Practices
+## Best Practices
 
-## 1. Prepare Before the Incident
+### 1. Prepare Before the Incident
 
 Do not create the response process during an emergency.
 
-## 2. Centralize Evidence
+### 2. Centralize Evidence
 
 Use appropriate centralized logging and evidence storage.
 
-## 3. Maintain Accurate Time Synchronization
+### 3. Maintain Accurate Time Synchronization
 
 Timestamp inconsistencies can make timeline reconstruction difficult.
 
@@ -1518,7 +1518,7 @@ NTP
 
 across relevant systems.
 
-## 4. Define Roles
+### 4. Define Roles
 
 Everyone should know:
 
@@ -1528,7 +1528,7 @@ Everyone should know:
 - Who approves containment
 - Who handles legal issues
 
-## 5. Preserve Evidence
+### 5. Preserve Evidence
 
 Do not unnecessarily destroy:
 
@@ -1538,79 +1538,79 @@ Do not unnecessarily destroy:
 - Network captures
 - Authentication records
 
-## 6. Scope Beyond the First Host
+### 6. Scope Beyond the First Host
 
 The first compromised system may only be one part of a larger attack.
 
-## 7. Track Decisions
+### 7. Track Decisions
 
 Document important response decisions and their rationale.
 
-## 8. Validate Recovery
+### 8. Validate Recovery
 
 Do not assume recovery succeeded simply because the system is online.
 
-## 9. Improve Detection
+### 9. Improve Detection
 
 Every incident should produce opportunities to improve security monitoring.
 
-## 10. Conduct Lessons Learned
+### 10. Conduct Lessons Learned
 
 Use incidents to strengthen the organization.
 
 ---
 
-# Commands and Investigation Examples
+## Commands and Investigation Examples
 
 These commands are intended for **authorized defensive investigation**.
 
 ---
 
-## Windows
+### Windows
 
-### Identify Current User
+#### Identify Current User
 
 ```powershell
 whoami
 ```
 
-### System Information
+#### System Information
 
 ```powershell
 systeminfo
 ```
 
-### Network Configuration
+#### Network Configuration
 
 ```powershell
 ipconfig /all
 ```
 
-### Active Connections
+#### Active Connections
 
 ```powershell
 netstat -ano
 ```
 
-### Running Processes
+#### Running Processes
 
 ```powershell
 Get-Process
 ```
 
-### Services
+#### Services
 
 ```powershell
 Get-Service
 ```
 
-### Scheduled Tasks
+#### Scheduled Tasks
 
 ```powershell
 Get-ScheduledTask
 ```
 
-### Recent Windows Events
+#### Recent Windows Events
 
 ```powershell
 Get-WinEvent -LogName Security -MaxEvents 50
@@ -1618,45 +1618,45 @@ Get-WinEvent -LogName Security -MaxEvents 50
 
 ---
 
-## Linux
+### Linux
 
-### Current User
+#### Current User
 
 ```bash
 whoami
 ```
 
-### System Information
+#### System Information
 
 ```bash
 uname -a
 ```
 
-### Network Connections
+#### Network Connections
 
 ```bash
 ss -tulpn
 ```
 
-### Running Processes
+#### Running Processes
 
 ```bash
 ps aux
 ```
 
-### Logged-In Users
+#### Logged-In Users
 
 ```bash
 w
 ```
 
-### Recent Login Activity
+#### Recent Login Activity
 
 ```bash
 last
 ```
 
-### Failed Authentication
+#### Failed Authentication
 
 On systems using traditional authentication logs:
 
@@ -1672,7 +1672,7 @@ journalctl -u ssh
 
 ---
 
-## DNS Investigation
+### DNS Investigation
 
 Example:
 
@@ -1696,7 +1696,7 @@ Investigators should correlate DNS activity with:
 
 ---
 
-## Network Capture
+### Network Capture
 
 Capture traffic in an authorized environment:
 
@@ -1727,11 +1727,11 @@ Wireshark
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Lab: Investigating a Suspected Compromised Endpoint
+### Lab: Investigating a Suspected Compromised Endpoint
 
-### Objective
+#### Objective
 
 Investigate a simulated compromised workstation and determine:
 
@@ -1744,7 +1744,7 @@ Investigate a simulated compromised workstation and determine:
 
 ---
 
-## Scenario
+### Scenario
 
 A SOC alert reports:
 
@@ -1767,9 +1767,9 @@ WINWORD.EXE
 
 ---
 
-## Investigation Steps
+### Investigation Steps
 
-### Step 1 — Validate the User
+#### Step 1 — Validate the User
 
 Determine whether the user legitimately opened Microsoft Word.
 
@@ -1787,7 +1787,7 @@ Was the document downloaded?
 
 ---
 
-### Step 2 — Investigate the Process
+#### Step 2 — Investigate the Process
 
 Review:
 
@@ -1804,7 +1804,7 @@ Hash
 
 ---
 
-### Step 3 — Investigate Network Activity
+#### Step 3 — Investigate Network Activity
 
 Determine:
 
@@ -1819,7 +1819,7 @@ Process responsible
 
 ---
 
-### Step 4 — Search for Persistence
+#### Step 4 — Search for Persistence
 
 Investigate:
 
@@ -1835,7 +1835,7 @@ Browser extensions
 
 ---
 
-### Step 5 — Scope the User
+#### Step 5 — Scope the User
 
 Search for:
 
@@ -1851,7 +1851,7 @@ MFA activity
 
 ---
 
-### Step 6 — Scope the Host
+#### Step 6 — Scope the Host
 
 Search for:
 
@@ -1866,7 +1866,7 @@ Additional persistence
 
 ---
 
-### Step 7 — Determine Severity
+#### Step 7 — Determine Severity
 
 Consider:
 
@@ -1886,7 +1886,7 @@ Is data access observed?
 
 ---
 
-### Step 8 — Containment
+#### Step 8 — Containment
 
 Potential actions:
 
@@ -1900,7 +1900,7 @@ Preserve evidence
 
 ---
 
-### Expected Investigation Output
+#### Expected Investigation Output
 
 Produce an incident summary:
 
@@ -1950,9 +1950,9 @@ Detection improvement
 
 ---
 
-# Incident Response Checklist
+## Incident Response Checklist
 
-## Before an Incident
+### Before an Incident
 
 ```text
 [ ] Incident response plan exists
@@ -1970,7 +1970,7 @@ Detection improvement
 
 ---
 
-## During an Incident
+### During an Incident
 
 ```text
 [ ] Validate alert
@@ -1988,7 +1988,7 @@ Detection improvement
 
 ---
 
-## After an Incident
+### After an Incident
 
 ```text
 [ ] Eradicate root cause
@@ -2005,17 +2005,17 @@ Detection improvement
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamentals
+### Fundamentals
 
-### 1. What is incident response?
+#### 1. What is incident response?
 
 Incident response is the structured process of preparing for, detecting, investigating, containing, eradicating, recovering from, and learning from cybersecurity incidents.
 
 ---
 
-### 2. What is the difference between an event, alert, and incident?
+#### 2. What is the difference between an event, alert, and incident?
 
 An **event** is an observable activity.
 
@@ -2025,7 +2025,7 @@ An **incident** is a confirmed or sufficiently suspected security event requirin
 
 ---
 
-### 3. What are the major phases of incident response?
+#### 3. What are the major phases of incident response?
 
 A practical lifecycle includes:
 
@@ -2042,31 +2042,31 @@ Lessons Learned
 
 ---
 
-### 4. What is incident triage?
+#### 4. What is incident triage?
 
 Triage is the process of rapidly evaluating an alert or suspected security event to determine its validity, severity, scope, and appropriate next action.
 
 ---
 
-### 5. What is incident containment?
+#### 5. What is incident containment?
 
 Containment limits attacker activity and prevents additional damage while allowing the response team to investigate and eradicate the threat.
 
 ---
 
-### 6. What is eradication?
+#### 6. What is eradication?
 
 Eradication removes the attacker's presence and addresses the mechanisms that allowed the compromise.
 
 ---
 
-### 7. What is recovery?
+#### 7. What is recovery?
 
 Recovery safely restores affected systems and services to trusted operational status.
 
 ---
 
-### 8. What is the difference between containment and eradication?
+#### 8. What is the difference between containment and eradication?
 
 **Containment** stops or limits the attack.
 
@@ -2074,7 +2074,7 @@ Recovery safely restores affected systems and services to trusted operational st
 
 ---
 
-### 9. Why is evidence preservation important?
+#### 9. Why is evidence preservation important?
 
 Evidence allows investigators to:
 
@@ -2086,25 +2086,25 @@ Evidence allows investigators to:
 
 ---
 
-### 10. What is an Incident Commander?
+#### 10. What is an Incident Commander?
 
 The Incident Commander coordinates the overall response, establishes priorities, assigns responsibilities, manages escalation, and maintains situational awareness.
 
 ---
 
-### 11. What is dwell time?
+#### 11. What is dwell time?
 
 Dwell time is the period during which an attacker remains within an environment before detection or containment.
 
 ---
 
-### 12. What is root cause analysis?
+#### 12. What is root cause analysis?
 
 Root cause analysis determines the underlying condition that allowed the incident to occur rather than focusing only on its immediate symptoms.
 
 ---
 
-### 13. What should you do when you detect a compromised endpoint?
+#### 13. What should you do when you detect a compromised endpoint?
 
 A reasonable high-level workflow is:
 
@@ -2128,7 +2128,7 @@ Monitor
 
 ---
 
-### 14. Should you immediately shut down a compromised system?
+#### 14. Should you immediately shut down a compromised system?
 
 Not always.
 
@@ -2148,7 +2148,7 @@ The response should consider:
 
 ---
 
-### 15. What should happen after an incident?
+#### 15. What should happen after an incident?
 
 The organization should:
 
@@ -2162,7 +2162,7 @@ The organization should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Incident response is fundamentally about **structured decision-making under uncertainty**.
 
@@ -2200,43 +2200,43 @@ to:
 
 ---
 
-# References
+## References
 
-### NIST
+#### NIST
 
 **NIST SP 800-61 — Computer Security Incident Handling Guide**
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### NIST Cybersecurity Framework
+#### NIST Cybersecurity Framework
 
 https://www.nist.gov/cyberframework
 
-### CISA
+#### CISA
 
 Incident response and cybersecurity guidance:
 
 https://www.cisa.gov/
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 Adversary tactics and techniques:
 
 https://attack.mitre.org/
 
-### FIRST
+#### FIRST
 
 Incident response and security team resources:
 
 https://www.first.org/
 
-### SANS
+#### SANS
 
 Incident response resources and training:
 
 https://www.sans.org/
 
-### CIS
+#### CIS
 
 Security controls and defensive practices:
 
@@ -2244,7 +2244,7 @@ https://www.cisecurity.org/
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Incident response is not simply an emergency procedure.
 

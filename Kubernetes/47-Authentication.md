@@ -48,7 +48,7 @@ Authorization answers:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -82,7 +82,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Authentication?
+## What Is Authentication?
 
 Authentication is the process of verifying the identity of a requester.
 
@@ -108,11 +108,11 @@ External Identity
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 This distinction is extremely important.
 
-## Authentication
+### Authentication
 
 ```text
 Who are you?
@@ -126,7 +126,7 @@ Alice
 
 ---
 
-## Authorization
+### Authorization
 
 ```text
 What can Alice do?
@@ -147,7 +147,7 @@ delete nodes
 
 ---
 
-# Simple Example
+## Simple Example
 
 Suppose you run:
 
@@ -182,7 +182,7 @@ Return Pods
 
 ---
 
-# Kubernetes Identity Model
+## Kubernetes Identity Model
 
 Kubernetes does not have a traditional built-in user database for ordinary human users.
 
@@ -201,7 +201,7 @@ Cloud-provider identity integrations
 
 ---
 
-# Human Users vs Service Accounts
+## Human Users vs Service Accounts
 
 Kubernetes commonly distinguishes between:
 
@@ -219,7 +219,7 @@ Service Accounts are Kubernetes API identities intended for workloads and automa
 
 ---
 
-# Human User
+## Human User
 
 Example:
 
@@ -237,7 +237,7 @@ External Identity Provider
 
 ---
 
-# Service Account
+## Service Account
 
 Example:
 
@@ -249,7 +249,7 @@ This identity represents a workload.
 
 ---
 
-# Service Account Identity Format
+## Service Account Identity Format
 
 A Service Account identity commonly looks like:
 
@@ -275,7 +275,7 @@ api-sa
 
 ---
 
-# API Server
+## API Server
 
 The Kubernetes API Server is responsible for processing API requests.
 
@@ -297,7 +297,7 @@ Identity
 
 ---
 
-# Authentication Flow
+## Authentication Flow
 
 A simplified request flow:
 
@@ -327,7 +327,7 @@ A simplified request flow:
 
 ---
 
-# Kubernetes Authentication Methods
+## Kubernetes Authentication Methods
 
 Common mechanisms include:
 
@@ -343,7 +343,7 @@ The exact available methods depend on the Kubernetes distribution and API Server
 
 ---
 
-# Client Certificates
+## Client Certificates
 
 Kubernetes can authenticate clients using TLS client certificates.
 
@@ -359,7 +359,7 @@ The API Server validates the certificate.
 
 ---
 
-# Certificate Authentication
+## Certificate Authentication
 
 Conceptually:
 
@@ -379,7 +379,7 @@ Identity
 
 ---
 
-# Example Certificate Identity
+## Example Certificate Identity
 
 A certificate may contain:
 
@@ -399,7 +399,7 @@ The resulting identity can then be authorized using RBAC.
 
 ---
 
-# Important Security Point
+## Important Security Point
 
 A client certificate is:
 
@@ -417,7 +417,7 @@ RBAC determines what the authenticated identity can do.
 
 ---
 
-# Certificate-Based Request
+## Certificate-Based Request
 
 Conceptually:
 
@@ -435,7 +435,7 @@ Request allowed/denied
 
 ---
 
-# Bearer Tokens
+## Bearer Tokens
 
 A bearer token is a credential presented with an API request.
 
@@ -450,7 +450,7 @@ The API Server validates the token according to its configured authentication me
 
 ---
 
-# Bearer Token Security
+## Bearer Token Security
 
 A bearer token should be treated as:
 
@@ -474,7 +474,7 @@ Public URLs
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Service Accounts provide identities for workloads.
 
@@ -500,7 +500,7 @@ kubectl apply -f serviceaccount.yaml
 
 ---
 
-# Assign Service Account to Pod
+## Assign Service Account to Pod
 
 ```yaml
 spec:
@@ -516,7 +516,7 @@ system:serviceaccount:production:api-sa
 
 ---
 
-# Why Use Dedicated Service Accounts?
+## Why Use Dedicated Service Accounts?
 
 Avoid using one broad identity for every workload.
 
@@ -550,7 +550,7 @@ Each can receive only the permissions it requires.
 
 ---
 
-# Default Service Account
+## Default Service Account
 
 Every namespace has a default Service Account.
 
@@ -570,7 +570,7 @@ If a Pod does not specify another Service Account, it generally uses the namespa
 
 ---
 
-# Default Does Not Mean Privileged
+## Default Does Not Mean Privileged
 
 The default Service Account should not automatically be assumed to have broad Kubernetes permissions.
 
@@ -578,7 +578,7 @@ Authorization is separately controlled by RBAC.
 
 ---
 
-# Service Account Tokens
+## Service Account Tokens
 
 Workloads may need credentials to communicate with the Kubernetes API.
 
@@ -598,7 +598,7 @@ API Server
 
 ---
 
-# Bound Service Account Tokens
+## Bound Service Account Tokens
 
 Modern Kubernetes Service Account tokens are generally:
 
@@ -614,7 +614,7 @@ This is more secure than relying on long-lived static credentials.
 
 ---
 
-# Token Projection
+## Token Projection
 
 A Service Account token can be projected into a Pod.
 
@@ -634,7 +634,7 @@ The application reads the token from the mounted filesystem.
 
 ---
 
-# TokenRequest API
+## TokenRequest API
 
 Kubernetes provides the:
 
@@ -656,7 +656,7 @@ This enables more limited credentials.
 
 ---
 
-# Token Audience
+## Token Audience
 
 An audience identifies the intended recipient of a token.
 
@@ -673,7 +673,7 @@ An application should not blindly accept a token intended for another service.
 
 ---
 
-# Token Expiration
+## Token Expiration
 
 Short-lived tokens reduce risk.
 
@@ -693,7 +693,7 @@ This is preferable to credentials that remain valid indefinitely.
 
 ---
 
-# Token Rotation
+## Token Rotation
 
 Projected Service Account tokens can be refreshed automatically by Kubernetes mechanisms.
 
@@ -701,7 +701,7 @@ The application should read the token from the appropriate projected location ra
 
 ---
 
-# AutomountServiceAccountToken
+## AutomountServiceAccountToken
 
 If a Pod does not need Kubernetes API access, you can disable automatic token mounting:
 
@@ -715,7 +715,7 @@ This reduces unnecessary credential exposure.
 
 ---
 
-# Example
+## Example
 
 ```yaml
 apiVersion: v1
@@ -747,7 +747,7 @@ No automatic Service Account token
 
 ---
 
-# When Should a Pod Use a Token?
+## When Should a Pod Use a Token?
 
 Use a Service Account token when the application genuinely needs Kubernetes API access.
 
@@ -764,7 +764,7 @@ A normal web application often does not need direct Kubernetes API access.
 
 ---
 
-# `kubeconfig`
+## `kubeconfig`
 
 `kubectl` commonly uses:
 
@@ -792,7 +792,7 @@ current-context
 
 ---
 
-# View Current Context
+## View Current Context
 
 ```bash
 kubectl config current-context
@@ -800,7 +800,7 @@ kubectl config current-context
 
 ---
 
-# View All Contexts
+## View All Contexts
 
 ```bash
 kubectl config get-contexts
@@ -808,7 +808,7 @@ kubectl config get-contexts
 
 ---
 
-# View Configuration
+## View Configuration
 
 ```bash
 kubectl config view
@@ -826,7 +826,7 @@ Do not share it publicly.
 
 ---
 
-# Kubeconfig Structure
+## Kubeconfig Structure
 
 Conceptually:
 
@@ -844,7 +844,7 @@ kubeconfig
 
 ---
 
-# Cluster
+## Cluster
 
 A cluster entry identifies the Kubernetes API endpoint and related certificate information.
 
@@ -864,7 +864,7 @@ clusters:
 
 ---
 
-# User
+## User
 
 A user entry defines client credentials.
 
@@ -896,7 +896,7 @@ users:
 
 ---
 
-# Context
+## Context
 
 A context combines:
 
@@ -926,7 +926,7 @@ contexts:
 
 ---
 
-# Why Contexts Matter
+## Why Contexts Matter
 
 A developer may have:
 
@@ -948,7 +948,7 @@ before sensitive operations.
 
 ---
 
-# OIDC Authentication
+## OIDC Authentication
 
 OIDC stands for:
 
@@ -962,7 +962,7 @@ Examples of identity providers can include enterprise authentication platforms s
 
 ---
 
-# OIDC Architecture
+## OIDC Architecture
 
 ```text
                  User
@@ -991,7 +991,7 @@ Examples of identity providers can include enterprise authentication platforms s
 
 ---
 
-# Why Use OIDC?
+## Why Use OIDC?
 
 OIDC enables organizations to centralize:
 
@@ -1007,7 +1007,7 @@ instead of maintaining separate Kubernetes credentials for every employee.
 
 ---
 
-# OIDC Groups
+## OIDC Groups
 
 An identity provider can provide group information.
 
@@ -1038,7 +1038,7 @@ Permissions
 
 ---
 
-# OIDC + RBAC
+## OIDC + RBAC
 
 Example:
 
@@ -1062,7 +1062,7 @@ group.
 
 ---
 
-# External Identity Provider
+## External Identity Provider
 
 A common enterprise architecture is:
 
@@ -1089,7 +1089,7 @@ Group Management
 
 ---
 
-# Authentication Webhook
+## Authentication Webhook
 
 Kubernetes can integrate with an external authentication service through supported webhook-based authentication mechanisms.
 
@@ -1111,7 +1111,7 @@ The exact configuration depends on the Kubernetes distribution and authenticatio
 
 ---
 
-# Cloud Identity
+## Cloud Identity
 
 Managed Kubernetes platforms can integrate Kubernetes authentication with cloud identity systems.
 
@@ -1131,7 +1131,7 @@ The exact mechanism varies by platform.
 
 ---
 
-# Anonymous Authentication
+## Anonymous Authentication
 
 Kubernetes can be configured to allow anonymous requests in some environments.
 
@@ -1151,7 +1151,7 @@ Anonymous access should be carefully restricted.
 
 ---
 
-# Why Restrict Anonymous Access?
+## Why Restrict Anonymous Access?
 
 If anonymous requests can reach sensitive APIs:
 
@@ -1167,7 +1167,7 @@ This can create a serious security issue.
 
 ---
 
-# Authentication Groups
+## Authentication Groups
 
 Authenticated identities can belong to groups.
 
@@ -1187,7 +1187,7 @@ Service Accounts also belong to relevant system groups.
 
 ---
 
-# `system:masters`
+## `system:masters`
 
 Kubernetes has a highly privileged group:
 
@@ -1201,7 +1201,7 @@ Credentials that authenticate as this group should be protected extremely carefu
 
 ---
 
-# Authentication and RBAC
+## Authentication and RBAC
 
 Authentication:
 
@@ -1229,7 +1229,7 @@ Authentication ≠ Authorization
 
 ---
 
-# Authentication Security Model
+## Authentication Security Model
 
 A secure authentication architecture should use:
 
@@ -1247,7 +1247,7 @@ Auditing
 
 ---
 
-# Credential Security
+## Credential Security
 
 Authentication credentials include:
 
@@ -1265,7 +1265,7 @@ Never commit them to Git.
 
 ---
 
-# Certificate Private Keys
+## Certificate Private Keys
 
 If using certificate authentication:
 
@@ -1281,7 +1281,7 @@ If an attacker obtains a private key, they may be able to authenticate as the co
 
 ---
 
-# Token Security
+## Token Security
 
 Do not store Kubernetes tokens in:
 
@@ -1297,7 +1297,7 @@ Use secure credential-management mechanisms.
 
 ---
 
-# Authentication and TLS
+## Authentication and TLS
 
 Kubernetes API communication should use:
 
@@ -1321,7 +1321,7 @@ Client Authentication
 
 ---
 
-# Authentication and Authorization Flow
+## Authentication and Authorization Flow
 
 The complete simplified flow is:
 
@@ -1355,7 +1355,7 @@ The complete simplified flow is:
 
 ---
 
-# Authentication Failure
+## Authentication Failure
 
 If credentials are invalid:
 
@@ -1377,7 +1377,7 @@ Cannot verify.
 
 ---
 
-# Authorization Failure
+## Authorization Failure
 
 If authentication succeeds but permissions are insufficient:
 
@@ -1399,7 +1399,7 @@ Typically:
 
 ---
 
-# 401 vs 403
+## 401 vs 403
 
 This is an important interview question.
 
@@ -1425,9 +1425,9 @@ Identity is known, but the request is not authorized.
 
 ---
 
-# Troubleshooting Authentication
+## Troubleshooting Authentication
 
-## Check Current Context
+### Check Current Context
 
 ```bash
 kubectl config current-context
@@ -1435,7 +1435,7 @@ kubectl config current-context
 
 ---
 
-# Check Contexts
+## Check Contexts
 
 ```bash
 kubectl config get-contexts
@@ -1443,7 +1443,7 @@ kubectl config get-contexts
 
 ---
 
-# Check Identity
+## Check Identity
 
 Modern Kubernetes clients support:
 
@@ -1455,7 +1455,7 @@ This can show the authenticated username and groups when supported.
 
 ---
 
-# Test Authorization
+## Test Authorization
 
 ```bash
 kubectl auth can-i get pods
@@ -1463,7 +1463,7 @@ kubectl auth can-i get pods
 
 ---
 
-# Test as a Service Account
+## Test as a Service Account
 
 ```bash
 kubectl auth can-i get pods \
@@ -1472,7 +1472,7 @@ kubectl auth can-i get pods \
 
 ---
 
-# Test a Specific Namespace
+## Test a Specific Namespace
 
 ```bash
 kubectl auth can-i get secrets \
@@ -1481,7 +1481,7 @@ kubectl auth can-i get secrets \
 
 ---
 
-# Authentication Error
+## Authentication Error
 
 Example:
 
@@ -1503,7 +1503,7 @@ Identity provider issue
 
 ---
 
-# Certificate Authentication Troubleshooting
+## Certificate Authentication Troubleshooting
 
 Check kubeconfig:
 
@@ -1524,7 +1524,7 @@ Do not expose private keys while troubleshooting.
 
 ---
 
-# OIDC Troubleshooting
+## OIDC Troubleshooting
 
 Possible causes:
 
@@ -1540,7 +1540,7 @@ Group claim mismatch
 
 ---
 
-# Service Account Authentication Troubleshooting
+## Service Account Authentication Troubleshooting
 
 Check:
 
@@ -1563,7 +1563,7 @@ automountServiceAccountToken
 
 ---
 
-# Check Service Account
+## Check Service Account
 
 ```bash
 kubectl describe serviceaccount api-sa
@@ -1571,7 +1571,7 @@ kubectl describe serviceaccount api-sa
 
 ---
 
-# RBAC vs Authentication Troubleshooting
+## RBAC vs Authentication Troubleshooting
 
 Use this approach:
 
@@ -1612,21 +1612,21 @@ kubectl auth can-i ...
 
 ---
 
-# Authentication Best Practices
+## Authentication Best Practices
 
-### 1. Use Strong Identity Providers
+#### 1. Use Strong Identity Providers
 
 For organizations, use centralized identity systems where appropriate.
 
 ---
 
-### 2. Prefer Short-Lived Credentials
+#### 2. Prefer Short-Lived Credentials
 
 Short-lived credentials reduce the impact of credential theft.
 
 ---
 
-### 3. Use MFA
+#### 3. Use MFA
 
 Where supported by the identity provider, use:
 
@@ -1636,7 +1636,7 @@ Multi-Factor Authentication
 
 ---
 
-### 4. Protect Private Keys
+#### 4. Protect Private Keys
 
 Never expose:
 
@@ -1652,13 +1652,13 @@ private key
 
 ---
 
-### 5. Protect Service Account Tokens
+#### 5. Protect Service Account Tokens
 
 Treat them as sensitive credentials.
 
 ---
 
-### 6. Disable Unnecessary Token Mounting
+#### 6. Disable Unnecessary Token Mounting
 
 If a workload does not need Kubernetes API access:
 
@@ -1668,7 +1668,7 @@ automountServiceAccountToken: false
 
 ---
 
-### 7. Avoid Shared Credentials
+#### 7. Avoid Shared Credentials
 
 Use:
 
@@ -1684,7 +1684,7 @@ One credential shared by many applications
 
 ---
 
-### 8. Verify Context Before Production Operations
+#### 8. Verify Context Before Production Operations
 
 Run:
 
@@ -1696,7 +1696,7 @@ before executing destructive commands.
 
 ---
 
-### 9. Audit Authentication Activity
+#### 9. Audit Authentication Activity
 
 Monitor:
 
@@ -1709,7 +1709,7 @@ Credential changes
 
 ---
 
-### 10. Rotate Credentials
+#### 10. Rotate Credentials
 
 Rotate:
 
@@ -1723,7 +1723,7 @@ according to your security policy.
 
 ---
 
-# Production Authentication Architecture
+## Production Authentication Architecture
 
 A mature enterprise setup can look like:
 
@@ -1760,7 +1760,7 @@ A mature enterprise setup can look like:
 
 ---
 
-# Workload Authentication Architecture
+## Workload Authentication Architecture
 
 For applications:
 
@@ -1785,7 +1785,7 @@ For applications:
 
 ---
 
-# Human vs Workload Authentication
+## Human vs Workload Authentication
 
 | Identity | Typical Mechanism |
 |---|---|
@@ -1800,7 +1800,7 @@ The exact mechanism depends on the environment.
 
 ---
 
-# Hands-on Lab 1 – Inspect kubeconfig
+## Hands-on Lab 1 – Inspect kubeconfig
 
 Run:
 
@@ -1833,7 +1833,7 @@ Do not share credential data.
 
 ---
 
-# Hands-on Lab 2 – Identify Current User
+## Hands-on Lab 2 – Identify Current User
 
 Run:
 
@@ -1852,7 +1852,7 @@ Understand how your current credentials map to a Kubernetes identity.
 
 ---
 
-# Hands-on Lab 3 – Test Authorization
+## Hands-on Lab 3 – Test Authorization
 
 Run:
 
@@ -1888,7 +1888,7 @@ Authorization
 
 ---
 
-# Hands-on Lab 4 – Service Account
+## Hands-on Lab 4 – Service Account
 
 Create:
 
@@ -1918,7 +1918,7 @@ kubectl get serviceaccount test-sa
 
 ---
 
-# Hands-on Lab 5 – Assign Service Account
+## Hands-on Lab 5 – Assign Service Account
 
 Create:
 
@@ -1962,7 +1962,7 @@ serviceAccountName
 
 ---
 
-# Hands-on Lab 6 – Disable Token Mounting
+## Hands-on Lab 6 – Disable Token Mounting
 
 Create:
 
@@ -1998,7 +1998,7 @@ Observe the difference from a Pod with automatic Service Account token projectio
 
 ---
 
-# Hands-on Lab 7 – Service Account RBAC
+## Hands-on Lab 7 – Service Account RBAC
 
 Create a Role:
 
@@ -2058,7 +2058,7 @@ roleRef:
 
 ---
 
-# Hands-on Lab 8 – Test Service Account Permissions
+## Hands-on Lab 8 – Test Service Account Permissions
 
 Run:
 
@@ -2096,7 +2096,7 @@ RBAC Authorization
 
 ---
 
-# Hands-on Lab 9 – Test Namespace Isolation
+## Hands-on Lab 9 – Test Namespace Isolation
 
 Create:
 
@@ -2134,7 +2134,7 @@ Compare with access to another namespace.
 
 ---
 
-# Hands-on Lab 10 – OIDC Study Exercise
+## Hands-on Lab 10 – OIDC Study Exercise
 
 In a test environment, study the OIDC configuration of your Kubernetes platform.
 
@@ -2152,7 +2152,7 @@ Do not modify production authentication settings without a controlled change pro
 
 ---
 
-# Hands-on Lab 11 – Authentication Failure
+## Hands-on Lab 11 – Authentication Failure
 
 In a disposable environment, intentionally use invalid credentials or an expired credential.
 
@@ -2182,9 +2182,9 @@ and:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Confusing Authentication with Authorization
+### 1. Confusing Authentication with Authorization
 
 Remember:
 
@@ -2202,13 +2202,13 @@ What can you do?
 
 ---
 
-## 2. Sharing Service Account Credentials
+### 2. Sharing Service Account Credentials
 
 Avoid using one Service Account token across unrelated applications.
 
 ---
 
-## 3. Storing Tokens in Git
+### 3. Storing Tokens in Git
 
 Never commit:
 
@@ -2223,13 +2223,13 @@ to repositories.
 
 ---
 
-## 4. Using Long-Lived Credentials Unnecessarily
+### 4. Using Long-Lived Credentials Unnecessarily
 
 Prefer short-lived credentials where possible.
 
 ---
 
-## 5. Giving Applications Powerful Identities
+### 5. Giving Applications Powerful Identities
 
 Avoid:
 
@@ -2241,13 +2241,13 @@ unless absolutely necessary.
 
 ---
 
-## 6. Forgetting `automountServiceAccountToken`
+### 6. Forgetting `automountServiceAccountToken`
 
 Applications that do not need Kubernetes API access should not unnecessarily receive credentials.
 
 ---
 
-## 7. Ignoring kubeconfig Security
+### 7. Ignoring kubeconfig Security
 
 A kubeconfig can contain highly sensitive authentication material.
 
@@ -2261,7 +2261,7 @@ according to your environment.
 
 ---
 
-## 8. Running Commands Against the Wrong Cluster
+### 8. Running Commands Against the Wrong Cluster
 
 Always verify:
 
@@ -2271,7 +2271,7 @@ kubectl config current-context
 
 ---
 
-## 9. Ignoring Token Expiration
+### 9. Ignoring Token Expiration
 
 Short-lived tokens can expire.
 
@@ -2279,19 +2279,19 @@ Applications and automation should handle credential renewal appropriately.
 
 ---
 
-## 10. Using Anonymous Access Carelessly
+### 10. Using Anonymous Access Carelessly
 
 Unauthenticated access should be minimized and carefully controlled.
 
 ---
 
-## 11. Forgetting Group Membership
+### 11. Forgetting Group Membership
 
 OIDC and certificate-based identities can include groups that affect RBAC permissions.
 
 ---
 
-## 12. Treating a Valid Credential as Full Access
+### 12. Treating a Valid Credential as Full Access
 
 Authentication only establishes identity.
 
@@ -2299,15 +2299,15 @@ RBAC still determines authorization.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Centralize Human Authentication
+#### 1. Centralize Human Authentication
 
 Use an enterprise identity provider where appropriate.
 
 ---
 
-### 2. Use OIDC for Enterprise SSO
+#### 2. Use OIDC for Enterprise SSO
 
 Benefits include:
 
@@ -2320,7 +2320,7 @@ Group Management
 
 ---
 
-### 3. Use Dedicated Service Accounts
+#### 3. Use Dedicated Service Accounts
 
 One workload:
 
@@ -2336,13 +2336,13 @@ Shared administrator identity
 
 ---
 
-### 4. Use Short-Lived Credentials
+#### 4. Use Short-Lived Credentials
 
 Reduce the lifetime of credentials where practical.
 
 ---
 
-### 5. Minimize API Access
+#### 5. Minimize API Access
 
 If an application does not use Kubernetes APIs:
 
@@ -2352,25 +2352,25 @@ automountServiceAccountToken: false
 
 ---
 
-### 6. Protect kubeconfig
+#### 6. Protect kubeconfig
 
 Treat it as sensitive.
 
 ---
 
-### 7. Protect Private Keys
+#### 7. Protect Private Keys
 
 Use secure storage and appropriate filesystem permissions.
 
 ---
 
-### 8. Combine Authentication with RBAC
+#### 8. Combine Authentication with RBAC
 
 Strong authentication without authorization controls is insufficient.
 
 ---
 
-### 9. Audit Authentication
+#### 9. Audit Authentication
 
 Monitor:
 
@@ -2383,15 +2383,15 @@ Service Account Usage
 
 ---
 
-### 10. Use MFA
+#### 10. Use MFA
 
 Where available through the external identity provider.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Authentication
+### Authentication
 
 ```text
 Who are you?
@@ -2399,7 +2399,7 @@ Who are you?
 
 ---
 
-## Authorization
+### Authorization
 
 ```text
 What can you do?
@@ -2407,7 +2407,7 @@ What can you do?
 
 ---
 
-## API Server
+### API Server
 
 ```text
 Central API entry point
@@ -2415,7 +2415,7 @@ Central API entry point
 
 ---
 
-## Service Account
+### Service Account
 
 ```text
 Workload identity
@@ -2423,7 +2423,7 @@ Workload identity
 
 ---
 
-## OIDC
+### OIDC
 
 ```text
 External identity protocol
@@ -2431,7 +2431,7 @@ External identity protocol
 
 ---
 
-## Client Certificate
+### Client Certificate
 
 ```text
 Certificate-based client authentication
@@ -2439,7 +2439,7 @@ Certificate-based client authentication
 
 ---
 
-## Bearer Token
+### Bearer Token
 
 ```text
 Token presented as a credential
@@ -2447,7 +2447,7 @@ Token presented as a credential
 
 ---
 
-## kubeconfig
+### kubeconfig
 
 ```text
 Cluster + User + Context configuration
@@ -2455,7 +2455,7 @@ Cluster + User + Context configuration
 
 ---
 
-## TokenRequest
+### TokenRequest
 
 ```text
 Mechanism for obtaining Service Account tokens
@@ -2463,7 +2463,7 @@ Mechanism for obtaining Service Account tokens
 
 ---
 
-## `automountServiceAccountToken`
+### `automountServiceAccountToken`
 
 ```text
 Controls automatic Service Account credential mounting
@@ -2471,7 +2471,7 @@ Controls automatic Service Account credential mounting
 
 ---
 
-## 401
+### 401
 
 ```text
 Authentication problem
@@ -2479,7 +2479,7 @@ Authentication problem
 
 ---
 
-## 403
+### 403
 
 ```text
 Authorization problem
@@ -2487,7 +2487,7 @@ Authorization problem
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Current context:
 
@@ -2570,9 +2570,9 @@ kubectl get pod <name> -o yaml
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is authentication?
 - What is the difference between authentication and authorization?
@@ -2586,7 +2586,7 @@ kubectl get pod <name> -o yaml
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Explain the Kubernetes API authentication flow.
 - How are Service Accounts different from human users?
@@ -2601,7 +2601,7 @@ kubectl get pod <name> -o yaml
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Kubernetes authentication and authorization pipeline.
 - How does OIDC integrate with Kubernetes?
@@ -2621,13 +2621,13 @@ kubectl get pod <name> -o yaml
 
 ---
 
-# Interview Scenario
+## Interview Scenario
 
-### Question
+#### Question
 
 > A developer says `kubectl get pods` returns `403 Forbidden`. How would you troubleshoot it?
 
-### Answer
+#### Answer
 
 First determine whether authentication succeeded:
 
@@ -2686,13 +2686,13 @@ Missing RBAC permission
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > A Pod has been compromised. How can you reduce the risk of its Service Account credentials being abused?
 
-### Answer
+#### Answer
 
 Use multiple controls:
 
@@ -2725,7 +2725,7 @@ Audit + Detection
 
 ---
 
-# Production Authentication Architecture
+## Production Authentication Architecture
 
 A strong enterprise model can be:
 
@@ -2782,7 +2782,7 @@ For workloads:
 
 ---
 
-# Authentication Security Checklist
+## Authentication Security Checklist
 
 ```text
 ☑ Strong authentication
@@ -2803,7 +2803,7 @@ For workloads:
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Learn the difference between authentication and authorization.
 2. Inspect your current Kubernetes identity.
@@ -2828,9 +2828,9 @@ For workloads:
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Authentication
 - Authenticating
@@ -2845,7 +2845,7 @@ For workloads:
 
 ---
 
-## Identity and Authentication
+### Identity and Authentication
 
 - OpenID Connect (OIDC)
 - OAuth 2.0
@@ -2854,7 +2854,7 @@ For workloads:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Authentication is the process of establishing:
 
@@ -3029,9 +3029,9 @@ What can you do?
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 48 – Authorization (RBAC)
+## Chapter 48 – Authorization (RBAC)
 
 Topics will include:
 

@@ -1,10 +1,10 @@
 # 16-Active-Directory-Administration.md
 
-# Part 1 — Introduction to Active Directory Administration, Administrative Tools, RSAT, ADUC and Administrative Center
+## Part 1 — Introduction to Active Directory Administration, Administrative Tools, RSAT, ADUC and Administrative Center
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -21,7 +21,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Active Directory (AD) Administration is the process of managing and maintaining an organization's identity infrastructure.
 
@@ -39,7 +39,7 @@ In small organizations, one administrator may manage the entire environment, whe
 
 ---
 
-# What is Active Directory Administration?
+## What is Active Directory Administration?
 
 Active Directory Administration involves creating, maintaining, securing, and monitoring directory objects and services.
 
@@ -58,7 +58,7 @@ Typical administrative responsibilities include:
 
 ---
 
-# Enterprise Administration Overview
+## Enterprise Administration Overview
 
 ```
                 Active Directory
@@ -84,7 +84,7 @@ Typical administrative responsibilities include:
 
 ---
 
-# Why Proper Administration Matters
+## Why Proper Administration Matters
 
 Poor administration can lead to:
 
@@ -106,7 +106,7 @@ Proper administration improves:
 
 ---
 
-# Role of an Active Directory Administrator
+## Role of an Active Directory Administrator
 
 An AD Administrator commonly performs:
 
@@ -150,7 +150,7 @@ Administration is a continuous operational process rather than a one-time task.
 
 ---
 
-# Administrative Responsibilities
+## Administrative Responsibilities
 
 Daily responsibilities often include:
 
@@ -167,7 +167,7 @@ Daily responsibilities often include:
 
 ---
 
-# Enterprise Administrative Teams
+## Enterprise Administrative Teams
 
 Large organizations commonly separate responsibilities.
 
@@ -186,7 +186,7 @@ This separation reduces operational risk and supports the Principle of Least Pri
 
 ---
 
-# Administrative Roles
+## Administrative Roles
 
 Common administrative roles include:
 
@@ -203,7 +203,7 @@ Each role should have clearly defined responsibilities.
 
 ---
 
-# Administrative Principle
+## Administrative Principle
 
 ```
 Minimal Access
@@ -233,7 +233,7 @@ Administrators should receive only the permissions required to perform their ass
 
 ---
 
-# Administrative Interfaces
+## Administrative Interfaces
 
 Windows provides multiple interfaces for Active Directory administration.
 
@@ -250,7 +250,7 @@ Each tool serves different administrative scenarios.
 
 ---
 
-# Server Manager
+## Server Manager
 
 Server Manager is the central management console for Windows Server.
 
@@ -285,7 +285,7 @@ Server Manager
 
 ---
 
-# Microsoft Management Console (MMC)
+## Microsoft Management Console (MMC)
 
 Many administrative tools are delivered as MMC snap-ins.
 
@@ -311,7 +311,7 @@ Administrators can combine multiple snap-ins into a custom console.
 
 ---
 
-# Benefits of MMC
+## Benefits of MMC
 
 - Centralized administration
 - Custom console creation
@@ -321,7 +321,7 @@ Administrators can combine multiple snap-ins into a custom console.
 
 ---
 
-# Remote Server Administration Tools (RSAT)
+## Remote Server Administration Tools (RSAT)
 
 RSAT allows administrators to manage Windows Server roles remotely from supported Windows client systems.
 
@@ -347,7 +347,7 @@ This improves operational efficiency and reduces unnecessary interactive logons 
 
 ---
 
-# Common RSAT Components
+## Common RSAT Components
 
 RSAT includes tools such as:
 
@@ -362,7 +362,7 @@ RSAT includes tools such as:
 
 ---
 
-# Benefits of RSAT
+## Benefits of RSAT
 
 - Remote administration
 - Reduced server logons
@@ -372,7 +372,7 @@ RSAT includes tools such as:
 
 ---
 
-# Active Directory Users and Computers (ADUC)
+## Active Directory Users and Computers (ADUC)
 
 ADUC is one of the most frequently used Active Directory management consoles.
 
@@ -389,7 +389,7 @@ Administrators use ADUC to:
 
 ---
 
-# ADUC Layout
+## ADUC Layout
 
 ```
 Active Directory
@@ -410,7 +410,7 @@ Users and Computers
 
 ---
 
-# Managing a User with ADUC
+## Managing a User with ADUC
 
 Typical workflow:
 
@@ -444,7 +444,7 @@ Updated Across Domain
 
 ---
 
-# Common User Properties
+## Common User Properties
 
 Administrators frequently modify:
 
@@ -461,7 +461,7 @@ Administrators frequently modify:
 
 ---
 
-# Active Directory Administrative Center (ADAC)
+## Active Directory Administrative Center (ADAC)
 
 ADAC is Microsoft's modern management interface for Active Directory.
 
@@ -476,7 +476,7 @@ It provides:
 
 ---
 
-# ADUC vs ADAC
+## ADUC vs ADAC
 
 | Feature | ADUC | ADAC |
 |----------|------|------|
@@ -491,7 +491,7 @@ Both tools remain valuable depending on the administrative task.
 
 ---
 
-# Administrative Workflow Example
+## Administrative Workflow Example
 
 ```
 HR Requests New Employee
@@ -527,7 +527,7 @@ User Ready
 
 ---
 
-# Enterprise Administration Example
+## Enterprise Administration Example
 
 Company:
 
@@ -554,7 +554,7 @@ Administration is divided among specialized teams with documented approval workf
 
 ---
 
-# Administrative Documentation
+## Administrative Documentation
 
 Every organization should document:
 
@@ -571,7 +571,7 @@ Documentation reduces operational errors and improves consistency.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Administrative accounts are among the most valuable assets in an Active Directory environment.
 
@@ -589,13 +589,13 @@ Administrative convenience should never outweigh security requirements.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore the primary Active Directory administrative tools.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -607,7 +607,7 @@ Review installed roles and available management options.
 
 ---
 
-### Step 2
+#### Step 2
 
 Open:
 
@@ -624,7 +624,7 @@ Navigate through:
 
 ---
 
-### Step 3
+#### Step 3
 
 Open:
 
@@ -636,7 +636,7 @@ Compare its interface and available features with ADUC.
 
 ---
 
-### Step 4
+#### Step 4
 
 Launch:
 
@@ -654,51 +654,51 @@ Save the custom console.
 
 ---
 
-### Step 5
+#### Step 5
 
 If RSAT is available, connect remotely to a lab domain controller and verify that administrative tools function correctly.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is the primary purpose of Active Directory Administration?
+#### Q1: What is the primary purpose of Active Directory Administration?
 
 **Answer:** To manage users, computers, groups, Organizational Units, authentication services, and directory security while maintaining availability and compliance.
 
 ---
 
-### Q2: What is RSAT?
+#### Q2: What is RSAT?
 
 **Answer:** Remote Server Administration Tools allow administrators to remotely manage Windows Server roles and Active Directory from supported Windows client systems.
 
 ---
 
-### Q3: What is ADUC used for?
+#### Q3: What is ADUC used for?
 
 **Answer:** Active Directory Users and Computers is used to manage users, groups, computers, OUs, and many common Active Directory administrative tasks.
 
 ---
 
-### Q4: What advantages does ADAC provide over ADUC?
+#### Q4: What advantages does ADAC provide over ADUC?
 
 **Answer:** ADAC includes a modern interface, integrated PowerShell support, Active Directory Recycle Bin management, enhanced search, and Fine-Grained Password Policy management.
 
 ---
 
-### Q5: Why should administrative roles be separated?
+#### Q5: Why should administrative roles be separated?
 
 **Answer:** Separation of duties reduces risk, limits privilege exposure, improves accountability, and supports security best practices.
 
 ---
 
-### Q6: Why is documentation important in Active Directory administration?
+#### Q6: Why is documentation important in Active Directory administration?
 
 **Answer:** It promotes consistency, simplifies troubleshooting, supports change management, and assists with disaster recovery and audits.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use dedicated administrative accounts.
 - Follow least-privilege principles.
@@ -710,7 +710,7 @@ If RSAT is available, connect remotely to a lab domain controller and verify tha
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Performing administrative tasks using standard user accounts.
 - Granting excessive privileges.
@@ -721,7 +721,7 @@ If RSAT is available, connect remotely to a lab domain controller and verify tha
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory administration is the operational foundation of identity management.
 - Administrators use tools such as Server Manager, MMC, RSAT, ADUC, and ADAC to manage enterprise environments.
@@ -730,13 +730,13 @@ If RSAT is available, connect remotely to a lab domain controller and verify tha
 
 ---
 
-# 16-Active-Directory-Administration.md
+## 16-Active-Directory-Administration.md
 
-# Part 2 — User Administration, Group Administration, Computer Administration, OU Management, Delegation of Control and Bulk Administration
+## Part 2 — User Administration, Group Administration, Computer Administration, OU Management, Delegation of Control and Bulk Administration
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -752,7 +752,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 The majority of an Active Directory administrator's daily work revolves around managing directory objects.
 
@@ -772,7 +772,7 @@ Efficient management of these objects ensures:
 
 ---
 
-# Active Directory Object Management
+## Active Directory Object Management
 
 ```
                  Active Directory
@@ -800,7 +800,7 @@ Efficient management of these objects ensures:
 
 ---
 
-# User Administration
+## User Administration
 
 User administration includes managing the complete lifecycle of a user account.
 
@@ -818,7 +818,7 @@ Typical tasks include:
 
 ---
 
-# User Account Lifecycle
+## User Account Lifecycle
 
 ```
 Recruitment
@@ -872,7 +872,7 @@ User lifecycle management should follow organizational policies and retention re
 
 ---
 
-# Creating a User
+## Creating a User
 
 When creating a user, administrators typically specify:
 
@@ -914,7 +914,7 @@ Ready for Login
 
 ---
 
-# Password Administration
+## Password Administration
 
 Common password-related tasks include:
 
@@ -927,7 +927,7 @@ Password resets should follow the organization's identity verification procedure
 
 ---
 
-# Account Lockout Management
+## Account Lockout Management
 
 A user account may become locked after repeated failed authentication attempts.
 
@@ -955,7 +955,7 @@ Before unlocking an account, administrators should verify the cause of the locko
 
 ---
 
-# Disabling vs Deleting Users
+## Disabling vs Deleting Users
 
 | Action | Recommended Use |
 |---------|-----------------|
@@ -966,7 +966,7 @@ Many organizations disable accounts first and delete them only after the require
 
 ---
 
-# Group Administration
+## Group Administration
 
 Groups simplify permission management.
 
@@ -992,7 +992,7 @@ This approach is easier to manage and audit.
 
 ---
 
-# Types of Administrative Group Tasks
+## Types of Administrative Group Tasks
 
 Administrators commonly:
 
@@ -1006,7 +1006,7 @@ Administrators commonly:
 
 ---
 
-# Group Membership Workflow
+## Group Membership Workflow
 
 ```
 New Employee
@@ -1032,7 +1032,7 @@ Proper group assignment enables users to access only the resources they need.
 
 ---
 
-# Nested Groups
+## Nested Groups
 
 Large enterprises often use nested groups.
 
@@ -1058,7 +1058,7 @@ Nested groups simplify permission management but should be documented to avoid u
 
 ---
 
-# Computer Administration
+## Computer Administration
 
 Computers are also Active Directory objects.
 
@@ -1073,7 +1073,7 @@ Administrators commonly:
 
 ---
 
-# Computer Lifecycle
+## Computer Lifecycle
 
 ```
 New Computer
@@ -1109,7 +1109,7 @@ Remove
 
 ---
 
-# Joining a Computer to the Domain
+## Joining a Computer to the Domain
 
 Typical process:
 
@@ -1139,7 +1139,7 @@ Ready for Users
 
 ---
 
-# Computer Naming Standards
+## Computer Naming Standards
 
 Organizations typically adopt naming conventions.
 
@@ -1161,7 +1161,7 @@ Benefits include:
 
 ---
 
-# Organizational Unit (OU) Administration
+## Organizational Unit (OU) Administration
 
 Organizational Units organize Active Directory objects logically.
 
@@ -1174,7 +1174,7 @@ Administrators use OUs to:
 
 ---
 
-# Example OU Structure
+## Example OU Structure
 
 ```
 Company
@@ -1196,7 +1196,7 @@ Company
 
 ---
 
-# Moving Objects Between OUs
+## Moving Objects Between OUs
 
 Example:
 
@@ -1224,7 +1224,7 @@ Moving objects between OUs can affect Group Policy processing.
 
 ---
 
-# Delegation of Control
+## Delegation of Control
 
 Delegation allows limited administrative rights without granting Domain Administrator privileges.
 
@@ -1254,7 +1254,7 @@ This supports least-privilege administration.
 
 ---
 
-# Benefits of Delegation
+## Benefits of Delegation
 
 - Reduced administrative workload
 - Better separation of duties
@@ -1264,7 +1264,7 @@ This supports least-privilege administration.
 
 ---
 
-# Delegation Example
+## Delegation Example
 
 Help Desk permissions:
 
@@ -1286,7 +1286,7 @@ The Help Desk receives only the permissions necessary for its responsibilities.
 
 ---
 
-# Bulk Administration
+## Bulk Administration
 
 Large organizations rarely manage users one at a time.
 
@@ -1303,7 +1303,7 @@ Examples:
 
 ---
 
-# Bulk Administration Workflow
+## Bulk Administration Workflow
 
 ```
 HR Employee List
@@ -1333,7 +1333,7 @@ Bulk operations reduce manual effort and improve consistency.
 
 ---
 
-# User Provisioning Process
+## User Provisioning Process
 
 ```
 HR System
@@ -1371,7 +1371,7 @@ Provisioning is often integrated with identity governance solutions in enterpris
 
 ---
 
-# Offboarding Process
+## Offboarding Process
 
 Proper offboarding is critical for security.
 
@@ -1403,7 +1403,7 @@ Timely account deactivation reduces the risk of unauthorized access.
 
 ---
 
-# Enterprise Administration Example
+## Enterprise Administration Example
 
 Company:
 
@@ -1429,7 +1429,7 @@ To manage this scale:
 
 ---
 
-# Administrative Documentation
+## Administrative Documentation
 
 Maintain documentation for:
 
@@ -1445,7 +1445,7 @@ Documentation supports consistency and audit readiness.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Identity administration has a direct impact on enterprise security.
 
@@ -1462,13 +1462,13 @@ Strong identity governance reduces the attack surface and improves accountabilit
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Perform common Active Directory administrative tasks in a lab environment.
 
-### Step 1
+#### Step 1
 
 Using **Active Directory Users and Computers (ADUC)**:
 
@@ -1477,7 +1477,7 @@ Using **Active Directory Users and Computers (ADUC)**:
 
 ---
 
-### Step 2
+#### Step 2
 
 Create:
 
@@ -1488,7 +1488,7 @@ Add the test user to the new group.
 
 ---
 
-### Step 3
+#### Step 3
 
 Create a test computer account.
 
@@ -1496,7 +1496,7 @@ Move it into a workstation OU.
 
 ---
 
-### Step 4
+#### Step 4
 
 Delegate password reset permissions for a Help Desk OU to a designated administrative group.
 
@@ -1504,7 +1504,7 @@ Review the delegated permissions.
 
 ---
 
-### Step 5
+#### Step 5
 
 Document:
 
@@ -1515,45 +1515,45 @@ Document:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why are groups preferred over assigning permissions directly to users?
+#### Q1: Why are groups preferred over assigning permissions directly to users?
 
 **Answer:** Groups simplify permission management, improve scalability, and make auditing easier by assigning permissions once to the group rather than individually to each user.
 
 ---
 
-### Q2: What is the benefit of Organizational Units?
+#### Q2: What is the benefit of Organizational Units?
 
 **Answer:** OUs organize objects logically, support Group Policy application, and allow delegation of administrative tasks.
 
 ---
 
-### Q3: What is delegation of control?
+#### Q3: What is delegation of control?
 
 **Answer:** Delegation allows administrators to grant specific administrative permissions to selected users or groups without providing full Domain Administrator privileges.
 
 ---
 
-### Q4: Why should accounts typically be disabled before deletion?
+#### Q4: Why should accounts typically be disabled before deletion?
 
 **Answer:** Disabling preserves the account for investigation, recovery, or retention requirements while immediately preventing sign-in.
 
 ---
 
-### Q5: What is the advantage of bulk administration?
+#### Q5: What is the advantage of bulk administration?
 
 **Answer:** Bulk administration improves efficiency, reduces manual errors, and enables consistent management of large numbers of Active Directory objects.
 
 ---
 
-### Q6: Why should offboarding be performed promptly?
+#### Q6: Why should offboarding be performed promptly?
 
 **Answer:** Prompt offboarding prevents former employees from retaining access to organizational resources and reduces security risk.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Standardize naming conventions.
 - Use groups to assign permissions.
@@ -1565,7 +1565,7 @@ Document:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assigning permissions directly to individual users.
 - Deleting accounts immediately instead of following retention policies.
@@ -1576,7 +1576,7 @@ Document:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - User, group, computer, and OU management form the core of daily Active Directory administration.
 - Delegation enables secure distribution of administrative responsibilities.
@@ -1586,13 +1586,13 @@ Document:
 
 ---
 
-# 16-Active-Directory-Administration.md
+## 16-Active-Directory-Administration.md
 
-# Part 3 — Administrative Automation, Fine-Grained Password Policies, Active Directory Recycle Bin, Object Recovery, Auditing and Enterprise Administration
+## Part 3 — Administrative Automation, Fine-Grained Password Policies, Active Directory Recycle Bin, Object Recovery, Auditing and Enterprise Administration
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1608,7 +1608,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 As Active Directory environments grow, manual administration becomes increasingly difficult.
 
@@ -1632,7 +1632,7 @@ Enterprise administrators therefore rely on:
 
 ---
 
-# Enterprise Administration Workflow
+## Enterprise Administration Workflow
 
 ```
 Business Request
@@ -1672,7 +1672,7 @@ Automation should complement administrative controls, not replace them.
 
 ---
 
-# Administrative Automation
+## Administrative Automation
 
 Automation allows repetitive administrative tasks to be performed consistently.
 
@@ -1695,7 +1695,7 @@ Benefits include:
 
 ---
 
-# Automation Example
+## Automation Example
 
 Without automation:
 
@@ -1747,7 +1747,7 @@ Send Notification
 
 ---
 
-# Identity Lifecycle Automation
+## Identity Lifecycle Automation
 
 Most organizations define a complete identity lifecycle.
 
@@ -1799,7 +1799,7 @@ Each stage should follow documented procedures.
 
 ---
 
-# Joiner-Mover-Leaver (JML) Model
+## Joiner-Mover-Leaver (JML) Model
 
 A common identity governance model is:
 
@@ -1840,7 +1840,7 @@ Benefits:
 
 ---
 
-# Fine-Grained Password Policies (FGPP)
+## Fine-Grained Password Policies (FGPP)
 
 In traditional Active Directory environments, a domain typically has a single password policy.
 
@@ -1857,7 +1857,7 @@ Example:
 
 ---
 
-# Why FGPP?
+## Why FGPP?
 
 Different accounts have different security requirements.
 
@@ -1883,7 +1883,7 @@ FGPP allows organizations to strengthen protection for privileged accounts.
 
 ---
 
-# FGPP Workflow
+## FGPP Workflow
 
 ```
 Create Password Settings Object (PSO)
@@ -1903,7 +1903,7 @@ Users Receive Policy
 
 ---
 
-# Password Settings Object (PSO)
+## Password Settings Object (PSO)
 
 A PSO can define:
 
@@ -1919,7 +1919,7 @@ Multiple PSOs may exist within the same domain.
 
 ---
 
-# Administrative Change Management
+## Administrative Change Management
 
 Administrative changes should follow a structured process.
 
@@ -1957,7 +1957,7 @@ Examples:
 
 ---
 
-# Active Directory Recycle Bin
+## Active Directory Recycle Bin
 
 Before Windows Server 2008 R2, accidentally deleted objects were difficult to recover.
 
@@ -1974,7 +1974,7 @@ Benefits include:
 
 ---
 
-# Recycle Bin Workflow
+## Recycle Bin Workflow
 
 ```
 User Deleted
@@ -2000,7 +2000,7 @@ This reduces downtime caused by accidental deletions.
 
 ---
 
-# Object States
+## Object States
 
 ```
 Active Object
@@ -2022,7 +2022,7 @@ Recovery becomes more limited as an object progresses through these stages.
 
 ---
 
-# Recovering Deleted Objects
+## Recovering Deleted Objects
 
 Typical recovery process:
 
@@ -2050,7 +2050,7 @@ Recovery should be validated after restoration.
 
 ---
 
-# Administrative Auditing
+## Administrative Auditing
 
 Auditing answers questions such as:
 
@@ -2065,7 +2065,7 @@ Auditing supports both security investigations and compliance.
 
 ---
 
-# Administrative Events to Audit
+## Administrative Events to Audit
 
 Examples include:
 
@@ -2080,7 +2080,7 @@ Examples include:
 
 ---
 
-# Administrative Audit Workflow
+## Administrative Audit Workflow
 
 ```
 Administrator Action
@@ -2110,7 +2110,7 @@ Centralized logging improves visibility and incident response.
 
 ---
 
-# Administrative Monitoring
+## Administrative Monitoring
 
 Enterprise administrators monitor:
 
@@ -2127,7 +2127,7 @@ Monitoring helps detect issues before users are affected.
 
 ---
 
-# Administrative Dashboard Example
+## Administrative Dashboard Example
 
 ```
 Enterprise Dashboard
@@ -2151,7 +2151,7 @@ Enterprise Dashboard
 
 ---
 
-# Compliance and Administration
+## Compliance and Administration
 
 Many industries require:
 
@@ -2172,7 +2172,7 @@ Examples include:
 
 ---
 
-# Enterprise Administration Example
+## Enterprise Administration Example
 
 Company:
 
@@ -2200,7 +2200,7 @@ The result is consistent administration with reduced operational effort.
 
 ---
 
-# Administrative Documentation
+## Administrative Documentation
 
 Maintain documentation for:
 
@@ -2217,7 +2217,7 @@ Well-maintained documentation supports continuity and governance.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Administrative activities should always be traceable.
 
@@ -2234,13 +2234,13 @@ Automation improves efficiency but should always include logging, approval, and 
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore administrative recovery and auditing features.
 
-### Step 1
+#### Step 1
 
 Review the Active Directory Recycle Bin status.
 
@@ -2248,7 +2248,7 @@ Document whether it is enabled in the lab environment.
 
 ---
 
-### Step 2
+#### Step 2
 
 Create a test user.
 
@@ -2260,7 +2260,7 @@ Verify that important attributes are retained.
 
 ---
 
-### Step 3
+#### Step 3
 
 Review Fine-Grained Password Policies.
 
@@ -2273,7 +2273,7 @@ Identify:
 
 ---
 
-### Step 4
+#### Step 4
 
 Review administrative audit logs.
 
@@ -2285,51 +2285,51 @@ Identify recent:
 
 ---
 
-### Step 5
+#### Step 5
 
 Draw the organization's Joiner-Mover-Leaver workflow.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is automation important in Active Directory administration?
+#### Q1: Why is automation important in Active Directory administration?
 
 **Answer:** Automation reduces repetitive work, improves consistency, minimizes human error, and accelerates administrative processes.
 
 ---
 
-### Q2: What is a Fine-Grained Password Policy?
+#### Q2: What is a Fine-Grained Password Policy?
 
 **Answer:** A Fine-Grained Password Policy allows different password and lockout settings to be applied to different users or groups within the same Active Directory domain.
 
 ---
 
-### Q3: What is the purpose of the Active Directory Recycle Bin?
+#### Q3: What is the purpose of the Active Directory Recycle Bin?
 
 **Answer:** It enables administrators to restore deleted Active Directory objects while preserving most of their attributes and relationships.
 
 ---
 
-### Q4: Why is administrative auditing important?
+#### Q4: Why is administrative auditing important?
 
 **Answer:** Auditing provides accountability, supports compliance, assists investigations, and records who performed administrative actions and when.
 
 ---
 
-### Q5: What is the Joiner-Mover-Leaver model?
+#### Q5: What is the Joiner-Mover-Leaver model?
 
 **Answer:** It is an identity lifecycle model that manages user provisioning, access changes during role transitions, and secure deprovisioning when users leave the organization.
 
 ---
 
-### Q6: Why should administrative changes follow a formal change management process?
+#### Q6: Why should administrative changes follow a formal change management process?
 
 **Answer:** Structured change management reduces operational risk, ensures approvals are obtained, improves documentation, and supports rollback and compliance requirements.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Automate repetitive administrative tasks where appropriate.
 - Implement Fine-Grained Password Policies for privileged accounts.
@@ -2342,7 +2342,7 @@ Draw the organization's Joiner-Mover-Leaver workflow.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Performing repetitive manual tasks that could be automated.
 - Applying identical password policies to all account types without evaluating risk.
@@ -2353,7 +2353,7 @@ Draw the organization's Joiner-Mover-Leaver workflow.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise Active Directory administration depends on automation, governance, auditing, and monitoring.
 - Fine-Grained Password Policies provide flexible password management for different account types.
@@ -2363,13 +2363,13 @@ Draw the organization's Joiner-Mover-Leaver workflow.
 
 ---
 
-# 16-Active-Directory-Administration.md
+## 16-Active-Directory-Administration.md
 
-# Part 4 — Administrative Troubleshooting, Enterprise Operations, Security Best Practices, Case Studies and Chapter Summary
+## Part 4 — Administrative Troubleshooting, Enterprise Operations, Security Best Practices, Case Studies and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -2387,7 +2387,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Active Directory administration does not end after users, groups, and computers are created.
 
@@ -2405,7 +2405,7 @@ A healthy Active Directory environment requires proactive administration rather 
 
 ---
 
-# Enterprise Administration Lifecycle
+## Enterprise Administration Lifecycle
 
 ```
 Planning
@@ -2449,7 +2449,7 @@ Continuous Improvement
 
 ---
 
-# Administrative Health Checks
+## Administrative Health Checks
 
 Daily health checks should include reviewing:
 
@@ -2468,7 +2468,7 @@ These checks help identify issues before they affect users.
 
 ---
 
-# Administrative Monitoring Checklist
+## Administrative Monitoring Checklist
 
 ```
 ✓ Domain Controllers Online
@@ -2492,7 +2492,7 @@ These checks help identify issues before they affect users.
 
 ---
 
-# Common Administrative Problems
+## Common Administrative Problems
 
 Administrators frequently encounter:
 
@@ -2509,7 +2509,7 @@ Administrators frequently encounter:
 
 ---
 
-# Administrative Troubleshooting Methodology
+## Administrative Troubleshooting Methodology
 
 A structured troubleshooting process improves consistency.
 
@@ -2555,7 +2555,7 @@ Document Outcome
 
 ---
 
-# Example 1 — User Cannot Log In
+## Example 1 — User Cannot Log In
 
 Possible causes:
 
@@ -2599,7 +2599,7 @@ Resolve
 
 ---
 
-# Example 2 — New User Cannot Access Shared Folder
+## Example 2 — New User Cannot Access Shared Folder
 
 Possible causes:
 
@@ -2633,7 +2633,7 @@ Validate Access
 
 ---
 
-# Example 3 — Group Policy Not Applying
+## Example 3 — Group Policy Not Applying
 
 Possible causes:
 
@@ -2671,7 +2671,7 @@ Validate Client
 
 ---
 
-# Example 4 — Computer Cannot Join Domain
+## Example 4 — Computer Cannot Join Domain
 
 Possible causes:
 
@@ -2709,7 +2709,7 @@ Retry
 
 ---
 
-# Administrative Documentation
+## Administrative Documentation
 
 Every administrative change should be documented.
 
@@ -2727,7 +2727,7 @@ Proper documentation improves accountability and simplifies future troubleshooti
 
 ---
 
-# Change Management
+## Change Management
 
 Enterprise environments rarely permit direct production changes without approval.
 
@@ -2770,7 +2770,7 @@ Benefits include:
 
 ---
 
-# Administrative Maintenance
+## Administrative Maintenance
 
 Routine maintenance includes:
 
@@ -2786,7 +2786,7 @@ Routine maintenance includes:
 
 ---
 
-# Administrative Reporting
+## Administrative Reporting
 
 Administrators commonly generate reports on:
 
@@ -2803,7 +2803,7 @@ Regular reporting supports governance and security reviews.
 
 ---
 
-# Disaster Recovery Considerations
+## Disaster Recovery Considerations
 
 Administrative planning should include:
 
@@ -2819,7 +2819,7 @@ Backups should be tested periodically to verify they can be restored successfull
 
 ---
 
-# Enterprise Operations Example
+## Enterprise Operations Example
 
 Company:
 
@@ -2871,9 +2871,9 @@ Operations follow standardized procedures to maintain availability and security.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A merger introduces 2,500 new employees.
 
@@ -2926,7 +2926,7 @@ Outcome:
 
 ---
 
-# Administrative Governance
+## Administrative Governance
 
 Strong governance requires:
 
@@ -2941,7 +2941,7 @@ Governance aligns technical administration with organizational policies.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Administrative accounts represent high-value targets.
 
@@ -2961,13 +2961,13 @@ Administrative convenience should never compromise security.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Perform an administrative health review.
 
-### Step 1
+#### Step 1
 
 Verify:
 
@@ -2979,7 +2979,7 @@ Document the results.
 
 ---
 
-### Step 2
+#### Step 2
 
 Review:
 
@@ -2991,7 +2991,7 @@ Identify any objects requiring administrative action.
 
 ---
 
-### Step 3
+#### Step 3
 
 Inspect:
 
@@ -3003,7 +3003,7 @@ Record any inconsistencies.
 
 ---
 
-### Step 4
+#### Step 4
 
 Review administrative audit logs.
 
@@ -3016,51 +3016,51 @@ Identify:
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a simple operational checklist for daily Active Directory administration.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What should be included in a daily Active Directory health check?
+#### Q1: What should be included in a daily Active Directory health check?
 
 **Answer:** Domain Controller availability, replication, DNS, authentication, Group Policy, time synchronization, backups, and critical services.
 
 ---
 
-### Q2: Why is change management important?
+#### Q2: Why is change management important?
 
 **Answer:** It reduces operational risk, ensures approvals are obtained, documents changes, and improves consistency and compliance.
 
 ---
 
-### Q3: Why should administrative documentation be maintained?
+#### Q3: Why should administrative documentation be maintained?
 
 **Answer:** Documentation supports troubleshooting, disaster recovery, auditing, operational consistency, and knowledge transfer.
 
 ---
 
-### Q4: What are common causes of user logon failures?
+#### Q4: What are common causes of user logon failures?
 
 **Answer:** Incorrect passwords, locked accounts, disabled accounts, expired passwords, network issues, DNS problems, or authentication service failures.
 
 ---
 
-### Q5: Why should inactive accounts be reviewed regularly?
+#### Q5: Why should inactive accounts be reviewed regularly?
 
 **Answer:** Inactive accounts increase the attack surface and may provide unnecessary opportunities for unauthorized access.
 
 ---
 
-### Q6: What is the purpose of administrative governance?
+#### Q6: What is the purpose of administrative governance?
 
 **Answer:** Governance defines how administrative activities are approved, performed, monitored, documented, and reviewed to maintain security and operational reliability.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Follow standardized administrative procedures.
 - Perform daily health checks.
@@ -3074,7 +3074,7 @@ Create a simple operational checklist for daily Active Directory administration.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Making undocumented production changes.
 - Using Domain Administrator privileges for routine tasks.
@@ -3086,7 +3086,7 @@ Create a simple operational checklist for daily Active Directory administration.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise Active Directory administration is an ongoing operational discipline.
 - Effective administration combines monitoring, documentation, governance, and structured troubleshooting.
@@ -3096,7 +3096,7 @@ Create a simple operational checklist for daily Active Directory administration.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

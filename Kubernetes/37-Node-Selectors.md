@@ -46,7 +46,7 @@ Matching Node
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -66,7 +66,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need Node Selectors?
+## Why Do We Need Node Selectors?
 
 Suppose a Kubernetes cluster contains:
 
@@ -116,7 +116,7 @@ disk=ssd
 
 ---
 
-# What is a Node Selector?
+## What is a Node Selector?
 
 A `nodeSelector` is a simple Pod scheduling constraint based on Node labels.
 
@@ -146,7 +146,7 @@ Only Nodes satisfying the selector are eligible.
 
 ---
 
-# What are Node Labels?
+## What are Node Labels?
 
 Labels are key-value pairs attached to Kubernetes objects.
 
@@ -176,7 +176,7 @@ workload=database
 
 ---
 
-# Node Label Architecture
+## Node Label Architecture
 
 ```text
 Worker Node
@@ -194,7 +194,7 @@ A Pod can select Nodes based on these labels.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```text
                     Pod
@@ -234,7 +234,7 @@ A Pod can select Nodes based on these labels.
 
 ---
 
-# Creating Node Labels
+## Creating Node Labels
 
 Use:
 
@@ -256,7 +256,7 @@ kubectl get nodes --show-labels
 
 ---
 
-# View Node Labels
+## View Node Labels
 
 ```bash
 kubectl get nodes --show-labels
@@ -274,7 +274,7 @@ worker-02   Ready    disk=hdd,...
 
 ---
 
-# View Labels Using JSON
+## View Labels Using JSON
 
 ```bash
 kubectl get node worker-01 -o json
@@ -288,7 +288,7 @@ metadata.labels
 
 ---
 
-# View Labels More Clearly
+## View Labels More Clearly
 
 ```bash
 kubectl get nodes \
@@ -309,7 +309,7 @@ worker-02   Ready    hdd    development   general
 
 ---
 
-# Basic nodeSelector Example
+## Basic nodeSelector Example
 
 ```yaml
 apiVersion: v1
@@ -341,7 +341,7 @@ disk=ssd
 
 ---
 
-# Scheduling Workflow
+## Scheduling Workflow
 
 ```text
 Pod Created
@@ -377,7 +377,7 @@ Bind Pod
 
 ---
 
-# Example Cluster
+## Example Cluster
 
 Suppose:
 
@@ -424,7 +424,7 @@ based on the rest of its scheduling process.
 
 ---
 
-# Important Point
+## Important Point
 
 A `nodeSelector` does **not** tell Kubernetes:
 
@@ -440,7 +440,7 @@ Run on any Node matching these labels.
 
 ---
 
-# Multiple Node Selector Labels
+## Multiple Node Selector Labels
 
 You can specify multiple key-value pairs.
 
@@ -466,7 +466,7 @@ environment=production
 
 ---
 
-# Example
+## Example
 
 Nodes:
 
@@ -513,7 +513,7 @@ Only Node 1 is eligible.
 
 ---
 
-# Node Selector Uses AND Logic
+## Node Selector Uses AND Logic
 
 Multiple selectors mean:
 
@@ -533,7 +533,7 @@ All conditions must match.
 
 ---
 
-# Example
+## Example
 
 ```yaml
 nodeSelector:
@@ -561,7 +561,7 @@ architecture=amd64
 
 ---
 
-# Node Selector and Architecture
+## Node Selector and Architecture
 
 Kubernetes Nodes commonly have architecture labels.
 
@@ -589,7 +589,7 @@ nodeSelector:
 
 ---
 
-# Node Selector and Operating System
+## Node Selector and Operating System
 
 Nodes can also have OS labels such as:
 
@@ -609,7 +609,7 @@ This can be useful when workloads are intended for a particular operating system
 
 ---
 
-# Node Selector and GPU Nodes
+## Node Selector and GPU Nodes
 
 Suppose GPU Nodes have:
 
@@ -649,7 +649,7 @@ GPU Node
 
 ---
 
-# Node Selector and Environments
+## Node Selector and Environments
 
 Example labels:
 
@@ -675,7 +675,7 @@ nodeSelector:
 
 ---
 
-# Node Selector and Workload Types
+## Node Selector and Workload Types
 
 Example:
 
@@ -701,11 +701,11 @@ nodeSelector:
 
 ---
 
-# Node Selector vs nodeName
+## Node Selector vs nodeName
 
 These are often confused.
 
-## nodeName
+### nodeName
 
 ```yaml
 nodeName: worker-01
@@ -719,7 +719,7 @@ Run specifically on worker-01
 
 ---
 
-## nodeSelector
+### nodeSelector
 
 ```yaml
 nodeSelector:
@@ -737,7 +737,7 @@ disk=ssd
 
 ---
 
-# Comparison
+## Comparison
 
 | Feature | nodeName | nodeSelector |
 |---|---|---|
@@ -749,7 +749,7 @@ disk=ssd
 
 ---
 
-# Node Selector vs Node Affinity
+## Node Selector vs Node Affinity
 
 `nodeSelector` is intentionally simple.
 
@@ -808,7 +808,7 @@ Node Affinity will be covered in the next chapter.
 
 ---
 
-# Node Selector and Taints
+## Node Selector and Taints
 
 Node Selector and Taints solve different problems.
 
@@ -846,7 +846,7 @@ These mechanisms can work together.
 
 ---
 
-# Example
+## Example
 
 Node:
 
@@ -885,7 +885,7 @@ The Pod:
 
 ---
 
-# Node Selector and Scheduler
+## Node Selector and Scheduler
 
 The Scheduler uses the selector as part of its feasibility evaluation.
 
@@ -917,7 +917,7 @@ The Scheduler still performs the overall scheduling decision.
 
 ---
 
-# Scheduling Failure
+## Scheduling Failure
 
 Suppose:
 
@@ -954,7 +954,7 @@ Pending
 
 ---
 
-# Troubleshooting Pending Pods
+## Troubleshooting Pending Pods
 
 Run:
 
@@ -984,7 +984,7 @@ with information indicating that no Nodes satisfy the scheduling requirements.
 
 ---
 
-# Example Failure
+## Example Failure
 
 ```text
 0/3 nodes are available:
@@ -1010,7 +1010,7 @@ disk=hdd
 
 ---
 
-# Modifying Node Labels
+## Modifying Node Labels
 
 Add:
 
@@ -1032,7 +1032,7 @@ kubectl label node worker-01 disk-
 
 ---
 
-# Important Warning
+## Important Warning
 
 Changing labels can affect future scheduling.
 
@@ -1066,7 +1066,7 @@ For stronger dynamic placement behavior, more advanced scheduling mechanisms may
 
 ---
 
-# Built-in Node Labels
+## Built-in Node Labels
 
 Kubernetes and the platform environment may provide standard labels such as:
 
@@ -1092,7 +1092,7 @@ kubectl get nodes --show-labels
 
 ---
 
-# Custom Labels
+## Custom Labels
 
 Organizations commonly create their own labels.
 
@@ -1120,7 +1120,7 @@ disk=nvme
 
 ---
 
-# Label Naming Best Practices
+## Label Naming Best Practices
 
 Prefer meaningful labels.
 
@@ -1154,7 +1154,7 @@ unless they have a documented purpose.
 
 ---
 
-# Label Key Namespaces
+## Label Key Namespaces
 
 Kubernetes labels can use qualified names.
 
@@ -1168,7 +1168,7 @@ This helps organizations avoid conflicts with labels managed by Kubernetes or ot
 
 ---
 
-# Real-World Example – Database Nodes
+## Real-World Example – Database Nodes
 
 Cluster:
 
@@ -1215,7 +1215,7 @@ worker-03
 
 ---
 
-# Real-World Example – Production Nodes
+## Real-World Example – Production Nodes
 
 Labels:
 
@@ -1235,7 +1235,7 @@ The workload will only be considered for production-labeled Nodes.
 
 ---
 
-# Real-World Example – SSD Nodes
+## Real-World Example – SSD Nodes
 
 Labels:
 
@@ -1255,7 +1255,7 @@ Useful for workloads that require specific hardware characteristics.
 
 ---
 
-# Real-World Example – ARM Workloads
+## Real-World Example – ARM Workloads
 
 Labels:
 
@@ -1277,7 +1277,7 @@ Node selection alone does not make an incompatible image runnable.
 
 ---
 
-# Hands-on Lab 1 – List Nodes
+## Hands-on Lab 1 – List Nodes
 
 Run:
 
@@ -1295,7 +1295,7 @@ Identify existing labels.
 
 ---
 
-# Hands-on Lab 2 – Add a Custom Label
+## Hands-on Lab 2 – Add a Custom Label
 
 Select a Node:
 
@@ -1311,7 +1311,7 @@ kubectl get nodes -L disk
 
 ---
 
-# Hands-on Lab 3 – Schedule Using nodeSelector
+## Hands-on Lab 3 – Schedule Using nodeSelector
 
 Create:
 
@@ -1351,7 +1351,7 @@ kubectl get pod node-selector-demo -o wide
 
 ---
 
-# Hands-on Lab 4 – Inspect Scheduling Events
+## Hands-on Lab 4 – Inspect Scheduling Events
 
 ```bash
 kubectl describe pod node-selector-demo
@@ -1365,7 +1365,7 @@ Scheduled
 
 ---
 
-# Hands-on Lab 5 – Create an Impossible Selector
+## Hands-on Lab 5 – Create an Impossible Selector
 
 Create:
 
@@ -1393,7 +1393,7 @@ kubectl describe pod <pod-name>
 
 ---
 
-# Hands-on Lab 6 – Multiple Selectors
+## Hands-on Lab 6 – Multiple Selectors
 
 Label a Node:
 
@@ -1417,7 +1417,7 @@ Verify the Pod is scheduled only on Nodes matching both labels.
 
 ---
 
-# Hands-on Lab 7 – Modify a Label
+## Hands-on Lab 7 – Modify a Label
 
 Change:
 
@@ -1439,7 +1439,7 @@ disk=ssd
 
 ---
 
-# Hands-on Lab 8 – Compare nodeName
+## Hands-on Lab 8 – Compare nodeName
 
 Create two Pods.
 
@@ -1461,9 +1461,9 @@ Compare their scheduling behavior.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Forgetting to Label Nodes
+### 1. Forgetting to Label Nodes
 
 Pod:
 
@@ -1487,7 +1487,7 @@ Pending
 
 ---
 
-## 2. Typing the Wrong Label Value
+### 2. Typing the Wrong Label Value
 
 Node:
 
@@ -1511,7 +1511,7 @@ No Match
 
 ---
 
-## 3. Assuming nodeSelector Selects One Specific Node
+### 3. Assuming nodeSelector Selects One Specific Node
 
 It doesn't.
 
@@ -1521,13 +1521,13 @@ The Scheduler decides which matching Node to use.
 
 ---
 
-## 4. Using nodeName Instead of nodeSelector
+### 4. Using nodeName Instead of nodeSelector
 
 Hard-coded Node assignments reduce scheduling flexibility.
 
 ---
 
-## 5. Using Too Many Labels
+### 5. Using Too Many Labels
 
 Excessive scheduling labels can make cluster management complicated.
 
@@ -1535,7 +1535,7 @@ Use labels that represent meaningful infrastructure or workload characteristics.
 
 ---
 
-## 6. Assuming Labels Guarantee Hardware Capability
+### 6. Assuming Labels Guarantee Hardware Capability
 
 A label is only metadata.
 
@@ -1551,7 +1551,7 @@ The actual Node must have the required capability.
 
 ---
 
-## 7. Ignoring Taints
+### 7. Ignoring Taints
 
 A Node may match:
 
@@ -1563,7 +1563,7 @@ but still reject the Pod because of an untolerated taint.
 
 ---
 
-# Node Selector vs Related Concepts
+## Node Selector vs Related Concepts
 
 | Feature | Purpose |
 |---|---|
@@ -1576,9 +1576,9 @@ but still reject the Pod because of an untolerated taint.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Node Selector
+### Node Selector
 
 ```text
 Pod
@@ -1598,7 +1598,7 @@ Matching Nodes
 
 ---
 
-## Multiple Selectors
+### Multiple Selectors
 
 ```text
 disk=ssd
@@ -1610,7 +1610,7 @@ environment=production
 
 ---
 
-## Scheduler
+### Scheduler
 
 ```text
 nodeSelector
@@ -1634,7 +1634,7 @@ Selected Node
 
 ---
 
-## Troubleshooting
+### Troubleshooting
 
 ```bash
 kubectl describe pod <pod-name>
@@ -1648,7 +1648,7 @@ FailedScheduling
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 List Nodes:
 
@@ -1700,9 +1700,9 @@ kubectl describe pod <pod-name>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is a Node Selector?
 - What is a Node label?
@@ -1712,7 +1712,7 @@ kubectl describe pod <pod-name>
 
 ---
 
-## Intermediate
+### Intermediate
 
 - What happens if no Node matches a `nodeSelector`?
 - Can you specify multiple labels in a `nodeSelector`?
@@ -1722,7 +1722,7 @@ kubectl describe pod <pod-name>
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain how `nodeSelector` participates in the Scheduler's filtering process.
 - Compare `nodeSelector` and Node Affinity.
@@ -1734,7 +1734,7 @@ kubectl describe pod <pod-name>
 
 ---
 
-# Production Design Example
+## Production Design Example
 
 A production cluster could use labels such as:
 
@@ -1796,27 +1796,27 @@ Architecture:
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Meaningful Labels
+#### 1. Use Meaningful Labels
 
 Labels should describe real Node characteristics or organizational requirements.
 
 ---
 
-### 2. Avoid Hard-Coded nodeName
+#### 2. Avoid Hard-Coded nodeName
 
 Prefer label-based scheduling when possible.
 
 ---
 
-### 3. Document Custom Labels
+#### 3. Document Custom Labels
 
 For large clusters, maintain a clear labeling convention.
 
 ---
 
-### 4. Use Node Affinity for Complex Requirements
+#### 4. Use Node Affinity for Complex Requirements
 
 If requirements involve:
 
@@ -1828,7 +1828,7 @@ use Node Affinity.
 
 ---
 
-### 5. Combine with Taints When Necessary
+#### 5. Combine with Taints When Necessary
 
 Use:
 
@@ -1844,7 +1844,7 @@ when you need both selection and workload isolation.
 
 ---
 
-### 6. Verify Labels Before Deployment
+#### 6. Verify Labels Before Deployment
 
 Run:
 
@@ -1856,15 +1856,15 @@ before creating workloads that depend on custom labels.
 
 ---
 
-### 7. Use Stable Label Keys
+#### 7. Use Stable Label Keys
 
 Avoid frequently changing labels that can unexpectedly affect scheduling behavior.
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Assigning Pods to Nodes
 - Labels and Selectors
@@ -1875,7 +1875,7 @@ Avoid frequently changing labels that can unexpectedly affect scheduling behavio
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes SIG Scheduling
 - Kubernetes Node Management
@@ -1883,7 +1883,7 @@ Avoid frequently changing labels that can unexpectedly affect scheduling behavio
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. List all Nodes in your cluster.
 2. Inspect their existing labels.
@@ -1898,7 +1898,7 @@ Avoid frequently changing labels that can unexpectedly affect scheduling behavio
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```text
 Node
@@ -1963,9 +1963,9 @@ Advanced Node selection
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 38 – Node Affinity
+## Chapter 38 – Node Affinity
 
 Topics will include:
 

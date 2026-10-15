@@ -46,7 +46,7 @@ Linux threat hunting focuses on identifying the evidence left behind by these be
 
 ---
 
-# Why Linux Threat Hunting Matters
+## Why Linux Threat Hunting Matters
 
 Linux systems are frequently assumed to be secure because they may have fewer traditional malware infections than desktop environments.
 
@@ -84,7 +84,7 @@ Command & Control
 
 ---
 
-# Linux Threat Hunting Architecture
+## Linux Threat Hunting Architecture
 
 A typical Linux hunting environment can be represented as:
 
@@ -116,7 +116,7 @@ A typical Linux hunting environment can be represented as:
 
 ---
 
-# Linux Security Telemetry
+## Linux Security Telemetry
 
 Important telemetry sources include:
 
@@ -158,7 +158,7 @@ Modern systems may rely heavily on `systemd-journald`.
 
 ---
 
-# Linux Logging Architecture
+## Linux Logging Architecture
 
 ```text id="w0j4y7"
 Application
@@ -181,7 +181,7 @@ Centralized collection is preferred for enterprise hunting because local logs ca
 
 ---
 
-# Journald
+## Journald
 
 `systemd-journald` collects and manages system logs on systems using systemd.
 
@@ -221,7 +221,7 @@ The exact service name may vary by distribution, for example `ssh` or `sshd`.
 
 ---
 
-# Authentication Logs
+## Authentication Logs
 
 Authentication logs are among the most valuable Linux hunting sources.
 
@@ -254,7 +254,7 @@ Post-Authentication Activity
 
 ---
 
-# SSH Threat Hunting
+## SSH Threat Hunting
 
 SSH is one of the most important Linux remote-access mechanisms.
 
@@ -274,7 +274,7 @@ Threat hunters should investigate:
 
 ---
 
-# SSH Authentication Flow
+## SSH Authentication Flow
 
 ```text id="n2r6cn"
 Remote Host
@@ -300,7 +300,7 @@ A successful SSH login should therefore be correlated with subsequent activity.
 
 ---
 
-# SSH Brute Force Hunting
+## SSH Brute Force Hunting
 
 A simple pattern:
 
@@ -326,7 +326,7 @@ Always investigate context.
 
 ---
 
-# Password Spraying on Linux
+## Password Spraying on Linux
 
 Password spraying differs from traditional brute force.
 
@@ -352,7 +352,7 @@ Look for:
 
 ---
 
-# SSH Successful Login
+## SSH Successful Login
 
 A successful login is not automatically suspicious.
 
@@ -384,7 +384,7 @@ This can expose post-compromise activity.
 
 ---
 
-# Root Login Hunting
+## Root Login Hunting
 
 Direct root SSH access may be disabled in many environments, but where it is permitted it deserves appropriate monitoring.
 
@@ -402,7 +402,7 @@ Do not automatically classify every root login as malicious because legitimate a
 
 ---
 
-# SSH Key Persistence
+## SSH Key Persistence
 
 Attackers may add unauthorized public keys to maintain access.
 
@@ -430,7 +430,7 @@ Monitor changes to sensitive SSH configuration and authorized key files where fe
 
 ---
 
-# SSH Configuration Hunting
+## SSH Configuration Hunting
 
 Important configuration areas can include:
 
@@ -452,7 +452,7 @@ Configuration changes should be correlated with administrative change windows.
 
 ---
 
-# Linux Process Hunting
+## Linux Process Hunting
 
 Process telemetry is essential.
 
@@ -482,7 +482,7 @@ For threat hunting, process information should ideally be collected centrally ra
 
 ---
 
-# Process Investigation
+## Process Investigation
 
 For a suspicious process, investigate:
 
@@ -516,7 +516,7 @@ Network Activity
 
 ---
 
-# Parent-Child Process Analysis
+## Parent-Child Process Analysis
 
 Example:
 
@@ -547,7 +547,7 @@ the complete chain becomes a stronger hunting lead.
 
 ---
 
-# Shell Hunting
+## Shell Hunting
 
 Common Linux shells include:
 
@@ -569,7 +569,7 @@ Potential hunting signals include:
 
 ---
 
-# Web Shell Hunting
+## Web Shell Hunting
 
 Web servers are frequent Linux attack targets.
 
@@ -605,7 +605,7 @@ A web server process launching a shell may deserve investigation depending on th
 
 ---
 
-# Web Server Process Correlation
+## Web Server Process Correlation
 
 Example:
 
@@ -630,7 +630,7 @@ Potential data sources:
 
 ---
 
-# Sudo Hunting
+## Sudo Hunting
 
 `sudo` allows authorized users to execute commands with elevated privileges.
 
@@ -658,7 +658,7 @@ Persistence / Discovery / Credential Access
 
 ---
 
-# Sudo Investigation
+## Sudo Investigation
 
 Ask:
 
@@ -680,7 +680,7 @@ What happened afterward?
 
 ---
 
-# Privilege Escalation Hunting
+## Privilege Escalation Hunting
 
 Linux privilege escalation may involve:
 
@@ -697,7 +697,7 @@ Threat hunters should focus on observable behavior rather than simply scanning f
 
 ---
 
-# SUID Hunting
+## SUID Hunting
 
 SUID programs execute with the privileges of their owner.
 
@@ -730,7 +730,7 @@ This may warrant investigation.
 
 ---
 
-# File Permission Hunting
+## File Permission Hunting
 
 Linux permissions are fundamental to security.
 
@@ -757,7 +757,7 @@ Temporary directories can contain legitimate software and application artifacts,
 
 ---
 
-# Temporary Directory Hunting
+## Temporary Directory Hunting
 
 Attackers may use temporary locations for staging or execution.
 
@@ -777,7 +777,7 @@ This combination is more meaningful than the directory alone.
 
 ---
 
-# Linux Persistence
+## Linux Persistence
 
 Common persistence mechanisms include:
 
@@ -795,7 +795,7 @@ Application Configuration
 
 ---
 
-# Cron Hunting
+## Cron Hunting
 
 Cron schedules recurring tasks.
 
@@ -829,7 +829,7 @@ External Network Connection
 
 ---
 
-# Cron Persistence Example
+## Cron Persistence Example
 
 Conceptually:
 
@@ -855,7 +855,7 @@ Hunt for:
 
 ---
 
-# Systemd Hunting
+## Systemd Hunting
 
 Modern Linux systems frequently use systemd.
 
@@ -883,7 +883,7 @@ Unexpected User
 
 ---
 
-# Systemd Persistence
+## Systemd Persistence
 
 A conceptual attack chain:
 
@@ -912,7 +912,7 @@ Hunting should correlate:
 
 ---
 
-# Shell Profile Persistence
+## Shell Profile Persistence
 
 Attackers may modify shell startup files.
 
@@ -939,7 +939,7 @@ External Connection
 
 ---
 
-# Account Hunting
+## Account Hunting
 
 Monitor changes to:
 
@@ -968,7 +968,7 @@ Account changes should ideally be correlated with centralized identity and confi
 
 ---
 
-# Suspicious Account Creation
+## Suspicious Account Creation
 
 Potential hunting signals:
 
@@ -993,7 +993,7 @@ Examples of legitimate creation:
 
 ---
 
-# Linux Credential Hunting
+## Linux Credential Hunting
 
 Potential credential-related targets include:
 
@@ -1020,7 +1020,7 @@ Access to sensitive files should be investigated based on the user, process, per
 
 ---
 
-# `/etc/shadow` Monitoring
+## `/etc/shadow` Monitoring
 
 `/etc/shadow` contains password hash information on many Linux systems.
 
@@ -1044,7 +1044,7 @@ Do not treat legitimate privileged administration as automatically malicious.
 
 ---
 
-# Environment Variable Hunting
+## Environment Variable Hunting
 
 Applications may expose secrets through environment variables.
 
@@ -1062,7 +1062,7 @@ Threat hunters may investigate suspicious processes that access environments bel
 
 ---
 
-# Bash History
+## Bash History
 
 Shell history can sometimes provide investigative clues.
 
@@ -1088,7 +1088,7 @@ Attackers can disable, clear, or avoid shell history.
 
 ---
 
-# Network Threat Hunting on Linux
+## Network Threat Hunting on Linux
 
 Linux hosts frequently act as:
 
@@ -1117,7 +1117,7 @@ Firewall
 
 ---
 
-# Useful Network Commands
+## Useful Network Commands
 
 For authorized troubleshooting and investigation:
 
@@ -1153,7 +1153,7 @@ View network-related open files where available.
 
 ---
 
-# Listening Port Hunting
+## Listening Port Hunting
 
 Unexpected services may expose new attack surfaces.
 
@@ -1181,7 +1181,7 @@ Investigate:
 
 ---
 
-# Outbound Connection Hunting
+## Outbound Connection Hunting
 
 A Linux endpoint making an unexpected external connection can be a hunting lead.
 
@@ -1205,7 +1205,7 @@ Periodic communication may indicate beaconing, but legitimate applications can a
 
 ---
 
-# DNS Hunting
+## DNS Hunting
 
 Investigate:
 
@@ -1234,7 +1234,7 @@ Additional evidence is required before concluding malicious C2.
 
 ---
 
-# Linux Malware Hunting
+## Linux Malware Hunting
 
 Linux malware may exhibit:
 
@@ -1270,7 +1270,7 @@ Timeline
 
 ---
 
-# File Integrity Hunting
+## File Integrity Hunting
 
 Important system files may be monitored for unexpected changes.
 
@@ -1289,7 +1289,7 @@ File integrity monitoring can help detect unauthorized modifications.
 
 ---
 
-# Rootkit Hunting
+## Rootkit Hunting
 
 Rootkits attempt to hide malicious activity.
 
@@ -1321,7 +1321,7 @@ A normal process listing should not be treated as proof that the system is clean
 
 ---
 
-# Linux Container Hunting
+## Linux Container Hunting
 
 Modern Linux environments frequently run containers.
 
@@ -1354,7 +1354,7 @@ Container hunting will be covered more deeply in the repository's Containers and
 
 ---
 
-# Cloud Linux Hunting
+## Cloud Linux Hunting
 
 Linux instances in cloud environments should be correlated with cloud telemetry.
 
@@ -1388,7 +1388,7 @@ Cloud audit logs can provide valuable context.
 
 ---
 
-# Linux Attack Timeline
+## Linux Attack Timeline
 
 A possible compromise timeline:
 
@@ -1422,7 +1422,7 @@ The timeline is more useful than isolated events.
 
 ---
 
-# Linux Threat Hunting Methodology
+## Linux Threat Hunting Methodology
 
 ```text id="q0p9kx"
 1. Define Threat Scenario
@@ -1452,13 +1452,13 @@ The timeline is more useful than isolated events.
 
 ---
 
-# Example Hunt — SSH Compromise
+## Example Hunt — SSH Compromise
 
-## Hypothesis
+### Hypothesis
 
 > An attacker may have obtained valid SSH credentials and established persistence on a Linux server.
 
-## Telemetry
+### Telemetry
 
 ```text id="v5l6i7"
 SSH Logs
@@ -1470,7 +1470,7 @@ Network
 EDR
 ```
 
-## Hunt
+### Hunt
 
 ```text id="r2m6n4"
 SSH Login
@@ -1488,7 +1488,7 @@ Persistence
 Network
 ```
 
-## Investigate
+### Investigate
 
 Ask:
 
@@ -1502,13 +1502,13 @@ Ask:
 
 ---
 
-# Example Hunt — Cron Persistence
+## Example Hunt — Cron Persistence
 
-## Hypothesis
+### Hypothesis
 
 > An attacker who compromised a Linux host may create a scheduled task to maintain persistence.
 
-## Telemetry
+### Telemetry
 
 - File integrity
 - Auditd
@@ -1516,7 +1516,7 @@ Ask:
 - Process execution
 - Cron logs
 
-## Investigation
+### Investigation
 
 ```text id="s4c5n1"
 Cron File Modified
@@ -1532,13 +1532,13 @@ Network
 
 ---
 
-# Example Hunt — Web Server Compromise
+## Example Hunt — Web Server Compromise
 
-## Hypothesis
+### Hypothesis
 
 > An attacker may exploit a public-facing web application and execute commands through the web server process.
 
-## Telemetry
+### Telemetry
 
 ```text id="7m6m9y"
 Web Logs
@@ -1549,7 +1549,7 @@ Network
 EDR
 ```
 
-## Hunt
+### Hunt
 
 ```text id="3d0n5w"
 Suspicious Web Request
@@ -1567,13 +1567,13 @@ Outbound Connection
 
 ---
 
-# Example Hunt — Privilege Escalation
+## Example Hunt — Privilege Escalation
 
-## Hypothesis
+### Hypothesis
 
 > A compromised user may attempt to obtain root privileges using an unexpected sudo action or privileged binary.
 
-## Telemetry
+### Telemetry
 
 ```text id="p2x9j6"
 Authentication
@@ -1587,7 +1587,7 @@ File
 Privilege Context
 ```
 
-## Investigation
+### Investigation
 
 ```text id="0s4w9x"
 User
@@ -1603,7 +1603,7 @@ Network
 
 ---
 
-# Auditd
+## Auditd
 
 `auditd` provides Linux auditing capabilities and can capture security-relevant events.
 
@@ -1628,7 +1628,7 @@ Audit rules should be designed carefully because excessive auditing can create s
 
 ---
 
-# Auditd Hunting
+## Auditd Hunting
 
 A useful conceptual model:
 
@@ -1650,7 +1650,7 @@ This can provide valuable evidence for endpoint investigations.
 
 ---
 
-# Linux EDR
+## Linux EDR
 
 EDR can provide telemetry beyond traditional system logs.
 
@@ -1681,7 +1681,7 @@ EDR
 
 ---
 
-# Linux Threat Hunting With SIEM
+## Linux Threat Hunting With SIEM
 
 A SIEM can normalize:
 
@@ -1712,7 +1712,7 @@ Hunting
 
 ---
 
-# Generic Linux Hunting Query
+## Generic Linux Hunting Query
 
 Conceptually:
 
@@ -1735,7 +1735,7 @@ Actual syntax varies by SIEM.
 
 ---
 
-# Generic SSH Hunting Query
+## Generic SSH Hunting Query
 
 Conceptually:
 
@@ -1751,7 +1751,7 @@ successful login follows repeated failures
 
 ---
 
-# Generic Persistence Hunt
+## Generic Persistence Hunt
 
 Conceptually:
 
@@ -1774,7 +1774,7 @@ referenced executable is unusual
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 A successful Linux hunt can produce detection logic.
 
@@ -1807,7 +1807,7 @@ Possible detection targets:
 
 ---
 
-# Linux Telemetry Gaps
+## Linux Telemetry Gaps
 
 Common gaps include:
 
@@ -1838,9 +1838,9 @@ These are not equivalent.
 
 ---
 
-# Linux Threat Hunting Checklist
+## Linux Threat Hunting Checklist
 
-## Authentication
+### Authentication
 
 ```text id="q6v7n2"
 [ ] SSH failures
@@ -1852,7 +1852,7 @@ These are not equivalent.
 [ ] Login timing
 ```
 
-## Processes
+### Processes
 
 ```text id="j4p9s0"
 [ ] Process
@@ -1864,7 +1864,7 @@ These are not equivalent.
 [ ] Start time
 ```
 
-## Persistence
+### Persistence
 
 ```text id="z7s5r1"
 [ ] Cron
@@ -1876,7 +1876,7 @@ These are not equivalent.
 [ ] Accounts
 ```
 
-## Privilege
+### Privilege
 
 ```text id="b8c4v2"
 [ ] sudo
@@ -1886,7 +1886,7 @@ These are not equivalent.
 [ ] Permission changes
 ```
 
-## Network
+### Network
 
 ```text id="h1n5x7"
 [ ] Listening ports
@@ -1897,7 +1897,7 @@ These are not equivalent.
 [ ] Process
 ```
 
-## Files
+### Files
 
 ```text id="m2q9w6"
 [ ] New executables
@@ -1909,13 +1909,13 @@ These are not equivalent.
 
 ---
 
-# Practical Lab 1 — SSH Threat Hunt
+## Practical Lab 1 — SSH Threat Hunt
 
-## Scenario
+### Scenario
 
 A Linux production server may have experienced unauthorized SSH access.
 
-### Available Data
+#### Available Data
 
 ```text
 auth.log / secure
@@ -1924,11 +1924,11 @@ EDR
 Firewall Logs
 ```
 
-### Hypothesis
+#### Hypothesis
 
 > An attacker may have authenticated using valid credentials and subsequently established persistence.
 
-### Investigation
+#### Investigation
 
 ```text id="g4f7m9"
 SSH Authentication
@@ -1948,7 +1948,7 @@ Cron / Systemd
 Network
 ```
 
-### Deliverable
+#### Deliverable
 
 Create:
 
@@ -1961,17 +1961,17 @@ Create:
 
 ---
 
-# Practical Lab 2 — Web Shell Hunt
+## Practical Lab 2 — Web Shell Hunt
 
-## Scenario
+### Scenario
 
 A Linux web server may have been compromised.
 
-### Hypothesis
+#### Hypothesis
 
 > An attacker may have exploited the web application and caused the web service to spawn a shell.
 
-### Investigate
+#### Investigate
 
 ```text id="y3j5m8"
 Web Logs
@@ -1987,7 +1987,7 @@ Command
 Network
 ```
 
-### Questions
+#### Questions
 
 1. What request triggered the suspicious behavior?
 2. Which process executed?
@@ -1999,7 +1999,7 @@ Network
 
 ---
 
-# Practical Lab 3 — Linux Persistence Hunt
+## Practical Lab 3 — Linux Persistence Hunt
 
 Search for:
 
@@ -2027,9 +2027,9 @@ Network
 
 ---
 
-# Practical Lab 4 — Privilege Escalation Hunt
+## Practical Lab 4 — Privilege Escalation Hunt
 
-## Scenario
+### Scenario
 
 A low-privileged account may have obtained root privileges.
 
@@ -2053,7 +2053,7 @@ Document the evidence chain.
 
 ---
 
-# Practical Lab 5 — Full Linux Attack Timeline
+## Practical Lab 5 — Full Linux Attack Timeline
 
 Build a complete timeline:
 
@@ -2093,7 +2093,7 @@ Analyst Interpretation
 
 ---
 
-# Linux Hunt Report Template
+## Linux Hunt Report Template
 
 ```markdown id="z0r7x5"
 # Linux Threat Hunt Report
@@ -2149,7 +2149,7 @@ Analyst Interpretation
 
 ---
 
-# MITRE ATT&CK Mapping
+## MITRE ATT&CK Mapping
 
 Linux threat hunting commonly intersects with techniques involving:
 
@@ -2198,9 +2198,9 @@ Always verify the current ATT&CK technique and sub-technique mapping when creati
 
 ---
 
-# Common Linux Hunting Mistakes
+## Common Linux Hunting Mistakes
 
-## Assuming Linux Is Secure by Default
+### Assuming Linux Is Secure by Default
 
 Security depends on:
 
@@ -2213,7 +2213,7 @@ Security depends on:
 
 ---
 
-## Treating SSH Failures as Automatically Malicious
+### Treating SSH Failures as Automatically Malicious
 
 Automated systems and legitimate users can generate many failures.
 
@@ -2221,7 +2221,7 @@ Look for patterns.
 
 ---
 
-## Treating Shell Usage as Malicious
+### Treating Shell Usage as Malicious
 
 Shells are fundamental administration tools.
 
@@ -2229,13 +2229,13 @@ Context matters.
 
 ---
 
-## Ignoring Legitimate Automation
+### Ignoring Legitimate Automation
 
 Cron, systemd, service accounts, and scripts are heavily used in production.
 
 ---
 
-## Searching Only Local Logs
+### Searching Only Local Logs
 
 An attacker with sufficient privileges may alter local evidence.
 
@@ -2243,7 +2243,7 @@ Centralized telemetry is more resilient.
 
 ---
 
-## Ignoring Cloud and Containers
+### Ignoring Cloud and Containers
 
 Modern Linux environments often exist inside cloud and container infrastructure.
 
@@ -2251,7 +2251,7 @@ Host-level hunting alone may be insufficient.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Centralize Linux security logs.
 - Collect authentication telemetry.
@@ -2275,7 +2275,7 @@ Host-level hunting alone may be insufficient.
 
 ---
 
-# Linux Threat Hunting Maturity
+## Linux Threat Hunting Maturity
 
 ```text id="q8m2s5"
 Level 1
@@ -2299,17 +2299,17 @@ Cloud / Container-Aware Hunting
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is Linux threat hunting?
+#### What is Linux threat hunting?
 
 It is the proactive analysis of Linux telemetry to identify suspicious or malicious activity that may not have triggered existing detections.
 
 ---
 
-### Where are Linux authentication logs stored?
+#### Where are Linux authentication logs stored?
 
 This depends on the distribution and logging configuration. Common locations include:
 
@@ -2322,27 +2322,27 @@ Modern systems may also use `journald`.
 
 ---
 
-### What is journald?
+#### What is journald?
 
 `systemd-journald` is a system service that collects and manages logs on systems using systemd.
 
 ---
 
-### What is auditd?
+#### What is auditd?
 
 `auditd` provides Linux auditing capabilities and can record security-relevant activity according to configured audit rules.
 
 ---
 
-### Why is SSH important for threat hunting?
+#### Why is SSH important for threat hunting?
 
 SSH is a common remote administration mechanism and can be abused for unauthorized access, credential attacks, persistence, and lateral movement.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### How would you investigate a suspicious SSH login?
+#### How would you investigate a suspicious SSH login?
 
 I would examine:
 
@@ -2363,7 +2363,7 @@ Then correlate the activity into a timeline.
 
 ---
 
-### How would you hunt Linux persistence?
+#### How would you hunt Linux persistence?
 
 I would investigate:
 
@@ -2381,7 +2381,7 @@ and correlate modifications with the responsible user and process.
 
 ---
 
-### How would you investigate a suspicious Linux process?
+#### How would you investigate a suspicious Linux process?
 
 I would examine:
 
@@ -2401,15 +2401,15 @@ Persistence
 
 ---
 
-### Why is centralized logging important?
+#### Why is centralized logging important?
 
 Because an attacker with sufficient privileges may alter or delete local logs. Centralized collection provides a more resilient source of evidence.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you hunt a compromised Linux web server?
+#### How would you hunt a compromised Linux web server?
 
 ```text id="v6j3s8"
 Web Request
@@ -2433,7 +2433,7 @@ I would correlate web logs, application logs, process telemetry, filesystem acti
 
 ---
 
-### How would you distinguish legitimate cron activity from malicious persistence?
+#### How would you distinguish legitimate cron activity from malicious persistence?
 
 Consider:
 
@@ -2447,7 +2447,7 @@ Consider:
 
 ---
 
-### How would you investigate possible Linux credential theft?
+#### How would you investigate possible Linux credential theft?
 
 I would look for unusual access to sensitive credential locations and correlate:
 
@@ -2467,7 +2467,7 @@ Network
 
 ---
 
-### What is the difference between "no malicious activity" and "no evidence"?
+#### What is the difference between "no malicious activity" and "no evidence"?
 
 ```text id="y5r8p3"
 No Malicious Activity
@@ -2484,7 +2484,7 @@ This distinction is critical in professional threat hunting.
 
 ---
 
-# Professional Linux Threat Hunting Workflow
+## Professional Linux Threat Hunting Workflow
 
 ```text id="q3c7n8"
                   Threat Intelligence
@@ -2527,7 +2527,7 @@ This distinction is critical in professional threat hunting.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Linux threat hunting requires understanding the relationship between:
 
@@ -2607,7 +2607,7 @@ into a unified investigation.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 ```text id="m8q1v6"
 01. Linux is a critical enterprise and cloud hunting environment.
@@ -2643,9 +2643,9 @@ into a unified investigation.
 
 ---
 
-# References
+## References
 
-## Linux
+### Linux
 
 - Linux Documentation — https://www.kernel.org/doc/
 - systemd Documentation — https://www.freedesktop.org/wiki/Software/systemd/
@@ -2653,13 +2653,13 @@ into a unified investigation.
 - OpenSSH — https://www.openssh.com/
 - Linux Audit — https://linux-audit.com/
 
-## Security
+### Security
 
 - MITRE ATT&CK — https://attack.mitre.org/
 - CISA — https://www.cisa.gov/
 - NIST Cybersecurity Framework — https://www.nist.gov/cyberframework
 
-## Detection and Monitoring
+### Detection and Monitoring
 
 - Wazuh — https://documentation.wazuh.com/
 - Elastic Security — https://www.elastic.co/security

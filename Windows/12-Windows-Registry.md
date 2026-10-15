@@ -1,10 +1,10 @@
 # 12-Windows-Registry.md
 
-# Part 1 — Windows Registry Fundamentals, Architecture, Registry Structure, Hives, Keys, Values, and Data Types
+## Part 1 — Windows Registry Fundamentals, Architecture, Registry Structure, Hives, Keys, Values, and Data Types
 
 ---
 
-# Introduction
+## Introduction
 
 Almost every Windows configuration is stored in one central database called the **Windows Registry**.
 
@@ -45,7 +45,7 @@ The Windows Registry is one of the most important components of the operating sy
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -62,7 +62,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is the Windows Registry?
+## What is the Windows Registry?
 
 The **Windows Registry** is a hierarchical database that stores operating system and application configuration information.
 
@@ -84,7 +84,7 @@ Configuration Information
 
 ---
 
-# Why Windows Uses the Registry
+## Why Windows Uses the Registry
 
 The Registry provides a centralized location for configuration.
 
@@ -114,7 +114,7 @@ Benefits include:
 
 ---
 
-# Registry vs Configuration Files
+## Registry vs Configuration Files
 
 | Registry | Configuration Files |
 |-----------|---------------------|
@@ -128,7 +128,7 @@ Some Windows applications still use configuration files alongside the Registry.
 
 ---
 
-# Registry Architecture
+## Registry Architecture
 
 The Registry is organized as a hierarchy.
 
@@ -148,7 +148,7 @@ The structure resembles a file system but stores configuration data rather than 
 
 ---
 
-# Understanding the Hierarchy
+## Understanding the Hierarchy
 
 Example:
 
@@ -172,7 +172,7 @@ Each level organizes related configuration settings.
 
 ---
 
-# What is a Hive?
+## What is a Hive?
 
 A **Hive** is a top-level logical section of the Registry.
 
@@ -190,7 +190,7 @@ Each hive has a specific purpose.
 
 ---
 
-# Registry Hierarchy Example
+## Registry Hierarchy Example
 
 ```text
 HKEY_LOCAL_MACHINE
@@ -216,7 +216,7 @@ This hierarchical organization makes related settings easier to locate.
 
 ---
 
-# Major Registry Hives
+## Major Registry Hives
 
 | Hive | Purpose |
 |------|----------|
@@ -230,7 +230,7 @@ These hives provide the primary entry points into the Registry.
 
 ---
 
-# HKEY_CLASSES_ROOT (HKCR)
+## HKEY_CLASSES_ROOT (HKCR)
 
 Stores:
 
@@ -253,7 +253,7 @@ Changing these settings affects how Windows opens file types.
 
 ---
 
-# HKEY_CURRENT_USER (HKCU)
+## HKEY_CURRENT_USER (HKCU)
 
 Contains configuration specific to the currently logged-in user.
 
@@ -283,7 +283,7 @@ Each user can have different HKCU settings.
 
 ---
 
-# HKEY_LOCAL_MACHINE (HKLM)
+## HKEY_LOCAL_MACHINE (HKLM)
 
 Stores system-wide configuration.
 
@@ -299,7 +299,7 @@ HKLM affects the entire computer rather than an individual user.
 
 ---
 
-# HKEY_USERS (HKU)
+## HKEY_USERS (HKU)
 
 Stores settings for all user profiles on the system.
 
@@ -317,7 +317,7 @@ HKCU is essentially a convenient view of the currently logged-in user's profile 
 
 ---
 
-# HKEY_CURRENT_CONFIG (HKCC)
+## HKEY_CURRENT_CONFIG (HKCC)
 
 Contains information about the current hardware profile.
 
@@ -330,7 +330,7 @@ HKCC is generated dynamically from other Registry information.
 
 ---
 
-# What is a Key?
+## What is a Key?
 
 A **Registry Key** is similar to a folder.
 
@@ -357,7 +357,7 @@ Keys may contain:
 
 ---
 
-# What is a Subkey?
+## What is a Subkey?
 
 A **Subkey** is simply a key located beneath another key.
 
@@ -383,7 +383,7 @@ This hierarchy allows Windows to organize millions of settings efficiently.
 
 ---
 
-# What is a Value?
+## What is a Value?
 
 A **Registry Value** stores actual configuration data.
 
@@ -401,7 +401,7 @@ The value contains the configuration, while the key provides organization.
 
 ---
 
-# Registry Components
+## Registry Components
 
 ```text
 Registry
@@ -419,7 +419,7 @@ Think of keys as folders and values as the actual settings stored inside them.
 
 ---
 
-# Registry Value Structure
+## Registry Value Structure
 
 Every Registry value consists of:
 
@@ -451,7 +451,7 @@ C:\Images\wallpaper.jpg
 
 ---
 
-# Registry Data Types
+## Registry Data Types
 
 Windows supports multiple Registry data types.
 
@@ -470,7 +470,7 @@ Each type stores data differently.
 
 ---
 
-# REG_SZ
+## REG_SZ
 
 Stores plain text.
 
@@ -492,7 +492,7 @@ One of the most frequently used Registry data types.
 
 ---
 
-# REG_DWORD
+## REG_DWORD
 
 Stores a 32-bit integer.
 
@@ -519,7 +519,7 @@ Commonly used for:
 
 ---
 
-# REG_QWORD
+## REG_QWORD
 
 Stores a 64-bit integer.
 
@@ -541,7 +541,7 @@ Used when values exceed 32-bit limits.
 
 ---
 
-# REG_BINARY
+## REG_BINARY
 
 Stores raw binary data.
 
@@ -563,7 +563,7 @@ Administrators typically avoid editing binary values manually.
 
 ---
 
-# REG_MULTI_SZ
+## REG_MULTI_SZ
 
 Stores multiple text strings.
 
@@ -589,7 +589,7 @@ Useful for lists of values.
 
 ---
 
-# REG_EXPAND_SZ
+## REG_EXPAND_SZ
 
 Stores strings containing environment variables.
 
@@ -603,7 +603,7 @@ Windows expands environment variables when the value is used.
 
 ---
 
-# Registry Path
+## Registry Path
 
 Registry locations are represented using paths.
 
@@ -633,7 +633,7 @@ HKLM\SOFTWARE\Microsoft\Windows
 
 ---
 
-# Registry Naming Conventions
+## Registry Naming Conventions
 
 Common abbreviations:
 
@@ -649,7 +649,7 @@ These abbreviations are widely used in documentation and PowerShell.
 
 ---
 
-# Registry Editor
+## Registry Editor
 
 Windows includes the **Registry Editor**.
 
@@ -672,7 +672,7 @@ Editing the Registry requires appropriate permissions.
 
 ---
 
-# Registry Navigation
+## Registry Navigation
 
 Registry Editor resembles Windows File Explorer.
 
@@ -696,7 +696,7 @@ The left pane displays the hierarchy, while the right pane displays values withi
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company deploys a business application.
 
@@ -726,7 +726,7 @@ The application later retrieves these settings from the Registry when it starts.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 The Registry is frequently examined during security investigations because it may contain:
 
@@ -741,7 +741,7 @@ Attackers may also attempt to modify Registry settings to establish persistence 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper Registry management helps organizations:
 
@@ -755,7 +755,7 @@ Improper Registry modifications can lead to application failures or operating sy
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Back up the Registry before making significant changes.
 - Use administrative privileges only when necessary.
@@ -766,9 +766,9 @@ Improper Registry modifications can lead to application failures or operating sy
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Open Registry Editor
+### Lab 1 — Open Registry Editor
 
 Press:
 
@@ -792,7 +792,7 @@ Do not modify settings on a production system.
 
 ---
 
-## Lab 2 — Navigate the Registry
+### Lab 2 — Navigate the Registry
 
 Browse to:
 
@@ -804,7 +804,7 @@ Explore several subkeys and observe their structure.
 
 ---
 
-## Lab 3 — Identify Value Types
+### Lab 3 — Identify Value Types
 
 Open a Registry key containing multiple values.
 
@@ -818,7 +818,7 @@ Record the value names and data types.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Windows Registry is a hierarchical configuration database.
 - Registry data is organized into hives, keys, subkeys, and values.
@@ -829,7 +829,7 @@ Record the value names and data types.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the Windows Registry?
 2. Why does Windows use the Registry?
@@ -844,7 +844,7 @@ Record the value names and data types.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Registry Documentation
@@ -854,13 +854,13 @@ Record the value names and data types.
 
 ---
 
-# 12-Windows-Registry.md
+## 12-Windows-Registry.md
 
-# Part 2 — Registry Files, Registry Loading, Registry Operations, Registry Tools, Backups, and Recovery
+## Part 2 — Registry Files, Registry Loading, Registry Operations, Registry Tools, Backups, and Recovery
 
 ---
 
-# Introduction
+## Introduction
 
 In Part 1, you learned about:
 
@@ -885,7 +885,7 @@ Understanding these concepts is essential for Windows administrators, cybersecur
 
 ---
 
-# How the Registry is Stored
+## How the Registry is Stored
 
 Although the Registry appears to be one large database, it is actually stored as multiple files called **Registry hive files**.
 
@@ -911,7 +911,7 @@ Windows loads these files during system startup.
 
 ---
 
-# Registry Hive Files
+## Registry Hive Files
 
 Most Registry hives are stored on disk.
 
@@ -929,7 +929,7 @@ These files are managed by Windows and should not be edited directly.
 
 ---
 
-# Typical Hive File Location
+## Typical Hive File Location
 
 Many system hive files are located in:
 
@@ -953,7 +953,7 @@ User profile hives are stored separately.
 
 ---
 
-# User Registry Hive
+## User Registry Hive
 
 Each user has an individual Registry hive.
 
@@ -967,7 +967,7 @@ This file stores most settings associated with that user's **HKEY_CURRENT_USER (
 
 ---
 
-# Registry Loading Process
+## Registry Loading Process
 
 During startup:
 
@@ -995,7 +995,7 @@ Once loaded, Windows and applications access the Registry through system APIs ra
 
 ---
 
-# Registry in Memory
+## Registry in Memory
 
 Windows maintains Registry information in memory for efficient access.
 
@@ -1019,7 +1019,7 @@ This approach improves performance compared to reading configuration directly fr
 
 ---
 
-# Registry Operations
+## Registry Operations
 
 Applications commonly perform four basic operations:
 
@@ -1043,7 +1043,7 @@ These operations are often abbreviated as **CRUD** (Create, Read, Update, Delete
 
 ---
 
-# Reading the Registry
+## Reading the Registry
 
 Example:
 
@@ -1067,7 +1067,7 @@ Many applications read Registry settings during startup.
 
 ---
 
-# Writing to the Registry
+## Writing to the Registry
 
 Example:
 
@@ -1087,7 +1087,7 @@ Applications generally update the Registry only when configuration changes occur
 
 ---
 
-# Registry API
+## Registry API
 
 Applications interact with the Registry using the Windows Registry API.
 
@@ -1113,7 +1113,7 @@ Using the API helps maintain consistency and security.
 
 ---
 
-# Registry Virtualization (Overview)
+## Registry Virtualization (Overview)
 
 Some older applications expected unrestricted access to protected Registry locations.
 
@@ -1141,7 +1141,7 @@ Modern applications should not rely on Registry Virtualization.
 
 ---
 
-# Registry Reflection (Historical)
+## Registry Reflection (Historical)
 
 Older 64-bit versions of Windows supported **Registry Reflection** to synchronize certain Registry information between 32-bit and 64-bit views.
 
@@ -1149,7 +1149,7 @@ Modern Windows versions rely primarily on **Registry Redirection**, making Regis
 
 ---
 
-# Registry Redirection
+## Registry Redirection
 
 On 64-bit Windows:
 
@@ -1173,7 +1173,7 @@ This separation improves compatibility between 32-bit and 64-bit applications.
 
 ---
 
-# WOW6432Node
+## WOW6432Node
 
 A common Registry location for 32-bit application settings on 64-bit Windows is:
 
@@ -1193,7 +1193,7 @@ Many enterprise applications use this location automatically when installed as 3
 
 ---
 
-# Registry Permissions
+## Registry Permissions
 
 Registry keys have security descriptors similar to files.
 
@@ -1210,7 +1210,7 @@ Registry permissions help protect system configuration.
 
 ---
 
-# Registry Ownership
+## Registry Ownership
 
 Every Registry key has an owner.
 
@@ -1224,7 +1224,7 @@ Ownership follows principles similar to NTFS ownership.
 
 ---
 
-# Registry Inheritance
+## Registry Inheritance
 
 Registry permissions can inherit from parent keys.
 
@@ -1246,7 +1246,7 @@ Inheritance simplifies administration across large Registry trees.
 
 ---
 
-# Registry Editor (Regedit)
+## Registry Editor (Regedit)
 
 `regedit.exe` is the primary graphical Registry management tool.
 
@@ -1265,7 +1265,7 @@ Administrators should use caution when editing production systems.
 
 ---
 
-# Registry Search
+## Registry Search
 
 Registry Editor supports searching for:
 
@@ -1291,7 +1291,7 @@ Searching is useful when troubleshooting application settings.
 
 ---
 
-# Exporting Registry Data
+## Exporting Registry Data
 
 Registry data can be exported to a `.reg` file.
 
@@ -1313,7 +1313,7 @@ Exporting provides a simple backup of selected Registry information.
 
 ---
 
-# Importing Registry Data
+## Importing Registry Data
 
 Previously exported Registry settings can be imported.
 
@@ -1335,7 +1335,7 @@ Always verify the source of `.reg` files before importing them.
 
 ---
 
-# REG Command-Line Utility
+## REG Command-Line Utility
 
 Windows includes the `reg` command-line tool.
 
@@ -1357,7 +1357,7 @@ The `reg` utility is useful for scripting and automation.
 
 ---
 
-# Common REG Commands
+## Common REG Commands
 
 | Command | Purpose |
 |----------|----------|
@@ -1374,7 +1374,7 @@ Many of these operations require administrative privileges.
 
 ---
 
-# PowerShell Registry Provider
+## PowerShell Registry Provider
 
 PowerShell treats Registry hives similarly to file system drives.
 
@@ -1394,7 +1394,7 @@ PowerShell enables powerful Registry automation, which will be covered in a late
 
 ---
 
-# Registry Backup
+## Registry Backup
 
 Before making significant changes:
 
@@ -1422,7 +1422,7 @@ Backups reduce the risk of accidental configuration loss.
 
 ---
 
-# Registry Backup Methods
+## Registry Backup Methods
 
 Common approaches include:
 
@@ -1435,7 +1435,7 @@ The appropriate method depends on the system and organizational requirements.
 
 ---
 
-# Registry Restore
+## Registry Restore
 
 Recovery process:
 
@@ -1459,7 +1459,7 @@ Some Registry changes require a reboot or application restart before they take e
 
 ---
 
-# System Restore (Overview)
+## System Restore (Overview)
 
 System Restore can revert certain system configuration changes.
 
@@ -1473,7 +1473,7 @@ It does **not** replace a comprehensive backup strategy and is not available or 
 
 ---
 
-# Registry Corruption
+## Registry Corruption
 
 Registry corruption may occur because of:
 
@@ -1487,7 +1487,7 @@ Modern Windows includes mechanisms to improve Registry resilience, but backups r
 
 ---
 
-# Registry Recovery Workflow
+## Registry Recovery Workflow
 
 ```text
 Configuration Problem
@@ -1515,7 +1515,7 @@ Resume Operations
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An administrator must deploy a configuration change to multiple systems.
 
@@ -1545,7 +1545,7 @@ Testing and staged deployment reduce operational risk.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Registry modifications are important indicators during investigations.
 
@@ -1561,7 +1561,7 @@ Registry activity is often correlated with process, file, and authentication eve
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper Registry management provides:
 
@@ -1575,7 +1575,7 @@ Improper Registry changes can disrupt business applications and operating system
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Back up Registry data before significant modifications.
 - Use Group Policy or enterprise management tools for large-scale Registry changes.
@@ -1586,9 +1586,9 @@ Improper Registry changes can disrupt business applications and operating system
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Export a Registry Key
+### Lab 1 — Export a Registry Key
 
 Open:
 
@@ -1612,7 +1612,7 @@ Save the `.reg` file to a lab location.
 
 ---
 
-## Lab 2 — Query the Registry
+### Lab 2 — Query the Registry
 
 Open **Command Prompt**.
 
@@ -1630,7 +1630,7 @@ Observe:
 
 ---
 
-## Lab 3 — Browse the Registry with PowerShell
+### Lab 3 — Browse the Registry with PowerShell
 
 Open **PowerShell**.
 
@@ -1644,7 +1644,7 @@ Observe the hierarchy and compare it with Registry Editor.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Registry is stored as multiple hive files on disk.
 - Windows loads Registry hives into memory during startup.
@@ -1656,7 +1656,7 @@ Observe the hierarchy and compare it with Registry Editor.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Where are system Registry hive files typically stored?
 2. What is `NTUSER.DAT`?
@@ -1671,7 +1671,7 @@ Observe the hierarchy and compare it with Registry Editor.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Registry Documentation
@@ -1682,13 +1682,13 @@ Observe the hierarchy and compare it with Registry Editor.
 
 ---
 
-# 12-Windows-Registry.md
+## 12-Windows-Registry.md
 
-# Part 3 — Registry Startup Locations, Persistence Mechanisms, Security, Monitoring, and Troubleshooting
+## Part 3 — Registry Startup Locations, Persistence Mechanisms, Security, Monitoring, and Troubleshooting
 
 ---
 
-# Introduction
+## Introduction
 
 The Windows Registry is far more than a configuration database.
 
@@ -1706,7 +1706,7 @@ For cybersecurity professionals, the Registry is one of the most valuable source
 
 ---
 
-# Registry During System Startup
+## Registry During System Startup
 
 During the Windows boot process:
 
@@ -1742,7 +1742,7 @@ The **SYSTEM** hive is particularly important because it contains information re
 
 ---
 
-# Registry During User Logon
+## Registry During User Logon
 
 When a user signs in:
 
@@ -1770,7 +1770,7 @@ This is why each user can have different desktop settings, application preferenc
 
 ---
 
-# Startup Locations in the Registry
+## Startup Locations in the Registry
 
 Windows checks several Registry locations during startup and user logon.
 
@@ -1786,7 +1786,7 @@ Some of these locations are commonly reviewed during incident response.
 
 ---
 
-# Run Keys
+## Run Keys
 
 One well-known startup location is the **Run** key.
 
@@ -1808,7 +1808,7 @@ Applications may register themselves here to start automatically when a user sig
 
 ---
 
-# Common Run Key Locations
+## Common Run Key Locations
 
 Examples:
 
@@ -1867,7 +1867,7 @@ Run
 
 ---
 
-# RunOnce Keys
+## RunOnce Keys
 
 Windows also supports **RunOnce** entries.
 
@@ -1893,7 +1893,7 @@ These are often used by installers to complete setup after a reboot.
 
 ---
 
-# Startup Comparison
+## Startup Comparison
 
 | Registry Location | Typical Behavior |
 |-------------------|------------------|
@@ -1904,7 +1904,7 @@ These are often used by installers to complete setup after a reboot.
 
 ---
 
-# File Associations
+## File Associations
 
 The Registry stores file associations.
 
@@ -1926,7 +1926,7 @@ Changing file associations changes which application opens a particular file typ
 
 ---
 
-# COM Registration (Overview)
+## COM Registration (Overview)
 
 Windows uses the Registry to store information about **COM (Component Object Model)** components.
 
@@ -1952,7 +1952,7 @@ COM is used extensively by Windows and many enterprise applications.
 
 ---
 
-# Installed Software Information
+## Installed Software Information
 
 Many installers record information such as:
 
@@ -1980,7 +1980,7 @@ Enterprise asset management tools often use this information.
 
 ---
 
-# Hardware Configuration
+## Hardware Configuration
 
 The Registry stores information about:
 
@@ -1993,7 +1993,7 @@ Windows references this information during startup and device initialization.
 
 ---
 
-# Driver Configuration
+## Driver Configuration
 
 Drivers rely on Registry settings for:
 
@@ -2006,7 +2006,7 @@ Improper modifications can affect hardware functionality.
 
 ---
 
-# Service Configuration Review
+## Service Configuration Review
 
 Service information stored in the Registry may include:
 
@@ -2020,7 +2020,7 @@ The Service Control Manager reads this information during system startup.
 
 ---
 
-# Registry Persistence (Overview)
+## Registry Persistence (Overview)
 
 Attackers sometimes attempt to establish persistence by modifying Registry startup locations.
 
@@ -2046,7 +2046,7 @@ Security teams monitor startup locations to detect unauthorized changes.
 
 ---
 
-# Registry Persistence Indicators
+## Registry Persistence Indicators
 
 Potential indicators include:
 
@@ -2060,7 +2060,7 @@ These indicators should always be evaluated in context.
 
 ---
 
-# Registry Security
+## Registry Security
 
 Registry security is based on access control.
 
@@ -2075,7 +2075,7 @@ These concepts are similar to NTFS permissions.
 
 ---
 
-# Registry Permissions
+## Registry Permissions
 
 Typical Registry permissions include:
 
@@ -2093,7 +2093,7 @@ Only authorized users should have permission to modify critical Registry areas.
 
 ---
 
-# Registry Integrity
+## Registry Integrity
 
 Protecting Registry integrity involves:
 
@@ -2121,7 +2121,7 @@ Strong change management helps prevent unauthorized configuration changes.
 
 ---
 
-# Registry Monitoring
+## Registry Monitoring
 
 Enterprise security solutions monitor:
 
@@ -2136,7 +2136,7 @@ Monitoring helps detect suspicious activity quickly.
 
 ---
 
-# Registry Event Monitoring
+## Registry Event Monitoring
 
 Monitoring workflow:
 
@@ -2164,7 +2164,7 @@ Correlating Registry events with other telemetry improves detection quality.
 
 ---
 
-# Troubleshooting Registry Problems
+## Troubleshooting Registry Problems
 
 When an application behaves unexpectedly:
 
@@ -2196,7 +2196,7 @@ Registry troubleshooting should always follow a documented process.
 
 ---
 
-# Common Registry Problems
+## Common Registry Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2210,7 +2210,7 @@ Always verify before making changes.
 
 ---
 
-# Registry Comparison
+## Registry Comparison
 
 Administrators sometimes compare:
 
@@ -2234,7 +2234,7 @@ Configuration comparison helps identify accidental or unauthorized changes.
 
 ---
 
-# Registry Baselines
+## Registry Baselines
 
 Organizations often maintain baseline Registry configurations for:
 
@@ -2248,7 +2248,7 @@ Baselines support compliance, troubleshooting, and security investigations.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A business application fails after an update.
 
@@ -2278,7 +2278,7 @@ Documented baselines simplify root cause analysis.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Registry analysis is fundamental during:
 
@@ -2300,7 +2300,7 @@ Registry information should always be correlated with process, file, and network
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper Registry management helps organizations:
 
@@ -2313,7 +2313,7 @@ Proper Registry management helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Restrict write access to critical Registry locations.
 - Monitor startup-related Registry keys.
@@ -2325,9 +2325,9 @@ Proper Registry management helps organizations:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Explore Startup Keys
+### Lab 1 — Explore Startup Keys
 
 Using **Registry Editor**, browse to a startup-related key such as:
 
@@ -2341,7 +2341,7 @@ Do **not** modify production systems.
 
 ---
 
-## Lab 2 — Compare HKLM and HKCU
+### Lab 2 — Compare HKLM and HKCU
 
 Locate similar configuration areas under:
 
@@ -2363,7 +2363,7 @@ Compare:
 
 ---
 
-## Lab 3 — Search the Registry
+### Lab 3 — Search the Registry
 
 Open:
 
@@ -2385,7 +2385,7 @@ Search for a known application name and observe where configuration information 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Registry plays a central role during Windows startup and user logon.
 - Run and RunOnce keys are common automatic startup locations.
@@ -2396,7 +2396,7 @@ Search for a known application name and observe where configuration information 
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What happens to the Registry during user logon?
 2. What is the purpose of the Run Registry key?
@@ -2411,7 +2411,7 @@ Search for a known application name and observe where configuration information 
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Registry Documentation
@@ -2421,13 +2421,13 @@ Search for a known application name and observe where configuration information 
 
 ---
 
-# 12-Windows-Registry.md
+## 12-Windows-Registry.md
 
-# Part 4 — Enterprise Registry Administration, Group Policy Integration, Registry Forensics, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Registry Administration, Group Policy Integration, Registry Forensics, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 The Windows Registry is one of the most important configuration databases in enterprise computing.
 
@@ -2448,7 +2448,7 @@ This section concludes the Registry chapter by focusing on enterprise administra
 
 ---
 
-# Enterprise Registry Administration
+## Enterprise Registry Administration
 
 Large organizations rarely modify Registry settings manually on individual computers.
 
@@ -2487,7 +2487,7 @@ Centralized management improves consistency, scalability, and compliance.
 
 ---
 
-# Registry Configuration Baselines
+## Registry Configuration Baselines
 
 A **Registry baseline** defines the approved configuration for a system.
 
@@ -2522,7 +2522,7 @@ Baselines help identify accidental or unauthorized modifications.
 
 ---
 
-# Registry Compliance
+## Registry Compliance
 
 Many compliance frameworks require secure system configuration.
 
@@ -2538,7 +2538,7 @@ Organizations often use Registry settings to implement and verify security contr
 
 ---
 
-# Group Policy and the Registry
+## Group Policy and the Registry
 
 Many Group Policy settings ultimately write values to the Registry.
 
@@ -2566,7 +2566,7 @@ Although administrators manage policies through Group Policy tools, the resultin
 
 ---
 
-# Registry Preferences
+## Registry Preferences
 
 In addition to standard policies, administrators can deploy **Group Policy Preferences**.
 
@@ -2581,7 +2581,7 @@ This enables centralized configuration without requiring manual Registry edits.
 
 ---
 
-# Desired State Configuration (Overview)
+## Desired State Configuration (Overview)
 
 PowerShell Desired State Configuration (DSC) can help ensure Registry settings remain compliant.
 
@@ -2607,7 +2607,7 @@ DSC supports configuration consistency across enterprise environments.
 
 ---
 
-# Registry Documentation
+## Registry Documentation
 
 Organizations should document:
 
@@ -2629,7 +2629,7 @@ Documentation simplifies maintenance and troubleshooting.
 
 ---
 
-# Registry Change Management
+## Registry Change Management
 
 Recommended workflow:
 
@@ -2665,7 +2665,7 @@ Formal change management reduces the likelihood of outages caused by Registry mo
 
 ---
 
-# Registry Auditing
+## Registry Auditing
 
 Registry auditing helps identify:
 
@@ -2678,7 +2678,7 @@ Administrators should periodically review critical Registry areas.
 
 ---
 
-# Registry Forensics
+## Registry Forensics
 
 During an investigation, analysts examine the Registry to understand:
 
@@ -2693,7 +2693,7 @@ Registry analysis often provides valuable historical evidence.
 
 ---
 
-# Registry Forensic Workflow
+## Registry Forensic Workflow
 
 ```text
 Incident Reported
@@ -2727,7 +2727,7 @@ Maintaining evidence integrity is essential throughout the investigation.
 
 ---
 
-# Common Registry Artifacts
+## Common Registry Artifacts
 
 Examples of information frequently examined include:
 
@@ -2744,7 +2744,7 @@ The exact artifacts reviewed depend on the investigation.
 
 ---
 
-# Registry Timeline Analysis
+## Registry Timeline Analysis
 
 Analysts may compare:
 
@@ -2776,7 +2776,7 @@ Timeline analysis helps reconstruct events leading to an incident.
 
 ---
 
-# Registry and Malware Analysis
+## Registry and Malware Analysis
 
 Malware may attempt to modify Registry settings to:
 
@@ -2789,7 +2789,7 @@ Analysts should verify Registry modifications rather than assuming they are mali
 
 ---
 
-# Registry Integrity Verification
+## Registry Integrity Verification
 
 When reviewing Registry changes:
 
@@ -2817,7 +2817,7 @@ This structured approach helps distinguish legitimate administrative changes fro
 
 ---
 
-# Registry Security Recommendations
+## Registry Security Recommendations
 
 Protect the Registry by:
 
@@ -2831,7 +2831,7 @@ Protect the Registry by:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial organization deploys a new security policy.
 
@@ -2861,7 +2861,7 @@ Centralized deployment ensures consistent security settings across thousands of 
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 The Registry is one of the most valuable sources of endpoint information.
 
@@ -2884,7 +2884,7 @@ Registry data becomes significantly more valuable when combined with:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective Registry administration provides:
 
@@ -2899,7 +2899,7 @@ Poor Registry management can lead to configuration errors, application failures,
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use Group Policy or other centralized tools instead of manual Registry editing whenever possible.
 - Maintain approved Registry baselines.
@@ -2912,9 +2912,9 @@ Poor Registry management can lead to configuration errors, application failures,
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Export a Registry Branch
+### Lab 1 — Export a Registry Branch
 
 Using **Registry Editor**:
 
@@ -2926,7 +2926,7 @@ Observe the exported structure without modifying production systems.
 
 ---
 
-## Lab 2 — Review Registry Permissions
+### Lab 2 — Review Registry Permissions
 
 In **Registry Editor**:
 
@@ -2941,7 +2941,7 @@ Do not modify permissions in a production environment.
 
 ---
 
-## Lab 3 — Build a Registry Documentation Table
+### Lab 3 — Build a Registry Documentation Table
 
 Create a table similar to the following:
 
@@ -2953,7 +2953,7 @@ Document at least five Registry locations from a lab environment.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2984,7 +2984,7 @@ These concepts provide the foundation for understanding Windows networking, secu
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Registry is the central configuration database for Windows.
 - Registry settings influence operating system behavior, applications, hardware, and user preferences.
@@ -2995,7 +2995,7 @@ These concepts provide the foundation for understanding Windows networking, secu
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is the Windows Registry important?
 2. How does Group Policy interact with the Registry?
@@ -3010,7 +3010,7 @@ These concepts provide the foundation for understanding Windows networking, secu
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Registry Documentation
@@ -3023,7 +3023,7 @@ These concepts provide the foundation for understanding Windows networking, secu
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 12 – Windows Registry**.
 

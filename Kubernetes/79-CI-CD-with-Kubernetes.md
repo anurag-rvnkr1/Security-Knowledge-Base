@@ -62,7 +62,7 @@ Rollback
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -138,7 +138,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is CI?
+## What Is CI?
 
 Continuous Integration means frequently integrating code changes into a shared repository and automatically validating them.
 
@@ -162,7 +162,7 @@ Artifact
 
 ---
 
-# What Is CD?
+## What Is CD?
 
 CD can mean:
 
@@ -178,7 +178,7 @@ Continuous Deployment
 
 ---
 
-# Continuous Delivery
+## Continuous Delivery
 
 Continuous Delivery keeps software in a deployable state.
 
@@ -200,7 +200,7 @@ Deploy
 
 ---
 
-# Continuous Deployment
+## Continuous Deployment
 
 Continuous Deployment automatically releases validated changes to production.
 
@@ -220,7 +220,7 @@ No manual production approval is necessarily required.
 
 ---
 
-# Continuous Delivery vs Continuous Deployment
+## Continuous Delivery vs Continuous Deployment
 
 | Continuous Delivery | Continuous Deployment |
 |---|---|
@@ -231,7 +231,7 @@ No manual production approval is necessarily required.
 
 ---
 
-# Kubernetes CI/CD Architecture
+## Kubernetes CI/CD Architecture
 
 ```text
                     Developer
@@ -270,7 +270,7 @@ No manual production approval is necessarily required.
 
 ---
 
-# Why CI/CD With Kubernetes?
+## Why CI/CD With Kubernetes?
 
 Kubernetes environments are dynamic.
 
@@ -288,7 +288,7 @@ Manual deployment does not scale efficiently.
 
 ---
 
-# Manual Deployment
+## Manual Deployment
 
 Example:
 
@@ -308,7 +308,7 @@ Slow Releases
 
 ---
 
-# Automated Deployment
+## Automated Deployment
 
 ```text
 Git Commit
@@ -326,7 +326,7 @@ This makes the process repeatable.
 
 ---
 
-# CI/CD Pipeline Stages
+## CI/CD Pipeline Stages
 
 A common pipeline:
 
@@ -348,7 +348,7 @@ A common pipeline:
 
 ---
 
-# Stage 1 – Checkout
+## Stage 1 – Checkout
 
 The pipeline retrieves source code.
 
@@ -360,7 +360,7 @@ git checkout <commit>
 
 ---
 
-# Stage 2 – Dependency Installation
+## Stage 2 – Dependency Installation
 
 Install application dependencies.
 
@@ -380,7 +380,7 @@ Use deterministic dependency management where possible.
 
 ---
 
-# Stage 3 – Linting
+## Stage 3 – Linting
 
 Linting detects:
 
@@ -392,7 +392,7 @@ Potential Errors
 
 ---
 
-# Stage 4 – Unit Testing
+## Stage 4 – Unit Testing
 
 Unit tests validate individual components.
 
@@ -408,7 +408,7 @@ Expected Output
 
 ---
 
-# Stage 5 – Integration Testing
+## Stage 5 – Integration Testing
 
 Integration tests validate interactions between components.
 
@@ -422,7 +422,7 @@ Database
 
 ---
 
-# Stage 6 – Build
+## Stage 6 – Build
 
 Build the application artifact.
 
@@ -438,7 +438,7 @@ Artifact
 
 ---
 
-# Stage 7 – Security Scanning
+## Stage 7 – Security Scanning
 
 Scan:
 
@@ -452,7 +452,7 @@ Kubernetes Manifests
 
 ---
 
-# Stage 8 – Container Build
+## Stage 8 – Container Build
 
 Example Dockerfile:
 
@@ -473,7 +473,7 @@ Production images should be minimized and hardened.
 
 ---
 
-# Multi-Stage Builds
+## Multi-Stage Builds
 
 Multi-stage builds can reduce final image size.
 
@@ -499,7 +499,7 @@ The final image contains only what is needed to run the application.
 
 ---
 
-# BuildKit
+## BuildKit
 
 BuildKit provides modern Docker image building capabilities.
 
@@ -514,7 +514,7 @@ Build Efficiency
 
 ---
 
-# Container Registry
+## Container Registry
 
 The registry stores container images.
 
@@ -531,7 +531,7 @@ Docker Hub
 
 ---
 
-# Image Naming
+## Image Naming
 
 Example:
 
@@ -550,7 +550,7 @@ Tag
 
 ---
 
-# Image Tags
+## Image Tags
 
 Example:
 
@@ -564,7 +564,7 @@ Avoid relying exclusively on mutable tags.
 
 ---
 
-# Image Digest
+## Image Digest
 
 An image digest provides a content-addressed identifier.
 
@@ -578,7 +578,7 @@ A digest provides stronger deployment determinism than a mutable tag.
 
 ---
 
-# Tag vs Digest
+## Tag vs Digest
 
 | Tag | Digest |
 |---|---|
@@ -588,7 +588,7 @@ A digest provides stronger deployment determinism than a mutable tag.
 
 ---
 
-# Production Recommendation
+## Production Recommendation
 
 A deployment may use:
 
@@ -600,7 +600,7 @@ when immutable image references are desired.
 
 ---
 
-# Image Scanning
+## Image Scanning
 
 Scan images for:
 
@@ -613,7 +613,7 @@ Outdated Packages
 
 ---
 
-# Vulnerability Severity
+## Vulnerability Severity
 
 Common classifications:
 
@@ -626,7 +626,7 @@ Low
 
 ---
 
-# Vulnerability Gate
+## Vulnerability Gate
 
 A pipeline may reject an image containing unacceptable vulnerabilities.
 
@@ -644,7 +644,7 @@ The exact policy should account for exploitability, exposure, compensating contr
 
 ---
 
-# SBOM
+## SBOM
 
 SBOM means:
 
@@ -666,7 +666,7 @@ Application
 
 ---
 
-# Why SBOM Matters
+## Why SBOM Matters
 
 SBOMs help with:
 
@@ -680,7 +680,7 @@ Compliance
 
 ---
 
-# Image Signing
+## Image Signing
 
 Image signing helps establish trust in an artifact.
 
@@ -709,7 +709,7 @@ Sigstore
 
 ---
 
-# Supply-Chain Security
+## Supply-Chain Security
 
 Secure the entire chain:
 
@@ -729,7 +729,7 @@ Deployment
 
 ---
 
-# Dependency Security
+## Dependency Security
 
 Dependencies should be:
 
@@ -743,7 +743,7 @@ Reviewed
 
 ---
 
-# Dependency Pinning
+## Dependency Pinning
 
 Prefer controlled versions.
 
@@ -751,7 +751,7 @@ Avoid uncontrolled dependency resolution in production builds.
 
 ---
 
-# Kubernetes Manifest Validation
+## Kubernetes Manifest Validation
 
 Validate:
 
@@ -764,7 +764,7 @@ Resource Configuration
 
 ---
 
-# Helm Validation
+## Helm Validation
 
 Example:
 
@@ -780,7 +780,7 @@ helm template api ./chart
 
 ---
 
-# Kustomize Validation
+## Kustomize Validation
 
 Example:
 
@@ -792,7 +792,7 @@ Review the generated manifests before deployment.
 
 ---
 
-# Kubernetes Dry Run
+## Kubernetes Dry Run
 
 Example:
 
@@ -804,7 +804,7 @@ This can validate the manifest against the Kubernetes API without persisting the
 
 ---
 
-# Policy as Code
+## Policy as Code
 
 CI can enforce policies before deployment.
 
@@ -817,7 +817,7 @@ THEN FAIL
 
 ---
 
-# CI/CD Security Gates
+## CI/CD Security Gates
 
 Possible gates:
 
@@ -835,7 +835,7 @@ Approval
 
 ---
 
-# Secret Scanning
+## Secret Scanning
 
 Detect accidentally committed secrets such as:
 
@@ -849,7 +849,7 @@ Private Keys
 
 ---
 
-# Never Print Secrets
+## Never Print Secrets
 
 Avoid:
 
@@ -861,7 +861,7 @@ in CI logs.
 
 ---
 
-# CI Secrets
+## CI Secrets
 
 Use the CI platform's secret-management mechanism.
 
@@ -877,7 +877,7 @@ inside pipeline files.
 
 ---
 
-# Kubernetes Secrets in CI/CD
+## Kubernetes Secrets in CI/CD
 
 CI/CD may need access to:
 
@@ -892,7 +892,7 @@ Use short-lived credentials where possible.
 
 ---
 
-# Workload Identity
+## Workload Identity
 
 Cloud environments can use workload identity mechanisms instead of long-lived static credentials.
 
@@ -908,7 +908,7 @@ Temporary Permissions
 
 ---
 
-# CI Runner Security
+## CI Runner Security
 
 CI runners execute potentially untrusted code.
 
@@ -928,7 +928,7 @@ can reduce risk.
 
 ---
 
-# Self-Hosted Runners
+## Self-Hosted Runners
 
 Self-hosted runners provide greater control but also increase security responsibility.
 
@@ -944,7 +944,7 @@ Artifacts
 
 ---
 
-# Pipeline Isolation
+## Pipeline Isolation
 
 Separate workloads when appropriate:
 
@@ -958,7 +958,7 @@ Highly privileged production runners should have especially strong isolation.
 
 ---
 
-# Artifact Security
+## Artifact Security
 
 Artifacts should be:
 
@@ -971,7 +971,7 @@ Protected
 
 ---
 
-# Artifact Promotion
+## Artifact Promotion
 
 A useful approach is:
 
@@ -987,7 +987,7 @@ instead of rebuilding the application separately for each environment.
 
 ---
 
-# Environment Promotion
+## Environment Promotion
 
 Typical flow:
 
@@ -1005,7 +1005,7 @@ Production
 
 ---
 
-# Immutable Promotion
+## Immutable Promotion
 
 Example:
 
@@ -1027,7 +1027,7 @@ The exact same artifact is deployed.
 
 ---
 
-# Deployment Strategies
+## Deployment Strategies
 
 Common strategies:
 
@@ -1040,7 +1040,7 @@ Progressive Delivery
 
 ---
 
-# Rolling Deployment
+## Rolling Deployment
 
 ```text
 v1 v1 v1
@@ -1054,7 +1054,7 @@ v2 v2 v2
 
 ---
 
-# Blue-Green Deployment
+## Blue-Green Deployment
 
 ```text
 Blue
@@ -1072,7 +1072,7 @@ Blue → Green
 
 ---
 
-# Canary Deployment
+## Canary Deployment
 
 Start with:
 
@@ -1087,7 +1087,7 @@ Increase gradually if healthy.
 
 ---
 
-# Progressive Delivery
+## Progressive Delivery
 
 A deployment can progress through stages:
 
@@ -1107,7 +1107,7 @@ Each stage can have automated health checks.
 
 ---
 
-# Deployment Gates
+## Deployment Gates
 
 A gate prevents deployment until a condition is satisfied.
 
@@ -1123,7 +1123,7 @@ Latency Acceptable
 
 ---
 
-# Manual Approval
+## Manual Approval
 
 Production deployment may require:
 
@@ -1137,7 +1137,7 @@ depending on organizational requirements.
 
 ---
 
-# Automated Approval
+## Automated Approval
 
 Automated gates can evaluate:
 
@@ -1150,7 +1150,7 @@ Policies
 
 ---
 
-# Deployment Verification
+## Deployment Verification
 
 After deployment verify:
 
@@ -1167,7 +1167,7 @@ Latency
 
 ---
 
-# Smoke Tests
+## Smoke Tests
 
 Smoke tests validate basic functionality.
 
@@ -1185,7 +1185,7 @@ HTTP 200
 
 ---
 
-# Health Check Pipeline
+## Health Check Pipeline
 
 ```text
 Deploy
@@ -1203,7 +1203,7 @@ Success / Rollback
 
 ---
 
-# Automated Rollback
+## Automated Rollback
 
 A pipeline may roll back when:
 
@@ -1217,7 +1217,7 @@ Health Checks Failing
 
 ---
 
-# Kubernetes Rollout Status
+## Kubernetes Rollout Status
 
 ```bash
 kubectl rollout status deployment/api
@@ -1225,7 +1225,7 @@ kubectl rollout status deployment/api
 
 ---
 
-# Kubernetes Rollback
+## Kubernetes Rollback
 
 ```bash
 kubectl rollout undo deployment/api
@@ -1235,7 +1235,7 @@ However, in a GitOps-managed environment, the desired configuration should also 
 
 ---
 
-# GitOps Integration
+## GitOps Integration
 
 A modern CI/CD architecture may separate:
 
@@ -1271,7 +1271,7 @@ Kubernetes
 
 ---
 
-# CI Updates GitOps Repository
+## CI Updates GitOps Repository
 
 Example:
 
@@ -1293,7 +1293,7 @@ GitOps Sync
 
 ---
 
-# Why Separate CI and CD?
+## Why Separate CI and CD?
 
 Benefits include:
 
@@ -1307,7 +1307,7 @@ Improved Security
 
 ---
 
-# GitHub Actions
+## GitHub Actions
 
 GitHub Actions can automate CI/CD workflows.
 
@@ -1331,7 +1331,7 @@ Update GitOps
 
 ---
 
-# GitLab CI
+## GitLab CI
 
 GitLab CI provides pipeline automation using configuration files such as:
 
@@ -1341,7 +1341,7 @@ GitLab CI provides pipeline automation using configuration files such as:
 
 ---
 
-# Jenkins
+## Jenkins
 
 Jenkins is a widely used automation server.
 
@@ -1361,7 +1361,7 @@ Deploy
 
 ---
 
-# Tekton
+## Tekton
 
 Tekton provides Kubernetes-native CI/CD building blocks.
 
@@ -1379,7 +1379,7 @@ Results
 
 ---
 
-# CI/CD Tool Comparison
+## CI/CD Tool Comparison
 
 | Tool | Primary Strength |
 |---|---|
@@ -1394,7 +1394,7 @@ These tools can be combined rather than treated as direct substitutes.
 
 ---
 
-# CI vs GitOps CD
+## CI vs GitOps CD
 
 ```text
 CI:
@@ -1420,7 +1420,7 @@ Kubernetes
 
 ---
 
-# Production CI/CD Architecture
+## Production CI/CD Architecture
 
 ```text
                        Developer
@@ -1476,7 +1476,7 @@ Kubernetes
 
 ---
 
-# Production CI/CD Security
+## Production CI/CD Security
 
 Use:
 
@@ -1498,7 +1498,7 @@ Policy Enforcement
 
 ---
 
-# Kubernetes Deployment Credentials
+## Kubernetes Deployment Credentials
 
 Avoid giving CI unrestricted:
 
@@ -1518,7 +1518,7 @@ or narrowly scoped deployment identities.
 
 ---
 
-# RBAC for CI/CD
+## RBAC for CI/CD
 
 Define permissions based on what the pipeline needs.
 
@@ -1545,7 +1545,7 @@ Cluster Configuration
 
 ---
 
-# Admission Control
+## Admission Control
 
 Even if CI passes, Kubernetes admission policies can provide another security layer.
 
@@ -1559,7 +1559,7 @@ Kubernetes
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 A secure pipeline should not depend on one security control.
 
@@ -1581,7 +1581,7 @@ Runtime Security
 
 ---
 
-# Compliance
+## Compliance
 
 CI/CD can provide evidence of:
 
@@ -1595,7 +1595,7 @@ Artifact Traceability
 
 ---
 
-# Audit Trail
+## Audit Trail
 
 A strong pipeline can answer:
 
@@ -1613,7 +1613,7 @@ When Was It Deployed?
 
 ---
 
-# Deployment Metadata
+## Deployment Metadata
 
 Record:
 
@@ -1628,7 +1628,7 @@ Deployment Time
 
 ---
 
-# Observability in CI/CD
+## Observability in CI/CD
 
 Track:
 
@@ -1643,13 +1643,13 @@ These are commonly used software delivery performance indicators.
 
 ---
 
-# Deployment Frequency
+## Deployment Frequency
 
 Measures how frequently production deployments occur.
 
 ---
 
-# Lead Time for Changes
+## Lead Time for Changes
 
 Measures the time between:
 
@@ -1665,19 +1665,19 @@ Production Deployment
 
 ---
 
-# Change Failure Rate
+## Change Failure Rate
 
 Measures how often deployments cause failures requiring remediation.
 
 ---
 
-# Mean Time to Recovery
+## Mean Time to Recovery
 
 Measures how quickly service is restored after an incident.
 
 ---
 
-# DORA Metrics
+## DORA Metrics
 
 Common software delivery performance metrics include:
 
@@ -1692,7 +1692,7 @@ These metrics should be interpreted in context rather than optimized blindly.
 
 ---
 
-# Notifications
+## Notifications
 
 Notify appropriate teams for:
 
@@ -1706,7 +1706,7 @@ Production Deployment
 
 ---
 
-# Pipeline Failure Handling
+## Pipeline Failure Handling
 
 If tests fail:
 
@@ -1724,7 +1724,7 @@ Do not deploy a failed build simply to keep the pipeline green.
 
 ---
 
-# Deployment Failure
+## Deployment Failure
 
 ```text
 Deployment
@@ -1742,13 +1742,13 @@ Investigation
 
 ---
 
-# Failed Build
+## Failed Build
 
 A failed build should prevent downstream deployment stages.
 
 ---
 
-# Failed Security Scan
+## Failed Security Scan
 
 Depending on policy:
 
@@ -1772,7 +1772,7 @@ Continue
 
 ---
 
-# Pipeline Caching
+## Pipeline Caching
 
 Caching can improve build speed.
 
@@ -1797,7 +1797,7 @@ Expiration
 
 ---
 
-# Dependency Lock Files
+## Dependency Lock Files
 
 Use lock files where supported.
 
@@ -1813,7 +1813,7 @@ This improves reproducibility.
 
 ---
 
-# Reproducible Builds
+## Reproducible Builds
 
 A reproducible build should produce the same artifact from the same source and controlled build inputs.
 
@@ -1828,7 +1828,7 @@ Immutable Artifacts
 
 ---
 
-# Build Once, Promote Many
+## Build Once, Promote Many
 
 Preferred architecture:
 
@@ -1854,7 +1854,7 @@ Avoid rebuilding the image independently for every environment.
 
 ---
 
-# Environment Configuration
+## Environment Configuration
 
 Environment differences should usually be represented through configuration.
 
@@ -1868,7 +1868,7 @@ Different Configuration
 
 ---
 
-# Example
+## Example
 
 Development:
 
@@ -1893,7 +1893,7 @@ can remain identical.
 
 ---
 
-# Deployment Manifests
+## Deployment Manifests
 
 Keep manifests:
 
@@ -1906,7 +1906,7 @@ Secure
 
 ---
 
-# Helm Best Practices
+## Helm Best Practices
 
 Use:
 
@@ -1920,7 +1920,7 @@ Controlled Dependencies
 
 ---
 
-# Kustomize Best Practices
+## Kustomize Best Practices
 
 Use:
 
@@ -1933,7 +1933,7 @@ Clear Structure
 
 ---
 
-# CI/CD and GitOps Combined
+## CI/CD and GitOps Combined
 
 Recommended architecture:
 
@@ -1968,21 +1968,21 @@ Recommended architecture:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Deploying Directly From CI With Cluster Admin
+### 1. Deploying Directly From CI With Cluster Admin
 
 This creates unnecessary risk.
 
 ---
 
-## 2. Hardcoding Secrets
+### 2. Hardcoding Secrets
 
 Never place production credentials directly in pipeline files.
 
 ---
 
-## 3. Using Mutable Image Tags
+### 3. Using Mutable Image Tags
 
 Tags such as:
 
@@ -1994,7 +1994,7 @@ can make deployments unpredictable.
 
 ---
 
-## 4. Rebuilding for Every Environment
+### 4. Rebuilding for Every Environment
 
 This can result in different artifacts being tested and deployed.
 
@@ -2007,43 +2007,43 @@ Promote Same Artifact
 
 ---
 
-## 5. Skipping Tests
+### 5. Skipping Tests
 
 A fast deployment is useless if it frequently breaks production.
 
 ---
 
-## 6. Ignoring Security Scanning
+### 6. Ignoring Security Scanning
 
 CI should identify security issues before deployment.
 
 ---
 
-## 7. No Rollback
+### 7. No Rollback
 
 Production deployment must have a recovery strategy.
 
 ---
 
-## 8. No Deployment Verification
+### 8. No Deployment Verification
 
 A successful pipeline does not necessarily mean the application is healthy.
 
 ---
 
-## 9. Overly Privileged Runners
+### 9. Overly Privileged Runners
 
 Compromised CI runners can become a major security risk.
 
 ---
 
-## 10. No Pipeline Isolation
+### 10. No Pipeline Isolation
 
 Sensitive environments should have appropriate isolation.
 
 ---
 
-## 11. No Artifact Traceability
+### 11. No Artifact Traceability
 
 Always know:
 
@@ -2059,33 +2059,33 @@ Deployment
 
 ---
 
-## 12. Treating Security Gates as Optional
+### 12. Treating Security Gates as Optional
 
 Critical security controls should not be bypassed casually.
 
 ---
 
-## 13. No Admission Controls
+### 13. No Admission Controls
 
 CI can fail to catch runtime or configuration changes. Kubernetes admission provides another enforcement layer.
 
 ---
 
-## 14. No Monitoring After Deployment
+### 14. No Monitoring After Deployment
 
 Deployment is not the end of the pipeline.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Automate Testing
+#### 1. Automate Testing
 
 Every important change should be validated automatically.
 
 ---
 
-### 2. Build Immutable Artifacts
+#### 2. Build Immutable Artifacts
 
 Use:
 
@@ -2097,7 +2097,7 @@ Digests
 
 ---
 
-### 3. Scan Before Deployment
+#### 3. Scan Before Deployment
 
 Scan:
 
@@ -2110,7 +2110,7 @@ Secrets
 
 ---
 
-### 4. Use GitOps for Kubernetes CD
+#### 4. Use GitOps for Kubernetes CD
 
 Separate:
 
@@ -2128,13 +2128,13 @@ where appropriate.
 
 ---
 
-### 5. Minimize CI Credentials
+#### 5. Minimize CI Credentials
 
 Use short-lived identities and narrowly scoped permissions.
 
 ---
 
-### 6. Protect Production
+#### 6. Protect Production
 
 Use:
 
@@ -2148,7 +2148,7 @@ Admission
 
 ---
 
-### 7. Verify Deployments
+#### 7. Verify Deployments
 
 Use:
 
@@ -2161,13 +2161,13 @@ Logs
 
 ---
 
-### 8. Automate Rollbacks Carefully
+#### 8. Automate Rollbacks Carefully
 
 Define explicit rollback conditions.
 
 ---
 
-### 9. Track Delivery Metrics
+#### 9. Track Delivery Metrics
 
 Monitor:
 
@@ -2180,7 +2180,7 @@ Recovery Time
 
 ---
 
-### 10. Secure the Entire Supply Chain
+#### 10. Secure the Entire Supply Chain
 
 Protect:
 
@@ -2195,7 +2195,7 @@ Deployment
 
 ---
 
-# Hands-on Lab 1 – Basic CI Pipeline
+## Hands-on Lab 1 – Basic CI Pipeline
 
 Create a simple application repository.
 
@@ -2213,7 +2213,7 @@ Build
 
 ---
 
-# Hands-on Lab 2 – Container Build
+## Hands-on Lab 2 – Container Build
 
 Create a Dockerfile.
 
@@ -2231,7 +2231,7 @@ docker run --rm -p 8080:8080 example/api:1.0.0
 
 ---
 
-# Hands-on Lab 3 – Container Registry
+## Hands-on Lab 3 – Container Registry
 
 Push an image to a test registry.
 
@@ -2245,7 +2245,7 @@ Digest
 
 ---
 
-# Hands-on Lab 4 – Image Scanning
+## Hands-on Lab 4 – Image Scanning
 
 Scan the container image.
 
@@ -2264,7 +2264,7 @@ Create a policy for acceptable risk.
 
 ---
 
-# Hands-on Lab 5 – SBOM
+## Hands-on Lab 5 – SBOM
 
 Generate an SBOM for the application image.
 
@@ -2278,7 +2278,7 @@ Dependencies
 
 ---
 
-# Hands-on Lab 6 – Kubernetes Manifest Validation
+## Hands-on Lab 6 – Kubernetes Manifest Validation
 
 Validate a Deployment:
 
@@ -2288,7 +2288,7 @@ kubectl apply --dry-run=server -f deployment.yaml
 
 ---
 
-# Hands-on Lab 7 – Helm CI
+## Hands-on Lab 7 – Helm CI
 
 Create a Helm chart.
 
@@ -2308,7 +2308,7 @@ Validate the generated manifests.
 
 ---
 
-# Hands-on Lab 8 – Kustomize CI
+## Hands-on Lab 8 – Kustomize CI
 
 Create:
 
@@ -2326,7 +2326,7 @@ kubectl kustomize overlays/production
 
 ---
 
-# Hands-on Lab 9 – CI to Registry
+## Hands-on Lab 9 – CI to Registry
 
 Build a pipeline:
 
@@ -2344,7 +2344,7 @@ Push Registry
 
 ---
 
-# Hands-on Lab 10 – CI With GitOps
+## Hands-on Lab 10 – CI With GitOps
 
 Build:
 
@@ -2366,7 +2366,7 @@ Kubernetes
 
 ---
 
-# Hands-on Lab 11 – Deployment Verification
+## Hands-on Lab 11 – Deployment Verification
 
 After deployment:
 
@@ -2382,7 +2382,7 @@ Check Metrics
 
 ---
 
-# Hands-on Lab 12 – Automated Rollback
+## Hands-on Lab 12 – Automated Rollback
 
 Deploy a working version.
 
@@ -2398,7 +2398,7 @@ and execute a controlled rollback.
 
 ---
 
-# Hands-on Lab 13 – Security Gate
+## Hands-on Lab 13 – Security Gate
 
 Configure a pipeline to reject:
 
@@ -2410,7 +2410,7 @@ or another defined policy violation.
 
 ---
 
-# Hands-on Lab 14 – Secret Scanning
+## Hands-on Lab 14 – Secret Scanning
 
 Commit a test secret in a disposable repository.
 
@@ -2422,7 +2422,7 @@ Immediately remove and rotate the test credential.
 
 ---
 
-# Hands-on Lab 15 – Image Signing
+## Hands-on Lab 15 – Image Signing
 
 Build an image.
 
@@ -2432,7 +2432,7 @@ Verify the signature before deployment.
 
 ---
 
-# Hands-on Lab 16 – Policy as Code
+## Hands-on Lab 16 – Policy as Code
 
 Create a policy:
 
@@ -2444,7 +2444,7 @@ Run it against Kubernetes manifests during CI.
 
 ---
 
-# Hands-on Lab 17 – Canary Deployment
+## Hands-on Lab 17 – Canary Deployment
 
 Deploy:
 
@@ -2465,7 +2465,7 @@ Progressively increase traffic.
 
 ---
 
-# Hands-on Lab 18 – Production Approval
+## Hands-on Lab 18 – Production Approval
 
 Create a pipeline:
 
@@ -2483,7 +2483,7 @@ Production
 
 ---
 
-# Hands-on Lab 19 – DORA Metrics
+## Hands-on Lab 19 – DORA Metrics
 
 Collect:
 
@@ -2498,7 +2498,7 @@ Analyze the results.
 
 ---
 
-# Hands-on Lab 20 – Complete CI/CD Platform
+## Hands-on Lab 20 – Complete CI/CD Platform
 
 Build:
 
@@ -2536,9 +2536,9 @@ Alert / Rollback
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## CI
+### CI
 
 ```text
 Continuously integrate and validate code changes
@@ -2546,7 +2546,7 @@ Continuously integrate and validate code changes
 
 ---
 
-## Continuous Delivery
+### Continuous Delivery
 
 ```text
 Keep software deployable and production-ready
@@ -2554,7 +2554,7 @@ Keep software deployable and production-ready
 
 ---
 
-## Continuous Deployment
+### Continuous Deployment
 
 ```text
 Automatically deploy validated changes
@@ -2562,7 +2562,7 @@ Automatically deploy validated changes
 
 ---
 
-## Container Registry
+### Container Registry
 
 ```text
 Stores container images
@@ -2570,7 +2570,7 @@ Stores container images
 
 ---
 
-## Image Digest
+### Image Digest
 
 ```text
 Content-addressed identifier for an image
@@ -2578,7 +2578,7 @@ Content-addressed identifier for an image
 
 ---
 
-## SBOM
+### SBOM
 
 ```text
 Software Bill of Materials
@@ -2586,7 +2586,7 @@ Software Bill of Materials
 
 ---
 
-## Image Signing
+### Image Signing
 
 ```text
 Mechanism for establishing artifact authenticity and integrity
@@ -2594,7 +2594,7 @@ Mechanism for establishing artifact authenticity and integrity
 
 ---
 
-## GitOps
+### GitOps
 
 ```text
 Git-based desired state + continuous reconciliation
@@ -2602,7 +2602,7 @@ Git-based desired state + continuous reconciliation
 
 ---
 
-## Deployment Gate
+### Deployment Gate
 
 ```text
 Condition that must pass before continuing
@@ -2610,7 +2610,7 @@ Condition that must pass before continuing
 
 ---
 
-## Smoke Test
+### Smoke Test
 
 ```text
 Basic test confirming that the deployment works
@@ -2618,7 +2618,7 @@ Basic test confirming that the deployment works
 
 ---
 
-## Rollback
+### Rollback
 
 ```text
 Return to a known-good application version or desired state
@@ -2626,7 +2626,7 @@ Return to a known-good application version or desired state
 
 ---
 
-## DORA Metrics
+### DORA Metrics
 
 ```text
 Deployment Frequency
@@ -2637,7 +2637,7 @@ Time to Restore Service
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Git status:
 
@@ -2761,9 +2761,9 @@ kubectl top pods -A
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is CI/CD?
 - What is Continuous Integration?
@@ -2783,7 +2783,7 @@ kubectl top pods -A
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How would you design a CI/CD pipeline for Kubernetes?
 - What stages should a Kubernetes CI pipeline contain?
@@ -2803,7 +2803,7 @@ kubectl top pods -A
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a secure Kubernetes CI/CD architecture.
 - How would you implement CI/CD for multiple Kubernetes clusters?
@@ -2820,13 +2820,13 @@ kubectl top pods -A
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What should happen when a developer pushes code to Git?
 
-### Answer
+#### Answer
 
 A typical pipeline is:
 
@@ -2856,13 +2856,13 @@ Deployment
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Why should you not give CI `cluster-admin`?
 
-### Answer
+#### Answer
 
 Because compromise of the CI pipeline could result in complete cluster compromise.
 
@@ -2882,13 +2882,13 @@ should be preferred.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > Why is Build Once, Promote Many better?
 
-### Answer
+#### Answer
 
 It ensures that the same tested artifact moves through:
 
@@ -2912,13 +2912,13 @@ Reproducibility
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > How would you automatically rollback a bad deployment?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2940,13 +2940,13 @@ For GitOps environments, the desired state in Git should also be corrected so th
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How do you secure a container image pipeline?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2970,13 +2970,13 @@ Admission Verification
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > How would you deploy the same image to development, staging, and production?
 
-### Answer
+#### Answer
 
 Build once:
 
@@ -2998,13 +2998,13 @@ Environment-specific configuration can change independently.
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How do you prevent secrets from leaking through CI logs?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3024,13 +3024,13 @@ Also scan source and artifacts for accidentally exposed credentials.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How do you verify that a Kubernetes deployment actually succeeded?
 
-### Answer
+#### Answer
 
 I would not rely only on a successful `kubectl apply`.
 
@@ -3054,13 +3054,13 @@ Error Rate
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How would you design Kubernetes CI/CD for production?
 
-### Answer
+#### Answer
 
 ```text
 Developer
@@ -3098,7 +3098,7 @@ Rollback if Required
 
 ---
 
-# Production CI/CD Checklist
+## Production CI/CD Checklist
 
 ```text
 ☑ Source control protected
@@ -3136,7 +3136,7 @@ Rollback if Required
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 CI/CD automates the path from source code to production.
 
@@ -3214,9 +3214,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 80 – Helm
+## Chapter 80 – Helm
 
 Topics will include:
 

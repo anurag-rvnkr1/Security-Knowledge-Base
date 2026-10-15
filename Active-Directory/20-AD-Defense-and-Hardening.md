@@ -1,6 +1,6 @@
 # 20-AD-Defense-and-Hardening.md
 
-# Part 1 — Active Directory Defense Strategy, Enterprise Hardening Principles, Tier-0 Protection and Secure Administration
+## Part 1 — Active Directory Defense Strategy, Enterprise Hardening Principles, Tier-0 Protection and Secure Administration
 
 > **Important Note**
 >
@@ -8,7 +8,7 @@
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -24,7 +24,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Active Directory is the identity backbone of most enterprise Windows environments.
 
@@ -38,7 +38,7 @@ Enterprise hardening is built on three principles:
 
 ---
 
-# Enterprise Defense Model
+## Enterprise Defense Model
 
 ```
                    Active Directory
@@ -64,7 +64,7 @@ Tiering           Hunting           Validation
 
 ---
 
-# Modern Security Philosophy
+## Modern Security Philosophy
 
 Traditional security focused on protecting the network perimeter.
 
@@ -102,7 +102,7 @@ This identity-first model underpins Microsoft's current security recommendations
 
 ---
 
-# Defense-in-Depth
+## Defense-in-Depth
 
 Multiple independent controls reduce overall risk.
 
@@ -142,7 +142,7 @@ No individual control should be considered sufficient by itself.
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 Zero Trust assumes that no user, device, or application should be trusted automatically.
 
@@ -180,7 +180,7 @@ Continuous Verification
 
 ---
 
-# Active Directory Hardening Goals
+## Active Directory Hardening Goals
 
 The primary objectives are:
 
@@ -194,7 +194,7 @@ The primary objectives are:
 
 ---
 
-# Hardening Layers
+## Hardening Layers
 
 ```
 Layer 1
@@ -236,7 +236,7 @@ Each layer contributes to the organization's overall security posture.
 
 ---
 
-# Tier-0 Protection
+## Tier-0 Protection
 
 Tier-0 assets represent the highest-value systems in an Active Directory environment.
 
@@ -264,7 +264,7 @@ Tier-0 assets should receive the strongest available protections.
 
 ---
 
-# Tiered Administration
+## Tiered Administration
 
 Administrative responsibilities should be separated by security tier.
 
@@ -296,7 +296,7 @@ Administrative credentials from higher tiers should not routinely be used on low
 
 ---
 
-# Identity Hardening
+## Identity Hardening
 
 Identity protection includes:
 
@@ -312,7 +312,7 @@ Identity is the organization's primary security boundary.
 
 ---
 
-# Administrative Account Separation
+## Administrative Account Separation
 
 Recommended account model:
 
@@ -344,7 +344,7 @@ Routine work should never be performed using privileged accounts.
 
 ---
 
-# Privileged Access Workstations (PAWs)
+## Privileged Access Workstations (PAWs)
 
 Administrative activities should ideally be performed from dedicated hardened systems.
 
@@ -374,7 +374,7 @@ Administrative Task
 
 ---
 
-# Security Baselines
+## Security Baselines
 
 Security baselines define approved configurations.
 
@@ -393,7 +393,7 @@ Baselines improve consistency across the enterprise.
 
 ---
 
-# Reducing Attack Surface
+## Reducing Attack Surface
 
 Examples include:
 
@@ -408,7 +408,7 @@ Smaller attack surfaces are generally easier to secure.
 
 ---
 
-# Secure Administrative Workflow
+## Secure Administrative Workflow
 
 ```
 Administrative Request
@@ -440,7 +440,7 @@ Review
 
 ---
 
-# Enterprise Hardening Checklist
+## Enterprise Hardening Checklist
 
 ```
 ✓ Tier-0 Assets Identified
@@ -466,7 +466,7 @@ Review
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -498,7 +498,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Hardening is not a one-time project.
 
@@ -516,13 +516,13 @@ Security posture should improve incrementally over time.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Assess the hardening posture of a lab Active Directory environment.
 
-### Step 1
+#### Step 1
 
 Identify:
 
@@ -532,7 +532,7 @@ Identify:
 
 ---
 
-### Step 2
+#### Step 2
 
 Review:
 
@@ -543,63 +543,63 @@ Review:
 
 ---
 
-### Step 3
+#### Step 3
 
 Verify whether administrative tasks are performed using dedicated accounts.
 
 ---
 
-### Step 4
+#### Step 4
 
 Document opportunities to reduce the attack surface.
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a Tier-0 protection plan for the environment.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is Defense-in-Depth?
+#### Q1: What is Defense-in-Depth?
 
 **Answer:** A layered security strategy that combines multiple preventive, detective, and recovery controls so that the failure of one control does not compromise the entire environment.
 
 ---
 
-### Q2: Why are Tier-0 assets critical?
+#### Q2: Why are Tier-0 assets critical?
 
 **Answer:** They control enterprise authentication and identity infrastructure. Compromise of Tier-0 assets can affect the entire Active Directory environment.
 
 ---
 
-### Q3: What is the purpose of Privileged Access Workstations?
+#### Q3: What is the purpose of Privileged Access Workstations?
 
 **Answer:** They reduce exposure of privileged credentials by providing hardened, dedicated systems for administrative tasks.
 
 ---
 
-### Q4: Why should administrative accounts be separated from standard user accounts?
+#### Q4: Why should administrative accounts be separated from standard user accounts?
 
 **Answer:** Separation minimizes the risk of exposing privileged credentials during routine activities such as email or web browsing.
 
 ---
 
-### Q5: What is the purpose of security baselines?
+#### Q5: What is the purpose of security baselines?
 
 **Answer:** Security baselines establish standardized secure configurations that improve consistency and reduce misconfigurations.
 
 ---
 
-### Q6: Why should organizations continuously review their hardening posture?
+#### Q6: Why should organizations continuously review their hardening posture?
 
 **Answer:** Enterprise environments and threats evolve over time, requiring ongoing improvement of security controls.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Protect Tier-0 assets with the strongest controls.
 - Use dedicated administrative accounts.
@@ -612,7 +612,7 @@ Create a Tier-0 protection plan for the environment.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Using Domain Admin accounts for everyday tasks.
 - Ignoring Tier-0 boundaries.
@@ -623,7 +623,7 @@ Create a Tier-0 protection plan for the environment.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory hardening is based on layered defensive controls.
 - Tier-0 protection is the foundation of enterprise identity security.
@@ -632,9 +632,9 @@ Create a Tier-0 protection plan for the environment.
 
 ---
 
-# 20-AD-Defense-and-Hardening.md
+## 20-AD-Defense-and-Hardening.md
 
-# Part 2 — Enterprise Identity Protection, Privileged Access Security, Credential Protection, Secure Configuration and Attack Surface Reduction
+## Part 2 — Enterprise Identity Protection, Privileged Access Security, Credential Protection, Secure Configuration and Attack Surface Reduction
 
 > **Important Note**
 >
@@ -642,7 +642,7 @@ Create a Tier-0 protection plan for the environment.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -658,7 +658,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Identity is now the most valuable asset in an enterprise.
 
@@ -674,7 +674,7 @@ Protecting identities significantly reduces overall enterprise risk.
 
 ---
 
-# Enterprise Identity Protection Model
+## Enterprise Identity Protection Model
 
 ```
              Enterprise Identity
@@ -696,7 +696,7 @@ Identity protection should be integrated across every security layer.
 
 ---
 
-# Identity Hardening Principles
+## Identity Hardening Principles
 
 Core principles include:
 
@@ -709,7 +709,7 @@ Core principles include:
 
 ---
 
-# Privileged Identity Security
+## Privileged Identity Security
 
 Privileged identities require stronger protection than standard user accounts.
 
@@ -745,7 +745,7 @@ Recommended controls:
 
 ---
 
-# Administrative Identity Lifecycle
+## Administrative Identity Lifecycle
 
 ```
 Request
@@ -779,7 +779,7 @@ Administrative privileges should be granted only for legitimate business needs.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 Where supported, MFA adds an additional verification step beyond passwords.
 
@@ -805,7 +805,7 @@ MFA significantly reduces the impact of compromised passwords but should be comb
 
 ---
 
-# Credential Protection
+## Credential Protection
 
 Credential protection aims to reduce exposure of authentication secrets.
 
@@ -820,7 +820,7 @@ Recommended practices:
 
 ---
 
-# Secure Password Management
+## Secure Password Management
 
 ```
 Strong Password
@@ -846,7 +846,7 @@ Organizations should follow applicable standards and vendor guidance for passwor
 
 ---
 
-# Service Account Security
+## Service Account Security
 
 Service accounts require careful governance.
 
@@ -880,7 +880,7 @@ Periodic Review
 
 ---
 
-# Group Managed Service Accounts (gMSA)
+## Group Managed Service Accounts (gMSA)
 
 Advantages include:
 
@@ -893,7 +893,7 @@ gMSAs help reduce operational risk associated with manually managed service acco
 
 ---
 
-# Secure Administrative Configuration
+## Secure Administrative Configuration
 
 Administrative systems should follow strict configuration standards.
 
@@ -908,7 +908,7 @@ Examples:
 
 ---
 
-# Attack Surface Reduction
+## Attack Surface Reduction
 
 Attack Surface Reduction (ASR) is the practice of minimizing opportunities for attackers.
 
@@ -939,7 +939,7 @@ Reduced Risk
 
 ---
 
-# Windows Defender Security Features
+## Windows Defender Security Features
 
 Organizations should evaluate and implement appropriate Windows security capabilities, such as:
 
@@ -953,7 +953,7 @@ Deployment should align with organizational policies and compatibility requireme
 
 ---
 
-# Endpoint Hardening
+## Endpoint Hardening
 
 Recommended endpoint controls:
 
@@ -968,7 +968,7 @@ Endpoints are often the initial entry point into enterprise environments.
 
 ---
 
-# Administrative Session Security
+## Administrative Session Security
 
 ```
 Administrator
@@ -998,7 +998,7 @@ Administrative sessions should be limited to authorized systems.
 
 ---
 
-# Configuration Management
+## Configuration Management
 
 Configuration management ensures systems remain aligned with approved standards.
 
@@ -1026,7 +1026,7 @@ Configuration drift should be detected and corrected.
 
 ---
 
-# Enterprise Identity Governance
+## Enterprise Identity Governance
 
 Organizations should periodically review:
 
@@ -1041,7 +1041,7 @@ Governance supports long-term security and compliance.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1074,7 +1074,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Identity protection is one of the highest-return security investments.
 
@@ -1091,13 +1091,13 @@ These controls significantly improve resilience against identity-focused attacks
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Evaluate identity protection controls in a lab Active Directory environment.
 
-### Step 1
+#### Step 1
 
 Identify:
 
@@ -1107,7 +1107,7 @@ Identify:
 
 ---
 
-### Step 2
+#### Step 2
 
 Review:
 
@@ -1117,7 +1117,7 @@ Review:
 
 ---
 
-### Step 3
+#### Step 3
 
 Inspect service accounts.
 
@@ -1130,57 +1130,57 @@ Determine:
 
 ---
 
-### Step 4
+#### Step 4
 
 Compare endpoint configurations against the organization's security baseline.
 
 ---
 
-### Step 5
+#### Step 5
 
 Prepare a prioritized remediation plan to strengthen identity protection.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why should privileged identities receive stronger protection?
+#### Q1: Why should privileged identities receive stronger protection?
 
 **Answer:** Because compromise of privileged accounts can significantly affect the security and integrity of the Active Directory environment.
 
 ---
 
-### Q2: What are the benefits of Multi-Factor Authentication?
+#### Q2: What are the benefits of Multi-Factor Authentication?
 
 **Answer:** MFA requires an additional verification factor beyond a password, reducing the risk associated with compromised credentials.
 
 ---
 
-### Q3: Why are gMSAs recommended over traditional service accounts?
+#### Q3: Why are gMSAs recommended over traditional service accounts?
 
 **Answer:** gMSAs automatically manage passwords, reduce manual administration, and improve credential security for supported workloads.
 
 ---
 
-### Q4: What is Attack Surface Reduction?
+#### Q4: What is Attack Surface Reduction?
 
 **Answer:** It is the practice of minimizing opportunities for attackers by removing unnecessary software, services, protocols, and privileges.
 
 ---
 
-### Q5: Why is configuration management important?
+#### Q5: Why is configuration management important?
 
 **Answer:** It ensures systems remain compliant with approved security baselines and helps detect unauthorized or accidental configuration changes.
 
 ---
 
-### Q6: Why should identity governance be performed regularly?
+#### Q6: Why should identity governance be performed regularly?
 
 **Answer:** Regular reviews ensure permissions remain appropriate, inactive accounts are removed, and administrative access aligns with business requirements.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Protect privileged identities with enhanced controls.
 - Implement MFA wherever supported.
@@ -1193,7 +1193,7 @@ Prepare a prioritized remediation plan to strengthen identity protection.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Sharing privileged credentials.
 - Leaving obsolete service accounts enabled.
@@ -1204,7 +1204,7 @@ Prepare a prioritized remediation plan to strengthen identity protection.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Identity protection is central to modern Active Directory defense.
 - Strong authentication, secure credential management, and least privilege reduce enterprise risk.
@@ -1213,9 +1213,9 @@ Prepare a prioritized remediation plan to strengthen identity protection.
 
 ---
 
-# 20-AD-Defense-and-Hardening.md
+## 20-AD-Defense-and-Hardening.md
 
-# Part 3 — Domain Controller Hardening, Network Security, Monitoring, Patch Management, Backup Strategy and Enterprise Defensive Operations
+## Part 3 — Domain Controller Hardening, Network Security, Monitoring, Patch Management, Backup Strategy and Enterprise Defensive Operations
 
 > **Important Note**
 >
@@ -1223,7 +1223,7 @@ Prepare a prioritized remediation plan to strengthen identity protection.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1239,7 +1239,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Domain Controllers are the **most critical systems** in an Active Directory environment.
 
@@ -1258,7 +1258,7 @@ Because every user and computer depends on Domain Controllers, they must receive
 
 ---
 
-# Domain Controller Security Model
+## Domain Controller Security Model
 
 ```
                  Domain Controller
@@ -1284,7 +1284,7 @@ Kerberos          NTDS Database     Replication
 
 ---
 
-# Domain Controller Hardening
+## Domain Controller Hardening
 
 Recommended practices include:
 
@@ -1301,7 +1301,7 @@ Domain Controllers should perform only functions required for directory services
 
 ---
 
-# Administrative Access Protection
+## Administrative Access Protection
 
 Only authorized administrators should manage Domain Controllers.
 
@@ -1329,7 +1329,7 @@ Routine productivity activities should never occur on Domain Controllers.
 
 ---
 
-# Domain Controller Security Checklist
+## Domain Controller Security Checklist
 
 ```
 ✓ Latest Security Updates
@@ -1353,7 +1353,7 @@ Routine productivity activities should never occur on Domain Controllers.
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Identity infrastructure should be separated from general-purpose networks.
 
@@ -1386,7 +1386,7 @@ Benefits include:
 
 ---
 
-# Secure DNS
+## Secure DNS
 
 DNS is essential for Active Directory functionality.
 
@@ -1402,7 +1402,7 @@ Improper DNS configuration can disrupt authentication and directory operations.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Kerberos requires accurate time synchronization.
 
@@ -1434,7 +1434,7 @@ Monitor for:
 
 ---
 
-# Patch Management
+## Patch Management
 
 Keeping systems updated is a fundamental defensive practice.
 
@@ -1472,7 +1472,7 @@ Organizations should balance timely patching with operational stability through 
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Vulnerability management is an ongoing process.
 
@@ -1504,7 +1504,7 @@ Not all vulnerabilities carry the same level of risk; prioritize remediation bas
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Continuous monitoring provides visibility into Active Directory health and security.
 
@@ -1521,7 +1521,7 @@ Monitor for:
 
 ---
 
-# Enterprise Monitoring Architecture
+## Enterprise Monitoring Architecture
 
 ```
 Domain Controllers
@@ -1555,7 +1555,7 @@ Centralized monitoring improves detection and investigation capabilities.
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Critical log categories include:
 
@@ -1572,7 +1572,7 @@ Logs should be retained according to organizational policy and regulatory requir
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 A reliable backup strategy is essential for recovery.
 
@@ -1607,7 +1607,7 @@ Recovery Testing
 
 ---
 
-# Recovery Readiness
+## Recovery Readiness
 
 Organizations should periodically validate:
 
@@ -1621,7 +1621,7 @@ Testing ensures recovery procedures remain effective.
 
 ---
 
-# Security Baseline Validation
+## Security Baseline Validation
 
 ```
 Approved Baseline
@@ -1651,7 +1651,7 @@ Configuration drift should be investigated and corrected.
 
 ---
 
-# Enterprise Operational Security
+## Enterprise Operational Security
 
 Operational security activities include:
 
@@ -1666,7 +1666,7 @@ A structured schedule promotes continuous improvement.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1699,7 +1699,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Protecting Domain Controllers requires both technical and operational controls.
 
@@ -1717,13 +1717,13 @@ A resilient identity infrastructure depends on consistent operational discipline
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Evaluate Domain Controller security and operational readiness.
 
-### Step 1
+#### Step 1
 
 Review:
 
@@ -1735,7 +1735,7 @@ Document any unnecessary components.
 
 ---
 
-### Step 2
+#### Step 2
 
 Verify:
 
@@ -1745,7 +1745,7 @@ Verify:
 
 ---
 
-### Step 3
+#### Step 3
 
 Review backup procedures.
 
@@ -1757,7 +1757,7 @@ Confirm:
 
 ---
 
-### Step 4
+#### Step 4
 
 Review network segmentation.
 
@@ -1769,7 +1769,7 @@ Identify:
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a quarterly operational review checklist covering:
 
@@ -1781,45 +1781,45 @@ Create a quarterly operational review checklist covering:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why should Domain Controllers perform only essential roles?
+#### Q1: Why should Domain Controllers perform only essential roles?
 
 **Answer:** Limiting installed roles and software reduces the attack surface, simplifies maintenance, and lowers the likelihood of security issues.
 
 ---
 
-### Q2: Why is network segmentation important for Active Directory?
+#### Q2: Why is network segmentation important for Active Directory?
 
 **Answer:** Segmentation isolates critical identity infrastructure, limits unnecessary communication paths, and helps reduce the impact of potential compromises.
 
 ---
 
-### Q3: Why is time synchronization critical?
+#### Q3: Why is time synchronization critical?
 
 **Answer:** Kerberos authentication depends on accurate system time. Significant clock differences can prevent successful authentication.
 
 ---
 
-### Q4: What is the purpose of vulnerability management?
+#### Q4: What is the purpose of vulnerability management?
 
 **Answer:** Vulnerability management identifies, prioritizes, remediates, and validates security weaknesses on an ongoing basis.
 
 ---
 
-### Q5: Why should backups be tested?
+#### Q5: Why should backups be tested?
 
 **Answer:** Testing verifies that backups can be successfully restored and that recovery procedures are effective when needed.
 
 ---
 
-### Q6: Why is centralized logging valuable?
+#### Q6: Why is centralized logging valuable?
 
 **Answer:** It provides enterprise-wide visibility, enables event correlation, and improves incident detection and investigation.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Harden Domain Controllers according to approved baselines.
 - Segment Tier-0 infrastructure from general networks.
@@ -1832,7 +1832,7 @@ Create a quarterly operational review checklist covering:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Installing unnecessary applications on Domain Controllers.
 - Delaying security updates without risk assessment.
@@ -1843,7 +1843,7 @@ Create a quarterly operational review checklist covering:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Domain Controllers require the highest level of operational and technical protection.
 - Network segmentation, patch management, monitoring, and backups are core components of enterprise defense.
@@ -1852,9 +1852,9 @@ Create a quarterly operational review checklist covering:
 
 ---
 
-# 20-AD-Defense-and-Hardening.md
+## 20-AD-Defense-and-Hardening.md
 
-# Part 4 — Incident Response, Continuous Validation, Security Governance, Enterprise Hardening Checklist and Chapter Summary
+## Part 4 — Incident Response, Continuous Validation, Security Governance, Enterprise Hardening Checklist and Chapter Summary
 
 > **Important Note**
 >
@@ -1862,7 +1862,7 @@ Create a quarterly operational review checklist covering:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1878,7 +1878,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Hardening Active Directory is **not** a one-time project.
 
@@ -1900,7 +1900,7 @@ Because of this, enterprise security teams must continuously:
 
 ---
 
-# Enterprise Security Lifecycle
+## Enterprise Security Lifecycle
 
 ```
 Plan
@@ -1934,7 +1934,7 @@ This lifecycle creates a continuously improving security program.
 
 ---
 
-# Incident Response for Active Directory
+## Incident Response for Active Directory
 
 A documented incident response process helps reduce confusion during security incidents.
 
@@ -1970,7 +1970,7 @@ Every incident should be documented and reviewed.
 
 ---
 
-# Incident Prioritization
+## Incident Prioritization
 
 Not every security event has the same impact.
 
@@ -1988,7 +1988,7 @@ Prioritization helps allocate response resources effectively.
 
 ---
 
-# Security Validation
+## Security Validation
 
 Security controls should be verified regularly.
 
@@ -2024,7 +2024,7 @@ Pass?
 
 ---
 
-# Configuration Compliance
+## Configuration Compliance
 
 Configuration compliance ensures systems remain aligned with approved baselines.
 
@@ -2058,7 +2058,7 @@ Automated compliance monitoring can help identify configuration drift.
 
 ---
 
-# Privileged Access Review
+## Privileged Access Review
 
 Privileged access should be reviewed periodically.
 
@@ -2084,7 +2084,7 @@ Each account should have a documented business justification.
 
 ---
 
-# Security Documentation
+## Security Documentation
 
 Maintain documentation for:
 
@@ -2101,7 +2101,7 @@ Good documentation reduces operational risk.
 
 ---
 
-# Enterprise Governance Model
+## Enterprise Governance Model
 
 ```
 Policies
@@ -2135,7 +2135,7 @@ Governance aligns technical controls with business and compliance requirements.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Useful operational metrics include:
 
@@ -2154,7 +2154,7 @@ Metrics should be reviewed regularly by security leadership.
 
 ---
 
-# Disaster Recovery Readiness
+## Disaster Recovery Readiness
 
 Recovery planning should include:
 
@@ -2189,7 +2189,7 @@ Preparedness reduces downtime during major incidents.
 
 ---
 
-# Security Assessment Schedule
+## Security Assessment Schedule
 
 Example annual schedule:
 
@@ -2206,7 +2206,7 @@ Adjust schedules based on organizational requirements and risk tolerance.
 
 ---
 
-# Enterprise Hardening Roadmap
+## Enterprise Hardening Roadmap
 
 ```
 Phase 1
@@ -2248,9 +2248,9 @@ Organizations often mature through these phases over time.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Company
+### Company
 
 ```
 Alpine Retail Corporation
@@ -2282,7 +2282,7 @@ Results:
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 Security improvement cycle:
 
@@ -2314,7 +2314,7 @@ Continuous refinement strengthens long-term resilience.
 
 ---
 
-# Enterprise Hardening Checklist
+## Enterprise Hardening Checklist
 
 ```
 Identity
@@ -2376,7 +2376,7 @@ Governance
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Enterprise Active Directory security depends on:
 
@@ -2391,13 +2391,13 @@ The most successful organizations treat security as a continuous operational cap
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Evaluate the maturity of an Active Directory hardening program.
 
-### Step 1
+#### Step 1
 
 Inventory:
 
@@ -2408,7 +2408,7 @@ Inventory:
 
 ---
 
-### Step 2
+#### Step 2
 
 Review:
 
@@ -2419,7 +2419,7 @@ Review:
 
 ---
 
-### Step 3
+#### Step 3
 
 Validate:
 
@@ -2429,57 +2429,57 @@ Validate:
 
 ---
 
-### Step 4
+#### Step 4
 
 Create a one-year Active Directory hardening roadmap with quarterly milestones.
 
 ---
 
-### Step 5
+#### Step 5
 
 Present recommendations for improving governance, monitoring, and operational resilience.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why should Active Directory hardening be continuous?
+#### Q1: Why should Active Directory hardening be continuous?
 
 **Answer:** Because enterprise environments, business requirements, and threats evolve continuously, requiring ongoing validation and improvement of security controls.
 
 ---
 
-### Q2: Why are security baselines important?
+#### Q2: Why are security baselines important?
 
 **Answer:** They establish consistent, secure configurations across systems and reduce configuration drift.
 
 ---
 
-### Q3: What is the purpose of configuration compliance?
+#### Q3: What is the purpose of configuration compliance?
 
 **Answer:** It ensures systems remain aligned with approved security standards and helps identify unauthorized or accidental changes.
 
 ---
 
-### Q4: Why are security metrics valuable?
+#### Q4: Why are security metrics valuable?
 
 **Answer:** Metrics provide measurable insight into the effectiveness of security operations, helping organizations identify strengths, weaknesses, and areas for improvement.
 
 ---
 
-### Q5: Why should disaster recovery plans be tested?
+#### Q5: Why should disaster recovery plans be tested?
 
 **Answer:** Testing confirms that recovery procedures, documentation, and backups are effective before an actual incident occurs.
 
 ---
 
-### Q6: What is the role of governance in Active Directory security?
+#### Q6: What is the role of governance in Active Directory security?
 
 **Answer:** Governance defines policies, standards, procedures, and oversight to ensure consistent implementation and maintenance of security controls.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Continuously validate security controls.
 - Maintain accurate documentation.
@@ -2492,7 +2492,7 @@ Present recommendations for improving governance, monitoring, and operational re
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating hardening as a one-time task.
 - Allowing configuration drift to persist.
@@ -2503,7 +2503,7 @@ Present recommendations for improving governance, monitoring, and operational re
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory hardening requires continuous validation and improvement.
 - Governance, monitoring, and operational discipline are as important as technical controls.
@@ -2513,7 +2513,7 @@ Present recommendations for improving governance, monitoring, and operational re
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

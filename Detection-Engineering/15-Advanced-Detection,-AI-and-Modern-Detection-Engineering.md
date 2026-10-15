@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 Traditional detection:
 
@@ -52,7 +52,7 @@ Automation
 
 ---
 
-# 2. Modern Detection Engineering
+## 2. Modern Detection Engineering
 
 Modern detection engineering focuses on:
 
@@ -84,7 +84,7 @@ How risky is it?
 
 ---
 
-# 3. Detection Evolution
+## 3. Detection Evolution
 
 A simplified evolution:
 
@@ -110,7 +110,7 @@ Modern systems often use multiple layers simultaneously.
 
 ---
 
-# 4. Signature Detection
+## 4. Signature Detection
 
 Signature detection identifies:
 
@@ -141,7 +141,7 @@ Poor Zero-Day Coverage
 
 ---
 
-# 5. Rule-Based Detection
+## 5. Rule-Based Detection
 
 Example:
 
@@ -165,7 +165,7 @@ Explainable
 
 ---
 
-# 6. Behavioral Detection
+## 6. Behavioral Detection
 
 Behavioral detection focuses on:
 
@@ -193,7 +193,7 @@ Sensitive Access
 
 ---
 
-# 7. Entity-Based Detection
+## 7. Entity-Based Detection
 
 Entities can include:
 
@@ -220,7 +220,7 @@ History
 
 ---
 
-# 8. Entity Risk
+## 8. Entity Risk
 
 A user may have:
 
@@ -242,7 +242,7 @@ Sensitive Access
 
 ---
 
-# 9. User and Entity Behavior Analytics
+## 9. User and Entity Behavior Analytics
 
 UEBA focuses on identifying:
 
@@ -254,7 +254,7 @@ across users and entities.
 
 ---
 
-# 10. UEBA Signals
+## 10. UEBA Signals
 
 Possible signals:
 
@@ -271,7 +271,7 @@ Cloud Activity
 
 ---
 
-# 11. UEBA Baseline
+## 11. UEBA Baseline
 
 For each entity:
 
@@ -293,7 +293,7 @@ is compared.
 
 ---
 
-# 12. Anomaly Detection
+## 12. Anomaly Detection
 
 Anomaly detection identifies:
 
@@ -315,7 +315,7 @@ Potentially suspicious.
 
 ---
 
-# 13. Anomaly ≠ Malicious
+## 13. Anomaly ≠ Malicious
 
 Important:
 
@@ -339,7 +339,7 @@ Context is essential.
 
 ---
 
-# 14. Statistical Detection
+## 14. Statistical Detection
 
 Statistical approaches can use:
 
@@ -355,7 +355,7 @@ Seasonality
 
 ---
 
-# 15. Z-Score
+## 15. Z-Score
 
 Conceptually:
 
@@ -376,7 +376,7 @@ Large deviations may indicate unusual behavior.
 
 ---
 
-# 16. Percentile-Based Detection
+## 16. Percentile-Based Detection
 
 Example:
 
@@ -392,7 +392,7 @@ This may be considered anomalous.
 
 ---
 
-# 17. Moving Average
+## 17. Moving Average
 
 Track behavior over time:
 
@@ -413,7 +413,7 @@ Recent Average
 
 ---
 
-# 18. Seasonality
+## 18. Seasonality
 
 Normal behavior may vary by:
 
@@ -434,7 +434,7 @@ should not automatically trigger anomaly detection.
 
 ---
 
-# 19. Peer Groups
+## 19. Peer Groups
 
 Compare entities against similar entities.
 
@@ -456,7 +456,7 @@ Production Servers
 
 ---
 
-# 20. Clustering
+## 20. Clustering
 
 Machine learning can group similar behavior.
 
@@ -474,7 +474,7 @@ An entity far outside its expected cluster may warrant investigation.
 
 ---
 
-# 21. Supervised Learning
+## 21. Supervised Learning
 
 Supervised ML uses labeled examples:
 
@@ -487,7 +487,7 @@ to learn patterns.
 
 ---
 
-# 22. Supervised Detection
+## 22. Supervised Detection
 
 Training:
 
@@ -511,7 +511,7 @@ Prediction
 
 ---
 
-# 23. Advantages of Supervised ML
+## 23. Advantages of Supervised ML
 
 ```text
 Can Learn Complex Patterns
@@ -521,7 +521,7 @@ Can Rank Events
 
 ---
 
-# 24. Limitations of Supervised ML
+## 24. Limitations of Supervised ML
 
 ```text
 Requires Quality Labels
@@ -533,7 +533,7 @@ Generalization Problems
 
 ---
 
-# 25. Unsupervised Learning
+## 25. Unsupervised Learning
 
 Unsupervised learning works without predefined labels.
 
@@ -547,7 +547,7 @@ Dimensionality Reduction
 
 ---
 
-# 26. Semi-Supervised Learning
+## 26. Semi-Supervised Learning
 
 Combines:
 
@@ -561,7 +561,7 @@ Useful when high-quality security labels are limited.
 
 ---
 
-# 27. Feature Engineering
+## 27. Feature Engineering
 
 A detection model may use:
 
@@ -578,7 +578,7 @@ Asset Criticality
 
 ---
 
-# 28. Feature Quality
+## 28. Feature Quality
 
 Poor features can create:
 
@@ -593,7 +593,7 @@ Good models depend on good telemetry.
 
 ---
 
-# 29. Feature Leakage
+## 29. Feature Leakage
 
 Feature leakage occurs when information unavailable at detection time accidentally influences model training.
 
@@ -607,7 +607,7 @@ but poor real-world performance.
 
 ---
 
-# 30. Training Data
+## 30. Training Data
 
 Security datasets may be:
 
@@ -624,7 +624,7 @@ Therefore model evaluation must be careful.
 
 ---
 
-# 31. Class Imbalance
+## 31. Class Imbalance
 
 Example:
 
@@ -646,7 +646,7 @@ may achieve high accuracy while being useless.
 
 ---
 
-# 32. Precision and Recall for ML
+## 32. Precision and Recall for ML
 
 Use:
 
@@ -662,7 +662,7 @@ rather than accuracy alone.
 
 ---
 
-# 33. F1 Score
+## 33. F1 Score
 
 Conceptually:
 
@@ -677,7 +677,7 @@ Useful when balancing precision and recall.
 
 ---
 
-# 34. Model Threshold
+## 34. Model Threshold
 
 A model may output:
 
@@ -703,7 +703,7 @@ Alert Volume
 
 ---
 
-# 35. Risk Ranking
+## 35. Risk Ranking
 
 Instead of:
 
@@ -737,7 +737,7 @@ Actual ranges should be calibrated to the organization's model.
 
 ---
 
-# 36. Risk-Based Detection
+## 36. Risk-Based Detection
 
 Combine:
 
@@ -769,7 +769,7 @@ should receive higher priority.
 
 ---
 
-# 37. Graph-Based Detection
+## 37. Graph-Based Detection
 
 Represent security relationships as:
 
@@ -795,7 +795,7 @@ Domain
 
 ---
 
-# 38. Security Graph
+## 38. Security Graph
 
 Possible nodes:
 
@@ -813,7 +813,7 @@ Files
 
 ---
 
-# 39. Graph Relationships
+## 39. Graph Relationships
 
 Examples:
 
@@ -831,7 +831,7 @@ Role → Can Access → Resource
 
 ---
 
-# 40. Why Graphs Matter
+## 40. Why Graphs Matter
 
 Attackers move through relationships:
 
@@ -851,7 +851,7 @@ Graph models can reveal suspicious paths.
 
 ---
 
-# 41. Graph Anomaly
+## 41. Graph Anomaly
 
 Example:
 
@@ -868,7 +868,7 @@ The unusual relationship may be significant.
 
 ---
 
-# 42. Attack Path Detection
+## 42. Attack Path Detection
 
 Graph analysis can identify:
 
@@ -886,7 +886,7 @@ This helps prioritize risk.
 
 ---
 
-# 43. Relationship-Based Detection
+## 43. Relationship-Based Detection
 
 Instead of:
 
@@ -908,7 +908,7 @@ New Resource Access
 
 ---
 
-# 44. Sequence Detection
+## 44. Sequence Detection
 
 Modern detection can identify:
 
@@ -934,7 +934,7 @@ Data Export
 
 ---
 
-# 45. Temporal Detection
+## 45. Temporal Detection
 
 Temporal detection considers:
 
@@ -947,7 +947,7 @@ Frequency
 
 ---
 
-# 46. Stateful Detection
+## 46. Stateful Detection
 
 Stateful detection remembers previous events.
 
@@ -965,7 +965,7 @@ Correlation
 
 ---
 
-# 47. Streaming Detection
+## 47. Streaming Detection
 
 Streaming systems process events continuously:
 
@@ -991,7 +991,7 @@ High-Risk Activity
 
 ---
 
-# 48. Complex Event Processing
+## 48. Complex Event Processing
 
 CEP can detect:
 
@@ -1015,7 +1015,7 @@ Sensitive Access
 
 ---
 
-# 49. Multi-Stage Detection
+## 49. Multi-Stage Detection
 
 Combine multiple detections:
 
@@ -1035,7 +1035,7 @@ Higher-Confidence Incident
 
 ---
 
-# 50. Detection Graph
+## 50. Detection Graph
 
 Example:
 
@@ -1053,7 +1053,7 @@ This can represent an evolving incident.
 
 ---
 
-# 51. AI in Detection Engineering
+## 51. AI in Detection Engineering
 
 AI can assist with:
 
@@ -1070,7 +1070,7 @@ Investigation
 
 ---
 
-# 52. AI-Assisted Detection Generation
+## 52. AI-Assisted Detection Generation
 
 Input:
 
@@ -1092,7 +1092,7 @@ Human review remains essential.
 
 ---
 
-# 53. AI Detection Workflow
+## 53. AI Detection Workflow
 
 ```text
 Threat Intelligence
@@ -1110,7 +1110,7 @@ Production
 
 ---
 
-# 54. AI-Assisted Query Generation
+## 54. AI-Assisted Query Generation
 
 Example:
 
@@ -1135,7 +1135,7 @@ Validated
 
 ---
 
-# 55. AI Query Translation
+## 55. AI Query Translation
 
 AI can help translate:
 
@@ -1157,7 +1157,7 @@ but translations can contain semantic errors.
 
 ---
 
-# 56. AI Detection Explanation
+## 56. AI Detection Explanation
 
 AI can explain:
 
@@ -1177,7 +1177,7 @@ The alert triggered because:
 
 ---
 
-# 57. AI Alert Summarization
+## 57. AI Alert Summarization
 
 Input:
 
@@ -1200,7 +1200,7 @@ changed access permissions, and accessed a sensitive resource.
 
 ---
 
-# 58. AI Investigation Assistance
+## 58. AI Investigation Assistance
 
 AI can help analysts:
 
@@ -1215,7 +1215,7 @@ Highlight Anomalies
 
 ---
 
-# 59. AI Threat Hunting
+## 59. AI Threat Hunting
 
 Natural language:
 
@@ -1234,7 +1234,7 @@ Correlations
 
 ---
 
-# 60. AI Enrichment
+## 60. AI Enrichment
 
 AI can combine:
 
@@ -1253,7 +1253,7 @@ Investigation Context
 
 ---
 
-# 61. Retrieval-Augmented Generation
+## 61. Retrieval-Augmented Generation
 
 RAG combines:
 
@@ -1277,7 +1277,7 @@ Grounded Answer
 
 ---
 
-# 62. Why RAG Helps
+## 62. Why RAG Helps
 
 Security data changes frequently.
 
@@ -1294,7 +1294,7 @@ rather than relying only on model memory.
 
 ---
 
-# 63. AI Hallucination
+## 63. AI Hallucination
 
 AI may produce:
 
@@ -1315,7 +1315,7 @@ Ground Truth
 
 ---
 
-# 64. Human-in-the-Loop
+## 64. Human-in-the-Loop
 
 Critical AI decisions should use:
 
@@ -1338,7 +1338,7 @@ Production Detection Changes
 
 ---
 
-# 65. Human-on-the-Loop
+## 65. Human-on-the-Loop
 
 For lower-risk automation:
 
@@ -1354,7 +1354,7 @@ This requires strong safeguards.
 
 ---
 
-# 66. Autonomous Detection
+## 66. Autonomous Detection
 
 A mature system may automatically:
 
@@ -1377,7 +1377,7 @@ Human Escalation
 
 ---
 
-# 67. AI Agentic Detection
+## 67. AI Agentic Detection
 
 An AI agent may perform:
 
@@ -1397,7 +1397,7 @@ The agent should operate within defined permissions.
 
 ---
 
-# 68. Agent Permissions
+## 68. Agent Permissions
 
 Use:
 
@@ -1411,7 +1411,7 @@ Audit Logs
 
 ---
 
-# 69. AI Security Boundaries
+## 69. AI Security Boundaries
 
 AI systems should not automatically have unrestricted access to:
 
@@ -1426,7 +1426,7 @@ unless explicitly justified and protected.
 
 ---
 
-# 70. Prompt Injection
+## 70. Prompt Injection
 
 Security AI systems can encounter malicious instructions embedded in:
 
@@ -1443,7 +1443,7 @@ An AI system must treat retrieved content as potentially untrusted data.
 
 ---
 
-# 71. Prompt Injection Example
+## 71. Prompt Injection Example
 
 A malicious log field could contain text such as:
 
@@ -1465,7 +1465,7 @@ Instruction
 
 ---
 
-# 72. Tool Security
+## 72. Tool Security
 
 AI agents that call tools should enforce:
 
@@ -1479,7 +1479,7 @@ Audit Logging
 
 ---
 
-# 73. AI Data Poisoning
+## 73. AI Data Poisoning
 
 Attackers may manipulate training or feedback data.
 
@@ -1495,7 +1495,7 @@ This can degrade model performance.
 
 ---
 
-# 74. Model Drift
+## 74. Model Drift
 
 Behavior changes over time:
 
@@ -1516,7 +1516,7 @@ may degrade.
 
 ---
 
-# 75. Concept Drift
+## 75. Concept Drift
 
 The relationship between features and maliciousness can change.
 
@@ -1535,7 +1535,7 @@ The model must adapt.
 
 ---
 
-# 76. Data Drift
+## 76. Data Drift
 
 Input distribution changes.
 
@@ -1553,7 +1553,7 @@ A static model may behave differently.
 
 ---
 
-# 77. Model Monitoring
+## 77. Model Monitoring
 
 Track:
 
@@ -1570,7 +1570,7 @@ False Negatives
 
 ---
 
-# 78. Model Explainability
+## 78. Model Explainability
 
 Analysts need to understand:
 
@@ -1590,7 +1590,7 @@ Privilege Change
 
 ---
 
-# 79. Explainable Detection
+## 79. Explainable Detection
 
 Prefer:
 
@@ -1616,7 +1616,7 @@ with no explanation.
 
 ---
 
-# 80. Explainability Methods
+## 80. Explainability Methods
 
 Depending on model type:
 
@@ -1630,7 +1630,7 @@ Counterfactuals
 
 ---
 
-# 81. Counterfactual Explanation
+## 81. Counterfactual Explanation
 
 Example:
 
@@ -1656,7 +1656,7 @@ would reduce anomaly score.
 
 ---
 
-# 82. Model Governance
+## 82. Model Governance
 
 Document:
 
@@ -1674,7 +1674,7 @@ Limitations
 
 ---
 
-# 83. Model Versioning
+## 83. Model Versioning
 
 Example:
 
@@ -1690,7 +1690,7 @@ New feature architecture
 
 ---
 
-# 84. Model Rollback
+## 84. Model Rollback
 
 If model performance degrades:
 
@@ -1706,7 +1706,7 @@ Previous Model
 
 ---
 
-# 85. Detection + ML Hybrid
+## 85. Detection + ML Hybrid
 
 A strong architecture can combine:
 
@@ -1734,15 +1734,15 @@ Critical Asset
 
 ---
 
-# 86. Deterministic + Probabilistic Detection
+## 86. Deterministic + Probabilistic Detection
 
-### Deterministic
+#### Deterministic
 
 ```text
 If X then Alert
 ```
 
-### Probabilistic
+#### Probabilistic
 
 ```text
 Probability / Risk
@@ -1752,7 +1752,7 @@ Combining them can improve both explainability and flexibility.
 
 ---
 
-# 87. AI Should Not Replace Deterministic Controls
+## 87. AI Should Not Replace Deterministic Controls
 
 Keep deterministic detections for:
 
@@ -1774,7 +1774,7 @@ Investigation
 
 ---
 
-# 88. AI Detection Architecture
+## 88. AI Detection Architecture
 
 ```text
 Telemetry
@@ -1800,7 +1800,7 @@ Investigation
 
 ---
 
-# 89. Entity Risk Engine
+## 89. Entity Risk Engine
 
 Conceptually:
 
@@ -1826,7 +1826,7 @@ Entity Risk Score
 
 ---
 
-# 90. Continuous Detection
+## 90. Continuous Detection
 
 Modern systems can continuously evaluate:
 
@@ -1841,7 +1841,7 @@ instead of relying only on periodic queries.
 
 ---
 
-# 91. Continuous Detection Loop
+## 91. Continuous Detection Loop
 
 ```text
 Observe
@@ -1861,7 +1861,7 @@ Observe Again
 
 ---
 
-# 92. Feedback Loops
+## 92. Feedback Loops
 
 Feedback can come from:
 
@@ -1877,7 +1877,7 @@ Model Performance
 
 ---
 
-# 93. Feedback Loop Risk
+## 93. Feedback Loop Risk
 
 Bad feedback can create:
 
@@ -1897,7 +1897,7 @@ Therefore feedback quality must be monitored.
 
 ---
 
-# 94. Active Learning
+## 94. Active Learning
 
 The system can prioritize uncertain cases for human labeling.
 
@@ -1918,7 +1918,7 @@ Then use validated labels to improve the model.
 
 ---
 
-# 95. Human Feedback
+## 95. Human Feedback
 
 Useful feedback:
 
@@ -1932,7 +1932,7 @@ Insufficient Data
 
 ---
 
-# 96. Adaptive Thresholds
+## 96. Adaptive Thresholds
 
 Thresholds can adjust based on:
 
@@ -1947,7 +1947,7 @@ But changes should be controlled and auditable.
 
 ---
 
-# 97. Automated Rule Tuning
+## 97. Automated Rule Tuning
 
 AI may suggest:
 
@@ -1969,7 +1969,7 @@ for high-impact changes.
 
 ---
 
-# 98. AI-Assisted Detection Engineering Workflow
+## 98. AI-Assisted Detection Engineering Workflow
 
 ```text
 Threat Report
@@ -1993,7 +1993,7 @@ Deploy
 
 ---
 
-# 99. AI-Assisted Detection Testing
+## 99. AI-Assisted Detection Testing
 
 AI can generate candidate test cases:
 
@@ -2009,7 +2009,7 @@ Engineers should validate that generated tests are meaningful.
 
 ---
 
-# 100. AI-Assisted Purple Teaming
+## 100. AI-Assisted Purple Teaming
 
 AI can help:
 
@@ -2025,7 +2025,7 @@ It should not independently execute uncontrolled offensive activity.
 
 ---
 
-# 101. Graph + AI Detection
+## 101. Graph + AI Detection
 
 Combine:
 
@@ -2053,7 +2053,7 @@ AI can summarize the relationship chain.
 
 ---
 
-# 102. Graph Risk
+## 102. Graph Risk
 
 Example:
 
@@ -2071,7 +2071,7 @@ This path may receive high priority.
 
 ---
 
-# 103. Attack Path Prioritization
+## 103. Attack Path Prioritization
 
 Not all alerts are equal.
 
@@ -2093,7 +2093,7 @@ Privilege
 
 ---
 
-# 104. Modern Detection Stack
+## 104. Modern Detection Stack
 
 A mature stack may include:
 
@@ -2114,7 +2114,7 @@ SOAR
 
 ---
 
-# 105. Data Normalization
+## 105. Data Normalization
 
 All systems should ideally map data into consistent concepts:
 
@@ -2131,7 +2131,7 @@ Time
 
 ---
 
-# 106. Entity Resolution
+## 106. Entity Resolution
 
 Different systems may identify the same user differently:
 
@@ -2149,7 +2149,7 @@ Canonical User
 
 ---
 
-# 107. Identity Graph
+## 107. Identity Graph
 
 Example:
 
@@ -2169,7 +2169,7 @@ This improves cross-domain detection.
 
 ---
 
-# 108. Asset Graph
+## 108. Asset Graph
 
 Example:
 
@@ -2193,7 +2193,7 @@ Business Impact
 
 ---
 
-# 109. Threat Intelligence Integration
+## 109. Threat Intelligence Integration
 
 Modern detection combines:
 
@@ -2219,7 +2219,7 @@ New Device
 
 ---
 
-# 110. IOC Limitations
+## 110. IOC Limitations
 
 IOC-based detection can fail when:
 
@@ -2234,7 +2234,7 @@ Therefore behavioral detection remains important.
 
 ---
 
-# 111. Detection Engineering for Modern Threats
+## 111. Detection Engineering for Modern Threats
 
 Modern threats may use:
 
@@ -2260,7 +2260,7 @@ Relationships
 
 ---
 
-# 112. Living-off-the-Land Detection
+## 112. Living-off-the-Land Detection
 
 Rather than:
 
@@ -2282,7 +2282,7 @@ Suspicious Target
 
 ---
 
-# 113. Valid Account Detection
+## 113. Valid Account Detection
 
 Valid credentials can look legitimate.
 
@@ -2300,7 +2300,7 @@ Sensitive Activity
 
 ---
 
-# 114. Cloud-Native Threat Detection
+## 114. Cloud-Native Threat Detection
 
 Monitor:
 
@@ -2317,7 +2317,7 @@ Secrets
 
 ---
 
-# 115. SaaS Detection
+## 115. SaaS Detection
 
 Monitor:
 
@@ -2332,7 +2332,7 @@ OAuth Grants
 
 ---
 
-# 116. OAuth Detection
+## 116. OAuth Detection
 
 Potential signals:
 
@@ -2345,7 +2345,7 @@ Unexpected User
 
 ---
 
-# 117. Supply Chain Detection
+## 117. Supply Chain Detection
 
 Monitor:
 
@@ -2359,7 +2359,7 @@ Deployment
 
 ---
 
-# 118. Modern Detection Challenges
+## 118. Modern Detection Challenges
 
 ```text
 Data Volume
@@ -2375,7 +2375,7 @@ Alert Fatigue
 
 ---
 
-# 119. AI-Generated Attacker Behavior
+## 119. AI-Generated Attacker Behavior
 
 Attackers may use AI to produce:
 
@@ -2396,7 +2396,7 @@ rather than static content alone.
 
 ---
 
-# 120. Adversarial ML
+## 120. Adversarial ML
 
 Attackers may attempt to manipulate models through:
 
@@ -2409,7 +2409,7 @@ Feedback Manipulation
 
 ---
 
-# 121. Adversarial Robustness
+## 121. Adversarial Robustness
 
 Defenses include:
 
@@ -2424,7 +2424,7 @@ Adversarial Testing
 
 ---
 
-# 122. Privacy Considerations
+## 122. Privacy Considerations
 
 Behavior analytics may process:
 
@@ -2447,7 +2447,7 @@ Audit
 
 ---
 
-# 123. AI Security Governance
+## 123. AI Security Governance
 
 Define:
 
@@ -2463,7 +2463,7 @@ Human Approval
 
 ---
 
-# 124. Autonomous Response Risk
+## 124. Autonomous Response Risk
 
 AI-driven actions such as:
 
@@ -2487,25 +2487,25 @@ Audit Logging
 
 ---
 
-# 125. Safe Automation Levels
+## 125. Safe Automation Levels
 
-### Level 1
+#### Level 1
 
 AI suggests.
 
-### Level 2
+#### Level 2
 
 Human approves.
 
-### Level 3
+#### Level 3
 
 AI executes low-risk actions.
 
-### Level 4
+#### Level 4
 
 AI executes bounded actions with safeguards.
 
-### Level 5
+#### Level 5
 
 Highly autonomous operations with continuous oversight.
 
@@ -2513,7 +2513,7 @@ Higher autonomy requires stronger controls.
 
 ---
 
-# 126. Modern Detection Governance
+## 126. Modern Detection Governance
 
 Govern:
 
@@ -2529,7 +2529,7 @@ Automated Actions
 
 ---
 
-# 127. Model and Detection Registry
+## 127. Model and Detection Registry
 
 Maintain:
 
@@ -2547,7 +2547,7 @@ Review Date
 
 ---
 
-# 128. Detection + Model Lifecycle
+## 128. Detection + Model Lifecycle
 
 ```text
 Create
@@ -2573,7 +2573,7 @@ Retire
 
 ---
 
-# 129. Modern Detection Testing
+## 129. Modern Detection Testing
 
 Test:
 
@@ -2590,7 +2590,7 @@ Explainability
 
 ---
 
-# 130. AI Detection Quality Checklist
+## 130. AI Detection Quality Checklist
 
 ```text
 [ ] Training data validated
@@ -2613,7 +2613,7 @@ Explainability
 
 ---
 
-# 131. Modern Detection Architecture
+## 131. Modern Detection Architecture
 
 ```text
                   TELEMETRY
@@ -2651,7 +2651,7 @@ Explainability
 
 ---
 
-# 132. Modern Detection Operating Model
+## 132. Modern Detection Operating Model
 
 ```text
 THREAT INTELLIGENCE
@@ -2681,7 +2681,7 @@ CONTINUOUS IMPROVEMENT
 
 ---
 
-# 133. Practical Exercise – Behavioral Detection
+## 133. Practical Exercise – Behavioral Detection
 
 Create a baseline for:
 
@@ -2712,7 +2712,7 @@ Evaluate the anomaly score.
 
 ---
 
-# 134. Practical Exercise – Risk Scoring
+## 134. Practical Exercise – Risk Scoring
 
 Create:
 
@@ -2739,7 +2739,7 @@ Privileged User
 
 ---
 
-# 135. Practical Exercise – Graph Detection
+## 135. Practical Exercise – Graph Detection
 
 Create relationships:
 
@@ -2763,7 +2763,7 @@ Unexpected Relationship
 
 ---
 
-# 136. Practical Exercise – AI-Assisted Investigation
+## 136. Practical Exercise – AI-Assisted Investigation
 
 Provide an AI system with:
 
@@ -2791,7 +2791,7 @@ Validate every claim against source data.
 
 ---
 
-# 137. Practical Exercise – Model Drift
+## 137. Practical Exercise – Model Drift
 
 Compare:
 
@@ -2813,7 +2813,7 @@ Identify potential drift.
 
 ---
 
-# 138. Practical Exercise – AI Safety
+## 138. Practical Exercise – AI Safety
 
 Define:
 
@@ -2835,75 +2835,75 @@ to ensure untrusted data is not treated as instructions.
 
 ---
 
-# 139. Interview Questions
+## 139. Interview Questions
 
-### What is behavioral detection?
+#### What is behavioral detection?
 
 > Detection based on how an entity behaves rather than relying exclusively on known signatures or exact patterns.
 
-### What is UEBA?
+#### What is UEBA?
 
 > User and Entity Behavior Analytics analyzes behavioral patterns of users and entities to identify anomalies and potentially risky activity.
 
-### What is anomaly detection?
+#### What is anomaly detection?
 
 > Identifying activity that deviates significantly from an expected behavioral baseline.
 
-### Is every anomaly malicious?
+#### Is every anomaly malicious?
 
 > No. Anomalies may result from legitimate business changes, travel, migrations, new applications, or other unusual but valid activity.
 
-### What is entity-centric detection?
+#### What is entity-centric detection?
 
 > Detection that evaluates behavior and risk around entities such as users, devices, applications, cloud resources, and service accounts.
 
-### What is graph-based detection?
+#### What is graph-based detection?
 
 > Using nodes and relationships to identify suspicious paths, relationships, or attack chains across security entities.
 
-### What is the difference between supervised and unsupervised learning?
+#### What is the difference between supervised and unsupervised learning?
 
 > Supervised learning uses labeled examples, while unsupervised learning identifies patterns without predefined labels.
 
-### Why is class imbalance a problem?
+#### Why is class imbalance a problem?
 
 > Security datasets often contain far more benign events than malicious events, so accuracy can become misleading and models may fail to identify rare attacks.
 
-### What is model drift?
+#### What is model drift?
 
 > A change in data or behavioral relationships that causes model performance to degrade over time.
 
-### What is concept drift?
+#### What is concept drift?
 
 > A change in the relationship between input features and the target behavior.
 
-### Why is explainability important?
+#### Why is explainability important?
 
 > Analysts need to understand why a system considered behavior suspicious so they can validate, investigate, and trust the result.
 
-### What is RAG?
+#### What is RAG?
 
 > Retrieval-Augmented Generation combines an AI model with retrieval of relevant external data to provide more grounded responses.
 
-### What are common risks of AI-assisted detection?
+#### What are common risks of AI-assisted detection?
 
 > Hallucination, incorrect queries, poor reasoning, data poisoning, prompt injection, model drift, excessive automation, and lack of explainability.
 
-### What is human-in-the-loop?
+#### What is human-in-the-loop?
 
 > AI produces analysis or recommendations, but a human reviews and approves important decisions.
 
-### Why shouldn't AI automatically disable accounts?
+#### Why shouldn't AI automatically disable accounts?
 
 > Incorrect AI decisions can disrupt legitimate users and business operations, so high-impact actions require appropriate safeguards and approval controls.
 
-### How can AI help detection engineers?
+#### How can AI help detection engineers?
 
 > It can assist with detection generation, query translation, test generation, alert summarization, investigation, enrichment, ATT&CK mapping, and identifying potential detection gaps.
 
 ---
 
-# 140. Quick Revision
+## 140. Quick Revision
 
 ```text
 Behavioral Detection
@@ -2996,7 +2996,7 @@ Model Governance
 
 ---
 
-# 141. Golden Rules
+## 141. Golden Rules
 
 ```text
 1. Modern detection should combine rules and behavioral analytics.
@@ -3102,7 +3102,7 @@ Model Governance
 
 ---
 
-# 142. Final Mental Model
+## 142. Final Mental Model
 
 Modern detection can be visualized as:
 
@@ -3140,7 +3140,7 @@ Modern detection can be visualized as:
 
 ---
 
-# 143. The Modern Detection Stack
+## 143. The Modern Detection Stack
 
 Think of each layer as solving a different problem:
 
@@ -3178,7 +3178,7 @@ SOAR
 
 ---
 
-# 144. Deterministic + Behavioral + AI
+## 144. Deterministic + Behavioral + AI
 
 The strongest architecture is often:
 
@@ -3202,7 +3202,7 @@ The strongest architecture is often:
 
 ---
 
-# 145. AI Trust Model
+## 145. AI Trust Model
 
 AI output should be treated as:
 
@@ -3230,7 +3230,7 @@ Deployment
 
 ---
 
-# 146. Autonomous Security Model
+## 146. Autonomous Security Model
 
 A safe autonomous architecture is:
 
@@ -3264,7 +3264,7 @@ Unrestricted Action
 
 ---
 
-# 147. Detection Engineering in the AI Era
+## 147. Detection Engineering in the AI Era
 
 The detection engineer's role is evolving from:
 
@@ -3304,7 +3304,7 @@ Risk
 
 ---
 
-# 148. Future Detection Engineering
+## 148. Future Detection Engineering
 
 The future will increasingly combine:
 
@@ -3331,7 +3331,7 @@ Unified Security Analytics
 
 ---
 
-# 149. Continuous Detection Engineering
+## 149. Continuous Detection Engineering
 
 The future operating model:
 
@@ -3361,7 +3361,7 @@ Detection Improvement
 
 ---
 
-# 150. Practical Modern Detection Framework
+## 150. Practical Modern Detection Framework
 
 When designing an advanced detection, ask:
 
@@ -3409,7 +3409,7 @@ When designing an advanced detection, ask:
 
 ---
 
-# 151. Advanced Detection Checklist
+## 151. Advanced Detection Checklist
 
 ```text
 [ ] Threat hypothesis defined
@@ -3443,7 +3443,7 @@ When designing an advanced detection, ask:
 
 ---
 
-# 152. Chapter Summary
+## 152. Chapter Summary
 
 This chapter covered:
 

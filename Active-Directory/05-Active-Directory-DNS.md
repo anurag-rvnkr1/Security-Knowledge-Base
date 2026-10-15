@@ -1,12 +1,12 @@
 # Active-Directory/
 
-# 05-Active-Directory-DNS.md
+## 05-Active-Directory-DNS.md
 
-# Part 1 — Introduction to Active Directory DNS, Name Resolution, DNS Architecture, and Enterprise Fundamentals
+## Part 1 — Introduction to Active Directory DNS, Name Resolution, DNS Architecture, and Enterprise Fundamentals
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -20,7 +20,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Introduction
+## Introduction
 
 One of the biggest misconceptions in Active Directory is:
 
@@ -43,7 +43,7 @@ DNS is one of the most important services in an Active Directory environment.
 
 ---
 
-# What is DNS?
+## What is DNS?
 
 **Domain Name System (DNS)** is a distributed naming system that translates human-readable names into IP addresses and helps clients discover network services.
 
@@ -65,7 +65,7 @@ DNS performs the translation.
 
 ---
 
-# Simple DNS Example
+## Simple DNS Example
 
 ```text
 User
@@ -89,7 +89,7 @@ Connection Established
 
 ---
 
-# DNS in Active Directory
+## DNS in Active Directory
 
 In Active Directory, DNS does **more than name resolution**.
 
@@ -105,7 +105,7 @@ This service discovery capability is fundamental to Active Directory.
 
 ---
 
-# Why Active Directory Depends on DNS
+## Why Active Directory Depends on DNS
 
 Without DNS:
 
@@ -153,7 +153,7 @@ Authentication Continues
 
 ---
 
-# Active Directory DNS Architecture
+## Active Directory DNS Architecture
 
 ```text
                 Client Computer
@@ -179,7 +179,7 @@ In many environments, the DNS service is hosted on Domain Controllers, though it
 
 ---
 
-# DNS Components
+## DNS Components
 
 A DNS infrastructure typically includes:
 
@@ -192,7 +192,7 @@ A DNS infrastructure typically includes:
 
 ---
 
-# DNS Client
+## DNS Client
 
 The DNS client:
 
@@ -205,7 +205,7 @@ Every domain-joined computer acts as a DNS client.
 
 ---
 
-# DNS Server
+## DNS Server
 
 A DNS server:
 
@@ -217,7 +217,7 @@ A DNS server:
 
 ---
 
-# DNS Namespace
+## DNS Namespace
 
 DNS organizes names hierarchically.
 
@@ -241,7 +241,7 @@ This hierarchy enables scalable naming across the enterprise.
 
 ---
 
-# Fully Qualified Domain Name (FQDN)
+## Fully Qualified Domain Name (FQDN)
 
 A **Fully Qualified Domain Name (FQDN)** uniquely identifies a host.
 
@@ -271,7 +271,7 @@ company.com
 
 ---
 
-# DNS Hierarchy
+## DNS Hierarchy
 
 ```text
 .
@@ -297,7 +297,7 @@ The trailing root (`.`) is usually implied rather than displayed.
 
 ---
 
-# DNS Resolution Process
+## DNS Resolution Process
 
 ```text
 User
@@ -331,7 +331,7 @@ The client then communicates directly with the destination system.
 
 ---
 
-# Forward Lookup
+## Forward Lookup
 
 A forward lookup resolves:
 
@@ -357,7 +357,7 @@ This is the most common DNS operation.
 
 ---
 
-# Reverse Lookup
+## Reverse Lookup
 
 A reverse lookup resolves:
 
@@ -388,7 +388,7 @@ Reverse lookups are often used during:
 
 ---
 
-# Forward vs Reverse Lookup
+## Forward vs Reverse Lookup
 
 | Forward Lookup | Reverse Lookup |
 |----------------|----------------|
@@ -398,7 +398,7 @@ Reverse lookups are often used during:
 
 ---
 
-# DNS Records
+## DNS Records
 
 DNS information is stored in **resource records**.
 
@@ -419,7 +419,7 @@ A later part of this chapter covers each record type in detail.
 
 ---
 
-# Example Enterprise DNS
+## Example Enterprise DNS
 
 ```text
 company.com
@@ -443,7 +443,7 @@ Each host has one or more DNS records that clients can query.
 
 ---
 
-# Enterprise Name Resolution
+## Enterprise Name Resolution
 
 ```text
 Employee
@@ -473,7 +473,7 @@ Users typically interact with hostnames rather than IP addresses.
 
 ---
 
-# DNS Caching
+## DNS Caching
 
 To improve performance, DNS clients and servers cache responses.
 
@@ -487,7 +487,7 @@ Caches eventually expire based on each record's **Time to Live (TTL)** value.
 
 ---
 
-# Benefits of DNS
+## Benefits of DNS
 
 DNS provides:
 
@@ -500,7 +500,7 @@ DNS provides:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Organization:
 
@@ -539,7 +539,7 @@ Without DNS, the client cannot reliably locate the Domain Controller.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 DNS is frequently targeted because it is critical infrastructure.
 
@@ -564,13 +564,13 @@ A compromised DNS infrastructure can disrupt authentication and redirect traffic
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore DNS fundamentals in a Windows environment.
 
-### Tasks
+#### Tasks
 
 1. Open **DNS Manager** (if available).
 2. Identify:
@@ -585,7 +585,7 @@ Explore DNS fundamentals in a Windows environment.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory depends on DNS for service discovery.
 - DNS translates names into IP addresses.
@@ -597,7 +597,7 @@ Explore DNS fundamentals in a Windows environment.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is DNS required for Active Directory?
 2. What is an FQDN?
@@ -612,7 +612,7 @@ Explore DNS fundamentals in a Windows environment.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – DNS Fundamentals
 - Microsoft Learn – DNS in Active Directory
@@ -624,13 +624,13 @@ Explore DNS fundamentals in a Windows environment.
 ---
 
 
-# 05-Active-Directory-DNS.md
+## 05-Active-Directory-DNS.md
 
-# Part 2 — DNS Zones, Resource Records, SRV Records, Active Directory Integration, and Dynamic Updates
+## Part 2 — DNS Zones, Resource Records, SRV Records, Active Directory Integration, and Dynamic Updates
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -644,7 +644,7 @@ After completing this part, you will be able to:
 
 ---
 
-# What is a DNS Zone?
+## What is a DNS Zone?
 
 A **DNS Zone** is an administrative portion of the DNS namespace that stores DNS records.
 
@@ -674,7 +674,7 @@ NS Records
 
 ---
 
-# DNS Namespace vs DNS Zone
+## DNS Namespace vs DNS Zone
 
 Many beginners confuse these terms.
 
@@ -686,7 +686,7 @@ Many beginners confuse these terms.
 
 ---
 
-# Types of DNS Zones
+## Types of DNS Zones
 
 Windows Server supports several zone types.
 
@@ -699,7 +699,7 @@ Windows Server supports several zone types.
 
 ---
 
-# Primary Zone
+## Primary Zone
 
 A Primary Zone contains:
 
@@ -727,7 +727,7 @@ All DNS Records
 
 ---
 
-# Secondary Zone
+## Secondary Zone
 
 A Secondary Zone is a read-only copy of another DNS zone.
 
@@ -758,7 +758,7 @@ Read-Only Zone
 
 ---
 
-# Stub Zone
+## Stub Zone
 
 A Stub Zone stores only enough information to locate authoritative DNS servers.
 
@@ -776,7 +776,7 @@ Purpose:
 
 ---
 
-# Active Directory-Integrated Zone
+## Active Directory-Integrated Zone
 
 This is the recommended deployment for Active Directory environments.
 
@@ -808,7 +808,7 @@ Benefits include:
 
 ---
 
-# Why AD-Integrated DNS?
+## Why AD-Integrated DNS?
 
 Traditional DNS:
 
@@ -854,7 +854,7 @@ Each Domain Controller hosting the zone can accept updates.
 
 ---
 
-# DNS Resource Records
+## DNS Resource Records
 
 DNS information is stored as **resource records (RRs).**
 
@@ -874,7 +874,7 @@ Common record types:
 
 ---
 
-# A Record
+## A Record
 
 Maps:
 
@@ -900,7 +900,7 @@ The A record is the most frequently used DNS record.
 
 ---
 
-# AAAA Record
+## AAAA Record
 
 Used for IPv6.
 
@@ -920,7 +920,7 @@ Hostname → IPv6 address
 
 ---
 
-# PTR Record
+## PTR Record
 
 Used for reverse lookups.
 
@@ -942,7 +942,7 @@ Frequently used by:
 
 ---
 
-# CNAME Record
+## CNAME Record
 
 Creates an alias.
 
@@ -966,7 +966,7 @@ Even if the actual server name changes.
 
 ---
 
-# MX Record
+## MX Record
 
 Specifies mail servers.
 
@@ -984,7 +984,7 @@ Email systems rely on MX records to deliver messages.
 
 ---
 
-# NS Record
+## NS Record
 
 Identifies authoritative DNS servers.
 
@@ -1004,7 +1004,7 @@ ns2.company.com
 
 ---
 
-# SOA Record
+## SOA Record
 
 Every DNS zone contains exactly one **Start of Authority (SOA)** record.
 
@@ -1021,7 +1021,7 @@ Used for synchronization and zone management.
 
 ---
 
-# SRV Record
+## SRV Record
 
 The **Service (SRV) record** is the most important DNS record in Active Directory.
 
@@ -1047,7 +1047,7 @@ DNS responds using SRV records.
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 ```text
 Computer
@@ -1077,7 +1077,7 @@ The client requests a service, not a specific server.
 
 ---
 
-# Why SRV Records Matter
+## Why SRV Records Matter
 
 Without SRV records:
 
@@ -1091,7 +1091,7 @@ SRV records are essential for Active Directory operations.
 
 ---
 
-# Common Active Directory SRV Records
+## Common Active Directory SRV Records
 
 | Service | Purpose |
 |----------|----------|
@@ -1104,7 +1104,7 @@ These records are automatically registered by Domain Controllers.
 
 ---
 
-# Dynamic DNS (DDNS)
+## Dynamic DNS (DDNS)
 
 Traditionally:
 
@@ -1130,7 +1130,7 @@ DNS Updated Automatically
 
 ---
 
-# Secure Dynamic Updates
+## Secure Dynamic Updates
 
 In Active Directory environments, secure dynamic updates are recommended.
 
@@ -1143,7 +1143,7 @@ Benefits:
 
 ---
 
-# Dynamic Registration Example
+## Dynamic Registration Example
 
 ```text
 Laptop
@@ -1169,7 +1169,7 @@ No manual intervention is required.
 
 ---
 
-# DNS Aging and Scavenging
+## DNS Aging and Scavenging
 
 Over time, stale DNS records accumulate.
 
@@ -1200,7 +1200,7 @@ Benefits:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1234,7 +1234,7 @@ The DNS infrastructure automatically supports service discovery across the enter
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use Active Directory-integrated zones where appropriate.
 - Enable secure dynamic updates.
@@ -1246,7 +1246,7 @@ The DNS infrastructure automatically supports service discovery across the enter
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -1259,7 +1259,7 @@ Avoid:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 DNS is a common target during cyberattacks.
 
@@ -1284,13 +1284,13 @@ A compromised DNS service can significantly affect authentication and network op
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore DNS zones and resource records.
 
-### Tasks
+#### Tasks
 
 1. Open **DNS Manager**.
 2. Locate:
@@ -1308,7 +1308,7 @@ Explore DNS zones and resource records.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - DNS zones store resource records.
 - Active Directory-integrated zones support multi-master updates.
@@ -1319,7 +1319,7 @@ Explore DNS zones and resource records.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a DNS zone?
 2. What is the difference between a Primary Zone and an AD-integrated Zone?
@@ -1334,7 +1334,7 @@ Explore DNS zones and resource records.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – DNS Zones
 - Microsoft Learn – Active Directory-Integrated DNS
@@ -1346,13 +1346,13 @@ Explore DNS zones and resource records.
 
 ---
 
-# 05-Active-Directory-DNS.md
+## 05-Active-Directory-DNS.md
 
-# Part 3 — DNS Query Process, Name Resolution, Zone Replication, Forwarders, Conditional Forwarders, Root Hints, and Enterprise DNS Operations
+## Part 3 — DNS Query Process, Name Resolution, Zone Replication, Forwarders, Conditional Forwarders, Root Hints, and Enterprise DNS Operations
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -1366,7 +1366,7 @@ After completing this part, you will be able to:
 
 ---
 
-# DNS Name Resolution
+## DNS Name Resolution
 
 When a client needs to communicate with another computer, it first needs an IP address.
 
@@ -1394,7 +1394,7 @@ The client then connects directly to the server.
 
 ---
 
-# Complete Name Resolution Process
+## Complete Name Resolution Process
 
 ```text
 User
@@ -1426,7 +1426,7 @@ Connection Established
 
 ---
 
-# DNS Query Types
+## DNS Query Types
 
 There are two primary DNS query types.
 
@@ -1437,7 +1437,7 @@ There are two primary DNS query types.
 
 ---
 
-# Recursive Query
+## Recursive Query
 
 A recursive query requires the DNS server to provide a final answer.
 
@@ -1463,7 +1463,7 @@ The client expects the DNS server to complete the lookup.
 
 ---
 
-# Recursive Query Flow
+## Recursive Query Flow
 
 ```text
 Client
@@ -1489,7 +1489,7 @@ The client does not contact other DNS servers directly.
 
 ---
 
-# Iterative Query
+## Iterative Query
 
 An iterative query returns the best available information.
 
@@ -1509,7 +1509,7 @@ The requesting DNS server continues the lookup process.
 
 ---
 
-# Recursive vs Iterative Queries
+## Recursive vs Iterative Queries
 
 | Recursive | Iterative |
 |------------|-----------|
@@ -1519,7 +1519,7 @@ The requesting DNS server continues the lookup process.
 
 ---
 
-# DNS Cache
+## DNS Cache
 
 DNS uses caching to improve performance.
 
@@ -1553,7 +1553,7 @@ Benefits:
 
 ---
 
-# Time To Live (TTL)
+## Time To Live (TTL)
 
 Each DNS record includes a **Time To Live (TTL)** value.
 
@@ -1573,7 +1573,7 @@ The record may remain in cache for one hour before it expires.
 
 ---
 
-# Why TTL Matters
+## Why TTL Matters
 
 A shorter TTL:
 
@@ -1600,7 +1600,7 @@ Administrators should choose TTL values appropriate for operational requirements
 
 ---
 
-# DNS Zone Replication
+## DNS Zone Replication
 
 In Active Directory-integrated DNS, zone information is replicated automatically.
 
@@ -1636,7 +1636,7 @@ This keeps DNS information consistent across Domain Controllers hosting the zone
 
 ---
 
-# Traditional Zone Transfer
+## Traditional Zone Transfer
 
 For non-AD-integrated zones, replication occurs using **zone transfers**.
 
@@ -1659,7 +1659,7 @@ Two common transfer types:
 
 ---
 
-# Full Zone Transfer (AXFR)
+## Full Zone Transfer (AXFR)
 
 AXFR transfers the **entire zone**.
 
@@ -1679,7 +1679,7 @@ Useful for initial synchronization but consumes more bandwidth.
 
 ---
 
-# Incremental Zone Transfer (IXFR)
+## Incremental Zone Transfer (IXFR)
 
 IXFR transfers **only the changes** since the last successful synchronization.
 
@@ -1703,7 +1703,7 @@ Benefits:
 
 ---
 
-# Forwarders
+## Forwarders
 
 A **Forwarder** is a DNS server that receives queries your DNS server cannot resolve locally.
 
@@ -1733,7 +1733,7 @@ Forwarders centralize external name resolution.
 
 ---
 
-# Why Use Forwarders?
+## Why Use Forwarders?
 
 Benefits:
 
@@ -1745,7 +1745,7 @@ Benefits:
 
 ---
 
-# Conditional Forwarders
+## Conditional Forwarders
 
 A **Conditional Forwarder** forwards queries only for specific domains.
 
@@ -1767,7 +1767,7 @@ All other queries follow the standard resolution path.
 
 ---
 
-# Conditional Forwarder Example
+## Conditional Forwarder Example
 
 Company A:
 
@@ -1799,7 +1799,7 @@ This is commonly used between trusted organizations or separate forests.
 
 ---
 
-# Root Hints
+## Root Hints
 
 If no local record or forwarder can answer a query, the DNS server may use **Root Hints**.
 
@@ -1827,7 +1827,7 @@ Root hints provide a starting point for resolving external names.
 
 ---
 
-# Root Hint Resolution
+## Root Hint Resolution
 
 ```text
 www.example.com
@@ -1855,7 +1855,7 @@ Answer Returned
 
 ---
 
-# Enterprise DNS Resolution
+## Enterprise DNS Resolution
 
 ```text
 Employee
@@ -1897,7 +1897,7 @@ The DNS server decides the appropriate resolution path.
 
 ---
 
-# DNS Resolution Order
+## DNS Resolution Order
 
 A simplified resolution sequence:
 
@@ -1931,7 +1931,7 @@ Authoritative DNS Server
 
 ---
 
-# Hosts File
+## Hosts File
 
 Before querying DNS, Windows checks the local **Hosts** file.
 
@@ -1953,7 +1953,7 @@ Hosts file entries override DNS responses for matching names on that computer.
 
 ---
 
-# Enterprise DNS Architecture
+## Enterprise DNS Architecture
 
 ```text
 Employees
@@ -1983,7 +1983,7 @@ This design improves scalability and resilience.
 
 ---
 
-# DNS Monitoring
+## DNS Monitoring
 
 Administrators should monitor:
 
@@ -1999,7 +1999,7 @@ Administrators should monitor:
 
 ---
 
-# DNS Troubleshooting Tools
+## DNS Troubleshooting Tools
 
 Common Windows tools:
 
@@ -2015,7 +2015,7 @@ Common Windows tools:
 
 ---
 
-# Example: Using nslookup
+## Example: Using nslookup
 
 ```text
 nslookup dc01.company.com
@@ -2037,7 +2037,7 @@ This confirms successful name resolution.
 
 ---
 
-# Common DNS Problems
+## Common DNS Problems
 
 Examples include:
 
@@ -2053,7 +2053,7 @@ Examples include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -2108,7 +2108,7 @@ Website Located
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Deploy multiple DNS servers.
 - Use AD-integrated zones for Active Directory.
@@ -2121,7 +2121,7 @@ Website Located
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 DNS is a frequent target for attackers because it underpins authentication and service discovery.
 
@@ -2144,13 +2144,13 @@ Defensive recommendations:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore DNS resolution and troubleshooting.
 
-### Tasks
+#### Tasks
 
 1. Open Command Prompt.
 2. Run:
@@ -2183,7 +2183,7 @@ nslookup dc01.company.com
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - DNS clients primarily use recursive queries.
 - DNS servers may perform iterative queries to locate answers.
@@ -2196,7 +2196,7 @@ nslookup dc01.company.com
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between recursive and iterative DNS queries?
 2. What is the purpose of TTL?
@@ -2211,7 +2211,7 @@ nslookup dc01.company.com
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – DNS Name Resolution
 - Microsoft Learn – Configure DNS Forwarders
@@ -2224,13 +2224,13 @@ nslookup dc01.company.com
 
 ---
 
-# 05-Active-Directory-DNS.md
+## 05-Active-Directory-DNS.md
 
-# Part 4 — DNS Security, Hardening, Enterprise Best Practices, Common Misconceptions, Final Revision, and Chapter Summary
+## Part 4 — DNS Security, Hardening, Enterprise Best Practices, Common Misconceptions, Final Revision, and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -2243,7 +2243,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Why DNS Security is Critical
+## Why DNS Security is Critical
 
 DNS is often called the **phonebook of the Internet**, but in Active Directory it is much more than that.
 
@@ -2262,7 +2262,7 @@ If DNS becomes unavailable or compromised, Active Directory functionality can be
 
 ---
 
-# Enterprise DNS Architecture
+## Enterprise DNS Architecture
 
 ```text
                      Users
@@ -2292,7 +2292,7 @@ If DNS becomes unavailable or compromised, Active Directory functionality can be
 
 ---
 
-# DNS Threat Landscape
+## DNS Threat Landscape
 
 Attackers frequently target DNS because almost every service depends on it.
 
@@ -2308,7 +2308,7 @@ Common attack goals include:
 
 ---
 
-# Common DNS Attacks
+## Common DNS Attacks
 
 | Attack | Description |
 |---------|-------------|
@@ -2323,7 +2323,7 @@ Common attack goals include:
 
 ---
 
-# DNS Cache Poisoning
+## DNS Cache Poisoning
 
 Example:
 
@@ -2356,7 +2356,7 @@ Potential impact:
 
 ---
 
-# DNS Spoofing
+## DNS Spoofing
 
 The attacker attempts to answer a DNS request before the legitimate server.
 
@@ -2380,7 +2380,7 @@ Fake Website
 
 ---
 
-# DNS Tunneling
+## DNS Tunneling
 
 DNS can be abused as a covert communication channel.
 
@@ -2411,7 +2411,7 @@ Possible uses:
 
 ---
 
-# DNS Amplification Attack
+## DNS Amplification Attack
 
 Simplified flow:
 
@@ -2439,7 +2439,7 @@ This attack abuses the size difference between small requests and larger respons
 
 ---
 
-# Rogue DNS Servers
+## Rogue DNS Servers
 
 Example:
 
@@ -2467,7 +2467,7 @@ Unauthorized DNS servers should never be permitted on enterprise networks.
 
 ---
 
-# Zone Transfer Risks
+## Zone Transfer Risks
 
 If unrestricted:
 
@@ -2498,7 +2498,7 @@ Attackers gain valuable information about:
 
 ---
 
-# Secure Dynamic Updates
+## Secure Dynamic Updates
 
 Always prefer:
 
@@ -2521,7 +2521,7 @@ Benefits:
 
 ---
 
-# Restrict Zone Transfers
+## Restrict Zone Transfers
 
 Recommendations:
 
@@ -2532,7 +2532,7 @@ Recommendations:
 
 ---
 
-# DNS Administration Best Practices
+## DNS Administration Best Practices
 
 Only authorized administrators should:
 
@@ -2547,7 +2547,7 @@ Apply the principle of least privilege.
 
 ---
 
-# Logging and Auditing
+## Logging and Auditing
 
 Monitor:
 
@@ -2565,7 +2565,7 @@ Centralized logging improves visibility and incident response.
 
 ---
 
-# Enterprise Monitoring
+## Enterprise Monitoring
 
 Monitor:
 
@@ -2605,7 +2605,7 @@ Continuous monitoring helps identify problems before they affect users.
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Backup:
 
@@ -2619,7 +2619,7 @@ Verify backups through regular restoration testing.
 
 ---
 
-# High Availability
+## High Availability
 
 Enterprise recommendations:
 
@@ -2647,7 +2647,7 @@ Avoid single points of failure.
 
 ---
 
-# Enterprise Design Best Practices
+## Enterprise Design Best Practices
 
 | Recommendation | Benefit |
 |---------------|----------|
@@ -2662,7 +2662,7 @@ Avoid single points of failure.
 
 ---
 
-# DNS Documentation
+## DNS Documentation
 
 Maintain documentation for:
 
@@ -2679,9 +2679,9 @@ Maintain documentation for:
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
-## Myth 1
+### Myth 1
 
 > DNS is only used for websites.
 
@@ -2691,7 +2691,7 @@ Active Directory relies heavily on DNS for authentication and service discovery.
 
 ---
 
-## Myth 2
+### Myth 2
 
 > Clients can use any public DNS server.
 
@@ -2701,7 +2701,7 @@ Domain-joined computers should use the organization's DNS infrastructure for int
 
 ---
 
-## Myth 3
+### Myth 3
 
 > SRV records are optional.
 
@@ -2711,7 +2711,7 @@ SRV records are essential for locating Domain Controllers, Kerberos, LDAP, and G
 
 ---
 
-## Myth 4
+### Myth 4
 
 > Dynamic DNS is insecure by default.
 
@@ -2721,7 +2721,7 @@ Secure Dynamic Updates authenticate authorized updates in Active Directory envir
 
 ---
 
-## Myth 5
+### Myth 5
 
 > Zone transfers should always be enabled.
 
@@ -2731,7 +2731,7 @@ Zone transfers should be restricted to authorized DNS servers and used only when
 
 ---
 
-# Common Administrative Mistakes
+## Common Administrative Mistakes
 
 Avoid:
 
@@ -2746,7 +2746,7 @@ Avoid:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -2793,7 +2793,7 @@ Security controls:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 DNS is often involved in nearly every phase of the cyberattack lifecycle.
 
@@ -2820,7 +2820,7 @@ DNS telemetry is a valuable source of detection data for Security Operations Cen
 
 ---
 
-# Complete Chapter Summary
+## Complete Chapter Summary
 
 This chapter covered:
 
@@ -2854,7 +2854,7 @@ You now understand how DNS enables Active Directory to function reliably and sec
 
 ---
 
-# Final Revision Table
+## Final Revision Table
 
 | Topic | Key Point |
 |--------|-----------|
@@ -2878,13 +2878,13 @@ You now understand how DNS enables Active Directory to function reliably and sec
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Secure and validate an Active Directory DNS deployment.
 
-### Tasks
+#### Tasks
 
 1. Verify that all domain-joined clients use internal DNS servers.
 2. Review the configuration of:
@@ -2903,7 +2903,7 @@ Secure and validate an Active Directory DNS deployment.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is DNS essential for Active Directory?
 2. What is the purpose of an SRV record?
@@ -2918,7 +2918,7 @@ Secure and validate an Active Directory DNS deployment.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Windows Server DNS
 - Microsoft Learn – Active Directory-Integrated DNS
@@ -2933,7 +2933,7 @@ Secure and validate an Active Directory DNS deployment.
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 05 – Active Directory DNS**.
 

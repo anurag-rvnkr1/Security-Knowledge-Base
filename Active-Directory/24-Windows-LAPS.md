@@ -1,6 +1,6 @@
 # 24-Windows-LAPS.md
 
-# Part 1 — Introduction to Windows LAPS, Local Administrator Password Management, Enterprise Security and Identity Protection
+## Part 1 — Introduction to Windows LAPS, Local Administrator Password Management, Enterprise Security and Identity Protection
 
 > **Important Note**
 >
@@ -10,7 +10,7 @@
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -26,7 +26,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 In many organizations, every Windows computer historically shared the **same local Administrator password**.
 
@@ -57,7 +57,7 @@ Although convenient for administrators, this approach introduces significant sec
 
 ---
 
-# Why Shared Local Administrator Passwords Are Risky
+## Why Shared Local Administrator Passwords Are Risky
 
 Suppose an enterprise has:
 
@@ -76,7 +76,7 @@ This creates:
 
 ---
 
-# What is Windows LAPS?
+## What is Windows LAPS?
 
 **Windows Local Administrator Password Solution (Windows LAPS)** is a Microsoft feature that automatically manages the passwords of local administrator accounts on Windows devices.
 
@@ -90,7 +90,7 @@ Windows LAPS helps ensure:
 
 ---
 
-# Primary Objectives of Windows LAPS
+## Primary Objectives of Windows LAPS
 
 Windows LAPS is designed to:
 
@@ -103,7 +103,7 @@ Windows LAPS is designed to:
 
 ---
 
-# Traditional Password Management
+## Traditional Password Management
 
 ```
 Administrator
@@ -125,7 +125,7 @@ This model is difficult to secure and maintain.
 
 ---
 
-# Windows LAPS Model
+## Windows LAPS Model
 
 ```
 Computer A
@@ -155,7 +155,7 @@ Each managed device maintains its own password.
 
 ---
 
-# High-Level Windows LAPS Architecture
+## High-Level Windows LAPS Architecture
 
 ```
 Administrator
@@ -191,7 +191,7 @@ Windows LAPS integrates with Active Directory to support centralized management.
 
 ---
 
-# Core Components
+## Core Components
 
 | Component | Purpose |
 |-----------|----------|
@@ -203,7 +203,7 @@ Windows LAPS integrates with Active Directory to support centralized management.
 
 ---
 
-# Password Lifecycle
+## Password Lifecycle
 
 ```
 Password Generated
@@ -233,7 +233,7 @@ Regular rotation limits the lifetime of a password.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -264,7 +264,7 @@ After Windows LAPS:
 
 ---
 
-# Why Password Rotation Matters
+## Why Password Rotation Matters
 
 Passwords that remain unchanged for extended periods may increase organizational risk.
 
@@ -277,9 +277,9 @@ Password rotation helps:
 
 ---
 
-# Windows LAPS Benefits
+## Windows LAPS Benefits
 
-## Security Benefits
+### Security Benefits
 
 - Unique passwords
 - Reduced credential reuse
@@ -289,7 +289,7 @@ Password rotation helps:
 
 ---
 
-## Administrative Benefits
+### Administrative Benefits
 
 - Less manual work
 - Centralized management
@@ -299,7 +299,7 @@ Password rotation helps:
 
 ---
 
-## Compliance Benefits
+### Compliance Benefits
 
 Many security frameworks encourage:
 
@@ -313,7 +313,7 @@ Windows LAPS supports these objectives.
 
 ---
 
-# Enterprise Workflow
+## Enterprise Workflow
 
 ```
 Device Joins Domain
@@ -345,7 +345,7 @@ Continuous Management
 
 ---
 
-# Security Principles
+## Security Principles
 
 Windows LAPS supports several core security principles:
 
@@ -358,7 +358,7 @@ Windows LAPS supports several core security principles:
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
 Organizations use Windows LAPS for:
 
@@ -371,7 +371,7 @@ Organizations use Windows LAPS for:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Windows LAPS helps reduce one of the most common administrative security weaknesses—shared local administrator passwords.
 
@@ -379,13 +379,13 @@ By assigning unique passwords to individual devices and rotating them automatica
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design a Windows LAPS deployment strategy for a fictional enterprise.
 
-### Step 1
+#### Step 1
 
 Create an inventory of:
 
@@ -396,13 +396,13 @@ Create an inventory of:
 
 ---
 
-### Step 2
+#### Step 2
 
 Identify which local administrator accounts will be managed.
 
 ---
 
-### Step 3
+#### Step 3
 
 Define a password rotation policy.
 
@@ -415,57 +415,57 @@ Consider:
 
 ---
 
-### Step 4
+#### Step 4
 
 Identify which IT roles should be authorized to retrieve managed passwords.
 
 ---
 
-### Step 5
+#### Step 5
 
 Document the expected security improvements after deployment.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is Windows LAPS?
+#### Q1: What is Windows LAPS?
 
 **Answer:** Windows LAPS is a Microsoft solution that automatically manages unique local administrator passwords for Windows devices and rotates them according to policy.
 
 ---
 
-### Q2: Why are shared local administrator passwords risky?
+#### Q2: Why are shared local administrator passwords risky?
 
 **Answer:** A shared password can affect many devices if it becomes known, increasing operational and security risk.
 
 ---
 
-### Q3: What is the primary purpose of Windows LAPS?
+#### Q3: What is the primary purpose of Windows LAPS?
 
 **Answer:** To provide unique, automatically managed local administrator passwords for each device.
 
 ---
 
-### Q4: What are the main benefits of password rotation?
+#### Q4: What are the main benefits of password rotation?
 
 **Answer:** Password rotation limits password lifetime, improves credential hygiene, and supports organizational security policies.
 
 ---
 
-### Q5: Who should retrieve LAPS-managed passwords?
+#### Q5: Who should retrieve LAPS-managed passwords?
 
 **Answer:** Only authorized administrators with a legitimate business need and appropriate permissions.
 
 ---
 
-### Q6: How does Windows LAPS support least privilege?
+#### Q6: How does Windows LAPS support least privilege?
 
 **Answer:** By centrally managing local administrator credentials and restricting password access to authorized personnel, reducing unnecessary exposure.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use unique passwords for every managed device.
 - Rotate passwords automatically according to policy.
@@ -478,7 +478,7 @@ Document the expected security improvements after deployment.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Continuing to use shared local administrator passwords.
 - Granting password retrieval permissions too broadly.
@@ -489,7 +489,7 @@ Document the expected security improvements after deployment.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows LAPS provides unique local administrator passwords for each Windows device.
 - Automatic password rotation improves credential security.
@@ -498,9 +498,9 @@ Document the expected security improvements after deployment.
 
 ---
 
-# 24-Windows-LAPS.md
+## 24-Windows-LAPS.md
 
-# Part 2 — Windows LAPS Architecture, Active Directory Integration, Policies, Password Lifecycle and Enterprise Deployment
+## Part 2 — Windows LAPS Architecture, Active Directory Integration, Policies, Password Lifecycle and Enterprise Deployment
 
 > **Important Note**
 >
@@ -508,7 +508,7 @@ Document the expected security improvements after deployment.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -524,7 +524,7 @@ After completing this part, you will understand:
 
 ---
 
-# Windows LAPS Architecture
+## Windows LAPS Architecture
 
 Windows LAPS operates through several coordinated components.
 
@@ -563,7 +563,7 @@ Each component contributes to centralized password management while keeping admi
 
 ---
 
-# How Windows LAPS Works
+## How Windows LAPS Works
 
 High-level workflow:
 
@@ -615,7 +615,7 @@ This process is automated according to organizational policy.
 
 ---
 
-# Active Directory Integration
+## Active Directory Integration
 
 Windows LAPS integrates with Active Directory to support:
 
@@ -629,7 +629,7 @@ Administrators do not need to manually maintain passwords for every endpoint.
 
 ---
 
-# Enterprise Deployment Model
+## Enterprise Deployment Model
 
 ```
 Domain
@@ -663,7 +663,7 @@ Organizations may choose deployment scopes based on operational requirements.
 
 ---
 
-# Policy-Based Management
+## Policy-Based Management
 
 Windows LAPS follows centrally managed policies.
 
@@ -680,7 +680,7 @@ Policies provide consistent behavior across managed devices.
 
 ---
 
-# Password Lifecycle
+## Password Lifecycle
 
 ```
 Password Created
@@ -714,7 +714,7 @@ Automation reduces manual administrative effort.
 
 ---
 
-# Password Rotation
+## Password Rotation
 
 Instead of changing passwords manually:
 
@@ -764,7 +764,7 @@ Next Rotation
 
 ---
 
-# Password Storage
+## Password Storage
 
 Windows LAPS securely associates password information with the managed device in Active Directory, enabling authorized retrieval when required.
 
@@ -779,7 +779,7 @@ Only authorized personnel should have access.
 
 ---
 
-# Authorization Model
+## Authorization Model
 
 ```
 Administrator
@@ -813,7 +813,7 @@ Authorization should follow the principle of least privilege.
 
 ---
 
-# Administrative Roles
+## Administrative Roles
 
 Example responsibilities:
 
@@ -829,7 +829,7 @@ Responsibilities should be clearly documented.
 
 ---
 
-# Auditing
+## Auditing
 
 Organizations should audit:
 
@@ -843,7 +843,7 @@ Auditing supports accountability and compliance.
 
 ---
 
-# Enterprise Deployment Workflow
+## Enterprise Deployment Workflow
 
 ```
 Plan Deployment
@@ -877,7 +877,7 @@ Pilot deployments are recommended before organization-wide rollout.
 
 ---
 
-# Change Management
+## Change Management
 
 Before deployment:
 
@@ -891,9 +891,9 @@ Proper change management minimizes operational disruption.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Company
+### Company
 
 ```
 Fabrikam Financial Services
@@ -922,7 +922,7 @@ Benefits achieved:
 
 ---
 
-# Integration with Enterprise Operations
+## Integration with Enterprise Operations
 
 Windows LAPS complements:
 
@@ -954,7 +954,7 @@ It should be part of an organization's broader endpoint security strategy.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Centralized password management reduces the risks associated with manually managed local administrator credentials.
 
@@ -962,13 +962,13 @@ When combined with strong identity governance, endpoint management, and auditing
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Develop a deployment plan for Windows LAPS in a fictional enterprise.
 
-### Step 1
+#### Step 1
 
 Categorize devices:
 
@@ -979,7 +979,7 @@ Categorize devices:
 
 ---
 
-### Step 2
+#### Step 2
 
 Define policy requirements:
 
@@ -990,63 +990,63 @@ Define policy requirements:
 
 ---
 
-### Step 3
+#### Step 3
 
 Create a phased deployment schedule.
 
 ---
 
-### Step 4
+#### Step 4
 
 Document how password retrieval permissions will be assigned and reviewed.
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a post-deployment validation checklist covering policy application, auditing, and operational readiness.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why does Windows LAPS use centralized policies?
+#### Q1: Why does Windows LAPS use centralized policies?
 
 **Answer:** Centralized policies ensure consistent password management, simplify administration, and reduce configuration drift across managed devices.
 
 ---
 
-### Q2: Why is automated password rotation beneficial?
+#### Q2: Why is automated password rotation beneficial?
 
 **Answer:** It reduces manual effort, limits password lifetime, and improves overall credential hygiene.
 
 ---
 
-### Q3: Why should password retrieval be restricted?
+#### Q3: Why should password retrieval be restricted?
 
 **Answer:** Restricting retrieval to authorized personnel supports least privilege and reduces unnecessary credential exposure.
 
 ---
 
-### Q4: Why are deployment pilots recommended?
+#### Q4: Why are deployment pilots recommended?
 
 **Answer:** Pilot deployments help validate configuration, identify operational issues, and reduce the risk of organization-wide disruption.
 
 ---
 
-### Q5: What role does auditing play in Windows LAPS?
+#### Q5: What role does auditing play in Windows LAPS?
 
 **Answer:** Auditing provides accountability by recording administrative actions, policy changes, and password retrieval activities.
 
 ---
 
-### Q6: How does Windows LAPS integrate with enterprise operations?
+#### Q6: How does Windows LAPS integrate with enterprise operations?
 
 **Answer:** It works alongside Active Directory, endpoint management, identity governance, security monitoring, and compliance processes to strengthen credential management.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Deploy Windows LAPS in phases.
 - Use centrally managed policies.
@@ -1059,7 +1059,7 @@ Create a post-deployment validation checklist covering policy application, audit
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Deploying without adequate planning.
 - Assigning excessive password retrieval permissions.
@@ -1070,7 +1070,7 @@ Create a post-deployment validation checklist covering policy application, audit
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows LAPS integrates with Active Directory to automate local administrator password management.
 - Centralized policies provide consistent password rotation and administration.
@@ -1079,9 +1079,9 @@ Create a post-deployment validation checklist covering policy application, audit
 
 ---
 
-# 24-Windows-LAPS.md
+## 24-Windows-LAPS.md
 
-# Part 3 — Windows LAPS Security, Monitoring, Auditing, Compliance, Troubleshooting and Enterprise Best Practices
+## Part 3 — Windows LAPS Security, Monitoring, Auditing, Compliance, Troubleshooting and Enterprise Best Practices
 
 > **Important Note**
 >
@@ -1089,7 +1089,7 @@ Create a post-deployment validation checklist covering policy application, audit
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1105,7 +1105,7 @@ After completing this part, you will understand:
 
 ---
 
-# Windows LAPS Security Model
+## Windows LAPS Security Model
 
 Windows LAPS strengthens endpoint security through several key principles:
 
@@ -1137,7 +1137,7 @@ Each layer contributes to reducing credential-related risk.
 
 ---
 
-# Identity Security
+## Identity Security
 
 Windows LAPS supports identity security by:
 
@@ -1151,7 +1151,7 @@ This aligns with modern enterprise identity security practices.
 
 ---
 
-# Password Retrieval Governance
+## Password Retrieval Governance
 
 Access to managed passwords should be carefully controlled.
 
@@ -1183,7 +1183,7 @@ Organizations should establish clear approval processes for password access.
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 Example access model:
 
@@ -1200,7 +1200,7 @@ Permissions should be reviewed regularly.
 
 ---
 
-# Monitoring Windows LAPS
+## Monitoring Windows LAPS
 
 Security teams should monitor:
 
@@ -1215,7 +1215,7 @@ Monitoring helps identify operational issues early.
 
 ---
 
-# Operational Monitoring Workflow
+## Operational Monitoring Workflow
 
 ```
 Policy Applied
@@ -1245,7 +1245,7 @@ This workflow provides visibility into deployment health.
 
 ---
 
-# Auditing
+## Auditing
 
 Auditing is essential for accountability.
 
@@ -1262,7 +1262,7 @@ Audit records should be retained according to organizational policy.
 
 ---
 
-# Compliance
+## Compliance
 
 Windows LAPS supports compliance objectives commonly found in:
 
@@ -1276,7 +1276,7 @@ By enforcing unique passwords and controlled access, Windows LAPS helps organiza
 
 ---
 
-# Enterprise Dashboard
+## Enterprise Dashboard
 
 Example dashboard metrics:
 
@@ -1308,7 +1308,7 @@ Dashboards help administrators quickly assess deployment status.
 
 ---
 
-# Common Operational Issues
+## Common Operational Issues
 
 Examples include:
 
@@ -1324,7 +1324,7 @@ These issues should be addressed through operational reviews.
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 Issue Identified
@@ -1358,7 +1358,7 @@ Following a consistent troubleshooting process improves efficiency.
 
 ---
 
-# Continuous Compliance
+## Continuous Compliance
 
 ```
 Deploy
@@ -1388,9 +1388,9 @@ Compliance should be maintained continuously rather than only during formal audi
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Company
+### Company
 
 ```
 Adventure Works Logistics
@@ -1418,7 +1418,7 @@ Results:
 
 ---
 
-# Integration with Security Operations
+## Integration with Security Operations
 
 Windows LAPS complements:
 
@@ -1450,7 +1450,7 @@ Together, these capabilities improve enterprise security posture.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Windows LAPS is most effective when combined with:
 
@@ -1465,13 +1465,13 @@ It should be considered one component of a comprehensive identity security strat
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Create an operational governance plan for Windows LAPS.
 
-### Step 1
+#### Step 1
 
 Define monitoring metrics for:
 
@@ -1482,7 +1482,7 @@ Define monitoring metrics for:
 
 ---
 
-### Step 2
+#### Step 2
 
 Design an audit schedule.
 
@@ -1494,63 +1494,63 @@ Include:
 
 ---
 
-### Step 3
+#### Step 3
 
 Develop a troubleshooting workflow for common deployment issues.
 
 ---
 
-### Step 4
+#### Step 4
 
 Create an executive dashboard with key compliance indicators.
 
 ---
 
-### Step 5
+#### Step 5
 
 Document recommendations for improving password governance over the next year.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is auditing important for Windows LAPS?
+#### Q1: Why is auditing important for Windows LAPS?
 
 **Answer:** Auditing provides accountability by recording password retrievals, policy changes, and administrative actions, supporting both security and compliance.
 
 ---
 
-### Q2: What should organizations monitor after deploying Windows LAPS?
+#### Q2: What should organizations monitor after deploying Windows LAPS?
 
 **Answer:** Policy application, password rotation, device compliance, password retrieval activity, and administrative permission changes.
 
 ---
 
-### Q3: How does Windows LAPS support compliance?
+#### Q3: How does Windows LAPS support compliance?
 
 **Answer:** It helps enforce unique local administrator passwords, controlled access, auditing, and centralized credential management.
 
 ---
 
-### Q4: Why should password retrieval permissions be reviewed regularly?
+#### Q4: Why should password retrieval permissions be reviewed regularly?
 
 **Answer:** Regular reviews ensure that only authorized personnel retain access, supporting least privilege and reducing unnecessary credential exposure.
 
 ---
 
-### Q5: What role does continuous monitoring play?
+#### Q5: What role does continuous monitoring play?
 
 **Answer:** Continuous monitoring helps detect operational issues, validate compliance, and ensure password management policies remain effective.
 
 ---
 
-### Q6: How does Windows LAPS fit into a broader security strategy?
+#### Q6: How does Windows LAPS fit into a broader security strategy?
 
 **Answer:** It complements identity management, endpoint security, privileged access management, auditing, and security monitoring to improve overall enterprise credential security.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Monitor password rotation regularly.
 - Audit password retrieval activities.
@@ -1563,7 +1563,7 @@ Document recommendations for improving password governance over the next year.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Ignoring audit logs.
 - Granting excessive retrieval permissions.
@@ -1574,7 +1574,7 @@ Document recommendations for improving password governance over the next year.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows LAPS improves credential security through centralized management, auditing, and automated password rotation.
 - Continuous monitoring and governance are essential for successful long-term deployments.
@@ -1583,9 +1583,9 @@ Document recommendations for improving password governance over the next year.
 
 ---
 
-# 24-Windows-LAPS.md
+## 24-Windows-LAPS.md
 
-# Part 4 — Enterprise Governance, Security Operations, Best Practices, Future Considerations and Chapter Summary
+## Part 4 — Enterprise Governance, Security Operations, Best Practices, Future Considerations and Chapter Summary
 
 > **Important Note**
 >
@@ -1593,7 +1593,7 @@ Document recommendations for improving password governance over the next year.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1609,7 +1609,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Deploying Windows LAPS is only the beginning.
 
@@ -1626,7 +1626,7 @@ Long-term success depends on continuous governance rather than one-time deployme
 
 ---
 
-# Windows LAPS Governance Lifecycle
+## Windows LAPS Governance Lifecycle
 
 ```
 Plan
@@ -1660,7 +1660,7 @@ This lifecycle ensures password management remains effective as the environment 
 
 ---
 
-# Enterprise Governance Framework
+## Enterprise Governance Framework
 
 ```
 Identity Security
@@ -1686,7 +1686,7 @@ Windows LAPS should be integrated into the organization's overall identity and e
 
 ---
 
-# Operational Responsibilities
+## Operational Responsibilities
 
 | Team | Responsibility |
 |------|----------------|
@@ -1701,7 +1701,7 @@ Clear ownership helps maintain consistency and accountability.
 
 ---
 
-# Password Governance Process
+## Password Governance Process
 
 ```
 Password Created
@@ -1735,7 +1735,7 @@ Every stage should be documented and governed by policy.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Example enterprise metrics:
 
@@ -1754,7 +1754,7 @@ These metrics help measure both operational performance and security maturity.
 
 ---
 
-# Security Dashboards
+## Security Dashboards
 
 Example dashboard:
 
@@ -1790,7 +1790,7 @@ Dashboards provide management with a clear view of deployment health and governa
 
 ---
 
-# Integration with Enterprise Security
+## Integration with Enterprise Security
 
 Windows LAPS complements:
 
@@ -1822,7 +1822,7 @@ Combining these technologies creates a stronger overall security posture.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Windows LAPS supports common compliance objectives by helping organizations:
 
@@ -1837,7 +1837,7 @@ While Windows LAPS contributes to compliance, organizations should also implemen
 
 ---
 
-# Common Operational Challenges
+## Common Operational Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1851,7 +1851,7 @@ Planning and governance help reduce operational complexity.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitor
@@ -1885,7 +1885,7 @@ Continuous improvement ensures Windows LAPS continues to meet organizational nee
 
 ---
 
-# Enterprise Maturity Model
+## Enterprise Maturity Model
 
 ```
 Level 1
@@ -1921,9 +1921,9 @@ As organizations mature, password management becomes increasingly automated, gov
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Company
+### Company
 
 ```
 Northwind Financial Group
@@ -1955,7 +1955,7 @@ Results:
 
 ---
 
-# Windows LAPS in a Zero Trust Strategy
+## Windows LAPS in a Zero Trust Strategy
 
 Windows LAPS supports Zero Trust principles by:
 
@@ -1975,7 +1975,7 @@ It should be combined with:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Credential security remains one of the most important aspects of enterprise defense.
 
@@ -1991,19 +1991,19 @@ When integrated into broader security operations, Windows LAPS significantly imp
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Develop a long-term Windows LAPS governance program for a fictional enterprise.
 
-### Step 1
+#### Step 1
 
 Create an inventory of all managed Windows devices.
 
 ---
 
-### Step 2
+#### Step 2
 
 Define governance policies for:
 
@@ -2015,7 +2015,7 @@ Define governance policies for:
 
 ---
 
-### Step 3
+#### Step 3
 
 Design a dashboard that tracks:
 
@@ -2027,7 +2027,7 @@ Design a dashboard that tracks:
 
 ---
 
-### Step 4
+#### Step 4
 
 Create a quarterly review process for:
 
@@ -2038,51 +2038,51 @@ Create a quarterly review process for:
 
 ---
 
-### Step 5
+#### Step 5
 
 Prepare a one-year roadmap describing how Windows LAPS will integrate with broader identity governance and endpoint security initiatives.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is Windows LAPS considered an important enterprise security control?
+#### Q1: Why is Windows LAPS considered an important enterprise security control?
 
 **Answer:** It provides unique, automatically managed local administrator passwords, reducing credential reuse and strengthening endpoint security.
 
 ---
 
-### Q2: Why should Windows LAPS be integrated with identity governance?
+#### Q2: Why should Windows LAPS be integrated with identity governance?
 
 **Answer:** Integration ensures password management aligns with organizational policies, least privilege principles, auditing, and compliance requirements.
 
 ---
 
-### Q3: What metrics can organizations use to evaluate Windows LAPS deployments?
+#### Q3: What metrics can organizations use to evaluate Windows LAPS deployments?
 
 **Answer:** Examples include managed device coverage, password rotation success, policy compliance, password retrieval activity, audit completion, and permission review rates.
 
 ---
 
-### Q4: How does Windows LAPS support Zero Trust principles?
+#### Q4: How does Windows LAPS support Zero Trust principles?
 
 **Answer:** By reducing reliance on shared credentials, supporting least privilege, improving administrative accountability, and strengthening endpoint identity security.
 
 ---
 
-### Q5: Why are recurring governance reviews important?
+#### Q5: Why are recurring governance reviews important?
 
 **Answer:** They ensure policies remain effective, permissions remain appropriate, compliance objectives are met, and operational issues are identified early.
 
 ---
 
-### Q6: Is Windows LAPS a complete security solution?
+#### Q6: Is Windows LAPS a complete security solution?
 
 **Answer:** No. It is an important credential management capability that should be combined with identity governance, endpoint protection, monitoring, privileged access management, and other enterprise security controls.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Deploy Windows LAPS across all supported Windows endpoints.
 - Use centralized policy management.
@@ -2095,7 +2095,7 @@ Prepare a one-year roadmap describing how Windows LAPS will integrate with broad
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating deployment as a one-time project.
 - Granting overly broad password retrieval permissions.
@@ -2106,7 +2106,7 @@ Prepare a one-year roadmap describing how Windows LAPS will integrate with broad
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows LAPS provides automated management of unique local administrator passwords.
 - Strong governance, auditing, and monitoring are essential for long-term success.
@@ -2115,7 +2115,7 @@ Prepare a one-year roadmap describing how Windows LAPS will integrate with broad
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

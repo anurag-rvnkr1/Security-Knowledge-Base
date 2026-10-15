@@ -66,7 +66,7 @@ for general cryptographic hashing, depending on the use case.
 
 ---
 
-# 1. What is a Hash Function?
+## 1. What is a Hash Function?
 
 A hash function takes an input and produces a fixed-length output.
 
@@ -96,7 +96,7 @@ The output has a fixed size for a particular algorithm.
 
 ---
 
-# 2. Example
+## 2. Example
 
 Using SHA-256:
 
@@ -124,11 +124,11 @@ Input
 
 ---
 
-# 3. Hash vs Encryption
+## 3. Hash vs Encryption
 
 Hashing and encryption are fundamentally different.
 
-### Encryption
+#### Encryption
 
 ```text
 Plaintext
@@ -144,7 +144,7 @@ Plaintext
 
 Encryption is designed to be reversible with the appropriate key.
 
-### Hashing
+#### Hashing
 
 ```text
 Input
@@ -158,7 +158,7 @@ A cryptographic hash is designed to be computationally infeasible to reverse.
 
 ---
 
-# 4. Hashing vs Encryption
+## 4. Hashing vs Encryption
 
 | Property | Hashing | Encryption |
 |---|---|---|
@@ -172,7 +172,7 @@ A cryptographic hash is designed to be computationally infeasible to reverse.
 
 ---
 
-# 5. Cryptographic Hash Function
+## 5. Cryptographic Hash Function
 
 A cryptographic hash function should provide several security properties.
 
@@ -190,7 +190,7 @@ Efficient Computation
 
 ---
 
-# 6. Deterministic
+## 6. Deterministic
 
 A cryptographic hash function is deterministic.
 
@@ -212,7 +212,7 @@ Same Hash
 
 ---
 
-# 7. Fixed-Length Output
+## 7. Fixed-Length Output
 
 Hash functions produce fixed-size outputs.
 
@@ -237,7 +237,7 @@ This is one reason hashes are useful as compact fingerprints.
 
 ---
 
-# 8. SHA-256
+## 8. SHA-256
 
 SHA-256 produces:
 
@@ -271,7 +271,7 @@ Therefore:
 
 ---
 
-# 9. SHA-512
+## 9. SHA-512
 
 SHA-512 produces:
 
@@ -293,7 +293,7 @@ and:
 
 ---
 
-# 10. SHA-384
+## 10. SHA-384
 
 SHA-384 produces:
 
@@ -315,7 +315,7 @@ and:
 
 ---
 
-# 11. SHA-3
+## 11. SHA-3
 
 SHA-3 is a newer hash-function family standardized by NIST.
 
@@ -332,7 +332,7 @@ SHA3-512
 
 ---
 
-# 12. SHA-2 Family
+## 12. SHA-2 Family
 
 SHA-2 includes several algorithms:
 
@@ -355,7 +355,7 @@ SHA-512
 
 ---
 
-# 13. SHA-1
+## 13. SHA-1
 
 SHA-1 produces:
 
@@ -375,7 +375,7 @@ Do not use SHA-1 for new cryptographic integrity or signature designs.
 
 ---
 
-# 14. MD5
+## 14. MD5
 
 MD5 produces:
 
@@ -395,7 +395,7 @@ It may still appear in non-security legacy contexts, but that does not make it s
 
 ---
 
-# 15. Collision
+## 15. Collision
 
 A collision occurs when two different inputs produce the same hash.
 
@@ -415,7 +415,7 @@ The security goal is to make finding such collisions computationally infeasible.
 
 ---
 
-# 16. Birthday Paradox
+## 16. Birthday Paradox
 
 Collision resistance is related to the birthday paradox.
 
@@ -441,7 +441,7 @@ This is why hash output length matters for collision resistance.
 
 ---
 
-# 17. Preimage Resistance
+## 17. Preimage Resistance
 
 Given a hash:
 
@@ -471,7 +471,7 @@ operations.
 
 ---
 
-# 18. Second-Preimage Resistance
+## 18. Second-Preimage Resistance
 
 Suppose an attacker already knows:
 
@@ -505,9 +505,9 @@ Second-Preimage Resistance
 
 ---
 
-# 19. Collision vs Second Preimage
+## 19. Collision vs Second Preimage
 
-### Collision
+#### Collision
 
 Attacker can choose:
 
@@ -524,7 +524,7 @@ M1 ≠ M2
 H(M1) = H(M2)
 ```
 
-### Second Preimage
+#### Second Preimage
 
 Attacker is given:
 
@@ -548,7 +548,7 @@ These are different security properties.
 
 ---
 
-# 20. Hash Security Properties
+## 20. Hash Security Properties
 
 | Property | Goal |
 |---|---|
@@ -559,7 +559,7 @@ These are different security properties.
 
 ---
 
-# 21. Avalanche Effect
+## 21. Avalanche Effect
 
 A tiny change in the input should produce a dramatically different digest.
 
@@ -597,7 +597,7 @@ Avalanche Effect
 
 ---
 
-# 22. Why Avalanche Effect Matters
+## 22. Why Avalanche Effect Matters
 
 Without strong diffusion:
 
@@ -619,7 +619,7 @@ Many output bits change
 
 ---
 
-# 23. Hash Function Model
+## 23. Hash Function Model
 
 A simplified model:
 
@@ -647,7 +647,7 @@ Original input not recovered
 
 ---
 
-# 24. Hashing Files
+## 24. Hashing Files
 
 Hashes can be used to verify whether a file changed.
 
@@ -681,7 +681,7 @@ If equal, the file is consistent with the expected digest under the assumptions 
 
 ---
 
-# 25. File Integrity Example
+## 25. File Integrity Example
 
 Suppose a software vendor publishes:
 
@@ -706,7 +706,7 @@ Then compare the result with the vendor's trusted published digest.
 
 ---
 
-# 26. Important Limitation
+## 26. Important Limitation
 
 A hash alone does not tell you who generated it.
 
@@ -740,7 +740,7 @@ Trusted Distribution Channel
 
 ---
 
-# 27. Hash + Digital Signature
+## 27. Hash + Digital Signature
 
 A digital signature can authenticate the integrity of data.
 
@@ -772,7 +772,7 @@ This is widely used in software signing and certificates.
 
 ---
 
-# 28. Hash + MAC
+## 28. Hash + MAC
 
 A MAC combines secret-key authentication with cryptographic processing.
 
@@ -792,7 +792,7 @@ An attacker without the secret key should not be able to generate a valid tag.
 
 ---
 
-# 29. HMAC
+## 29. HMAC
 
 **HMAC** stands for:
 
@@ -818,7 +818,7 @@ HMAC-SHA-512
 
 ---
 
-# 30. HMAC Purpose
+## 30. HMAC Purpose
 
 HMAC provides:
 
@@ -844,7 +844,7 @@ Tag
 
 ---
 
-# 31. HMAC Verification
+## 31. HMAC Verification
 
 Sender:
 
@@ -878,7 +878,7 @@ using an appropriate constant-time comparison method where required.
 
 ---
 
-# 32. HMAC vs Hash
+## 32. HMAC vs Hash
 
 | Property | Hash | HMAC |
 |---|---|---|
@@ -890,7 +890,7 @@ using an appropriate constant-time comparison method where required.
 
 ---
 
-# 33. HMAC vs Encryption
+## 33. HMAC vs Encryption
 
 HMAC:
 
@@ -918,7 +918,7 @@ AEAD → Confidentiality + Integrity + Authentication
 
 ---
 
-# 34. Password Hashing
+## 34. Password Hashing
 
 Passwords should generally not be stored as plaintext.
 
@@ -944,7 +944,7 @@ is generally not sufficient for password storage.
 
 ---
 
-# 35. Why Fast Hashes Are Bad for Password Storage
+## 35. Why Fast Hashes Are Bad for Password Storage
 
 A password attacker can perform enormous numbers of guesses against a fast hash.
 
@@ -973,7 +973,7 @@ password hashing/KDF algorithms.
 
 ---
 
-# 36. Password Hashing Algorithms
+## 36. Password Hashing Algorithms
 
 Modern password storage should use dedicated password hashing functions such as:
 
@@ -988,7 +988,7 @@ The exact choice depends on the application's requirements and current security 
 
 ---
 
-# 37. Salt
+## 37. Salt
 
 A **salt** is a unique random value associated with a password.
 
@@ -1008,7 +1008,7 @@ The salt does not need to be secret.
 
 ---
 
-# 38. Why Salts Matter
+## 38. Why Salts Matter
 
 Without salts:
 
@@ -1034,7 +1034,7 @@ The resulting stored values differ.
 
 ---
 
-# 39. Salt Does Not Make Passwords Secret
+## 39. Salt Does Not Make Passwords Secret
 
 A salt is normally stored alongside the password hash.
 
@@ -1060,7 +1060,7 @@ not from hiding the salt.
 
 ---
 
-# 40. Pepper
+## 40. Pepper
 
 A **pepper** is an additional secret value used in some password-storage architectures.
 
@@ -1088,7 +1088,7 @@ It may be stored separately from the database.
 
 ---
 
-# 41. Password Storage Architecture
+## 41. Password Storage Architecture
 
 A robust conceptual model:
 
@@ -1111,7 +1111,7 @@ User Password
 
 ---
 
-# 42. Hashing Passwords with Argon2id
+## 42. Hashing Passwords with Argon2id
 
 Argon2id is designed specifically for password hashing and resistance against certain hardware-accelerated guessing attacks.
 
@@ -1133,7 +1133,7 @@ The encoded output typically contains the parameters needed for verification.
 
 ---
 
-# 43. Password Verification
+## 43. Password Verification
 
 During login:
 
@@ -1153,7 +1153,7 @@ The original password is not recovered from the stored hash.
 
 ---
 
-# 44. Brute-Force Password Attack
+## 44. Brute-Force Password Attack
 
 An attacker may obtain a password hash database.
 
@@ -1175,7 +1175,7 @@ Password hashing algorithms slow down this process.
 
 ---
 
-# 45. Dictionary Attack
+## 45. Dictionary Attack
 
 Instead of trying every possible character combination, attackers often use lists of likely passwords.
 
@@ -1198,7 +1198,7 @@ Dictionary Attack
 
 ---
 
-# 46. Credential Stuffing
+## 46. Credential Stuffing
 
 Credential stuffing is different from password cracking.
 
@@ -1226,7 +1226,7 @@ Risk-Based Authentication
 
 ---
 
-# 47. Rainbow Tables
+## 47. Rainbow Tables
 
 A rainbow table is a precomputed structure used to accelerate certain password-hash cracking attacks.
 
@@ -1242,7 +1242,7 @@ is essential.
 
 ---
 
-# 48. Hash Length and Security
+## 48. Hash Length and Security
 
 For an ideal hash:
 
@@ -1264,7 +1264,7 @@ These are idealized generic security estimates, not guarantees against every cry
 
 ---
 
-# 49. SHA-256 vs SHA-512
+## 49. SHA-256 vs SHA-512
 
 | Feature | SHA-256 | SHA-512 |
 |---|---:|---:|
@@ -1278,7 +1278,7 @@ The correct choice depends on the application and platform.
 
 ---
 
-# 50. SHA-2 vs SHA-3
+## 50. SHA-2 vs SHA-3
 
 SHA-2:
 
@@ -1298,7 +1298,7 @@ Both can be used for modern cryptographic hashing when appropriate.
 
 ---
 
-# 51. Sponge Construction
+## 51. Sponge Construction
 
 SHA-3 is based on a sponge construction.
 
@@ -1320,7 +1320,7 @@ This differs fundamentally from the internal construction used by SHA-2.
 
 ---
 
-# 52. SHAKE
+## 52. SHAKE
 
 SHA-3 also introduced extendable-output functions:
 
@@ -1345,7 +1345,7 @@ This is different from fixed-length functions such as SHA-256.
 
 ---
 
-# 53. Length-Extension Attacks
+## 53. Length-Extension Attacks
 
 Some hash constructions based on the Merkle-Damgård design can be vulnerable to length-extension attacks when used incorrectly.
 
@@ -1373,7 +1373,7 @@ should not be used as a replacement for HMAC.
 
 ---
 
-# 54. HMAC Prevents Naive Length-Extension Problems
+## 54. HMAC Prevents Naive Length-Extension Problems
 
 Instead of:
 
@@ -1391,7 +1391,7 @@ HMAC is specifically designed for keyed message authentication.
 
 ---
 
-# 55. Hashing and Digital Signatures
+## 55. Hashing and Digital Signatures
 
 Digital signature systems usually sign a digest rather than the entire message directly.
 
@@ -1413,7 +1413,7 @@ This improves efficiency.
 
 ---
 
-# 56. Hashing in Certificates
+## 56. Hashing in Certificates
 
 Certificates contain signed information.
 
@@ -1438,7 +1438,7 @@ Certificate Authenticity
 
 ---
 
-# 57. Hashing in Software Security
+## 57. Hashing in Software Security
 
 Software vendors can publish:
 
@@ -1462,7 +1462,7 @@ For stronger authenticity, software signatures are preferred over relying on an 
 
 ---
 
-# 58. Hashing in Git
+## 58. Hashing in Git
 
 Git uses cryptographic object identifiers based on hashes.
 
@@ -1486,7 +1486,7 @@ The Git ecosystem has additional mechanisms beyond simply "hashing a file."
 
 ---
 
-# 59. Hashing in Blockchain
+## 59. Hashing in Blockchain
 
 Blockchain systems commonly use cryptographic hashes for:
 
@@ -1512,7 +1512,7 @@ Changing an earlier block can therefore affect subsequent hashes.
 
 ---
 
-# 60. Merkle Trees
+## 60. Merkle Trees
 
 A Merkle tree organizes hashes hierarchically.
 
@@ -1532,7 +1532,7 @@ This allows efficient verification of whether a particular data item belongs to 
 
 ---
 
-# 61. Hash Commitments
+## 61. Hash Commitments
 
 A commitment scheme can use a hash to commit to a value without revealing it immediately.
 
@@ -1560,7 +1560,7 @@ This concept appears in cryptographic protocols.
 
 ---
 
-# 62. Content-Addressable Storage
+## 62. Content-Addressable Storage
 
 Some systems identify data using its cryptographic digest.
 
@@ -1588,7 +1588,7 @@ This provides useful integrity properties.
 
 ---
 
-# 63. Hash Collision Attacks
+## 63. Hash Collision Attacks
 
 An attacker attempting to find:
 
@@ -1615,7 +1615,7 @@ practical collision attacks exist.
 
 ---
 
-# 64. Chosen-Prefix Collisions
+## 64. Chosen-Prefix Collisions
 
 A particularly powerful collision scenario is a **chosen-prefix collision**.
 
@@ -1645,7 +1645,7 @@ This can have serious implications when a vulnerable hash is used in signatures 
 
 ---
 
-# 65. SHAttered
+## 65. SHAttered
 
 In 2017, Google and CWI Amsterdam demonstrated a practical collision attack against SHA-1 called:
 
@@ -1657,11 +1657,11 @@ This demonstrated that SHA-1 could no longer be considered collision-resistant f
 
 ---
 
-# 66. Hash Security vs Password Security
+## 66. Hash Security vs Password Security
 
 These are different requirements.
 
-### General Hashing
+#### General Hashing
 
 Needs:
 
@@ -1671,7 +1671,7 @@ Collision Resistant
 Preimage Resistant
 ```
 
-### Password Hashing
+#### Password Hashing
 
 Needs:
 
@@ -1693,7 +1693,7 @@ is excellent for many integrity applications but is not a password-storage algor
 
 ---
 
-# 67. Hashing vs KDF
+## 67. Hashing vs KDF
 
 A KDF derives cryptographic key material.
 
@@ -1720,7 +1720,7 @@ Password KDFs are specifically designed to make password guessing more expensive
 
 ---
 
-# 68. HKDF
+## 68. HKDF
 
 **HKDF** stands for:
 
@@ -1746,7 +1746,7 @@ Derived Key Material
 
 ---
 
-# 69. HKDF vs Password KDF
+## 69. HKDF vs Password KDF
 
 Do not confuse:
 
@@ -1766,7 +1766,7 @@ Password KDFs are specifically designed to resist password guessing.
 
 ---
 
-# 70. Hash-Based Integrity Verification
+## 70. Hash-Based Integrity Verification
 
 A simple integrity workflow:
 
@@ -1797,7 +1797,7 @@ the file matches the trusted digest.
 
 ---
 
-# 71. Why Trust Matters
+## 71. Why Trust Matters
 
 Suppose an attacker controls both:
 
@@ -1825,9 +1825,9 @@ Digital signatures can provide stronger authenticity.
 
 ---
 
-# 72. Hash-Based Integrity vs MAC
+## 72. Hash-Based Integrity vs MAC
 
-### Hash
+#### Hash
 
 ```text
 No secret
@@ -1835,7 +1835,7 @@ No secret
 
 Useful when the expected digest is distributed through a trusted channel.
 
-### HMAC
+#### HMAC
 
 ```text
 Shared secret
@@ -1843,7 +1843,7 @@ Shared secret
 
 Provides authentication between parties sharing the secret.
 
-### Digital Signature
+#### Digital Signature
 
 ```text
 Private/Public key pair
@@ -1853,7 +1853,7 @@ Provides verifiable authenticity without requiring the verifier to possess the s
 
 ---
 
-# 73. Comparison
+## 73. Comparison
 
 | Mechanism | Confidentiality | Integrity | Authentication |
 |---|---:|---:|---:|
@@ -1867,7 +1867,7 @@ Provides verifiable authenticity without requiring the verifier to possess the s
 
 ---
 
-# 74. Practical Python – SHA-256
+## 74. Practical Python – SHA-256
 
 ```python
 import hashlib
@@ -1881,7 +1881,7 @@ print(digest)
 
 ---
 
-# 75. Practical Python – SHA-512
+## 75. Practical Python – SHA-512
 
 ```python
 import hashlib
@@ -1895,7 +1895,7 @@ print(digest)
 
 ---
 
-# 76. Practical Python – File Hashing
+## 76. Practical Python – File Hashing
 
 ```python
 import hashlib
@@ -1917,7 +1917,7 @@ Reading in chunks avoids loading an entire large file into memory.
 
 ---
 
-# 77. Practical Python – HMAC
+## 77. Practical Python – HMAC
 
 ```python
 import hmac
@@ -1937,7 +1937,7 @@ print(tag)
 
 ---
 
-# 78. HMAC Verification
+## 78. HMAC Verification
 
 ```python
 expected = hmac.new(
@@ -1958,7 +1958,7 @@ Use constant-time comparison functions where appropriate when comparing authenti
 
 ---
 
-# 79. Password Hashing Example
+## 79. Password Hashing Example
 
 With a suitable password-hashing library, a conceptual workflow is:
 
@@ -1977,7 +1977,7 @@ Do not implement Argon2, bcrypt, or password-KDF internals yourself.
 
 ---
 
-# 80. Practical Exercise – Avalanche Effect
+## 80. Practical Exercise – Avalanche Effect
 
 Calculate:
 
@@ -1998,7 +1998,7 @@ Large Digest Difference
 
 ---
 
-# 81. Practical Exercise – File Integrity
+## 81. Practical Exercise – File Integrity
 
 1. Create a file:
 
@@ -2026,7 +2026,7 @@ Modified Hash
 
 ---
 
-# 82. Practical Exercise – HMAC
+## 82. Practical Exercise – HMAC
 
 Create:
 
@@ -2053,7 +2053,7 @@ Modified Message Tag
 
 ---
 
-# 83. Practical Exercise – Password Hashing
+## 83. Practical Exercise – Password Hashing
 
 Using a password-hashing library:
 
@@ -2078,7 +2078,7 @@ Observe that properly salted password hashing produces different stored outputs.
 
 ---
 
-# 84. VAPT Testing Checklist
+## 84. VAPT Testing Checklist
 
 When assessing an application:
 
@@ -2098,7 +2098,7 @@ When assessing an application:
 
 ---
 
-# 85. Example VAPT Findings
+## 85. Example VAPT Findings
 
 Potential findings include:
 
@@ -2128,7 +2128,7 @@ Business Impact
 
 ---
 
-# 86. Common Hashing Mistakes
+## 86. Common Hashing Mistakes
 
 ```text
 ❌ Storing plaintext passwords
@@ -2146,7 +2146,7 @@ Business Impact
 
 ---
 
-# 87. Secure Hashing Checklist
+## 87. Secure Hashing Checklist
 
 ```text
 ☐ Use SHA-256/SHA-384/SHA-512/SHA-3 where appropriate
@@ -2162,7 +2162,7 @@ Business Impact
 
 ---
 
-# 88. Hash Functions in SOC Operations
+## 88. Hash Functions in SOC Operations
 
 SOC analysts may encounter hashes constantly.
 
@@ -2189,7 +2189,7 @@ SHA-512
 
 ---
 
-# 89. File Hash as an IOC
+## 89. File Hash as an IOC
 
 Security teams may use:
 
@@ -2215,7 +2215,7 @@ A hash can identify a specific file version.
 
 ---
 
-# 90. Limitations of Hash-Based IOCs
+## 90. Limitations of Hash-Based IOCs
 
 A hash identifies a specific artifact.
 
@@ -2246,7 +2246,7 @@ Detection Rules
 
 ---
 
-# 91. Container Image Digests
+## 91. Container Image Digests
 
 Container registries commonly identify images using content digests.
 
@@ -2276,7 +2276,7 @@ image:latest
 
 ---
 
-# 92. Kubernetes Security Relevance
+## 92. Kubernetes Security Relevance
 
 Cryptographic hashes are important in Kubernetes environments for:
 
@@ -2294,7 +2294,7 @@ Image digests help ensure that the referenced container content matches a specif
 
 ---
 
-# 93. Hashes and Digital Forensics
+## 93. Hashes and Digital Forensics
 
 Digital forensic investigators use hashes to:
 
@@ -2327,7 +2327,7 @@ Recorded Digest
 
 ---
 
-# 94. Hashes and Evidence Integrity
+## 94. Hashes and Evidence Integrity
 
 A hash can demonstrate that two datasets produce the same digest under the selected algorithm.
 
@@ -2349,7 +2349,7 @@ Secure Storage
 
 ---
 
-# 95. Cryptographic Hashes and Compliance
+## 95. Cryptographic Hashes and Compliance
 
 Hash functions may be involved in:
 
@@ -2366,7 +2366,7 @@ The exact algorithm requirements depend on the applicable standard or regulatory
 
 ---
 
-# 96. Log Integrity
+## 96. Log Integrity
 
 Logs can be protected against undetected modification using techniques such as:
 
@@ -2388,7 +2388,7 @@ Stored Hash
 
 ---
 
-# 97. Hash Chains
+## 97. Hash Chains
 
 A hash chain links records together.
 
@@ -2414,7 +2414,7 @@ This concept is useful for tamper-evident data structures.
 
 ---
 
-# 98. Merkle Tree vs Hash Chain
+## 98. Merkle Tree vs Hash Chain
 
 | Feature | Hash Chain | Merkle Tree |
 |---|---|---|
@@ -2425,7 +2425,7 @@ This concept is useful for tamper-evident data structures.
 
 ---
 
-# 99. Hashing in Digital Forensics
+## 99. Hashing in Digital Forensics
 
 Typical workflow:
 
@@ -2447,7 +2447,7 @@ This helps detect accidental or unauthorized modification.
 
 ---
 
-# 100. Hashing in Supply Chain Security
+## 100. Hashing in Supply Chain Security
 
 Modern software supply chains use:
 
@@ -2487,7 +2487,7 @@ Authenticity
 
 ---
 
-# 101. Hash vs Digital Signature in Supply Chain
+## 101. Hash vs Digital Signature in Supply Chain
 
 A hash provides:
 
@@ -2517,7 +2517,7 @@ Signed Artifact
 
 ---
 
-# 102. Security Architecture
+## 102. Security Architecture
 
 A modern software verification architecture can look like:
 
@@ -2544,7 +2544,7 @@ This provides stronger supply-chain assurances than a standalone hash.
 
 ---
 
-# 103. Important Algorithm Guidance
+## 103. Important Algorithm Guidance
 
 For general cryptographic hashing:
 
@@ -2582,7 +2582,7 @@ SHA-1
 
 ---
 
-# 104. Hash Algorithm Selection
+## 104. Hash Algorithm Selection
 
 Choose based on:
 
@@ -2605,7 +2605,7 @@ Correct construction matters as much as output size.
 
 ---
 
-# 105. Security Design Principle
+## 105. Security Design Principle
 
 A strong security design separates:
 
@@ -2638,7 +2638,7 @@ Each solves a different problem.
 
 ---
 
-# 106. Cryptographic Primitive Selection
+## 106. Cryptographic Primitive Selection
 
 | Requirement | Suitable Primitive |
 |---|---|
@@ -2652,105 +2652,105 @@ Each solves a different problem.
 
 ---
 
-# 107. Common Interview Questions
+## 107. Common Interview Questions
 
-## What is a cryptographic hash?
+### What is a cryptographic hash?
 
 A function that maps arbitrary-length input to a fixed-length digest while providing security properties such as preimage, second-preimage, and collision resistance.
 
 ---
 
-## Is hashing encryption?
+### Is hashing encryption?
 
 No. Encryption is designed to be reversible with the appropriate key, while cryptographic hashing is designed as a one-way transformation.
 
 ---
 
-## What is SHA-256?
+### What is SHA-256?
 
 SHA-256 is a member of the SHA-2 family that produces a 256-bit digest.
 
 ---
 
-## What is collision resistance?
+### What is collision resistance?
 
 The property that makes it computationally difficult to find two different inputs producing the same hash.
 
 ---
 
-## What is preimage resistance?
+### What is preimage resistance?
 
 The property that makes it computationally difficult to recover an input corresponding to a known digest.
 
 ---
 
-## What is second-preimage resistance?
+### What is second-preimage resistance?
 
 The property that makes it difficult to find a different message producing the same hash as a specific known message.
 
 ---
 
-## What is the avalanche effect?
+### What is the avalanche effect?
 
 A small input change causes a large and unpredictable change in the hash output.
 
 ---
 
-## Why is MD5 insecure?
+### Why is MD5 insecure?
 
 MD5 has practical collision attacks and should not be used for security-sensitive cryptographic integrity.
 
 ---
 
-## Why is SHA-1 insecure?
+### Why is SHA-1 insecure?
 
 SHA-1 has practical collision attacks and is no longer considered collision-resistant for security-sensitive applications.
 
 ---
 
-## Can SHA-256 be used to store passwords?
+### Can SHA-256 be used to store passwords?
 
 A raw SHA-256 hash is generally inappropriate for password storage because it is too fast. Use a dedicated password hashing/KDF algorithm such as Argon2id.
 
 ---
 
-## What is a salt?
+### What is a salt?
 
 A unique random value added to password hashing so identical passwords do not produce identical stored hashes and precomputed attacks become less useful.
 
 ---
 
-## What is HMAC?
+### What is HMAC?
 
 HMAC is a keyed message authentication construction based on a cryptographic hash function.
 
 ---
 
-## Does HMAC encrypt data?
+### Does HMAC encrypt data?
 
 No. HMAC provides integrity and authentication, not confidentiality.
 
 ---
 
-## What is the difference between HMAC and a digital signature?
+### What is the difference between HMAC and a digital signature?
 
 HMAC uses a shared secret, while digital signatures use a private/public key pair and can provide publicly verifiable authentication.
 
 ---
 
-## What is a length-extension attack?
+### What is a length-extension attack?
 
 An attack applicable to certain hash constructions where knowledge of a digest can allow an attacker to construct a valid digest for an extended message without knowing a secret prefix.
 
 ---
 
-## Why should SHA-256(secret || message) not replace HMAC?
+### Why should SHA-256(secret || message) not replace HMAC?
 
 Because some hash constructions have length-extension properties. HMAC is specifically designed for keyed message authentication.
 
 ---
 
-# 108. Quick Revision Table
+## 108. Quick Revision Table
 
 | Concept | Meaning |
 |---|---|
@@ -2773,7 +2773,7 @@ Because some hash constructions have length-extension properties. HMAC is specif
 
 ---
 
-# 109. Key Takeaways
+## 109. Key Takeaways
 
 ```text
 1. Hash functions map arbitrary input to fixed-length digests.
@@ -2815,7 +2815,7 @@ Because some hash constructions have length-extension properties. HMAC is specif
 
 ---
 
-# 110. Chapter Summary
+## 110. Chapter Summary
 
 This chapter covered the fundamentals and practical applications of cryptographic hash functions.
 
@@ -2880,9 +2880,9 @@ A useful mental model is:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 06 – Message Authentication Codes (MAC & HMAC)
+### Chapter 06 – Message Authentication Codes (MAC & HMAC)
 
 The next chapter focuses specifically on **message authentication** and will cover:
 

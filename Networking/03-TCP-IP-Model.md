@@ -1,10 +1,10 @@
 # 03 - TCP/IP Model
 
-# Part 1 — Introduction to the TCP/IP Model
+## Part 1 — Introduction to the TCP/IP Model
 
 ---
 
-# Overview
+## Overview
 
 The **TCP/IP Model** (Transmission Control Protocol/Internet Protocol) is the foundation of modern computer networking.
 
@@ -35,7 +35,7 @@ Understanding the TCP/IP Model is essential for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -50,7 +50,7 @@ After completing this chapter, you should be able to:
 
 ---
 
-# What is TCP/IP?
+## What is TCP/IP?
 
 TCP/IP stands for:
 
@@ -87,11 +87,11 @@ Together, these protocols define how devices communicate across local networks, 
 
 ---
 
-# History of TCP/IP
+## History of TCP/IP
 
 The TCP/IP protocol suite originated from research funded by the **United States Department of Defense (DoD)** through the **Defense Advanced Research Projects Agency (DARPA)**.
 
-### Timeline
+#### Timeline
 
 | Year | Milestone |
 |------|-----------|
@@ -105,7 +105,7 @@ The transition to TCP/IP enabled networks built with different technologies to c
 
 ---
 
-# Why Was TCP/IP Developed?
+## Why Was TCP/IP Developed?
 
 Early networking systems often relied on proprietary protocols that were incompatible with one another.
 
@@ -122,7 +122,7 @@ Its design allows networks of varying sizes and technologies to interconnect sea
 
 ---
 
-# Goals of the TCP/IP Model
+## Goals of the TCP/IP Model
 
 The TCP/IP Model was designed to:
 
@@ -137,7 +137,7 @@ These goals have allowed the Internet to grow into the largest interconnected ne
 
 ---
 
-# TCP/IP Architecture
+## TCP/IP Architecture
 
 The TCP/IP Model consists of four layers.
 
@@ -157,7 +157,7 @@ Each layer has specific responsibilities while interacting with adjacent layers.
 
 ---
 
-# Layer Responsibilities
+## Layer Responsibilities
 
 ```
 Application
@@ -193,7 +193,7 @@ Local network communication
 
 ---
 
-# Why Only Four Layers?
+## Why Only Four Layers?
 
 Unlike the OSI Model, the TCP/IP Model combines several related responsibilities.
 
@@ -206,7 +206,7 @@ This simplification reflects the practical implementation of Internet protocols.
 
 ---
 
-# Communication Workflow
+## Communication Workflow
 
 A simplified communication process:
 
@@ -242,9 +242,9 @@ Each protocol contributes a specific function to deliver the data successfully.
 
 ---
 
-# TCP/IP Layer Overview
+## TCP/IP Layer Overview
 
-## 1. Application Layer
+### 1. Application Layer
 
 Provides network services directly to user applications.
 
@@ -268,7 +268,7 @@ Responsibilities include:
 
 ---
 
-## 2. Transport Layer
+### 2. Transport Layer
 
 Provides end-to-end communication between applications.
 
@@ -287,7 +287,7 @@ Responsibilities:
 
 ---
 
-## 3. Internet Layer
+### 3. Internet Layer
 
 Responsible for logical addressing and routing packets between networks.
 
@@ -307,7 +307,7 @@ Responsibilities:
 
 ---
 
-## 4. Network Access Layer
+### 4. Network Access Layer
 
 Responsible for communication over the local network.
 
@@ -327,7 +327,7 @@ Responsibilities:
 
 ---
 
-# Comparison with the OSI Model
+## Comparison with the OSI Model
 
 ```
 OSI Model                    TCP/IP Model
@@ -346,7 +346,7 @@ Physical   ┘──────► Network Access
 
 ---
 
-# OSI vs TCP/IP
+## OSI vs TCP/IP
 
 | Feature | OSI Model | TCP/IP Model |
 |----------|-----------|--------------|
@@ -360,29 +360,29 @@ Physical   ┘──────► Network Access
 
 ---
 
-# Why TCP/IP Became the Internet Standard
+## Why TCP/IP Became the Internet Standard
 
 TCP/IP became the dominant networking model because it offered:
 
-### Scalability
+#### Scalability
 
 Supports networks ranging from a few devices to billions of connected systems.
 
-### Flexibility
+#### Flexibility
 
 Works across different hardware platforms, operating systems, and communication technologies.
 
-### Reliability
+#### Reliability
 
 Provides mechanisms for reliable communication through protocols such as TCP.
 
-### Open Standards
+#### Open Standards
 
 The protocol suite is defined through publicly available standards, enabling widespread adoption and interoperability.
 
 ---
 
-# Enterprise Communication Example
+## Enterprise Communication Example
 
 Consider an employee accessing a cloud-hosted application.
 
@@ -438,7 +438,7 @@ Each layer of the TCP/IP Model contributes to delivering the request and returni
 
 ---
 
-# TCP/IP in Cybersecurity
+## TCP/IP in Cybersecurity
 
 Cybersecurity professionals analyze and defend communication at every TCP/IP layer.
 
@@ -455,7 +455,7 @@ Understanding the TCP/IP Model helps identify where attacks occur and where defe
 
 ---
 
-# Benefits of the TCP/IP Model
+## Benefits of the TCP/IP Model
 
 - Vendor-independent communication
 - Modular architecture
@@ -468,7 +468,7 @@ Understanding the TCP/IP Model helps identify where attacks occur and where defe
 
 ---
 
-# Limitations
+## Limitations
 
 Although highly successful, the TCP/IP Model has some limitations:
 
@@ -479,7 +479,7 @@ Although highly successful, the TCP/IP Model has some limitations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The TCP/IP Model is the practical networking model used by the Internet.
 - It consists of four layers: Application, Transport, Internet, and Network Access.
@@ -487,13 +487,13 @@ Although highly successful, the TCP/IP Model has some limitations:
 - TCP/IP emphasizes interoperability, scalability, and reliable communication.
 - Understanding the TCP/IP Model is essential for networking, cloud computing, and cybersecurity professionals.
 
-# 03 - TCP/IP Model
+## 03 - TCP/IP Model
 
-# Part 2 — TCP/IP Layers (In Depth)
+## Part 2 — TCP/IP Layers (In Depth)
 
 ---
 
-# Overview
+## Overview
 
 The TCP/IP Model divides network communication into four logical layers.
 
@@ -517,7 +517,7 @@ Together, these layers enable secure, reliable, and scalable communication betwe
 
 ---
 
-# 1. Application Layer
+## 1. Application Layer
 
 ```
 +------------------------------+
@@ -527,7 +527,7 @@ Together, these layers enable secure, reliable, and scalable communication betwe
 
 ---
 
-## Overview
+### Overview
 
 The Application Layer is the highest layer of the TCP/IP Model.
 
@@ -543,7 +543,7 @@ Applications do **not** communicate directly with the network. Instead, they rel
 
 ---
 
-# Responsibilities
+## Responsibilities
 
 - Web communication
 - File transfer
@@ -558,7 +558,7 @@ Applications do **not** communicate directly with the network. Instead, they rel
 
 ---
 
-# Common Protocols
+## Common Protocols
 
 | Protocol | Purpose |
 |----------|----------|
@@ -580,7 +580,7 @@ Applications do **not** communicate directly with the network. Instead, they rel
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A user enters:
 
@@ -597,7 +597,7 @@ The Application Layer performs tasks such as:
 
 ---
 
-# Cybersecurity Threats
+## Cybersecurity Threats
 
 Examples include:
 
@@ -614,7 +614,7 @@ Examples include:
 
 ---
 
-# Security Controls
+## Security Controls
 
 - Web Application Firewall (WAF)
 - Secure coding practices
@@ -628,7 +628,7 @@ Examples include:
 
 ---
 
-# Wireshark Observation
+## Wireshark Observation
 
 Typical protocols visible:
 
@@ -641,7 +641,7 @@ Typical protocols visible:
 
 ---
 
-# 2. Transport Layer
+## 2. Transport Layer
 
 ```
 +------------------------------+
@@ -651,7 +651,7 @@ Typical protocols visible:
 
 ---
 
-# Overview
+## Overview
 
 The Transport Layer provides **end-to-end communication** between applications.
 
@@ -666,7 +666,7 @@ Depending on the protocol used, communication may be:
 
 ---
 
-# Responsibilities
+## Responsibilities
 
 - Segmentation
 - Reassembly
@@ -678,9 +678,9 @@ Depending on the protocol used, communication may be:
 
 ---
 
-# Major Protocols
+## Major Protocols
 
-## TCP
+### TCP
 
 Characteristics:
 
@@ -701,7 +701,7 @@ Used for:
 
 ---
 
-## UDP
+### UDP
 
 Characteristics:
 
@@ -722,7 +722,7 @@ Used for:
 
 ---
 
-# Port Numbers
+## Port Numbers
 
 Ports identify applications on a device.
 
@@ -746,7 +746,7 @@ Ports identify applications on a device.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Browser
@@ -764,7 +764,7 @@ TCP guarantees that packets arrive correctly and in order before they are delive
 
 ---
 
-# Cybersecurity Threats
+## Cybersecurity Threats
 
 - TCP SYN Flood
 - UDP Flood
@@ -775,7 +775,7 @@ TCP guarantees that packets arrive correctly and in order before they are delive
 
 ---
 
-# Security Controls
+## Security Controls
 
 - Stateful firewalls
 - SYN Cookies
@@ -786,7 +786,7 @@ TCP guarantees that packets arrive correctly and in order before they are delive
 
 ---
 
-# Wireshark Observation
+## Wireshark Observation
 
 Typical fields:
 
@@ -799,7 +799,7 @@ Typical fields:
 
 ---
 
-# 3. Internet Layer
+## 3. Internet Layer
 
 ```
 +------------------------------+
@@ -809,7 +809,7 @@ Typical fields:
 
 ---
 
-# Overview
+## Overview
 
 The Internet Layer is responsible for **logical addressing and routing packets between networks**.
 
@@ -817,7 +817,7 @@ This layer determines how packets travel from the source host to the destination
 
 ---
 
-# Responsibilities
+## Responsibilities
 
 - Logical addressing
 - Packet forwarding
@@ -827,7 +827,7 @@ This layer determines how packets travel from the source host to the destination
 
 ---
 
-# Major Protocols
+## Major Protocols
 
 | Protocol | Purpose |
 |----------|----------|
@@ -839,7 +839,7 @@ This layer determines how packets travel from the source host to the destination
 
 ---
 
-# IP Addressing
+## IP Addressing
 
 Example IPv4 addresses:
 
@@ -859,7 +859,7 @@ Example IPv6 address:
 
 ---
 
-# Devices
+## Devices
 
 - Routers
 - Layer 3 Switches
@@ -868,7 +868,7 @@ Example IPv6 address:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Laptop
@@ -898,7 +898,7 @@ The Internet Layer determines the best available path to reach the destination.
 
 ---
 
-# Cybersecurity Threats
+## Cybersecurity Threats
 
 - IP Spoofing
 - ICMP Abuse
@@ -908,7 +908,7 @@ The Internet Layer determines the best available path to reach the destination.
 
 ---
 
-# Security Controls
+## Security Controls
 
 - ACLs
 - Anti-spoofing filters
@@ -919,7 +919,7 @@ The Internet Layer determines the best available path to reach the destination.
 
 ---
 
-# Wireshark Observation
+## Wireshark Observation
 
 Common fields include:
 
@@ -931,7 +931,7 @@ Common fields include:
 
 ---
 
-# 4. Network Access Layer
+## 4. Network Access Layer
 
 ```
 +------------------------------+
@@ -941,7 +941,7 @@ Common fields include:
 
 ---
 
-# Overview
+## Overview
 
 The Network Access Layer is responsible for communication over the local network.
 
@@ -949,7 +949,7 @@ It combines the functions of the **Physical Layer** and the **Data Link Layer** 
 
 ---
 
-# Responsibilities
+## Responsibilities
 
 - Framing
 - MAC addressing
@@ -960,7 +960,7 @@ It combines the functions of the **Physical Layer** and the **Data Link Layer** 
 
 ---
 
-# Technologies
+## Technologies
 
 - Ethernet
 - Wi-Fi
@@ -970,7 +970,7 @@ It combines the functions of the **Physical Layer** and the **Data Link Layer** 
 
 ---
 
-# Protocols
+## Protocols
 
 - ARP
 - Ethernet
@@ -980,7 +980,7 @@ It combines the functions of the **Physical Layer** and the **Data Link Layer** 
 
 ---
 
-# Address Used
+## Address Used
 
 ```
 MAC Address
@@ -994,7 +994,7 @@ Example:
 
 ---
 
-# Devices
+## Devices
 
 - Switches
 - Bridges
@@ -1005,7 +1005,7 @@ Example:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Laptop
@@ -1027,7 +1027,7 @@ The Network Access Layer delivers frames between devices connected to the same l
 
 ---
 
-# Cybersecurity Threats
+## Cybersecurity Threats
 
 - ARP Spoofing
 - MAC Flooding
@@ -1037,7 +1037,7 @@ The Network Access Layer delivers frames between devices connected to the same l
 
 ---
 
-# Security Controls
+## Security Controls
 
 - Port Security
 - Dynamic ARP Inspection (DAI)
@@ -1048,7 +1048,7 @@ The Network Access Layer delivers frames between devices connected to the same l
 
 ---
 
-# Wireshark Observation
+## Wireshark Observation
 
 Common fields include:
 
@@ -1060,7 +1060,7 @@ Common fields include:
 
 ---
 
-# Layer Interaction
+## Layer Interaction
 
 The TCP/IP layers work together to deliver application data.
 
@@ -1104,7 +1104,7 @@ Each layer provides services to the layer above while relying on the services of
 
 ---
 
-# TCP/IP Layer Summary
+## TCP/IP Layer Summary
 
 | Layer | Primary Function | Address Used | Example Protocols | Typical Devices |
 |--------|------------------|--------------|-------------------|-----------------|
@@ -1113,13 +1113,13 @@ Each layer provides services to the layer above while relying on the services of
 | Internet | Logical addressing and routing | IP Address | IPv4, IPv6, ICMP, IPsec | Router, Layer 3 Switch |
 | Network Access | Local network communication | MAC Address | Ethernet, ARP, Wi-Fi | Switch, Bridge, NIC |
 
-# 03 - TCP/IP Model
+## 03 - TCP/IP Model
 
-# Part 3 — End-to-End Communication Workflow, DNS, ARP, TCP Handshake, Routing, NAT, and Packet Journey
+## Part 3 — End-to-End Communication Workflow, DNS, ARP, TCP Handshake, Routing, NAT, and Packet Journey
 
 ---
 
-# Overview
+## Overview
 
 The TCP/IP Model is best understood by following the complete journey of a packet.
 
@@ -1149,7 +1149,7 @@ Understanding this workflow is essential for:
 
 ---
 
-# Enterprise Communication Scenario
+## Enterprise Communication Scenario
 
 An employee wants to access:
 
@@ -1207,7 +1207,7 @@ Let's follow every networking step.
 
 ---
 
-# Step 1 — User Types a URL
+## Step 1 — User Types a URL
 
 Example:
 
@@ -1230,7 +1230,7 @@ The browser first needs to determine where the server is located.
 
 ---
 
-# Step 2 — DNS Resolution
+## Step 2 — DNS Resolution
 
 DNS converts:
 
@@ -1292,7 +1292,7 @@ Without DNS, users would need to remember IP addresses instead of domain names.
 
 ---
 
-# Step 3 — Determine Destination Network
+## Step 3 — Determine Destination Network
 
 The operating system compares:
 
@@ -1340,7 +1340,7 @@ Default Gateway
 
 ---
 
-# Step 4 — ARP Resolution
+## Step 4 — ARP Resolution
 
 The laptop knows:
 
@@ -1380,7 +1380,7 @@ The laptop stores this information in its ARP cache.
 
 ---
 
-# Step 5 — TCP Three-Way Handshake
+## Step 5 — TCP Three-Way Handshake
 
 Before sending application data using TCP, a reliable connection must be established.
 
@@ -1406,7 +1406,7 @@ Connection Established
 
 ---
 
-## Why Is This Required?
+### Why Is This Required?
 
 TCP ensures:
 
@@ -1419,7 +1419,7 @@ Without the handshake, the sender would not know whether the receiver is ready t
 
 ---
 
-# TCP Flags
+## TCP Flags
 
 Common TCP flags include:
 
@@ -1434,7 +1434,7 @@ Common TCP flags include:
 
 ---
 
-# Step 6 — TLS Handshake (HTTPS)
+## Step 6 — TLS Handshake (HTTPS)
 
 Because HTTPS is being used, the client and server establish an encrypted session.
 
@@ -1472,7 +1472,7 @@ Encrypted Communication
 
 ---
 
-# Step 7 — HTTP Request
+## Step 7 — HTTP Request
 
 The browser sends:
 
@@ -1488,7 +1488,7 @@ Application data is now ready for encapsulation.
 
 ---
 
-# Step 8 — Encapsulation
+## Step 8 — Encapsulation
 
 Application Data
 
@@ -1546,7 +1546,7 @@ Each layer adds only the information required for its own responsibilities.
 
 ---
 
-# Step 9 — Local Switch Processing
+## Step 9 — Local Switch Processing
 
 The Ethernet frame reaches the access switch.
 
@@ -1566,7 +1566,7 @@ The switch forwards the frame based on its MAC address table.
 
 ---
 
-# Step 10 — Router Processing
+## Step 10 — Router Processing
 
 The router removes the incoming Ethernet frame and examines:
 
@@ -1592,7 +1592,7 @@ The router then creates a new Layer 2 frame with updated source and destination 
 
 ---
 
-# Step 11 — Network Address Translation (NAT)
+## Step 11 — Network Address Translation (NAT)
 
 Most enterprise endpoints use private IP addresses.
 
@@ -1620,7 +1620,7 @@ The public IP address is then used for Internet communication.
 
 ---
 
-# Step 12 — Internet Routing
+## Step 12 — Internet Routing
 
 The packet traverses multiple routers across the Internet.
 
@@ -1656,7 +1656,7 @@ Each router makes an independent forwarding decision based on the destination IP
 
 ---
 
-# Step 13 — Arrival at the Web Server
+## Step 13 — Arrival at the Web Server
 
 The server receives:
 
@@ -1698,7 +1698,7 @@ The web server processes the HTTP request and generates a response.
 
 ---
 
-# Step 14 — Response to the Client
+## Step 14 — Response to the Client
 
 The response follows the reverse path.
 
@@ -1738,7 +1738,7 @@ The client receives the response and renders the requested webpage.
 
 ---
 
-# End-to-End Communication Flow
+## End-to-End Communication Flow
 
 ```
 Browser
@@ -1814,7 +1814,7 @@ Browser
 
 ---
 
-# What Changes During the Journey?
+## What Changes During the Journey?
 
 | Component | Changes? |
 |-----------|----------|
@@ -1825,7 +1825,7 @@ Browser
 
 ---
 
-# Packet Structure
+## Packet Structure
 
 Example Ethernet Frame
 
@@ -1845,7 +1845,7 @@ Example Ethernet Frame
 
 ---
 
-# IPv4 Packet
+## IPv4 Packet
 
 ```
 +--------------------------------------+
@@ -1862,7 +1862,7 @@ TCP Segment
 
 ---
 
-# TCP Segment
+## TCP Segment
 
 ```
 +--------------------------------------+
@@ -1879,7 +1879,7 @@ Encrypted HTTPS Data
 
 ---
 
-# Wireshark Packet View
+## Wireshark Packet View
 
 A typical HTTPS session appears as:
 
@@ -1911,7 +1911,7 @@ Wireshark displays protocol headers in the same order that they were added durin
 
 ---
 
-# Common Communication Failures
+## Common Communication Failures
 
 | Failure | Possible Cause |
 |----------|----------------|
@@ -1927,7 +1927,7 @@ Understanding where the failure occurs helps isolate the responsible TCP/IP laye
 
 ---
 
-# Business Impact
+## Business Impact
 
 The TCP/IP communication workflow enables:
 
@@ -1944,7 +1944,7 @@ A clear understanding of each step is essential for diagnosing network issues, d
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Every network request follows a structured sequence: DNS → ARP → TCP → TLS → HTTP → Routing → Response.
 - TCP establishes reliable communication through a three-way handshake before application data is exchanged.
@@ -1953,13 +1953,13 @@ A clear understanding of each step is essential for diagnosing network issues, d
 - NAT allows private networks to communicate with the public Internet using routable IP addresses.
 - Packet analyzers such as Wireshark reveal the encapsulated protocol stack, providing valuable insight for troubleshooting and security analysis.
 
-# 03 - TCP/IP Model
+## 03 - TCP/IP Model
 
-# Part 4 — Enterprise Troubleshooting, Security Architecture, Practical Labs, Interview Questions, and Chapter Review
+## Part 4 — Enterprise Troubleshooting, Security Architecture, Practical Labs, Interview Questions, and Chapter Review
 
 ---
 
-# Overview
+## Overview
 
 Understanding the TCP/IP Model is not only about learning protocols—it is about applying that knowledge to design, secure, troubleshoot, and optimize real-world networks.
 
@@ -1976,7 +1976,7 @@ This section demonstrates how the TCP/IP Model is applied in enterprise environm
 
 ---
 
-# Enterprise Troubleshooting Methodology
+## Enterprise Troubleshooting Methodology
 
 A structured troubleshooting approach reduces downtime and avoids unnecessary changes.
 
@@ -2012,13 +2012,13 @@ Never begin troubleshooting by changing configurations without first identifying
 
 ---
 
-# Layer-Based Troubleshooting
+## Layer-Based Troubleshooting
 
 ---
 
-## Application Layer
+### Application Layer
 
-### Common Problems
+#### Common Problems
 
 - Website unavailable
 - API failures
@@ -2028,7 +2028,7 @@ Never begin troubleshooting by changing configurations without first identifying
 - SSL/TLS certificate issues
 - File transfer failures
 
-### Symptoms
+#### Symptoms
 
 - HTTP 404/500 errors
 - "Host not found"
@@ -2036,7 +2036,7 @@ Never begin troubleshooting by changing configurations without first identifying
 - Browser certificate warnings
 - SMTP delivery errors
 
-### Diagnostic Tools
+#### Diagnostic Tools
 
 - Browser Developer Tools
 - `curl`
@@ -2059,9 +2059,9 @@ nslookup example.com
 
 ---
 
-## Transport Layer
+### Transport Layer
 
-### Common Problems
+#### Common Problems
 
 - TCP handshake failures
 - Closed ports
@@ -2070,14 +2070,14 @@ nslookup example.com
 - Connection resets
 - UDP packet loss
 
-### Symptoms
+#### Symptoms
 
 - Connection timeout
 - "Connection refused"
 - Slow application response
 - Interrupted sessions
 
-### Diagnostic Tools
+#### Diagnostic Tools
 
 ```bash
 netstat
@@ -2101,9 +2101,9 @@ nmap -Pn example.com
 
 ---
 
-## Internet Layer
+### Internet Layer
 
-### Common Problems
+#### Common Problems
 
 - Incorrect IP configuration
 - Routing loops
@@ -2111,13 +2111,13 @@ nmap -Pn example.com
 - ACL blocking traffic
 - Fragmentation issues
 
-### Symptoms
+#### Symptoms
 
 - Unable to reach remote hosts
 - Ping failures
 - Traceroute stops unexpectedly
 
-### Diagnostic Tools
+#### Diagnostic Tools
 
 ```bash
 ping
@@ -2137,9 +2137,9 @@ ip addr
 
 ---
 
-## Network Access Layer
+### Network Access Layer
 
-### Common Problems
+#### Common Problems
 
 - Cable failures
 - VLAN mismatch
@@ -2147,14 +2147,14 @@ ip addr
 - Switch port shutdown
 - MAC address learning issues
 
-### Symptoms
+#### Symptoms
 
 - Link down
 - No local connectivity
 - Duplicate MAC warnings
 - Intermittent packet loss
 
-### Diagnostic Tools
+#### Diagnostic Tools
 
 ```bash
 arp -a
@@ -2168,7 +2168,7 @@ ethtool
 
 ---
 
-# Enterprise Troubleshooting Flow
+## Enterprise Troubleshooting Flow
 
 ```
 Website Not Working
@@ -2246,15 +2246,15 @@ This methodology minimizes troubleshooting time by isolating failures to the app
 
 ---
 
-# Security Across the TCP/IP Layers
+## Security Across the TCP/IP Layers
 
 Security should be implemented at every layer.
 
 ---
 
-## Application Layer
+### Application Layer
 
-### Common Threats
+#### Common Threats
 
 - SQL Injection
 - Cross-Site Scripting (XSS)
@@ -2265,7 +2265,7 @@ Security should be implemented at every layer.
 - XML External Entity (XXE)
 - Remote Code Execution (RCE)
 
-### Security Controls
+#### Security Controls
 
 - Secure coding
 - Input validation
@@ -2278,9 +2278,9 @@ Security should be implemented at every layer.
 
 ---
 
-## Transport Layer
+### Transport Layer
 
-### Common Threats
+#### Common Threats
 
 - SYN Flood
 - UDP Flood
@@ -2288,7 +2288,7 @@ Security should be implemented at every layer.
 - Session hijacking
 - TCP Reset attacks
 
-### Security Controls
+#### Security Controls
 
 - Stateful firewalls
 - IDS/IPS
@@ -2298,16 +2298,16 @@ Security should be implemented at every layer.
 
 ---
 
-## Internet Layer
+### Internet Layer
 
-### Common Threats
+#### Common Threats
 
 - IP Spoofing
 - ICMP abuse
 - Route hijacking
 - Packet fragmentation attacks
 
-### Security Controls
+#### Security Controls
 
 - ACLs
 - Anti-spoofing filters
@@ -2317,9 +2317,9 @@ Security should be implemented at every layer.
 
 ---
 
-## Network Access Layer
+### Network Access Layer
 
-### Common Threats
+#### Common Threats
 
 - ARP Spoofing
 - MAC Flooding
@@ -2328,7 +2328,7 @@ Security should be implemented at every layer.
 - DHCP Starvation
 - DHCP Spoofing
 
-### Security Controls
+#### Security Controls
 
 - Port Security
 - Dynamic ARP Inspection (DAI)
@@ -2339,7 +2339,7 @@ Security should be implemented at every layer.
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
                     Internet
@@ -2368,15 +2368,15 @@ Security controls operate across multiple TCP/IP layers to provide **Defense in 
 
 ---
 
-# Wireshark Practical Lab
+## Wireshark Practical Lab
 
-## Objective
+### Objective
 
 Observe a complete HTTPS communication.
 
 ---
 
-## Requirements
+### Requirements
 
 - Wireshark
 - Web browser
@@ -2384,7 +2384,7 @@ Observe a complete HTTPS communication.
 
 ---
 
-## Procedure
+### Procedure
 
 1. Start packet capture.
 2. Clear browser cache (optional).
@@ -2410,9 +2410,9 @@ http
 
 ---
 
-## Observe
+### Observe
 
-### DNS Query
+#### DNS Query
 
 ```
 Standard Query
@@ -2422,7 +2422,7 @@ example.com
 
 ---
 
-### TCP Handshake
+#### TCP Handshake
 
 ```
 SYN
@@ -2438,7 +2438,7 @@ ACK
 
 ---
 
-### TLS Handshake
+#### TLS Handshake
 
 ```
 Client Hello
@@ -2458,7 +2458,7 @@ Finished
 
 ---
 
-### HTTP Request
+#### HTTP Request
 
 ```
 GET /
@@ -2470,7 +2470,7 @@ example.com
 
 ---
 
-### HTTP Response
+#### HTTP Response
 
 ```
 HTTP/1.1 200 OK
@@ -2478,9 +2478,9 @@ HTTP/1.1 200 OK
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 Employees report:
 
@@ -2490,9 +2490,9 @@ Unable to access Microsoft 365.
 
 ---
 
-## Investigation
+### Investigation
 
-### Step 1
+#### Step 1
 
 DNS
 
@@ -2506,7 +2506,7 @@ Successful
 
 ---
 
-### Step 2
+#### Step 2
 
 Ping
 
@@ -2518,7 +2518,7 @@ Packets received.
 
 ---
 
-### Step 3
+#### Step 3
 
 TCP Port
 
@@ -2530,7 +2530,7 @@ Reachable.
 
 ---
 
-### Step 4
+#### Step 4
 
 TLS Inspection
 
@@ -2538,7 +2538,7 @@ Certificate valid.
 
 ---
 
-### Step 5
+#### Step 5
 
 Application Logs
 
@@ -2550,7 +2550,7 @@ Identity provider is returning:
 
 ---
 
-## Root Cause
+### Root Cause
 
 Expired authentication token issued by the identity platform.
 
@@ -2558,7 +2558,7 @@ The issue resides at the **Application Layer**, not the underlying network.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use DNSSEC where appropriate.
 - Enforce TLS 1.2 or TLS 1.3.
@@ -2573,7 +2573,7 @@ The issue resides at the **Application Layer**, not the underlying network.
 
 ---
 
-# Common TCP/IP Commands
+## Common TCP/IP Commands
 
 | Command | Purpose |
 |----------|----------|
@@ -2595,17 +2595,17 @@ The issue resides at the **Application Layer**, not the underlying network.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is the TCP/IP Model?
+#### What is the TCP/IP Model?
 
 The TCP/IP Model is a four-layer networking architecture that defines how devices communicate over interconnected networks. It is the foundation of the Internet.
 
 ---
 
-### Name the four TCP/IP layers.
+#### Name the four TCP/IP layers.
 
 - Application
 - Transport
@@ -2614,21 +2614,21 @@ The TCP/IP Model is a four-layer networking architecture that defines how device
 
 ---
 
-### Which protocol is responsible for reliable communication?
+#### Which protocol is responsible for reliable communication?
 
 **TCP (Transmission Control Protocol)** provides reliable, ordered, connection-oriented communication.
 
 ---
 
-### Which protocol is used to resolve domain names?
+#### Which protocol is used to resolve domain names?
 
 **DNS (Domain Name System)** translates domain names into IP addresses.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What happens before an HTTPS request is sent?
+#### What happens before an HTTPS request is sent?
 
 A typical sequence includes:
 
@@ -2640,13 +2640,13 @@ A typical sequence includes:
 
 ---
 
-### Why is NAT required?
+#### Why is NAT required?
 
 NAT enables devices using private IP addresses to communicate with external networks by translating them into routable public IP addresses.
 
 ---
 
-### What is the difference between TCP and UDP?
+#### What is the difference between TCP and UDP?
 
 | TCP | UDP |
 |------|-----|
@@ -2658,9 +2658,9 @@ NAT enables devices using private IP addresses to communicate with external netw
 
 ---
 
-## Advanced
+### Advanced
 
-### Explain the journey of a packet from a browser to a web server.
+#### Explain the journey of a packet from a browser to a web server.
 
 A complete answer should include:
 
@@ -2681,7 +2681,7 @@ A complete answer should include:
 
 ---
 
-### How would you troubleshoot a website that is unreachable?
+#### How would you troubleshoot a website that is unreachable?
 
 A structured approach includes:
 
@@ -2695,15 +2695,15 @@ A structured approach includes:
 
 ---
 
-### Why is the TCP/IP Model important in cybersecurity?
+#### Why is the TCP/IP Model important in cybersecurity?
 
 It helps security professionals understand where attacks occur, deploy appropriate controls at each layer, investigate incidents, and analyze network traffic during detection and response.
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 791 – Internet Protocol (IPv4)
 - RFC 8200 – Internet Protocol Version 6 (IPv6)
@@ -2711,13 +2711,13 @@ It helps security professionals understand where attacks occur, deploy appropria
 - RFC 768 – User Datagram Protocol (UDP)
 - RFC 1035 – Domain Name System (DNS)
 
-## Security Guidance
+### Security Guidance
 
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-41 (Guidelines on Firewalls and Firewall Policy)
 - NIST SP 800-61 (Computer Security Incident Handling Guide)
 
-## Vendor Documentation
+### Vendor Documentation
 
 - Cisco Networking Documentation
 - Microsoft Learn Networking Documentation
@@ -2726,13 +2726,13 @@ It helps security professionals understand where attacks occur, deploy appropria
 
 ---
 
-# Summary
+## Summary
 
 The TCP/IP Model is the practical foundation of modern networking and the Internet. It defines how applications communicate, how data is transported reliably, how packets are addressed and routed across networks, and how local devices exchange frames. A strong understanding of the TCP/IP Model enables professionals to troubleshoot network issues, design scalable infrastructures, secure communications, and analyze network traffic during cybersecurity investigations.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 

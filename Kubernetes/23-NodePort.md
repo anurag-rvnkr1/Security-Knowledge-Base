@@ -29,7 +29,7 @@ NodePort is commonly used for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -46,7 +46,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need NodePort?
+## Why Do We Need NodePort?
 
 Suppose we have:
 
@@ -82,7 +82,7 @@ External users cannot reach the application.
 
 ---
 
-# Solution
+## Solution
 
 Use a NodePort Service.
 
@@ -108,7 +108,7 @@ Pods
 
 ---
 
-# What is a NodePort?
+## What is a NodePort?
 
 A NodePort Service opens a port on **every Node** in the cluster.
 
@@ -126,7 +126,7 @@ Traffic arriving on that port is forwarded to the Service and then to backend Po
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                   Internet
@@ -164,7 +164,7 @@ Traffic arriving on that port is forwarded to the Service and then to backend Po
 
 ---
 
-# NodePort Characteristics
+## NodePort Characteristics
 
 - Accessible from outside the cluster
 - Opens the same port on every Node
@@ -175,7 +175,7 @@ Traffic arriving on that port is forwarded to the Service and then to backend Po
 
 ---
 
-# Service Hierarchy
+## Service Hierarchy
 
 ```
 NodePort
@@ -193,7 +193,7 @@ Every NodePort Service automatically includes a ClusterIP.
 
 ---
 
-# NodePort Workflow
+## NodePort Workflow
 
 ```
 Client
@@ -217,7 +217,7 @@ Backend Pod
 
 ---
 
-# NodePort Range
+## NodePort Range
 
 Default Kubernetes range:
 
@@ -243,7 +243,7 @@ This range can be customized by the cluster administrator.
 
 ---
 
-# NodePort YAML
+## NodePort YAML
 
 ```yaml
 apiVersion: v1
@@ -273,7 +273,7 @@ spec:
 
 ---
 
-# YAML Breakdown
+## YAML Breakdown
 
 ```
 Service
@@ -297,7 +297,7 @@ Pods
 
 ---
 
-# Port vs TargetPort vs NodePort
+## Port vs TargetPort vs NodePort
 
 Example:
 
@@ -333,7 +333,7 @@ Container Port
 
 ---
 
-# Automatic NodePort Assignment
+## Automatic NodePort Assignment
 
 If:
 
@@ -347,7 +347,7 @@ Kubernetes automatically assigns an available port from the configured NodePort 
 
 ---
 
-# External Access
+## External Access
 
 Example:
 
@@ -369,7 +369,7 @@ This reaches the backend Pods through the Service.
 
 ---
 
-# Multiple Nodes
+## Multiple Nodes
 
 Suppose:
 
@@ -401,7 +401,7 @@ Clients can connect using any Node IP.
 
 ---
 
-# Traffic Flow
+## Traffic Flow
 
 ```
 Client
@@ -423,7 +423,7 @@ The destination Pod may be on the same Node or a different Node.
 
 ---
 
-# Internal Load Balancing
+## Internal Load Balancing
 
 Suppose:
 
@@ -465,7 +465,7 @@ Traffic distribution is handled by kube-proxy.
 
 ---
 
-# Pod Scaling
+## Pod Scaling
 
 Current:
 
@@ -485,7 +485,7 @@ No NodePort changes are required.
 
 ---
 
-# Pod Failure
+## Pod Failure
 
 Suppose:
 
@@ -503,7 +503,7 @@ Traffic is automatically redirected to healthy Pods.
 
 ---
 
-# Node Failure
+## Node Failure
 
 Suppose:
 
@@ -539,7 +539,7 @@ provided the cluster networking remains healthy.
 
 ---
 
-# NodePort vs ClusterIP
+## NodePort vs ClusterIP
 
 | ClusterIP | NodePort |
 |------------|----------|
@@ -550,7 +550,7 @@ provided the cluster networking remains healthy.
 
 ---
 
-# NodePort vs LoadBalancer
+## NodePort vs LoadBalancer
 
 | NodePort | LoadBalancer |
 |-----------|--------------|
@@ -560,7 +560,7 @@ provided the cluster networking remains healthy.
 
 ---
 
-# NodePort vs Ingress
+## NodePort vs Ingress
 
 | NodePort | Ingress |
 |-----------|----------|
@@ -570,7 +570,7 @@ provided the cluster networking remains healthy.
 
 ---
 
-# Viewing Services
+## Viewing Services
 
 ```bash
 kubectl get svc
@@ -598,7 +598,7 @@ NodePort
 
 ---
 
-# Describe Service
+## Describe Service
 
 ```bash
 kubectl describe svc web-service
@@ -613,7 +613,7 @@ Displays:
 
 ---
 
-# Viewing Endpoints
+## Viewing Endpoints
 
 ```bash
 kubectl get endpoints
@@ -623,7 +623,7 @@ Verify backend Pods.
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -651,7 +651,7 @@ kubectl delete svc web-service
 
 ---
 
-# NodePort Architecture Summary
+## NodePort Architecture Summary
 
 ```
 Client
@@ -679,9 +679,9 @@ Pods
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use NodePort Mainly for Development
+#### 1. Use NodePort Mainly for Development
 
 For production cloud environments, prefer:
 
@@ -690,33 +690,33 @@ For production cloud environments, prefer:
 
 ---
 
-### 2. Avoid Hardcoding Node IPs
+#### 2. Avoid Hardcoding Node IPs
 
 When possible, place a load balancer or Ingress in front of NodePort Services.
 
 ---
 
-### 3. Verify Firewall Rules
+#### 3. Verify Firewall Rules
 
 Ensure the NodePort range is allowed through firewalls and security groups.
 
 ---
 
-### 4. Monitor Exposed Services
+#### 4. Monitor Exposed Services
 
 Every open NodePort increases the cluster's externally reachable surface.
 
 ---
 
-### 5. Use Labels Consistently
+#### 5. Use Labels Consistently
 
 Incorrect labels lead to Services without backend Pods.
 
 ---
 
-# How NodePort Works Internally
+## How NodePort Works Internally
 
-## Overview
+### Overview
 
 A **NodePort Service** extends the functionality of a **ClusterIP Service** by exposing the Service on a port of every Kubernetes worker Node.
 
@@ -728,7 +728,7 @@ The packet forwarding is handled entirely by the Linux kernel, making NodePort e
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                     Internet
@@ -766,7 +766,7 @@ The packet forwarding is handled entirely by the Linux kernel, making NodePort e
 
 ---
 
-# Complete Packet Flow
+## Complete Packet Flow
 
 ```
 Client
@@ -806,7 +806,7 @@ Application Response
 
 ---
 
-# Step 1 – Create NodePort Service
+## Step 1 – Create NodePort Service
 
 Example:
 
@@ -824,7 +824,7 @@ kubectl apply -f service.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -845,7 +845,7 @@ Service Stored
 
 ---
 
-# Step 3 – Service Controller
+## Step 3 – Service Controller
 
 The Service Controller:
 
@@ -874,7 +874,7 @@ NodePort
 
 ---
 
-# Step 4 – ClusterIP Creation
+## Step 4 – ClusterIP Creation
 
 Every NodePort Service automatically creates a ClusterIP.
 
@@ -892,7 +892,7 @@ NodePort is therefore built **on top of** ClusterIP.
 
 ---
 
-# Step 5 – NodePort Allocation
+## Step 5 – NodePort Allocation
 
 Example:
 
@@ -932,7 +932,7 @@ Node 3
 
 ---
 
-# Step 6 – kube-proxy Watches Services
+## Step 6 – kube-proxy Watches Services
 
 Each worker Node runs:
 
@@ -958,7 +958,7 @@ Update Kernel Rules
 
 ---
 
-# Step 7 – Linux Kernel Rules
+## Step 7 – Linux Kernel Rules
 
 kube-proxy programs:
 
@@ -984,7 +984,7 @@ The packet is redirected before any application process receives it.
 
 ---
 
-# Packet Flow Example
+## Packet Flow Example
 
 Client:
 
@@ -1014,7 +1014,7 @@ The client is unaware of the internal routing.
 
 ---
 
-# Step 8 – EndpointSlice Selection
+## Step 8 – EndpointSlice Selection
 
 Suppose:
 
@@ -1052,7 +1052,7 @@ One Pod is selected for the request.
 
 ---
 
-# Internal Load Balancing
+## Internal Load Balancing
 
 Traffic:
 
@@ -1084,7 +1084,7 @@ Load balancing is handled by the Linux networking rules configured by kube-proxy
 
 ---
 
-# Same Node Traffic
+## Same Node Traffic
 
 Suppose:
 
@@ -1122,7 +1122,7 @@ No inter-node communication occurs.
 
 ---
 
-# Different Node Traffic
+## Different Node Traffic
 
 Suppose:
 
@@ -1170,7 +1170,7 @@ The CNI plugin transports the packet between Nodes.
 
 ---
 
-# Source NAT (SNAT)
+## Source NAT (SNAT)
 
 By default (`externalTrafficPolicy: Cluster`), traffic may be source NATed when forwarded across Nodes.
 
@@ -1192,7 +1192,7 @@ The Pod may see the Node's IP instead of the original client IP.
 
 ---
 
-# Destination NAT (DNAT)
+## Destination NAT (DNAT)
 
 The destination address is rewritten.
 
@@ -1212,11 +1212,11 @@ The application receives traffic on its container port.
 
 ---
 
-# externalTrafficPolicy
+## externalTrafficPolicy
 
 Two modes are available.
 
-### Cluster (Default)
+#### Cluster (Default)
 
 ```
 Client
@@ -1241,7 +1241,7 @@ Disadvantage:
 
 ---
 
-### Local
+#### Local
 
 ```
 Client
@@ -1266,7 +1266,7 @@ Disadvantages:
 
 ---
 
-# Cluster Mode Example
+## Cluster Mode Example
 
 ```
 Client
@@ -1288,7 +1288,7 @@ Cross-node forwarding is allowed.
 
 ---
 
-# Local Mode Example
+## Local Mode Example
 
 ```
 Client
@@ -1306,7 +1306,7 @@ If Node 1 has no matching Pod, traffic is not forwarded to another Node.
 
 ---
 
-# Scaling
+## Scaling
 
 Current:
 
@@ -1340,7 +1340,7 @@ Traffic Distributed
 
 ---
 
-# Pod Failure
+## Pod Failure
 
 Suppose:
 
@@ -1372,7 +1372,7 @@ Remaining Pods
 
 ---
 
-# Node Failure
+## Node Failure
 
 Suppose:
 
@@ -1398,7 +1398,7 @@ Clients can use another healthy Node.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Internet
@@ -1434,7 +1434,7 @@ Backend Pod
 
 ---
 
-# iptables Mode
+## iptables Mode
 
 Flow:
 
@@ -1458,7 +1458,7 @@ Simple and widely used.
 
 ---
 
-# IPVS Mode
+## IPVS Mode
 
 Flow:
 
@@ -1482,7 +1482,7 @@ Advantages:
 
 ---
 
-# nftables Mode
+## nftables Mode
 
 Modern Linux distributions increasingly use:
 
@@ -1498,7 +1498,7 @@ Benefits:
 
 ---
 
-# Hands-on Lab 1 – Create Deployment
+## Hands-on Lab 1 – Create Deployment
 
 ```bash
 kubectl create deployment nginx \
@@ -1508,7 +1508,7 @@ kubectl create deployment nginx \
 
 ---
 
-# Hands-on Lab 2 – Expose Deployment
+## Hands-on Lab 2 – Expose Deployment
 
 ```bash
 kubectl expose deployment nginx \
@@ -1524,7 +1524,7 @@ kubectl get svc
 
 ---
 
-# Hands-on Lab 3 – Find NodePort
+## Hands-on Lab 3 – Find NodePort
 
 ```bash
 kubectl get svc nginx
@@ -1544,7 +1544,7 @@ http://<Node-IP>:32045
 
 ---
 
-# Hands-on Lab 4 – Inspect EndpointSlices
+## Hands-on Lab 4 – Inspect EndpointSlices
 
 ```bash
 kubectl get endpointslices
@@ -1554,7 +1554,7 @@ Observe backend Pod IP addresses.
 
 ---
 
-# Hands-on Lab 5 – Test externalTrafficPolicy
+## Hands-on Lab 5 – Test externalTrafficPolicy
 
 Edit the Service:
 
@@ -1570,9 +1570,9 @@ Compare:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using NodePort for Internet-Scale Production
+### 1. Using NodePort for Internet-Scale Production
 
 Prefer:
 
@@ -1583,7 +1583,7 @@ for most production deployments.
 
 ---
 
-## 2. Forgetting Firewall Rules
+### 2. Forgetting Firewall Rules
 
 The NodePort range must be allowed through:
 
@@ -1593,7 +1593,7 @@ The NodePort range must be allowed through:
 
 ---
 
-## 3. Hardcoding Node IPs
+### 3. Hardcoding Node IPs
 
 Nodes may change.
 
@@ -1601,13 +1601,13 @@ Prefer a load balancer or DNS in front of NodePort.
 
 ---
 
-## 4. Ignoring externalTrafficPolicy
+### 4. Ignoring externalTrafficPolicy
 
 If preserving the client IP is required, understand the trade-offs between `Cluster` and `Local`.
 
 ---
 
-## 5. Confusing NodePort with Container Port
+### 5. Confusing NodePort with Container Port
 
 Example:
 
@@ -1633,9 +1633,9 @@ Each serves a different purpose.
 
 ---
 
-# NodePort Quick Revision
+## NodePort Quick Revision
 
-## Packet Flow
+### Packet Flow
 
 ```
 Client
@@ -1667,7 +1667,7 @@ Pod
 
 ---
 
-## Service Hierarchy
+### Service Hierarchy
 
 ```
 NodePort
@@ -1683,7 +1683,7 @@ Pod
 
 ---
 
-## Traffic Policies
+### Traffic Policies
 
 ```
 Cluster
@@ -1711,7 +1711,7 @@ Local Pod
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Services:
 
@@ -1745,9 +1745,9 @@ kubectl delete svc web-service
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a NodePort Service?
 - How is NodePort different from ClusterIP?
@@ -1755,7 +1755,7 @@ kubectl delete svc web-service
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - Why does a NodePort Service automatically create a ClusterIP?
 - What is `externalTrafficPolicy`?
@@ -1763,7 +1763,7 @@ kubectl delete svc web-service
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the complete packet flow from an external client to a backend Pod through a NodePort Service.
 - Compare `externalTrafficPolicy: Cluster` and `Local`.
@@ -1773,9 +1773,9 @@ kubectl delete svc web-service
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Services
 - NodePort
@@ -1785,7 +1785,7 @@ kubectl delete svc web-service
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Networking Model
 - SIG Network Documentation
@@ -1794,7 +1794,7 @@ kubectl delete svc web-service
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Production Networking
@@ -1803,7 +1803,7 @@ kubectl delete svc web-service
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Deploy a multi-replica application.
 2. Expose it using a NodePort Service.
@@ -1815,7 +1815,7 @@ kubectl delete svc web-service
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Internet

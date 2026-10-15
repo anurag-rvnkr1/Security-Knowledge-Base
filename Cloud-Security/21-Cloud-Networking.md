@@ -1129,7 +1129,7 @@ Core security principles include:
 
 ---
 
-# Defense-in-Depth for Cloud Networking
+## Defense-in-Depth for Cloud Networking
 
 ```
                   Internet
@@ -1187,7 +1187,7 @@ Each layer enforces independent security controls to reduce the impact of a sing
 
 ---
 
-# Design Secure Network Architecture
+## Design Secure Network Architecture
 
 Plan network topology before deploying workloads.
 
@@ -1203,7 +1203,7 @@ A well-designed architecture reduces the overall attack surface.
 
 ---
 
-# Implement Network Segmentation
+## Implement Network Segmentation
 
 Separate workloads into logical security zones.
 
@@ -1239,7 +1239,7 @@ Segmentation limits lateral movement if a workload is compromised.
 
 ---
 
-# Minimize Public Exposure
+## Minimize Public Exposure
 
 Only expose resources that must be reachable from the internet.
 
@@ -1258,7 +1258,7 @@ Keep the following private whenever possible:
 
 ---
 
-# Secure Administrative Access
+## Secure Administrative Access
 
 Protect management interfaces using:
 
@@ -1272,7 +1272,7 @@ Avoid exposing SSH, RDP, or management consoles directly to the internet.
 
 ---
 
-# Configure Security Groups Carefully
+## Configure Security Groups Carefully
 
 Apply Security Groups using the Principle of Least Privilege.
 
@@ -1294,7 +1294,7 @@ Review Security Group rules regularly to remove unnecessary access.
 
 ---
 
-# Use Network ACLs as an Additional Layer
+## Use Network ACLs as an Additional Layer
 
 Network ACLs provide subnet-level filtering.
 
@@ -1309,7 +1309,7 @@ Layering Security Groups with Network ACLs improves resilience.
 
 ---
 
-# Encrypt Network Traffic
+## Encrypt Network Traffic
 
 Protect communications using:
 
@@ -1322,7 +1322,7 @@ Encryption preserves confidentiality and integrity during transmission.
 
 ---
 
-# Protect DNS Infrastructure
+## Protect DNS Infrastructure
 
 Secure DNS services by:
 
@@ -1336,7 +1336,7 @@ DNS security reduces the risk of spoofing and traffic redirection.
 
 ---
 
-# Secure Hybrid Connectivity
+## Secure Hybrid Connectivity
 
 Hybrid cloud connections should:
 
@@ -1349,7 +1349,7 @@ Review hybrid connectivity configurations regularly.
 
 ---
 
-# Use Private Connectivity
+## Use Private Connectivity
 
 Prefer private networking over public internet access.
 
@@ -1364,7 +1364,7 @@ Private connectivity minimizes exposure to external threats.
 
 ---
 
-# Monitor Network Activity Continuously
+## Monitor Network Activity Continuously
 
 Monitor:
 
@@ -1396,7 +1396,7 @@ Continuous visibility enables faster detection of malicious activity.
 
 ---
 
-# Automate Network Policy Enforcement
+## Automate Network Policy Enforcement
 
 Use Infrastructure as Code (IaC) and policy automation to:
 
@@ -1409,9 +1409,9 @@ Automation reduces manual errors and improves consistency.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Adopt Zero Trust Networking
+#### 1. Adopt Zero Trust Networking
 
 Assume that no network location is inherently trusted.
 
@@ -1419,7 +1419,7 @@ Require authentication, authorization, and encryption for every connection, rega
 
 ---
 
-### 2. Apply Least-Privilege Network Access
+#### 2. Apply Least-Privilege Network Access
 
 Allow only the minimum required communication between systems.
 
@@ -1427,13 +1427,13 @@ Regularly review and remove unnecessary firewall rules and network permissions.
 
 ---
 
-### 3. Isolate Critical Workloads
+#### 3. Isolate Critical Workloads
 
 Place sensitive resources such as databases, key management services, and administrative systems in private subnets with restricted access.
 
 ---
 
-### 4. Enable Comprehensive Network Logging
+#### 4. Enable Comprehensive Network Logging
 
 Collect and retain:
 
@@ -1448,7 +1448,7 @@ Forward logs to centralized monitoring platforms for analysis.
 
 ---
 
-### 5. Encrypt All Network Communications
+#### 5. Encrypt All Network Communications
 
 Protect:
 
@@ -1461,7 +1461,7 @@ Use modern encryption standards and disable insecure protocols.
 
 ---
 
-### 6. Protect Administrative Interfaces
+#### 6. Protect Administrative Interfaces
 
 Limit administrative access through:
 
@@ -1475,7 +1475,7 @@ Monitor privileged access continuously.
 
 ---
 
-### 7. Review Network Configurations Regularly
+#### 7. Review Network Configurations Regularly
 
 Audit:
 
@@ -1490,13 +1490,13 @@ Frequent reviews help identify misconfigurations before they are exploited.
 
 ---
 
-### 8. Use Private Connectivity Whenever Possible
+#### 8. Use Private Connectivity Whenever Possible
 
 Prefer private communication channels between cloud services instead of routing sensitive traffic across the public internet.
 
 ---
 
-### 9. Continuously Monitor East-West Traffic
+#### 9. Continuously Monitor East-West Traffic
 
 Monitor communication between workloads inside the cloud environment.
 
@@ -1504,7 +1504,7 @@ Unexpected east-west traffic may indicate lateral movement following a compromis
 
 ---
 
-### 10. Test Network Security Periodically
+#### 10. Test Network Security Periodically
 
 Conduct:
 
@@ -1518,7 +1518,7 @@ Regular testing ensures that network controls remain effective as the environmen
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud networks are highly flexible and scalable, but improper design or configuration can expose critical infrastructure to attackers. Most cloud network security incidents result from misconfigurations, excessive permissions, poor segmentation, or insufficient monitoring rather than weaknesses in the cloud provider's infrastructure.
 
@@ -1526,7 +1526,7 @@ Understanding these common mistakes helps organizations build secure, resilient,
 
 ---
 
-### 1. Exposing Resources Directly to the Internet
+#### 1. Exposing Resources Directly to the Internet
 
 One of the most common mistakes is assigning public IP addresses to resources that do not require direct internet access.
 
@@ -1554,7 +1554,7 @@ Only internet-facing services should have public exposure.
 
 ---
 
-### 2. Poor Network Segmentation
+#### 2. Poor Network Segmentation
 
 Placing all workloads in a single subnet increases the risk of lateral movement after a compromise.
 
@@ -1602,7 +1602,7 @@ Segmentation reduces the impact of successful attacks.
 
 ---
 
-### 3. Overly Permissive Security Groups
+#### 3. Overly Permissive Security Groups
 
 Allowing unrestricted inbound access is a frequent configuration error.
 
@@ -1617,7 +1617,7 @@ Restrict Security Group rules to trusted sources and required ports only.
 
 ---
 
-### 4. Misconfigured Network ACLs
+#### 4. Misconfigured Network ACLs
 
 Improper Network ACL rules may:
 
@@ -1629,7 +1629,7 @@ Regularly review and test ACL configurations to ensure they align with security 
 
 ---
 
-### 5. Weak Administrative Access Controls
+#### 5. Weak Administrative Access Controls
 
 Administrative interfaces exposed directly to the internet significantly increase attack risk.
 
@@ -1645,7 +1645,7 @@ Administrative access should be tightly controlled and continuously monitored.
 
 ---
 
-### 6. Missing Encryption for Network Traffic
+#### 6. Missing Encryption for Network Traffic
 
 Unencrypted communication may expose sensitive information to interception.
 
@@ -1661,7 +1661,7 @@ Always use secure protocols such as TLS and IPSec where appropriate.
 
 ---
 
-### 7. Ignoring DNS Security
+#### 7. Ignoring DNS Security
 
 Poor DNS security can enable:
 
@@ -1674,7 +1674,7 @@ Enable DNS logging and restrict administrative access to DNS services.
 
 ---
 
-### 8. Insecure Hybrid Connectivity
+#### 8. Insecure Hybrid Connectivity
 
 Hybrid environments may become vulnerable when:
 
@@ -1687,7 +1687,7 @@ Secure hybrid connectivity with strong encryption, authentication, and regular a
 
 ---
 
-### 9. Excessive East-West Communication
+#### 9. Excessive East-West Communication
 
 Allowing unrestricted communication between internal workloads increases the risk of lateral movement.
 
@@ -1703,7 +1703,7 @@ to restrict unnecessary internal communication.
 
 ---
 
-### 10. Ignoring Network Monitoring
+#### 10. Ignoring Network Monitoring
 
 Without visibility into network activity, organizations may fail to detect:
 
@@ -1717,7 +1717,7 @@ Continuous monitoring is essential for timely detection and response.
 
 ---
 
-### 11. Misconfigured Routing
+#### 11. Misconfigured Routing
 
 Incorrect route table entries may:
 
@@ -1730,7 +1730,7 @@ Review routing changes carefully before deployment.
 
 ---
 
-### 12. Lack of High Availability
+#### 12. Lack of High Availability
 
 Depending on a single gateway, firewall, or load balancer introduces a single point of failure.
 
@@ -1738,7 +1738,7 @@ Design network components with redundancy and failover capabilities to improve r
 
 ---
 
-### 13. Ignoring Configuration Drift
+#### 13. Ignoring Configuration Drift
 
 Manual modifications to network configurations may result in:
 
@@ -1751,7 +1751,7 @@ Use Infrastructure as Code (IaC) and automated configuration management to maint
 
 ---
 
-### 14. Overlooking Third-Party Connectivity
+#### 14. Overlooking Third-Party Connectivity
 
 Connections to external services should be reviewed regularly.
 
@@ -1766,7 +1766,7 @@ Apply Least Privilege and monitor third-party network interactions.
 
 ---
 
-### 15. Assuming Internal Networks Are Trusted
+#### 15. Assuming Internal Networks Are Trusted
 
 Internal cloud networks should not be considered inherently secure.
 
@@ -1776,7 +1776,7 @@ Zero Trust principles apply equally to internal communications.
 
 ---
 
-## Cloud Networking Security Checklist
+### Cloud Networking Security Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1798,9 +1798,9 @@ Zero Trust principles apply equally to internal communications.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
 - NIST SP 800-207 – Zero Trust Architecture
@@ -1812,23 +1812,23 @@ Zero Trust principles apply equally to internal communications.
 
 ---
 
-### Cloud Networking Documentation
+#### Cloud Networking Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - Amazon VPC Documentation
 - AWS Transit Gateway Documentation
 - AWS Network Firewall Documentation
 - AWS Direct Connect Documentation
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Azure Virtual Network Documentation
 - Azure Firewall Documentation
 - Azure VPN Gateway Documentation
 - Azure ExpressRoute Documentation
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Google Cloud VPC Documentation
 - Cloud Load Balancing Documentation
@@ -1837,7 +1837,7 @@ Zero Trust principles apply equally to internal communications.
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -1850,7 +1850,7 @@ Zero Trust principles apply equally to internal communications.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - CIS Benchmarks
 - MITRE ATT&CK Framework

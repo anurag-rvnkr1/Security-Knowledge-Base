@@ -23,7 +23,7 @@ Understanding Docker is essential for anyone working with modern cloud-native ap
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Before Docker, developers frequently encountered deployment issues caused by differences between environments.
 
@@ -53,7 +53,7 @@ Docker has significantly accelerated software development and operations workflo
 
 ---
 
-# What is Docker?
+## What is Docker?
 
 Docker is **not** the container itself.
 
@@ -72,7 +72,7 @@ Think of Docker as a complete ecosystem for container lifecycle management.
 
 ---
 
-# Docker Architecture
+## Docker Architecture
 
 The Docker platform consists of multiple components working together.
 
@@ -120,9 +120,9 @@ Each component performs a specialized function.
 
 ---
 
-# Major Docker Components
+## Major Docker Components
 
-## 1. Docker Client
+### 1. Docker Client
 
 The Docker Client is the command-line interface (CLI) used by users.
 
@@ -142,7 +142,7 @@ The client sends requests to the Docker Daemon using the Docker Engine API.
 
 ---
 
-## 2. Docker Daemon (dockerd)
+### 2. Docker Daemon (dockerd)
 
 The Docker Daemon is the background service responsible for managing Docker objects.
 
@@ -160,7 +160,7 @@ The daemon performs the actual work requested by the Docker Client.
 
 ---
 
-## 3. Docker Engine
+### 3. Docker Engine
 
 Docker Engine is the core platform that includes:
 
@@ -172,7 +172,7 @@ It provides the complete runtime environment for Docker containers.
 
 ---
 
-## 4. Docker Images
+### 4. Docker Images
 
 Images are immutable templates used to create containers.
 
@@ -194,7 +194,7 @@ Images can be:
 
 ---
 
-## 5. Docker Containers
+### 5. Docker Containers
 
 Containers are running instances of Docker images.
 
@@ -210,7 +210,7 @@ Multiple containers can be created from the same image.
 
 ---
 
-## 6. Docker Registry
+### 6. Docker Registry
 
 A registry stores Docker images.
 
@@ -227,7 +227,7 @@ Registries enable image distribution across environments.
 
 ---
 
-## 7. Docker Networks
+### 7. Docker Networks
 
 Docker networking enables communication between:
 
@@ -247,7 +247,7 @@ Networking will be explored in detail in a later chapter.
 
 ---
 
-## 8. Docker Volumes
+### 8. Docker Volumes
 
 Volumes provide persistent storage.
 
@@ -279,7 +279,7 @@ Volumes separate application data from container lifecycle.
 
 ---
 
-# Docker Workflow
+## Docker Workflow
 
 A typical Docker workflow follows these steps.
 
@@ -339,7 +339,7 @@ This workflow enables consistent deployments across environments.
 
 ---
 
-# Docker vs Virtual Machines
+## Docker vs Virtual Machines
 
 | Docker | Virtual Machine |
 |---------|-----------------|
@@ -354,11 +354,11 @@ Docker is generally preferred for cloud-native workloads due to its efficiency.
 
 ---
 
-# Docker Editions
+## Docker Editions
 
 Historically, Docker was available in two editions:
 
-### Docker Community Edition (CE)
+#### Docker Community Edition (CE)
 
 - Free
 - Open source
@@ -366,7 +366,7 @@ Historically, Docker was available in two editions:
 
 ---
 
-### Docker Enterprise Edition (EE)
+#### Docker Enterprise Edition (EE)
 
 Previously offered enterprise features such as:
 
@@ -378,7 +378,7 @@ Many enterprise capabilities are now available through Docker Business offerings
 
 ---
 
-# Docker Objects
+## Docker Objects
 
 Docker manages several object types.
 
@@ -394,7 +394,7 @@ Docker manages several object types.
 
 ---
 
-# Docker Lifecycle
+## Docker Lifecycle
 
 ```
 Dockerfile
@@ -446,15 +446,15 @@ Understanding this lifecycle is fundamental to effective Docker usage.
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-## Containerization
+### Containerization
 
 Docker packages applications with all required dependencies into portable containers.
 
 ---
 
-## Image Immutability
+### Image Immutability
 
 Images are never modified after creation.
 
@@ -462,7 +462,7 @@ Updates are performed by creating new images and replacing existing containers.
 
 ---
 
-## Layered Images
+### Layered Images
 
 Each Dockerfile instruction typically creates a new image layer.
 
@@ -475,7 +475,7 @@ This enables:
 
 ---
 
-## Portability
+### Portability
 
 Docker images can run consistently across:
 
@@ -487,7 +487,7 @@ Docker images can run consistently across:
 
 ---
 
-## Isolation
+### Isolation
 
 Docker isolates:
 
@@ -501,7 +501,7 @@ Isolation enables multiple applications to coexist safely.
 
 ---
 
-## Automation
+### Automation
 
 Docker integrates seamlessly with:
 
@@ -515,7 +515,7 @@ Automation is one of Docker's greatest strengths.
 
 ---
 
-## How It Works
+### How It Works
 
 Docker simplifies container creation and management by automating the entire container lifecycle. Instead of manually installing operating systems, libraries, dependencies, and applications on every server, Docker packages everything into an immutable image that can be executed consistently anywhere Docker is available.
 
@@ -523,7 +523,7 @@ Internally, Docker combines several components—including the Docker Client, Do
 
 ---
 
-# Docker Workflow
+## Docker Workflow
 
 ```
 Developer
@@ -587,7 +587,7 @@ Each stage contributes to a consistent and repeatable deployment process.
 
 ---
 
-## Step 1 – Write the Application
+### Step 1 – Write the Application
 
 The workflow begins with application development.
 
@@ -611,7 +611,7 @@ Docker packages these requirements together.
 
 ---
 
-## Step 2 – Create a Dockerfile
+### Step 2 – Create a Dockerfile
 
 The Dockerfile defines how the image should be built.
 
@@ -641,7 +641,7 @@ The Dockerfile serves as a blueprint for image creation.
 
 ---
 
-## Step 3 – Build the Image
+### Step 3 – Build the Image
 
 The command:
 
@@ -679,7 +679,7 @@ The resulting image is immutable and versioned.
 
 ---
 
-## Step 4 – Store the Image
+### Step 4 – Store the Image
 
 Images may remain local or be uploaded to a registry.
 
@@ -703,7 +703,7 @@ Registries simplify image sharing between developers, CI/CD pipelines, and produ
 
 ---
 
-## Step 5 – Pull the Image
+### Step 5 – Pull the Image
 
 When another system requires the application:
 
@@ -722,7 +722,7 @@ Layer reuse minimizes download size and deployment time.
 
 ---
 
-## Step 6 – Create the Container
+### Step 6 – Create the Container
 
 Running:
 
@@ -759,7 +759,7 @@ The image itself remains unchanged.
 
 ---
 
-## Step 7 – Start the Application
+### Step 7 – Start the Application
 
 Docker starts the application's primary process.
 
@@ -785,7 +785,7 @@ If the primary process exits, Docker considers the container stopped.
 
 ---
 
-## Step 8 – Runtime Management
+### Step 8 – Runtime Management
 
 During execution, Docker manages:
 
@@ -801,7 +801,7 @@ Docker continuously interacts with the Linux kernel to maintain isolation and re
 
 ---
 
-## Step 9 – Stop and Remove the Container
+### Step 9 – Stop and Remove the Container
 
 Containers may be:
 
@@ -831,9 +831,9 @@ A new container can later be created from the same image.
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Web Server Deployment
+### Example 1 – Web Server Deployment
 
 A developer wants to deploy Nginx.
 
@@ -855,7 +855,7 @@ No manual installation or dependency configuration is required.
 
 ---
 
-## Example 2 – Team Collaboration
+### Example 2 – Team Collaboration
 
 Five developers work on the same project.
 
@@ -891,7 +891,7 @@ All developers use identical environments, eliminating configuration inconsisten
 
 ---
 
-## Example 3 – CI/CD Pipeline
+### Example 3 – CI/CD Pipeline
 
 ```
 Git Commit
@@ -917,7 +917,7 @@ This enables automated, repeatable deployments across environments.
 
 ---
 
-## Example 4 – Scaling an API
+### Example 4 – Scaling an API
 
 Suppose an API experiences increased traffic.
 
@@ -939,9 +939,9 @@ Multiple containers can be launched from the same image to handle additional req
 
 ---
 
-# Hands-on Commands
+## Hands-on Commands
 
-## Display Docker Version
+### Display Docker Version
 
 ```bash
 docker version
@@ -951,7 +951,7 @@ Displays Docker Client and Docker Engine versions.
 
 ---
 
-## Display Docker Information
+### Display Docker Information
 
 ```bash
 docker info
@@ -969,7 +969,7 @@ Shows:
 
 ---
 
-## Search Docker Hub
+### Search Docker Hub
 
 ```bash
 docker search nginx
@@ -979,7 +979,7 @@ Searches Docker Hub for available images.
 
 ---
 
-## Pull an Image
+### Pull an Image
 
 ```bash
 docker pull nginx
@@ -989,7 +989,7 @@ Downloads the latest official Nginx image.
 
 ---
 
-## List Images
+### List Images
 
 ```bash
 docker images
@@ -999,7 +999,7 @@ Displays locally stored images.
 
 ---
 
-## Run a Container
+### Run a Container
 
 ```bash
 docker run nginx
@@ -1009,7 +1009,7 @@ Creates and starts a container.
 
 ---
 
-## Run in Detached Mode
+### Run in Detached Mode
 
 ```bash
 docker run -d nginx
@@ -1019,7 +1019,7 @@ Runs the container in the background.
 
 ---
 
-## Publish a Port
+### Publish a Port
 
 ```bash
 docker run -p 8080:80 nginx
@@ -1039,7 +1039,7 @@ allowing external access to the web server.
 
 ---
 
-## View Running Containers
+### View Running Containers
 
 ```bash
 docker ps
@@ -1049,7 +1049,7 @@ Lists active containers.
 
 ---
 
-## View All Containers
+### View All Containers
 
 ```bash
 docker ps -a
@@ -1059,7 +1059,7 @@ Lists running and stopped containers.
 
 ---
 
-## Stop a Container
+### Stop a Container
 
 ```bash
 docker stop <container_name>
@@ -1069,7 +1069,7 @@ Gracefully stops the container.
 
 ---
 
-## Remove a Container
+### Remove a Container
 
 ```bash
 docker rm <container_name>
@@ -1079,7 +1079,7 @@ Deletes a stopped container.
 
 ---
 
-## Remove an Image
+### Remove an Image
 
 ```bash
 docker rmi <image_name>
@@ -1089,7 +1089,7 @@ Deletes a local image.
 
 ---
 
-## View Container Logs
+### View Container Logs
 
 ```bash
 docker logs <container_name>
@@ -1099,7 +1099,7 @@ Displays application output and error logs.
 
 ---
 
-## Execute Commands Inside a Container
+### Execute Commands Inside a Container
 
 ```bash
 docker exec -it <container_name> bash
@@ -1109,7 +1109,7 @@ Starts an interactive Bash shell inside the running container.
 
 ---
 
-## Inspect Docker Objects
+### Inspect Docker Objects
 
 ```bash
 docker inspect <container_name>
@@ -1119,9 +1119,9 @@ Displays detailed JSON information about Docker objects.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Learn the Docker Workflow
+#### 1. Learn the Docker Workflow
 
 Understand the complete flow:
 
@@ -1149,13 +1149,13 @@ before learning advanced topics such as Docker Compose and Kubernetes.
 
 ---
 
-### 2. Use Official Images
+#### 2. Use Official Images
 
 Prefer trusted images maintained by verified publishers.
 
 ---
 
-### 3. Version Images
+#### 3. Version Images
 
 Use explicit tags such as:
 
@@ -1171,13 +1171,13 @@ instead of relying on `latest`.
 
 ---
 
-### 4. Keep Images Small
+#### 4. Keep Images Small
 
 Use minimal base images to improve security, reduce download size, and speed up deployments.
 
 ---
 
-### 5. Avoid Manual Container Changes
+#### 5. Avoid Manual Container Changes
 
 Never treat production containers like traditional servers.
 
@@ -1185,7 +1185,7 @@ Rebuild images instead of modifying running containers.
 
 ---
 
-### 6. Separate Configuration from Images
+#### 6. Separate Configuration from Images
 
 Store configuration outside the image using:
 
@@ -1197,7 +1197,7 @@ This makes images reusable across environments.
 
 ---
 
-### 7. Understand Every Docker Object
+#### 7. Understand Every Docker Object
 
 Know the purpose of:
 
@@ -1212,7 +1212,7 @@ Understanding these relationships simplifies troubleshooting and prepares you fo
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Docker is designed to simplify application deployment, but incorrect usage can lead to security vulnerabilities, inefficient resource utilization, deployment failures, and operational complexity. Many Docker-related issues stem from misunderstanding Docker's architecture and workflow rather than problems with Docker itself.
 
@@ -1220,7 +1220,7 @@ The following are some of the most common mistakes made by beginners and profess
 
 ---
 
-### 1. Confusing Docker with Containers
+#### 1. Confusing Docker with Containers
 
 A common misconception is that Docker **is** the container.
 
@@ -1250,7 +1250,7 @@ Docker is a **container platform**, while a **container** is the isolated enviro
 
 ---
 
-### 2. Treating Docker as a Virtual Machine
+#### 2. Treating Docker as a Virtual Machine
 
 Many beginners expect Docker containers to behave like traditional servers.
 
@@ -1288,7 +1288,7 @@ Instead of repairing containers, rebuild the image and redeploy.
 
 ---
 
-### 3. Using the `latest` Tag Everywhere
+#### 3. Using the `latest` Tag Everywhere
 
 Example:
 
@@ -1318,7 +1318,7 @@ Pinning versions improves deployment consistency.
 
 ---
 
-### 4. Building Large Images
+#### 4. Building Large Images
 
 Common causes include:
 
@@ -1338,7 +1338,7 @@ Use minimal and purpose-built base images where appropriate.
 
 ---
 
-### 5. Running Everything as Root
+#### 5. Running Everything as Root
 
 By default, many containers run as the `root` user.
 
@@ -1352,7 +1352,7 @@ Whenever possible, create and use a non-root user inside the container.
 
 ---
 
-### 6. Hardcoding Secrets
+#### 6. Hardcoding Secrets
 
 Avoid storing:
 
@@ -1373,7 +1373,7 @@ Use dedicated secrets management solutions instead.
 
 ---
 
-### 7. Ignoring Volumes
+#### 7. Ignoring Volumes
 
 A common mistake is storing important data inside the container.
 
@@ -1411,7 +1411,7 @@ Volumes ensure important data survives container replacement.
 
 ---
 
-### 8. Not Cleaning Up Docker Resources
+#### 8. Not Cleaning Up Docker Resources
 
 Over time, systems accumulate:
 
@@ -1430,7 +1430,7 @@ Regularly remove unused resources.
 
 ---
 
-### 9. Publishing Unnecessary Ports
+#### 9. Publishing Unnecessary Ports
 
 Incorrect example:
 
@@ -1460,7 +1460,7 @@ Reducing exposed services minimizes the attack surface.
 
 ---
 
-### 10. Ignoring Logs
+#### 10. Ignoring Logs
 
 Containers generate valuable operational information.
 
@@ -1476,7 +1476,7 @@ Centralized logging simplifies troubleshooting and incident response.
 
 ---
 
-### 11. Assuming Docker Automatically Provides Security
+#### 11. Assuming Docker Automatically Provides Security
 
 Docker provides isolation but does not guarantee comprehensive security.
 
@@ -1494,7 +1494,7 @@ Security must be intentionally implemented.
 
 ---
 
-### 12. Forgetting That Containers Are Ephemeral
+#### 12. Forgetting That Containers Are Ephemeral
 
 Containers should be treated as temporary execution environments.
 
@@ -1530,7 +1530,7 @@ This approach supports reliable and repeatable deployments.
 
 ---
 
-### 13. Skipping Image Scanning
+#### 13. Skipping Image Scanning
 
 Images may contain:
 
@@ -1543,7 +1543,7 @@ Scan images regularly before deployment into production.
 
 ---
 
-### 14. Learning Only Docker Commands
+#### 14. Learning Only Docker Commands
 
 Memorizing commands such as:
 
@@ -1572,7 +1572,7 @@ A strong conceptual foundation is more valuable than command memorization alone.
 
 ---
 
-### 15. Ignoring Docker Best Practices in CI/CD
+#### 15. Ignoring Docker Best Practices in CI/CD
 
 Poor practices include:
 
@@ -1586,7 +1586,7 @@ Modern CI/CD pipelines should automate image building, testing, scanning, and de
 
 ---
 
-# Docker Fundamentals Checklist
+## Docker Fundamentals Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1608,9 +1608,9 @@ Modern CI/CD pipelines should automate image building, testing, scanning, and de
 
 ---
 
-# References
+## References
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker Engine Documentation
 - Docker CLI Documentation
@@ -1621,7 +1621,7 @@ Modern CI/CD pipelines should automate image building, testing, scanning, and de
 
 ---
 
-## OCI Standards
+### OCI Standards
 
 - Open Container Initiative (OCI) Image Specification
 - Open Container Initiative (OCI) Runtime Specification
@@ -1629,7 +1629,7 @@ Modern CI/CD pipelines should automate image building, testing, scanning, and de
 
 ---
 
-## Linux Documentation
+### Linux Documentation
 
 - Linux Namespaces
 - Linux cgroups
@@ -1638,7 +1638,7 @@ Modern CI/CD pipelines should automate image building, testing, scanning, and de
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Cloud Native Computing Foundation (CNCF)
 - Kubernetes Documentation
@@ -1647,7 +1647,7 @@ Modern CI/CD pipelines should automate image building, testing, scanning, and de
 
 ---
 
-## Security Resources
+### Security Resources
 
 - NIST SP 800-190 — Application Container Security Guide
 - OWASP Docker Security Cheat Sheet
@@ -1656,7 +1656,7 @@ Modern CI/CD pipelines should automate image building, testing, scanning, and de
 
 ---
 
-## Books
+### Books
 
 - *Docker Deep Dive* — Nigel Poulton
 - *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
@@ -1665,7 +1665,7 @@ Modern CI/CD pipelines should automate image building, testing, scanning, and de
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Docker Labs

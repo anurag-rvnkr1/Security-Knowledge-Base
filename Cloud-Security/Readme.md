@@ -2,8 +2,7 @@
 
 <div align="center">
 
-# ☁️ Enterprise Cloud Security Handbook
-
+## ☁️ Enterprise Cloud Security Handbook
 ### *A Complete Practical Guide to Modern Cloud Security, Cloud-Native Defense, DevSecOps, Identity Security, Detection Engineering, Threat Hunting, and Incident Response*
 
 ---
@@ -31,8 +30,7 @@ Cybersecurity Engineers • Cloud Security Engineers • DevSecOps Engineers •
 
 ---
 
-# Table of Contents
-
+## Table of Contents
 - Introduction
 - Why Cloud Security Matters
 - Repository Structure
@@ -56,8 +54,7 @@ Cybersecurity Engineers • Cloud Security Engineers • DevSecOps Engineers •
 
 ---
 
-# Why Cloud Security?
-
+## Why Cloud Security?
 Cloud computing powers modern organizations across every industry.
 
 Applications, APIs, databases, artificial intelligence, machine learning, and enterprise workloads increasingly rely on cloud infrastructure.
@@ -79,8 +76,7 @@ Cloud Security ensures these environments remain secure, resilient, and complian
 
 ---
 
-# What You'll Learn
-
+## What You'll Learn
 This repository takes you from beginner to advanced.
 
 ```
@@ -137,8 +133,7 @@ Enterprise Cloud Security
 
 ---
 
-# Repository Structure
-
+## Repository Structure
 ```
 Cloud-Security/
 
@@ -169,8 +164,7 @@ Cloud-Security/
 
 ---
 
-# Learning Roadmap
-
+## Learning Roadmap
 ```
 Fundamentals
 
@@ -225,8 +219,7 @@ Enterprise Security Engineering
 
 ---
 
-# Complete Chapter List
-
+## Complete Chapter List
 | Chapter | Topic |
 |----------|------|
 | 01 | Introduction to Cloud Security |
@@ -271,8 +264,7 @@ Enterprise Security Engineering
 
 ---
 
-# Cloud Platforms Covered
-
+## Cloud Platforms Covered
 This handbook is vendor-neutral while including examples from leading providers.
 
 - Amazon Web Services (AWS)
@@ -284,8 +276,7 @@ This handbook is vendor-neutral while including examples from leading providers.
 
 ---
 
-# Security Domains Covered
-
+## Security Domains Covered
 ✔ Cloud Architecture
 
 ✔ Identity and Access Management
@@ -350,8 +341,7 @@ This handbook is vendor-neutral while including examples from leading providers.
 
 ---
 
-# Enterprise Technologies Covered
-
+## Enterprise Technologies Covered
 - Docker
 - Kubernetes
 - Terraform
@@ -375,8 +365,7 @@ This handbook is vendor-neutral while including examples from leading providers.
 
 ---
 
-# Hands-on Labs
-
+## Hands-on Labs
 Every major chapter contains practical exercises including:
 
 - IAM policy review
@@ -393,8 +382,7 @@ Every major chapter contains practical exercises including:
 
 ---
 
-# Enterprise Security Features
-
+## Enterprise Security Features
 Every chapter includes
 
 - Architecture diagrams
@@ -415,8 +403,7 @@ Every chapter includes
 
 ---
 
-# Enterprise Security Architecture
-
+## Enterprise Security Architecture
 ```
                  Users
 
@@ -482,8 +469,7 @@ Every chapter includes
 
 ---
 
-# Certifications Supported
-
+## Certifications Supported
 This repository aligns well with the knowledge expected for:
 
 - AWS Certified Security – Specialty
@@ -498,8 +484,7 @@ This repository aligns well with the knowledge expected for:
 
 ---
 
-# Repository Features
-
+## Repository Features
 - Enterprise-quality documentation
 - Vendor-neutral concepts
 - Cloud-provider examples
@@ -515,8 +500,7 @@ This repository aligns well with the knowledge expected for:
 
 ---
 
-# Prerequisites
-
+## Prerequisites
 Basic understanding of:
 
 - Networking
@@ -530,8 +514,7 @@ No prior cloud security experience is required.
 
 ---
 
-# Contributing
-
+## Contributing
 Contributions are welcome.
 
 Please keep changes:
@@ -547,16 +530,14 @@ See **CONTRIBUTING.md** for complete guidelines.
 
 ---
 
-# License
-
+## License
 This project is released under the **MIT License**.
 
 See **LICENSE** for details.
 
 ---
 
-# Acknowledgements
-
+## Acknowledgements
 This handbook is inspired by industry best practices, cloud provider documentation, open security standards, academic research, and the global cybersecurity community.
 
 ---

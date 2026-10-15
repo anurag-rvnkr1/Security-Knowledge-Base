@@ -1,6 +1,6 @@
 # 14 - API Gateways
 
-# Introduction
+## Introduction
 
 An API Gateway is a centralized entry point that manages, secures, and routes API requests between clients and backend services.
 
@@ -27,7 +27,7 @@ A properly configured API Gateway improves:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -44,7 +44,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is an API Gateway?
+## What is an API Gateway?
 
 An API Gateway acts as the front door for API traffic.
 
@@ -70,7 +70,7 @@ The gateway becomes the single entry point for all client requests.
 
 ---
 
-# Why Use an API Gateway?
+## Why Use an API Gateway?
 
 Without an API Gateway
 
@@ -98,7 +98,7 @@ Problems
 
 ---
 
-# With an API Gateway
+## With an API Gateway
 
 ```
 Client
@@ -130,7 +130,7 @@ Benefits
 
 ---
 
-# API Gateway Responsibilities
+## API Gateway Responsibilities
 
 Primary responsibilities include:
 
@@ -148,7 +148,7 @@ Primary responsibilities include:
 
 ---
 
-# API Gateway Architecture
+## API Gateway Architecture
 
 ```
                  Internet
@@ -182,7 +182,7 @@ Primary responsibilities include:
 
 ---
 
-# Request Lifecycle
+## Request Lifecycle
 
 ```
 Client
@@ -224,7 +224,7 @@ Every request passes through the gateway before reaching backend services.
 
 ---
 
-# Request Routing
+## Request Routing
 
 Routing determines which backend service receives a request.
 
@@ -258,7 +258,7 @@ Routing policies should be deterministic and easy to maintain.
 
 ---
 
-# Path-Based Routing
+## Path-Based Routing
 
 ```
 /users/*
@@ -288,7 +288,7 @@ One of the most common routing strategies.
 
 ---
 
-# Host-Based Routing
+## Host-Based Routing
 
 Example
 
@@ -312,7 +312,7 @@ Useful for separating business domains.
 
 ---
 
-# Header-Based Routing
+## Header-Based Routing
 
 Headers can influence routing decisions.
 
@@ -338,7 +338,7 @@ Asia Cluster
 
 ---
 
-# Method-Based Routing
+## Method-Based Routing
 
 Requests may be routed according to the HTTP method.
 
@@ -364,7 +364,7 @@ Useful for read/write separation.
 
 ---
 
-# Authentication at the Gateway
+## Authentication at the Gateway
 
 The gateway commonly performs authentication before forwarding requests.
 
@@ -379,7 +379,7 @@ Supported methods
 
 ---
 
-# Authentication Flow
+## Authentication Flow
 
 ```
 Client
@@ -409,7 +409,7 @@ Backend services can trust authenticated requests forwarded by the gateway.
 
 ---
 
-# Authorization
+## Authorization
 
 The gateway may perform authorization checks.
 
@@ -439,7 +439,7 @@ Allow / Deny
 
 ---
 
-# API Key Validation
+## API Key Validation
 
 ```
 Request
@@ -475,7 +475,7 @@ API keys should be rotated periodically.
 
 ---
 
-# Mutual TLS (mTLS)
+## Mutual TLS (mTLS)
 
 API Gateways often support mutual TLS.
 
@@ -503,7 +503,7 @@ mTLS is common in service-to-service communication.
 
 ---
 
-# SSL/TLS Termination
+## SSL/TLS Termination
 
 Many gateways terminate TLS connections.
 
@@ -535,7 +535,7 @@ Internal communication may also remain encrypted depending on organizational req
 
 ---
 
-# Load Balancing
+## Load Balancing
 
 The gateway distributes requests across backend instances.
 
@@ -559,7 +559,7 @@ Benefits
 
 ---
 
-# Load Balancing Algorithms
+## Load Balancing Algorithms
 
 Common algorithms
 
@@ -575,7 +575,7 @@ Choice depends on workload characteristics.
 
 ---
 
-# Health Checks
+## Health Checks
 
 Gateways monitor backend availability.
 
@@ -605,7 +605,7 @@ Unhealthy services should not receive traffic.
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 Dynamic environments require automatic service discovery.
 
@@ -629,7 +629,7 @@ Common in Kubernetes and cloud-native platforms.
 
 ---
 
-# Static vs Dynamic Routing
+## Static vs Dynamic Routing
 
 | Static Routing | Dynamic Routing |
 |----------------|-----------------|
@@ -640,7 +640,7 @@ Common in Kubernetes and cloud-native platforms.
 
 ---
 
-# API Versioning
+## API Versioning
 
 Gateways often manage API versions.
 
@@ -666,7 +666,7 @@ Versioning minimizes disruption while introducing new features.
 
 ---
 
-# Request Transformation
+## Request Transformation
 
 Gateways can modify incoming requests.
 
@@ -680,7 +680,7 @@ Examples
 
 ---
 
-# Response Transformation
+## Response Transformation
 
 Responses may also be modified.
 
@@ -694,7 +694,7 @@ Examples
 
 ---
 
-# Protocol Translation
+## Protocol Translation
 
 Gateways can bridge different protocols.
 
@@ -724,7 +724,7 @@ This simplifies client integration.
 
 ---
 
-# Caching
+## Caching
 
 Frequently requested responses may be cached.
 
@@ -754,7 +754,7 @@ Caching reduces latency and backend load.
 
 ---
 
-# Cache Benefits
+## Cache Benefits
 
 Advantages
 
@@ -768,7 +768,7 @@ Only cache responses that are appropriate for reuse.
 
 ---
 
-# Enterprise API Gateway Architecture
+## Enterprise API Gateway Architecture
 
 ```
                     Internet
@@ -816,7 +816,7 @@ Only cache responses that are appropriate for reuse.
 
 ---
 
-# Best Practices
+## Best Practices
 
 Architecture
 
@@ -842,7 +842,7 @@ Operations
 
 ---
 
-# Common Security Mistakes
+## Common Security Mistakes
 
 Avoid
 
@@ -859,7 +859,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - API Gateways centralize API security and traffic management.
 - Authentication and authorization are commonly enforced at the gateway.
@@ -869,7 +869,7 @@ Avoid
 
 ---
 
-# Rate Limiting
+## Rate Limiting
 
 Rate limiting controls how many requests a client can send within a specified time period.
 
@@ -886,7 +886,7 @@ Without rate limiting, a single client could overwhelm backend services.
 
 ---
 
-# Why Rate Limiting Matters
+## Why Rate Limiting Matters
 
 Without Rate Limiting
 
@@ -944,7 +944,7 @@ Backend Protected
 
 ---
 
-# Rate Limiting Workflow
+## Rate Limiting Workflow
 
 ```
 Client
@@ -982,7 +982,7 @@ Forward  HTTP 429
 
 ---
 
-# Rate Limiting Components
+## Rate Limiting Components
 
 ```
 Client Identity
@@ -1008,7 +1008,7 @@ Allow / Reject
 
 ---
 
-# Client Identification
+## Client Identification
 
 Clients may be identified using:
 
@@ -1024,7 +1024,7 @@ Choosing the correct identifier is critical for effective rate limiting.
 
 ---
 
-# Rate Limit Dimensions
+## Rate Limit Dimensions
 
 Limits may be enforced per:
 
@@ -1049,7 +1049,7 @@ Per User
 
 ---
 
-# Rate Limiting Policies
+## Rate Limiting Policies
 
 Examples
 
@@ -1073,7 +1073,7 @@ Different endpoints often require different limits.
 
 ---
 
-# HTTP 429
+## HTTP 429
 
 When limits are exceeded,
 
@@ -1103,7 +1103,7 @@ X-RateLimit-Remaining: 0
 
 ---
 
-# Fixed Window Algorithm
+## Fixed Window Algorithm
 
 The Fixed Window algorithm counts requests within a fixed time interval.
 
@@ -1133,7 +1133,7 @@ Limitations
 
 ---
 
-# Fixed Window Example
+## Fixed Window Example
 
 ```
 Limit
@@ -1157,7 +1157,7 @@ A client may effectively send nearly double the configured rate around the reset
 
 ---
 
-# Sliding Window Algorithm
+## Sliding Window Algorithm
 
 The Sliding Window algorithm continuously evaluates requests over the previous time interval.
 
@@ -1179,7 +1179,7 @@ Advantages
 
 ---
 
-# Sliding Window Workflow
+## Sliding Window Workflow
 
 ```
 New Request
@@ -1207,7 +1207,7 @@ Allow    Reject
 
 ---
 
-# Token Bucket Algorithm
+## Token Bucket Algorithm
 
 A bucket contains tokens.
 
@@ -1241,7 +1241,7 @@ Refill
 
 ---
 
-# Token Bucket Characteristics
+## Token Bucket Characteristics
 
 Advantages
 
@@ -1254,7 +1254,7 @@ Ideal for APIs with intermittent traffic spikes.
 
 ---
 
-# Leaky Bucket Algorithm
+## Leaky Bucket Algorithm
 
 Requests enter a queue.
 
@@ -1284,7 +1284,7 @@ Advantages
 
 ---
 
-# Token Bucket vs Leaky Bucket
+## Token Bucket vs Leaky Bucket
 
 | Token Bucket | Leaky Bucket |
 |--------------|--------------|
@@ -1295,7 +1295,7 @@ Advantages
 
 ---
 
-# Distributed Rate Limiting
+## Distributed Rate Limiting
 
 Large deployments require shared counters across multiple gateway instances.
 
@@ -1327,7 +1327,7 @@ Common shared stores
 
 ---
 
-# Rate Limiting in Kubernetes
+## Rate Limiting in Kubernetes
 
 ```
 Internet
@@ -1353,7 +1353,7 @@ Shared counters ensure consistent enforcement across replicas.
 
 ---
 
-# Authentication-Aware Rate Limiting
+## Authentication-Aware Rate Limiting
 
 Authenticated users may receive higher limits.
 
@@ -1368,7 +1368,7 @@ Example
 
 ---
 
-# Endpoint-Specific Limits
+## Endpoint-Specific Limits
 
 Different endpoints require different policies.
 
@@ -1384,7 +1384,7 @@ Sensitive endpoints should have stricter limits.
 
 ---
 
-# Adaptive Rate Limiting
+## Adaptive Rate Limiting
 
 Adaptive rate limiting adjusts thresholds based on current conditions.
 
@@ -1414,7 +1414,7 @@ Lower Threshold
 
 ---
 
-# Quotas
+## Quotas
 
 Quotas define long-term usage limits.
 
@@ -1436,7 +1436,7 @@ Quotas differ from short-term rate limits.
 
 ---
 
-# Rate Limiting vs Quotas
+## Rate Limiting vs Quotas
 
 | Rate Limiting | Quotas |
 |---------------|---------|
@@ -1447,7 +1447,7 @@ Quotas differ from short-term rate limits.
 
 ---
 
-# Burst Control
+## Burst Control
 
 Controlled bursts improve user experience.
 
@@ -1465,7 +1465,7 @@ Burst allowances should remain within backend capacity.
 
 ---
 
-# Traffic Shaping
+## Traffic Shaping
 
 Traffic shaping controls how requests are processed.
 
@@ -1494,7 +1494,7 @@ Backend
 
 ---
 
-# Request Prioritization
+## Request Prioritization
 
 ```
 Premium Users
@@ -1516,7 +1516,7 @@ Critical business operations may receive preferential treatment.
 
 ---
 
-# Circuit Breaker Pattern
+## Circuit Breaker Pattern
 
 Circuit breakers prevent repeated requests to failing services.
 
@@ -1552,7 +1552,7 @@ Benefits
 
 ---
 
-# Circuit Breaker States
+## Circuit Breaker States
 
 ```
 Closed
@@ -1590,7 +1590,7 @@ Closed  Open
 
 ---
 
-# Retry Policies
+## Retry Policies
 
 Gateways may retry transient failures.
 
@@ -1605,7 +1605,7 @@ Retries should never amplify outages.
 
 ---
 
-# Timeout Management
+## Timeout Management
 
 Appropriate timeout values prevent resource exhaustion.
 
@@ -1625,7 +1625,7 @@ Timeouts should be coordinated across all layers.
 
 ---
 
-# Web Application Firewall (WAF) Integration
+## Web Application Firewall (WAF) Integration
 
 Many enterprise deployments position a WAF before the API Gateway.
 
@@ -1651,7 +1651,7 @@ The WAF blocks malicious traffic before it reaches the gateway.
 
 ---
 
-# WAF Responsibilities
+## WAF Responsibilities
 
 Examples
 
@@ -1665,7 +1665,7 @@ Examples
 
 ---
 
-# WAF and API Gateway Comparison
+## WAF and API Gateway Comparison
 
 | WAF | API Gateway |
 |-----|-------------|
@@ -1679,7 +1679,7 @@ They complement each other rather than replace one another.
 
 ---
 
-# Enterprise API Security Architecture
+## Enterprise API Security Architecture
 
 ```
                   Internet
@@ -1733,7 +1733,7 @@ They complement each other rather than replace one another.
 
 ---
 
-# Best Practices
+## Best Practices
 
 Rate Limiting
 
@@ -1760,7 +1760,7 @@ Operations
 
 ---
 
-# Common Security Mistakes
+## Common Security Mistakes
 
 Avoid
 
@@ -1777,7 +1777,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Rate limiting protects APIs from abuse and resource exhaustion.
 - Fixed Window, Sliding Window, Token Bucket, and Leaky Bucket are common algorithms.
@@ -1787,7 +1787,7 @@ Avoid
 
 ---
 
-# Logging and Monitoring
+## Logging and Monitoring
 
 Logging and monitoring are essential capabilities of an API Gateway.
 
@@ -1805,7 +1805,7 @@ An API Gateway should generate structured, centralized, and searchable logs.
 
 ---
 
-# Why Monitoring Matters
+## Why Monitoring Matters
 
 Without Monitoring
 
@@ -1849,7 +1849,7 @@ Minimal Impact
 
 ---
 
-# Observability
+## Observability
 
 Observability is the ability to understand the internal state of a system using external telemetry.
 
@@ -1871,7 +1871,7 @@ Together, they provide a complete operational view.
 
 ---
 
-# Metrics
+## Metrics
 
 Metrics are numerical measurements collected over time.
 
@@ -1889,7 +1889,7 @@ Metrics help identify trends and anomalies.
 
 ---
 
-# Common Gateway Metrics
+## Common Gateway Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1904,7 +1904,7 @@ Metrics help identify trends and anomalies.
 
 ---
 
-# Logs
+## Logs
 
 Logs provide detailed records of events.
 
@@ -1934,7 +1934,7 @@ Logs enable forensic analysis after an incident.
 
 ---
 
-# Structured Logging
+## Structured Logging
 
 Preferred format
 
@@ -1953,7 +1953,7 @@ Structured logs are easier to search and analyze.
 
 ---
 
-# Distributed Tracing
+## Distributed Tracing
 
 Distributed tracing follows a request across multiple services.
 
@@ -1981,7 +1981,7 @@ Every component contributes trace information.
 
 ---
 
-# Trace Identifiers
+## Trace Identifiers
 
 Each request should receive a unique trace identifier.
 
@@ -2005,7 +2005,7 @@ This simplifies end-to-end troubleshooting.
 
 ---
 
-# Correlation IDs
+## Correlation IDs
 
 Correlation IDs connect logs generated by different components.
 
@@ -2033,7 +2033,7 @@ Every log entry should include the same identifier.
 
 ---
 
-# Health Monitoring
+## Health Monitoring
 
 Gateways continuously monitor backend services.
 
@@ -2069,7 +2069,7 @@ Traffic  Instance
 
 ---
 
-# Synthetic Monitoring
+## Synthetic Monitoring
 
 Synthetic monitoring proactively tests APIs.
 
@@ -2103,7 +2103,7 @@ This detects issues before customers report them.
 
 ---
 
-# Service Level Indicators (SLIs)
+## Service Level Indicators (SLIs)
 
 SLIs measure service performance.
 
@@ -2126,7 +2126,7 @@ Latency
 
 ---
 
-# Service Level Objectives (SLOs)
+## Service Level Objectives (SLOs)
 
 An SLO defines the desired service target.
 
@@ -2142,7 +2142,7 @@ SLOs guide operational priorities.
 
 ---
 
-# Service Level Agreements (SLAs)
+## Service Level Agreements (SLAs)
 
 SLAs define contractual commitments to customers.
 
@@ -2160,7 +2160,7 @@ Failure to meet an SLA may trigger financial or contractual consequences.
 
 ---
 
-# Alerting
+## Alerting
 
 Monitoring systems generate alerts when thresholds are exceeded.
 
@@ -2190,7 +2190,7 @@ SOC / Operations
 
 ---
 
-# Dashboarding
+## Dashboarding
 
 Dashboards provide a real-time operational view.
 
@@ -2207,7 +2207,7 @@ Typical widgets include
 
 ---
 
-# API Analytics
+## API Analytics
 
 Analytics help understand API usage.
 
@@ -2224,7 +2224,7 @@ These insights support capacity planning and product decisions.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 API Gateway logs are valuable for security monitoring.
 
@@ -2243,7 +2243,7 @@ Common detections
 
 ---
 
-# Detection Workflow
+## Detection Workflow
 
 ```
 Gateway Logs
@@ -2271,7 +2271,7 @@ SOC Investigation
 
 ---
 
-# Example Detection Rules
+## Example Detection Rules
 
 | Detection | Example Indicator |
 |-----------|-------------------|
@@ -2286,7 +2286,7 @@ SOC Investigation
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 API Gateways should forward logs to a centralized SIEM.
 
@@ -2322,7 +2322,7 @@ API Gateways should forward logs to a centralized SIEM.
 
 ---
 
-# Recommended Log Sources
+## Recommended Log Sources
 
 Collect logs from:
 
@@ -2340,7 +2340,7 @@ Centralized collection improves incident visibility.
 
 ---
 
-# Correlation Examples
+## Correlation Examples
 
 Example 1
 
@@ -2380,7 +2380,7 @@ High Severity Alert
 
 ---
 
-# Incident Investigation Workflow
+## Incident Investigation Workflow
 
 ```
 Alert
@@ -2412,7 +2412,7 @@ Lessons Learned
 
 ---
 
-# Enterprise Monitoring Architecture
+## Enterprise Monitoring Architecture
 
 ```
                  Internet
@@ -2460,7 +2460,7 @@ Lessons Learned
 
 ---
 
-# Hands-on Lab 1 – Gateway Log Analysis
+## Hands-on Lab 1 – Gateway Log Analysis
 
 **Objective**
 
@@ -2481,7 +2481,7 @@ Review API Gateway logs in an authorized lab.
 
 ---
 
-# Hands-on Lab 2 – Trace Correlation
+## Hands-on Lab 2 – Trace Correlation
 
 **Objective**
 
@@ -2502,7 +2502,7 @@ Follow a request through multiple services.
 
 ---
 
-# Hands-on Lab 3 – SIEM Correlation
+## Hands-on Lab 3 – SIEM Correlation
 
 **Objective**
 
@@ -2523,9 +2523,9 @@ Create API security detections.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## High Latency
+### High Latency
 
 Possible causes
 
@@ -2537,7 +2537,7 @@ Possible causes
 
 ---
 
-## Excessive HTTP 500 Responses
+### Excessive HTTP 500 Responses
 
 Possible causes
 
@@ -2548,7 +2548,7 @@ Possible causes
 
 ---
 
-## Missing Logs
+### Missing Logs
 
 Possible causes
 
@@ -2559,7 +2559,7 @@ Possible causes
 
 ---
 
-## Trace Correlation Failure
+### Trace Correlation Failure
 
 Possible causes
 
@@ -2570,7 +2570,7 @@ Possible causes
 
 ---
 
-## Frequent Rate-Limit Alerts
+### Frequent Rate-Limit Alerts
 
 Possible causes
 
@@ -2581,9 +2581,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is an API Gateway?
 2. Why are logs important?
@@ -2598,7 +2598,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. How would you investigate API latency?
 12. Explain distributed tracing in a microservices environment.
@@ -2613,7 +2613,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -2643,7 +2643,7 @@ A trace identifier appears in gateway logs but is missing from downstream servic
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this section, we expanded API Gateway capabilities by covering operational visibility and security monitoring.
 
@@ -2668,7 +2668,7 @@ Comprehensive observability enables organizations to detect attacks quickly, tro
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -2684,22 +2684,22 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - OpenTelemetry Specification
 - RFC 9110 – HTTP Semantics
 - OpenMetrics Specification
 
-## Security Standards
+### Security Standards
 
 - OWASP API Security Top 10
 - OWASP Logging Cheat Sheet
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-92 – Guide to Computer Security Log Management
 
-## Further Reading
+### Further Reading
 
 - CNCF Observability Landscape
 - OpenTelemetry Documentation
@@ -2707,7 +2707,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 15 – Rate Limiting (Advanced)**
 

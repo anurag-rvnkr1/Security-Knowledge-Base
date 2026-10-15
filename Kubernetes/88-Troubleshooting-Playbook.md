@@ -38,7 +38,7 @@ This playbook is designed for:
 
 ---
 
-# 1. Golden Troubleshooting Rule
+## 1. Golden Troubleshooting Rule
 
 Do not immediately restart or delete the failing resource.
 
@@ -60,7 +60,7 @@ A restart may temporarily hide the root cause.
 
 ---
 
-# 2. First Five Commands
+## 2. First Five Commands
 
 When a Kubernetes problem occurs, start with:
 
@@ -88,7 +88,7 @@ Then narrow the investigation.
 
 ---
 
-# 3. Universal Troubleshooting Workflow
+## 3. Universal Troubleshooting Workflow
 
 ```text
 1. What is broken?
@@ -107,7 +107,7 @@ Then narrow the investigation.
 
 ---
 
-# 4. Determine Scope
+## 4. Determine Scope
 
 First determine whether the issue is:
 
@@ -142,7 +142,7 @@ Cluster / dependency / networking / infrastructure issue
 
 ---
 
-# 5. Check Recent Changes
+## 5. Check Recent Changes
 
 Always ask:
 
@@ -171,7 +171,7 @@ Cluster Upgrade
 
 ---
 
-# 6. Check Events
+## 6. Check Events
 
 Events are one of the fastest sources of Kubernetes diagnostic information.
 
@@ -203,9 +203,9 @@ AdmissionDenied
 
 ---
 
-# 7. Pod Troubleshooting
+## 7. Pod Troubleshooting
 
-## Basic Inspection
+### Basic Inspection
 
 ```bash
 kubectl get pod <pod>
@@ -231,7 +231,7 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-# 8. Pod State – Pending
+## 8. Pod State – Pending
 
 If:
 
@@ -257,7 +257,7 @@ Resource Requests
 
 ---
 
-# 9. Pending Pod Decision Tree
+## 9. Pending Pod Decision Tree
 
 ```text
 Pod Pending
@@ -289,7 +289,7 @@ FailedScheduling?
 
 ---
 
-# 10. Insufficient CPU
+## 10. Insufficient CPU
 
 Typical event:
 
@@ -325,7 +325,7 @@ Do not blindly reduce requests for critical workloads.
 
 ---
 
-# 11. Insufficient Memory
+## 11. Insufficient Memory
 
 Typical event:
 
@@ -355,7 +355,7 @@ Requested Memory
 
 ---
 
-# 12. NodeSelector Failure
+## 12. NodeSelector Failure
 
 If a Pod has:
 
@@ -380,7 +380,7 @@ Fix the label or scheduling requirement.
 
 ---
 
-# 13. Node Affinity Failure
+## 13. Node Affinity Failure
 
 Inspect:
 
@@ -405,7 +405,7 @@ Verify that the required expression can actually match a node.
 
 ---
 
-# 14. Taint and Toleration Failure
+## 14. Taint and Toleration Failure
 
 Check node taints:
 
@@ -439,7 +439,7 @@ Pod cannot schedule there.
 
 ---
 
-# 15. ImagePullBackOff
+## 15. ImagePullBackOff
 
 Check:
 
@@ -467,7 +467,7 @@ Network Failure
 
 ---
 
-# 16. Image Pull Checklist
+## 16. Image Pull Checklist
 
 ```text
 ☐ Image name correct
@@ -481,7 +481,7 @@ Network Failure
 
 ---
 
-# 17. ErrImagePull
+## 17. ErrImagePull
 
 `ErrImagePull` usually means Kubernetes attempted to pull the image and failed.
 
@@ -497,7 +497,7 @@ First identify the exact image pull error.
 
 ---
 
-# 18. CrashLoopBackOff
+## 18. CrashLoopBackOff
 
 Check:
 
@@ -534,7 +534,7 @@ Arguments
 
 ---
 
-# 19. CrashLoopBackOff Decision Tree
+## 19. CrashLoopBackOff Decision Tree
 
 ```text
 CrashLoopBackOff
@@ -560,7 +560,7 @@ Application Error?
 
 ---
 
-# 20. OOMKilled
+## 20. OOMKilled
 
 Check:
 
@@ -592,7 +592,7 @@ Application Configuration
 
 ---
 
-# 21. Container Restarting
+## 21. Container Restarting
 
 Check restart count:
 
@@ -621,7 +621,7 @@ kubectl logs api --previous
 
 ---
 
-# 22. Pod Running but Not Ready
+## 22. Pod Running but Not Ready
 
 Important distinction:
 
@@ -665,7 +665,7 @@ Network
 
 ---
 
-# 23. Readiness Probe Failure
+## 23. Readiness Probe Failure
 
 Check:
 
@@ -695,7 +695,7 @@ Test manually from inside or from an appropriate debugging Pod.
 
 ---
 
-# 24. Liveness Probe Failure
+## 24. Liveness Probe Failure
 
 Symptoms:
 
@@ -727,7 +727,7 @@ Slow Startup
 
 ---
 
-# 25. Startup Probe Failure
+## 25. Startup Probe Failure
 
 If an application takes several minutes to start, a liveness probe may restart it prematurely.
 
@@ -747,7 +747,7 @@ Failure Threshold
 
 ---
 
-# 26. Init Container Failure
+## 26. Init Container Failure
 
 Check:
 
@@ -772,7 +772,7 @@ Network failure
 
 ---
 
-# 27. Multi-Container Pod
+## 27. Multi-Container Pod
 
 List containers:
 
@@ -789,7 +789,7 @@ kubectl logs <pod> -c <container>
 
 ---
 
-# 28. Deployment Troubleshooting
+## 28. Deployment Troubleshooting
 
 Check:
 
@@ -817,7 +817,7 @@ kubectl get pods
 
 ---
 
-# 29. Deployment Replicas Not Available
+## 29. Deployment Replicas Not Available
 
 Check:
 
@@ -845,7 +845,7 @@ investigate the missing replicas.
 
 ---
 
-# 30. ReplicaSet Troubleshooting
+## 30. ReplicaSet Troubleshooting
 
 ```bash
 kubectl get rs
@@ -868,7 +868,7 @@ PodCreationFailure
 
 ---
 
-# 31. Deployment Rollout Stuck
+## 31. Deployment Rollout Stuck
 
 Check:
 
@@ -896,7 +896,7 @@ Scheduling
 
 ---
 
-# 32. Rollout History
+## 32. Rollout History
 
 ```bash
 kubectl rollout history deployment/<name>
@@ -916,7 +916,7 @@ kubectl rollout status deployment/<name>
 
 ---
 
-# 33. Service Troubleshooting
+## 33. Service Troubleshooting
 
 Check:
 
@@ -938,7 +938,7 @@ kubectl get endpointslices
 
 ---
 
-# 34. Service Has No Endpoints
+## 34. Service Has No Endpoints
 
 This is one of the most common Kubernetes networking problems.
 
@@ -972,7 +972,7 @@ They must match appropriately.
 
 ---
 
-# 35. Service Selector Troubleshooting
+## 35. Service Selector Troubleshooting
 
 Example:
 
@@ -1000,7 +1000,7 @@ Fix the selector or labels.
 
 ---
 
-# 36. Service Port Troubleshooting
+## 36. Service Port Troubleshooting
 
 Check:
 
@@ -1020,7 +1020,7 @@ A Service can exist correctly while traffic still fails because `targetPort` doe
 
 ---
 
-# 37. Service Connectivity Test
+## 37. Service Connectivity Test
 
 Create a debugging Pod:
 
@@ -1045,7 +1045,7 @@ curl http://service-name:8080
 
 ---
 
-# 38. DNS Troubleshooting
+## 38. DNS Troubleshooting
 
 Test:
 
@@ -1063,7 +1063,7 @@ Test from an application/debug Pod.
 
 ---
 
-# 39. CoreDNS Troubleshooting
+## 39. CoreDNS Troubleshooting
 
 Check:
 
@@ -1088,7 +1088,7 @@ kubectl get svc -n kube-system
 
 ---
 
-# 40. DNS Decision Tree
+## 40. DNS Decision Tree
 
 ```text
 DNS Failure
@@ -1110,7 +1110,7 @@ Upstream DNS?
 
 ---
 
-# 41. Ingress Troubleshooting
+## 41. Ingress Troubleshooting
 
 Check:
 
@@ -1146,7 +1146,7 @@ Pod
 
 ---
 
-# 42. Ingress 404
+## 42. Ingress 404
 
 Possible causes:
 
@@ -1166,7 +1166,7 @@ kubectl describe ingress <name>
 
 ---
 
-# 43. Ingress 502 / 503
+## 43. Ingress 502 / 503
 
 Typical chain:
 
@@ -1196,7 +1196,7 @@ Investigate Pod selectors/readiness.
 
 ---
 
-# 44. Gateway API Troubleshooting
+## 44. Gateway API Troubleshooting
 
 Check:
 
@@ -1223,7 +1223,7 @@ ResolvedRefs
 
 ---
 
-# 45. NetworkPolicy Troubleshooting
+## 45. NetworkPolicy Troubleshooting
 
 List:
 
@@ -1245,7 +1245,7 @@ kubectl get pods --show-labels
 
 ---
 
-# 46. NetworkPolicy Mental Model
+## 46. NetworkPolicy Mental Model
 
 Always identify:
 
@@ -1269,7 +1269,7 @@ Both
 
 ---
 
-# 47. NetworkPolicy Default Deny
+## 47. NetworkPolicy Default Deny
 
 If a default deny policy exists:
 
@@ -1287,7 +1287,7 @@ kubectl get networkpolicy -o yaml
 
 ---
 
-# 48. NetworkPolicy DNS Problem
+## 48. NetworkPolicy DNS Problem
 
 If egress is restricted, DNS traffic may also be blocked.
 
@@ -1305,7 +1305,7 @@ Check whether DNS traffic is explicitly allowed.
 
 ---
 
-# 49. CNI Troubleshooting
+## 49. CNI Troubleshooting
 
 If Pod-to-Pod networking fails, investigate the CNI.
 
@@ -1330,7 +1330,7 @@ NetworkPolicy Implementation
 
 ---
 
-# 50. Cross-Node Pod Connectivity
+## 50. Cross-Node Pod Connectivity
 
 If:
 
@@ -1351,7 +1351,7 @@ MTU
 
 ---
 
-# 51. MTU Problems
+## 51. MTU Problems
 
 Symptoms may include:
 
@@ -1373,7 +1373,7 @@ Cloud Network MTU
 
 ---
 
-# 52. Service Connectivity vs Pod Connectivity
+## 52. Service Connectivity vs Pod Connectivity
 
 Test both.
 
@@ -1399,7 +1399,7 @@ may be involved.
 
 ---
 
-# 53. Storage Troubleshooting
+## 53. Storage Troubleshooting
 
 Check:
 
@@ -1417,7 +1417,7 @@ kubectl get csidrivers
 
 ---
 
-# 54. PVC Pending
+## 54. PVC Pending
 
 Run:
 
@@ -1440,7 +1440,7 @@ Topology Constraint
 
 ---
 
-# 55. PVC Bound but Pod Cannot Mount
+## 55. PVC Bound but Pod Cannot Mount
 
 Check:
 
@@ -1466,7 +1466,7 @@ Investigate the CSI driver and node.
 
 ---
 
-# 56. CSI Troubleshooting
+## 56. CSI Troubleshooting
 
 Check:
 
@@ -1484,7 +1484,7 @@ Check logs for the relevant CSI controller/node components.
 
 ---
 
-# 57. Volume Attachment Failure
+## 57. Volume Attachment Failure
 
 Potential causes:
 
@@ -1499,7 +1499,7 @@ Access Mode
 
 ---
 
-# 58. StatefulSet Troubleshooting
+## 58. StatefulSet Troubleshooting
 
 Check:
 
@@ -1532,7 +1532,7 @@ Stable Storage
 
 ---
 
-# 59. StatefulSet Pod Stuck
+## 59. StatefulSet Pod Stuck
 
 Investigate:
 
@@ -1548,7 +1548,7 @@ Do not casually delete StatefulSet Pods when they contain stateful workloads.
 
 ---
 
-# 60. DaemonSet Troubleshooting
+## 60. DaemonSet Troubleshooting
 
 Check:
 
@@ -1568,7 +1568,7 @@ Node Eligibility
 
 ---
 
-# 61. Job Troubleshooting
+## 61. Job Troubleshooting
 
 Check:
 
@@ -1596,7 +1596,7 @@ kubectl logs <pod>
 
 ---
 
-# 62. CronJob Troubleshooting
+## 62. CronJob Troubleshooting
 
 Check:
 
@@ -1628,7 +1628,7 @@ Resource Constraints
 
 ---
 
-# 63. RBAC Troubleshooting
+## 63. RBAC Troubleshooting
 
 If you receive:
 
@@ -1650,7 +1650,7 @@ kubectl auth can-i get pods
 
 ---
 
-# 64. Identify ServiceAccount
+## 64. Identify ServiceAccount
 
 ```bash
 kubectl get pod <pod> \
@@ -1666,7 +1666,7 @@ kubectl auth can-i get pods \
 
 ---
 
-# 65. RBAC Decision Tree
+## 65. RBAC Decision Tree
 
 ```text
 403 Forbidden
@@ -1688,7 +1688,7 @@ Correct Verb?
 
 ---
 
-# 66. Common RBAC Mistake
+## 66. Common RBAC Mistake
 
 Incorrect:
 
@@ -1716,7 +1716,7 @@ resources:
 
 ---
 
-# 67. Secret Access Troubleshooting
+## 67. Secret Access Troubleshooting
 
 Check:
 
@@ -1743,7 +1743,7 @@ unless explicitly required.
 
 ---
 
-# 68. Pod Security Troubleshooting
+## 68. Pod Security Troubleshooting
 
 If admission rejects a Pod:
 
@@ -1767,7 +1767,7 @@ Use a secure `securityContext`.
 
 ---
 
-# 69. Admission Webhook Troubleshooting
+## 69. Admission Webhook Troubleshooting
 
 If an admission webhook is causing failures:
 
@@ -1798,7 +1798,7 @@ Do not disable security webhooks blindly during an incident.
 
 ---
 
-# 70. Node Troubleshooting
+## 70. Node Troubleshooting
 
 Check:
 
@@ -1820,7 +1820,7 @@ kubectl describe node <node>
 
 ---
 
-# 71. Node Conditions
+## 71. Node Conditions
 
 Look for:
 
@@ -1834,7 +1834,7 @@ NetworkUnavailable
 
 ---
 
-# 72. Node NotReady
+## 72. Node NotReady
 
 Potential causes:
 
@@ -1850,7 +1850,7 @@ Cloud Provider
 
 ---
 
-# 73. Kubelet Troubleshooting
+## 73. Kubelet Troubleshooting
 
 On the node, where authorized:
 
@@ -1866,7 +1866,7 @@ The exact commands depend on the operating system and distribution.
 
 ---
 
-# 74. Container Runtime Troubleshooting
+## 74. Container Runtime Troubleshooting
 
 Investigate:
 
@@ -1887,7 +1887,7 @@ Runtime Logs
 
 ---
 
-# 75. DiskPressure
+## 75. DiskPressure
 
 Check:
 
@@ -1912,7 +1912,7 @@ Runtime Data
 
 ---
 
-# 76. MemoryPressure
+## 76. MemoryPressure
 
 Check:
 
@@ -1937,7 +1937,7 @@ Insufficient Capacity
 
 ---
 
-# 77. PIDPressure
+## 77. PIDPressure
 
 PID pressure means the node is approaching process ID limits.
 
@@ -1952,7 +1952,7 @@ Node PID Limits
 
 ---
 
-# 78. Resource Troubleshooting
+## 78. Resource Troubleshooting
 
 Check:
 
@@ -1971,7 +1971,7 @@ Actual Usage
 
 ---
 
-# 79. CPU Throttling
+## 79. CPU Throttling
 
 Symptoms:
 
@@ -1994,7 +1994,7 @@ Avoid assuming every CPU issue is solved by increasing limits.
 
 ---
 
-# 80. Memory Leak
+## 80. Memory Leak
 
 Symptoms:
 
@@ -2016,7 +2016,7 @@ Request Patterns
 
 ---
 
-# 81. HPA Troubleshooting
+## 81. HPA Troubleshooting
 
 Check:
 
@@ -2038,7 +2038,7 @@ kubectl top pods
 
 ---
 
-# 82. HPA Not Scaling
+## 82. HPA Not Scaling
 
 Possible causes:
 
@@ -2053,7 +2053,7 @@ Insufficient cluster capacity
 
 ---
 
-# 83. HPA Scaling but Pods Pending
+## 83. HPA Scaling but Pods Pending
 
 Architecture:
 
@@ -2077,7 +2077,7 @@ Scheduling Constraints
 
 ---
 
-# 84. VPA Troubleshooting
+## 84. VPA Troubleshooting
 
 Check VPA resources if installed:
 
@@ -2096,7 +2096,7 @@ Pod Restart Behavior
 
 ---
 
-# 85. Cluster Autoscaler Troubleshooting
+## 85. Cluster Autoscaler Troubleshooting
 
 Symptoms:
 
@@ -2117,7 +2117,7 @@ Resource Availability
 
 ---
 
-# 86. Priority and Preemption Troubleshooting
+## 86. Priority and Preemption Troubleshooting
 
 If a high-priority Pod cannot schedule:
 
@@ -2140,7 +2140,7 @@ Preemption
 
 ---
 
-# 87. Pod Affinity Troubleshooting
+## 87. Pod Affinity Troubleshooting
 
 A Pod may remain Pending because its affinity rule cannot be satisfied.
 
@@ -2160,7 +2160,7 @@ requiredDuringScheduling...
 
 ---
 
-# 88. Pod Anti-Affinity Troubleshooting
+## 88. Pod Anti-Affinity Troubleshooting
 
 If replicas cannot be distributed:
 
@@ -2176,7 +2176,7 @@ Relax constraints only when appropriate.
 
 ---
 
-# 89. Topology Spread Troubleshooting
+## 89. Topology Spread Troubleshooting
 
 Check:
 
@@ -2195,7 +2195,7 @@ WhenUnsatisfiable
 
 ---
 
-# 90. ConfigMap Troubleshooting
+## 90. ConfigMap Troubleshooting
 
 Check:
 
@@ -2216,7 +2216,7 @@ Volume Mount
 
 ---
 
-# 91. Secret Troubleshooting
+## 91. Secret Troubleshooting
 
 Check:
 
@@ -2243,7 +2243,7 @@ RBAC
 
 ---
 
-# 92. Environment Variable Troubleshooting
+## 92. Environment Variable Troubleshooting
 
 Inside the container:
 
@@ -2257,7 +2257,7 @@ Do not expose sensitive values in logs or incident tickets.
 
 ---
 
-# 93. Volume Mount Troubleshooting
+## 93. Volume Mount Troubleshooting
 
 Check:
 
@@ -2285,7 +2285,7 @@ ReadOnly
 
 ---
 
-# 94. In-Container Debugging
+## 94. In-Container Debugging
 
 Enter:
 
@@ -2319,7 +2319,7 @@ Use a debugging Pod when application images lack diagnostic tools.
 
 ---
 
-# 95. Ephemeral Debug Containers
+## 95. Ephemeral Debug Containers
 
 Where supported and appropriate:
 
@@ -2333,7 +2333,7 @@ Useful for troubleshooting minimal production images without modifying the appli
 
 ---
 
-# 96. Node Debugging
+## 96. Node Debugging
 
 Where appropriate:
 
@@ -2346,7 +2346,7 @@ Use carefully and according to your cluster's security policy.
 
 ---
 
-# 97. API Server Troubleshooting
+## 97. API Server Troubleshooting
 
 Symptoms:
 
@@ -2371,7 +2371,7 @@ Resource Saturation
 
 ---
 
-# 98. Scheduler Troubleshooting
+## 98. Scheduler Troubleshooting
 
 Symptoms:
 
@@ -2399,7 +2399,7 @@ Priority
 
 ---
 
-# 99. Controller Manager Troubleshooting
+## 99. Controller Manager Troubleshooting
 
 Symptoms:
 
@@ -2421,7 +2421,7 @@ Events
 
 ---
 
-# 100. etcd Troubleshooting
+## 100. etcd Troubleshooting
 
 If control-plane behavior is abnormal, investigate etcd health.
 
@@ -2439,7 +2439,7 @@ Never experiment with etcd membership changes on production clusters without und
 
 ---
 
-# 101. etcd Backup Validation
+## 101. etcd Backup Validation
 
 A backup is useful only if it can be restored.
 
@@ -2464,7 +2464,7 @@ Dependencies
 
 ---
 
-# 102. Certificate Troubleshooting
+## 102. Certificate Troubleshooting
 
 Symptoms:
 
@@ -2486,7 +2486,7 @@ Trust Chain
 
 ---
 
-# 103. Time Synchronization Problems
+## 103. Time Synchronization Problems
 
 Certificate validation and distributed systems can be affected by incorrect system time.
 
@@ -2500,7 +2500,7 @@ Clock Drift
 
 ---
 
-# 104. Logging Troubleshooting
+## 104. Logging Troubleshooting
 
 If application logs are missing:
 
@@ -2523,7 +2523,7 @@ Backend
 
 ---
 
-# 105. Centralized Logging Failure
+## 105. Centralized Logging Failure
 
 Architecture:
 
@@ -2543,7 +2543,7 @@ Identify where data stops.
 
 ---
 
-# 106. Prometheus Troubleshooting
+## 106. Prometheus Troubleshooting
 
 Check:
 
@@ -2564,7 +2564,7 @@ Check discovery configuration.
 
 ---
 
-# 107. Grafana Troubleshooting
+## 107. Grafana Troubleshooting
 
 If dashboards show no data:
 
@@ -2581,7 +2581,7 @@ Time Range
 
 ---
 
-# 108. Alertmanager Troubleshooting
+## 108. Alertmanager Troubleshooting
 
 If alerts are generated but notifications are not delivered:
 
@@ -2599,7 +2599,7 @@ Credentials
 
 ---
 
-# 109. OpenTelemetry Troubleshooting
+## 109. OpenTelemetry Troubleshooting
 
 Trace missing?
 
@@ -2628,7 +2628,7 @@ Backend
 
 ---
 
-# 110. Performance Troubleshooting
+## 110. Performance Troubleshooting
 
 Start with:
 
@@ -2652,7 +2652,7 @@ Database
 
 ---
 
-# 111. High API Latency
+## 111. High API Latency
 
 Check:
 
@@ -2670,7 +2670,7 @@ Distributed tracing can identify the slow dependency.
 
 ---
 
-# 112. High Error Rate
+## 112. High Error Rate
 
 Determine:
 
@@ -2697,7 +2697,7 @@ Rollback may be the safest mitigation.
 
 ---
 
-# 113. Network Latency
+## 113. Network Latency
 
 Investigate:
 
@@ -2711,7 +2711,7 @@ Determine where latency appears.
 
 ---
 
-# 114. Storage Latency
+## 114. Storage Latency
 
 Investigate:
 
@@ -2735,7 +2735,7 @@ Queue Depth
 
 ---
 
-# 115. Production Incident Response
+## 115. Production Incident Response
 
 When a serious incident occurs:
 
@@ -2763,7 +2763,7 @@ Postmortem
 
 ---
 
-# 116. Incident Roles
+## 116. Incident Roles
 
 Typical roles:
 
@@ -2779,7 +2779,7 @@ The exact structure depends on the organization.
 
 ---
 
-# 117. Incident Communication
+## 117. Incident Communication
 
 Good incident updates should answer:
 
@@ -2795,7 +2795,7 @@ Avoid speculation presented as fact.
 
 ---
 
-# 118. Evidence Preservation
+## 118. Evidence Preservation
 
 During security incidents preserve:
 
@@ -2815,7 +2815,7 @@ Avoid destroying evidence through unnecessary deletion or restart.
 
 ---
 
-# 119. Security Incident Containment
+## 119. Security Incident Containment
 
 Possible containment actions:
 
@@ -2833,7 +2833,7 @@ Choose the least destructive action that effectively reduces risk.
 
 ---
 
-# 120. Kubernetes Forensics Checklist
+## 120. Kubernetes Forensics Checklist
 
 ```text
 ☐ Identify compromised workload
@@ -2853,7 +2853,7 @@ Choose the least destructive action that effectively reduces risk.
 
 ---
 
-# 121. Root Cause Analysis
+## 121. Root Cause Analysis
 
 A strong RCA should answer:
 
@@ -2867,7 +2867,7 @@ What will prevent recurrence?
 
 ---
 
-# 122. Five Whys
+## 122. Five Whys
 
 Example:
 
@@ -2896,7 +2896,7 @@ Process + Technical Control Gap
 
 ---
 
-# 123. Change Failure Rate
+## 123. Change Failure Rate
 
 Track:
 
@@ -2919,7 +2919,7 @@ Change Management
 
 ---
 
-# 124. Safe Remediation Principles
+## 124. Safe Remediation Principles
 
 Prefer:
 
@@ -2941,7 +2941,7 @@ Blind Restarts
 
 ---
 
-# 125. Troubleshooting Command Matrix
+## 125. Troubleshooting Command Matrix
 
 | Problem | First Commands |
 |---|---|
@@ -2960,7 +2960,7 @@ Blind Restarts
 
 ---
 
-# 126. Quick Decision Tree
+## 126. Quick Decision Tree
 
 ```text
 Is the Pod Running?
@@ -2987,7 +2987,7 @@ Schedule   No    Yes
 
 ---
 
-# 127. Production Troubleshooting Sequence
+## 127. Production Troubleshooting Sequence
 
 ```text
 1. Cluster
@@ -3008,9 +3008,9 @@ Do not always follow this order rigidly. Start with the evidence and symptom tha
 
 ---
 
-# 128. Troubleshooting by Symptom
+## 128. Troubleshooting by Symptom
 
-## "Pod is Pending"
+### "Pod is Pending"
 
 Check:
 
@@ -3024,7 +3024,7 @@ Storage
 
 ---
 
-## "Pod keeps restarting"
+### "Pod keeps restarting"
 
 Check:
 
@@ -3038,7 +3038,7 @@ Application
 
 ---
 
-## "Service returns 503"
+### "Service returns 503"
 
 Check:
 
@@ -3052,7 +3052,7 @@ Ingress
 
 ---
 
-## "DNS does not work"
+### "DNS does not work"
 
 Check:
 
@@ -3065,7 +3065,7 @@ Pod DNS
 
 ---
 
-## "PVC is Pending"
+### "PVC is Pending"
 
 Check:
 
@@ -3079,7 +3079,7 @@ Topology
 
 ---
 
-## "403 Forbidden"
+### "403 Forbidden"
 
 Check:
 
@@ -3095,7 +3095,7 @@ Namespace
 
 ---
 
-## "Node is NotReady"
+### "Node is NotReady"
 
 Check:
 
@@ -3110,7 +3110,7 @@ Certificates
 
 ---
 
-# 129. What Not to Do
+## 129. What Not to Do
 
 Avoid:
 
@@ -3129,7 +3129,7 @@ Avoid:
 
 ---
 
-# 130. Troubleshooting Best Practices
+## 130. Troubleshooting Best Practices
 
 ```text
 ☑ Start with read-only commands
@@ -3146,7 +3146,7 @@ Avoid:
 
 ---
 
-# 131. Desired vs Actual State
+## 131. Desired vs Actual State
 
 Always compare:
 
@@ -3175,7 +3175,7 @@ Why can't Kubernetes reach desired state?
 
 ---
 
-# 132. Dependency Mapping
+## 132. Dependency Mapping
 
 For complex applications:
 
@@ -3195,7 +3195,7 @@ Troubleshoot from the failing component outward.
 
 ---
 
-# 133. Recent Change Analysis
+## 133. Recent Change Analysis
 
 If an incident begins at:
 
@@ -3219,7 +3219,7 @@ kubectl rollout history deployment/<name>
 
 ---
 
-# 134. Rollback Decision
+## 134. Rollback Decision
 
 Rollback when:
 
@@ -3234,7 +3234,7 @@ Do not roll back blindly if schema changes are incompatible.
 
 ---
 
-# 135. Database Migration Warning
+## 135. Database Migration Warning
 
 Application deployment:
 
@@ -3256,7 +3256,7 @@ Use backward-compatible migration strategies where possible.
 
 ---
 
-# 136. Troubleshooting Production Databases
+## 136. Troubleshooting Production Databases
 
 Check:
 
@@ -3277,7 +3277,7 @@ Do not delete stateful resources simply because they appear unhealthy.
 
 ---
 
-# 137. Kubernetes Security Troubleshooting
+## 137. Kubernetes Security Troubleshooting
 
 When investigating security issues, review:
 
@@ -3295,7 +3295,7 @@ Audit Logs
 
 ---
 
-# 138. Security Baseline
+## 138. Security Baseline
 
 A production workload should ideally have:
 
@@ -3320,7 +3320,7 @@ Use only controls compatible with the application.
 
 ---
 
-# 139. Incident Prevention
+## 139. Incident Prevention
 
 Every significant incident should produce at least one improvement:
 
@@ -3348,7 +3348,7 @@ Document recovery
 
 ---
 
-# 140. Troubleshooting Runbook Template
+## 140. Troubleshooting Runbook Template
 
 Use this template for production runbooks:
 
@@ -3388,7 +3388,7 @@ Use this template for production runbooks:
 
 ---
 
-# 141. Example Runbook – CrashLoopBackOff
+## 141. Example Runbook – CrashLoopBackOff
 
 ```text
 # CrashLoopBackOff
@@ -3427,7 +3427,7 @@ Application healthy
 
 ---
 
-# 142. Example Runbook – Service Failure
+## 142. Example Runbook – Service Failure
 
 ```text
 # Service Failure
@@ -3459,7 +3459,7 @@ curl http://service-name
 
 ---
 
-# 143. Example Runbook – Node Failure
+## 143. Example Runbook – Node Failure
 
 ```text
 # Node Failure
@@ -3497,7 +3497,7 @@ Cluster capacity healthy
 
 ---
 
-# 144. Example Runbook – PVC Failure
+## 144. Example Runbook – PVC Failure
 
 ```text
 # PVC Failure
@@ -3532,7 +3532,7 @@ Data Accessible
 
 ---
 
-# 145. Example Runbook – RBAC Failure
+## 145. Example Runbook – RBAC Failure
 
 ```text
 # RBAC Failure
@@ -3565,9 +3565,9 @@ Unauthorized operations remain blocked.
 
 ---
 
-# 146. Production Troubleshooting Checklist
+## 146. Production Troubleshooting Checklist
 
-## Cluster
+### Cluster
 
 ```text
 ☐ Nodes Ready
@@ -3578,7 +3578,7 @@ Unauthorized operations remain blocked.
 ☐ Controllers Healthy
 ```
 
-## Workloads
+### Workloads
 
 ```text
 ☐ Pods Running
@@ -3588,7 +3588,7 @@ Unauthorized operations remain blocked.
 ☐ Replica counts correct
 ```
 
-## Networking
+### Networking
 
 ```text
 ☐ Services
@@ -3599,7 +3599,7 @@ Unauthorized operations remain blocked.
 ☐ Ingress/Gateway
 ```
 
-## Storage
+### Storage
 
 ```text
 ☐ PVC Bound
@@ -3608,7 +3608,7 @@ Unauthorized operations remain blocked.
 ☐ Storage Capacity
 ```
 
-## Security
+### Security
 
 ```text
 ☐ RBAC
@@ -3619,7 +3619,7 @@ Unauthorized operations remain blocked.
 ☐ Image Security
 ```
 
-## Resources
+### Resources
 
 ```text
 ☐ CPU
@@ -3629,7 +3629,7 @@ Unauthorized operations remain blocked.
 ☐ PID
 ```
 
-## Observability
+### Observability
 
 ```text
 ☐ Logs
@@ -3641,7 +3641,7 @@ Unauthorized operations remain blocked.
 
 ---
 
-# 147. The 10-Minute Incident Drill
+## 147. The 10-Minute Incident Drill
 
 When receiving a Kubernetes alert, perform:
 
@@ -3681,7 +3681,7 @@ This is a training framework, not a rigid production SLA.
 
 ---
 
-# 148. The 30-Minute Deep Investigation
+## 148. The 30-Minute Deep Investigation
 
 If the root cause is unclear:
 
@@ -3707,7 +3707,7 @@ If the root cause is unclear:
 
 ---
 
-# 149. Root Cause Categories
+## 149. Root Cause Categories
 
 Most Kubernetes incidents fall into:
 
@@ -3728,7 +3728,7 @@ Automation
 
 ---
 
-# 150. Final Troubleshooting Mental Model
+## 150. Final Troubleshooting Mental Model
 
 ```text
                     INCIDENT
@@ -3775,7 +3775,7 @@ Automation
 
 ---
 
-# 151. Final Takeaways
+## 151. Final Takeaways
 
 Kubernetes troubleshooting is fundamentally about understanding relationships.
 
@@ -3834,7 +3834,7 @@ Therefore:
 
 ---
 
-# Troubleshooting Golden Rules
+## Troubleshooting Golden Rules
 
 ```text
 1. Check before changing.
@@ -3865,9 +3865,9 @@ and prevent the same failure from recurring."
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 89 – Production Operations Checklist
+### Chapter 89 – Production Operations Checklist
 
 The final chapter will provide a complete operational checklist covering:
 

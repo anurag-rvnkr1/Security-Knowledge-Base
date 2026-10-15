@@ -1,10 +1,10 @@
 # 05 - Linux File System
 
-# Part 1 — Linux Filesystem Overview, Filesystem Hierarchy Standard (FHS), Directory Structure, File Types, and Path Management
+## Part 1 — Linux Filesystem Overview, Filesystem Hierarchy Standard (FHS), Directory Structure, File Types, and Path Management
 
 ---
 
-# Introduction
+## Introduction
 
 One of the most distinguishing characteristics of Linux is its **unified filesystem**. Unlike some operating systems that expose separate drive letters (for example, `C:` or `D:`), Linux organizes everything into a **single hierarchical directory tree** beginning at the **root directory (`/`)**.
 
@@ -33,7 +33,7 @@ Understanding the Linux filesystem is essential for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -47,7 +47,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is a Filesystem?
+## What is a Filesystem?
 
 A **filesystem** is the method used by an operating system to organize, store, retrieve, and manage data on storage devices.
 
@@ -63,7 +63,7 @@ Without a filesystem, data stored on disks would be unusable.
 
 ---
 
-# Responsibilities of a Filesystem
+## Responsibilities of a Filesystem
 
 A filesystem manages:
 
@@ -78,7 +78,7 @@ A filesystem manages:
 
 ---
 
-# Linux Filesystem Architecture
+## Linux Filesystem Architecture
 
 ```text
 Applications
@@ -104,7 +104,7 @@ Applications interact with files through the Virtual File System (VFS), which ab
 
 ---
 
-# Unified Directory Tree
+## Unified Directory Tree
 
 Linux organizes all files under a single directory tree.
 
@@ -130,7 +130,7 @@ Every mounted storage device becomes part of this unified hierarchy.
 
 ---
 
-# Root Directory (/)
+## Root Directory (/)
 
 The **root directory (`/`)** is the highest level of the Linux filesystem.
 
@@ -156,7 +156,7 @@ The root directory should not be confused with the **root user**.
 
 ---
 
-# Filesystem Hierarchy Standard (FHS)
+## Filesystem Hierarchy Standard (FHS)
 
 The **Filesystem Hierarchy Standard (FHS)** defines the purpose and organization of directories in Linux.
 
@@ -172,7 +172,7 @@ Most major Linux distributions generally follow the FHS.
 
 ---
 
-# High-Level Directory Layout
+## High-Level Directory Layout
 
 ```text
 /
@@ -201,7 +201,7 @@ Each directory has a specific purpose.
 
 ---
 
-# /bin
+## /bin
 
 Contains essential user commands required for booting and basic system operation.
 
@@ -223,7 +223,7 @@ On many modern distributions, `/bin` is implemented as a symbolic link to `/usr/
 
 ---
 
-# /sbin
+## /sbin
 
 Contains essential system administration commands.
 
@@ -243,7 +243,7 @@ Modern distributions may link `/sbin` to `/usr/sbin`.
 
 ---
 
-# /boot
+## /boot
 
 Contains files required during the boot process.
 
@@ -263,7 +263,7 @@ Loss or corruption of this directory may prevent the system from booting.
 
 ---
 
-# /dev
+## /dev
 
 Contains **device files** representing hardware and virtual devices.
 
@@ -285,7 +285,7 @@ These special files provide a uniform interface to devices.
 
 ---
 
-# /etc
+## /etc
 
 Stores system-wide configuration files.
 
@@ -307,7 +307,7 @@ Applications typically read configuration from `/etc` during startup.
 
 ---
 
-# /home
+## /home
 
 Contains personal directories for regular users.
 
@@ -327,7 +327,7 @@ User documents, downloads, and personal configuration files are generally stored
 
 ---
 
-# /root
+## /root
 
 Home directory of the **root** user.
 
@@ -341,7 +341,7 @@ This directory is separate from `/home` and is intended for the superuser.
 
 ---
 
-# /lib and /lib64
+## /lib and /lib64
 
 Contain essential shared libraries and kernel modules required by programs in `/bin` and `/sbin`.
 
@@ -357,7 +357,7 @@ On many systems, these directories are merged into the `/usr` hierarchy.
 
 ---
 
-# /usr
+## /usr
 
 Contains the majority of user applications and read-only program resources.
 
@@ -377,7 +377,7 @@ The `/usr` hierarchy is central to most Linux software installations.
 
 ---
 
-# /usr/local
+## /usr/local
 
 Reserved for locally installed software that is not managed by the distribution's package manager.
 
@@ -393,7 +393,7 @@ This separation helps preserve locally installed applications during system upda
 
 ---
 
-# /var
+## /var
 
 Contains variable data that changes during normal system operation.
 
@@ -425,7 +425,7 @@ Important subdirectories:
 
 ---
 
-# /tmp
+## /tmp
 
 Stores temporary files.
 
@@ -439,7 +439,7 @@ Applications should not rely on files in `/tmp` for long-term storage.
 
 ---
 
-# /proc
+## /proc
 
 A virtual filesystem providing information about running processes and kernel state.
 
@@ -459,7 +459,7 @@ Files under `/proc` are generated dynamically and do not occupy traditional disk
 
 ---
 
-# /sys
+## /sys
 
 Provides information about devices, drivers, and the Linux kernel through the **sysfs** virtual filesystem.
 
@@ -477,7 +477,7 @@ It is widely used by system management tools.
 
 ---
 
-# /run
+## /run
 
 Contains volatile runtime information created after boot.
 
@@ -491,7 +491,7 @@ The contents are typically stored in memory and recreated on every boot.
 
 ---
 
-# /media
+## /media
 
 Automatically mounted removable media.
 
@@ -509,7 +509,7 @@ Desktop environments commonly mount removable devices here.
 
 ---
 
-# /mnt
+## /mnt
 
 Traditionally used for temporary manual mounts.
 
@@ -523,7 +523,7 @@ Administrators often use `/mnt` during maintenance or recovery tasks.
 
 ---
 
-# /srv
+## /srv
 
 Intended for data served by network services.
 
@@ -541,7 +541,7 @@ Usage varies between distributions and deployments.
 
 ---
 
-# Directory Purpose Summary
+## Directory Purpose Summary
 
 | Directory | Primary Purpose |
 |-----------|-----------------|
@@ -564,7 +564,7 @@ Usage varies between distributions and deployments.
 
 ---
 
-# Linux File Types
+## Linux File Types
 
 Linux supports multiple file types.
 
@@ -582,7 +582,7 @@ These symbols appear as the first character in `ls -l` output.
 
 ---
 
-# Regular Files
+## Regular Files
 
 Examples:
 
@@ -600,7 +600,7 @@ Regular files store user or application data.
 
 ---
 
-# Directories
+## Directories
 
 Directories organize files into a hierarchical structure.
 
@@ -618,7 +618,7 @@ Directories can contain both files and other directories.
 
 ---
 
-# Device Files
+## Device Files
 
 Examples:
 
@@ -634,7 +634,7 @@ These special files provide interfaces to hardware or virtual devices.
 
 ---
 
-# Symbolic Links
+## Symbolic Links
 
 A symbolic link (soft link) references another file or directory.
 
@@ -648,7 +648,7 @@ Unlike hard links, symbolic links can reference directories and files on differe
 
 ---
 
-# Absolute Paths
+## Absolute Paths
 
 An **absolute path** begins at the root directory (`/`).
 
@@ -666,7 +666,7 @@ Absolute paths always identify the same location regardless of the current worki
 
 ---
 
-# Relative Paths
+## Relative Paths
 
 A **relative path** is interpreted relative to the current working directory.
 
@@ -680,7 +680,7 @@ Relative paths are shorter and convenient when working within a directory hierar
 
 ---
 
-# Path Symbols
+## Path Symbols
 
 | Symbol | Meaning |
 |----------|---------|
@@ -699,7 +699,7 @@ pwd
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 A strong understanding of the filesystem hierarchy helps security professionals:
 
@@ -714,7 +714,7 @@ Many attacks rely on modifying configuration files or placing malicious files in
 
 ---
 
-# Business Impact
+## Business Impact
 
 A standardized filesystem layout enables organizations to:
 
@@ -726,7 +726,7 @@ A standardized filesystem layout enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow the Filesystem Hierarchy Standard (FHS).
 - Store configuration files in `/etc`.
@@ -738,7 +738,7 @@ A standardized filesystem layout enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux organizes all files under a single hierarchical directory tree.
 - The root directory (`/`) is the starting point of the entire filesystem.
@@ -749,11 +749,11 @@ A standardized filesystem layout enables organizations to:
 ---
 
 
-# Part 2 — Inodes, Superblocks, File Metadata, Hard Links, Symbolic Links, Directory Internals, and Filesystem Navigation
+## Part 2 — Inodes, Superblocks, File Metadata, Hard Links, Symbolic Links, Directory Internals, and Filesystem Navigation
 
 ---
 
-# Introduction
+## Introduction
 
 When users create a file, they usually think only about its name and contents.
 
@@ -779,7 +779,7 @@ Understanding these internal structures is essential for:
 
 ---
 
-# How Linux Stores a File
+## How Linux Stores a File
 
 Creating a file involves several steps.
 
@@ -803,7 +803,7 @@ Notice that the **filename is not stored inside the inode**—it is stored in th
 
 ---
 
-# What is an Inode?
+## What is an Inode?
 
 An **inode (Index Node)** is a data structure that stores metadata about a file.
 
@@ -818,7 +818,7 @@ Instead, it stores everything required to locate and manage the file.
 
 ---
 
-# Information Stored in an Inode
+## Information Stored in an Inode
 
 Typical inode information includes:
 
@@ -836,7 +836,7 @@ Typical inode information includes:
 
 ---
 
-# Inode Architecture
+## Inode Architecture
 
 ```text
                 Inode
@@ -868,7 +868,7 @@ The inode acts as the metadata record for the file.
 
 ---
 
-# Filename Storage
+## Filename Storage
 
 The directory stores mappings between filenames and inode numbers.
 
@@ -888,7 +888,7 @@ The directory knows the filename; the inode knows the file metadata.
 
 ---
 
-# Viewing Inode Numbers
+## Viewing Inode Numbers
 
 Display inode numbers:
 
@@ -912,7 +912,7 @@ stat report.txt
 
 ---
 
-# Example `stat` Output
+## Example `stat` Output
 
 ```text
 File: report.txt
@@ -932,7 +932,7 @@ Permissions: -rw-r--r--
 
 ---
 
-# Why Inodes Matter
+## Why Inodes Matter
 
 Inodes enable Linux to:
 
@@ -944,7 +944,7 @@ Inodes enable Linux to:
 
 ---
 
-# Data Blocks
+## Data Blocks
 
 The actual contents of a file are stored in **data blocks**, not in the inode.
 
@@ -968,7 +968,7 @@ Large files occupy multiple data blocks.
 
 ---
 
-# Block Size
+## Block Size
 
 Filesystems divide storage into fixed-size blocks.
 
@@ -985,7 +985,7 @@ A 1 KB file stored on a 4 KB block consumes an entire 4 KB block on disk, though
 
 ---
 
-# Block Allocation
+## Block Allocation
 
 ```text
 Disk
@@ -1007,7 +1007,7 @@ The filesystem tracks which blocks belong to each file.
 
 ---
 
-# Superblock
+## Superblock
 
 The **superblock** stores metadata about the entire filesystem.
 
@@ -1026,7 +1026,7 @@ Without a valid superblock, mounting the filesystem may fail.
 
 ---
 
-# Superblock Architecture
+## Superblock Architecture
 
 ```text
 Filesystem
@@ -1044,7 +1044,7 @@ The superblock is one of the most critical filesystem structures.
 
 ---
 
-# Backup Superblocks
+## Backup Superblocks
 
 Many Linux filesystems maintain backup copies of the superblock.
 
@@ -1058,7 +1058,7 @@ This improves resilience against metadata corruption.
 
 ---
 
-# Viewing Filesystem Information
+## Viewing Filesystem Information
 
 Display filesystem details:
 
@@ -1082,7 +1082,7 @@ Replace `/dev/sdX1` with the appropriate device.
 
 ---
 
-# File Metadata
+## File Metadata
 
 Metadata describes a file without including its contents.
 
@@ -1100,7 +1100,7 @@ Metadata is essential for access control and auditing.
 
 ---
 
-# Linux File Timestamps
+## Linux File Timestamps
 
 Linux tracks several timestamps.
 
@@ -1114,7 +1114,7 @@ Some filesystems may also support **birth/creation time** depending on the files
 
 ---
 
-# Timestamp Example
+## Timestamp Example
 
 ```text
 report.txt
@@ -1138,7 +1138,7 @@ Different operations update different timestamps.
 
 ---
 
-# Hard Links
+## Hard Links
 
 A **hard link** creates another directory entry pointing to the **same inode**.
 
@@ -1160,7 +1160,7 @@ Both names reference identical file data.
 
 ---
 
-# Hard Link Characteristics
+## Hard Link Characteristics
 
 - Shares the same inode
 - Shares file contents
@@ -1171,7 +1171,7 @@ Both names reference identical file data.
 
 ---
 
-# Create Hard Link
+## Create Hard Link
 
 ```bash
 ln report.txt report_backup.txt
@@ -1187,7 +1187,7 @@ Both files should display the same inode number.
 
 ---
 
-# Symbolic (Soft) Links
+## Symbolic (Soft) Links
 
 A symbolic link is a special file that stores the **path** to another file or directory.
 
@@ -1205,7 +1205,7 @@ Unlike hard links, symbolic links reference a pathname rather than an inode dire
 
 ---
 
-# Symbolic Link Characteristics
+## Symbolic Link Characteristics
 
 - Different inode from target
 - Stores target path
@@ -1215,7 +1215,7 @@ Unlike hard links, symbolic links reference a pathname rather than an inode dire
 
 ---
 
-# Create Symbolic Link
+## Create Symbolic Link
 
 ```bash
 ln -s report.txt shortcut.txt
@@ -1235,7 +1235,7 @@ shortcut.txt -> report.txt
 
 ---
 
-# Hard Link vs Symbolic Link
+## Hard Link vs Symbolic Link
 
 | Feature | Hard Link | Symbolic Link |
 |----------|-----------|---------------|
@@ -1247,7 +1247,7 @@ shortcut.txt -> report.txt
 
 ---
 
-# Directory Internals
+## Directory Internals
 
 Directories are special files that map filenames to inode numbers.
 
@@ -1269,7 +1269,7 @@ The filesystem consults these mappings during file lookup.
 
 ---
 
-# File Lookup Process
+## File Lookup Process
 
 ```text
 Open File
@@ -1299,7 +1299,7 @@ Efficient directory structures contribute to fast file access.
 
 ---
 
-# Navigating the Filesystem
+## Navigating the Filesystem
 
 Display current directory:
 
@@ -1333,7 +1333,7 @@ cd ~
 
 ---
 
-# Useful Navigation Commands
+## Useful Navigation Commands
 
 | Command | Purpose |
 |----------|----------|
@@ -1346,7 +1346,7 @@ cd ~
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Knowledge of inodes and metadata is valuable when investigating:
 
@@ -1362,7 +1362,7 @@ Forensic analysts frequently examine inode information to reconstruct events.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Understanding filesystem internals enables organizations to:
 
@@ -1374,7 +1374,7 @@ Understanding filesystem internals enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor filesystem health regularly.
 - Use appropriate filesystem checking tools during maintenance windows.
@@ -1385,7 +1385,7 @@ Understanding filesystem internals enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Inodes store file metadata, while directories map filenames to inode numbers.
 - File contents reside in data blocks referenced by inodes.
@@ -1396,11 +1396,11 @@ Understanding filesystem internals enables organizations to:
 ---
 
 
-# Part 3 — Mounting & Unmounting, Virtual Filesystems, ext4, XFS, Btrfs, Journaling, Filesystem Checks, and Enterprise Storage Management
+## Part 3 — Mounting & Unmounting, Virtual Filesystems, ext4, XFS, Btrfs, Journaling, Filesystem Checks, and Enterprise Storage Management
 
 ---
 
-# Introduction
+## Introduction
 
 A storage device is not immediately usable after it is connected to a Linux system.
 
@@ -1420,7 +1420,7 @@ Understanding these concepts is essential for Linux administrators, DevOps engin
 
 ---
 
-# What is Mounting?
+## What is Mounting?
 
 **Mounting** is the process of attaching a filesystem to a directory within the Linux filesystem hierarchy.
 
@@ -1459,7 +1459,7 @@ After Mount
 
 ---
 
-# Why Mounting is Required
+## Why Mounting is Required
 
 Linux cannot access data on a storage device until:
 
@@ -1471,7 +1471,7 @@ Without mounting, the operating system knows the device exists but cannot use it
 
 ---
 
-# Mount Point
+## Mount Point
 
 A **mount point** is an existing directory where another filesystem becomes accessible.
 
@@ -1493,7 +1493,7 @@ Everything inside the mounted filesystem appears beneath the mount point.
 
 ---
 
-# Mount Workflow
+## Mount Workflow
 
 ```text
 Storage Device
@@ -1517,7 +1517,7 @@ Filesystem Available
 
 ---
 
-# Viewing Mounted Filesystems
+## Viewing Mounted Filesystems
 
 Display mounted filesystems:
 
@@ -1539,7 +1539,7 @@ df -T
 
 ---
 
-# Mounting a Filesystem
+## Mounting a Filesystem
 
 Example:
 
@@ -1558,7 +1558,7 @@ After mounting, files become accessible under `/mnt`.
 
 ---
 
-# Unmounting a Filesystem
+## Unmounting a Filesystem
 
 Unmount:
 
@@ -1576,7 +1576,7 @@ A filesystem should generally be unmounted before removing the storage device to
 
 ---
 
-# Busy Filesystem
+## Busy Filesystem
 
 If a filesystem is in use:
 
@@ -1604,7 +1604,7 @@ fuser -vm /mnt
 
 ---
 
-# Persistent Mounts
+## Persistent Mounts
 
 Filesystems that should be mounted automatically at boot are defined in:
 
@@ -1622,7 +1622,7 @@ Using UUIDs instead of device names is generally recommended because device name
 
 ---
 
-# Understanding `/etc/fstab`
+## Understanding `/etc/fstab`
 
 Typical fields:
 
@@ -1639,7 +1639,7 @@ Incorrect entries in `/etc/fstab` can prevent successful boot, so changes should
 
 ---
 
-# Virtual Filesystems
+## Virtual Filesystems
 
 Some Linux filesystems do **not** store persistent data on disk.
 
@@ -1656,7 +1656,7 @@ Examples include:
 
 ---
 
-# proc Filesystem
+## proc Filesystem
 
 Mounted at:
 
@@ -1680,7 +1680,7 @@ These files are generated dynamically by the kernel.
 
 ---
 
-# sysfs
+## sysfs
 
 Mounted at:
 
@@ -1707,7 +1707,7 @@ Common directories:
 
 ---
 
-# tmpfs
+## tmpfs
 
 A **tmpfs** filesystem stores data in memory (RAM) rather than on persistent storage.
 
@@ -1729,7 +1729,7 @@ Data stored in `tmpfs` is lost after reboot.
 
 ---
 
-# Common Linux Filesystems
+## Common Linux Filesystems
 
 Linux supports numerous filesystems.
 
@@ -1747,7 +1747,7 @@ Each filesystem has different characteristics and use cases.
 
 ---
 
-# ext4
+## ext4
 
 **Fourth Extended Filesystem (ext4)** is one of the most widely deployed Linux filesystems.
 
@@ -1767,7 +1767,7 @@ Common use cases:
 
 ---
 
-# XFS
+## XFS
 
 XFS is a high-performance filesystem designed for scalability.
 
@@ -1786,7 +1786,7 @@ Common use cases:
 
 ---
 
-# Btrfs
+## Btrfs
 
 **B-tree Filesystem (Btrfs)** is a modern filesystem with advanced management capabilities.
 
@@ -1803,7 +1803,7 @@ Btrfs is often used where snapshotting and data integrity are priorities.
 
 ---
 
-# FAT32
+## FAT32
 
 Characteristics:
 
@@ -1814,7 +1814,7 @@ Characteristics:
 
 ---
 
-# NTFS
+## NTFS
 
 Primarily associated with Windows systems.
 
@@ -1828,7 +1828,7 @@ Typical use cases:
 
 ---
 
-# Filesystem Comparison
+## Filesystem Comparison
 
 | Feature | ext4 | XFS | Btrfs |
 |----------|------|-----|--------|
@@ -1843,7 +1843,7 @@ The best filesystem depends on workload requirements, recovery objectives, and o
 
 ---
 
-# Journaling
+## Journaling
 
 A journal records pending filesystem operations before they are committed.
 
@@ -1869,7 +1869,7 @@ This reduces the likelihood of metadata corruption after unexpected shutdowns.
 
 ---
 
-# Benefits of Journaling
+## Benefits of Journaling
 
 - Faster recovery
 - Reduced filesystem corruption
@@ -1879,7 +1879,7 @@ This reduces the likelihood of metadata corruption after unexpected shutdowns.
 
 ---
 
-# Filesystem Consistency Checks
+## Filesystem Consistency Checks
 
 Linux provides tools to verify filesystem integrity.
 
@@ -1895,7 +1895,7 @@ sudo fsck /dev/sdb1
 
 ---
 
-# Checking Disk Usage
+## Checking Disk Usage
 
 Filesystem usage:
 
@@ -1913,7 +1913,7 @@ These commands help identify storage consumption and capacity issues.
 
 ---
 
-# Block Device Information
+## Block Device Information
 
 List storage devices:
 
@@ -1941,7 +1941,7 @@ This provides a hierarchical view of disks and partitions.
 
 ---
 
-# Storage Layout Example
+## Storage Layout Example
 
 ```text
 NVMe SSD
@@ -1959,7 +1959,7 @@ Enterprise systems may include additional partitions or logical volumes for appl
 
 ---
 
-# Enterprise Storage Design
+## Enterprise Storage Design
 
 Large environments often separate data into dedicated filesystems such as:
 
@@ -1993,7 +1993,7 @@ Benefits include:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Understanding filesystems assists in:
 
@@ -2008,7 +2008,7 @@ Attackers may abuse writable locations, temporary directories, or misconfigured 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-designed storage architecture helps organizations:
 
@@ -2021,7 +2021,7 @@ Well-designed storage architecture helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use UUIDs in `/etc/fstab` instead of device names where practical.
 - Choose the filesystem that aligns with workload requirements.
@@ -2033,7 +2033,7 @@ Well-designed storage architecture helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Mounting integrates a filesystem into Linux's unified directory hierarchy.
 - `/etc/fstab` defines persistent filesystem mounts.
@@ -2044,11 +2044,11 @@ Well-designed storage architecture helps organizations:
 ---
 
 
-# Part 4 — Filesystem Security, Mount Options, Filesystem Forensics, Practical Labs, Chapter Summary, Interview Questions, and References
+## Part 4 — Filesystem Security, Mount Options, Filesystem Forensics, Practical Labs, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 The Linux filesystem is one of the primary targets for attackers because it contains:
 
@@ -2067,7 +2067,7 @@ This section focuses on filesystem security, secure mount options, forensic tech
 
 ---
 
-# Filesystem Security Principles
+## Filesystem Security Principles
 
 The security of a Linux filesystem is based on several core principles:
 
@@ -2082,7 +2082,7 @@ Every file should be accessible only to users and processes that require it.
 
 ---
 
-# Critical Directories
+## Critical Directories
 
 Certain directories are especially important from a security perspective.
 
@@ -2101,7 +2101,7 @@ Unauthorized modifications to these locations may indicate compromise or misconf
 
 ---
 
-# Protecting Configuration Files
+## Protecting Configuration Files
 
 Examples of sensitive configuration files include:
 
@@ -2128,7 +2128,7 @@ Recommended practices:
 
 ---
 
-# Sensitive User Files
+## Sensitive User Files
 
 Common sensitive user files include:
 
@@ -2148,7 +2148,7 @@ These may contain credentials, command history, or application settings and shou
 
 ---
 
-# Mount Options
+## Mount Options
 
 Linux allows administrators to define mount options that influence filesystem behavior and security.
 
@@ -2168,7 +2168,7 @@ Selecting appropriate options depends on the filesystem's intended use.
 
 ---
 
-# Read-Only Filesystems
+## Read-Only Filesystems
 
 Example:
 
@@ -2186,7 +2186,7 @@ Typical use cases include installation media and certain recovery environments.
 
 ---
 
-# noexec
+## noexec
 
 Example:
 
@@ -2208,7 +2208,7 @@ This can reduce the risk of executing malicious binaries from those locations.
 
 ---
 
-# nosuid
+## nosuid
 
 Purpose:
 
@@ -2225,7 +2225,7 @@ Benefits:
 
 ---
 
-# nodev
+## nodev
 
 Purpose:
 
@@ -2243,7 +2243,7 @@ Useful for:
 
 ---
 
-# Secure Mount Example
+## Secure Mount Example
 
 ```text
 UUID=xxxx
@@ -2265,7 +2265,7 @@ Combining multiple mount options strengthens security for filesystems that shoul
 
 ---
 
-# Temporary Directory Security
+## Temporary Directory Security
 
 `/tmp` is writable by many users and applications.
 
@@ -2278,7 +2278,7 @@ Recommendations:
 
 ---
 
-# File Integrity Monitoring
+## File Integrity Monitoring
 
 Organizations often monitor critical filesystem locations for unauthorized changes.
 
@@ -2295,7 +2295,7 @@ Unexpected modifications should be investigated promptly.
 
 ---
 
-# Filesystem Auditing
+## Filesystem Auditing
 
 Routine filesystem audits may include:
 
@@ -2310,7 +2310,7 @@ Regular audits help maintain security and operational consistency.
 
 ---
 
-# Filesystem Forensics
+## Filesystem Forensics
 
 Filesystem forensics involves examining storage to determine:
 
@@ -2324,7 +2324,7 @@ This discipline is central to digital investigations.
 
 ---
 
-# Forensic Artifacts
+## Forensic Artifacts
 
 Investigators commonly examine:
 
@@ -2352,7 +2352,7 @@ Correlating these artifacts helps reconstruct system activity.
 
 ---
 
-# Timeline Analysis
+## Timeline Analysis
 
 File timestamps can help establish an event sequence.
 
@@ -2378,7 +2378,7 @@ Investigators should be aware that timestamps can be altered under certain circu
 
 ---
 
-# Hidden Files
+## Hidden Files
 
 Hidden files begin with a period (`.`).
 
@@ -2398,7 +2398,7 @@ Hidden files are not inherently malicious but often contain important configurat
 
 ---
 
-# Finding Large Files
+## Finding Large Files
 
 Example:
 
@@ -2417,7 +2417,7 @@ Exercise caution when searching the entire filesystem on production systems.
 
 ---
 
-# Finding Recently Modified Files
+## Finding Recently Modified Files
 
 Example:
 
@@ -2429,7 +2429,7 @@ This searches for files modified within the last seven days.
 
 ---
 
-# Finding SUID Files
+## Finding SUID Files
 
 Example:
 
@@ -2441,7 +2441,7 @@ SUID binaries deserve periodic review because they execute with elevated privile
 
 ---
 
-# Checking Filesystem Usage
+## Checking Filesystem Usage
 
 Filesystem capacity:
 
@@ -2459,7 +2459,7 @@ Monitoring storage usage helps prevent service disruptions due to exhausted disk
 
 ---
 
-# Detecting Open Files
+## Detecting Open Files
 
 Display open files:
 
@@ -2476,7 +2476,7 @@ Typical uses:
 
 ---
 
-# Enterprise Filesystem Monitoring
+## Enterprise Filesystem Monitoring
 
 Organizations frequently monitor:
 
@@ -2492,7 +2492,7 @@ These metrics support operational reliability and security.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers may attempt to:
 
@@ -2507,7 +2507,7 @@ Defenders should monitor critical directories, review filesystem changes, and co
 
 ---
 
-# Practical Lab 1 — Explore the Filesystem
+## Practical Lab 1 — Explore the Filesystem
 
 Commands:
 
@@ -2525,7 +2525,7 @@ Objective:
 
 ---
 
-# Practical Lab 2 — Examine File Metadata
+## Practical Lab 2 — Examine File Metadata
 
 Commands:
 
@@ -2540,7 +2540,7 @@ Objective:
 
 ---
 
-# Practical Lab 3 — Create Hard and Symbolic Links
+## Practical Lab 3 — Create Hard and Symbolic Links
 
 Commands:
 
@@ -2560,7 +2560,7 @@ Objective:
 
 ---
 
-# Practical Lab 4 — Review Mounted Filesystems
+## Practical Lab 4 — Review Mounted Filesystems
 
 Commands:
 
@@ -2578,7 +2578,7 @@ Objective:
 
 ---
 
-# Practical Lab 5 — Search for SUID Files
+## Practical Lab 5 — Search for SUID Files
 
 Command:
 
@@ -2592,7 +2592,7 @@ Objective:
 
 ---
 
-# Practical Lab 6 — Review Disk Usage
+## Practical Lab 6 — Review Disk Usage
 
 Commands:
 
@@ -2608,7 +2608,7 @@ Objective:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2628,9 +2628,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is a filesystem?
 2. What is the root directory?
@@ -2645,7 +2645,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the Filesystem Hierarchy Standard (FHS).
 2. What information is stored in an inode?
@@ -2660,7 +2660,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Describe the complete path resolution process from filename to data blocks.
 2. How would you recover from superblock corruption on a supported filesystem?
@@ -2675,7 +2675,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux stores all files within a single hierarchical directory tree rooted at `/`.
 - Inodes contain metadata, while directories map filenames to inode numbers.
@@ -2685,9 +2685,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - Linux Kernel Documentation
 - Filesystem Hierarchy Standard (FHS)
@@ -2696,7 +2696,7 @@ In this chapter, you learned:
 - Btrfs Documentation
 - GNU Core Utilities Manual
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - CIS Benchmarks for Linux
@@ -2705,7 +2705,7 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **06-Linux-File-Management.md**
 

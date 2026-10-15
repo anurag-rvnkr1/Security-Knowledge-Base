@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Memory forensics is the analysis of volatile system memory, commonly RAM, to identify evidence that may not exist—or may not be fully represented—on disk.
 
@@ -49,7 +49,7 @@ Therefore:
 
 ---
 
-# Why Memory Forensics Matters
+## Why Memory Forensics Matters
 
 Disk forensics can answer:
 
@@ -75,7 +75,7 @@ Memory may still contain evidence of the activity.
 
 ---
 
-# Memory Forensic Architecture
+## Memory Forensic Architecture
 
 ```text
                     System Memory
@@ -100,7 +100,7 @@ Memory may still contain evidence of the activity.
 
 ---
 
-# Volatile Evidence
+## Volatile Evidence
 
 Examples include:
 
@@ -120,7 +120,7 @@ The exact persistence characteristics depend on the operating system and system 
 
 ---
 
-# Order of Volatility
+## Order of Volatility
 
 A simplified hierarchy:
 
@@ -153,7 +153,7 @@ The exact order can vary by environment and acquisition method.
 
 ---
 
-# Memory Acquisition
+## Memory Acquisition
 
 Memory acquisition creates a forensic representation of volatile memory.
 
@@ -175,9 +175,9 @@ Memory Image
 
 ---
 
-# Live Acquisition vs Dead Acquisition
+## Live Acquisition vs Dead Acquisition
 
-## Live Acquisition
+### Live Acquisition
 
 Memory is collected while the system is running.
 
@@ -197,7 +197,7 @@ Risks:
 
 ---
 
-## Dead-System Acquisition
+### Dead-System Acquisition
 
 The system is powered down or otherwise unavailable for live collection.
 
@@ -215,7 +215,7 @@ Disadvantages:
 
 ---
 
-# Memory Acquisition Decision
+## Memory Acquisition Decision
 
 ```text
               Suspected Incident
@@ -249,7 +249,7 @@ The decision should consider:
 
 ---
 
-# Memory Acquisition Documentation
+## Memory Acquisition Documentation
 
 Record:
 
@@ -272,7 +272,7 @@ Storage Location
 
 ---
 
-# Memory Integrity
+## Memory Integrity
 
 After acquisition, calculate a cryptographic hash.
 
@@ -294,7 +294,7 @@ SHA-256: <recorded hash>
 
 ---
 
-# Important Principle
+## Important Principle
 
 Hashing demonstrates that the analyzed file matches the hashed evidence.
 
@@ -309,7 +309,7 @@ Integrity is one component of forensic trust.
 
 ---
 
-# Memory Analysis Workflow
+## Memory Analysis Workflow
 
 ```text
 Memory Image
@@ -350,7 +350,7 @@ Timeline / Correlation
 
 ---
 
-# Volatility
+## Volatility
 
 **Volatility** is one of the most widely used frameworks for memory analysis.
 
@@ -368,7 +368,7 @@ https://volatility3.readthedocs.io/
 
 ---
 
-# Volatility Concepts
+## Volatility Concepts
 
 Volatility uses plugins to analyze specific memory structures.
 
@@ -390,7 +390,7 @@ Processes Connections DLLs
 
 ---
 
-# Initial Memory Triage
+## Initial Memory Triage
 
 The first objective is usually to establish:
 
@@ -405,7 +405,7 @@ Do not immediately assume that the most unusual-looking process is malicious.
 
 ---
 
-# Process Enumeration
+## Process Enumeration
 
 A memory image can contain information about active or recently existing processes depending on the operating system and available artifacts.
 
@@ -425,7 +425,7 @@ Children
 
 ---
 
-# Process Tree
+## Process Tree
 
 Process relationships can be represented as:
 
@@ -449,7 +449,7 @@ A process tree can reveal:
 
 ---
 
-# Process Anomalies
+## Process Anomalies
 
 Potential indicators include:
 
@@ -468,7 +468,7 @@ These are indicators, not automatic proof of compromise.
 
 ---
 
-# Process Name Masquerading
+## Process Name Masquerading
 
 Attackers may use names resembling legitimate processes.
 
@@ -497,7 +497,7 @@ Signature
 
 ---
 
-# Process Paths
+## Process Paths
 
 A legitimate process name running from an unusual location may require investigation.
 
@@ -515,7 +515,7 @@ Context and system configuration still matter.
 
 ---
 
-# Command-Line Analysis
+## Command-Line Analysis
 
 Command lines can reveal:
 
@@ -540,7 +540,7 @@ Process
 
 ---
 
-# Network Connections in Memory
+## Network Connections in Memory
 
 Memory may contain evidence of network activity.
 
@@ -570,7 +570,7 @@ Use reserved/example addresses in documentation and labs.
 
 ---
 
-# Network Correlation
+## Network Correlation
 
 Do not treat an external connection as malicious simply because it is unfamiliar.
 
@@ -594,7 +594,7 @@ Threat Intelligence
 
 ---
 
-# DLL and Module Analysis
+## DLL and Module Analysis
 
 Processes load modules such as:
 
@@ -616,7 +616,7 @@ Expected / Unexpected
 
 ---
 
-# Suspicious Module Indicators
+## Suspicious Module Indicators
 
 Potential indicators include:
 
@@ -633,7 +633,7 @@ Again:
 
 ---
 
-# Handles
+## Handles
 
 Processes maintain handles to operating-system objects.
 
@@ -656,7 +656,7 @@ Handle analysis can help answer:
 
 ---
 
-# Credential Evidence
+## Credential Evidence
 
 Memory can contain sensitive authentication material.
 
@@ -672,7 +672,7 @@ Credential extraction should only be performed under explicit authorization and 
 
 ---
 
-# Credential Forensics Principle
+## Credential Forensics Principle
 
 The objective is not:
 
@@ -684,7 +684,7 @@ The objective is:
 
 ---
 
-# Windows Memory Forensics
+## Windows Memory Forensics
 
 Windows memory can provide evidence about:
 
@@ -714,7 +714,7 @@ EDR
 
 ---
 
-# Windows Process Investigation
+## Windows Process Investigation
 
 Investigate relationships such as:
 
@@ -732,7 +732,7 @@ Such a chain may deserve investigation depending on the context.
 
 ---
 
-# Windows Injection Indicators
+## Windows Injection Indicators
 
 Process injection may leave memory artifacts.
 
@@ -750,7 +750,7 @@ These indicators should be interpreted carefully.
 
 ---
 
-# Common Process Injection Concepts
+## Common Process Injection Concepts
 
 High-level categories include:
 
@@ -764,7 +764,7 @@ The forensic objective is to identify anomalous memory execution rather than bli
 
 ---
 
-# Memory Permissions
+## Memory Permissions
 
 Executable memory can be described using permissions such as:
 
@@ -780,7 +780,7 @@ However, legitimate software can also use unusual memory protections.
 
 ---
 
-# Malware in Memory
+## Malware in Memory
 
 Malware may appear through:
 
@@ -798,7 +798,7 @@ The investigation should correlate multiple artifacts.
 
 ---
 
-# Fileless Activity
+## Fileless Activity
 
 Some malicious activity may leave limited conventional file evidence.
 
@@ -816,7 +816,7 @@ Memory can therefore become particularly valuable.
 
 ---
 
-# Deleted Executables
+## Deleted Executables
 
 A process may remain active even after its backing file has been deleted.
 
@@ -834,7 +834,7 @@ Investigators should preserve and analyze both sources.
 
 ---
 
-# Linux Memory Forensics
+## Linux Memory Forensics
 
 Linux memory may provide evidence related to:
 
@@ -861,7 +861,7 @@ network telemetry
 
 ---
 
-# Linux `/proc` vs Memory Image
+## Linux `/proc` vs Memory Image
 
 `/proc` represents current system state.
 
@@ -883,7 +883,7 @@ These sources can complement each other.
 
 ---
 
-# Memory and Malware Timelines
+## Memory and Malware Timelines
 
 Suppose:
 
@@ -899,7 +899,7 @@ Memory may preserve process/network evidence that helps connect the events.
 
 ---
 
-# Memory Evidence Correlation
+## Memory Evidence Correlation
 
 A strong investigation correlates:
 
@@ -928,7 +928,7 @@ Logs
 
 ---
 
-# Memory Forensic Decision Matrix
+## Memory Forensic Decision Matrix
 
 | Question | Useful Evidence |
 |---|---|
@@ -944,39 +944,39 @@ Logs
 
 ---
 
-# Common Memory Forensic Mistakes
+## Common Memory Forensic Mistakes
 
-## Acquiring Memory Too Late
+### Acquiring Memory Too Late
 
 Volatile evidence may disappear.
 
-## Performing Excessive Actions First
+### Performing Excessive Actions First
 
 Every action can change system state.
 
-## No Hashing
+### No Hashing
 
 Evidence integrity becomes harder to demonstrate.
 
-## Analyzing Only One Artifact
+### Analyzing Only One Artifact
 
 A suspicious process alone is insufficient.
 
-## Treating Tool Output as Truth
+### Treating Tool Output as Truth
 
 Tools can misinterpret corrupted or unusual memory.
 
-## Ignoring Time
+### Ignoring Time
 
 Memory is a snapshot, not a complete historical record.
 
-## Ignoring Disk Evidence
+### Ignoring Disk Evidence
 
 Memory and disk should complement each other.
 
 ---
 
-# Memory Acquisition Risks
+## Memory Acquisition Risks
 
 Live acquisition may:
 
@@ -990,7 +990,7 @@ Document acquisition actions.
 
 ---
 
-# Memory Analysis Validation
+## Memory Analysis Validation
 
 Forensic findings should be reproducible.
 
@@ -1009,7 +1009,7 @@ Output
 
 ---
 
-# Evidence Handling
+## Evidence Handling
 
 Store memory images securely.
 
@@ -1033,7 +1033,7 @@ Evidence/
 
 ---
 
-# Chain of Custody
+## Chain of Custody
 
 Example:
 
@@ -1064,9 +1064,9 @@ Restricted
 
 ---
 
-# Practical Lab 01 — Memory Triage
+## Practical Lab 01 — Memory Triage
 
-## Objective
+### Objective
 
 Analyze an authorized memory image and establish:
 
@@ -1081,7 +1081,7 @@ Suspicious Activity
 
 ---
 
-## Investigation Questions
+### Investigation Questions
 
 ```text
 1. What operating system is represented?
@@ -1095,7 +1095,7 @@ Suspicious Activity
 
 ---
 
-# Practical Lab 02 — Process Tree Investigation
+## Practical Lab 02 — Process Tree Investigation
 
 Construct:
 
@@ -1124,7 +1124,7 @@ Assessment
 
 ---
 
-# Practical Lab 03 — Network Investigation
+## Practical Lab 03 — Network Investigation
 
 Identify active connections.
 
@@ -1145,7 +1145,7 @@ Then correlate with:
 
 ---
 
-# Practical Lab 04 — Suspicious Process Investigation
+## Practical Lab 04 — Suspicious Process Investigation
 
 Scenario:
 
@@ -1177,7 +1177,7 @@ Do not force a conclusion when evidence is insufficient.
 
 ---
 
-# Practical Lab 05 — Memory-Resident Malware Investigation
+## Practical Lab 05 — Memory-Resident Malware Investigation
 
 Scenario:
 
@@ -1201,7 +1201,7 @@ Correlate with disk evidence.
 
 ---
 
-# Practical Lab 06 — Complete Memory Investigation
+## Practical Lab 06 — Complete Memory Investigation
 
 Scenario:
 
@@ -1233,7 +1233,7 @@ Your report should establish:
 
 ---
 
-# Memory Forensic Investigation Report
+## Memory Forensic Investigation Report
 
 ```text
 # Memory Forensic Report
@@ -1290,7 +1290,7 @@ Acquisition Method:
 
 ---
 
-# Example Finding
+## Example Finding
 
 ```text
 Finding ID:
@@ -1320,7 +1320,7 @@ Historical network telemetry was incomplete.
 
 ---
 
-# Memory Forensics and Detection Engineering
+## Memory Forensics and Detection Engineering
 
 Memory findings can improve detection rules.
 
@@ -1344,7 +1344,7 @@ Future Alert
 
 ---
 
-# Memory Forensics and Threat Hunting
+## Memory Forensics and Threat Hunting
 
 A memory finding can become a hunt hypothesis.
 
@@ -1372,7 +1372,7 @@ Create behavioral analytic
 
 ---
 
-# Memory Forensics and Incident Response
+## Memory Forensics and Incident Response
 
 Memory analysis can support:
 
@@ -1398,7 +1398,7 @@ Memory should be collected at the appropriate point based on evidence preservati
 
 ---
 
-# Enterprise Memory Forensics Architecture
+## Enterprise Memory Forensics Architecture
 
 ```text
                     SOC / IR
@@ -1433,7 +1433,7 @@ Memory should be collected at the appropriate point based on evidence preservati
 
 ---
 
-# Forensic Readiness for Memory
+## Forensic Readiness for Memory
 
 Organizations should establish:
 
@@ -1451,7 +1451,7 @@ Chain of custody
 
 ---
 
-# Memory Evidence Retention
+## Memory Evidence Retention
 
 Memory images can be large.
 
@@ -1469,7 +1469,7 @@ Sensitive memory may contain credentials and personal information.
 
 ---
 
-# Privacy Considerations
+## Privacy Considerations
 
 Memory can contain:
 
@@ -1489,7 +1489,7 @@ Therefore:
 
 ---
 
-# Analyst Safety
+## Analyst Safety
 
 When analyzing potentially malicious memory:
 
@@ -1502,9 +1502,9 @@ When analyzing potentially malicious memory:
 
 ---
 
-# Memory Analysis Confidence Model
+## Memory Analysis Confidence Model
 
-## High Confidence
+### High Confidence
 
 Multiple independent artifacts agree.
 
@@ -1518,47 +1518,47 @@ Network
 Disk
 ```
 
-## Medium Confidence
+### Medium Confidence
 
 Multiple related artifacts support the conclusion.
 
-## Low Confidence
+### Low Confidence
 
 Single ambiguous memory artifact.
 
-## Unknown
+### Unknown
 
 Insufficient evidence.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is memory forensics?
+### 1. What is memory forensics?
 
 The forensic examination of volatile memory to identify processes, network activity, loaded modules, credentials, malware, and other runtime evidence.
 
 ---
 
-## 2. Why is memory important?
+### 2. Why is memory important?
 
 Because some evidence exists only temporarily while the system is running.
 
 ---
 
-## 3. What is volatile evidence?
+### 3. What is volatile evidence?
 
 Evidence that can disappear or change rapidly when system state changes.
 
 ---
 
-## 4. Why acquire memory before shutting down a system?
+### 4. Why acquire memory before shutting down a system?
 
 Because shutting down generally destroys active RAM contents.
 
 ---
 
-## 5. What can memory reveal?
+### 5. What can memory reveal?
 
 Potentially:
 
@@ -1574,13 +1574,13 @@ Potentially:
 
 ---
 
-## 6. What is Volatility?
+### 6. What is Volatility?
 
 A memory-forensics framework used to analyze operating-system memory images.
 
 ---
 
-## 7. What is process injection?
+### 7. What is process injection?
 
 A technique in which code executes within another process's address space.
 
@@ -1588,7 +1588,7 @@ From a forensic perspective, investigators may look for anomalous memory regions
 
 ---
 
-## 8. Why is a suspicious process name insufficient?
+### 8. Why is a suspicious process name insufficient?
 
 Because attackers can imitate legitimate names, and legitimate software may also use unusual names.
 
@@ -1606,13 +1606,13 @@ Memory
 
 ---
 
-## 9. What is a memory image?
+### 9. What is a memory image?
 
 A forensic representation of system memory captured at a particular point in time.
 
 ---
 
-## 10. What is the difference between memory and disk forensics?
+### 10. What is the difference between memory and disk forensics?
 
 Disk forensics primarily examines persistent evidence.
 
@@ -1622,21 +1622,21 @@ They complement one another.
 
 ---
 
-## 11. Can memory prove that a system was compromised?
+### 11. Can memory prove that a system was compromised?
 
 Memory can provide strong evidence, but conclusions should normally be based on correlated evidence and documented methodology.
 
 ---
 
-## 12. What is process injection from a forensic perspective?
+### 12. What is process injection from a forensic perspective?
 
 It is an execution pattern where code operates inside another process, potentially creating anomalous memory, thread, or module artifacts.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A process named `svchost.exe` is communicating with an unfamiliar external IP.
 
@@ -1661,9 +1661,9 @@ Then determine whether the behavior is expected.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A suspicious executable was deleted, but the process is still running.
 
@@ -1690,9 +1690,9 @@ Preserve memory and correlate:
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A server is suspected of running malware, but there is no obvious malicious file.
 
@@ -1712,36 +1712,36 @@ Do not conclude that the absence of a suspicious file means the host is clean.
 
 ---
 
-# Memory Forensics Maturity Model
+## Memory Forensics Maturity Model
 
-## Level 1 — Basic
+### Level 1 — Basic
 
 - Understand volatile evidence
 - Understand RAM acquisition
 - Perform basic process analysis
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Standard acquisition procedure
 - Hashing
 - Process and network analysis
 - Formal documentation
 
-## Level 3 — Managed
+### Level 3 — Managed
 
 - Enterprise forensic tooling
 - Centralized evidence storage
 - IR integration
 - Analyst procedures
 
-## Level 4 — Integrated
+### Level 4 — Integrated
 
 - EDR + SIEM + memory forensics
 - Automated triage
 - Threat hunting integration
 - Detection engineering feedback
 
-## Level 5 — Advanced
+### Level 5 — Advanced
 
 - Enterprise memory acquisition strategy
 - Large-scale forensic workflows
@@ -1751,7 +1751,7 @@ Do not conclude that the absence of a suspicious file means the host is clean.
 
 ---
 
-# Chapter Completion Checklist
+## Chapter Completion Checklist
 
 ```text
 [ ] Understand volatile evidence
@@ -1781,7 +1781,7 @@ Do not conclude that the absence of a suspicious file means the host is clean.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Memory forensics provides a view of **what a system was doing at a particular point in time**.
 
@@ -1824,45 +1824,45 @@ Remember:
 
 ---
 
-# References
+## References
 
-### Volatility 3 Documentation
+#### Volatility 3 Documentation
 
 https://volatility3.readthedocs.io/
 
-### Volatility Foundation
+#### Volatility Foundation
 
 https://volatilityfoundation.org/
 
-### NIST SP 800-86 — Guide to Integrating Forensic Techniques into Incident Response
+#### NIST SP 800-86 — Guide to Integrating Forensic Techniques into Incident Response
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### NIST SP 800-61 — Incident Response
+#### NIST SP 800-61 — Incident Response
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 
-### Microsoft Sysinternals
+#### Microsoft Sysinternals
 
 https://learn.microsoft.com/sysinternals/
 
-### Microsoft Security
+#### Microsoft Security
 
 https://learn.microsoft.com/security/
 
-### Linux Kernel Documentation
+#### Linux Kernel Documentation
 
 https://docs.kernel.org/
 
-### SANS Digital Forensics
+#### SANS Digital Forensics
 
 https://www.sans.org/digital-forensics/
 
-### The Sleuth Kit
+#### The Sleuth Kit
 
 https://www.sleuthkit.org/
 

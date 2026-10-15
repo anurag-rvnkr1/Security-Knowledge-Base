@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A single security event often provides limited context.
 
@@ -49,7 +49,7 @@ Risk-Based Detection
 
 ---
 
-# 2. What Is Correlation?
+## 2. What Is Correlation?
 
 **Correlation** is the process of connecting multiple events or signals based on relationships such as:
 
@@ -81,7 +81,7 @@ Higher-Confidence Detection
 
 ---
 
-# 3. Why Correlation Is Important
+## 3. Why Correlation Is Important
 
 Correlation can:
 
@@ -110,7 +110,7 @@ with the underlying events attached.
 
 ---
 
-# 4. Correlation vs Individual Detection
+## 4. Correlation vs Individual Detection
 
 Individual detection:
 
@@ -134,7 +134,7 @@ The second approach provides substantially more context.
 
 ---
 
-# 5. Correlation Dimensions
+## 5. Correlation Dimensions
 
 Events can be correlated using:
 
@@ -154,7 +154,7 @@ File
 
 ---
 
-# 6. Time-Based Correlation
+## 6. Time-Based Correlation
 
 Example:
 
@@ -179,7 +179,7 @@ they may be considered related.
 
 ---
 
-# 7. Entity-Based Correlation
+## 7. Entity-Based Correlation
 
 Example:
 
@@ -209,7 +209,7 @@ MFA Change
 
 ---
 
-# 8. Multi-Entity Correlation
+## 8. Multi-Entity Correlation
 
 Some detections require several entities.
 
@@ -229,7 +229,7 @@ This can reveal relationships that a single entity cannot.
 
 ---
 
-# 9. Correlation Keys
+## 9. Correlation Keys
 
 A **correlation key** identifies events that belong to the same activity.
 
@@ -259,7 +259,7 @@ Missed Correlations
 
 ---
 
-# 10. Correlation Window
+## 10. Correlation Window
 
 A correlation rule usually defines a time window.
 
@@ -279,7 +279,7 @@ The window should match the expected attack behavior.
 
 ---
 
-# 11. Window Too Short
+## 11. Window Too Short
 
 Example:
 
@@ -301,7 +301,7 @@ Missed Correlation
 
 ---
 
-# 12. Window Too Long
+## 12. Window Too Long
 
 Example:
 
@@ -325,7 +325,7 @@ Choose a window based on behavior.
 
 ---
 
-# 13. Correlation Logic
+## 13. Correlation Logic
 
 Conceptual example:
 
@@ -357,7 +357,7 @@ generate_high_confidence_alert
 
 ---
 
-# 14. Sequence Detection
+## 14. Sequence Detection
 
 Sequence detection is a specialized form of correlation where **event order matters**.
 
@@ -387,9 +387,9 @@ Did all events occur within the expected time?
 
 ---
 
-# 15. Correlation vs Sequence
+## 15. Correlation vs Sequence
 
-### Correlation
+#### Correlation
 
 ```text
 A + B + C
@@ -397,7 +397,7 @@ A + B + C
 
 The exact order may not always matter.
 
-### Sequence
+#### Sequence
 
 ```text
 A → B → C
@@ -407,7 +407,7 @@ The order is part of the detection.
 
 ---
 
-# 16. Sequence Example – Account Takeover
+## 16. Sequence Example – Account Takeover
 
 ```text
 Failed Login
@@ -425,7 +425,7 @@ This provides a stronger account takeover hypothesis.
 
 ---
 
-# 17. Sequence Example – Endpoint Compromise
+## 17. Sequence Example – Endpoint Compromise
 
 ```text
 Email Attachment
@@ -443,7 +443,7 @@ This can indicate a possible compromise chain.
 
 ---
 
-# 18. Sequence Example – Lateral Movement
+## 18. Sequence Example – Lateral Movement
 
 ```text
 Credential Access
@@ -459,7 +459,7 @@ Administrative Activity
 
 ---
 
-# 19. Sequence State Machine
+## 19. Sequence State Machine
 
 Complex sequences can be represented as states:
 
@@ -481,7 +481,7 @@ Each event advances the entity to another state.
 
 ---
 
-# 20. Stateful Detection
+## 20. Stateful Detection
 
 Stateful detection remembers previous events.
 
@@ -499,7 +499,7 @@ The current event becomes more interesting because of historical state.
 
 ---
 
-# 21. Stateless Detection
+## 21. Stateless Detection
 
 Stateless detection evaluates an event independently.
 
@@ -513,7 +513,7 @@ No previous event is required.
 
 ---
 
-# 22. State Storage
+## 22. State Storage
 
 Stateful detection may require:
 
@@ -538,7 +538,7 @@ Late Events
 
 ---
 
-# 23. Late Events
+## 23. Late Events
 
 Telemetry may arrive after the actual event time.
 
@@ -565,7 +565,7 @@ when correlation requires ordering.
 
 ---
 
-# 24. Event Ordering
+## 24. Event Ordering
 
 Ordering can be based on:
 
@@ -580,7 +580,7 @@ Do not blindly assume ingestion order equals event order.
 
 ---
 
-# 25. Correlation Across Data Sources
+## 25. Correlation Across Data Sources
 
 Attack activity may appear across:
 
@@ -610,7 +610,7 @@ Cross-source correlation is a major capability of mature detection platforms.
 
 ---
 
-# 26. Cross-Source Correlation Example
+## 26. Cross-Source Correlation Example
 
 ```text
 Phishing Email
@@ -632,7 +632,7 @@ Account + Endpoint Compromise
 
 ---
 
-# 27. Correlation Graph
+## 27. Correlation Graph
 
 Events can be represented as a graph:
 
@@ -654,7 +654,7 @@ Graphs can help analysts understand relationships.
 
 ---
 
-# 28. Entity Graph
+## 28. Entity Graph
 
 Example:
 
@@ -676,7 +676,7 @@ This provides a broader incident view.
 
 ---
 
-# 29. Correlation Confidence
+## 29. Correlation Confidence
 
 Each event can contribute confidence.
 
@@ -704,7 +704,7 @@ High Confidence
 
 ---
 
-# 30. Risk-Based Detection
+## 30. Risk-Based Detection
 
 Risk-based detection combines multiple signals into a score.
 
@@ -728,7 +728,7 @@ Risk
 
 ---
 
-# 31. Risk Score
+## 31. Risk Score
 
 Example:
 
@@ -755,15 +755,15 @@ THEN high_priority_alert
 
 ---
 
-# 32. Risk vs Severity
+## 32. Risk vs Severity
 
 These are different concepts.
 
-### Risk
+#### Risk
 
 Represents the combined assessment of a situation.
 
-### Severity
+#### Severity
 
 Represents how important the resulting alert is operationally.
 
@@ -779,7 +779,7 @@ High
 
 ---
 
-# 33. Risk vs Confidence
+## 33. Risk vs Confidence
 
 Also distinguish:
 
@@ -808,7 +808,7 @@ How significant is the potential security impact?
 
 ---
 
-# 34. Example – High Confidence, Low Impact
+## 34. Example – High Confidence, Low Impact
 
 ```text
 Known Malware
@@ -829,7 +829,7 @@ Low
 
 ---
 
-# 35. Example – Lower Confidence, High Potential Impact
+## 35. Example – Lower Confidence, High Potential Impact
 
 ```text
 Suspicious Activity
@@ -852,7 +852,7 @@ This may still deserve immediate investigation.
 
 ---
 
-# 36. Risk Factors
+## 36. Risk Factors
 
 Common factors:
 
@@ -871,7 +871,7 @@ Detection Confidence
 
 ---
 
-# 37. Risk Weighting
+## 37. Risk Weighting
 
 A basic model:
 
@@ -902,7 +902,7 @@ Overrides
 
 ---
 
-# 38. Risk Multipliers
+## 38. Risk Multipliers
 
 Example:
 
@@ -926,7 +926,7 @@ Multipliers should be carefully validated.
 
 ---
 
-# 39. Risk Caps
+## 39. Risk Caps
 
 Without a cap:
 
@@ -946,7 +946,7 @@ A risk cap can prevent uncontrolled score inflation.
 
 ---
 
-# 40. Risk Decay
+## 40. Risk Decay
 
 Old signals should often become less influential.
 
@@ -970,7 +970,7 @@ This prevents historical events from permanently increasing risk.
 
 ---
 
-# 41. Risk Decay Model
+## 41. Risk Decay Model
 
 Conceptually:
 
@@ -994,7 +994,7 @@ Then new events are added.
 
 ---
 
-# 42. Risk Aggregation
+## 42. Risk Aggregation
 
 Multiple detections can contribute to one entity risk:
 
@@ -1010,7 +1010,7 @@ Total Risk = 115
 
 ---
 
-# 43. Entity Risk
+## 43. Entity Risk
 
 Risk can be tracked for:
 
@@ -1027,7 +1027,7 @@ This creates a broader security context.
 
 ---
 
-# 44. User Risk
+## 44. User Risk
 
 Example:
 
@@ -1044,7 +1044,7 @@ Risk = 110
 
 ---
 
-# 45. Host Risk
+## 45. Host Risk
 
 Example:
 
@@ -1061,7 +1061,7 @@ Risk = 110
 
 ---
 
-# 46. Risk Propagation
+## 46. Risk Propagation
 
 Risk can sometimes move through relationships.
 
@@ -1081,7 +1081,7 @@ Risk propagation must be carefully designed to avoid uncontrolled escalation.
 
 ---
 
-# 47. Correlation Rules
+## 47. Correlation Rules
 
 A correlation rule typically contains:
 
@@ -1103,7 +1103,7 @@ Response
 
 ---
 
-# 48. Correlation Rule Template
+## 48. Correlation Rule Template
 
 ```text
 Name:
@@ -1139,7 +1139,7 @@ High
 
 ---
 
-# 49. Correlation Threshold
+## 49. Correlation Threshold
 
 Example:
 
@@ -1158,7 +1158,7 @@ The threshold should be based on testing.
 
 ---
 
-# 50. Event Count Correlation
+## 50. Event Count Correlation
 
 Example:
 
@@ -1176,7 +1176,7 @@ This may be more meaningful than:
 
 ---
 
-# 51. Unique Entity Correlation
+## 51. Unique Entity Correlation
 
 Example:
 
@@ -1196,7 +1196,7 @@ Password Spray
 
 ---
 
-# 52. Unique Destination Correlation
+## 52. Unique Destination Correlation
 
 Example:
 
@@ -1218,7 +1218,7 @@ depending on the host's expected role.
 
 ---
 
-# 53. Correlation by Session
+## 53. Correlation by Session
 
 Example:
 
@@ -1239,7 +1239,7 @@ This can be especially useful for application detection.
 
 ---
 
-# 54. Correlation by Process
+## 54. Correlation by Process
 
 Use:
 
@@ -1260,7 +1260,7 @@ This helps build endpoint activity chains.
 
 ---
 
-# 55. Correlation by User
+## 55. Correlation by User
 
 Useful for:
 
@@ -1274,7 +1274,7 @@ Data Access
 
 ---
 
-# 56. Correlation by Host
+## 56. Correlation by Host
 
 Useful for:
 
@@ -1288,7 +1288,7 @@ Persistence
 
 ---
 
-# 57. Multi-Stage Attack Detection
+## 57. Multi-Stage Attack Detection
 
 Example:
 
@@ -1313,7 +1313,7 @@ A mature detection system can correlate multiple stages.
 
 ---
 
-# 58. Attack Chain Risk
+## 58. Attack Chain Risk
 
 Example:
 
@@ -1339,7 +1339,7 @@ Critical Investigation
 
 ---
 
-# 59. Correlation and MITRE ATT&CK
+## 59. Correlation and MITRE ATT&CK
 
 Correlation can connect multiple ATT&CK techniques.
 
@@ -1359,7 +1359,7 @@ The combined pattern provides stronger evidence of an intrusion.
 
 ---
 
-# 60. Correlation and Kill Chain
+## 60. Correlation and Kill Chain
 
 A simplified model:
 
@@ -1389,7 +1389,7 @@ Detections can be correlated across stages.
 
 ---
 
-# 61. Correlation and Detection Confidence
+## 61. Correlation and Detection Confidence
 
 Suppose:
 
@@ -1414,7 +1414,7 @@ provided the signals are logically related.
 
 ---
 
-# 62. Avoid Naive Signal Addition
+## 62. Avoid Naive Signal Addition
 
 Do not assume:
 
@@ -1433,7 +1433,7 @@ Redundant
 
 ---
 
-# 63. Duplicate Evidence
+## 63. Duplicate Evidence
 
 Example:
 
@@ -1453,7 +1453,7 @@ Counting both as independent evidence can artificially inflate risk.
 
 ---
 
-# 64. Evidence Independence
+## 64. Evidence Independence
 
 Stronger correlation often comes from partially independent evidence.
 
@@ -1476,7 +1476,7 @@ from the Same Sensor
 
 ---
 
-# 65. Correlation Quality
+## 65. Correlation Quality
 
 Good correlation should answer:
 
@@ -1498,7 +1498,7 @@ Same Time Window
 
 ---
 
-# 66. Bad Correlation
+## 66. Bad Correlation
 
 Example:
 
@@ -1514,7 +1514,7 @@ This may correlate unrelated activity.
 
 ---
 
-# 67. Good Correlation
+## 67. Good Correlation
 
 Example:
 
@@ -1536,7 +1536,7 @@ The relationship is explicit.
 
 ---
 
-# 68. Sequence Conditions
+## 68. Sequence Conditions
 
 A sequence may define:
 
@@ -1551,7 +1551,7 @@ This creates temporal structure.
 
 ---
 
-# 69. Optional Sequence Steps
+## 69. Optional Sequence Steps
 
 Some detections may permit:
 
@@ -1569,7 +1569,7 @@ This improves resilience when some telemetry is missing.
 
 ---
 
-# 70. Required vs Optional Events
+## 70. Required vs Optional Events
 
 Example:
 
@@ -1587,7 +1587,7 @@ This can prevent the detection from failing because one enrichment source is una
 
 ---
 
-# 71. Sequence Branches
+## 71. Sequence Branches
 
 A sequence can branch:
 
@@ -1601,7 +1601,7 @@ Both may indicate the same broader attack behavior.
 
 ---
 
-# 72. Sequence Timeout
+## 72. Sequence Timeout
 
 A sequence should expire if the next event does not arrive within a reasonable period.
 
@@ -1623,7 +1623,7 @@ State Reset
 
 ---
 
-# 73. State Explosion
+## 73. State Explosion
 
 Poorly designed stateful detections can create huge numbers of active states.
 
@@ -1652,7 +1652,7 @@ Aggregation
 
 ---
 
-# 74. Correlation Performance
+## 74. Correlation Performance
 
 Cost increases with:
 
@@ -1668,7 +1668,7 @@ Correlation Frequency
 
 ---
 
-# 75. Correlation Optimization
+## 75. Correlation Optimization
 
 Use:
 
@@ -1691,7 +1691,7 @@ High-Cardinality Grouping
 
 ---
 
-# 76. Risk Model Design
+## 76. Risk Model Design
 
 A risk model should define:
 
@@ -1708,7 +1708,7 @@ Escalation
 
 ---
 
-# 77. Risk Weight Example
+## 77. Risk Weight Example
 
 ```text
 Known Malicious IOC       +40
@@ -1720,7 +1720,7 @@ Successful Authentication +20
 
 ---
 
-# 78. Risk Thresholds
+## 78. Risk Thresholds
 
 Example:
 
@@ -1742,7 +1742,7 @@ These are illustrative values; organizations should calibrate their own threshol
 
 ---
 
-# 79. Risk-Based Alerting
+## 79. Risk-Based Alerting
 
 Instead of:
 
@@ -1768,7 +1768,7 @@ This can reduce analyst overload.
 
 ---
 
-# 80. Risk-Based Prioritization
+## 80. Risk-Based Prioritization
 
 Example:
 
@@ -1791,7 +1791,7 @@ C → B → A
 
 ---
 
-# 81. Risk-Based Suppression
+## 81. Risk-Based Suppression
 
 Low-risk repeated events may be grouped:
 
@@ -1805,7 +1805,7 @@ This preserves evidence while reducing alert volume.
 
 ---
 
-# 82. Risk-Based Escalation
+## 82. Risk-Based Escalation
 
 Example:
 
@@ -1827,7 +1827,7 @@ Exact thresholds should be tuned to the organization's SOC processes.
 
 ---
 
-# 83. Risk Overrides
+## 83. Risk Overrides
 
 Certain conditions may justify immediate escalation.
 
@@ -1842,7 +1842,7 @@ may override a normal numerical score.
 
 ---
 
-# 84. Risk Explainability
+## 84. Risk Explainability
 
 Analysts should be able to answer:
 
@@ -1869,7 +1869,7 @@ with no explanation.
 
 ---
 
-# 85. Risk Auditability
+## 85. Risk Auditability
 
 Track:
 
@@ -1894,7 +1894,7 @@ Model Validation
 
 ---
 
-# 86. Risk Model Drift
+## 86. Risk Model Drift
 
 Over time:
 
@@ -1911,7 +1911,7 @@ Review them periodically.
 
 ---
 
-# 87. Risk Calibration
+## 87. Risk Calibration
 
 Use historical data:
 
@@ -1927,7 +1927,7 @@ to evaluate scoring.
 
 ---
 
-# 88. Correlation Testing
+## 88. Correlation Testing
 
 Test:
 
@@ -1943,7 +1943,7 @@ Multiple Entities
 
 ---
 
-# 89. Positive Correlation Test
+## 89. Positive Correlation Test
 
 Input:
 
@@ -1963,7 +1963,7 @@ Detection Fires
 
 ---
 
-# 90. Negative Correlation Test
+## 90. Negative Correlation Test
 
 Input:
 
@@ -1985,7 +1985,7 @@ No Detection
 
 ---
 
-# 91. Out-of-Order Test
+## 91. Out-of-Order Test
 
 Input arrival:
 
@@ -2007,7 +2007,7 @@ The detection should behave according to its intended event-ordering model.
 
 ---
 
-# 92. Missing Event Test
+## 92. Missing Event Test
 
 Input:
 
@@ -2040,7 +2040,7 @@ based on whether B is required.
 
 ---
 
-# 93. Duplicate Event Test
+## 93. Duplicate Event Test
 
 Input:
 
@@ -2061,7 +2061,7 @@ Confidence
 
 ---
 
-# 94. Correlation False Positives
+## 94. Correlation False Positives
 
 Common causes:
 
@@ -2076,7 +2076,7 @@ Common Administrative Activity
 
 ---
 
-# 95. Correlation False Negatives
+## 95. Correlation False Negatives
 
 Common causes:
 
@@ -2091,7 +2091,7 @@ Schema Changes
 
 ---
 
-# 96. Correlation Anti-Patterns
+## 96. Correlation Anti-Patterns
 
 Avoid:
 
@@ -2125,9 +2125,9 @@ No Expiration
 
 ---
 
-# 97. Practical Example – Account Takeover
+## 97. Practical Example – Account Takeover
 
-## Signals
+### Signals
 
 ```text
 Failed Login
@@ -2138,14 +2138,14 @@ MFA Change
 Sensitive Access
 ```
 
-## Correlation
+### Correlation
 
 ```text
 Same User
 Within 30 Minutes
 ```
 
-## Risk
+### Risk
 
 ```text
 Failure Burst       +15
@@ -2170,7 +2170,7 @@ High/Critical Priority
 
 ---
 
-# 98. Practical Example – C2 Detection
+## 98. Practical Example – C2 Detection
 
 Signals:
 
@@ -2201,7 +2201,7 @@ Total:
 
 ---
 
-# 99. Practical Example – Ransomware
+## 99. Practical Example – Ransomware
 
 Signals:
 
@@ -2230,7 +2230,7 @@ High Confidence
 
 ---
 
-# 100. Practical Example – Password Spray
+## 100. Practical Example – Password Spray
 
 Signals:
 
@@ -2261,7 +2261,7 @@ to increase investigation priority.
 
 ---
 
-# 101. Practical Example – Lateral Movement
+## 101. Practical Example – Lateral Movement
 
 Sequence:
 
@@ -2289,7 +2289,7 @@ Related Hosts
 
 ---
 
-# 102. Practical Example – Cloud Compromise
+## 102. Practical Example – Cloud Compromise
 
 Sequence:
 
@@ -2315,7 +2315,7 @@ Resource
 
 ---
 
-# 103. Practical Example – Web Application Abuse
+## 103. Practical Example – Web Application Abuse
 
 Signals:
 
@@ -2341,7 +2341,7 @@ Same Source
 
 ---
 
-# 104. Correlation Architecture
+## 104. Correlation Architecture
 
 Conceptually:
 
@@ -2367,7 +2367,7 @@ Conceptually:
 
 ---
 
-# 105. Detection Signal Layer
+## 105. Detection Signal Layer
 
 The correlation engine should ideally consume normalized signals such as:
 
@@ -2384,7 +2384,7 @@ rather than repeatedly processing raw telemetry unnecessarily.
 
 ---
 
-# 106. Correlation Engine Responsibilities
+## 106. Correlation Engine Responsibilities
 
 A correlation engine may handle:
 
@@ -2403,7 +2403,7 @@ Alert Generation
 
 ---
 
-# 107. Entity Resolution
+## 107. Entity Resolution
 
 Different systems may identify the same user differently:
 
@@ -2417,7 +2417,7 @@ Correlation requires reliable identity mapping.
 
 ---
 
-# 108. Host Resolution
+## 108. Host Resolution
 
 A host may appear as:
 
@@ -2438,7 +2438,7 @@ Missed Correlation
 
 ---
 
-# 109. Correlation Across Identity
+## 109. Correlation Across Identity
 
 Identity systems can provide:
 
@@ -2456,7 +2456,7 @@ This can significantly improve correlation.
 
 ---
 
-# 110. Correlation Across Endpoint
+## 110. Correlation Across Endpoint
 
 Endpoint telemetry provides:
 
@@ -2472,7 +2472,7 @@ Command Line
 
 ---
 
-# 111. Correlation Across Network
+## 111. Correlation Across Network
 
 Network telemetry provides:
 
@@ -2489,7 +2489,7 @@ Connection Timing
 
 ---
 
-# 112. Correlation Across Cloud
+## 112. Correlation Across Cloud
 
 Cloud telemetry provides:
 
@@ -2506,7 +2506,7 @@ Configuration
 
 ---
 
-# 113. Correlation Across Application
+## 113. Correlation Across Application
 
 Application telemetry provides:
 
@@ -2522,7 +2522,7 @@ Transaction
 
 ---
 
-# 114. Correlation Data Model
+## 114. Correlation Data Model
 
 A normalized event might contain:
 
@@ -2543,7 +2543,7 @@ Normalization simplifies cross-source correlation.
 
 ---
 
-# 115. Correlation Metadata
+## 115. Correlation Metadata
 
 Useful metadata:
 
@@ -2559,7 +2559,7 @@ detection_id
 
 ---
 
-# 116. Correlation IDs
+## 116. Correlation IDs
 
 A correlation ID can connect related events:
 
@@ -2585,7 +2585,7 @@ ABC123
 
 ---
 
-# 117. Alert Aggregation
+## 117. Alert Aggregation
 
 Instead of:
 
@@ -2612,7 +2612,7 @@ Underlying Signals:
 
 ---
 
-# 118. Incident-Level Correlation
+## 118. Incident-Level Correlation
 
 A mature system can correlate alerts into incidents:
 
@@ -2630,13 +2630,13 @@ This is different from simply suppressing alerts because the underlying evidence
 
 ---
 
-# 119. Alert Suppression vs Correlation
+## 119. Alert Suppression vs Correlation
 
-### Suppression
+#### Suppression
 
 Reduces repeated notifications.
 
-### Correlation
+#### Correlation
 
 Combines related evidence.
 
@@ -2654,9 +2654,9 @@ Login + Process + Network → 1 attack story
 
 ---
 
-# 120. Correlation vs Aggregation
+## 120. Correlation vs Aggregation
 
-### Aggregation
+#### Aggregation
 
 Groups similar events.
 
@@ -2664,7 +2664,7 @@ Groups similar events.
 100 failed logins
 ```
 
-### Correlation
+#### Correlation
 
 Connects different but related events.
 
@@ -2678,7 +2678,7 @@ MFA Change
 
 ---
 
-# 121. Risk Aggregation
+## 121. Risk Aggregation
 
 Risk can aggregate across:
 
@@ -2699,7 +2699,7 @@ Example:
 
 ---
 
-# 122. Risk and Incident Prioritization
+## 122. Risk and Incident Prioritization
 
 An incident queue may be sorted by:
 
@@ -2713,7 +2713,7 @@ Threat Intelligence
 
 ---
 
-# 123. Business Context
+## 123. Business Context
 
 Risk should consider business importance.
 
@@ -2733,7 +2733,7 @@ The detection may have the same confidence but different priority.
 
 ---
 
-# 124. Data Sensitivity
+## 124. Data Sensitivity
 
 Potentially sensitive resources:
 
@@ -2750,7 +2750,7 @@ Access to such resources may increase risk.
 
 ---
 
-# 125. Privileged Identity
+## 125. Privileged Identity
 
 A suspicious event involving:
 
@@ -2768,7 +2768,7 @@ Root
 
 ---
 
-# 126. Risk Explainability for Analysts
+## 126. Risk Explainability for Analysts
 
 An analyst should quickly see:
 
@@ -2794,7 +2794,7 @@ Risk: 125
 
 ---
 
-# 127. Risk Visualization
+## 127. Risk Visualization
 
 Conceptually:
 
@@ -2815,7 +2815,7 @@ Good visualization supports investigation without hiding the evidence.
 
 ---
 
-# 128. Correlation Investigation View
+## 128. Correlation Investigation View
 
 An analyst should be able to see:
 
@@ -2832,7 +2832,7 @@ ATT&CK Mapping
 
 ---
 
-# 129. Detection Explainability
+## 129. Detection Explainability
 
 Every correlation should explain:
 
@@ -2847,7 +2847,7 @@ Avoid black-box logic where possible.
 
 ---
 
-# 130. Correlation Rule Documentation
+## 130. Correlation Rule Documentation
 
 Document:
 
@@ -2873,7 +2873,7 @@ Version
 
 ---
 
-# 131. Correlation Rule Example
+## 131. Correlation Rule Example
 
 ```text
 Name:
@@ -2922,7 +2922,7 @@ Helpdesk-Assisted MFA Reset
 
 ---
 
-# 132. Testing Correlation Rules
+## 132. Testing Correlation Rules
 
 Test:
 
@@ -2941,7 +2941,7 @@ Test:
 
 ---
 
-# 133. Boundary Testing
+## 133. Boundary Testing
 
 If window is:
 
@@ -2961,7 +2961,7 @@ This identifies boundary-condition bugs.
 
 ---
 
-# 134. Concurrency Testing
+## 134. Concurrency Testing
 
 Test:
 
@@ -2979,7 +2979,7 @@ Ensure events are not incorrectly mixed.
 
 ---
 
-# 135. Risk Model Testing
+## 135. Risk Model Testing
 
 Test:
 
@@ -2996,7 +2996,7 @@ Overrides
 
 ---
 
-# 136. Correlation Performance Testing
+## 136. Correlation Performance Testing
 
 Measure:
 
@@ -3012,7 +3012,7 @@ Query Cost
 
 ---
 
-# 137. Correlation Latency
+## 137. Correlation Latency
 
 Important metrics:
 
@@ -3030,7 +3030,7 @@ The difference between these timestamps is detection latency.
 
 ---
 
-# 138. Real-Time Correlation
+## 138. Real-Time Correlation
 
 Useful for:
 
@@ -3044,7 +3044,7 @@ Critical Infrastructure Attacks
 
 ---
 
-# 139. Scheduled Correlation
+## 139. Scheduled Correlation
 
 Useful for:
 
@@ -3057,7 +3057,7 @@ Historical Analysis
 
 ---
 
-# 140. Streaming Correlation
+## 140. Streaming Correlation
 
 Conceptually:
 
@@ -3077,7 +3077,7 @@ Designed for continuous processing.
 
 ---
 
-# 141. Batch Correlation
+## 141. Batch Correlation
 
 Conceptually:
 
@@ -3095,7 +3095,7 @@ Useful when large historical windows are needed.
 
 ---
 
-# 142. Hybrid Correlation
+## 142. Hybrid Correlation
 
 Combine:
 
@@ -3117,7 +3117,7 @@ This provides stronger context.
 
 ---
 
-# 143. Historical Risk
+## 143. Historical Risk
 
 A user may already have elevated risk:
 
@@ -3133,7 +3133,7 @@ Historical risk should still decay appropriately.
 
 ---
 
-# 144. Risk Reset
+## 144. Risk Reset
 
 After an incident is resolved:
 
@@ -3149,7 +3149,7 @@ The system should avoid permanently treating an entity as malicious.
 
 ---
 
-# 145. Risk Contamination
+## 145. Risk Contamination
 
 Bad design:
 
@@ -3169,7 +3169,7 @@ Risk must be reversible.
 
 ---
 
-# 146. Analyst Feedback
+## 146. Analyst Feedback
 
 Analysts can classify:
 
@@ -3193,7 +3193,7 @@ Thresholds
 
 ---
 
-# 147. Feedback Loop
+## 147. Feedback Loop
 
 ```text
 Detection
@@ -3213,9 +3213,9 @@ This is an important part of detection engineering.
 
 ---
 
-# 148. Correlation Maturity
+## 148. Correlation Maturity
 
-### Level 1
+#### Level 1
 
 Single Event:
 
@@ -3223,7 +3223,7 @@ Single Event:
 IOC Match
 ```
 
-### Level 2
+#### Level 2
 
 Multi-Event:
 
@@ -3231,7 +3231,7 @@ Multi-Event:
 IOC + Process
 ```
 
-### Level 3
+#### Level 3
 
 Entity Correlation:
 
@@ -3239,7 +3239,7 @@ Entity Correlation:
 User + Host + Network
 ```
 
-### Level 4
+#### Level 4
 
 Sequence:
 
@@ -3247,7 +3247,7 @@ Sequence:
 A → B → C
 ```
 
-### Level 5
+#### Level 5
 
 Risk-Based:
 
@@ -3255,7 +3255,7 @@ Risk-Based:
 Signals + Context + History
 ```
 
-### Level 6
+#### Level 6
 
 Adaptive:
 
@@ -3266,9 +3266,9 @@ Risk + Behavior + Threat Intelligence
 
 ---
 
-# 149. Common Mistakes
+## 149. Common Mistakes
 
-## Mistake 1
+### Mistake 1
 
 Using huge time windows.
 
@@ -3280,7 +3280,7 @@ Unrelated Events
 
 ---
 
-## Mistake 2
+### Mistake 2
 
 Using weak correlation keys.
 
@@ -3292,7 +3292,7 @@ False Correlation
 
 ---
 
-## Mistake 3
+### Mistake 3
 
 Ignoring event ordering.
 
@@ -3304,7 +3304,7 @@ Invalid Attack Sequence
 
 ---
 
-## Mistake 4
+### Mistake 4
 
 Counting duplicate evidence.
 
@@ -3316,7 +3316,7 @@ Artificial Risk Inflation
 
 ---
 
-## Mistake 5
+### Mistake 5
 
 No state expiration.
 
@@ -3328,7 +3328,7 @@ State Explosion
 
 ---
 
-## Mistake 6
+### Mistake 6
 
 Unexplainable risk scores.
 
@@ -3340,7 +3340,7 @@ Analyst Distrust
 
 ---
 
-## Mistake 7
+### Mistake 7
 
 Never decaying risk.
 
@@ -3352,7 +3352,7 @@ Permanent Risk
 
 ---
 
-## Mistake 8
+### Mistake 8
 
 Overly complex correlation.
 
@@ -3366,7 +3366,7 @@ Debugging Difficulty
 
 ---
 
-# 150. Practical Design Checklist
+## 150. Practical Design Checklist
 
 ```text
 [ ] Threat defined
@@ -3394,59 +3394,59 @@ Debugging Difficulty
 
 ---
 
-# 151. Interview Questions
+## 151. Interview Questions
 
-### What is event correlation?
+#### What is event correlation?
 
 > Connecting multiple related security events based on shared attributes such as time, user, host, IP, process, or session.
 
-### What is sequence detection?
+#### What is sequence detection?
 
 > Detection that requires events to occur in a particular order within a defined time or contextual relationship.
 
-### What is the difference between correlation and sequence detection?
+#### What is the difference between correlation and sequence detection?
 
 > Correlation connects related events, while sequence detection additionally cares about the order in which those events occur.
 
-### What is a correlation key?
+#### What is a correlation key?
 
 > A field or combination of fields used to determine which events belong to the same activity or entity.
 
-### What is stateful detection?
+#### What is stateful detection?
 
 > Detection that maintains information about previous events or entity state when evaluating new events.
 
-### What is risk-based detection?
+#### What is risk-based detection?
 
 > Combining multiple signals and contextual factors into a score used to prioritize or trigger security detections.
 
-### What is risk decay?
+#### What is risk decay?
 
 > Reducing the influence of older risk signals over time so historical activity does not permanently inflate an entity's risk.
 
-### Why is explainability important in risk scoring?
+#### Why is explainability important in risk scoring?
 
 > Analysts need to understand which signals contributed to the score so they can validate and investigate the alert.
 
-### What problems can large correlation windows create?
+#### What problems can large correlation windows create?
 
 > They increase processing cost and may correlate unrelated events, increasing false positives.
 
-### Why is entity resolution important?
+#### Why is entity resolution important?
 
 > Different systems may represent the same user, host, or resource differently; without reliable mapping, related events may not correlate correctly.
 
-### How do you prevent duplicate events from inflating risk?
+#### How do you prevent duplicate events from inflating risk?
 
 > Deduplicate events or identify repeated evidence before applying risk weights.
 
-### How would you test a sequence detection?
+#### How would you test a sequence detection?
 
 > Test the correct sequence, incorrect order, missing events, duplicate events, delayed events, boundary timestamps, unrelated entities, and concurrent sequences.
 
 ---
 
-# 152. Quick Revision
+## 152. Quick Revision
 
 ```text
 Correlation
@@ -3500,7 +3500,7 @@ State Expiration
 
 ---
 
-# 153. Golden Rules
+## 153. Golden Rules
 
 ```text
 1. A single event rarely tells the entire story.
@@ -3566,7 +3566,7 @@ State Expiration
 
 ---
 
-# 154. Final Mental Model
+## 154. Final Mental Model
 
 Think about detection as progressively increasing context:
 
@@ -3638,7 +3638,7 @@ Response
 
 ---
 
-# 155. Chapter Summary
+## 155. Chapter Summary
 
 This chapter covered:
 

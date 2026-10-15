@@ -1,10 +1,10 @@
 # 05 - IP Addressing
 
-# Part 1 — IP Address Fundamentals, IPv4, IPv6, Address Types, and Enterprise Network Design
+## Part 1 — IP Address Fundamentals, IPv4, IPv6, Address Types, and Enterprise Network Design
 
 ---
 
-# Overview
+## Overview
 
 Every device connected to a network requires an address so that other devices know where to send data.
 
@@ -35,7 +35,7 @@ Understanding IP addressing is fundamental for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -50,7 +50,7 @@ After completing this chapter, you should be able to:
 
 ---
 
-# What is an IP Address?
+## What is an IP Address?
 
 An **IP Address** is a logical identifier assigned to a network interface.
 
@@ -105,7 +105,7 @@ Without IP addresses, routers would not know where to forward packets.
 
 ---
 
-# Why Do We Need IP Addresses?
+## Why Do We Need IP Addresses?
 
 Suppose two computers communicate.
 
@@ -131,7 +131,7 @@ IP addresses provide globally understood logical identifiers that allow routing 
 
 ---
 
-# Logical Address vs Physical Address
+## Logical Address vs Physical Address
 
 | Feature | IP Address | MAC Address |
 |----------|------------|-------------|
@@ -161,7 +161,7 @@ Local Delivery
 
 ---
 
-# Internet Protocol Versions
+## Internet Protocol Versions
 
 Two versions are widely used today:
 
@@ -184,17 +184,17 @@ Both provide logical addressing, but they differ significantly in address size, 
 
 ---
 
-# IPv4
+## IPv4
 
 IPv4 is the fourth version of the Internet Protocol and remains the most widely deployed.
 
-### Address Size
+#### Address Size
 
 ```
 32 Bits
 ```
 
-### Representation
+#### Representation
 
 ```
 192.168.1.100
@@ -220,7 +220,7 @@ Each octet ranges from:
 
 ---
 
-# Binary Representation
+## Binary Representation
 
 Example:
 
@@ -244,7 +244,7 @@ Routers and hosts process addresses in binary even though humans typically use d
 
 ---
 
-# IPv4 Structure
+## IPv4 Structure
 
 ```
 32 Bits
@@ -282,11 +282,11 @@ Each octet contains exactly 8 bits.
 
 ---
 
-# IPv6
+## IPv6
 
 IPv6 was developed to address the limitations of IPv4, particularly address exhaustion.
 
-### Address Size
+#### Address Size
 
 ```
 128 Bits
@@ -302,7 +302,7 @@ IPv6 uses hexadecimal notation and colon-separated groups.
 
 ---
 
-# Why IPv6 Was Developed
+## Why IPv6 Was Developed
 
 IPv4 provides approximately:
 
@@ -324,7 +324,7 @@ IPv6 offers an extremely large address space capable of supporting current and f
 
 ---
 
-# IPv4 vs IPv6
+## IPv4 vs IPv6
 
 | Feature | IPv4 | IPv6 |
 |----------|------|------|
@@ -337,7 +337,7 @@ IPv6 offers an extremely large address space capable of supporting current and f
 
 ---
 
-# Types of IP Addresses
+## Types of IP Addresses
 
 IP addresses can be categorized by their scope and intended use.
 
@@ -353,7 +353,7 @@ Common categories include:
 
 ---
 
-# Public IP Address
+## Public IP Address
 
 Public IP addresses are globally routable on the Internet.
 
@@ -378,7 +378,7 @@ Typical uses:
 
 ---
 
-# Private IP Addresses
+## Private IP Addresses
 
 Private addresses are reserved for internal networks and are **not routable on the public Internet**.
 
@@ -400,7 +400,7 @@ Private addresses require technologies such as **NAT** to communicate with the p
 
 ---
 
-# Loopback Address
+## Loopback Address
 
 Loopback enables a host to communicate with itself.
 
@@ -424,17 +424,17 @@ Common uses:
 
 ---
 
-# Link-Local Addresses
+## Link-Local Addresses
 
 A link-local address allows communication within the same local network segment without requiring a router.
 
-### IPv4 (Automatic Private IP Addressing - APIPA)
+#### IPv4 (Automatic Private IP Addressing - APIPA)
 
 ```
 169.254.0.0/16
 ```
 
-### IPv6
+#### IPv6
 
 ```
 FE80::/10
@@ -448,7 +448,7 @@ Typical uses:
 
 ---
 
-# Broadcast Address (IPv4)
+## Broadcast Address (IPv4)
 
 A broadcast address reaches every host within the local broadcast domain.
 
@@ -468,17 +468,17 @@ IPv6 replaces broadcast functionality with multicast.
 
 ---
 
-# Multicast Address
+## Multicast Address
 
 Multicast delivers traffic to a selected group of receivers.
 
-### IPv4
+#### IPv4
 
 ```
 224.0.0.0/4
 ```
 
-### IPv6
+#### IPv6
 
 ```
 FF00::/8
@@ -493,7 +493,7 @@ Examples:
 
 ---
 
-# Enterprise IP Addressing Example
+## Enterprise IP Addressing Example
 
 ```
                 Internet
@@ -519,9 +519,9 @@ Benefits include:
 
 ---
 
-# Common Address Assignment Methods
+## Common Address Assignment Methods
 
-## Static Addressing
+### Static Addressing
 
 An administrator manually configures the IP address.
 
@@ -534,7 +534,7 @@ Typical uses:
 
 ---
 
-## Dynamic Addressing
+### Dynamic Addressing
 
 A DHCP server automatically assigns addresses.
 
@@ -547,7 +547,7 @@ Typical uses:
 
 ---
 
-# Wireshark Observation
+## Wireshark Observation
 
 In Wireshark, selecting an IPv4 or IPv6 packet reveals fields such as:
 
@@ -571,7 +571,7 @@ These fields help analysts trace communication paths and investigate network act
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper IP addressing enables:
 
@@ -587,7 +587,7 @@ Poor IP planning can result in address conflicts, routing issues, and operationa
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - IP addresses provide logical identification for devices across networks.
 - IPv4 uses 32-bit addresses, while IPv6 uses 128-bit addresses.
@@ -595,13 +595,13 @@ Poor IP planning can result in address conflicts, routing issues, and operationa
 - Special-purpose addresses include loopback, link-local, multicast, and broadcast (IPv4).
 - Well-designed IP addressing schemes are fundamental to secure, scalable enterprise networks.
 
-# 05 - IP Addressing
+## 05 - IP Addressing
 
-# Part 2 — IPv4 Addressing, Binary Representation, Address Classes, CIDR Introduction, and Enterprise Address Planning
+## Part 2 — IPv4 Addressing, Binary Representation, Address Classes, CIDR Introduction, and Enterprise Address Planning
 
 ---
 
-# Overview
+## Overview
 
 IPv4 remains the most widely deployed Internet Protocol despite the adoption of IPv6.
 
@@ -619,7 +619,7 @@ This section explains:
 
 ---
 
-# IPv4 Address Structure
+## IPv4 Address Structure
 
 An IPv4 address contains:
 
@@ -655,7 +655,7 @@ Each group is called an **octet**.
 
 ---
 
-# Binary Representation
+## Binary Representation
 
 Computers process IP addresses as binary values.
 
@@ -681,7 +681,7 @@ Each octet consists of eight binary digits (bits).
 
 ---
 
-# Binary Place Values
+## Binary Place Values
 
 Each bit represents a power of two.
 
@@ -735,7 +735,7 @@ Understanding binary conversion is fundamental for subnetting and routing.
 
 ---
 
-# Converting Binary to Decimal
+## Converting Binary to Decimal
 
 Example:
 
@@ -771,7 +771,7 @@ Calculation:
 
 ---
 
-# Converting Decimal to Binary
+## Converting Decimal to Binary
 
 Example:
 
@@ -807,7 +807,7 @@ Binary:
 
 ---
 
-# Network ID and Host ID
+## Network ID and Host ID
 
 Every IPv4 address contains two logical parts:
 
@@ -841,7 +841,7 @@ The subnet mask (or prefix length) determines where the network portion ends and
 
 ---
 
-# Why Separate Network and Host?
+## Why Separate Network and Host?
 
 Routers forward traffic based on the **network portion**.
 
@@ -867,7 +867,7 @@ Hosts
 
 ---
 
-# Classful Addressing
+## Classful Addressing
 
 Historically, IPv4 addresses were divided into fixed classes.
 
@@ -875,7 +875,7 @@ Although modern networks use CIDR, understanding classful addressing remains use
 
 ---
 
-# Class A
+## Class A
 
 ```
 First Octet
@@ -915,7 +915,7 @@ Large organizations historically used Class A networks because they supported a 
 
 ---
 
-# Class B
+## Class B
 
 First Octet
 
@@ -953,7 +953,7 @@ Example
 
 ---
 
-# Class C
+## Class C
 
 First Octet
 
@@ -991,7 +991,7 @@ Example
 
 ---
 
-# Class D
+## Class D
 
 Range
 
@@ -1013,7 +1013,7 @@ Examples:
 
 ---
 
-# Class E
+## Class E
 
 Range
 
@@ -1029,7 +1029,7 @@ Generally not assigned to end hosts.
 
 ---
 
-# Class Summary
+## Class Summary
 
 | Class | First Octet | Default Prefix | Typical Purpose |
 |--------|-------------|----------------|-----------------|
@@ -1043,13 +1043,13 @@ Generally not assigned to end hosts.
 
 ---
 
-# Reserved IPv4 Addresses
+## Reserved IPv4 Addresses
 
 Certain addresses have special meanings.
 
 ---
 
-## Network Address
+### Network Address
 
 Represents the network itself.
 
@@ -1063,7 +1063,7 @@ Cannot be assigned to a host.
 
 ---
 
-## Broadcast Address
+### Broadcast Address
 
 Represents every device within the subnet.
 
@@ -1077,7 +1077,7 @@ Cannot be assigned to a host.
 
 ---
 
-## Default Route
+### Default Route
 
 ```
 0.0.0.0
@@ -1095,7 +1095,7 @@ Default Gateway
 
 ---
 
-## Loopback
+### Loopback
 
 ```
 127.0.0.1
@@ -1105,7 +1105,7 @@ Communication with the local device.
 
 ---
 
-## APIPA
+### APIPA
 
 ```
 169.254.0.0/16
@@ -1115,7 +1115,7 @@ Automatically assigned when a DHCP server is unavailable.
 
 ---
 
-## Private Networks
+### Private Networks
 
 RFC 1918 ranges:
 
@@ -1129,7 +1129,7 @@ RFC 1918 ranges:
 
 ---
 
-# Public vs Private Addressing
+## Public vs Private Addressing
 
 Example Enterprise Network
 
@@ -1166,7 +1166,7 @@ Benefits of private addressing:
 
 ---
 
-# Address Exhaustion
+## Address Exhaustion
 
 IPv4 supports approximately:
 
@@ -1195,7 +1195,7 @@ Solutions include:
 
 ---
 
-# Introduction to CIDR
+## Introduction to CIDR
 
 CIDR stands for:
 
@@ -1228,7 +1228,7 @@ A deeper exploration of CIDR and subnetting will follow in the dedicated subnett
 
 ---
 
-# Enterprise IP Allocation Example
+## Enterprise IP Allocation Example
 
 ```
 Corporate Network
@@ -1253,7 +1253,7 @@ Benefits:
 
 ---
 
-# Wireshark Observation
+## Wireshark Observation
 
 Select an IPv4 packet and inspect:
 
@@ -1293,7 +1293,7 @@ These fields are essential for troubleshooting connectivity and investigating ne
 
 ---
 
-# Common IPv4 Addressing Problems
+## Common IPv4 Addressing Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1306,7 +1306,7 @@ These fields are essential for troubleshooting connectivity and investigating ne
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper IPv4 planning enables:
 
@@ -1321,7 +1321,7 @@ Poor IP planning can lead to downtime, connectivity issues, and operational inef
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - IPv4 uses 32-bit logical addresses represented in dotted-decimal notation.
 - Each address contains a network portion and a host portion.
@@ -1329,13 +1329,13 @@ Poor IP planning can lead to downtime, connectivity issues, and operational inef
 - Special-purpose addresses include network, broadcast, loopback, APIPA, and private ranges.
 - Careful IPv4 address planning is essential for secure, scalable, and manageable enterprise networks.
 
-# 05 - IP Addressing
+## 05 - IP Addressing
 
-# Part 3 — IPv6 Architecture, Address Types, Neighbor Discovery, SLAAC, DHCPv6, Enterprise Deployment, and Security
+## Part 3 — IPv6 Architecture, Address Types, Neighbor Discovery, SLAAC, DHCPv6, Enterprise Deployment, and Security
 
 ---
 
-# Overview
+## Overview
 
 IPv6 (Internet Protocol Version 6) is the successor to IPv4.
 
@@ -1355,7 +1355,7 @@ Understanding IPv6 is essential because modern operating systems, cloud services
 
 ---
 
-# Why IPv6 Was Developed
+## Why IPv6 Was Developed
 
 IPv4 provides approximately:
 
@@ -1380,7 +1380,7 @@ IPv6 was developed to provide a vastly larger address space and simplify address
 
 ---
 
-# IPv6 Address Space
+## IPv6 Address Space
 
 IPv6 uses:
 
@@ -1400,7 +1400,7 @@ This provides enough addresses for an enormous number of devices and networks, e
 
 ---
 
-# IPv6 Address Format
+## IPv6 Address Format
 
 Example:
 
@@ -1446,7 +1446,7 @@ Each 16-bit section is called a **hextet** and is written in hexadecimal.
 
 ---
 
-# Hexadecimal Review
+## Hexadecimal Review
 
 IPv6 uses base-16 notation.
 
@@ -1476,13 +1476,13 @@ A
 
 ---
 
-# IPv6 Address Compression
+## IPv6 Address Compression
 
 IPv6 supports shortening addresses to improve readability.
 
 ---
 
-## Rule 1 — Remove Leading Zeros
+### Rule 1 — Remove Leading Zeros
 
 Original:
 
@@ -1498,7 +1498,7 @@ Compressed:
 
 ---
 
-## Rule 2 — Replace One Consecutive Sequence of Zero Hextets
+### Rule 2 — Replace One Consecutive Sequence of Zero Hextets
 
 Further compression:
 
@@ -1510,7 +1510,7 @@ Further compression:
 
 ---
 
-# IPv6 Address Structure
+## IPv6 Address Structure
 
 A typical global unicast address consists of:
 
@@ -1556,11 +1556,11 @@ Many enterprise deployments use a **/64** prefix for end-user subnets.
 
 ---
 
-# Types of IPv6 Addresses
+## Types of IPv6 Addresses
 
 ---
 
-## Global Unicast Address (GUA)
+### Global Unicast Address (GUA)
 
 Equivalent to a public IPv4 address.
 
@@ -1590,7 +1590,7 @@ Typical use:
 
 ---
 
-## Link-Local Address
+### Link-Local Address
 
 Automatically generated on every IPv6-enabled interface.
 
@@ -1616,7 +1616,7 @@ Link-local addresses are **not routable** beyond the local network segment.
 
 ---
 
-## Unique Local Address (ULA)
+### Unique Local Address (ULA)
 
 Equivalent in concept to private IPv4 addressing.
 
@@ -1646,7 +1646,7 @@ Uses:
 
 ---
 
-## Multicast Address
+### Multicast Address
 
 IPv6 replaces broadcast with multicast.
 
@@ -1665,7 +1665,7 @@ Examples:
 
 ---
 
-## Anycast Address
+### Anycast Address
 
 An anycast address is assigned to multiple devices.
 
@@ -1679,7 +1679,7 @@ Common uses:
 
 ---
 
-# IPv6 Does Not Use Broadcast
+## IPv6 Does Not Use Broadcast
 
 Unlike IPv4:
 
@@ -1701,7 +1701,7 @@ Benefits:
 
 ---
 
-# Neighbor Discovery Protocol (NDP)
+## Neighbor Discovery Protocol (NDP)
 
 IPv6 replaces ARP with the **Neighbor Discovery Protocol (NDP)**.
 
@@ -1715,7 +1715,7 @@ Functions include:
 
 ---
 
-# Neighbor Discovery Process
+## Neighbor Discovery Process
 
 ```
 Host
@@ -1737,7 +1737,7 @@ Unlike ARP, Neighbor Discovery uses ICMPv6 messages.
 
 ---
 
-# Duplicate Address Detection (DAD)
+## Duplicate Address Detection (DAD)
 
 Before using an IPv6 address, a host verifies that no other device is already using it.
 
@@ -1761,7 +1761,7 @@ If another host responds, the address is considered a duplicate and is not assig
 
 ---
 
-# Stateless Address Autoconfiguration (SLAAC)
+## Stateless Address Autoconfiguration (SLAAC)
 
 SLAAC enables hosts to configure IPv6 addresses automatically without a DHCP server.
 
@@ -1791,7 +1791,7 @@ Benefits:
 
 ---
 
-# DHCPv6
+## DHCPv6
 
 Organizations that require centralized address management may use DHCPv6.
 
@@ -1809,7 +1809,7 @@ Many enterprise networks use:
 
 ---
 
-# IPv4 vs IPv6 Header
+## IPv4 vs IPv6 Header
 
 IPv4 Header (Simplified)
 
@@ -1855,7 +1855,7 @@ The IPv6 base header has a fixed size of **40 bytes**, simplifying packet proces
 
 ---
 
-# Enterprise IPv6 Deployment
+## Enterprise IPv6 Deployment
 
 Many organizations adopt a **dual-stack** architecture.
 
@@ -1891,7 +1891,7 @@ Benefits:
 
 ---
 
-# IPv6 Security Considerations
+## IPv6 Security Considerations
 
 Common risks include:
 
@@ -1903,7 +1903,7 @@ Common risks include:
 
 ---
 
-# Enterprise Security Controls
+## Enterprise Security Controls
 
 Recommended controls include:
 
@@ -1917,7 +1917,7 @@ Recommended controls include:
 
 ---
 
-# Wireshark Observation
+## Wireshark Observation
 
 Select an IPv6 packet and inspect:
 
@@ -1962,7 +1962,7 @@ Neighbor Discovery traffic appears as ICMPv6 packets such as:
 
 ---
 
-# Common IPv6 Problems
+## Common IPv6 Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1975,7 +1975,7 @@ Neighbor Discovery traffic appears as ICMPv6 packets such as:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper IPv6 implementation provides:
 
@@ -1990,7 +1990,7 @@ Poor IPv6 planning can create hidden attack surfaces, inconsistent connectivity,
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - IPv6 uses 128-bit addresses represented in hexadecimal.
 - Leading zeros can be removed, and one consecutive sequence of zero hextets may be compressed using `::`.
@@ -1999,13 +1999,13 @@ Poor IPv6 planning can create hidden attack surfaces, inconsistent connectivity,
 - SLAAC and DHCPv6 simplify address configuration, while dual-stack deployments allow organizations to migrate gradually from IPv4.
 - Enterprise IPv6 deployments should include dedicated security controls, monitoring, and policy enforcement to protect against IPv6-specific threats.
 
-# 05 - IP Addressing
+## 05 - IP Addressing
 
-# Part 4 — Enterprise IP Address Management, NAT, Troubleshooting, Practical Labs, Interview Questions, and Chapter Review
+## Part 4 — Enterprise IP Address Management, NAT, Troubleshooting, Practical Labs, Interview Questions, and Chapter Review
 
 ---
 
-# Overview
+## Overview
 
 Designing an enterprise IP addressing scheme involves much more than assigning IP addresses.
 
@@ -2032,7 +2032,7 @@ This section focuses on enterprise IP management, Network Address Translation (N
 
 ---
 
-# Enterprise IP Address Planning
+## Enterprise IP Address Planning
 
 Large organizations typically divide networks into logical segments based on business functions.
 
@@ -2060,7 +2060,7 @@ Benefits:
 
 ---
 
-# IP Address Management (IPAM)
+## IP Address Management (IPAM)
 
 **IP Address Management (IPAM)** is the process of planning, tracking, allocating, and monitoring IP address usage.
 
@@ -2083,7 +2083,7 @@ Popular enterprise IPAM platforms include:
 
 ---
 
-# Static vs Dynamic IP Addressing
+## Static vs Dynamic IP Addressing
 
 | Feature | Static IP | Dynamic IP (DHCP) |
 |----------|-----------|-------------------|
@@ -2095,7 +2095,7 @@ Popular enterprise IPAM platforms include:
 
 ---
 
-# Dynamic Host Configuration Protocol (DHCP)
+## Dynamic Host Configuration Protocol (DHCP)
 
 DHCP automatically assigns network configuration to clients.
 
@@ -2110,7 +2110,7 @@ Typical information provided:
 
 ---
 
-# DHCP Process (DORA)
+## DHCP Process (DORA)
 
 ```
 Client
@@ -2136,7 +2136,7 @@ This sequence is commonly known as the **DORA process**.
 
 ---
 
-# What is NAT?
+## What is NAT?
 
 **Network Address Translation (NAT)** translates one IP address into another.
 
@@ -2166,7 +2166,7 @@ Internet
 
 ---
 
-# Why NAT is Used
+## Why NAT is Used
 
 Benefits include:
 
@@ -2180,11 +2180,11 @@ Benefits include:
 
 ---
 
-# Types of NAT
+## Types of NAT
 
 ---
 
-## Static NAT
+### Static NAT
 
 One private address permanently maps to one public address.
 
@@ -2204,7 +2204,7 @@ Typical use:
 
 ---
 
-## Dynamic NAT
+### Dynamic NAT
 
 Private addresses are translated using a pool of available public addresses.
 
@@ -2224,7 +2224,7 @@ If the pool is exhausted, additional clients cannot establish new translations u
 
 ---
 
-## PAT (Port Address Translation)
+### PAT (Port Address Translation)
 
 Also called:
 
@@ -2255,7 +2255,7 @@ PAT is the most common NAT implementation in enterprise and home networks.
 
 ---
 
-# NAT Comparison
+## NAT Comparison
 
 | Feature | Static NAT | Dynamic NAT | PAT |
 |----------|------------|-------------|-----|
@@ -2266,7 +2266,7 @@ PAT is the most common NAT implementation in enterprise and home networks.
 
 ---
 
-# Public vs Private Network Flow
+## Public vs Private Network Flow
 
 ```
 Employee Laptop
@@ -2300,7 +2300,7 @@ The external destination sees only the translated public IP address.
 
 ---
 
-# Enterprise IP Allocation Best Practices
+## Enterprise IP Allocation Best Practices
 
 - Reserve dedicated ranges for infrastructure devices.
 - Use DHCP for end-user systems.
@@ -2313,7 +2313,7 @@ The external destination sees only the translated public IP address.
 
 ---
 
-# Layer 3 Troubleshooting Methodology
+## Layer 3 Troubleshooting Methodology
 
 When troubleshooting IP connectivity, work from the lowest relevant layer upward.
 
@@ -2355,7 +2355,7 @@ Application Connectivity
 
 ---
 
-# Common IP Addressing Problems
+## Common IP Addressing Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2369,9 +2369,9 @@ Application Connectivity
 
 ---
 
-# Essential Troubleshooting Commands
+## Essential Troubleshooting Commands
 
-## Windows
+### Windows
 
 Display IP configuration:
 
@@ -2423,7 +2423,7 @@ nslookup example.com
 
 ---
 
-## Linux
+### Linux
 
 Display IP configuration:
 
@@ -2463,7 +2463,7 @@ dig example.com
 
 ---
 
-# Wireshark Analysis
+## Wireshark Analysis
 
 Capture traffic while browsing a website.
 
@@ -2504,7 +2504,7 @@ Inspect:
 
 ---
 
-# Practical Lab 1 — Verify Network Configuration
+## Practical Lab 1 — Verify Network Configuration
 
 **Objective:** Confirm the device has correct network settings.
 
@@ -2520,7 +2520,7 @@ Steps:
 
 ---
 
-# Practical Lab 2 — Test Connectivity
+## Practical Lab 2 — Test Connectivity
 
 Perform the following tests in order:
 
@@ -2548,7 +2548,7 @@ This sequence helps isolate whether the issue is local, network-related, Interne
 
 ---
 
-# Practical Lab 3 — Analyze Routing
+## Practical Lab 3 — Analyze Routing
 
 Display the routing table:
 
@@ -2572,7 +2572,7 @@ Identify:
 
 ---
 
-# Practical Lab 4 — Capture Packets
+## Practical Lab 4 — Capture Packets
 
 Using Wireshark:
 
@@ -2599,13 +2599,13 @@ Observe:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 Employees report that they cannot access external websites, but they can communicate with internal servers.
 
-### Investigation
+#### Investigation
 
 **Step 1**
 
@@ -2647,19 +2647,19 @@ Failure.
 
 ---
 
-### Root Cause
+#### Root Cause
 
 DNS server configuration was incorrect.
 
 ---
 
-### Resolution
+#### Resolution
 
 Update the DNS server settings via DHCP and verify name resolution.
 
 ---
 
-# Security Considerations
+## Security Considerations
 
 Attackers may exploit IP-based weaknesses through:
 
@@ -2682,37 +2682,37 @@ Recommended controls:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is an IP address?
+#### What is an IP address?
 
 An IP address is a logical Layer 3 identifier used to uniquely identify a network interface and enable communication across IP networks.
 
 ---
 
-### What is the difference between IPv4 and IPv6?
+#### What is the difference between IPv4 and IPv6?
 
 IPv4 uses 32-bit addresses written in dotted-decimal notation, while IPv6 uses 128-bit hexadecimal addresses, providing a vastly larger address space and additional protocol improvements.
 
 ---
 
-### What is the purpose of a subnet mask?
+#### What is the purpose of a subnet mask?
 
 A subnet mask identifies which portion of an IP address represents the network and which portion represents the host.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is NAT?
+#### What is NAT?
 
 NAT translates private IP addresses to public IP addresses (or vice versa), enabling communication between private networks and external networks while conserving public IPv4 addresses.
 
 ---
 
-### Explain the DORA process.
+#### Explain the DORA process.
 
 The DHCP process consists of:
 
@@ -2725,15 +2725,15 @@ This allows a client to automatically obtain network configuration.
 
 ---
 
-### Why are private IP addresses not routable on the Internet?
+#### Why are private IP addresses not routable on the Internet?
 
 Private address ranges defined in RFC 1918 are reserved for internal use. Internet routers do not forward these ranges, so NAT or another translation mechanism is required for Internet access.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you troubleshoot a user who cannot access the Internet?
+#### How would you troubleshoot a user who cannot access the Internet?
 
 A structured approach includes:
 
@@ -2748,21 +2748,21 @@ A structured approach includes:
 
 ---
 
-### When would you use static IP addressing instead of DHCP?
+#### When would you use static IP addressing instead of DHCP?
 
 Static addressing is appropriate for devices that require consistent, predictable addresses, such as routers, firewalls, servers, printers, and infrastructure services.
 
 ---
 
-### Why is IPAM important in enterprise environments?
+#### Why is IPAM important in enterprise environments?
 
 IPAM centralizes address management, reduces conflicts, improves visibility, simplifies auditing, integrates with DHCP and DNS, and supports scalable network operations.
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 791 — Internet Protocol (IPv4)
 - RFC 8200 — Internet Protocol Version 6 (IPv6)
@@ -2770,13 +2770,13 @@ IPAM centralizes address management, reduces conflicts, improves visibility, sim
 - RFC 2131 — Dynamic Host Configuration Protocol (DHCP)
 - RFC 3022 — Traditional NAT
 
-## Organizations
+### Organizations
 
 - IANA (Internet Assigned Numbers Authority)
 - ICANN
 - Regional Internet Registries (ARIN, RIPE NCC, APNIC, LACNIC, AFRINIC)
 
-## Security Guidance
+### Security Guidance
 
 - NIST SP 800-41
 - NIST SP 800-53
@@ -2784,13 +2784,13 @@ IPAM centralizes address management, reduces conflicts, improves visibility, sim
 
 ---
 
-# Summary
+## Summary
 
 IP addressing is the foundation of modern networking. IPv4 and IPv6 provide logical addressing that enables communication across local and global networks. Effective address planning, DHCP, NAT, and IP address management ensure scalable, secure, and reliable enterprise environments. A systematic troubleshooting methodology, combined with tools such as Wireshark and operating system networking utilities, allows engineers and security professionals to quickly identify and resolve connectivity issues.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -2828,7 +2828,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`06-Subnetting.md`**, will build directly on these concepts and cover:
 

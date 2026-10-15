@@ -1,10 +1,10 @@
 # 13-LDAP.md
 
-# Part 1 — LDAP Fundamentals, Directory Services and Active Directory Integration
+## Part 1 — LDAP Fundamentals, Directory Services and Active Directory Integration
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -23,7 +23,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Active Directory stores millions of objects.
 
@@ -55,7 +55,7 @@ LDAP is one of the most fundamental protocols used in Active Directory.
 
 ---
 
-# What is LDAP?
+## What is LDAP?
 
 LDAP stands for
 
@@ -74,7 +74,7 @@ It provides a standardized way for applications to interact with directory servi
 
 ---
 
-# What is a Directory?
+## What is a Directory?
 
 A directory is a specialized database optimized for:
 
@@ -112,7 +112,7 @@ Phone Number
 
 ---
 
-# Real-Life Analogy
+## Real-Life Analogy
 
 Think of LDAP like a company phone directory.
 
@@ -134,7 +134,7 @@ LDAP performs a similar function for computers and applications.
 
 ---
 
-# Directory Service
+## Directory Service
 
 A Directory Service stores information about:
 
@@ -150,7 +150,7 @@ LDAP provides the protocol used to communicate with that directory.
 
 ---
 
-# LDAP and Active Directory
+## LDAP and Active Directory
 
 Many beginners believe LDAP and Active Directory are the same thing.
 
@@ -176,7 +176,7 @@ LDAP is one of the protocols used to access it.
 
 ---
 
-# Simple Analogy
+## Simple Analogy
 
 ```
 Active Directory
@@ -204,7 +204,7 @@ LDAP helps locate directory objects.
 
 ---
 
-# LDAP Architecture
+## LDAP Architecture
 
 ```
 Application
@@ -232,7 +232,7 @@ Instead, they communicate through LDAP.
 
 ---
 
-# LDAP Clients
+## LDAP Clients
 
 Common LDAP clients include:
 
@@ -248,7 +248,7 @@ Common LDAP clients include:
 
 ---
 
-# LDAP Server
+## LDAP Server
 
 In an Active Directory environment,
 
@@ -263,7 +263,7 @@ Responsibilities include:
 
 ---
 
-# LDAP Communication
+## LDAP Communication
 
 Typical communication flow:
 
@@ -289,7 +289,7 @@ Return Result
 
 ---
 
-# Directory Information Tree (DIT)
+## Directory Information Tree (DIT)
 
 LDAP stores information in a hierarchical structure called the:
 
@@ -335,7 +335,7 @@ This hierarchy represents how directory objects are organized.
 
 ---
 
-# LDAP Objects
+## LDAP Objects
 
 Everything stored in Active Directory is an object.
 
@@ -358,7 +358,7 @@ Every object has:
 
 ---
 
-# Object Attributes
+## Object Attributes
 
 A user object may contain:
 
@@ -384,7 +384,7 @@ Each of these is an attribute.
 
 ---
 
-# Distinguished Name (DN)
+## Distinguished Name (DN)
 
 Every LDAP object has a unique path called the:
 
@@ -404,7 +404,7 @@ This uniquely identifies the object within the directory.
 
 ---
 
-# Breaking Down a DN
+## Breaking Down a DN
 
 ```
 CN=Alice Smith
@@ -440,7 +440,7 @@ Top-Level Domain
 
 ---
 
-# Relative Distinguished Name (RDN)
+## Relative Distinguished Name (RDN)
 
 The **Relative Distinguished Name (RDN)** identifies the object relative to its parent container.
 
@@ -456,7 +456,7 @@ Combined with its parent path, it forms the complete Distinguished Name.
 
 ---
 
-# Domain Components (DC)
+## Domain Components (DC)
 
 Domain Components represent the DNS domain.
 
@@ -480,7 +480,7 @@ DC=com
 
 ---
 
-# Common Naming Attributes
+## Common Naming Attributes
 
 | Attribute | Meaning |
 |-----------|----------|
@@ -494,7 +494,7 @@ DC=com
 
 ---
 
-# LDAP Naming Example
+## LDAP Naming Example
 
 ```
 Company
@@ -527,7 +527,7 @@ DC=com
 
 ---
 
-# LDAP Operations Overview
+## LDAP Operations Overview
 
 LDAP supports several standard operations.
 
@@ -546,7 +546,7 @@ These operations will be explored in detail in later parts.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -590,7 +590,7 @@ The application retrieves directory information without directly accessing the A
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 LDAP provides access to valuable directory information.
 
@@ -606,13 +606,13 @@ Improper LDAP configuration can expose valuable information about users, compute
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore Active Directory object hierarchy.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -622,7 +622,7 @@ Active Directory Users and Computers
 
 ---
 
-### Step 2
+#### Step 2
 
 Browse:
 
@@ -634,7 +634,7 @@ Browse:
 
 ---
 
-### Step 3
+#### Step 3
 
 Open a user object.
 
@@ -648,7 +648,7 @@ Observe attributes such as:
 
 ---
 
-### Step 4
+#### Step 4
 
 Open **Attribute Editor** (Advanced Features enabled).
 
@@ -656,7 +656,7 @@ Locate attributes related to the user's Distinguished Name.
 
 ---
 
-### Step 5
+#### Step 5
 
 Document:
 
@@ -667,45 +667,45 @@ Document:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What does LDAP stand for?
+#### Q1: What does LDAP stand for?
 
 **Answer:** Lightweight Directory Access Protocol.
 
 ---
 
-### Q2: Is LDAP a database?
+#### Q2: Is LDAP a database?
 
 **Answer:** No. LDAP is a protocol used to access directory services such as Active Directory.
 
 ---
 
-### Q3: What is a Distinguished Name (DN)?
+#### Q3: What is a Distinguished Name (DN)?
 
 **Answer:** A Distinguished Name uniquely identifies an object within the LDAP directory hierarchy.
 
 ---
 
-### Q4: What is an RDN?
+#### Q4: What is an RDN?
 
 **Answer:** A Relative Distinguished Name identifies an object relative to its parent container.
 
 ---
 
-### Q5: Which Active Directory servers provide LDAP services?
+#### Q5: Which Active Directory servers provide LDAP services?
 
 **Answer:** Domain Controllers.
 
 ---
 
-### Q6: What is a Directory Information Tree (DIT)?
+#### Q6: What is a Directory Information Tree (DIT)?
 
 **Answer:** The hierarchical structure used to organize objects within an LDAP directory.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design Organizational Units with a logical hierarchy.
 - Use meaningful naming conventions.
@@ -715,7 +715,7 @@ Document:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Confusing LDAP with Active Directory.
 - Assuming LDAP stores data instead of providing access to it.
@@ -725,7 +725,7 @@ Document:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - LDAP is the standard protocol for accessing directory services.
 - Active Directory uses LDAP to expose directory information.
@@ -735,13 +735,13 @@ Document:
 
 ---
 
-# 13-LDAP.md
+## 13-LDAP.md
 
-# Part 2 — LDAP Operations, Search Filters, Attributes, Bind Types and LDAP Queries
+## Part 2 — LDAP Operations, Search Filters, Attributes, Bind Types and LDAP Queries
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -761,7 +761,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 In Part 1, we learned that LDAP is the protocol used to communicate with directory services such as Active Directory.
 
@@ -798,7 +798,7 @@ All these operations are performed using LDAP queries.
 
 ---
 
-# LDAP Operations
+## LDAP Operations
 
 LDAP defines several standard operations.
 
@@ -821,7 +821,7 @@ Most enterprise applications primarily perform:
 
 ---
 
-# LDAP Session Lifecycle
+## LDAP Session Lifecycle
 
 A typical LDAP session follows this sequence:
 
@@ -855,7 +855,7 @@ Unbind
 
 ---
 
-# What is an LDAP Bind?
+## What is an LDAP Bind?
 
 Before a client can interact with the directory, it usually performs a **Bind** operation.
 
@@ -873,7 +873,7 @@ Directory Access
 
 ---
 
-# Types of LDAP Bind
+## Types of LDAP Bind
 
 Common Bind methods include:
 
@@ -883,7 +883,7 @@ Common Bind methods include:
 
 ---
 
-# Anonymous Bind
+## Anonymous Bind
 
 ```
 Client
@@ -903,7 +903,7 @@ Modern Active Directory environments typically restrict anonymous LDAP access be
 
 ---
 
-# Simple Bind
+## Simple Bind
 
 Simple Bind sends:
 
@@ -924,7 +924,7 @@ Therefore:
 
 ---
 
-# SASL Bind
+## SASL Bind
 
 SASL stands for:
 
@@ -942,7 +942,7 @@ In Active Directory, Kerberos-based SASL authentication is commonly used by doma
 
 ---
 
-# LDAP Search
+## LDAP Search
 
 The most frequently used LDAP operation is:
 
@@ -961,7 +961,7 @@ Applications search for:
 
 ---
 
-# LDAP Search Components
+## LDAP Search Components
 
 Every LDAP search contains several parts.
 
@@ -987,7 +987,7 @@ Results
 
 ---
 
-# Search Base
+## Search Base
 
 The Search Base tells LDAP:
 
@@ -1008,7 +1008,7 @@ The search begins inside the Employees OU.
 
 ---
 
-# Search Scope
+## Search Scope
 
 The scope determines **how deep** LDAP searches.
 
@@ -1016,7 +1016,7 @@ Three standard scopes exist.
 
 ---
 
-## 1. Base
+### 1. Base
 
 Search only the specified object.
 
@@ -1030,7 +1030,7 @@ Only this object
 
 ---
 
-## 2. One-Level
+### 2. One-Level
 
 Search only the immediate children.
 
@@ -1054,7 +1054,7 @@ Sub-OUs are not searched.
 
 ---
 
-## 3. Subtree
+### 3. Subtree
 
 Search everything below the Search Base.
 
@@ -1090,7 +1090,7 @@ This is the most commonly used scope.
 
 ---
 
-# LDAP Search Filter
+## LDAP Search Filter
 
 Filters determine:
 
@@ -1113,7 +1113,7 @@ Return Only Matching Objects
 
 ---
 
-# Basic Filter Syntax
+## Basic Filter Syntax
 
 LDAP filters use parentheses.
 
@@ -1125,7 +1125,7 @@ Example:
 
 ---
 
-# Example Filters
+## Example Filters
 
 Find a user named Alice:
 
@@ -1167,7 +1167,7 @@ Find a specific department:
 
 ---
 
-# Logical Operators
+## Logical Operators
 
 LDAP supports logical operators.
 
@@ -1179,7 +1179,7 @@ LDAP supports logical operators.
 
 ---
 
-# AND Filter
+## AND Filter
 
 Find users in Finance.
 
@@ -1200,7 +1200,7 @@ Department = Finance
 
 ---
 
-# OR Filter
+## OR Filter
 
 ```
 (|(department=HR)
@@ -1211,7 +1211,7 @@ Returns users belonging to either department.
 
 ---
 
-# NOT Filter
+## NOT Filter
 
 ```
 (!(department=Finance))
@@ -1221,7 +1221,7 @@ Returns objects whose department is not Finance.
 
 ---
 
-# Wildcards
+## Wildcards
 
 LDAP commonly uses:
 
@@ -1251,7 +1251,7 @@ Ends with "01":
 
 ---
 
-# LDAP Attributes
+## LDAP Attributes
 
 Each object contains attributes.
 
@@ -1283,7 +1283,7 @@ Applications can request only the attributes they need.
 
 ---
 
-# Attribute Retrieval
+## Attribute Retrieval
 
 Instead of retrieving every attribute,
 
@@ -1301,7 +1301,7 @@ This improves performance.
 
 ---
 
-# Search Results
+## Search Results
 
 After processing the query,
 
@@ -1321,7 +1321,7 @@ Client
 
 ---
 
-# Example Search
+## Example Search
 
 Application:
 
@@ -1357,7 +1357,7 @@ Return Matching Users
 
 ---
 
-# LDAP Search Workflow
+## LDAP Search Workflow
 
 ```
 Application
@@ -1389,7 +1389,7 @@ Return Results
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1437,7 +1437,7 @@ The application retrieves only the required information.
 
 ---
 
-# LDAP Performance Considerations
+## LDAP Performance Considerations
 
 Large enterprises may have:
 
@@ -1456,7 +1456,7 @@ Efficient searches improve overall directory performance.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 LDAP queries can reveal valuable information.
 
@@ -1478,13 +1478,13 @@ Organizations should:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore LDAP queries using Active Directory tools.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -1494,7 +1494,7 @@ Active Directory Users and Computers
 
 ---
 
-### Step 2
+#### Step 2
 
 Use the **Find** feature.
 
@@ -1508,7 +1508,7 @@ Observe the returned objects.
 
 ---
 
-### Step 3
+#### Step 3
 
 Search for:
 
@@ -1520,7 +1520,7 @@ Review the matching results.
 
 ---
 
-### Step 4
+#### Step 4
 
 Open the properties of a user.
 
@@ -1533,7 +1533,7 @@ Review attributes such as:
 
 ---
 
-### Step 5
+#### Step 5
 
 Document:
 
@@ -1543,27 +1543,27 @@ Document:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is the purpose of an LDAP Bind?
+#### Q1: What is the purpose of an LDAP Bind?
 
 **Answer:** It establishes the client's identity with the directory before performing operations.
 
 ---
 
-### Q2: Which LDAP operation is used most frequently?
+#### Q2: Which LDAP operation is used most frequently?
 
 **Answer:** Search.
 
 ---
 
-### Q3: What is a Search Base?
+#### Q3: What is a Search Base?
 
 **Answer:** The location in the directory where LDAP begins searching.
 
 ---
 
-### Q4: What are the three LDAP search scopes?
+#### Q4: What are the three LDAP search scopes?
 
 **Answer:**
 
@@ -1573,19 +1573,19 @@ Document:
 
 ---
 
-### Q5: What does the filter `(objectClass=user)` return?
+#### Q5: What does the filter `(objectClass=user)` return?
 
 **Answer:** User objects.
 
 ---
 
-### Q6: Why should Simple Bind typically be used over encrypted connections?
+#### Q6: Why should Simple Bind typically be used over encrypted connections?
 
 **Answer:** To protect credentials from being exposed during transmission.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use the narrowest practical Search Base.
 - Request only required attributes.
@@ -1596,7 +1596,7 @@ Document:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Searching the entire directory unnecessarily.
 - Retrieving all attributes for every query.
@@ -1606,7 +1606,7 @@ Document:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - LDAP operations include Bind, Search, Modify, Add, Delete, and Unbind.
 - Every LDAP search consists of a Search Base, Scope, Filter, and Requested Attributes.
@@ -1616,13 +1616,13 @@ Document:
 
 ---
 
-# 13-LDAP.md
+## 13-LDAP.md
 
-# Part 3 — LDAP Authentication, LDAPS, Directory Security, Referrals and Enterprise Integration
+## Part 3 — LDAP Authentication, LDAPS, Directory Security, Referrals and Enterprise Integration
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1640,7 +1640,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 In the previous parts, we learned:
 
@@ -1666,7 +1666,7 @@ Almost every enterprise application uses LDAP for one or more of the following:
 
 ---
 
-# LDAP Authentication
+## LDAP Authentication
 
 LDAP can authenticate users by verifying their credentials against the directory.
 
@@ -1708,7 +1708,7 @@ Instead, the Domain Controller performs the verification.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 Many people confuse these concepts.
 
@@ -1750,7 +1750,7 @@ Authentication always occurs before authorization.
 
 ---
 
-# LDAP Authentication Flow
+## LDAP Authentication Flow
 
 A typical enterprise workflow:
 
@@ -1794,7 +1794,7 @@ Notice that authentication and directory searches are separate operations.
 
 ---
 
-# Enterprise Login Example
+## Enterprise Login Example
 
 Suppose an employee logs into:
 
@@ -1838,7 +1838,7 @@ Determine Permissions
 
 ---
 
-# LDAP Authorization
+## LDAP Authorization
 
 After authentication, many applications query LDAP to determine:
 
@@ -1869,7 +1869,7 @@ Grant Finance Dashboard Access
 
 ---
 
-# LDAP Ports
+## LDAP Ports
 
 LDAP commonly uses the following ports.
 
@@ -1884,7 +1884,7 @@ Knowing these ports is important for troubleshooting and firewall configuration.
 
 ---
 
-# What is LDAPS?
+## What is LDAPS?
 
 LDAPS stands for:
 
@@ -1910,7 +1910,7 @@ This protects authentication traffic and directory queries.
 
 ---
 
-# LDAP vs LDAPS
+## LDAP vs LDAPS
 
 | LDAP | LDAPS |
 |-------|--------|
@@ -1923,7 +1923,7 @@ Modern enterprise environments should use encrypted LDAP communication whenever 
 
 ---
 
-# Why LDAPS Matters
+## Why LDAPS Matters
 
 Without encryption:
 
@@ -1959,7 +1959,7 @@ Only authorized participants can interpret the communication.
 
 ---
 
-# TLS Handshake (Simplified)
+## TLS Handshake (Simplified)
 
 ```
 Client
@@ -1989,7 +1989,7 @@ The server presents a certificate so the client can establish a secure connectio
 
 ---
 
-# Certificates for LDAPS
+## Certificates for LDAPS
 
 To support LDAPS, the Domain Controller requires a suitable server certificate.
 
@@ -2004,7 +2004,7 @@ Without a valid certificate, LDAPS connections may fail.
 
 ---
 
-# LDAP Referrals
+## LDAP Referrals
 
 Large organizations may contain multiple directory partitions or domains.
 
@@ -2040,7 +2040,7 @@ The client then continues the search with the referred server.
 
 ---
 
-# Why Referrals Exist
+## Why Referrals Exist
 
 Example:
 
@@ -2066,7 +2066,7 @@ The initial Domain Controller may determine that Alice belongs to another domain
 
 ---
 
-# Global Catalog and LDAP
+## Global Catalog and LDAP
 
 Sometimes applications must search across an entire forest.
 
@@ -2096,7 +2096,7 @@ The Global Catalog stores a partial replica of objects from all domains in the f
 
 ---
 
-# LDAP Query to Global Catalog
+## LDAP Query to Global Catalog
 
 Example:
 
@@ -2124,7 +2124,7 @@ This improves efficiency for cross-domain searches.
 
 ---
 
-# LDAP Session Lifecycle
+## LDAP Session Lifecycle
 
 ```
 Connect
@@ -2156,7 +2156,7 @@ Connection Closed
 
 ---
 
-# Enterprise Application Integration
+## Enterprise Application Integration
 
 Many enterprise applications integrate with LDAP.
 
@@ -2198,7 +2198,7 @@ Access Granted
 
 ---
 
-# Enterprise Architecture Example
+## Enterprise Architecture Example
 
 ```
                  Users
@@ -2234,7 +2234,7 @@ The application authenticates users and retrieves directory information from Act
 
 ---
 
-# LDAP Performance Considerations
+## LDAP Performance Considerations
 
 Enterprise environments may contain:
 
@@ -2252,7 +2252,7 @@ Recommendations:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 LDAP provides access to valuable identity information.
 
@@ -2269,13 +2269,13 @@ Directory information often contains usernames, group memberships, organizationa
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore secure LDAP configuration.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -2291,7 +2291,7 @@ Review a user object's:
 
 ---
 
-### Step 2
+#### Step 2
 
 Open:
 
@@ -2305,13 +2305,13 @@ Observe the server authentication certificate used for secure services.
 
 ---
 
-### Step 3
+#### Step 3
 
 Review firewall rules and verify that the appropriate LDAP and LDAPS ports are allowed where required.
 
 ---
 
-### Step 4
+#### Step 4
 
 Document:
 
@@ -2322,45 +2322,45 @@ Document:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is LDAPS?
+#### Q1: What is LDAPS?
 
 **Answer:** LDAPS is LDAP communication protected with SSL/TLS encryption.
 
 ---
 
-### Q2: Which port is commonly used by LDAPS?
+#### Q2: Which port is commonly used by LDAPS?
 
 **Answer:** TCP 636.
 
 ---
 
-### Q3: Which port is commonly used by the Global Catalog?
+#### Q3: Which port is commonly used by the Global Catalog?
 
 **Answer:** TCP 3268 (3269 when protected with SSL/TLS).
 
 ---
 
-### Q4: What is an LDAP Referral?
+#### Q4: What is an LDAP Referral?
 
 **Answer:** A referral directs an LDAP client to another directory server that can satisfy the request.
 
 ---
 
-### Q5: Why is the Global Catalog useful?
+#### Q5: Why is the Global Catalog useful?
 
 **Answer:** It enables efficient searches across all domains in an Active Directory forest.
 
 ---
 
-### Q6: Why should LDAP traffic be encrypted?
+#### Q6: Why should LDAP traffic be encrypted?
 
 **Answer:** To protect authentication exchanges and sensitive directory information while it is transmitted across the network.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use LDAPS for sensitive directory communication.
 - Deploy trusted certificates on Domain Controllers.
@@ -2372,7 +2372,7 @@ Document:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Using unencrypted LDAP for sensitive authentication traffic.
 - Forgetting to deploy valid server certificates.
@@ -2382,7 +2382,7 @@ Document:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - LDAP supports authentication, directory searches, and directory management.
 - LDAPS protects LDAP traffic using SSL/TLS.
@@ -2392,13 +2392,13 @@ Document:
 
 ---
 
-# 13-LDAP.md
+## 13-LDAP.md
 
-# Part 4 — LDAP Security, Troubleshooting, Enterprise Best Practices and Chapter Summary
+## Part 4 — LDAP Security, Troubleshooting, Enterprise Best Practices and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -2417,7 +2417,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 LDAP is one of the most heavily used protocols in an Active Directory environment.
 
@@ -2434,7 +2434,7 @@ Because LDAP is so widely used, securing and monitoring it is critical.
 
 ---
 
-# LDAP Security Principles
+## LDAP Security Principles
 
 A secure LDAP deployment should follow several core principles:
 
@@ -2447,7 +2447,7 @@ A secure LDAP deployment should follow several core principles:
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Applications should receive only the permissions required to perform their intended tasks.
 
@@ -2471,7 +2471,7 @@ Restricting permissions reduces the impact of compromised accounts.
 
 ---
 
-# Protecting Directory Information
+## Protecting Directory Information
 
 Active Directory stores highly sensitive information, including:
 
@@ -2487,7 +2487,7 @@ Organizations should carefully control who can read and modify this information.
 
 ---
 
-# Secure LDAP Communication
+## Secure LDAP Communication
 
 Recommended communication:
 
@@ -2507,7 +2507,7 @@ Avoid transmitting authentication credentials over unprotected connections.
 
 ---
 
-# Authentication Security
+## Authentication Security
 
 Recommendations:
 
@@ -2519,7 +2519,7 @@ Recommendations:
 
 ---
 
-# LDAP Logging
+## LDAP Logging
 
 LDAP-related activity can be monitored through:
 
@@ -2538,13 +2538,13 @@ Monitoring helps identify:
 
 ---
 
-# Common LDAP Errors
+## Common LDAP Errors
 
 Administrators frequently encounter the following issues.
 
 ---
 
-## Invalid Credentials
+### Invalid Credentials
 
 Symptoms:
 
@@ -2561,7 +2561,7 @@ Possible causes:
 
 ---
 
-## Server Unavailable
+### Server Unavailable
 
 Symptoms:
 
@@ -2578,7 +2578,7 @@ Possible causes:
 
 ---
 
-## Invalid Distinguished Name
+### Invalid Distinguished Name
 
 Symptoms:
 
@@ -2595,7 +2595,7 @@ Possible causes:
 
 ---
 
-## Insufficient Access Rights
+### Insufficient Access Rights
 
 Symptoms:
 
@@ -2611,7 +2611,7 @@ Possible causes:
 
 ---
 
-## Certificate Problems (LDAPS)
+### Certificate Problems (LDAPS)
 
 Symptoms:
 
@@ -2627,7 +2627,7 @@ Possible causes:
 
 ---
 
-# LDAP Troubleshooting Workflow
+## LDAP Troubleshooting Workflow
 
 When an LDAP issue occurs, follow a structured approach.
 
@@ -2687,7 +2687,7 @@ Avoid making multiple configuration changes simultaneously, as this makes identi
 
 ---
 
-# DNS Verification
+## DNS Verification
 
 LDAP depends on DNS.
 
@@ -2702,7 +2702,7 @@ Many LDAP issues are ultimately caused by DNS misconfiguration.
 
 ---
 
-# Firewall Verification
+## Firewall Verification
 
 Common ports:
 
@@ -2717,7 +2717,7 @@ Ensure firewalls permit required communication between clients and Domain Contro
 
 ---
 
-# Certificate Verification
+## Certificate Verification
 
 For LDAPS:
 
@@ -2733,7 +2733,7 @@ Certificate issues are a common cause of LDAPS failures.
 
 ---
 
-# Performance Optimization
+## Performance Optimization
 
 Large organizations may process thousands of LDAP queries every minute.
 
@@ -2748,7 +2748,7 @@ Recommendations:
 
 ---
 
-# Enterprise LDAP Architecture
+## Enterprise LDAP Architecture
 
 Example:
 
@@ -2786,7 +2786,7 @@ Applications communicate with Domain Controllers rather than accessing the direc
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -2849,7 +2849,7 @@ The organization:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 LDAP is a high-value target because it exposes identity information.
 
@@ -2873,13 +2873,13 @@ Defensive measures include:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review LDAP configuration and directory access.
 
-### Step 1
+#### Step 1
 
 Open:
 
@@ -2895,7 +2895,7 @@ Review:
 
 ---
 
-### Step 2
+#### Step 2
 
 Inspect a user object's:
 
@@ -2906,7 +2906,7 @@ Inspect a user object's:
 
 ---
 
-### Step 3
+#### Step 3
 
 Review Domain Controller firewall rules and verify:
 
@@ -2917,13 +2917,13 @@ Review Domain Controller firewall rules and verify:
 
 ---
 
-### Step 4
+#### Step 4
 
 Review server certificates used for secure LDAP communication.
 
 ---
 
-### Step 5
+#### Step 5
 
 Document:
 
@@ -2934,27 +2934,27 @@ Document:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What does LDAP stand for?
+#### Q1: What does LDAP stand for?
 
 **Answer:** Lightweight Directory Access Protocol.
 
 ---
 
-### Q2: Is LDAP the same as Active Directory?
+#### Q2: Is LDAP the same as Active Directory?
 
 **Answer:** No. LDAP is a protocol used to access directory services such as Active Directory.
 
 ---
 
-### Q3: What is the difference between LDAP and LDAPS?
+#### Q3: What is the difference between LDAP and LDAPS?
 
 **Answer:** LDAPS protects LDAP communication using SSL/TLS encryption, while standard LDAP may operate without transport encryption.
 
 ---
 
-### Q4: Which ports are commonly associated with LDAP services?
+#### Q4: Which ports are commonly associated with LDAP services?
 
 **Answer:**
 
@@ -2965,25 +2965,25 @@ Document:
 
 ---
 
-### Q5: What is a Distinguished Name (DN)?
+#### Q5: What is a Distinguished Name (DN)?
 
 **Answer:** A Distinguished Name uniquely identifies an object within the LDAP directory hierarchy.
 
 ---
 
-### Q6: Why is the Global Catalog important?
+#### Q6: Why is the Global Catalog important?
 
 **Answer:** It allows efficient searches across all domains within an Active Directory forest.
 
 ---
 
-### Q7: What are common causes of LDAP authentication failures?
+#### Q7: What are common causes of LDAP authentication failures?
 
 **Answer:** Incorrect credentials, DNS issues, firewall restrictions, invalid Distinguished Names, insufficient permissions, or certificate problems.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use LDAPS for production environments whenever sensitive information is transmitted.
 - Enforce least-privilege access to directory objects.
@@ -2996,7 +2996,7 @@ Document:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Confusing LDAP with Active Directory.
 - Using overly broad search filters.
@@ -3007,7 +3007,7 @@ Document:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - LDAP is the standard protocol for interacting with directory services.
 - Active Directory relies heavily on LDAP for authentication and directory queries.
@@ -3017,7 +3017,7 @@ Document:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A SIEM tells us:
 
@@ -56,7 +56,7 @@ INVESTIGATION
 
 ---
 
-# 2. What is MITRE ATT&CK?
+## 2. What is MITRE ATT&CK?
 
 MITRE ATT&CK is a knowledge base describing adversary tactics and techniques based on observed real-world behavior.
 
@@ -76,7 +76,7 @@ Coverage Assessment
 
 ---
 
-# 3. What Does ATT&CK Represent?
+## 3. What Does ATT&CK Represent?
 
 At a high level:
 
@@ -96,7 +96,7 @@ More specific implementation of a technique
 
 ---
 
-# 4. Tactic
+## 4. Tactic
 
 A tactic represents the attacker's objective.
 
@@ -121,7 +121,7 @@ The exact ATT&CK catalog can evolve, so always verify current technique/tactic i
 
 ---
 
-# 5. Technique
+## 5. Technique
 
 A technique describes a method an adversary can use to achieve a tactical objective.
 
@@ -138,7 +138,7 @@ Application Layer Protocol
 
 ---
 
-# 6. Sub-Technique
+## 6. Sub-Technique
 
 A sub-technique provides more specific detail.
 
@@ -158,7 +158,7 @@ Command and Scripting Interpreter
 
 ---
 
-# 7. Tactic vs Technique
+## 7. Tactic vs Technique
 
 Remember:
 
@@ -184,7 +184,7 @@ Credential Dumping
 
 ---
 
-# 8. Why SOC Teams Use ATT&CK
+## 8. Why SOC Teams Use ATT&CK
 
 ATT&CK provides a common language.
 
@@ -213,7 +213,7 @@ Reporting
 
 ---
 
-# 9. ATT&CK IDs
+## 9. ATT&CK IDs
 
 ATT&CK techniques have identifiers.
 
@@ -241,7 +241,7 @@ Always verify identifiers against the current ATT&CK knowledge base before using
 
 ---
 
-# 10. Enterprise ATT&CK
+## 10. Enterprise ATT&CK
 
 The Enterprise matrix focuses on adversary behavior affecting enterprise environments.
 
@@ -258,7 +258,7 @@ Networked Enterprise Systems
 
 ---
 
-# 11. Other ATT&CK Domains
+## 11. Other ATT&CK Domains
 
 MITRE maintains ATT&CK knowledge across different technology domains.
 
@@ -274,7 +274,7 @@ The exact scope depends on the environment being defended.
 
 ---
 
-# 12. Attack Lifecycle
+## 12. Attack Lifecycle
 
 A simplified attack chain can be visualized as:
 
@@ -317,7 +317,7 @@ Run multiple techniques simultaneously
 
 ---
 
-# 13. Initial Access
+## 13. Initial Access
 
 Objective:
 
@@ -348,7 +348,7 @@ Application Logs
 
 ---
 
-# 14. Execution
+## 14. Execution
 
 Objective:
 
@@ -378,7 +378,7 @@ Command-Line Logging
 
 ---
 
-# 15. Persistence
+## 15. Persistence
 
 Objective:
 
@@ -408,7 +408,7 @@ Configuration
 
 ---
 
-# 16. Privilege Escalation
+## 16. Privilege Escalation
 
 Objective:
 
@@ -436,7 +436,7 @@ Security Logs
 
 ---
 
-# 17. Defense Evasion
+## 17. Defense Evasion
 
 Objective:
 
@@ -465,7 +465,7 @@ Configuration Logs
 
 ---
 
-# 18. Credential Access
+## 18. Credential Access
 
 Objective:
 
@@ -495,7 +495,7 @@ Memory Security Events
 
 ---
 
-# 19. Discovery
+## 19. Discovery
 
 Objective:
 
@@ -526,7 +526,7 @@ Process
 
 ---
 
-# 20. Lateral Movement
+## 20. Lateral Movement
 
 Objective:
 
@@ -555,7 +555,7 @@ Remote Access
 
 ---
 
-# 21. Collection
+## 21. Collection
 
 Objective:
 
@@ -585,7 +585,7 @@ Application
 
 ---
 
-# 22. Command and Control
+## 22. Command and Control
 
 Objective:
 
@@ -615,7 +615,7 @@ Endpoint
 
 ---
 
-# 23. Exfiltration
+## 23. Exfiltration
 
 Objective:
 
@@ -644,7 +644,7 @@ Endpoint
 
 ---
 
-# 24. Impact
+## 24. Impact
 
 Objective:
 
@@ -673,7 +673,7 @@ Security Controls
 
 ---
 
-# 25. ATT&CK and SIEM
+## 25. ATT&CK and SIEM
 
 A SIEM can map:
 
@@ -701,7 +701,7 @@ Execution
 
 ---
 
-# 26. ATT&CK-Based Detection
+## 26. ATT&CK-Based Detection
 
 Instead of starting with:
 
@@ -735,7 +735,7 @@ Threat-Informed Detection Engineering
 
 ---
 
-# 27. Threat-Informed Detection Engineering
+## 27. Threat-Informed Detection Engineering
 
 Workflow:
 
@@ -757,7 +757,7 @@ Deployment
 
 ---
 
-# 28. Example – PowerShell
+## 28. Example – PowerShell
 
 Behavior:
 
@@ -796,7 +796,7 @@ Suspicious Parent
 
 ---
 
-# 29. Example – Credential Dumping
+## 29. Example – Credential Dumping
 
 Behavior:
 
@@ -831,7 +831,7 @@ Sensitive Process Access
 
 ---
 
-# 30. Example – Remote Desktop
+## 30. Example – Remote Desktop
 
 Behavior:
 
@@ -870,7 +870,7 @@ New Source Host
 
 ---
 
-# 31. Example – Scheduled Task
+## 31. Example – Scheduled Task
 
 Behavior:
 
@@ -904,7 +904,7 @@ Unexpected User
 
 ---
 
-# 32. ATT&CK Mapping Should Not Be Arbitrary
+## 32. ATT&CK Mapping Should Not Be Arbitrary
 
 A detection should not be mapped to a technique merely because the technique sounds related.
 
@@ -929,7 +929,7 @@ Mapping should reflect the actual behavior detected.
 
 ---
 
-# 33. One Detection Can Map to Multiple Techniques
+## 33. One Detection Can Map to Multiple Techniques
 
 Some detections may involve multiple behaviors.
 
@@ -955,7 +955,7 @@ Document mappings carefully.
 
 ---
 
-# 34. One Technique Can Have Multiple Detections
+## 34. One Technique Can Have Multiple Detections
 
 Example:
 
@@ -977,7 +977,7 @@ This creates defense-in-depth.
 
 ---
 
-# 35. Detection Coverage
+## 35. Detection Coverage
 
 A coverage matrix can show:
 
@@ -1003,7 +1003,7 @@ Data Exfiltration       ✓
 
 ---
 
-# 36. Coverage Does Not Equal Security
+## 36. Coverage Does Not Equal Security
 
 A team may claim:
 
@@ -1032,7 +1032,7 @@ Analyst Usability
 
 ---
 
-# 37. Detection Coverage Levels
+## 37. Detection Coverage Levels
 
 A useful model:
 
@@ -1060,7 +1060,7 @@ This is a conceptual maturity model, not an official ATT&CK rating.
 
 ---
 
-# 38. Telemetry Coverage
+## 38. Telemetry Coverage
 
 Before creating a detection:
 
@@ -1086,7 +1086,7 @@ Yes
 
 ---
 
-# 39. Detection Gap
+## 39. Detection Gap
 
 Example:
 
@@ -1109,7 +1109,7 @@ Detection Gap
 
 ---
 
-# 40. Visibility Gap
+## 40. Visibility Gap
 
 Different problem:
 
@@ -1131,7 +1131,7 @@ You cannot build a reliable detection if critical telemetry is unavailable.
 
 ---
 
-# 41. Detection Gap vs Visibility Gap
+## 41. Detection Gap vs Visibility Gap
 
 ```text
 Visibility Gap
@@ -1147,7 +1147,7 @@ This distinction is important for security engineering.
 
 ---
 
-# 42. ATT&CK and Threat Hunting
+## 42. ATT&CK and Threat Hunting
 
 ATT&CK can generate hunting hypotheses.
 
@@ -1176,7 +1176,7 @@ Validate
 
 ---
 
-# 43. ATT&CK-Based Hunt
+## 43. ATT&CK-Based Hunt
 
 Example:
 
@@ -1207,7 +1207,7 @@ Rare host
 
 ---
 
-# 44. Threat Actor Profiling
+## 44. Threat Actor Profiling
 
 Threat intelligence may indicate:
 
@@ -1228,7 +1228,7 @@ Relevant telemetry
 
 ---
 
-# 45. Campaign-Based Detection
+## 45. Campaign-Based Detection
 
 A campaign may involve:
 
@@ -1254,7 +1254,7 @@ Then build detections across the chain.
 
 ---
 
-# 46. Attack Chain Correlation
+## 46. Attack Chain Correlation
 
 Example:
 
@@ -1274,7 +1274,7 @@ Correlation can elevate confidence.
 
 ---
 
-# 47. ATT&CK Navigator Concept
+## 47. ATT&CK Navigator Concept
 
 Security teams can visualize:
 
@@ -1302,7 +1302,7 @@ This helps prioritize engineering.
 
 ---
 
-# 48. Coverage Matrix Example
+## 48. Coverage Matrix Example
 
 ```text
 TACTIC              TECHNIQUE             STATUS
@@ -1320,7 +1320,7 @@ Impact              Data Encryption       ✓
 
 ---
 
-# 49. Detection Prioritization
+## 49. Detection Prioritization
 
 Do not simply detect techniques because they are available.
 
@@ -1339,7 +1339,7 @@ Incident History
 
 ---
 
-# 50. Threat Modeling
+## 50. Threat Modeling
 
 A threat model asks:
 
@@ -1361,7 +1361,7 @@ ATT&CK helps structure the attacker behavior portion.
 
 ---
 
-# 51. ATT&CK and Purple Teaming
+## 51. ATT&CK and Purple Teaming
 
 Purple teaming connects:
 
@@ -1395,7 +1395,7 @@ Only perform emulation in authorized environments.
 
 ---
 
-# 52. Detection Validation
+## 52. Detection Validation
 
 A detection mapped to ATT&CK should be validated.
 
@@ -1420,7 +1420,7 @@ Alert
 
 ---
 
-# 53. Purple Team Feedback
+## 53. Purple Team Feedback
 
 Suppose:
 
@@ -1449,7 +1449,7 @@ This produces actionable engineering work.
 
 ---
 
-# 54. ATT&CK and Incident Response
+## 54. ATT&CK and Incident Response
 
 During an incident, map observed behavior:
 
@@ -1473,7 +1473,7 @@ What might happen next?
 
 ---
 
-# 55. Predictive Use
+## 55. Predictive Use
 
 If an attacker has performed:
 
@@ -1495,7 +1495,7 @@ It does not predict attacker actions with certainty.
 
 ---
 
-# 56. ATT&CK and SIEM Dashboards
+## 56. ATT&CK and SIEM Dashboards
 
 A SOC dashboard can show:
 
@@ -1519,7 +1519,7 @@ This provides a behavioral view of the environment.
 
 ---
 
-# 57. Detection Coverage Dashboard
+## 57. Detection Coverage Dashboard
 
 Example:
 
@@ -1540,7 +1540,7 @@ These percentages are organization-specific and should be based on clearly defin
 
 ---
 
-# 58. Technique-Based Alert Search
+## 58. Technique-Based Alert Search
 
 Analysts can search:
 
@@ -1558,7 +1558,7 @@ Exact fields vary by SIEM.
 
 ---
 
-# 59. Detection Metadata Example
+## 59. Detection Metadata Example
 
 ```yaml
 id: DET-ENDPOINT-004
@@ -1584,7 +1584,7 @@ data_sources:
 
 ---
 
-# 60. ATT&CK Mapping in Alerts
+## 60. ATT&CK Mapping in Alerts
 
 A useful alert can display:
 
@@ -1603,7 +1603,7 @@ This gives analysts immediate behavioral context.
 
 ---
 
-# 61. ATT&CK and Threat Intelligence
+## 61. ATT&CK and Threat Intelligence
 
 Threat intelligence may provide:
 
@@ -1629,7 +1629,7 @@ This can guide detection development.
 
 ---
 
-# 62. Threat-Informed Detection Pipeline
+## 62. Threat-Informed Detection Pipeline
 
 ```text
 Threat Report
@@ -1651,7 +1651,7 @@ Production Rule
 
 ---
 
-# 63. ATT&CK and Data Sources
+## 63. ATT&CK and Data Sources
 
 Each technique may require different telemetry.
 
@@ -1673,7 +1673,7 @@ Cloud Account Abuse
 
 ---
 
-# 64. Data Source Prioritization
+## 64. Data Source Prioritization
 
 When a technique is important but telemetry is missing:
 
@@ -1695,7 +1695,7 @@ ATT&CK therefore supports not only detection engineering but also logging strate
 
 ---
 
-# 65. Logging Strategy
+## 65. Logging Strategy
 
 Security teams should ask:
 
@@ -1715,7 +1715,7 @@ Are detections built?
 
 ---
 
-# 66. ATT&CK Coverage Maturity
+## 66. ATT&CK Coverage Maturity
 
 A mature SOC progresses:
 
@@ -1735,7 +1735,7 @@ Continuous Validation
 
 ---
 
-# 67. Common ATT&CK Mistakes
+## 67. Common ATT&CK Mistakes
 
 ```text
 1. Mapping every alert to ATT&CK.
@@ -1761,7 +1761,7 @@ Continuous Validation
 
 ---
 
-# 68. Technique Mapping Mistake
+## 68. Technique Mapping Mistake
 
 Bad:
 
@@ -1793,7 +1793,7 @@ This provides stronger evidence.
 
 ---
 
-# 69. Tool vs Technique
+## 69. Tool vs Technique
 
 A tool is not automatically a technique.
 
@@ -1823,7 +1823,7 @@ Detection should focus on behavior and context.
 
 ---
 
-# 70. ATT&CK and False Positives
+## 70. ATT&CK and False Positives
 
 Many ATT&CK behaviors are dual-use.
 
@@ -1847,7 +1847,7 @@ Maliciousness
 
 ---
 
-# 71. ATT&CK and Risk
+## 71. ATT&CK and Risk
 
 A technique alone does not determine risk.
 
@@ -1869,7 +1869,7 @@ Sequence
 
 ---
 
-# 72. ATT&CK + Correlation
+## 72. ATT&CK + Correlation
 
 Example:
 
@@ -1897,7 +1897,7 @@ This may represent a much higher-confidence attack chain than any single detecti
 
 ---
 
-# 73. ATT&CK + Risk Scoring
+## 73. ATT&CK + Risk Scoring
 
 Example:
 
@@ -1918,7 +1918,7 @@ The organization can prioritize the associated investigation.
 
 ---
 
-# 74. ATT&CK + Alert Enrichment
+## 74. ATT&CK + Alert Enrichment
 
 Alert:
 
@@ -1950,7 +1950,7 @@ This significantly improves triage context.
 
 ---
 
-# 75. ATT&CK + Threat Hunting Workflow
+## 75. ATT&CK + Threat Hunting Workflow
 
 ```text
 Select Technique
@@ -1972,7 +1972,7 @@ Create Detection
 
 ---
 
-# 76. Practical Lab – ATT&CK Detection
+## 76. Practical Lab – ATT&CK Detection
 
 Choose:
 
@@ -2005,7 +2005,7 @@ Test Activity
 
 ---
 
-# 77. Practical Lab – Coverage Matrix
+## 77. Practical Lab – Coverage Matrix
 
 Create:
 
@@ -2042,7 +2042,7 @@ Gap
 
 ---
 
-# 78. Practical Lab – Threat Hunt
+## 78. Practical Lab – Threat Hunt
 
 Hypothesis:
 
@@ -2077,7 +2077,7 @@ activity.
 
 ---
 
-# 79. Practical Lab – Attack Chain
+## 79. Practical Lab – Attack Chain
 
 Create controlled events representing:
 
@@ -2111,67 +2111,67 @@ Only conduct simulated or emulated activity in systems where you have explicit a
 
 ---
 
-# 80. Interview Questions
+## 80. Interview Questions
 
-### What is MITRE ATT&CK?
+#### What is MITRE ATT&CK?
 
 > A knowledge base of adversary tactics and techniques based on observed real-world behavior, commonly used for detection engineering, hunting, incident response, and security assessment.
 
-### What is a tactic?
+#### What is a tactic?
 
 > The adversary's objective or goal, such as execution, credential access, or lateral movement.
 
-### What is a technique?
+#### What is a technique?
 
 > A method used by an adversary to achieve a tactical objective.
 
-### What is a sub-technique?
+#### What is a sub-technique?
 
 > A more specific implementation or variation of a broader technique.
 
-### Why is ATT&CK useful for SOC teams?
+#### Why is ATT&CK useful for SOC teams?
 
 > It provides a common language for describing attacker behavior and helps organize detection, hunting, coverage, and threat-informed security engineering.
 
-### What is ATT&CK-based detection?
+#### What is ATT&CK-based detection?
 
 > Detection engineering that uses known adversary behaviors and ATT&CK techniques to identify relevant activity in available telemetry.
 
-### What is detection coverage?
+#### What is detection coverage?
 
 > The extent to which relevant attacker behaviors or techniques can be identified by the organization's telemetry and detections.
 
-### What is a visibility gap?
+#### What is a visibility gap?
 
 > A situation where required telemetry for observing a behavior is unavailable or insufficient.
 
-### What is a detection gap?
+#### What is a detection gap?
 
 > A situation where useful telemetry exists but the organization lacks an effective detection for the relevant behavior.
 
-### Does ATT&CK technique mapping mean an event is malicious?
+#### Does ATT&CK technique mapping mean an event is malicious?
 
 > No. Many techniques involve legitimate administrative tools and behaviors, so context and detection logic are required.
 
-### How would you create an ATT&CK-based detection?
+#### How would you create an ATT&CK-based detection?
 
 > Identify the threat behavior, map it to the relevant technique, determine required telemetry, validate available fields, build and test detection logic, map the resulting alert to ATT&CK metadata, and continuously tune it.
 
-### How can ATT&CK support threat hunting?
+#### How can ATT&CK support threat hunting?
 
 > Analysts can select techniques, formulate behavior-based hypotheses, identify relevant telemetry, search historical data, pivot across entities, and use findings to create or improve detections.
 
-### How can ATT&CK support purple teaming?
+#### How can ATT&CK support purple teaming?
 
 > It provides a common framework for selecting adversary behaviors to emulate and validating whether telemetry and detections identify those behaviors.
 
-### Why isn't 100% ATT&CK coverage automatically good security?
+#### Why isn't 100% ATT&CK coverage automatically good security?
 
 > Coverage measurements can ignore detection quality, telemetry reliability, false positives, technique variations, latency, and business relevance.
 
 ---
 
-# 81. Quick Revision
+## 81. Quick Revision
 
 ```text
 MITRE ATT&CK
@@ -2213,7 +2213,7 @@ ATT&CK MAPPING
 
 ---
 
-# 82. Golden Rules
+## 82. Golden Rules
 
 ```text
 1. ATT&CK describes behavior, not automatic maliciousness.
@@ -2259,7 +2259,7 @@ ATT&CK MAPPING
 
 ---
 
-# 83. Final Mental Model
+## 83. Final Mental Model
 
 Think of ATT&CK-based detection as:
 
@@ -2311,7 +2311,7 @@ How do we measure coverage?
 
 ---
 
-# 84. Chapter Summary
+## 84. Chapter Summary
 
 MITRE ATT&CK provides a structured way to think about adversary behavior.
 

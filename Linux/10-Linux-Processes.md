@@ -1,10 +1,10 @@
 # 10 - Linux Processes
 
-# Part 1 — Process Fundamentals, Process Lifecycle, Parent & Child Processes, Process States, PID, PPID, Process Management Basics
+## Part 1 — Process Fundamentals, Process Lifecycle, Parent & Child Processes, Process States, PID, PPID, Process Management Basics
 
 ---
 
-# Introduction
+## Introduction
 
 A **process** is a running instance of a program.
 
@@ -35,7 +35,7 @@ Understanding processes is fundamental for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -50,7 +50,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is a Process?
+## What is a Process?
 
 A **program** is a static file stored on disk.
 
@@ -72,7 +72,7 @@ The running instance becomes a **process**.
 
 ---
 
-# Program vs Process
+## Program vs Process
 
 | Program | Process |
 |----------|----------|
@@ -84,7 +84,7 @@ The running instance becomes a **process**.
 
 ---
 
-# Process Architecture
+## Process Architecture
 
 ```text
            Executable File
@@ -122,7 +122,7 @@ The running instance becomes a **process**.
 
 ---
 
-# Process Components
+## Process Components
 
 Every process contains:
 
@@ -139,7 +139,7 @@ Every process contains:
 
 ---
 
-# Process Lifecycle
+## Process Lifecycle
 
 Every process follows a lifecycle.
 
@@ -175,7 +175,7 @@ Not every process enters every state for the same duration, but all eventually t
 
 ---
 
-# Process Creation
+## Process Creation
 
 Processes are typically created when:
 
@@ -187,7 +187,7 @@ Processes are typically created when:
 
 ---
 
-# Simplified Process Creation
+## Simplified Process Creation
 
 ```text
 Shell
@@ -216,7 +216,7 @@ In Unix-like systems, a shell commonly:
 
 ---
 
-# Parent and Child Processes
+## Parent and Child Processes
 
 Most processes are created by existing processes.
 
@@ -250,7 +250,7 @@ Child
 
 ---
 
-# Process Tree
+## Process Tree
 
 ```text
 systemd (PID 1)
@@ -284,7 +284,7 @@ Processes form a hierarchical tree.
 
 ---
 
-# Parent Process
+## Parent Process
 
 A parent process:
 
@@ -307,7 +307,7 @@ Bash is the parent.
 
 ---
 
-# Child Process
+## Child Process
 
 The launched program becomes the child.
 
@@ -325,7 +325,7 @@ vim
 
 ---
 
-# Process Identifier (PID)
+## Process Identifier (PID)
 
 Every process has a unique numeric identifier.
 
@@ -343,7 +343,7 @@ The kernel uses the PID to identify and manage processes.
 
 ---
 
-# Parent Process ID (PPID)
+## Parent Process ID (PPID)
 
 Every child stores its parent's PID.
 
@@ -367,7 +367,7 @@ This relationship defines the process hierarchy.
 
 ---
 
-# Viewing Current Shell PID
+## Viewing Current Shell PID
 
 Display the current shell's PID:
 
@@ -383,7 +383,7 @@ Example:
 
 ---
 
-# Viewing Parent PID
+## Viewing Parent PID
 
 Display the parent process:
 
@@ -399,7 +399,7 @@ Example:
 
 ---
 
-# Display Running Processes
+## Display Running Processes
 
 The most common command:
 
@@ -419,7 +419,7 @@ PID TTY TIME CMD
 
 ---
 
-# Display Detailed Processes
+## Display Detailed Processes
 
 ```bash
 ps -ef
@@ -440,7 +440,7 @@ Typical columns:
 
 ---
 
-# BSD Style Process Listing
+## BSD Style Process Listing
 
 ```bash
 ps aux
@@ -461,7 +461,7 @@ Common columns:
 
 ---
 
-# Viewing Process Tree
+## Viewing Process Tree
 
 Display hierarchy:
 
@@ -489,7 +489,7 @@ systemd
 
 ---
 
-# PID 1
+## PID 1
 
 On most modern Linux distributions:
 
@@ -512,7 +512,7 @@ Responsibilities include:
 
 ---
 
-# Orphan Processes
+## Orphan Processes
 
 If a parent exits before its child:
 
@@ -536,7 +536,7 @@ Modern systems typically have `systemd` adopt orphaned processes.
 
 ---
 
-# Zombie Processes
+## Zombie Processes
 
 A zombie process has:
 
@@ -564,7 +564,7 @@ Zombie processes consume very little memory but occupy entries in the process ta
 
 ---
 
-# Process States
+## Process States
 
 Linux processes transition through several states.
 
@@ -579,7 +579,7 @@ Linux processes transition through several states.
 
 ---
 
-# View Process State
+## View Process State
 
 Example:
 
@@ -601,7 +601,7 @@ PID S CMD
 
 ---
 
-# State Codes
+## State Codes
 
 | Code | Meaning |
 |--------|----------|
@@ -614,7 +614,7 @@ PID S CMD
 
 ---
 
-# Process Scheduling Overview
+## Process Scheduling Overview
 
 The Linux scheduler decides:
 
@@ -648,7 +648,7 @@ Execution
 
 ---
 
-# Process Memory Layout
+## Process Memory Layout
 
 A simplified process memory layout:
 
@@ -672,7 +672,7 @@ Each process has its own virtual address space, isolated by the operating system
 
 ---
 
-# Viewing Process Information
+## Viewing Process Information
 
 Inspect a specific process:
 
@@ -691,7 +691,7 @@ Useful fields include:
 
 ---
 
-# The `/proc` Filesystem
+## The `/proc` Filesystem
 
 Linux exposes process information through:
 
@@ -719,7 +719,7 @@ Common files:
 
 ---
 
-# Viewing Process Status
+## Viewing Process Status
 
 Example:
 
@@ -731,7 +731,7 @@ This displays detailed information about the current shell process.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A production application starts:
 
@@ -761,7 +761,7 @@ Monitoring this hierarchy simplifies troubleshooting and incident response.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers often:
 
@@ -783,7 +783,7 @@ Process analysis is a core component of endpoint detection and response (EDR).
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective process management helps organizations:
 
@@ -796,7 +796,7 @@ Effective process management helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Understand normal process hierarchies for critical applications.
 - Monitor unexpected parent-child relationships.
@@ -807,7 +807,7 @@ Effective process management helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A process is a running instance of a program.
 - Every process has a unique PID and an associated PPID.
@@ -818,11 +818,11 @@ Effective process management helps organizations:
 
 ---
 
-# Part 2 — Foreground & Background Processes, Job Control, Signals, Process Priorities, `kill`, `nice`, `renice`, and Process Management Commands
+## Part 2 — Foreground & Background Processes, Job Control, Signals, Process Priorities, `kill`, `nice`, `renice`, and Process Management Commands
 
 ---
 
-# Introduction
+## Introduction
 
 Linux systems often run hundreds or even thousands of processes simultaneously.
 
@@ -840,7 +840,7 @@ Linux provides numerous tools to manage processes efficiently without rebooting 
 
 ---
 
-# Foreground Process
+## Foreground Process
 
 A **foreground process** runs interactively and occupies the current terminal.
 
@@ -857,7 +857,7 @@ While `nano` is running:
 
 ---
 
-# Foreground Process Flow
+## Foreground Process Flow
 
 ```text
 User
@@ -881,7 +881,7 @@ Terminal Returned
 
 ---
 
-# Background Process
+## Background Process
 
 A **background process** runs independently of the terminal prompt.
 
@@ -906,7 +906,7 @@ Where:
 
 ---
 
-# Background Process Flow
+## Background Process Flow
 
 ```text
 Terminal
@@ -926,7 +926,7 @@ Prompt Immediately Returns
 
 ---
 
-# Running a Command in Background
+## Running a Command in Background
 
 Example:
 
@@ -944,7 +944,7 @@ These commands continue running while the shell remains usable.
 
 ---
 
-# Viewing Background Jobs
+## Viewing Background Jobs
 
 Display shell-managed jobs:
 
@@ -960,7 +960,7 @@ Example:
 
 ---
 
-# Job Numbers vs Process IDs
+## Job Numbers vs Process IDs
 
 | Job Number | Process ID |
 |------------|------------|
@@ -988,7 +988,7 @@ PID:
 
 ---
 
-# Bringing a Job to the Foreground
+## Bringing a Job to the Foreground
 
 Syntax:
 
@@ -1006,7 +1006,7 @@ The selected background job becomes the foreground process.
 
 ---
 
-# Sending a Process to the Background
+## Sending a Process to the Background
 
 If a foreground process is running:
 
@@ -1036,7 +1036,7 @@ bg %1
 
 ---
 
-# Job Control Workflow
+## Job Control Workflow
 
 ```text
 Foreground Process
@@ -1068,7 +1068,7 @@ Foreground Again
 
 ---
 
-# Listing Jobs with Details
+## Listing Jobs with Details
 
 ```bash
 jobs -l
@@ -1084,7 +1084,7 @@ This displays both the job number and the PID.
 
 ---
 
-# Process Monitoring with `ps`
+## Process Monitoring with `ps`
 
 Display current shell processes:
 
@@ -1106,7 +1106,7 @@ ps aux
 
 ---
 
-# Searching for a Process
+## Searching for a Process
 
 Use `ps` with `grep`:
 
@@ -1124,7 +1124,7 @@ root  1423 ... nginx
 
 ---
 
-# Using `pgrep`
+## Using `pgrep`
 
 Search by process name:
 
@@ -1148,7 +1148,7 @@ Example:
 
 ---
 
-# Using `pidof`
+## Using `pidof`
 
 Find the PID of a program:
 
@@ -1164,7 +1164,7 @@ Example:
 
 ---
 
-# Real-Time Process Monitoring
+## Real-Time Process Monitoring
 
 The classic monitoring tool:
 
@@ -1196,7 +1196,7 @@ q
 
 ---
 
-# Interactive Controls in `top`
+## Interactive Controls in `top`
 
 | Key | Function |
 |------|----------|
@@ -1209,7 +1209,7 @@ q
 
 ---
 
-# Using `htop`
+## Using `htop`
 
 Many distributions also provide:
 
@@ -1229,7 +1229,7 @@ Install if necessary using your distribution's package manager.
 
 ---
 
-# Process Signals
+## Process Signals
 
 Linux communicates with processes using **signals**.
 
@@ -1245,7 +1245,7 @@ Examples:
 
 ---
 
-# Signal Flow
+## Signal Flow
 
 ```text
 Administrator
@@ -1269,7 +1269,7 @@ Action Performed
 
 ---
 
-# Common Signals
+## Common Signals
 
 | Signal | Number | Purpose |
 |----------|--------|----------|
@@ -1284,7 +1284,7 @@ Action Performed
 
 ---
 
-# Viewing Signals
+## Viewing Signals
 
 Display available signals:
 
@@ -1294,7 +1294,7 @@ kill -l
 
 ---
 
-# Gracefully Terminating a Process
+## Gracefully Terminating a Process
 
 Syntax:
 
@@ -1312,7 +1312,7 @@ This sends **SIGTERM (15)** by default.
 
 ---
 
-# Forcefully Killing a Process
+## Forcefully Killing a Process
 
 If the process does not respond:
 
@@ -1330,7 +1330,7 @@ Use only when graceful termination fails.
 
 ---
 
-# Killing Multiple Processes
+## Killing Multiple Processes
 
 ```bash
 kill PID1 PID2 PID3
@@ -1344,7 +1344,7 @@ kill 1200 1201 1202
 
 ---
 
-# Killing by Process Name
+## Killing by Process Name
 
 Use:
 
@@ -1360,7 +1360,7 @@ pkill -TERM nginx
 
 ---
 
-# Using `killall`
+## Using `killall`
 
 Terminate all matching processes:
 
@@ -1372,7 +1372,7 @@ This targets processes by name rather than PID.
 
 ---
 
-# Stopping a Process
+## Stopping a Process
 
 Suspend execution:
 
@@ -1390,7 +1390,7 @@ The process remains in memory while stopped.
 
 ---
 
-# Keyboard Shortcuts
+## Keyboard Shortcuts
 
 | Shortcut | Function |
 |-----------|----------|
@@ -1400,7 +1400,7 @@ The process remains in memory while stopped.
 
 ---
 
-# Process Priorities
+## Process Priorities
 
 Linux assigns each process a scheduling priority.
 
@@ -1408,7 +1408,7 @@ Higher-priority processes generally receive CPU time sooner than lower-priority 
 
 ---
 
-# Nice Value
+## Nice Value
 
 Range:
 
@@ -1434,7 +1434,7 @@ Lower nice values correspond to higher scheduling priority.
 
 ---
 
-# Starting with a Nice Value
+## Starting with a Nice Value
 
 Example:
 
@@ -1446,7 +1446,7 @@ The process starts with a lower CPU scheduling priority than the default.
 
 ---
 
-# Viewing Nice Values
+## Viewing Nice Values
 
 ```bash
 ps -eo pid,ni,cmd
@@ -1464,7 +1464,7 @@ PID NI CMD
 
 ---
 
-# Changing Priority of a Running Process
+## Changing Priority of a Running Process
 
 Syntax:
 
@@ -1482,7 +1482,7 @@ Lowering the nice value (raising priority) generally requires elevated privilege
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Backup jobs should not significantly impact production services.
 
@@ -1512,7 +1512,7 @@ This helps maintain application responsiveness during backup operations.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently create:
 
@@ -1535,7 +1535,7 @@ Process monitoring is a fundamental endpoint detection capability.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective process management enables organizations to:
 
@@ -1548,7 +1548,7 @@ Effective process management enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Prefer graceful termination (`SIGTERM`) before using `SIGKILL`.
 - Avoid unnecessarily increasing process priority.
@@ -1560,7 +1560,7 @@ Effective process management enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Foreground processes occupy the current terminal.
 - Background processes allow continued use of the shell.
@@ -1573,11 +1573,11 @@ Effective process management enables organizations to:
 ---
 
 
-# Part 3 — Advanced Process Monitoring, `/proc` Filesystem, Resource Analysis, Enterprise Troubleshooting, and Security Monitoring
+## Part 3 — Advanced Process Monitoring, `/proc` Filesystem, Resource Analysis, Enterprise Troubleshooting, and Security Monitoring
 
 ---
 
-# Introduction
+## Introduction
 
 Monitoring running processes is one of the most important responsibilities of a Linux administrator.
 
@@ -1596,7 +1596,7 @@ A performance issue, security incident, or service outage often begins with abno
 
 ---
 
-# Enterprise Monitoring Workflow
+## Enterprise Monitoring Workflow
 
 ```text
 Application Alert
@@ -1636,7 +1636,7 @@ Resolve Issue
 
 ---
 
-# Process Monitoring Commands
+## Process Monitoring Commands
 
 | Command | Purpose |
 |----------|----------|
@@ -1654,7 +1654,7 @@ Resolve Issue
 
 ---
 
-# Understanding CPU Usage
+## Understanding CPU Usage
 
 Every running process consumes CPU time.
 
@@ -1680,7 +1680,7 @@ Sorting by CPU usage quickly identifies resource-intensive processes.
 
 ---
 
-# Understanding Memory Usage
+## Understanding Memory Usage
 
 Display processes sorted by memory usage:
 
@@ -1706,7 +1706,7 @@ Important fields:
 
 ---
 
-# CPU vs Memory
+## CPU vs Memory
 
 ```text
 CPU
@@ -1732,7 +1732,7 @@ Understanding the difference speeds up troubleshooting.
 
 ---
 
-# System Load
+## System Load
 
 Display load averages:
 
@@ -1756,7 +1756,7 @@ The three values represent average system load over:
 
 ---
 
-# Interpreting Load Average
+## Interpreting Load Average
 
 Example on a system with **4 CPU cores**:
 
@@ -1771,7 +1771,7 @@ Example on a system with **4 CPU cores**:
 
 ---
 
-# Memory Statistics
+## Memory Statistics
 
 Display memory usage:
 
@@ -1806,7 +1806,7 @@ Important columns:
 
 ---
 
-# Virtual Memory Statistics
+## Virtual Memory Statistics
 
 Command:
 
@@ -1837,7 +1837,7 @@ Useful metrics include:
 
 ---
 
-# The `/proc` Filesystem
+## The `/proc` Filesystem
 
 Linux exposes runtime kernel and process information through:
 
@@ -1849,7 +1849,7 @@ Unlike regular files, `/proc` is a **virtual filesystem** generated by the kerne
 
 ---
 
-# Structure of `/proc`
+## Structure of `/proc`
 
 ```text
 /proc
@@ -1877,7 +1877,7 @@ Directories named with numbers correspond to process IDs.
 
 ---
 
-# Viewing Current Process Information
+## Viewing Current Process Information
 
 Current shell:
 
@@ -1904,7 +1904,7 @@ Information includes:
 
 ---
 
-# CPU Information
+## CPU Information
 
 View processor details:
 
@@ -1922,7 +1922,7 @@ Example information:
 
 ---
 
-# Memory Information
+## Memory Information
 
 Display:
 
@@ -1948,7 +1948,7 @@ Useful during memory troubleshooting.
 
 ---
 
-# System Uptime
+## System Uptime
 
 Display:
 
@@ -1966,7 +1966,7 @@ The first value represents total uptime (seconds).
 
 ---
 
-# Kernel Version
+## Kernel Version
 
 Display:
 
@@ -1982,7 +1982,7 @@ Useful for:
 
 ---
 
-# Process Command Line
+## Process Command Line
 
 View command-line arguments:
 
@@ -1994,7 +1994,7 @@ Useful during investigations to determine how a process was started.
 
 ---
 
-# Open File Descriptors
+## Open File Descriptors
 
 Every process maintains file descriptors.
 
@@ -2013,7 +2013,7 @@ Examples include:
 
 ---
 
-# File Descriptor Concept
+## File Descriptor Concept
 
 ```text
 Process
@@ -2051,7 +2051,7 @@ Files / Sockets / Pipes
 
 ---
 
-# Using `lsof`
+## Using `lsof`
 
 List open files:
 
@@ -2079,7 +2079,7 @@ Common uses:
 
 ---
 
-# Finding Which Process Uses a Port
+## Finding Which Process Uses a Port
 
 Example:
 
@@ -2097,7 +2097,7 @@ nginx 1012 root 6u IPv4 HTTPS
 
 ---
 
-# Using `fuser`
+## Using `fuser`
 
 Identify processes using a file:
 
@@ -2115,7 +2115,7 @@ Useful for identifying which process is using a resource.
 
 ---
 
-# Monitoring Specific Processes
+## Monitoring Specific Processes
 
 Example:
 
@@ -2127,7 +2127,7 @@ Monitors a single process in real time.
 
 ---
 
-# Monitoring Multiple Processes
+## Monitoring Multiple Processes
 
 ```bash
 top -p 1012,2451,3100
@@ -2137,9 +2137,9 @@ Focuses on selected PIDs.
 
 ---
 
-# Enterprise Troubleshooting Scenario 1
+## Enterprise Troubleshooting Scenario 1
 
-## High CPU Usage
+### High CPU Usage
 
 Symptoms:
 
@@ -2171,9 +2171,9 @@ Optimize or Restart
 
 ---
 
-# Enterprise Troubleshooting Scenario 2
+## Enterprise Troubleshooting Scenario 2
 
-## Memory Leak
+### Memory Leak
 
 Symptoms:
 
@@ -2205,9 +2205,9 @@ Restart or Fix Application
 
 ---
 
-# Enterprise Troubleshooting Scenario 3
+## Enterprise Troubleshooting Scenario 3
 
-## Port Already in Use
+### Port Already in Use
 
 Error:
 
@@ -2235,9 +2235,9 @@ Stop or Reconfigure
 
 ---
 
-# Enterprise Troubleshooting Scenario 4
+## Enterprise Troubleshooting Scenario 4
 
-## Zombie Process Investigation
+### Zombie Process Investigation
 
 Workflow:
 
@@ -2265,7 +2265,7 @@ Zombie accumulation may indicate an application bug.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 SOC teams monitor for:
 
@@ -2282,7 +2282,7 @@ Process behavior is often more informative than filenames alone.
 
 ---
 
-# Parent-Child Analysis
+## Parent-Child Analysis
 
 Normal:
 
@@ -2324,7 +2324,7 @@ Unexpected parent-child relationships may warrant investigation, although legiti
 
 ---
 
-# Detecting Reverse Shell Activity
+## Detecting Reverse Shell Activity
 
 Possible indicators:
 
@@ -2343,7 +2343,7 @@ Correlate process activity with:
 
 ---
 
-# Enterprise Monitoring Checklist
+## Enterprise Monitoring Checklist
 
 | Item | Verify |
 |------|---------|
@@ -2360,7 +2360,7 @@ Correlate process activity with:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Modern Endpoint Detection and Response (EDR) platforms continuously monitor:
 
@@ -2377,7 +2377,7 @@ Linux process telemetry is a critical source of forensic evidence during inciden
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong process monitoring enables organizations to:
 
@@ -2390,7 +2390,7 @@ Strong process monitoring enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Establish performance baselines for critical services.
 - Investigate persistent high CPU or memory usage.
@@ -2402,7 +2402,7 @@ Strong process monitoring enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Resource monitoring is essential for maintaining Linux systems.
 - The `/proc` filesystem provides detailed runtime information.
@@ -2412,11 +2412,11 @@ Strong process monitoring enables organizations to:
 
 ---
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Linux process management is a core skill for:
 
@@ -2435,7 +2435,7 @@ Understanding how to investigate and manage these processes is essential for mai
 
 ---
 
-# Enterprise Process Management Lifecycle
+## Enterprise Process Management Lifecycle
 
 ```text
 Application Starts
@@ -2471,7 +2471,7 @@ Resources Released
 
 ---
 
-# Practical Lab 1 — View Running Processes
+## Practical Lab 1 — View Running Processes
 
 Display processes attached to the current terminal:
 
@@ -2497,7 +2497,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 2 — View Process Tree
+## Practical Lab 2 — View Process Tree
 
 Display hierarchy:
 
@@ -2517,7 +2517,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 3 — Find Current Shell PID
+## Practical Lab 3 — Find Current Shell PID
 
 Display current shell PID:
 
@@ -2537,7 +2537,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 4 — Run a Background Process
+## Practical Lab 4 — Run a Background Process
 
 Start:
 
@@ -2557,7 +2557,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 5 — Suspend and Resume a Process
+## Practical Lab 5 — Suspend and Resume a Process
 
 Run:
 
@@ -2589,7 +2589,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 6 — Locate a Process
+## Practical Lab 6 — Locate a Process
 
 Search:
 
@@ -2609,7 +2609,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 7 — Monitor CPU Usage
+## Practical Lab 7 — Monitor CPU Usage
 
 Display top CPU consumers:
 
@@ -2623,7 +2623,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 8 — Monitor Memory Usage
+## Practical Lab 8 — Monitor Memory Usage
 
 Display top memory consumers:
 
@@ -2637,7 +2637,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 9 — Use `top`
+## Practical Lab 9 — Use `top`
 
 Start:
 
@@ -2657,7 +2657,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 10 — Inspect `/proc`
+## Practical Lab 10 — Inspect `/proc`
 
 Display shell status:
 
@@ -2677,7 +2677,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 11 — Examine Open File Descriptors
+## Practical Lab 11 — Examine Open File Descriptors
 
 Display descriptors for the current shell:
 
@@ -2691,7 +2691,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 12 — List Open Files
+## Practical Lab 12 — List Open Files
 
 List files opened by the current shell:
 
@@ -2711,7 +2711,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 13 — Identify Which Process Uses a Port
+## Practical Lab 13 — Identify Which Process Uses a Port
 
 Example:
 
@@ -2731,7 +2731,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 14 — Gracefully Terminate a Process
+## Practical Lab 14 — Gracefully Terminate a Process
 
 Start a background process:
 
@@ -2759,7 +2759,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 15 — Forcefully Terminate a Process
+## Practical Lab 15 — Forcefully Terminate a Process
 
 If a process does not respond:
 
@@ -2773,7 +2773,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 16 — Change Process Priority
+## Practical Lab 16 — Change Process Priority
 
 Start a process with a lower priority:
 
@@ -2793,7 +2793,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 17 — Monitor System Load
+## Practical Lab 17 — Monitor System Load
 
 Display:
 
@@ -2819,7 +2819,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 18 — Complete Process Investigation
+## Practical Lab 18 — Complete Process Investigation
 
 Workflow:
 
@@ -2869,11 +2869,11 @@ Learning Objective:
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# High CPU Utilization
+## High CPU Utilization
 
-## Scenario
+### Scenario
 
 Users report that a production web application has become slow.
 
@@ -2916,11 +2916,11 @@ Business Benefit:
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Memory Leak
+## Memory Leak
 
-## Scenario
+### Scenario
 
 A Java service consumes increasing amounts of memory over several days.
 
@@ -2957,11 +2957,11 @@ Business Benefit:
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# Port Conflict
+## Port Conflict
 
-## Scenario
+### Scenario
 
 A web server fails to start.
 
@@ -2994,11 +2994,11 @@ Business Benefit:
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Suspicious Reverse Shell Investigation
+## Suspicious Reverse Shell Investigation
 
-## Scenario
+### Scenario
 
 A SOC analyst observes unusual outbound traffic from a Linux web server.
 
@@ -3049,7 +3049,7 @@ Business Benefit:
 
 ---
 
-# Common Process Management Mistakes
+## Common Process Management Mistakes
 
 | Mistake | Potential Impact |
 |----------|------------------|
@@ -3064,7 +3064,7 @@ Business Benefit:
 
 ---
 
-# Enterprise Monitoring Checklist
+## Enterprise Monitoring Checklist
 
 | Check | Recommended |
 |--------|-------------|
@@ -3083,7 +3083,7 @@ Business Benefit:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently rely on process creation to:
 
@@ -3105,7 +3105,7 @@ Correlating process telemetry with authentication, file, and network logs provid
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective process management helps organizations:
 
@@ -3118,7 +3118,7 @@ Effective process management helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Prefer graceful termination before forceful termination.
 - Establish performance baselines for critical applications.
@@ -3130,7 +3130,7 @@ Effective process management helps organizations:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3154,9 +3154,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is a Linux process?
 2. What is the difference between a program and a process?
@@ -3171,7 +3171,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the Linux process lifecycle.
 2. What is the difference between `SIGTERM` and `SIGKILL`?
@@ -3186,7 +3186,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a process monitoring strategy for a production Linux server.
 2. Explain how Linux process telemetry supports DFIR investigations.
@@ -3201,7 +3201,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Every running application is represented by one or more processes.
 - Linux provides powerful tools for monitoring, controlling, and troubleshooting processes.
@@ -3211,9 +3211,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man ps`
 - `man top`
@@ -3227,7 +3227,7 @@ In this chapter, you learned:
 - `man lsof`
 - `man fuser`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - CIS Benchmarks for Linux
@@ -3238,11 +3238,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **11-Linux-Systemd-and-Services.md**
 
-## Topics Covered
+### Topics Covered
 
 - Introduction to `systemd`
 - Boot Targets and Units

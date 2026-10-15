@@ -29,7 +29,7 @@ For these scenarios, Kubernetes provides **Node Affinity**.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -56,7 +56,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need Node Affinity?
+## Why Do We Need Node Affinity?
 
 Suppose a cluster contains:
 
@@ -109,7 +109,7 @@ Node 3 → Reject
 
 ---
 
-# What is Node Affinity?
+## What is Node Affinity?
 
 Node Affinity is a Kubernetes scheduling mechanism that allows Pods to specify rules based on Node labels.
 
@@ -123,7 +123,7 @@ It provides:
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```text
                     Pod
@@ -163,7 +163,7 @@ It provides:
 
 ---
 
-# Node Affinity Structure
+## Node Affinity Structure
 
 A typical Node Affinity configuration looks like:
 
@@ -191,7 +191,7 @@ affinity:
 
 ---
 
-# Two Main Types
+## Two Main Types
 
 Node Affinity provides two primary scheduling behaviors:
 
@@ -207,7 +207,7 @@ preferredDuringSchedulingIgnoredDuringExecution
 
 ---
 
-# Required Node Affinity
+## Required Node Affinity
 
 ```yaml
 requiredDuringSchedulingIgnoredDuringExecution:
@@ -229,7 +229,7 @@ Pending
 
 ---
 
-# Preferred Node Affinity
+## Preferred Node Affinity
 
 ```yaml
 preferredDuringSchedulingIgnoredDuringExecution:
@@ -255,7 +255,7 @@ Use another suitable Node
 
 ---
 
-# Required vs Preferred
+## Required vs Preferred
 
 | Feature | Required | Preferred |
 |---|---|---|
@@ -267,7 +267,7 @@ Use another suitable Node
 
 ---
 
-# Meaning of IgnoredDuringExecution
+## Meaning of IgnoredDuringExecution
 
 The name is important.
 
@@ -301,7 +301,7 @@ Therefore, the rule controls **scheduling**, not automatic eviction based solely
 
 ---
 
-# Affinity Operators
+## Affinity Operators
 
 Node Affinity supports several operators:
 
@@ -331,7 +331,7 @@ Lt
 
 ---
 
-# Operator: In
+## Operator: In
 
 Matches when the label value is one of the specified values.
 
@@ -358,7 +358,7 @@ disk=nvme
 
 ---
 
-# Example
+## Example
 
 Node:
 
@@ -398,7 +398,7 @@ No Match
 
 ---
 
-# Operator: NotIn
+## Operator: NotIn
 
 Matches when the label value is not one of the specified values.
 
@@ -420,7 +420,7 @@ disk != hdd
 
 ---
 
-# Example
+## Example
 
 ```text
 disk=ssd
@@ -448,7 +448,7 @@ Reject
 
 ---
 
-# Operator: Exists
+## Operator: Exists
 
 Checks whether a label key exists.
 
@@ -470,7 +470,7 @@ The actual value does not matter.
 
 ---
 
-# Example
+## Example
 
 Node:
 
@@ -498,7 +498,7 @@ Does not match.
 
 ---
 
-# Operator: DoesNotExist
+## Operator: DoesNotExist
 
 Checks that a label key is absent.
 
@@ -522,7 +522,7 @@ Nodes without the label can match.
 
 ---
 
-# Operator: Gt
+## Operator: Gt
 
 `Gt` means greater than.
 
@@ -548,7 +548,7 @@ This operator is useful for supported numeric-style label comparisons.
 
 ---
 
-# Operator: Lt
+## Operator: Lt
 
 `Lt` means less than.
 
@@ -572,7 +572,7 @@ cpu-count < 16
 
 ---
 
-# Basic Required Affinity Example
+## Basic Required Affinity Example
 
 ```yaml
 apiVersion: v1
@@ -618,7 +618,7 @@ disk=ssd
 
 ---
 
-# Multiple Values
+## Multiple Values
 
 Example:
 
@@ -646,7 +646,7 @@ disk=nvme
 
 ---
 
-# Multiple matchExpressions
+## Multiple matchExpressions
 
 Example:
 
@@ -684,7 +684,7 @@ environment=production
 
 ---
 
-# AND Logic
+## AND Logic
 
 Within the same `matchExpressions` list:
 
@@ -710,7 +710,7 @@ Both must be satisfied.
 
 ---
 
-# OR Logic with nodeSelectorTerms
+## OR Logic with nodeSelectorTerms
 
 Multiple `nodeSelectorTerms` represent OR logic.
 
@@ -752,7 +752,7 @@ disk=nvme
 
 ---
 
-# AND + OR Together
+## AND + OR Together
 
 Consider:
 
@@ -810,7 +810,7 @@ This is one of the major advantages over `nodeSelector`.
 
 ---
 
-# Preferred Node Affinity
+## Preferred Node Affinity
 
 Example:
 
@@ -846,7 +846,7 @@ but does not make SSD mandatory.
 
 ---
 
-# Weight
+## Weight
 
 Preferred rules support:
 
@@ -868,7 +868,7 @@ Higher weight means a stronger preference.
 
 ---
 
-# Multiple Preferred Rules
+## Multiple Preferred Rules
 
 Example:
 
@@ -908,7 +908,7 @@ A Node satisfying both preferences can receive a higher overall score than a Nod
 
 ---
 
-# Required + Preferred
+## Required + Preferred
 
 You can combine both.
 
@@ -964,7 +964,7 @@ disk=ssd
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 Suppose a production cluster contains:
 
@@ -1024,7 +1024,7 @@ Rejected
 
 ---
 
-# Node Affinity vs nodeSelector
+## Node Affinity vs nodeSelector
 
 | Feature | nodeSelector | Node Affinity |
 |---|---|---|
@@ -1041,9 +1041,9 @@ Rejected
 
 ---
 
-# Node Affinity vs nodeName
+## Node Affinity vs nodeName
 
-### nodeName
+#### nodeName
 
 ```text
 Specific Node
@@ -1057,7 +1057,7 @@ nodeName: worker-01
 
 ---
 
-### Node Affinity
+#### Node Affinity
 
 ```text
 Set of Nodes
@@ -1082,7 +1082,7 @@ Node Affinity gives the Scheduler flexibility.
 
 ---
 
-# Node Affinity and Taints
+## Node Affinity and Taints
 
 These mechanisms can complement each other.
 
@@ -1138,7 +1138,7 @@ Isolation
 
 ---
 
-# Node Affinity and Pod Affinity
+## Node Affinity and Pod Affinity
 
 Do not confuse:
 
@@ -1176,7 +1176,7 @@ Pod Affinity and Anti-Affinity are covered in the next chapter.
 
 ---
 
-# Node Affinity and Topology
+## Node Affinity and Topology
 
 Node labels often represent topology.
 
@@ -1207,7 +1207,7 @@ values:
 
 ---
 
-# Scheduling Workflow
+## Scheduling Workflow
 
 ```text
 Pod Created
@@ -1251,7 +1251,7 @@ Bind
 
 ---
 
-# Required Affinity Failure
+## Required Affinity Failure
 
 Suppose all Nodes have:
 
@@ -1279,7 +1279,7 @@ Pending
 
 ---
 
-# Preferred Affinity Behavior
+## Preferred Affinity Behavior
 
 Suppose:
 
@@ -1317,7 +1317,7 @@ may still be selected.
 
 ---
 
-# Important Difference
+## Important Difference
 
 Required:
 
@@ -1341,7 +1341,7 @@ Scheduling can continue
 
 ---
 
-# Hands-on Lab 1 – Create Node Labels
+## Hands-on Lab 1 – Create Node Labels
 
 Label Nodes:
 
@@ -1361,7 +1361,7 @@ kubectl get nodes -L disk
 
 ---
 
-# Hands-on Lab 2 – Required Node Affinity
+## Hands-on Lab 2 – Required Node Affinity
 
 Create:
 
@@ -1415,7 +1415,7 @@ kubectl get pod -o wide
 
 ---
 
-# Hands-on Lab 3 – Preferred Node Affinity
+## Hands-on Lab 3 – Preferred Node Affinity
 
 Create:
 
@@ -1467,7 +1467,7 @@ Observe the selected Node.
 
 ---
 
-# Hands-on Lab 4 – Multiple Values
+## Hands-on Lab 4 – Multiple Values
 
 Use:
 
@@ -1485,7 +1485,7 @@ Verify that both Node types are eligible.
 
 ---
 
-# Hands-on Lab 5 – NotIn
+## Hands-on Lab 5 – NotIn
 
 Create:
 
@@ -1501,7 +1501,7 @@ Observe that HDD Nodes are excluded.
 
 ---
 
-# Hands-on Lab 6 – Exists
+## Hands-on Lab 6 – Exists
 
 Create:
 
@@ -1515,7 +1515,7 @@ Only Nodes with a `gpu` label are eligible.
 
 ---
 
-# Hands-on Lab 7 – Required + Preferred
+## Hands-on Lab 7 – Required + Preferred
 
 Create a Pod with:
 
@@ -1537,7 +1537,7 @@ Observe how the Scheduler handles the two constraints differently.
 
 ---
 
-# Hands-on Lab 8 – Force Scheduling Failure
+## Hands-on Lab 8 – Force Scheduling Failure
 
 Create:
 
@@ -1567,7 +1567,7 @@ Observe the `FailedScheduling` event.
 
 ---
 
-# Troubleshooting Node Affinity
+## Troubleshooting Node Affinity
 
 Check Pod:
 
@@ -1595,7 +1595,7 @@ kubectl get nodes --show-labels
 
 ---
 
-# Common Scheduling Errors
+## Common Scheduling Errors
 
 You may see messages related to:
 
@@ -1615,9 +1615,9 @@ No matching Node
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Confusing Required and Preferred
+### 1. Confusing Required and Preferred
 
 Required:
 
@@ -1633,7 +1633,7 @@ Soft Preference
 
 ---
 
-## 2. Misunderstanding AND and OR
+### 2. Misunderstanding AND and OR
 
 Within one `matchExpressions` list:
 
@@ -1651,7 +1651,7 @@ This distinction is extremely important.
 
 ---
 
-## 3. Using `In` Without Values
+### 3. Using `In` Without Values
 
 For:
 
@@ -1667,7 +1667,7 @@ values:
 
 ---
 
-## 4. Assuming Preferred Affinity Guarantees Placement
+### 4. Assuming Preferred Affinity Guarantees Placement
 
 It doesn't.
 
@@ -1675,13 +1675,13 @@ Preferred rules influence scoring but do not make a Node mandatory.
 
 ---
 
-## 5. Using Too Many Complex Rules
+### 5. Using Too Many Complex Rules
 
 Overly complicated affinity rules can make scheduling difficult to understand and troubleshoot.
 
 ---
 
-## 6. Forgetting Node Labels
+### 6. Forgetting Node Labels
 
 Affinity depends on actual Node labels.
 
@@ -1693,7 +1693,7 @@ kubectl get nodes --show-labels
 
 ---
 
-## 7. Using Mutable Labels Carelessly
+### 7. Using Mutable Labels Carelessly
 
 Changing Node labels can affect where new Pods are eligible to run.
 
@@ -1701,7 +1701,7 @@ Maintain controlled label management.
 
 ---
 
-## 8. Confusing Node Affinity with Pod Affinity
+### 8. Confusing Node Affinity with Pod Affinity
 
 Node Affinity:
 
@@ -1717,9 +1717,9 @@ Other Pods
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Required
+### Required
 
 ```text
 requiredDuringSchedulingIgnoredDuringExecution
@@ -1731,7 +1731,7 @@ Must Match
 
 ---
 
-## Preferred
+### Preferred
 
 ```text
 preferredDuringSchedulingIgnoredDuringExecution
@@ -1743,7 +1743,7 @@ Try to Match
 
 ---
 
-## Operators
+### Operators
 
 ```text
 In
@@ -1761,7 +1761,7 @@ Lt
 
 ---
 
-## Logic
+### Logic
 
 ```text
 matchExpressions
@@ -1781,7 +1781,7 @@ OR
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Nodes:
 
@@ -1821,9 +1821,9 @@ kubectl describe pod <pod>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Node Affinity?
 - Why is Node Affinity better than `nodeSelector` for complex requirements?
@@ -1833,7 +1833,7 @@ kubectl describe pod <pod>
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Explain the `In` operator.
 - What does `NotIn` do?
@@ -1844,7 +1844,7 @@ kubectl describe pod <pod>
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Node Affinity scheduling workflow.
 - How does Node Affinity interact with Scheduler filtering and scoring?
@@ -1859,7 +1859,7 @@ kubectl describe pod <pod>
 
 ---
 
-# Production Design Example
+## Production Design Example
 
 Suppose a production cluster has:
 
@@ -1926,15 +1926,15 @@ The Pod can run on production Nodes but will prefer Nodes that better satisfy th
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Required Rules Only for Genuine Requirements
+#### 1. Use Required Rules Only for Genuine Requirements
 
 If a requirement is not mandatory, use preferred affinity.
 
 ---
 
-### 2. Use Preferred Affinity for Optimization
+#### 2. Use Preferred Affinity for Optimization
 
 Examples:
 
@@ -1952,19 +1952,19 @@ Prefer a particular zone
 
 ---
 
-### 3. Keep Rules Understandable
+#### 3. Keep Rules Understandable
 
 Avoid unnecessary scheduling complexity.
 
 ---
 
-### 4. Use Stable Node Labels
+#### 4. Use Stable Node Labels
 
 Labels should represent stable infrastructure characteristics.
 
 ---
 
-### 5. Combine with Taints for Dedicated Nodes
+#### 5. Combine with Taints for Dedicated Nodes
 
 Use:
 
@@ -1980,7 +1980,7 @@ when you need strong workload isolation.
 
 ---
 
-### 6. Test Scheduling Failures
+#### 6. Test Scheduling Failures
 
 Intentionally create unsatisfiable rules in a lab and learn how to diagnose:
 
@@ -1990,7 +1990,7 @@ FailedScheduling
 
 ---
 
-### 7. Consider Topology
+#### 7. Consider Topology
 
 For highly available workloads, affinity should be designed together with:
 
@@ -2001,9 +2001,9 @@ For highly available workloads, affinity should be designed together with:
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Assigning Pods to Nodes
 - Node Affinity
@@ -2014,7 +2014,7 @@ For highly available workloads, affinity should be designed together with:
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes SIG Scheduling
 - Kubernetes Scheduling Framework
@@ -2022,7 +2022,7 @@ For highly available workloads, affinity should be designed together with:
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create Nodes with different labels.
 2. Deploy a Pod using required Node Affinity.
@@ -2039,7 +2039,7 @@ For highly available workloads, affinity should be designed together with:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```text
                      Pod
@@ -2125,9 +2125,9 @@ These mechanisms together form the foundation of production-grade Kubernetes sch
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 39 – Pod Affinity & Anti-Affinity
+## Chapter 39 – Pod Affinity & Anti-Affinity
 
 Topics will include:
 

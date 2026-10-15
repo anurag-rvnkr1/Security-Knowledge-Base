@@ -1,12 +1,12 @@
 # Active-Directory/
 
-# 03-Domain-and-Forest.md
+## 03-Domain-and-Forest.md
 
-# Part 1 — Understanding Domains, Trees, Forests, Namespace, and Enterprise Design
+## Part 1 — Understanding Domains, Trees, Forests, Namespace, and Enterprise Design
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -20,7 +20,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Introduction
+## Introduction
 
 Active Directory is designed to manage identities at enterprise scale.
 
@@ -56,7 +56,7 @@ Understanding these boundaries is essential before administering large environme
 
 ---
 
-# What is a Domain?
+## What is a Domain?
 
 A **Domain** is the primary administrative and security boundary in Active Directory.
 
@@ -78,7 +78,7 @@ All objects within a domain share:
 
 ---
 
-# Simple Analogy
+## Simple Analogy
 
 Imagine a university.
 
@@ -120,7 +120,7 @@ Domains organize enterprise resources into manageable administrative units.
 
 ---
 
-# Basic Domain Structure
+## Basic Domain Structure
 
 ```text
 company.com
@@ -142,7 +142,7 @@ company.com
 
 ---
 
-# Characteristics of a Domain
+## Characteristics of a Domain
 
 Every domain has:
 
@@ -156,7 +156,7 @@ Every domain has:
 
 ---
 
-# Domain Naming
+## Domain Naming
 
 Domains typically use DNS-style names.
 
@@ -178,7 +178,7 @@ Modern best practice is to use names that align with an organization's registere
 
 ---
 
-# What Exists Inside a Domain?
+## What Exists Inside a Domain?
 
 ```text
 company.com
@@ -210,7 +210,7 @@ Each Organizational Unit contains objects relevant to that department.
 
 ---
 
-# Domain Controllers in a Domain
+## Domain Controllers in a Domain
 
 Every domain requires one or more Domain Controllers.
 
@@ -238,7 +238,7 @@ All Domain Controllers:
 
 ---
 
-# Domain Boundaries
+## Domain Boundaries
 
 A domain defines several boundaries.
 
@@ -252,7 +252,7 @@ A domain defines several boundaries.
 
 ---
 
-# Why Multiple Domains?
+## Why Multiple Domains?
 
 Not every organization requires multiple domains.
 
@@ -269,7 +269,7 @@ Multiple domains increase administrative complexity and should be justified by c
 
 ---
 
-# Single Domain Example
+## Single Domain Example
 
 Small organization:
 
@@ -298,7 +298,7 @@ Advantages:
 
 ---
 
-# Multi-Domain Example
+## Multi-Domain Example
 
 Large enterprise:
 
@@ -325,7 +325,7 @@ Benefits may include:
 
 ---
 
-# What is a Tree?
+## What is a Tree?
 
 A **Tree** is a collection of one or more domains that share a contiguous DNS namespace.
 
@@ -353,7 +353,7 @@ All domains:
 
 ---
 
-# Tree Characteristics
+## Tree Characteristics
 
 | Feature | Description |
 |----------|-------------|
@@ -365,7 +365,7 @@ All domains:
 
 ---
 
-# Tree Example
+## Tree Example
 
 ```text
 company.com
@@ -389,7 +389,7 @@ company.com
 
 ---
 
-# What is a Forest?
+## What is a Forest?
 
 A **Forest** is the highest logical boundary in Active Directory.
 
@@ -406,7 +406,7 @@ Think of the forest as the complete Active Directory environment.
 
 ---
 
-# Forest Structure
+## Forest Structure
 
 ```text
 Forest
@@ -432,7 +432,7 @@ A forest can include multiple trees, including trees with different DNS namespac
 
 ---
 
-# Forest Characteristics
+## Forest Characteristics
 
 | Feature | Description |
 |----------|-------------|
@@ -445,7 +445,7 @@ A forest can include multiple trees, including trees with different DNS namespac
 
 ---
 
-# Domain vs Tree vs Forest
+## Domain vs Tree vs Forest
 
 | Component | Purpose |
 |-----------|---------|
@@ -455,7 +455,7 @@ A forest can include multiple trees, including trees with different DNS namespac
 
 ---
 
-# Visual Comparison
+## Visual Comparison
 
 ```text
 Forest
@@ -479,7 +479,7 @@ Forest
 
 ---
 
-# DNS Namespace
+## DNS Namespace
 
 Every Active Directory domain has a DNS namespace.
 
@@ -501,7 +501,7 @@ DNS enables clients to locate services such as Domain Controllers and is fundame
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global enterprise has:
 
@@ -529,7 +529,7 @@ This design supports regional administration while maintaining a common forest.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Domains and forests influence how privileges, authentication, and administration are organized.
 
@@ -545,13 +545,13 @@ Understanding these boundaries is essential for both defenders and administrator
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design a simple Active Directory hierarchy.
 
-### Scenario
+#### Scenario
 
 Company:
 
@@ -562,7 +562,7 @@ Company:
   - IT
   - Sales
 
-### Tasks
+#### Tasks
 
 1. Create a single-domain design.
 2. Create Organizational Units for each department.
@@ -571,7 +571,7 @@ Company:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A domain is the primary administrative unit in Active Directory.
 - A tree is a collection of domains sharing a contiguous DNS namespace.
@@ -582,7 +582,7 @@ Company:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an Active Directory domain?
 2. What objects are stored within a domain?
@@ -597,7 +597,7 @@ Company:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Active Directory Domains and Forests
 - Microsoft Windows Server Documentation
@@ -607,13 +607,13 @@ Company:
 
 ---
 
-# 03-Domain-and-Forest.md
+## 03-Domain-and-Forest.md
 
-# Part 2 — Domain Namespace, Trust Relationships, Functional Levels, Forest Design Models, and Enterprise Planning
+## Part 2 — Domain Namespace, Trust Relationships, Functional Levels, Forest Design Models, and Enterprise Planning
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this part, you will be able to:
 
@@ -626,7 +626,7 @@ By the end of this part, you will be able to:
 
 ---
 
-# Active Directory Namespace
+## Active Directory Namespace
 
 A **namespace** is the naming structure used to uniquely identify objects and domains.
 
@@ -648,7 +648,7 @@ Namespaces make it possible for users, computers, and services to be uniquely id
 
 ---
 
-# DNS Namespace Hierarchy
+## DNS Namespace Hierarchy
 
 ```text
 company.com
@@ -668,7 +668,7 @@ Each child domain extends the parent DNS namespace.
 
 ---
 
-# Contiguous Namespace
+## Contiguous Namespace
 
 A **contiguous namespace** means child domains inherit the parent's DNS naming hierarchy.
 
@@ -695,7 +695,7 @@ Characteristics:
 
 ---
 
-# Disjoint Namespace
+## Disjoint Namespace
 
 A forest can also contain multiple trees with different DNS namespaces.
 
@@ -720,7 +720,7 @@ Although the namespaces differ, both trees belong to the same forest and share:
 
 ---
 
-# UPN vs DNS Name
+## UPN vs DNS Name
 
 Users often log in with a **User Principal Name (UPN)**.
 
@@ -744,7 +744,7 @@ While often identical, UPN suffixes can be customized to improve usability.
 
 ---
 
-# Parent and Child Domains
+## Parent and Child Domains
 
 Example:
 
@@ -770,7 +770,7 @@ Characteristics:
 
 ---
 
-# Why Create Child Domains?
+## Why Create Child Domains?
 
 Historically, organizations created child domains for:
 
@@ -784,7 +784,7 @@ Today, many organizations instead use Organizational Units (OUs) and delegated a
 
 ---
 
-# Trust Relationships (High-Level)
+## Trust Relationships (High-Level)
 
 A **trust** allows authenticated users in one domain to access resources in another domain, subject to permissions.
 
@@ -802,7 +802,7 @@ It enables authentication to be recognized across boundaries.
 
 ---
 
-# Automatic Trusts
+## Automatic Trusts
 
 Within a forest:
 
@@ -827,7 +827,7 @@ A dedicated chapter will cover trusts in depth.
 
 ---
 
-# Authentication Across Domains
+## Authentication Across Domains
 
 Simplified example:
 
@@ -859,7 +859,7 @@ Authentication and authorization remain separate processes.
 
 ---
 
-# Domain Functional Level (DFL)
+## Domain Functional Level (DFL)
 
 The **Domain Functional Level** determines which Active Directory features are available within a domain.
 
@@ -869,7 +869,7 @@ Higher functional levels can enable newer capabilities once all Domain Controlle
 
 ---
 
-# Forest Functional Level (FFL)
+## Forest Functional Level (FFL)
 
 The **Forest Functional Level** controls features available across the entire forest.
 
@@ -883,7 +883,7 @@ DFL applies to one domain, while FFL applies to the entire forest.
 
 ---
 
-# Functional Level Overview
+## Functional Level Overview
 
 ```text
 Forest
@@ -909,7 +909,7 @@ Administrators should plan upgrades carefully before raising functional levels.
 
 ---
 
-# Why Functional Levels Matter
+## Why Functional Levels Matter
 
 Benefits include:
 
@@ -923,13 +923,13 @@ Raising functional levels should be performed only after validating compatibilit
 
 ---
 
-# Forest Design Models
+## Forest Design Models
 
 Organizations generally choose one of several logical models.
 
 ---
 
-## Model 1 — Single Forest, Single Domain
+### Model 1 — Single Forest, Single Domain
 
 ```text
 Forest
@@ -950,7 +950,7 @@ Suitable for many small and medium organizations.
 
 ---
 
-## Model 2 — Single Forest, Multiple Domains
+### Model 2 — Single Forest, Multiple Domains
 
 ```text
 Forest
@@ -978,7 +978,7 @@ Trade-offs:
 
 ---
 
-## Model 3 — Multiple Forests
+### Model 3 — Multiple Forests
 
 ```text
 Forest A
@@ -1006,7 +1006,7 @@ Multiple forests significantly increase management complexity.
 
 ---
 
-# Choosing the Right Design
+## Choosing the Right Design
 
 | Organization | Typical Design |
 |--------------|----------------|
@@ -1018,7 +1018,7 @@ Business requirements—not organization size alone—should drive the design.
 
 ---
 
-# Enterprise Planning Considerations
+## Enterprise Planning Considerations
 
 Before creating additional domains or forests, consider:
 
@@ -1037,7 +1037,7 @@ Careful planning reduces long-term operational overhead.
 
 ---
 
-# Naming Best Practices
+## Naming Best Practices
 
 Use:
 
@@ -1065,7 +1065,7 @@ Recommendations:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational company has:
 
@@ -1096,7 +1096,7 @@ Each region has delegated administration while sharing a common forest.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Domains and forests affect identity security across the enterprise.
 
@@ -1113,13 +1113,13 @@ Poor forest design can increase administrative complexity and broaden the impact
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Compare different Active Directory design models.
 
-### Tasks
+#### Tasks
 
 1. Draw:
    - Single forest, single domain
@@ -1134,7 +1134,7 @@ Compare different Active Directory design models.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory uses DNS namespaces to organize domains.
 - Contiguous namespaces form parent-child domain hierarchies.
@@ -1146,7 +1146,7 @@ Compare different Active Directory design models.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a namespace in Active Directory?
 2. What is the difference between a contiguous and disjoint namespace?
@@ -1161,7 +1161,7 @@ Compare different Active Directory design models.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Active Directory Domains and Forests
 - Microsoft Windows Server Documentation
@@ -1171,13 +1171,13 @@ Compare different Active Directory design models.
 
 ---
 
-# 03-Domain-and-Forest.md
+## 03-Domain-and-Forest.md
 
-# Part 3 — Forest-Wide Components, Global Catalog Placement, Domain Boundaries, Administrative Models, and Enterprise Architecture
+## Part 3 — Forest-Wide Components, Global Catalog Placement, Domain Boundaries, Administrative Models, and Enterprise Architecture
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -1190,7 +1190,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Forest-Wide Components
+## Forest-Wide Components
 
 Certain Active Directory components are shared across the entire forest.
 
@@ -1208,7 +1208,7 @@ These shared components allow domains to operate as a unified directory service.
 
 ---
 
-# Forest Architecture
+## Forest Architecture
 
 ```text
                     Forest
@@ -1234,7 +1234,7 @@ These shared components allow domains to operate as a unified directory service.
 
 ---
 
-# Schema Sharing
+## Schema Sharing
 
 Every domain inside a forest uses the **same Active Directory Schema**.
 
@@ -1266,7 +1266,7 @@ Because the schema is shared, schema modifications affect the entire forest and 
 
 ---
 
-# Configuration Partition
+## Configuration Partition
 
 The Configuration Partition stores forest-wide information such as:
 
@@ -1296,7 +1296,7 @@ All Domain Controllers within the forest receive this partition through replicat
 
 ---
 
-# Global Catalog Placement
+## Global Catalog Placement
 
 The Global Catalog (GC) improves search efficiency and supports certain authentication scenarios.
 
@@ -1326,7 +1326,7 @@ Forest
 
 ---
 
-# Why Place Multiple Global Catalog Servers?
+## Why Place Multiple Global Catalog Servers?
 
 Benefits include:
 
@@ -1340,7 +1340,7 @@ Large organizations typically deploy multiple Global Catalog servers across majo
 
 ---
 
-# Choosing Global Catalog Locations
+## Choosing Global Catalog Locations
 
 Factors to consider:
 
@@ -1355,7 +1355,7 @@ Avoid placing all Global Catalog servers in a single location.
 
 ---
 
-# Administrative Boundaries
+## Administrative Boundaries
 
 Domains provide administrative boundaries that allow organizations to:
 
@@ -1369,13 +1369,13 @@ However, enterprise governance should remain consistent across the forest where 
 
 ---
 
-# Administrative Models
+## Administrative Models
 
 Several administration models are commonly used.
 
 ---
 
-## Centralized Administration
+### Centralized Administration
 
 ```text
 Corporate IT
@@ -1398,7 +1398,7 @@ Characteristics:
 
 ---
 
-## Delegated Administration
+### Delegated Administration
 
 ```text
 Corporate IT
@@ -1421,7 +1421,7 @@ Characteristics:
 
 ---
 
-## Hybrid Administration
+### Hybrid Administration
 
 ```text
 Corporate IT
@@ -1443,7 +1443,7 @@ This model is common in large enterprises.
 
 ---
 
-# Administrative Delegation
+## Administrative Delegation
 
 Instead of granting Domain Admin privileges broadly:
 
@@ -1463,7 +1463,7 @@ Delegation follows the principle of least privilege.
 
 ---
 
-# Domain Boundaries
+## Domain Boundaries
 
 Each domain has its own:
 
@@ -1477,7 +1477,7 @@ Forest-wide components remain shared.
 
 ---
 
-# Example Enterprise Structure
+## Example Enterprise Structure
 
 ```text
 Forest
@@ -1510,7 +1510,7 @@ All share the same forest infrastructure.
 
 ---
 
-# Enterprise Identity Flow
+## Enterprise Identity Flow
 
 ```text
 User
@@ -1542,7 +1542,7 @@ Enterprise Resources
 
 ---
 
-# Resource Access Across Domains
+## Resource Access Across Domains
 
 Example:
 
@@ -1574,7 +1574,7 @@ Even though authentication can cross domains, permissions must still be explicit
 
 ---
 
-# Forest Growth
+## Forest Growth
 
 As organizations expand, forests may include:
 
@@ -1589,7 +1589,7 @@ Growth should be planned rather than reactive.
 
 ---
 
-# Designing for Scalability
+## Designing for Scalability
 
 Consider:
 
@@ -1606,7 +1606,7 @@ A scalable design minimizes future restructuring.
 
 ---
 
-# Operational Best Practices
+## Operational Best Practices
 
 - Standardize naming conventions.
 - Document domain ownership.
@@ -1619,7 +1619,7 @@ A scalable design minimizes future restructuring.
 
 ---
 
-# Common Design Mistakes
+## Common Design Mistakes
 
 Avoid:
 
@@ -1636,7 +1636,7 @@ Simple, well-governed designs are usually easier to secure and maintain.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -1675,7 +1675,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 The forest is the highest level of trust within Active Directory.
 
@@ -1693,13 +1693,13 @@ Compromise of forest-level administrative accounts can have organization-wide co
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design a scalable forest architecture.
 
-### Scenario
+#### Scenario
 
 Organization:
 
@@ -1708,7 +1708,7 @@ Organization:
 - One central IT team
 - Regional help desk staff
 
-### Tasks
+#### Tasks
 
 1. Design the forest hierarchy.
 2. Decide whether multiple domains are required.
@@ -1718,7 +1718,7 @@ Organization:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Schema and Configuration partitions are shared across the forest.
 - The Global Catalog enables forest-wide searches and supports authentication.
@@ -1728,7 +1728,7 @@ Organization:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Which components are shared across an Active Directory forest?
 2. Why is the Schema considered a forest-wide component?
@@ -1743,7 +1743,7 @@ Organization:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Active Directory Forest Design
 - Microsoft Windows Server Documentation
@@ -1754,13 +1754,13 @@ Organization:
 
 ---
 
-# 03-Domain-and-Forest.md
+## 03-Domain-and-Forest.md
 
-# Part 4 — Forest Design Best Practices, Domain Lifecycle, Common Misconceptions, Architecture Review, Final Revision, and Chapter Summary
+## Part 4 — Forest Design Best Practices, Domain Lifecycle, Common Misconceptions, Architecture Review, Final Revision, and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -1772,7 +1772,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Enterprise Forest Design Principles
+## Enterprise Forest Design Principles
 
 A well-designed Active Directory forest should provide:
 
@@ -1788,7 +1788,7 @@ Good architecture should solve business problems while minimizing operational co
 
 ---
 
-# Keep the Design Simple
+## Keep the Design Simple
 
 Microsoft's long-standing recommendation is:
 
@@ -1804,7 +1804,7 @@ Simple environments are generally:
 
 ---
 
-# Enterprise Design Philosophy
+## Enterprise Design Philosophy
 
 ```text
 Business Requirements
@@ -1842,7 +1842,7 @@ Technology decisions should support business objectives—not the other way arou
 
 ---
 
-# Forest Planning Checklist
+## Forest Planning Checklist
 
 Before creating a new forest, consider:
 
@@ -1857,7 +1857,7 @@ Before creating a new forest, consider:
 
 ---
 
-# Domain Planning Checklist
+## Domain Planning Checklist
 
 Before creating an additional domain, evaluate:
 
@@ -1874,7 +1874,7 @@ If Organizational Units satisfy the requirement, a new domain may not be necessa
 
 ---
 
-# Organizational Unit vs Domain
+## Organizational Unit vs Domain
 
 | Requirement | Organizational Unit | New Domain |
 |------------|---------------------|------------|
@@ -1889,7 +1889,7 @@ Choose the least complex solution that satisfies business requirements.
 
 ---
 
-# Forest Lifecycle
+## Forest Lifecycle
 
 The lifecycle of an Active Directory forest typically follows these stages:
 
@@ -1929,7 +1929,7 @@ Each stage should include documentation, testing, and security review.
 
 ---
 
-# Domain Lifecycle
+## Domain Lifecycle
 
 ```text
 Requirement
@@ -1967,7 +1967,7 @@ Decommissioning a domain should be carefully planned to avoid disrupting authent
 
 ---
 
-# Growth Planning
+## Growth Planning
 
 Organizations evolve over time.
 
@@ -1984,7 +1984,7 @@ Design Active Directory with future growth in mind to minimize disruptive restru
 
 ---
 
-# Documentation Standards
+## Documentation Standards
 
 Maintain documentation for:
 
@@ -2003,7 +2003,7 @@ Accurate documentation improves operational resilience and onboarding.
 
 ---
 
-# High Availability Recommendations
+## High Availability Recommendations
 
 Enterprise environments should include:
 
@@ -2018,7 +2018,7 @@ Avoid single points of failure.
 
 ---
 
-# Disaster Recovery Overview
+## Disaster Recovery Overview
 
 Recovery planning should include:
 
@@ -2058,7 +2058,7 @@ Recovery plans should be tested periodically rather than assumed to work.
 
 ---
 
-# Monitoring Recommendations
+## Monitoring Recommendations
 
 Monitor:
 
@@ -2076,9 +2076,9 @@ Proactive monitoring reduces downtime and helps identify security incidents.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
-## Myth 1
+### Myth 1
 
 > Every large organization needs multiple forests.
 
@@ -2088,7 +2088,7 @@ Many large organizations successfully operate with a single forest.
 
 ---
 
-## Myth 2
+### Myth 2
 
 > More domains always improve security.
 
@@ -2098,7 +2098,7 @@ Additional domains increase administrative complexity and do not automatically i
 
 ---
 
-## Myth 3
+### Myth 3
 
 > Organizational Units provide the same isolation as domains.
 
@@ -2108,7 +2108,7 @@ OUs provide administrative organization and delegation, but they are **not** sep
 
 ---
 
-## Myth 4
+### Myth 4
 
 > Trusts automatically grant access.
 
@@ -2120,7 +2120,7 @@ Permissions are still evaluated through ACLs and authorization.
 
 ---
 
-## Myth 5
+### Myth 5
 
 > A forest can be redesigned easily later.
 
@@ -2130,7 +2130,7 @@ Major structural changes are possible but often require significant planning, te
 
 ---
 
-# Common Design Mistakes
+## Common Design Mistakes
 
 Avoid:
 
@@ -2145,7 +2145,7 @@ Avoid:
 
 ---
 
-# Enterprise Scenario
+## Enterprise Scenario
 
 Organization:
 
@@ -2187,7 +2187,7 @@ Features:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Active Directory forests are high-value infrastructure.
 
@@ -2205,7 +2205,7 @@ Compromise at the forest level can affect every domain within the forest.
 
 ---
 
-# Complete Chapter Summary
+## Complete Chapter Summary
 
 This chapter covered:
 
@@ -2234,7 +2234,7 @@ You now understand how Active Directory scales from a single domain to large glo
 
 ---
 
-# Final Revision Table
+## Final Revision Table
 
 | Topic | Key Point |
 |------|-----------|
@@ -2253,7 +2253,7 @@ You now understand how Active Directory scales from a single domain to large glo
 
 ---
 
-# Practical Exercises
+## Practical Exercises
 
 1. Design a forest for an organization with offices in five countries.
 2. Compare a single-domain and multi-domain architecture.
@@ -2265,7 +2265,7 @@ You now understand how Active Directory scales from a single domain to large glo
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between a domain, tree, and forest?
 2. What components are shared across a forest?
@@ -2280,7 +2280,7 @@ You now understand how Active Directory scales from a single domain to large glo
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Active Directory Domains and Forests
 - Microsoft Windows Server Documentation
@@ -2292,7 +2292,7 @@ You now understand how Active Directory scales from a single domain to large glo
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 03 – Domains and Forests**.
 

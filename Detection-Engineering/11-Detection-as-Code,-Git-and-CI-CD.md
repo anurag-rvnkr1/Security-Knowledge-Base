@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 Traditional detection management often looks like:
 
@@ -51,7 +51,7 @@ Monitoring
 
 ---
 
-# 2. What Is Detection-as-Code?
+## 2. What Is Detection-as-Code?
 
 Detection-as-Code means managing detections using software engineering practices such as:
 
@@ -81,7 +81,7 @@ Rule Creation
 
 ---
 
-# 3. Why Detection-as-Code Matters
+## 3. Why Detection-as-Code Matters
 
 Benefits include:
 
@@ -100,7 +100,7 @@ Quality Control
 
 ---
 
-# 4. Detection Lifecycle
+## 4. Detection Lifecycle
 
 A typical lifecycle:
 
@@ -128,7 +128,7 @@ Retirement
 
 ---
 
-# 5. Detection Artifact
+## 5. Detection Artifact
 
 A detection should be represented as a structured artifact containing information such as:
 
@@ -152,7 +152,7 @@ Exceptions
 
 ---
 
-# 6. Example Detection Structure
+## 6. Example Detection Structure
 
 ```yaml
 id: DET-001
@@ -190,7 +190,7 @@ The exact schema should be standardized for the organization.
 
 ---
 
-# 7. Detection Repository
+## 7. Detection Repository
 
 A repository may look like:
 
@@ -209,7 +209,7 @@ detections/
 
 ---
 
-# 8. Organizing by Domain
+## 8. Organizing by Domain
 
 Possible structure:
 
@@ -227,7 +227,7 @@ This improves discoverability.
 
 ---
 
-# 9. Organizing by Threat
+## 9. Organizing by Threat
 
 Another approach:
 
@@ -245,7 +245,7 @@ The best structure depends on team workflows.
 
 ---
 
-# 10. Hybrid Repository
+## 10. Hybrid Repository
 
 A mature repository can combine:
 
@@ -268,7 +268,7 @@ detections/
 
 ---
 
-# 11. Naming Conventions
+## 11. Naming Conventions
 
 Use predictable names.
 
@@ -291,7 +291,7 @@ test_latest.yml
 
 ---
 
-# 12. Detection IDs
+## 12. Detection IDs
 
 Every detection should have a unique ID.
 
@@ -307,7 +307,7 @@ IDs should remain stable even when names change.
 
 ---
 
-# 13. Why Stable IDs Matter
+## 13. Why Stable IDs Matter
 
 Stable IDs support:
 
@@ -323,7 +323,7 @@ Documentation
 
 ---
 
-# 14. Git
+## 14. Git
 
 Git provides:
 
@@ -341,7 +341,7 @@ Detection engineers should use Git similarly to software engineers.
 
 ---
 
-# 15. Git Repository Benefits
+## 15. Git Repository Benefits
 
 With Git, you can answer:
 
@@ -356,7 +356,7 @@ What version was deployed?
 
 ---
 
-# 16. Commit History
+## 16. Commit History
 
 Example:
 
@@ -376,7 +376,7 @@ This provides an audit trail.
 
 ---
 
-# 17. Good Commit Message
+## 17. Good Commit Message
 
 ```text
 Improve suspicious PowerShell detection
@@ -399,7 +399,7 @@ test
 
 ---
 
-# 18. Branching
+## 18. Branching
 
 A typical workflow:
 
@@ -427,7 +427,7 @@ Merge
 
 ---
 
-# 19. Pull Requests
+## 19. Pull Requests
 
 A detection PR should explain:
 
@@ -444,7 +444,7 @@ What deployment impact?
 
 ---
 
-# 20. Detection PR Example
+## 20. Detection PR Example
 
 ```text
 Title:
@@ -468,7 +468,7 @@ New alerts for unexpected IAM changes
 
 ---
 
-# 21. Code Review
+## 21. Code Review
 
 Reviewers should evaluate:
 
@@ -487,7 +487,7 @@ Security
 
 ---
 
-# 22. Detection Review Checklist
+## 22. Detection Review Checklist
 
 ```text
 [ ] Logic correct
@@ -504,7 +504,7 @@ Security
 
 ---
 
-# 23. Detection Schema
+## 23. Detection Schema
 
 A schema defines required fields.
 
@@ -525,7 +525,7 @@ This prevents incomplete detections from entering production.
 
 ---
 
-# 24. Schema Validation
+## 24. Schema Validation
 
 CI can automatically validate:
 
@@ -546,7 +546,7 @@ Pipeline Stops
 
 ---
 
-# 25. YAML Validation
+## 25. YAML Validation
 
 Example invalid:
 
@@ -564,7 +564,7 @@ Automated validation catches syntax errors before deployment.
 
 ---
 
-# 26. Detection Linting
+## 26. Detection Linting
 
 Linting can identify:
 
@@ -579,7 +579,7 @@ Unsafe Patterns
 
 ---
 
-# 27. Query Validation
+## 27. Query Validation
 
 Before deployment, verify:
 
@@ -593,7 +593,7 @@ Syntax Valid
 
 ---
 
-# 28. Query Compatibility
+## 28. Query Compatibility
 
 Different platforms use different languages:
 
@@ -612,7 +612,7 @@ A detection repository should document the target language.
 
 ---
 
-# 29. Sigma
+## 29. Sigma
 
 Sigma is a generic detection-rule format designed to describe log-based detections in a platform-independent way.
 
@@ -632,7 +632,7 @@ This can improve portability.
 
 ---
 
-# 30. Sigma Example
+## 30. Sigma Example
 
 ```yaml
 title: Suspicious PowerShell Execution
@@ -657,7 +657,7 @@ Real production rules should include appropriate metadata, testing, and environm
 
 ---
 
-# 31. Platform-Specific Detections
+## 31. Platform-Specific Detections
 
 Sometimes generic rules are insufficient.
 
@@ -679,9 +679,9 @@ Platform-specific data model
 
 ---
 
-# 32. Generic vs Native Detection
+## 32. Generic vs Native Detection
 
-### Generic
+#### Generic
 
 ```text
 Portable
@@ -689,7 +689,7 @@ Reusable
 Cross-platform
 ```
 
-### Native
+#### Native
 
 ```text
 Optimized
@@ -701,7 +701,7 @@ Use the appropriate abstraction level.
 
 ---
 
-# 33. Detection Compilation
+## 33. Detection Compilation
 
 Conceptually:
 
@@ -721,7 +721,7 @@ This is similar to compilation.
 
 ---
 
-# 34. Detection CI Pipeline
+## 34. Detection CI Pipeline
 
 A typical pipeline:
 
@@ -747,7 +747,7 @@ Deployment
 
 ---
 
-# 35. CI
+## 35. CI
 
 Continuous Integration ensures changes are automatically validated.
 
@@ -761,7 +761,7 @@ Automatic Tests
 
 ---
 
-# 36. CD
+## 36. CD
 
 Continuous Delivery/Deployment automates moving approved detections toward production.
 
@@ -779,7 +779,7 @@ Production
 
 ---
 
-# 37. Staging Environment
+## 37. Staging Environment
 
 Never assume:
 
@@ -801,7 +801,7 @@ Integration
 
 ---
 
-# 38. Detection Deployment Stages
+## 38. Detection Deployment Stages
 
 Example:
 
@@ -821,7 +821,7 @@ Production
 
 ---
 
-# 39. Canary Deployment
+## 39. Canary Deployment
 
 Deploy the detection to a limited scope first.
 
@@ -848,7 +848,7 @@ Latency
 
 ---
 
-# 40. Production Deployment
+## 40. Production Deployment
 
 Only deploy after:
 
@@ -861,7 +861,7 @@ Approval
 
 ---
 
-# 41. Rollback
+## 41. Rollback
 
 If a detection causes:
 
@@ -884,7 +884,7 @@ Previous Version
 
 ---
 
-# 42. Detection Versioning
+## 42. Detection Versioning
 
 Example:
 
@@ -904,7 +904,7 @@ Major logic redesign
 
 ---
 
-# 43. Semantic Versioning
+## 43. Semantic Versioning
 
 A team may use:
 
@@ -922,7 +922,7 @@ Meaning should be documented internally.
 
 ---
 
-# 44. Detection Status
+## 44. Detection Status
 
 Possible states:
 
@@ -938,7 +938,7 @@ Retired
 
 ---
 
-# 45. Detection Ownership
+## 45. Detection Ownership
 
 Every production detection should have:
 
@@ -953,7 +953,7 @@ Ownership prevents orphaned rules.
 
 ---
 
-# 46. Detection Metadata
+## 46. Detection Metadata
 
 Recommended metadata:
 
@@ -976,7 +976,7 @@ reviewer:
 
 ---
 
-# 47. Threat Metadata
+## 47. Threat Metadata
 
 Include:
 
@@ -990,7 +990,7 @@ techniques:
 
 ---
 
-# 48. Data Metadata
+## 48. Data Metadata
 
 Include:
 
@@ -1009,7 +1009,7 @@ required_fields:
 
 ---
 
-# 49. Test Metadata
+## 49. Test Metadata
 
 Example:
 
@@ -1023,7 +1023,7 @@ tests:
 
 ---
 
-# 50. Exception Metadata
+## 50. Exception Metadata
 
 Example:
 
@@ -1037,7 +1037,7 @@ Exceptions should reference controlled configuration rather than hard-coded logi
 
 ---
 
-# 51. Detection Dependencies
+## 51. Detection Dependencies
 
 A detection may depend on:
 
@@ -1055,7 +1055,7 @@ Document dependencies explicitly.
 
 ---
 
-# 52. Dependency Failure
+## 52. Dependency Failure
 
 Example:
 
@@ -1075,7 +1075,7 @@ CI and monitoring should detect this.
 
 ---
 
-# 53. Data Contract
+## 53. Data Contract
 
 A data contract defines:
 
@@ -1097,7 +1097,7 @@ event.time = timestamp
 
 ---
 
-# 54. Detection Contract
+## 54. Detection Contract
 
 A detection contract defines:
 
@@ -1112,7 +1112,7 @@ Dependencies
 
 ---
 
-# 55. Unit Testing
+## 55. Unit Testing
 
 Unit tests validate small pieces of detection logic.
 
@@ -1128,7 +1128,7 @@ Match
 
 ---
 
-# 56. Negative Unit Test
+## 56. Negative Unit Test
 
 ```text
 Input:
@@ -1140,7 +1140,7 @@ No Match
 
 ---
 
-# 57. Regression Testing
+## 57. Regression Testing
 
 A regression test ensures a previously fixed issue does not return.
 
@@ -1159,7 +1159,7 @@ Admin host must remain suppressed.
 
 ---
 
-# 58. Detection Test Dataset
+## 58. Detection Test Dataset
 
 A repository may contain:
 
@@ -1174,7 +1174,7 @@ tests/
 
 ---
 
-# 59. Test Data
+## 59. Test Data
 
 Test events should represent:
 
@@ -1190,7 +1190,7 @@ Delayed
 
 ---
 
-# 60. Synthetic Events
+## 60. Synthetic Events
 
 Synthetic events are useful when real incidents cannot be shared.
 
@@ -1204,7 +1204,7 @@ Synthetic Network Event
 
 ---
 
-# 61. Historical Replay
+## 61. Historical Replay
 
 Replay historical data through the detection.
 
@@ -1218,7 +1218,7 @@ Performance Issues
 
 ---
 
-# 62. Backtesting
+## 62. Backtesting
 
 Backtesting means evaluating a detection against historical telemetry.
 
@@ -1234,7 +1234,7 @@ Results
 
 ---
 
-# 63. Backtesting Questions
+## 63. Backtesting Questions
 
 Ask:
 
@@ -1247,7 +1247,7 @@ What was detection latency?
 
 ---
 
-# 64. Detection Quality Gate
+## 64. Detection Quality Gate
 
 A CI pipeline can require:
 
@@ -1265,7 +1265,7 @@ before merging.
 
 ---
 
-# 65. Risk-Based Quality Gate
+## 65. Risk-Based Quality Gate
 
 More advanced:
 
@@ -1287,7 +1287,7 @@ may follow a different workflow.
 
 ---
 
-# 66. ATT&CK Coverage Gate
+## 66. ATT&CK Coverage Gate
 
 CI can verify:
 
@@ -1300,7 +1300,7 @@ if the organization requires it.
 
 ---
 
-# 67. Duplicate Detection Check
+## 67. Duplicate Detection Check
 
 CI can detect:
 
@@ -1315,7 +1315,7 @@ This prevents unnecessary rule duplication.
 
 ---
 
-# 68. Dead Detection Detection
+## 68. Dead Detection Detection
 
 A detection may exist but never receive relevant data.
 
@@ -1337,7 +1337,7 @@ Incorrect Query
 
 ---
 
-# 69. Detection Health
+## 69. Detection Health
 
 Monitor:
 
@@ -1351,7 +1351,7 @@ Alert Volume Normal
 
 ---
 
-# 70. Detection Monitoring
+## 70. Detection Monitoring
 
 A production detection should itself be monitored.
 
@@ -1366,7 +1366,7 @@ Alert Volume
 
 ---
 
-# 71. Alert Volume Monitoring
+## 71. Alert Volume Monitoring
 
 Sudden increase:
 
@@ -1387,7 +1387,7 @@ Rule Bug
 
 ---
 
-# 72. Alert Volume Drop
+## 72. Alert Volume Drop
 
 Sudden decrease:
 
@@ -1408,7 +1408,7 @@ Detection Disabled
 
 ---
 
-# 73. Detection Drift
+## 73. Detection Drift
 
 Detection drift can occur when:
 
@@ -1424,7 +1424,7 @@ A previously effective rule may become ineffective.
 
 ---
 
-# 74. Schema Drift
+## 74. Schema Drift
 
 Example:
 
@@ -1442,7 +1442,7 @@ Automated schema validation helps detect this.
 
 ---
 
-# 75. Query Drift
+## 75. Query Drift
 
 The platform may change:
 
@@ -1457,7 +1457,7 @@ Detection code should be validated after platform changes.
 
 ---
 
-# 76. ATT&CK Drift
+## 76. ATT&CK Drift
 
 Framework changes can require:
 
@@ -1469,7 +1469,7 @@ Coverage Review
 
 ---
 
-# 77. Dependency Drift
+## 77. Dependency Drift
 
 External dependencies may change:
 
@@ -1485,7 +1485,7 @@ Monitor these dependencies.
 
 ---
 
-# 78. Secrets in Detection Code
+## 78. Secrets in Detection Code
 
 Never hard-code:
 
@@ -1512,7 +1512,7 @@ Secure CI Variables
 
 ---
 
-# 79. Sensitive Detection Data
+## 79. Sensitive Detection Data
 
 Detection repositories may contain:
 
@@ -1528,7 +1528,7 @@ Repositories should have appropriate access controls.
 
 ---
 
-# 80. Branch Protection
+## 80. Branch Protection
 
 Protect important branches:
 
@@ -1549,7 +1549,7 @@ before merging.
 
 ---
 
-# 81. CODEOWNERS
+## 81. CODEOWNERS
 
 Use ownership rules so appropriate teams review relevant detections.
 
@@ -1563,7 +1563,7 @@ Example:
 
 ---
 
-# 82. Review Approvals
+## 82. Review Approvals
 
 Critical detections may require:
 
@@ -1579,7 +1579,7 @@ depending on organizational policy.
 
 ---
 
-# 83. Change Management
+## 83. Change Management
 
 Production detection changes should be traceable to:
 
@@ -1594,7 +1594,7 @@ Tuning Request
 
 ---
 
-# 84. Emergency Changes
+## 84. Emergency Changes
 
 Sometimes urgent changes are required.
 
@@ -1617,7 +1617,7 @@ Post-Change Validation
 
 ---
 
-# 85. Detection Deployment Audit Trail
+## 85. Detection Deployment Audit Trail
 
 Record:
 
@@ -1634,7 +1634,7 @@ Result
 
 ---
 
-# 86. Rollback Strategy
+## 86. Rollback Strategy
 
 A rollback plan should define:
 
@@ -1648,7 +1648,7 @@ Communication
 
 ---
 
-# 87. Feature Flags
+## 87. Feature Flags
 
 Detection behavior can be controlled through:
 
@@ -1662,7 +1662,7 @@ Production
 
 ---
 
-# 88. Shadow Mode
+## 88. Shadow Mode
 
 A detection runs but does not generate normal analyst alerts.
 
@@ -1676,7 +1676,7 @@ False Positive Measurement
 
 ---
 
-# 89. Canary Detection
+## 89. Canary Detection
 
 Run with limited:
 
@@ -1691,7 +1691,7 @@ before broad deployment.
 
 ---
 
-# 90. Detection Deployment Strategy
+## 90. Detection Deployment Strategy
 
 Example:
 
@@ -1709,7 +1709,7 @@ Production
 
 ---
 
-# 91. Detection-as-Code Architecture
+## 91. Detection-as-Code Architecture
 
 ```text
                  Git Repository
@@ -1743,7 +1743,7 @@ Production
 
 ---
 
-# 92. Detection Repository Example
+## 92. Detection Repository Example
 
 ```text
 detection-engineering/
@@ -1775,7 +1775,7 @@ detection-engineering/
 
 ---
 
-# 93. Detection Pull Request Template
+## 93. Detection Pull Request Template
 
 ```markdown
 ## Detection
@@ -1825,7 +1825,7 @@ Describe rollback procedure.
 
 ---
 
-# 94. CI Pipeline Example
+## 94. CI Pipeline Example
 
 Conceptually:
 
@@ -1854,7 +1854,7 @@ Staging
 
 ---
 
-# 95. Detection Validation Pipeline
+## 95. Detection Validation Pipeline
 
 ```text
 YAML Syntax
@@ -1876,7 +1876,7 @@ Performance
 
 ---
 
-# 96. Query Testing
+## 96. Query Testing
 
 Test:
 
@@ -1891,7 +1891,7 @@ Large Event
 
 ---
 
-# 97. Null Handling
+## 97. Null Handling
 
 Detection logic should define behavior when:
 
@@ -1912,7 +1912,7 @@ Query Errors
 
 ---
 
-# 98. Data Type Testing
+## 98. Data Type Testing
 
 Ensure fields have expected types:
 
@@ -1925,7 +1925,7 @@ user.id → string
 
 ---
 
-# 99. Time Zone Handling
+## 99. Time Zone Handling
 
 Distributed systems may use:
 
@@ -1939,7 +1939,7 @@ Standardize timestamps, preferably using a consistent representation such as UTC
 
 ---
 
-# 100. Time Window Testing
+## 100. Time Window Testing
 
 If a detection uses:
 
@@ -1959,7 +1959,7 @@ to catch boundary bugs.
 
 ---
 
-# 101. Performance Testing
+## 101. Performance Testing
 
 Measure:
 
@@ -1974,7 +1974,7 @@ Storage
 
 ---
 
-# 102. Detection Scalability
+## 102. Detection Scalability
 
 A rule working on:
 
@@ -1992,7 +1992,7 @@ Always consider production scale.
 
 ---
 
-# 103. Query Optimization
+## 103. Query Optimization
 
 Common techniques:
 
@@ -2007,7 +2007,7 @@ Pre-Aggregate
 
 ---
 
-# 104. Regex Optimization
+## 104. Regex Optimization
 
 Avoid expensive unrestricted regex.
 
@@ -2024,7 +2024,7 @@ where possible.
 
 ---
 
-# 105. Detection Dependencies in CI
+## 105. Detection Dependencies in CI
 
 Check:
 
@@ -2041,7 +2041,7 @@ before deployment.
 
 ---
 
-# 106. Threat Intelligence Dependency
+## 106. Threat Intelligence Dependency
 
 If a detection depends on:
 
@@ -2060,7 +2060,7 @@ Expiration
 
 ---
 
-# 107. Detection Package
+## 107. Detection Package
 
 A deployable detection package may contain:
 
@@ -2075,7 +2075,7 @@ Version
 
 ---
 
-# 108. Artifact Versioning
+## 108. Artifact Versioning
 
 Example:
 
@@ -2091,7 +2091,7 @@ Git Commit
 
 ---
 
-# 109. Immutable Releases
+## 109. Immutable Releases
 
 Once a production package is released:
 
@@ -2113,7 +2113,7 @@ This improves auditability.
 
 ---
 
-# 110. Detection Rollback Example
+## 110. Detection Rollback Example
 
 ```text
 Production:
@@ -2131,7 +2131,7 @@ Alert Volume Normal
 
 ---
 
-# 111. Detection Monitoring Dashboard
+## 111. Detection Monitoring Dashboard
 
 Track:
 
@@ -2148,7 +2148,7 @@ Stale Rules
 
 ---
 
-# 112. Detection SLOs
+## 112. Detection SLOs
 
 Organizations can define objectives such as:
 
@@ -2167,7 +2167,7 @@ Exact targets should be environment-specific.
 
 ---
 
-# 113. Detection Reliability
+## 113. Detection Reliability
 
 A detection should be treated like a production service.
 
@@ -2184,7 +2184,7 @@ Recoverability
 
 ---
 
-# 114. Detection Failure
+## 114. Detection Failure
 
 Potential causes:
 
@@ -2200,7 +2200,7 @@ Deployment Error
 
 ---
 
-# 115. Detection Observability
+## 115. Detection Observability
 
 Monitor:
 
@@ -2214,7 +2214,7 @@ Did it generate alerts?
 
 ---
 
-# 116. Detection Health States
+## 116. Detection Health States
 
 Example:
 
@@ -2228,7 +2228,7 @@ DISABLED
 
 ---
 
-# 117. Automated Detection Health
+## 117. Automated Detection Health
 
 Automation can flag:
 
@@ -2242,7 +2242,7 @@ Latency Increase
 
 ---
 
-# 118. Detection Lifecycle Management
+## 118. Detection Lifecycle Management
 
 A detection should eventually move through:
 
@@ -2266,7 +2266,7 @@ Retired
 
 ---
 
-# 119. Detection Retirement Criteria
+## 119. Detection Retirement Criteria
 
 Consider retirement when:
 
@@ -2281,7 +2281,7 @@ Platform Migration
 
 ---
 
-# 120. Detection Documentation
+## 120. Detection Documentation
 
 Documentation should explain:
 
@@ -2301,41 +2301,41 @@ Version
 
 ---
 
-# 121. Detection Engineering Maturity
+## 121. Detection Engineering Maturity
 
-### Level 1
+#### Level 1
 
 Manual rules.
 
-### Level 2
+#### Level 2
 
 Version-controlled rules.
 
-### Level 3
+#### Level 3
 
 Automated validation.
 
-### Level 4
+#### Level 4
 
 Automated testing.
 
-### Level 5
+#### Level 5
 
 CI/CD deployment.
 
-### Level 6
+#### Level 6
 
 Continuous detection monitoring.
 
-### Level 7
+#### Level 7
 
 Fully integrated detection engineering lifecycle.
 
 ---
 
-# 122. Common Anti-Patterns
+## 122. Common Anti-Patterns
 
-## Anti-Pattern 1
+### Anti-Pattern 1
 
 Editing production rules manually without Git.
 
@@ -2347,7 +2347,7 @@ No Audit Trail
 
 ---
 
-## Anti-Pattern 2
+### Anti-Pattern 2
 
 No Tests.
 
@@ -2359,7 +2359,7 @@ Broken Detection
 
 ---
 
-## Anti-Pattern 3
+### Anti-Pattern 3
 
 No Review.
 
@@ -2371,7 +2371,7 @@ Logic Bugs
 
 ---
 
-## Anti-Pattern 4
+### Anti-Pattern 4
 
 Hard-Coded Secrets.
 
@@ -2383,7 +2383,7 @@ Credential Exposure
 
 ---
 
-## Anti-Pattern 5
+### Anti-Pattern 5
 
 No Rollback.
 
@@ -2395,7 +2395,7 @@ Long Recovery
 
 ---
 
-## Anti-Pattern 6
+### Anti-Pattern 6
 
 No Ownership.
 
@@ -2407,7 +2407,7 @@ Detection Debt
 
 ---
 
-## Anti-Pattern 7
+### Anti-Pattern 7
 
 No Monitoring.
 
@@ -2419,7 +2419,7 @@ Silent Detection Failure
 
 ---
 
-## Anti-Pattern 8
+### Anti-Pattern 8
 
 Only Testing Syntax.
 
@@ -2433,7 +2433,7 @@ Effective Detection
 
 ---
 
-## Anti-Pattern 9
+### Anti-Pattern 9
 
 No Production Scale Testing.
 
@@ -2445,7 +2445,7 @@ Performance Failure
 
 ---
 
-## Anti-Pattern 10
+### Anti-Pattern 10
 
 Treating Detection-as-Code as Just Git.
 
@@ -2459,7 +2459,7 @@ is not a mature Detection-as-Code program.
 
 ---
 
-# 123. Practical Exercise – Build a Detection Repository
+## 123. Practical Exercise – Build a Detection Repository
 
 Create:
 
@@ -2484,7 +2484,7 @@ Add:
 
 ---
 
-# 124. Practical Exercise – Build CI Validation
+## 124. Practical Exercise – Build CI Validation
 
 Implement:
 
@@ -2510,7 +2510,7 @@ Pass/Fail
 
 ---
 
-# 125. Practical Exercise – Detection PR
+## 125. Practical Exercise – Detection PR
 
 Create:
 
@@ -2538,7 +2538,7 @@ Merge
 
 ---
 
-# 126. Practical Exercise – Canary Deployment
+## 126. Practical Exercise – Canary Deployment
 
 Deploy to:
 
@@ -2565,7 +2565,7 @@ if results are acceptable.
 
 ---
 
-# 127. Practical Exercise – Rollback
+## 127. Practical Exercise – Rollback
 
 Simulate:
 
@@ -2585,7 +2585,7 @@ Document
 
 ---
 
-# 128. Detection-as-Code Checklist
+## 128. Detection-as-Code Checklist
 
 ```text
 [ ] Git repository
@@ -2616,67 +2616,67 @@ Document
 
 ---
 
-# 129. Interview Questions
+## 129. Interview Questions
 
-### What is Detection-as-Code?
+#### What is Detection-as-Code?
 
 > Managing security detections using software engineering practices such as Git, testing, code review, CI/CD, versioning, and automated deployment.
 
-### Why use Git for detections?
+#### Why use Git for detections?
 
 > Git provides version history, collaboration, change tracking, review, rollback, and auditability.
 
-### What should a detection pull request contain?
+#### What should a detection pull request contain?
 
 > The threat, detection logic, ATT&CK mapping, telemetry requirements, tests, expected false positives, and deployment impact.
 
-### What is detection CI?
+#### What is detection CI?
 
 > Automated validation and testing of detection changes before they are merged or deployed.
 
-### Why are detection tests important?
+#### Why are detection tests important?
 
 > They ensure that a detection matches intended malicious behavior and avoids known benign behavior.
 
-### What is regression testing?
+#### What is regression testing?
 
 > Testing that previously fixed detection behavior remains correct after future changes.
 
-### What is canary deployment?
+#### What is canary deployment?
 
 > Deploying a detection to a limited scope first to observe alert volume, performance, and correctness before broader deployment.
 
-### What is shadow mode?
+#### What is shadow mode?
 
 > Running a detection without producing normal analyst-facing alerts so its behavior can be evaluated safely.
 
-### Why is rollback important?
+#### Why is rollback important?
 
 > A faulty detection can cause alert storms, performance problems, or incorrect security decisions; rollback provides a rapid recovery mechanism.
 
-### What is schema validation?
+#### What is schema validation?
 
 > Checking that a detection contains valid structure, required fields, data types, and supported values.
 
-### What is detection drift?
+#### What is detection drift?
 
 > The degradation of detection effectiveness caused by changes in the environment, telemetry, threat behavior, or detection dependencies.
 
-### Why should detection rules have stable IDs?
+#### Why should detection rules have stable IDs?
 
 > Stable identifiers allow rules to be tracked consistently across versions, deployments, tests, incidents, and documentation.
 
-### Why should detection repositories avoid hard-coded secrets?
+#### Why should detection repositories avoid hard-coded secrets?
 
 > Detection repositories may be broadly accessible and version-controlled, so embedded credentials can create serious security risks.
 
-### What is detection observability?
+#### What is detection observability?
 
 > Monitoring whether detections execute correctly, receive expected telemetry, maintain normal latency, and produce expected outputs.
 
 ---
 
-# 130. Quick Revision
+## 130. Quick Revision
 
 ```text
 Detection-as-Code
@@ -2745,7 +2745,7 @@ Detection SLO
 
 ---
 
-# 131. Golden Rules
+## 131. Golden Rules
 
 ```text
 1. Treat detections as production engineering artifacts.
@@ -2828,7 +2828,7 @@ Detection SLO
 
 ---
 
-# 132. Final Mental Model
+## 132. Final Mental Model
 
 Think of a detection exactly like production software:
 
@@ -2919,7 +2919,7 @@ If those questions cannot be answered, the detection lifecycle is probably not m
 
 ---
 
-# 133. Chapter Summary
+## 133. Chapter Summary
 
 This chapter covered:
 

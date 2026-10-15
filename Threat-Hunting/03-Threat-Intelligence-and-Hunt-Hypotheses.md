@@ -34,7 +34,7 @@ The objective is to turn intelligence into **actionable defensive decisions**.
 
 ---
 
-# 1. What Is Cyber Threat Intelligence?
+## 1. What Is Cyber Threat Intelligence?
 
 Cyber Threat Intelligence is analyzed information about cyber threats that helps an organization make better security decisions.
 
@@ -82,11 +82,11 @@ makes the information much more useful.
 
 ---
 
-# 2. Intelligence vs Information vs Data
+## 2. Intelligence vs Information vs Data
 
 These terms are often confused.
 
-## Data
+### Data
 
 Raw observations.
 
@@ -94,7 +94,7 @@ Raw observations.
 IP: 203.0.113.50
 ```
 
-## Information
+### Information
 
 Data with basic context.
 
@@ -104,7 +104,7 @@ was observed communicating with
 multiple compromised endpoints.
 ```
 
-## Intelligence
+### Intelligence
 
 Analyzed information that supports a decision.
 
@@ -131,7 +131,7 @@ Decision
 
 ---
 
-# 3. Why Threat Intelligence Matters to Hunters
+## 3. Why Threat Intelligence Matters to Hunters
 
 Without intelligence:
 
@@ -163,7 +163,7 @@ Threat intelligence helps prioritize where to look.
 
 ---
 
-# 4. Threat Intelligence Lifecycle
+## 4. Threat Intelligence Lifecycle
 
 A typical intelligence lifecycle is:
 
@@ -185,7 +185,7 @@ A typical intelligence lifecycle is:
 
 ---
 
-# 5. Planning and Direction
+## 5. Planning and Direction
 
 Before collecting intelligence, determine what intelligence is actually needed.
 
@@ -221,11 +221,11 @@ Relevant intelligence priorities may include:
 
 ---
 
-# 6. Collection
+## 6. Collection
 
 Threat intelligence can come from many sources.
 
-## Internal Sources
+### Internal Sources
 
 - SIEM
 - EDR
@@ -237,7 +237,7 @@ Threat intelligence can come from many sources.
 - Incident response
 - Vulnerability scanners
 
-## External Sources
+### External Sources
 
 - CERTs
 - Government advisories
@@ -250,7 +250,7 @@ Threat intelligence can come from many sources.
 
 ---
 
-# 7. Processing
+## 7. Processing
 
 Raw intelligence often contains:
 
@@ -279,7 +279,7 @@ Structured Intelligence
 
 ---
 
-# 8. Analysis
+## 8. Analysis
 
 Analysis is where intelligence becomes meaningful.
 
@@ -303,13 +303,13 @@ Do we have related activity internally?
 
 ---
 
-# 9. Dissemination
+## 9. Dissemination
 
 Intelligence should reach the people who need it.
 
 Examples:
 
-### SOC
+#### SOC
 
 Needs:
 
@@ -318,7 +318,7 @@ Needs:
 - TTPs
 - Investigation context
 
-### Threat Hunters
+#### Threat Hunters
 
 Need:
 
@@ -327,7 +327,7 @@ Need:
 - Campaign information
 - Hypotheses
 
-### Incident Response
+#### Incident Response
 
 Needs:
 
@@ -336,7 +336,7 @@ Needs:
 - Attack patterns
 - Investigation leads
 
-### Executives
+#### Executives
 
 Need:
 
@@ -349,7 +349,7 @@ The same intelligence may therefore be presented differently to different audien
 
 ---
 
-# 10. Feedback
+## 10. Feedback
 
 Intelligence is not a one-way process.
 
@@ -373,7 +373,7 @@ Feedback improves future intelligence.
 
 ---
 
-# 11. Types of Threat Intelligence
+## 11. Types of Threat Intelligence
 
 Threat intelligence is commonly divided into:
 
@@ -386,7 +386,7 @@ Technical
 
 ---
 
-# 12. Strategic Threat Intelligence
+## 12. Strategic Threat Intelligence
 
 Strategic intelligence focuses on high-level risk.
 
@@ -422,7 +422,7 @@ Strategic intelligence supports:
 
 ---
 
-# 13. Operational Threat Intelligence
+## 13. Operational Threat Intelligence
 
 Operational intelligence focuses on campaigns and adversary operations.
 
@@ -446,7 +446,7 @@ It is particularly useful for:
 
 ---
 
-# 14. Tactical Threat Intelligence
+## 14. Tactical Threat Intelligence
 
 Tactical intelligence focuses on adversary **TTPs**.
 
@@ -476,7 +476,7 @@ Tactical intelligence is highly valuable for threat hunting.
 
 ---
 
-# 15. Technical Threat Intelligence
+## 15. Technical Threat Intelligence
 
 Technical intelligence focuses on technical indicators.
 
@@ -507,7 +507,7 @@ Technical intelligence is useful for IOC matching.
 
 ---
 
-# 16. Strategic vs Tactical vs Technical
+## 16. Strategic vs Tactical vs Technical
 
 | Type | Primary Question | Audience |
 |---|---|---|
@@ -518,7 +518,7 @@ Technical intelligence is useful for IOC matching.
 
 ---
 
-# 17. IOC — Indicator of Compromise
+## 17. IOC — Indicator of Compromise
 
 An IOC is an observable artifact that may indicate malicious activity.
 
@@ -556,7 +556,7 @@ for evidence of the indicator.
 
 ---
 
-# 18. Limitations of IOC Hunting
+## 18. Limitations of IOC Hunting
 
 IOCs can become obsolete.
 
@@ -588,7 +588,7 @@ is stronger than IOC hunting alone.
 
 ---
 
-# 19. IOA — Indicator of Attack
+## 19. IOA — Indicator of Attack
 
 An **Indicator of Attack (IOA)** focuses on suspicious behavior associated with an attack.
 
@@ -608,7 +608,7 @@ This may be more useful than searching for a known malware hash.
 
 ---
 
-# 20. IOC vs IOA
+## 20. IOC vs IOA
 
 | IOC | IOA |
 |---|---|
@@ -620,7 +620,7 @@ This may be more useful than searching for a known malware hash.
 
 ---
 
-# 21. TTP Intelligence
+## 21. TTP Intelligence
 
 TTP-based intelligence focuses on how adversaries operate.
 
@@ -642,7 +642,7 @@ This is highly valuable because TTPs are generally more stable than individual i
 
 ---
 
-# 22. Threat Actor Intelligence
+## 22. Threat Actor Intelligence
 
 Threat actor intelligence may include:
 
@@ -684,7 +684,7 @@ This profile can directly generate hunt hypotheses.
 
 ---
 
-# 23. Threat Intelligence and MITRE ATT&CK
+## 23. Threat Intelligence and MITRE ATT&CK
 
 ATT&CK provides a structured vocabulary for representing adversary behavior.
 
@@ -718,7 +718,7 @@ Hunt
 
 ---
 
-# 24. Intelligence-Driven Threat Hunting
+## 24. Intelligence-Driven Threat Hunting
 
 A mature process looks like:
 
@@ -744,35 +744,35 @@ This is called **intelligence-driven threat hunting**.
 
 ---
 
-# 25. Intelligence Relevance
+## 25. Intelligence Relevance
 
 Not every threat is relevant to every organization.
 
 Consider:
 
-### Industry
+#### Industry
 
 Is the threat targeting your industry?
 
-### Geography
+#### Geography
 
 Does the adversary target your region?
 
-### Technology
+#### Technology
 
 Does your organization use the affected technology?
 
-### Exposure
+#### Exposure
 
 Are your systems exposed?
 
-### Business Model
+#### Business Model
 
 Does your organization possess the type of data or access the adversary wants?
 
 ---
 
-# 26. Threat Relevance Matrix
+## 26. Threat Relevance Matrix
 
 A simple prioritization model:
 
@@ -787,7 +787,7 @@ This prevents analysts from spending resources on irrelevant threats.
 
 ---
 
-# 27. Hunt Hypotheses
+## 27. Hunt Hypotheses
 
 A **hunt hypothesis** is a testable statement about potentially malicious behavior.
 
@@ -817,7 +817,7 @@ The strong hypothesis identifies observable evidence.
 
 ---
 
-# 28. Hypothesis Structure
+## 28. Hypothesis Structure
 
 A useful structure is:
 
@@ -854,67 +854,67 @@ Search process creation events
 
 ---
 
-# 29. Hypothesis Categories
+## 29. Hypothesis Categories
 
 Hunt hypotheses can focus on:
 
-### Execution
+#### Execution
 
 > Attackers may execute commands through scripting interpreters.
 
-### Persistence
+#### Persistence
 
 > Attackers may create scheduled tasks to maintain access.
 
-### Credential Access
+#### Credential Access
 
 > Attackers may access credential stores after obtaining elevated privileges.
 
-### Discovery
+#### Discovery
 
 > Attackers may enumerate hosts and services after gaining access.
 
-### Lateral Movement
+#### Lateral Movement
 
 > Attackers may authenticate to multiple systems using compromised credentials.
 
-### Command and Control
+#### Command and Control
 
 > Compromised endpoints may communicate periodically with rare external destinations.
 
-### Exfiltration
+#### Exfiltration
 
 > An attacker may transfer unusually large amounts of sensitive data to external infrastructure.
 
 ---
 
-# 30. Hypothesis Quality
+## 30. Hypothesis Quality
 
 A strong hypothesis should be:
 
-### Specific
+#### Specific
 
 Clearly describe the behavior.
 
-### Testable
+#### Testable
 
 There must be observable evidence.
 
-### Relevant
+#### Relevant
 
 It should relate to a realistic threat.
 
-### Measurable
+#### Measurable
 
 Results should be possible to evaluate.
 
-### Actionable
+#### Actionable
 
 Findings should lead to investigation or defensive improvement.
 
 ---
 
-# 31. Hypothesis Lifecycle
+## 31. Hypothesis Lifecycle
 
 ```text
 Create
@@ -936,17 +936,17 @@ Retest
 
 ---
 
-# 32. Hunt Hypothesis Example — Credential Abuse
+## 32. Hunt Hypothesis Example — Credential Abuse
 
-## Threat Scenario
+### Threat Scenario
 
 An attacker has obtained a valid employee credential.
 
-## Hypothesis
+### Hypothesis
 
 > A compromised account may authenticate from an unusual device and access systems that are not normally associated with the account.
 
-## Data Sources
+### Data Sources
 
 - Authentication logs
 - VPN
@@ -955,7 +955,7 @@ An attacker has obtained a valid employee credential.
 - Identity provider
 - Cloud audit logs
 
-## Hunt Logic
+### Hunt Logic
 
 ```text
 User
@@ -975,17 +975,17 @@ Post-Authentication Activity
 
 ---
 
-# 33. Hunt Hypothesis Example — PowerShell
+## 33. Hunt Hypothesis Example — PowerShell
 
-## Scenario
+### Scenario
 
 An attacker gains access to a Windows endpoint.
 
-## Hypothesis
+### Hypothesis
 
 > The attacker may execute PowerShell commands using unusual command-line parameters or parent processes.
 
-## Evidence
+### Evidence
 
 ```text
 PowerShell
@@ -997,7 +997,7 @@ Rare parent
 External network connection
 ```
 
-## Investigation
+### Investigation
 
 Correlate:
 
@@ -1010,17 +1010,17 @@ Correlate:
 
 ---
 
-# 34. Hunt Hypothesis Example — DNS
+## 34. Hunt Hypothesis Example — DNS
 
-## Scenario
+### Scenario
 
 An attacker establishes command and control.
 
-## Hypothesis
+### Hypothesis
 
 > A compromised endpoint may generate periodic DNS queries to a rare or suspicious domain with unusually long or high-entropy subdomains.
 
-## Evidence
+### Evidence
 
 ```text
 Rare Domain
@@ -1036,13 +1036,13 @@ Additional context is required before concluding that DNS tunneling or C2 is pre
 
 ---
 
-# 35. Hunt Hypothesis Example — Cloud
+## 35. Hunt Hypothesis Example — Cloud
 
-## Scenario
+### Scenario
 
 An attacker obtains cloud credentials.
 
-## Hypothesis
+### Hypothesis
 
 > A compromised cloud identity may perform API operations from an unusual location or device and create resources inconsistent with its normal behavior.
 
@@ -1057,17 +1057,17 @@ Potential telemetry:
 
 ---
 
-# 36. Threat Intelligence Sources
+## 36. Threat Intelligence Sources
 
 Threat intelligence can originate from:
 
-## Government
+### Government
 
 - CISA
 - CERT organizations
 - National cybersecurity agencies
 
-## Security Vendors
+### Security Vendors
 
 - Microsoft
 - Google
@@ -1078,14 +1078,14 @@ Threat intelligence can originate from:
 - Sophos
 - Fortinet
 
-## Community
+### Community
 
 - MISP
 - AlienVault OTX
 - Abuse.ch
 - Malware research communities
 
-## Standards and Frameworks
+### Standards and Frameworks
 
 - MITRE ATT&CK
 - STIX
@@ -1095,7 +1095,7 @@ Always validate intelligence before operationalizing it.
 
 ---
 
-# 37. STIX
+## 37. STIX
 
 **Structured Threat Information Expression (STIX)** is a standardized language and serialization format for representing cyber threat intelligence.
 
@@ -1130,7 +1130,7 @@ STIX helps organizations exchange structured threat intelligence.
 
 ---
 
-# 38. TAXII
+## 38. TAXII
 
 **Trusted Automated Exchange of Intelligence Information (TAXII)** is a protocol for exchanging CTI, commonly used with STIX.
 
@@ -1160,7 +1160,7 @@ Threat Intelligence Provider
 
 ---
 
-# 39. MISP
+## 39. MISP
 
 **MISP — Malware Information Sharing Platform and Threat Sharing** — is an open-source platform used to collect, manage, correlate, and share threat intelligence.
 
@@ -1191,7 +1191,7 @@ MISP can be useful for managing:
 
 ---
 
-# 40. IOC Enrichment
+## 40. IOC Enrichment
 
 An IOC becomes more useful when enriched with additional context.
 
@@ -1219,7 +1219,7 @@ Enrichment can help determine whether an indicator deserves investigation.
 
 ---
 
-# 41. IOC Confidence
+## 41. IOC Confidence
 
 Not all intelligence has equal confidence.
 
@@ -1245,7 +1245,7 @@ Avoid automatically blocking every indicator from an external feed.
 
 ---
 
-# 42. Intelligence Recency
+## 42. Intelligence Recency
 
 Threat intelligence has a lifecycle.
 
@@ -1269,7 +1269,7 @@ Always consider timestamp and context.
 
 ---
 
-# 43. Threat Intelligence and SIEM
+## 43. Threat Intelligence and SIEM
 
 A SIEM can ingest threat intelligence and correlate it with internal telemetry.
 
@@ -1301,7 +1301,7 @@ Potential Compromise
 
 ---
 
-# 44. Intelligence-Driven Detection
+## 44. Intelligence-Driven Detection
 
 Threat intelligence can directly produce detections.
 
@@ -1333,7 +1333,7 @@ Detection
 
 ---
 
-# 45. Intelligence-Driven Threat Hunting Workflow
+## 45. Intelligence-Driven Threat Hunting Workflow
 
 A professional workflow:
 
@@ -1365,7 +1365,7 @@ A professional workflow:
 
 ---
 
-# 46. Threat Intelligence Quality
+## 46. Threat Intelligence Quality
 
 Good intelligence should be:
 
@@ -1381,7 +1381,7 @@ A large quantity of low-quality intelligence can create more noise than value.
 
 ---
 
-# 47. Intelligence Fatigue
+## 47. Intelligence Fatigue
 
 Security teams can receive thousands of indicators.
 
@@ -1411,7 +1411,7 @@ Better approaches include:
 
 ---
 
-# 48. Threat Intelligence Prioritization
+## 48. Threat Intelligence Prioritization
 
 A practical model:
 
@@ -1446,7 +1446,7 @@ should receive immediate attention.
 
 ---
 
-# 49. Intelligence-to-Hypothesis Pipeline
+## 49. Intelligence-to-Hypothesis Pipeline
 
 This is one of the most important workflows in this chapter.
 
@@ -1499,39 +1499,39 @@ Hunt
 
 ---
 
-# 50. Hunt Prioritization
+## 50. Hunt Prioritization
 
 Organizations often have more possible hunts than analysts.
 
 Prioritize based on:
 
-### Threat Relevance
+#### Threat Relevance
 
 Is the threat relevant to the organization?
 
-### Business Impact
+#### Business Impact
 
 Could the activity affect critical systems?
 
-### Likelihood
+#### Likelihood
 
 Is the attack plausible?
 
-### Exposure
+#### Exposure
 
 Are vulnerable assets exposed?
 
-### Detection Gap
+#### Detection Gap
 
 Is automated detection weak or missing?
 
-### Telemetry Availability
+#### Telemetry Availability
 
 Can the activity actually be investigated?
 
 ---
 
-# 51. Hunt Priority Matrix
+## 51. Hunt Priority Matrix
 
 | Factor | Low | Medium | High |
 |---|---|---|---|
@@ -1557,7 +1557,7 @@ Available Telemetry
 
 ---
 
-# 52. Hypothesis Tracking
+## 52. Hypothesis Tracking
 
 Maintain a hunt register.
 
@@ -1582,7 +1582,7 @@ Converted to Detection
 
 ---
 
-# 53. Hunt Outcome Classification
+## 53. Hunt Outcome Classification
 
 A hunt should produce a documented outcome.
 
@@ -1606,7 +1606,7 @@ Confirmed Malicious
 
 ---
 
-# 54. Converting a Hunt Into a Detection
+## 54. Converting a Hunt Into a Detection
 
 A successful hunt should be evaluated for automation.
 
@@ -1641,7 +1641,7 @@ Some behaviors are better suited for:
 
 ---
 
-# 55. Threat Intelligence Feedback Loop
+## 55. Threat Intelligence Feedback Loop
 
 A mature organization continuously feeds findings back into intelligence.
 
@@ -1665,9 +1665,9 @@ This creates an adaptive security program.
 
 ---
 
-# 56. Practical Lab — Intelligence-Driven Hunt
+## 56. Practical Lab — Intelligence-Driven Hunt
 
-## Scenario
+### Scenario
 
 Your organization receives intelligence that a threat actor targeting your industry has been observed using:
 
@@ -1691,13 +1691,13 @@ Firewall
 
 ---
 
-## Objective
+### Objective
 
 Determine whether historical telemetry contains behavior consistent with the threat actor's known techniques.
 
 ---
 
-## Step 1 — Create Intelligence Profile
+### Step 1 — Create Intelligence Profile
 
 Document:
 
@@ -1719,7 +1719,7 @@ ATT&CK Techniques
 
 ---
 
-## Step 2 — Map Techniques
+### Step 2 — Map Techniques
 
 Example:
 
@@ -1743,27 +1743,27 @@ Relevant ATT&CK Technique
 
 ---
 
-## Step 3 — Create Hypotheses
+### Step 3 — Create Hypotheses
 
-### H1
+#### H1
 
 > An attacker may execute PowerShell after gaining access to a Windows endpoint.
 
-### H2
+#### H2
 
 > An attacker may attempt credential access before moving laterally.
 
-### H3
+#### H3
 
 > A compromised endpoint may establish periodic DNS communication with attacker-controlled infrastructure.
 
-### H4
+#### H4
 
 > A compromised account may authenticate to multiple internal systems.
 
 ---
 
-## Step 4 — Identify Telemetry
+### Step 4 — Identify Telemetry
 
 ```text
 Process Logs
@@ -1777,7 +1777,7 @@ Active Directory
 
 ---
 
-## Step 5 — Hunt
+### Step 5 — Hunt
 
 Search historical telemetry for:
 
@@ -1791,7 +1791,7 @@ Search historical telemetry for:
 
 ---
 
-## Step 6 — Correlate
+### Step 6 — Correlate
 
 Do not investigate each event in isolation.
 
@@ -1813,7 +1813,7 @@ DNS Activity
 
 ---
 
-## Step 7 — Determine Outcome
+### Step 7 — Determine Outcome
 
 Classify:
 
@@ -1826,7 +1826,7 @@ Inconclusive
 
 ---
 
-## Step 8 — Improve Detection
+### Step 8 — Improve Detection
 
 For validated behavior:
 
@@ -1844,70 +1844,70 @@ Deploy
 
 ---
 
-# 57. Practical Intelligence Analysis Questions
+## 57. Practical Intelligence Analysis Questions
 
 When receiving new intelligence, ask:
 
-### Relevance
+#### Relevance
 
 - Does this threat target our industry?
 - Does it target our geography?
 - Does it target our technology stack?
 
-### Recency
+#### Recency
 
 - When was the activity observed?
 - Is the infrastructure still active?
 
-### Confidence
+#### Confidence
 
 - How reliable is the source?
 - Is the intelligence corroborated?
 
-### Exposure
+#### Exposure
 
 - Do we operate affected systems?
 - Are they externally accessible?
 
-### Detection
+#### Detection
 
 - Can we detect the described behavior?
 - Do we have the required telemetry?
 
-### Hunting
+#### Hunting
 
 - Can we search historical data?
 - How far back does our telemetry go?
 
 ---
 
-# 58. Common Threat Intelligence Mistakes
+## 58. Common Threat Intelligence Mistakes
 
-## Treating Every IOC as Malicious Forever
+### Treating Every IOC as Malicious Forever
 
 Indicators can become stale.
 
 ---
 
-## Consuming Too Many Feeds
+### Consuming Too Many Feeds
 
 More feeds do not automatically mean better intelligence.
 
 ---
 
-## Ignoring Context
+### Ignoring Context
 
 An IOC without context has limited value.
 
 ---
 
-## Focusing Only on IOCs
+### Focusing Only on IOCs
 
 TTP intelligence is often more durable.
 
 ---
 
-## Not Validating Intelligence
+### Not Validating Intelligence
 
 External intelligence may contain:
 
@@ -1918,13 +1918,13 @@ External intelligence may contain:
 
 ---
 
-## Not Connecting Intelligence to Internal Telemetry
+### Not Connecting Intelligence to Internal Telemetry
 
 Threat intelligence becomes much more useful when compared against actual organizational activity.
 
 ---
 
-# 59. Best Practices
+## 59. Best Practices
 
 - Define intelligence requirements.
 - Prioritize relevant threats.
@@ -1944,23 +1944,23 @@ Threat intelligence becomes much more useful when compared against actual organi
 
 ---
 
-# 60. Interview Questions
+## 60. Interview Questions
 
-## Beginner
+### Beginner
 
-### What is threat intelligence?
+#### What is threat intelligence?
 
 Threat intelligence is analyzed information about cyber threats that helps an organization understand threats and make informed security decisions.
 
 ---
 
-### What is the difference between data and intelligence?
+#### What is the difference between data and intelligence?
 
 Data is raw information. Intelligence is analyzed and contextualized information that supports a security decision.
 
 ---
 
-### What are the major types of threat intelligence?
+#### What are the major types of threat intelligence?
 
 Common categories are:
 
@@ -1971,47 +1971,47 @@ Common categories are:
 
 ---
 
-### What is an IOC?
+#### What is an IOC?
 
 An IOC is an observable artifact that may indicate compromise, such as an IP address, domain, URL, or file hash.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is TTP-based intelligence?
+#### What is TTP-based intelligence?
 
 TTP-based intelligence describes adversary tactics, techniques, and procedures rather than focusing exclusively on individual indicators.
 
 ---
 
-### Why is TTP-based hunting valuable?
+#### Why is TTP-based hunting valuable?
 
 Attackers can frequently change infrastructure and malware hashes, while their operational behaviors and techniques may remain more consistent.
 
 ---
 
-### What is STIX?
+#### What is STIX?
 
 STIX is a standardized language and format for representing structured cyber threat intelligence.
 
 ---
 
-### What is TAXII?
+#### What is TAXII?
 
 TAXII is a protocol used to exchange cyber threat intelligence, commonly STIX-formatted information.
 
 ---
 
-### What is MISP?
+#### What is MISP?
 
 MISP is an open-source threat intelligence platform used to collect, correlate, enrich, manage, and share threat intelligence.
 
 ---
 
-## Advanced
+### Advanced
 
-### How do you turn threat intelligence into a hunt hypothesis?
+#### How do you turn threat intelligence into a hunt hypothesis?
 
 ```text
 Threat Intelligence
@@ -2033,7 +2033,7 @@ Hunt Hypothesis
 
 ---
 
-### How do you determine whether threat intelligence is relevant?
+#### How do you determine whether threat intelligence is relevant?
 
 Evaluate:
 
@@ -2048,19 +2048,19 @@ Evaluate:
 
 ---
 
-### Why shouldn't an organization automatically block every IOC?
+#### Why shouldn't an organization automatically block every IOC?
 
 Because intelligence can contain stale indicators, false positives, shared infrastructure, compromised legitimate services, or insufficient context. Blocking should be based on confidence, relevance, and organizational risk.
 
 ---
 
-### How do threat intelligence and threat hunting work together?
+#### How do threat intelligence and threat hunting work together?
 
 Threat intelligence identifies relevant threats and adversary behaviors, while threat hunting searches internal telemetry for evidence that those behaviors may be occurring.
 
 ---
 
-# 61. Professional Threat Intelligence Workflow
+## 61. Professional Threat Intelligence Workflow
 
 A mature CTI program can be represented as:
 
@@ -2093,7 +2093,7 @@ A mature CTI program can be represented as:
 
 ---
 
-# 62. Intelligence-to-Detection Pipeline
+## 62. Intelligence-to-Detection Pipeline
 
 ```text
 Threat Intelligence
@@ -2125,7 +2125,7 @@ This pipeline connects threat intelligence with the entire defensive security li
 
 ---
 
-# 63. Chapter Summary
+## 63. Chapter Summary
 
 Threat intelligence gives threat hunters context.
 
@@ -2197,22 +2197,22 @@ BETTER INTELLIGENCE
 
 ---
 
-# References
+## References
 
-## Threat Intelligence
+### Threat Intelligence
 
 - CISA — https://www.cisa.gov/
 - MITRE ATT&CK — https://attack.mitre.org/
 - MITRE Center for Threat-Informed Defense — https://ctid.mitre.org/
 - NIST Cybersecurity Framework — https://www.nist.gov/cyberframework
 
-## Structured Intelligence
+### Structured Intelligence
 
 - STIX — https://oasis-open.github.io/cti-documentation/
 - TAXII — https://oasis-open.github.io/cti-documentation/
 - MISP — https://www.misp-project.org/
 
-## Threat Research
+### Threat Research
 
 - CISA Known Exploited Vulnerabilities Catalog — https://www.cisa.gov/known-exploited-vulnerabilities-catalog
 - MITRE ATT&CK Groups — https://attack.mitre.org/groups/

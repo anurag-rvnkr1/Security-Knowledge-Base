@@ -1,12 +1,12 @@
 # 46-Prototype-Pollution.md
 
-# Part 1 — Introduction to Prototype Pollution, JavaScript Prototypes, Object Inheritance, and Secure Object Design
+## Part 1 — Introduction to Prototype Pollution, JavaScript Prototypes, Object Inheritance, and Secure Object Design
 
 > **"Prototype Pollution is a JavaScript object integrity issue that occurs when application logic allows unintended modification of object prototypes. Secure applications validate object structures, safely handle user-controlled data, and avoid unsafe object merging or property assignment."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Prototype Pollution?
+## What is Prototype Pollution?
 
 Prototype Pollution is a **JavaScript object integrity issue** where an application's handling of data can unintentionally affect the behavior of other objects through shared prototypes.
 
@@ -49,7 +49,7 @@ Rather than affecting a single object, unintended prototype modifications may in
 
 ---
 
-# Understanding JavaScript Objects
+## Understanding JavaScript Objects
 
 JavaScript stores information inside **objects**.
 
@@ -73,7 +73,7 @@ Objects are the primary building blocks of JavaScript applications.
 
 ---
 
-# What is a Prototype?
+## What is a Prototype?
 
 Every JavaScript object is associated with a **prototype**.
 
@@ -99,7 +99,7 @@ The prototype acts as a shared source of inherited behavior.
 
 ---
 
-# Prototype Inheritance
+## Prototype Inheritance
 
 Instead of copying every property into every object, JavaScript allows objects to inherit shared functionality.
 
@@ -127,7 +127,7 @@ Inheritance improves efficiency and code reuse.
 
 ---
 
-# Prototype Chain
+## Prototype Chain
 
 Objects can inherit through multiple prototype levels.
 
@@ -151,7 +151,7 @@ When a property is requested, JavaScript searches along this chain until it find
 
 ---
 
-# Property Lookup
+## Property Lookup
 
 Conceptually:
 
@@ -199,7 +199,7 @@ Understanding this lookup process is fundamental to understanding Prototype Poll
 
 ---
 
-# Object Creation
+## Object Creation
 
 Objects may be created in several ways.
 
@@ -225,7 +225,7 @@ Regardless of creation method, inherited behavior should remain predictable.
 
 ---
 
-# Why Prototype Pollution Matters
+## Why Prototype Pollution Matters
 
 Applications often rely on objects for:
 
@@ -241,7 +241,7 @@ Unexpected prototype changes can affect application behavior across many compone
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 External Input
@@ -263,7 +263,7 @@ Data originating from external sources should never be trusted without validatio
 
 ---
 
-# Common Sources of Object Data
+## Common Sources of Object Data
 
 ```
 External Data
@@ -289,7 +289,7 @@ Every external data source should be treated as untrusted.
 
 ---
 
-# Secure Object Processing
+## Secure Object Processing
 
 ```
 Incoming Data
@@ -315,7 +315,7 @@ Validation should occur before external data influences application objects.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Client
@@ -345,7 +345,7 @@ Object validation should occur before business logic processes incoming data.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Prototype safety should complement other application security controls.
 
@@ -377,7 +377,7 @@ Multiple layers provide stronger protection than any single control.
 
 ---
 
-# Secure Design Principles
+## Secure Design Principles
 
 ```
 Secure Object Design
@@ -405,7 +405,7 @@ Applications should process object data predictably and consistently.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational SaaS platform receives JSON requests from web applications, mobile applications, and partner APIs.
 
@@ -433,7 +433,7 @@ Incoming data is validated against approved schemas before being converted into 
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 Prototype Handling
@@ -461,7 +461,7 @@ Each component contributes to secure object handling.
 
 ---
 
-# Secure Object Handling Goals
+## Secure Object Handling Goals
 
 Applications should provide:
 
@@ -474,7 +474,7 @@ Applications should provide:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a prototype chain for a simple JavaScript object.
 2. Identify where external data enters the application.
@@ -486,7 +486,7 @@ Applications should provide:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a JavaScript prototype?
 2. What is the prototype chain?
@@ -501,7 +501,7 @@ Applications should provide:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat all external object data as untrusted.
 - Validate incoming data before object creation.
@@ -514,7 +514,7 @@ Applications should provide:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting externally supplied object structures.
 - Skipping validation before object creation.
@@ -525,7 +525,7 @@ Applications should provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Prototype Pollution is fundamentally an object integrity issue.
 - JavaScript objects inherit behavior through the prototype chain.
@@ -533,15 +533,15 @@ Applications should provide:
 - Secure object design relies on validation, predictable inheritance, and trusted configuration.
 - Enterprise governance, monitoring, and standardized object processing improve application resilience.
 
-# 46-Prototype-Pollution.md
+## 46-Prototype-Pollution.md
 
-# Part 2 — Prototype Chain Processing, Object Merging, Deep Cloning, Schema Validation, and Enterprise Object Architecture
+## Part 2 — Prototype Chain Processing, Object Merging, Deep Cloning, Schema Validation, and Enterprise Object Architecture
 
 > **"Secure JavaScript applications maintain object integrity by validating external data, using safe object creation patterns, enforcing schemas, and ensuring that shared object behavior remains predictable throughout the application lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -559,7 +559,7 @@ After completing this part, you will understand:
 
 ---
 
-# Object Processing Lifecycle
+## Object Processing Lifecycle
 
 Every application processes object data through multiple stages.
 
@@ -591,7 +591,7 @@ Each stage should preserve object integrity and prevent unexpected behavior.
 
 ---
 
-# Prototype Chain Processing
+## Prototype Chain Processing
 
 When a property is requested, JavaScript follows a predictable lookup sequence.
 
@@ -623,7 +623,7 @@ The lookup stops as soon as the requested property is found.
 
 ---
 
-# Property Resolution Flow
+## Property Resolution Flow
 
 ```
 Property Requested
@@ -661,7 +661,7 @@ Understanding this resolution process helps developers build predictable object 
 
 ---
 
-# Own Properties vs Inherited Properties
+## Own Properties vs Inherited Properties
 
 ```
 Object
@@ -680,7 +680,7 @@ Applications should clearly distinguish between properties that belong directly 
 
 ---
 
-# Object Creation Workflow
+## Object Creation Workflow
 
 ```
 External Data
@@ -702,7 +702,7 @@ Only validated and expected data should become part of application objects.
 
 ---
 
-# Object Merging (Conceptual)
+## Object Merging (Conceptual)
 
 Applications frequently combine data from multiple sources.
 
@@ -722,7 +722,7 @@ Merge operations should preserve application-defined structure and avoid introdu
 
 ---
 
-# Common Object Sources
+## Common Object Sources
 
 ```
 Application Data
@@ -748,7 +748,7 @@ Each source should be evaluated according to its trust level.
 
 ---
 
-# Safe Merge Workflow
+## Safe Merge Workflow
 
 ```
 Incoming Data
@@ -774,7 +774,7 @@ Only expected properties should participate in merge operations.
 
 ---
 
-# Shallow Copy (Conceptual)
+## Shallow Copy (Conceptual)
 
 A shallow copy duplicates only the top-level structure.
 
@@ -798,7 +798,7 @@ Developers should understand the implications of shared nested references.
 
 ---
 
-# Deep Copy (Conceptual)
+## Deep Copy (Conceptual)
 
 A deep copy duplicates nested structures as well.
 
@@ -818,7 +818,7 @@ Deep copying helps isolate independent object instances when appropriate.
 
 ---
 
-# Object Normalization
+## Object Normalization
 
 Applications often normalize incoming data before processing.
 
@@ -842,7 +842,7 @@ Normalization promotes consistent application behavior.
 
 ---
 
-# Schema Validation
+## Schema Validation
 
 Schemas define the expected structure of incoming data.
 
@@ -866,7 +866,7 @@ Schema validation ensures object structure matches application expectations.
 
 ---
 
-# Benefits of Schema Validation
+## Benefits of Schema Validation
 
 ```
 Schema Validation
@@ -890,7 +890,7 @@ Well-defined schemas simplify both development and security reviews.
 
 ---
 
-# Immutable Configuration
+## Immutable Configuration
 
 Critical application configuration should remain immutable whenever practical.
 
@@ -910,7 +910,7 @@ Immutable configuration reduces unintended runtime modifications.
 
 ---
 
-# Object Lifecycle
+## Object Lifecycle
 
 ```
 Create
@@ -936,7 +936,7 @@ Managing the full lifecycle helps preserve object integrity.
 
 ---
 
-# Enterprise Object Architecture
+## Enterprise Object Architecture
 
 ```
 Client
@@ -970,7 +970,7 @@ Validation should occur before business services receive application objects.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Input Validation
@@ -1000,7 +1000,7 @@ Each validation layer reinforces application reliability.
 
 ---
 
-# Logging
+## Logging
 
 Applications should record significant object-processing events.
 
@@ -1024,7 +1024,7 @@ Logs support troubleshooting, governance, and operational analysis.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1040,7 +1040,7 @@ Sensitive object contents should be masked or excluded from logs where appropria
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -1066,7 +1066,7 @@ Continuous monitoring helps verify that object-processing policies remain effect
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1080,7 +1080,7 @@ Continuous monitoring helps verify that object-processing policies remain effect
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial services company processes millions of JSON-based API requests every day.
 
@@ -1108,7 +1108,7 @@ Every incoming payload is validated against approved schemas before application 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1121,7 +1121,7 @@ Every incoming payload is validated against approved schemas before application 
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the prototype chain for several application objects.
 2. Identify where object merging occurs in your application.
@@ -1133,7 +1133,7 @@ Every incoming payload is validated against approved schemas before application 
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the prototype chain?
 2. What is the difference between own and inherited properties?
@@ -1148,7 +1148,7 @@ Every incoming payload is validated against approved schemas before application 
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate all external data before creating application objects.
 - Define and enforce schemas for structured input.
@@ -1161,7 +1161,7 @@ Every incoming payload is validated against approved schemas before application 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Creating objects directly from unvalidated external input.
 - Inconsistent validation across services.
@@ -1172,7 +1172,7 @@ Every incoming payload is validated against approved schemas before application 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Object integrity depends on predictable creation and validation.
 - Property resolution follows the JavaScript prototype chain.
@@ -1180,15 +1180,15 @@ Every incoming payload is validated against approved schemas before application 
 - Safe object creation and controlled merge operations support secure application behavior.
 - Enterprise governance, monitoring, and standardized validation strengthen Prototype Pollution defenses.
 
-# 46-Prototype-Pollution.md
+## 46-Prototype-Pollution.md
 
-# Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, DevSecOps, Monitoring, and Enterprise Defense
+## Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, DevSecOps, Monitoring, and Enterprise Defense
 
 > **"Preventing Prototype Pollution requires secure object lifecycle management, standardized schema validation, safe object construction, continuous testing, and enterprise governance throughout the software development lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1206,7 +1206,7 @@ After completing this part, you will understand:
 
 ---
 
-# Detecting Prototype Pollution Risks
+## Detecting Prototype Pollution Risks
 
 Organizations should periodically review how objects are created, validated, merged, and consumed throughout the application.
 
@@ -1234,7 +1234,7 @@ The objective is to ensure that externally supplied data cannot unexpectedly inf
 
 ---
 
-# Object Security Review
+## Object Security Review
 
 Security reviews should examine the complete object lifecycle.
 
@@ -1262,7 +1262,7 @@ Each stage should preserve predictable object behavior.
 
 ---
 
-# Object Inventory
+## Object Inventory
 
 Maintain documentation of every major object used within the application.
 
@@ -1290,7 +1290,7 @@ A documented inventory simplifies security reviews and governance.
 
 ---
 
-# Data Source Inventory
+## Data Source Inventory
 
 Applications should identify every source of object data.
 
@@ -1320,7 +1320,7 @@ Every source should be classified according to its trust level.
 
 ---
 
-# Object Lifecycle Review
+## Object Lifecycle Review
 
 Security reviews should evaluate every stage of object processing.
 
@@ -1352,7 +1352,7 @@ Object integrity should remain consistent throughout the lifecycle.
 
 ---
 
-# Schema Review
+## Schema Review
 
 Schema definitions should be periodically reviewed.
 
@@ -1385,7 +1385,7 @@ Schemas should accurately reflect business requirements.
 
 ---
 
-# Object Architecture Review
+## Object Architecture Review
 
 Architecture reviews should examine:
 
@@ -1416,7 +1416,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling helps identify where object integrity influences application behavior.
 
@@ -1440,7 +1440,7 @@ The goal is to identify trust boundaries and determine where validation controls
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 Security architects should ask:
 
@@ -1467,7 +1467,7 @@ Security Controls
 
 ---
 
-# Secure Validation Testing
+## Secure Validation Testing
 
 Applications should verify that object validation behaves consistently.
 
@@ -1495,7 +1495,7 @@ Testing should focus on correctness, consistency, and policy compliance.
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1523,7 +1523,7 @@ Each testing phase contributes to reliable object processing.
 
 ---
 
-# Secure Object Review
+## Secure Object Review
 
 Security teams should periodically review:
 
@@ -1553,7 +1553,7 @@ Regular reviews improve long-term maintainability.
 
 ---
 
-# Configuration Management
+## Configuration Management
 
 Object-related configuration should follow formal governance.
 
@@ -1585,7 +1585,7 @@ Controlled changes reduce configuration drift.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 Prototype safety should be incorporated throughout software development.
 
@@ -1621,7 +1621,7 @@ Early validation reduces implementation errors and operational risk.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -1655,7 +1655,7 @@ Validation becomes part of every software release.
 
 ---
 
-# Logging
+## Logging
 
 Applications should log significant object-processing events.
 
@@ -1679,7 +1679,7 @@ Logs support investigations, governance, and operational visibility.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1696,7 +1696,7 @@ Sensitive application data should be masked or omitted from logs where appropria
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1722,7 +1722,7 @@ Continuous monitoring confirms that validation policies remain effective.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1736,7 +1736,7 @@ Continuous monitoring confirms that validation policies remain effective.
 
 ---
 
-# Governance
+## Governance
 
 Organizations should establish centralized standards for object handling.
 
@@ -1766,7 +1766,7 @@ Governance improves consistency across development teams.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1804,7 +1804,7 @@ Each layer contributes to predictable object processing and operational visibili
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational insurance provider processes customer, policy, and claims information through multiple web and mobile applications.
 
@@ -1832,7 +1832,7 @@ Incoming request data is validated against centrally managed schemas before appl
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Object Lifecycle Documented
@@ -1858,7 +1858,7 @@ Incoming request data is validated against centrally managed schemas before appl
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1871,7 +1871,7 @@ Incoming request data is validated against centrally managed schemas before appl
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create an inventory of all application objects.
 2. Identify every external data source that contributes to object creation.
@@ -1883,7 +1883,7 @@ Incoming request data is validated against centrally managed schemas before appl
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Prototype Pollution?
 2. Why is schema validation important?
@@ -1898,7 +1898,7 @@ Incoming request data is validated against centrally managed schemas before appl
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate all externally supplied object data.
 - Enforce well-defined schemas for structured input.
@@ -1912,7 +1912,7 @@ Incoming request data is validated against centrally managed schemas before appl
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Creating application objects directly from unvalidated input.
 - Applying inconsistent validation rules across services.
@@ -1924,7 +1924,7 @@ Incoming request data is validated against centrally managed schemas before appl
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Prototype Pollution prevention begins with secure object lifecycle management.
 - Threat modeling identifies where object integrity affects business logic.
@@ -1932,15 +1932,15 @@ Incoming request data is validated against centrally managed schemas before appl
 - Secure SDLC and DevSecOps integrate object validation throughout development.
 - Enterprise governance, monitoring, and continuous review strengthen defenses against Prototype Pollution.
 
-# 46-Prototype-Pollution.md
+## 46-Prototype-Pollution.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Secure object processing is achieved through trusted data validation, standardized schema enforcement, secure object lifecycle management, centralized governance, and continuous monitoring. Object integrity should remain predictable throughout the application's lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1962,7 +1962,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Object Governance
+## Enterprise Object Governance
 
 Organizations should establish centralized governance for object creation, validation, and lifecycle management.
 
@@ -2002,7 +2002,7 @@ Governance ensures consistent object behavior across applications and environmen
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Object Security Governance
@@ -2032,7 +2032,7 @@ Centralized governance improves consistency and maintainability.
 
 ---
 
-# Schema Governance
+## Schema Governance
 
 Schemas should be managed centrally.
 
@@ -2060,7 +2060,7 @@ Schema changes should follow formal review and approval processes.
 
 ---
 
-# Zero Trust for Object Processing
+## Zero Trust for Object Processing
 
 Zero Trust principles apply to every object entering the application.
 
@@ -2091,7 +2091,7 @@ Every object should be independently validated before use.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Object validation should complement broader application security controls.
 
@@ -2127,7 +2127,7 @@ Multiple validation layers provide stronger assurance than any single control.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Object validation should become part of continuous software delivery.
 
@@ -2159,7 +2159,7 @@ Security is continuously integrated throughout development.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Validation-related configuration should be managed using version-controlled infrastructure where practical.
 
@@ -2187,7 +2187,7 @@ IaC improves consistency and traceability.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2225,7 +2225,7 @@ Automated validation helps detect implementation issues before deployment.
 
 ---
 
-# Documentation
+## Documentation
 
 Maintain documentation for:
 
@@ -2255,7 +2255,7 @@ Accurate documentation supports governance and long-term maintenance.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Organizations should maintain governance supporting secure object processing.
 
@@ -2283,7 +2283,7 @@ Compliance requirements vary according to applicable regulations and organizatio
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Important validation events should be recorded.
 
@@ -2307,7 +2307,7 @@ Audit logs support investigations and operational visibility.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2324,7 +2324,7 @@ Sensitive object data should be masked or excluded where appropriate.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2350,7 +2350,7 @@ Continuous monitoring helps ensure validation controls remain effective after ap
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2365,7 +2365,7 @@ Continuous monitoring helps ensure validation controls remain effective after ap
 
 ---
 
-# Object Security Dashboard
+## Object Security Dashboard
 
 ```
 Object Security Dashboard
@@ -2393,7 +2393,7 @@ Dashboards provide centralized visibility into object-processing health.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2423,7 +2423,7 @@ SOC teams correlate object-processing events with application and infrastructure
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should establish documented response procedures for object-processing incidents.
 
@@ -2459,7 +2459,7 @@ Structured response processes reduce operational impact and strengthen future de
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2489,7 +2489,7 @@ Root cause analysis should evaluate architecture, implementation, governance, an
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2519,7 +2519,7 @@ Object validation practices should continuously evolve with application architec
 
 ---
 
-# Prototype Pollution Security Maturity Model
+## Prototype Pollution Security Maturity Model
 
 ```
 Level 1
@@ -2556,7 +2556,7 @@ Higher maturity reflects stronger governance, automation, and operational consis
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2604,7 +2604,7 @@ This architecture separates validation, business processing, monitoring, and gov
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail platform processes customer profiles, orders, inventory updates, and partner integrations through multiple APIs.
 
@@ -2632,7 +2632,7 @@ The organization validates every incoming payload against centrally managed sche
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Object Models Documented
@@ -2658,7 +2658,7 @@ The organization validates every incoming payload against centrally managed sche
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2671,9 +2671,9 @@ The organization validates every incoming payload against centrally managed sche
 
 ---
 
-# Prototype Pollution Quick Revision
+## Prototype Pollution Quick Revision
 
-## Object Lifecycle
+### Object Lifecycle
 
 ```
 Incoming Data
@@ -2701,7 +2701,7 @@ Response
 
 ---
 
-## Secure Object Processing
+### Secure Object Processing
 
 ```
 External Data
@@ -2721,7 +2721,7 @@ Application
 
 ---
 
-## Defense Layers
+### Defense Layers
 
 ```
 Input Validation
@@ -2745,7 +2745,7 @@ Monitoring
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Metrics
@@ -2765,7 +2765,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the complete object-processing architecture for a JavaScript application.
 2. Identify all trust boundaries where external data becomes application objects.
@@ -2777,7 +2777,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Prototype Pollution?
 2. Why is schema validation important?
@@ -2792,7 +2792,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat all externally supplied object data as untrusted.
 - Enforce schemas before object creation.
@@ -2806,7 +2806,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Creating objects directly from unvalidated external input.
 - Inconsistent schema enforcement across services.
@@ -2818,7 +2818,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

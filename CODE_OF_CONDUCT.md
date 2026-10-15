@@ -8,8 +8,7 @@ This repository exists to share cybersecurity knowledge, encourage responsible l
 
 ---
 
-# Our Values
-
+## Our Values
 As members of this community, we strive to:
 
 * Be respectful and professional.
@@ -22,8 +21,7 @@ As members of this community, we strive to:
 
 ---
 
-# Expected Behavior
-
+## Expected Behavior
 Examples of behavior that contribute to a positive environment include:
 
 * Treating others with courtesy and respect.
@@ -36,8 +34,7 @@ Examples of behavior that contribute to a positive environment include:
 
 ---
 
-# Unacceptable Behavior
-
+## Unacceptable Behavior
 The following behaviors are not acceptable:
 
 * Harassment, intimidation, or discrimination of any kind.
@@ -51,8 +48,7 @@ The following behaviors are not acceptable:
 
 ---
 
-# Responsible Security Discussions
-
+## Responsible Security Discussions
 This repository is intended for educational, defensive, and authorized security research.
 
 Contributors should:
@@ -64,8 +60,7 @@ Contributors should:
 
 ---
 
-# Reporting Concerns
-
+## Reporting Concerns
 If you encounter behavior that violates this Code of Conduct, please open a private communication with the project maintainer.
 
 When reporting an issue, include:
@@ -78,8 +73,7 @@ All reports will be reviewed fairly and handled with discretion.
 
 ---
 
-# Enforcement
-
+## Enforcement
 Project maintainers are responsible for enforcing this Code of Conduct.
 
 Depending on the severity of a violation, maintainers may:
@@ -93,8 +87,7 @@ Enforcement decisions will be made in good faith with the goal of maintaining a 
 
 ---
 
-# Scope
-
+## Scope
 This Code of Conduct applies to:
 
 * GitHub Issues
@@ -106,8 +99,7 @@ This Code of Conduct applies to:
 
 ---
 
-# Attribution
-
+## Attribution
 This Code of Conduct is adapted from the **Contributor Covenant**, version 2.1, and tailored for the educational and defensive cybersecurity focus of this repository.
 
 For more information, visit:
@@ -116,8 +108,7 @@ https://www.contributor-covenant.org
 
 ---
 
-# Thank You
-
-Thank you for helping make **Cybersecurity Notes** a professional, welcoming, and valuable resource for the global cybersecurity community.
+## Thank You
+Thank you for helping make **Security Knowledge Base** a professional, welcoming, and valuable resource for the security community.
 
 Together, we can build a knowledge base that promotes responsible learning, collaboration, and secure technology.

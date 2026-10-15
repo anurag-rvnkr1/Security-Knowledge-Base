@@ -1,10 +1,10 @@
 # 13 - Linux Networking
 
-# Part 1 — Networking Fundamentals, OSI Model, TCP/IP Model, IP Addressing, Subnetting, and Network Architecture
+## Part 1 — Networking Fundamentals, OSI Model, TCP/IP Model, IP Addressing, Subnetting, and Network Architecture
 
 ---
 
-# Introduction
+## Introduction
 
 Networking is the foundation of modern computing.
 
@@ -32,7 +32,7 @@ Understanding networking is essential for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -47,7 +47,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is a Computer Network?
+## What is a Computer Network?
 
 A **computer network** is a collection of devices connected together to exchange data.
 
@@ -65,7 +65,7 @@ Examples of connected devices include:
 
 ---
 
-# Why Networks Exist
+## Why Networks Exist
 
 Networks enable:
 
@@ -80,7 +80,7 @@ Networks enable:
 
 ---
 
-# Enterprise Network Example
+## Enterprise Network Example
 
 ```text
 Internet
@@ -112,7 +112,7 @@ Employees
 
 ---
 
-# Types of Networks
+## Types of Networks
 
 | Network | Description |
 |----------|-------------|
@@ -125,7 +125,7 @@ Employees
 
 ---
 
-# Local Area Network (LAN)
+## Local Area Network (LAN)
 
 A LAN connects devices within a limited geographical area.
 
@@ -144,7 +144,7 @@ Characteristics:
 
 ---
 
-# Wide Area Network (WAN)
+## Wide Area Network (WAN)
 
 A WAN connects geographically separated networks.
 
@@ -162,7 +162,7 @@ Characteristics:
 
 ---
 
-# Virtual Private Network (VPN)
+## Virtual Private Network (VPN)
 
 A VPN creates an encrypted connection across an untrusted network.
 
@@ -175,7 +175,7 @@ Benefits:
 
 ---
 
-# Basic Network Components
+## Basic Network Components
 
 ```text
 Computer
@@ -199,7 +199,7 @@ Internet
 
 ---
 
-# Common Networking Devices
+## Common Networking Devices
 
 | Device | Function |
 |----------|----------|
@@ -212,7 +212,7 @@ Internet
 
 ---
 
-# Network Communication
+## Network Communication
 
 Communication occurs through:
 
@@ -242,7 +242,7 @@ Destination
 
 ---
 
-# Data Encapsulation
+## Data Encapsulation
 
 As data moves down the networking stack, protocol headers are added.
 
@@ -270,13 +270,13 @@ The receiving host removes these headers in reverse order.
 
 ---
 
-# The OSI Model
+## The OSI Model
 
 The **Open Systems Interconnection (OSI)** model describes network communication using seven logical layers.
 
 ---
 
-# OSI Layers
+## OSI Layers
 
 ```text
 7 Application
@@ -296,7 +296,7 @@ The **Open Systems Interconnection (OSI)** model describes network communication
 
 ---
 
-# Layer 7 — Application
+## Layer 7 — Application
 
 Responsible for:
 
@@ -314,7 +314,7 @@ Examples:
 
 ---
 
-# Layer 6 — Presentation
+## Layer 6 — Presentation
 
 Responsible for:
 
@@ -330,7 +330,7 @@ Examples:
 
 ---
 
-# Layer 5 — Session
+## Layer 5 — Session
 
 Responsible for:
 
@@ -345,7 +345,7 @@ Examples:
 
 ---
 
-# Layer 4 — Transport
+## Layer 4 — Transport
 
 Responsible for:
 
@@ -361,7 +361,7 @@ Protocols:
 
 ---
 
-# Layer 3 — Network
+## Layer 3 — Network
 
 Responsible for:
 
@@ -382,7 +382,7 @@ Devices:
 
 ---
 
-# Layer 2 — Data Link
+## Layer 2 — Data Link
 
 Responsible for:
 
@@ -397,7 +397,7 @@ Devices:
 
 ---
 
-# Layer 1 — Physical
+## Layer 1 — Physical
 
 Responsible for:
 
@@ -414,7 +414,7 @@ Examples:
 
 ---
 
-# OSI Summary Table
+## OSI Summary Table
 
 | Layer | Name | Example |
 |--------|------|----------|
@@ -428,7 +428,7 @@ Examples:
 
 ---
 
-# Memory Aid
+## Memory Aid
 
 Top to bottom:
 
@@ -470,13 +470,13 @@ Away
 
 ---
 
-# TCP/IP Model
+## TCP/IP Model
 
 The TCP/IP model is the practical networking model used on modern networks.
 
 ---
 
-# TCP/IP Layers
+## TCP/IP Layers
 
 ```text
 Application
@@ -496,7 +496,7 @@ Network Access
 
 ---
 
-# OSI vs TCP/IP
+## OSI vs TCP/IP
 
 | OSI | TCP/IP |
 |------|---------|
@@ -510,7 +510,7 @@ Network Access
 
 ---
 
-# Why TCP/IP Matters
+## Why TCP/IP Matters
 
 The TCP/IP suite powers:
 
@@ -526,7 +526,7 @@ The TCP/IP suite powers:
 
 ---
 
-# IP Address
+## IP Address
 
 An **IP address** uniquely identifies a device on a network.
 
@@ -544,7 +544,7 @@ Example IPv6 address:
 
 ---
 
-# IPv4 Structure
+## IPv4 Structure
 
 IPv4 uses:
 
@@ -578,7 +578,7 @@ Each octet ranges from:
 
 ---
 
-# Public vs Private IP Addresses
+## Public vs Private IP Addresses
 
 | Type | Example |
 |------|----------|
@@ -597,7 +597,7 @@ These ranges are not routable on the public Internet.
 
 ---
 
-# Loopback Address
+## Loopback Address
 
 IPv4 loopback:
 
@@ -615,7 +615,7 @@ Used for communication with the local machine.
 
 ---
 
-# IPv6 Loopback
+## IPv6 Loopback
 
 ```text
 ::1
@@ -625,7 +625,7 @@ Performs the same function as IPv4 loopback.
 
 ---
 
-# Subnet Mask
+## Subnet Mask
 
 A subnet mask separates:
 
@@ -651,7 +651,7 @@ Equivalent CIDR notation:
 
 ---
 
-# CIDR Notation
+## CIDR Notation
 
 Examples:
 
@@ -665,7 +665,7 @@ Examples:
 
 ---
 
-# Subnet Example
+## Subnet Example
 
 Network:
 
@@ -697,7 +697,7 @@ Broadcast address (IPv4):
 
 ---
 
-# Why Subnetting?
+## Why Subnetting?
 
 Subnetting provides:
 
@@ -709,7 +709,7 @@ Subnetting provides:
 
 ---
 
-# Enterprise Network Segmentation
+## Enterprise Network Segmentation
 
 ```text
 Corporate Network
@@ -734,7 +734,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Network architecture directly affects security.
 
@@ -751,7 +751,7 @@ Proper segmentation limits lateral movement if an attacker compromises a system.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-designed network architecture enables:
 
@@ -765,7 +765,7 @@ Well-designed network architecture enables:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use private addressing internally where appropriate.
 - Segment networks by business function.
@@ -777,7 +777,7 @@ Well-designed network architecture enables:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Networking enables communication between devices and services.
 - The OSI model provides a conceptual framework for networking.
@@ -789,13 +789,13 @@ Well-designed network architecture enables:
 ---
 
 
-# 13 - Linux Networking
+## 13 - Linux Networking
 
-# Part 2 — TCP, UDP, ARP, DNS, DHCP, Routing, Network Interfaces, and Linux Network Configuration
+## Part 2 — TCP, UDP, ARP, DNS, DHCP, Routing, Network Interfaces, and Linux Network Configuration
 
 ---
 
-# Introduction
+## Introduction
 
 After understanding network architecture, the next step is learning **how devices actually communicate**.
 
@@ -823,7 +823,7 @@ Understanding these protocols is critical for:
 
 ---
 
-# Network Communication Process
+## Network Communication Process
 
 ```text
 Application
@@ -855,7 +855,7 @@ Destination Server
 
 ---
 
-# Transport Layer Protocols
+## Transport Layer Protocols
 
 The Transport Layer primarily uses two protocols:
 
@@ -866,7 +866,7 @@ Both provide communication between applications but are designed for different p
 
 ---
 
-# TCP (Transmission Control Protocol)
+## TCP (Transmission Control Protocol)
 
 TCP is a:
 
@@ -879,7 +879,7 @@ It guarantees delivery of data.
 
 ---
 
-# TCP Characteristics
+## TCP Characteristics
 
 | Feature | Description |
 |----------|-------------|
@@ -892,7 +892,7 @@ It guarantees delivery of data.
 
 ---
 
-# TCP Three-Way Handshake
+## TCP Three-Way Handshake
 
 Before data transfer begins, TCP establishes a connection.
 
@@ -910,7 +910,7 @@ After this process, communication begins.
 
 ---
 
-# TCP Connection Termination
+## TCP Connection Termination
 
 ```text
 FIN --------------------->
@@ -924,7 +924,7 @@ ACK --------------------->
 
 ---
 
-# Common TCP Services
+## Common TCP Services
 
 | Protocol | Port |
 |----------|------|
@@ -938,7 +938,7 @@ ACK --------------------->
 
 ---
 
-# UDP (User Datagram Protocol)
+## UDP (User Datagram Protocol)
 
 UDP is:
 
@@ -951,7 +951,7 @@ No guarantee exists that packets arrive.
 
 ---
 
-# UDP Characteristics
+## UDP Characteristics
 
 | Feature | Description |
 |----------|-------------|
@@ -963,7 +963,7 @@ No guarantee exists that packets arrive.
 
 ---
 
-# Common UDP Services
+## Common UDP Services
 
 | Protocol | Port |
 |----------|------|
@@ -975,7 +975,7 @@ No guarantee exists that packets arrive.
 
 ---
 
-# TCP vs UDP
+## TCP vs UDP
 
 | Feature | TCP | UDP |
 |----------|-----|-----|
@@ -988,7 +988,7 @@ No guarantee exists that packets arrive.
 
 ---
 
-# When to Use TCP
+## When to Use TCP
 
 Choose TCP for:
 
@@ -1003,7 +1003,7 @@ Reliability is more important than speed.
 
 ---
 
-# When to Use UDP
+## When to Use UDP
 
 Choose UDP for:
 
@@ -1017,7 +1017,7 @@ Low latency is more important than guaranteed delivery.
 
 ---
 
-# Ports
+## Ports
 
 Ports identify applications running on a host.
 
@@ -1037,7 +1037,7 @@ Port 443 → HTTPS
 
 ---
 
-# Port Ranges
+## Port Ranges
 
 | Range | Description |
 |--------|-------------|
@@ -1047,7 +1047,7 @@ Port 443 → HTTPS
 
 ---
 
-# Common Enterprise Ports
+## Common Enterprise Ports
 
 | Port | Service |
 |------|----------|
@@ -1070,7 +1070,7 @@ Port 443 → HTTPS
 
 ---
 
-# ARP (Address Resolution Protocol)
+## ARP (Address Resolution Protocol)
 
 ARP maps an IPv4 address to a MAC address.
 
@@ -1096,7 +1096,7 @@ Frame Sent
 
 ---
 
-# ARP Workflow
+## ARP Workflow
 
 ```text
 Host A
@@ -1124,7 +1124,7 @@ ARP Cache Updated
 
 ---
 
-# ARP Cache
+## ARP Cache
 
 Linux stores recently learned mappings.
 
@@ -1152,7 +1152,7 @@ arp -a
 
 ---
 
-# DNS (Domain Name System)
+## DNS (Domain Name System)
 
 Humans remember names.
 
@@ -1170,7 +1170,7 @@ google.com
 
 ---
 
-# DNS Lookup Process
+## DNS Lookup Process
 
 ```text
 Browser
@@ -1194,7 +1194,7 @@ Connect to Server
 
 ---
 
-# Common DNS Record Types
+## Common DNS Record Types
 
 | Record | Purpose |
 |----------|----------|
@@ -1208,7 +1208,7 @@ Connect to Server
 
 ---
 
-# DNS Example
+## DNS Example
 
 ```text
 www.company.com
@@ -1228,7 +1228,7 @@ HTTP Connection
 
 ---
 
-# DHCP (Dynamic Host Configuration Protocol)
+## DHCP (Dynamic Host Configuration Protocol)
 
 DHCP automatically assigns:
 
@@ -1242,7 +1242,7 @@ Without DHCP, clients require manual configuration.
 
 ---
 
-# DHCP Process (DORA)
+## DHCP Process (DORA)
 
 ```text
 Client
@@ -1268,7 +1268,7 @@ This sequence is commonly called **DORA**.
 
 ---
 
-# Routing
+## Routing
 
 Routing determines how packets travel between different networks.
 
@@ -1276,7 +1276,7 @@ Routers examine destination IP addresses and forward packets along the most appr
 
 ---
 
-# Routing Example
+## Routing Example
 
 ```text
 Client
@@ -1304,7 +1304,7 @@ Server
 
 ---
 
-# Default Gateway
+## Default Gateway
 
 A **default gateway** is the router used when traffic is destined for another network.
 
@@ -1324,7 +1324,7 @@ Without a valid default gateway, external networks are generally unreachable.
 
 ---
 
-# Routing Table
+## Routing Table
 
 Linux maintains a routing table.
 
@@ -1344,7 +1344,7 @@ default via 192.168.1.1 dev eth0
 
 ---
 
-# Static Routing
+## Static Routing
 
 Administrator manually creates routes.
 
@@ -1362,7 +1362,7 @@ Useful for:
 
 ---
 
-# Dynamic Routing
+## Dynamic Routing
 
 Large organizations often use routing protocols such as:
 
@@ -1375,7 +1375,7 @@ These protocols automatically exchange routing information between routers.
 
 ---
 
-# Network Interface
+## Network Interface
 
 A network interface connects Linux to a network.
 
@@ -1395,7 +1395,7 @@ Modern Linux systems commonly use predictable interface names such as `enp0s3` o
 
 ---
 
-# Viewing Network Interfaces
+## Viewing Network Interfaces
 
 Display interfaces:
 
@@ -1417,7 +1417,7 @@ ip a
 
 ---
 
-# Interface States
+## Interface States
 
 | State | Meaning |
 |--------|----------|
@@ -1427,7 +1427,7 @@ ip a
 
 ---
 
-# Bringing Interfaces Up
+## Bringing Interfaces Up
 
 Enable an interface:
 
@@ -1437,7 +1437,7 @@ sudo ip link set eth0 up
 
 ---
 
-# Bringing Interfaces Down
+## Bringing Interfaces Down
 
 Disable an interface:
 
@@ -1447,7 +1447,7 @@ sudo ip link set eth0 down
 
 ---
 
-# Assigning an IP Address
+## Assigning an IP Address
 
 Example:
 
@@ -1459,7 +1459,7 @@ This change is typically temporary until reboot unless saved using the distribut
 
 ---
 
-# Removing an IP Address
+## Removing an IP Address
 
 ```bash
 sudo ip addr del 192.168.1.100/24 dev eth0
@@ -1467,7 +1467,7 @@ sudo ip addr del 192.168.1.100/24 dev eth0
 
 ---
 
-# Viewing Interface Statistics
+## Viewing Interface Statistics
 
 ```bash
 ip -s link
@@ -1482,7 +1482,7 @@ Shows statistics including:
 
 ---
 
-# Network Configuration Workflow
+## Network Configuration Workflow
 
 ```text
 Interface
@@ -1510,7 +1510,7 @@ Connectivity Test
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A new Linux web server is deployed.
 
@@ -1546,7 +1546,7 @@ Deploy Application
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Many attacks target network protocols.
 
@@ -1568,7 +1568,7 @@ Security teams should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable network configuration enables:
 
@@ -1581,7 +1581,7 @@ Reliable network configuration enables:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use predictable interface naming.
 - Document IP addressing schemes.
@@ -1593,7 +1593,7 @@ Reliable network configuration enables:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - TCP provides reliable, connection-oriented communication.
 - UDP prioritizes speed and low latency.
@@ -1606,13 +1606,13 @@ Reliable network configuration enables:
 ---
 
 
-# 13 - Linux Networking
+## 13 - Linux Networking
 
-# Part 3 — Essential Linux Networking Commands, Network Troubleshooting, Packet Analysis, and Enterprise Monitoring
+## Part 3 — Essential Linux Networking Commands, Network Troubleshooting, Packet Analysis, and Enterprise Monitoring
 
 ---
 
-# Introduction
+## Introduction
 
 Every Linux administrator spends a significant amount of time troubleshooting network issues.
 
@@ -1631,7 +1631,7 @@ Linux provides powerful command-line tools to diagnose these issues.
 
 ---
 
-# Network Troubleshooting Methodology
+## Network Troubleshooting Methodology
 
 ```text
 Identify Problem
@@ -1679,7 +1679,7 @@ Resolve Issue
 
 ---
 
-# Essential Networking Commands
+## Essential Networking Commands
 
 | Command | Purpose |
 |----------|----------|
@@ -1700,13 +1700,13 @@ Resolve Issue
 
 ---
 
-# The `ip` Command
+## The `ip` Command
 
 The `ip` command is the modern replacement for many legacy networking tools.
 
 ---
 
-## Show Interfaces
+### Show Interfaces
 
 ```bash
 ip link show
@@ -1720,7 +1720,7 @@ ip link
 
 ---
 
-## Show IP Addresses
+### Show IP Addresses
 
 ```bash
 ip addr show
@@ -1742,7 +1742,7 @@ inet 192.168.1.25/24
 
 ---
 
-## Show Routing Table
+### Show Routing Table
 
 ```bash
 ip route
@@ -1758,7 +1758,7 @@ default via 192.168.1.1
 
 ---
 
-## Show Neighbor (ARP) Cache
+### Show Neighbor (ARP) Cache
 
 ```bash
 ip neigh
@@ -1772,7 +1772,7 @@ Example:
 
 ---
 
-# Testing Connectivity with `ping`
+## Testing Connectivity with `ping`
 
 The `ping` command uses **ICMP Echo Requests** to verify reachability.
 
@@ -1790,7 +1790,7 @@ ping -c 4 google.com
 
 ---
 
-# Interpreting `ping`
+## Interpreting `ping`
 
 Example output:
 
@@ -1809,7 +1809,7 @@ Useful metrics:
 
 ---
 
-# Connectivity Testing Flow
+## Connectivity Testing Flow
 
 ```text
 Local Host
@@ -1831,7 +1831,7 @@ If the gateway is unreachable, external communication will fail.
 
 ---
 
-# Testing DNS Separately
+## Testing DNS Separately
 
 Test IP connectivity:
 
@@ -1849,7 +1849,7 @@ If the IP succeeds but the hostname fails, the issue is likely related to DNS.
 
 ---
 
-# The `ss` Command
+## The `ss` Command
 
 `ss` displays active sockets and listening services.
 
@@ -1873,7 +1873,7 @@ ss -tuln
 
 ---
 
-# Example `ss` Output
+## Example `ss` Output
 
 ```text
 Netid State  Local Address
@@ -1887,7 +1887,7 @@ This indicates that SSH and HTTP services are listening.
 
 ---
 
-# Legacy `netstat`
+## Legacy `netstat`
 
 Although largely replaced by `ss`, many environments still include `netstat`.
 
@@ -1901,7 +1901,7 @@ Understanding it remains useful for legacy systems.
 
 ---
 
-# Tracing Network Paths
+## Tracing Network Paths
 
 Install (if required by distribution) and run:
 
@@ -1917,7 +1917,7 @@ tracepath google.com
 
 ---
 
-# Traceroute Workflow
+## Traceroute Workflow
 
 ```text
 Local Host
@@ -1943,7 +1943,7 @@ Useful for identifying where delays or failures occur.
 
 ---
 
-# DNS Lookup with `dig`
+## DNS Lookup with `dig`
 
 Query an A record:
 
@@ -1965,7 +1965,7 @@ dig example.com MX
 
 ---
 
-# Using `nslookup`
+## Using `nslookup`
 
 Basic lookup:
 
@@ -1981,7 +1981,7 @@ nslookup example.com 8.8.8.8
 
 ---
 
-# Using `host`
+## Using `host`
 
 Forward lookup:
 
@@ -1997,7 +1997,7 @@ host 8.8.8.8
 
 ---
 
-# Comparing DNS Tools
+## Comparing DNS Tools
 
 | Tool | Best Use |
 |------|----------|
@@ -2007,7 +2007,7 @@ host 8.8.8.8
 
 ---
 
-# Testing HTTP Services with `curl`
+## Testing HTTP Services with `curl`
 
 Fetch headers only:
 
@@ -2029,7 +2029,7 @@ Useful for:
 
 ---
 
-# Downloading Files with `wget`
+## Downloading Files with `wget`
 
 Example:
 
@@ -2045,7 +2045,7 @@ Useful for:
 
 ---
 
-# Capturing Packets with `tcpdump`
+## Capturing Packets with `tcpdump`
 
 Capture traffic on an interface:
 
@@ -2075,7 +2075,7 @@ The resulting `.pcap` file can be analyzed with tools such as Wireshark.
 
 ---
 
-# Packet Capture Workflow
+## Packet Capture Workflow
 
 ```text
 Network Interface
@@ -2099,7 +2099,7 @@ Analysis
 
 ---
 
-# Viewing Interface Details with `ethtool`
+## Viewing Interface Details with `ethtool`
 
 Example:
 
@@ -2116,7 +2116,7 @@ Displays information such as:
 
 ---
 
-# Managing NetworkManager with `nmcli`
+## Managing NetworkManager with `nmcli`
 
 Show device status:
 
@@ -2134,9 +2134,9 @@ nmcli connection show
 
 ---
 
-# Diagnosing Common Problems
+## Diagnosing Common Problems
 
-## No IP Address
+### No IP Address
 
 Check:
 
@@ -2152,7 +2152,7 @@ Verify:
 
 ---
 
-## Default Gateway Missing
+### Default Gateway Missing
 
 Check:
 
@@ -2168,7 +2168,7 @@ default via 192.168.1.1
 
 ---
 
-## DNS Not Working
+### DNS Not Working
 
 Check:
 
@@ -2184,7 +2184,7 @@ dig example.com
 
 ---
 
-## Service Not Listening
+### Service Not Listening
 
 Check:
 
@@ -2196,7 +2196,7 @@ Verify that the expected port is in the `LISTEN` state.
 
 ---
 
-## Packet Loss
+### Packet Loss
 
 Test:
 
@@ -2214,7 +2214,7 @@ Possible causes:
 
 ---
 
-# Enterprise Monitoring Workflow
+## Enterprise Monitoring Workflow
 
 ```text
 Network Devices
@@ -2250,9 +2250,9 @@ Common metrics include:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Users Cannot Access an Internal Web Application
+### Users Cannot Access an Internal Web Application
 
 Troubleshooting sequence:
 
@@ -2296,7 +2296,7 @@ This structured approach minimizes downtime.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Many reconnaissance and attack techniques rely on networking.
 
@@ -2318,7 +2318,7 @@ Defensive teams use the same tools to:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective network troubleshooting helps organizations:
 
@@ -2331,7 +2331,7 @@ Effective network troubleshooting helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Prefer modern tools such as `ip` and `ss` over deprecated alternatives where possible.
 - Document network topology and IP addressing.
@@ -2343,7 +2343,7 @@ Effective network troubleshooting helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux provides a comprehensive set of networking diagnostic tools.
 - `ip` is the primary utility for interface and routing management.
@@ -2354,13 +2354,13 @@ Effective network troubleshooting helps organizations:
 
 ---
 
-# 13 - Linux Networking
+## 13 - Linux Networking
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Linux networking is a core competency for:
 
@@ -2377,7 +2377,7 @@ A strong understanding of networking enables administrators to deploy, troublesh
 
 ---
 
-# Enterprise Network Lifecycle
+## Enterprise Network Lifecycle
 
 ```text
 Network Design
@@ -2421,7 +2421,7 @@ Continuous Improvement
 
 ---
 
-# Practical Lab 1 — View Network Interfaces
+## Practical Lab 1 — View Network Interfaces
 
 Display all network interfaces:
 
@@ -2441,7 +2441,7 @@ Short form:
 ip a
 ```
 
-### Objectives
+#### Objectives
 
 - Identify interface names
 - Observe interface states
@@ -2449,7 +2449,7 @@ ip a
 
 ---
 
-# Practical Lab 2 — Display Routing Information
+## Practical Lab 2 — Display Routing Information
 
 Show the routing table:
 
@@ -2465,7 +2465,7 @@ Questions:
 
 ---
 
-# Practical Lab 3 — Test Connectivity
+## Practical Lab 3 — Test Connectivity
 
 Ping the local gateway:
 
@@ -2485,14 +2485,14 @@ Ping a hostname:
 ping -c 4 google.com
 ```
 
-### Objectives
+#### Objectives
 
 - Differentiate IP connectivity from DNS resolution
 - Measure latency and packet loss
 
 ---
 
-# Practical Lab 4 — Examine ARP Cache
+## Practical Lab 4 — Examine ARP Cache
 
 View neighbor entries:
 
@@ -2506,7 +2506,7 @@ Legacy command:
 arp -a
 ```
 
-### Observe
+#### Observe
 
 - IP addresses
 - MAC addresses
@@ -2514,7 +2514,7 @@ arp -a
 
 ---
 
-# Practical Lab 5 — Perform DNS Queries
+## Practical Lab 5 — Perform DNS Queries
 
 Query an A record:
 
@@ -2534,14 +2534,14 @@ Alternative:
 nslookup example.com
 ```
 
-### Objectives
+#### Objectives
 
 - Understand DNS resolution
 - Compare query results
 
 ---
 
-# Practical Lab 6 — Identify Listening Services
+## Practical Lab 6 — Identify Listening Services
 
 Display TCP and UDP listeners:
 
@@ -2557,7 +2557,7 @@ Questions:
 
 ---
 
-# Practical Lab 7 — Test Web Connectivity
+## Practical Lab 7 — Test Web Connectivity
 
 Retrieve response headers:
 
@@ -2577,14 +2577,14 @@ Download a file:
 wget https://example.com/file.txt
 ```
 
-### Objectives
+#### Objectives
 
 - Validate HTTP/HTTPS connectivity
 - Test application availability
 
 ---
 
-# Practical Lab 8 — Trace the Network Path
+## Practical Lab 8 — Trace the Network Path
 
 Trace route to a remote host:
 
@@ -2598,14 +2598,14 @@ Or:
 tracepath google.com
 ```
 
-### Objectives
+#### Objectives
 
 - Observe intermediate hops
 - Identify routing delays
 
 ---
 
-# Practical Lab 9 — Capture Packets
+## Practical Lab 9 — Capture Packets
 
 Capture ICMP traffic:
 
@@ -2625,14 +2625,14 @@ Save capture:
 sudo tcpdump -i eth0 -w traffic.pcap
 ```
 
-### Objectives
+#### Objectives
 
 - Observe packet exchange
 - Generate a PCAP for later analysis
 
 ---
 
-# Practical Lab 10 — Review Interface Statistics
+## Practical Lab 10 — Review Interface Statistics
 
 Display interface statistics:
 
@@ -2649,7 +2649,7 @@ Review:
 
 ---
 
-# Practical Lab 11 — Display Interface Hardware Information
+## Practical Lab 11 — Display Interface Hardware Information
 
 ```bash
 sudo ethtool eth0
@@ -2664,7 +2664,7 @@ Observe:
 
 ---
 
-# Practical Lab 12 — NetworkManager
+## Practical Lab 12 — NetworkManager
 
 List devices:
 
@@ -2678,14 +2678,14 @@ List configured connections:
 nmcli connection show
 ```
 
-### Objectives
+#### Objectives
 
 - Understand NetworkManager configuration
 - Identify active connections
 
 ---
 
-# Practical Lab 13 — Configure a Temporary IP Address
+## Practical Lab 13 — Configure a Temporary IP Address
 
 Assign an address:
 
@@ -2709,7 +2709,7 @@ sudo ip addr del 192.168.50.100/24 dev eth0
 
 ---
 
-# Practical Lab 14 — Add a Temporary Static Route
+## Practical Lab 14 — Add a Temporary Static Route
 
 Add a route:
 
@@ -2731,7 +2731,7 @@ sudo ip route del 10.10.0.0/16 via 192.168.1.254
 
 ---
 
-# Troubleshooting Checklist
+## Troubleshooting Checklist
 
 | Check | Command |
 |--------|---------|
@@ -2748,16 +2748,16 @@ sudo ip route del 10.10.0.0/16 via 192.168.1.254
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# Linux Server Cannot Reach the Internet
+## Linux Server Cannot Reach the Internet
 
-### Symptoms
+#### Symptoms
 
 - Internal communication works
 - Internet access fails
 
-### Investigation
+#### Investigation
 
 ```text
 Check Interface
@@ -2787,11 +2787,11 @@ Ping Public IP
 Test DNS
 ```
 
-### Root Cause
+#### Root Cause
 
 Default gateway missing after configuration change.
 
-### Resolution
+#### Resolution
 
 - Restore gateway
 - Verify routing
@@ -2799,11 +2799,11 @@ Default gateway missing after configuration change.
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Internal Website Not Accessible
+## Internal Website Not Accessible
 
-### Investigation
+#### Investigation
 
 ```text
 Ping Server
@@ -2829,11 +2829,11 @@ Check DNS
 Review Web Service
 ```
 
-### Root Cause
+#### Root Cause
 
 Web server process was not running.
 
-### Resolution
+#### Resolution
 
 - Restart service
 - Verify listener on TCP port 443
@@ -2841,11 +2841,11 @@ Web server process was not running.
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# High Network Latency
+## High Network Latency
 
-### Investigation
+#### Investigation
 
 ```text
 Ping
@@ -2871,7 +2871,7 @@ Bandwidth Review
 Switch Investigation
 ```
 
-### Possible Causes
+#### Possible Causes
 
 - Congestion
 - Duplex mismatch
@@ -2881,11 +2881,11 @@ Switch Investigation
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Suspicious Internal Network Activity
+## Suspicious Internal Network Activity
 
-### Investigation
+#### Investigation
 
 ```text
 Alert
@@ -2915,7 +2915,7 @@ Identify Source Host
 Contain Incident
 ```
 
-### Security Findings
+#### Security Findings
 
 - Unauthorized outbound connections
 - DNS tunneling attempts
@@ -2923,7 +2923,7 @@ Contain Incident
 
 ---
 
-# Common Networking Problems
+## Common Networking Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2938,7 +2938,7 @@ Contain Incident
 
 ---
 
-# Enterprise Monitoring Metrics
+## Enterprise Monitoring Metrics
 
 | Metric | Importance |
 |----------|------------|
@@ -2953,7 +2953,7 @@ Contain Incident
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Networking knowledge is essential for security operations.
 
@@ -2978,7 +2978,7 @@ Common attack techniques include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable networking supports:
 
@@ -3001,7 +3001,7 @@ Network outages can result in:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Document IP addressing and network topology.
 - Use meaningful interface naming where supported.
@@ -3016,7 +3016,7 @@ Network outages can result in:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3040,9 +3040,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is the purpose of the OSI model?
 2. What is the difference between TCP and UDP?
@@ -3057,7 +3057,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Compare the OSI and TCP/IP models.
 2. Explain the TCP three-way handshake.
@@ -3072,7 +3072,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a troubleshooting workflow for a production network outage.
 2. How would you investigate suspicious outbound network traffic?
@@ -3087,7 +3087,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux networking is built on the TCP/IP protocol suite.
 - Tools such as `ip`, `ss`, `ping`, `dig`, and `tcpdump` are essential for administration and troubleshooting.
@@ -3097,9 +3097,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man ip`
 - `man ss`
@@ -3112,7 +3112,7 @@ In this chapter, you learned:
 - `man nmcli`
 - `man ethtool`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - RFC 791 (IPv4)
 - RFC 8200 (IPv6)
@@ -3127,11 +3127,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **14-Linux-Storage-Management.md**
 
-## Topics Covered
+### Topics Covered
 
 - Storage Fundamentals
 - Block Devices

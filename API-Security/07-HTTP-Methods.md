@@ -1,6 +1,6 @@
 # 07 - HTTP Methods
 
-# Introduction
+## Introduction
 
 HTTP (Hypertext Transfer Protocol) is the foundation of communication on the World Wide Web.
 
@@ -31,7 +31,7 @@ Almost every modern web application, REST API, GraphQL endpoint, and many gRPC g
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -47,7 +47,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is an HTTP Method?
+## What is an HTTP Method?
 
 An HTTP method defines the **intended action** for a resource.
 
@@ -77,7 +77,7 @@ The server interprets the method before processing the request.
 
 ---
 
-# HTTP Request Structure
+## HTTP Request Structure
 
 ```
 GET /users/10 HTTP/1.1
@@ -101,7 +101,7 @@ Components
 
 ---
 
-# HTTP Response Structure
+## HTTP Response Structure
 
 ```
 HTTP/1.1 200 OK
@@ -124,7 +124,7 @@ Components
 
 ---
 
-# HTTP Request Lifecycle
+## HTTP Request Lifecycle
 
 ```
 Client
@@ -170,7 +170,7 @@ Each stage introduces its own security considerations.
 
 ---
 
-# Common HTTP Methods
+## Common HTTP Methods
 
 | Method | Purpose |
 |---------|---------|
@@ -186,7 +186,7 @@ Each stage introduces its own security considerations.
 
 ---
 
-# CRUD Mapping
+## CRUD Mapping
 
 | CRUD Operation | HTTP Method |
 |---------------|-------------|
@@ -199,7 +199,7 @@ This mapping is the foundation of RESTful API design.
 
 ---
 
-# HTTP Method Classification
+## HTTP Method Classification
 
 Methods can be categorized by behavior.
 
@@ -219,7 +219,7 @@ Understanding these properties helps developers design predictable APIs.
 
 ---
 
-# Safe Methods
+## Safe Methods
 
 A safe method **does not modify server state**.
 
@@ -247,7 +247,7 @@ Safe methods should only retrieve information.
 
 ---
 
-# Unsafe Methods
+## Unsafe Methods
 
 Unsafe methods modify server state.
 
@@ -272,7 +272,7 @@ Unsafe methods require stronger security controls.
 
 ---
 
-# Idempotent Methods
+## Idempotent Methods
 
 An idempotent method produces the same result regardless of how many times it is repeated.
 
@@ -298,7 +298,7 @@ The resource remains deleted.
 
 ---
 
-# Non-Idempotent Methods
+## Non-Idempotent Methods
 
 POST is generally non-idempotent.
 
@@ -324,7 +324,7 @@ Repeated requests may create duplicate resources.
 
 ---
 
-# Safe vs Idempotent
+## Safe vs Idempotent
 
 | Method | Safe | Idempotent |
 |---------|------|------------|
@@ -340,7 +340,7 @@ Understanding this distinction is critical for API design and retry logic.
 
 ---
 
-# GET Method
+## GET Method
 
 Purpose
 
@@ -372,7 +372,7 @@ GET requests should not change application state.
 
 ---
 
-# GET Request Flow
+## GET Request Flow
 
 ```
 Client
@@ -398,7 +398,7 @@ GET is the most frequently used HTTP method.
 
 ---
 
-# Common GET Use Cases
+## Common GET Use Cases
 
 Examples
 
@@ -410,7 +410,7 @@ Examples
 
 ---
 
-# GET Security Considerations
+## GET Security Considerations
 
 Sensitive information should **never** be placed in the URL.
 
@@ -432,7 +432,7 @@ Sensitive information belongs in protected request bodies or secure authenticati
 
 ---
 
-# Query Parameters
+## Query Parameters
 
 GET requests commonly use query parameters.
 
@@ -455,7 +455,7 @@ Every parameter requires validation.
 
 ---
 
-# POST Method
+## POST Method
 
 Purpose
 
@@ -486,7 +486,7 @@ POST requests usually include a request body.
 
 ---
 
-# POST Request Flow
+## POST Request Flow
 
 ```
 Client
@@ -516,7 +516,7 @@ POST requests frequently trigger business logic.
 
 ---
 
-# Common POST Use Cases
+## Common POST Use Cases
 
 Examples
 
@@ -529,7 +529,7 @@ Examples
 
 ---
 
-# POST Security Considerations
+## POST Security Considerations
 
 POST endpoints often process untrusted input.
 
@@ -551,7 +551,7 @@ Protect against:
 
 ---
 
-# PUT Method
+## PUT Method
 
 Purpose
 
@@ -576,7 +576,7 @@ The supplied representation replaces the existing resource.
 
 ---
 
-# PUT Characteristics
+## PUT Characteristics
 
 - Idempotent
 - Replaces entire resource
@@ -587,7 +587,7 @@ Repeated identical requests should not create additional resources.
 
 ---
 
-# PUT Request Flow
+## PUT Request Flow
 
 ```
 Client
@@ -613,7 +613,7 @@ PUT is preferred when the client provides the complete updated representation.
 
 ---
 
-# PATCH Method
+## PATCH Method
 
 Purpose
 
@@ -637,7 +637,7 @@ Only the specified fields are updated.
 
 ---
 
-# PUT vs PATCH
+## PUT vs PATCH
 
 | PUT | PATCH |
 |------|--------|
@@ -650,7 +650,7 @@ PATCH reduces bandwidth when only a few fields change.
 
 ---
 
-# DELETE Method
+## DELETE Method
 
 Purpose
 
@@ -678,7 +678,7 @@ Deletion operations should be logged and audited.
 
 ---
 
-# DELETE Request Flow
+## DELETE Request Flow
 
 ```
 Client
@@ -704,7 +704,7 @@ DELETE operations should verify ownership and permissions before execution.
 
 ---
 
-# HEAD Method
+## HEAD Method
 
 HEAD behaves like GET but returns **headers only**.
 
@@ -728,7 +728,7 @@ No response body is returned.
 
 ---
 
-# Common HEAD Use Cases
+## Common HEAD Use Cases
 
 Examples
 
@@ -741,7 +741,7 @@ HEAD requests reduce unnecessary bandwidth usage.
 
 ---
 
-# OPTIONS Method
+## OPTIONS Method
 
 OPTIONS returns the communication options supported by a resource.
 
@@ -769,7 +769,7 @@ OPTIONS plays an important role in Cross-Origin Resource Sharing (CORS).
 
 ---
 
-# TRACE Method
+## TRACE Method
 
 TRACE echoes the received request for diagnostic purposes.
 
@@ -797,7 +797,7 @@ Modern production systems commonly disable TRACE because it can contribute to in
 
 ---
 
-# CONNECT Method
+## CONNECT Method
 
 CONNECT establishes a network tunnel.
 
@@ -825,7 +825,7 @@ CONNECT is primarily used by proxies to establish encrypted HTTPS connections.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An e-commerce platform exposes the following API:
 
@@ -842,7 +842,7 @@ Each method is selected according to the intended resource operation.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - HTTP methods define the intended action on a resource.
 - GET retrieves data and should never modify server state.
@@ -854,7 +854,7 @@ Each method is selected according to the intended resource operation.
 
 ---
 
-# HTTP Method Security
+## HTTP Method Security
 
 HTTP methods determine **what action a client is requesting**, but they do **not** provide security by themselves.
 
@@ -871,7 +871,7 @@ Security controls should be applied consistently regardless of the HTTP method.
 
 ---
 
-# Security Model
+## Security Model
 
 ```
                Client
@@ -917,7 +917,7 @@ Each layer protects against different attack vectors.
 
 ---
 
-# Method-Based Authorization
+## Method-Based Authorization
 
 Different HTTP methods often require different permissions.
 
@@ -968,7 +968,7 @@ Authorization decisions should consider:
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Users should receive only the permissions necessary to perform their tasks.
 
@@ -1014,7 +1014,7 @@ Limiting permissions reduces the impact of compromised accounts.
 
 ---
 
-# Broken Function Level Authorization (BFLA)
+## Broken Function Level Authorization (BFLA)
 
 A common API vulnerability occurs when sensitive HTTP methods are accessible to unauthorized users.
 
@@ -1049,7 +1049,7 @@ Mitigation
 
 ---
 
-# Broken Object Level Authorization (BOLA)
+## Broken Object Level Authorization (BOLA)
 
 Object ownership must be verified.
 
@@ -1083,7 +1083,7 @@ Every object request must validate ownership before returning data.
 
 ---
 
-# GET Method Security
+## GET Method Security
 
 Although GET is considered safe, it can expose sensitive information.
 
@@ -1105,7 +1105,7 @@ Sensitive identifiers should be handled carefully.
 
 ---
 
-# Secure GET Practices
+## Secure GET Practices
 
 Recommendations
 
@@ -1119,7 +1119,7 @@ Recommendations
 
 ---
 
-# POST Method Security
+## POST Method Security
 
 POST commonly performs operations that modify server state.
 
@@ -1142,7 +1142,7 @@ Security controls
 
 ---
 
-# PUT Security
+## PUT Security
 
 PUT replaces entire resources.
 
@@ -1163,7 +1163,7 @@ Ensure clients cannot overwrite protected attributes.
 
 ---
 
-# PATCH Security
+## PATCH Security
 
 PATCH modifies selected fields.
 
@@ -1193,7 +1193,7 @@ Servers should explicitly allow only approved fields to be modified.
 
 ---
 
-# DELETE Security
+## DELETE Security
 
 DELETE operations have significant security impact.
 
@@ -1216,7 +1216,7 @@ Deletion requests should be carefully controlled.
 
 ---
 
-# HEAD Security
+## HEAD Security
 
 Although HEAD returns no body, it can still disclose information.
 
@@ -1231,7 +1231,7 @@ Protect sensitive resources with the same authentication and authorization as GE
 
 ---
 
-# OPTIONS Security
+## OPTIONS Security
 
 OPTIONS reveals supported HTTP methods.
 
@@ -1259,7 +1259,7 @@ Recommendations
 
 ---
 
-# TRACE Security
+## TRACE Security
 
 TRACE echoes the received request.
 
@@ -1287,7 +1287,7 @@ Information Leakage
 
 ---
 
-# CONNECT Security
+## CONNECT Security
 
 CONNECT establishes proxy tunnels.
 
@@ -1305,7 +1305,7 @@ Recommendations
 
 ---
 
-# HTTP Method Enumeration
+## HTTP Method Enumeration
 
 Attackers often identify supported methods.
 
@@ -1331,7 +1331,7 @@ Enumeration helps attackers understand the application's capabilities.
 
 ---
 
-# Method Fuzzing
+## Method Fuzzing
 
 Security assessments frequently test unexpected methods.
 
@@ -1363,7 +1363,7 @@ Expected response
 
 ---
 
-# HTTP Method Override
+## HTTP Method Override
 
 Some applications support overriding HTTP methods.
 
@@ -1387,7 +1387,7 @@ If not properly controlled, attackers may bypass filtering or firewall rules.
 
 ---
 
-# Method Override Headers
+## Method Override Headers
 
 Common override mechanisms
 
@@ -1403,7 +1403,7 @@ Servers should only support method overrides when absolutely necessary.
 
 ---
 
-# Security Risks of Method Override
+## Security Risks of Method Override
 
 Potential attacks
 
@@ -1422,7 +1422,7 @@ Mitigations
 
 ---
 
-# Cross-Origin Resource Sharing (CORS)
+## Cross-Origin Resource Sharing (CORS)
 
 CORS controls which origins may invoke HTTP methods.
 
@@ -1456,7 +1456,7 @@ Unsafe methods typically require additional browser preflight checks.
 
 ---
 
-# Preflight Requests
+## Preflight Requests
 
 Browsers send an OPTIONS request before certain cross-origin requests.
 
@@ -1492,7 +1492,7 @@ Servers should respond with appropriate CORS headers.
 
 ---
 
-# Idempotency and Security
+## Idempotency and Security
 
 Idempotent methods reduce unintended side effects.
 
@@ -1518,7 +1518,7 @@ POST operations often require additional controls such as:
 
 ---
 
-# Rate Limiting by HTTP Method
+## Rate Limiting by HTTP Method
 
 Different methods often require different rate limits.
 
@@ -1536,7 +1536,7 @@ Destructive operations generally require stricter controls.
 
 ---
 
-# Logging Requirements
+## Logging Requirements
 
 Log
 
@@ -1572,7 +1572,7 @@ Comprehensive logging supports investigations and compliance.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1591,7 +1591,7 @@ Detection rules should be tuned according to expected application behavior.
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Recommended telemetry
 
@@ -1638,7 +1638,7 @@ Example correlation rules
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
                   Internet
@@ -1702,7 +1702,7 @@ Each request should traverse every security control before reaching application 
 
 ---
 
-# Hands-on Lab 1 – HTTP Method Enumeration
+## Hands-on Lab 1 – HTTP Method Enumeration
 
 **Objective**
 
@@ -1723,7 +1723,7 @@ Identify which HTTP methods are supported by an authorized application.
 
 ---
 
-# Hands-on Lab 2 – Authorization Verification
+## Hands-on Lab 2 – Authorization Verification
 
 **Objective**
 
@@ -1744,7 +1744,7 @@ Verify authorization controls for different HTTP methods.
 
 ---
 
-# Hands-on Lab 3 – Method Override Review
+## Hands-on Lab 3 – Method Override Review
 
 **Objective**
 
@@ -1765,7 +1765,7 @@ Determine whether HTTP method override functionality is enabled.
 
 ---
 
-# Common Security Mistakes
+## Common Security Mistakes
 
 Avoid:
 
@@ -1782,9 +1782,9 @@ Avoid:
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## 405 Method Not Allowed
+### 405 Method Not Allowed
 
 Possible causes
 
@@ -1795,7 +1795,7 @@ Possible causes
 
 ---
 
-## 401 Unauthorized
+### 401 Unauthorized
 
 Possible causes
 
@@ -1806,7 +1806,7 @@ Possible causes
 
 ---
 
-## 403 Forbidden
+### 403 Forbidden
 
 Possible causes
 
@@ -1817,7 +1817,7 @@ Possible causes
 
 ---
 
-## Unexpected DELETE Success
+### Unexpected DELETE Success
 
 Possible causes
 
@@ -1828,7 +1828,7 @@ Possible causes
 
 ---
 
-## CORS Preflight Failure
+### CORS Preflight Failure
 
 Possible causes
 
@@ -1839,9 +1839,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is an HTTP method?
 2. What is the difference between GET and POST?
@@ -1856,7 +1856,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. How would you secure DELETE endpoints?
 12. Explain Broken Function Level Authorization.
@@ -1871,7 +1871,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1901,7 +1901,7 @@ A customer reports receiving another user's data after modifying an identifier i
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we explored the security implications of HTTP methods and their role in secure API design.
 
@@ -1925,7 +1925,7 @@ Proper implementation of HTTP methods improves API predictability, strengthens s
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1941,16 +1941,16 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 9110 – HTTP Semantics
 - RFC 9112 – HTTP/1.1
 - RFC 9113 – HTTP/2
 - RFC 9114 – HTTP/3
 
-## Security Standards
+### Security Standards
 
 - OWASP API Security Top 10
 - OWASP ASVS
@@ -1958,7 +1958,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - NIST SP 800-53
 - NIST Cybersecurity Framework (CSF)
 
-## Further Reading
+### Further Reading
 
 - HTTPWG Specifications
 - Mozilla HTTP Documentation
@@ -1966,7 +1966,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 08 – HTTP Headers**
 

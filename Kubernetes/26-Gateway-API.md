@@ -22,7 +22,7 @@ It supports:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -41,7 +41,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Was Gateway API Introduced?
+## Why Was Gateway API Introduced?
 
 Traditional Ingress works well for simple applications.
 
@@ -74,7 +74,7 @@ However, Ingress has limitations:
 
 ---
 
-# Solution
+## Solution
 
 Gateway API introduces dedicated resources for:
 
@@ -86,7 +86,7 @@ Each team manages only its responsibilities.
 
 ---
 
-# Gateway API Architecture
+## Gateway API Architecture
 
 ```
                     Internet
@@ -124,7 +124,7 @@ Each team manages only its responsibilities.
 
 ---
 
-# Core Components
+## Core Components
 
 Gateway API consists of:
 
@@ -150,7 +150,7 @@ Pods
 
 ---
 
-# GatewayClass
+## GatewayClass
 
 A **GatewayClass** defines:
 
@@ -181,7 +181,7 @@ Gateway
 
 ---
 
-# Example
+## Example
 
 ```yaml
 kind: GatewayClass
@@ -199,7 +199,7 @@ Gateway Controller
 
 ---
 
-# Gateway
+## Gateway
 
 A **Gateway** represents the actual networking infrastructure.
 
@@ -218,7 +218,7 @@ Real Entry Point
 
 ---
 
-# Gateway Architecture
+## Gateway Architecture
 
 ```
 Internet
@@ -242,7 +242,7 @@ The Gateway is a dedicated resource separate from routing rules.
 
 ---
 
-# HTTPRoute
+## HTTPRoute
 
 An **HTTPRoute** defines:
 
@@ -263,7 +263,7 @@ Frontend Service
 
 ---
 
-# TCPRoute
+## TCPRoute
 
 Used for:
 
@@ -293,7 +293,7 @@ Backend
 
 ---
 
-# TLSRoute
+## TLSRoute
 
 Supports:
 
@@ -320,7 +320,7 @@ Backend
 
 ---
 
-# UDPRoute
+## UDPRoute
 
 Some Gateway implementations support:
 
@@ -345,7 +345,7 @@ Useful for:
 
 ---
 
-# Route Attachment
+## Route Attachment
 
 Routes connect to Gateways.
 
@@ -365,7 +365,7 @@ Multiple Routes can share the same Gateway.
 
 ---
 
-# Host-Based Routing
+## Host-Based Routing
 
 ```
 api.company.com
@@ -385,7 +385,7 @@ Shop Service
 
 ---
 
-# Path-Based Routing
+## Path-Based Routing
 
 ```
 example.com/api
@@ -405,7 +405,7 @@ Frontend
 
 ---
 
-# Header Matching
+## Header Matching
 
 Gateway API supports matching on:
 
@@ -429,7 +429,7 @@ Canary Deployment
 
 ---
 
-# Traffic Splitting
+## Traffic Splitting
 
 Gateway API supports weighted routing.
 
@@ -459,7 +459,7 @@ Useful for:
 
 ---
 
-# ReferenceGrant
+## ReferenceGrant
 
 Security feature.
 
@@ -483,7 +483,7 @@ Prevents unauthorized cross-namespace references.
 
 ---
 
-# Gateway API Workflow
+## Gateway API Workflow
 
 ```
 Internet
@@ -507,7 +507,7 @@ Pods
 
 ---
 
-# Example Resources
+## Example Resources
 
 ```
 GatewayClass
@@ -531,7 +531,7 @@ Pods
 
 ---
 
-# Gateway API vs Ingress
+## Gateway API vs Ingress
 
 | Ingress | Gateway API |
 |----------|-------------|
@@ -543,7 +543,7 @@ Pods
 
 ---
 
-# Gateway vs Ingress
+## Gateway vs Ingress
 
 Ingress:
 
@@ -573,7 +573,7 @@ Responsibilities are clearly separated.
 
 ---
 
-# Multi-Team Architecture
+## Multi-Team Architecture
 
 Infrastructure Team:
 
@@ -597,7 +597,7 @@ Each team manages only its own resources.
 
 ---
 
-# Viewing Gateway Resources
+## Viewing Gateway Resources
 
 View GatewayClasses:
 
@@ -631,7 +631,7 @@ kubectl describe gateway web-gateway
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 View GatewayClasses:
 
@@ -659,7 +659,7 @@ kubectl delete gateway web-gateway
 
 ---
 
-# Gateway API Architecture Summary
+## Gateway API Architecture Summary
 
 ```
 Internet
@@ -683,9 +683,9 @@ Pods
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Separate Infrastructure and Application Ownership
+#### 1. Separate Infrastructure and Application Ownership
 
 Use:
 
@@ -695,19 +695,19 @@ Use:
 
 ---
 
-### 2. Use Gateway API for New Deployments
+#### 2. Use Gateway API for New Deployments
 
 When supported by your Kubernetes platform, Gateway API provides a richer and more standardized networking model than traditional Ingress.
 
 ---
 
-### 3. Minimize Cross-Namespace Access
+#### 3. Minimize Cross-Namespace Access
 
 Use `ReferenceGrant` only where necessary.
 
 ---
 
-### 4. Prefer Weighted Routing for Deployments
+#### 4. Prefer Weighted Routing for Deployments
 
 Leverage Gateway API features for:
 
@@ -717,15 +717,15 @@ Leverage Gateway API features for:
 
 ---
 
-### 5. Use TLS Everywhere
+#### 5. Use TLS Everywhere
 
 Terminate or pass through encrypted traffic appropriately.
 
 ---
 
-# How Gateway API Works Internally
+## How Gateway API Works Internally
 
-## Overview
+### Overview
 
 The **Gateway API** provides a modern, modular networking architecture for Kubernetes.
 
@@ -749,7 +749,7 @@ depending on the implementation.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                     Internet
@@ -805,7 +805,7 @@ depending on the implementation.
 
 ---
 
-# Complete Workflow
+## Complete Workflow
 
 ```
 Developer
@@ -845,7 +845,7 @@ Backend Pods
 
 ---
 
-# Step 1 – Create GatewayClass
+## Step 1 – Create GatewayClass
 
 Example:
 
@@ -870,7 +870,7 @@ GatewayClass
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -891,7 +891,7 @@ Gateway Stored
 
 ---
 
-# Step 3 – Gateway Controller Watches API
+## Step 3 – Gateway Controller Watches API
 
 The Gateway Controller watches:
 
@@ -920,7 +920,7 @@ Regenerate Configuration
 
 ---
 
-# Step 4 – GatewayClass
+## Step 4 – GatewayClass
 
 Suppose:
 
@@ -946,7 +946,7 @@ Different controllers ignore GatewayClasses that do not belong to them.
 
 ---
 
-# Step 5 – Gateway Creation
+## Step 5 – Gateway Creation
 
 Example:
 
@@ -970,7 +970,7 @@ The Gateway defines where traffic enters the cluster.
 
 ---
 
-# Gateway Listeners
+## Gateway Listeners
 
 Example:
 
@@ -1002,7 +1002,7 @@ Each listener accepts specific protocols and ports.
 
 ---
 
-# Step 6 – Route Attachment
+## Step 6 – Route Attachment
 
 Suppose:
 
@@ -1028,7 +1028,7 @@ Route Attached
 
 ---
 
-# Step 7 – HTTPRoute Processing
+## Step 7 – HTTPRoute Processing
 
 Example:
 
@@ -1056,7 +1056,7 @@ The controller converts these rules into proxy configuration.
 
 ---
 
-# Step 8 – Backend Service
+## Step 8 – Backend Service
 
 Gateway routes traffic to:
 
@@ -1068,7 +1068,7 @@ The Service resolves backend Pods through EndpointSlices.
 
 ---
 
-# Step 9 – EndpointSlice
+## Step 9 – EndpointSlice
 
 Suppose:
 
@@ -1100,7 +1100,7 @@ EndpointSlice stores healthy backend endpoints.
 
 ---
 
-# Step 10 – Pod Selection
+## Step 10 – Pod Selection
 
 Traffic:
 
@@ -1124,7 +1124,7 @@ The selected Pod receives the request.
 
 ---
 
-# Complete Request Flow
+## Complete Request Flow
 
 ```
 Client
@@ -1160,7 +1160,7 @@ Application
 
 ---
 
-# Host Matching
+## Host Matching
 
 Incoming request:
 
@@ -1180,7 +1180,7 @@ Shop Route
 
 ---
 
-# Path Matching
+## Path Matching
 
 Incoming request:
 
@@ -1200,7 +1200,7 @@ Backend Service
 
 ---
 
-# Header Matching
+## Header Matching
 
 Example:
 
@@ -1222,7 +1222,7 @@ Gateway API supports sophisticated routing decisions.
 
 ---
 
-# Query Parameter Matching
+## Query Parameter Matching
 
 Example:
 
@@ -1240,7 +1240,7 @@ Support depends on the Gateway implementation.
 
 ---
 
-# Traffic Splitting
+## Traffic Splitting
 
 Example:
 
@@ -1270,7 +1270,7 @@ Useful for:
 
 ---
 
-# TLS Termination
+## TLS Termination
 
 ```
 HTTPS
@@ -1300,7 +1300,7 @@ The Gateway terminates TLS before forwarding traffic.
 
 ---
 
-# TLS Passthrough
+## TLS Passthrough
 
 Alternative mode:
 
@@ -1324,7 +1324,7 @@ The backend performs TLS decryption.
 
 ---
 
-# TCP Routing
+## TCP Routing
 
 Example:
 
@@ -1353,7 +1353,7 @@ Useful for:
 
 ---
 
-# UDP Routing
+## UDP Routing
 
 Example:
 
@@ -1377,7 +1377,7 @@ Availability depends on the Gateway implementation.
 
 ---
 
-# Cross-Namespace Routing
+## Cross-Namespace Routing
 
 Gateway API supports controlled routing across namespaces.
 
@@ -1395,7 +1395,7 @@ Route Rejected
 
 ---
 
-# Dynamic Updates
+## Dynamic Updates
 
 Suppose:
 
@@ -1423,7 +1423,7 @@ Traffic routing changes dynamically.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Internet
@@ -1455,7 +1455,7 @@ Pods
 
 ---
 
-# NGINX Gateway
+## NGINX Gateway
 
 ```
 Internet
@@ -1475,7 +1475,7 @@ Pods
 
 ---
 
-# Envoy Gateway
+## Envoy Gateway
 
 ```
 Internet
@@ -1495,7 +1495,7 @@ Pods
 
 ---
 
-# Traefik Gateway
+## Traefik Gateway
 
 ```
 Internet
@@ -1515,7 +1515,7 @@ Pods
 
 ---
 
-# HAProxy Gateway
+## HAProxy Gateway
 
 ```
 Internet
@@ -1535,7 +1535,7 @@ Pods
 
 ---
 
-# Cloud Gateway
+## Cloud Gateway
 
 Cloud providers can implement Gateway API using managed infrastructure.
 
@@ -1559,7 +1559,7 @@ Pods
 
 ---
 
-# Hands-on Lab 1 – Verify Gateway API CRDs
+## Hands-on Lab 1 – Verify Gateway API CRDs
 
 ```bash
 kubectl get crds | grep gateway
@@ -1573,7 +1573,7 @@ Observe resources such as:
 
 ---
 
-# Hands-on Lab 2 – View GatewayClasses
+## Hands-on Lab 2 – View GatewayClasses
 
 ```bash
 kubectl get gatewayclass
@@ -1583,7 +1583,7 @@ Observe available Gateway implementations.
 
 ---
 
-# Hands-on Lab 3 – Create Gateway
+## Hands-on Lab 3 – Create Gateway
 
 Deploy a Gateway resource.
 
@@ -1595,7 +1595,7 @@ kubectl get gateway
 
 ---
 
-# Hands-on Lab 4 – Create HTTPRoute
+## Hands-on Lab 4 – Create HTTPRoute
 
 Deploy an HTTPRoute.
 
@@ -1613,7 +1613,7 @@ kubectl describe httproute
 
 ---
 
-# Hands-on Lab 5 – Test Routing
+## Hands-on Lab 5 – Test Routing
 
 Access:
 
@@ -1625,9 +1625,9 @@ Verify that traffic reaches the intended backend Service.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Assuming Gateway Replaces the Controller
+### 1. Assuming Gateway Replaces the Controller
 
 Incorrect:
 
@@ -1657,7 +1657,7 @@ The controller performs the actual networking operations.
 
 ---
 
-## 2. Forgetting GatewayClass
+### 2. Forgetting GatewayClass
 
 Without a valid GatewayClass:
 
@@ -1671,13 +1671,13 @@ Not Accepted
 
 ---
 
-## 3. Missing Parent References
+### 3. Missing Parent References
 
 Routes must explicitly reference the Gateway they attach to.
 
 ---
 
-## 4. Missing ReferenceGrant
+### 4. Missing ReferenceGrant
 
 Cross-namespace routing requires explicit authorization.
 
@@ -1693,7 +1693,7 @@ Rejected
 
 ---
 
-## 5. Expecting All Controllers to Support Every Feature
+### 5. Expecting All Controllers to Support Every Feature
 
 Different Gateway implementations may support different capabilities.
 
@@ -1701,9 +1701,9 @@ Always consult the controller's documentation.
 
 ---
 
-# Gateway API Quick Revision
+## Gateway API Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 GatewayClass
@@ -1727,7 +1727,7 @@ Pods
 
 ---
 
-## Request Flow
+### Request Flow
 
 ```
 Internet
@@ -1755,7 +1755,7 @@ Pod
 
 ---
 
-## Routing Features
+### Routing Features
 
 ```
 Host
@@ -1779,7 +1779,7 @@ Backend
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View GatewayClasses:
 
@@ -1819,9 +1819,9 @@ kubectl delete gateway web-gateway
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is the Gateway API?
 - How does it differ from Ingress?
@@ -1829,7 +1829,7 @@ kubectl delete gateway web-gateway
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - What is the role of a Gateway Controller?
 - How does an HTTPRoute attach to a Gateway?
@@ -1837,7 +1837,7 @@ kubectl delete gateway web-gateway
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the complete request flow through the Gateway API.
 - Compare Gateway API and Ingress architectures.
@@ -1847,9 +1847,9 @@ kubectl delete gateway web-gateway
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Gateway API
 - GatewayClass
@@ -1861,7 +1861,7 @@ kubectl delete gateway web-gateway
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - SIG Network
 - Gateway API Specification
@@ -1870,7 +1870,7 @@ kubectl delete gateway web-gateway
 
 ---
 
-## Gateway Implementations
+### Gateway Implementations
 
 - Envoy Gateway
 - NGINX Gateway Fabric
@@ -1880,7 +1880,7 @@ kubectl delete gateway web-gateway
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - NIST SP 800-190
@@ -1889,7 +1889,7 @@ kubectl delete gateway web-gateway
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Install a Gateway API-compatible controller.
 2. Create a GatewayClass and Gateway.
@@ -1901,7 +1901,7 @@ kubectl delete gateway web-gateway
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Internet
@@ -1943,7 +1943,7 @@ The **Gateway API** modernizes Kubernetes networking by separating **infrastruct
 
 ---
 
-## What's Next?
+### What's Next?
 
 The recommended sequence after Gateway API is:
 

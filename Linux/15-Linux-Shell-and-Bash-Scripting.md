@@ -1,10 +1,10 @@
 # 15 - Linux Shell and Bash Scripting
 
-# Part 1 — Shell Fundamentals, Types of Shells, Bash Basics, Environment Variables, Shell Expansion, and Command-Line Essentials
+## Part 1 — Shell Fundamentals, Types of Shells, Bash Basics, Environment Variables, Shell Expansion, and Command-Line Essentials
 
 ---
 
-# Introduction
+## Introduction
 
 The Linux shell is one of the most powerful interfaces available to system administrators, DevOps engineers, cloud engineers, and cybersecurity professionals.
 
@@ -22,7 +22,7 @@ In enterprise environments, nearly every administrative task can be performed th
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -38,7 +38,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is a Shell?
+## What is a Shell?
 
 A **shell** is a command-line interpreter that acts as an interface between the user and the Linux kernel.
 
@@ -46,7 +46,7 @@ It accepts commands from the user, interprets them, and requests the kernel to p
 
 ---
 
-# Shell Architecture
+## Shell Architecture
 
 ```text
 User
@@ -66,7 +66,7 @@ Hardware
 
 ---
 
-# Shell Responsibilities
+## Shell Responsibilities
 
 The shell is responsible for:
 
@@ -81,7 +81,7 @@ The shell is responsible for:
 
 ---
 
-# Why Use the Shell?
+## Why Use the Shell?
 
 Advantages include:
 
@@ -94,7 +94,7 @@ Advantages include:
 
 ---
 
-# GUI vs Shell
+## GUI vs Shell
 
 | GUI | Shell |
 |------|-------|
@@ -106,7 +106,7 @@ Advantages include:
 
 ---
 
-# Common Linux Shells
+## Common Linux Shells
 
 | Shell | Description |
 |--------|-------------|
@@ -119,7 +119,7 @@ Advantages include:
 
 ---
 
-# Bash (Bourne Again Shell)
+## Bash (Bourne Again Shell)
 
 Bash is the most widely used Linux shell.
 
@@ -138,7 +138,7 @@ Bash is the standard shell on many enterprise Linux systems.
 
 ---
 
-# Checking the Current Shell
+## Checking the Current Shell
 
 Display the current shell:
 
@@ -160,7 +160,7 @@ ps -p $$
 
 ---
 
-# Changing the Default Shell
+## Changing the Default Shell
 
 View available shells:
 
@@ -178,7 +178,7 @@ chsh
 
 ---
 
-# Command Syntax
+## Command Syntax
 
 Most Linux commands follow this format:
 
@@ -202,7 +202,7 @@ Where:
 
 ---
 
-# Understanding Options
+## Understanding Options
 
 Short option:
 
@@ -230,7 +230,7 @@ ls -l -a -h
 
 ---
 
-# Built-in Commands vs External Commands
+## Built-in Commands vs External Commands
 
 | Built-in | External |
 |-----------|-----------|
@@ -252,7 +252,7 @@ type cd
 
 ---
 
-# Finding Executables
+## Finding Executables
 
 Locate an executable:
 
@@ -274,7 +274,7 @@ type grep
 
 ---
 
-# Getting Help
+## Getting Help
 
 View a command's manual:
 
@@ -302,7 +302,7 @@ apropos network
 
 ---
 
-# Command History
+## Command History
 
 Display history:
 
@@ -332,7 +332,7 @@ Ctrl + R
 
 ---
 
-# Clearing the Terminal
+## Clearing the Terminal
 
 ```bash
 clear
@@ -346,7 +346,7 @@ Ctrl + L
 
 ---
 
-# Environment Variables
+## Environment Variables
 
 Environment variables store configuration information used by the shell and applications.
 
@@ -360,7 +360,7 @@ Examples include:
 
 ---
 
-# Viewing Environment Variables
+## Viewing Environment Variables
 
 Display all variables:
 
@@ -382,7 +382,7 @@ echo $HOME
 
 ---
 
-# Common Environment Variables
+## Common Environment Variables
 
 | Variable | Purpose |
 |----------|----------|
@@ -397,7 +397,7 @@ echo $HOME
 
 ---
 
-# The PATH Variable
+## The PATH Variable
 
 The `PATH` variable tells the shell where to search for executable programs.
 
@@ -417,7 +417,7 @@ The shell searches these directories from left to right.
 
 ---
 
-# Modifying PATH (Current Session)
+## Modifying PATH (Current Session)
 
 Temporarily append a directory:
 
@@ -435,7 +435,7 @@ Changes affect only the current shell session unless added to a shell startup fi
 
 ---
 
-# Creating Environment Variables
+## Creating Environment Variables
 
 Create a shell variable:
 
@@ -457,7 +457,7 @@ export PROJECT
 
 ---
 
-# Shell Variables vs Environment Variables
+## Shell Variables vs Environment Variables
 
 | Shell Variable | Environment Variable |
 |----------------|----------------------|
@@ -467,9 +467,9 @@ export PROJECT
 
 ---
 
-# Quoting in Bash
+## Quoting in Bash
 
-## Single Quotes
+### Single Quotes
 
 Treat all enclosed characters literally:
 
@@ -485,7 +485,7 @@ $HOME
 
 ---
 
-## Double Quotes
+### Double Quotes
 
 Allow variable expansion:
 
@@ -501,7 +501,7 @@ Output:
 
 ---
 
-## No Quotes
+### No Quotes
 
 The shell performs word splitting and expansion where applicable.
 
@@ -513,7 +513,7 @@ echo $USER
 
 ---
 
-# Shell Expansion
+## Shell Expansion
 
 Before executing a command, Bash performs several expansions.
 
@@ -528,7 +528,7 @@ Common types include:
 
 ---
 
-# Variable Expansion
+## Variable Expansion
 
 ```bash
 echo $USER
@@ -542,7 +542,7 @@ alice
 
 ---
 
-# Tilde Expansion
+## Tilde Expansion
 
 ```bash
 cd ~
@@ -556,7 +556,7 @@ cd $HOME
 
 ---
 
-# Brace Expansion
+## Brace Expansion
 
 ```bash
 echo file{1..5}.txt
@@ -576,7 +576,7 @@ touch report{1..10}.log
 
 ---
 
-# Wildcard (Glob) Expansion
+## Wildcard (Glob) Expansion
 
 | Pattern | Matches |
 |----------|----------|
@@ -594,7 +594,7 @@ ls *.txt
 
 ---
 
-# Arithmetic Expansion
+## Arithmetic Expansion
 
 ```bash
 echo $((5 + 7))
@@ -614,7 +614,7 @@ echo $((10 * 3))
 
 ---
 
-# Command Substitution
+## Command Substitution
 
 Execute a command and substitute its output.
 
@@ -634,7 +634,7 @@ The `$(...)` form is recommended for readability and nesting.
 
 ---
 
-# Aliases
+## Aliases
 
 Aliases create shortcuts for frequently used commands.
 
@@ -664,7 +664,7 @@ unalias ll
 
 ---
 
-# Shell Initialization Files
+## Shell Initialization Files
 
 These files configure the shell environment.
 
@@ -678,7 +678,7 @@ These files configure the shell environment.
 
 ---
 
-# Reloading Configuration
+## Reloading Configuration
 
 Apply changes without logging out:
 
@@ -694,7 +694,7 @@ Equivalent:
 
 ---
 
-# Enterprise Shell Workflow
+## Enterprise Shell Workflow
 
 ```text
 Administrator
@@ -726,7 +726,7 @@ System Resources
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 The shell is a primary interface for both defenders and attackers.
 
@@ -748,7 +748,7 @@ Because shell commands can significantly impact a system, administrators should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient shell usage provides:
 
@@ -763,7 +763,7 @@ Organizations relying on automation often use shell scripts as a foundation for 
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use descriptive aliases sparingly and document them.
 - Prefer `$(...)` for command substitution.
@@ -775,7 +775,7 @@ Organizations relying on automation often use shell scripts as a foundation for 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The shell provides the primary command-line interface to Linux.
 - Bash is the most widely used Linux shell.
@@ -787,13 +787,13 @@ Organizations relying on automation often use shell scripts as a foundation for 
 ---
 
 
-# 15 - Linux Shell and Bash Scripting
+## 15 - Linux Shell and Bash Scripting
 
-# Part 2 — Input/Output Redirection, Pipes, Variables, User Input, Command Substitution, and Bash Scripting Fundamentals
+## Part 2 — Input/Output Redirection, Pipes, Variables, User Input, Command Substitution, and Bash Scripting Fundamentals
 
 ---
 
-# Introduction
+## Introduction
 
 The true power of Bash comes from combining commands, redirecting input and output, using variables, and automating tasks through scripts.
 
@@ -812,7 +812,7 @@ Almost every enterprise Linux environment relies heavily on shell scripting.
 
 ---
 
-# Bash Scripting Workflow
+## Bash Scripting Workflow
 
 ```text
 Script
@@ -840,7 +840,7 @@ Output
 
 ---
 
-# Standard Streams
+## Standard Streams
 
 Every Linux process starts with three standard streams.
 
@@ -852,7 +852,7 @@ Every Linux process starts with three standard streams.
 
 ---
 
-# Standard Stream Diagram
+## Standard Stream Diagram
 
 ```text
              Keyboard
@@ -873,7 +873,7 @@ Every Linux process starts with three standard streams.
 
 ---
 
-# Input Redirection
+## Input Redirection
 
 Input can come from files instead of the keyboard.
 
@@ -899,7 +899,7 @@ Output
 
 ---
 
-# Output Redirection
+## Output Redirection
 
 Overwrite output:
 
@@ -913,7 +913,7 @@ If it exists, its previous contents are replaced.
 
 ---
 
-# Append Output
+## Append Output
 
 Append instead of overwrite:
 
@@ -933,7 +933,7 @@ Run 3
 
 ---
 
-# Redirecting Errors
+## Redirecting Errors
 
 Redirect only errors:
 
@@ -945,7 +945,7 @@ Useful when collecting error information separately.
 
 ---
 
-# Append Errors
+## Append Errors
 
 ```bash
 find /root 2>> errors.log
@@ -953,7 +953,7 @@ find /root 2>> errors.log
 
 ---
 
-# Redirect Both Output and Errors
+## Redirect Both Output and Errors
 
 ```bash
 command > output.log 2>&1
@@ -967,7 +967,7 @@ command &> output.log
 
 ---
 
-# Discard Output
+## Discard Output
 
 Linux provides a special device:
 
@@ -995,7 +995,7 @@ command &> /dev/null
 
 ---
 
-# Redirection Summary
+## Redirection Summary
 
 | Operator | Meaning |
 |-----------|----------|
@@ -1009,7 +1009,7 @@ command &> /dev/null
 
 ---
 
-# Pipes
+## Pipes
 
 A pipe (`|`) sends the output of one command directly into another.
 
@@ -1017,7 +1017,7 @@ Instead of storing intermediate results in a file, data flows between commands.
 
 ---
 
-# Pipe Workflow
+## Pipe Workflow
 
 ```text
 Command A
@@ -1033,7 +1033,7 @@ Command B
 
 ---
 
-# Example
+## Example
 
 ```bash
 ls -l | less
@@ -1055,7 +1055,7 @@ Scrollable Output
 
 ---
 
-# Counting Files
+## Counting Files
 
 ```bash
 ls | wc -l
@@ -1077,7 +1077,7 @@ Number of Files
 
 ---
 
-# Searching Output
+## Searching Output
 
 ```bash
 ps -ef | grep ssh
@@ -1099,7 +1099,7 @@ Matching Processes
 
 ---
 
-# Multiple Pipes
+## Multiple Pipes
 
 ```bash
 cat access.log | grep ERROR | sort | uniq
@@ -1125,7 +1125,7 @@ Remove Duplicates
 
 ---
 
-# Tee Command
+## Tee Command
 
 Display output while saving it.
 
@@ -1155,7 +1155,7 @@ Useful for:
 
 ---
 
-# Xargs
+## Xargs
 
 Convert standard input into command arguments.
 
@@ -1175,7 +1175,7 @@ Always review the results before deleting files, especially in production system
 
 ---
 
-# Command Substitution
+## Command Substitution
 
 Use the output of one command inside another.
 
@@ -1199,7 +1199,7 @@ echo "$(whoami) logged in from $(hostname)"
 
 ---
 
-# Arithmetic Expansion
+## Arithmetic Expansion
 
 ```bash
 echo $((25 + 10))
@@ -1223,7 +1223,7 @@ echo $((100 / 5))
 
 ---
 
-# Creating Bash Scripts
+## Creating Bash Scripts
 
 Create a file:
 
@@ -1241,7 +1241,7 @@ echo "Hello Linux"
 
 ---
 
-# Shebang
+## Shebang
 
 Every Bash script usually begins with:
 
@@ -1259,7 +1259,7 @@ The shebang specifies the interpreter used to execute the script.
 
 ---
 
-# Making Scripts Executable
+## Making Scripts Executable
 
 Grant execute permission:
 
@@ -1281,7 +1281,7 @@ bash hello.sh
 
 ---
 
-# Script Execution Flow
+## Script Execution Flow
 
 ```text
 Script
@@ -1301,7 +1301,7 @@ Output
 
 ---
 
-# Comments
+## Comments
 
 Single-line comment:
 
@@ -1313,7 +1313,7 @@ Comments improve readability and maintainability.
 
 ---
 
-# Variables
+## Variables
 
 Assign a variable:
 
@@ -1329,7 +1329,7 @@ echo "$NAME"
 
 ---
 
-# Variable Rules
+## Variable Rules
 
 Valid:
 
@@ -1357,7 +1357,7 @@ MY VALUE
 
 ---
 
-# Variable Example
+## Variable Example
 
 ```bash
 SERVER="web01"
@@ -1373,7 +1373,7 @@ web01
 
 ---
 
-# Read User Input
+## Read User Input
 
 ```bash
 read NAME
@@ -1391,7 +1391,7 @@ echo "Hello $NAME"
 
 ---
 
-# Prompt with `read`
+## Prompt with `read`
 
 ```bash
 read -p "Username: " USER
@@ -1405,7 +1405,7 @@ Username:
 
 ---
 
-# Hidden Password Input
+## Hidden Password Input
 
 ```bash
 read -s PASSWORD
@@ -1415,7 +1415,7 @@ No characters are displayed while typing.
 
 ---
 
-# Positional Parameters
+## Positional Parameters
 
 Arguments passed to scripts.
 
@@ -1439,7 +1439,7 @@ home
 
 ---
 
-# Common Positional Parameters
+## Common Positional Parameters
 
 | Parameter | Meaning |
 |------------|----------|
@@ -1454,7 +1454,7 @@ home
 
 ---
 
-# Exit Status
+## Exit Status
 
 Every command returns an exit code.
 
@@ -1474,7 +1474,7 @@ echo $?
 
 ---
 
-# Testing Exit Status
+## Testing Exit Status
 
 ```bash
 mkdir project
@@ -1492,7 +1492,7 @@ Checking exit codes is essential for reliable automation.
 
 ---
 
-# Quoting Variables
+## Quoting Variables
 
 Recommended:
 
@@ -1512,7 +1512,7 @@ cat "$FILE"
 
 ---
 
-# Basic Script Example
+## Basic Script Example
 
 ```bash
 #!/bin/bash
@@ -1528,7 +1528,7 @@ echo "Date: $(date)"
 
 ---
 
-# Backup Script Example
+## Backup Script Example
 
 ```bash
 #!/bin/bash
@@ -1540,7 +1540,7 @@ echo "Backup Complete"
 
 ---
 
-# Enterprise Script Workflow
+## Enterprise Script Workflow
 
 ```text
 Administrator
@@ -1568,7 +1568,7 @@ Log Results
 
 ---
 
-# Common Beginner Mistakes
+## Common Beginner Mistakes
 
 | Mistake | Correct Practice |
 |----------|------------------|
@@ -1581,7 +1581,7 @@ Log Results
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Bash scripting is widely used in security operations.
 
@@ -1605,7 +1605,7 @@ Scripts should be reviewed carefully to avoid:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Automation with Bash provides:
 
@@ -1618,7 +1618,7 @@ Automation with Bash provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use meaningful variable names.
 - Prefer `#!/usr/bin/env bash` for portability unless a fixed interpreter path is required.
@@ -1631,7 +1631,7 @@ Automation with Bash provides:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux programs communicate using standard input, output, and error streams.
 - Redirection and pipes allow commands to be combined into powerful workflows.
@@ -1643,13 +1643,13 @@ Automation with Bash provides:
 ---
 
 
-# 15 - Linux Shell and Bash Scripting
+## 15 - Linux Shell and Bash Scripting
 
-# Part 3 — Conditional Statements, Loops, Functions, Arrays, Error Handling, Debugging, and Advanced Bash Scripting
+## Part 3 — Conditional Statements, Loops, Functions, Arrays, Error Handling, Debugging, and Advanced Bash Scripting
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise Bash scripts rarely consist of a few simple commands.
 
@@ -1668,7 +1668,7 @@ These features make scripts reliable, maintainable, and scalable.
 
 ---
 
-# Advanced Script Workflow
+## Advanced Script Workflow
 
 ```text
 Start
@@ -1704,7 +1704,7 @@ Exit
 
 ---
 
-# Conditional Statements
+## Conditional Statements
 
 Conditional statements allow scripts to execute different actions depending on conditions.
 
@@ -1717,7 +1717,7 @@ Common constructs:
 
 ---
 
-# Basic `if` Statement
+## Basic `if` Statement
 
 Syntax:
 
@@ -1743,7 +1743,7 @@ fi
 
 ---
 
-# `if-else`
+## `if-else`
 
 ```bash
 #!/usr/bin/env bash
@@ -1760,7 +1760,7 @@ fi
 
 ---
 
-# `elif`
+## `elif`
 
 ```bash
 #!/usr/bin/env bash
@@ -1780,9 +1780,9 @@ fi
 
 ---
 
-# Comparison Operators
+## Comparison Operators
 
-## Numeric Operators
+### Numeric Operators
 
 | Operator | Meaning |
 |-----------|----------|
@@ -1801,7 +1801,7 @@ Example:
 
 ---
 
-## String Operators
+### String Operators
 
 | Operator | Meaning |
 |-----------|----------|
@@ -1818,7 +1818,7 @@ Example:
 
 ---
 
-## File Test Operators
+### File Test Operators
 
 | Operator | Meaning |
 |-----------|----------|
@@ -1841,7 +1841,7 @@ fi
 
 ---
 
-# Logical Operators
+## Logical Operators
 
 AND:
 
@@ -1863,7 +1863,7 @@ NOT:
 
 ---
 
-# `case` Statement
+## `case` Statement
 
 Useful when evaluating multiple fixed options.
 
@@ -1889,7 +1889,7 @@ esac
 
 ---
 
-# Loops
+## Loops
 
 Loops repeat commands until a condition changes.
 
@@ -1902,7 +1902,7 @@ Types:
 
 ---
 
-# `for` Loop
+## `for` Loop
 
 ```bash
 for i in 1 2 3 4 5
@@ -1923,7 +1923,7 @@ Output:
 
 ---
 
-# Range Loop
+## Range Loop
 
 ```bash
 for i in {1..10}
@@ -1934,7 +1934,7 @@ done
 
 ---
 
-# Loop Through Files
+## Loop Through Files
 
 ```bash
 for FILE in *.txt
@@ -1945,7 +1945,7 @@ done
 
 ---
 
-# C-Style `for` Loop
+## C-Style `for` Loop
 
 ```bash
 for ((i=1; i<=5; i++))
@@ -1956,7 +1956,7 @@ done
 
 ---
 
-# `while` Loop
+## `while` Loop
 
 ```bash
 COUNT=1
@@ -1970,7 +1970,7 @@ done
 
 ---
 
-# `until` Loop
+## `until` Loop
 
 Runs until the condition becomes true.
 
@@ -1986,7 +1986,7 @@ done
 
 ---
 
-# `break`
+## `break`
 
 Terminate a loop immediately.
 
@@ -2004,7 +2004,7 @@ done
 
 ---
 
-# `continue`
+## `continue`
 
 Skip the current iteration.
 
@@ -2022,7 +2022,7 @@ done
 
 ---
 
-# Arrays
+## Arrays
 
 Arrays store multiple values.
 
@@ -2040,7 +2040,7 @@ echo "${FRUITS[0]}"
 
 ---
 
-# Array Operations
+## Array Operations
 
 Display all values:
 
@@ -2062,7 +2062,7 @@ FRUITS+=("Mango")
 
 ---
 
-# Loop Through Arrays
+## Loop Through Arrays
 
 ```bash
 for ITEM in "${FRUITS[@]}"
@@ -2073,7 +2073,7 @@ done
 
 ---
 
-# Functions
+## Functions
 
 Functions group reusable commands.
 
@@ -2089,7 +2089,7 @@ function_name() {
 
 ---
 
-# Function Example
+## Function Example
 
 ```bash
 greet() {
@@ -2103,7 +2103,7 @@ greet
 
 ---
 
-# Function with Arguments
+## Function with Arguments
 
 ```bash
 greet() {
@@ -2117,7 +2117,7 @@ greet "Anurag"
 
 ---
 
-# Returning Values
+## Returning Values
 
 Functions return exit codes using `return`.
 
@@ -2139,7 +2139,7 @@ For textual output, use `echo` inside the function and capture it with command s
 
 ---
 
-# Local Variables
+## Local Variables
 
 Limit variable scope:
 
@@ -2155,7 +2155,7 @@ example() {
 
 ---
 
-# Reading Command-Line Arguments
+## Reading Command-Line Arguments
 
 ```bash
 #!/usr/bin/env bash
@@ -2169,7 +2169,7 @@ echo "Second: $2"
 
 ---
 
-# Processing All Arguments
+## Processing All Arguments
 
 ```bash
 for ARG in "$@"
@@ -2182,7 +2182,7 @@ done
 
 ---
 
-# Exit Codes
+## Exit Codes
 
 Exit successfully:
 
@@ -2198,7 +2198,7 @@ exit 1
 
 ---
 
-# Defensive Error Handling
+## Defensive Error Handling
 
 Example:
 
@@ -2226,7 +2226,7 @@ fi
 
 ---
 
-# Strict Mode
+## Strict Mode
 
 Many production scripts begin with:
 
@@ -2246,7 +2246,7 @@ These options help catch common scripting mistakes early.
 
 ---
 
-# Traps
+## Traps
 
 Execute cleanup before exiting.
 
@@ -2270,7 +2270,7 @@ Useful for:
 
 ---
 
-# Debugging Scripts
+## Debugging Scripts
 
 Run with debugging enabled:
 
@@ -2292,7 +2292,7 @@ set +x
 
 ---
 
-# Syntax Checking
+## Syntax Checking
 
 Verify script syntax without execution:
 
@@ -2304,7 +2304,7 @@ This detects syntax errors before running the script.
 
 ---
 
-# Logging
+## Logging
 
 Append log messages:
 
@@ -2323,7 +2323,7 @@ Production scripts often include:
 
 ---
 
-# Example Log Function
+## Example Log Function
 
 ```bash
 log() {
@@ -2345,7 +2345,7 @@ log() {
 
 ---
 
-# Temporary Files
+## Temporary Files
 
 Create securely:
 
@@ -2361,7 +2361,7 @@ rm -f "$TEMP_FILE"
 
 ---
 
-# ShellCheck
+## ShellCheck
 
 ShellCheck is a widely used static analysis tool for shell scripts.
 
@@ -2380,7 +2380,7 @@ It detects:
 
 ---
 
-# Enterprise Script Structure
+## Enterprise Script Structure
 
 ```text
 Shebang
@@ -2420,9 +2420,9 @@ Exit
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## User Account Audit
+### User Account Audit
 
 Workflow:
 
@@ -2452,9 +2452,9 @@ Save Log
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Log Monitoring Script
+### Log Monitoring Script
 
 Workflow:
 
@@ -2480,7 +2480,7 @@ Notify Administrator
 
 ---
 
-# Common Bash Mistakes
+## Common Bash Mistakes
 
 | Mistake | Better Practice |
 |----------|-----------------|
@@ -2493,7 +2493,7 @@ Notify Administrator
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security teams frequently use Bash for:
 
@@ -2516,7 +2516,7 @@ When writing security scripts:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-designed Bash scripts provide:
 
@@ -2529,7 +2529,7 @@ Well-designed Bash scripts provide:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use descriptive function and variable names.
 - Enable strict mode where appropriate.
@@ -2544,7 +2544,7 @@ Well-designed Bash scripts provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Conditional statements control script execution paths.
 - Loops automate repetitive tasks.
@@ -2555,13 +2555,13 @@ Well-designed Bash scripts provide:
 
 ---
 
-# 15 - Linux Shell and Bash Scripting
+## 15 - Linux Shell and Bash Scripting
 
-# Part 4 — Practical Labs, Enterprise Automation Projects, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Automation Projects, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Bash scripting is one of the most valuable skills for Linux professionals.
 
@@ -2582,7 +2582,7 @@ This section focuses on practical exercises that simulate real-world administrat
 
 ---
 
-# Enterprise Automation Lifecycle
+## Enterprise Automation Lifecycle
 
 ```text
 Identify Task
@@ -2622,7 +2622,7 @@ Improve
 
 ---
 
-# Practical Lab 1 — Your First Bash Script
+## Practical Lab 1 — Your First Bash Script
 
 Create a script:
 
@@ -2651,7 +2651,7 @@ Run:
 ./hello.sh
 ```
 
-### Objectives
+#### Objectives
 
 - Create a Bash script
 - Execute a script
@@ -2659,7 +2659,7 @@ Run:
 
 ---
 
-# Practical Lab 2 — Display System Information
+## Practical Lab 2 — Display System Information
 
 ```bash
 #!/usr/bin/env bash
@@ -2671,14 +2671,14 @@ echo "Kernel   : $(uname -r)"
 echo "Uptime   : $(uptime -p)"
 ```
 
-### Skills Learned
+#### Skills Learned
 
 - Command substitution
 - System information gathering
 
 ---
 
-# Practical Lab 3 — User Input
+## Practical Lab 3 — User Input
 
 ```bash
 #!/usr/bin/env bash
@@ -2688,14 +2688,14 @@ read -p "Enter your name: " NAME
 echo "Welcome $NAME"
 ```
 
-### Objectives
+#### Objectives
 
 - Read user input
 - Store values in variables
 
 ---
 
-# Practical Lab 4 — Conditional Statements
+## Practical Lab 4 — Conditional Statements
 
 ```bash
 #!/usr/bin/env bash
@@ -2710,14 +2710,14 @@ else
 fi
 ```
 
-### Objectives
+#### Objectives
 
 - Numeric comparison
 - Decision making
 
 ---
 
-# Practical Lab 5 — File Existence Checker
+## Practical Lab 5 — File Existence Checker
 
 ```bash
 #!/usr/bin/env bash
@@ -2732,14 +2732,14 @@ else
 fi
 ```
 
-### Objectives
+#### Objectives
 
 - File testing
 - Input validation
 
 ---
 
-# Practical Lab 6 — Loop Through Files
+## Practical Lab 6 — Loop Through Files
 
 ```bash
 #!/usr/bin/env bash
@@ -2750,14 +2750,14 @@ do
 done
 ```
 
-### Objectives
+#### Objectives
 
 - File iteration
 - Loop construction
 
 ---
 
-# Practical Lab 7 — Backup Script
+## Practical Lab 7 — Backup Script
 
 ```bash
 #!/usr/bin/env bash
@@ -2771,7 +2771,7 @@ cp "$SOURCE" "$DESTINATION"
 echo "Backup completed"
 ```
 
-### Improvement Ideas
+#### Improvement Ideas
 
 - Verify source exists
 - Check exit status
@@ -2779,7 +2779,7 @@ echo "Backup completed"
 
 ---
 
-# Practical Lab 8 — Count Running Processes
+## Practical Lab 8 — Count Running Processes
 
 ```bash
 #!/usr/bin/env bash
@@ -2789,7 +2789,7 @@ COUNT=$(ps -e | wc -l)
 echo "Running processes: $COUNT"
 ```
 
-### Skills Learned
+#### Skills Learned
 
 - Pipes
 - Command substitution
@@ -2797,7 +2797,7 @@ echo "Running processes: $COUNT"
 
 ---
 
-# Practical Lab 9 — Log Analysis
+## Practical Lab 9 — Log Analysis
 
 Count failed SSH logins (distribution-dependent log path):
 
@@ -2811,14 +2811,14 @@ On some enterprise distributions, authentication logs may be stored in:
 /var/log/secure
 ```
 
-### Objectives
+#### Objectives
 
 - Search logs
 - Count matching events
 
 ---
 
-# Practical Lab 10 — Disk Usage Report
+## Practical Lab 10 — Disk Usage Report
 
 ```bash
 #!/usr/bin/env bash
@@ -2840,7 +2840,7 @@ df -h
 
 ---
 
-# Practical Lab 11 — Monitor Memory
+## Practical Lab 11 — Monitor Memory
 
 ```bash
 #!/usr/bin/env bash
@@ -2848,14 +2848,14 @@ df -h
 free -h
 ```
 
-### Objectives
+#### Objectives
 
 - Review memory
 - Observe swap usage
 
 ---
 
-# Practical Lab 12 — Array Processing
+## Practical Lab 12 — Array Processing
 
 ```bash
 #!/usr/bin/env bash
@@ -2870,7 +2870,7 @@ done
 
 ---
 
-# Practical Lab 13 — Function Example
+## Practical Lab 13 — Function Example
 
 ```bash
 #!/usr/bin/env bash
@@ -2884,14 +2884,14 @@ greet() {
 greet "Linux"
 ```
 
-### Objectives
+#### Objectives
 
 - Function creation
 - Passing arguments
 
 ---
 
-# Practical Lab 14 — Error Handling
+## Practical Lab 14 — Error Handling
 
 ```bash
 #!/usr/bin/env bash
@@ -2919,7 +2919,7 @@ fi
 
 ---
 
-# Practical Lab 15 — Logging
+## Practical Lab 15 — Logging
 
 ```bash
 #!/usr/bin/env bash
@@ -2931,14 +2931,14 @@ echo "$(date): Script Started" >> "$LOGFILE"
 echo "$(date): Script Finished" >> "$LOGFILE"
 ```
 
-### Objectives
+#### Objectives
 
 - Persistent logging
 - Timestamp generation
 
 ---
 
-# Practical Lab 16 — Scheduled Execution
+## Practical Lab 16 — Scheduled Execution
 
 Create a script:
 
@@ -2952,16 +2952,16 @@ Schedule using cron (example: daily at 02:00):
 0 2 * * * /home/user/backup.sh
 ```
 
-### Objectives
+#### Objectives
 
 - Understand scheduled automation
 - Prepare scripts for unattended execution
 
 ---
 
-# Enterprise Project 1 — System Health Report
+## Enterprise Project 1 — System Health Report
 
-## Goal
+### Goal
 
 Generate a daily health report.
 
@@ -2995,9 +2995,9 @@ Email or Archive Report
 
 ---
 
-# Enterprise Project 2 — Log Monitoring
+## Enterprise Project 2 — Log Monitoring
 
-## Goal
+### Goal
 
 Detect repeated authentication failures.
 
@@ -3031,9 +3031,9 @@ Possible enhancements:
 
 ---
 
-# Enterprise Project 3 — Backup Automation
+## Enterprise Project 3 — Backup Automation
 
-## Goal
+### Goal
 
 Automate backups.
 
@@ -3068,7 +3068,7 @@ Enhancements:
 
 ---
 
-# Enterprise Project 4 — User Audit
+## Enterprise Project 4 — User Audit
 
 Generate a report including:
 
@@ -3097,7 +3097,7 @@ Save Output
 
 ---
 
-# Enterprise Project 5 — Security Baseline Audit
+## Enterprise Project 5 — Security Baseline Audit
 
 Collect:
 
@@ -3129,7 +3129,7 @@ Generate Security Report
 
 ---
 
-# Enterprise Project 6 — Directory Integrity Snapshot
+## Enterprise Project 6 — Directory Integrity Snapshot
 
 Create a script that:
 
@@ -3162,7 +3162,7 @@ Report Changes
 
 ---
 
-# Common Scripting Mistakes
+## Common Scripting Mistakes
 
 | Mistake | Consequence | Better Practice |
 |----------|-------------|-----------------|
@@ -3176,7 +3176,7 @@ Report Changes
 
 ---
 
-# Enterprise Script Checklist
+## Enterprise Script Checklist
 
 | Check | Completed |
 |---------|-----------|
@@ -3193,7 +3193,7 @@ Report Changes
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Bash scripting is indispensable for defensive security operations.
 
@@ -3220,7 +3220,7 @@ Security recommendations:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-designed Bash automation delivers:
 
@@ -3235,7 +3235,7 @@ Well-designed Bash automation delivers:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow consistent coding standards.
 - Use descriptive names for variables and functions.
@@ -3250,7 +3250,7 @@ Well-designed Bash automation delivers:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3275,9 +3275,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is a shell?
 2. What is Bash?
@@ -3292,7 +3292,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the difference between shell variables and environment variables.
 2. Compare `for`, `while`, and `until` loops.
@@ -3307,7 +3307,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design an automated backup solution using Bash.
 2. Describe a secure approach for handling user input.
@@ -3322,7 +3322,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Bash is a powerful automation language for Linux administration.
 - Redirection and pipes enable efficient command composition.
@@ -3333,9 +3333,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man bash`
 - `help`
@@ -3347,7 +3347,7 @@ In this chapter, you learned:
 - `man cron`
 - `man crontab`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - GNU Bash Reference Manual
 - POSIX Shell Command Language
@@ -3362,11 +3362,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **16-Linux-System-Monitoring.md**
 
-## Topics Covered
+### Topics Covered
 
 - System Monitoring Fundamentals
 - CPU Monitoring

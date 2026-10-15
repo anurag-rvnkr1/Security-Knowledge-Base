@@ -20,7 +20,7 @@ Choosing the correct installation method is one of the first decisions Kubernete
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -34,7 +34,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Kubernetes Installation Methods
+## Kubernetes Installation Methods
 
 There are several ways to run Kubernetes.
 
@@ -58,7 +58,7 @@ Kubernetes
 
 ---
 
-# Local Installation Options
+## Local Installation Options
 
 The most common local options are:
 
@@ -72,7 +72,7 @@ The most common local options are:
 
 ---
 
-# Cloud Managed Kubernetes
+## Cloud Managed Kubernetes
 
 Most cloud providers offer managed Kubernetes services.
 
@@ -88,7 +88,7 @@ Managed services reduce operational overhead by handling many control plane mana
 
 ---
 
-# Production Installation Options
+## Production Installation Options
 
 Production clusters commonly use:
 
@@ -116,7 +116,7 @@ Other enterprise distributions include solutions such as:
 
 ---
 
-# Recommended Learning Path
+## Recommended Learning Path
 
 ```
 Minikube
@@ -142,7 +142,7 @@ This progression builds practical knowledge while gradually introducing operatio
 
 ---
 
-# System Requirements
+## System Requirements
 
 Minimum requirements for a local learning environment:
 
@@ -156,7 +156,7 @@ Minimum requirements for a local learning environment:
 
 ---
 
-# Required Software
+## Required Software
 
 Before installing Kubernetes, install:
 
@@ -168,9 +168,9 @@ Some installation methods require additional dependencies.
 
 ---
 
-# Installation Option 1 – Minikube
+## Installation Option 1 – Minikube
 
-## What is Minikube?
+### What is Minikube?
 
 Minikube creates a local Kubernetes cluster suitable for learning and development.
 
@@ -194,7 +194,7 @@ Pods
 
 ---
 
-## Install Minikube
+### Install Minikube
 
 Linux example:
 
@@ -208,7 +208,7 @@ Refer to the official documentation for installation steps on your operating sys
 
 ---
 
-## Start Cluster
+### Start Cluster
 
 ```bash
 minikube start
@@ -222,7 +222,7 @@ Starting Kubernetes...
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 kubectl get nodes
@@ -238,7 +238,7 @@ minikube    Ready
 
 ---
 
-## Stop Cluster
+### Stop Cluster
 
 ```bash
 minikube stop
@@ -246,7 +246,7 @@ minikube stop
 
 ---
 
-## Delete Cluster
+### Delete Cluster
 
 ```bash
 minikube delete
@@ -254,9 +254,9 @@ minikube delete
 
 ---
 
-# Installation Option 2 – Kind
+## Installation Option 2 – Kind
 
-## What is Kind?
+### What is Kind?
 
 Kind stands for:
 
@@ -286,7 +286,7 @@ Worker Node(s)
 
 ---
 
-## Install Kind
+### Install Kind
 
 Linux example:
 
@@ -300,7 +300,7 @@ sudo mv ./kind /usr/local/bin/
 
 ---
 
-## Create Cluster
+### Create Cluster
 
 ```bash
 kind create cluster
@@ -308,7 +308,7 @@ kind create cluster
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 kubectl cluster-info
@@ -316,7 +316,7 @@ kubectl cluster-info
 
 ---
 
-## Delete
+### Delete
 
 ```bash
 kind delete cluster
@@ -324,7 +324,7 @@ kind delete cluster
 
 ---
 
-# Installation Option 3 – k3d
+## Installation Option 3 – k3d
 
 k3d runs lightweight K3s clusters inside Docker.
 
@@ -355,7 +355,7 @@ k3d cluster delete demo
 
 ---
 
-# Installation Option 4 – kubeadm
+## Installation Option 4 – kubeadm
 
 kubeadm is commonly used to build production-style Kubernetes clusters.
 
@@ -399,7 +399,7 @@ A detailed kubeadm walkthrough will be covered later in the handbook.
 
 ---
 
-# Installation Option 5 – Managed Kubernetes
+## Installation Option 5 – Managed Kubernetes
 
 Managed services simplify cluster operations.
 
@@ -431,7 +431,7 @@ Benefits:
 
 ---
 
-# Installing kubectl
+## Installing kubectl
 
 kubectl is the official Kubernetes command-line tool.
 
@@ -449,7 +449,7 @@ kubectl cluster-info
 
 ---
 
-# First Verification Commands
+## First Verification Commands
 
 View nodes:
 
@@ -479,7 +479,7 @@ These commands confirm the cluster is operational.
 
 ---
 
-# Cluster Architecture After Installation
+## Cluster Architecture After Installation
 
 ```
 Laptop
@@ -507,7 +507,7 @@ Pods
 
 ---
 
-# Which Installation Should You Choose?
+## Which Installation Should You Choose?
 
 | Goal | Recommendation |
 |------|----------------|
@@ -519,7 +519,7 @@ Pods
 
 ---
 
-# Installation Workflow
+## Installation Workflow
 
 ```
 Install Tools
@@ -543,7 +543,7 @@ Learn Kubernetes
 
 ---
 
-# Benefits of Local Clusters
+## Benefits of Local Clusters
 
 - Safe experimentation
 - Fast testing
@@ -554,33 +554,33 @@ Learn Kubernetes
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Local Clusters for Learning
+#### 1. Use Local Clusters for Learning
 
 Avoid experimenting on production environments.
 
 ---
 
-### 2. Keep kubectl Updated
+#### 2. Keep kubectl Updated
 
 Use a kubectl version compatible with your Kubernetes cluster version.
 
 ---
 
-### 3. Learn Multiple Installation Methods
+#### 3. Learn Multiple Installation Methods
 
 Different organizations use different Kubernetes distributions and deployment models.
 
 ---
 
-### 4. Practice Cluster Creation Repeatedly
+#### 4. Practice Cluster Creation Repeatedly
 
 Building and deleting clusters strengthens troubleshooting and operational skills.
 
 ---
 
-### 5. Verify After Installation
+#### 5. Verify After Installation
 
 Always confirm:
 
@@ -593,7 +593,7 @@ before deploying applications.
 
 ---
 
-## How Kubernetes Installation Works
+### How Kubernetes Installation Works
 
 Installing Kubernetes is more than simply downloading software. A functional cluster requires multiple components working together, including the Control Plane, Worker Nodes, networking, a container runtime, and client tools.
 
@@ -601,7 +601,7 @@ Although installation steps vary between Minikube, Kind, kubeadm, k3d, and manag
 
 ---
 
-# Kubernetes Installation Workflow
+## Kubernetes Installation Workflow
 
 ```
 Prepare Machine
@@ -643,7 +643,7 @@ Every Kubernetes installation follows this general lifecycle.
 
 ---
 
-# Step 1 – Prepare the Host
+## Step 1 – Prepare the Host
 
 Before installing Kubernetes, verify:
 
@@ -673,7 +673,7 @@ Kubernetes
 
 ---
 
-# Step 2 – Install Container Runtime
+## Step 2 – Install Container Runtime
 
 Kubernetes does not execute containers directly.
 
@@ -700,7 +700,7 @@ Some local development tools use Docker internally, depending on the installatio
 
 ---
 
-# Step 3 – Install Kubernetes Components
+## Step 3 – Install Kubernetes Components
 
 Core components include:
 
@@ -726,29 +726,29 @@ Responsibilities:
 
 ---
 
-# Step 4 – Create the Cluster
+## Step 4 – Create the Cluster
 
 The cluster creation process differs depending on the chosen tool.
 
-### Minikube
+#### Minikube
 
 ```bash
 minikube start
 ```
 
-### Kind
+#### Kind
 
 ```bash
 kind create cluster
 ```
 
-### k3d
+#### k3d
 
 ```bash
 k3d cluster create demo
 ```
 
-### Managed Kubernetes
+#### Managed Kubernetes
 
 Typically created using:
 
@@ -758,7 +758,7 @@ Typically created using:
 
 ---
 
-# Step 5 – Control Plane Initialization
+## Step 5 – Control Plane Initialization
 
 During cluster creation:
 
@@ -784,7 +784,7 @@ These components form the Kubernetes Control Plane.
 
 ---
 
-# Step 6 – Worker Node Registration
+## Step 6 – Worker Node Registration
 
 Worker nodes join the cluster.
 
@@ -808,7 +808,7 @@ The Control Plane now recognizes available compute resources.
 
 ---
 
-# Step 7 – Cluster Networking
+## Step 7 – Cluster Networking
 
 Networking components are initialized.
 
@@ -840,7 +840,7 @@ These are discussed in later chapters.
 
 ---
 
-# Step 8 – Configure kubectl
+## Step 8 – Configure kubectl
 
 kubectl requires cluster configuration.
 
@@ -876,7 +876,7 @@ kubectl config current-context
 
 ---
 
-# Step 9 – Verify Installation
+## Step 9 – Verify Installation
 
 Check nodes:
 
@@ -923,7 +923,7 @@ System components should generally report a Running or Ready status after the cl
 
 ---
 
-# Step 10 – Deploy Your First Application
+## Step 10 – Deploy Your First Application
 
 Example:
 
@@ -952,7 +952,7 @@ kubectl get services
 
 ---
 
-# Internal Installation Flow
+## Internal Installation Flow
 
 ```
 Install Software
@@ -988,7 +988,7 @@ Deploy Application
 
 ---
 
-# Local Cluster Architecture
+## Local Cluster Architecture
 
 ```
 Laptop
@@ -1018,7 +1018,7 @@ For tools like Kind and k3d, Kubernetes nodes themselves run as Docker container
 
 ---
 
-# Managed Kubernetes Architecture
+## Managed Kubernetes Architecture
 
 ```
 Cloud Provider
@@ -1040,7 +1040,7 @@ The cloud provider manages many Control Plane operational tasks.
 
 ---
 
-# kubeconfig File
+## kubeconfig File
 
 The kubeconfig file stores cluster connection information.
 
@@ -1072,7 +1072,7 @@ kubectl config view
 
 ---
 
-# Multiple Cluster Management
+## Multiple Cluster Management
 
 Example:
 
@@ -1098,7 +1098,7 @@ This enables administrators to manage multiple clusters from a single workstatio
 
 ---
 
-# Verification Checklist
+## Verification Checklist
 
 Verify:
 
@@ -1124,7 +1124,7 @@ Deployments Successful
 
 ---
 
-# Useful Verification Commands
+## Useful Verification Commands
 
 Cluster information:
 
@@ -1176,13 +1176,13 @@ kubectl config get-contexts
 
 ---
 
-# Hands-on Exercise
+## Hands-on Exercise
 
-## Create a Local Cluster
+### Create a Local Cluster
 
 Choose one tool:
 
-### Minikube
+#### Minikube
 
 ```bash
 minikube start
@@ -1190,7 +1190,7 @@ minikube start
 
 or
 
-### Kind
+#### Kind
 
 ```bash
 kind create cluster
@@ -1198,7 +1198,7 @@ kind create cluster
 
 or
 
-### k3d
+#### k3d
 
 ```bash
 k3d cluster create demo
@@ -1206,7 +1206,7 @@ k3d cluster create demo
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 kubectl cluster-info
@@ -1218,7 +1218,7 @@ kubectl get pods -A
 
 ---
 
-## Deploy NGINX
+### Deploy NGINX
 
 ```bash
 kubectl create deployment nginx \
@@ -1227,7 +1227,7 @@ kubectl create deployment nginx \
 
 ---
 
-## Verify Deployment
+### Verify Deployment
 
 ```bash
 kubectl get deployments
@@ -1237,7 +1237,7 @@ kubectl get pods
 
 ---
 
-## Delete Deployment
+### Delete Deployment
 
 ```bash
 kubectl delete deployment nginx
@@ -1245,21 +1245,21 @@ kubectl delete deployment nginx
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Learn More Than One Installation Method
+#### 1. Learn More Than One Installation Method
 
 Different organizations standardize on different Kubernetes distributions.
 
 ---
 
-### 2. Keep Local Clusters Disposable
+#### 2. Keep Local Clusters Disposable
 
 Create, destroy, and recreate clusters frequently during learning.
 
 ---
 
-### 3. Verify Before Troubleshooting
+#### 3. Verify Before Troubleshooting
 
 Always check:
 
@@ -1272,19 +1272,19 @@ before assuming the cluster is broken.
 
 ---
 
-### 4. Use Version-Compatible Tools
+#### 4. Use Version-Compatible Tools
 
 Match kubectl to the Kubernetes version you are administering whenever practical.
 
 ---
 
-### 5. Understand What the Tool Automates
+#### 5. Understand What the Tool Automates
 
 Minikube, Kind, k3d, kubeadm, and managed Kubernetes abstract different operational tasks, but all ultimately produce a Kubernetes cluster with the same core architectural concepts.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Installing Kubernetes is often straightforward with modern tools like **Minikube**, **Kind**, and **k3d**, but many beginners encounter issues because they misunderstand how clusters are created and managed.
 
@@ -1292,7 +1292,7 @@ The following are the most common mistakes made during Kubernetes installation a
 
 ---
 
-# 1. Choosing the Wrong Installation Method
+## 1. Choosing the Wrong Installation Method
 
 Many beginners immediately try to install a production cluster.
 
@@ -1340,7 +1340,7 @@ Start simple and gradually move toward enterprise deployments.
 
 ---
 
-# 2. Confusing Docker with Kubernetes
+## 2. Confusing Docker with Kubernetes
 
 Installing Docker does **not** install Kubernetes.
 
@@ -1356,7 +1356,7 @@ Docker provides container capabilities, while Kubernetes orchestrates containers
 
 ---
 
-# 3. Skipping kubectl Installation
+## 3. Skipping kubectl Installation
 
 Without kubectl:
 
@@ -1376,7 +1376,7 @@ kubectl version --client
 
 ---
 
-# 4. Forgetting to Verify the Cluster
+## 4. Forgetting to Verify the Cluster
 
 Many users immediately deploy applications.
 
@@ -1394,7 +1394,7 @@ Confirm the cluster is healthy before troubleshooting application issues.
 
 ---
 
-# 5. Ignoring System Pods
+## 5. Ignoring System Pods
 
 System Pods usually run in:
 
@@ -1412,7 +1412,7 @@ Core components should generally be running before deploying workloads.
 
 ---
 
-# 6. Running Out of Resources
+## 6. Running Out of Resources
 
 Example:
 
@@ -1443,7 +1443,7 @@ Allocate sufficient CPU, memory, and storage for your chosen installation method
 
 ---
 
-# 7. Confusing Minikube and Kind
+## 7. Confusing Minikube and Kind
 
 Both create local Kubernetes clusters, but they differ.
 
@@ -1457,7 +1457,7 @@ Choose the tool that best fits your learning goals.
 
 ---
 
-# 8. Using the Wrong kubectl Context
+## 8. Using the Wrong kubectl Context
 
 When managing multiple clusters:
 
@@ -1483,7 +1483,7 @@ Before applying changes.
 
 ---
 
-# 9. Ignoring Version Compatibility
+## 9. Ignoring Version Compatibility
 
 Using significantly mismatched versions of:
 
@@ -1502,7 +1502,7 @@ Follow the Kubernetes version skew policy for supported version differences.
 
 ---
 
-# 10. Not Understanding kubeconfig
+## 10. Not Understanding kubeconfig
 
 Many users accidentally overwrite or delete their kubeconfig file.
 
@@ -1524,7 +1524,7 @@ kubectl config view
 
 ---
 
-# 11. Assuming Local Clusters Behave Exactly Like Production
+## 11. Assuming Local Clusters Behave Exactly Like Production
 
 Local clusters are excellent for learning, but they may differ from production in areas such as:
 
@@ -1538,7 +1538,7 @@ Treat them as learning environments rather than exact production replicas.
 
 ---
 
-# 12. Ignoring Cluster Cleanup
+## 12. Ignoring Cluster Cleanup
 
 After experimentation:
 
@@ -1572,7 +1572,7 @@ k3d cluster delete demo
 
 ---
 
-# 13. Skipping Hands-on Practice
+## 13. Skipping Hands-on Practice
 
 Reading alone is insufficient.
 
@@ -1598,7 +1598,7 @@ Hands-on experience builds confidence and troubleshooting skills.
 
 ---
 
-# 14. Thinking Kubernetes Is Only for Large Companies
+## 14. Thinking Kubernetes Is Only for Large Companies
 
 Organizations of many sizes use Kubernetes.
 
@@ -1614,7 +1614,7 @@ The choice depends on operational needs, not company size alone.
 
 ---
 
-# 15. Learning Commands Without Understanding Architecture
+## 15. Learning Commands Without Understanding Architecture
 
 Avoid memorizing only:
 
@@ -1648,9 +1648,9 @@ Architecture knowledge makes troubleshooting much easier.
 
 ---
 
-# Kubernetes Installation Quick Revision
+## Kubernetes Installation Quick Revision
 
-## Installation Workflow
+### Installation Workflow
 
 ```
 Install Tools
@@ -1682,7 +1682,7 @@ Deploy Applications
 
 ---
 
-## Local Installation Options
+### Local Installation Options
 
 ```
 Minikube
@@ -1708,7 +1708,7 @@ Each serves different use cases.
 
 ---
 
-## Production Options
+### Production Options
 
 ```
 Managed Kubernetes
@@ -1720,7 +1720,7 @@ High Availability kubeadm Cluster
 
 ---
 
-## Verification Commands
+### Verification Commands
 
 ```bash
 kubectl cluster-info
@@ -1742,7 +1742,7 @@ These commands should become part of your regular workflow.
 
 ---
 
-# Installation Checklist
+## Installation Checklist
 
 | Task | Status |
 |------|:------:|
@@ -1759,9 +1759,9 @@ These commands should become part of your regular workflow.
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - Kubernetes Documentation
 - kubectl Documentation
@@ -1772,7 +1772,7 @@ These commands should become part of your regular workflow.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Learning Path
 - Kubernetes Best Practices
@@ -1780,7 +1780,7 @@ These commands should become part of your regular workflow.
 
 ---
 
-## Security Guidance
+### Security Guidance
 
 - CIS Kubernetes Benchmark
 - NSA/CISA Kubernetes Hardening Guidance
@@ -1789,7 +1789,7 @@ These commands should become part of your regular workflow.
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 - Create a cluster with Minikube.
 - Repeat the same exercise using Kind.
@@ -1800,7 +1800,7 @@ These commands should become part of your regular workflow.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Prepare Environment

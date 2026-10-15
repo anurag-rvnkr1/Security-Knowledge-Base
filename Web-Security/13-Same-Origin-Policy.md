@@ -1,12 +1,12 @@
 # 13-Same-Origin-Policy.md
 
-# Part 1 — Same-Origin Policy Fundamentals, Origins, Browser Security Model, Cross-Origin Interactions, and Enterprise Web Isolation
+## Part 1 — Same-Origin Policy Fundamentals, Origins, Browser Security Model, Cross-Origin Interactions, and Enterprise Web Isolation
 
 > **"The Same-Origin Policy (SOP) is one of the most important security mechanisms in web browsers. It prevents one website from freely accessing the sensitive data of another website, forming the foundation of modern web security."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is the Same-Origin Policy (SOP)?
+## What is the Same-Origin Policy (SOP)?
 
 The **Same-Origin Policy (SOP)** is a browser security mechanism that restricts how documents or scripts loaded from one origin can interact with resources from another origin.
 
@@ -51,7 +51,7 @@ SOP helps prevent unauthorized access to sensitive information across websites.
 
 ---
 
-# Why SOP Exists
+## Why SOP Exists
 
 Imagine two websites:
 
@@ -97,7 +97,7 @@ The browser prevents unauthorized cross-origin access.
 
 ---
 
-# Browser Security Model
+## Browser Security Model
 
 Modern browsers isolate websites from one another.
 
@@ -119,7 +119,7 @@ Each website executes within its own security boundary.
 
 ---
 
-# Security Boundary
+## Security Boundary
 
 ```
 Origin
@@ -137,7 +137,7 @@ The browser uses the **origin** as the primary security boundary.
 
 ---
 
-# What is an Origin?
+## What is an Origin?
 
 An origin consists of three components:
 
@@ -157,7 +157,7 @@ All three must match for two URLs to have the same origin.
 
 ---
 
-# Origin Components
+## Origin Components
 
 Example:
 
@@ -173,7 +173,7 @@ https://example.com:443
 
 ---
 
-# Origin Comparison
+## Origin Comparison
 
 ```
 https://example.com
@@ -217,7 +217,7 @@ Same Origin
 
 ---
 
-# Different Protocol
+## Different Protocol
 
 ```
 http://example.com
@@ -247,7 +247,7 @@ Different protocols create different origins.
 
 ---
 
-# Different Host
+## Different Host
 
 ```
 https://example.com
@@ -269,7 +269,7 @@ Subdomains are separate origins.
 
 ---
 
-# Different Port
+## Different Port
 
 ```
 https://example.com:443
@@ -291,7 +291,7 @@ Different ports also produce different origins.
 
 ---
 
-# Same-Origin Rule
+## Same-Origin Rule
 
 Two URLs are same-origin **only if**:
 
@@ -319,7 +319,7 @@ Cross-Origin
 
 ---
 
-# Examples
+## Examples
 
 | URL A | URL B | Same Origin? |
 |--------|--------|--------------|
@@ -331,7 +331,7 @@ Cross-Origin
 
 ---
 
-# Browser Origin Check
+## Browser Origin Check
 
 ```
 Page Requests Resource
@@ -363,7 +363,7 @@ Apply SOP Rules
 
 ---
 
-# Resources Protected by SOP
+## Resources Protected by SOP
 
 SOP protects access to many browser-controlled resources, including:
 
@@ -379,7 +379,7 @@ Different resource types have different browser behaviors.
 
 ---
 
-# DOM Isolation
+## DOM Isolation
 
 Without SOP:
 
@@ -413,7 +413,7 @@ One origin cannot freely inspect or modify another origin's DOM.
 
 ---
 
-# JavaScript Isolation
+## JavaScript Isolation
 
 Each origin runs independently.
 
@@ -445,7 +445,7 @@ This isolation prevents direct cross-origin script access.
 
 ---
 
-# Cookie Isolation
+## Cookie Isolation
 
 Conceptually:
 
@@ -477,7 +477,7 @@ Cookie behavior is also influenced by cookie attributes such as `SameSite`, `Sec
 
 ---
 
-# Storage Isolation
+## Storage Isolation
 
 Browser storage is isolated by origin.
 
@@ -501,7 +501,7 @@ Data stored for one origin is generally unavailable to another.
 
 ---
 
-# IndexedDB Isolation
+## IndexedDB Isolation
 
 ```
 Origin A
@@ -523,7 +523,7 @@ Each origin has its own database namespace.
 
 ---
 
-# Why Isolation Matters
+## Why Isolation Matters
 
 Consider an authenticated banking session.
 
@@ -551,7 +551,7 @@ A different website should not be able to directly access that information throu
 
 ---
 
-# Cross-Origin
+## Cross-Origin
 
 Cross-origin simply means:
 
@@ -567,7 +567,7 @@ Cross-origin communication is **not automatically allowed**.
 
 ---
 
-# Same-Origin
+## Same-Origin
 
 ```
 Origin
@@ -593,7 +593,7 @@ Browser APIs are generally more permissive within the same origin.
 
 ---
 
-# Enterprise Browser Architecture
+## Enterprise Browser Architecture
 
 ```
                   Browser
@@ -619,7 +619,7 @@ Each application is isolated according to browser security rules.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company hosts:
 
@@ -637,7 +637,7 @@ The browser isolates these applications unless explicit mechanisms allow control
 
 ---
 
-# Browser Enforcement
+## Browser Enforcement
 
 ```
 JavaScript Request
@@ -663,7 +663,7 @@ The browser—not the web server—primarily enforces the Same-Origin Policy.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
 | Myth | Reality |
 |------|---------|
@@ -674,7 +674,7 @@ The browser—not the web server—primarily enforces the Same-Origin Policy.
 
 ---
 
-# Enterprise Benefits of SOP
+## Enterprise Benefits of SOP
 
 - Protects authenticated sessions
 - Isolates browser storage
@@ -685,7 +685,7 @@ The browser—not the web server—primarily enforces the Same-Origin Policy.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser:
 
@@ -698,7 +698,7 @@ Using your browser:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the Same-Origin Policy?
 2. Why is SOP important?
@@ -713,7 +713,7 @@ Using your browser:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design applications with clear origin boundaries.
 - Use HTTPS consistently.
@@ -724,7 +724,7 @@ Using your browser:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming all subdomains belong to the same origin.
 - Confusing websites with browser origins.
@@ -734,7 +734,7 @@ Using your browser:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Same-Origin Policy is a fundamental browser security mechanism.
 - An origin consists of **protocol + host + port**.
@@ -742,15 +742,15 @@ Using your browser:
 - SOP isolates browser resources such as the DOM and client-side storage.
 - Browser-enforced origin isolation forms the foundation for many modern web security controls.
 
-# 13-Same-Origin-Policy.md
+## 13-Same-Origin-Policy.md
 
-# Part 2 — SOP Enforcement, Cross-Origin Resource Access, Browser Behavior, Cross-Origin Communication, and Enterprise Web Architecture
+## Part 2 — SOP Enforcement, Cross-Origin Resource Access, Browser Behavior, Cross-Origin Communication, and Enterprise Web Architecture
 
 > **"The Same-Origin Policy does not prohibit all cross-origin interactions. Instead, browsers carefully control *what* can be shared, *how* it can be shared, and *under which security rules* it may occur."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -767,7 +767,7 @@ After completing this part, you will understand:
 
 ---
 
-# SOP Enforcement Model
+## SOP Enforcement Model
 
 Whenever JavaScript attempts to access a resource, the browser evaluates the request.
 
@@ -805,7 +805,7 @@ Apply Browser Security Rules
 
 ---
 
-# Browser Security Decisions
+## Browser Security Decisions
 
 The browser evaluates several factors before granting access.
 
@@ -833,7 +833,7 @@ Different resource types follow different browser rules.
 
 ---
 
-# Three Types of Cross-Origin Activity
+## Three Types of Cross-Origin Activity
 
 Cross-origin interactions can be broadly grouped into:
 
@@ -853,7 +853,7 @@ Each category is treated differently by browsers.
 
 ---
 
-# Cross-Origin Reads
+## Cross-Origin Reads
 
 A cross-origin read attempts to obtain data from another origin.
 
@@ -875,7 +875,7 @@ The browser generally restricts JavaScript from directly reading sensitive respo
 
 ---
 
-# Cross-Origin Writes
+## Cross-Origin Writes
 
 Examples include:
 
@@ -901,7 +901,7 @@ Cross-origin writes have historically been more common on the web than unrestric
 
 ---
 
-# Cross-Origin Embedding
+## Cross-Origin Embedding
 
 Browsers allow certain resources to be embedded.
 
@@ -931,7 +931,7 @@ Embedding does **not** necessarily grant JavaScript access to the embedded conte
 
 ---
 
-# Browser Isolation
+## Browser Isolation
 
 Even when resources are embedded:
 
@@ -955,7 +955,7 @@ Rendering content is different from allowing programmatic access.
 
 ---
 
-# Reading vs Displaying
+## Reading vs Displaying
 
 These are different operations.
 
@@ -979,7 +979,7 @@ The browser distinguishes between displaying content and exposing its underlying
 
 ---
 
-# Navigation Between Origins
+## Navigation Between Origins
 
 Users regularly navigate between websites.
 
@@ -999,7 +999,7 @@ Navigation itself is a normal browser behavior and is distinct from unrestricted
 
 ---
 
-# Forms and Cross-Origin Submission
+## Forms and Cross-Origin Submission
 
 Traditional HTML forms can submit data to another origin.
 
@@ -1019,7 +1019,7 @@ However, this does not automatically allow the originating page to read the resp
 
 ---
 
-# Iframes
+## Iframes
 
 A webpage may embed another webpage.
 
@@ -1039,7 +1039,7 @@ Although the embedded page is visible, browser isolation still applies between d
 
 ---
 
-# Cross-Origin Iframe Access
+## Cross-Origin Iframe Access
 
 ```
 Parent Page
@@ -1061,7 +1061,7 @@ Direct DOM interaction between different origins is generally restricted.
 
 ---
 
-# Same-Origin Iframes
+## Same-Origin Iframes
 
 If both pages share the same origin:
 
@@ -1085,7 +1085,7 @@ The browser treats them as part of the same security boundary.
 
 ---
 
-# JavaScript Execution
+## JavaScript Execution
 
 Scripts execute within their own origin.
 
@@ -1105,7 +1105,7 @@ Scripts do not automatically gain access to resources belonging to other origins
 
 ---
 
-# Storage Separation
+## Storage Separation
 
 Each origin maintains independent storage.
 
@@ -1135,7 +1135,7 @@ This isolation prevents accidental data sharing.
 
 ---
 
-# Cookie Isolation
+## Cookie Isolation
 
 Conceptually:
 
@@ -1163,7 +1163,7 @@ Cookie behavior also depends on attributes such as `Domain`, `Secure`, `HttpOnly
 
 ---
 
-# Service Isolation
+## Service Isolation
 
 Modern browsers isolate many services per origin.
 
@@ -1187,7 +1187,7 @@ Origin isolation improves security and reliability.
 
 ---
 
-# Enterprise Multi-Origin Applications
+## Enterprise Multi-Origin Applications
 
 Large organizations often separate applications.
 
@@ -1205,7 +1205,7 @@ Each application has its own origin and browser security boundary.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company hosts:
 
@@ -1229,7 +1229,7 @@ Although both belong to the same organization, the browser considers them differ
 
 ---
 
-# Browser Origin Matrix
+## Browser Origin Matrix
 
 | Resource | Same Origin | Cross Origin |
 |----------|-------------|--------------|
@@ -1243,7 +1243,7 @@ Actual behavior depends on browser security policies and the specific APIs invol
 
 ---
 
-# Why SOP Uses Origins
+## Why SOP Uses Origins
 
 Origins provide a simple and consistent security boundary.
 
@@ -1271,7 +1271,7 @@ This model allows browsers to isolate unrelated websites.
 
 ---
 
-# Browser Process Isolation (Conceptual)
+## Browser Process Isolation (Conceptual)
 
 Modern browsers increasingly isolate websites internally.
 
@@ -1303,7 +1303,7 @@ Process isolation complements the Same-Origin Policy by reducing the impact of b
 
 ---
 
-# Enterprise Browser Architecture
+## Enterprise Browser Architecture
 
 ```
                  Browser
@@ -1327,7 +1327,7 @@ Process isolation complements the Same-Origin Policy by reducing the impact of b
 
 ---
 
-# Browser Decision Flow
+## Browser Decision Flow
 
 ```
 JavaScript
@@ -1371,7 +1371,7 @@ Restrict Access
 
 ---
 
-# Common Misunderstandings
+## Common Misunderstandings
 
 | Misunderstanding | Correct Explanation |
 |------------------|---------------------|
@@ -1382,7 +1382,7 @@ Restrict Access
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using two different websites:
 
@@ -1395,7 +1395,7 @@ Using two different websites:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. How does the browser enforce the Same-Origin Policy?
 2. What is the difference between cross-origin reads and writes?
@@ -1410,7 +1410,7 @@ Using two different websites:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design applications with clear origin boundaries.
 - Keep sensitive applications isolated.
@@ -1421,7 +1421,7 @@ Using two different websites:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming embedded resources can always be accessed by JavaScript.
 - Confusing navigation with unrestricted data access.
@@ -1431,7 +1431,7 @@ Using two different websites:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - SOP evaluates requests based on origin and resource type.
 - Cross-origin reads, writes, and embedding are handled differently by browsers.
@@ -1439,15 +1439,15 @@ Using two different websites:
 - Browser storage, DOM objects, and JavaScript execution remain isolated across different origins.
 - Modern enterprise applications rely on SOP as a core browser security boundary.
 
-# 13-Same-Origin-Policy.md
+## 13-Same-Origin-Policy.md
 
-# Part 3 — Cross-Origin Communication, CORS Introduction, Cross-Origin Messaging, Browser Isolation, Enterprise Architectures, and SOP Limitations
+## Part 3 — Cross-Origin Communication, CORS Introduction, Cross-Origin Messaging, Browser Isolation, Enterprise Architectures, and SOP Limitations
 
 > **"The Same-Origin Policy is intentionally restrictive, but modern web applications still need controlled communication between different origins. Browsers therefore provide secure mechanisms that allow carefully managed cross-origin interactions without removing SOP itself."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1464,7 +1464,7 @@ After completing this part, you will understand:
 
 ---
 
-# Why Cross-Origin Communication Exists
+## Why Cross-Origin Communication Exists
 
 Modern applications rarely consist of a single website.
 
@@ -1494,7 +1494,7 @@ These components may operate from different origins.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 portal.company.com
@@ -1532,7 +1532,7 @@ Although they belong to the same organization, browsers still recognize them as 
 
 ---
 
-# SOP Creates Isolation
+## SOP Creates Isolation
 
 ```
 Origin A
@@ -1554,7 +1554,7 @@ Without an explicit mechanism, one origin cannot freely access another.
 
 ---
 
-# Why Not Disable SOP?
+## Why Not Disable SOP?
 
 Imagine the browser ignored origin checks.
 
@@ -1584,7 +1584,7 @@ SOP exists specifically to prevent this situation.
 
 ---
 
-# Controlled Cross-Origin Access
+## Controlled Cross-Origin Access
 
 Instead of removing SOP:
 
@@ -1608,7 +1608,7 @@ Modern browsers provide controlled exceptions rather than unrestricted access.
 
 ---
 
-# Introduction to Cross-Origin Resource Sharing (CORS)
+## Introduction to Cross-Origin Resource Sharing (CORS)
 
 One controlled mechanism is **Cross-Origin Resource Sharing (CORS)**.
 
@@ -1636,7 +1636,7 @@ The browser evaluates the server's declared policy before exposing the response 
 
 ---
 
-# SOP and CORS
+## SOP and CORS
 
 ```
 Without CORS
@@ -1666,7 +1666,7 @@ CORS extends browser behavior—it does **not** replace the Same-Origin Policy.
 
 ---
 
-# Browser Decision Process
+## Browser Decision Process
 
 ```
 JavaScript
@@ -1698,7 +1698,7 @@ Restrict Access
 
 ---
 
-# Cross-Origin Communication Methods
+## Cross-Origin Communication Methods
 
 Modern browsers support several controlled communication mechanisms.
 
@@ -1720,7 +1720,7 @@ Each mechanism has different security properties.
 
 ---
 
-# Cross-Document Messaging
+## Cross-Document Messaging
 
 Different browser windows or iframes can exchange messages through dedicated browser APIs.
 
@@ -1742,7 +1742,7 @@ The browser provides controls to help ensure messages are exchanged only between
 
 ---
 
-# Parent and Iframe Communication
+## Parent and Iframe Communication
 
 ```
 Parent Window
@@ -1760,7 +1760,7 @@ Unlike direct DOM access, controlled messaging allows communication while preser
 
 ---
 
-# Browser Validation
+## Browser Validation
 
 Before delivering a message:
 
@@ -1788,7 +1788,7 @@ Applications should validate the origin of received messages.
 
 ---
 
-# Navigation is Different
+## Navigation is Different
 
 ```
 Website A
@@ -1806,7 +1806,7 @@ Changing the current page is different from allowing one origin to inspect anoth
 
 ---
 
-# Resource Embedding
+## Resource Embedding
 
 Many resources can be displayed across origins.
 
@@ -1833,7 +1833,7 @@ Rendering does not automatically provide JavaScript access to the resource's int
 
 ---
 
-# SOP Does Not Protect Everything
+## SOP Does Not Protect Everything
 
 The Same-Origin Policy primarily protects browser-managed resources.
 
@@ -1861,7 +1861,7 @@ Applications must still implement proper authentication, authorization, and serv
 
 ---
 
-# Browser Storage Isolation
+## Browser Storage Isolation
 
 Each origin has its own storage.
 
@@ -1891,7 +1891,7 @@ Applications should not assume browser storage is shared between origins.
 
 ---
 
-# Browser Security Layers
+## Browser Security Layers
 
 SOP is one layer within a larger browser security model.
 
@@ -1915,7 +1915,7 @@ Multiple mechanisms work together to reduce risk.
 
 ---
 
-# Site Isolation (Conceptual)
+## Site Isolation (Conceptual)
 
 Modern browsers increasingly isolate websites internally.
 
@@ -1939,7 +1939,7 @@ Process isolation complements SOP by limiting the effects of certain browser vul
 
 ---
 
-# Secure Contexts
+## Secure Contexts
 
 Some browser capabilities require secure contexts.
 
@@ -1959,7 +1959,7 @@ Many modern browser APIs are available only over HTTPS.
 
 ---
 
-# Enterprise Multi-Origin Architecture
+## Enterprise Multi-Origin Architecture
 
 ```
                   Browser
@@ -1987,7 +1987,7 @@ Many modern browser APIs are available only over HTTPS.
 
 ---
 
-# Identity Across Origins
+## Identity Across Origins
 
 Enterprise authentication often involves multiple origins.
 
@@ -2011,7 +2011,7 @@ The browser coordinates these interactions while enforcing origin boundaries.
 
 ---
 
-# Secure Design Principles
+## Secure Design Principles
 
 When designing applications:
 
@@ -2043,7 +2043,7 @@ Browser security should complement—not replace—application security.
 
 ---
 
-# Browser Responsibilities
+## Browser Responsibilities
 
 The browser is responsible for:
 
@@ -2056,7 +2056,7 @@ The browser is responsible for:
 
 ---
 
-# Server Responsibilities
+## Server Responsibilities
 
 Servers remain responsible for:
 
@@ -2071,7 +2071,7 @@ Browser security does not replace server-side security.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational bank deploys:
 
@@ -2105,7 +2105,7 @@ Controlled communication occurs only through approved browser mechanisms and pro
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser:
 
@@ -2118,7 +2118,7 @@ Using your browser:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why do modern applications require cross-origin communication?
 2. Why doesn't the browser simply disable SOP?
@@ -2133,7 +2133,7 @@ Using your browser:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design applications with clear origin boundaries.
 - Use controlled browser mechanisms for cross-origin communication.
@@ -2145,7 +2145,7 @@ Using your browser:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming CORS disables SOP.
 - Trusting cross-origin messages without validating their origin.
@@ -2155,7 +2155,7 @@ Using your browser:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Modern applications often require controlled communication between different origins.
 - The Same-Origin Policy remains the foundation of browser isolation.
@@ -2163,15 +2163,15 @@ Using your browser:
 - Cross-document messaging allows communication while maintaining origin boundaries.
 - Browser security and server-side security work together to protect modern web applications.
 
-# 13-Same-Origin-Policy.md
+## 13-Same-Origin-Policy.md
 
-# Part 4 — SOP Security Review, Enterprise Browser Architecture, Security Testing, Troubleshooting, Best Practices, and Chapter Summary
+## Part 4 — SOP Security Review, Enterprise Browser Architecture, Security Testing, Troubleshooting, Best Practices, and Chapter Summary
 
 > **"The Same-Origin Policy is one of the browser's most important security controls. It protects users by isolating websites from one another, but it must work together with server-side security, secure application design, and controlled cross-origin communication mechanisms."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2188,7 +2188,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Browser Security Architecture
+## Enterprise Browser Security Architecture
 
 Large organizations often deploy multiple web applications.
 
@@ -2222,7 +2222,7 @@ Every application maintains its own browser security boundary.
 
 ---
 
-# Browser Security Layers
+## Browser Security Layers
 
 The Same-Origin Policy is only one layer of browser security.
 
@@ -2252,7 +2252,7 @@ Modern browsers combine multiple defensive mechanisms.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 User
@@ -2290,7 +2290,7 @@ No single security mechanism should be relied upon exclusively.
 
 ---
 
-# Browser Security Responsibilities
+## Browser Security Responsibilities
 
 Browsers are responsible for enforcing:
 
@@ -2306,7 +2306,7 @@ These protections apply automatically within supported browsers.
 
 ---
 
-# Application Responsibilities
+## Application Responsibilities
 
 Applications remain responsible for:
 
@@ -2323,7 +2323,7 @@ Browser security does not replace application security.
 
 ---
 
-# Browser Isolation Review
+## Browser Isolation Review
 
 Each origin maintains independent resources.
 
@@ -2357,7 +2357,7 @@ Isolation helps prevent unintended data access between websites.
 
 ---
 
-# Secure Multi-Origin Design
+## Secure Multi-Origin Design
 
 A modern enterprise may separate services by function.
 
@@ -2397,7 +2397,7 @@ Each host represents a distinct origin.
 
 ---
 
-# Browser Decision Workflow
+## Browser Decision Workflow
 
 ```
 JavaScript Request
@@ -2427,7 +2427,7 @@ The browser evaluates origin rules before exposing protected resources.
 
 ---
 
-# Common Enterprise Use Cases
+## Common Enterprise Use Cases
 
 Organizations commonly deploy:
 
@@ -2442,7 +2442,7 @@ These systems frequently communicate across origins using approved browser mecha
 
 ---
 
-# Security Review Checklist
+## Security Review Checklist
 
 During architecture reviews, verify:
 
@@ -2466,7 +2466,7 @@ During architecture reviews, verify:
 
 ---
 
-# Security Testing
+## Security Testing
 
 A security assessment should examine:
 
@@ -2483,7 +2483,7 @@ Testing should always occur in authorized environments.
 
 ---
 
-# Conceptual Testing Workflow
+## Conceptual Testing Workflow
 
 ```
 Identify Origins
@@ -2509,7 +2509,7 @@ This process helps identify unintended cross-origin interactions.
 
 ---
 
-# Enterprise Troubleshooting
+## Enterprise Troubleshooting
 
 | Symptom | Possible Cause |
 |----------|----------------|
@@ -2523,7 +2523,7 @@ Understanding the origin model is often the first troubleshooting step.
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 Unexpected Browser Behavior
@@ -2557,7 +2557,7 @@ No → Browser Isolation Applies
 
 ---
 
-# Common Design Mistakes
+## Common Design Mistakes
 
 ```
 Assume Same Company
@@ -2575,7 +2575,7 @@ Browser decisions are based on **protocol, host, and port**, not organizational 
 
 ---
 
-# Secure Architecture Example
+## Secure Architecture Example
 
 ```
 Customer Browser
@@ -2613,7 +2613,7 @@ Every cross-origin interaction is explicitly designed and validated.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global healthcare provider deploys:
 
@@ -2661,7 +2661,7 @@ Security architecture includes:
 
 ---
 
-# SOP Security Checklist
+## SOP Security Checklist
 
 ```
 ✓ Understand Origin Boundaries
@@ -2683,7 +2683,7 @@ Security architecture includes:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser:
 
@@ -2697,7 +2697,7 @@ Using your browser:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the Same-Origin Policy?
 2. Why does SOP exist?
@@ -2712,7 +2712,7 @@ Using your browser:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design applications with clearly defined origin boundaries.
 - Use HTTPS consistently across all services.
@@ -2724,7 +2724,7 @@ Using your browser:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming organizational ownership determines browser trust.
 - Confusing rendering with unrestricted data access.
@@ -2735,7 +2735,7 @@ Using your browser:
 
 ---
 
-# Quick Revision
+## Quick Revision
 
 Origin
 
@@ -2813,7 +2813,7 @@ Application Security
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

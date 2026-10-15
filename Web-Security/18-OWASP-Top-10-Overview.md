@@ -1,12 +1,12 @@
 # 18-OWASP-Top-10-Overview.md
 
-# Part 1 — OWASP Top 10 Fundamentals, Risk Categories, Security Philosophy, and Enterprise Overview
+## Part 1 — OWASP Top 10 Fundamentals, Risk Categories, Security Philosophy, and Enterprise Overview
 
 > **"The OWASP Top 10 is not a list of the most common vulnerabilities—it is a globally recognized awareness document that highlights the most critical security risks affecting modern web applications."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is OWASP?
+## What is OWASP?
 
 **OWASP (Open Worldwide Application Security Project)** is a global non-profit organization dedicated to improving software security through open-source projects, research, documentation, education, and community collaboration.
 
@@ -51,7 +51,7 @@ OWASP resources are freely available to developers, security engineers, testers,
 
 ---
 
-# What is the OWASP Top 10?
+## What is the OWASP Top 10?
 
 The **OWASP Top 10** is an awareness document that identifies the most significant categories of security risks affecting web applications.
 
@@ -65,7 +65,7 @@ It helps organizations:
 
 ---
 
-# Why OWASP Top 10 Exists
+## Why OWASP Top 10 Exists
 
 Modern web applications contain thousands of components.
 
@@ -95,7 +95,7 @@ Without prioritization, organizations may struggle to focus security efforts eff
 
 ---
 
-# Risk-Based Security
+## Risk-Based Security
 
 OWASP emphasizes **risk**, not merely individual vulnerabilities.
 
@@ -123,7 +123,7 @@ Organizations should prioritize risks based on both technical severity and busin
 
 ---
 
-# Vulnerability vs Risk
+## Vulnerability vs Risk
 
 | Vulnerability | Risk |
 |--------------|------|
@@ -133,7 +133,7 @@ Organizations should prioritize risks based on both technical severity and busin
 
 ---
 
-# Why Enterprises Use OWASP
+## Why Enterprises Use OWASP
 
 Organizations adopt the OWASP Top 10 because it provides:
 
@@ -146,7 +146,7 @@ Organizations adopt the OWASP Top 10 because it provides:
 
 ---
 
-# Enterprise Security Model
+## Enterprise Security Model
 
 ```
 Business
@@ -178,7 +178,7 @@ Continuous Improvement
 
 ---
 
-# OWASP Top 10 is Not a Compliance Standard
+## OWASP Top 10 is Not a Compliance Standard
 
 OWASP is:
 
@@ -193,7 +193,7 @@ However, many organizations reference it within their secure development policie
 
 ---
 
-# The Current OWASP Top 10 Categories
+## The Current OWASP Top 10 Categories
 
 The current major categories include:
 
@@ -227,7 +227,7 @@ Each category represents a broad class of security risks rather than a single vu
 
 ---
 
-# Why Categories Instead of Individual Vulnerabilities?
+## Why Categories Instead of Individual Vulnerabilities?
 
 ```
 Many Vulnerabilities
@@ -249,7 +249,7 @@ Grouping related weaknesses helps organizations prioritize defensive strategies 
 
 ---
 
-# Security Lifecycle
+## Security Lifecycle
 
 ```
 Requirements
@@ -283,7 +283,7 @@ OWASP guidance supports every stage of the Secure Software Development Lifecycle
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 OWASP promotes multiple independent security layers.
 
@@ -323,7 +323,7 @@ No single control eliminates all risks.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Financial Institution
@@ -357,7 +357,7 @@ Security is integrated throughout the application's lifecycle.
 
 ---
 
-# OWASP Beyond the Top 10
+## OWASP Beyond the Top 10
 
 OWASP also maintains numerous projects, including:
 
@@ -373,7 +373,7 @@ The Top 10 is only one part of the broader OWASP ecosystem.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
 | Myth | Reality |
 |------|---------|
@@ -384,7 +384,7 @@ The Top 10 is only one part of the broader OWASP ecosystem.
 
 ---
 
-# Why Recruiters Value OWASP Knowledge
+## Why Recruiters Value OWASP Knowledge
 
 Knowledge of the OWASP Top 10 demonstrates familiarity with:
 
@@ -400,7 +400,7 @@ It is considered foundational knowledge for many cybersecurity and software engi
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```
 Business Requirements
@@ -440,7 +440,7 @@ Continuous Improvement
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select a web application.
 2. Identify its major components (frontend, backend, APIs, database).
@@ -452,7 +452,7 @@ Continuous Improvement
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is OWASP?
 2. What is the OWASP Top 10?
@@ -467,7 +467,7 @@ Continuous Improvement
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate OWASP guidance into every phase of the Secure SDLC.
 - Use the OWASP Top 10 as a prioritization framework rather than a checklist.
@@ -478,7 +478,7 @@ Continuous Improvement
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating the OWASP Top 10 as a complete security checklist.
 - Ignoring business impact during risk assessment.
@@ -488,7 +488,7 @@ Continuous Improvement
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - OWASP is a global organization dedicated to improving application security.
 - The OWASP Top 10 highlights the most significant categories of web application security risks.
@@ -496,15 +496,15 @@ Continuous Improvement
 - The Top 10 supports secure design, development, testing, and governance.
 - Understanding the OWASP Top 10 is essential for developers, security engineers, architects, testers, and cybersecurity professionals.
 
-# 18-OWASP-Top-10-Overview.md
+## 18-OWASP-Top-10-Overview.md
 
-# Part 2 — Understanding the OWASP Top 10 Categories, Risk Analysis, Threat Modeling, and Enterprise Security Mapping
+## Part 2 — Understanding the OWASP Top 10 Categories, Risk Analysis, Threat Modeling, and Enterprise Security Mapping
 
 > **"The OWASP Top 10 should be viewed as a collection of security risk categories rather than a checklist of individual vulnerabilities. Each category represents numerous underlying weaknesses that require secure design, implementation, and operational controls."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -521,7 +521,7 @@ After completing this part, you will understand:
 
 ---
 
-# OWASP Top 10 Categories
+## OWASP Top 10 Categories
 
 The current OWASP Top 10 includes:
 
@@ -555,7 +555,7 @@ Each category groups together related security weaknesses.
 
 ---
 
-# A01 — Broken Access Control
+## A01 — Broken Access Control
 
 Focus:
 
@@ -594,7 +594,7 @@ Examples include:
 
 ---
 
-# A02 — Cryptographic Failures
+## A02 — Cryptographic Failures
 
 Focus:
 
@@ -625,7 +625,7 @@ Examples include:
 
 ---
 
-# A03 — Injection
+## A03 — Injection
 
 Focus:
 
@@ -656,7 +656,7 @@ Examples include:
 
 ---
 
-# A04 — Insecure Design
+## A04 — Insecure Design
 
 Focus:
 
@@ -687,7 +687,7 @@ Examples include:
 
 ---
 
-# A05 — Security Misconfiguration
+## A05 — Security Misconfiguration
 
 Focus:
 
@@ -723,7 +723,7 @@ Examples include:
 
 ---
 
-# A06 — Vulnerable and Outdated Components
+## A06 — Vulnerable and Outdated Components
 
 Focus:
 
@@ -758,7 +758,7 @@ Examples include:
 
 ---
 
-# A07 — Identification & Authentication Failures
+## A07 — Identification & Authentication Failures
 
 Focus:
 
@@ -789,7 +789,7 @@ Examples include:
 
 ---
 
-# A08 — Software & Data Integrity Failures
+## A08 — Software & Data Integrity Failures
 
 Focus:
 
@@ -820,7 +820,7 @@ Examples include:
 
 ---
 
-# A09 — Security Logging & Monitoring Failures
+## A09 — Security Logging & Monitoring Failures
 
 Focus:
 
@@ -855,7 +855,7 @@ Examples include:
 
 ---
 
-# A10 — Server-Side Request Forgery (SSRF)
+## A10 — Server-Side Request Forgery (SSRF)
 
 Focus:
 
@@ -879,7 +879,7 @@ SSRF occurs when an application is manipulated into making unintended requests f
 
 ---
 
-# Enterprise Security Mapping
+## Enterprise Security Mapping
 
 ```
 Web Application
@@ -905,7 +905,7 @@ Every component may be affected by one or more OWASP Top 10 categories.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling helps identify risks before implementation.
 
@@ -937,7 +937,7 @@ This proactive approach reduces security issues later in development.
 
 ---
 
-# Attack Surface
+## Attack Surface
 
 ```
 Internet
@@ -967,7 +967,7 @@ Each exposed feature expands the application's attack surface.
 
 ---
 
-# Security Controls
+## Security Controls
 
 ```
 Risk
@@ -993,7 +993,7 @@ Examples:
 
 ---
 
-# Enterprise Risk Prioritization
+## Enterprise Risk Prioritization
 
 ```
 Risk
@@ -1019,7 +1019,7 @@ Organizations should prioritize high-impact and high-likelihood risks first.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Secure Design
@@ -1057,7 +1057,7 @@ Each layer addresses different categories within the OWASP Top 10.
 
 ---
 
-# Secure SDLC Mapping
+## Secure SDLC Mapping
 
 ```
 Requirements
@@ -1095,7 +1095,7 @@ Every stage contributes to reducing OWASP Top 10 risks.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An online healthcare portal maps security controls as follows:
 
@@ -1129,7 +1129,7 @@ This mapping helps ensure that every major security area receives appropriate at
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
 | Myth | Reality |
 |------|---------|
@@ -1140,7 +1140,7 @@ This mapping helps ensure that every major security area receives appropriate at
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select an enterprise web application.
 2. List its major components.
@@ -1152,7 +1152,7 @@ This mapping helps ensure that every major security area receives appropriate at
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of the OWASP Top 10?
 2. Why are vulnerabilities grouped into categories?
@@ -1167,7 +1167,7 @@ This mapping helps ensure that every major security area receives appropriate at
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat the OWASP Top 10 as a risk prioritization framework.
 - Incorporate threat modeling early in the SDLC.
@@ -1178,7 +1178,7 @@ This mapping helps ensure that every major security area receives appropriate at
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Addressing only code-level issues while ignoring design flaws.
 - Failing to review third-party dependencies.
@@ -1188,7 +1188,7 @@ This mapping helps ensure that every major security area receives appropriate at
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Each OWASP Top 10 category represents a broad family of security risks.
 - Security controls should be mapped to application components and business assets.
@@ -1196,15 +1196,15 @@ This mapping helps ensure that every major security area receives appropriate at
 - Defense in depth is essential because no single control addresses every category.
 - Enterprise security programs integrate OWASP guidance throughout the entire software lifecycle.
 
-# 18-OWASP-Top-10-Overview.md
+## 18-OWASP-Top-10-Overview.md
 
-# Part 3 — Integrating OWASP Top 10 into Secure Development, Security Testing, Enterprise Governance, and Risk Management
+## Part 3 — Integrating OWASP Top 10 into Secure Development, Security Testing, Enterprise Governance, and Risk Management
 
 > **"The OWASP Top 10 is most valuable when it becomes part of an organization's security culture. Mature organizations integrate OWASP guidance into design, development, testing, deployment, and ongoing operations."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1221,7 +1221,7 @@ After completing this part, you will understand:
 
 ---
 
-# OWASP Throughout the SDLC
+## OWASP Throughout the SDLC
 
 OWASP should be incorporated into every phase of software development.
 
@@ -1265,7 +1265,7 @@ Security should be a continuous activity rather than a final checkpoint.
 
 ---
 
-# Requirements Phase
+## Requirements Phase
 
 Security begins before any code is written.
 
@@ -1295,7 +1295,7 @@ Examples include:
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies potential risks early.
 
@@ -1327,7 +1327,7 @@ Early identification reduces costly redesign later.
 
 ---
 
-# Secure Architecture
+## Secure Architecture
 
 ```
 Business Logic
@@ -1357,7 +1357,7 @@ Architectural decisions determine much of an application's long-term security.
 
 ---
 
-# Secure Development
+## Secure Development
 
 Developers should follow secure coding principles.
 
@@ -1385,7 +1385,7 @@ Coding standards should align with organizational security policies.
 
 ---
 
-# Code Review
+## Code Review
 
 Security-focused code reviews help detect weaknesses before deployment.
 
@@ -1417,7 +1417,7 @@ Code reviews complement automated security testing.
 
 ---
 
-# Security Testing
+## Security Testing
 
 Testing should combine multiple approaches.
 
@@ -1443,7 +1443,7 @@ Each technique identifies different categories of weaknesses.
 
 ---
 
-# Mapping Tests to OWASP
+## Mapping Tests to OWASP
 
 | Security Activity | Example OWASP Categories |
 |-------------------|--------------------------|
@@ -1456,7 +1456,7 @@ Each technique identifies different categories of weaknesses.
 
 ---
 
-# CI/CD Integration
+## CI/CD Integration
 
 Modern organizations integrate security into CI/CD pipelines.
 
@@ -1492,7 +1492,7 @@ Automated checks improve consistency but do not replace expert review.
 
 ---
 
-# Risk Management
+## Risk Management
 
 Organizations prioritize remediation based on risk.
 
@@ -1520,7 +1520,7 @@ Not every finding requires identical urgency.
 
 ---
 
-# Security Governance
+## Security Governance
 
 ```
 Executive Leadership
@@ -1546,7 +1546,7 @@ Security governance ensures consistent implementation across projects.
 
 ---
 
-# Enterprise Security Metrics
+## Enterprise Security Metrics
 
 Organizations commonly measure:
 
@@ -1574,7 +1574,7 @@ Metrics support informed decision-making and continuous improvement.
 
 ---
 
-# Security Awareness
+## Security Awareness
 
 OWASP knowledge should extend beyond security teams.
 
@@ -1606,7 +1606,7 @@ Shared responsibility improves application security.
 
 ---
 
-# Secure Development Culture
+## Secure Development Culture
 
 ```
 Training
@@ -1636,7 +1636,7 @@ A strong security culture reduces recurring weaknesses.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global e-commerce company integrates OWASP as follows:
 
@@ -1680,7 +1680,7 @@ Every release follows the same security process.
 
 ---
 
-# Security Operations
+## Security Operations
 
 Operational teams should:
 
@@ -1693,7 +1693,7 @@ Operational teams should:
 
 ---
 
-# Challenges in Enterprise Adoption
+## Challenges in Enterprise Adoption
 
 | Challenge | Mitigation |
 |-----------|------------|
@@ -1705,7 +1705,7 @@ Operational teams should:
 
 ---
 
-# OWASP and Compliance
+## OWASP and Compliance
 
 Many regulatory and industry frameworks encourage practices aligned with OWASP, including:
 
@@ -1719,7 +1719,7 @@ OWASP supports these objectives but does not replace organization-specific compl
 
 ---
 
-# Security Maturity
+## Security Maturity
 
 ```
 Initial
@@ -1745,7 +1745,7 @@ Organizations become more resilient as security processes mature.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Assess
@@ -1775,7 +1775,7 @@ Security is an ongoing process rather than a one-time activity.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Choose a sample web application.
 2. Map each SDLC phase to relevant OWASP activities.
@@ -1787,7 +1787,7 @@ Security is an ongoing process rather than a one-time activity.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should OWASP be integrated throughout the SDLC?
 2. What role does threat modeling play in application security?
@@ -1802,7 +1802,7 @@ Security is an ongoing process rather than a one-time activity.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security into every SDLC phase.
 - Perform threat modeling before implementation.
@@ -1814,7 +1814,7 @@ Security is an ongoing process rather than a one-time activity.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating security as a final testing phase.
 - Ignoring architectural risks.
@@ -1825,7 +1825,7 @@ Security is an ongoing process rather than a one-time activity.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - OWASP guidance is most effective when integrated throughout the Secure SDLC.
 - Threat modeling, secure architecture, coding, testing, and monitoring all contribute to reducing risk.
@@ -1833,15 +1833,15 @@ Security is an ongoing process rather than a one-time activity.
 - Security should be a shared responsibility across development, operations, and management.
 - Continuous improvement is a core principle of mature application security programs.
 
-# 18-OWASP-Top-10-Overview.md
+## 18-OWASP-Top-10-Overview.md
 
-# Part 4 — Enterprise Implementation, Security Program Integration, Interview Revision, and Chapter Summary
+## Part 4 — Enterprise Implementation, Security Program Integration, Interview Revision, and Chapter Summary
 
 > **"The OWASP Top 10 is not the destination of application security—it is the foundation upon which mature security programs build secure software, resilient architectures, and continuous risk management."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1857,7 +1857,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise OWASP Adoption Model
+## Enterprise OWASP Adoption Model
 
 A mature organization integrates OWASP guidance across every software project.
 
@@ -1897,7 +1897,7 @@ OWASP becomes part of the organization's engineering culture rather than an isol
 
 ---
 
-# Enterprise Security Governance
+## Enterprise Security Governance
 
 ```
 Executive Leadership
@@ -1931,7 +1931,7 @@ Every team contributes to reducing application security risk.
 
 ---
 
-# Secure Development Governance
+## Secure Development Governance
 
 Security governance ensures that every application follows consistent security practices.
 
@@ -1963,7 +1963,7 @@ Governance provides consistency across multiple development teams.
 
 ---
 
-# OWASP Security Review Process
+## OWASP Security Review Process
 
 Every major application release should include a structured review.
 
@@ -2003,7 +2003,7 @@ This process helps identify and reduce security risks before deployment.
 
 ---
 
-# Enterprise Risk Management
+## Enterprise Risk Management
 
 ```
 Identify Assets
@@ -2041,7 +2041,7 @@ Security is an ongoing cycle of assessment and improvement.
 
 ---
 
-# Mapping OWASP to Security Controls
+## Mapping OWASP to Security Controls
 
 | OWASP Category | Example Preventive Controls | Example Detective Controls |
 |----------------|-----------------------------|----------------------------|
@@ -2058,7 +2058,7 @@ Security is an ongoing cycle of assessment and improvement.
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
                     Internet
@@ -2112,7 +2112,7 @@ Multiple security layers reduce overall business risk.
 
 ---
 
-# Secure Coding Principles
+## Secure Coding Principles
 
 Secure development should consistently apply:
 
@@ -2142,7 +2142,7 @@ These practices directly support mitigation of OWASP Top 10 risks.
 
 ---
 
-# Security Program Integration
+## Security Program Integration
 
 ```
 Training
@@ -2180,7 +2180,7 @@ Security programs should integrate technical controls with organizational proces
 
 ---
 
-# Incident Response Workflow
+## Incident Response Workflow
 
 When a significant application security issue is discovered:
 
@@ -2220,7 +2220,7 @@ Post-incident reviews improve future security posture.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 Application security should never remain static.
 
@@ -2248,7 +2248,7 @@ Continuous improvement helps organizations adapt to evolving threats.
 
 ---
 
-# Enterprise Security Metrics
+## Enterprise Security Metrics
 
 Useful metrics include:
 
@@ -2264,7 +2264,7 @@ Useful metrics include:
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2276,21 +2276,21 @@ Useful metrics include:
 
 ---
 
-# Interview Revision
+## Interview Revision
 
-## What is OWASP?
+### What is OWASP?
 
 A global non-profit organization focused on improving software security through open standards, tools, education, and community projects.
 
 ---
 
-## What is the OWASP Top 10?
+### What is the OWASP Top 10?
 
 A globally recognized awareness document identifying the most significant categories of web application security risks.
 
 ---
 
-## Why is it important?
+### Why is it important?
 
 - Improves secure development
 - Supports risk prioritization
@@ -2300,7 +2300,7 @@ A globally recognized awareness document identifying the most significant catego
 
 ---
 
-## Who uses OWASP?
+### Who uses OWASP?
 
 ```
 Developers
@@ -2332,9 +2332,9 @@ Auditors
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## OWASP Security Lifecycle
+### OWASP Security Lifecycle
 
 ```
 Requirements
@@ -2374,7 +2374,7 @@ Continuous Improvement
 
 ---
 
-## Risk Assessment
+### Risk Assessment
 
 ```
 Asset
@@ -2406,7 +2406,7 @@ Security Controls
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 ```
 Secure Design
@@ -2446,7 +2446,7 @@ Incident Response
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select a business application.
 2. Identify critical assets and trust boundaries.
@@ -2459,7 +2459,7 @@ Incident Response
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the OWASP Top 10 and why is it important?
 2. How does OWASP support the Secure SDLC?
@@ -2474,7 +2474,7 @@ Incident Response
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate OWASP guidance into every phase of the Secure SDLC.
 - Perform threat modeling before development begins.
@@ -2488,7 +2488,7 @@ Incident Response
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating the OWASP Top 10 as a one-time compliance checklist.
 - Ignoring design-level security risks.
@@ -2499,7 +2499,7 @@ Incident Response
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

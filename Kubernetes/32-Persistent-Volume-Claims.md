@@ -38,7 +38,7 @@ Kubernetes automatically finds a matching Persistent Volume and binds them toget
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -54,7 +54,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need PVCs?
+## Why Do We Need PVCs?
 
 Imagine hundreds of developers sharing one Kubernetes cluster.
 
@@ -81,7 +81,7 @@ Problems:
 
 ---
 
-## Solution
+### Solution
 
 Use PVCs.
 
@@ -105,7 +105,7 @@ Developers request storage without knowing implementation details.
 
 ---
 
-# What is a Persistent Volume Claim?
+## What is a Persistent Volume Claim?
 
 A **Persistent Volume Claim (PVC)** is a request for storage.
 
@@ -120,7 +120,7 @@ Kubernetes searches for a matching Persistent Volume.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                  Application
@@ -152,7 +152,7 @@ Kubernetes searches for a matching Persistent Volume.
 
 ---
 
-# Storage Workflow
+## Storage Workflow
 
 ```
 Developer
@@ -180,7 +180,7 @@ Pod Uses Storage
 
 ---
 
-# Persistent Volume Claim YAML
+## Persistent Volume Claim YAML
 
 ```yaml
 apiVersion: v1
@@ -206,7 +206,7 @@ spec:
 
 ---
 
-# YAML Breakdown
+## YAML Breakdown
 
 ```
 requests
@@ -232,7 +232,7 @@ Required access mode.
 
 ---
 
-# PVC Lifecycle
+## PVC Lifecycle
 
 ```
 Pending
@@ -252,7 +252,7 @@ Deleted
 
 ---
 
-# Pending State
+## Pending State
 
 ```
 PVC
@@ -270,7 +270,7 @@ No suitable PV has been found yet.
 
 ---
 
-# Bound State
+## Bound State
 
 ```
 PVC
@@ -288,7 +288,7 @@ The claim now has exclusive use of the Persistent Volume.
 
 ---
 
-# Released
+## Released
 
 ```
 PVC Deleted
@@ -304,7 +304,7 @@ What happens next depends on the reclaim policy.
 
 ---
 
-# Deleted
+## Deleted
 
 ```
 PVC
@@ -318,7 +318,7 @@ The associated PV may remain or be deleted depending on its reclaim policy.
 
 ---
 
-# Binding Process
+## Binding Process
 
 ```
 PVC
@@ -340,7 +340,7 @@ Kubernetes performs this automatically.
 
 ---
 
-# Matching Criteria
+## Matching Criteria
 
 A PV must satisfy the PVC requirements.
 
@@ -375,7 +375,7 @@ The PV can provide more storage than requested.
 
 ---
 
-# Capacity Matching
+## Capacity Matching
 
 PVC:
 
@@ -399,7 +399,7 @@ The PV is too small.
 
 ---
 
-# Access Mode Matching
+## Access Mode Matching
 
 PVC:
 
@@ -423,7 +423,7 @@ The storage backend cannot satisfy the request.
 
 ---
 
-# One-to-One Relationship
+## One-to-One Relationship
 
 Normally:
 
@@ -439,7 +439,7 @@ Once bound, the PV is reserved for that PVC until it is released.
 
 ---
 
-# Pod Uses PVC
+## Pod Uses PVC
 
 A Pod references the PVC rather than the PV.
 
@@ -459,7 +459,7 @@ The Pod never needs to know which PV was selected.
 
 ---
 
-# Complete Storage Flow
+## Complete Storage Flow
 
 ```
 Application
@@ -483,7 +483,7 @@ Storage Backend
 
 ---
 
-# Static Binding
+## Static Binding
 
 Administrator creates:
 
@@ -505,7 +505,7 @@ Bind
 
 ---
 
-# Dynamic Binding
+## Dynamic Binding
 
 Developer creates:
 
@@ -537,7 +537,7 @@ Dynamic provisioning is covered in a later chapter.
 
 ---
 
-# StorageClass Example
+## StorageClass Example
 
 PVC:
 
@@ -559,7 +559,7 @@ If dynamic provisioning is enabled, a new PV is created automatically.
 
 ---
 
-# Claim Expansion
+## Claim Expansion
 
 Some storage providers support increasing PVC size.
 
@@ -579,7 +579,7 @@ Shrinking PVCs is generally **not supported**.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Pod
@@ -603,7 +603,7 @@ Storage Backend
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 E-commerce application:
 
@@ -645,7 +645,7 @@ Developers only manage the PVC.
 
 ---
 
-# Viewing PVCs
+## Viewing PVCs
 
 ```bash
 kubectl get pvc
@@ -665,7 +665,7 @@ CAPACITY
 
 ---
 
-# Describe PVC
+## Describe PVC
 
 ```bash
 kubectl describe pvc app-pvc
@@ -681,7 +681,7 @@ Observe:
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -709,7 +709,7 @@ kubectl delete pvc app-pvc
 
 ---
 
-# PVC Architecture Summary
+## PVC Architecture Summary
 
 ```
 Developer
@@ -729,33 +729,33 @@ Storage
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Let Applications Use PVCs
+#### 1. Let Applications Use PVCs
 
 Pods should reference PVCs rather than specific Persistent Volumes.
 
 ---
 
-### 2. Request Only Required Capacity
+#### 2. Request Only Required Capacity
 
 Avoid requesting significantly more storage than necessary.
 
 ---
 
-### 3. Use Appropriate Access Modes
+#### 3. Use Appropriate Access Modes
 
 Choose the access mode that matches your workload.
 
 ---
 
-### 4. Prefer Dynamic Provisioning
+#### 4. Prefer Dynamic Provisioning
 
 In production, StorageClasses simplify storage management.
 
 ---
 
-### 5. Monitor PVC Usage
+#### 5. Monitor PVC Usage
 
 Track:
 
@@ -766,7 +766,7 @@ Track:
 
 ---
 
-# Hands-on Lab 1 – Create a PVC
+## Hands-on Lab 1 – Create a PVC
 
 Create:
 
@@ -792,7 +792,7 @@ kubectl get pvc
 
 ---
 
-# Hands-on Lab 2 – Observe Pending State
+## Hands-on Lab 2 – Observe Pending State
 
 Create a PVC without any matching PV.
 
@@ -808,7 +808,7 @@ Pending
 
 ---
 
-# Hands-on Lab 3 – Create Matching PV
+## Hands-on Lab 3 – Create Matching PV
 
 Create a PV that satisfies the PVC requirements.
 
@@ -824,7 +824,7 @@ Bound
 
 ---
 
-# Hands-on Lab 4 – Mount PVC into a Pod
+## Hands-on Lab 4 – Mount PVC into a Pod
 
 Create a Pod:
 
@@ -844,7 +844,7 @@ Verify that the data persists.
 
 ---
 
-# Hands-on Lab 5 – Compare Multiple PVCs
+## Hands-on Lab 5 – Compare Multiple PVCs
 
 Create:
 
@@ -856,9 +856,9 @@ Observe which PVs bind successfully.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Mounting PVs Directly
+### 1. Mounting PVs Directly
 
 Incorrect:
 
@@ -886,7 +886,7 @@ Persistent Volume
 
 ---
 
-## 2. Requesting Unsupported Access Modes
+### 2. Requesting Unsupported Access Modes
 
 Example:
 
@@ -902,7 +902,7 @@ The PVC remains Pending.
 
 ---
 
-## 3. Requesting More Storage Than Available
+### 3. Requesting More Storage Than Available
 
 PVC:
 
@@ -924,13 +924,13 @@ Pending
 
 ---
 
-## 4. Deleting a PVC Without Understanding the Reclaim Policy
+### 4. Deleting a PVC Without Understanding the Reclaim Policy
 
 Deleting a PVC may trigger deletion of the underlying storage if the PV reclaim policy is `Delete`.
 
 ---
 
-## 5. Assuming PVC Expansion Always Works
+### 5. Assuming PVC Expansion Always Works
 
 PVC resizing depends on:
 
@@ -940,9 +940,9 @@ PVC resizing depends on:
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Workflow
+### Workflow
 
 ```
 Developer
@@ -970,7 +970,7 @@ Pod
 
 ---
 
-## Lifecycle
+### Lifecycle
 
 ```
 Pending
@@ -990,7 +990,7 @@ Deleted
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Pod
@@ -1010,7 +1010,7 @@ Storage
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View PVCs:
 
@@ -1044,9 +1044,9 @@ kubectl get pvc <pvc-name> -o yaml
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a Persistent Volume Claim?
 - Why do Pods use PVCs instead of PVs?
@@ -1054,7 +1054,7 @@ kubectl get pvc <pvc-name> -o yaml
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - Explain the PVC lifecycle.
 - How does Kubernetes bind a PVC to a PV?
@@ -1062,7 +1062,7 @@ kubectl get pvc <pvc-name> -o yaml
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the complete storage workflow from a Pod to the storage backend.
 - Compare static and dynamic provisioning.
@@ -1072,9 +1072,9 @@ kubectl get pvc <pvc-name> -o yaml
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Persistent Volume Claims
 - Persistent Volumes
@@ -1083,7 +1083,7 @@ kubectl get pvc <pvc-name> -o yaml
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Storage Concepts
 - SIG Storage
@@ -1092,7 +1092,7 @@ kubectl get pvc <pvc-name> -o yaml
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - Kubernetes Storage Best Practices
 - CIS Kubernetes Benchmark
@@ -1100,7 +1100,7 @@ kubectl get pvc <pvc-name> -o yaml
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create PVCs with different storage requests.
 2. Observe Pending and Bound states.
@@ -1110,7 +1110,7 @@ kubectl get pvc <pvc-name> -o yaml
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Developer
@@ -1136,7 +1136,7 @@ A **Persistent Volume Claim (PVC)** provides a storage abstraction that allows a
 
 ---
 
-## Next Chapter
+### Next Chapter
 
 **Chapter 33 – Storage Classes**
 

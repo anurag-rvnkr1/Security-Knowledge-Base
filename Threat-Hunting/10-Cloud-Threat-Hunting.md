@@ -69,7 +69,7 @@ The central question is:
 
 ---
 
-# Why Cloud Threat Hunting Matters
+## Why Cloud Threat Hunting Matters
 
 Cloud attacks often abuse legitimate functionality.
 
@@ -116,7 +116,7 @@ This makes identity and control-plane telemetry extremely important.
 
 ---
 
-# Shared Responsibility Model
+## Shared Responsibility Model
 
 Cloud security is based on a shared responsibility model.
 
@@ -147,7 +147,7 @@ Threat hunters must understand which telemetry is controlled by the organization
 
 ---
 
-# Cloud Threat-Hunting Architecture
+## Cloud Threat-Hunting Architecture
 
 ```text
                          CLOUD ENVIRONMENT
@@ -179,7 +179,7 @@ Threat hunters must understand which telemetry is controlled by the organization
 
 ---
 
-# Cloud Telemetry Categories
+## Cloud Telemetry Categories
 
 | Category | Examples |
 |---|---|
@@ -196,9 +196,9 @@ Threat hunters must understand which telemetry is controlled by the organization
 
 ---
 
-# Control Plane vs Data Plane
+## Control Plane vs Data Plane
 
-## Control Plane
+### Control Plane
 
 Management actions:
 
@@ -211,7 +211,7 @@ DeleteBucket
 ChangePolicy
 ```
 
-## Data Plane
+### Data Plane
 
 Resource usage:
 
@@ -242,7 +242,7 @@ Sensitive Object Access
 
 ---
 
-# Cloud Threat-Hunting Workflow
+## Cloud Threat-Hunting Workflow
 
 ```text
 Cloud Event
@@ -277,7 +277,7 @@ Respond
 
 ---
 
-# AWS Threat Hunting
+## AWS Threat Hunting
 
 AWS provides extensive telemetry through services such as:
 
@@ -294,7 +294,7 @@ The exact telemetry depends on the services deployed.
 
 ---
 
-# AWS CloudTrail
+## AWS CloudTrail
 
 CloudTrail records AWS API activity.
 
@@ -325,7 +325,7 @@ The actual event structure is richer and should be analyzed according to the dep
 
 ---
 
-# AWS Identity Types
+## AWS Identity Types
 
 CloudTrail may contain identities such as:
 
@@ -342,7 +342,7 @@ Understanding the principal is critical.
 
 ---
 
-# AWS Root Account Hunting
+## AWS Root Account Hunting
 
 Root account activity should receive special attention because the root identity has exceptional privileges.
 
@@ -361,7 +361,7 @@ Unexpected root activity should be investigated immediately.
 
 ---
 
-# AWS ConsoleLogin
+## AWS ConsoleLogin
 
 Console authentication events can reveal:
 
@@ -384,7 +384,7 @@ Unexpected User Agent
 
 ---
 
-# AWS Access Key Hunting
+## AWS Access Key Hunting
 
 Access keys may provide programmatic access.
 
@@ -418,7 +418,7 @@ What APIs were called?
 
 ---
 
-# AWS AssumeRole Hunting
+## AWS AssumeRole Hunting
 
 Role assumption is normal in many cloud architectures.
 
@@ -448,7 +448,7 @@ Important context includes:
 
 ---
 
-# AWS IAM Policy Changes
+## AWS IAM Policy Changes
 
 Monitor:
 
@@ -479,7 +479,7 @@ Sensitive Resource Access
 
 ---
 
-# AWS IAM Persistence
+## AWS IAM Persistence
 
 Attackers may create persistence through:
 
@@ -503,7 +503,7 @@ IAM Change
 
 ---
 
-# IAM Trust Policy Hunting
+## IAM Trust Policy Hunting
 
 Role trust policies determine who or what can assume a role.
 
@@ -526,7 +526,7 @@ AssumeRole
 
 ---
 
-# AWS S3 Hunting
+## AWS S3 Hunting
 
 S3 is frequently used to store sensitive information.
 
@@ -558,7 +558,7 @@ External Source
 
 ---
 
-# S3 Data Access
+## S3 Data Access
 
 Data-plane monitoring can help identify unusual access.
 
@@ -576,7 +576,7 @@ The behavior requires investigation.
 
 ---
 
-# S3 Public Exposure
+## S3 Public Exposure
 
 Monitor configuration changes involving:
 
@@ -599,7 +599,7 @@ Object Retrieval
 
 ---
 
-# AWS EC2 Hunting
+## AWS EC2 Hunting
 
 EC2 investigations may combine:
 
@@ -632,7 +632,7 @@ Suspicious Process
 
 ---
 
-# EC2 Metadata Service
+## EC2 Metadata Service
 
 Cloud workloads may access instance metadata.
 
@@ -663,7 +663,7 @@ AWS API Activity
 
 ---
 
-# Metadata Hunting
+## Metadata Hunting
 
 Correlate:
 
@@ -685,7 +685,7 @@ Cloud agents and legitimate software may access metadata.
 
 ---
 
-# AWS Lambda Hunting
+## AWS Lambda Hunting
 
 Serverless workloads introduce a different security model.
 
@@ -715,7 +715,7 @@ Sensitive Resource Access
 
 ---
 
-# AWS Secrets Hunting
+## AWS Secrets Hunting
 
 Monitor access to:
 
@@ -741,7 +741,7 @@ External Network
 
 ---
 
-# Azure Threat Hunting
+## Azure Threat Hunting
 
 Azure environments provide telemetry through services such as:
 
@@ -757,7 +757,7 @@ Azure environments provide telemetry through services such as:
 
 ---
 
-# Azure Activity Log
+## Azure Activity Log
 
 Activity logs can provide visibility into management-plane operations.
 
@@ -774,7 +774,7 @@ Key Vault Configuration
 
 ---
 
-# Azure Role Assignment Hunting
+## Azure Role Assignment Hunting
 
 Potentially suspicious:
 
@@ -804,7 +804,7 @@ What happened afterward?
 
 ---
 
-# Azure Service Principal Hunting
+## Azure Service Principal Hunting
 
 Service principals may be used for automation.
 
@@ -835,7 +835,7 @@ Cloud API Access
 
 ---
 
-# Azure Key Vault Hunting
+## Azure Key Vault Hunting
 
 Key Vault access can be highly sensitive.
 
@@ -856,7 +856,7 @@ External Activity
 
 ---
 
-# Azure Storage Hunting
+## Azure Storage Hunting
 
 Monitor:
 
@@ -880,7 +880,7 @@ Large Data Download
 
 ---
 
-# Azure VM Hunting
+## Azure VM Hunting
 
 Combine:
 
@@ -911,7 +911,7 @@ Network
 
 ---
 
-# GCP Threat Hunting
+## GCP Threat Hunting
 
 Google Cloud provides telemetry through:
 
@@ -926,7 +926,7 @@ Google Cloud provides telemetry through:
 
 ---
 
-# GCP Audit Logs
+## GCP Audit Logs
 
 Audit logs can reveal:
 
@@ -955,7 +955,7 @@ IAM policy changes deserve close monitoring.
 
 ---
 
-# GCP IAM Hunting
+## GCP IAM Hunting
 
 Monitor:
 
@@ -984,7 +984,7 @@ Long-Term Access
 
 ---
 
-# GCP Service Account Keys
+## GCP Service Account Keys
 
 Service account keys can provide programmatic access.
 
@@ -1012,7 +1012,7 @@ What resources were accessed?
 
 ---
 
-# Cloud Credential Hunting
+## Cloud Credential Hunting
 
 Cloud credentials can exist as:
 
@@ -1031,7 +1031,7 @@ Threat hunting must account for each.
 
 ---
 
-# Credential Lifecycle
+## Credential Lifecycle
 
 ```text
 Credential Created
@@ -1055,7 +1055,7 @@ Hunt for credentials that:
 
 ---
 
-# Cloud Privilege Escalation
+## Cloud Privilege Escalation
 
 Cloud privilege escalation can occur through:
 
@@ -1087,7 +1087,7 @@ Access Secrets
 
 ---
 
-# Cloud Persistence
+## Cloud Persistence
 
 Cloud persistence can involve:
 
@@ -1119,7 +1119,7 @@ Resource Access
 
 ---
 
-# Cloud Discovery
+## Cloud Discovery
 
 Attackers may enumerate:
 
@@ -1141,7 +1141,7 @@ A sudden spike in API enumeration from an identity can be suspicious.
 
 ---
 
-# API Enumeration Hunting
+## API Enumeration Hunting
 
 Example:
 
@@ -1162,7 +1162,7 @@ But infrastructure automation can produce similar behavior.
 
 ---
 
-# Cloud Network Hunting
+## Cloud Network Hunting
 
 Important sources include:
 
@@ -1192,7 +1192,7 @@ Frequency
 
 ---
 
-# Cloud Egress Hunting
+## Cloud Egress Hunting
 
 A compromised workload may communicate with unusual external infrastructure.
 
@@ -1212,7 +1212,7 @@ Correlate with workload identity and process telemetry.
 
 ---
 
-# Cloud Storage Exfiltration
+## Cloud Storage Exfiltration
 
 A possible sequence:
 
@@ -1236,7 +1236,7 @@ This should be reconstructed through control-plane and data-plane telemetry.
 
 ---
 
-# Cloud-Native Attack Chain
+## Cloud-Native Attack Chain
 
 Example:
 
@@ -1266,7 +1266,7 @@ No traditional endpoint malware is necessarily required.
 
 ---
 
-# Serverless Threat Hunting
+## Serverless Threat Hunting
 
 Serverless platforms include:
 
@@ -1288,7 +1288,7 @@ Unexpected Destination
 
 ---
 
-# Serverless Persistence
+## Serverless Persistence
 
 An attacker may modify:
 
@@ -1315,7 +1315,7 @@ Changes to any of these may alter security behavior.
 
 ---
 
-# Container Threat Hunting
+## Container Threat Hunting
 
 Cloud workloads increasingly run in containers.
 
@@ -1352,7 +1352,7 @@ Cloud API
 
 ---
 
-# Container Image Hunting
+## Container Image Hunting
 
 Monitor:
 
@@ -1379,7 +1379,7 @@ Network
 
 ---
 
-# Kubernetes Threat Hunting
+## Kubernetes Threat Hunting
 
 Kubernetes introduces additional identity and control-plane telemetry.
 
@@ -1395,7 +1395,7 @@ Important sources include:
 
 ---
 
-# Kubernetes API Hunting
+## Kubernetes API Hunting
 
 Monitor actions such as:
 
@@ -1429,7 +1429,7 @@ Privileged Access
 
 ---
 
-# Kubernetes Exec Hunting
+## Kubernetes Exec Hunting
 
 `exec` operations allow users or automation to execute commands within containers.
 
@@ -1448,7 +1448,7 @@ An unexpected interactive container session deserves review.
 
 ---
 
-# Kubernetes Secrets
+## Kubernetes Secrets
 
 Secrets can contain:
 
@@ -1468,7 +1468,7 @@ Unexpected Identity
 
 ---
 
-# Cloud CI/CD Hunting
+## Cloud CI/CD Hunting
 
 CI/CD pipelines can hold powerful credentials.
 
@@ -1501,7 +1501,7 @@ Suspicious signals include:
 
 ---
 
-# Cloud Supply Chain
+## Cloud Supply Chain
 
 Cloud environments depend on:
 
@@ -1528,7 +1528,7 @@ A compromise anywhere in this chain can affect cloud infrastructure.
 
 ---
 
-# Cloud Control Plane Hunting
+## Cloud Control Plane Hunting
 
 Control-plane actions can often be categorized:
 
@@ -1546,7 +1546,7 @@ A good hunt focuses on high-impact administrative actions.
 
 ---
 
-# Cloud Configuration Drift
+## Cloud Configuration Drift
 
 Compare:
 
@@ -1576,7 +1576,7 @@ Logging
 
 ---
 
-# Cloud Logging Tampering
+## Cloud Logging Tampering
 
 Attackers may attempt to reduce visibility.
 
@@ -1605,7 +1605,7 @@ Sensitive Activity
 
 ---
 
-# Cloud Detection Evasion
+## Cloud Detection Evasion
 
 Possible attacker behaviors include:
 
@@ -1620,7 +1620,7 @@ Therefore cloud hunting must focus heavily on behavior and identity context.
 
 ---
 
-# Cloud Threat Intelligence
+## Cloud Threat Intelligence
 
 Cloud infrastructure can be enriched using:
 
@@ -1641,7 +1641,7 @@ Infrastructure reputation must therefore be interpreted carefully.
 
 ---
 
-# Cloud Asset Context
+## Cloud Asset Context
 
 Every cloud event should ideally map to:
 
@@ -1665,7 +1665,7 @@ A production database and a development VM should not have identical risk priori
 
 ---
 
-# Production vs Development
+## Production vs Development
 
 A useful classification:
 
@@ -1686,7 +1686,7 @@ Threat hunters should understand environment context before prioritizing events.
 
 ---
 
-# Cloud Risk-Based Hunting
+## Cloud Risk-Based Hunting
 
 Prioritize:
 
@@ -1720,7 +1720,7 @@ Expected Location
 
 ---
 
-# Cloud Query Engineering
+## Cloud Query Engineering
 
 A normalized cloud event should support queries such as:
 
@@ -1748,7 +1748,7 @@ Which identities changed their own permissions?
 
 ---
 
-# Example CloudTrail Hunt
+## Example CloudTrail Hunt
 
 Conceptual Splunk-style query:
 
@@ -1765,7 +1765,7 @@ Use environment-specific field mappings.
 
 ---
 
-# IAM Change Hunt
+## IAM Change Hunt
 
 ```spl id="i6r2r5"
 index=aws_cloudtrail
@@ -1787,7 +1787,7 @@ eventName IN (
 
 ---
 
-# Azure Identity Hunt
+## Azure Identity Hunt
 
 Conceptually:
 
@@ -1805,7 +1805,7 @@ The exact schema depends on the tenant and telemetry configuration.
 
 ---
 
-# GCP IAM Hunt
+## GCP IAM Hunt
 
 Conceptually:
 
@@ -1825,9 +1825,9 @@ Prioritize unexpected high-privilege changes.
 
 ---
 
-# Practical Lab 1 — AWS IAM Persistence
+## Practical Lab 1 — AWS IAM Persistence
 
-## Objective
+### Objective
 
 Identify suspicious cloud persistence.
 
@@ -1859,9 +1859,9 @@ API Activity
 
 ---
 
-# Practical Lab 2 — AWS Sensitive Storage Access
+## Practical Lab 2 — AWS Sensitive Storage Access
 
-## Objective
+### Objective
 
 Identify unusual S3 access.
 
@@ -1881,7 +1881,7 @@ Compare with historical behavior.
 
 ---
 
-# Practical Lab 3 — Cloud Credential Anomaly
+## Practical Lab 3 — Cloud Credential Anomaly
 
 Hypothesis:
 
@@ -1903,7 +1903,7 @@ Then identify whether the credential should be rotated or revoked according to i
 
 ---
 
-# Practical Lab 4 — Azure Privilege Escalation
+## Practical Lab 4 — Azure Privilege Escalation
 
 Search for:
 
@@ -1926,7 +1926,7 @@ Subsequent API Calls
 
 ---
 
-# Practical Lab 5 — GCP IAM Abuse
+## Practical Lab 5 — GCP IAM Abuse
 
 Search for:
 
@@ -1949,7 +1949,7 @@ Subsequent API Activity
 
 ---
 
-# Practical Lab 6 — Cloud Storage Exfiltration
+## Practical Lab 6 — Cloud Storage Exfiltration
 
 Hypothesis:
 
@@ -1977,7 +1977,7 @@ Correlate data-plane and network telemetry.
 
 ---
 
-# Practical Lab 7 — Kubernetes Privilege Escalation
+## Practical Lab 7 — Kubernetes Privilege Escalation
 
 Search for:
 
@@ -1993,7 +1993,7 @@ Investigate the identity and namespace.
 
 ---
 
-# Practical Lab 8 — Cloud Logging Tampering
+## Practical Lab 8 — Cloud Logging Tampering
 
 Search for:
 
@@ -2007,7 +2007,7 @@ Then examine activity immediately before and after the change.
 
 ---
 
-# Practical Lab 9 — Cloud API Enumeration
+## Practical Lab 9 — Cloud API Enumeration
 
 Identify identities generating unusually broad discovery activity:
 
@@ -2029,7 +2029,7 @@ Automation
 
 ---
 
-# Practical Lab 10 — Multi-Cloud Identity Correlation
+## Practical Lab 10 — Multi-Cloud Identity Correlation
 
 A user may access:
 
@@ -2047,7 +2047,7 @@ Build a unified identity timeline across platforms.
 
 ---
 
-# Cloud Incident Timeline
+## Cloud Incident Timeline
 
 Example:
 
@@ -2081,7 +2081,7 @@ This sequence is highly valuable during investigation.
 
 ---
 
-# Cloud Detection Engineering
+## Cloud Detection Engineering
 
 A mature pipeline:
 
@@ -2115,7 +2115,7 @@ SOC
 
 ---
 
-# Example Detection — IAM Privilege Escalation
+## Example Detection — IAM Privilege Escalation
 
 ```text
 IF
@@ -2137,7 +2137,7 @@ Generate high-priority investigation
 
 ---
 
-# Example Detection — New Credential
+## Example Detection — New Credential
 
 ```text
 IF
@@ -2163,7 +2163,7 @@ Generate credential-abuse signal
 
 ---
 
-# Example Detection — Sensitive Storage Access
+## Example Detection — Sensitive Storage Access
 
 ```text
 IF
@@ -2185,7 +2185,7 @@ Generate data-access investigation
 
 ---
 
-# Example Detection — Logging Tampering
+## Example Detection — Logging Tampering
 
 ```text
 IF
@@ -2207,7 +2207,7 @@ Generate high-priority alert
 
 ---
 
-# Cloud False Positives
+## Cloud False Positives
 
 Common legitimate causes include:
 
@@ -2225,7 +2225,7 @@ Therefore, establish automation identities and expected behavior.
 
 ---
 
-# Infrastructure-as-Code Considerations
+## Infrastructure-as-Code Considerations
 
 Tools such as Terraform and CloudFormation-style systems may produce large numbers of changes.
 
@@ -2254,7 +2254,7 @@ Resource
 
 ---
 
-# Cloud Asset Inventory
+## Cloud Asset Inventory
 
 A hunting program should maintain visibility into:
 
@@ -2274,9 +2274,9 @@ Without asset context, cloud hunting becomes significantly harder.
 
 ---
 
-# Cloud Threat-Hunting Checklist
+## Cloud Threat-Hunting Checklist
 
-## Identity
+### Identity
 
 - [ ] User logins
 - [ ] Service identities
@@ -2286,7 +2286,7 @@ Without asset context, cloud hunting becomes significantly harder.
 - [ ] Role assumptions
 - [ ] Privilege changes
 
-## Control Plane
+### Control Plane
 
 - [ ] IAM changes
 - [ ] Resource creation
@@ -2295,7 +2295,7 @@ Without asset context, cloud hunting becomes significantly harder.
 - [ ] Logging changes
 - [ ] Policy changes
 
-## Data Plane
+### Data Plane
 
 - [ ] Storage access
 - [ ] Database access
@@ -2303,7 +2303,7 @@ Without asset context, cloud hunting becomes significantly harder.
 - [ ] Function invocation
 - [ ] API calls
 
-## Network
+### Network
 
 - [ ] Flow logs
 - [ ] External destinations
@@ -2311,7 +2311,7 @@ Without asset context, cloud hunting becomes significantly harder.
 - [ ] Unusual ports
 - [ ] C2 behavior
 
-## Workloads
+### Workloads
 
 - [ ] VM
 - [ ] Container
@@ -2319,7 +2319,7 @@ Without asset context, cloud hunting becomes significantly harder.
 - [ ] Serverless
 - [ ] Application
 
-## Response
+### Response
 
 - [ ] Revoke credentials
 - [ ] Disable compromised identity
@@ -2331,45 +2331,45 @@ Without asset context, cloud hunting becomes significantly harder.
 
 ---
 
-# Common Cloud Hunting Mistakes
+## Common Cloud Hunting Mistakes
 
-## 1. Monitoring Only Login Events
+### 1. Monitoring Only Login Events
 
 API activity after login can be much more informative.
 
 ---
 
-## 2. Ignoring Service Identities
+### 2. Ignoring Service Identities
 
 Service accounts and roles can have extremely broad permissions.
 
 ---
 
-## 3. Ignoring Data-Plane Events
+### 3. Ignoring Data-Plane Events
 
 Control-plane logs alone may not reveal data theft.
 
 ---
 
-## 4. Ignoring Logging Configuration
+### 4. Ignoring Logging Configuration
 
 Attackers may attempt to reduce visibility.
 
 ---
 
-## 5. Treating Cloud Provider IPs as Automatically Trusted
+### 5. Treating Cloud Provider IPs as Automatically Trusted
 
 Cloud infrastructure is shared and dynamic.
 
 ---
 
-## 6. Ignoring Automation
+### 6. Ignoring Automation
 
 CI/CD and Infrastructure-as-Code can produce large amounts of legitimate activity.
 
 ---
 
-## 7. Ignoring Cross-Cloud Activity
+### 7. Ignoring Cross-Cloud Activity
 
 Attackers may move between:
 
@@ -2383,7 +2383,7 @@ Identity Provider
 
 ---
 
-# Professional Cloud Investigation Template
+## Professional Cloud Investigation Template
 
 ```text
 Incident ID:
@@ -2459,7 +2459,7 @@ Lessons Learned:
 
 ---
 
-# Cloud MITRE ATT&CK Mapping
+## Cloud MITRE ATT&CK Mapping
 
 Relevant techniques include:
 
@@ -2486,33 +2486,33 @@ ATT&CK mappings should be validated against the current ATT&CK knowledge base wh
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What makes cloud threat hunting different from traditional threat hunting?
+### 1. What makes cloud threat hunting different from traditional threat hunting?
 
 Cloud hunting requires visibility into identities, control-plane APIs, data-plane activity, cloud resources, workloads, and dynamically changing infrastructure.
 
 ---
 
-## 2. What is the cloud control plane?
+### 2. What is the cloud control plane?
 
 The control plane manages cloud resources and configuration through management APIs.
 
 ---
 
-## 3. What is the data plane?
+### 3. What is the data plane?
 
 The data plane represents interaction with the actual cloud resources and their data.
 
 ---
 
-## 4. Why is CloudTrail important?
+### 4. Why is CloudTrail important?
 
 CloudTrail provides AWS API activity that can help investigate identities, actions, resources, source IPs, and control-plane behavior.
 
 ---
 
-## 5. How would you hunt for AWS IAM abuse?
+### 5. How would you hunt for AWS IAM abuse?
 
 I would monitor:
 
@@ -2529,13 +2529,13 @@ and correlate them with source, identity, and subsequent API activity.
 
 ---
 
-## 6. What is cloud persistence?
+### 6. What is cloud persistence?
 
 Cloud persistence is maintaining unauthorized access through mechanisms such as accounts, credentials, roles, OAuth applications, service identities, policies, or workload modifications.
 
 ---
 
-## 7. How would you investigate an unexpected access key?
+### 7. How would you investigate an unexpected access key?
 
 I would identify:
 
@@ -2553,7 +2553,7 @@ and determine whether the credential is legitimate.
 
 ---
 
-## 8. How would you hunt for cloud data exfiltration?
+### 8. How would you hunt for cloud data exfiltration?
 
 I would correlate:
 
@@ -2573,13 +2573,13 @@ Network
 
 ---
 
-## 9. Why are service accounts dangerous?
+### 9. Why are service accounts dangerous?
 
 They can have broad permissions, long-lived credentials, and automated access that may be less visible than human activity.
 
 ---
 
-## 10. How would you detect cloud privilege escalation?
+### 10. How would you detect cloud privilege escalation?
 
 Monitor changes to:
 
@@ -2596,19 +2596,19 @@ and correlate those changes with subsequent privileged activity.
 
 ---
 
-## 11. What is cloud control-plane logging?
+### 11. What is cloud control-plane logging?
 
 It is telemetry describing management operations such as creating resources, modifying IAM, changing security settings, and altering infrastructure configuration.
 
 ---
 
-## 12. Why should cloud logging changes be monitored?
+### 12. Why should cloud logging changes be monitored?
 
 Attackers may attempt to disable or modify logging to reduce visibility into subsequent activity.
 
 ---
 
-## 13. How would you hunt Kubernetes privilege escalation?
+### 13. How would you hunt Kubernetes privilege escalation?
 
 I would investigate:
 
@@ -2626,19 +2626,19 @@ changes and correlate them with the responsible identity.
 
 ---
 
-## 14. What is the importance of cloud asset context?
+### 14. What is the importance of cloud asset context?
 
 It tells the hunter what the affected resource is, who owns it, how critical it is, and whether the observed activity is normal.
 
 ---
 
-## 15. What is the most important principle of cloud threat hunting?
+### 15. What is the most important principle of cloud threat hunting?
 
 > **Treat cloud APIs and identities as security telemetry, not merely infrastructure operations.**
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 1. **Cloud security is heavily identity-centric.**
 2. **Control-plane activity can reveal attacker persistence and privilege escalation.**
@@ -2662,7 +2662,7 @@ The core mindset is:
 
 ---
 
-# References
+## References
 
 - MITRE ATT&CK — Cloud Matrix  
   https://attack.mitre.org/matrices/enterprise/cloud/

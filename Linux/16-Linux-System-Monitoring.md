@@ -1,10 +1,10 @@
 # 16 - Linux System Monitoring
 
-# Part 1 — System Monitoring Fundamentals, Performance Metrics, CPU Monitoring, Memory Monitoring, Load Average, and System Health
+## Part 1 — System Monitoring Fundamentals, Performance Metrics, CPU Monitoring, Memory Monitoring, Load Average, and System Health
 
 ---
 
-# Introduction
+## Introduction
 
 Linux systems continuously generate performance data that helps administrators understand the health of the operating system.
 
@@ -23,7 +23,7 @@ Without monitoring, organizations cannot proactively detect performance issues, 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -38,7 +38,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is System Monitoring?
+## What is System Monitoring?
 
 System monitoring is the continuous observation of operating system resources.
 
@@ -62,7 +62,7 @@ The goal is to maintain:
 
 ---
 
-# Monitoring Lifecycle
+## Monitoring Lifecycle
 
 ```text
 Collect Metrics
@@ -98,7 +98,7 @@ Document
 
 ---
 
-# Why Monitoring Matters
+## Why Monitoring Matters
 
 Monitoring helps organizations:
 
@@ -113,7 +113,7 @@ Monitoring helps organizations:
 
 ---
 
-# Enterprise Monitoring Architecture
+## Enterprise Monitoring Architecture
 
 ```text
 Linux Servers
@@ -145,7 +145,7 @@ Administrators
 
 ---
 
-# Types of Monitoring
+## Types of Monitoring
 
 | Type | Examples |
 |--------|-----------|
@@ -160,7 +160,7 @@ Administrators
 
 ---
 
-# System Performance Metrics
+## System Performance Metrics
 
 Important metrics include:
 
@@ -176,7 +176,7 @@ Important metrics include:
 
 ---
 
-# Performance Workflow
+## Performance Workflow
 
 ```text
 Applications
@@ -204,7 +204,7 @@ Administrator
 
 ---
 
-# System Uptime
+## System Uptime
 
 Display uptime:
 
@@ -227,7 +227,7 @@ Information shown:
 
 ---
 
-# Understanding Load Average
+## Understanding Load Average
 
 Example:
 
@@ -249,7 +249,7 @@ These represent average system load over:
 
 ---
 
-# Interpreting Load Average
+## Interpreting Load Average
 
 For a system with **4 CPU cores**:
 
@@ -264,7 +264,7 @@ Load average includes runnable tasks and tasks waiting in uninterruptible sleep 
 
 ---
 
-# Viewing CPU Information
+## Viewing CPU Information
 
 Display processor information:
 
@@ -283,7 +283,7 @@ Example information:
 
 ---
 
-# CPU Architecture Example
+## CPU Architecture Example
 
 ```text
 CPU
@@ -299,7 +299,7 @@ CPU
 
 ---
 
-# CPU Monitoring
+## CPU Monitoring
 
 Common metrics:
 
@@ -312,7 +312,7 @@ Common metrics:
 
 ---
 
-# The `top` Command
+## The `top` Command
 
 Launch:
 
@@ -342,7 +342,7 @@ Load Average
 
 ---
 
-# Understanding CPU States in `top`
+## Understanding CPU States in `top`
 
 | State | Meaning |
 |---------|----------|
@@ -357,7 +357,7 @@ Load Average
 
 ---
 
-# CPU Utilization Example
+## CPU Utilization Example
 
 ```text
 User
@@ -379,7 +379,7 @@ The CPU has spare capacity because more than half the time is idle.
 
 ---
 
-# Viewing Processor Statistics
+## Viewing Processor Statistics
 
 ```bash
 mpstat
@@ -395,7 +395,7 @@ Provides per-CPU utilization statistics.
 
 ---
 
-# Monitoring CPU Continuously
+## Monitoring CPU Continuously
 
 ```bash
 vmstat 2
@@ -417,7 +417,7 @@ Useful metrics include:
 
 ---
 
-# Memory Fundamentals
+## Memory Fundamentals
 
 Memory stores:
 
@@ -431,7 +431,7 @@ Unlike storage, RAM is volatile.
 
 ---
 
-# Memory Layout
+## Memory Layout
 
 ```text
 Applications
@@ -451,7 +451,7 @@ RAM
 
 ---
 
-# Viewing Memory
+## Viewing Memory
 
 Display memory:
 
@@ -477,7 +477,7 @@ Available
 
 ---
 
-# Understanding `free`
+## Understanding `free`
 
 Important columns:
 
@@ -493,7 +493,7 @@ On modern Linux systems, the **Available** column is often the most useful indic
 
 ---
 
-# Linux Memory Management
+## Linux Memory Management
 
 Linux intentionally uses free memory for:
 
@@ -505,7 +505,7 @@ This cached memory can generally be reclaimed when applications require more RAM
 
 ---
 
-# Buffers vs Cache
+## Buffers vs Cache
 
 | Buffers | Cache |
 |----------|--------|
@@ -514,7 +514,7 @@ This cached memory can generally be reclaimed when applications require more RAM
 
 ---
 
-# Swap Memory
+## Swap Memory
 
 Swap is disk space used when RAM becomes constrained.
 
@@ -532,7 +532,7 @@ free -h
 
 ---
 
-# Swap Workflow
+## Swap Workflow
 
 ```text
 RAM Full
@@ -554,7 +554,7 @@ Swap is significantly slower than RAM and excessive swap activity may indicate m
 
 ---
 
-# Virtual Memory
+## Virtual Memory
 
 Linux presents applications with virtual memory.
 
@@ -578,7 +578,7 @@ Virtual memory simplifies memory management and process isolation.
 
 ---
 
-# Memory Pressure Symptoms
+## Memory Pressure Symptoms
 
 Common signs include:
 
@@ -590,7 +590,7 @@ Common signs include:
 
 ---
 
-# Out-of-Memory (OOM)
+## Out-of-Memory (OOM)
 
 If memory is exhausted, the Linux kernel may invoke the **OOM Killer** to terminate one or more processes and recover memory.
 
@@ -603,7 +603,7 @@ Administrators should investigate:
 
 ---
 
-# Enterprise Monitoring Dashboard
+## Enterprise Monitoring Dashboard
 
 Typical dashboard includes:
 
@@ -627,7 +627,7 @@ Alerts
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Performance anomalies can indicate security incidents.
 
@@ -643,7 +643,7 @@ Security Operations Centers (SOCs) routinely correlate performance metrics with 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Continuous monitoring enables organizations to:
 
@@ -659,7 +659,7 @@ Without monitoring, performance degradation may remain unnoticed until business 
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Establish performance baselines.
 - Monitor trends instead of isolated measurements.
@@ -672,7 +672,7 @@ Without monitoring, performance degradation may remain unnoticed until business 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - System monitoring provides continuous visibility into Linux performance.
 - CPU utilization, memory usage, and load average are foundational metrics.
@@ -684,13 +684,13 @@ Without monitoring, performance degradation may remain unnoticed until business 
 ---
 
 
-# 16 - Linux System Monitoring
+## 16 - Linux System Monitoring
 
-# Part 2 — Process Monitoring, Disk Monitoring, Network Monitoring, Monitoring Tools, and Performance Analysis
+## Part 2 — Process Monitoring, Disk Monitoring, Network Monitoring, Monitoring Tools, and Performance Analysis
 
 ---
 
-# Introduction
+## Introduction
 
 Monitoring CPU and memory provides only part of the overall system health.
 
@@ -708,7 +708,7 @@ A holistic monitoring approach enables proactive detection and resolution of ope
 
 ---
 
-# Enterprise Monitoring Workflow
+## Enterprise Monitoring Workflow
 
 ```text
 Collect Metrics
@@ -740,7 +740,7 @@ Continue Monitoring
 
 ---
 
-# Process Monitoring
+## Process Monitoring
 
 A **process** is a running instance of a program.
 
@@ -754,7 +754,7 @@ Monitoring processes helps administrators:
 
 ---
 
-# Process States
+## Process States
 
 | State | Meaning |
 |--------|----------|
@@ -767,7 +767,7 @@ Monitoring processes helps administrators:
 
 ---
 
-# Viewing Processes
+## Viewing Processes
 
 Display running processes:
 
@@ -792,7 +792,7 @@ Both commands provide:
 
 ---
 
-# Process Monitoring Workflow
+## Process Monitoring Workflow
 
 ```text
 Application
@@ -820,7 +820,7 @@ Administrator
 
 ---
 
-# Finding Specific Processes
+## Finding Specific Processes
 
 Example:
 
@@ -842,7 +842,7 @@ ps -fp <PID>
 
 ---
 
-# Interactive Process Monitoring
+## Interactive Process Monitoring
 
 Launch:
 
@@ -864,7 +864,7 @@ Common interactive commands:
 
 ---
 
-# Using `htop`
+## Using `htop`
 
 `htop` provides an enhanced interactive interface.
 
@@ -886,7 +886,7 @@ If unavailable, install it using your distribution's package manager.
 
 ---
 
-# Understanding Zombie Processes
+## Understanding Zombie Processes
 
 Zombie processes have completed execution but still retain an entry in the process table until the parent process collects their exit status.
 
@@ -916,7 +916,7 @@ A small number of transient zombies is normal. Persistent zombies may indicate i
 
 ---
 
-# Disk Monitoring
+## Disk Monitoring
 
 Disk monitoring includes:
 
@@ -928,7 +928,7 @@ Disk monitoring includes:
 
 ---
 
-# Filesystem Capacity
+## Filesystem Capacity
 
 Display usage:
 
@@ -952,7 +952,7 @@ Use%
 
 ---
 
-# Directory Usage
+## Directory Usage
 
 Display directory size:
 
@@ -968,7 +968,7 @@ du -h --max-depth=1 /var
 
 ---
 
-# Block Devices
+## Block Devices
 
 Display devices:
 
@@ -984,7 +984,7 @@ lsblk -f
 
 ---
 
-# Disk I/O Monitoring
+## Disk I/O Monitoring
 
 View statistics:
 
@@ -1013,7 +1013,7 @@ Metric names can vary slightly depending on the `sysstat` version.
 
 ---
 
-# Interpreting `iostat`
+## Interpreting `iostat`
 
 Example:
 
@@ -1031,7 +1031,7 @@ A high `%util` should be evaluated together with latency (`await`) and workload 
 
 ---
 
-# Monitoring I/O with `vmstat`
+## Monitoring I/O with `vmstat`
 
 Run:
 
@@ -1051,7 +1051,7 @@ Relevant fields:
 
 ---
 
-# Network Monitoring
+## Network Monitoring
 
 Network monitoring includes:
 
@@ -1064,7 +1064,7 @@ Network monitoring includes:
 
 ---
 
-# Interface Statistics
+## Interface Statistics
 
 Display interface statistics:
 
@@ -1080,7 +1080,7 @@ ip addr
 
 ---
 
-# Active Connections
+## Active Connections
 
 Display listening sockets:
 
@@ -1096,7 +1096,7 @@ ss -tan
 
 ---
 
-# Network Statistics
+## Network Statistics
 
 View interface counters:
 
@@ -1113,7 +1113,7 @@ Example information:
 
 ---
 
-# Bandwidth Monitoring
+## Bandwidth Monitoring
 
 Examples of tools:
 
@@ -1126,7 +1126,7 @@ Availability depends on installed packages and distribution.
 
 ---
 
-# System Activity Reporter (`sar`)
+## System Activity Reporter (`sar`)
 
 Collect CPU statistics:
 
@@ -1156,7 +1156,7 @@ The `sysstat` package and data collection service may need to be enabled.
 
 ---
 
-# Process Statistics (`pidstat`)
+## Process Statistics (`pidstat`)
 
 Monitor CPU:
 
@@ -1180,7 +1180,7 @@ Useful for identifying resource-intensive processes.
 
 ---
 
-# `dstat`
+## `dstat`
 
 `dstat` combines multiple system metrics.
 
@@ -1202,7 +1202,7 @@ Note that `dstat` may not be installed by default on modern distributions.
 
 ---
 
-# Monitoring Overview
+## Monitoring Overview
 
 ```text
 CPU
@@ -1234,7 +1234,7 @@ Administrator
 
 ---
 
-# Identifying Bottlenecks
+## Identifying Bottlenecks
 
 | Symptom | Likely Cause |
 |----------|--------------|
@@ -1247,7 +1247,7 @@ Administrator
 
 ---
 
-# Performance Troubleshooting Workflow
+## Performance Troubleshooting Workflow
 
 ```text
 User Reports Issue
@@ -1287,9 +1287,9 @@ Verify
 
 ---
 
-# Enterprise Monitoring Example
+## Enterprise Monitoring Example
 
-## Slow Database Server
+### Slow Database Server
 
 Investigation:
 
@@ -1326,9 +1326,9 @@ Potential findings:
 
 ---
 
-# Enterprise Monitoring Example
+## Enterprise Monitoring Example
 
-## Slow Web Server
+### Slow Web Server
 
 Workflow:
 
@@ -1365,9 +1365,9 @@ Possible causes:
 
 ---
 
-# Enterprise Monitoring Example
+## Enterprise Monitoring Example
 
-## High Load Average
+### High Load Average
 
 Workflow:
 
@@ -1399,7 +1399,7 @@ Remember that high load is not always caused by CPU saturation; blocked I/O can 
 
 ---
 
-# Enterprise Dashboard Example
+## Enterprise Dashboard Example
 
 ```text
 CPU Usage
@@ -1425,7 +1425,7 @@ Service Status
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Performance monitoring often reveals security incidents.
 
@@ -1447,7 +1447,7 @@ Security analysts correlate monitoring metrics with:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective monitoring enables organizations to:
 
@@ -1462,7 +1462,7 @@ Poor monitoring can lead to prolonged outages, degraded customer experience, and
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor CPU, memory, storage, network, and processes together.
 - Establish normal performance baselines.
@@ -1475,7 +1475,7 @@ Poor monitoring can lead to prolonged outages, degraded customer experience, and
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Process, disk, and network monitoring are essential for complete system visibility.
 - Tools such as `top`, `htop`, `ps`, `vmstat`, `iostat`, `sar`, and `pidstat` provide complementary insights.
@@ -1485,13 +1485,13 @@ Poor monitoring can lead to prolonged outages, degraded customer experience, and
 
 ---
 
-# 16 - Linux System Monitoring
+## 16 - Linux System Monitoring
 
-# Part 3 — Advanced Monitoring, Log Correlation, Performance Tuning, Capacity Planning, Enterprise Monitoring Platforms, and Incident Analysis
+## Part 3 — Advanced Monitoring, Log Correlation, Performance Tuning, Capacity Planning, Enterprise Monitoring Platforms, and Incident Analysis
 
 ---
 
-# Introduction
+## Introduction
 
 Modern enterprise environments rarely consist of a single Linux server.
 
@@ -1518,7 +1518,7 @@ Advanced monitoring focuses on:
 
 ---
 
-# Enterprise Monitoring Evolution
+## Enterprise Monitoring Evolution
 
 ```text
 Single Server
@@ -1550,7 +1550,7 @@ Predictive Analytics
 
 ---
 
-# From Reactive to Proactive Monitoring
+## From Reactive to Proactive Monitoring
 
 | Reactive Monitoring | Proactive Monitoring |
 |----------------------|----------------------|
@@ -1561,7 +1561,7 @@ Predictive Analytics
 
 ---
 
-# Performance Baselines
+## Performance Baselines
 
 A **baseline** represents normal system behavior under expected workloads.
 
@@ -1580,7 +1580,7 @@ Without a baseline, it is difficult to determine whether current behavior is abn
 
 ---
 
-# Baseline Example
+## Baseline Example
 
 | Metric | Normal Range |
 |----------|--------------|
@@ -1595,7 +1595,7 @@ These values vary depending on workload and hardware.
 
 ---
 
-# Trend Analysis
+## Trend Analysis
 
 Instead of looking at one measurement:
 
@@ -1623,7 +1623,7 @@ Trend analysis identifies gradual degradation before it becomes an outage.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Capacity planning predicts future infrastructure requirements.
 
@@ -1637,7 +1637,7 @@ Inputs include:
 
 ---
 
-# Capacity Planning Workflow
+## Capacity Planning Workflow
 
 ```text
 Collect Metrics
@@ -1661,7 +1661,7 @@ Continue Monitoring
 
 ---
 
-# Capacity Planning Example
+## Capacity Planning Example
 
 Current usage:
 
@@ -1693,7 +1693,7 @@ Provision additional storage before reaching critical utilization.
 
 ---
 
-# Performance Bottlenecks
+## Performance Bottlenecks
 
 A bottleneck is the resource limiting overall system performance.
 
@@ -1709,7 +1709,7 @@ Possible bottlenecks:
 
 ---
 
-# Bottleneck Identification
+## Bottleneck Identification
 
 ```text
 Slow Application
@@ -1741,7 +1741,7 @@ Root Cause
 
 ---
 
-# CPU Bottleneck Indicators
+## CPU Bottleneck Indicators
 
 Symptoms:
 
@@ -1760,7 +1760,7 @@ Possible causes:
 
 ---
 
-# Memory Bottleneck Indicators
+## Memory Bottleneck Indicators
 
 Symptoms:
 
@@ -1778,7 +1778,7 @@ Possible causes:
 
 ---
 
-# Disk Bottleneck Indicators
+## Disk Bottleneck Indicators
 
 Symptoms:
 
@@ -1797,7 +1797,7 @@ Possible causes:
 
 ---
 
-# Network Bottleneck Indicators
+## Network Bottleneck Indicators
 
 Symptoms:
 
@@ -1815,7 +1815,7 @@ Possible causes:
 
 ---
 
-# Root Cause Analysis (RCA)
+## Root Cause Analysis (RCA)
 
 A structured investigation should avoid assumptions.
 
@@ -1853,7 +1853,7 @@ Document
 
 ---
 
-# Log Correlation
+## Log Correlation
 
 Performance metrics become significantly more valuable when combined with logs.
 
@@ -1887,7 +1887,7 @@ This approach helps distinguish legitimate workload increases from operational o
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Accurate timestamps are essential.
 
@@ -1904,7 +1904,7 @@ Benefits:
 
 ---
 
-# Enterprise Alerting
+## Enterprise Alerting
 
 Alerts should be:
 
@@ -1915,7 +1915,7 @@ Alerts should be:
 
 ---
 
-# Alert Severity
+## Alert Severity
 
 | Severity | Meaning |
 |-----------|----------|
@@ -1926,7 +1926,7 @@ Alerts should be:
 
 ---
 
-# Alert Lifecycle
+## Alert Lifecycle
 
 ```text
 Metric
@@ -1958,7 +1958,7 @@ Closure
 
 ---
 
-# Avoiding Alert Fatigue
+## Avoiding Alert Fatigue
 
 Poor alerting can overwhelm administrators.
 
@@ -1972,7 +1972,7 @@ Best practices:
 
 ---
 
-# Enterprise Monitoring Platforms
+## Enterprise Monitoring Platforms
 
 Common monitoring platforms include:
 
@@ -1989,7 +1989,7 @@ Common monitoring platforms include:
 
 ---
 
-# Centralized Monitoring Architecture
+## Centralized Monitoring Architecture
 
 ```text
 Linux Servers
@@ -2017,7 +2017,7 @@ Operations Team
 
 ---
 
-# Key Performance Indicators (KPIs)
+## Key Performance Indicators (KPIs)
 
 Organizations commonly track:
 
@@ -2034,7 +2034,7 @@ Organizations commonly track:
 
 ---
 
-# Service Level Indicators (SLIs)
+## Service Level Indicators (SLIs)
 
 Examples:
 
@@ -2048,7 +2048,7 @@ These metrics are often used to evaluate service health.
 
 ---
 
-# Service Level Objectives (SLOs)
+## Service Level Objectives (SLOs)
 
 Example:
 
@@ -2072,7 +2072,7 @@ SLOs define measurable operational targets.
 
 ---
 
-# Enterprise Dashboard
+## Enterprise Dashboard
 
 ```text
 System Health
@@ -2096,7 +2096,7 @@ System Health
 
 ---
 
-# Performance Tuning Strategy
+## Performance Tuning Strategy
 
 ```text
 Measure
@@ -2122,7 +2122,7 @@ Avoid making multiple major changes simultaneously, as this complicates root cau
 
 ---
 
-# Monitoring Containers
+## Monitoring Containers
 
 Common metrics:
 
@@ -2137,7 +2137,7 @@ Container orchestration platforms often expose these metrics through integrated 
 
 ---
 
-# Monitoring Virtual Machines
+## Monitoring Virtual Machines
 
 Monitor both:
 
@@ -2153,9 +2153,9 @@ Potential virtualization-specific issues include:
 
 ---
 
-# Enterprise Incident Example
+## Enterprise Incident Example
 
-## Database Performance Degradation
+### Database Performance Degradation
 
 Timeline:
 
@@ -2201,9 +2201,9 @@ Resolution:
 
 ---
 
-# Enterprise Incident Example
+## Enterprise Incident Example
 
-## Unexpected CPU Spike
+### Unexpected CPU Spike
 
 Investigation:
 
@@ -2240,9 +2240,9 @@ Possible findings:
 
 ---
 
-# Enterprise Incident Example
+## Enterprise Incident Example
 
-## Memory Exhaustion
+### Memory Exhaustion
 
 Workflow:
 
@@ -2278,7 +2278,7 @@ Resolution:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Advanced monitoring is an important component of security operations.
 
@@ -2302,7 +2302,7 @@ Monitoring data should be correlated with:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Advanced monitoring enables organizations to:
 
@@ -2316,7 +2316,7 @@ Advanced monitoring enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Establish and regularly update performance baselines.
 - Monitor historical trends, not just current values.
@@ -2331,7 +2331,7 @@ Advanced monitoring enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective monitoring requires both real-time visibility and historical analysis.
 - Performance baselines enable accurate anomaly detection.
@@ -2343,13 +2343,13 @@ Advanced monitoring enables organizations to:
 ---
 
 
-# 16 - Linux System Monitoring
+## 16 - Linux System Monitoring
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Monitoring is one of the most important responsibilities of a Linux administrator.
 
@@ -2366,7 +2366,7 @@ This section focuses on practical monitoring exercises and real-world enterprise
 
 ---
 
-# Enterprise Monitoring Lifecycle
+## Enterprise Monitoring Lifecycle
 
 ```text
 Collect Metrics
@@ -2406,7 +2406,7 @@ Improve
 
 ---
 
-# Practical Lab 1 — System Overview
+## Practical Lab 1 — System Overview
 
 Display system uptime:
 
@@ -2426,14 +2426,14 @@ Display hostname:
 hostnamectl
 ```
 
-### Objectives
+#### Objectives
 
 - Review basic system health
 - Verify uptime and kernel version
 
 ---
 
-# Practical Lab 2 — CPU Monitoring
+## Practical Lab 2 — CPU Monitoring
 
 Display processor information:
 
@@ -2453,14 +2453,14 @@ Per-CPU statistics:
 mpstat -P ALL
 ```
 
-### Objectives
+#### Objectives
 
 - Observe CPU utilization
 - Identify heavily loaded CPUs
 
 ---
 
-# Practical Lab 3 — Memory Monitoring
+## Practical Lab 3 — Memory Monitoring
 
 Display memory usage:
 
@@ -2474,7 +2474,7 @@ Continuous monitoring:
 vmstat 2
 ```
 
-### Questions
+#### Questions
 
 - How much memory is available?
 - Is swap being used?
@@ -2482,7 +2482,7 @@ vmstat 2
 
 ---
 
-# Practical Lab 4 — Process Investigation
+## Practical Lab 4 — Process Investigation
 
 Display all processes:
 
@@ -2502,14 +2502,14 @@ Sort by memory usage:
 ps -eo pid,comm,%mem,%cpu --sort=-%mem | head
 ```
 
-### Objectives
+#### Objectives
 
 - Identify resource-intensive processes
 - Compare CPU and memory consumption
 
 ---
 
-# Practical Lab 5 — Interactive Process Management
+## Practical Lab 5 — Interactive Process Management
 
 Launch:
 
@@ -2528,7 +2528,7 @@ Tasks:
 
 ---
 
-# Practical Lab 6 — Filesystem Monitoring
+## Practical Lab 6 — Filesystem Monitoring
 
 Display filesystem usage:
 
@@ -2542,14 +2542,14 @@ Display filesystem types:
 df -Th
 ```
 
-### Objectives
+#### Objectives
 
 - Identify highly utilized filesystems
 - Review available storage
 
 ---
 
-# Practical Lab 7 — Directory Analysis
+## Practical Lab 7 — Directory Analysis
 
 Display directory sizes:
 
@@ -2563,14 +2563,14 @@ Largest directories:
 du -ah /var | sort -rh | head -20
 ```
 
-### Objectives
+#### Objectives
 
 - Locate storage hotspots
 - Identify cleanup opportunities
 
 ---
 
-# Practical Lab 8 — Disk I/O Monitoring
+## Practical Lab 8 — Disk I/O Monitoring
 
 Display statistics:
 
@@ -2584,7 +2584,7 @@ Extended statistics:
 iostat -x 2
 ```
 
-### Observe
+#### Observe
 
 - Read/write activity
 - Device utilization
@@ -2592,7 +2592,7 @@ iostat -x 2
 
 ---
 
-# Practical Lab 9 — Network Monitoring
+## Practical Lab 9 — Network Monitoring
 
 Display interfaces:
 
@@ -2612,14 +2612,14 @@ Display connections:
 ss -tuln
 ```
 
-### Objectives
+#### Objectives
 
 - Review interface health
 - Identify listening services
 
 ---
 
-# Practical Lab 10 — Continuous System Monitoring
+## Practical Lab 10 — Continuous System Monitoring
 
 Run:
 
@@ -2637,7 +2637,7 @@ Observe:
 
 ---
 
-# Practical Lab 11 — Historical Statistics
+## Practical Lab 11 — Historical Statistics
 
 CPU:
 
@@ -2667,7 +2667,7 @@ sar -n DEV 5 5
 
 ---
 
-# Practical Lab 12 — Process Statistics
+## Practical Lab 12 — Process Statistics
 
 Display process statistics:
 
@@ -2687,14 +2687,14 @@ Disk:
 pidstat -d
 ```
 
-### Objectives
+#### Objectives
 
 - Monitor process-level resource usage
 - Compare workloads
 
 ---
 
-# Practical Lab 13 — Monitoring Script
+## Practical Lab 13 — Monitoring Script
 
 Example:
 
@@ -2722,7 +2722,7 @@ echo "Disk:"
 df -h
 ```
 
-### Skills Learned
+#### Skills Learned
 
 - Automation
 - Command substitution
@@ -2730,7 +2730,7 @@ df -h
 
 ---
 
-# Practical Lab 14 — Resource Alert Script
+## Practical Lab 14 — Resource Alert Script
 
 Example:
 
@@ -2745,7 +2745,7 @@ then
 fi
 ```
 
-### Enhancement Ideas
+#### Enhancement Ideas
 
 - Log alerts
 - Send email notifications
@@ -2753,7 +2753,7 @@ fi
 
 ---
 
-# Practical Lab 15 — Performance Investigation
+## Practical Lab 15 — Performance Investigation
 
 Scenario:
 
@@ -2793,7 +2793,7 @@ Identify root cause
 
 ---
 
-# Monitoring Checklist
+## Monitoring Checklist
 
 | Check | Command |
 |---------|----------|
@@ -2809,17 +2809,17 @@ Identify root cause
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# High CPU Utilization
+## High CPU Utilization
 
-### Symptoms
+#### Symptoms
 
 - Slow applications
 - High load average
 - Increased response time
 
-### Investigation
+#### Investigation
 
 ```text
 top
@@ -2841,11 +2841,11 @@ Verify Workload
 Optimize or Restart
 ```
 
-### Root Cause
+#### Root Cause
 
 A scheduled reporting job consumed excessive CPU resources during peak business hours.
 
-### Resolution
+#### Resolution
 
 - Reschedule the workload
 - Optimize processing
@@ -2853,17 +2853,17 @@ A scheduled reporting job consumed excessive CPU resources during peak business 
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Memory Leak
+## Memory Leak
 
-### Symptoms
+#### Symptoms
 
 - Growing memory usage
 - Increasing swap
 - Eventual application failure
 
-### Investigation
+#### Investigation
 
 ```text
 free
@@ -2885,7 +2885,7 @@ Application Logs
 Developer Review
 ```
 
-### Resolution
+#### Resolution
 
 - Restart affected application
 - Deploy updated version
@@ -2893,17 +2893,17 @@ Developer Review
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# Disk Bottleneck
+## Disk Bottleneck
 
-### Symptoms
+#### Symptoms
 
 - Slow database
 - High `await`
 - High `%util`
 
-### Investigation
+#### Investigation
 
 ```text
 iostat
@@ -2925,11 +2925,11 @@ Storage Team
 Resolution
 ```
 
-### Root Cause
+#### Root Cause
 
 Heavy backup operations overlapped with production database traffic.
 
-### Resolution
+#### Resolution
 
 - Reschedule backups
 - Optimize storage usage
@@ -2937,17 +2937,17 @@ Heavy backup operations overlapped with production database traffic.
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Network Congestion
+## Network Congestion
 
-### Symptoms
+#### Symptoms
 
 - Slow remote access
 - Packet loss
 - High latency
 
-### Investigation
+#### Investigation
 
 ```text
 ip -s link
@@ -2969,7 +2969,7 @@ Switch Review
 Resolution
 ```
 
-### Possible Causes
+#### Possible Causes
 
 - Bandwidth saturation
 - Faulty network interface
@@ -2978,7 +2978,7 @@ Resolution
 
 ---
 
-# Enterprise Dashboard Example
+## Enterprise Dashboard Example
 
 ```text
 Infrastructure
@@ -3002,7 +3002,7 @@ Infrastructure
 
 ---
 
-# Common Monitoring Mistakes
+## Common Monitoring Mistakes
 
 | Mistake | Impact | Better Practice |
 |----------|--------|-----------------|
@@ -3016,7 +3016,7 @@ Infrastructure
 
 ---
 
-# Enterprise Monitoring Checklist
+## Enterprise Monitoring Checklist
 
 | Task | Status |
 |------|--------|
@@ -3033,7 +3033,7 @@ Infrastructure
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Monitoring is a critical component of security operations.
 
@@ -3059,7 +3059,7 @@ This correlation improves the accuracy of incident detection and response.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Comprehensive monitoring provides:
 
@@ -3074,7 +3074,7 @@ Comprehensive monitoring provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Define clear monitoring objectives.
 - Monitor infrastructure and applications together.
@@ -3089,7 +3089,7 @@ Comprehensive monitoring provides:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3109,9 +3109,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is system monitoring?
 2. What information does the `uptime` command provide?
@@ -3126,7 +3126,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain how to investigate high CPU utilization.
 2. What does `%util` represent in `iostat`?
@@ -3141,7 +3141,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design an enterprise monitoring architecture for 500 Linux servers.
 2. Explain the relationship between MTTD and MTTR.
@@ -3156,7 +3156,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective monitoring combines CPU, memory, storage, network, and process metrics.
 - Historical trends provide more insight than isolated measurements.
@@ -3166,9 +3166,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man top`
 - `man htop`
@@ -3181,7 +3181,7 @@ In this chapter, you learned:
 - `man uptime`
 - `man ss`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - Red Hat Enterprise Linux Performance Tuning Guide
@@ -3196,11 +3196,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **17-Linux-Logging.md**
 
-## Topics Covered
+### Topics Covered
 
 - Linux Logging Fundamentals
 - Syslog Architecture

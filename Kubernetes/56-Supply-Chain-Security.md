@@ -74,7 +74,7 @@ Monitor
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -136,7 +136,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is a Software Supply Chain?
+## What Is a Software Supply Chain?
 
 A software supply chain is the collection of:
 
@@ -171,7 +171,7 @@ Kubernetes
 
 ---
 
-# Why Supply Chain Security Matters
+## Why Supply Chain Security Matters
 
 An attacker does not always need to attack Kubernetes directly.
 
@@ -191,7 +191,7 @@ This can allow malicious code to reach production through a trusted deployment p
 
 ---
 
-# Supply Chain Security Principle
+## Supply Chain Security Principle
 
 > **Trust must be established at every stage of the software lifecycle.**
 
@@ -210,7 +210,7 @@ Verify them.
 
 ---
 
-# Kubernetes Supply Chain
+## Kubernetes Supply Chain
 
 A typical Kubernetes supply chain:
 
@@ -242,7 +242,7 @@ Runtime
 
 ---
 
-# Supply Chain Threat Model
+## Supply Chain Threat Model
 
 Potential attackers may target:
 
@@ -260,7 +260,7 @@ Deployment System
 
 ---
 
-# Supply Chain Attack
+## Supply Chain Attack
 
 A supply chain attack compromises a trusted component used by the target.
 
@@ -284,7 +284,7 @@ Target
 
 ---
 
-# Example
+## Example
 
 ```text
 Popular Package
@@ -304,7 +304,7 @@ Kubernetes
 
 ---
 
-# Major Supply Chain Threats
+## Major Supply Chain Threats
 
 ```text
 Dependency Confusion
@@ -322,7 +322,7 @@ Credential Theft
 
 ---
 
-# Source Code Security
+## Source Code Security
 
 The source repository is the starting point of the software supply chain.
 
@@ -341,7 +341,7 @@ CI Tokens
 
 ---
 
-# Source Code Controls
+## Source Code Controls
 
 Use:
 
@@ -359,7 +359,7 @@ Audit Logs
 
 ---
 
-# Branch Protection
+## Branch Protection
 
 Production code should not normally be changed directly.
 
@@ -379,7 +379,7 @@ Merge
 
 ---
 
-# Code Review
+## Code Review
 
 Security-sensitive changes should receive appropriate review.
 
@@ -397,7 +397,7 @@ Infrastructure
 
 ---
 
-# Developer Account Security
+## Developer Account Security
 
 Compromised developer accounts can become supply-chain entry points.
 
@@ -414,7 +414,7 @@ Audit Logging
 
 ---
 
-# Dependency Security
+## Dependency Security
 
 Modern applications depend heavily on third-party packages.
 
@@ -433,7 +433,7 @@ A vulnerability or malicious dependency can compromise the application.
 
 ---
 
-# Dependency Pinning
+## Dependency Pinning
 
 Avoid unconstrained dependency versions.
 
@@ -464,7 +464,7 @@ The exact approach depends on the package ecosystem.
 
 ---
 
-# Lock Files
+## Lock Files
 
 Lock files capture resolved dependency versions.
 
@@ -482,7 +482,7 @@ Reproducible Dependency Set
 
 ---
 
-# Dependency Updates
+## Dependency Updates
 
 Dependencies should be:
 
@@ -498,7 +498,7 @@ Do not automatically accept every update into production without appropriate con
 
 ---
 
-# Dependency Confusion
+## Dependency Confusion
 
 Dependency confusion occurs when a malicious package is selected instead of the intended internal package.
 
@@ -521,7 +521,7 @@ If the build configuration resolves the public package, malicious code may enter
 
 ---
 
-# Preventing Dependency Confusion
+## Preventing Dependency Confusion
 
 Use:
 
@@ -537,7 +537,7 @@ Dependency Verification
 
 ---
 
-# Typosquatting
+## Typosquatting
 
 An attacker creates a package name similar to a legitimate package.
 
@@ -557,7 +557,7 @@ A developer may install the wrong package.
 
 ---
 
-# Preventing Typosquatting
+## Preventing Typosquatting
 
 Use:
 
@@ -572,7 +572,7 @@ Security Scanning
 
 ---
 
-# Malicious Packages
+## Malicious Packages
 
 A malicious package may contain:
 
@@ -587,7 +587,7 @@ Persistence
 
 ---
 
-# Compromised Dependency
+## Compromised Dependency
 
 A legitimate package can also become compromised.
 
@@ -613,7 +613,7 @@ Automatically Trusted Version
 
 ---
 
-# Dependency Provenance
+## Dependency Provenance
 
 Ask:
 
@@ -626,7 +626,7 @@ Was it modified?
 
 ---
 
-# Container Image Supply Chain
+## Container Image Supply Chain
 
 A container image includes:
 
@@ -642,7 +642,7 @@ Every component must be considered.
 
 ---
 
-# Base Image Supply Chain
+## Base Image Supply Chain
 
 Example:
 
@@ -662,7 +662,7 @@ Application Supply Chain Security
 
 ---
 
-# Trusted Base Images
+## Trusted Base Images
 
 Use:
 
@@ -678,7 +678,7 @@ where appropriate.
 
 ---
 
-# Base Image Updates
+## Base Image Updates
 
 Base images should be regularly rebuilt.
 
@@ -700,7 +700,7 @@ Deploy
 
 ---
 
-# Build System Security
+## Build System Security
 
 The build system is one of the most important components in the supply chain.
 
@@ -718,7 +718,7 @@ The resulting artifact may appear legitimate.
 
 ---
 
-# CI/CD Threats
+## CI/CD Threats
 
 Potential attacks include:
 
@@ -734,7 +734,7 @@ Signing Key Theft
 
 ---
 
-# CI/CD Least Privilege
+## CI/CD Least Privilege
 
 A build pipeline should receive only the permissions it requires.
 
@@ -754,7 +754,7 @@ Push Image
 
 ---
 
-# Build Isolation
+## Build Isolation
 
 Build systems should isolate workloads where possible.
 
@@ -774,7 +774,7 @@ This reduces persistence opportunities.
 
 ---
 
-# Ephemeral Build Runners
+## Ephemeral Build Runners
 
 Ephemeral runners are created for individual jobs.
 
@@ -796,7 +796,7 @@ This can reduce contamination between builds.
 
 ---
 
-# Build Secrets
+## Build Secrets
 
 CI/CD systems often need:
 
@@ -811,7 +811,7 @@ These must be protected.
 
 ---
 
-# Avoid Long-Lived CI Credentials
+## Avoid Long-Lived CI Credentials
 
 Prefer:
 
@@ -826,7 +826,7 @@ where supported.
 
 ---
 
-# OIDC in CI/CD
+## OIDC in CI/CD
 
 OpenID Connect can allow a CI platform to obtain short-lived cloud credentials based on workload identity.
 
@@ -846,7 +846,7 @@ This reduces reliance on static secrets.
 
 ---
 
-# Artifact Integrity
+## Artifact Integrity
 
 An artifact should be protected against unauthorized modification.
 
@@ -863,7 +863,7 @@ Manifest
 
 ---
 
-# Image Digest
+## Image Digest
 
 A digest provides a content-addressed reference.
 
@@ -877,7 +877,7 @@ This helps ensure that the deployed image corresponds to known content.
 
 ---
 
-# Digest Pinning
+## Digest Pinning
 
 Instead of:
 
@@ -895,7 +895,7 @@ for high-assurance deployments.
 
 ---
 
-# Image Signing
+## Image Signing
 
 Signing establishes trust in an artifact.
 
@@ -915,7 +915,7 @@ Deployment
 
 ---
 
-# Cosign
+## Cosign
 
 Cosign is commonly used for signing and verifying container images and other artifacts.
 
@@ -933,7 +933,7 @@ Verify
 
 ---
 
-# Sigstore
+## Sigstore
 
 Sigstore is a collection of tools and services for software signing and supply-chain security.
 
@@ -947,7 +947,7 @@ Rekor
 
 ---
 
-# Fulcio
+## Fulcio
 
 Fulcio is a certificate authority used by Sigstore's keyless signing ecosystem.
 
@@ -967,7 +967,7 @@ Artifact Signing
 
 ---
 
-# Rekor
+## Rekor
 
 Rekor is a transparency log.
 
@@ -985,7 +985,7 @@ Transparency Record
 
 ---
 
-# Why Transparency Matters
+## Why Transparency Matters
 
 Transparency helps security teams investigate:
 
@@ -998,7 +998,7 @@ Was the signature recorded?
 
 ---
 
-# Image Verification
+## Image Verification
 
 Before deployment:
 
@@ -1016,7 +1016,7 @@ Allow / Reject
 
 ---
 
-# Software Bill of Materials
+## Software Bill of Materials
 
 An SBOM describes the components inside an artifact.
 
@@ -1033,7 +1033,7 @@ Application
 
 ---
 
-# SBOM Formats
+## SBOM Formats
 
 Common formats:
 
@@ -1044,7 +1044,7 @@ CycloneDX
 
 ---
 
-# Why SBOM Matters
+## Why SBOM Matters
 
 Suppose a new vulnerability is announced:
 
@@ -1062,7 +1062,7 @@ without manually inspecting every image.
 
 ---
 
-# SBOM in Incident Response
+## SBOM in Incident Response
 
 Example:
 
@@ -1080,7 +1080,7 @@ Patch
 
 ---
 
-# Provenance
+## Provenance
 
 Provenance provides information about how an artifact was produced.
 
@@ -1098,7 +1098,7 @@ Artifact
 
 ---
 
-# Build Provenance
+## Build Provenance
 
 Conceptually:
 
@@ -1116,7 +1116,7 @@ Provenance records this relationship.
 
 ---
 
-# Why Provenance Matters
+## Why Provenance Matters
 
 It helps answer:
 
@@ -1129,7 +1129,7 @@ Which workflow ran?
 
 ---
 
-# SLSA
+## SLSA
 
 SLSA stands for:
 
@@ -1150,7 +1150,7 @@ Artifact Integrity
 
 ---
 
-# Reproducible Builds
+## Reproducible Builds
 
 A reproducible build attempts to produce the same artifact from the same inputs.
 
@@ -1168,7 +1168,7 @@ Same Artifact
 
 ---
 
-# Why Reproducibility Matters
+## Why Reproducibility Matters
 
 It can help detect:
 
@@ -1180,7 +1180,7 @@ Undocumented Dependencies
 
 ---
 
-# Build Attestations
+## Build Attestations
 
 Attestations provide signed statements about an artifact.
 
@@ -1205,7 +1205,7 @@ Artifact
 
 ---
 
-# Artifact Promotion
+## Artifact Promotion
 
 Do not rebuild an artifact for every environment.
 
@@ -1227,7 +1227,7 @@ Production
 
 ---
 
-# Why Build Once?
+## Why Build Once?
 
 If you rebuild:
 
@@ -1247,7 +1247,7 @@ Build-once promotion improves artifact consistency.
 
 ---
 
-# Trusted Builders
+## Trusted Builders
 
 Organizations can restrict production artifacts to approved build systems.
 
@@ -1265,7 +1265,7 @@ An artifact built elsewhere may be rejected.
 
 ---
 
-# Registry Security
+## Registry Security
 
 A registry is part of the software supply chain.
 
@@ -1284,7 +1284,7 @@ Retention
 
 ---
 
-# Registry Access Control
+## Registry Access Control
 
 Example:
 
@@ -1318,7 +1318,7 @@ permissions.
 
 ---
 
-# Image Immutability
+## Image Immutability
 
 Production artifacts should not silently change.
 
@@ -1334,7 +1334,7 @@ Registry immutability controls can help prevent tag replacement.
 
 ---
 
-# Admission Control
+## Admission Control
 
 Kubernetes admission controls can enforce supply-chain policies.
 
@@ -1358,7 +1358,7 @@ Allow / Reject
 
 ---
 
-# Admission Policy
+## Admission Policy
 
 A production policy may require:
 
@@ -1376,7 +1376,7 @@ Security Scan
 
 ---
 
-# Policy Engines
+## Policy Engines
 
 Kubernetes environments may use policy tools such as:
 
@@ -1390,7 +1390,7 @@ to enforce organizational rules.
 
 ---
 
-# Example Policy
+## Example Policy
 
 Conceptually:
 
@@ -1415,7 +1415,7 @@ THEN reject
 
 ---
 
-# GitOps Supply Chain
+## GitOps Supply Chain
 
 GitOps introduces another important supply-chain component:
 
@@ -1439,7 +1439,7 @@ Kubernetes
 
 ---
 
-# GitOps Risks
+## GitOps Risks
 
 Potential threats:
 
@@ -1453,7 +1453,7 @@ Stolen Repository Token
 
 ---
 
-# GitOps Security
+## GitOps Security
 
 Use:
 
@@ -1470,7 +1470,7 @@ Audit Logs
 
 ---
 
-# Helm Supply Chain
+## Helm Supply Chain
 
 Helm charts can also introduce supply-chain risk.
 
@@ -1497,7 +1497,7 @@ Templates
 
 ---
 
-# Helm Chart Security
+## Helm Chart Security
 
 Use:
 
@@ -1511,7 +1511,7 @@ Security Scanning
 
 ---
 
-# Kubernetes Manifest Security
+## Kubernetes Manifest Security
 
 Review manifests for:
 
@@ -1530,7 +1530,7 @@ Untrusted Images
 
 ---
 
-# Dependency Pinning
+## Dependency Pinning
 
 Pin:
 
@@ -1547,7 +1547,7 @@ where practical.
 
 ---
 
-# Security Update Pipeline
+## Security Update Pipeline
 
 A mature pipeline:
 
@@ -1573,9 +1573,9 @@ Deploy
 
 ---
 
-# Supply Chain Attack Scenario 1
+## Supply Chain Attack Scenario 1
 
-## Compromised Dependency
+### Compromised Dependency
 
 ```text
 Legitimate Package
@@ -1604,9 +1604,9 @@ Behavior Monitoring
 
 ---
 
-# Supply Chain Attack Scenario 2
+## Supply Chain Attack Scenario 2
 
-## Dependency Confusion
+### Dependency Confusion
 
 ```text
 Internal Package
@@ -1629,9 +1629,9 @@ Dependency Pinning
 
 ---
 
-# Supply Chain Attack Scenario 3
+## Supply Chain Attack Scenario 3
 
-## Compromised CI/CD
+### Compromised CI/CD
 
 ```text
 CI Account Compromised
@@ -1661,9 +1661,9 @@ Separate Signing Identity
 
 ---
 
-# Supply Chain Attack Scenario 4
+## Supply Chain Attack Scenario 4
 
-## Registry Compromise
+### Registry Compromise
 
 ```text
 Registry
@@ -1684,9 +1684,9 @@ Signature Verification
 
 ---
 
-# Supply Chain Attack Scenario 5
+## Supply Chain Attack Scenario 5
 
-## Signing Key Compromise
+### Signing Key Compromise
 
 ```text
 Signing Key Stolen
@@ -1710,9 +1710,9 @@ Transparency Logs
 
 ---
 
-# Supply Chain Attack Scenario 6
+## Supply Chain Attack Scenario 6
 
-## Malicious Base Image
+### Malicious Base Image
 
 ```text
 Base Image
@@ -1737,7 +1737,7 @@ Digest Pinning
 
 ---
 
-# Supply Chain Security and Zero Trust
+## Supply Chain Security and Zero Trust
 
 Zero trust applies to artifacts too.
 
@@ -1763,7 +1763,7 @@ Policy
 
 ---
 
-# Supply Chain Security Architecture
+## Supply Chain Security Architecture
 
 ```text
                     Source Repository
@@ -1801,7 +1801,7 @@ Policy
 
 ---
 
-# Supply Chain Security Layers
+## Supply Chain Security Layers
 
 ```text
 1. Source Security
@@ -1815,7 +1815,7 @@ Policy
 
 ---
 
-# Source Security
+## Source Security
 
 Protect:
 
@@ -1830,7 +1830,7 @@ CI Tokens
 
 ---
 
-# Dependency Security
+## Dependency Security
 
 Protect against:
 
@@ -1843,7 +1843,7 @@ Typosquatting
 
 ---
 
-# Build Security
+## Build Security
 
 Protect:
 
@@ -1857,7 +1857,7 @@ Build Configuration
 
 ---
 
-# Artifact Security
+## Artifact Security
 
 Protect:
 
@@ -1871,7 +1871,7 @@ Digest
 
 ---
 
-# Registry Security
+## Registry Security
 
 Protect:
 
@@ -1885,7 +1885,7 @@ Audit
 
 ---
 
-# Deployment Security
+## Deployment Security
 
 Enforce:
 
@@ -1899,7 +1899,7 @@ NetworkPolicy
 
 ---
 
-# Runtime Security
+## Runtime Security
 
 Monitor:
 
@@ -1913,9 +1913,9 @@ Behavior
 
 ---
 
-# Supply Chain Security Maturity
+## Supply Chain Security Maturity
 
-## Level 1 – Basic
+### Level 1 – Basic
 
 ```text
 Dependency Scanning
@@ -1924,7 +1924,7 @@ Image Scanning
 
 ---
 
-## Level 2 – Controlled
+### Level 2 – Controlled
 
 ```text
 Version Pinning
@@ -1934,7 +1934,7 @@ Private Dependencies
 
 ---
 
-## Level 3 – Verified
+### Level 3 – Verified
 
 ```text
 SBOM
@@ -1945,7 +1945,7 @@ Provenance
 
 ---
 
-## Level 4 – Enforced
+### Level 4 – Enforced
 
 ```text
 Admission Verification
@@ -1955,7 +1955,7 @@ Build Attestations
 
 ---
 
-## Level 5 – Mature
+### Level 5 – Mature
 
 ```text
 Continuous Verification
@@ -1966,7 +1966,7 @@ Incident Response
 
 ---
 
-# Supply Chain Security and SOC
+## Supply Chain Security and SOC
 
 A SOC can correlate:
 
@@ -1994,7 +1994,7 @@ High-Priority Incident
 
 ---
 
-# Supply Chain Incident Response
+## Supply Chain Incident Response
 
 If a malicious artifact is discovered:
 
@@ -2024,7 +2024,7 @@ Investigate
 
 ---
 
-# Supply Chain Forensics
+## Supply Chain Forensics
 
 Investigate:
 
@@ -2045,7 +2045,7 @@ Runtime Events
 
 ---
 
-# Supply Chain Timeline
+## Supply Chain Timeline
 
 Create a timeline:
 
@@ -2071,7 +2071,7 @@ Attack Duration
 
 ---
 
-# Evidence Sources
+## Evidence Sources
 
 Useful evidence includes:
 
@@ -2090,7 +2090,7 @@ Network Logs
 
 ---
 
-# Supply Chain Security Metrics
+## Supply Chain Security Metrics
 
 Track metrics such as:
 
@@ -2109,7 +2109,7 @@ Provenance Coverage
 
 ---
 
-# Example Security Dashboard
+## Example Security Dashboard
 
 ```text
 Images Scanned             98%
@@ -2123,7 +2123,7 @@ Unapproved Registries       0
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```text
 Checkout
@@ -2151,7 +2151,7 @@ Promote
 
 ---
 
-# Secure Production Deployment
+## Secure Production Deployment
 
 ```text
 Artifact
@@ -2171,7 +2171,7 @@ Kubernetes
 
 ---
 
-# Example Supply Chain Policy
+## Example Supply Chain Policy
 
 A production cluster could require:
 
@@ -2197,27 +2197,27 @@ Required
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Trusting Dependencies Blindly
+### 1. Trusting Dependencies Blindly
 
 A popular dependency can still become compromised.
 
 ---
 
-## 2. Using Unpinned Dependencies
+### 2. Using Unpinned Dependencies
 
 Uncontrolled updates reduce reproducibility.
 
 ---
 
-## 3. Using Unknown Base Images
+### 3. Using Unknown Base Images
 
 A compromised base image can affect every downstream image.
 
 ---
 
-## 4. Trusting Image Tags
+### 4. Trusting Image Tags
 
 Tags can potentially change.
 
@@ -2231,19 +2231,19 @@ for high-assurance deployments.
 
 ---
 
-## 5. Not Signing Images
+### 5. Not Signing Images
 
 Without signatures, artifact authenticity is harder to establish.
 
 ---
 
-## 6. Not Generating SBOMs
+### 6. Not Generating SBOMs
 
 Without an SBOM, identifying affected artifacts during a vulnerability incident becomes harder.
 
 ---
 
-## 7. Giving CI/CD Excessive Permissions
+### 7. Giving CI/CD Excessive Permissions
 
 Avoid:
 
@@ -2255,7 +2255,7 @@ unless absolutely necessary.
 
 ---
 
-## 8. Storing Long-Lived CI Secrets
+### 8. Storing Long-Lived CI Secrets
 
 Prefer:
 
@@ -2267,7 +2267,7 @@ Short-Lived Tokens
 
 ---
 
-## 9. Rebuilding Artifacts Between Environments
+### 9. Rebuilding Artifacts Between Environments
 
 Prefer:
 
@@ -2278,19 +2278,19 @@ Promote
 
 ---
 
-## 10. No Admission Enforcement
+### 10. No Admission Enforcement
 
 Policies that are only documented but not enforced can be bypassed accidentally.
 
 ---
 
-## 11. Ignoring GitOps Security
+### 11. Ignoring GitOps Security
 
 GitOps repositories are part of the deployment supply chain.
 
 ---
 
-## 12. Trusting a Signature Without Checking Identity
+### 12. Trusting a Signature Without Checking Identity
 
 A valid signature is not enough.
 
@@ -2304,9 +2304,9 @@ Under what policy?
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Protect Source Repositories
+#### 1. Protect Source Repositories
 
 Use:
 
@@ -2319,7 +2319,7 @@ Audit Logging
 
 ---
 
-### 2. Pin Dependencies
+#### 2. Pin Dependencies
 
 Use:
 
@@ -2331,13 +2331,13 @@ Approved Sources
 
 ---
 
-### 3. Use Trusted Registries
+#### 3. Use Trusted Registries
 
 Restrict production images to approved registries.
 
 ---
 
-### 4. Scan Dependencies
+#### 4. Scan Dependencies
 
 Scan:
 
@@ -2349,13 +2349,13 @@ OS Packages
 
 ---
 
-### 5. Generate SBOMs
+#### 5. Generate SBOMs
 
 Maintain component visibility.
 
 ---
 
-### 6. Generate Provenance
+#### 6. Generate Provenance
 
 Record:
 
@@ -2368,7 +2368,7 @@ Artifact
 
 ---
 
-### 7. Sign Artifacts
+#### 7. Sign Artifacts
 
 Use:
 
@@ -2381,13 +2381,13 @@ or another trusted signing solution.
 
 ---
 
-### 8. Verify Before Deployment
+#### 8. Verify Before Deployment
 
 Use admission policies.
 
 ---
 
-### 9. Pin Production Images
+#### 9. Pin Production Images
 
 Prefer:
 
@@ -2399,7 +2399,7 @@ over mutable tags.
 
 ---
 
-### 10. Protect CI/CD
+#### 10. Protect CI/CD
 
 Use:
 
@@ -2413,7 +2413,7 @@ Isolated Builds
 
 ---
 
-### 11. Protect Signing Infrastructure
+#### 11. Protect Signing Infrastructure
 
 Use:
 
@@ -2428,7 +2428,7 @@ where appropriate.
 
 ---
 
-### 12. Use Build Attestations
+#### 12. Use Build Attestations
 
 Record:
 
@@ -2440,7 +2440,7 @@ Security Results
 
 ---
 
-### 13. Promote the Same Artifact
+#### 13. Promote the Same Artifact
 
 Use:
 
@@ -2451,7 +2451,7 @@ Promote Everywhere
 
 ---
 
-### 14. Enforce Policies
+#### 14. Enforce Policies
 
 Use:
 
@@ -2466,13 +2466,13 @@ as appropriate.
 
 ---
 
-### 15. Monitor Continuously
+#### 15. Monitor Continuously
 
 Supply-chain security does not end at deployment.
 
 ---
 
-# Production Supply Chain Checklist
+## Production Supply Chain Checklist
 
 ```text
 ☑ MFA enabled
@@ -2503,7 +2503,7 @@ Supply-chain security does not end at deployment.
 
 ---
 
-# Hands-on Lab 1 – Dependency Scanning
+## Hands-on Lab 1 – Dependency Scanning
 
 Choose a test application.
 
@@ -2521,7 +2521,7 @@ Fixed Version
 
 ---
 
-# Hands-on Lab 2 – Dependency Pinning
+## Hands-on Lab 2 – Dependency Pinning
 
 Create a test project with unpinned dependencies.
 
@@ -2541,7 +2541,7 @@ Locked Dependencies
 
 ---
 
-# Hands-on Lab 3 – Build an SBOM
+## Hands-on Lab 3 – Build an SBOM
 
 Build a container image.
 
@@ -2558,7 +2558,7 @@ Review the components.
 
 ---
 
-# Hands-on Lab 4 – Image Provenance
+## Hands-on Lab 4 – Image Provenance
 
 Create a test CI pipeline.
 
@@ -2579,7 +2579,7 @@ Source → Build → Artifact
 
 ---
 
-# Hands-on Lab 5 – Sign an Image
+## Hands-on Lab 5 – Sign an Image
 
 Use Cosign in a disposable environment.
 
@@ -2597,7 +2597,7 @@ Verify
 
 ---
 
-# Hands-on Lab 6 – Digest Pinning
+## Hands-on Lab 6 – Digest Pinning
 
 Deploy:
 
@@ -2617,7 +2617,7 @@ Verify the running workload.
 
 ---
 
-# Hands-on Lab 7 – Admission Policy
+## Hands-on Lab 7 – Admission Policy
 
 Create a policy requiring:
 
@@ -2641,7 +2641,7 @@ Observe the rejection.
 
 ---
 
-# Hands-on Lab 8 – Unsigned Image Policy
+## Hands-on Lab 8 – Unsigned Image Policy
 
 In a disposable cluster, configure an admission policy requiring signed images.
 
@@ -2659,7 +2659,7 @@ Rejected
 
 ---
 
-# Hands-on Lab 9 – CI Vulnerability Gate
+## Hands-on Lab 9 – CI Vulnerability Gate
 
 Create a pipeline:
 
@@ -2677,7 +2677,7 @@ Test using a deliberately vulnerable lab image.
 
 ---
 
-# Hands-on Lab 10 – Build Once, Promote
+## Hands-on Lab 10 – Build Once, Promote
 
 Build:
 
@@ -2697,7 +2697,7 @@ Verify the digest remains identical.
 
 ---
 
-# Hands-on Lab 11 – Dependency Confusion Simulation
+## Hands-on Lab 11 – Dependency Confusion Simulation
 
 In a controlled private environment:
 
@@ -2712,7 +2712,7 @@ Do not publish malicious packages to public registries.
 
 ---
 
-# Hands-on Lab 12 – CI Credential Review
+## Hands-on Lab 12 – CI Credential Review
 
 Inspect a test CI pipeline for:
 
@@ -2735,7 +2735,7 @@ where supported.
 
 ---
 
-# Hands-on Lab 13 – Supply Chain Incident
+## Hands-on Lab 13 – Supply Chain Incident
 
 Simulate:
 
@@ -2765,7 +2765,7 @@ Redeploy
 
 ---
 
-# Hands-on Lab 14 – Supply Chain Forensics
+## Hands-on Lab 14 – Supply Chain Forensics
 
 Build a timeline using:
 
@@ -2789,7 +2789,7 @@ Which workload ran it?
 
 ---
 
-# Hands-on Lab 15 – End-to-End Supply Chain
+## Hands-on Lab 15 – End-to-End Supply Chain
 
 Build the complete workflow:
 
@@ -2823,9 +2823,9 @@ This is the most important practical exercise in this chapter.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Supply Chain
+### Supply Chain
 
 ```text
 Everything involved in producing and delivering software
@@ -2833,7 +2833,7 @@ Everything involved in producing and delivering software
 
 ---
 
-## Dependency Confusion
+### Dependency Confusion
 
 ```text
 Malicious public package selected instead of intended internal package
@@ -2841,7 +2841,7 @@ Malicious public package selected instead of intended internal package
 
 ---
 
-## Typosquatting
+### Typosquatting
 
 ```text
 Malicious package with a similar name to a legitimate package
@@ -2849,7 +2849,7 @@ Malicious package with a similar name to a legitimate package
 
 ---
 
-## Dependency Pinning
+### Dependency Pinning
 
 ```text
 Controlling exact dependency versions/sources
@@ -2857,7 +2857,7 @@ Controlling exact dependency versions/sources
 
 ---
 
-## SBOM
+### SBOM
 
 ```text
 Inventory of software components
@@ -2865,7 +2865,7 @@ Inventory of software components
 
 ---
 
-## Provenance
+### Provenance
 
 ```text
 Information about how an artifact was produced
@@ -2873,7 +2873,7 @@ Information about how an artifact was produced
 
 ---
 
-## Attestation
+### Attestation
 
 ```text
 Signed statement about an artifact or build property
@@ -2881,7 +2881,7 @@ Signed statement about an artifact or build property
 
 ---
 
-## Image Signing
+### Image Signing
 
 ```text
 Establish artifact authenticity/integrity
@@ -2889,7 +2889,7 @@ Establish artifact authenticity/integrity
 
 ---
 
-## Cosign
+### Cosign
 
 ```text
 Artifact signing and verification tool
@@ -2897,7 +2897,7 @@ Artifact signing and verification tool
 
 ---
 
-## Sigstore
+### Sigstore
 
 ```text
 Software supply-chain security ecosystem
@@ -2905,7 +2905,7 @@ Software supply-chain security ecosystem
 
 ---
 
-## Fulcio
+### Fulcio
 
 ```text
 Certificate authority used in Sigstore's keyless signing ecosystem
@@ -2913,7 +2913,7 @@ Certificate authority used in Sigstore's keyless signing ecosystem
 
 ---
 
-## Rekor
+### Rekor
 
 ```text
 Transparency log
@@ -2921,7 +2921,7 @@ Transparency log
 
 ---
 
-## SLSA
+### SLSA
 
 ```text
 Framework for software supply-chain security
@@ -2929,7 +2929,7 @@ Framework for software supply-chain security
 
 ---
 
-## Digest Pinning
+### Digest Pinning
 
 ```text
 Deploying a specific immutable image content reference
@@ -2937,7 +2937,7 @@ Deploying a specific immutable image content reference
 
 ---
 
-## Admission Control
+### Admission Control
 
 ```text
 Enforce policies before workloads enter the cluster
@@ -2945,7 +2945,7 @@ Enforce policies before workloads enter the cluster
 
 ---
 
-## Artifact Promotion
+### Artifact Promotion
 
 ```text
 Move the same tested artifact through environments
@@ -2953,7 +2953,7 @@ Move the same tested artifact through environments
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Build image:
 
@@ -3022,9 +3022,9 @@ kubectl get constraints
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is software supply chain security?
 - Why is supply chain security important in Kubernetes?
@@ -3044,7 +3044,7 @@ kubectl get constraints
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How would you secure a Kubernetes software supply chain?
 - Why should dependencies be pinned?
@@ -3064,7 +3064,7 @@ kubectl get constraints
 
 ---
 
-## Advanced
+### Advanced
 
 - Design an enterprise Kubernetes software supply-chain security architecture.
 - How would you implement end-to-end artifact verification?
@@ -3084,13 +3084,13 @@ kubectl get constraints
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What is the difference between image scanning and image signing?
 
-### Answer
+#### Answer
 
 Image scanning asks:
 
@@ -3122,13 +3122,13 @@ They solve different problems.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Why is an SBOM important during a security incident?
 
-### Answer
+#### Answer
 
 Suppose a critical vulnerability is discovered in:
 
@@ -3152,13 +3152,13 @@ This dramatically speeds up incident response.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > A malicious image was built by a compromised CI pipeline and signed successfully. How is that possible?
 
-### Answer
+#### Answer
 
 Signing only establishes trust in the signing process or identity.
 
@@ -3192,13 +3192,13 @@ Audit
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > How would you prevent unsigned images from running in production?
 
-### Answer
+#### Answer
 
 Use admission control.
 
@@ -3228,13 +3228,13 @@ along with an image-signing system.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > Why should production deployments use image digests?
 
-### Answer
+#### Answer
 
 A tag can potentially be moved:
 
@@ -3269,13 +3269,13 @@ Rollback Confidence
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > What happens if a critical dependency vulnerability is discovered?
 
-### Answer
+#### Answer
 
 Use the SBOM to identify affected artifacts:
 
@@ -3309,13 +3309,13 @@ Deploy
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How would you secure CI/CD credentials?
 
-### Answer
+#### Answer
 
 Prefer:
 
@@ -3346,7 +3346,7 @@ Secret Masking
 
 ---
 
-# Production Supply Chain Architecture
+## Production Supply Chain Architecture
 
 A mature enterprise implementation can look like:
 
@@ -3414,7 +3414,7 @@ A mature enterprise implementation can look like:
 
 ---
 
-# Supply Chain Security Checklist
+## Supply Chain Security Checklist
 
 ```text
 ☑ Protect source repositories
@@ -3447,7 +3447,7 @@ A mature enterprise implementation can look like:
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Secure a Git repository.
 2. Configure branch protection.
@@ -3477,9 +3477,9 @@ A mature enterprise implementation can look like:
 
 ---
 
-# References
+## References
 
-## Official / Industry Documentation
+### Official / Industry Documentation
 
 - Kubernetes Security Documentation
 - Kubernetes Admission Control
@@ -3503,7 +3503,7 @@ A mature enterprise implementation can look like:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Supply chain security protects the entire process used to produce and deploy software.
 
@@ -3703,7 +3703,7 @@ This completes the foundational Kubernetes security module.
 
 ---
 
-# Module 7 Complete
+## Module 7 Complete
 
 The security chapters covered:
 
@@ -3723,9 +3723,9 @@ Chapter 56 – Supply Chain Security
 
 ---
 
-## Next Module
+### Next Module
 
-# Module 8 — Kubernetes Observability
+## Module 8 — Kubernetes Observability
 
 The next chapters are:
 
@@ -3742,9 +3742,9 @@ Chapter 64 – Distributed Tracing
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 57 – Logging
+### Chapter 57 – Logging
 
 Topics will include:
 

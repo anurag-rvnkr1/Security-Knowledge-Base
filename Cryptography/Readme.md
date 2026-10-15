@@ -46,7 +46,7 @@ How modern systems defend against attacks
 
 ---
 
-# 🎯 Learning Objectives
+## 🎯 Learning Objectives
 
 By completing this module, you should be able to:
 
@@ -67,13 +67,13 @@ By completing this module, you should be able to:
 
 ---
 
-# 📚 Chapters
+## 📚 Chapters
 
-## Chapter 01 – Cryptography Fundamentals
+### Chapter 01 – Cryptography Fundamentals
 
 Introduces the foundations of cryptography and establishes the terminology used throughout the module.
 
-### Topics include
+#### Topics include
 
 - What is cryptography?
 - Cryptography vs cryptanalysis vs cryptology
@@ -93,11 +93,11 @@ Introduces the foundations of cryptography and establishes the terminology used 
 
 ---
 
-## Chapter 02 – Classical Cryptography & Historical Ciphers
+### Chapter 02 – Classical Cryptography & Historical Ciphers
 
 Explores early cryptographic techniques and how cryptanalysis evolved.
 
-### Topics include
+#### Topics include
 
 - Caesar cipher
 - Substitution ciphers
@@ -116,11 +116,11 @@ These concepts provide useful intuition for understanding why modern cryptograph
 
 ---
 
-## Chapter 03 – Symmetric-Key Cryptography
+### Chapter 03 – Symmetric-Key Cryptography
 
 Covers encryption systems where the same secret key, or closely related secret material, is used for encryption and decryption.
 
-### Topics include
+#### Topics include
 
 - Symmetric cryptography
 - Block ciphers
@@ -145,11 +145,11 @@ Special attention is given to why simply selecting a strong algorithm is not eno
 
 ---
 
-## Chapter 04 – Asymmetric-Key Cryptography
+### Chapter 04 – Asymmetric-Key Cryptography
 
 Introduces public-key cryptography and its role in secure communication and authentication.
 
-### Topics include
+#### Topics include
 
 - Public keys
 - Private keys
@@ -168,11 +168,11 @@ This chapter explains why asymmetric cryptography is generally used differently 
 
 ---
 
-## Chapter 05 – Hash Functions & Message Integrity
+### Chapter 05 – Hash Functions & Message Integrity
 
 Explores cryptographic hash functions and their role in integrity, authentication, password storage, and digital signatures.
 
-### Topics include
+#### Topics include
 
 - Cryptographic hash functions
 - SHA-2
@@ -193,11 +193,11 @@ The chapter also explains why encryption and hashing solve fundamentally differe
 
 ---
 
-## Chapter 06 – Message Authentication & MACs
+### Chapter 06 – Message Authentication & MACs
 
 Focuses on mechanisms that allow systems to verify that a message came from an expected source and was not modified.
 
-### Topics include
+#### Topics include
 
 - Message Authentication Codes
 - MACs
@@ -216,11 +216,11 @@ The chapter connects MACs with practical protocols and secure application design
 
 ---
 
-## Chapter 07 – Digital Signatures & PKI
+### Chapter 07 – Digital Signatures & PKI
 
 Covers asymmetric authentication, digital signatures, certificates, and the Public Key Infrastructure ecosystem.
 
-### Topics include
+#### Topics include
 
 - Digital signatures
 - Signing and verification
@@ -243,11 +243,11 @@ This chapter explains how trust is established between parties that have never d
 
 ---
 
-## Chapter 08 – Key Management & Key Exchange
+### Chapter 08 – Key Management & Key Exchange
 
 Covers one of the most important practical aspects of cryptography: managing cryptographic keys securely throughout their lifecycle.
 
-### Topics include
+#### Topics include
 
 - Key generation
 - Key exchange
@@ -273,11 +273,11 @@ A major principle explored in this chapter is:
 
 ---
 
-## Chapter 09 – Randomness, Nonces & Cryptographic Primitives
+### Chapter 09 – Randomness, Nonces & Cryptographic Primitives
 
 Examines the supporting building blocks required for secure cryptographic implementations.
 
-### Topics include
+#### Topics include
 
 - Entropy
 - Randomness
@@ -298,11 +298,11 @@ This chapter focuses heavily on implementation correctness because predictable r
 
 ---
 
-## Chapter 10 – TLS, HTTPS & Cryptographic Protocols
+### Chapter 10 – TLS, HTTPS & Cryptographic Protocols
 
 Explains how cryptographic primitives are combined into real-world security protocols.
 
-### Topics include
+#### Topics include
 
 - TLS
 - HTTPS
@@ -325,11 +325,11 @@ The objective is to understand what happens cryptographically when a browser est
 
 ---
 
-## Chapter 11 – Applied Cryptography & Common Attacks
+### Chapter 11 – Applied Cryptography & Common Attacks
 
 Connects cryptographic theory with real-world security failures.
 
-### Topics include
+#### Topics include
 
 - Brute-force attacks
 - Dictionary attacks
@@ -354,11 +354,11 @@ The chapter emphasizes that many real-world cryptographic failures occur because
 
 ---
 
-## Chapter 12 – Modern Cryptography & Post-Quantum Cryptography
+### Chapter 12 – Modern Cryptography & Post-Quantum Cryptography
 
 Introduces modern cryptographic approaches and the transition toward quantum-resistant systems.
 
-### Topics include
+#### Topics include
 
 - Modern cryptographic design
 - AEAD
@@ -383,7 +383,7 @@ The chapter focuses on how organizations can prepare cryptographic infrastructur
 
 ---
 
-# 🧭 Learning Path
+## 🧭 Learning Path
 
 The chapters are intentionally arranged from foundational concepts to practical security engineering.
 
@@ -442,7 +442,7 @@ The chapters are intentionally arranged from foundational concepts to practical 
 
 ---
 
-# 🔗 How the Concepts Connect
+## 🔗 How the Concepts Connect
 
 Cryptography is not a collection of isolated algorithms.
 
@@ -494,7 +494,7 @@ Signature Verification
 
 ---
 
-# 🧩 Core Cryptographic Building Blocks
+## 🧩 Core Cryptographic Building Blocks
 
 The entire module can be understood through a small set of fundamental primitives:
 
@@ -524,7 +524,7 @@ Messaging Systems
 
 ---
 
-# 🔐 Major Cryptographic Categories
+## 🔐 Major Cryptographic Categories
 
 | Category | Primary Purpose | Examples |
 |---|---|---|
@@ -541,7 +541,7 @@ Messaging Systems
 
 ---
 
-# 🛡️ Security Properties
+## 🛡️ Security Properties
 
 Cryptography primarily supports four major security properties:
 
@@ -574,9 +574,9 @@ These properties are often implemented together rather than independently.
 
 ---
 
-# ⚠️ Cryptography vs Cryptanalysis
+## ⚠️ Cryptography vs Cryptanalysis
 
-## Cryptography
+### Cryptography
 
 Designs mechanisms for protecting information.
 
@@ -590,7 +590,7 @@ Implementation
 Security
 ```
 
-## Cryptanalysis
+### Cryptanalysis
 
 Studies methods for breaking or analyzing cryptographic systems.
 
@@ -614,7 +614,7 @@ Cryptography + Cryptanalysis
 
 ---
 
-# 🧪 Practical Focus
+## 🧪 Practical Focus
 
 Each chapter will emphasize practical understanding rather than purely theoretical definitions.
 
@@ -645,11 +645,11 @@ Practical exercises may include:
 
 ---
 
-# 🎯 Cybersecurity Relevance
+## 🎯 Cybersecurity Relevance
 
 Cryptography is foundational to several cybersecurity domains.
 
-### Application Security
+#### Application Security
 
 ```text
 Password Storage
@@ -660,7 +660,7 @@ API Authentication
 Data Encryption
 ```
 
-### Network Security
+#### Network Security
 
 ```text
 TLS
@@ -670,7 +670,7 @@ SSH
 Certificates
 ```
 
-### Cloud Security
+#### Cloud Security
 
 ```text
 KMS
@@ -680,7 +680,7 @@ Encryption in Transit
 Identity
 ```
 
-### SOC / Blue Team
+#### SOC / Blue Team
 
 ```text
 TLS Investigation
@@ -690,7 +690,7 @@ Key Compromise
 Credential Protection
 ```
 
-### VAPT / Ethical Hacking
+#### VAPT / Ethical Hacking
 
 ```text
 Weak Cryptography
@@ -703,7 +703,7 @@ Insecure Randomness
 
 ---
 
-# 📌 Important Principle
+## 📌 Important Principle
 
 > **Do not invent your own cryptographic algorithm.**
 
@@ -713,7 +713,7 @@ The challenge in practical cryptography is often not creating a new algorithm, b
 
 ---
 
-# 🧠 Prerequisites
+## 🧠 Prerequisites
 
 Recommended knowledge:
 
@@ -741,7 +741,7 @@ However, the module is structured so that practical cybersecurity concepts can b
 
 ---
 
-# 🗂️ Module Structure
+## 🗂️ Module Structure
 
 ```text
 Cryptography/
@@ -764,7 +764,7 @@ Cryptography/
 
 ---
 
-# 🚀 End Goal
+## 🚀 End Goal
 
 By the end of this module, you should be able to look at a security architecture and answer:
 
@@ -802,7 +802,7 @@ to:
 
 ---
 
-## 🔐 Cryptography Learning Path
+### 🔐 Cryptography Learning Path
 
 ```text
 Fundamentals

@@ -5,6 +5,8 @@ This section defines how to write, review, and navigate knowledge-base content. 
 ## Guides
 
 - [Documentation Guide](./Documentation-Guide.md)
+- [Content Maintenance](./CONTENT-MAINTENANCE.md)
+- [GitHub Pages Deployment](./DEPLOYMENT.md)
 - [Learning Paths](./Learning-Paths.md)
 - [CTF Writeup Guide](./CTF-Writeup-Guide.md)
 - [Lab Documentation Guide](./Lab-Documentation-Guide.md)
@@ -18,5 +20,6 @@ This section defines how to write, review, and navigate knowledge-base content. 
 - [Security Research Methodology](./Security-Research-Methodology.md)
 - [Responsible Use](./Responsible-Use.md)
 - [Contribution Workflow](./Contribution-Workflow.md)
+- [Troubleshooting](./TROUBLESHOOTING.md)
 
 Related sections: [CTF Writeups](../CTF-Writeups/), [Labs](../Labs/), [Cheatsheets](../Cheatsheets/), [Resources](../Resources/), [Assets](../assets/).

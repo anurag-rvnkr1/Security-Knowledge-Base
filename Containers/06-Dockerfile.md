@@ -28,7 +28,7 @@ Understanding Dockerfiles is essential for building production-ready containeriz
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Without Dockerfiles, application deployment would require manual installation of:
 
@@ -60,7 +60,7 @@ Benefits include:
 
 ---
 
-# What is a Dockerfile?
+## What is a Dockerfile?
 
 A Dockerfile is simply a plain text file.
 
@@ -84,7 +84,7 @@ Docker processes each instruction from top to bottom to build the final image.
 
 ---
 
-# Dockerfile Workflow
+## Dockerfile Workflow
 
 ```
 Developer
@@ -118,7 +118,7 @@ Each instruction contributes to the final image.
 
 ---
 
-# Docker Build Process
+## Docker Build Process
 
 ```
 Dockerfile
@@ -158,7 +158,7 @@ Most instructions create a new image layer.
 
 ---
 
-# Dockerfile Structure
+## Dockerfile Structure
 
 A typical Dockerfile consists of several sections.
 
@@ -198,9 +198,9 @@ Not every Dockerfile requires every instruction, but this is a common structure.
 
 ---
 
-# Dockerfile Instructions
+## Dockerfile Instructions
 
-## 1. FROM
+### 1. FROM
 
 The `FROM` instruction specifies the base image.
 
@@ -220,7 +220,7 @@ Every Dockerfile (except special multi-stage cases using `scratch`) begins with 
 
 ---
 
-## 2. LABEL
+### 2. LABEL
 
 Adds metadata to an image.
 
@@ -244,7 +244,7 @@ Labels improve image documentation and management.
 
 ---
 
-## 3. WORKDIR
+### 3. WORKDIR
 
 Sets the working directory.
 
@@ -266,7 +266,7 @@ inside the build environment.
 
 ---
 
-## 4. COPY
+### 4. COPY
 
 Copies files from the build context into the image.
 
@@ -286,7 +286,7 @@ Use `COPY` for local project files.
 
 ---
 
-## 5. ADD
+### 5. ADD
 
 Similar to `COPY`, but with additional capabilities.
 
@@ -305,7 +305,7 @@ For most use cases, prefer `COPY` because its behavior is more predictable.
 
 ---
 
-## 6. RUN
+### 6. RUN
 
 Executes commands during the image build process.
 
@@ -327,7 +327,7 @@ Each `RUN` instruction typically creates a new image layer.
 
 ---
 
-## 7. ENV
+### 7. ENV
 
 Defines environment variables.
 
@@ -343,7 +343,7 @@ Applications can access these variables at runtime.
 
 ---
 
-## 8. EXPOSE
+### 8. EXPOSE
 
 Documents the network port used by the application.
 
@@ -363,7 +363,7 @@ EXPOSE 8000
 
 ---
 
-## 9. USER
+### 9. USER
 
 Specifies the user that should run the application.
 
@@ -377,7 +377,7 @@ Running applications as a non-root user is a recommended security practice.
 
 ---
 
-## 10. CMD
+### 10. CMD
 
 Defines the default command executed when the container starts.
 
@@ -391,7 +391,7 @@ Only one `CMD` instruction is effective in the final image. If multiple `CMD` in
 
 ---
 
-## 11. ENTRYPOINT
+### 11. ENTRYPOINT
 
 Specifies the primary executable for the container.
 
@@ -417,7 +417,7 @@ python app.py
 
 ---
 
-# Common Dockerfile Instructions Summary
+## Common Dockerfile Instructions Summary
 
 | Instruction | Purpose |
 |-------------|---------|
@@ -435,7 +435,7 @@ python app.py
 
 ---
 
-# Docker Image Layers
+## Docker Image Layers
 
 Each build instruction generally creates a layer.
 
@@ -470,33 +470,33 @@ Changing one layer does not necessarily require rebuilding all previous layers.
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-## Immutable Builds
+### Immutable Builds
 
 Docker images should be rebuilt rather than modified manually.
 
 ---
 
-## Layer Caching
+### Layer Caching
 
 Docker caches unchanged layers to accelerate subsequent builds.
 
 ---
 
-## Reproducibility
+### Reproducibility
 
 The same Dockerfile should produce equivalent images when built with the same inputs and dependencies.
 
 ---
 
-## Version Control
+### Version Control
 
 Dockerfiles should be stored alongside application source code in version control systems such as Git.
 
 ---
 
-## Automation
+### Automation
 
 Dockerfiles integrate naturally with:
 
@@ -507,13 +507,13 @@ Dockerfiles integrate naturally with:
 
 ---
 
-## Portability
+### Portability
 
 Images created from Dockerfiles can be deployed consistently across development, testing, and production environments.
 
 ---
 
-## How It Works
+### How It Works
 
 A Dockerfile acts as a set of instructions that Docker follows to build a container image. During the build process, Docker reads the Dockerfile from top to bottom, executes each instruction, and creates a series of immutable image layers. The completed image can then be used to create one or more containers.
 
@@ -521,7 +521,7 @@ Docker also uses a **layer cache**, which means that unchanged instructions are 
 
 ---
 
-# Dockerfile Build Workflow
+## Dockerfile Build Workflow
 
 ```
 Application Source Code
@@ -573,7 +573,7 @@ Every successful build produces an immutable container image.
 
 ---
 
-## Step 1 – Write the Dockerfile
+### Step 1 – Write the Dockerfile
 
 The developer creates a file named:
 
@@ -599,7 +599,7 @@ This file defines exactly how the image should be built.
 
 ---
 
-## Step 2 – Execute Docker Build
+### Step 2 – Execute Docker Build
 
 The image is created using:
 
@@ -635,7 +635,7 @@ Generate Image
 
 ---
 
-## Step 3 – Download the Base Image
+### Step 3 – Download the Base Image
 
 Docker checks whether the base image already exists locally.
 
@@ -675,7 +675,7 @@ Only missing base images are downloaded.
 
 ---
 
-## Step 4 – Execute Each Instruction
+### Step 4 – Execute Each Instruction
 
 Docker processes the Dockerfile sequentially.
 
@@ -719,7 +719,7 @@ Each instruction builds upon the previous one.
 
 ---
 
-## Step 5 – Create Image Layers
+### Step 5 – Create Image Layers
 
 Most Dockerfile instructions create a new image layer.
 
@@ -756,7 +756,7 @@ Advantages:
 
 ---
 
-## Step 6 – Use Build Cache
+### Step 6 – Use Build Cache
 
 Docker compares each instruction with previous builds.
 
@@ -802,7 +802,7 @@ The dependency layer is reused, making builds significantly faster.
 
 ---
 
-## Step 7 – Generate the Final Image
+### Step 7 – Generate the Final Image
 
 After all instructions are processed:
 
@@ -826,7 +826,7 @@ docker images
 
 ---
 
-## Step 8 – Run the Image
+### Step 8 – Run the Image
 
 The image can now be executed:
 
@@ -859,9 +859,9 @@ The original image remains unchanged.
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Python Flask Application
+### Example 1 – Python Flask Application
 
 Dockerfile:
 
@@ -903,7 +903,7 @@ The application behaves consistently across development and production.
 
 ---
 
-## Example 2 – Nginx Web Server
+### Example 2 – Nginx Web Server
 
 Dockerfile:
 
@@ -939,7 +939,7 @@ This produces a customized Nginx image serving a static website.
 
 ---
 
-## Example 3 – Java Application
+### Example 3 – Java Application
 
 ```
 Application
@@ -965,7 +965,7 @@ The Java application can now run identically on any Docker-enabled host.
 
 ---
 
-## Example 4 – Multi-Layer Build
+### Example 4 – Multi-Layer Build
 
 Dockerfile:
 
@@ -1003,9 +1003,9 @@ Each layer is cached independently.
 
 ---
 
-# Hands-on Commands
+## Hands-on Commands
 
-## Build an Image
+### Build an Image
 
 ```bash
 docker build -t myapp .
@@ -1015,7 +1015,7 @@ Builds an image named **myapp** from the current directory.
 
 ---
 
-## Build with a Tag
+### Build with a Tag
 
 ```bash
 docker build -t myapp:v1 .
@@ -1025,7 +1025,7 @@ Assigns a version tag during the build.
 
 ---
 
-## Use a Custom Dockerfile
+### Use a Custom Dockerfile
 
 ```bash
 docker build -f Dockerfile.prod -t myapp .
@@ -1035,7 +1035,7 @@ Builds using a specified Dockerfile.
 
 ---
 
-## List Images
+### List Images
 
 ```bash
 docker images
@@ -1045,7 +1045,7 @@ Displays all locally available images.
 
 ---
 
-## Display Build History
+### Display Build History
 
 ```bash
 docker history myapp
@@ -1055,7 +1055,7 @@ Shows image layers and the instructions that created them.
 
 ---
 
-## Inspect the Image
+### Inspect the Image
 
 ```bash
 docker inspect myapp
@@ -1065,7 +1065,7 @@ Displays detailed metadata, configuration, and layer information.
 
 ---
 
-## Run the Image
+### Run the Image
 
 ```bash
 docker run myapp
@@ -1075,7 +1075,7 @@ Creates and starts a container from the image.
 
 ---
 
-## Tag an Image
+### Tag an Image
 
 ```bash
 docker tag myapp:v1 username/myapp:v1
@@ -1085,7 +1085,7 @@ Prepares the image for pushing to a registry.
 
 ---
 
-## Push an Image
+### Push an Image
 
 ```bash
 docker push username/myapp:v1
@@ -1095,9 +1095,9 @@ Uploads the tagged image to a registry.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Choose Small Base Images
+#### 1. Choose Small Base Images
 
 Prefer minimal, trusted base images whenever possible.
 
@@ -1112,7 +1112,7 @@ Smaller images improve build speed and reduce the attack surface.
 
 ---
 
-### 2. Order Instructions for Better Caching
+#### 2. Order Instructions for Better Caching
 
 Place instructions that change infrequently near the top of the Dockerfile.
 
@@ -1134,7 +1134,7 @@ Since application code changes more often than dependencies, this ordering maxim
 
 ---
 
-### 3. Combine Related `RUN` Instructions
+#### 3. Combine Related `RUN` Instructions
 
 Instead of:
 
@@ -1154,7 +1154,7 @@ Combining related commands reduces image layers and can simplify image managemen
 
 ---
 
-### 4. Prefer `COPY` Over `ADD`
+#### 4. Prefer `COPY` Over `ADD`
 
 Use `COPY` unless you specifically need `ADD` features such as automatic extraction of local tar archives.
 
@@ -1162,7 +1162,7 @@ Use `COPY` unless you specifically need `ADD` features such as automatic extract
 
 ---
 
-### 5. Run as a Non-Root User
+#### 5. Run as a Non-Root User
 
 Use the `USER` instruction to execute the application with the least privileges required.
 
@@ -1170,7 +1170,7 @@ This reduces the impact of potential vulnerabilities.
 
 ---
 
-### 6. Pin Base Image Versions
+#### 6. Pin Base Image Versions
 
 Instead of:
 
@@ -1188,7 +1188,7 @@ Explicit versions improve reproducibility and prevent unexpected changes.
 
 ---
 
-### 7. Keep Dockerfiles Readable
+#### 7. Keep Dockerfiles Readable
 
 Use logical ordering, comments where appropriate, and consistent formatting.
 
@@ -1196,13 +1196,13 @@ A well-structured Dockerfile is easier to review, maintain, and troubleshoot.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 A Dockerfile defines how container images are built. Poor Dockerfile design can lead to large images, security vulnerabilities, slower builds, and difficult maintenance. The following are the most common mistakes encountered in real-world Dockerfiles.
 
 ---
 
-# 1. Using `latest` as the Base Image
+## 1. Using `latest` as the Base Image
 
 Many beginners write:
 
@@ -1226,7 +1226,7 @@ Benefits:
 
 ---
 
-# 2. Choosing Large Base Images
+## 2. Choosing Large Base Images
 
 Example:
 
@@ -1252,7 +1252,7 @@ Prefer minimal images when appropriate:
 
 ---
 
-# 3. Installing Unnecessary Packages
+## 3. Installing Unnecessary Packages
 
 Poor example:
 
@@ -1286,7 +1286,7 @@ Extra packages increase:
 
 ---
 
-# 4. Creating Too Many Layers
+## 4. Creating Too Many Layers
 
 Example:
 
@@ -1314,7 +1314,7 @@ This reduces unnecessary image layers and simplifies the build.
 
 ---
 
-# 5. Copying the Entire Project Too Early
+## 5. Copying the Entire Project Too Early
 
 Poor Dockerfile:
 
@@ -1352,7 +1352,7 @@ Dependencies are cached unless the requirements file changes.
 
 ---
 
-# 6. Forgetting `.dockerignore`
+## 6. Forgetting `.dockerignore`
 
 Without a `.dockerignore` file, Docker may include:
 
@@ -1374,7 +1374,7 @@ Always exclude unnecessary files from the build context.
 
 ---
 
-# 7. Running Applications as Root
+## 7. Running Applications as Root
 
 Example:
 
@@ -1398,7 +1398,7 @@ Running as a non-root user improves container security.
 
 ---
 
-# 8. Hardcoding Secrets
+## 8. Hardcoding Secrets
 
 Never include:
 
@@ -1423,7 +1423,7 @@ Never bake secrets into images.
 
 ---
 
-# 9. Misusing `ADD`
+## 9. Misusing `ADD`
 
 Many Dockerfiles use:
 
@@ -1448,7 +1448,7 @@ Otherwise, prefer `COPY` for clarity and predictability.
 
 ---
 
-# 10. Forgetting to Clean Package Caches
+## 10. Forgetting to Clean Package Caches
 
 Example:
 
@@ -1470,7 +1470,7 @@ Removing package lists reduces final image size.
 
 ---
 
-# 11. Not Versioning Images
+## 11. Not Versioning Images
 
 Avoid:
 
@@ -1488,7 +1488,7 @@ Explicit versions improve consistency across environments.
 
 ---
 
-# 12. Ignoring Multi-Stage Builds
+## 12. Ignoring Multi-Stage Builds
 
 Single-stage build:
 
@@ -1538,7 +1538,7 @@ Benefits:
 
 ---
 
-# 13. Writing Long, Unorganized Dockerfiles
+## 13. Writing Long, Unorganized Dockerfiles
 
 Poor organization makes Dockerfiles:
 
@@ -1592,7 +1592,7 @@ A consistent structure improves readability.
 
 ---
 
-# 14. Assuming `EXPOSE` Opens a Port
+## 14. Assuming `EXPOSE` Opens a Port
 
 Many beginners think:
 
@@ -1616,7 +1616,7 @@ Port publishing occurs when the container is started, not during image creation.
 
 ---
 
-# 15. Forgetting That Dockerfiles Are Code
+## 15. Forgetting That Dockerfiles Are Code
 
 Dockerfiles should be treated like application source code.
 
@@ -1632,9 +1632,9 @@ A Dockerfile is infrastructure code and deserves the same engineering discipline
 
 ---
 
-# Dockerfile Quick Revision
+## Dockerfile Quick Revision
 
-## Core Instructions
+### Core Instructions
 
 ```dockerfile
 FROM
@@ -1662,7 +1662,7 @@ ENTRYPOINT
 
 ---
 
-## Build Workflow
+### Build Workflow
 
 ```
 Dockerfile
@@ -1686,7 +1686,7 @@ Run Container
 
 ---
 
-## Recommended Build Order
+### Recommended Build Order
 
 ```
 FROM
@@ -1730,7 +1730,7 @@ CMD
 
 ---
 
-# Dockerfile Checklist
+## Dockerfile Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1752,9 +1752,9 @@ CMD
 
 ---
 
-# References
+## References
 
-## Docker Documentation
+### Docker Documentation
 
 - Dockerfile Reference
 - Docker Build Documentation
@@ -1764,14 +1764,14 @@ CMD
 
 ---
 
-## OCI Standards
+### OCI Standards
 
 - Open Container Initiative (OCI) Image Specification
 - Open Container Initiative (OCI) Runtime Specification
 
 ---
 
-## Security Resources
+### Security Resources
 
 - NIST SP 800-190 — Application Container Security Guide
 - OWASP Docker Security Cheat Sheet
@@ -1780,7 +1780,7 @@ CMD
 
 ---
 
-## Linux Documentation
+### Linux Documentation
 
 - OverlayFS Documentation
 - Linux Namespaces
@@ -1788,7 +1788,7 @@ CMD
 
 ---
 
-## Books
+### Books
 
 - *Docker Deep Dive* — Nigel Poulton
 - *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
@@ -1796,7 +1796,7 @@ CMD
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Docker Labs

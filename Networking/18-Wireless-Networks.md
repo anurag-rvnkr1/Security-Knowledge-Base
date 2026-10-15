@@ -1,10 +1,10 @@
 # 18 - Wireless Networks
 
-# Part 1 — Wireless Fundamentals, IEEE 802.11 Standards, Wi-Fi Architecture, Access Points, Wireless LAN Controllers, Frequency Bands, Channels, and Enterprise Wireless Design
+## Part 1 — Wireless Fundamentals, IEEE 802.11 Standards, Wi-Fi Architecture, Access Points, Wireless LAN Controllers, Frequency Bands, Channels, and Enterprise Wireless Design
 
 ---
 
-# Overview
+## Overview
 
 Wireless networking has become the primary method for connecting users, mobile devices, Internet of Things (IoT) devices, and enterprise systems. Unlike traditional wired Ethernet networks that rely on physical cables, wireless networks use **radio frequency (RF)** signals to transmit data through the air.
 
@@ -25,7 +25,7 @@ Because wireless traffic travels through an open medium, organizations must care
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -46,7 +46,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is a Wireless Network?
+## What is a Wireless Network?
 
 A **Wireless Network (Wi-Fi)** allows devices to communicate without physical Ethernet cables by transmitting data using radio waves.
 
@@ -72,7 +72,7 @@ Wireless networking combines the flexibility of mobility with the performance of
 
 ---
 
-# Why Wireless Networks Matter
+## Why Wireless Networks Matter
 
 Wireless technology enables organizations to:
 
@@ -86,7 +86,7 @@ Wireless technology enables organizations to:
 
 ---
 
-# Characteristics of Wireless Networks
+## Characteristics of Wireless Networks
 
 Wireless communication differs from wired networking because it uses a **shared radio medium**.
 
@@ -102,7 +102,7 @@ Important characteristics include:
 
 ---
 
-# Wired vs Wireless Networks
+## Wired vs Wireless Networks
 
 | Feature | Wired Network | Wireless Network |
 |----------|---------------|------------------|
@@ -115,7 +115,7 @@ Important characteristics include:
 
 ---
 
-# Radio Frequency (RF) Fundamentals
+## Radio Frequency (RF) Fundamentals
 
 Wireless communication relies on electromagnetic waves.
 
@@ -132,7 +132,7 @@ Understanding RF behavior is essential for designing reliable wireless networks.
 
 ---
 
-# Frequency
+## Frequency
 
 Frequency measures how many wave cycles occur every second.
 
@@ -156,7 +156,7 @@ Wi-Fi primarily operates in:
 
 ---
 
-# Wavelength
+## Wavelength
 
 Frequency and wavelength have an inverse relationship.
 
@@ -194,7 +194,7 @@ Lower Maximum Throughput
 
 ---
 
-# Signal Strength
+## Signal Strength
 
 Signal strength is commonly measured in **dBm**.
 
@@ -213,7 +213,7 @@ Stronger signals generally provide higher throughput and more reliable communica
 
 ---
 
-# Signal-to-Noise Ratio (SNR)
+## Signal-to-Noise Ratio (SNR)
 
 Signal quality depends on both signal strength and background noise.
 
@@ -237,7 +237,7 @@ Higher SNR values result in:
 
 ---
 
-# Wireless Interference
+## Wireless Interference
 
 Common interference sources include:
 
@@ -254,7 +254,7 @@ Proper channel planning minimizes interference.
 
 ---
 
-# IEEE 802.11 Standards
+## IEEE 802.11 Standards
 
 The IEEE develops Wi-Fi standards under the **802.11** family.
 
@@ -274,7 +274,7 @@ Actual throughput depends on channel width, client capabilities, interference, a
 
 ---
 
-# Wi-Fi Generations
+## Wi-Fi Generations
 
 To simplify naming, the Wi-Fi Alliance introduced generation-based branding.
 
@@ -288,7 +288,7 @@ To simplify naming, the Wi-Fi Alliance introduced generation-based branding.
 
 ---
 
-# Wi-Fi Architecture
+## Wi-Fi Architecture
 
 A simplified enterprise wireless architecture:
 
@@ -316,7 +316,7 @@ Large organizations centralize wireless management through Wireless LAN Controll
 
 ---
 
-# Access Point (AP)
+## Access Point (AP)
 
 An **Access Point (AP)** bridges wireless clients to the wired Ethernet network.
 
@@ -332,7 +332,7 @@ Enterprise APs typically support dozens to hundreds of concurrent clients, depen
 
 ---
 
-# Autonomous Access Points
+## Autonomous Access Points
 
 Autonomous APs operate independently.
 
@@ -366,7 +366,7 @@ Limitations:
 
 ---
 
-# Controller-Based Access Points
+## Controller-Based Access Points
 
 Enterprise deployments commonly use controller-based APs.
 
@@ -396,7 +396,7 @@ Benefits include:
 
 ---
 
-# Wireless LAN Controller (WLC)
+## Wireless LAN Controller (WLC)
 
 A Wireless LAN Controller manages multiple Access Points from a single platform.
 
@@ -412,7 +412,7 @@ Typical responsibilities:
 
 ---
 
-# Access Point Discovery
+## Access Point Discovery
 
 Before joining a WLC, an AP must discover the controller.
 
@@ -428,13 +428,13 @@ Once discovered, the AP establishes a secure management connection.
 
 ---
 
-# Frequency Bands
+## Frequency Bands
 
 Enterprise Wi-Fi primarily uses three frequency bands.
 
 ---
 
-## 2.4 GHz
+### 2.4 GHz
 
 Advantages:
 
@@ -450,7 +450,7 @@ Disadvantages:
 
 ---
 
-## 5 GHz
+### 5 GHz
 
 Advantages:
 
@@ -465,7 +465,7 @@ Disadvantages:
 
 ---
 
-## 6 GHz
+### 6 GHz
 
 Introduced with Wi-Fi 6E and expanded in Wi-Fi 7.
 
@@ -483,7 +483,7 @@ Requirements:
 
 ---
 
-# Frequency Comparison
+## Frequency Comparison
 
 | Feature | 2.4 GHz | 5 GHz | 6 GHz |
 |----------|----------|--------|--------|
@@ -494,7 +494,7 @@ Requirements:
 
 ---
 
-# Wireless Channels
+## Wireless Channels
 
 Each frequency band is divided into channels.
 
@@ -512,7 +512,7 @@ These channels are commonly used because they do not overlap in many regulatory 
 
 ---
 
-# Channel Width
+## Channel Width
 
 Common channel widths include:
 
@@ -526,7 +526,7 @@ Larger channel widths provide greater throughput but increase susceptibility to 
 
 ---
 
-# Channel Planning
+## Channel Planning
 
 Poor channel planning causes:
 
@@ -539,7 +539,7 @@ Enterprise wireless deployments perform RF site surveys to optimize channel assi
 
 ---
 
-# Service Set Identifier (SSID)
+## Service Set Identifier (SSID)
 
 The **SSID** is the logical name of a wireless network.
 
@@ -560,7 +560,7 @@ Each SSID can map to a different VLAN and security policy.
 
 ---
 
-# Basic Service Set (BSS)
+## Basic Service Set (BSS)
 
 A Basic Service Set consists of:
 
@@ -576,7 +576,7 @@ Each BSS is identified by a unique **BSSID**, typically derived from the AP's MA
 
 ---
 
-# Extended Service Set (ESS)
+## Extended Service Set (ESS)
 
 An Extended Service Set connects multiple APs that share the same SSID.
 
@@ -600,7 +600,7 @@ An ESS allows users to move throughout a building while maintaining network conn
 
 ---
 
-# Wireless Roaming
+## Wireless Roaming
 
 Roaming enables a client device to transition between Access Points without requiring the user to reconnect manually.
 
@@ -624,7 +624,7 @@ Fast roaming technologies help minimize disruptions to voice and video applicati
 
 ---
 
-# Enterprise Wireless Design
+## Enterprise Wireless Design
 
 A typical enterprise deployment:
 
@@ -660,7 +660,7 @@ Redundant controllers and properly planned AP placement improve availability and
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-designed wireless networks enable organizations to:
 
@@ -673,7 +673,7 @@ Well-designed wireless networks enable organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -687,7 +687,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Wireless networks use radio frequency instead of physical cables.
 - IEEE 802.11 defines Wi-Fi standards.
@@ -699,11 +699,11 @@ Organizations should:
 
 ---
 
-# Part 2 — Wireless Authentication, WPA2, WPA3, IEEE 802.1X, EAP, RADIUS, Enterprise Wireless Security, and Modern Wi-Fi Technologies
+## Part 2 — Wireless Authentication, WPA2, WPA3, IEEE 802.1X, EAP, RADIUS, Enterprise Wireless Security, and Modern Wi-Fi Technologies
 
 ---
 
-# Introduction
+## Introduction
 
 Wireless networks transmit data through an open medium where any nearby device can receive radio signals. Unlike wired Ethernet, physical access to a cable is not required to observe wireless transmissions.
 
@@ -722,7 +722,7 @@ Enterprise Wi-Fi has evolved significantly from the insecure mechanisms of early
 
 ---
 
-# Wireless Security Objectives
+## Wireless Security Objectives
 
 Enterprise wireless security aims to provide:
 
@@ -737,7 +737,7 @@ Enterprise wireless security aims to provide:
 
 ---
 
-# Evolution of Wireless Security
+## Evolution of Wireless Security
 
 Wireless security has progressed through several generations.
 
@@ -753,7 +753,7 @@ Organizations should avoid deploying WEP and WPA except where absolutely require
 
 ---
 
-# Open Authentication
+## Open Authentication
 
 Open networks provide no authentication.
 
@@ -780,7 +780,7 @@ Examples include airports, cafés, and hotels, though many now supplement open a
 
 ---
 
-# Wired Equivalent Privacy (WEP)
+## Wired Equivalent Privacy (WEP)
 
 WEP was the first widely adopted Wi-Fi security mechanism.
 
@@ -800,7 +800,7 @@ WEP should not be used in modern enterprise environments.
 
 ---
 
-# Wi-Fi Protected Access (WPA)
+## Wi-Fi Protected Access (WPA)
 
 WPA was introduced as an interim improvement over WEP.
 
@@ -814,7 +814,7 @@ Although stronger than WEP, WPA with TKIP is now considered legacy and should be
 
 ---
 
-# WPA2
+## WPA2
 
 WPA2 became the enterprise standard for secure wireless networking.
 
@@ -829,7 +829,7 @@ WPA2 significantly improved wireless security and remains widely deployed.
 
 ---
 
-# WPA3
+## WPA3
 
 WPA3 enhances wireless security by addressing weaknesses in previous standards.
 
@@ -845,7 +845,7 @@ WPA3 is recommended for new enterprise deployments where infrastructure and clie
 
 ---
 
-# WPA2 vs WPA3
+## WPA2 vs WPA3
 
 | Feature | WPA2 | WPA3 |
 |----------|-------|-------|
@@ -857,7 +857,7 @@ WPA3 is recommended for new enterprise deployments where infrastructure and clie
 
 ---
 
-# Personal vs Enterprise Mode
+## Personal vs Enterprise Mode
 
 Wireless security is commonly deployed in two modes.
 
@@ -870,7 +870,7 @@ Enterprise mode provides centralized authentication and policy enforcement.
 
 ---
 
-# Pre-Shared Key (PSK)
+## Pre-Shared Key (PSK)
 
 Personal mode typically uses a shared password.
 
@@ -904,7 +904,7 @@ Limitations:
 
 ---
 
-# Simultaneous Authentication of Equals (SAE)
+## Simultaneous Authentication of Equals (SAE)
 
 SAE replaces the traditional Pre-Shared Key exchange in WPA3-Personal.
 
@@ -918,7 +918,7 @@ SAE is commonly referred to as the **Dragonfly Handshake**.
 
 ---
 
-# Enterprise Authentication
+## Enterprise Authentication
 
 Enterprise authentication relies on centralized identity services.
 
@@ -946,7 +946,7 @@ Each user authenticates using individual credentials rather than a shared passwo
 
 ---
 
-# IEEE 802.1X
+## IEEE 802.1X
 
 IEEE 802.1X provides **port-based network access control**.
 
@@ -962,7 +962,7 @@ Benefits include:
 
 ---
 
-# Components of IEEE 802.1X
+## Components of IEEE 802.1X
 
 Three primary entities participate in authentication.
 
@@ -974,7 +974,7 @@ Three primary entities participate in authentication.
 
 ---
 
-# 802.1X Authentication Process
+## 802.1X Authentication Process
 
 ```
 Wireless Client
@@ -1000,7 +1000,7 @@ Only authenticated users receive network connectivity.
 
 ---
 
-# Extensible Authentication Protocol (EAP)
+## Extensible Authentication Protocol (EAP)
 
 EAP is a framework that supports multiple authentication methods.
 
@@ -1008,7 +1008,7 @@ It does not define a single authentication mechanism but provides a structure fo
 
 ---
 
-# Common EAP Methods
+## Common EAP Methods
 
 | Method | Description |
 |----------|-------------|
@@ -1021,7 +1021,7 @@ Organizations select an EAP method based on security requirements and infrastruc
 
 ---
 
-# EAP-TLS
+## EAP-TLS
 
 EAP-TLS is widely regarded as one of the most secure enterprise authentication methods.
 
@@ -1040,7 +1040,7 @@ Requirements:
 
 ---
 
-# Protected EAP (PEAP)
+## Protected EAP (PEAP)
 
 PEAP protects user credentials by creating an encrypted TLS tunnel before authentication.
 
@@ -1052,7 +1052,7 @@ Advantages:
 
 ---
 
-# RADIUS
+## RADIUS
 
 The **Remote Authentication Dial-In User Service (RADIUS)** protocol provides centralized:
 
@@ -1069,7 +1069,7 @@ Enterprise wireless networks commonly integrate RADIUS with:
 
 ---
 
-# RADIUS Workflow
+## RADIUS Workflow
 
 ```
 Client
@@ -1097,7 +1097,7 @@ Wireless Access
 
 ---
 
-# Authentication vs Authorization vs Accounting
+## Authentication vs Authorization vs Accounting
 
 | Function | Description |
 |----------|-------------|
@@ -1109,7 +1109,7 @@ Together these functions form the **AAA** framework.
 
 ---
 
-# Dynamic VLAN Assignment
+## Dynamic VLAN Assignment
 
 RADIUS can automatically assign users to different VLANs based on policy.
 
@@ -1143,7 +1143,7 @@ This simplifies segmentation and access control.
 
 ---
 
-# Captive Portals
+## Captive Portals
 
 Guest wireless networks often use captive portals.
 
@@ -1176,7 +1176,7 @@ Captive portals may support:
 
 ---
 
-# Protected Management Frames (PMF)
+## Protected Management Frames (PMF)
 
 Management frames were historically vulnerable to spoofing and deauthentication attacks.
 
@@ -1190,7 +1190,7 @@ Benefits include:
 
 ---
 
-# Fast Roaming
+## Fast Roaming
 
 Enterprise mobility requires seamless transitions between Access Points.
 
@@ -1204,7 +1204,7 @@ These standards help reduce interruptions for voice and video applications.
 
 ---
 
-# Band Steering
+## Band Steering
 
 Band Steering encourages capable devices to use higher-capacity frequency bands.
 
@@ -1230,7 +1230,7 @@ Benefits include:
 
 ---
 
-# Load Balancing
+## Load Balancing
 
 Enterprise controllers distribute clients across Access Points.
 
@@ -1254,7 +1254,7 @@ This improves user experience and network efficiency.
 
 ---
 
-# Quality of Service (QoS)
+## Quality of Service (QoS)
 
 Wireless QoS prioritizes important traffic.
 
@@ -1272,7 +1272,7 @@ QoS helps maintain consistent performance for latency-sensitive applications.
 
 ---
 
-# Enterprise Wireless Architecture
+## Enterprise Wireless Architecture
 
 ```
 Wireless Clients
@@ -1302,7 +1302,7 @@ Centralized authentication and policy enforcement simplify large-scale deploymen
 
 ---
 
-# Business Impact
+## Business Impact
 
 Secure enterprise wireless infrastructure enables organizations to:
 
@@ -1315,7 +1315,7 @@ Secure enterprise wireless infrastructure enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -1330,7 +1330,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Modern enterprise wireless security relies on strong authentication and encryption.
 - WEP and WPA are obsolete for enterprise deployments.
@@ -1343,11 +1343,11 @@ Organizations should:
 
 ---
 
-# Part 3 — Wireless Threats, Attacks, Hardening, Monitoring, Detection Engineering, Zero Trust Integration, and Enterprise Operations
+## Part 3 — Wireless Threats, Attacks, Hardening, Monitoring, Detection Engineering, Zero Trust Integration, and Enterprise Operations
 
 ---
 
-# Introduction
+## Introduction
 
 Wireless networks extend beyond the physical boundaries of an organization. Unlike wired Ethernet, where an attacker typically requires physical access to network infrastructure, Wi-Fi signals can often be detected from parking lots, neighboring buildings, public spaces, or other nearby locations.
 
@@ -1366,7 +1366,7 @@ Enterprise wireless security requires multiple layers of defense, including:
 
 ---
 
-# Security Objectives
+## Security Objectives
 
 Enterprise wireless security aims to:
 
@@ -1380,7 +1380,7 @@ Enterprise wireless security aims to:
 
 ---
 
-# Wireless Threat Landscape
+## Wireless Threat Landscape
 
 Common enterprise wireless threats include:
 
@@ -1400,7 +1400,7 @@ Understanding these threats helps organizations implement appropriate security c
 
 ---
 
-# Rogue Access Points
+## Rogue Access Points
 
 A **Rogue Access Point** is an unauthorized AP connected to the enterprise network.
 
@@ -1438,7 +1438,7 @@ Mitigation:
 
 ---
 
-# Evil Twin Attack
+## Evil Twin Attack
 
 An Evil Twin is a malicious AP that imitates a legitimate wireless network.
 
@@ -1465,7 +1465,7 @@ Mitigation:
 
 ---
 
-# MAC Address Spoofing
+## MAC Address Spoofing
 
 Attackers may change their device's MAC address to impersonate an authorized device.
 
@@ -1485,7 +1485,7 @@ Although MAC filtering may discourage casual misuse, it should not be relied upo
 
 ---
 
-# Wireless Sniffing
+## Wireless Sniffing
 
 Attackers use wireless adapters in monitor mode to capture radio traffic.
 
@@ -1502,7 +1502,7 @@ Strong encryption significantly reduces the value of captured traffic.
 
 ---
 
-# Deauthentication Attack
+## Deauthentication Attack
 
 Attackers transmit forged deauthentication frames to disconnect clients.
 
@@ -1536,7 +1536,7 @@ Mitigation:
 
 ---
 
-# Disassociation Attack
+## Disassociation Attack
 
 Disassociation attacks are similar to deauthentication attacks but target the association state of a client.
 
@@ -1550,7 +1550,7 @@ PMF helps protect against forged management frames.
 
 ---
 
-# Wireless Denial-of-Service (DoS)
+## Wireless Denial-of-Service (DoS)
 
 Wireless DoS attacks attempt to reduce network availability.
 
@@ -1571,7 +1571,7 @@ Mitigation strategies include:
 
 ---
 
-# Jamming
+## Jamming
 
 Jamming occurs when an attacker intentionally transmits radio signals that interfere with legitimate Wi-Fi communications.
 
@@ -1600,7 +1600,7 @@ Indicators:
 
 ---
 
-# Man-in-the-Middle (MITM)
+## Man-in-the-Middle (MITM)
 
 A wireless MITM attack positions the attacker between the client and the network.
 
@@ -1631,7 +1631,7 @@ Mitigation:
 
 ---
 
-# Credential Theft
+## Credential Theft
 
 Wireless credentials may be compromised through:
 
@@ -1650,7 +1650,7 @@ Mitigation:
 
 ---
 
-# Weak Password Attacks
+## Weak Password Attacks
 
 Shared wireless passwords are vulnerable to guessing attacks.
 
@@ -1672,7 +1672,7 @@ Better practices:
 
 ---
 
-# Unauthorized Wireless Devices
+## Unauthorized Wireless Devices
 
 Common unauthorized devices include:
 
@@ -1686,7 +1686,7 @@ These devices can bypass organizational security controls and increase the attac
 
 ---
 
-# Wireless Network Segmentation
+## Wireless Network Segmentation
 
 Wireless networks should be segmented based on business function.
 
@@ -1720,7 +1720,7 @@ Segmentation limits lateral movement and improves policy enforcement.
 
 ---
 
-# Guest Network Isolation
+## Guest Network Isolation
 
 Guest wireless networks should be isolated from internal corporate resources.
 
@@ -1748,7 +1748,7 @@ Isolation reduces the risk of unauthorized access to sensitive systems.
 
 ---
 
-# Wireless Intrusion Detection System (WIDS)
+## Wireless Intrusion Detection System (WIDS)
 
 A WIDS continuously monitors wireless activity to identify suspicious behavior.
 
@@ -1765,7 +1765,7 @@ WIDS generates alerts but does not actively block attacks.
 
 ---
 
-# Wireless Intrusion Prevention System (WIPS)
+## Wireless Intrusion Prevention System (WIPS)
 
 A WIPS extends WIDS by actively responding to threats.
 
@@ -1780,7 +1780,7 @@ Organizations should carefully evaluate containment features to avoid disrupting
 
 ---
 
-# Wireless Monitoring
+## Wireless Monitoring
 
 Enterprise wireless monitoring should include:
 
@@ -1799,7 +1799,7 @@ Continuous monitoring helps identify operational and security issues before they
 
 ---
 
-# Logging
+## Logging
 
 Wireless infrastructure should generate logs for:
 
@@ -1815,7 +1815,7 @@ Logs should be forwarded to centralized monitoring platforms.
 
 ---
 
-# Centralized Logging
+## Centralized Logging
 
 ```
 Access Points
@@ -1841,7 +1841,7 @@ Centralized logging enables long-term retention, correlation, and incident inves
 
 ---
 
-# Zero Trust Integration
+## Zero Trust Integration
 
 Enterprise wireless networks should align with Zero Trust principles.
 
@@ -1857,7 +1857,7 @@ Connecting to Wi-Fi should not automatically grant unrestricted access to intern
 
 ---
 
-# Device Compliance
+## Device Compliance
 
 Before granting access, organizations should evaluate:
 
@@ -1872,7 +1872,7 @@ Non-compliant devices can be denied or placed in a restricted network.
 
 ---
 
-# Threat Intelligence Integration
+## Threat Intelligence Integration
 
 Wireless security platforms may consume threat intelligence to identify:
 
@@ -1886,7 +1886,7 @@ Threat intelligence enhances detection capabilities when combined with wireless 
 
 ---
 
-# SOC Integration
+## SOC Integration
 
 Wireless infrastructure provides valuable telemetry for Security Operations Centers.
 
@@ -1905,9 +1905,9 @@ Wireless logs should be correlated with endpoint, identity, and firewall telemet
 
 ---
 
-# SIEM Correlation Examples
+## SIEM Correlation Examples
 
-### Rogue Access Point
+#### Rogue Access Point
 
 ```
 Unknown AP Detected
@@ -1923,7 +1923,7 @@ SOC Alert
 
 ---
 
-### Authentication Attack
+#### Authentication Attack
 
 ```
 Single Client
@@ -1939,7 +1939,7 @@ Alert
 
 ---
 
-### Evil Twin Detection
+#### Evil Twin Detection
 
 ```
 Duplicate SSID
@@ -1955,7 +1955,7 @@ High-Risk Alert
 
 ---
 
-### Suspicious Device
+#### Suspicious Device
 
 ```
 New Device
@@ -1975,7 +1975,7 @@ SOC Investigation
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Wireless deployments contribute to compliance with:
 
@@ -1996,7 +1996,7 @@ Common compliance requirements include:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -2013,7 +2013,7 @@ Organizations should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong wireless security enables organizations to:
 
@@ -2027,7 +2027,7 @@ Strong wireless security enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Wireless networks face unique threats due to the shared radio medium.
 - Rogue APs and Evil Twin attacks remain significant enterprise risks.
@@ -2038,11 +2038,11 @@ Strong wireless security enables organizations to:
 
 ---
 
-# Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, IEEE/RFC References, Summary, and Chapter Review
+## Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, IEEE/RFC References, Summary, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 Designing a secure wireless network is only the beginning. Enterprise administrators must continuously monitor, troubleshoot, optimize, and secure wireless infrastructure to maintain high availability and protect business operations.
 
@@ -2060,7 +2060,7 @@ A structured operational approach enables organizations to rapidly identify and 
 
 ---
 
-# Enterprise Wireless Troubleshooting Methodology
+## Enterprise Wireless Troubleshooting Methodology
 
 A standardized troubleshooting workflow minimizes downtime and improves operational consistency.
 
@@ -2120,7 +2120,7 @@ Following a repeatable methodology reduces unnecessary configuration changes and
 
 ---
 
-# Initial Health Checks
+## Initial Health Checks
 
 Before investigating client-specific issues, verify the overall health of the wireless infrastructure.
 
@@ -2139,7 +2139,7 @@ Check:
 
 ---
 
-# Wireless Client Connection Process
+## Wireless Client Connection Process
 
 Understanding the connection lifecycle simplifies troubleshooting.
 
@@ -2175,7 +2175,7 @@ Failure at any stage prevents successful connectivity.
 
 ---
 
-# Wireless Packet Flow
+## Wireless Packet Flow
 
 ```
 Wireless Client
@@ -2205,7 +2205,7 @@ Each component should be verified independently when troubleshooting.
 
 ---
 
-# Packet Analysis
+## Packet Analysis
 
 Important wireless packet types include:
 
@@ -2223,7 +2223,7 @@ Analyzing these frames helps determine where communication fails.
 
 ---
 
-# Wireshark Analysis
+## Wireshark Analysis
 
 Wireshark is commonly used to troubleshoot wireless environments.
 
@@ -2303,7 +2303,7 @@ Packet captures should ideally be collected using adapters that support monitor 
 
 ---
 
-# Wireless Log Analysis
+## Wireless Log Analysis
 
 Important log fields include:
 
@@ -2324,7 +2324,7 @@ These logs support troubleshooting and security investigations.
 
 ---
 
-# Authentication Verification
+## Authentication Verification
 
 Verify:
 
@@ -2340,7 +2340,7 @@ Authentication issues often originate from identity services rather than the wir
 
 ---
 
-# RADIUS Verification
+## RADIUS Verification
 
 Verify:
 
@@ -2355,7 +2355,7 @@ Successful RADIUS communication is essential for WPA2/WPA3-Enterprise deployment
 
 ---
 
-# DHCP Verification
+## DHCP Verification
 
 After successful authentication, confirm that clients receive:
 
@@ -2369,7 +2369,7 @@ Missing DHCP responses are a common cause of connectivity issues.
 
 ---
 
-# DNS Verification
+## DNS Verification
 
 Verify:
 
@@ -2382,7 +2382,7 @@ Many reported "Wi-Fi issues" are actually DNS resolution problems.
 
 ---
 
-# Roaming Verification
+## Roaming Verification
 
 Check:
 
@@ -2396,7 +2396,7 @@ Poor roaming behavior may interrupt voice and video applications.
 
 ---
 
-# RF Analysis
+## RF Analysis
 
 Evaluate:
 
@@ -2411,17 +2411,17 @@ RF analysis identifies physical-layer issues that are not visible through IP tro
 
 ---
 
-# Common Wireless Troubleshooting Scenarios
+## Common Wireless Troubleshooting Scenarios
 
 ---
 
-## Scenario 1 — Client Cannot Discover the SSID
+### Scenario 1 — Client Cannot Discover the SSID
 
-### Symptoms
+#### Symptoms
 
 - The wireless network does not appear in the list of available networks.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2433,13 +2433,13 @@ Verify:
 
 ---
 
-## Scenario 2 — Authentication Failure
+### Scenario 2 — Authentication Failure
 
-### Symptoms
+#### Symptoms
 
 - The client detects the SSID but cannot connect.
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -2451,14 +2451,14 @@ Check:
 
 ---
 
-## Scenario 3 — Connected but No Internet Access
+### Scenario 3 — Connected but No Internet Access
 
-### Symptoms
+#### Symptoms
 
 - Wi-Fi is connected.
 - Internet resources are unavailable.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2470,9 +2470,9 @@ Verify:
 
 ---
 
-## Scenario 4 — Poor Wireless Performance
+### Scenario 4 — Poor Wireless Performance
 
-### Symptoms
+#### Symptoms
 
 - Slow downloads
 - High latency
@@ -2489,9 +2489,9 @@ Investigate:
 
 ---
 
-## Scenario 5 — Frequent Client Disconnects
+### Scenario 5 — Frequent Client Disconnects
 
-### Symptoms
+#### Symptoms
 
 - Users repeatedly lose connectivity.
 
@@ -2506,9 +2506,9 @@ Possible causes:
 
 ---
 
-## Scenario 6 — Voice Calls Drop During Roaming
+### Scenario 6 — Voice Calls Drop During Roaming
 
-### Symptoms
+#### Symptoms
 
 - VoIP calls disconnect while moving through the building.
 
@@ -2522,7 +2522,7 @@ Verify:
 
 ---
 
-# Enterprise Performance Monitoring
+## Enterprise Performance Monitoring
 
 Monitor:
 
@@ -2541,7 +2541,7 @@ Trend analysis helps identify performance degradation before users are affected.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Wireless telemetry supports numerous detection use cases.
 
@@ -2560,9 +2560,9 @@ Detection rules should balance sensitivity with operational noise.
 
 ---
 
-# SIEM Correlation Examples
+## SIEM Correlation Examples
 
-### Rogue Access Point
+#### Rogue Access Point
 
 ```
 Unknown BSSID
@@ -2582,7 +2582,7 @@ Critical Alert
 
 ---
 
-### Authentication Attack
+#### Authentication Attack
 
 ```
 Single Source
@@ -2602,7 +2602,7 @@ SOC Alert
 
 ---
 
-### Deauthentication Flood
+#### Deauthentication Flood
 
 ```
 Large Number of
@@ -2620,7 +2620,7 @@ High Severity Alert
 
 ---
 
-### Unauthorized Administrator Login
+#### Unauthorized Administrator Login
 
 ```
 Wireless Controller Login
@@ -2640,7 +2640,7 @@ Critical Incident
 
 ---
 
-# Zeek Integration
+## Zeek Integration
 
 Although Zeek primarily analyzes wired network traffic, it can complement wireless investigations by analyzing traffic after it traverses the wireless infrastructure.
 
@@ -2656,7 +2656,7 @@ These logs provide visibility into post-authentication network activity.
 
 ---
 
-# Suricata Integration
+## Suricata Integration
 
 Suricata can inspect traffic originating from wireless clients.
 
@@ -2673,7 +2673,7 @@ Combined with wireless telemetry, Suricata improves enterprise visibility.
 
 ---
 
-# Threat Hunting Ideas
+## Threat Hunting Ideas
 
 Security teams can proactively investigate:
 
@@ -2690,7 +2690,7 @@ Threat hunting complements automated detection by identifying subtle or emerging
 
 ---
 
-# Practical Lab 1 — Enterprise Wi-Fi Deployment
+## Practical Lab 1 — Enterprise Wi-Fi Deployment
 
 Objective:
 
@@ -2706,7 +2706,7 @@ Tasks:
 
 ---
 
-# Practical Lab 2 — WPA2/WPA3 Enterprise Authentication
+## Practical Lab 2 — WPA2/WPA3 Enterprise Authentication
 
 Tasks:
 
@@ -2718,7 +2718,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — Wireless Packet Capture
+## Practical Lab 3 — Wireless Packet Capture
 
 Tasks:
 
@@ -2730,7 +2730,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — Rogue Access Point Detection
+## Practical Lab 4 — Rogue Access Point Detection
 
 Tasks:
 
@@ -2742,7 +2742,7 @@ Tasks:
 
 ---
 
-# Practical Lab 5 — SIEM Integration
+## Practical Lab 5 — SIEM Integration
 
 Tasks:
 
@@ -2754,13 +2754,13 @@ Tasks:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A multinational company receives reports of intermittent wireless connectivity and failed employee logins at one office.
 
-### Investigation
+#### Investigation
 
 The network team discovers:
 
@@ -2769,7 +2769,7 @@ The network team discovers:
 - High RF interference on overlapping 2.4 GHz channels.
 - Outdated firmware on several Access Points.
 
-### Resolution
+#### Resolution
 
 - Remove the rogue Access Point.
 - Optimize channel assignments following an RF survey.
@@ -2777,7 +2777,7 @@ The network team discovers:
 - Enable Protected Management Frames (PMF).
 - Enhance WIDS monitoring and SIEM alerting.
 
-### Outcome
+#### Outcome
 
 - Improved wireless stability.
 - Reduced authentication failures.
@@ -2786,52 +2786,52 @@ The network team discovers:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is the purpose of an Access Point (AP)?
+#### What is the purpose of an Access Point (AP)?
 
 An Access Point connects wireless devices to a wired network by transmitting and receiving Wi-Fi signals.
 
 ---
 
-### What is the difference between WPA2 and WPA3?
+#### What is the difference between WPA2 and WPA3?
 
 - **WPA2** uses AES-CCMP and supports PSK or IEEE 802.1X authentication.
 - **WPA3** introduces stronger authentication mechanisms such as SAE (Personal mode), improved resistance to offline password attacks, and enhanced security features.
 
 ---
 
-### What is IEEE 802.1X?
+#### What is IEEE 802.1X?
 
 IEEE 802.1X is a port-based network access control standard that authenticates users or devices before granting network access.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is the role of a RADIUS server?
+#### What is the role of a RADIUS server?
 
 A RADIUS server provides centralized Authentication, Authorization, and Accounting (AAA) services for enterprise wireless networks.
 
 ---
 
-### Why is channel planning important?
+#### Why is channel planning important?
 
 Proper channel planning minimizes interference, improves throughput, reduces retransmissions, and enhances overall wireless performance.
 
 ---
 
-### What is a Rogue Access Point?
+#### What is a Rogue Access Point?
 
 A Rogue Access Point is an unauthorized AP connected to or impersonating part of an organization's network, potentially bypassing security controls.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you troubleshoot a client that authenticates successfully but cannot access network resources?
+#### How would you troubleshoot a client that authenticates successfully but cannot access network resources?
 
 A structured approach includes:
 
@@ -2845,7 +2845,7 @@ A structured approach includes:
 
 ---
 
-### How can a SOC detect wireless attacks?
+#### How can a SOC detect wireless attacks?
 
 Indicators include:
 
@@ -2859,7 +2859,7 @@ Indicators include:
 
 ---
 
-### Why should wireless logs be integrated with a SIEM?
+#### Why should wireless logs be integrated with a SIEM?
 
 SIEM integration enables:
 
@@ -2873,7 +2873,7 @@ SIEM integration enables:
 
 ---
 
-# IEEE and RFC References
+## IEEE and RFC References
 
 Key standards and documents related to enterprise wireless networking include:
 
@@ -2889,13 +2889,13 @@ Key standards and documents related to enterprise wireless networking include:
 
 ---
 
-# Summary
+## Summary
 
 Enterprise wireless networks provide secure, flexible connectivity for users, devices, and applications. Modern Wi-Fi deployments rely on IEEE 802.11 standards, WPA2/WPA3 security, IEEE 802.1X authentication, centralized identity management, and continuous monitoring. Successful operations require strong RF design, proactive troubleshooting, SIEM integration, and layered security controls to protect against evolving wireless threats.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -2923,7 +2923,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`19-IPv6.md`**, covers:
 

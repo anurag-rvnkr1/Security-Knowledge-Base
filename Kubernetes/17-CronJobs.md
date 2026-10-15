@@ -41,7 +41,7 @@ It is commonly used for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -58,7 +58,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why CronJobs?
+## Why CronJobs?
 
 Imagine a database backup.
 
@@ -96,7 +96,7 @@ Problem:
 
 ---
 
-# Solution
+## Solution
 
 Use a Kubernetes CronJob.
 
@@ -118,7 +118,7 @@ Backup Completed
 
 ---
 
-# What is a CronJob?
+## What is a CronJob?
 
 A CronJob is a controller that **creates Jobs according to a schedule**.
 
@@ -148,7 +148,7 @@ Complete
 
 ---
 
-# CronJob Architecture
+## CronJob Architecture
 
 ```
                CronJob
@@ -178,7 +178,7 @@ Complete
 
 ---
 
-# CronJob vs Job
+## CronJob vs Job
 
 | Job | CronJob |
 |------|----------|
@@ -189,7 +189,7 @@ Complete
 
 ---
 
-# CronJob Workflow
+## CronJob Workflow
 
 ```
 Time Reached
@@ -217,7 +217,7 @@ Complete
 
 ---
 
-# Cron Schedule Format
+## Cron Schedule Format
 
 General format:
 
@@ -233,7 +233,7 @@ General format:
 
 ---
 
-# Common Cron Expressions
+## Common Cron Expressions
 
 | Schedule | Meaning |
 |-----------|---------|
@@ -248,7 +248,7 @@ General format:
 
 ---
 
-# CronJob YAML
+## CronJob YAML
 
 ```yaml
 apiVersion: batch/v1
@@ -288,7 +288,7 @@ spec:
 
 ---
 
-# YAML Structure
+## YAML Structure
 
 ```
 CronJob
@@ -312,7 +312,7 @@ Container
 
 ---
 
-# Execution Timeline
+## Execution Timeline
 
 ```
 02:00
@@ -340,7 +340,7 @@ Complete
 
 ---
 
-# Job Creation
+## Job Creation
 
 Important:
 
@@ -364,7 +364,7 @@ Exactly like manually creating a Job.
 
 ---
 
-# Suspend CronJob
+## Suspend CronJob
 
 Pause scheduling.
 
@@ -392,7 +392,7 @@ suspend: false
 
 ---
 
-# Concurrency Policy
+## Concurrency Policy
 
 Controls what happens when the next schedule occurs before the previous Job has finished.
 
@@ -408,7 +408,7 @@ Replace
 
 ---
 
-# Allow
+## Allow
 
 Default behavior.
 
@@ -428,7 +428,7 @@ Both Run
 
 ---
 
-# Forbid
+## Forbid
 
 ```
 Job 1
@@ -448,7 +448,7 @@ No overlapping Jobs.
 
 ---
 
-# Replace
+## Replace
 
 ```
 Job 1
@@ -468,7 +468,7 @@ Useful when only the latest execution matters.
 
 ---
 
-# startingDeadlineSeconds
+## startingDeadlineSeconds
 
 Defines how long Kubernetes should wait to start a missed Job.
 
@@ -500,7 +500,7 @@ Skip Job
 
 ---
 
-# Successful Job History
+## Successful Job History
 
 Keep successful Jobs.
 
@@ -524,7 +524,7 @@ Older successful Jobs are removed.
 
 ---
 
-# Failed Job History
+## Failed Job History
 
 Example:
 
@@ -536,7 +536,7 @@ Keep only the most recent failed Job.
 
 ---
 
-# Time Zone Support
+## Time Zone Support
 
 Modern Kubernetes versions support:
 
@@ -548,7 +548,7 @@ Without specifying a time zone, scheduling uses the time zone configured for the
 
 ---
 
-# CronJob Lifecycle
+## CronJob Lifecycle
 
 ```
 Create
@@ -584,7 +584,7 @@ Wait for Next Schedule
 
 ---
 
-# Viewing CronJobs
+## Viewing CronJobs
 
 List:
 
@@ -606,7 +606,7 @@ kubectl describe cronjob backup-job
 
 ---
 
-# Viewing Jobs
+## Viewing Jobs
 
 ```bash
 kubectl get jobs
@@ -614,7 +614,7 @@ kubectl get jobs
 
 ---
 
-# Viewing Pods
+## Viewing Pods
 
 ```bash
 kubectl get pods
@@ -622,7 +622,7 @@ kubectl get pods
 
 ---
 
-# Logs
+## Logs
 
 Latest Job:
 
@@ -632,7 +632,7 @@ kubectl logs job/<job-name>
 
 ---
 
-# Deleting CronJob
+## Deleting CronJob
 
 ```bash
 kubectl delete cronjob backup-job
@@ -642,9 +642,9 @@ Deleting the CronJob prevents future Jobs from being scheduled. Existing Jobs ar
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
-## Database Backup
+### Database Backup
 
 ```
 02:00 AM
@@ -660,7 +660,7 @@ Backup
 
 ---
 
-## Log Cleanup
+### Log Cleanup
 
 ```
 Every Night
@@ -672,7 +672,7 @@ Delete Logs
 
 ---
 
-## Cache Cleanup
+### Cache Cleanup
 
 ```
 Every Hour
@@ -684,7 +684,7 @@ Clear Cache
 
 ---
 
-## Email Reports
+### Email Reports
 
 ```
 08:00 AM
@@ -700,7 +700,7 @@ Send Email
 
 ---
 
-## ETL Jobs
+### ETL Jobs
 
 ```
 Every Midnight
@@ -712,7 +712,7 @@ Import Data
 
 ---
 
-## Certificate Renewal
+### Certificate Renewal
 
 ```
 Monthly
@@ -724,7 +724,7 @@ Renew Certificates
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -766,7 +766,7 @@ kubectl delete cronjob backup-job
 
 ---
 
-# CronJob Architecture Summary
+## CronJob Architecture Summary
 
 ```
 CronJob
@@ -794,9 +794,9 @@ Completion
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use CronJobs Only for Scheduled Tasks
+#### 1. Use CronJobs Only for Scheduled Tasks
 
 Examples:
 
@@ -807,7 +807,7 @@ Examples:
 
 ---
 
-### 2. Configure Concurrency Policy
+#### 2. Configure Concurrency Policy
 
 Choose:
 
@@ -819,27 +819,27 @@ based on workload requirements.
 
 ---
 
-### 3. Limit Job History
+#### 3. Limit Job History
 
 Prevent excessive accumulation of completed Jobs by configuring history limits.
 
 ---
 
-### 4. Set startingDeadlineSeconds
+#### 4. Set startingDeadlineSeconds
 
 Handle missed schedules gracefully, especially after controller downtime.
 
 ---
 
-### 5. Monitor Job Failures
+#### 5. Monitor Job Failures
 
 Regularly inspect failed Jobs and their logs to identify recurring issues.
 
 ---
 
-# How CronJobs Work Internally
+## How CronJobs Work Internally
 
-## Overview
+### Overview
 
 A CronJob is one of the most automated workload controllers in Kubernetes.
 
@@ -861,7 +861,7 @@ Instead, it creates a **Job**, and that Job creates one or more **Pods**.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                   CronJob
@@ -897,7 +897,7 @@ Instead, it creates a **Job**, and that Job creates one or more **Pods**.
 
 ---
 
-# Complete Workflow
+## Complete Workflow
 
 ```
 Developer
@@ -965,7 +965,7 @@ Task Complete
 
 ---
 
-# Step 1 – Create CronJob
+## Step 1 – Create CronJob
 
 Example:
 
@@ -981,7 +981,7 @@ kubectl apply -f cronjob.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -1006,7 +1006,7 @@ CronJob Stored
 
 ---
 
-# Step 3 – Store in etcd
+## Step 3 – Store in etcd
 
 ```
 API Server
@@ -1024,7 +1024,7 @@ The schedule is now persisted.
 
 ---
 
-# Step 4 – CronJob Controller
+## Step 4 – CronJob Controller
 
 The CronJob Controller continuously watches:
 
@@ -1044,7 +1044,7 @@ Every reconciliation cycle it determines whether a Job should be created.
 
 ---
 
-# Step 5 – Schedule Evaluation
+## Step 5 – Schedule Evaluation
 
 Suppose:
 
@@ -1078,7 +1078,7 @@ Create Job
 
 ---
 
-# Cron Expression Parsing
+## Cron Expression Parsing
 
 Expression:
 
@@ -1122,7 +1122,7 @@ All fields must match.
 
 ---
 
-# Step 6 – Job Creation
+## Step 6 – Job Creation
 
 CronJob creates:
 
@@ -1144,7 +1144,7 @@ Every scheduled execution creates a **new Job**.
 
 ---
 
-# Step 7 – Job Controller
+## Step 7 – Job Controller
 
 After the Job exists:
 
@@ -1160,7 +1160,7 @@ The CronJob's work is complete for that execution.
 
 ---
 
-# Step 8 – Scheduler
+## Step 8 – Scheduler
 
 ```
 Pod
@@ -1176,7 +1176,7 @@ Choose Node
 
 ---
 
-# Step 9 – kubelet
+## Step 9 – kubelet
 
 Worker Node:
 
@@ -1198,7 +1198,7 @@ Run Container
 
 ---
 
-# Step 10 – Task Execution
+## Step 10 – Task Execution
 
 Example:
 
@@ -1226,7 +1226,7 @@ Complete
 
 ---
 
-# Waiting for Next Schedule
+## Waiting for Next Schedule
 
 After completion:
 
@@ -1256,7 +1256,7 @@ It continues scheduling until deleted or suspended.
 
 ---
 
-# Concurrency Policy
+## Concurrency Policy
 
 Suppose:
 
@@ -1280,7 +1280,7 @@ concurrencyPolicy
 
 ---
 
-# Allow
+## Allow
 
 ```
 Job 1
@@ -1300,7 +1300,7 @@ This is the default behavior.
 
 ---
 
-# Forbid
+## Forbid
 
 ```
 Job 1
@@ -1320,7 +1320,7 @@ No overlapping Jobs.
 
 ---
 
-# Replace
+## Replace
 
 ```
 Job 1
@@ -1340,7 +1340,7 @@ Only the latest execution continues.
 
 ---
 
-# Missed Schedule
+## Missed Schedule
 
 Suppose:
 
@@ -1380,7 +1380,7 @@ Skip Execution
 
 ---
 
-# Suspend Workflow
+## Suspend Workflow
 
 Configuration:
 
@@ -1410,7 +1410,7 @@ Normal Scheduling
 
 ---
 
-# Successful Job Cleanup
+## Successful Job Cleanup
 
 Configuration:
 
@@ -1444,7 +1444,7 @@ Old successful Jobs are removed.
 
 ---
 
-# Failed Job Cleanup
+## Failed Job Cleanup
 
 Configuration:
 
@@ -1456,7 +1456,7 @@ Only the latest failed Job is retained.
 
 ---
 
-# Time Zone Handling
+## Time Zone Handling
 
 Example:
 
@@ -1486,7 +1486,7 @@ This ensures predictable execution regardless of the control plane's local time 
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 API Server
@@ -1522,7 +1522,7 @@ Container
 
 ---
 
-# Database Backup Example
+## Database Backup Example
 
 ```
 02:00
@@ -1550,7 +1550,7 @@ Complete
 
 ---
 
-# Log Cleanup Example
+## Log Cleanup Example
 
 ```
 Every Night
@@ -1574,7 +1574,7 @@ Complete
 
 ---
 
-# Email Report Example
+## Email Report Example
 
 ```
 08:00
@@ -1598,7 +1598,7 @@ Complete
 
 ---
 
-# Hands-on Lab 1 – Create CronJob
+## Hands-on Lab 1 – Create CronJob
 
 Example:
 
@@ -1646,7 +1646,7 @@ kubectl apply -f cronjob.yaml
 
 ---
 
-# Hands-on Lab 2 – Watch Jobs
+## Hands-on Lab 2 – Watch Jobs
 
 ```bash
 kubectl get jobs -w
@@ -1664,7 +1664,7 @@ Every 2 Minutes
 
 ---
 
-# Hands-on Lab 3 – View Pods
+## Hands-on Lab 3 – View Pods
 
 ```bash
 kubectl get pods
@@ -1674,7 +1674,7 @@ Observe a new Pod for each scheduled Job.
 
 ---
 
-# Hands-on Lab 4 – Suspend CronJob
+## Hands-on Lab 4 – Suspend CronJob
 
 ```bash
 kubectl patch cronjob hello-cron \
@@ -1696,7 +1696,7 @@ kubectl patch cronjob hello-cron \
 
 ---
 
-# Hands-on Lab 5 – Concurrency Policy
+## Hands-on Lab 5 – Concurrency Policy
 
 Set:
 
@@ -1710,9 +1710,9 @@ Observe that overlapping executions are skipped.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using CronJobs for Long-Running Applications
+### 1. Using CronJobs for Long-Running Applications
 
 Incorrect:
 
@@ -1734,7 +1734,7 @@ CronJobs are intended for finite tasks.
 
 ---
 
-## 2. Choosing the Wrong Concurrency Policy
+### 2. Choosing the Wrong Concurrency Policy
 
 For database backups:
 
@@ -1748,7 +1748,7 @@ to prevent multiple backups from running simultaneously.
 
 ---
 
-## 3. Unlimited Job History
+### 3. Unlimited Job History
 
 Without cleanup:
 
@@ -1764,7 +1764,7 @@ Configure history limits.
 
 ---
 
-## 4. Forgetting startingDeadlineSeconds
+### 4. Forgetting startingDeadlineSeconds
 
 A controller outage may cause scheduled executions to be skipped unexpectedly.
 
@@ -1772,7 +1772,7 @@ Configure a reasonable deadline for critical workloads.
 
 ---
 
-## 5. Ignoring Failed Jobs
+### 5. Ignoring Failed Jobs
 
 Always review:
 
@@ -1786,9 +1786,9 @@ to diagnose failures.
 
 ---
 
-# CronJobs Quick Revision
+## CronJobs Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 CronJob
@@ -1816,7 +1816,7 @@ Complete
 
 ---
 
-## Lifecycle
+### Lifecycle
 
 ```
 Wait
@@ -1844,7 +1844,7 @@ Wait Again
 
 ---
 
-## Concurrency Policies
+### Concurrency Policies
 
 ```
 Allow
@@ -1876,7 +1876,7 @@ Run New
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View CronJobs:
 
@@ -1930,9 +1930,9 @@ kubectl delete cronjob hello-cron
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a CronJob?
 - How is a CronJob different from a Job?
@@ -1940,7 +1940,7 @@ kubectl delete cronjob hello-cron
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - Explain `concurrencyPolicy`.
 - What is `startingDeadlineSeconds`?
@@ -1948,7 +1948,7 @@ kubectl delete cronjob hello-cron
 
 ---
 
-### Advanced
+#### Advanced
 
 - How does the CronJob Controller work internally?
 - How are missed schedules handled?
@@ -1958,9 +1958,9 @@ kubectl delete cronjob hello-cron
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - CronJobs
 - Jobs
@@ -1970,7 +1970,7 @@ kubectl delete cronjob hello-cron
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Best Practices
 - Batch Workloads
@@ -1978,7 +1978,7 @@ kubectl delete cronjob hello-cron
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - Kubernetes Production Best Practices
 - CIS Kubernetes Benchmark
@@ -1987,7 +1987,7 @@ kubectl delete cronjob hello-cron
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create a CronJob that runs every two minutes.
 2. Observe automatic Job creation using `kubectl get jobs -w`.
@@ -1999,7 +1999,7 @@ kubectl delete cronjob hello-cron
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Developer

@@ -1,10 +1,10 @@
 # 14 - Internet Control Message Protocol (ICMP)
 
-# Part 1 — ICMP Fundamentals, Architecture, Message Types, Echo Operations, and Enterprise Applications
+## Part 1 — ICMP Fundamentals, Architecture, Message Types, Echo Operations, and Enterprise Applications
 
 ---
 
-# Overview
+## Overview
 
 The **Internet Control Message Protocol (ICMP)** is a network-layer protocol used for **error reporting, diagnostics, and operational messaging** in IP networks.
 
@@ -23,7 +23,7 @@ Without ICMP, diagnosing connectivity issues in modern networks would be signifi
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -41,7 +41,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why ICMP Exists
+## Why ICMP Exists
 
 IP is responsible for delivering packets between hosts, but it does not provide a mechanism for reporting problems.
 
@@ -57,7 +57,7 @@ ICMP was designed to communicate these conditions back to the sender.
 
 ---
 
-# What is ICMP?
+## What is ICMP?
 
 The **Internet Control Message Protocol (ICMP)** is a Layer 3 protocol that provides:
 
@@ -71,7 +71,7 @@ ICMP works alongside IP but is **not a transport protocol**.
 
 ---
 
-# Position in the TCP/IP Model
+## Position in the TCP/IP Model
 
 ```
 +---------------------------+
@@ -93,7 +93,7 @@ ICMP messages are encapsulated within IP packets.
 
 ---
 
-# Responsibilities of ICMP
+## Responsibilities of ICMP
 
 ICMP performs several important functions:
 
@@ -107,7 +107,7 @@ ICMP performs several important functions:
 
 ---
 
-# Characteristics of ICMP
+## Characteristics of ICMP
 
 | Feature | Description |
 |----------|-------------|
@@ -120,7 +120,7 @@ ICMP performs several important functions:
 
 ---
 
-# ICMP vs TCP vs UDP
+## ICMP vs TCP vs UDP
 
 | Feature | ICMP | TCP | UDP |
 |----------|------|-----|-----|
@@ -133,7 +133,7 @@ ICMP performs several important functions:
 
 ---
 
-# ICMP Communication
+## ICMP Communication
 
 Typical communication:
 
@@ -161,7 +161,7 @@ Unlike TCP, no connection is established before exchanging messages.
 
 ---
 
-# ICMP Packet Structure
+## ICMP Packet Structure
 
 ```
 +--------------------------------------+
@@ -177,7 +177,7 @@ The exact structure depends on the ICMP message type.
 
 ---
 
-# ICMP Header Fields
+## ICMP Header Fields
 
 | Field | Purpose |
 |--------|---------|
@@ -188,7 +188,7 @@ The exact structure depends on the ICMP message type.
 
 ---
 
-# Type Field
+## Type Field
 
 The **Type** field defines the purpose of the message.
 
@@ -205,7 +205,7 @@ Examples:
 
 ---
 
-# Code Field
+## Code Field
 
 The **Code** field provides more specific information within a message type.
 
@@ -231,7 +231,7 @@ Possible codes:
 
 ---
 
-# Checksum
+## Checksum
 
 The checksum verifies message integrity.
 
@@ -259,7 +259,7 @@ Invalid messages are discarded.
 
 ---
 
-# Echo Request
+## Echo Request
 
 Echo Request is used by **Ping** to determine reachability.
 
@@ -283,7 +283,7 @@ Type:
 
 ---
 
-# Echo Reply
+## Echo Reply
 
 If the destination is reachable, it returns an Echo Reply.
 
@@ -307,7 +307,7 @@ Type:
 
 ---
 
-# Ping Operation
+## Ping Operation
 
 Complete Ping workflow:
 
@@ -343,7 +343,7 @@ Administrators use Ping to verify basic IP connectivity.
 
 ---
 
-# What Ping Measures
+## What Ping Measures
 
 Ping provides:
 
@@ -366,7 +366,7 @@ Average RTT:      12 ms
 
 ---
 
-# Round-Trip Time (RTT)
+## Round-Trip Time (RTT)
 
 RTT measures the time required for a packet to travel to the destination and back.
 
@@ -390,9 +390,9 @@ Low RTT generally indicates a healthy network path.
 
 ---
 
-# Common Ping Results
+## Common Ping Results
 
-### Successful
+#### Successful
 
 ```
 Reply from
@@ -406,7 +406,7 @@ TTL=64
 
 ---
 
-### Timeout
+#### Timeout
 
 ```
 Request Timed Out
@@ -421,7 +421,7 @@ Possible causes:
 
 ---
 
-### Destination Unreachable
+#### Destination Unreachable
 
 ```
 Destination Host Unreachable
@@ -435,11 +435,11 @@ Typically indicates:
 
 ---
 
-# ICMP Message Categories
+## ICMP Message Categories
 
 ICMP messages are divided into two broad categories:
 
-### Informational
+#### Informational
 
 Examples:
 
@@ -448,7 +448,7 @@ Examples:
 
 ---
 
-### Error Messages
+#### Error Messages
 
 Examples:
 
@@ -459,7 +459,7 @@ Examples:
 
 ---
 
-# Destination Unreachable
+## Destination Unreachable
 
 Type:
 
@@ -491,7 +491,7 @@ Destination Unreachable
 
 ---
 
-# Common Causes
+## Common Causes
 
 Examples include:
 
@@ -504,7 +504,7 @@ Examples include:
 
 ---
 
-# Time Exceeded
+## Time Exceeded
 
 Type:
 
@@ -540,7 +540,7 @@ This message forms the basis of **Traceroute**.
 
 ---
 
-# Redirect Message
+## Redirect Message
 
 Type:
 
@@ -570,7 +570,7 @@ Modern enterprise networks often restrict ICMP Redirects because of security con
 
 ---
 
-# Parameter Problem
+## Parameter Problem
 
 Type:
 
@@ -588,7 +588,7 @@ Examples:
 
 ---
 
-# Enterprise Uses of ICMP
+## Enterprise Uses of ICMP
 
 ICMP supports many operational tasks:
 
@@ -602,7 +602,7 @@ ICMP supports many operational tasks:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An employee cannot access an internal application.
 
@@ -634,7 +634,7 @@ If Echo Replies are received, the engineer can conclude that IP connectivity exi
 
 ---
 
-# Business Impact
+## Business Impact
 
 ICMP contributes to:
 
@@ -649,7 +649,7 @@ Blocking all ICMP indiscriminately can hinder legitimate diagnostics and network
 
 ---
 
-# Advantages of ICMP
+## Advantages of ICMP
 
 - Simple protocol
 - Low overhead
@@ -660,7 +660,7 @@ Blocking all ICMP indiscriminately can hinder legitimate diagnostics and network
 
 ---
 
-# Limitations of ICMP
+## Limitations of ICMP
 
 - Not designed for application communication
 - Can be abused by attackers
@@ -670,7 +670,7 @@ Blocking all ICMP indiscriminately can hinder legitimate diagnostics and network
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - ICMP is a Layer 3 protocol used for diagnostics and error reporting.
 - It does not transport application data.
@@ -681,11 +681,11 @@ Blocking all ICMP indiscriminately can hinder legitimate diagnostics and network
 ---
 
 
-# Part 2 — ICMP Message Types, Traceroute, Path MTU Discovery (PMTUD), ICMPv4 vs ICMPv6, Enterprise Operations, and Advanced Concepts
+## Part 2 — ICMP Message Types, Traceroute, Path MTU Discovery (PMTUD), ICMPv4 vs ICMPv6, Enterprise Operations, and Advanced Concepts
 
 ---
 
-# Introduction
+## Introduction
 
 While **Ping** is the most widely recognized use of ICMP, it represents only a small portion of the protocol's capabilities.
 
@@ -703,11 +703,11 @@ Understanding these mechanisms is essential for Network Engineers, Cloud Enginee
 
 ---
 
-# ICMP Message Categories
+## ICMP Message Categories
 
 ICMP messages are classified into two primary categories.
 
-## Informational Messages
+### Informational Messages
 
 Used for diagnostics and operational communication.
 
@@ -718,7 +718,7 @@ Examples:
 
 ---
 
-## Error Messages
+### Error Messages
 
 Generated when network devices encounter problems forwarding packets.
 
@@ -731,7 +731,7 @@ Examples:
 
 ---
 
-# ICMP Message Types
+## ICMP Message Types
 
 Common ICMP message types include:
 
@@ -748,7 +748,7 @@ Each type may contain multiple **Code** values providing additional context.
 
 ---
 
-# Echo Request and Echo Reply
+## Echo Request and Echo Reply
 
 Echo Request:
 
@@ -782,7 +782,7 @@ This simple exchange forms the basis of connectivity testing.
 
 ---
 
-# Destination Unreachable
+## Destination Unreachable
 
 When a router or host cannot forward a packet, it generates a **Destination Unreachable** message.
 
@@ -808,7 +808,7 @@ ICMP Type 3
 
 ---
 
-# Destination Unreachable Codes
+## Destination Unreachable Codes
 
 | Code | Meaning |
 |------|---------|
@@ -821,7 +821,7 @@ ICMP Type 3
 
 ---
 
-# Host Unreachable
+## Host Unreachable
 
 Example:
 
@@ -850,7 +850,7 @@ Possible causes:
 
 ---
 
-# Port Unreachable
+## Port Unreachable
 
 Frequently observed with UDP applications.
 
@@ -874,7 +874,7 @@ Administrators often encounter this during UDP troubleshooting.
 
 ---
 
-# Fragmentation Needed
+## Fragmentation Needed
 
 Occurs when:
 
@@ -902,7 +902,7 @@ This message is essential for **Path MTU Discovery (PMTUD)**.
 
 ---
 
-# Time Exceeded
+## Time Exceeded
 
 Generated when the TTL reaches zero.
 
@@ -932,7 +932,7 @@ Traceroute depends on this behavior.
 
 ---
 
-# Time Exceeded Codes
+## Time Exceeded Codes
 
 | Code | Description |
 |------|-------------|
@@ -941,7 +941,7 @@ Traceroute depends on this behavior.
 
 ---
 
-# Redirect Messages
+## Redirect Messages
 
 Routers may inform hosts of a better gateway.
 
@@ -965,7 +965,7 @@ Modern enterprise environments rarely rely on redirects because static routing, 
 
 ---
 
-# Parameter Problem
+## Parameter Problem
 
 Generated when an IP header contains invalid information.
 
@@ -978,7 +978,7 @@ Examples include:
 
 ---
 
-# Traceroute
+## Traceroute
 
 Traceroute identifies every router between the source and destination.
 
@@ -1008,7 +1008,7 @@ Each router responds with **ICMP Time Exceeded** messages.
 
 ---
 
-# How Traceroute Works
+## How Traceroute Works
 
 Traceroute sends packets with gradually increasing TTL values.
 
@@ -1068,7 +1068,7 @@ depending on the implementation.
 
 ---
 
-# Traceroute Workflow
+## Traceroute Workflow
 
 ```
 Source
@@ -1106,7 +1106,7 @@ The resulting output displays each network hop.
 
 ---
 
-# Sample Traceroute
+## Sample Traceroute
 
 ```
 1   192.168.1.1
@@ -1128,7 +1128,7 @@ Each hop typically includes:
 
 ---
 
-# Why Traceroute Is Useful
+## Why Traceroute Is Useful
 
 Traceroute helps identify:
 
@@ -1141,7 +1141,7 @@ Traceroute helps identify:
 
 ---
 
-# Time To Live (TTL)
+## Time To Live (TTL)
 
 TTL prevents packets from circulating indefinitely.
 
@@ -1175,7 +1175,7 @@ Each router decreases the TTL by one.
 
 ---
 
-# Routing Loop Prevention
+## Routing Loop Prevention
 
 Without TTL:
 
@@ -1203,13 +1203,13 @@ TTL prevents endless forwarding.
 
 ---
 
-# Path MTU Discovery (PMTUD)
+## Path MTU Discovery (PMTUD)
 
 PMTUD determines the maximum packet size that can traverse a network path without fragmentation.
 
 ---
 
-# Why PMTUD Matters
+## Why PMTUD Matters
 
 Different network technologies support different Maximum Transmission Units (MTUs).
 
@@ -1226,7 +1226,7 @@ Applications benefit from transmitting packets that fit the available path MTU.
 
 ---
 
-# PMTUD Workflow
+## PMTUD Workflow
 
 ```
 Sender
@@ -1260,7 +1260,7 @@ This process repeats until packets traverse the path successfully.
 
 ---
 
-# Black Hole MTU
+## Black Hole MTU
 
 Problems occur when:
 
@@ -1288,7 +1288,7 @@ Blocking ICMP Type 3 Code 4 may prevent PMTUD from functioning correctly.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A VPN user cannot access a cloud application.
 
@@ -1318,7 +1318,7 @@ Reducing the interface MTU or permitting required ICMP messages resolves the iss
 
 ---
 
-# ICMPv4 vs ICMPv6
+## ICMPv4 vs ICMPv6
 
 Although similar, ICMPv6 performs significantly more functions than ICMPv4.
 
@@ -1335,7 +1335,7 @@ ICMPv6 is an integral component of IPv6 networking.
 
 ---
 
-# Neighbor Discovery Protocol (NDP)
+## Neighbor Discovery Protocol (NDP)
 
 IPv6 replaces ARP with **Neighbor Discovery Protocol (NDP)**.
 
@@ -1351,7 +1351,7 @@ NDP operates using ICMPv6 messages.
 
 ---
 
-# Router Advertisement (RA)
+## Router Advertisement (RA)
 
 Routers periodically advertise IPv6 network information.
 
@@ -1375,7 +1375,7 @@ Hosts use these advertisements during Stateless Address Autoconfiguration (SLAAC
 
 ---
 
-# Router Solicitation (RS)
+## Router Solicitation (RS)
 
 A host can request router information immediately.
 
@@ -1399,7 +1399,7 @@ This accelerates IPv6 network initialization.
 
 ---
 
-# Neighbor Solicitation (NS)
+## Neighbor Solicitation (NS)
 
 Neighbor Solicitation identifies another IPv6 host.
 
@@ -1419,7 +1419,7 @@ This replaces IPv4 ARP requests.
 
 ---
 
-# Neighbor Advertisement (NA)
+## Neighbor Advertisement (NA)
 
 Neighbor Advertisement provides the requested address information.
 
@@ -1437,7 +1437,7 @@ Host A
 
 ---
 
-# Duplicate Address Detection (DAD)
+## Duplicate Address Detection (DAD)
 
 Before using an IPv6 address:
 
@@ -1461,7 +1461,7 @@ If another device responds, the address is already in use.
 
 ---
 
-# Enterprise Monitoring
+## Enterprise Monitoring
 
 Network monitoring systems use ICMP to:
 
@@ -1481,7 +1481,7 @@ Common monitoring platforms include:
 
 ---
 
-# High Availability
+## High Availability
 
 Enterprise monitoring often performs continuous health checks.
 
@@ -1509,7 +1509,7 @@ Failed health checks may trigger automatic failover.
 
 ---
 
-# Cloud Networking
+## Cloud Networking
 
 Cloud providers use ICMP for diagnostics and health validation.
 
@@ -1534,7 +1534,7 @@ Firewall rules must explicitly permit required ICMP traffic where appropriate.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper ICMP operation enables:
 
@@ -1549,7 +1549,7 @@ Excessively restrictive ICMP filtering can unintentionally disrupt legitimate ne
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -1563,7 +1563,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - ICMP provides both informational and error-reporting messages.
 - Traceroute relies on **Time Exceeded** messages.
@@ -1573,11 +1573,11 @@ Organizations should:
 
 ---
 
-# Part 3 — ICMP Security, Attack Techniques, Hardening, IDS/IPS Detection, Cloud Security Considerations, and Enterprise Best Practices
+## Part 3 — ICMP Security, Attack Techniques, Hardening, IDS/IPS Detection, Cloud Security Considerations, and Enterprise Best Practices
 
 ---
 
-# Introduction
+## Introduction
 
 ICMP is indispensable for network diagnostics and operational visibility, but like any network protocol, it can also be misused by attackers.
 
@@ -1595,7 +1595,7 @@ For this reason, enterprise security teams should **monitor, filter, and log ICM
 
 ---
 
-# ICMP Security Objectives
+## ICMP Security Objectives
 
 Enterprise ICMP security aims to ensure:
 
@@ -1610,7 +1610,7 @@ Enterprise ICMP security aims to ensure:
 
 ---
 
-# Common ICMP Threats
+## Common ICMP Threats
 
 Organizations commonly encounter:
 
@@ -1629,9 +1629,9 @@ Each threat targets different aspects of network infrastructure.
 
 ---
 
-# ICMP Flood Attack
+## ICMP Flood Attack
 
-## Overview
+### Overview
 
 An ICMP Flood overwhelms a target by sending a very large number of ICMP Echo Requests.
 
@@ -1663,7 +1663,7 @@ Large-scale floods often form part of Distributed Denial-of-Service (DDoS) campa
 
 ---
 
-# Business Impact
+## Business Impact
 
 Possible consequences include:
 
@@ -1677,7 +1677,7 @@ Possible consequences include:
 
 ---
 
-# Detection
+## Detection
 
 Indicators include:
 
@@ -1689,7 +1689,7 @@ Indicators include:
 
 ---
 
-# Mitigation
+## Mitigation
 
 Recommended controls:
 
@@ -1702,7 +1702,7 @@ Recommended controls:
 
 ---
 
-# Ping Flood
+## Ping Flood
 
 A Ping Flood is a specific type of ICMP Flood using Echo Requests.
 
@@ -1726,9 +1726,9 @@ Because each request requires processing, excessive volumes can exhaust network 
 
 ---
 
-# Smurf Attack
+## Smurf Attack
 
-## Overview
+### Overview
 
 The Smurf Attack is a classic reflection attack.
 
@@ -1762,7 +1762,7 @@ Multiple devices simultaneously respond, amplifying traffic toward the victim.
 
 ---
 
-# Why Smurf Attacks Worked
+## Why Smurf Attacks Worked
 
 Older networks allowed directed broadcasts.
 
@@ -1782,7 +1782,7 @@ Modern routers typically disable directed broadcasts by default, greatly reducin
 
 ---
 
-# Ping Sweep
+## Ping Sweep
 
 Attackers use Ping Sweeps to identify active hosts.
 
@@ -1808,7 +1808,7 @@ Each responding host is likely online.
 
 ---
 
-# Business Impact of Ping Sweeps
+## Business Impact of Ping Sweeps
 
 Ping Sweeps help attackers:
 
@@ -1820,7 +1820,7 @@ Ping Sweeps help attackers:
 
 ---
 
-# ICMP Reconnaissance
+## ICMP Reconnaissance
 
 Attackers may gather valuable information using ICMP.
 
@@ -1836,7 +1836,7 @@ This information often supports later exploitation attempts.
 
 ---
 
-# ICMP Tunneling
+## ICMP Tunneling
 
 ICMP Tunneling encapsulates other protocols within ICMP packets.
 
@@ -1860,7 +1860,7 @@ Because ICMP is commonly permitted for diagnostics, attackers may attempt to hid
 
 ---
 
-# Common ICMP Tunnel Uses
+## Common ICMP Tunnel Uses
 
 Threat actors may use tunneling for:
 
@@ -1873,7 +1873,7 @@ Legitimate administrators should avoid assuming that all ICMP traffic is benign.
 
 ---
 
-# Covert Channels
+## Covert Channels
 
 Sensitive information can be concealed within ICMP payloads.
 
@@ -1897,7 +1897,7 @@ Security monitoring should inspect ICMP traffic patterns where feasible.
 
 ---
 
-# ICMP Redirect Abuse
+## ICMP Redirect Abuse
 
 ICMP Redirect messages instruct hosts to use a different gateway.
 
@@ -1921,7 +1921,7 @@ If accepted, attackers may redirect traffic through unauthorized systems.
 
 ---
 
-# PMTUD Manipulation
+## PMTUD Manipulation
 
 Attackers can interfere with Path MTU Discovery by generating forged fragmentation-related messages.
 
@@ -1935,7 +1935,7 @@ Systems should validate network behavior and rely on trusted infrastructure.
 
 ---
 
-# ICMP-Based Malware
+## ICMP-Based Malware
 
 Some malware families use ICMP for:
 
@@ -1954,7 +1954,7 @@ Indicators include:
 
 ---
 
-# Firewall Protection
+## Firewall Protection
 
 Firewalls should permit only the ICMP message types required for normal operations.
 
@@ -1969,7 +1969,7 @@ Avoid blanket blocking of all ICMP traffic.
 
 ---
 
-# Access Control Lists (ACLs)
+## Access Control Lists (ACLs)
 
 ACLs can restrict ICMP access.
 
@@ -1999,7 +1999,7 @@ Policies should align with operational requirements.
 
 ---
 
-# ICMP Rate Limiting
+## ICMP Rate Limiting
 
 Rate limiting helps reduce abuse.
 
@@ -2023,7 +2023,7 @@ Critical monitoring traffic should continue while excessive requests are control
 
 ---
 
-# Router Protection
+## Router Protection
 
 Routers should protect their control plane from excessive ICMP traffic.
 
@@ -2038,7 +2038,7 @@ These controls help preserve routing stability during attacks.
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Critical infrastructure should be isolated.
 
@@ -2066,7 +2066,7 @@ Segmentation limits attacker movement and reduces unnecessary ICMP exposure.
 
 ---
 
-# IDS Detection
+## IDS Detection
 
 Intrusion Detection Systems monitor ICMP for:
 
@@ -2086,7 +2086,7 @@ Common IDS platforms include:
 
 ---
 
-# IPS Protection
+## IPS Protection
 
 Intrusion Prevention Systems can:
 
@@ -2100,7 +2100,7 @@ Automated responses should be carefully tuned to avoid disrupting legitimate dia
 
 ---
 
-# Linux Hardening
+## Linux Hardening
 
 Recommended practices:
 
@@ -2126,7 +2126,7 @@ Keep systems updated and disable unnecessary services.
 
 ---
 
-# Windows Hardening
+## Windows Hardening
 
 Recommended practices:
 
@@ -2138,7 +2138,7 @@ Recommended practices:
 
 ---
 
-# Cisco Hardening
+## Cisco Hardening
 
 Cisco devices support:
 
@@ -2152,7 +2152,7 @@ These mechanisms help protect network infrastructure from ICMP abuse.
 
 ---
 
-# Cloud Security
+## Cloud Security
 
 Cloud platforms provide controls for ICMP traffic.
 
@@ -2179,7 +2179,7 @@ Security policies should allow only the ICMP traffic necessary for operations an
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -2195,7 +2195,7 @@ Organizations should:
 
 ---
 
-# SOC Detection Engineering
+## SOC Detection Engineering
 
 SOC analysts should monitor:
 
@@ -2211,7 +2211,7 @@ Correlating ICMP activity with DNS, endpoint, authentication, and firewall logs 
 
 ---
 
-# Zeek Monitoring
+## Zeek Monitoring
 
 Useful Zeek logs include:
 
@@ -2232,7 +2232,7 @@ Analysts should establish baselines to identify abnormal ICMP behavior.
 
 ---
 
-# Suricata Monitoring
+## Suricata Monitoring
 
 Suricata can detect:
 
@@ -2247,7 +2247,7 @@ Alerts should be forwarded to the SIEM for correlation and response.
 
 ---
 
-# Sigma Detection Ideas
+## Sigma Detection Ideas
 
 Potential detection rules include:
 
@@ -2261,7 +2261,7 @@ Detection thresholds should be customized based on normal network behavior.
 
 ---
 
-# MITRE ATT&CK Mapping
+## MITRE ATT&CK Mapping
 
 | Activity | ATT&CK Technique |
 |-----------|------------------|
@@ -2273,7 +2273,7 @@ Detection thresholds should be customized based on normal network behavior.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Improperly secured ICMP can lead to:
 
@@ -2288,7 +2288,7 @@ A balanced ICMP security strategy preserves diagnostics while reducing risk.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - ICMP is essential for diagnostics but can also be abused by attackers.
 - Common threats include ICMP Floods, Ping Sweeps, Smurf attacks, tunneling, and covert channels.
@@ -2299,11 +2299,11 @@ A balanced ICMP security strategy preserves diagnostics while reducing risk.
 ---
 
 
-# Part 4 — ICMP Packet Analysis, Wireshark, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, RFC References, Summary, and Chapter Review
+## Part 4 — ICMP Packet Analysis, Wireshark, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, RFC References, Summary, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 ICMP plays a vital role in enterprise network operations, troubleshooting, and security monitoring.
 
@@ -2322,7 +2322,7 @@ Understanding ICMP traffic is an essential skill for Network Engineers, SOC Anal
 
 ---
 
-# ICMP Packet Analysis
+## ICMP Packet Analysis
 
 An ICMP packet is encapsulated inside an IP packet.
 
@@ -2342,7 +2342,7 @@ Unlike TCP or UDP, there are no transport-layer ports.
 
 ---
 
-# ICMP Header Format
+## ICMP Header Format
 
 Basic ICMP header:
 
@@ -2362,7 +2362,7 @@ Header contents vary depending on the ICMP message type.
 
 ---
 
-# ICMP Header Fields
+## ICMP Header Fields
 
 | Field | Size | Description |
 |--------|------|-------------|
@@ -2373,7 +2373,7 @@ Header contents vary depending on the ICMP message type.
 
 ---
 
-# Echo Request Packet
+## Echo Request Packet
 
 Typical Ping request:
 
@@ -2403,7 +2403,7 @@ Contains:
 
 ---
 
-# Echo Reply Packet
+## Echo Reply Packet
 
 Response:
 
@@ -2427,7 +2427,7 @@ The Identifier and Sequence Number allow the sender to match replies with reques
 
 ---
 
-# Destination Unreachable Packet
+## Destination Unreachable Packet
 
 Generated when delivery fails.
 
@@ -2451,7 +2451,7 @@ The packet includes part of the original IP header and payload to help identify 
 
 ---
 
-# Time Exceeded Packet
+## Time Exceeded Packet
 
 Generated when the packet's TTL reaches zero.
 
@@ -2477,7 +2477,7 @@ Traceroute relies on these responses to discover intermediate routers.
 
 ---
 
-# Wireshark
+## Wireshark
 
 Wireshark provides extensive support for ICMP analysis.
 
@@ -2492,7 +2492,7 @@ Common use cases include:
 
 ---
 
-# Basic Display Filters
+## Basic Display Filters
 
 Display all ICMP traffic:
 
@@ -2558,7 +2558,7 @@ icmpv6
 
 ---
 
-# Ping Packet Analysis
+## Ping Packet Analysis
 
 Verify:
 
@@ -2582,7 +2582,7 @@ Echo Reply
 
 ---
 
-# Traceroute Analysis
+## Traceroute Analysis
 
 Observe:
 
@@ -2624,7 +2624,7 @@ Destination
 
 ---
 
-# Path MTU Discovery Analysis
+## Path MTU Discovery Analysis
 
 Verify:
 
@@ -2652,7 +2652,7 @@ If ICMP Type 3 Code 4 messages are blocked, PMTUD may fail.
 
 ---
 
-# Latency Analysis
+## Latency Analysis
 
 Ping measures Round-Trip Time (RTT).
 
@@ -2683,7 +2683,7 @@ Persistent increases in RTT may indicate:
 
 ---
 
-# Packet Loss Analysis
+## Packet Loss Analysis
 
 Example:
 
@@ -2715,7 +2715,7 @@ Possible causes:
 
 ---
 
-# Cisco IOS Verification
+## Cisco IOS Verification
 
 Verify interface status:
 
@@ -2749,7 +2749,7 @@ show policy-map control-plane
 
 ---
 
-# Linux Verification
+## Linux Verification
 
 Send Echo Requests:
 
@@ -2783,7 +2783,7 @@ ip -s link
 
 ---
 
-# Windows Verification
+## Windows Verification
 
 Ping:
 
@@ -2817,7 +2817,7 @@ Get-NetIPConfiguration
 
 ---
 
-# Enterprise Troubleshooting Methodology
+## Enterprise Troubleshooting Methodology
 
 A systematic workflow improves diagnosis and resolution.
 
@@ -2867,14 +2867,14 @@ Monitor
 
 ---
 
-# Scenario 1 — Host Unreachable
+## Scenario 1 — Host Unreachable
 
-### Symptoms
+#### Symptoms
 
 - Ping fails.
 - Applications cannot connect.
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -2887,9 +2887,9 @@ Check:
 
 ---
 
-# Scenario 2 — Traceroute Stops Midway
+## Scenario 2 — Traceroute Stops Midway
 
-### Symptoms
+#### Symptoms
 
 Traceroute times out after several hops.
 
@@ -2903,9 +2903,9 @@ Possible causes:
 
 ---
 
-# Scenario 3 — PMTUD Failure
+## Scenario 3 — PMTUD Failure
 
-### Symptoms
+#### Symptoms
 
 - VPN connections hang.
 - Large file transfers fail.
@@ -2920,9 +2920,9 @@ Investigation:
 
 ---
 
-# Scenario 4 — High Latency
+## Scenario 4 — High Latency
 
-### Symptoms
+#### Symptoms
 
 - Slow applications
 - Poor VoIP quality
@@ -2938,9 +2938,9 @@ Investigate:
 
 ---
 
-# Scenario 5 — ICMP Flood
+## Scenario 5 — ICMP Flood
 
-### Symptoms
+#### Symptoms
 
 - High CPU utilization
 - Excessive ICMP traffic
@@ -2957,7 +2957,7 @@ Investigation:
 
 ---
 
-# SOC Detection Engineering
+## SOC Detection Engineering
 
 SOC teams monitor ICMP to detect:
 
@@ -2973,11 +2973,11 @@ ICMP telemetry should be correlated with DNS, firewall, endpoint, and authentica
 
 ---
 
-# SIEM Detection Ideas
+## SIEM Detection Ideas
 
 Examples include:
 
-### Ping Sweep
+#### Ping Sweep
 
 ```
 Single Host
@@ -2997,7 +2997,7 @@ Alert
 
 ---
 
-### ICMP Flood
+#### ICMP Flood
 
 ```
 Host
@@ -3017,7 +3017,7 @@ Alert
 
 ---
 
-### Large ICMP Payload
+#### Large ICMP Payload
 
 ```
 Payload
@@ -3033,7 +3033,7 @@ Alert
 
 ---
 
-### ICMP Tunnel Indicators
+#### ICMP Tunnel Indicators
 
 ```
 Repeated ICMP
@@ -3055,7 +3055,7 @@ Detection thresholds should be tuned to match the organization's environment.
 
 ---
 
-# Zeek Monitoring
+## Zeek Monitoring
 
 Useful Zeek logs:
 
@@ -3074,7 +3074,7 @@ Important fields:
 
 ---
 
-# Suricata Monitoring
+## Suricata Monitoring
 
 Suricata can detect:
 
@@ -3089,7 +3089,7 @@ Alerts should be forwarded to the SIEM for correlation and response.
 
 ---
 
-# Sigma Detection Ideas
+## Sigma Detection Ideas
 
 Potential detection rules:
 
@@ -3102,7 +3102,7 @@ Potential detection rules:
 
 ---
 
-# MITRE ATT&CK Mapping
+## MITRE ATT&CK Mapping
 
 | Activity | ATT&CK Technique |
 |-----------|------------------|
@@ -3114,7 +3114,7 @@ Potential detection rules:
 
 ---
 
-# Practical Lab 1 — Basic Ping Analysis
+## Practical Lab 1 — Basic Ping Analysis
 
 Objective:
 
@@ -3130,7 +3130,7 @@ Tasks:
 
 ---
 
-# Practical Lab 2 — Traceroute Investigation
+## Practical Lab 2 — Traceroute Investigation
 
 Tasks:
 
@@ -3142,7 +3142,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — ICMP Packet Capture
+## Practical Lab 3 — ICMP Packet Capture
 
 Tasks:
 
@@ -3164,7 +3164,7 @@ icmp
 
 ---
 
-# Practical Lab 4 — PMTUD Testing
+## Practical Lab 4 — PMTUD Testing
 
 Tasks:
 
@@ -3175,7 +3175,7 @@ Tasks:
 
 ---
 
-# Practical Lab 5 — ICMP Security Monitoring
+## Practical Lab 5 — ICMP Security Monitoring
 
 Tasks:
 
@@ -3186,13 +3186,13 @@ Tasks:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A multinational enterprise experiences intermittent connectivity issues between branch offices and a cloud-hosted ERP system.
 
-### Investigation
+#### Investigation
 
 Engineers observe:
 
@@ -3202,14 +3202,14 @@ Engineers observe:
 - Blocked ICMP Fragmentation Needed messages.
 - VPN MTU mismatch.
 
-### Resolution
+#### Resolution
 
 - Adjust tunnel MTU.
 - Permit required ICMP Type 3 Code 4 messages.
 - Optimize QoS policies.
 - Coordinate with the ISP to resolve routing instability.
 
-### Outcome
+#### Outcome
 
 - Stable VPN connectivity.
 - Improved application performance.
@@ -3219,37 +3219,37 @@ Engineers observe:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is ICMP?
+#### What is ICMP?
 
 ICMP (Internet Control Message Protocol) is a Layer 3 protocol used for error reporting, diagnostics, and operational messaging in IP networks.
 
 ---
 
-### Which command uses ICMP to test connectivity?
+#### Which command uses ICMP to test connectivity?
 
 **Ping** uses ICMP Echo Request and Echo Reply messages.
 
 ---
 
-### What does Traceroute use to identify routers?
+#### What does Traceroute use to identify routers?
 
 Traceroute relies on **ICMP Time Exceeded** messages generated when the TTL reaches zero.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### Why is ICMP important for Path MTU Discovery?
+#### Why is ICMP important for Path MTU Discovery?
 
 PMTUD depends on **ICMP Destination Unreachable (Type 3, Code 4)** messages to notify the sender that packets are too large to traverse the network without fragmentation.
 
 ---
 
-### Why shouldn't all ICMP traffic be blocked?
+#### Why shouldn't all ICMP traffic be blocked?
 
 Blocking all ICMP can interfere with:
 
@@ -3263,22 +3263,22 @@ A selective filtering approach is generally recommended.
 
 ---
 
-### Explain the difference between Ping and Traceroute.
+#### Explain the difference between Ping and Traceroute.
 
 - **Ping** verifies reachability and measures RTT using Echo Request and Echo Reply messages.
 - **Traceroute** identifies the path to a destination by sending packets with incrementally increasing TTL values and observing ICMP Time Exceeded responses.
 
 ---
 
-## Advanced
+### Advanced
 
-### Explain a Smurf attack.
+#### Explain a Smurf attack.
 
 A Smurf attack is an ICMP amplification attack in which an attacker sends spoofed Echo Requests to a broadcast address, causing multiple hosts to send Echo Replies to the victim.
 
 ---
 
-### How would you troubleshoot intermittent ICMP packet loss?
+#### How would you troubleshoot intermittent ICMP packet loss?
 
 A structured approach includes:
 
@@ -3292,7 +3292,7 @@ A structured approach includes:
 
 ---
 
-### How do SOC teams detect ICMP tunneling?
+#### How do SOC teams detect ICMP tunneling?
 
 Analysts monitor for:
 
@@ -3304,7 +3304,7 @@ Analysts monitor for:
 
 ---
 
-# RFC References
+## RFC References
 
 Key ICMP-related RFCs include:
 
@@ -3318,13 +3318,13 @@ Key ICMP-related RFCs include:
 
 ---
 
-# Summary
+## Summary
 
 ICMP is a foundational protocol for diagnostics, error reporting, and operational visibility in IP networks. It powers tools such as Ping and Traceroute, supports Path MTU Discovery, and is integral to IPv6 through Neighbor Discovery. While ICMP can be exploited for reconnaissance, tunneling, and denial-of-service attacks, enterprise environments can safely leverage it through selective filtering, monitoring, rate limiting, and strong detection engineering practices.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -3362,7 +3362,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`15-Network-Devices.md`**, covers:
 

@@ -1,12 +1,12 @@
 # 09-HTML-CSS-JavaScript-Security.md
 
-# Part 1 — Introduction to HTML, CSS, JavaScript, Browser Rendering, DOM, and Client-Side Security Fundamentals
+## Part 1 — Introduction to HTML, CSS, JavaScript, Browser Rendering, DOM, and Client-Side Security Fundamentals
 
 > **"Every web page is built using HTML, CSS, and JavaScript. Understanding how browsers interpret these technologies is essential for identifying client-side vulnerabilities such as XSS, DOM manipulation flaws, insecure JavaScript, and UI-based attacks."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -24,7 +24,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Every modern website consists of three core technologies:
 
@@ -56,7 +56,7 @@ Together they create interactive web applications.
 
 ---
 
-# HTML
+## HTML
 
 HTML stands for:
 
@@ -76,7 +76,7 @@ HTML defines the **structure** of a webpage.
 
 ---
 
-# HTML Responsibilities
+## HTML Responsibilities
 
 HTML describes:
 
@@ -94,7 +94,7 @@ Think of HTML as the **skeleton** of a webpage.
 
 ---
 
-# HTML Example
+## HTML Example
 
 ```
 Page
@@ -116,7 +116,7 @@ Without HTML, browsers have no structure to display.
 
 ---
 
-# CSS
+## CSS
 
 CSS stands for:
 
@@ -136,7 +136,7 @@ CSS controls the appearance of HTML.
 
 ---
 
-# CSS Responsibilities
+## CSS Responsibilities
 
 CSS defines:
 
@@ -153,7 +153,7 @@ Think of CSS as the **skin and clothing** of a webpage.
 
 ---
 
-# CSS Example
+## CSS Example
 
 Without CSS:
 
@@ -177,7 +177,7 @@ Responsive Layout
 
 ---
 
-# JavaScript
+## JavaScript
 
 JavaScript provides interactivity.
 
@@ -196,7 +196,7 @@ Think of JavaScript as the **brain and muscles** of the webpage.
 
 ---
 
-# HTML + CSS + JavaScript Together
+## HTML + CSS + JavaScript Together
 
 ```
 HTML
@@ -228,7 +228,7 @@ Modern Website
 
 ---
 
-# Browser Rendering Process
+## Browser Rendering Process
 
 When visiting a website:
 
@@ -268,7 +268,7 @@ Each stage influences how the page is displayed.
 
 ---
 
-# What is the DOM?
+## What is the DOM?
 
 DOM stands for:
 
@@ -288,7 +288,7 @@ The DOM is an in-memory representation of the webpage created by the browser.
 
 ---
 
-# DOM Tree
+## DOM Tree
 
 Example page:
 
@@ -320,7 +320,7 @@ Every HTML element becomes a DOM node.
 
 ---
 
-# Why DOM Matters
+## Why DOM Matters
 
 JavaScript does **not** directly modify HTML files.
 
@@ -346,7 +346,7 @@ The browser updates the visible page based on DOM changes.
 
 ---
 
-# Browser Parsing
+## Browser Parsing
 
 The browser reads HTML from top to bottom.
 
@@ -370,7 +370,7 @@ Malformed HTML may lead to unexpected rendering behavior.
 
 ---
 
-# HTML Elements
+## HTML Elements
 
 Common HTML elements include:
 
@@ -389,7 +389,7 @@ Common HTML elements include:
 
 ---
 
-# HTML Attributes
+## HTML Attributes
 
 Elements often contain attributes.
 
@@ -409,7 +409,7 @@ Attributes provide additional information and behavior.
 
 ---
 
-# CSS Selectors
+## CSS Selectors
 
 CSS targets HTML elements using selectors.
 
@@ -426,7 +426,7 @@ Selectors determine which elements receive styling.
 
 ---
 
-# CSS Cascade
+## CSS Cascade
 
 When multiple rules apply:
 
@@ -450,7 +450,7 @@ Understanding precedence helps avoid unexpected styling.
 
 ---
 
-# JavaScript Execution
+## JavaScript Execution
 
 JavaScript executes inside the browser.
 
@@ -474,7 +474,7 @@ Modern browsers execute JavaScript using optimized engines.
 
 ---
 
-# JavaScript Can
+## JavaScript Can
 
 JavaScript can:
 
@@ -489,7 +489,7 @@ JavaScript can:
 
 ---
 
-# Client-Side vs Server-Side
+## Client-Side vs Server-Side
 
 ```
 Browser
@@ -527,7 +527,7 @@ The client focuses on presentation and interaction, while the server performs tr
 
 ---
 
-# Why Client-Side Security Matters
+## Why Client-Side Security Matters
 
 Browsers execute code received from web servers.
 
@@ -553,7 +553,7 @@ Many web attacks target client-side execution.
 
 ---
 
-# Browser Trust Model
+## Browser Trust Model
 
 A browser assumes that:
 
@@ -573,7 +573,7 @@ Security mechanisms such as the Same-Origin Policy (SOP), Content Security Polic
 
 ---
 
-# Enterprise Frontend Architecture
+## Enterprise Frontend Architecture
 
 ```
 Browser
@@ -607,7 +607,7 @@ The frontend communicates with backend services through APIs.
 
 ---
 
-# Frontend Security Goals
+## Frontend Security Goals
 
 A secure frontend should:
 
@@ -621,7 +621,7 @@ A secure frontend should:
 
 ---
 
-# Common Client-Side Risks (Overview)
+## Common Client-Side Risks (Overview)
 
 Common categories include:
 
@@ -637,7 +637,7 @@ Each topic will be covered in later chapters.
 
 ---
 
-# Real Enterprise Example
+## Real Enterprise Example
 
 An online banking portal loads:
 
@@ -677,7 +677,7 @@ The security of each layer contributes to the overall security of the applicatio
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser:
 
@@ -691,7 +691,7 @@ Using your browser:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are the roles of HTML, CSS, and JavaScript?
 2. What is the DOM?
@@ -706,7 +706,7 @@ Using your browser:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Separate structure, presentation, and behavior.
 - Use semantic HTML where appropriate.
@@ -718,7 +718,7 @@ Using your browser:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming client-side validation alone provides security.
 - Exposing sensitive information in HTML or JavaScript.
@@ -729,7 +729,7 @@ Using your browser:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - HTML provides the structure of a webpage, CSS controls its presentation, and JavaScript enables interactivity.
 - Browsers parse HTML, build the DOM, apply CSS, execute JavaScript, and render the page.
@@ -737,15 +737,15 @@ Using your browser:
 - Client-side code improves user experience but should never be treated as a trusted security boundary.
 - Understanding frontend technologies is essential before studying vulnerabilities such as XSS, DOM-based attacks, and insecure client-side logic.
 
-# 09-HTML-CSS-JavaScript-Security.md
+## 09-HTML-CSS-JavaScript-Security.md
 
-# Part 2 — HTML Forms, CSS Security, JavaScript Execution, DOM Manipulation, Events, Browser APIs, and Client-Side Attack Surface
+## Part 2 — HTML Forms, CSS Security, JavaScript Execution, DOM Manipulation, Events, Browser APIs, and Client-Side Attack Surface
 
 > **"Every interactive webpage relies on forms, JavaScript events, DOM manipulation, and browser APIs. Understanding how these components work is essential before learning advanced client-side attacks such as XSS, DOM-based vulnerabilities, and clickjacking."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -764,7 +764,7 @@ After completing this part, you will understand:
 
 ---
 
-# HTML Forms
+## HTML Forms
 
 Forms allow users to submit information to web applications.
 
@@ -792,7 +792,7 @@ Forms are one of the primary interaction points between users and applications.
 
 ---
 
-# Common Form Elements
+## Common Form Elements
 
 ```
 Form
@@ -818,7 +818,7 @@ Form
 
 ---
 
-# Typical Form Workflow
+## Typical Form Workflow
 
 ```
 User Input
@@ -848,7 +848,7 @@ Both client-side and server-side validation are important.
 
 ---
 
-# HTML5 Input Types
+## HTML5 Input Types
 
 Modern HTML supports specialized input types.
 
@@ -868,7 +868,7 @@ These types improve usability and enable basic browser validation.
 
 ---
 
-# Client-Side Validation
+## Client-Side Validation
 
 Browsers can validate user input before submission.
 
@@ -902,7 +902,7 @@ Display Error
 
 ---
 
-# Important Security Principle
+## Important Security Principle
 
 Client-side validation improves usability but **must never be considered a security control**.
 
@@ -922,7 +922,7 @@ Attackers can modify or completely bypass client-side validation.
 
 ---
 
-# HTML5 Validation Examples
+## HTML5 Validation Examples
 
 Browsers may validate:
 
@@ -937,7 +937,7 @@ These checks help users but do not replace backend validation.
 
 ---
 
-# CSS Rendering
+## CSS Rendering
 
 After HTML parsing:
 
@@ -969,7 +969,7 @@ CSS determines how the page appears.
 
 ---
 
-# CSS Inheritance
+## CSS Inheritance
 
 Some properties automatically inherit.
 
@@ -993,7 +993,7 @@ Inherited properties reduce repetitive styling.
 
 ---
 
-# CSS Specificity
+## CSS Specificity
 
 Multiple rules may match the same element.
 
@@ -1017,7 +1017,7 @@ More specific selectors generally take precedence.
 
 ---
 
-# CSS Box Model
+## CSS Box Model
 
 Every HTML element is treated as a box.
 
@@ -1045,7 +1045,7 @@ Understanding the box model is important for layout and UI analysis.
 
 ---
 
-# CSS Positioning
+## CSS Positioning
 
 Common positioning modes:
 
@@ -1059,7 +1059,7 @@ These influence where elements appear on the page.
 
 ---
 
-# Responsive Design
+## Responsive Design
 
 Modern websites adapt to different screen sizes.
 
@@ -1079,7 +1079,7 @@ Responsive layouts improve usability across devices.
 
 ---
 
-# JavaScript Execution
+## JavaScript Execution
 
 JavaScript executes after the browser loads or encounters scripts.
 
@@ -1103,7 +1103,7 @@ Execution timing affects page behavior and performance.
 
 ---
 
-# JavaScript Lifecycle
+## JavaScript Lifecycle
 
 ```
 Page Loads
@@ -1131,7 +1131,7 @@ DOM Updates
 
 ---
 
-# Variables
+## Variables
 
 JavaScript stores information in variables.
 
@@ -1147,7 +1147,7 @@ Variables are fundamental to application logic.
 
 ---
 
-# Functions
+## Functions
 
 Functions perform reusable operations.
 
@@ -1171,7 +1171,7 @@ Functions help organize application code.
 
 ---
 
-# Conditional Logic
+## Conditional Logic
 
 Applications make decisions based on conditions.
 
@@ -1201,7 +1201,7 @@ Action B
 
 ---
 
-# Loops
+## Loops
 
 Loops repeat operations.
 
@@ -1229,7 +1229,7 @@ Loops are commonly used when processing collections of data.
 
 ---
 
-# JavaScript Events
+## JavaScript Events
 
 Events represent user or browser actions.
 
@@ -1245,7 +1245,7 @@ Examples:
 
 ---
 
-# Event Flow
+## Event Flow
 
 ```
 User Action
@@ -1269,7 +1269,7 @@ DOM Update
 
 ---
 
-# Common Browser Events
+## Common Browser Events
 
 | Event | Trigger |
 |--------|----------|
@@ -1284,7 +1284,7 @@ DOM Update
 
 ---
 
-# Event Listeners
+## Event Listeners
 
 JavaScript can wait for specific events.
 
@@ -1308,7 +1308,7 @@ This enables interactive applications.
 
 ---
 
-# DOM Manipulation
+## DOM Manipulation
 
 JavaScript can modify the DOM dynamically.
 
@@ -1330,7 +1330,7 @@ Browser Display
 
 ---
 
-# Common DOM Operations
+## Common DOM Operations
 
 Applications commonly:
 
@@ -1344,7 +1344,7 @@ Applications commonly:
 
 ---
 
-# Dynamic Web Pages
+## Dynamic Web Pages
 
 Instead of reloading:
 
@@ -1368,7 +1368,7 @@ Modern Single Page Applications (SPAs) rely heavily on this approach.
 
 ---
 
-# Browser APIs
+## Browser APIs
 
 Browsers provide built-in APIs that JavaScript can use.
 
@@ -1384,7 +1384,7 @@ Examples:
 
 ---
 
-# Fetch API
+## Fetch API
 
 JavaScript can request data from servers.
 
@@ -1412,7 +1412,7 @@ This enables asynchronous web applications.
 
 ---
 
-# Storage APIs
+## Storage APIs
 
 Browsers provide several storage mechanisms.
 
@@ -1434,7 +1434,7 @@ Each storage option has different security and persistence characteristics.
 
 ---
 
-# History API
+## History API
 
 The History API allows applications to change URLs without reloading pages.
 
@@ -1458,7 +1458,7 @@ This is commonly used in Single Page Applications.
 
 ---
 
-# Notification API
+## Notification API
 
 Applications can display browser notifications.
 
@@ -1482,7 +1482,7 @@ Notifications require explicit user consent.
 
 ---
 
-# Geolocation API
+## Geolocation API
 
 Applications may request location information.
 
@@ -1506,7 +1506,7 @@ Access is controlled by browser permissions.
 
 ---
 
-# Client-Side Attack Surface
+## Client-Side Attack Surface
 
 Everything executing inside the browser contributes to the client-side attack surface.
 
@@ -1536,7 +1536,7 @@ Each component should be considered during security reviews.
 
 ---
 
-# Third-Party JavaScript
+## Third-Party JavaScript
 
 Many applications load external libraries.
 
@@ -1563,7 +1563,7 @@ Organizations should carefully review and monitor third-party dependencies.
 
 ---
 
-# Enterprise Frontend Architecture
+## Enterprise Frontend Architecture
 
 ```
 Browser
@@ -1601,7 +1601,7 @@ JavaScript coordinates communication between the user interface and backend serv
 
 ---
 
-# Real Enterprise Example
+## Real Enterprise Example
 
 An online shopping application works as follows:
 
@@ -1641,7 +1641,7 @@ No full page refresh is required, improving responsiveness.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser's Developer Tools:
 
@@ -1654,7 +1654,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an HTML form?
 2. Why is server-side validation mandatory?
@@ -1669,7 +1669,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate input on both the client and server.
 - Use semantic HTML and accessible form controls.
@@ -1681,7 +1681,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting client-side validation for security.
 - Loading unnecessary third-party libraries.
@@ -1692,7 +1692,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - HTML forms are the primary interface for collecting user input.
 - Client-side validation improves user experience but must always be backed by server-side validation.
@@ -1700,15 +1700,15 @@ Using your browser's Developer Tools:
 - JavaScript enables interactivity through events, DOM manipulation, and browser APIs.
 - Browser APIs and third-party scripts expand application capabilities but also increase the client-side attack surface.
 
-# 09-HTML-CSS-JavaScript-Security.md
+## 09-HTML-CSS-JavaScript-Security.md
 
-# Part 3 — JavaScript Security, Browser Storage Security, Same-Origin Policy, CORS, Client-Side Security Controls, and Common Vulnerabilities
+## Part 3 — JavaScript Security, Browser Storage Security, Same-Origin Policy, CORS, Client-Side Security Controls, and Common Vulnerabilities
 
 > **"Most client-side attacks do not exploit the browser itself—they exploit insecure JavaScript, improper trust assumptions, unsafe storage, and weak communication between the browser and web applications."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1727,7 +1727,7 @@ After completing this part, you will understand:
 
 ---
 
-# JavaScript Security
+## JavaScript Security
 
 JavaScript executes with the permissions granted to the webpage.
 
@@ -1755,7 +1755,7 @@ If malicious JavaScript executes, it may interact with resources that the webpag
 
 ---
 
-# JavaScript Trust Model
+## JavaScript Trust Model
 
 The browser downloads JavaScript from the server.
 
@@ -1779,7 +1779,7 @@ Because browsers execute delivered scripts, applications must ensure only truste
 
 ---
 
-# Why Client-Side Code Cannot Be Trusted
+## Why Client-Side Code Cannot Be Trusted
 
 Everything delivered to the browser is visible to users.
 
@@ -1812,7 +1812,7 @@ Therefore:
 
 ---
 
-# Security Principle
+## Security Principle
 
 Never assume the browser is a trusted environment.
 
@@ -1836,7 +1836,7 @@ Sensitive decisions must always be enforced on the server.
 
 ---
 
-# Client-Side vs Server-Side Security
+## Client-Side vs Server-Side Security
 
 | Client Side | Server Side |
 |-------------|-------------|
@@ -1848,7 +1848,7 @@ Sensitive decisions must always be enforced on the server.
 
 ---
 
-# Browser Storage
+## Browser Storage
 
 Modern browsers provide multiple storage mechanisms.
 
@@ -1870,7 +1870,7 @@ Each mechanism has different security characteristics.
 
 ---
 
-# Cookies
+## Cookies
 
 Cookies are small pieces of data stored by the browser.
 
@@ -1903,7 +1903,7 @@ Cookies are commonly used for:
 
 ---
 
-# Secure Cookie Attributes
+## Secure Cookie Attributes
 
 Important cookie security attributes include:
 
@@ -1918,7 +1918,7 @@ Important cookie security attributes include:
 
 ---
 
-# HttpOnly
+## HttpOnly
 
 ```
 JavaScript
@@ -1936,7 +1936,7 @@ HttpOnly helps protect cookies from being read through client-side JavaScript, r
 
 ---
 
-# Secure Attribute
+## Secure Attribute
 
 ```
 HTTP
@@ -1962,7 +1962,7 @@ This helps prevent cookies from being transmitted over unencrypted connections.
 
 ---
 
-# SameSite Attribute
+## SameSite Attribute
 
 SameSite limits when browsers send cookies with cross-site requests.
 
@@ -1976,7 +1976,7 @@ This attribute is an important defense against Cross-Site Request Forgery (CSRF)
 
 ---
 
-# Local Storage
+## Local Storage
 
 Local Storage stores persistent data.
 
@@ -2004,7 +2004,7 @@ Characteristics:
 
 ---
 
-# Session Storage
+## Session Storage
 
 Session Storage is temporary.
 
@@ -2028,7 +2028,7 @@ Data is isolated to the browser tab or window.
 
 ---
 
-# Local Storage vs Session Storage
+## Local Storage vs Session Storage
 
 | Local Storage | Session Storage |
 |---------------|-----------------|
@@ -2039,7 +2039,7 @@ Data is isolated to the browser tab or window.
 
 ---
 
-# IndexedDB
+## IndexedDB
 
 IndexedDB provides structured browser storage.
 
@@ -2067,7 +2067,7 @@ Common uses include:
 
 ---
 
-# Storage Security
+## Storage Security
 
 Sensitive information should be handled carefully.
 
@@ -2082,7 +2082,7 @@ Choosing an appropriate storage mechanism depends on the application's security 
 
 ---
 
-# Storage Risks
+## Storage Risks
 
 Improper storage can lead to:
 
@@ -2095,7 +2095,7 @@ Client-side storage should not contain information that would cause significant 
 
 ---
 
-# Same-Origin Policy (SOP)
+## Same-Origin Policy (SOP)
 
 The Same-Origin Policy is a core browser security mechanism.
 
@@ -2115,7 +2115,7 @@ SOP helps isolate websites from one another.
 
 ---
 
-# What is an Origin?
+## What is an Origin?
 
 An origin consists of:
 
@@ -2141,7 +2141,7 @@ All three components determine the origin.
 
 ---
 
-# Same-Origin Examples
+## Same-Origin Examples
 
 | URL 1 | URL 2 | Same Origin? |
 |--------|--------|--------------|
@@ -2152,7 +2152,7 @@ All three components determine the origin.
 
 ---
 
-# Why SOP Exists
+## Why SOP Exists
 
 Without SOP:
 
@@ -2172,7 +2172,7 @@ SOP prevents arbitrary cross-origin access in browsers.
 
 ---
 
-# What SOP Restricts
+## What SOP Restricts
 
 SOP restricts many cross-origin interactions involving:
 
@@ -2186,7 +2186,7 @@ This isolation is fundamental to browser security.
 
 ---
 
-# Cross-Origin Resource Sharing (CORS)
+## Cross-Origin Resource Sharing (CORS)
 
 Sometimes applications legitimately need cross-origin communication.
 
@@ -2206,7 +2206,7 @@ CORS provides a controlled mechanism for this.
 
 ---
 
-# CORS Flow
+## CORS Flow
 
 ```
 Browser
@@ -2236,7 +2236,7 @@ The browser enforces the server's CORS policy.
 
 ---
 
-# Simple Requests
+## Simple Requests
 
 Some requests are considered "simple" and may not require a preflight request.
 
@@ -2250,7 +2250,7 @@ The browser still checks the server's CORS response headers.
 
 ---
 
-# Preflight Requests
+## Preflight Requests
 
 For certain cross-origin requests:
 
@@ -2278,7 +2278,7 @@ The browser verifies that the server permits the intended request before sending
 
 ---
 
-# Common CORS Headers
+## Common CORS Headers
 
 | Header | Purpose |
 |----------|----------|
@@ -2290,7 +2290,7 @@ The browser verifies that the server permits the intended request before sending
 
 ---
 
-# Browser Security Controls
+## Browser Security Controls
 
 Modern browsers implement multiple protections.
 
@@ -2318,7 +2318,7 @@ These controls work together to reduce client-side risk.
 
 ---
 
-# Content Security Policy (CSP)
+## Content Security Policy (CSP)
 
 CSP restricts which resources may load.
 
@@ -2354,7 +2354,7 @@ A strong CSP can significantly reduce the impact of certain script injection att
 
 ---
 
-# Mixed Content Protection
+## Mixed Content Protection
 
 A secure page should avoid loading insecure resources.
 
@@ -2374,7 +2374,7 @@ Mixed content protection helps maintain transport security.
 
 ---
 
-# Third-Party Scripts
+## Third-Party Scripts
 
 Applications frequently depend on external JavaScript.
 
@@ -2399,7 +2399,7 @@ Potential risks include:
 
 ---
 
-# Common Client-Side Vulnerabilities (Overview)
+## Common Client-Side Vulnerabilities (Overview)
 
 Examples include:
 
@@ -2415,7 +2415,7 @@ Each vulnerability will be explored in dedicated chapters.
 
 ---
 
-# Secure JavaScript Practices
+## Secure JavaScript Practices
 
 Recommended practices:
 
@@ -2428,7 +2428,7 @@ Recommended practices:
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Browser
@@ -2462,7 +2462,7 @@ Multiple browser and server controls protect communication.
 
 ---
 
-# Real Enterprise Example
+## Real Enterprise Example
 
 A healthcare portal stores a user's session in a secure cookie.
 
@@ -2497,7 +2497,7 @@ Together these controls help protect sensitive patient information.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser:
 
@@ -2510,7 +2510,7 @@ Using your browser:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why can't client-side JavaScript be trusted?
 2. What is the Same-Origin Policy?
@@ -2525,7 +2525,7 @@ Using your browser:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Never trust client-side validation alone.
 - Store sensitive session information using appropriate server-managed mechanisms.
@@ -2537,7 +2537,7 @@ Using your browser:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Storing highly sensitive information in insecure client-side storage.
 - Using overly permissive CORS configurations.
@@ -2548,7 +2548,7 @@ Using your browser:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Browser-side code executes in an environment controlled by the user and should never be fully trusted.
 - Cookies, Local Storage, Session Storage, and IndexedDB each have different security properties and use cases.
@@ -2556,15 +2556,15 @@ Using your browser:
 - Modern browsers provide multiple built-in security mechanisms, including CSP, mixed content protection, and certificate validation.
 - Secure client-side development requires careful handling of storage, communication, dependencies, and trust boundaries.
 
-# 09-HTML-CSS-JavaScript-Security.md
+## 09-HTML-CSS-JavaScript-Security.md
 
-# Part 4 — DOM Security, Secure Frontend Development, Client-Side Threats, Browser Defenses, Security Testing, Enterprise Best Practices, and Chapter Summary
+## Part 4 — DOM Security, Secure Frontend Development, Client-Side Threats, Browser Defenses, Security Testing, Enterprise Best Practices, and Chapter Summary
 
 > **"Modern web applications execute thousands of lines of JavaScript inside users' browsers. Secure frontend development is about minimizing trust, protecting sensitive data, safely manipulating the DOM, and leveraging browser security features to reduce client-side attack risks."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2582,7 +2582,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Secure DOM Manipulation
+## Secure DOM Manipulation
 
 JavaScript frequently modifies the Document Object Model (DOM).
 
@@ -2602,7 +2602,7 @@ DOM updates should always be performed safely because untrusted content may orig
 
 ---
 
-# DOM Data Flow
+## DOM Data Flow
 
 ```
 User Input
@@ -2624,7 +2624,7 @@ Every value flowing into the DOM should be considered untrusted until properly h
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
 
 Data may originate from:
 
@@ -2656,7 +2656,7 @@ None of these sources should automatically be considered trustworthy.
 
 ---
 
-# Safe DOM Updates
+## Safe DOM Updates
 
 Prefer techniques that treat user data as **text rather than executable HTML** whenever possible.
 
@@ -2680,7 +2680,7 @@ This reduces the likelihood of unintentionally executing injected markup or scri
 
 ---
 
-# Unsafe DOM Updates (Conceptual)
+## Unsafe DOM Updates (Conceptual)
 
 Conceptually:
 
@@ -2704,7 +2704,7 @@ Avoid patterns where untrusted content is interpreted as executable HTML.
 
 ---
 
-# DOM-Based Security Risks
+## DOM-Based Security Risks
 
 Improper DOM manipulation may contribute to:
 
@@ -2719,7 +2719,7 @@ Dedicated chapters will explore these attacks in depth.
 
 ---
 
-# Dynamic Content
+## Dynamic Content
 
 Modern applications frequently generate content dynamically.
 
@@ -2743,7 +2743,7 @@ Applications should validate and safely process received data before displaying 
 
 ---
 
-# Client-Side Routing
+## Client-Side Routing
 
 Single Page Applications often use client-side routing.
 
@@ -2767,7 +2767,7 @@ Security controls must remain effective regardless of routing approach.
 
 ---
 
-# Sensitive Data Exposure
+## Sensitive Data Exposure
 
 Sensitive information should never be unnecessarily exposed to the browser.
 
@@ -2797,7 +2797,7 @@ Anything delivered to the browser can potentially be inspected.
 
 ---
 
-# API Keys
+## API Keys
 
 Some applications require public API identifiers.
 
@@ -2831,7 +2831,7 @@ Server-side secrets must remain on trusted backend systems.
 
 ---
 
-# Source Maps
+## Source Maps
 
 During development, source maps simplify debugging.
 
@@ -2851,7 +2851,7 @@ Production deployments should review whether source maps are appropriate to expo
 
 ---
 
-# Debug Information
+## Debug Information
 
 Avoid exposing:
 
@@ -2865,7 +2865,7 @@ Reducing unnecessary information disclosure limits attacker reconnaissance.
 
 ---
 
-# Third-Party Dependencies
+## Third-Party Dependencies
 
 Modern applications commonly use:
 
@@ -2889,7 +2889,7 @@ Examples include UI frameworks, analytics, and visualization libraries.
 
 ---
 
-# Dependency Risks
+## Dependency Risks
 
 Potential risks include:
 
@@ -2903,7 +2903,7 @@ Organizations should continuously review software dependencies.
 
 ---
 
-# Dependency Management
+## Dependency Management
 
 Recommended practices:
 
@@ -2916,7 +2916,7 @@ Recommended practices:
 
 ---
 
-# Content Delivery Networks (CDNs)
+## Content Delivery Networks (CDNs)
 
 Libraries may be delivered through CDNs.
 
@@ -2936,7 +2936,7 @@ CDNs improve performance but introduce additional trust relationships.
 
 ---
 
-# Subresource Integrity (SRI)
+## Subresource Integrity (SRI)
 
 Subresource Integrity allows browsers to verify downloaded resources.
 
@@ -2976,7 +2976,7 @@ SRI helps detect unexpected modifications to externally hosted resources.
 
 ---
 
-# Browser Permissions
+## Browser Permissions
 
 Applications may request access to:
 
@@ -3004,7 +3004,7 @@ Applications should request only the permissions they genuinely require.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Frontend applications should request the minimum permissions necessary.
 
@@ -3032,7 +3032,7 @@ This reduces both security and privacy risks.
 
 ---
 
-# Browser Security Features
+## Browser Security Features
 
 Modern browsers include multiple protections.
 
@@ -3062,7 +3062,7 @@ Applications should complement—not replace—these protections.
 
 ---
 
-# Browser Sandbox
+## Browser Sandbox
 
 Each webpage executes within an isolated environment.
 
@@ -3082,7 +3082,7 @@ Sandboxing restricts direct interaction with other websites and the operating sy
 
 ---
 
-# Site Isolation
+## Site Isolation
 
 Many modern browsers isolate different sites into separate processes.
 
@@ -3106,7 +3106,7 @@ Process isolation reduces the impact of certain classes of browser attacks.
 
 ---
 
-# Secure Communication
+## Secure Communication
 
 Frontend applications should communicate securely.
 
@@ -3134,7 +3134,7 @@ Encrypted communication protects data in transit.
 
 ---
 
-# Frontend Logging
+## Frontend Logging
 
 Applications may log:
 
@@ -3152,7 +3152,7 @@ Logs should avoid including:
 
 ---
 
-# Client-Side Error Handling
+## Client-Side Error Handling
 
 Applications should:
 
@@ -3176,7 +3176,7 @@ Avoid displaying detailed internal implementation information to end users.
 
 ---
 
-# Client-Side Security Testing
+## Client-Side Security Testing
 
 Security testing should include:
 
@@ -3190,7 +3190,7 @@ Security testing should include:
 
 ---
 
-# Frontend Security Review Checklist
+## Frontend Security Review Checklist
 
 ```
 ✓ HTTPS Enabled
@@ -3220,7 +3220,7 @@ Security testing should include:
 
 ---
 
-# Enterprise Frontend Architecture
+## Enterprise Frontend Architecture
 
 ```
 Browser
@@ -3266,7 +3266,7 @@ Security is applied across both the browser and backend infrastructure.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking application uses:
 
@@ -3309,7 +3309,7 @@ Additional protections include:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser's Developer Tools:
 
@@ -3323,7 +3323,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should untrusted data be handled carefully before updating the DOM?
 2. What is Subresource Integrity (SRI)?
@@ -3338,7 +3338,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat all client-side input and external data as untrusted.
 - Keep sensitive business logic and secrets on the server.
@@ -3353,7 +3353,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Embedding private API keys or secrets in JavaScript.
 - Trusting browser-side validation as a security mechanism.
@@ -3365,7 +3365,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Quick Revision
+## Quick Revision
 
 ```
 HTML
@@ -3457,7 +3457,7 @@ Continuous Testing
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

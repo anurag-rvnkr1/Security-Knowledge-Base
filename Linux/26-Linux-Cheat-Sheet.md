@@ -1,10 +1,10 @@
 # 26 - Linux Cheat Sheet
 
-# Part 1 — Essential Linux Commands, File & Directory Management, Text Processing, and Navigation
+## Part 1 — Essential Linux Commands, File & Directory Management, Text Processing, and Navigation
 
 ---
 
-# Introduction
+## Introduction
 
 This chapter is designed as a **quick-reference guide** for Linux users, system administrators, DevOps engineers, cloud engineers, SOC analysts, penetration testers, and cybersecurity professionals.
 
@@ -12,7 +12,7 @@ Unlike previous chapters, this chapter is intended for **rapid revision** and **
 
 ---
 
-# Linux Command Structure
+## Linux Command Structure
 
 ```text
 command [options] [arguments]
@@ -32,7 +32,7 @@ Where:
 
 ---
 
-# Keyboard Shortcuts
+## Keyboard Shortcuts
 
 | Shortcut | Purpose |
 |-----------|---------|
@@ -51,7 +51,7 @@ Where:
 
 ---
 
-# System Information
+## System Information
 
 | Task | Command |
 |------|---------|
@@ -67,7 +67,7 @@ Where:
 
 ---
 
-# Directory Navigation
+## Directory Navigation
 
 | Task | Command |
 |------|---------|
@@ -80,7 +80,7 @@ Where:
 
 ---
 
-# Listing Files
+## Listing Files
 
 | Command | Purpose |
 |----------|---------|
@@ -93,7 +93,7 @@ Where:
 
 ---
 
-# Hidden Files
+## Hidden Files
 
 Hidden files begin with:
 
@@ -117,7 +117,7 @@ ls -la
 
 ---
 
-# Creating Files
+## Creating Files
 
 Create an empty file:
 
@@ -133,7 +133,7 @@ touch file1 file2 file3
 
 ---
 
-# Creating Directories
+## Creating Directories
 
 Create directory:
 
@@ -149,7 +149,7 @@ mkdir -p projects/linux/scripts
 
 ---
 
-# Copying Files
+## Copying Files
 
 Copy file:
 
@@ -171,7 +171,7 @@ cp -a source destination
 
 ---
 
-# Moving Files
+## Moving Files
 
 Move:
 
@@ -187,7 +187,7 @@ mv old.txt new.txt
 
 ---
 
-# Removing Files
+## Removing Files
 
 Delete file:
 
@@ -211,7 +211,7 @@ rm -rf directory
 
 ---
 
-# Viewing File Contents
+## Viewing File Contents
 
 Display entire file:
 
@@ -245,7 +245,7 @@ tail -f logfile.log
 
 ---
 
-# Searching Files
+## Searching Files
 
 Search by name:
 
@@ -267,7 +267,7 @@ find . -type d
 
 ---
 
-# Searching Text
+## Searching Text
 
 Basic search:
 
@@ -295,7 +295,7 @@ grep -n "TODO" script.sh
 
 ---
 
-# Text Processing Commands
+## Text Processing Commands
 
 | Command | Purpose |
 |----------|---------|
@@ -311,7 +311,7 @@ grep -n "TODO" script.sh
 
 ---
 
-# Word Count
+## Word Count
 
 Count lines, words, and bytes:
 
@@ -327,7 +327,7 @@ wc -l file.txt
 
 ---
 
-# Sorting
+## Sorting
 
 Sort alphabetically:
 
@@ -349,7 +349,7 @@ sort -r names.txt
 
 ---
 
-# Remove Duplicate Lines
+## Remove Duplicate Lines
 
 ```bash
 uniq file.txt
@@ -363,7 +363,7 @@ sort file.txt | uniq
 
 ---
 
-# Cut Fields
+## Cut Fields
 
 Extract the first field separated by `:`:
 
@@ -373,7 +373,7 @@ cut -d: -f1 /etc/passwd
 
 ---
 
-# Translate Characters
+## Translate Characters
 
 Convert lowercase to uppercase:
 
@@ -383,7 +383,7 @@ echo "linux" | tr 'a-z' 'A-Z'
 
 ---
 
-# File Comparison
+## File Comparison
 
 Compare two files:
 
@@ -399,7 +399,7 @@ diff -y file1.txt file2.txt
 
 ---
 
-# File Information
+## File Information
 
 Display file type:
 
@@ -415,7 +415,7 @@ stat filename
 
 ---
 
-# Archive Files
+## Archive Files
 
 Create a tar archive:
 
@@ -443,7 +443,7 @@ tar -xzvf archive.tar.gz
 
 ---
 
-# Compression
+## Compression
 
 Compress:
 
@@ -465,7 +465,7 @@ zcat file.txt.gz
 
 ---
 
-# File Permissions (Quick View)
+## File Permissions (Quick View)
 
 Display permissions:
 
@@ -491,7 +491,7 @@ Others → r--
 
 ---
 
-# Useful One-Liners
+## Useful One-Liners
 
 Current user:
 
@@ -525,7 +525,7 @@ echo $PATH
 
 ---
 
-# Enterprise Productivity Tips
+## Enterprise Productivity Tips
 
 - Use `Tab` completion to reduce typing errors.
 - Use `history` and `Ctrl + R` to quickly recall commands.
@@ -535,7 +535,7 @@ echo $PATH
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 These commands are frequently used during:
 
@@ -550,7 +550,7 @@ Accurate command usage reduces operational mistakes and preserves evidence.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Navigation and file management are foundational Linux skills.
 - Text-processing tools enable efficient log and configuration analysis.
@@ -559,13 +559,13 @@ Accurate command usage reduces operational mistakes and preserves evidence.
 
 ---
 
-# 26 - Linux Cheat Sheet
+## 26 - Linux Cheat Sheet
 
-# Part 2 — Users & Groups, Permissions, Processes, Services, System Monitoring, and Package Management
+## Part 2 — Users & Groups, Permissions, Processes, Services, System Monitoring, and Package Management
 
 ---
 
-# Introduction
+## Introduction
 
 This section contains the commands Linux administrators, DevOps engineers, cloud engineers, SOC analysts, and cybersecurity professionals use daily.
 
@@ -580,9 +580,9 @@ Focus areas:
 
 ---
 
-# Users & Groups
+## Users & Groups
 
-## Current User
+### Current User
 
 ```bash
 whoami
@@ -590,7 +590,7 @@ whoami
 
 ---
 
-## Logged-in Users
+### Logged-in Users
 
 ```bash
 who
@@ -604,7 +604,7 @@ w
 
 ---
 
-## User Identity
+### User Identity
 
 ```bash
 id username
@@ -624,7 +624,7 @@ Displays:
 
 ---
 
-## Create User
+### Create User
 
 ```bash
 sudo useradd username
@@ -638,7 +638,7 @@ sudo useradd -m username
 
 ---
 
-## Set Password
+### Set Password
 
 ```bash
 sudo passwd username
@@ -646,7 +646,7 @@ sudo passwd username
 
 ---
 
-## Delete User
+### Delete User
 
 Delete account only:
 
@@ -662,7 +662,7 @@ sudo userdel -r username
 
 ---
 
-## Modify User
+### Modify User
 
 Change login shell:
 
@@ -684,7 +684,7 @@ sudo usermod -U username
 
 ---
 
-## Groups
+### Groups
 
 Create group:
 
@@ -712,7 +712,7 @@ groups username
 
 ---
 
-# Important User Files
+## Important User Files
 
 | File | Purpose |
 |------|----------|
@@ -723,11 +723,11 @@ groups username
 
 ---
 
-# Permissions
+## Permissions
 
 ---
 
-## View Permissions
+### View Permissions
 
 ```bash
 ls -l
@@ -741,7 +741,7 @@ Example:
 
 ---
 
-## Change Permissions
+### Change Permissions
 
 Numeric mode:
 
@@ -763,7 +763,7 @@ chmod go-w file.txt
 
 ---
 
-## Change Ownership
+### Change Ownership
 
 Owner:
 
@@ -779,7 +779,7 @@ sudo chown alice:developers file.txt
 
 ---
 
-## Change Group
+### Change Group
 
 ```bash
 sudo chgrp developers file.txt
@@ -787,7 +787,7 @@ sudo chgrp developers file.txt
 
 ---
 
-## Default Permissions
+### Default Permissions
 
 View current umask:
 
@@ -803,7 +803,7 @@ umask 022
 
 ---
 
-# Special Permissions
+## Special Permissions
 
 SetUID:
 
@@ -825,7 +825,7 @@ chmod +t directory
 
 ---
 
-# ACL (Access Control Lists)
+## ACL (Access Control Lists)
 
 View ACL:
 
@@ -847,11 +847,11 @@ setfacl -b file.txt
 
 ---
 
-# Processes
+## Processes
 
 ---
 
-## Display Running Processes
+### Display Running Processes
 
 ```bash
 ps aux
@@ -865,7 +865,7 @@ ps -ef --forest
 
 ---
 
-## Interactive Monitoring
+### Interactive Monitoring
 
 ```bash
 top
@@ -881,7 +881,7 @@ htop
 
 ---
 
-## Search for a Process
+### Search for a Process
 
 ```bash
 pgrep ssh
@@ -895,7 +895,7 @@ ps aux | grep ssh
 
 ---
 
-## Kill Process
+### Kill Process
 
 Graceful termination:
 
@@ -917,7 +917,7 @@ pkill process_name
 
 ---
 
-## Background Jobs
+### Background Jobs
 
 Run in background:
 
@@ -945,11 +945,11 @@ bg
 
 ---
 
-# Services
+## Services
 
 ---
 
-## Service Status
+### Service Status
 
 ```bash
 systemctl status ssh
@@ -957,7 +957,7 @@ systemctl status ssh
 
 ---
 
-## Start Service
+### Start Service
 
 ```bash
 sudo systemctl start ssh
@@ -965,7 +965,7 @@ sudo systemctl start ssh
 
 ---
 
-## Stop Service
+### Stop Service
 
 ```bash
 sudo systemctl stop ssh
@@ -973,7 +973,7 @@ sudo systemctl stop ssh
 
 ---
 
-## Restart Service
+### Restart Service
 
 ```bash
 sudo systemctl restart ssh
@@ -981,7 +981,7 @@ sudo systemctl restart ssh
 
 ---
 
-## Reload Configuration
+### Reload Configuration
 
 ```bash
 sudo systemctl reload ssh
@@ -989,7 +989,7 @@ sudo systemctl reload ssh
 
 ---
 
-## Enable at Boot
+### Enable at Boot
 
 ```bash
 sudo systemctl enable ssh
@@ -1003,7 +1003,7 @@ sudo systemctl disable ssh
 
 ---
 
-## Failed Services
+### Failed Services
 
 ```bash
 systemctl --failed
@@ -1011,7 +1011,7 @@ systemctl --failed
 
 ---
 
-## List Running Services
+### List Running Services
 
 ```bash
 systemctl list-units --type=service
@@ -1019,7 +1019,7 @@ systemctl list-units --type=service
 
 ---
 
-# Logs
+## Logs
 
 View complete journal:
 
@@ -1053,11 +1053,11 @@ journalctl -u ssh
 
 ---
 
-# System Monitoring
+## System Monitoring
 
 ---
 
-## CPU Information
+### CPU Information
 
 ```bash
 lscpu
@@ -1065,7 +1065,7 @@ lscpu
 
 ---
 
-## Memory Usage
+### Memory Usage
 
 ```bash
 free -h
@@ -1073,7 +1073,7 @@ free -h
 
 ---
 
-## Disk Usage
+### Disk Usage
 
 ```bash
 df -h
@@ -1081,7 +1081,7 @@ df -h
 
 ---
 
-## Directory Usage
+### Directory Usage
 
 ```bash
 du -sh *
@@ -1089,7 +1089,7 @@ du -sh *
 
 ---
 
-## Block Devices
+### Block Devices
 
 ```bash
 lsblk
@@ -1097,7 +1097,7 @@ lsblk
 
 ---
 
-## Mounted Filesystems
+### Mounted Filesystems
 
 ```bash
 mount
@@ -1105,7 +1105,7 @@ mount
 
 ---
 
-## Filesystem UUIDs
+### Filesystem UUIDs
 
 ```bash
 blkid
@@ -1113,7 +1113,7 @@ blkid
 
 ---
 
-## Open Files
+### Open Files
 
 ```bash
 lsof
@@ -1121,7 +1121,7 @@ lsof
 
 ---
 
-## System Load
+### System Load
 
 ```bash
 uptime
@@ -1129,7 +1129,7 @@ uptime
 
 ---
 
-## Kernel Messages
+### Kernel Messages
 
 ```bash
 dmesg
@@ -1137,7 +1137,7 @@ dmesg
 
 ---
 
-## Process Resource Usage
+### Process Resource Usage
 
 Sort by CPU:
 
@@ -1153,11 +1153,11 @@ ps aux --sort=-%mem | head
 
 ---
 
-# Package Management
+## Package Management
 
 ---
 
-## Debian / Ubuntu (APT)
+### Debian / Ubuntu (APT)
 
 Update package index:
 
@@ -1203,7 +1203,7 @@ apt list --installed
 
 ---
 
-## RHEL / Rocky / AlmaLinux / Fedora
+### RHEL / Rocky / AlmaLinux / Fedora
 
 Install:
 
@@ -1237,7 +1237,7 @@ dnf list installed
 
 ---
 
-## Verify Installed Package
+### Verify Installed Package
 
 Debian-based:
 
@@ -1253,7 +1253,7 @@ rpm -qa
 
 ---
 
-# Quick Command Reference
+## Quick Command Reference
 
 | Task | Command |
 |------|---------|
@@ -1275,7 +1275,7 @@ rpm -qa
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Grant users only the permissions they require.
 - Prefer groups over assigning permissions individually.
@@ -1287,7 +1287,7 @@ rpm -qa
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 These commands support:
 
@@ -1302,7 +1302,7 @@ These commands support:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - User and permission management are fundamental administrative skills.
 - Processes and services should be monitored continuously.
@@ -1311,13 +1311,13 @@ These commands support:
 
 ---
 
-# 26 - Linux Cheat Sheet
+## 26 - Linux Cheat Sheet
 
-# Part 3 — Networking, Storage, Security, SSH, Shell Scripting, Troubleshooting, One-Liners, and Enterprise Administration
+## Part 3 — Networking, Storage, Security, SSH, Shell Scripting, Troubleshooting, One-Liners, and Enterprise Administration
 
 ---
 
-# Introduction
+## Introduction
 
 This section contains the Linux commands most frequently used in:
 
@@ -1335,11 +1335,11 @@ Think of this as your **day-to-day operational cheat sheet**.
 
 ---
 
-# Networking
+## Networking
 
 ---
 
-## Display IP Addresses
+### Display IP Addresses
 
 ```bash
 ip addr
@@ -1353,7 +1353,7 @@ ip a
 
 ---
 
-## Display Routing Table
+### Display Routing Table
 
 ```bash
 ip route
@@ -1367,7 +1367,7 @@ ip r
 
 ---
 
-## Display Network Interfaces
+### Display Network Interfaces
 
 ```bash
 ip link
@@ -1375,7 +1375,7 @@ ip link
 
 ---
 
-## Enable Network Interface
+### Enable Network Interface
 
 ```bash
 sudo ip link set eth0 up
@@ -1383,7 +1383,7 @@ sudo ip link set eth0 up
 
 ---
 
-## Disable Network Interface
+### Disable Network Interface
 
 ```bash
 sudo ip link set eth0 down
@@ -1391,7 +1391,7 @@ sudo ip link set eth0 down
 
 ---
 
-## Test Connectivity
+### Test Connectivity
 
 ```bash
 ping google.com
@@ -1405,7 +1405,7 @@ ping -c 4 google.com
 
 ---
 
-## Trace Network Path
+### Trace Network Path
 
 ```bash
 traceroute google.com
@@ -1419,7 +1419,7 @@ tracepath google.com
 
 ---
 
-## DNS Lookup
+### DNS Lookup
 
 Using `dig`:
 
@@ -1441,7 +1441,7 @@ nslookup example.com
 
 ---
 
-## Display Listening Ports
+### Display Listening Ports
 
 ```bash
 ss -tulpn
@@ -1461,7 +1461,7 @@ ss -ulpn
 
 ---
 
-## Network Connections
+### Network Connections
 
 ```bash
 ss -tunap
@@ -1469,7 +1469,7 @@ ss -tunap
 
 ---
 
-## View ARP Table
+### View ARP Table
 
 ```bash
 ip neigh
@@ -1477,7 +1477,7 @@ ip neigh
 
 ---
 
-## Download Files
+### Download Files
 
 Using `wget`:
 
@@ -1493,11 +1493,11 @@ curl -O https://example.com/file.zip
 
 ---
 
-# Storage & Filesystems
+## Storage & Filesystems
 
 ---
 
-## Block Devices
+### Block Devices
 
 ```bash
 lsblk
@@ -1505,7 +1505,7 @@ lsblk
 
 ---
 
-## Filesystem Usage
+### Filesystem Usage
 
 ```bash
 df -h
@@ -1513,7 +1513,7 @@ df -h
 
 ---
 
-## Directory Usage
+### Directory Usage
 
 ```bash
 du -sh *
@@ -1521,7 +1521,7 @@ du -sh *
 
 ---
 
-## Filesystem UUIDs
+### Filesystem UUIDs
 
 ```bash
 blkid
@@ -1529,7 +1529,7 @@ blkid
 
 ---
 
-## Mounted Filesystems
+### Mounted Filesystems
 
 ```bash
 mount
@@ -1537,7 +1537,7 @@ mount
 
 ---
 
-## Mount Filesystem
+### Mount Filesystem
 
 ```bash
 sudo mount /dev/sdb1 /mnt
@@ -1545,7 +1545,7 @@ sudo mount /dev/sdb1 /mnt
 
 ---
 
-## Unmount Filesystem
+### Unmount Filesystem
 
 ```bash
 sudo umount /mnt
@@ -1553,7 +1553,7 @@ sudo umount /mnt
 
 ---
 
-## View `/etc/fstab`
+### View `/etc/fstab`
 
 ```bash
 cat /etc/fstab
@@ -1561,7 +1561,7 @@ cat /etc/fstab
 
 ---
 
-## Open Files
+### Open Files
 
 ```bash
 lsof
@@ -1569,11 +1569,11 @@ lsof
 
 ---
 
-# SSH
+## SSH
 
 ---
 
-## Connect to Remote Server
+### Connect to Remote Server
 
 ```bash
 ssh user@host
@@ -1581,7 +1581,7 @@ ssh user@host
 
 ---
 
-## Connect Using Specific Port
+### Connect Using Specific Port
 
 ```bash
 ssh -p 2222 user@host
@@ -1589,7 +1589,7 @@ ssh -p 2222 user@host
 
 ---
 
-## Copy File to Remote Host
+### Copy File to Remote Host
 
 ```bash
 scp file.txt user@host:/tmp/
@@ -1597,7 +1597,7 @@ scp file.txt user@host:/tmp/
 
 ---
 
-## Copy Directory
+### Copy Directory
 
 ```bash
 scp -r directory user@host:/tmp/
@@ -1605,7 +1605,7 @@ scp -r directory user@host:/tmp/
 
 ---
 
-## Copy File from Remote Host
+### Copy File from Remote Host
 
 ```bash
 scp user@host:/tmp/file.txt .
@@ -1613,7 +1613,7 @@ scp user@host:/tmp/file.txt .
 
 ---
 
-## Generate SSH Key Pair
+### Generate SSH Key Pair
 
 ```bash
 ssh-keygen
@@ -1621,7 +1621,7 @@ ssh-keygen
 
 ---
 
-## Copy Public Key
+### Copy Public Key
 
 ```bash
 ssh-copy-id user@host
@@ -1629,7 +1629,7 @@ ssh-copy-id user@host
 
 ---
 
-## SSH Configuration
+### SSH Configuration
 
 System-wide:
 
@@ -1645,11 +1645,11 @@ Client:
 
 ---
 
-# Security
+## Security
 
 ---
 
-## Current User
+### Current User
 
 ```bash
 whoami
@@ -1657,7 +1657,7 @@ whoami
 
 ---
 
-## User Identity
+### User Identity
 
 ```bash
 id
@@ -1665,7 +1665,7 @@ id
 
 ---
 
-## Current Groups
+### Current Groups
 
 ```bash
 groups
@@ -1673,7 +1673,7 @@ groups
 
 ---
 
-## View Failed Login Attempts
+### View Failed Login Attempts
 
 Ubuntu/Debian:
 
@@ -1689,7 +1689,7 @@ grep "Failed password" /var/log/secure
 
 ---
 
-## View Logged-in Users
+### View Logged-in Users
 
 ```bash
 who
@@ -1703,7 +1703,7 @@ w
 
 ---
 
-## File Permissions
+### File Permissions
 
 ```bash
 ls -l
@@ -1711,7 +1711,7 @@ ls -l
 
 ---
 
-## Change Permissions
+### Change Permissions
 
 ```bash
 chmod
@@ -1719,7 +1719,7 @@ chmod
 
 ---
 
-## Change Ownership
+### Change Ownership
 
 ```bash
 chown
@@ -1727,7 +1727,7 @@ chown
 
 ---
 
-## Access Control Lists
+### Access Control Lists
 
 Display:
 
@@ -1743,11 +1743,11 @@ setfacl
 
 ---
 
-# Shell Scripting
+## Shell Scripting
 
 ---
 
-## Script Header
+### Script Header
 
 ```bash
 #!/bin/bash
@@ -1755,7 +1755,7 @@ setfacl
 
 ---
 
-## Execute Script
+### Execute Script
 
 ```bash
 ./script.sh
@@ -1763,7 +1763,7 @@ setfacl
 
 ---
 
-## Variables
+### Variables
 
 ```bash
 NAME="Linux"
@@ -1773,7 +1773,7 @@ echo "$NAME"
 
 ---
 
-## Positional Parameters
+### Positional Parameters
 
 ```text
 $0
@@ -1795,7 +1795,7 @@ Argument count
 
 ---
 
-## Conditional
+### Conditional
 
 ```bash
 if
@@ -1803,7 +1803,7 @@ if
 
 ---
 
-## Loop
+### Loop
 
 ```bash
 for
@@ -1811,7 +1811,7 @@ for
 
 ---
 
-## While Loop
+### While Loop
 
 ```bash
 while
@@ -1819,7 +1819,7 @@ while
 
 ---
 
-## Case Statement
+### Case Statement
 
 ```bash
 case
@@ -1827,11 +1827,11 @@ case
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
 ---
 
-## System Information
+### System Information
 
 ```bash
 hostnamectl
@@ -1839,7 +1839,7 @@ hostnamectl
 
 ---
 
-## Kernel Version
+### Kernel Version
 
 ```bash
 uname -r
@@ -1847,7 +1847,7 @@ uname -r
 
 ---
 
-## Current Boot Logs
+### Current Boot Logs
 
 ```bash
 journalctl -b
@@ -1855,7 +1855,7 @@ journalctl -b
 
 ---
 
-## Previous Boot
+### Previous Boot
 
 ```bash
 journalctl -b -1
@@ -1863,7 +1863,7 @@ journalctl -b -1
 
 ---
 
-## Kernel Messages
+### Kernel Messages
 
 ```bash
 dmesg
@@ -1871,7 +1871,7 @@ dmesg
 
 ---
 
-## Failed Services
+### Failed Services
 
 ```bash
 systemctl --failed
@@ -1879,7 +1879,7 @@ systemctl --failed
 
 ---
 
-## Service Status
+### Service Status
 
 ```bash
 systemctl status service
@@ -1887,7 +1887,7 @@ systemctl status service
 
 ---
 
-## Process List
+### Process List
 
 ```bash
 ps aux
@@ -1895,7 +1895,7 @@ ps aux
 
 ---
 
-## Interactive Monitor
+### Interactive Monitor
 
 ```bash
 top
@@ -1903,7 +1903,7 @@ top
 
 ---
 
-## Memory
+### Memory
 
 ```bash
 free -h
@@ -1911,7 +1911,7 @@ free -h
 
 ---
 
-## Storage
+### Storage
 
 ```bash
 df -h
@@ -1919,7 +1919,7 @@ df -h
 
 ---
 
-## Largest Directories
+### Largest Directories
 
 ```bash
 du -sh /*
@@ -1927,7 +1927,7 @@ du -sh /*
 
 ---
 
-## Search Logs
+### Search Logs
 
 ```bash
 grep "error" logfile
@@ -1935,7 +1935,7 @@ grep "error" logfile
 
 ---
 
-## Follow Logs
+### Follow Logs
 
 ```bash
 journalctl -f
@@ -1943,11 +1943,11 @@ journalctl -f
 
 ---
 
-# Enterprise One-Liners
+## Enterprise One-Liners
 
 ---
 
-## Top CPU Consumers
+### Top CPU Consumers
 
 ```bash
 ps aux --sort=-%cpu | head
@@ -1955,7 +1955,7 @@ ps aux --sort=-%cpu | head
 
 ---
 
-## Top Memory Consumers
+### Top Memory Consumers
 
 ```bash
 ps aux --sort=-%mem | head
@@ -1963,7 +1963,7 @@ ps aux --sort=-%mem | head
 
 ---
 
-## Largest Files
+### Largest Files
 
 ```bash
 find / -type f -exec du -h {} + | sort -hr | head
@@ -1971,7 +1971,7 @@ find / -type f -exec du -h {} + | sort -hr | head
 
 ---
 
-## Largest Directories
+### Largest Directories
 
 ```bash
 du -sh /* | sort -hr
@@ -1979,7 +1979,7 @@ du -sh /* | sort -hr
 
 ---
 
-## Find Empty Files
+### Find Empty Files
 
 ```bash
 find . -type f -empty
@@ -1987,7 +1987,7 @@ find . -type f -empty
 
 ---
 
-## Find Empty Directories
+### Find Empty Directories
 
 ```bash
 find . -type d -empty
@@ -1995,7 +1995,7 @@ find . -type d -empty
 
 ---
 
-## Find Files Modified Today
+### Find Files Modified Today
 
 ```bash
 find . -mtime 0
@@ -2003,7 +2003,7 @@ find . -mtime 0
 
 ---
 
-## Find Files Larger Than 100 MB
+### Find Files Larger Than 100 MB
 
 ```bash
 find / -type f -size +100M
@@ -2011,7 +2011,7 @@ find / -type f -size +100M
 
 ---
 
-## Count Files in Current Directory
+### Count Files in Current Directory
 
 ```bash
 find . -maxdepth 1 -type f | wc -l
@@ -2019,7 +2019,7 @@ find . -maxdepth 1 -type f | wc -l
 
 ---
 
-## Display Open Ports
+### Display Open Ports
 
 ```bash
 ss -tulpn
@@ -2027,7 +2027,7 @@ ss -tulpn
 
 ---
 
-## Check DNS
+### Check DNS
 
 ```bash
 dig google.com
@@ -2035,7 +2035,7 @@ dig google.com
 
 ---
 
-## Test HTTPS Response
+### Test HTTPS Response
 
 ```bash
 curl -I https://example.com
@@ -2043,7 +2043,7 @@ curl -I https://example.com
 
 ---
 
-## Generate SHA-256 Checksum
+### Generate SHA-256 Checksum
 
 ```bash
 sha256sum file.iso
@@ -2051,7 +2051,7 @@ sha256sum file.iso
 
 ---
 
-# Enterprise Administration Workflow
+## Enterprise Administration Workflow
 
 ```text
 Monitoring
@@ -2091,7 +2091,7 @@ Preventive Improvement
 
 ---
 
-# Common Linux Log Locations
+## Common Linux Log Locations
 
 | Location | Purpose |
 |----------|---------|
@@ -2107,7 +2107,7 @@ Preventive Improvement
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Verify network connectivity before investigating applications.
 - Monitor disk usage proactively to avoid outages.
@@ -2119,7 +2119,7 @@ Preventive Improvement
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 These commands are heavily used during:
 
@@ -2134,7 +2134,7 @@ These commands are heavily used during:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Networking and storage commands are essential for production troubleshooting.
 - SSH is the primary tool for secure remote administration.
@@ -2143,13 +2143,13 @@ These commands are heavily used during:
 
 ---
 
-# 26 - Linux Cheat Sheet
+## 26 - Linux Cheat Sheet
 
-# Part 4 — Complete Linux Command Reference, Interview Revision Sheet, Daily Administrator Checklist, Learning Roadmap, and Resources
+## Part 4 — Complete Linux Command Reference, Interview Revision Sheet, Daily Administrator Checklist, Learning Roadmap, and Resources
 
 ---
 
-# Introduction
+## Introduction
 
 This final section is designed as a **master revision guide** for:
 
@@ -2167,9 +2167,9 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-# Complete Linux Command Reference
+## Complete Linux Command Reference
 
-## Navigation
+### Navigation
 
 | Task | Command |
 |------|---------|
@@ -2183,7 +2183,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## File Management
+### File Management
 
 | Task | Command |
 |------|---------|
@@ -2201,7 +2201,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Viewing Files
+### Viewing Files
 
 | Task | Command |
 |------|---------|
@@ -2213,7 +2213,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Text Processing
+### Text Processing
 
 | Task | Command |
 |------|---------|
@@ -2228,7 +2228,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Users & Permissions
+### Users & Permissions
 
 | Task | Command |
 |------|---------|
@@ -2247,7 +2247,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Processes
+### Processes
 
 | Task | Command |
 |------|---------|
@@ -2261,7 +2261,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Services
+### Services
 
 | Task | Command |
 |------|---------|
@@ -2276,7 +2276,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Logs
+### Logs
 
 | Task | Command |
 |------|---------|
@@ -2289,7 +2289,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Networking
+### Networking
 
 | Task | Command |
 |------|---------|
@@ -2304,7 +2304,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Storage
+### Storage
 
 | Task | Command |
 |------|---------|
@@ -2318,9 +2318,9 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Packages
+### Packages
 
-### Debian / Ubuntu
+#### Debian / Ubuntu
 
 | Task | Command |
 |------|---------|
@@ -2330,7 +2330,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 | Remove | `apt remove` |
 | Search | `apt search` |
 
-### RHEL / Rocky / AlmaLinux / Fedora
+#### RHEL / Rocky / AlmaLinux / Fedora
 
 | Task | Command |
 |------|---------|
@@ -2341,7 +2341,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## SSH
+### SSH
 
 | Task | Command |
 |------|---------|
@@ -2352,9 +2352,9 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-# Linux Interview Revision Sheet
+## Linux Interview Revision Sheet
 
-## Linux Fundamentals
+### Linux Fundamentals
 
 - Linux architecture
 - Kernel responsibilities
@@ -2367,7 +2367,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## System Administration
+### System Administration
 
 - User management
 - Groups
@@ -2380,7 +2380,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Networking
+### Networking
 
 - TCP/IP basics
 - DNS
@@ -2391,7 +2391,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Shell Scripting
+### Shell Scripting
 
 - Variables
 - Positional parameters
@@ -2403,7 +2403,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Security
+### Security
 
 - Least Privilege
 - Authentication vs Authorization
@@ -2415,7 +2415,7 @@ Use this chapter for quick revision before interviews, exams, or production work
 
 ---
 
-## Troubleshooting
+### Troubleshooting
 
 Remember this workflow:
 
@@ -2453,9 +2453,9 @@ Prevent Recurrence
 
 ---
 
-# Daily Linux Administrator Checklist
+## Daily Linux Administrator Checklist
 
-## Every Day
+### Every Day
 
 - Review system health (`uptime`, `top`)
 - Check disk usage (`df -h`)
@@ -2469,7 +2469,7 @@ Prevent Recurrence
 
 ---
 
-## Every Week
+### Every Week
 
 - Apply approved updates
 - Remove unnecessary packages
@@ -2481,7 +2481,7 @@ Prevent Recurrence
 
 ---
 
-## Every Month
+### Every Month
 
 - Test backup restoration procedures
 - Review SSH keys and access
@@ -2493,7 +2493,7 @@ Prevent Recurrence
 
 ---
 
-# Linux Learning Roadmap
+## Linux Learning Roadmap
 
 ```text
 Linux Fundamentals
@@ -2540,7 +2540,7 @@ DevOps / SRE / Cybersecurity
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Automate repetitive operational tasks.
 - Use version control for configuration files where appropriate.
@@ -2553,7 +2553,7 @@ DevOps / SRE / Cybersecurity
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Linux is the foundation of many enterprise environments, including:
 
@@ -2575,7 +2575,7 @@ Strong Linux skills directly improve capabilities in:
 
 ---
 
-# Final Key Takeaways
+## Final Key Takeaways
 
 - Build a strong foundation before learning advanced topics.
 - Understand the reasoning behind commands, not just their syntax.
@@ -2587,9 +2587,9 @@ Strong Linux skills directly improve capabilities in:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - Linux Foundation Documentation
 - Red Hat Enterprise Linux Documentation
@@ -2597,7 +2597,7 @@ Strong Linux skills directly improve capabilities in:
 - Debian Administrator's Handbook
 - POSIX Standards
 
-## Manual Pages
+### Manual Pages
 
 - `man bash`
 - `man systemctl`
@@ -2610,7 +2610,7 @@ Strong Linux skills directly improve capabilities in:
 - `man chmod`
 - `man chown`
 
-## Security & Operations
+### Security & Operations
 
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-61 (Computer Security Incident Handling Guide)
@@ -2620,7 +2620,7 @@ Strong Linux skills directly improve capabilities in:
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have completed the complete Linux handbook, covering:
 
@@ -2655,7 +2655,7 @@ This knowledge base provides a comprehensive foundation for Linux administration
 
 ---
 
-# Next File
+## Next File
 
 ➡️ **Resources.md**
 

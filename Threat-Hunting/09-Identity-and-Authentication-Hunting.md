@@ -46,7 +46,7 @@ Behavioral Baseline
 
 ---
 
-# Why Identity Hunting Matters
+## Why Identity Hunting Matters
 
 Traditional security monitoring often asks:
 
@@ -100,7 +100,7 @@ Cloud / Application Access
 
 ---
 
-# Identity Threat-Hunting Architecture
+## Identity Threat-Hunting Architecture
 
 ```text
                        IDENTITY SOURCES
@@ -128,7 +128,7 @@ Cloud / Application Access
 
 ---
 
-# Identity Data Sources
+## Identity Data Sources
 
 Important identity telemetry includes:
 
@@ -152,7 +152,7 @@ Important identity telemetry includes:
 
 ---
 
-# Authentication Event Model
+## Authentication Event Model
 
 A normalized authentication event may contain:
 
@@ -200,7 +200,7 @@ Context determines risk.
 
 ---
 
-# Authentication Lifecycle
+## Authentication Lifecycle
 
 ```text
 User
@@ -232,15 +232,15 @@ Threat hunting can investigate anomalies at every stage.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 These concepts must be distinguished.
 
-## Authentication
+### Authentication
 
 > Who are you?
 
-## Authorization
+### Authorization
 
 > What are you allowed to access?
 
@@ -264,7 +264,7 @@ An attacker may compromise a legitimate account but still attempt unauthorized p
 
 ---
 
-# Windows Authentication
+## Windows Authentication
 
 Windows environments provide extensive authentication telemetry.
 
@@ -287,7 +287,7 @@ These events should be correlated rather than analyzed independently.
 
 ---
 
-# Windows Logon Types
+## Windows Logon Types
 
 Common Windows logon types include:
 
@@ -313,7 +313,7 @@ commonly represents an RDP-style remote interactive logon.
 
 ---
 
-# Authentication Investigation
+## Authentication Investigation
 
 For a successful login:
 
@@ -345,7 +345,7 @@ A login may be legitimate while the subsequent activity is malicious.
 
 ---
 
-# Failed Authentication Hunting
+## Failed Authentication Hunting
 
 A single failed login is usually uninteresting.
 
@@ -363,7 +363,7 @@ from one source may indicate password spraying.
 
 ---
 
-# Password Spraying
+## Password Spraying
 
 Password spraying attempts a small number of passwords against many accounts.
 
@@ -385,9 +385,9 @@ The key characteristic is:
 
 ---
 
-# Brute Force vs Password Spraying
+## Brute Force vs Password Spraying
 
-## Brute Force
+### Brute Force
 
 ```text
 One Account
@@ -398,7 +398,7 @@ One Account
      └── Password 4
 ```
 
-## Password Spraying
+### Password Spraying
 
 ```text
 One Password
@@ -413,7 +413,7 @@ The detection strategy differs.
 
 ---
 
-# Password Spray Hunting
+## Password Spray Hunting
 
 Useful dimensions:
 
@@ -441,7 +441,7 @@ This deserves investigation.
 
 ---
 
-# Successful Authentication After Failures
+## Successful Authentication After Failures
 
 A particularly important pattern:
 
@@ -459,7 +459,7 @@ This can indicate credential compromise.
 
 ---
 
-# Account Lockout Hunting
+## Account Lockout Hunting
 
 Repeated authentication failures may trigger account lockouts.
 
@@ -484,7 +484,7 @@ Patterns may reveal:
 
 ---
 
-# Kerberos
+## Kerberos
 
 Kerberos is a central authentication protocol in Active Directory environments.
 
@@ -508,7 +508,7 @@ Service
 
 ---
 
-# Kerberos Authentication Flow
+## Kerberos Authentication Flow
 
 ```text
 Client
@@ -537,7 +537,7 @@ Understanding this flow is important for detecting identity abuse.
 
 ---
 
-# Kerberos Hunting
+## Kerberos Hunting
 
 Useful events include:
 
@@ -558,7 +558,7 @@ Potential anomalies:
 
 ---
 
-# Kerberoasting Hunting
+## Kerberoasting Hunting
 
 Kerberoasting targets service accounts by requesting service tickets associated with SPNs.
 
@@ -589,7 +589,7 @@ Historical Behavior
 
 ---
 
-# AS-REP Roasting
+## AS-REP Roasting
 
 Accounts configured without Kerberos pre-authentication can create additional attack opportunities.
 
@@ -603,7 +603,7 @@ Configuration review is generally more reliable than waiting for attack telemetr
 
 ---
 
-# NTLM
+## NTLM
 
 NTLM is an older authentication protocol that remains present in many environments.
 
@@ -617,7 +617,7 @@ Threat hunters should monitor:
 
 ---
 
-# Pass-the-Hash
+## Pass-the-Hash
 
 Pass-the-Hash abuses NTLM credential material rather than requiring the plaintext password.
 
@@ -652,7 +652,7 @@ Remote Service
 
 ---
 
-# Pass-the-Ticket
+## Pass-the-Ticket
 
 Pass-the-Ticket abuses Kerberos ticket material.
 
@@ -667,7 +667,7 @@ Endpoint telemetry is often necessary for deeper investigation.
 
 ---
 
-# Explicit Credential Use
+## Explicit Credential Use
 
 Windows Event ID `4648` can indicate explicit credential use.
 
@@ -695,7 +695,7 @@ Privilege
 
 ---
 
-# Privileged Account Hunting
+## Privileged Account Hunting
 
 Privileged identities deserve enhanced monitoring.
 
@@ -722,7 +722,7 @@ Monitor:
 
 ---
 
-# Privileged Account Baseline
+## Privileged Account Baseline
 
 For each privileged identity establish:
 
@@ -753,7 +753,7 @@ This deserves immediate investigation.
 
 ---
 
-# Privileged Group Changes
+## Privileged Group Changes
 
 Important changes include:
 
@@ -781,7 +781,7 @@ Administrative Access
 
 ---
 
-# Identity Persistence
+## Identity Persistence
 
 Attackers may attempt persistence through:
 
@@ -799,7 +799,7 @@ Identity hunting must therefore include configuration changes, not only authenti
 
 ---
 
-# Service Account Hunting
+## Service Account Hunting
 
 Service accounts frequently have:
 
@@ -822,7 +822,7 @@ These may be suspicious depending on the account's intended purpose.
 
 ---
 
-# Service Account Baselines
+## Service Account Baselines
 
 Document:
 
@@ -839,7 +839,7 @@ Then identify deviations.
 
 ---
 
-# Dormant Accounts
+## Dormant Accounts
 
 Dormant accounts can become attractive targets.
 
@@ -864,7 +864,7 @@ Investigate:
 
 ---
 
-# Disabled Account Activity
+## Disabled Account Activity
 
 Authentication attempts involving disabled accounts can reveal:
 
@@ -878,7 +878,7 @@ Repeated activity should be investigated.
 
 ---
 
-# New Account Hunting
+## New Account Hunting
 
 Monitor:
 
@@ -899,7 +899,7 @@ A newly created privileged account deserves higher scrutiny.
 
 ---
 
-# MFA Hunting
+## MFA Hunting
 
 Multi-factor authentication reduces the risk associated with stolen passwords but introduces new attack surfaces.
 
@@ -914,7 +914,7 @@ Monitor:
 
 ---
 
-# MFA Fatigue
+## MFA Fatigue
 
 MFA fatigue involves repeated authentication prompts intended to encourage a user to approve an unexpected request.
 
@@ -947,7 +947,7 @@ User Reports Unexpected Prompts
 
 ---
 
-# MFA Bypass Hunting
+## MFA Bypass Hunting
 
 Possible attack paths can include:
 
@@ -962,7 +962,7 @@ Identity hunting should therefore investigate the entire authentication chain.
 
 ---
 
-# Impossible Travel
+## Impossible Travel
 
 Impossible-travel detection identifies authentication events that appear geographically or temporally inconsistent.
 
@@ -988,7 +988,7 @@ However, this signal can produce false positives because of:
 
 ---
 
-# Impossible Travel Investigation
+## Impossible Travel Investigation
 
 Do not immediately classify it as compromise.
 
@@ -1008,7 +1008,7 @@ Historical Location
 
 ---
 
-# New Device Hunting
+## New Device Hunting
 
 A new device accessing an identity may be legitimate or suspicious.
 
@@ -1036,7 +1036,7 @@ Application
 
 ---
 
-# New Country Authentication
+## New Country Authentication
 
 A new geographic location can be useful for prioritization.
 
@@ -1054,7 +1054,7 @@ Geo-location should therefore be a signal, not an automatic verdict.
 
 ---
 
-# User-Agent Hunting
+## User-Agent Hunting
 
 Authentication logs may include User-Agent information.
 
@@ -1078,7 +1078,7 @@ MFA
 
 ---
 
-# OAuth and OIDC
+## OAuth and OIDC
 
 Modern identity systems frequently use OAuth and OpenID Connect.
 
@@ -1104,7 +1104,7 @@ The token may then be used to access resources.
 
 ---
 
-# OAuth Application Abuse
+## OAuth Application Abuse
 
 Attackers may attempt to abuse:
 
@@ -1128,7 +1128,7 @@ Unusual User
 
 ---
 
-# OAuth Consent Hunting
+## OAuth Consent Hunting
 
 Monitor:
 
@@ -1149,7 +1149,7 @@ Especially investigate applications requesting access to:
 
 ---
 
-# Token-Based Attacks
+## Token-Based Attacks
 
 Modern environments frequently use tokens instead of repeatedly transmitting passwords.
 
@@ -1170,7 +1170,7 @@ and unusual token usage.
 
 ---
 
-# Cloud Identity
+## Cloud Identity
 
 Cloud identities include:
 
@@ -1189,7 +1189,7 @@ Each identity type has different behavior.
 
 ---
 
-# AWS Identity Hunting
+## AWS Identity Hunting
 
 Useful telemetry includes CloudTrail events such as:
 
@@ -1209,7 +1209,7 @@ The exact event set should be tailored to the environment.
 
 ---
 
-# AWS Access Key Hunting
+## AWS Access Key Hunting
 
 Potentially suspicious behavior:
 
@@ -1239,7 +1239,7 @@ What APIs were called?
 
 ---
 
-# Azure / Entra Identity Hunting
+## Azure / Entra Identity Hunting
 
 Relevant categories include:
 
@@ -1266,7 +1266,7 @@ Unusual Sign-In
 
 ---
 
-# GCP Identity Hunting
+## GCP Identity Hunting
 
 Google Cloud environments provide audit telemetry useful for investigating:
 
@@ -1294,7 +1294,7 @@ Resource
 
 ---
 
-# Identity-Based Lateral Movement
+## Identity-Based Lateral Movement
 
 Lateral movement often appears as:
 
@@ -1325,7 +1325,7 @@ Account ↔ Service
 
 ---
 
-# Identity Graph
+## Identity Graph
 
 A graph model can expose unusual relationships.
 
@@ -1346,7 +1346,7 @@ Unexpected edges can be valuable hunting candidates.
 
 ---
 
-# Authentication Graph Hunting
+## Authentication Graph Hunting
 
 Example:
 
@@ -1362,7 +1362,7 @@ The relationship itself is suspicious.
 
 ---
 
-# Session Anomalies
+## Session Anomalies
 
 A session can be suspicious due to:
 
@@ -1378,7 +1378,7 @@ A mature identity hunt therefore considers sessions rather than only login event
 
 ---
 
-# Concurrent Session Hunting
+## Concurrent Session Hunting
 
 Example:
 
@@ -1402,7 +1402,7 @@ Investigate the infrastructure before concluding.
 
 ---
 
-# Account Takeover Pattern
+## Account Takeover Pattern
 
 A possible account takeover sequence:
 
@@ -1429,7 +1429,7 @@ This chain is significantly more valuable than any individual event.
 
 ---
 
-# Identity Incident Timeline
+## Identity Incident Timeline
 
 Example:
 
@@ -1460,7 +1460,7 @@ This can strongly indicate account compromise.
 
 ---
 
-# Identity + Endpoint Correlation
+## Identity + Endpoint Correlation
 
 Suppose:
 
@@ -1486,7 +1486,7 @@ Identity and endpoint telemetry together provide much stronger evidence.
 
 ---
 
-# Identity + Network Correlation
+## Identity + Network Correlation
 
 ```text
 User
@@ -1508,7 +1508,7 @@ This can reveal lateral movement.
 
 ---
 
-# Identity + Cloud Correlation
+## Identity + Cloud Correlation
 
 ```text
 User
@@ -1530,9 +1530,9 @@ This is particularly important for cloud compromise investigations.
 
 ---
 
-# Identity Threat-Hunting Queries
+## Identity Threat-Hunting Queries
 
-## Password Spray Concept
+### Password Spray Concept
 
 ```text
 Authentication
@@ -1546,7 +1546,7 @@ The exact syntax depends on the SIEM.
 
 ---
 
-# Successful Login After Failures
+## Successful Login After Failures
 
 ```text
 Failed Authentication
@@ -1565,7 +1565,7 @@ This sequence should be prioritized.
 
 ---
 
-# New Device Query
+## New Device Query
 
 ```text
 User
@@ -1582,7 +1582,7 @@ New Device
 
 ---
 
-# Privileged Account Query
+## Privileged Account Query
 
 ```text
 Privileged User
@@ -1598,7 +1598,7 @@ Authentication
 
 ---
 
-# Identity Hunt With Splunk
+## Identity Hunt With Splunk
 
 Conceptual password-spray hunt:
 
@@ -1616,7 +1616,7 @@ Thresholds should be tuned using organizational baselines.
 
 ---
 
-# Successful Login Correlation
+## Successful Login Correlation
 
 ```spl id="7o1e6n"
 index=auth
@@ -1628,7 +1628,7 @@ Exact fields and transaction behavior depend on the logging architecture.
 
 ---
 
-# Identity Hunting With KQL
+## Identity Hunting With KQL
 
 Conceptual:
 
@@ -1645,13 +1645,13 @@ Use environment-specific schemas and thresholds.
 
 ---
 
-# Practical Lab 1 — Password Spray Hunt
+## Practical Lab 1 — Password Spray Hunt
 
-## Objective
+### Objective
 
 Identify a source attempting authentication against many users.
 
-### Procedure
+#### Procedure
 
 1. Collect authentication failures.
 2. Group by source IP.
@@ -1660,7 +1660,7 @@ Identify a source attempting authentication against many users.
 5. Identify successful authentications.
 6. Investigate successful accounts.
 
-### Questions
+#### Questions
 
 ```text
 Which accounts were targeted?
@@ -1671,9 +1671,9 @@ What happened after success?
 
 ---
 
-# Practical Lab 2 — Privileged Login Hunt
+## Practical Lab 2 — Privileged Login Hunt
 
-## Objective
+### Objective
 
 Identify anomalous privileged authentication.
 
@@ -1700,9 +1700,9 @@ Application
 
 ---
 
-# Practical Lab 3 — Dormant Account Hunt
+## Practical Lab 3 — Dormant Account Hunt
 
-## Objective
+### Objective
 
 Identify dormant accounts becoming active.
 
@@ -1725,7 +1725,7 @@ Investigate the account owner and authorization.
 
 ---
 
-# Practical Lab 4 — MFA Fatigue Hunt
+## Practical Lab 4 — MFA Fatigue Hunt
 
 Search for:
 
@@ -1747,7 +1747,7 @@ Was the device expected?
 
 ---
 
-# Practical Lab 5 — New OAuth Consent
+## Practical Lab 5 — New OAuth Consent
 
 Identify:
 
@@ -1773,7 +1773,7 @@ Historical Usage
 
 ---
 
-# Practical Lab 6 — Lateral Movement Hunt
+## Practical Lab 6 — Lateral Movement Hunt
 
 Identify:
 
@@ -1794,7 +1794,7 @@ Focus on unusual user-host relationships.
 
 ---
 
-# Practical Lab 7 — Service Account Anomaly
+## Practical Lab 7 — Service Account Anomaly
 
 Hypothesis:
 
@@ -1818,7 +1818,7 @@ Validate against documented service-account behavior.
 
 ---
 
-# Practical Lab 8 — Cloud Identity Compromise
+## Practical Lab 8 — Cloud Identity Compromise
 
 Hypothesis:
 
@@ -1850,7 +1850,7 @@ Look for:
 
 ---
 
-# Identity Detection Engineering
+## Identity Detection Engineering
 
 A mature identity detection pipeline:
 
@@ -1878,7 +1878,7 @@ SOC Investigation
 
 ---
 
-# Identity Risk Scoring
+## Identity Risk Scoring
 
 A conceptual risk model:
 
@@ -1903,7 +1903,7 @@ Risk scoring should prioritize investigation.
 
 ---
 
-# Example Identity Detection
+## Example Identity Detection
 
 ```text
 IF
@@ -1929,7 +1929,7 @@ Generate high-priority identity investigation
 
 ---
 
-# Identity Detection Tuning
+## Identity Detection Tuning
 
 Poor rule:
 
@@ -1967,7 +1967,7 @@ Endpoint Risk
 
 ---
 
-# Identity Telemetry Gaps
+## Identity Telemetry Gaps
 
 Example:
 
@@ -1986,27 +1986,27 @@ Without MFA and session visibility, account-takeover investigations become harde
 
 ---
 
-# Identity Security Best Practices
+## Identity Security Best Practices
 
-## Least Privilege
+### Least Privilege
 
 Users and service accounts should have only the access they require.
 
 ---
 
-## MFA
+### MFA
 
 Use strong MFA for privileged and sensitive access.
 
 ---
 
-## Privileged Access Management
+### Privileged Access Management
 
 Separate administrative identities and monitor privileged sessions.
 
 ---
 
-## Service Account Governance
+### Service Account Governance
 
 Document:
 
@@ -2021,13 +2021,13 @@ Authentication
 
 ---
 
-## Disable Dormant Accounts
+### Disable Dormant Accounts
 
 Reduce unnecessary attack surface.
 
 ---
 
-## Monitor Identity Changes
+### Monitor Identity Changes
 
 Track:
 
@@ -2043,9 +2043,9 @@ Recovery Methods
 
 ---
 
-# Identity Hunting Checklist
+## Identity Hunting Checklist
 
-## Authentication
+### Authentication
 
 - [ ] Failed logins
 - [ ] Successful logins
@@ -2055,7 +2055,7 @@ Recovery Methods
 - [ ] Location
 - [ ] MFA
 
-## Privilege
+### Privilege
 
 - [ ] Privileged accounts
 - [ ] Group changes
@@ -2063,7 +2063,7 @@ Recovery Methods
 - [ ] New administrators
 - [ ] Service accounts
 
-## Anomalies
+### Anomalies
 
 - [ ] New device
 - [ ] New location
@@ -2072,7 +2072,7 @@ Recovery Methods
 - [ ] Concurrent sessions
 - [ ] Rare user-host relationship
 
-## Cloud
+### Cloud
 
 - [ ] API credentials
 - [ ] OAuth
@@ -2081,7 +2081,7 @@ Recovery Methods
 - [ ] Access keys
 - [ ] Service principals
 
-## Response
+### Response
 
 - [ ] Disable compromised account
 - [ ] Revoke sessions/tokens
@@ -2092,45 +2092,45 @@ Recovery Methods
 
 ---
 
-# Common Identity Hunting Mistakes
+## Common Identity Hunting Mistakes
 
-## 1. Treating Every New Location as Malicious
+### 1. Treating Every New Location as Malicious
 
 VPNs and proxies produce legitimate geographic anomalies.
 
 ---
 
-## 2. Monitoring Authentication Without Authorization
+### 2. Monitoring Authentication Without Authorization
 
 A valid login does not prove valid resource usage.
 
 ---
 
-## 3. Ignoring Service Accounts
+### 3. Ignoring Service Accounts
 
 Service accounts often have broad privileges and long-lived credentials.
 
 ---
 
-## 4. Ignoring Cloud Identities
+### 4. Ignoring Cloud Identities
 
 Modern attacks frequently target cloud identities.
 
 ---
 
-## 5. Ignoring MFA Events
+### 5. Ignoring MFA Events
 
 Authentication and MFA should be investigated together.
 
 ---
 
-## 6. Ignoring Post-Authentication Activity
+### 6. Ignoring Post-Authentication Activity
 
 What happened after login may be more important than the login itself.
 
 ---
 
-# Identity Investigation Template
+## Identity Investigation Template
 
 ```text
 Incident ID:
@@ -2202,7 +2202,7 @@ Lessons Learned:
 
 ---
 
-# MITRE ATT&CK Mapping
+## MITRE ATT&CK Mapping
 
 Relevant identity-related techniques include:
 
@@ -2232,21 +2232,21 @@ Validate technique and sub-technique mappings against the current ATT&CK knowled
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. Why is identity threat hunting important?
+### 1. Why is identity threat hunting important?
 
 Because attackers can use legitimate credentials to bypass traditional malware-focused controls and access enterprise resources.
 
 ---
 
-## 2. What is password spraying?
+### 2. What is password spraying?
 
 Password spraying attempts a small number of commonly used passwords against many accounts rather than repeatedly attacking one account.
 
 ---
 
-## 3. How do you distinguish password spraying from brute force?
+### 3. How do you distinguish password spraying from brute force?
 
 Brute force generally targets one account with many passwords.
 
@@ -2254,37 +2254,37 @@ Password spraying generally targets many accounts with relatively few password a
 
 ---
 
-## 4. What is Kerberos?
+### 4. What is Kerberos?
 
 Kerberos is a network authentication protocol heavily used by Active Directory environments.
 
 ---
 
-## 5. What is Kerberoasting?
+### 5. What is Kerberoasting?
 
 Kerberoasting is an attack technique involving service-ticket requests that can expose material useful for offline password cracking against service accounts.
 
 ---
 
-## 6. What is Pass-the-Hash?
+### 6. What is Pass-the-Hash?
 
 Pass-the-Hash uses captured NTLM credential material to authenticate without requiring the plaintext password.
 
 ---
 
-## 7. What is Pass-the-Ticket?
+### 7. What is Pass-the-Ticket?
 
 Pass-the-Ticket abuses Kerberos ticket material to authenticate to services.
 
 ---
 
-## 8. What is MFA fatigue?
+### 8. What is MFA fatigue?
 
 MFA fatigue is an attack pattern where an attacker repeatedly triggers MFA prompts in an attempt to persuade the victim to approve one.
 
 ---
 
-## 9. How would you investigate impossible travel?
+### 9. How would you investigate impossible travel?
 
 I would examine:
 
@@ -2304,7 +2304,7 @@ before concluding that the account is compromised.
 
 ---
 
-## 10. What makes a privileged account suspicious?
+### 10. What makes a privileged account suspicious?
 
 Examples include:
 
@@ -2317,25 +2317,25 @@ Examples include:
 
 ---
 
-## 11. How would you hunt for compromised service accounts?
+### 11. How would you hunt for compromised service accounts?
 
 I would establish the account's expected hosts, services, authentication methods, and schedules, then hunt for deviations.
 
 ---
 
-## 12. Why should OAuth consent be monitored?
+### 12. Why should OAuth consent be monitored?
 
 Attackers may abuse OAuth applications and delegated permissions to maintain access without directly compromising the user's password.
 
 ---
 
-## 13. What is valid-account abuse?
+### 13. What is valid-account abuse?
 
 It is the use of legitimate credentials or accounts to perform unauthorized activity.
 
 ---
 
-## 14. How would you investigate a suspicious successful login?
+### 14. How would you investigate a suspicious successful login?
 
 I would examine:
 
@@ -2353,7 +2353,7 @@ Post-Authentication Activity
 
 ---
 
-## 15. What is the most important identity-hunting principle?
+### 15. What is the most important identity-hunting principle?
 
 > **A successful authentication is not proof of legitimate activity.**
 
@@ -2361,7 +2361,7 @@ The identity, device, location, session, authorization, and subsequent behavior 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 1. **Identity is a primary enterprise security boundary.**
 2. **Valid credentials can be abused by attackers.**
@@ -2385,7 +2385,7 @@ The core mindset is:
 
 ---
 
-# References
+## References
 
 - MITRE ATT&CK — Valid Accounts  
   https://attack.mitre.org/techniques/T1078/

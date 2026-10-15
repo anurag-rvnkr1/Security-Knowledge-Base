@@ -1,10 +1,10 @@
 # 20-Windows-Remote-Management.md
 
-# Part 1 — Windows Remote Management Fundamentals, Remote Administration Technologies, WinRM Architecture, PowerShell Remoting, and Remote Desktop Services
+## Part 1 — Windows Remote Management Fundamentals, Remote Administration Technologies, WinRM Architecture, PowerShell Remoting, and Remote Desktop Services
 
 ---
 
-# Introduction
+## Introduction
 
 Modern enterprise environments often contain hundreds or thousands of Windows systems spread across multiple locations, cloud platforms, and remote offices.
 
@@ -25,7 +25,7 @@ Secure remote management is a fundamental requirement for enterprise IT and cybe
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -41,7 +41,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is Remote Management?
+## What is Remote Management?
 
 Remote management is the ability to administer a computer from another system without physical access.
 
@@ -59,7 +59,7 @@ Remote management improves efficiency while reducing operational costs.
 
 ---
 
-# Remote Management Technologies
+## Remote Management Technologies
 
 Windows supports multiple technologies.
 
@@ -78,7 +78,7 @@ Each technology serves different administrative requirements.
 
 ---
 
-# Enterprise Remote Management Architecture
+## Enterprise Remote Management Architecture
 
 ```text
 Administrator Workstation
@@ -108,7 +108,7 @@ Administrators interact with remote systems through secure management protocols.
 
 ---
 
-# Windows Remote Management (WinRM)
+## Windows Remote Management (WinRM)
 
 Windows Remote Management (WinRM) is Microsoft's implementation of the **WS-Management (WS-Man)** protocol.
 
@@ -125,7 +125,7 @@ It is the foundation of PowerShell Remoting.
 
 ---
 
-# WinRM Architecture
+## WinRM Architecture
 
 ```text
 Administrator
@@ -155,7 +155,7 @@ The WinRM service receives requests, authenticates users, and executes authorize
 
 ---
 
-# WS-Management (WS-Man)
+## WS-Management (WS-Man)
 
 WS-Management is an industry-standard protocol for remote system management.
 
@@ -171,7 +171,7 @@ Windows implements WS-Man through WinRM.
 
 ---
 
-# WinRM Service
+## WinRM Service
 
 Service name:
 
@@ -191,7 +191,7 @@ The service must be running for WinRM-based management.
 
 ---
 
-# Default WinRM Ports
+## Default WinRM Ports
 
 | Protocol | Port |
 |----------|------|
@@ -202,7 +202,7 @@ These ports replaced the older defaults (80/443) for WinRM traffic.
 
 ---
 
-# WinRM Communication Workflow
+## WinRM Communication Workflow
 
 ```text
 Administrator
@@ -232,7 +232,7 @@ All operations are subject to authentication and authorization.
 
 ---
 
-# Authentication Methods
+## Authentication Methods
 
 WinRM supports:
 
@@ -246,7 +246,7 @@ Enterprise domain environments typically use Kerberos.
 
 ---
 
-# Kerberos Authentication
+## Kerberos Authentication
 
 ```text
 Administrator
@@ -272,7 +272,7 @@ Kerberos provides mutual authentication and helps prevent credential replay.
 
 ---
 
-# HTTPS for WinRM
+## HTTPS for WinRM
 
 HTTPS encrypts management traffic.
 
@@ -287,7 +287,7 @@ Whenever possible, enterprise deployments should use HTTPS listeners.
 
 ---
 
-# Configuring WinRM
+## Configuring WinRM
 
 Basic configuration:
 
@@ -306,7 +306,7 @@ Administrative privileges are required.
 
 ---
 
-# Verify WinRM
+## Verify WinRM
 
 Check service status:
 
@@ -322,7 +322,7 @@ winrm enumerate winrm/config/listener
 
 ---
 
-# Test WinRM Connectivity
+## Test WinRM Connectivity
 
 ```powershell
 Test-WsMan server01
@@ -332,7 +332,7 @@ Successful output confirms that the remote WinRM service is reachable and respon
 
 ---
 
-# PowerShell Remoting
+## PowerShell Remoting
 
 PowerShell Remoting enables administrators to execute PowerShell commands on remote systems.
 
@@ -348,7 +348,7 @@ PowerShell Remoting is built on WinRM.
 
 ---
 
-# PowerShell Remoting Workflow
+## PowerShell Remoting Workflow
 
 ```text
 Administrator
@@ -376,7 +376,7 @@ Results Returned
 
 ---
 
-# Interactive Remote Session
+## Interactive Remote Session
 
 Create an interactive session:
 
@@ -394,7 +394,7 @@ Commands now execute on the remote computer.
 
 ---
 
-# Exit Remote Session
+## Exit Remote Session
 
 ```powershell
 Exit-PSSession
@@ -404,7 +404,7 @@ Returns control to the local PowerShell session.
 
 ---
 
-# One-Time Remote Command
+## One-Time Remote Command
 
 Execute a command remotely:
 
@@ -418,7 +418,7 @@ Only the specified command executes remotely.
 
 ---
 
-# Multiple Computer Management
+## Multiple Computer Management
 
 Example:
 
@@ -433,7 +433,7 @@ PowerShell can execute commands across many systems simultaneously.
 
 ---
 
-# Persistent Sessions
+## Persistent Sessions
 
 Create a reusable session:
 
@@ -454,7 +454,7 @@ Persistent sessions reduce connection overhead.
 
 ---
 
-# Remove Session
+## Remove Session
 
 ```powershell
 Remove-PSSession $Session
@@ -464,7 +464,7 @@ Always remove unused sessions.
 
 ---
 
-# Remote Desktop Protocol (RDP)
+## Remote Desktop Protocol (RDP)
 
 Remote Desktop Protocol provides graphical remote access.
 
@@ -480,7 +480,7 @@ Unlike PowerShell Remoting, RDP provides a complete graphical session.
 
 ---
 
-# RDP Architecture
+## RDP Architecture
 
 ```text
 Administrator
@@ -504,7 +504,7 @@ Windows Desktop
 
 ---
 
-# Remote Desktop Service
+## Remote Desktop Service
 
 Primary service:
 
@@ -521,7 +521,7 @@ Responsibilities:
 
 ---
 
-# RDP Authentication
+## RDP Authentication
 
 Modern RDP supports:
 
@@ -533,7 +533,7 @@ NLA authenticates users before establishing a full desktop session.
 
 ---
 
-# Network Level Authentication (NLA)
+## Network Level Authentication (NLA)
 
 ```text
 Client
@@ -565,7 +565,7 @@ NLA reduces denial-of-service exposure and resource consumption.
 
 ---
 
-# Remote Assistance
+## Remote Assistance
 
 Remote Assistance enables administrators or support personnel to assist users.
 
@@ -580,7 +580,7 @@ It is intended for help desk and support scenarios.
 
 ---
 
-# Microsoft Management Console (MMC)
+## Microsoft Management Console (MMC)
 
 Many administrative snap-ins support remote management.
 
@@ -597,7 +597,7 @@ MMC provides centralized graphical administration.
 
 ---
 
-# Enterprise Remote Administration Example
+## Enterprise Remote Administration Example
 
 An administrator must restart a failed service on 200 servers.
 
@@ -615,7 +615,7 @@ PowerShell Remoting performs the task across all servers simultaneously.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Remote management technologies are frequently targeted by attackers.
 
@@ -632,7 +632,7 @@ Proper hardening and monitoring are essential.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Secure remote administration enables:
 
@@ -647,7 +647,7 @@ Remote management is critical for modern hybrid and enterprise environments.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Enable WinRM only where required.
 - Prefer HTTPS listeners for WinRM.
@@ -662,9 +662,9 @@ Remote management is critical for modern hybrid and enterprise environments.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Verify WinRM
+### Lab 1 — Verify WinRM
 
 Run:
 
@@ -679,7 +679,7 @@ Confirm:
 
 ---
 
-## Lab 2 — Test WinRM
+### Lab 2 — Test WinRM
 
 ```powershell
 Test-WSMan localhost
@@ -689,7 +689,7 @@ Record the response.
 
 ---
 
-## Lab 3 — Enable PowerShell Remoting
+### Lab 3 — Enable PowerShell Remoting
 
 ```powershell
 Enable-PSRemoting
@@ -699,7 +699,7 @@ Observe the configuration changes performed.
 
 ---
 
-## Lab 4 — Create a Remote Session
+### Lab 4 — Create a Remote Session
 
 If another Windows system is available:
 
@@ -721,7 +721,7 @@ Exit-PSSession
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - WinRM is Microsoft's implementation of the WS-Management protocol.
 - PowerShell Remoting provides secure command-line administration.
@@ -734,7 +734,7 @@ Exit-PSSession
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Windows Remote Management (WinRM)?
 2. What ports does WinRM use?
@@ -749,7 +749,7 @@ Exit-PSSession
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft WinRM Documentation
@@ -761,13 +761,13 @@ Exit-PSSession
 
 ---
 
-# 20-Windows-Remote-Management.md
+## 20-Windows-Remote-Management.md
 
-# Part 3 — Just Enough Administration (JEA), Just-In-Time (JIT) Administration, PowerShell Security, Remote Management Hardening, Monitoring, and Incident Response
+## Part 3 — Just Enough Administration (JEA), Just-In-Time (JIT) Administration, PowerShell Security, Remote Management Hardening, Monitoring, and Incident Response
 
 ---
 
-# Introduction
+## Introduction
 
 Remote administration provides powerful capabilities for enterprise management, but it also presents attractive opportunities for attackers.
 
@@ -784,7 +784,7 @@ To reduce these risks, Microsoft recommends implementing **least privilege**, **
 
 ---
 
-# Securing Remote Administration
+## Securing Remote Administration
 
 A secure remote administration strategy should include:
 
@@ -801,7 +801,7 @@ Security should be integrated into every administrative workflow.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Administrators should receive only the permissions required to perform their responsibilities.
 
@@ -833,7 +833,7 @@ This reduces the impact of compromised credentials.
 
 ---
 
-# Just Enough Administration (JEA)
+## Just Enough Administration (JEA)
 
 JEA is a PowerShell security technology that limits what administrators can do during remote sessions.
 
@@ -863,7 +863,7 @@ Nothing Else
 
 ---
 
-# Benefits of JEA
+## Benefits of JEA
 
 JEA provides:
 
@@ -877,7 +877,7 @@ Even if credentials are compromised, attackers have limited capabilities.
 
 ---
 
-# JEA Architecture
+## JEA Architecture
 
 ```text
 Administrator
@@ -907,7 +907,7 @@ Each role is associated with a predefined set of capabilities.
 
 ---
 
-# Role Capability Files
+## Role Capability Files
 
 JEA uses **Role Capability Files** (`.psrc`) to define what users can access.
 
@@ -933,7 +933,7 @@ Any command not explicitly permitted is unavailable.
 
 ---
 
-# Session Configuration Files
+## Session Configuration Files
 
 Session Configuration Files (`.pssc`) define:
 
@@ -947,7 +947,7 @@ These files create controlled PowerShell endpoints.
 
 ---
 
-# JEA Workflow
+## JEA Workflow
 
 ```text
 Administrator
@@ -975,7 +975,7 @@ Remote Execution
 
 ---
 
-# Just-In-Time (JIT) Administration
+## Just-In-Time (JIT) Administration
 
 JIT Administration provides administrative privileges only when required and only for a limited time.
 
@@ -1005,7 +1005,7 @@ Access Expires
 
 ---
 
-# Benefits of JIT
+## Benefits of JIT
 
 JIT reduces:
 
@@ -1019,7 +1019,7 @@ Temporary access significantly limits attacker persistence.
 
 ---
 
-# JIT Workflow
+## JIT Workflow
 
 ```text
 Administrator
@@ -1047,7 +1047,7 @@ Privileges Removed
 
 ---
 
-# Privileged Access Workstations (PAWs)
+## Privileged Access Workstations (PAWs)
 
 Highly privileged administrators should use dedicated management systems.
 
@@ -1063,7 +1063,7 @@ PAWs reduce exposure to phishing and malware.
 
 ---
 
-# Credential Protection
+## Credential Protection
 
 Administrative credentials should be protected using:
 
@@ -1078,7 +1078,7 @@ Credential theft is one of the most common attack objectives.
 
 ---
 
-# PowerShell Security
+## PowerShell Security
 
 PowerShell is an essential administration tool but is also frequently abused by attackers.
 
@@ -1095,7 +1095,7 @@ These features improve visibility and reduce abuse.
 
 ---
 
-# PowerShell Execution Policies
+## PowerShell Execution Policies
 
 Execution policies control how scripts are executed.
 
@@ -1111,7 +1111,7 @@ Execution policies are not security boundaries but help prevent accidental scrip
 
 ---
 
-# View Execution Policy
+## View Execution Policy
 
 ```powershell
 Get-ExecutionPolicy
@@ -1119,7 +1119,7 @@ Get-ExecutionPolicy
 
 ---
 
-# View All Scopes
+## View All Scopes
 
 ```powershell
 Get-ExecutionPolicy -List
@@ -1127,7 +1127,7 @@ Get-ExecutionPolicy -List
 
 ---
 
-# Script Signing
+## Script Signing
 
 Digitally signed scripts provide:
 
@@ -1155,7 +1155,7 @@ Execute
 
 ---
 
-# Antimalware Scan Interface (AMSI)
+## Antimalware Scan Interface (AMSI)
 
 AMSI allows security software to inspect scripts before execution.
 
@@ -1183,7 +1183,7 @@ AMSI helps detect obfuscated and malicious scripts.
 
 ---
 
-# Constrained Language Mode
+## Constrained Language Mode
 
 Constrained Language Mode restricts PowerShell functionality.
 
@@ -1198,7 +1198,7 @@ This reduces opportunities for post-exploitation.
 
 ---
 
-# PowerShell Logging
+## PowerShell Logging
 
 Enable:
 
@@ -1215,7 +1215,7 @@ These logs support:
 
 ---
 
-# PowerShell Script Block Logging
+## PowerShell Script Block Logging
 
 Script Block Logging records executed PowerShell code.
 
@@ -1229,7 +1229,7 @@ Frequently monitored in enterprise SOC environments.
 
 ---
 
-# PowerShell Transcription
+## PowerShell Transcription
 
 Transcription records PowerShell sessions.
 
@@ -1255,7 +1255,7 @@ Transcripts help reconstruct administrative activity.
 
 ---
 
-# Remote Management Hardening
+## Remote Management Hardening
 
 Recommended controls:
 
@@ -1271,7 +1271,7 @@ Recommended controls:
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Restrict remote administration to management networks.
 
@@ -1297,7 +1297,7 @@ Workstations should not directly administer production systems.
 
 ---
 
-# Monitoring Remote Administration
+## Monitoring Remote Administration
 
 Monitor:
 
@@ -1313,7 +1313,7 @@ These events often indicate legitimate administration—or attacker activity.
 
 ---
 
-# Common Windows Security Events
+## Common Windows Security Events
 
 | Event ID | Description |
 |-----------|-------------|
@@ -1331,7 +1331,7 @@ Correlating these events improves detection accuracy.
 
 ---
 
-# Detecting Lateral Movement
+## Detecting Lateral Movement
 
 Potential indicators:
 
@@ -1346,7 +1346,7 @@ These activities should be investigated within the broader context of user behav
 
 ---
 
-# Incident Response Workflow
+## Incident Response Workflow
 
 ```text
 Alert
@@ -1382,7 +1382,7 @@ Lessons Learned
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A SOC detects:
 
@@ -1406,7 +1406,7 @@ Early monitoring limits the scope of the compromise.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Remote administration tools are routinely abused by attackers after initial compromise.
 
@@ -1422,7 +1422,7 @@ Strong authentication, least privilege, logging, and segmentation reduce these r
 
 ---
 
-# Business Impact
+## Business Impact
 
 Secure remote administration enables:
 
@@ -1435,7 +1435,7 @@ Secure remote administration enables:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Deploy JEA for administrative roles.
 - Implement JIT administration for privileged access.
@@ -1450,9 +1450,9 @@ Secure remote administration enables:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review Execution Policies
+### Lab 1 — Review Execution Policies
 
 Run:
 
@@ -1464,7 +1464,7 @@ Document execution policies at each scope.
 
 ---
 
-## Lab 2 — Review WinRM Configuration
+### Lab 2 — Review WinRM Configuration
 
 Run:
 
@@ -1480,7 +1480,7 @@ Review:
 
 ---
 
-## Lab 3 — Review PowerShell Operational Logs
+### Lab 3 — Review PowerShell Operational Logs
 
 Open:
 
@@ -1512,7 +1512,7 @@ Identify recent administrative activity.
 
 ---
 
-## Lab 4 — Design a JEA Role
+### Lab 4 — Design a JEA Role
 
 Create a design (no implementation required) for a Help Desk role that allows only:
 
@@ -1525,7 +1525,7 @@ Explain why additional cmdlets should remain unavailable.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - JEA limits administrative capabilities to approved commands.
 - JIT provides temporary administrative privileges.
@@ -1536,7 +1536,7 @@ Explain why additional cmdlets should remain unavailable.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Just Enough Administration (JEA)?
 2. How does JIT Administration improve security?
@@ -1551,7 +1551,7 @@ Explain why additional cmdlets should remain unavailable.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft PowerShell Documentation
@@ -1564,13 +1564,13 @@ Explain why additional cmdlets should remain unavailable.
 
 ---
 
-# 20-Windows-Remote-Management.md
+## 20-Windows-Remote-Management.md
 
-# Part 4 — Enterprise Remote Management Strategy, Compliance, Troubleshooting, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Remote Management Strategy, Compliance, Troubleshooting, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise remote management extends far beyond connecting to a server and running commands.
 
@@ -1589,7 +1589,7 @@ Remote administration should improve operational efficiency **without increasing
 
 ---
 
-# Enterprise Remote Management Architecture
+## Enterprise Remote Management Architecture
 
 A typical enterprise architecture is shown below.
 
@@ -1621,7 +1621,7 @@ This architecture minimizes direct administrative access from user networks.
 
 ---
 
-# Administrative Tiering
+## Administrative Tiering
 
 Large organizations commonly separate administration into security tiers.
 
@@ -1637,7 +1637,7 @@ Administrative credentials should never cross security tiers unnecessarily.
 
 ---
 
-# Bastion Hosts (Jump Servers)
+## Bastion Hosts (Jump Servers)
 
 A **Bastion Host** (Jump Server) acts as a controlled gateway for remote administration.
 
@@ -1669,7 +1669,7 @@ Target Server
 
 ---
 
-# Remote Management Policy
+## Remote Management Policy
 
 Organizations should define policies covering:
 
@@ -1686,7 +1686,7 @@ Policies ensure consistent administration across the enterprise.
 
 ---
 
-# Remote Access Approval Workflow
+## Remote Access Approval Workflow
 
 ```text
 Access Request
@@ -1720,7 +1720,7 @@ This aligns with the principles of least privilege and Just-In-Time administrati
 
 ---
 
-# Remote Management Logging
+## Remote Management Logging
 
 Every remote session should generate logs such as:
 
@@ -1736,7 +1736,7 @@ Comprehensive logging supports accountability and forensic investigations.
 
 ---
 
-# Monitoring Remote Sessions
+## Monitoring Remote Sessions
 
 SOC teams should monitor for:
 
@@ -1752,7 +1752,7 @@ Behavior should always be evaluated within operational context to distinguish le
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Secure remote management supports compliance with many standards.
 
@@ -1776,7 +1776,7 @@ Key compliance objectives include:
 
 ---
 
-# Mapping Remote Management to Compliance
+## Mapping Remote Management to Compliance
 
 | Framework | Relevant Controls |
 |-----------|-------------------|
@@ -1789,7 +1789,7 @@ Key compliance objectives include:
 
 ---
 
-# Troubleshooting WinRM
+## Troubleshooting WinRM
 
 Common problems include:
 
@@ -1803,7 +1803,7 @@ Common problems include:
 
 ---
 
-# WinRM Troubleshooting Workflow
+## WinRM Troubleshooting Workflow
 
 ```text
 Connection Failure
@@ -1835,7 +1835,7 @@ Test Again
 
 ---
 
-# Useful WinRM Commands
+## Useful WinRM Commands
 
 Check service:
 
@@ -1863,7 +1863,7 @@ winrm get winrm/config
 
 ---
 
-# Troubleshooting PowerShell Remoting
+## Troubleshooting PowerShell Remoting
 
 Checklist:
 
@@ -1877,7 +1877,7 @@ Checklist:
 
 ---
 
-# Troubleshooting RDP
+## Troubleshooting RDP
 
 Common issues include:
 
@@ -1891,7 +1891,7 @@ Common issues include:
 
 ---
 
-# RDP Troubleshooting Commands
+## RDP Troubleshooting Commands
 
 Check listener:
 
@@ -1915,7 +1915,7 @@ query session
 
 ---
 
-# Remote Management Checklist
+## Remote Management Checklist
 
 Before deploying remote management, verify:
 
@@ -1932,7 +1932,7 @@ Before deploying remote management, verify:
 
 ---
 
-# Enterprise Operations Workflow
+## Enterprise Operations Workflow
 
 ```text
 Administrator
@@ -1968,7 +1968,7 @@ Compliance Review
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global organization manages 8,000 Windows systems across multiple regions.
 
@@ -1987,7 +1987,7 @@ This reduces operational overhead while maintaining strong security controls and
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Remote management technologies are frequently observed in post-compromise activity.
 
@@ -2003,7 +2003,7 @@ Effective monitoring, segmentation, and privileged access controls significantly
 
 ---
 
-# Business Impact
+## Business Impact
 
 A mature remote management program provides:
 
@@ -2019,7 +2019,7 @@ Secure remote administration directly contributes to operational resilience.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use PowerShell Remoting instead of RDP whenever practical.
 - Require MFA for all remote administrative access.
@@ -2034,9 +2034,9 @@ Secure remote administration directly contributes to operational resilience.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Verify WinRM Health
+### Lab 1 — Verify WinRM Health
 
 Run:
 
@@ -2054,7 +2054,7 @@ Document:
 
 ---
 
-## Lab 2 — Review Remote Management Configuration
+### Lab 2 — Review Remote Management Configuration
 
 Run:
 
@@ -2070,7 +2070,7 @@ Review:
 
 ---
 
-## Lab 3 — Test RDP Availability
+### Lab 3 — Test RDP Availability
 
 Run:
 
@@ -2084,7 +2084,7 @@ Record whether Remote Desktop is accepting connections.
 
 ---
 
-## Lab 4 — Design an Enterprise Remote Administration Model
+### Lab 4 — Design an Enterprise Remote Administration Model
 
 Design an architecture including:
 
@@ -2100,7 +2100,7 @@ Explain how each component improves security.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2125,7 +2125,7 @@ These technologies enable secure, scalable, and efficient administration of Wind
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - WinRM is the foundation of PowerShell Remoting.
 - CIM is the preferred modern interface for management automation.
@@ -2137,7 +2137,7 @@ These technologies enable secure, scalable, and efficient administration of Wind
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is WinRM and which ports does it use?
 2. Explain the relationship between WinRM and PowerShell Remoting.
@@ -2152,7 +2152,7 @@ These technologies enable secure, scalable, and efficient administration of Wind
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft WinRM Documentation
@@ -2168,7 +2168,7 @@ These technologies enable secure, scalable, and efficient administration of Wind
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 20 – Windows Remote Management**.
 

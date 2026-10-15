@@ -1,10 +1,10 @@
 # 22-Windows-Hardening.md
 
-# Part 1 — Windows Hardening Fundamentals, Security Baselines, Attack Surface Reduction, and Enterprise Hardening Principles
+## Part 1 — Windows Hardening Fundamentals, Security Baselines, Attack Surface Reduction, and Enterprise Hardening Principles
 
 ---
 
-# Introduction
+## Introduction
 
 A freshly installed Windows system is functional, but it is **not fully hardened**.
 
@@ -23,7 +23,7 @@ Hardening is one of the most effective preventive cybersecurity measures.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -38,7 +38,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is Windows Hardening?
+## What is Windows Hardening?
 
 Windows hardening is the process of configuring Windows to minimize security risks while maintaining required business functionality.
 
@@ -55,7 +55,7 @@ The objective is to make systems significantly more difficult to compromise.
 
 ---
 
-# Why Hardening Matters
+## Why Hardening Matters
 
 Unnecessary services, weak configurations, and excessive privileges increase the attack surface.
 
@@ -97,7 +97,7 @@ Improved Security
 
 ---
 
-# Security Goals
+## Security Goals
 
 Windows hardening supports the CIA Triad.
 
@@ -111,7 +111,7 @@ Every hardening decision should balance these objectives.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Hardening is one layer within a broader security strategy.
 
@@ -147,7 +147,7 @@ Multiple defensive layers provide better protection than relying on a single con
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Users and services should receive only the permissions necessary to perform assigned tasks.
 
@@ -179,7 +179,7 @@ Least privilege limits the damage that can result from compromised accounts.
 
 ---
 
-# Attack Surface
+## Attack Surface
 
 The attack surface consists of every point through which an attacker may interact with a system.
 
@@ -198,7 +198,7 @@ Reducing unnecessary exposure lowers overall risk.
 
 ---
 
-# Attack Surface Reduction (ASR)
+## Attack Surface Reduction (ASR)
 
 Attack Surface Reduction (ASR) is the practice of limiting opportunities for exploitation.
 
@@ -216,7 +216,7 @@ Attack Surface Reduction should be guided by business requirements.
 
 ---
 
-# Microsoft Security Baselines
+## Microsoft Security Baselines
 
 Microsoft publishes recommended security baselines for Windows.
 
@@ -232,7 +232,7 @@ Organizations commonly customize these baselines to meet operational requirement
 
 ---
 
-# Security Baseline Workflow
+## Security Baseline Workflow
 
 ```text
 Microsoft Baseline
@@ -266,7 +266,7 @@ Baselines should never be applied directly to production without validation.
 
 ---
 
-# Hardening Lifecycle
+## Hardening Lifecycle
 
 ```text
 Assess
@@ -304,7 +304,7 @@ Hardening is a continuous process rather than a one-time project.
 
 ---
 
-# Enterprise Hardening Strategy
+## Enterprise Hardening Strategy
 
 Typical strategy:
 
@@ -336,7 +336,7 @@ Standardized configurations improve consistency across large environments.
 
 ---
 
-# Common Hardening Areas
+## Common Hardening Areas
 
 | Area | Examples |
 |------|-----------|
@@ -351,7 +351,7 @@ Standardized configurations improve consistency across large environments.
 
 ---
 
-# Operating System Hardening
+## Operating System Hardening
 
 Key objectives include:
 
@@ -367,7 +367,7 @@ Operating system hardening forms the foundation of endpoint security.
 
 ---
 
-# Application Hardening
+## Application Hardening
 
 Applications should also be hardened.
 
@@ -384,7 +384,7 @@ Applications are frequent attack vectors.
 
 ---
 
-# Service Hardening
+## Service Hardening
 
 Services should be reviewed regularly.
 
@@ -399,7 +399,7 @@ Unused services should be disabled after testing.
 
 ---
 
-# Network Hardening
+## Network Hardening
 
 Network-related controls include:
 
@@ -414,7 +414,7 @@ Network hardening reduces opportunities for unauthorized access.
 
 ---
 
-# Authentication Hardening
+## Authentication Hardening
 
 Recommended controls:
 
@@ -429,7 +429,7 @@ Identity is a primary security boundary.
 
 ---
 
-# Hardening and Compliance
+## Hardening and Compliance
 
 Hardening contributes to compliance with:
 
@@ -444,7 +444,7 @@ Compliance requirements should be mapped to organizational security objectives.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial institution deploys a standard Windows image with:
 
@@ -461,7 +461,7 @@ Every workstation receives the same approved baseline, simplifying administratio
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Most successful attacks exploit:
 
@@ -475,7 +475,7 @@ Hardening addresses these weaknesses before attackers can exploit them.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Windows hardening provides:
 
@@ -489,7 +489,7 @@ Windows hardening provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Adopt standardized security baselines.
 - Apply least privilege across all accounts.
@@ -504,9 +504,9 @@ Windows hardening provides:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Identify the Attack Surface
+### Lab 1 — Identify the Attack Surface
 
 List every possible attack surface on a Windows workstation, including:
 
@@ -520,7 +520,7 @@ Prioritize items that should be reviewed for hardening.
 
 ---
 
-## Lab 2 — Compare Default vs Hardened Configuration
+### Lab 2 — Compare Default vs Hardened Configuration
 
 Create a comparison table showing:
 
@@ -530,7 +530,7 @@ Create a comparison table showing:
 
 ---
 
-## Lab 3 — Review Running Services
+### Lab 3 — Review Running Services
 
 Run:
 
@@ -544,7 +544,7 @@ Identify services that may not be required in a typical enterprise workstation e
 
 ---
 
-## Lab 4 — Design a Security Baseline
+### Lab 4 — Design a Security Baseline
 
 Create a baseline for employee workstations including:
 
@@ -559,7 +559,7 @@ Explain why each control is included.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows hardening reduces the operating system's attack surface.
 - Security baselines provide standardized secure configurations.
@@ -570,7 +570,7 @@ Explain why each control is included.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Windows hardening?
 2. Why is attack surface reduction important?
@@ -585,7 +585,7 @@ Explain why each control is included.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Security Baselines Documentation
@@ -599,13 +599,13 @@ Explain why each control is included.
 
 ---
 
-# 22-Windows-Hardening.md
+## 22-Windows-Hardening.md
 
-# Part 2 — Account Hardening, Authentication Security, Credential Protection, Windows Defender, BitLocker, and Secure Configuration
+## Part 2 — Account Hardening, Authentication Security, Credential Protection, Windows Defender, BitLocker, and Secure Configuration
 
 ---
 
-# Introduction
+## Introduction
 
 Compromising user credentials is one of the most common techniques used by attackers after gaining initial access to a Windows system.
 
@@ -622,7 +622,7 @@ This section focuses on:
 
 ---
 
-# Account Hardening
+## Account Hardening
 
 Account hardening limits the opportunities for attackers to misuse user or administrator accounts.
 
@@ -636,7 +636,7 @@ Objectives include:
 
 ---
 
-# Types of Windows Accounts
+## Types of Windows Accounts
 
 | Account Type | Purpose |
 |--------------|----------|
@@ -651,7 +651,7 @@ Each account type should receive only the permissions required for its role.
 
 ---
 
-# Administrator Account Hardening
+## Administrator Account Hardening
 
 Recommendations:
 
@@ -666,7 +666,7 @@ Administrative accounts should be tightly controlled.
 
 ---
 
-# Local Administrator Management
+## Local Administrator Management
 
 Risks of shared local administrator passwords include:
 
@@ -684,7 +684,7 @@ These solutions reduce credential exposure and improve accountability.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Users should perform daily work using standard user accounts.
 
@@ -718,7 +718,7 @@ This limits the impact of malware and accidental changes.
 
 ---
 
-# Password Policy
+## Password Policy
 
 A strong password policy includes:
 
@@ -733,7 +733,7 @@ Organizations should balance usability with security and follow current password
 
 ---
 
-# Account Lockout Policy
+## Account Lockout Policy
 
 Example configuration:
 
@@ -747,7 +747,7 @@ Account lockout policies help reduce online password guessing attacks.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 MFA requires two or more authentication factors.
 
@@ -785,7 +785,7 @@ MFA significantly reduces the effectiveness of stolen passwords.
 
 ---
 
-# Windows Hello for Business
+## Windows Hello for Business
 
 Windows Hello replaces passwords with stronger authentication.
 
@@ -805,7 +805,7 @@ Benefits:
 
 ---
 
-# Credential Guard
+## Credential Guard
 
 Credential Guard protects credentials stored in memory using virtualization-based security (VBS).
 
@@ -831,7 +831,7 @@ Credential Guard helps mitigate credential theft techniques such as Pass-the-Has
 
 ---
 
-# Local Security Authority (LSASS)
+## Local Security Authority (LSASS)
 
 LSASS is responsible for:
 
@@ -850,7 +850,7 @@ Hardening measures include:
 
 ---
 
-# Pass-the-Hash
+## Pass-the-Hash
 
 Pass-the-Hash attacks use stolen password hashes instead of plaintext passwords.
 
@@ -886,7 +886,7 @@ Mitigations include:
 
 ---
 
-# Pass-the-Ticket
+## Pass-the-Ticket
 
 Attackers may also steal Kerberos tickets.
 
@@ -912,7 +912,7 @@ Protecting privileged accounts and limiting ticket exposure reduce this risk.
 
 ---
 
-# Microsoft Defender Antivirus
+## Microsoft Defender Antivirus
 
 Microsoft Defender Antivirus provides built-in endpoint protection.
 
@@ -928,7 +928,7 @@ Defender should remain enabled unless replaced by an approved enterprise endpoin
 
 ---
 
-# Microsoft Defender SmartScreen
+## Microsoft Defender SmartScreen
 
 SmartScreen helps protect users from:
 
@@ -956,7 +956,7 @@ Allow or Warn
 
 ---
 
-# Tamper Protection
+## Tamper Protection
 
 Tamper Protection helps prevent unauthorized modification of Microsoft Defender security settings.
 
@@ -970,7 +970,7 @@ Restricting these changes helps maintain endpoint protection.
 
 ---
 
-# Microsoft Defender Attack Surface Reduction (ASR)
+## Microsoft Defender Attack Surface Reduction (ASR)
 
 ASR rules help block common attack techniques.
 
@@ -985,7 +985,7 @@ ASR should be tested before organization-wide deployment to avoid application co
 
 ---
 
-# BitLocker Drive Encryption
+## BitLocker Drive Encryption
 
 BitLocker encrypts data stored on Windows drives.
 
@@ -1000,7 +1000,7 @@ Encryption protects data even if physical devices are compromised.
 
 ---
 
-# BitLocker Architecture
+## BitLocker Architecture
 
 ```text
 Windows
@@ -1022,7 +1022,7 @@ The Trusted Platform Module (TPM) securely stores cryptographic material used du
 
 ---
 
-# TPM (Trusted Platform Module)
+## TPM (Trusted Platform Module)
 
 TPM provides:
 
@@ -1036,7 +1036,7 @@ Modern enterprise systems typically include TPM 2.0 hardware.
 
 ---
 
-# BitLocker Recovery Keys
+## BitLocker Recovery Keys
 
 Recovery keys should be stored securely.
 
@@ -1051,7 +1051,7 @@ Recovery information should be protected with the same care as other sensitive c
 
 ---
 
-# Secure Boot
+## Secure Boot
 
 Secure Boot verifies trusted boot components before loading the operating system.
 
@@ -1075,7 +1075,7 @@ Secure Boot helps defend against bootkits and certain firmware-level attacks.
 
 ---
 
-# Virtualization-Based Security (VBS)
+## Virtualization-Based Security (VBS)
 
 VBS uses hardware virtualization to isolate sensitive security components.
 
@@ -1089,7 +1089,7 @@ VBS strengthens protection against kernel-level attacks.
 
 ---
 
-# Hypervisor-Protected Code Integrity (HVCI)
+## Hypervisor-Protected Code Integrity (HVCI)
 
 HVCI validates kernel-mode code before execution.
 
@@ -1103,7 +1103,7 @@ Compatibility testing should be performed before enabling HVCI across all system
 
 ---
 
-# Enterprise Secure Configuration
+## Enterprise Secure Configuration
 
 Recommended endpoint configuration:
 
@@ -1120,7 +1120,7 @@ Standardized configurations improve enterprise security.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A healthcare organization deploys Windows laptops configured with:
 
@@ -1137,7 +1137,7 @@ If a laptop is stolen, the encrypted drive and protected credentials significant
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Identity-focused attacks remain among the most common techniques observed in enterprise incidents.
 
@@ -1153,7 +1153,7 @@ Hardening identity and authentication significantly reduces attacker opportuniti
 
 ---
 
-# Business Impact
+## Business Impact
 
 Authentication hardening provides:
 
@@ -1166,7 +1166,7 @@ Authentication hardening provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Require MFA for privileged accounts.
 - Use Windows Hello for Business where appropriate.
@@ -1181,9 +1181,9 @@ Authentication hardening provides:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review Local Administrators
+### Lab 1 — Review Local Administrators
 
 Run:
 
@@ -1196,7 +1196,7 @@ Identify accounts with administrative privileges and determine whether they are 
 
 ---
 
-## Lab 2 — Verify BitLocker Status
+### Lab 2 — Verify BitLocker Status
 
 Run:
 
@@ -1212,7 +1212,7 @@ Document:
 
 ---
 
-## Lab 3 — Review Windows Security Features
+### Lab 3 — Review Windows Security Features
 
 Using Windows Security, verify whether the following are enabled:
 
@@ -1225,7 +1225,7 @@ Record any recommendations.
 
 ---
 
-## Lab 4 — Design an Authentication Baseline
+### Lab 4 — Design an Authentication Baseline
 
 Create a security baseline specifying:
 
@@ -1240,7 +1240,7 @@ Explain how each recommendation reduces organizational risk.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Identity protection is central to Windows hardening.
 - Least privilege reduces the impact of compromised accounts.
@@ -1251,7 +1251,7 @@ Explain how each recommendation reduces organizational risk.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is least privilege important?
 2. What is Credential Guard?
@@ -1266,7 +1266,7 @@ Explain how each recommendation reduces organizational risk.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Defender Documentation
@@ -1280,13 +1280,13 @@ Explain how each recommendation reduces organizational risk.
 
 ---
 
-# 22-Windows-Hardening.md
+## 22-Windows-Hardening.md
 
-# Part 3 — Service Hardening, Network Hardening, Application Control, Patch Management, Logging, Monitoring, and Security Auditing
+## Part 3 — Service Hardening, Network Hardening, Application Control, Patch Management, Logging, Monitoring, and Security Auditing
 
 ---
 
-# Introduction
+## Introduction
 
 After securing identities and credentials, organizations must harden the operating environment itself.
 
@@ -1304,7 +1304,7 @@ These controls significantly reduce the likelihood of successful exploitation wh
 
 ---
 
-# Service Hardening
+## Service Hardening
 
 Every running service represents a potential attack surface.
 
@@ -1320,7 +1320,7 @@ Only required services should run in production.
 
 ---
 
-# Service Hardening Workflow
+## Service Hardening Workflow
 
 ```text
 Identify Services
@@ -1348,7 +1348,7 @@ Review Periodically
 
 ---
 
-# Review Running Services
+## Review Running Services
 
 PowerShell:
 
@@ -1371,7 +1371,7 @@ Review:
 
 ---
 
-# Service Startup Types
+## Service Startup Types
 
 | Startup Type | Description |
 |--------------|-------------|
@@ -1384,7 +1384,7 @@ Use the least permissive startup type that supports operational requirements.
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Services should avoid running with excessive privileges.
 
@@ -1399,7 +1399,7 @@ Avoid using Domain Administrator accounts for services.
 
 ---
 
-# Disable Unnecessary Services
+## Disable Unnecessary Services
 
 Examples that may not be required depending on organizational needs:
 
@@ -1413,7 +1413,7 @@ Always validate business impact before disabling services.
 
 ---
 
-# Network Hardening
+## Network Hardening
 
 Network hardening reduces exposure to unauthorized communication.
 
@@ -1427,7 +1427,7 @@ Key objectives:
 
 ---
 
-# Windows Defender Firewall
+## Windows Defender Firewall
 
 Windows Defender Firewall should remain enabled for:
 
@@ -1439,7 +1439,7 @@ Firewall policies should follow least privilege.
 
 ---
 
-# Restrict Open Ports
+## Restrict Open Ports
 
 Only required ports should be accessible.
 
@@ -1457,7 +1457,7 @@ Port exposure should be minimized.
 
 ---
 
-# Disable Legacy Protocols
+## Disable Legacy Protocols
 
 Legacy protocols often present unnecessary risk.
 
@@ -1472,7 +1472,7 @@ Disabling legacy protocols should be tested to ensure application compatibility.
 
 ---
 
-# SMB Hardening
+## SMB Hardening
 
 Recommendations:
 
@@ -1486,7 +1486,7 @@ SMB is frequently targeted during lateral movement.
 
 ---
 
-# DNS Hardening
+## DNS Hardening
 
 Recommendations:
 
@@ -1500,7 +1500,7 @@ DNS activity provides valuable threat detection opportunities.
 
 ---
 
-# Remote Management Hardening
+## Remote Management Hardening
 
 Secure remote administration by:
 
@@ -1515,7 +1515,7 @@ Remote administration should be available only to authorized administrators.
 
 ---
 
-# Application Hardening
+## Application Hardening
 
 Applications should be reviewed regularly.
 
@@ -1531,7 +1531,7 @@ Applications are common initial access vectors.
 
 ---
 
-# Application Control
+## Application Control
 
 Application control limits which software may execute.
 
@@ -1548,7 +1548,7 @@ Allowlisting generally provides stronger security than broad blocklisting.
 
 ---
 
-# Windows Defender Application Control (WDAC)
+## Windows Defender Application Control (WDAC)
 
 WDAC allows organizations to define trusted software.
 
@@ -1574,7 +1574,7 @@ Only software matching policy is permitted to run.
 
 ---
 
-# AppLocker
+## AppLocker
 
 AppLocker controls application execution based on rules.
 
@@ -1591,7 +1591,7 @@ AppLocker is commonly used to reduce unauthorized software execution.
 
 ---
 
-# Macro Security
+## Macro Security
 
 Office macros are a common malware delivery mechanism.
 
@@ -1606,7 +1606,7 @@ Macro policies should be centrally managed.
 
 ---
 
-# Patch Management
+## Patch Management
 
 Keeping systems updated is one of the most effective security controls.
 
@@ -1622,7 +1622,7 @@ Timely patching reduces exposure to known vulnerabilities.
 
 ---
 
-# Patch Management Lifecycle
+## Patch Management Lifecycle
 
 ```text
 Vendor Releases Update
@@ -1656,7 +1656,7 @@ Updates should be validated before production deployment.
 
 ---
 
-# Windows Update for Business
+## Windows Update for Business
 
 Windows Update for Business enables organizations to:
 
@@ -1670,7 +1670,7 @@ Controlled rollout reduces operational risk.
 
 ---
 
-# Patch Deployment Rings
+## Patch Deployment Rings
 
 Example:
 
@@ -1694,7 +1694,7 @@ Staged deployment helps identify compatibility issues early.
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Patching should be integrated with vulnerability management.
 
@@ -1728,7 +1728,7 @@ Not all vulnerabilities can be remediated immediately; prioritize based on risk 
 
 ---
 
-# Logging
+## Logging
 
 Comprehensive logging supports:
 
@@ -1749,7 +1749,7 @@ Important log sources:
 
 ---
 
-# Advanced Audit Policy
+## Advanced Audit Policy
 
 Advanced auditing provides granular visibility.
 
@@ -1766,7 +1766,7 @@ Organizations should balance logging depth with storage and performance consider
 
 ---
 
-# Monitoring
+## Monitoring
 
 Monitor for:
 
@@ -1782,7 +1782,7 @@ Monitoring enables rapid identification of suspicious activity.
 
 ---
 
-# Windows Event Forwarding (WEF)
+## Windows Event Forwarding (WEF)
 
 WEF centralizes Windows event logs.
 
@@ -1812,7 +1812,7 @@ Centralization improves enterprise visibility.
 
 ---
 
-# Security Auditing
+## Security Auditing
 
 Periodic audits should review:
 
@@ -1829,7 +1829,7 @@ Regular audits identify configuration drift.
 
 ---
 
-# Compliance Validation
+## Compliance Validation
 
 Example validation checklist:
 
@@ -1846,7 +1846,7 @@ Compliance should be measured continuously rather than only during formal audits
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational organization performs a weekly automated compliance scan.
 
@@ -1880,7 +1880,7 @@ This process improves consistency and reduces manual effort.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers commonly exploit:
 
@@ -1894,7 +1894,7 @@ Continuous hardening and monitoring reduce opportunities for exploitation.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Comprehensive hardening provides:
 
@@ -1907,7 +1907,7 @@ Comprehensive hardening provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Disable unnecessary services after testing.
 - Keep Windows and applications updated.
@@ -1922,9 +1922,9 @@ Comprehensive hardening provides:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review Running Services
+### Lab 1 — Review Running Services
 
 Run:
 
@@ -1936,7 +1936,7 @@ Identify services that could potentially be disabled in a non-production environ
 
 ---
 
-## Lab 2 — Review Firewall Configuration
+### Lab 2 — Review Firewall Configuration
 
 Run:
 
@@ -1948,7 +1948,7 @@ Verify that all required firewall profiles are enabled.
 
 ---
 
-## Lab 3 — Review Installed Updates
+### Lab 3 — Review Installed Updates
 
 Run:
 
@@ -1964,7 +1964,7 @@ Document:
 
 ---
 
-## Lab 4 — Create a Hardening Audit Checklist
+### Lab 4 — Create a Hardening Audit Checklist
 
 Develop a checklist covering:
 
@@ -1981,7 +1981,7 @@ Explain how each item contributes to endpoint security.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Service and network hardening reduce attack surface.
 - Application control limits unauthorized software execution.
@@ -1992,7 +1992,7 @@ Explain how each item contributes to endpoint security.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should unnecessary Windows services be disabled?
 2. What is the purpose of WDAC?
@@ -2007,7 +2007,7 @@ Explain how each item contributes to endpoint security.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Defender Documentation
@@ -2022,13 +2022,13 @@ Explain how each item contributes to endpoint security.
 
 ---
 
-# 22-Windows-Hardening.md
+## 22-Windows-Hardening.md
 
-# Part 4 — Enterprise Hardening Strategy, Compliance, Troubleshooting, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Hardening Strategy, Compliance, Troubleshooting, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Windows hardening is not a one-time activity performed after installation.
 
@@ -2046,7 +2046,7 @@ A mature hardening program continuously evolves alongside new threats, operating
 
 ---
 
-# Enterprise Hardening Framework
+## Enterprise Hardening Framework
 
 A successful hardening program follows a structured lifecycle.
 
@@ -2086,7 +2086,7 @@ Each phase contributes to maintaining a secure Windows environment.
 
 ---
 
-# Configuration Management
+## Configuration Management
 
 Configuration management ensures that systems remain consistent over time.
 
@@ -2102,7 +2102,7 @@ Configuration consistency reduces operational complexity.
 
 ---
 
-# Configuration Drift
+## Configuration Drift
 
 Configuration drift occurs when systems gradually deviate from the approved baseline.
 
@@ -2145,7 +2145,7 @@ Detecting drift early reduces security exposure.
 
 ---
 
-# Baseline Compliance Monitoring
+## Baseline Compliance Monitoring
 
 Organizations should continuously validate:
 
@@ -2164,7 +2164,7 @@ Automated validation improves consistency and reporting.
 
 ---
 
-# Hardening Through Group Policy
+## Hardening Through Group Policy
 
 Group Policy enables centralized deployment of security settings.
 
@@ -2187,7 +2187,7 @@ Benefits:
 
 ---
 
-# Hardening Through Automation
+## Hardening Through Automation
 
 Automation supports:
 
@@ -2224,7 +2224,7 @@ Automation reduces manual effort while improving consistency.
 
 ---
 
-# Secure Change Management
+## Secure Change Management
 
 Every hardening change should follow an approval process.
 
@@ -2260,7 +2260,7 @@ Emergency changes should still be documented and reviewed afterward.
 
 ---
 
-# Security Validation
+## Security Validation
 
 After implementing hardening controls, verify:
 
@@ -2275,7 +2275,7 @@ Validation ensures that security improvements do not unintentionally disrupt bus
 
 ---
 
-# Hardening Metrics
+## Hardening Metrics
 
 Useful metrics include:
 
@@ -2292,7 +2292,7 @@ Metrics help leadership evaluate the effectiveness of the hardening program.
 
 ---
 
-# Security Dashboards
+## Security Dashboards
 
 Example dashboard:
 
@@ -2324,7 +2324,7 @@ Dashboards provide visibility into enterprise security posture.
 
 ---
 
-# Common Hardening Mistakes
+## Common Hardening Mistakes
 
 Avoid:
 
@@ -2341,7 +2341,7 @@ These mistakes can undermine otherwise strong security programs.
 
 ---
 
-# Troubleshooting Hardening Issues
+## Troubleshooting Hardening Issues
 
 Hardening may occasionally affect application compatibility or system functionality.
 
@@ -2379,7 +2379,7 @@ Always troubleshoot using a structured methodology.
 
 ---
 
-# Common Problems and Solutions
+## Common Problems and Solutions
 
 | Problem | Possible Cause | Resolution |
 |----------|----------------|------------|
@@ -2394,7 +2394,7 @@ Root cause analysis should precede any configuration changes.
 
 ---
 
-# Incident Response Integration
+## Incident Response Integration
 
 Hardening supports incident response by:
 
@@ -2434,7 +2434,7 @@ Strong hardening improves containment and recovery.
 
 ---
 
-# Disaster Recovery Considerations
+## Disaster Recovery Considerations
 
 Recovery plans should include:
 
@@ -2449,9 +2449,9 @@ Security configurations should be recoverable alongside business data.
 
 ---
 
-# Enterprise Hardening Checklist
+## Enterprise Hardening Checklist
 
-## Identity
+### Identity
 
 - MFA enabled
 - Least privilege enforced
@@ -2461,7 +2461,7 @@ Security configurations should be recoverable alongside business data.
 
 ---
 
-## Endpoint
+### Endpoint
 
 - BitLocker enabled
 - Defender active
@@ -2471,7 +2471,7 @@ Security configurations should be recoverable alongside business data.
 
 ---
 
-## Applications
+### Applications
 
 - Remove unused software
 - Restrict macros
@@ -2480,7 +2480,7 @@ Security configurations should be recoverable alongside business data.
 
 ---
 
-## Network
+### Network
 
 - Disable legacy protocols
 - Restrict RDP
@@ -2490,7 +2490,7 @@ Security configurations should be recoverable alongside business data.
 
 ---
 
-## Monitoring
+### Monitoring
 
 - PowerShell logging enabled
 - Audit policies configured
@@ -2500,7 +2500,7 @@ Security configurations should be recoverable alongside business data.
 
 ---
 
-## Maintenance
+### Maintenance
 
 - Monthly patch validation
 - Quarterly hardening review
@@ -2510,7 +2510,7 @@ Security configurations should be recoverable alongside business data.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global manufacturing company implements a standardized Windows hardening program.
 
@@ -2534,7 +2534,7 @@ Outcomes:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Hardening is a proactive defense that complements detection and response.
 
@@ -2551,7 +2551,7 @@ No single control is sufficient—hardening should be part of a layered security
 
 ---
 
-# Business Impact
+## Business Impact
 
 A mature hardening program provides:
 
@@ -2565,7 +2565,7 @@ A mature hardening program provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Adopt standardized security baselines.
 - Test hardening changes before deployment.
@@ -2580,9 +2580,9 @@ A mature hardening program provides:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Build an Enterprise Hardening Checklist
+### Lab 1 — Build an Enterprise Hardening Checklist
 
 Create a checklist covering:
 
@@ -2598,7 +2598,7 @@ Map each item to a business or security objective.
 
 ---
 
-## Lab 2 — Perform a Configuration Drift Assessment
+### Lab 2 — Perform a Configuration Drift Assessment
 
 Assume a workstation has:
 
@@ -2615,7 +2615,7 @@ Identify:
 
 ---
 
-## Lab 3 — Review Group Policy Hardening
+### Lab 3 — Review Group Policy Hardening
 
 List security settings that could be centrally managed through Group Policy.
 
@@ -2623,7 +2623,7 @@ Explain why centralized management is preferable to manual configuration.
 
 ---
 
-## Lab 4 — Design a Windows Hardening Program
+### Lab 4 — Design a Windows Hardening Program
 
 Create an enterprise hardening strategy including:
 
@@ -2639,7 +2639,7 @@ Present the strategy as a lifecycle diagram.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2664,7 +2664,7 @@ Together, these controls create a layered defense that significantly improves th
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows hardening is a continuous process.
 - Standardized security baselines improve consistency.
@@ -2675,7 +2675,7 @@ Together, these controls create a layered defense that significantly improves th
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is configuration drift, and why is it important?
 2. Why should organizations adopt standardized security baselines?
@@ -2690,7 +2690,7 @@ Together, these controls create a layered defense that significantly improves th
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Security Baselines Documentation
@@ -2707,7 +2707,7 @@ Together, these controls create a layered defense that significantly improves th
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 22 – Windows Hardening**.
 

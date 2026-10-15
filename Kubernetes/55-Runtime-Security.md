@@ -44,7 +44,7 @@ A useful security principle is:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -95,7 +95,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Runtime Security?
+## What Is Runtime Security?
 
 Runtime security protects workloads during execution.
 
@@ -117,7 +117,7 @@ Runtime security can detect behavior that was not visible during image scanning.
 
 ---
 
-# Why Runtime Security Matters
+## Why Runtime Security Matters
 
 Consider a trusted image:
 
@@ -150,7 +150,7 @@ Unexpected Privilege Change
 
 ---
 
-# Runtime Security Layers
+## Runtime Security Layers
 
 A production environment may use:
 
@@ -176,7 +176,7 @@ Incident Response
 
 ---
 
-# Runtime Threat Model
+## Runtime Threat Model
 
 An attacker may begin with:
 
@@ -204,7 +204,7 @@ Runtime security aims to detect or prevent these behaviors.
 
 ---
 
-# Runtime Attack Surface
+## Runtime Attack Surface
 
 A running container interacts with:
 
@@ -226,7 +226,7 @@ Each interaction can represent a security boundary.
 
 ---
 
-# Container Isolation
+## Container Isolation
 
 Containers use Linux mechanisms such as:
 
@@ -242,7 +242,7 @@ These help isolate workloads.
 
 ---
 
-# Linux Namespaces
+## Linux Namespaces
 
 Namespaces isolate aspects of the system.
 
@@ -270,7 +270,7 @@ Container
 
 ---
 
-# Process Namespace
+## Process Namespace
 
 A container generally sees its own process namespace.
 
@@ -287,7 +287,7 @@ This helps isolate processes.
 
 ---
 
-# Network Namespace
+## Network Namespace
 
 Containers can have separate network namespaces.
 
@@ -303,7 +303,7 @@ Pod Network Namespace
 
 ---
 
-# Mount Namespace
+## Mount Namespace
 
 A container has its own filesystem view.
 
@@ -321,7 +321,7 @@ Host files should not normally be visible.
 
 ---
 
-# Container Escape
+## Container Escape
 
 A container escape occurs when an attacker breaks intended isolation and gains access to the host or other protected resources.
 
@@ -341,7 +341,7 @@ This is a high-impact security event.
 
 ---
 
-# Causes of Container Escape
+## Causes of Container Escape
 
 Potential causes include:
 
@@ -357,7 +357,7 @@ Misconfiguration
 
 ---
 
-# Privileged Containers
+## Privileged Containers
 
 A Pod can be configured with:
 
@@ -371,7 +371,7 @@ This significantly increases container privileges and should generally be avoide
 
 ---
 
-# Why Privileged Containers Are Dangerous
+## Why Privileged Containers Are Dangerous
 
 A privileged workload may gain access to capabilities and host resources that normal containers should not have.
 
@@ -389,7 +389,7 @@ Much Broader Host Access
 
 ---
 
-# Host Filesystem Mount
+## Host Filesystem Mount
 
 A workload may mount host paths:
 
@@ -415,7 +415,7 @@ usage.
 
 ---
 
-# Host Namespace Sharing
+## Host Namespace Sharing
 
 Kubernetes allows certain host namespace settings such as:
 
@@ -433,7 +433,7 @@ These reduce isolation and should only be used when required.
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Privilege escalation occurs when a process gains more privileges than intended.
 
@@ -449,7 +449,7 @@ Root / Elevated Privileges
 
 ---
 
-# Preventing Privilege Escalation
+## Preventing Privilege Escalation
 
 Use:
 
@@ -463,7 +463,7 @@ where compatible.
 
 ---
 
-# Running as Non-Root
+## Running as Non-Root
 
 Prefer:
 
@@ -481,7 +481,7 @@ runAsUser: 1000
 
 ---
 
-# Root vs Non-Root
+## Root vs Non-Root
 
 Root:
 
@@ -499,7 +499,7 @@ Running as non-root reduces the impact of certain application compromises.
 
 ---
 
-# Linux Capabilities
+## Linux Capabilities
 
 Linux capabilities split traditional root privileges into smaller units.
 
@@ -516,7 +516,7 @@ DAC_OVERRIDE
 
 ---
 
-# Why Capabilities Matter
+## Why Capabilities Matter
 
 Instead of:
 
@@ -538,7 +538,7 @@ Least Privilege
 
 ---
 
-# Dropping Capabilities
+## Dropping Capabilities
 
 Example:
 
@@ -572,7 +572,7 @@ securityContext:
 
 ---
 
-# Dangerous Capabilities
+## Dangerous Capabilities
 
 Some capabilities can significantly increase risk.
 
@@ -589,7 +589,7 @@ Do not grant them without a specific requirement.
 
 ---
 
-# Seccomp
+## Seccomp
 
 Seccomp stands for:
 
@@ -613,7 +613,7 @@ Allowed / Blocked
 
 ---
 
-# Why Seccomp Matters
+## Why Seccomp Matters
 
 A compromised application may attempt to execute unusual system calls.
 
@@ -621,7 +621,7 @@ Seccomp can reduce the available attack surface.
 
 ---
 
-# Seccomp Profile
+## Seccomp Profile
 
 Example:
 
@@ -637,7 +637,7 @@ This is a common baseline configuration.
 
 ---
 
-# RuntimeDefault
+## RuntimeDefault
 
 Kubernetes can use the container runtime's default seccomp profile:
 
@@ -655,7 +655,7 @@ when compatible with the workload.
 
 ---
 
-# Unconfined
+## Unconfined
 
 Example:
 
@@ -671,7 +671,7 @@ Avoid unless there is a specific requirement.
 
 ---
 
-# AppArmor
+## AppArmor
 
 AppArmor is a Linux security mechanism that restricts application behavior using profiles.
 
@@ -687,7 +687,7 @@ Allowed / Denied
 
 ---
 
-# SELinux
+## SELinux
 
 SELinux stands for:
 
@@ -713,7 +713,7 @@ Allow / Deny
 
 ---
 
-# AppArmor vs SELinux
+## AppArmor vs SELinux
 
 | Technology | Approach |
 |---|---|
@@ -724,7 +724,7 @@ Both can provide additional runtime protection depending on the host operating s
 
 ---
 
-# Rootless Containers
+## Rootless Containers
 
 Rootless containers run container processes without requiring root privileges.
 
@@ -740,7 +740,7 @@ However, compatibility and operational requirements must be considered.
 
 ---
 
-# Runtime Detection
+## Runtime Detection
 
 Runtime detection monitors behavior while workloads execute.
 
@@ -758,7 +758,7 @@ Container Stop
 
 ---
 
-# Runtime Detection Architecture
+## Runtime Detection Architecture
 
 ```text
 Container
@@ -781,7 +781,7 @@ Detection Engine
 
 ---
 
-# Process Monitoring
+## Process Monitoring
 
 Monitor:
 
@@ -796,7 +796,7 @@ Process Tree
 
 ---
 
-# Suspicious Process Example
+## Suspicious Process Example
 
 A web application normally runs:
 
@@ -822,7 +822,7 @@ Post-Exploitation
 
 ---
 
-# Process Tree
+## Process Tree
 
 Example:
 
@@ -843,7 +843,7 @@ as suspicious depending on application behavior.
 
 ---
 
-# Reverse Shell
+## Reverse Shell
 
 A reverse shell occurs when a compromised workload establishes an outbound connection to an attacker-controlled system and provides command execution.
 
@@ -862,7 +862,7 @@ Command Execution
 
 ---
 
-# Reverse Shell Detection
+## Reverse Shell Detection
 
 Possible indicators:
 
@@ -884,7 +884,7 @@ Process Monitoring
 
 ---
 
-# Cryptocurrency Mining
+## Cryptocurrency Mining
 
 Attackers may deploy cryptocurrency miners after compromising a workload.
 
@@ -899,7 +899,7 @@ Long-Running Suspicious Process
 
 ---
 
-# Runtime Malware Detection
+## Runtime Malware Detection
 
 Runtime monitoring can detect:
 
@@ -913,7 +913,7 @@ Persistence Attempts
 
 ---
 
-# File Monitoring
+## File Monitoring
 
 Monitor sensitive paths such as:
 
@@ -931,7 +931,7 @@ Unexpected modifications can indicate compromise.
 
 ---
 
-# Sensitive File Access
+## Sensitive File Access
 
 Potentially sensitive files include:
 
@@ -947,7 +947,7 @@ Access should be monitored where appropriate.
 
 ---
 
-# Service Account Token
+## Service Account Token
 
 A Pod may receive a ServiceAccount token.
 
@@ -967,7 +967,7 @@ are essential.
 
 ---
 
-# Service Account Security
+## Service Account Security
 
 Avoid giving a workload:
 
@@ -987,7 +987,7 @@ Specific Permissions
 
 ---
 
-# Credential Theft
+## Credential Theft
 
 An attacker may attempt to obtain:
 
@@ -1004,7 +1004,7 @@ Runtime controls should reduce unnecessary access.
 
 ---
 
-# Runtime Security and RBAC
+## Runtime Security and RBAC
 
 These address different layers.
 
@@ -1024,7 +1024,7 @@ Use both.
 
 ---
 
-# Network Monitoring
+## Network Monitoring
 
 Runtime security can monitor:
 
@@ -1048,7 +1048,7 @@ Unexpected External Access
 
 ---
 
-# eBPF
+## eBPF
 
 eBPF allows programs to run safely within the Linux kernel under defined verification and execution mechanisms.
 
@@ -1063,7 +1063,7 @@ Security Detection
 
 ---
 
-# Why eBPF Is Useful
+## Why eBPF Is Useful
 
 Traditional monitoring may require:
 
@@ -1077,7 +1077,7 @@ eBPF can provide deep kernel-level visibility with efficient event collection wh
 
 ---
 
-# Falco
+## Falco
 
 Falco is an open-source runtime security tool designed to detect suspicious activity in Linux and cloud-native environments.
 
@@ -1092,7 +1092,7 @@ Suspicious Network Activity
 
 ---
 
-# Falco Architecture
+## Falco Architecture
 
 Conceptually:
 
@@ -1108,7 +1108,7 @@ Detection Rules
 
 ---
 
-# Example Falco Rule Concept
+## Example Falco Rule Concept
 
 A conceptual rule might detect:
 
@@ -1120,7 +1120,7 @@ The exact rule syntax depends on the Falco version and configuration.
 
 ---
 
-# Tetragon
+## Tetragon
 
 Tetragon is a Kubernetes-aware security observability and enforcement tool built around eBPF.
 
@@ -1137,7 +1137,7 @@ and can support runtime enforcement.
 
 ---
 
-# Falco vs Tetragon
+## Falco vs Tetragon
 
 | Capability | Falco | Tetragon |
 |---|---|---|
@@ -1152,7 +1152,7 @@ Exact capabilities depend on versions and deployment configuration.
 
 ---
 
-# Runtime Enforcement
+## Runtime Enforcement
 
 Detection answers:
 
@@ -1180,7 +1180,7 @@ Block / Kill / Deny
 
 ---
 
-# Runtime Security Policies
+## Runtime Security Policies
 
 A policy may enforce:
 
@@ -1194,7 +1194,7 @@ No Unauthorized Network Connection
 
 ---
 
-# Runtime Security vs Image Security
+## Runtime Security vs Image Security
 
 | Image Security | Runtime Security |
 |---|---|
@@ -1208,7 +1208,7 @@ Both are required.
 
 ---
 
-# Runtime Security vs Pod Security
+## Runtime Security vs Pod Security
 
 Pod Security controls how workloads are configured.
 
@@ -1226,7 +1226,7 @@ Runtime security monitors behavior after the workload starts.
 
 ---
 
-# Three Layers
+## Three Layers
 
 ```text
 Image Security
@@ -1251,7 +1251,7 @@ Unexpected shell detected
 
 ---
 
-# Runtime Security Architecture
+## Runtime Security Architecture
 
 ```text
                     Kubernetes
@@ -1282,7 +1282,7 @@ Unexpected shell detected
 
 ---
 
-# Runtime Security and SIEM
+## Runtime Security and SIEM
 
 Runtime events can feed security monitoring platforms.
 
@@ -1306,7 +1306,7 @@ SOC
 
 ---
 
-# Runtime Security Events
+## Runtime Security Events
 
 Examples:
 
@@ -1321,7 +1321,7 @@ Privilege escalation attempted
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Runtime security rules should distinguish:
 
@@ -1337,7 +1337,7 @@ Suspicious Behavior
 
 ---
 
-# False Positives
+## False Positives
 
 A rule such as:
 
@@ -1359,7 +1359,7 @@ This creates stronger context.
 
 ---
 
-# Behavioral Baselines
+## Behavioral Baselines
 
 Understand normal workload behavior.
 
@@ -1389,7 +1389,7 @@ may be high priority.
 
 ---
 
-# Runtime Detection Correlation
+## Runtime Detection Correlation
 
 One event may be benign.
 
@@ -1407,7 +1407,7 @@ High-Confidence Incident
 
 ---
 
-# Runtime Security and NetworkPolicy
+## Runtime Security and NetworkPolicy
 
 These complement each other.
 
@@ -1425,7 +1425,7 @@ What the process is doing
 
 ---
 
-# Runtime Security and Seccomp
+## Runtime Security and Seccomp
 
 Seccomp can prevent certain system calls.
 
@@ -1447,7 +1447,7 @@ provide preventive and detective controls.
 
 ---
 
-# Runtime Security and AppArmor
+## Runtime Security and AppArmor
 
 AppArmor can restrict:
 
@@ -1461,7 +1461,7 @@ Runtime monitoring can detect suspicious actions that still occur within allowed
 
 ---
 
-# Runtime Security and SELinux
+## Runtime Security and SELinux
 
 SELinux can enforce mandatory access control.
 
@@ -1475,7 +1475,7 @@ Alerting
 
 ---
 
-# Container Escape Detection
+## Container Escape Detection
 
 Potential indicators include:
 
@@ -1489,7 +1489,7 @@ Kernel Exploitation Indicators
 
 ---
 
-# Container Escape Prevention
+## Container Escape Prevention
 
 Use:
 
@@ -1507,7 +1507,7 @@ Updated Container Runtime
 
 ---
 
-# Host Security
+## Host Security
 
 Containers share the host kernel.
 
@@ -1533,7 +1533,7 @@ Node Network
 
 ---
 
-# Container Runtime
+## Container Runtime
 
 Common container runtimes include:
 
@@ -1546,7 +1546,7 @@ Runtime security must consider the runtime and its configuration.
 
 ---
 
-# Container Runtime Attack Surface
+## Container Runtime Attack Surface
 
 Potential components include:
 
@@ -1564,7 +1564,7 @@ A compromise of these components can affect many workloads.
 
 ---
 
-# Node Compromise
+## Node Compromise
 
 If a Kubernetes node is compromised:
 
@@ -1580,7 +1580,7 @@ Therefore runtime security should include node monitoring.
 
 ---
 
-# Runtime Security and Node Monitoring
+## Runtime Security and Node Monitoring
 
 Monitor:
 
@@ -1595,7 +1595,7 @@ Container Runtime Activity
 
 ---
 
-# Kubernetes Audit Logs
+## Kubernetes Audit Logs
 
 Kubernetes audit logging records API activity.
 
@@ -1619,7 +1619,7 @@ Who modified RBAC?
 
 ---
 
-# Runtime Events vs Audit Events
+## Runtime Events vs Audit Events
 
 These are different.
 
@@ -1639,7 +1639,7 @@ Both are useful.
 
 ---
 
-# Runtime Incident Response
+## Runtime Incident Response
 
 If suspicious behavior is detected:
 
@@ -1663,7 +1663,7 @@ Monitor
 
 ---
 
-# Runtime Incident Example
+## Runtime Incident Example
 
 Suppose:
 
@@ -1702,7 +1702,7 @@ Response:
 
 ---
 
-# Evidence Collection
+## Evidence Collection
 
 Potential evidence:
 
@@ -1721,7 +1721,7 @@ Image SBOM
 
 ---
 
-# Avoid Destroying Evidence
+## Avoid Destroying Evidence
 
 Do not immediately delete everything before collecting necessary evidence.
 
@@ -1747,7 +1747,7 @@ Evidence Preservation
 
 ---
 
-# Runtime Forensics
+## Runtime Forensics
 
 Runtime forensics attempts to understand:
 
@@ -1764,7 +1764,7 @@ Which node?
 
 ---
 
-# Runtime Security Workflow
+## Runtime Security Workflow
 
 ```text
 Detection
@@ -1788,7 +1788,7 @@ Lessons Learned
 
 ---
 
-# Production Runtime Security Architecture
+## Production Runtime Security Architecture
 
 ```text
                       Kubernetes Cluster
@@ -1817,7 +1817,7 @@ Lessons Learned
 
 ---
 
-# Runtime Security Threat Matrix
+## Runtime Security Threat Matrix
 
 | Threat | Example | Preventive Control | Detection |
 |---|---|---|---|
@@ -1831,7 +1831,7 @@ Lessons Learned
 
 ---
 
-# Hands-on Lab 1 – Run as Non-Root
+## Hands-on Lab 1 – Run as Non-Root
 
 Create a Pod:
 
@@ -1865,7 +1865,7 @@ Verify the process user.
 
 ---
 
-# Hands-on Lab 2 – Disable Privilege Escalation
+## Hands-on Lab 2 – Disable Privilege Escalation
 
 Create:
 
@@ -1885,7 +1885,7 @@ kubectl get pod non-root-test -o yaml
 
 ---
 
-# Hands-on Lab 3 – Use RuntimeDefault Seccomp
+## Hands-on Lab 3 – Use RuntimeDefault Seccomp
 
 Configure:
 
@@ -1907,7 +1907,7 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-# Hands-on Lab 4 – Drop Capabilities
+## Hands-on Lab 4 – Drop Capabilities
 
 Use:
 
@@ -1927,7 +1927,7 @@ Determine whether the application continues functioning.
 
 ---
 
-# Hands-on Lab 5 – Detect Unexpected Processes
+## Hands-on Lab 5 – Detect Unexpected Processes
 
 Deploy a test application.
 
@@ -1945,7 +1945,7 @@ Study how runtime detection systems can identify such behavior.
 
 ---
 
-# Hands-on Lab 6 – Runtime Monitoring with Falco
+## Hands-on Lab 6 – Runtime Monitoring with Falco
 
 Deploy Falco in a disposable cluster.
 
@@ -1968,7 +1968,7 @@ Context
 
 ---
 
-# Hands-on Lab 7 – eBPF Runtime Monitoring
+## Hands-on Lab 7 – eBPF Runtime Monitoring
 
 Deploy a suitable eBPF-based runtime security tool in a lab environment.
 
@@ -1982,7 +1982,7 @@ Kubernetes Metadata
 
 ---
 
-# Hands-on Lab 8 – Network + Runtime Correlation
+## Hands-on Lab 8 – Network + Runtime Correlation
 
 Create a test scenario:
 
@@ -2006,7 +2006,7 @@ Determine how correlation improves confidence.
 
 ---
 
-# Hands-on Lab 9 – Secret Access Monitoring
+## Hands-on Lab 9 – Secret Access Monitoring
 
 Create a Pod with a test Secret.
 
@@ -2021,7 +2021,7 @@ When?
 
 ---
 
-# Hands-on Lab 10 – Runtime Incident Response
+## Hands-on Lab 10 – Runtime Incident Response
 
 Simulate:
 
@@ -2050,7 +2050,7 @@ Use only disposable lab credentials and workloads.
 
 ---
 
-# Hands-on Lab 11 – Privileged Pod Review
+## Hands-on Lab 11 – Privileged Pod Review
 
 Create a test Pod using:
 
@@ -2068,7 +2068,7 @@ Delete the test workload afterward.
 
 ---
 
-# Hands-on Lab 12 – HostPath Security Review
+## Hands-on Lab 12 – HostPath Security Review
 
 Inspect workloads using:
 
@@ -2090,15 +2090,15 @@ Review whether each use is justified.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Running Everything as Root
+### 1. Running Everything as Root
 
 Root increases the impact of application compromise.
 
 ---
 
-## 2. Using Privileged Containers
+### 2. Using Privileged Containers
 
 Avoid:
 
@@ -2110,7 +2110,7 @@ unless absolutely necessary.
 
 ---
 
-## 3. Granting All Capabilities
+### 3. Granting All Capabilities
 
 Avoid:
 
@@ -2124,7 +2124,7 @@ Use only required capabilities.
 
 ---
 
-## 4. Disabling Seccomp
+### 4. Disabling Seccomp
 
 Avoid:
 
@@ -2136,19 +2136,19 @@ without a specific requirement.
 
 ---
 
-## 5. Ignoring Runtime Behavior
+### 5. Ignoring Runtime Behavior
 
 A secure image can still behave maliciously after compromise.
 
 ---
 
-## 6. Ignoring Host Security
+### 6. Ignoring Host Security
 
 Containers share the host kernel.
 
 ---
 
-## 7. Giving Broad Service Account Permissions
+### 7. Giving Broad Service Account Permissions
 
 Avoid:
 
@@ -2160,13 +2160,13 @@ for normal applications.
 
 ---
 
-## 8. No Runtime Monitoring
+### 8. No Runtime Monitoring
 
 Without runtime visibility, attacks may remain undetected.
 
 ---
 
-## 9. Alerting Without Context
+### 9. Alerting Without Context
 
 A single shell event may be legitimate.
 
@@ -2174,7 +2174,7 @@ Use contextual correlation.
 
 ---
 
-## 10. Deleting Compromised Pods Immediately
+### 10. Deleting Compromised Pods Immediately
 
 You may destroy valuable evidence.
 
@@ -2182,21 +2182,21 @@ Follow incident-response procedures.
 
 ---
 
-## 11. Ignoring Network Behavior
+### 11. Ignoring Network Behavior
 
 Unexpected outbound traffic can be an important compromise indicator.
 
 ---
 
-## 12. Ignoring File Activity
+### 12. Ignoring File Activity
 
 Unexpected modification of sensitive files may indicate persistence or tampering.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Run Containers as Non-Root
+#### 1. Run Containers as Non-Root
 
 Use:
 
@@ -2208,7 +2208,7 @@ where compatible.
 
 ---
 
-### 2. Disable Privilege Escalation
+#### 2. Disable Privilege Escalation
 
 Use:
 
@@ -2220,7 +2220,7 @@ where compatible.
 
 ---
 
-### 3. Drop Unnecessary Capabilities
+#### 3. Drop Unnecessary Capabilities
 
 Prefer:
 
@@ -2236,7 +2236,7 @@ and add only what is required.
 
 ---
 
-### 4. Use Seccomp
+#### 4. Use Seccomp
 
 Prefer:
 
@@ -2248,19 +2248,19 @@ or a carefully designed custom profile.
 
 ---
 
-### 5. Use AppArmor or SELinux
+#### 5. Use AppArmor or SELinux
 
 Use the host's available mandatory access-control framework.
 
 ---
 
-### 6. Avoid Privileged Containers
+#### 6. Avoid Privileged Containers
 
 Only permit them for justified workloads.
 
 ---
 
-### 7. Restrict Host Access
+#### 7. Restrict Host Access
 
 Minimize:
 
@@ -2273,7 +2273,7 @@ hostIPC
 
 ---
 
-### 8. Restrict Service Account Permissions
+#### 8. Restrict Service Account Permissions
 
 Follow:
 
@@ -2283,7 +2283,7 @@ Least Privilege
 
 ---
 
-### 9. Use NetworkPolicy
+#### 9. Use NetworkPolicy
 
 Restrict:
 
@@ -2295,7 +2295,7 @@ Ingress
 
 ---
 
-### 10. Monitor Runtime Behavior
+#### 10. Monitor Runtime Behavior
 
 Monitor:
 
@@ -2308,7 +2308,7 @@ System Calls
 
 ---
 
-### 11. Correlate Security Events
+#### 11. Correlate Security Events
 
 Combine:
 
@@ -2326,13 +2326,13 @@ events.
 
 ---
 
-### 12. Integrate With SIEM
+#### 12. Integrate With SIEM
 
 Send important runtime events to centralized security monitoring.
 
 ---
 
-### 13. Maintain Incident Response Procedures
+#### 13. Maintain Incident Response Procedures
 
 Know:
 
@@ -2345,7 +2345,7 @@ Who restores workloads?
 
 ---
 
-### 14. Keep Host and Runtime Updated
+#### 14. Keep Host and Runtime Updated
 
 Patch:
 
@@ -2359,7 +2359,7 @@ Security Tools
 
 ---
 
-### 15. Use Defense in Depth
+#### 15. Use Defense in Depth
 
 Combine:
 
@@ -2375,7 +2375,7 @@ Runtime Security
 
 ---
 
-# Runtime Security Policy
+## Runtime Security Policy
 
 A production workload should ideally meet requirements such as:
 
@@ -2396,7 +2396,7 @@ A production workload should ideally meet requirements such as:
 
 ---
 
-# Runtime Security and Zero Trust
+## Runtime Security and Zero Trust
 
 Zero-trust principles apply at runtime too.
 
@@ -2422,9 +2422,9 @@ Continuous Verification
 
 ---
 
-# Runtime Security Maturity Model
+## Runtime Security Maturity Model
 
-## Level 1 – Basic
+### Level 1 – Basic
 
 ```text
 Pod Security
@@ -2434,7 +2434,7 @@ NetworkPolicy
 
 ---
 
-## Level 2 – Hardened
+### Level 2 – Hardened
 
 ```text
 Non-root
@@ -2445,7 +2445,7 @@ AppArmor / SELinux
 
 ---
 
-## Level 3 – Detection
+### Level 3 – Detection
 
 ```text
 Runtime Monitoring
@@ -2455,7 +2455,7 @@ Network Monitoring
 
 ---
 
-## Level 4 – Advanced
+### Level 4 – Advanced
 
 ```text
 eBPF
@@ -2466,7 +2466,7 @@ Automated Response
 
 ---
 
-## Level 5 – Mature
+### Level 5 – Mature
 
 ```text
 Prevent
@@ -2479,7 +2479,7 @@ Continuously Improve
 
 ---
 
-# Runtime Security Architecture for a SOC
+## Runtime Security Architecture for a SOC
 
 ```text
                  Kubernetes Cluster
@@ -2509,11 +2509,11 @@ Continuously Improve
 
 ---
 
-# Runtime Incident Severity
+## Runtime Incident Severity
 
 Example prioritization:
 
-### Critical
+#### Critical
 
 ```text
 Container Escape
@@ -2521,7 +2521,7 @@ Node Compromise
 Credential Theft
 ```
 
-### High
+#### High
 
 ```text
 Reverse Shell
@@ -2529,7 +2529,7 @@ Malware Execution
 Unexpected Privileged Process
 ```
 
-### Medium
+#### Medium
 
 ```text
 Unexpected Shell
@@ -2537,7 +2537,7 @@ Unexpected File Access
 Unexpected Network Connection
 ```
 
-### Low
+#### Low
 
 ```text
 Known Administrative Activity
@@ -2554,7 +2554,7 @@ Exposure
 
 ---
 
-# Runtime Security Investigation Questions
+## Runtime Security Investigation Questions
 
 When an alert occurs, ask:
 
@@ -2577,7 +2577,7 @@ What happened immediately before it?
 
 ---
 
-# Runtime Incident Investigation
+## Runtime Incident Investigation
 
 ```text
 Alert
@@ -2603,9 +2603,9 @@ Recovery
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Runtime Security
+### Runtime Security
 
 ```text
 Protect workloads during execution
@@ -2613,7 +2613,7 @@ Protect workloads during execution
 
 ---
 
-## Container Escape
+### Container Escape
 
 ```text
 Breaking container isolation to access host/protected resources
@@ -2621,7 +2621,7 @@ Breaking container isolation to access host/protected resources
 
 ---
 
-## Privileged Container
+### Privileged Container
 
 ```text
 Container with significantly elevated privileges
@@ -2629,7 +2629,7 @@ Container with significantly elevated privileges
 
 ---
 
-## Capability
+### Capability
 
 ```text
 Fine-grained Linux privilege
@@ -2637,7 +2637,7 @@ Fine-grained Linux privilege
 
 ---
 
-## Seccomp
+### Seccomp
 
 ```text
 System-call filtering
@@ -2645,7 +2645,7 @@ System-call filtering
 
 ---
 
-## AppArmor
+### AppArmor
 
 ```text
 Linux application access-control mechanism
@@ -2653,7 +2653,7 @@ Linux application access-control mechanism
 
 ---
 
-## SELinux
+### SELinux
 
 ```text
 Linux mandatory access control
@@ -2661,7 +2661,7 @@ Linux mandatory access control
 
 ---
 
-## Rootless
+### Rootless
 
 ```text
 Run container without root privileges
@@ -2669,7 +2669,7 @@ Run container without root privileges
 
 ---
 
-## eBPF
+### eBPF
 
 ```text
 Kernel-level programmable observability/security mechanism
@@ -2677,7 +2677,7 @@ Kernel-level programmable observability/security mechanism
 
 ---
 
-## Falco
+### Falco
 
 ```text
 Runtime threat detection tool
@@ -2685,7 +2685,7 @@ Runtime threat detection tool
 
 ---
 
-## Tetragon
+### Tetragon
 
 ```text
 eBPF-based Kubernetes-aware observability and enforcement tool
@@ -2693,7 +2693,7 @@ eBPF-based Kubernetes-aware observability and enforcement tool
 
 ---
 
-## Runtime Detection
+### Runtime Detection
 
 ```text
 Detect suspicious behavior while workloads run
@@ -2701,7 +2701,7 @@ Detect suspicious behavior while workloads run
 
 ---
 
-## Runtime Enforcement
+### Runtime Enforcement
 
 ```text
 Block or restrict suspicious behavior
@@ -2709,7 +2709,7 @@ Block or restrict suspicious behavior
 
 ---
 
-## Container Escape Prevention
+### Container Escape Prevention
 
 ```text
 Non-root
@@ -2727,7 +2727,7 @@ Restricted Host Access
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 List Pods:
 
@@ -2809,9 +2809,9 @@ kubectl describe node <node>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is runtime security?
 - Why is runtime security required?
@@ -2829,7 +2829,7 @@ kubectl describe node <node>
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How can you prevent container escape?
 - How do you disable privilege escalation?
@@ -2848,7 +2848,7 @@ kubectl describe node <node>
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a Kubernetes runtime security architecture.
 - How would you detect container escape attempts?
@@ -2868,13 +2868,13 @@ kubectl describe node <node>
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > A web application container suddenly launches `/bin/sh`. Is that automatically an attack?
 
-### Answer
+#### Answer
 
 Not necessarily.
 
@@ -2903,13 +2903,13 @@ This is much stronger evidence of compromise.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > How can you reduce the risk of container escape?
 
-### Answer
+#### Answer
 
 Use defense in depth:
 
@@ -2937,13 +2937,13 @@ Also monitor runtime behavior for escape indicators.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > What is the difference between Seccomp and AppArmor?
 
-### Answer
+#### Answer
 
 Seccomp primarily restricts:
 
@@ -2961,13 +2961,13 @@ They operate at different layers and can complement each other.
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > Why is running a container as root dangerous?
 
-### Answer
+#### Answer
 
 If the application is compromised, the attacker may initially obtain root privileges inside the container.
 
@@ -2983,13 +2983,13 @@ is preferred where possible.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How would you detect a reverse shell in Kubernetes?
 
-### Answer
+#### Answer
 
 Correlate:
 
@@ -3023,13 +3023,13 @@ Egress Controls
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > What would you do if a production Pod is suspected to be compromised?
 
-### Answer
+#### Answer
 
 First:
 
@@ -3065,7 +3065,7 @@ Avoid destroying evidence before determining what needs to be preserved.
 
 ---
 
-# Production Runtime Security Checklist
+## Production Runtime Security Checklist
 
 ```text
 ☑ Run containers as non-root
@@ -3092,7 +3092,7 @@ Avoid destroying evidence before determining what needs to be preserved.
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Run a Pod as non-root.
 2. Disable privilege escalation.
@@ -3122,9 +3122,9 @@ Avoid destroying evidence before determining what needs to be preserved.
 
 ---
 
-# References
+## References
 
-## Official / Industry Documentation
+### Official / Industry Documentation
 
 - Kubernetes Security Contexts
 - Kubernetes Pod Security Standards
@@ -3144,7 +3144,7 @@ Avoid destroying evidence before determining what needs to be preserved.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Runtime security protects Kubernetes workloads while they are executing.
 
@@ -3370,9 +3370,9 @@ rather than relying on image scanning or configuration hardening alone.
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 56 – Supply Chain Security
+## Chapter 56 – Supply Chain Security
 
 Topics will include:
 

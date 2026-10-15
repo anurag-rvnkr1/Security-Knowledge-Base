@@ -50,7 +50,7 @@ Containers Start
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -74,7 +74,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need a Scheduler?
+## Why Do We Need a Scheduler?
 
 Suppose a cluster contains:
 
@@ -113,7 +113,7 @@ The Scheduler evaluates the available Nodes and selects the most suitable one.
 
 ---
 
-# Without a Scheduler
+## Without a Scheduler
 
 The Pod would remain:
 
@@ -125,7 +125,7 @@ because no Node would be assigned.
 
 ---
 
-# With Scheduler
+## With Scheduler
 
 ```text
 Pod
@@ -149,7 +149,7 @@ Container
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```text
                     API Server
@@ -206,7 +206,7 @@ Container
 
 ---
 
-# Scheduler Responsibilities
+## Scheduler Responsibilities
 
 The Scheduler primarily determines:
 
@@ -227,7 +227,7 @@ It evaluates:
 
 ---
 
-# Scheduler Does NOT
+## Scheduler Does NOT
 
 The Scheduler does not:
 
@@ -242,7 +242,7 @@ These responsibilities belong to other Kubernetes components.
 
 ---
 
-# Scheduler vs kubelet
+## Scheduler vs kubelet
 
 | Scheduler | kubelet |
 |---|---|
@@ -254,7 +254,7 @@ These responsibilities belong to other Kubernetes components.
 
 ---
 
-# Scheduler Architecture
+## Scheduler Architecture
 
 The Scheduler is a control-plane component.
 
@@ -288,7 +288,7 @@ run as control-plane components.
 
 ---
 
-# Scheduler Workflow
+## Scheduler Workflow
 
 The simplified scheduling workflow is:
 
@@ -326,7 +326,7 @@ kubelet Starts Pod
 
 ---
 
-# Step 1 – Pod Creation
+## Step 1 – Pod Creation
 
 Example:
 
@@ -352,7 +352,7 @@ Pending
 
 ---
 
-# Step 2 – Scheduler Detects Pod
+## Step 2 – Scheduler Detects Pod
 
 The Scheduler watches the API Server for Pods that need scheduling.
 
@@ -370,7 +370,7 @@ Scheduler Notices
 
 ---
 
-# Step 3 – Scheduling Queue
+## Step 3 – Scheduling Queue
 
 The Scheduler places unscheduled Pods into an internal scheduling queue.
 
@@ -394,7 +394,7 @@ Higher-priority Pods can receive preferential scheduling treatment.
 
 ---
 
-# Scheduling Queue
+## Scheduling Queue
 
 The Scheduler maintains queues for Pods waiting to be scheduled.
 
@@ -425,7 +425,7 @@ The exact internal queue behavior is more sophisticated and includes concepts su
 
 ---
 
-# Step 4 – Filtering
+## Step 4 – Filtering
 
 The Scheduler first determines which Nodes are **feasible**.
 
@@ -480,7 +480,7 @@ Filtering answers:
 
 ---
 
-# Filtering
+## Filtering
 
 The Scheduler evaluates constraints such as:
 
@@ -497,7 +497,7 @@ Nodes that fail mandatory requirements are removed from consideration.
 
 ---
 
-# Example – Resource Filtering
+## Example – Resource Filtering
 
 Pod:
 
@@ -529,7 +529,7 @@ Filtered Out
 
 ---
 
-# Example – Node Selector
+## Example – Node Selector
 
 Pod:
 
@@ -565,7 +565,7 @@ Rejected
 
 ---
 
-# Example – Taints
+## Example – Taints
 
 Node:
 
@@ -587,7 +587,7 @@ Candidate
 
 ---
 
-# Step 5 – Scoring
+## Step 5 – Scoring
 
 After filtering, several Nodes may remain.
 
@@ -609,7 +609,7 @@ Scoring answers:
 
 ---
 
-# Filtering vs Scoring
+## Filtering vs Scoring
 
 ```text
 Filtering
@@ -629,7 +629,7 @@ Which suitable Node is preferable?
 
 ---
 
-# Example
+## Example
 
 Suppose:
 
@@ -655,7 +655,7 @@ Node 3
 
 ---
 
-# Scheduling Plugins
+## Scheduling Plugins
 
 Modern Kubernetes Scheduler uses a plugin-based architecture.
 
@@ -672,7 +672,7 @@ Examples of scheduling extensions include:
 
 ---
 
-# NodeResourcesFit
+## NodeResourcesFit
 
 Evaluates whether the Node has enough resources for the Pod.
 
@@ -689,7 +689,7 @@ Node must have enough allocatable capacity to satisfy the request.
 
 ---
 
-# NodeAffinity
+## NodeAffinity
 
 Evaluates:
 
@@ -707,7 +707,7 @@ disk=ssd
 
 ---
 
-# TaintToleration
+## TaintToleration
 
 Evaluates whether a Pod tolerates Node taints.
 
@@ -723,7 +723,7 @@ Only Pods with the appropriate toleration can be scheduled there.
 
 ---
 
-# InterPodAffinity
+## InterPodAffinity
 
 Considers relationships between Pods.
 
@@ -743,7 +743,7 @@ Backend
 
 ---
 
-# PodTopologySpread
+## PodTopologySpread
 
 Attempts to distribute Pods across topology domains.
 
@@ -764,7 +764,7 @@ This improves availability.
 
 ---
 
-# VolumeBinding
+## VolumeBinding
 
 Storage requirements can influence scheduling.
 
@@ -786,7 +786,7 @@ The Scheduler considers whether the storage can be used from a candidate Node.
 
 ---
 
-# Step 6 – Select Node
+## Step 6 – Select Node
 
 After filtering and scoring:
 
@@ -810,7 +810,7 @@ Node 3
 
 ---
 
-# Step 7 – Binding
+## Step 7 – Binding
 
 The Scheduler updates the Pod's assignment.
 
@@ -832,7 +832,7 @@ The binding operation is sent through the API Server.
 
 ---
 
-# Step 8 – kubelet
+## Step 8 – kubelet
 
 The kubelet on the selected Node notices the Pod assignment.
 
@@ -854,7 +854,7 @@ Container Runtime
 
 ---
 
-# Step 9 – Container Creation
+## Step 9 – Container Creation
 
 The kubelet:
 
@@ -866,7 +866,7 @@ The kubelet:
 
 ---
 
-# Complete Scheduling Flow
+## Complete Scheduling Flow
 
 ```text
 kubectl apply
@@ -922,7 +922,7 @@ Application
 
 ---
 
-# Resource Requests and Scheduling
+## Resource Requests and Scheduling
 
 Resource requests are extremely important for scheduling.
 
@@ -942,7 +942,7 @@ The Scheduler uses these requests when determining whether a Node has sufficient
 
 ---
 
-# Requests vs Actual Usage
+## Requests vs Actual Usage
 
 Suppose:
 
@@ -974,7 +974,7 @@ while actual usage is relevant to runtime monitoring and resource management.
 
 ---
 
-# Allocatable Resources
+## Allocatable Resources
 
 Nodes expose:
 
@@ -992,7 +992,7 @@ The Scheduler considers the resources available for Pods based on the Node's all
 
 ---
 
-# Example
+## Example
 
 Node:
 
@@ -1033,7 +1033,7 @@ can fit within the remaining allocatable resources.
 
 ---
 
-# Node Conditions
+## Node Conditions
 
 A Node may become:
 
@@ -1062,7 +1062,7 @@ Node conditions can affect scheduling decisions.
 
 ---
 
-# Scheduling Failure
+## Scheduling Failure
 
 Suppose no Node satisfies the Pod requirements.
 
@@ -1102,7 +1102,7 @@ Affinity rules not satisfied
 
 ---
 
-# Troubleshooting Pending Pods
+## Troubleshooting Pending Pods
 
 Run:
 
@@ -1132,7 +1132,7 @@ This is usually the first place to investigate.
 
 ---
 
-# Example Scheduling Error
+## Example Scheduling Error
 
 ```text
 0/3 nodes are available:
@@ -1173,7 +1173,7 @@ Pod Pending
 
 ---
 
-# Manual Scheduling
+## Manual Scheduling
 
 Kubernetes allows explicitly assigning a Pod to a Node using:
 
@@ -1193,9 +1193,9 @@ This bypasses normal Scheduler selection.
 
 ---
 
-# nodeName vs nodeSelector
+## nodeName vs nodeSelector
 
-### nodeName
+#### nodeName
 
 ```text
 Pod
@@ -1209,7 +1209,7 @@ Direct assignment.
 
 ---
 
-### nodeSelector
+#### nodeSelector
 
 ```text
 Pod
@@ -1227,7 +1227,7 @@ Allows the Scheduler to select from matching Nodes.
 
 ---
 
-# Why nodeName Should Be Used Carefully
+## Why nodeName Should Be Used Carefully
 
 Hard-coding:
 
@@ -1259,7 +1259,7 @@ for production workloads.
 
 ---
 
-# Multiple Schedulers
+## Multiple Schedulers
 
 Kubernetes supports multiple scheduler profiles and can support multiple scheduler instances/configurations.
 
@@ -1279,7 +1279,7 @@ default-scheduler
 
 ---
 
-# Scheduler Profiles
+## Scheduler Profiles
 
 Modern Kubernetes supports scheduler profiles.
 
@@ -1307,7 +1307,7 @@ This allows customized scheduling behavior without replacing the entire Kubernet
 
 ---
 
-# Scheduler Extensibility
+## Scheduler Extensibility
 
 The Scheduler is highly extensible through plugins.
 
@@ -1361,25 +1361,25 @@ Not every plugin participates in every phase.
 
 ---
 
-# Scheduling Framework
+## Scheduling Framework
 
 The scheduling framework provides extension points for customizing Scheduler behavior.
 
 Important phases include:
 
-### PreFilter
+#### PreFilter
 
 Prepares information before filtering.
 
 ---
 
-### Filter
+#### Filter
 
 Determines whether a Node is feasible.
 
 ---
 
-### PostFilter
+#### PostFilter
 
 Runs when no feasible Node is found.
 
@@ -1387,49 +1387,49 @@ Often useful for advanced scheduling behavior.
 
 ---
 
-### PreScore
+#### PreScore
 
 Prepares information before scoring.
 
 ---
 
-### Score
+#### Score
 
 Assigns scores to feasible Nodes.
 
 ---
 
-### Reserve
+#### Reserve
 
 Reserves resources or state before binding.
 
 ---
 
-### Permit
+#### Permit
 
 Can delay or reject scheduling.
 
 ---
 
-### PreBind
+#### PreBind
 
 Performs operations before binding.
 
 ---
 
-### Bind
+#### Bind
 
 Assigns the Pod to a Node.
 
 ---
 
-### PostBind
+#### PostBind
 
 Runs after binding.
 
 ---
 
-# Scheduler Architecture Summary
+## Scheduler Architecture Summary
 
 ```text
 Pod
@@ -1479,7 +1479,7 @@ This is a conceptual representation; actual plugin participation depends on conf
 
 ---
 
-# Scheduling and High Availability
+## Scheduling and High Availability
 
 Suppose:
 
@@ -1497,7 +1497,7 @@ Multiple scheduler instances may exist, but only one active scheduler instance p
 
 ---
 
-# Scheduler and Storage
+## Scheduler and Storage
 
 Storage can influence scheduling.
 
@@ -1529,7 +1529,7 @@ the Scheduler must ensure that the Pod can run on a compatible Node.
 
 ---
 
-# Scheduler and Networking
+## Scheduler and Networking
 
 The Scheduler generally does not configure Pod networking.
 
@@ -1563,7 +1563,7 @@ Pod Network
 
 ---
 
-# Scheduler and CNI
+## Scheduler and CNI
 
 The relationship is:
 
@@ -1587,7 +1587,7 @@ They solve different problems.
 
 ---
 
-# Hands-on Lab 1 – Observe Scheduling
+## Hands-on Lab 1 – Observe Scheduling
 
 Create a simple Pod:
 
@@ -1625,7 +1625,7 @@ Observe the selected Node.
 
 ---
 
-# Hands-on Lab 2 – Inspect Scheduling Events
+## Hands-on Lab 2 – Inspect Scheduling Events
 
 ```bash
 kubectl describe pod scheduler-demo
@@ -1641,7 +1641,7 @@ This event indicates that the Pod was assigned to a Node.
 
 ---
 
-# Hands-on Lab 3 – Resource-Based Scheduling
+## Hands-on Lab 3 – Resource-Based Scheduling
 
 Create a Pod with:
 
@@ -1661,7 +1661,7 @@ Increase the resource request and observe how available Nodes change.
 
 ---
 
-# Hands-on Lab 4 – Node Selector
+## Hands-on Lab 4 – Node Selector
 
 Label a Node:
 
@@ -1687,7 +1687,7 @@ kubectl get pod -o wide
 
 ---
 
-# Hands-on Lab 5 – Force a Scheduling Failure
+## Hands-on Lab 5 – Force a Scheduling Failure
 
 Create a Pod requesting an impossible resource amount:
 
@@ -1721,7 +1721,7 @@ Read the `FailedScheduling` event.
 
 ---
 
-# Hands-on Lab 6 – Inspect Node Resources
+## Hands-on Lab 6 – Inspect Node Resources
 
 Run:
 
@@ -1751,7 +1751,7 @@ to understand how existing Pod requests consume Node capacity.
 
 ---
 
-# Hands-on Lab 7 – Manual Scheduling
+## Hands-on Lab 7 – Manual Scheduling
 
 Create a Pod with:
 
@@ -1767,9 +1767,9 @@ Compare this behavior with `nodeSelector`.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Thinking the Scheduler Starts Containers
+### 1. Thinking the Scheduler Starts Containers
 
 Incorrect:
 
@@ -1801,7 +1801,7 @@ Starts Container
 
 ---
 
-## 2. Ignoring Resource Requests
+### 2. Ignoring Resource Requests
 
 If Pods do not specify requests:
 
@@ -1817,7 +1817,7 @@ Proper requests improve scheduling accuracy.
 
 ---
 
-## 3. Confusing Requests with Limits
+### 3. Confusing Requests with Limits
 
 Requests:
 
@@ -1835,7 +1835,7 @@ They serve different purposes.
 
 ---
 
-## 4. Using nodeName Everywhere
+### 4. Using nodeName Everywhere
 
 Hard-coding Nodes reduces flexibility.
 
@@ -1855,7 +1855,7 @@ when possible.
 
 ---
 
-## 5. Ignoring Taints
+### 5. Ignoring Taints
 
 A Node may reject Pods because of:
 
@@ -1873,19 +1873,19 @@ kubectl describe node <node-name>
 
 ---
 
-## 6. Ignoring Pod Affinity Rules
+### 6. Ignoring Pod Affinity Rules
 
 Strict affinity or anti-affinity can make Pods unschedulable.
 
 ---
 
-## 7. Ignoring Storage Topology
+### 7. Ignoring Storage Topology
 
 A Pod using topology-constrained storage may not be schedulable on every Node.
 
 ---
 
-## 8. Assuming the Most Powerful Node Is Always Selected
+### 8. Assuming the Most Powerful Node Is Always Selected
 
 The Scheduler does not simply choose:
 
@@ -1897,9 +1897,9 @@ It evaluates configured filtering and scoring plugins.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Scheduler Purpose
+### Scheduler Purpose
 
 ```text
 Unscheduled Pod
@@ -1915,7 +1915,7 @@ Best Feasible Node
 
 ---
 
-## Main Workflow
+### Main Workflow
 
 ```text
 Queue
@@ -1939,7 +1939,7 @@ Bind
 
 ---
 
-## Execution
+### Execution
 
 ```text
 Scheduler
@@ -1963,7 +1963,7 @@ Pod
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Pods:
 
@@ -2009,9 +2009,9 @@ kubectl logs -n kube-system <kube-scheduler-pod>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is the Kubernetes Scheduler?
 - Why is the Scheduler required?
@@ -2020,7 +2020,7 @@ kubectl logs -n kube-system <kube-scheduler-pod>
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Explain the Kubernetes scheduling workflow.
 - What is the difference between filtering and scoring?
@@ -2030,7 +2030,7 @@ kubectl logs -n kube-system <kube-scheduler-pod>
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Kubernetes scheduling lifecycle.
 - How does the Scheduler determine whether a Node is feasible?
@@ -2046,9 +2046,9 @@ kubectl logs -n kube-system <kube-scheduler-pod>
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Kubernetes Scheduler
 - Scheduling Framework
@@ -2060,7 +2060,7 @@ kubectl logs -n kube-system <kube-scheduler-pod>
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes SIG Scheduling
 - Kubernetes Architecture
@@ -2068,7 +2068,7 @@ kubectl logs -n kube-system <kube-scheduler-pod>
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - Kubernetes Production Scheduling
 - CIS Kubernetes Benchmark
@@ -2076,7 +2076,7 @@ kubectl logs -n kube-system <kube-scheduler-pod>
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Deploy Pods and observe their assigned Nodes.
 2. Inspect `Scheduled` events.
@@ -2091,7 +2091,7 @@ kubectl logs -n kube-system <kube-scheduler-pod>
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```text
                     Pod Created
@@ -2155,9 +2155,9 @@ RUN the Pod on that Node
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 37 – Node Selectors
+## Chapter 37 – Node Selectors
 
 Topics will include:
 

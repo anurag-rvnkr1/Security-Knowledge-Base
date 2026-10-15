@@ -386,7 +386,7 @@ Every code change is automatically validated against security, quality, and comp
 
 ---
 
-# Secure CI/CD Workflow
+## Secure CI/CD Workflow
 
 ```
 Developer Commit
@@ -473,7 +473,7 @@ Each stage introduces automated controls that reduce the likelihood of insecure 
 
 ---
 
-## Step 1 – Developer Commits Code
+### Step 1 – Developer Commits Code
 
 Developers submit code changes to a version-controlled repository.
 
@@ -490,7 +490,7 @@ These controls protect the integrity of the source code.
 
 ---
 
-## Step 2 – Pull Request Review
+### Step 2 – Pull Request Review
 
 Infrastructure and application code undergo peer review before merging.
 
@@ -508,7 +508,7 @@ Peer reviews improve software quality and identify security concerns early.
 
 ---
 
-## Step 3 – Continuous Integration
+### Step 3 – Continuous Integration
 
 Once approved, the CI pipeline automatically executes.
 
@@ -525,7 +525,7 @@ CI ensures that every code change is evaluated consistently.
 
 ---
 
-## Step 4 – Static Application Security Testing (SAST)
+### Step 4 – Static Application Security Testing (SAST)
 
 Automated SAST tools analyze source code without executing it.
 
@@ -542,7 +542,7 @@ Developers remediate vulnerabilities before the build progresses.
 
 ---
 
-## Step 5 – Secrets Scanning
+### Step 5 – Secrets Scanning
 
 Repositories and pipeline configurations are scanned for exposed secrets.
 
@@ -559,7 +559,7 @@ Secrets scanning helps prevent credential leakage.
 
 ---
 
-## Step 6 – Software Composition Analysis (SCA)
+### Step 6 – Software Composition Analysis (SCA)
 
 Dependencies are analyzed for security and compliance.
 
@@ -575,7 +575,7 @@ Organizations should update or replace vulnerable dependencies before release.
 
 ---
 
-## Step 7 – Infrastructure as Code Validation
+### Step 7 – Infrastructure as Code Validation
 
 Infrastructure definitions are scanned for security misconfigurations.
 
@@ -592,7 +592,7 @@ Infrastructure security is validated before provisioning.
 
 ---
 
-## Step 8 – Policy Validation
+### Step 8 – Policy Validation
 
 Policy as Code engines automatically evaluate security requirements.
 
@@ -609,7 +609,7 @@ Pipeline execution stops if policy violations are detected.
 
 ---
 
-## Step 9 – Build and Scan Container Images
+### Step 9 – Build and Scan Container Images
 
 For containerized applications, the pipeline builds and validates images.
 
@@ -626,7 +626,7 @@ Only trusted images should be promoted to production.
 
 ---
 
-## Step 10 – Artifact Signing
+### Step 10 – Artifact Signing
 
 Build outputs are cryptographically signed.
 
@@ -641,7 +641,7 @@ Artifact signing ensures authenticity and integrity throughout the software supp
 
 ---
 
-## Step 11 – Deployment Approval
+### Step 11 – Deployment Approval
 
 Organizations may require approvals before production deployment.
 
@@ -657,7 +657,7 @@ Approval workflows reduce deployment risk.
 
 ---
 
-## Step 12 – Continuous Monitoring
+### Step 12 – Continuous Monitoring
 
 After deployment, continuously monitor:
 
@@ -673,9 +673,9 @@ Continuous monitoring detects threats that may emerge after release.
 
 ---
 
-## Practical Example
+### Practical Example
 
-### Example 1 – Secure Web Application Deployment
+#### Example 1 – Secure Web Application Deployment
 
 Scenario:
 
@@ -702,7 +702,7 @@ Outcome:
 
 ---
 
-### Example 2 – Vulnerable Dependency Detection
+#### Example 2 – Vulnerable Dependency Detection
 
 Scenario:
 
@@ -722,7 +722,7 @@ Outcome:
 
 ---
 
-### Example 3 – Secret Detection
+#### Example 3 – Secret Detection
 
 Scenario:
 
@@ -741,7 +741,7 @@ Outcome:
 
 ---
 
-### Example 4 – Policy Violation
+#### Example 4 – Policy Violation
 
 Scenario:
 
@@ -761,13 +761,13 @@ Outcome:
 
 ---
 
-## Detection
+### Detection
 
 Continuous detection provides visibility into pipeline activity, software integrity, and potential security threats.
 
 ---
 
-### Source Code Detection
+#### Source Code Detection
 
 Monitor repositories for:
 
@@ -781,7 +781,7 @@ Repository monitoring protects software integrity.
 
 ---
 
-### Pipeline Detection
+#### Pipeline Detection
 
 Detect:
 
@@ -796,7 +796,7 @@ Pipeline monitoring reduces the likelihood of CI/CD compromise.
 
 ---
 
-### Secrets Detection
+#### Secrets Detection
 
 Continuously identify:
 
@@ -811,7 +811,7 @@ Secrets should be removed and rotated immediately upon detection.
 
 ---
 
-### Dependency Detection
+#### Dependency Detection
 
 Monitor for:
 
@@ -825,7 +825,7 @@ Regular dependency analysis improves supply chain resilience.
 
 ---
 
-### Artifact Detection
+#### Artifact Detection
 
 Verify:
 
@@ -839,7 +839,7 @@ Artifact verification prevents tampered software from being deployed.
 
 ---
 
-### Runtime Detection
+#### Runtime Detection
 
 Monitor deployed applications for:
 
@@ -854,7 +854,7 @@ Runtime monitoring complements pre-deployment security validation.
 
 ---
 
-### Detection Best Practices
+#### Detection Best Practices
 
 - Require security validation for every pipeline execution.
 - Continuously scan source code and dependencies.
@@ -869,7 +869,7 @@ Runtime monitoring complements pre-deployment security validation.
 
 ---
 
-## Prevention
+### Prevention
 
 Preventing CI/CD security incidents requires protecting every stage of the software delivery lifecycle, from source code creation to production deployment. Preventive controls should be automated wherever possible to ensure consistent, repeatable, and scalable security.
 
@@ -877,7 +877,7 @@ A defense-in-depth strategy should secure developers, repositories, pipelines, a
 
 ---
 
-# CI/CD Security Prevention Lifecycle
+## CI/CD Security Prevention Lifecycle
 
 ```
 Developer
@@ -947,7 +947,7 @@ Security controls should be implemented throughout the lifecycle rather than con
 
 ---
 
-## Secure Source Code Repositories
+### Secure Source Code Repositories
 
 Protect repositories using multiple layers of security.
 
@@ -965,7 +965,7 @@ Repositories should serve as trusted sources for software delivery.
 
 ---
 
-## Implement Secure Coding Practices
+### Implement Secure Coding Practices
 
 Developers should follow secure software engineering principles.
 
@@ -983,7 +983,7 @@ Secure coding reduces vulnerabilities before they enter the pipeline.
 
 ---
 
-## Enforce Automated Security Testing
+### Enforce Automated Security Testing
 
 Every pipeline execution should automatically perform:
 
@@ -1022,7 +1022,7 @@ Automated validation ensures that insecure code cannot progress through the pipe
 
 ---
 
-## Secure Build Environments
+### Secure Build Environments
 
 Build environments should be isolated and hardened.
 
@@ -1039,7 +1039,7 @@ Ephemeral runners reduce persistence opportunities for attackers.
 
 ---
 
-## Protect Secrets
+### Protect Secrets
 
 Sensitive credentials should never be stored in:
 
@@ -1058,7 +1058,7 @@ Instead:
 
 ---
 
-## Strengthen Identity and Access Management
+### Strengthen Identity and Access Management
 
 Restrict permissions across the pipeline.
 
@@ -1075,7 +1075,7 @@ Strong identity management reduces the impact of credential compromise.
 
 ---
 
-## Secure Third-Party Dependencies
+### Secure Third-Party Dependencies
 
 Verify all external software before use.
 
@@ -1092,7 +1092,7 @@ Supply chain security should extend to every external component.
 
 ---
 
-## Protect Build Artifacts
+### Protect Build Artifacts
 
 Every generated artifact should be:
 
@@ -1107,7 +1107,7 @@ Artifact integrity ensures software authenticity throughout deployment.
 
 ---
 
-## Enforce Policy as Code
+### Enforce Policy as Code
 
 Automate security governance using policy engines.
 
@@ -1124,7 +1124,7 @@ Policy automation improves consistency and compliance.
 
 ---
 
-## Secure Deployment Processes
+### Secure Deployment Processes
 
 Production deployments should require:
 
@@ -1139,7 +1139,7 @@ Controlled releases reduce operational and security risks.
 
 ---
 
-## Continuously Monitor the Pipeline
+### Continuously Monitor the Pipeline
 
 Monitor for:
 
@@ -1155,9 +1155,9 @@ Continuous monitoring enables rapid detection and response.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Adopt a Shift-Left Security Strategy
+#### 1. Adopt a Shift-Left Security Strategy
 
 Integrate security as early as possible within the development lifecycle.
 
@@ -1165,7 +1165,7 @@ Early validation reduces remediation costs and shortens feedback cycles.
 
 ---
 
-### 2. Secure Every Pipeline Stage
+#### 2. Secure Every Pipeline Stage
 
 Every stage should include appropriate security controls.
 
@@ -1183,7 +1183,7 @@ End-to-end security minimizes attack opportunities.
 
 ---
 
-### 3. Automate Security Validation
+#### 3. Automate Security Validation
 
 Security testing should execute automatically for every code change.
 
@@ -1200,7 +1200,7 @@ Automation improves consistency and scalability.
 
 ---
 
-### 4. Use Immutable Build Environments
+#### 4. Use Immutable Build Environments
 
 Prefer short-lived, disposable build runners.
 
@@ -1215,7 +1215,7 @@ Immutable infrastructure strengthens build security.
 
 ---
 
-### 5. Protect the Software Supply Chain
+#### 5. Protect the Software Supply Chain
 
 Secure:
 
@@ -1229,7 +1229,7 @@ Supply chain protection reduces the risk of malicious software distribution.
 
 ---
 
-### 6. Apply Least Privilege Everywhere
+#### 6. Apply Least Privilege Everywhere
 
 Restrict permissions for:
 
@@ -1243,7 +1243,7 @@ Excessive permissions should be removed promptly.
 
 ---
 
-### 7. Continuously Verify Artifact Integrity
+#### 7. Continuously Verify Artifact Integrity
 
 Ensure every artifact is:
 
@@ -1257,7 +1257,7 @@ Artifact integrity is fundamental to trustworthy deployments.
 
 ---
 
-### 8. Integrate with Security Operations
+#### 8. Integrate with Security Operations
 
 CI/CD Security should work closely with:
 
@@ -1272,7 +1272,7 @@ Cross-functional collaboration improves organizational resilience.
 
 ---
 
-### 9. Measure Security Performance
+#### 9. Measure Security Performance
 
 Track metrics such as:
 
@@ -1289,7 +1289,7 @@ Metrics support continuous improvement.
 
 ---
 
-### 10. Continuously Improve the Pipeline
+#### 10. Continuously Improve the Pipeline
 
 Regularly:
 
@@ -1304,7 +1304,7 @@ Continuous improvement helps pipelines adapt to evolving threats and technologie
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 CI/CD pipelines are among the most privileged systems in modern cloud environments. A single security weakness can allow attackers to compromise source code, inject malicious software, steal secrets, or gain access to production infrastructure.
 
@@ -1312,7 +1312,7 @@ Many organizations automate software delivery successfully but overlook critical
 
 ---
 
-### 1. Hardcoding Secrets in Pipelines
+#### 1. Hardcoding Secrets in Pipelines
 
 One of the most common mistakes is storing secrets directly inside:
 
@@ -1364,7 +1364,7 @@ Secrets should always be managed through dedicated secrets management systems.
 
 ---
 
-### 2. Excessive Pipeline Permissions
+#### 2. Excessive Pipeline Permissions
 
 CI/CD pipelines frequently operate with administrator privileges.
 
@@ -1380,7 +1380,7 @@ Pipelines should receive only the permissions required to complete specific task
 
 ---
 
-### 3. Skipping Security Scanning
+#### 3. Skipping Security Scanning
 
 Some organizations prioritize deployment speed over security validation.
 
@@ -1397,7 +1397,7 @@ Skipping automated security testing allows vulnerabilities to reach production.
 
 ---
 
-### 4. Using Untrusted Third-Party Dependencies
+#### 4. Using Untrusted Third-Party Dependencies
 
 Modern software depends heavily on external packages and libraries.
 
@@ -1413,7 +1413,7 @@ Dependencies should be continuously monitored and verified.
 
 ---
 
-### 5. Weak Repository Protection
+#### 5. Weak Repository Protection
 
 Source code repositories without proper protections are attractive attack targets.
 
@@ -1429,7 +1429,7 @@ Repository security forms the foundation of CI/CD security.
 
 ---
 
-### 6. Ignoring Artifact Integrity
+#### 6. Ignoring Artifact Integrity
 
 Unsigned or unverified build artifacts may be modified after compilation.
 
@@ -1444,7 +1444,7 @@ Artifacts should always be digitally signed and verified before deployment.
 
 ---
 
-### 7. Insecure Build Environments
+#### 7. Insecure Build Environments
 
 Long-lived build servers often accumulate:
 
@@ -1458,7 +1458,7 @@ Organizations should prefer isolated, ephemeral build runners.
 
 ---
 
-### 8. Weak Identity Management
+#### 8. Weak Identity Management
 
 Poor identity management increases the risk of unauthorized pipeline access.
 
@@ -1474,7 +1474,7 @@ Identity governance should extend across all CI/CD systems.
 
 ---
 
-### 9. Bypassing Deployment Controls
+#### 9. Bypassing Deployment Controls
 
 Manual deployments outside approved pipelines bypass important security mechanisms such as:
 
@@ -1488,7 +1488,7 @@ Production deployments should occur exclusively through controlled CI/CD pipelin
 
 ---
 
-### 10. Ignoring Runtime Security
+#### 10. Ignoring Runtime Security
 
 Pre-deployment validation alone cannot detect every threat.
 
@@ -1504,7 +1504,7 @@ Runtime monitoring complements pipeline security.
 
 ---
 
-### 11. Poor Logging and Audit Trails
+#### 11. Poor Logging and Audit Trails
 
 Insufficient logging limits visibility into security events.
 
@@ -1522,7 +1522,7 @@ Comprehensive audit logs support investigations and compliance.
 
 ---
 
-### 12. Lack of Pipeline Segmentation
+#### 12. Lack of Pipeline Segmentation
 
 Using a single pipeline for all environments increases operational risk.
 
@@ -1537,7 +1537,7 @@ Environment isolation limits the impact of failures and compromises.
 
 ---
 
-### 13. Ignoring Compliance Validation
+#### 13. Ignoring Compliance Validation
 
 Pipelines that do not enforce organizational policies may deploy non-compliant resources.
 
@@ -1553,7 +1553,7 @@ Compliance validation should execute automatically before deployment.
 
 ---
 
-### 14. Treating CI/CD Security as a One-Time Setup
+#### 14. Treating CI/CD Security as a One-Time Setup
 
 Security controls require continuous maintenance.
 
@@ -1570,7 +1570,7 @@ Continuous improvement keeps pipelines resilient against evolving threats.
 
 ---
 
-### 15. Viewing CI/CD Security as Solely a DevOps Responsibility
+#### 15. Viewing CI/CD Security as Solely a DevOps Responsibility
 
 CI/CD Security requires collaboration across multiple teams.
 
@@ -1589,7 +1589,7 @@ Shared responsibility strengthens software delivery security.
 
 ---
 
-## CI/CD Security Checklist
+### CI/CD Security Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1611,9 +1611,9 @@ Shared responsibility strengthens software delivery security.
 
 ---
 
-## References
+### References
 
-### International Standards
+#### International Standards
 
 - ISO/IEC 27001 — Information Security Management Systems (ISMS)
 - ISO/IEC 27002 — Information Security Controls
@@ -1623,7 +1623,7 @@ Shared responsibility strengthens software delivery security.
 
 ---
 
-### NIST Publications
+#### NIST Publications
 
 - NIST Secure Software Development Framework (SSDF) SP 800-218
 - NIST Cybersecurity Framework (CSF) 2.0
@@ -1633,7 +1633,7 @@ Shared responsibility strengthens software delivery security.
 
 ---
 
-### OWASP Resources
+#### OWASP Resources
 
 - OWASP Top 10
 - OWASP CI/CD Security Guidance
@@ -1643,7 +1643,7 @@ Shared responsibility strengthens software delivery security.
 
 ---
 
-### Supply Chain Security
+#### Supply Chain Security
 
 - SLSA (Supply-chain Levels for Software Artifacts)
 - in-toto Framework
@@ -1654,7 +1654,7 @@ Shared responsibility strengthens software delivery security.
 
 ---
 
-### Cloud-Native Security
+#### Cloud-Native Security
 
 - Cloud Native Computing Foundation (CNCF) Software Supply Chain Best Practices
 - Kubernetes Security Best Practices
@@ -1663,9 +1663,9 @@ Shared responsibility strengthens software delivery security.
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - AWS CodePipeline
 - AWS CodeBuild
@@ -1674,7 +1674,7 @@ Shared responsibility strengthens software delivery security.
 - AWS Inspector
 - AWS Security Hub
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Azure DevOps
 - Azure Pipelines
@@ -1682,7 +1682,7 @@ Shared responsibility strengthens software delivery security.
 - Microsoft Defender for Cloud
 - Azure Policy
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Cloud Build
 - Artifact Registry
@@ -1692,7 +1692,7 @@ Shared responsibility strengthens software delivery security.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - NIST Computer Security Resource Center (CSRC)
 - Cloud Security Alliance (CSA) Research

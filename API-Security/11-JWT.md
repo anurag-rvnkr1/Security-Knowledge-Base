@@ -1,6 +1,6 @@
 # 11 - JWT Security
 
-# Introduction
+## Introduction
 
 JSON Web Token (JWT) is a compact, URL-safe token format used to securely transmit claims between two parties.
 
@@ -28,7 +28,7 @@ Understanding JWT internals is essential for secure API development and penetrat
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -44,7 +44,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is JWT?
+## What is JWT?
 
 JWT (JSON Web Token) is a digitally signed token that contains information about a user or client.
 
@@ -84,7 +84,7 @@ JWT is defined by RFC 7519.
 
 ---
 
-# Stateless Authentication
+## Stateless Authentication
 
 Traditional authentication
 
@@ -134,7 +134,7 @@ JWT reduces dependency on centralized session storage.
 
 ---
 
-# JWT Structure
+## JWT Structure
 
 A JWT consists of three parts.
 
@@ -160,7 +160,7 @@ Each section is Base64URL encoded.
 
 ---
 
-# JWT Anatomy
+## JWT Anatomy
 
 ```
 JWT
@@ -184,7 +184,7 @@ The signature protects the integrity of the token.
 
 ---
 
-# JWT Header
+## JWT Header
 
 The header specifies metadata.
 
@@ -208,7 +208,7 @@ Common fields
 
 ---
 
-# JWT Payload
+## JWT Payload
 
 The payload contains claims.
 
@@ -230,7 +230,7 @@ Sensitive information should never be stored inside JWT payloads.
 
 ---
 
-# JWT Signature
+## JWT Signature
 
 The signature protects token integrity.
 
@@ -260,7 +260,7 @@ signature verification fails.
 
 ---
 
-# JWT Creation Process
+## JWT Creation Process
 
 ```
 Header
@@ -286,7 +286,7 @@ Only trusted authentication services should generate JWTs.
 
 ---
 
-# JWT Validation Process
+## JWT Validation Process
 
 ```
 Receive JWT
@@ -312,7 +312,7 @@ Validation must occur before processing any protected request.
 
 ---
 
-# JWT Claims
+## JWT Claims
 
 Claims are pieces of information stored in the payload.
 
@@ -332,7 +332,7 @@ Registered Public Private
 
 ---
 
-# Registered Claims
+## Registered Claims
 
 Standard JWT claims include:
 
@@ -350,7 +350,7 @@ These claims improve interoperability.
 
 ---
 
-# Issuer (iss)
+## Issuer (iss)
 
 Identifies the entity that issued the token.
 
@@ -366,7 +366,7 @@ Applications should verify the issuer.
 
 ---
 
-# Subject (sub)
+## Subject (sub)
 
 Identifies the authenticated identity.
 
@@ -386,7 +386,7 @@ Typically contains:
 
 ---
 
-# Audience (aud)
+## Audience (aud)
 
 Specifies the intended recipient.
 
@@ -402,7 +402,7 @@ Tokens should only be accepted by the intended audience.
 
 ---
 
-# Expiration (exp)
+## Expiration (exp)
 
 Defines when the token expires.
 
@@ -418,7 +418,7 @@ Expired tokens must be rejected.
 
 ---
 
-# Not Before (nbf)
+## Not Before (nbf)
 
 Specifies the earliest valid time.
 
@@ -434,7 +434,7 @@ Tokens should not be accepted before this timestamp.
 
 ---
 
-# Issued At (iat)
+## Issued At (iat)
 
 Indicates when the token was created.
 
@@ -450,7 +450,7 @@ Useful for replay detection and token age evaluation.
 
 ---
 
-# JWT ID (jti)
+## JWT ID (jti)
 
 Provides a unique identifier.
 
@@ -470,7 +470,7 @@ Useful for:
 
 ---
 
-# Public Claims
+## Public Claims
 
 Public claims are standardized but not reserved.
 
@@ -490,7 +490,7 @@ They should be clearly defined to avoid naming conflicts.
 
 ---
 
-# Private Claims
+## Private Claims
 
 Private claims are application-specific.
 
@@ -507,7 +507,7 @@ Applications should validate all authorization-related claims.
 
 ---
 
-# Common JWT Algorithms
+## Common JWT Algorithms
 
 | Algorithm | Type |
 |------------|------|
@@ -524,7 +524,7 @@ Modern deployments commonly use RS256, ES256, or EdDSA.
 
 ---
 
-# Symmetric Algorithms
+## Symmetric Algorithms
 
 Example
 
@@ -554,7 +554,7 @@ Suitable for trusted environments.
 
 ---
 
-# Asymmetric Algorithms
+## Asymmetric Algorithms
 
 Example
 
@@ -587,7 +587,7 @@ Advantages
 
 ---
 
-# HS256 vs RS256
+## HS256 vs RS256
 
 | HS256 | RS256 |
 |--------|--------|
@@ -598,7 +598,7 @@ Advantages
 
 ---
 
-# Base64URL Encoding
+## Base64URL Encoding
 
 JWT components use Base64URL encoding.
 
@@ -622,7 +622,7 @@ Attackers can inspect payload contents without breaking the signature.
 
 ---
 
-# JWT Example
+## JWT Example
 
 ```
 Header
@@ -654,7 +654,7 @@ Changing any signed content invalidates the signature.
 
 ---
 
-# JWT Request Flow
+## JWT Request Flow
 
 ```
 User
@@ -698,7 +698,7 @@ Bearer tokens should always be transmitted over HTTPS.
 
 ---
 
-# Enterprise JWT Architecture
+## Enterprise JWT Architecture
 
 ```
                  User
@@ -740,7 +740,7 @@ Centralized validation improves consistency and simplifies key management.
 
 ---
 
-# Best Practices
+## Best Practices
 
 Token Design
 
@@ -766,7 +766,7 @@ Operations
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -782,7 +782,7 @@ Avoid:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - JWT is a compact, signed token format used for stateless authentication.
 - A JWT consists of a header, payload, and signature.
@@ -793,7 +793,7 @@ Avoid:
 
 ---
 
-# Access Tokens
+## Access Tokens
 
 Access tokens are short-lived credentials used by clients to access protected resources.
 
@@ -833,7 +833,7 @@ Access tokens should have a short lifetime to reduce the impact of token theft.
 
 ---
 
-# Characteristics of Access Tokens
+## Characteristics of Access Tokens
 
 Typical characteristics
 
@@ -854,7 +854,7 @@ Bearer eyJhbGciOiJSUzI1NiIs...
 
 ---
 
-# Access Token Lifecycle
+## Access Token Lifecycle
 
 ```
 Authentication
@@ -884,7 +884,7 @@ Expired access tokens should never be accepted.
 
 ---
 
-# Refresh Tokens
+## Refresh Tokens
 
 Refresh tokens allow clients to obtain new access tokens without requiring the user to authenticate again.
 
@@ -916,7 +916,7 @@ Refresh tokens are generally longer-lived than access tokens.
 
 ---
 
-# Refresh Token Flow
+## Refresh Token Flow
 
 ```
 Access Token
@@ -944,7 +944,7 @@ Only the authorization server should process refresh tokens.
 
 ---
 
-# Access Token vs Refresh Token
+## Access Token vs Refresh Token
 
 | Access Token | Refresh Token |
 |--------------|---------------|
@@ -956,7 +956,7 @@ Only the authorization server should process refresh tokens.
 
 ---
 
-# Refresh Token Security
+## Refresh Token Security
 
 Refresh tokens require stronger protection than access tokens.
 
@@ -973,7 +973,7 @@ A compromised refresh token may allow attackers to obtain new access tokens repe
 
 ---
 
-# Refresh Token Rotation
+## Refresh Token Rotation
 
 Instead of reusing refresh tokens,
 
@@ -1003,7 +1003,7 @@ Token rotation reduces replay risk.
 
 ---
 
-# Refresh Token Reuse Detection
+## Refresh Token Reuse Detection
 
 ```
 Refresh Token
@@ -1029,7 +1029,7 @@ Reuse often indicates token theft.
 
 ---
 
-# Token Expiration
+## Token Expiration
 
 Every JWT should include an expiration claim.
 
@@ -1049,7 +1049,7 @@ Benefits
 
 ---
 
-# Recommended Token Lifetimes
+## Recommended Token Lifetimes
 
 These values vary depending on business requirements.
 
@@ -1064,7 +1064,7 @@ Security should take precedence over convenience for privileged environments.
 
 ---
 
-# Token Revocation
+## Token Revocation
 
 Sometimes tokens must be invalidated before expiration.
 
@@ -1078,7 +1078,7 @@ Examples
 
 ---
 
-# Revocation Workflow
+## Revocation Workflow
 
 ```
 Compromise Detected
@@ -1104,7 +1104,7 @@ Revocation mechanisms are particularly important for long-lived tokens.
 
 ---
 
-# Blacklisting Tokens
+## Blacklisting Tokens
 
 A blacklist stores revoked token identifiers.
 
@@ -1134,7 +1134,7 @@ Useful for emergency revocation.
 
 ---
 
-# Whitelisting Tokens
+## Whitelisting Tokens
 
 Some systems maintain a whitelist of valid sessions.
 
@@ -1164,7 +1164,7 @@ Provides greater control but reduces the benefits of fully stateless authenticat
 
 ---
 
-# JWT Signing Keys
+## JWT Signing Keys
 
 The security of JWT depends heavily on signing key protection.
 
@@ -1192,7 +1192,7 @@ Private keys should never be exposed.
 
 ---
 
-# Key Management
+## Key Management
 
 Good key management includes:
 
@@ -1207,7 +1207,7 @@ Signing keys are among the most sensitive secrets in an authentication system.
 
 ---
 
-# Key Rotation
+## Key Rotation
 
 Signing keys should be rotated periodically.
 
@@ -1235,7 +1235,7 @@ Gradual rotation avoids disrupting active sessions.
 
 ---
 
-# Key Identifier (kid)
+## Key Identifier (kid)
 
 The `kid` header identifies the signing key.
 
@@ -1252,7 +1252,7 @@ Applications use the key identifier to select the correct verification key.
 
 ---
 
-# JSON Web Key (JWK)
+## JSON Web Key (JWK)
 
 A JSON Web Key represents a cryptographic key using JSON.
 
@@ -1270,7 +1270,7 @@ JWK simplifies key distribution.
 
 ---
 
-# JSON Web Key Set (JWKS)
+## JSON Web Key Set (JWKS)
 
 A JWKS endpoint publishes public verification keys.
 
@@ -1294,7 +1294,7 @@ Resource servers retrieve public keys without exposing private keys.
 
 ---
 
-# JWKS Validation Flow
+## JWKS Validation Flow
 
 ```
 JWT
@@ -1324,7 +1324,7 @@ JWKS should be retrieved securely and cached appropriately.
 
 ---
 
-# JWT Validation Checklist
+## JWT Validation Checklist
 
 Every JWT should be validated for:
 
@@ -1341,7 +1341,7 @@ Skipping any validation step may weaken security.
 
 ---
 
-# JWT Algorithm Validation
+## JWT Algorithm Validation
 
 Applications must verify the expected algorithm.
 
@@ -1367,7 +1367,7 @@ Never trust the algorithm specified by an attacker-controlled token without enfo
 
 ---
 
-# The "alg:none" Attack
+## The "alg:none" Attack
 
 Historically, some implementations accepted unsigned JWTs.
 
@@ -1387,7 +1387,7 @@ Modern libraries generally reject this configuration by default, but verificatio
 
 ---
 
-# Algorithm Confusion Attack
+## Algorithm Confusion Attack
 
 Some vulnerable implementations incorrectly treat asymmetric and symmetric algorithms as interchangeable.
 
@@ -1413,7 +1413,7 @@ Applications should explicitly enforce supported algorithms.
 
 ---
 
-# Weak Secret Attack
+## Weak Secret Attack
 
 Weak HMAC secrets may be guessed through offline attacks.
 
@@ -1431,7 +1431,7 @@ Recommendations
 
 ---
 
-# Token Replay Attack
+## Token Replay Attack
 
 An attacker reuses a stolen token.
 
@@ -1461,7 +1461,7 @@ Mitigations
 
 ---
 
-# JWT Theft
+## JWT Theft
 
 Tokens may be stolen through:
 
@@ -1476,7 +1476,7 @@ Secure storage is critical.
 
 ---
 
-# Secure Token Storage
+## Secure Token Storage
 
 Preferred approaches depend on application architecture.
 
@@ -1490,7 +1490,7 @@ General guidance
 
 ---
 
-# JWT in HTTP Requests
+## JWT in HTTP Requests
 
 Standard format
 
@@ -1509,7 +1509,7 @@ Avoid transmitting JWTs through:
 
 ---
 
-# Enterprise JWT Flow
+## Enterprise JWT Flow
 
 ```
               User
@@ -1551,7 +1551,7 @@ The API Gateway often performs initial JWT validation before forwarding requests
 
 ---
 
-# JWT Best Practices
+## JWT Best Practices
 
 Design
 
@@ -1577,7 +1577,7 @@ Operations
 
 ---
 
-# Common Security Mistakes
+## Common Security Mistakes
 
 Avoid
 
@@ -1594,7 +1594,7 @@ Avoid
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1613,7 +1613,7 @@ Correlation rules should distinguish between user error and malicious activity.
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Recommended telemetry
 
@@ -1659,7 +1659,7 @@ Example correlation rules
 
 ---
 
-# Hands-on Lab 1 – JWT Inspection
+## Hands-on Lab 1 – JWT Inspection
 
 **Objective**
 
@@ -1680,7 +1680,7 @@ Understand the structure of a JWT in an authorized environment.
 
 ---
 
-# Hands-on Lab 2 – Validation Review
+## Hands-on Lab 2 – Validation Review
 
 **Objective**
 
@@ -1701,7 +1701,7 @@ Review JWT validation logic.
 
 ---
 
-# Hands-on Lab 3 – Key Rotation Review
+## Hands-on Lab 3 – Key Rotation Review
 
 **Objective**
 
@@ -1722,9 +1722,9 @@ Review signing key management.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## JWT Rejected
+### JWT Rejected
 
 Possible causes
 
@@ -1736,7 +1736,7 @@ Possible causes
 
 ---
 
-## Token Expired
+### Token Expired
 
 Possible causes
 
@@ -1747,7 +1747,7 @@ Possible causes
 
 ---
 
-## Signature Verification Failure
+### Signature Verification Failure
 
 Possible causes
 
@@ -1758,7 +1758,7 @@ Possible causes
 
 ---
 
-## Refresh Token Failure
+### Refresh Token Failure
 
 Possible causes
 
@@ -1769,7 +1769,7 @@ Possible causes
 
 ---
 
-## JWKS Retrieval Failure
+### JWKS Retrieval Failure
 
 Possible causes
 
@@ -1780,9 +1780,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is a JWT?
 2. What are the three parts of a JWT?
@@ -1797,7 +1797,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. Explain refresh token rotation.
 12. What is the `alg:none` attack?
@@ -1812,7 +1812,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1841,7 +1841,7 @@ Your organization rotates JWT signing keys monthly.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we explored JWT security in enterprise applications.
 
@@ -1866,7 +1866,7 @@ Proper JWT implementation combines strong cryptography, rigorous validation, sec
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1882,9 +1882,9 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 7519 – JSON Web Token (JWT)
 - RFC 7517 – JSON Web Key (JWK)
@@ -1892,7 +1892,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - RFC 7515 – JSON Web Signature (JWS)
 - RFC 8725 – JWT Best Current Practices
 
-## Security Standards
+### Security Standards
 
 - OWASP API Security Top 10
 - OWASP ASVS
@@ -1900,7 +1900,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - NIST SP 800-63
 - NIST Cybersecurity Framework (CSF)
 
-## Further Reading
+### Further Reading
 
 - JSON Object Signing and Encryption (JOSE) Specifications
 - Enterprise Identity Architecture Guides
@@ -1908,7 +1908,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 12 – OAuth 2.0**
 

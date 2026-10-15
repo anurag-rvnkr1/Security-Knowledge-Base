@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 Modern attacks rarely remain inside a single security layer.
 
@@ -48,9 +48,9 @@ Identity
 
 ---
 
-# 2. The Three Detection Pillars
+## 2. The Three Detection Pillars
 
-## Endpoint
+### Endpoint
 
 Answers:
 
@@ -58,7 +58,7 @@ Answers:
 What happened on the machine?
 ```
 
-## Network
+### Network
 
 Answers:
 
@@ -66,7 +66,7 @@ Answers:
 Where did the machine communicate?
 ```
 
-## Identity
+### Identity
 
 Answers:
 
@@ -90,7 +90,7 @@ WHY
 
 ---
 
-# 3. Endpoint Detection Engineering
+## 3. Endpoint Detection Engineering
 
 Endpoint detection focuses on activity occurring on:
 
@@ -120,7 +120,7 @@ Security Events
 
 ---
 
-# 4. Endpoint Detection Sources
+## 4. Endpoint Detection Sources
 
 Common sources include:
 
@@ -139,7 +139,7 @@ The exact data available depends on the platform.
 
 ---
 
-# 5. Process Creation
+## 5. Process Creation
 
 Process creation is one of the most valuable endpoint signals.
 
@@ -161,7 +161,7 @@ Timestamp
 
 ---
 
-# 6. Process Tree
+## 6. Process Tree
 
 Example:
 
@@ -188,7 +188,7 @@ Network
 
 ---
 
-# 7. Parent-Child Detection
+## 7. Parent-Child Detection
 
 Example:
 
@@ -214,7 +214,7 @@ can increase confidence.
 
 ---
 
-# 8. Command-Line Detection
+## 8. Command-Line Detection
 
 Command lines may contain:
 
@@ -242,7 +242,7 @@ is stronger than process name alone.
 
 ---
 
-# 9. Command-Line Normalization
+## 9. Command-Line Normalization
 
 Command lines may vary because of:
 
@@ -259,7 +259,7 @@ Detection logic should avoid unnecessary dependence on superficial formatting.
 
 ---
 
-# 10. File Activity
+## 10. File Activity
 
 Important file events:
 
@@ -286,7 +286,7 @@ Parent Process
 
 ---
 
-# 11. Suspicious File Creation
+## 11. Suspicious File Creation
 
 Example:
 
@@ -302,7 +302,7 @@ This may be suspicious depending on application behavior.
 
 ---
 
-# 12. Persistence Detection
+## 12. Persistence Detection
 
 Endpoint persistence can involve:
 
@@ -329,7 +329,7 @@ Context
 
 ---
 
-# 13. Scheduled Task Detection
+## 13. Scheduled Task Detection
 
 A useful detection can consider:
 
@@ -353,7 +353,7 @@ because legitimate administration generates many tasks.
 
 ---
 
-# 14. Service Creation Detection
+## 14. Service Creation Detection
 
 Potential signals:
 
@@ -371,7 +371,7 @@ Remote Creation
 
 ---
 
-# 15. Registry Detection
+## 15. Registry Detection
 
 Useful for:
 
@@ -386,7 +386,7 @@ Detection should focus on meaningful registry locations and behavior rather than
 
 ---
 
-# 16. Credential Access Detection
+## 16. Credential Access Detection
 
 Endpoint signals can include:
 
@@ -402,7 +402,7 @@ Context is critical because legitimate security and administrative software may 
 
 ---
 
-# 17. Defense Evasion Detection
+## 17. Defense Evasion Detection
 
 Look for:
 
@@ -417,7 +417,7 @@ File Deletion
 
 ---
 
-# 18. Discovery Detection
+## 18. Discovery Detection
 
 Endpoint discovery behaviors include:
 
@@ -436,7 +436,7 @@ A burst of discovery activity can be more meaningful.
 
 ---
 
-# 19. Endpoint Discovery Sequence
+## 19. Endpoint Discovery Sequence
 
 Example:
 
@@ -462,7 +462,7 @@ within a short period can increase suspicion.
 
 ---
 
-# 20. Endpoint Network Connections
+## 20. Endpoint Network Connections
 
 Process-level network telemetry can connect:
 
@@ -490,7 +490,7 @@ This provides stronger context than a network event alone.
 
 ---
 
-# 21. Endpoint Detection Example
+## 21. Endpoint Detection Example
 
 ```text
 Office Application
@@ -510,7 +510,7 @@ High-Confidence Suspicious Execution
 
 ---
 
-# 22. Network Detection Engineering
+## 22. Network Detection Engineering
 
 Network detection focuses on:
 
@@ -527,7 +527,7 @@ Network Flows
 
 ---
 
-# 23. Network Telemetry Sources
+## 23. Network Telemetry Sources
 
 Common sources:
 
@@ -546,7 +546,7 @@ TLS Metadata
 
 ---
 
-# 24. Network Flow Data
+## 24. Network Flow Data
 
 Common fields:
 
@@ -567,7 +567,7 @@ Flow data provides metadata rather than full content.
 
 ---
 
-# 25. DNS Detection
+## 25. DNS Detection
 
 Useful signals:
 
@@ -586,7 +586,7 @@ None of these alone proves malicious activity.
 
 ---
 
-# 26. Domain Rarity
+## 26. Domain Rarity
 
 Example:
 
@@ -611,7 +611,7 @@ Threat Intelligence
 
 ---
 
-# 27. DNS Burst
+## 27. DNS Burst
 
 Example:
 
@@ -638,7 +638,7 @@ Context determines interpretation.
 
 ---
 
-# 28. DNS Beaconing
+## 28. DNS Beaconing
 
 Potential pattern:
 
@@ -660,7 +660,7 @@ Periodic behavior can indicate automation or C2.
 
 ---
 
-# 29. Network Beaconing
+## 29. Network Beaconing
 
 Beaconing can be characterized by:
 
@@ -676,7 +676,7 @@ Process
 
 ---
 
-# 30. Beaconing Detection
+## 30. Beaconing Detection
 
 A stronger signal:
 
@@ -692,7 +692,7 @@ Small Repeated Payload
 
 ---
 
-# 31. Network Scanning
+## 31. Network Scanning
 
 Potential indicators:
 
@@ -719,7 +719,7 @@ Host E: 22
 
 ---
 
-# 32. Port Scanning
+## 32. Port Scanning
 
 Possible behavior:
 
@@ -733,7 +733,7 @@ But legitimate vulnerability scanners and monitoring systems can create similar 
 
 ---
 
-# 33. Network Service Discovery
+## 33. Network Service Discovery
 
 Example:
 
@@ -753,7 +753,7 @@ Lateral Movement Preparation
 
 ---
 
-# 34. Lateral Movement Detection
+## 34. Lateral Movement Detection
 
 Useful network signals:
 
@@ -767,7 +767,7 @@ Privileged Account
 
 ---
 
-# 35. Internal Relationship Modeling
+## 35. Internal Relationship Modeling
 
 Build expected relationships:
 
@@ -789,7 +789,7 @@ as potentially unusual.
 
 ---
 
-# 36. Network Segmentation Detection
+## 36. Network Segmentation Detection
 
 A connection that crosses unexpected security boundaries may deserve attention.
 
@@ -805,7 +805,7 @@ when the user normally has no direct access.
 
 ---
 
-# 37. Egress Detection
+## 37. Egress Detection
 
 Monitor:
 
@@ -825,7 +825,7 @@ Data Volume is Unusual
 
 ---
 
-# 38. Data Exfiltration Detection
+## 38. Data Exfiltration Detection
 
 Potential signals:
 
@@ -841,7 +841,7 @@ Unusual Time
 
 ---
 
-# 39. Exfiltration Baseline
+## 39. Exfiltration Baseline
 
 A server may normally transfer:
 
@@ -859,7 +859,7 @@ Therefore thresholds should be entity-aware.
 
 ---
 
-# 40. Network Protocol Detection
+## 40. Network Protocol Detection
 
 Monitor unusual protocol behavior:
 
@@ -881,7 +881,7 @@ because applications can use non-standard ports.
 
 ---
 
-# 41. TLS Detection
+## 41. TLS Detection
 
 Useful metadata may include:
 
@@ -898,7 +898,7 @@ Encrypted traffic limits content inspection but does not eliminate metadata-base
 
 ---
 
-# 42. Certificate Detection
+## 42. Certificate Detection
 
 Potential signals:
 
@@ -914,7 +914,7 @@ Certificate data should be interpreted in context.
 
 ---
 
-# 43. Identity Detection Engineering
+## 43. Identity Detection Engineering
 
 Identity detection focuses on:
 
@@ -931,7 +931,7 @@ Access
 
 ---
 
-# 44. Identity Telemetry
+## 44. Identity Telemetry
 
 Useful sources:
 
@@ -948,7 +948,7 @@ Privileged Access Management
 
 ---
 
-# 45. Authentication Events
+## 45. Authentication Events
 
 Important fields:
 
@@ -967,7 +967,7 @@ Session
 
 ---
 
-# 46. Failed Authentication
+## 46. Failed Authentication
 
 One failed login:
 
@@ -993,7 +993,7 @@ requires investigation depending on context.
 
 ---
 
-# 47. Password Spraying
+## 47. Password Spraying
 
 Conceptual pattern:
 
@@ -1015,7 +1015,7 @@ which commonly focuses many attempts against one account.
 
 ---
 
-# 48. Brute Force
+## 48. Brute Force
 
 Conceptually:
 
@@ -1037,7 +1037,7 @@ Source
 
 ---
 
-# 49. Credential Stuffing
+## 49. Credential Stuffing
 
 Potential pattern:
 
@@ -1061,7 +1061,7 @@ Success Rate
 
 ---
 
-# 50. Successful Login After Failures
+## 50. Successful Login After Failures
 
 A useful sequence:
 
@@ -1081,7 +1081,7 @@ Sensitive Access
 
 ---
 
-# 51. Impossible Travel
+## 51. Impossible Travel
 
 Conceptually:
 
@@ -1103,7 +1103,7 @@ But VPNs, proxies, mobile networks, and cloud infrastructure can create misleadi
 
 ---
 
-# 52. New Device Detection
+## 52. New Device Detection
 
 Signals:
 
@@ -1131,7 +1131,7 @@ for stronger detection.
 
 ---
 
-# 53. MFA Detection
+## 53. MFA Detection
 
 Monitor:
 
@@ -1146,7 +1146,7 @@ MFA Failure Burst
 
 ---
 
-# 54. MFA Fatigue
+## 54. MFA Fatigue
 
 Potential pattern:
 
@@ -1162,7 +1162,7 @@ This can indicate an attempted authentication attack.
 
 ---
 
-# 55. Privilege Change Detection
+## 55. Privilege Change Detection
 
 Monitor:
 
@@ -1177,7 +1177,7 @@ Delegation
 
 ---
 
-# 56. Privilege Escalation Sequence
+## 56. Privilege Escalation Sequence
 
 Example:
 
@@ -1193,7 +1193,7 @@ Sensitive Resource Access
 
 ---
 
-# 57. Account Creation Detection
+## 57. Account Creation Detection
 
 Monitor:
 
@@ -1209,7 +1209,7 @@ Potential persistence.
 
 ---
 
-# 58. Service Account Detection
+## 58. Service Account Detection
 
 Service accounts may behave differently from human users.
 
@@ -1226,7 +1226,7 @@ A service account suddenly performing interactive authentication may be suspicio
 
 ---
 
-# 59. Dormant Account Detection
+## 59. Dormant Account Detection
 
 Potential:
 
@@ -1242,7 +1242,7 @@ This is a useful identity signal.
 
 ---
 
-# 60. Privileged Account Detection
+## 60. Privileged Account Detection
 
 High-value accounts include:
 
@@ -1258,7 +1258,7 @@ Behavior involving these identities should receive stronger contextual weighting
 
 ---
 
-# 61. Identity + Endpoint Correlation
+## 61. Identity + Endpoint Correlation
 
 Example:
 
@@ -1274,7 +1274,7 @@ This is stronger than any single signal.
 
 ---
 
-# 62. Identity + Network Correlation
+## 62. Identity + Network Correlation
 
 Example:
 
@@ -1290,7 +1290,7 @@ Potential lateral movement.
 
 ---
 
-# 63. Identity + Cloud Correlation
+## 63. Identity + Cloud Correlation
 
 Example:
 
@@ -1308,7 +1308,7 @@ Potential account takeover.
 
 ---
 
-# 64. Endpoint + Network Correlation
+## 64. Endpoint + Network Correlation
 
 Example:
 
@@ -1324,7 +1324,7 @@ Potential C2.
 
 ---
 
-# 65. Endpoint + Identity + Network
+## 65. Endpoint + Identity + Network
 
 A powerful detection:
 
@@ -1354,7 +1354,7 @@ High-Confidence Account + Endpoint Compromise
 
 ---
 
-# 66. Detection Across Attack Stages
+## 66. Detection Across Attack Stages
 
 A mature detection program covers:
 
@@ -1373,7 +1373,7 @@ Impact
 
 ---
 
-# 67. Endpoint Detection by ATT&CK Stage
+## 67. Endpoint Detection by ATT&CK Stage
 
 Example:
 
@@ -1396,7 +1396,7 @@ Lateral Movement
 
 ---
 
-# 68. Network Detection by ATT&CK Stage
+## 68. Network Detection by ATT&CK Stage
 
 Example:
 
@@ -1416,7 +1416,7 @@ Exfiltration
 
 ---
 
-# 69. Identity Detection by ATT&CK Stage
+## 69. Identity Detection by ATT&CK Stage
 
 Example:
 
@@ -1436,7 +1436,7 @@ Lateral Movement
 
 ---
 
-# 70. Detection Data Quality
+## 70. Detection Data Quality
 
 Detection quality depends on:
 
@@ -1452,7 +1452,7 @@ Retention
 
 ---
 
-# 71. Missing Endpoint Telemetry
+## 71. Missing Endpoint Telemetry
 
 If process creation is missing:
 
@@ -1472,7 +1472,7 @@ Deploy Additional Telemetry
 
 ---
 
-# 72. Missing Network Telemetry
+## 72. Missing Network Telemetry
 
 Without DNS or flow visibility:
 
@@ -1484,7 +1484,7 @@ may become difficult.
 
 ---
 
-# 73. Missing Identity Telemetry
+## 73. Missing Identity Telemetry
 
 Without authentication and privilege logs:
 
@@ -1498,7 +1498,7 @@ detections become weaker.
 
 ---
 
-# 74. Telemetry Normalization
+## 74. Telemetry Normalization
 
 Different sources may use different fields.
 
@@ -1515,7 +1515,7 @@ Normalize them to a common representation.
 
 ---
 
-# 75. Endpoint Normalization
+## 75. Endpoint Normalization
 
 Normalize:
 
@@ -1531,7 +1531,7 @@ Network Destination
 
 ---
 
-# 76. Network Normalization
+## 76. Network Normalization
 
 Normalize:
 
@@ -1548,7 +1548,7 @@ Timestamp
 
 ---
 
-# 77. Identity Normalization
+## 77. Identity Normalization
 
 Normalize:
 
@@ -1564,7 +1564,7 @@ Authentication Method
 
 ---
 
-# 78. Entity Resolution
+## 78. Entity Resolution
 
 Map:
 
@@ -1593,7 +1593,7 @@ may map to one asset.
 
 ---
 
-# 79. Detection Logic Should Be Context-Aware
+## 79. Detection Logic Should Be Context-Aware
 
 Avoid:
 
@@ -1615,7 +1615,7 @@ Sensitive Resource Access
 
 ---
 
-# 80. Threshold Detection
+## 80. Threshold Detection
 
 Examples:
 
@@ -1635,7 +1635,7 @@ Thresholds should be validated against baseline behavior.
 
 ---
 
-# 81. Dynamic Thresholds
+## 81. Dynamic Thresholds
 
 Static:
 
@@ -1653,7 +1653,7 @@ Dynamic thresholds can adapt to different entities.
 
 ---
 
-# 82. Peer-Based Thresholds
+## 82. Peer-Based Thresholds
 
 Compare:
 
@@ -1681,7 +1681,7 @@ Servers of Same Type
 
 ---
 
-# 83. Endpoint Detection Example
+## 83. Endpoint Detection Example
 
 ```text
 IF
@@ -1709,7 +1709,7 @@ Exact implementation should use normalized telemetry and environment-specific tu
 
 ---
 
-# 84. Network Detection Example
+## 84. Network Detection Example
 
 ```text
 IF
@@ -1739,7 +1739,7 @@ Exclude authorized scanners.
 
 ---
 
-# 85. Identity Detection Example
+## 85. Identity Detection Example
 
 ```text
 IF
@@ -1765,7 +1765,7 @@ increase_user_risk
 
 ---
 
-# 86. Cross-Domain Detection Example
+## 86. Cross-Domain Detection Example
 
 ```text
 IF
@@ -1787,7 +1787,7 @@ high_confidence_compromise
 
 ---
 
-# 87. Detection Exceptions
+## 87. Detection Exceptions
 
 Exceptions should be:
 
@@ -1809,7 +1809,7 @@ when a narrower exception is possible.
 
 ---
 
-# 88. Authorized Scanners
+## 88. Authorized Scanners
 
 Security scanners may generate:
 
@@ -1823,7 +1823,7 @@ Detection should identify known scanner context rather than disabling scanning d
 
 ---
 
-# 89. Administrative Activity
+## 89. Administrative Activity
 
 Administrators may generate:
 
@@ -1848,7 +1848,7 @@ to distinguish expected activity.
 
 ---
 
-# 90. Endpoint Detection Performance
+## 90. Endpoint Detection Performance
 
 Consider:
 
@@ -1865,7 +1865,7 @@ High-volume telemetry requires efficient filtering.
 
 ---
 
-# 91. Network Detection Performance
+## 91. Network Detection Performance
 
 Expensive operations include:
 
@@ -1881,7 +1881,7 @@ Optimize carefully.
 
 ---
 
-# 92. Identity Detection Performance
+## 92. Identity Detection Performance
 
 High-cardinality fields:
 
@@ -1905,7 +1905,7 @@ Reasonable Windows
 
 ---
 
-# 93. Detection Testing
+## 93. Detection Testing
 
 Test:
 
@@ -1922,7 +1922,7 @@ Alternative Procedure
 
 ---
 
-# 94. Endpoint Positive Test
+## 94. Endpoint Positive Test
 
 Example:
 
@@ -1938,7 +1938,7 @@ Detection Fires
 
 ---
 
-# 95. Network Positive Test
+## 95. Network Positive Test
 
 Example:
 
@@ -1954,7 +1954,7 @@ Scanning Detection
 
 ---
 
-# 96. Identity Positive Test
+## 96. Identity Positive Test
 
 Example:
 
@@ -1970,7 +1970,7 @@ Identity Detection
 
 ---
 
-# 97. Negative Testing
+## 97. Negative Testing
 
 Ensure:
 
@@ -1986,7 +1986,7 @@ does not create unacceptable alert noise.
 
 ---
 
-# 98. Detection Validation
+## 98. Detection Validation
 
 Measure:
 
@@ -2000,7 +2000,7 @@ Was the context useful?
 
 ---
 
-# 99. Detection Latency
+## 99. Detection Latency
 
 Measure:
 
@@ -2018,7 +2018,7 @@ Track each stage separately.
 
 ---
 
-# 100. Endpoint Detection Latency
+## 100. Endpoint Detection Latency
 
 Important for:
 
@@ -2031,7 +2031,7 @@ Persistence
 
 ---
 
-# 101. Network Detection Latency
+## 101. Network Detection Latency
 
 Important for:
 
@@ -2044,7 +2044,7 @@ Lateral Movement
 
 ---
 
-# 102. Identity Detection Latency
+## 102. Identity Detection Latency
 
 Important for:
 
@@ -2057,7 +2057,7 @@ Suspicious Authentication
 
 ---
 
-# 103. Detection Quality Metrics
+## 103. Detection Quality Metrics
 
 Track:
 
@@ -2074,7 +2074,7 @@ Analyst Acceptance
 
 ---
 
-# 104. Detection Coverage Matrix
+## 104. Detection Coverage Matrix
 
 | Domain | Telemetry | Detection | Testing | Coverage |
 |---|---|---|---|---|
@@ -2084,7 +2084,7 @@ Analyst Acceptance
 
 ---
 
-# 105. Cross-Domain Coverage
+## 105. Cross-Domain Coverage
 
 A mature program should evaluate:
 
@@ -2110,9 +2110,9 @@ This is still a detection gap.
 
 ---
 
-# 106. Detection Maturity
+## 106. Detection Maturity
 
-### Level 1
+#### Level 1
 
 Basic logs:
 
@@ -2122,29 +2122,29 @@ Network
 Identity
 ```
 
-### Level 2
+#### Level 2
 
 Individual detections.
 
-### Level 3
+#### Level 3
 
 Contextual detections.
 
-### Level 4
+#### Level 4
 
 Cross-domain correlation.
 
-### Level 5
+#### Level 5
 
 Risk-based detection.
 
-### Level 6
+#### Level 6
 
 Threat-informed adaptive detection.
 
 ---
 
-# 107. Common Endpoint Mistakes
+## 107. Common Endpoint Mistakes
 
 ```text
 Alerting on every script execution
@@ -2157,7 +2157,7 @@ Ignoring legitimate administration
 
 ---
 
-# 108. Common Network Mistakes
+## 108. Common Network Mistakes
 
 ```text
 Treating every rare domain as malicious
@@ -2169,7 +2169,7 @@ Using static thresholds everywhere
 
 ---
 
-# 109. Common Identity Mistakes
+## 109. Common Identity Mistakes
 
 ```text
 Alerting on every failed login
@@ -2182,7 +2182,7 @@ Ignoring device context
 
 ---
 
-# 110. Cross-Domain Mistakes
+## 110. Cross-Domain Mistakes
 
 ```text
 Not resolving identities
@@ -2195,7 +2195,7 @@ Counting duplicate evidence
 
 ---
 
-# 111. Practical Exercise – Endpoint
+## 111. Practical Exercise – Endpoint
 
 Build a detection hypothesis:
 
@@ -2218,7 +2218,7 @@ ATT&CK Mapping
 
 ---
 
-# 112. Practical Exercise – Network
+## 112. Practical Exercise – Network
 
 Build:
 
@@ -2240,7 +2240,7 @@ Negative Test
 
 ---
 
-# 113. Practical Exercise – Identity
+## 113. Practical Exercise – Identity
 
 Build:
 
@@ -2263,7 +2263,7 @@ False Positives
 
 ---
 
-# 114. Practical Exercise – Cross-Domain
+## 114. Practical Exercise – Cross-Domain
 
 Build:
 
@@ -2288,7 +2288,7 @@ Application
 
 ---
 
-# 115. Detection Design Template
+## 115. Detection Design Template
 
 ```yaml
 id: DET-ENDPOINT-001
@@ -2334,7 +2334,7 @@ status: production
 
 ---
 
-# 116. Detection Checklist
+## 116. Detection Checklist
 
 ```text
 [ ] Endpoint telemetry available
@@ -2363,67 +2363,67 @@ status: production
 
 ---
 
-# 117. Interview Questions
+## 117. Interview Questions
 
-### What are the three major detection domains covered in this chapter?
+#### What are the three major detection domains covered in this chapter?
 
 > Endpoint, network, and identity.
 
-### Why is endpoint telemetry important?
+#### Why is endpoint telemetry important?
 
 > It reveals process, file, execution, persistence, and host-level activity.
 
-### Why is network telemetry important?
+#### Why is network telemetry important?
 
 > It reveals communication patterns, destinations, protocols, scanning, C2, lateral movement, and potential exfiltration.
 
-### Why is identity telemetry important?
+#### Why is identity telemetry important?
 
 > It provides information about who authenticated, from where, using what device or method, and what privileges or resources were involved.
 
-### What is a process tree?
+#### What is a process tree?
 
 > A representation of parent-child process relationships that provides execution context.
 
-### Why is PowerShell execution alone usually insufficient for a high-confidence detection?
+#### Why is PowerShell execution alone usually insufficient for a high-confidence detection?
 
 > PowerShell is a legitimate administrative and automation tool, so additional context such as parent process, command line, user, host, and network behavior is needed.
 
-### What is password spraying?
+#### What is password spraying?
 
 > Attempting a small number of passwords across many accounts rather than repeatedly targeting one account.
 
-### What is the difference between brute force and password spraying?
+#### What is the difference between brute force and password spraying?
 
 > Brute force commonly targets one account with many guesses, while password spraying distributes a small number of guesses across many accounts.
 
-### What is impossible travel?
+#### What is impossible travel?
 
 > A detection signal where authentication events appear to originate from geographically distant locations within an unrealistically short period.
 
-### Why can impossible-travel detections generate false positives?
+#### Why can impossible-travel detections generate false positives?
 
 > VPNs, proxies, mobile networks, cloud services, and inaccurate geolocation can make legitimate activity appear geographically impossible.
 
-### How do you detect lateral movement?
+#### How do you detect lateral movement?
 
 > Correlate unusual internal authentication, remote service activity, source-destination relationships, privileged accounts, and endpoint/network behavior.
 
-### How do you improve endpoint detection?
+#### How do you improve endpoint detection?
 
 > Use process ancestry, command-line context, file behavior, user identity, network activity, baselines, and behavioral correlation.
 
-### How do you improve network detection?
+#### How do you improve network detection?
 
 > Combine flow, DNS, destination rarity, timing, protocol, process context, threat intelligence, and behavioral patterns.
 
-### How do you improve identity detection?
+#### How do you improve identity detection?
 
 > Combine authentication, device, location, MFA, privilege, application, historical behavior, and resource-access context.
 
 ---
 
-# 118. Quick Revision
+## 118. Quick Revision
 
 ```text
 Endpoint Detection
@@ -2483,7 +2483,7 @@ Detection Latency
 
 ---
 
-# 119. Golden Rules
+## 119. Golden Rules
 
 ```text
 1. Endpoint tells you what happened.
@@ -2550,7 +2550,7 @@ Detection Latency
 
 ---
 
-# 120. Final Mental Model
+## 120. Final Mental Model
 
 A mature detection should connect:
 
@@ -2624,7 +2624,7 @@ RESPONSE
 
 ---
 
-# 121. Chapter Summary
+## 121. Chapter Summary
 
 This chapter covered:
 

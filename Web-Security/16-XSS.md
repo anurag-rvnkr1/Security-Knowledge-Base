@@ -1,12 +1,12 @@
 # 16-Cross-Site-Scripting-(XSS).md
 
-# Part 1 — Cross-Site Scripting (XSS) Fundamentals, Browser Execution Model, Attack Types, and Enterprise Security
+## Part 1 — Cross-Site Scripting (XSS) Fundamentals, Browser Execution Model, Attack Types, and Enterprise Security
 
 > **"Cross-Site Scripting (XSS) occurs when an application allows untrusted data to become executable content in a user's browser. Instead of attacking the server directly, XSS targets the trust between the browser and the web application."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Cross-Site Scripting (XSS)?
+## What is Cross-Site Scripting (XSS)?
 
 **Cross-Site Scripting (XSS)** is a vulnerability in which untrusted input is interpreted as executable code by a user's browser.
 
@@ -51,7 +51,7 @@ Instead of treating the data as plain text, the browser interprets it as active 
 
 ---
 
-# Why XSS Exists
+## Why XSS Exists
 
 Browsers are designed to execute JavaScript contained in web pages.
 
@@ -79,7 +79,7 @@ If an application places untrusted input into the page without appropriate prote
 
 ---
 
-# Browser Trust Model
+## Browser Trust Model
 
 ```
 Application
@@ -109,7 +109,7 @@ The browser assumes that the content delivered by the trusted application is int
 
 ---
 
-# High-Level XSS Flow
+## High-Level XSS Flow
 
 ```
 Attacker Input
@@ -135,7 +135,7 @@ The vulnerable application unintentionally delivers attacker-controlled content.
 
 ---
 
-# XSS is a Client-Side Attack
+## XSS is a Client-Side Attack
 
 Unlike many server-side vulnerabilities:
 
@@ -159,7 +159,7 @@ The code executes inside the victim's browser.
 
 ---
 
-# Why It Is Called "Cross-Site" Scripting
+## Why It Is Called "Cross-Site" Scripting
 
 Historically, the term referred to scripts executing within the trusted context of another website.
 
@@ -167,7 +167,7 @@ Today, **XSS** is the widely accepted name, even though many attacks occur withi
 
 ---
 
-# Browser Execution Context
+## Browser Execution Context
 
 ```
 Web Page
@@ -187,7 +187,7 @@ Improper handling of user data can allow it to become executable JavaScript.
 
 ---
 
-# Trusted vs Untrusted Data
+## Trusted vs Untrusted Data
 
 ```
 Trusted Application Code
@@ -213,7 +213,7 @@ A secure application keeps data separate from executable code.
 
 ---
 
-# Types of XSS
+## Types of XSS
 
 The three major categories are:
 
@@ -233,7 +233,7 @@ Each differs in how malicious input reaches the victim.
 
 ---
 
-# Reflected XSS (Introduction)
+## Reflected XSS (Introduction)
 
 ```
 Victim Request
@@ -255,7 +255,7 @@ The payload is reflected directly in the response.
 
 ---
 
-# Stored XSS (Introduction)
+## Stored XSS (Introduction)
 
 ```
 Attacker Input
@@ -281,7 +281,7 @@ The payload persists until viewed by other users.
 
 ---
 
-# DOM-Based XSS (Introduction)
+## DOM-Based XSS (Introduction)
 
 ```
 Browser
@@ -309,7 +309,7 @@ Detailed coverage will follow in later parts.
 
 ---
 
-# Why XSS is Dangerous
+## Why XSS is Dangerous
 
 Potential impacts include:
 
@@ -327,7 +327,7 @@ The actual impact depends on application design and browser protections.
 
 ---
 
-# Browser Perspective
+## Browser Perspective
 
 ```
 Receive HTML
@@ -349,7 +349,7 @@ If malicious script becomes part of the document, the browser may execute it wit
 
 ---
 
-# Same-Origin Policy and XSS
+## Same-Origin Policy and XSS
 
 ```
 Trusted Website
@@ -367,7 +367,7 @@ The Same-Origin Policy does **not** protect against XSS occurring within the sam
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Customer Portal
@@ -389,7 +389,7 @@ Improper output handling could affect every user viewing the page.
 
 ---
 
-# Typical Targets
+## Typical Targets
 
 Applications accepting user-generated content are common candidates for review.
 
@@ -408,7 +408,7 @@ Any feature displaying user-controlled content should be evaluated.
 
 ---
 
-# Enterprise Risk
+## Enterprise Risk
 
 ```
 Authenticated User
@@ -436,7 +436,7 @@ Potential consequences include:
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
 | Myth | Reality |
 |------|---------|
@@ -447,7 +447,7 @@ Potential consequences include:
 
 ---
 
-# Browser Security Layers
+## Browser Security Layers
 
 ```
 HTTPS
@@ -477,7 +477,7 @@ XSS prevention depends heavily on secure application development.
 
 ---
 
-# Root Cause
+## Root Cause
 
 Most XSS vulnerabilities arise when:
 
@@ -501,7 +501,7 @@ The core issue is improper handling of user-controlled data.
 
 ---
 
-# Secure Design Principle
+## Secure Design Principle
 
 ```
 User Input
@@ -527,7 +527,7 @@ Treat all external input as untrusted unless proven otherwise.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Identify application features accepting user input.
 2. Map where the input is later displayed.
@@ -539,7 +539,7 @@ Treat all external input as untrusted unless proven otherwise.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Cross-Site Scripting (XSS)?
 2. Why does XSS occur?
@@ -554,7 +554,7 @@ Treat all external input as untrusted unless proven otherwise.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat all external input as untrusted.
 - Separate executable code from user-controlled data.
@@ -565,7 +565,7 @@ Treat all external input as untrusted unless proven otherwise.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting user input by default.
 - Assuming authentication prevents XSS.
@@ -575,7 +575,7 @@ Treat all external input as untrusted unless proven otherwise.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - XSS occurs when untrusted input becomes executable content in a browser.
 - The browser executes malicious code because it trusts the application's response.
@@ -583,15 +583,15 @@ Treat all external input as untrusted unless proven otherwise.
 - The three primary categories are Reflected, Stored, and DOM-Based XSS.
 - Secure handling of user input and output is the foundation of XSS prevention.
 
-# 16-Cross-Site-Scripting-(XSS).md
+## 16-Cross-Site-Scripting-(XSS).md
 
-# Part 2 — Reflected XSS, Stored XSS, DOM-Based XSS, Browser Parsing Contexts, and Enterprise Attack Surface
+## Part 2 — Reflected XSS, Stored XSS, DOM-Based XSS, Browser Parsing Contexts, and Enterprise Attack Surface
 
 > **"Not every XSS vulnerability is created the same way. The difference lies in how untrusted data reaches the browser and where the browser interprets it as executable content."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -608,7 +608,7 @@ After completing this part, you will understand:
 
 ---
 
-# XSS Classification
+## XSS Classification
 
 Cross-Site Scripting is generally divided into three primary categories.
 
@@ -628,7 +628,7 @@ Each category follows a different execution path.
 
 ---
 
-# Reflected XSS
+## Reflected XSS
 
 Reflected XSS occurs when untrusted input is immediately included in the application's response.
 
@@ -656,7 +656,7 @@ The malicious input is **not** permanently stored by the application.
 
 ---
 
-# Reflected XSS Workflow
+## Reflected XSS Workflow
 
 ```
 Attacker
@@ -682,7 +682,7 @@ Execution depends on the victim accessing the crafted request.
 
 ---
 
-# Characteristics of Reflected XSS
+## Characteristics of Reflected XSS
 
 - Input is reflected immediately.
 - No database storage is required.
@@ -691,7 +691,7 @@ Execution depends on the victim accessing the crafted request.
 
 ---
 
-# Stored XSS
+## Stored XSS
 
 Stored XSS occurs when untrusted input is saved by the application and later displayed to users.
 
@@ -719,7 +719,7 @@ The payload persists until it is removed or sanitized.
 
 ---
 
-# Stored XSS Workflow
+## Stored XSS Workflow
 
 ```
 Attacker
@@ -745,7 +745,7 @@ Stored XSS can affect many users over time.
 
 ---
 
-# Characteristics of Stored XSS
+## Characteristics of Stored XSS
 
 - Payload is persistent.
 - Often impacts multiple users.
@@ -754,7 +754,7 @@ Stored XSS can affect many users over time.
 
 ---
 
-# DOM-Based XSS
+## DOM-Based XSS
 
 DOM-Based XSS primarily occurs within client-side JavaScript.
 
@@ -782,7 +782,7 @@ The vulnerable behavior happens inside the browser rather than during server-sid
 
 ---
 
-# DOM-Based Workflow
+## DOM-Based Workflow
 
 ```
 Browser Loads Page
@@ -806,7 +806,7 @@ Unexpected Script Execution
 
 ---
 
-# Server vs Browser
+## Server vs Browser
 
 ```
 Reflected XSS
@@ -848,7 +848,7 @@ The execution environment is always the browser, but the source differs.
 
 ---
 
-# XSS Sources
+## XSS Sources
 
 A **source** is where untrusted data enters the application.
 
@@ -886,7 +886,7 @@ Any external input should be considered untrusted.
 
 ---
 
-# XSS Sinks
+## XSS Sinks
 
 A **sink** is a location where the application places data into the page.
 
@@ -920,7 +920,7 @@ Unsafe use of sinks can lead to XSS.
 
 ---
 
-# Data Flow
+## Data Flow
 
 ```
 Source
@@ -946,7 +946,7 @@ Secure applications ensure that data remains data throughout this process.
 
 ---
 
-# Browser Parsing Contexts
+## Browser Parsing Contexts
 
 Browsers interpret content differently depending on where it appears.
 
@@ -970,7 +970,7 @@ Each context has different security considerations.
 
 ---
 
-# HTML Context
+## HTML Context
 
 ```
 Application Output
@@ -992,7 +992,7 @@ User input displayed as plain text should remain non-executable.
 
 ---
 
-# Attribute Context
+## Attribute Context
 
 ```
 HTML Element
@@ -1014,7 +1014,7 @@ Security requirements vary depending on the specific attribute.
 
 ---
 
-# JavaScript Context
+## JavaScript Context
 
 ```
 Application
@@ -1032,7 +1032,7 @@ Embedding untrusted data directly into executable JavaScript is especially dange
 
 ---
 
-# URL Context
+## URL Context
 
 ```
 Application
@@ -1054,7 +1054,7 @@ Applications should carefully validate and safely handle user-controlled URLs.
 
 ---
 
-# CSS Context
+## CSS Context
 
 ```
 Application
@@ -1076,7 +1076,7 @@ Although less common, CSS-related injection scenarios should also be considered 
 
 ---
 
-# Enterprise Attack Surface
+## Enterprise Attack Surface
 
 Typical locations where user input is displayed include:
 
@@ -1093,7 +1093,7 @@ Each display location represents a potential output context.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Customer Support Portal
@@ -1119,7 +1119,7 @@ If output is not safely handled, injected content could affect anyone viewing th
 
 ---
 
-# Browser Parsing Pipeline
+## Browser Parsing Pipeline
 
 ```
 HTML Response
@@ -1149,7 +1149,7 @@ The browser processes different content types through specialized components.
 
 ---
 
-# Secure Data Flow
+## Secure Data Flow
 
 ```
 User Input
@@ -1175,7 +1175,7 @@ Maintaining this separation prevents data from becoming executable content.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
 | Myth | Reality |
 |------|---------|
@@ -1186,7 +1186,7 @@ Maintaining this separation prevents data from becoming executable content.
 
 ---
 
-# Comparison
+## Comparison
 
 | Feature | Reflected | Stored | DOM-Based |
 |----------|-----------|---------|-----------|
@@ -1197,7 +1197,7 @@ Maintaining this separation prevents data from becoming executable content.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Identify every place where users can submit data.
 2. Identify every location where that data is displayed.
@@ -1214,7 +1214,7 @@ Maintaining this separation prevents data from becoming executable content.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Reflected XSS?
 2. What is Stored XSS?
@@ -1229,7 +1229,7 @@ Maintaining this separation prevents data from becoming executable content.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Identify all user-controlled data sources.
 - Understand every browser parsing context.
@@ -1241,7 +1241,7 @@ Maintaining this separation prevents data from becoming executable content.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating every output context the same.
 - Focusing only on server-side rendering while ignoring client-side JavaScript.
@@ -1251,7 +1251,7 @@ Maintaining this separation prevents data from becoming executable content.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - XSS consists of three primary categories: Reflected, Stored, and DOM-Based.
 - The execution always occurs in the browser, but the source of the vulnerability differs.
@@ -1259,15 +1259,15 @@ Maintaining this separation prevents data from becoming executable content.
 - Browser parsing context determines how data is interpreted.
 - Secure applications track untrusted data from input through output and apply context-specific protections.
 
-# 16-Cross-Site-Scripting-(XSS).md
+## 16-Cross-Site-Scripting-(XSS).md
 
-# Part 3 — XSS Prevention, Output Encoding, Content Security Policy (CSP), Secure Development, Security Testing, and Enterprise Defenses
+## Part 3 — XSS Prevention, Output Encoding, Content Security Policy (CSP), Secure Development, Security Testing, and Enterprise Defenses
 
 > **"The most effective way to prevent Cross-Site Scripting is to ensure that untrusted data is never interpreted as executable content. Prevention requires secure coding practices, context-aware output handling, browser security features, and continuous security testing."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1284,7 +1284,7 @@ After completing this part, you will understand:
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 No single security control completely prevents XSS.
 
@@ -1320,7 +1320,7 @@ Layered security provides the strongest protection.
 
 ---
 
-# XSS Prevention Strategy
+## XSS Prevention Strategy
 
 ```
 Prevent
@@ -1342,7 +1342,7 @@ Applications should continuously evolve their security posture through secure de
 
 ---
 
-# Primary Defense Layers
+## Primary Defense Layers
 
 ```
 Application
@@ -1368,7 +1368,7 @@ Each layer addresses different aspects of XSS prevention.
 
 ---
 
-# Input Validation
+## Input Validation
 
 Input validation verifies that submitted data matches expected formats.
 
@@ -1401,7 +1401,7 @@ Validation improves data quality but **does not by itself prevent XSS**.
 
 ---
 
-# Why Input Validation Alone Is Not Enough
+## Why Input Validation Alone Is Not Enough
 
 ```
 User Input
@@ -1423,7 +1423,7 @@ Even correctly formatted input may become dangerous if rendered unsafely.
 
 ---
 
-# Output Encoding
+## Output Encoding
 
 Output encoding converts special characters into a form that browsers display as data rather than interpreting as executable content.
 
@@ -1447,7 +1447,7 @@ Output encoding is one of the most effective XSS defenses.
 
 ---
 
-# Context-Aware Output Encoding
+## Context-Aware Output Encoding
 
 Different browser contexts require different encoding strategies.
 
@@ -1471,7 +1471,7 @@ Encoding should always match the context where data is rendered.
 
 ---
 
-# Why Context Matters
+## Why Context Matters
 
 ```
 Same User Data
@@ -1497,7 +1497,7 @@ A single encoding approach is not appropriate for every browser context.
 
 ---
 
-# Secure Template Engines
+## Secure Template Engines
 
 Modern template engines often separate application logic from presentation.
 
@@ -1521,7 +1521,7 @@ Developers should understand the framework's default security behavior and avoid
 
 ---
 
-# Escaping vs Encoding
+## Escaping vs Encoding
 
 | Concept | Purpose |
 |----------|----------|
@@ -1532,7 +1532,7 @@ The exact implementation varies across languages and frameworks.
 
 ---
 
-# Content Security Policy (CSP)
+## Content Security Policy (CSP)
 
 **Content Security Policy (CSP)** is a browser security mechanism that limits where executable resources may be loaded from.
 
@@ -1560,7 +1560,7 @@ CSP reduces the impact of many XSS vulnerabilities but should not replace secure
 
 ---
 
-# CSP Concept
+## CSP Concept
 
 ```
 Application
@@ -1590,7 +1590,7 @@ Policies are enforced by the browser.
 
 ---
 
-# CSP Benefits
+## CSP Benefits
 
 CSP can help:
 
@@ -1602,7 +1602,7 @@ CSP can help:
 
 ---
 
-# Browser Security Controls
+## Browser Security Controls
 
 Modern browsers provide multiple protections.
 
@@ -1628,7 +1628,7 @@ Applications should leverage these controls in combination.
 
 ---
 
-# Trusted Types (Conceptual)
+## Trusted Types (Conceptual)
 
 Some modern browser features help reduce DOM-based XSS by controlling how certain APIs receive content.
 
@@ -1654,7 +1654,7 @@ These features are most effective when integrated into secure development practi
 
 ---
 
-# Secure Development Lifecycle
+## Secure Development Lifecycle
 
 ```
 Requirements
@@ -1692,7 +1692,7 @@ XSS prevention should be incorporated throughout the software lifecycle.
 
 ---
 
-# Code Review Checklist
+## Code Review Checklist
 
 Reviewers should verify:
 
@@ -1714,7 +1714,7 @@ Reviewers should verify:
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
                 Browser
@@ -1756,7 +1756,7 @@ Each layer contributes to reducing XSS risk.
 
 ---
 
-# Security Testing
+## Security Testing
 
 During an assessment, review:
 
@@ -1773,7 +1773,7 @@ Testing should focus on identifying unsafe handling of untrusted data.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Applications should monitor:
 
@@ -1788,7 +1788,7 @@ Monitoring supports incident detection and investigation.
 
 ---
 
-# Common Misconfigurations
+## Common Misconfigurations
 
 | Misconfiguration | Risk |
 |------------------|------|
@@ -1800,7 +1800,7 @@ Monitoring supports incident detection and investigation.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A healthcare portal allows patients to submit support requests.
 
@@ -1832,7 +1832,7 @@ The application ensures that submitted content is displayed as data rather than 
 
 ---
 
-# Secure Design Principles
+## Secure Design Principles
 
 ```
 Never Trust Input
@@ -1866,7 +1866,7 @@ Security should be integrated into every stage of application development.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Identify all user-controlled inputs.
 2. Map each output location.
@@ -1879,7 +1879,7 @@ Security should be integrated into every stage of application development.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is output encoding considered a primary XSS defense?
 2. Why isn't input validation alone sufficient?
@@ -1894,7 +1894,7 @@ Security should be integrated into every stage of application development.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat all user-controlled input as untrusted.
 - Apply context-aware output encoding before rendering data.
@@ -1906,7 +1906,7 @@ Security should be integrated into every stage of application development.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Relying solely on input validation.
 - Using the same encoding approach for every output context.
@@ -1917,7 +1917,7 @@ Security should be integrated into every stage of application development.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Output encoding is one of the most effective defenses against XSS.
 - Input validation improves data quality but is not a complete XSS mitigation.
@@ -1925,15 +1925,15 @@ Security should be integrated into every stage of application development.
 - Content Security Policy provides an important browser-side defense.
 - Enterprise XSS prevention relies on layered security, secure development, and continuous testing.
 
-# 16-Cross-Site-Scripting-(XSS).md
+## 16-Cross-Site-Scripting-(XSS).md
 
-# Part 4 — Enterprise XSS Governance, Detection, Incident Response, Security Testing, Best Practices, and Chapter Summary
+## Part 4 — Enterprise XSS Governance, Detection, Incident Response, Security Testing, Best Practices, and Chapter Summary
 
 > **"Preventing Cross-Site Scripting is not a one-time task. Enterprise security requires secure development, continuous testing, browser security features, monitoring, and regular code reviews to ensure that untrusted data never becomes executable code."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1950,7 +1950,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise XSS Governance
+## Enterprise XSS Governance
 
 Organizations should establish standardized secure coding requirements for all web applications.
 
@@ -1982,7 +1982,7 @@ Consistent standards reduce security gaps across multiple applications.
 
 ---
 
-# Secure Development Lifecycle (SSDLC)
+## Secure Development Lifecycle (SSDLC)
 
 ```
 Requirements
@@ -2024,7 +2024,7 @@ XSS prevention should be integrated into every stage of development.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 During design, identify:
 
@@ -2041,7 +2041,7 @@ Understanding data flow helps identify potential XSS exposure.
 
 ---
 
-# Data Flow Review
+## Data Flow Review
 
 ```
 External Input
@@ -2075,7 +2075,7 @@ Every transition should preserve the distinction between data and executable cod
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                  Browser
@@ -2129,7 +2129,7 @@ Security controls operate together rather than independently.
 
 ---
 
-# Enterprise Defense in Depth
+## Enterprise Defense in Depth
 
 ```
 HTTPS
@@ -2171,7 +2171,7 @@ Multiple independent controls significantly improve resilience.
 
 ---
 
-# Security Testing Methodology
+## Security Testing Methodology
 
 A comprehensive review includes:
 
@@ -2211,7 +2211,7 @@ Testing should always be conducted in authorized environments.
 
 ---
 
-# Security Review Checklist
+## Security Review Checklist
 
 ```
 ✓ User Input Identified
@@ -2237,7 +2237,7 @@ Testing should always be conducted in authorized environments.
 
 ---
 
-# Static Code Review
+## Static Code Review
 
 During source code review, examine:
 
@@ -2253,7 +2253,7 @@ The goal is to identify unsafe data flows before deployment.
 
 ---
 
-# Dynamic Security Testing
+## Dynamic Security Testing
 
 During runtime assessment, review:
 
@@ -2285,7 +2285,7 @@ Observe how the application processes and renders user-controlled data.
 
 ---
 
-# Monitoring
+## Monitoring
 
 Applications should monitor:
 
@@ -2301,7 +2301,7 @@ Monitoring helps detect attacks and implementation issues.
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Record events such as:
 
@@ -2317,7 +2317,7 @@ Logs should support investigation and compliance requirements.
 
 ---
 
-# Incident Response
+## Incident Response
 
 If an XSS vulnerability is discovered:
 
@@ -2357,7 +2357,7 @@ Organizations should follow established incident response procedures.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational e-commerce platform follows this workflow:
 
@@ -2397,7 +2397,7 @@ Every review passes through multiple security controls before reaching users.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many security standards emphasize secure application development and protection of user data.
 
@@ -2413,7 +2413,7 @@ XSS prevention contributes to overall application security and regulatory readin
 
 ---
 
-# Secure Deployment Checklist
+## Secure Deployment Checklist
 
 ```
 ✓ HTTPS Enabled
@@ -2439,7 +2439,7 @@ XSS prevention contributes to overall application security and regulatory readin
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Treat all external input as untrusted.
 - Apply context-aware output encoding everywhere user-controlled data is rendered.
@@ -2454,7 +2454,7 @@ XSS prevention contributes to overall application security and regulatory readin
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming HTTPS prevents XSS.
 - Depending only on input validation.
@@ -2467,9 +2467,9 @@ XSS prevention contributes to overall application security and regulatory readin
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## XSS Categories
+### XSS Categories
 
 ```
 Cross-Site Scripting
@@ -2485,7 +2485,7 @@ Cross-Site Scripting
 
 ---
 
-## Secure Data Flow
+### Secure Data Flow
 
 ```
 User Input
@@ -2509,7 +2509,7 @@ Browser Displays Data
 
 ---
 
-## Enterprise Security Layers
+### Enterprise Security Layers
 
 ```
 HTTPS
@@ -2545,7 +2545,7 @@ Logging
 
 ---
 
-## XSS Prevention Strategy
+### XSS Prevention Strategy
 
 ```
 Identify Inputs
@@ -2581,7 +2581,7 @@ Monitor
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create a complete inventory of user-controlled inputs.
 2. Map each input to every output location.
@@ -2595,7 +2595,7 @@ Monitor
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Cross-Site Scripting (XSS)?
 2. Explain the differences between Reflected, Stored, and DOM-Based XSS.
@@ -2610,7 +2610,7 @@ Monitor
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

@@ -1,10 +1,10 @@
 # 04 - Ethernet
 
-# Part 1 — Ethernet Fundamentals, Architecture, Standards, and Enterprise LAN Communication
+## Part 1 — Ethernet Fundamentals, Architecture, Standards, and Enterprise LAN Communication
 
 ---
 
-# Overview
+## Overview
 
 Ethernet is the **most widely deployed Local Area Network (LAN) technology** in the world. Nearly every enterprise network, data center, campus infrastructure, cloud edge environment, and office LAN relies on Ethernet for reliable communication between devices.
 
@@ -22,7 +22,7 @@ Today, Ethernet supports communication ranging from **10 Mbps to 800 Gbps**, mak
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -38,7 +38,7 @@ After completing this chapter, you should be able to:
 
 ---
 
-# What is Ethernet?
+## What is Ethernet?
 
 Ethernet is a family of networking technologies used for communication within a **Local Area Network (LAN)**.
 
@@ -51,7 +51,7 @@ In the TCP/IP Model, Ethernet belongs to the **Network Access Layer**.
 
 ---
 
-# History of Ethernet
+## History of Ethernet
 
 | Year | Milestone |
 |------|-----------|
@@ -67,7 +67,7 @@ Ethernet evolved from a shared-medium technology using coaxial cables into today
 
 ---
 
-# Why Ethernet Became the Industry Standard
+## Why Ethernet Became the Industry Standard
 
 Ethernet became dominant because it provides:
 
@@ -84,7 +84,7 @@ These characteristics allowed Ethernet to replace many proprietary LAN technolog
 
 ---
 
-# Ethernet Architecture
+## Ethernet Architecture
 
 A simplified enterprise Ethernet network:
 
@@ -114,7 +114,7 @@ In this architecture:
 
 ---
 
-# Ethernet Communication
+## Ethernet Communication
 
 Communication occurs using **frames**.
 
@@ -142,7 +142,7 @@ Each frame contains addressing information that enables switches to forward traf
 
 ---
 
-# IEEE 802 Standards
+## IEEE 802 Standards
 
 Ethernet is part of the IEEE 802 family of networking standards.
 
@@ -161,7 +161,7 @@ These standards define how enterprise networks achieve interoperability and cons
 
 ---
 
-# Ethernet Components
+## Ethernet Components
 
 A typical Ethernet network includes:
 
@@ -176,11 +176,11 @@ A typical Ethernet network includes:
 
 ---
 
-# Ethernet Transmission Media
+## Ethernet Transmission Media
 
 Ethernet supports both copper and fiber optic media.
 
-## Copper
+### Copper
 
 Common cable categories:
 
@@ -196,7 +196,7 @@ Common cable categories:
 
 ---
 
-## Fiber Optic
+### Fiber Optic
 
 Common fiber types:
 
@@ -214,7 +214,7 @@ Fiber provides:
 
 ---
 
-# Ethernet Speeds
+## Ethernet Speeds
 
 | Standard | Speed |
 |----------|-------|
@@ -233,7 +233,7 @@ Modern enterprise backbones and hyperscale data centers commonly use 100G, 200G,
 
 ---
 
-# Ethernet Interfaces
+## Ethernet Interfaces
 
 Examples include:
 
@@ -265,7 +265,7 @@ These interfaces support different speeds, cable types, and deployment scenarios
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Consider an employee accessing an internal file server.
 
@@ -297,7 +297,7 @@ The communication remains within the enterprise LAN, and Ethernet frames are for
 
 ---
 
-# Ethernet Advantages
+## Ethernet Advantages
 
 - High throughput
 - Low latency
@@ -310,7 +310,7 @@ The communication remains within the enterprise LAN, and Ethernet frames are for
 
 ---
 
-# Ethernet Limitations
+## Ethernet Limitations
 
 - Designed primarily for local area communication.
 - Frame delivery is limited to the local Layer 2 domain.
@@ -319,7 +319,7 @@ The communication remains within the enterprise LAN, and Ethernet frames are for
 
 ---
 
-# Ethernet in Cybersecurity
+## Ethernet in Cybersecurity
 
 Ethernet is frequently analyzed during:
 
@@ -335,7 +335,7 @@ Understanding Ethernet helps analysts identify abnormal Layer 2 behavior such as
 
 ---
 
-# Wireshark Observation
+## Wireshark Observation
 
 When capturing Ethernet traffic, the first protocol shown is typically:
 
@@ -363,7 +363,7 @@ Selecting the Ethernet header reveals fields such as source MAC, destination MAC
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Ethernet is the dominant LAN technology standardized as IEEE 802.3.
 - It operates at the Physical and Data Link layers of the OSI Model and the Network Access layer of the TCP/IP Model.
@@ -371,13 +371,13 @@ Selecting the Ethernet header reveals fields such as source MAC, destination MAC
 - Modern Ethernet supports speeds ranging from 10 Mbps to hundreds of gigabits per second.
 - Enterprise networks rely on Ethernet for reliable, scalable, and interoperable local connectivity.
 
-# 04 - Ethernet
+## 04 - Ethernet
 
-# Part 2 — Ethernet Frames, MAC Addressing, Frame Processing, MTU, and Wireshark Analysis
+## Part 2 — Ethernet Frames, MAC Addressing, Frame Processing, MTU, and Wireshark Analysis
 
 ---
 
-# Overview
+## Overview
 
 Every Ethernet communication occurs through an **Ethernet Frame**.
 
@@ -396,7 +396,7 @@ Understanding Ethernet frames is essential for:
 
 ---
 
-# What is an Ethernet Frame?
+## What is an Ethernet Frame?
 
 An Ethernet frame is the **Layer 2 Protocol Data Unit (PDU)** used for transmitting data across an Ethernet network.
 
@@ -424,7 +424,7 @@ The Ethernet frame wraps the IP packet with local addressing information so that
 
 ---
 
-# Ethernet II Frame Format
+## Ethernet II Frame Format
 
 The most common Ethernet frame format used today is **Ethernet II**.
 
@@ -439,9 +439,9 @@ The most common Ethernet frame format used today is **Ethernet II**.
 
 ---
 
-# Ethernet Frame Components
+## Ethernet Frame Components
 
-## 1. Destination MAC Address
+### 1. Destination MAC Address
 
 Length:
 
@@ -463,7 +463,7 @@ The switch uses this address to determine the correct outgoing interface.
 
 ---
 
-## 2. Source MAC Address
+### 2. Source MAC Address
 
 Length:
 
@@ -485,7 +485,7 @@ Switches learn this address and associate it with the incoming port.
 
 ---
 
-## 3. EtherType
+### 3. EtherType
 
 Length:
 
@@ -521,7 +521,7 @@ The receiving device uses this field to determine how to interpret the payload.
 
 ---
 
-## 4. Payload
+### 4. Payload
 
 Contains the encapsulated Layer 3 packet.
 
@@ -549,7 +549,7 @@ If the payload is smaller than 46 bytes, padding is added to satisfy the minimum
 
 ---
 
-## 5. Frame Check Sequence (FCS)
+### 5. Frame Check Sequence (FCS)
 
 Length:
 
@@ -572,7 +572,7 @@ The receiver recalculates the CRC:
 
 ---
 
-# Ethernet Frame Size
+## Ethernet Frame Size
 
 | Component | Size |
 |-----------|------|
@@ -592,7 +592,7 @@ Typical frame sizes:
 
 ---
 
-# Jumbo Frames
+## Jumbo Frames
 
 Some environments support **jumbo frames**, which allow payloads larger than the standard MTU.
 
@@ -620,7 +620,7 @@ All devices along the communication path must support the configured jumbo frame
 
 ---
 
-# IEEE 802.3 Frame Format
+## IEEE 802.3 Frame Format
 
 Historically, IEEE 802.3 used a **Length** field instead of EtherType.
 
@@ -634,7 +634,7 @@ Modern enterprise networks predominantly use **Ethernet II**, while IEEE 802.3 w
 
 ---
 
-# MAC Address
+## MAC Address
 
 A **Media Access Control (MAC) Address** is a Layer 2 hardware identifier assigned to a network interface.
 
@@ -653,7 +653,7 @@ Characteristics:
 
 ---
 
-# MAC Address Structure
+## MAC Address Structure
 
 ```
 3C:52:82 : 9F:10:7A
@@ -669,7 +669,7 @@ The last 24 bits identify the specific interface assigned by that vendor.
 
 ---
 
-# Organizationally Unique Identifier (OUI)
+## Organizationally Unique Identifier (OUI)
 
 The **OUI** identifies the manufacturer of the network interface.
 
@@ -695,9 +695,9 @@ Wireshark can often resolve the OUI and display the associated vendor name.
 
 ---
 
-# Types of MAC Addresses
+## Types of MAC Addresses
 
-## Unicast
+### Unicast
 
 Communication to a single device.
 
@@ -713,7 +713,7 @@ Most Ethernet communication is unicast.
 
 ---
 
-## Broadcast
+### Broadcast
 
 Communication to **every device** within the broadcast domain.
 
@@ -730,7 +730,7 @@ Examples:
 
 ---
 
-## Multicast
+### Multicast
 
 Communication to a selected group of devices.
 
@@ -751,7 +751,7 @@ Examples:
 
 ---
 
-# MAC Learning
+## MAC Learning
 
 Ethernet switches build a **MAC Address Table** (also called a CAM table) by observing the source MAC address of incoming frames.
 
@@ -788,7 +788,7 @@ This learning process allows efficient forwarding while minimizing unnecessary t
 
 ---
 
-# MAC Address Table Example
+## MAC Address Table Example
 
 | MAC Address | Switch Port |
 |-------------|-------------|
@@ -800,7 +800,7 @@ The table is continuously updated as devices communicate.
 
 ---
 
-# MTU (Maximum Transmission Unit)
+## MTU (Maximum Transmission Unit)
 
 The **Maximum Transmission Unit (MTU)** defines the largest Layer 3 packet that can be carried within an Ethernet frame without fragmentation.
 
@@ -818,7 +818,7 @@ If a packet exceeds the MTU:
 
 ---
 
-# Ethernet Encapsulation
+## Ethernet Encapsulation
 
 ```
 Application Data
@@ -848,7 +848,7 @@ This encapsulation enables local delivery while preserving the higher-layer info
 
 ---
 
-# Example Ethernet Frame
+## Example Ethernet Frame
 
 ```
 +------------------------------------------------------+
@@ -870,7 +870,7 @@ This encapsulation enables local delivery while preserving the higher-layer info
 
 ---
 
-# Wireshark Analysis
+## Wireshark Analysis
 
 A captured Ethernet frame typically appears as:
 
@@ -919,7 +919,7 @@ Selecting **TCP** reveals:
 
 ---
 
-# Common Ethernet Frame Issues
+## Common Ethernet Frame Issues
 
 | Issue | Description |
 |--------|-------------|
@@ -932,7 +932,7 @@ Selecting **TCP** reveals:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Understanding Ethernet frames enables professionals to:
 
@@ -946,7 +946,7 @@ Understanding Ethernet frames enables professionals to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Ethernet II is the dominant frame format in modern networks.
 - Every Ethernet frame contains destination and source MAC addresses, an EtherType field, payload, and an FCS.
@@ -954,13 +954,13 @@ Understanding Ethernet frames enables professionals to:
 - Standard Ethernet MTU is 1500 bytes, while jumbo frames are commonly used in specialized environments.
 - Packet analyzers such as Wireshark expose Ethernet headers, making them invaluable for troubleshooting and cybersecurity investigations.
 
-# 04 - Ethernet
+## 04 - Ethernet
 
-# Part 3 — Ethernet Switching, CAM Tables, Frame Forwarding, Collision Domains, Broadcast Domains, Duplex Modes, and Enterprise Layer 2 Communication
+## Part 3 — Ethernet Switching, CAM Tables, Frame Forwarding, Collision Domains, Broadcast Domains, Duplex Modes, and Enterprise Layer 2 Communication
 
 ---
 
-# Overview
+## Overview
 
 Modern Ethernet networks rely heavily on **switches**.
 
@@ -984,7 +984,7 @@ Understanding how switches operate is essential for:
 
 ---
 
-# What is an Ethernet Switch?
+## What is an Ethernet Switch?
 
 An Ethernet switch is a **Layer 2 networking device** that forwards Ethernet frames based on **MAC addresses**.
 
@@ -1000,7 +1000,7 @@ and determine which switch port should receive the frame.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
             Core Switch
@@ -1017,7 +1017,7 @@ Every switch maintains a MAC address table that allows it to forward frames effi
 
 ---
 
-# Switch Components
+## Switch Components
 
 A managed Ethernet switch typically contains:
 
@@ -1044,7 +1044,7 @@ A managed Ethernet switch typically contains:
 
 ---
 
-# What is a CAM Table?
+## What is a CAM Table?
 
 CAM stands for:
 
@@ -1074,11 +1074,11 @@ The CAM table allows the switch to forward frames directly to the correct destin
 
 ---
 
-# MAC Learning Process
+## MAC Learning Process
 
 Switches automatically build their CAM table by inspecting the **source MAC address** of every incoming frame.
 
-### Step 1
+#### Step 1
 
 Frame arrives:
 
@@ -1102,7 +1102,7 @@ AA:AA:AA:AA:AA:AA
 Gi0/1
 ```
 
-### Step 2
+#### Step 2
 
 Another frame arrives.
 
@@ -1130,11 +1130,11 @@ Over time the CAM table becomes a map of the local network.
 
 ---
 
-# Frame Forwarding Process
+## Frame Forwarding Process
 
 Every Ethernet frame follows three basic steps.
 
-## Step 1
+### Step 1
 
 Receive frame.
 
@@ -1149,7 +1149,7 @@ Destination MAC
 
 ---
 
-## Step 2
+### Step 2
 
 Learn Source MAC
 
@@ -1167,7 +1167,7 @@ Refresh timer
 
 ---
 
-## Step 3
+### Step 3
 
 Lookup Destination MAC
 
@@ -1185,7 +1185,7 @@ Flood
 
 ---
 
-# Example Communication
+## Example Communication
 
 ```
 PC A
@@ -1223,7 +1223,7 @@ No other devices receive the frame.
 
 ---
 
-# Unknown Unicast
+## Unknown Unicast
 
 Suppose:
 
@@ -1263,7 +1263,7 @@ Future frames become unicast.
 
 ---
 
-# Broadcast Frames
+## Broadcast Frames
 
 Broadcast destination:
 
@@ -1295,7 +1295,7 @@ Broadcasts remain within the broadcast domain unless routed.
 
 ---
 
-# Multicast Frames
+## Multicast Frames
 
 Multicast traffic targets a selected group of devices.
 
@@ -1313,7 +1313,7 @@ Enterprise switches often use protocols such as **IGMP Snooping** to forward mul
 
 ---
 
-# Unknown vs Broadcast vs Multicast
+## Unknown vs Broadcast vs Multicast
 
 | Traffic Type | Destination | Forwarding Behavior |
 |--------------|-------------|---------------------|
@@ -1324,7 +1324,7 @@ Enterprise switches often use protocols such as **IGMP Snooping** to forward mul
 
 ---
 
-# CAM Table Aging
+## CAM Table Aging
 
 MAC entries are **not permanent**.
 
@@ -1348,7 +1348,7 @@ This keeps the CAM table current.
 
 ---
 
-# Collision Domains
+## Collision Domains
 
 A collision occurs when multiple devices transmit simultaneously on a shared medium.
 
@@ -1394,7 +1394,7 @@ Every switch port is its own collision domain.
 
 ---
 
-# Broadcast Domains
+## Broadcast Domains
 
 A broadcast domain is the set of devices that receive Layer 2 broadcast traffic.
 
@@ -1430,7 +1430,7 @@ Routers and Layer 3 interfaces separate broadcast domains.
 
 ---
 
-# Collision Domain vs Broadcast Domain
+## Collision Domain vs Broadcast Domain
 
 | Feature | Collision Domain | Broadcast Domain |
 |----------|------------------|------------------|
@@ -1441,13 +1441,13 @@ Routers and Layer 3 interfaces separate broadcast domains.
 
 ---
 
-# Duplex Communication
+## Duplex Communication
 
 Ethernet devices support different transmission modes.
 
 ---
 
-## Half Duplex
+### Half Duplex
 
 Only one device transmits at a time.
 
@@ -1474,7 +1474,7 @@ Characteristics:
 
 ---
 
-## Full Duplex
+### Full Duplex
 
 Both devices transmit simultaneously.
 
@@ -1497,7 +1497,7 @@ Characteristics:
 
 ---
 
-# Auto-Negotiation
+## Auto-Negotiation
 
 Modern Ethernet interfaces automatically negotiate:
 
@@ -1523,11 +1523,11 @@ If negotiation fails because of configuration mismatches, performance issues suc
 
 ---
 
-# Switching Methods
+## Switching Methods
 
 ---
 
-## Store-and-Forward
+### Store-and-Forward
 
 The switch receives the **entire frame**, verifies the FCS, and forwards only valid frames.
 
@@ -1542,7 +1542,7 @@ Disadvantages:
 
 ---
 
-## Cut-Through Switching
+### Cut-Through Switching
 
 The switch begins forwarding after reading the destination MAC address.
 
@@ -1556,7 +1556,7 @@ Disadvantages:
 
 ---
 
-## Fragment-Free Switching
+### Fragment-Free Switching
 
 The switch reads the first **64 bytes** before forwarding.
 
@@ -1567,7 +1567,7 @@ Advantages:
 
 ---
 
-# Comparison of Switching Methods
+## Comparison of Switching Methods
 
 | Method | Error Checking | Latency | Enterprise Usage |
 |----------|---------------|---------|------------------|
@@ -1577,7 +1577,7 @@ Advantages:
 
 ---
 
-# Enterprise Switching Architecture
+## Enterprise Switching Architecture
 
 ```
               Core Layer
@@ -1602,7 +1602,7 @@ This hierarchical design improves:
 
 ---
 
-# Wireshark Observation
+## Wireshark Observation
 
 During a packet capture, you can inspect:
 
@@ -1618,7 +1618,7 @@ However, the Ethernet headers provide valuable insight into Layer 2 communicatio
 
 ---
 
-# Common Switching Problems
+## Common Switching Problems
 
 | Problem | Description |
 |----------|-------------|
@@ -1631,7 +1631,7 @@ However, the Ethernet headers provide valuable insight into Layer 2 communicatio
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient Ethernet switching provides:
 
@@ -1645,7 +1645,7 @@ Efficient Ethernet switching provides:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Ethernet switches forward frames using **MAC addresses**.
 - Switches learn device locations dynamically through the **CAM table**.
@@ -1654,13 +1654,13 @@ Efficient Ethernet switching provides:
 - Full-duplex communication eliminates collisions and is the standard for enterprise Ethernet.
 - Store-and-forward switching is the dominant forwarding method because it verifies frame integrity before transmission.
 
-# 04 - Ethernet
+## 04 - Ethernet
 
-# Part 4 — Ethernet Security, Enterprise Troubleshooting, Practical Labs, Interview Questions, and Chapter Review
+## Part 4 — Ethernet Security, Enterprise Troubleshooting, Practical Labs, Interview Questions, and Chapter Review
 
 ---
 
-# Overview
+## Overview
 
 Ethernet is the foundation of nearly every enterprise LAN, but because it operates at Layer 2, it is also a common target for attackers seeking to gain unauthorized access, intercept traffic, or disrupt communication.
 
@@ -1670,7 +1670,7 @@ This section explores common Ethernet attacks, enterprise security controls, tro
 
 ---
 
-# Layer 2 Threat Landscape
+## Layer 2 Threat Landscape
 
 Common Ethernet attacks include:
 
@@ -1689,9 +1689,9 @@ Understanding these attacks is critical for SOC analysts, network engineers, and
 
 ---
 
-# MAC Spoofing
+## MAC Spoofing
 
-## What is MAC Spoofing?
+### What is MAC Spoofing?
 
 MAC Spoofing is the process of changing a network interface's MAC address to impersonate another device.
 
@@ -1711,7 +1711,7 @@ AA:BB:CC:DD:EE:FF
 
 ---
 
-## Why Attackers Use It
+### Why Attackers Use It
 
 - Bypass MAC filtering
 - Impersonate trusted devices
@@ -1721,7 +1721,7 @@ AA:BB:CC:DD:EE:FF
 
 ---
 
-## Detection
+### Detection
 
 - Duplicate MAC addresses
 - MAC address changes on a switch port
@@ -1730,7 +1730,7 @@ AA:BB:CC:DD:EE:FF
 
 ---
 
-## Prevention
+### Prevention
 
 - IEEE 802.1X authentication
 - Switch Port Security
@@ -1740,9 +1740,9 @@ AA:BB:CC:DD:EE:FF
 
 ---
 
-# CAM Table Overflow Attack
+## CAM Table Overflow Attack
 
-## Objective
+### Objective
 
 Overflow the switch's CAM table with fake MAC addresses.
 
@@ -1760,7 +1760,7 @@ CAM Table Full
 
 ---
 
-## Result
+### Result
 
 When the CAM table becomes full:
 
@@ -1776,7 +1776,7 @@ This behavior can allow an attacker to capture traffic that would normally be fo
 
 ---
 
-## Prevention
+### Prevention
 
 - Port Security
 - MAC address limits per port
@@ -1786,7 +1786,7 @@ This behavior can allow an attacker to capture traffic that would normally be fo
 
 ---
 
-# ARP Spoofing
+## ARP Spoofing
 
 ARP is inherently trust-based and lacks authentication.
 
@@ -1826,7 +1826,7 @@ This enables a Man-in-the-Middle (MitM) attack.
 
 ---
 
-## Detection
+### Detection
 
 - Duplicate ARP responses
 - Unexpected ARP cache changes
@@ -1835,7 +1835,7 @@ This enables a Man-in-the-Middle (MitM) attack.
 
 ---
 
-## Prevention
+### Prevention
 
 - Dynamic ARP Inspection (DAI)
 - DHCP Snooping
@@ -1845,7 +1845,7 @@ This enables a Man-in-the-Middle (MitM) attack.
 
 ---
 
-# DHCP Starvation
+## DHCP Starvation
 
 An attacker rapidly sends DHCP requests using different spoofed MAC addresses.
 
@@ -1861,7 +1861,7 @@ Legitimate users can no longer obtain IP addresses.
 
 ---
 
-## Prevention
+### Prevention
 
 - DHCP Snooping
 - Rate limiting
@@ -1870,7 +1870,7 @@ Legitimate users can no longer obtain IP addresses.
 
 ---
 
-# Rogue DHCP Server
+## Rogue DHCP Server
 
 An attacker introduces an unauthorized DHCP server.
 
@@ -1896,7 +1896,7 @@ This may redirect user traffic through attacker-controlled systems.
 
 ---
 
-## Prevention
+### Prevention
 
 - DHCP Snooping
 - Trusted switch ports
@@ -1905,23 +1905,23 @@ This may redirect user traffic through attacker-controlled systems.
 
 ---
 
-# VLAN Hopping
+## VLAN Hopping
 
 VLAN Hopping allows traffic intended for one VLAN to reach another through misconfiguration or protocol abuse.
 
 Two common techniques are:
 
-### Switch Spoofing
+#### Switch Spoofing
 
 An attacker attempts to negotiate a trunk link with a switch.
 
-### Double Tagging
+#### Double Tagging
 
 The attacker crafts a frame with two VLAN tags so that one tag is removed by the first switch, potentially allowing the frame to reach another VLAN.
 
 ---
 
-## Prevention
+### Prevention
 
 - Disable Dynamic Trunking Protocol (DTP) where not required.
 - Configure access ports explicitly.
@@ -1931,7 +1931,7 @@ The attacker crafts a frame with two VLAN tags so that one tag is removed by the
 
 ---
 
-# STP Manipulation
+## STP Manipulation
 
 The Spanning Tree Protocol (STP) prevents Layer 2 loops.
 
@@ -1945,7 +1945,7 @@ Potential impacts:
 
 ---
 
-## Prevention
+### Prevention
 
 - BPDU Guard
 - Root Guard
@@ -1955,7 +1955,7 @@ Potential impacts:
 
 ---
 
-# Broadcast Storm
+## Broadcast Storm
 
 A broadcast storm occurs when excessive broadcast traffic consumes network bandwidth.
 
@@ -1968,7 +1968,7 @@ Common causes include:
 
 ---
 
-## Prevention
+### Prevention
 
 - Spanning Tree Protocol (STP)
 - Storm Control
@@ -1978,7 +1978,7 @@ Common causes include:
 
 ---
 
-# Layer 2 Security Features
+## Layer 2 Security Features
 
 Enterprise switches commonly support:
 
@@ -1995,7 +1995,7 @@ Enterprise switches commonly support:
 
 ---
 
-# Enterprise Defense Architecture
+## Enterprise Defense Architecture
 
 ```
 Employee
@@ -2037,7 +2037,7 @@ Each security control addresses a different class of Layer 2 threats.
 
 ---
 
-# Enterprise Troubleshooting Methodology
+## Enterprise Troubleshooting Methodology
 
 When diagnosing Ethernet issues:
 
@@ -2077,7 +2077,7 @@ This layered approach helps isolate faults efficiently.
 
 ---
 
-# Common Ethernet Problems
+## Common Ethernet Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2091,15 +2091,15 @@ This layered approach helps isolate faults efficiently.
 
 ---
 
-# Practical Lab 1 — View MAC Address
+## Practical Lab 1 — View MAC Address
 
-## Windows
+### Windows
 
 ```cmd
 ipconfig /all
 ```
 
-## Linux
+### Linux
 
 ```bash
 ip link show
@@ -2119,7 +2119,7 @@ Record:
 
 ---
 
-# Practical Lab 2 — View ARP Cache
+## Practical Lab 2 — View ARP Cache
 
 Windows
 
@@ -2141,7 +2141,7 @@ Observe:
 
 ---
 
-# Practical Lab 3 — Packet Capture
+## Practical Lab 3 — Packet Capture
 
 Requirements:
 
@@ -2162,7 +2162,7 @@ Procedure:
 
 ---
 
-# Practical Lab 4 — Switch Verification (Cisco IOS Example)
+## Practical Lab 4 — Switch Verification (Cisco IOS Example)
 
 Display interface status:
 
@@ -2197,13 +2197,13 @@ Review the output for:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 Users on one office floor cannot access internal resources.
 
-### Investigation
+#### Investigation
 
 **Step 1**
 
@@ -2241,7 +2241,7 @@ Enable BPDU Guard and disconnect the unauthorized device.
 
 ---
 
-## Outcome
+### Outcome
 
 - Loop eliminated
 - Broadcast traffic normalized
@@ -2249,7 +2249,7 @@ Enable BPDU Guard and disconnect the unauthorized device.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enable Port Security on access ports.
 - Implement IEEE 802.1X for device authentication.
@@ -2264,29 +2264,29 @@ Enable BPDU Guard and disconnect the unauthorized device.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is Ethernet?
+#### What is Ethernet?
 
 Ethernet is a family of LAN technologies standardized as IEEE 802.3 that provides Layer 1 and Layer 2 communication using Ethernet frames and MAC addresses.
 
 ---
 
-### What is a MAC address?
+#### What is a MAC address?
 
 A MAC address is a unique Layer 2 identifier assigned to a network interface for communication within a local network.
 
 ---
 
-### What is the purpose of the CAM table?
+#### What is the purpose of the CAM table?
 
 The CAM table maps MAC addresses to switch ports, allowing switches to forward frames efficiently.
 
 ---
 
-### What is the difference between a hub and a switch?
+#### What is the difference between a hub and a switch?
 
 | Hub | Switch |
 |------|---------|
@@ -2297,29 +2297,29 @@ The CAM table maps MAC addresses to switch ports, allowing switches to forward f
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What happens when a switch receives a frame for an unknown destination MAC?
+#### What happens when a switch receives a frame for an unknown destination MAC?
 
 The switch floods the frame out all ports except the incoming port while learning the source MAC address. Once the destination responds, the switch updates its CAM table.
 
 ---
 
-### Explain CAM table overflow.
+#### Explain CAM table overflow.
 
 A CAM table overflow attack attempts to fill the switch's MAC table with fake entries. If successful, the switch may flood unknown unicast traffic, increasing the risk of traffic interception.
 
 ---
 
-### What is the purpose of the FCS?
+#### What is the purpose of the FCS?
 
 The Frame Check Sequence (FCS) uses a CRC value to detect accidental transmission errors in Ethernet frames.
 
 ---
 
-## Advanced
+### Advanced
 
-### Explain the complete Layer 2 forwarding process.
+#### Explain the complete Layer 2 forwarding process.
 
 A strong answer should include:
 
@@ -2331,7 +2331,7 @@ A strong answer should include:
 
 ---
 
-### How would you secure an enterprise access switch?
+#### How would you secure an enterprise access switch?
 
 A comprehensive answer should mention:
 
@@ -2348,28 +2348,28 @@ A comprehensive answer should mention:
 
 ---
 
-### Why is Layer 2 security important?
+#### Why is Layer 2 security important?
 
 Compromising Layer 2 can allow attackers to intercept traffic, disrupt communications, bypass basic access controls, and launch attacks such as ARP spoofing or CAM table overflow. Strong Layer 2 controls form an essential part of a defense-in-depth strategy.
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - IEEE 802.3 — Ethernet
 - IEEE 802.1Q — VLAN Tagging
 - IEEE 802.1D — Spanning Tree Protocol
 - IEEE 802.1X — Port-Based Network Access Control
 
-## Security Guidance
+### Security Guidance
 
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-41 — Firewalls
 - NIST SP 800-53 — Security and Privacy Controls
 
-## Vendor Documentation
+### Vendor Documentation
 
 - Cisco Campus LAN Design Guide
 - Juniper Switching Documentation
@@ -2378,13 +2378,13 @@ Compromising Layer 2 can allow attackers to intercept traffic, disrupt communica
 
 ---
 
-# Summary
+## Summary
 
 Ethernet is the foundation of modern local area networking. It enables efficient communication using Ethernet frames, MAC addressing, and intelligent switching. Understanding Ethernet frame processing, MAC learning, collision domains, broadcast domains, and Layer 2 security is essential for designing resilient enterprise networks and investigating network incidents. Enterprise security features such as Port Security, DHCP Snooping, Dynamic ARP Inspection, and IEEE 802.1X help defend against common Layer 2 attacks and strengthen overall network security.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 

@@ -1,12 +1,12 @@
 # 34-JWT-Security.md
 
-# Part 1 — Introduction to JSON Web Tokens (JWT), Token-Based Authentication, JWT Structure, and Enterprise Identity
+## Part 1 — Introduction to JSON Web Tokens (JWT), Token-Based Authentication, JWT Structure, and Enterprise Identity
 
 > **"A JSON Web Token (JWT) is a compact, digitally signed token that securely carries claims between parties. A JWT is trusted only after successful validation—it should never be trusted merely because it exists."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is JWT?
+## What is JWT?
 
 **JSON Web Token (JWT)** is an open standard (RFC 7519) for securely transmitting claims between parties as a compact JSON object.
 
@@ -38,7 +38,7 @@ JWTs are commonly used for:
 
 ---
 
-# Why JWT?
+## Why JWT?
 
 Traditional session-based authentication often requires server-side session storage.
 
@@ -84,7 +84,7 @@ The server validates the token instead of maintaining session state.
 
 ---
 
-# Stateless Authentication
+## Stateless Authentication
 
 In stateless authentication:
 
@@ -108,7 +108,7 @@ The server does not rely on per-user session storage for every request.
 
 ---
 
-# Why Organizations Use JWT
+## Why Organizations Use JWT
 
 ```
 JWT Benefits
@@ -134,7 +134,7 @@ JWT integrates well with modern web and cloud architectures.
 
 ---
 
-# Common JWT Use Cases
+## Common JWT Use Cases
 
 ```
 Applications
@@ -160,7 +160,7 @@ Applications
 
 ---
 
-# JWT Lifecycle
+## JWT Lifecycle
 
 ```
 User Login
@@ -194,7 +194,7 @@ The token is validated before access is granted.
 
 ---
 
-# JWT Architecture
+## JWT Architecture
 
 ```
 Client
@@ -224,7 +224,7 @@ Identity and business services remain logically separated.
 
 ---
 
-# JWT Structure
+## JWT Structure
 
 A JWT consists of three Base64URL-encoded sections.
 
@@ -248,7 +248,7 @@ Each component has a distinct purpose.
 
 ---
 
-# JWT Header
+## JWT Header
 
 The Header contains metadata about the token.
 
@@ -270,7 +270,7 @@ The Header tells the verifier how the token is protected.
 
 ---
 
-# JWT Payload
+## JWT Payload
 
 The Payload contains **claims**.
 
@@ -290,7 +290,7 @@ Claims provide information used by applications during authorization and identit
 
 ---
 
-# JWT Signature
+## JWT Signature
 
 The Signature protects token integrity.
 
@@ -314,7 +314,7 @@ If the signature validation fails, the token should not be trusted.
 
 ---
 
-# JWT Visualization
+## JWT Visualization
 
 ```
 +----------------+
@@ -348,7 +348,7 @@ All three sections together form the complete JWT.
 
 ---
 
-# JWT Claims
+## JWT Claims
 
 Claims represent statements about a user, client, or token.
 
@@ -366,7 +366,7 @@ Claims
 
 ---
 
-# Registered Claims
+## Registered Claims
 
 Common registered claims include:
 
@@ -384,7 +384,7 @@ These standardized claims improve interoperability.
 
 ---
 
-# Public Claims
+## Public Claims
 
 Public claims are standardized or publicly defined claims that applications may share across systems.
 
@@ -396,7 +396,7 @@ Examples include:
 
 ---
 
-# Private Claims
+## Private Claims
 
 Private claims are agreed upon between participating applications.
 
@@ -416,7 +416,7 @@ Organizations should include only information necessary for application function
 
 ---
 
-# Signed vs Encrypted Tokens
+## Signed vs Encrypted Tokens
 
 JWTs may be:
 
@@ -432,7 +432,7 @@ JWT
 
 ---
 
-# Signed JWT (JWS)
+## Signed JWT (JWS)
 
 A signed JWT protects integrity.
 
@@ -456,7 +456,7 @@ Recipients can verify that the content has not been modified.
 
 ---
 
-# Encrypted JWT (JWE)
+## Encrypted JWT (JWE)
 
 An encrypted JWT protects confidentiality.
 
@@ -480,7 +480,7 @@ Only authorized recipients can decrypt the protected content.
 
 ---
 
-# JWS vs JWE
+## JWS vs JWE
 
 | JWS | JWE |
 |------|------|
@@ -493,7 +493,7 @@ Some systems may use both signing and encryption depending on security requireme
 
 ---
 
-# JWT in OAuth 2.0
+## JWT in OAuth 2.0
 
 Many OAuth deployments use JWTs as Access Tokens.
 
@@ -517,7 +517,7 @@ The Resource Server validates the JWT before granting access.
 
 ---
 
-# JWT in OpenID Connect
+## JWT in OpenID Connect
 
 OIDC commonly uses JWTs for ID Tokens.
 
@@ -541,7 +541,7 @@ The application validates the token before trusting identity information.
 
 ---
 
-# Enterprise Identity Architecture
+## Enterprise Identity Architecture
 
 ```
 Internet
@@ -575,7 +575,7 @@ JWTs enable secure identity propagation across distributed services.
 
 ---
 
-# Microservices Example
+## Microservices Example
 
 ```
 Client
@@ -605,7 +605,7 @@ Each service independently validates the incoming JWT before processing requests
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail company provides a customer portal.
 
@@ -645,7 +645,7 @@ Each backend service validates the JWT before providing access to protected reso
 
 ---
 
-# Advantages of JWT
+## Advantages of JWT
 
 ```
 Advantages
@@ -669,7 +669,7 @@ Advantages
 
 ---
 
-# Limitations
+## Limitations
 
 JWTs also introduce operational considerations.
 
@@ -695,7 +695,7 @@ Proper implementation is essential to maintaining security.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the structure of a JWT.
 2. Identify the purpose of each JWT section.
@@ -707,7 +707,7 @@ Proper implementation is essential to maintaining security.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a JWT?
 2. What are the three parts of a JWT?
@@ -722,7 +722,7 @@ Proper implementation is essential to maintaining security.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate every JWT before trusting its contents.
 - Use signed tokens to protect integrity.
@@ -734,7 +734,7 @@ Proper implementation is essential to maintaining security.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting a JWT without validation.
 - Assuming Base64URL encoding provides encryption.
@@ -745,7 +745,7 @@ Proper implementation is essential to maintaining security.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - JWT is a compact standard for securely transmitting claims.
 - A JWT consists of a Header, Payload, and Signature.
@@ -753,15 +753,15 @@ Proper implementation is essential to maintaining security.
 - JWTs are widely used in OAuth 2.0 and OpenID Connect.
 - Secure validation, careful claim design, and proper lifecycle management are essential for enterprise JWT security.
 
-# 34-JWT-Security.md
+## 34-JWT-Security.md
 
-# Part 2 — JWT Validation, Digital Signatures, Key Management, Token Lifecycle, Claims Validation, and Secure JWT Handling
+## Part 2 — JWT Validation, Digital Signatures, Key Management, Token Lifecycle, Claims Validation, and Secure JWT Handling
 
 > **"A JWT is trusted only after successful validation. Every Resource Server must independently verify the token's integrity, issuer, audience, lifetime, and authorization information before granting access."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -778,7 +778,7 @@ After completing this part, you will understand:
 
 ---
 
-# JWT Validation
+## JWT Validation
 
 Receiving a JWT does **not** automatically mean it is trustworthy.
 
@@ -814,7 +814,7 @@ Reject
 
 ---
 
-# Why Validation is Required
+## Why Validation is Required
 
 A JWT is merely a structured token.
 
@@ -840,7 +840,7 @@ Skipping validation defeats the security provided by signed tokens.
 
 ---
 
-# Validation Workflow
+## Validation Workflow
 
 ```
 Incoming JWT
@@ -870,7 +870,7 @@ Each step contributes to secure authentication and authorization.
 
 ---
 
-# Signature Validation
+## Signature Validation
 
 The signature ensures the JWT has not been modified.
 
@@ -898,7 +898,7 @@ If verification fails, the token must be rejected.
 
 ---
 
-# Why Signatures Matter
+## Why Signatures Matter
 
 ```
 Original JWT
@@ -924,7 +924,7 @@ Digital signatures help ensure that token contents remain unchanged.
 
 ---
 
-# Common Signing Algorithms
+## Common Signing Algorithms
 
 ```
 Signing Algorithms
@@ -952,7 +952,7 @@ Organizations choose algorithms based on their security architecture and operati
 
 ---
 
-# Symmetric vs Asymmetric Signing
+## Symmetric vs Asymmetric Signing
 
 | Symmetric | Asymmetric |
 |------------|------------|
@@ -963,7 +963,7 @@ Organizations choose algorithms based on their security architecture and operati
 
 ---
 
-# HS256 Overview
+## HS256 Overview
 
 HS256 uses a shared secret.
 
@@ -987,7 +987,7 @@ The same secret is used for signing and verification.
 
 ---
 
-# RS256 Overview
+## RS256 Overview
 
 RS256 uses asymmetric cryptography.
 
@@ -1013,7 +1013,7 @@ Public keys verify signatures.
 
 ---
 
-# Enterprise Preference
+## Enterprise Preference
 
 Many enterprise environments prefer asymmetric signing.
 
@@ -1045,7 +1045,7 @@ This allows multiple services to validate tokens without sharing signing secrets
 
 ---
 
-# Public Key Distribution
+## Public Key Distribution
 
 Applications require access to trusted public keys.
 
@@ -1069,7 +1069,7 @@ Organizations should maintain secure key distribution mechanisms.
 
 ---
 
-# Key Management
+## Key Management
 
 Cryptographic keys require careful lifecycle management.
 
@@ -1095,7 +1095,7 @@ Key management is as important as algorithm selection.
 
 ---
 
-# Secure Key Storage
+## Secure Key Storage
 
 Private signing keys should remain protected.
 
@@ -1115,7 +1115,7 @@ Access should be limited to authorized systems and administrators.
 
 ---
 
-# Key Rotation
+## Key Rotation
 
 Keys should be replaced periodically according to organizational policy.
 
@@ -1139,7 +1139,7 @@ Regular rotation limits long-term exposure if a key is compromised.
 
 ---
 
-# Claims Validation
+## Claims Validation
 
 Applications should validate important JWT claims.
 
@@ -1163,7 +1163,7 @@ Claims provide context for authentication and authorization decisions.
 
 ---
 
-# Registered Claim Validation
+## Registered Claim Validation
 
 | Claim | Validation Purpose |
 |--------|--------------------|
@@ -1177,7 +1177,7 @@ Claims provide context for authentication and authorization decisions.
 
 ---
 
-# Issuer Validation
+## Issuer Validation
 
 ```
 JWT
@@ -1203,7 +1203,7 @@ Only tokens from trusted issuers should be accepted.
 
 ---
 
-# Audience Validation
+## Audience Validation
 
 ```
 JWT
@@ -1229,7 +1229,7 @@ A token issued for one service should not automatically be accepted by another.
 
 ---
 
-# Expiration Validation
+## Expiration Validation
 
 ```
 JWT
@@ -1263,7 +1263,7 @@ Expired tokens should never be accepted.
 
 ---
 
-# Not Before Validation
+## Not Before Validation
 
 ```
 JWT
@@ -1293,7 +1293,7 @@ This prevents use before the intended validity period.
 
 ---
 
-# JWT Identifier (jti)
+## JWT Identifier (jti)
 
 The JWT Identifier uniquely identifies a token.
 
@@ -1313,7 +1313,7 @@ Organizations may use this claim to support auditing or token management workflo
 
 ---
 
-# Authorization Using Claims
+## Authorization Using Claims
 
 Claims can support authorization decisions.
 
@@ -1341,7 +1341,7 @@ Authorization should still be enforced within application business logic.
 
 ---
 
-# Token Lifetime
+## Token Lifetime
 
 Short-lived tokens reduce exposure.
 
@@ -1369,7 +1369,7 @@ Appropriate token lifetime depends on business and security requirements.
 
 ---
 
-# Token Revocation
+## Token Revocation
 
 Some environments require the ability to revoke tokens before expiration.
 
@@ -1393,7 +1393,7 @@ Revocation strategies vary depending on architecture and operational needs.
 
 ---
 
-# Secure JWT Storage
+## Secure JWT Storage
 
 Applications should protect JWTs appropriately.
 
@@ -1413,7 +1413,7 @@ Storage approaches depend on the client platform and application architecture.
 
 ---
 
-# Transport Security
+## Transport Security
 
 JWTs should be transmitted only over encrypted channels.
 
@@ -1437,7 +1437,7 @@ TLS protects tokens during transmission.
 
 ---
 
-# Enterprise JWT Validation Flow
+## Enterprise JWT Validation Flow
 
 ```
 Client
@@ -1471,7 +1471,7 @@ Every protected request should undergo validation before processing.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational insurance company secures internal APIs with JWTs.
 
@@ -1507,7 +1507,7 @@ Every API independently validates signatures and claims before processing busine
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1520,7 +1520,7 @@ Every API independently validates signatures and claims before processing busine
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a complete JWT validation workflow.
 2. Compare symmetric and asymmetric JWT signing.
@@ -1532,7 +1532,7 @@ Every API independently validates signatures and claims before processing busine
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should every JWT be validated?
 2. What is the purpose of a digital signature?
@@ -1547,7 +1547,7 @@ Every API independently validates signatures and claims before processing busine
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate signatures before trusting JWT contents.
 - Verify issuer, audience, expiration, and other relevant claims.
@@ -1560,7 +1560,7 @@ Every API independently validates signatures and claims before processing busine
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting decoded JWT contents without verification.
 - Skipping issuer or audience validation.
@@ -1571,7 +1571,7 @@ Every API independently validates signatures and claims before processing busine
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - JWT validation is mandatory before trusting any token.
 - Digital signatures protect token integrity.
@@ -1579,15 +1579,15 @@ Every API independently validates signatures and claims before processing busine
 - Strong key management and periodic rotation strengthen JWT security.
 - Secure transport, proper validation, and layered authorization are fundamental to enterprise JWT deployments.
 
-# 34-JWT-Security.md
+## 34-JWT-Security.md
 
-# Part 3 — JWT Security Threats, Common Vulnerabilities, Defensive Design, Monitoring, and Enterprise Security Operations
+## Part 3 — JWT Security Threats, Common Vulnerabilities, Defensive Design, Monitoring, and Enterprise Security Operations
 
 > **"JWT vulnerabilities rarely originate from the JWT specification itself—they almost always arise from insecure implementation, poor key management, weak validation, or operational mistakes."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1604,7 +1604,7 @@ After completing this part, you will understand:
 
 ---
 
-# JWT Threat Landscape
+## JWT Threat Landscape
 
 JWT-based systems face threats throughout the authentication and authorization lifecycle.
 
@@ -1638,7 +1638,7 @@ Most successful attacks exploit implementation weaknesses rather than flaws in t
 
 ---
 
-# JWT Attack Surface
+## JWT Attack Surface
 
 ```
 User
@@ -1680,7 +1680,7 @@ Each stage requires appropriate security controls.
 
 ---
 
-# Token Theft
+## Token Theft
 
 JWTs represent authenticated or authorized sessions.
 
@@ -1710,7 +1710,7 @@ Reducing token exposure minimizes this risk.
 
 ---
 
-# Token Replay
+## Token Replay
 
 Replay occurs when a previously issued valid token is presented again.
 
@@ -1734,7 +1734,7 @@ Short-lived tokens and proper validation reduce replay opportunities.
 
 ---
 
-# Long-Lived Tokens
+## Long-Lived Tokens
 
 Long expiration periods increase organizational risk.
 
@@ -1754,7 +1754,7 @@ Organizations generally prefer shorter token lifetimes balanced against usabilit
 
 ---
 
-# Weak Key Management
+## Weak Key Management
 
 Signing keys are high-value assets.
 
@@ -1778,7 +1778,7 @@ Compromised signing keys undermine trust in issued tokens.
 
 ---
 
-# Key Lifecycle
+## Key Lifecycle
 
 ```
 Generate
@@ -1808,7 +1808,7 @@ Every phase should follow documented organizational procedures.
 
 ---
 
-# Sensitive Claims
+## Sensitive Claims
 
 JWT payloads should contain only information required by the application.
 
@@ -1832,7 +1832,7 @@ Avoid unnecessary personal or confidential information in tokens.
 
 ---
 
-# Principle of Minimal Claims
+## Principle of Minimal Claims
 
 ```
 Application
@@ -1854,7 +1854,7 @@ Smaller claim sets reduce information exposure.
 
 ---
 
-# Claim Trust
+## Claim Trust
 
 Claims should not automatically override application authorization logic.
 
@@ -1878,7 +1878,7 @@ Business authorization should remain under application control.
 
 ---
 
-# Improper Validation
+## Improper Validation
 
 Every incoming JWT should undergo validation before processing.
 
@@ -1906,7 +1906,7 @@ Skipping any validation step weakens security.
 
 ---
 
-# Validation Checklist
+## Validation Checklist
 
 ```
 JWT Validation
@@ -1934,7 +1934,7 @@ Each check contributes to overall trust.
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
 
 JWTs commonly cross multiple systems.
 
@@ -1962,7 +1962,7 @@ Trust should not automatically extend across boundaries without validation.
 
 ---
 
-# Secure API Design
+## Secure API Design
 
 ```
 Request
@@ -1992,7 +1992,7 @@ Authentication and authorization should precede business processing.
 
 ---
 
-# JWT in Zero Trust
+## JWT in Zero Trust
 
 Zero Trust requires continuous verification.
 
@@ -2020,7 +2020,7 @@ No request is implicitly trusted.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 JWT security benefits from layered defenses.
 
@@ -2060,7 +2060,7 @@ Each layer complements the others.
 
 ---
 
-# Secure Secret Management
+## Secure Secret Management
 
 Applications often depend on secrets beyond signing keys.
 
@@ -2084,7 +2084,7 @@ Secrets should be centrally managed and protected.
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Authentication and authorization events should be logged.
 
@@ -2112,7 +2112,7 @@ Logs support investigations and compliance activities.
 
 ---
 
-# What to Log
+## What to Log
 
 | Event | Purpose |
 |--------|----------|
@@ -2127,7 +2127,7 @@ Raw JWTs and other sensitive authentication artifacts should generally **not** b
 
 ---
 
-# Monitoring
+## Monitoring
 
 Continuous monitoring improves visibility.
 
@@ -2159,7 +2159,7 @@ Monitoring helps identify unusual authentication and authorization activity.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2173,7 +2173,7 @@ Monitoring helps identify unusual authentication and authorization activity.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies JWT-related risks during system design.
 
@@ -2201,7 +2201,7 @@ Design reviews reduce implementation weaknesses.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 JWT security should be integrated throughout development.
 
@@ -2233,7 +2233,7 @@ Identity security should be considered from project inception through production
 
 ---
 
-# Enterprise Microservices
+## Enterprise Microservices
 
 JWTs commonly secure distributed services.
 
@@ -2265,7 +2265,7 @@ Each service independently validates incoming tokens before processing requests.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global manufacturing company provides a supplier portal secured with JWT-based authentication.
 
@@ -2305,7 +2305,7 @@ Every API validates signatures and claims before serving protected business data
 
 ---
 
-# Enterprise Challenges
+## Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2318,7 +2318,7 @@ Every API validates signatures and claims before serving protected business data
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a JWT trust boundary diagram.
 2. Identify where validation occurs within a distributed architecture.
@@ -2330,7 +2330,7 @@ Every API validates signatures and claims before serving protected business data
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is token replay?
 2. Why should JWTs have limited lifetimes?
@@ -2345,7 +2345,7 @@ Every API validates signatures and claims before serving protected business data
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate every JWT before processing requests.
 - Protect signing keys using secure key management practices.
@@ -2358,7 +2358,7 @@ Every API validates signatures and claims before serving protected business data
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating JWT validation as the only authorization mechanism.
 - Storing sensitive information in token payloads.
@@ -2370,7 +2370,7 @@ Every API validates signatures and claims before serving protected business data
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - JWT security depends primarily on proper implementation rather than the token format itself.
 - Secure validation, key management, and minimal claims are fundamental defensive practices.
@@ -2378,15 +2378,15 @@ Every API validates signatures and claims before serving protected business data
 - Logging, monitoring, and threat modeling strengthen operational security.
 - Defense in depth provides multiple layers of protection for JWT-based authentication systems.
 
-# 34-JWT-Security.md
+## 34-JWT-Security.md
 
-# Part 4 — Enterprise JWT Governance, Zero Trust Integration, DevSecOps, Compliance, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise JWT Governance, Zero Trust Integration, DevSecOps, Compliance, Incident Response, Security Maturity, and Chapter Summary
 
 > **"JWT provides a secure mechanism for transmitting identity and authorization information, but its effectiveness depends on strong governance, cryptographic key management, rigorous validation, and continuous operational security."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2403,7 +2403,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise JWT Governance
+## Enterprise JWT Governance
 
 Organizations should establish standardized policies for JWT implementation across all applications and services.
 
@@ -2443,7 +2443,7 @@ Governance ensures consistency, interoperability, and security across enterprise
 
 ---
 
-# JWT Governance Framework
+## JWT Governance Framework
 
 ```
 JWT Governance
@@ -2473,7 +2473,7 @@ A formal governance framework reduces configuration inconsistencies and operatio
 
 ---
 
-# Claim Governance
+## Claim Governance
 
 Claims should follow organizational standards.
 
@@ -2501,7 +2501,7 @@ Claims should remain minimal, well-defined, and consistent across applications.
 
 ---
 
-# Standardized Claim Design
+## Standardized Claim Design
 
 Organizations often define common claims for:
 
@@ -2529,7 +2529,7 @@ Standardization improves interoperability.
 
 ---
 
-# Key Governance
+## Key Governance
 
 Cryptographic keys require strict lifecycle management.
 
@@ -2559,7 +2559,7 @@ Every phase should be documented and audited.
 
 ---
 
-# Identity Federation
+## Identity Federation
 
 JWT is frequently used within federated identity environments.
 
@@ -2587,7 +2587,7 @@ Federation enables centralized identity management across multiple platforms.
 
 ---
 
-# JWT in API Ecosystems
+## JWT in API Ecosystems
 
 Modern enterprises often expose numerous APIs.
 
@@ -2619,7 +2619,7 @@ Each protected API independently validates incoming JWTs.
 
 ---
 
-# API Gateway Responsibilities
+## API Gateway Responsibilities
 
 ```
 API Gateway
@@ -2645,7 +2645,7 @@ Gateways provide centralized security while backend services maintain their own 
 
 ---
 
-# JWT in Microservices
+## JWT in Microservices
 
 ```
 Client
@@ -2679,7 +2679,7 @@ Each service validates the token before executing business logic.
 
 ---
 
-# Zero Trust Architecture
+## Zero Trust Architecture
 
 Zero Trust assumes that no request is automatically trusted.
 
@@ -2711,7 +2711,7 @@ Identity verification occurs continuously.
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -2739,7 +2739,7 @@ JWT validation becomes part of every access decision.
 
 ---
 
-# Adaptive Access
+## Adaptive Access
 
 Organizations may evaluate additional contextual signals before granting access.
 
@@ -2768,7 +2768,7 @@ Context-aware controls improve resilience.
 
 ---
 
-# Multi-Factor Authentication
+## Multi-Factor Authentication
 
 JWT-based systems commonly integrate with MFA.
 
@@ -2796,7 +2796,7 @@ MFA strengthens user authentication before token issuance.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 JWT security should be incorporated throughout the software development lifecycle.
 
@@ -2832,7 +2832,7 @@ Security becomes a continuous engineering activity.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2874,7 +2874,7 @@ Identity-related configurations should be validated alongside application code.
 
 ---
 
-# Secure Configuration Management
+## Secure Configuration Management
 
 JWT implementations depend on secure configuration.
 
@@ -2902,7 +2902,7 @@ Configuration should be version-controlled and reviewed.
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 JWT ecosystems depend on sensitive cryptographic material.
 
@@ -2926,7 +2926,7 @@ Organizations should protect secrets using dedicated secrets management solution
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many regulatory frameworks require strong identity controls.
 
@@ -2954,7 +2954,7 @@ Compliance requirements vary by industry and jurisdiction.
 
 ---
 
-# Identity Lifecycle
+## Identity Lifecycle
 
 User access should be managed throughout its lifecycle.
 
@@ -2990,7 +2990,7 @@ Timely deprovisioning reduces unnecessary access.
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 Organizations should continuously monitor JWT-related operations.
 
@@ -3007,7 +3007,7 @@ Organizations should continuously monitor JWT-related operations.
 
 ---
 
-# Security Dashboard
+## Security Dashboard
 
 ```
 JWT Dashboard
@@ -3035,7 +3035,7 @@ Dashboards support operational awareness across engineering and security teams.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 JWT authentication events contribute to enterprise monitoring.
 
@@ -3067,7 +3067,7 @@ Centralized monitoring enables rapid detection of abnormal authentication activi
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should prepare documented procedures for JWT-related security incidents.
 
@@ -3103,7 +3103,7 @@ Response activities should follow established organizational processes.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -3133,7 +3133,7 @@ Lessons learned should improve future architecture and operational practices.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 JWT security should evolve alongside business and technology changes.
 
@@ -3165,7 +3165,7 @@ Continuous improvement increases long-term resilience.
 
 ---
 
-# JWT Security Maturity Model
+## JWT Security Maturity Model
 
 ```
 Level 1
@@ -3201,7 +3201,7 @@ Organizations typically mature over time as identity capabilities expand.
 
 ---
 
-# Enterprise JWT Architecture
+## Enterprise JWT Architecture
 
 ```
                     Internet
@@ -3275,7 +3275,7 @@ This layered architecture separates identity, authorization, business logic, and
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization secures patient-facing and internal clinical applications using JWT-based authentication.
 
@@ -3319,7 +3319,7 @@ Each API independently validates JWTs before accessing protected healthcare reso
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ JWT Validation Enabled
@@ -3349,7 +3349,7 @@ Each API independently validates JWTs before accessing protected healthcare reso
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -3362,9 +3362,9 @@ Each API independently validates JWTs before accessing protected healthcare reso
 
 ---
 
-# JWT Quick Revision
+## JWT Quick Revision
 
-## JWT Structure
+### JWT Structure
 
 ```
 Header
@@ -3380,7 +3380,7 @@ Signature
 
 ---
 
-## Validation Process
+### Validation Process
 
 ```
 Receive JWT
@@ -3404,7 +3404,7 @@ Access Decision
 
 ---
 
-## Key Lifecycle
+### Key Lifecycle
 
 ```
 Generate
@@ -3428,7 +3428,7 @@ Retire
 
 ---
 
-## Identity Flow
+### Identity Flow
 
 ```
 Authenticate
@@ -3452,7 +3452,7 @@ Access Protected Resource
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a JWT architecture for a multi-service enterprise application.
 2. Create a governance policy for JWT claim standardization.
@@ -3464,7 +3464,7 @@ Access Protected Resource
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of JWT governance?
 2. Why is key management critical to JWT security?
@@ -3479,7 +3479,7 @@ Access Protected Resource
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate every JWT before processing requests.
 - Verify signatures, issuer, audience, expiration, and required claims.
@@ -3492,7 +3492,7 @@ Access Protected Resource
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming JWTs are secure without validation.
 - Storing sensitive business data inside token payloads.
@@ -3504,7 +3504,7 @@ Access Protected Resource
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

@@ -1,12 +1,12 @@
 # 66-Web-Security-Cheat-Sheet.md
 
-# Part 1 — Web Security Quick Reference, Essential Concepts, Security Principles, HTTP, Authentication, and Secure Development
+## Part 1 — Web Security Quick Reference, Essential Concepts, Security Principles, HTTP, Authentication, and Secure Development
 
 > **"A good security engineer may not memorize every detail, but they know the core principles, where to apply them, and how to use them consistently."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will have a quick-reference guide for:
 
@@ -22,7 +22,7 @@ After completing this part, you will have a quick-reference guide for:
 
 ---
 
-# Purpose of this Cheat Sheet
+## Purpose of this Cheat Sheet
 
 This chapter is designed as a rapid revision guide for:
 
@@ -36,7 +36,7 @@ This chapter is designed as a rapid revision guide for:
 
 ---
 
-# Web Security at a Glance
+## Web Security at a Glance
 
 ```
 Users
@@ -72,7 +72,7 @@ Governance
 
 ---
 
-# CIA Triad
+## CIA Triad
 
 ```
 CIA
@@ -94,7 +94,7 @@ CIA
 
 ---
 
-# Core Security Principles
+## Core Security Principles
 
 ```
 Security Principles
@@ -120,7 +120,7 @@ Security Principles
 
 ---
 
-# Security Lifecycle
+## Security Lifecycle
 
 ```
 Requirements
@@ -152,7 +152,7 @@ Improvement
 
 ---
 
-# HTTP Request Flow
+## HTTP Request Flow
 
 ```
 Client
@@ -180,7 +180,7 @@ Response
 
 ---
 
-# HTTP Request Components
+## HTTP Request Components
 
 ```
 Request
@@ -200,7 +200,7 @@ Request
 
 ---
 
-# Common HTTP Methods
+## Common HTTP Methods
 
 | Method | Purpose |
 |---------|----------|
@@ -214,9 +214,9 @@ Request
 
 ---
 
-# Common HTTP Status Codes
+## Common HTTP Status Codes
 
-## 1xx
+### 1xx
 
 ```
 Informational
@@ -224,7 +224,7 @@ Informational
 
 ---
 
-## 2xx
+### 2xx
 
 ```
 Success
@@ -238,7 +238,7 @@ Examples:
 
 ---
 
-## 3xx
+### 3xx
 
 ```
 Redirection
@@ -252,7 +252,7 @@ Examples:
 
 ---
 
-## 4xx
+### 4xx
 
 ```
 Client Errors
@@ -269,7 +269,7 @@ Examples:
 
 ---
 
-## 5xx
+### 5xx
 
 ```
 Server Errors
@@ -284,7 +284,7 @@ Examples:
 
 ---
 
-# HTTPS Benefits
+## HTTPS Benefits
 
 ```
 HTTPS
@@ -306,7 +306,7 @@ Benefits:
 
 ---
 
-# Authentication
+## Authentication
 
 ```
 User
@@ -332,7 +332,7 @@ Common authentication factors:
 
 ---
 
-# Authorization
+## Authorization
 
 ```
 Authenticated User
@@ -352,7 +352,7 @@ Resource
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 | Authentication | Authorization |
 |---------------|---------------|
@@ -362,7 +362,7 @@ Resource
 
 ---
 
-# Session Lifecycle
+## Session Lifecycle
 
 ```
 Login
@@ -386,7 +386,7 @@ Logout
 
 ---
 
-# Identity and Access Management (IAM)
+## Identity and Access Management (IAM)
 
 ```
 Identity
@@ -410,7 +410,7 @@ Review
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 ```
 User
@@ -430,7 +430,7 @@ Resources
 
 ---
 
-# Secure Password Practices
+## Secure Password Practices
 
 Recommended practices:
 
@@ -442,7 +442,7 @@ Recommended practices:
 
 ---
 
-# Input Validation
+## Input Validation
 
 ```
 Input
@@ -470,7 +470,7 @@ Validate:
 
 ---
 
-# Output Encoding
+## Output Encoding
 
 ```
 Application Data
@@ -488,7 +488,7 @@ Output encoding helps ensure data is safely rendered in the intended context.
 
 ---
 
-# Secure Communication
+## Secure Communication
 
 ```
 Client
@@ -506,7 +506,7 @@ Always protect sensitive communications using secure transport protocols.
 
 ---
 
-# Secure Development Principles
+## Secure Development Principles
 
 ```
 Secure Development
@@ -532,7 +532,7 @@ Secure Development
 
 ---
 
-# Logging Essentials
+## Logging Essentials
 
 Log important events such as:
 
@@ -556,7 +556,7 @@ Logs
 
 ---
 
-# Monitoring Essentials
+## Monitoring Essentials
 
 ```
 Applications
@@ -580,7 +580,7 @@ Response
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```
 Business Goals
@@ -616,7 +616,7 @@ Continuous Improvement
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial organization secures its customer portal by combining:
 
@@ -633,7 +633,7 @@ This layered approach improves operational resilience while supporting business 
 
 ---
 
-# Quick Revision Table
+## Quick Revision Table
 
 | Topic | Key Point |
 |--------|-----------|
@@ -650,7 +650,7 @@ This layered approach improves operational resilience while supporting business 
 
 ---
 
-# Conceptual Hands-on Lab
+## Conceptual Hands-on Lab
 
 1. Draw the HTTP request flow from memory.
 2. Explain the difference between authentication and authorization.
@@ -662,7 +662,7 @@ This layered approach improves operational resilience while supporting business 
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Keep this cheat sheet available during revision.
 - Focus on understanding concepts rather than memorizing definitions.
@@ -672,7 +672,7 @@ This layered approach improves operational resilience while supporting business 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Confusing authentication with authorization.
 - Memorizing HTTP status codes without understanding their categories.
@@ -682,7 +682,7 @@ This layered approach improves operational resilience while supporting business 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The CIA Triad forms the foundation of information security.
 - Secure development integrates security throughout the software lifecycle.
@@ -690,15 +690,15 @@ This layered approach improves operational resilience while supporting business 
 - HTTPS protects communication through encryption, integrity, and server authentication.
 - Strong security depends on layered controls, monitoring, governance, and continuous improvement.
 
-# 66-Web-Security-Cheat-Sheet.md
+## 66-Web-Security-Cheat-Sheet.md
 
-# Part 2 — OWASP, Secure Headers, Cookies, Sessions, API Security, Encryption, Authentication, and Authorization
+## Part 2 — OWASP, Secure Headers, Cookies, Sessions, API Security, Encryption, Authentication, and Authorization
 
 > **"Most web security incidents can be significantly reduced by consistently applying well-established security best practices across authentication, sessions, APIs, data protection, and application design."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will have a quick-reference guide for:
 
@@ -714,7 +714,7 @@ After completing this part, you will have a quick-reference guide for:
 
 ---
 
-# OWASP Security Philosophy
+## OWASP Security Philosophy
 
 ```
 Secure Design
@@ -742,7 +742,7 @@ Continuous Improvement
 
 ---
 
-# Common Web Security Risk Categories
+## Common Web Security Risk Categories
 
 | Category | Primary Goal |
 |----------|--------------|
@@ -759,7 +759,7 @@ Continuous Improvement
 
 ---
 
-# Secure Authentication Flow
+## Secure Authentication Flow
 
 ```
 User
@@ -783,7 +783,7 @@ Application Access
 
 ---
 
-# Authorization Flow
+## Authorization Flow
 
 ```
 Authenticated User
@@ -807,7 +807,7 @@ Audit Logging
 
 ---
 
-# Authentication Factors
+## Authentication Factors
 
 ```
 Authentication
@@ -825,7 +825,7 @@ Combining multiple factors strengthens identity verification.
 
 ---
 
-# Password Best Practices
+## Password Best Practices
 
 ```
 Passwords
@@ -847,7 +847,7 @@ Passwords
 
 ---
 
-# Session Security Checklist
+## Session Security Checklist
 
 ```
 ✓ Secure Session IDs
@@ -865,7 +865,7 @@ Passwords
 
 ---
 
-# Secure Cookie Attributes
+## Secure Cookie Attributes
 
 | Attribute | Purpose |
 |-----------|----------|
@@ -876,7 +876,7 @@ Passwords
 
 ---
 
-# Secure HTTP Headers
+## Secure HTTP Headers
 
 | Header | Purpose |
 |---------|----------|
@@ -889,7 +889,7 @@ Passwords
 
 ---
 
-# Input Validation Checklist
+## Input Validation Checklist
 
 ```
 Input
@@ -919,7 +919,7 @@ Validate every input regardless of its source.
 
 ---
 
-# Output Encoding
+## Output Encoding
 
 ```
 Application Data
@@ -941,7 +941,7 @@ Encode output according to the destination context (such as HTML, JavaScript, CS
 
 ---
 
-# API Security Fundamentals
+## API Security Fundamentals
 
 ```
 Client
@@ -973,7 +973,7 @@ Monitoring
 
 ---
 
-# API Security Checklist
+## API Security Checklist
 
 ```
 ✓ Authentication
@@ -995,7 +995,7 @@ Monitoring
 
 ---
 
-# Encryption Overview
+## Encryption Overview
 
 ```
 Sensitive Data
@@ -1017,7 +1017,7 @@ Encryption helps protect sensitive information both in transit and at rest.
 
 ---
 
-# Data Classification
+## Data Classification
 
 ```
 Data
@@ -1037,7 +1037,7 @@ Security controls should match the sensitivity of the data being protected.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 ```
 User
@@ -1063,7 +1063,7 @@ Grant only the permissions required to perform legitimate responsibilities.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Users
@@ -1097,7 +1097,7 @@ Multiple security layers improve resilience.
 
 ---
 
-# Zero Trust
+## Zero Trust
 
 ```
 Request
@@ -1123,7 +1123,7 @@ Trust is established through continuous verification rather than network locatio
 
 ---
 
-# Secure SDLC Reminder
+## Secure SDLC Reminder
 
 ```
 Requirements
@@ -1155,7 +1155,7 @@ Continuous Improvement
 
 ---
 
-# Logging Checklist
+## Logging Checklist
 
 Log important events such as:
 
@@ -1181,7 +1181,7 @@ Logs
 
 ---
 
-# Monitoring Checklist
+## Monitoring Checklist
 
 ```
 Applications
@@ -1209,7 +1209,7 @@ Operational Response
 
 ---
 
-# Security Configuration Checklist
+## Security Configuration Checklist
 
 ```
 ✓ Secure Defaults
@@ -1229,7 +1229,7 @@ Operational Response
 
 ---
 
-# Vulnerability Management Lifecycle
+## Vulnerability Management Lifecycle
 
 ```
 Identify
@@ -1257,7 +1257,7 @@ Continuous Monitoring
 
 ---
 
-# Patch Management Lifecycle
+## Patch Management Lifecycle
 
 ```
 Update Available
@@ -1285,7 +1285,7 @@ Documentation
 
 ---
 
-# Enterprise Security Layers
+## Enterprise Security Layers
 
 ```
 Governance
@@ -1317,7 +1317,7 @@ Business Continuity
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An e-commerce company protects its customer platform by implementing:
 
@@ -1335,7 +1335,7 @@ These controls work together to strengthen the organization's security posture.
 
 ---
 
-# Quick Revision Table
+## Quick Revision Table
 
 | Topic | Quick Reminder |
 |--------|----------------|
@@ -1352,7 +1352,7 @@ These controls work together to strengthen the organization's security posture.
 
 ---
 
-# Conceptual Hands-on Lab
+## Conceptual Hands-on Lab
 
 1. Draw a secure authentication workflow.
 2. Create a checklist for reviewing cookie settings.
@@ -1364,7 +1364,7 @@ These controls work together to strengthen the organization's security posture.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply security controls consistently across all applications.
 - Protect authentication with multiple factors where appropriate.
@@ -1377,7 +1377,7 @@ These controls work together to strengthen the organization's security posture.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating authentication as sufficient without authorization.
 - Granting excessive permissions.
@@ -1389,7 +1389,7 @@ These controls work together to strengthen the organization's security posture.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication, authorization, session management, and secure configuration are foundational web security controls.
 - Defense in Depth and Zero Trust complement each other in enterprise environments.
@@ -1397,15 +1397,15 @@ These controls work together to strengthen the organization's security posture.
 - Continuous monitoring, logging, vulnerability management, and governance help maintain a strong security posture.
 - Consistent application of best practices is more effective than relying on any single security control.
 
-# 66-Web-Security-Cheat-Sheet.md
+## 66-Web-Security-Cheat-Sheet.md
 
-# Part 3 — Secure SDLC, DevSecOps, Cloud Security, Logging, Monitoring, Incident Response, Security Architecture, and Enterprise Operations
+## Part 3 — Secure SDLC, DevSecOps, Cloud Security, Logging, Monitoring, Incident Response, Security Architecture, and Enterprise Operations
 
 > **"Enterprise security is not achieved by individual security controls—it is achieved by integrating security into architecture, development, deployment, operations, governance, and continuous improvement."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will have a quick-reference guide for:
 
@@ -1422,7 +1422,7 @@ After completing this part, you will have a quick-reference guide for:
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 ```
 Requirements
@@ -1458,7 +1458,7 @@ Continuous Improvement
 
 ---
 
-# Secure SDLC Checklist
+## Secure SDLC Checklist
 
 ```
 ✓ Security Requirements
@@ -1482,7 +1482,7 @@ Continuous Improvement
 
 ---
 
-# DevSecOps Pipeline
+## DevSecOps Pipeline
 
 ```
 Plan
@@ -1516,7 +1516,7 @@ Security is integrated throughout the development pipeline rather than added onl
 
 ---
 
-# DevSecOps Principles
+## DevSecOps Principles
 
 ```
 DevSecOps
@@ -1540,7 +1540,7 @@ DevSecOps
 
 ---
 
-# Security Architecture Layers
+## Security Architecture Layers
 
 ```
 Business
@@ -1574,7 +1574,7 @@ Each layer contributes to overall organizational security.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Users
@@ -1608,7 +1608,7 @@ No single control should be considered sufficient.
 
 ---
 
-# Zero Trust Architecture
+## Zero Trust Architecture
 
 ```
 Request
@@ -1638,7 +1638,7 @@ Trust should always be verified rather than assumed.
 
 ---
 
-# Cloud Shared Responsibility Model
+## Cloud Shared Responsibility Model
 
 ```
 Cloud Provider
@@ -1680,7 +1680,7 @@ Responsibilities vary depending on the cloud service model, but organizations re
 
 ---
 
-# Cloud Security Checklist
+## Cloud Security Checklist
 
 ```
 ✓ Identity Management
@@ -1702,7 +1702,7 @@ Responsibilities vary depending on the cloud service model, but organizations re
 
 ---
 
-# Identity & Access Management (IAM)
+## Identity & Access Management (IAM)
 
 ```
 Identity
@@ -1726,7 +1726,7 @@ Audit
 
 ---
 
-# Security Logging
+## Security Logging
 
 Log events such as:
 
@@ -1752,7 +1752,7 @@ Logs
 
 ---
 
-# Centralized Logging
+## Centralized Logging
 
 ```
 Applications
@@ -1778,7 +1778,7 @@ Centralized logging improves visibility and supports operational investigations.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 ```
 Applications
@@ -1808,7 +1808,7 @@ Continuous monitoring enables early identification of operational and security i
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 ```
 Discovery
@@ -1836,7 +1836,7 @@ Continuous Monitoring
 
 ---
 
-# Patch Management
+## Patch Management
 
 ```
 Patch Released
@@ -1864,7 +1864,7 @@ Documentation
 
 ---
 
-# Security Configuration Management
+## Security Configuration Management
 
 ```
 Secure Baseline
@@ -1890,7 +1890,7 @@ Maintaining secure configuration baselines reduces operational risk.
 
 ---
 
-# Incident Response Lifecycle
+## Incident Response Lifecycle
 
 ```
 Preparation
@@ -1918,7 +1918,7 @@ Lessons Learned
 
 ---
 
-# Business Continuity
+## Business Continuity
 
 ```
 Business Services
@@ -1940,7 +1940,7 @@ Business continuity focuses on maintaining critical services during disruptions.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 ```
 Disruption
@@ -1966,7 +1966,7 @@ Recovery plans should be documented and tested regularly.
 
 ---
 
-# Security Governance
+## Security Governance
 
 ```
 Governance
@@ -1990,7 +1990,7 @@ Governance
 
 ---
 
-# Enterprise Security Metrics
+## Enterprise Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2005,7 +2005,7 @@ Governance
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```
 Business Requirements
@@ -2041,7 +2041,7 @@ Continuous Improvement
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A healthcare organization secures its patient portal using:
 
@@ -2060,7 +2060,7 @@ Together, these practices improve resilience, compliance, and operational reliab
 
 ---
 
-# Quick Revision Table
+## Quick Revision Table
 
 | Topic | Key Reminder |
 |--------|--------------|
@@ -2077,7 +2077,7 @@ Together, these practices improve resilience, compliance, and operational reliab
 
 ---
 
-# Conceptual Hands-on Lab
+## Conceptual Hands-on Lab
 
 1. Draw the Secure SDLC lifecycle from memory.
 2. Design a conceptual DevSecOps pipeline including security activities.
@@ -2089,7 +2089,7 @@ Together, these practices improve resilience, compliance, and operational reliab
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security into every phase of software development.
 - Maintain secure architecture documentation.
@@ -2102,7 +2102,7 @@ Together, these practices improve resilience, compliance, and operational reliab
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating security as a final testing activity.
 - Ignoring governance and documentation.
@@ -2114,7 +2114,7 @@ Together, these practices improve resilience, compliance, and operational reliab
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure SDLC and DevSecOps embed security throughout the software lifecycle.
 - Enterprise security relies on architecture, governance, monitoring, and continuous improvement.
@@ -2122,15 +2122,15 @@ Together, these practices improve resilience, compliance, and operational reliab
 - Logging, monitoring, vulnerability management, and incident response are essential operational capabilities.
 - Strong security programs balance technical controls, business objectives, and organizational governance.
 
-# 66-Web-Security-Cheat-Sheet.md
+## 66-Web-Security-Cheat-Sheet.md
 
-# Part 4 — Enterprise Security Checklist, Interview Revision, Commands, Ports, HTTP Headers, Quick Tables, and Chapter Summary
+## Part 4 — Enterprise Security Checklist, Interview Revision, Commands, Ports, HTTP Headers, Quick Tables, and Chapter Summary
 
 > **"A cheat sheet is most valuable when it helps you quickly recall concepts, workflows, and best practices—not when it replaces understanding."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will have a quick-reference guide for:
 
@@ -2146,7 +2146,7 @@ After completing this final part, you will have a quick-reference guide for:
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 Planning
@@ -2182,7 +2182,7 @@ Continuous Improvement
 
 ---
 
-# Application Security Checklist
+## Application Security Checklist
 
 ```
 ✓ Authentication
@@ -2212,7 +2212,7 @@ Continuous Improvement
 
 ---
 
-# API Security Checklist
+## API Security Checklist
 
 ```
 ✓ Authentication
@@ -2236,7 +2236,7 @@ Continuous Improvement
 
 ---
 
-# Secure Deployment Checklist
+## Secure Deployment Checklist
 
 ```
 ✓ Secure Configuration
@@ -2258,7 +2258,7 @@ Continuous Improvement
 
 ---
 
-# Logging Checklist
+## Logging Checklist
 
 ```
 ✓ Login Events
@@ -2280,7 +2280,7 @@ Continuous Improvement
 
 ---
 
-# Monitoring Checklist
+## Monitoring Checklist
 
 ```
 ✓ System Health
@@ -2302,7 +2302,7 @@ Continuous Improvement
 
 ---
 
-# Incident Response Checklist
+## Incident Response Checklist
 
 ```
 Preparation
@@ -2334,7 +2334,7 @@ Documentation
 
 ---
 
-# Business Continuity Checklist
+## Business Continuity Checklist
 
 ```
 ✓ Critical Services Identified
@@ -2354,7 +2354,7 @@ Documentation
 
 ---
 
-# Security Governance Checklist
+## Security Governance Checklist
 
 ```
 ✓ Security Policies
@@ -2376,7 +2376,7 @@ Documentation
 
 ---
 
-# Secure Development Checklist
+## Secure Development Checklist
 
 ```
 ✓ Security Requirements
@@ -2398,7 +2398,7 @@ Documentation
 
 ---
 
-# Common Network Ports
+## Common Network Ports
 
 | Port | Protocol | Typical Purpose |
 |------|----------|-----------------|
@@ -2417,7 +2417,7 @@ Documentation
 
 ---
 
-# HTTP Methods
+## HTTP Methods
 
 | Method | Purpose |
 |---------|----------|
@@ -2431,9 +2431,9 @@ Documentation
 
 ---
 
-# HTTP Status Codes
+## HTTP Status Codes
 
-## Success
+### Success
 
 | Code | Meaning |
 |------|----------|
@@ -2443,7 +2443,7 @@ Documentation
 
 ---
 
-## Redirection
+### Redirection
 
 | Code | Meaning |
 |------|----------|
@@ -2453,7 +2453,7 @@ Documentation
 
 ---
 
-## Client Errors
+### Client Errors
 
 | Code | Meaning |
 |------|----------|
@@ -2466,7 +2466,7 @@ Documentation
 
 ---
 
-## Server Errors
+### Server Errors
 
 | Code | Meaning |
 |------|----------|
@@ -2477,7 +2477,7 @@ Documentation
 
 ---
 
-# Important HTTP Security Headers
+## Important HTTP Security Headers
 
 | Header | Purpose |
 |---------|----------|
@@ -2490,7 +2490,7 @@ Documentation
 
 ---
 
-# Secure Cookie Attributes
+## Secure Cookie Attributes
 
 | Attribute | Purpose |
 |-----------|----------|
@@ -2501,7 +2501,7 @@ Documentation
 
 ---
 
-# Common Security Acronyms
+## Common Security Acronyms
 
 | Acronym | Meaning |
 |----------|---------|
@@ -2523,7 +2523,7 @@ Documentation
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 | Authentication | Authorization |
 |---------------|---------------|
@@ -2533,7 +2533,7 @@ Documentation
 
 ---
 
-# Security Principles
+## Security Principles
 
 ```
 Security
@@ -2559,7 +2559,7 @@ Security
 
 ---
 
-# Secure SDLC Summary
+## Secure SDLC Summary
 
 ```
 Requirements
@@ -2591,7 +2591,7 @@ Continuous Improvement
 
 ---
 
-# Incident Response Summary
+## Incident Response Summary
 
 ```
 Prepare
@@ -2619,7 +2619,7 @@ Improve
 
 ---
 
-# Vulnerability Management Summary
+## Vulnerability Management Summary
 
 ```
 Identify
@@ -2647,7 +2647,7 @@ Monitor
 
 ---
 
-# Interview Revision Sheet
+## Interview Revision Sheet
 
 Remember these topics:
 
@@ -2695,7 +2695,7 @@ Remember these topics:
 
 ---
 
-# Enterprise Architecture Quick View
+## Enterprise Architecture Quick View
 
 ```
 Users
@@ -2731,7 +2731,7 @@ Business Continuity
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global banking organization maintains security by implementing:
 
@@ -2750,7 +2750,7 @@ These practices work together to provide defense in depth, operational resilienc
 
 ---
 
-# Final One-Page Revision
+## Final One-Page Revision
 
 | Area | Remember |
 |------|----------|
@@ -2772,7 +2772,7 @@ These practices work together to provide defense in depth, operational resilienc
 
 ---
 
-# Conceptual Hands-on Lab
+## Conceptual Hands-on Lab
 
 1. Review this cheat sheet and explain every diagram from memory.
 2. Draw the Secure SDLC, Incident Response, and Defense in Depth models without notes.
@@ -2784,7 +2784,7 @@ These practices work together to provide defense in depth, operational resilienc
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Review the cheat sheet regularly instead of relying on last-minute memorization.
 - Understand the purpose behind each security principle.
@@ -2794,7 +2794,7 @@ These practices work together to provide defense in depth, operational resilienc
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Memorizing definitions without understanding concepts.
 - Ignoring governance while focusing only on technical controls.
@@ -2804,7 +2804,7 @@ These practices work together to provide defense in depth, operational resilienc
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you reviewed a concise reference covering the essential concepts of Web Security, including security principles, HTTP fundamentals, authentication, authorization, secure session management, secure cookies, HTTP security headers, API security, Secure SDLC, DevSecOps, cloud security, logging, monitoring, vulnerability management, incident response, governance, business continuity, and enterprise security checklists.
 

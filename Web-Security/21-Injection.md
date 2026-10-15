@@ -1,12 +1,12 @@
 # 21-Injection.md
 
-# Part 1 — Fundamentals of Injection, Attack Surface, Root Causes, Enterprise Risks, and Secure Design
+## Part 1 — Fundamentals of Injection, Attack Surface, Root Causes, Enterprise Risks, and Secure Design
 
 > **"Injection vulnerabilities occur when untrusted input is interpreted as commands or instructions by another component. The safest approach is to ensure data is always treated as data—not executable instructions."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Injection?
+## What is Injection?
 
 An **Injection vulnerability** occurs when an application sends untrusted input to another component that interprets it as executable commands, queries, or instructions.
 
@@ -31,7 +31,7 @@ Instead of being treated as ordinary data, the input changes how the receiving c
 
 ---
 
-# Why Injection Matters
+## Why Injection Matters
 
 Modern applications communicate with many backend systems.
 
@@ -63,7 +63,7 @@ Whenever applications pass user-controlled input to these components, proper val
 
 ---
 
-# OWASP Perspective
+## OWASP Perspective
 
 Injection remains one of the most important application security risks because many applications interact with interpreters.
 
@@ -78,7 +78,7 @@ Examples include:
 
 ---
 
-# General Injection Flow
+## General Injection Flow
 
 ```
 User Input
@@ -104,7 +104,7 @@ If user input is incorporated unsafely into instructions, unintended behavior ma
 
 ---
 
-# Trusted vs Untrusted Input
+## Trusted vs Untrusted Input
 
 ```
 Application
@@ -131,7 +131,7 @@ Applications should treat all external input as untrusted.
 
 ---
 
-# Data Flow
+## Data Flow
 
 ```
 Browser
@@ -165,7 +165,7 @@ Validation and safe processing should occur before data reaches sensitive compon
 
 ---
 
-# Common Injection Targets
+## Common Injection Targets
 
 ```
 Injection Targets
@@ -195,7 +195,7 @@ Different technologies have different interpreters, but the underlying security 
 
 ---
 
-# Categories of Injection
+## Categories of Injection
 
 ```
 Injection
@@ -225,7 +225,7 @@ Each category targets a different interpreter.
 
 ---
 
-# Root Cause
+## Root Cause
 
 The primary cause of injection is allowing user input to become part of executable instructions.
 
@@ -255,7 +255,7 @@ Applications should separate **data** from **commands**.
 
 ---
 
-# Secure Design Principle
+## Secure Design Principle
 
 ```
 User Input
@@ -281,7 +281,7 @@ The application should ensure user input cannot alter intended program logic.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An online retail platform:
 
@@ -309,7 +309,7 @@ The application should ensure the search term is treated as search data rather t
 
 ---
 
-# Multiple Interpreters
+## Multiple Interpreters
 
 Enterprise applications often communicate with several interpreters.
 
@@ -339,7 +339,7 @@ Every integration point should follow secure coding practices.
 
 ---
 
-# Injection Attack Surface
+## Injection Attack Surface
 
 Potential entry points include:
 
@@ -369,7 +369,7 @@ Any external input should be validated appropriately.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Injection vulnerabilities may contribute to:
 
@@ -405,7 +405,7 @@ The specific impact depends on the affected component and application design.
 
 ---
 
-# Enterprise Workflow
+## Enterprise Workflow
 
 ```
 Receive Input
@@ -435,7 +435,7 @@ Secure applications consistently validate and safely process user input before i
 
 ---
 
-# Secure Development Lifecycle
+## Secure Development Lifecycle
 
 Injection prevention should be considered throughout development.
 
@@ -475,7 +475,7 @@ Security should be integrated into every stage.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Injection prevention relies on multiple controls.
 
@@ -507,7 +507,7 @@ No single control should be relied upon exclusively.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
 | Myth | Reality |
 |------|----------|
@@ -518,7 +518,7 @@ No single control should be relied upon exclusively.
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Validate Input
@@ -542,7 +542,7 @@ No single control should be relied upon exclusively.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the data flow for a sample web application.
 2. Identify every point where external input enters the application.
@@ -554,7 +554,7 @@ No single control should be relied upon exclusively.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an Injection vulnerability?
 2. Why is Injection considered a serious security risk?
@@ -569,7 +569,7 @@ No single control should be relied upon exclusively.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat all external input as untrusted.
 - Validate and normalize input before processing.
@@ -581,7 +581,7 @@ No single control should be relied upon exclusively.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting client-side validation.
 - Assuming authenticated users cannot submit malicious input.
@@ -592,7 +592,7 @@ No single control should be relied upon exclusively.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Injection occurs when untrusted input is interpreted as executable instructions.
 - Many different backend components—not just databases—can be affected.
@@ -600,15 +600,15 @@ No single control should be relied upon exclusively.
 - Secure design separates user data from executable commands.
 - Effective prevention combines validation, safe APIs, least privilege, logging, monitoring, and secure development practices.
 
-# 21-Injection.md
+## 21-Injection.md
 
-# Part 2 — SQL Injection, NoSQL Injection, LDAP Injection, XPath Injection, Command Injection, and Secure Query Design
+## Part 2 — SQL Injection, NoSQL Injection, LDAP Injection, XPath Injection, Command Injection, and Secure Query Design
 
 > **"The safest way to prevent Injection is to ensure that user input is never interpreted as executable instructions. Data should always remain data."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -625,7 +625,7 @@ After completing this part, you will understand:
 
 ---
 
-# Understanding Interpreters
+## Understanding Interpreters
 
 Applications communicate with various interpreters.
 
@@ -653,7 +653,7 @@ Each interpreter expects properly formatted instructions from the application.
 
 ---
 
-# SQL Injection (SQLi)
+## SQL Injection (SQLi)
 
 SQL Injection occurs when untrusted input improperly influences SQL query construction.
 
@@ -683,7 +683,7 @@ The risk arises when input becomes part of the query structure instead of remain
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Customer
@@ -709,7 +709,7 @@ The customer's search term should be treated strictly as search data.
 
 ---
 
-# Secure Query Design
+## Secure Query Design
 
 Applications should clearly separate:
 
@@ -729,7 +729,7 @@ This separation prevents user input from modifying query logic.
 
 ---
 
-# Parameterized Queries (Conceptual)
+## Parameterized Queries (Conceptual)
 
 Instead of embedding user input directly into a query, applications bind user data as parameters.
 
@@ -755,7 +755,7 @@ The database distinguishes query instructions from supplied values.
 
 ---
 
-# Benefits of Parameterized Queries
+## Benefits of Parameterized Queries
 
 ```
 ✓ Clear Separation of Data
@@ -773,7 +773,7 @@ Parameterized queries are a foundational defense for database interactions.
 
 ---
 
-# NoSQL Injection
+## NoSQL Injection
 
 Modern applications often use NoSQL databases.
 
@@ -797,7 +797,7 @@ Although query languages differ from SQL, applications should still prevent untr
 
 ---
 
-# Common NoSQL Platforms
+## Common NoSQL Platforms
 
 ```
 NoSQL
@@ -817,7 +817,7 @@ Each platform has unique query mechanisms but shares the need for secure input h
 
 ---
 
-# LDAP Injection
+## LDAP Injection
 
 LDAP directories manage identity information.
 
@@ -845,7 +845,7 @@ Applications should safely construct directory queries using validated input.
 
 ---
 
-# Enterprise LDAP Example
+## Enterprise LDAP Example
 
 ```
 Employee Login
@@ -867,7 +867,7 @@ Directory searches should treat user input as directory data rather than query i
 
 ---
 
-# XPath Injection
+## XPath Injection
 
 Applications processing XML data may evaluate XPath expressions.
 
@@ -891,7 +891,7 @@ Secure query construction prevents user input from changing intended XPath behav
 
 ---
 
-# XML Processing
+## XML Processing
 
 ```
 Application
@@ -913,7 +913,7 @@ XML processing should include secure parser configuration and proper input handl
 
 ---
 
-# OS Command Injection
+## OS Command Injection
 
 Some applications interact with operating system utilities.
 
@@ -937,7 +937,7 @@ Applications should avoid constructing operating system commands directly from u
 
 ---
 
-# Safer Design
+## Safer Design
 
 ```
 Application
@@ -959,7 +959,7 @@ Whenever possible, use dedicated APIs instead of command interpreters.
 
 ---
 
-# Server-Side Template Injection (SSTI)
+## Server-Side Template Injection (SSTI)
 
 Template engines generate dynamic content.
 
@@ -979,7 +979,7 @@ Applications should avoid allowing untrusted input to become executable template
 
 ---
 
-# Expression Language Injection
+## Expression Language Injection
 
 Some frameworks evaluate expressions.
 
@@ -999,7 +999,7 @@ Expression evaluation should never process untrusted input directly.
 
 ---
 
-# Multiple Injection Points
+## Multiple Injection Points
 
 ```
 Browser
@@ -1019,7 +1019,7 @@ Each integration point requires independent protection.
 
 ---
 
-# Secure Input Handling
+## Secure Input Handling
 
 ```
 Receive Input
@@ -1049,7 +1049,7 @@ Validation should occur before data reaches sensitive components.
 
 ---
 
-# Allowlist Validation
+## Allowlist Validation
 
 Whenever appropriate, applications should accept only expected input.
 
@@ -1081,7 +1081,7 @@ Allowlisting is generally more predictable than attempting to block every possib
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Even with secure coding practices, backend services should operate with only the permissions they require.
 
@@ -1101,7 +1101,7 @@ Limiting privileges reduces the impact of implementation mistakes.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Browser
@@ -1137,7 +1137,7 @@ A dedicated data access layer encourages consistent security controls.
 
 ---
 
-# Secure Development Practices
+## Secure Development Practices
 
 ```
 ✓ Validate Input
@@ -1159,7 +1159,7 @@ A dedicated data access layer encourages consistent security controls.
 
 ---
 
-# Common Injection Weaknesses
+## Common Injection Weaknesses
 
 | Weakness | Potential Impact |
 |----------|------------------|
@@ -1172,7 +1172,7 @@ A dedicated data access layer encourages consistent security controls.
 
 ---
 
-# Enterprise Workflow
+## Enterprise Workflow
 
 ```
 User Request
@@ -1206,7 +1206,7 @@ Each layer contributes to reducing Injection risk.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. List every interpreter used by a sample web application.
 2. Identify where user input reaches each interpreter.
@@ -1218,7 +1218,7 @@ Each layer contributes to reducing Injection risk.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is SQL Injection?
 2. How does SQL Injection differ from NoSQL Injection?
@@ -1233,7 +1233,7 @@ Each layer contributes to reducing Injection risk.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use parameterized queries for database interactions.
 - Validate and normalize all untrusted input.
@@ -1245,7 +1245,7 @@ Each layer contributes to reducing Injection risk.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Concatenating user input into queries.
 - Assuming only SQL databases are vulnerable.
@@ -1256,7 +1256,7 @@ Each layer contributes to reducing Injection risk.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Injection vulnerabilities affect many interpreter types, not just SQL databases.
 - SQL, NoSQL, LDAP, XPath, command interpreters, and template engines all require secure input handling.
@@ -1264,15 +1264,15 @@ Each layer contributes to reducing Injection risk.
 - Safe APIs, validation, least privilege, and secure architecture work together to reduce Injection risk.
 - Consistent security controls across all interpreter interactions are essential for enterprise applications.
 
-# 21-Injection.md
+## 21-Injection.md
 
-# Part 3 — Enterprise Injection Prevention, Secure Architecture, Detection, Logging, and Governance
+## Part 3 — Enterprise Injection Prevention, Secure Architecture, Detection, Logging, and Governance
 
 > **"Injection prevention is an architectural responsibility. Every layer—from user input to backend interpreters—should consistently ensure that untrusted data is never treated as executable instructions."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1290,7 +1290,7 @@ After completing this part, you will understand:
 
 ---
 
-# Enterprise Defense Strategy
+## Enterprise Defense Strategy
 
 Injection prevention should be implemented in multiple layers.
 
@@ -1326,7 +1326,7 @@ Every layer contributes to reducing risk.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 A secure application does not rely on a single protection.
 
@@ -1362,7 +1362,7 @@ If one control fails, additional controls continue to reduce risk.
 
 ---
 
-# Secure Architecture
+## Secure Architecture
 
 ```
                  Browser
@@ -1398,7 +1398,7 @@ Separating application logic from interpreter interactions improves consistency 
 
 ---
 
-# Input Validation
+## Input Validation
 
 Validation confirms that incoming data meets application expectations.
 
@@ -1422,7 +1422,7 @@ Validation should occur on the server regardless of any client-side checks.
 
 ---
 
-# Client-Side vs Server-Side Validation
+## Client-Side vs Server-Side Validation
 
 ```
 Client Validation
@@ -1444,7 +1444,7 @@ Client-side validation improves usability but should not be considered a securit
 
 ---
 
-# Allowlist Validation
+## Allowlist Validation
 
 Allowlist validation accepts only expected input.
 
@@ -1482,7 +1482,7 @@ Examples of suitable allowlist checks include:
 
 ---
 
-# Blocklist Validation
+## Blocklist Validation
 
 ```
 Input
@@ -1504,7 +1504,7 @@ Blocklists may help detect known undesirable patterns but should not be the prim
 
 ---
 
-# Canonicalization
+## Canonicalization
 
 Applications may receive the same logical value in different representations.
 
@@ -1528,7 +1528,7 @@ Normalization before validation helps ensure consistent processing.
 
 ---
 
-# Data Validation Pipeline
+## Data Validation Pipeline
 
 ```
 Receive
@@ -1558,7 +1558,7 @@ Each step performs a specific responsibility.
 
 ---
 
-# Secure APIs
+## Secure APIs
 
 Applications should communicate with backend services through well-defined APIs.
 
@@ -1582,7 +1582,7 @@ This approach reduces duplicated security logic across the application.
 
 ---
 
-# Secure Data Access Layer
+## Secure Data Access Layer
 
 ```
 Application
@@ -1604,7 +1604,7 @@ Centralizing database access improves consistency and simplifies security review
 
 ---
 
-# Centralized Validation
+## Centralized Validation
 
 ```
 Application
@@ -1628,7 +1628,7 @@ Reusable validation components reduce inconsistencies between modules.
 
 ---
 
-# Error Handling
+## Error Handling
 
 Applications should respond gracefully to unexpected input.
 
@@ -1652,7 +1652,7 @@ Error responses should avoid revealing unnecessary implementation details.
 
 ---
 
-# Logging
+## Logging
 
 Security-relevant events should be recorded.
 
@@ -1667,7 +1667,7 @@ Examples include:
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Operations teams should monitor:
 
@@ -1691,7 +1691,7 @@ Monitoring helps identify abnormal application behavior.
 
 ---
 
-# Enterprise Detection Workflow
+## Enterprise Detection Workflow
 
 ```
 Application
@@ -1721,7 +1721,7 @@ Detection capabilities complement preventive controls.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Backend services should have only the permissions required.
 
@@ -1741,7 +1741,7 @@ Restricting permissions limits the potential impact of implementation mistakes.
 
 ---
 
-# Secure Software Development Lifecycle (SSDLC)
+## Secure Software Development Lifecycle (SSDLC)
 
 Injection prevention should be incorporated throughout development.
 
@@ -1781,7 +1781,7 @@ Security activities should not be deferred until after deployment.
 
 ---
 
-# Code Review Focus Areas
+## Code Review Focus Areas
 
 During reviews, examine:
 
@@ -1807,7 +1807,7 @@ Consistent review processes improve software quality.
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 Organizations should define secure coding standards.
 
@@ -1839,7 +1839,7 @@ Governance helps ensure consistent security practices across development teams.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A healthcare portal receives appointment requests.
 
@@ -1875,7 +1875,7 @@ Each stage validates and safely processes user input before interacting with bac
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1887,7 +1887,7 @@ Each stage validates and safely processes user input before interacting with bac
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Server-Side Validation
@@ -1913,7 +1913,7 @@ Each stage validates and safely processes user input before interacting with bac
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the architecture of a sample web application.
 2. Mark all input entry points.
@@ -1925,7 +1925,7 @@ Each stage validates and safely processes user input before interacting with bac
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should server-side validation always be performed?
 2. What is allowlist validation?
@@ -1940,7 +1940,7 @@ Each stage validates and safely processes user input before interacting with bac
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate all untrusted input on the server.
 - Normalize input before validation where appropriate.
@@ -1952,7 +1952,7 @@ Each stage validates and safely processes user input before interacting with bac
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Relying solely on client-side validation.
 - Duplicating validation logic inconsistently across modules.
@@ -1963,7 +1963,7 @@ Each stage validates and safely processes user input before interacting with bac
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise Injection prevention requires multiple coordinated security layers.
 - Validation, normalization, safe APIs, and centralized data access improve consistency.
@@ -1971,15 +1971,15 @@ Each stage validates and safely processes user input before interacting with bac
 - Logging, monitoring, and governance help detect and prevent Injection-related issues.
 - Secure architecture and the Secure SDLC significantly reduce Injection risk.
 
-# 21-Injection.md
+## 21-Injection.md
 
-# Part 4 — Enterprise Governance, Incident Response, Operational Security, Best Practices, and Chapter Summary
+## Part 4 — Enterprise Governance, Incident Response, Operational Security, Best Practices, and Chapter Summary
 
 > **"Injection vulnerabilities are preventable. Secure architecture, safe programming practices, continuous testing, and operational monitoring together provide long-term protection against interpreter-based attacks."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1995,7 +1995,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 Injection prevention should be governed by organizational security policies.
 
@@ -2035,7 +2035,7 @@ Governance ensures that security controls remain consistent across projects.
 
 ---
 
-# Secure Coding Standards
+## Secure Coding Standards
 
 Organizations should establish standards for all interpreter interactions.
 
@@ -2063,7 +2063,7 @@ Following consistent standards reduces implementation errors.
 
 ---
 
-# Secure Development Workflow
+## Secure Development Workflow
 
 ```
 Requirements
@@ -2101,7 +2101,7 @@ Injection prevention should be integrated into every phase of development.
 
 ---
 
-# Continuous Security Testing
+## Continuous Security Testing
 
 Applications should be evaluated regularly.
 
@@ -2137,7 +2137,7 @@ Combining multiple testing approaches improves overall coverage.
 
 ---
 
-# Secure Deployment
+## Secure Deployment
 
 Before production deployment:
 
@@ -2169,7 +2169,7 @@ Deployment should include security verification, not only functional testing.
 
 ---
 
-# Enterprise Monitoring
+## Enterprise Monitoring
 
 Security teams should monitor:
 
@@ -2195,7 +2195,7 @@ Monitoring helps detect abnormal behavior early.
 
 ---
 
-# Security Logging
+## Security Logging
 
 Applications should log security-relevant events.
 
@@ -2213,7 +2213,7 @@ Logs should support investigations without exposing sensitive information.
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 ```
 Applications
@@ -2247,7 +2247,7 @@ Centralized analysis helps identify suspicious activity across multiple systems.
 
 ---
 
-# Incident Response Workflow
+## Incident Response Workflow
 
 When a potential Injection issue is discovered:
 
@@ -2287,7 +2287,7 @@ Organizations should verify that similar weaknesses do not exist elsewhere.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Questions to investigate:
 
@@ -2309,7 +2309,7 @@ Understanding the root cause helps prevent recurrence.
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
                  Internet
@@ -2363,7 +2363,7 @@ Each layer contributes to reducing overall risk.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many security frameworks encourage or require:
 
@@ -2380,7 +2380,7 @@ Organizations should align implementation with applicable regulatory and busines
 
 ---
 
-# Enterprise Security Metrics
+## Enterprise Security Metrics
 
 Useful metrics include:
 
@@ -2395,7 +2395,7 @@ Useful metrics include:
 
 ---
 
-# Operational Checklist
+## Operational Checklist
 
 ```
 ✓ Server Validation Enabled
@@ -2421,7 +2421,7 @@ Useful metrics include:
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2433,9 +2433,9 @@ Useful metrics include:
 
 ---
 
-# Interview Revision
+## Interview Revision
 
-## What is Injection?
+### What is Injection?
 
 ```
 Untrusted Input
@@ -2451,7 +2451,7 @@ Unexpected Execution
 
 ---
 
-## Core Defense Strategy
+### Core Defense Strategy
 
 ```
 Validate
@@ -2479,7 +2479,7 @@ Monitoring
 
 ---
 
-## Trusted vs Untrusted Input
+### Trusted vs Untrusted Input
 
 | Trusted | Untrusted |
 |----------|------------|
@@ -2490,7 +2490,7 @@ Monitoring
 
 ---
 
-## Common Interpreter Targets
+### Common Interpreter Targets
 
 ```
 SQL
@@ -2510,7 +2510,7 @@ Expression Language
 
 ---
 
-## Secure Development Lifecycle
+### Secure Development Lifecycle
 
 ```
 Requirements
@@ -2540,7 +2540,7 @@ Security should be integrated throughout the lifecycle.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Review the architecture of a sample enterprise application.
 2. Identify all interpreter interactions.
@@ -2552,7 +2552,7 @@ Security should be integrated throughout the lifecycle.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an Injection vulnerability?
 2. Why is separating data from commands important?
@@ -2567,7 +2567,7 @@ Security should be integrated throughout the lifecycle.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat every external input source as untrusted.
 - Validate and normalize input before processing.
@@ -2580,7 +2580,7 @@ Security should be integrated throughout the lifecycle.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting client-side validation.
 - Building interpreter instructions through string concatenation.
@@ -2592,7 +2592,7 @@ Security should be integrated throughout the lifecycle.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

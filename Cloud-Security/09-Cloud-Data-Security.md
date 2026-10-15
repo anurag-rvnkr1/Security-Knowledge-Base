@@ -1453,7 +1453,7 @@ An effective Cloud Data Security prevention strategy combines:
 
 ---
 
-# Defense-in-Depth for Data Security
+## Defense-in-Depth for Data Security
 
 ```
                   Sensitive Data
@@ -1487,7 +1487,7 @@ Each layer reduces the likelihood and impact of unauthorized data access.
 
 ---
 
-# Classify Data Before Protecting It
+## Classify Data Before Protecting It
 
 Organizations should classify information before deciding how to secure it.
 
@@ -1524,7 +1524,7 @@ Recommended controls:
 
 ---
 
-# Apply Least Privilege Access
+## Apply Least Privilege Access
 
 Only authorized users should access sensitive information.
 
@@ -1558,7 +1558,7 @@ Never grant permissions simply for convenience.
 
 ---
 
-# Enforce Strong Authentication
+## Enforce Strong Authentication
 
 Authentication should verify user identity before granting access.
 
@@ -1594,7 +1594,7 @@ Administrative accounts should always require MFA.
 
 ---
 
-# Encrypt Data at Rest
+## Encrypt Data at Rest
 
 Sensitive information stored in the cloud should always be encrypted.
 
@@ -1621,7 +1621,7 @@ Encryption should protect:
 
 ---
 
-# Encrypt Data in Transit
+## Encrypt Data in Transit
 
 All sensitive communications should use secure encryption protocols.
 
@@ -1650,7 +1650,7 @@ Unencrypted network traffic can expose credentials and sensitive information.
 
 ---
 
-# Protect Encryption Keys
+## Protect Encryption Keys
 
 Encryption is only as secure as the protection of its keys.
 
@@ -1678,7 +1678,7 @@ Keys should never be hardcoded into applications.
 
 ---
 
-# Secure Cloud Storage
+## Secure Cloud Storage
 
 Cloud storage services should be configured securely.
 
@@ -1711,7 +1711,7 @@ Encrypted Objects
 
 ---
 
-# Implement Data Loss Prevention (DLP)
+## Implement Data Loss Prevention (DLP)
 
 DLP systems inspect information before it leaves the organization.
 
@@ -1745,7 +1745,7 @@ DLP helps prevent:
 
 ---
 
-# Data Masking
+## Data Masking
 
 Mask sensitive information when full values are unnecessary.
 
@@ -1773,7 +1773,7 @@ Use masking in:
 
 ---
 
-# Tokenization
+## Tokenization
 
 Tokenization replaces sensitive values with non-sensitive tokens.
 
@@ -1797,7 +1797,7 @@ Benefits include:
 
 ---
 
-# Monitor Data Access
+## Monitor Data Access
 
 Every access request should be logged.
 
@@ -1830,7 +1830,7 @@ Monitoring enables rapid detection of suspicious behavior.
 
 ---
 
-# Backup and Disaster Recovery
+## Backup and Disaster Recovery
 
 Backups reduce the impact of:
 
@@ -1862,7 +1862,7 @@ Backup recommendations:
 
 ---
 
-# Secure Data Sharing
+## Secure Data Sharing
 
 Data should only be shared with authorized users.
 
@@ -1878,7 +1878,7 @@ Avoid unrestricted public links.
 
 ---
 
-# Secure APIs
+## Secure APIs
 
 Many cloud applications exchange data through APIs.
 
@@ -1896,7 +1896,7 @@ Compromised APIs can expose large amounts of sensitive information.
 
 ---
 
-# Data Lifecycle Management
+## Data Lifecycle Management
 
 Security should exist throughout the data lifecycle.
 
@@ -1932,7 +1932,7 @@ Policies should define security requirements for every phase.
 
 ---
 
-# Secure Data Disposal
+## Secure Data Disposal
 
 When data is no longer required:
 
@@ -1961,9 +1961,9 @@ Recommended methods:
 
 ---
 
-# Best Practices
+## Best Practices
 
-## 1. Classify All Sensitive Data
+### 1. Classify All Sensitive Data
 
 Understand what information exists before implementing protection controls.
 
@@ -1971,7 +1971,7 @@ Maintain an up-to-date data inventory.
 
 ---
 
-## 2. Encrypt Everything Sensitive
+### 2. Encrypt Everything Sensitive
 
 Protect:
 
@@ -1985,7 +1985,7 @@ Encryption should be enabled by default.
 
 ---
 
-## 3. Enforce Least Privilege
+### 3. Enforce Least Privilege
 
 Grant only the minimum permissions required.
 
@@ -1993,7 +1993,7 @@ Review access periodically and remove unnecessary privileges.
 
 ---
 
-## 4. Require Multi-Factor Authentication
+### 4. Require Multi-Factor Authentication
 
 Enable MFA for:
 
@@ -2005,7 +2005,7 @@ Enable MFA for:
 
 ---
 
-## 5. Protect Encryption Keys
+### 5. Protect Encryption Keys
 
 Use managed Key Management Services rather than storing keys in application code or configuration files.
 
@@ -2013,7 +2013,7 @@ Rotate keys according to organizational policy.
 
 ---
 
-## 6. Enable Comprehensive Logging
+### 6. Enable Comprehensive Logging
 
 Collect:
 
@@ -2027,7 +2027,7 @@ Forward logs to a centralized SIEM.
 
 ---
 
-## 7. Implement Data Loss Prevention
+### 7. Implement Data Loss Prevention
 
 Deploy DLP policies for:
 
@@ -2041,7 +2041,7 @@ Regularly review DLP alerts and refine policies.
 
 ---
 
-## 8. Test Backup and Recovery
+### 8. Test Backup and Recovery
 
 Backups should not only exist—they should be recoverable.
 
@@ -2049,7 +2049,7 @@ Perform routine restoration tests and verify backup integrity.
 
 ---
 
-## 9. Continuously Review Storage Configurations
+### 9. Continuously Review Storage Configurations
 
 Regularly identify:
 
@@ -2062,7 +2062,7 @@ Automated configuration assessments can reduce human error.
 
 ---
 
-## 10. Follow Zero Trust Principles
+### 10. Follow Zero Trust Principles
 
 Every request to access sensitive data should be continuously verified based on:
 
@@ -2076,21 +2076,21 @@ Never assume trust based solely on network location.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
-### Storing Sensitive Data Without Encryption
+#### Storing Sensitive Data Without Encryption
 
 Plaintext storage significantly increases the impact of unauthorized access.
 
 ---
 
-### Publicly Exposing Cloud Storage
+#### Publicly Exposing Cloud Storage
 
 Accidentally exposing object storage, file shares, or databases remains one of the leading causes of cloud data breaches.
 
 ---
 
-### Hardcoding Secrets
+#### Hardcoding Secrets
 
 Applications should never contain:
 
@@ -2104,7 +2104,7 @@ Use dedicated secrets management solutions instead.
 
 ---
 
-### Excessive User Permissions
+#### Excessive User Permissions
 
 Granting broad access to sensitive information increases insider risk and the impact of compromised accounts.
 
@@ -2112,7 +2112,7 @@ Apply least privilege and review permissions regularly.
 
 ---
 
-### Ignoring Data Classification
+#### Ignoring Data Classification
 
 Treating all information equally often results in critical data receiving insufficient protection.
 
@@ -2120,7 +2120,7 @@ Classification should drive security controls.
 
 ---
 
-### Weak Backup Strategies
+#### Weak Backup Strategies
 
 Common issues include:
 
@@ -2133,7 +2133,7 @@ Reliable backups are essential for resilience.
 
 ---
 
-### Poor Key Management
+#### Poor Key Management
 
 Encryption provides limited value if keys are:
 
@@ -2146,7 +2146,7 @@ Protect keys separately using managed KMS solutions.
 
 ---
 
-### Ignoring Audit Logs
+#### Ignoring Audit Logs
 
 Without logging, organizations may be unable to determine:
 
@@ -2159,7 +2159,7 @@ Comprehensive audit logging supports detection, investigations, and compliance.
 
 ---
 
-### Retaining Data Longer Than Necessary
+#### Retaining Data Longer Than Necessary
 
 Keeping unnecessary sensitive data increases storage costs, compliance obligations, and breach impact.
 
@@ -2167,7 +2167,7 @@ Define and enforce retention schedules.
 
 ---
 
-### Insecure Data Disposal
+#### Insecure Data Disposal
 
 Deleting references to data without securely erasing the underlying information can leave recoverable copies behind.
 
@@ -2175,9 +2175,9 @@ Use secure deletion techniques appropriate to the storage technology.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
 - NIST SP 800-122 – Guide to Protecting the Confidentiality of Personally Identifiable Information (PII)
@@ -2190,7 +2190,7 @@ Use secure deletion techniques appropriate to the storage technology.
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
 - AWS Data Protection Documentation
 - AWS S3 Security Best Practices
@@ -2203,7 +2203,7 @@ Use secure deletion techniques appropriate to the storage technology.
 
 ---
 
-### Industry Best Practices
+#### Industry Best Practices
 
 - Defense in Depth
 - Zero Trust Security Model

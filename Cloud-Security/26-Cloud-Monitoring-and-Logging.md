@@ -887,7 +887,7 @@ Preventive monitoring should be integrated throughout the cloud lifecycle, from 
 
 ---
 
-# Cloud Monitoring Prevention Lifecycle
+## Cloud Monitoring Prevention Lifecycle
 
 ```
 Cloud Resources
@@ -939,7 +939,7 @@ This lifecycle enables organizations to detect abnormal behavior quickly and res
 
 ---
 
-# Enable Comprehensive Logging
+## Enable Comprehensive Logging
 
 Logging should be enabled across every critical cloud service.
 
@@ -960,7 +960,7 @@ Comprehensive logging eliminates visibility gaps.
 
 ---
 
-# Centralize Log Collection
+## Centralize Log Collection
 
 Collect logs into a centralized logging platform or SIEM.
 
@@ -976,7 +976,7 @@ Avoid storing security-critical logs only on individual workloads.
 
 ---
 
-# Protect Log Integrity
+## Protect Log Integrity
 
 Logs should be protected against unauthorized modification or deletion.
 
@@ -993,7 +993,7 @@ Tamper-resistant logs improve forensic reliability.
 
 ---
 
-# Monitor Identity Activities
+## Monitor Identity Activities
 
 Identity monitoring should include:
 
@@ -1008,7 +1008,7 @@ Identity-related monitoring often provides the earliest indication of compromise
 
 ---
 
-# Continuously Monitor Cloud Infrastructure
+## Continuously Monitor Cloud Infrastructure
 
 Monitor:
 
@@ -1026,7 +1026,7 @@ Continuous monitoring ensures that infrastructure changes do not introduce unnot
 
 ---
 
-# Detect Configuration Drift
+## Detect Configuration Drift
 
 Continuously compare deployed resources against approved baselines.
 
@@ -1043,7 +1043,7 @@ Early detection prevents insecure configurations from persisting.
 
 ---
 
-# Monitor Application Security
+## Monitor Application Security
 
 Application monitoring should identify:
 
@@ -1058,7 +1058,7 @@ Application telemetry provides valuable context for operational and security tea
 
 ---
 
-# Monitor Container and Kubernetes Environments
+## Monitor Container and Kubernetes Environments
 
 Continuously monitor:
 
@@ -1075,7 +1075,7 @@ Cloud-native workloads require specialized monitoring.
 
 ---
 
-# Implement Intelligent Alerting
+## Implement Intelligent Alerting
 
 Alerts should prioritize events according to:
 
@@ -1089,7 +1089,7 @@ High-quality alerts reduce analyst fatigue and improve response effectiveness.
 
 ---
 
-# Automate Security Responses
+## Automate Security Responses
 
 Integrate monitoring with automation platforms to perform actions such as:
 
@@ -1124,7 +1124,7 @@ Automation reduces response time while minimizing manual effort.
 
 ---
 
-# Regularly Validate Monitoring
+## Regularly Validate Monitoring
 
 Verify that:
 
@@ -1138,7 +1138,7 @@ Validation ensures monitoring remains effective as cloud environments evolve.
 
 ---
 
-# Maintain Appropriate Log Retention
+## Maintain Appropriate Log Retention
 
 Retention policies should consider:
 
@@ -1152,9 +1152,9 @@ Retention periods should be formally documented and periodically reviewed.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Monitor Every Layer
+#### 1. Monitor Every Layer
 
 Collect telemetry from:
 
@@ -1172,7 +1172,7 @@ Comprehensive visibility improves detection accuracy.
 
 ---
 
-### 2. Use Structured Logging
+#### 2. Use Structured Logging
 
 Adopt structured log formats such as JSON.
 
@@ -1188,7 +1188,7 @@ Structured logs simplify large-scale analytics.
 
 ---
 
-### 3. Synchronize Time Across Systems
+#### 3. Synchronize Time Across Systems
 
 Accurate timestamps are essential for:
 
@@ -1201,7 +1201,7 @@ Time synchronization improves the reliability of security analysis.
 
 ---
 
-### 4. Reduce Alert Fatigue
+#### 4. Reduce Alert Fatigue
 
 Avoid excessive low-value alerts.
 
@@ -1217,7 +1217,7 @@ High-quality alerts improve analyst efficiency.
 
 ---
 
-### 5. Protect Sensitive Log Data
+#### 5. Protect Sensitive Log Data
 
 Logs may contain:
 
@@ -1238,7 +1238,7 @@ Protect sensitive data using:
 
 ---
 
-### 6. Integrate with SIEM
+#### 6. Integrate with SIEM
 
 Centralize telemetry into a Security Information and Event Management (SIEM) platform to enable:
 
@@ -1252,7 +1252,7 @@ SIEM platforms enhance both operational and security monitoring.
 
 ---
 
-### 7. Continuously Test Monitoring
+#### 7. Continuously Test Monitoring
 
 Regularly validate monitoring through:
 
@@ -1266,7 +1266,7 @@ Testing identifies gaps before attackers do.
 
 ---
 
-### 8. Monitor Business-Critical Assets First
+#### 8. Monitor Business-Critical Assets First
 
 Prioritize visibility for:
 
@@ -1281,7 +1281,7 @@ Critical assets should receive enhanced monitoring.
 
 ---
 
-### 9. Review Monitoring Rules Regularly
+#### 9. Review Monitoring Rules Regularly
 
 As cloud environments evolve:
 
@@ -1295,7 +1295,7 @@ Continuous refinement keeps monitoring relevant.
 
 ---
 
-### 10. Measure Monitoring Effectiveness
+#### 10. Measure Monitoring Effectiveness
 
 Track metrics such as:
 
@@ -1311,7 +1311,7 @@ Metrics support ongoing improvement of monitoring capabilities.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud Monitoring and Logging are only effective when they provide complete, accurate, and actionable visibility into cloud environments. Poor implementation can leave organizations blind to security incidents, create excessive operational overhead, or generate overwhelming volumes of unactionable alerts.
 
@@ -1319,7 +1319,7 @@ Understanding these common mistakes helps organizations build a monitoring and l
 
 ---
 
-### 1. Not Enabling Logging for All Cloud Services
+#### 1. Not Enabling Logging for All Cloud Services
 
 Many organizations enable logging for only a subset of cloud resources.
 
@@ -1354,7 +1354,7 @@ Enable logging for all critical cloud services to maintain comprehensive visibil
 
 ---
 
-### 2. Storing Logs Locally
+#### 2. Storing Logs Locally
 
 Keeping logs only on individual virtual machines or containers increases the risk of losing valuable evidence.
 
@@ -1369,7 +1369,7 @@ Use centralized, resilient log storage with appropriate access controls and back
 
 ---
 
-### 3. Collecting Logs Without Monitoring Them
+#### 3. Collecting Logs Without Monitoring Them
 
 Collecting large volumes of logs without active analysis provides little security value.
 
@@ -1386,7 +1386,7 @@ Logging without analysis often delays incident detection.
 
 ---
 
-### 4. Ignoring Log Integrity
+#### 4. Ignoring Log Integrity
 
 Attackers frequently attempt to alter or delete logs to hide malicious activity.
 
@@ -1402,7 +1402,7 @@ Tamper-resistant logs improve trust during investigations.
 
 ---
 
-### 5. Excessive Alert Generation
+#### 5. Excessive Alert Generation
 
 Generating too many alerts overwhelms analysts and increases alert fatigue.
 
@@ -1417,7 +1417,7 @@ Prioritize meaningful alerts based on risk and business impact.
 
 ---
 
-### 6. Ignoring False Positives
+#### 6. Ignoring False Positives
 
 Repeated false positives reduce confidence in monitoring systems.
 
@@ -1432,7 +1432,7 @@ Continuous tuning improves operational efficiency.
 
 ---
 
-### 7. Monitoring Only Infrastructure
+#### 7. Monitoring Only Infrastructure
 
 Cloud monitoring should extend beyond infrastructure.
 
@@ -1451,7 +1451,7 @@ Comprehensive monitoring provides a more complete understanding of organizationa
 
 ---
 
-### 8. Retaining Logs for Too Short a Period
+#### 8. Retaining Logs for Too Short a Period
 
 Short retention periods may prevent effective investigations and fail to meet compliance requirements.
 
@@ -1467,7 +1467,7 @@ Review retention policies periodically as organizational needs evolve.
 
 ---
 
-### 9. Ignoring Time Synchronization
+#### 9. Ignoring Time Synchronization
 
 Unsynchronized system clocks complicate event correlation and forensic analysis.
 
@@ -1475,7 +1475,7 @@ Ensure all systems use reliable time synchronization mechanisms to maintain cons
 
 ---
 
-### 10. Failing to Secure Sensitive Log Data
+#### 10. Failing to Secure Sensitive Log Data
 
 Logs may contain confidential information such as:
 
@@ -1497,7 +1497,7 @@ Protect sensitive log data through:
 
 ---
 
-### 11. Not Monitoring Identity Events
+#### 11. Not Monitoring Identity Events
 
 Identity-related attacks are among the most common cloud attack vectors.
 
@@ -1514,7 +1514,7 @@ Identity telemetry provides valuable indicators of compromise.
 
 ---
 
-### 12. Ignoring Configuration Drift
+#### 12. Ignoring Configuration Drift
 
 Cloud environments change frequently.
 
@@ -1531,7 +1531,7 @@ Continuous monitoring helps detect insecure changes quickly.
 
 ---
 
-### 13. Operating Without Defined Response Procedures
+#### 13. Operating Without Defined Response Procedures
 
 Alerts are only useful when they trigger an effective response.
 
@@ -1547,7 +1547,7 @@ Well-defined workflows reduce response time and improve coordination.
 
 ---
 
-### 14. Treating Monitoring as a One-Time Deployment
+#### 14. Treating Monitoring as a One-Time Deployment
 
 Monitoring systems require continuous maintenance.
 
@@ -1564,7 +1564,7 @@ Monitoring should evolve alongside the cloud environment.
 
 ---
 
-### 15. Measuring Only Infrastructure Performance
+#### 15. Measuring Only Infrastructure Performance
 
 Monitoring programs should evaluate both operational and security metrics.
 
@@ -1589,7 +1589,7 @@ Balanced metrics provide a complete view of system health and security posture.
 
 ---
 
-## Cloud Monitoring and Logging Checklist
+### Cloud Monitoring and Logging Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1611,9 +1611,9 @@ Balanced metrics provide a complete view of system health and security posture.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-92 – Guide to Computer Security Log Management
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
@@ -1625,7 +1625,7 @@ Balanced metrics provide a complete view of system health and security posture.
 
 ---
 
-### Logging and Monitoring Frameworks
+#### Logging and Monitoring Frameworks
 
 - OpenTelemetry Specification
 - MITRE ATT&CK Framework
@@ -1635,21 +1635,21 @@ Balanced metrics provide a complete view of system health and security posture.
 
 ---
 
-### Cloud Security Documentation
+#### Cloud Security Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - Amazon CloudWatch Documentation
 - AWS CloudTrail Documentation
 - AWS Well-Architected Framework – Security Pillar
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Azure Monitor Documentation
 - Microsoft Defender for Cloud Documentation
 - Azure Well-Architected Framework – Security
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Google Cloud Logging Documentation
 - Google Cloud Monitoring Documentation
@@ -1657,7 +1657,7 @@ Balanced metrics provide a complete view of system health and security posture.
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -1669,7 +1669,7 @@ Balanced metrics provide a complete view of system health and security posture.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - OpenTelemetry Documentation
 - MITRE ATT&CK Knowledge Base

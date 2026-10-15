@@ -55,7 +55,7 @@ Untrusted Registries
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -104,7 +104,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Container Image Security?
+## What Is Container Image Security?
 
 Container image security is the process of protecting container images throughout their lifecycle.
 
@@ -123,7 +123,7 @@ Monitor
 
 ---
 
-# Why Image Security Matters
+## Why Image Security Matters
 
 Consider:
 
@@ -149,7 +149,7 @@ Therefore:
 
 ---
 
-# Image Security Lifecycle
+## Image Security Lifecycle
 
 A secure lifecycle:
 
@@ -181,7 +181,7 @@ Runtime Monitoring
 
 ---
 
-# Container Image Structure
+## Container Image Structure
 
 A container image generally contains multiple filesystem layers.
 
@@ -208,7 +208,7 @@ Vulnerabilities
 
 ---
 
-# Base Images
+## Base Images
 
 A base image provides the starting filesystem and runtime environment.
 
@@ -232,7 +232,7 @@ FROM nginx:alpine
 
 ---
 
-# Base Image Security
+## Base Image Security
 
 The base image should be:
 
@@ -248,7 +248,7 @@ Avoid arbitrary images from unknown sources.
 
 ---
 
-# Trusted Base Images
+## Trusted Base Images
 
 Organizations may maintain approved base images:
 
@@ -271,7 +271,7 @@ Regularly Updated
 
 ---
 
-# Minimal Images
+## Minimal Images
 
 A minimal image contains only what the application requires.
 
@@ -299,7 +299,7 @@ Required Libraries
 
 ---
 
-# Why Minimal Images?
+## Why Minimal Images?
 
 Smaller images generally mean:
 
@@ -313,7 +313,7 @@ Reduced Vulnerability Exposure
 
 ---
 
-# Example
+## Example
 
 Large:
 
@@ -331,7 +331,7 @@ For suitable applications, a distroless image may reduce the runtime footprint f
 
 ---
 
-# Distroless Images
+## Distroless Images
 
 Distroless images aim to contain only the application and required runtime components, without a traditional shell and many common operating-system utilities.
 
@@ -353,7 +353,7 @@ Distroless
 
 ---
 
-# Distroless Security Benefits
+## Distroless Security Benefits
 
 Potential benefits include:
 
@@ -368,7 +368,7 @@ However, troubleshooting can be more difficult because common debugging tools ma
 
 ---
 
-# Multi-Stage Builds
+## Multi-Stage Builds
 
 Multi-stage Docker builds help keep build tools out of the production image.
 
@@ -404,7 +404,7 @@ Minimal Runtime Image
 
 ---
 
-# Why Multi-Stage Builds Matter
+## Why Multi-Stage Builds Matter
 
 Build environments may contain:
 
@@ -422,7 +422,7 @@ Multi-stage builds prevent many of these components from entering the production
 
 ---
 
-# Image Registry
+## Image Registry
 
 A registry stores and distributes container images.
 
@@ -439,7 +439,7 @@ Harbor
 
 ---
 
-# Private Registry
+## Private Registry
 
 Organizations commonly use private registries for production images.
 
@@ -465,7 +465,7 @@ Image Signing Integration
 
 ---
 
-# Registry Authentication
+## Registry Authentication
 
 Kubernetes may need credentials to pull private images.
 
@@ -487,7 +487,7 @@ spec:
 
 ---
 
-# Image Pull Secret
+## Image Pull Secret
 
 Create:
 
@@ -510,7 +510,7 @@ Use the minimum permissions required.
 
 ---
 
-# Registry Security
+## Registry Security
 
 A production registry should use:
 
@@ -527,7 +527,7 @@ Immutability
 
 ---
 
-# Image Tags
+## Image Tags
 
 Example:
 
@@ -551,7 +551,7 @@ myapp:latest
 
 ---
 
-# `latest` Tag
+## `latest` Tag
 
 Using:
 
@@ -585,7 +585,7 @@ The same tag can point to different image content over time.
 
 ---
 
-# Why `latest` Is Risky
+## Why `latest` Is Risky
 
 Potential problems:
 
@@ -607,7 +607,7 @@ for production deployments.
 
 ---
 
-# Versioned Tags
+## Versioned Tags
 
 Prefer meaningful version tags:
 
@@ -625,7 +625,7 @@ However, even version tags can potentially be moved or overwritten depending on 
 
 ---
 
-# Image Digest
+## Image Digest
 
 An image digest identifies specific image content.
 
@@ -649,7 +649,7 @@ Specific Content
 
 ---
 
-# Tags vs Digests
+## Tags vs Digests
 
 | Reference | Behavior |
 |---|---|
@@ -660,7 +660,7 @@ For high-assurance production deployments, digests provide stronger reproducibil
 
 ---
 
-# Immutable Image Reference
+## Immutable Image Reference
 
 Example:
 
@@ -672,7 +672,7 @@ This ensures the workload references the image content identified by that digest
 
 ---
 
-# ImagePullPolicy
+## ImagePullPolicy
 
 Kubernetes uses:
 
@@ -692,7 +692,7 @@ Never
 
 ---
 
-# `Always`
+## `Always`
 
 The kubelet checks the registry for the image reference when starting a container.
 
@@ -702,7 +702,7 @@ For digest references, the content is immutable even though the registry may sti
 
 ---
 
-# `IfNotPresent`
+## `IfNotPresent`
 
 The image is pulled only if it is not already present locally.
 
@@ -710,7 +710,7 @@ This can reduce registry traffic but requires careful image management.
 
 ---
 
-# `Never`
+## `Never`
 
 Kubernetes will not pull the image.
 
@@ -718,7 +718,7 @@ The image must already exist on the node.
 
 ---
 
-# ImagePullPolicy Best Practice
+## ImagePullPolicy Best Practice
 
 Production environments should generally prefer:
 
@@ -736,7 +736,7 @@ latest
 
 ---
 
-# Image Vulnerability Scanning
+## Image Vulnerability Scanning
 
 Image scanners identify known vulnerabilities in:
 
@@ -759,7 +759,7 @@ Cloud Registry Scanners
 
 ---
 
-# CVE
+## CVE
 
 CVE stands for:
 
@@ -775,7 +775,7 @@ CVE-YYYY-NNNNN
 
 ---
 
-# Vulnerability Severity
+## Vulnerability Severity
 
 Vulnerabilities may be categorized as:
 
@@ -800,7 +800,7 @@ Compensating Controls
 
 ---
 
-# Image Scanning Pipeline
+## Image Scanning Pipeline
 
 ```text
 Source
@@ -818,7 +818,7 @@ Vulnerabilities?
 
 ---
 
-# Example Trivy Scan
+## Example Trivy Scan
 
 A local image can be scanned using:
 
@@ -838,7 +838,7 @@ Build failed
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Finding vulnerabilities is not enough.
 
@@ -860,7 +860,7 @@ Deploy
 
 ---
 
-# False Positives
+## False Positives
 
 Scanners can sometimes report vulnerabilities that:
 
@@ -875,7 +875,7 @@ Security teams should validate findings rather than blindly ignoring them.
 
 ---
 
-# Dependency Security
+## Dependency Security
 
 Application dependencies can introduce vulnerabilities.
 
@@ -899,7 +899,7 @@ Base Image Packages
 
 ---
 
-# Software Bill of Materials
+## Software Bill of Materials
 
 SBOM stands for:
 
@@ -923,7 +923,7 @@ SBOM
 
 ---
 
-# Why SBOM Matters
+## Why SBOM Matters
 
 An SBOM helps answer:
 
@@ -942,7 +942,7 @@ Supply Chain Visibility
 
 ---
 
-# SBOM Formats
+## SBOM Formats
 
 Common formats include:
 
@@ -953,7 +953,7 @@ SPDX
 
 ---
 
-# Generate an SBOM
+## Generate an SBOM
 
 Tools such as Trivy can generate SBOM output.
 
@@ -968,7 +968,7 @@ trivy image \
 
 ---
 
-# Image Signing
+## Image Signing
 
 Image signing provides a way to establish trust in an image artifact.
 
@@ -988,7 +988,7 @@ Verification
 
 ---
 
-# Why Sign Images?
+## Why Sign Images?
 
 Signing can help establish:
 
@@ -1000,7 +1000,7 @@ Is the image from a trusted build process?
 
 ---
 
-# Cosign
+## Cosign
 
 Cosign is a tool from the Sigstore ecosystem for signing and verifying container images and other artifacts.
 
@@ -1020,7 +1020,7 @@ Verify Before Deployment
 
 ---
 
-# Sigstore
+## Sigstore
 
 Sigstore provides infrastructure and tools for software signing and supply-chain security.
 
@@ -1036,7 +1036,7 @@ These components support different aspects of artifact identity, signing, and tr
 
 ---
 
-# Image Verification
+## Image Verification
 
 Before deployment:
 
@@ -1052,7 +1052,7 @@ Trusted?
 
 ---
 
-# Admission-Based Image Verification
+## Admission-Based Image Verification
 
 An admission mechanism can enforce:
 
@@ -1078,7 +1078,7 @@ Trusted?
 
 ---
 
-# Trusted Registries
+## Trusted Registries
 
 Organizations may define:
 
@@ -1098,7 +1098,7 @@ This reduces the risk of untrusted image sources.
 
 ---
 
-# Image Allowlisting
+## Image Allowlisting
 
 An admission policy can enforce:
 
@@ -1116,7 +1116,7 @@ This provides a strong supply-chain control.
 
 ---
 
-# Image Denylisting
+## Image Denylisting
 
 You can also block known problematic sources.
 
@@ -1130,7 +1130,7 @@ is generally stronger than attempting to maintain a large denylist.
 
 ---
 
-# Image Provenance
+## Image Provenance
 
 Provenance answers:
 
@@ -1143,7 +1143,7 @@ Which build system created it?
 
 ---
 
-# Build Provenance
+## Build Provenance
 
 Conceptually:
 
@@ -1163,7 +1163,7 @@ This creates traceability.
 
 ---
 
-# SLSA
+## SLSA
 
 SLSA stands for:
 
@@ -1184,7 +1184,7 @@ Artifact Integrity
 
 ---
 
-# Supply Chain Attack
+## Supply Chain Attack
 
 A supply-chain attack compromises a dependency or build process rather than directly attacking the final target.
 
@@ -1206,7 +1206,7 @@ Production
 
 ---
 
-# Image Supply Chain Threats
+## Image Supply Chain Threats
 
 Potential threats include:
 
@@ -1224,7 +1224,7 @@ Dependency Confusion
 
 ---
 
-# Typosquatting
+## Typosquatting
 
 An attacker may publish a package or image with a name similar to a legitimate one.
 
@@ -1244,7 +1244,7 @@ Developers may accidentally pull the malicious artifact.
 
 ---
 
-# Dependency Confusion
+## Dependency Confusion
 
 An attacker may publish a malicious package using a name that causes package managers or build systems to select the attacker-controlled package.
 
@@ -1261,7 +1261,7 @@ Scanning
 
 ---
 
-# Build Pipeline Security
+## Build Pipeline Security
 
 Protect:
 
@@ -1278,7 +1278,7 @@ A compromised build pipeline can produce malicious images that appear legitimate
 
 ---
 
-# Image Signing Key Security
+## Image Signing Key Security
 
 Signing keys are highly sensitive.
 
@@ -1295,7 +1295,7 @@ Audit Logging
 
 ---
 
-# Keyless Signing
+## Keyless Signing
 
 The Sigstore ecosystem supports keyless signing models based on workload or identity credentials.
 
@@ -1315,7 +1315,7 @@ This can reduce the need to manage long-lived private signing keys.
 
 ---
 
-# Image Promotion
+## Image Promotion
 
 A secure deployment process can use:
 
@@ -1333,7 +1333,7 @@ Only approved artifacts are promoted.
 
 ---
 
-# Image Promotion Architecture
+## Image Promotion Architecture
 
 ```text
 Build Image
@@ -1355,7 +1355,7 @@ Production
 
 ---
 
-# Avoid Rebuilding Between Environments
+## Avoid Rebuilding Between Environments
 
 Prefer:
 
@@ -1381,7 +1381,7 @@ Rebuilding can produce different artifacts.
 
 ---
 
-# Image Immutability
+## Image Immutability
 
 Production registries should ideally prevent overwriting approved image versions.
 
@@ -1397,7 +1397,7 @@ Even with immutable tags, digests remain the strongest content reference.
 
 ---
 
-# Image Retention
+## Image Retention
 
 Registries should have retention policies.
 
@@ -1419,7 +1419,7 @@ Incident Investigation Artifacts
 
 ---
 
-# Image Access Control
+## Image Access Control
 
 Use:
 
@@ -1445,7 +1445,7 @@ Modify
 
 ---
 
-# Runtime Image Security
+## Runtime Image Security
 
 Even a scanned image can become vulnerable later.
 
@@ -1471,7 +1471,7 @@ is important.
 
 ---
 
-# Image Security Monitoring
+## Image Security Monitoring
 
 Monitor:
 
@@ -1487,7 +1487,7 @@ Deprecated Base Images
 
 ---
 
-# Image Security and Pod Security
+## Image Security and Pod Security
 
 Image security and Pod security solve different problems.
 
@@ -1507,7 +1507,7 @@ Both are necessary.
 
 ---
 
-# Image Security and Runtime Security
+## Image Security and Runtime Security
 
 ```text
 Image Security
@@ -1521,7 +1521,7 @@ Detect suspicious behavior after deployment
 
 ---
 
-# Image Security Architecture
+## Image Security Architecture
 
 ```text
                     Source Code
@@ -1556,7 +1556,7 @@ Detect suspicious behavior after deployment
 
 ---
 
-# Kubernetes Image Security Controls
+## Kubernetes Image Security Controls
 
 Kubernetes can contribute through:
 
@@ -1581,7 +1581,7 @@ Registry Security
 
 ---
 
-# Image Security in CI/CD
+## Image Security in CI/CD
 
 A production pipeline can implement:
 
@@ -1599,7 +1599,7 @@ A production pipeline can implement:
 
 ---
 
-# Example CI Security Gate
+## Example CI Security Gate
 
 ```text
 Build
@@ -1619,7 +1619,7 @@ Deploy
 
 ---
 
-# Vulnerability Gate
+## Vulnerability Gate
 
 Organizations can define:
 
@@ -1644,7 +1644,7 @@ Compensating Controls
 
 ---
 
-# Image Security Policy
+## Image Security Policy
 
 A production policy may require:
 
@@ -1664,7 +1664,7 @@ Immutable Reference
 
 ---
 
-# Admission Policy Example
+## Admission Policy Example
 
 Conceptually:
 
@@ -1684,7 +1684,7 @@ Allow / Reject
 
 ---
 
-# Image Incident Response
+## Image Incident Response
 
 Suppose a production image is discovered to contain a critical vulnerability.
 
@@ -1712,7 +1712,7 @@ Monitor
 
 ---
 
-# Compromised Image Response
+## Compromised Image Response
 
 If an image itself is suspected to be malicious:
 
@@ -1736,7 +1736,7 @@ Review Registry
 
 ---
 
-# Image Security and Secrets
+## Image Security and Secrets
 
 Never bake secrets into images.
 
@@ -1756,7 +1756,7 @@ These secrets may remain in image layers even if later deleted from the final fi
 
 ---
 
-# Why Deleting a Secret in a Later Layer Is Not Enough
+## Why Deleting a Secret in a Later Layer Is Not Enough
 
 Container images are layered.
 
@@ -1782,7 +1782,7 @@ Therefore:
 
 ---
 
-# Secure Build Pattern
+## Secure Build Pattern
 
 Use:
 
@@ -1806,7 +1806,7 @@ Pod
 
 ---
 
-# Rootless Containers
+## Rootless Containers
 
 Running containers without root privileges can reduce risk.
 
@@ -1822,7 +1822,7 @@ This complements image security.
 
 ---
 
-# Image Security and Rootless
+## Image Security and Rootless
 
 A secure image may be built to run as:
 
@@ -1838,7 +1838,7 @@ UID 0
 
 ---
 
-# Image Security Threat Model
+## Image Security Threat Model
 
 | Threat | Example | Control |
 |---|---|---|
@@ -1853,7 +1853,7 @@ UID 0
 
 ---
 
-# Troubleshooting Image Pull Errors
+## Troubleshooting Image Pull Errors
 
 If a Pod shows:
 
@@ -1876,7 +1876,7 @@ Registry permissions
 
 ---
 
-# Check Pod Events
+## Check Pod Events
 
 ```bash
 kubectl describe pod <pod>
@@ -1890,7 +1890,7 @@ Events
 
 ---
 
-# Check Image
+## Check Image
 
 ```bash
 kubectl get pod <pod> \
@@ -1899,7 +1899,7 @@ kubectl get pod <pod> \
 
 ---
 
-# Common Image Pull Error
+## Common Image Pull Error
 
 ```text
 unauthorized
@@ -1925,7 +1925,7 @@ imagePullSecrets:
 
 ---
 
-# Common Image Pull Error
+## Common Image Pull Error
 
 ```text
 manifest unknown
@@ -1941,7 +1941,7 @@ Image does not exist
 
 ---
 
-# Common Image Pull Error
+## Common Image Pull Error
 
 ```text
 x509: certificate signed by unknown authority
@@ -1955,7 +1955,7 @@ Registry TLS trust problem
 
 ---
 
-# Common Image Pull Error
+## Common Image Pull Error
 
 ```text
 ImagePullBackOff
@@ -1973,7 +1973,7 @@ for the underlying reason.
 
 ---
 
-# Hands-on Lab 1 – Scan an Image
+## Hands-on Lab 1 – Scan an Image
 
 Install a scanner such as Trivy.
 
@@ -1996,7 +1996,7 @@ vulnerabilities.
 
 ---
 
-# Hands-on Lab 2 – Compare Image Sizes
+## Hands-on Lab 2 – Compare Image Sizes
 
 Compare:
 
@@ -2017,7 +2017,7 @@ Attack Surface
 
 ---
 
-# Hands-on Lab 3 – Build a Multi-Stage Image
+## Hands-on Lab 3 – Build a Multi-Stage Image
 
 Create a simple application.
 
@@ -2037,7 +2037,7 @@ Compare the resulting image with a single-stage build.
 
 ---
 
-# Hands-on Lab 4 – Generate an SBOM
+## Hands-on Lab 4 – Generate an SBOM
 
 Use:
 
@@ -2058,7 +2058,7 @@ Dependencies
 
 ---
 
-# Hands-on Lab 5 – Use an Immutable Digest
+## Hands-on Lab 5 – Use an Immutable Digest
 
 Pull an image and inspect its digest.
 
@@ -2074,7 +2074,7 @@ Verify that the Deployment references the digest.
 
 ---
 
-# Hands-on Lab 6 – Private Registry
+## Hands-on Lab 6 – Private Registry
 
 Create or use a disposable private registry.
 
@@ -2103,7 +2103,7 @@ imagePullSecrets:
 
 ---
 
-# Hands-on Lab 7 – Image Pull Failure
+## Hands-on Lab 7 – Image Pull Failure
 
 Use an intentionally invalid image:
 
@@ -2129,7 +2129,7 @@ Identify the exact failure.
 
 ---
 
-# Hands-on Lab 8 – Test `imagePullPolicy`
+## Hands-on Lab 8 – Test `imagePullPolicy`
 
 Test:
 
@@ -2145,7 +2145,7 @@ Use a disposable environment.
 
 ---
 
-# Hands-on Lab 9 – Image Signing
+## Hands-on Lab 9 – Image Signing
 
 Use Cosign in a test environment.
 
@@ -2167,7 +2167,7 @@ Never place production signing keys in an insecure lab environment.
 
 ---
 
-# Hands-on Lab 10 – Image Admission
+## Hands-on Lab 10 – Image Admission
 
 Deploy an admission policy in a disposable cluster that requires:
 
@@ -2189,7 +2189,7 @@ Admission Rejection
 
 ---
 
-# Hands-on Lab 11 – Vulnerability Gate
+## Hands-on Lab 11 – Vulnerability Gate
 
 Create a CI pipeline that:
 
@@ -2205,7 +2205,7 @@ Then test with an intentionally vulnerable lab image.
 
 ---
 
-# Hands-on Lab 12 – Secret Detection
+## Hands-on Lab 12 – Secret Detection
 
 Create a test Dockerfile containing a fake credential.
 
@@ -2217,7 +2217,7 @@ Never use a real credential.
 
 ---
 
-# Hands-on Lab 13 – Image Promotion
+## Hands-on Lab 13 – Image Promotion
 
 Build:
 
@@ -2239,9 +2239,9 @@ Verify that the image digest remains unchanged.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using `latest`
+### 1. Using `latest`
 
 Avoid:
 
@@ -2253,7 +2253,7 @@ for production workloads.
 
 ---
 
-## 2. Trusting Tags as Immutable
+### 2. Trusting Tags as Immutable
 
 Tags can potentially be moved.
 
@@ -2267,7 +2267,7 @@ for stronger reproducibility.
 
 ---
 
-## 3. Using Unknown Images
+### 3. Using Unknown Images
 
 Do not blindly deploy:
 
@@ -2277,13 +2277,13 @@ Random Docker Hub image
 
 ---
 
-## 4. Ignoring Base Images
+### 4. Ignoring Base Images
 
 Your application may be secure while the base image contains vulnerable packages.
 
 ---
 
-## 5. Ignoring Application Dependencies
+### 5. Ignoring Application Dependencies
 
 Vulnerabilities can exist in:
 
@@ -2297,7 +2297,7 @@ OS packages
 
 ---
 
-## 6. Embedding Secrets
+### 6. Embedding Secrets
 
 Never put:
 
@@ -2311,7 +2311,7 @@ inside images.
 
 ---
 
-## 7. Scanning Only During Build
+### 7. Scanning Only During Build
 
 New vulnerabilities can be discovered after deployment.
 
@@ -2319,7 +2319,7 @@ Use continuous monitoring.
 
 ---
 
-## 8. Ignoring Image Provenance
+### 8. Ignoring Image Provenance
 
 Know:
 
@@ -2331,13 +2331,13 @@ Using which pipeline?
 
 ---
 
-## 9. Running as Root
+### 9. Running as Root
 
 A secure image should preferably run as a non-root user where possible.
 
 ---
 
-## 10. Installing Unnecessary Tools
+### 10. Installing Unnecessary Tools
 
 Avoid unnecessary:
 
@@ -2352,7 +2352,7 @@ in production images.
 
 ---
 
-## 11. Rebuilding for Every Environment
+### 11. Rebuilding for Every Environment
 
 Prefer:
 
@@ -2363,15 +2363,15 @@ Promote Same Artifact
 
 ---
 
-## 12. Ignoring Registry Security
+### 12. Ignoring Registry Security
 
 The registry is part of the software supply chain.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Trusted Base Images
+#### 1. Use Trusted Base Images
 
 Prefer:
 
@@ -2386,7 +2386,7 @@ base images.
 
 ---
 
-### 2. Keep Images Minimal
+#### 2. Keep Images Minimal
 
 Use:
 
@@ -2400,13 +2400,13 @@ after compatibility testing.
 
 ---
 
-### 3. Use Multi-Stage Builds
+#### 3. Use Multi-Stage Builds
 
 Keep build dependencies out of production images.
 
 ---
 
-### 4. Scan Images
+#### 4. Scan Images
 
 Scan:
 
@@ -2418,13 +2418,13 @@ Application
 
 ---
 
-### 5. Generate SBOMs
+#### 5. Generate SBOMs
 
 Maintain visibility into image contents.
 
 ---
 
-### 6. Sign Images
+#### 6. Sign Images
 
 Use signing mechanisms such as:
 
@@ -2436,13 +2436,13 @@ where appropriate.
 
 ---
 
-### 7. Verify Images Before Deployment
+#### 7. Verify Images Before Deployment
 
 Use admission controls to enforce trust requirements.
 
 ---
 
-### 8. Prefer Image Digests
+#### 8. Prefer Image Digests
 
 For high-assurance production deployments:
 
@@ -2452,13 +2452,13 @@ image@sha256:<digest>
 
 ---
 
-### 9. Use Private Registries
+#### 9. Use Private Registries
 
 Restrict production image sources.
 
 ---
 
-### 10. Protect Registry Credentials
+#### 10. Protect Registry Credentials
 
 Use:
 
@@ -2472,13 +2472,13 @@ where supported.
 
 ---
 
-### 11. Scan Continuously
+#### 11. Scan Continuously
 
 New vulnerabilities can appear after an image is deployed.
 
 ---
 
-### 12. Patch Base Images
+#### 12. Patch Base Images
 
 Regularly rebuild when:
 
@@ -2492,13 +2492,13 @@ are released.
 
 ---
 
-### 13. Never Embed Secrets
+#### 13. Never Embed Secrets
 
 Inject secrets at runtime.
 
 ---
 
-### 14. Use Non-Root Containers
+#### 14. Use Non-Root Containers
 
 Prefer:
 
@@ -2510,7 +2510,7 @@ where compatible.
 
 ---
 
-### 15. Maintain Provenance
+#### 15. Maintain Provenance
 
 Record:
 
@@ -2525,7 +2525,7 @@ Signature
 
 ---
 
-# Production Image Governance
+## Production Image Governance
 
 An enterprise image policy may require:
 
@@ -2545,7 +2545,7 @@ An enterprise image policy may require:
 
 ---
 
-# Secure Image Pipeline
+## Secure Image Pipeline
 
 ```text
 Developer
@@ -2583,7 +2583,7 @@ Runtime Monitoring
 
 ---
 
-# Image Security Defense in Depth
+## Image Security Defense in Depth
 
 ```text
 Source Security
@@ -2609,9 +2609,9 @@ Runtime Security
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Container Image
+### Container Image
 
 ```text
 Application + Runtime + Dependencies
@@ -2619,7 +2619,7 @@ Application + Runtime + Dependencies
 
 ---
 
-## Base Image
+### Base Image
 
 ```text
 Starting filesystem/runtime
@@ -2627,7 +2627,7 @@ Starting filesystem/runtime
 
 ---
 
-## Minimal Image
+### Minimal Image
 
 ```text
 Only required components
@@ -2635,7 +2635,7 @@ Only required components
 
 ---
 
-## Distroless
+### Distroless
 
 ```text
 Minimal runtime image without typical OS utilities
@@ -2643,7 +2643,7 @@ Minimal runtime image without typical OS utilities
 
 ---
 
-## Multi-Stage Build
+### Multi-Stage Build
 
 ```text
 Separate build and runtime images
@@ -2651,7 +2651,7 @@ Separate build and runtime images
 
 ---
 
-## Registry
+### Registry
 
 ```text
 Stores container images
@@ -2659,7 +2659,7 @@ Stores container images
 
 ---
 
-## Image Tag
+### Image Tag
 
 ```text
 Human-friendly image reference
@@ -2667,7 +2667,7 @@ Human-friendly image reference
 
 ---
 
-## Digest
+### Digest
 
 ```text
 Content-addressed image identifier
@@ -2675,7 +2675,7 @@ Content-addressed image identifier
 
 ---
 
-## `latest`
+### `latest`
 
 ```text
 Mutable tag; avoid relying on it in production
@@ -2683,7 +2683,7 @@ Mutable tag; avoid relying on it in production
 
 ---
 
-## ImagePullPolicy
+### ImagePullPolicy
 
 ```text
 Controls image pulling behavior
@@ -2691,7 +2691,7 @@ Controls image pulling behavior
 
 ---
 
-## CVE
+### CVE
 
 ```text
 Common Vulnerabilities and Exposures
@@ -2699,7 +2699,7 @@ Common Vulnerabilities and Exposures
 
 ---
 
-## SBOM
+### SBOM
 
 ```text
 Software Bill of Materials
@@ -2707,7 +2707,7 @@ Software Bill of Materials
 
 ---
 
-## Image Signing
+### Image Signing
 
 ```text
 Establish artifact authenticity/integrity
@@ -2715,7 +2715,7 @@ Establish artifact authenticity/integrity
 
 ---
 
-## Cosign
+### Cosign
 
 ```text
 Container/artifact signing tool
@@ -2723,7 +2723,7 @@ Container/artifact signing tool
 
 ---
 
-## Sigstore
+### Sigstore
 
 ```text
 Software supply-chain security ecosystem
@@ -2731,7 +2731,7 @@ Software supply-chain security ecosystem
 
 ---
 
-## Provenance
+### Provenance
 
 ```text
 Evidence of where/how an artifact was built
@@ -2739,7 +2739,7 @@ Evidence of where/how an artifact was built
 
 ---
 
-## SLSA
+### SLSA
 
 ```text
 Framework for improving software supply-chain security
@@ -2747,7 +2747,7 @@ Framework for improving software supply-chain security
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Build an image:
 
@@ -2825,9 +2825,9 @@ kubectl get pods
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is container image security?
 - Why is image security important?
@@ -2846,7 +2846,7 @@ kubectl get pods
 
 ---
 
-## Intermediate
+### Intermediate
 
 - What is the difference between an image tag and digest?
 - How would you secure a private container registry?
@@ -2866,7 +2866,7 @@ kubectl get pods
 
 ---
 
-## Advanced
+### Advanced
 
 - Design an enterprise container image security pipeline.
 - How would you implement image signing and verification?
@@ -2887,13 +2887,13 @@ kubectl get pods
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > Why is `latest` not recommended for production?
 
-### Answer
+#### Answer
 
 Because the tag can point to different image content over time.
 
@@ -2931,13 +2931,13 @@ because the digest identifies specific image content.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Is an image digest better than a tag?
 
-### Answer
+#### Answer
 
 For reproducibility and high-assurance deployments, yes.
 
@@ -2973,13 +2973,13 @@ Content-addressed reference
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > An image has no Critical CVEs. Is it safe?
 
-### Answer
+#### Answer
 
 Not necessarily.
 
@@ -3014,13 +3014,13 @@ Trusted Registry
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > How would you prevent developers from deploying images from Docker Hub into production?
 
-### Answer
+#### Answer
 
 Use admission control to enforce an approved registry allowlist.
 
@@ -3053,13 +3053,13 @@ Approved?
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > A critical CVE was discovered in an image already running in production. What would you do?
 
-### Answer
+#### Answer
 
 First:
 
@@ -3110,13 +3110,13 @@ Perform incident response
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > Why should you not copy a production secret into a Dockerfile and delete it later?
 
-### Answer
+#### Answer
 
 Container images are layered.
 
@@ -3158,7 +3158,7 @@ should be used.
 
 ---
 
-# Production Image Security Checklist
+## Production Image Security Checklist
 
 ```text
 ☑ Trusted base images
@@ -3184,7 +3184,7 @@ should be used.
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Build a container image.
 2. Inspect its layers.
@@ -3214,9 +3214,9 @@ should be used.
 
 ---
 
-# References
+## References
 
-## Official / Industry Documentation
+### Official / Industry Documentation
 
 - Kubernetes Images
 - Kubernetes Secrets
@@ -3234,7 +3234,7 @@ should be used.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Container images are a critical component of Kubernetes security.
 
@@ -3487,9 +3487,9 @@ These controls complement each other rather than replacing one another.
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 55 – Runtime Security
+## Chapter 55 – Runtime Security
 
 Topics will include:
 

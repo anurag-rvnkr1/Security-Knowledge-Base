@@ -1,10 +1,10 @@
 # 28-Windows-Cheat-Sheet.md
 
-# Windows Administrator & Cybersecurity Cheat Sheet
+## Windows Administrator & Cybersecurity Cheat Sheet
 
 ---
 
-# Introduction
+## Introduction
 
 This cheat sheet is a quick-reference guide for Windows administrators, SOC analysts, cybersecurity professionals, desktop support engineers, and students preparing for interviews or certifications.
 
@@ -12,7 +12,7 @@ It summarizes the most important Windows concepts, commands, tools, troubleshoot
 
 ---
 
-# Windows Boot Process
+## Windows Boot Process
 
 ```text
 Power On
@@ -68,7 +68,7 @@ User Desktop
 
 ---
 
-# Windows Architecture
+## Windows Architecture
 
 ```text
 +------------------------------------------------+
@@ -88,7 +88,7 @@ User Desktop
 
 ---
 
-# Windows Directory Structure
+## Windows Directory Structure
 
 | Directory | Purpose |
 |-----------|---------|
@@ -103,7 +103,7 @@ User Desktop
 
 ---
 
-# NTFS Permissions
+## NTFS Permissions
 
 | Permission | Description |
 |------------|-------------|
@@ -115,7 +115,7 @@ User Desktop
 
 ---
 
-# Windows Startup Modes
+## Windows Startup Modes
 
 | Mode | Purpose |
 |------|----------|
@@ -126,7 +126,7 @@ User Desktop
 
 ---
 
-# Essential Keyboard Shortcuts
+## Essential Keyboard Shortcuts
 
 | Shortcut | Function |
 |----------|----------|
@@ -143,7 +143,7 @@ User Desktop
 
 ---
 
-# Common Administrative Tools
+## Common Administrative Tools
 
 | Tool | Run Command |
 |------|-------------|
@@ -167,7 +167,7 @@ User Desktop
 
 ---
 
-# Frequently Used CMD Commands
+## Frequently Used CMD Commands
 
 | Command | Purpose |
 |----------|----------|
@@ -186,7 +186,7 @@ User Desktop
 
 ---
 
-# Networking Commands
+## Networking Commands
 
 | Command | Purpose |
 |----------|----------|
@@ -205,7 +205,7 @@ User Desktop
 
 ---
 
-# System Repair Commands
+## System Repair Commands
 
 | Command | Purpose |
 |----------|----------|
@@ -216,7 +216,7 @@ User Desktop
 
 ---
 
-# PowerShell Essentials
+## PowerShell Essentials
 
 | Command | Purpose |
 |----------|----------|
@@ -234,7 +234,7 @@ User Desktop
 
 ---
 
-# Event Viewer Logs
+## Event Viewer Logs
 
 | Log | Purpose |
 |------|----------|
@@ -246,7 +246,7 @@ User Desktop
 
 ---
 
-# Common Windows Services
+## Common Windows Services
 
 | Service | Purpose |
 |----------|----------|
@@ -261,7 +261,7 @@ User Desktop
 
 ---
 
-# Active Directory Components
+## Active Directory Components
 
 | Component | Purpose |
 |-----------|---------|
@@ -275,7 +275,7 @@ User Desktop
 
 ---
 
-# Group Policy Processing Order
+## Group Policy Processing Order
 
 ```text
 Local
@@ -299,7 +299,7 @@ Remember:
 
 ---
 
-# Common File Systems
+## Common File Systems
 
 | File System | Typical Use |
 |-------------|-------------|
@@ -309,7 +309,7 @@ Remember:
 
 ---
 
-# Registry Root Keys
+## Registry Root Keys
 
 | Hive | Description |
 |------|-------------|
@@ -321,7 +321,7 @@ Remember:
 
 ---
 
-# Windows Security Features
+## Windows Security Features
 
 | Feature | Purpose |
 |----------|----------|
@@ -335,7 +335,7 @@ Remember:
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```text
 Identify
@@ -371,7 +371,7 @@ Document
 
 ---
 
-# Performance Investigation Workflow
+## Performance Investigation Workflow
 
 ```text
 Slow Computer
@@ -407,7 +407,7 @@ Validate
 
 ---
 
-# Blue Screen (BSOD) Checklist
+## Blue Screen (BSOD) Checklist
 
 - Record stop code.
 - Review recent hardware or software changes.
@@ -419,7 +419,7 @@ Validate
 
 ---
 
-# Interview Quick Facts
+## Interview Quick Facts
 
 | Question | Quick Answer |
 |----------|--------------|
@@ -436,7 +436,7 @@ Validate
 
 ---
 
-# Security Best Practices
+## Security Best Practices
 
 - Apply the principle of least privilege.
 - Keep systems patched.
@@ -451,7 +451,7 @@ Validate
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Keep this cheat sheet accessible during labs and revision.
 - Use built-in tools before introducing third-party utilities.
@@ -462,13 +462,13 @@ Validate
 ---
 
 
-# 28-Windows-Cheat-Sheet.md
+## 28-Windows-Cheat-Sheet.md
 
-# Part 2 — Advanced Commands, PowerShell, Active Directory, Networking, Troubleshooting, Sysinternals, Interview Revision, and Final Handbook Summary
+## Part 2 — Advanced Commands, PowerShell, Active Directory, Networking, Troubleshooting, Sysinternals, Interview Revision, and Final Handbook Summary
 
 ---
 
-# Advanced CMD Commands
+## Advanced CMD Commands
 
 | Command | Purpose | Example |
 |----------|---------|---------|
@@ -489,9 +489,9 @@ Validate
 
 ---
 
-# Essential PowerShell Cmdlets
+## Essential PowerShell Cmdlets
 
-## Process Management
+### Process Management
 
 | Cmdlet | Purpose |
 |---------|---------|
@@ -501,7 +501,7 @@ Validate
 
 ---
 
-## Service Management
+### Service Management
 
 | Cmdlet | Purpose |
 |---------|---------|
@@ -513,7 +513,7 @@ Validate
 
 ---
 
-## File Management
+### File Management
 
 | Cmdlet | Purpose |
 |---------|---------|
@@ -525,7 +525,7 @@ Validate
 
 ---
 
-## Event Logs
+### Event Logs
 
 | Cmdlet | Purpose |
 |---------|---------|
@@ -537,7 +537,7 @@ Validate
 
 ---
 
-## System Information
+### System Information
 
 | Cmdlet | Purpose |
 |---------|---------|
@@ -548,7 +548,7 @@ Validate
 
 ---
 
-# Active Directory Quick Reference
+## Active Directory Quick Reference
 
 | Task | Command/Tool |
 |------|--------------|
@@ -564,9 +564,9 @@ Validate
 
 ---
 
-# Networking Quick Reference
+## Networking Quick Reference
 
-## Connectivity
+### Connectivity
 
 ```cmd
 ping hostname
@@ -574,7 +574,7 @@ ping hostname
 
 ---
 
-## DNS
+### DNS
 
 ```cmd
 nslookup example.com
@@ -582,7 +582,7 @@ nslookup example.com
 
 ---
 
-## Route
+### Route
 
 ```cmd
 tracert example.com
@@ -590,7 +590,7 @@ tracert example.com
 
 ---
 
-## Network Configuration
+### Network Configuration
 
 ```cmd
 ipconfig /all
@@ -598,7 +598,7 @@ ipconfig /all
 
 ---
 
-## Active Connections
+### Active Connections
 
 ```cmd
 netstat -ano
@@ -606,7 +606,7 @@ netstat -ano
 
 ---
 
-## Routing Table
+### Routing Table
 
 ```cmd
 route print
@@ -614,7 +614,7 @@ route print
 
 ---
 
-## ARP Cache
+### ARP Cache
 
 ```cmd
 arp -a
@@ -622,7 +622,7 @@ arp -a
 
 ---
 
-# Windows Recovery Commands
+## Windows Recovery Commands
 
 | Command | Purpose |
 |----------|----------|
@@ -633,7 +633,7 @@ arp -a
 
 ---
 
-# Windows Troubleshooting Toolkit
+## Windows Troubleshooting Toolkit
 
 | Tool | Primary Use |
 |------|-------------|
@@ -649,7 +649,7 @@ arp -a
 
 ---
 
-# Sysinternals Toolkit
+## Sysinternals Toolkit
 
 | Tool | Primary Use |
 |------|-------------|
@@ -664,7 +664,7 @@ arp -a
 
 ---
 
-# Windows Ports to Remember
+## Windows Ports to Remember
 
 | Port | Protocol | Typical Service |
 |------|----------|-----------------|
@@ -687,7 +687,7 @@ arp -a
 
 ---
 
-# Windows Logs
+## Windows Logs
 
 | Log | Common Use |
 |------|------------|
@@ -700,7 +700,7 @@ arp -a
 
 ---
 
-# Active Directory Troubleshooting
+## Active Directory Troubleshooting
 
 ```text
 Cannot Log In
@@ -736,7 +736,7 @@ Resolve
 
 ---
 
-# Performance Troubleshooting
+## Performance Troubleshooting
 
 ```text
 Slow Computer
@@ -772,7 +772,7 @@ Fix
 
 ---
 
-# BSOD Investigation
+## BSOD Investigation
 
 ```text
 Record Stop Code
@@ -800,7 +800,7 @@ Validate
 
 ---
 
-# Security Investigation
+## Security Investigation
 
 ```text
 Alert
@@ -836,7 +836,7 @@ Document
 
 ---
 
-# Common Windows Interview Commands
+## Common Windows Interview Commands
 
 | Task | Command |
 |------|----------|
@@ -853,7 +853,7 @@ Document
 
 ---
 
-# 50 Rapid-Fire Revision Points
+## 50 Rapid-Fire Revision Points
 
 1. Windows uses NTFS by default.
 2. UEFI replaces legacy BIOS on modern systems.
@@ -908,7 +908,7 @@ Document
 
 ---
 
-# Final Revision Checklist
+## Final Revision Checklist
 
 Before an interview, ensure you can confidently explain:
 
@@ -936,7 +936,7 @@ Before an interview, ensure you can confidently explain:
 
 ---
 
-# Final Handbook Summary
+## Final Handbook Summary
 
 Throughout this Windows Handbook, you have covered:
 
@@ -973,7 +973,7 @@ This progression provides a comprehensive foundation for Windows administration,
 
 ---
 
-# Recommended Next Learning Path
+## Recommended Next Learning Path
 
 After mastering Windows administration, consider expanding into:
 
@@ -990,7 +990,7 @@ After mastering Windows administration, consider expanding into:
 
 ---
 
-# Final Best Practices
+## Final Best Practices
 
 - Practice in a virtual lab before making production changes.
 - Automate repetitive tasks using PowerShell.
@@ -1003,7 +1003,7 @@ After mastering Windows administration, consider expanding into:
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed the **Windows Handbook**.
 

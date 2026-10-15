@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Cryptography at a Glance
+## 1. Cryptography at a Glance
 
 Cryptography provides four primary security properties:
 
@@ -15,7 +15,7 @@ Authentication
 Non-Repudiation
 ```
 
-### Confidentiality
+#### Confidentiality
 
 Prevents unauthorized parties from reading data.
 
@@ -27,7 +27,7 @@ Encryption
 Ciphertext
 ```
 
-### Integrity
+#### Integrity
 
 Ensures data has not been modified.
 
@@ -39,7 +39,7 @@ Hash / MAC / Signature
 Verification
 ```
 
-### Authentication
+#### Authentication
 
 Verifies the identity of a party or authenticity of a message.
 
@@ -51,13 +51,13 @@ Cryptographic Proof
 Verified
 ```
 
-### Non-Repudiation
+#### Non-Repudiation
 
 Digital signatures can provide evidence that a particular private key was used to sign data, subject to the trust model and key protection.
 
 ---
 
-# 2. Core Cryptography Terminology
+## 2. Core Cryptography Terminology
 
 | Term | Meaning |
 |---|---|
@@ -82,7 +82,7 @@ Digital signatures can provide evidence that a particular private key was used t
 
 ---
 
-# 3. Cryptography Categories
+## 3. Cryptography Categories
 
 ```text
 Cryptography
@@ -121,7 +121,7 @@ Cryptography
 
 ---
 
-# 4. Symmetric Cryptography
+## 4. Symmetric Cryptography
 
 Symmetric cryptography uses the same secret key for encryption and decryption.
 
@@ -138,7 +138,7 @@ Plaintext ──► Encrypt ──► Ciphertext
                            Plaintext
 ```
 
-### Examples
+#### Examples
 
 ```text
 AES
@@ -148,7 +148,7 @@ DES    ← Broken/obsolete
 RC4    ← Broken/obsolete
 ```
 
-### Advantages
+#### Advantages
 
 ```text
 Fast
@@ -156,7 +156,7 @@ Efficient
 Suitable for large amounts of data
 ```
 
-### Disadvantage
+#### Disadvantage
 
 ```text
 Key distribution
@@ -164,7 +164,7 @@ Key distribution
 
 ---
 
-# 5. Asymmetric Cryptography
+## 5. Asymmetric Cryptography
 
 Asymmetric cryptography uses:
 
@@ -179,7 +179,7 @@ The public key can generally be distributed.
 
 ---
 
-# 6. Public-Key Encryption
+## 6. Public-Key Encryption
 
 Conceptually:
 
@@ -200,7 +200,7 @@ Plaintext
 
 ---
 
-# 7. Digital Signature
+## 7. Digital Signature
 
 Conceptually:
 
@@ -238,7 +238,7 @@ Calculated Hash   Signature
 
 ---
 
-# 8. Symmetric vs Asymmetric
+## 8. Symmetric vs Asymmetric
 
 | Feature | Symmetric | Asymmetric |
 |---|---|---|
@@ -252,7 +252,7 @@ Calculated Hash   Signature
 
 ---
 
-# 9. Hybrid Cryptography
+## 9. Hybrid Cryptography
 
 Modern protocols generally combine both.
 
@@ -282,7 +282,7 @@ Fast data encryption
 
 ---
 
-# 10. AES
+## 10. AES
 
 **AES = Advanced Encryption Standard**
 
@@ -308,7 +308,7 @@ Symmetric Block Cipher
 
 ---
 
-# 11. AES Key Sizes
+## 11. AES Key Sizes
 
 | Algorithm | Key Size |
 |---|---:|
@@ -326,7 +326,7 @@ regardless of key size.
 
 ---
 
-# 12. Recommended AES Modes
+## 12. Recommended AES Modes
 
 Preferred modern choice:
 
@@ -346,7 +346,7 @@ for normal application encryption.
 
 ---
 
-# 13. ECB
+## 13. ECB
 
 ECB:
 
@@ -374,7 +374,7 @@ Patterns can leak.
 
 ---
 
-# 14. CBC
+## 14. CBC
 
 CBC:
 
@@ -396,7 +396,7 @@ Modern applications generally prefer AEAD constructions.
 
 ---
 
-# 15. CTR
+## 15. CTR
 
 CTR:
 
@@ -414,7 +414,7 @@ Never reuse the same nonce/counter combination with the same key.
 
 ---
 
-# 16. GCM
+## 16. GCM
 
 GCM:
 
@@ -442,7 +442,7 @@ Critical rule:
 
 ---
 
-# 17. ChaCha20-Poly1305
+## 17. ChaCha20-Poly1305
 
 Combines:
 
@@ -468,7 +468,7 @@ Nonce uniqueness is critical.
 
 ---
 
-# 18. AEAD
+## 18. AEAD
 
 **AEAD = Authenticated Encryption with Associated Data**
 
@@ -489,7 +489,7 @@ ChaCha20-Poly1305
 
 ---
 
-# 19. Associated Data
+## 19. Associated Data
 
 Associated data is authenticated but not encrypted.
 
@@ -513,7 +513,7 @@ Authentication fails
 
 ---
 
-# 20. Nonce vs IV vs Salt
+## 20. Nonce vs IV vs Salt
 
 | Value | Main Purpose |
 |---|---|
@@ -525,7 +525,7 @@ They are not interchangeable concepts.
 
 ---
 
-# 21. Nonce
+## 21. Nonce
 
 Nonce:
 
@@ -547,7 +547,7 @@ Potentially catastrophic failure
 
 ---
 
-# 22. IV
+## 22. IV
 
 Initialization Vector.
 
@@ -563,7 +563,7 @@ They serve different purposes.
 
 ---
 
-# 23. Salt
+## 23. Salt
 
 A salt is typically used with password hashing/KDFs.
 
@@ -585,7 +585,7 @@ Does not need to be secret.
 
 ---
 
-# 24. Randomness
+## 24. Randomness
 
 Cryptographic systems require secure randomness.
 
@@ -608,7 +608,7 @@ Authentication Secrets
 
 ---
 
-# 25. Python Secure Randomness
+## 25. Python Secure Randomness
 
 Use:
 
@@ -630,7 +630,7 @@ for security-sensitive secrets.
 
 ---
 
-# 26. Hash Functions
+## 26. Hash Functions
 
 A cryptographic hash maps arbitrary input to a fixed-size digest.
 
@@ -655,7 +655,7 @@ Second-preimage resistance
 
 ---
 
-# 27. Hash Examples
+## 27. Hash Examples
 
 Modern:
 
@@ -678,7 +678,7 @@ SHA-1
 
 ---
 
-# 28. SHA-256
+## 28. SHA-256
 
 SHA-256 produces:
 
@@ -700,7 +700,7 @@ Hexadecimal representation:
 
 ---
 
-# 29. SHA-512
+## 29. SHA-512
 
 SHA-512 produces:
 
@@ -722,7 +722,7 @@ Hexadecimal representation:
 
 ---
 
-# 30. SHA-3
+## 30. SHA-3
 
 SHA-3 is based on:
 
@@ -743,7 +743,7 @@ SHA3-512
 
 ---
 
-# 31. Hash Collision
+## 31. Hash Collision
 
 Collision:
 
@@ -759,7 +759,7 @@ Hash(A) = Hash(B)
 
 ---
 
-# 32. Birthday Bound
+## 32. Birthday Bound
 
 For an n-bit hash, generic collision search requires approximately:
 
@@ -780,7 +780,7 @@ under idealized assumptions.
 
 ---
 
-# 33. Preimage Attack
+## 33. Preimage Attack
 
 Given:
 
@@ -802,7 +802,7 @@ Hash(M) = H
 
 ---
 
-# 34. Second-Preimage Attack
+## 34. Second-Preimage Attack
 
 Given:
 
@@ -824,7 +824,7 @@ Hash(M1) = Hash(M2)
 
 ---
 
-# 35. Hashing ≠ Encryption
+## 35. Hashing ≠ Encryption
 
 Hash:
 
@@ -852,7 +852,7 @@ Encryption is designed to be reversible with the correct key.
 
 ---
 
-# 36. Password Storage
+## 36. Password Storage
 
 Never store:
 
@@ -882,7 +882,7 @@ PBKDF2
 
 ---
 
-# 37. Why Not SHA-256 for Passwords?
+## 37. Why Not SHA-256 for Passwords?
 
 SHA-256 is designed to be fast.
 
@@ -899,7 +899,7 @@ Fast hashes make offline password guessing easier.
 
 ---
 
-# 38. Argon2
+## 38. Argon2
 
 Argon2 is a modern password hashing/KDF family.
 
@@ -915,7 +915,7 @@ Argon2id is commonly preferred for password storage where supported and appropri
 
 ---
 
-# 39. HMAC
+## 39. HMAC
 
 **HMAC = Hash-based Message Authentication Code**
 
@@ -940,7 +940,7 @@ Authentication
 
 ---
 
-# 40. HMAC vs Hash
+## 40. HMAC vs Hash
 
 Hash:
 
@@ -958,7 +958,7 @@ HMAC requires a secret key.
 
 ---
 
-# 41. Never Build a Custom MAC
+## 41. Never Build a Custom MAC
 
 Avoid:
 
@@ -978,7 +978,7 @@ hmac.new(
 
 ---
 
-# 42. Length Extension
+## 42. Length Extension
 
 Certain hash constructions can be vulnerable to length-extension attacks when incorrectly used as MACs.
 
@@ -998,7 +998,7 @@ HMAC
 
 ---
 
-# 43. KDF
+## 43. KDF
 
 **KDF = Key Derivation Function**
 
@@ -1018,7 +1018,7 @@ Key A Key B Key C
 
 ---
 
-# 44. HKDF
+## 44. HKDF
 
 **HKDF = HMAC-based Key Derivation Function**
 
@@ -1041,7 +1041,7 @@ Expand
 
 ---
 
-# 45. Password KDF vs HKDF
+## 45. Password KDF vs HKDF
 
 | Function | Primary Use |
 |---|---|
@@ -1054,7 +1054,7 @@ Do not automatically substitute one for another.
 
 ---
 
-# 46. Key Separation
+## 46. Key Separation
 
 Use different derived keys for different purposes:
 
@@ -1069,7 +1069,7 @@ Master Secret
 
 ---
 
-# 47. RSA
+## 47. RSA
 
 RSA is an asymmetric cryptographic algorithm based on integer factorization.
 
@@ -1085,7 +1085,7 @@ RSA is not considered post-quantum secure.
 
 ---
 
-# 48. RSA Key Pair
+## 48. RSA Key Pair
 
 ```text
 Public Key
@@ -1106,7 +1106,7 @@ Must remain secret
 
 ---
 
-# 49. RSA Encryption
+## 49. RSA Encryption
 
 Conceptually:
 
@@ -1132,7 +1132,7 @@ Modern implementations should use secure padding schemes such as RSA-OAEP rather
 
 ---
 
-# 50. RSA Signatures
+## 50. RSA Signatures
 
 Signing:
 
@@ -1162,7 +1162,7 @@ Modern applications should use standardized secure signature encodings such as R
 
 ---
 
-# 51. Diffie-Hellman
+## 51. Diffie-Hellman
 
 Diffie-Hellman enables two parties to establish a shared secret over an insecure channel.
 
@@ -1182,7 +1182,7 @@ The shared secret itself is never directly transmitted.
 
 ---
 
-# 52. ECDH
+## 52. ECDH
 
 Elliptic Curve Diffie-Hellman.
 
@@ -1200,7 +1200,7 @@ X25519
 
 ---
 
-# 53. Forward Secrecy
+## 53. Forward Secrecy
 
 Forward secrecy means compromise of a long-term private key does not automatically expose previously established session secrets, assuming the protocol and ephemeral keys were used correctly.
 
@@ -1219,7 +1219,7 @@ X25519
 
 ---
 
-# 54. ECDSA
+## 54. ECDSA
 
 ECDSA:
 
@@ -1245,7 +1245,7 @@ Nonce reuse can expose the private key.
 
 ---
 
-# 55. Ed25519
+## 55. Ed25519
 
 Ed25519 is an EdDSA signature scheme.
 
@@ -1269,7 +1269,7 @@ not post-quantum.
 
 ---
 
-# 56. X25519
+## 56. X25519
 
 X25519 is used for:
 
@@ -1287,7 +1287,7 @@ It is not a digital signature algorithm.
 
 ---
 
-# 57. ECC Quick Map
+## 57. ECC Quick Map
 
 ```text
 ECC
@@ -1307,7 +1307,7 @@ ECC
 
 ---
 
-# 58. Certificates
+## 58. Certificates
 
 A certificate binds:
 
@@ -1331,7 +1331,7 @@ Extensions
 
 ---
 
-# 59. SAN
+## 59. SAN
 
 SAN:
 
@@ -1350,7 +1350,7 @@ DNS:api.example.com
 
 ---
 
-# 60. Certificate Chain
+## 60. Certificate Chain
 
 Typical structure:
 
@@ -1366,7 +1366,7 @@ The client validates the chain back to a trusted root.
 
 ---
 
-# 61. PKI
+## 61. PKI
 
 **PKI = Public Key Infrastructure**
 
@@ -1385,7 +1385,7 @@ Certificate Lifecycle
 
 ---
 
-# 62. Root CA
+## 62. Root CA
 
 Root CA certificates are trust anchors.
 
@@ -1393,7 +1393,7 @@ They are typically self-signed and distributed through trusted trust stores.
 
 ---
 
-# 63. Intermediate CA
+## 63. Intermediate CA
 
 Intermediate CAs are used to issue end-entity certificates.
 
@@ -1411,7 +1411,7 @@ This reduces the need to use the root private key for routine issuance.
 
 ---
 
-# 64. Certificate Validation
+## 64. Certificate Validation
 
 Check:
 
@@ -1427,7 +1427,7 @@ Revocation Status where applicable
 
 ---
 
-# 65. TLS
+## 65. TLS
 
 TLS:
 
@@ -1446,7 +1446,7 @@ Optional Client Authentication
 
 ---
 
-# 66. HTTPS
+## 66. HTTPS
 
 HTTPS is essentially:
 
@@ -1482,7 +1482,7 @@ with TLS 1.3 integrated into QUIC.
 
 ---
 
-# 67. TLS 1.2 vs TLS 1.3
+## 67. TLS 1.2 vs TLS 1.3
 
 TLS 1.3 provides:
 
@@ -1504,7 +1504,7 @@ TLS 1.2 may still be required for compatibility.
 
 ---
 
-# 68. TLS 1.3 Cipher Suites
+## 68. TLS 1.3 Cipher Suites
 
 TLS 1.3 uses AEAD cipher suites such as:
 
@@ -1518,7 +1518,7 @@ Key exchange and authentication are negotiated separately from the symmetric cip
 
 ---
 
-# 69. TLS Handshake
+## 69. TLS Handshake
 
 Simplified:
 
@@ -1545,7 +1545,7 @@ Encrypted Application Data
 
 ---
 
-# 70. TLS Provides
+## 70. TLS Provides
 
 ```text
 Confidentiality
@@ -1562,7 +1562,7 @@ Application Authorization
 
 ---
 
-# 71. TLS Certificate Attack
+## 71. TLS Certificate Attack
 
 Potential issues:
 
@@ -1578,7 +1578,7 @@ Disabled Verification
 
 ---
 
-# 72. Never Disable TLS Verification
+## 72. Never Disable TLS Verification
 
 Dangerous:
 
@@ -1593,7 +1593,7 @@ This can expose the application to server impersonation and MITM attacks.
 
 ---
 
-# 73. mTLS
+## 73. mTLS
 
 Mutual TLS:
 
@@ -1615,7 +1615,7 @@ Zero Trust Architectures
 
 ---
 
-# 74. TLS Forward Secrecy
+## 74. TLS Forward Secrecy
 
 Modern TLS commonly uses ephemeral key exchange:
 
@@ -1628,7 +1628,7 @@ This helps protect previously established sessions if long-term keys are comprom
 
 ---
 
-# 75. Replay Attack
+## 75. Replay Attack
 
 A replay attack:
 
@@ -1653,7 +1653,7 @@ Server-Side State
 
 ---
 
-# 76. MITM
+## 76. MITM
 
 Man-in-the-Middle:
 
@@ -1680,7 +1680,7 @@ TLS certificate validation helps prevent server impersonation.
 
 ---
 
-# 77. Downgrade Attack
+## 77. Downgrade Attack
 
 Attacker attempts:
 
@@ -1706,7 +1706,7 @@ Mitigate through secure protocol configuration and downgrade protections.
 
 ---
 
-# 78. Brute Force
+## 78. Brute Force
 
 Trying many possible:
 
@@ -1725,7 +1725,7 @@ Search Space = 2^n
 
 ---
 
-# 79. Dictionary Attack
+## 79. Dictionary Attack
 
 Uses likely passwords:
 
@@ -1739,7 +1739,7 @@ companyname
 
 ---
 
-# 80. Credential Stuffing
+## 80. Credential Stuffing
 
 Uses previously leaked credentials:
 
@@ -1753,7 +1753,7 @@ Password reuse is the underlying enabler.
 
 ---
 
-# 81. Password Spraying
+## 81. Password Spraying
 
 Uses one/few common passwords across many accounts:
 
@@ -1765,7 +1765,7 @@ charlie → Password123
 
 ---
 
-# 82. Offline Password Cracking
+## 82. Offline Password Cracking
 
 Attacker obtains:
 
@@ -1786,7 +1786,7 @@ MFA
 
 ---
 
-# 83. Rainbow Tables
+## 83. Rainbow Tables
 
 Precomputed password-hash structures.
 
@@ -1794,7 +1794,7 @@ Unique salts make precomputed tables much less useful because each salt changes 
 
 ---
 
-# 84. Padding Oracle
+## 84. Padding Oracle
 
 Typically associated with poorly protected block-cipher constructions such as CBC.
 
@@ -1814,7 +1814,7 @@ This can leak information about plaintext.
 
 ---
 
-# 85. Timing Attack
+## 85. Timing Attack
 
 Attacker measures execution time:
 
@@ -1829,7 +1829,7 @@ Use constant-time comparison functions for sensitive comparisons.
 
 ---
 
-# 86. Constant-Time Comparison
+## 86. Constant-Time Comparison
 
 Python:
 
@@ -1853,7 +1853,7 @@ Other Security-Sensitive Values
 
 ---
 
-# 87. Side-Channel Attack
+## 87. Side-Channel Attack
 
 Examples:
 
@@ -1870,7 +1870,7 @@ Side channels exploit implementation behavior rather than directly breaking the 
 
 ---
 
-# 88. Length Extension
+## 88. Length Extension
 
 Dangerous construction:
 
@@ -1888,7 +1888,7 @@ HMAC(secret, message)
 
 ---
 
-# 89. Birthday Attack
+## 89. Birthday Attack
 
 For an n-bit hash:
 
@@ -1905,7 +1905,7 @@ SHA-256
 
 ---
 
-# 90. JWT
+## 90. JWT
 
 JWT:
 
@@ -1921,7 +1921,7 @@ HEADER.PAYLOAD.SIGNATURE
 
 ---
 
-# 91. JWT Is Not Automatically Encrypted
+## 91. JWT Is Not Automatically Encrypted
 
 A signed JWT generally contains an encoded payload that can be decoded by anyone possessing the token.
 
@@ -1937,7 +1937,7 @@ A JWE can provide encryption.
 
 ---
 
-# 92. JWT Security Checklist
+## 92. JWT Security Checklist
 
 ```text
 ☐ Verify signature
@@ -1955,7 +1955,7 @@ A JWE can provide encryption.
 
 ---
 
-# 93. JWT Algorithm Confusion
+## 93. JWT Algorithm Confusion
 
 Example:
 
@@ -1979,7 +1979,7 @@ Modern JWT library
 
 ---
 
-# 94. JWT `none`
+## 94. JWT `none`
 
 Historical vulnerability:
 
@@ -1993,7 +1993,7 @@ Modern secure libraries should reject unsafe configurations.
 
 ---
 
-# 95. JWT Claims
+## 95. JWT Claims
 
 Important claims:
 
@@ -2009,7 +2009,7 @@ jti → JWT ID
 
 ---
 
-# 96. Key Management
+## 96. Key Management
 
 Key lifecycle:
 
@@ -2031,7 +2031,7 @@ Destroy
 
 ---
 
-# 97. Key Management Principles
+## 97. Key Management Principles
 
 ```text
 Least Privilege
@@ -2048,7 +2048,7 @@ Destruction
 
 ---
 
-# 98. KMS
+## 98. KMS
 
 KMS:
 
@@ -2072,7 +2072,7 @@ Audit Logging
 
 ---
 
-# 99. HSM
+## 99. HSM
 
 HSM:
 
@@ -2092,7 +2092,7 @@ Certificate Operations
 
 ---
 
-# 100. KMS vs HSM
+## 100. KMS vs HSM
 
 | KMS | HSM |
 |---|---|
@@ -2106,7 +2106,7 @@ Cloud KMS may itself rely on HSM-backed infrastructure.
 
 ---
 
-# 101. Envelope Encryption
+## 101. Envelope Encryption
 
 Instead of encrypting all data directly with a master key:
 
@@ -2132,7 +2132,7 @@ Data Encryption Key
 
 ---
 
-# 102. Secret Management
+## 102. Secret Management
 
 Do not store production secrets in:
 
@@ -2159,7 +2159,7 @@ where appropriate.
 
 ---
 
-# 103. Secret Leak Response
+## 103. Secret Leak Response
 
 If a secret leaks:
 
@@ -2176,7 +2176,7 @@ Do not simply delete the secret from the current file and assume the problem is 
 
 ---
 
-# 104. Git Secret Exposure
+## 104. Git Secret Exposure
 
 Secrets may remain in:
 
@@ -2201,7 +2201,7 @@ Platform Secret Scanning
 
 ---
 
-# 105. Certificate Lifecycle
+## 105. Certificate Lifecycle
 
 ```text
 Generate Key
@@ -2223,7 +2223,7 @@ Revoke
 
 ---
 
-# 106. Digital Signature Properties
+## 106. Digital Signature Properties
 
 Digital signatures provide:
 
@@ -2237,7 +2237,7 @@ They can also support non-repudiation within an appropriate legal and operationa
 
 ---
 
-# 107. Signature vs HMAC
+## 107. Signature vs HMAC
 
 | HMAC | Digital Signature |
 |---|---|
@@ -2249,7 +2249,7 @@ They can also support non-repudiation within an appropriate legal and operationa
 
 ---
 
-# 108. MAC vs Encryption
+## 108. MAC vs Encryption
 
 MAC:
 
@@ -2277,7 +2277,7 @@ Authentication
 
 ---
 
-# 109. Encoding vs Encryption
+## 109. Encoding vs Encryption
 
 Base64:
 
@@ -2305,7 +2305,7 @@ Anyone can decode it.
 
 ---
 
-# 110. Obfuscation vs Encryption
+## 110. Obfuscation vs Encryption
 
 Obfuscation attempts to make information harder to understand.
 
@@ -2325,7 +2325,7 @@ Encryption
 
 ---
 
-# 111. Secure Token Generation
+## 111. Secure Token Generation
 
 Bad:
 
@@ -2355,7 +2355,7 @@ Revocation
 
 ---
 
-# 112. Cryptographic API Mistakes
+## 112. Cryptographic API Mistakes
 
 Common vulnerabilities:
 
@@ -2375,7 +2375,7 @@ Ignored Authentication Errors
 
 ---
 
-# 113. Secure Development Rules
+## 113. Secure Development Rules
 
 ```text
 Use trusted libraries.
@@ -2394,7 +2394,7 @@ Fail closed.
 
 ---
 
-# 114. Cryptographic Attack Map
+## 114. Cryptographic Attack Map
 
 ```text
 Cryptographic Attacks
@@ -2435,7 +2435,7 @@ Cryptographic Attacks
 
 ---
 
-# 115. Quantum Computing
+## 115. Quantum Computing
 
 Quantum computers use:
 
@@ -2453,7 +2453,7 @@ Interference
 
 ---
 
-# 116. Shor's Algorithm
+## 116. Shor's Algorithm
 
 Threatens:
 
@@ -2476,7 +2476,7 @@ on sufficiently capable quantum computers.
 
 ---
 
-# 117. Grover's Algorithm
+## 117. Grover's Algorithm
 
 Provides quadratic speedup for certain search problems.
 
@@ -2492,7 +2492,7 @@ Quantum:
 
 ---
 
-# 118. Quantum Impact Summary
+## 118. Quantum Impact Summary
 
 | Primitive | Quantum Effect |
 |---|---|
@@ -2508,7 +2508,7 @@ Quantum:
 
 ---
 
-# 119. Post-Quantum Cryptography
+## 119. Post-Quantum Cryptography
 
 PQC algorithms are designed to resist:
 
@@ -2528,7 +2528,7 @@ SLH-DSA
 
 ---
 
-# 120. ML-KEM
+## 120. ML-KEM
 
 Purpose:
 
@@ -2558,7 +2558,7 @@ AES-GCM
 
 ---
 
-# 121. ML-DSA
+## 121. ML-DSA
 
 Purpose:
 
@@ -2577,7 +2577,7 @@ Document Signing
 
 ---
 
-# 122. SLH-DSA
+## 122. SLH-DSA
 
 Purpose:
 
@@ -2593,7 +2593,7 @@ Hash-Based Cryptography
 
 ---
 
-# 123. Hybrid PQC
+## 123. Hybrid PQC
 
 Transitional architecture:
 
@@ -2617,7 +2617,7 @@ X25519 + ML-KEM
 
 ---
 
-# 124. Harvest Now, Decrypt Later
+## 124. Harvest Now, Decrypt Later
 
 Attack lifecycle:
 
@@ -2645,7 +2645,7 @@ Private Communications
 
 ---
 
-# 125. Crypto Agility
+## 125. Crypto Agility
 
 Design systems so:
 
@@ -2661,7 +2661,7 @@ can be changed without redesigning the entire system.
 
 ---
 
-# 126. PQC Migration
+## 126. PQC Migration
 
 Recommended high-level process:
 
@@ -2687,7 +2687,7 @@ Retire Legacy Crypto
 
 ---
 
-# 127. Modern Cryptography
+## 127. Modern Cryptography
 
 Other important technologies:
 
@@ -2706,7 +2706,7 @@ Passkeys
 
 ---
 
-# 128. Zero-Knowledge Proof
+## 128. Zero-Knowledge Proof
 
 Prove:
 
@@ -2732,7 +2732,7 @@ Secure Verification
 
 ---
 
-# 129. Homomorphic Encryption
+## 129. Homomorphic Encryption
 
 Allows computation over encrypted data.
 
@@ -2748,7 +2748,7 @@ Decrypt
 
 ---
 
-# 130. Secure Multi-Party Computation
+## 130. Secure Multi-Party Computation
 
 Multiple parties jointly compute:
 
@@ -2768,7 +2768,7 @@ to each other.
 
 ---
 
-# 131. Secret Sharing
+## 131. Secret Sharing
 
 Split a secret:
 
@@ -2792,7 +2792,7 @@ Any three shares reconstruct the secret.
 
 ---
 
-# 132. Threshold Cryptography
+## 132. Threshold Cryptography
 
 Instead of:
 
@@ -2822,7 +2822,7 @@ must authorize an operation.
 
 ---
 
-# 133. Passkeys
+## 133. Passkeys
 
 Passkeys use public-key cryptography.
 
@@ -2850,7 +2850,7 @@ Server Verification
 
 ---
 
-# 134. Passkey Advantages
+## 134. Passkey Advantages
 
 Can reduce:
 
@@ -2863,7 +2863,7 @@ Password Database Attacks
 
 ---
 
-# 135. WebAuthn
+## 135. WebAuthn
 
 WebAuthn enables:
 
@@ -2883,7 +2883,7 @@ Website
 
 ---
 
-# 136. Modern Cryptography Decision Table
+## 136. Modern Cryptography Decision Table
 
 | Requirement | Preferred Direction |
 |---|---|
@@ -2901,7 +2901,7 @@ Website
 
 ---
 
-# 137. Algorithm Quick Reference
+## 137. Algorithm Quick Reference
 
 ```text
 AES
@@ -2961,7 +2961,7 @@ SLH-DSA
 
 ---
 
-# 138. Key Size Quick Reference
+## 138. Key Size Quick Reference
 
 ```text
 AES-128
@@ -2998,7 +2998,7 @@ Cryptographic security depends on the underlying mathematical problem and constr
 
 ---
 
-# 139. Common Security Mistakes
+## 139. Common Security Mistakes
 
 ```text
 ❌ MD5 for security
@@ -3025,7 +3025,7 @@ Cryptographic security depends on the underlying mathematical problem and constr
 
 ---
 
-# 140. Secure Alternatives
+## 140. Secure Alternatives
 
 ```text
 ❌ MD5
@@ -3067,9 +3067,9 @@ Cryptographic security depends on the underlying mathematical problem and constr
 
 ---
 
-# 141. VAPT Cryptography Checklist
+## 141. VAPT Cryptography Checklist
 
-## Discovery
+### Discovery
 
 ```text
 ☐ Identify TLS endpoints
@@ -3081,7 +3081,7 @@ Cryptographic security depends on the underlying mathematical problem and constr
 ☐ Identify cryptographic protocols
 ```
 
-## Configuration
+### Configuration
 
 ```text
 ☐ TLS versions
@@ -3093,7 +3093,7 @@ Cryptographic security depends on the underlying mathematical problem and constr
 ☐ Algorithm selection
 ```
 
-## Application
+### Application
 
 ```text
 ☐ Hard-coded keys
@@ -3106,7 +3106,7 @@ Cryptographic security depends on the underlying mathematical problem and constr
 ☐ Authentication failures
 ```
 
-## Secrets
+### Secrets
 
 ```text
 ☐ Git
@@ -3117,7 +3117,7 @@ Cryptographic security depends on the underlying mathematical problem and constr
 ☐ Backups
 ```
 
-## PQC
+### PQC
 
 ```text
 ☐ RSA dependencies
@@ -3130,15 +3130,15 @@ Cryptographic security depends on the underlying mathematical problem and constr
 
 ---
 
-# 142. TLS Testing Commands
+## 142. TLS Testing Commands
 
-### OpenSSL Version
+#### OpenSSL Version
 
 ```bash
 openssl version
 ```
 
-### TLS 1.3 Test
+#### TLS 1.3 Test
 
 ```bash
 openssl s_client \
@@ -3147,7 +3147,7 @@ openssl s_client \
     -tls1_3
 ```
 
-### Nmap TLS Enumeration
+#### Nmap TLS Enumeration
 
 ```bash
 nmap --script ssl-enum-ciphers -p 443 example.com
@@ -3157,7 +3157,7 @@ Use only against systems you are authorized to test.
 
 ---
 
-# 143. Useful Cryptography Tools
+## 143. Useful Cryptography Tools
 
 ```text
 OpenSSL
@@ -3175,21 +3175,21 @@ CyberChef
 
 ---
 
-# 144. OpenSSL Useful Commands
+## 144. OpenSSL Useful Commands
 
-### List Ciphers
+#### List Ciphers
 
 ```bash
 openssl list -cipher-algorithms
 ```
 
-### List Digests
+#### List Digests
 
 ```bash
 openssl list -digest-algorithms
 ```
 
-### Inspect Certificate
+#### Inspect Certificate
 
 ```bash
 openssl x509 \
@@ -3198,7 +3198,7 @@ openssl x509 \
     -noout
 ```
 
-### Inspect TLS
+#### Inspect TLS
 
 ```bash
 openssl s_client \
@@ -3208,9 +3208,9 @@ openssl s_client \
 
 ---
 
-# 145. Python Cryptography Examples
+## 145. Python Cryptography Examples
 
-## Secure Random Token
+### Secure Random Token
 
 ```python
 import secrets
@@ -3218,7 +3218,7 @@ import secrets
 token = secrets.token_urlsafe(32)
 ```
 
-## HMAC
+### HMAC
 
 ```python
 import hmac
@@ -3231,7 +3231,7 @@ tag = hmac.new(
 ).digest()
 ```
 
-## Constant-Time Comparison
+### Constant-Time Comparison
 
 ```python
 hmac.compare_digest(
@@ -3244,7 +3244,7 @@ Use established cryptographic libraries rather than implementing primitives manu
 
 ---
 
-# 146. Password Storage Flow
+## 146. Password Storage Flow
 
 ```text
 User Password
@@ -3272,7 +3272,7 @@ Compare
 
 ---
 
-# 147. Encryption Flow
+## 147. Encryption Flow
 
 Modern application pattern:
 
@@ -3292,7 +3292,7 @@ Ciphertext + Authentication Tag
 
 ---
 
-# 148. Key Exchange Flow
+## 148. Key Exchange Flow
 
 Classical:
 
@@ -3334,7 +3334,7 @@ Traffic Keys
 
 ---
 
-# 149. Signature Flow
+## 149. Signature Flow
 
 ```text
 Message
@@ -3362,7 +3362,7 @@ Valid / Invalid
 
 ---
 
-# 150. Certificate Flow
+## 150. Certificate Flow
 
 ```text
 Server
@@ -3382,9 +3382,9 @@ Client Validates
 
 ---
 
-# 151. Cryptographic Incident Response
+## 151. Cryptographic Incident Response
 
-## Secret Leak
+### Secret Leak
 
 ```text
 Detect
@@ -3400,7 +3400,7 @@ Investigate
 Remediate
 ```
 
-## Private-Key Compromise
+### Private-Key Compromise
 
 ```text
 Revoke Certificate
@@ -3414,7 +3414,7 @@ Deploy
 Investigate Historical Exposure
 ```
 
-## Weak Password Hashing
+### Weak Password Hashing
 
 ```text
 Upgrade KDF
@@ -3428,7 +3428,7 @@ Remove Legacy Hashing
 
 ---
 
-# 152. SOC Detection Opportunities
+## 152. SOC Detection Opportunities
 
 Monitor:
 
@@ -3450,7 +3450,7 @@ Unexpected Cryptographic Library Changes
 
 ---
 
-# 153. Example SOC Detection
+## 153. Example SOC Detection
 
 Normal:
 
@@ -3488,7 +3488,7 @@ Time
 
 ---
 
-# 154. Cryptographic Security Architecture
+## 154. Cryptographic Security Architecture
 
 ```text
                   Identity
@@ -3517,7 +3517,7 @@ Client ───────► API Gateway
 
 ---
 
-# 155. Secure Cryptography Principles
+## 155. Secure Cryptography Principles
 
 ```text
 1. Do not invent cryptography.
@@ -3540,167 +3540,167 @@ Client ───────► API Gateway
 
 ---
 
-# 156. Interview One-Liners
+## 156. Interview One-Liners
 
-### What is cryptography?
+#### What is cryptography?
 
 > The science of protecting information using mathematical techniques.
 
-### What is encryption?
+#### What is encryption?
 
 > Transforming plaintext into ciphertext using a cryptographic key.
 
-### What is decryption?
+#### What is decryption?
 
 > Recovering plaintext from ciphertext using the appropriate key.
 
-### What is hashing?
+#### What is hashing?
 
 > A one-way transformation that produces a fixed-length digest.
 
-### What is symmetric encryption?
+#### What is symmetric encryption?
 
 > Encryption using the same secret key for encryption and decryption.
 
-### What is asymmetric cryptography?
+#### What is asymmetric cryptography?
 
 > Cryptography using a public/private key pair.
 
-### What is AES?
+#### What is AES?
 
 > A symmetric block cipher standardized for secure encryption.
 
-### What is AES-GCM?
+#### What is AES-GCM?
 
 > An authenticated encryption mode providing confidentiality and integrity.
 
-### What is a nonce?
+#### What is a nonce?
 
 > A value intended to be used once within a cryptographic context.
 
-### Why is nonce reuse dangerous?
+#### Why is nonce reuse dangerous?
 
 > Reusing an AEAD nonce with the same key can compromise confidentiality and integrity.
 
-### What is HMAC?
+#### What is HMAC?
 
 > A keyed message-authentication construction based on a cryptographic hash.
 
-### What is HKDF?
+#### What is HKDF?
 
 > An HMAC-based key derivation function used to derive cryptographic keys.
 
-### Why not use SHA-256 for passwords?
+#### Why not use SHA-256 for passwords?
 
 > It is too fast for password storage and enables efficient offline guessing.
 
-### What is Argon2?
+#### What is Argon2?
 
 > A password hashing/KDF family designed to make password guessing expensive.
 
-### What is RSA?
+#### What is RSA?
 
 > An asymmetric cryptographic algorithm based on integer factorization.
 
-### What is ECDH?
+#### What is ECDH?
 
 > An elliptic-curve key-agreement mechanism.
 
-### What is X25519?
+#### What is X25519?
 
 > A modern elliptic-curve Diffie-Hellman key-agreement mechanism.
 
-### What is Ed25519?
+#### What is Ed25519?
 
 > A modern elliptic-curve digital signature scheme.
 
-### What is a digital signature?
+#### What is a digital signature?
 
 > A cryptographic mechanism that allows verification of authenticity and integrity using a public key.
 
-### What is PKI?
+#### What is PKI?
 
 > The infrastructure used to manage certificates, public keys, private keys, and trust relationships.
 
-### What is TLS?
+#### What is TLS?
 
 > A protocol that provides secure communication over networks.
 
-### What is HTTPS?
+#### What is HTTPS?
 
 > HTTP protected by TLS.
 
-### What is a certificate?
+#### What is a certificate?
 
 > A signed credential that binds an identity to a public key.
 
-### What is MITM?
+#### What is MITM?
 
 > An attack where an adversary positions themselves between communicating parties.
 
-### What is a replay attack?
+#### What is a replay attack?
 
 > Reusing a previously valid message or request.
 
-### What is a padding oracle?
+#### What is a padding oracle?
 
 > A vulnerability where observable padding-validation behavior leaks information about encrypted data.
 
-### What is a timing attack?
+#### What is a timing attack?
 
 > An attack that extracts information from measurable execution-time differences.
 
-### What is JWT?
+#### What is JWT?
 
 > A token format commonly used to carry signed claims.
 
-### Is JWT encrypted?
+#### Is JWT encrypted?
 
 > Not necessarily; ordinary signed JWTs are encoded and signed, not encrypted.
 
-### What is algorithm confusion?
+#### What is algorithm confusion?
 
 > A vulnerability where an application verifies cryptographic data using an unintended algorithm.
 
-### What is forward secrecy?
+#### What is forward secrecy?
 
 > Protection of previous session secrets even if a long-term key is compromised later.
 
-### What is quantum-resistant cryptography?
+#### What is quantum-resistant cryptography?
 
 > Cryptography designed to resist attacks from sufficiently capable quantum computers.
 
-### What is Shor's algorithm?
+#### What is Shor's algorithm?
 
 > A quantum algorithm that threatens factorization- and discrete-log-based public-key cryptography.
 
-### What is Grover's algorithm?
+#### What is Grover's algorithm?
 
 > A quantum algorithm providing a quadratic speedup for certain search problems.
 
-### What is ML-KEM?
+#### What is ML-KEM?
 
 > A standardized post-quantum key encapsulation mechanism.
 
-### What is ML-DSA?
+#### What is ML-DSA?
 
 > A standardized post-quantum digital signature algorithm.
 
-### What is SLH-DSA?
+#### What is SLH-DSA?
 
 > A standardized hash-based post-quantum digital signature algorithm.
 
-### What is crypto agility?
+#### What is crypto agility?
 
 > The ability to replace cryptographic algorithms and parameters without major system redesign.
 
-### What is HNDL?
+#### What is HNDL?
 
 > Harvest Now, Decrypt Later: capturing encrypted information today for possible future decryption.
 
 ---
 
-# 157. Most Important Numbers
+## 157. Most Important Numbers
 
 ```text
 AES block size
@@ -3742,7 +3742,7 @@ These are simplified theoretical security estimates, not direct predictions of p
 
 ---
 
-# 158. Most Important Relationships
+## 158. Most Important Relationships
 
 ```text
 AES
@@ -3799,7 +3799,7 @@ SLH-DSA
 
 ---
 
-# 159. What to Use vs What to Avoid
+## 159. What to Use vs What to Avoid
 
 | Requirement | Use | Avoid |
 |---|---|---|
@@ -3820,7 +3820,7 @@ SLH-DSA
 
 ---
 
-# 160. Final Cryptography Mind Map
+## 160. Final Cryptography Mind Map
 
 ```text
 CRYPTOGRAPHY
@@ -3912,7 +3912,7 @@ CRYPTOGRAPHY
 
 ---
 
-# 161. Final 30-Second Revision
+## 161. Final 30-Second Revision
 
 ```text
 Symmetric
@@ -4008,7 +4008,7 @@ HNDL
 
 ---
 
-# 162. Golden Rules of Cryptography
+## 162. Golden Rules of Cryptography
 
 ```text
 1. Never implement cryptographic primitives yourself.
@@ -4084,7 +4084,7 @@ HNDL
 
 ---
 
-# 163. Final Mental Model
+## 163. Final Mental Model
 
 The entire subject can be reduced to:
 

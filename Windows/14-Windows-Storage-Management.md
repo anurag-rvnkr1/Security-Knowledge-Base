@@ -1,10 +1,10 @@
 # 14-Windows-Storage-Management.md
 
-# Part 1 — Windows Storage Fundamentals, Storage Architecture, Disks, Partitions, Volumes, and File Systems
+## Part 1 — Windows Storage Fundamentals, Storage Architecture, Disks, Partitions, Volumes, and File Systems
 
 ---
 
-# Introduction
+## Introduction
 
 Storage is one of the most fundamental components of every computer system.
 
@@ -34,7 +34,7 @@ Understanding Windows storage is essential for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -51,7 +51,7 @@ By the end of this section, you will understand:
 
 ---
 
-# Windows Storage Architecture
+## Windows Storage Architecture
 
 Windows storage follows a layered architecture.
 
@@ -83,7 +83,7 @@ Each layer performs a specific function, allowing Windows to support different s
 
 ---
 
-# What is Storage?
+## What is Storage?
 
 Storage refers to hardware used to permanently retain digital information.
 
@@ -102,7 +102,7 @@ Unlike RAM, storage is **non-volatile**, meaning data remains available after po
 
 ---
 
-# Storage Hierarchy
+## Storage Hierarchy
 
 ```text
 Physical Disk
@@ -128,7 +128,7 @@ Understanding this hierarchy is fundamental for storage administration.
 
 ---
 
-# Types of Storage Devices
+## Types of Storage Devices
 
 Common storage technologies include:
 
@@ -147,7 +147,7 @@ Each technology offers different performance, capacity, and reliability characte
 
 ---
 
-# Hard Disk Drive (HDD)
+## Hard Disk Drive (HDD)
 
 An HDD stores data on rotating magnetic platters.
 
@@ -176,7 +176,7 @@ Disadvantages:
 
 ---
 
-# Solid State Drive (SSD)
+## Solid State Drive (SSD)
 
 An SSD stores data in flash memory.
 
@@ -197,7 +197,7 @@ Typical enterprise uses:
 
 ---
 
-# NVMe SSD
+## NVMe SSD
 
 NVMe (Non-Volatile Memory Express) uses the PCI Express (PCIe) interface.
 
@@ -212,7 +212,7 @@ NVMe devices are common in modern enterprise servers and workstations.
 
 ---
 
-# Internal vs External Storage
+## Internal vs External Storage
 
 | Internal Storage | External Storage |
 |------------------|------------------|
@@ -223,7 +223,7 @@ NVMe devices are common in modern enterprise servers and workstations.
 
 ---
 
-# Direct-Attached Storage (DAS)
+## Direct-Attached Storage (DAS)
 
 Direct-Attached Storage connects directly to a computer.
 
@@ -248,7 +248,7 @@ Storage Device
 
 ---
 
-# Network Storage
+## Network Storage
 
 Storage can also be accessed over a network.
 
@@ -274,7 +274,7 @@ These technologies support centralized storage management.
 
 ---
 
-# Physical Disk
+## Physical Disk
 
 A **physical disk** is the actual hardware device.
 
@@ -292,7 +292,7 @@ Windows identifies physical disks independently from partitions or volumes.
 
 ---
 
-# Logical Storage
+## Logical Storage
 
 Windows creates logical storage structures on physical disks.
 
@@ -318,7 +318,7 @@ Users typically interact with logical volumes rather than physical disks.
 
 ---
 
-# What is a Partition?
+## What is a Partition?
 
 A **partition** is a defined section of a physical disk.
 
@@ -338,7 +338,7 @@ Each partition can be formatted independently.
 
 ---
 
-# Why Use Partitions?
+## Why Use Partitions?
 
 Partitions allow administrators to:
 
@@ -352,7 +352,7 @@ Multiple partitions can exist on a single physical disk.
 
 ---
 
-# What is a Volume?
+## What is a Volume?
 
 A **volume** is a formatted storage area that Windows can use to store files.
 
@@ -383,7 +383,7 @@ Volumes contain:
 
 ---
 
-# Volume vs Partition
+## Volume vs Partition
 
 | Partition | Volume |
 |-----------|--------|
@@ -395,7 +395,7 @@ Although often used interchangeably, these terms describe different concepts.
 
 ---
 
-# Drive Letters
+## Drive Letters
 
 Windows typically assigns drive letters to accessible volumes.
 
@@ -424,7 +424,7 @@ Drive letters can be changed by administrators where appropriate.
 
 ---
 
-# Mount Points
+## Mount Points
 
 Instead of assigning a drive letter, Windows can mount a volume within an existing folder.
 
@@ -442,7 +442,7 @@ Advantages:
 
 ---
 
-# File Systems
+## File Systems
 
 A file system defines how data is stored and organized.
 
@@ -459,7 +459,7 @@ Without a file system, Windows cannot organize stored information.
 
 ---
 
-# Common Windows File Systems
+## Common Windows File Systems
 
 | File System | Typical Use |
 |-------------|-------------|
@@ -472,7 +472,7 @@ Each file system offers different capabilities.
 
 ---
 
-# NTFS
+## NTFS
 
 NTFS (New Technology File System) is the default Windows file system.
 
@@ -489,7 +489,7 @@ NTFS is recommended for most Windows installations.
 
 ---
 
-# FAT32
+## FAT32
 
 FAT32 offers broad compatibility.
 
@@ -506,7 +506,7 @@ Limitations:
 
 ---
 
-# exFAT
+## exFAT
 
 exFAT is designed primarily for removable storage.
 
@@ -518,7 +518,7 @@ Benefits:
 
 ---
 
-# ReFS (Resilient File System)
+## ReFS (Resilient File System)
 
 ReFS is designed for resilience and scalability in supported Windows Server editions and selected Windows scenarios.
 
@@ -532,7 +532,7 @@ Availability depends on Windows edition and deployment scenario.
 
 ---
 
-# Storage Capacity Units
+## Storage Capacity Units
 
 | Unit | Approximate Value |
 |------|-------------------|
@@ -546,7 +546,7 @@ Storage manufacturers and operating systems may display capacities using differe
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A database server uses:
 
@@ -586,7 +586,7 @@ Separating workloads improves performance and simplifies maintenance.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Storage management plays a significant role in cybersecurity.
 
@@ -603,7 +603,7 @@ Proper storage management supports both security and compliance.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-managed storage provides:
 
@@ -618,7 +618,7 @@ Poor storage planning can affect application availability and business continuit
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use SSDs or NVMe drives for performance-critical workloads.
 - Separate operating system, application, and data volumes where practical.
@@ -630,9 +630,9 @@ Poor storage planning can affect application availability and business continuit
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Installed Disks
+### Lab 1 — View Installed Disks
 
 Open:
 
@@ -651,7 +651,7 @@ Do not make changes on production systems.
 
 ---
 
-## Lab 2 — Identify File Systems
+### Lab 2 — Identify File Systems
 
 Open **File Explorer**.
 
@@ -672,7 +672,7 @@ Record:
 
 ---
 
-## Lab 3 — Identify Storage Devices
+### Lab 3 — Identify Storage Devices
 
 Using **Device Manager** or **Disk Management**, list:
 
@@ -684,7 +684,7 @@ Record their capacities and purpose.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows storage is organized into physical disks, partitions, volumes, and file systems.
 - NTFS is the primary Windows file system, while FAT32, exFAT, and ReFS serve specialized roles.
@@ -694,7 +694,7 @@ Record their capacities and purpose.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between a physical disk and a volume?
 2. What is a partition?
@@ -709,7 +709,7 @@ Record their capacities and purpose.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Storage Documentation
@@ -720,13 +720,13 @@ Record their capacities and purpose.
 
 ---
 
-# 14-Windows-Storage-Management.md
+## 14-Windows-Storage-Management.md
 
-# Part 2 — Disk Initialization, MBR vs GPT, Basic Disks, Dynamic Disks, Disk Management, and Storage Configuration
+## Part 2 — Disk Initialization, MBR vs GPT, Basic Disks, Dynamic Disks, Disk Management, and Storage Configuration
 
 ---
 
-# Introduction
+## Introduction
 
 Before Windows can store data on a new disk, the disk must be prepared.
 
@@ -767,7 +767,7 @@ Understanding these steps is essential for:
 
 ---
 
-# Storage Provisioning Workflow
+## Storage Provisioning Workflow
 
 A new storage device usually follows this sequence:
 
@@ -799,7 +799,7 @@ Each step prepares the storage for normal operation.
 
 ---
 
-# Disk Initialization
+## Disk Initialization
 
 A newly installed disk appears as **Unknown** and **Not Initialized** in Disk Management.
 
@@ -809,7 +809,7 @@ After initialization, Windows can create partitions on the disk.
 
 ---
 
-# Why Initialize a Disk?
+## Why Initialize a Disk?
 
 Initialization enables Windows to:
 
@@ -823,7 +823,7 @@ Without initialization, Windows cannot use the disk for normal storage.
 
 ---
 
-# Partition Styles
+## Partition Styles
 
 Windows supports two primary partition styles:
 
@@ -836,7 +836,7 @@ The appropriate choice depends on hardware, firmware, and storage requirements.
 
 ---
 
-# Master Boot Record (MBR)
+## Master Boot Record (MBR)
 
 MBR is the traditional partitioning scheme.
 
@@ -851,7 +851,7 @@ MBR remains compatible with legacy systems but has several limitations.
 
 ---
 
-# MBR Structure
+## MBR Structure
 
 Simplified layout:
 
@@ -869,7 +869,7 @@ Damage to the MBR can affect system bootability.
 
 ---
 
-# GUID Partition Table (GPT)
+## GUID Partition Table (GPT)
 
 GPT is the modern partitioning standard.
 
@@ -885,7 +885,7 @@ GPT is recommended for most modern Windows installations.
 
 ---
 
-# GPT Structure
+## GPT Structure
 
 Simplified representation:
 
@@ -917,7 +917,7 @@ The backup header improves resilience against metadata corruption.
 
 ---
 
-# MBR vs GPT
+## MBR vs GPT
 
 | Feature | MBR | GPT |
 |----------|-----|-----|
@@ -931,7 +931,7 @@ For new deployments, GPT is generally the preferred choice.
 
 ---
 
-# BIOS vs UEFI
+## BIOS vs UEFI
 
 Partition style is closely related to system firmware.
 
@@ -946,7 +946,7 @@ Many modern Windows systems use UEFI with GPT.
 
 ---
 
-# Basic Disks
+## Basic Disks
 
 A **Basic Disk** is the default storage type in Windows.
 
@@ -961,7 +961,7 @@ Most Windows installations use Basic Disks.
 
 ---
 
-# Basic Disk Structure
+## Basic Disk Structure
 
 ```text
 Disk
@@ -977,7 +977,7 @@ Each partition can contain one formatted volume.
 
 ---
 
-# Dynamic Disks
+## Dynamic Disks
 
 Dynamic Disks provide advanced storage capabilities.
 
@@ -992,7 +992,7 @@ Dynamic Disks are intended for specialized use cases and have compatibility cons
 
 ---
 
-# Basic vs Dynamic Disks
+## Basic vs Dynamic Disks
 
 | Feature | Basic | Dynamic |
 |----------|--------|----------|
@@ -1005,7 +1005,7 @@ Basic Disks are sufficient for most environments.
 
 ---
 
-# Reserved Partitions
+## Reserved Partitions
 
 Windows may automatically create small reserved partitions during installation.
 
@@ -1019,7 +1019,7 @@ These partitions support boot, recovery, and system management functions.
 
 ---
 
-# EFI System Partition (ESP)
+## EFI System Partition (ESP)
 
 On UEFI systems, the EFI System Partition stores boot-related files.
 
@@ -1045,7 +1045,7 @@ The ESP is critical for system startup.
 
 ---
 
-# Recovery Partition
+## Recovery Partition
 
 Windows often creates a recovery partition containing recovery tools.
 
@@ -1059,7 +1059,7 @@ The recovery partition assists with system recovery after failures.
 
 ---
 
-# Formatting a Volume
+## Formatting a Volume
 
 Formatting prepares a partition with a file system.
 
@@ -1074,7 +1074,7 @@ Formatting also creates the file system metadata required to store files.
 
 ---
 
-# Quick Format vs Full Format
+## Quick Format vs Full Format
 
 | Quick Format | Full Format |
 |--------------|-------------|
@@ -1086,7 +1086,7 @@ A full format typically takes longer than a quick format.
 
 ---
 
-# Drive Letter Assignment
+## Drive Letter Assignment
 
 After formatting, Windows usually assigns a drive letter automatically.
 
@@ -1108,7 +1108,7 @@ Administrators can modify drive letter assignments if necessary.
 
 ---
 
-# Mounting Without a Drive Letter
+## Mounting Without a Drive Letter
 
 Instead of:
 
@@ -1126,7 +1126,7 @@ This approach is common on servers hosting many volumes.
 
 ---
 
-# Disk Management
+## Disk Management
 
 Windows includes the **Disk Management** console.
 
@@ -1150,7 +1150,7 @@ Disk Management provides a graphical interface for storage administration.
 
 ---
 
-# Disk Management Interface
+## Disk Management Interface
 
 Typical information displayed:
 
@@ -1165,7 +1165,7 @@ This information assists with planning and troubleshooting.
 
 ---
 
-# DiskPart
+## DiskPart
 
 `diskpart` is a powerful command-line storage management utility.
 
@@ -1191,7 +1191,7 @@ DiskPart should be used carefully because many operations take effect immediatel
 
 ---
 
-# Selecting a Disk
+## Selecting a Disk
 
 Example:
 
@@ -1205,7 +1205,7 @@ Always verify the selected disk before making changes.
 
 ---
 
-# Viewing Volumes
+## Viewing Volumes
 
 Within DiskPart:
 
@@ -1227,7 +1227,7 @@ This helps identify available storage before performing administrative tasks.
 
 ---
 
-# Extending a Volume
+## Extending a Volume
 
 If adjacent unallocated space exists, Windows may allow a volume to be extended.
 
@@ -1253,7 +1253,7 @@ Not all layouts support online extension.
 
 ---
 
-# Shrinking a Volume
+## Shrinking a Volume
 
 Windows can reduce the size of certain volumes.
 
@@ -1279,7 +1279,7 @@ The amount of shrinkable space depends on file placement and other factors.
 
 ---
 
-# Unallocated Space
+## Unallocated Space
 
 Unallocated space is disk capacity that is not assigned to any partition.
 
@@ -1295,7 +1295,7 @@ Unallocated space can be used to create new partitions or extend eligible volume
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A file server receives an additional 4 TB disk.
 
@@ -1329,7 +1329,7 @@ This approach supports large storage capacities and modern firmware.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Storage configuration affects security.
 
@@ -1345,7 +1345,7 @@ Improper disk configuration may expose sensitive data or reduce system resilienc
 
 ---
 
-# Business Impact
+## Business Impact
 
 Correct storage provisioning provides:
 
@@ -1359,7 +1359,7 @@ Improper partitioning or formatting can delay deployments and complicate recover
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use GPT for modern Windows installations.
 - Prefer UEFI firmware on supported hardware.
@@ -1371,9 +1371,9 @@ Improper partitioning or formatting can delay deployments and complicate recover
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Partition Style
+### Lab 1 — View Partition Style
 
 Open:
 
@@ -1400,7 +1400,7 @@ Identify whether the disk uses:
 
 ---
 
-## Lab 2 — Review Reserved Partitions
+### Lab 2 — Review Reserved Partitions
 
 Using **Disk Management**, identify:
 
@@ -1412,7 +1412,7 @@ Document their approximate sizes and purposes.
 
 ---
 
-## Lab 3 — Explore DiskPart
+### Lab 3 — Explore DiskPart
 
 Open **Command Prompt** as Administrator.
 
@@ -1442,7 +1442,7 @@ to leave DiskPart.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - New disks must be initialized before use.
 - Windows supports MBR and GPT partition styles, with GPT recommended for modern systems.
@@ -1453,7 +1453,7 @@ to leave DiskPart.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is disk initialization?
 2. What is the difference between MBR and GPT?
@@ -1468,7 +1468,7 @@ to leave DiskPart.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Storage Documentation
@@ -1479,13 +1479,13 @@ to leave DiskPart.
 
 ---
 
-# 14-Windows-Storage-Management.md
+## 14-Windows-Storage-Management.md
 
-# Part 3 — Storage Spaces, RAID, Disk Quotas, Encryption, Storage Optimization, Monitoring, and Enterprise Storage Administration
+## Part 3 — Storage Spaces, RAID, Disk Quotas, Encryption, Storage Optimization, Monitoring, and Enterprise Storage Administration
 
 ---
 
-# Introduction
+## Introduction
 
 Modern Windows storage management extends far beyond creating partitions and assigning drive letters.
 
@@ -1504,7 +1504,7 @@ Windows includes numerous technologies that help administrators build reliable a
 
 ---
 
-# Storage Spaces
+## Storage Spaces
 
 **Storage Spaces** is a Windows storage virtualization technology.
 
@@ -1542,7 +1542,7 @@ Applications see a single logical storage device while Windows manages the under
 
 ---
 
-# Benefits of Storage Spaces
+## Benefits of Storage Spaces
 
 Advantages include:
 
@@ -1557,7 +1557,7 @@ Storage Spaces is commonly used in Windows Server and advanced Windows deploymen
 
 ---
 
-# Storage Pool
+## Storage Pool
 
 A **Storage Pool** is a collection of physical disks.
 
@@ -1579,7 +1579,7 @@ Administrators can add additional disks to the pool as storage requirements grow
 
 ---
 
-# Virtual Disk
+## Virtual Disk
 
 A **Virtual Disk** is created from a storage pool.
 
@@ -1603,7 +1603,7 @@ The virtual disk appears to Windows like a standard disk.
 
 ---
 
-# Storage Spaces Resiliency Types
+## Storage Spaces Resiliency Types
 
 Windows supports multiple resiliency options.
 
@@ -1617,7 +1617,7 @@ The appropriate option depends on workload requirements.
 
 ---
 
-# Simple Space
+## Simple Space
 
 A **Simple Space** stores data across disks without redundancy.
 
@@ -1649,7 +1649,7 @@ Suitable only for non-critical workloads.
 
 ---
 
-# Mirror Space
+## Mirror Space
 
 Mirror Spaces duplicate data across multiple disks.
 
@@ -1677,7 +1677,7 @@ Common for business-critical workloads.
 
 ---
 
-# Parity Space
+## Parity Space
 
 Parity Spaces store parity information that can be used to recover data after certain disk failures.
 
@@ -1712,7 +1712,7 @@ Often used for archival and backup workloads.
 
 ---
 
-# Thin Provisioning
+## Thin Provisioning
 
 Thin provisioning allows Windows to allocate storage on demand.
 
@@ -1736,7 +1736,7 @@ Additional physical storage is added as utilization increases.
 
 ---
 
-# RAID
+## RAID
 
 **RAID (Redundant Array of Independent Disks)** combines multiple disks for:
 
@@ -1753,7 +1753,7 @@ RAID can be implemented through:
 
 ---
 
-# RAID Levels
+## RAID Levels
 
 Common RAID levels include:
 
@@ -1767,7 +1767,7 @@ Common RAID levels include:
 
 ---
 
-# RAID 0 (Striping)
+## RAID 0 (Striping)
 
 ```text
 Disk 1
@@ -1799,7 +1799,7 @@ Disadvantages:
 
 ---
 
-# RAID 1 (Mirroring)
+## RAID 1 (Mirroring)
 
 ```text
 Disk 1
@@ -1826,7 +1826,7 @@ Disadvantages:
 
 ---
 
-# RAID 5
+## RAID 5
 
 RAID 5 distributes parity across disks.
 
@@ -1858,7 +1858,7 @@ Disadvantages:
 
 ---
 
-# RAID 10
+## RAID 10
 
 RAID 10 combines mirroring and striping.
 
@@ -1883,7 +1883,7 @@ Common in:
 
 ---
 
-# Windows Disk Quotas
+## Windows Disk Quotas
 
 Disk Quotas allow administrators to limit storage usage.
 
@@ -1897,7 +1897,7 @@ Quotas help prevent individual users from consuming excessive disk space.
 
 ---
 
-# Quota Example
+## Quota Example
 
 ```text
 User A
@@ -1915,7 +1915,7 @@ When limits are reached, administrators can warn users or prevent additional sto
 
 ---
 
-# Enable Disk Quotas
+## Enable Disk Quotas
 
 Typical workflow:
 
@@ -1935,7 +1935,7 @@ Quota settings are available only on supported file systems such as NTFS.
 
 ---
 
-# Compression
+## Compression
 
 Windows supports file and folder compression.
 
@@ -1951,7 +1951,7 @@ Trade-off:
 
 ---
 
-# NTFS Compression
+## NTFS Compression
 
 Characteristics:
 
@@ -1963,7 +1963,7 @@ Not all workloads benefit from compression, particularly those already compresse
 
 ---
 
-# Encrypting File System (EFS)
+## Encrypting File System (EFS)
 
 EFS encrypts files stored on NTFS volumes.
 
@@ -1995,7 +1995,7 @@ Limitations:
 
 ---
 
-# BitLocker
+## BitLocker
 
 BitLocker provides **full-volume encryption**.
 
@@ -2010,7 +2010,7 @@ BitLocker is recommended for laptops and many enterprise endpoints.
 
 ---
 
-# BitLocker Workflow
+## BitLocker Workflow
 
 ```text
 Disk
@@ -2036,7 +2036,7 @@ Unauthorized users cannot easily access encrypted data by removing the drive.
 
 ---
 
-# Storage Optimization
+## Storage Optimization
 
 Windows automatically performs storage optimization tasks.
 
@@ -2051,7 +2051,7 @@ Optimization helps maintain storage performance over time.
 
 ---
 
-# TRIM
+## TRIM
 
 TRIM allows the operating system to inform SSDs about unused blocks.
 
@@ -2075,7 +2075,7 @@ TRIM contributes to long-term SSD performance and lifespan.
 
 ---
 
-# Disk Cleanup
+## Disk Cleanup
 
 Windows can reclaim storage by removing unnecessary files.
 
@@ -2090,7 +2090,7 @@ Storage Sense can automate many cleanup tasks.
 
 ---
 
-# Storage Sense
+## Storage Sense
 
 Storage Sense automatically frees disk space.
 
@@ -2105,7 +2105,7 @@ Administrators can configure Storage Sense through Settings or enterprise manage
 
 ---
 
-# Monitoring Disk Usage
+## Monitoring Disk Usage
 
 Administrators should monitor:
 
@@ -2120,7 +2120,7 @@ Regular monitoring helps prevent unexpected outages due to full disks.
 
 ---
 
-# Performance Monitor
+## Performance Monitor
 
 Windows Performance Monitor can monitor storage metrics.
 
@@ -2137,7 +2137,7 @@ These counters assist in diagnosing storage bottlenecks.
 
 ---
 
-# Resource Monitor
+## Resource Monitor
 
 Resource Monitor provides real-time visibility into storage activity.
 
@@ -2152,7 +2152,7 @@ Useful during performance troubleshooting.
 
 ---
 
-# Enterprise Storage Monitoring
+## Enterprise Storage Monitoring
 
 Typical monitoring workflow:
 
@@ -2184,7 +2184,7 @@ Monitoring platforms help identify issues before users experience service degrad
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An organization deploys a new file server.
 
@@ -2226,7 +2226,7 @@ This design balances performance, resilience, and security.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Storage technologies play an important role in cybersecurity.
 
@@ -2244,7 +2244,7 @@ Storage security is a critical component of defense-in-depth.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective storage administration provides:
 
@@ -2259,7 +2259,7 @@ Poor storage planning can result in data loss, service outages, and increased re
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use Storage Spaces for scalable storage deployments where appropriate.
 - Prefer RAID levels that match workload and availability requirements.
@@ -2272,9 +2272,9 @@ Poor storage planning can result in data loss, service outages, and increased re
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review BitLocker Status
+### Lab 1 — Review BitLocker Status
 
 Open:
 
@@ -2294,7 +2294,7 @@ Identify:
 
 ---
 
-## Lab 2 — Review Disk Quotas
+### Lab 2 — Review Disk Quotas
 
 Right-click an NTFS volume.
 
@@ -2312,7 +2312,7 @@ Review available quota settings without making changes.
 
 ---
 
-## Lab 3 — Open Performance Monitor
+### Lab 3 — Open Performance Monitor
 
 Run:
 
@@ -2330,7 +2330,7 @@ Add disk-related counters and observe activity during file transfers.
 
 ---
 
-## Lab 4 — Review Storage Sense
+### Lab 4 — Review Storage Sense
 
 Open:
 
@@ -2354,7 +2354,7 @@ Review available cleanup options and automation settings.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Storage Spaces enables flexible, resilient storage pools and virtual disks.
 - RAID improves performance and/or fault tolerance depending on the selected level.
@@ -2365,7 +2365,7 @@ Review available cleanup options and automation settings.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Storage Spaces?
 2. What is the difference between a storage pool and a virtual disk?
@@ -2380,7 +2380,7 @@ Review available cleanup options and automation settings.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Storage Spaces Documentation
@@ -2391,13 +2391,13 @@ Review available cleanup options and automation settings.
 
 ---
 
-# 14-Windows-Storage-Management.md
+## 14-Windows-Storage-Management.md
 
-# Part 4 — Enterprise Storage Best Practices, Backup, Recovery, Troubleshooting, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Storage Best Practices, Backup, Recovery, Troubleshooting, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise storage management is not limited to creating disks and monitoring capacity.
 
@@ -2415,7 +2415,7 @@ This section focuses on enterprise storage operations, backup strategies, disast
 
 ---
 
-# Storage Lifecycle
+## Storage Lifecycle
 
 Storage follows a lifecycle throughout its deployment.
 
@@ -2455,7 +2455,7 @@ Proper lifecycle management reduces operational risk and improves long-term reli
 
 ---
 
-# Storage Capacity Planning
+## Storage Capacity Planning
 
 Capacity planning helps organizations anticipate future storage needs.
 
@@ -2472,7 +2472,7 @@ Capacity planning should be proactive rather than reactive.
 
 ---
 
-# Storage Performance Planning
+## Storage Performance Planning
 
 Performance depends on several factors.
 
@@ -2489,7 +2489,7 @@ Proper planning ensures storage meets workload requirements.
 
 ---
 
-# Backup Fundamentals
+## Backup Fundamentals
 
 Backups protect organizations against:
 
@@ -2505,7 +2505,7 @@ Backups should be tested regularly to ensure successful recovery.
 
 ---
 
-# Types of Backups
+## Types of Backups
 
 | Backup Type | Description |
 |--------------|-------------|
@@ -2517,7 +2517,7 @@ Choosing the right backup strategy depends on recovery objectives and available 
 
 ---
 
-# Full Backup
+## Full Backup
 
 ```text
 All Files
@@ -2543,7 +2543,7 @@ Disadvantages:
 
 ---
 
-# Incremental Backup
+## Incremental Backup
 
 ```text
 Day 1
@@ -2578,7 +2578,7 @@ Recovery requires the full backup and all subsequent incremental backups.
 
 ---
 
-# Differential Backup
+## Differential Backup
 
 ```text
 Day 1
@@ -2608,7 +2608,7 @@ Recovery requires the full backup and the most recent differential backup.
 
 ---
 
-# 3-2-1 Backup Strategy
+## 3-2-1 Backup Strategy
 
 A widely recommended approach is the **3-2-1 rule**.
 
@@ -2628,7 +2628,7 @@ This strategy improves resilience against hardware failures and site-level disas
 
 ---
 
-# Recovery Point Objective (RPO)
+## Recovery Point Objective (RPO)
 
 **Recovery Point Objective (RPO)** defines the maximum acceptable amount of data loss.
 
@@ -2644,7 +2644,7 @@ Lower RPO values generally require more frequent backups or replication.
 
 ---
 
-# Recovery Time Objective (RTO)
+## Recovery Time Objective (RTO)
 
 **Recovery Time Objective (RTO)** defines the maximum acceptable recovery time after an outage.
 
@@ -2660,7 +2660,7 @@ RTO influences infrastructure design and disaster recovery planning.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Disaster recovery focuses on restoring storage and services after major failures.
 
@@ -2694,7 +2694,7 @@ Recovery procedures should be documented and tested periodically.
 
 ---
 
-# Backup Verification
+## Backup Verification
 
 A backup is only valuable if it can be restored successfully.
 
@@ -2710,7 +2710,7 @@ Regular recovery testing helps identify issues before a real incident occurs.
 
 ---
 
-# Storage Troubleshooting Methodology
+## Storage Troubleshooting Methodology
 
 Use a structured troubleshooting process.
 
@@ -2750,7 +2750,7 @@ Following a repeatable process improves efficiency and reduces downtime.
 
 ---
 
-# Common Storage Issues
+## Common Storage Issues
 
 Examples include:
 
@@ -2767,7 +2767,7 @@ Early detection helps minimize operational impact.
 
 ---
 
-# Disk Not Detected
+## Disk Not Detected
 
 Possible causes:
 
@@ -2787,7 +2787,7 @@ Troubleshooting steps:
 
 ---
 
-# Disk Full
+## Disk Full
 
 Symptoms:
 
@@ -2806,7 +2806,7 @@ Resolution:
 
 ---
 
-# File System Corruption
+## File System Corruption
 
 Possible indicators:
 
@@ -2827,7 +2827,7 @@ Run maintenance commands during appropriate maintenance windows where required.
 
 ---
 
-# CHKDSK
+## CHKDSK
 
 **Check Disk (CHKDSK)** verifies file system integrity.
 
@@ -2842,7 +2842,7 @@ CHKDSK is commonly used after improper shutdowns or storage issues.
 
 ---
 
-# SFC (System File Checker)
+## SFC (System File Checker)
 
 Verify protected Windows system files:
 
@@ -2854,7 +2854,7 @@ SFC repairs corrupted operating system files but does **not** repair user docume
 
 ---
 
-# DISM
+## DISM
 
 Deployment Image Servicing and Management (DISM) repairs the Windows component store.
 
@@ -2872,7 +2872,7 @@ A common repair sequence is:
 
 ---
 
-# Event Viewer
+## Event Viewer
 
 Storage-related events may appear in:
 
@@ -2890,7 +2890,7 @@ Event logs provide valuable diagnostic information.
 
 ---
 
-# Storage Monitoring
+## Storage Monitoring
 
 Regular monitoring should include:
 
@@ -2905,7 +2905,7 @@ Continuous monitoring supports proactive maintenance.
 
 ---
 
-# Enterprise Storage Architecture Example
+## Enterprise Storage Architecture Example
 
 ```text
 Users
@@ -2939,7 +2939,7 @@ This layered design improves availability and recoverability.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Storage security is critical because sensitive business data resides on storage systems.
 
@@ -2957,7 +2957,7 @@ Compromised storage can lead to data breaches, ransomware impact, or loss of bus
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective storage administration provides:
 
@@ -2972,7 +2972,7 @@ Storage failures can interrupt critical services, delay business operations, and
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Implement the 3-2-1 backup strategy.
 - Test backup restoration regularly.
@@ -2986,9 +2986,9 @@ Storage failures can interrupt critical services, delay business operations, and
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Review Disk Health
+### Lab 1 — Review Disk Health
 
 Open:
 
@@ -3008,7 +3008,7 @@ Look for storage-related warnings or errors.
 
 ---
 
-## Lab 2 — Check Free Disk Space
+### Lab 2 — Check Free Disk Space
 
 Open:
 
@@ -3030,7 +3030,7 @@ Determine whether additional storage planning may be needed.
 
 ---
 
-## Lab 3 — Run System File Checker
+### Lab 3 — Run System File Checker
 
 Open **Command Prompt** as Administrator.
 
@@ -3044,7 +3044,7 @@ Observe the scan results.
 
 ---
 
-## Lab 4 — Create a Backup Strategy
+### Lab 4 — Create a Backup Strategy
 
 Design a backup plan for a fictional company that includes:
 
@@ -3058,7 +3058,7 @@ Document your reasoning.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3088,7 +3088,7 @@ These concepts form the foundation for managing Windows storage in desktop, serv
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - GPT is the preferred partition style for modern Windows systems.
 - NTFS is the standard Windows file system for most workloads.
@@ -3099,7 +3099,7 @@ These concepts form the foundation for managing Windows storage in desktop, serv
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between MBR and GPT?
 2. Explain the difference between a partition and a volume.
@@ -3114,7 +3114,7 @@ These concepts form the foundation for managing Windows storage in desktop, serv
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Storage Documentation
@@ -3126,7 +3126,7 @@ These concepts form the foundation for managing Windows storage in desktop, serv
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 14 – Windows Storage Management**.
 

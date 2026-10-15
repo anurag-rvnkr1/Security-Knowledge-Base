@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A basic SIEM architecture can be represented as:
 
@@ -45,7 +45,7 @@ Security
 
 ---
 
-# 2. SIEM as a System
+## 2. SIEM as a System
 
 A SIEM can be viewed as several logical layers:
 
@@ -71,7 +71,7 @@ A SIEM can be viewed as several logical layers:
 
 ---
 
-# 3. Core SIEM Components
+## 3. Core SIEM Components
 
 A typical SIEM may contain:
 
@@ -102,7 +102,7 @@ Not every SIEM exposes these as separate services.
 
 ---
 
-# 4. Data Sources
+## 4. Data Sources
 
 The architecture begins with telemetry sources.
 
@@ -126,7 +126,7 @@ Each produces different data formats and volumes.
 
 ---
 
-# 5. Collection Layer
+## 5. Collection Layer
 
 The collection layer obtains telemetry.
 
@@ -160,7 +160,7 @@ Collector
 
 ---
 
-# 6. Collector
+## 6. Collector
 
 A collector is responsible for receiving or retrieving telemetry.
 
@@ -179,7 +179,7 @@ Basic Parsing
 
 ---
 
-# 7. Collector Architecture
+## 7. Collector Architecture
 
 Small environment:
 
@@ -205,7 +205,7 @@ Central Processing
 
 ---
 
-# 8. Regional Collectors
+## 8. Regional Collectors
 
 Global organizations may deploy collectors close to data sources.
 
@@ -236,7 +236,7 @@ Data Residency Support
 
 ---
 
-# 9. Forwarders
+## 9. Forwarders
 
 A forwarder transfers telemetry from one component to another.
 
@@ -262,7 +262,7 @@ Routing
 
 ---
 
-# 10. Ingestion Layer
+## 10. Ingestion Layer
 
 The ingestion layer receives telemetry into the SIEM pipeline.
 
@@ -287,7 +287,7 @@ Backpressure
 
 ---
 
-# 11. Message Queue
+## 11. Message Queue
 
 Large environments often use a message queue.
 
@@ -311,7 +311,7 @@ The specific technology depends on architecture.
 
 ---
 
-# 12. Why Use a Queue?
+## 12. Why Use a Queue?
 
 Without a queue:
 
@@ -343,7 +343,7 @@ The queue can temporarily retain events while consumers recover.
 
 ---
 
-# 13. Queue Benefits
+## 13. Queue Benefits
 
 A queue can provide:
 
@@ -358,7 +358,7 @@ Load Distribution
 
 ---
 
-# 14. Queue Partitioning
+## 14. Queue Partitioning
 
 Large systems may partition events.
 
@@ -376,7 +376,7 @@ Consumers can process partitions in parallel.
 
 ---
 
-# 15. Processing Layer
+## 15. Processing Layer
 
 The processing layer transforms incoming data.
 
@@ -409,7 +409,7 @@ Validate
 
 ---
 
-# 16. Parsing Engine
+## 16. Parsing Engine
 
 The parser understands source-specific formats.
 
@@ -430,7 +430,7 @@ event.action
 
 ---
 
-# 17. Normalization Engine
+## 17. Normalization Engine
 
 The normalization layer maps source-specific fields to common fields.
 
@@ -452,7 +452,7 @@ This enables cross-source detection.
 
 ---
 
-# 18. Enrichment Engine
+## 18. Enrichment Engine
 
 The enrichment layer adds context.
 
@@ -476,7 +476,7 @@ Critical Server
 
 ---
 
-# 19. Processing Pipeline Example
+## 19. Processing Pipeline Example
 
 ```text
 RAW EVENT
@@ -500,7 +500,7 @@ Index
 
 ---
 
-# 20. Storage Layer
+## 20. Storage Layer
 
 The SIEM must store security data.
 
@@ -518,7 +518,7 @@ Audit Logs
 
 ---
 
-# 21. Why Storage Matters
+## 21. Why Storage Matters
 
 Stored telemetry supports:
 
@@ -534,7 +534,7 @@ Trend Analysis
 
 ---
 
-# 22. Indexing
+## 22. Indexing
 
 An index makes large volumes of data searchable.
 
@@ -570,7 +570,7 @@ Fast Retrieval
 
 ---
 
-# 23. Search Engine
+## 23. Search Engine
 
 The search layer allows analysts to query telemetry.
 
@@ -596,7 +596,7 @@ Statistical Analysis
 
 ---
 
-# 24. Search vs Detection
+## 24. Search vs Detection
 
 Search:
 
@@ -620,7 +620,7 @@ within 5 minutes.
 
 ---
 
-# 25. Detection Engine
+## 25. Detection Engine
 
 The detection engine evaluates telemetry against security logic.
 
@@ -636,7 +636,7 @@ Alert
 
 ---
 
-# 26. Detection Rule
+## 26. Detection Rule
 
 Example:
 
@@ -659,7 +659,7 @@ This may identify password spraying behavior.
 
 ---
 
-# 27. Correlation Engine
+## 27. Correlation Engine
 
 Correlation combines related events.
 
@@ -683,7 +683,7 @@ Potential Account Compromise
 
 ---
 
-# 28. Correlation vs Detection
+## 28. Correlation vs Detection
 
 Detection:
 
@@ -701,7 +701,7 @@ Modern SIEMs often combine both concepts.
 
 ---
 
-# 29. Alert Manager
+## 29. Alert Manager
 
 The alert manager handles generated alerts.
 
@@ -720,7 +720,7 @@ Escalation
 
 ---
 
-# 30. Alert Grouping
+## 30. Alert Grouping
 
 Suppose:
 
@@ -751,7 +751,7 @@ This reduces analyst workload.
 
 ---
 
-# 31. Alert Deduplication
+## 31. Alert Deduplication
 
 If the same detection fires repeatedly:
 
@@ -771,7 +771,7 @@ Alert Fatigue
 
 ---
 
-# 32. Risk Scoring
+## 32. Risk Scoring
 
 Some architectures calculate risk.
 
@@ -798,7 +798,7 @@ Higher Priority
 
 ---
 
-# 33. Entity Risk
+## 33. Entity Risk
 
 Risk can be associated with entities:
 
@@ -829,7 +829,7 @@ Suspicious Login
 
 ---
 
-# 34. Dashboard Layer
+## 34. Dashboard Layer
 
 Dashboards provide visual summaries.
 
@@ -848,7 +848,7 @@ Detection Coverage
 
 ---
 
-# 35. SOC Dashboard
+## 35. SOC Dashboard
 
 A SOC dashboard might contain:
 
@@ -878,7 +878,7 @@ Cloud
 
 ---
 
-# 36. Case Management
+## 36. Case Management
 
 Alerts often become investigations.
 
@@ -914,7 +914,7 @@ Resolution
 
 ---
 
-# 37. SIEM APIs
+## 37. SIEM APIs
 
 Modern SIEM platforms often expose APIs.
 
@@ -942,7 +942,7 @@ Retrieve Alert
 
 ---
 
-# 38. SIEM and SOAR Architecture
+## 38. SIEM and SOAR Architecture
 
 ```text
                   SIEM
@@ -963,7 +963,7 @@ Retrieve Alert
 
 ---
 
-# 39. Administration Layer
+## 39. Administration Layer
 
 Administrative functions include:
 
@@ -983,7 +983,7 @@ This layer must be strongly protected.
 
 ---
 
-# 40. RBAC
+## 40. RBAC
 
 **Role-Based Access Control**
 
@@ -1011,7 +1011,7 @@ Least Privilege
 
 ---
 
-# 41. Multi-Tenancy
+## 41. Multi-Tenancy
 
 Managed security providers may monitor multiple customers.
 
@@ -1029,7 +1029,7 @@ Strong logical isolation is required.
 
 ---
 
-# 42. Data Isolation
+## 42. Data Isolation
 
 Different customers or business units may require:
 
@@ -1044,7 +1044,7 @@ The exact design depends on requirements.
 
 ---
 
-# 43. SIEM Deployment Models
+## 43. SIEM Deployment Models
 
 Common models:
 
@@ -1057,7 +1057,7 @@ Managed SIEM
 
 ---
 
-# 44. On-Premises Architecture
+## 44. On-Premises Architecture
 
 ```text
                     Enterprise
@@ -1079,7 +1079,7 @@ Managed SIEM
 
 ---
 
-# 45. Cloud SIEM Architecture
+## 45. Cloud SIEM Architecture
 
 ```text
 Cloud Sources
@@ -1113,7 +1113,7 @@ Cloud Integrations
 
 ---
 
-# 46. Hybrid Architecture
+## 46. Hybrid Architecture
 
 ```text
 On-Prem
@@ -1135,7 +1135,7 @@ Cloud Connectors  │
 
 ---
 
-# 47. High Availability
+## 47. High Availability
 
 A production SIEM should avoid single points of failure.
 
@@ -1157,7 +1157,7 @@ Visibility = 0
 
 ---
 
-# 48. High Availability Architecture
+## 48. High Availability Architecture
 
 Better:
 
@@ -1176,7 +1176,7 @@ Better:
 
 ---
 
-# 49. Failover
+## 49. Failover
 
 If:
 
@@ -1208,7 +1208,7 @@ Processing Node 2
 
 ---
 
-# 50. Disaster Recovery
+## 50. Disaster Recovery
 
 A SIEM should have a recovery strategy.
 
@@ -1226,7 +1226,7 @@ Threat Intelligence Backup
 
 ---
 
-# 51. Recovery Point Objective
+## 51. Recovery Point Objective
 
 **RPO** answers:
 
@@ -1242,7 +1242,7 @@ Means the architecture aims to limit recoverable data loss to approximately that
 
 ---
 
-# 52. Recovery Time Objective
+## 52. Recovery Time Objective
 
 **RTO** answers:
 
@@ -1258,7 +1258,7 @@ The organization aims to restore service within that target.
 
 ---
 
-# 53. SIEM Scalability
+## 53. SIEM Scalability
 
 A SIEM must scale across:
 
@@ -1274,7 +1274,7 @@ Log Sources
 
 ---
 
-# 54. EPS
+## 54. EPS
 
 **Events Per Second**
 
@@ -1300,7 +1300,7 @@ Event size, indexing, retention, query load, enrichment, and detection complexit
 
 ---
 
-# 55. Query Load
+## 55. Query Load
 
 Two environments may ingest:
 
@@ -1328,7 +1328,7 @@ The second may require substantially more analytics capacity.
 
 ---
 
-# 56. Storage Capacity
+## 56. Storage Capacity
 
 Storage requirements depend on:
 
@@ -1344,7 +1344,7 @@ Hot/Warm/Cold Strategy
 
 ---
 
-# 57. Retention
+## 57. Retention
 
 Retention defines how long data is kept.
 
@@ -1376,7 +1376,7 @@ Risk
 
 ---
 
-# 58. Cost Optimization
+## 58. Cost Optimization
 
 SIEM cost can be controlled through:
 
@@ -1395,7 +1395,7 @@ But cost optimization must not destroy critical security visibility.
 
 ---
 
-# 59. Data Pipeline Bottlenecks
+## 59. Data Pipeline Bottlenecks
 
 Common bottlenecks:
 
@@ -1413,7 +1413,7 @@ Detection
 
 ---
 
-# 60. Bottleneck Example
+## 60. Bottleneck Example
 
 Suppose:
 
@@ -1447,7 +1447,7 @@ Reduce Expensive Enrichment
 
 ---
 
-# 61. Caching
+## 61. Caching
 
 Repeated enrichment requests can be expensive.
 
@@ -1479,7 +1479,7 @@ Cache freshness requirements must be considered.
 
 ---
 
-# 62. Distributed Processing
+## 62. Distributed Processing
 
 Large SIEM platforms may distribute work:
 
@@ -1504,7 +1504,7 @@ Fault Tolerance
 
 ---
 
-# 63. Detection Scheduling
+## 63. Detection Scheduling
 
 Detections may execute:
 
@@ -1532,7 +1532,7 @@ Search Last 10 Minutes
 
 ---
 
-# 64. Real-Time Detection
+## 64. Real-Time Detection
 
 ```text
 Event
@@ -1559,7 +1559,7 @@ Higher Processing Cost
 
 ---
 
-# 65. Scheduled Detection
+## 65. Scheduled Detection
 
 ```text
 Events
@@ -1584,7 +1584,7 @@ Periodic Threat Hunting
 
 ---
 
-# 66. Correlation Windows
+## 66. Correlation Windows
 
 A detection may look across a time window.
 
@@ -1611,7 +1611,7 @@ Potential Brute Force
 
 ---
 
-# 67. Sliding Windows
+## 67. Sliding Windows
 
 A sliding window continuously evaluates recent events.
 
@@ -1642,7 +1642,7 @@ Flooding
 
 ---
 
-# 68. Stateful Detection
+## 68. Stateful Detection
 
 Some detections maintain state.
 
@@ -1666,9 +1666,9 @@ The detection tracks the sequence over time.
 
 ---
 
-# 69. Stateless vs Stateful Detection
+## 69. Stateless vs Stateful Detection
 
-### Stateless
+#### Stateless
 
 Each event evaluated independently.
 
@@ -1677,7 +1677,7 @@ IF event.action = malware_detection
 THEN alert
 ```
 
-### Stateful
+#### Stateful
 
 Multiple events and historical state are considered.
 
@@ -1693,7 +1693,7 @@ Stateful detection can identify more complex behaviors.
 
 ---
 
-# 70. Event Correlation Architecture
+## 70. Event Correlation Architecture
 
 ```text
                  EVENTS
@@ -1715,7 +1715,7 @@ Stateful detection can identify more complex behaviors.
 
 ---
 
-# 71. Investigation Layer
+## 71. Investigation Layer
 
 Analysts need:
 
@@ -1733,7 +1733,7 @@ A SIEM architecture should optimize not only data ingestion but also analyst inv
 
 ---
 
-# 72. Timeline View
+## 72. Timeline View
 
 Example:
 
@@ -1750,7 +1750,7 @@ This helps analysts understand the attack sequence.
 
 ---
 
-# 73. Entity-Centric Investigation
+## 73. Entity-Centric Investigation
 
 Instead of searching only by event:
 
@@ -1778,7 +1778,7 @@ Cases
 
 ---
 
-# 74. SIEM Data Pipeline Summary
+## 74. SIEM Data Pipeline Summary
 
 ```text
                  SOURCES
@@ -1826,17 +1826,17 @@ Cases
 
 ---
 
-# 75. Security of the SIEM Architecture
+## 75. Security of the SIEM Architecture
 
 Protect every layer.
 
-## Source
+### Source
 
 ```text
 Secure Logging
 ```
 
-## Collector
+### Collector
 
 ```text
 Authentication
@@ -1844,20 +1844,20 @@ Encryption
 Hardening
 ```
 
-## Queue
+### Queue
 
 ```text
 Access Control
 Encryption
 ```
 
-## Processing
+### Processing
 
 ```text
 Least Privilege
 ```
 
-## Storage
+### Storage
 
 ```text
 Encryption
@@ -1865,20 +1865,20 @@ RBAC
 Integrity
 ```
 
-## Search
+### Search
 
 ```text
 Authentication
 Authorization
 ```
 
-## Detection
+### Detection
 
 ```text
 Change Control
 ```
 
-## Administration
+### Administration
 
 ```text
 MFA
@@ -1888,7 +1888,7 @@ Audit Logs
 
 ---
 
-# 76. SIEM as a High-Value Target
+## 76. SIEM as a High-Value Target
 
 A SIEM may contain:
 
@@ -1918,7 +1918,7 @@ Therefore:
 
 ---
 
-# 77. SIEM Monitoring Itself
+## 77. SIEM Monitoring Itself
 
 The SIEM should monitor:
 
@@ -1943,7 +1943,7 @@ SIEM Platform Monitoring
 
 ---
 
-# 78. Detection Engineering Pipeline
+## 78. Detection Engineering Pipeline
 
 A mature architecture supports:
 
@@ -1965,7 +1965,7 @@ Versioning
 
 ---
 
-# 79. Detection-as-Code Concept
+## 79. Detection-as-Code Concept
 
 Detection rules can be managed like software:
 
@@ -1993,7 +1993,7 @@ Automation
 
 ---
 
-# 80. Configuration Management
+## 80. Configuration Management
 
 Important SIEM configurations include:
 
@@ -2013,7 +2013,7 @@ Configuration changes should be controlled and audited.
 
 ---
 
-# 81. Change Management
+## 81. Change Management
 
 Example:
 
@@ -2033,7 +2033,7 @@ Avoid uncontrolled production changes.
 
 ---
 
-# 82. SIEM Architecture Best Practices
+## 82. SIEM Architecture Best Practices
 
 ```text
 1. Design for failure.
@@ -2079,7 +2079,7 @@ Avoid uncontrolled production changes.
 
 ---
 
-# 83. Practical Architecture Exercise
+## 83. Practical Architecture Exercise
 
 Design a SIEM for:
 
@@ -2115,7 +2115,7 @@ Alerting
 
 ---
 
-# 84. Example Architecture
+## 84. Example Architecture
 
 ```text
 Windows ───────┐
@@ -2162,71 +2162,71 @@ Cloud ─────────┤
 
 ---
 
-# 85. Interview Questions
+## 85. Interview Questions
 
-### What are the main components of a SIEM?
+#### What are the main components of a SIEM?
 
 > Data sources, collection, ingestion, processing, parsing, normalization, enrichment, storage, indexing, search, detection, correlation, alerting, investigation, and administration.
 
-### Why use a message queue?
+#### Why use a message queue?
 
 > To buffer events, decouple producers and consumers, handle bursts, improve resilience, and enable scalable processing.
 
-### What is a collector?
+#### What is a collector?
 
 > A component that receives or retrieves telemetry from one or more data sources and forwards it into the SIEM pipeline.
 
-### What is the difference between collector and forwarder?
+#### What is the difference between collector and forwarder?
 
 > A collector generally receives or gathers telemetry, while a forwarder primarily transfers telemetry between components. In some products their responsibilities overlap.
 
-### Why is indexing important?
+#### Why is indexing important?
 
 > It enables efficient searching across large volumes of security data.
 
-### What is high availability?
+#### What is high availability?
 
 > Designing the system so that failure of one component does not cause unacceptable service interruption.
 
-### What is horizontal scaling?
+#### What is horizontal scaling?
 
 > Adding additional processing or storage nodes to increase capacity.
 
-### What is vertical scaling?
+#### What is vertical scaling?
 
 > Increasing CPU, memory, storage, or other resources of an existing node.
 
-### What is EPS?
+#### What is EPS?
 
 > Events Per Second, a measure of telemetry ingestion volume.
 
-### What is RPO?
+#### What is RPO?
 
 > Recovery Point Objective, representing the maximum acceptable amount of data loss measured in time.
 
-### What is RTO?
+#### What is RTO?
 
 > Recovery Time Objective, representing the target time for restoring a service after disruption.
 
-### Why is a SIEM a high-value target?
+#### Why is a SIEM a high-value target?
 
 > Because it contains security telemetry, investigation evidence, detection logic, and potentially sensitive organizational information.
 
-### What is the role of a detection engine?
+#### What is the role of a detection engine?
 
 > It evaluates telemetry against defined security logic and generates alerts when suspicious conditions are identified.
 
-### What is correlation?
+#### What is correlation?
 
 > Combining multiple events or signals to identify relationships and higher-level security behavior.
 
-### What is case management?
+#### What is case management?
 
 > The process of organizing alerts, evidence, investigation notes, tasks, and response actions into an incident or investigation record.
 
 ---
 
-# 86. Quick Revision
+## 86. Quick Revision
 
 ```text
 SOURCE
@@ -2283,7 +2283,7 @@ SOAR
 
 ---
 
-# 87. Golden Rules
+## 87. Golden Rules
 
 ```text
 1. A SIEM is a system of components, not simply a database.
@@ -2329,7 +2329,7 @@ SOAR
 
 ---
 
-# 88. Chapter Summary
+## 88. Chapter Summary
 
 The most important architectural model is:
 

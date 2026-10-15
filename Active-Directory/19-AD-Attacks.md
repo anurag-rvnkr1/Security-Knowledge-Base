@@ -1,6 +1,6 @@
 # 19-AD-Attacks.md
 
-# Part 1 — Introduction to Active Directory Attacks, Attack Lifecycle, Initial Access, Identity Attacks and Defensive Understanding
+## Part 1 — Introduction to Active Directory Attacks, Attack Lifecycle, Initial Access, Identity Attacks and Defensive Understanding
 
 > **Important Note**
 >
@@ -8,7 +8,7 @@
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -25,7 +25,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Modern cyber attacks frequently target **identity systems** rather than individual computers.
 
@@ -42,7 +42,7 @@ it often becomes the primary objective after an attacker gains an initial footho
 
 ---
 
-# Why Attackers Target Active Directory
+## Why Attackers Target Active Directory
 
 An attacker interested in Active Directory may seek to:
 
@@ -57,7 +57,7 @@ Understanding these objectives enables defenders to implement appropriate securi
 
 ---
 
-# Active Directory Attack Lifecycle
+## Active Directory Attack Lifecycle
 
 A simplified attack lifecycle can be represented as:
 
@@ -105,7 +105,7 @@ Security teams should aim to detect and disrupt activity at every stage.
 
 ---
 
-# Enterprise Attack Surface
+## Enterprise Attack Surface
 
 ```
               Active Directory
@@ -133,7 +133,7 @@ Every connected identity and system contributes to the overall attack surface.
 
 ---
 
-# Common Attack Goals
+## Common Attack Goals
 
 Attackers generally attempt to:
 
@@ -147,7 +147,7 @@ These goals are not unique to Active Directory but are particularly impactful wi
 
 ---
 
-# Initial Access
+## Initial Access
 
 Initial access refers to the first successful entry into an organization's environment.
 
@@ -163,7 +163,7 @@ Initial access does **not** necessarily imply compromise of Active Directory its
 
 ---
 
-# Example Attack Progression
+## Example Attack Progression
 
 ```
 Compromised Workstation
@@ -193,7 +193,7 @@ Each stage provides defenders with opportunities to detect and contain the activ
 
 ---
 
-# Identity-Based Attacks
+## Identity-Based Attacks
 
 Modern attacks frequently focus on identities instead of infrastructure alone.
 
@@ -209,7 +209,7 @@ Protecting identities significantly improves enterprise resilience.
 
 ---
 
-# Credential Abuse (Conceptual)
+## Credential Abuse (Conceptual)
 
 Credential abuse involves the unauthorized use of valid credentials.
 
@@ -224,7 +224,7 @@ Strong credential hygiene helps reduce this risk.
 
 ---
 
-# Privilege Escalation (Conceptual)
+## Privilege Escalation (Conceptual)
 
 Privilege escalation occurs when an attacker attempts to obtain permissions beyond those originally available.
 
@@ -246,7 +246,7 @@ Preventing excessive privilege and monitoring administrative changes are key def
 
 ---
 
-# Lateral Movement (Conceptual)
+## Lateral Movement (Conceptual)
 
 After gaining access to one system, an attacker may attempt to move to additional systems.
 
@@ -272,7 +272,7 @@ Network segmentation, monitoring, and least privilege help reduce lateral moveme
 
 ---
 
-# Persistence (Conceptual)
+## Persistence (Conceptual)
 
 Persistence refers to maintaining unauthorized access after an initial compromise.
 
@@ -287,7 +287,7 @@ Regular reviews and auditing help identify persistence mechanisms.
 
 ---
 
-# Defense-in-Depth Against AD Attacks
+## Defense-in-Depth Against AD Attacks
 
 ```
 Security Awareness
@@ -329,7 +329,7 @@ Multiple layers of defense increase the likelihood of detecting and stopping att
 
 ---
 
-# MITRE ATT&CK Alignment
+## MITRE ATT&CK Alignment
 
 Many Active Directory attacks align with tactics documented in the MITRE ATT&CK framework, including:
 
@@ -345,7 +345,7 @@ Using a common framework helps defenders organize detection and response strateg
 
 ---
 
-# High-Value Assets
+## High-Value Assets
 
 The following systems require the highest level of protection:
 
@@ -369,7 +369,7 @@ Compromise of these assets can have organization-wide consequences.
 
 ---
 
-# Early Warning Indicators
+## Early Warning Indicators
 
 Security teams should investigate:
 
@@ -386,7 +386,7 @@ These indicators may have legitimate causes but warrant investigation.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -420,7 +420,7 @@ When suspicious privileged logon activity is detected, the SOC:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Defenders should focus on:
 
@@ -436,13 +436,13 @@ Understanding attacker objectives allows defenders to deploy effective preventiv
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Map potential attack paths from a defender's perspective.
 
-### Step 1
+#### Step 1
 
 Identify:
 
@@ -453,7 +453,7 @@ Identify:
 
 ---
 
-### Step 2
+#### Step 2
 
 Review:
 
@@ -465,13 +465,13 @@ Document any unusual observations.
 
 ---
 
-### Step 3
+#### Step 3
 
 Create a simple attack lifecycle diagram for your lab environment and identify where security controls exist.
 
 ---
 
-### Step 4
+#### Step 4
 
 List three controls that could detect:
 
@@ -481,51 +481,51 @@ List three controls that could detect:
 
 ---
 
-### Step 5
+#### Step 5
 
 Recommend improvements based on your findings.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is Active Directory a common target?
+#### Q1: Why is Active Directory a common target?
 
 **Answer:** Because it manages authentication, authorization, identities, and privileged access across the enterprise, making it a high-value target.
 
 ---
 
-### Q2: What is meant by the attack lifecycle?
+#### Q2: What is meant by the attack lifecycle?
 
 **Answer:** It describes the progression of an attack from initial access through privilege escalation, lateral movement, persistence, and the attacker's objectives.
 
 ---
 
-### Q3: Why are privileged accounts attractive targets?
+#### Q3: Why are privileged accounts attractive targets?
 
 **Answer:** They provide elevated permissions that can significantly increase an attacker's access if compromised.
 
 ---
 
-### Q4: What is lateral movement?
+#### Q4: What is lateral movement?
 
 **Answer:** Lateral movement is an attacker's attempt to move from one compromised system to additional systems within the environment.
 
 ---
 
-### Q5: What is persistence?
+#### Q5: What is persistence?
 
 **Answer:** Persistence refers to techniques used to maintain unauthorized access after an initial compromise.
 
 ---
 
-### Q6: How can organizations reduce Active Directory attack risk?
+#### Q6: How can organizations reduce Active Directory attack risk?
 
 **Answer:** By applying least privilege, administrative tiering, strong authentication, monitoring, logging, security baselines, and regular security reviews.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Protect Tier 0 assets with the strongest controls.
 - Enable comprehensive logging and monitoring.
@@ -538,7 +538,7 @@ Recommend improvements based on your findings.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Granting excessive administrative privileges.
 - Ignoring authentication anomalies.
@@ -549,7 +549,7 @@ Recommend improvements based on your findings.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory is a primary target because it controls enterprise identity and access.
 - Understanding the attack lifecycle helps defenders deploy layered security controls.
@@ -559,9 +559,9 @@ Recommend improvements based on your findings.
 
 ---
 
-# 19-AD-Attacks.md
+## 19-AD-Attacks.md
 
-# Part 2 — Active Directory Attack Categories, Misconfigurations, Credential Theft Risks and Defensive Detection
+## Part 2 — Active Directory Attack Categories, Misconfigurations, Credential Theft Risks and Defensive Detection
 
 > **Important Note**
 >
@@ -569,7 +569,7 @@ Recommend improvements based on your findings.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -585,7 +585,7 @@ After completing this part, you will understand:
 
 ---
 
-# Active Directory Attack Categories
+## Active Directory Attack Categories
 
 Most attacks against Active Directory fall into one or more of the following categories.
 
@@ -611,7 +611,7 @@ Understanding these categories helps security teams prioritize defenses.
 
 ---
 
-# Identity-Centric Attacks
+## Identity-Centric Attacks
 
 Instead of attacking infrastructure directly, many modern attackers target identities.
 
@@ -627,7 +627,7 @@ Protecting identities is often more effective than focusing solely on network bo
 
 ---
 
-# Misconfiguration Risks
+## Misconfiguration Risks
 
 Many compromises originate from insecure configurations rather than software vulnerabilities.
 
@@ -645,7 +645,7 @@ Regular configuration reviews reduce these risks.
 
 ---
 
-# Configuration Risk Model
+## Configuration Risk Model
 
 ```
 Poor Configuration
@@ -671,7 +671,7 @@ Business Impact
 
 ---
 
-# Credential Theft Risks
+## Credential Theft Risks
 
 Credentials remain one of the most valuable assets in an enterprise.
 
@@ -689,7 +689,7 @@ Organizations should focus on preventing credential exposure rather than assumin
 
 ---
 
-# Password-Based Attacks (Conceptual)
+## Password-Based Attacks (Conceptual)
 
 Password attacks attempt to obtain valid authentication credentials.
 
@@ -709,7 +709,7 @@ Defensive controls include:
 
 ---
 
-# Kerberos-Related Risks (High Level)
+## Kerberos-Related Risks (High Level)
 
 Kerberos provides secure authentication for Active Directory.
 
@@ -726,7 +726,7 @@ Defenders should monitor authentication activity and apply current security reco
 
 ---
 
-# Kerberos Security Workflow
+## Kerberos Security Workflow
 
 ```
 User Requests Access
@@ -756,7 +756,7 @@ Monitoring authentication events helps identify abnormal behavior.
 
 ---
 
-# LDAP Security Risks
+## LDAP Security Risks
 
 LDAP is used to access directory information.
 
@@ -776,7 +776,7 @@ Recommended protections:
 
 ---
 
-# Group Policy Risks
+## Group Policy Risks
 
 Because Group Policy can affect thousands of systems, it must be protected carefully.
 
@@ -796,7 +796,7 @@ Mitigations:
 
 ---
 
-# Service Account Risks
+## Service Account Risks
 
 Service accounts frequently require elevated permissions.
 
@@ -816,7 +816,7 @@ Recommended practices:
 
 ---
 
-# Administrative Group Risks
+## Administrative Group Risks
 
 Privileged groups require continuous oversight.
 
@@ -844,7 +844,7 @@ Privilege accumulation should be avoided.
 
 ---
 
-# Legacy Protocol Risks
+## Legacy Protocol Risks
 
 Older protocols and legacy configurations may increase organizational risk.
 
@@ -858,7 +858,7 @@ Organizations should follow vendor guidance when planning upgrades and decommiss
 
 ---
 
-# Monitoring Strategy
+## Monitoring Strategy
 
 Security monitoring should focus on:
 
@@ -875,7 +875,7 @@ These events provide valuable visibility into identity-related activity.
 
 ---
 
-# Detection Workflow
+## Detection Workflow
 
 ```
 Security Event
@@ -905,7 +905,7 @@ Automation can improve detection speed, while human analysis provides context.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -931,7 +931,7 @@ This structured approach improves both operational resilience and security.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Defenders should prioritize:
 
@@ -946,13 +946,13 @@ Strong operational practices significantly reduce opportunities for attackers.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Perform a defensive review of Active Directory security settings.
 
-### Step 1
+#### Step 1
 
 Review password policy settings.
 
@@ -964,7 +964,7 @@ Document:
 
 ---
 
-### Step 2
+#### Step 2
 
 Review privileged groups.
 
@@ -976,7 +976,7 @@ Identify:
 
 ---
 
-### Step 3
+#### Step 3
 
 Review service accounts.
 
@@ -988,7 +988,7 @@ Document:
 
 ---
 
-### Step 4
+#### Step 4
 
 Review Group Policy permissions.
 
@@ -996,51 +996,51 @@ Verify that only authorized administrators can modify critical GPOs.
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a prioritized remediation list for any identified risks.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why are misconfigurations a major security concern?
+#### Q1: Why are misconfigurations a major security concern?
 
 **Answer:** Misconfigurations can unintentionally expose sensitive resources or grant excessive permissions, increasing the organization's attack surface.
 
 ---
 
-### Q2: Why should service accounts be reviewed regularly?
+#### Q2: Why should service accounts be reviewed regularly?
 
 **Answer:** Regular reviews help ensure service accounts remain necessary, properly documented, appropriately privileged, and securely managed.
 
 ---
 
-### Q3: Why is monitoring authentication activity important?
+#### Q3: Why is monitoring authentication activity important?
 
 **Answer:** Authentication events can reveal unusual behavior, unauthorized access attempts, and potential account compromise.
 
 ---
 
-### Q4: Why should privileged group memberships be reviewed?
+#### Q4: Why should privileged group memberships be reviewed?
 
 **Answer:** To ensure only authorized users retain elevated permissions and to prevent privilege accumulation over time.
 
 ---
 
-### Q5: Why is Group Policy considered a high-value administrative target?
+#### Q5: Why is Group Policy considered a high-value administrative target?
 
 **Answer:** Because a single Group Policy change can affect large numbers of users and systems across the environment.
 
 ---
 
-### Q6: What is the primary goal of Active Directory monitoring?
+#### Q6: What is the primary goal of Active Directory monitoring?
 
 **Answer:** To detect suspicious identity-related activity early so defenders can investigate and respond before significant impact occurs.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Review configurations regularly.
 - Protect privileged identities.
@@ -1053,7 +1053,7 @@ Create a prioritized remediation list for any identified risks.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Leaving excessive permissions in place.
 - Failing to inventory service accounts.
@@ -1064,7 +1064,7 @@ Create a prioritized remediation list for any identified risks.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Many Active Directory compromises stem from identity abuse and configuration weaknesses rather than software flaws.
 - Credential protection, configuration management, and continuous monitoring are essential defensive practices.
@@ -1073,9 +1073,9 @@ Create a prioritized remediation list for any identified risks.
 
 ---
 
-# 19-AD-Attacks.md
+## 19-AD-Attacks.md
 
-# Part 3 — Detection Engineering, Logging, Threat Hunting, Hardening Against Active Directory Attacks and Defensive Response
+## Part 3 — Detection Engineering, Logging, Threat Hunting, Hardening Against Active Directory Attacks and Defensive Response
 
 > **Important Note**
 >
@@ -1083,7 +1083,7 @@ Create a prioritized remediation list for any identified risks.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1100,7 +1100,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Prevention alone cannot stop every attack.
 
@@ -1115,7 +1115,7 @@ This philosophy is often referred to as **Assume Breach**.
 
 ---
 
-# Security Monitoring Lifecycle
+## Security Monitoring Lifecycle
 
 ```
 Collect Logs
@@ -1159,7 +1159,7 @@ Improve Detection
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Detection engineering is the process of designing, testing, and maintaining security detections.
 
@@ -1175,7 +1175,7 @@ Detection rules should evolve as the environment changes.
 
 ---
 
-# Log Sources
+## Log Sources
 
 Important Active Directory log sources include:
 
@@ -1191,7 +1191,7 @@ Important Active Directory log sources include:
 
 ---
 
-# Centralized Logging
+## Centralized Logging
 
 ```
 Domain Controllers
@@ -1225,7 +1225,7 @@ Centralized logging enables enterprise-wide visibility.
 
 ---
 
-# Active Directory Auditing
+## Active Directory Auditing
 
 Organizations should audit important administrative actions.
 
@@ -1244,7 +1244,7 @@ Auditing provides accountability and supports investigations.
 
 ---
 
-# Security Event Prioritization
+## Security Event Prioritization
 
 ```
 Critical
@@ -1270,7 +1270,7 @@ High-priority events should receive faster investigation and response.
 
 ---
 
-# Indicators of Compromise (IOCs)
+## Indicators of Compromise (IOCs)
 
 Indicators of Compromise are artifacts suggesting a system **may have been compromised**.
 
@@ -1286,7 +1286,7 @@ IOCs often indicate that an attacker has already established some level of acces
 
 ---
 
-# Indicators of Attack (IOAs)
+## Indicators of Attack (IOAs)
 
 Indicators of Attack focus on **behavior** rather than artifacts.
 
@@ -1302,7 +1302,7 @@ Behavior-based detection can identify attacks earlier than artifact-based detect
 
 ---
 
-# Example Detection Workflow
+## Example Detection Workflow
 
 ```
 Authentication Event
@@ -1330,7 +1330,7 @@ Analyst Investigation
 
 ---
 
-# Threat Hunting
+## Threat Hunting
 
 Threat hunting is a proactive activity performed by security teams.
 
@@ -1346,7 +1346,7 @@ Threat hunting complements automated detection.
 
 ---
 
-# Threat Hunting Process
+## Threat Hunting Process
 
 ```
 Hypothesis
@@ -1374,7 +1374,7 @@ Improve Detection Rules
 
 ---
 
-# Authentication Monitoring
+## Authentication Monitoring
 
 Authentication monitoring should include:
 
@@ -1389,7 +1389,7 @@ Authentication data often provides the earliest indication of identity abuse.
 
 ---
 
-# Administrative Change Monitoring
+## Administrative Change Monitoring
 
 Monitor changes involving:
 
@@ -1405,7 +1405,7 @@ Unexpected changes should be reviewed promptly.
 
 ---
 
-# Service Account Monitoring
+## Service Account Monitoring
 
 Service accounts should be monitored for:
 
@@ -1419,7 +1419,7 @@ Maintain a documented inventory of all service accounts.
 
 ---
 
-# Hardening Strategy
+## Hardening Strategy
 
 ```
 Strong Authentication
@@ -1453,7 +1453,7 @@ Hardening reduces opportunities for attackers while improving detection capabili
 
 ---
 
-# Enterprise Security Controls
+## Enterprise Security Controls
 
 Organizations should implement:
 
@@ -1470,7 +1470,7 @@ These controls work together to reduce enterprise risk.
 
 ---
 
-# Detection Maturity Model
+## Detection Maturity Model
 
 ```
 Level 1
@@ -1514,7 +1514,7 @@ Organizations typically mature through these stages over time.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1544,7 +1544,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Effective defense relies on:
 
@@ -1559,13 +1559,13 @@ Detection capabilities should be tested and refined regularly to remain effectiv
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review Active Directory monitoring coverage.
 
-### Step 1
+#### Step 1
 
 Verify that security logs are being collected from:
 
@@ -1575,7 +1575,7 @@ Verify that security logs are being collected from:
 
 ---
 
-### Step 2
+#### Step 2
 
 Identify:
 
@@ -1587,7 +1587,7 @@ Ensure these assets receive enhanced monitoring.
 
 ---
 
-### Step 3
+#### Step 3
 
 Review recent security events.
 
@@ -1600,7 +1600,7 @@ Classify them as:
 
 ---
 
-### Step 4
+#### Step 4
 
 Design a dashboard showing:
 
@@ -1611,51 +1611,51 @@ Design a dashboard showing:
 
 ---
 
-### Step 5
+#### Step 5
 
 Recommend three improvements to the organization's Active Directory monitoring strategy.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is detection engineering?
+#### Q1: What is detection engineering?
 
 **Answer:** Detection engineering is the design, implementation, testing, and continuous improvement of security detections to identify malicious or suspicious activity.
 
 ---
 
-### Q2: What is the difference between an IOC and an IOA?
+#### Q2: What is the difference between an IOC and an IOA?
 
 **Answer:** An IOC is evidence suggesting compromise may have occurred, while an IOA focuses on suspicious behavior that may indicate an attack is in progress.
 
 ---
 
-### Q3: Why is centralized logging important?
+#### Q3: Why is centralized logging important?
 
 **Answer:** It enables correlation of events from multiple systems, improving visibility, investigation, and incident response.
 
 ---
 
-### Q4: What is threat hunting?
+#### Q4: What is threat hunting?
 
 **Answer:** Threat hunting is a proactive process where security analysts search for signs of malicious activity that may not have triggered automated alerts.
 
 ---
 
-### Q5: Why should privileged accounts receive enhanced monitoring?
+#### Q5: Why should privileged accounts receive enhanced monitoring?
 
 **Answer:** Because misuse or compromise of privileged accounts can significantly impact the security of the Active Directory environment.
 
 ---
 
-### Q6: Why should detection rules be reviewed regularly?
+#### Q6: Why should detection rules be reviewed regularly?
 
 **Answer:** Enterprise environments evolve over time, and detection rules must be updated to remain effective and minimize false positives.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Centralize security logs.
 - Monitor privileged activity continuously.
@@ -1668,7 +1668,7 @@ Recommend three improvements to the organization's Active Directory monitoring s
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Collecting logs without reviewing them.
 - Monitoring only Domain Controllers while ignoring supporting systems.
@@ -1679,7 +1679,7 @@ Recommend three improvements to the organization's Active Directory monitoring s
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective Active Directory defense depends on visibility as much as prevention.
 - Detection engineering, centralized logging, and threat hunting improve security maturity.
@@ -1688,9 +1688,9 @@ Recommend three improvements to the organization's Active Directory monitoring s
 
 ---
 
-# 19-AD-Attacks.md
+## 19-AD-Attacks.md
 
-# Part 4 — Incident Response, Recovery, Active Directory Security Assessment, Defensive Maturity and Chapter Summary
+## Part 4 — Incident Response, Recovery, Active Directory Security Assessment, Defensive Maturity and Chapter Summary
 
 > **Important Note**
 >
@@ -1698,7 +1698,7 @@ Recommend three improvements to the organization's Active Directory monitoring s
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1714,7 +1714,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Despite strong preventive controls, organizations should assume that security incidents can occur.
 
@@ -1729,7 +1729,7 @@ A well-prepared organization is more resilient than one relying solely on preven
 
 ---
 
-# Active Directory Incident Response Lifecycle
+## Active Directory Incident Response Lifecycle
 
 ```
 Preparation
@@ -1775,7 +1775,7 @@ Every phase should be documented and regularly practiced.
 
 ---
 
-# Preparation
+## Preparation
 
 Preparation includes:
 
@@ -1791,7 +1791,7 @@ Preparation significantly reduces response time during real incidents.
 
 ---
 
-# Detection
+## Detection
 
 Potential detection sources include:
 
@@ -1807,7 +1807,7 @@ Multiple detection sources increase confidence in identifying suspicious activit
 
 ---
 
-# Analysis
+## Analysis
 
 During analysis, responders determine:
 
@@ -1821,7 +1821,7 @@ Accurate analysis helps prioritize response actions.
 
 ---
 
-# Containment
+## Containment
 
 Containment limits further impact while preserving evidence.
 
@@ -1837,7 +1837,7 @@ Containment decisions should follow organizational procedures and change control
 
 ---
 
-# Recovery Workflow
+## Recovery Workflow
 
 ```
 Incident Contained
@@ -1867,7 +1867,7 @@ Recovery should include validation that security controls remain effective.
 
 ---
 
-# Post-Incident Review
+## Post-Incident Review
 
 Every significant incident should conclude with a structured review.
 
@@ -1885,7 +1885,7 @@ Continuous improvement strengthens future response capability.
 
 ---
 
-# Security Assessments
+## Security Assessments
 
 Organizations should periodically assess:
 
@@ -1902,7 +1902,7 @@ Assessments help identify weaknesses before they contribute to incidents.
 
 ---
 
-# Assessment Workflow
+## Assessment Workflow
 
 ```
 Plan
@@ -1934,7 +1934,7 @@ Validate Improvements
 
 ---
 
-# Purple Teaming
+## Purple Teaming
 
 Purple teaming combines offensive and defensive expertise to improve security.
 
@@ -1970,7 +1970,7 @@ The objective is to improve detection and response rather than "win" an exercise
 
 ---
 
-# Security Maturity Model
+## Security Maturity Model
 
 ```
 Level 1
@@ -2014,7 +2014,7 @@ Organizations generally improve maturity incrementally over time.
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 A mature Active Directory program includes:
 
@@ -2050,7 +2050,7 @@ Governance ensures consistent implementation of security practices across the en
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Example metrics include:
 
@@ -2069,9 +2069,9 @@ Metrics help organizations measure progress objectively.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Company
+### Company
 
 ```
 Litware Technologies
@@ -2105,7 +2105,7 @@ The post-incident review led to measurable improvements in detection coverage an
 
 ---
 
-# Enterprise Defensive Checklist
+## Enterprise Defensive Checklist
 
 ```
 ✓ Tier 0 Assets Identified
@@ -2131,7 +2131,7 @@ The post-incident review led to measurable improvements in detection coverage an
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Modern Active Directory defense should emphasize:
 
@@ -2147,13 +2147,13 @@ No single control is sufficient; resilience comes from multiple complementary de
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Evaluate the organization's Active Directory security readiness.
 
-### Step 1
+#### Step 1
 
 Inventory:
 
@@ -2164,7 +2164,7 @@ Inventory:
 
 ---
 
-### Step 2
+#### Step 2
 
 Review:
 
@@ -2176,7 +2176,7 @@ Identify any gaps.
 
 ---
 
-### Step 3
+#### Step 3
 
 Create a quarterly assessment schedule covering:
 
@@ -2188,7 +2188,7 @@ Create a quarterly assessment schedule covering:
 
 ---
 
-### Step 4
+#### Step 4
 
 Develop a simple incident response checklist for:
 
@@ -2198,51 +2198,51 @@ Develop a simple incident response checklist for:
 
 ---
 
-### Step 5
+#### Step 5
 
 Present recommendations to improve the organization's Active Directory security maturity.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is preparation important in incident response?
+#### Q1: Why is preparation important in incident response?
 
 **Answer:** Preparation ensures that procedures, roles, tools, and documentation are available before an incident occurs, enabling a faster and more effective response.
 
 ---
 
-### Q2: What is the purpose of a post-incident review?
+#### Q2: What is the purpose of a post-incident review?
 
 **Answer:** It identifies lessons learned, evaluates response effectiveness, and defines improvements to reduce future risk.
 
 ---
 
-### Q3: Why are periodic Active Directory security assessments necessary?
+#### Q3: Why are periodic Active Directory security assessments necessary?
 
 **Answer:** They help identify configuration weaknesses, governance gaps, and opportunities to strengthen security before incidents occur.
 
 ---
 
-### Q4: What is the objective of purple teaming?
+#### Q4: What is the objective of purple teaming?
 
 **Answer:** Purple teaming improves defensive capabilities by validating and enhancing detection and response processes through collaborative security exercises.
 
 ---
 
-### Q5: Why should organizations measure MTTD and MTTR?
+#### Q5: Why should organizations measure MTTD and MTTR?
 
 **Answer:** These metrics help evaluate how quickly incidents are detected and resolved, providing insight into the effectiveness of security operations.
 
 ---
 
-### Q6: Why is continuous improvement important?
+#### Q6: Why is continuous improvement important?
 
 **Answer:** Threats, technologies, and enterprise environments evolve continuously, so security controls and operational processes must evolve as well.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain tested incident response procedures.
 - Review privileged access regularly.
@@ -2255,7 +2255,7 @@ Present recommendations to improve the organization's Active Directory security 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating incident response as an ad hoc process.
 - Failing to test recovery procedures.
@@ -2266,7 +2266,7 @@ Present recommendations to improve the organization's Active Directory security 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective Active Directory defense combines prevention, detection, response, recovery, and governance.
 - Structured incident response minimizes business impact and accelerates recovery.
@@ -2276,7 +2276,7 @@ Present recommendations to improve the organization's Active Directory security 
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

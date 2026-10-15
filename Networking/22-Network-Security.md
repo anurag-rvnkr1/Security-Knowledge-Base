@@ -1,10 +1,10 @@
 # 22 - Network Security
 
-# Part 1 — Network Security Fundamentals, Security Principles, Threat Landscape, Attack Lifecycle, Security Architecture, Defense-in-Depth, CIA Triad, and Enterprise Security Models
+## Part 1 — Network Security Fundamentals, Security Principles, Threat Landscape, Attack Lifecycle, Security Architecture, Defense-in-Depth, CIA Triad, and Enterprise Security Models
 
 ---
 
-# Overview
+## Overview
 
 Network Security is the practice of protecting network infrastructure, connected devices, applications, and data from unauthorized access, cyberattacks, misuse, and service disruption.
 
@@ -24,7 +24,7 @@ In today's cloud-first and hybrid environments, network security extends beyond 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -41,7 +41,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is Network Security?
+## What is Network Security?
 
 Network Security is the collection of policies, technologies, architectures, and operational practices used to protect network resources from unauthorized access and malicious activity.
 
@@ -56,7 +56,7 @@ Its objectives include:
 
 ---
 
-# Why Network Security Matters
+## Why Network Security Matters
 
 Every enterprise depends on secure networking for:
 
@@ -80,7 +80,7 @@ A successful cyberattack can result in:
 
 ---
 
-# Security Goals
+## Security Goals
 
 Enterprise network security focuses on:
 
@@ -97,7 +97,7 @@ These goals guide security architecture and operational decisions.
 
 ---
 
-# CIA Triad
+## CIA Triad
 
 The CIA Triad forms the foundation of information security.
 
@@ -114,7 +114,7 @@ Every security control should support one or more components of the CIA Triad.
 
 ---
 
-# Confidentiality
+## Confidentiality
 
 Confidentiality ensures that information is accessible only to authorized users.
 
@@ -147,7 +147,7 @@ Access Granted
 
 ---
 
-# Integrity
+## Integrity
 
 Integrity ensures that information remains accurate and unaltered.
 
@@ -179,7 +179,7 @@ No Changes Detected
 
 ---
 
-# Availability
+## Availability
 
 Availability ensures that systems remain operational when needed.
 
@@ -212,7 +212,7 @@ Secondary Server
 
 ---
 
-# Authentication
+## Authentication
 
 Authentication verifies the identity of users, systems, or applications.
 
@@ -231,7 +231,7 @@ Authentication answers the question:
 
 ---
 
-# Authorization
+## Authorization
 
 Authorization determines what an authenticated user is allowed to access.
 
@@ -265,7 +265,7 @@ Authorization follows authentication.
 
 ---
 
-# Accounting (Auditing)
+## Accounting (Auditing)
 
 Accounting records security-related activities.
 
@@ -281,7 +281,7 @@ Accounting supports investigations and compliance.
 
 ---
 
-# AAA Framework
+## AAA Framework
 
 Enterprise security commonly uses the AAA framework.
 
@@ -301,7 +301,7 @@ AAA provides identity management and accountability across enterprise networks.
 
 ---
 
-# Security Principles
+## Security Principles
 
 Core security principles include:
 
@@ -316,7 +316,7 @@ Core security principles include:
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Users, applications, and services should receive only the permissions required to perform their tasks.
 
@@ -329,7 +329,7 @@ Benefits:
 
 ---
 
-# Need-to-Know
+## Need-to-Know
 
 Access should be granted only when necessary for business operations.
 
@@ -353,7 +353,7 @@ Engineering Repository
 
 ---
 
-# Separation of Duties
+## Separation of Duties
 
 Critical tasks should require multiple individuals or roles.
 
@@ -387,7 +387,7 @@ Separation of duties reduces fraud and accidental misconfiguration.
 
 ---
 
-# Defense-in-Depth
+## Defense-in-Depth
 
 Multiple security layers provide stronger protection than a single control.
 
@@ -423,7 +423,7 @@ An attacker must bypass multiple independent defenses.
 
 ---
 
-# Secure by Design
+## Secure by Design
 
 Security should be incorporated during planning and development rather than added later.
 
@@ -437,7 +437,7 @@ Examples:
 
 ---
 
-# Zero Trust
+## Zero Trust
 
 Zero Trust assumes that no user or device should be trusted automatically.
 
@@ -452,7 +452,7 @@ Identity becomes the primary security boundary.
 
 ---
 
-# Threat Landscape
+## Threat Landscape
 
 Enterprise networks face threats from many sources.
 
@@ -471,7 +471,7 @@ Understanding threat actors helps organizations prioritize defenses.
 
 ---
 
-# Types of Threats
+## Types of Threats
 
 Common threats include:
 
@@ -487,7 +487,7 @@ Common threats include:
 
 ---
 
-# Malware
+## Malware
 
 Malware is malicious software designed to compromise systems.
 
@@ -504,7 +504,7 @@ Malware often enters organizations through phishing, compromised software, or vu
 
 ---
 
-# Ransomware
+## Ransomware
 
 Ransomware encrypts files or systems and demands payment for recovery.
 
@@ -538,7 +538,7 @@ Modern ransomware attacks often involve both data theft and encryption.
 
 ---
 
-# Phishing
+## Phishing
 
 Phishing attempts to trick users into revealing credentials or executing malicious actions.
 
@@ -554,7 +554,7 @@ User awareness and email security controls reduce phishing success rates.
 
 ---
 
-# Insider Threats
+## Insider Threats
 
 Insider threats may be:
 
@@ -573,7 +573,7 @@ Strong monitoring and least privilege reduce insider risk.
 
 ---
 
-# Attack Surface
+## Attack Surface
 
 The attack surface includes every exposed component that an attacker may target.
 
@@ -591,7 +591,7 @@ Reducing the attack surface lowers organizational risk.
 
 ---
 
-# Attack Lifecycle
+## Attack Lifecycle
 
 Many cyberattacks follow a structured progression.
 
@@ -647,7 +647,7 @@ This lifecycle aligns closely with industry attack frameworks such as the MITRE 
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 Enterprise security integrates multiple technologies.
 
@@ -691,7 +691,7 @@ Security should be applied consistently across every layer.
 
 ---
 
-# Security Domains
+## Security Domains
 
 Modern enterprise security consists of multiple domains:
 
@@ -708,7 +708,7 @@ These domains work together to create a comprehensive security posture.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective network security enables organizations to:
 
@@ -722,7 +722,7 @@ Effective network security enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -739,7 +739,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Network security protects enterprise infrastructure, users, and data from cyber threats.
 - The CIA Triad forms the foundation of information security.
@@ -750,11 +750,11 @@ Organizations should:
 
 ---
 
-# Part 2 — Firewalls, IDS, IPS, Proxy Servers, VPN Security, Network Access Control (NAC), DMZ, Network Segmentation, Zero Trust Architecture, and Enterprise Security Controls
+## Part 2 — Firewalls, IDS, IPS, Proxy Servers, VPN Security, Network Access Control (NAC), DMZ, Network Segmentation, Zero Trust Architecture, and Enterprise Security Controls
 
 ---
 
-# Introduction
+## Introduction
 
 Modern enterprise networks are protected by multiple layers of security controls rather than a single perimeter firewall. As organizations adopt cloud computing, remote work, mobile devices, and Internet of Things (IoT) technologies, attackers have more potential entry points than ever before.
 
@@ -775,7 +775,7 @@ Each control serves a specific purpose while working together as part of a Defen
 
 ---
 
-# Enterprise Security Layers
+## Enterprise Security Layers
 
 ```
                    Internet
@@ -803,7 +803,7 @@ Every layer increases the effort required for an attacker to compromise enterpri
 
 ---
 
-# Firewalls
+## Firewalls
 
 A firewall is a security device or software solution that monitors, filters, and controls network traffic according to predefined security rules.
 
@@ -811,7 +811,7 @@ Its primary purpose is to allow legitimate traffic while blocking unauthorized o
 
 ---
 
-# Firewall Functions
+## Firewall Functions
 
 A firewall can:
 
@@ -826,7 +826,7 @@ A firewall can:
 
 ---
 
-# Firewall Packet Flow
+## Firewall Packet Flow
 
 ```
 Incoming Packet
@@ -846,7 +846,7 @@ Allowed?
 
 ---
 
-# Types of Firewalls
+## Types of Firewalls
 
 | Firewall Type | Description |
 |--------------|-------------|
@@ -859,7 +859,7 @@ Allowed?
 
 ---
 
-# Packet Filtering Firewall
+## Packet Filtering Firewall
 
 Packet filtering firewalls examine:
 
@@ -888,7 +888,7 @@ These firewalls are fast but lack application awareness.
 
 ---
 
-# Stateful Firewall
+## Stateful Firewall
 
 Stateful firewalls maintain a connection table.
 
@@ -920,7 +920,7 @@ Advantages:
 
 ---
 
-# Next-Generation Firewall (NGFW)
+## Next-Generation Firewall (NGFW)
 
 NGFWs combine traditional firewall capabilities with advanced security features.
 
@@ -939,7 +939,7 @@ NGFWs are standard in enterprise security architectures.
 
 ---
 
-# Firewall Deployment Models
+## Firewall Deployment Models
 
 Common deployment models:
 
@@ -973,7 +973,7 @@ Additional firewalls may protect:
 
 ---
 
-# Firewall Rule Best Practices
+## Firewall Rule Best Practices
 
 Organizations should:
 
@@ -987,7 +987,7 @@ Organizations should:
 
 ---
 
-# Intrusion Detection System (IDS)
+## Intrusion Detection System (IDS)
 
 An IDS monitors network traffic for suspicious activity and generates alerts.
 
@@ -1011,7 +1011,7 @@ An IDS detects attacks but does not automatically block them.
 
 ---
 
-# Types of IDS
+## Types of IDS
 
 | Type | Purpose |
 |------|---------|
@@ -1027,7 +1027,7 @@ Examples of monitored activity:
 
 ---
 
-# Intrusion Prevention System (IPS)
+## Intrusion Prevention System (IPS)
 
 An IPS detects and actively blocks malicious traffic.
 
@@ -1051,7 +1051,7 @@ IPS operates inline with network traffic.
 
 ---
 
-# IDS vs IPS
+## IDS vs IPS
 
 | Feature | IDS | IPS |
 |----------|-----|-----|
@@ -1065,11 +1065,11 @@ Many enterprises deploy both technologies together.
 
 ---
 
-# Detection Techniques
+## Detection Techniques
 
 Security devices use several detection methods.
 
-### Signature-Based Detection
+#### Signature-Based Detection
 
 Matches known attack signatures.
 
@@ -1084,7 +1084,7 @@ Limitations:
 
 ---
 
-### Anomaly-Based Detection
+#### Anomaly-Based Detection
 
 Detects deviations from normal behavior.
 
@@ -1099,7 +1099,7 @@ Limitations:
 
 ---
 
-### Behavioral Detection
+#### Behavioral Detection
 
 Builds behavioral baselines.
 
@@ -1135,7 +1135,7 @@ Alert
 
 ---
 
-# Deep Packet Inspection (DPI)
+## Deep Packet Inspection (DPI)
 
 Deep Packet Inspection analyzes packet contents beyond header information.
 
@@ -1151,7 +1151,7 @@ DPI is a core capability of NGFWs and modern security gateways.
 
 ---
 
-# Proxy Servers
+## Proxy Servers
 
 A proxy server acts as an intermediary between clients and external services.
 
@@ -1177,7 +1177,7 @@ Advantages:
 
 ---
 
-# Types of Proxy Servers
+## Types of Proxy Servers
 
 | Type | Purpose |
 |------|---------|
@@ -1187,7 +1187,7 @@ Advantages:
 
 ---
 
-# Reverse Proxy
+## Reverse Proxy
 
 A reverse proxy sits in front of application servers.
 
@@ -1213,7 +1213,7 @@ Functions include:
 
 ---
 
-# Virtual Private Network (VPN)
+## Virtual Private Network (VPN)
 
 A VPN creates an encrypted tunnel across an untrusted network.
 
@@ -1241,7 +1241,7 @@ VPNs protect data confidentiality during transmission.
 
 ---
 
-# VPN Security Best Practices
+## VPN Security Best Practices
 
 Organizations should:
 
@@ -1254,7 +1254,7 @@ Organizations should:
 
 ---
 
-# Network Access Control (NAC)
+## Network Access Control (NAC)
 
 Network Access Control verifies users and devices before allowing network access.
 
@@ -1278,7 +1278,7 @@ NAC helps prevent unauthorized or non-compliant devices from joining the network
 
 ---
 
-# NAC Policy Example
+## NAC Policy Example
 
 ```
 Compliant Device
@@ -1306,7 +1306,7 @@ Blocked
 
 ---
 
-# Device Posture Assessment
+## Device Posture Assessment
 
 Before granting access, NAC may verify:
 
@@ -1321,7 +1321,7 @@ Only compliant devices receive full network access.
 
 ---
 
-# Demilitarized Zone (DMZ)
+## Demilitarized Zone (DMZ)
 
 A DMZ is an isolated network that hosts public-facing services.
 
@@ -1353,7 +1353,7 @@ Compromising a DMZ server should not provide direct access to internal systems.
 
 ---
 
-# Services Commonly Hosted in a DMZ
+## Services Commonly Hosted in a DMZ
 
 Examples include:
 
@@ -1368,7 +1368,7 @@ These systems require Internet accessibility while remaining isolated from inter
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Segmentation divides networks into isolated security zones.
 
@@ -1397,7 +1397,7 @@ Benefits include:
 
 ---
 
-# Microsegmentation
+## Microsegmentation
 
 Microsegmentation applies policies at the workload or application level.
 
@@ -1429,7 +1429,7 @@ Even systems within the same subnet can have different access rules.
 
 ---
 
-# Zero Trust Architecture (ZTA)
+## Zero Trust Architecture (ZTA)
 
 Zero Trust assumes no user or device is trusted by default.
 
@@ -1445,7 +1445,7 @@ Identity replaces the traditional network perimeter.
 
 ---
 
-# Secure Network Access
+## Secure Network Access
 
 Modern enterprises secure access through:
 
@@ -1460,7 +1460,7 @@ Access decisions should consider both user identity and device health.
 
 ---
 
-# Enterprise Security Controls
+## Enterprise Security Controls
 
 A mature enterprise security architecture typically includes:
 
@@ -1479,7 +1479,7 @@ These controls work together to provide layered protection.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong network security controls enable organizations to:
 
@@ -1493,7 +1493,7 @@ Strong network security controls enable organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -1510,7 +1510,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Firewalls enforce network access policies and remain a foundational security control.
 - IDS detects malicious activity, while IPS actively blocks threats.
@@ -1523,11 +1523,11 @@ Organizations should:
 
 ---
 
-# Part 3 — Secure Protocols, Network Monitoring, SIEM, Detection Engineering, Threat Intelligence, Incident Response, Compliance, and Security Operations
+## Part 3 — Secure Protocols, Network Monitoring, SIEM, Detection Engineering, Threat Intelligence, Incident Response, Compliance, and Security Operations
 
 ---
 
-# Introduction
+## Introduction
 
 Building a secure network is only the first step in protecting enterprise infrastructure. Organizations must continuously monitor network activity, detect suspicious behavior, investigate alerts, and respond rapidly to security incidents.
 
@@ -1546,7 +1546,7 @@ Continuous visibility enables organizations to detect attacks before they cause 
 
 ---
 
-# Secure Network Protocols
+## Secure Network Protocols
 
 Many legacy network protocols transmit information in plaintext, making them vulnerable to interception. Secure protocols provide authentication, confidentiality, and integrity through encryption.
 
@@ -1564,7 +1564,7 @@ Organizations should disable insecure protocols wherever possible.
 
 ---
 
-# Secure Shell (SSH)
+## Secure Shell (SSH)
 
 SSH provides encrypted remote access to network devices and servers.
 
@@ -1584,7 +1584,7 @@ Encrypted Connection
 Linux Server
 ```
 
-### Best Practices
+#### Best Practices
 
 - Disable password authentication when possible.
 - Use public-key authentication.
@@ -1594,7 +1594,7 @@ Linux Server
 
 ---
 
-# HTTPS
+## HTTPS
 
 HTTPS secures web communication using Transport Layer Security (TLS).
 
@@ -1622,7 +1622,7 @@ Benefits include:
 
 ---
 
-# Transport Layer Security (TLS)
+## Transport Layer Security (TLS)
 
 TLS protects data while it travels across networks.
 
@@ -1642,7 +1642,7 @@ TLS is used by:
 
 ---
 
-# IPsec
+## IPsec
 
 IPsec secures IP communications by encrypting and authenticating packets.
 
@@ -1659,7 +1659,7 @@ Modes:
 
 ---
 
-# SNMPv3
+## SNMPv3
 
 SNMPv3 securely manages network devices through:
 
@@ -1671,7 +1671,7 @@ Unlike earlier versions, SNMPv3 protects management traffic from interception an
 
 ---
 
-# Network Monitoring
+## Network Monitoring
 
 Continuous monitoring helps identify:
 
@@ -1686,7 +1686,7 @@ Monitoring should cover all critical network components.
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Network Devices
@@ -1720,7 +1720,7 @@ Centralized visibility is essential for effective security operations.
 
 ---
 
-# Network Telemetry
+## Network Telemetry
 
 Telemetry provides operational and security data from network infrastructure.
 
@@ -1739,7 +1739,7 @@ These data sources support both troubleshooting and threat detection.
 
 ---
 
-# Syslog
+## Syslog
 
 Syslog is the standard protocol for centralized log collection.
 
@@ -1767,7 +1767,7 @@ Syslog commonly records:
 
 ---
 
-# NetFlow
+## NetFlow
 
 NetFlow provides metadata about network traffic.
 
@@ -1786,7 +1786,7 @@ NetFlow helps identify unusual communication patterns without capturing full pac
 
 ---
 
-# IPFIX
+## IPFIX
 
 IP Flow Information Export (IPFIX) extends NetFlow with additional flexibility and standardized flow records.
 
@@ -1800,7 +1800,7 @@ IPFIX is widely supported across enterprise networking platforms.
 
 ---
 
-# Packet Capture
+## Packet Capture
 
 Packet capture tools analyze network traffic in detail.
 
@@ -1819,7 +1819,7 @@ Packet analysis assists in:
 
 ---
 
-# Security Information and Event Management (SIEM)
+## Security Information and Event Management (SIEM)
 
 A SIEM platform collects, normalizes, correlates, and analyzes security logs from multiple sources.
 
@@ -1855,7 +1855,7 @@ The SIEM provides centralized visibility across the enterprise.
 
 ---
 
-# SIEM Functions
+## SIEM Functions
 
 A SIEM typically performs:
 
@@ -1870,7 +1870,7 @@ A SIEM typically performs:
 
 ---
 
-# Log Normalization
+## Log Normalization
 
 Different devices generate logs in different formats.
 
@@ -1898,7 +1898,7 @@ Normalization enables effective cross-platform analysis.
 
 ---
 
-# Event Correlation
+## Event Correlation
 
 Correlation combines multiple events to identify suspicious behavior.
 
@@ -1928,7 +1928,7 @@ A single event may be benign, but correlated events can reveal an attack.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Detection Engineering focuses on designing, testing, and maintaining high-quality security detections.
 
@@ -1943,7 +1943,7 @@ Detection rules should evolve alongside the threat landscape.
 
 ---
 
-# Detection Sources
+## Detection Sources
 
 Detection logic can use:
 
@@ -1961,9 +1961,9 @@ Combining multiple telemetry sources improves detection quality.
 
 ---
 
-# Example Detection Rule
+## Example Detection Rule
 
-### Brute Force Attack
+#### Brute Force Attack
 
 ```
 More than 20 failed logins
@@ -1983,9 +1983,9 @@ High Severity Alert
 
 ---
 
-# Example Detection Rule
+## Example Detection Rule
 
-### Port Scanning
+#### Port Scanning
 
 ```
 Single Source IP
@@ -2005,9 +2005,9 @@ Potential Reconnaissance
 
 ---
 
-# Example Detection Rule
+## Example Detection Rule
 
-### DNS Tunneling
+#### DNS Tunneling
 
 Indicators:
 
@@ -2020,7 +2020,7 @@ DNS monitoring can identify covert communication channels.
 
 ---
 
-# Threat Intelligence
+## Threat Intelligence
 
 Threat Intelligence provides context about known threats.
 
@@ -2037,7 +2037,7 @@ Threat intelligence improves detection accuracy and investigation speed.
 
 ---
 
-# Threat Intelligence Sources
+## Threat Intelligence Sources
 
 Organizations may consume:
 
@@ -2051,7 +2051,7 @@ Threat intelligence should be validated before operational use.
 
 ---
 
-# Indicators of Compromise (IOCs)
+## Indicators of Compromise (IOCs)
 
 Common IOCs include:
 
@@ -2066,7 +2066,7 @@ IOCs indicate that a compromise may have occurred.
 
 ---
 
-# Indicators of Attack (IOAs)
+## Indicators of Attack (IOAs)
 
 Unlike IOCs, IOAs focus on attacker behavior.
 
@@ -2082,7 +2082,7 @@ Behavior-based detections often identify attacks earlier than IOC-based detectio
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 A SOC continuously monitors, detects, investigates, and responds to security incidents.
 
@@ -2100,7 +2100,7 @@ The SOC operates as the central hub for enterprise security operations.
 
 ---
 
-# SOC Workflow
+## SOC Workflow
 
 ```
 Telemetry
@@ -2136,7 +2136,7 @@ Lessons Learned
 
 ---
 
-# Security Automation
+## Security Automation
 
 Security Automation reduces manual effort by executing predefined workflows.
 
@@ -2152,7 +2152,7 @@ Automation accelerates response while reducing analyst workload.
 
 ---
 
-# Security Orchestration, Automation, and Response (SOAR)
+## Security Orchestration, Automation, and Response (SOAR)
 
 SOAR platforms integrate multiple security tools into automated workflows.
 
@@ -2186,7 +2186,7 @@ SOAR improves consistency and reduces response time.
 
 ---
 
-# Incident Response Lifecycle
+## Incident Response Lifecycle
 
 A structured response process includes:
 
@@ -2201,7 +2201,7 @@ Every incident should conclude with documentation and process improvements.
 
 ---
 
-# Digital Forensics
+## Digital Forensics
 
 During investigations, analysts collect and preserve evidence.
 
@@ -2218,7 +2218,7 @@ Proper evidence handling supports legal, regulatory, and internal investigations
 
 ---
 
-# Compliance and Governance
+## Compliance and Governance
 
 Network monitoring supports compliance frameworks such as:
 
@@ -2240,7 +2240,7 @@ Common requirements include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective monitoring and security operations enable organizations to:
 
@@ -2254,7 +2254,7 @@ Effective monitoring and security operations enable organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -2271,7 +2271,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure protocols protect administrative and application communications through encryption.
 - Network telemetry provides the visibility required for effective monitoring.
@@ -2284,11 +2284,11 @@ Organizations should:
 ---
 
 
-# Part 4 — Enterprise Troubleshooting, Practical Labs, Enterprise Case Studies, Interview Questions, RFC/NIST References, Summary, and Chapter Review
+## Part 4 — Enterprise Troubleshooting, Practical Labs, Enterprise Case Studies, Interview Questions, RFC/NIST References, Summary, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 Designing a secure network is only the beginning. Security teams must continuously validate controls, troubleshoot issues, investigate incidents, and improve defenses against evolving threats.
 
@@ -2309,7 +2309,7 @@ A structured troubleshooting methodology minimizes downtime while maintaining se
 
 ---
 
-# Enterprise Security Troubleshooting Methodology
+## Enterprise Security Troubleshooting Methodology
 
 Always follow a repeatable investigation process.
 
@@ -2365,7 +2365,7 @@ Changing configurations without identifying the root cause can introduce additio
 
 ---
 
-# Initial Investigation Checklist
+## Initial Investigation Checklist
 
 Before making changes, verify:
 
@@ -2384,7 +2384,7 @@ Before making changes, verify:
 
 ---
 
-# Security Control Verification
+## Security Control Verification
 
 Review every layer of the security architecture.
 
@@ -2428,7 +2428,7 @@ A failure at any layer may affect availability or security.
 
 ---
 
-# Firewall Troubleshooting
+## Firewall Troubleshooting
 
 Verify:
 
@@ -2445,7 +2445,7 @@ Improper firewall rules are among the most common causes of connectivity issues.
 
 ---
 
-# IDS / IPS Troubleshooting
+## IDS / IPS Troubleshooting
 
 Review:
 
@@ -2461,7 +2461,7 @@ Ensure legitimate business traffic is not being blocked.
 
 ---
 
-# VPN Troubleshooting
+## VPN Troubleshooting
 
 Verify:
 
@@ -2479,7 +2479,7 @@ Many VPN failures originate from configuration mismatches.
 
 ---
 
-# Authentication Troubleshooting
+## Authentication Troubleshooting
 
 Check:
 
@@ -2495,7 +2495,7 @@ Identity-related issues often appear as network access problems.
 
 ---
 
-# DNS Troubleshooting
+## DNS Troubleshooting
 
 Verify:
 
@@ -2511,7 +2511,7 @@ Incorrect DNS records frequently cause application failures.
 
 ---
 
-# Network Segmentation Validation
+## Network Segmentation Validation
 
 Ensure communication is allowed only where required.
 
@@ -2545,7 +2545,7 @@ Segmentation failures can expose sensitive systems.
 
 ---
 
-# Secure Protocol Verification
+## Secure Protocol Verification
 
 Confirm that insecure protocols are disabled.
 
@@ -2562,7 +2562,7 @@ Regularly review legacy systems that still rely on insecure protocols.
 
 ---
 
-# Log Analysis
+## Log Analysis
 
 Review logs from:
 
@@ -2580,7 +2580,7 @@ Correlating logs from multiple sources improves investigation accuracy.
 
 ---
 
-# Packet Analysis
+## Packet Analysis
 
 Packet capture can validate:
 
@@ -2600,7 +2600,7 @@ Tools include:
 
 ---
 
-# Linux Verification Commands
+## Linux Verification Commands
 
 Check Interfaces
 
@@ -2658,7 +2658,7 @@ ss -tulnp
 
 ---
 
-# Windows Verification Commands
+## Windows Verification Commands
 
 Network Configuration
 
@@ -2716,18 +2716,18 @@ netstat -ano
 
 ---
 
-# Common Enterprise Scenarios
+## Common Enterprise Scenarios
 
 ---
 
-## Scenario 1 — Users Cannot Access Internal Web Application
+### Scenario 1 — Users Cannot Access Internal Web Application
 
-### Symptoms
+#### Symptoms
 
 - Application unavailable
 - Timeout errors
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2740,14 +2740,14 @@ Verify:
 
 ---
 
-## Scenario 2 — VPN Users Cannot Reach Internal Resources
+### Scenario 2 — VPN Users Cannot Reach Internal Resources
 
-### Symptoms
+#### Symptoms
 
 - Successful VPN connection
 - Internal applications unreachable
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -2759,13 +2759,13 @@ Check:
 
 ---
 
-## Scenario 3 — Excessive IDS Alerts
+### Scenario 3 — Excessive IDS Alerts
 
-### Symptoms
+#### Symptoms
 
 Thousands of alerts generated every hour.
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -2777,13 +2777,13 @@ Review:
 
 ---
 
-## Scenario 4 — Firewall Blocks Legitimate Traffic
+### Scenario 4 — Firewall Blocks Legitimate Traffic
 
-### Symptoms
+#### Symptoms
 
 Business application unavailable.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2795,9 +2795,9 @@ Verify:
 
 ---
 
-## Scenario 5 — Malware Detected on Endpoint
+### Scenario 5 — Malware Detected on Endpoint
 
-### Response
+#### Response
 
 ```
 Alert
@@ -2833,9 +2833,9 @@ Monitor
 
 ---
 
-## Scenario 6 — Suspicious Outbound Connections
+### Scenario 6 — Suspicious Outbound Connections
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -2850,9 +2850,9 @@ Possible causes include malware communication or data exfiltration.
 
 ---
 
-# Detection Engineering Examples
+## Detection Engineering Examples
 
-### Port Scan Detection
+#### Port Scan Detection
 
 ```
 Single Source
@@ -2872,7 +2872,7 @@ Reconnaissance Alert
 
 ---
 
-### Brute Force Detection
+#### Brute Force Detection
 
 ```
 Repeated Login Failures
@@ -2892,7 +2892,7 @@ Critical Alert
 
 ---
 
-### DNS Tunneling Detection
+#### DNS Tunneling Detection
 
 Indicators:
 
@@ -2903,7 +2903,7 @@ Indicators:
 
 ---
 
-### Lateral Movement Detection
+#### Lateral Movement Detection
 
 ```
 Compromised Host
@@ -2927,7 +2927,7 @@ High Severity Alert
 
 ---
 
-# Threat Hunting Ideas
+## Threat Hunting Ideas
 
 Investigate:
 
@@ -2945,7 +2945,7 @@ Threat hunting proactively identifies malicious activity that automated detectio
 
 ---
 
-# Practical Lab 1 — Firewall Policy Validation
+## Practical Lab 1 — Firewall Policy Validation
 
 Objectives:
 
@@ -2957,7 +2957,7 @@ Objectives:
 
 ---
 
-# Practical Lab 2 — IDS Detection
+## Practical Lab 2 — IDS Detection
 
 Tasks:
 
@@ -2969,7 +2969,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — VPN Deployment
+## Practical Lab 3 — VPN Deployment
 
 Tasks:
 
@@ -2981,7 +2981,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — SIEM Correlation
+## Practical Lab 4 — SIEM Correlation
 
 Tasks:
 
@@ -2993,7 +2993,7 @@ Tasks:
 
 ---
 
-# Practical Lab 5 — Threat Hunting
+## Practical Lab 5 — Threat Hunting
 
 Tasks:
 
@@ -3005,13 +3005,13 @@ Tasks:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A multinational financial organization experiences intermittent service disruptions and receives alerts indicating unauthorized authentication attempts against critical infrastructure.
 
-### Investigation
+#### Investigation
 
 The SOC team discovers:
 
@@ -3021,7 +3021,7 @@ The SOC team discovers:
 - NetFlow records showing abnormal outbound traffic to an IP associated with known malicious infrastructure.
 - DNS logs reveal repeated queries to suspicious domains with randomized subdomains.
 
-### Response
+#### Response
 
 The incident response team:
 
@@ -3033,7 +3033,7 @@ The incident response team:
 6. Conducts a forensic investigation.
 7. Performs a lessons-learned review and updates security policies.
 
-### Outcome
+#### Outcome
 
 - Unauthorized access attempts are successfully blocked.
 - Malware is contained before significant data loss.
@@ -3043,51 +3043,51 @@ The incident response team:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is the purpose of a firewall?
+#### What is the purpose of a firewall?
 
 A firewall monitors and controls inbound and outbound network traffic according to predefined security rules to prevent unauthorized access.
 
 ---
 
-### What is the difference between IDS and IPS?
+#### What is the difference between IDS and IPS?
 
 An IDS detects and alerts on suspicious activity, whereas an IPS detects and actively blocks malicious traffic in real time.
 
 ---
 
-### Why is HTTPS preferred over HTTP?
+#### Why is HTTPS preferred over HTTP?
 
 HTTPS uses TLS to encrypt communication, ensuring confidentiality, integrity, and server authentication.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is Defense-in-Depth?
+#### What is Defense-in-Depth?
 
 Defense-in-Depth is a layered security strategy where multiple independent security controls work together to reduce the likelihood and impact of successful attacks.
 
 ---
 
-### Why is network segmentation important?
+#### Why is network segmentation important?
 
 Segmentation limits lateral movement, reduces the attack surface, improves compliance, and isolates sensitive systems from less trusted networks.
 
 ---
 
-### What information does NetFlow provide?
+#### What information does NetFlow provide?
 
 NetFlow exports metadata about network traffic, including source and destination IPs, ports, protocols, byte counts, packet counts, and flow duration.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you investigate suspected lateral movement?
+#### How would you investigate suspected lateral movement?
 
 A structured investigation includes:
 
@@ -3101,13 +3101,13 @@ A structured investigation includes:
 
 ---
 
-### How can Detection Engineering reduce false positives?
+#### How can Detection Engineering reduce false positives?
 
 Detection Engineering combines high-quality telemetry, behavioral analysis, correlation rules, threat intelligence, and continuous tuning to improve alert accuracy while minimizing unnecessary investigations.
 
 ---
 
-### What metrics are commonly used to evaluate SOC performance?
+#### What metrics are commonly used to evaluate SOC performance?
 
 Key metrics include:
 
@@ -3121,7 +3121,7 @@ Key metrics include:
 
 ---
 
-# RFC, NIST, and Industry References
+## RFC, NIST, and Industry References
 
 Core references for enterprise network security include:
 
@@ -3138,13 +3138,13 @@ Core references for enterprise network security include:
 
 ---
 
-# Summary
+## Summary
 
 Enterprise network security requires a layered approach that combines preventive, detective, and responsive controls. Firewalls, IDS/IPS, secure protocols, SIEM platforms, threat intelligence, and well-defined incident response processes work together to protect modern hybrid and cloud-connected environments. Continuous monitoring, proactive threat hunting, and regular validation of security controls are essential for maintaining a resilient security posture.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -3170,7 +3170,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`23-Network-Monitoring.md`**, covers:
 

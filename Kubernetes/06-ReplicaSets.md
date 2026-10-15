@@ -10,7 +10,7 @@ Although ReplicaSets can be created directly, they are **most commonly managed a
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -27,7 +27,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why ReplicaSets?
+## Why ReplicaSets?
 
 Imagine you have a single Pod.
 
@@ -95,7 +95,7 @@ The desired number of Pods is automatically restored.
 
 ---
 
-# What is a ReplicaSet?
+## What is a ReplicaSet?
 
 A ReplicaSet is a Kubernetes controller that ensures a specified number of Pods are always running.
 
@@ -123,7 +123,7 @@ ReplicaSets continuously monitor the cluster.
 
 ---
 
-# ReplicaSet Responsibilities
+## ReplicaSet Responsibilities
 
 A ReplicaSet is responsible for:
 
@@ -137,7 +137,7 @@ It does **not** perform rolling updates or deployment strategies—that is the r
 
 ---
 
-# ReplicaSet Architecture
+## ReplicaSet Architecture
 
 ```
                 ReplicaSet
@@ -157,7 +157,7 @@ The ReplicaSet continuously compares the desired number of replicas with the cur
 
 ---
 
-# Desired State
+## Desired State
 
 Example:
 
@@ -193,7 +193,7 @@ Create New Pod
 
 ---
 
-# ReplicaSet Reconciliation Loop
+## ReplicaSet Reconciliation Loop
 
 ```
 Desired Replicas
@@ -223,7 +223,7 @@ This reconciliation loop runs continuously.
 
 ---
 
-# ReplicaSet vs Pod
+## ReplicaSet vs Pod
 
 | Pod | ReplicaSet |
 |------|------------|
@@ -234,7 +234,7 @@ This reconciliation loop runs continuously.
 
 ---
 
-# ReplicaSet vs Deployment
+## ReplicaSet vs Deployment
 
 | ReplicaSet | Deployment |
 |------------|------------|
@@ -247,7 +247,7 @@ In production, Deployments usually create and manage ReplicaSets automatically.
 
 ---
 
-# ReplicaSet YAML
+## ReplicaSet YAML
 
 Example:
 
@@ -288,7 +288,7 @@ spec:
 
 ---
 
-# YAML Structure
+## YAML Structure
 
 ```
 ReplicaSet
@@ -316,7 +316,7 @@ Pod Template
 
 ---
 
-# Understanding Selectors
+## Understanding Selectors
 
 A ReplicaSet identifies Pods using labels.
 
@@ -342,7 +342,7 @@ Only Pods whose labels match the selector are managed.
 
 ---
 
-# Label Matching
+## Label Matching
 
 Example:
 
@@ -374,7 +374,7 @@ ReplicaSet Manages Pod
 
 ---
 
-# Non-Matching Pods
+## Non-Matching Pods
 
 Example:
 
@@ -406,7 +406,7 @@ ReplicaSet Ignores Pod
 
 ---
 
-# Creating a ReplicaSet
+## Creating a ReplicaSet
 
 Apply:
 
@@ -428,7 +428,7 @@ kubectl get pods
 
 ---
 
-# Viewing ReplicaSets
+## Viewing ReplicaSets
 
 List:
 
@@ -452,7 +452,7 @@ The description includes:
 
 ---
 
-# Scaling ReplicaSets
+## Scaling ReplicaSets
 
 Scale to five replicas:
 
@@ -484,7 +484,7 @@ kubectl scale replicaset nginx-rs \
 
 ---
 
-# Self-Healing Example
+## Self-Healing Example
 
 Initial state:
 
@@ -518,7 +518,7 @@ Create Replacement
 
 ---
 
-# Pod Ownership
+## Pod Ownership
 
 Every Pod created by a ReplicaSet has an owner reference.
 
@@ -538,7 +538,7 @@ If the ReplicaSet is deleted, Kubernetes can determine how managed Pods should b
 
 ---
 
-# ReplicaSet Lifecycle
+## ReplicaSet Lifecycle
 
 ```
 ReplicaSet Created
@@ -566,7 +566,7 @@ Delete
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -601,7 +601,7 @@ kubectl delete rs nginx-rs
 
 ---
 
-# ReplicaSet Architecture Summary
+## ReplicaSet Architecture Summary
 
 ```
 ReplicaSet
@@ -625,27 +625,27 @@ Continuous Reconciliation
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Deployments for Long-Running Applications
+#### 1. Use Deployments for Long-Running Applications
 
 ReplicaSets are fundamental, but Deployments provide additional capabilities such as rolling updates and rollbacks.
 
 ---
 
-### 2. Use Consistent Labels
+#### 2. Use Consistent Labels
 
 Ensure Pod template labels exactly match the ReplicaSet selector.
 
 ---
 
-### 3. Avoid Overlapping Selectors
+#### 3. Avoid Overlapping Selectors
 
 Two ReplicaSets should not unintentionally manage the same Pods.
 
 ---
 
-### 4. Monitor Replica Health
+#### 4. Monitor Replica Health
 
 Regularly review:
 
@@ -656,15 +656,15 @@ Regularly review:
 
 ---
 
-### 5. Scale Declaratively
+#### 5. Scale Declaratively
 
 For production environments, update manifests and apply changes rather than relying solely on imperative scaling commands.
 
 ---
 
-# How ReplicaSets Work Internally
+## How ReplicaSets Work Internally
 
-## Overview
+### Overview
 
 A ReplicaSet continuously ensures that the **actual number of running Pods** matches the **desired number of replicas** defined in its specification.
 
@@ -674,7 +674,7 @@ This behavior is powered by Kubernetes' **reconciliation loop**.
 
 ---
 
-# Complete ReplicaSet Workflow
+## Complete ReplicaSet Workflow
 
 Suppose a ReplicaSet specifies:
 
@@ -746,7 +746,7 @@ Pods Running
 
 ---
 
-# Step 1 – User Creates ReplicaSet
+## Step 1 – User Creates ReplicaSet
 
 Example:
 
@@ -768,7 +768,7 @@ kubectl apply -f replicaset.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -793,7 +793,7 @@ ReplicaSet Stored
 
 ---
 
-# Step 3 – Store in etcd
+## Step 3 – Store in etcd
 
 ```
 API Server
@@ -815,7 +815,7 @@ No Pods Yet
 
 ---
 
-# Step 4 – ReplicaSet Controller
+## Step 4 – ReplicaSet Controller
 
 The ReplicaSet Controller continuously watches the API Server.
 
@@ -839,7 +839,7 @@ Need 3 Pods
 
 ---
 
-# Step 5 – Pod Creation
+## Step 5 – Pod Creation
 
 ReplicaSet creates Pod objects.
 
@@ -865,7 +865,7 @@ because scheduling has not yet occurred.
 
 ---
 
-# Step 6 – Scheduler
+## Step 6 – Scheduler
 
 Scheduler evaluates:
 
@@ -900,7 +900,7 @@ Node A
 
 ---
 
-# Step 7 – kubelet
+## Step 7 – kubelet
 
 Worker node:
 
@@ -922,7 +922,7 @@ Pod Starts
 
 ---
 
-# Step 8 – Running
+## Step 8 – Running
 
 Final state:
 
@@ -938,7 +938,7 @@ Desired state achieved.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ReplicaSet never stops monitoring.
 
@@ -972,7 +972,7 @@ This is the reconciliation loop.
 
 ---
 
-# Pod Failure Example
+## Pod Failure Example
 
 Suppose:
 
@@ -1012,7 +1012,7 @@ No administrator intervention is required.
 
 ---
 
-# Manual Pod Deletion
+## Manual Pod Deletion
 
 Command:
 
@@ -1046,7 +1046,7 @@ This surprises many beginners but is expected behavior.
 
 ---
 
-# Scaling Up
+## Scaling Up
 
 Current:
 
@@ -1081,7 +1081,7 @@ Create 2 Pods
 
 ---
 
-# Scaling Down
+## Scaling Down
 
 Command:
 
@@ -1110,7 +1110,7 @@ Delete 3 Pods
 
 ---
 
-# Label Selectors
+## Label Selectors
 
 ReplicaSets identify Pods using labels.
 
@@ -1146,7 +1146,7 @@ Managed
 
 ---
 
-# Non-Matching Pods
+## Non-Matching Pods
 
 ReplicaSet:
 
@@ -1170,7 +1170,7 @@ Only matching Pods are counted.
 
 ---
 
-# Owner References
+## Owner References
 
 Every Pod contains:
 
@@ -1198,7 +1198,7 @@ ownerReferences:
 
 ---
 
-# ReplicaSet Lifecycle
+## ReplicaSet Lifecycle
 
 ```
 ReplicaSet Created
@@ -1226,7 +1226,7 @@ Delete
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 ReplicaSet
@@ -1258,7 +1258,7 @@ Running Pods
 
 ---
 
-# Self-Healing Architecture
+## Self-Healing Architecture
 
 ```
 Pod Failure
@@ -1288,9 +1288,9 @@ This automatic recovery is one of Kubernetes' key features.
 
 ---
 
-# Hands-on Lab 1 – Create a ReplicaSet
+## Hands-on Lab 1 – Create a ReplicaSet
 
-## Step 1 – Create YAML
+### Step 1 – Create YAML
 
 ```yaml
 apiVersion: apps/v1
@@ -1329,7 +1329,7 @@ spec:
 
 ---
 
-## Step 2 – Deploy
+### Step 2 – Deploy
 
 ```bash
 kubectl apply -f replicaset.yaml
@@ -1337,7 +1337,7 @@ kubectl apply -f replicaset.yaml
 
 ---
 
-## Step 3 – Verify
+### Step 3 – Verify
 
 ```bash
 kubectl get rs
@@ -1357,7 +1357,7 @@ ReplicaSet
 
 ---
 
-# Hands-on Lab 2 – Observe Self-Healing
+## Hands-on Lab 2 – Observe Self-Healing
 
 Delete one Pod:
 
@@ -1391,7 +1391,7 @@ Running
 
 ---
 
-# Hands-on Lab 3 – Scale ReplicaSet
+## Hands-on Lab 3 – Scale ReplicaSet
 
 Scale up:
 
@@ -1417,7 +1417,7 @@ Observe Pod deletion.
 
 ---
 
-# Hands-on Lab 4 – Describe ReplicaSet
+## Hands-on Lab 4 – Describe ReplicaSet
 
 ```bash
 kubectl describe rs nginx-rs
@@ -1433,7 +1433,7 @@ Review:
 
 ---
 
-# Hands-on Lab 5 – View Owner References
+## Hands-on Lab 5 – View Owner References
 
 Choose a Pod:
 
@@ -1451,9 +1451,9 @@ Confirm that the Pod belongs to the ReplicaSet.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Creating Standalone Pods
+### 1. Creating Standalone Pods
 
 Incorrect:
 
@@ -1477,7 +1477,7 @@ Pods
 
 ---
 
-## 2. Label Mismatch
+### 2. Label Mismatch
 
 ReplicaSet:
 
@@ -1503,7 +1503,7 @@ ReplicaSet Creates Additional Pods
 
 ---
 
-## 3. Deleting Pods Instead of Investigating
+### 3. Deleting Pods Instead of Investigating
 
 Deleting a managed Pod:
 
@@ -1517,7 +1517,7 @@ ReplicaSet immediately creates another Pod.
 
 ---
 
-## 4. Editing Managed Pods
+### 4. Editing Managed Pods
 
 Changes made directly to ReplicaSet-managed Pods are temporary.
 
@@ -1539,7 +1539,7 @@ Update the ReplicaSet (or Deployment) template instead.
 
 ---
 
-## 5. Using ReplicaSets Instead of Deployments
+### 5. Using ReplicaSets Instead of Deployments
 
 ReplicaSets provide:
 
@@ -1556,9 +1556,9 @@ Production applications should generally use Deployments.
 
 ---
 
-# ReplicaSet Quick Revision
+## ReplicaSet Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 ReplicaSet
@@ -1586,7 +1586,7 @@ Desired State Restored
 
 ---
 
-## Lifecycle
+### Lifecycle
 
 ```
 Create
@@ -1614,7 +1614,7 @@ Delete
 
 ---
 
-## Important Commands
+### Important Commands
 
 Create:
 
@@ -1651,7 +1651,7 @@ kubectl delete rs nginx-rs
 
 ---
 
-# ReplicaSet Checklist
+## ReplicaSet Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1667,9 +1667,9 @@ kubectl delete rs nginx-rs
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Kubernetes ReplicaSet Documentation
 - Kubernetes Controllers
@@ -1678,7 +1678,7 @@ kubectl delete rs nginx-rs
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Learning Path
 - Kubernetes Best Practices
@@ -1686,7 +1686,7 @@ kubectl delete rs nginx-rs
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Production Best Practices
@@ -1694,7 +1694,7 @@ kubectl delete rs nginx-rs
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 - Create a ReplicaSet with 3 replicas.
 - Delete Pods and observe automatic recreation.
@@ -1705,7 +1705,7 @@ kubectl delete rs nginx-rs
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 ReplicaSet Created

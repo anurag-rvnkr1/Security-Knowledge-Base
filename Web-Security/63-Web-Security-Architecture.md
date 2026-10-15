@@ -1,12 +1,12 @@
 # 63-Web-Security-Architecture.md
 
-# Part 1 — Introduction to Web Security Architecture, Security Principles, Trust Boundaries, Security Layers, and Enterprise Foundations
+## Part 1 — Introduction to Web Security Architecture, Security Principles, Trust Boundaries, Security Layers, and Enterprise Foundations
 
 > **"Web Security Architecture is the structured design of security controls, technologies, policies, and processes that collectively protect web applications, users, data, and infrastructure throughout the application lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Web Security Architecture?
+## What is Web Security Architecture?
 
 Web Security Architecture is the blueprint that defines how security controls are integrated into web applications, infrastructure, networks, and operational processes.
 
@@ -55,7 +55,7 @@ Security architecture provides a structured approach to protecting business-crit
 
 ---
 
-# Why Security Architecture Matters
+## Why Security Architecture Matters
 
 Modern web applications consist of numerous interconnected components.
 
@@ -72,7 +72,7 @@ A well-designed security architecture helps organizations:
 
 ---
 
-# Objectives of Security Architecture
+## Objectives of Security Architecture
 
 ```
 Security Architecture
@@ -100,7 +100,7 @@ These objectives guide architectural decisions throughout the application lifecy
 
 ---
 
-# Evolution of Web Security
+## Evolution of Web Security
 
 ```
 Basic Web Applications
@@ -130,7 +130,7 @@ Security has evolved from isolated controls to integrated enterprise-wide archit
 
 ---
 
-# Core Security Principles
+## Core Security Principles
 
 ```
 Security Principles
@@ -158,7 +158,7 @@ These principles provide the foundation for secure architectural design.
 
 ---
 
-# Confidentiality
+## Confidentiality
 
 Confidentiality ensures that information is accessible only to authorized individuals and systems.
 
@@ -178,7 +178,7 @@ Appropriate identity and access management supports confidentiality.
 
 ---
 
-# Integrity
+## Integrity
 
 Integrity ensures that information remains accurate, complete, and protected from unauthorized modification.
 
@@ -198,7 +198,7 @@ Integrity supports reliable business operations and decision-making.
 
 ---
 
-# Availability
+## Availability
 
 Availability ensures that authorized users can access applications and services when required.
 
@@ -222,7 +222,7 @@ Availability contributes to customer satisfaction and operational continuity.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Defense in Depth uses multiple security layers to reduce organizational risk.
 
@@ -254,7 +254,7 @@ No single security control should be relied upon as the sole protection mechanis
 
 ---
 
-# Security Layers
+## Security Layers
 
 ```
 Security Layers
@@ -282,7 +282,7 @@ Each layer contributes to the organization's overall security posture.
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
 
 Trust boundaries separate systems or components with different security assumptions.
 
@@ -308,7 +308,7 @@ Crossing a trust boundary should involve appropriate verification and security c
 
 ---
 
-# Security Domains
+## Security Domains
 
 ```
 Enterprise Security Domains
@@ -336,7 +336,7 @@ Security controls should be applied consistently across each domain.
 
 ---
 
-# Attack Surface (Conceptual)
+## Attack Surface (Conceptual)
 
 The attack surface represents the collection of entry points and interfaces that require protection.
 
@@ -364,7 +364,7 @@ Organizations should continuously identify, review, and reduce unnecessary expos
 
 ---
 
-# Secure by Design
+## Secure by Design
 
 Security should be incorporated throughout system design rather than added after deployment.
 
@@ -400,7 +400,7 @@ Security decisions made early reduce operational complexity later.
 
 ---
 
-# Shared Responsibility
+## Shared Responsibility
 
 Security architecture requires collaboration across multiple teams.
 
@@ -432,7 +432,7 @@ Each team contributes to maintaining a secure architecture.
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
                  Users
@@ -472,7 +472,7 @@ This layered architecture supports secure communication, operational visibility,
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail organization delivers customer portals, mobile applications, payment services, and internal management systems.
 
@@ -504,7 +504,7 @@ Security architects define trust boundaries, implement layered security controls
 
 ---
 
-# Benefits of Security Architecture
+## Benefits of Security Architecture
 
 ```
 Benefits
@@ -530,7 +530,7 @@ Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a layered security architecture for an enterprise web application.
 2. Identify trust boundaries between users, applications, APIs, and databases.
@@ -542,7 +542,7 @@ Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Web Security Architecture?
 2. Why is security architecture important?
@@ -557,7 +557,7 @@ Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security from the earliest design stages.
 - Apply Defense in Depth across all architectural layers.
@@ -570,7 +570,7 @@ Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating security as a deployment-only activity.
 - Relying on a single security control.
@@ -582,7 +582,7 @@ Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Web Security Architecture provides the blueprint for protecting enterprise web applications.
 - Layered security, trust boundaries, and secure design principles form the foundation of resilient architectures.
@@ -590,15 +590,15 @@ Benefits
 - Collaboration between architecture, development, operations, and security teams is essential.
 - Mature security architectures continuously evolve through governance, monitoring, and improvement.
 
-# 63-Web-Security-Architecture.md
+## 63-Web-Security-Architecture.md
 
-# Part 2 — Identity Architecture, Authentication, Authorization, Secure Network Design, Data Protection, and Security Control Layers
+## Part 2 — Identity Architecture, Authentication, Authorization, Secure Network Design, Data Protection, and Security Control Layers
 
 > **"A secure web architecture is built upon strong identity management, layered access control, protected data flows, secure network segmentation, and standardized security controls that work together throughout the application lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -615,7 +615,7 @@ After completing this part, you will understand:
 
 ---
 
-# Identity Security Architecture
+## Identity Security Architecture
 
 Identity is the primary security boundary in modern web applications.
 
@@ -647,7 +647,7 @@ Every request should be associated with a verified identity before access decisi
 
 ---
 
-# Identity Components
+## Identity Components
 
 ```
 Identity Architecture
@@ -675,7 +675,7 @@ Identity management should be centralized and governed consistently.
 
 ---
 
-# Authentication
+## Authentication
 
 Authentication confirms the identity of a user or service before granting access.
 
@@ -699,7 +699,7 @@ Authentication mechanisms should align with organizational security policies.
 
 ---
 
-# Authentication Factors
+## Authentication Factors
 
 ```
 Authentication Factors
@@ -727,7 +727,7 @@ Combining multiple authentication factors strengthens identity assurance.
 
 ---
 
-# Authorization
+## Authorization
 
 Authorization determines what an authenticated identity is permitted to access.
 
@@ -751,7 +751,7 @@ Authorization decisions should follow documented access control policies.
 
 ---
 
-# Identity and Access Management (IAM)
+## Identity and Access Management (IAM)
 
 IAM governs the lifecycle of identities and their permissions.
 
@@ -783,7 +783,7 @@ IAM supports consistent access management across enterprise systems.
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 RBAC simplifies permission management by assigning permissions through predefined roles.
 
@@ -807,7 +807,7 @@ Roles should align with business functions rather than individual users.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Every identity should receive only the minimum permissions necessary for its responsibilities.
 
@@ -831,7 +831,7 @@ Applying least privilege reduces organizational risk and limits the impact of co
 
 ---
 
-# Access Governance
+## Access Governance
 
 ```
 Access Governance
@@ -859,7 +859,7 @@ Governance ensures access remains appropriate throughout the identity lifecycle.
 
 ---
 
-# Secure Network Architecture
+## Secure Network Architecture
 
 Secure network architecture separates systems into logical security zones.
 
@@ -891,7 +891,7 @@ Each layer should have clearly defined communication paths and security controls
 
 ---
 
-# Network Security Zones
+## Network Security Zones
 
 ```
 Security Zones
@@ -919,7 +919,7 @@ Segmentation limits unnecessary communication between systems.
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 ```
 Public Users
@@ -941,7 +941,7 @@ Trust boundaries should enforce appropriate authentication, authorization, and m
 
 ---
 
-# Secure Communication
+## Secure Communication
 
 Applications should communicate using secure, authenticated channels.
 
@@ -965,7 +965,7 @@ Secure communication protects confidentiality and integrity during data exchange
 
 ---
 
-# Data Protection Architecture
+## Data Protection Architecture
 
 Data protection should be integrated throughout the application lifecycle.
 
@@ -1001,7 +1001,7 @@ Data protection policies should reflect business and regulatory requirements.
 
 ---
 
-# Data Classification
+## Data Classification
 
 ```
 Business Data
@@ -1029,7 +1029,7 @@ Classification determines the level of protection applied to information.
 
 ---
 
-# Data Lifecycle
+## Data Lifecycle
 
 ```
 Creation
@@ -1063,7 +1063,7 @@ Security controls should be applied consistently throughout the lifecycle.
 
 ---
 
-# Security Control Categories
+## Security Control Categories
 
 ```
 Security Controls
@@ -1091,7 +1091,7 @@ Organizations typically combine multiple categories of controls to strengthen ov
 
 ---
 
-# Layered Security Controls
+## Layered Security Controls
 
 ```
 Users
@@ -1125,7 +1125,7 @@ Layered controls provide resilience even if one control becomes ineffective.
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```
 Business Requirement
@@ -1159,7 +1159,7 @@ Security architecture should evolve alongside business and technical requirement
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider delivers patient portals, internal clinical systems, and partner APIs.
 
@@ -1191,7 +1191,7 @@ Security architects establish identity governance, secure communication pathways
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1206,7 +1206,7 @@ Security architects establish identity governance, secure communication pathways
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1219,7 +1219,7 @@ Security architects establish identity governance, secure communication pathways
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an identity architecture for an enterprise web application.
 2. Map user roles to RBAC permissions.
@@ -1231,7 +1231,7 @@ Security architects establish identity governance, secure communication pathways
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is identity considered the primary security boundary?
 2. What is the difference between authentication and authorization?
@@ -1246,7 +1246,7 @@ Security architects establish identity governance, secure communication pathways
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Centralize identity and access management.
 - Apply least privilege to every identity.
@@ -1259,7 +1259,7 @@ Security architects establish identity governance, secure communication pathways
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Granting excessive permissions.
 - Maintaining undocumented access policies.
@@ -1271,7 +1271,7 @@ Security architects establish identity governance, secure communication pathways
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Identity architecture is the foundation of modern web security.
 - Authentication, authorization, IAM, RBAC, and least privilege provide strong access control.
@@ -1279,15 +1279,15 @@ Security architects establish identity governance, secure communication pathways
 - Data protection must span the complete information lifecycle.
 - Layered security controls and continuous governance strengthen enterprise resilience.
 
-# 63-Web-Security-Architecture.md
+## 63-Web-Security-Architecture.md
 
-# Part 3 — Secure Architecture Patterns, Zero Trust, Security Governance, Monitoring Integration, Risk Management, and Operational Resilience
+## Part 3 — Secure Architecture Patterns, Zero Trust, Security Governance, Monitoring Integration, Risk Management, and Operational Resilience
 
 > **"Enterprise Web Security Architecture extends beyond technical controls by integrating governance, Zero Trust principles, operational monitoring, risk management, and continuous security validation throughout the application lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1304,7 +1304,7 @@ After completing this part, you will understand:
 
 ---
 
-# Secure Architecture Patterns
+## Secure Architecture Patterns
 
 Security architecture patterns provide reusable approaches for designing secure web applications.
 
@@ -1336,7 +1336,7 @@ Standardized architecture patterns improve consistency, scalability, and maintai
 
 ---
 
-# Common Architecture Patterns
+## Common Architecture Patterns
 
 ```
 Architecture Patterns
@@ -1364,7 +1364,7 @@ Each pattern introduces unique security considerations while sharing common secu
 
 ---
 
-# Layered Security Architecture
+## Layered Security Architecture
 
 ```
 Users
@@ -1398,7 +1398,7 @@ Each layer should validate requests and enforce security controls appropriate to
 
 ---
 
-# Zero Trust Architecture
+## Zero Trust Architecture
 
 Zero Trust is based on the principle of **"Never Trust, Always Verify."**
 
@@ -1430,7 +1430,7 @@ Trust should be continuously evaluated rather than assumed.
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -1458,7 +1458,7 @@ These principles reduce implicit trust across enterprise environments.
 
 ---
 
-# Defense in Depth Implementation
+## Defense in Depth Implementation
 
 Defense in Depth combines multiple independent security layers.
 
@@ -1494,7 +1494,7 @@ Multiple protective layers improve resilience against failures and misconfigurat
 
 ---
 
-# Security Control Placement
+## Security Control Placement
 
 ```
 Security Controls
@@ -1522,7 +1522,7 @@ Controls should be placed where they provide the greatest protection and visibil
 
 ---
 
-# Secure Configuration Management
+## Secure Configuration Management
 
 Configuration consistency is essential for maintaining a secure architecture.
 
@@ -1554,7 +1554,7 @@ Changes should follow approved organizational procedures.
 
 ---
 
-# Configuration Governance
+## Configuration Governance
 
 ```
 Configuration Governance
@@ -1582,7 +1582,7 @@ Governance reduces configuration drift and operational risk.
 
 ---
 
-# Security Monitoring Integration
+## Security Monitoring Integration
 
 Monitoring should be integrated into every architectural layer.
 
@@ -1614,7 +1614,7 @@ Integrated monitoring improves visibility across the enterprise.
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Monitoring
@@ -1642,7 +1642,7 @@ These components collectively support observability and operational awareness.
 
 ---
 
-# Risk Management Integration
+## Risk Management Integration
 
 Security architecture should align with enterprise risk management.
 
@@ -1674,7 +1674,7 @@ Architectural decisions should consider both technical and business risks.
 
 ---
 
-# Risk Categories
+## Risk Categories
 
 ```
 Enterprise Risks
@@ -1702,7 +1702,7 @@ Risk assessments should be reviewed periodically as systems evolve.
 
 ---
 
-# Compliance Integration
+## Compliance Integration
 
 Security architecture supports compliance by embedding governance into operational processes.
 
@@ -1734,7 +1734,7 @@ Compliance becomes more effective when incorporated into everyday operations.
 
 ---
 
-# Architecture Documentation
+## Architecture Documentation
 
 Documentation is a critical component of enterprise security architecture.
 
@@ -1766,7 +1766,7 @@ Documentation should remain accurate and reflect the current environment.
 
 ---
 
-# Operational Resilience
+## Operational Resilience
 
 Operational resilience ensures that critical business services remain dependable under changing conditions.
 
@@ -1794,7 +1794,7 @@ Resilience is strengthened through continuous monitoring and governance.
 
 ---
 
-# Enterprise Architecture Workflow
+## Enterprise Architecture Workflow
 
 ```
 Business Requirements
@@ -1828,7 +1828,7 @@ Each phase contributes to maintaining a secure and resilient architecture.
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
                 Users
@@ -1874,7 +1874,7 @@ This architecture demonstrates how governance and monitoring integrate with tech
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial services organization operates customer banking portals, mobile applications, partner APIs, and internal administration systems.
 
@@ -1910,7 +1910,7 @@ Security architects define enterprise standards for identity, secure communicati
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1925,7 +1925,7 @@ Security architects define enterprise standards for identity, secure communicati
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1938,7 +1938,7 @@ Security architects define enterprise standards for identity, secure communicati
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a layered enterprise security architecture for a multi-tier web application.
 2. Identify trust boundaries and appropriate security controls.
@@ -1950,7 +1950,7 @@ Security architects define enterprise standards for identity, secure communicati
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are secure architecture patterns?
 2. What is Zero Trust Architecture?
@@ -1965,7 +1965,7 @@ Security architects define enterprise standards for identity, secure communicati
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Adopt standardized architecture patterns.
 - Apply Zero Trust principles consistently.
@@ -1978,7 +1978,7 @@ Security architects define enterprise standards for identity, secure communicati
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Relying on perimeter security alone.
 - Treating architecture documentation as static.
@@ -1990,7 +1990,7 @@ Security architects define enterprise standards for identity, secure communicati
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure architecture patterns provide reusable, scalable security designs.
 - Zero Trust and Defense in Depth strengthen enterprise resilience.
@@ -1998,15 +1998,15 @@ Security architects define enterprise standards for identity, secure communicati
 - Risk management and compliance are fundamental architectural considerations.
 - Mature security architectures evolve continuously through governance, operational feedback, and ongoing improvement.
 
-# 63-Web-Security-Architecture.md
+## 63-Web-Security-Architecture.md
 
-# Part 4 — Enterprise Governance, Security Architecture Maturity, Operational Excellence, Business Continuity, and Chapter Summary
+## Part 4 — Enterprise Governance, Security Architecture Maturity, Operational Excellence, Business Continuity, and Chapter Summary
 
 > **"A mature Web Security Architecture continuously evolves through governance, standardized security controls, operational resilience, continuous monitoring, and ongoing improvement to support secure and reliable business operations."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2023,7 +2023,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Security Architecture Governance
+## Enterprise Security Architecture Governance
 
 Governance provides direction, accountability, and consistency for enterprise security architecture.
 
@@ -2055,7 +2055,7 @@ Governance ensures that architectural decisions remain aligned with business goa
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Architecture Governance
@@ -2083,7 +2083,7 @@ A structured governance framework promotes consistency across projects and busin
 
 ---
 
-# Security Architecture Review Process
+## Security Architecture Review Process
 
 Regular architecture reviews help verify that systems continue to meet organizational requirements.
 
@@ -2115,7 +2115,7 @@ Reviews should be conducted whenever significant architectural changes occur.
 
 ---
 
-# Review Areas
+## Review Areas
 
 ```
 Architecture Reviews
@@ -2143,7 +2143,7 @@ Every critical architectural domain should be evaluated periodically.
 
 ---
 
-# Business Continuity Integration
+## Business Continuity Integration
 
 Security architecture should support continuous business operations.
 
@@ -2171,7 +2171,7 @@ Architectural decisions should minimize operational disruption during unexpected
 
 ---
 
-# Disaster Recovery Considerations
+## Disaster Recovery Considerations
 
 Security architecture should accommodate planned recovery processes.
 
@@ -2199,7 +2199,7 @@ Recovery capabilities should be documented, tested, and reviewed regularly.
 
 ---
 
-# Change Management
+## Change Management
 
 Architectural changes should follow controlled governance processes.
 
@@ -2231,7 +2231,7 @@ Formal change management reduces operational and security risks.
 
 ---
 
-# Security Architecture Documentation
+## Security Architecture Documentation
 
 Documentation serves as the authoritative reference for architecture decisions.
 
@@ -2261,7 +2261,7 @@ Documentation should accurately reflect the deployed environment.
 
 ---
 
-# Operational Excellence
+## Operational Excellence
 
 Operational excellence ensures that security architecture remains effective throughout the application lifecycle.
 
@@ -2293,7 +2293,7 @@ Operational excellence combines governance, reliability, and continuous learning
 
 ---
 
-# Enterprise Security Metrics
+## Enterprise Security Metrics
 
 Organizations should monitor architectural effectiveness using measurable indicators.
 
@@ -2310,7 +2310,7 @@ Organizations should monitor architectural effectiveness using measurable indica
 
 ---
 
-# Security Architecture Maturity Model
+## Security Architecture Maturity Model
 
 ```
 Level 1
@@ -2348,7 +2348,7 @@ Organizations mature by strengthening governance, standardization, visibility, a
 
 ---
 
-# Characteristics of a Mature Security Architecture
+## Characteristics of a Mature Security Architecture
 
 ```
 Mature Architecture
@@ -2378,7 +2378,7 @@ These characteristics support long-term resilience and scalability.
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
                  Business Objectives
@@ -2424,7 +2424,7 @@ This architecture illustrates how governance, operational monitoring, and resili
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational manufacturing organization operates customer portals, supplier platforms, employee services, and industrial management applications.
 
@@ -2460,7 +2460,7 @@ Security architects define enterprise standards, review architectural changes, c
 
 ---
 
-# Enterprise Security Architecture Checklist
+## Enterprise Security Architecture Checklist
 
 ```
 ✓ Security Architecture Documented
@@ -2486,7 +2486,7 @@ Security architects define enterprise standards, review architectural changes, c
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2499,9 +2499,9 @@ Security architects define enterprise standards, review architectural changes, c
 
 ---
 
-# Web Security Architecture Quick Revision
+## Web Security Architecture Quick Revision
 
-## Secure Development Lifecycle
+### Secure Development Lifecycle
 
 ```
 Requirements
@@ -2533,7 +2533,7 @@ Operations
 
 ---
 
-## Layered Security
+### Layered Security
 
 ```
 Identity
@@ -2561,7 +2561,7 @@ Governance
 
 ---
 
-## Continuous Improvement Cycle
+### Continuous Improvement Cycle
 
 ```
 Assessment
@@ -2589,7 +2589,7 @@ Improvement
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a complete enterprise security architecture for a multi-tier web application.
 2. Create a governance framework covering architecture reviews, change management, and documentation.
@@ -2601,7 +2601,7 @@ Improvement
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Web Security Architecture?
 2. Why is governance important in security architecture?
@@ -2616,7 +2616,7 @@ Improvement
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design security into every architectural decision.
 - Maintain clear and current architecture documentation.
@@ -2629,7 +2629,7 @@ Improvement
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Designing architecture without business context.
 - Treating documentation as a one-time activity.
@@ -2641,7 +2641,7 @@ Improvement
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

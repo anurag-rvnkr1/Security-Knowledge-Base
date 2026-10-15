@@ -1,12 +1,12 @@
 # 51-Web-Application-Firewalls.md
 
-# Part 1 — Introduction to Web Application Firewalls (WAF), Request Inspection, Security Architecture, and Enterprise Protection
+## Part 1 — Introduction to Web Application Firewalls (WAF), Request Inspection, Security Architecture, and Enterprise Protection
 
 > **"A Web Application Firewall (WAF) is a defensive security control that monitors and filters HTTP/HTTPS traffic between clients and web applications to help detect, block, or monitor malicious requests while allowing legitimate business traffic."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is a Web Application Firewall?
+## What is a Web Application Firewall?
 
 A Web Application Firewall (WAF) is a security layer positioned between users and web applications.
 
@@ -56,7 +56,7 @@ A WAF complements secure application development but does not replace it.
 
 ---
 
-# Why Organizations Use WAFs
+## Why Organizations Use WAFs
 
 Modern web applications are exposed to the Internet and receive requests from many sources.
 
@@ -71,7 +71,7 @@ Organizations deploy WAFs to:
 
 ---
 
-# Position of a WAF
+## Position of a WAF
 
 ```
 Internet
@@ -101,7 +101,7 @@ The WAF evaluates requests before they reach the application.
 
 ---
 
-# High-Level Traffic Flow
+## High-Level Traffic Flow
 
 ```
 Client Request
@@ -135,7 +135,7 @@ Every request is evaluated according to configured security policies.
 
 ---
 
-# Security Policy Concept
+## Security Policy Concept
 
 A WAF applies predefined security rules to HTTP/HTTPS traffic.
 
@@ -161,7 +161,7 @@ Policies should align with business requirements and organizational risk toleran
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 External Users
@@ -179,7 +179,7 @@ The WAF forms one security layer at the application's external trust boundary.
 
 ---
 
-# Types of Traffic
+## Types of Traffic
 
 ```
 Application Traffic
@@ -203,7 +203,7 @@ Security policies may differ depending on the type of client and business functi
 
 ---
 
-# WAF Inspection Workflow
+## WAF Inspection Workflow
 
 ```
 Incoming Request
@@ -229,7 +229,7 @@ Requests that satisfy organizational policies continue to the application.
 
 ---
 
-# WAF Deployment Models
+## WAF Deployment Models
 
 ```
 Deployment Models
@@ -251,7 +251,7 @@ Organizations select deployment models based on scalability, operational require
 
 ---
 
-# Enterprise WAF Architecture
+## Enterprise WAF Architecture
 
 ```
                 Internet
@@ -295,7 +295,7 @@ The WAF works alongside other security controls within a layered architecture.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Authentication
@@ -325,7 +325,7 @@ No single security control is sufficient on its own.
 
 ---
 
-# WAF Responsibilities
+## WAF Responsibilities
 
 A WAF commonly helps with:
 
@@ -341,7 +341,7 @@ Application security must still be implemented within the software itself.
 
 ---
 
-# Components of a WAF
+## Components of a WAF
 
 ```
 Web Application Firewall
@@ -367,7 +367,7 @@ Each component contributes to the overall security posture.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational online retail platform protects its customer portal and APIs with a centrally managed WAF.
 
@@ -395,7 +395,7 @@ The WAF enforces security policies, logs significant events, and provides centra
 
 ---
 
-# Benefits of a WAF
+## Benefits of a WAF
 
 ```
 Security Benefits
@@ -419,7 +419,7 @@ Security Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the architecture of a web application protected by a WAF.
 2. Identify the trust boundary between external users and internal systems.
@@ -431,7 +431,7 @@ Security Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a Web Application Firewall?
 2. Where is a WAF positioned in an application architecture?
@@ -446,7 +446,7 @@ Security Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Deploy the WAF in front of Internet-facing applications.
 - Keep WAF policies aligned with business requirements.
@@ -459,7 +459,7 @@ Security Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating the WAF as a replacement for secure application development.
 - Using outdated security policies.
@@ -471,7 +471,7 @@ Security Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A Web Application Firewall is a defensive security control for HTTP/HTTPS traffic.
 - WAFs inspect requests before they reach applications and enforce security policies.
@@ -479,15 +479,15 @@ Security Benefits
 - Centralized monitoring, governance, and policy management improve operational resilience.
 - Enterprise WAF deployments integrate with broader security architectures and monitoring platforms.
 
-# 51-Web-Application-Firewalls.md
+## 51-Web-Application-Firewalls.md
 
-# Part 2 — WAF Rule Management, Request Processing, Logging, Monitoring, Deployment Strategies, and Enterprise Operations
+## Part 2 — WAF Rule Management, Request Processing, Logging, Monitoring, Deployment Strategies, and Enterprise Operations
 
 > **"An effective Web Application Firewall depends on well-designed security policies, centralized rule management, continuous monitoring, operational governance, and regular review to protect modern web applications."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -504,7 +504,7 @@ After completing this part, you will understand:
 
 ---
 
-# WAF Request Processing Pipeline
+## WAF Request Processing Pipeline
 
 Every incoming request should follow a structured inspection workflow.
 
@@ -536,7 +536,7 @@ Each stage contributes to consistent and predictable request handling.
 
 ---
 
-# Request Lifecycle
+## Request Lifecycle
 
 ```
 Client
@@ -570,7 +570,7 @@ Requests are evaluated before reaching business logic.
 
 ---
 
-# Security Policy Management
+## Security Policy Management
 
 Security policies define how the WAF responds to different categories of traffic.
 
@@ -596,7 +596,7 @@ Policies should be reviewed regularly to align with business and security requir
 
 ---
 
-# Rule Categories
+## Rule Categories
 
 A WAF commonly organizes rules into logical groups.
 
@@ -626,7 +626,7 @@ Grouping rules improves manageability and simplifies policy reviews.
 
 ---
 
-# Rule Evaluation Workflow
+## Rule Evaluation Workflow
 
 ```
 Incoming Request
@@ -658,11 +658,11 @@ The WAF evaluates requests according to configured policies before forwarding th
 
 ---
 
-# Positive and Negative Security Models
+## Positive and Negative Security Models
 
 Organizations may use different policy approaches.
 
-### Positive Security Model
+#### Positive Security Model
 
 ```
 Approved Requests
@@ -682,7 +682,7 @@ Only predefined acceptable traffic is allowed.
 
 ---
 
-### Negative Security Model
+#### Negative Security Model
 
 ```
 Known Unacceptable Requests
@@ -702,7 +702,7 @@ Traffic matching prohibited patterns is denied.
 
 ---
 
-### Layered Policy Model
+#### Layered Policy Model
 
 Many enterprise environments combine both approaches.
 
@@ -726,7 +726,7 @@ Combining multiple policy strategies improves flexibility and security.
 
 ---
 
-# Request Normalization
+## Request Normalization
 
 Before evaluating requests, WAFs often normalize request data into a consistent format.
 
@@ -750,7 +750,7 @@ Normalization helps ensure consistent application of security policies.
 
 ---
 
-# Logging
+## Logging
 
 Every important security event should be recorded.
 
@@ -778,7 +778,7 @@ Comprehensive logging supports investigations, auditing, and operational analysi
 
 ---
 
-# Common Log Events
+## Common Log Events
 
 | Event | Purpose |
 |--------|----------|
@@ -794,7 +794,7 @@ Sensitive user information should be protected in accordance with organizational
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 WAF
@@ -820,7 +820,7 @@ Continuous monitoring provides visibility into application traffic and security 
 
 ---
 
-# Useful Operational Metrics
+## Useful Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -834,7 +834,7 @@ Continuous monitoring provides visibility into application traffic and security 
 
 ---
 
-# High Availability
+## High Availability
 
 Enterprise WAF deployments should avoid single points of failure.
 
@@ -866,7 +866,7 @@ Redundant deployments improve resilience and availability.
 
 ---
 
-# Scalability
+## Scalability
 
 Large organizations often require scalable security architectures.
 
@@ -894,7 +894,7 @@ Scalable deployments support increased traffic while maintaining consistent secu
 
 ---
 
-# Policy Lifecycle
+## Policy Lifecycle
 
 ```
 Requirements
@@ -932,7 +932,7 @@ Policies should evolve alongside applications and business requirements.
 
 ---
 
-# Enterprise Operations
+## Enterprise Operations
 
 Operational teams typically manage:
 
@@ -962,7 +962,7 @@ Structured operational processes improve long-term reliability.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global healthcare organization protects patient portals, mobile APIs, and partner integrations using centralized WAF policies.
 
@@ -990,7 +990,7 @@ Security teams continuously review policies, monitor operational metrics, and co
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1003,7 +1003,7 @@ Security teams continuously review policies, monitor operational metrics, and co
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the request processing pipeline of a WAF.
 2. Identify where security policies are evaluated.
@@ -1015,7 +1015,7 @@ Security teams continuously review policies, monitor operational metrics, and co
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of WAF rule management?
 2. What is the difference between positive and negative security models?
@@ -1030,7 +1030,7 @@ Security teams continuously review policies, monitor operational metrics, and co
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Organize rules into clear policy categories.
 - Review and update WAF policies regularly.
@@ -1043,7 +1043,7 @@ Security teams continuously review policies, monitor operational metrics, and co
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Maintaining outdated rule sets.
 - Applying inconsistent policies across environments.
@@ -1055,7 +1055,7 @@ Security teams continuously review policies, monitor operational metrics, and co
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective WAF protection relies on well-managed policies and structured rule evaluation.
 - Request normalization and policy categorization improve consistent security enforcement.
@@ -1063,15 +1063,15 @@ Security teams continuously review policies, monitor operational metrics, and co
 - High availability and scalability are critical for enterprise deployments.
 - Continuous governance, testing, and policy refinement strengthen long-term web application security.
 
-# 51-Web-Application-Firewalls.md
+## 51-Web-Application-Firewalls.md
 
-# Part 3 — Threat Modeling, Secure SDLC, DevSecOps, Rule Governance, Monitoring, and Enterprise Defense
+## Part 3 — Threat Modeling, Secure SDLC, DevSecOps, Rule Governance, Monitoring, and Enterprise Defense
 
 > **"A Web Application Firewall is most effective when integrated into a comprehensive security program that includes secure software development, threat modeling, centralized governance, continuous monitoring, and incident response."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1088,7 +1088,7 @@ After completing this part, you will understand:
 
 ---
 
-# Reviewing WAF Architecture
+## Reviewing WAF Architecture
 
 Organizations should periodically review WAF deployments to ensure they continue to meet business and security requirements.
 
@@ -1116,7 +1116,7 @@ Architecture reviews should be performed whenever major application or infrastru
 
 ---
 
-# WAF Security Review
+## WAF Security Review
 
 A structured review should evaluate every stage of request processing.
 
@@ -1151,7 +1151,7 @@ Review areas include:
 
 ---
 
-# Protected Asset Inventory
+## Protected Asset Inventory
 
 Maintain an inventory of all resources protected by the WAF.
 
@@ -1181,7 +1181,7 @@ Maintaining an accurate inventory simplifies governance and security planning.
 
 ---
 
-# WAF Component Inventory
+## WAF Component Inventory
 
 Document every component participating in traffic protection.
 
@@ -1211,7 +1211,7 @@ Documentation supports maintenance, audits, and incident response.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Security policies should remain consistent across all environments.
 
@@ -1235,7 +1235,7 @@ Policy drift between environments increases operational risk.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies trust boundaries and evaluates how requests flow through security controls.
 
@@ -1263,7 +1263,7 @@ The objective is to understand where security decisions are made and ensure appr
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 Security teams should regularly ask:
 
@@ -1294,7 +1294,7 @@ Continuous Review
 
 ---
 
-# Secure Rule Management
+## Secure Rule Management
 
 WAF rules should be managed through formal governance.
 
@@ -1326,7 +1326,7 @@ Every policy change should be documented and traceable.
 
 ---
 
-# Rule Lifecycle
+## Rule Lifecycle
 
 ```
 Requirement
@@ -1360,7 +1360,7 @@ Rule management is an ongoing operational process.
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 WAF policies should evolve alongside application development.
 
@@ -1396,7 +1396,7 @@ Application teams and security teams should collaborate throughout the lifecycle
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -1430,7 +1430,7 @@ Automation improves consistency while reducing deployment errors.
 
 ---
 
-# Change Management
+## Change Management
 
 Configuration changes should follow established operational procedures.
 
@@ -1462,7 +1462,7 @@ Controlled changes reduce service disruption and simplify troubleshooting.
 
 ---
 
-# Logging
+## Logging
 
 Important WAF events should be centrally collected.
 
@@ -1490,7 +1490,7 @@ Logs should support operational analysis, security investigations, and complianc
 
 ---
 
-# Important Security Events
+## Important Security Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1507,7 +1507,7 @@ Sensitive information should be handled according to organizational logging poli
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 WAF
@@ -1533,7 +1533,7 @@ Continuous monitoring enables rapid identification of operational and security i
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1548,7 +1548,7 @@ Continuous monitoring enables rapid identification of operational and security i
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -1590,7 +1590,7 @@ The WAF integrates with multiple application layers while providing centralized 
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization protects its customer portal, internal employee portal, and mobile APIs through centrally managed WAF clusters.
 
@@ -1618,7 +1618,7 @@ Security engineers regularly review policies, monitor dashboards, coordinate rul
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Protected Asset Inventory Updated
@@ -1644,7 +1644,7 @@ Security engineers regularly review policies, monitor dashboards, coordinate rul
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1657,7 +1657,7 @@ Security engineers regularly review policies, monitor dashboards, coordinate rul
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Document every application protected by the WAF.
 2. Draw the complete request processing architecture.
@@ -1669,7 +1669,7 @@ Security engineers regularly review policies, monitor dashboards, coordinate rul
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should WAF deployments undergo regular architecture reviews?
 2. What information should be included in a protected asset inventory?
@@ -1684,7 +1684,7 @@ Security engineers regularly review policies, monitor dashboards, coordinate rul
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Review WAF architecture regularly.
 - Maintain an inventory of protected applications and APIs.
@@ -1698,7 +1698,7 @@ Security engineers regularly review policies, monitor dashboards, coordinate rul
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing unmanaged policy changes.
 - Failing to review WAF effectiveness after application updates.
@@ -1710,7 +1710,7 @@ Security engineers regularly review policies, monitor dashboards, coordinate rul
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - WAF effectiveness depends on governance, continuous review, and operational maturity.
 - Threat modeling helps identify where WAF protection is required and how policies should be applied.
@@ -1718,15 +1718,15 @@ Security engineers regularly review policies, monitor dashboards, coordinate rul
 - Centralized logging, monitoring, and SIEM integration improve visibility and incident response.
 - Enterprise WAF programs require ongoing optimization, documentation, and governance.
 
-# 51-Web-Application-Firewalls.md
+## 51-Web-Application-Firewalls.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"A Web Application Firewall is most effective when supported by secure application development, centralized governance, continuous monitoring, disciplined change management, and a mature security operations program."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1748,7 +1748,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise WAF Governance
+## Enterprise WAF Governance
 
 Organizations should establish centralized governance for WAF deployments.
 
@@ -1788,7 +1788,7 @@ Governance ensures that WAF policies remain consistent, measurable, and aligned 
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 WAF Governance
@@ -1818,7 +1818,7 @@ Well-defined governance improves accountability and long-term operational stabil
 
 ---
 
-# Zero Trust and WAF
+## Zero Trust and WAF
 
 Zero Trust principles apply even when a WAF is deployed.
 
@@ -1852,7 +1852,7 @@ Security controls should exist at multiple layers.
 
 ---
 
-# Layered Security Architecture
+## Layered Security Architecture
 
 ```
 Internet
@@ -1890,7 +1890,7 @@ Each layer addresses different aspects of enterprise security.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Secure Coding
@@ -1920,7 +1920,7 @@ A WAF strengthens application security but does not replace secure development p
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 WAF configurations should be managed using Infrastructure as Code whenever practical.
 
@@ -1954,7 +1954,7 @@ Benefits include:
 
 ---
 
-# Secure CI/CD Integration
+## Secure CI/CD Integration
 
 ```
 Developer
@@ -1988,7 +1988,7 @@ Security validation should accompany every deployment.
 
 ---
 
-# Configuration Lifecycle
+## Configuration Lifecycle
 
 ```
 Planning
@@ -2022,7 +2022,7 @@ Configuration management should be treated as a continuous operational process.
 
 ---
 
-# Documentation
+## Documentation
 
 Maintain documentation covering:
 
@@ -2052,7 +2052,7 @@ Documentation supports operational continuity and audit readiness.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Organizations commonly require:
 
@@ -2078,7 +2078,7 @@ Compliance requirements vary depending on industry regulations, contractual obli
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 The WAF should record operationally significant events.
 
@@ -2106,7 +2106,7 @@ Logs should support investigations, operational analysis, and regulatory reporti
 
 ---
 
-# Important Audit Events
+## Important Audit Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2123,7 +2123,7 @@ Sensitive information should be handled according to organizational logging poli
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2153,7 +2153,7 @@ Continuous monitoring improves visibility into application security and operatio
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2168,7 +2168,7 @@ Continuous monitoring improves visibility into application security and operatio
 
 ---
 
-# Security Dashboard
+## Security Dashboard
 
 ```
 Enterprise Dashboard
@@ -2196,7 +2196,7 @@ Dashboards provide a centralized view of security and operational metrics.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 WAF
@@ -2226,7 +2226,7 @@ SOC teams correlate WAF telemetry with authentication, endpoint, application, an
 
 ---
 
-# Incident Response
+## Incident Response
 
 A documented incident response process should support WAF-related events.
 
@@ -2262,7 +2262,7 @@ Clearly defined procedures improve response consistency and reduce operational i
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2296,7 +2296,7 @@ Root cause analysis should focus on improving people, processes, and technology.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2326,7 +2326,7 @@ Security programs should evolve as applications and business requirements change
 
 ---
 
-# WAF Security Maturity Model
+## WAF Security Maturity Model
 
 ```
 Level 1
@@ -2363,7 +2363,7 @@ Higher maturity emphasizes automation, governance, operational visibility, and c
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                      Internet
@@ -2407,7 +2407,7 @@ This layered architecture provides centralized inspection, monitoring, and gover
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution protects Internet-facing banking applications, APIs, and customer portals using globally managed WAF deployments.
 
@@ -2431,7 +2431,7 @@ Security teams maintain centralized rule governance, perform scheduled policy re
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Protected Asset Inventory Maintained
@@ -2457,7 +2457,7 @@ Security teams maintain centralized rule governance, perform scheduled policy re
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2470,9 +2470,9 @@ Security teams maintain centralized rule governance, perform scheduled policy re
 
 ---
 
-# WAF Quick Revision
+## WAF Quick Revision
 
-## Request Flow
+### Request Flow
 
 ```
 Client
@@ -2496,7 +2496,7 @@ Response
 
 ---
 
-## Security Layers
+### Security Layers
 
 ```
 Network Security
@@ -2520,7 +2520,7 @@ Incident Response
 
 ---
 
-## Continuous Improvement Cycle
+### Continuous Improvement Cycle
 
 ```
 Metrics
@@ -2540,7 +2540,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise WAF deployment for a multi-tier web application.
 2. Identify all trust boundaries and inspection points.
@@ -2552,7 +2552,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the primary purpose of a Web Application Firewall?
 2. Why is a WAF considered a defense-in-depth control?
@@ -2567,7 +2567,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Deploy WAFs as part of a layered security architecture.
 - Continuously review and optimize security policies.
@@ -2581,7 +2581,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming a WAF alone secures an application.
 - Allowing unmanaged rule changes.
@@ -2593,7 +2593,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

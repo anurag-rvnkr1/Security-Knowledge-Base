@@ -1,12 +1,12 @@
 # 04-HTTPS-and-TLS.md
 
-# Part 1 — Introduction to HTTPS, TLS, Encryption, Digital Certificates, and Secure Communication
+## Part 1 — Introduction to HTTPS, TLS, Encryption, Digital Certificates, and Secure Communication
 
 > **"HTTP defines how web applications communicate. HTTPS ensures that communication remains confidential, authentic, and resistant to tampering while it travels across untrusted networks."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -24,7 +24,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Imagine logging into your online banking account over public Wi-Fi.
 
@@ -68,7 +68,7 @@ Even if someone intercepts the traffic, they should not be able to read its cont
 
 ---
 
-# Why HTTPS Exists
+## Why HTTPS Exists
 
 The Internet is an untrusted network.
 
@@ -85,7 +85,7 @@ Without protection, information could be observed or modified by unauthorized pa
 
 ---
 
-# What is HTTPS?
+## What is HTTPS?
 
 **HTTPS (HyperText Transfer Protocol Secure)** is HTTP running over an encrypted TLS connection.
 
@@ -109,7 +109,7 @@ HTTPS provides:
 
 ---
 
-# HTTPS Stack
+## HTTPS Stack
 
 ```
 Application
@@ -139,7 +139,7 @@ TLS sits between HTTP and TCP.
 
 ---
 
-# HTTP vs HTTPS
+## HTTP vs HTTPS
 
 | HTTP | HTTPS |
 |------|-------|
@@ -151,7 +151,7 @@ TLS sits between HTTP and TCP.
 
 ---
 
-# What Does HTTPS Protect?
+## What Does HTTPS Protect?
 
 HTTPS protects:
 
@@ -165,7 +165,7 @@ HTTPS protects:
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 Without HTTPS:
 
@@ -193,7 +193,7 @@ The transmitted data is encrypted before leaving the client.
 
 ---
 
-# Security Goals of HTTPS
+## Security Goals of HTTPS
 
 HTTPS supports three major goals:
 
@@ -211,7 +211,7 @@ Authentication
 
 ---
 
-# Confidentiality
+## Confidentiality
 
 Only authorized participants should be able to read the transmitted information.
 
@@ -237,7 +237,7 @@ Decryption
 
 ---
 
-# Integrity
+## Integrity
 
 The receiver should be able to detect if transmitted data has been modified during transit.
 
@@ -259,7 +259,7 @@ Integrity Confirmed
 
 ---
 
-# Authentication
+## Authentication
 
 The client should be able to verify that it is communicating with the intended server.
 
@@ -279,7 +279,7 @@ This helps reduce the risk of impersonation attacks.
 
 ---
 
-# Encryption Basics
+## Encryption Basics
 
 Encryption converts readable information into unreadable data.
 
@@ -305,7 +305,7 @@ Plaintext
 
 ---
 
-# Plaintext
+## Plaintext
 
 Readable information.
 
@@ -317,7 +317,7 @@ Password123
 
 ---
 
-# Ciphertext
+## Ciphertext
 
 Encrypted information.
 
@@ -331,7 +331,7 @@ Ciphertext should be unintelligible without the correct cryptographic key.
 
 ---
 
-# Cryptographic Keys
+## Cryptographic Keys
 
 Encryption relies on keys.
 
@@ -359,7 +359,7 @@ The security of the encryption depends on protecting these keys.
 
 ---
 
-# Types of Encryption
+## Types of Encryption
 
 Two major categories are used in modern cryptography.
 
@@ -375,7 +375,7 @@ Both play important roles in TLS.
 
 ---
 
-# Symmetric Encryption
+## Symmetric Encryption
 
 Uses the **same key** for encryption and decryption.
 
@@ -403,7 +403,7 @@ Challenge:
 
 ---
 
-# Asymmetric Encryption
+## Asymmetric Encryption
 
 Uses two mathematically related keys.
 
@@ -435,7 +435,7 @@ Disadvantages:
 
 ---
 
-# Why TLS Uses Both
+## Why TLS Uses Both
 
 TLS combines both approaches.
 
@@ -459,7 +459,7 @@ This provides strong security with efficient performance.
 
 ---
 
-# What is TLS?
+## What is TLS?
 
 **Transport Layer Security (TLS)** is the protocol responsible for securing HTTP communication.
 
@@ -472,7 +472,7 @@ Responsibilities:
 
 ---
 
-# SSL vs TLS
+## SSL vs TLS
 
 Older systems used **SSL (Secure Sockets Layer)**.
 
@@ -488,7 +488,7 @@ Today, people often say "SSL certificate," but the protocol used in practice is 
 
 ---
 
-# Digital Certificates
+## Digital Certificates
 
 A digital certificate proves the identity of a website.
 
@@ -512,7 +512,7 @@ Trusted Connection
 
 ---
 
-# What's Inside a Certificate?
+## What's Inside a Certificate?
 
 A certificate typically contains:
 
@@ -525,7 +525,7 @@ A certificate typically contains:
 
 ---
 
-# Certificate Authority (CA)
+## Certificate Authority (CA)
 
 A **Certificate Authority (CA)** is a trusted organization that issues digital certificates.
 
@@ -549,7 +549,7 @@ Browsers trust certificates issued by recognized CAs.
 
 ---
 
-# Simplified Certificate Trust Model
+## Simplified Certificate Trust Model
 
 ```
 Website Owner
@@ -577,7 +577,7 @@ Secure Connection
 
 ---
 
-# Self-Signed Certificates
+## Self-Signed Certificates
 
 A server can create its own certificate.
 
@@ -603,7 +603,7 @@ Not generally appropriate for public production websites because browsers do not
 
 ---
 
-# Enterprise Certificate Management
+## Enterprise Certificate Management
 
 Large organizations often manage thousands of certificates.
 
@@ -635,7 +635,7 @@ Certificate expiration monitoring is an important operational responsibility.
 
 ---
 
-# HTTPS Request Flow
+## HTTPS Request Flow
 
 ```
 Browser
@@ -673,7 +673,7 @@ The TLS handshake occurs **before** HTTP data is exchanged.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A customer opens:
 
@@ -692,7 +692,7 @@ The browser:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Visit any HTTPS website.
 
@@ -706,7 +706,7 @@ Visit any HTTPS website.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is HTTPS?
 2. Why is HTTPS necessary?
@@ -721,7 +721,7 @@ Visit any HTTPS website.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use HTTPS for all web applications.
 - Use certificates issued by trusted Certificate Authorities.
@@ -732,7 +732,7 @@ Visit any HTTPS website.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming HTTPS alone secures an application against all attacks.
 - Using expired certificates.
@@ -742,7 +742,7 @@ Visit any HTTPS website.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - HTTPS is HTTP protected by TLS.
 - TLS provides confidentiality, integrity, and server authentication.
@@ -1494,15 +1494,15 @@ Using the browser's certificate viewer:
 
 
 ```
-# 04-HTTPS-and-TLS.md
+## 04-HTTPS-and-TLS.md
 
-# Part 2 — TLS Handshake, Public Key Infrastructure (PKI), Certificate Validation, Cipher Suites, and Session Keys
+## Part 2 — TLS Handshake, Public Key Infrastructure (PKI), Certificate Validation, Cipher Suites, and Session Keys
 
 > **"The TLS handshake is the foundation of secure web communication. Before any encrypted HTTP data is exchanged, both parties must establish trust, negotiate security parameters, and derive shared cryptographic keys."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1520,7 +1520,7 @@ After completing this part, you will understand:
 
 ---
 
-# Recap
+## Recap
 
 HTTPS communication begins with:
 
@@ -1548,7 +1548,7 @@ This part focuses on the **TLS Handshake**.
 
 ---
 
-# What is the TLS Handshake?
+## What is the TLS Handshake?
 
 The TLS Handshake is the process used by the client and server to:
 
@@ -1561,7 +1561,7 @@ Only after the handshake completes is application data exchanged.
 
 ---
 
-# Simplified TLS Handshake
+## Simplified TLS Handshake
 
 ```
 Browser
@@ -1593,7 +1593,7 @@ Encrypted Communication
 
 ---
 
-# Why is the Handshake Necessary?
+## Why is the Handshake Necessary?
 
 Without a handshake:
 
@@ -1603,7 +1603,7 @@ Without a handshake:
 
 ---
 
-# Step 1 — ClientHello
+## Step 1 — ClientHello
 
 The browser starts communication.
 
@@ -1625,7 +1625,7 @@ Typical information includes:
 
 ---
 
-# Step 2 — ServerHello
+## Step 2 — ServerHello
 
 The server replies.
 
@@ -1646,7 +1646,7 @@ The server selects:
 
 ---
 
-# Step 3 — Server Certificate
+## Step 3 — Server Certificate
 
 The server sends its digital certificate.
 
@@ -1672,7 +1672,7 @@ The certificate contains:
 
 ---
 
-# Step 4 — Certificate Validation
+## Step 4 — Certificate Validation
 
 The browser validates the certificate before trusting the server.
 
@@ -1688,7 +1688,7 @@ Only if these checks succeed does the browser continue.
 
 ---
 
-# Certificate Validation Flow
+## Certificate Validation Flow
 
 ```
 Certificate Received
@@ -1716,7 +1716,7 @@ Certificate Accepted
 
 ---
 
-# Domain Name Validation
+## Domain Name Validation
 
 Example:
 
@@ -1736,7 +1736,7 @@ A mismatch results in a browser warning.
 
 ---
 
-# Expired Certificate
+## Expired Certificate
 
 ```
 Certificate
@@ -1758,7 +1758,7 @@ Expired certificates should be renewed before expiration.
 
 ---
 
-# What is PKI?
+## What is PKI?
 
 **Public Key Infrastructure (PKI)** is the trust framework that enables digital certificates.
 
@@ -1773,7 +1773,7 @@ PKI includes:
 
 ---
 
-# PKI Architecture
+## PKI Architecture
 
 ```
 Root CA
@@ -1795,7 +1795,7 @@ This hierarchy helps protect the highly trusted root certificate.
 
 ---
 
-# Root Certificate Authority
+## Root Certificate Authority
 
 The Root CA is trusted by browsers and operating systems.
 
@@ -1811,7 +1811,7 @@ Root certificates are distributed with operating systems and browsers.
 
 ---
 
-# Intermediate Certificate Authority
+## Intermediate Certificate Authority
 
 Most public CAs do not directly sign website certificates.
 
@@ -1833,7 +1833,7 @@ This limits exposure of the highly trusted root key.
 
 ---
 
-# Certificate Chain
+## Certificate Chain
 
 A browser validates an entire chain.
 
@@ -1857,7 +1857,7 @@ If any required link is missing or invalid, validation fails.
 
 ---
 
-# Public Key
+## Public Key
 
 The public key is included in the certificate.
 
@@ -1870,7 +1870,7 @@ Typical uses:
 
 ---
 
-# Private Key
+## Private Key
 
 The private key remains secret on the server.
 
@@ -1894,7 +1894,7 @@ If the private key is compromised, the certificate should be replaced immediatel
 
 ---
 
-# Digital Signatures
+## Digital Signatures
 
 Certificate Authorities digitally sign certificates.
 
@@ -1918,7 +1918,7 @@ Digital signatures provide authenticity and integrity for the certificate.
 
 ---
 
-# Cipher Suites
+## Cipher Suites
 
 A cipher suite defines the cryptographic algorithms used during a TLS session.
 
@@ -1933,7 +1933,7 @@ The client offers supported cipher suites, and the server selects one that both 
 
 ---
 
-# Cipher Suite Negotiation
+## Cipher Suite Negotiation
 
 ```
 Browser
@@ -1957,7 +1957,7 @@ Secure Session
 
 ---
 
-# Session Keys
+## Session Keys
 
 After the handshake:
 
@@ -1977,7 +1977,7 @@ Session keys are temporary and used for efficient symmetric encryption.
 
 ---
 
-# Why Not Use Asymmetric Encryption for Everything?
+## Why Not Use Asymmetric Encryption for Everything?
 
 Asymmetric cryptography is computationally expensive.
 
@@ -2003,7 +2003,7 @@ This provides both security and performance.
 
 ---
 
-# Perfect Forward Secrecy (PFS)
+## Perfect Forward Secrecy (PFS)
 
 Modern TLS commonly supports **Perfect Forward Secrecy (PFS)**.
 
@@ -2016,7 +2016,7 @@ This significantly improves long-term confidentiality.
 
 ---
 
-# Simplified Handshake Timeline
+## Simplified Handshake Timeline
 
 ```
 Browser                        Server
@@ -2036,7 +2036,7 @@ Encrypted HTTP Begins
 
 ---
 
-# Enterprise TLS Deployment
+## Enterprise TLS Deployment
 
 ```
 Browser
@@ -2074,7 +2074,7 @@ In some enterprise architectures, TLS may terminate at a trusted reverse proxy o
 
 ---
 
-# TLS Termination
+## TLS Termination
 
 TLS termination means:
 
@@ -2098,7 +2098,7 @@ Organizations may also choose to re-encrypt traffic before forwarding it to back
 
 ---
 
-# Mutual TLS (mTLS) Overview
+## Mutual TLS (mTLS) Overview
 
 Normally:
 
@@ -2136,7 +2136,7 @@ mTLS is commonly used between internal services, enterprise APIs, and zero-trust
 
 ---
 
-# Real Enterprise Example
+## Real Enterprise Example
 
 An employee accesses an internal HR portal.
 
@@ -2172,7 +2172,7 @@ The browser verifies the HR portal's certificate before any sensitive employee i
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Visit a secure website.
 
@@ -2189,7 +2189,7 @@ Using the browser's certificate viewer:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the TLS Handshake?
 2. Why is the TLS Handshake necessary?
@@ -2204,7 +2204,7 @@ Using the browser's certificate viewer:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use certificates from trusted Certificate Authorities.
 - Rotate and protect private keys.
@@ -2215,7 +2215,7 @@ Using the browser's certificate viewer:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting certificates without validation.
 - Leaving expired certificates in production.
@@ -2225,7 +2225,7 @@ Using the browser's certificate viewer:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The TLS Handshake establishes trust and secure session keys before HTTP data is exchanged.
 - PKI provides the trust framework for digital certificates.
@@ -3068,15 +3068,15 @@ Using your browser:
 
 
 ```
-# 04-HTTPS-and-TLS.md
+## 04-HTTPS-and-TLS.md
 
-# Part 4 — TLS Attacks, Certificate Pinning, HTTPS Best Practices, Enterprise Deployment, Troubleshooting, and Chapter Summary
+## Part 4 — TLS Attacks, Certificate Pinning, HTTPS Best Practices, Enterprise Deployment, Troubleshooting, and Chapter Summary
 
 > **"HTTPS is only as secure as its implementation. Strong cryptography cannot protect applications that are poorly configured, improperly validated, or vulnerable to protocol misuse."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -3093,7 +3093,7 @@ After completing this final part, you will understand:
 
 ---
 
-# HTTPS Security Overview
+## HTTPS Security Overview
 
 HTTPS protects communication by ensuring:
 
@@ -3118,7 +3118,7 @@ However, security also depends on:
 
 ---
 
-# Common HTTPS Threats
+## Common HTTPS Threats
 
 Although TLS is secure when correctly implemented, deployments can still face threats.
 
@@ -3134,7 +3134,7 @@ Examples include:
 
 ---
 
-# Man-in-the-Middle (MITM)
+## Man-in-the-Middle (MITM)
 
 A MITM attacker attempts to intercept communication between the client and server.
 
@@ -3156,7 +3156,7 @@ The attacker may read or modify traffic.
 
 ---
 
-# HTTPS Against MITM
+## HTTPS Against MITM
 
 With proper HTTPS:
 
@@ -3176,7 +3176,7 @@ If the attacker cannot present a trusted certificate for the target domain, the 
 
 ---
 
-# Public Wi-Fi Example
+## Public Wi-Fi Example
 
 Imagine connecting to:
 
@@ -3220,7 +3220,7 @@ Even if packets are captured, the encrypted contents are protected.
 
 ---
 
-# Certificate Spoofing
+## Certificate Spoofing
 
 An attacker may attempt to impersonate a website using a fake certificate.
 
@@ -3244,7 +3244,7 @@ Modern browsers reject certificates that fail validation.
 
 ---
 
-# Certificate Validation Reminder
+## Certificate Validation Reminder
 
 Browsers verify:
 
@@ -3258,7 +3258,7 @@ Failure of these checks results in a warning or blocked connection.
 
 ---
 
-# Mixed Content
+## Mixed Content
 
 A webpage loaded over HTTPS should avoid loading insecure HTTP resources.
 
@@ -3280,9 +3280,9 @@ This is called **Mixed Content**.
 
 ---
 
-# Types of Mixed Content
+## Types of Mixed Content
 
-### Passive Mixed Content
+#### Passive Mixed Content
 
 Examples:
 
@@ -3296,7 +3296,7 @@ Risk:
 
 ---
 
-### Active Mixed Content
+#### Active Mixed Content
 
 Examples:
 
@@ -3312,7 +3312,7 @@ Modern browsers often block active mixed content by default.
 
 ---
 
-# Mixed Content Flow
+## Mixed Content Flow
 
 ```
 HTTPS Page
@@ -3328,7 +3328,7 @@ Browser Blocks Resource
 
 ---
 
-# TLS Downgrade Attack
+## TLS Downgrade Attack
 
 An attacker attempts to force communication to use an older, weaker protocol.
 
@@ -3356,7 +3356,7 @@ Modern TLS implementations include protections against many downgrade attacks.
 
 ---
 
-# Weak Cipher Suites
+## Weak Cipher Suites
 
 Older deployments may still support outdated cryptographic algorithms.
 
@@ -3381,7 +3381,7 @@ Best practice:
 
 ---
 
-# Expired Certificates
+## Expired Certificates
 
 ```
 Certificate
@@ -3405,7 +3405,7 @@ Certificate monitoring is essential.
 
 ---
 
-# Certificate Pinning
+## Certificate Pinning
 
 Certificate pinning is a technique where an application remembers or expects a specific certificate or public key.
 
@@ -3437,7 +3437,7 @@ Connection Rejected
 
 ---
 
-# Advantages of Certificate Pinning
+## Advantages of Certificate Pinning
 
 - Additional protection against unauthorized certificates
 - Reduced trust in unexpected certificate chains
@@ -3451,7 +3451,7 @@ Because of these operational considerations, certificate pinning should be used 
 
 ---
 
-# HTTPS Redirect
+## HTTPS Redirect
 
 Organizations often redirect all HTTP traffic to HTTPS.
 
@@ -3475,7 +3475,7 @@ This helps ensure encrypted communication.
 
 ---
 
-# Secure Enterprise HTTPS Architecture
+## Secure Enterprise HTTPS Architecture
 
 ```
 Internet
@@ -3519,7 +3519,7 @@ Security controls may include:
 
 ---
 
-# HTTPS Monitoring
+## HTTPS Monitoring
 
 Organizations continuously monitor:
 
@@ -3534,7 +3534,7 @@ Monitoring enables proactive maintenance and incident response.
 
 ---
 
-# TLS Troubleshooting
+## TLS Troubleshooting
 
 Common HTTPS issues include:
 
@@ -3548,7 +3548,7 @@ Common HTTPS issues include:
 
 ---
 
-# Secure HTTPS Deployment Checklist
+## Secure HTTPS Deployment Checklist
 
 ```
 ✓ HTTPS Enabled
@@ -3574,7 +3574,7 @@ Common HTTPS issues include:
 
 ---
 
-# Enterprise Deployment Example
+## Enterprise Deployment Example
 
 A healthcare organization protects patient portals using:
 
@@ -3624,7 +3624,7 @@ Additional security controls:
 
 ---
 
-# HTTPS in APIs
+## HTTPS in APIs
 
 Modern REST APIs also rely on HTTPS.
 
@@ -3657,7 +3657,7 @@ HTTPS protects:
 
 ---
 
-# Real Incident Scenario
+## Real Incident Scenario
 
 An administrator forgets to renew a production certificate.
 
@@ -3683,7 +3683,7 @@ Certificate expiration monitoring and automated renewal are critical operational
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Choose any HTTPS website.
 
@@ -3701,7 +3701,7 @@ Using your browser:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a Man-in-the-Middle attack?
 2. How does HTTPS help defend against MITM attacks?
@@ -3716,7 +3716,7 @@ Using your browser:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enable HTTPS across the entire application.
 - Redirect HTTP traffic to HTTPS.
@@ -3729,7 +3729,7 @@ Using your browser:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing mixed content on secure pages.
 - Ignoring browser certificate warnings.
@@ -3739,7 +3739,7 @@ Using your browser:
 
 ---
 
-# Quick Revision
+## Quick Revision
 
 ```
 HTTP
@@ -3787,7 +3787,7 @@ Remember:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3806,6 +3806,3 @@ In this chapter, you learned:
 - TLS troubleshooting and operational best practices
 
 With HTTPS and TLS understood, you are now ready to explore **Web Browsers, Rendering Engines, Cookies, Storage, and the Browser Security Model**, which explain how browsers process web content and enforce client-side security.
-
-
-```

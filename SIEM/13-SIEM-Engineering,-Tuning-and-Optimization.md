@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A SIEM is more than a search interface.
 
@@ -38,7 +38,7 @@ SIEM engineering ensures every stage works correctly.
 
 ---
 
-# 2. What is SIEM Engineering?
+## 2. What is SIEM Engineering?
 
 SIEM engineering covers:
 
@@ -64,9 +64,9 @@ Cost Optimization
 
 ---
 
-# 3. SIEM Engineer vs SOC Analyst
+## 3. SIEM Engineer vs SOC Analyst
 
-## SOC Analyst
+### SOC Analyst
 
 Focuses on:
 
@@ -78,7 +78,7 @@ Hunting
 Incident Response
 ```
 
-## SIEM Engineer
+### SIEM Engineer
 
 Focuses on:
 
@@ -96,7 +96,7 @@ They work closely together.
 
 ---
 
-# 4. SIEM Engineering Lifecycle
+## 4. SIEM Engineering Lifecycle
 
 ```text
 Requirement
@@ -126,7 +126,7 @@ Optimization
 
 ---
 
-# 5. Data Source Onboarding
+## 5. Data Source Onboarding
 
 Before onboarding a source, determine:
 
@@ -148,7 +148,7 @@ What retention is required?
 
 ---
 
-# 6. Common SIEM Data Sources
+## 6. Common SIEM Data Sources
 
 ```text
 Windows
@@ -171,7 +171,7 @@ Network Devices
 
 ---
 
-# 7. Data Source Prioritization
+## 7. Data Source Prioritization
 
 Not every log source has equal value.
 
@@ -189,7 +189,7 @@ Retention Requirements
 
 ---
 
-# 8. Critical Data Sources
+## 8. Critical Data Sources
 
 Many SOC environments prioritize:
 
@@ -208,7 +208,7 @@ The exact priority depends on the organization's architecture.
 
 ---
 
-# 9. Log Collection
+## 9. Log Collection
 
 Collection methods may include:
 
@@ -226,7 +226,7 @@ The method depends on the source.
 
 ---
 
-# 10. Collection Reliability
+## 10. Collection Reliability
 
 Monitor:
 
@@ -244,7 +244,7 @@ A missing log source can create a security blind spot.
 
 ---
 
-# 11. Log Pipeline
+## 11. Log Pipeline
 
 A typical architecture:
 
@@ -268,7 +268,7 @@ A queue can help absorb bursts and decouple producers from consumers.
 
 ---
 
-# 12. Parsing
+## 12. Parsing
 
 Parsing converts raw logs into structured fields.
 
@@ -289,7 +289,7 @@ event.action = login
 
 ---
 
-# 13. Why Parsing Matters
+## 13. Why Parsing Matters
 
 Without reliable parsing:
 
@@ -302,7 +302,7 @@ Investigation Quality ↓
 
 ---
 
-# 14. Parsing Errors
+## 14. Parsing Errors
 
 Common causes:
 
@@ -318,7 +318,7 @@ Timestamp Changes
 
 ---
 
-# 15. Normalization
+## 15. Normalization
 
 Normalization converts different vendor fields into a common schema.
 
@@ -343,7 +343,7 @@ source.ip
 
 ---
 
-# 16. Why Normalization Matters
+## 16. Why Normalization Matters
 
 Without normalization:
 
@@ -368,7 +368,7 @@ This makes detections reusable.
 
 ---
 
-# 17. Common Normalized Fields
+## 17. Common Normalized Fields
 
 ```text
 @timestamp
@@ -402,7 +402,7 @@ Exact schemas vary by platform.
 
 ---
 
-# 18. Schema Design
+## 18. Schema Design
 
 A good schema should be:
 
@@ -418,7 +418,7 @@ Avoid unnecessary vendor-specific naming when a standard field can represent the
 
 ---
 
-# 19. Event Categories
+## 19. Event Categories
 
 Useful categories:
 
@@ -437,7 +437,7 @@ Privilege
 
 ---
 
-# 20. Event Outcome
+## 20. Event Outcome
 
 Normalize outcomes:
 
@@ -456,7 +456,7 @@ event.outcome = failure
 
 ---
 
-# 21. Enrichment
+## 21. Enrichment
 
 Enrichment adds context.
 
@@ -484,7 +484,7 @@ Business Owner
 
 ---
 
-# 22. Common Enrichment Sources
+## 22. Common Enrichment Sources
 
 ```text
 Threat Intelligence
@@ -500,7 +500,7 @@ Business Criticality
 
 ---
 
-# 23. Enrichment Pipeline
+## 23. Enrichment Pipeline
 
 ```text
 Raw Event
@@ -518,7 +518,7 @@ Enrichment should be designed carefully so external dependencies do not unnecess
 
 ---
 
-# 24. Detection Engineering
+## 24. Detection Engineering
 
 A detection rule should define:
 
@@ -538,7 +538,7 @@ Response
 
 ---
 
-# 25. Detection-as-Code
+## 25. Detection-as-Code
 
 Treat detection rules like software.
 
@@ -567,7 +567,7 @@ Testing
 
 ---
 
-# 26. Detection Repository
+## 26. Detection Repository
 
 Example:
 
@@ -592,7 +592,7 @@ detections/
 
 ---
 
-# 27. Detection Metadata
+## 27. Detection Metadata
 
 Example:
 
@@ -619,7 +619,7 @@ version: 1.2
 
 ---
 
-# 28. Rule Versioning
+## 28. Rule Versioning
 
 Track:
 
@@ -647,7 +647,7 @@ Improved source-IP correlation
 
 ---
 
-# 29. Detection Change Management
+## 29. Detection Change Management
 
 Before production:
 
@@ -669,7 +669,7 @@ Avoid unreviewed production rule changes.
 
 ---
 
-# 30. Detection Testing
+## 30. Detection Testing
 
 Test:
 
@@ -685,7 +685,7 @@ High Volume
 
 ---
 
-# 31. Positive Test
+## 31. Positive Test
 
 Attack-like behavior:
 
@@ -696,7 +696,7 @@ Alert
 
 ---
 
-# 32. Negative Test
+## 32. Negative Test
 
 Legitimate behavior:
 
@@ -707,7 +707,7 @@ No Alert
 
 ---
 
-# 33. Regression Testing
+## 33. Regression Testing
 
 When changing a rule:
 
@@ -723,7 +723,7 @@ This prevents improvements from breaking existing behavior.
 
 ---
 
-# 34. False Positive Tuning
+## 34. False Positive Tuning
 
 Common tuning techniques:
 
@@ -739,7 +739,7 @@ Exclude Known Automation
 
 ---
 
-# 35. Bad Tuning
+## 35. Bad Tuning
 
 Bad:
 
@@ -763,7 +763,7 @@ Improve detection
 
 ---
 
-# 36. Threshold Tuning
+## 36. Threshold Tuning
 
 Example:
 
@@ -795,7 +795,7 @@ Do not choose thresholds arbitrarily.
 
 ---
 
-# 37. Dynamic Thresholds
+## 37. Dynamic Thresholds
 
 Static:
 
@@ -823,7 +823,7 @@ Potential anomaly.
 
 ---
 
-# 38. Baseline Analysis
+## 38. Baseline Analysis
 
 Determine:
 
@@ -840,7 +840,7 @@ Then identify deviations.
 
 ---
 
-# 39. Baseline Challenges
+## 39. Baseline Challenges
 
 Normal behavior can change because of:
 
@@ -858,7 +858,7 @@ Baselines should therefore be reviewed periodically.
 
 ---
 
-# 40. Alert Fatigue
+## 40. Alert Fatigue
 
 Alert fatigue occurs when analysts receive too many low-value alerts.
 
@@ -874,7 +874,7 @@ Missed Incidents
 
 ---
 
-# 41. Reducing Alert Fatigue
+## 41. Reducing Alert Fatigue
 
 Improve:
 
@@ -890,7 +890,7 @@ Thresholds
 
 ---
 
-# 42. Alert Grouping
+## 42. Alert Grouping
 
 Instead of:
 
@@ -910,7 +910,7 @@ Grouping can significantly improve analyst efficiency.
 
 ---
 
-# 43. Alert Deduplication
+## 43. Alert Deduplication
 
 Repeated identical events can be grouped:
 
@@ -932,7 +932,7 @@ One Alert
 
 ---
 
-# 44. Risk-Based Alerting
+## 44. Risk-Based Alerting
 
 Instead of treating every alert equally:
 
@@ -952,7 +952,7 @@ Risk Score
 
 ---
 
-# 45. Risk Example
+## 45. Risk Example
 
 ```text
 Suspicious Login       +20
@@ -978,7 +978,7 @@ The scoring model should be calibrated to the organization's environment.
 
 ---
 
-# 46. Entity Risk
+## 46. Entity Risk
 
 Track risk per:
 
@@ -1009,7 +1009,7 @@ may produce higher priority.
 
 ---
 
-# 47. Risk Decay
+## 47. Risk Decay
 
 Risk should often decrease over time.
 
@@ -1030,7 +1030,7 @@ This prevents old activity from permanently inflating risk.
 
 ---
 
-# 48. Detection Performance
+## 48. Detection Performance
 
 Monitor:
 
@@ -1046,7 +1046,7 @@ Failures
 
 ---
 
-# 49. Query Optimization
+## 49. Query Optimization
 
 Poor:
 
@@ -1066,7 +1066,7 @@ Then Correlate
 
 ---
 
-# 50. Time Filtering
+## 50. Time Filtering
 
 Always restrict time where possible:
 
@@ -1086,7 +1086,7 @@ unless historical analysis is required.
 
 ---
 
-# 51. Field Filtering
+## 51. Field Filtering
 
 Search only required fields.
 
@@ -1110,7 +1110,7 @@ This can reduce processing and improve readability.
 
 ---
 
-# 52. Aggregation
+## 52. Aggregation
 
 Instead of processing every event individually:
 
@@ -1132,7 +1132,7 @@ group by user
 
 ---
 
-# 53. Cardinality
+## 53. Cardinality
 
 High-cardinality fields contain many unique values:
 
@@ -1149,7 +1149,7 @@ Use carefully.
 
 ---
 
-# 54. Indexing
+## 54. Indexing
 
 Indexes help searches locate data efficiently.
 
@@ -1169,7 +1169,7 @@ Exact index design depends on the SIEM architecture.
 
 ---
 
-# 55. Storage Tiers
+## 55. Storage Tiers
 
 A common architecture:
 
@@ -1185,7 +1185,7 @@ Archive
 
 ---
 
-# 56. Hot Data
+## 56. Hot Data
 
 Used for:
 
@@ -1199,7 +1199,7 @@ High performance.
 
 ---
 
-# 57. Warm Data
+## 57. Warm Data
 
 Used for:
 
@@ -1212,7 +1212,7 @@ Usually lower cost than hot storage.
 
 ---
 
-# 58. Cold / Archive Data
+## 58. Cold / Archive Data
 
 Used for:
 
@@ -1227,7 +1227,7 @@ Usually slower and cheaper.
 
 ---
 
-# 59. Retention Strategy
+## 59. Retention Strategy
 
 Retention depends on:
 
@@ -1243,7 +1243,7 @@ Do not retain everything indefinitely without a defined purpose.
 
 ---
 
-# 60. Log Volume
+## 60. Log Volume
 
 SIEM cost often depends heavily on:
 
@@ -1265,7 +1265,7 @@ GB/month
 
 ---
 
-# 61. EPS
+## 61. EPS
 
 EPS:
 
@@ -1287,7 +1287,7 @@ Design for peaks, not just averages.
 
 ---
 
-# 62. Log Bursts
+## 62. Log Bursts
 
 Events may spike during:
 
@@ -1304,7 +1304,7 @@ Architecture should tolerate bursts.
 
 ---
 
-# 63. Backpressure
+## 63. Backpressure
 
 If ingestion is faster than processing:
 
@@ -1322,7 +1322,7 @@ But sustained overload eventually requires scaling or reducing unnecessary volum
 
 ---
 
-# 64. Dropped Events
+## 64. Dropped Events
 
 Dangerous situation:
 
@@ -1344,7 +1344,7 @@ Visibility Gap
 
 ---
 
-# 65. Data Loss Monitoring
+## 65. Data Loss Monitoring
 
 Track:
 
@@ -1368,7 +1368,7 @@ Detected  → expected subset
 
 ---
 
-# 66. Ingestion Latency
+## 66. Ingestion Latency
 
 Important:
 
@@ -1390,7 +1390,7 @@ High latency can delay detections.
 
 ---
 
-# 67. Clock Synchronization
+## 67. Clock Synchronization
 
 Timestamps are critical.
 
@@ -1407,7 +1407,7 @@ Incorrect clocks can corrupt timelines.
 
 ---
 
-# 68. Duplicate Events
+## 68. Duplicate Events
 
 Duplicates may occur because of:
 
@@ -1429,7 +1429,7 @@ Storage
 
 ---
 
-# 69. Deduplication
+## 69. Deduplication
 
 Possible keys:
 
@@ -1445,7 +1445,7 @@ Use carefully because legitimate events can share similar values.
 
 ---
 
-# 70. Parser Monitoring
+## 70. Parser Monitoring
 
 Monitor:
 
@@ -1459,7 +1459,7 @@ Schema Errors
 
 ---
 
-# 71. Schema Drift
+## 71. Schema Drift
 
 A vendor changes:
 
@@ -1493,7 +1493,7 @@ is essential.
 
 ---
 
-# 72. Data Quality Score
+## 72. Data Quality Score
 
 A conceptual score can combine:
 
@@ -1509,7 +1509,7 @@ Poor data quality directly affects detection quality.
 
 ---
 
-# 73. SIEM Health Dashboard
+## 73. SIEM Health Dashboard
 
 Monitor:
 
@@ -1526,7 +1526,7 @@ Query Performance
 
 ---
 
-# 74. Data Source Health
+## 74. Data Source Health
 
 Example:
 
@@ -1551,7 +1551,7 @@ The SOC should know when security visibility degrades.
 
 ---
 
-# 75. Detection Health Dashboard
+## 75. Detection Health Dashboard
 
 Example:
 
@@ -1571,7 +1571,7 @@ No Data:
 
 ---
 
-# 76. Rule Failure
+## 76. Rule Failure
 
 A rule can silently stop working.
 
@@ -1590,7 +1590,7 @@ Detection health monitoring is therefore essential.
 
 ---
 
-# 77. Canary Events
+## 77. Canary Events
 
 A controlled event can verify a detection pipeline.
 
@@ -1620,7 +1620,7 @@ Only use controlled test events in authorized environments.
 
 ---
 
-# 78. Synthetic Monitoring
+## 78. Synthetic Monitoring
 
 Periodically generate safe test telemetry:
 
@@ -1641,7 +1641,7 @@ Alerting
 
 ---
 
-# 79. SIEM Availability
+## 79. SIEM Availability
 
 Monitor:
 
@@ -1657,7 +1657,7 @@ Alerting
 
 ---
 
-# 80. High Availability
+## 80. High Availability
 
 A production SIEM should avoid:
 
@@ -1681,7 +1681,7 @@ Exact implementation depends on the platform.
 
 ---
 
-# 81. Disaster Recovery
+## 81. Disaster Recovery
 
 Plan for:
 
@@ -1705,7 +1705,7 @@ Documentation
 
 ---
 
-# 82. Configuration Management
+## 82. Configuration Management
 
 Store:
 
@@ -1722,7 +1722,7 @@ in controlled configuration where supported.
 
 ---
 
-# 83. Infrastructure as Code
+## 83. Infrastructure as Code
 
 For supported infrastructure:
 
@@ -1742,7 +1742,7 @@ This improves consistency.
 
 ---
 
-# 84. CI/CD for Detections
+## 84. CI/CD for Detections
 
 Pipeline:
 
@@ -1766,7 +1766,7 @@ Production
 
 ---
 
-# 85. Detection Unit Testing
+## 85. Detection Unit Testing
 
 Example:
 
@@ -1784,7 +1784,7 @@ expected:
 
 ---
 
-# 86. Negative Test
+## 86. Negative Test
 
 ```yaml
 test: normal_login
@@ -1800,7 +1800,7 @@ expected:
 
 ---
 
-# 87. Detection Regression
+## 87. Detection Regression
 
 After modifying a rule:
 
@@ -1818,7 +1818,7 @@ New Cases
 
 ---
 
-# 88. Production Deployment
+## 88. Production Deployment
 
 Use controlled stages:
 
@@ -1836,7 +1836,7 @@ Full Production
 
 ---
 
-# 89. Shadow Mode
+## 89. Shadow Mode
 
 A new detection can run without generating analyst-facing alerts.
 
@@ -1856,7 +1856,7 @@ Useful for noisy detections.
 
 ---
 
-# 90. Canary Deployment
+## 90. Canary Deployment
 
 Deploy to a subset:
 
@@ -1877,7 +1877,7 @@ Then expand.
 
 ---
 
-# 91. Rollback
+## 91. Rollback
 
 Every production detection change should have a rollback path.
 
@@ -1893,7 +1893,7 @@ Previous Version
 
 ---
 
-# 92. SIEM Optimization Principles
+## 92. SIEM Optimization Principles
 
 ```text
 Filter Early
@@ -1910,7 +1910,7 @@ Scale Horizontally
 
 ---
 
-# 93. Filter Early
+## 93. Filter Early
 
 Instead of:
 
@@ -1938,7 +1938,7 @@ before expensive correlation.
 
 ---
 
-# 94. Enrich Selectively
+## 94. Enrich Selectively
 
 Do not perform expensive enrichment for every event if unnecessary.
 
@@ -1958,7 +1958,7 @@ This can reduce cost and latency.
 
 ---
 
-# 95. Reduce Data Duplication
+## 95. Reduce Data Duplication
 
 Avoid sending identical logs to multiple pipelines without purpose.
 
@@ -1973,7 +1973,7 @@ Redundant Storage
 
 ---
 
-# 96. Log Filtering
+## 96. Log Filtering
 
 Filter low-value data when appropriate.
 
@@ -1990,7 +1990,7 @@ Do not filter security-relevant telemetry simply because it is high-volume witho
 
 ---
 
-# 97. Security vs Cost
+## 97. Security vs Cost
 
 Always balance:
 
@@ -2010,7 +2010,7 @@ The cheapest SIEM is not necessarily the best SIEM.
 
 ---
 
-# 98. Cost Optimization
+## 98. Cost Optimization
 
 Possible strategies:
 
@@ -2027,7 +2027,7 @@ Prioritize High-Value Logs
 
 ---
 
-# 99. Query Cost
+## 99. Query Cost
 
 Expensive queries may involve:
 
@@ -2044,7 +2044,7 @@ Optimize where possible.
 
 ---
 
-# 100. Regex Performance
+## 100. Regex Performance
 
 Avoid unnecessary expensive regex across massive datasets.
 
@@ -2072,7 +2072,7 @@ before applying complex command-line matching.
 
 ---
 
-# 101. Search Optimization
+## 101. Search Optimization
 
 Use:
 
@@ -2094,7 +2094,7 @@ Wildcard Everything
 
 ---
 
-# 102. High-Cardinality Problems
+## 102. High-Cardinality Problems
 
 Grouping by:
 
@@ -2116,7 +2116,7 @@ and understand cardinality before expensive aggregation.
 
 ---
 
-# 103. SIEM Scaling
+## 103. SIEM Scaling
 
 Scale according to:
 
@@ -2132,7 +2132,7 @@ A SIEM may need different scaling strategies for each.
 
 ---
 
-# 104. Horizontal Scaling
+## 104. Horizontal Scaling
 
 Add more nodes:
 
@@ -2152,7 +2152,7 @@ Parallel Processing
 
 ---
 
-# 105. Vertical Scaling
+## 105. Vertical Scaling
 
 Increase:
 
@@ -2166,7 +2166,7 @@ Useful within limits, but may not solve architectural bottlenecks.
 
 ---
 
-# 106. Queue-Based Architecture
+## 106. Queue-Based Architecture
 
 ```text
 Sources
@@ -2191,7 +2191,7 @@ Resilience
 
 ---
 
-# 107. Failure Isolation
+## 107. Failure Isolation
 
 A failure in:
 
@@ -2209,7 +2209,7 @@ Design pipelines so optional enrichment failures degrade gracefully.
 
 ---
 
-# 108. Backfill
+## 108. Backfill
 
 If data processing fails:
 
@@ -2229,7 +2229,7 @@ This can restore missing derived data when raw data is retained.
 
 ---
 
-# 109. Replay
+## 109. Replay
 
 A message queue or raw storage can sometimes support:
 
@@ -2248,7 +2248,7 @@ Backfill
 
 ---
 
-# 110. Security of the SIEM
+## 110. Security of the SIEM
 
 The SIEM itself is a security-critical system.
 
@@ -2266,7 +2266,7 @@ Dashboards
 
 ---
 
-# 111. SIEM Access Control
+## 111. SIEM Access Control
 
 Use least privilege:
 
@@ -2281,7 +2281,7 @@ Different permissions.
 
 ---
 
-# 112. SIEM Audit Logging
+## 112. SIEM Audit Logging
 
 Monitor:
 
@@ -2298,7 +2298,7 @@ The SIEM should monitor itself.
 
 ---
 
-# 113. Secrets Management
+## 113. Secrets Management
 
 Avoid storing credentials directly inside:
 
@@ -2322,7 +2322,7 @@ where supported.
 
 ---
 
-# 114. API Security
+## 114. API Security
 
 Protect:
 
@@ -2345,7 +2345,7 @@ Monitoring
 
 ---
 
-# 115. SIEM Monitoring SIEM
+## 115. SIEM Monitoring SIEM
 
 A mature SOC monitors:
 
@@ -2367,7 +2367,7 @@ Suspicious API Access
 
 ---
 
-# 116. Change Management
+## 116. Change Management
 
 Before major changes:
 
@@ -2383,7 +2383,7 @@ Rollback Plan
 
 ---
 
-# 117. Documentation
+## 117. Documentation
 
 Document:
 
@@ -2401,7 +2401,7 @@ Recovery
 
 ---
 
-# 118. Runbooks
+## 118. Runbooks
 
 A SIEM engineer should maintain runbooks for:
 
@@ -2418,7 +2418,7 @@ Connector Failure
 
 ---
 
-# 119. Data Source Failure Runbook
+## 119. Data Source Failure Runbook
 
 Example:
 
@@ -2437,7 +2437,7 @@ Example:
 
 ---
 
-# 120. Parser Failure Runbook
+## 120. Parser Failure Runbook
 
 ```text
 1. Identify affected source.
@@ -2452,7 +2452,7 @@ Example:
 
 ---
 
-# 121. Detection Failure Runbook
+## 121. Detection Failure Runbook
 
 ```text
 1. Identify rule.
@@ -2469,7 +2469,7 @@ Example:
 
 ---
 
-# 122. Storage Failure
+## 122. Storage Failure
 
 Monitor:
 
@@ -2494,7 +2494,7 @@ Follow platform-specific procedures.
 
 ---
 
-# 123. Performance Baseline
+## 123. Performance Baseline
 
 Establish normal:
 
@@ -2512,7 +2512,7 @@ Then detect deviations.
 
 ---
 
-# 124. Capacity Planning
+## 124. Capacity Planning
 
 Estimate:
 
@@ -2542,7 +2542,7 @@ Then calculate future storage requirements with appropriate compression and repl
 
 ---
 
-# 125. Capacity Planning Questions
+## 125. Capacity Planning Questions
 
 ```text
 What is current EPS?
@@ -2560,7 +2560,7 @@ What happens during an incident?
 
 ---
 
-# 126. Incident-Aware Capacity
+## 126. Incident-Aware Capacity
 
 Do not design only for normal traffic.
 
@@ -2577,7 +2577,7 @@ Capacity must account for these conditions.
 
 ---
 
-# 127. Alert Storm
+## 127. Alert Storm
 
 Example:
 
@@ -2603,7 +2603,7 @@ Grouping
 
 ---
 
-# 128. Alert Suppression
+## 128. Alert Suppression
 
 Temporarily suppress repeated alerts when:
 
@@ -2619,7 +2619,7 @@ But ensure suppression does not hide meaningful changes.
 
 ---
 
-# 129. Alert Aggregation
+## 129. Alert Aggregation
 
 Aggregate:
 
@@ -2637,7 +2637,7 @@ One Investigation
 
 ---
 
-# 130. Risk-Based Prioritization
+## 130. Risk-Based Prioritization
 
 Example:
 
@@ -2657,7 +2657,7 @@ rather than simply processing chronologically.
 
 ---
 
-# 131. Detection Dependencies
+## 131. Detection Dependencies
 
 Document:
 
@@ -2677,7 +2677,7 @@ This makes failures easier to troubleshoot.
 
 ---
 
-# 132. Dependency Monitoring
+## 132. Dependency Monitoring
 
 If:
 
@@ -2697,7 +2697,7 @@ Alert engineering teams to degraded detection capability.
 
 ---
 
-# 133. SLA / SLO
+## 133. SLA / SLO
 
 Define targets such as:
 
@@ -2711,7 +2711,7 @@ Exact values should be determined by business and security requirements.
 
 ---
 
-# 134. Detection SLO
+## 134. Detection SLO
 
 Example:
 
@@ -2723,7 +2723,7 @@ generate alerts within
 
 ---
 
-# 135. Data Quality SLO
+## 135. Data Quality SLO
 
 Example:
 
@@ -2740,7 +2740,7 @@ This makes telemetry quality measurable.
 
 ---
 
-# 136. Engineering Metrics
+## 136. Engineering Metrics
 
 Useful metrics:
 
@@ -2758,7 +2758,7 @@ Rule Failure Rate
 
 ---
 
-# 137. SIEM Optimization Checklist
+## 137. SIEM Optimization Checklist
 
 ```text
 ☐ Data sources documented
@@ -2781,7 +2781,7 @@ Rule Failure Rate
 
 ---
 
-# 138. Practical Lab – Build a Detection Pipeline
+## 138. Practical Lab – Build a Detection Pipeline
 
 Create:
 
@@ -2812,7 +2812,7 @@ Detection Result
 
 ---
 
-# 139. Practical Lab – Detection Tuning
+## 139. Practical Lab – Detection Tuning
 
 Start with:
 
@@ -2844,7 +2844,7 @@ Determine whether precision improves without significantly reducing useful detec
 
 ---
 
-# 140. Practical Lab – Detection-as-Code
+## 140. Practical Lab – Detection-as-Code
 
 Create:
 
@@ -2870,7 +2870,7 @@ Then store it in version control.
 
 ---
 
-# 141. Practical Lab – Pipeline Monitoring
+## 141. Practical Lab – Pipeline Monitoring
 
 Build dashboard showing:
 
@@ -2886,7 +2886,7 @@ Alert Volume
 
 ---
 
-# 142. Practical Lab – Capacity Planning
+## 142. Practical Lab – Capacity Planning
 
 Given:
 
@@ -2917,7 +2917,7 @@ Growth
 
 ---
 
-# 143. Practical Lab – SIEM Failure
+## 143. Practical Lab – SIEM Failure
 
 Simulate:
 
@@ -2943,75 +2943,75 @@ How do you backfill?
 
 ---
 
-# 144. Interview Questions
+## 144. Interview Questions
 
-### What is SIEM engineering?
+#### What is SIEM engineering?
 
 > The engineering discipline responsible for building and maintaining SIEM data pipelines, schemas, detections, enrichment, performance, reliability, scalability, and operational health.
 
-### Why is log normalization important?
+#### Why is log normalization important?
 
 > It maps different vendor-specific fields into a consistent schema, making searches, correlation, and detections reusable across sources.
 
-### What is detection-as-code?
+#### What is detection-as-code?
 
 > Treating detection rules as version-controlled software artifacts with metadata, tests, reviews, deployment, and rollback.
 
-### How do you reduce false positives?
+#### How do you reduce false positives?
 
 > Analyze false-positive patterns, add context, tune thresholds and time windows, introduce appropriate exceptions, and improve correlation.
 
-### How do you optimize a SIEM query?
+#### How do you optimize a SIEM query?
 
 > Restrict the time range, filter early, use structured fields, aggregate efficiently, avoid unnecessary high-cardinality operations, and reduce expensive processing.
 
-### What is ingestion latency?
+#### What is ingestion latency?
 
 > The time between an event occurring or being generated and becoming available in the SIEM.
 
-### Why is ingestion monitoring important?
+#### Why is ingestion monitoring important?
 
 > Missing or delayed telemetry can create detection and visibility gaps.
 
-### What is schema drift?
+#### What is schema drift?
 
 > A change in the structure or field naming of incoming data that can break parsers, searches, or detections.
 
-### What is alert fatigue?
+#### What is alert fatigue?
 
 > A condition where analysts receive excessive low-value alerts, reducing their ability to respond effectively to important threats.
 
-### How do you reduce alert fatigue?
+#### How do you reduce alert fatigue?
 
 > Improve precision, correlation, enrichment, deduplication, grouping, thresholds, and risk-based prioritization.
 
-### What is detection regression testing?
+#### What is detection regression testing?
 
 > Re-running existing detection tests after changes to ensure previously working behavior remains correct.
 
-### Why use version control for detections?
+#### Why use version control for detections?
 
 > It provides change tracking, peer review, rollback, collaboration, and auditability.
 
-### What is a SIEM data pipeline?
+#### What is a SIEM data pipeline?
 
 > The sequence through which security telemetry is collected, transported, parsed, normalized, enriched, stored, and processed by detections.
 
-### How do you handle a sudden ingestion spike?
+#### How do you handle a sudden ingestion spike?
 
 > Monitor queue depth and latency, identify the source causing the spike, verify infrastructure capacity, buffer traffic where possible, scale processing, and ensure critical telemetry is preserved.
 
-### What should happen if a parser breaks?
+#### What should happen if a parser breaks?
 
 > Compare raw and parsed events, identify the schema change, update and test the parser, deploy it safely, and validate production ingestion.
 
-### Why should the SIEM monitor itself?
+#### Why should the SIEM monitor itself?
 
 > Because failures or unauthorized changes to the SIEM can create security blind spots and directly affect detection capability.
 
 ---
 
-# 145. Quick Revision
+## 145. Quick Revision
 
 ```text
 SIEM ENGINEERING
@@ -3062,7 +3062,7 @@ DISASTER RECOVERY
 
 ---
 
-# 146. Golden Rules
+## 146. Golden Rules
 
 ```text
 1. Treat SIEM infrastructure as production security infrastructure.
@@ -3118,7 +3118,7 @@ DISASTER RECOVERY
 
 ---
 
-# 147. Final Mental Model
+## 147. Final Mental Model
 
 A production-grade SIEM can be understood as:
 
@@ -3167,7 +3167,7 @@ COST MANAGEMENT
 
 ---
 
-# 148. Engineering Mental Model
+## 148. Engineering Mental Model
 
 When a detection fails, troubleshoot from left to right:
 
@@ -3199,7 +3199,7 @@ This is one of the most useful troubleshooting frameworks for SIEM engineering.
 
 ---
 
-# 149. Chapter Summary
+## 149. Chapter Summary
 
 SIEM engineering transforms a collection of logs into a reliable security detection platform.
 

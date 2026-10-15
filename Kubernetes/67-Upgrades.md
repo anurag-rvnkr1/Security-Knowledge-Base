@@ -39,7 +39,7 @@ Monitoring
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -110,7 +110,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is a Kubernetes Upgrade?
+## What Is a Kubernetes Upgrade?
 
 A Kubernetes upgrade changes one or more cluster components to newer supported versions.
 
@@ -141,7 +141,7 @@ Not all components necessarily need to be upgraded at exactly the same time.
 
 ---
 
-# Why Upgrade Kubernetes?
+## Why Upgrade Kubernetes?
 
 Upgrades provide:
 
@@ -165,7 +165,7 @@ Operational Risk
 
 ---
 
-# Kubernetes Release Lifecycle
+## Kubernetes Release Lifecycle
 
 Kubernetes releases are versioned using:
 
@@ -193,7 +193,7 @@ Always verify the currently supported versions using the official Kubernetes doc
 
 ---
 
-# Patch Upgrade
+## Patch Upgrade
 
 Example:
 
@@ -212,7 +212,7 @@ Security Fixes
 
 ---
 
-# Minor Upgrade
+## Minor Upgrade
 
 Example:
 
@@ -235,7 +235,7 @@ Therefore, they require more planning.
 
 ---
 
-# Major Upgrade
+## Major Upgrade
 
 Kubernetes major-version changes are less frequent than minor and patch releases.
 
@@ -243,7 +243,7 @@ The upgrade process should always follow the version-specific documentation and 
 
 ---
 
-# Control Plane
+## Control Plane
 
 The control plane contains:
 
@@ -259,7 +259,7 @@ Depending on the cluster architecture.
 
 ---
 
-# Worker Nodes
+## Worker Nodes
 
 Worker nodes commonly contain:
 
@@ -273,7 +273,7 @@ CSI Components
 
 ---
 
-# Upgrade Order
+## Upgrade Order
 
 A common Kubernetes upgrade pattern is:
 
@@ -287,7 +287,7 @@ Worker nodes should generally not be upgraded beyond the supported version-skew 
 
 ---
 
-# Version Skew
+## Version Skew
 
 Version skew describes supported differences between Kubernetes component versions.
 
@@ -307,7 +307,7 @@ Always follow the official version-skew policy for the specific Kubernetes versi
 
 ---
 
-# Why Version Skew Matters
+## Why Version Skew Matters
 
 Unsupported combinations can cause:
 
@@ -320,7 +320,7 @@ Upgrade Failures
 
 ---
 
-# kubectl Version
+## kubectl Version
 
 Check:
 
@@ -332,7 +332,7 @@ The client and server versions should comply with the Kubernetes version-skew po
 
 ---
 
-# kubelet Version
+## kubelet Version
 
 The kubelet version is important because it directly participates in node operation.
 
@@ -344,7 +344,7 @@ kubectl get nodes
 
 ---
 
-# Upgrade Planning
+## Upgrade Planning
 
 Before an upgrade:
 
@@ -361,7 +361,7 @@ Before an upgrade:
 
 ---
 
-# Preflight Checklist
+## Preflight Checklist
 
 Before upgrading:
 
@@ -387,7 +387,7 @@ Before upgrading:
 
 ---
 
-# Check Cluster Version
+## Check Cluster Version
 
 ```bash
 kubectl version
@@ -395,7 +395,7 @@ kubectl version
 
 ---
 
-# Check Nodes
+## Check Nodes
 
 ```bash
 kubectl get nodes
@@ -403,7 +403,7 @@ kubectl get nodes
 
 ---
 
-# Check All Pods
+## Check All Pods
 
 ```bash
 kubectl get pods -A
@@ -421,7 +421,7 @@ Unknown
 
 ---
 
-# Check Events
+## Check Events
 
 ```bash
 kubectl get events -A
@@ -429,7 +429,7 @@ kubectl get events -A
 
 ---
 
-# Check Node Resources
+## Check Node Resources
 
 ```bash
 kubectl top nodes
@@ -439,7 +439,7 @@ if Metrics Server is available.
 
 ---
 
-# Check Pod Resources
+## Check Pod Resources
 
 ```bash
 kubectl top pods -A
@@ -447,7 +447,7 @@ kubectl top pods -A
 
 ---
 
-# Check API Resources
+## Check API Resources
 
 Before upgrading, review available APIs:
 
@@ -457,7 +457,7 @@ kubectl api-resources
 
 ---
 
-# Deprecated APIs
+## Deprecated APIs
 
 Kubernetes periodically deprecates APIs.
 
@@ -475,7 +475,7 @@ Applications using removed APIs may fail after an upgrade.
 
 ---
 
-# API Version Migration
+## API Version Migration
 
 Example:
 
@@ -493,7 +493,7 @@ The exact migration depends on the API.
 
 ---
 
-# Why Deprecated APIs Matter
+## Why Deprecated APIs Matter
 
 A workload may work today:
 
@@ -515,7 +515,7 @@ Failure
 
 ---
 
-# CRDs
+## CRDs
 
 Custom Resource Definitions extend Kubernetes APIs.
 
@@ -530,7 +530,7 @@ Review Operator Compatibility
 
 ---
 
-# Operators
+## Operators
 
 Operators often depend on specific Kubernetes versions.
 
@@ -545,7 +545,7 @@ Webhook Compatibility
 
 ---
 
-# CNI Compatibility
+## CNI Compatibility
 
 Networking plugins must support the target Kubernetes version.
 
@@ -568,7 +568,7 @@ Network Policy Compatibility
 
 ---
 
-# CSI Compatibility
+## CSI Compatibility
 
 Storage drivers must also support the target Kubernetes version.
 
@@ -584,7 +584,7 @@ Sidecar Versions
 
 ---
 
-# Ingress Compatibility
+## Ingress Compatibility
 
 Before upgrading:
 
@@ -600,7 +600,7 @@ must be reviewed.
 
 ---
 
-# Gateway API Compatibility
+## Gateway API Compatibility
 
 If using Gateway API, check:
 
@@ -614,7 +614,7 @@ CRDs
 
 ---
 
-# Admission Webhooks
+## Admission Webhooks
 
 Admission webhooks can block API operations.
 
@@ -631,7 +631,7 @@ Failure Policy
 
 ---
 
-# Monitoring Compatibility
+## Monitoring Compatibility
 
 Review:
 
@@ -646,7 +646,7 @@ Exporters
 
 ---
 
-# Logging Compatibility
+## Logging Compatibility
 
 Review:
 
@@ -662,7 +662,7 @@ and ensure the logging stack supports the target environment.
 
 ---
 
-# Helm Compatibility
+## Helm Compatibility
 
 Check:
 
@@ -682,7 +682,7 @@ Hooks
 
 ---
 
-# Backup Before Upgrade
+## Backup Before Upgrade
 
 Always maintain a recovery plan before a production upgrade.
 
@@ -698,7 +698,7 @@ Secrets
 
 ---
 
-# Why Backup Before Upgrade?
+## Why Backup Before Upgrade?
 
 If the upgrade causes a severe failure:
 
@@ -720,7 +720,7 @@ Limited Recovery Options
 
 ---
 
-# Upgrade Testing
+## Upgrade Testing
 
 Never test a major production upgrade for the first time directly in production.
 
@@ -738,7 +738,7 @@ Production
 
 ---
 
-# Staging Cluster
+## Staging Cluster
 
 A staging cluster should resemble production where practical:
 
@@ -754,7 +754,7 @@ Applications
 
 ---
 
-# Canary Testing
+## Canary Testing
 
 Upgrade a small subset first.
 
@@ -782,7 +782,7 @@ Storage
 
 ---
 
-# Rolling Upgrade
+## Rolling Upgrade
 
 A rolling upgrade updates nodes gradually.
 
@@ -804,7 +804,7 @@ This reduces blast radius.
 
 ---
 
-# Node-by-Node Upgrade
+## Node-by-Node Upgrade
 
 A typical workflow:
 
@@ -824,7 +824,7 @@ Uncordon
 
 ---
 
-# Cordon
+## Cordon
 
 ```bash
 kubectl cordon <node-name>
@@ -834,7 +834,7 @@ This prevents new Pods from being scheduled onto the node.
 
 ---
 
-# Drain
+## Drain
 
 Example:
 
@@ -847,7 +847,7 @@ The exact flags depend on workload characteristics and the Kubernetes version.
 
 ---
 
-# Uncordon
+## Uncordon
 
 After successful validation:
 
@@ -857,7 +857,7 @@ kubectl uncordon <node-name>
 
 ---
 
-# Pod Disruption Budgets
+## Pod Disruption Budgets
 
 PDBs help limit voluntary disruptions during maintenance.
 
@@ -880,7 +880,7 @@ spec:
 
 ---
 
-# Capacity Planning Before Upgrade
+## Capacity Planning Before Upgrade
 
 Suppose:
 
@@ -910,7 +910,7 @@ Network
 
 ---
 
-# Surge Capacity
+## Surge Capacity
 
 If your infrastructure supports it, temporarily adding capacity can make upgrades safer.
 
@@ -931,7 +931,7 @@ This can reduce scheduling pressure.
 
 ---
 
-# Managed Kubernetes Upgrades
+## Managed Kubernetes Upgrades
 
 Cloud-managed Kubernetes platforms may provide automated control-plane upgrades and node-pool upgrade mechanisms.
 
@@ -947,7 +947,7 @@ The exact workflow differs between providers.
 
 ---
 
-# Managed Upgrade Responsibilities
+## Managed Upgrade Responsibilities
 
 The cloud provider may manage:
 
@@ -971,7 +971,7 @@ depending on the platform.
 
 ---
 
-# kubeadm Upgrades
+## kubeadm Upgrades
 
 Clusters created using kubeadm follow a specific upgrade process.
 
@@ -993,7 +993,7 @@ Worker Nodes
 
 ---
 
-# kubeadm Preflight
+## kubeadm Preflight
 
 Run:
 
@@ -1005,7 +1005,7 @@ This helps inspect available upgrade paths in supported kubeadm environments.
 
 ---
 
-# kubeadm Upgrade
+## kubeadm Upgrade
 
 The exact commands depend on the source and target versions.
 
@@ -1013,7 +1013,7 @@ Follow the official kubeadm upgrade instructions rather than blindly applying co
 
 ---
 
-# Worker Node Upgrade With kubeadm
+## Worker Node Upgrade With kubeadm
 
 Typical conceptual workflow:
 
@@ -1035,7 +1035,7 @@ Uncordon
 
 ---
 
-# Upgrade Automation
+## Upgrade Automation
 
 Large environments should automate repetitive tasks.
 
@@ -1051,7 +1051,7 @@ Cloud Provider Automation
 
 ---
 
-# GitOps and Upgrades
+## GitOps and Upgrades
 
 Infrastructure configuration can be version controlled.
 
@@ -1078,7 +1078,7 @@ Change Review
 
 ---
 
-# Upgrade Rollback
+## Upgrade Rollback
 
 Rollback strategy depends on:
 
@@ -1094,7 +1094,7 @@ Kubernetes does not provide a universal one-command rollback for every cluster u
 
 ---
 
-# Why Rollback Is Difficult
+## Why Rollback Is Difficult
 
 Consider:
 
@@ -1127,7 +1127,7 @@ Assumed Rollback
 
 ---
 
-# Upgrade Failure
+## Upgrade Failure
 
 Potential failures:
 
@@ -1146,7 +1146,7 @@ Applications
 
 ---
 
-# API Server Failure
+## API Server Failure
 
 Symptoms:
 
@@ -1168,7 +1168,7 @@ Resource Usage
 
 ---
 
-# etcd Failure
+## etcd Failure
 
 Symptoms may include:
 
@@ -1190,7 +1190,7 @@ Quorum
 
 ---
 
-# Scheduler Failure
+## Scheduler Failure
 
 Symptoms:
 
@@ -1209,7 +1209,7 @@ Events
 
 ---
 
-# Controller Manager Failure
+## Controller Manager Failure
 
 Symptoms:
 
@@ -1226,7 +1226,7 @@ Nodes Not Properly Reconciled
 
 ---
 
-# kubelet Failure
+## kubelet Failure
 
 Symptoms:
 
@@ -1249,7 +1249,7 @@ Certificates
 
 ---
 
-# CNI Failure
+## CNI Failure
 
 Symptoms:
 
@@ -1271,7 +1271,7 @@ CNI Compatibility
 
 ---
 
-# CSI Failure
+## CSI Failure
 
 Symptoms:
 
@@ -1293,7 +1293,7 @@ Driver Compatibility
 
 ---
 
-# Admission Failure
+## Admission Failure
 
 Symptoms:
 
@@ -1315,7 +1315,7 @@ Policy
 
 ---
 
-# Certificate Problems
+## Certificate Problems
 
 Upgrades can expose certificate issues.
 
@@ -1331,7 +1331,7 @@ Rotation
 
 ---
 
-# Post-Upgrade Validation
+## Post-Upgrade Validation
 
 After upgrading:
 
@@ -1350,7 +1350,7 @@ After upgrading:
 
 ---
 
-# Check Nodes
+## Check Nodes
 
 ```bash
 kubectl get nodes
@@ -1365,7 +1365,7 @@ Version
 
 ---
 
-# Check Pods
+## Check Pods
 
 ```bash
 kubectl get pods -A
@@ -1382,7 +1382,7 @@ ImagePullBackOff
 
 ---
 
-# Check Events
+## Check Events
 
 ```bash
 kubectl get events -A
@@ -1390,7 +1390,7 @@ kubectl get events -A
 
 ---
 
-# Check Services
+## Check Services
 
 ```bash
 kubectl get svc -A
@@ -1398,7 +1398,7 @@ kubectl get svc -A
 
 ---
 
-# Check Ingress
+## Check Ingress
 
 ```bash
 kubectl get ingress -A
@@ -1406,7 +1406,7 @@ kubectl get ingress -A
 
 ---
 
-# Check Gateway
+## Check Gateway
 
 ```bash
 kubectl get gateway -A
@@ -1416,7 +1416,7 @@ if Gateway API is installed.
 
 ---
 
-# Check Storage
+## Check Storage
 
 ```bash
 kubectl get pv
@@ -1425,7 +1425,7 @@ kubectl get pvc -A
 
 ---
 
-# Check DNS
+## Check DNS
 
 Deploy a test Pod and verify:
 
@@ -1437,7 +1437,7 @@ Cluster DNS
 
 ---
 
-# Application Validation
+## Application Validation
 
 Test:
 
@@ -1458,7 +1458,7 @@ Pod = Running
 
 ---
 
-# Monitoring After Upgrade
+## Monitoring After Upgrade
 
 Monitor:
 
@@ -1476,7 +1476,7 @@ Application Latency
 
 ---
 
-# Upgrade Observability
+## Upgrade Observability
 
 A useful dashboard can contain:
 
@@ -1495,7 +1495,7 @@ Application SLOs
 
 ---
 
-# Security Validation
+## Security Validation
 
 After upgrading, verify:
 
@@ -1512,7 +1512,7 @@ Image Policies
 
 ---
 
-# Upgrade Communication
+## Upgrade Communication
 
 Production upgrades should have:
 
@@ -1528,7 +1528,7 @@ Communication Plan
 
 ---
 
-# Upgrade Runbook
+## Upgrade Runbook
 
 A runbook can follow:
 
@@ -1554,7 +1554,7 @@ Close Change
 
 ---
 
-# Upgrade Strategy Example
+## Upgrade Strategy Example
 
 Suppose:
 
@@ -1584,7 +1584,7 @@ This limits the blast radius.
 
 ---
 
-# Upgrade and PDBs
+## Upgrade and PDBs
 
 PDBs can prevent too many replicas from being voluntarily disrupted.
 
@@ -1600,7 +1600,7 @@ If there is insufficient capacity, drain may block.
 
 ---
 
-# Upgrade and StatefulSets
+## Upgrade and StatefulSets
 
 Stateful workloads require extra care because:
 
@@ -1622,7 +1622,7 @@ Stateful Services
 
 ---
 
-# Upgrade and DaemonSets
+## Upgrade and DaemonSets
 
 DaemonSets run Pods across nodes.
 
@@ -1638,7 +1638,7 @@ Do not blindly use drain flags without understanding their effect.
 
 ---
 
-# Upgrade and Static Pods
+## Upgrade and Static Pods
 
 Some control-plane components may be deployed as static Pods, depending on the cluster architecture.
 
@@ -1646,7 +1646,7 @@ These require different upgrade procedures than ordinary application Pods.
 
 ---
 
-# Upgrade and CRDs
+## Upgrade and CRDs
 
 Before upgrading:
 
@@ -1665,7 +1665,7 @@ kubectl get crd
 
 ---
 
-# Upgrade and Webhooks
+## Upgrade and Webhooks
 
 Check:
 
@@ -1683,7 +1683,7 @@ Verify webhook dependencies.
 
 ---
 
-# Upgrade and API Discovery
+## Upgrade and API Discovery
 
 Inspect:
 
@@ -1695,7 +1695,7 @@ Review APIs used by applications and operators.
 
 ---
 
-# Upgrade and Helm
+## Upgrade and Helm
 
 List releases:
 
@@ -1707,7 +1707,7 @@ Review chart compatibility before upgrading the Kubernetes cluster.
 
 ---
 
-# Upgrade and Monitoring
+## Upgrade and Monitoring
 
 Before upgrading:
 
@@ -1729,7 +1729,7 @@ Compare Metrics
 
 ---
 
-# Upgrade and Logging
+## Upgrade and Logging
 
 Ensure:
 
@@ -1741,7 +1741,7 @@ after each infrastructure component is upgraded.
 
 ---
 
-# Upgrade and Backups
+## Upgrade and Backups
 
 The safest sequence is:
 
@@ -1755,7 +1755,7 @@ Upgrade
 
 ---
 
-# Disaster Recovery During Upgrade
+## Disaster Recovery During Upgrade
 
 If a serious issue occurs:
 
@@ -1773,83 +1773,83 @@ Validate
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Upgrading Directly in Production
+### 1. Upgrading Directly in Production
 
 Always test first.
 
 ---
 
-## 2. Ignoring Deprecated APIs
+### 2. Ignoring Deprecated APIs
 
 Removed APIs can break applications.
 
 ---
 
-## 3. Ignoring Add-ons
+### 3. Ignoring Add-ons
 
 CNI, CSI, Ingress, and operators must support the target version.
 
 ---
 
-## 4. No Backup
+### 4. No Backup
 
 An upgrade without recovery planning is dangerous.
 
 ---
 
-## 5. No Capacity
+### 5. No Capacity
 
 Draining nodes may leave insufficient capacity.
 
 ---
 
-## 6. Ignoring PDBs
+### 6. Ignoring PDBs
 
 PDBs can block maintenance.
 
 ---
 
-## 7. Upgrading Too Many Nodes at Once
+### 7. Upgrading Too Many Nodes at Once
 
 This increases blast radius.
 
 ---
 
-## 8. Assuming Rollback Is Easy
+### 8. Assuming Rollback Is Easy
 
 Cluster upgrades are not universally reversible.
 
 ---
 
-## 9. No Post-Upgrade Validation
+### 9. No Post-Upgrade Validation
 
 A successful command does not guarantee a healthy cluster.
 
 ---
 
-## 10. Ignoring Monitoring
+### 10. Ignoring Monitoring
 
 Problems can remain undetected.
 
 ---
 
-## 11. Ignoring Certificates
+### 11. Ignoring Certificates
 
 Certificate failures can appear after component changes.
 
 ---
 
-## 12. Forgetting CRDs
+### 12. Forgetting CRDs
 
 Custom workloads may break.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Plan Before Upgrading
+#### 1. Plan Before Upgrading
 
 Document:
 
@@ -1863,7 +1863,7 @@ Recovery
 
 ---
 
-### 2. Back Up First
+#### 2. Back Up First
 
 Maintain:
 
@@ -1877,13 +1877,13 @@ where applicable.
 
 ---
 
-### 3. Test in Staging
+#### 3. Test in Staging
 
 Use production-like configuration.
 
 ---
 
-### 4. Upgrade Gradually
+#### 4. Upgrade Gradually
 
 Use:
 
@@ -1895,19 +1895,19 @@ Node-by-Node
 
 ---
 
-### 5. Maintain Capacity
+#### 5. Maintain Capacity
 
 Ensure workloads can tolerate node maintenance.
 
 ---
 
-### 6. Review API Deprecations
+#### 6. Review API Deprecations
 
 Identify removed APIs before the upgrade.
 
 ---
 
-### 7. Validate Add-ons
+#### 7. Validate Add-ons
 
 Check:
 
@@ -1923,7 +1923,7 @@ Logging
 
 ---
 
-### 8. Monitor During the Upgrade
+#### 8. Monitor During the Upgrade
 
 Watch:
 
@@ -1936,13 +1936,13 @@ Applications
 
 ---
 
-### 9. Validate After Every Stage
+#### 9. Validate After Every Stage
 
 Do not wait until the entire upgrade is finished.
 
 ---
 
-### 10. Maintain a Recovery Plan
+#### 10. Maintain a Recovery Plan
 
 Document:
 
@@ -1955,7 +1955,7 @@ Recovery
 
 ---
 
-# Hands-on Lab 1 – Kubernetes Version Inspection
+## Hands-on Lab 1 – Kubernetes Version Inspection
 
 Run:
 
@@ -1974,7 +1974,7 @@ Node Versions
 
 ---
 
-# Hands-on Lab 2 – API Deprecation Review
+## Hands-on Lab 2 – API Deprecation Review
 
 List APIs:
 
@@ -1986,7 +1986,7 @@ Review workloads and identify old API versions.
 
 ---
 
-# Hands-on Lab 3 – Upgrade a Test Cluster
+## Hands-on Lab 3 – Upgrade a Test Cluster
 
 Create a disposable Kubernetes cluster.
 
@@ -2002,7 +2002,7 @@ Document every step.
 
 ---
 
-# Hands-on Lab 4 – Node-by-Node Upgrade
+## Hands-on Lab 4 – Node-by-Node Upgrade
 
 Use a test cluster.
 
@@ -2020,7 +2020,7 @@ one node at a time.
 
 ---
 
-# Hands-on Lab 5 – PDB During Upgrade
+## Hands-on Lab 5 – PDB During Upgrade
 
 Deploy:
 
@@ -2040,7 +2040,7 @@ Observe the disruption behavior.
 
 ---
 
-# Hands-on Lab 6 – Capacity Testing
+## Hands-on Lab 6 – Capacity Testing
 
 Deploy enough workloads to consume most node resources.
 
@@ -2056,7 +2056,7 @@ Capacity
 
 ---
 
-# Hands-on Lab 7 – Canary Upgrade
+## Hands-on Lab 7 – Canary Upgrade
 
 Upgrade:
 
@@ -2078,7 +2078,7 @@ Then upgrade the remaining nodes.
 
 ---
 
-# Hands-on Lab 8 – CNI Compatibility
+## Hands-on Lab 8 – CNI Compatibility
 
 Check the installed CNI version.
 
@@ -2088,7 +2088,7 @@ Perform the upgrade in a test environment.
 
 ---
 
-# Hands-on Lab 9 – CSI Compatibility
+## Hands-on Lab 9 – CSI Compatibility
 
 Check:
 
@@ -2112,7 +2112,7 @@ after upgrade.
 
 ---
 
-# Hands-on Lab 10 – Admission Webhook Validation
+## Hands-on Lab 10 – Admission Webhook Validation
 
 Create a test admission webhook.
 
@@ -2130,7 +2130,7 @@ continue working.
 
 ---
 
-# Hands-on Lab 11 – Application Validation
+## Hands-on Lab 11 – Application Validation
 
 After an upgrade, test:
 
@@ -2146,7 +2146,7 @@ Create an automated smoke test.
 
 ---
 
-# Hands-on Lab 12 – Monitoring Validation
+## Hands-on Lab 12 – Monitoring Validation
 
 Verify:
 
@@ -2162,7 +2162,7 @@ after upgrade.
 
 ---
 
-# Hands-on Lab 13 – Logging Validation
+## Hands-on Lab 13 – Logging Validation
 
 Verify logs continue flowing from:
 
@@ -2176,7 +2176,7 @@ as applicable.
 
 ---
 
-# Hands-on Lab 14 – Upgrade Failure Simulation
+## Hands-on Lab 14 – Upgrade Failure Simulation
 
 In a disposable environment, introduce a controlled failure during node maintenance.
 
@@ -2191,7 +2191,7 @@ Resume
 
 ---
 
-# Hands-on Lab 15 – Recovery Test
+## Hands-on Lab 15 – Recovery Test
 
 Take a backup before upgrade.
 
@@ -2201,7 +2201,7 @@ Practice the documented recovery process.
 
 ---
 
-# Hands-on Lab 16 – Managed Kubernetes Upgrade
+## Hands-on Lab 16 – Managed Kubernetes Upgrade
 
 Using a supported cloud sandbox, perform a test upgrade.
 
@@ -2216,7 +2216,7 @@ Applications
 
 ---
 
-# Hands-on Lab 17 – kubeadm Upgrade
+## Hands-on Lab 17 – kubeadm Upgrade
 
 Create a test kubeadm cluster.
 
@@ -2230,7 +2230,7 @@ Then perform the version-appropriate upgrade procedure.
 
 ---
 
-# Hands-on Lab 18 – Post-Upgrade Checklist
+## Hands-on Lab 18 – Post-Upgrade Checklist
 
 Create a script or checklist that validates:
 
@@ -2247,7 +2247,7 @@ Monitoring
 
 ---
 
-# Hands-on Lab 19 – Upgrade Metrics
+## Hands-on Lab 19 – Upgrade Metrics
 
 Record before and after:
 
@@ -2264,7 +2264,7 @@ Compare the results.
 
 ---
 
-# Hands-on Lab 20 – Full Production Upgrade Simulation
+## Hands-on Lab 20 – Full Production Upgrade Simulation
 
 Design a complete upgrade exercise:
 
@@ -2302,9 +2302,9 @@ Recovery
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Kubernetes Upgrade
+### Kubernetes Upgrade
 
 ```text
 Moving cluster components to a newer supported version
@@ -2312,7 +2312,7 @@ Moving cluster components to a newer supported version
 
 ---
 
-## Patch Upgrade
+### Patch Upgrade
 
 ```text
 Bug/security fix release
@@ -2320,7 +2320,7 @@ Bug/security fix release
 
 ---
 
-## Minor Upgrade
+### Minor Upgrade
 
 ```text
 Upgrade between Kubernetes minor versions
@@ -2328,7 +2328,7 @@ Upgrade between Kubernetes minor versions
 
 ---
 
-## Version Skew
+### Version Skew
 
 ```text
 Supported version differences between Kubernetes components
@@ -2336,7 +2336,7 @@ Supported version differences between Kubernetes components
 
 ---
 
-## Cordon
+### Cordon
 
 ```text
 Prevents new scheduling on a node
@@ -2344,7 +2344,7 @@ Prevents new scheduling on a node
 
 ---
 
-## Drain
+### Drain
 
 ```text
 Evicts/deletes eligible workloads for maintenance
@@ -2352,7 +2352,7 @@ Evicts/deletes eligible workloads for maintenance
 
 ---
 
-## Uncordon
+### Uncordon
 
 ```text
 Allows scheduling on the node again
@@ -2360,7 +2360,7 @@ Allows scheduling on the node again
 
 ---
 
-## PDB
+### PDB
 
 ```text
 Controls voluntary disruption of replicated workloads
@@ -2368,7 +2368,7 @@ Controls voluntary disruption of replicated workloads
 
 ---
 
-## Canary Upgrade
+### Canary Upgrade
 
 ```text
 Upgrade a small subset before broader rollout
@@ -2376,7 +2376,7 @@ Upgrade a small subset before broader rollout
 
 ---
 
-## Rolling Upgrade
+### Rolling Upgrade
 
 ```text
 Upgrade infrastructure gradually
@@ -2384,7 +2384,7 @@ Upgrade infrastructure gradually
 
 ---
 
-## Deprecated API
+### Deprecated API
 
 ```text
 API still available but scheduled for removal
@@ -2392,7 +2392,7 @@ API still available but scheduled for removal
 
 ---
 
-## Removed API
+### Removed API
 
 ```text
 API no longer available
@@ -2400,7 +2400,7 @@ API no longer available
 
 ---
 
-## Upgrade Validation
+### Upgrade Validation
 
 ```text
 Confirm cluster and applications remain healthy after upgrade
@@ -2408,7 +2408,7 @@ Confirm cluster and applications remain healthy after upgrade
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check Kubernetes version:
 
@@ -2503,9 +2503,9 @@ kubeadm upgrade plan
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is a Kubernetes upgrade?
 - Why should Kubernetes clusters be upgraded?
@@ -2525,7 +2525,7 @@ kubeadm upgrade plan
 
 ---
 
-## Intermediate
+### Intermediate
 
 - What is the recommended order for Kubernetes upgrades?
 - How do you prepare a production cluster for an upgrade?
@@ -2544,7 +2544,7 @@ kubeadm upgrade plan
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a zero/minimal-downtime Kubernetes upgrade strategy.
 - How would you upgrade a 100-node production cluster?
@@ -2563,13 +2563,13 @@ kubeadm upgrade plan
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What is the general order of a Kubernetes upgrade?
 
-### Answer
+#### Answer
 
 A common approach is:
 
@@ -2595,13 +2595,13 @@ The exact process depends on the Kubernetes distribution and upgrade mechanism.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Why should you check deprecated APIs before upgrading?
 
-### Answer
+#### Answer
 
 Because an API available in the current version may be removed in the target version.
 
@@ -2623,13 +2623,13 @@ Therefore, API usage should be reviewed before upgrading.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > How would you upgrade worker nodes with minimal disruption?
 
-### Answer
+#### Answer
 
 Use a controlled rolling strategy:
 
@@ -2653,13 +2653,13 @@ Then repeat for the next node.
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What happens if there is not enough capacity while draining a node?
 
-### Answer
+#### Answer
 
 Some Pods may remain Pending because the remaining nodes cannot satisfy their resource requests or scheduling constraints.
 
@@ -2679,13 +2679,13 @@ Add capacity if necessary.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > Why is rollback not always straightforward?
 
-### Answer
+#### Answer
 
 An upgrade can involve:
 
@@ -2710,13 +2710,13 @@ is more reliable than assuming rollback will always work.
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > How would you handle a CNI failure after a Kubernetes upgrade?
 
-### Answer
+#### Answer
 
 Check:
 
@@ -2736,13 +2736,13 @@ Do not immediately change production networking without understanding the failur
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How would you handle CSI failures after an upgrade?
 
-### Answer
+#### Answer
 
 Check:
 
@@ -2766,13 +2766,13 @@ and relevant CSI logs.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How would you validate a Kubernetes upgrade?
 
-### Answer
+#### Answer
 
 Validate:
 
@@ -2804,13 +2804,13 @@ Then compare key metrics before and after the upgrade.
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How would you upgrade a 100-node cluster?
 
-### Answer
+#### Answer
 
 Use a staged strategy:
 
@@ -2834,13 +2834,13 @@ Maintain enough capacity to keep applications healthy while nodes are being drai
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a production Kubernetes upgrade strategy.
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2895,7 +2895,7 @@ Architecture:
 
 ---
 
-# Production Upgrade Checklist
+## Production Upgrade Checklist
 
 ```text
 ☑ Source version identified
@@ -2929,7 +2929,7 @@ Architecture:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Kubernetes upgrades are controlled infrastructure changes that require planning, compatibility analysis, testing, backup, gradual rollout, and validation.
 
@@ -3002,9 +3002,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 68 – High Availability
+## Chapter 68 – High Availability
 
 Topics will include:
 

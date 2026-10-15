@@ -1,12 +1,12 @@
 # 11-Authentication.md
 
-# Part 1 — Authentication Fundamentals, Identity Verification, Authentication Factors, Password Security, MFA, and Enterprise Authentication Architecture
+## Part 1 — Authentication Fundamentals, Identity Verification, Authentication Factors, Password Security, MFA, and Enterprise Authentication Architecture
 
 > **"Authentication is the process of verifying identity. Before any authorization decision is made, the application must first determine who the user is. Weak authentication is one of the primary causes of account compromise and unauthorized access."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Authentication?
+## What is Authentication?
 
 Authentication is the process of verifying the identity of a user, system, or service.
 
@@ -47,7 +47,7 @@ Only after authentication can the application determine whether the user is who 
 
 ---
 
-# Why Authentication Matters
+## Why Authentication Matters
 
 Without authentication:
 
@@ -81,7 +81,7 @@ Authentication protects confidential data and sensitive operations.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 These two concepts serve different purposes.
 
@@ -105,7 +105,7 @@ Authentication always occurs **before** authorization.
 
 ---
 
-# Authentication Workflow
+## Authentication Workflow
 
 ```
 User
@@ -133,7 +133,7 @@ Protected Resources
 
 ---
 
-# Identity
+## Identity
 
 An identity uniquely represents a user.
 
@@ -149,7 +149,7 @@ Identity alone does **not** prove authenticity.
 
 ---
 
-# Authentication Factors
+## Authentication Factors
 
 Authentication factors fall into several categories.
 
@@ -173,7 +173,7 @@ Combining multiple factors improves security.
 
 ---
 
-# Something You Know
+## Something You Know
 
 Examples include:
 
@@ -186,7 +186,7 @@ Knowledge-based authentication is the most common factor.
 
 ---
 
-# Something You Have
+## Something You Have
 
 Examples:
 
@@ -199,7 +199,7 @@ Possession-based authentication reduces the risk of password-only compromise.
 
 ---
 
-# Something You Are
+## Something You Are
 
 Biometric examples:
 
@@ -212,7 +212,7 @@ Biometrics verify physical characteristics.
 
 ---
 
-# Somewhere You Are
+## Somewhere You Are
 
 Applications may consider location.
 
@@ -227,7 +227,7 @@ Location alone should not be relied upon as the only authentication factor.
 
 ---
 
-# Something You Do
+## Something You Do
 
 Behavioral characteristics may include:
 
@@ -240,7 +240,7 @@ These are often used in risk-based authentication systems.
 
 ---
 
-# Single-Factor Authentication (SFA)
+## Single-Factor Authentication (SFA)
 
 ```
 Password
@@ -254,7 +254,7 @@ Only one factor is used.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 ```
 Password
@@ -272,7 +272,7 @@ Multiple independent factors significantly strengthen authentication.
 
 ---
 
-# Two-Factor Authentication (2FA)
+## Two-Factor Authentication (2FA)
 
 2FA is a subset of MFA.
 
@@ -292,7 +292,7 @@ All 2FA implementations are MFA, but MFA may involve more than two factors.
 
 ---
 
-# Password Authentication
+## Password Authentication
 
 The most common workflow:
 
@@ -320,7 +320,7 @@ Passwords remain widely used but require strong security controls.
 
 ---
 
-# Password Security Principles
+## Password Security Principles
 
 A secure password should be:
 
@@ -334,7 +334,7 @@ Organizations should encourage password managers for secure password generation 
 
 ---
 
-# Weak Password Examples
+## Weak Password Examples
 
 Poor password choices include:
 
@@ -348,7 +348,7 @@ Weak passwords increase the likelihood of account compromise.
 
 ---
 
-# Strong Password Characteristics
+## Strong Password Characteristics
 
 ```
 Long
@@ -374,7 +374,7 @@ Length and uniqueness are generally more important than complex but predictable 
 
 ---
 
-# Authentication Server
+## Authentication Server
 
 The authentication server verifies user identity.
 
@@ -400,7 +400,7 @@ Authenticated Session
 
 ---
 
-# Credential Verification
+## Credential Verification
 
 Conceptually:
 
@@ -436,7 +436,7 @@ Verification should occur over secure channels such as HTTPS.
 
 ---
 
-# Secure Authentication Flow
+## Secure Authentication Flow
 
 ```
 User
@@ -470,7 +470,7 @@ HTTPS protects credentials during transmission.
 
 ---
 
-# Enterprise Authentication Components
+## Enterprise Authentication Components
 
 ```
 Authentication System
@@ -494,7 +494,7 @@ Each component contributes to secure identity verification.
 
 ---
 
-# Identity Store
+## Identity Store
 
 An identity store maintains user account information.
 
@@ -508,7 +508,7 @@ The identity store is separate from the authentication process itself.
 
 ---
 
-# Authentication Lifecycle
+## Authentication Lifecycle
 
 ```
 Account Created
@@ -542,7 +542,7 @@ Authentication is part of a broader identity lifecycle.
 
 ---
 
-# Enterprise Authentication Architecture
+## Enterprise Authentication Architecture
 
 ```
                 User
@@ -592,7 +592,7 @@ Authentication is part of a broader identity lifecycle.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A healthcare organization authenticates employees as follows:
 
@@ -634,7 +634,7 @@ Additional controls include:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using a test application:
 
@@ -646,7 +646,7 @@ Using a test application:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is authentication?
 2. How does authentication differ from authorization?
@@ -661,7 +661,7 @@ Using a test application:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Always use HTTPS for authentication.
 - Require strong, unique passwords.
@@ -673,7 +673,7 @@ Using a test application:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Relying solely on passwords for high-value accounts.
 - Allowing weak or commonly used passwords.
@@ -684,7 +684,7 @@ Using a test application:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication verifies identity, while authorization determines access.
 - Authentication factors include knowledge, possession, biometrics, location, and behavior.
@@ -692,15 +692,15 @@ Using a test application:
 - Secure authentication requires HTTPS, strong credential management, and careful session handling.
 - Enterprise authentication systems combine identity stores, authentication services, MFA, session management, and audit logging.
 
-# 11-Authentication.md
+## 11-Authentication.md
 
-# Part 2 — Password Security, Credential Verification, MFA, Passwordless Authentication, Identity Providers, Federation, and Enterprise Authentication Workflows
+## Part 2 — Password Security, Credential Verification, MFA, Passwordless Authentication, Identity Providers, Federation, and Enterprise Authentication Workflows
 
 > **"Modern authentication is no longer limited to usernames and passwords. Enterprise systems combine strong credential protection, Multi-Factor Authentication (MFA), identity federation, passwordless authentication, and continuous verification to reduce account compromise."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -719,7 +719,7 @@ After completing this part, you will understand:
 
 ---
 
-# Password Lifecycle
+## Password Lifecycle
 
 A password goes through several stages.
 
@@ -751,7 +751,7 @@ The entire lifecycle should be protected.
 
 ---
 
-# Password Storage
+## Password Storage
 
 Applications should **never** store user passwords in plaintext.
 
@@ -777,7 +777,7 @@ If the database is compromised, properly hashed passwords are significantly hard
 
 ---
 
-# Password Hashing (Conceptual)
+## Password Hashing (Conceptual)
 
 Hashing converts data into a fixed-length value.
 
@@ -797,7 +797,7 @@ Hashing is designed to be **one-way**, meaning the original password is not inte
 
 ---
 
-# Password Verification
+## Password Verification
 
 During login:
 
@@ -829,7 +829,7 @@ The application compares hashes rather than storing or comparing plaintext passw
 
 ---
 
-# Salting (Conceptual)
+## Salting (Conceptual)
 
 A salt is a unique random value combined with a password before hashing.
 
@@ -853,7 +853,7 @@ Salting helps defend against attacks that rely on precomputed hash tables and id
 
 ---
 
-# Password Policy
+## Password Policy
 
 Organizations commonly define password requirements such as:
 
@@ -868,7 +868,7 @@ Modern guidance generally emphasizes **length and uniqueness** over arbitrary co
 
 ---
 
-# Password Complexity
+## Password Complexity
 
 Example characteristics:
 
@@ -892,7 +892,7 @@ Complexity alone should not replace sufficient password length.
 
 ---
 
-# Password Reuse
+## Password Reuse
 
 Using the same password across multiple websites creates risk.
 
@@ -920,7 +920,7 @@ Each account should have a unique password.
 
 ---
 
-# Password Managers
+## Password Managers
 
 Password managers help users generate and store strong credentials.
 
@@ -934,7 +934,7 @@ Benefits include:
 
 ---
 
-# Account Registration
+## Account Registration
 
 Typical workflow:
 
@@ -962,7 +962,7 @@ User input should always be validated on the server.
 
 ---
 
-# Email Verification
+## Email Verification
 
 Many applications verify ownership of an email address.
 
@@ -986,7 +986,7 @@ This helps reduce fraudulent or mistyped registrations.
 
 ---
 
-# Password Reset
+## Password Reset
 
 A secure password reset process should verify user identity before allowing a password change.
 
@@ -1014,7 +1014,7 @@ Reset links should expire after a limited time.
 
 ---
 
-# Secure Password Reset Principles
+## Secure Password Reset Principles
 
 Password reset mechanisms should:
 
@@ -1027,7 +1027,7 @@ Password reset mechanisms should:
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 MFA combines multiple independent authentication factors.
 
@@ -1051,7 +1051,7 @@ MFA significantly reduces the effectiveness of password theft alone.
 
 ---
 
-# Common MFA Methods
+## Common MFA Methods
 
 Examples include:
 
@@ -1066,7 +1066,7 @@ Each method has different security and usability characteristics.
 
 ---
 
-# MFA Workflow
+## MFA Workflow
 
 ```
 Username
@@ -1096,7 +1096,7 @@ Both authentication stages must succeed.
 
 ---
 
-# Backup Authentication Methods
+## Backup Authentication Methods
 
 Organizations often provide recovery options.
 
@@ -1111,7 +1111,7 @@ Recovery methods should be protected with strong verification procedures.
 
 ---
 
-# Passwordless Authentication
+## Passwordless Authentication
 
 Some systems authenticate users without traditional passwords.
 
@@ -1126,7 +1126,7 @@ Passwordless authentication reduces risks associated with password theft and reu
 
 ---
 
-# Passwordless Workflow
+## Passwordless Workflow
 
 ```
 User
@@ -1148,7 +1148,7 @@ The authentication mechanism depends on the underlying implementation.
 
 ---
 
-# Identity Provider (IdP)
+## Identity Provider (IdP)
 
 An Identity Provider authenticates users for multiple applications.
 
@@ -1172,7 +1172,7 @@ The application relies on the trusted identity provider rather than authenticati
 
 ---
 
-# Service Provider (SP)
+## Service Provider (SP)
 
 The Service Provider is the application the user wants to access.
 
@@ -1198,7 +1198,7 @@ Access
 
 ---
 
-# Identity Federation
+## Identity Federation
 
 Federation enables authentication across organizational boundaries.
 
@@ -1222,7 +1222,7 @@ Federation reduces the need for separate credentials across participating system
 
 ---
 
-# Single Sign-On (SSO)
+## Single Sign-On (SSO)
 
 With SSO:
 
@@ -1250,7 +1250,7 @@ Users authenticate once and access multiple authorized applications.
 
 ---
 
-# Authentication Protocols (Overview)
+## Authentication Protocols (Overview)
 
 Modern authentication commonly relies on standardized protocols.
 
@@ -1264,7 +1264,7 @@ Each protocol addresses different authentication and authorization scenarios.
 
 ---
 
-# Authentication Logging
+## Authentication Logging
 
 Authentication systems commonly record:
 
@@ -1279,7 +1279,7 @@ Sensitive information such as passwords should never appear in logs.
 
 ---
 
-# Account Lockout
+## Account Lockout
 
 Applications may temporarily restrict repeated failed login attempts.
 
@@ -1303,7 +1303,7 @@ Lockout policies should balance usability and protection against automated guess
 
 ---
 
-# Enterprise Authentication Workflow
+## Enterprise Authentication Workflow
 
 ```
 User
@@ -1339,7 +1339,7 @@ Protected Application
 
 ---
 
-# Enterprise Authentication Architecture
+## Enterprise Authentication Architecture
 
 ```
                  User
@@ -1383,7 +1383,7 @@ Protected Application
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational software company authenticates employees as follows:
 
@@ -1433,7 +1433,7 @@ Additional protections include:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using a test application:
 
@@ -1446,7 +1446,7 @@ Using a test application:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should passwords never be stored in plaintext?
 2. What is password hashing?
@@ -1461,7 +1461,7 @@ Using a test application:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Store passwords only as secure password hashes.
 - Use unique random salts for password hashing.
@@ -1473,7 +1473,7 @@ Using a test application:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Storing plaintext passwords.
 - Allowing weak or reused passwords.
@@ -1484,7 +1484,7 @@ Using a test application:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Passwords should never be stored in plaintext; secure hashing and salting are fundamental protections.
 - Password managers help users maintain long, unique credentials.
@@ -1492,15 +1492,15 @@ Using a test application:
 - Passwordless authentication and identity federation are increasingly common in enterprise environments.
 - Modern authentication systems combine secure credential management, MFA, standardized protocols, logging, and continuous monitoring.
 
-# 11-Authentication.md
+## 11-Authentication.md
 
-# Part 3 — Modern Authentication Protocols, OAuth 2.0, OpenID Connect (OIDC), SAML, Adaptive Authentication, Identity Management, and Enterprise Authentication Security
+## Part 3 — Modern Authentication Protocols, OAuth 2.0, OpenID Connect (OIDC), SAML, Adaptive Authentication, Identity Management, and Enterprise Authentication Security
 
 > **"Modern enterprise authentication extends beyond passwords. Organizations increasingly rely on identity providers, federation, adaptive authentication, standardized protocols, and Zero Trust principles to securely authenticate users across cloud, mobile, and distributed applications."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1518,7 +1518,7 @@ After completing this part, you will understand:
 
 ---
 
-# Modern Authentication
+## Modern Authentication
 
 Traditional authentication:
 
@@ -1556,7 +1556,7 @@ Authentication is increasingly centralized.
 
 ---
 
-# Identity and Access Management (IAM)
+## Identity and Access Management (IAM)
 
 IAM is the framework used to manage digital identities.
 
@@ -1582,7 +1582,7 @@ IAM ensures the right individuals receive appropriate access.
 
 ---
 
-# IAM Responsibilities
+## IAM Responsibilities
 
 Typical IAM functions include:
 
@@ -1597,7 +1597,7 @@ Typical IAM functions include:
 
 ---
 
-# Enterprise Identity Architecture
+## Enterprise Identity Architecture
 
 ```
 Users
@@ -1627,7 +1627,7 @@ The Identity Provider becomes the trusted authentication authority.
 
 ---
 
-# Identity Federation
+## Identity Federation
 
 Federation allows multiple organizations or applications to trust a common identity.
 
@@ -1655,7 +1655,7 @@ Users authenticate once using their trusted identity.
 
 ---
 
-# Benefits of Federation
+## Benefits of Federation
 
 Advantages include:
 
@@ -1667,7 +1667,7 @@ Advantages include:
 
 ---
 
-# Authentication Protocols
+## Authentication Protocols
 
 Modern identity systems commonly use standardized protocols.
 
@@ -1687,7 +1687,7 @@ Each protocol addresses different authentication or authorization scenarios.
 
 ---
 
-# OAuth 2.0 (Overview)
+## OAuth 2.0 (Overview)
 
 OAuth 2.0 is an **authorization framework**.
 
@@ -1715,7 +1715,7 @@ Protected Resource
 
 ---
 
-# OAuth Roles
+## OAuth Roles
 
 OAuth typically involves:
 
@@ -1739,7 +1739,7 @@ Each component has a specific responsibility.
 
 ---
 
-# OAuth Authorization Flow (Conceptual)
+## OAuth Authorization Flow (Conceptual)
 
 ```
 User
@@ -1773,7 +1773,7 @@ The client receives an access token after successful authorization.
 
 ---
 
-# Access Token
+## Access Token
 
 An access token represents delegated authorization.
 
@@ -1797,7 +1797,7 @@ Access tokens should have limited lifetimes.
 
 ---
 
-# Refresh Token
+## Refresh Token
 
 Some systems issue refresh tokens.
 
@@ -1821,7 +1821,7 @@ Refresh tokens help avoid repeated user logins while maintaining security.
 
 ---
 
-# OAuth is NOT Authentication
+## OAuth is NOT Authentication
 
 OAuth answers:
 
@@ -1839,7 +1839,7 @@ Identity verification is handled by protocols such as OpenID Connect.
 
 ---
 
-# OpenID Connect (OIDC)
+## OpenID Connect (OIDC)
 
 OIDC builds on OAuth 2.0 to provide authentication.
 
@@ -1867,7 +1867,7 @@ OIDC allows applications to verify user identity.
 
 ---
 
-# ID Token
+## ID Token
 
 An ID Token contains information about the authenticated user.
 
@@ -1893,7 +1893,7 @@ Applications validate the token before trusting the identity information.
 
 ---
 
-# OAuth vs OpenID Connect
+## OAuth vs OpenID Connect
 
 | OAuth 2.0 | OpenID Connect |
 |------------|----------------|
@@ -1906,7 +1906,7 @@ OIDC extends OAuth rather than replacing it.
 
 ---
 
-# Security Assertion Markup Language (SAML)
+## Security Assertion Markup Language (SAML)
 
 SAML is widely used for enterprise Single Sign-On.
 
@@ -1930,7 +1930,7 @@ SAML is commonly found in large organizations.
 
 ---
 
-# SAML Authentication Flow
+## SAML Authentication Flow
 
 ```
 User
@@ -1964,7 +1964,7 @@ The application trusts the Identity Provider.
 
 ---
 
-# OIDC vs SAML
+## OIDC vs SAML
 
 | OIDC | SAML |
 |------|------|
@@ -1977,7 +1977,7 @@ Both remain widely used depending on organizational requirements.
 
 ---
 
-# Single Sign-On (SSO)
+## Single Sign-On (SSO)
 
 SSO allows one authentication session to access multiple applications.
 
@@ -2005,7 +2005,7 @@ Users authenticate once instead of repeatedly.
 
 ---
 
-# Benefits of SSO
+## Benefits of SSO
 
 - Improved user experience
 - Reduced password reuse
@@ -2015,7 +2015,7 @@ Users authenticate once instead of repeatedly.
 
 ---
 
-# Adaptive Authentication
+## Adaptive Authentication
 
 Authentication requirements can change dynamically based on context.
 
@@ -2045,7 +2045,7 @@ Additional Verification
 
 ---
 
-# Risk Signals
+## Risk Signals
 
 Authentication systems may evaluate:
 
@@ -2060,7 +2060,7 @@ These signals help determine authentication confidence.
 
 ---
 
-# Zero Trust Authentication
+## Zero Trust Authentication
 
 Zero Trust follows the principle:
 
@@ -2076,7 +2076,7 @@ Authentication is continuously evaluated rather than trusted indefinitely.
 
 ---
 
-# Continuous Verification
+## Continuous Verification
 
 Instead of authenticating only once:
 
@@ -2104,7 +2104,7 @@ Continuous verification reduces long-term risk.
 
 ---
 
-# Device Trust
+## Device Trust
 
 Organizations may evaluate device health before granting access.
 
@@ -2119,7 +2119,7 @@ Device trust is one component of a broader security strategy.
 
 ---
 
-# Authentication Logging
+## Authentication Logging
 
 Authentication systems should record events such as:
 
@@ -2135,7 +2135,7 @@ Logs should avoid exposing credentials or sensitive secrets.
 
 ---
 
-# Authentication Monitoring
+## Authentication Monitoring
 
 ```
 Authentication Events
@@ -2161,7 +2161,7 @@ Monitoring helps identify abnormal authentication behavior.
 
 ---
 
-# Enterprise Identity Architecture
+## Enterprise Identity Architecture
 
 ```
                  Users
@@ -2215,7 +2215,7 @@ Monitoring helps identify abnormal authentication behavior.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational bank authenticates employees.
 
@@ -2271,7 +2271,7 @@ Security controls include:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using a cloud identity platform or a test environment:
 
@@ -2284,7 +2284,7 @@ Using a cloud identity platform or a test environment:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Identity and Access Management (IAM)?
 2. What is an Identity Provider (IdP)?
@@ -2299,7 +2299,7 @@ Using a cloud identity platform or a test environment:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use standardized authentication protocols instead of custom implementations.
 - Centralize authentication through a trusted Identity Provider.
@@ -2312,7 +2312,7 @@ Using a cloud identity platform or a test environment:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Confusing OAuth with authentication.
 - Building proprietary authentication protocols.
@@ -2323,7 +2323,7 @@ Using a cloud identity platform or a test environment:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Modern authentication relies on centralized identity management rather than isolated application logins.
 - OAuth 2.0 provides delegated authorization, while OpenID Connect adds user authentication capabilities.
@@ -2331,15 +2331,15 @@ Using a cloud identity platform or a test environment:
 - Adaptive authentication and Zero Trust strengthen authentication by evaluating context and continuously verifying trust.
 - Enterprise authentication combines Identity Providers, MFA, standardized protocols, monitoring, and secure session management.
 
-# 11-Authentication.md
+## 11-Authentication.md
 
-# Part 4 — Enterprise Authentication Architecture, Identity Governance, Authentication Monitoring, Security Testing, Troubleshooting, Best Practices, and Chapter Summary
+## Part 4 — Enterprise Authentication Architecture, Identity Governance, Authentication Monitoring, Security Testing, Troubleshooting, Best Practices, and Chapter Summary
 
 > **"Authentication is not a single login event—it is an enterprise-wide security process involving identity verification, continuous validation, monitoring, governance, auditing, and secure lifecycle management."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2357,7 +2357,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Authentication Architecture
+## Enterprise Authentication Architecture
 
 Large organizations separate authentication from applications.
 
@@ -2421,7 +2421,7 @@ This architecture centralizes identity verification while allowing multiple appl
 
 ---
 
-# Authentication Layers
+## Authentication Layers
 
 ```
 User
@@ -2451,7 +2451,7 @@ Authentication should always precede authorization.
 
 ---
 
-# Identity Governance
+## Identity Governance
 
 Identity Governance ensures user accounts are properly managed throughout their lifecycle.
 
@@ -2477,7 +2477,7 @@ Governance reduces unnecessary access and supports regulatory compliance.
 
 ---
 
-# User Lifecycle
+## User Lifecycle
 
 ```
 Employee Hired
@@ -2511,7 +2511,7 @@ Accounts should be updated as responsibilities change.
 
 ---
 
-# User Provisioning
+## User Provisioning
 
 Provisioning creates identities and grants initial access.
 
@@ -2539,7 +2539,7 @@ Automation helps reduce configuration errors.
 
 ---
 
-# Deprovisioning
+## Deprovisioning
 
 When users no longer require access:
 
@@ -2567,7 +2567,7 @@ Prompt deprovisioning reduces the risk of unauthorized access.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Users should receive only the permissions required for their responsibilities.
 
@@ -2587,7 +2587,7 @@ Least privilege limits the impact of compromised accounts.
 
 ---
 
-# Privileged Accounts
+## Privileged Accounts
 
 Examples include:
 
@@ -2601,7 +2601,7 @@ These accounts require stronger protections and additional monitoring.
 
 ---
 
-# Privileged Access Controls
+## Privileged Access Controls
 
 Organizations commonly implement:
 
@@ -2614,7 +2614,7 @@ Organizations commonly implement:
 
 ---
 
-# Zero Trust Authentication
+## Zero Trust Authentication
 
 Zero Trust assumes that no request should be trusted automatically.
 
@@ -2646,7 +2646,7 @@ Verification occurs continuously rather than only during login.
 
 ---
 
-# Continuous Authentication
+## Continuous Authentication
 
 Authentication confidence can change during an active session.
 
@@ -2674,7 +2674,7 @@ Examples of additional verification include MFA challenges or re-authentication.
 
 ---
 
-# Authentication Monitoring
+## Authentication Monitoring
 
 Authentication events should be continuously monitored.
 
@@ -2702,7 +2702,7 @@ Monitoring helps identify suspicious authentication activity.
 
 ---
 
-# Important Authentication Events
+## Important Authentication Events
 
 Common events include:
 
@@ -2719,7 +2719,7 @@ Common events include:
 
 ---
 
-# Detecting Suspicious Activity
+## Detecting Suspicious Activity
 
 Organizations monitor for events such as:
 
@@ -2735,7 +2735,7 @@ These events should be investigated according to organizational procedures.
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Authentication logs should include:
 
@@ -2752,7 +2752,7 @@ Passwords and authentication secrets should never be logged.
 
 ---
 
-# Centralized Logging
+## Centralized Logging
 
 ```
 Applications
@@ -2782,7 +2782,7 @@ Centralized logging improves visibility across enterprise environments.
 
 ---
 
-# Identity Auditing
+## Identity Auditing
 
 Periodic reviews help verify that users have appropriate access.
 
@@ -2810,7 +2810,7 @@ Regular audits help enforce least privilege.
 
 ---
 
-# Authentication Security Testing
+## Authentication Security Testing
 
 Security assessments should evaluate:
 
@@ -2827,7 +2827,7 @@ Testing should always be performed only with proper authorization.
 
 ---
 
-# Authentication Review Checklist
+## Authentication Review Checklist
 
 ```
 ✓ HTTPS Enabled
@@ -2857,7 +2857,7 @@ Testing should always be performed only with proper authorization.
 
 ---
 
-# Enterprise Troubleshooting
+## Enterprise Troubleshooting
 
 | Symptom | Possible Cause |
 |----------|----------------|
@@ -2871,7 +2871,7 @@ Troubleshooting should proceed layer by layer.
 
 ---
 
-# Authentication Troubleshooting Workflow
+## Authentication Troubleshooting Workflow
 
 ```
 Authentication Issue
@@ -2911,7 +2911,7 @@ Resolved
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution secures employee authentication.
 
@@ -2970,7 +2970,7 @@ Additional protections include:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using a test authentication platform:
 
@@ -2984,7 +2984,7 @@ Using a test authentication platform:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Identity Governance?
 2. What is user provisioning?
@@ -2999,7 +2999,7 @@ Using a test authentication platform:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use centralized Identity Providers for authentication.
 - Require Multi-Factor Authentication for privileged and sensitive accounts.
@@ -3014,7 +3014,7 @@ Using a test authentication platform:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating authentication as a one-time login event.
 - Allowing dormant accounts to remain active.
@@ -3027,7 +3027,7 @@ Using a test authentication platform:
 
 ---
 
-# Quick Revision
+## Quick Revision
 
 Authentication Process:
 
@@ -3117,7 +3117,7 @@ Audit
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

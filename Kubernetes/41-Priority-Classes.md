@@ -56,7 +56,7 @@ Priority can also participate in **Pod preemption**, where lower-priority Pods m
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -83,7 +83,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need Priority?
+## Why Do We Need Priority?
 
 Imagine a Node with:
 
@@ -124,7 +124,7 @@ Pod B
 
 ---
 
-# Basic Concept
+## Basic Concept
 
 ```text
 Pod A
@@ -155,7 +155,7 @@ Highest scheduling priority
 
 ---
 
-# What is a PriorityClass?
+## What is a PriorityClass?
 
 A `PriorityClass` is a cluster-scoped Kubernetes object that defines a priority value.
 
@@ -179,7 +179,7 @@ description: "Priority for critical workloads"
 
 ---
 
-# PriorityClass Structure
+## PriorityClass Structure
 
 Important fields include:
 
@@ -203,7 +203,7 @@ preemptionPolicy
 
 ---
 
-# Priority Value
+## Priority Value
 
 The `value` determines the relative priority.
 
@@ -223,7 +223,7 @@ Higher values indicate higher priority.
 
 ---
 
-# Example
+## Example
 
 ```text
 critical-workload
@@ -261,7 +261,7 @@ Development
 
 ---
 
-# PriorityClass is Cluster-Scoped
+## PriorityClass is Cluster-Scoped
 
 Unlike Pods and Deployments, PriorityClass is not namespaced.
 
@@ -275,7 +275,7 @@ from any namespace.
 
 ---
 
-# Creating a PriorityClass
+## Creating a PriorityClass
 
 Example:
 
@@ -303,7 +303,7 @@ kubectl apply -f priorityclass.yaml
 
 ---
 
-# Viewing Priority Classes
+## Viewing Priority Classes
 
 ```bash
 kubectl get priorityclass
@@ -321,7 +321,7 @@ batch-low           100
 
 ---
 
-# Describe a PriorityClass
+## Describe a PriorityClass
 
 ```bash
 kubectl describe priorityclass production-high
@@ -329,7 +329,7 @@ kubectl describe priorityclass production-high
 
 ---
 
-# Assigning Priority to a Pod
+## Assigning Priority to a Pod
 
 A Pod uses:
 
@@ -367,7 +367,7 @@ production-high
 
 ---
 
-# Priority Assignment
+## Priority Assignment
 
 The relationship is:
 
@@ -390,7 +390,7 @@ production-high
 
 ---
 
-# Pod Priority
+## Pod Priority
 
 Once the Pod references a PriorityClass, Kubernetes associates the corresponding priority value with the Pod.
 
@@ -414,7 +414,7 @@ priority:
 
 ---
 
-# Scheduling Queue
+## Scheduling Queue
 
 Priority affects how Pods are considered by the Scheduler.
 
@@ -450,7 +450,7 @@ The actual Scheduler queue behavior is more sophisticated, but the important ide
 
 ---
 
-# Priority and Resource Availability
+## Priority and Resource Availability
 
 Priority becomes especially important when:
 
@@ -484,7 +484,7 @@ If the Pod has sufficiently high priority and preemption is allowed, Kubernetes 
 
 ---
 
-# Pod Preemption
+## Pod Preemption
 
 Preemption means:
 
@@ -518,7 +518,7 @@ Schedule High Priority Pod
 
 ---
 
-# Example
+## Example
 
 Node capacity:
 
@@ -577,7 +577,7 @@ Pod C can be scheduled
 
 ---
 
-# Important: Preemption Is Not Always Guaranteed
+## Important: Preemption Is Not Always Guaranteed
 
 Higher priority does not mean:
 
@@ -595,7 +595,7 @@ Pending
 
 ---
 
-# preemptionPolicy
+## preemptionPolicy
 
 PriorityClass supports:
 
@@ -617,7 +617,7 @@ Never
 
 ---
 
-# PreemptLowerPriority
+## PreemptLowerPriority
 
 This is the default behavior when applicable.
 
@@ -631,7 +631,7 @@ A high-priority Pod can potentially preempt lower-priority Pods if necessary and
 
 ---
 
-# Never
+## Never
 
 Example:
 
@@ -645,7 +645,7 @@ This is known as a **non-preempting PriorityClass**.
 
 ---
 
-# Non-Preempting PriorityClass
+## Non-Preempting PriorityClass
 
 Example:
 
@@ -679,7 +679,7 @@ No preemption
 
 ---
 
-# Why Use Non-Preempting Priority?
+## Why Use Non-Preempting Priority?
 
 Suppose a workload should be considered before normal workloads but should not disrupt running applications.
 
@@ -705,7 +705,7 @@ A non-preempting PriorityClass can be useful for this pattern.
 
 ---
 
-# Priority vs Preemption
+## Priority vs Preemption
 
 These are related but different.
 
@@ -741,7 +741,7 @@ is configured.
 
 ---
 
-# globalDefault
+## globalDefault
 
 A PriorityClass can have:
 
@@ -761,7 +761,7 @@ globalDefault: true
 
 ---
 
-# Example Default PriorityClass
+## Example Default PriorityClass
 
 ```yaml
 apiVersion: scheduling.k8s.io/v1
@@ -781,7 +781,7 @@ description: "Default priority for ordinary workloads"
 
 ---
 
-# Why Use globalDefault?
+## Why Use globalDefault?
 
 It can establish a baseline priority for workloads that do not explicitly select a PriorityClass.
 
@@ -789,7 +789,7 @@ However, production clusters should define priority policies carefully.
 
 ---
 
-# Built-in Priority Classes
+## Built-in Priority Classes
 
 Kubernetes installations commonly include system-related PriorityClasses such as:
 
@@ -813,7 +813,7 @@ kubectl get priorityclass
 
 ---
 
-# System Critical Workloads
+## System Critical Workloads
 
 Critical Kubernetes components may need to remain schedulable even when resources are constrained.
 
@@ -835,7 +835,7 @@ Development
 
 ---
 
-# Priority and QoS Are Different
+## Priority and QoS Are Different
 
 Do not confuse:
 
@@ -863,7 +863,7 @@ How are the Pod's resource requests and limits configured?
 
 ---
 
-# QoS Classes
+## QoS Classes
 
 Kubernetes commonly classifies Pods as:
 
@@ -883,7 +883,7 @@ These are different from PriorityClasses.
 
 ---
 
-# Priority vs QoS
+## Priority vs QoS
 
 | Priority | QoS |
 |---|---|
@@ -894,7 +894,7 @@ These are different from PriorityClasses.
 
 ---
 
-# Priority vs Resource Requests
+## Priority vs Resource Requests
 
 These also serve different purposes.
 
@@ -928,7 +928,7 @@ Pod B has higher priority but needs fewer resources.
 
 ---
 
-# Priority Does Not Create Resources
+## Priority Does Not Create Resources
 
 If a cluster has:
 
@@ -958,7 +958,7 @@ if no feasible scheduling solution exists.
 
 ---
 
-# Priority and Limits
+## Priority and Limits
 
 Resource limits do not determine Pod priority.
 
@@ -986,7 +986,7 @@ priorityClassName:
 
 ---
 
-# Priority and Taints
+## Priority and Taints
 
 Priority does not override taints.
 
@@ -1012,7 +1012,7 @@ Ignore Taints
 
 ---
 
-# Priority and Node Affinity
+## Priority and Node Affinity
 
 Priority also does not override required Node Affinity.
 
@@ -1032,7 +1032,7 @@ the Pod cannot simply ignore the requirement because it has high priority.
 
 ---
 
-# Priority and Pod Anti-Affinity
+## Priority and Pod Anti-Affinity
 
 Similarly, required Pod Anti-Affinity can prevent a high-priority Pod from being placed in certain locations.
 
@@ -1040,7 +1040,7 @@ Scheduling constraints still matter.
 
 ---
 
-# Preemption and Scheduling Constraints
+## Preemption and Scheduling Constraints
 
 When preemption is considered, Kubernetes must find a solution that satisfies the higher-priority Pod's scheduling requirements.
 
@@ -1058,7 +1058,7 @@ If preempting Pods on an HDD-only Node does not make an SSD Node available, pree
 
 ---
 
-# Preemption Workflow
+## Preemption Workflow
 
 Conceptually:
 
@@ -1100,7 +1100,7 @@ Schedule High Priority Pod
 
 ---
 
-# Preemption Victims
+## Preemption Victims
 
 A **victim** is a lower-priority Pod selected for preemption.
 
@@ -1129,7 +1129,7 @@ because Pod B has higher priority.
 
 ---
 
-# Preemption and Graceful Termination
+## Preemption and Graceful Termination
 
 Preempted Pods are not necessarily removed instantaneously.
 
@@ -1155,7 +1155,7 @@ Higher-priority Pod scheduled
 
 ---
 
-# Priority Ordering Example
+## Priority Ordering Example
 
 Suppose:
 
@@ -1193,7 +1193,7 @@ Higher values represent higher priority.
 
 ---
 
-# Creating Multiple Priority Classes
+## Creating Multiple Priority Classes
 
 Create:
 
@@ -1237,7 +1237,7 @@ description: "Batch workloads"
 
 ---
 
-# Assigning Priority Classes
+## Assigning Priority Classes
 
 Production Pod:
 
@@ -1257,7 +1257,7 @@ spec:
 
 ---
 
-# Viewing Pod Priority
+## Viewing Pod Priority
 
 Run:
 
@@ -1279,7 +1279,7 @@ priority
 
 ---
 
-# Viewing Priority Classes
+## Viewing Priority Classes
 
 ```bash
 kubectl get priorityclass
@@ -1303,7 +1303,7 @@ Actual values and available classes depend on the cluster.
 
 ---
 
-# Hands-on Lab 1 – Create PriorityClass
+## Hands-on Lab 1 – Create PriorityClass
 
 Create:
 
@@ -1337,7 +1337,7 @@ kubectl get priorityclass
 
 ---
 
-# Hands-on Lab 2 – Create High-Priority Pod
+## Hands-on Lab 2 – Create High-Priority Pod
 
 Create:
 
@@ -1375,7 +1375,7 @@ kubectl get pod high-priority-pod -o yaml
 
 ---
 
-# Hands-on Lab 3 – Create Low-Priority Pod
+## Hands-on Lab 3 – Create Low-Priority Pod
 
 Create another PriorityClass:
 
@@ -1407,7 +1407,7 @@ values.
 
 ---
 
-# Hands-on Lab 4 – Test Scheduling Order
+## Hands-on Lab 4 – Test Scheduling Order
 
 Create several Pods with different priority values.
 
@@ -1437,7 +1437,7 @@ kubectl describe pod <pod-name>
 
 ---
 
-# Hands-on Lab 5 – Non-Preempting Priority
+## Hands-on Lab 5 – Non-Preempting Priority
 
 Create:
 
@@ -1469,7 +1469,7 @@ kubectl get priorityclass high-nonpreempting -o yaml
 
 ---
 
-# Hands-on Lab 6 – Resource-Constrained Preemption
+## Hands-on Lab 6 – Resource-Constrained Preemption
 
 On a disposable lab cluster:
 
@@ -1488,7 +1488,7 @@ Look for scheduling and preemption-related events.
 
 ---
 
-# Important Lab Warning
+## Important Lab Warning
 
 Do not experiment with aggressive preemption policies on a production cluster.
 
@@ -1506,7 +1506,7 @@ or another disposable Kubernetes environment for experiments.
 
 ---
 
-# Hands-on Lab 7 – Inspect System Priority Classes
+## Hands-on Lab 7 – Inspect System Priority Classes
 
 Run:
 
@@ -1530,9 +1530,9 @@ where present.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Check PriorityClass
+### Check PriorityClass
 
 ```bash
 kubectl get priorityclass
@@ -1540,7 +1540,7 @@ kubectl get priorityclass
 
 ---
 
-## Describe PriorityClass
+### Describe PriorityClass
 
 ```bash
 kubectl describe priorityclass <name>
@@ -1548,7 +1548,7 @@ kubectl describe priorityclass <name>
 
 ---
 
-## Check Pod Priority
+### Check Pod Priority
 
 ```bash
 kubectl get pod <pod> -o yaml
@@ -1556,7 +1556,7 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-## Check Scheduling Events
+### Check Scheduling Events
 
 ```bash
 kubectl describe pod <pod>
@@ -1564,7 +1564,7 @@ kubectl describe pod <pod>
 
 ---
 
-# Example Problem
+## Example Problem
 
 Pod:
 
@@ -1604,9 +1604,9 @@ High priority does not bypass normal scheduling constraints.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Thinking Priority Guarantees Scheduling
+### 1. Thinking Priority Guarantees Scheduling
 
 Incorrect:
 
@@ -1632,7 +1632,7 @@ The Pod still requires a feasible scheduling solution.
 
 ---
 
-## 2. Confusing Priority with QoS
+### 2. Confusing Priority with QoS
 
 They are different mechanisms.
 
@@ -1654,7 +1654,7 @@ Resource configuration class
 
 ---
 
-## 3. Thinking Priority Ignores Taints
+### 3. Thinking Priority Ignores Taints
 
 It does not.
 
@@ -1662,7 +1662,7 @@ A high-priority Pod still needs to satisfy required scheduling constraints.
 
 ---
 
-## 4. Using Extremely High Priorities Without Policy
+### 4. Using Extremely High Priorities Without Policy
 
 Poorly designed priority hierarchies can lead to unnecessary preemption.
 
@@ -1670,7 +1670,7 @@ Define a clear organization-wide priority policy.
 
 ---
 
-## 5. Using Preemption Everywhere
+### 5. Using Preemption Everywhere
 
 Preemption can disrupt lower-priority workloads.
 
@@ -1678,7 +1678,7 @@ Use it only when the workload genuinely requires it.
 
 ---
 
-## 6. Forgetting preemptionPolicy
+### 6. Forgetting preemptionPolicy
 
 A high-priority workload can use:
 
@@ -1690,7 +1690,7 @@ if it should not evict lower-priority workloads.
 
 ---
 
-## 7. Assuming Priority Creates Resources
+### 7. Assuming Priority Creates Resources
 
 It does not.
 
@@ -1708,7 +1708,7 @@ can still occur.
 
 ---
 
-# Priority vs Resource Requests vs Limits
+## Priority vs Resource Requests vs Limits
 
 | Concept | Purpose |
 |---|---|
@@ -1719,7 +1719,7 @@ can still occur.
 
 ---
 
-# Priority vs Taints
+## Priority vs Taints
 
 ```text
 Priority
@@ -1739,7 +1739,7 @@ Which Pods should be repelled from this Node?
 
 ---
 
-# Priority vs Affinity
+## Priority vs Affinity
 
 ```text
 Priority
@@ -1759,9 +1759,9 @@ Placement constraints/preferences
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## PriorityClass
+### PriorityClass
 
 ```text
 Defines Pod priority
@@ -1769,7 +1769,7 @@ Defines Pod priority
 
 ---
 
-## Higher Value
+### Higher Value
 
 ```text
 Higher value
@@ -1781,7 +1781,7 @@ Higher priority
 
 ---
 
-## Preemption
+### Preemption
 
 ```text
 High priority Pod
@@ -1797,7 +1797,7 @@ Creates capacity
 
 ---
 
-## Non-Preempting
+### Non-Preempting
 
 ```text
 High priority
@@ -1813,7 +1813,7 @@ No preemption
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 List PriorityClasses:
 
@@ -1853,9 +1853,9 @@ kubectl get pods -o wide
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is a PriorityClass?
 - Why are PriorityClasses used?
@@ -1865,7 +1865,7 @@ kubectl get pods -o wide
 
 ---
 
-## Intermediate
+### Intermediate
 
 - What is Pod preemption?
 - What is `preemptionPolicy`?
@@ -1876,7 +1876,7 @@ kubectl get pods -o wide
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the Kubernetes preemption workflow.
 - How does priority influence the Scheduler?
@@ -1892,7 +1892,7 @@ kubectl get pods -o wide
 
 ---
 
-# Production Priority Hierarchy
+## Production Priority Hierarchy
 
 A production cluster might define:
 
@@ -1933,7 +1933,7 @@ The exact numerical values should be designed according to organizational requir
 
 ---
 
-# Example Production Policy
+## Example Production Policy
 
 ```text
 Priority Level       Preemption
@@ -1953,27 +1953,27 @@ This can prevent development or batch workloads from competing equally with crit
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Define a Clear Priority Hierarchy
+#### 1. Define a Clear Priority Hierarchy
 
 Document what each priority level means.
 
 ---
 
-### 2. Keep the Number of Priority Classes Manageable
+#### 2. Keep the Number of Priority Classes Manageable
 
 Too many classes create unnecessary complexity.
 
 ---
 
-### 3. Use Preemption Carefully
+#### 3. Use Preemption Carefully
 
 Preemption can intentionally disrupt lower-priority workloads.
 
 ---
 
-### 4. Use Non-Preempting Classes When Appropriate
+#### 4. Use Non-Preempting Classes When Appropriate
 
 If a workload should receive queue priority but should not evict others:
 
@@ -1983,33 +1983,33 @@ preemptionPolicy: Never
 
 ---
 
-### 5. Do Not Use Priority as a Replacement for Capacity Planning
+#### 5. Do Not Use Priority as a Replacement for Capacity Planning
 
 Priority cannot compensate for an undersized cluster.
 
 ---
 
-### 6. Combine Priority with Resource Requests
+#### 6. Combine Priority with Resource Requests
 
 Accurate resource requests allow the Scheduler to make meaningful decisions.
 
 ---
 
-### 7. Protect System Workloads
+#### 7. Protect System Workloads
 
 System-critical workloads should have appropriate priority policies.
 
 ---
 
-### 8. Test Preemption
+#### 8. Test Preemption
 
 Use a disposable cluster to understand the actual behavior before enabling aggressive production policies.
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Pod Priority and Preemption
 - PriorityClass
@@ -2020,7 +2020,7 @@ Use a disposable cluster to understand the actual behavior before enabling aggre
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes SIG Scheduling
 - Kubernetes Scheduling Framework
@@ -2028,7 +2028,7 @@ Use a disposable cluster to understand the actual behavior before enabling aggre
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create a low-priority PriorityClass.
 2. Create a high-priority PriorityClass.
@@ -2045,7 +2045,7 @@ Use a disposable cluster to understand the actual behavior before enabling aggre
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```text
                     PriorityClass
@@ -2171,9 +2171,9 @@ This ensures that scarce cluster resources are allocated according to business a
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 42 – Resource Requests & Limits
+## Chapter 42 – Resource Requests & Limits
 
 Topics will include:
 
@@ -2206,4 +2206,3 @@ Topics will include:
 - References
 
 ---
-```

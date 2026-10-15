@@ -1,10 +1,10 @@
 # 04-Windows-Boot-Process.md
 
-# Part 1 — Windows Boot Process Fundamentals, Firmware Initialization, UEFI, BIOS, Boot Components, and Startup Sequence
+## Part 1 — Windows Boot Process Fundamentals, Firmware Initialization, UEFI, BIOS, Boot Components, and Startup Sequence
 
 ---
 
-# Introduction
+## Introduction
 
 The Windows boot process is the sequence of events that occurs from the moment a computer is powered on until the user reaches the Windows desktop.
 
@@ -23,7 +23,7 @@ Many startup failures occur during the boot process. Knowing each stage allows a
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this part, you will understand:
 
@@ -40,7 +40,7 @@ By the end of this part, you will understand:
 
 ---
 
-# What is the Windows Boot Process?
+## What is the Windows Boot Process?
 
 The Windows boot process is the sequence of operations that prepares the hardware, loads the operating system, initializes system components, and presents the login screen.
 
@@ -48,7 +48,7 @@ It begins when the power button is pressed and ends when Windows is ready for us
 
 ---
 
-# High-Level Boot Process
+## High-Level Boot Process
 
 ```text
 Power On
@@ -100,7 +100,7 @@ Desktop
 
 ---
 
-# Why the Boot Process Matters
+## Why the Boot Process Matters
 
 Understanding the boot process helps administrators:
 
@@ -113,7 +113,7 @@ Understanding the boot process helps administrators:
 
 ---
 
-# Boot Terminology
+## Boot Terminology
 
 | Term | Description |
 |------|-------------|
@@ -128,7 +128,7 @@ Understanding the boot process helps administrators:
 
 ---
 
-# Power-On Sequence
+## Power-On Sequence
 
 The boot process begins immediately after power is supplied.
 
@@ -158,7 +158,7 @@ Boot Device Search
 
 ---
 
-# Firmware Initialization
+## Firmware Initialization
 
 Firmware performs the first stage of startup.
 
@@ -175,7 +175,7 @@ Firmware operates before Windows begins loading.
 
 ---
 
-# BIOS Boot Overview
+## BIOS Boot Overview
 
 Legacy BIOS follows a traditional startup process.
 
@@ -211,7 +211,7 @@ Limitations include:
 
 ---
 
-# UEFI Boot Overview
+## UEFI Boot Overview
 
 Modern systems use UEFI.
 
@@ -245,7 +245,7 @@ Advantages:
 
 ---
 
-# BIOS vs UEFI
+## BIOS vs UEFI
 
 | BIOS | UEFI |
 |------|------|
@@ -258,7 +258,7 @@ Advantages:
 
 ---
 
-# Power-On Self-Test (POST)
+## Power-On Self-Test (POST)
 
 POST verifies that essential hardware is functioning correctly.
 
@@ -275,7 +275,7 @@ If POST fails, Windows cannot continue loading.
 
 ---
 
-# POST Workflow
+## POST Workflow
 
 ```text
 Power On
@@ -307,7 +307,7 @@ Boot Device Selected
 
 ---
 
-# Boot Device Selection
+## Boot Device Selection
 
 Firmware searches for a bootable device according to the configured boot order.
 
@@ -337,7 +337,7 @@ Administrators can modify the boot order through firmware settings.
 
 ---
 
-# EFI System Partition (ESP)
+## EFI System Partition (ESP)
 
 On UEFI systems, Windows stores boot files in the **EFI System Partition (ESP)**.
 
@@ -360,7 +360,7 @@ Characteristics:
 
 ---
 
-# Windows Boot Manager
+## Windows Boot Manager
 
 The Windows Boot Manager (`bootmgfw.efi` on UEFI systems) is responsible for:
 
@@ -389,7 +389,7 @@ Load Boot Loader
 
 ---
 
-# Boot Configuration Data (BCD)
+## Boot Configuration Data (BCD)
 
 The **Boot Configuration Data (BCD)** store contains boot configuration information.
 
@@ -405,7 +405,7 @@ The BCD replaces the older `boot.ini` file used by earlier Windows versions.
 
 ---
 
-# BCD Workflow
+## BCD Workflow
 
 ```text
 Windows Boot Manager
@@ -427,7 +427,7 @@ Incorrect BCD entries can prevent Windows from starting.
 
 ---
 
-# Windows Boot Loader
+## Windows Boot Loader
 
 The Windows Boot Loader (`winload.efi` on UEFI systems) prepares the operating system for execution.
 
@@ -441,7 +441,7 @@ Responsibilities:
 
 ---
 
-# Windows Boot Loader Workflow
+## Windows Boot Loader Workflow
 
 ```text
 Windows Boot Manager
@@ -469,7 +469,7 @@ Kernel Initialization
 
 ---
 
-# Boot-Start Drivers
+## Boot-Start Drivers
 
 Certain drivers must load before Windows fully starts.
 
@@ -484,7 +484,7 @@ If a required boot-start driver is missing or corrupted, Windows may fail to boo
 
 ---
 
-# Secure Boot
+## Secure Boot
 
 Secure Boot verifies that trusted boot components are loaded.
 
@@ -514,7 +514,7 @@ Benefits:
 
 ---
 
-# Enterprise Startup Workflow
+## Enterprise Startup Workflow
 
 ```text
 Power On
@@ -556,7 +556,7 @@ Enterprise systems often include additional security controls during startup.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 The earliest stages of startup are attractive targets for attackers.
 
@@ -572,7 +572,7 @@ Security controls such as Secure Boot and TPM help reduce these risks.
 
 ---
 
-# Business Impact
+## Business Impact
 
 A reliable boot process provides:
 
@@ -586,7 +586,7 @@ Startup failures can significantly affect employee productivity and operational 
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Standardize on UEFI and GPT.
 - Enable Secure Boot.
@@ -598,9 +598,9 @@ Startup failures can significantly affect employee productivity and operational 
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Check Firmware Mode
+### Lab 1 — Check Firmware Mode
 
 1. Press:
 
@@ -622,7 +622,7 @@ msinfo32
 
 ---
 
-## Lab 2 — View EFI System Partition
+### Lab 2 — View EFI System Partition
 
 Open:
 
@@ -640,7 +640,7 @@ Do not modify these partitions.
 
 ---
 
-## Lab 3 — View Boot Configuration
+### Lab 3 — View Boot Configuration
 
 Open **Command Prompt** as Administrator.
 
@@ -661,7 +661,7 @@ Observe:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Windows boot process begins with firmware initialization.
 - UEFI is the recommended firmware standard for modern systems.
@@ -671,7 +671,7 @@ Observe:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the Windows boot process?
 2. What is the purpose of POST?
@@ -686,7 +686,7 @@ Observe:
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -696,13 +696,13 @@ Observe:
 
 ---
 
-# 04-Windows-Boot-Process.md
+## 04-Windows-Boot-Process.md
 
-# Part 2 — Kernel Initialization, Session Manager, Winlogon, LSASS, Service Startup, User Logon, and Desktop Initialization
+## Part 2 — Kernel Initialization, Session Manager, Winlogon, LSASS, Service Startup, User Logon, and Desktop Initialization
 
 ---
 
-# Introduction
+## Introduction
 
 After the Windows Boot Loader (`winload.efi`) loads the operating system into memory, control is transferred to the **Windows Kernel**. From this point onward, Windows initializes its internal components, starts essential system processes and services, authenticates users, and prepares the desktop.
 
@@ -718,7 +718,7 @@ Understanding these stages is critical for:
 
 ---
 
-# Boot Process Overview
+## Boot Process Overview
 
 The complete startup sequence now looks like this:
 
@@ -776,7 +776,7 @@ Explorer Desktop
 
 ---
 
-# Windows Kernel Initialization
+## Windows Kernel Initialization
 
 The Windows Kernel (`ntoskrnl.exe`) is the first major operating system component to execute.
 
@@ -791,7 +791,7 @@ Responsibilities include:
 
 ---
 
-# Kernel Initialization Workflow
+## Kernel Initialization Workflow
 
 ```text
 Windows Boot Loader
@@ -819,7 +819,7 @@ Start Session Manager
 
 ---
 
-# Components Initialized by the Kernel
+## Components Initialized by the Kernel
 
 During initialization, Windows prepares:
 
@@ -837,7 +837,7 @@ These components become available before user logon.
 
 ---
 
-# Loading Boot Drivers
+## Loading Boot Drivers
 
 The kernel loads **boot-start drivers** required for operating system startup.
 
@@ -853,7 +853,7 @@ Without these drivers, Windows may not be able to access the system disk.
 
 ---
 
-# Driver Loading Sequence
+## Driver Loading Sequence
 
 ```text
 Kernel
@@ -877,7 +877,7 @@ System Ready
 
 ---
 
-# Windows Executive Initialization
+## Windows Executive Initialization
 
 Once the kernel is operational, the Windows Executive initializes its subsystems.
 
@@ -898,7 +898,7 @@ At this stage, core operating system services become available.
 
 ---
 
-# Session Manager (smss.exe)
+## Session Manager (smss.exe)
 
 The **Session Manager Subsystem** (`smss.exe`) is the first user-mode process created by the kernel.
 
@@ -913,7 +913,7 @@ Responsibilities include:
 
 ---
 
-# Session Manager Workflow
+## Session Manager Workflow
 
 ```text
 Kernel
@@ -941,7 +941,7 @@ Continue Startup
 
 ---
 
-# Client/Server Runtime Subsystem (csrss.exe)
+## Client/Server Runtime Subsystem (csrss.exe)
 
 `csrss.exe` is responsible for critical user-mode functionality.
 
@@ -956,7 +956,7 @@ Although named "Client/Server Runtime," it is an essential Windows process and s
 
 ---
 
-# Wininit (wininit.exe)
+## Wininit (wininit.exe)
 
 `wininit.exe` initializes essential system services.
 
@@ -978,7 +978,7 @@ Wininit
 
 ---
 
-# Service Control Manager (services.exe)
+## Service Control Manager (services.exe)
 
 The **Service Control Manager (SCM)** manages Windows services.
 
@@ -992,7 +992,7 @@ Responsibilities:
 
 ---
 
-# Windows Services
+## Windows Services
 
 Windows services run in the background without user interaction.
 
@@ -1009,7 +1009,7 @@ Examples:
 
 ---
 
-# Service Startup Types
+## Service Startup Types
 
 | Startup Type | Description |
 |--------------|-------------|
@@ -1020,7 +1020,7 @@ Examples:
 
 ---
 
-# Local Security Authority (lsass.exe)
+## Local Security Authority (lsass.exe)
 
 The **Local Security Authority Subsystem Service (LSASS)** is responsible for Windows security.
 
@@ -1036,7 +1036,7 @@ LSASS is one of the most security-sensitive processes in Windows.
 
 ---
 
-# Authentication Workflow
+## Authentication Workflow
 
 ```text
 User Enters Password
@@ -1068,7 +1068,7 @@ Desktop Loaded
 
 ---
 
-# Security Tokens
+## Security Tokens
 
 After successful authentication, Windows creates a **security token**.
 
@@ -1084,7 +1084,7 @@ The token is attached to processes started by the user.
 
 ---
 
-# Winlogon (winlogon.exe)
+## Winlogon (winlogon.exe)
 
 `winlogon.exe` manages the interactive logon process.
 
@@ -1098,7 +1098,7 @@ Responsibilities:
 
 ---
 
-# User Logon Sequence
+## User Logon Sequence
 
 ```text
 Winlogon
@@ -1126,7 +1126,7 @@ Explorer Started
 
 ---
 
-# User Profile Loading
+## User Profile Loading
 
 After authentication:
 
@@ -1143,7 +1143,7 @@ This creates the user's personalized environment.
 
 ---
 
-# Explorer (explorer.exe)
+## Explorer (explorer.exe)
 
 `explorer.exe` is the Windows shell.
 
@@ -1171,7 +1171,7 @@ Desktop Displayed
 
 ---
 
-# Startup Applications
+## Startup Applications
 
 After Explorer starts, Windows launches configured startup applications.
 
@@ -1187,7 +1187,7 @@ Administrators should review startup applications to minimize boot delays and re
 
 ---
 
-# Complete Startup Sequence
+## Complete Startup Sequence
 
 ```text
 Power On
@@ -1251,7 +1251,7 @@ Desktop Ready
 
 ---
 
-# Enterprise Logon Example
+## Enterprise Logon Example
 
 ```text
 Employee
@@ -1289,7 +1289,7 @@ In domain environments, additional processing such as Group Policy application o
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Many attacks target the startup and logon sequence.
 
@@ -1312,7 +1312,7 @@ Security teams monitor:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A healthy startup process provides:
 
@@ -1326,7 +1326,7 @@ Startup failures or authentication issues can prevent employees from accessing b
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Protect LSASS using supported Windows security features.
 - Minimize unnecessary startup applications.
@@ -1338,9 +1338,9 @@ Startup failures or authentication issues can prevent employees from accessing b
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Running System Processes
+### Lab 1 — View Running System Processes
 
 1. Open **Task Manager**.
 2. Select the **Details** tab.
@@ -1358,7 +1358,7 @@ Record each process and its purpose.
 
 ---
 
-## Lab 2 — Review Startup Applications
+### Lab 2 — Review Startup Applications
 
 1. Open **Task Manager**.
 2. Select the **Startup apps** tab.
@@ -1372,7 +1372,7 @@ Discuss which applications are essential.
 
 ---
 
-## Lab 3 — Review Services
+### Lab 3 — Review Services
 
 1. Press:
 
@@ -1396,7 +1396,7 @@ Do not modify production services without authorization.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Windows Kernel initializes core operating system functionality.
 - `smss.exe` is the first user-mode process.
@@ -1408,7 +1408,7 @@ Do not modify production services without authorization.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the first user-mode process started by Windows?
 2. What is the role of `smss.exe`?
@@ -1423,7 +1423,7 @@ Do not modify production services without authorization.
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -1434,13 +1434,13 @@ Do not modify production services without authorization.
 ---
 
 
-# 04-Windows-Boot-Process.md
+## 04-Windows-Boot-Process.md
 
-# Part 3 — Boot Configuration Data (BCD), Windows Recovery Environment (WinRE), Safe Mode, Boot Troubleshooting, Startup Repair, and Advanced Boot Options
+## Part 3 — Boot Configuration Data (BCD), Windows Recovery Environment (WinRE), Safe Mode, Boot Troubleshooting, Startup Repair, and Advanced Boot Options
 
 ---
 
-# Introduction
+## Introduction
 
 Even with a well-designed boot process, systems can fail to start due to:
 
@@ -1465,7 +1465,7 @@ Understanding these tools is essential for:
 
 ---
 
-# Windows Boot Recovery Overview
+## Windows Boot Recovery Overview
 
 ```text
 Boot Failure
@@ -1493,7 +1493,7 @@ Successful Boot
 
 ---
 
-# Boot Configuration Data (BCD)
+## Boot Configuration Data (BCD)
 
 The **Boot Configuration Data (BCD)** store contains startup configuration information used by Windows Boot Manager.
 
@@ -1508,7 +1508,7 @@ It stores:
 
 ---
 
-# BCD Architecture
+## BCD Architecture
 
 ```text
 Windows Boot Manager
@@ -1534,7 +1534,7 @@ Without a valid BCD configuration, Windows cannot determine how to start the ope
 
 ---
 
-# BCD Store Components
+## BCD Store Components
 
 ```text
 BCD Store
@@ -1548,7 +1548,7 @@ BCD Store
 
 ---
 
-# Viewing the BCD
+## Viewing the BCD
 
 Open an elevated Command Prompt and run:
 
@@ -1568,7 +1568,7 @@ Example output includes:
 
 ---
 
-# Common BCDEdit Commands
+## Common BCDEdit Commands
 
 | Command | Purpose |
 |----------|---------|
@@ -1581,7 +1581,7 @@ Administrative privileges are required to use BCDEdit.
 
 ---
 
-# Windows Recovery Environment (WinRE)
+## Windows Recovery Environment (WinRE)
 
 WinRE is a dedicated recovery platform that helps repair systems that fail to boot normally.
 
@@ -1597,7 +1597,7 @@ Capabilities include:
 
 ---
 
-# Accessing WinRE
+## Accessing WinRE
 
 Common methods:
 
@@ -1625,7 +1625,7 @@ Other methods:
 
 ---
 
-# WinRE Structure
+## WinRE Structure
 
 ```text
 Windows Recovery Environment
@@ -1646,7 +1646,7 @@ Windows Recovery Environment
 
 ---
 
-# Startup Repair
+## Startup Repair
 
 Startup Repair automatically scans for common boot problems.
 
@@ -1660,7 +1660,7 @@ It can repair:
 
 ---
 
-# Startup Repair Workflow
+## Startup Repair Workflow
 
 ```text
 Boot Failure
@@ -1688,7 +1688,7 @@ Windows Boots Successfully
 
 ---
 
-# System Restore
+## System Restore
 
 System Restore reverts Windows system files and configuration to a previous restore point.
 
@@ -1703,7 +1703,7 @@ It generally does **not** remove personal documents.
 
 ---
 
-# Uninstall Updates
+## Uninstall Updates
 
 If a recent update causes startup problems, WinRE allows administrators to remove:
 
@@ -1714,7 +1714,7 @@ This helps recover systems after problematic patches.
 
 ---
 
-# Reset This PC
+## Reset This PC
 
 Reset options include:
 
@@ -1733,7 +1733,7 @@ Benefits:
 
 ---
 
-# Safe Mode
+## Safe Mode
 
 Safe Mode starts Windows using only essential drivers and services.
 
@@ -1746,7 +1746,7 @@ Purpose:
 
 ---
 
-# Safe Mode Variants
+## Safe Mode Variants
 
 | Mode | Purpose |
 |------|----------|
@@ -1756,7 +1756,7 @@ Purpose:
 
 ---
 
-# Safe Mode Startup
+## Safe Mode Startup
 
 ```text
 Windows
@@ -1778,7 +1778,7 @@ This reduced environment helps isolate software and driver issues.
 
 ---
 
-# Startup Settings
+## Startup Settings
 
 Startup Settings provides additional troubleshooting options.
 
@@ -1794,7 +1794,7 @@ These options are intended primarily for troubleshooting.
 
 ---
 
-# Boot Logging
+## Boot Logging
 
 Boot logging records loaded drivers during startup.
 
@@ -1812,7 +1812,7 @@ Administrators use boot logs to identify:
 
 ---
 
-# Advanced Boot Options
+## Advanced Boot Options
 
 Common advanced options include:
 
@@ -1830,7 +1830,7 @@ Advanced Startup
 
 ---
 
-# Command Prompt in WinRE
+## Command Prompt in WinRE
 
 Command Prompt provides advanced troubleshooting capabilities.
 
@@ -1848,7 +1848,7 @@ Common commands:
 
 ---
 
-# Bootrec Utility
+## Bootrec Utility
 
 `bootrec` repairs boot-related problems.
 
@@ -1874,7 +1874,7 @@ Typical uses:
 
 ---
 
-# Typical Boot Failure Scenarios
+## Typical Boot Failure Scenarios
 
 | Symptom | Possible Cause |
 |---------|----------------|
@@ -1887,7 +1887,7 @@ Typical uses:
 
 ---
 
-# Enterprise Recovery Workflow
+## Enterprise Recovery Workflow
 
 ```text
 User Reports Boot Failure
@@ -1923,7 +1923,7 @@ Device Returned to User
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers sometimes target startup components to gain persistence.
 
@@ -1945,7 +1945,7 @@ Security recommendations:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable recovery mechanisms help organizations:
 
@@ -1957,7 +1957,7 @@ Reliable recovery mechanisms help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Enable System Restore where organizational policy permits.
 - Maintain verified backups before major updates.
@@ -1969,9 +1969,9 @@ Reliable recovery mechanisms help organizations:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — View Boot Configuration
+### Lab 1 — View Boot Configuration
 
 Open an elevated Command Prompt.
 
@@ -1991,7 +1991,7 @@ Do not modify the configuration.
 
 ---
 
-## Lab 2 — Explore Recovery Options
+### Lab 2 — Explore Recovery Options
 
 Navigate to:
 
@@ -2017,7 +2017,7 @@ Do not initiate recovery on a production device.
 
 ---
 
-## Lab 3 — Review Boot Log Location
+### Lab 3 — Review Boot Log Location
 
 Locate the default boot log path:
 
@@ -2029,7 +2029,7 @@ If present, review the entries to understand how driver loading is recorded.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - BCD stores Windows startup configuration.
 - WinRE provides powerful recovery and troubleshooting tools.
@@ -2039,7 +2039,7 @@ If present, review the entries to understand how driver loading is recorded.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the Boot Configuration Data (BCD)?
 2. What is the purpose of BCDEdit?
@@ -2054,7 +2054,7 @@ If present, review the entries to understand how driver loading is recorded.
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -2064,13 +2064,13 @@ If present, review the entries to understand how driver loading is recorded.
 
 ---
 
-# 04-Windows-Boot-Process.md
+## 04-Windows-Boot-Process.md
 
-# Part 4 — Enterprise Boot Optimization, Startup Performance, Boot Security, Troubleshooting Methodology, Final Labs, Chapter Review, and Best Practices
+## Part 4 — Enterprise Boot Optimization, Startup Performance, Boot Security, Troubleshooting Methodology, Final Labs, Chapter Review, and Best Practices
 
 ---
 
-# Introduction
+## Introduction
 
 A successful Windows startup is not just about reaching the desktop—it is also about **performance, reliability, security, and manageability**.
 
@@ -2086,7 +2086,7 @@ This final part focuses on optimizing the Windows boot process and concludes the
 
 ---
 
-# Complete Windows Boot Sequence
+## Complete Windows Boot Sequence
 
 The following diagram summarizes the complete Windows startup process.
 
@@ -2180,7 +2180,7 @@ Desktop Ready
 
 ---
 
-# Enterprise Boot Performance
+## Enterprise Boot Performance
 
 Large organizations often deploy thousands of Windows systems.
 
@@ -2195,7 +2195,7 @@ Optimizing startup can save significant time across an enterprise.
 
 ---
 
-# Factors Affecting Boot Time
+## Factors Affecting Boot Time
 
 | Factor | Impact |
 |---------|--------|
@@ -2208,7 +2208,7 @@ Optimizing startup can save significant time across an enterprise.
 
 ---
 
-# Startup Optimization Workflow
+## Startup Optimization Workflow
 
 ```text
 Measure Boot Time
@@ -2240,7 +2240,7 @@ Retest
 
 ---
 
-# Startup Applications
+## Startup Applications
 
 Applications configured to launch automatically can increase startup time.
 
@@ -2270,7 +2270,7 @@ Administrators should review startup items periodically.
 
 ---
 
-# Managing Startup Applications
+## Managing Startup Applications
 
 Use **Task Manager**:
 
@@ -2290,7 +2290,7 @@ Only disable applications after understanding their purpose and business impact.
 
 ---
 
-# Windows Services and Boot Performance
+## Windows Services and Boot Performance
 
 Many services start automatically during boot.
 
@@ -2309,7 +2309,7 @@ Unused services should only be disabled after careful evaluation and according t
 
 ---
 
-# Driver Optimization
+## Driver Optimization
 
 Recommendations:
 
@@ -2321,7 +2321,7 @@ Recommendations:
 
 ---
 
-# Windows Updates and Boot
+## Windows Updates and Boot
 
 Operating system updates improve:
 
@@ -2348,7 +2348,7 @@ This staged approach reduces the risk of widespread issues.
 
 ---
 
-# Secure Boot Review
+## Secure Boot Review
 
 Secure Boot validates trusted boot components before Windows loads.
 
@@ -2378,7 +2378,7 @@ Benefits include protection against:
 
 ---
 
-# Trusted Platform Module (TPM)
+## Trusted Platform Module (TPM)
 
 The TPM enhances startup security by protecting cryptographic secrets.
 
@@ -2391,7 +2391,7 @@ Common uses:
 
 ---
 
-# BitLocker and Boot Protection
+## BitLocker and Boot Protection
 
 When BitLocker is enabled:
 
@@ -2419,7 +2419,7 @@ Changes to critical boot components may trigger BitLocker recovery, helping prot
 
 ---
 
-# Virtualization-Based Security (VBS)
+## Virtualization-Based Security (VBS)
 
 Modern Windows supports Virtualization-Based Security.
 
@@ -2434,7 +2434,7 @@ Organizations should enable VBS where hardware compatibility and policy permit.
 
 ---
 
-# Boot Security Layers
+## Boot Security Layers
 
 ```text
 Firmware Security
@@ -2468,7 +2468,7 @@ Security at multiple stages helps reduce the risk of compromise.
 
 ---
 
-# Enterprise Boot Monitoring
+## Enterprise Boot Monitoring
 
 Administrators commonly monitor:
 
@@ -2489,7 +2489,7 @@ Monitoring tools include:
 
 ---
 
-# Windows Event Logs
+## Windows Event Logs
 
 Relevant log categories include:
 
@@ -2504,7 +2504,7 @@ These logs provide valuable information during troubleshooting.
 
 ---
 
-# Boot Troubleshooting Methodology
+## Boot Troubleshooting Methodology
 
 A structured troubleshooting approach improves efficiency.
 
@@ -2546,7 +2546,7 @@ Document Findings
 
 ---
 
-# Common Boot Problems
+## Common Boot Problems
 
 | Problem | Possible Cause | Possible Solution |
 |----------|----------------|-------------------|
@@ -2559,7 +2559,7 @@ Document Findings
 
 ---
 
-# Enterprise Startup Checklist
+## Enterprise Startup Checklist
 
 ```text
 ☑ UEFI enabled
@@ -2578,9 +2578,9 @@ Document Findings
 
 ---
 
-# Enterprise Scenario
+## Enterprise Scenario
 
-## New Laptop Deployment
+### New Laptop Deployment
 
 ```text
 Device Received
@@ -2634,7 +2634,7 @@ This standardized workflow improves consistency, compliance, and security.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 The boot process is a common target for advanced attackers seeking persistence.
 
@@ -2658,7 +2658,7 @@ Mitigation strategies:
 
 ---
 
-# Business Impact
+## Business Impact
 
 An optimized and secure startup process provides:
 
@@ -2671,7 +2671,7 @@ An optimized and secure startup process provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Standardize firmware settings across devices.
 - Maintain approved boot images.
@@ -2683,9 +2683,9 @@ An optimized and secure startup process provides:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Measure Startup Impact
+### Lab 1 — Measure Startup Impact
 
 1. Open **Task Manager**.
 2. Navigate to **Startup apps**.
@@ -2699,7 +2699,7 @@ Identify applications with high startup impact.
 
 ---
 
-## Lab 2 — Review Event Viewer
+### Lab 2 — Review Event Viewer
 
 1. Press:
 
@@ -2721,7 +2721,7 @@ eventvwr.msc
 
 ---
 
-## Lab 3 — Create a Boot Troubleshooting Checklist
+### Lab 3 — Create a Boot Troubleshooting Checklist
 
 Design a checklist that includes:
 
@@ -2736,7 +2736,7 @@ Design a checklist that includes:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2766,7 +2766,7 @@ These concepts provide a strong foundation for understanding how Windows starts,
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows startup consists of multiple coordinated stages from firmware initialization to desktop loading.
 - UEFI, Secure Boot, TPM, and BitLocker improve startup security.
@@ -2777,7 +2777,7 @@ These concepts provide a strong foundation for understanding how Windows starts,
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Describe the complete Windows boot process.
 2. What is the role of the Windows Boot Manager?
@@ -2792,7 +2792,7 @@ These concepts provide a strong foundation for understanding how Windows starts,
 
 ---
 
-# References
+## References
 
 - *Windows Internals* (Mark Russinovich, David Solomon, Alex Ionescu)
 - Microsoft Learn
@@ -2804,7 +2804,7 @@ These concepts provide a strong foundation for understanding how Windows starts,
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 4 – Windows Boot Process**.
 

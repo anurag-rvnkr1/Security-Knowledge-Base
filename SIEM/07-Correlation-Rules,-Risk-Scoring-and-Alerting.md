@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A single event may not be enough to determine whether an attack is occurring.
 
@@ -66,7 +66,7 @@ Response
 
 ---
 
-# 2. What is Event Correlation?
+## 2. What is Event Correlation?
 
 Event correlation is the process of identifying relationships between multiple events based on:
 
@@ -106,7 +106,7 @@ Potential Account Compromise
 
 ---
 
-# 3. Why Correlation Matters
+## 3. Why Correlation Matters
 
 Attackers rarely perform only one action.
 
@@ -136,11 +136,11 @@ Correlation can reveal the broader attack chain.
 
 ---
 
-# 4. Event vs Signal vs Alert
+## 4. Event vs Signal vs Alert
 
 These terms should be distinguished.
 
-### Event
+#### Event
 
 A raw or normalized security record.
 
@@ -148,7 +148,7 @@ A raw or normalized security record.
 Successful Login
 ```
 
-### Signal / Detection Result
+#### Signal / Detection Result
 
 A security condition identified by a rule.
 
@@ -156,7 +156,7 @@ A security condition identified by a rule.
 Unusual Login Detected
 ```
 
-### Alert
+#### Alert
 
 An operational security notification requiring attention.
 
@@ -178,7 +178,7 @@ Alert
 
 ---
 
-# 5. Simple Correlation
+## 5. Simple Correlation
 
 The simplest correlation is:
 
@@ -204,7 +204,7 @@ within:
 
 ---
 
-# 6. Multi-Event Correlation
+## 6. Multi-Event Correlation
 
 More advanced:
 
@@ -226,7 +226,7 @@ Possible Account Compromise
 
 ---
 
-# 7. Correlation Dimensions
+## 7. Correlation Dimensions
 
 Events can be correlated using:
 
@@ -245,7 +245,7 @@ Same Incident
 
 ---
 
-# 8. Correlation by User
+## 8. Correlation by User
 
 Example:
 
@@ -270,7 +270,7 @@ Alice's Activity
 
 ---
 
-# 9. Correlation by Host
+## 9. Correlation by Host
 
 Example:
 
@@ -292,7 +292,7 @@ This creates a host activity timeline.
 
 ---
 
-# 10. Correlation by Source IP
+## 10. Correlation by Source IP
 
 Example:
 
@@ -314,7 +314,7 @@ This can reveal relationships across multiple systems.
 
 ---
 
-# 11. Correlation by Process
+## 11. Correlation by Process
 
 Example:
 
@@ -335,7 +335,7 @@ This is useful for endpoint investigations.
 
 ---
 
-# 12. Correlation by Session
+## 12. Correlation by Session
 
 A session identifier can connect:
 
@@ -357,7 +357,7 @@ Remote Access
 
 ---
 
-# 13. Temporal Correlation
+## 13. Temporal Correlation
 
 Temporal correlation connects events based on time.
 
@@ -382,7 +382,7 @@ All events within 5 minutes
 
 ---
 
-# 14. Time Window
+## 14. Time Window
 
 A correlation rule may specify:
 
@@ -398,9 +398,9 @@ The correct window depends on the behavior.
 
 ---
 
-# 15. Short vs Long Windows
+## 15. Short vs Long Windows
 
-### Short Window
+#### Short Window
 
 Useful for:
 
@@ -411,7 +411,7 @@ Rapid Exploitation
 Credential Abuse
 ```
 
-### Long Window
+#### Long Window
 
 Useful for:
 
@@ -424,7 +424,7 @@ Long-Term Account Abuse
 
 ---
 
-# 16. Sequence Correlation
+## 16. Sequence Correlation
 
 Sequence correlation requires events in a specific order.
 
@@ -440,9 +440,9 @@ The order matters.
 
 ---
 
-# 17. Ordered vs Unordered Correlation
+## 17. Ordered vs Unordered Correlation
 
-### Ordered
+#### Ordered
 
 ```text
 A → B → C
@@ -450,7 +450,7 @@ A → B → C
 
 must occur in that order.
 
-### Unordered
+#### Unordered
 
 ```text
 A + B + C
@@ -462,7 +462,7 @@ Use ordered correlation when attack progression is important.
 
 ---
 
-# 18. Threshold Correlation
+## 18. Threshold Correlation
 
 Example:
 
@@ -478,7 +478,7 @@ This detects a volume pattern.
 
 ---
 
-# 19. Unique Entity Correlation
+## 19. Unique Entity Correlation
 
 Example:
 
@@ -500,7 +500,7 @@ because it can identify password spraying.
 
 ---
 
-# 20. Count vs Unique Count
+## 20. Count vs Unique Count
 
 Example:
 
@@ -534,7 +534,7 @@ can be important.
 
 ---
 
-# 21. Aggregation Correlation
+## 21. Aggregation Correlation
 
 Example:
 
@@ -560,7 +560,7 @@ unique_users > 5
 
 ---
 
-# 22. Cross-Source Correlation
+## 22. Cross-Source Correlation
 
 One of the strongest SIEM capabilities is connecting multiple data sources.
 
@@ -592,7 +592,7 @@ Potential Compromise
 
 ---
 
-# 23. Cross-Layer Correlation
+## 23. Cross-Layer Correlation
 
 Example:
 
@@ -618,7 +618,7 @@ This creates a broader incident picture.
 
 ---
 
-# 24. Correlation Rule Example
+## 24. Correlation Rule Example
 
 ```text
 IF
@@ -644,7 +644,7 @@ generate high-risk signal
 
 ---
 
-# 25. Negative Conditions
+## 25. Negative Conditions
 
 Correlation can include things that should NOT happen.
 
@@ -664,7 +664,7 @@ Negative conditions require careful validation because missing telemetry can loo
 
 ---
 
-# 26. Absence-Based Detection
+## 26. Absence-Based Detection
 
 Sometimes the interesting condition is:
 
@@ -684,7 +684,7 @@ This requires confidence that MFA logs are complete.
 
 ---
 
-# 27. Sequence Example – Account Compromise
+## 27. Sequence Example – Account Compromise
 
 ```text
 Failed Login
@@ -706,7 +706,7 @@ Potential Account Takeover
 
 ---
 
-# 28. Sequence Example – Malware Execution
+## 28. Sequence Example – Malware Execution
 
 ```text
 Email Attachment
@@ -728,7 +728,7 @@ Possible Malware Execution
 
 ---
 
-# 29. Sequence Example – Lateral Movement
+## 29. Sequence Example – Lateral Movement
 
 ```text
 Compromised Host
@@ -750,7 +750,7 @@ Possible Lateral Movement
 
 ---
 
-# 30. Sequence Example – Data Exfiltration
+## 30. Sequence Example – Data Exfiltration
 
 ```text
 Unusual Login
@@ -770,7 +770,7 @@ Possible Data Exfiltration
 
 ---
 
-# 31. Correlation Across Entities
+## 31. Correlation Across Entities
 
 An attack may change:
 
@@ -799,7 +799,7 @@ The SIEM can correlate these relationships.
 
 ---
 
-# 32. Entity Graph
+## 32. Entity Graph
 
 Conceptually:
 
@@ -823,7 +823,7 @@ Graph-based investigation can reveal relationships that simple event searches ma
 
 ---
 
-# 33. Risk Scoring
+## 33. Risk Scoring
 
 Risk scoring assigns numerical values to security signals.
 
@@ -844,7 +844,7 @@ Total:
 
 ---
 
-# 34. Why Risk Scoring?
+## 34. Why Risk Scoring?
 
 A SOC may receive:
 
@@ -860,15 +860,15 @@ Which should analysts investigate first?
 
 ---
 
-# 35. Risk vs Severity
+## 35. Risk vs Severity
 
 These are not identical.
 
-### Severity
+#### Severity
 
 Potential impact of a particular alert.
 
-### Risk
+#### Risk
 
 Combined assessment of multiple factors affecting an entity or situation.
 
@@ -892,7 +892,7 @@ High overall risk
 
 ---
 
-# 36. Risk Factors
+## 36. Risk Factors
 
 Risk may consider:
 
@@ -910,7 +910,7 @@ Business Context
 
 ---
 
-# 37. Example Risk Model
+## 37. Example Risk Model
 
 ```text
 Risk =
@@ -929,7 +929,7 @@ The actual formula varies by organization.
 
 ---
 
-# 38. Risk Score Example
+## 38. Risk Score Example
 
 Suppose:
 
@@ -959,7 +959,7 @@ These thresholds are illustrative and must be tuned to the organization's enviro
 
 ---
 
-# 39. Dynamic Risk
+## 39. Dynamic Risk
 
 Risk can change over time.
 
@@ -986,7 +986,7 @@ The entity becomes increasingly suspicious.
 
 ---
 
-# 40. Entity Risk Scoring
+## 40. Entity Risk Scoring
 
 Risk can be associated with:
 
@@ -1011,7 +1011,7 @@ Risk:
 
 ---
 
-# 41. Risk Accumulation
+## 41. Risk Accumulation
 
 Multiple related signals can accumulate.
 
@@ -1027,7 +1027,7 @@ This can reduce dependence on one high-noise detection.
 
 ---
 
-# 42. Risk Decay
+## 42. Risk Decay
 
 Old risk may become less relevant over time.
 
@@ -1051,7 +1051,7 @@ Risk decay prevents old events from permanently dominating current risk.
 
 ---
 
-# 43. Why Risk Decay Matters
+## 43. Why Risk Decay Matters
 
 Without decay:
 
@@ -1073,7 +1073,7 @@ Exact decay rules depend on the platform and organization.
 
 ---
 
-# 44. Alert Generation
+## 44. Alert Generation
 
 A correlation engine may produce:
 
@@ -1091,7 +1091,7 @@ Not every signal needs to become a separate alert.
 
 ---
 
-# 45. Signal vs Alert
+## 45. Signal vs Alert
 
 Example:
 
@@ -1109,7 +1109,7 @@ This reduces noise.
 
 ---
 
-# 46. Alert Deduplication
+## 46. Alert Deduplication
 
 If the same event repeatedly triggers:
 
@@ -1140,7 +1140,7 @@ Group
 
 ---
 
-# 47. Alert Suppression
+## 47. Alert Suppression
 
 Suppression temporarily prevents repeated alerts.
 
@@ -1156,7 +1156,7 @@ Suppression must be carefully designed because excessive suppression can hide at
 
 ---
 
-# 48. Alert Grouping
+## 48. Alert Grouping
 
 Related alerts can be grouped:
 
@@ -1179,7 +1179,7 @@ Potential Account Compromise
 
 ---
 
-# 49. Alert Prioritization
+## 49. Alert Prioritization
 
 A SOC can prioritize using:
 
@@ -1195,7 +1195,7 @@ Attack Stage
 
 ---
 
-# 50. Alert Severity Matrix
+## 50. Alert Severity Matrix
 
 Conceptually:
 
@@ -1213,7 +1213,7 @@ This is illustrative rather than universal.
 
 ---
 
-# 51. Alert Context
+## 51. Alert Context
 
 A useful alert should contain:
 
@@ -1232,7 +1232,7 @@ What should the analyst investigate?
 
 ---
 
-# 52. Poor Alert
+## 52. Poor Alert
 
 ```text
 Title:
@@ -1246,7 +1246,7 @@ Not useful.
 
 ---
 
-# 53. Good Alert
+## 53. Good Alert
 
 ```text
 Title:
@@ -1286,7 +1286,7 @@ This is much more actionable.
 
 ---
 
-# 54. Alert Enrichment
+## 54. Alert Enrichment
 
 Useful enrichment:
 
@@ -1304,7 +1304,7 @@ Related Users
 
 ---
 
-# 55. Alert Routing
+## 55. Alert Routing
 
 Different alerts can be routed differently.
 
@@ -1328,7 +1328,7 @@ Dashboard / Review
 
 ---
 
-# 56. Escalation
+## 56. Escalation
 
 Escalation can be based on:
 
@@ -1343,7 +1343,7 @@ Business Impact
 
 ---
 
-# 57. Alert Ownership
+## 57. Alert Ownership
 
 Every important alert should have a clear workflow:
 
@@ -1361,7 +1361,7 @@ Resolved
 
 ---
 
-# 58. Alert SLA
+## 58. Alert SLA
 
 Organizations may define response targets.
 
@@ -1385,7 +1385,7 @@ Actual SLAs depend on organizational requirements.
 
 ---
 
-# 59. Alert Lifecycle
+## 59. Alert Lifecycle
 
 ```text
 NEW
@@ -1405,7 +1405,7 @@ CLOSED
 
 ---
 
-# 60. False Positive Management
+## 60. False Positive Management
 
 When an alert is benign:
 
@@ -1423,7 +1423,7 @@ Avoid immediately suppressing the alert without understanding why it fired.
 
 ---
 
-# 61. Alert Fatigue
+## 61. Alert Fatigue
 
 Alert fatigue occurs when analysts receive too many low-value alerts.
 
@@ -1438,7 +1438,7 @@ Analyst Burnout
 
 ---
 
-# 62. Reducing Alert Fatigue
+## 62. Reducing Alert Fatigue
 
 Use:
 
@@ -1455,7 +1455,7 @@ Prioritization
 
 ---
 
-# 63. Correlation and Alert Fatigue
+## 63. Correlation and Alert Fatigue
 
 Without correlation:
 
@@ -1488,7 +1488,7 @@ Possible Account Compromise
 
 ---
 
-# 64. Alert Storms
+## 64. Alert Storms
 
 An alert storm occurs when an abnormal condition causes huge alert volumes.
 
@@ -1506,7 +1506,7 @@ This can overwhelm the SOC.
 
 ---
 
-# 65. Alert Storm Protection
+## 65. Alert Storm Protection
 
 Use:
 
@@ -1524,7 +1524,7 @@ But ensure critical signals remain visible.
 
 ---
 
-# 66. Circuit Breaker Concept
+## 66. Circuit Breaker Concept
 
 If alert volume becomes extreme:
 
@@ -1548,7 +1548,7 @@ while preserving evidence and high-priority signals.
 
 ---
 
-# 67. Correlation Rule Dependencies
+## 67. Correlation Rule Dependencies
 
 A correlation rule may depend on:
 
@@ -1568,7 +1568,7 @@ Correlation confidence ↓
 
 ---
 
-# 68. Data Completeness
+## 68. Data Completeness
 
 Correlation assumes data is available.
 
@@ -1600,7 +1600,7 @@ MFA telemetry unavailable.
 
 ---
 
-# 69. Correlation Pitfalls
+## 69. Correlation Pitfalls
 
 Common problems:
 
@@ -1617,7 +1617,7 @@ High Computational Cost
 
 ---
 
-# 70. Entity Resolution
+## 70. Entity Resolution
 
 Suppose:
 
@@ -1639,7 +1639,7 @@ Therefore identity normalization is critical.
 
 ---
 
-# 71. Correlation and Clock Synchronization
+## 71. Correlation and Clock Synchronization
 
 Example:
 
@@ -1665,7 +1665,7 @@ where appropriate.
 
 ---
 
-# 72. Sliding Window Correlation
+## 72. Sliding Window Correlation
 
 Example:
 
@@ -1690,7 +1690,7 @@ Rate-Based Attacks
 
 ---
 
-# 73. Tumbling Window
+## 73. Tumbling Window
 
 A tumbling window divides time into fixed non-overlapping intervals.
 
@@ -1706,9 +1706,9 @@ Each event belongs to one window.
 
 ---
 
-# 74. Sliding vs Tumbling
+## 74. Sliding vs Tumbling
 
-### Sliding
+#### Sliding
 
 ```text
 10:00–10:05
@@ -1716,7 +1716,7 @@ Each event belongs to one window.
 10:02–10:07
 ```
 
-### Tumbling
+#### Tumbling
 
 ```text
 10:00–10:05
@@ -1728,7 +1728,7 @@ Sliding windows provide more continuous analysis but can require more processing
 
 ---
 
-# 75. Sequence with Time Constraints
+## 75. Sequence with Time Constraints
 
 Example:
 
@@ -1754,7 +1754,7 @@ Login
 
 ---
 
-# 76. Correlation Example – Brute Force
+## 76. Correlation Example – Brute Force
 
 ```text
 Authentication Failures
@@ -1772,7 +1772,7 @@ Alert
 
 ---
 
-# 77. Correlation Example – Password Spraying
+## 77. Correlation Example – Password Spraying
 
 ```text
 Authentication Failures
@@ -1790,7 +1790,7 @@ Alert
 
 ---
 
-# 78. Correlation Example – Account Takeover
+## 78. Correlation Example – Account Takeover
 
 ```text
 Unusual Login
@@ -1810,7 +1810,7 @@ High Risk
 
 ---
 
-# 79. Correlation Example – Endpoint Compromise
+## 79. Correlation Example – Endpoint Compromise
 
 ```text
 Office Process
@@ -1830,7 +1830,7 @@ Possible Malware Execution
 
 ---
 
-# 80. Correlation Example – Lateral Movement
+## 80. Correlation Example – Lateral Movement
 
 ```text
 Credential Use
@@ -1850,7 +1850,7 @@ Possible Lateral Movement
 
 ---
 
-# 81. Correlation Example – Exfiltration
+## 81. Correlation Example – Exfiltration
 
 ```text
 Sensitive File Access
@@ -1870,7 +1870,7 @@ Possible Exfiltration
 
 ---
 
-# 82. Risk Scoring Example
+## 82. Risk Scoring Example
 
 ```text
 Detection:
@@ -1903,7 +1903,7 @@ Again, thresholds are organization-specific.
 
 ---
 
-# 83. Risk Aggregation
+## 83. Risk Aggregation
 
 Risk can be calculated:
 
@@ -1920,7 +1920,7 @@ Entity-level scoring is particularly useful for identifying accounts or systems 
 
 ---
 
-# 84. Risk Normalization
+## 84. Risk Normalization
 
 Different detections may produce different scores.
 
@@ -1942,7 +1942,7 @@ This makes prioritization easier.
 
 ---
 
-# 85. Risk Explainability
+## 85. Risk Explainability
 
 Analysts should understand:
 
@@ -1969,7 +1969,7 @@ without explanation.
 
 ---
 
-# 86. Risk Score Manipulation
+## 86. Risk Score Manipulation
 
 Attackers may attempt to:
 
@@ -1984,7 +1984,7 @@ Risk scoring should therefore not become the only detection mechanism.
 
 ---
 
-# 87. Correlation Rule Maintenance
+## 87. Correlation Rule Maintenance
 
 Review:
 
@@ -2000,7 +2000,7 @@ Threat Relevance
 
 ---
 
-# 88. Correlation Performance
+## 88. Correlation Performance
 
 Complex correlation across:
 
@@ -2025,7 +2025,7 @@ Using Efficient Indexes
 
 ---
 
-# 89. Alert Enrichment Workflow
+## 89. Alert Enrichment Workflow
 
 ```text
 Detection
@@ -2049,7 +2049,7 @@ This creates an analyst-ready alert.
 
 ---
 
-# 90. Alert Quality
+## 90. Alert Quality
 
 A high-quality alert should be:
 
@@ -2064,7 +2064,7 @@ Traceable
 
 ---
 
-# 91. Alert Quality Questions
+## 91. Alert Quality Questions
 
 Ask:
 
@@ -2084,7 +2084,7 @@ Does it suggest investigation steps?
 
 ---
 
-# 92. Alert vs Incident
+## 92. Alert vs Incident
 
 Not every alert is an incident.
 
@@ -2123,7 +2123,7 @@ Potential Incident
 
 ---
 
-# 93. Alert-to-Incident Promotion
+## 93. Alert-to-Incident Promotion
 
 Conceptually:
 
@@ -2141,7 +2141,7 @@ Incident
 
 ---
 
-# 94. Correlation and MITRE ATT&CK
+## 94. Correlation and MITRE ATT&CK
 
 Correlation can connect behaviors across attack techniques.
 
@@ -2168,7 +2168,7 @@ MITRE ATT&CK & Threat-Based Detection
 
 ---
 
-# 95. Correlation Rule Documentation
+## 95. Correlation Rule Documentation
 
 Document:
 
@@ -2192,7 +2192,7 @@ Version
 
 ---
 
-# 96. Practical Lab
+## 96. Practical Lab
 
 Create a correlation rule:
 
@@ -2227,7 +2227,7 @@ Possible Account Compromise
 
 ---
 
-# 97. Practical Risk Exercise
+## 97. Practical Risk Exercise
 
 Create these signals:
 
@@ -2248,7 +2248,7 @@ Then determine the alert priority using your organization's defined thresholds.
 
 ---
 
-# 98. Practical Alert Grouping Exercise
+## 98. Practical Alert Grouping Exercise
 
 Generate:
 
@@ -2276,7 +2276,7 @@ even though duplicate notifications are reduced.
 
 ---
 
-# 99. Practical Investigation Exercise
+## 99. Practical Investigation Exercise
 
 Create:
 
@@ -2311,87 +2311,87 @@ Alert
 
 ---
 
-# 100. Interview Questions
+## 100. Interview Questions
 
-### What is event correlation?
+#### What is event correlation?
 
 > Connecting multiple related events using attributes such as time, user, host, IP, process, or sequence to identify higher-level security behavior.
 
-### Why is correlation useful?
+#### Why is correlation useful?
 
 > It provides context and can identify attacks that individual events cannot reliably reveal.
 
-### What is temporal correlation?
+#### What is temporal correlation?
 
 > Correlating events that occur within a defined time window.
 
-### What is sequence correlation?
+#### What is sequence correlation?
 
 > Detecting events occurring in a meaningful order.
 
-### What is threshold correlation?
+#### What is threshold correlation?
 
 > Triggering when an event count or metric crosses a defined threshold within a time window.
 
-### What is risk scoring?
+#### What is risk scoring?
 
 > Assigning a numerical or categorical risk value based on security signals and contextual factors.
 
-### What is the difference between severity and risk?
+#### What is the difference between severity and risk?
 
 > Severity describes the potential impact or urgency of an alert, while risk can combine multiple signals and contextual factors to represent overall concern.
 
-### What is alert deduplication?
+#### What is alert deduplication?
 
 > Combining or suppressing duplicate alerts representing the same underlying activity.
 
-### What is alert suppression?
+#### What is alert suppression?
 
 > Temporarily preventing repeated notifications that meet defined suppression conditions.
 
-### What is alert grouping?
+#### What is alert grouping?
 
 > Combining related signals or alerts into a higher-level investigation unit.
 
-### What is alert fatigue?
+#### What is alert fatigue?
 
 > Analyst overload caused by excessive low-value or repetitive alerts.
 
-### How do you reduce alert fatigue?
+#### How do you reduce alert fatigue?
 
 > Improve detection precision, correlate related events, enrich alerts, deduplicate, group, suppress carefully, and prioritize by risk.
 
-### What is a sliding window?
+#### What is a sliding window?
 
 > A continuously moving time interval used to evaluate recent events.
 
-### What is a tumbling window?
+#### What is a tumbling window?
 
 > A set of fixed, non-overlapping time intervals used for aggregation.
 
-### What is risk accumulation?
+#### What is risk accumulation?
 
 > Increasing an entity's risk based on multiple related security signals.
 
-### What is risk decay?
+#### What is risk decay?
 
 > Gradually reducing the influence of older risk signals over time.
 
-### Why should risk scoring be explainable?
+#### Why should risk scoring be explainable?
 
 > Analysts need to understand why an entity received its score so they can validate and investigate it efficiently.
 
-### What is an alert storm?
+#### What is an alert storm?
 
 > A sudden, extremely high volume of alerts that can overwhelm SOC operations.
 
-### What is the difference between an alert and an incident?
+#### What is the difference between an alert and an incident?
 
 > An alert is a security signal requiring evaluation; an incident is a confirmed or strongly suspected security event requiring formal response.
 
 ---
 
-# 101. Quick Revision
+## 101. Quick Revision
 
 ```text
 CORRELATION
@@ -2445,7 +2445,7 @@ ALERT STORM
 
 ---
 
-# 102. Golden Rules
+## 102. Golden Rules
 
 ```text
 1. A single event rarely tells the whole story.
@@ -2491,7 +2491,7 @@ ALERT STORM
 
 ---
 
-# 103. Final Mental Model
+## 103. Final Mental Model
 
 Think of SIEM correlation as:
 
@@ -2530,7 +2530,7 @@ Think of SIEM correlation as:
 
 ---
 
-# 104. Chapter Summary
+## 104. Chapter Summary
 
 Correlation, risk scoring, and alerting transform individual security signals into actionable SOC intelligence.
 

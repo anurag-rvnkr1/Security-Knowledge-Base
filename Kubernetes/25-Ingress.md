@@ -59,7 +59,7 @@ One public IP can serve many applications.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -76,7 +76,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need Ingress?
+## Why Do We Need Ingress?
 
 Without Ingress:
 
@@ -125,7 +125,7 @@ Problems:
 
 ---
 
-# Better Solution
+## Better Solution
 
 ```
 Internet
@@ -153,7 +153,7 @@ Multiple applications.
 
 ---
 
-# What is Ingress?
+## What is Ingress?
 
 Ingress is a Kubernetes API resource that defines **HTTP and HTTPS routing rules**.
 
@@ -173,7 +173,7 @@ The actual traffic is handled by an **Ingress Controller**.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                    Internet
@@ -209,7 +209,7 @@ The actual traffic is handled by an **Ingress Controller**.
 
 ---
 
-# Ingress Characteristics
+## Ingress Characteristics
 
 - Layer 7 (HTTP/HTTPS)
 - Host-based routing
@@ -221,7 +221,7 @@ The actual traffic is handled by an **Ingress Controller**.
 
 ---
 
-# Ingress vs Service
+## Ingress vs Service
 
 | Ingress | Service |
 |----------|----------|
@@ -232,7 +232,7 @@ The actual traffic is handled by an **Ingress Controller**.
 
 ---
 
-# Ingress Workflow
+## Ingress Workflow
 
 ```
 Client
@@ -256,7 +256,7 @@ Pods
 
 ---
 
-# Host-Based Routing
+## Host-Based Routing
 
 Example:
 
@@ -288,7 +288,7 @@ Each hostname routes to a different Service.
 
 ---
 
-# Path-Based Routing
+## Path-Based Routing
 
 Example:
 
@@ -322,7 +322,7 @@ Multiple applications.
 
 ---
 
-# Host + Path Routing
+## Host + Path Routing
 
 ```
 api.company.com/users
@@ -350,7 +350,7 @@ Shop Service
 
 ---
 
-# Example Ingress YAML
+## Example Ingress YAML
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -388,7 +388,7 @@ spec:
 
 ---
 
-# YAML Breakdown
+## YAML Breakdown
 
 ```
 Ingress
@@ -412,11 +412,11 @@ Backend Service
 
 ---
 
-# Path Types
+## Path Types
 
 Kubernetes supports:
 
-### Prefix
+#### Prefix
 
 ```
 /api
@@ -432,7 +432,7 @@ Matches everything starting with `/api`.
 
 ---
 
-### Exact
+#### Exact
 
 ```
 /login
@@ -452,13 +452,13 @@ Not:
 
 ---
 
-### ImplementationSpecific
+#### ImplementationSpecific
 
 Behavior depends on the Ingress Controller implementation.
 
 ---
 
-# Default Backend
+## Default Backend
 
 Suppose:
 
@@ -486,7 +486,7 @@ Typically returns:
 
 ---
 
-# TLS Termination
+## TLS Termination
 
 Without TLS:
 
@@ -528,7 +528,7 @@ The Ingress Controller decrypts HTTPS traffic before forwarding it.
 
 ---
 
-# TLS Secret
+## TLS Secret
 
 Certificates are stored as Kubernetes Secrets.
 
@@ -546,7 +546,7 @@ tls:
 
 ---
 
-# Multiple Domains
+## Multiple Domains
 
 Example:
 
@@ -578,7 +578,7 @@ One Ingress resource can manage multiple hosts.
 
 ---
 
-# Reverse Proxy
+## Reverse Proxy
 
 Ingress functions as a reverse proxy.
 
@@ -598,7 +598,7 @@ The client never communicates directly with Pods.
 
 ---
 
-# Load Balancing
+## Load Balancing
 
 Suppose:
 
@@ -614,7 +614,7 @@ Ingress forwards traffic to the Service, and the Service distributes traffic acr
 
 ---
 
-# Authentication
+## Authentication
 
 Many Ingress Controllers support:
 
@@ -627,7 +627,7 @@ through controller-specific configuration.
 
 ---
 
-# URL Rewrite
+## URL Rewrite
 
 Example:
 
@@ -647,7 +647,7 @@ before forwarding it to the backend.
 
 ---
 
-# Rate Limiting
+## Rate Limiting
 
 Ingress Controllers commonly support:
 
@@ -659,7 +659,7 @@ to protect applications.
 
 ---
 
-# Viewing Ingress
+## Viewing Ingress
 
 ```bash
 kubectl get ingress
@@ -677,7 +677,7 @@ ADDRESS
 
 ---
 
-# Describe Ingress
+## Describe Ingress
 
 ```bash
 kubectl describe ingress web-ingress
@@ -693,7 +693,7 @@ Displays:
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -721,7 +721,7 @@ kubectl delete ingress web-ingress
 
 ---
 
-# Ingress Architecture Summary
+## Ingress Architecture Summary
 
 ```
 Internet
@@ -745,33 +745,33 @@ Pods
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use One Ingress for Related Applications
+#### 1. Use One Ingress for Related Applications
 
 Group related HTTP/HTTPS routes into a single Ingress when appropriate.
 
 ---
 
-### 2. Always Enable HTTPS
+#### 2. Always Enable HTTPS
 
 Protect traffic using TLS certificates.
 
 ---
 
-### 3. Use Host-Based Routing
+#### 3. Use Host-Based Routing
 
 Separate applications by hostname whenever possible.
 
 ---
 
-### 4. Keep Rules Organized
+#### 4. Keep Rules Organized
 
 Avoid large, difficult-to-maintain Ingress definitions.
 
 ---
 
-### 5. Use an Ingress Controller Designed for Production
+#### 5. Use an Ingress Controller Designed for Production
 
 Examples include:
 
@@ -783,9 +783,9 @@ Examples include:
 
 ---
 
-# How Ingress Works Internally
+## How Ingress Works Internally
 
-## Overview
+### Overview
 
 Many beginners think that an **Ingress** itself receives network traffic.
 
@@ -806,7 +806,7 @@ Instead, an **Ingress Controller** continuously watches the Kubernetes API Serve
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                     Internet
@@ -852,7 +852,7 @@ Instead, an **Ingress Controller** continuously watches the Kubernetes API Serve
 
 ---
 
-# Complete Internal Workflow
+## Complete Internal Workflow
 
 ```
 Developer
@@ -892,7 +892,7 @@ Backend Service
 
 ---
 
-# Step 1 – Create Ingress
+## Step 1 – Create Ingress
 
 Example:
 
@@ -908,7 +908,7 @@ kubectl apply -f ingress.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -939,7 +939,7 @@ because an Ingress Controller is required.
 
 ---
 
-# Step 3 – Ingress Controller Watches API
+## Step 3 – Ingress Controller Watches API
 
 The Ingress Controller continuously watches:
 
@@ -965,7 +965,7 @@ Reload Configuration
 
 ---
 
-# Step 4 – Generate Reverse Proxy Configuration
+## Step 4 – Generate Reverse Proxy Configuration
 
 Suppose:
 
@@ -997,7 +997,7 @@ For an NGINX Ingress Controller, this becomes an NGINX configuration file.
 
 ---
 
-# Step 5 – Public Endpoint
+## Step 5 – Public Endpoint
 
 The Ingress Controller itself is usually exposed through:
 
@@ -1023,7 +1023,7 @@ Ingress Controller
 
 ---
 
-# Step 6 – HTTP Request
+## Step 6 – HTTP Request
 
 Suppose:
 
@@ -1039,7 +1039,7 @@ Ingress Controller
 
 ---
 
-# Step 7 – Host Matching
+## Step 7 – Host Matching
 
 Ingress Controller checks:
 
@@ -1065,7 +1065,7 @@ Default Backend
 
 ---
 
-# Step 8 – Path Matching
+## Step 8 – Path Matching
 
 Request:
 
@@ -1099,7 +1099,7 @@ Backend Service
 
 ---
 
-# Step 9 – Service Lookup
+## Step 9 – Service Lookup
 
 Ingress forwards traffic to:
 
@@ -1115,7 +1115,7 @@ The Service abstracts the backend Pods.
 
 ---
 
-# Step 10 – EndpointSlice
+## Step 10 – EndpointSlice
 
 The Service resolves to:
 
@@ -1133,7 +1133,7 @@ One healthy Pod is selected.
 
 ---
 
-# Step 11 – Backend Pod
+## Step 11 – Backend Pod
 
 Traffic reaches:
 
@@ -1161,7 +1161,7 @@ Client
 
 ---
 
-# Complete Packet Flow
+## Complete Packet Flow
 
 ```
 Internet
@@ -1197,7 +1197,7 @@ Application
 
 ---
 
-# Host-Based Routing Example
+## Host-Based Routing Example
 
 ```
 shop.example.com
@@ -1227,7 +1227,7 @@ Each hostname maps to a different backend.
 
 ---
 
-# Path-Based Routing Example
+## Path-Based Routing Example
 
 ```
 /
@@ -1257,7 +1257,7 @@ One domain can expose multiple applications.
 
 ---
 
-# TLS Handshake
+## TLS Handshake
 
 Client:
 
@@ -1926,7 +1926,6 @@ Backend Pods
 ↓
 
 Application Response
-```
 
 An **Ingress** provides **declarative Layer 7 routing rules**, while an **Ingress Controller** enforces those rules by acting as a reverse proxy. Together with **Services**, **EndpointSlices**, and **TLS termination**, Ingress enables scalable, secure, and cost-effective exposure of multiple applications through a single external entry point.
 

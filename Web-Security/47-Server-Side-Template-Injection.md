@@ -1,12 +1,12 @@
 # 47-Server-Side-Template-Injection.md
 
-# Part 1 — Introduction to Server-Side Template Injection (SSTI), Template Engines, Rendering Pipelines, and Secure Template Design
+## Part 1 — Introduction to Server-Side Template Injection (SSTI), Template Engines, Rendering Pipelines, and Secure Template Design
 
 > **"Server-Side Template Injection (SSTI) is a server-side application security issue that can arise when untrusted input influences template rendering without appropriate validation or separation. Secure applications separate data from template logic, use trusted templates, and enforce strict rendering policies."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Server-Side Template Injection?
+## What is Server-Side Template Injection?
 
 Server-Side Template Injection (SSTI) is a **server-side template rendering issue** that occurs when application logic allows untrusted input to influence how server-side templates are interpreted.
 
@@ -48,7 +48,7 @@ Secure applications ensure that user-supplied data is treated as **data**, not a
 
 ---
 
-# Why Template Engines Exist
+## Why Template Engines Exist
 
 Template engines help developers generate dynamic content efficiently.
 
@@ -78,7 +78,7 @@ Templates separate presentation from application logic.
 
 ---
 
-# What is a Template?
+## What is a Template?
 
 A template is a predefined structure used to generate dynamic output.
 
@@ -100,7 +100,7 @@ The template defines presentation while application data supplies the values.
 
 ---
 
-# Server-Side Rendering
+## Server-Side Rendering
 
 In server-side rendering, the server prepares the final content before sending it to the client.
 
@@ -128,7 +128,7 @@ The browser receives already-rendered content.
 
 ---
 
-# Rendering Lifecycle
+## Rendering Lifecycle
 
 ```
 Request
@@ -158,7 +158,7 @@ Rendering should always occur using trusted templates.
 
 ---
 
-# Template Engine Overview
+## Template Engine Overview
 
 Template engines provide features such as:
 
@@ -186,7 +186,7 @@ Applications should use these features within well-defined security boundaries.
 
 ---
 
-# Data vs Template Logic
+## Data vs Template Logic
 
 A secure design separates template logic from user-controlled data.
 
@@ -210,7 +210,7 @@ The template itself should remain under application control.
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 External Input
@@ -232,7 +232,7 @@ External input should never become trusted template code.
 
 ---
 
-# Sources of Rendering Data
+## Sources of Rendering Data
 
 ```
 Application Data
@@ -258,7 +258,7 @@ Every external source should be validated before being used during rendering.
 
 ---
 
-# Secure Rendering Workflow
+## Secure Rendering Workflow
 
 ```
 Incoming Request
@@ -288,7 +288,7 @@ Trusted templates and validated data should remain separate throughout processin
 
 ---
 
-# Enterprise Rendering Architecture
+## Enterprise Rendering Architecture
 
 ```
 Client
@@ -318,7 +318,7 @@ Rendering should occur only after application validation and authorization.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Template security should complement broader application security controls.
 
@@ -350,7 +350,7 @@ Multiple layers reduce dependence on any single safeguard.
 
 ---
 
-# Secure Template Design Principles
+## Secure Template Design Principles
 
 ```
 Secure Template Design
@@ -378,7 +378,7 @@ Templates should remain predictable and centrally managed.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational e-commerce platform renders order confirmations, invoices, and customer dashboards.
 
@@ -406,7 +406,7 @@ Customer information is validated before rendering, while templates remain centr
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 Rendering Pipeline
@@ -432,7 +432,7 @@ Every component contributes to secure rendering.
 
 ---
 
-# Secure Rendering Goals
+## Secure Rendering Goals
 
 Applications should provide:
 
@@ -445,7 +445,7 @@ Applications should provide:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the rendering pipeline of a web application.
 2. Identify where templates are stored.
@@ -457,7 +457,7 @@ Applications should provide:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Server-Side Template Injection?
 2. Why do applications use template engines?
@@ -472,7 +472,7 @@ Applications should provide:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat all external rendering data as untrusted.
 - Keep templates under application control.
@@ -485,7 +485,7 @@ Applications should provide:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Mixing user-controlled data with template logic.
 - Allowing templates to be modified through untrusted input.
@@ -496,7 +496,7 @@ Applications should provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - SSTI is fundamentally a template rendering and trust-boundary issue.
 - Templates define presentation, while application data supplies values.
@@ -504,15 +504,15 @@ Applications should provide:
 - Secure rendering relies on validation, centralized template management, and predictable workflows.
 - Enterprise governance, monitoring, and standardized rendering practices improve application resilience.
 
-# 47-Server-Side-Template-Injection.md
+## 47-Server-Side-Template-Injection.md
 
-# Part 2 — Template Rendering Lifecycle, Context Management, Escaping, Auto-Escaping, Enterprise Rendering Architecture, and Secure Template Configuration
+## Part 2 — Template Rendering Lifecycle, Context Management, Escaping, Auto-Escaping, Enterprise Rendering Architecture, and Secure Template Configuration
 
 > **"Secure server-side rendering depends on trusted templates, validated data, contextual output encoding, predictable rendering behavior, and centralized governance throughout the rendering pipeline."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -531,7 +531,7 @@ After completing this part, you will understand:
 
 ---
 
-# Template Rendering Lifecycle
+## Template Rendering Lifecycle
 
 Every rendering request follows a structured lifecycle.
 
@@ -567,7 +567,7 @@ Each stage should preserve the separation between trusted templates and validate
 
 ---
 
-# Enterprise Rendering Flow
+## Enterprise Rendering Flow
 
 ```
 Client
@@ -601,7 +601,7 @@ Rendering should occur only after required business and security validations hav
 
 ---
 
-# Rendering Context
+## Rendering Context
 
 A rendering context contains the application data supplied to a template.
 
@@ -629,7 +629,7 @@ The rendering context should contain only the information required to generate t
 
 ---
 
-# Context Separation
+## Context Separation
 
 Applications should separate:
 
@@ -657,7 +657,7 @@ Both should remain independently controlled.
 
 ---
 
-# Variable Resolution
+## Variable Resolution
 
 During rendering, variables are resolved using values supplied by the application.
 
@@ -685,7 +685,7 @@ Variable resolution should follow documented application behavior.
 
 ---
 
-# Template Compilation
+## Template Compilation
 
 Many template engines internally compile templates before rendering.
 
@@ -715,7 +715,7 @@ Compilation improves efficiency while preserving predictable rendering behavior.
 
 ---
 
-# Template Caching
+## Template Caching
 
 Enterprise applications frequently cache compiled templates.
 
@@ -743,7 +743,7 @@ Caching improves scalability while reducing rendering overhead.
 
 ---
 
-# Rendering Configuration
+## Rendering Configuration
 
 Rendering behavior should be centrally configured.
 
@@ -771,7 +771,7 @@ Configuration should be version controlled and consistently deployed.
 
 ---
 
-# Auto-Escaping
+## Auto-Escaping
 
 Many template engines provide automatic escaping capabilities.
 
@@ -797,7 +797,7 @@ Auto-escaping helps reduce rendering-related security risks by treating data as 
 
 ---
 
-# Output Encoding
+## Output Encoding
 
 Output encoding depends on where rendered content will appear.
 
@@ -817,7 +817,7 @@ Different output contexts require different encoding strategies.
 
 ---
 
-# Common Rendering Contexts
+## Common Rendering Contexts
 
 ```
 Rendering Contexts
@@ -843,7 +843,7 @@ Applications should apply encoding appropriate to each rendering context.
 
 ---
 
-# Trusted Templates
+## Trusted Templates
 
 Templates should originate only from trusted application resources.
 
@@ -867,7 +867,7 @@ Template changes should follow established development and review processes.
 
 ---
 
-# Dynamic Data Flow
+## Dynamic Data Flow
 
 ```
 External Data
@@ -897,7 +897,7 @@ Only validated information should enter the rendering context.
 
 ---
 
-# Secure Template Configuration
+## Secure Template Configuration
 
 ```
 Template Security
@@ -925,7 +925,7 @@ Configuration should be standardized across environments.
 
 ---
 
-# Enterprise Rendering Architecture
+## Enterprise Rendering Architecture
 
 ```
 Internet
@@ -963,7 +963,7 @@ Each layer contributes to secure and reliable content delivery.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Authentication
@@ -997,7 +997,7 @@ Multiple controls collectively strengthen rendering security.
 
 ---
 
-# Logging
+## Logging
 
 Rendering-related operational events should be logged.
 
@@ -1021,7 +1021,7 @@ Logs assist troubleshooting, governance, and operational analysis.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1037,7 +1037,7 @@ Sensitive application or customer information should be masked or omitted where 
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -1063,7 +1063,7 @@ Continuous monitoring verifies rendering consistency after deployments.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1077,7 +1077,7 @@ Continuous monitoring verifies rendering consistency after deployments.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider generates appointment summaries, patient dashboards, physician portals, and administrative reports.
 
@@ -1109,7 +1109,7 @@ Templates are maintained in a centralized repository, auto-escaping is enabled b
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1122,7 +1122,7 @@ Templates are maintained in a centralized repository, auto-escaping is enabled b
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the complete server-side rendering lifecycle.
 2. Identify where rendering contexts are created.
@@ -1134,7 +1134,7 @@ Templates are maintained in a centralized repository, auto-escaping is enabled b
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a rendering context?
 2. Why should templates remain trusted?
@@ -1149,7 +1149,7 @@ Templates are maintained in a centralized repository, auto-escaping is enabled b
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain templates in trusted, version-controlled repositories.
 - Separate template logic from application data.
@@ -1162,7 +1162,7 @@ Templates are maintained in a centralized repository, auto-escaping is enabled b
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Mixing application logic directly into templates.
 - Allowing inconsistent rendering configurations.
@@ -1174,7 +1174,7 @@ Templates are maintained in a centralized repository, auto-escaping is enabled b
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure rendering depends on separating trusted templates from validated data.
 - Rendering contexts should contain only approved application information.
@@ -1182,15 +1182,15 @@ Templates are maintained in a centralized repository, auto-escaping is enabled b
 - Auto-escaping and context-aware output encoding strengthen rendering safety.
 - Enterprise governance, monitoring, and standardized rendering practices improve reliability and resilience.
 
-# 47-Server-Side-Template-Injection.md
+## 47-Server-Side-Template-Injection.md
 
-# Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, DevSecOps, Monitoring, and Enterprise Defense
+## Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, DevSecOps, Monitoring, and Enterprise Defense
 
 > **"Preventing Server-Side Template Injection requires trusted template management, secure rendering architecture, rigorous input validation, contextual output encoding, continuous testing, and centralized governance throughout the software development lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1208,7 +1208,7 @@ After completing this part, you will understand:
 
 ---
 
-# Detecting SSTI Risks
+## Detecting SSTI Risks
 
 Organizations should periodically review every component involved in template rendering.
 
@@ -1236,7 +1236,7 @@ The objective is to ensure that application-controlled templates remain separate
 
 ---
 
-# Rendering Security Review
+## Rendering Security Review
 
 Every rendering workflow should be reviewed.
 
@@ -1268,7 +1268,7 @@ Reviews should verify that rendering behavior follows documented application pol
 
 ---
 
-# Template Inventory
+## Template Inventory
 
 Maintain an inventory of every template used by the application.
 
@@ -1298,7 +1298,7 @@ A complete inventory simplifies governance and maintenance.
 
 ---
 
-# Rendering Component Inventory
+## Rendering Component Inventory
 
 Document every rendering-related component.
 
@@ -1328,7 +1328,7 @@ Clear documentation supports architecture reviews and operational readiness.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Rendering configuration should remain consistent across environments.
 
@@ -1356,7 +1356,7 @@ Consistency minimizes unexpected rendering behavior.
 
 ---
 
-# Architecture Review
+## Architecture Review
 
 Architecture reviews should evaluate:
 
@@ -1387,7 +1387,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies where rendering decisions influence business processes.
 
@@ -1415,7 +1415,7 @@ The goal is to identify trust boundaries and ensure rendering decisions rely on 
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 Security architects should ask:
 
@@ -1442,7 +1442,7 @@ Security Controls
 
 ---
 
-# Secure Rendering Validation
+## Secure Rendering Validation
 
 Applications should verify rendering behavior against documented requirements.
 
@@ -1470,7 +1470,7 @@ Testing should focus on predictable rendering and policy compliance.
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1498,7 +1498,7 @@ Each testing phase contributes to secure template rendering.
 
 ---
 
-# Template Lifecycle Review
+## Template Lifecycle Review
 
 Organizations should periodically review the lifecycle of templates.
 
@@ -1534,7 +1534,7 @@ A managed lifecycle improves security and maintainability.
 
 ---
 
-# Template Governance Review
+## Template Governance Review
 
 Reviews should evaluate:
 
@@ -1564,7 +1564,7 @@ Formal governance ensures consistency across large engineering teams.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 Template security should be integrated throughout software development.
 
@@ -1600,7 +1600,7 @@ Security activities should occur throughout the development lifecycle.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -1634,7 +1634,7 @@ Automated validation improves deployment reliability.
 
 ---
 
-# Change Management
+## Change Management
 
 Template-related changes should follow controlled governance.
 
@@ -1666,7 +1666,7 @@ Controlled changes improve traceability and reduce operational risk.
 
 ---
 
-# Logging
+## Logging
 
 Applications should record rendering-related operational events.
 
@@ -1690,7 +1690,7 @@ Logs support troubleshooting, governance, and investigations.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1707,7 +1707,7 @@ Sensitive customer or business information should be masked or omitted where app
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1733,7 +1733,7 @@ Continuous monitoring confirms rendering reliability after releases.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1747,7 +1747,7 @@ Continuous monitoring confirms rendering reliability after releases.
 
 ---
 
-# Governance
+## Governance
 
 Organizations should establish centralized standards for template rendering.
 
@@ -1777,7 +1777,7 @@ Governance improves consistency across applications and engineering teams.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1815,7 +1815,7 @@ Each layer contributes to predictable and secure rendering.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial services organization generates customer dashboards, account statements, notifications, and regulatory reports through centralized rendering services.
 
@@ -1847,7 +1847,7 @@ Templates are stored in a version-controlled repository, rendering validation is
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Templates Documented
@@ -1873,7 +1873,7 @@ Templates are stored in a version-controlled repository, rendering validation is
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1886,7 +1886,7 @@ Templates are stored in a version-controlled repository, rendering validation is
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create an inventory of every server-side template used by an application.
 2. Document the rendering lifecycle from request to response.
@@ -1898,7 +1898,7 @@ Templates are stored in a version-controlled repository, rendering validation is
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Server-Side Template Injection?
 2. Why should templates remain trusted?
@@ -1913,7 +1913,7 @@ Templates are stored in a version-controlled repository, rendering validation is
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Keep templates under strict application control.
 - Validate all data before creating rendering contexts.
@@ -1927,7 +1927,7 @@ Templates are stored in a version-controlled repository, rendering validation is
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Mixing user-controlled data with template logic.
 - Maintaining inconsistent rendering configurations.
@@ -1939,7 +1939,7 @@ Templates are stored in a version-controlled repository, rendering validation is
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure rendering depends on trusted templates, validated data, and predictable workflows.
 - Threat modeling helps identify rendering trust boundaries.
@@ -1947,15 +1947,15 @@ Templates are stored in a version-controlled repository, rendering validation is
 - Secure SDLC and DevSecOps integrate rendering validation throughout development.
 - Continuous monitoring, logging, and centralized governance strengthen enterprise defenses against SSTI-related risks.
 
-# 47-Server-Side-Template-Injection.md
+## 47-Server-Side-Template-Injection.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Secure server-side template rendering is achieved through trusted template management, strict separation of data and template logic, secure rendering pipelines, centralized governance, continuous validation, and operational monitoring. Rendering should always remain predictable, auditable, and policy-driven."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1977,7 +1977,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Template Governance
+## Enterprise Template Governance
 
 Organizations should establish centralized governance for template development, rendering, deployment, and maintenance.
 
@@ -2017,7 +2017,7 @@ Centralized governance ensures rendering consistency across applications and eng
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Template Security Governance
@@ -2047,7 +2047,7 @@ Governance provides consistency, accountability, and maintainability.
 
 ---
 
-# Template Repository Governance
+## Template Repository Governance
 
 Templates should be managed through trusted repositories.
 
@@ -2079,7 +2079,7 @@ Every template modification should undergo peer review and security validation.
 
 ---
 
-# Zero Trust for Rendering
+## Zero Trust for Rendering
 
 Zero Trust principles apply to every rendering request.
 
@@ -2114,7 +2114,7 @@ Every rendering request should be independently validated.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Template rendering should work alongside other application security controls.
 
@@ -2150,7 +2150,7 @@ Multiple layers improve overall application resilience.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Template security should become part of continuous software delivery.
 
@@ -2182,7 +2182,7 @@ Security activities should occur throughout the development lifecycle.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Rendering infrastructure should be managed using version-controlled configuration.
 
@@ -2210,7 +2210,7 @@ IaC improves consistency, traceability, and repeatability.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2248,7 +2248,7 @@ Automated validation improves deployment reliability and consistency.
 
 ---
 
-# Documentation
+## Documentation
 
 Maintain documentation for:
 
@@ -2278,7 +2278,7 @@ Accurate documentation supports governance and long-term maintenance.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Organizations should maintain governance supporting secure template rendering.
 
@@ -2306,7 +2306,7 @@ Applicable compliance obligations depend on regulatory, contractual, and organiz
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Rendering-related operational events should be recorded.
 
@@ -2330,7 +2330,7 @@ Audit logs improve operational visibility, investigations, and compliance report
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2347,7 +2347,7 @@ Sensitive business or customer information should be masked or excluded where ap
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2373,7 +2373,7 @@ Continuous monitoring verifies rendering reliability after deployments and infra
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2388,7 +2388,7 @@ Continuous monitoring verifies rendering reliability after deployments and infra
 
 ---
 
-# Rendering Security Dashboard
+## Rendering Security Dashboard
 
 ```
 Rendering Dashboard
@@ -2416,7 +2416,7 @@ Dashboards provide centralized operational visibility into rendering health.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2446,7 +2446,7 @@ SOC teams correlate rendering events with authentication, infrastructure, and ap
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should establish documented response procedures for rendering-related incidents.
 
@@ -2482,7 +2482,7 @@ A structured response minimizes operational disruption and supports continual im
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2512,7 +2512,7 @@ Root cause analysis should evaluate architecture, implementation, governance, an
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2542,7 +2542,7 @@ Rendering security practices should evolve alongside application architecture an
 
 ---
 
-# SSTI Security Maturity Model
+## SSTI Security Maturity Model
 
 ```
 Level 1
@@ -2579,7 +2579,7 @@ Higher maturity reflects increased automation, governance, operational consisten
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2627,7 +2627,7 @@ This architecture separates rendering, business logic, monitoring, and governanc
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational SaaS provider generates customer dashboards, invoices, onboarding emails, analytics reports, and administrative portals using centralized rendering services.
 
@@ -2659,7 +2659,7 @@ Templates are centrally managed through version control, rendering validation is
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Template Inventory Documented
@@ -2685,7 +2685,7 @@ Templates are centrally managed through version control, rendering validation is
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2698,9 +2698,9 @@ Templates are centrally managed through version control, rendering validation is
 
 ---
 
-# SSTI Quick Revision
+## SSTI Quick Revision
 
-## Rendering Lifecycle
+### Rendering Lifecycle
 
 ```
 Client Request
@@ -2728,7 +2728,7 @@ Rendered Response
 
 ---
 
-## Secure Rendering
+### Secure Rendering
 
 ```
 Trusted Template
@@ -2748,7 +2748,7 @@ Response
 
 ---
 
-## Defense Layers
+### Defense Layers
 
 ```
 Authentication
@@ -2776,7 +2776,7 @@ Monitoring
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Metrics
@@ -2796,7 +2796,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the complete rendering architecture for an enterprise web application.
 2. Document the lifecycle of templates from development to deployment.
@@ -2808,7 +2808,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Server-Side Template Injection?
 2. Why should templates remain trusted?
@@ -2823,7 +2823,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain templates in trusted, version-controlled repositories.
 - Keep template logic separate from application data.
@@ -2837,7 +2837,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Mixing user-controlled data with template logic.
 - Allowing inconsistent rendering configurations.
@@ -2849,7 +2849,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

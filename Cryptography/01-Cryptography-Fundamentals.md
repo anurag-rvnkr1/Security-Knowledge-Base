@@ -35,7 +35,7 @@ The purpose of this chapter is to establish the fundamental concepts required to
 
 ---
 
-# 1. What is Cryptography?
+## 1. What is Cryptography?
 
 Cryptography is the practice of transforming information so that only authorized parties can access or verify it.
 
@@ -80,11 +80,11 @@ The actual ciphertext produced by a secure algorithm should not reveal the origi
 
 ---
 
-# 2. Cryptography vs Cryptanalysis vs Cryptology
+## 2. Cryptography vs Cryptanalysis vs Cryptology
 
 These terms are related but different.
 
-## Cryptography
+### Cryptography
 
 Cryptography focuses on designing and using mechanisms that protect information.
 
@@ -100,7 +100,7 @@ Secure Systems
 
 ---
 
-## Cryptanalysis
+### Cryptanalysis
 
 Cryptanalysis focuses on analyzing cryptographic systems and finding ways to break or weaken them.
 
@@ -124,7 +124,7 @@ Examples include:
 
 ---
 
-## Cryptology
+### Cryptology
 
 Cryptology is the broader field encompassing:
 
@@ -138,7 +138,7 @@ Cryptology
 
 ---
 
-# 3. Why Cryptography is Needed
+## 3. Why Cryptography is Needed
 
 Without cryptography, sensitive information could be exposed or modified while being transmitted or stored.
 
@@ -175,7 +175,7 @@ The attacker may observe network traffic but should not be able to recover or mo
 
 ---
 
-# 4. Core Security Properties
+## 4. Core Security Properties
 
 Cryptography primarily supports four major security properties.
 
@@ -192,7 +192,7 @@ Confidentiality   Integrity   Authentication
 
 ---
 
-# 5. Confidentiality
+## 5. Confidentiality
 
 **Confidentiality** means preventing unauthorized parties from reading information.
 
@@ -224,7 +224,7 @@ Common technologies providing confidentiality include:
 
 ---
 
-# 6. Integrity
+## 6. Integrity
 
 **Integrity** means detecting unauthorized modification of information.
 
@@ -252,7 +252,7 @@ Integrity can be provided using:
 
 ---
 
-# 7. Authentication
+## 7. Authentication
 
 Authentication answers:
 
@@ -280,7 +280,7 @@ Cryptographic authentication mechanisms include:
 
 ---
 
-# 8. Non-Repudiation
+## 8. Non-Repudiation
 
 **Non-repudiation** is the ability to provide evidence that a particular party performed an action.
 
@@ -307,7 +307,7 @@ Non-repudiation is more nuanced than simply saying "digital signatures prove who
 
 ---
 
-# 9. Plaintext
+## 9. Plaintext
 
 **Plaintext** is the original information before encryption.
 
@@ -334,7 +334,7 @@ Plaintext does not necessarily mean human-readable text. It can represent:
 
 ---
 
-# 10. Ciphertext
+## 10. Ciphertext
 
 **Ciphertext** is the output produced by encryption.
 
@@ -352,7 +352,7 @@ Secure ciphertext should not expose useful information about the plaintext to an
 
 ---
 
-# 11. Encryption
+## 11. Encryption
 
 **Encryption** transforms plaintext into ciphertext.
 
@@ -369,7 +369,7 @@ Ciphertext
 
 ---
 
-# 12. Decryption
+## 12. Decryption
 
 **Decryption** transforms ciphertext back into plaintext.
 
@@ -386,11 +386,11 @@ Plaintext
 
 ---
 
-# 13. Encryption vs Encoding
+## 13. Encryption vs Encoding
 
 These concepts are frequently confused.
 
-## Encryption
+### Encryption
 
 Purpose:
 
@@ -408,7 +408,7 @@ AES
 
 ---
 
-## Encoding
+### Encoding
 
 Purpose:
 
@@ -440,7 +440,7 @@ Anyone can decode it.
 
 ---
 
-# 14. Encryption vs Hashing
+## 14. Encryption vs Hashing
 
 Encryption is generally designed to be reversible with the appropriate key.
 
@@ -477,7 +477,7 @@ Hashing    → SHA-256
 
 ---
 
-# 15. Encryption vs Hashing vs Encoding
+## 15. Encryption vs Hashing vs Encoding
 
 | Property | Encryption | Hashing | Encoding |
 |---|---|---|---|
@@ -489,7 +489,7 @@ Hashing    → SHA-256
 
 ---
 
-# 16. Cryptographic Keys
+## 16. Cryptographic Keys
 
 A **cryptographic key** is information used by a cryptographic algorithm to control a cryptographic operation.
 
@@ -509,7 +509,7 @@ The security of a properly designed cryptosystem should depend on protecting the
 
 ---
 
-# 17. Keyspace
+## 17. Keyspace
 
 A **keyspace** is the set of all possible keys for a cryptographic algorithm.
 
@@ -531,7 +531,7 @@ A larger keyspace generally makes exhaustive search more difficult, assuming the
 
 ---
 
-# 18. Brute-Force Attack
+## 18. Brute-Force Attack
 
 A brute-force attack attempts possible keys until the correct key is found.
 
@@ -557,7 +557,7 @@ On average, an exhaustive search finds the key after roughly half the keyspace h
 
 ---
 
-# 19. Kerckhoffs's Principle
+## 19. Kerckhoffs's Principle
 
 A fundamental cryptographic principle states that a cryptosystem should remain secure even if everything about the system except the secret key is public.
 
@@ -589,7 +589,7 @@ when the algorithm and implementation are sound.
 
 ---
 
-# 20. Security Through Obscurity
+## 20. Security Through Obscurity
 
 Security through obscurity relies primarily on keeping system details secret.
 
@@ -613,7 +613,7 @@ Strong Key Management
 
 ---
 
-# 21. Cryptographic Algorithm
+## 21. Cryptographic Algorithm
 
 A cryptographic algorithm is a mathematical procedure used to perform a security-related operation.
 
@@ -631,7 +631,7 @@ Different algorithms serve different purposes.
 
 ---
 
-# 22. Cryptographic Primitive
+## 22. Cryptographic Primitive
 
 A **cryptographic primitive** is a fundamental building block used to construct secure systems.
 
@@ -651,7 +651,7 @@ A primitive by itself does not necessarily constitute a complete secure protocol
 
 ---
 
-# 23. Cryptographic Protocol
+## 23. Cryptographic Protocol
 
 A cryptographic protocol defines how multiple cryptographic mechanisms interact between parties.
 
@@ -679,7 +679,7 @@ Authentication
 
 ---
 
-# 24. Cryptographic System
+## 24. Cryptographic System
 
 A complete cryptographic system includes more than an algorithm.
 
@@ -705,7 +705,7 @@ A strong algorithm can still be deployed insecurely if the surrounding system is
 
 ---
 
-# 25. Symmetric Cryptography
+## 25. Symmetric Cryptography
 
 Symmetric cryptography uses shared secret key material.
 
@@ -730,7 +730,7 @@ ChaCha20
 
 ---
 
-# 26. Asymmetric Cryptography
+## 26. Asymmetric Cryptography
 
 Asymmetric cryptography uses a key pair:
 
@@ -758,7 +758,7 @@ EdDSA
 
 ---
 
-# 27. Symmetric vs Asymmetric Cryptography
+## 27. Symmetric vs Asymmetric Cryptography
 
 | Property | Symmetric | Asymmetric |
 |---|---|---|
@@ -773,7 +773,7 @@ Modern systems often combine both.
 
 ---
 
-# 28. Hybrid Cryptography
+## 28. Hybrid Cryptography
 
 Many real-world systems use symmetric and asymmetric cryptography together.
 
@@ -799,7 +799,7 @@ Symmetric Cryptography
 
 ---
 
-# 29. Cryptographic Hash Function
+## 29. Cryptographic Hash Function
 
 A cryptographic hash function takes input of arbitrary length and produces a fixed-size digest.
 
@@ -833,7 +833,7 @@ These are explored in detail in Chapter 05.
 
 ---
 
-# 30. Message Authentication Code
+## 30. Message Authentication Code
 
 A MAC provides integrity and authentication using shared secret key material.
 
@@ -857,7 +857,7 @@ HMAC
 
 ---
 
-# 31. Digital Signature
+## 31. Digital Signature
 
 Digital signatures provide a public-key mechanism for signing and verifying data.
 
@@ -885,7 +885,7 @@ Valid / Invalid
 
 ---
 
-# 32. Key Exchange
+## 32. Key Exchange
 
 Key exchange allows parties to establish shared cryptographic key material.
 
@@ -916,7 +916,7 @@ ECDH
 
 ---
 
-# 33. Key Derivation
+## 33. Key Derivation
 
 A Key Derivation Function (KDF) derives cryptographic keys from existing secret material.
 
@@ -941,7 +941,7 @@ Different KDFs serve different use cases.
 
 ---
 
-# 34. Randomness in Cryptography
+## 34. Randomness in Cryptography
 
 Cryptographic systems require high-quality randomness for tasks such as:
 
@@ -965,7 +965,7 @@ or an appropriate operating-system cryptographic random source.
 
 ---
 
-# 35. Entropy
+## 35. Entropy
 
 **Entropy** represents uncertainty or unpredictability.
 
@@ -989,7 +989,7 @@ Predictable Nonces
 
 ---
 
-# 36. Nonce
+## 36. Nonce
 
 A **nonce** is a value intended to be used in a particular cryptographic context, often to ensure uniqueness.
 
@@ -1013,7 +1013,7 @@ For example, reusing a nonce with certain AEAD constructions can compromise conf
 
 ---
 
-# 37. Initialization Vector
+## 37. Initialization Vector
 
 An **Initialization Vector (IV)** is an input used by certain encryption modes.
 
@@ -1037,7 +1037,7 @@ The security requirement is generally about properties such as uniqueness or unp
 
 ---
 
-# 38. Salt
+## 38. Salt
 
 A **salt** is additional data used with password hashing or key derivation.
 
@@ -1057,7 +1057,7 @@ A salt generally does **not** need to be secret.
 
 ---
 
-# 39. Passwords and Cryptography
+## 39. Passwords and Cryptography
 
 Passwords should not normally be stored as plaintext.
 
@@ -1086,11 +1086,11 @@ with appropriate parameters and unique salts.
 
 ---
 
-# 40. Authentication vs Authorization
+## 40. Authentication vs Authorization
 
 These concepts are different.
 
-## Authentication
+### Authentication
 
 Answers:
 
@@ -1098,7 +1098,7 @@ Answers:
 Who are you?
 ```
 
-## Authorization
+### Authorization
 
 Answers:
 
@@ -1122,7 +1122,7 @@ Cryptography can support authentication, but authorization is an access-control 
 
 ---
 
-# 41. Digital Certificates
+## 41. Digital Certificates
 
 A digital certificate binds an identity or subject to a public key through a trust framework.
 
@@ -1150,7 +1150,7 @@ Software Signing
 
 ---
 
-# 42. Public Key Infrastructure
+## 42. Public Key Infrastructure
 
 PKI provides infrastructure for managing trust in public keys.
 
@@ -1183,7 +1183,7 @@ Trust Chains
 
 ---
 
-# 43. Cryptographic Agility
+## 43. Cryptographic Agility
 
 **Cryptographic agility** is the ability to replace or upgrade cryptographic algorithms and parameters without redesigning the entire system.
 
@@ -1203,7 +1203,7 @@ Modern systems should avoid hard-coding assumptions that make cryptographic migr
 
 ---
 
-# 44. Cryptographic Failures
+## 44. Cryptographic Failures
 
 A system can use a strong algorithm and still be vulnerable.
 
@@ -1230,7 +1230,7 @@ Therefore:
 
 ---
 
-# 45. Common Weak Algorithms
+## 45. Common Weak Algorithms
 
 Some historical algorithms are no longer appropriate for modern security use.
 
@@ -1248,7 +1248,7 @@ The exact status and acceptable use can depend on the context and standard, but 
 
 ---
 
-# 46. Why MD5 is Not Suitable for Security Integrity
+## 46. Why MD5 is Not Suitable for Security Integrity
 
 MD5 has known collision attacks.
 
@@ -1274,7 +1274,7 @@ Therefore MD5 should not be relied upon for modern cryptographic collision resis
 
 ---
 
-# 47. Why SHA-1 is Deprecated for Many Security Uses
+## 47. Why SHA-1 is Deprecated for Many Security Uses
 
 SHA-1 has practical collision weaknesses.
 
@@ -1291,7 +1291,7 @@ depending on the use case and required standard.
 
 ---
 
-# 48. ECB Mode Problem
+## 48. ECB Mode Problem
 
 Electronic Codebook (ECB) encrypts identical plaintext blocks into identical ciphertext blocks when using the same key.
 
@@ -1317,7 +1317,7 @@ ECB should generally not be used for encrypting structured data.
 
 ---
 
-# 49. Hard-Coded Keys
+## 49. Hard-Coded Keys
 
 Bad practice:
 
@@ -1338,7 +1338,7 @@ Prefer secure secret-management mechanisms appropriate to the environment.
 
 ---
 
-# 50. Cryptographic Implementation vs Algorithm
+## 50. Cryptographic Implementation vs Algorithm
 
 Consider:
 
@@ -1370,7 +1370,7 @@ Automatically Secure Application
 
 ---
 
-# 51. Side-Channel Attacks
+## 51. Side-Channel Attacks
 
 Side-channel attacks attempt to extract information from physical or implementation-level behavior rather than directly breaking the mathematical algorithm.
 
@@ -1388,7 +1388,7 @@ This is particularly important in high-assurance cryptographic implementations.
 
 ---
 
-# 52. Threat Model
+## 52. Threat Model
 
 Before selecting cryptographic protections, define the threat model.
 
@@ -1417,7 +1417,7 @@ The cryptographic protocol should be designed against the relevant attacker capa
 
 ---
 
-# 53. Security by Design
+## 53. Security by Design
 
 Cryptography should be considered during system design, not added at the end.
 
@@ -1441,7 +1441,7 @@ Deployment
 
 ---
 
-# 54. Common Cryptographic Mistakes
+## 54. Common Cryptographic Mistakes
 
 Avoid:
 
@@ -1462,7 +1462,7 @@ Avoid:
 
 ---
 
-# 55. Cryptographic Best Practices
+## 55. Cryptographic Best Practices
 
 Prefer:
 
@@ -1483,7 +1483,7 @@ Prefer:
 
 ---
 
-# 56. Modern Cryptographic Building Blocks
+## 56. Modern Cryptographic Building Blocks
 
 Modern secure applications commonly use:
 
@@ -1502,7 +1502,7 @@ The appropriate choice depends on the protocol, platform, compliance requirement
 
 ---
 
-# 57. Authenticated Encryption
+## 57. Authenticated Encryption
 
 Encryption alone provides confidentiality.
 
@@ -1527,7 +1527,7 @@ This is an important concept in modern protocol design.
 
 ---
 
-# 58. Associated Data
+## 58. Associated Data
 
 AEAD can protect both:
 
@@ -1563,7 +1563,7 @@ Examples of AAD might include protocol headers or metadata that must remain visi
 
 ---
 
-# 59. Cryptographic Lifecycle
+## 59. Cryptographic Lifecycle
 
 Cryptographic material has a lifecycle:
 
@@ -1587,7 +1587,7 @@ Every stage must be considered.
 
 ---
 
-# 60. Key Compromise
+## 60. Key Compromise
 
 If a private or secret key is compromised:
 
@@ -1619,7 +1619,7 @@ Attacker Access
 
 ---
 
-# 61. Forward Secrecy
+## 61. Forward Secrecy
 
 Forward secrecy means compromise of a long-term private key should not allow an attacker to decrypt previously captured sessions, assuming the protocol and implementation provide the property correctly.
 
@@ -1645,7 +1645,7 @@ Modern TLS deployments commonly use ephemeral Diffie-Hellman key exchange to pro
 
 ---
 
-# 62. Cryptographic Trust
+## 62. Cryptographic Trust
 
 Cryptography alone does not automatically tell you who to trust.
 
@@ -1677,7 +1677,7 @@ Secure Authentication
 
 ---
 
-# 63. Mathematical Foundations
+## 63. Mathematical Foundations
 
 Cryptography relies on mathematical concepts such as:
 
@@ -1704,7 +1704,7 @@ Designing cryptographic algorithms
 
 ---
 
-# 64. Computational Security
+## 64. Computational Security
 
 Modern cryptography often does not claim that an attack is mathematically impossible.
 
@@ -1724,7 +1724,7 @@ This distinction is fundamental to modern cryptographic security.
 
 ---
 
-# 65. Security Parameters
+## 65. Security Parameters
 
 Cryptographic algorithms have security parameters such as:
 
@@ -1753,7 +1753,7 @@ Parameters should be selected according to current standards and threat models.
 
 ---
 
-# 66. Cryptographic Standards
+## 66. Cryptographic Standards
 
 Modern cryptographic systems should generally rely on established standards and well-reviewed implementations.
 
@@ -1771,7 +1771,7 @@ The appropriate standard depends on the application and regulatory environment.
 
 ---
 
-# 67. Cryptographic Libraries
+## 67. Cryptographic Libraries
 
 Application developers should generally use established cryptographic libraries rather than implementing primitives from scratch.
 
@@ -1799,7 +1799,7 @@ Correctly Used
 
 ---
 
-# 68. Secure Cryptographic API Usage
+## 68. Secure Cryptographic API Usage
 
 Even a safe library can be misused.
 
@@ -1819,7 +1819,7 @@ Always follow the library's security guidance and use high-level APIs where appr
 
 ---
 
-# 69. Cryptography in Web Security
+## 69. Cryptography in Web Security
 
 Modern web applications depend heavily on cryptography.
 
@@ -1849,7 +1849,7 @@ Authentication
 
 ---
 
-# 70. Cryptography in Cloud Security
+## 70. Cryptography in Cloud Security
 
 Cloud environments commonly use cryptography for:
 
@@ -1868,7 +1868,7 @@ Cloud KMS systems help manage cryptographic keys, but correct access control and
 
 ---
 
-# 71. Cryptography in Cybersecurity
+## 71. Cryptography in Cybersecurity
 
 Cryptography appears throughout cybersecurity:
 
@@ -1890,7 +1890,7 @@ Incident Investigation
 
 ---
 
-# 72. Cryptography and VAPT
+## 72. Cryptography and VAPT
 
 During a security assessment, inspect:
 
@@ -1921,7 +1921,7 @@ Weak Randomness
 
 ---
 
-# 73. Cryptography and SOC Operations
+## 73. Cryptography and SOC Operations
 
 SOC teams may investigate:
 
@@ -1939,7 +1939,7 @@ Cryptographic understanding helps analysts interpret these events correctly.
 
 ---
 
-# 74. Cryptography and Zero Trust
+## 74. Cryptography and Zero Trust
 
 Zero Trust architectures commonly depend on:
 
@@ -1971,7 +1971,7 @@ Continuously Monitor
 
 ---
 
-# 75. Cryptographic Security Model
+## 75. Cryptographic Security Model
 
 A secure system should consider:
 
@@ -1997,7 +1997,7 @@ A weakness in any layer can undermine the overall system.
 
 ---
 
-# 76. Fundamental Cryptography Diagram
+## 76. Fundamental Cryptography Diagram
 
 ```text
                          CRYPTOGRAPHY
@@ -2024,7 +2024,7 @@ A weakness in any layer can undermine the overall system.
 
 ---
 
-# 77. Key Concepts to Remember
+## 77. Key Concepts to Remember
 
 ```text
 Cryptography
@@ -2063,7 +2063,7 @@ Cryptographic Agility
 
 ---
 
-# 78. Quick Comparison
+## 78. Quick Comparison
 
 | Mechanism | Secret Key | Public/Private Keys | Reversible | Primary Purpose |
 |---|---:|---:|---:|---|
@@ -2077,77 +2077,77 @@ Cryptographic Agility
 
 ---
 
-# 79. Common Interview Questions
+## 79. Common Interview Questions
 
-## What is cryptography?
+### What is cryptography?
 
 Cryptography is the science of protecting information using mathematical algorithms and keys to provide properties such as confidentiality, integrity, authentication, and non-repudiation.
 
 ---
 
-## What is the difference between encryption and hashing?
+### What is the difference between encryption and hashing?
 
 Encryption is designed to be reversible using the appropriate key, while cryptographic hashing produces a digest and is designed to be computationally infeasible to reverse.
 
 ---
 
-## What is the difference between symmetric and asymmetric cryptography?
+### What is the difference between symmetric and asymmetric cryptography?
 
 Symmetric cryptography uses shared secret key material, while asymmetric cryptography uses a public/private key pair.
 
 ---
 
-## What is a cryptographic key?
+### What is a cryptographic key?
 
 A cryptographic key is secret or public information used by a cryptographic algorithm to control a cryptographic operation.
 
 ---
 
-## What is a hash function?
+### What is a hash function?
 
 A cryptographic hash function maps input data to a fixed-size digest while providing properties such as preimage and collision resistance.
 
 ---
 
-## What is a MAC?
+### What is a MAC?
 
 A MAC is a keyed cryptographic mechanism that provides message integrity and authentication.
 
 ---
 
-## What is a digital signature?
+### What is a digital signature?
 
 A digital signature is a cryptographic value generated using a private key and verified using a corresponding public key.
 
 ---
 
-## What is PKI?
+### What is PKI?
 
 PKI is an infrastructure for managing public keys and establishing trust using certificates, certificate authorities, and related mechanisms.
 
 ---
 
-## What is Kerckhoffs's principle?
+### What is Kerckhoffs's principle?
 
 A cryptosystem should remain secure even if the design and algorithm are public, with security relying on the secrecy of the key.
 
 ---
 
-## Why is Base64 not encryption?
+### Why is Base64 not encryption?
 
 Base64 is an encoding mechanism designed for data representation, not confidentiality. Anyone can decode it without a secret key.
 
 ---
 
-## Why should passwords not be encrypted for storage?
+### Why should passwords not be encrypted for storage?
 
 Passwords are normally verified rather than recovered. Dedicated password hashing/KDF functions such as Argon2, scrypt, bcrypt, or PBKDF2 are designed for this purpose.
 
 ---
 
-# 80. Practical Commands
+## 80. Practical Commands
 
-## Generate a Random Secret with OpenSSL
+### Generate a Random Secret with OpenSSL
 
 ```bash
 openssl rand -hex 32
@@ -2157,7 +2157,7 @@ This can generate random bytes represented in hexadecimal.
 
 ---
 
-## Calculate SHA-256
+### Calculate SHA-256
 
 ```bash
 echo -n "Hello" | sha256sum
@@ -2165,7 +2165,7 @@ echo -n "Hello" | sha256sum
 
 ---
 
-## Calculate SHA-512
+### Calculate SHA-512
 
 ```bash
 echo -n "Hello" | sha512sum
@@ -2173,7 +2173,7 @@ echo -n "Hello" | sha512sum
 
 ---
 
-## Inspect a TLS Certificate
+### Inspect a TLS Certificate
 
 ```bash
 openssl s_client -connect example.com:443
@@ -2188,9 +2188,9 @@ openssl s_client -connect example.com:443 </dev/null 2>/dev/null \
 
 ---
 
-# 81. Practical Exercise
+## 81. Practical Exercise
 
-## Exercise 1 – Hashing
+### Exercise 1 – Hashing
 
 Calculate the SHA-256 hash of:
 
@@ -2216,7 +2216,7 @@ Significantly Different Digest
 
 ---
 
-## Exercise 2 – Base64 vs Encryption
+### Exercise 2 – Base64 vs Encryption
 
 Encode:
 
@@ -2238,7 +2238,7 @@ Encryption
 
 ---
 
-## Exercise 3 – Random Key Generation
+### Exercise 3 – Random Key Generation
 
 Generate random bytes:
 
@@ -2250,7 +2250,7 @@ Observe that repeated executions produce different values.
 
 ---
 
-## Exercise 4 – Certificate Inspection
+### Exercise 4 – Certificate Inspection
 
 Inspect a public TLS certificate:
 
@@ -2271,7 +2271,7 @@ Certificate Chain
 
 ---
 
-# 82. Security Checklist
+## 82. Security Checklist
 
 When evaluating a cryptographic implementation, ask:
 
@@ -2293,7 +2293,7 @@ When evaluating a cryptographic implementation, ask:
 
 ---
 
-# 83. Key Takeaways
+## 83. Key Takeaways
 
 Cryptography is more than encryption.
 
@@ -2329,7 +2329,7 @@ The most important principles are:
 
 ---
 
-# 84. Chapter Summary
+## 84. Chapter Summary
 
 In this chapter, we established the foundation for cryptography.
 
@@ -2372,9 +2372,9 @@ The key idea is:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 02 – Classical Cryptography & Historical Ciphers
+### Chapter 02 – Classical Cryptography & Historical Ciphers
 
 The next chapter explores the evolution of cryptography through classical techniques and introduces:
 

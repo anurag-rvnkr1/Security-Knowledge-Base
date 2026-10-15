@@ -1,6 +1,6 @@
 # Resources.md
 
-# Enterprise Active Directory Learning Resources
+## Enterprise Active Directory Learning Resources
 
 > **Purpose**
 >
@@ -10,7 +10,7 @@
 
 ---
 
-# Table of Contents
+## Table of Contents
 
 1. Official Microsoft Resources
 2. Microsoft Learn Learning Paths
@@ -35,7 +35,7 @@
 
 ---
 
-# 1. Official Microsoft Resources
+## 1. Official Microsoft Resources
 
 Always begin with Microsoft's official documentation.
 
@@ -62,7 +62,7 @@ Official Microsoft websites:
 
 ---
 
-# 2. Microsoft Learn
+## 2. Microsoft Learn
 
 Microsoft Learn offers free, interactive learning paths.
 
@@ -79,7 +79,7 @@ Recommended learning paths:
 
 ---
 
-# 3. Windows Server Documentation
+## 3. Windows Server Documentation
 
 Study these areas:
 
@@ -95,7 +95,7 @@ Study these areas:
 
 ---
 
-# 4. Microsoft Entra Documentation
+## 4. Microsoft Entra Documentation
 
 Recommended topics:
 
@@ -110,7 +110,7 @@ Recommended topics:
 
 ---
 
-# 5. PowerShell Resources
+## 5. PowerShell Resources
 
 Learn:
 
@@ -147,9 +147,9 @@ Improve
 
 ---
 
-# 6. Recommended Books
+## 6. Recommended Books
 
-## Beginner
+### Beginner
 
 - Learn Windows Server Administration
 - Learn Active Directory Fundamentals
@@ -157,7 +157,7 @@ Improve
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Windows Server Administration
 - Group Policy Administration
@@ -165,7 +165,7 @@ Improve
 
 ---
 
-## Advanced
+### Advanced
 
 - Windows Internals
 - Identity and Access Management
@@ -175,7 +175,7 @@ Improve
 
 ---
 
-# 7. Hands-on Lab
+## 7. Hands-on Lab
 
 Practice every topic yourself.
 
@@ -196,7 +196,7 @@ Suggested lab tasks:
 
 ---
 
-# 8. Virtual Lab Environment
+## 8. Virtual Lab Environment
 
 Recommended setup:
 
@@ -233,37 +233,37 @@ Minimum practice environment:
 
 ---
 
-# 9. Certifications
+## 9. Certifications
 
 Recommended certification path:
 
-## Beginner
+### Beginner
 
 - Microsoft Certified: Azure Fundamentals (AZ-900)
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Microsoft Certified: Identity and Access Administrator Associate (SC-300)
 
 ---
 
-## Security
+### Security
 
 - Microsoft Certified: Security Operations Analyst Associate (SC-200)
 - Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)
 
 ---
 
-## Infrastructure
+### Infrastructure
 
 - Windows Server Administration
 - Microsoft 365 Administration
 
 ---
 
-# 10. Practice Platforms
+## 10. Practice Platforms
 
 Practice on:
 
@@ -275,7 +275,7 @@ Practice on:
 
 ---
 
-# 11. Security Frameworks
+## 11. Security Frameworks
 
 Become familiar with:
 
@@ -290,7 +290,7 @@ Become familiar with:
 
 ---
 
-# 12. Useful Administrative Tools
+## 12. Useful Administrative Tools
 
 | Tool | Purpose |
 |------|----------|
@@ -306,7 +306,7 @@ Become familiar with:
 
 ---
 
-# 13. Monitoring Tools
+## 13. Monitoring Tools
 
 Examples:
 
@@ -328,7 +328,7 @@ Monitor:
 
 ---
 
-# 14. Recommended YouTube Channels
+## 14. Recommended YouTube Channels
 
 Look for channels covering:
 
@@ -344,7 +344,7 @@ Choose creators who reference official Microsoft guidance and current Windows Se
 
 ---
 
-# 15. Blogs and Websites
+## 15. Blogs and Websites
 
 Follow trusted sources that publish:
 
@@ -357,7 +357,7 @@ Follow trusted sources that publish:
 
 ---
 
-# 16. Communities
+## 16. Communities
 
 Participate in:
 
@@ -371,7 +371,7 @@ Participate in:
 
 ---
 
-# 17. GitHub Repositories
+## 17. GitHub Repositories
 
 Explore repositories that contain:
 
@@ -386,7 +386,7 @@ Always review and understand scripts before running them in any environment.
 
 ---
 
-# 18. Suggested Learning Roadmap
+## 18. Suggested Learning Roadmap
 
 ```
 Windows Basics
@@ -434,9 +434,9 @@ Enterprise Administration
 
 ---
 
-# 19. Daily Practice Plan
+## 19. Daily Practice Plan
 
-## Daily (30–60 Minutes)
+### Daily (30–60 Minutes)
 
 - Read documentation
 - Practice one PowerShell command
@@ -446,7 +446,7 @@ Enterprise Administration
 
 ---
 
-## Weekly
+### Weekly
 
 - Build a new lab
 - Review event logs
@@ -458,7 +458,7 @@ Enterprise Administration
 
 ---
 
-## Monthly
+### Monthly
 
 - Rebuild the lab from scratch
 - Practice disaster recovery
@@ -468,9 +468,9 @@ Enterprise Administration
 
 ---
 
-# 20. Final Advice
+## 20. Final Advice
 
-## Build Labs
+### Build Labs
 
 Theory alone is not enough.
 
@@ -478,19 +478,19 @@ Create, configure, break, troubleshoot, and rebuild your own Active Directory la
 
 ---
 
-## Read Documentation
+### Read Documentation
 
 Official Microsoft documentation should always be your primary reference.
 
 ---
 
-## Learn PowerShell
+### Learn PowerShell
 
 Automation is one of the most valuable skills for Windows administrators and security professionals.
 
 ---
 
-## Document Everything
+### Document Everything
 
 Maintain notes for:
 
@@ -502,7 +502,7 @@ Maintain notes for:
 
 ---
 
-## Think Like an Administrator
+### Think Like an Administrator
 
 When solving problems:
 
@@ -540,7 +540,7 @@ Improve
 
 ---
 
-# Complete Active Directory Handbook Summary
+## Complete Active Directory Handbook Summary
 
 Congratulations!
 
@@ -577,7 +577,7 @@ You have completed a comprehensive enterprise Active Directory handbook covering
 
 ---
 
-# Final Career Roadmap
+## Final Career Roadmap
 
 ```
 IT Fundamentals
@@ -629,7 +629,7 @@ Cybersecurity Architect
 
 ---
 
-# Closing Message
+## Closing Message
 
 Active Directory remains one of the most widely deployed identity platforms in enterprise environments. Mastering it requires a combination of theory, hands-on practice, documentation, troubleshooting experience, and continuous learning.
 

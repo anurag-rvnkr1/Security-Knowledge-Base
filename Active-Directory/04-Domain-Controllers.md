@@ -1,12 +1,12 @@
 # Active-Directory/
 
-# 04-Domain-Controllers.md
+## 04-Domain-Controllers.md
 
-# Part 1 — Introduction to Domain Controllers, AD DS Installation, Roles, Responsibilities, and Enterprise Architecture
+## Part 1 — Introduction to Domain Controllers, AD DS Installation, Roles, Responsibilities, and Enterprise Architecture
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -20,7 +20,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is a Domain Controller?
+## What is a Domain Controller?
 
 A **Domain Controller (DC)** is a Windows Server that hosts the **Active Directory Domain Services (AD DS)** role and participates in an Active Directory domain.
 
@@ -38,7 +38,7 @@ A Domain Controller is **not** merely a login server—it is the authoritative i
 
 ---
 
-# Domain Controller in Enterprise Architecture
+## Domain Controller in Enterprise Architecture
 
 ```text
                      Users
@@ -70,7 +70,7 @@ A Domain Controller is **not** merely a login server—it is the authoritative i
 
 ---
 
-# Why Are Domain Controllers Important?
+## Why Are Domain Controllers Important?
 
 Without Domain Controllers:
 
@@ -84,7 +84,7 @@ For this reason, Domain Controllers are among the most critical systems in a Win
 
 ---
 
-# Responsibilities of a Domain Controller
+## Responsibilities of a Domain Controller
 
 | Responsibility | Description |
 |---------------|-------------|
@@ -99,7 +99,7 @@ For this reason, Domain Controllers are among the most critical systems in a Win
 
 ---
 
-# Active Directory Domain Services (AD DS)
+## Active Directory Domain Services (AD DS)
 
 A Windows Server becomes a Domain Controller by installing the **Active Directory Domain Services (AD DS)** server role and promoting the server into a domain.
 
@@ -131,7 +131,7 @@ Server Becomes Domain Controller
 
 ---
 
-# Components Installed During Promotion
+## Components Installed During Promotion
 
 When promoting a server, several core components are configured.
 
@@ -146,7 +146,7 @@ When promoting a server, several core components are configured.
 
 ---
 
-# Domain Controller Architecture
+## Domain Controller Architecture
 
 ```text
                    Domain Controller
@@ -178,7 +178,7 @@ Each component contributes to identity, authentication, and centralized manageme
 
 ---
 
-# Domain Controller Communication
+## Domain Controller Communication
 
 ```text
 Client
@@ -208,7 +208,7 @@ If the client cannot locate a Domain Controller through DNS, authentication gene
 
 ---
 
-# Multiple Domain Controllers
+## Multiple Domain Controllers
 
 A production environment should deploy more than one Domain Controller.
 
@@ -240,7 +240,7 @@ Benefits:
 
 ---
 
-# Domain Controller Placement
+## Domain Controller Placement
 
 Typical enterprise placement:
 
@@ -279,7 +279,7 @@ Placement should reflect:
 
 ---
 
-# Writable Domain Controllers
+## Writable Domain Controllers
 
 Standard Domain Controllers are writable.
 
@@ -296,7 +296,7 @@ Because changes can originate on multiple writable Domain Controllers, Active Di
 
 ---
 
-# Read-Only Domain Controllers (RODCs)
+## Read-Only Domain Controllers (RODCs)
 
 Some environments deploy **Read-Only Domain Controllers (RODCs)**.
 
@@ -312,7 +312,7 @@ A dedicated chapter later in this handbook discusses RODCs in detail.
 
 ---
 
-# Domain Controller Lifecycle
+## Domain Controller Lifecycle
 
 ```text
 Planning
@@ -354,7 +354,7 @@ Proper planning and documentation should accompany every stage.
 
 ---
 
-# Domain Controller Naming
+## Domain Controller Naming
 
 Consistent naming conventions simplify administration.
 
@@ -383,7 +383,7 @@ Recommendations:
 
 ---
 
-# Minimum Enterprise Recommendations
+## Minimum Enterprise Recommendations
 
 For production environments:
 
@@ -398,7 +398,7 @@ For production environments:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Organization:
 
@@ -444,7 +444,7 @@ This design supports:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Domain Controllers are among the highest-value assets in a Windows environment.
 
@@ -470,13 +470,13 @@ Compromise of a Domain Controller can have domain-wide consequences.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore a Domain Controller after installation.
 
-### Tasks
+#### Tasks
 
 1. Open **Server Manager**.
 2. Verify the **Active Directory Domain Services** role.
@@ -491,7 +491,7 @@ Explore a Domain Controller after installation.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A Domain Controller hosts Active Directory Domain Services.
 - It authenticates users and authorizes access.
@@ -502,7 +502,7 @@ Explore a Domain Controller after installation.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a Domain Controller?
 2. What server role must be installed before promoting a Domain Controller?
@@ -517,7 +517,7 @@ Explore a Domain Controller after installation.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Active Directory Domain Services
 - Microsoft Learn – Install Active Directory Domain Services
@@ -528,13 +528,13 @@ Explore a Domain Controller after installation.
 
 ---
 
-# 04-Domain-Controllers.md
+## 04-Domain-Controllers.md
 
-# Part 2 — Domain Controller Promotion, Installation Requirements, Database Components, SYSVOL, and Core Services
+## Part 2 — Domain Controller Promotion, Installation Requirements, Database Components, SYSVOL, and Core Services
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this part, you will be able to:
 
@@ -547,7 +547,7 @@ By the end of this part, you will be able to:
 
 ---
 
-# Planning Before Deployment
+## Planning Before Deployment
 
 Before promoting a server to a Domain Controller, verify the following:
 
@@ -565,7 +565,7 @@ Skipping these prerequisites can lead to authentication or replication issues la
 
 ---
 
-# Typical Deployment Process
+## Typical Deployment Process
 
 ```text
 Install Windows Server
@@ -605,7 +605,7 @@ Server Becomes Domain Controller
 
 ---
 
-# Installing the AD DS Role
+## Installing the AD DS Role
 
 The **Active Directory Domain Services** role installs the software required to host a directory service.
 
@@ -615,7 +615,7 @@ The server must also be **promoted**.
 
 ---
 
-# Promotion to Domain Controller
+## Promotion to Domain Controller
 
 Promotion configures the server to participate in Active Directory.
 
@@ -636,7 +636,7 @@ During promotion, Windows:
 
 ---
 
-# Promotion Scenarios
+## Promotion Scenarios
 
 ```text
                   Promote Server
@@ -655,7 +655,7 @@ Each option is selected based on the organization's Active Directory design.
 
 ---
 
-# Core Components Created
+## Core Components Created
 
 After promotion:
 
@@ -681,7 +681,7 @@ These components work together to provide identity services.
 
 ---
 
-# Active Directory Database
+## Active Directory Database
 
 The primary database file:
 
@@ -704,7 +704,7 @@ It is a writable directory database on standard Domain Controllers.
 
 ---
 
-# Supporting Database Files
+## Supporting Database Files
 
 Active Directory also maintains supporting files.
 
@@ -719,7 +719,7 @@ Transaction logging helps ensure database consistency during unexpected failures
 
 ---
 
-# SYSVOL
+## SYSVOL
 
 The SYSVOL folder stores files that must be available across Domain Controllers.
 
@@ -739,7 +739,7 @@ Common contents:
 
 ---
 
-# SYSVOL Structure
+## SYSVOL Structure
 
 ```text
 SYSVOL
@@ -757,7 +757,7 @@ SYSVOL is shared with authenticated domain clients so they can retrieve policies
 
 ---
 
-# Why SYSVOL Is Important
+## Why SYSVOL Is Important
 
 Without SYSVOL:
 
@@ -770,7 +770,7 @@ SYSVOL is a fundamental component of Active Directory.
 
 ---
 
-# Core Windows Services
+## Core Windows Services
 
 Several Windows services are essential for Domain Controller operation.
 
@@ -787,7 +787,7 @@ Several Windows services are essential for Domain Controller operation.
 
 ---
 
-# Active Directory Service Interaction
+## Active Directory Service Interaction
 
 ```text
 Client
@@ -821,7 +821,7 @@ Each service contributes to successful authentication.
 
 ---
 
-# Netlogon Service
+## Netlogon Service
 
 The **Netlogon** service:
 
@@ -834,7 +834,7 @@ If Netlogon is unavailable, authentication-related problems may occur.
 
 ---
 
-# Kerberos Key Distribution Center (KDC)
+## Kerberos Key Distribution Center (KDC)
 
 The KDC:
 
@@ -864,7 +864,7 @@ Kerberos will be covered in depth in a later chapter.
 
 ---
 
-# DFS Replication (DFSR)
+## DFS Replication (DFSR)
 
 Modern Active Directory environments use **DFS Replication (DFSR)** to replicate SYSVOL contents.
 
@@ -879,7 +879,7 @@ Older environments historically used **File Replication Service (FRS)**, which h
 
 ---
 
-# DNS Registration
+## DNS Registration
 
 During promotion, the Domain Controller registers important DNS records.
 
@@ -907,7 +907,7 @@ Without proper DNS registration, clients may fail to discover available Domain C
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Kerberos depends on synchronized clocks.
 
@@ -937,7 +937,7 @@ Significant time differences can cause authentication failures.
 
 ---
 
-# Storage Considerations
+## Storage Considerations
 
 Recommendations:
 
@@ -951,7 +951,7 @@ Reliable storage contributes to overall directory stability.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -989,7 +989,7 @@ The additional Domain Controllers receive replicated directory information after
 
 ---
 
-# Common Deployment Mistakes
+## Common Deployment Mistakes
 
 Avoid:
 
@@ -1005,7 +1005,7 @@ Careful planning reduces operational issues.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 The promotion process establishes a server as a trusted identity provider.
 
@@ -1023,13 +1023,13 @@ A newly promoted Domain Controller should immediately become part of the organiz
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review the components installed after Domain Controller promotion.
 
-### Tasks
+#### Tasks
 
 1. Verify the **Active Directory Domain Services** role.
 2. Locate:
@@ -1049,7 +1049,7 @@ Review the components installed after Domain Controller promotion.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Installing AD DS is separate from promoting a Domain Controller.
 - Promotion creates the directory database and configures core services.
@@ -1060,7 +1060,7 @@ Review the components installed after Domain Controller promotion.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between installing AD DS and promoting a Domain Controller?
 2. What files are created during Domain Controller promotion?
@@ -1075,7 +1075,7 @@ Review the components installed after Domain Controller promotion.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Deploy Active Directory Domain Services
 - Microsoft Learn – Domain Controller Installation
@@ -1086,13 +1086,13 @@ Review the components installed after Domain Controller promotion.
 
 ---
 
-# 04-Domain-Controllers.md
+## 04-Domain-Controllers.md
 
-# Part 3 — Domain Controller Replication, Authentication Flow, Read-Only Domain Controllers (RODC), and Enterprise Operations
+## Part 3 — Domain Controller Replication, Authentication Flow, Read-Only Domain Controllers (RODC), and Enterprise Operations
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -1105,7 +1105,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Why Replication Is Necessary
+## Why Replication Is Necessary
 
 Every writable Domain Controller maintains a copy of the Active Directory database.
 
@@ -1123,7 +1123,7 @@ Replication provides this consistency.
 
 ---
 
-# Replication Overview
+## Replication Overview
 
 ```text
 Administrator
@@ -1165,7 +1165,7 @@ Each writable Domain Controller participates in maintaining a consistent directo
 
 ---
 
-# Multi-Master Replication
+## Multi-Master Replication
 
 Active Directory uses a **multi-master replication** model.
 
@@ -1179,7 +1179,7 @@ Certain specialized operations (covered in the FSMO chapter) are exceptions to t
 
 ---
 
-# Replication Benefits
+## Replication Benefits
 
 | Benefit | Description |
 |----------|-------------|
@@ -1191,7 +1191,7 @@ Certain specialized operations (covered in the FSMO chapter) are exceptions to t
 
 ---
 
-# Simplified Replication Flow
+## Simplified Replication Flow
 
 ```text
 Password Changed
@@ -1221,7 +1221,7 @@ Replication occurs automatically according to the configured topology and schedu
 
 ---
 
-# Authentication Flow
+## Authentication Flow
 
 A Domain Controller participates in every domain logon.
 
@@ -1259,7 +1259,7 @@ Desktop Loaded
 
 ---
 
-# Detailed Authentication Architecture
+## Detailed Authentication Architecture
 
 ```text
 User
@@ -1297,7 +1297,7 @@ Every stage depends on healthy Domain Controller services.
 
 ---
 
-# Authentication Services
+## Authentication Services
 
 During authentication, the Domain Controller provides:
 
@@ -1311,7 +1311,7 @@ These functions allow users to securely access enterprise resources.
 
 ---
 
-# Security Token Creation
+## Security Token Creation
 
 After successful authentication, Windows creates a security token containing information such as:
 
@@ -1324,7 +1324,7 @@ Applications use this token to determine whether access should be granted.
 
 ---
 
-# Resource Access
+## Resource Access
 
 After authentication:
 
@@ -1354,7 +1354,7 @@ Authorization determines access.
 
 ---
 
-# Read-Only Domain Controllers (RODC)
+## Read-Only Domain Controllers (RODC)
 
 An **RODC** stores a read-only copy of the Active Directory database.
 
@@ -1367,7 +1367,7 @@ Characteristics:
 
 ---
 
-# RODC Architecture
+## RODC Architecture
 
 ```text
 Head Office
@@ -1393,7 +1393,7 @@ The writable Domain Controller remains authoritative for directory modifications
 
 ---
 
-# Why Deploy an RODC?
+## Why Deploy an RODC?
 
 Common scenarios:
 
@@ -1405,7 +1405,7 @@ Common scenarios:
 
 ---
 
-# Password Replication Policy (PRP)
+## Password Replication Policy (PRP)
 
 An RODC does **not** automatically cache every user's password.
 
@@ -1427,7 +1427,7 @@ This reduces the impact of an RODC compromise.
 
 ---
 
-# Writable DC vs RODC
+## Writable DC vs RODC
 
 | Feature | Writable DC | RODC |
 |----------|-------------|------|
@@ -1439,7 +1439,7 @@ This reduces the impact of an RODC compromise.
 
 ---
 
-# Branch Office Deployment Example
+## Branch Office Deployment Example
 
 Organization:
 
@@ -1475,7 +1475,7 @@ Benefits:
 
 ---
 
-# Enterprise Operations
+## Enterprise Operations
 
 Daily operational activities include:
 
@@ -1492,7 +1492,7 @@ Routine maintenance is essential for a healthy directory.
 
 ---
 
-# Monitoring Domain Controllers
+## Monitoring Domain Controllers
 
 Administrators should monitor:
 
@@ -1509,7 +1509,7 @@ Administrators should monitor:
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Recommended backups include:
 
@@ -1527,7 +1527,7 @@ Backups should be:
 
 ---
 
-# Maintenance Best Practices
+## Maintenance Best Practices
 
 - Apply security updates regularly.
 - Review event logs.
@@ -1540,7 +1540,7 @@ Backups should be:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1581,7 +1581,7 @@ This design balances performance, availability, and security.
 
 ---
 
-# Common Operational Mistakes
+## Common Operational Mistakes
 
 Avoid:
 
@@ -1596,7 +1596,7 @@ Avoid:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Domain Controllers are frequent targets during cyberattacks because they provide centralized identity services.
 
@@ -1615,13 +1615,13 @@ Compromise of a writable Domain Controller generally has a greater impact than c
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore Domain Controller operational tasks.
 
-### Tasks
+#### Tasks
 
 1. Review the **DFS Replication** service status.
 2. Verify SYSVOL is shared.
@@ -1632,7 +1632,7 @@ Explore Domain Controller operational tasks.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory uses multi-master replication for writable Domain Controllers.
 - Authentication relies on healthy DNS, Kerberos, and Domain Controller services.
@@ -1643,7 +1643,7 @@ Explore Domain Controller operational tasks.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is multi-master replication?
 2. Why does Active Directory replicate data?
@@ -1658,7 +1658,7 @@ Explore Domain Controller operational tasks.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Read-Only Domain Controllers
 - Microsoft Learn – Active Directory Replication Concepts
@@ -1669,13 +1669,13 @@ Explore Domain Controller operational tasks.
 
 ---
 
-# 04-Domain-Controllers.md
+## 04-Domain-Controllers.md
 
-# Part 4 — Domain Controller Hardening, Best Practices, Common Misconceptions, Architecture Review, Final Revision, and Chapter Summary
+## Part 4 — Domain Controller Hardening, Best Practices, Common Misconceptions, Architecture Review, Final Revision, and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -1688,7 +1688,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Why Domain Controller Security Matters
+## Why Domain Controller Security Matters
 
 A Domain Controller is one of the most critical assets in a Windows enterprise.
 
@@ -1705,7 +1705,7 @@ Compromise of a Domain Controller can impact the entire domain.
 
 ---
 
-# Security-First Architecture
+## Security-First Architecture
 
 ```text
                Users
@@ -1735,9 +1735,9 @@ Every layer should contribute to protecting the Domain Controller.
 
 ---
 
-# Domain Controller Hardening Checklist
+## Domain Controller Hardening Checklist
 
-## Operating System
+### Operating System
 
 - Install only required roles and features.
 - Apply security updates promptly.
@@ -1748,7 +1748,7 @@ Every layer should contribute to protecting the Domain Controller.
 
 ---
 
-## Administrative Security
+### Administrative Security
 
 Use dedicated administrative accounts.
 
@@ -1763,7 +1763,7 @@ directly on Domain Controllers.
 
 ---
 
-## Least Privilege
+### Least Privilege
 
 Only authorized administrators should have privileged access.
 
@@ -1779,7 +1779,7 @@ Use delegated administration whenever possible.
 
 ---
 
-## Network Security
+### Network Security
 
 Recommendations:
 
@@ -1791,7 +1791,7 @@ Recommendations:
 
 ---
 
-## Physical Security
+### Physical Security
 
 Protect Domain Controllers by:
 
@@ -1805,7 +1805,7 @@ Physical compromise can undermine software security controls.
 
 ---
 
-# Monitoring Best Practices
+## Monitoring Best Practices
 
 Monitor:
 
@@ -1822,7 +1822,7 @@ Monitor:
 
 ---
 
-# Logging Recommendations
+## Logging Recommendations
 
 Important Windows logs include:
 
@@ -1836,7 +1836,7 @@ Forwarding these logs to a centralized monitoring platform (such as a SIEM) impr
 
 ---
 
-# Backup Best Practices
+## Backup Best Practices
 
 Recommended backup scope:
 
@@ -1865,7 +1865,7 @@ Best practices:
 
 ---
 
-# Disaster Recovery Planning
+## Disaster Recovery Planning
 
 A recovery process should include:
 
@@ -1905,7 +1905,7 @@ Recovery documentation should be reviewed and updated periodically.
 
 ---
 
-# Lifecycle Management
+## Lifecycle Management
 
 Domain Controllers follow a predictable operational lifecycle.
 
@@ -1945,7 +1945,7 @@ Each phase should include change management and documentation.
 
 ---
 
-# Upgrade Considerations
+## Upgrade Considerations
 
 Before upgrading or replacing a Domain Controller:
 
@@ -1958,7 +1958,7 @@ Before upgrading or replacing a Domain Controller:
 
 ---
 
-# Documentation Standards
+## Documentation Standards
 
 Maintain documentation for:
 
@@ -1977,9 +1977,9 @@ Accurate documentation reduces recovery time during incidents.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
-## Myth 1
+### Myth 1
 
 > One Domain Controller is enough.
 
@@ -1989,7 +1989,7 @@ Production environments should deploy multiple Domain Controllers for resilience
 
 ---
 
-## Myth 2
+### Myth 2
 
 > Domain Controllers are ordinary Windows servers.
 
@@ -1999,7 +1999,7 @@ They host critical identity infrastructure and require enhanced protection.
 
 ---
 
-## Myth 3
+### Myth 3
 
 > Backups alone guarantee recovery.
 
@@ -2009,7 +2009,7 @@ Backups must be validated through regular restoration testing.
 
 ---
 
-## Myth 4
+### Myth 4
 
 > All administrators need Domain Admin privileges.
 
@@ -2019,7 +2019,7 @@ Delegation and least privilege are preferred for routine administration.
 
 ---
 
-## Myth 5
+### Myth 5
 
 > Replication errors can be ignored if users can still log in.
 
@@ -2029,7 +2029,7 @@ Replication issues can lead to inconsistent directory data, authentication probl
 
 ---
 
-# Common Operational Mistakes
+## Common Operational Mistakes
 
 Avoid:
 
@@ -2044,7 +2044,7 @@ Avoid:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -2074,7 +2074,7 @@ Benefits:
 
 ---
 
-# Domain Controller Security Checklist
+## Domain Controller Security Checklist
 
 | Control | Recommended |
 |----------|-------------|
@@ -2093,7 +2093,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Threat actors often attempt to compromise Domain Controllers because they provide centralized control over identity and authentication.
 
@@ -2119,7 +2119,7 @@ Strong operational discipline significantly reduces the likelihood and impact of
 
 ---
 
-# Complete Chapter Summary
+## Complete Chapter Summary
 
 This chapter covered:
 
@@ -2146,7 +2146,7 @@ You now understand how Domain Controllers provide authentication, authorization,
 
 ---
 
-# Final Revision Table
+## Final Revision Table
 
 | Topic | Key Point |
 |------|-----------|
@@ -2165,7 +2165,7 @@ You now understand how Domain Controllers provide authentication, authorization,
 
 ---
 
-# Practical Exercises
+## Practical Exercises
 
 1. Draw the architecture of a Domain Controller and label its major components.
 2. Compare writable Domain Controllers and RODCs.
@@ -2177,7 +2177,7 @@ You now understand how Domain Controllers provide authentication, authorization,
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a Domain Controller?
 2. What happens during Domain Controller promotion?
@@ -2192,7 +2192,7 @@ You now understand how Domain Controllers provide authentication, authorization,
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Active Directory Domain Services
 - Microsoft Learn – Read-Only Domain Controllers
@@ -2205,7 +2205,7 @@ You now understand how Domain Controllers provide authentication, authorization,
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 04 – Domain Controllers**.
 

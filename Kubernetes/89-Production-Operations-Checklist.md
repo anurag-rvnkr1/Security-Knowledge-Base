@@ -41,7 +41,7 @@ This checklist can be used for:
 
 ---
 
-# 1. Production Readiness Model
+## 1. Production Readiness Model
 
 Use the following model:
 
@@ -63,7 +63,7 @@ Use the following model:
 
 ---
 
-# 2. Pre-Production Checklist
+## 2. Pre-Production Checklist
 
 Before deploying an application to production:
 
@@ -85,7 +85,7 @@ Before deploying an application to production:
 
 ---
 
-# 3. Cluster Architecture Checklist
+## 3. Cluster Architecture Checklist
 
 Verify:
 
@@ -105,7 +105,7 @@ Verify:
 
 ---
 
-# 4. Control Plane Checklist
+## 4. Control Plane Checklist
 
 Verify:
 
@@ -132,7 +132,7 @@ For HA environments:
 
 ---
 
-# 5. Node Checklist
+## 5. Node Checklist
 
 For every production node:
 
@@ -152,7 +152,7 @@ For every production node:
 
 ---
 
-# 6. Node Capacity
+## 6. Node Capacity
 
 Review:
 
@@ -179,7 +179,7 @@ Autoscaling
 
 ---
 
-# 7. Node Pool Strategy
+## 7. Node Pool Strategy
 
 Consider separate node pools for:
 
@@ -197,7 +197,7 @@ Use labels and taints carefully.
 
 ---
 
-# 8. Kubernetes Version Management
+## 8. Kubernetes Version Management
 
 Document:
 
@@ -226,7 +226,7 @@ Before upgrading:
 
 ---
 
-# 9. Namespace Checklist
+## 9. Namespace Checklist
 
 Use namespaces to provide logical organization and isolation.
 
@@ -262,7 +262,7 @@ Verify:
 
 ---
 
-# 10. Workload Checklist
+## 10. Workload Checklist
 
 Every production Deployment should be reviewed for:
 
@@ -284,7 +284,7 @@ Every production Deployment should be reviewed for:
 
 ---
 
-# 11. Replica Checklist
+## 11. Replica Checklist
 
 Avoid:
 
@@ -306,7 +306,7 @@ Use topology constraints to reduce correlated failures.
 
 ---
 
-# 12. Rolling Update Checklist
+## 12. Rolling Update Checklist
 
 Verify:
 
@@ -321,7 +321,7 @@ Verify:
 
 ---
 
-# 13. Zero-Downtime Deployment Checklist
+## 13. Zero-Downtime Deployment Checklist
 
 Verify:
 
@@ -338,7 +338,7 @@ Verify:
 
 ---
 
-# 14. Container Image Checklist
+## 14. Container Image Checklist
 
 Verify:
 
@@ -357,7 +357,7 @@ Prefer controlled immutable references for production deployments.
 
 ---
 
-# 15. Image Tagging
+## 15. Image Tagging
 
 Avoid relying solely on:
 
@@ -379,7 +379,7 @@ app@sha256:<digest>
 
 ---
 
-# 16. Container Security Checklist
+## 16. Container Security Checklist
 
 Verify:
 
@@ -396,7 +396,7 @@ Verify:
 
 ---
 
-# 17. ServiceAccount Checklist
+## 17. ServiceAccount Checklist
 
 Every application should use an appropriate ServiceAccount.
 
@@ -412,7 +412,7 @@ Verify:
 
 ---
 
-# 18. RBAC Checklist
+## 18. RBAC Checklist
 
 Review:
 
@@ -429,7 +429,7 @@ Review:
 
 ---
 
-# 19. RBAC Audit
+## 19. RBAC Audit
 
 Regularly check:
 
@@ -451,7 +451,7 @@ Unused ServiceAccounts
 
 ---
 
-# 20. Authentication Checklist
+## 20. Authentication Checklist
 
 Verify:
 
@@ -467,7 +467,7 @@ Verify:
 
 ---
 
-# 21. Pod Security Checklist
+## 21. Pod Security Checklist
 
 For production namespaces:
 
@@ -483,7 +483,7 @@ For production namespaces:
 
 ---
 
-# 22. Admission Control Checklist
+## 22. Admission Control Checklist
 
 Review:
 
@@ -500,7 +500,7 @@ Never deploy a critical admission dependency without considering its failure beh
 
 ---
 
-# 23. Secret Management Checklist
+## 23. Secret Management Checklist
 
 Verify:
 
@@ -516,7 +516,7 @@ Verify:
 
 ---
 
-# 24. Secret Rotation
+## 24. Secret Rotation
 
 Define:
 
@@ -532,7 +532,7 @@ Test whether applications can safely consume rotated credentials.
 
 ---
 
-# 25. Network Security Checklist
+## 25. Network Security Checklist
 
 Verify:
 
@@ -548,7 +548,7 @@ Verify:
 
 ---
 
-# 26. NetworkPolicy Model
+## 26. NetworkPolicy Model
 
 A common architecture:
 
@@ -586,7 +586,7 @@ Untrusted → Internal Services
 
 ---
 
-# 27. CNI Checklist
+## 27. CNI Checklist
 
 Verify:
 
@@ -602,7 +602,7 @@ Verify:
 
 ---
 
-# 28. DNS Checklist
+## 28. DNS Checklist
 
 Verify:
 
@@ -629,7 +629,7 @@ nslookup <service>.<namespace>.svc.cluster.local
 
 ---
 
-# 29. Ingress / Gateway Checklist
+## 29. Ingress / Gateway Checklist
 
 Verify:
 
@@ -646,7 +646,7 @@ Verify:
 
 ---
 
-# 30. TLS Checklist
+## 30. TLS Checklist
 
 Verify:
 
@@ -661,7 +661,7 @@ Verify:
 
 ---
 
-# 31. Storage Checklist
+## 31. Storage Checklist
 
 For stateful applications:
 
@@ -679,7 +679,7 @@ For stateful applications:
 
 ---
 
-# 32. CSI Checklist
+## 32. CSI Checklist
 
 Verify:
 
@@ -695,7 +695,7 @@ Verify:
 
 ---
 
-# 33. Persistent Data Checklist
+## 33. Persistent Data Checklist
 
 For databases:
 
@@ -711,7 +711,7 @@ For databases:
 
 ---
 
-# 34. Storage Performance
+## 34. Storage Performance
 
 Monitor:
 
@@ -728,7 +728,7 @@ Ensure storage performance matches application requirements.
 
 ---
 
-# 35. Scheduling Checklist
+## 35. Scheduling Checklist
 
 Review:
 
@@ -747,7 +747,7 @@ Avoid unnecessarily strict scheduling rules that prevent recovery.
 
 ---
 
-# 36. High Availability Checklist
+## 36. High Availability Checklist
 
 For critical applications:
 
@@ -764,7 +764,7 @@ For critical applications:
 
 ---
 
-# 37. PodDisruptionBudget Checklist
+## 37. PodDisruptionBudget Checklist
 
 For critical services:
 
@@ -779,7 +779,7 @@ Do not configure PDBs so strictly that they prevent necessary maintenance indefi
 
 ---
 
-# 38. Resource Requests Checklist
+## 38. Resource Requests Checklist
 
 Every production workload should have realistic requests.
 
@@ -802,7 +802,7 @@ Autoscaling
 
 ---
 
-# 39. Resource Limits Checklist
+## 39. Resource Limits Checklist
 
 Evaluate:
 
@@ -818,7 +818,7 @@ Do not blindly apply identical limits to every workload.
 
 ---
 
-# 40. ResourceQuota Checklist
+## 40. ResourceQuota Checklist
 
 For namespaces:
 
@@ -832,7 +832,7 @@ For namespaces:
 
 ---
 
-# 41. LimitRange Checklist
+## 41. LimitRange Checklist
 
 Define reasonable defaults where appropriate:
 
@@ -846,7 +846,7 @@ Define reasonable defaults where appropriate:
 
 ---
 
-# 42. Autoscaling Checklist
+## 42. Autoscaling Checklist
 
 Evaluate:
 
@@ -860,7 +860,7 @@ Understand their interactions before enabling all three for the same workload.
 
 ---
 
-# 43. HPA Checklist
+## 43. HPA Checklist
 
 Verify:
 
@@ -877,7 +877,7 @@ Verify:
 
 ---
 
-# 44. Cluster Autoscaler Checklist
+## 44. Cluster Autoscaler Checklist
 
 Verify:
 
@@ -893,7 +893,7 @@ Verify:
 
 ---
 
-# 45. Observability Checklist
+## 45. Observability Checklist
 
 A production platform should provide:
 
@@ -908,7 +908,7 @@ Dashboards
 
 ---
 
-# 46. Logging Checklist
+## 46. Logging Checklist
 
 Verify:
 
@@ -924,7 +924,7 @@ Verify:
 
 ---
 
-# 47. Logging Security
+## 47. Logging Security
 
 Never intentionally log:
 
@@ -941,7 +941,7 @@ Review application logs for accidental secret exposure.
 
 ---
 
-# 48. Metrics Checklist
+## 48. Metrics Checklist
 
 Monitor:
 
@@ -960,7 +960,7 @@ Storage
 
 ---
 
-# 49. Application Metrics
+## 49. Application Metrics
 
 At minimum consider:
 
@@ -975,7 +975,7 @@ Also monitor important business metrics where appropriate.
 
 ---
 
-# 50. Prometheus Checklist
+## 50. Prometheus Checklist
 
 Verify:
 
@@ -991,7 +991,7 @@ Verify:
 
 ---
 
-# 51. Grafana Checklist
+## 51. Grafana Checklist
 
 Verify:
 
@@ -1005,7 +1005,7 @@ Verify:
 
 ---
 
-# 52. Alerting Checklist
+## 52. Alerting Checklist
 
 Every critical alert should have:
 
@@ -1022,7 +1022,7 @@ Avoid alerts that provide no actionable response.
 
 ---
 
-# 53. Alert Categories
+## 53. Alert Categories
 
 Useful categories:
 
@@ -1041,7 +1041,7 @@ Disaster Recovery
 
 ---
 
-# 54. Distributed Tracing Checklist
+## 54. Distributed Tracing Checklist
 
 Verify where appropriate:
 
@@ -1056,7 +1056,7 @@ Verify where appropriate:
 
 ---
 
-# 55. SLO Checklist
+## 55. SLO Checklist
 
 Define service objectives.
 
@@ -1077,7 +1077,7 @@ Error Budget
 
 ---
 
-# 56. Backup Checklist
+## 56. Backup Checklist
 
 Backup:
 
@@ -1094,7 +1094,7 @@ Use appropriate backup mechanisms for your environment.
 
 ---
 
-# 57. Backup Validation
+## 57. Backup Validation
 
 A backup is not considered reliable until restoration is tested.
 
@@ -1111,7 +1111,7 @@ Verify:
 
 ---
 
-# 58. Backup Security
+## 58. Backup Security
 
 Protect backups using:
 
@@ -1126,7 +1126,7 @@ Immutable / Protected Storage where appropriate
 
 ---
 
-# 59. Disaster Recovery Checklist
+## 59. Disaster Recovery Checklist
 
 Define:
 
@@ -1144,7 +1144,7 @@ Define:
 
 ---
 
-# 60. DR Testing
+## 60. DR Testing
 
 Perform periodic recovery exercises.
 
@@ -1166,7 +1166,7 @@ Measure RTO/RPO
 
 ---
 
-# 61. Upgrade Checklist
+## 61. Upgrade Checklist
 
 Before upgrade:
 
@@ -1185,7 +1185,7 @@ Before upgrade:
 
 ---
 
-# 62. Upgrade Execution
+## 62. Upgrade Execution
 
 During upgrade:
 
@@ -1201,7 +1201,7 @@ During upgrade:
 
 ---
 
-# 63. Post-Upgrade Validation
+## 63. Post-Upgrade Validation
 
 Verify:
 
@@ -1219,7 +1219,7 @@ Verify:
 
 ---
 
-# 64. Maintenance Checklist
+## 64. Maintenance Checklist
 
 Before maintenance:
 
@@ -1234,7 +1234,7 @@ Before maintenance:
 
 ---
 
-# 65. Node Maintenance
+## 65. Node Maintenance
 
 Typical workflow:
 
@@ -1263,7 +1263,7 @@ kubectl get pods -A
 
 ---
 
-# 66. Production Change Checklist
+## 66. Production Change Checklist
 
 Before change:
 
@@ -1278,7 +1278,7 @@ Before change:
 
 ---
 
-# 67. GitOps Checklist
+## 67. GitOps Checklist
 
 For GitOps-managed environments:
 
@@ -1295,7 +1295,7 @@ For GitOps-managed environments:
 
 ---
 
-# 68. CI/CD Checklist
+## 68. CI/CD Checklist
 
 Pipeline:
 
@@ -1325,7 +1325,7 @@ Validate
 
 ---
 
-# 69. CI/CD Security Gates
+## 69. CI/CD Security Gates
 
 Evaluate:
 
@@ -1342,7 +1342,7 @@ Evaluate:
 
 ---
 
-# 70. Helm Checklist
+## 70. Helm Checklist
 
 Verify:
 
@@ -1365,7 +1365,7 @@ helm lint <chart>
 
 ---
 
-# 71. Kustomize Checklist
+## 71. Kustomize Checklist
 
 Verify:
 
@@ -1385,7 +1385,7 @@ kubectl kustomize overlays/production
 
 ---
 
-# 72. Operator Checklist
+## 72. Operator Checklist
 
 For Operators:
 
@@ -1400,7 +1400,7 @@ For Operators:
 
 ---
 
-# 73. Service Mesh Checklist
+## 73. Service Mesh Checklist
 
 If using a service mesh:
 
@@ -1421,7 +1421,7 @@ Avoid enabling complex traffic policies without understanding their failure beha
 
 ---
 
-# 74. Security Operations Checklist
+## 74. Security Operations Checklist
 
 Daily review:
 
@@ -1437,7 +1437,7 @@ Daily review:
 
 ---
 
-# 75. Vulnerability Management
+## 75. Vulnerability Management
 
 Track:
 
@@ -1465,7 +1465,7 @@ Sensitive Workloads
 
 ---
 
-# 76. Image Vulnerability Management
+## 76. Image Vulnerability Management
 
 Regularly scan:
 
@@ -1482,7 +1482,7 @@ Rebuild images when vulnerabilities require remediation.
 
 ---
 
-# 77. Runtime Security Checklist
+## 77. Runtime Security Checklist
 
 Monitor for:
 
@@ -1497,7 +1497,7 @@ Credential Access
 
 ---
 
-# 78. Kubernetes Audit Checklist
+## 78. Kubernetes Audit Checklist
 
 Where supported and configured, review:
 
@@ -1515,7 +1515,7 @@ Protect audit logs from unauthorized modification.
 
 ---
 
-# 79. Compliance Checklist
+## 79. Compliance Checklist
 
 Map Kubernetes controls to applicable requirements.
 
@@ -1536,7 +1536,7 @@ Data Protection
 
 ---
 
-# 80. Security Incident Response Checklist
+## 80. Security Incident Response Checklist
 
 ```text
 ☐ Detect
@@ -1555,7 +1555,7 @@ Data Protection
 
 ---
 
-# 81. Incident Response Questions
+## 81. Incident Response Questions
 
 Ask:
 
@@ -1574,7 +1574,7 @@ What controls failed?
 
 ---
 
-# 82. Production Go-Live Checklist
+## 82. Production Go-Live Checklist
 
 Before go-live:
 
@@ -1595,7 +1595,7 @@ Before go-live:
 
 ---
 
-# 83. Load Testing Checklist
+## 83. Load Testing Checklist
 
 Test:
 
@@ -1621,7 +1621,7 @@ Scaling
 
 ---
 
-# 84. Failure Testing Checklist
+## 84. Failure Testing Checklist
 
 Intentionally test:
 
@@ -1640,7 +1640,7 @@ The goal is to validate recovery, not merely to cause outages.
 
 ---
 
-# 85. Chaos Engineering
+## 85. Chaos Engineering
 
 Start with controlled experiments.
 
@@ -1661,7 +1661,7 @@ Gradually increase complexity.
 
 ---
 
-# 86. Production Readiness Scorecard
+## 86. Production Readiness Scorecard
 
 | Area | Status |
 |---|---|
@@ -1684,7 +1684,7 @@ Gradually increase complexity.
 
 ---
 
-# 87. Daily Operations Checklist
+## 87. Daily Operations Checklist
 
 Every day:
 
@@ -1702,7 +1702,7 @@ Every day:
 
 ---
 
-# 88. Weekly Operations Checklist
+## 88. Weekly Operations Checklist
 
 Every week:
 
@@ -1721,7 +1721,7 @@ Every week:
 
 ---
 
-# 89. Monthly Operations Checklist
+## 89. Monthly Operations Checklist
 
 Every month:
 
@@ -1740,7 +1740,7 @@ Every month:
 
 ---
 
-# 90. Quarterly Operations Checklist
+## 90. Quarterly Operations Checklist
 
 Every quarter:
 
@@ -1759,7 +1759,7 @@ Every quarter:
 
 ---
 
-# 91. Cluster Cost Optimization
+## 91. Cluster Cost Optimization
 
 Review:
 
@@ -1778,7 +1778,7 @@ Monitoring Costs
 
 ---
 
-# 92. Resource Optimization
+## 92. Resource Optimization
 
 Compare:
 
@@ -1812,7 +1812,7 @@ Performance
 
 ---
 
-# 93. Idle Resource Cleanup
+## 93. Idle Resource Cleanup
 
 Identify:
 
@@ -1830,7 +1830,7 @@ Never delete resources solely because they appear unused without confirming owne
 
 ---
 
-# 94. Production Documentation Checklist
+## 94. Production Documentation Checklist
 
 Maintain:
 
@@ -1852,7 +1852,7 @@ Maintain:
 
 ---
 
-# 95. Runbook Checklist
+## 95. Runbook Checklist
 
 Every critical service should have:
 
@@ -1869,7 +1869,7 @@ Every critical service should have:
 
 ---
 
-# 96. Ownership Checklist
+## 96. Ownership Checklist
 
 For every production workload define:
 
@@ -1885,7 +1885,7 @@ Avoid services with no clearly defined owner.
 
 ---
 
-# 97. Dependency Inventory
+## 97. Dependency Inventory
 
 Document:
 
@@ -1909,7 +1909,7 @@ Know which dependencies are critical.
 
 ---
 
-# 98. External Dependency Checklist
+## 98. External Dependency Checklist
 
 For external services:
 
@@ -1925,7 +1925,7 @@ For external services:
 
 ---
 
-# 99. Graceful Shutdown Checklist
+## 99. Graceful Shutdown Checklist
 
 Applications should handle termination appropriately.
 
@@ -1957,7 +1957,7 @@ Process Exit
 
 ---
 
-# 100. Production Networking Checklist
+## 100. Production Networking Checklist
 
 Verify:
 
@@ -1975,7 +1975,7 @@ Verify:
 
 ---
 
-# 101. Production Storage Checklist
+## 101. Production Storage Checklist
 
 Verify:
 
@@ -1994,7 +1994,7 @@ Verify:
 
 ---
 
-# 102. Production Security Checklist
+## 102. Production Security Checklist
 
 ```text
 ☐ Authentication
@@ -2014,7 +2014,7 @@ Verify:
 
 ---
 
-# 103. Production Observability Checklist
+## 103. Production Observability Checklist
 
 ```text
 ☐ Metrics
@@ -2029,7 +2029,7 @@ Verify:
 
 ---
 
-# 104. Production Reliability Checklist
+## 104. Production Reliability Checklist
 
 ```text
 ☐ Multiple replicas
@@ -2044,7 +2044,7 @@ Verify:
 
 ---
 
-# 105. Production Deployment Checklist
+## 105. Production Deployment Checklist
 
 Before deployment:
 
@@ -2082,7 +2082,7 @@ After deployment:
 
 ---
 
-# 106. Production Rollback Checklist
+## 106. Production Rollback Checklist
 
 Before rollback:
 
@@ -2110,7 +2110,7 @@ Then validate:
 
 ---
 
-# 107. Incident Postmortem Checklist
+## 107. Incident Postmortem Checklist
 
 After a significant incident:
 
@@ -2129,7 +2129,7 @@ After a significant incident:
 
 ---
 
-# 108. Blameless Postmortem
+## 108. Blameless Postmortem
 
 Focus on:
 
@@ -2146,7 +2146,7 @@ Avoid reducing the analysis to individual blame.
 
 ---
 
-# 109. Production Security Review Questions
+## 109. Production Security Review Questions
 
 Ask:
 
@@ -2172,7 +2172,7 @@ Can we detect suspicious behavior?
 
 ---
 
-# 110. Production Reliability Review Questions
+## 110. Production Reliability Review Questions
 
 Ask:
 
@@ -2198,7 +2198,7 @@ What happens if the entire cluster is lost?
 
 ---
 
-# 111. Production Observability Questions
+## 111. Production Observability Questions
 
 Ask:
 
@@ -2220,7 +2220,7 @@ Can we identify recurring patterns?
 
 ---
 
-# 112. Production Security Operations Questions
+## 112. Production Security Operations Questions
 
 Ask:
 
@@ -2244,7 +2244,7 @@ Can we preserve forensic evidence?
 
 ---
 
-# 113. Go-Live Approval
+## 113. Go-Live Approval
 
 A production workload should not be approved until:
 
@@ -2267,7 +2267,7 @@ Ownership
 
 ---
 
-# 114. Production Readiness Gate
+## 114. Production Readiness Gate
 
 Use:
 
@@ -2295,7 +2295,7 @@ Overall = RED
 
 ---
 
-# 115. Emergency Change Checklist
+## 115. Emergency Change Checklist
 
 Emergency changes should still have:
 
@@ -2319,7 +2319,7 @@ After the emergency:
 
 ---
 
-# 116. Decommissioning Checklist
+## 116. Decommissioning Checklist
 
 When retiring an application:
 
@@ -2344,7 +2344,7 @@ Be especially careful with persistent data.
 
 ---
 
-# 117. Cluster Decommissioning
+## 117. Cluster Decommissioning
 
 Before destroying a cluster:
 
@@ -2364,9 +2364,9 @@ Before destroying a cluster:
 
 ---
 
-# 118. Final Production Checklist
+## 118. Final Production Checklist
 
-## Cluster
+### Cluster
 
 ```text
 ☐ HA
@@ -2378,7 +2378,7 @@ Before destroying a cluster:
 ☐ DNS healthy
 ```
 
-## Workloads
+### Workloads
 
 ```text
 ☐ Replicas
@@ -2390,7 +2390,7 @@ Before destroying a cluster:
 ☐ Scheduling
 ```
 
-## Networking
+### Networking
 
 ```text
 ☐ Services
@@ -2401,7 +2401,7 @@ Before destroying a cluster:
 ☐ NetworkPolicy
 ```
 
-## Storage
+### Storage
 
 ```text
 ☐ PV
@@ -2412,7 +2412,7 @@ Before destroying a cluster:
 ☐ Restore
 ```
 
-## Security
+### Security
 
 ```text
 ☐ RBAC
@@ -2425,7 +2425,7 @@ Before destroying a cluster:
 ☐ Audit
 ```
 
-## Observability
+### Observability
 
 ```text
 ☐ Metrics
@@ -2436,7 +2436,7 @@ Before destroying a cluster:
 ☐ SLOs
 ```
 
-## Operations
+### Operations
 
 ```text
 ☐ GitOps
@@ -2448,7 +2448,7 @@ Before destroying a cluster:
 ☐ Incident Response
 ```
 
-## Recovery
+### Recovery
 
 ```text
 ☐ Backup
@@ -2461,7 +2461,7 @@ Before destroying a cluster:
 
 ---
 
-# 119. Kubernetes Production Readiness Score
+## 119. Kubernetes Production Readiness Score
 
 A practical internal scoring model can use:
 
@@ -2495,7 +2495,7 @@ Use the score as an internal assessment tool, not as a universal Kubernetes stan
 
 ---
 
-# 120. Final Operations Philosophy
+## 120. Final Operations Philosophy
 
 Production Kubernetes is not simply:
 
@@ -2529,7 +2529,7 @@ Improve
 
 ---
 
-# 121. The Kubernetes Production Lifecycle
+## 121. The Kubernetes Production Lifecycle
 
 ```text
                     DESIGN
@@ -2566,9 +2566,9 @@ Improve
 
 ---
 
-# 122. Final Kubernetes Operations Principles
+## 122. Final Kubernetes Operations Principles
 
-## Principle 1 – Automate
+### Principle 1 – Automate
 
 Automate repetitive operational work.
 
@@ -2583,7 +2583,7 @@ Security
 
 ---
 
-## Principle 2 – Observe
+### Principle 2 – Observe
 
 Everything important should be observable.
 
@@ -2596,7 +2596,7 @@ Events
 
 ---
 
-## Principle 3 – Secure by Default
+### Principle 3 – Secure by Default
 
 Prefer:
 
@@ -2610,7 +2610,7 @@ Strong Identity
 
 ---
 
-## Principle 4 – Design for Failure
+### Principle 4 – Design for Failure
 
 Assume:
 
@@ -2625,7 +2625,7 @@ Dependencies fail
 
 ---
 
-## Principle 5 – Test Recovery
+### Principle 5 – Test Recovery
 
 A documented recovery procedure is not enough.
 
@@ -2641,13 +2641,13 @@ Validate
 
 ---
 
-## Principle 6 – Make Changes Reversible
+### Principle 6 – Make Changes Reversible
 
 Every significant production change should have a rollback or recovery strategy.
 
 ---
 
-## Principle 7 – Minimize Blast Radius
+### Principle 7 – Minimize Blast Radius
 
 Prefer:
 
@@ -2662,7 +2662,7 @@ Failure Domains
 
 ---
 
-## Principle 8 – Treat Kubernetes as a Platform
+### Principle 8 – Treat Kubernetes as a Platform
 
 Kubernetes is not only a container scheduler.
 
@@ -2682,7 +2682,7 @@ Recovery
 
 ---
 
-# 123. Final Production Command Set
+## 123. Final Production Command Set
 
 Frequently useful commands:
 
@@ -2736,7 +2736,7 @@ kubectl uncordon <node>
 
 ---
 
-# 124. Final Troubleshooting Formula
+## 124. Final Troubleshooting Formula
 
 ```text
 Symptoms
@@ -2768,7 +2768,7 @@ Automation / Prevention
 
 ---
 
-# 125. Final Security Formula
+## 125. Final Security Formula
 
 ```text
 Strong Identity
@@ -2790,7 +2790,7 @@ Defense in Depth
 
 ---
 
-# 126. Final Reliability Formula
+## 126. Final Reliability Formula
 
 ```text
 Multiple Replicas
@@ -2812,7 +2812,7 @@ Resilient Platform
 
 ---
 
-# 127. Final Observability Formula
+## 127. Final Observability Formula
 
 ```text
 Metrics
@@ -2832,7 +2832,7 @@ Operational Visibility
 
 ---
 
-# 128. Final Operations Formula
+## 128. Final Operations Formula
 
 ```text
 Automation
@@ -2854,7 +2854,7 @@ Production Operations
 
 ---
 
-# 129. Complete Kubernetes Learning Journey
+## 129. Complete Kubernetes Learning Journey
 
 You have now covered the Kubernetes learning path from fundamentals through production operations:
 
@@ -2920,7 +2920,7 @@ Production Operations
 
 ---
 
-# 130. Final Production Readiness Checklist
+## 130. Final Production Readiness Checklist
 
 Before declaring a Kubernetes environment production-ready:
 
@@ -2964,11 +2964,11 @@ Before declaring a Kubernetes environment production-ready:
 
 ---
 
-# Final Takeaways
+## Final Takeaways
 
 A production Kubernetes environment should satisfy five fundamental questions:
 
-### 1. Can we deploy safely?
+#### 1. Can we deploy safely?
 
 ```text
 CI/CD
@@ -2977,7 +2977,7 @@ Testing
 Rollback
 ```
 
-### 2. Can we keep it secure?
+#### 2. Can we keep it secure?
 
 ```text
 Identity
@@ -2988,7 +2988,7 @@ Image Security
 Runtime Security
 ```
 
-### 3. Can we observe it?
+#### 3. Can we observe it?
 
 ```text
 Metrics
@@ -2998,7 +2998,7 @@ Alerts
 SLOs
 ```
 
-### 4. Can we recover it?
+#### 4. Can we recover it?
 
 ```text
 Backup
@@ -3008,7 +3008,7 @@ DR
 Failure Testing
 ```
 
-### 5. Can we operate it?
+#### 5. Can we operate it?
 
 ```text
 Runbooks
@@ -3023,7 +3023,7 @@ If any of these areas is missing, production readiness is incomplete.
 
 ---
 
-# Final Kubernetes Operations Mindset
+## Final Kubernetes Operations Mindset
 
 ```text
                     BUILD
@@ -3061,7 +3061,7 @@ If any of these areas is missing, production readiness is incomplete.
 
 ---
 
-# Course Completion
+## Course Completion
 
 With this chapter, the practical Kubernetes curriculum is complete.
 
@@ -3113,7 +3113,7 @@ Chapter 89 → Production Operations Checklist
 
 ---
 
-# Final Goal
+## Final Goal
 
 The end goal is not simply to memorize Kubernetes commands.
 

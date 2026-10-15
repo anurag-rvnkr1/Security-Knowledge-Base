@@ -58,7 +58,7 @@ Rollback if Required
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -140,7 +140,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Helm?
+## What Is Helm?
 
 Helm is a tool for managing Kubernetes applications.
 
@@ -164,7 +164,7 @@ Dependencies
 
 ---
 
-# Why Helm?
+## Why Helm?
 
 Without Helm:
 
@@ -189,7 +189,7 @@ Helm can generate the required Kubernetes resources from templates.
 
 ---
 
-# Helm Architecture
+## Helm Architecture
 
 Conceptually:
 
@@ -213,7 +213,7 @@ Conceptually:
 
 ---
 
-# Helm Components
+## Helm Components
 
 Important Helm concepts include:
 
@@ -231,7 +231,7 @@ Hooks
 
 ---
 
-# Helm Chart
+## Helm Chart
 
 A Chart is a package containing Kubernetes application definitions.
 
@@ -251,7 +251,7 @@ api-chart/
 
 ---
 
-# Chart Structure
+## Chart Structure
 
 A typical Chart:
 
@@ -275,7 +275,7 @@ mychart/
 
 ---
 
-# Chart.yaml
+## Chart.yaml
 
 `Chart.yaml` contains Chart metadata.
 
@@ -292,7 +292,7 @@ appVersion: "2.4.0"
 
 ---
 
-# Chart Version
+## Chart Version
 
 The:
 
@@ -304,7 +304,7 @@ represents the version of the Helm Chart itself.
 
 ---
 
-# App Version
+## App Version
 
 The:
 
@@ -318,7 +318,7 @@ These are different concepts.
 
 ---
 
-# `values.yaml`
+## `values.yaml`
 
 `values.yaml` contains default configuration values.
 
@@ -338,7 +338,7 @@ service:
 
 ---
 
-# Templates
+## Templates
 
 Templates contain Kubernetes manifests with dynamic values.
 
@@ -355,7 +355,7 @@ spec:
 
 ---
 
-# Helm Template Engine
+## Helm Template Engine
 
 Helm uses Go template syntax.
 
@@ -379,7 +379,7 @@ replicas: 3
 
 ---
 
-# Helm Rendering
+## Helm Rendering
 
 The process is:
 
@@ -397,7 +397,7 @@ Kubernetes
 
 ---
 
-# Helm Release
+## Helm Release
 
 A release is an installed instance of a Helm Chart.
 
@@ -421,7 +421,7 @@ production-api
 
 ---
 
-# Multiple Releases
+## Multiple Releases
 
 ```text
                 Helm Chart
@@ -435,7 +435,7 @@ Each release can use different values.
 
 ---
 
-# Helm Repository
+## Helm Repository
 
 A Helm repository stores Charts.
 
@@ -453,7 +453,7 @@ helm install
 
 ---
 
-# Helm Registry
+## Helm Registry
 
 Modern Helm workflows can also use OCI-compatible registries.
 
@@ -469,7 +469,7 @@ Helm
 
 ---
 
-# Installing Helm
+## Installing Helm
 
 After installing Helm, verify:
 
@@ -479,7 +479,7 @@ helm version
 
 ---
 
-# Helm Help
+## Helm Help
 
 ```bash
 helm help
@@ -487,7 +487,7 @@ helm help
 
 ---
 
-# Helm Commands
+## Helm Commands
 
 Important commands:
 
@@ -511,7 +511,7 @@ helm test
 
 ---
 
-# Create a Chart
+## Create a Chart
 
 Create a new Chart:
 
@@ -523,7 +523,7 @@ This generates a starter structure.
 
 ---
 
-# List Chart Files
+## List Chart Files
 
 ```bash
 tree mychart
@@ -533,7 +533,7 @@ or inspect the directory manually.
 
 ---
 
-# Helm Lint
+## Helm Lint
 
 Validate Chart structure:
 
@@ -543,7 +543,7 @@ helm lint ./mychart
 
 ---
 
-# Why Use `helm lint`?
+## Why Use `helm lint`?
 
 It can identify common Chart problems before installation.
 
@@ -557,7 +557,7 @@ Potential Configuration Errors
 
 ---
 
-# Helm Template
+## Helm Template
 
 Render the Chart locally:
 
@@ -569,7 +569,7 @@ This displays the generated Kubernetes manifests without installing them.
 
 ---
 
-# Debug Rendering
+## Debug Rendering
 
 Use:
 
@@ -581,7 +581,7 @@ Useful for troubleshooting template rendering.
 
 ---
 
-# Helm Install
+## Helm Install
 
 Install a Chart:
 
@@ -591,7 +591,7 @@ helm install myrelease ./mychart
 
 ---
 
-# Specify Namespace
+## Specify Namespace
 
 ```bash
 helm install myrelease ./mychart \
@@ -601,7 +601,7 @@ helm install myrelease ./mychart \
 
 ---
 
-# Set Values During Installation
+## Set Values During Installation
 
 Example:
 
@@ -612,7 +612,7 @@ helm install myrelease ./mychart \
 
 ---
 
-# Values File
+## Values File
 
 Create:
 
@@ -629,7 +629,7 @@ helm install myrelease ./mychart \
 
 ---
 
-# Multiple Values Files
+## Multiple Values Files
 
 Helm allows multiple values files.
 
@@ -645,7 +645,7 @@ Later values generally override earlier values where keys overlap.
 
 ---
 
-# Value Precedence
+## Value Precedence
 
 A simplified model is:
 
@@ -665,7 +665,7 @@ Always verify the final rendered configuration rather than relying on memory of 
 
 ---
 
-# Helm Upgrade
+## Helm Upgrade
 
 Upgrade an existing release:
 
@@ -675,7 +675,7 @@ helm upgrade myrelease ./mychart
 
 ---
 
-# Install or Upgrade
+## Install or Upgrade
 
 Use:
 
@@ -687,7 +687,7 @@ This is useful in automation because it handles both cases.
 
 ---
 
-# Helm Status
+## Helm Status
 
 ```bash
 helm status myrelease
@@ -697,7 +697,7 @@ Provides release information and status.
 
 ---
 
-# Helm List
+## Helm List
 
 List releases:
 
@@ -713,7 +713,7 @@ helm list -A
 
 ---
 
-# Helm History
+## Helm History
 
 View release revisions:
 
@@ -732,7 +732,7 @@ REVISION   STATUS
 
 ---
 
-# Helm Rollback
+## Helm Rollback
 
 Rollback to a previous revision:
 
@@ -742,7 +742,7 @@ helm rollback myrelease 1
 
 ---
 
-# Helm Uninstall
+## Helm Uninstall
 
 Remove a release:
 
@@ -754,7 +754,7 @@ Be careful when uninstalling production workloads.
 
 ---
 
-# Helm Get
+## Helm Get
 
 Inspect release information:
 
@@ -772,7 +772,7 @@ helm get hooks myrelease
 
 ---
 
-# Helm Values
+## Helm Values
 
 Retrieve configured values:
 
@@ -788,7 +788,7 @@ helm get values myrelease --all
 
 ---
 
-# Basic Template Variables
+## Basic Template Variables
 
 Example:
 
@@ -804,7 +804,7 @@ values.yaml
 
 ---
 
-# The Dot (`.`)
+## The Dot (`.`)
 
 In Helm templates, `.` represents the current template context.
 
@@ -816,7 +816,7 @@ Example:
 
 ---
 
-# Built-In Objects
+## Built-In Objects
 
 Common Helm objects include:
 
@@ -831,7 +831,7 @@ Common Helm objects include:
 
 ---
 
-# `.Values`
+## `.Values`
 
 Access Chart values.
 
@@ -843,7 +843,7 @@ Example:
 
 ---
 
-# `.Release`
+## `.Release`
 
 Provides information about the current release.
 
@@ -855,7 +855,7 @@ Example:
 
 ---
 
-# `.Chart`
+## `.Chart`
 
 Provides Chart metadata.
 
@@ -867,7 +867,7 @@ Example:
 
 ---
 
-# `.Capabilities`
+## `.Capabilities`
 
 Provides information about Kubernetes capabilities available during rendering.
 
@@ -879,19 +879,19 @@ Example:
 
 ---
 
-# `.Files`
+## `.Files`
 
 Provides access to files packaged within the Chart, subject to Helm's Chart file rules.
 
 ---
 
-# `.Template`
+## `.Template`
 
 Provides information about the current template.
 
 ---
 
-# Template Functions
+## Template Functions
 
 Helm provides many template functions.
 
@@ -912,7 +912,7 @@ lookup
 
 ---
 
-# `default`
+## `default`
 
 Provides a fallback value.
 
@@ -926,7 +926,7 @@ If `replicaCount` is empty or unset, the default may be used according to Helm t
 
 ---
 
-# `required`
+## `required`
 
 Require a value.
 
@@ -940,7 +940,7 @@ If the value is missing, template rendering fails.
 
 ---
 
-# `quote`
+## `quote`
 
 Example:
 
@@ -950,7 +950,7 @@ value: {{ .Values.environment | quote }}
 
 ---
 
-# Pipelines
+## Pipelines
 
 Functions can be chained using pipelines.
 
@@ -972,7 +972,7 @@ Output
 
 ---
 
-# `toYaml`
+## `toYaml`
 
 Convert structured values into YAML.
 
@@ -985,7 +985,7 @@ resources:
 
 ---
 
-# `nindent`
+## `nindent`
 
 Adds indentation and a newline.
 
@@ -997,7 +997,7 @@ Example:
 
 ---
 
-# `include`
+## `include`
 
 Render a named template.
 
@@ -1009,7 +1009,7 @@ name: {{ include "api.fullname" . }}
 
 ---
 
-# Named Templates
+## Named Templates
 
 Named templates are often stored in:
 
@@ -1027,7 +1027,7 @@ Example:
 
 ---
 
-# `_helpers.tpl`
+## `_helpers.tpl`
 
 Helpers reduce repeated template logic.
 
@@ -1043,7 +1043,7 @@ Service Account Name
 
 ---
 
-# Standard Labels
+## Standard Labels
 
 A helper can generate:
 
@@ -1065,7 +1065,7 @@ Troubleshooting
 
 ---
 
-# `if`
+## `if`
 
 Conditionals:
 
@@ -1079,7 +1079,7 @@ kind: Ingress
 
 ---
 
-# `else`
+## `else`
 
 Example:
 
@@ -1093,7 +1093,7 @@ disabled
 
 ---
 
-# `with`
+## `with`
 
 `with` changes the current context.
 
@@ -1107,7 +1107,7 @@ host: {{ .host }}
 
 ---
 
-# `range`
+## `range`
 
 Used for iteration.
 
@@ -1121,7 +1121,7 @@ Example:
 
 ---
 
-# Variables
+## Variables
 
 Template variables can be created using:
 
@@ -1137,7 +1137,7 @@ Then:
 
 ---
 
-# `tpl`
+## `tpl`
 
 `tpl` evaluates a string as a Helm template.
 
@@ -1151,7 +1151,7 @@ Use carefully because it allows values to contain template expressions.
 
 ---
 
-# `lookup`
+## `lookup`
 
 `lookup` can query existing Kubernetes resources during template rendering.
 
@@ -1169,7 +1169,7 @@ Use carefully because this can make rendering dependent on cluster state.
 
 ---
 
-# Conditional Resources
+## Conditional Resources
 
 Example:
 
@@ -1188,7 +1188,7 @@ Template:
 
 ---
 
-# Environment-Specific Values
+## Environment-Specific Values
 
 Development:
 
@@ -1214,7 +1214,7 @@ resources:
 
 ---
 
-# Values File Structure
+## Values File Structure
 
 Example:
 
@@ -1236,7 +1236,7 @@ ingress:
 
 ---
 
-# Schema Validation
+## Schema Validation
 
 Charts can define:
 
@@ -1257,7 +1257,7 @@ Structure
 
 ---
 
-# Chart Dependencies
+## Chart Dependencies
 
 A Chart can depend on other Charts.
 
@@ -1274,7 +1274,7 @@ Dependencies can be declared in `Chart.yaml`.
 
 ---
 
-# Example Dependency
+## Example Dependency
 
 ```yaml
 dependencies:
@@ -1287,7 +1287,7 @@ Use controlled versions and trusted sources.
 
 ---
 
-# Helm Dependency Update
+## Helm Dependency Update
 
 ```bash
 helm dependency update ./mychart
@@ -1295,7 +1295,7 @@ helm dependency update ./mychart
 
 ---
 
-# Helm Dependency Build
+## Helm Dependency Build
 
 ```bash
 helm dependency build ./mychart
@@ -1303,7 +1303,7 @@ helm dependency build ./mychart
 
 ---
 
-# Subcharts
+## Subcharts
 
 A dependency can function as a subchart of the parent Chart.
 
@@ -1311,7 +1311,7 @@ Parent configuration may pass values to the subchart.
 
 ---
 
-# Global Values
+## Global Values
 
 Helm supports global values:
 
@@ -1326,7 +1326,7 @@ Use global configuration carefully to avoid hidden coupling.
 
 ---
 
-# Library Charts
+## Library Charts
 
 Library Charts provide reusable template helpers instead of directly deploying an application.
 
@@ -1341,7 +1341,7 @@ Common Templates
 
 ---
 
-# Helm Hooks
+## Helm Hooks
 
 Hooks allow certain resources or Jobs to execute at lifecycle points.
 
@@ -1358,7 +1358,7 @@ post-rollback
 
 ---
 
-# Hook Example
+## Hook Example
 
 Conceptually:
 
@@ -1370,7 +1370,7 @@ metadata:
 
 ---
 
-# Hook Use Cases
+## Hook Use Cases
 
 Possible use cases:
 
@@ -1385,7 +1385,7 @@ Use hooks carefully because they can complicate deployment behavior.
 
 ---
 
-# Helm Tests
+## Helm Tests
 
 Helm supports test hooks.
 
@@ -1405,7 +1405,7 @@ helm test myrelease
 
 ---
 
-# Helm Tests
+## Helm Tests
 
 Tests can validate:
 
@@ -1417,7 +1417,7 @@ Basic Functionality
 
 ---
 
-# Helm Package
+## Helm Package
 
 Package a Chart:
 
@@ -1433,7 +1433,7 @@ mychart-1.0.0.tgz
 
 ---
 
-# Helm Repository Index
+## Helm Repository Index
 
 Traditional Chart repositories use an index describing available Charts.
 
@@ -1449,7 +1449,7 @@ index.yaml
 
 ---
 
-# Helm Repo Add
+## Helm Repo Add
 
 Example:
 
@@ -1459,7 +1459,7 @@ helm repo add example https://charts.example.com
 
 ---
 
-# Helm Repo Update
+## Helm Repo Update
 
 ```bash
 helm repo update
@@ -1467,7 +1467,7 @@ helm repo update
 
 ---
 
-# Helm Search
+## Helm Search
 
 Search repositories:
 
@@ -1477,7 +1477,7 @@ helm search repo nginx
 
 ---
 
-# Helm Pull
+## Helm Pull
 
 Download a Chart:
 
@@ -1487,7 +1487,7 @@ helm pull example/api
 
 ---
 
-# OCI Registries
+## OCI Registries
 
 Helm supports OCI-based Chart storage.
 
@@ -1501,7 +1501,7 @@ OCI Registry
 
 ---
 
-# OCI Authentication
+## OCI Authentication
 
 Authentication depends on the registry.
 
@@ -1513,7 +1513,7 @@ helm registry login registry.example.com
 
 ---
 
-# OCI Chart Push
+## OCI Chart Push
 
 A packaged Chart can be pushed to an OCI registry.
 
@@ -1525,7 +1525,7 @@ helm push mychart-1.0.0.tgz oci://registry.example.com/charts
 
 ---
 
-# OCI Chart Pull
+## OCI Chart Pull
 
 ```bash
 helm pull oci://registry.example.com/charts/mychart \
@@ -1534,7 +1534,7 @@ helm pull oci://registry.example.com/charts/mychart \
 
 ---
 
-# Chart Signing
+## Chart Signing
 
 Chart signing can provide integrity and provenance information.
 
@@ -1554,7 +1554,7 @@ depending on the organization's security architecture.
 
 ---
 
-# Helm Security
+## Helm Security
 
 Helm should be treated as part of the production software supply chain.
 
@@ -1578,7 +1578,7 @@ Kubernetes Permissions
 
 ---
 
-# Trusted Chart Sources
+## Trusted Chart Sources
 
 Use Charts from:
 
@@ -1593,7 +1593,7 @@ Review third-party Charts before production use.
 
 ---
 
-# Chart Security Review
+## Chart Security Review
 
 Inspect:
 
@@ -1612,7 +1612,7 @@ Resource Limits
 
 ---
 
-# Dangerous Chart Configuration
+## Dangerous Chart Configuration
 
 Be careful with:
 
@@ -1636,7 +1636,7 @@ These may be legitimate in some infrastructure workloads but should require deli
 
 ---
 
-# Helm and RBAC
+## Helm and RBAC
 
 A Helm Chart may create:
 
@@ -1652,7 +1652,7 @@ Review these carefully.
 
 ---
 
-# Helm and Secrets
+## Helm and Secrets
 
 Avoid placing production secrets directly into:
 
@@ -1666,7 +1666,7 @@ Instead use appropriate secret-management systems.
 
 ---
 
-# Helm With External Secrets
+## Helm With External Secrets
 
 A Chart can deploy an ExternalSecret resource.
 
@@ -1684,7 +1684,7 @@ Kubernetes Secret
 
 ---
 
-# Helm and GitOps
+## Helm and GitOps
 
 Helm integrates naturally with GitOps.
 
@@ -1704,7 +1704,7 @@ Kubernetes
 
 ---
 
-# Argo CD and Helm
+## Argo CD and Helm
 
 Argo CD can use Helm Charts as an application source.
 
@@ -1724,7 +1724,7 @@ Kubernetes
 
 ---
 
-# Flux and Helm
+## Flux and Helm
 
 Flux can manage Helm releases declaratively.
 
@@ -1744,7 +1744,7 @@ Kubernetes
 
 ---
 
-# Helm With CI/CD
+## Helm With CI/CD
 
 A pipeline may run:
 
@@ -1768,7 +1768,7 @@ Then update the GitOps repository.
 
 ---
 
-# Production Helm Pipeline
+## Production Helm Pipeline
 
 ```text
 Pull Request
@@ -1792,7 +1792,7 @@ Kubernetes
 
 ---
 
-# Helm Upgrade Strategy
+## Helm Upgrade Strategy
 
 Before production upgrades:
 
@@ -1812,7 +1812,7 @@ Monitor
 
 ---
 
-# Atomic Upgrade
+## Atomic Upgrade
 
 Helm supports:
 
@@ -1827,7 +1827,7 @@ Use it deliberately and understand the consequences for hooks and application-le
 
 ---
 
-# Wait
+## Wait
 
 Helm can wait for resources:
 
@@ -1840,7 +1840,7 @@ This makes Helm wait for supported resources to reach the expected state.
 
 ---
 
-# Timeout
+## Timeout
 
 Example:
 
@@ -1854,7 +1854,7 @@ Choose timeout values based on actual application startup behavior.
 
 ---
 
-# Dry Run
+## Dry Run
 
 Preview an installation:
 
@@ -1873,7 +1873,7 @@ helm install myrelease ./mychart \
 
 ---
 
-# Helm Diff
+## Helm Diff
 
 The `helm-diff` plugin can help compare current and proposed release manifests.
 
@@ -1889,7 +1889,7 @@ Always review changes before sensitive production upgrades.
 
 ---
 
-# Helm Rollback Strategy
+## Helm Rollback Strategy
 
 Example:
 
@@ -1907,7 +1907,7 @@ helm rollback myrelease <revision>
 
 ---
 
-# Helm Rollback Limitations
+## Helm Rollback Limitations
 
 A Helm rollback restores a previous Chart release state.
 
@@ -1925,7 +1925,7 @@ Always design application migrations with rollback and compatibility in mind.
 
 ---
 
-# Database Migrations
+## Database Migrations
 
 A common safe deployment pattern is:
 
@@ -1943,7 +1943,7 @@ Avoid assuming Helm rollback automatically reverses database schema changes.
 
 ---
 
-# Helm Release History
+## Helm Release History
 
 Helm maintains release revisions.
 
@@ -1963,7 +1963,7 @@ Revision 2
 
 ---
 
-# Helm and Namespaces
+## Helm and Namespaces
 
 Always know where the release is installed.
 
@@ -1975,7 +1975,7 @@ A release is namespace-scoped.
 
 ---
 
-# Helm Release Naming
+## Helm Release Naming
 
 Use clear names:
 
@@ -1989,7 +1989,7 @@ Avoid confusing or ambiguous release names.
 
 ---
 
-# Production Chart Structure
+## Production Chart Structure
 
 Recommended structure:
 
@@ -2015,7 +2015,7 @@ api/
 
 ---
 
-# Production Values
+## Production Values
 
 A production values file may contain:
 
@@ -2040,7 +2040,7 @@ podSecurityContext:
 
 ---
 
-# Avoid Huge Templates
+## Avoid Huge Templates
 
 Do not place hundreds of lines of complicated logic into a single template.
 
@@ -2056,7 +2056,7 @@ Clear Values
 
 ---
 
-# Avoid Excessive Templating
+## Avoid Excessive Templating
 
 Helm should simplify Kubernetes configuration.
 
@@ -2071,7 +2071,7 @@ Maintain
 
 ---
 
-# Use Schema Validation
+## Use Schema Validation
 
 For reusable production Charts:
 
@@ -2083,7 +2083,7 @@ can catch invalid configuration early.
 
 ---
 
-# Document Values
+## Document Values
 
 Document important values.
 
@@ -2096,7 +2096,7 @@ replicaCount: 3
 
 ---
 
-# Chart README
+## Chart README
 
 The README should explain:
 
@@ -2113,7 +2113,7 @@ Troubleshooting
 
 ---
 
-# Chart Testing
+## Chart Testing
 
 Test:
 
@@ -2128,7 +2128,7 @@ Security
 
 ---
 
-# Helm Test Workflow
+## Helm Test Workflow
 
 ```text
 helm lint
@@ -2150,7 +2150,7 @@ Validate
 
 ---
 
-# Helm Troubleshooting
+## Helm Troubleshooting
 
 When a Helm deployment fails:
 
@@ -2169,7 +2169,7 @@ When a Helm deployment fails:
 
 ---
 
-# Check Release Status
+## Check Release Status
 
 ```bash
 helm status myrelease
@@ -2177,7 +2177,7 @@ helm status myrelease
 
 ---
 
-# Check History
+## Check History
 
 ```bash
 helm history myrelease
@@ -2185,7 +2185,7 @@ helm history myrelease
 
 ---
 
-# Inspect Values
+## Inspect Values
 
 ```bash
 helm get values myrelease --all
@@ -2193,7 +2193,7 @@ helm get values myrelease --all
 
 ---
 
-# Inspect Manifest
+## Inspect Manifest
 
 ```bash
 helm get manifest myrelease
@@ -2201,7 +2201,7 @@ helm get manifest myrelease
 
 ---
 
-# Kubernetes Investigation
+## Kubernetes Investigation
 
 ```bash
 kubectl get pods -n production
@@ -2221,7 +2221,7 @@ kubectl logs <pod> -n production
 
 ---
 
-# Check Events
+## Check Events
 
 ```bash
 kubectl get events \
@@ -2231,7 +2231,7 @@ kubectl get events \
 
 ---
 
-# Helm Rendering Problems
+## Helm Rendering Problems
 
 Common causes:
 
@@ -2246,7 +2246,7 @@ Missing Dependency
 
 ---
 
-# Kubernetes Problems
+## Kubernetes Problems
 
 Helm may render successfully while Kubernetes rejects or fails the workload.
 
@@ -2263,7 +2263,7 @@ Probe Failure
 
 ---
 
-# Helm and ImagePullBackOff
+## Helm and ImagePullBackOff
 
 If the Chart deploys:
 
@@ -2283,7 +2283,7 @@ Image Existence
 
 ---
 
-# Helm and CrashLoopBackOff
+## Helm and CrashLoopBackOff
 
 Check:
 
@@ -2298,7 +2298,7 @@ Dependencies
 
 ---
 
-# Helm and Pending Pods
+## Helm and Pending Pods
 
 Check:
 
@@ -2314,7 +2314,7 @@ Scheduling Constraints
 
 ---
 
-# Helm and GitOps
+## Helm and GitOps
 
 Avoid manually changing a GitOps-managed Helm release.
 
@@ -2332,15 +2332,15 @@ GitOps Reconciliation
 
 ---
 
-# Helm Best Practices
+## Helm Best Practices
 
-### 1. Keep Charts Reusable
+#### 1. Keep Charts Reusable
 
 Avoid hardcoding environment-specific configuration.
 
 ---
 
-### 2. Use Values for Configuration
+#### 2. Use Values for Configuration
 
 Example:
 
@@ -2358,7 +2358,7 @@ everywhere.
 
 ---
 
-### 3. Validate Charts
+#### 3. Validate Charts
 
 Use:
 
@@ -2369,7 +2369,7 @@ helm template
 
 ---
 
-### 4. Use Schema Validation
+#### 4. Use Schema Validation
 
 Add:
 
@@ -2381,19 +2381,19 @@ for reusable Charts.
 
 ---
 
-### 5. Pin Dependencies
+#### 5. Pin Dependencies
 
 Use controlled Chart dependency versions.
 
 ---
 
-### 6. Review Third-Party Charts
+#### 6. Review Third-Party Charts
 
 Never blindly deploy an external Chart.
 
 ---
 
-### 7. Secure Images
+#### 7. Secure Images
 
 Use:
 
@@ -2408,13 +2408,13 @@ where appropriate.
 
 ---
 
-### 8. Avoid Plaintext Secrets
+#### 8. Avoid Plaintext Secrets
 
 Use external secret-management mechanisms.
 
 ---
 
-### 9. Use Resource Controls
+#### 9. Use Resource Controls
 
 Charts should expose:
 
@@ -2425,7 +2425,7 @@ Limits
 
 ---
 
-### 10. Configure Security Contexts
+#### 10. Configure Security Contexts
 
 Where appropriate:
 
@@ -2436,7 +2436,7 @@ securityContext:
 
 ---
 
-### 11. Use Health Probes
+#### 11. Use Health Probes
 
 Production applications should expose:
 
@@ -2450,13 +2450,13 @@ where appropriate.
 
 ---
 
-### 12. Test Rollbacks
+#### 12. Test Rollbacks
 
 A rollback strategy should be tested before production incidents occur.
 
 ---
 
-### 13. Avoid Excessive Hooks
+#### 13. Avoid Excessive Hooks
 
 Hooks can introduce lifecycle complexity.
 
@@ -2464,45 +2464,45 @@ Use them only when necessary.
 
 ---
 
-### 14. Keep Templates Simple
+#### 14. Keep Templates Simple
 
 Complex logic belongs in application or tooling code when possible.
 
 ---
 
-### 15. Document Values
+#### 15. Document Values
 
 Make Chart configuration understandable to operators.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Hardcoding Configuration
+### 1. Hardcoding Configuration
 
 This makes Charts difficult to reuse.
 
 ---
 
-## 2. Storing Secrets in `values.yaml`
+### 2. Storing Secrets in `values.yaml`
 
 Plaintext secrets can leak into Git.
 
 ---
 
-## 3. Using `latest`
+### 3. Using `latest`
 
 This creates unpredictable deployments.
 
 ---
 
-## 4. Not Testing Templates
+### 4. Not Testing Templates
 
 A Chart can look correct while rendering invalid YAML.
 
 ---
 
-## 5. Not Checking Rendered Output
+### 5. Not Checking Rendered Output
 
 Always inspect:
 
@@ -2514,19 +2514,19 @@ for important changes.
 
 ---
 
-## 6. Excessive Template Logic
+### 6. Excessive Template Logic
 
 Overly complex templates become difficult to maintain.
 
 ---
 
-## 7. Unpinned Dependencies
+### 7. Unpinned Dependencies
 
 Dependency updates can unexpectedly change behavior.
 
 ---
 
-## 8. Blindly Trusting Third-Party Charts
+### 8. Blindly Trusting Third-Party Charts
 
 Charts can create powerful resources.
 
@@ -2534,49 +2534,49 @@ Always review them.
 
 ---
 
-## 9. Overusing `lookup`
+### 9. Overusing `lookup`
 
 Cluster-dependent rendering can reduce reproducibility.
 
 ---
 
-## 10. Ignoring RBAC
+### 10. Ignoring RBAC
 
 A Chart may create broad cluster-level permissions.
 
 ---
 
-## 11. Ignoring Hooks
+### 11. Ignoring Hooks
 
 Hooks can modify deployment behavior in unexpected ways.
 
 ---
 
-## 12. Assuming Rollback Reverses Everything
+### 12. Assuming Rollback Reverses Everything
 
 Application data and database schema changes may not be reversible automatically.
 
 ---
 
-## 13. No Resource Requests
+### 13. No Resource Requests
 
 Workloads may become difficult to schedule and manage.
 
 ---
 
-## 14. No SecurityContext
+### 14. No SecurityContext
 
 Containers may run with unnecessarily broad privileges.
 
 ---
 
-## 15. Manual Changes to GitOps Releases
+### 15. Manual Changes to GitOps Releases
 
 This creates drift.
 
 ---
 
-# Hands-on Lab 1 – Create a Helm Chart
+## Hands-on Lab 1 – Create a Helm Chart
 
 Create:
 
@@ -2594,7 +2594,7 @@ templates/
 
 ---
 
-# Hands-on Lab 2 – Customize Values
+## Hands-on Lab 2 – Customize Values
 
 Change:
 
@@ -2612,7 +2612,7 @@ Verify the Deployment.
 
 ---
 
-# Hands-on Lab 3 – Install a Chart
+## Hands-on Lab 3 – Install a Chart
 
 Install:
 
@@ -2628,7 +2628,7 @@ helm status myapp
 
 ---
 
-# Hands-on Lab 4 – Upgrade a Release
+## Hands-on Lab 4 – Upgrade a Release
 
 Change:
 
@@ -2650,7 +2650,7 @@ kubectl get pods
 
 ---
 
-# Hands-on Lab 5 – Rollback
+## Hands-on Lab 5 – Rollback
 
 View:
 
@@ -2668,7 +2668,7 @@ Verify the workload.
 
 ---
 
-# Hands-on Lab 6 – Environment Values
+## Hands-on Lab 6 – Environment Values
 
 Create:
 
@@ -2687,7 +2687,7 @@ helm upgrade --install myapp ./myapp \
 
 ---
 
-# Hands-on Lab 7 – Template Conditions
+## Hands-on Lab 7 – Template Conditions
 
 Add:
 
@@ -2702,7 +2702,7 @@ Verify that the Ingress appears only when enabled.
 
 ---
 
-# Hands-on Lab 8 – Named Templates
+## Hands-on Lab 8 – Named Templates
 
 Create helpers in:
 
@@ -2721,7 +2721,7 @@ Selector Labels
 
 ---
 
-# Hands-on Lab 9 – Resource Configuration
+## Hands-on Lab 9 – Resource Configuration
 
 Expose:
 
@@ -2739,7 +2739,7 @@ Render and verify.
 
 ---
 
-# Hands-on Lab 10 – SecurityContext
+## Hands-on Lab 10 – SecurityContext
 
 Add:
 
@@ -2753,7 +2753,7 @@ Deploy and validate.
 
 ---
 
-# Hands-on Lab 11 – Helm Tests
+## Hands-on Lab 11 – Helm Tests
 
 Create a test Job.
 
@@ -2767,7 +2767,7 @@ Verify the result.
 
 ---
 
-# Hands-on Lab 12 – Chart Dependency
+## Hands-on Lab 12 – Chart Dependency
 
 Add a controlled dependency to a test Chart.
 
@@ -2785,7 +2785,7 @@ charts/
 
 ---
 
-# Hands-on Lab 13 – Helm With GitOps
+## Hands-on Lab 13 – Helm With GitOps
 
 Store:
 
@@ -2811,7 +2811,7 @@ Flux
 
 ---
 
-# Hands-on Lab 14 – Production Validation
+## Hands-on Lab 14 – Production Validation
 
 Before deployment run:
 
@@ -2829,7 +2829,7 @@ Then validate the resulting manifests.
 
 ---
 
-# Hands-on Lab 15 – Helm Security Review
+## Hands-on Lab 15 – Helm Security Review
 
 Inspect a third-party Chart.
 
@@ -2850,7 +2850,7 @@ Document all security concerns.
 
 ---
 
-# Hands-on Lab 16 – Helm CI Pipeline
+## Hands-on Lab 16 – Helm CI Pipeline
 
 Create a CI pipeline:
 
@@ -2870,7 +2870,7 @@ Review
 
 ---
 
-# Hands-on Lab 17 – OCI Registry
+## Hands-on Lab 17 – OCI Registry
 
 Package a Chart:
 
@@ -2886,7 +2886,7 @@ Verify the Chart version.
 
 ---
 
-# Hands-on Lab 18 – Production Upgrade
+## Hands-on Lab 18 – Production Upgrade
 
 Deploy:
 
@@ -2919,7 +2919,7 @@ Health
 
 ---
 
-# Hands-on Lab 19 – Failed Upgrade
+## Hands-on Lab 19 – Failed Upgrade
 
 Introduce an intentionally broken configuration.
 
@@ -2942,7 +2942,7 @@ Then perform a controlled rollback.
 
 ---
 
-# Hands-on Lab 20 – Complete Production Helm Project
+## Hands-on Lab 20 – Complete Production Helm Project
 
 Build a production-style Chart containing:
 
@@ -2986,9 +2986,9 @@ Monitoring
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Helm
+### Helm
 
 ```text
 Kubernetes Package Manager
@@ -2996,7 +2996,7 @@ Kubernetes Package Manager
 
 ---
 
-## Chart
+### Chart
 
 ```text
 Reusable Kubernetes Application Package
@@ -3004,7 +3004,7 @@ Reusable Kubernetes Application Package
 
 ---
 
-## Release
+### Release
 
 ```text
 Installed Instance of a Chart
@@ -3012,7 +3012,7 @@ Installed Instance of a Chart
 
 ---
 
-## `Chart.yaml`
+### `Chart.yaml`
 
 ```text
 Chart Metadata
@@ -3020,7 +3020,7 @@ Chart Metadata
 
 ---
 
-## `values.yaml`
+### `values.yaml`
 
 ```text
 Default Configuration
@@ -3028,7 +3028,7 @@ Default Configuration
 
 ---
 
-## `templates/`
+### `templates/`
 
 ```text
 Kubernetes Resource Templates
@@ -3036,7 +3036,7 @@ Kubernetes Resource Templates
 
 ---
 
-## `_helpers.tpl`
+### `_helpers.tpl`
 
 ```text
 Reusable Named Templates
@@ -3044,7 +3044,7 @@ Reusable Named Templates
 
 ---
 
-## `helm install`
+### `helm install`
 
 ```text
 Install a Chart
@@ -3052,7 +3052,7 @@ Install a Chart
 
 ---
 
-## `helm upgrade`
+### `helm upgrade`
 
 ```text
 Update an Existing Release
@@ -3060,7 +3060,7 @@ Update an Existing Release
 
 ---
 
-## `helm rollback`
+### `helm rollback`
 
 ```text
 Return a Release to a Previous Revision
@@ -3068,7 +3068,7 @@ Return a Release to a Previous Revision
 
 ---
 
-## `helm lint`
+### `helm lint`
 
 ```text
 Validate Chart Structure
@@ -3076,7 +3076,7 @@ Validate Chart Structure
 
 ---
 
-## `helm template`
+### `helm template`
 
 ```text
 Render Kubernetes Manifests Locally
@@ -3084,7 +3084,7 @@ Render Kubernetes Manifests Locally
 
 ---
 
-## `helm test`
+### `helm test`
 
 ```text
 Execute Chart Tests
@@ -3092,7 +3092,7 @@ Execute Chart Tests
 
 ---
 
-## OCI
+### OCI
 
 ```text
 Registry-Based Storage for Helm Artifacts
@@ -3100,7 +3100,7 @@ Registry-Based Storage for Helm Artifacts
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check Helm:
 
@@ -3292,9 +3292,9 @@ helm pull oci://registry.example.com/charts/mychart \
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Helm?
 - Why is Helm used in Kubernetes?
@@ -3315,7 +3315,7 @@ helm pull oci://registry.example.com/charts/mychart \
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does Helm templating work?
 - What are Helm values?
@@ -3338,7 +3338,7 @@ helm pull oci://registry.example.com/charts/mychart \
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain Helm architecture.
 - How does Helm render templates?
@@ -3360,13 +3360,13 @@ helm pull oci://registry.example.com/charts/mychart \
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What is the difference between a Helm Chart and a Helm Release?
 
-### Answer
+#### Answer
 
 A **Chart** is the reusable package.
 
@@ -3386,13 +3386,13 @@ production-api
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > What happens when you run `helm install`?
 
-### Answer
+#### Answer
 
 Conceptually:
 
@@ -3414,13 +3414,13 @@ Release Recorded
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > What is the difference between `helm upgrade` and `kubectl apply`?
 
-### Answer
+#### Answer
 
 `kubectl apply` directly applies Kubernetes manifests.
 
@@ -3442,13 +3442,13 @@ Dependencies
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > How do you manage different configurations for dev and production?
 
-### Answer
+#### Answer
 
 Use environment-specific values files:
 
@@ -3469,13 +3469,13 @@ The Chart remains reusable while environment-specific configuration changes.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How do you secure a Helm Chart?
 
-### Answer
+#### Answer
 
 I would review:
 
@@ -3503,13 +3503,13 @@ I would also scan the Chart and dependencies and use trusted sources.
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > Does Helm rollback reverse a database migration?
 
-### Answer
+#### Answer
 
 No.
 
@@ -3519,13 +3519,13 @@ Database migrations should therefore be designed for compatibility and controlle
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How would you use Helm with GitOps?
 
-### Answer
+#### Answer
 
 Store:
 
@@ -3553,13 +3553,13 @@ Changes are reviewed and reconciled through GitOps.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How would you troubleshoot a failed Helm deployment?
 
-### Answer
+#### Answer
 
 I would start with:
 
@@ -3599,13 +3599,13 @@ Application
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > Why should you run `helm template` before production deployment?
 
-### Answer
+#### Answer
 
 It lets you inspect the exact Kubernetes manifests generated from:
 
@@ -3629,13 +3629,13 @@ Configuration Errors
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a production Helm architecture.
 
-### Answer
+#### Answer
 
 ```text
                     Git
@@ -3695,7 +3695,7 @@ and should avoid embedding environment-specific secrets directly into the Chart.
 
 ---
 
-# Production Helm Checklist
+## Production Helm Checklist
 
 ```text
 ☑ Chart metadata defined
@@ -3735,7 +3735,7 @@ and should avoid embedding environment-specific secrets directly into the Chart.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Helm provides a reusable packaging and configuration layer for Kubernetes.
 
@@ -3807,9 +3807,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 81 – Kustomize
+## Chapter 81 – Kustomize
 
 Topics will include:
 

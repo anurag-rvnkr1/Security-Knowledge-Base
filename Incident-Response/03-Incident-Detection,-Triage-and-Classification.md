@@ -63,7 +63,7 @@ Effective triage balances **speed, accuracy, context, and risk**.
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Modern enterprises generate enormous amounts of security telemetry.
 
@@ -126,11 +126,11 @@ Good triage allows security teams to focus their deepest investigative resources
 
 ---
 
-# Detection Sources
+## Detection Sources
 
 A mature organization uses multiple detection sources.
 
-## SIEM
+### SIEM
 
 Examples:
 
@@ -152,7 +152,7 @@ Unusual cloud API activity
 
 ---
 
-## EDR / XDR
+### EDR / XDR
 
 Endpoint detection can identify:
 
@@ -167,7 +167,7 @@ Endpoint detection can identify:
 
 ---
 
-## Network Security
+### Network Security
 
 Network detection may originate from:
 
@@ -181,7 +181,7 @@ Network detection may originate from:
 
 ---
 
-## Identity Security
+### Identity Security
 
 Identity systems may detect:
 
@@ -195,7 +195,7 @@ Identity systems may detect:
 
 ---
 
-## Cloud Security
+### Cloud Security
 
 Cloud detections may identify:
 
@@ -208,7 +208,7 @@ Cloud detections may identify:
 
 ---
 
-## Email Security
+### Email Security
 
 Email systems may detect:
 
@@ -220,7 +220,7 @@ Email systems may detect:
 
 ---
 
-## Human Reporting
+### Human Reporting
 
 Employees remain an important detection source.
 
@@ -232,7 +232,7 @@ This may become the starting point for an account compromise investigation.
 
 ---
 
-# Detection Pipeline
+## Detection Pipeline
 
 A typical enterprise pipeline:
 
@@ -269,11 +269,11 @@ Incident
 
 ---
 
-# Detection vs Triage vs Investigation
+## Detection vs Triage vs Investigation
 
 These concepts should not be confused.
 
-## Detection
+### Detection
 
 Identifies potentially suspicious behavior.
 
@@ -281,7 +281,7 @@ Example:
 
 > "User has 30 failed logins within 5 minutes."
 
-## Triage
+### Triage
 
 Determines whether the activity requires deeper investigation.
 
@@ -289,7 +289,7 @@ Example:
 
 > "The failures came from a known corporate application and occurred during a password migration."
 
-## Investigation
+### Investigation
 
 Determines what actually happened.
 
@@ -299,7 +299,7 @@ Example:
 
 ---
 
-# Alert Lifecycle
+## Alert Lifecycle
 
 A professional alert lifecycle can be modeled as:
 
@@ -332,38 +332,38 @@ False Positive     Suspicious
 
 ---
 
-# Initial Triage
+## Initial Triage
 
 The initial triage should answer the basic questions quickly.
 
-### Who?
+#### Who?
 
 - User
 - Account
 - Process owner
 - System owner
 
-### What?
+#### What?
 
 - Activity
 - Detection
 - IOC
 - Behavior
 
-### When?
+#### When?
 
 - First observed
 - Last observed
 - Current activity
 
-### Where?
+#### Where?
 
 - Host
 - Network
 - Cloud
 - Geographic location
 
-### How?
+#### How?
 
 - Authentication
 - Process execution
@@ -371,13 +371,13 @@ The initial triage should answer the basic questions quickly.
 - Network connection
 - API call
 
-### Why?
+#### Why?
 
 Determine whether a legitimate business explanation exists.
 
 ---
 
-# The 5W1H Model
+## The 5W1H Model
 
 A useful triage framework:
 
@@ -403,7 +403,7 @@ This prevents investigators from focusing on only one indicator.
 
 ---
 
-# Alert Enrichment
+## Alert Enrichment
 
 Raw alerts rarely contain enough information.
 
@@ -456,7 +456,7 @@ Enrichment dramatically improves triage speed.
 
 ---
 
-# Common Enrichment Sources
+## Common Enrichment Sources
 
 A SOC may enrich alerts using:
 
@@ -475,7 +475,7 @@ A SOC may enrich alerts using:
 
 ---
 
-# IOC Enrichment
+## IOC Enrichment
 
 Indicators of compromise may include:
 
@@ -511,7 +511,7 @@ What process created the connection?
 
 ---
 
-# Context Matters
+## Context Matters
 
 An IOC is not inherently malicious in every context.
 
@@ -535,7 +535,7 @@ This is why:
 
 ---
 
-# False Positives
+## False Positives
 
 A false positive occurs when a detection identifies activity that initially appears suspicious but is legitimate.
 
@@ -569,7 +569,7 @@ False Positive
 
 ---
 
-# False Negatives
+## False Negatives
 
 A false negative occurs when malicious activity is not detected.
 
@@ -585,7 +585,7 @@ False negatives are particularly dangerous because the security team may not kno
 
 ---
 
-# Detection Quality
+## Detection Quality
 
 A useful conceptual model:
 
@@ -611,7 +611,7 @@ A good detection should ideally be:
 
 ---
 
-# Detection Fidelity
+## Detection Fidelity
 
 High-fidelity alerts have a high probability of representing meaningful suspicious activity.
 
@@ -637,7 +637,7 @@ because PowerShell is commonly used legitimately.
 
 ---
 
-# Alert Severity vs Incident Severity
+## Alert Severity vs Incident Severity
 
 These are not always the same.
 
@@ -677,7 +677,7 @@ Therefore:
 
 ---
 
-# Triage Prioritization
+## Triage Prioritization
 
 A practical priority model:
 
@@ -690,19 +690,19 @@ This is conceptual rather than a universal formula.
 
 Consider:
 
-### Impact
+#### Impact
 
 - Critical asset?
 - Sensitive data?
 - Privileged account?
 
-### Likelihood
+#### Likelihood
 
 - Known malicious IOC?
 - Strong behavioral evidence?
 - Confirmed compromise?
 
-### Urgency
+#### Urgency
 
 - Attack ongoing?
 - Active lateral movement?
@@ -711,7 +711,7 @@ Consider:
 
 ---
 
-# High-Priority Indicators
+## High-Priority Indicators
 
 Indicators that may justify immediate escalation include:
 
@@ -729,7 +729,7 @@ Credential dumping
 
 ---
 
-# Incident Classification
+## Incident Classification
 
 Once an alert is validated, classify the incident.
 
@@ -757,7 +757,7 @@ Classification should be based on the available evidence.
 
 ---
 
-# Incident Classification Tree
+## Incident Classification Tree
 
 ```text id="0i0y4x"
                     Suspicious Activity
@@ -782,7 +782,7 @@ Classification should be based on the available evidence.
 
 ---
 
-# Incident Severity Assessment
+## Incident Severity Assessment
 
 Severity should consider:
 
@@ -801,7 +801,7 @@ Attacker Activity
 
 Example:
 
-### Case A
+#### Case A
 
 One non-critical workstation with blocked malware.
 
@@ -811,7 +811,7 @@ Potentially:
 SEV-3
 ```
 
-### Case B
+#### Case B
 
 Privileged identity actively compromised.
 
@@ -821,7 +821,7 @@ Potentially:
 SEV-1 / SEV-2
 ```
 
-### Case C
+#### Case C
 
 Production database exfiltration confirmed.
 
@@ -835,7 +835,7 @@ Actual severity depends on organizational policy.
 
 ---
 
-# Triage Decision Matrix
+## Triage Decision Matrix
 
 | Question | Low Risk | Medium Risk | High Risk |
 |---|---|---|---|
@@ -850,7 +850,7 @@ Actual severity depends on organizational policy.
 
 ---
 
-# Investigation Time Window
+## Investigation Time Window
 
 The initial investigation should define a time window.
 
@@ -877,7 +877,7 @@ Investigators should expand the window when evidence suggests earlier or later a
 
 ---
 
-# Look-Back Investigation
+## Look-Back Investigation
 
 Ask:
 
@@ -894,7 +894,7 @@ Examples:
 
 ---
 
-# Look-Forward Investigation
+## Look-Forward Investigation
 
 Ask:
 
@@ -911,7 +911,7 @@ Examples:
 
 ---
 
-# Alert Correlation
+## Alert Correlation
 
 One alert may be meaningless alone.
 
@@ -940,7 +940,7 @@ Correlation transforms isolated events into a coherent investigation.
 
 ---
 
-# Alert Grouping
+## Alert Grouping
 
 A single incident may generate many alerts.
 
@@ -963,7 +963,7 @@ They may represent one underlying compromise.
 
 ---
 
-# Incident Declaration
+## Incident Declaration
 
 An incident should be declared when evidence and risk justify coordinated response.
 
@@ -999,7 +999,7 @@ Organizations should define formal criteria for incident declaration.
 
 ---
 
-# Incident Escalation
+## Incident Escalation
 
 Escalation should be predictable.
 
@@ -1028,7 +1028,7 @@ Escalation may also occur directly for critical events.
 
 ---
 
-# When to Escalate Immediately
+## When to Escalate Immediately
 
 Examples:
 
@@ -1048,7 +1048,7 @@ Do not wait for every investigative question to be answered before escalating a 
 
 ---
 
-# SOC-to-IR Handoff
+## SOC-to-IR Handoff
 
 A good handoff prevents information loss.
 
@@ -1072,7 +1072,7 @@ Known Unknowns
 
 ---
 
-# Poor Handoff
+## Poor Handoff
 
 Example:
 
@@ -1082,7 +1082,7 @@ This creates unnecessary delay.
 
 ---
 
-# Good Handoff
+## Good Handoff
 
 Example:
 
@@ -1127,7 +1127,7 @@ This gives the responder a useful starting point.
 
 ---
 
-# Detection Enrichment Workflow
+## Detection Enrichment Workflow
 
 ```text id="5zivx5"
 Raw Alert
@@ -1156,9 +1156,9 @@ Risk Assessment
 
 ---
 
-# Common Triage Errors
+## Common Triage Errors
 
-## 1. Trusting the Alert Description
+### 1. Trusting the Alert Description
 
 An alert description is only a starting point.
 
@@ -1166,49 +1166,49 @@ Investigate the underlying telemetry.
 
 ---
 
-## 2. Closing Too Quickly
+### 2. Closing Too Quickly
 
 A single benign explanation does not always explain all related activity.
 
 ---
 
-## 3. Treating Every IOC as Malicious
+### 3. Treating Every IOC as Malicious
 
 Context matters.
 
 ---
 
-## 4. Ignoring Business Context
+### 4. Ignoring Business Context
 
 A suspicious process on a development machine may have a different impact than the same process on a domain controller.
 
 ---
 
-## 5. Focusing Only on One Host
+### 5. Focusing Only on One Host
 
 Attackers may have compromised multiple systems.
 
 ---
 
-## 6. Ignoring Identity
+### 6. Ignoring Identity
 
 Modern attacks frequently involve compromised credentials.
 
 ---
 
-## 7. Failing to Preserve Evidence
+### 7. Failing to Preserve Evidence
 
 Premature cleanup can destroy useful evidence.
 
 ---
 
-## 8. Delaying Escalation
+### 8. Delaying Escalation
 
 Do not wait for complete certainty before escalating high-risk activity.
 
 ---
 
-## 9. Not Recording Negative Findings
+### 9. Not Recording Negative Findings
 
 Documenting what was checked and not found is useful.
 
@@ -1222,7 +1222,7 @@ No evidence of exfiltration identified
 
 ---
 
-## 10. Not Recording Unknowns
+### 10. Not Recording Unknowns
 
 Unknown does not mean false.
 
@@ -1242,43 +1242,43 @@ when evidence is insufficient.
 
 ---
 
-# Common Detection Misconfigurations
+## Common Detection Misconfigurations
 
-## Missing Telemetry
+### Missing Telemetry
 
 A detection may depend on logs that are not consistently collected.
 
-## Incorrect Parsing
+### Incorrect Parsing
 
 Events may reach the SIEM but fields may be incorrectly parsed.
 
-## Time Synchronization Problems
+### Time Synchronization Problems
 
 Events may appear in the wrong order.
 
-## Duplicate Alerts
+### Duplicate Alerts
 
 The same event may trigger multiple alerts.
 
-## Overly Broad Rules
+### Overly Broad Rules
 
 Generate excessive false positives.
 
-## Overly Narrow Rules
+### Overly Narrow Rules
 
 Miss variants of malicious behavior.
 
-## Missing Asset Context
+### Missing Asset Context
 
 The SOC cannot determine whether the system is critical.
 
-## Missing Identity Context
+### Missing Identity Context
 
 The analyst cannot determine whether the user is privileged.
 
 ---
 
-# Detection Engineering Feedback Loop
+## Detection Engineering Feedback Loop
 
 Triage findings should feed detection engineering.
 
@@ -1310,44 +1310,44 @@ This prevents repeated investigation of the same problem.
 
 ---
 
-# Practical Commands
+## Practical Commands
 
 These examples support authorized defensive triage.
 
-## Windows
+### Windows
 
-### Current User
+#### Current User
 
 ```powershell id="2o8j44"
 whoami
 ```
 
-### Process List
+#### Process List
 
 ```powershell id="6w6n3k"
 Get-Process
 ```
 
-### Process Details
+#### Process Details
 
 ```powershell id="u5q3aw"
 Get-CimInstance Win32_Process |
 Select-Object ProcessId,ParentProcessId,Name,CommandLine
 ```
 
-### Network Connections
+#### Network Connections
 
 ```powershell id="1hsvqv"
 Get-NetTCPConnection
 ```
 
-### DNS Cache
+#### DNS Cache
 
 ```powershell id="w9y6th"
 Get-DnsClientCache
 ```
 
-### Recent Security Events
+#### Recent Security Events
 
 ```powershell id="5d6p3r"
 Get-WinEvent -LogName Security -MaxEvents 100
@@ -1355,33 +1355,33 @@ Get-WinEvent -LogName Security -MaxEvents 100
 
 ---
 
-# Linux
+## Linux
 
-### Processes
+#### Processes
 
 ```bash id="m0z9r9"
 ps aux
 ```
 
-### Network Connections
+#### Network Connections
 
 ```bash id="e6f3m7"
 ss -tulpn
 ```
 
-### Logged-In Users
+#### Logged-In Users
 
 ```bash id="h4l2xq"
 w
 ```
 
-### Recent Authentication
+#### Recent Authentication
 
 ```bash id="b5u1fe"
 last
 ```
 
-### Authentication Failures
+#### Authentication Failures
 
 ```bash id="9qz2l5"
 grep "Failed password" /var/log/auth.log
@@ -1389,7 +1389,7 @@ grep "Failed password" /var/log/auth.log
 
 ---
 
-# DNS Triage
+## DNS Triage
 
 ```bash id="c9d2b3"
 dig suspicious-domain.example
@@ -1405,7 +1405,7 @@ Check:
 
 ---
 
-# Hash Investigation
+## Hash Investigation
 
 On Windows:
 
@@ -1423,11 +1423,11 @@ A hash can then be compared with authorized threat intelligence sources.
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-# Lab — From Alert to Incident
+## Lab — From Alert to Incident
 
-## Objective
+### Objective
 
 Determine whether a suspicious authentication alert represents:
 
@@ -1437,7 +1437,7 @@ Determine whether a suspicious authentication alert represents:
 
 ---
 
-## Scenario
+### Scenario
 
 The SIEM generates:
 
@@ -1465,7 +1465,7 @@ Success:
 
 ---
 
-# Step 1 — Enrich the User
+## Step 1 — Enrich the User
 
 Determine:
 
@@ -1481,7 +1481,7 @@ MFA Status
 
 ---
 
-# Step 2 — Investigate the Source
+## Step 2 — Investigate the Source
 
 Determine:
 
@@ -1495,7 +1495,7 @@ Other targeted users
 
 ---
 
-# Step 3 — Investigate Authentication
+## Step 3 — Investigate Authentication
 
 Search:
 
@@ -1510,7 +1510,7 @@ Password changes
 
 ---
 
-# Step 4 — Investigate Post-Authentication Activity
+## Step 4 — Investigate Post-Authentication Activity
 
 Search for:
 
@@ -1525,7 +1525,7 @@ OAuth applications
 
 ---
 
-# Step 5 — Scope
+## Step 5 — Scope
 
 Determine:
 
@@ -1541,11 +1541,11 @@ Did lateral movement occur?
 
 ---
 
-# Step 6 — Classification
+## Step 6 — Classification
 
 Possible outcomes:
 
-### Outcome A
+#### Outcome A
 
 Known corporate scanner.
 
@@ -1553,7 +1553,7 @@ Known corporate scanner.
 False Positive
 ```
 
-### Outcome B
+#### Outcome B
 
 Repeated failures with no successful login.
 
@@ -1561,7 +1561,7 @@ Repeated failures with no successful login.
 Suspicious Activity
 ```
 
-### Outcome C
+#### Outcome C
 
 Successful authentication followed by suspicious activity.
 
@@ -1571,7 +1571,7 @@ Confirmed Account Compromise
 
 ---
 
-# Step 7 — Severity
+## Step 7 — Severity
 
 Consider:
 
@@ -1591,7 +1591,7 @@ Assign an appropriate severity according to the organization's policy.
 
 ---
 
-# Expected Investigation Record
+## Expected Investigation Record
 
 ```text id="d7uvn6"
 Incident ID:
@@ -1639,9 +1639,9 @@ Detection Review
 
 ---
 
-# Advanced Lab
+## Advanced Lab
 
-## Multi-Stage Detection Correlation
+### Multi-Stage Detection Correlation
 
 The SIEM generates these alerts:
 
@@ -1665,7 +1665,7 @@ External Email Sent
 Cloud File Download
 ```
 
-### Task
+#### Task
 
 Determine whether these represent:
 
@@ -1689,15 +1689,15 @@ Unknowns
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is security alert triage?
+### 1. What is security alert triage?
 
 Alert triage is the process of validating, enriching, prioritizing, and determining the appropriate response to a security alert.
 
 ---
 
-## 2. What is the difference between detection and investigation?
+### 2. What is the difference between detection and investigation?
 
 Detection identifies potentially suspicious activity.
 
@@ -1705,7 +1705,7 @@ Investigation determines what actually happened and establishes scope, impact, a
 
 ---
 
-## 3. What information should you collect during initial triage?
+### 3. What information should you collect during initial triage?
 
 At minimum:
 
@@ -1722,7 +1722,7 @@ At minimum:
 
 ---
 
-## 4. What is alert enrichment?
+### 4. What is alert enrichment?
 
 Alert enrichment adds contextual information to a security alert, such as:
 
@@ -1735,19 +1735,19 @@ Alert enrichment adds contextual information to a security alert, such as:
 
 ---
 
-## 5. How do you determine whether an alert is a false positive?
+### 5. How do you determine whether an alert is a false positive?
 
 Investigate the underlying activity and compare it with known legitimate behavior, asset context, user activity, authorized administrative operations, and related telemetry.
 
 ---
 
-## 6. What is a false negative?
+### 6. What is a false negative?
 
 A false negative occurs when malicious activity exists but the security detection system fails to identify it.
 
 ---
 
-## 7. Can a high-severity alert be a false positive?
+### 7. Can a high-severity alert be a false positive?
 
 Yes.
 
@@ -1755,7 +1755,7 @@ Alert severity represents the potential or configured importance of the detectio
 
 ---
 
-## 8. Can a low-severity alert become a critical incident?
+### 8. Can a low-severity alert become a critical incident?
 
 Yes.
 
@@ -1763,13 +1763,13 @@ Additional investigation may reveal that the activity involves a privileged iden
 
 ---
 
-## 9. When should an alert become an incident?
+### 9. When should an alert become an incident?
 
 When evidence and risk indicate that coordinated incident response is required according to the organization's incident declaration criteria.
 
 ---
 
-## 10. Why is context important in incident triage?
+### 10. Why is context important in incident triage?
 
 The same activity can be benign or malicious depending on:
 
@@ -1783,25 +1783,25 @@ The same activity can be benign or malicious depending on:
 
 ---
 
-## 11. What is alert correlation?
+### 11. What is alert correlation?
 
 Alert correlation combines related security events to identify a larger activity pattern or attack sequence.
 
 ---
 
-## 12. What is the purpose of an incident severity model?
+### 12. What is the purpose of an incident severity model?
 
 It ensures that incidents receive consistent prioritization and appropriate resources.
 
 ---
 
-## 13. What is a SOC-to-IR handoff?
+### 13. What is a SOC-to-IR handoff?
 
 It is the transfer of an investigated or suspicious alert from the SOC to incident response with relevant evidence, context, timeline, actions, and known unknowns.
 
 ---
 
-## 14. What should you do if you are unsure whether an incident is real?
+### 14. What should you do if you are unsure whether an incident is real?
 
 Preserve relevant evidence, continue investigation, document uncertainty, and escalate when the potential risk justifies it.
 
@@ -1809,15 +1809,15 @@ Avoid both premature closure and unsupported conclusions.
 
 ---
 
-## 15. Why should incident responders record unknowns?
+### 15. Why should incident responders record unknowns?
 
 Unknowns prevent investigators from accidentally presenting assumptions as facts and identify areas requiring additional investigation.
 
 ---
 
-# Professional Triage Checklist
+## Professional Triage Checklist
 
-## Detection
+### Detection
 
 ```text
 [ ] Alert source identified
@@ -1826,7 +1826,7 @@ Unknowns prevent investigators from accidentally presenting assumptions as facts
 [ ] Raw event reviewed
 ```
 
-## Context
+### Context
 
 ```text
 [ ] User identified
@@ -1836,7 +1836,7 @@ Unknowns prevent investigators from accidentally presenting assumptions as facts
 [ ] Business context checked
 ```
 
-## Enrichment
+### Enrichment
 
 ```text
 [ ] IOC reputation checked
@@ -1846,7 +1846,7 @@ Unknowns prevent investigators from accidentally presenting assumptions as facts
 [ ] Network activity checked
 ```
 
-## Investigation
+### Investigation
 
 ```text
 [ ] Look-back performed
@@ -1857,7 +1857,7 @@ Unknowns prevent investigators from accidentally presenting assumptions as facts
 [ ] Lateral movement checked
 ```
 
-## Classification
+### Classification
 
 ```text
 [ ] False positive assessed
@@ -1866,7 +1866,7 @@ Unknowns prevent investigators from accidentally presenting assumptions as facts
 [ ] Severity assigned
 ```
 
-## Escalation
+### Escalation
 
 ```text
 [ ] Incident record created
@@ -1878,34 +1878,34 @@ Unknowns prevent investigators from accidentally presenting assumptions as facts
 
 ---
 
-# Detection and Triage Maturity
+## Detection and Triage Maturity
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 - Manual alert review
 - Limited context
 - Inconsistent escalation
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Standard triage checklist
 - Basic enrichment
 - Defined severity
 
-## Level 3 — Defined
+### Level 3 — Defined
 
 - Automated enrichment
 - Alert correlation
 - Formal SOC-to-IR process
 
-## Level 4 — Measured
+### Level 4 — Measured
 
 - Triage metrics
 - Detection fidelity
 - False-positive tracking
 - Escalation metrics
 
-## Level 5 — Optimized
+### Level 5 — Optimized
 
 - Risk-based prioritization
 - Automated enrichment
@@ -1915,19 +1915,19 @@ Unknowns prevent investigators from accidentally presenting assumptions as facts
 
 ---
 
-# Key Metrics
+## Key Metrics
 
 Useful metrics include:
 
-### Mean Time to Triage
+#### Mean Time to Triage
 
 Time from alert creation to initial triage.
 
-### Mean Time to Escalate
+#### Mean Time to Escalate
 
 Time from validated suspicious activity to IR escalation.
 
-### False Positive Rate
+#### False Positive Rate
 
 ```text id="9l1u6b"
 False Positive Rate
@@ -1937,7 +1937,7 @@ False Positive Alerts
 Total Alerts
 ```
 
-### Escalation Rate
+#### Escalation Rate
 
 ```text id="yxy1vi"
 Escalation Rate
@@ -1947,7 +1947,7 @@ Escalated Alerts
 Total Alerts
 ```
 
-### Detection Fidelity
+#### Detection Fidelity
 
 Measures how often a detection produces useful security investigations.
 
@@ -1955,7 +1955,7 @@ Metrics should be interpreted alongside alert volume and business risk.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Effective incident detection and triage is a disciplined filtering process:
 
@@ -2004,35 +2004,35 @@ The key principles are:
 
 ---
 
-# References
+## References
 
-### NIST
+#### NIST
 
 **Computer Security Incident Handling Guide — SP 800-61**
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 
-### CISA
+#### CISA
 
 https://www.cisa.gov/
 
-### FIRST
+#### FIRST
 
 https://www.first.org/
 
-### SANS
+#### SANS
 
 https://www.sans.org/
 
-### CIS Controls
+#### CIS Controls
 
 https://www.cisecurity.org/controls
 
-### Sigma
+#### Sigma
 
 Generic and vendor-neutral detection rule format:
 
@@ -2040,7 +2040,7 @@ https://sigmahq.io/
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Incident detection and triage form the bridge between **security monitoring and incident response**.
 

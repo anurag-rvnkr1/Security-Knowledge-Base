@@ -21,7 +21,7 @@ Rather than treating containers as lightweight virtual machines, organizations s
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Poorly designed containers often lead to:
 
@@ -71,7 +71,7 @@ Best practices reduce technical debt while improving application resilience.
 
 ---
 
-# Container Best Practice Categories
+## Container Best Practice Categories
 
 Container best practices span multiple areas.
 
@@ -115,7 +115,7 @@ Each area contributes to the overall health of the container ecosystem.
 
 ---
 
-# 1. Build Small Images
+## 1. Build Small Images
 
 Smaller images offer multiple benefits.
 
@@ -151,7 +151,7 @@ Choose minimal base images whenever practical.
 
 ---
 
-# 2. Use Trusted Base Images
+## 2. Use Trusted Base Images
 
 Always begin with:
 
@@ -175,7 +175,7 @@ Production
 
 ---
 
-# 3. Run as a Non-Root User
+## 3. Run as a Non-Root User
 
 Avoid:
 
@@ -200,7 +200,7 @@ Benefits:
 
 ---
 
-# 4. Keep Images Updated
+## 4. Keep Images Updated
 
 Regularly rebuild images using:
 
@@ -212,7 +212,7 @@ Do not rely on images built months or years ago.
 
 ---
 
-# 5. One Process Per Container
+## 5. One Process Per Container
 
 Containers should typically have one primary responsibility.
 
@@ -251,7 +251,7 @@ Some specialized workloads may legitimately run multiple tightly related process
 
 ---
 
-# 6. Avoid Hardcoding Secrets
+## 6. Avoid Hardcoding Secrets
 
 Never include:
 
@@ -271,7 +271,7 @@ Use dedicated secret management mechanisms instead.
 
 ---
 
-# 7. Use Immutable Infrastructure
+## 7. Use Immutable Infrastructure
 
 Instead of:
 
@@ -309,7 +309,7 @@ Immutable deployments improve consistency and simplify rollback.
 
 ---
 
-# 8. Limit Container Resources
+## 8. Limit Container Resources
 
 Define resource limits.
 
@@ -324,7 +324,7 @@ Resource controls improve stability and reduce the impact of resource exhaustion
 
 ---
 
-# 9. Use Health Checks
+## 9. Use Health Checks
 
 Applications should expose health information.
 
@@ -351,7 +351,7 @@ Health checks improve availability and orchestration decisions.
 
 ---
 
-# 10. Use Read-Only Filesystems Where Appropriate
+## 10. Use Read-Only Filesystems Where Appropriate
 
 Applications that do not require filesystem writes should use read-only filesystems.
 
@@ -365,7 +365,7 @@ Writable data can be stored in dedicated volumes or temporary storage where requ
 
 ---
 
-# 11. Centralize Logging
+## 11. Centralize Logging
 
 Avoid storing logs only inside containers.
 
@@ -393,7 +393,7 @@ Centralized logging supports troubleshooting, compliance, and incident response.
 
 ---
 
-# 12. Monitor Everything
+## 12. Monitor Everything
 
 Monitor:
 
@@ -409,7 +409,7 @@ Monitoring enables proactive detection of operational and security issues.
 
 ---
 
-# 13. Automate CI/CD
+## 13. Automate CI/CD
 
 Automate:
 
@@ -433,7 +433,7 @@ Automation improves consistency and reduces manual errors.
 
 ---
 
-# 14. Scan Images Continuously
+## 14. Scan Images Continuously
 
 Image scanning should occur:
 
@@ -446,7 +446,7 @@ New vulnerabilities continue to emerge even in existing images.
 
 ---
 
-# 15. Document Everything
+## 15. Document Everything
 
 Maintain documentation for:
 
@@ -462,7 +462,7 @@ Good documentation improves maintainability and operational readiness.
 
 ---
 
-# Container Best Practices Lifecycle
+## Container Best Practices Lifecycle
 
 ```
 Design
@@ -496,45 +496,45 @@ Best practices apply throughout the software lifecycle.
 
 ---
 
-# Key Principles
+## Key Principles
 
-## Security by Default
+### Security by Default
 
 Build secure configurations from the beginning rather than adding security later.
 
 ---
 
-## Automation
+### Automation
 
 Automate repetitive tasks to improve consistency and reduce human error.
 
 ---
 
-## Observability
+### Observability
 
 Implement metrics, logs, traces, dashboards, and alerts to maintain visibility.
 
 ---
 
-## Least Privilege
+### Least Privilege
 
 Grant only the permissions required by users, containers, and applications.
 
 ---
 
-## Immutable Infrastructure
+### Immutable Infrastructure
 
 Replace containers with newly built images rather than modifying running workloads.
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 Regularly review architectures, processes, monitoring, and security controls to adapt to evolving requirements and threats.
 
 ---
 
-## How It Works
+### How It Works
 
 Container Best Practices are applied throughout the Software Development Life Cycle (SDLC), ensuring that security, reliability, performance, and maintainability are considered from development through production. Rather than being a single configuration or tool, best practices represent a collection of engineering decisions that improve the overall quality of containerized applications.
 
@@ -553,7 +553,7 @@ Organizations that integrate these practices into their workflows achieve greate
 
 ---
 
-# Container Best Practices Workflow
+## Container Best Practices Workflow
 
 ```
 Application Development
@@ -611,7 +611,7 @@ Every stage contributes to building a secure and reliable container ecosystem.
 
 ---
 
-# Step 1 – Design the Application
+## Step 1 – Design the Application
 
 Good containerization begins during application design.
 
@@ -648,7 +648,7 @@ Benefits:
 
 ---
 
-# Step 2 – Create a Secure Dockerfile
+## Step 2 – Create a Secure Dockerfile
 
 Example:
 
@@ -676,7 +676,7 @@ Good practices demonstrated:
 
 ---
 
-# Step 3 – Build the Image
+## Step 3 – Build the Image
 
 ```
 Dockerfile
@@ -696,7 +696,7 @@ Build once and promote the same image through testing and production.
 
 ---
 
-# Step 4 – Scan the Image
+## Step 4 – Scan the Image
 
 Before deployment:
 
@@ -730,7 +730,7 @@ Scanning should identify:
 
 ---
 
-# Step 5 – Run Automated Tests
+## Step 5 – Run Automated Tests
 
 CI/CD pipeline:
 
@@ -762,7 +762,7 @@ Testing before deployment reduces operational risk.
 
 ---
 
-# Step 6 – Push to Registry
+## Step 6 – Push to Registry
 
 After validation:
 
@@ -791,7 +791,7 @@ Registry benefits:
 
 ---
 
-# Step 7 – Deploy Containers
+## Step 7 – Deploy Containers
 
 Deploy using:
 
@@ -815,7 +815,7 @@ The same validated image should be deployed across all environments.
 
 ---
 
-# Step 8 – Configure Runtime Security
+## Step 8 – Configure Runtime Security
 
 Production containers should use:
 
@@ -843,7 +843,7 @@ These controls reduce attack surface and improve stability.
 
 ---
 
-# Step 9 – Monitor Production
+## Step 9 – Monitor Production
 
 Observe:
 
@@ -880,7 +880,7 @@ Monitoring provides early detection of:
 
 ---
 
-# Step 10 – Continuous Improvement
+## Step 10 – Continuous Improvement
 
 Production feedback drives future improvements.
 
@@ -908,7 +908,7 @@ Container best practices evolve continuously as applications and threats change.
 
 ---
 
-# Production Architecture Example
+## Production Architecture Example
 
 ```
                     Internet
@@ -974,9 +974,9 @@ Modern production systems continuously observe every component.
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Minimal Image
+### Example 1 – Minimal Image
 
 Instead of:
 
@@ -999,7 +999,7 @@ Benefits:
 
 ---
 
-## Example 2 – Immutable Deployment
+### Example 2 – Immutable Deployment
 
 Incorrect approach:
 
@@ -1033,7 +1033,7 @@ This ensures repeatable deployments.
 
 ---
 
-## Example 3 – Resource Limits
+### Example 3 – Resource Limits
 
 Application:
 
@@ -1057,7 +1057,7 @@ Resource limits help prevent a single container from consuming excessive host re
 
 ---
 
-## Example 4 – Health Monitoring
+### Example 4 – Health Monitoring
 
 ```
 Application
@@ -1093,9 +1093,9 @@ Health checks improve application availability.
 
 ---
 
-# Hands-on Validation Commands
+## Hands-on Validation Commands
 
-## Inspect Running Containers
+### Inspect Running Containers
 
 ```bash
 docker ps
@@ -1103,7 +1103,7 @@ docker ps
 
 ---
 
-## Inspect Container Configuration
+### Inspect Container Configuration
 
 ```bash
 docker inspect container_name
@@ -1119,7 +1119,7 @@ Verify:
 
 ---
 
-## Review Resource Usage
+### Review Resource Usage
 
 ```bash
 docker stats
@@ -1134,7 +1134,7 @@ Monitor:
 
 ---
 
-## View Logs
+### View Logs
 
 ```bash
 docker logs container_name
@@ -1144,7 +1144,7 @@ Review application behavior and errors.
 
 ---
 
-## Display Running Processes
+### Display Running Processes
 
 ```bash
 docker top container_name
@@ -1154,7 +1154,7 @@ Confirm only expected processes are running.
 
 ---
 
-## Inspect Image Layers
+### Inspect Image Layers
 
 ```bash
 docker history image_name
@@ -1164,7 +1164,7 @@ Review build history and identify unnecessary layers.
 
 ---
 
-## Review Docker Events
+### Review Docker Events
 
 ```bash
 docker events
@@ -1174,7 +1174,7 @@ Monitor container lifecycle activity in real time.
 
 ---
 
-# Production Readiness Checklist
+## Production Readiness Checklist
 
 Before deploying to production, verify:
 
@@ -1191,9 +1191,9 @@ Before deploying to production, verify:
 
 ---
 
-# Best Practices Checklist
+## Best Practices Checklist
 
-## Development
+### Development
 
 - Keep Dockerfiles simple.
 - Use official or trusted base images.
@@ -1203,7 +1203,7 @@ Before deploying to production, verify:
 
 ---
 
-## Build
+### Build
 
 - Build reproducible images.
 - Use version tags.
@@ -1213,7 +1213,7 @@ Before deploying to production, verify:
 
 ---
 
-## Deployment
+### Deployment
 
 - Deploy immutable images.
 - Use automated CI/CD.
@@ -1223,7 +1223,7 @@ Before deploying to production, verify:
 
 ---
 
-## Operations
+### Operations
 
 - Monitor continuously.
 - Rotate credentials when necessary.
@@ -1233,7 +1233,7 @@ Before deploying to production, verify:
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Container Best Practices are often overlooked because containers are perceived as "lightweight virtual machines." In reality, containers require a different operational mindset centered around immutability, automation, security, and observability.
 
@@ -1241,7 +1241,7 @@ The following are the most common mistakes observed in containerized environment
 
 ---
 
-# 1. Treating Containers Like Virtual Machines
+## 1. Treating Containers Like Virtual Machines
 
 Incorrect approach:
 
@@ -1294,7 +1294,7 @@ Containers should be treated as **immutable infrastructure**.
 
 ---
 
-# 2. Building Large Images
+## 2. Building Large Images
 
 Example:
 
@@ -1329,7 +1329,7 @@ Use minimal base images and remove unnecessary software.
 
 ---
 
-# 3. Running Everything as Root
+## 3. Running Everything as Root
 
 Default behavior in many images:
 
@@ -1351,7 +1351,7 @@ Always use a non-root user whenever feasible.
 
 ---
 
-# 4. Hardcoding Secrets
+## 4. Hardcoding Secrets
 
 Never store:
 
@@ -1379,7 +1379,7 @@ Use dedicated secret management solutions.
 
 ---
 
-# 5. Using `latest` in Production
+## 5. Using `latest` in Production
 
 Poor practice:
 
@@ -1411,7 +1411,7 @@ Version-specific tags improve predictability and simplify rollbacks.
 
 ---
 
-# 6. Ignoring Image Scanning
+## 6. Ignoring Image Scanning
 
 Deploying unscanned images may introduce:
 
@@ -1440,7 +1440,7 @@ Deploy
 
 ---
 
-# 7. Not Setting Resource Limits
+## 7. Not Setting Resource Limits
 
 Without limits:
 
@@ -1467,7 +1467,7 @@ Define:
 
 ---
 
-# 8. Exposing Unnecessary Ports
+## 8. Exposing Unnecessary Ports
 
 Example:
 
@@ -1491,7 +1491,7 @@ Expose only services that require external access.
 
 ---
 
-# 9. Ignoring Logging
+## 9. Ignoring Logging
 
 Without centralized logging:
 
@@ -1516,7 +1516,7 @@ Logs should be:
 
 ---
 
-# 10. Not Monitoring Production
+## 10. Not Monitoring Production
 
 Applications should continuously monitor:
 
@@ -1531,7 +1531,7 @@ Monitoring enables early detection of issues before users are significantly affe
 
 ---
 
-# 11. Skipping Health Checks
+## 11. Skipping Health Checks
 
 Without health checks:
 
@@ -1555,7 +1555,7 @@ Health checks allow orchestration platforms to detect unhealthy workloads and ta
 
 ---
 
-# 12. Manual Production Changes
+## 12. Manual Production Changes
 
 Avoid:
 
@@ -1593,7 +1593,7 @@ Automated deployments improve consistency and auditability.
 
 ---
 
-# 13. Keeping Unused Images
+## 13. Keeping Unused Images
 
 Over time:
 
@@ -1620,7 +1620,7 @@ while following organizational retention policies.
 
 ---
 
-# 14. No Backup Strategy
+## 14. No Backup Strategy
 
 Containers are replaceable.
 
@@ -1638,7 +1638,7 @@ Recovery plans should be tested regularly.
 
 ---
 
-# 15. Treating Best Practices as Optional
+## 15. Treating Best Practices as Optional
 
 Organizations sometimes implement:
 
@@ -1679,9 +1679,9 @@ Best practices should be integrated from the beginning of the application lifecy
 
 ---
 
-# Container Best Practices Quick Revision
+## Container Best Practices Quick Revision
 
-## Secure Development Lifecycle
+### Secure Development Lifecycle
 
 ```
 Design
@@ -1717,7 +1717,7 @@ Improve
 
 ---
 
-## Security Principles
+### Security Principles
 
 ```
 Least Privilege
@@ -1743,7 +1743,7 @@ These principles reinforce one another to create a resilient container platform.
 
 ---
 
-## Production Readiness
+### Production Readiness
 
 Before deployment:
 
@@ -1758,7 +1758,7 @@ Before deployment:
 
 ---
 
-## Operational Priorities
+### Operational Priorities
 
 ```
 Automation
@@ -1788,7 +1788,7 @@ Automation reduces manual error while improving consistency.
 
 ---
 
-## Common Validation Commands
+### Common Validation Commands
 
 ```bash
 docker ps
@@ -1812,7 +1812,7 @@ These commands help validate the operational state of Docker environments.
 
 ---
 
-# Container Best Practices Checklist
+## Container Best Practices Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1834,9 +1834,9 @@ These commands help validate the operational state of Docker environments.
 
 ---
 
-# References
+## References
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker Best Practices
 - Docker Engine Documentation
@@ -1846,7 +1846,7 @@ These commands help validate the operational state of Docker environments.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Best Practices
 - Cloud Native Computing Foundation (CNCF)
@@ -1856,7 +1856,7 @@ These commands help validate the operational state of Docker environments.
 
 ---
 
-## Security Standards
+### Security Standards
 
 - NIST SP 800-190 — Application Container Security Guide
 - NIST Secure Software Development Framework (SSDF)
@@ -1866,7 +1866,7 @@ These commands help validate the operational state of Docker environments.
 
 ---
 
-## Supply Chain Security
+### Supply Chain Security
 
 - Sigstore Documentation
 - Notary Documentation
@@ -1876,7 +1876,7 @@ These commands help validate the operational state of Docker environments.
 
 ---
 
-## Books
+### Books
 
 - *Container Security* — Liz Rice
 - *Docker Deep Dive* — Nigel Poulton
@@ -1885,7 +1885,7 @@ These commands help validate the operational state of Docker environments.
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Linux Foundation Training
@@ -1896,7 +1896,7 @@ These commands help validate the operational state of Docker environments.
 
 ---
 
-# Container Best Practices Summary
+## Container Best Practices Summary
 
 ```
 Secure by Design

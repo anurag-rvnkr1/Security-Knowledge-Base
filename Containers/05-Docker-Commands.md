@@ -21,7 +21,7 @@ This chapter explains the most commonly used Docker commands, their syntax, prac
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Although Docker provides graphical interfaces through Docker Desktop, nearly all production environments rely on the Docker CLI.
 
@@ -40,7 +40,7 @@ Docker CLI proficiency is expected in most DevOps, Cloud, and Container-related 
 
 ---
 
-# Docker CLI Architecture
+## Docker CLI Architecture
 
 ```
 User
@@ -72,7 +72,7 @@ Every command issued through the CLI is processed by the Docker Daemon.
 
 ---
 
-# Docker Command Categories
+## Docker Command Categories
 
 Docker commands can be grouped into several functional categories.
 
@@ -91,9 +91,9 @@ Docker commands can be grouped into several functional categories.
 
 ---
 
-# Information Commands
+## Information Commands
 
-## Check Docker Version
+### Check Docker Version
 
 ```bash
 docker version
@@ -108,7 +108,7 @@ Displays:
 
 ---
 
-## Display Docker Information
+### Display Docker Information
 
 ```bash
 docker info
@@ -129,7 +129,7 @@ Useful for troubleshooting Docker installations.
 
 ---
 
-## Display Docker Help
+### Display Docker Help
 
 ```bash
 docker --help
@@ -139,9 +139,9 @@ Lists all available Docker commands and options.
 
 ---
 
-# Image Commands
+## Image Commands
 
-## List Images
+### List Images
 
 ```bash
 docker images
@@ -161,7 +161,7 @@ ubuntu         24.04    xyz456
 
 ---
 
-## Search Images
+### Search Images
 
 ```bash
 docker search nginx
@@ -171,7 +171,7 @@ Searches Docker Hub for images.
 
 ---
 
-## Pull an Image
+### Pull an Image
 
 ```bash
 docker pull nginx
@@ -187,7 +187,7 @@ docker pull nginx:1.27
 
 ---
 
-## Remove an Image
+### Remove an Image
 
 ```bash
 docker rmi nginx
@@ -197,7 +197,7 @@ Deletes the specified image.
 
 ---
 
-## Display Image History
+### Display Image History
 
 ```bash
 docker history nginx
@@ -207,7 +207,7 @@ Shows image layers and build history.
 
 ---
 
-## Inspect an Image
+### Inspect an Image
 
 ```bash
 docker inspect nginx
@@ -217,9 +217,9 @@ Displays detailed image metadata.
 
 ---
 
-# Container Commands
+## Container Commands
 
-## Create and Run a Container
+### Create and Run a Container
 
 ```bash
 docker run nginx
@@ -229,7 +229,7 @@ Creates and starts a new container.
 
 ---
 
-## Run in Detached Mode
+### Run in Detached Mode
 
 ```bash
 docker run -d nginx
@@ -239,7 +239,7 @@ Runs the container in the background.
 
 ---
 
-## Assign a Name
+### Assign a Name
 
 ```bash
 docker run --name web nginx
@@ -249,7 +249,7 @@ Creates a container named **web**.
 
 ---
 
-## Publish Ports
+### Publish Ports
 
 ```bash
 docker run -p 8080:80 nginx
@@ -269,7 +269,7 @@ allowing access to the web server from the host.
 
 ---
 
-## Interactive Container
+### Interactive Container
 
 ```bash
 docker run -it ubuntu bash
@@ -279,7 +279,7 @@ Starts an interactive Ubuntu shell.
 
 ---
 
-## List Running Containers
+### List Running Containers
 
 ```bash
 docker ps
@@ -289,7 +289,7 @@ Shows active containers.
 
 ---
 
-## List All Containers
+### List All Containers
 
 ```bash
 docker ps -a
@@ -299,7 +299,7 @@ Shows running and stopped containers.
 
 ---
 
-## Start a Container
+### Start a Container
 
 ```bash
 docker start web
@@ -309,7 +309,7 @@ Starts an existing container.
 
 ---
 
-## Stop a Container
+### Stop a Container
 
 ```bash
 docker stop web
@@ -319,7 +319,7 @@ Gracefully stops the container.
 
 ---
 
-## Restart a Container
+### Restart a Container
 
 ```bash
 docker restart web
@@ -329,7 +329,7 @@ Stops and immediately starts the container.
 
 ---
 
-## Pause a Container
+### Pause a Container
 
 ```bash
 docker pause web
@@ -339,7 +339,7 @@ Temporarily suspends all processes inside the container.
 
 ---
 
-## Unpause a Container
+### Unpause a Container
 
 ```bash
 docker unpause web
@@ -349,7 +349,7 @@ Resumes a paused container.
 
 ---
 
-## Kill a Container
+### Kill a Container
 
 ```bash
 docker kill web
@@ -359,7 +359,7 @@ Immediately terminates the container without graceful shutdown.
 
 ---
 
-## Remove a Container
+### Remove a Container
 
 ```bash
 docker rm web
@@ -369,7 +369,7 @@ Deletes a stopped container.
 
 ---
 
-## Force Remove
+### Force Remove
 
 ```bash
 docker rm -f web
@@ -379,9 +379,9 @@ Stops and removes the container.
 
 ---
 
-# Container Inspection Commands
+## Container Inspection Commands
 
-## Inspect Container
+### Inspect Container
 
 ```bash
 docker inspect web
@@ -398,7 +398,7 @@ Displays:
 
 ---
 
-## View Running Processes
+### View Running Processes
 
 ```bash
 docker top web
@@ -408,7 +408,7 @@ Lists processes inside the container.
 
 ---
 
-## Execute Commands
+### Execute Commands
 
 ```bash
 docker exec web ls
@@ -418,7 +418,7 @@ Runs a command inside the container.
 
 ---
 
-## Interactive Shell
+### Interactive Shell
 
 ```bash
 docker exec -it web bash
@@ -428,7 +428,7 @@ Opens an interactive shell inside a running container.
 
 ---
 
-## View Logs
+### View Logs
 
 ```bash
 docker logs web
@@ -438,7 +438,7 @@ Displays container logs.
 
 ---
 
-## Follow Logs
+### Follow Logs
 
 ```bash
 docker logs -f web
@@ -448,7 +448,7 @@ Streams logs in real time.
 
 ---
 
-## Display Resource Usage
+### Display Resource Usage
 
 ```bash
 docker stats
@@ -466,9 +466,9 @@ Useful for monitoring running containers.
 
 ---
 
-# Build Commands
+## Build Commands
 
-## Build Image
+### Build Image
 
 ```bash
 docker build -t myapp .
@@ -478,7 +478,7 @@ Builds an image named **myapp** from the current directory.
 
 ---
 
-## Build Specific Dockerfile
+### Build Specific Dockerfile
 
 ```bash
 docker build -f Dockerfile.prod -t myapp .
@@ -488,7 +488,7 @@ Uses a custom Dockerfile.
 
 ---
 
-## List Build Cache
+### List Build Cache
 
 ```bash
 docker builder ls
@@ -498,9 +498,9 @@ Displays builder instances.
 
 ---
 
-# Network Commands
+## Network Commands
 
-## List Networks
+### List Networks
 
 ```bash
 docker network ls
@@ -510,7 +510,7 @@ Shows Docker networks.
 
 ---
 
-## Inspect Network
+### Inspect Network
 
 ```bash
 docker network inspect bridge
@@ -520,7 +520,7 @@ Displays detailed network information.
 
 ---
 
-## Create Network
+### Create Network
 
 ```bash
 docker network create mynetwork
@@ -530,7 +530,7 @@ Creates a custom network.
 
 ---
 
-## Connect Container
+### Connect Container
 
 ```bash
 docker network connect mynetwork web
@@ -540,7 +540,7 @@ Connects a container to a network.
 
 ---
 
-## Disconnect Container
+### Disconnect Container
 
 ```bash
 docker network disconnect mynetwork web
@@ -550,9 +550,9 @@ Removes the container from the specified network.
 
 ---
 
-# Volume Commands
+## Volume Commands
 
-## List Volumes
+### List Volumes
 
 ```bash
 docker volume ls
@@ -562,7 +562,7 @@ Displays Docker-managed volumes.
 
 ---
 
-## Create Volume
+### Create Volume
 
 ```bash
 docker volume create myvolume
@@ -572,7 +572,7 @@ Creates a persistent volume.
 
 ---
 
-## Inspect Volume
+### Inspect Volume
 
 ```bash
 docker volume inspect myvolume
@@ -582,7 +582,7 @@ Displays volume information.
 
 ---
 
-## Remove Volume
+### Remove Volume
 
 ```bash
 docker volume rm myvolume
@@ -592,9 +592,9 @@ Deletes a volume.
 
 ---
 
-# Registry Commands
+## Registry Commands
 
-## Login
+### Login
 
 ```bash
 docker login
@@ -604,7 +604,7 @@ Authenticates with a container registry.
 
 ---
 
-## Logout
+### Logout
 
 ```bash
 docker logout
@@ -614,7 +614,7 @@ Logs out from the current registry.
 
 ---
 
-## Push Image
+### Push Image
 
 ```bash
 docker push username/myapp:v1
@@ -624,7 +624,7 @@ Uploads an image to a registry.
 
 ---
 
-## Pull Image
+### Pull Image
 
 ```bash
 docker pull username/myapp:v1
@@ -634,9 +634,9 @@ Downloads an image from a registry.
 
 ---
 
-# Cleanup Commands
+## Cleanup Commands
 
-## Remove Stopped Containers
+### Remove Stopped Containers
 
 ```bash
 docker container prune
@@ -646,7 +646,7 @@ Deletes all stopped containers.
 
 ---
 
-## Remove Unused Images
+### Remove Unused Images
 
 ```bash
 docker image prune
@@ -656,7 +656,7 @@ Removes dangling images.
 
 ---
 
-## Remove Unused Volumes
+### Remove Unused Volumes
 
 ```bash
 docker volume prune
@@ -666,7 +666,7 @@ Deletes unused volumes.
 
 ---
 
-## Remove Unused Networks
+### Remove Unused Networks
 
 ```bash
 docker network prune
@@ -676,7 +676,7 @@ Deletes unused networks.
 
 ---
 
-## Remove Everything Unused
+### Remove Everything Unused
 
 ```bash
 docker system prune
@@ -693,15 +693,15 @@ Use with caution in production environments.
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-## Docker CLI
+### Docker CLI
 
 The Docker CLI is the primary interface used to communicate with Docker Engine.
 
 ---
 
-## Docker Objects
+### Docker Objects
 
 Most Docker commands operate on:
 
@@ -712,13 +712,13 @@ Most Docker commands operate on:
 
 ---
 
-## Stateless Operations
+### Stateless Operations
 
 Docker commands typically create, inspect, or remove immutable objects rather than modifying them in place.
 
 ---
 
-## Automation
+### Automation
 
 Docker commands can be integrated into:
 
@@ -730,7 +730,7 @@ Docker commands can be integrated into:
 ---
 
 
-## How It Works
+### How It Works
 
 Docker commands are executed through the Docker Command-Line Interface (CLI). Every command entered by the user is sent to the Docker Engine API, which communicates with the Docker Daemon (`dockerd`). The daemon performs the requested operation—such as building an image, creating a container, managing a network, or removing unused resources.
 
@@ -738,7 +738,7 @@ Understanding this flow helps explain why Docker commands behave the way they do
 
 ---
 
-# Docker Command Execution Flow
+## Docker Command Execution Flow
 
 ```
 User
@@ -786,7 +786,7 @@ Every Docker command ultimately results in an operation performed by the Docker 
 
 ---
 
-## Step 1 – User Executes a Command
+### Step 1 – User Executes a Command
 
 Example:
 
@@ -800,7 +800,7 @@ The CLI itself does **not** create containers—it only communicates with the da
 
 ---
 
-## Step 2 – Docker Daemon Receives the Request
+### Step 2 – Docker Daemon Receives the Request
 
 The Docker Daemon validates the command.
 
@@ -840,7 +840,7 @@ The daemon performs all image and container operations.
 
 ---
 
-## Step 3 – Image Retrieval
+### Step 3 – Image Retrieval
 
 If the image is unavailable locally:
 
@@ -866,7 +866,7 @@ Previously downloaded layers are reused.
 
 ---
 
-## Step 4 – Container Creation
+### Step 4 – Container Creation
 
 The Docker Daemon creates:
 
@@ -895,7 +895,7 @@ The image itself remains unchanged.
 
 ---
 
-## Step 5 – Application Starts
+### Step 5 – Application Starts
 
 The container runtime launches the application's primary process.
 
@@ -919,7 +919,7 @@ The container remains active while this primary process is running.
 
 ---
 
-## Step 6 – Runtime Monitoring
+### Step 6 – Runtime Monitoring
 
 Docker continuously monitors:
 
@@ -944,7 +944,7 @@ retrieve this information from the Docker Daemon.
 
 ---
 
-## Step 7 – Container Stops
+### Step 7 – Container Stops
 
 Containers stop when:
 
@@ -962,9 +962,9 @@ The image remains available for future container creation.
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Running an Nginx Web Server
+### Example 1 – Running an Nginx Web Server
 
 Command:
 
@@ -1006,7 +1006,7 @@ The application is now accessible on port **8080** of the host.
 
 ---
 
-## Example 2 – Building an Image
+### Example 2 – Building an Image
 
 Command:
 
@@ -1044,7 +1044,7 @@ The final image can be reused multiple times.
 
 ---
 
-## Example 3 – Viewing Logs
+### Example 3 – Viewing Logs
 
 Command:
 
@@ -1078,7 +1078,7 @@ Logs are invaluable for troubleshooting and monitoring.
 
 ---
 
-## Example 4 – Executing a Command Inside a Container
+### Example 4 – Executing a Command Inside a Container
 
 Command:
 
@@ -1104,9 +1104,9 @@ This is useful for debugging or inspecting the runtime environment.
 
 ---
 
-# Hands-on Exercises
+## Hands-on Exercises
 
-## Exercise 1 – Verify Docker Installation
+### Exercise 1 – Verify Docker Installation
 
 ```bash
 docker version
@@ -1119,7 +1119,7 @@ Expected result:
 
 ---
 
-## Exercise 2 – Download Ubuntu
+### Exercise 2 – Download Ubuntu
 
 ```bash
 docker pull ubuntu
@@ -1135,7 +1135,7 @@ The Ubuntu image should appear in the local image list.
 
 ---
 
-## Exercise 3 – Start an Interactive Container
+### Exercise 3 – Start an Interactive Container
 
 ```bash
 docker run -it ubuntu bash
@@ -1163,7 +1163,7 @@ to leave the container.
 
 ---
 
-## Exercise 4 – Start Nginx
+### Exercise 4 – Start Nginx
 
 ```bash
 docker run -d --name web -p 8080:80 nginx
@@ -1185,7 +1185,7 @@ You should see the default Nginx welcome page.
 
 ---
 
-## Exercise 5 – View Logs
+### Exercise 5 – View Logs
 
 ```bash
 docker logs web
@@ -1195,7 +1195,7 @@ Observe the startup output.
 
 ---
 
-## Exercise 6 – Enter the Running Container
+### Exercise 6 – Enter the Running Container
 
 ```bash
 docker exec -it web bash
@@ -1219,7 +1219,7 @@ exit
 
 ---
 
-## Exercise 7 – Stop the Container
+### Exercise 7 – Stop the Container
 
 ```bash
 docker stop web
@@ -1235,7 +1235,7 @@ The container should no longer appear in the running list.
 
 ---
 
-## Exercise 8 – Remove the Container
+### Exercise 8 – Remove the Container
 
 ```bash
 docker rm web
@@ -1251,15 +1251,15 @@ The container should be removed.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Understand Commands Before Memorizing Them
+#### 1. Understand Commands Before Memorizing Them
 
 Instead of memorizing syntax, understand **what each command does** and **how it affects Docker objects**.
 
 ---
 
-### 2. Use Explicit Image Versions
+#### 2. Use Explicit Image Versions
 
 Prefer:
 
@@ -1277,7 +1277,7 @@ Version pinning provides predictable deployments.
 
 ---
 
-### 3. Name Important Containers
+#### 3. Name Important Containers
 
 Instead of relying on automatically generated names:
 
@@ -1289,7 +1289,7 @@ Named containers are easier to manage.
 
 ---
 
-### 4. Monitor Resource Usage
+#### 4. Monitor Resource Usage
 
 Regularly check:
 
@@ -1301,7 +1301,7 @@ to identify resource bottlenecks.
 
 ---
 
-### 5. Review Logs First During Troubleshooting
+#### 5. Review Logs First During Troubleshooting
 
 When a container fails, start with:
 
@@ -1313,7 +1313,7 @@ Logs often provide the fastest insight into startup failures.
 
 ---
 
-### 6. Clean Up Unused Resources
+#### 6. Clean Up Unused Resources
 
 Periodically remove:
 
@@ -1326,7 +1326,7 @@ to maintain a clean Docker environment.
 
 ---
 
-### 7. Learn Command Categories
+#### 7. Learn Command Categories
 
 Rather than memorizing hundreds of commands individually, group them by purpose:
 
@@ -1344,17 +1344,17 @@ This makes Docker CLI easier to learn and remember.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Docker provides hundreds of CLI commands, but many operational problems arise from using the wrong command, misunderstanding command behavior, or failing to understand the relationship between Docker objects. The following are the most common mistakes encountered by beginners and professionals.
 
 ---
 
-# 1. Confusing `docker run` with `docker start`
+## 1. Confusing `docker run` with `docker start`
 
 Many users believe these commands perform the same action.
 
-### `docker run`
+#### `docker run`
 
 Creates **and** starts a **new** container.
 
@@ -1382,7 +1382,7 @@ docker run nginx
 
 ---
 
-### `docker start`
+#### `docker start`
 
 Starts an **existing** stopped container.
 
@@ -1411,7 +1411,7 @@ docker start web
 
 ---
 
-# 2. Forgetting Detached Mode (`-d`)
+## 2. Forgetting Detached Mode (`-d`)
 
 Running:
 
@@ -1431,7 +1431,7 @@ Detached mode allows the container to run in the background.
 
 ---
 
-# 3. Not Publishing Required Ports
+## 3. Not Publishing Required Ports
 
 Example:
 
@@ -1465,7 +1465,7 @@ Without port mapping, services remain inaccessible from outside the container.
 
 ---
 
-# 4. Using `docker exec` Instead of `docker run`
+## 4. Using `docker exec` Instead of `docker run`
 
 Incorrect:
 
@@ -1489,9 +1489,9 @@ docker exec -it running_container bash
 
 ---
 
-# 5. Using `docker kill` Instead of `docker stop`
+## 5. Using `docker kill` Instead of `docker stop`
 
-### `docker stop`
+#### `docker stop`
 
 ```
 SIGTERM
@@ -1511,7 +1511,7 @@ Container Stops
 
 ---
 
-### `docker kill`
+#### `docker kill`
 
 ```
 SIGKILL
@@ -1525,7 +1525,7 @@ Immediate Termination
 
 ---
 
-# 6. Forgetting to Name Containers
+## 6. Forgetting to Name Containers
 
 Without:
 
@@ -1553,7 +1553,7 @@ Named containers simplify management and automation.
 
 ---
 
-# 7. Using `latest` Everywhere
+## 7. Using `latest` Everywhere
 
 Avoid:
 
@@ -1573,7 +1573,7 @@ Explicit versions improve reproducibility and simplify rollbacks.
 
 ---
 
-# 8. Ignoring Logs During Troubleshooting
+## 8. Ignoring Logs During Troubleshooting
 
 Many users restart containers repeatedly without reviewing logs.
 
@@ -1592,7 +1592,7 @@ Logs often reveal:
 
 ---
 
-# 9. Forgetting Cleanup
+## 9. Forgetting Cleanup
 
 Repeated testing leaves behind:
 
@@ -1617,7 +1617,7 @@ Neglecting cleanup can consume significant disk space over time.
 
 ---
 
-# 10. Assuming `docker rm` Removes Images
+## 10. Assuming `docker rm` Removes Images
 
 Incorrect assumption:
 
@@ -1645,7 +1645,7 @@ docker rmi nginx
 
 ---
 
-# 11. Ignoring Image Size
+## 11. Ignoring Image Size
 
 Using unnecessarily large images increases:
 
@@ -1664,7 +1664,7 @@ Examples:
 
 ---
 
-# 12. Forgetting That Containers Are Ephemeral
+## 12. Forgetting That Containers Are Ephemeral
 
 Example:
 
@@ -1688,7 +1688,7 @@ Persistent data should always be stored in volumes or external storage.
 
 ---
 
-# 13. Using Root Inside Containers
+## 13. Using Root Inside Containers
 
 Many official images default to the `root` user.
 
@@ -1702,7 +1702,7 @@ Create and run applications as non-root users whenever practical.
 
 ---
 
-# 14. Memorizing Commands Without Understanding Objects
+## 14. Memorizing Commands Without Understanding Objects
 
 Many users memorize:
 
@@ -1728,7 +1728,7 @@ Conceptual understanding makes command usage much more intuitive.
 
 ---
 
-# 15. Skipping `docker inspect`
+## 15. Skipping `docker inspect`
 
 When troubleshooting, many users overlook one of Docker's most valuable commands:
 
@@ -1749,9 +1749,9 @@ Use it before making assumptions about a container's configuration.
 
 ---
 
-# Docker Commands Quick Revision
+## Docker Commands Quick Revision
 
-## Information
+### Information
 
 ```bash
 docker version
@@ -1763,7 +1763,7 @@ docker --help
 
 ---
 
-## Images
+### Images
 
 ```bash
 docker images
@@ -1781,7 +1781,7 @@ docker inspect
 
 ---
 
-## Containers
+### Containers
 
 ```bash
 docker run
@@ -1803,7 +1803,7 @@ docker ps -a
 
 ---
 
-## Container Access
+### Container Access
 
 ```bash
 docker exec
@@ -1819,7 +1819,7 @@ docker stats
 
 ---
 
-## Build
+### Build
 
 ```bash
 docker build
@@ -1827,7 +1827,7 @@ docker build
 
 ---
 
-## Networks
+### Networks
 
 ```bash
 docker network ls
@@ -1843,7 +1843,7 @@ docker network disconnect
 
 ---
 
-## Volumes
+### Volumes
 
 ```bash
 docker volume ls
@@ -1857,7 +1857,7 @@ docker volume rm
 
 ---
 
-## Cleanup
+### Cleanup
 
 ```bash
 docker image prune
@@ -1873,7 +1873,7 @@ docker system prune
 
 ---
 
-# Docker Commands Checklist
+## Docker Commands Checklist
 
 | Command Category | Status |
 |------------------|:------:|
@@ -1895,9 +1895,9 @@ docker system prune
 
 ---
 
-# References
+## References
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker CLI Documentation
 - Docker Engine Documentation
@@ -1908,7 +1908,7 @@ docker system prune
 
 ---
 
-## OCI Standards
+### OCI Standards
 
 - Open Container Initiative (OCI) Image Specification
 - Open Container Initiative (OCI) Runtime Specification
@@ -1916,7 +1916,7 @@ docker system prune
 
 ---
 
-## Linux Documentation
+### Linux Documentation
 
 - Linux Namespaces
 - Linux cgroups
@@ -1925,7 +1925,7 @@ docker system prune
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Cloud Native Computing Foundation (CNCF)
 - Kubernetes Documentation
@@ -1934,7 +1934,7 @@ docker system prune
 
 ---
 
-## Security Resources
+### Security Resources
 
 - NIST SP 800-190 — Application Container Security Guide
 - OWASP Docker Security Cheat Sheet
@@ -1943,7 +1943,7 @@ docker system prune
 
 ---
 
-## Books
+### Books
 
 - *Docker Deep Dive* — Nigel Poulton
 - *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
@@ -1951,7 +1951,7 @@ docker system prune
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Docker Labs

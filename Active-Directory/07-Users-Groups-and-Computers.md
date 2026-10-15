@@ -1,10 +1,10 @@
 # 07-Users-Groups-and-Computers.md
 
-# Part 1 — Active Directory Objects: Users, Groups, and Computers Fundamentals
+## Part 1 — Active Directory Objects: Users, Groups, and Computers Fundamentals
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -18,7 +18,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Introduction
+## Introduction
 
 Everything stored inside Active Directory is an **Object**.
 
@@ -38,7 +38,7 @@ Active Directory stores each object in its directory database along with numerou
 
 ---
 
-# What is an Active Directory Object?
+## What is an Active Directory Object?
 
 An **Active Directory Object** is an entity stored within the directory that represents a person, device, resource, or service.
 
@@ -52,7 +52,7 @@ Each object has:
 
 ---
 
-# Types of Objects
+## Types of Objects
 
 ```text
 Active Directory
@@ -80,11 +80,11 @@ Active Directory
 
 ---
 
-# Categories of Objects
+## Categories of Objects
 
 Objects generally fall into two categories:
 
-## Container Objects
+### Container Objects
 
 These can contain other objects.
 
@@ -96,7 +96,7 @@ Examples:
 
 ---
 
-## Leaf Objects
+### Leaf Objects
 
 These cannot contain child objects.
 
@@ -110,7 +110,7 @@ Examples:
 
 ---
 
-# Active Directory Object Structure
+## Active Directory Object Structure
 
 Every object consists of:
 
@@ -136,7 +136,7 @@ Object
 
 ---
 
-# Object Classes
+## Object Classes
 
 An object class defines what type of object it is and what attributes it can contain.
 
@@ -153,7 +153,7 @@ Examples:
 
 ---
 
-# Object Attributes
+## Object Attributes
 
 Each object contains attributes.
 
@@ -184,7 +184,7 @@ Other attributes include:
 
 ---
 
-# Example User Object
+## Example User Object
 
 ```text
 User
@@ -204,7 +204,7 @@ User
 
 ---
 
-# Distinguished Name (DN)
+## Distinguished Name (DN)
 
 Every object has a unique Distinguished Name.
 
@@ -238,7 +238,7 @@ Domain Component
 
 ---
 
-# Relative Distinguished Name (RDN)
+## Relative Distinguished Name (RDN)
 
 The **Relative Distinguished Name (RDN)** uniquely identifies an object within its parent container.
 
@@ -264,7 +264,7 @@ This forms the full Distinguished Name.
 
 ---
 
-# Globally Unique Identifier (GUID)
+## Globally Unique Identifier (GUID)
 
 Every Active Directory object receives a **GUID** when it is created.
 
@@ -283,7 +283,7 @@ Characteristics:
 
 ---
 
-# Security Identifier (SID)
+## Security Identifier (SID)
 
 Security principals such as users, groups, and computers also receive a **Security Identifier (SID).**
 
@@ -304,7 +304,7 @@ Even if a user changes their username, the SID remains the same.
 
 ---
 
-# GUID vs SID
+## GUID vs SID
 
 | GUID | SID |
 |------|-----|
@@ -315,7 +315,7 @@ Even if a user changes their username, the SID remains the same.
 
 ---
 
-# User Objects
+## User Objects
 
 A **User Object** represents a person or identity that can authenticate to Active Directory.
 
@@ -328,7 +328,7 @@ Typical uses:
 
 ---
 
-# Example User
+## Example User
 
 ```text
 John Smith
@@ -354,7 +354,7 @@ The user account becomes the identity used throughout the enterprise.
 
 ---
 
-# Computer Objects
+## Computer Objects
 
 Every domain-joined computer receives its own computer object.
 
@@ -381,7 +381,7 @@ Domain Authentication
 
 ---
 
-# Why Computers Need Accounts
+## Why Computers Need Accounts
 
 Computers authenticate just like users.
 
@@ -413,7 +413,7 @@ This secure relationship allows:
 
 ---
 
-# Group Objects
+## Group Objects
 
 Groups simplify permission management.
 
@@ -435,7 +435,7 @@ This approach is more scalable and easier to maintain.
 
 ---
 
-# Example
+## Example
 
 Instead of:
 
@@ -467,7 +467,7 @@ Adding or removing users from the group automatically changes their access.
 
 ---
 
-# Security Principals
+## Security Principals
 
 Security principals are objects that can be authenticated and assigned permissions.
 
@@ -486,7 +486,7 @@ Security principals possess SIDs and participate in access control.
 
 ---
 
-# Object Relationships
+## Object Relationships
 
 ```text
 User
@@ -512,7 +512,7 @@ This relationship is central to authorization in Windows.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company employs 15,000 people.
 
@@ -542,7 +542,7 @@ Each object is uniquely identified and managed through Active Directory.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Accurate object management is essential for enterprise security.
 
@@ -565,7 +565,7 @@ Security teams should regularly review:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -578,13 +578,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Explore Active Directory objects.
 
-### Tasks
+#### Tasks
 
 1. Open **Active Directory Users and Computers (ADUC)**.
 2. Locate:
@@ -600,7 +600,7 @@ Explore Active Directory objects.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an Active Directory object?
 2. What is the difference between a container object and a leaf object?
@@ -615,7 +615,7 @@ Explore Active Directory objects.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Everything stored in Active Directory is represented as an object.
 - Objects have classes, attributes, Distinguished Names, and unique identifiers.
@@ -625,13 +625,13 @@ Explore Active Directory objects.
 
 ---
 
-# 07-Users-Groups-and-Computers.md
+## 07-Users-Groups-and-Computers.md
 
-# Part 2 — User Accounts, Computer Accounts, Group Types, Group Scopes, AGDLP, and Enterprise Identity Management
+## Part 2 — User Accounts, Computer Accounts, Group Types, Group Scopes, AGDLP, and Enterprise Identity Management
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -645,7 +645,7 @@ After completing this part, you will be able to:
 
 ---
 
-# User Accounts in Active Directory
+## User Accounts in Active Directory
 
 A **User Account** represents a digital identity that can authenticate to Active Directory and access enterprise resources.
 
@@ -669,7 +669,7 @@ Every user account has:
 
 ---
 
-# Types of User Accounts
+## Types of User Accounts
 
 | Account Type | Purpose |
 |--------------|----------|
@@ -682,7 +682,7 @@ Every user account has:
 
 ---
 
-# Standard User Accounts
+## Standard User Accounts
 
 Most employees receive a standard user account.
 
@@ -716,7 +716,7 @@ A standard account should **not** have administrative privileges.
 
 ---
 
-# Administrative Accounts
+## Administrative Accounts
 
 Administrators should use **separate privileged accounts**.
 
@@ -751,7 +751,7 @@ Benefits:
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Applications often require accounts to run services.
 
@@ -780,7 +780,7 @@ Service accounts should never be used for interactive logon unless absolutely ne
 
 ---
 
-# User Account Lifecycle
+## User Account Lifecycle
 
 Enterprise identity management follows a defined lifecycle.
 
@@ -816,7 +816,7 @@ Proper lifecycle management reduces security risks.
 
 ---
 
-# New User Provisioning
+## New User Provisioning
 
 Typical workflow:
 
@@ -852,7 +852,7 @@ Automation often handles much of this process.
 
 ---
 
-# User Attributes
+## User Attributes
 
 Common user attributes include:
 
@@ -873,7 +873,7 @@ These attributes support searches, address books, automation, and reporting.
 
 ---
 
-# Account States
+## Account States
 
 User accounts may exist in different states.
 
@@ -901,7 +901,7 @@ Understanding these states helps administrators troubleshoot authentication issu
 
 ---
 
-# Disabled Accounts
+## Disabled Accounts
 
 Instead of immediately deleting accounts, organizations often disable them first.
 
@@ -914,7 +914,7 @@ Benefits:
 
 ---
 
-# Locked Accounts
+## Locked Accounts
 
 Accounts may become locked due to:
 
@@ -927,7 +927,7 @@ Administrators should determine the cause before unlocking an account.
 
 ---
 
-# Computer Accounts
+## Computer Accounts
 
 Every domain-joined computer receives a computer account.
 
@@ -947,7 +947,7 @@ Computer accounts are security principals and possess their own SID.
 
 ---
 
-# Computer Authentication
+## Computer Authentication
 
 Unlike user accounts, computer accounts authenticate automatically.
 
@@ -977,7 +977,7 @@ This secure channel is essential for Active Directory communication.
 
 ---
 
-# Computer Account Passwords
+## Computer Account Passwords
 
 Computer accounts maintain passwords just like users.
 
@@ -990,7 +990,7 @@ Characteristics:
 
 ---
 
-# Computer Lifecycle
+## Computer Lifecycle
 
 ```text
 Purchase
@@ -1024,7 +1024,7 @@ Lifecycle management helps maintain a clean directory.
 
 ---
 
-# Group Objects
+## Group Objects
 
 Groups simplify administration.
 
@@ -1050,7 +1050,7 @@ This approach scales efficiently in enterprise environments.
 
 ---
 
-# Why Groups Exist
+## Why Groups Exist
 
 Without groups:
 
@@ -1080,11 +1080,11 @@ Administration becomes significantly easier.
 
 ---
 
-# Types of Groups
+## Types of Groups
 
 There are two primary group types.
 
-## Security Groups
+### Security Groups
 
 Purpose:
 
@@ -1105,7 +1105,7 @@ Shared Folder Access
 
 ---
 
-## Distribution Groups
+### Distribution Groups
 
 Purpose:
 
@@ -1127,7 +1127,7 @@ Email Announcement
 
 ---
 
-# Security vs Distribution Groups
+## Security vs Distribution Groups
 
 | Feature | Security Group | Distribution Group |
 |----------|----------------|--------------------|
@@ -1139,7 +1139,7 @@ Email Announcement
 
 ---
 
-# Group Scopes
+## Group Scopes
 
 Active Directory defines three primary group scopes.
 
@@ -1151,7 +1151,7 @@ Choosing the correct scope is important for scalable access management.
 
 ---
 
-# Domain Local Groups
+## Domain Local Groups
 
 Purpose:
 
@@ -1175,7 +1175,7 @@ Think of Domain Local groups as being **close to the resource**.
 
 ---
 
-# Global Groups
+## Global Groups
 
 Purpose:
 
@@ -1195,7 +1195,7 @@ Global groups are typically used to organize identities.
 
 ---
 
-# Universal Groups
+## Universal Groups
 
 Purpose:
 
@@ -1219,7 +1219,7 @@ Useful in multi-domain forests.
 
 ---
 
-# Group Scope Comparison
+## Group Scope Comparison
 
 | Scope | Typical Members | Typical Use |
 |--------|-----------------|-------------|
@@ -1229,7 +1229,7 @@ Useful in multi-domain forests.
 
 ---
 
-# AGDLP
+## AGDLP
 
 AGDLP is Microsoft's recommended access management model for a **single-domain** environment.
 
@@ -1253,7 +1253,7 @@ Permissions
 
 ---
 
-# AGDLP Example
+## AGDLP Example
 
 ```text
 Alice
@@ -1287,7 +1287,7 @@ Benefits:
 
 ---
 
-# AGUDLP
+## AGUDLP
 
 For **multi-domain forests**, Microsoft recommends AGUDLP.
 
@@ -1315,7 +1315,7 @@ This model supports resource sharing across domains while reducing administrativ
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1347,7 +1347,7 @@ Each regional team manages its own users while permissions remain centralized.
 
 ---
 
-# Identity Management Best Practices
+## Identity Management Best Practices
 
 ✔ Use standard user accounts for daily work.
 
@@ -1367,7 +1367,7 @@ Each regional team manages its own users while permissions remain centralized.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Poor identity management is a frequent cause of security incidents.
 
@@ -1391,7 +1391,7 @@ Security teams should periodically review:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -1405,13 +1405,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Practice managing users, computers, and groups.
 
-### Tasks
+#### Tasks
 
 1. Create a test user named `John Test`.
 2. Create a Global Security Group named `Finance-Users`.
@@ -1427,7 +1427,7 @@ Practice managing users, computers, and groups.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between a standard user account and an administrator account?
 2. Why should administrators use separate privileged accounts?
@@ -1442,7 +1442,7 @@ Practice managing users, computers, and groups.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - User, computer, and group objects form the foundation of Active Directory identity management.
 - Standard and privileged accounts should be separated to improve security.
@@ -1453,13 +1453,13 @@ Practice managing users, computers, and groups.
 
 ---
 
-# 07-Users-Groups-and-Computers.md
+## 07-Users-Groups-and-Computers.md
 
-# Part 3 — Service Accounts, Managed Service Accounts, Group Nesting, User & Computer Lifecycle, Administration, and Enterprise Best Practices
+## Part 3 — Service Accounts, Managed Service Accounts, Group Nesting, User & Computer Lifecycle, Administration, and Enterprise Best Practices
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -1472,7 +1472,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 A **Service Account** is an account used by an application or Windows service rather than by a person.
 
@@ -1489,7 +1489,7 @@ Unlike standard user accounts, service accounts allow applications to authentica
 
 ---
 
-# Why Not Use Administrator Accounts?
+## Why Not Use Administrator Accounts?
 
 Poor Practice:
 
@@ -1532,7 +1532,7 @@ This follows the **Principle of Least Privilege**.
 
 ---
 
-# Characteristics of Service Accounts
+## Characteristics of Service Accounts
 
 Service accounts generally:
 
@@ -1545,7 +1545,7 @@ Service accounts generally:
 
 ---
 
-# Traditional Service Account Challenges
+## Traditional Service Account Challenges
 
 Historically, administrators faced problems such as:
 
@@ -1575,7 +1575,7 @@ Production Outage
 
 ---
 
-# Managed Service Accounts (MSA)
+## Managed Service Accounts (MSA)
 
 Microsoft introduced **Managed Service Accounts (MSA)** to reduce administrative overhead.
 
@@ -1588,7 +1588,7 @@ MSAs provide:
 
 ---
 
-# Managed Service Account Workflow
+## Managed Service Account Workflow
 
 ```text
 Domain Controller
@@ -1614,7 +1614,7 @@ Administrators do not manually rotate passwords under normal operation.
 
 ---
 
-# Group Managed Service Accounts (gMSA)
+## Group Managed Service Accounts (gMSA)
 
 A **Group Managed Service Account (gMSA)** extends the MSA concept.
 
@@ -1650,7 +1650,7 @@ This is useful for:
 
 ---
 
-# MSA vs gMSA
+## MSA vs gMSA
 
 | Feature | MSA | gMSA |
 |----------|-----|-------|
@@ -1662,7 +1662,7 @@ This is useful for:
 
 ---
 
-# Service Principal Names (SPNs)
+## Service Principal Names (SPNs)
 
 Many services require **Service Principal Names (SPNs)**.
 
@@ -1692,7 +1692,7 @@ A dedicated chapter on Kerberos will explore SPNs in depth.
 
 ---
 
-# Group Membership
+## Group Membership
 
 Users rarely receive permissions directly.
 
@@ -1718,7 +1718,7 @@ Groups simplify access management and reduce administrative effort.
 
 ---
 
-# Group Nesting
+## Group Nesting
 
 Groups can contain other groups.
 
@@ -1748,7 +1748,7 @@ This approach reduces repetitive permission assignments.
 
 ---
 
-# Advantages of Group Nesting
+## Advantages of Group Nesting
 
 Benefits include:
 
@@ -1760,7 +1760,7 @@ Benefits include:
 
 ---
 
-# Example
+## Example
 
 Without nesting:
 
@@ -1802,7 +1802,7 @@ Significantly fewer direct permission assignments are required.
 
 ---
 
-# Nested Group Example
+## Nested Group Example
 
 ```text
 Alice
@@ -1832,7 +1832,7 @@ Administrators manage group membership instead of modifying resource permissions
 
 ---
 
-# User Lifecycle Management
+## User Lifecycle Management
 
 Enterprise identity management follows a structured lifecycle.
 
@@ -1876,11 +1876,11 @@ Each stage should follow documented procedures.
 
 ---
 
-# Joiner-Mover-Leaver (JML) Process
+## Joiner-Mover-Leaver (JML) Process
 
 A common identity governance model is the **Joiner-Mover-Leaver (JML)** process.
 
-### Joiner
+#### Joiner
 
 - Create account
 - Assign groups
@@ -1889,7 +1889,7 @@ A common identity governance model is the **Joiner-Mover-Leaver (JML)** process.
 
 ---
 
-### Mover
+#### Mover
 
 - Update department
 - Modify group memberships
@@ -1898,7 +1898,7 @@ A common identity governance model is the **Joiner-Mover-Leaver (JML)** process.
 
 ---
 
-### Leaver
+#### Leaver
 
 - Disable account
 - Recover assets
@@ -1908,7 +1908,7 @@ A common identity governance model is the **Joiner-Mover-Leaver (JML)** process.
 
 ---
 
-# Computer Lifecycle
+## Computer Lifecycle
 
 Enterprise computers also follow a lifecycle.
 
@@ -1952,7 +1952,7 @@ Computer accounts should be removed when devices are permanently retired.
 
 ---
 
-# Stale Computer Accounts
+## Stale Computer Accounts
 
 A stale computer account belongs to a device that:
 
@@ -1971,7 +1971,7 @@ Periodic cleanup is recommended.
 
 ---
 
-# User Account Maintenance
+## User Account Maintenance
 
 Administrators should regularly review:
 
@@ -1987,7 +1987,7 @@ Routine reviews improve security and operational efficiency.
 
 ---
 
-# Naming Standards
+## Naming Standards
 
 Example naming convention:
 
@@ -2031,7 +2031,7 @@ Consistent naming simplifies administration and reporting.
 
 ---
 
-# Enterprise Identity Governance
+## Enterprise Identity Governance
 
 Modern organizations typically integrate identity governance with:
 
@@ -2046,7 +2046,7 @@ Automation reduces manual errors and improves consistency.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Identity is one of the primary attack targets.
 
@@ -2071,7 +2071,7 @@ Recommended controls:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -2085,7 +2085,7 @@ Avoid:
 
 ---
 
-# Best Practices Checklist
+## Best Practices Checklist
 
 ✔ Use dedicated service accounts.
 
@@ -2109,13 +2109,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Practice managing identities and service accounts.
 
-### Tasks
+#### Tasks
 
 1. Create a Global Security Group named `IT-Users`.
 2. Create a second Global Security Group named `Infrastructure-Team`.
@@ -2130,7 +2130,7 @@ Practice managing identities and service accounts.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a service account?
 2. Why should services not run as Domain Administrator?
@@ -2145,7 +2145,7 @@ Practice managing identities and service accounts.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Service accounts enable applications to authenticate securely and should follow the principle of least privilege.
 - Managed Service Accounts (MSAs) and Group Managed Service Accounts (gMSAs) simplify password and SPN management.
@@ -2155,13 +2155,13 @@ Practice managing identities and service accounts.
 
 ---
 
-# 07-Users-Groups-and-Computers.md
+## 07-Users-Groups-and-Computers.md
 
-# Part 4 — Enterprise Administration, Security Best Practices, Troubleshooting, Final Revision, and Chapter Summary
+## Part 4 — Enterprise Administration, Security Best Practices, Troubleshooting, Final Revision, and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -2174,7 +2174,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Enterprise Identity Administration
+## Enterprise Identity Administration
 
 Managing identities is one of the most important responsibilities of an Active Directory administrator.
 
@@ -2190,7 +2190,7 @@ A mature identity management process reduces security risks while improving oper
 
 ---
 
-# Identity Governance
+## Identity Governance
 
 Identity Governance ensures that users have:
 
@@ -2231,7 +2231,7 @@ Account Removal
 
 ---
 
-# Identity Management Principles
+## Identity Management Principles
 
 A mature Active Directory environment follows these principles:
 
@@ -2246,7 +2246,7 @@ A mature Active Directory environment follows these principles:
 
 ---
 
-# Enterprise User Provisioning
+## Enterprise User Provisioning
 
 Typical onboarding process:
 
@@ -2286,7 +2286,7 @@ Many organizations integrate HR systems with identity management solutions to au
 
 ---
 
-# User Offboarding
+## User Offboarding
 
 Secure offboarding is just as important as onboarding.
 
@@ -2328,7 +2328,7 @@ Immediate account disablement reduces the risk of unauthorized access.
 
 ---
 
-# Group Management Strategy
+## Group Management Strategy
 
 Microsoft recommends role-based access management.
 
@@ -2359,7 +2359,7 @@ Benefits:
 
 ---
 
-# Privileged Groups
+## Privileged Groups
 
 Examples of highly privileged groups include:
 
@@ -2383,7 +2383,7 @@ Membership should be tightly controlled and reviewed regularly.
 
 ---
 
-# Privileged Access Best Practices
+## Privileged Access Best Practices
 
 ✔ Use dedicated administrator accounts.
 
@@ -2399,7 +2399,7 @@ Membership should be tightly controlled and reviewed regularly.
 
 ---
 
-# Password Policies
+## Password Policies
 
 User accounts should follow strong password policies.
 
@@ -2416,7 +2416,7 @@ Password policy details will be explored further in later security chapters.
 
 ---
 
-# Account Lockout
+## Account Lockout
 
 Repeated failed authentication attempts may trigger account lockout.
 
@@ -2452,7 +2452,7 @@ Possible causes:
 
 ---
 
-# Group Membership Reviews
+## Group Membership Reviews
 
 Regular reviews help identify:
 
@@ -2473,7 +2473,7 @@ Example review schedule:
 
 ---
 
-# Computer Account Administration
+## Computer Account Administration
 
 Administrators should periodically review:
 
@@ -2488,7 +2488,7 @@ Healthy computer accounts support reliable authentication and policy application
 
 ---
 
-# Account Auditing
+## Account Auditing
 
 Organizations should monitor:
 
@@ -2505,7 +2505,7 @@ Centralized auditing improves visibility and incident response.
 
 ---
 
-# Monitoring Identity Activity
+## Monitoring Identity Activity
 
 ```text
 Domain Controller
@@ -2540,7 +2540,7 @@ Common SIEM platforms include:
 
 ---
 
-# Common Administrative Tasks
+## Common Administrative Tasks
 
 Daily activities often include:
 
@@ -2555,7 +2555,7 @@ Daily activities often include:
 
 ---
 
-# Troubleshooting User Problems
+## Troubleshooting User Problems
 
 Common issues include:
 
@@ -2569,7 +2569,7 @@ Common issues include:
 
 ---
 
-# Troubleshooting Computer Problems
+## Troubleshooting Computer Problems
 
 Common issues include:
 
@@ -2583,7 +2583,7 @@ Common issues include:
 
 ---
 
-# Troubleshooting Checklist
+## Troubleshooting Checklist
 
 When investigating identity-related issues:
 
@@ -2607,7 +2607,7 @@ When investigating identity-related issues:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -2660,7 +2660,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Compromised identities are among the most common attack vectors.
 
@@ -2688,9 +2688,9 @@ Identity should be treated as a critical security boundary.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
-## Myth 1
+### Myth 1
 
 > Disabled accounts can never be abused.
 
@@ -2700,7 +2700,7 @@ Disabled accounts cannot authenticate normally, but they should still be reviewe
 
 ---
 
-## Myth 2
+### Myth 2
 
 > Every administrator needs Domain Admin rights.
 
@@ -2710,7 +2710,7 @@ Most administrative tasks can be delegated without granting full Domain Admin pr
 
 ---
 
-## Myth 3
+### Myth 3
 
 > Groups should never contain other groups.
 
@@ -2720,7 +2720,7 @@ Appropriate group nesting simplifies permission management when designed careful
 
 ---
 
-## Myth 4
+### Myth 4
 
 > Service accounts are just normal user accounts.
 
@@ -2730,7 +2730,7 @@ Service accounts require different management practices, tighter controls, and o
 
 ---
 
-# Common Administrative Mistakes
+## Common Administrative Mistakes
 
 Avoid:
 
@@ -2745,7 +2745,7 @@ Avoid:
 
 ---
 
-# Best Practices Checklist
+## Best Practices Checklist
 
 ✔ Follow AGDLP or AGUDLP.
 
@@ -2769,7 +2769,7 @@ Avoid:
 
 ---
 
-# Complete Chapter Summary
+## Complete Chapter Summary
 
 In this chapter, you learned:
 
@@ -2798,7 +2798,7 @@ Users, groups, and computers form the core of identity and access management in 
 
 ---
 
-# Final Revision Table
+## Final Revision Table
 
 | Topic | Key Point |
 |--------|-----------|
@@ -2822,13 +2822,13 @@ Users, groups, and computers form the core of identity and access management in 
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Implement a secure identity management model for a fictional company.
 
-### Scenario
+#### Scenario
 
 The organization has:
 
@@ -2839,7 +2839,7 @@ The organization has:
 - Infrastructure
 - Security
 
-### Tasks
+#### Tasks
 
 1. Create Global Security Groups for each department.
 2. Create Domain Local Groups representing access to shared resources.
@@ -2856,7 +2856,7 @@ The organization has:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between a GUID and a SID?
 2. Why are users, groups, and computers considered security principals?
@@ -2871,7 +2871,7 @@ The organization has:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Active Directory Domain Services
 - Microsoft Learn – Active Directory Administrative Center
@@ -2883,7 +2883,7 @@ The organization has:
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 07 – Users, Groups, and Computers**.
 

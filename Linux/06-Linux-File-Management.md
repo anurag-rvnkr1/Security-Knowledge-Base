@@ -1,10 +1,10 @@
 # 06 - Linux File Management
 
-# Part 1 — File Management Fundamentals, Creating Files & Directories, Copying, Moving, Renaming, Deleting, and File Discovery
+## Part 1 — File Management Fundamentals, Creating Files & Directories, Copying, Moving, Renaming, Deleting, and File Discovery
 
 ---
 
-# Introduction
+## Introduction
 
 Managing files efficiently is one of the most fundamental Linux administration skills.
 
@@ -31,7 +31,7 @@ Understanding Linux file management is therefore essential for every Linux profe
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -44,7 +44,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# File Management Workflow
+## File Management Workflow
 
 ```text
 Create
@@ -82,7 +82,7 @@ Every file typically passes through a lifecycle from creation to eventual remova
 
 ---
 
-# Creating Files
+## Creating Files
 
 Linux provides several methods to create files.
 
@@ -96,7 +96,7 @@ Common commands include:
 
 ---
 
-# touch Command
+## touch Command
 
 Create an empty file:
 
@@ -114,7 +114,7 @@ If the file already exists, `touch` updates its timestamp without modifying its 
 
 ---
 
-# Verify File Creation
+## Verify File Creation
 
 Display file information:
 
@@ -130,7 +130,7 @@ stat notes.txt
 
 ---
 
-# Creating Directories
+## Creating Directories
 
 Create a directory:
 
@@ -148,7 +148,7 @@ Directories organize files into logical structures.
 
 ---
 
-# Create Multiple Directories
+## Create Multiple Directories
 
 ```bash
 mkdir Docs Images Scripts
@@ -166,7 +166,7 @@ Scripts/
 
 ---
 
-# Parent Directory Creation
+## Parent Directory Creation
 
 Use:
 
@@ -184,7 +184,7 @@ Without `-p`, parent directories must already exist.
 
 ---
 
-# Directory Structure Example
+## Directory Structure Example
 
 ```text
 Projects
@@ -202,7 +202,7 @@ This approach is useful for organizing documentation, projects, and automation s
 
 ---
 
-# Copying Files
+## Copying Files
 
 Use:
 
@@ -228,7 +228,7 @@ The contents are duplicated into a new file.
 
 ---
 
-# Copy Multiple Files
+## Copy Multiple Files
 
 Example:
 
@@ -240,7 +240,7 @@ All specified files are copied into the destination directory.
 
 ---
 
-# Copy Directories
+## Copy Directories
 
 Directories require recursive copying.
 
@@ -262,7 +262,7 @@ The `-r` (or `-R`) option copies directories and their contents recursively.
 
 ---
 
-# Preserve Metadata During Copy
+## Preserve Metadata During Copy
 
 Example:
 
@@ -281,7 +281,7 @@ This is commonly used for backups and migrations.
 
 ---
 
-# Interactive Copy
+## Interactive Copy
 
 Prompt before overwriting:
 
@@ -293,7 +293,7 @@ This helps prevent accidental replacement of existing files.
 
 ---
 
-# Moving Files
+## Moving Files
 
 Move a file:
 
@@ -305,7 +305,7 @@ The file is relocated to the target directory.
 
 ---
 
-# Rename Files
+## Rename Files
 
 The `mv` command is also used to rename files.
 
@@ -325,7 +325,7 @@ No duplicate copy is created; the directory entry is updated.
 
 ---
 
-# Move Multiple Files
+## Move Multiple Files
 
 Example:
 
@@ -337,7 +337,7 @@ All matching text files are moved into the `Archive` directory.
 
 ---
 
-# Renaming Directories
+## Renaming Directories
 
 Example:
 
@@ -349,7 +349,7 @@ The directory name changes while its contents remain intact.
 
 ---
 
-# Deleting Files
+## Deleting Files
 
 Remove a file:
 
@@ -361,7 +361,7 @@ Once removed, recovery may be difficult or impossible depending on the filesyste
 
 ---
 
-# Interactive Deletion
+## Interactive Deletion
 
 Prompt before deletion:
 
@@ -373,7 +373,7 @@ Useful when working with important files.
 
 ---
 
-# Delete Multiple Files
+## Delete Multiple Files
 
 Example:
 
@@ -385,7 +385,7 @@ Each specified file is removed.
 
 ---
 
-# Remove Directories
+## Remove Directories
 
 Empty directory:
 
@@ -397,7 +397,7 @@ rmdir EmptyDirectory
 
 ---
 
-# Remove Non-Empty Directories
+## Remove Non-Empty Directories
 
 Recursive removal:
 
@@ -415,7 +415,7 @@ Use this command with care.
 
 ---
 
-# Force Removal
+## Force Removal
 
 Example:
 
@@ -432,7 +432,7 @@ Options:
 
 ---
 
-# Safe Removal Practices
+## Safe Removal Practices
 
 Before deleting:
 
@@ -445,7 +445,7 @@ Enterprise environments often require change approval before deleting production
 
 ---
 
-# Viewing Directory Contents
+## Viewing Directory Contents
 
 Basic listing:
 
@@ -469,7 +469,7 @@ These commands are used constantly in Linux administration.
 
 ---
 
-# File Listing Example
+## File Listing Example
 
 ```text
 -rw-r--r-- report.txt
@@ -483,7 +483,7 @@ The first character identifies the file type.
 
 ---
 
-# Tree View
+## Tree View
 
 Display directory hierarchy:
 
@@ -507,7 +507,7 @@ Projects
 
 ---
 
-# Current Working Directory
+## Current Working Directory
 
 Display current location:
 
@@ -525,7 +525,7 @@ Knowing the current working directory helps avoid operating on unintended files.
 
 ---
 
-# Searching for Files
+## Searching for Files
 
 Linux offers multiple search utilities.
 
@@ -540,7 +540,7 @@ Each serves a different purpose.
 
 ---
 
-# find Command
+## find Command
 
 Search by name:
 
@@ -552,7 +552,7 @@ Searches recursively for matching text files.
 
 ---
 
-# Case-Insensitive Search
+## Case-Insensitive Search
 
 ```bash
 find . -iname "*.pdf"
@@ -562,7 +562,7 @@ The `-iname` option ignores letter case.
 
 ---
 
-# Search by Type
+## Search by Type
 
 Files only:
 
@@ -580,7 +580,7 @@ This helps narrow search results.
 
 ---
 
-# Search by Size
+## Search by Size
 
 Example:
 
@@ -594,7 +594,7 @@ Useful for storage management and investigations.
 
 ---
 
-# Search by Modification Time
+## Search by Modification Time
 
 Modified within the last seven days:
 
@@ -606,7 +606,7 @@ This is useful for identifying recently changed files.
 
 ---
 
-# locate Command
+## locate Command
 
 Example:
 
@@ -620,7 +620,7 @@ If the database is outdated, search results may not reflect recent changes.
 
 ---
 
-# which Command
+## which Command
 
 Locate executable in the user's `PATH`:
 
@@ -638,7 +638,7 @@ Useful for determining which executable will run.
 
 ---
 
-# whereis Command
+## whereis Command
 
 Example:
 
@@ -656,7 +656,7 @@ This provides more context than `which`.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 File management knowledge assists security teams in:
 
@@ -670,7 +670,7 @@ Search commands such as `find` are frequently used during investigations.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient file management enables organizations to:
 
@@ -682,7 +682,7 @@ Efficient file management enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use meaningful directory structures.
 - Avoid unnecessary duplication of large files.
@@ -694,7 +694,7 @@ Efficient file management enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - `touch` and `mkdir` create files and directories.
 - `cp` copies files and directories, while `mv` moves or renames them.
@@ -704,11 +704,11 @@ Efficient file management enables organizations to:
 
 ---
 
-# Part 2 — Viewing Files, Editing Files, Wildcards, Globbing, File Comparison, Checksums, and File Integrity
+## Part 2 — Viewing Files, Editing Files, Wildcards, Globbing, File Comparison, Checksums, and File Integrity
 
 ---
 
-# Introduction
+## Introduction
 
 Creating and organizing files is only one aspect of Linux file management.
 
@@ -726,7 +726,7 @@ Efficient use of these tools is essential for troubleshooting, automation, secur
 
 ---
 
-# File Viewing Workflow
+## File Viewing Workflow
 
 ```text
 Create File
@@ -752,7 +752,7 @@ Verify Integrity
 
 ---
 
-# Viewing File Contents
+## Viewing File Contents
 
 Linux provides several utilities for reading files without modifying them.
 
@@ -769,7 +769,7 @@ Each is suited to different scenarios.
 
 ---
 
-# cat Command
+## cat Command
 
 Display an entire file:
 
@@ -789,7 +789,7 @@ Linux Networking
 
 ---
 
-# Number Lines
+## Number Lines
 
 Display line numbers:
 
@@ -811,7 +811,7 @@ Useful when reviewing configuration files or log excerpts.
 
 ---
 
-# less Command
+## less Command
 
 Open a file interactively:
 
@@ -838,7 +838,7 @@ Navigation:
 
 ---
 
-# more Command
+## more Command
 
 Example:
 
@@ -852,7 +852,7 @@ Compared with `less`, navigation capabilities are more limited.
 
 ---
 
-# head Command
+## head Command
 
 Display the first lines of a file.
 
@@ -872,7 +872,7 @@ Useful for previewing files without opening them completely.
 
 ---
 
-# tail Command
+## tail Command
 
 Display the last lines:
 
@@ -890,7 +890,7 @@ This command is commonly used when reviewing logs.
 
 ---
 
-# Follow Log Files
+## Follow Log Files
 
 Monitor a growing log file:
 
@@ -908,7 +908,7 @@ Press `Ctrl + C` to stop following the file.
 
 ---
 
-# nl Command
+## nl Command
 
 Display numbered lines:
 
@@ -920,7 +920,7 @@ Unlike `cat -n`, `nl` provides additional formatting options for line numbering.
 
 ---
 
-# Creating Files with Output Redirection
+## Creating Files with Output Redirection
 
 Create a file:
 
@@ -943,7 +943,7 @@ Difference:
 
 ---
 
-# Editing Files
+## Editing Files
 
 Common text editors include:
 
@@ -958,7 +958,7 @@ The choice often depends on administrator preference and environment.
 
 ---
 
-# nano Editor
+## nano Editor
 
 Open a file:
 
@@ -995,7 +995,7 @@ Common shortcuts:
 
 ---
 
-# vi / vim Overview
+## vi / vim Overview
 
 Open:
 
@@ -1032,7 +1032,7 @@ Frequently used commands:
 
 ---
 
-# Wildcards (Globbing)
+## Wildcards (Globbing)
 
 Wildcards allow commands to operate on multiple files matching a pattern.
 
@@ -1048,7 +1048,7 @@ This process is known as **filename expansion (globbing)** and is typically perf
 
 ---
 
-# Asterisk (`*`)
+## Asterisk (`*`)
 
 Example:
 
@@ -1070,7 +1070,7 @@ The asterisk is the most frequently used wildcard.
 
 ---
 
-# Question Mark (`?`)
+## Question Mark (`?`)
 
 Example:
 
@@ -1096,7 +1096,7 @@ Because `?` represents exactly one character.
 
 ---
 
-# Character Sets
+## Character Sets
 
 Example:
 
@@ -1122,7 +1122,7 @@ This matches filenames with a single lowercase letter in the specified position.
 
 ---
 
-# Brace Expansion
+## Brace Expansion
 
 Generate multiple filenames:
 
@@ -1148,7 +1148,7 @@ Brace expansion is performed by the shell and is distinct from wildcard matching
 
 ---
 
-# File Comparison
+## File Comparison
 
 Linux provides several tools to compare files.
 
@@ -1162,7 +1162,7 @@ Each presents differences differently.
 
 ---
 
-# diff Command
+## diff Command
 
 Example:
 
@@ -1180,7 +1180,7 @@ Common use cases:
 
 ---
 
-# cmp Command
+## cmp Command
 
 Example:
 
@@ -1194,7 +1194,7 @@ Often used for binary comparisons.
 
 ---
 
-# comm Command
+## comm Command
 
 Example:
 
@@ -1210,7 +1210,7 @@ Compares two **sorted** text files and identifies:
 
 ---
 
-# File Integrity
+## File Integrity
 
 Ensuring that files have not been modified unexpectedly is critical for:
 
@@ -1223,7 +1223,7 @@ Integrity verification commonly relies on cryptographic hash functions.
 
 ---
 
-# Checksums
+## Checksums
 
 A checksum (hash) is a fixed-length value calculated from file contents.
 
@@ -1238,7 +1238,7 @@ Common algorithms:
 
 ---
 
-# Generate SHA-256 Checksum
+## Generate SHA-256 Checksum
 
 Example:
 
@@ -1258,7 +1258,7 @@ The hash uniquely represents the file contents with extremely high probability.
 
 ---
 
-# Verify File Integrity
+## Verify File Integrity
 
 Compare a newly generated checksum with a trusted checksum provided by the software vendor.
 
@@ -1288,7 +1288,7 @@ A mismatch indicates that the file may be corrupted or altered.
 
 ---
 
-# Why Hashes Matter
+## Why Hashes Matter
 
 Hash verification helps detect:
 
@@ -1302,7 +1302,7 @@ Hashes verify integrity but do not identify *who* modified a file.
 
 ---
 
-# Practical Use Cases
+## Practical Use Cases
 
 Administrators use hashes to verify:
 
@@ -1315,7 +1315,7 @@ Administrators use hashes to verify:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security professionals routinely:
 
@@ -1329,7 +1329,7 @@ Hash-based integrity verification is a fundamental component of incident respons
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective file viewing, editing, and integrity verification help organizations:
 
@@ -1341,7 +1341,7 @@ Effective file viewing, editing, and integrity verification help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use `less` for viewing large files.
 - Limit direct editing of production configuration files without backups or version control.
@@ -1353,7 +1353,7 @@ Effective file viewing, editing, and integrity verification help organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux provides multiple tools for viewing and editing files, each suited to different tasks.
 - Wildcards and shell globbing simplify operations on groups of files.
@@ -1363,11 +1363,11 @@ Effective file viewing, editing, and integrity verification help organizations:
 
 ---
 
-# Part 3 — Compression, Archiving, File Ownership in Daily Operations, Secure File Transfer Concepts, Enterprise File Management Workflows, and Automation
+## Part 3 — Compression, Archiving, File Ownership in Daily Operations, Secure File Transfer Concepts, Enterprise File Management Workflows, and Automation
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise Linux environments manage enormous amounts of data every day.
 
@@ -1395,7 +1395,7 @@ These skills are essential for Linux administrators, DevOps engineers, SOC analy
 
 ---
 
-# File Management Lifecycle
+## File Management Lifecycle
 
 ```text
 Create
@@ -1433,7 +1433,7 @@ A well-defined lifecycle improves storage efficiency, security, and recoverabili
 
 ---
 
-# Compression vs Archiving
+## Compression vs Archiving
 
 These terms are often used together but represent different concepts.
 
@@ -1446,7 +1446,7 @@ An archive may or may not be compressed.
 
 ---
 
-# Example
+## Example
 
 Suppose a directory contains:
 
@@ -1476,7 +1476,7 @@ The `.tar` file groups the files, while `.gz` compresses the archive.
 
 ---
 
-# tar Command
+## tar Command
 
 The **Tape Archive (tar)** utility is the standard Linux tool for archiving files and directories.
 
@@ -1489,7 +1489,7 @@ Common uses:
 
 ---
 
-# Create an Archive
+## Create an Archive
 
 Example:
 
@@ -1506,7 +1506,7 @@ Options:
 
 ---
 
-# List Archive Contents
+## List Archive Contents
 
 Example:
 
@@ -1518,7 +1518,7 @@ Displays the files stored within the archive without extracting them.
 
 ---
 
-# Extract an Archive
+## Extract an Archive
 
 Example:
 
@@ -1530,7 +1530,7 @@ This restores the archived files to the current directory.
 
 ---
 
-# Extract to Another Directory
+## Extract to Another Directory
 
 Example:
 
@@ -1542,7 +1542,7 @@ The `-C` option specifies the destination directory.
 
 ---
 
-# gzip Compression
+## gzip Compression
 
 Compress a file:
 
@@ -1560,7 +1560,7 @@ The original file is replaced by its compressed version unless options specify o
 
 ---
 
-# Decompress
+## Decompress
 
 Example:
 
@@ -1572,7 +1572,7 @@ Restores the original file.
 
 ---
 
-# tar with gzip
+## tar with gzip
 
 Create a compressed archive:
 
@@ -1590,7 +1590,7 @@ Options:
 
 ---
 
-# Extract Compressed Archive
+## Extract Compressed Archive
 
 Example:
 
@@ -1602,7 +1602,7 @@ Linux automatically decompresses and extracts the archive.
 
 ---
 
-# bzip2 Compression
+## bzip2 Compression
 
 Higher compression ratio than gzip in many scenarios.
 
@@ -1626,7 +1626,7 @@ bunzip2 report.txt.bz2
 
 ---
 
-# xz Compression
+## xz Compression
 
 The **xz** utility often achieves higher compression ratios than gzip or bzip2, though compression may require more CPU time.
 
@@ -1650,7 +1650,7 @@ unxz report.txt.xz
 
 ---
 
-# Compression Comparison
+## Compression Comparison
 
 | Tool | Compression Speed | Compression Ratio | Common Usage |
 |------|-------------------|-------------------|--------------|
@@ -1662,7 +1662,7 @@ The best choice depends on workload, storage, and performance requirements.
 
 ---
 
-# Viewing Archive Contents
+## Viewing Archive Contents
 
 Compressed archive:
 
@@ -1674,7 +1674,7 @@ This allows administrators to verify archive contents without extracting them.
 
 ---
 
-# File Ownership During Operations
+## File Ownership During Operations
 
 When copying or archiving files, ownership and permissions may change depending on the command, options, destination filesystem, and user privileges.
 
@@ -1694,7 +1694,7 @@ Verify behavior in your environment before relying on metadata preservation.
 
 ---
 
-# Preserving Timestamps
+## Preserving Timestamps
 
 Maintaining timestamps is important for:
 
@@ -1707,7 +1707,7 @@ The archive mode of `cp` (`-a`) and many backup tools preserve timestamps by def
 
 ---
 
-# Secure File Transfer
+## Secure File Transfer
 
 Linux systems commonly exchange files across networks.
 
@@ -1723,7 +1723,7 @@ Each is designed for different workflows.
 
 ---
 
-# SCP (Secure Copy)
+## SCP (Secure Copy)
 
 Copy a file to a remote server:
 
@@ -1741,7 +1741,7 @@ scp user@server:/tmp/report.pdf .
 
 ---
 
-# SFTP
+## SFTP
 
 Start an SFTP session:
 
@@ -1767,7 +1767,7 @@ SFTP provides an interactive interface over SSH.
 
 ---
 
-# rsync
+## rsync
 
 `rsync` synchronizes files efficiently by transferring only changed data.
 
@@ -1786,7 +1786,7 @@ Options:
 
 ---
 
-# Why rsync is Popular
+## Why rsync is Popular
 
 Benefits:
 
@@ -1800,7 +1800,7 @@ Benefits:
 
 ---
 
-# Download Files
+## Download Files
 
 Using `wget`:
 
@@ -1818,7 +1818,7 @@ Always verify downloads from trusted sources before use.
 
 ---
 
-# Backup Workflow
+## Backup Workflow
 
 ```text
 Important Files
@@ -1848,7 +1848,7 @@ Verification should include confirming archive integrity and, where applicable, 
 
 ---
 
-# Enterprise File Workflow
+## Enterprise File Workflow
 
 ```text
 Develop
@@ -1886,7 +1886,7 @@ A standardized workflow improves consistency and reduces operational risk.
 
 ---
 
-# Automation
+## Automation
 
 Routine file management tasks are frequently automated.
 
@@ -1903,7 +1903,7 @@ Automation reduces manual effort and improves consistency.
 
 ---
 
-# Scheduling File Tasks
+## Scheduling File Tasks
 
 Linux administrators often automate recurring tasks using scheduling systems such as:
 
@@ -1920,7 +1920,7 @@ Detailed scheduling is covered later in the Linux Automation chapter.
 
 ---
 
-# Log Rotation
+## Log Rotation
 
 Log files can grow rapidly.
 
@@ -1950,7 +1950,7 @@ Many Linux distributions manage this automatically using tools such as `logrotat
 
 ---
 
-# Enterprise Storage Strategy
+## Enterprise Storage Strategy
 
 Organizations commonly implement policies covering:
 
@@ -1966,7 +1966,7 @@ Documented policies improve compliance and disaster recovery readiness.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 File management plays an important role in security operations.
 
@@ -1983,7 +1983,7 @@ Improper handling of evidence can compromise investigations.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective file management strategies help organizations:
 
@@ -1995,7 +1995,7 @@ Effective file management strategies help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use `tar` for archiving directories.
 - Choose an appropriate compression algorithm based on workload.
@@ -2007,7 +2007,7 @@ Effective file management strategies help organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Archiving combines files; compression reduces storage size.
 - `tar`, `gzip`, `bzip2`, and `xz` are core Linux archival and compression tools.
@@ -2017,11 +2017,11 @@ Effective file management strategies help organizations:
 
 ---
 
-# Part 4 — Practical Labs, Advanced File Management Scenarios, Enterprise Best Practices, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Advanced File Management Scenarios, Enterprise Best Practices, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 File management is one of the most frequently performed tasks in Linux administration.
 
@@ -2049,7 +2049,7 @@ This section provides practical scenarios that closely resemble real enterprise 
 
 ---
 
-# Enterprise File Management Workflow
+## Enterprise File Management Workflow
 
 ```text
 Create Files
@@ -2081,7 +2081,7 @@ Monitor
 
 ---
 
-# Practical Lab 1 — Create Project Structure
+## Practical Lab 1 — Create Project Structure
 
 Create multiple directories.
 
@@ -2116,7 +2116,7 @@ Objective:
 
 ---
 
-# Practical Lab 2 — Create Files
+## Practical Lab 2 — Create Files
 
 Create files.
 
@@ -2141,7 +2141,7 @@ Objective:
 
 ---
 
-# Practical Lab 3 — Copy Files
+## Practical Lab 3 — Copy Files
 
 Create backup directory.
 
@@ -2168,7 +2168,7 @@ Objective:
 
 ---
 
-# Practical Lab 4 — Copy Entire Directory
+## Practical Lab 4 — Copy Entire Directory
 
 ```bash
 cp -a CyberSecurity CyberSecurity_Backup
@@ -2187,7 +2187,7 @@ Objective:
 
 ---
 
-# Practical Lab 5 — Rename Files
+## Practical Lab 5 — Rename Files
 
 Rename:
 
@@ -2207,7 +2207,7 @@ Objective:
 
 ---
 
-# Practical Lab 6 — Move Files
+## Practical Lab 6 — Move Files
 
 ```bash
 mv final_report.txt Reports/
@@ -2225,7 +2225,7 @@ Objective:
 
 ---
 
-# Practical Lab 7 — Search Files
+## Practical Lab 7 — Search Files
 
 Find all shell scripts.
 
@@ -2246,7 +2246,7 @@ Objective:
 
 ---
 
-# Practical Lab 8 — Find Large Files
+## Practical Lab 8 — Find Large Files
 
 ```bash
 find /var -size +50M
@@ -2259,7 +2259,7 @@ Objective:
 
 ---
 
-# Practical Lab 9 — View Logs
+## Practical Lab 9 — View Logs
 
 Display last lines.
 
@@ -2279,7 +2279,7 @@ Objective:
 
 ---
 
-# Practical Lab 10 — Compare Files
+## Practical Lab 10 — Compare Files
 
 Create two files.
 
@@ -2301,7 +2301,7 @@ Objective:
 
 ---
 
-# Practical Lab 11 — Archive Directory
+## Practical Lab 11 — Archive Directory
 
 ```bash
 tar -cf project.tar CyberSecurity
@@ -2319,7 +2319,7 @@ Objective:
 
 ---
 
-# Practical Lab 12 — Compress Archive
+## Practical Lab 12 — Compress Archive
 
 ```bash
 tar -czf project.tar.gz CyberSecurity
@@ -2337,7 +2337,7 @@ Objective:
 
 ---
 
-# Practical Lab 13 — Verify File Integrity
+## Practical Lab 13 — Verify File Integrity
 
 Generate SHA-256 hash.
 
@@ -2363,7 +2363,7 @@ Objective:
 
 ---
 
-# Practical Lab 14 — Secure File Transfer
+## Practical Lab 14 — Secure File Transfer
 
 Example:
 
@@ -2377,7 +2377,7 @@ Objective:
 
 ---
 
-# Practical Lab 15 — Synchronize Directories
+## Practical Lab 15 — Synchronize Directories
 
 ```bash
 rsync -av CyberSecurity/ Backup/
@@ -2390,7 +2390,7 @@ Objective:
 
 ---
 
-# Practical Lab 16 — Locate Executables
+## Practical Lab 16 — Locate Executables
 
 Locate Python.
 
@@ -2410,7 +2410,7 @@ Objective:
 
 ---
 
-# Practical Lab 17 — Search Recent Files
+## Practical Lab 17 — Search Recent Files
 
 ```bash
 find ~/Documents -mtime -2
@@ -2422,7 +2422,7 @@ Objective:
 
 ---
 
-# Practical Lab 18 — Search by Owner
+## Practical Lab 18 — Search by Owner
 
 ```bash
 find /home -user anurag
@@ -2434,7 +2434,7 @@ Objective:
 
 ---
 
-# Practical Lab 19 — Review Filesystem Usage
+## Practical Lab 19 — Review Filesystem Usage
 
 Filesystem usage.
 
@@ -2454,7 +2454,7 @@ Objective:
 
 ---
 
-# Practical Lab 20 — Safe Cleanup
+## Practical Lab 20 — Safe Cleanup
 
 Preview files before deletion.
 
@@ -2475,9 +2475,9 @@ Objective:
 
 ---
 
-# Enterprise Scenario 1
+## Enterprise Scenario 1
 
-## Log Server Cleanup
+### Log Server Cleanup
 
 Situation:
 
@@ -2515,9 +2515,9 @@ logrotate
 
 ---
 
-# Enterprise Scenario 2
+## Enterprise Scenario 2
 
-## Secure Backup
+### Secure Backup
 
 Daily workflow:
 
@@ -2553,9 +2553,9 @@ This workflow improves recoverability and helps maintain data integrity.
 
 ---
 
-# Enterprise Scenario 3
+## Enterprise Scenario 3
 
-## Incident Response
+### Incident Response
 
 Security analyst responsibilities:
 
@@ -2570,7 +2570,7 @@ Maintaining evidence integrity is critical for investigations.
 
 ---
 
-# Common File Management Mistakes
+## Common File Management Mistakes
 
 | Mistake | Impact |
 |----------|---------|
@@ -2584,7 +2584,7 @@ Maintaining evidence integrity is critical for investigations.
 
 ---
 
-# Performance Considerations
+## Performance Considerations
 
 Large-scale environments benefit from:
 
@@ -2597,7 +2597,7 @@ Large-scale environments benefit from:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently manipulate files to:
 
@@ -2618,7 +2618,7 @@ Defenders should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-managed file operations help organizations:
 
@@ -2631,7 +2631,7 @@ Well-managed file operations help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow standardized directory structures.
 - Use descriptive filenames.
@@ -2646,7 +2646,7 @@ Well-managed file operations help organizations:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2666,9 +2666,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. How do you create an empty file?
 2. What is the difference between `cp` and `mv`?
@@ -2683,7 +2683,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Compare `cat`, `less`, `head`, and `tail`.
 2. Explain shell globbing.
@@ -2698,7 +2698,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design an enterprise backup workflow for Linux servers.
 2. How would you investigate unauthorized file modifications?
@@ -2713,7 +2713,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective file management is essential for Linux administration, security, and operations.
 - Compression and archiving reduce storage requirements and simplify backups.
@@ -2723,9 +2723,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - GNU Coreutils Manual
 - GNU tar Manual
@@ -2733,7 +2733,7 @@ In this chapter, you learned:
 - rsync Documentation
 - Linux Kernel Documentation
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - CIS Benchmarks for Linux
@@ -2743,7 +2743,7 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **07-Linux-Text-Processing.md**
 

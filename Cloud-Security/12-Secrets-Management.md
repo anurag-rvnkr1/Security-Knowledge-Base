@@ -1341,7 +1341,7 @@ Security should be enforced using **Least Privilege**, **Zero Trust**, **Defense
 
 ---
 
-# Defense-in-Depth for Secrets Management
+## Defense-in-Depth for Secrets Management
 
 ```
                 Users / Applications
@@ -1387,7 +1387,7 @@ Each layer contributes to reducing the likelihood and impact of credential compr
 
 ---
 
-# Use a Dedicated Secrets Manager
+## Use a Dedicated Secrets Manager
 
 Never store secrets directly within applications.
 
@@ -1420,7 +1420,7 @@ Centralized management improves consistency and reduces operational risk.
 
 ---
 
-# Never Hardcode Secrets
+## Never Hardcode Secrets
 
 Hardcoding secrets into source code or configuration files is one of the most common causes of credential exposure.
 
@@ -1461,7 +1461,7 @@ Runtime Retrieval
 
 ---
 
-# Encrypt Stored Secrets
+## Encrypt Stored Secrets
 
 Secrets should always be encrypted while stored.
 
@@ -1488,7 +1488,7 @@ Encryption protects secrets against storage compromise.
 
 ---
 
-# Protect Secrets in Transit
+## Protect Secrets in Transit
 
 Secrets should only be transmitted using secure encrypted channels.
 
@@ -1516,7 +1516,7 @@ Unencrypted transmission should never be permitted.
 
 ---
 
-# Implement Least Privilege
+## Implement Least Privilege
 
 Only authorized identities should retrieve specific secrets.
 
@@ -1542,7 +1542,7 @@ Permissions should be reviewed regularly.
 
 ---
 
-# Use Short-Lived Credentials
+## Use Short-Lived Credentials
 
 Prefer temporary credentials over permanent secrets.
 
@@ -1569,7 +1569,7 @@ Short-lived credentials reduce exposure if compromised.
 
 ---
 
-# Rotate Secrets Automatically
+## Rotate Secrets Automatically
 
 Secrets should be rotated regularly.
 
@@ -1602,7 +1602,7 @@ Automated rotation reduces administrative effort and limits long-lived credentia
 
 ---
 
-# Protect Administrative Access
+## Protect Administrative Access
 
 Administrative access to the Secrets Management platform should require enhanced protections.
 
@@ -1618,7 +1618,7 @@ Administrative accounts should never be shared.
 
 ---
 
-# Secure CI/CD Pipelines
+## Secure CI/CD Pipelines
 
 Deployment pipelines frequently require secrets.
 
@@ -1648,7 +1648,7 @@ Temporary Credential
 
 ---
 
-# Secure Kubernetes Secrets
+## Secure Kubernetes Secrets
 
 Avoid relying solely on native Kubernetes Secret objects for highly sensitive data without additional protections.
 
@@ -1662,7 +1662,7 @@ Recommendations:
 
 ---
 
-# Monitor Secret Usage
+## Monitor Secret Usage
 
 Every secret operation should be monitored.
 
@@ -1697,7 +1697,7 @@ Continuous monitoring improves detection of suspicious activity.
 
 ---
 
-# Scan for Exposed Secrets
+## Scan for Exposed Secrets
 
 Implement automated scanning across:
 
@@ -1720,7 +1720,7 @@ Early detection reduces the likelihood of successful exploitation.
 
 ---
 
-# Protect Backup Copies
+## Protect Backup Copies
 
 Secrets included in backups require the same level of protection as production secrets.
 
@@ -1734,7 +1734,7 @@ Recommendations:
 
 ---
 
-# Revoke Compromised Secrets Immediately
+## Revoke Compromised Secrets Immediately
 
 If compromise is suspected:
 
@@ -1758,15 +1758,15 @@ Prompt revocation limits attacker persistence.
 
 ---
 
-# Best Practices
+## Best Practices
 
-## 1. Centralize Secret Storage
+### 1. Centralize Secret Storage
 
 Maintain all production secrets within an approved Secrets Management platform rather than distributing them across applications or infrastructure.
 
 ---
 
-## 2. Eliminate Hardcoded Credentials
+### 2. Eliminate Hardcoded Credentials
 
 Implement automated scanning to prevent credentials from entering:
 
@@ -1778,7 +1778,7 @@ Implement automated scanning to prevent credentials from entering:
 
 ---
 
-## 3. Use Dynamic Secrets Whenever Possible
+### 3. Use Dynamic Secrets Whenever Possible
 
 Prefer dynamically generated credentials that automatically expire over long-lived static passwords.
 
@@ -1786,7 +1786,7 @@ Dynamic credentials reduce the impact of accidental disclosure.
 
 ---
 
-## 4. Rotate Secrets Regularly
+### 4. Rotate Secrets Regularly
 
 Define documented rotation schedules for:
 
@@ -1801,7 +1801,7 @@ Automate rotation wherever supported.
 
 ---
 
-## 5. Enforce Least Privilege
+### 5. Enforce Least Privilege
 
 Grant applications access only to the specific secrets they require.
 
@@ -1809,7 +1809,7 @@ Review permissions periodically and remove unnecessary access.
 
 ---
 
-## 6. Protect Administrative Accounts
+### 6. Protect Administrative Accounts
 
 Require:
 
@@ -1822,7 +1822,7 @@ Administrative activities should always be logged.
 
 ---
 
-## 7. Enable Comprehensive Audit Logging
+### 7. Enable Comprehensive Audit Logging
 
 Record every important operation, including:
 
@@ -1838,7 +1838,7 @@ Forward logs to the organization's SIEM for continuous monitoring.
 
 ---
 
-## 8. Encrypt Secrets at Rest and in Transit
+### 8. Encrypt Secrets at Rest and in Transit
 
 Protect secrets using strong encryption while stored and secure communication channels during retrieval.
 
@@ -1846,7 +1846,7 @@ Encryption should be enabled by default.
 
 ---
 
-## 9. Continuously Scan for Secret Exposure
+### 9. Continuously Scan for Secret Exposure
 
 Integrate secret scanning into:
 
@@ -1859,7 +1859,7 @@ Prevent exposed credentials from reaching production.
 
 ---
 
-## 10. Regularly Review and Remove Unused Secrets
+### 10. Regularly Review and Remove Unused Secrets
 
 Stale or unused credentials increase the attack surface.
 
@@ -1874,9 +1874,9 @@ Credential hygiene improves long-term security.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
-### Hardcoding Secrets in Source Code
+#### Hardcoding Secrets in Source Code
 
 Embedding credentials directly into applications exposes them to developers, repositories, backups, and attackers.
 
@@ -1884,7 +1884,7 @@ Always retrieve secrets securely at runtime.
 
 ---
 
-### Storing Secrets in Git Repositories
+#### Storing Secrets in Git Repositories
 
 Accidentally committing secrets to version control is a frequent cause of cloud compromises.
 
@@ -1892,7 +1892,7 @@ Use automated secret scanning and remove exposed credentials immediately if disc
 
 ---
 
-### Using Long-Lived Credentials
+#### Using Long-Lived Credentials
 
 Permanent API keys, passwords, and access tokens increase organizational risk.
 
@@ -1900,7 +1900,7 @@ Prefer temporary credentials and automatic expiration whenever feasible.
 
 ---
 
-### Never Rotating Secrets
+#### Never Rotating Secrets
 
 Credentials that remain unchanged for extended periods provide attackers with more opportunity if compromised.
 
@@ -1908,7 +1908,7 @@ Follow documented rotation schedules.
 
 ---
 
-### Granting Excessive Access
+#### Granting Excessive Access
 
 Applications should not retrieve every available secret.
 
@@ -1916,7 +1916,7 @@ Restrict access to only the credentials required for their intended function.
 
 ---
 
-### Ignoring Audit Logs
+#### Ignoring Audit Logs
 
 Failure to monitor secret usage can delay detection of:
 
@@ -1929,7 +1929,7 @@ Integrate Secrets Management logs into centralized monitoring.
 
 ---
 
-### Sharing Administrative Credentials
+#### Sharing Administrative Credentials
 
 Multiple administrators should never use the same privileged account.
 
@@ -1937,7 +1937,7 @@ Individual identities improve accountability and support investigations.
 
 ---
 
-### Storing Secrets in Environment Files Without Protection
+#### Storing Secrets in Environment Files Without Protection
 
 Files such as `.env` can expose sensitive credentials if improperly secured or committed to repositories.
 
@@ -1945,7 +1945,7 @@ Protect environment files and avoid storing production secrets in plaintext.
 
 ---
 
-### Forgetting to Revoke Compromised Credentials
+#### Forgetting to Revoke Compromised Credentials
 
 Replacing an exposed credential without revoking the old one leaves systems vulnerable.
 
@@ -1953,7 +1953,7 @@ Immediately revoke compromised secrets before issuing replacements.
 
 ---
 
-### Neglecting Stale Secrets
+#### Neglecting Stale Secrets
 
 Unused credentials often remain active long after applications or services are retired.
 
@@ -1961,9 +1961,9 @@ Regularly identify and remove obsolete secrets to reduce the attack surface.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-57 – Recommendation for Key Management
 - NIST SP 800-63 – Digital Identity Guidelines
@@ -1976,7 +1976,7 @@ Regularly identify and remove obsolete secrets to reduce the attack surface.
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
 - AWS Secrets Manager Documentation
 - AWS Systems Manager Parameter Store Documentation
@@ -1987,7 +1987,7 @@ Regularly identify and remove obsolete secrets to reduce the attack surface.
 
 ---
 
-### Industry Best Practices
+#### Industry Best Practices
 
 - Zero Trust Architecture
 - Principle of Least Privilege (PoLP)

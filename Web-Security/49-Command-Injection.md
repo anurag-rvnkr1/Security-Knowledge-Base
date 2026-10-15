@@ -1,12 +1,12 @@
 # 49-Command-Injection.md
 
-# Part 1 — Introduction to Command Injection, Operating System Commands, Process Execution, and Secure System Interaction
+## Part 1 — Introduction to Command Injection, Operating System Commands, Process Execution, and Secure System Interaction
 
 > **"Command Injection is a security issue that occurs when applications improperly allow untrusted input to influence operating system command execution. Secure applications separate user input from system commands, use safe APIs, validate inputs, and apply the principle of least privilege."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Command Injection?
+## What is Command Injection?
 
 Command Injection is an **operating system interaction security issue** where untrusted input improperly influences how an application invokes operating system commands.
 
@@ -60,7 +60,7 @@ Secure applications ensure that external input is treated strictly as **data**, 
 
 ---
 
-# Why Applications Interact with the Operating System
+## Why Applications Interact with the Operating System
 
 Applications sometimes require operating system services for legitimate business purposes.
 
@@ -95,7 +95,7 @@ Whenever possible, applications should prefer language-native libraries instead 
 
 ---
 
-# Operating System Processes
+## Operating System Processes
 
 Every operating system executes work through processes.
 
@@ -119,7 +119,7 @@ Applications should invoke only the minimum processes necessary for legitimate f
 
 ---
 
-# Process Execution Lifecycle
+## Process Execution Lifecycle
 
 ```
 Client Request
@@ -153,7 +153,7 @@ Every stage contributes to secure and predictable process execution.
 
 ---
 
-# Command Execution Architecture
+## Command Execution Architecture
 
 ```
 Application
@@ -183,7 +183,7 @@ Applications should maintain strict control over how processes are created and m
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 External Input
@@ -205,7 +205,7 @@ All externally supplied information should be considered untrusted before intera
 
 ---
 
-# Secure Process Workflow
+## Secure Process Workflow
 
 ```
 Incoming Request
@@ -239,7 +239,7 @@ System interaction should occur only after validation and authorization.
 
 ---
 
-# Command Execution vs Native APIs
+## Command Execution vs Native APIs
 
 Many tasks can be performed without invoking external commands.
 
@@ -263,7 +263,7 @@ Choosing native APIs generally reduces complexity and improves security.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Applications should execute with only the permissions required for normal operation.
 
@@ -287,7 +287,7 @@ Least privilege limits the potential impact of unexpected behavior.
 
 ---
 
-# Enterprise Process Architecture
+## Enterprise Process Architecture
 
 ```
 Client
@@ -321,7 +321,7 @@ Applications should centralize and standardize process execution.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Secure process execution should complement broader application security controls.
 
@@ -353,7 +353,7 @@ Multiple security controls improve overall resilience.
 
 ---
 
-# Secure System Interaction Principles
+## Secure System Interaction Principles
 
 ```
 Secure Process Design
@@ -381,7 +381,7 @@ Applications should minimize operating system interaction wherever possible.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational logistics company generates daily archive files and scheduled operational reports.
 
@@ -413,7 +413,7 @@ The application uses approved process execution services, validates all paramete
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 Process Execution Pipeline
@@ -441,7 +441,7 @@ Each component contributes to secure operating system interaction.
 
 ---
 
-# Secure Process Execution Goals
+## Secure Process Execution Goals
 
 Applications should provide:
 
@@ -454,7 +454,7 @@ Applications should provide:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the process execution architecture of a sample enterprise application.
 2. Identify every feature that interacts with the operating system.
@@ -466,7 +466,7 @@ Applications should provide:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Command Injection?
 2. Why do applications interact with the operating system?
@@ -481,7 +481,7 @@ Applications should provide:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Prefer native libraries over external system commands.
 - Treat all external input as untrusted.
@@ -494,7 +494,7 @@ Applications should provide:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Using external commands when native APIs are available.
 - Trusting externally supplied parameters.
@@ -506,7 +506,7 @@ Applications should provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Command Injection is fundamentally an operating system interaction and trust-boundary issue.
 - Applications should treat user input strictly as data, not executable command logic.
@@ -514,15 +514,15 @@ Applications should provide:
 - Secure process execution relies on validation, parameter separation, least privilege, and controlled operating system interaction.
 - Enterprise governance, monitoring, and standardized execution practices improve application resilience.
 
-# 49-Command-Injection.md
+## 49-Command-Injection.md
 
-# Part 2 — Process Management, Secure Command Execution, Parameter Handling, Environment Variables, Logging, Monitoring, and Enterprise Architecture
+## Part 2 — Process Management, Secure Command Execution, Parameter Handling, Environment Variables, Logging, Monitoring, and Enterprise Architecture
 
 > **"Secure operating system interaction depends on controlled process creation, strict parameter validation, least-privilege execution, secure environment configuration, and continuous operational monitoring."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -539,7 +539,7 @@ After completing this part, you will understand:
 
 ---
 
-# Process Creation Lifecycle
+## Process Creation Lifecycle
 
 Applications should create operating system processes through controlled interfaces.
 
@@ -575,7 +575,7 @@ Every process should have a legitimate business purpose.
 
 ---
 
-# Secure Process Management
+## Secure Process Management
 
 ```
 Application
@@ -605,7 +605,7 @@ A centralized process management layer simplifies security controls and auditing
 
 ---
 
-# Parameter Handling
+## Parameter Handling
 
 Applications frequently supply parameters to operating system processes.
 
@@ -629,7 +629,7 @@ Parameters should remain separate from execution logic and be validated accordin
 
 ---
 
-# Secure Parameter Flow
+## Secure Parameter Flow
 
 ```
 Incoming Request
@@ -655,7 +655,7 @@ Validation should occur before any interaction with the operating system.
 
 ---
 
-# Process Isolation
+## Process Isolation
 
 Processes should execute independently from unrelated application components.
 
@@ -679,7 +679,7 @@ Isolation improves stability and limits the impact of operational failures.
 
 ---
 
-# Environment Variables
+## Environment Variables
 
 Applications often rely on environment variables for configuration.
 
@@ -712,7 +712,7 @@ Environment variables should be centrally managed and protected from unauthorize
 
 ---
 
-# Secure Environment Management
+## Secure Environment Management
 
 ```
 Configuration Repository
@@ -738,7 +738,7 @@ Configuration should remain consistent across environments.
 
 ---
 
-# Process Permissions
+## Process Permissions
 
 Every application process should execute with minimal required privileges.
 
@@ -762,7 +762,7 @@ Permissions should be reviewed regularly.
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Applications should use dedicated service accounts rather than shared administrative accounts.
 
@@ -786,7 +786,7 @@ Dedicated identities improve accountability and simplify access control.
 
 ---
 
-# Secure Execution Workflow
+## Secure Execution Workflow
 
 ```
 User Request
@@ -824,7 +824,7 @@ Business logic should determine whether process execution is required.
 
 ---
 
-# Error Handling
+## Error Handling
 
 Applications should handle execution failures predictably.
 
@@ -856,7 +856,7 @@ Operational errors should be logged without exposing sensitive implementation de
 
 ---
 
-# Enterprise Process Architecture
+## Enterprise Process Architecture
 
 ```
 Internet
@@ -890,7 +890,7 @@ The application should interact with the operating system through controlled ser
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Authentication
@@ -920,7 +920,7 @@ Independent security controls improve resilience.
 
 ---
 
-# Logging
+## Logging
 
 Applications should record significant process-related events.
 
@@ -944,7 +944,7 @@ Logs support operational analysis, troubleshooting, and compliance.
 
 ---
 
-# Important Process Events
+## Important Process Events
 
 | Event | Purpose |
 |--------|----------|
@@ -960,7 +960,7 @@ Sensitive system information should not be unnecessarily exposed through logs.
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -986,7 +986,7 @@ Continuous monitoring helps maintain operational reliability.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1000,7 +1000,7 @@ Continuous monitoring helps maintain operational reliability.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global media organization automatically generates image thumbnails, compresses uploaded media, and creates scheduled reports.
 
@@ -1032,7 +1032,7 @@ The application uses dedicated service accounts, validates execution parameters,
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1045,7 +1045,7 @@ The application uses dedicated service accounts, validates execution parameters,
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise process execution architecture.
 2. Identify all operating system interactions.
@@ -1057,7 +1057,7 @@ The application uses dedicated service accounts, validates execution parameters,
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is process management?
 2. Why should applications validate execution parameters?
@@ -1072,7 +1072,7 @@ The application uses dedicated service accounts, validates execution parameters,
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Prefer native libraries whenever feasible.
 - Validate all execution parameters before process creation.
@@ -1085,7 +1085,7 @@ The application uses dedicated service accounts, validates execution parameters,
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Executing processes directly throughout the application.
 - Granting excessive permissions to service accounts.
@@ -1097,7 +1097,7 @@ The application uses dedicated service accounts, validates execution parameters,
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure process execution relies on controlled process management and validated parameters.
 - Environment variables and service accounts require strong governance.
@@ -1105,15 +1105,15 @@ The application uses dedicated service accounts, validates execution parameters,
 - Logging and monitoring provide visibility into system interactions.
 - Enterprise process architecture should centralize operating system interactions and enforce consistent security controls.
 
-# 49-Command-Injection.md
+## 49-Command-Injection.md
 
-# Part 3 — Threat Modeling, Secure SDLC, DevSecOps, Secure Testing, Monitoring, and Enterprise Defense
+## Part 3 — Threat Modeling, Secure SDLC, DevSecOps, Secure Testing, Monitoring, and Enterprise Defense
 
 > **"Preventing Command Injection requires secure application architecture, controlled operating system interaction, validated inputs, least-privilege execution, continuous monitoring, and security integrated throughout the software development lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1130,7 +1130,7 @@ After completing this part, you will understand:
 
 ---
 
-# Detecting Command Injection Risks
+## Detecting Command Injection Risks
 
 Organizations should periodically review every component that interacts with the operating system.
 
@@ -1158,7 +1158,7 @@ The objective is to ensure that operating system interactions occur only through
 
 ---
 
-# Process Execution Security Review
+## Process Execution Security Review
 
 Every workflow involving operating system interaction should be reviewed.
 
@@ -1194,7 +1194,7 @@ Reviews should verify that business logic, validation, and authorization occur b
 
 ---
 
-# Operating System Interaction Inventory
+## Operating System Interaction Inventory
 
 Maintain an inventory of every application feature that interacts with the operating system.
 
@@ -1224,7 +1224,7 @@ A complete inventory supports governance, maintenance, and security reviews.
 
 ---
 
-# Process Component Inventory
+## Process Component Inventory
 
 Document every component involved in process execution.
 
@@ -1254,7 +1254,7 @@ Documenting dependencies improves operational visibility and incident response.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Process execution policies should remain consistent across environments.
 
@@ -1282,7 +1282,7 @@ Consistency reduces deployment errors and unexpected behavior.
 
 ---
 
-# Architecture Review
+## Architecture Review
 
 Security reviews should evaluate:
 
@@ -1313,7 +1313,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies trust boundaries surrounding operating system interaction.
 
@@ -1345,7 +1345,7 @@ The objective is to ensure that process execution remains governed by applicatio
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 Security architects should ask:
 
@@ -1372,7 +1372,7 @@ Security Controls
 
 ---
 
-# Secure Process Validation
+## Secure Process Validation
 
 Applications should validate every request before any interaction with the operating system.
 
@@ -1404,7 +1404,7 @@ Validation should produce predictable, policy-compliant system interactions.
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1432,7 +1432,7 @@ Testing should verify correctness, reliability, and secure operating system inte
 
 ---
 
-# Secure Process Lifecycle
+## Secure Process Lifecycle
 
 ```
 Design
@@ -1466,7 +1466,7 @@ Security controls should accompany every phase of the process lifecycle.
 
 ---
 
-# Process Governance
+## Process Governance
 
 Organizations should establish governance for operating system interaction.
 
@@ -1496,7 +1496,7 @@ Governance improves consistency across engineering teams.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 Command execution security should be integrated throughout software development.
 
@@ -1532,7 +1532,7 @@ Security activities should begin during design rather than only before release.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -1566,7 +1566,7 @@ Automation improves deployment quality while enforcing organizational security s
 
 ---
 
-# Change Management
+## Change Management
 
 Changes affecting process execution should follow controlled governance.
 
@@ -1598,7 +1598,7 @@ Formal change management improves accountability and reduces operational risk.
 
 ---
 
-# Logging
+## Logging
 
 Applications should record important operating system interaction events.
 
@@ -1622,7 +1622,7 @@ Logs support troubleshooting, investigations, compliance, and operational analys
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1639,7 +1639,7 @@ Sensitive operating system details should not be unnecessarily exposed in applic
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1665,7 +1665,7 @@ Continuous monitoring helps detect reliability issues and unexpected operational
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1679,7 +1679,7 @@ Continuous monitoring helps detect reliability issues and unexpected operational
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -1727,7 +1727,7 @@ The architecture centralizes operating system interaction while maintaining vali
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial services organization generates encrypted reports, performs scheduled reconciliation jobs, and processes document conversions through centralized process execution services.
 
@@ -1759,7 +1759,7 @@ Every execution request is validated, approved through business rules, executed 
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Process Inventory Documented
@@ -1785,7 +1785,7 @@ Every execution request is validated, approved through business rules, executed 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1798,7 +1798,7 @@ Every execution request is validated, approved through business rules, executed 
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create an inventory of every operating system interaction within an application.
 2. Draw the process execution architecture.
@@ -1810,7 +1810,7 @@ Every execution request is validated, approved through business rules, executed 
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Command Injection?
 2. Why should applications minimize operating system interaction?
@@ -1825,7 +1825,7 @@ Every execution request is validated, approved through business rules, executed 
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Prefer native language libraries over operating system commands.
 - Validate every parameter before process execution.
@@ -1839,7 +1839,7 @@ Every execution request is validated, approved through business rules, executed 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Executing operating system processes from multiple application locations.
 - Granting excessive privileges to execution services.
@@ -1851,7 +1851,7 @@ Every execution request is validated, approved through business rules, executed 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure operating system interaction depends on validated inputs, centralized execution services, and least-privilege permissions.
 - Threat modeling helps identify trust boundaries surrounding process execution.
@@ -1859,15 +1859,15 @@ Every execution request is validated, approved through business rules, executed 
 - Logging, monitoring, and governance improve operational resilience.
 - Continuous review and standardized architecture strengthen enterprise defenses against Command Injection risks.
 
-# 49-Command-Injection.md
+## 49-Command-Injection.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Secure operating system interaction is achieved through trusted process execution, strict separation of user input from execution logic, least-privilege permissions, centralized governance, continuous monitoring, and disciplined software engineering practices."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1889,7 +1889,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Process Governance
+## Enterprise Process Governance
 
 Organizations should establish centralized governance for every application component that interacts with the operating system.
 
@@ -1929,7 +1929,7 @@ Governance ensures that operating system interaction remains predictable, audita
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Process Security Governance
@@ -1959,7 +1959,7 @@ A governance framework provides accountability and reduces operational risk.
 
 ---
 
-# Process Execution Governance
+## Process Execution Governance
 
 Applications should execute operating system processes only through approved mechanisms.
 
@@ -1987,7 +1987,7 @@ Direct or inconsistent process execution should be avoided.
 
 ---
 
-# Zero Trust for Operating System Interaction
+## Zero Trust for Operating System Interaction
 
 Zero Trust principles should apply to every execution request.
 
@@ -2030,7 +2030,7 @@ Every execution request should be independently evaluated.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Command execution security should complement broader application security controls.
 
@@ -2066,7 +2066,7 @@ Layered security controls improve enterprise resilience.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Command execution security should be integrated into the software delivery lifecycle.
 
@@ -2098,7 +2098,7 @@ Security becomes a continuous engineering responsibility.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Execution infrastructure should be managed through version-controlled configuration.
 
@@ -2126,7 +2126,7 @@ IaC improves consistency, repeatability, and auditability.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2164,7 +2164,7 @@ Automated controls improve release quality and operational consistency.
 
 ---
 
-# Documentation
+## Documentation
 
 Maintain documentation covering:
 
@@ -2194,7 +2194,7 @@ Comprehensive documentation supports governance and long-term maintenance.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Organizations should maintain policies supporting secure operating system interaction.
 
@@ -2222,7 +2222,7 @@ Specific compliance obligations depend on applicable regulations, contractual ob
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Applications should record important execution-related activities.
 
@@ -2246,7 +2246,7 @@ Audit logging improves operational visibility, investigations, and compliance re
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2263,7 +2263,7 @@ Sensitive operating system information should not be unnecessarily exposed in lo
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2289,7 +2289,7 @@ Continuous monitoring improves operational awareness and supports rapid response
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2304,7 +2304,7 @@ Continuous monitoring improves operational awareness and supports rapid response
 
 ---
 
-# Process Execution Dashboard
+## Process Execution Dashboard
 
 ```
 Execution Dashboard
@@ -2332,7 +2332,7 @@ Dashboards provide centralized visibility into process execution and operational
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2362,7 +2362,7 @@ SOC analysts correlate execution events with application, endpoint, network, and
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should maintain documented procedures for process execution incidents.
 
@@ -2398,7 +2398,7 @@ A structured incident response process reduces downtime and supports continual i
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2428,7 +2428,7 @@ Root cause analysis should evaluate architecture, implementation, governance, an
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2458,7 +2458,7 @@ Security practices should evolve alongside business and technology changes.
 
 ---
 
-# Command Injection Security Maturity Model
+## Command Injection Security Maturity Model
 
 ```
 Level 1
@@ -2495,7 +2495,7 @@ Higher maturity levels emphasize automation, governance, monitoring, and standar
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2543,7 +2543,7 @@ This architecture separates business logic, execution control, monitoring, and g
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational manufacturing organization performs automated report generation, scheduled backups, document conversion, and media processing through centralized execution services.
 
@@ -2575,7 +2575,7 @@ Execution requests are validated through business rules, processed using dedicat
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Process Inventory Documented
@@ -2601,7 +2601,7 @@ Execution requests are validated through business rules, processed using dedicat
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2614,9 +2614,9 @@ Execution requests are validated through business rules, processed using dedicat
 
 ---
 
-# Command Injection Quick Revision
+## Command Injection Quick Revision
 
-## Secure Execution Lifecycle
+### Secure Execution Lifecycle
 
 ```
 Client Request
@@ -2648,7 +2648,7 @@ Operating System
 
 ---
 
-## Defense Layers
+### Defense Layers
 
 ```
 Authentication
@@ -2676,7 +2676,7 @@ Monitoring
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Metrics
@@ -2696,7 +2696,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise process execution architecture.
 2. Identify every operating system interaction within an application.
@@ -2708,7 +2708,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Command Injection?
 2. Why should applications prefer native APIs over operating system commands?
@@ -2723,7 +2723,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Prefer native libraries over external operating system commands.
 - Treat all external input as untrusted.
@@ -2737,7 +2737,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Invoking operating system commands when native APIs are sufficient.
 - Trusting externally supplied execution parameters.
@@ -2749,7 +2749,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

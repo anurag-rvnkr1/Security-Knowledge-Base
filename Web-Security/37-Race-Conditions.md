@@ -1,12 +1,12 @@
 # 37-Race-Conditions.md
 
-# Part 1 — Introduction to Race Conditions, Concurrency, Synchronization, and Enterprise System Design
+## Part 1 — Introduction to Race Conditions, Concurrency, Synchronization, and Enterprise System Design
 
 > **"A race condition occurs when the correctness of a system depends on the timing or ordering of concurrent operations. Secure systems are designed so that the outcome remains correct regardless of execution order."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is a Race Condition?
+## What is a Race Condition?
 
 A race condition is a situation where multiple operations access or modify the same resource at approximately the same time, and the final result depends on the order in which those operations complete.
 
@@ -43,7 +43,7 @@ When execution order is unpredictable, applications can produce inconsistent or 
 
 ---
 
-# Why Race Conditions Matter
+## Why Race Conditions Matter
 
 Modern applications process many requests simultaneously.
 
@@ -77,7 +77,7 @@ Without proper synchronization, concurrent operations may interfere with one ano
 
 ---
 
-# Concurrency
+## Concurrency
 
 Concurrency allows multiple tasks to make progress during overlapping periods.
 
@@ -99,7 +99,7 @@ Concurrency improves performance and scalability but introduces coordination cha
 
 ---
 
-# Parallelism vs Concurrency
+## Parallelism vs Concurrency
 
 | Concurrency | Parallelism |
 |-------------|-------------|
@@ -110,7 +110,7 @@ Concurrency improves performance and scalability but introduces coordination cha
 
 ---
 
-# Shared Resources
+## Shared Resources
 
 Race conditions require shared state.
 
@@ -142,7 +142,7 @@ Any shared resource requires careful coordination.
 
 ---
 
-# Basic Race Condition Example
+## Basic Race Condition Example
 
 ```
 Current Inventory
@@ -168,7 +168,7 @@ If requests are not coordinated, inventory consistency may be affected.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Clients
@@ -194,7 +194,7 @@ Multiple application instances commonly access the same backend resources.
 
 ---
 
-# Multi-Server Environment
+## Multi-Server Environment
 
 ```
 Server A
@@ -216,7 +216,7 @@ Distributed environments increase the importance of proper synchronization.
 
 ---
 
-# Race Condition Lifecycle
+## Race Condition Lifecycle
 
 ```
 Request
@@ -242,7 +242,7 @@ Concurrency issues often occur when multiple requests operate on stale or outdat
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 External Users
@@ -260,7 +260,7 @@ External requests crossing trust boundaries may interact with shared application
 
 ---
 
-# Common Enterprise Use Cases
+## Common Enterprise Use Cases
 
 ```
 Concurrent Operations
@@ -288,7 +288,7 @@ These systems require predictable behavior under concurrent load.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Poor concurrency handling may affect:
 
@@ -313,7 +313,7 @@ Operational Risk
 
 ---
 
-# Types of Race Conditions
+## Types of Race Conditions
 
 ```
 Race Conditions
@@ -341,7 +341,7 @@ Different architectures experience different concurrency challenges.
 
 ---
 
-# Shared State
+## Shared State
 
 ```
 Application
@@ -363,7 +363,7 @@ The more shared state a system maintains, the more important synchronization bec
 
 ---
 
-# Stateless vs Stateful Systems
+## Stateless vs Stateful Systems
 
 | Stateless | Stateful |
 |-----------|-----------|
@@ -374,7 +374,7 @@ The more shared state a system maintains, the more important synchronization bec
 
 ---
 
-# Synchronization
+## Synchronization
 
 Synchronization coordinates access to shared resources.
 
@@ -398,7 +398,7 @@ Proper synchronization helps maintain correctness regardless of execution timing
 
 ---
 
-# Consistency
+## Consistency
 
 Enterprise applications should preserve consistent system state.
 
@@ -422,7 +422,7 @@ Consistency is particularly important for financial, healthcare, and identity sy
 
 ---
 
-# Enterprise Design Principles
+## Enterprise Design Principles
 
 ```
 Design Principles
@@ -450,7 +450,7 @@ These principles guide secure concurrent system design.
 
 ---
 
-# Atomic Operations
+## Atomic Operations
 
 An atomic operation is treated as a single, indivisible unit of work.
 
@@ -470,7 +470,7 @@ Other operations should not observe an incomplete intermediate state.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An airline reservation platform processes seat reservations from customers worldwide.
 
@@ -498,7 +498,7 @@ The booking service must ensure that seat availability remains consistent even d
 
 ---
 
-# Components of a Concurrent System
+## Components of a Concurrent System
 
 ```
 Concurrent System
@@ -526,7 +526,7 @@ Every component contributes to overall system correctness.
 
 ---
 
-# Secure Design Goals
+## Secure Design Goals
 
 A secure concurrent application should provide:
 
@@ -539,7 +539,7 @@ A secure concurrent application should provide:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a concurrent web application architecture.
 2. Identify shared resources within the application.
@@ -551,7 +551,7 @@ A secure concurrent application should provide:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a race condition?
 2. Why do race conditions occur?
@@ -566,7 +566,7 @@ A secure concurrent application should provide:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design systems to remain correct regardless of execution order.
 - Minimize shared mutable state where possible.
@@ -578,7 +578,7 @@ A secure concurrent application should provide:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming requests execute one at a time.
 - Ignoring shared resource coordination.
@@ -589,7 +589,7 @@ A secure concurrent application should provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Race conditions occur when concurrent operations produce outcomes that depend on execution timing.
 - Shared resources are the foundation of most race conditions.
@@ -597,15 +597,15 @@ A secure concurrent application should provide:
 - Enterprise systems should prioritize consistency, atomicity, and predictable behavior.
 - Proper architecture and synchronization reduce operational and security risks.
 
-# 37-Race-Conditions.md
+## 37-Race-Conditions.md
 
-# Part 2 — Race Condition Types, Transaction Processing, Synchronization Mechanisms, Database Consistency, and Secure Concurrency Design
+## Part 2 — Race Condition Types, Transaction Processing, Synchronization Mechanisms, Database Consistency, and Secure Concurrency Design
 
 > **"Concurrency is not inherently dangerous. Problems arise when multiple operations interact with shared state without proper coordination. Secure systems ensure correctness regardless of request timing."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -622,7 +622,7 @@ After completing this part, you will understand:
 
 ---
 
-# Race Condition Lifecycle
+## Race Condition Lifecycle
 
 Most race conditions follow a common sequence.
 
@@ -670,7 +670,7 @@ If both requests operate on the same resource without proper coordination, incon
 
 ---
 
-# Read–Modify–Write Pattern
+## Read–Modify–Write Pattern
 
 One of the most common concurrency patterns is:
 
@@ -690,7 +690,7 @@ When multiple requests perform this sequence simultaneously on the same resource
 
 ---
 
-# Check-Then-Act Pattern
+## Check-Then-Act Pattern
 
 Applications frequently perform a validation before taking an action.
 
@@ -710,7 +710,7 @@ If another request changes the resource between the check and the action, the ap
 
 ---
 
-# State Transition
+## State Transition
 
 Many business processes involve moving resources between defined states.
 
@@ -734,7 +734,7 @@ Applications should ensure that transitions occur only when valid according to b
 
 ---
 
-# Shared Counters
+## Shared Counters
 
 Many enterprise applications maintain shared counters.
 
@@ -760,7 +760,7 @@ Synchronization
 
 ---
 
-# Inventory Example
+## Inventory Example
 
 ```
 Inventory
@@ -786,7 +786,7 @@ Inventory systems should preserve accurate stock levels even during periods of h
 
 ---
 
-# Banking Example
+## Banking Example
 
 ```
 Customer
@@ -812,7 +812,7 @@ Financial systems require strong consistency to preserve account accuracy.
 
 ---
 
-# Reservation Example
+## Reservation Example
 
 ```
 Customer
@@ -838,7 +838,7 @@ Reservation systems should ensure that availability remains accurate throughout 
 
 ---
 
-# Identity Example
+## Identity Example
 
 ```
 User
@@ -864,7 +864,7 @@ Identity systems should maintain consistent account state across concurrent oper
 
 ---
 
-# Database Transactions
+## Database Transactions
 
 Transactions group related operations into a single logical unit.
 
@@ -892,7 +892,7 @@ Transactions help preserve database consistency.
 
 ---
 
-# ACID Properties
+## ACID Properties
 
 Many relational databases implement ACID principles.
 
@@ -907,7 +907,7 @@ These properties contribute to reliable transaction processing.
 
 ---
 
-# Atomicity
+## Atomicity
 
 ```
 Transaction
@@ -925,7 +925,7 @@ Partial completion should not leave business data in an inconsistent state.
 
 ---
 
-# Consistency
+## Consistency
 
 ```
 Valid State
@@ -943,7 +943,7 @@ Every completed transaction should preserve business rules.
 
 ---
 
-# Isolation
+## Isolation
 
 ```
 Transaction A
@@ -969,7 +969,7 @@ Isolation helps prevent transactions from affecting one another unexpectedly.
 
 ---
 
-# Durability
+## Durability
 
 ```
 Commit
@@ -987,7 +987,7 @@ Committed changes should survive normal system failures.
 
 ---
 
-# Transaction Lifecycle
+## Transaction Lifecycle
 
 ```
 Begin Transaction
@@ -1017,7 +1017,7 @@ Applications should minimize unnecessary work within a transaction to improve sc
 
 ---
 
-# Synchronization
+## Synchronization
 
 Synchronization coordinates access to shared resources.
 
@@ -1041,7 +1041,7 @@ Synchronization mechanisms vary depending on architecture and technology.
 
 ---
 
-# Critical Sections
+## Critical Sections
 
 A critical section is a portion of code that accesses shared state.
 
@@ -1061,7 +1061,7 @@ Critical sections should be as short as practical to reduce contention.
 
 ---
 
-# Mutual Exclusion
+## Mutual Exclusion
 
 Mutual exclusion ensures that only one operation accesses a protected resource at a time.
 
@@ -1081,7 +1081,7 @@ This helps preserve correctness for sensitive operations.
 
 ---
 
-# Locking Concepts
+## Locking Concepts
 
 ```
 Synchronization
@@ -1101,7 +1101,7 @@ Different architectures use different coordination mechanisms.
 
 ---
 
-# Optimistic vs Pessimistic Coordination
+## Optimistic vs Pessimistic Coordination
 
 | Optimistic | Pessimistic |
 |------------|-------------|
@@ -1114,7 +1114,7 @@ The appropriate strategy depends on workload characteristics and business requir
 
 ---
 
-# Distributed Systems
+## Distributed Systems
 
 Modern enterprise applications frequently run across multiple servers.
 
@@ -1142,7 +1142,7 @@ Distributed deployments increase concurrency complexity because multiple applica
 
 ---
 
-# Cache Consistency
+## Cache Consistency
 
 ```
 Application
@@ -1160,7 +1160,7 @@ Applications should maintain consistency between cached data and persistent stor
 
 ---
 
-# Session Consistency
+## Session Consistency
 
 ```
 User
@@ -1182,7 +1182,7 @@ Distributed applications should ensure consistent session handling across multip
 
 ---
 
-# Idempotency
+## Idempotency
 
 Some business operations benefit from idempotent behavior.
 
@@ -1202,7 +1202,7 @@ Idempotency improves resilience during retries and network interruptions.
 
 ---
 
-# Event Processing
+## Event Processing
 
 ```
 Event
@@ -1228,7 +1228,7 @@ Event-driven systems should process shared resources consistently across concurr
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Clients
@@ -1262,7 +1262,7 @@ Transaction services coordinate updates while monitoring provides operational vi
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global e-commerce platform processes thousands of purchase requests every minute.
 
@@ -1294,7 +1294,7 @@ The order and inventory services coordinate updates to maintain accurate stock i
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Concurrency-related events should be monitored.
 
@@ -1322,7 +1322,7 @@ Monitoring helps identify unexpected transaction failures and operational anomal
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1335,7 +1335,7 @@ Monitoring helps identify unexpected transaction failures and operational anomal
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1348,7 +1348,7 @@ Monitoring helps identify unexpected transaction failures and operational anomal
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the lifecycle of a database transaction.
 2. Compare optimistic and pessimistic coordination strategies.
@@ -1360,7 +1360,7 @@ Monitoring helps identify unexpected transaction failures and operational anomal
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a read-modify-write operation?
 2. Why are transactions important?
@@ -1375,7 +1375,7 @@ Monitoring helps identify unexpected transaction failures and operational anomal
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design critical business operations as atomic transactions.
 - Keep transaction durations as short as practical.
@@ -1388,7 +1388,7 @@ Monitoring helps identify unexpected transaction failures and operational anomal
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming concurrent requests always execute sequentially.
 - Allowing long-running transactions to hold shared resources unnecessarily.
@@ -1400,7 +1400,7 @@ Monitoring helps identify unexpected transaction failures and operational anomal
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Race conditions commonly arise during read-modify-write and check-then-act workflows.
 - Database transactions and ACID properties help preserve consistency.
@@ -1408,15 +1408,15 @@ Monitoring helps identify unexpected transaction failures and operational anomal
 - Distributed systems require additional coordination because multiple application instances access shared state.
 - Secure concurrency design combines atomicity, consistency, monitoring, and scalable architecture.
 
-# 37-Race-Conditions.md
+## 37-Race-Conditions.md
 
-# Part 3 — Race Condition Detection, Defensive Programming, Monitoring, Testing, Secure SDLC, and Enterprise Concurrency Architecture
+## Part 3 — Race Condition Detection, Defensive Programming, Monitoring, Testing, Secure SDLC, and Enterprise Concurrency Architecture
 
 > **"The most effective defense against race conditions is designing systems where correctness does not depend on execution timing. Prevention begins during architecture, not after deployment."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1433,7 +1433,7 @@ After completing this part, you will understand:
 
 ---
 
-# Why Race Conditions Are Difficult to Detect
+## Why Race Conditions Are Difficult to Detect
 
 Unlike many software defects, race conditions are often:
 
@@ -1459,7 +1459,7 @@ The same application may behave correctly thousands of times before a concurrenc
 
 ---
 
-# Characteristics of Race Conditions
+## Characteristics of Race Conditions
 
 ```
 Race Conditions
@@ -1485,7 +1485,7 @@ These characteristics make concurrency defects particularly challenging.
 
 ---
 
-# Secure Processing Pipeline
+## Secure Processing Pipeline
 
 ```
 Client
@@ -1523,7 +1523,7 @@ Each stage should preserve data consistency regardless of request timing.
 
 ---
 
-# Common Indicators
+## Common Indicators
 
 Operations teams may observe:
 
@@ -1550,7 +1550,7 @@ These symptoms should trigger operational analysis.
 
 ---
 
-# Defensive Programming
+## Defensive Programming
 
 Applications should be designed assuming that concurrent requests will occur.
 
@@ -1578,7 +1578,7 @@ Concurrency should be considered a normal operating condition rather than an exc
 
 ---
 
-# Minimize Shared State
+## Minimize Shared State
 
 Reducing shared mutable data lowers concurrency complexity.
 
@@ -1600,7 +1600,7 @@ Stateless architectures generally require less synchronization.
 
 ---
 
-# Immutable Data
+## Immutable Data
 
 Immutable objects cannot be modified after creation.
 
@@ -1624,7 +1624,7 @@ Immutable designs reduce opportunities for unintended concurrent modification.
 
 ---
 
-# Idempotent Operations
+## Idempotent Operations
 
 Idempotent operations produce the same outcome when repeated with the same input.
 
@@ -1644,7 +1644,7 @@ Idempotency improves resilience during retries, failovers, and network interrupt
 
 ---
 
-# Distributed Systems
+## Distributed Systems
 
 Modern applications frequently span multiple services.
 
@@ -1672,7 +1672,7 @@ Each service boundary introduces additional coordination requirements.
 
 ---
 
-# Event-Driven Processing
+## Event-Driven Processing
 
 ```
 Producer
@@ -1698,7 +1698,7 @@ Distributed event processing should preserve consistency across multiple consume
 
 ---
 
-# High Availability
+## High Availability
 
 Highly available systems continue operating despite failures.
 
@@ -1722,7 +1722,7 @@ Concurrency controls should continue functioning correctly during failover scena
 
 ---
 
-# Scalability
+## Scalability
 
 ```
 Users
@@ -1744,7 +1744,7 @@ As systems scale horizontally, coordination between instances becomes increasing
 
 ---
 
-# Horizontal Scaling
+## Horizontal Scaling
 
 ```
 Application 1
@@ -1772,7 +1772,7 @@ Multiple application instances should maintain consistent behavior while accessi
 
 ---
 
-# Logging
+## Logging
 
 Concurrency-related events should be recorded.
 
@@ -1796,7 +1796,7 @@ Logs support troubleshooting and incident investigations.
 
 ---
 
-# Important Events to Log
+## Important Events to Log
 
 | Event | Purpose |
 |--------|----------|
@@ -1811,7 +1811,7 @@ Sensitive business data should generally not be stored directly in logs.
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1837,7 +1837,7 @@ Monitoring enables early identification of concurrency-related anomalies.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1850,7 +1850,7 @@ Monitoring enables early identification of concurrency-related anomalies.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Concurrency should be included during architectural reviews.
 
@@ -1878,7 +1878,7 @@ Threat modeling helps identify areas requiring stronger coordination.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 Concurrency considerations should be included throughout development.
 
@@ -1914,7 +1914,7 @@ Early design decisions significantly influence concurrency safety.
 
 ---
 
-# Code Reviews
+## Code Reviews
 
 Architecture and code reviews should examine:
 
@@ -1946,7 +1946,7 @@ Reviews often identify concurrency assumptions before production.
 
 ---
 
-# Testing Strategy
+## Testing Strategy
 
 Concurrency testing should complement functional testing.
 
@@ -1970,7 +1970,7 @@ Applications should be evaluated under realistic operational workloads.
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1998,7 +1998,7 @@ Each testing approach contributes to system reliability.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Clients
@@ -2036,7 +2036,7 @@ Architecture should support both scalability and consistent data processing.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational payment platform processes millions of financial transactions each day.
 
@@ -2068,7 +2068,7 @@ Each stage coordinates with the others to maintain accurate financial records, e
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2081,7 +2081,7 @@ Each stage coordinates with the others to maintain accurate financial records, e
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a distributed transaction architecture.
 2. Identify shared resources within an e-commerce platform.
@@ -2093,7 +2093,7 @@ Each stage coordinates with the others to maintain accurate financial records, e
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are race conditions difficult to reproduce?
 2. What characteristics make concurrency bugs unique?
@@ -2108,7 +2108,7 @@ Each stage coordinates with the others to maintain accurate financial records, e
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design applications that remain correct regardless of execution timing.
 - Minimize shared mutable state.
@@ -2121,7 +2121,7 @@ Each stage coordinates with the others to maintain accurate financial records, e
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming production workloads behave like development environments.
 - Ignoring concurrency during design reviews.
@@ -2133,7 +2133,7 @@ Each stage coordinates with the others to maintain accurate financial records, e
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Race conditions are typically timing-dependent and difficult to reproduce consistently.
 - Defensive programming begins with architecture and minimizes shared mutable state.
@@ -2141,15 +2141,15 @@ Each stage coordinates with the others to maintain accurate financial records, e
 - Distributed systems require careful coordination to maintain consistency.
 - Secure SDLC, code reviews, and threat modeling are essential for preventing concurrency-related defects.
 
-# 37-Race-Conditions.md
+## 37-Race-Conditions.md
 
-# Part 4 — Enterprise Governance, Zero Trust, Incident Response, Compliance, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, Incident Response, Compliance, Security Maturity, and Chapter Summary
 
 > **"Race conditions are fundamentally design problems rather than implementation problems. Building resilient concurrent systems requires secure architecture, well-defined transactions, continuous monitoring, and organizational governance."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2166,7 +2166,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 Concurrency should be governed through organization-wide standards rather than individual developer preferences.
 
@@ -2206,7 +2206,7 @@ Standardized governance improves consistency across applications and teams.
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Governance
@@ -2234,7 +2234,7 @@ Governance
 
 ---
 
-# Concurrency Policies
+## Concurrency Policies
 
 Organizations should establish documented policies covering:
 
@@ -2265,7 +2265,7 @@ Review
 
 ---
 
-# Data Governance
+## Data Governance
 
 Shared business data should remain accurate throughout its lifecycle.
 
@@ -2293,7 +2293,7 @@ Strong governance preserves integrity and accountability.
 
 ---
 
-# Zero Trust for Concurrent Systems
+## Zero Trust for Concurrent Systems
 
 Zero Trust principles apply beyond authentication.
 
@@ -2330,7 +2330,7 @@ Verify Result
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -2358,7 +2358,7 @@ These principles improve reliability in distributed systems.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Concurrency should be considered throughout the software lifecycle.
 
@@ -2394,7 +2394,7 @@ Security becomes an integral part of software delivery.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2432,7 +2432,7 @@ Concurrency-focused testing should be part of production readiness.
 
 ---
 
-# Secure Configuration
+## Secure Configuration
 
 ```
 Configuration
@@ -2460,7 +2460,7 @@ Configuration should be reviewed regularly to maintain consistency.
 
 ---
 
-# High Availability
+## High Availability
 
 Concurrency controls should continue functioning during failures.
 
@@ -2488,7 +2488,7 @@ High availability should not compromise consistency.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 ```
 Primary Database
@@ -2514,7 +2514,7 @@ Recovery procedures should preserve transaction integrity.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many industries require consistent processing of critical business operations.
 
@@ -2542,7 +2542,7 @@ Specific regulatory obligations vary by industry and jurisdiction.
 
 ---
 
-# Logging
+## Logging
 
 Important concurrency-related events should be recorded.
 
@@ -2566,7 +2566,7 @@ Logs should support troubleshooting, auditing, and incident investigations.
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -2592,7 +2592,7 @@ Continuous monitoring helps identify operational anomalies before they become bu
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2607,7 +2607,7 @@ Continuous monitoring helps identify operational anomalies before they become bu
 
 ---
 
-# Security Dashboard
+## Security Dashboard
 
 ```
 Concurrency Dashboard
@@ -2635,7 +2635,7 @@ Operational dashboards improve visibility across distributed systems.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2665,7 +2665,7 @@ Centralized monitoring enables timely investigation of concurrency-related anoma
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should prepare procedures for concurrency-related incidents.
 
@@ -2701,7 +2701,7 @@ Documented response plans reduce operational downtime.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2731,7 +2731,7 @@ Understanding the underlying cause helps prevent recurrence.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2761,7 +2761,7 @@ Concurrency practices should evolve with application growth.
 
 ---
 
-# Race Condition Security Maturity Model
+## Race Condition Security Maturity Model
 
 ```
 Level 1
@@ -2797,7 +2797,7 @@ Organizations gradually mature toward resilient, scalable concurrency management
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2847,7 +2847,7 @@ This architecture separates transaction processing, persistence, logging, and mo
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global stock trading platform processes millions of orders each trading day.
 
@@ -2879,7 +2879,7 @@ The transaction engine coordinates concurrent requests to ensure accurate order 
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Shared Resource Analysis
@@ -2909,7 +2909,7 @@ The transaction engine coordinates concurrent requests to ensure accurate order 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2922,9 +2922,9 @@ The transaction engine coordinates concurrent requests to ensure accurate order 
 
 ---
 
-# Race Condition Quick Revision
+## Race Condition Quick Revision
 
-## Concurrency Lifecycle
+### Concurrency Lifecycle
 
 ```
 Request
@@ -2948,7 +2948,7 @@ Commit
 
 ---
 
-## ACID Principles
+### ACID Principles
 
 ```
 Atomicity
@@ -2968,7 +2968,7 @@ Durability
 
 ---
 
-## Secure Processing
+### Secure Processing
 
 ```
 Authentication
@@ -2996,7 +2996,7 @@ Audit
 
 ---
 
-## Monitoring
+### Monitoring
 
 ```
 Applications
@@ -3016,7 +3016,7 @@ SOC
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a highly available concurrent application architecture.
 2. Identify shared resources in an online banking platform.
@@ -3028,7 +3028,7 @@ SOC
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are race conditions considered architecture problems?
 2. What role does governance play in concurrency management?
@@ -3043,7 +3043,7 @@ SOC
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design systems that remain correct regardless of execution timing.
 - Keep critical transactions atomic and consistent.
@@ -3057,7 +3057,7 @@ SOC
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming concurrent requests execute sequentially.
 - Ignoring transaction boundaries during application design.
@@ -3069,7 +3069,7 @@ SOC
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

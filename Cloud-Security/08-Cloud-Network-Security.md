@@ -1353,7 +1353,7 @@ A comprehensive prevention strategy combines:
 
 ---
 
-# Defense-in-Depth Architecture
+## Defense-in-Depth Architecture
 
 ```
                     Internet
@@ -1419,7 +1419,7 @@ If one security layer fails, the remaining controls continue protecting the envi
 
 ---
 
-# Secure Network Architecture
+## Secure Network Architecture
 
 Security begins during network design.
 
@@ -1451,7 +1451,7 @@ Each subnet should have its own security policies.
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Network segmentation limits communication between workloads.
 
@@ -1493,7 +1493,7 @@ Benefits include:
 
 ---
 
-# Implement Microsegmentation
+## Implement Microsegmentation
 
 Microsegmentation applies security policies directly to workloads.
 
@@ -1525,7 +1525,7 @@ Even workloads within the same subnet should not communicate unless required.
 
 ---
 
-# Apply the Principle of Least Privilege
+## Apply the Principle of Least Privilege
 
 Network access should be granted only when required.
 
@@ -1542,7 +1542,7 @@ Avoid "allow all" firewall rules.
 
 ---
 
-# Secure Security Groups
+## Secure Security Groups
 
 Security Groups should follow these principles:
 
@@ -1604,7 +1604,7 @@ Deny
 
 ---
 
-# Secure Network ACLs
+## Secure Network ACLs
 
 Network ACLs provide an additional security layer.
 
@@ -1620,7 +1620,7 @@ ACLs should complement Security Groups—not replace them.
 
 ---
 
-# Protect Administrative Access
+## Protect Administrative Access
 
 Never expose administrative services directly to the internet.
 
@@ -1656,7 +1656,7 @@ Administrative services include:
 
 ---
 
-# Secure Internet Connectivity
+## Secure Internet Connectivity
 
 Only workloads requiring internet access should receive public IP addresses.
 
@@ -1688,7 +1688,7 @@ Databases should almost always remain private.
 
 ---
 
-# Use NAT Gateways
+## Use NAT Gateways
 
 Private resources requiring software updates should access the internet through a NAT Gateway.
 
@@ -1716,7 +1716,7 @@ Benefits:
 
 ---
 
-# Encrypt Network Traffic
+## Encrypt Network Traffic
 
 Sensitive communications should always use encrypted protocols.
 
@@ -1745,7 +1745,7 @@ Encryption protects against interception and tampering.
 
 ---
 
-# Secure Hybrid Connectivity
+## Secure Hybrid Connectivity
 
 Hybrid environments should use encrypted communication channels.
 
@@ -1769,7 +1769,7 @@ Avoid transmitting sensitive information over unencrypted public networks.
 
 ---
 
-# Implement Zero Trust Networking
+## Implement Zero Trust Networking
 
 Zero Trust assumes no device or workload is trusted by default.
 
@@ -1805,7 +1805,7 @@ Trust should be continuously evaluated rather than assumed.
 
 ---
 
-# Enable DDoS Protection
+## Enable DDoS Protection
 
 Public-facing applications should use cloud-native DDoS protection services.
 
@@ -1834,7 +1834,7 @@ Application
 
 ---
 
-# Deploy Web Application Firewalls (WAF)
+## Deploy Web Application Firewalls (WAF)
 
 Internet-facing web applications should be protected by a WAF.
 
@@ -1849,7 +1849,7 @@ A WAF helps prevent:
 
 ---
 
-# Secure DNS
+## Secure DNS
 
 DNS security recommendations include:
 
@@ -1863,7 +1863,7 @@ DNS is a common target during cyber attacks.
 
 ---
 
-# Continuous Network Monitoring
+## Continuous Network Monitoring
 
 Security teams should continuously monitor:
 
@@ -1900,7 +1900,7 @@ Early detection minimizes incident impact.
 
 ---
 
-# Secure Routing
+## Secure Routing
 
 Route tables should be carefully reviewed.
 
@@ -1916,21 +1916,21 @@ Improper routing may expose private resources.
 
 ---
 
-# Best Practices
+## Best Practices
 
-## 1. Design Secure Network Architecture
+### 1. Design Secure Network Architecture
 
 Build security into the network from the beginning rather than adding controls later.
 
 ---
 
-## 2. Keep Sensitive Resources Private
+### 2. Keep Sensitive Resources Private
 
 Databases, internal APIs, and management services should not be publicly accessible.
 
 ---
 
-## 3. Enable Network Segmentation
+### 3. Enable Network Segmentation
 
 Separate:
 
@@ -1941,7 +1941,7 @@ Separate:
 
 ---
 
-## 4. Follow Least Privilege Networking
+### 4. Follow Least Privilege Networking
 
 Permit only required communication between workloads.
 
@@ -1949,13 +1949,13 @@ Block everything else by default.
 
 ---
 
-## 5. Encrypt All Sensitive Traffic
+### 5. Encrypt All Sensitive Traffic
 
 Use modern TLS versions and secure cryptographic configurations for all sensitive communications.
 
 ---
 
-## 6. Protect Administrative Access
+### 6. Protect Administrative Access
 
 Use:
 
@@ -1968,7 +1968,7 @@ Never expose SSH or RDP directly to the internet.
 
 ---
 
-## 7. Enable Continuous Monitoring
+### 7. Enable Continuous Monitoring
 
 Collect and review:
 
@@ -1982,7 +1982,7 @@ Integrate them with SIEM and SOC workflows.
 
 ---
 
-## 8. Regularly Review Firewall Rules
+### 8. Regularly Review Firewall Rules
 
 Remove:
 
@@ -1995,7 +1995,7 @@ Periodic reviews reduce the attack surface.
 
 ---
 
-## 9. Use Multiple Security Layers
+### 9. Use Multiple Security Layers
 
 Combine:
 
@@ -2010,21 +2010,21 @@ Avoid relying on a single control.
 
 ---
 
-## 10. Adopt Zero Trust Networking
+### 10. Adopt Zero Trust Networking
 
 Continuously verify every connection regardless of source network or location.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
-### Exposing Databases to the Internet
+#### Exposing Databases to the Internet
 
 Production databases should remain in private networks unless there is a well-justified business requirement and additional compensating controls.
 
 ---
 
-### Allowing "0.0.0.0/0" Administrative Access
+#### Allowing "0.0.0.0/0" Administrative Access
 
 Permitting unrestricted SSH, RDP, or management access from any IP address significantly increases attack exposure.
 
@@ -2032,7 +2032,7 @@ Restrict administrative access to trusted networks or VPNs.
 
 ---
 
-### Overly Permissive Security Groups
+#### Overly Permissive Security Groups
 
 Rules such as:
 
@@ -2050,7 +2050,7 @@ should never exist in production environments.
 
 ---
 
-### Ignoring East-West Traffic
+#### Ignoring East-West Traffic
 
 Many organizations focus only on internet-facing traffic.
 
@@ -2058,25 +2058,25 @@ Internal lateral movement should also be monitored and restricted.
 
 ---
 
-### Lack of Network Segmentation
+#### Lack of Network Segmentation
 
 Hosting all workloads within a single unrestricted subnet increases the impact of successful compromises.
 
 ---
 
-### Not Encrypting Internal Traffic
+#### Not Encrypting Internal Traffic
 
 Communication between internal workloads may contain sensitive information and should also use encryption where appropriate.
 
 ---
 
-### Weak Hybrid Connectivity
+#### Weak Hybrid Connectivity
 
 Using insecure remote connections instead of encrypted VPNs or dedicated private connectivity exposes enterprise traffic.
 
 ---
 
-### Failing to Review Firewall Rules
+#### Failing to Review Firewall Rules
 
 Firewall configurations often accumulate unnecessary rules over time.
 
@@ -2084,7 +2084,7 @@ Regular audits are essential.
 
 ---
 
-### Ignoring Network Logs
+#### Ignoring Network Logs
 
 Without network telemetry, organizations lose visibility into:
 
@@ -2095,7 +2095,7 @@ Without network telemetry, organizations lose visibility into:
 
 ---
 
-### Treating the Cloud Like a Traditional Network
+#### Treating the Cloud Like a Traditional Network
 
 Cloud environments are dynamic and identity-driven.
 
@@ -2103,9 +2103,9 @@ Traditional perimeter-only security models are insufficient for modern cloud arc
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-41 Rev. 1 – Guidelines on Firewalls and Firewall Policy
 - NIST SP 800-207 – Zero Trust Architecture
@@ -2117,7 +2117,7 @@ Traditional perimeter-only security models are insufficient for modern cloud arc
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
 - AWS VPC Documentation
 - AWS Security Groups Documentation
@@ -2130,7 +2130,7 @@ Traditional perimeter-only security models are insufficient for modern cloud arc
 
 ---
 
-### Industry Best Practices
+#### Industry Best Practices
 
 - Defense in Depth
 - Zero Trust Networking

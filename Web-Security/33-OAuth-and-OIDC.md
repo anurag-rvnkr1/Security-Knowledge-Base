@@ -1,12 +1,12 @@
 # 33-OAuth-and-OIDC.md
 
-# Part 1 — Introduction to OAuth 2.0, OpenID Connect (OIDC), Authentication vs Authorization, and Enterprise Identity
+## Part 1 — Introduction to OAuth 2.0, OpenID Connect (OIDC), Authentication vs Authorization, and Enterprise Identity
 
 > **"OAuth 2.0 answers the question 'What is this application allowed to do?', while OpenID Connect answers 'Who is the user?'"**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# Identity and Access Management (IAM)
+## Identity and Access Management (IAM)
 
 Identity and Access Management (IAM) is the collection of policies, technologies, and processes used to manage digital identities and control access to resources.
 
@@ -51,7 +51,7 @@ IAM forms the foundation of modern enterprise security.
 
 ---
 
-# Why Identity Matters
+## Why Identity Matters
 
 Modern organizations manage access for:
 
@@ -79,7 +79,7 @@ Each identity requires controlled access based on organizational policies.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 These terms are often confused but represent different security functions.
 
@@ -92,7 +92,7 @@ These terms are often confused but represent different security functions.
 
 ---
 
-# Simple Example
+## Simple Example
 
 ```
 User
@@ -122,7 +122,7 @@ A user must first prove their identity before permissions can be evaluated.
 
 ---
 
-# What is OAuth 2.0?
+## What is OAuth 2.0?
 
 OAuth 2.0 is an authorization framework that allows an application to obtain limited access to another application's protected resources **without sharing the user's password**.
 
@@ -130,7 +130,7 @@ OAuth is designed for **delegated authorization**.
 
 ---
 
-# Why OAuth Was Created
+## Why OAuth Was Created
 
 Before OAuth:
 
@@ -161,7 +161,7 @@ OAuth solved these issues by introducing delegated access using tokens.
 
 ---
 
-# OAuth Concept
+## OAuth Concept
 
 ```
 User
@@ -191,7 +191,7 @@ The application receives a token—not the user's password.
 
 ---
 
-# What OAuth Does
+## What OAuth Does
 
 OAuth enables an application to:
 
@@ -203,7 +203,7 @@ OAuth enables an application to:
 
 ---
 
-# What OAuth Does NOT Do
+## What OAuth Does NOT Do
 
 OAuth **does not** identify the user by itself.
 
@@ -223,7 +223,7 @@ That is where OpenID Connect becomes important.
 
 ---
 
-# What is OpenID Connect (OIDC)?
+## What is OpenID Connect (OIDC)?
 
 OpenID Connect (OIDC) is an identity layer built on top of OAuth 2.0.
 
@@ -231,7 +231,7 @@ It allows applications to authenticate users while continuing to use OAuth for d
 
 ---
 
-# OAuth vs OIDC
+## OAuth vs OIDC
 
 | OAuth 2.0 | OpenID Connect |
 |------------|----------------|
@@ -242,7 +242,7 @@ It allows applications to authenticate users while continuing to use OAuth for d
 
 ---
 
-# Why OIDC Was Introduced
+## Why OIDC Was Introduced
 
 Applications often need to know:
 
@@ -256,7 +256,7 @@ OIDC adds that capability.
 
 ---
 
-# Enterprise Login Example
+## Enterprise Login Example
 
 ```
 User
@@ -286,7 +286,7 @@ The application can verify the authenticated user's identity using the ID Token.
 
 ---
 
-# Common Enterprise Identity Providers
+## Common Enterprise Identity Providers
 
 ```
 Identity Providers
@@ -314,7 +314,7 @@ Organizations commonly integrate these platforms with OAuth and OIDC.
 
 ---
 
-# OAuth Roles
+## OAuth Roles
 
 OAuth defines four primary roles.
 
@@ -336,7 +336,7 @@ These roles cooperate to securely provide delegated access.
 
 ---
 
-# Resource Owner
+## Resource Owner
 
 The Resource Owner is typically the user who owns protected resources.
 
@@ -354,7 +354,7 @@ Grants Permission
 
 ---
 
-# Client
+## Client
 
 The Client is the application requesting access on behalf of the user.
 
@@ -367,7 +367,7 @@ Examples include:
 
 ---
 
-# Authorization Server
+## Authorization Server
 
 The Authorization Server:
 
@@ -394,7 +394,7 @@ Token Issuance
 
 ---
 
-# Resource Server
+## Resource Server
 
 The Resource Server hosts protected APIs or data.
 
@@ -418,7 +418,7 @@ The server validates the token before serving protected resources.
 
 ---
 
-# OAuth Components
+## OAuth Components
 
 ```
 OAuth
@@ -442,7 +442,7 @@ OAuth
 
 ---
 
-# High-Level OAuth Flow
+## High-Level OAuth Flow
 
 ```
 User
@@ -476,7 +476,7 @@ This flow separates authentication, authorization, and resource access.
 
 ---
 
-# OAuth in Enterprise Architecture
+## OAuth in Enterprise Architecture
 
 ```
 Internet
@@ -510,7 +510,7 @@ Identity services are often centralized across the enterprise.
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 A project management application wants to access a user's cloud storage files.
 
@@ -542,7 +542,7 @@ The application receives only the permissions approved by the user.
 
 ---
 
-# Benefits of OAuth
+## Benefits of OAuth
 
 ```
 OAuth Benefits
@@ -566,7 +566,7 @@ OAuth Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the OAuth architecture showing all four roles.
 2. Compare Authentication and Authorization.
@@ -578,7 +578,7 @@ OAuth Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is OAuth 2.0?
 2. Why was OAuth created?
@@ -593,7 +593,7 @@ OAuth Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use OAuth 2.0 for delegated authorization.
 - Use OpenID Connect when user authentication and identity are required.
@@ -604,7 +604,7 @@ OAuth Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming OAuth performs authentication by itself.
 - Confusing Access Tokens with user identity.
@@ -614,7 +614,7 @@ OAuth Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - OAuth 2.0 is an authorization framework for delegated access.
 - OpenID Connect extends OAuth by providing standardized user authentication and identity.
@@ -622,15 +622,15 @@ OAuth Benefits
 - The four OAuth roles form the foundation of secure delegated authorization.
 - Modern enterprise identity platforms commonly use OAuth 2.0 and OIDC together.
 
-# 33-OAuth-and-OIDC.md
+## 33-OAuth-and-OIDC.md
 
-# Part 2 — OAuth 2.0 Tokens, Authorization Flows, Scopes, Claims, JWT, ID Tokens, Refresh Tokens, and Secure Token Management
+## Part 2 — OAuth 2.0 Tokens, Authorization Flows, Scopes, Claims, JWT, ID Tokens, Refresh Tokens, and Secure Token Management
 
 > **"OAuth security revolves around one principle: applications receive limited, temporary, and revocable access through tokens instead of permanent credentials."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -647,7 +647,7 @@ After completing this part, you will understand:
 
 ---
 
-# OAuth Tokens
+## OAuth Tokens
 
 A token is a credential issued by the Authorization Server after successful authorization.
 
@@ -675,7 +675,7 @@ Tokens allow applications to access approved resources without storing the user'
 
 ---
 
-# Why Tokens?
+## Why Tokens?
 
 Instead of sharing credentials:
 
@@ -713,7 +713,7 @@ This significantly reduces credential exposure.
 
 ---
 
-# Types of OAuth Tokens
+## Types of OAuth Tokens
 
 ```
 OAuth Tokens
@@ -731,7 +731,7 @@ Each token serves a different purpose.
 
 ---
 
-# Access Token
+## Access Token
 
 An Access Token authorizes a client to access protected resources.
 
@@ -755,7 +755,7 @@ The Resource Server validates the token before serving data.
 
 ---
 
-# Access Token Characteristics
+## Access Token Characteristics
 
 ```
 Access Token
@@ -777,7 +777,7 @@ Short lifetimes reduce the impact of token compromise.
 
 ---
 
-# Refresh Token
+## Refresh Token
 
 Refresh Tokens allow a client to obtain new Access Tokens without requiring the user to authenticate again.
 
@@ -801,7 +801,7 @@ Refresh Tokens are generally longer-lived and require stronger protection.
 
 ---
 
-# Refresh Token Lifecycle
+## Refresh Token Lifecycle
 
 ```
 Login
@@ -827,7 +827,7 @@ Users experience seamless sessions while maintaining security controls.
 
 ---
 
-# ID Token (OIDC)
+## ID Token (OIDC)
 
 OpenID Connect introduces the **ID Token**.
 
@@ -853,7 +853,7 @@ Applications use the ID Token to identify the authenticated user.
 
 ---
 
-# ID Token vs Access Token
+## ID Token vs Access Token
 
 | ID Token | Access Token |
 |-----------|--------------|
@@ -864,7 +864,7 @@ Applications use the ID Token to identify the authenticated user.
 
 ---
 
-# OAuth Scopes
+## OAuth Scopes
 
 Scopes define what a client is permitted to access.
 
@@ -892,7 +892,7 @@ Scopes implement the principle of least privilege.
 
 ---
 
-# Example Scope Concept
+## Example Scope Concept
 
 ```
 Application
@@ -918,7 +918,7 @@ Applications should request only the permissions necessary for their functionali
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 ```
 Application
@@ -936,7 +936,7 @@ Least privilege limits potential impact if a token is misused.
 
 ---
 
-# OAuth Claims
+## OAuth Claims
 
 Claims are pieces of information contained within a token.
 
@@ -966,7 +966,7 @@ Claims help applications validate and interpret tokens.
 
 ---
 
-# JSON Web Token (JWT)
+## JSON Web Token (JWT)
 
 Many OAuth and OIDC implementations use JSON Web Tokens (JWTs).
 
@@ -974,7 +974,7 @@ A JWT is a compact, structured format for securely conveying claims.
 
 ---
 
-# JWT Structure
+## JWT Structure
 
 ```
 JWT
@@ -996,7 +996,7 @@ Each section serves a different purpose.
 
 ---
 
-# JWT Header
+## JWT Header
 
 The Header typically contains metadata.
 
@@ -1016,7 +1016,7 @@ It describes how the token is protected.
 
 ---
 
-# JWT Payload
+## JWT Payload
 
 The Payload contains claims.
 
@@ -1044,7 +1044,7 @@ Applications should avoid placing unnecessary sensitive information inside token
 
 ---
 
-# JWT Signature
+## JWT Signature
 
 The Signature helps verify integrity.
 
@@ -1068,7 +1068,7 @@ If the signature validation fails, the token should be rejected.
 
 ---
 
-# Token Validation
+## Token Validation
 
 Before accepting a token, applications typically validate:
 
@@ -1096,7 +1096,7 @@ Only successfully validated tokens should be trusted.
 
 ---
 
-# Token Lifetime
+## Token Lifetime
 
 ```
 Access Token
@@ -1126,7 +1126,7 @@ Organizations commonly use shorter Access Token lifetimes to reduce risk.
 
 ---
 
-# Token Rotation
+## Token Rotation
 
 Refresh Token rotation is commonly used to improve session security.
 
@@ -1150,7 +1150,7 @@ Rotation reduces the usefulness of previously issued Refresh Tokens.
 
 ---
 
-# Token Revocation
+## Token Revocation
 
 Organizations may revoke tokens before their natural expiration.
 
@@ -1174,7 +1174,7 @@ Revocation supports rapid response to account compromise or policy changes.
 
 ---
 
-# OAuth Authorization Flows
+## OAuth Authorization Flows
 
 OAuth defines several authorization flows for different client types.
 
@@ -1198,7 +1198,7 @@ Different scenarios require different flows.
 
 ---
 
-# Authorization Code Flow
+## Authorization Code Flow
 
 The Authorization Code Flow is widely used for confidential clients such as traditional web applications.
 
@@ -1230,7 +1230,7 @@ The Authorization Code is exchanged securely for tokens.
 
 ---
 
-# PKCE (Proof Key for Code Exchange)
+## PKCE (Proof Key for Code Exchange)
 
 PKCE strengthens the Authorization Code Flow, especially for public clients such as mobile and desktop applications.
 
@@ -1262,7 +1262,7 @@ PKCE reduces the risk of authorization code interception.
 
 ---
 
-# Client Credentials Flow
+## Client Credentials Flow
 
 This flow is intended for service-to-service communication.
 
@@ -1286,7 +1286,7 @@ No end user participates in this authorization flow.
 
 ---
 
-# Device Authorization Flow
+## Device Authorization Flow
 
 Designed for devices with limited input capabilities.
 
@@ -1315,7 +1315,7 @@ Access Token
 
 ---
 
-# OAuth Flow Selection
+## OAuth Flow Selection
 
 | Scenario | Recommended Flow |
 |-----------|------------------|
@@ -1327,7 +1327,7 @@ Access Token
 
 ---
 
-# Secure Token Storage
+## Secure Token Storage
 
 Applications should protect issued tokens appropriately.
 
@@ -1347,7 +1347,7 @@ Storage mechanisms depend on application architecture and platform capabilities.
 
 ---
 
-# Token Security Principles
+## Token Security Principles
 
 ```
 Token Security
@@ -1373,7 +1373,7 @@ These controls reduce the likelihood and impact of token misuse.
 
 ---
 
-# Enterprise OAuth Architecture
+## Enterprise OAuth Architecture
 
 ```
 Client
@@ -1407,7 +1407,7 @@ Identity and authorization are centralized while business services enforce token
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational enterprise provides employees with access to internal HR, payroll, and collaboration systems.
 
@@ -1443,7 +1443,7 @@ Each application validates tokens before providing access to protected resources
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1456,7 +1456,7 @@ Each application validates tokens before providing access to protected resources
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the lifecycle of an Access Token.
 2. Compare Access Tokens, Refresh Tokens, and ID Tokens.
@@ -1468,7 +1468,7 @@ Each application validates tokens before providing access to protected resources
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an Access Token?
 2. What is the purpose of a Refresh Token?
@@ -1483,7 +1483,7 @@ Each application validates tokens before providing access to protected resources
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use short-lived Access Tokens.
 - Protect Refresh Tokens with stronger security controls.
@@ -1495,7 +1495,7 @@ Each application validates tokens before providing access to protected resources
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Confusing ID Tokens with Access Tokens.
 - Storing tokens insecurely.
@@ -1506,7 +1506,7 @@ Each application validates tokens before providing access to protected resources
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - OAuth uses tokens instead of passwords to enable delegated authorization.
 - Access Tokens authorize API access, Refresh Tokens renew sessions, and ID Tokens identify authenticated users.
@@ -1514,15 +1514,15 @@ Each application validates tokens before providing access to protected resources
 - PKCE significantly strengthens the Authorization Code Flow for public clients.
 - Secure token lifecycle management—including validation, rotation, revocation, and least privilege—is fundamental to enterprise OAuth security.
 
-# 33-OAuth-and-OIDC.md
+## 33-OAuth-and-OIDC.md
 
-# Part 3 — OAuth & OIDC Security, Common Threats, PKCE, Token Security, Session Management, Logging, Monitoring, and Enterprise Operations
+## Part 3 — OAuth & OIDC Security, Common Threats, PKCE, Token Security, Session Management, Logging, Monitoring, and Enterprise Operations
 
 > **"The security of OAuth and OpenID Connect depends not only on strong authentication, but also on secure token handling, robust validation, continuous monitoring, and disciplined operational practices."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1539,7 +1539,7 @@ After completing this part, you will understand:
 
 ---
 
-# OAuth Threat Landscape
+## OAuth Threat Landscape
 
 OAuth implementations face many of the same risks as other authentication systems, along with threats specific to delegated authorization.
 
@@ -1573,7 +1573,7 @@ Most risks result from insecure implementation rather than weaknesses in the OAu
 
 ---
 
-# OAuth Attack Surface
+## OAuth Attack Surface
 
 ```
 User
@@ -1603,7 +1603,7 @@ Each component should implement independent security controls.
 
 ---
 
-# Token Theft
+## Token Theft
 
 Access Tokens represent delegated authorization.
 
@@ -1629,7 +1629,7 @@ Organizations should minimize token exposure through secure handling and short l
 
 ---
 
-# Token Replay
+## Token Replay
 
 A replay attack involves reusing a previously issued valid token.
 
@@ -1653,7 +1653,7 @@ Short-lived tokens, TLS, and proper validation help reduce replay risks.
 
 ---
 
-# Authorization Code Interception
+## Authorization Code Interception
 
 Authorization Codes should be exchanged securely.
 
@@ -1677,7 +1677,7 @@ PKCE significantly strengthens this process for public clients.
 
 ---
 
-# Why PKCE Matters
+## Why PKCE Matters
 
 PKCE (Proof Key for Code Exchange) adds an additional verification step during the Authorization Code Flow.
 
@@ -1709,7 +1709,7 @@ Without successful PKCE verification, the Authorization Code cannot be exchanged
 
 ---
 
-# Redirect URI Validation
+## Redirect URI Validation
 
 Redirect URIs determine where authorization responses are sent.
 
@@ -1733,7 +1733,7 @@ Authorization Servers should validate redirect URIs against pre-registered value
 
 ---
 
-# Scope Security
+## Scope Security
 
 Scopes define the permissions granted to a client.
 
@@ -1757,7 +1757,7 @@ Applications should request only the permissions they genuinely require.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 ```
 Client
@@ -1775,7 +1775,7 @@ Least privilege reduces the impact of compromised applications or tokens.
 
 ---
 
-# Client Authentication
+## Client Authentication
 
 Confidential clients authenticate themselves when interacting with the Authorization Server.
 
@@ -1795,7 +1795,7 @@ Strong client authentication improves trust between participating systems.
 
 ---
 
-# Secure Token Validation
+## Secure Token Validation
 
 Every Resource Server should validate incoming tokens before granting access.
 
@@ -1831,7 +1831,7 @@ Validation should occur before processing protected requests.
 
 ---
 
-# Common Validation Checks
+## Common Validation Checks
 
 | Validation | Purpose |
 |------------|----------|
@@ -1845,7 +1845,7 @@ Validation should occur before processing protected requests.
 
 ---
 
-# Token Lifetime Strategy
+## Token Lifetime Strategy
 
 ```
 Access Token
@@ -1871,7 +1871,7 @@ Short-lived Access Tokens reduce the impact of token compromise.
 
 ---
 
-# Refresh Token Security
+## Refresh Token Security
 
 Refresh Tokens require stronger protection than Access Tokens because they can be used to obtain new Access Tokens.
 
@@ -1895,7 +1895,7 @@ Refresh Token rotation further improves security.
 
 ---
 
-# Token Revocation
+## Token Revocation
 
 Organizations may revoke tokens before expiration.
 
@@ -1919,7 +1919,7 @@ Revocation is useful after credential compromise, account changes, or policy vio
 
 ---
 
-# OIDC Authentication Security
+## OIDC Authentication Security
 
 OpenID Connect introduces identity verification.
 
@@ -1947,7 +1947,7 @@ Applications should validate ID Tokens before trusting user identity information
 
 ---
 
-# ID Token Validation
+## ID Token Validation
 
 Applications typically verify:
 
@@ -1983,7 +1983,7 @@ Only successfully validated ID Tokens should be trusted.
 
 ---
 
-# Session Management
+## Session Management
 
 Authentication sessions require ongoing management.
 
@@ -2011,7 +2011,7 @@ Session security complements token security.
 
 ---
 
-# Logout Considerations
+## Logout Considerations
 
 Organizations should define secure logout processes.
 
@@ -2035,7 +2035,7 @@ Logout behavior depends on application architecture and organizational requireme
 
 ---
 
-# Logging
+## Logging
 
 OAuth and OIDC events should be logged for operational visibility.
 
@@ -2063,7 +2063,7 @@ Logs support auditing and incident investigations.
 
 ---
 
-# Events to Log
+## Events to Log
 
 | Event | Purpose |
 |--------|----------|
@@ -2078,7 +2078,7 @@ Sensitive values such as raw access tokens should generally **not** be recorded 
 
 ---
 
-# Monitoring
+## Monitoring
 
 Continuous monitoring helps detect suspicious authentication and authorization activity.
 
@@ -2106,7 +2106,7 @@ Monitoring improves both security and operational awareness.
 
 ---
 
-# OAuth Observability
+## OAuth Observability
 
 ```
 Observability
@@ -2126,7 +2126,7 @@ Observability enables teams to understand authentication behavior across distrib
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2141,7 +2141,7 @@ Observability enables teams to understand authentication behavior across distrib
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies authentication and authorization risks during system design.
 
@@ -2169,7 +2169,7 @@ This process helps reduce design-related vulnerabilities.
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 OAuth security should be incorporated throughout software development.
 
@@ -2205,7 +2205,7 @@ Security should be integrated throughout the lifecycle.
 
 ---
 
-# OAuth Security Testing
+## OAuth Security Testing
 
 Security testing verifies implemented controls.
 
@@ -2235,7 +2235,7 @@ Testing should confirm that authentication and authorization behave as expected.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 OAuth benefits from multiple security layers.
 
@@ -2279,7 +2279,7 @@ No single control should be relied upon exclusively.
 
 ---
 
-# Enterprise OAuth Architecture
+## Enterprise OAuth Architecture
 
 ```
 Internet
@@ -2329,7 +2329,7 @@ This layered architecture supports secure identity, delegated authorization, and
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization provides a patient portal secured using OpenID Connect.
 
@@ -2369,7 +2369,7 @@ The patient authenticates through the Identity Provider. The portal validates th
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2382,7 +2382,7 @@ The patient authenticates through the Identity Provider. The portal validates th
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an OAuth trust boundary diagram.
 2. Design a secure token validation workflow.
@@ -2394,7 +2394,7 @@ The patient authenticates through the Identity Provider. The portal validates th
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is token replay?
 2. Why are Access Tokens generally short-lived?
@@ -2409,7 +2409,7 @@ The patient authenticates through the Identity Provider. The portal validates th
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use Authorization Code Flow with PKCE for public clients.
 - Validate every Access Token before granting resource access.
@@ -2422,7 +2422,7 @@ The patient authenticates through the Identity Provider. The portal validates th
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting Access Tokens without validation.
 - Treating ID Tokens as API authorization credentials.
@@ -2433,7 +2433,7 @@ The patient authenticates through the Identity Provider. The portal validates th
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - OAuth security depends on secure token issuance, validation, storage, and lifecycle management.
 - PKCE strengthens the Authorization Code Flow by protecting authorization code exchanges.
@@ -2441,15 +2441,15 @@ The patient authenticates through the Identity Provider. The portal validates th
 - Logging, monitoring, and threat modeling improve operational security.
 - Defense in depth and least privilege are essential principles for secure OAuth and OIDC deployments.
 
-# 33-OAuth-and-OIDC.md
+## 33-OAuth-and-OIDC.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Compliance, Incident Response, OAuth Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Compliance, Incident Response, OAuth Security Maturity, and Chapter Summary
 
 > **"OAuth and OpenID Connect are not security products by themselves—they are identity frameworks whose security depends on proper architecture, implementation, governance, monitoring, and continuous operational improvement."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2466,7 +2466,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise OAuth Governance
+## Enterprise OAuth Governance
 
 Governance establishes organizational standards for implementing OAuth and OpenID Connect consistently across applications and services.
 
@@ -2506,7 +2506,7 @@ Governance ensures consistent authentication and authorization practices through
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 OAuth Governance
@@ -2536,7 +2536,7 @@ Strong governance minimizes inconsistent implementations and configuration drift
 
 ---
 
-# Client Registration
+## Client Registration
 
 Every OAuth client should be registered and managed through formal processes.
 
@@ -2564,7 +2564,7 @@ Client registrations should include ownership, business purpose, and lifecycle m
 
 ---
 
-# Scope Governance
+## Scope Governance
 
 Scopes should be standardized and reviewed regularly.
 
@@ -2592,7 +2592,7 @@ Well-designed scopes support least privilege and simplify authorization decision
 
 ---
 
-# Identity Federation
+## Identity Federation
 
 Large organizations frequently integrate multiple identity systems.
 
@@ -2620,7 +2620,7 @@ Federation enables users to authenticate once and securely access multiple trust
 
 ---
 
-# Single Sign-On (SSO)
+## Single Sign-On (SSO)
 
 Single Sign-On improves user experience while centralizing authentication.
 
@@ -2656,7 +2656,7 @@ Applications rely on the Identity Provider rather than maintaining separate auth
 
 ---
 
-# OAuth in Microservices
+## OAuth in Microservices
 
 Modern microservice environments commonly use OAuth for service authorization.
 
@@ -2688,7 +2688,7 @@ Each service validates tokens independently before processing requests.
 
 ---
 
-# API Gateway Integration
+## API Gateway Integration
 
 API Gateways commonly integrate with OAuth infrastructure.
 
@@ -2716,7 +2716,7 @@ This provides centralized enforcement while allowing backend services to perform
 
 ---
 
-# Zero Trust Identity
+## Zero Trust Identity
 
 Zero Trust assumes that no identity, device, or application should be trusted automatically.
 
@@ -2748,7 +2748,7 @@ Every request is evaluated independently.
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -2776,7 +2776,7 @@ Identity becomes the primary security boundary.
 
 ---
 
-# Adaptive Authentication
+## Adaptive Authentication
 
 Organizations may adjust authentication requirements based on contextual risk.
 
@@ -2808,7 +2808,7 @@ Additional verification may be required for higher-risk scenarios.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 OAuth and OIDC commonly integrate with Multi-Factor Authentication.
 
@@ -2836,7 +2836,7 @@ MFA significantly strengthens identity verification.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 OAuth security should be incorporated into every stage of software delivery.
 
@@ -2872,7 +2872,7 @@ Security becomes part of continuous development rather than a final verification
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2914,7 +2914,7 @@ Identity-related configuration should be validated alongside application code.
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 OAuth deployments often depend on sensitive credentials.
 
@@ -2938,7 +2938,7 @@ Secrets should never be embedded directly into source code or configuration file
 
 ---
 
-# Change Management
+## Change Management
 
 Identity infrastructure changes should follow formal review processes.
 
@@ -2970,7 +2970,7 @@ Controlled changes reduce operational risk.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many regulatory and industry frameworks require secure identity management.
 
@@ -2998,7 +2998,7 @@ Compliance should support, not replace, comprehensive security practices.
 
 ---
 
-# Identity Lifecycle Management
+## Identity Lifecycle Management
 
 User identities should be managed throughout their lifecycle.
 
@@ -3030,7 +3030,7 @@ Timely provisioning and deprovisioning reduce unnecessary access.
 
 ---
 
-# OAuth Security Metrics
+## OAuth Security Metrics
 
 Organizations should measure authentication and authorization effectiveness.
 
@@ -3047,7 +3047,7 @@ Organizations should measure authentication and authorization effectiveness.
 
 ---
 
-# Operational Dashboard
+## Operational Dashboard
 
 ```
 Dashboard
@@ -3075,7 +3075,7 @@ Operational dashboards provide visibility for engineering, security, and identit
 
 ---
 
-# Security Operations
+## Security Operations
 
 Security Operations Centers (SOCs) continuously monitor authentication and authorization activity.
 
@@ -3107,7 +3107,7 @@ Timely monitoring supports rapid detection and response.
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should prepare procedures for identity-related security incidents.
 
@@ -3143,7 +3143,7 @@ Identity incidents often require rapid token revocation and credential review.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -3173,7 +3173,7 @@ Lessons learned should feed back into governance and engineering practices.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 OAuth security should evolve continuously.
 
@@ -3209,7 +3209,7 @@ Continuous improvement increases long-term resilience.
 
 ---
 
-# OAuth Security Maturity Model
+## OAuth Security Maturity Model
 
 ```
 Level 1
@@ -3245,7 +3245,7 @@ Organizations typically progress through increasing levels of identity maturity.
 
 ---
 
-# Enterprise OAuth Architecture
+## Enterprise OAuth Architecture
 
 ```
                     Internet
@@ -3319,7 +3319,7 @@ This architecture separates identity, authorization, business logic, and operati
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution provides employees with access to banking platforms, customer relationship systems, and internal administration portals.
 
@@ -3363,7 +3363,7 @@ The Identity Provider authenticates users, OAuth provides delegated authorizatio
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ OAuth 2.0 Implemented
@@ -3393,7 +3393,7 @@ The Identity Provider authenticates users, OAuth provides delegated authorizatio
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -3406,9 +3406,9 @@ The Identity Provider authenticates users, OAuth provides delegated authorizatio
 
 ---
 
-# OAuth & OIDC Quick Revision
+## OAuth & OIDC Quick Revision
 
-## Authentication Flow
+### Authentication Flow
 
 ```
 User
@@ -3428,7 +3428,7 @@ ID Token
 
 ---
 
-## Authorization Flow
+### Authorization Flow
 
 ```
 Application
@@ -3448,7 +3448,7 @@ Resource Server
 
 ---
 
-## Secure Token Validation
+### Secure Token Validation
 
 ```
 Token
@@ -3480,7 +3480,7 @@ Access Decision
 
 ---
 
-## Identity Lifecycle
+### Identity Lifecycle
 
 ```
 Provision
@@ -3508,7 +3508,7 @@ Deprovision
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise OAuth architecture using an API Gateway, Identity Provider, Authorization Server, and Resource Servers.
 2. Create a governance workflow for registering new OAuth clients.
@@ -3520,7 +3520,7 @@ Deprovision
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between OAuth 2.0 and OpenID Connect?
 2. Why should organizations use Authorization Code Flow with PKCE?
@@ -3535,7 +3535,7 @@ Deprovision
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use OpenID Connect for authentication and OAuth 2.0 for delegated authorization.
 - Prefer Authorization Code Flow with PKCE for modern applications.
@@ -3548,7 +3548,7 @@ Deprovision
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming OAuth alone authenticates users.
 - Using ID Tokens to authorize API access.
@@ -3560,7 +3560,7 @@ Deprovision
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

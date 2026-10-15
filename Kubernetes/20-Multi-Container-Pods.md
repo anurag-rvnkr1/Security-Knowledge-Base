@@ -23,7 +23,7 @@ Multi-container Pods are commonly implemented using design patterns such as:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -40,7 +40,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Multi-Container Pods?
+## Why Multi-Container Pods?
 
 Imagine an application.
 
@@ -83,7 +83,7 @@ Problems:
 
 ---
 
-# Better Solution
+## Better Solution
 
 Separate responsibilities.
 
@@ -103,7 +103,7 @@ Each container has a single responsibility.
 
 ---
 
-# What is a Multi-Container Pod?
+## What is a Multi-Container Pod?
 
 A Pod can contain multiple containers.
 
@@ -125,7 +125,7 @@ Containers cooperate to deliver one logical application.
 
 ---
 
-# Pod Architecture
+## Pod Architecture
 
 ```
                  Pod
@@ -149,7 +149,7 @@ Containers cooperate to deliver one logical application.
 
 ---
 
-# Shared Network
+## Shared Network
 
 Every container shares:
 
@@ -175,7 +175,7 @@ Communication is fast because it never leaves the Pod.
 
 ---
 
-# Shared Storage
+## Shared Storage
 
 Containers can mount the same volume.
 
@@ -211,7 +211,7 @@ ElasticSearch
 
 ---
 
-# Pod Lifecycle
+## Pod Lifecycle
 
 Containers are managed together.
 
@@ -237,7 +237,7 @@ Delete Pod
 
 ---
 
-# Container Independence
+## Container Independence
 
 Although containers share the Pod:
 
@@ -249,7 +249,7 @@ Although containers share the Pod:
 
 ---
 
-# Communication
+## Communication
 
 Containers communicate using:
 
@@ -275,7 +275,7 @@ No Service is required.
 
 ---
 
-# Shared Volumes
+## Shared Volumes
 
 Example:
 
@@ -299,7 +299,7 @@ Files written by one container are immediately available to the other.
 
 ---
 
-# Common Design Patterns
+## Common Design Patterns
 
 ```
 Multi-Container Pods
@@ -317,7 +317,7 @@ These patterns solve different architectural problems.
 
 ---
 
-# 1. Sidecar Pattern
+## 1. Sidecar Pattern
 
 Purpose:
 
@@ -353,7 +353,7 @@ Supporting Functionality
 
 ---
 
-# 2. Ambassador Pattern
+## 2. Ambassador Pattern
 
 Purpose:
 
@@ -389,7 +389,7 @@ Benefits:
 
 ---
 
-# 3. Adapter Pattern
+## 3. Adapter Pattern
 
 Purpose:
 
@@ -423,7 +423,7 @@ The Adapter transforms data without modifying the application.
 
 ---
 
-# Multi-Container Workflow
+## Multi-Container Workflow
 
 ```
 Pod Created
@@ -447,7 +447,7 @@ Application Runs
 
 ---
 
-# YAML Example
+## YAML Example
 
 ```yaml
 apiVersion: v1
@@ -477,7 +477,7 @@ One Pod.
 
 ---
 
-# Container Communication
+## Container Communication
 
 Application:
 
@@ -501,7 +501,7 @@ Every container accesses services through the shared network namespace.
 
 ---
 
-# Resource Allocation
+## Resource Allocation
 
 Each container has independent:
 
@@ -532,7 +532,7 @@ The scheduler considers the combined resource requests of all containers in the 
 
 ---
 
-# Restart Behavior
+## Restart Behavior
 
 If:
 
@@ -550,7 +550,7 @@ The Pod itself is not automatically recreated solely because one container resta
 
 ---
 
-# Logging
+## Logging
 
 View application logs:
 
@@ -570,7 +570,7 @@ Each container has separate log streams.
 
 ---
 
-# Viewing Containers
+## Viewing Containers
 
 ```bash
 kubectl describe pod multi-container
@@ -590,9 +590,9 @@ logger
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
-## Logging
+### Logging
 
 ```
 Application
@@ -608,7 +608,7 @@ ElasticSearch
 
 ---
 
-## Monitoring
+### Monitoring
 
 ```
 Application
@@ -624,7 +624,7 @@ Prometheus
 
 ---
 
-## Security
+### Security
 
 ```
 Application
@@ -636,7 +636,7 @@ Security Agent
 
 ---
 
-## Reverse Proxy
+### Reverse Proxy
 
 ```
 NGINX
@@ -648,7 +648,7 @@ Application
 
 ---
 
-## Service Mesh
+### Service Mesh
 
 ```
 Envoy
@@ -660,7 +660,7 @@ Application
 
 ---
 
-## File Synchronization
+### File Synchronization
 
 ```
 Application
@@ -676,7 +676,7 @@ Sync Container
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -716,7 +716,7 @@ kubectl delete pod multi-container
 
 ---
 
-# Multi-Container Pod Architecture Summary
+## Multi-Container Pod Architecture Summary
 
 ```
 Pod
@@ -740,33 +740,33 @@ Single Application
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Follow the Single Responsibility Principle
+#### 1. Follow the Single Responsibility Principle
 
 Each container should perform one well-defined task.
 
 ---
 
-### 2. Use Shared Volumes Carefully
+#### 2. Use Shared Volumes Carefully
 
 Share only the data required by cooperating containers.
 
 ---
 
-### 3. Keep Containers Independent
+#### 3. Keep Containers Independent
 
 Separate images and dependencies improve maintainability.
 
 ---
 
-### 4. Monitor Resource Consumption
+#### 4. Monitor Resource Consumption
 
 Remember that all containers share the Pod's node resources.
 
 ---
 
-### 5. Choose the Correct Pattern
+#### 5. Choose the Correct Pattern
 
 - **Sidecar** → Add supporting functionality.
 - **Ambassador** → Proxy external communication.
@@ -774,9 +774,9 @@ Remember that all containers share the Pod's node resources.
 
 ---
 
-# How Multi-Container Pods Work Internally
+## How Multi-Container Pods Work Internally
 
-## Overview
+### Overview
 
 A Multi-Container Pod is not a special Kubernetes object.
 
@@ -794,7 +794,7 @@ Although the containers are independent processes, Kubernetes groups them into a
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                    Kubernetes Pod
@@ -820,7 +820,7 @@ The Pod acts as the boundary for all containers.
 
 ---
 
-# Complete Workflow
+## Complete Workflow
 
 ```
 Developer
@@ -872,7 +872,7 @@ Pod Running
 
 ---
 
-# Step 1 – Pod Creation
+## Step 1 – Pod Creation
 
 Example:
 
@@ -890,7 +890,7 @@ The Pod specification lists multiple containers under the same `containers` sect
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -913,7 +913,7 @@ Pod Stored
 
 ---
 
-# Step 3 – Scheduler
+## Step 3 – Scheduler
 
 The Scheduler selects **one Node** for the **entire Pod**.
 
@@ -943,7 +943,7 @@ Containers in the same Pod can never be scheduled onto different Nodes.
 
 ---
 
-# Step 4 – Pod Sandbox
+## Step 4 – Pod Sandbox
 
 Before any container starts, the container runtime creates a **Pod Sandbox**.
 
@@ -970,7 +970,7 @@ The sandbox is sometimes referred to as the **pause container**, which holds the
 
 ---
 
-# Step 5 – Network Namespace
+## Step 5 – Network Namespace
 
 Kubernetes creates one network namespace.
 
@@ -992,7 +992,7 @@ Every container shares this IP.
 
 ---
 
-# Shared Network
+## Shared Network
 
 Application:
 
@@ -1016,7 +1016,7 @@ Communication never leaves the Pod.
 
 ---
 
-# Loopback Communication
+## Loopback Communication
 
 ```
 Application
@@ -1034,7 +1034,7 @@ Because all containers share the same network namespace, they communicate throug
 
 ---
 
-# Step 6 – Shared Volumes
+## Step 6 – Shared Volumes
 
 Suppose:
 
@@ -1064,7 +1064,7 @@ Adapter
 
 ---
 
-# Shared Storage Workflow
+## Shared Storage Workflow
 
 ```
 Application
@@ -1090,7 +1090,7 @@ The data becomes immediately available to every container mounting that volume.
 
 ---
 
-# Step 7 – Container Startup
+## Step 7 – Container Startup
 
 After:
 
@@ -1128,7 +1128,7 @@ Containers start independently as part of the Pod lifecycle.
 
 ---
 
-# Resource Allocation
+## Resource Allocation
 
 Each container defines:
 
@@ -1166,7 +1166,7 @@ The scheduler evaluates the **combined resource requests** of all containers whe
 
 ---
 
-# Process Isolation
+## Process Isolation
 
 Containers have:
 
@@ -1182,7 +1182,7 @@ Shared resources include:
 
 ---
 
-# Logging
+## Logging
 
 Each container has its own log stream.
 
@@ -1208,7 +1208,7 @@ Logs are independent.
 
 ---
 
-# Restart Behavior
+## Restart Behavior
 
 Suppose:
 
@@ -1226,7 +1226,7 @@ Other containers may continue running if they are unaffected.
 
 ---
 
-# Pod Failure
+## Pod Failure
 
 Suppose:
 
@@ -1248,7 +1248,7 @@ All containers move together because the Pod is the scheduling unit.
 
 ---
 
-# Shared Lifecycle
+## Shared Lifecycle
 
 ```
 Create Pod
@@ -1270,7 +1270,7 @@ Individual containers cannot outlive the Pod.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 API Server
@@ -1302,7 +1302,7 @@ Containers
 
 ---
 
-# Design Pattern Overview
+## Design Pattern Overview
 
 ```
 Multi-Container Pods
@@ -1320,7 +1320,7 @@ These are architectural patterns—not Kubernetes resource types.
 
 ---
 
-# Sidecar Pattern
+## Sidecar Pattern
 
 Purpose:
 
@@ -1341,7 +1341,7 @@ Examples:
 
 ---
 
-# Ambassador Pattern
+## Ambassador Pattern
 
 Purpose:
 
@@ -1361,7 +1361,7 @@ The application communicates only with the Ambassador.
 
 ---
 
-# Adapter Pattern
+## Adapter Pattern
 
 Purpose:
 
@@ -1381,7 +1381,7 @@ Useful for monitoring and logging integrations.
 
 ---
 
-# Hands-on Lab 1 – Create Multi-Container Pod
+## Hands-on Lab 1 – Create Multi-Container Pod
 
 ```yaml
 apiVersion: v1
@@ -1421,7 +1421,7 @@ kubectl apply -f pod.yaml
 
 ---
 
-# Hands-on Lab 2 – Inspect Containers
+## Hands-on Lab 2 – Inspect Containers
 
 ```bash
 kubectl describe pod multi-demo
@@ -1431,7 +1431,7 @@ Review the list of containers and their status.
 
 ---
 
-# Hands-on Lab 3 – Shared Volume
+## Hands-on Lab 3 – Shared Volume
 
 Create:
 
@@ -1455,7 +1455,7 @@ Verify that both containers access the same file.
 
 ---
 
-# Hands-on Lab 4 – Localhost Communication
+## Hands-on Lab 4 – Localhost Communication
 
 Application:
 
@@ -1473,7 +1473,7 @@ Observe successful communication through the shared network namespace.
 
 ---
 
-# Hands-on Lab 5 – Independent Logs
+## Hands-on Lab 5 – Independent Logs
 
 Application:
 
@@ -1491,9 +1491,9 @@ Observe that each container has its own log stream.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Treating Containers as Separate Pods
+### 1. Treating Containers as Separate Pods
 
 Incorrect:
 
@@ -1517,7 +1517,7 @@ Same IP
 
 ---
 
-## 2. Mixing Unrelated Applications
+### 2. Mixing Unrelated Applications
 
 Avoid placing unrelated services inside one Pod.
 
@@ -1525,7 +1525,7 @@ A Pod should represent **one logical application**.
 
 ---
 
-## 3. Ignoring Resource Requests
+### 3. Ignoring Resource Requests
 
 All containers compete for the Node's CPU and memory.
 
@@ -1533,7 +1533,7 @@ Define appropriate resource requests and limits.
 
 ---
 
-## 4. Forgetting Shared Volumes
+### 4. Forgetting Shared Volumes
 
 Without a shared volume:
 
@@ -1555,7 +1555,7 @@ Cannot Read
 
 ---
 
-## 5. Using Multi-Container Pods Unnecessarily
+### 5. Using Multi-Container Pods Unnecessarily
 
 If containers do not need:
 
@@ -1567,9 +1567,9 @@ they may be better deployed as separate Pods.
 
 ---
 
-# Multi-Container Pods Quick Revision
+## Multi-Container Pods Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 Pod
@@ -1593,7 +1593,7 @@ Multiple Containers
 
 ---
 
-## Shared Resources
+### Shared Resources
 
 ```
 Network
@@ -1607,7 +1607,7 @@ IPC (Optional)
 
 ---
 
-## Not Shared
+### Not Shared
 
 ```
 Processes
@@ -1619,7 +1619,7 @@ Environment Variables
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Pods:
 
@@ -1657,9 +1657,9 @@ kubectl delete pod multi-demo
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a Multi-Container Pod?
 - Why would you place multiple containers in one Pod?
@@ -1667,7 +1667,7 @@ kubectl delete pod multi-demo
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - How do containers communicate inside the same Pod?
 - What is the Pod Sandbox (pause container)?
@@ -1675,7 +1675,7 @@ kubectl delete pod multi-demo
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain how Kubernetes creates and manages a Multi-Container Pod internally.
 - Which namespaces are shared among containers in a Pod?
@@ -1685,9 +1685,9 @@ kubectl delete pod multi-demo
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Pods
 - Multi-Container Pods
@@ -1698,7 +1698,7 @@ kubectl delete pod multi-demo
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Best Practices
 - Pod Design Patterns
@@ -1706,7 +1706,7 @@ kubectl delete pod multi-demo
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Production Best Practices
@@ -1715,7 +1715,7 @@ kubectl delete pod multi-demo
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Build a Pod with three containers (application, logger, metrics).
 2. Share files using an `emptyDir` volume.
@@ -1727,7 +1727,7 @@ kubectl delete pod multi-demo
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Developer

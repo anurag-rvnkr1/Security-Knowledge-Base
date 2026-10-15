@@ -50,7 +50,7 @@ Windows Endpoint
 
 ---
 
-# Why Windows Threat Hunting Matters
+## Why Windows Threat Hunting Matters
 
 A compromised Windows workstation may become the starting point for a much larger attack.
 
@@ -88,7 +88,7 @@ This makes Windows telemetry extremely valuable for reconstructing attacker beha
 
 ---
 
-# Windows Threat Hunting Architecture
+## Windows Threat Hunting Architecture
 
 A typical enterprise Windows hunting environment looks like:
 
@@ -120,7 +120,7 @@ A typical enterprise Windows hunting environment looks like:
 
 ---
 
-# Windows Telemetry
+## Windows Telemetry
 
 Threat hunting depends on telemetry.
 
@@ -143,7 +143,7 @@ Important Windows telemetry includes:
 
 ---
 
-# Windows Event Logging
+## Windows Event Logging
 
 Windows Event Logs provide structured information about system activity.
 
@@ -170,7 +170,7 @@ The exact channels available depend on the operating system and logging configur
 
 ---
 
-# Windows Event Viewer
+## Windows Event Viewer
 
 Windows Event Viewer can be used to inspect local logs.
 
@@ -195,7 +195,7 @@ For operational hunting, centralized collection is generally more scalable than 
 
 ---
 
-# Important Windows Security Events
+## Important Windows Security Events
 
 Several Windows Security Event IDs are particularly useful to hunters.
 
@@ -222,7 +222,7 @@ Event availability and field content depend on Windows auditing configuration.
 
 ---
 
-# Event ID 4624 — Successful Logon
+## Event ID 4624 — Successful Logon
 
 Event ID **4624** represents a successful account logon.
 
@@ -238,7 +238,7 @@ Useful fields may include:
 
 ---
 
-# Windows Logon Types
+## Windows Logon Types
 
 Logon type provides important context.
 
@@ -274,7 +274,7 @@ can be highly informative.
 
 ---
 
-# Example: RDP Hunting
+## Example: RDP Hunting
 
 RDP commonly produces **Logon Type 10** events.
 
@@ -307,7 +307,7 @@ Context matters.
 
 ---
 
-# Event ID 4625 — Failed Logon
+## Event ID 4625 — Failed Logon
 
 Event ID **4625** records a failed logon.
 
@@ -333,7 +333,7 @@ Frequency
 
 ---
 
-# Password Spraying Hunt
+## Password Spraying Hunt
 
 A password spray often targets many accounts with relatively few attempts per account.
 
@@ -365,7 +365,7 @@ A hunter should look for patterns rather than simply counting failed logons.
 
 ---
 
-# Event ID 4672 — Special Privileges
+## Event ID 4672 — Special Privileges
 
 Event ID **4672** can indicate that special privileges were assigned to a new logon.
 
@@ -385,7 +385,7 @@ The combination may deserve investigation.
 
 ---
 
-# Event ID 4688 — Process Creation
+## Event ID 4688 — Process Creation
 
 Process creation is one of the most valuable Windows hunting events.
 
@@ -417,7 +417,7 @@ This allows hunters to reconstruct process execution chains.
 
 ---
 
-# Process Trees
+## Process Trees
 
 A process tree shows parent-child relationships.
 
@@ -441,7 +441,7 @@ This is why **process context** is more useful than simply searching for filenam
 
 ---
 
-# Parent-Child Process Analysis
+## Parent-Child Process Analysis
 
 Consider:
 
@@ -465,7 +465,7 @@ Threat hunting therefore requires understanding normal process relationships.
 
 ---
 
-# Living Off the Land
+## Living Off the Land
 
 Attackers frequently use legitimate Windows tools rather than dropping custom malware.
 
@@ -510,7 +510,7 @@ Network
 
 ---
 
-# PowerShell Threat Hunting
+## PowerShell Threat Hunting
 
 PowerShell is extremely important in Windows threat hunting.
 
@@ -534,7 +534,7 @@ Useful telemetry may include:
 
 ---
 
-# PowerShell Event Logging
+## PowerShell Event Logging
 
 Relevant PowerShell telemetry can include:
 
@@ -552,7 +552,7 @@ Security teams should configure logging according to their organization's requir
 
 ---
 
-# Suspicious PowerShell Indicators
+## Suspicious PowerShell Indicators
 
 Potential hunting signals include:
 
@@ -581,7 +581,7 @@ None of these alone proves malicious activity.
 
 ---
 
-# Example PowerShell Process
+## Example PowerShell Process
 
 ```text
 WINWORD.EXE
@@ -612,7 +612,7 @@ This sequence can provide stronger evidence than any single event.
 
 ---
 
-# Sysmon
+## Sysmon
 
 **Sysmon**, part of Microsoft's Sysinternals suite, provides detailed system telemetry useful for security monitoring and hunting.
 
@@ -631,7 +631,7 @@ Sysmon configuration should be designed carefully to balance visibility, perform
 
 ---
 
-# Useful Sysmon Events
+## Useful Sysmon Events
 
 Commonly useful event IDs include:
 
@@ -653,7 +653,7 @@ Sysmon event availability depends on the Sysmon version and configuration.
 
 ---
 
-# Sysmon Process Hunting
+## Sysmon Process Hunting
 
 A useful process investigation includes:
 
@@ -685,7 +685,7 @@ This gives the hunter significantly more context.
 
 ---
 
-# Process Injection
+## Process Injection
 
 Process injection involves manipulating another process to execute code or alter behavior.
 
@@ -711,7 +711,7 @@ This behavior can be mapped to relevant MITRE ATT&CK techniques.
 
 ---
 
-# Registry Hunting
+## Registry Hunting
 
 The Windows Registry contains configuration and operational information.
 
@@ -750,7 +750,7 @@ Is the executable legitimate?
 
 ---
 
-# Scheduled Task Hunting
+## Scheduled Task Hunting
 
 Scheduled tasks can be used legitimately for automation and administration.
 
@@ -779,7 +779,7 @@ Suspicious Binary
 
 ---
 
-# Service Creation Hunting
+## Service Creation Hunting
 
 Windows services are another persistence and execution mechanism.
 
@@ -816,7 +816,7 @@ Look for:
 
 ---
 
-# WMI Threat Hunting
+## WMI Threat Hunting
 
 **Windows Management Instrumentation (WMI)** is widely used for legitimate administration.
 
@@ -850,7 +850,7 @@ WMI activity should be evaluated against normal administrative behavior.
 
 ---
 
-# Windows Authentication Hunting
+## Windows Authentication Hunting
 
 Authentication telemetry is essential.
 
@@ -871,7 +871,7 @@ Correlate identity activity with endpoint behavior.
 
 ---
 
-# Authentication Correlation
+## Authentication Correlation
 
 Example:
 
@@ -891,7 +891,7 @@ The sequence provides more context than an isolated login.
 
 ---
 
-# Active Directory Hunting
+## Active Directory Hunting
 
 Active Directory is a major enterprise identity system.
 
@@ -909,7 +909,7 @@ Threat hunters should monitor:
 
 ---
 
-# Privileged Group Hunting
+## Privileged Group Hunting
 
 Monitor changes involving sensitive groups such as:
 
@@ -934,7 +934,7 @@ This may warrant investigation.
 
 ---
 
-# Account Creation Hunting
+## Account Creation Hunting
 
 Event ID **4720** represents a user account creation event.
 
@@ -956,7 +956,7 @@ Always validate against business context.
 
 ---
 
-# Credential Access Hunting
+## Credential Access Hunting
 
 Credential access may involve:
 
@@ -984,7 +984,7 @@ EDR
 
 ---
 
-# LSASS Monitoring
+## LSASS Monitoring
 
 The Local Security Authority Subsystem Service (**LSASS**) is a sensitive Windows process involved in authentication and security policy.
 
@@ -1001,7 +1001,7 @@ A suspicious process accessing LSASS should be investigated carefully.
 
 ---
 
-# Discovery Hunting
+## Discovery Hunting
 
 After obtaining access, attackers often perform discovery.
 
@@ -1039,7 +1039,7 @@ The surrounding context matters.
 
 ---
 
-# Discovery Correlation
+## Discovery Correlation
 
 A stronger signal can emerge from sequence:
 
@@ -1061,7 +1061,7 @@ Rapid execution of multiple discovery commands by an unusual account may warrant
 
 ---
 
-# Windows Network Hunting
+## Windows Network Hunting
 
 Endpoint network telemetry can reveal:
 
@@ -1091,7 +1091,7 @@ Correlating process and network telemetry is particularly valuable.
 
 ---
 
-# Process-to-Network Correlation
+## Process-to-Network Correlation
 
 Suppose:
 
@@ -1119,7 +1119,7 @@ Context determines the risk.
 
 ---
 
-# Windows Persistence Hunting
+## Windows Persistence Hunting
 
 Common persistence mechanisms include:
 
@@ -1147,7 +1147,7 @@ Suspicious Binary
 
 ---
 
-# Windows Defense Evasion
+## Windows Defense Evasion
 
 Attackers may attempt to reduce visibility.
 
@@ -1174,7 +1174,7 @@ A sudden reduction in telemetry itself can be a hunting signal.
 
 ---
 
-# Event Log Clearing
+## Event Log Clearing
 
 A suspicious event log clearing operation can be investigated through Windows Security logging.
 
@@ -1200,7 +1200,7 @@ The surrounding timeline is often more valuable than the clearing event alone.
 
 ---
 
-# Windows Timeline Reconstruction
+## Windows Timeline Reconstruction
 
 One of the most important threat-hunting skills is building timelines.
 
@@ -1243,7 +1243,7 @@ Potential Attack Chain
 
 ---
 
-# Process Investigation Methodology
+## Process Investigation Methodology
 
 For a suspicious process:
 
@@ -1271,13 +1271,13 @@ For a suspicious process:
 
 ---
 
-# Windows Hunt Hypothesis
+## Windows Hunt Hypothesis
 
-## Hypothesis
+### Hypothesis
 
 > An attacker who gains access to a Windows endpoint may use PowerShell to execute commands and then perform discovery before attempting lateral movement.
 
-### ATT&CK Context
+#### ATT&CK Context
 
 Potential techniques may include:
 
@@ -1295,7 +1295,7 @@ Network Service Scanning
 Remote Services
 ```
 
-### Required Telemetry
+#### Required Telemetry
 
 ```text
 Windows Security Logs
@@ -1309,7 +1309,7 @@ Network Logs
 
 ---
 
-# Hunt Workflow
+## Hunt Workflow
 
 ```text
 PowerShell Events
@@ -1335,7 +1335,7 @@ Build Timeline
 
 ---
 
-# Example Hunting Logic
+## Example Hunting Logic
 
 Conceptually:
 
@@ -1365,7 +1365,7 @@ The exact implementation depends on the SIEM, EDR, logging schema, and environme
 
 ---
 
-# Windows Hunt Data Model
+## Windows Hunt Data Model
 
 A useful normalized event model:
 
@@ -1391,7 +1391,7 @@ Normalization makes cross-source correlation easier.
 
 ---
 
-# Windows Threat Hunting with SIEM
+## Windows Threat Hunting with SIEM
 
 A SIEM can correlate Windows telemetry.
 
@@ -1417,7 +1417,7 @@ Threat Hunt
 
 ---
 
-# Generic Hunting Query
+## Generic Hunting Query
 
 A conceptual query:
 
@@ -1438,7 +1438,7 @@ The actual syntax varies by platform.
 
 ---
 
-# Example: Suspicious Parent Process
+## Example: Suspicious Parent Process
 
 Conceptual query:
 
@@ -1453,7 +1453,7 @@ This illustrates the logic rather than prescribing a universal production rule.
 
 ---
 
-# Example: Failed Authentication
+## Example: Failed Authentication
 
 Conceptual query:
 
@@ -1476,7 +1476,7 @@ Further investigation is required.
 
 ---
 
-# Windows Threat Hunting With EDR
+## Windows Threat Hunting With EDR
 
 EDR platforms provide rich endpoint telemetry.
 
@@ -1504,51 +1504,51 @@ EDR is particularly useful for endpoint behavior that traditional Windows logs m
 
 ---
 
-# Endpoint Investigation Questions
+## Endpoint Investigation Questions
 
 For every suspicious Windows event, ask:
 
-### Identity
+#### Identity
 
 - Which user?
 - Is the user privileged?
 - Is the account expected?
 
-### Process
+#### Process
 
 - Which process?
 - Which parent?
 - Which child processes?
 - What command line?
 
-### File
+#### File
 
 - Where is the executable?
 - Is the path expected?
 - Is the file signed?
 - Is the hash known?
 
-### Network
+#### Network
 
 - What destination?
 - Which port?
 - Is the destination expected?
 - Was DNS involved?
 
-### Persistence
+#### Persistence
 
 - Was a task created?
 - Was a service installed?
 - Was the registry modified?
 
-### Timeline
+#### Timeline
 
 - What happened before?
 - What happened afterward?
 
 ---
 
-# Common Windows Hunting Misconfigurations
+## Common Windows Hunting Misconfigurations
 
 Threat hunting becomes difficult when telemetry is incomplete.
 
@@ -1568,7 +1568,7 @@ Common issues include:
 
 ---
 
-# Telemetry Gap Example
+## Telemetry Gap Example
 
 Suppose the hunter wants to investigate:
 
@@ -1602,7 +1602,7 @@ Therefore:
 
 ---
 
-# Windows Hunting Best Practices
+## Windows Hunting Best Practices
 
 - Centralize security logs.
 - Enable appropriate auditing.
@@ -1623,13 +1623,13 @@ Therefore:
 
 ---
 
-# Practical Lab 1 — Windows Authentication Hunting
+## Practical Lab 1 — Windows Authentication Hunting
 
-## Scenario
+### Scenario
 
 An organization suspects password spraying against employee accounts.
 
-### Data
+#### Data
 
 ```text
 Windows Security Events
@@ -1637,11 +1637,11 @@ VPN Logs
 Active Directory
 ```
 
-### Objective
+#### Objective
 
 Identify suspicious authentication patterns.
 
-### Investigate
+#### Investigate
 
 ```text
 4625
@@ -1655,7 +1655,7 @@ Failure Frequency
 Successful Logons
 ```
 
-### Questions
+#### Questions
 
 1. How many accounts were targeted?
 2. Did one source target multiple users?
@@ -1665,13 +1665,13 @@ Successful Logons
 
 ---
 
-# Practical Lab 2 — PowerShell Hunting
+## Practical Lab 2 — PowerShell Hunting
 
-## Scenario
+### Scenario
 
 A workstation may have been compromised.
 
-### Data
+#### Data
 
 ```text
 4688
@@ -1681,11 +1681,11 @@ EDR
 DNS
 ```
 
-### Hypothesis
+#### Hypothesis
 
 > An attacker may have used PowerShell to execute commands and establish external communication.
 
-### Investigate
+#### Investigate
 
 ```text
 PowerShell
@@ -1703,7 +1703,7 @@ DNS
 Child Processes
 ```
 
-### Deliverable
+#### Deliverable
 
 Produce:
 
@@ -1717,13 +1717,13 @@ Detection Recommendation
 
 ---
 
-# Practical Lab 3 — Persistence Hunting
+## Practical Lab 3 — Persistence Hunting
 
-## Scenario
+### Scenario
 
 A compromised endpoint may contain attacker persistence.
 
-### Investigate
+#### Investigate
 
 ```text
 Registry
@@ -1734,7 +1734,7 @@ Startup Locations
 Accounts
 ```
 
-### Hunt
+#### Hunt
 
 Look for:
 
@@ -1750,13 +1750,13 @@ Suspicious Path
 
 ---
 
-# Practical Lab 4 — Lateral Movement Hunting
+## Practical Lab 4 — Lateral Movement Hunting
 
-## Scenario
+### Scenario
 
 An employee workstation may have been used to access other systems.
 
-### Data
+#### Data
 
 ```text
 Authentication Logs
@@ -1765,7 +1765,7 @@ Active Directory
 Network Logs
 ```
 
-### Investigation
+#### Investigation
 
 ```text
 Source Host
@@ -1781,13 +1781,13 @@ Process
 Network
 ```
 
-### Goal
+#### Goal
 
 Determine whether the activity represents normal administration or possible lateral movement.
 
 ---
 
-# Practical Lab 5 — Full Windows Attack Timeline
+## Practical Lab 5 — Full Windows Attack Timeline
 
 Build a timeline from:
 
@@ -1819,7 +1819,7 @@ Document:
 
 ---
 
-# Windows Hunt Report Template
+## Windows Hunt Report Template
 
 ```markdown
 # Windows Threat Hunt Report
@@ -1875,7 +1875,7 @@ Document:
 
 ---
 
-# MITRE ATT&CK Mapping
+## MITRE ATT&CK Mapping
 
 Windows threat hunting commonly intersects with techniques such as:
 
@@ -1919,9 +1919,9 @@ The exact ATT&CK technique and sub-technique should always be verified against t
 
 ---
 
-# Windows Hunting Checklist
+## Windows Hunting Checklist
 
-## Telemetry
+### Telemetry
 
 ```text
 [ ] Security Logs
@@ -1934,7 +1934,7 @@ The exact ATT&CK technique and sub-technique should always be verified against t
 [ ] Network
 ```
 
-## Process
+### Process
 
 ```text
 [ ] Process
@@ -1946,7 +1946,7 @@ The exact ATT&CK technique and sub-technique should always be verified against t
 [ ] Path
 ```
 
-## Identity
+### Identity
 
 ```text
 [ ] Account
@@ -1957,7 +1957,7 @@ The exact ATT&CK technique and sub-technique should always be verified against t
 [ ] Authentication
 ```
 
-## Persistence
+### Persistence
 
 ```text
 [ ] Services
@@ -1968,7 +1968,7 @@ The exact ATT&CK technique and sub-technique should always be verified against t
 [ ] Accounts
 ```
 
-## Network
+### Network
 
 ```text
 [ ] DNS
@@ -1978,7 +1978,7 @@ The exact ATT&CK technique and sub-technique should always be verified against t
 [ ] Frequency
 ```
 
-## Investigation
+### Investigation
 
 ```text
 [ ] Timeline
@@ -1991,9 +1991,9 @@ The exact ATT&CK technique and sub-technique should always be verified against t
 
 ---
 
-# Common Windows Hunting Mistakes
+## Common Windows Hunting Mistakes
 
-## Searching Only for Malware
+### Searching Only for Malware
 
 Attackers can use legitimate tools.
 
@@ -2009,7 +2009,7 @@ Correlation
 
 ---
 
-## Treating PowerShell as Malicious
+### Treating PowerShell as Malicious
 
 PowerShell is a legitimate administrative technology.
 
@@ -2026,7 +2026,7 @@ Context
 
 ---
 
-## Looking at Individual Events
+### Looking at Individual Events
 
 A single event may be meaningless.
 
@@ -2046,7 +2046,7 @@ Persistence
 
 ---
 
-## Ignoring Normal Administrative Activity
+### Ignoring Normal Administrative Activity
 
 Administrators routinely perform actions that resemble attacker behavior.
 
@@ -2060,13 +2060,13 @@ Build baselines for:
 
 ---
 
-## Ignoring Telemetry Gaps
+### Ignoring Telemetry Gaps
 
 If the necessary logs do not exist, document the limitation rather than assuming nothing happened.
 
 ---
 
-# Windows Threat Hunting Maturity
+## Windows Threat Hunting Maturity
 
 A useful progression:
 
@@ -2092,55 +2092,55 @@ Continuous Threat-Informed Hunting
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is Windows threat hunting?
+#### What is Windows threat hunting?
 
 Windows threat hunting is the proactive investigation of Windows telemetry to identify suspicious or malicious activity that may not have generated an existing security alert.
 
 ---
 
-### What is Windows Event Viewer?
+#### What is Windows Event Viewer?
 
 Event Viewer is a Windows administrative tool used to view event logs generated by the operating system and applications.
 
 ---
 
-### What is Event ID 4624?
+#### What is Event ID 4624?
 
 It represents a successful logon.
 
 ---
 
-### What is Event ID 4625?
+#### What is Event ID 4625?
 
 It represents a failed logon.
 
 ---
 
-### What is Event ID 4688?
+#### What is Event ID 4688?
 
 It represents a process creation event when appropriate auditing is configured.
 
 ---
 
-### What is Sysmon?
+#### What is Sysmon?
 
 Sysmon is a Microsoft Sysinternals system monitoring tool that provides detailed telemetry useful for security monitoring and threat hunting.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### Why is process-tree analysis important?
+#### Why is process-tree analysis important?
 
 It provides parent-child context that helps distinguish expected administrative activity from suspicious process execution.
 
 ---
 
-### How would you investigate suspicious PowerShell?
+#### How would you investigate suspicious PowerShell?
 
 I would examine:
 
@@ -2159,21 +2159,21 @@ Then correlate the behavior with authentication and other endpoint events.
 
 ---
 
-### How would you hunt password spraying?
+#### How would you hunt password spraying?
 
 I would analyze failed authentication events across multiple accounts and identify common source infrastructure, timing patterns, account spread, and any successful authentication that follows.
 
 ---
 
-### Why is Event ID 4624 alone insufficient?
+#### Why is Event ID 4624 alone insufficient?
 
 A successful logon is normal in most environments. The source, destination, user, logon type, timing, and subsequent activity provide the context needed to determine whether it is suspicious.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you reconstruct a Windows attack?
+#### How would you reconstruct a Windows attack?
 
 ```text
 Authentication
@@ -2197,7 +2197,7 @@ I would correlate Windows Security events, Sysmon, EDR, authentication, DNS, net
 
 ---
 
-### How can you identify a compromised account?
+#### How can you identify a compromised account?
 
 Look for combinations such as:
 
@@ -2219,7 +2219,7 @@ No single indicator should automatically prove compromise.
 
 ---
 
-### How would you hunt Living-off-the-Land activity?
+#### How would you hunt Living-off-the-Land activity?
 
 I would focus on legitimate administrative binaries being used in unusual contexts.
 
@@ -2239,7 +2239,7 @@ Unexpected Network Activity
 
 ---
 
-### How would you detect telemetry gaps?
+#### How would you detect telemetry gaps?
 
 Map hunting requirements to available data sources:
 
@@ -2259,7 +2259,7 @@ Telemetry Available?
 
 ---
 
-# Professional Windows Threat Hunting Workflow
+## Professional Windows Threat Hunting Workflow
 
 ```text
                    Threat Intelligence
@@ -2302,7 +2302,7 @@ Telemetry Available?
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Windows threat hunting requires more than memorizing Event IDs.
 
@@ -2374,7 +2374,7 @@ Finally:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 ```text
 01. Windows telemetry is foundational for enterprise threat hunting.
@@ -2404,9 +2404,9 @@ Finally:
 
 ---
 
-# References
+## References
 
-## Microsoft
+### Microsoft
 
 - Microsoft Windows Security Auditing — https://learn.microsoft.com/windows/security/threat-protection/auditing/
 - Windows Security Event Auditing — https://learn.microsoft.com/windows/security/threat-protection/auditing/basic-audit-logon-events
@@ -2415,14 +2415,14 @@ Finally:
 - PowerShell Logging — https://learn.microsoft.com/powershell/
 - Windows Event Logs — https://learn.microsoft.com/windows/win32/eventlog/event-logging
 
-## MITRE ATT&CK
+### MITRE ATT&CK
 
 - MITRE ATT&CK — https://attack.mitre.org/
 - Enterprise ATT&CK — https://attack.mitre.org/matrices/enterprise/
 - Command and Scripting Interpreter — https://attack.mitre.org/techniques/T1059/
 - PowerShell — https://attack.mitre.org/techniques/T1059/001/
 
-## Defensive Security
+### Defensive Security
 
 - CISA — https://www.cisa.gov/
 - NIST — https://www.nist.gov/cyberframework

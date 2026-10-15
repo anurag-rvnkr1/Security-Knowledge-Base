@@ -57,7 +57,7 @@ Monitor
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -124,7 +124,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Cluster Maintenance?
+## What Is Cluster Maintenance?
 
 Cluster maintenance means performing operational tasks that keep Kubernetes infrastructure and workloads functioning correctly.
 
@@ -144,7 +144,7 @@ Clean Resources
 
 ---
 
-# Why Is Maintenance Important?
+## Why Is Maintenance Important?
 
 Without regular maintenance, a cluster may experience:
 
@@ -160,9 +160,9 @@ Unexpected Failures
 
 ---
 
-# Planned vs Emergency Maintenance
+## Planned vs Emergency Maintenance
 
-## Planned Maintenance
+### Planned Maintenance
 
 Examples:
 
@@ -179,7 +179,7 @@ These should be scheduled.
 
 ---
 
-## Emergency Maintenance
+### Emergency Maintenance
 
 Examples:
 
@@ -195,7 +195,7 @@ Emergency maintenance requires faster response.
 
 ---
 
-# Maintenance Window
+## Maintenance Window
 
 A maintenance window defines:
 
@@ -224,7 +224,7 @@ Potential Pod Evictions
 
 ---
 
-# Change Management
+## Change Management
 
 Production maintenance should follow a controlled change process.
 
@@ -246,7 +246,7 @@ Documentation
 
 ---
 
-# Maintenance Risk Assessment
+## Maintenance Risk Assessment
 
 Before maintenance ask:
 
@@ -261,7 +261,7 @@ How do we recover?
 
 ---
 
-# Maintenance Checklist
+## Maintenance Checklist
 
 Before starting:
 
@@ -280,7 +280,7 @@ Before starting:
 
 ---
 
-# Cluster Health Check
+## Cluster Health Check
 
 Start with:
 
@@ -296,7 +296,7 @@ STATUS = Ready
 
 ---
 
-# Check All Pods
+## Check All Pods
 
 ```bash
 kubectl get pods -A
@@ -314,7 +314,7 @@ Unknown
 
 ---
 
-# Check Events
+## Check Events
 
 ```bash
 kubectl get events -A
@@ -332,7 +332,7 @@ Eviction
 
 ---
 
-# Check Resources
+## Check Resources
 
 If Metrics Server is available:
 
@@ -348,7 +348,7 @@ kubectl top pods -A
 
 ---
 
-# Check Persistent Volumes
+## Check Persistent Volumes
 
 ```bash
 kubectl get pv
@@ -362,7 +362,7 @@ kubectl get pvc -A
 
 ---
 
-# Check Services
+## Check Services
 
 ```bash
 kubectl get svc -A
@@ -370,7 +370,7 @@ kubectl get svc -A
 
 ---
 
-# Check Ingress
+## Check Ingress
 
 ```bash
 kubectl get ingress -A
@@ -378,7 +378,7 @@ kubectl get ingress -A
 
 ---
 
-# Check Gateway API
+## Check Gateway API
 
 If installed:
 
@@ -388,7 +388,7 @@ kubectl get gateway -A
 
 ---
 
-# Check PDBs
+## Check PDBs
 
 ```bash
 kubectl get pdb -A
@@ -396,7 +396,7 @@ kubectl get pdb -A
 
 ---
 
-# Check Nodes Before Maintenance
+## Check Nodes Before Maintenance
 
 ```bash
 kubectl get nodes -o wide
@@ -416,7 +416,7 @@ Container Runtime
 
 ---
 
-# Node Maintenance
+## Node Maintenance
 
 Node maintenance commonly follows:
 
@@ -436,7 +436,7 @@ Uncordon
 
 ---
 
-# Cordon
+## Cordon
 
 Cordon prevents new Pods from being scheduled on the node.
 
@@ -448,7 +448,7 @@ Existing Pods continue running unless another operation affects them.
 
 ---
 
-# Verify Cordon
+## Verify Cordon
 
 ```bash
 kubectl get nodes
@@ -462,7 +462,7 @@ SchedulingDisabled
 
 ---
 
-# Drain
+## Drain
 
 Drain prepares a node for maintenance by evicting or removing eligible workloads.
 
@@ -477,7 +477,7 @@ The exact flags should be chosen based on the workloads on the node.
 
 ---
 
-# Why Drain?
+## Why Drain?
 
 Without draining:
 
@@ -505,7 +505,7 @@ Maintenance
 
 ---
 
-# Pod Eviction
+## Pod Eviction
 
 Kubernetes uses eviction mechanisms to move workloads away from a node during voluntary maintenance.
 
@@ -513,7 +513,7 @@ PDBs can limit voluntary disruption.
 
 ---
 
-# Pod Disruption Budget
+## Pod Disruption Budget
 
 Example:
 
@@ -536,7 +536,7 @@ spec:
 
 ---
 
-# PDB and Drain
+## PDB and Drain
 
 Suppose:
 
@@ -557,7 +557,7 @@ A PDB does not prevent unexpected node failures.
 
 ---
 
-# Check Workloads Before Drain
+## Check Workloads Before Drain
 
 Identify Pods:
 
@@ -577,7 +577,7 @@ Which have PDBs?
 
 ---
 
-# DaemonSets
+## DaemonSets
 
 DaemonSet Pods are managed differently during drain.
 
@@ -595,7 +595,7 @@ The `--ignore-daemonsets` option is commonly required when draining such nodes.
 
 ---
 
-# Static Pods
+## Static Pods
 
 Control-plane components may be deployed as static Pods depending on cluster architecture.
 
@@ -603,7 +603,7 @@ These are not handled like normal Deployment Pods.
 
 ---
 
-# Node Reboot
+## Node Reboot
 
 A controlled reboot can follow:
 
@@ -627,7 +627,7 @@ Uncordon
 
 ---
 
-# Verify Node After Reboot
+## Verify Node After Reboot
 
 ```bash
 kubectl get node <node>
@@ -641,7 +641,7 @@ Ready
 
 ---
 
-# Verify kubelet
+## Verify kubelet
 
 On the node:
 
@@ -651,7 +651,7 @@ systemctl status kubelet
 
 ---
 
-# Restart kubelet
+## Restart kubelet
 
 If required:
 
@@ -661,7 +661,7 @@ sudo systemctl restart kubelet
 
 ---
 
-# Check kubelet Logs
+## Check kubelet Logs
 
 ```bash
 journalctl -u kubelet
@@ -675,7 +675,7 @@ journalctl -u kubelet -n 100
 
 ---
 
-# Container Runtime Maintenance
+## Container Runtime Maintenance
 
 Kubernetes nodes use a container runtime.
 
@@ -696,7 +696,7 @@ Troubleshooting
 
 ---
 
-# Check Container Runtime
+## Check Container Runtime
 
 ```bash
 kubectl get nodes -o wide
@@ -710,7 +710,7 @@ kubectl describe node <node>
 
 ---
 
-# Container Runtime Restart
+## Container Runtime Restart
 
 A runtime restart can affect workloads on that node.
 
@@ -728,7 +728,7 @@ is safer than restarting it blindly on a busy production node.
 
 ---
 
-# Operating System Updates
+## Operating System Updates
 
 Node operating systems require regular updates.
 
@@ -743,7 +743,7 @@ Runtime Libraries
 
 ---
 
-# Kernel Updates
+## Kernel Updates
 
 Kernel updates may require a reboot.
 
@@ -765,7 +765,7 @@ Uncordon
 
 ---
 
-# OS Patch Management
+## OS Patch Management
 
 Use:
 
@@ -780,7 +780,7 @@ where appropriate.
 
 ---
 
-# Immutable Node Strategy
+## Immutable Node Strategy
 
 Some organizations replace nodes rather than modifying them in place.
 
@@ -802,7 +802,7 @@ This can provide consistent environments.
 
 ---
 
-# Node Replacement
+## Node Replacement
 
 Typical workflow:
 
@@ -820,7 +820,7 @@ Remove Old Node
 
 ---
 
-# Why Replace Nodes?
+## Why Replace Nodes?
 
 Benefits:
 
@@ -834,7 +834,7 @@ Simpler Rollback
 
 ---
 
-# Node Labels
+## Node Labels
 
 Before replacing nodes, preserve required labels.
 
@@ -855,7 +855,7 @@ Workload Placement
 
 ---
 
-# Node Taints
+## Node Taints
 
 Check:
 
@@ -873,7 +873,7 @@ When replacing nodes, ensure required taints are recreated.
 
 ---
 
-# Node Maintenance and Affinity
+## Node Maintenance and Affinity
 
 Node affinity may require Pods to run on specific nodes or labels.
 
@@ -887,7 +887,7 @@ Check Anti-Affinity
 
 ---
 
-# Node Maintenance and Topology
+## Node Maintenance and Topology
 
 Topology constraints can affect rescheduling.
 
@@ -903,7 +903,7 @@ A Pod may not be allowed to move if topology constraints cannot be satisfied.
 
 ---
 
-# Capacity During Maintenance
+## Capacity During Maintenance
 
 Suppose:
 
@@ -932,7 +932,7 @@ Storage
 
 ---
 
-# N+1 Capacity
+## N+1 Capacity
 
 A production cluster should often have enough spare capacity to tolerate at least one expected node failure.
 
@@ -947,7 +947,7 @@ This is one form of N+1 planning.
 
 ---
 
-# Resource Requests
+## Resource Requests
 
 Scheduling depends heavily on resource requests.
 
@@ -963,7 +963,7 @@ resources:
 
 ---
 
-# Resource Limits
+## Resource Limits
 
 Example:
 
@@ -979,7 +979,7 @@ Poorly configured requests can make maintenance and rescheduling harder.
 
 ---
 
-# Disk Maintenance
+## Disk Maintenance
 
 Node disk pressure can cause problems.
 
@@ -1007,7 +1007,7 @@ Temporary Files
 
 ---
 
-# Disk Pressure
+## Disk Pressure
 
 Kubernetes can report:
 
@@ -1025,7 +1025,7 @@ kubectl describe node <node>
 
 ---
 
-# Image Cleanup
+## Image Cleanup
 
 Unused container images can consume disk.
 
@@ -1035,7 +1035,7 @@ Avoid deleting images blindly on active production nodes.
 
 ---
 
-# Container Logs
+## Container Logs
 
 Large container logs can consume disk.
 
@@ -1049,7 +1049,7 @@ Retention Policies
 
 ---
 
-# Resource Cleanup
+## Resource Cleanup
 
 Regularly review:
 
@@ -1067,7 +1067,7 @@ Be careful with automated deletion.
 
 ---
 
-# Completed Jobs
+## Completed Jobs
 
 List:
 
@@ -1081,7 +1081,7 @@ Use controlled retention policies or cleanup automation.
 
 ---
 
-# CronJobs
+## CronJobs
 
 Review:
 
@@ -1101,7 +1101,7 @@ are appropriate.
 
 ---
 
-# Old ReplicaSets
+## Old ReplicaSets
 
 Deployments can leave historical ReplicaSets.
 
@@ -1115,7 +1115,7 @@ Deployment history limits can control retained revisions.
 
 ---
 
-# Namespace Cleanup
+## Namespace Cleanup
 
 List:
 
@@ -1129,7 +1129,7 @@ Never delete production namespaces without explicit verification.
 
 ---
 
-# Orphaned Resources
+## Orphaned Resources
 
 Examples:
 
@@ -1145,7 +1145,7 @@ Identify dependencies before deleting.
 
 ---
 
-# Certificate Maintenance
+## Certificate Maintenance
 
 Kubernetes environments depend on certificates for:
 
@@ -1160,7 +1160,7 @@ Service Mesh
 
 ---
 
-# Certificate Expiration
+## Certificate Expiration
 
 Expired certificates can cause:
 
@@ -1173,7 +1173,7 @@ TLS Errors
 
 ---
 
-# Check Certificates
+## Check Certificates
 
 For kubeadm clusters:
 
@@ -1185,7 +1185,7 @@ The exact command depends on the Kubernetes distribution.
 
 ---
 
-# Certificate Rotation
+## Certificate Rotation
 
 Certificate rotation should be:
 
@@ -1198,7 +1198,7 @@ Documented
 
 ---
 
-# etcd Maintenance
+## etcd Maintenance
 
 etcd maintenance can include:
 
@@ -1213,7 +1213,7 @@ Member Management
 
 ---
 
-# etcd Backup
+## etcd Backup
 
 Before high-risk control-plane maintenance:
 
@@ -1225,7 +1225,7 @@ Store the snapshot securely outside the active etcd environment.
 
 ---
 
-# etcd Defragmentation
+## etcd Defragmentation
 
 etcd databases can accumulate fragmented storage.
 
@@ -1235,7 +1235,7 @@ It must be performed carefully and according to the cluster's operational requir
 
 ---
 
-# etcd Disk Monitoring
+## etcd Disk Monitoring
 
 Monitor:
 
@@ -1249,7 +1249,7 @@ Defragmentation
 
 ---
 
-# Network Maintenance
+## Network Maintenance
 
 Network maintenance can involve:
 
@@ -1264,7 +1264,7 @@ Network Policies
 
 ---
 
-# CNI Maintenance
+## CNI Maintenance
 
 Before changing a CNI:
 
@@ -1280,7 +1280,7 @@ Networking changes have high blast radius.
 
 ---
 
-# CoreDNS Maintenance
+## CoreDNS Maintenance
 
 Check:
 
@@ -1292,7 +1292,7 @@ Look for CoreDNS Pods.
 
 ---
 
-# CoreDNS Health
+## CoreDNS Health
 
 DNS failures can affect:
 
@@ -1304,7 +1304,7 @@ Application Connectivity
 
 ---
 
-# Ingress Maintenance
+## Ingress Maintenance
 
 Check:
 
@@ -1324,7 +1324,7 @@ Controller Logs
 
 ---
 
-# Gateway Maintenance
+## Gateway Maintenance
 
 If Gateway API is used, verify:
 
@@ -1338,7 +1338,7 @@ Load Balancer
 
 ---
 
-# Storage Maintenance
+## Storage Maintenance
 
 Review:
 
@@ -1361,7 +1361,7 @@ kubectl get storageclass
 
 ---
 
-# CSI Maintenance
+## CSI Maintenance
 
 Before upgrading or changing CSI components:
 
@@ -1375,7 +1375,7 @@ Check Recovery
 
 ---
 
-# Storage Maintenance Risk
+## Storage Maintenance Risk
 
 Storage failures can affect:
 
@@ -1389,7 +1389,7 @@ Always validate storage after maintenance.
 
 ---
 
-# Control Plane Maintenance
+## Control Plane Maintenance
 
 Control-plane maintenance may involve:
 
@@ -1407,7 +1407,7 @@ Use the Kubernetes distribution's official maintenance procedure.
 
 ---
 
-# API Server Maintenance
+## API Server Maintenance
 
 Multiple API Servers can reduce disruption.
 
@@ -1419,19 +1419,19 @@ Verify Other API Servers Healthy
 
 ---
 
-# Scheduler Maintenance
+## Scheduler Maintenance
 
 Leader election allows another scheduler instance to take over in HA configurations.
 
 ---
 
-# Controller Manager Maintenance
+## Controller Manager Maintenance
 
 Similarly, leader election can provide redundancy.
 
 ---
 
-# etcd Maintenance Risk
+## etcd Maintenance Risk
 
 etcd is highly sensitive to quorum loss.
 
@@ -1439,7 +1439,7 @@ Never casually stop enough etcd members to lose quorum.
 
 ---
 
-# Maintenance and Monitoring
+## Maintenance and Monitoring
 
 Monitoring should remain active throughout maintenance.
 
@@ -1456,7 +1456,7 @@ Resource Usage
 
 ---
 
-# Maintenance and Logging
+## Maintenance and Logging
 
 Logs should remain available during maintenance.
 
@@ -1473,7 +1473,7 @@ CSI Logs
 
 ---
 
-# Maintenance and Security
+## Maintenance and Security
 
 Never treat maintenance as a reason to disable security controls unnecessarily.
 
@@ -1489,7 +1489,7 @@ Audit Logging
 
 ---
 
-# Backup Before Maintenance
+## Backup Before Maintenance
 
 High-risk maintenance should have a recovery mechanism.
 
@@ -1504,7 +1504,7 @@ Configuration Backup
 
 ---
 
-# Rolling Maintenance
+## Rolling Maintenance
 
 Rolling maintenance updates infrastructure gradually.
 
@@ -1526,7 +1526,7 @@ Validate
 
 ---
 
-# Zero-Downtime Maintenance
+## Zero-Downtime Maintenance
 
 The objective is:
 
@@ -1552,7 +1552,7 @@ Controlled Drain
 
 ---
 
-# Maintenance Automation
+## Maintenance Automation
 
 Automation can reduce human error.
 
@@ -1568,7 +1568,7 @@ Cloud Provider Automation
 
 ---
 
-# Automated Node Maintenance
+## Automated Node Maintenance
 
 A typical automation flow:
 
@@ -1592,7 +1592,7 @@ Continue
 
 ---
 
-# Maintenance Guardrails
+## Maintenance Guardrails
 
 Automation should include:
 
@@ -1608,7 +1608,7 @@ Rollback / Recovery
 
 ---
 
-# Maintenance Runbook
+## Maintenance Runbook
 
 A runbook should document:
 
@@ -1626,7 +1626,7 @@ Contacts
 
 ---
 
-# Example Node Maintenance Runbook
+## Example Node Maintenance Runbook
 
 ```text
 1. Verify Cluster Health
@@ -1648,7 +1648,7 @@ Contacts
 
 ---
 
-# Emergency Maintenance
+## Emergency Maintenance
 
 For urgent security issues:
 
@@ -1670,7 +1670,7 @@ Monitor
 
 ---
 
-# Emergency Node Isolation
+## Emergency Node Isolation
 
 If a node is compromised:
 
@@ -1684,7 +1684,7 @@ Do not destroy forensic evidence without authorization and an established respon
 
 ---
 
-# Maintenance Validation
+## Maintenance Validation
 
 After maintenance:
 
@@ -1701,7 +1701,7 @@ Monitoring Healthy
 
 ---
 
-# Node Validation
+## Node Validation
 
 ```bash
 kubectl get node <node>
@@ -1720,7 +1720,7 @@ Allocatable
 
 ---
 
-# Pod Validation
+## Pod Validation
 
 ```bash
 kubectl get pods -A -o wide
@@ -1736,7 +1736,7 @@ Error
 
 ---
 
-# Application Validation
+## Application Validation
 
 Test:
 
@@ -1751,7 +1751,7 @@ External Integrations
 
 ---
 
-# Post-Maintenance Monitoring
+## Post-Maintenance Monitoring
 
 Monitor for an appropriate period:
 
@@ -1767,7 +1767,7 @@ Storage
 
 ---
 
-# Maintenance Documentation
+## Maintenance Documentation
 
 Record:
 
@@ -1785,7 +1785,7 @@ This creates an operational history.
 
 ---
 
-# Maintenance Metrics
+## Maintenance Metrics
 
 Useful metrics include:
 
@@ -1801,7 +1801,7 @@ Change Failure Rate
 
 ---
 
-# Change Failure Rate
+## Change Failure Rate
 
 A useful operational metric is:
 
@@ -1813,83 +1813,83 @@ Lower failure rates indicate better maintenance processes.
 
 ---
 
-# Common Maintenance Mistakes
+## Common Maintenance Mistakes
 
-## 1. Draining Without Checking Capacity
+### 1. Draining Without Checking Capacity
 
 This can leave Pods Pending.
 
 ---
 
-## 2. Ignoring PDBs
+### 2. Ignoring PDBs
 
 Drain may block or cause unexpected disruption.
 
 ---
 
-## 3. Restarting Nodes Without Draining
+### 3. Restarting Nodes Without Draining
 
 Can cause unnecessary application disruption.
 
 ---
 
-## 4. Updating All Nodes at Once
+### 4. Updating All Nodes at Once
 
 This increases blast radius.
 
 ---
 
-## 5. Ignoring Stateful Workloads
+### 5. Ignoring Stateful Workloads
 
 Databases require additional care.
 
 ---
 
-## 6. Ignoring Certificates
+### 6. Ignoring Certificates
 
 Expired certificates can break cluster components.
 
 ---
 
-## 7. No Backup
+### 7. No Backup
 
 High-risk maintenance without recovery is dangerous.
 
 ---
 
-## 8. Cleaning Resources Blindly
+### 8. Cleaning Resources Blindly
 
 Deleting an apparently unused resource may break dependencies.
 
 ---
 
-## 9. Ignoring Disk Pressure
+### 9. Ignoring Disk Pressure
 
 Full disks can destabilize nodes.
 
 ---
 
-## 10. No Post-Maintenance Validation
+### 10. No Post-Maintenance Validation
 
 A node being Ready does not guarantee application health.
 
 ---
 
-## 11. Ignoring CNI / CSI
+### 11. Ignoring CNI / CSI
 
 Networking and storage are critical dependencies.
 
 ---
 
-## 12. No Monitoring
+### 12. No Monitoring
 
 Problems may remain unnoticed.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Plan Maintenance
+#### 1. Plan Maintenance
 
 Define:
 
@@ -1902,7 +1902,7 @@ Recovery
 
 ---
 
-### 2. Backup First
+#### 2. Backup First
 
 For high-risk changes:
 
@@ -1914,7 +1914,7 @@ Verify Recovery
 
 ---
 
-### 3. Use Cordon and Drain
+#### 3. Use Cordon and Drain
 
 For planned node maintenance:
 
@@ -1928,19 +1928,19 @@ Maintain
 
 ---
 
-### 4. Maintain Spare Capacity
+#### 4. Maintain Spare Capacity
 
 Ensure workloads can move.
 
 ---
 
-### 5. Use PDBs
+#### 5. Use PDBs
 
 Protect replicated workloads during voluntary disruption.
 
 ---
 
-### 6. Maintain Multiple Replicas
+#### 6. Maintain Multiple Replicas
 
 Use:
 
@@ -1954,7 +1954,7 @@ for resilient workloads.
 
 ---
 
-### 7. Automate Repetitive Work
+#### 7. Automate Repetitive Work
 
 Automation improves:
 
@@ -1966,7 +1966,7 @@ Safety
 
 ---
 
-### 8. Monitor During Maintenance
+#### 8. Monitor During Maintenance
 
 Watch both:
 
@@ -1978,13 +1978,13 @@ Applications
 
 ---
 
-### 9. Validate After Every Step
+#### 9. Validate After Every Step
 
 Do not wait until the end.
 
 ---
 
-### 10. Document Everything
+#### 10. Document Everything
 
 Maintain:
 
@@ -1996,7 +1996,7 @@ Recovery Procedures
 
 ---
 
-# Hands-on Lab 1 – Basic Node Maintenance
+## Hands-on Lab 1 – Basic Node Maintenance
 
 Use a test cluster.
 
@@ -2016,7 +2016,7 @@ Uncordon
 
 ---
 
-# Hands-on Lab 2 – Node Reboot
+## Hands-on Lab 2 – Node Reboot
 
 On a disposable cluster:
 
@@ -2032,7 +2032,7 @@ Check application availability.
 
 ---
 
-# Hands-on Lab 3 – PDB and Drain
+## Hands-on Lab 3 – PDB and Drain
 
 Create:
 
@@ -2058,7 +2058,7 @@ Availability
 
 ---
 
-# Hands-on Lab 4 – Capacity Testing
+## Hands-on Lab 4 – Capacity Testing
 
 Create workloads that consume most available resources.
 
@@ -2074,7 +2074,7 @@ Resource Pressure
 
 ---
 
-# Hands-on Lab 5 – Node Replacement
+## Hands-on Lab 5 – Node Replacement
 
 Create a new node.
 
@@ -2092,7 +2092,7 @@ Verify workloads move successfully.
 
 ---
 
-# Hands-on Lab 6 – Disk Monitoring
+## Hands-on Lab 6 – Disk Monitoring
 
 Check:
 
@@ -2112,7 +2112,7 @@ Eviction
 
 ---
 
-# Hands-on Lab 7 – Resource Cleanup
+## Hands-on Lab 7 – Resource Cleanup
 
 Identify:
 
@@ -2126,7 +2126,7 @@ Clean them carefully.
 
 ---
 
-# Hands-on Lab 8 – Certificate Maintenance
+## Hands-on Lab 8 – Certificate Maintenance
 
 In a test kubeadm environment:
 
@@ -2138,7 +2138,7 @@ Review certificate lifecycle and renewal procedures.
 
 ---
 
-# Hands-on Lab 9 – etcd Backup
+## Hands-on Lab 9 – etcd Backup
 
 Create an etcd snapshot.
 
@@ -2153,7 +2153,7 @@ Storage Location
 
 ---
 
-# Hands-on Lab 10 – etcd Maintenance
+## Hands-on Lab 10 – etcd Maintenance
 
 In a disposable environment:
 
@@ -2167,7 +2167,7 @@ Validate
 
 ---
 
-# Hands-on Lab 11 – CNI Maintenance
+## Hands-on Lab 11 – CNI Maintenance
 
 Upgrade or modify CNI components in a test environment.
 
@@ -2182,7 +2182,7 @@ NetworkPolicy
 
 ---
 
-# Hands-on Lab 12 – CSI Maintenance
+## Hands-on Lab 12 – CSI Maintenance
 
 Perform controlled CSI maintenance.
 
@@ -2198,7 +2198,7 @@ Unmount
 
 ---
 
-# Hands-on Lab 13 – CoreDNS Maintenance
+## Hands-on Lab 13 – CoreDNS Maintenance
 
 Restart or update CoreDNS in a test cluster.
 
@@ -2211,7 +2211,7 @@ External DNS
 
 ---
 
-# Hands-on Lab 14 – Ingress Maintenance
+## Hands-on Lab 14 – Ingress Maintenance
 
 Perform controlled Ingress controller maintenance.
 
@@ -2226,7 +2226,7 @@ Routing
 
 ---
 
-# Hands-on Lab 15 – Gateway Maintenance
+## Hands-on Lab 15 – Gateway Maintenance
 
 If Gateway API is available:
 
@@ -2240,7 +2240,7 @@ Perform maintenance and verify traffic.
 
 ---
 
-# Hands-on Lab 16 – Rolling Node Maintenance
+## Hands-on Lab 16 – Rolling Node Maintenance
 
 Use multiple worker nodes.
 
@@ -2258,7 +2258,7 @@ with validation after every node.
 
 ---
 
-# Hands-on Lab 17 – Automated Node Maintenance
+## Hands-on Lab 17 – Automated Node Maintenance
 
 Create an automation workflow:
 
@@ -2282,7 +2282,7 @@ Add failure handling.
 
 ---
 
-# Hands-on Lab 18 – Maintenance Monitoring
+## Hands-on Lab 18 – Maintenance Monitoring
 
 Create a dashboard showing:
 
@@ -2300,7 +2300,7 @@ Run maintenance and observe the dashboard.
 
 ---
 
-# Hands-on Lab 19 – Emergency Patch
+## Hands-on Lab 19 – Emergency Patch
 
 Simulate a critical node vulnerability in a test environment.
 
@@ -2320,7 +2320,7 @@ Monitor
 
 ---
 
-# Hands-on Lab 20 – Full Maintenance Exercise
+## Hands-on Lab 20 – Full Maintenance Exercise
 
 Design and execute:
 
@@ -2362,9 +2362,9 @@ Lessons Learned
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Cordon
+### Cordon
 
 ```text
 Prevents new Pods from being scheduled on a node
@@ -2372,7 +2372,7 @@ Prevents new Pods from being scheduled on a node
 
 ---
 
-## Drain
+### Drain
 
 ```text
 Evicts/removes eligible workloads for maintenance
@@ -2380,7 +2380,7 @@ Evicts/removes eligible workloads for maintenance
 
 ---
 
-## Uncordon
+### Uncordon
 
 ```text
 Allows scheduling on the node again
@@ -2388,7 +2388,7 @@ Allows scheduling on the node again
 
 ---
 
-## PDB
+### PDB
 
 ```text
 Limits voluntary disruption
@@ -2396,7 +2396,7 @@ Limits voluntary disruption
 
 ---
 
-## Node Replacement
+### Node Replacement
 
 ```text
 Replace an old node with a new node
@@ -2404,7 +2404,7 @@ Replace an old node with a new node
 
 ---
 
-## Disk Pressure
+### Disk Pressure
 
 ```text
 Node condition caused by insufficient disk resources
@@ -2412,7 +2412,7 @@ Node condition caused by insufficient disk resources
 
 ---
 
-## Cluster Maintenance
+### Cluster Maintenance
 
 ```text
 Operational work required to keep Kubernetes healthy and supported
@@ -2420,7 +2420,7 @@ Operational work required to keep Kubernetes healthy and supported
 
 ---
 
-## Rolling Maintenance
+### Rolling Maintenance
 
 ```text
 Maintain infrastructure gradually instead of all at once
@@ -2428,7 +2428,7 @@ Maintain infrastructure gradually instead of all at once
 
 ---
 
-## Planned Maintenance
+### Planned Maintenance
 
 ```text
 Scheduled operational change
@@ -2436,7 +2436,7 @@ Scheduled operational change
 
 ---
 
-## Emergency Maintenance
+### Emergency Maintenance
 
 ```text
 Urgent change required to reduce immediate risk
@@ -2444,7 +2444,7 @@ Urgent change required to reduce immediate risk
 
 ---
 
-## Maintenance Runbook
+### Maintenance Runbook
 
 ```text
 Documented procedure for executing and validating maintenance
@@ -2452,7 +2452,7 @@ Documented procedure for executing and validating maintenance
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check nodes:
 
@@ -2614,9 +2614,9 @@ kubeadm certs check-expiration
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Kubernetes cluster maintenance?
 - Why is cluster maintenance important?
@@ -2635,7 +2635,7 @@ kubeadm certs check-expiration
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How do you safely reboot a Kubernetes node?
 - What happens when you cordon a node?
@@ -2655,7 +2655,7 @@ kubeadm certs check-expiration
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a zero-downtime node maintenance strategy.
 - How would you maintain a 500-node Kubernetes cluster?
@@ -2673,13 +2673,13 @@ kubeadm certs check-expiration
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > How would you safely reboot a production Kubernetes node?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2709,13 +2709,13 @@ Monitor
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > What is the difference between cordon and drain?
 
-### Answer
+#### Answer
 
 `cordon`:
 
@@ -2739,13 +2739,13 @@ Drain
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > Why might `kubectl drain` fail?
 
-### Answer
+#### Answer
 
 Possible reasons include:
 
@@ -2762,13 +2762,13 @@ The correct response is to understand the workload rather than blindly bypassing
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What happens if you drain a node without enough cluster capacity?
 
-### Answer
+#### Answer
 
 Some workloads may remain Pending:
 
@@ -2786,13 +2786,13 @@ Therefore, capacity must be checked before maintenance.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How do you safely patch 100 Kubernetes nodes?
 
-### Answer
+#### Answer
 
 Use a rolling strategy:
 
@@ -2820,13 +2820,13 @@ Use small batches initially and monitor continuously.
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > Why might replacing nodes be better than patching them in place?
 
-### Answer
+#### Answer
 
 Node replacement can provide:
 
@@ -2842,13 +2842,13 @@ This is especially useful with immutable or managed node-pool approaches.
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How do you maintain a stateful application?
 
-### Answer
+#### Answer
 
 First understand:
 
@@ -2865,13 +2865,13 @@ Do not assume that draining a node is harmless simply because multiple Pods exis
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How do you maintain a Kubernetes cluster during a critical security patch?
 
-### Answer
+#### Answer
 
 Use an accelerated but controlled process:
 
@@ -2901,13 +2901,13 @@ If the vulnerability is actively exploited, the change window may need to be sho
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > What should you monitor during maintenance?
 
-### Answer
+#### Answer
 
 Monitor:
 
@@ -2926,13 +2926,13 @@ DNS
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a production cluster maintenance strategy.
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2996,7 +2996,7 @@ Document
 
 ---
 
-# Production Maintenance Checklist
+## Production Maintenance Checklist
 
 ```text
 ☑ Maintenance scope defined
@@ -3032,7 +3032,7 @@ Document
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Kubernetes cluster maintenance is an ongoing operational discipline.
 
@@ -3106,9 +3106,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 71 – Resource Optimization
+## Chapter 71 – Resource Optimization
 
 Topics will include:
 

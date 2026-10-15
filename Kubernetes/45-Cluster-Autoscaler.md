@@ -44,7 +44,7 @@ This is the role of the **Cluster Autoscaler (CA)**.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -78,7 +78,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Cluster Autoscaler?
+## What Is Cluster Autoscaler?
 
 Cluster Autoscaler is a Kubernetes component that adjusts cluster capacity.
 
@@ -114,7 +114,7 @@ The basic model is:
 
 ---
 
-# Why Is Cluster Autoscaling Needed?
+## Why Is Cluster Autoscaling Needed?
 
 Suppose a cluster has:
 
@@ -160,7 +160,7 @@ Cluster Autoscaler can detect that these Pods cannot currently be scheduled and 
 
 ---
 
-# Basic Architecture
+## Basic Architecture
 
 ```text
                     User Traffic
@@ -195,11 +195,11 @@ Cluster Autoscaler can detect that these Pods cannot currently be scheduled and 
 
 ---
 
-# Cluster Autoscaler vs HPA
+## Cluster Autoscaler vs HPA
 
 This is one of the most important distinctions.
 
-## HPA
+### HPA
 
 HPA changes:
 
@@ -217,7 +217,7 @@ Example:
 
 ---
 
-## Cluster Autoscaler
+### Cluster Autoscaler
 
 Cluster Autoscaler changes:
 
@@ -235,7 +235,7 @@ Example:
 
 ---
 
-# HPA + Cluster Autoscaler
+## HPA + Cluster Autoscaler
 
 They can work together.
 
@@ -261,7 +261,7 @@ This creates an elastic system.
 
 ---
 
-# Cluster Autoscaler vs VPA
+## Cluster Autoscaler vs VPA
 
 VPA:
 
@@ -291,7 +291,7 @@ More Nodes
 
 ---
 
-# Cluster Autoscaler vs Manual Scaling
+## Cluster Autoscaler vs Manual Scaling
 
 Without autoscaling:
 
@@ -319,7 +319,7 @@ Nodes automatically adjusted
 
 ---
 
-# Node Groups
+## Node Groups
 
 Cluster Autoscaler typically works with:
 
@@ -358,7 +358,7 @@ according to cluster demand and provider capabilities.
 
 ---
 
-# Node Pool
+## Node Pool
 
 Cloud Kubernetes platforms often use the term:
 
@@ -382,7 +382,7 @@ The exact terminology varies by cloud provider.
 
 ---
 
-# Minimum Nodes
+## Minimum Nodes
 
 Example:
 
@@ -398,7 +398,7 @@ The autoscaler should not normally reduce that Node Group below:
 
 ---
 
-# Maximum Nodes
+## Maximum Nodes
 
 Example:
 
@@ -414,7 +414,7 @@ The autoscaler should not normally increase that Node Group above:
 
 ---
 
-# Node Group Example
+## Node Group Example
 
 Suppose:
 
@@ -452,7 +452,7 @@ The configured boundaries are respected.
 
 ---
 
-# Scale-Up
+## Scale-Up
 
 Cluster Autoscaler performs scale-up when it determines that Pods cannot currently be scheduled because sufficient cluster capacity is unavailable.
 
@@ -478,7 +478,7 @@ Cluster Autoscaler detects the unschedulable Pods.
 
 ---
 
-# Scale-Up Flow
+## Scale-Up Flow
 
 ```text
 Pod Created
@@ -506,7 +506,7 @@ Pod Scheduled
 
 ---
 
-# Unschedulable Pods
+## Unschedulable Pods
 
 An important concept is:
 
@@ -550,7 +550,7 @@ Cluster Autoscaler can respond when adding capacity can resolve the scheduling p
 
 ---
 
-# Check Pending Pods
+## Check Pending Pods
 
 Run:
 
@@ -578,7 +578,7 @@ You may see messages such as:
 
 ---
 
-# Important Distinction
+## Important Distinction
 
 Not every Pending Pod causes a useful scale-up.
 
@@ -606,7 +606,7 @@ may prevent scheduling even after Nodes are added.
 
 ---
 
-# Scale-Down
+## Scale-Down
 
 Cluster Autoscaler can also remove Nodes that are no longer required.
 
@@ -626,7 +626,7 @@ If suitable Nodes are underutilized and their Pods can be safely moved, Cluster 
 
 ---
 
-# Scale-Down Flow
+## Scale-Down Flow
 
 ```text
 Cluster Demand Decreases
@@ -644,7 +644,7 @@ Node Removed
 
 ---
 
-# Why Scale-Down Is More Complicated
+## Why Scale-Down Is More Complicated
 
 Removing a Node means its Pods must be handled.
 
@@ -668,7 +668,7 @@ Scheduling Constraints
 
 ---
 
-# Node Utilization
+## Node Utilization
 
 Cluster Autoscaler can use resource utilization and scheduling simulation when determining whether Nodes are candidates for removal.
 
@@ -686,7 +686,7 @@ There are additional scheduling and safety checks.
 
 ---
 
-# Node Drain
+## Node Drain
 
 Before removing a Node, workloads generally need to be evicted or otherwise handled.
 
@@ -714,7 +714,7 @@ Node removed
 
 ---
 
-# Pod Eviction
+## Pod Eviction
 
 Eviction means Kubernetes asks a Pod to terminate gracefully.
 
@@ -734,7 +734,7 @@ Abruptly lose workloads
 
 ---
 
-# PodDisruptionBudget
+## PodDisruptionBudget
 
 A PodDisruptionBudget (PDB) can limit voluntary disruptions.
 
@@ -770,7 +770,7 @@ during covered voluntary disruptions.
 
 ---
 
-# PDB and Cluster Autoscaler
+## PDB and Cluster Autoscaler
 
 Suppose:
 
@@ -804,7 +804,7 @@ must be designed together.
 
 ---
 
-# DaemonSets
+## DaemonSets
 
 DaemonSets commonly run one Pod on each eligible Node.
 
@@ -822,7 +822,7 @@ DaemonSets can still affect resource calculations and scheduling behavior.
 
 ---
 
-# Local Storage
+## Local Storage
 
 Pods using local storage can complicate Node scale-down.
 
@@ -842,7 +842,7 @@ Autoscaler therefore has to consider local storage-related constraints and confi
 
 ---
 
-# Node Affinity
+## Node Affinity
 
 Suppose a Pod requires:
 
@@ -870,7 +870,7 @@ Adding a generic Node may not help.
 
 ---
 
-# Taints and Tolerations
+## Taints and Tolerations
 
 Suppose a Node has:
 
@@ -886,7 +886,7 @@ If a Pending Pod requires GPU Nodes, the appropriate Node Group must be availabl
 
 ---
 
-# GPU Node Groups
+## GPU Node Groups
 
 Specialized workloads may require:
 
@@ -910,7 +910,7 @@ The autoscaler must understand which Node Group can satisfy the Pod's requiremen
 
 ---
 
-# Expander Strategies
+## Expander Strategies
 
 When multiple Node Groups could satisfy a scale-up request, Cluster Autoscaler can use an **expander strategy** to choose among them.
 
@@ -936,7 +936,7 @@ The exact available strategies and behavior depend on the Cluster Autoscaler ver
 
 ---
 
-# Least-Waste
+## Least-Waste
 
 The goal is generally to select the Node Group that leaves the least unused capacity after accommodating pending workloads.
 
@@ -964,7 +964,7 @@ The smaller Node may be preferred under a least-waste strategy.
 
 ---
 
-# Most-Pods
+## Most-Pods
 
 This strategy considers how many pending Pods can potentially be accommodated by a Node Group.
 
@@ -972,7 +972,7 @@ The objective is to maximize scheduling opportunities.
 
 ---
 
-# Price-Based Selection
+## Price-Based Selection
 
 Some cloud integrations can use pricing information.
 
@@ -982,13 +982,13 @@ Exact behavior depends on the cloud provider and configuration.
 
 ---
 
-# Random
+## Random
 
 A random strategy can select among eligible Node Groups without applying a resource-efficiency preference.
 
 ---
 
-# Cloud Provider Integration
+## Cloud Provider Integration
 
 Cluster Autoscaler needs a mechanism to create and remove Nodes.
 
@@ -1006,7 +1006,7 @@ The exact implementation depends on the Kubernetes environment.
 
 ---
 
-# Managed Kubernetes
+## Managed Kubernetes
 
 Cloud Kubernetes services commonly provide Node Pool or Node Group abstractions.
 
@@ -1022,7 +1022,7 @@ Cluster Autoscaler can interact with these pools to change their size.
 
 ---
 
-# Important Cloud Concept
+## Important Cloud Concept
 
 Cluster Autoscaler does not magically create a physical machine by itself.
 
@@ -1040,7 +1040,7 @@ Kubernetes Node
 
 ---
 
-# Node Lifecycle
+## Node Lifecycle
 
 When scaling up:
 
@@ -1070,7 +1070,7 @@ Scheduler places Pods
 
 ---
 
-# Check Nodes
+## Check Nodes
 
 ```bash
 kubectl get nodes
@@ -1090,7 +1090,7 @@ kubectl describe node <node-name>
 
 ---
 
-# Node Readiness
+## Node Readiness
 
 A newly created Node may initially show:
 
@@ -1118,7 +1118,7 @@ to become operational.
 
 ---
 
-# Cluster Autoscaler and Scheduler
+## Cluster Autoscaler and Scheduler
 
 Scheduler:
 
@@ -1136,7 +1136,7 @@ They are different controllers.
 
 ---
 
-# Scheduler + Cluster Autoscaler
+## Scheduler + Cluster Autoscaler
 
 ```text
                Pod
@@ -1164,7 +1164,7 @@ They are different controllers.
 
 ---
 
-# Cluster Autoscaler and Requests
+## Cluster Autoscaler and Requests
 
 Resource requests are extremely important.
 
@@ -1191,7 +1191,7 @@ Cluster Autoscaler can add capacity if an appropriate Node Group can accommodate
 
 ---
 
-# Requests Too Low
+## Requests Too Low
 
 Suppose:
 
@@ -1217,7 +1217,7 @@ Therefore:
 
 ---
 
-# Requests Too High
+## Requests Too High
 
 Suppose:
 
@@ -1243,7 +1243,7 @@ Unused Capacity
 
 ---
 
-# Cluster Autoscaler and VPA
+## Cluster Autoscaler and VPA
 
 VPA can change resource requests.
 
@@ -1279,7 +1279,7 @@ Add Node
 
 ---
 
-# Cluster Autoscaler and HPA
+## Cluster Autoscaler and HPA
 
 HPA increases replicas:
 
@@ -1305,7 +1305,7 @@ This is a common production architecture.
 
 ---
 
-# Complete Autoscaling Architecture
+## Complete Autoscaling Architecture
 
 ```text
                     User Traffic
@@ -1355,7 +1355,7 @@ More Nodes
 
 ---
 
-# Scale-Down Candidate
+## Scale-Down Candidate
 
 A Node may become a candidate for removal when:
 
@@ -1379,7 +1379,7 @@ The exact thresholds and timing depend on configuration.
 
 ---
 
-# Unremovable Node
+## Unremovable Node
 
 A Node may not be removable because:
 
@@ -1413,7 +1413,7 @@ Other scheduling constraints apply
 
 ---
 
-# Why Nodes May Not Scale Down
+## Why Nodes May Not Scale Down
 
 Common reasons:
 
@@ -1447,7 +1447,7 @@ Pods that cannot be safely evicted
 
 ---
 
-# Scale-Down Timing
+## Scale-Down Timing
 
 Cluster Autoscaler generally does not immediately remove a Node the moment utilization decreases.
 
@@ -1477,7 +1477,7 @@ Rapid scale-up
 
 ---
 
-# Scaling Thrashing
+## Scaling Thrashing
 
 Suppose:
 
@@ -1511,7 +1511,7 @@ Autoscaling systems therefore use delays and stabilization mechanisms.
 
 ---
 
-# Cost Optimization
+## Cost Optimization
 
 Cluster Autoscaler can reduce cost by removing unnecessary Nodes.
 
@@ -1539,7 +1539,7 @@ the cluster can potentially reduce capacity during low-demand periods.
 
 ---
 
-# But Cost Is Not the Only Goal
+## But Cost Is Not the Only Goal
 
 Autoscaling should balance:
 
@@ -1563,7 +1563,7 @@ Application disruption
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Before configuring Cluster Autoscaler, consider:
 
@@ -1580,7 +1580,7 @@ Cost
 
 ---
 
-# Multiple Node Groups
+## Multiple Node Groups
 
 A production cluster may have:
 
@@ -1621,7 +1621,7 @@ This enables workload-specific scaling.
 
 ---
 
-# Labels and Node Groups
+## Labels and Node Groups
 
 Nodes can have labels:
 
@@ -1643,7 +1643,7 @@ This helps ensure the workload lands on the correct Node Group.
 
 ---
 
-# Taints and Node Groups
+## Taints and Node Groups
 
 A specialized Node Group can be protected with a taint:
 
@@ -1669,7 +1669,7 @@ This prevents unrelated workloads from consuming specialized capacity.
 
 ---
 
-# Cluster Autoscaler and Spot Nodes
+## Cluster Autoscaler and Spot Nodes
 
 Cloud providers may offer lower-cost interruptible/spot capacity.
 
@@ -1698,7 +1698,7 @@ Application recovery
 
 ---
 
-# High Availability
+## High Availability
 
 Do not design autoscaling around a single Node Group if availability requirements are high.
 
@@ -1718,7 +1718,7 @@ where appropriate.
 
 ---
 
-# Failure Scenario
+## Failure Scenario
 
 Suppose:
 
@@ -1742,7 +1742,7 @@ Cluster Autoscaler may add capacity elsewhere if the infrastructure and Node Gro
 
 ---
 
-# Pod Topology
+## Pod Topology
 
 Topology constraints can influence where Pods can run.
 
@@ -1758,7 +1758,7 @@ If Pods require distribution across zones, the autoscaler must work with the sch
 
 ---
 
-# Hands-on Lab 1 – Observe Pending Pods
+## Hands-on Lab 1 – Observe Pending Pods
 
 Create a Pod with a large request:
 
@@ -1788,7 +1788,7 @@ Study the scheduling events.
 
 ---
 
-# Hands-on Lab 2 – Observe Node Capacity
+## Hands-on Lab 2 – Observe Node Capacity
 
 Run:
 
@@ -1812,7 +1812,7 @@ Allocated resources
 
 ---
 
-# Hands-on Lab 3 – HPA + Cluster Autoscaler
+## Hands-on Lab 3 – HPA + Cluster Autoscaler
 
 In a cloud or suitable autoscaling cluster:
 
@@ -1843,7 +1843,7 @@ kubectl get nodes -w
 
 ---
 
-# Hands-on Lab 4 – Scale Down
+## Hands-on Lab 4 – Scale Down
 
 Reduce application demand.
 
@@ -1877,7 +1877,7 @@ kubectl get nodes -w
 
 ---
 
-# Hands-on Lab 5 – PodDisruptionBudget
+## Hands-on Lab 5 – PodDisruptionBudget
 
 Create:
 
@@ -1905,7 +1905,7 @@ Observe how disruption constraints affect Node maintenance and scale-down behavi
 
 ---
 
-# Hands-on Lab 6 – Node Affinity
+## Hands-on Lab 6 – Node Affinity
 
 Create a Node label:
 
@@ -1927,7 +1927,7 @@ In an autoscaling environment, consider which Node Group could satisfy the requi
 
 ---
 
-# Hands-on Lab 7 – Taints and Tolerations
+## Hands-on Lab 7 – Taints and Tolerations
 
 Add a taint:
 
@@ -1967,9 +1967,9 @@ kubectl taint nodes <node-name> dedicated=special:NoSchedule-
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Cluster Autoscaler Is Not Scaling Up
+### Cluster Autoscaler Is Not Scaling Up
 
 Check:
 
@@ -1997,7 +1997,7 @@ Events
 
 ---
 
-# Check Autoscaler Logs
+## Check Autoscaler Logs
 
 Depending on installation:
 
@@ -2009,7 +2009,7 @@ The exact resource name and namespace may differ.
 
 ---
 
-# Look for Scale-Up Messages
+## Look for Scale-Up Messages
 
 Autoscaler logs may contain information about:
 
@@ -2022,7 +2022,7 @@ Cloud Provider Errors
 
 ---
 
-# Cluster Autoscaler Does Not Scale Up
+## Cluster Autoscaler Does Not Scale Up
 
 Possible causes:
 
@@ -2052,7 +2052,7 @@ Scheduling constraints prevent scale-up
 
 ---
 
-# Maximum Capacity Reached
+## Maximum Capacity Reached
 
 Example:
 
@@ -2071,7 +2071,7 @@ You may need to increase capacity limits after validating cost and infrastructur
 
 ---
 
-# Scale-Up but Pods Still Pending
+## Scale-Up but Pods Still Pending
 
 Possible reasons:
 
@@ -2101,7 +2101,7 @@ Network/CNI issue
 
 ---
 
-# Cluster Autoscaler Is Not Scaling Down
+## Cluster Autoscaler Is Not Scaling Down
 
 Possible causes:
 
@@ -2131,7 +2131,7 @@ Node is not considered sufficiently underutilized
 
 ---
 
-# Check PDBs
+## Check PDBs
 
 ```bash
 kubectl get pdb
@@ -2145,7 +2145,7 @@ kubectl describe pdb <pdb-name>
 
 ---
 
-# Check Node Utilization
+## Check Node Utilization
 
 ```bash
 kubectl top nodes
@@ -2159,7 +2159,7 @@ kubectl describe node <node-name>
 
 ---
 
-# Check Scheduling Constraints
+## Check Scheduling Constraints
 
 Inspect:
 
@@ -2179,9 +2179,9 @@ resources
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Confusing HPA and Cluster Autoscaler
+### 1. Confusing HPA and Cluster Autoscaler
 
 Remember:
 
@@ -2199,13 +2199,13 @@ Nodes
 
 ---
 
-## 2. Assuming Every Pending Pod Causes Scale-Up
+### 2. Assuming Every Pending Pod Causes Scale-Up
 
 A Pod may be unschedulable for reasons that additional generic Nodes cannot solve.
 
 ---
 
-## 3. Setting maxNodes Too Low
+### 3. Setting maxNodes Too Low
 
 Example:
 
@@ -2223,7 +2223,7 @@ The cluster cannot scale beyond 3.
 
 ---
 
-## 4. Ignoring Resource Requests
+### 4. Ignoring Resource Requests
 
 Cluster Autoscaler relies heavily on scheduling information.
 
@@ -2231,31 +2231,31 @@ Bad requests produce bad capacity decisions.
 
 ---
 
-## 5. Ignoring PDB
+### 5. Ignoring PDB
 
 An overly restrictive PDB can prevent safe Node removal.
 
 ---
 
-## 6. Ignoring Affinity
+### 6. Ignoring Affinity
 
 A Node may look removable, but its Pods may have nowhere else to go.
 
 ---
 
-## 7. Ignoring Taints
+### 7. Ignoring Taints
 
 Specialized Node Groups may require tolerations.
 
 ---
 
-## 8. Ignoring Local Storage
+### 8. Ignoring Local Storage
 
 Pods using local storage can prevent Node removal or complicate safe rescheduling.
 
 ---
 
-## 9. Using Huge Pod Requests
+### 9. Using Huge Pod Requests
 
 Huge requests can cause:
 
@@ -2271,7 +2271,7 @@ Unnecessary Node scaling
 
 ---
 
-## 10. Setting Maximum Capacity Too Low
+### 10. Setting Maximum Capacity Too Low
 
 This can cause:
 
@@ -2283,7 +2283,7 @@ during legitimate traffic spikes.
 
 ---
 
-## 11. Scaling Without Considering Cost
+### 11. Scaling Without Considering Cost
 
 Unlimited scale-out is not a production strategy.
 
@@ -2297,7 +2297,7 @@ SLO
 
 ---
 
-## 12. Treating Autoscaling as Instantaneous
+### 12. Treating Autoscaling as Instantaneous
 
 Node creation takes time.
 
@@ -2321,7 +2321,7 @@ This can take longer than Pod-level scaling.
 
 ---
 
-# Cluster Autoscaler and Startup Time
+## Cluster Autoscaler and Startup Time
 
 Suppose:
 
@@ -2348,7 +2348,7 @@ Traffic patterns
 
 ---
 
-# Overprovisioning
+## Overprovisioning
 
 Some production environments intentionally maintain spare capacity.
 
@@ -2374,7 +2374,7 @@ Additional infrastructure cost
 
 ---
 
-# Buffer Capacity
+## Buffer Capacity
 
 A capacity buffer can help absorb sudden workload spikes.
 
@@ -2400,7 +2400,7 @@ Autoscaler adds Nodes
 
 ---
 
-# Cost Optimization Strategy
+## Cost Optimization Strategy
 
 A mature autoscaling strategy can combine:
 
@@ -2420,7 +2420,7 @@ Cost-aware capacity
 
 ---
 
-# Production Architecture
+## Production Architecture
 
 A robust architecture may look like:
 
@@ -2472,7 +2472,7 @@ A robust architecture may look like:
 
 ---
 
-# Multi-Node-Group Architecture
+## Multi-Node-Group Architecture
 
 Example:
 
@@ -2501,7 +2501,7 @@ Taints
 
 ---
 
-# Availability Zones
+## Availability Zones
 
 A production cluster can distribute Nodes across multiple zones:
 
@@ -2523,7 +2523,7 @@ Autoscaling should preserve sufficient capacity across failure domains where pos
 
 ---
 
-# Cluster Autoscaler and Disaster Recovery
+## Cluster Autoscaler and Disaster Recovery
 
 Autoscaling is not disaster recovery.
 
@@ -2545,7 +2545,7 @@ These are handled by separate disaster-recovery mechanisms.
 
 ---
 
-# Cluster Autoscaler and Security
+## Cluster Autoscaler and Security
 
 Adding Nodes dynamically requires secure:
 
@@ -2562,7 +2562,7 @@ Cloud IAM permissions should follow least privilege.
 
 ---
 
-# Monitoring Cluster Autoscaler
+## Monitoring Cluster Autoscaler
 
 Monitor:
 
@@ -2589,7 +2589,7 @@ because autoscaling is a multi-controller system.
 
 ---
 
-# Important Metrics
+## Important Metrics
 
 Useful operational metrics include:
 
@@ -2623,7 +2623,7 @@ Scale-down frequency
 
 ---
 
-# Autoscaling Feedback Loop
+## Autoscaling Feedback Loop
 
 A complete system can be visualized as:
 
@@ -2664,21 +2664,21 @@ A complete system can be visualized as:
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Set Realistic Min/Max Node Counts
+#### 1. Set Realistic Min/Max Node Counts
 
 Do not make maximum capacity arbitrarily small or large.
 
 ---
 
-### 2. Use Accurate Resource Requests
+#### 2. Use Accurate Resource Requests
 
 Requests influence scheduling and capacity planning.
 
 ---
 
-### 3. Combine HPA and Cluster Autoscaler Carefully
+#### 3. Combine HPA and Cluster Autoscaler Carefully
 
 Use:
 
@@ -2689,7 +2689,7 @@ CA → Node scaling
 
 ---
 
-### 4. Test Scale-Up
+#### 4. Test Scale-Up
 
 Verify that:
 
@@ -2707,19 +2707,19 @@ when appropriate.
 
 ---
 
-### 5. Test Scale-Down
+#### 5. Test Scale-Down
 
 Verify that workloads can safely move between Nodes.
 
 ---
 
-### 6. Use PDBs Carefully
+#### 6. Use PDBs Carefully
 
 Protect availability without completely blocking Node maintenance.
 
 ---
 
-### 7. Design Node Groups Around Workloads
+#### 7. Design Node Groups Around Workloads
 
 Use specialized pools when necessary:
 
@@ -2732,31 +2732,31 @@ General
 
 ---
 
-### 8. Use Labels and Taints Intentionally
+#### 8. Use Labels and Taints Intentionally
 
 Ensure specialized workloads reach appropriate Nodes.
 
 ---
 
-### 9. Monitor Node Provisioning Time
+#### 9. Monitor Node Provisioning Time
 
 Autoscaling is only as effective as the time required to bring capacity online.
 
 ---
 
-### 10. Keep Spare Capacity for Critical Workloads
+#### 10. Keep Spare Capacity for Critical Workloads
 
 For latency-sensitive applications, some spare capacity may be preferable to waiting for new Nodes.
 
 ---
 
-### 11. Consider Multiple Availability Zones
+#### 11. Consider Multiple Availability Zones
 
 Avoid creating a single-zone capacity dependency for critical workloads.
 
 ---
 
-### 12. Set a Maximum Capacity
+#### 12. Set a Maximum Capacity
 
 Protect against:
 
@@ -2769,9 +2769,9 @@ Traffic Attacks
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Cluster Autoscaler
+### Cluster Autoscaler
 
 ```text
 Automatically changes Node count
@@ -2779,7 +2779,7 @@ Automatically changes Node count
 
 ---
 
-## Scale Up
+### Scale Up
 
 ```text
 Pending Pods
@@ -2789,7 +2789,7 @@ More Nodes
 
 ---
 
-## Scale Down
+### Scale Down
 
 ```text
 Unused/Underutilized Capacity
@@ -2799,7 +2799,7 @@ Remove Nodes
 
 ---
 
-## HPA
+### HPA
 
 ```text
 Pod count
@@ -2807,7 +2807,7 @@ Pod count
 
 ---
 
-## VPA
+### VPA
 
 ```text
 Pod resources
@@ -2815,7 +2815,7 @@ Pod resources
 
 ---
 
-## Cluster Autoscaler
+### Cluster Autoscaler
 
 ```text
 Node count
@@ -2823,7 +2823,7 @@ Node count
 
 ---
 
-## Node Group
+### Node Group
 
 ```text
 Collection of similar Nodes
@@ -2831,7 +2831,7 @@ Collection of similar Nodes
 
 ---
 
-## min
+### min
 
 ```text
 Minimum Node capacity
@@ -2839,7 +2839,7 @@ Minimum Node capacity
 
 ---
 
-## max
+### max
 
 ```text
 Maximum Node capacity
@@ -2847,7 +2847,7 @@ Maximum Node capacity
 
 ---
 
-## PDB
+### PDB
 
 ```text
 Controls voluntary disruption
@@ -2855,7 +2855,7 @@ Controls voluntary disruption
 
 ---
 
-## Requests
+### Requests
 
 ```text
 Important for scheduling and capacity planning
@@ -2863,7 +2863,7 @@ Important for scheduling and capacity planning
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 List Nodes:
 
@@ -2941,9 +2941,9 @@ The exact autoscaler resource name and namespace may differ by installation.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Cluster Autoscaler?
 - Why do we need Cluster Autoscaler?
@@ -2955,7 +2955,7 @@ The exact autoscaler resource name and namespace may differ by installation.
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does Cluster Autoscaler detect that more Nodes are needed?
 - What is an unschedulable Pod?
@@ -2969,7 +2969,7 @@ The exact autoscaler resource name and namespace may differ by installation.
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Cluster Autoscaler scale-up flow.
 - Explain the complete scale-down flow.
@@ -2994,7 +2994,7 @@ The exact autoscaler resource name and namespace may differ by installation.
 
 ---
 
-# Production Scenario
+## Production Scenario
 
 Suppose a production API normally runs:
 
@@ -3084,7 +3084,7 @@ Scheduler
 
 ---
 
-# Scale-Down Scenario
+## Scale-Down Scenario
 
 Later:
 
@@ -3154,7 +3154,7 @@ Cluster becomes:
 
 ---
 
-# Production Autoscaling Model
+## Production Autoscaling Model
 
 A mature Kubernetes environment can use:
 
@@ -3209,7 +3209,7 @@ Cluster Autoscaler
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Understand the difference between HPA, VPA, and Cluster Autoscaler.
 2. Inspect Node capacity and allocatable resources.
@@ -3238,9 +3238,9 @@ Cluster Autoscaler
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Cluster Autoscaling
 - Node Autoscaling
@@ -3257,7 +3257,7 @@ Cluster Autoscaler
 
 ---
 
-## Kubernetes Ecosystem
+### Kubernetes Ecosystem
 
 - Cluster Autoscaler
 - Kubernetes SIG Autoscaling
@@ -3266,7 +3266,7 @@ Cluster Autoscaler
 
 ---
 
-## Cloud Platforms
+### Cloud Platforms
 
 Cluster Autoscaler implementations are commonly integrated with managed Kubernetes platforms and their Node Group/Node Pool systems.
 
@@ -3282,7 +3282,7 @@ Always consult the documentation for the specific Kubernetes distribution and cl
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Cluster Autoscaler provides **Node-level elasticity** for Kubernetes.
 
@@ -3472,7 +3472,7 @@ This completes **Module 6 — Kubernetes Scheduling**.
 
 ---
 
-# Module 6 Complete
+## Module 6 Complete
 
 ```text
 Chapter 36 – Scheduler
@@ -3489,11 +3489,11 @@ Chapter 45 – Cluster Autoscaler
 
 ---
 
-## Next Module
+### Next Module
 
-# Module 7 — Kubernetes Security
+## Module 7 — Kubernetes Security
 
-### Chapter 46 – Kubernetes Security Fundamentals
+#### Chapter 46 – Kubernetes Security Fundamentals
 
 Topics will include:
 

@@ -1,6 +1,6 @@
 # 27 - API Security Interview Questions
 
-# Introduction
+## Introduction
 
 API Security is one of the fastest-growing domains in cybersecurity. Organizations increasingly expect engineers to understand secure API design, authentication, authorization, cloud-native architectures, DevSecOps, monitoring, and incident response.
 
@@ -37,7 +37,7 @@ Successful Interview
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -52,7 +52,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Interview Preparation Strategy
+## Interview Preparation Strategy
 
 Before attending interviews, review:
 
@@ -73,7 +73,7 @@ Employers often evaluate both conceptual understanding and practical application
 
 ---
 
-# Frequently Tested Areas
+## Frequently Tested Areas
 
 | Domain | Importance |
 |----------|------------|
@@ -92,9 +92,9 @@ Employers often evaluate both conceptual understanding and practical application
 
 ---
 
-# Fundamental Questions
+## Fundamental Questions
 
-## 1. What is an API?
+### 1. What is an API?
 
 **Answer**
 
@@ -102,7 +102,7 @@ An API (Application Programming Interface) is a defined interface that enables d
 
 ---
 
-## 2. Why are APIs attractive attack targets?
+### 2. Why are APIs attractive attack targets?
 
 **Answer**
 
@@ -118,7 +118,7 @@ Compromising an API can directly affect business operations and user data.
 
 ---
 
-## 3. What is REST?
+### 3. What is REST?
 
 **Answer**
 
@@ -126,7 +126,7 @@ REST is an architectural style based on stateless communication using standard H
 
 ---
 
-## 4. What is stateless communication?
+### 4. What is stateless communication?
 
 **Answer**
 
@@ -136,7 +136,7 @@ The server does not depend on previous requests to understand the current reques
 
 ---
 
-## 5. What is the difference between REST and SOAP?
+### 5. What is the difference between REST and SOAP?
 
 | REST | SOAP |
 |-------|------|
@@ -148,7 +148,7 @@ The server does not depend on previous requests to understand the current reques
 
 ---
 
-## 6. What is GraphQL?
+### 6. What is GraphQL?
 
 **Answer**
 
@@ -156,7 +156,7 @@ GraphQL is a query language and runtime that allows clients to request exactly t
 
 ---
 
-## 7. What is gRPC?
+### 7. What is gRPC?
 
 **Answer**
 
@@ -164,7 +164,7 @@ gRPC is a high-performance RPC framework that uses Protocol Buffers for efficien
 
 ---
 
-## 8. What is an API Gateway?
+### 8. What is an API Gateway?
 
 **Answer**
 
@@ -172,7 +172,7 @@ An API Gateway acts as a centralized entry point that provides routing, authenti
 
 ---
 
-## 9. What is API Versioning?
+### 9. What is API Versioning?
 
 **Answer**
 
@@ -180,7 +180,7 @@ API versioning allows changes to be introduced without breaking existing clients
 
 ---
 
-## 10. Why is HTTPS mandatory?
+### 10. Why is HTTPS mandatory?
 
 **Answer**
 
@@ -188,21 +188,21 @@ HTTPS encrypts data in transit, protecting against interception, tampering, and 
 
 ---
 
-# Authentication Questions
+## Authentication Questions
 
-## 11. What is authentication?
+### 11. What is authentication?
 
 Authentication verifies the identity of a user, application, or service.
 
 ---
 
-## 12. What is authorization?
+### 12. What is authorization?
 
 Authorization determines what an authenticated identity is permitted to do.
 
 ---
 
-## 13. What is the difference?
+### 13. What is the difference?
 
 ```
 Authentication
@@ -218,7 +218,7 @@ What are you allowed to do?
 
 ---
 
-## 14. What is Multi-Factor Authentication?
+### 14. What is Multi-Factor Authentication?
 
 Authentication using two or more independent verification factors.
 
@@ -231,19 +231,19 @@ Examples
 
 ---
 
-## 15. What is Single Sign-On (SSO)?
+### 15. What is Single Sign-On (SSO)?
 
 A mechanism allowing users to authenticate once and access multiple applications.
 
 ---
 
-## 16. What is JWT?
+### 16. What is JWT?
 
 A JSON Web Token is a signed token commonly used to securely transmit identity and authorization claims.
 
 ---
 
-## 17. Should JWTs be encrypted?
+### 17. Should JWTs be encrypted?
 
 Not necessarily.
 
@@ -251,65 +251,65 @@ JWTs are commonly signed for integrity. Encryption is used only when confidentia
 
 ---
 
-## 18. What is OAuth 2.0?
+### 18. What is OAuth 2.0?
 
 OAuth 2.0 is an authorization framework that enables applications to obtain delegated access to protected resources.
 
 ---
 
-## 19. What is OpenID Connect?
+### 19. What is OpenID Connect?
 
 OpenID Connect (OIDC) extends OAuth 2.0 by adding standardized authentication and identity information.
 
 ---
 
-## 20. Why should access tokens expire?
+### 20. Why should access tokens expire?
 
 Short-lived tokens reduce the impact if a token is compromised.
 
 ---
 
-# Authorization Questions
+## Authorization Questions
 
-## 21. What is RBAC?
+### 21. What is RBAC?
 
 Role-Based Access Control grants permissions according to assigned roles.
 
 ---
 
-## 22. What is ABAC?
+### 22. What is ABAC?
 
 Attribute-Based Access Control evaluates attributes such as user, resource, environment, and action before making authorization decisions.
 
 ---
 
-## 23. What is Least Privilege?
+### 23. What is Least Privilege?
 
 Every user or service receives only the permissions necessary to perform its required tasks.
 
 ---
 
-## 24. What is BOLA?
+### 24. What is BOLA?
 
 Broken Object Level Authorization occurs when APIs fail to verify that a user is authorized to access a requested object.
 
 ---
 
-## 25. Why should authorization be checked on every request?
+### 25. Why should authorization be checked on every request?
 
 Permissions may change between requests, and every protected action must be independently validated.
 
 ---
 
-# Secure Development Questions
+## Secure Development Questions
 
-## 26. Why validate input?
+### 26. Why validate input?
 
 To prevent malformed, malicious, or unexpected data from reaching business logic.
 
 ---
 
-## 27. What is allowlist validation?
+### 27. What is allowlist validation?
 
 Only explicitly permitted values are accepted.
 
@@ -317,65 +317,65 @@ Everything else is rejected.
 
 ---
 
-## 28. What is output encoding?
+### 28. What is output encoding?
 
 Preparing output so it is interpreted safely in its intended context.
 
 ---
 
-## 29. Why avoid hard-coded secrets?
+### 29. Why avoid hard-coded secrets?
 
 Hard-coded secrets are difficult to rotate, easy to leak, and increase the impact of source code exposure.
 
 ---
 
-## 30. What is Security by Design?
+### 30. What is Security by Design?
 
 Security is incorporated during requirements, architecture, implementation, testing, deployment, and operations—not added later.
 
 ---
 
-# OWASP API Security Questions
+## OWASP API Security Questions
 
-## 31. What is the OWASP API Security Top 10?
+### 31. What is the OWASP API Security Top 10?
 
 A widely recognized list of the most significant API security risks.
 
 ---
 
-## 32. Which vulnerability is most common?
+### 32. Which vulnerability is most common?
 
 Broken Object Level Authorization (BOLA) is one of the most frequently observed and impactful API vulnerabilities.
 
 ---
 
-## 33. What causes BFLA?
+### 33. What causes BFLA?
 
 Broken Function Level Authorization occurs when APIs fail to enforce permissions for specific operations or functions.
 
 ---
 
-## 34. What is unrestricted resource consumption?
+### 34. What is unrestricted resource consumption?
 
 Failure to properly limit expensive operations, potentially allowing abuse that affects availability.
 
 ---
 
-## 35. What is security misconfiguration?
+### 35. What is security misconfiguration?
 
 Weak or incorrect configuration that introduces security weaknesses.
 
 ---
 
-# API Testing Questions
+## API Testing Questions
 
-## 36. What is API fuzzing?
+### 36. What is API fuzzing?
 
 Automatically sending unexpected, malformed, or boundary-case inputs to evaluate API robustness and identify potential vulnerabilities.
 
 ---
 
-## 37. Difference between vulnerability scanning and penetration testing?
+### 37. Difference between vulnerability scanning and penetration testing?
 
 | Vulnerability Scanning | Penetration Testing |
 |------------------------|--------------------|
@@ -386,7 +386,7 @@ Automatically sending unexpected, malformed, or boundary-case inputs to evaluate
 
 ---
 
-## 38. Why manually verify scanner findings?
+### 38. Why manually verify scanner findings?
 
 Automated tools can produce false positives and false negatives.
 
@@ -394,21 +394,21 @@ Manual validation improves accuracy.
 
 ---
 
-## 39. What is contract testing?
+### 39. What is contract testing?
 
 Testing that verifies an API implementation conforms to its documented specification.
 
 ---
 
-## 40. What is API enumeration?
+### 40. What is API enumeration?
 
 The process of identifying available API endpoints, methods, versions, and functionality.
 
 ---
 
-# Monitoring Questions
+## Monitoring Questions
 
-## 41. What should be logged?
+### 41. What should be logged?
 
 Security-relevant events such as
 
@@ -421,7 +421,7 @@ Security-relevant events such as
 
 ---
 
-## 42. What are the three pillars of observability?
+### 42. What are the three pillars of observability?
 
 - Logs
 - Metrics
@@ -429,33 +429,33 @@ Security-relevant events such as
 
 ---
 
-## 43. Why use correlation IDs?
+### 43. Why use correlation IDs?
 
 To follow a single request across multiple systems during troubleshooting and investigations.
 
 ---
 
-## 44. What is SIEM?
+### 44. What is SIEM?
 
 A Security Information and Event Management platform that centralizes telemetry, correlates events, and supports threat detection and investigations.
 
 ---
 
-## 45. What is detection engineering?
+### 45. What is detection engineering?
 
 The process of designing, implementing, testing, and continuously improving security detections.
 
 ---
 
-# Incident Response Questions
+## Incident Response Questions
 
-## 46. What is containment?
+### 46. What is containment?
 
 Actions taken to stop or limit ongoing damage during an incident.
 
 ---
 
-## 47. Difference between containment and eradication?
+### 47. Difference between containment and eradication?
 
 Containment limits the attack.
 
@@ -463,27 +463,27 @@ Eradication removes its root cause.
 
 ---
 
-## 48. Why preserve evidence?
+### 48. Why preserve evidence?
 
 Evidence supports investigations, root cause analysis, compliance, and legal processes where applicable.
 
 ---
 
-## 49. What is an IOC?
+### 49. What is an IOC?
 
 An Indicator of Compromise suggests that a system may have been compromised.
 
 ---
 
-## 50. What is an IOA?
+### 50. What is an IOA?
 
 An Indicator of Attack describes suspicious attacker behavior that may indicate malicious activity before a confirmed compromise.
 
 ---
 
-# Architecture Questions
+## Architecture Questions
 
-## 51. Design a secure public API.
+### 51. Design a secure public API.
 
 Expected discussion
 
@@ -501,13 +501,13 @@ Expected discussion
 
 ---
 
-## 52. Where should rate limiting be enforced?
+### 52. Where should rate limiting be enforced?
 
 Preferably at the API Gateway, while applications may implement additional business-specific limits where appropriate.
 
 ---
 
-## 53. How would you secure microservices?
+### 53. How would you secure microservices?
 
 Discuss
 
@@ -521,7 +521,7 @@ Discuss
 
 ---
 
-## 54. How would you protect sensitive APIs?
+### 54. How would you protect sensitive APIs?
 
 Expected controls
 
@@ -535,7 +535,7 @@ Expected controls
 
 ---
 
-## 55. What makes an API security architecture mature?
+### 55. What makes an API security architecture mature?
 
 Characteristics include
 
@@ -548,7 +548,7 @@ Characteristics include
 - Continuous improvement
 
 ---
-# Advanced API Security Interview Questions
+## Advanced API Security Interview Questions
 
 These questions evaluate practical experience, architectural thinking, troubleshooting ability, and decision-making rather than simple memorization.
 
@@ -562,9 +562,9 @@ Interviewers are generally interested in:
 
 ---
 
-# Whiteboard System Design Questions
+## Whiteboard System Design Questions
 
-## 56. Design a Secure Public REST API
+### 56. Design a Secure Public REST API
 
 Expected discussion
 
@@ -631,7 +631,7 @@ Points to discuss
 
 ---
 
-## 57. Design a Secure Microservices API Platform
+### 57. Design a Secure Microservices API Platform
 
 Key discussion areas
 
@@ -647,7 +647,7 @@ Key discussion areas
 
 ---
 
-## 58. Design an Enterprise API Monitoring Solution
+### 58. Design an Enterprise API Monitoring Solution
 
 Expected components
 
@@ -685,7 +685,7 @@ Incident Response
 
 ---
 
-## 59. Design Secure Partner APIs
+### 59. Design Secure Partner APIs
 
 Discussion
 
@@ -700,7 +700,7 @@ Discussion
 
 ---
 
-## 60. Design Secure Internal APIs
+### 60. Design Secure Internal APIs
 
 Expected discussion
 
@@ -714,9 +714,9 @@ Expected discussion
 
 ---
 
-# Practical Security Questions
+## Practical Security Questions
 
-## 61. A user accesses another customer's data by changing an object ID.
+### 61. A user accesses another customer's data by changing an object ID.
 
 Expected answer
 
@@ -732,7 +732,7 @@ Mitigation
 
 ---
 
-## 62. Authentication succeeds, but unauthorized users can call administrator APIs.
+### 62. Authentication succeeds, but unauthorized users can call administrator APIs.
 
 Expected answer
 
@@ -747,7 +747,7 @@ Recommended controls
 
 ---
 
-## 63. API latency suddenly increases.
+### 63. API latency suddenly increases.
 
 Investigation approach
 
@@ -760,7 +760,7 @@ Investigation approach
 
 ---
 
-## 64. JWTs are stolen.
+### 64. JWTs are stolen.
 
 Immediate response
 
@@ -773,7 +773,7 @@ Immediate response
 
 ---
 
-## 65. API keys appear in a public repository.
+### 65. API keys appear in a public repository.
 
 Recommended response
 
@@ -786,9 +786,9 @@ Recommended response
 
 ---
 
-# Penetration Testing Questions
+## Penetration Testing Questions
 
-## 66. How would you begin an API penetration test?
+### 66. How would you begin an API penetration test?
 
 Expected methodology
 
@@ -826,7 +826,7 @@ Reporting
 
 ---
 
-## 67. What do you review first?
+### 67. What do you review first?
 
 Generally
 
@@ -839,7 +839,7 @@ Generally
 
 ---
 
-## 68. How do you test authorization?
+### 68. How do you test authorization?
 
 Examples
 
@@ -851,7 +851,7 @@ Examples
 
 ---
 
-## 69. How do you test rate limiting?
+### 69. How do you test rate limiting?
 
 Review
 
@@ -870,7 +870,7 @@ Observe
 
 ---
 
-## 70. How do you test GraphQL?
+### 70. How do you test GraphQL?
 
 Discuss
 
@@ -883,9 +883,9 @@ Discuss
 
 ---
 
-# DevSecOps Questions
+## DevSecOps Questions
 
-## 71. Where should API security testing occur?
+### 71. Where should API security testing occur?
 
 Throughout the SDLC
 
@@ -927,7 +927,7 @@ Runtime Monitoring
 
 ---
 
-## 72. Why automate security testing?
+### 72. Why automate security testing?
 
 Benefits
 
@@ -939,7 +939,7 @@ Benefits
 
 ---
 
-## 73. What belongs in a secure CI/CD pipeline?
+### 73. What belongs in a secure CI/CD pipeline?
 
 Expected discussion
 
@@ -955,7 +955,7 @@ Expected discussion
 
 ---
 
-## 74. Why rotate secrets?
+### 74. Why rotate secrets?
 
 Benefits
 
@@ -966,15 +966,15 @@ Benefits
 
 ---
 
-## 75. What is Infrastructure as Code?
+### 75. What is Infrastructure as Code?
 
 Managing infrastructure through version-controlled code for consistency, repeatability, review, and automation.
 
 ---
 
-# Monitoring & SOC Questions
+## Monitoring & SOC Questions
 
-## 76. Which events should always be logged?
+### 76. Which events should always be logged?
 
 Examples
 
@@ -988,7 +988,7 @@ Examples
 
 ---
 
-## 77. What should trigger alerts?
+### 77. What should trigger alerts?
 
 Examples
 
@@ -1002,7 +1002,7 @@ Examples
 
 ---
 
-## 78. How do you reduce false positives?
+### 78. How do you reduce false positives?
 
 Approaches
 
@@ -1014,7 +1014,7 @@ Approaches
 
 ---
 
-## 79. What metrics matter most?
+### 79. What metrics matter most?
 
 Examples
 
@@ -1028,15 +1028,15 @@ Examples
 
 ---
 
-## 80. What is detection engineering?
+### 80. What is detection engineering?
 
 Designing, implementing, validating, and continuously improving security detections using telemetry and threat knowledge.
 
 ---
 
-# Troubleshooting Questions
+## Troubleshooting Questions
 
-## 81. API works locally but fails in production.
+### 81. API works locally but fails in production.
 
 Possible investigation
 
@@ -1049,7 +1049,7 @@ Possible investigation
 
 ---
 
-## 82. Users receive intermittent 401 responses.
+### 82. Users receive intermittent 401 responses.
 
 Possible causes
 
@@ -1061,7 +1061,7 @@ Possible causes
 
 ---
 
-## 83. API returns unexpected 403 responses.
+### 83. API returns unexpected 403 responses.
 
 Possible causes
 
@@ -1073,7 +1073,7 @@ Possible causes
 
 ---
 
-## 84. API performance degrades under load.
+### 84. API performance degrades under load.
 
 Review
 
@@ -1086,7 +1086,7 @@ Review
 
 ---
 
-## 85. Logs are missing during investigations.
+### 85. Logs are missing during investigations.
 
 Investigate
 
@@ -1098,9 +1098,9 @@ Investigate
 
 ---
 
-# Behavioral Interview Questions
+## Behavioral Interview Questions
 
-## 86. Tell me about a difficult security problem you solved.
+### 86. Tell me about a difficult security problem you solved.
 
 Interviewers expect
 
@@ -1114,7 +1114,7 @@ Use the STAR (Situation, Task, Action, Result) framework.
 
 ---
 
-## 87. Describe a production incident.
+### 87. Describe a production incident.
 
 Discuss
 
@@ -1128,7 +1128,7 @@ Avoid sharing confidential information.
 
 ---
 
-## 88. How do you stay current?
+### 88. How do you stay current?
 
 Examples
 
@@ -1142,7 +1142,7 @@ Examples
 
 ---
 
-## 89. How do you prioritize vulnerabilities?
+### 89. How do you prioritize vulnerabilities?
 
 Discuss
 
@@ -1155,7 +1155,7 @@ Discuss
 
 ---
 
-## 90. Why API Security?
+### 90. Why API Security?
 
 A strong answer usually combines
 
@@ -1167,9 +1167,9 @@ A strong answer usually combines
 
 ---
 
-# HR Interview Questions
+## HR Interview Questions
 
-## 91. Why should we hire you?
+### 91. Why should we hire you?
 
 Highlight
 
@@ -1181,7 +1181,7 @@ Highlight
 
 ---
 
-## 92. Describe your biggest technical project.
+### 92. Describe your biggest technical project.
 
 A strong response includes
 
@@ -1193,7 +1193,7 @@ A strong response includes
 
 ---
 
-## 93. How do you handle pressure?
+### 93. How do you handle pressure?
 
 Focus on
 
@@ -1205,7 +1205,7 @@ Focus on
 
 ---
 
-## 94. What are your strengths?
+### 94. What are your strengths?
 
 Examples
 
@@ -1219,15 +1219,15 @@ Support strengths with real examples.
 
 ---
 
-## 95. What is your biggest weakness?
+### 95. What is your biggest weakness?
 
 Choose a genuine but manageable area for improvement and explain the concrete steps you are taking to improve it.
 
 ---
 
-# Interview Tips
+## Interview Tips
 
-## Before the Interview
+### Before the Interview
 
 - Review API fundamentals.
 - Understand OWASP API Security Top 10.
@@ -1238,7 +1238,7 @@ Choose a genuine but manageable area for improvement and explain the concrete st
 
 ---
 
-## During the Interview
+### During the Interview
 
 - Clarify ambiguous questions.
 - Think aloud when solving problems.
@@ -1249,7 +1249,7 @@ Choose a genuine but manageable area for improvement and explain the concrete st
 
 ---
 
-## After the Interview
+### After the Interview
 
 - Review questions you found difficult.
 - Research unfamiliar topics.
@@ -1258,9 +1258,9 @@ Choose a genuine but manageable area for improvement and explain the concrete st
 
 ---
 
-# Mock Interview Scenarios
+## Mock Interview Scenarios
 
-## Scenario 1
+### Scenario 1
 
 An e-commerce API suddenly receives ten times its normal traffic.
 
@@ -1275,7 +1275,7 @@ Discuss
 
 ---
 
-## Scenario 2
+### Scenario 2
 
 A mobile application reports intermittent authentication failures.
 
@@ -1290,7 +1290,7 @@ Explain
 
 ---
 
-## Scenario 3
+### Scenario 3
 
 A penetration tester reports Broken Object Level Authorization.
 
@@ -1305,7 +1305,7 @@ Discuss
 
 ---
 
-## Scenario 4
+### Scenario 4
 
 A production API experiences a sudden increase in HTTP 500 responses after deployment.
 
@@ -1320,7 +1320,7 @@ Discuss
 
 ---
 
-## Scenario 5
+### Scenario 5
 
 A partner reports that API responses are much slower than expected after enabling a new authentication mechanism.
 
@@ -1335,7 +1335,7 @@ Discuss
 
 ---
 
-# Self-Assessment Checklist
+## Self-Assessment Checklist
 
 Before attending interviews, ensure you can confidently explain:
 
@@ -1363,7 +1363,7 @@ Before attending interviews, ensure you can confidently explain:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Strong API Security interviews emphasize practical reasoning over memorization.
 - Be prepared to explain architecture, troubleshooting approaches, and security trade-offs.

@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Windows endpoints generate a large amount of forensic evidence.
 
@@ -51,7 +51,7 @@ A useful Windows investigation correlates multiple artifact families rather than
 
 ---
 
-# Why Windows Forensics Matters
+## Why Windows Forensics Matters
 
 Windows remains one of the most common enterprise endpoint operating systems.
 
@@ -77,7 +77,7 @@ Therefore, understanding Windows artifacts is essential for:
 
 ---
 
-# Windows Forensic Investigation Model
+## Windows Forensic Investigation Model
 
 ```text id="f8zqps"
 Alert
@@ -112,7 +112,7 @@ Correlate Evidence
 
 ---
 
-# Important Windows Evidence Sources
+## Important Windows Evidence Sources
 
 | Evidence Source | What It Can Help Determine |
 |---|---|
@@ -135,7 +135,7 @@ Correlate Evidence
 
 ---
 
-# Windows Event Logs
+## Windows Event Logs
 
 Windows Event Logs are among the most important sources of endpoint evidence.
 
@@ -153,7 +153,7 @@ Microsoft-Windows-Sysmon
 
 ---
 
-# Security Event Log
+## Security Event Log
 
 The Security log can contain evidence related to:
 
@@ -167,7 +167,7 @@ The Security log can contain evidence related to:
 
 ---
 
-# Authentication Investigation
+## Authentication Investigation
 
 A basic investigation may ask:
 
@@ -189,7 +189,7 @@ Using what authentication method?
 
 ---
 
-# Useful Authentication Event Categories
+## Useful Authentication Event Categories
 
 Depending on audit configuration and Windows version, investigators commonly examine events such as:
 
@@ -205,7 +205,7 @@ Event availability depends on audit policy and logging configuration.
 
 ---
 
-# Successful Logon
+## Successful Logon
 
 Example:
 
@@ -227,7 +227,7 @@ Investigate:
 
 ---
 
-# Failed Authentication
+## Failed Authentication
 
 ```powershell id="y7z8ga"
 Get-WinEvent -FilterHashtable @{
@@ -248,7 +248,7 @@ Do not automatically classify repeated failures as malicious.
 
 ---
 
-# Logon Types
+## Logon Types
 
 Common Windows logon types include:
 
@@ -268,7 +268,7 @@ Interpretation requires context.
 
 ---
 
-# Process Creation
+## Process Creation
 
 Process execution is central to endpoint forensics.
 
@@ -296,7 +296,7 @@ Process
 
 ---
 
-# Sysmon
+## Sysmon
 
 Sysmon can provide enhanced endpoint telemetry when appropriately configured.
 
@@ -316,7 +316,7 @@ Configuration determines what is logged.
 
 ---
 
-# PowerShell Forensics
+## PowerShell Forensics
 
 PowerShell is a legitimate administrative tool and therefore requires behavioral analysis rather than simply treating PowerShell as malicious.
 
@@ -331,7 +331,7 @@ Important evidence sources may include:
 
 ---
 
-# PowerShell Script Block Logging
+## PowerShell Script Block Logging
 
 Where enabled, script-block telemetry can provide visibility into executed PowerShell content.
 
@@ -355,7 +355,7 @@ File Activity
 
 ---
 
-# PowerShell Investigation
+## PowerShell Investigation
 
 Example:
 
@@ -379,7 +379,7 @@ Context is required.
 
 ---
 
-# Windows Registry
+## Windows Registry
 
 The Registry is a major forensic evidence source.
 
@@ -398,7 +398,7 @@ Registry
 
 ---
 
-# Major Registry Hives
+## Major Registry Hives
 
 Common hives include:
 
@@ -415,7 +415,7 @@ Each contains different categories of information.
 
 ---
 
-# SYSTEM Hive
+## SYSTEM Hive
 
 May contain evidence related to:
 
@@ -427,7 +427,7 @@ May contain evidence related to:
 
 ---
 
-# SOFTWARE Hive
+## SOFTWARE Hive
 
 May contain:
 
@@ -437,7 +437,7 @@ May contain:
 
 ---
 
-# SAM Hive
+## SAM Hive
 
 Contains Windows account-related information.
 
@@ -445,7 +445,7 @@ Access to sensitive account databases must be handled carefully and only for aut
 
 ---
 
-# NTUSER.DAT
+## NTUSER.DAT
 
 Per-user Registry hive.
 
@@ -458,13 +458,13 @@ It may contain evidence related to:
 
 ---
 
-# USRCLASS.DAT
+## USRCLASS.DAT
 
 May contain additional per-user shell and application activity.
 
 ---
 
-# Registry Persistence
+## Registry Persistence
 
 Common persistence locations include areas associated with:
 
@@ -478,7 +478,7 @@ Investigators should correlate Registry findings with actual process and executi
 
 ---
 
-# Registry Investigation Principle
+## Registry Investigation Principle
 
 A Registry key showing a program path does not automatically prove execution.
 
@@ -498,7 +498,7 @@ to establish stronger conclusions.
 
 ---
 
-# Prefetch
+## Prefetch
 
 Windows Prefetch can provide useful execution-related evidence on systems where it is enabled and applicable.
 
@@ -511,7 +511,7 @@ It can help investigators determine:
 
 ---
 
-# Prefetch Limitations
+## Prefetch Limitations
 
 Prefetch is not a universal execution log.
 
@@ -529,7 +529,7 @@ Therefore:
 
 ---
 
-# Amcache
+## Amcache
 
 Amcache is a Windows forensic artifact that can provide information about applications and executable files.
 
@@ -544,7 +544,7 @@ Its exact forensic interpretation depends on Windows version and artifact state.
 
 ---
 
-# Shimcache
+## Shimcache
 
 Shimcache is associated with Windows application compatibility mechanisms.
 
@@ -558,7 +558,7 @@ Correlate with other execution artifacts.
 
 ---
 
-# SRUM
+## SRUM
 
 System Resource Usage Monitor provides historical information related to application and system resource usage.
 
@@ -573,7 +573,7 @@ SRUM is particularly useful when reconstructing historical endpoint activity.
 
 ---
 
-# LNK Files
+## LNK Files
 
 Windows shortcut files can contain information about files and paths accessed through shortcuts.
 
@@ -588,7 +588,7 @@ LNK artifacts can help reconstruct user activity.
 
 ---
 
-# Jump Lists
+## Jump Lists
 
 Jump Lists can provide evidence about files and resources associated with applications.
 
@@ -605,7 +605,7 @@ They should be interpreted together with:
 
 ---
 
-# Browser Forensics
+## Browser Forensics
 
 Browsers can contain highly valuable evidence.
 
@@ -625,7 +625,7 @@ Extensions
 
 ---
 
-# Browser Investigation Questions
+## Browser Investigation Questions
 
 ```text id="v9g1yb"
 Which site was accessed?
@@ -639,7 +639,7 @@ Was authentication performed?
 
 ---
 
-# Browser Download Investigation
+## Browser Download Investigation
 
 Correlate:
 
@@ -663,7 +663,7 @@ This can reveal the relationship between browsing and endpoint activity.
 
 ---
 
-# Windows Defender
+## Windows Defender
 
 Microsoft Defender telemetry can provide evidence related to:
 
@@ -677,7 +677,7 @@ Defender evidence should be correlated with endpoint telemetry.
 
 ---
 
-# Windows Defender Investigation
+## Windows Defender Investigation
 
 Potential questions:
 
@@ -693,7 +693,7 @@ Were other endpoints affected?
 
 ---
 
-# Scheduled Tasks
+## Scheduled Tasks
 
 Scheduled Tasks are legitimate Windows functionality but can also be abused for persistence.
 
@@ -715,7 +715,7 @@ Get-ScheduledTask
 
 ---
 
-# Scheduled Task Investigation
+## Scheduled Task Investigation
 
 ```text id="6t0v7n"
 Task
@@ -737,7 +737,7 @@ Correlate task creation with:
 
 ---
 
-# Windows Services
+## Windows Services
 
 Services are another important persistence and execution mechanism.
 
@@ -764,7 +764,7 @@ Look for:
 
 ---
 
-# Startup Persistence
+## Startup Persistence
 
 Investigate locations associated with:
 
@@ -779,7 +779,7 @@ A persistence finding should ideally be correlated with execution evidence.
 
 ---
 
-# Windows File-System Forensics
+## Windows File-System Forensics
 
 Windows commonly uses NTFS.
 
@@ -796,7 +796,7 @@ Useful evidence can include:
 
 ---
 
-# NTFS Metadata
+## NTFS Metadata
 
 Important concepts include:
 
@@ -812,7 +812,7 @@ USN Journal
 
 ---
 
-# Master File Table
+## Master File Table
 
 The MFT contains records associated with files and directories.
 
@@ -828,7 +828,7 @@ The MFT is not simply a perfect historical record.
 
 ---
 
-# USN Journal
+## USN Journal
 
 The NTFS USN Journal can provide information about file-system changes.
 
@@ -843,7 +843,7 @@ Retention and configuration affect what is available.
 
 ---
 
-# Alternate Data Streams
+## Alternate Data Streams
 
 NTFS supports alternate data streams.
 
@@ -861,7 +861,7 @@ Investigators may examine ADS when suspicious files or unusual file behavior are
 
 ---
 
-# Windows User Activity
+## Windows User Activity
 
 Potential user-activity evidence includes:
 
@@ -876,7 +876,7 @@ Potential user-activity evidence includes:
 
 ---
 
-# User Investigation Model
+## User Investigation Model
 
 ```text id="xv2m1p"
 User
@@ -896,7 +896,7 @@ User
 
 ---
 
-# Remote Access Investigation
+## Remote Access Investigation
 
 Windows systems may be accessed remotely using mechanisms such as:
 
@@ -926,7 +926,7 @@ Network Activity
 
 ---
 
-# RDP Investigation
+## RDP Investigation
 
 Potential evidence includes:
 
@@ -941,7 +941,7 @@ RDP activity should be correlated with endpoint and network evidence.
 
 ---
 
-# Windows Network Evidence
+## Windows Network Evidence
 
 Investigate:
 
@@ -963,7 +963,7 @@ Get-NetTCPConnection
 
 ---
 
-# Suspicious Network Connection
+## Suspicious Network Connection
 
 A connection becomes more meaningful when correlated with:
 
@@ -981,7 +981,7 @@ Timestamp
 
 ---
 
-# Process Tree Analysis
+## Process Tree Analysis
 
 One of the most important Windows forensic techniques is process-tree analysis.
 
@@ -1001,7 +1001,7 @@ This does not automatically prove compromise, but it provides important behavior
 
 ---
 
-# Parent-Child Relationships
+## Parent-Child Relationships
 
 Investigate:
 
@@ -1016,7 +1016,7 @@ Investigate:
 
 ---
 
-# Command-Line Evidence
+## Command-Line Evidence
 
 Command lines can reveal:
 
@@ -1040,7 +1040,7 @@ powershell.exe
 
 ---
 
-# Windows Persistence Investigation
+## Windows Persistence Investigation
 
 A practical persistence review may include:
 
@@ -1057,7 +1057,7 @@ Application Configuration
 
 ---
 
-# WMI
+## WMI
 
 Windows Management Instrumentation is widely used for administration and automation.
 
@@ -1075,7 +1075,7 @@ Because WMI is legitimate infrastructure, context is essential.
 
 ---
 
-# WMI Investigation Principle
+## WMI Investigation Principle
 
 Do not assume:
 
@@ -1094,7 +1094,7 @@ Does telemetry show execution?
 
 ---
 
-# Windows Evidence Correlation
+## Windows Evidence Correlation
 
 A strong investigation may look like:
 
@@ -1127,7 +1127,7 @@ This produces a significantly stronger narrative than any individual artifact.
 
 ---
 
-# Windows Timeline
+## Windows Timeline
 
 A practical timeline might include:
 
@@ -1142,7 +1142,7 @@ A practical timeline might include:
 
 ---
 
-# Timeline Caveats
+## Timeline Caveats
 
 A timestamp does not automatically prove causality.
 
@@ -1162,7 +1162,7 @@ Use multiple evidence sources and contextual analysis.
 
 ---
 
-# Windows Forensic Workflow
+## Windows Forensic Workflow
 
 ```text id="xg50q6"
 Identify Host
@@ -1203,35 +1203,35 @@ Report
 
 ---
 
-# Common Windows Forensic Misconfigurations
+## Common Windows Forensic Misconfigurations
 
-## Insufficient Security Logging
+### Insufficient Security Logging
 
 Important authentication events may be unavailable.
 
-## No PowerShell Logging
+### No PowerShell Logging
 
 Script execution visibility becomes limited.
 
-## No Sysmon / Endpoint Telemetry
+### No Sysmon / Endpoint Telemetry
 
 Process and network investigations become harder.
 
-## Short Event Log Retention
+### Short Event Log Retention
 
 Historical evidence disappears.
 
-## Poor Time Synchronization
+### Poor Time Synchronization
 
 Timeline reconstruction becomes unreliable.
 
-## No Centralized Logging
+### No Centralized Logging
 
 Evidence remains isolated on endpoints.
 
 ---
 
-# Detection and Forensic Readiness
+## Detection and Forensic Readiness
 
 Windows forensic capability depends heavily on endpoint visibility.
 
@@ -1259,9 +1259,9 @@ Organizations should balance visibility with:
 
 ---
 
-# Practical Lab 01 — Windows Event Investigation
+## Practical Lab 01 — Windows Event Investigation
 
-## Scenario
+### Scenario
 
 A workstation generated a suspicious authentication alert.
 
@@ -1283,7 +1283,7 @@ Questions:
 
 ---
 
-# Practical Lab 02 — PowerShell Investigation
+## Practical Lab 02 — PowerShell Investigation
 
 Search the PowerShell operational log:
 
@@ -1304,7 +1304,7 @@ Then correlate with EDR or Sysmon if available.
 
 ---
 
-# Practical Lab 03 — Process Tree Investigation
+## Practical Lab 03 — Process Tree Investigation
 
 Given:
 
@@ -1328,7 +1328,7 @@ Determine:
 
 ---
 
-# Practical Lab 04 — Persistence Investigation
+## Practical Lab 04 — Persistence Investigation
 
 Review:
 
@@ -1356,7 +1356,7 @@ Confidence
 
 ---
 
-# Practical Lab 05 — Browser-to-Execution Investigation
+## Practical Lab 05 — Browser-to-Execution Investigation
 
 Scenario:
 
@@ -1391,7 +1391,7 @@ Determine:
 
 ---
 
-# Practical Lab 06 — Complete Windows Investigation
+## Practical Lab 06 — Complete Windows Investigation
 
 Investigate a simulated compromised workstation using:
 
@@ -1426,7 +1426,7 @@ Then document evidence confidence.
 
 ---
 
-# Windows Forensic Collection Checklist
+## Windows Forensic Collection Checklist
 
 ```text id="axm7yt"
 [ ] Host identified
@@ -1453,7 +1453,7 @@ Then document evidence confidence.
 
 ---
 
-# Windows Investigation Report Template
+## Windows Investigation Report Template
 
 ```text id="g4d4kv"
 # Windows Forensic Investigation
@@ -1507,7 +1507,7 @@ Date:
 
 ---
 
-# Example Finding
+## Example Finding
 
 ```text id="6z0c84"
 Finding ID:
@@ -1540,17 +1540,17 @@ High
 
 ---
 
-# Windows Evidence Confidence
+## Windows Evidence Confidence
 
-### High
+#### High
 
 Multiple independent artifacts correlate.
 
-### Medium
+#### Medium
 
 Evidence supports the hypothesis but gaps remain.
 
-### Low
+#### Low
 
 Single artifact or ambiguous evidence.
 
@@ -1574,9 +1574,9 @@ Stronger Persistence Finding
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What Windows artifacts are important during forensic investigation?
+### 1. What Windows artifacts are important during forensic investigation?
 
 Common examples include:
 
@@ -1598,7 +1598,7 @@ Common examples include:
 
 ---
 
-## 2. Does Prefetch prove execution?
+### 2. Does Prefetch prove execution?
 
 Not by itself.
 
@@ -1606,7 +1606,7 @@ It can provide useful execution-related evidence, but it should be correlated wi
 
 ---
 
-## 3. Does Shimcache prove execution?
+### 3. Does Shimcache prove execution?
 
 Not necessarily.
 
@@ -1614,7 +1614,7 @@ Shimcache is related to application compatibility information and should be inte
 
 ---
 
-## 4. What is the Windows Registry useful for?
+### 4. What is the Windows Registry useful for?
 
 It can provide information about:
 
@@ -1628,37 +1628,37 @@ It can provide information about:
 
 ---
 
-## 5. What is Amcache?
+### 5. What is Amcache?
 
 A Windows artifact that can provide application and executable-related information useful during forensic investigation.
 
 ---
 
-## 6. What is SRUM?
+### 6. What is SRUM?
 
 System Resource Usage Monitor data that can provide historical information about application and resource usage.
 
 ---
 
-## 7. Why is PowerShell important in Windows forensics?
+### 7. Why is PowerShell important in Windows forensics?
 
 PowerShell is widely used for legitimate administration but can also be used during attacks. Its telemetry can reveal scripts, commands, execution context, and associated activity.
 
 ---
 
-## 8. What is Sysmon?
+### 8. What is Sysmon?
 
 A Windows system-monitoring utility that can provide detailed telemetry about processes, network connections, files, Registry activity, DNS, and other system events depending on its configuration.
 
 ---
 
-## 9. Why is process-tree analysis important?
+### 9. Why is process-tree analysis important?
 
 Because parent-child relationships can reveal how a process was launched and provide behavioral context.
 
 ---
 
-## 10. How would you investigate suspicious PowerShell?
+### 10. How would you investigate suspicious PowerShell?
 
 Correlate:
 
@@ -1680,7 +1680,7 @@ Timeline
 
 ---
 
-## 11. How would you investigate persistence?
+### 11. How would you investigate persistence?
 
 Review:
 
@@ -1697,7 +1697,7 @@ Then correlate persistence configuration with execution evidence.
 
 ---
 
-## 12. How would you investigate suspicious RDP activity?
+### 12. How would you investigate suspicious RDP activity?
 
 Review:
 
@@ -1713,13 +1713,13 @@ Timeline
 
 ---
 
-## 13. What is an important limitation of Windows event logs?
+### 13. What is an important limitation of Windows event logs?
 
 Logging depends on audit configuration, retention, forwarding, system state, and available storage.
 
 ---
 
-## 14. Why should Windows artifacts be correlated?
+### 14. Why should Windows artifacts be correlated?
 
 Because individual artifacts can be incomplete or ambiguous.
 
@@ -1727,9 +1727,9 @@ Correlation provides stronger evidence.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > You find a suspicious executable in `C:\Users\User\Downloads`. What do you investigate?
 
@@ -1753,9 +1753,9 @@ File
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A scheduled task points to an unfamiliar executable. Does that prove persistence?
 
@@ -1775,31 +1775,31 @@ Investigate:
 
 ---
 
-# Windows Forensic Maturity Model
+## Windows Forensic Maturity Model
 
-## Level 1
+### Level 1
 
 Basic Event Logs.
 
-## Level 2
+### Level 2
 
 Registry and endpoint artifacts.
 
-## Level 3
+### Level 3
 
 Centralized logs + PowerShell + EDR.
 
-## Level 4
+### Level 4
 
 Sysmon + EDR + SIEM + forensic workflows.
 
-## Level 5
+### Level 5
 
 Enterprise endpoint telemetry + automated collection + integrated threat hunting and detection engineering.
 
 ---
 
-# Chapter Completion Checklist
+## Chapter Completion Checklist
 
 ```text id="2v5m1p"
 [ ] Understand Windows forensic architecture
@@ -1829,7 +1829,7 @@ Enterprise endpoint telemetry + automated collection + integrated threat hunting
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Windows forensics is strongest when multiple artifact families are correlated.
 
@@ -1872,41 +1872,41 @@ It is about understanding **what each artifact can prove, what it cannot prove, 
 
 ---
 
-# References
+## References
 
-### Microsoft — Windows Security Auditing
+#### Microsoft — Windows Security Auditing
 
 https://learn.microsoft.com/windows/security/threat-protection/auditing/
 
-### Microsoft — Windows Event Logs
+#### Microsoft — Windows Event Logs
 
 https://learn.microsoft.com/windows/win32/eventlog/event-logging
 
-### Microsoft — Sysmon
+#### Microsoft — Sysmon
 
 https://learn.microsoft.com/sysinternals/downloads/sysmon
 
-### Microsoft — PowerShell Logging
+#### Microsoft — PowerShell Logging
 
 https://learn.microsoft.com/powershell/
 
-### Microsoft — Windows Registry
+#### Microsoft — Windows Registry
 
 https://learn.microsoft.com/windows/win32/sysinfo/registry
 
-### Eric Zimmerman Tools
+#### Eric Zimmerman Tools
 
 https://ericzimmerman.github.io/
 
-### SANS Digital Forensics
+#### SANS Digital Forensics
 
 https://www.sans.org/digital-forensics/
 
-### NIST SP 800-86
+#### NIST SP 800-86
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 

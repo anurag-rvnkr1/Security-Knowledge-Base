@@ -1,6 +1,6 @@
 # 18 - API Input Validation
 
-# Introduction
+## Introduction
 
 Input validation is the process of verifying that data received by an API conforms to expected formats, types, lengths, ranges, and business rules before it is processed.
 
@@ -24,7 +24,7 @@ Robust input validation significantly reduces the attack surface of an API.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -41,7 +41,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Why Input Validation Matters
+## Why Input Validation Matters
 
 Without validation
 
@@ -89,7 +89,7 @@ Protected Application
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
 
 A trust boundary separates trusted and untrusted data.
 
@@ -117,7 +117,7 @@ Everything entering from outside the application's trust boundary must be valida
 
 ---
 
-# Sources of Untrusted Input
+## Sources of Untrusted Input
 
 Common sources include:
 
@@ -137,7 +137,7 @@ Never assume any external source is trustworthy.
 
 ---
 
-# Validation Principles
+## Validation Principles
 
 Effective validation should be:
 
@@ -150,7 +150,7 @@ Effective validation should be:
 
 ---
 
-# Client-Side vs Server-Side Validation
+## Client-Side vs Server-Side Validation
 
 | Client-Side | Server-Side |
 |-------------|-------------|
@@ -163,7 +163,7 @@ Client-side validation enhances user experience but must never replace server-si
 
 ---
 
-# Validation Workflow
+## Validation Workflow
 
 ```
 Incoming Request
@@ -193,7 +193,7 @@ Validation should occur before business logic executes.
 
 ---
 
-# Fail Securely
+## Fail Securely
 
 If validation fails,
 
@@ -221,7 +221,7 @@ Avoid attempting to "fix" untrusted input automatically.
 
 ---
 
-# Positive Validation (Allowlisting)
+## Positive Validation (Allowlisting)
 
 Allowlisting defines exactly what is permitted.
 
@@ -249,7 +249,7 @@ Allowlisting is the preferred validation strategy.
 
 ---
 
-# Negative Validation (Blocklisting)
+## Negative Validation (Blocklisting)
 
 Blocklisting rejects known bad values.
 
@@ -282,7 +282,7 @@ Blocklisting should supplement—not replace—allowlisting.
 
 ---
 
-# Allowlist vs Blocklist
+## Allowlist vs Blocklist
 
 | Allowlist | Blocklist |
 |-----------|-----------|
@@ -293,7 +293,7 @@ Blocklisting should supplement—not replace—allowlisting.
 
 ---
 
-# Canonicalization
+## Canonicalization
 
 Attackers often encode input to bypass validation.
 
@@ -313,7 +313,7 @@ Applications should canonicalize input before validation.
 
 ---
 
-# Canonicalization Workflow
+## Canonicalization Workflow
 
 ```
 Incoming Data
@@ -339,7 +339,7 @@ Validation should occur after canonicalization to ensure all equivalent represen
 
 ---
 
-# Data Type Validation
+## Data Type Validation
 
 Every field should have an expected type.
 
@@ -357,7 +357,7 @@ Reject values that do not match the expected type.
 
 ---
 
-# Format Validation
+## Format Validation
 
 Examples
 
@@ -383,7 +383,7 @@ Validate using established standards where possible.
 
 ---
 
-# Required Fields
+## Required Fields
 
 ```
 Request
@@ -405,7 +405,7 @@ Mandatory data should never be assumed or silently generated.
 
 ---
 
-# Optional Fields
+## Optional Fields
 
 Optional fields should still be validated when present.
 
@@ -427,7 +427,7 @@ Validate
 
 ---
 
-# String Length Validation
+## String Length Validation
 
 Example
 
@@ -442,7 +442,7 @@ Reject overly short or excessively long input.
 
 ---
 
-# Numeric Range Validation
+## Numeric Range Validation
 
 Example
 
@@ -472,7 +472,7 @@ Ensure values remain within expected business limits.
 
 ---
 
-# Date Validation
+## Date Validation
 
 Examples
 
@@ -485,7 +485,7 @@ Reject malformed or impossible dates.
 
 ---
 
-# Enumeration Validation
+## Enumeration Validation
 
 Some values should come from predefined options.
 
@@ -505,7 +505,7 @@ Unexpected values should be rejected.
 
 ---
 
-# Boolean Validation
+## Boolean Validation
 
 Expected values
 
@@ -519,7 +519,7 @@ Avoid accepting arbitrary representations that may introduce ambiguity.
 
 ---
 
-# Regular Expressions
+## Regular Expressions
 
 Regular expressions are useful for structured formats.
 
@@ -534,7 +534,7 @@ Poorly designed regular expressions may introduce performance issues, including 
 
 ---
 
-# Schema Validation
+## Schema Validation
 
 Schemas define the expected structure of input.
 
@@ -564,7 +564,7 @@ Schema validation improves consistency and maintainability.
 
 ---
 
-# JSON Schema Validation
+## JSON Schema Validation
 
 A schema may define:
 
@@ -579,7 +579,7 @@ Schema validation is commonly used for REST APIs accepting JSON payloads.
 
 ---
 
-# XML Schema Validation
+## XML Schema Validation
 
 XML payloads should be validated against an approved schema before processing.
 
@@ -592,7 +592,7 @@ Benefits
 
 ---
 
-# GraphQL Input Validation
+## GraphQL Input Validation
 
 GraphQL schemas define:
 
@@ -606,7 +606,7 @@ Additional business rule validation is still required after schema validation.
 
 ---
 
-# File Upload Validation
+## File Upload Validation
 
 Uploaded files require validation of:
 
@@ -622,7 +622,7 @@ Never trust the filename or extension alone.
 
 ---
 
-# HTTP Header Validation
+## HTTP Header Validation
 
 Validate headers including:
 
@@ -636,7 +636,7 @@ Reject unexpected or malformed values.
 
 ---
 
-# Query Parameter Validation
+## Query Parameter Validation
 
 Examples
 
@@ -660,7 +660,7 @@ Allowed Fields Only
 
 ---
 
-# Path Parameter Validation
+## Path Parameter Validation
 
 Example
 
@@ -678,7 +678,7 @@ Validate
 
 ---
 
-# Cookie Validation
+## Cookie Validation
 
 Validate
 
@@ -692,7 +692,7 @@ Never trust client-modified cookie values.
 
 ---
 
-# Enterprise Validation Pipeline
+## Enterprise Validation Pipeline
 
 ```
 Internet
@@ -730,7 +730,7 @@ Multiple validation layers reduce the likelihood of a single control failure.
 
 ---
 
-# Best Practices
+## Best Practices
 
 Architecture
 
@@ -755,7 +755,7 @@ Operations
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid
 
@@ -770,7 +770,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - All external input is untrusted until validated.
 - Server-side validation is mandatory.
@@ -781,7 +781,7 @@ Avoid
 
 ---
 
-# Business Rule Validation
+## Business Rule Validation
 
 Technical validation ensures that data is syntactically correct.
 
@@ -813,7 +813,7 @@ Both validation layers are necessary.
 
 ---
 
-# Technical Validation vs Business Validation
+## Technical Validation vs Business Validation
 
 | Technical Validation | Business Validation |
 |----------------------|---------------------|
@@ -827,7 +827,7 @@ Technical validation alone cannot prevent business logic abuse.
 
 ---
 
-# Validation Layers
+## Validation Layers
 
 ```
 Incoming Request
@@ -861,7 +861,7 @@ Each layer protects against different classes of attacks.
 
 ---
 
-# Business Rule Examples
+## Business Rule Examples
 
 Examples include:
 
@@ -874,7 +874,7 @@ Examples include:
 
 ---
 
-# Example: Banking API
+## Example: Banking API
 
 ```
 Transfer Request
@@ -900,7 +900,7 @@ the transaction violates business rules.
 
 ---
 
-# Example: Inventory API
+## Example: Inventory API
 
 ```
 Order Quantity
@@ -924,7 +924,7 @@ Reject
 
 ---
 
-# Example: Employee Leave System
+## Example: Employee Leave System
 
 ```
 Requested Leave
@@ -946,7 +946,7 @@ Business validation prevents inconsistent application state.
 
 ---
 
-# Example: Role Assignment
+## Example: Role Assignment
 
 ```
 Current User
@@ -968,7 +968,7 @@ Authorization and business validation often work together.
 
 ---
 
-# Business Logic Abuse
+## Business Logic Abuse
 
 Attackers increasingly target application logic instead of software vulnerabilities.
 
@@ -995,7 +995,7 @@ Business Loss
 
 ---
 
-# Duplicate Request Validation
+## Duplicate Request Validation
 
 Repeated requests may create unintended actions.
 
@@ -1015,7 +1015,7 @@ Applications should identify duplicate transactions where appropriate.
 
 ---
 
-# Idempotency
+## Idempotency
 
 Certain operations should produce the same result when repeated.
 
@@ -1054,7 +1054,7 @@ Idempotency keys help prevent accidental duplicate processing.
 
 ---
 
-# Replay Protection
+## Replay Protection
 
 Attackers may replay legitimate requests.
 
@@ -1083,7 +1083,7 @@ Mitigations include
 
 ---
 
-# Input Normalization
+## Input Normalization
 
 Equivalent values should be normalized before validation.
 
@@ -1107,7 +1107,7 @@ Normalization reduces inconsistencies.
 
 ---
 
-# Unicode Considerations
+## Unicode Considerations
 
 Unicode introduces multiple representations of visually similar characters.
 
@@ -1127,7 +1127,7 @@ Applications should normalize Unicode where appropriate before validation and co
 
 ---
 
-# Null Handling
+## Null Handling
 
 Applications should explicitly define how null values are treated.
 
@@ -1151,7 +1151,7 @@ Implicit assumptions frequently create logic errors.
 
 ---
 
-# Empty Values
+## Empty Values
 
 Different values may not be equivalent.
 
@@ -1171,7 +1171,7 @@ Each should be handled intentionally.
 
 ---
 
-# Nested Object Validation
+## Nested Object Validation
 
 Complex JSON structures require recursive validation.
 
@@ -1199,7 +1199,7 @@ Every nested field should be validated independently.
 
 ---
 
-# Array Validation
+## Array Validation
 
 Validate
 
@@ -1223,7 +1223,7 @@ Maximum
 
 ---
 
-# Unexpected Fields
+## Unexpected Fields
 
 Reject unnecessary fields whenever possible.
 
@@ -1249,7 +1249,7 @@ Rejecting unknown fields helps prevent mass assignment vulnerabilities.
 
 ---
 
-# Mass Assignment Protection
+## Mass Assignment Protection
 
 Mass assignment occurs when clients control fields that should be managed by the server.
 
@@ -1278,7 +1278,7 @@ Mitigations
 
 ---
 
-# Numeric Precision
+## Numeric Precision
 
 Financial applications require careful handling of numeric precision.
 
@@ -1296,7 +1296,7 @@ Prefer fixed-precision or decimal data types for financial values.
 
 ---
 
-# Overflow and Underflow
+## Overflow and Underflow
 
 Validate numerical boundaries.
 
@@ -1320,7 +1320,7 @@ Unexpected numeric behavior may produce security or stability issues.
 
 ---
 
-# File Path Validation
+## File Path Validation
 
 Applications should never trust user-supplied paths.
 
@@ -1339,7 +1339,7 @@ Validate
 
 ---
 
-# Content-Type Validation
+## Content-Type Validation
 
 Validate incoming content types.
 
@@ -1363,7 +1363,7 @@ Reject unsupported media types.
 
 ---
 
-# Accept Header Validation
+## Accept Header Validation
 
 Applications should only produce supported response formats.
 
@@ -1379,7 +1379,7 @@ Unexpected or unsupported formats should return an appropriate error.
 
 ---
 
-# Secure Parsing
+## Secure Parsing
 
 Before validation,
 
@@ -1396,7 +1396,7 @@ Parser configuration should disable unsafe features where applicable.
 
 ---
 
-# Parser Security
+## Parser Security
 
 Secure parser configuration should:
 
@@ -1408,7 +1408,7 @@ Secure parser configuration should:
 
 ---
 
-# Resource Exhaustion
+## Resource Exhaustion
 
 Validation should protect against oversized input.
 
@@ -1432,7 +1432,7 @@ Maximum payload sizes should be enforced before parsing where possible.
 
 ---
 
-# Validation Error Handling
+## Validation Error Handling
 
 Applications should provide consistent error responses.
 
@@ -1453,7 +1453,7 @@ Avoid exposing
 
 ---
 
-# Secure Error Response
+## Secure Error Response
 
 Example
 
@@ -1470,7 +1470,7 @@ Detailed diagnostic information should remain in server logs rather than client 
 
 ---
 
-# Logging Validation Failures
+## Logging Validation Failures
 
 Useful information includes
 
@@ -1486,7 +1486,7 @@ Do not log sensitive data such as passwords or authentication tokens.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1505,7 +1505,7 @@ Recommended detections
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Collect logs from
 
@@ -1542,7 +1542,7 @@ SOC Investigation
 
 ---
 
-# Example Correlation Rules
+## Example Correlation Rules
 
 Rule 1
 
@@ -1600,7 +1600,7 @@ Mass Assignment Investigation
 
 ---
 
-# Enterprise Validation Architecture
+## Enterprise Validation Architecture
 
 ```
                    Internet
@@ -1668,7 +1668,7 @@ Mass Assignment Investigation
 
 ---
 
-# Hands-on Lab 1 – Schema Validation
+## Hands-on Lab 1 – Schema Validation
 
 **Objective**
 
@@ -1690,7 +1690,7 @@ Evaluate JSON schema validation.
 
 ---
 
-# Hands-on Lab 2 – Business Rule Validation
+## Hands-on Lab 2 – Business Rule Validation
 
 **Objective**
 
@@ -1711,7 +1711,7 @@ Verify business rule enforcement.
 
 ---
 
-# Hands-on Lab 3 – Mass Assignment Review
+## Hands-on Lab 3 – Mass Assignment Review
 
 **Objective**
 
@@ -1733,9 +1733,9 @@ Evaluate protection against unexpected fields.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Valid Requests Rejected
+### Valid Requests Rejected
 
 Possible causes
 
@@ -1746,7 +1746,7 @@ Possible causes
 
 ---
 
-## Unexpected Fields Accepted
+### Unexpected Fields Accepted
 
 Possible causes
 
@@ -1757,7 +1757,7 @@ Possible causes
 
 ---
 
-## Parsing Failures
+### Parsing Failures
 
 Possible causes
 
@@ -1768,7 +1768,7 @@ Possible causes
 
 ---
 
-## High CPU During Validation
+### High CPU During Validation
 
 Possible causes
 
@@ -1779,7 +1779,7 @@ Possible causes
 
 ---
 
-## Duplicate Transactions
+### Duplicate Transactions
 
 Possible causes
 
@@ -1790,9 +1790,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. Why is server-side validation mandatory?
 2. What is the difference between technical validation and business validation?
@@ -1807,7 +1807,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. How would you design a centralized validation framework?
 12. Explain the risks of trusting client-side validation.
@@ -1822,7 +1822,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1854,7 +1854,7 @@ A retail API allows repeated order submissions after client-side timeouts, resul
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we expanded API input validation beyond syntax checking to include business logic, schema enforcement, secure parsing, and enterprise validation strategies.
 
@@ -1880,7 +1880,7 @@ A mature validation strategy combines syntax checks, schema validation, business
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1896,15 +1896,15 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 9110 – HTTP Semantics
 - JSON Schema Specification
 - OpenAPI Specification
 
-## Security Standards
+### Security Standards
 
 - OWASP API Security Top 10
 - OWASP ASVS
@@ -1912,7 +1912,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - NIST SP 800-53
 - NIST Secure Software Development Framework (SSDF)
 
-## Further Reading
+### Further Reading
 
 - JSON Schema Documentation
 - OpenAPI Initiative
@@ -1920,7 +1920,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 19 – OWASP API Security Top 10**
 

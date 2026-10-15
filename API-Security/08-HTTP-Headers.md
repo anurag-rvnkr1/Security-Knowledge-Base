@@ -1,6 +1,6 @@
 # 08 - HTTP Headers
 
-# Introduction
+## Introduction
 
 HTTP headers are key-value pairs exchanged between clients and servers that provide additional information about an HTTP request or response.
 
@@ -28,7 +28,7 @@ A strong understanding of HTTP headers is essential for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -44,7 +44,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What Are HTTP Headers?
+## What Are HTTP Headers?
 
 Headers provide metadata about an HTTP message.
 
@@ -68,7 +68,7 @@ Headers describe how that data should be processed.
 
 ---
 
-# HTTP Header Structure
+## HTTP Header Structure
 
 Headers follow a simple format.
 
@@ -94,7 +94,7 @@ Each header consists of:
 
 ---
 
-# Request vs Response Headers
+## Request vs Response Headers
 
 ```
 Client
@@ -122,7 +122,7 @@ Response headers describe the server's response.
 
 ---
 
-# Header Categories
+## Header Categories
 
 HTTP headers can be grouped into several categories.
 
@@ -149,7 +149,7 @@ Additional categories include:
 
 ---
 
-# General Headers
+## General Headers
 
 General headers apply to both requests and responses.
 
@@ -171,7 +171,7 @@ These headers influence message handling rather than application data.
 
 ---
 
-# Request Headers
+## Request Headers
 
 Common request headers include:
 
@@ -189,7 +189,7 @@ Common request headers include:
 
 ---
 
-# Response Headers
+## Response Headers
 
 Common response headers include:
 
@@ -206,7 +206,7 @@ Common response headers include:
 
 ---
 
-# The Host Header
+## The Host Header
 
 The `Host` header identifies the destination server.
 
@@ -222,7 +222,7 @@ Incorrect validation may lead to Host Header Injection attacks.
 
 ---
 
-# User-Agent Header
+## User-Agent Header
 
 The `User-Agent` header identifies the client software.
 
@@ -245,7 +245,7 @@ User-Agent values should never be trusted for authentication or authorization.
 
 ---
 
-# Accept Header
+## Accept Header
 
 The `Accept` header specifies acceptable response formats.
 
@@ -273,7 +273,7 @@ Servers use this information during content negotiation.
 
 ---
 
-# Accept-Encoding
+## Accept-Encoding
 
 Indicates supported compression algorithms.
 
@@ -293,7 +293,7 @@ Compression reduces bandwidth usage but requires secure configuration.
 
 ---
 
-# Accept-Language
+## Accept-Language
 
 Specifies language preferences.
 
@@ -309,7 +309,7 @@ Applications may return localized content based on this header.
 
 ---
 
-# Authorization Header
+## Authorization Header
 
 The `Authorization` header carries authentication credentials.
 
@@ -333,7 +333,7 @@ This header is one of the most security-sensitive parts of an HTTP request.
 
 ---
 
-# Cookie Header
+## Cookie Header
 
 Cookies maintain session state.
 
@@ -356,7 +356,7 @@ Session cookies require secure handling.
 
 ---
 
-# Origin Header
+## Origin Header
 
 The `Origin` header identifies where a request originated.
 
@@ -374,7 +374,7 @@ Servers use it to determine whether cross-origin access should be permitted.
 
 ---
 
-# Referer Header
+## Referer Header
 
 The `Referer` header identifies the previous page.
 
@@ -396,7 +396,7 @@ Sensitive information should never appear in URLs because it may be exposed thro
 
 ---
 
-# Content-Type Header
+## Content-Type Header
 
 The `Content-Type` header identifies the media type.
 
@@ -426,7 +426,7 @@ Applications should validate expected content types before processing requests.
 
 ---
 
-# Content-Length
+## Content-Length
 
 Indicates message size.
 
@@ -444,7 +444,7 @@ Improper handling may contribute to request smuggling vulnerabilities.
 
 ---
 
-# Transfer-Encoding
+## Transfer-Encoding
 
 Specifies how the message body is transmitted.
 
@@ -462,7 +462,7 @@ Proxy inconsistencies involving this header can contribute to HTTP Request Smugg
 
 ---
 
-# Connection Header
+## Connection Header
 
 Controls connection behavior.
 
@@ -484,7 +484,7 @@ Persistent connections improve performance by reducing connection overhead.
 
 ---
 
-# Cache-Control
+## Cache-Control
 
 Controls caching behavior.
 
@@ -512,7 +512,7 @@ Sensitive information should generally not be cached by shared intermediaries.
 
 ---
 
-# ETag
+## ETag
 
 ETag uniquely identifies a resource version.
 
@@ -528,7 +528,7 @@ Clients use ETags to determine whether cached content is still valid.
 
 ---
 
-# If-None-Match
+## If-None-Match
 
 Conditional requests use ETags.
 
@@ -552,7 +552,7 @@ Conditional requests reduce bandwidth consumption.
 
 ---
 
-# Last-Modified
+## Last-Modified
 
 Indicates when a resource was last updated.
 
@@ -568,7 +568,7 @@ Clients may use this value to validate cached resources.
 
 ---
 
-# If-Modified-Since
+## If-Modified-Since
 
 Example
 
@@ -588,7 +588,7 @@ is returned.
 
 ---
 
-# Location Header
+## Location Header
 
 Used during redirection.
 
@@ -606,7 +606,7 @@ Applications should validate redirect destinations to avoid open redirect vulner
 
 ---
 
-# WWW-Authenticate
+## WWW-Authenticate
 
 Servers use this header to request authentication.
 
@@ -622,7 +622,7 @@ Browsers respond by prompting users for credentials when appropriate.
 
 ---
 
-# Allow Header
+## Allow Header
 
 Indicates supported HTTP methods.
 
@@ -642,7 +642,7 @@ This header commonly appears in responses to `OPTIONS` requests.
 
 ---
 
-# Vary Header
+## Vary Header
 
 The `Vary` header informs caches which request headers influence the response.
 
@@ -658,7 +658,7 @@ Proper use prevents caches from serving incorrect representations to clients.
 
 ---
 
-# Common Enterprise Request Flow
+## Common Enterprise Request Flow
 
 ```
 Client
@@ -700,7 +700,7 @@ Each header contributes to routing, authentication, negotiation, or session mana
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An authenticated API request
 
@@ -730,7 +730,7 @@ before returning the response.
 
 ---
 
-# Best Practices
+## Best Practices
 
 General
 
@@ -760,7 +760,7 @@ Operations
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -774,7 +774,7 @@ Avoid:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - HTTP headers provide metadata that controls request and response processing.
 - Request and response headers serve different purposes.
@@ -784,7 +784,7 @@ Avoid:
 
 ---
 
-# HTTP Security Headers
+## HTTP Security Headers
 
 Security headers instruct browsers how to securely process web content.
 
@@ -804,7 +804,7 @@ Security headers should be considered a mandatory part of every production web a
 
 ---
 
-# Security Header Architecture
+## Security Header Architecture
 
 ```
                  Client
@@ -838,7 +838,7 @@ The browser enforces most security headers automatically.
 
 ---
 
-# Common Security Headers
+## Common Security Headers
 
 | Header | Purpose |
 |---------|----------|
@@ -854,7 +854,7 @@ The browser enforces most security headers automatically.
 
 ---
 
-# Strict-Transport-Security (HSTS)
+## Strict-Transport-Security (HSTS)
 
 HSTS forces browsers to communicate only over HTTPS.
 
@@ -900,7 +900,7 @@ Benefits
 
 ---
 
-# HSTS Attack Prevention
+## HSTS Attack Prevention
 
 Without HSTS
 
@@ -942,7 +942,7 @@ The browser refuses insecure HTTP connections after learning the HSTS policy.
 
 ---
 
-# Content Security Policy (CSP)
+## Content Security Policy (CSP)
 
 Content Security Policy controls which resources the browser may load.
 
@@ -967,7 +967,7 @@ CSP helps mitigate
 
 ---
 
-# CSP Architecture
+## CSP Architecture
 
 ```
 Browser
@@ -993,7 +993,7 @@ Only resources matching the policy are executed.
 
 ---
 
-# CSP Directives
+## CSP Directives
 
 Common directives
 
@@ -1010,7 +1010,7 @@ Common directives
 
 ---
 
-# X-Content-Type-Options
+## X-Content-Type-Options
 
 This header prevents browsers from guessing MIME types.
 
@@ -1048,7 +1048,7 @@ for production deployments.
 
 ---
 
-# MIME Sniffing
+## MIME Sniffing
 
 Without protection
 
@@ -1088,7 +1088,7 @@ Safe Handling
 
 ---
 
-# X-Frame-Options
+## X-Frame-Options
 
 Prevents clickjacking attacks.
 
@@ -1128,7 +1128,7 @@ X-Frame-Options prevents unauthorized framing.
 
 ---
 
-# Clickjacking Protection
+## Clickjacking Protection
 
 ```
 Browser
@@ -1154,7 +1154,7 @@ Modern applications often combine this with CSP's `frame-ancestors` directive.
 
 ---
 
-# Referrer-Policy
+## Referrer-Policy
 
 Controls information sent in the `Referer` header.
 
@@ -1182,7 +1182,7 @@ Benefits
 
 ---
 
-# Permissions-Policy
+## Permissions-Policy
 
 Controls browser features available to web pages.
 
@@ -1202,7 +1202,7 @@ This limits unnecessary browser capabilities.
 
 ---
 
-# Cross-Origin-Resource-Policy (CORP)
+## Cross-Origin-Resource-Policy (CORP)
 
 Restricts which origins may access resources.
 
@@ -1222,7 +1222,7 @@ Benefits
 
 ---
 
-# Cross-Origin-Embedder-Policy (COEP)
+## Cross-Origin-Embedder-Policy (COEP)
 
 Controls embedding of cross-origin resources.
 
@@ -1238,7 +1238,7 @@ Helps isolate documents and reduces certain cross-origin risks.
 
 ---
 
-# Cross-Origin-Opener-Policy (COOP)
+## Cross-Origin-Opener-Policy (COOP)
 
 Separates browsing contexts.
 
@@ -1258,7 +1258,7 @@ Benefits
 
 ---
 
-# Cookie Security
+## Cookie Security
 
 Cookies frequently contain authentication sessions.
 
@@ -1266,7 +1266,7 @@ Secure cookie attributes are essential.
 
 ---
 
-# Secure Attribute
+## Secure Attribute
 
 Example
 
@@ -1282,7 +1282,7 @@ The cookie is transmitted only over HTTPS.
 
 ---
 
-# HttpOnly Attribute
+## HttpOnly Attribute
 
 Example
 
@@ -1300,7 +1300,7 @@ This significantly reduces session theft through XSS.
 
 ---
 
-# SameSite Attribute
+## SameSite Attribute
 
 Controls cross-site cookie behavior.
 
@@ -1325,7 +1325,7 @@ Benefits
 
 ---
 
-# Secure Cookie Example
+## Secure Cookie Example
 
 ```
 Set-Cookie:
@@ -1343,7 +1343,7 @@ This combination provides strong baseline protection for session cookies.
 
 ---
 
-# CORS Response Headers
+## CORS Response Headers
 
 Common CORS headers include:
 
@@ -1359,7 +1359,7 @@ Proper CORS configuration is critical for browser-based APIs.
 
 ---
 
-# Access-Control-Allow-Origin
+## Access-Control-Allow-Origin
 
 Example
 
@@ -1379,7 +1379,7 @@ when sensitive authenticated resources are involved.
 
 ---
 
-# Access-Control-Allow-Methods
+## Access-Control-Allow-Methods
 
 Example
 
@@ -1399,7 +1399,7 @@ Only required methods should be exposed.
 
 ---
 
-# Access-Control-Allow-Headers
+## Access-Control-Allow-Headers
 
 Example
 
@@ -1415,7 +1415,7 @@ Limit accepted headers to those genuinely required.
 
 ---
 
-# Access-Control-Allow-Credentials
+## Access-Control-Allow-Credentials
 
 Example
 
@@ -1435,7 +1435,7 @@ may be included in cross-origin requests where permitted.
 
 ---
 
-# Access-Control-Max-Age
+## Access-Control-Max-Age
 
 Example
 
@@ -1449,7 +1449,7 @@ Browsers cache successful preflight responses, reducing unnecessary OPTIONS requ
 
 ---
 
-# Security Header Assessment
+## Security Header Assessment
 
 During an assessment verify:
 
@@ -1489,7 +1489,7 @@ Missing headers should be documented with associated risks.
 
 ---
 
-# Header Injection
+## Header Injection
 
 Header injection occurs when untrusted input influences HTTP headers.
 
@@ -1516,7 +1516,7 @@ Improper validation may lead to:
 
 ---
 
-# HTTP Response Splitting
+## HTTP Response Splitting
 
 Attack
 
@@ -1540,7 +1540,7 @@ Applications should reject carriage return (`CR`) and line feed (`LF`) character
 
 ---
 
-# Host Header Injection
+## Host Header Injection
 
 If applications trust the Host header,
 
@@ -1561,7 +1561,7 @@ Always validate expected hostnames.
 
 ---
 
-# HTTP Request Smuggling
+## HTTP Request Smuggling
 
 Request smuggling exploits inconsistencies between intermediaries.
 
@@ -1598,7 +1598,7 @@ Proper proxy configuration and protocol compliance reduce this risk.
 
 ---
 
-# Security Testing Checklist
+## Security Testing Checklist
 
 Verify
 
@@ -1615,7 +1615,7 @@ Verify
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1634,7 +1634,7 @@ Detection rules should be validated against expected application behavior.
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Useful telemetry
 
@@ -1682,7 +1682,7 @@ Recommended alerts
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```
                    Internet
@@ -1734,7 +1734,7 @@ Security headers complement—not replace—server-side security controls.
 
 ---
 
-# Hands-on Lab 1 – Security Header Review
+## Hands-on Lab 1 – Security Header Review
 
 **Objective**
 
@@ -1760,7 +1760,7 @@ Review HTTP response headers in an authorized environment.
 
 ---
 
-# Hands-on Lab 2 – Cookie Configuration Review
+## Hands-on Lab 2 – Cookie Configuration Review
 
 **Objective**
 
@@ -1784,7 +1784,7 @@ Assess session cookie security.
 
 ---
 
-# Hands-on Lab 3 – CORS Configuration Review
+## Hands-on Lab 3 – CORS Configuration Review
 
 **Objective**
 
@@ -1805,7 +1805,7 @@ Review CORS policy.
 
 ---
 
-# Common Security Mistakes
+## Common Security Mistakes
 
 Avoid:
 
@@ -1822,9 +1822,9 @@ Avoid:
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Mixed Content Warning
+### Mixed Content Warning
 
 Possible causes
 
@@ -1834,7 +1834,7 @@ Possible causes
 
 ---
 
-## CSP Violations
+### CSP Violations
 
 Possible causes
 
@@ -1844,7 +1844,7 @@ Possible causes
 
 ---
 
-## CORS Failure
+### CORS Failure
 
 Possible causes
 
@@ -1854,7 +1854,7 @@ Possible causes
 
 ---
 
-## Session Cookie Not Sent
+### Session Cookie Not Sent
 
 Possible causes
 
@@ -1865,7 +1865,7 @@ Possible causes
 
 ---
 
-## Missing Security Headers
+### Missing Security Headers
 
 Possible causes
 
@@ -1876,9 +1876,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What are HTTP headers?
 2. What is the purpose of HSTS?
@@ -1893,7 +1893,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. Explain the difference between HSTS and HTTPS.
 12. How would you secure session cookies?
@@ -1908,7 +1908,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1942,7 +1942,7 @@ Your SOC detects repeated requests with unexpected Host header values.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we explored HTTP headers and their role in application security.
 
@@ -1966,7 +1966,7 @@ Correct use of HTTP headers strengthens browser security, protects user sessions
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1982,16 +1982,16 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 9110 – HTTP Semantics
 - RFC 6797 – HTTP Strict Transport Security (HSTS)
 - Content Security Policy Level 3
 - Fetch Standard (CORS)
 
-## Security Standards
+### Security Standards
 
 - OWASP ASVS
 - OWASP API Security Top 10
@@ -1999,7 +1999,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - NIST SP 800-63 Digital Identity Guidelines
 - NIST Cybersecurity Framework (CSF)
 
-## Further Reading
+### Further Reading
 
 - Mozilla Web Security Guidelines
 - OWASP Cheat Sheet Series
@@ -2007,7 +2007,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 09 – Authentication**
 

@@ -45,7 +45,7 @@ This chapter covers modern cryptographic technologies and explains how organizat
 
 ---
 
-# 1. Modern Cryptography
+## 1. Modern Cryptography
 
 Modern cryptography is built around several major primitives:
 
@@ -64,7 +64,7 @@ Modern systems combine these primitives into protocols.
 
 ---
 
-# 2. Modern Cryptographic Stack
+## 2. Modern Cryptographic Stack
 
 A simplified architecture:
 
@@ -86,7 +86,7 @@ Security Protocol
 
 ---
 
-# 3. Cryptographic Agility
+## 3. Cryptographic Agility
 
 **Cryptographic agility** means designing systems so cryptographic algorithms can be changed without completely redesigning the application.
 
@@ -104,7 +104,7 @@ A cryptographically agile system can make this transition with limited architect
 
 ---
 
-# 4. Why Cryptographic Agility Matters
+## 4. Why Cryptographic Agility Matters
 
 Algorithms can become obsolete because of:
 
@@ -123,7 +123,7 @@ Therefore:
 
 ---
 
-# 5. Modern Symmetric Cryptography
+## 5. Modern Symmetric Cryptography
 
 Important modern primitives include:
 
@@ -141,7 +141,7 @@ These remain important even in a post-quantum world.
 
 ---
 
-# 6. AES
+## 6. AES
 
 AES remains one of the primary symmetric encryption standards.
 
@@ -163,7 +163,7 @@ rather than unsafe or outdated constructions.
 
 ---
 
-# 7. ChaCha20-Poly1305
+## 7. ChaCha20-Poly1305
 
 ChaCha20-Poly1305 combines:
 
@@ -185,7 +185,7 @@ It is particularly useful on systems where AES hardware acceleration is unavaila
 
 ---
 
-# 8. Modern Hash Functions
+## 8. Modern Hash Functions
 
 Important modern hash families include:
 
@@ -211,7 +211,7 @@ Standardization
 
 ---
 
-# 9. SHA-3
+## 9. SHA-3
 
 SHA-3 is based on:
 
@@ -225,7 +225,7 @@ SHA-3 provides an alternative standardized hash family.
 
 ---
 
-# 10. SHAKE
+## 10. SHAKE
 
 SHAKE functions are extendable-output functions:
 
@@ -240,7 +240,7 @@ They are useful in several modern cryptographic constructions.
 
 ---
 
-# 11. Modern Digital Signatures
+## 11. Modern Digital Signatures
 
 Important modern signature families include:
 
@@ -258,7 +258,7 @@ This is one reason post-quantum signatures are being standardized.
 
 ---
 
-# 12. Ed25519
+## 12. Ed25519
 
 Ed25519 is a modern elliptic-curve signature scheme.
 
@@ -277,7 +277,7 @@ It is still vulnerable to large-scale quantum attacks because it relies on ellip
 
 ---
 
-# 13. X25519
+## 13. X25519
 
 X25519 is commonly used for elliptic-curve Diffie-Hellman key agreement.
 
@@ -295,7 +295,7 @@ It is widely used in modern secure protocols.
 
 ---
 
-# 14. Modern KDFs
+## 14. Modern KDFs
 
 Important key-derivation mechanisms include:
 
@@ -308,17 +308,17 @@ PBKDF2
 
 Their purposes differ.
 
-### HKDF
+#### HKDF
 
 Used primarily for cryptographic key derivation and key separation.
 
-### Argon2 / scrypt / PBKDF2
+#### Argon2 / scrypt / PBKDF2
 
 Primarily used for password-based key derivation.
 
 ---
 
-# 15. Key Separation
+## 15. Key Separation
 
 A secure system should avoid using one key for unrelated purposes.
 
@@ -344,7 +344,7 @@ Export Key
 
 ---
 
-# 16. Domain Separation
+## 16. Domain Separation
 
 Domain separation prevents the same cryptographic output from unintentionally being reused across different purposes.
 
@@ -366,7 +366,7 @@ Authentication Key
 
 ---
 
-# 17. Authenticated Encryption
+## 17. Authenticated Encryption
 
 Modern applications should generally prefer:
 
@@ -393,7 +393,7 @@ Authentication of Associated Data
 
 ---
 
-# 18. Associated Data
+## 18. Associated Data
 
 AEAD can authenticate data without encrypting it.
 
@@ -417,7 +417,7 @@ Associated Data
 
 ---
 
-# 19. Modern Key Exchange
+## 19. Modern Key Exchange
 
 Modern systems commonly use:
 
@@ -440,7 +440,7 @@ are not resistant to sufficiently powerful quantum computers.
 
 ---
 
-# 20. Quantum Computing
+## 20. Quantum Computing
 
 Quantum computers operate using:
 
@@ -470,7 +470,7 @@ to solve certain problems differently from classical computers.
 
 ---
 
-# 21. Why Quantum Computing Matters to Cryptography
+## 21. Why Quantum Computing Matters to Cryptography
 
 Quantum algorithms threaten some mathematical assumptions used by modern public-key cryptography.
 
@@ -482,7 +482,7 @@ Shor's Algorithm
 
 ---
 
-# 22. Shor's Algorithm
+## 22. Shor's Algorithm
 
 Shor's algorithm can theoretically solve:
 
@@ -507,7 +507,7 @@ and other systems based on related mathematical problems.
 
 ---
 
-# 23. RSA and Quantum Computing
+## 23. RSA and Quantum Computing
 
 RSA relies on the difficulty of:
 
@@ -535,7 +535,7 @@ Therefore RSA is not considered post-quantum secure.
 
 ---
 
-# 24. ECC and Quantum Computing
+## 24. ECC and Quantum Computing
 
 ECC relies on the difficulty of:
 
@@ -558,7 +558,7 @@ are not post-quantum algorithms.
 
 ---
 
-# 25. Grover's Algorithm
+## 25. Grover's Algorithm
 
 Grover's algorithm provides a quadratic speedup for certain brute-force search problems.
 
@@ -576,7 +576,7 @@ This does not mean AES is immediately broken.
 
 ---
 
-# 26. Quantum Impact on AES
+## 26. Quantum Impact on AES
 
 Conceptually:
 
@@ -596,7 +596,7 @@ Real-world quantum attack costs are more complicated than this simplified model.
 
 ---
 
-# 27. Quantum Impact on Hashes
+## 27. Quantum Impact on Hashes
 
 Grover-like attacks can reduce the effective brute-force security of hash preimage searches.
 
@@ -624,7 +624,7 @@ Hash collision security follows different considerations.
 
 ---
 
-# 28. Symmetric vs Asymmetric Quantum Threat
+## 28. Symmetric vs Asymmetric Quantum Threat
 
 | Cryptography | Quantum Impact |
 |---|---|
@@ -641,7 +641,7 @@ This distinction is critical.
 
 ---
 
-# 29. Post-Quantum Cryptography
+## 29. Post-Quantum Cryptography
 
 **Post-Quantum Cryptography (PQC)** refers to cryptographic algorithms designed to resist attacks from both:
 
@@ -659,11 +659,11 @@ Quantum-Resistant Cryptography
 
 ---
 
-# 30. PQC Does Not Mean Quantum Cryptography
+## 30. PQC Does Not Mean Quantum Cryptography
 
 These concepts are different.
 
-### Post-Quantum Cryptography
+#### Post-Quantum Cryptography
 
 ```text
 Classical Computer
@@ -673,7 +673,7 @@ Classical Algorithm
 Quantum-Resistant Security
 ```
 
-### Quantum Cryptography
+#### Quantum Cryptography
 
 Uses quantum physical properties.
 
@@ -687,7 +687,7 @@ PQC is generally much more practical for upgrading existing Internet protocols.
 
 ---
 
-# 31. Major PQC Families
+## 31. Major PQC Families
 
 Important approaches include:
 
@@ -703,7 +703,7 @@ However, not all historically proposed families remain secure or standardized.
 
 ---
 
-# 32. Lattice-Based Cryptography
+## 32. Lattice-Based Cryptography
 
 Lattice-based cryptography relies on difficult mathematical problems involving lattices.
 
@@ -718,7 +718,7 @@ ML-DSA
 
 ---
 
-# 33. ML-KEM
+## 33. ML-KEM
 
 **ML-KEM** is a standardized post-quantum Key Encapsulation Mechanism based on the Module-LWE problem family.
 
@@ -744,7 +744,7 @@ The recipient decapsulates the ciphertext using its private key.
 
 ---
 
-# 34. KEM
+## 34. KEM
 
 **KEM** stands for:
 
@@ -764,7 +764,7 @@ It establishes a shared secret rather than directly encrypting arbitrary applica
 
 ---
 
-# 35. KEM Flow
+## 35. KEM Flow
 
 Conceptually:
 
@@ -793,7 +793,7 @@ Both sides obtain the same secret.
 
 ---
 
-# 36. KEM + Symmetric Encryption
+## 36. KEM + Symmetric Encryption
 
 A KEM is normally combined with symmetric encryption.
 
@@ -813,7 +813,7 @@ This is analogous to how traditional public-key key exchange is combined with sy
 
 ---
 
-# 37. ML-DSA
+## 37. ML-DSA
 
 **ML-DSA** is a standardized post-quantum digital signature algorithm based on lattice problems.
 
@@ -829,7 +829,7 @@ Document Signing
 
 ---
 
-# 38. Digital Signature Flow with ML-DSA
+## 38. Digital Signature Flow with ML-DSA
 
 ```text
 Message
@@ -847,7 +847,7 @@ The private key remains with the signer.
 
 ---
 
-# 39. SLH-DSA
+## 39. SLH-DSA
 
 **SLH-DSA** is a standardized hash-based digital signature scheme.
 
@@ -863,7 +863,7 @@ This provides a valuable alternative security foundation.
 
 ---
 
-# 40. Hash-Based Signatures
+## 40. Hash-Based Signatures
 
 Hash-based signatures rely on the security of cryptographic hash functions.
 
@@ -885,7 +885,7 @@ Stateless constructions reduce some operational complexity.
 
 ---
 
-# 41. ML-KEM vs ML-DSA vs SLH-DSA
+## 41. ML-KEM vs ML-DSA vs SLH-DSA
 
 | Algorithm | Purpose | Family |
 |---|---|---|
@@ -908,7 +908,7 @@ SLH-DSA
 
 ---
 
-# 42. Post-Quantum Migration
+## 42. Post-Quantum Migration
 
 Organizations should not wait until quantum computers become capable of breaking current public-key systems.
 
@@ -934,7 +934,7 @@ Retirement of Legacy Algorithms
 
 ---
 
-# 43. Cryptographic Inventory
+## 43. Cryptographic Inventory
 
 Organizations should identify where cryptography is used.
 
@@ -959,7 +959,7 @@ Authentication
 
 ---
 
-# 44. Crypto Inventory Questions
+## 44. Crypto Inventory Questions
 
 For every system ask:
 
@@ -975,7 +975,7 @@ Is the protocol upgradeable?
 
 ---
 
-# 45. Harvest Now, Decrypt Later
+## 45. Harvest Now, Decrypt Later
 
 This is one of the most important PQC concepts.
 
@@ -1007,7 +1007,7 @@ Store Now, Decrypt Later
 
 ---
 
-# 46. Why Long-Lived Data Is at Risk
+## 46. Why Long-Lived Data Is at Risk
 
 Suppose information must remain confidential for:
 
@@ -1033,7 +1033,7 @@ Migration Timeline
 
 ---
 
-# 47. High-Value Long-Lived Data
+## 47. High-Value Long-Lived Data
 
 Examples:
 
@@ -1053,7 +1053,7 @@ These can have long confidentiality lifetimes.
 
 ---
 
-# 48. Hybrid Cryptography
+## 48. Hybrid Cryptography
 
 A practical migration strategy is:
 
@@ -1075,7 +1075,7 @@ The resulting shared secret can be combined using a KDF.
 
 ---
 
-# 49. Why Hybrid Key Exchange?
+## 49. Why Hybrid Key Exchange?
 
 Hybrid designs provide defense against uncertainty.
 
@@ -1091,7 +1091,7 @@ Likewise, if an unexpected weakness appears in the PQC component, the classical 
 
 ---
 
-# 50. Hybrid TLS Concept
+## 50. Hybrid TLS Concept
 
 Conceptually:
 
@@ -1119,7 +1119,7 @@ Exact protocol details depend on the TLS implementation and standardized hybrid 
 
 ---
 
-# 51. PQC and TLS
+## 51. PQC and TLS
 
 TLS will need to support:
 
@@ -1139,7 +1139,7 @@ before complete replacement of classical public-key mechanisms.
 
 ---
 
-# 52. PQC and Certificates
+## 52. PQC and Certificates
 
 Digital certificates depend on:
 
@@ -1159,7 +1159,7 @@ Code Signing Certificates
 
 ---
 
-# 53. PQC and Code Signing
+## 53. PQC and Code Signing
 
 Software updates often rely on digital signatures:
 
@@ -1179,7 +1179,7 @@ If the signing algorithm becomes quantum-vulnerable, long-term software authenti
 
 ---
 
-# 54. PQC and Firmware
+## 54. PQC and Firmware
 
 IoT and embedded devices can be especially challenging because:
 
@@ -1193,7 +1193,7 @@ Devices deployed today may still exist when quantum-resistant migration becomes 
 
 ---
 
-# 55. PQC and IoT
+## 55. PQC and IoT
 
 Challenges include:
 
@@ -1210,7 +1210,7 @@ PQC migration should therefore be considered during product design.
 
 ---
 
-# 56. PQC and Cloud
+## 56. PQC and Cloud
 
 Cloud providers increasingly provide cryptographic infrastructure through:
 
@@ -1234,7 +1234,7 @@ Provider Roadmaps
 
 ---
 
-# 57. Hardware Security Modules
+## 57. Hardware Security Modules
 
 An HSM is a specialized device for protecting cryptographic keys.
 
@@ -1252,7 +1252,7 @@ Certificate Operations
 
 ---
 
-# 58. Why HSMs Matter
+## 58. Why HSMs Matter
 
 An HSM can protect keys from direct exposure to application processes.
 
@@ -1275,7 +1275,7 @@ The private key can remain inside the protected hardware boundary.
 
 ---
 
-# 59. HSM and PQC
+## 59. HSM and PQC
 
 HSMs will need to evolve to support:
 
@@ -1291,7 +1291,7 @@ Organizations should consider hardware lifecycle planning.
 
 ---
 
-# 60. Hardware-Backed Keys
+## 60. Hardware-Backed Keys
 
 Modern devices may use:
 
@@ -1309,7 +1309,7 @@ Hardware-backed cryptography can reduce exposure to software compromise, althoug
 
 ---
 
-# 61. Trusted Execution Environment
+## 61. Trusted Execution Environment
 
 A TEE provides an isolated execution environment.
 
@@ -1329,7 +1329,7 @@ Normal App        Secure Environment
 
 ---
 
-# 62. Zero-Knowledge Proofs
+## 62. Zero-Knowledge Proofs
 
 A zero-knowledge proof allows one party to demonstrate knowledge of information without revealing the information itself.
 
@@ -1351,7 +1351,7 @@ without learning:
 
 ---
 
-# 63. Zero-Knowledge Example
+## 63. Zero-Knowledge Example
 
 Suppose a user wants to prove:
 
@@ -1379,7 +1379,7 @@ Scalable Verification
 
 ---
 
-# 64. Homomorphic Encryption
+## 64. Homomorphic Encryption
 
 Homomorphic encryption allows computation over encrypted data.
 
@@ -1401,7 +1401,7 @@ This can enable computation without exposing plaintext to the computing environm
 
 ---
 
-# 65. Types of Homomorphic Encryption
+## 65. Types of Homomorphic Encryption
 
 Common classifications:
 
@@ -1415,7 +1415,7 @@ Fully homomorphic encryption supports arbitrary computations in principle, altho
 
 ---
 
-# 66. Secure Multi-Party Computation
+## 66. Secure Multi-Party Computation
 
 **MPC** allows multiple parties to jointly compute a result without revealing their individual private inputs beyond what the protocol permits.
 
@@ -1447,7 +1447,7 @@ Private Set Intersection
 
 ---
 
-# 67. Secret Sharing
+## 67. Secret Sharing
 
 Secret sharing divides a secret into multiple pieces.
 
@@ -1473,7 +1473,7 @@ to reconstruct the secret.
 
 ---
 
-# 68. Threshold Cryptography
+## 68. Threshold Cryptography
 
 Threshold cryptography allows cryptographic operations to be distributed across multiple parties.
 
@@ -1491,7 +1491,7 @@ No single administrator needs complete control of the private key.
 
 ---
 
-# 69. Modern Authentication
+## 69. Modern Authentication
 
 Modern cryptography is also changing authentication.
 
@@ -1507,7 +1507,7 @@ Public-Key Authentication
 
 ---
 
-# 70. Passkeys
+## 70. Passkeys
 
 Passkeys use public-key cryptography rather than traditional password authentication.
 
@@ -1539,7 +1539,7 @@ Server Verifies Public Key
 
 ---
 
-# 71. Benefits of Passkeys
+## 71. Benefits of Passkeys
 
 Passkeys can reduce:
 
@@ -1554,7 +1554,7 @@ because the server does not need to store the user's password.
 
 ---
 
-# 72. WebAuthn
+## 72. WebAuthn
 
 WebAuthn allows browsers and applications to use public-key credentials for authentication.
 
@@ -1572,7 +1572,7 @@ The private key remains protected by the authenticator/device.
 
 ---
 
-# 73. FIDO2
+## 73. FIDO2
 
 FIDO2 is an authentication ecosystem involving technologies such as:
 
@@ -1585,7 +1585,7 @@ It enables strong public-key-based authentication.
 
 ---
 
-# 74. Modern PKI
+## 74. Modern PKI
 
 PKI continues to evolve through:
 
@@ -1602,7 +1602,7 @@ Automated Rotation
 
 ---
 
-# 75. Machine Identity
+## 75. Machine Identity
 
 Modern organizations may have:
 
@@ -1627,7 +1627,7 @@ challenge.
 
 ---
 
-# 76. Short-Lived Certificates
+## 76. Short-Lived Certificates
 
 Instead of certificates lasting for long periods:
 
@@ -1645,7 +1645,7 @@ This reduces the window of exposure after compromise.
 
 ---
 
-# 77. Automated Certificate Lifecycle
+## 77. Automated Certificate Lifecycle
 
 A mature system automates:
 
@@ -1667,7 +1667,7 @@ Manual certificate management does not scale well.
 
 ---
 
-# 78. Cryptographic Key Lifecycle
+## 78. Cryptographic Key Lifecycle
 
 A secure lifecycle:
 
@@ -1691,7 +1691,7 @@ Every stage requires appropriate access control.
 
 ---
 
-# 79. Key Destruction
+## 79. Key Destruction
 
 When a key is no longer required:
 
@@ -1711,7 +1711,7 @@ Recovery Procedures
 
 ---
 
-# 80. Crypto Agility Architecture
+## 80. Crypto Agility Architecture
 
 A flexible architecture might look like:
 
@@ -1734,7 +1734,7 @@ The application should avoid embedding algorithm-specific assumptions everywhere
 
 ---
 
-# 81. Algorithm Identifiers
+## 81. Algorithm Identifiers
 
 Protocols can negotiate or identify algorithms using standardized identifiers.
 
@@ -1756,7 +1756,7 @@ Only approved algorithms should be accepted.
 
 ---
 
-# 82. Secure Algorithm Agility
+## 82. Secure Algorithm Agility
 
 Bad:
 
@@ -1780,7 +1780,7 @@ Reject Everything Else
 
 ---
 
-# 83. PQC Migration Strategy
+## 83. PQC Migration Strategy
 
 A practical enterprise strategy:
 
@@ -1809,7 +1809,7 @@ Legacy Retirement
 
 ---
 
-# 84. Phase 1 – Inventory
+## 84. Phase 1 – Inventory
 
 Identify:
 
@@ -1827,7 +1827,7 @@ Dependencies
 
 ---
 
-# 85. Phase 2 – Risk Classification
+## 85. Phase 2 – Risk Classification
 
 Prioritize systems based on:
 
@@ -1842,7 +1842,7 @@ Business Impact
 
 ---
 
-# 86. Phase 3 – Crypto Agility
+## 86. Phase 3 – Crypto Agility
 
 Refactor systems so algorithms can be replaced.
 
@@ -1859,7 +1859,7 @@ Centralize cryptographic decisions where practical.
 
 ---
 
-# 87. Phase 4 – PQC Lab
+## 87. Phase 4 – PQC Lab
 
 Create an isolated test environment:
 
@@ -1888,7 +1888,7 @@ Key Size
 
 ---
 
-# 88. Phase 5 – Hybrid Pilot
+## 88. Phase 5 – Hybrid Pilot
 
 Test:
 
@@ -1913,7 +1913,7 @@ Interoperability
 
 ---
 
-# 89. Phase 6 – Production Deployment
+## 89. Phase 6 – Production Deployment
 
 Prioritize:
 
@@ -1928,7 +1928,7 @@ Identity Infrastructure
 
 ---
 
-# 90. Phase 7 – Legacy Retirement
+## 90. Phase 7 – Legacy Retirement
 
 After sufficient compatibility:
 
@@ -1948,7 +1948,7 @@ Do not remove algorithms without understanding recovery and interoperability req
 
 ---
 
-# 91. PQC Migration Challenges
+## 91. PQC Migration Challenges
 
 Organizations may face:
 
@@ -1967,7 +1967,7 @@ Operational Complexity
 
 ---
 
-# 92. PQC Bandwidth Impact
+## 92. PQC Bandwidth Impact
 
 Some PQC algorithms have larger:
 
@@ -1990,7 +1990,7 @@ Storage
 
 ---
 
-# 93. PQC Performance
+## 93. PQC Performance
 
 Measure:
 
@@ -2009,7 +2009,7 @@ Do not assume an algorithm is suitable merely because it is cryptographically se
 
 ---
 
-# 94. PQC and Mobile Applications
+## 94. PQC and Mobile Applications
 
 Mobile applications may face:
 
@@ -2026,7 +2026,7 @@ PQC migration should therefore be tested carefully.
 
 ---
 
-# 95. PQC and Embedded Systems
+## 95. PQC and Embedded Systems
 
 Embedded systems often have:
 
@@ -2041,7 +2041,7 @@ PQC can be particularly challenging in these environments.
 
 ---
 
-# 96. PQC and Software Supply Chain
+## 96. PQC and Software Supply Chain
 
 Every dependency that handles:
 
@@ -2059,7 +2059,7 @@ Organizations need vendor visibility.
 
 ---
 
-# 97. Vendor PQC Assessment
+## 97. Vendor PQC Assessment
 
 Ask vendors:
 
@@ -2076,7 +2076,7 @@ What is the migration plan?
 
 ---
 
-# 98. PQC and SOC
+## 98. PQC and SOC
 
 SOC teams should prepare to monitor:
 
@@ -2093,7 +2093,7 @@ PQC Deployment Errors
 
 ---
 
-# 99. Cryptographic Telemetry
+## 99. Cryptographic Telemetry
 
 Useful telemetry:
 
@@ -2116,7 +2116,7 @@ Avoid logging sensitive key material.
 
 ---
 
-# 100. PQC Detection Scenario
+## 100. PQC Detection Scenario
 
 Suppose:
 
@@ -2149,7 +2149,7 @@ Application Version
 
 ---
 
-# 101. Post-Quantum VAPT
+## 101. Post-Quantum VAPT
 
 A VAPT assessment can check:
 
@@ -2167,7 +2167,7 @@ Vendor Dependencies
 
 ---
 
-# 102. PQC VAPT Questions
+## 102. PQC VAPT Questions
 
 Ask:
 
@@ -2189,7 +2189,7 @@ How long must encrypted data remain confidential?
 
 ---
 
-# 103. Quantum Risk Matrix
+## 103. Quantum Risk Matrix
 
 | Asset | Current Crypto | Data Lifetime | Quantum Risk |
 |---|---|---:|---|
@@ -2204,7 +2204,7 @@ Risk depends on implementation, exposure, and data lifetime.
 
 ---
 
-# 104. Important Distinction
+## 104. Important Distinction
 
 Quantum computing does **not** mean:
 
@@ -2236,7 +2236,7 @@ and related public-key systems.
 
 ---
 
-# 105. Quantum-Safe Architecture
+## 105. Quantum-Safe Architecture
 
 A future architecture may look like:
 
@@ -2272,7 +2272,7 @@ during transitional periods.
 
 ---
 
-# 106. Modern Cryptography Cheat Sheet
+## 106. Modern Cryptography Cheat Sheet
 
 ```text
 AES-GCM
@@ -2311,9 +2311,9 @@ SLH-DSA
 
 ---
 
-# 107. Modern Cryptography Decision Guide
+## 107. Modern Cryptography Decision Guide
 
-### Need encryption?
+#### Need encryption?
 
 ```text
 AES-GCM
@@ -2321,7 +2321,7 @@ or
 ChaCha20-Poly1305
 ```
 
-### Need a hash?
+#### Need a hash?
 
 ```text
 SHA-256
@@ -2330,7 +2330,7 @@ SHA-512
 SHA-3
 ```
 
-### Need password storage?
+#### Need password storage?
 
 ```text
 Argon2
@@ -2338,31 +2338,31 @@ scrypt
 PBKDF2
 ```
 
-### Need key derivation?
+#### Need key derivation?
 
 ```text
 HKDF
 ```
 
-### Need classical key exchange?
+#### Need classical key exchange?
 
 ```text
 X25519
 ```
 
-### Need classical signatures?
+#### Need classical signatures?
 
 ```text
 Ed25519
 ```
 
-### Need post-quantum KEM?
+#### Need post-quantum KEM?
 
 ```text
 ML-KEM
 ```
 
-### Need post-quantum signature?
+#### Need post-quantum signature?
 
 ```text
 ML-DSA
@@ -2373,7 +2373,7 @@ Always select algorithms based on the protocol, standards, implementation, and s
 
 ---
 
-# 108. Practical Lab – OpenSSL Algorithm Inspection
+## 108. Practical Lab – OpenSSL Algorithm Inspection
 
 Inspect your installed OpenSSL:
 
@@ -2397,7 +2397,7 @@ Use this to understand what your environment supports.
 
 ---
 
-# 109. Practical Lab – Modern TLS
+## 109. Practical Lab – Modern TLS
 
 Inspect TLS 1.3:
 
@@ -2420,7 +2420,7 @@ Only use authorized targets for security testing.
 
 ---
 
-# 110. Practical Lab – Crypto Inventory
+## 110. Practical Lab – Crypto Inventory
 
 Create a spreadsheet containing:
 
@@ -2454,7 +2454,7 @@ High
 
 ---
 
-# 111. Practical Lab – PQC Experiment
+## 111. Practical Lab – PQC Experiment
 
 Use a controlled PQC-capable cryptographic library or test environment.
 
@@ -2488,7 +2488,7 @@ Signature Size
 
 ---
 
-# 112. Practical Lab – Hybrid Key Exchange
+## 112. Practical Lab – Hybrid Key Exchange
 
 Build a controlled demonstration:
 
@@ -2508,7 +2508,7 @@ Use standardized constructions and reviewed libraries.
 
 ---
 
-# 113. Practical Lab – Passkey/WebAuthn
+## 113. Practical Lab – Passkey/WebAuthn
 
 Create a local test application implementing:
 
@@ -2532,7 +2532,7 @@ Public Key
 
 ---
 
-# 114. Practical Lab – Secret Sharing
+## 114. Practical Lab – Secret Sharing
 
 Implement a test threshold scheme:
 
@@ -2560,7 +2560,7 @@ Use a reviewed implementation for real applications.
 
 ---
 
-# 115. Practical Lab – HSM / KMS Simulation
+## 115. Practical Lab – HSM / KMS Simulation
 
 Design:
 
@@ -2578,7 +2578,7 @@ Ensure the application does not directly handle master key material.
 
 ---
 
-# 116. Practical Lab – Cryptographic Agility
+## 116. Practical Lab – Cryptographic Agility
 
 Create a small application supporting:
 
@@ -2611,7 +2611,7 @@ Hard-Coded Algorithm Everywhere
 
 ---
 
-# 117. Practical Lab – Quantum Threat Modeling
+## 117. Practical Lab – Quantum Threat Modeling
 
 Choose a fictional organization.
 
@@ -2642,105 +2642,105 @@ based on quantum migration requirements.
 
 ---
 
-# 118. Interview Questions
+## 118. Interview Questions
 
-## What is post-quantum cryptography?
+### What is post-quantum cryptography?
 
 Cryptography designed to remain secure against attackers using sufficiently capable quantum computers as well as classical computers.
 
 ---
 
-## What is Shor's algorithm?
+### What is Shor's algorithm?
 
 A quantum algorithm that can efficiently solve integer factorization and discrete logarithm problems on sufficiently powerful fault-tolerant quantum computers.
 
 ---
 
-## Which major cryptographic systems does Shor's algorithm threaten?
+### Which major cryptographic systems does Shor's algorithm threaten?
 
 Systems based on integer factorization and discrete logarithms, including RSA, Diffie-Hellman, ECDH, ECDSA, and EdDSA.
 
 ---
 
-## What is Grover's algorithm?
+### What is Grover's algorithm?
 
 A quantum search algorithm that provides a quadratic speedup for certain unstructured search problems.
 
 ---
 
-## Does quantum computing completely break AES?
+### Does quantum computing completely break AES?
 
 No. Grover's algorithm reduces the generic brute-force security margin, but AES-256 retains a substantial security margin.
 
 ---
 
-## Why is AES-256 relevant to post-quantum security?
+### Why is AES-256 relevant to post-quantum security?
 
 Its larger key size provides a greater margin against generic quantum search than AES-128.
 
 ---
 
-## What is ML-KEM?
+### What is ML-KEM?
 
 A standardized post-quantum key encapsulation mechanism based on lattice cryptography.
 
 ---
 
-## What is ML-DSA?
+### What is ML-DSA?
 
 A standardized post-quantum digital signature algorithm based on lattice cryptography.
 
 ---
 
-## What is SLH-DSA?
+### What is SLH-DSA?
 
 A standardized hash-based post-quantum digital signature algorithm.
 
 ---
 
-## What is a KEM?
+### What is a KEM?
 
 A Key Encapsulation Mechanism establishes a shared secret using public-key cryptographic operations.
 
 ---
 
-## Why do we need KEMs?
+### Why do we need KEMs?
 
 They allow public-key mechanisms to establish a shared symmetric secret efficiently, after which symmetric encryption can protect bulk application data.
 
 ---
 
-## What is hybrid cryptography?
+### What is hybrid cryptography?
 
 Using classical and post-quantum cryptographic mechanisms together during the migration period.
 
 ---
 
-## Why use hybrid key exchange?
+### Why use hybrid key exchange?
 
 It can provide protection based on both classical and post-quantum assumptions during the transition.
 
 ---
 
-## What is crypto agility?
+### What is crypto agility?
 
 The ability to replace cryptographic algorithms and parameters without major architectural redesign.
 
 ---
 
-## What is Harvest Now, Decrypt Later?
+### What is Harvest Now, Decrypt Later?
 
 An attacker captures encrypted data today and stores it with the expectation of decrypting it in the future using improved capabilities, potentially including quantum computers.
 
 ---
 
-## Why is PQC migration urgent?
+### Why is PQC migration urgent?
 
 Some sensitive data needs confidentiality for many years, and attackers can capture encrypted traffic before quantum computers become capable of breaking the underlying public-key cryptography.
 
 ---
 
-## Is post-quantum cryptography the same as quantum cryptography?
+### Is post-quantum cryptography the same as quantum cryptography?
 
 No.
 
@@ -2748,73 +2748,73 @@ PQC uses classical cryptographic algorithms designed to resist quantum attacks. 
 
 ---
 
-## What is a digital signature?
+### What is a digital signature?
 
 A cryptographic mechanism that allows a verifier to establish authenticity and integrity of signed data and, depending on the system, evidence of possession of a signing private key.
 
 ---
 
-## What is Ed25519?
+### What is Ed25519?
 
 A modern elliptic-curve digital signature scheme.
 
 ---
 
-## Is Ed25519 post-quantum secure?
+### Is Ed25519 post-quantum secure?
 
 No. It relies on elliptic-curve discrete-logarithm security and is therefore vulnerable to sufficiently powerful quantum attacks.
 
 ---
 
-## Is X25519 post-quantum secure?
+### Is X25519 post-quantum secure?
 
 No. It is a classical elliptic-curve key-agreement mechanism.
 
 ---
 
-## What happens to RSA after a cryptographically relevant quantum computer exists?
+### What happens to RSA after a cryptographically relevant quantum computer exists?
 
 RSA's security assumption can be defeated using Shor's algorithm, so it should be replaced with quantum-resistant mechanisms.
 
 ---
 
-## What happens to ECC?
+### What happens to ECC?
 
 Elliptic-curve systems such as ECDH and ECDSA are also threatened by Shor's algorithm.
 
 ---
 
-## What is a zero-knowledge proof?
+### What is a zero-knowledge proof?
 
 A method for proving a statement without revealing the underlying secret information beyond what is necessary to establish that the statement is true.
 
 ---
 
-## What is homomorphic encryption?
+### What is homomorphic encryption?
 
 Encryption that allows certain computations to be performed directly on encrypted data.
 
 ---
 
-## What is MPC?
+### What is MPC?
 
 Secure Multi-Party Computation allows multiple parties to jointly compute a function while protecting their private inputs according to the protocol's security guarantees.
 
 ---
 
-## What is threshold cryptography?
+### What is threshold cryptography?
 
 A system where cryptographic authorization or operations require cooperation from a threshold number of participants rather than a single key holder.
 
 ---
 
-## What are passkeys?
+### What are passkeys?
 
 Public-key-based authentication credentials designed to replace or reduce dependence on passwords.
 
 ---
 
-# 119. Quick Revision Table
+## 119. Quick Revision Table
 
 | Concept | Key Idea |
 |---|---|
@@ -2846,7 +2846,7 @@ Public-key-based authentication credentials designed to replace or reduce depend
 
 ---
 
-# 120. Modern Cryptographic Architecture
+## 120. Modern Cryptographic Architecture
 
 A future-oriented architecture may look like:
 
@@ -2887,7 +2887,7 @@ can coexist.
 
 ---
 
-# 121. Post-Quantum Migration Architecture
+## 121. Post-Quantum Migration Architecture
 
 A transitional system might use:
 
@@ -2926,7 +2926,7 @@ where supported and appropriate.
 
 ---
 
-# 122. PQC Migration Checklist
+## 122. PQC Migration Checklist
 
 ```text
 ☐ Inventory all cryptographic usage
@@ -2953,7 +2953,7 @@ where supported and appropriate.
 
 ---
 
-# 123. Secure Modern Cryptography Checklist
+## 123. Secure Modern Cryptography Checklist
 
 ```text
 ALGORITHMS
@@ -2999,7 +2999,7 @@ PQC
 
 ---
 
-# 124. Cryptography Career Relevance
+## 124. Cryptography Career Relevance
 
 For cybersecurity roles, modern cryptography knowledge is useful in:
 
@@ -3046,7 +3046,7 @@ Secure Architecture
 
 ---
 
-# 125. Cryptography Interview Master Revision
+## 125. Cryptography Interview Master Revision
 
 Remember these relationships:
 
@@ -3105,7 +3105,7 @@ HNDL
 
 ---
 
-# 126. Final Cryptography Knowledge Map
+## 126. Final Cryptography Knowledge Map
 
 ```text
                          CRYPTOGRAPHY
@@ -3184,7 +3184,7 @@ Threat         Security
 
 ---
 
-# 127. The Most Important Lessons
+## 127. The Most Important Lessons
 
 ```text
 1. Modern cryptography is about using secure primitives correctly.
@@ -3250,7 +3250,7 @@ Threat         Security
 
 ---
 
-# 128. Final Chapter Summary
+## 128. Final Chapter Summary
 
 This chapter covered the modern and future direction of cryptography:
 
@@ -3350,7 +3350,7 @@ The most important mental model is:
 
 ---
 
-# Cryptography Section Complete
+## Cryptography Section Complete
 
 The complete 12-chapter roadmap is:
 

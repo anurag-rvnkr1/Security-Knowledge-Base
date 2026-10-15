@@ -1,10 +1,10 @@
 # 23 - Linux for Cybersecurity
 
-# Part 1 — Linux in Cybersecurity, Security Roles, Attack Lifecycle, Security Distributions, and Enterprise Security Operations
+## Part 1 — Linux in Cybersecurity, Security Roles, Attack Lifecycle, Security Distributions, and Enterprise Security Operations
 
 ---
 
-# Introduction
+## Introduction
 
 Linux is the dominant operating system in cybersecurity.
 
@@ -24,7 +24,7 @@ Most enterprise cybersecurity tools either run on Linux or are designed to work 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -39,7 +39,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Linux is Important in Cybersecurity
+## Why Linux is Important in Cybersecurity
 
 Linux is preferred because it offers:
 
@@ -54,7 +54,7 @@ Linux is preferred because it offers:
 
 ---
 
-# Linux in Enterprise Infrastructure
+## Linux in Enterprise Infrastructure
 
 ```text
 Internet
@@ -88,7 +88,7 @@ Linux often forms the backbone of modern enterprise infrastructure.
 
 ---
 
-# Cybersecurity Domains
+## Cybersecurity Domains
 
 Linux is used across multiple cybersecurity disciplines.
 
@@ -105,7 +105,7 @@ Linux is used across multiple cybersecurity disciplines.
 
 ---
 
-# Offensive Security
+## Offensive Security
 
 Offensive security focuses on identifying vulnerabilities before attackers can exploit them.
 
@@ -123,7 +123,7 @@ Always perform these activities **only with explicit authorization**.
 
 ---
 
-# Defensive Security
+## Defensive Security
 
 Defensive security focuses on protecting systems and responding to threats.
 
@@ -139,7 +139,7 @@ Typical responsibilities:
 
 ---
 
-# Red Team vs Blue Team
+## Red Team vs Blue Team
 
 | Red Team | Blue Team |
 |-----------|-----------|
@@ -151,7 +151,7 @@ Typical responsibilities:
 
 ---
 
-# Purple Team
+## Purple Team
 
 Purple teams facilitate collaboration between offensive and defensive teams.
 
@@ -185,7 +185,7 @@ Benefits:
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 A Security Operations Center continuously monitors enterprise environments.
 
@@ -200,7 +200,7 @@ Primary functions:
 
 ---
 
-# SOC Architecture
+## SOC Architecture
 
 ```text
 Endpoints
@@ -232,7 +232,7 @@ SOC Analysts
 
 ---
 
-# SOC Analyst Responsibilities
+## SOC Analyst Responsibilities
 
 Common tasks:
 
@@ -245,7 +245,7 @@ Common tasks:
 
 ---
 
-# Security Incident Lifecycle
+## Security Incident Lifecycle
 
 ```text
 Preparation
@@ -279,7 +279,7 @@ This lifecycle is widely used in incident response frameworks.
 
 ---
 
-# Cyber Kill Chain (High-Level View)
+## Cyber Kill Chain (High-Level View)
 
 A simplified attack lifecycle includes:
 
@@ -311,7 +311,7 @@ Understanding attack progression helps defenders detect malicious activity earli
 
 ---
 
-# MITRE ATT&CK
+## MITRE ATT&CK
 
 MITRE ATT&CK is a knowledge base of adversary tactics and techniques.
 
@@ -324,7 +324,7 @@ It helps organizations:
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Typical workflow:
 
@@ -358,7 +358,7 @@ Report
 
 ---
 
-# Security Assessments
+## Security Assessments
 
 Organizations perform assessments to identify weaknesses before attackers do.
 
@@ -372,7 +372,7 @@ Examples:
 
 ---
 
-# Security-Focused Linux Distributions
+## Security-Focused Linux Distributions
 
 Several Linux distributions are designed for security-related work.
 
@@ -388,7 +388,7 @@ Each distribution serves different operational needs.
 
 ---
 
-# Enterprise Linux Distributions
+## Enterprise Linux Distributions
 
 Production environments commonly use:
 
@@ -403,7 +403,7 @@ These platforms prioritize stability, long-term support, and enterprise manageme
 
 ---
 
-# Linux Security Tools (Categories)
+## Linux Security Tools (Categories)
 
 | Category | Examples |
 |-----------|----------|
@@ -419,7 +419,7 @@ Choose tools appropriate to your authorized role and environment.
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```text
 Assets
@@ -451,7 +451,7 @@ Review
 
 ---
 
-# Cybersecurity Career Paths
+## Cybersecurity Career Paths
 
 Linux knowledge is valuable for roles such as:
 
@@ -468,7 +468,7 @@ Linux knowledge is valuable for roles such as:
 
 ---
 
-# Enterprise Security Principles
+## Enterprise Security Principles
 
 Organizations typically prioritize:
 
@@ -482,7 +482,7 @@ Organizations typically prioritize:
 
 ---
 
-# Cybersecurity Workflow
+## Cybersecurity Workflow
 
 ```text
 Identify Assets
@@ -512,7 +512,7 @@ This aligns with common security frameworks and operational practices.
 
 ---
 
-# Cybersecurity Documentation
+## Cybersecurity Documentation
 
 Important documentation includes:
 
@@ -526,7 +526,7 @@ Important documentation includes:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Linux provides a powerful platform for both defensive and authorized offensive security activities.
 
@@ -540,7 +540,7 @@ Strong Linux skills enable professionals to:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Organizations benefit from Linux-based security by:
 
@@ -553,7 +553,7 @@ Organizations benefit from Linux-based security by:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Standardize on supported Linux distributions.
 - Maintain accurate asset inventories.
@@ -566,7 +566,7 @@ Organizations benefit from Linux-based security by:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux is central to modern cybersecurity operations.
 - Offensive and defensive security have different objectives but complement each other.
@@ -576,13 +576,13 @@ Organizations benefit from Linux-based security by:
 
 ---
 
-# 23 - Linux for Cybersecurity
+## 23 - Linux for Cybersecurity
 
-# Part 2 — Penetration Testing Workflow, Digital Forensics, Incident Response, Threat Hunting, Malware Analysis, and Security Tools
+## Part 2 — Penetration Testing Workflow, Digital Forensics, Incident Response, Threat Hunting, Malware Analysis, and Security Tools
 
 ---
 
-# Introduction
+## Introduction
 
 Linux is the preferred operating system for many cybersecurity professionals because it provides powerful command-line tools, scripting capabilities, and a stable platform for security operations.
 
@@ -592,7 +592,7 @@ This chapter introduces common cybersecurity workflows from both offensive (auth
 
 ---
 
-# Penetration Testing
+## Penetration Testing
 
 Penetration testing is an **authorized** security assessment that simulates real-world attacks to identify and validate vulnerabilities.
 
@@ -606,7 +606,7 @@ Objectives:
 
 ---
 
-# Penetration Testing Lifecycle
+## Penetration Testing Lifecycle
 
 ```text
 Planning
@@ -642,7 +642,7 @@ Remediation Verification
 
 ---
 
-# Rules of Engagement (RoE)
+## Rules of Engagement (RoE)
 
 Before any engagement, organizations define:
 
@@ -658,7 +658,7 @@ A clearly documented RoE helps prevent unintended operational impact.
 
 ---
 
-# Information Gathering
+## Information Gathering
 
 Information gathering collects publicly available and authorized target information.
 
@@ -673,7 +673,7 @@ Typical categories include:
 
 ---
 
-# Vulnerability Assessment vs Penetration Testing
+## Vulnerability Assessment vs Penetration Testing
 
 | Vulnerability Assessment | Penetration Testing |
 |---------------------------|---------------------|
@@ -684,7 +684,7 @@ Typical categories include:
 
 ---
 
-# Reporting
+## Reporting
 
 A penetration test report typically contains:
 
@@ -700,7 +700,7 @@ A penetration test report typically contains:
 
 ---
 
-# Digital Forensics
+## Digital Forensics
 
 Digital forensics is the process of collecting, preserving, examining, and documenting digital evidence.
 
@@ -714,7 +714,7 @@ Primary goals:
 
 ---
 
-# Digital Forensics Workflow
+## Digital Forensics Workflow
 
 ```text
 Identification
@@ -746,7 +746,7 @@ Reporting
 
 ---
 
-# Types of Evidence
+## Types of Evidence
 
 Examples include:
 
@@ -761,7 +761,7 @@ Examples include:
 
 ---
 
-# Chain of Custody
+## Chain of Custody
 
 A chain of custody records how evidence is handled throughout an investigation.
 
@@ -780,13 +780,13 @@ Maintaining a chain of custody helps preserve evidentiary integrity.
 
 ---
 
-# Incident Response
+## Incident Response
 
 Incident response is the structured process of handling security incidents while minimizing operational and business impact.
 
 ---
 
-# Incident Response Lifecycle
+## Incident Response Lifecycle
 
 ```text
 Preparation
@@ -818,7 +818,7 @@ Lessons Learned
 
 ---
 
-# Common Security Incidents
+## Common Security Incidents
 
 Examples include:
 
@@ -833,7 +833,7 @@ Examples include:
 
 ---
 
-# Incident Severity Example
+## Incident Severity Example
 
 | Severity | Example |
 |----------|---------|
@@ -846,7 +846,7 @@ Severity definitions vary by organization.
 
 ---
 
-# Threat Hunting
+## Threat Hunting
 
 Threat hunting is a proactive process of searching for malicious activity that has not yet generated alerts.
 
@@ -854,7 +854,7 @@ Unlike alert-driven investigations, hunting starts with hypotheses and evidence.
 
 ---
 
-# Threat Hunting Workflow
+## Threat Hunting Workflow
 
 ```text
 Hypothesis
@@ -886,7 +886,7 @@ Improve Detection
 
 ---
 
-# Threat Hunting Data Sources
+## Threat Hunting Data Sources
 
 Typical sources include:
 
@@ -901,7 +901,7 @@ Typical sources include:
 
 ---
 
-# Indicators
+## Indicators
 
 Security teams commonly work with:
 
@@ -914,7 +914,7 @@ Behavior-based detection (IOAs) often remains effective even when attackers chan
 
 ---
 
-# Malware Analysis
+## Malware Analysis
 
 Malware analysis helps organizations understand malicious software and improve defenses.
 
@@ -928,7 +928,7 @@ Typical objectives:
 
 ---
 
-# Types of Malware Analysis
+## Types of Malware Analysis
 
 | Type | Description |
 |------|-------------|
@@ -939,7 +939,7 @@ Malware analysis should always be performed in appropriately isolated environmen
 
 ---
 
-# Security Tool Categories
+## Security Tool Categories
 
 Linux supports numerous security tool categories.
 
@@ -957,7 +957,7 @@ Tool selection should match organizational requirements and authorization.
 
 ---
 
-# Automation in Cybersecurity
+## Automation in Cybersecurity
 
 Automation is commonly used for:
 
@@ -978,7 +978,7 @@ Benefits:
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```text
 Assets
@@ -1010,7 +1010,7 @@ Continuous Improvement
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Organizations commonly monitor:
 
@@ -1026,7 +1026,7 @@ These metrics help evaluate and improve security operations.
 
 ---
 
-# Documentation
+## Documentation
 
 Security teams should document:
 
@@ -1042,7 +1042,7 @@ Good documentation supports audits, knowledge transfer, and future investigation
 
 ---
 
-# Enterprise Security Collaboration
+## Enterprise Security Collaboration
 
 ```text
 SOC
@@ -1072,7 +1072,7 @@ Effective cybersecurity requires collaboration across technical and business tea
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Modern cyber defense emphasizes:
 
@@ -1086,7 +1086,7 @@ No single security control is sufficient on its own; layered defenses and operat
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-defined cybersecurity workflows help organizations:
 
@@ -1099,7 +1099,7 @@ Well-defined cybersecurity workflows help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Define clear rules of engagement for security assessments.
 - Maintain incident response playbooks.
@@ -1112,7 +1112,7 @@ Well-defined cybersecurity workflows help organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Penetration testing is an authorized process for validating security controls.
 - Digital forensics focuses on preserving and analyzing evidence.
@@ -1124,13 +1124,13 @@ Well-defined cybersecurity workflows help organizations:
 ---
 
 
-# 23 - Linux for Cybersecurity
+## 23 - Linux for Cybersecurity
 
-# Part 3 — SOC Operations, SIEM, Threat Intelligence, Cloud Security, DevSecOps, Practical Labs, and Enterprise Case Studies
+## Part 3 — SOC Operations, SIEM, Threat Intelligence, Cloud Security, DevSecOps, Practical Labs, and Enterprise Case Studies
 
 ---
 
-# Introduction
+## Introduction
 
 Modern cybersecurity extends far beyond traditional firewalls and antivirus software.
 
@@ -1148,7 +1148,7 @@ Linux is the foundation of many of these security platforms.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 A Security Operations Center (SOC) is responsible for continuously monitoring and defending an organization's infrastructure.
 
@@ -1164,7 +1164,7 @@ Primary objectives:
 
 ---
 
-# SOC Workflow
+## SOC Workflow
 
 ```text
 Log Collection
@@ -1196,7 +1196,7 @@ Lessons Learned
 
 ---
 
-# SOC Analyst Levels
+## SOC Analyst Levels
 
 | Level | Primary Responsibilities |
 |---------|--------------------------|
@@ -1207,7 +1207,7 @@ Lessons Learned
 
 ---
 
-# Typical SOC Daily Activities
+## Typical SOC Daily Activities
 
 Examples include:
 
@@ -1221,7 +1221,7 @@ Examples include:
 
 ---
 
-# Security Information and Event Management (SIEM)
+## Security Information and Event Management (SIEM)
 
 A SIEM platform collects, normalizes, stores, correlates, and analyzes security events from multiple sources.
 
@@ -1238,7 +1238,7 @@ Common data sources:
 
 ---
 
-# SIEM Architecture
+## SIEM Architecture
 
 ```text
 Servers
@@ -1278,7 +1278,7 @@ SOC
 
 ---
 
-# SIEM Functions
+## SIEM Functions
 
 | Function | Purpose |
 |----------|----------|
@@ -1291,7 +1291,7 @@ SOC
 
 ---
 
-# Example Security Events
+## Example Security Events
 
 Examples include:
 
@@ -1306,7 +1306,7 @@ Examples include:
 
 ---
 
-# Alert Triage
+## Alert Triage
 
 Analysts typically evaluate:
 
@@ -1336,7 +1336,7 @@ Escalate if Required
 
 ---
 
-# Threat Intelligence
+## Threat Intelligence
 
 Threat intelligence provides context about current threats and adversary behavior.
 
@@ -1351,7 +1351,7 @@ Common intelligence categories:
 
 ---
 
-# Threat Intelligence Workflow
+## Threat Intelligence Workflow
 
 ```text
 Collect
@@ -1379,7 +1379,7 @@ Improve Detection
 
 ---
 
-# Indicators
+## Indicators
 
 Common technical indicators include:
 
@@ -1394,7 +1394,7 @@ Indicators should be validated and supplemented with behavioral analysis wheneve
 
 ---
 
-# Cloud Security
+## Cloud Security
 
 Linux is widely used in public and private cloud environments.
 
@@ -1409,7 +1409,7 @@ Typical workloads:
 
 ---
 
-# Cloud Shared Responsibility
+## Cloud Shared Responsibility
 
 ```text
 Cloud Provider
@@ -1439,7 +1439,7 @@ Responsibilities vary depending on the cloud service model (IaaS, PaaS, SaaS).
 
 ---
 
-# Cloud Security Best Practices
+## Cloud Security Best Practices
 
 - Harden Linux instances.
 - Apply security updates promptly.
@@ -1451,7 +1451,7 @@ Responsibilities vary depending on the cloud service model (IaaS, PaaS, SaaS).
 
 ---
 
-# Container Security
+## Container Security
 
 Containers share the host kernel and therefore require secure configuration.
 
@@ -1466,7 +1466,7 @@ Best practices:
 
 ---
 
-# Kubernetes Security
+## Kubernetes Security
 
 Security considerations include:
 
@@ -1479,7 +1479,7 @@ Security considerations include:
 
 ---
 
-# DevSecOps
+## DevSecOps
 
 DevSecOps integrates security throughout the software development lifecycle.
 
@@ -1515,7 +1515,7 @@ Security becomes a continuous process rather than a final checkpoint.
 
 ---
 
-# DevSecOps Objectives
+## DevSecOps Objectives
 
 - Shift security left
 - Automate security testing
@@ -1525,7 +1525,7 @@ Security becomes a continuous process rather than a final checkpoint.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Infrastructure can be managed using code to improve consistency and repeatability.
 
@@ -1539,7 +1539,7 @@ Benefits:
 
 ---
 
-# Security Automation
+## Security Automation
 
 Common automation tasks:
 
@@ -1555,7 +1555,7 @@ Automation allows security teams to focus on higher-value investigations.
 
 ---
 
-# Practical Lab 1 — Review Authentication Logs
+## Practical Lab 1 — Review Authentication Logs
 
 Ubuntu/Debian:
 
@@ -1576,7 +1576,7 @@ Objectives:
 
 ---
 
-# Practical Lab 2 — Review Listening Services
+## Practical Lab 2 — Review Listening Services
 
 ```bash
 ss -tulpn
@@ -1589,7 +1589,7 @@ Objectives:
 
 ---
 
-# Practical Lab 3 — Review Running Services
+## Practical Lab 3 — Review Running Services
 
 ```bash
 systemctl list-units --type=service --state=running
@@ -1602,7 +1602,7 @@ Objectives:
 
 ---
 
-# Practical Lab 4 — Review System Logs
+## Practical Lab 4 — Review System Logs
 
 ```bash
 journalctl -xe
@@ -1615,9 +1615,9 @@ Objectives:
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-## Suspicious Login Investigation
+### Suspicious Login Investigation
 
 Observed:
 
@@ -1636,9 +1636,9 @@ Response:
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-## Linux Server Hardening
+### Linux Server Hardening
 
 Actions performed:
 
@@ -1657,9 +1657,9 @@ Results:
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-## SIEM Detection Improvement
+### SIEM Detection Improvement
 
 Problem:
 
@@ -1680,7 +1680,7 @@ Outcome:
 
 ---
 
-# Enterprise Security Architecture
+## Enterprise Security Architecture
 
 ```text
 Endpoints
@@ -1716,7 +1716,7 @@ Incident Response
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Enterprise cybersecurity is a continuous cycle of:
 
@@ -1731,7 +1731,7 @@ Linux plays a critical role across every stage of this lifecycle.
 
 ---
 
-# Business Impact
+## Business Impact
 
 A mature Linux-based cybersecurity program helps organizations:
 
@@ -1744,7 +1744,7 @@ A mature Linux-based cybersecurity program helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Centralize security logs.
 - Regularly tune SIEM detection rules.
@@ -1757,7 +1757,7 @@ A mature Linux-based cybersecurity program helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - SOC teams rely heavily on Linux systems and centralized monitoring.
 - SIEM platforms correlate events from multiple sources to improve detection.
@@ -1768,13 +1768,13 @@ A mature Linux-based cybersecurity program helps organizations:
 
 ---
 
-# 23 - Linux for Cybersecurity
+## 23 - Linux for Cybersecurity
 
-# Part 4 — Advanced Practical Labs, Enterprise Scenarios, Chapter Summary, Interview Questions, Cheat Sheet, and References
+## Part 4 — Advanced Practical Labs, Enterprise Scenarios, Chapter Summary, Interview Questions, Cheat Sheet, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Linux skills are essential across nearly every cybersecurity role.
 
@@ -1791,7 +1791,7 @@ The objective is to connect Linux administration knowledge with real-world cyber
 
 ---
 
-# Practical Lab 1 — System Information Collection
+## Practical Lab 1 — System Information Collection
 
 Collect basic system information.
 
@@ -1815,7 +1815,7 @@ Objectives:
 
 ---
 
-# Practical Lab 2 — User Enumeration
+## Practical Lab 2 — User Enumeration
 
 Display users:
 
@@ -1842,7 +1842,7 @@ Objectives:
 
 ---
 
-# Practical Lab 3 — Process Investigation
+## Practical Lab 3 — Process Investigation
 
 Display running processes:
 
@@ -1871,7 +1871,7 @@ Objectives:
 
 ---
 
-# Practical Lab 4 — Network Review
+## Practical Lab 4 — Network Review
 
 View listening ports:
 
@@ -1898,7 +1898,7 @@ Objectives:
 
 ---
 
-# Practical Lab 5 — Authentication Log Review
+## Practical Lab 5 — Authentication Log Review
 
 Ubuntu/Debian:
 
@@ -1919,7 +1919,7 @@ Objectives:
 
 ---
 
-# Practical Lab 6 — Service Review
+## Practical Lab 6 — Service Review
 
 Running services:
 
@@ -1934,7 +1934,7 @@ Objectives:
 
 ---
 
-# Practical Lab 7 — Package Review
+## Practical Lab 7 — Package Review
 
 Ubuntu/Debian:
 
@@ -1955,7 +1955,7 @@ Objectives:
 
 ---
 
-# Practical Lab 8 — Review Sudo Privileges
+## Practical Lab 8 — Review Sudo Privileges
 
 Current privileges:
 
@@ -1976,7 +1976,7 @@ Objectives:
 
 ---
 
-# Practical Lab 9 — Review System Logs
+## Practical Lab 9 — Review System Logs
 
 Recent log entries:
 
@@ -1997,7 +1997,7 @@ Objectives:
 
 ---
 
-# Practical Lab 10 — File Permission Audit
+## Practical Lab 10 — File Permission Audit
 
 Review sensitive files:
 
@@ -2016,7 +2016,7 @@ Objectives:
 
 ---
 
-# Practical Lab 11 — Review Open Files
+## Practical Lab 11 — Review Open Files
 
 ```bash
 lsof
@@ -2029,7 +2029,7 @@ Objectives:
 
 ---
 
-# Practical Lab 12 — Disk Usage Review
+## Practical Lab 12 — Disk Usage Review
 
 Filesystem usage:
 
@@ -2050,7 +2050,7 @@ Objectives:
 
 ---
 
-# Practical Lab 13 — Firewall Review
+## Practical Lab 13 — Firewall Review
 
 Example:
 
@@ -2071,7 +2071,7 @@ Objectives:
 
 ---
 
-# Practical Lab 14 — Basic Security Review
+## Practical Lab 14 — Basic Security Review
 
 Create a checklist including:
 
@@ -2088,9 +2088,9 @@ Document observations and recommended improvements.
 
 ---
 
-# Enterprise Scenario 1
+## Enterprise Scenario 1
 
-## Brute-Force Login Attempts
+### Brute-Force Login Attempts
 
 Observed:
 
@@ -2125,9 +2125,9 @@ Document Findings
 
 ---
 
-# Enterprise Scenario 2
+## Enterprise Scenario 2
 
-## Unauthorized Software Installation
+### Unauthorized Software Installation
 
 Observed:
 
@@ -2144,9 +2144,9 @@ Response:
 
 ---
 
-# Enterprise Scenario 3
+## Enterprise Scenario 3
 
-## High CPU Usage
+### High CPU Usage
 
 Observed:
 
@@ -2162,9 +2162,9 @@ Investigation:
 
 ---
 
-# Enterprise Scenario 4
+## Enterprise Scenario 4
 
-## Configuration Drift
+### Configuration Drift
 
 Observed:
 
@@ -2195,9 +2195,9 @@ Document
 
 ---
 
-# Enterprise Scenario 5
+## Enterprise Scenario 5
 
-## Security Monitoring Improvement
+### Security Monitoring Improvement
 
 Objective:
 
@@ -2213,7 +2213,7 @@ Approach:
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 | Control | Status |
 |----------|--------|
@@ -2230,9 +2230,9 @@ Approach:
 
 ---
 
-# Linux Cybersecurity Cheat Sheet
+## Linux Cybersecurity Cheat Sheet
 
-## System Information
+### System Information
 
 ```bash
 hostnamectl
@@ -2248,7 +2248,7 @@ cat /etc/os-release
 
 ---
 
-## Users
+### Users
 
 ```bash
 who
@@ -2264,7 +2264,7 @@ id
 
 ---
 
-## Processes
+### Processes
 
 ```bash
 ps aux
@@ -2280,7 +2280,7 @@ kill PID
 
 ---
 
-## Networking
+### Networking
 
 ```bash
 ip addr
@@ -2296,7 +2296,7 @@ ping host
 
 ---
 
-## Services
+### Services
 
 ```bash
 systemctl status service
@@ -2308,7 +2308,7 @@ systemctl restart service
 
 ---
 
-## Logs
+### Logs
 
 ```bash
 journalctl
@@ -2320,7 +2320,7 @@ journalctl -xe
 
 ---
 
-## Permissions
+### Permissions
 
 ```bash
 chmod
@@ -2336,7 +2336,7 @@ ls -l
 
 ---
 
-## Packages
+### Packages
 
 Ubuntu/Debian:
 
@@ -2353,7 +2353,7 @@ dnf upgrade
 
 ---
 
-## Storage
+### Storage
 
 ```bash
 df -h
@@ -2365,7 +2365,7 @@ du -sh *
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 This chapter covered:
 
@@ -2386,9 +2386,9 @@ This chapter covered:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. Why is Linux widely used in cybersecurity?
 2. What is a Security Operations Center (SOC)?
@@ -2403,7 +2403,7 @@ This chapter covered:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the penetration testing lifecycle.
 2. Describe the incident response lifecycle.
@@ -2418,7 +2418,7 @@ This chapter covered:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a Linux-based SOC architecture for an enterprise.
 2. Explain how you would improve SIEM detection quality.
@@ -2433,7 +2433,7 @@ This chapter covered:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux is a core platform for enterprise cybersecurity.
 - Security operations depend on continuous monitoring and structured response.
@@ -2443,9 +2443,9 @@ This chapter covered:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man systemctl`
 - `man journalctl`
@@ -2457,7 +2457,7 @@ This chapter covered:
 - `man chown`
 - `man sudo`
 
-## Standards & Frameworks
+### Standards & Frameworks
 
 - Linux Foundation Documentation
 - MITRE ATT&CK Framework
@@ -2471,11 +2471,11 @@ This chapter covered:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **24-Linux-Troubleshooting.md**
 
-## Topics Covered
+### Topics Covered
 
 - Troubleshooting Methodology
 - Boot Problems

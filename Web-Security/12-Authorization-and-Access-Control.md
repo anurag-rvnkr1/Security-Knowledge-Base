@@ -1,12 +1,12 @@
 # 12-Authorization-and-Access-Control.md
 
-# Part 1 — Authorization Fundamentals, Access Control Models, Permissions, Roles, and Enterprise Authorization Architecture
+## Part 1 — Authorization Fundamentals, Access Control Models, Permissions, Roles, and Enterprise Authorization Architecture
 
 > **"Authentication answers 'Who are you?'. Authorization answers 'What are you allowed to do?'. Even perfectly authenticated users must never receive permissions they do not require."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Authorization?
+## What is Authorization?
 
 Authorization is the process of determining **what an authenticated user is allowed to access or perform**.
 
@@ -51,7 +51,7 @@ Authorization decisions occur **after** successful authentication.
 
 ---
 
-# Why Authorization Matters
+## Why Authorization Matters
 
 Consider an online banking application.
 
@@ -77,7 +77,7 @@ Authorization protects resources from unauthorized access.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 ```
 Authentication
@@ -121,7 +121,7 @@ Both processes are required for secure applications.
 
 ---
 
-# Authorization Workflow
+## Authorization Workflow
 
 ```
 User Request
@@ -151,7 +151,7 @@ Every protected request should pass through authorization checks.
 
 ---
 
-# Core Authorization Components
+## Core Authorization Components
 
 ```
 Authorization
@@ -173,7 +173,7 @@ Each component contributes to the final access decision.
 
 ---
 
-# Subject
+## Subject
 
 A **subject** is the entity requesting access.
 
@@ -187,7 +187,7 @@ Examples:
 
 ---
 
-# Object (Resource)
+## Object (Resource)
 
 An object (or resource) is the item being accessed.
 
@@ -202,7 +202,7 @@ Examples:
 
 ---
 
-# Action
+## Action
 
 The requested operation.
 
@@ -219,7 +219,7 @@ Examples:
 
 ---
 
-# Authorization Decision
+## Authorization Decision
 
 ```
 Subject
@@ -247,7 +247,7 @@ Deny
 
 ---
 
-# Permissions
+## Permissions
 
 Permissions specify what actions are allowed.
 
@@ -269,7 +269,7 @@ Permissions are often grouped into roles.
 
 ---
 
-# Roles
+## Roles
 
 A role represents a collection of permissions.
 
@@ -293,7 +293,7 @@ Configure System
 
 ---
 
-# Example Roles
+## Example Roles
 
 | Role | Example Permissions |
 |-------|---------------------|
@@ -305,7 +305,7 @@ Configure System
 
 ---
 
-# Resources
+## Resources
 
 Resources may include:
 
@@ -331,7 +331,7 @@ Every sensitive resource should have authorization checks.
 
 ---
 
-# Access Control
+## Access Control
 
 Access control enforces authorization decisions.
 
@@ -355,7 +355,7 @@ Without access control, users may reach resources they should not access.
 
 ---
 
-# Access Control Matrix
+## Access Control Matrix
 
 Example:
 
@@ -369,7 +369,7 @@ An access control matrix helps visualize permissions.
 
 ---
 
-# Access Control Models
+## Access Control Models
 
 Common authorization models include:
 
@@ -391,7 +391,7 @@ Each model addresses different organizational requirements.
 
 ---
 
-# Discretionary Access Control (DAC)
+## Discretionary Access Control (DAC)
 
 In DAC, the resource owner determines access.
 
@@ -413,7 +413,7 @@ A document owner shares a file with selected colleagues.
 
 ---
 
-# Mandatory Access Control (MAC)
+## Mandatory Access Control (MAC)
 
 MAC uses centrally enforced security policies.
 
@@ -435,7 +435,7 @@ MAC is common in highly regulated environments.
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 RBAC grants permissions through roles.
 
@@ -459,7 +459,7 @@ RBAC simplifies permission management in large organizations.
 
 ---
 
-# RBAC Example
+## RBAC Example
 
 ```
 Employee
@@ -481,7 +481,7 @@ Changing the user's role automatically changes available permissions.
 
 ---
 
-# Attribute-Based Access Control (ABAC)
+## Attribute-Based Access Control (ABAC)
 
 ABAC evaluates attributes before granting access.
 
@@ -515,7 +515,7 @@ Attributes may include:
 
 ---
 
-# Comparing Access Control Models
+## Comparing Access Control Models
 
 | Model | Primary Decision Based On |
 |---------|---------------------------|
@@ -528,7 +528,7 @@ Many enterprise systems combine multiple models.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Users should receive only the minimum permissions necessary.
 
@@ -548,7 +548,7 @@ Least privilege reduces the impact of compromised accounts.
 
 ---
 
-# Need-to-Know Principle
+## Need-to-Know Principle
 
 Even within authorized groups:
 
@@ -572,7 +572,7 @@ Access should be limited to information necessary for assigned responsibilities.
 
 ---
 
-# Separation of Duties
+## Separation of Duties
 
 Critical tasks should be divided among multiple individuals.
 
@@ -598,7 +598,7 @@ Separating responsibilities helps reduce fraud and mistakes.
 
 ---
 
-# Enterprise Authorization Architecture
+## Enterprise Authorization Architecture
 
 ```
                 User
@@ -638,7 +638,7 @@ The authorization engine evaluates permissions before granting access.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A hospital information system uses authorization as follows:
 
@@ -666,7 +666,7 @@ A doctor may view records only for patients they are authorized to treat.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using a sample web application:
 
@@ -679,7 +679,7 @@ Using a sample web application:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is authorization?
 2. How does authorization differ from authentication?
@@ -694,7 +694,7 @@ Using a sample web application:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Perform authentication before authorization.
 - Enforce authorization on every protected request.
@@ -706,7 +706,7 @@ Using a sample web application:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting client-side authorization checks.
 - Assuming authenticated users can access all resources.
@@ -717,7 +717,7 @@ Using a sample web application:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication verifies identity; authorization determines permitted actions.
 - Authorization decisions are based on subjects, resources, actions, and policies.
@@ -726,15 +726,15 @@ Using a sample web application:
 - Enterprise authorization relies on least privilege, separation of duties, and centralized policy enforcement.
 
 
-# 12-Authorization-and-Access-Control.md
+## 12-Authorization-and-Access-Control.md
 
-# Part 2 — Role-Based Access Control (RBAC), Attribute-Based Access Control (ABAC), Policy Enforcement, Permission Management, and Enterprise Authorization Design
+## Part 2 — Role-Based Access Control (RBAC), Attribute-Based Access Control (ABAC), Policy Enforcement, Permission Management, and Enterprise Authorization Design
 
 > **"Enterprise authorization is not about granting access—it is about granting only the right access, at the right time, to the right identity, under the right conditions."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -751,7 +751,7 @@ After completing this part, you will understand:
 
 ---
 
-# Authorization Decision Process
+## Authorization Decision Process
 
 Every authorization decision evaluates several inputs.
 
@@ -783,7 +783,7 @@ Authorization should occur for **every protected request**.
 
 ---
 
-# Authorization Components
+## Authorization Components
 
 ```
 Authorization
@@ -807,7 +807,7 @@ Each component contributes to determining whether access should be granted.
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 RBAC assigns permissions to roles instead of individual users.
 
@@ -831,7 +831,7 @@ This simplifies administration in organizations with many users.
 
 ---
 
-# RBAC Architecture
+## RBAC Architecture
 
 ```
              Users
@@ -859,7 +859,7 @@ Adding or removing users from roles updates their permissions automatically.
 
 ---
 
-# RBAC Example
+## RBAC Example
 
 ```
 Sales Employee
@@ -895,7 +895,7 @@ Generate Reports
 
 ---
 
-# Role Hierarchy
+## Role Hierarchy
 
 Organizations often define hierarchical roles.
 
@@ -919,7 +919,7 @@ Higher-level roles may inherit permissions from lower-level roles depending on o
 
 ---
 
-# Permission Inheritance
+## Permission Inheritance
 
 Example:
 
@@ -959,7 +959,7 @@ Inheritance reduces duplicated permission definitions.
 
 ---
 
-# Designing Roles
+## Designing Roles
 
 Good roles should be:
 
@@ -973,7 +973,7 @@ Roles should represent **job functions**, not individual users.
 
 ---
 
-# Problems with Too Many Roles
+## Problems with Too Many Roles
 
 ```
 Few Roles
@@ -999,7 +999,7 @@ Role explosion makes authorization difficult to maintain.
 
 ---
 
-# Attribute-Based Access Control (ABAC)
+## Attribute-Based Access Control (ABAC)
 
 ABAC evaluates multiple attributes before making an authorization decision.
 
@@ -1025,9 +1025,9 @@ Decision
 
 ---
 
-# Types of Attributes
+## Types of Attributes
 
-### User Attributes
+#### User Attributes
 
 Examples:
 
@@ -1038,7 +1038,7 @@ Examples:
 
 ---
 
-### Resource Attributes
+#### Resource Attributes
 
 Examples:
 
@@ -1050,7 +1050,7 @@ Examples:
 
 ---
 
-### Environmental Attributes
+#### Environmental Attributes
 
 Examples:
 
@@ -1063,7 +1063,7 @@ Examples:
 
 ---
 
-### Action Attributes
+#### Action Attributes
 
 Examples:
 
@@ -1076,7 +1076,7 @@ Examples:
 
 ---
 
-# ABAC Example
+## ABAC Example
 
 ```
 IF
@@ -1100,7 +1100,7 @@ If any required condition is not satisfied, access is denied.
 
 ---
 
-# RBAC vs ABAC
+## RBAC vs ABAC
 
 | RBAC | ABAC |
 |-------|------|
@@ -1113,7 +1113,7 @@ Many enterprise environments combine both approaches.
 
 ---
 
-# Hybrid Access Control
+## Hybrid Access Control
 
 ```
 Authentication
@@ -1139,7 +1139,7 @@ Hybrid authorization balances simplicity and flexibility.
 
 ---
 
-# Policy-Based Authorization
+## Policy-Based Authorization
 
 Instead of embedding authorization rules directly into application code:
 
@@ -1163,7 +1163,7 @@ This centralizes authorization logic and improves consistency.
 
 ---
 
-# Policy Engine
+## Policy Engine
 
 A policy engine evaluates authorization rules.
 
@@ -1191,7 +1191,7 @@ Applications ask the policy engine rather than making independent decisions.
 
 ---
 
-# Authorization Policies
+## Authorization Policies
 
 Policies define business rules.
 
@@ -1217,7 +1217,7 @@ Policies should be easy to review and update.
 
 ---
 
-# Resource Hierarchy
+## Resource Hierarchy
 
 Applications often organize resources hierarchically.
 
@@ -1245,7 +1245,7 @@ Permissions may propagate through resource hierarchies according to organization
 
 ---
 
-# Fine-Grained Authorization
+## Fine-Grained Authorization
 
 Authorization can occur at multiple levels.
 
@@ -1273,7 +1273,7 @@ The deeper the authorization layer, the more precise the access control.
 
 ---
 
-# Object-Level Authorization
+## Object-Level Authorization
 
 Example:
 
@@ -1301,7 +1301,7 @@ Ownership is frequently part of authorization decisions.
 
 ---
 
-# Record-Level Authorization
+## Record-Level Authorization
 
 Example:
 
@@ -1325,7 +1325,7 @@ The doctor cannot automatically access records for every patient.
 
 ---
 
-# Field-Level Authorization
+## Field-Level Authorization
 
 Different users may see different parts of the same record.
 
@@ -1347,7 +1347,7 @@ HR personnel may view salary information while general managers cannot.
 
 ---
 
-# API Authorization
+## API Authorization
 
 Every protected API endpoint should verify permissions.
 
@@ -1379,7 +1379,7 @@ Backend authorization must not rely on client-side checks.
 
 ---
 
-# Authorization Cache
+## Authorization Cache
 
 To improve performance:
 
@@ -1399,7 +1399,7 @@ Cached decisions should expire appropriately when permissions change.
 
 ---
 
-# Enterprise Authorization Architecture
+## Enterprise Authorization Architecture
 
 ```
                 User
@@ -1451,7 +1451,7 @@ This centralized approach promotes consistent authorization across applications.
 
 ---
 
-# Authorization Lifecycle
+## Authorization Lifecycle
 
 ```
 User Created
@@ -1481,7 +1481,7 @@ Permissions should evolve with organizational responsibilities.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retailer manages authorization as follows:
 
@@ -1517,7 +1517,7 @@ A sales employee can manage inventory only for their assigned store.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using a sample application:
 
@@ -1530,7 +1530,7 @@ Using a sample application:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Role-Based Access Control (RBAC)?
 2. What is Attribute-Based Access Control (ABAC)?
@@ -1545,7 +1545,7 @@ Using a sample application:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Centralize authorization decisions.
 - Design roles around business responsibilities.
@@ -1558,7 +1558,7 @@ Using a sample application:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Hard-coding permissions throughout application code.
 - Allowing users to inherit unnecessary permissions.
@@ -1569,7 +1569,7 @@ Using a sample application:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - RBAC simplifies permission management through business-oriented roles.
 - ABAC provides flexible, context-aware authorization using attributes.
@@ -1577,15 +1577,15 @@ Using a sample application:
 - Fine-grained authorization can protect APIs, records, objects, and individual fields.
 - Enterprise authorization combines roles, attributes, policies, and centralized decision-making to enforce secure access control.
 
-# 12-Authorization-and-Access-Control.md
+## 12-Authorization-and-Access-Control.md
 
-# Part 3 — Authorization Enforcement, Object-Level Security, API Authorization, Access Reviews, Zero Trust Authorization, and Enterprise Access Control
+## Part 3 — Authorization Enforcement, Object-Level Security, API Authorization, Access Reviews, Zero Trust Authorization, and Enterprise Access Control
 
 > **"The most secure authorization policy is meaningless if it is not enforced consistently. Every request, every API call, every object, and every sensitive operation must be validated by the server."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1602,7 +1602,7 @@ After completing this part, you will understand:
 
 ---
 
-# Authorization Enforcement
+## Authorization Enforcement
 
 Authorization is effective only when every protected request is validated.
 
@@ -1630,7 +1630,7 @@ Skipping authorization checks on even a single endpoint can expose sensitive res
 
 ---
 
-# Enforcement Points
+## Enforcement Points
 
 Authorization is typically enforced at multiple layers.
 
@@ -1654,7 +1654,7 @@ Each layer should independently validate access where appropriate.
 
 ---
 
-# Policy Enforcement Point (PEP)
+## Policy Enforcement Point (PEP)
 
 The Policy Enforcement Point intercepts requests.
 
@@ -1682,7 +1682,7 @@ The PEP does not decide permissions itself—it enforces the decision.
 
 ---
 
-# Policy Decision Point (PDP)
+## Policy Decision Point (PDP)
 
 The PDP evaluates authorization policies.
 
@@ -1710,7 +1710,7 @@ Centralizing decisions promotes consistent authorization across applications.
 
 ---
 
-# Policy Information Point (PIP)
+## Policy Information Point (PIP)
 
 The Policy Information Point supplies attributes used during policy evaluation.
 
@@ -1738,7 +1738,7 @@ These attributes help the PDP make informed authorization decisions.
 
 ---
 
-# End-to-End Authorization Flow
+## End-to-End Authorization Flow
 
 ```
 User
@@ -1772,7 +1772,7 @@ This separation improves scalability and maintainability.
 
 ---
 
-# Object-Level Authorization
+## Object-Level Authorization
 
 Authorization should verify ownership or entitlement for each object.
 
@@ -1806,7 +1806,7 @@ Authentication alone does not grant access to every object.
 
 ---
 
-# Record-Level Authorization
+## Record-Level Authorization
 
 Applications often store many users' data together.
 
@@ -1828,7 +1828,7 @@ Each request should verify that the authenticated user is permitted to access th
 
 ---
 
-# Row-Level Authorization Example
+## Row-Level Authorization Example
 
 ```
 Customer
@@ -1858,7 +1858,7 @@ Authorization decisions should be based on business rules rather than assumption
 
 ---
 
-# Field-Level Authorization
+## Field-Level Authorization
 
 Sometimes only selected fields should be visible.
 
@@ -1882,7 +1882,7 @@ Different roles may receive different views of the same record.
 
 ---
 
-# Function-Level Authorization
+## Function-Level Authorization
 
 Applications expose many functions.
 
@@ -1906,7 +1906,7 @@ Each function should have explicit authorization requirements.
 
 ---
 
-# Administrative Functions
+## Administrative Functions
 
 Administrative operations require additional protection.
 
@@ -1923,7 +1923,7 @@ These functions should be restricted to authorized administrators.
 
 ---
 
-# API Authorization
+## API Authorization
 
 Every API endpoint should verify authorization.
 
@@ -1955,7 +1955,7 @@ Authorization should never depend solely on client-side controls.
 
 ---
 
-# API Gateway Authorization
+## API Gateway Authorization
 
 API gateways frequently perform:
 
@@ -1987,7 +1987,7 @@ Gateways provide a centralized enforcement layer.
 
 ---
 
-# Microservice Authorization
+## Microservice Authorization
 
 In distributed systems:
 
@@ -2015,7 +2015,7 @@ Each service should validate that requests are authorized rather than assuming u
 
 ---
 
-# Backend Authorization
+## Backend Authorization
 
 ```
 Browser
@@ -2041,7 +2041,7 @@ The backend remains the authoritative source for access decisions.
 
 ---
 
-# Access Control Lists (ACLs)
+## Access Control Lists (ACLs)
 
 An ACL associates permissions directly with a resource.
 
@@ -2058,7 +2058,7 @@ ACLs are useful for resources with individualized permissions.
 
 ---
 
-# Authorization Policies
+## Authorization Policies
 
 Policies commonly evaluate:
 
@@ -2074,7 +2074,7 @@ Policies should be reviewed regularly.
 
 ---
 
-# Time-Based Authorization
+## Time-Based Authorization
 
 Some systems restrict access based on time.
 
@@ -2102,7 +2102,7 @@ Time is one possible policy attribute.
 
 ---
 
-# Location-Based Authorization
+## Location-Based Authorization
 
 Policies may also evaluate location.
 
@@ -2126,7 +2126,7 @@ Location should be combined with other security controls rather than used alone.
 
 ---
 
-# Device-Based Authorization
+## Device-Based Authorization
 
 Authorization decisions may consider:
 
@@ -2139,7 +2139,7 @@ Device trust is commonly used in enterprise Zero Trust environments.
 
 ---
 
-# Risk-Based Authorization
+## Risk-Based Authorization
 
 Authorization can adapt to changing risk.
 
@@ -2171,7 +2171,7 @@ High-risk situations may require stronger verification before sensitive actions.
 
 ---
 
-# Just-In-Time (JIT) Access
+## Just-In-Time (JIT) Access
 
 Some privileged permissions are granted only when required.
 
@@ -2199,7 +2199,7 @@ This minimizes long-term privileged access.
 
 ---
 
-# Access Reviews
+## Access Reviews
 
 Organizations periodically review permissions.
 
@@ -2227,7 +2227,7 @@ Regular reviews help maintain least privilege.
 
 ---
 
-# Access Recertification
+## Access Recertification
 
 Large enterprises often require scheduled recertification.
 
@@ -2251,7 +2251,7 @@ This reduces permission accumulation over time.
 
 ---
 
-# Segregation of Duties Review
+## Segregation of Duties Review
 
 Organizations ensure incompatible permissions are not assigned together.
 
@@ -2277,7 +2277,7 @@ Segregation of duties helps reduce fraud and operational risk.
 
 ---
 
-# Zero Trust Authorization
+## Zero Trust Authorization
 
 Zero Trust assumes no request is automatically trusted.
 
@@ -2305,7 +2305,7 @@ Authorization decisions are continuous rather than one-time events.
 
 ---
 
-# Authorization Logging
+## Authorization Logging
 
 Important authorization events include:
 
@@ -2321,7 +2321,7 @@ Logs support investigations and compliance.
 
 ---
 
-# Authorization Monitoring
+## Authorization Monitoring
 
 ```
 Authorization Logs
@@ -2347,7 +2347,7 @@ Monitoring helps identify abnormal access patterns.
 
 ---
 
-# Enterprise Authorization Architecture
+## Enterprise Authorization Architecture
 
 ```
                  User
@@ -2399,7 +2399,7 @@ This architecture centralizes policy evaluation while allowing distributed enfor
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider authorizes access as follows:
 
@@ -2442,7 +2442,7 @@ Additional controls include:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using a sample application:
 
@@ -2455,7 +2455,7 @@ Using a sample application:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a Policy Enforcement Point (PEP)?
 2. What is a Policy Decision Point (PDP)?
@@ -2470,7 +2470,7 @@ Using a sample application:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enforce authorization on every protected request.
 - Perform authorization on the server.
@@ -2483,7 +2483,7 @@ Using a sample application:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming authentication automatically grants authorization.
 - Trusting client-side permission checks.
@@ -2495,7 +2495,7 @@ Using a sample application:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authorization must be consistently enforced across pages, APIs, services, and data.
 - PEP, PDP, and PIP separate enforcement, decision-making, and policy information for scalable enterprise authorization.
@@ -2503,15 +2503,15 @@ Using a sample application:
 - Zero Trust authorization evaluates every request using context and policy.
 - Continuous monitoring, logging, access reviews, and least privilege are essential for maintaining secure enterprise authorization.
 
-# 12-Authorization-and-Access-Control.md
+## 12-Authorization-and-Access-Control.md
 
-# Part 4 — Enterprise Authorization Governance, Identity Lifecycle, Access Auditing, Security Testing, Troubleshooting, Best Practices, and Chapter Summary
+## Part 4 — Enterprise Authorization Governance, Identity Lifecycle, Access Auditing, Security Testing, Troubleshooting, Best Practices, and Chapter Summary
 
 > **"Authorization is successful only when the correct permissions are granted, continuously validated, regularly reviewed, and immediately revoked when no longer required."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2528,7 +2528,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Authorization Lifecycle
+## Enterprise Authorization Lifecycle
 
 Authorization is not a one-time configuration.
 
@@ -2568,7 +2568,7 @@ Permissions should evolve as users' responsibilities change.
 
 ---
 
-# Identity Lifecycle Management
+## Identity Lifecycle Management
 
 A user's access changes throughout their employment or relationship with an organization.
 
@@ -2612,7 +2612,7 @@ Failure to manage this lifecycle increases security risk.
 
 ---
 
-# Joiner-Mover-Leaver (JML) Model
+## Joiner-Mover-Leaver (JML) Model
 
 Most enterprises follow the **Joiner-Mover-Leaver (JML)** process.
 
@@ -2660,7 +2660,7 @@ JML helps ensure permissions remain aligned with business responsibilities.
 
 ---
 
-# Access Request Workflow
+## Access Request Workflow
 
 ```
 User Requests Access
@@ -2686,7 +2686,7 @@ Sensitive permissions should require appropriate approvals.
 
 ---
 
-# Permission Revocation
+## Permission Revocation
 
 Access should be removed promptly when no longer needed.
 
@@ -2710,7 +2710,7 @@ Delayed revocation may expose unnecessary risk.
 
 ---
 
-# Permission Creep
+## Permission Creep
 
 Permission creep occurs when users accumulate access over time.
 
@@ -2738,7 +2738,7 @@ Regular access reviews help prevent permission creep.
 
 ---
 
-# Access Certification
+## Access Certification
 
 Managers periodically verify that users still require assigned permissions.
 
@@ -2762,7 +2762,7 @@ Certification supports least privilege and regulatory compliance.
 
 ---
 
-# Privileged Access Governance
+## Privileged Access Governance
 
 Privileged accounts require additional controls.
 
@@ -2784,7 +2784,7 @@ Additional safeguards often include:
 
 ---
 
-# Emergency Access ("Break Glass")
+## Emergency Access ("Break Glass")
 
 Organizations sometimes maintain emergency administrative accounts.
 
@@ -2816,7 +2816,7 @@ Emergency accounts should be tightly controlled and thoroughly audited.
 
 ---
 
-# Authorization Monitoring
+## Authorization Monitoring
 
 Organizations monitor authorization events continuously.
 
@@ -2844,7 +2844,7 @@ Monitoring helps identify abnormal permission usage.
 
 ---
 
-# High-Value Authorization Events
+## High-Value Authorization Events
 
 Important events include:
 
@@ -2860,7 +2860,7 @@ Important events include:
 
 ---
 
-# Authorization Audit Trail
+## Authorization Audit Trail
 
 ```
 User
@@ -2890,7 +2890,7 @@ Audit trails help reconstruct security events.
 
 ---
 
-# Centralized Authorization Logging
+## Centralized Authorization Logging
 
 ```
 Applications
@@ -2920,7 +2920,7 @@ Centralization simplifies investigations across multiple systems.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many regulations require organizations to demonstrate proper authorization controls.
 
@@ -2937,7 +2937,7 @@ Specific compliance requirements vary by industry and jurisdiction.
 
 ---
 
-# Authorization Metrics
+## Authorization Metrics
 
 Organizations commonly monitor:
 
@@ -2954,7 +2954,7 @@ These metrics help measure the health of the authorization program.
 
 ---
 
-# Authorization Security Testing
+## Authorization Security Testing
 
 Authorization testing should evaluate:
 
@@ -2971,7 +2971,7 @@ Testing must always be performed only with proper authorization.
 
 ---
 
-# Authorization Testing Workflow
+## Authorization Testing Workflow
 
 ```
 Protected Resource
@@ -3001,7 +3001,7 @@ Expected and actual behavior should match the defined authorization policy.
 
 ---
 
-# Authorization Review Checklist
+## Authorization Review Checklist
 
 ```
 ✓ Authentication Required
@@ -3027,7 +3027,7 @@ Expected and actual behavior should match the defined authorization policy.
 
 ---
 
-# Enterprise Troubleshooting
+## Enterprise Troubleshooting
 
 | Symptom | Possible Cause |
 |----------|----------------|
@@ -3041,7 +3041,7 @@ Investigate authorization issues systematically.
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 Authorization Issue
@@ -3079,7 +3079,7 @@ Each layer should be examined independently.
 
 ---
 
-# Enterprise Authorization Architecture
+## Enterprise Authorization Architecture
 
 ```
                      Users
@@ -3137,7 +3137,7 @@ This architecture supports centralized policy decisions with distributed enforce
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global insurance company implements authorization as follows:
 
@@ -3184,7 +3184,7 @@ Additional protections include:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using a sample enterprise application:
 
@@ -3198,7 +3198,7 @@ Using a sample enterprise application:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the Joiner-Mover-Leaver (JML) process?
 2. What is permission creep?
@@ -3213,7 +3213,7 @@ Using a sample enterprise application:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply the Principle of Least Privilege throughout the organization.
 - Perform server-side authorization for every protected request.
@@ -3228,7 +3228,7 @@ Using a sample enterprise application:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing permission creep to accumulate.
 - Forgetting to revoke access after role changes.
@@ -3241,7 +3241,7 @@ Using a sample enterprise application:
 
 ---
 
-# Quick Revision
+## Quick Revision
 
 Authorization Flow
 
@@ -3311,7 +3311,7 @@ Protected Resource
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

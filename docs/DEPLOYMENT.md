@@ -8,19 +8,13 @@ The repository already contains the knowledge source. GitHub Pages can serve the
 
 ## Steps
 
-1. Open https://github.com/anurag-rvnkr1/Security-Knowledge-Base.
-2. Put `index.html`, `404.html`, `favicon.svg`, `robots.txt`, `assets/`, `site/`, and `scripts/` in the repository root.
-3. Commit to `main`.
-4. Open **Settings → Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select **main**.
-7. Select **/(root)**.
-8. Click **Save**.
-9. Wait for GitHub Pages to publish.
-10. Open https://anurag-rvnkr1.github.io/Security-Knowledge-Base/.
+1. Keep `index.html`, `404.html`, `favicon.svg`, `robots.txt`, `assets/`, and generated `site/` output in the repository root.
+2. Regenerate and validate the catalogue as described in [Content Maintenance](./CONTENT-MAINTENANCE.md), then commit the source and generated JSON together.
+3. In **Settings → Pages**, verify the existing publishing source. The repository is documented to publish from `main` and `/(root)`; this documentation change does not alter that setting.
+4. Wait for the Pages deployment to complete, then open https://anurag-rvnkr1.github.io/Security-Knowledge-Base/.
 
 ### Why `main / (root)` works
-GitHub Pages takes static files from the selected branch and directory. Because `index.html` is in the root, it becomes the entry page. The browser then loads the CSS, JavaScript, JSON index, and source Markdown.
+GitHub Pages takes static files from the selected branch and directory. Because `index.html` is in the root, it becomes the entry page. The browser then loads CSS, JavaScript, catalogue JSON, source Markdown, and the full-text search index when a visitor searches.
 
 ## Local verification
 
@@ -45,6 +39,7 @@ python scripts/build-content-index.py
 ```
 
 Commit both the source change and regenerated `site/content.json`.
+Also commit `site/search-index.json`; the generator updates both files.
 
 ## What to verify after deployment
 

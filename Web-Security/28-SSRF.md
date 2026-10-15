@@ -1,12 +1,12 @@
 # 28-Server-Side-Request-Forgery-(SSRF).md
 
-# Part 1 — Fundamentals of Server-Side Request Forgery (SSRF), Architecture, Attack Surface, and Enterprise Overview
+## Part 1 — Fundamentals of Server-Side Request Forgery (SSRF), Architecture, Attack Surface, and Enterprise Overview
 
 > **"Server-Side Request Forgery (SSRF) occurs when a server is tricked into making requests to unintended destinations. The real risk is not merely sending requests—it is abusing the server's trust, network position, or access privileges."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Server-Side Request Forgery (SSRF)?
+## What is Server-Side Request Forgery (SSRF)?
 
 Server-Side Request Forgery (SSRF) is a vulnerability in which an application accepts a user-controlled resource reference (such as a URL) and causes the **server** to make a network request on the user's behalf.
 
@@ -45,7 +45,7 @@ the application server becomes the requester.
 
 ---
 
-# Why SSRF is Dangerous
+## Why SSRF is Dangerous
 
 Servers often have privileges unavailable to external users.
 
@@ -62,7 +62,7 @@ Therefore, requests originating from the server may reach resources that are ina
 
 ---
 
-# SSRF in the OWASP Top 10
+## SSRF in the OWASP Top 10
 
 ```
 OWASP Top 10
@@ -80,9 +80,9 @@ Although SSRF may appear simple, it can have significant security implications d
 
 ---
 
-# Understanding Client vs Server Requests
+## Understanding Client vs Server Requests
 
-### Normal Request
+#### Normal Request
 
 ```
 Browser
@@ -94,7 +94,7 @@ Public Website
 
 ---
 
-### Server-Side Request
+#### Server-Side Request
 
 ```
 Browser
@@ -112,7 +112,7 @@ The server communicates with another service to complete a business function.
 
 ---
 
-# Legitimate Server Requests
+## Legitimate Server Requests
 
 Applications commonly make server-side requests for valid business purposes.
 
@@ -142,7 +142,7 @@ Server-side requests are normal; SSRF arises when user-controlled input improper
 
 ---
 
-# High-Level SSRF Concept
+## High-Level SSRF Concept
 
 ```
 User Input
@@ -164,7 +164,7 @@ The application's trust in user-supplied input creates the security concern.
 
 ---
 
-# Enterprise SSRF Architecture
+## Enterprise SSRF Architecture
 
 ```
               Internet
@@ -190,7 +190,7 @@ The application server often has broader network visibility than external users.
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
 
 ```
 Public Internet
@@ -214,7 +214,7 @@ Crossing trust boundaries without appropriate validation increases risk.
 
 ---
 
-# Internal vs External Resources
+## Internal vs External Resources
 
 | External Resource | Internal Resource |
 |-------------------|------------------|
@@ -228,7 +228,7 @@ Servers frequently have access to both environments.
 
 ---
 
-# Typical Enterprise Architecture
+## Typical Enterprise Architecture
 
 ```
 Client
@@ -258,7 +258,7 @@ Applications often communicate with multiple backend services.
 
 ---
 
-# Why Servers are Trusted
+## Why Servers are Trusted
 
 Servers commonly possess:
 
@@ -284,7 +284,7 @@ These trusted capabilities make SSRF particularly significant.
 
 ---
 
-# SSRF Attack Surface
+## SSRF Attack Surface
 
 Potential attack surfaces include functionality that accepts user-supplied resource references.
 
@@ -316,7 +316,7 @@ Not every feature is vulnerable; proper validation and controls determine securi
 
 ---
 
-# Business Features That Use Server Requests
+## Business Features That Use Server Requests
 
 ```
 User
@@ -348,7 +348,7 @@ Examples:
 
 ---
 
-# SSRF Trust Model
+## SSRF Trust Model
 
 ```
 User
@@ -370,9 +370,9 @@ Applications should carefully validate and control outbound requests.
 
 ---
 
-# Direct vs Indirect Requests
+## Direct vs Indirect Requests
 
-### Direct
+#### Direct
 
 ```
 Application
@@ -386,7 +386,7 @@ Destination is predefined by the application.
 
 ---
 
-### Indirect
+#### Indirect
 
 ```
 Application
@@ -400,7 +400,7 @@ User influence over request destinations increases risk and requires additional 
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A document management system allows employees to import publicly available images.
 
@@ -428,7 +428,7 @@ If destination validation is insufficient, the application may attempt to access
 
 ---
 
-# Common SSRF Risk Factors
+## Common SSRF Risk Factors
 
 | Risk Factor | Description |
 |-------------|-------------|
@@ -441,7 +441,7 @@ If destination validation is insufficient, the application may attempt to access
 
 ---
 
-# Enterprise SSRF Workflow
+## Enterprise SSRF Workflow
 
 ```
 User Request
@@ -475,7 +475,7 @@ Security checks should occur before outbound communication.
 
 ---
 
-# High-Level Mitigation Strategy
+## High-Level Mitigation Strategy
 
 ```
 User Input
@@ -505,7 +505,7 @@ Multiple security layers reduce SSRF risk.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a typical enterprise web application architecture.
 2. Identify components that make outbound requests.
@@ -517,7 +517,7 @@ Multiple security layers reduce SSRF risk.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Server-Side Request Forgery (SSRF)?
 2. Why is SSRF considered dangerous?
@@ -532,7 +532,7 @@ Multiple security layers reduce SSRF risk.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Minimize user influence over outbound request destinations.
 - Validate and normalize user-supplied resource references.
@@ -544,7 +544,7 @@ Multiple security layers reduce SSRF risk.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting user-supplied URLs without validation.
 - Granting servers unnecessary network access.
@@ -555,7 +555,7 @@ Multiple security layers reduce SSRF risk.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - SSRF occurs when a server makes unintended requests based on insufficiently controlled user input.
 - Application servers often have privileged network access, making SSRF impactful.
@@ -563,15 +563,15 @@ Multiple security layers reduce SSRF risk.
 - Trust boundaries and network architecture play a significant role in SSRF risk.
 - Validation, destination restrictions, monitoring, and least-privilege network access are fundamental defenses.
 
-# 28-Server-Side-Request-Forgery-(SSRF).md
+## 28-Server-Side-Request-Forgery-(SSRF).md
 
-# Part 2 — SSRF Types, Cloud Environments, Detection, Prevention, and Secure Architecture
+## Part 2 — SSRF Types, Cloud Environments, Detection, Prevention, and Secure Architecture
 
 > **"Modern SSRF defense is built on multiple layers: secure application design, strict outbound network controls, identity-aware architectures, continuous monitoring, and least-privilege access."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -588,7 +588,7 @@ After completing this part, you will understand:
 
 ---
 
-# Types of SSRF
+## Types of SSRF
 
 SSRF vulnerabilities can appear in different forms depending on application behavior.
 
@@ -614,7 +614,7 @@ Each type presents different detection and response challenges.
 
 ---
 
-# Basic SSRF
+## Basic SSRF
 
 In a basic SSRF scenario, the application immediately performs an outbound request using user-influenced input.
 
@@ -638,7 +638,7 @@ Applications should validate destinations before initiating outbound communicati
 
 ---
 
-# Blind SSRF
+## Blind SSRF
 
 Blind SSRF occurs when the application makes an outbound request but does not return the remote response to the user.
 
@@ -666,7 +666,7 @@ Although the requester may not receive the response, unauthorized outbound commu
 
 ---
 
-# Characteristics of Blind SSRF
+## Characteristics of Blind SSRF
 
 ```
 Blind SSRF
@@ -688,7 +688,7 @@ Strong monitoring and outbound request logging become especially important.
 
 ---
 
-# Second-Order SSRF
+## Second-Order SSRF
 
 Second-order SSRF occurs when user-provided information is stored and later used by another component to make an outbound request.
 
@@ -712,7 +712,7 @@ The delay between input and request can make troubleshooting more difficult.
 
 ---
 
-# Internal SSRF
+## Internal SSRF
 
 Applications may unintentionally communicate with internal services.
 
@@ -732,7 +732,7 @@ Proper segmentation and request validation help reduce exposure.
 
 ---
 
-# External SSRF
+## External SSRF
 
 Applications sometimes communicate with external third-party services.
 
@@ -748,7 +748,7 @@ Only trusted and approved destinations should be reachable.
 
 ---
 
-# SSRF in Microservices
+## SSRF in Microservices
 
 Modern applications often consist of many services communicating internally.
 
@@ -776,7 +776,7 @@ Each service should authenticate requests and enforce authorization independentl
 
 ---
 
-# SSRF in Cloud Environments
+## SSRF in Cloud Environments
 
 Cloud-native applications commonly communicate with managed services.
 
@@ -796,7 +796,7 @@ Cloud environments increase the importance of secure outbound communication poli
 
 ---
 
-# Enterprise Cloud Architecture
+## Enterprise Cloud Architecture
 
 ```
 Internet
@@ -830,7 +830,7 @@ Every communication path should follow least-privilege principles.
 
 ---
 
-# Zero Trust and SSRF
+## Zero Trust and SSRF
 
 Zero Trust assumes that no request is automatically trusted.
 
@@ -858,7 +858,7 @@ This approach reduces reliance on network location alone.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Applications should receive only the permissions required for their intended function.
 
@@ -882,7 +882,7 @@ Reducing unnecessary privileges limits potential impact if vulnerabilities occur
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Segmentation separates environments to reduce unnecessary connectivity.
 
@@ -910,7 +910,7 @@ Restricting communication paths improves resilience.
 
 ---
 
-# Outbound Network Controls
+## Outbound Network Controls
 
 Organizations should define which destinations applications are permitted to contact.
 
@@ -934,7 +934,7 @@ Outbound filtering is an important defense layer.
 
 ---
 
-# Secure Destination Validation
+## Secure Destination Validation
 
 Applications should verify outbound destinations before sending requests.
 
@@ -966,7 +966,7 @@ Validation should be performed consistently for every request.
 
 ---
 
-# Allowlist-Based Design
+## Allowlist-Based Design
 
 ```
 Requested Destination
@@ -992,7 +992,7 @@ Allowlists reduce the risk of unexpected outbound communication.
 
 ---
 
-# Monitoring Outbound Requests
+## Monitoring Outbound Requests
 
 Organizations should monitor outbound network activity.
 
@@ -1020,7 +1020,7 @@ Unexpected communication patterns may require investigation.
 
 ---
 
-# Enterprise Logging for SSRF
+## Enterprise Logging for SSRF
 
 Useful logging information may include:
 
@@ -1037,7 +1037,7 @@ Sensitive information should be protected and logged only when appropriate.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 Application Validation
@@ -1067,7 +1067,7 @@ Multiple defensive layers provide stronger protection than any single control.
 
 ---
 
-# Enterprise Prevention Strategy
+## Enterprise Prevention Strategy
 
 ```
 Secure Design
@@ -1097,7 +1097,7 @@ Security should be incorporated throughout the software lifecycle.
 
 ---
 
-# Secure Development Considerations
+## Secure Development Considerations
 
 ```
 Development
@@ -1121,7 +1121,7 @@ Early security integration reduces future risk.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational logistics company operates several internal APIs behind an API gateway.
 
@@ -1153,7 +1153,7 @@ Only predefined backend services are permitted through policy-based routing, and
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1166,7 +1166,7 @@ Only predefined backend services are permitted through policy-based routing, and
 
 ---
 
-# Secure SSRF Architecture
+## Secure SSRF Architecture
 
 ```
 User
@@ -1204,7 +1204,7 @@ Each layer contributes to reducing SSRF risk.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a secure microservices architecture.
 2. Identify every outbound communication path.
@@ -1216,7 +1216,7 @@ Each layer contributes to reducing SSRF risk.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Blind SSRF?
 2. What is Second-Order SSRF?
@@ -1231,7 +1231,7 @@ Each layer contributes to reducing SSRF risk.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Minimize user influence over outbound destinations.
 - Apply strict destination validation and normalization.
@@ -1243,7 +1243,7 @@ Each layer contributes to reducing SSRF risk.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing unrestricted outbound connectivity.
 - Trusting internal network location instead of verifying identity and authorization.
@@ -1254,7 +1254,7 @@ Each layer contributes to reducing SSRF risk.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - SSRF can appear in several forms, including basic, blind, second-order, internal, external, and cloud-related scenarios.
 - Modern architectures such as microservices and cloud platforms require strong outbound security controls.
@@ -1262,15 +1262,15 @@ Each layer contributes to reducing SSRF risk.
 - Continuous monitoring and centralized logging improve visibility into outbound communication.
 - Effective SSRF prevention combines secure application design with robust network and operational controls.
 
-# 28-Server-Side-Request-Forgery-(SSRF).md
+## 28-Server-Side-Request-Forgery-(SSRF).md
 
-# Part 3 — Secure Coding, Detection, Testing, Incident Response, Cloud Security, and Enterprise Operations
+## Part 3 — Secure Coding, Detection, Testing, Incident Response, Cloud Security, and Enterprise Operations
 
 > **"Preventing SSRF is not about blocking every outbound request. It is about ensuring every outbound request is intentional, authenticated, authorized, monitored, and aligned with business requirements."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1287,7 +1287,7 @@ After completing this part, you will understand:
 
 ---
 
-# Secure Development Lifecycle for SSRF
+## Secure Development Lifecycle for SSRF
 
 SSRF prevention should begin during software design—not after deployment.
 
@@ -1327,7 +1327,7 @@ Early integration reduces implementation risks.
 
 ---
 
-# Secure Coding Principles
+## Secure Coding Principles
 
 Applications should never assume that user-supplied resource identifiers are trustworthy.
 
@@ -1355,7 +1355,7 @@ These principles reduce the likelihood of introducing SSRF vulnerabilities.
 
 ---
 
-# Secure URL Handling
+## Secure URL Handling
 
 Applications that accept URLs or resource references should process them carefully.
 
@@ -1387,7 +1387,7 @@ Validation should occur before any outbound communication is attempted.
 
 ---
 
-# URL Normalization
+## URL Normalization
 
 Normalization ensures that resource references are interpreted consistently before validation.
 
@@ -1411,7 +1411,7 @@ Consistent processing reduces ambiguity during policy enforcement.
 
 ---
 
-# Validation Strategy
+## Validation Strategy
 
 A layered validation process is more effective than relying on a single check.
 
@@ -1443,7 +1443,7 @@ Each stage addresses a different class of potential problems.
 
 ---
 
-# Business Rule Validation
+## Business Rule Validation
 
 Applications should verify that outbound requests support legitimate business functionality.
 
@@ -1467,7 +1467,7 @@ Only necessary functionality should be permitted.
 
 ---
 
-# API Gateway Protection
+## API Gateway Protection
 
 Many enterprise applications route outbound communication through API gateways.
 
@@ -1491,7 +1491,7 @@ Gateways provide centralized policy enforcement and visibility.
 
 ---
 
-# API Gateway Responsibilities
+## API Gateway Responsibilities
 
 ```
 API Gateway
@@ -1517,7 +1517,7 @@ Centralized gateways simplify governance and auditing.
 
 ---
 
-# Service Authentication
+## Service Authentication
 
 Internal services should authenticate one another rather than relying solely on network location.
 
@@ -1537,7 +1537,7 @@ Authenticated service-to-service communication aligns with Zero Trust principles
 
 ---
 
-# Secure Service Communication
+## Secure Service Communication
 
 ```
 Application
@@ -1559,7 +1559,7 @@ Every communication path should verify identity and authorization.
 
 ---
 
-# Detecting SSRF Activity
+## Detecting SSRF Activity
 
 Organizations should monitor for unusual outbound communication patterns.
 
@@ -1591,7 +1591,7 @@ Monitoring should focus on identifying deviations from expected behavior.
 
 ---
 
-# Indicators That May Require Investigation
+## Indicators That May Require Investigation
 
 Examples of events that may warrant review include:
 
@@ -1617,7 +1617,7 @@ These indicators should be evaluated within the broader operational context.
 
 ---
 
-# Logging for SSRF Detection
+## Logging for SSRF Detection
 
 Security logs should include sufficient context for investigation.
 
@@ -1634,7 +1634,7 @@ Sensitive values should be minimized or protected according to organizational po
 
 ---
 
-# Security Testing
+## Security Testing
 
 SSRF prevention should be evaluated throughout development.
 
@@ -1666,7 +1666,7 @@ Testing should verify that validation, authorization, and network controls opera
 
 ---
 
-# Code Review Checklist
+## Code Review Checklist
 
 ```
 Review Checklist
@@ -1692,7 +1692,7 @@ Structured reviews improve consistency across development teams.
 
 ---
 
-# Architecture Review
+## Architecture Review
 
 Security architects should examine applications that initiate outbound requests.
 
@@ -1720,7 +1720,7 @@ Architecture reviews identify risks before deployment.
 
 ---
 
-# Incident Response
+## Incident Response
 
 If suspicious outbound communication is detected:
 
@@ -1752,7 +1752,7 @@ Incident response procedures should be documented and regularly exercised.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Following recovery, organizations should determine why the event occurred.
 
@@ -1784,7 +1784,7 @@ Lessons learned strengthen future resilience.
 
 ---
 
-# Cloud Security Considerations
+## Cloud Security Considerations
 
 Cloud-native applications frequently communicate with managed services.
 
@@ -1812,7 +1812,7 @@ Identity-aware access controls and continuous monitoring reduce operational risk
 
 ---
 
-# Zero Trust for Outbound Requests
+## Zero Trust for Outbound Requests
 
 ```
 Outbound Request
@@ -1842,7 +1842,7 @@ Every request should be evaluated independently rather than trusted automaticall
 
 ---
 
-# Enterprise Monitoring
+## Enterprise Monitoring
 
 Security teams should continuously monitor:
 
@@ -1870,7 +1870,7 @@ Continuous visibility supports rapid investigation.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global insurance provider routes all outbound service requests through a centralized gateway.
 
@@ -1902,7 +1902,7 @@ All outbound requests are authenticated, evaluated against organizational polici
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1915,7 +1915,7 @@ All outbound requests are authenticated, evaluated against organizational polici
 
 ---
 
-# Enterprise Operational Workflow
+## Enterprise Operational Workflow
 
 ```
 Business Request
@@ -1955,7 +1955,7 @@ SOC
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Identify application components that perform outbound communication.
 2. Draw trust boundaries for a cloud-native application.
@@ -1967,7 +1967,7 @@ SOC
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should SSRF prevention begin during software design?
 2. What is URL normalization?
@@ -1982,7 +1982,7 @@ SOC
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Incorporate SSRF prevention throughout the Secure SDLC.
 - Validate, normalize, and authorize all user-influenced outbound requests.
@@ -1994,7 +1994,7 @@ SOC
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Validating input only after initiating outbound communication.
 - Assuming internal services are inherently trustworthy.
@@ -2005,7 +2005,7 @@ SOC
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure coding, architecture, and operations all contribute to SSRF prevention.
 - Layered validation and policy enforcement reduce unnecessary outbound communication.
@@ -2013,15 +2013,15 @@ SOC
 - Continuous monitoring and structured incident response improve organizational resilience.
 - Zero Trust principles help ensure that every outbound request is verified before execution.
 
-# 28-Server-Side-Request-Forgery-(SSRF).md
+## 28-Server-Side-Request-Forgery-(SSRF).md
 
-# Part 4 — Enterprise Governance, Incident Response, Compliance, Secure Architecture, and Chapter Summary
+## Part 4 — Enterprise Governance, Incident Response, Compliance, Secure Architecture, and Chapter Summary
 
 > **"The strongest SSRF defense is achieved when secure development, network security, identity, governance, monitoring, and incident response work together as a unified security program."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2038,7 +2038,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise SSRF Governance
+## Enterprise SSRF Governance
 
 Enterprise governance establishes policies that define how applications may communicate with external and internal services.
 
@@ -2070,7 +2070,7 @@ Governance ensures consistency across development teams and infrastructure.
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Enterprise Governance
@@ -2098,7 +2098,7 @@ Governance reduces the likelihood of inconsistent security implementations.
 
 ---
 
-# Secure Architecture Principles
+## Secure Architecture Principles
 
 Applications should follow secure architectural principles before initiating outbound communication.
 
@@ -2138,7 +2138,7 @@ Every stage provides an opportunity to reduce risk.
 
 ---
 
-# Enterprise Network Architecture
+## Enterprise Network Architecture
 
 ```
                 Internet
@@ -2186,7 +2186,7 @@ Network segmentation and controlled communication paths reduce unnecessary expos
 
 ---
 
-# Defense-in-Depth Architecture
+## Defense-in-Depth Architecture
 
 ```
 User Input
@@ -2224,7 +2224,7 @@ Multiple security controls work together to reduce organizational risk.
 
 ---
 
-# Zero Trust for Outbound Communication
+## Zero Trust for Outbound Communication
 
 Traditional security often relied on trusted networks.
 
@@ -2262,7 +2262,7 @@ Trust is based on identity and policy—not network location.
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Applications should receive only the permissions necessary to perform approved business operations.
 
@@ -2286,7 +2286,7 @@ Reducing unnecessary permissions limits the impact of potential vulnerabilities.
 
 ---
 
-# Secure Change Management
+## Secure Change Management
 
 Changes affecting outbound communication should follow formal review processes.
 
@@ -2322,7 +2322,7 @@ Controlled changes improve security and operational stability.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 Organizations should continuously observe application behavior.
 
@@ -2354,7 +2354,7 @@ Unexpected communication patterns should be investigated.
 
 ---
 
-# Incident Response
+## Incident Response
 
 When suspicious outbound activity is detected:
 
@@ -2390,7 +2390,7 @@ Documented response procedures reduce recovery time and improve organizational r
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Following incident recovery:
 
@@ -2422,7 +2422,7 @@ The objective is to prevent similar issues from recurring.
 
 ---
 
-# Enterprise Compliance
+## Enterprise Compliance
 
 Many security standards expect organizations to manage outbound communication securely.
 
@@ -2450,7 +2450,7 @@ These practices support both operational security and regulatory compliance.
 
 ---
 
-# Enterprise Security Metrics
+## Enterprise Security Metrics
 
 Organizations measure SSRF-related security posture using operational metrics.
 
@@ -2467,7 +2467,7 @@ Metrics help evaluate the effectiveness of preventive controls.
 
 ---
 
-# Enterprise Dashboard
+## Enterprise Dashboard
 
 ```
 Security Dashboard
@@ -2495,7 +2495,7 @@ Dashboards provide operational awareness for security teams and management.
 
 ---
 
-# SSRF Security Maturity Model
+## SSRF Security Maturity Model
 
 ```
 Level 1
@@ -2531,7 +2531,7 @@ Organizations mature by integrating technical controls with operational processe
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution uses a layered architecture for outbound communications.
 
@@ -2571,7 +2571,7 @@ All outbound requests are validated, authenticated, authorized, logged, monitore
 
 ---
 
-# Enterprise SSRF Checklist
+## Enterprise SSRF Checklist
 
 ```
 ✓ Secure SDLC Implemented
@@ -2597,7 +2597,7 @@ All outbound requests are validated, authenticated, authorized, logged, monitore
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2610,9 +2610,9 @@ All outbound requests are validated, authenticated, authorized, logged, monitore
 
 ---
 
-# Interview Revision
+## Interview Revision
 
-## SSRF Overview
+### SSRF Overview
 
 ```
 User Input
@@ -2636,7 +2636,7 @@ Response
 
 ---
 
-## Secure Request Flow
+### Secure Request Flow
 
 ```
 Validation
@@ -2660,7 +2660,7 @@ Approved Request
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 ```
 Validation
@@ -2684,7 +2684,7 @@ Monitoring
 
 ---
 
-## Incident Response
+### Incident Response
 
 ```
 Detect
@@ -2708,7 +2708,7 @@ Improve
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise architecture showing secure outbound communication.
 2. Identify trust boundaries between public, application, and internal services.
@@ -2720,7 +2720,7 @@ Improve
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Server-Side Request Forgery (SSRF)?
 2. Why are outbound requests considered a security concern?
@@ -2735,7 +2735,7 @@ Improve
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Minimize user influence over outbound request destinations.
 - Validate, normalize, and authorize all outbound communication.
@@ -2747,7 +2747,7 @@ Improve
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming internal services are automatically trustworthy.
 - Allowing unrestricted outbound network access.
@@ -2758,7 +2758,7 @@ Improve
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

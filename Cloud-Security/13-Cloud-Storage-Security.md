@@ -1418,7 +1418,7 @@ Cloud storage should follow the principles of **Least Privilege**, **Defense in 
 
 ---
 
-# Defense-in-Depth for Cloud Storage
+## Defense-in-Depth for Cloud Storage
 
 ```
                  Users / Applications
@@ -1470,7 +1470,7 @@ Each security layer reduces the likelihood and impact of unauthorized access or 
 
 ---
 
-# Enforce Least Privilege
+## Enforce Least Privilege
 
 Grant only the minimum permissions necessary for users, applications, and services.
 
@@ -1496,7 +1496,7 @@ Review permissions regularly and remove unnecessary access.
 
 ---
 
-# Disable Public Access by Default
+## Disable Public Access by Default
 
 Storage resources should remain private unless there is a clearly documented business requirement for public access.
 
@@ -1523,7 +1523,7 @@ Public access should require formal approval.
 
 ---
 
-# Encrypt Data at Rest
+## Encrypt Data at Rest
 
 Enable encryption for all sensitive storage resources.
 
@@ -1552,7 +1552,7 @@ Use customer-managed encryption keys where organizational or regulatory requirem
 
 ---
 
-# Encrypt Data in Transit
+## Encrypt Data in Transit
 
 All communication with storage services should use encrypted protocols.
 
@@ -1579,7 +1579,7 @@ Reject unencrypted communication whenever possible.
 
 ---
 
-# Enable Multi-Factor Authentication (MFA)
+## Enable Multi-Factor Authentication (MFA)
 
 Administrative access to storage services should require MFA.
 
@@ -1594,7 +1594,7 @@ MFA reduces the effectiveness of compromised passwords.
 
 ---
 
-# Use Customer-Managed Keys When Appropriate
+## Use Customer-Managed Keys When Appropriate
 
 Organizations with higher security or compliance requirements should evaluate Customer-Managed Keys (CMKs).
 
@@ -1609,7 +1609,7 @@ Key access should be governed by strict IAM policies.
 
 ---
 
-# Enable Object Versioning
+## Enable Object Versioning
 
 Versioning helps recover from:
 
@@ -1638,7 +1638,7 @@ Older versions should be retained according to organizational retention policies
 
 ---
 
-# Implement Immutable Storage
+## Implement Immutable Storage
 
 Critical information should be protected using immutable storage.
 
@@ -1666,7 +1666,7 @@ Immutable storage prevents unauthorized modification or deletion during the rete
 
 ---
 
-# Protect Backup Storage
+## Protect Backup Storage
 
 Backups require the same security controls as production data.
 
@@ -1692,7 +1692,7 @@ Secondary Storage
 
 ---
 
-# Configure Lifecycle Policies Carefully
+## Configure Lifecycle Policies Carefully
 
 Lifecycle automation should align with business and regulatory requirements.
 
@@ -1707,7 +1707,7 @@ Improper lifecycle policies may result in premature data deletion.
 
 ---
 
-# Restrict Administrative Access
+## Restrict Administrative Access
 
 Administrative permissions should be limited to authorized personnel.
 
@@ -1723,7 +1723,7 @@ Shared administrator accounts should be avoided.
 
 ---
 
-# Monitor Storage Continuously
+## Monitor Storage Continuously
 
 Monitor:
 
@@ -1757,7 +1757,7 @@ Continuous monitoring supports rapid incident detection.
 
 ---
 
-# Implement Data Classification
+## Implement Data Classification
 
 Apply security controls based on data sensitivity.
 
@@ -1774,7 +1774,7 @@ Classification helps allocate appropriate protection.
 
 ---
 
-# Secure Cross-Region Replication
+## Secure Cross-Region Replication
 
 When using replication:
 
@@ -1787,7 +1787,7 @@ Replication should strengthen resilience without weakening security.
 
 ---
 
-# Scan for Misconfigurations
+## Scan for Misconfigurations
 
 Regularly assess storage resources for:
 
@@ -1802,9 +1802,9 @@ Automated configuration assessment reduces operational risk.
 
 ---
 
-# Best Practices
+## Best Practices
 
-## 1. Keep Storage Private by Default
+### 1. Keep Storage Private by Default
 
 Create all storage resources with private access enabled.
 
@@ -1812,7 +1812,7 @@ Require documented approval before exposing any resource publicly.
 
 ---
 
-## 2. Enable Encryption Everywhere
+### 2. Enable Encryption Everywhere
 
 Encrypt:
 
@@ -1827,7 +1827,7 @@ Encryption should be enabled by default.
 
 ---
 
-## 3. Apply Least Privilege
+### 3. Apply Least Privilege
 
 Grant only the permissions required for legitimate business functions.
 
@@ -1835,7 +1835,7 @@ Review access regularly and revoke unused permissions promptly.
 
 ---
 
-## 4. Enable Comprehensive Audit Logging
+### 4. Enable Comprehensive Audit Logging
 
 Record:
 
@@ -1850,7 +1850,7 @@ Forward logs to the organization's SIEM.
 
 ---
 
-## 5. Enable Versioning
+### 5. Enable Versioning
 
 Protect important data by retaining previous object versions.
 
@@ -1858,7 +1858,7 @@ Versioning supports recovery from accidental changes and ransomware incidents.
 
 ---
 
-## 6. Use Immutable Storage for Critical Data
+### 6. Use Immutable Storage for Critical Data
 
 Protect:
 
@@ -1871,7 +1871,7 @@ Immutability strengthens resilience against malicious deletion.
 
 ---
 
-## 7. Protect Administrative Accounts
+### 7. Protect Administrative Accounts
 
 Require:
 
@@ -1884,7 +1884,7 @@ Administrative actions should always be attributable to a specific individual.
 
 ---
 
-## 8. Continuously Monitor Storage Activity
+### 8. Continuously Monitor Storage Activity
 
 Alert on:
 
@@ -1899,7 +1899,7 @@ Behavioral monitoring improves detection of suspicious activity.
 
 ---
 
-## 9. Test Backup and Recovery Procedures
+### 9. Test Backup and Recovery Procedures
 
 Regularly validate that:
 
@@ -1912,7 +1912,7 @@ Testing is essential for disaster recovery readiness.
 
 ---
 
-## 10. Regularly Assess Storage Configurations
+### 10. Regularly Assess Storage Configurations
 
 Perform periodic reviews to identify:
 
@@ -1926,9 +1926,9 @@ Continuous assessment improves overall security posture.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
-### Making Storage Public Unintentionally
+#### Making Storage Public Unintentionally
 
 One of the most common cloud security incidents occurs when storage buckets or containers are accidentally configured for anonymous access.
 
@@ -1936,7 +1936,7 @@ Review public access settings regularly.
 
 ---
 
-### Granting Excessive Permissions
+#### Granting Excessive Permissions
 
 Assigning broad storage permissions increases the impact of compromised accounts.
 
@@ -1944,7 +1944,7 @@ Follow the Principle of Least Privilege.
 
 ---
 
-### Disabling Encryption
+#### Disabling Encryption
 
 Sensitive data should never be stored without appropriate encryption.
 
@@ -1952,7 +1952,7 @@ Verify that encryption remains enabled across all storage services.
 
 ---
 
-### Ignoring Versioning
+#### Ignoring Versioning
 
 Without versioning:
 
@@ -1962,7 +1962,7 @@ Without versioning:
 
 ---
 
-### Poor Backup Security
+#### Poor Backup Security
 
 Backups that lack encryption or access controls may expose sensitive information.
 
@@ -1970,7 +1970,7 @@ Treat backups as production assets from a security perspective.
 
 ---
 
-### Ignoring Audit Logs
+#### Ignoring Audit Logs
 
 Failure to review storage activity may delay detection of:
 
@@ -1983,7 +1983,7 @@ Integrate storage logs with centralized monitoring platforms.
 
 ---
 
-### Misconfigured Lifecycle Policies
+#### Misconfigured Lifecycle Policies
 
 Incorrect lifecycle rules may:
 
@@ -1996,7 +1996,7 @@ Review lifecycle configurations before deployment.
 
 ---
 
-### Using Shared Administrative Accounts
+#### Using Shared Administrative Accounts
 
 Shared accounts reduce accountability and complicate incident investigations.
 
@@ -2004,7 +2004,7 @@ Provide each administrator with an individual identity protected by MFA.
 
 ---
 
-### Neglecting Storage Configuration Reviews
+#### Neglecting Storage Configuration Reviews
 
 Cloud environments evolve continuously.
 
@@ -2019,7 +2019,7 @@ undetected for extended periods.
 
 ---
 
-### Assuming Provider Defaults Are Sufficient
+#### Assuming Provider Defaults Are Sufficient
 
 Cloud providers offer secure capabilities, but organizations remain responsible for configuring:
 
@@ -2033,9 +2033,9 @@ Always validate default configurations against organizational security requireme
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-53 – Security and Privacy Controls for Information Systems and Organizations
 - NIST SP 800-171 – Protecting Controlled Unclassified Information
@@ -2047,7 +2047,7 @@ Always validate default configurations against organizational security requireme
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
 - Amazon S3 Documentation
 - Amazon EBS Documentation
@@ -2062,7 +2062,7 @@ Always validate default configurations against organizational security requireme
 
 ---
 
-### Industry Best Practices
+#### Industry Best Practices
 
 - Principle of Least Privilege (PoLP)
 - Zero Trust Architecture

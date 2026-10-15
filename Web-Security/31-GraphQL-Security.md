@@ -1,12 +1,12 @@
 # 31-GraphQL-Security.md
 
-# Part 1 — Fundamentals of GraphQL Security, GraphQL Architecture, Queries, Mutations, and Enterprise Overview
+## Part 1 — Fundamentals of GraphQL Security, GraphQL Architecture, Queries, Mutations, and Enterprise Overview
 
 > **"GraphQL provides clients with tremendous flexibility, but that flexibility introduces unique security challenges. A secure GraphQL implementation must carefully control what clients can query, how much data they can retrieve, and who is authorized to access it."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is GraphQL?
+## What is GraphQL?
 
 GraphQL is an API query language and runtime developed by Meta (Facebook) that allows clients to request exactly the data they need.
 
@@ -51,7 +51,7 @@ Database
 
 ---
 
-# Why GraphQL?
+## Why GraphQL?
 
 Traditional REST APIs often require multiple requests to retrieve related information.
 
@@ -77,7 +77,7 @@ This reduces network overhead while increasing flexibility.
 
 ---
 
-# GraphQL Security
+## GraphQL Security
 
 GraphQL Security is the practice of protecting GraphQL APIs from unauthorized access, excessive resource consumption, data exposure, and misuse.
 
@@ -93,7 +93,7 @@ Security focuses on:
 
 ---
 
-# GraphQL Security Goals
+## GraphQL Security Goals
 
 ```
 GraphQL Security
@@ -117,7 +117,7 @@ GraphQL Security
 
 ---
 
-# GraphQL Architecture
+## GraphQL Architecture
 
 ```
 Client
@@ -147,7 +147,7 @@ Each layer should enforce appropriate security controls.
 
 ---
 
-# GraphQL Components
+## GraphQL Components
 
 ```
 GraphQL
@@ -173,7 +173,7 @@ Each component contributes to how GraphQL APIs process client requests.
 
 ---
 
-# GraphQL Schema
+## GraphQL Schema
 
 The schema defines the structure of the GraphQL API.
 
@@ -201,7 +201,7 @@ The schema serves as the contract between clients and servers.
 
 ---
 
-# GraphQL Types
+## GraphQL Types
 
 ```
 Types
@@ -225,7 +225,7 @@ Strong typing improves consistency and validation.
 
 ---
 
-# Queries
+## Queries
 
 Queries retrieve information.
 
@@ -253,7 +253,7 @@ Queries should retrieve only data the requester is authorized to access.
 
 ---
 
-# Mutations
+## Mutations
 
 Mutations modify application state.
 
@@ -281,7 +281,7 @@ Every mutation should require proper authentication and authorization.
 
 ---
 
-# Subscriptions
+## Subscriptions
 
 Subscriptions enable real-time updates.
 
@@ -301,7 +301,7 @@ Long-lived connections should be authenticated and continuously authorized.
 
 ---
 
-# Resolvers
+## Resolvers
 
 Resolvers obtain data for requested fields.
 
@@ -325,7 +325,7 @@ Resolvers are a common location for implementing authorization checks and busine
 
 ---
 
-# GraphQL Request Lifecycle
+## GraphQL Request Lifecycle
 
 ```
 Client
@@ -359,7 +359,7 @@ Each stage contributes to secure request processing.
 
 ---
 
-# GraphQL Response
+## GraphQL Response
 
 ```
 Business Logic
@@ -381,7 +381,7 @@ Responses should contain only authorized data.
 
 ---
 
-# GraphQL vs REST
+## GraphQL vs REST
 
 | GraphQL | REST |
 |----------|------|
@@ -395,7 +395,7 @@ Both architectures require strong security controls.
 
 ---
 
-# GraphQL Advantages
+## GraphQL Advantages
 
 ```
 Advantages
@@ -419,7 +419,7 @@ Flexibility should be balanced with security controls.
 
 ---
 
-# GraphQL Security Challenges
+## GraphQL Security Challenges
 
 ```
 Challenges
@@ -447,7 +447,7 @@ GraphQL introduces security considerations that differ from traditional REST API
 
 ---
 
-# GraphQL Trust Boundaries
+## GraphQL Trust Boundaries
 
 ```
 Internet
@@ -481,7 +481,7 @@ Trust should never be assumed across these boundaries.
 
 ---
 
-# Enterprise GraphQL Architecture
+## Enterprise GraphQL Architecture
 
 ```
 Internet
@@ -527,7 +527,7 @@ Layered architecture strengthens security and operational resilience.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global retail organization exposes a GraphQL API for mobile and web clients.
 
@@ -571,7 +571,7 @@ Authentication, authorization, logging, and monitoring are applied before resolv
 
 ---
 
-# Common GraphQL Use Cases
+## Common GraphQL Use Cases
 
 ```
 Applications
@@ -597,7 +597,7 @@ GraphQL is widely adopted where clients require flexible access to data.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a secure GraphQL architecture.
 2. Identify authentication and authorization points.
@@ -609,7 +609,7 @@ GraphQL is widely adopted where clients require flexible access to data.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is GraphQL?
 2. How is GraphQL different from REST?
@@ -624,7 +624,7 @@ GraphQL is widely adopted where clients require flexible access to data.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Require authentication before executing protected operations.
 - Enforce authorization at the resolver level.
@@ -636,7 +636,7 @@ GraphQL is widely adopted where clients require flexible access to data.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming GraphQL automatically provides security.
 - Trusting authenticated users without authorization checks.
@@ -647,7 +647,7 @@ GraphQL is widely adopted where clients require flexible access to data.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - GraphQL is a flexible API query language and runtime, not a security framework.
 - Security depends on authentication, authorization, validation, monitoring, and secure resolver implementation.
@@ -655,15 +655,15 @@ GraphQL is widely adopted where clients require flexible access to data.
 - GraphQL's flexibility introduces unique security challenges that require careful governance.
 - Defense in depth and secure architecture remain essential for enterprise GraphQL deployments.
 
-# 31-GraphQL-Security.md
+## 31-GraphQL-Security.md
 
-# Part 2 — Authentication, Authorization, Query Validation, Query Complexity, Rate Limiting, and Secure GraphQL Design
+## Part 2 — Authentication, Authorization, Query Validation, Query Complexity, Rate Limiting, and Secure GraphQL Design
 
 > **"GraphQL allows clients to ask for exactly what they need. Secure GraphQL servers ensure clients receive only what they are authorized to access, within carefully controlled resource limits."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -680,7 +680,7 @@ After completing this part, you will understand:
 
 ---
 
-# GraphQL Authentication
+## GraphQL Authentication
 
 Authentication verifies the identity of the client before executing GraphQL operations.
 
@@ -708,7 +708,7 @@ Every protected GraphQL operation should require authentication.
 
 ---
 
-# Authentication Methods
+## Authentication Methods
 
 ```
 Authentication
@@ -734,7 +734,7 @@ Authentication should follow organizational identity standards.
 
 ---
 
-# Authentication Workflow
+## Authentication Workflow
 
 ```
 Client
@@ -760,7 +760,7 @@ The GraphQL server validates the client's identity before processing requests.
 
 ---
 
-# Authorization
+## Authorization
 
 Authentication identifies **who** the client is.
 
@@ -786,7 +786,7 @@ Authorization should be enforced for every protected resource.
 
 ---
 
-# Resolver-Level Authorization
+## Resolver-Level Authorization
 
 Resolvers are responsible for retrieving data.
 
@@ -814,7 +814,7 @@ Resolvers should verify permissions before accessing backend services.
 
 ---
 
-# Object-Level Authorization
+## Object-Level Authorization
 
 Every requested object should undergo authorization.
 
@@ -838,7 +838,7 @@ Object-level authorization helps prevent unauthorized data access.
 
 ---
 
-# Field-Level Authorization
+## Field-Level Authorization
 
 Not every user should see every field.
 
@@ -862,7 +862,7 @@ Sensitive fields should only be returned to authorized users.
 
 ---
 
-# Authorization Layers
+## Authorization Layers
 
 ```
 Authorization
@@ -884,7 +884,7 @@ Multiple authorization layers improve overall security.
 
 ---
 
-# GraphQL Query Validation
+## GraphQL Query Validation
 
 Before execution, queries should be validated.
 
@@ -912,7 +912,7 @@ Invalid queries should be rejected before reaching business logic.
 
 ---
 
-# Query Parsing
+## Query Parsing
 
 ```
 Client Query
@@ -938,7 +938,7 @@ Parsing converts a query into a structured representation that can be validated 
 
 ---
 
-# Query Depth
+## Query Depth
 
 Nested queries may consume increasing amounts of server resources.
 
@@ -970,7 +970,7 @@ Organizations commonly define reasonable limits on nesting depth to protect serv
 
 ---
 
-# Depth Limiting
+## Depth Limiting
 
 ```
 Incoming Query
@@ -1000,7 +1000,7 @@ Depth limits help reduce excessive resource consumption.
 
 ---
 
-# Query Complexity
+## Query Complexity
 
 Not all queries require the same processing effort.
 
@@ -1028,7 +1028,7 @@ Complexity analysis estimates how much work a query may require.
 
 ---
 
-# Complexity Factors
+## Complexity Factors
 
 ```
 Complexity
@@ -1052,7 +1052,7 @@ These factors help estimate the computational cost of processing a request.
 
 ---
 
-# Query Cost Analysis
+## Query Cost Analysis
 
 ```
 Incoming Query
@@ -1078,7 +1078,7 @@ Organizations may assign cost values to different operations and reject requests
 
 ---
 
-# Pagination
+## Pagination
 
 Large datasets should be retrieved in manageable portions.
 
@@ -1102,7 +1102,7 @@ Pagination improves both performance and availability.
 
 ---
 
-# Pagination Benefits
+## Pagination Benefits
 
 ```
 Pagination
@@ -1122,7 +1122,7 @@ Pagination
 
 ---
 
-# Rate Limiting
+## Rate Limiting
 
 GraphQL servers should limit excessive request rates.
 
@@ -1158,7 +1158,7 @@ Rate limiting helps protect service availability.
 
 ---
 
-# Persisted Queries
+## Persisted Queries
 
 Some organizations use persisted queries to allow execution only of pre-approved GraphQL operations.
 
@@ -1186,7 +1186,7 @@ Persisted queries can reduce parsing overhead and help limit unexpected query pa
 
 ---
 
-# Input Validation
+## Input Validation
 
 Every argument supplied to GraphQL operations should be validated.
 
@@ -1214,7 +1214,7 @@ Validation should occur before business logic executes.
 
 ---
 
-# Secure Schema Design
+## Secure Schema Design
 
 A secure schema minimizes unnecessary exposure.
 
@@ -1238,7 +1238,7 @@ Only expose capabilities required for business functionality.
 
 ---
 
-# Error Handling
+## Error Handling
 
 GraphQL responses should provide useful information without exposing sensitive implementation details.
 
@@ -1266,7 +1266,7 @@ Detailed diagnostic information should remain in protected server logs.
 
 ---
 
-# Error Handling Principles
+## Error Handling Principles
 
 ```
 Errors
@@ -1290,7 +1290,7 @@ Consistent error handling improves maintainability and security.
 
 ---
 
-# Enterprise GraphQL Request Flow
+## Enterprise GraphQL Request Flow
 
 ```
 Client
@@ -1340,7 +1340,7 @@ Each layer contributes to secure request processing.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global healthcare organization provides GraphQL APIs for patient portals and clinician dashboards.
 
@@ -1380,7 +1380,7 @@ Resolvers perform authorization checks before accessing healthcare records. Quer
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1393,7 +1393,7 @@ Resolvers perform authorization checks before accessing healthcare records. Quer
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a GraphQL request validation workflow.
 2. Design resolver-level authorization for a sample application.
@@ -1405,7 +1405,7 @@ Resolvers perform authorization checks before accessing healthcare records. Quer
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should authorization be implemented inside GraphQL resolvers?
 2. What is query depth?
@@ -1420,7 +1420,7 @@ Resolvers perform authorization checks before accessing healthcare records. Quer
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Authenticate every protected GraphQL request.
 - Enforce authorization at resolver, object, and field levels.
@@ -1433,7 +1433,7 @@ Resolvers perform authorization checks before accessing healthcare records. Quer
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Relying solely on endpoint authentication.
 - Allowing unrestricted nested queries.
@@ -1444,7 +1444,7 @@ Resolvers perform authorization checks before accessing healthcare records. Quer
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication and authorization are independent controls that both must be enforced.
 - Resolver-level authorization is fundamental to secure GraphQL implementations.
@@ -1452,15 +1452,15 @@ Resolvers perform authorization checks before accessing healthcare records. Quer
 - Pagination and rate limiting improve scalability and availability.
 - Secure schema design, consistent error handling, and least privilege strengthen enterprise GraphQL security.
 
-# 31-GraphQL-Security.md
+## 31-GraphQL-Security.md
 
-# Part 3 — GraphQL Threats, OWASP GraphQL Risks, Introspection, Secure Operations, Logging, Monitoring, and Security Testing
+## Part 3 — GraphQL Threats, OWASP GraphQL Risks, Introspection, Secure Operations, Logging, Monitoring, and Security Testing
 
 > **"The flexibility of GraphQL is one of its greatest strengths—but without proper controls, it can also become one of its greatest security challenges."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1477,7 +1477,7 @@ After completing this part, you will understand:
 
 ---
 
-# GraphQL Threat Landscape
+## GraphQL Threat Landscape
 
 GraphQL APIs introduce security considerations beyond traditional REST APIs.
 
@@ -1511,7 +1511,7 @@ Many of these risks originate from insecure implementation rather than the Graph
 
 ---
 
-# GraphQL Attack Surface
+## GraphQL Attack Surface
 
 ```
 Client
@@ -1549,7 +1549,7 @@ Each layer should be protected independently.
 
 ---
 
-# OWASP API Security Risks in GraphQL
+## OWASP API Security Risks in GraphQL
 
 Many GraphQL implementations are affected by the same categories described in the OWASP API Security Top 10.
 
@@ -1581,7 +1581,7 @@ GraphQL introduces additional concerns around query flexibility and resource con
 
 ---
 
-# Broken Object-Level Authorization
+## Broken Object-Level Authorization
 
 Every requested object should undergo authorization.
 
@@ -1605,7 +1605,7 @@ Authentication alone is insufficient.
 
 ---
 
-# Broken Function-Level Authorization
+## Broken Function-Level Authorization
 
 Operations should only be available to authorized identities.
 
@@ -1629,7 +1629,7 @@ Administrative operations should never rely solely on client-side controls.
 
 ---
 
-# Excessive Data Exposure
+## Excessive Data Exposure
 
 Applications should return only authorized information.
 
@@ -1653,7 +1653,7 @@ Data minimization reduces unnecessary exposure.
 
 ---
 
-# GraphQL Introspection
+## GraphQL Introspection
 
 GraphQL supports schema introspection.
 
@@ -1673,7 +1673,7 @@ Introspection is valuable for development and tooling, but organizations should 
 
 ---
 
-# Introspection Benefits
+## Introspection Benefits
 
 ```
 Introspection
@@ -1693,7 +1693,7 @@ Introspection
 
 ---
 
-# Production Considerations
+## Production Considerations
 
 Organizations commonly review whether production environments should expose unrestricted schema information.
 
@@ -1717,7 +1717,7 @@ The appropriate approach depends on business needs, risk tolerance, and access c
 
 ---
 
-# Deep Query Nesting
+## Deep Query Nesting
 
 Nested relationships can increase processing requirements.
 
@@ -1749,7 +1749,7 @@ Organizations often enforce maximum nesting depth to maintain predictable perfor
 
 ---
 
-# Query Complexity
+## Query Complexity
 
 Resource-intensive queries can affect availability.
 
@@ -1773,7 +1773,7 @@ Complexity analysis helps estimate computational cost before execution.
 
 ---
 
-# Large Response Generation
+## Large Response Generation
 
 Large responses may affect bandwidth, memory usage, and client performance.
 
@@ -1797,7 +1797,7 @@ Pagination and response limits help improve scalability.
 
 ---
 
-# Aliases
+## Aliases
 
 GraphQL aliases allow clients to rename fields in responses.
 
@@ -1821,7 +1821,7 @@ Aliases are a legitimate GraphQL feature. Security controls should account for t
 
 ---
 
-# Batch Operations
+## Batch Operations
 
 Some GraphQL implementations support multiple operations within a request.
 
@@ -1845,7 +1845,7 @@ Organizations should evaluate batching policies based on performance, authorizat
 
 ---
 
-# Input Validation
+## Input Validation
 
 Every GraphQL argument should be validated.
 
@@ -1869,7 +1869,7 @@ Validation should occur before business logic executes.
 
 ---
 
-# Business Logic Security
+## Business Logic Security
 
 Business rules should enforce organizational policies.
 
@@ -1897,7 +1897,7 @@ Security decisions should remain inside trusted server-side components.
 
 ---
 
-# Secure Error Handling
+## Secure Error Handling
 
 GraphQL responses should remain consistent without exposing sensitive implementation details.
 
@@ -1921,7 +1921,7 @@ Detailed debugging information should remain in protected server logs.
 
 ---
 
-# Logging
+## Logging
 
 Security-relevant GraphQL events should be logged.
 
@@ -1949,7 +1949,7 @@ Logs support investigations and operational visibility.
 
 ---
 
-# What Should Be Logged?
+## What Should Be Logged?
 
 | Event | Purpose |
 |--------|----------|
@@ -1964,7 +1964,7 @@ Sensitive information should be protected and logged only when necessary.
 
 ---
 
-# Monitoring
+## Monitoring
 
 Monitoring transforms logs into actionable insights.
 
@@ -1992,7 +1992,7 @@ Continuous monitoring improves detection of operational and security issues.
 
 ---
 
-# GraphQL Observability
+## GraphQL Observability
 
 Modern GraphQL platforms benefit from comprehensive telemetry.
 
@@ -2014,7 +2014,7 @@ Together, these sources provide visibility into application behavior.
 
 ---
 
-# GraphQL Security Metrics
+## GraphQL Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2029,7 +2029,7 @@ Together, these sources provide visibility into application behavior.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies security concerns during design.
 
@@ -2057,7 +2057,7 @@ Threat modeling helps organizations address risks early in development.
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 GraphQL security should be incorporated throughout software development.
 
@@ -2093,7 +2093,7 @@ Security should be part of every phase rather than a final verification step.
 
 ---
 
-# GraphQL Security Testing
+## GraphQL Security Testing
 
 Security testing validates implemented controls.
 
@@ -2123,7 +2123,7 @@ Testing should verify that security controls operate as intended.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 GraphQL environments benefit from multiple independent security controls.
 
@@ -2179,7 +2179,7 @@ Each layer contributes to reducing overall risk.
 
 ---
 
-# Enterprise GraphQL Architecture
+## Enterprise GraphQL Architecture
 
 ```
 Internet
@@ -2237,7 +2237,7 @@ This layered architecture supports scalability, governance, and operational secu
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization provides GraphQL APIs for patient portals, appointment scheduling, and clinician dashboards.
 
@@ -2285,7 +2285,7 @@ Resolvers perform authorization before accessing medical records. Query complexi
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2298,7 +2298,7 @@ Resolvers perform authorization before accessing medical records. Query complexi
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a layered GraphQL security architecture.
 2. Identify GraphQL trust boundaries.
@@ -2310,7 +2310,7 @@ Resolvers perform authorization before accessing medical records. Query complexi
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is GraphQL introspection?
 2. Why should resolver-level authorization be implemented?
@@ -2325,7 +2325,7 @@ Resolvers perform authorization before accessing medical records. Query complexi
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enforce authorization within every resolver.
 - Validate every GraphQL input before processing.
@@ -2337,7 +2337,7 @@ Resolvers perform authorization before accessing medical records. Query complexi
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming authentication alone protects GraphQL resources.
 - Allowing unrestricted query complexity.
@@ -2348,7 +2348,7 @@ Resolvers perform authorization before accessing medical records. Query complexi
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - GraphQL security extends beyond authentication to include authorization, query validation, resource management, and operational monitoring.
 - Introspection, aliases, batching, and flexible queries require thoughtful governance rather than blanket trust.
@@ -2356,15 +2356,15 @@ Resolvers perform authorization before accessing medical records. Query complexi
 - Threat modeling and Secure SDLC practices help reduce implementation risks.
 - Defense in depth remains fundamental for enterprise GraphQL deployments.
 
-# 31-GraphQL-Security.md
+## 31-GraphQL-Security.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Compliance, Security Operations, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Compliance, Security Operations, and Chapter Summary
 
 > **"GraphQL security is achieved through secure architecture, strong identity verification, authorization at every resolver, continuous monitoring, governance, and operational excellence throughout the API lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2381,7 +2381,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise GraphQL Governance
+## Enterprise GraphQL Governance
 
 GraphQL governance establishes standards for designing, implementing, operating, and retiring GraphQL APIs.
 
@@ -2417,7 +2417,7 @@ Governance ensures consistency across development teams and production environme
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 GraphQL Governance
@@ -2447,7 +2447,7 @@ A governance framework improves maintainability and security.
 
 ---
 
-# Schema Governance
+## Schema Governance
 
 Schemas should evolve in a controlled manner.
 
@@ -2479,7 +2479,7 @@ Every schema change should undergo technical and security review.
 
 ---
 
-# Resolver Governance
+## Resolver Governance
 
 Resolvers should follow organizational standards.
 
@@ -2505,7 +2505,7 @@ Keeping resolver implementations consistent improves both security and maintaina
 
 ---
 
-# API Lifecycle Governance
+## API Lifecycle Governance
 
 ```
 Requirements
@@ -2547,7 +2547,7 @@ Security controls should be present throughout the lifecycle.
 
 ---
 
-# Zero Trust for GraphQL
+## Zero Trust for GraphQL
 
 Zero Trust follows the principle:
 
@@ -2585,7 +2585,7 @@ Every request is independently evaluated.
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -2611,7 +2611,7 @@ Implicit trust should never be assumed.
 
 ---
 
-# Identity-Centric Security
+## Identity-Centric Security
 
 Identity becomes the primary security boundary.
 
@@ -2639,7 +2639,7 @@ Every protected operation should be linked to a verified identity.
 
 ---
 
-# Service-to-Service Security
+## Service-to-Service Security
 
 Internal GraphQL services should also authenticate one another.
 
@@ -2663,7 +2663,7 @@ Internal network location alone should not be treated as sufficient trust.
 
 ---
 
-# GraphQL in Microservices
+## GraphQL in Microservices
 
 Modern enterprises often place GraphQL above multiple backend services.
 
@@ -2699,7 +2699,7 @@ Each backend service remains responsible for enforcing its own security controls
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 GraphQL security should be integrated into DevSecOps pipelines.
 
@@ -2735,7 +2735,7 @@ Security becomes part of everyday software delivery.
 
 ---
 
-# CI/CD Security Pipeline
+## CI/CD Security Pipeline
 
 ```
 Developer
@@ -2773,7 +2773,7 @@ Automated verification helps detect issues early.
 
 ---
 
-# Change Management
+## Change Management
 
 GraphQL APIs should follow controlled change processes.
 
@@ -2805,7 +2805,7 @@ Controlled changes reduce operational risk.
 
 ---
 
-# GraphQL Compliance
+## GraphQL Compliance
 
 Many regulatory and industry frameworks require organizations to secure GraphQL APIs appropriately.
 
@@ -2833,7 +2833,7 @@ Compliance supports governance but should not replace comprehensive security.
 
 ---
 
-# GraphQL Security Metrics
+## GraphQL Security Metrics
 
 Organizations should measure security effectiveness.
 
@@ -2850,7 +2850,7 @@ Organizations should measure security effectiveness.
 
 ---
 
-# Security Dashboard
+## Security Dashboard
 
 ```
 Dashboard
@@ -2878,7 +2878,7 @@ Dashboards provide operational awareness across security and engineering teams.
 
 ---
 
-# Security Operations
+## Security Operations
 
 Security operations continuously monitor GraphQL environments.
 
@@ -2910,7 +2910,7 @@ Operational visibility supports rapid detection and response.
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should prepare for GraphQL-related security incidents.
 
@@ -2946,7 +2946,7 @@ Each incident should improve future security posture.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2976,7 +2976,7 @@ Understanding why an incident occurred helps prevent recurrence.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 Security should evolve continuously.
 
@@ -3008,7 +3008,7 @@ Continuous improvement strengthens long-term resilience.
 
 ---
 
-# GraphQL Security Maturity Model
+## GraphQL Security Maturity Model
 
 ```
 Level 1
@@ -3044,7 +3044,7 @@ Organizations improve security by increasing operational maturity over time.
 
 ---
 
-# Enterprise GraphQL Architecture
+## Enterprise GraphQL Architecture
 
 ```
                     Internet
@@ -3124,7 +3124,7 @@ This layered architecture provides multiple independent security controls and su
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization exposes GraphQL APIs for customer dashboards, account management, payments, and investment services.
 
@@ -3176,7 +3176,7 @@ Authentication occurs before query execution, resolver-level authorization prote
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ HTTPS Enabled
@@ -3206,7 +3206,7 @@ Authentication occurs before query execution, resolver-level authorization prote
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -3219,9 +3219,9 @@ Authentication occurs before query execution, resolver-level authorization prote
 
 ---
 
-# GraphQL Security Quick Revision
+## GraphQL Security Quick Revision
 
-## Secure Request Flow
+### Secure Request Flow
 
 ```
 Client
@@ -3261,7 +3261,7 @@ Response
 
 ---
 
-## Resolver Security
+### Resolver Security
 
 ```
 Resolver
@@ -3285,7 +3285,7 @@ Database
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 ```
 Internet
@@ -3325,7 +3325,7 @@ Monitoring
 
 ---
 
-## GraphQL Lifecycle
+### GraphQL Lifecycle
 
 ```
 Design
@@ -3353,7 +3353,7 @@ Improve
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a secure enterprise GraphQL architecture using an API Gateway and Identity Provider.
 2. Create a resolver security checklist for a sample application.
@@ -3365,7 +3365,7 @@ Improve
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is resolver-level authorization important?
 2. What is GraphQL governance?
@@ -3380,7 +3380,7 @@ Improve
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enforce authentication before executing protected GraphQL operations.
 - Apply authorization within every resolver.
@@ -3393,7 +3393,7 @@ Improve
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating authentication as a replacement for authorization.
 - Allowing unrestricted schema evolution.
@@ -3404,7 +3404,7 @@ Improve
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

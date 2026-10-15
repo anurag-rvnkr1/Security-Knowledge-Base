@@ -56,7 +56,7 @@ Cloud
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -164,7 +164,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Digital Forensics?
+## What Is Digital Forensics?
 
 Digital forensics is the systematic process of:
 
@@ -195,7 +195,7 @@ What evidence supports the conclusion?
 
 ---
 
-# Kubernetes Forensics
+## Kubernetes Forensics
 
 Kubernetes forensics applies these principles to:
 
@@ -213,7 +213,7 @@ Cloud
 
 ---
 
-# Why Kubernetes Forensics Is Difficult
+## Why Kubernetes Forensics Is Difficult
 
 Traditional servers often remain stable for long periods.
 
@@ -233,7 +233,7 @@ within minutes.
 
 ---
 
-# Ephemeral Workloads
+## Ephemeral Workloads
 
 Example:
 
@@ -251,7 +251,7 @@ If logging was not centralized, evidence may be lost.
 
 ---
 
-# Forensic Readiness
+## Forensic Readiness
 
 Forensic readiness means designing the environment so useful evidence is available when an incident occurs.
 
@@ -270,7 +270,7 @@ Backup
 
 ---
 
-# Forensic Readiness Architecture
+## Forensic Readiness Architecture
 
 ```text
 Kubernetes
@@ -294,7 +294,7 @@ Kubernetes
 
 ---
 
-# Evidence Sources
+## Evidence Sources
 
 Potential sources include:
 
@@ -321,7 +321,7 @@ Runtime Security
 
 ---
 
-# Evidence Categories
+## Evidence Categories
 
 Evidence can be broadly classified as:
 
@@ -332,7 +332,7 @@ Non-Volatile
 
 ---
 
-# Volatile Evidence
+## Volatile Evidence
 
 Volatile evidence can disappear quickly.
 
@@ -349,7 +349,7 @@ Current Container State
 
 ---
 
-# Non-Volatile Evidence
+## Non-Volatile Evidence
 
 Examples:
 
@@ -365,7 +365,7 @@ Git History
 
 ---
 
-# Evidence Priority
+## Evidence Priority
 
 A simplified order is:
 
@@ -389,7 +389,7 @@ The exact order depends on the incident and operational constraints.
 
 ---
 
-# Chain of Custody
+## Chain of Custody
 
 Chain of custody documents:
 
@@ -409,7 +409,7 @@ Access History
 
 ---
 
-# Why Chain of Custody Matters
+## Why Chain of Custody Matters
 
 It establishes:
 
@@ -425,7 +425,7 @@ This becomes especially important for legal, regulatory, or disciplinary investi
 
 ---
 
-# Evidence Integrity
+## Evidence Integrity
 
 Use:
 
@@ -439,7 +439,7 @@ Audit Trails
 
 ---
 
-# Hashing Evidence
+## Hashing Evidence
 
 A cryptographic hash can help verify that evidence has not changed.
 
@@ -459,7 +459,7 @@ Record the hash with the evidence metadata.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Accurate timestamps are critical for timeline analysis.
 
@@ -475,7 +475,7 @@ SIEM
 
 ---
 
-# Kubernetes Artifact
+## Kubernetes Artifact
 
 A Kubernetes artifact is information that helps reconstruct cluster state or activity.
 
@@ -496,7 +496,7 @@ NetworkPolicy
 
 ---
 
-# Pod Forensics
+## Pod Forensics
 
 Investigate:
 
@@ -518,7 +518,7 @@ Network
 
 ---
 
-# Collect Pod YAML
+## Collect Pod YAML
 
 ```bash
 kubectl get pod <pod-name> -o yaml
@@ -528,7 +528,7 @@ Save the output as evidence.
 
 ---
 
-# Collect Pod Description
+## Collect Pod Description
 
 ```bash
 kubectl describe pod <pod-name>
@@ -548,7 +548,7 @@ Restart Count
 
 ---
 
-# Pod UID
+## Pod UID
 
 Pod names may be reused or replaced.
 
@@ -563,7 +563,7 @@ kubectl get pod <pod-name> \
 
 ---
 
-# Pod Logs
+## Pod Logs
 
 Collect:
 
@@ -579,7 +579,7 @@ kubectl logs <pod-name> -c <container-name>
 
 ---
 
-# Previous Container Logs
+## Previous Container Logs
 
 If a container restarted:
 
@@ -591,7 +591,7 @@ This can be valuable when investigating crashes or short-lived malicious activit
 
 ---
 
-# Container Forensics
+## Container Forensics
 
 Investigate:
 
@@ -609,7 +609,7 @@ Runtime
 
 ---
 
-# Container Image Evidence
+## Container Image Evidence
 
 Record:
 
@@ -626,7 +626,7 @@ Scan Results
 
 ---
 
-# Image Digest
+## Image Digest
 
 Prefer investigating an exact image digest:
 
@@ -644,7 +644,7 @@ Tags can be mutable.
 
 ---
 
-# Image Provenance
+## Image Provenance
 
 Investigate:
 
@@ -659,7 +659,7 @@ Who pushed it?
 
 ---
 
-# Registry Logs
+## Registry Logs
 
 Registry logs can help determine:
 
@@ -673,7 +673,7 @@ From Where?
 
 ---
 
-# Container Runtime Forensics
+## Container Runtime Forensics
 
 Common runtimes include:
 
@@ -694,7 +694,7 @@ Runtime Logs
 
 ---
 
-# crictl
+## crictl
 
 `crictl` can interact with CRI-compatible container runtimes.
 
@@ -724,7 +724,7 @@ crictl inspect <container-id>
 
 ---
 
-# Runtime Evidence
+## Runtime Evidence
 
 Useful information includes:
 
@@ -741,7 +741,7 @@ Mounts
 
 ---
 
-# Node Forensics
+## Node Forensics
 
 If a node may be compromised, investigate:
 
@@ -760,7 +760,7 @@ Logs
 
 ---
 
-# Node Identification
+## Node Identification
 
 Find Pod placement:
 
@@ -772,7 +772,7 @@ Then identify the corresponding node.
 
 ---
 
-# Node Details
+## Node Details
 
 ```bash
 kubectl describe node <node-name>
@@ -791,7 +791,7 @@ Events
 
 ---
 
-# kubelet Forensics
+## kubelet Forensics
 
 kubelet is a key node-level component.
 
@@ -808,7 +808,7 @@ API Connections
 
 ---
 
-# kubelet Logs
+## kubelet Logs
 
 On a Linux node:
 
@@ -824,7 +824,7 @@ journalctl -u kubelet --since "1 hour ago"
 
 ---
 
-# Linux Forensics
+## Linux Forensics
 
 Node investigation may include:
 
@@ -841,7 +841,7 @@ Kernel
 
 ---
 
-# Process Analysis
+## Process Analysis
 
 Look for:
 
@@ -868,7 +868,7 @@ Root Process
 
 ---
 
-# Network Connections
+## Network Connections
 
 Useful Linux commands include:
 
@@ -892,7 +892,7 @@ Unexpected Process
 
 ---
 
-# Authentication Logs
+## Authentication Logs
 
 Depending on the Linux distribution:
 
@@ -917,7 +917,7 @@ Privilege Escalation
 
 ---
 
-# systemd
+## systemd
 
 Systemd can reveal:
 
@@ -935,7 +935,7 @@ systemctl list-units
 
 ---
 
-# journald
+## journald
 
 Query system logs:
 
@@ -951,7 +951,7 @@ journalctl --since "2 hours ago"
 
 ---
 
-# Kernel Logs
+## Kernel Logs
 
 Kernel logs may contain evidence of:
 
@@ -976,7 +976,7 @@ journalctl -k
 
 ---
 
-# Filesystem Forensics
+## Filesystem Forensics
 
 Look for:
 
@@ -992,7 +992,7 @@ Configuration Changes
 
 ---
 
-# File Metadata
+## File Metadata
 
 Useful information:
 
@@ -1007,7 +1007,7 @@ Hash
 
 ---
 
-# Persistence Artifacts
+## Persistence Artifacts
 
 Investigate:
 
@@ -1026,7 +1026,7 @@ Admission Components
 
 ---
 
-# Kubernetes Persistence
+## Kubernetes Persistence
 
 Attackers may create:
 
@@ -1044,7 +1044,7 @@ Investigate recently created resources.
 
 ---
 
-# ReplicaSet Investigation
+## ReplicaSet Investigation
 
 A ReplicaSet may preserve evidence about a previous Deployment revision.
 
@@ -1056,7 +1056,7 @@ kubectl get replicasets -A
 
 ---
 
-# Deployment Investigation
+## Deployment Investigation
 
 Check:
 
@@ -1082,7 +1082,7 @@ ServiceAccount
 
 ---
 
-# DaemonSet Investigation
+## DaemonSet Investigation
 
 DaemonSets run Pods across nodes.
 
@@ -1096,7 +1096,7 @@ An unexpected DaemonSet can be a persistence mechanism.
 
 ---
 
-# StatefulSet Investigation
+## StatefulSet Investigation
 
 Check:
 
@@ -1115,7 +1115,7 @@ Recent Changes
 
 ---
 
-# Job Investigation
+## Job Investigation
 
 Check:
 
@@ -1127,7 +1127,7 @@ Investigate unexpected Jobs.
 
 ---
 
-# CronJob Investigation
+## CronJob Investigation
 
 Check:
 
@@ -1139,7 +1139,7 @@ CronJobs can provide recurring execution.
 
 ---
 
-# ServiceAccount Forensics
+## ServiceAccount Forensics
 
 Investigate:
 
@@ -1159,7 +1159,7 @@ Token Exposure
 
 ---
 
-# Role Forensics
+## Role Forensics
 
 Check:
 
@@ -1179,7 +1179,7 @@ RBAC
 
 ---
 
-# RoleBinding Forensics
+## RoleBinding Forensics
 
 Check:
 
@@ -1197,7 +1197,7 @@ Namespace
 
 ---
 
-# ClusterRole Forensics
+## ClusterRole Forensics
 
 Check:
 
@@ -1215,7 +1215,7 @@ Unexpected Custom Roles
 
 ---
 
-# ClusterRoleBinding Forensics
+## ClusterRoleBinding Forensics
 
 Check:
 
@@ -1233,7 +1233,7 @@ Unexpected ServiceAccounts
 
 ---
 
-# Secret Forensics
+## Secret Forensics
 
 Secrets may contain:
 
@@ -1251,7 +1251,7 @@ Investigate access patterns through audit logs and controlled evidence handling.
 
 ---
 
-# Secret Metadata
+## Secret Metadata
 
 Collect metadata without unnecessarily exposing values:
 
@@ -1263,7 +1263,7 @@ Use appropriate redaction before sharing evidence.
 
 ---
 
-# ConfigMap Forensics
+## ConfigMap Forensics
 
 Check:
 
@@ -1284,7 +1284,7 @@ Scripts
 
 ---
 
-# NetworkPolicy Forensics
+## NetworkPolicy Forensics
 
 Check:
 
@@ -1302,7 +1302,7 @@ Was Policy Recently Changed?
 
 ---
 
-# Ingress Forensics
+## Ingress Forensics
 
 Check:
 
@@ -1322,7 +1322,7 @@ External Exposure
 
 ---
 
-# Gateway Forensics
+## Gateway Forensics
 
 Check:
 
@@ -1348,7 +1348,7 @@ Recent Changes
 
 ---
 
-# Admission Controller Forensics
+## Admission Controller Forensics
 
 Investigate:
 
@@ -1363,7 +1363,7 @@ An attacker who compromises admission infrastructure may affect future workloads
 
 ---
 
-# CRD Forensics
+## CRD Forensics
 
 Custom Resources can contain application-specific control logic.
 
@@ -1377,7 +1377,7 @@ Then identify suspicious custom resources.
 
 ---
 
-# Kubernetes Audit Logs
+## Kubernetes Audit Logs
 
 Audit logs are among the most valuable Kubernetes forensic sources.
 
@@ -1396,7 +1396,7 @@ Response
 
 ---
 
-# Audit Event Example
+## Audit Event Example
 
 Conceptually:
 
@@ -1418,7 +1418,7 @@ Who accessed what?
 
 ---
 
-# Audit Log Investigation
+## Audit Log Investigation
 
 Look for suspicious:
 
@@ -1437,7 +1437,7 @@ The relevance of each verb depends on the resource and context.
 
 ---
 
-# Sensitive API Activity
+## Sensitive API Activity
 
 Pay particular attention to access involving:
 
@@ -1455,7 +1455,7 @@ Admission Resources
 
 ---
 
-# kubectl exec Forensics
+## kubectl exec Forensics
 
 `kubectl exec` can provide interactive access into a container.
 
@@ -1471,7 +1471,7 @@ Source IP
 
 ---
 
-# Cloud Forensics
+## Cloud Forensics
 
 Cloud-hosted Kubernetes requires investigation beyond Kubernetes itself.
 
@@ -1491,7 +1491,7 @@ Managed Kubernetes Control Plane Logs
 
 ---
 
-# Cloud Credential Compromise
+## Cloud Credential Compromise
 
 If Kubernetes credentials can access cloud APIs:
 
@@ -1509,7 +1509,7 @@ The investigation must expand to the cloud environment.
 
 ---
 
-# Network Forensics
+## Network Forensics
 
 Network evidence can help establish:
 
@@ -1524,7 +1524,7 @@ Volume
 
 ---
 
-# DNS Forensics
+## DNS Forensics
 
 DNS can reveal:
 
@@ -1537,7 +1537,7 @@ Unexpected External Services
 
 ---
 
-# Network Flow Analysis
+## Network Flow Analysis
 
 Look for:
 
@@ -1551,7 +1551,7 @@ Unexpected DNS Domain
 
 ---
 
-# Container Image Forensics
+## Container Image Forensics
 
 Preserve the exact image where possible.
 
@@ -1569,7 +1569,7 @@ Signature
 
 ---
 
-# Image Hash
+## Image Hash
 
 Use the digest or a cryptographic hash to identify exact content.
 
@@ -1581,7 +1581,7 @@ sha256:<digest>
 
 ---
 
-# Malware Analysis
+## Malware Analysis
 
 If malware is discovered:
 
@@ -1601,7 +1601,7 @@ Do not execute unknown malware on production systems.
 
 ---
 
-# IOC Collection
+## IOC Collection
 
 Collect:
 
@@ -1618,7 +1618,7 @@ Credential
 
 ---
 
-# IOA Collection
+## IOA Collection
 
 Collect behavioral indicators:
 
@@ -1633,7 +1633,7 @@ Suspicious Network Activity
 
 ---
 
-# Timeline Analysis
+## Timeline Analysis
 
 A timeline combines evidence from multiple sources.
 
@@ -1651,7 +1651,7 @@ Example:
 
 ---
 
-# Timeline Sources
+## Timeline Sources
 
 Correlate:
 
@@ -1668,7 +1668,7 @@ CI/CD Logs
 
 ---
 
-# Timeline Correlation
+## Timeline Correlation
 
 Suppose:
 
@@ -1695,7 +1695,7 @@ Correlation can establish a probable sequence.
 
 ---
 
-# Hypothesis Testing
+## Hypothesis Testing
 
 Forensics should not rely on assumptions.
 
@@ -1716,7 +1716,7 @@ Image History
 
 ---
 
-# Evidence-Based Conclusion
+## Evidence-Based Conclusion
 
 A strong conclusion is:
 
@@ -1732,7 +1732,7 @@ Likely because it seems suspicious
 
 ---
 
-# Initial Access Investigation
+## Initial Access Investigation
 
 Potential entry points:
 
@@ -1747,7 +1747,7 @@ Misconfigured Service
 
 ---
 
-# Execution Investigation
+## Execution Investigation
 
 Look for:
 
@@ -1762,7 +1762,7 @@ CronJob
 
 ---
 
-# Persistence Investigation
+## Persistence Investigation
 
 Look for:
 
@@ -1778,7 +1778,7 @@ CI/CD Change
 
 ---
 
-# Privilege Escalation Investigation
+## Privilege Escalation Investigation
 
 Review:
 
@@ -1793,7 +1793,7 @@ Host Namespaces
 
 ---
 
-# Credential Access Investigation
+## Credential Access Investigation
 
 Look for:
 
@@ -1807,7 +1807,7 @@ Application Credentials
 
 ---
 
-# Discovery Investigation
+## Discovery Investigation
 
 Attackers may enumerate:
 
@@ -1823,7 +1823,7 @@ Cloud Resources
 
 ---
 
-# Lateral Movement Investigation
+## Lateral Movement Investigation
 
 Trace:
 
@@ -1841,7 +1841,7 @@ Another Workload
 
 ---
 
-# Collection Investigation
+## Collection Investigation
 
 Potential targets:
 
@@ -1856,7 +1856,7 @@ Logs
 
 ---
 
-# Exfiltration Investigation
+## Exfiltration Investigation
 
 Look for:
 
@@ -1870,7 +1870,7 @@ Encrypted Channels
 
 ---
 
-# Impact Investigation
+## Impact Investigation
 
 Potential impact:
 
@@ -1885,7 +1885,7 @@ Application Destruction
 
 ---
 
-# Forensic Collection Workflow
+## Forensic Collection Workflow
 
 ```text
 Identify
@@ -1907,7 +1907,7 @@ Report
 
 ---
 
-# Evidence Collection Example
+## Evidence Collection Example
 
 Create an evidence directory:
 
@@ -1938,7 +1938,7 @@ kubectl logs <pod-name> \
 
 ---
 
-# Collect Events
+## Collect Events
 
 ```bash
 kubectl get events -A \
@@ -1948,7 +1948,7 @@ kubectl get events -A \
 
 ---
 
-# Collect Workload Inventory
+## Collect Workload Inventory
 
 ```bash
 kubectl get pods -A -o wide \
@@ -1957,7 +1957,7 @@ kubectl get pods -A -o wide \
 
 ---
 
-# Collect Node Inventory
+## Collect Node Inventory
 
 ```bash
 kubectl get nodes -o wide \
@@ -1966,7 +1966,7 @@ kubectl get nodes -o wide \
 
 ---
 
-# Collect RBAC Information
+## Collect RBAC Information
 
 ```bash
 kubectl get roles -A \
@@ -1985,7 +1985,7 @@ kubectl get clusterrolebindings \
 
 ---
 
-# Hash Evidence
+## Hash Evidence
 
 ```bash
 sha256sum incident-evidence/*
@@ -1995,7 +1995,7 @@ Store hashes separately from the working evidence set where appropriate.
 
 ---
 
-# Secure Evidence Storage
+## Secure Evidence Storage
 
 Use:
 
@@ -2009,7 +2009,7 @@ Retention Policy
 
 ---
 
-# Evidence Redaction
+## Evidence Redaction
 
 Sensitive evidence may contain:
 
@@ -2025,7 +2025,7 @@ Redact before sharing outside the authorized investigation team.
 
 ---
 
-# Privacy Considerations
+## Privacy Considerations
 
 Forensic collection should follow:
 
@@ -2042,7 +2042,7 @@ Do not collect unrelated personal data unnecessarily.
 
 ---
 
-# Legal Considerations
+## Legal Considerations
 
 Depending on the incident, evidence may have legal implications.
 
@@ -2060,7 +2060,7 @@ when required.
 
 ---
 
-# Forensics and Incident Response
+## Forensics and Incident Response
 
 Forensics supports incident response:
 
@@ -2080,7 +2080,7 @@ Recovery
 
 ---
 
-# Forensics and SIEM
+## Forensics and SIEM
 
 SIEM provides centralized correlation:
 
@@ -2100,7 +2100,7 @@ This makes timeline reconstruction easier.
 
 ---
 
-# Production Forensic Architecture
+## Production Forensic Architecture
 
 ```text
                      Kubernetes
@@ -2132,33 +2132,33 @@ This makes timeline reconstruction easier.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. No Centralized Logs
+### 1. No Centralized Logs
 
 Ephemeral workloads can disappear before investigation.
 
 ---
 
-## 2. Deleting Evidence Too Quickly
+### 2. Deleting Evidence Too Quickly
 
 Pod deletion may destroy useful runtime evidence.
 
 ---
 
-## 3. Ignoring Node Evidence
+### 3. Ignoring Node Evidence
 
 A compromised Pod may indicate a node compromise.
 
 ---
 
-## 4. Ignoring Cloud Logs
+### 4. Ignoring Cloud Logs
 
 Managed Kubernetes often depends heavily on cloud infrastructure.
 
 ---
 
-## 5. Trusting Pod Names
+### 5. Trusting Pod Names
 
 Pod names can change.
 
@@ -2175,37 +2175,37 @@ for precise identification.
 
 ---
 
-## 6. Using Mutable Image Tags
+### 6. Using Mutable Image Tags
 
 Always record the exact image digest where possible.
 
 ---
 
-## 7. Exposing Secrets During Investigation
+### 7. Exposing Secrets During Investigation
 
 Do not unnecessarily print credentials.
 
 ---
 
-## 8. No Time Synchronization
+### 8. No Time Synchronization
 
 Incorrect timestamps make correlation difficult.
 
 ---
 
-## 9. No Evidence Hashing
+### 9. No Evidence Hashing
 
 Evidence integrity becomes harder to demonstrate.
 
 ---
 
-## 10. No Chain of Custody
+### 10. No Chain of Custody
 
 This can weaken evidence handling for formal investigations.
 
 ---
 
-## 11. Investigating Without Scope
+### 11. Investigating Without Scope
 
 Always determine:
 
@@ -2221,51 +2221,51 @@ impact.
 
 ---
 
-## 12. Assuming the First Finding Is the Root Cause
+### 12. Assuming the First Finding Is the Root Cause
 
 The first suspicious artifact may only be a symptom.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Enable Audit Logging
+#### 1. Enable Audit Logging
 
 Maintain sufficient retention.
 
 ---
 
-### 2. Centralize Logs
+#### 2. Centralize Logs
 
 Do not rely solely on local container logs.
 
 ---
 
-### 3. Maintain Forensic Readiness
+#### 3. Maintain Forensic Readiness
 
 Prepare before an incident.
 
 ---
 
-### 4. Preserve Evidence
+#### 4. Preserve Evidence
 
 Especially for serious incidents.
 
 ---
 
-### 5. Record Image Digests
+#### 5. Record Image Digests
 
 Avoid relying solely on tags.
 
 ---
 
-### 6. Maintain Accurate Time
+#### 6. Maintain Accurate Time
 
 Use reliable time synchronization.
 
 ---
 
-### 7. Protect Evidence
+#### 7. Protect Evidence
 
 Use:
 
@@ -2278,7 +2278,7 @@ Hashing
 
 ---
 
-### 8. Integrate Cloud Evidence
+#### 8. Integrate Cloud Evidence
 
 Investigate:
 
@@ -2293,13 +2293,13 @@ alongside Kubernetes.
 
 ---
 
-### 9. Minimize Sensitive Data Exposure
+#### 9. Minimize Sensitive Data Exposure
 
 Redact credentials and unnecessary personal data.
 
 ---
 
-### 10. Build Investigation Runbooks
+#### 10. Build Investigation Runbooks
 
 Document:
 
@@ -2312,7 +2312,7 @@ Who Can Access
 
 ---
 
-# Hands-on Lab 1 – Pod Evidence Collection
+## Hands-on Lab 1 – Pod Evidence Collection
 
 Create a test Pod.
 
@@ -2328,7 +2328,7 @@ Store each output as evidence.
 
 ---
 
-# Hands-on Lab 2 – Kubernetes Timeline
+## Hands-on Lab 2 – Kubernetes Timeline
 
 Collect:
 
@@ -2347,7 +2347,7 @@ Build a timeline.
 
 ---
 
-# Hands-on Lab 3 – Image Forensics
+## Hands-on Lab 3 – Image Forensics
 
 Deploy an image.
 
@@ -2369,7 +2369,7 @@ Determine the exact image being executed.
 
 ---
 
-# Hands-on Lab 4 – Runtime Forensics
+## Hands-on Lab 4 – Runtime Forensics
 
 On a disposable node:
 
@@ -2395,7 +2395,7 @@ Mounts
 
 ---
 
-# Hands-on Lab 5 – Node Forensics
+## Hands-on Lab 5 – Node Forensics
 
 On a test node collect:
 
@@ -2419,7 +2419,7 @@ Analyze suspicious activity.
 
 ---
 
-# Hands-on Lab 6 – ServiceAccount Investigation
+## Hands-on Lab 6 – ServiceAccount Investigation
 
 Create a test ServiceAccount.
 
@@ -2440,7 +2440,7 @@ Determine the account's permissions.
 
 ---
 
-# Hands-on Lab 7 – RBAC Forensics
+## Hands-on Lab 7 – RBAC Forensics
 
 Create a controlled RBAC change.
 
@@ -2462,7 +2462,7 @@ When
 
 ---
 
-# Hands-on Lab 8 – Network Forensics
+## Hands-on Lab 8 – Network Forensics
 
 Generate controlled Pod-to-Pod traffic.
 
@@ -2486,7 +2486,7 @@ Time
 
 ---
 
-# Hands-on Lab 9 – Evidence Hashing
+## Hands-on Lab 9 – Evidence Hashing
 
 Collect evidence files.
 
@@ -2504,7 +2504,7 @@ Observe the difference.
 
 ---
 
-# Hands-on Lab 10 – Malicious Image Investigation
+## Hands-on Lab 10 – Malicious Image Investigation
 
 Use a harmless simulated malicious image.
 
@@ -2528,7 +2528,7 @@ IOA
 
 ---
 
-# Hands-on Lab 11 – Persistence Investigation
+## Hands-on Lab 11 – Persistence Investigation
 
 Create controlled test resources:
 
@@ -2543,7 +2543,7 @@ Practice identifying unexpected resources.
 
 ---
 
-# Hands-on Lab 12 – Full Kubernetes Forensic Exercise
+## Hands-on Lab 12 – Full Kubernetes Forensic Exercise
 
 Simulate:
 
@@ -2580,9 +2580,9 @@ Impact
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Kubernetes Forensics
+### Kubernetes Forensics
 
 ```text
 Collection and analysis of Kubernetes-related digital evidence
@@ -2590,7 +2590,7 @@ Collection and analysis of Kubernetes-related digital evidence
 
 ---
 
-## Volatile Evidence
+### Volatile Evidence
 
 ```text
 Evidence that can disappear quickly
@@ -2598,7 +2598,7 @@ Evidence that can disappear quickly
 
 ---
 
-## Non-Volatile Evidence
+### Non-Volatile Evidence
 
 ```text
 Persistent evidence such as logs and storage
@@ -2606,7 +2606,7 @@ Persistent evidence such as logs and storage
 
 ---
 
-## Chain of Custody
+### Chain of Custody
 
 ```text
 Record of evidence handling
@@ -2614,7 +2614,7 @@ Record of evidence handling
 
 ---
 
-## IOC
+### IOC
 
 ```text
 Indicator of Compromise
@@ -2622,7 +2622,7 @@ Indicator of Compromise
 
 ---
 
-## IOA
+### IOA
 
 ```text
 Indicator of Attack
@@ -2630,7 +2630,7 @@ Indicator of Attack
 
 ---
 
-## Forensic Readiness
+### Forensic Readiness
 
 ```text
 Preparing systems to preserve useful evidence
@@ -2638,7 +2638,7 @@ Preparing systems to preserve useful evidence
 
 ---
 
-## Image Digest
+### Image Digest
 
 ```text
 Immutable identifier for image content
@@ -2646,7 +2646,7 @@ Immutable identifier for image content
 
 ---
 
-## Timeline
+### Timeline
 
 ```text
 Chronological reconstruction of events
@@ -2654,7 +2654,7 @@ Chronological reconstruction of events
 
 ---
 
-## Root Cause
+### Root Cause
 
 ```text
 Underlying reason the incident occurred
@@ -2662,7 +2662,7 @@ Underlying reason the incident occurred
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 List Pods:
 
@@ -2872,9 +2872,9 @@ sha256sum <file>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Kubernetes forensics?
 - Why is Kubernetes forensics different from traditional server forensics?
@@ -2891,7 +2891,7 @@ sha256sum <file>
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How would you investigate a compromised Pod?
 - How would you collect Pod evidence?
@@ -2908,7 +2908,7 @@ sha256sum <file>
 
 ---
 
-## Advanced
+### Advanced
 
 - How would you perform forensic analysis of a Kubernetes cluster?
 - How would you investigate a suspected container escape?
@@ -2925,13 +2925,13 @@ sha256sum <file>
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > A suspicious Pod was deleted before the security team started investigating. What evidence would you look for?
 
-### Answer
+#### Answer
 
 I would investigate:
 
@@ -2963,13 +2963,13 @@ and reconstruct the timeline from surviving evidence.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > How would you investigate a suspected compromised node?
 
-### Answer
+#### Answer
 
 I would:
 
@@ -2990,13 +2990,13 @@ I would:
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > Why is the image digest important during forensics?
 
-### Answer
+#### Answer
 
 Image tags can be mutable.
 
@@ -3018,13 +3018,13 @@ identifies a specific image content, making it much more reliable for investigat
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What information can Kubernetes audit logs provide?
 
-### Answer
+#### Answer
 
 Depending on audit policy and configured fields, they can help identify:
 
@@ -3043,13 +3043,13 @@ This can establish who performed an action and when.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How would you investigate a compromised ServiceAccount?
 
-### Answer
+#### Answer
 
 I would:
 
@@ -3075,13 +3075,13 @@ Search for Persistence
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > What evidence would you collect from a compromised container?
 
-### Answer
+#### Answer
 
 I would collect:
 
@@ -3103,13 +3103,13 @@ Collection should be performed using approved forensic procedures.
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How do you determine whether an attacker moved laterally?
 
-### Answer
+#### Answer
 
 Correlate:
 
@@ -3131,13 +3131,13 @@ Look for evidence showing movement from the initially compromised workload to ad
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How would you investigate a supply-chain compromise?
 
-### Answer
+#### Answer
 
 Trace:
 
@@ -3171,13 +3171,13 @@ using image digests, SBOMs, registry logs, and CI/CD records.
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > What is forensic readiness in Kubernetes?
 
-### Answer
+#### Answer
 
 Forensic readiness means designing the cluster and surrounding infrastructure so that useful evidence is available during an incident.
 
@@ -3201,13 +3201,13 @@ Retention
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a Kubernetes forensic architecture.
 
-### Answer
+#### Answer
 
 A practical architecture is:
 
@@ -3259,7 +3259,7 @@ Incident Runbooks
 
 ---
 
-# Production Forensics Checklist
+## Production Forensics Checklist
 
 ```text
 ☑ Kubernetes audit logging enabled
@@ -3287,7 +3287,7 @@ Incident Runbooks
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Kubernetes forensics focuses on reconstructing security incidents across dynamic and ephemeral infrastructure.
 
@@ -3334,9 +3334,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 75 – Runtime Threat Detection
+## Chapter 75 – Runtime Threat Detection
 
 Topics will include:
 

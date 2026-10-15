@@ -1,10 +1,10 @@
 # 24 - Network Troubleshooting
 
-# Part 1 — Troubleshooting Fundamentals, Methodologies, OSI Model Approach, TCP/IP Troubleshooting, Root Cause Analysis, and Enterprise Best Practices
+## Part 1 — Troubleshooting Fundamentals, Methodologies, OSI Model Approach, TCP/IP Troubleshooting, Root Cause Analysis, and Enterprise Best Practices
 
 ---
 
-# Overview
+## Overview
 
 Network Troubleshooting is the systematic process of identifying, isolating, diagnosing, and resolving problems that affect network availability, performance, reliability, and security.
 
@@ -35,7 +35,7 @@ Modern organizations rely on structured troubleshooting methodologies rather tha
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -50,7 +50,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is Network Troubleshooting?
+## What is Network Troubleshooting?
 
 Network troubleshooting is the process of diagnosing and correcting faults within network infrastructure.
 
@@ -66,7 +66,7 @@ Troubleshooting is both a technical and analytical discipline.
 
 ---
 
-# Why Troubleshooting Matters
+## Why Troubleshooting Matters
 
 Effective troubleshooting enables organizations to:
 
@@ -79,7 +79,7 @@ Effective troubleshooting enables organizations to:
 
 ---
 
-# Enterprise Troubleshooting Lifecycle
+## Enterprise Troubleshooting Lifecycle
 
 ```
 Problem Reported
@@ -129,7 +129,7 @@ Following a repeatable lifecycle ensures consistency and reduces the risk of int
 
 ---
 
-# Structured Troubleshooting Methodology
+## Structured Troubleshooting Methodology
 
 A structured methodology generally includes:
 
@@ -146,7 +146,7 @@ Skipping steps often leads to incomplete resolutions.
 
 ---
 
-# Incident Prioritization
+## Incident Prioritization
 
 Not all incidents require the same urgency.
 
@@ -161,7 +161,7 @@ Prioritization ensures that critical business services receive immediate attenti
 
 ---
 
-# Incident Severity vs Priority
+## Incident Severity vs Priority
 
 These terms are related but different.
 
@@ -177,7 +177,7 @@ A minor network fault affecting a hospital emergency system may receive the high
 
 ---
 
-# Defining the Scope
+## Defining the Scope
 
 Before troubleshooting, determine:
 
@@ -192,7 +192,7 @@ A clearly defined scope prevents unnecessary investigation.
 
 ---
 
-# Gathering Information
+## Gathering Information
 
 Collect information from multiple sources:
 
@@ -210,7 +210,7 @@ The more context collected, the faster the root cause can often be identified.
 
 ---
 
-# Root Cause Analysis (RCA)
+## Root Cause Analysis (RCA)
 
 Root Cause Analysis identifies the underlying reason for an incident rather than only addressing symptoms.
 
@@ -238,7 +238,7 @@ Resolving the root cause reduces repeat incidents.
 
 ---
 
-# The Five Whys Technique
+## The Five Whys Technique
 
 The "Five Whys" is a simple RCA method.
 
@@ -280,7 +280,7 @@ The number of "whys" may vary depending on the complexity of the issue.
 
 ---
 
-# Fault Domains
+## Fault Domains
 
 Divide the infrastructure into logical fault domains.
 
@@ -320,7 +320,7 @@ Isolating fault domains narrows the investigation.
 
 ---
 
-# OSI Model Troubleshooting
+## OSI Model Troubleshooting
 
 The OSI model provides a structured framework for troubleshooting.
 
@@ -356,7 +356,7 @@ Engineers can troubleshoot from the bottom up, top down, or by targeting the sus
 
 ---
 
-# Bottom-Up Approach
+## Bottom-Up Approach
 
 Begin with the Physical Layer and work upward.
 
@@ -387,7 +387,7 @@ Advantages:
 
 ---
 
-# Top-Down Approach
+## Top-Down Approach
 
 Begin with the application and move downward.
 
@@ -418,7 +418,7 @@ Advantages:
 
 ---
 
-# Divide-and-Conquer Approach
+## Divide-and-Conquer Approach
 
 Start at the layer most likely to contain the fault.
 
@@ -442,7 +442,7 @@ Experienced engineers frequently use this approach to reduce troubleshooting tim
 
 ---
 
-# Follow-the-Path Method
+## Follow-the-Path Method
 
 Trace the complete communication path.
 
@@ -482,7 +482,7 @@ Verify each hop individually to isolate failures.
 
 ---
 
-# Troubleshooting by TCP/IP Model
+## Troubleshooting by TCP/IP Model
 
 The TCP/IP model can also guide investigations.
 
@@ -495,7 +495,7 @@ The TCP/IP model can also guide investigations.
 
 ---
 
-# Physical Layer Issues
+## Physical Layer Issues
 
 Common causes include:
 
@@ -514,7 +514,7 @@ Symptoms:
 
 ---
 
-# Data Link Layer Issues
+## Data Link Layer Issues
 
 Typical problems include:
 
@@ -532,7 +532,7 @@ Symptoms:
 
 ---
 
-# Network Layer Issues
+## Network Layer Issues
 
 Common issues:
 
@@ -550,7 +550,7 @@ Symptoms:
 
 ---
 
-# Transport Layer Issues
+## Transport Layer Issues
 
 Potential causes:
 
@@ -568,7 +568,7 @@ Symptoms:
 
 ---
 
-# Application Layer Issues
+## Application Layer Issues
 
 Examples:
 
@@ -582,7 +582,7 @@ Application problems often appear as network issues from the user's perspective.
 
 ---
 
-# Layered Verification Example
+## Layered Verification Example
 
 ```
 User Cannot Access Website
@@ -620,7 +620,7 @@ Verifying each layer systematically reduces troubleshooting time.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Structured troubleshooting enables organizations to:
 
@@ -633,7 +633,7 @@ Structured troubleshooting enables organizations to:
 
 ---
 
-# Enterprise Troubleshooting Best Practices
+## Enterprise Troubleshooting Best Practices
 
 Organizations should:
 
@@ -649,7 +649,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Network troubleshooting is a structured process, not guesswork.
 - Root Cause Analysis prevents recurring incidents.
@@ -660,11 +660,11 @@ Organizations should:
 
 ---
 
-# Part 2 — Routing, Switching, VLAN, DHCP, DNS, Wireless, Firewall, VPN, Cloud, and Enterprise Connectivity Troubleshooting
+## Part 2 — Routing, Switching, VLAN, DHCP, DNS, Wireless, Firewall, VPN, Cloud, and Enterprise Connectivity Troubleshooting
 
 ---
 
-# Introduction
+## Introduction
 
 After identifying the affected OSI or TCP/IP layer, engineers must troubleshoot the individual network technologies responsible for connectivity.
 
@@ -686,7 +686,7 @@ A failure in any of these services can affect thousands of users.
 
 ---
 
-# Enterprise Connectivity Troubleshooting Workflow
+## Enterprise Connectivity Troubleshooting Workflow
 
 ```
 User Reports Issue
@@ -724,7 +724,7 @@ This layered workflow reduces unnecessary troubleshooting.
 
 ---
 
-# Routing Troubleshooting
+## Routing Troubleshooting
 
 Routing determines how packets travel between different networks.
 
@@ -740,7 +740,7 @@ Common routing issues include:
 
 ---
 
-# Routing Verification
+## Routing Verification
 
 Verify:
 
@@ -775,7 +775,7 @@ Each hop should have a valid route toward the destination.
 
 ---
 
-# Common Routing Symptoms
+## Common Routing Symptoms
 
 | Symptom | Possible Cause |
 |----------|----------------|
@@ -787,7 +787,7 @@ Each hop should have a valid route toward the destination.
 
 ---
 
-# Static Route Troubleshooting
+## Static Route Troubleshooting
 
 Verify:
 
@@ -820,7 +820,7 @@ Traffic Forwarded
 
 ---
 
-# Dynamic Routing Troubleshooting
+## Dynamic Routing Troubleshooting
 
 Review:
 
@@ -834,7 +834,7 @@ Failures often occur because neighboring routers cannot establish adjacency.
 
 ---
 
-# Switching Troubleshooting
+## Switching Troubleshooting
 
 Switches forward Ethernet frames within a local network.
 
@@ -850,7 +850,7 @@ Common switching problems include:
 
 ---
 
-# Switch Verification
+## Switch Verification
 
 Review:
 
@@ -878,7 +878,7 @@ Core
 
 ---
 
-# MAC Address Table Verification
+## MAC Address Table Verification
 
 Switches learn MAC addresses dynamically.
 
@@ -893,7 +893,7 @@ Failure to learn MAC addresses often indicates Layer 2 issues.
 
 ---
 
-# VLAN Troubleshooting
+## VLAN Troubleshooting
 
 Common VLAN issues:
 
@@ -911,7 +911,7 @@ Symptoms:
 
 ---
 
-# VLAN Validation
+## VLAN Validation
 
 Verify:
 
@@ -939,7 +939,7 @@ Destination VLAN
 
 ---
 
-# Spanning Tree Troubleshooting
+## Spanning Tree Troubleshooting
 
 Review:
 
@@ -953,7 +953,7 @@ Frequent topology changes often indicate loops or unstable links.
 
 ---
 
-# DHCP Troubleshooting
+## DHCP Troubleshooting
 
 DHCP automatically assigns network configuration.
 
@@ -967,7 +967,7 @@ Common problems include:
 
 ---
 
-# DHCP Process Review
+## DHCP Process Review
 
 ```
 Client
@@ -993,7 +993,7 @@ Failure at any stage prevents successful IP assignment.
 
 ---
 
-# DHCP Investigation
+## DHCP Investigation
 
 Verify:
 
@@ -1005,7 +1005,7 @@ Verify:
 
 ---
 
-# DNS Troubleshooting
+## DNS Troubleshooting
 
 DNS translates names into IP addresses.
 
@@ -1020,7 +1020,7 @@ Common DNS issues include:
 
 ---
 
-# DNS Verification
+## DNS Verification
 
 Check:
 
@@ -1052,7 +1052,7 @@ IP Address
 
 ---
 
-# DNS Symptoms
+## DNS Symptoms
 
 | Symptom | Possible Cause |
 |----------|----------------|
@@ -1063,7 +1063,7 @@ IP Address
 
 ---
 
-# Wireless Troubleshooting
+## Wireless Troubleshooting
 
 Wireless issues often involve multiple factors.
 
@@ -1078,7 +1078,7 @@ Common causes:
 
 ---
 
-# Wireless Investigation
+## Wireless Investigation
 
 Review:
 
@@ -1106,7 +1106,7 @@ Network
 
 ---
 
-# Firewall Troubleshooting
+## Firewall Troubleshooting
 
 Firewalls enforce security policies.
 
@@ -1120,7 +1120,7 @@ Common issues:
 
 ---
 
-# Firewall Validation
+## Firewall Validation
 
 Verify:
 
@@ -1152,7 +1152,7 @@ No → Drop
 
 ---
 
-# VPN Troubleshooting
+## VPN Troubleshooting
 
 VPNs provide secure remote connectivity.
 
@@ -1167,7 +1167,7 @@ Common problems include:
 
 ---
 
-# VPN Verification
+## VPN Verification
 
 Review:
 
@@ -1180,7 +1180,7 @@ Review:
 
 ---
 
-# Load Balancer Troubleshooting
+## Load Balancer Troubleshooting
 
 Common issues:
 
@@ -1192,7 +1192,7 @@ Common issues:
 
 ---
 
-# Load Balancer Workflow
+## Load Balancer Workflow
 
 ```
 Client
@@ -1216,7 +1216,7 @@ Response
 
 ---
 
-# Cloud Connectivity Troubleshooting
+## Cloud Connectivity Troubleshooting
 
 Cloud environments introduce additional networking components.
 
@@ -1233,7 +1233,7 @@ Verify:
 
 ---
 
-# Cloud Network Validation
+## Cloud Network Validation
 
 ```
 Virtual Machine
@@ -1263,7 +1263,7 @@ Each component must permit the required traffic.
 
 ---
 
-# Hybrid Network Troubleshooting
+## Hybrid Network Troubleshooting
 
 Hybrid networks connect on-premises infrastructure to cloud services.
 
@@ -1278,7 +1278,7 @@ Investigate:
 
 ---
 
-# SD-WAN Troubleshooting
+## SD-WAN Troubleshooting
 
 Common issues include:
 
@@ -1298,7 +1298,7 @@ Monitor:
 
 ---
 
-# Connectivity Testing Tools
+## Connectivity Testing Tools
 
 Common tools include:
 
@@ -1315,7 +1315,7 @@ Common tools include:
 
 ---
 
-# Linux Verification Commands
+## Linux Verification Commands
 
 Interface Status
 
@@ -1373,7 +1373,7 @@ ss -tulnp
 
 ---
 
-# Windows Verification Commands
+## Windows Verification Commands
 
 IP Configuration
 
@@ -1431,7 +1431,7 @@ netstat -ano
 
 ---
 
-# Business Impact
+## Business Impact
 
 Efficient connectivity troubleshooting enables organizations to:
 
@@ -1444,7 +1444,7 @@ Efficient connectivity troubleshooting enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -1459,7 +1459,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Routing and switching form the foundation of enterprise connectivity.
 - DHCP and DNS issues frequently appear as broader network outages.
@@ -1470,11 +1470,11 @@ Organizations should:
 
 ---
 
-# Part 3 — Packet Analysis, Wireshark, Log Analysis, Detection Engineering, SIEM Investigation, Root Cause Analysis, and Enterprise Incident Response
+## Part 3 — Packet Analysis, Wireshark, Log Analysis, Detection Engineering, SIEM Investigation, Root Cause Analysis, and Enterprise Incident Response
 
 ---
 
-# Introduction
+## Introduction
 
 Many enterprise incidents cannot be resolved through basic connectivity tests alone. Engineers must inspect packets, analyze logs, correlate events, and investigate security telemetry to identify the true root cause.
 
@@ -1494,7 +1494,7 @@ Using multiple telemetry sources reduces investigation time and improves accurac
 
 ---
 
-# Enterprise Investigation Workflow
+## Enterprise Investigation Workflow
 
 ```
 Alert Generated
@@ -1546,7 +1546,7 @@ Document Findings
 
 ---
 
-# Packet Analysis
+## Packet Analysis
 
 Packet analysis involves examining individual network packets to understand how systems communicate.
 
@@ -1565,7 +1565,7 @@ Unlike flow records, packet captures contain the complete payload (where not enc
 
 ---
 
-# Packet Capture Workflow
+## Packet Capture Workflow
 
 ```
 Network Traffic
@@ -1595,7 +1595,7 @@ Packet capture should be performed on the most relevant network segment to avoid
 
 ---
 
-# Packet Capture Methods
+## Packet Capture Methods
 
 Enterprise packet collection commonly uses:
 
@@ -1609,7 +1609,7 @@ Each method provides visibility into different parts of the infrastructure.
 
 ---
 
-# SPAN (Port Mirroring)
+## SPAN (Port Mirroring)
 
 A SPAN port copies traffic from one or more interfaces to a monitoring device.
 
@@ -1633,7 +1633,7 @@ SPAN is widely used because it requires no interruption to production traffic.
 
 ---
 
-# Network TAP
+## Network TAP
 
 A Test Access Point (TAP) passively copies all traffic crossing a network link.
 
@@ -1648,7 +1648,7 @@ TAPs are preferred for mission-critical monitoring.
 
 ---
 
-# Wireshark
+## Wireshark
 
 Wireshark is one of the most widely used packet analysis tools.
 
@@ -1665,7 +1665,7 @@ Wireshark is commonly used for troubleshooting and forensic investigations.
 
 ---
 
-# Packet Structure
+## Packet Structure
 
 ```
 Ethernet Header
@@ -1687,7 +1687,7 @@ Understanding protocol headers is essential for accurate packet analysis.
 
 ---
 
-# TCP Three-Way Handshake
+## TCP Three-Way Handshake
 
 ```
 Client
@@ -1715,7 +1715,7 @@ Failure during this sequence often indicates firewall, routing, or server issues
 
 ---
 
-# TCP Connection Termination
+## TCP Connection Termination
 
 ```
 FIN
@@ -1741,7 +1741,7 @@ Unexpected resets (RST packets) may indicate application errors or firewall poli
 
 ---
 
-# DNS Packet Analysis
+## DNS Packet Analysis
 
 A typical DNS exchange consists of:
 
@@ -1775,7 +1775,7 @@ Common issues include:
 
 ---
 
-# TLS Handshake Analysis
+## TLS Handshake Analysis
 
 ```
 Client Hello
@@ -1806,7 +1806,7 @@ TLS failures commonly result from:
 
 ---
 
-# HTTP Packet Analysis
+## HTTP Packet Analysis
 
 Monitor for:
 
@@ -1820,7 +1820,7 @@ HTTP analysis helps identify web application issues.
 
 ---
 
-# Common Wireshark Display Filters
+## Common Wireshark Display Filters
 
 | Filter | Purpose |
 |---------|----------|
@@ -1839,7 +1839,7 @@ Display filters allow analysts to focus on relevant traffic quickly.
 
 ---
 
-# Useful Wireshark Statistics
+## Useful Wireshark Statistics
 
 Engineers commonly review:
 
@@ -1854,7 +1854,7 @@ These views help identify abnormal traffic patterns and protocol issues.
 
 ---
 
-# Syslog Analysis
+## Syslog Analysis
 
 Syslog provides a chronological record of system and network events.
 
@@ -1872,7 +1872,7 @@ Logs should be centrally collected and retained according to organizational poli
 
 ---
 
-# Authentication Log Analysis
+## Authentication Log Analysis
 
 Investigate:
 
@@ -1887,7 +1887,7 @@ Authentication logs are often the first indicator of unauthorized access.
 
 ---
 
-# Firewall Log Analysis
+## Firewall Log Analysis
 
 Review:
 
@@ -1902,7 +1902,7 @@ Unexpected denied traffic may indicate policy errors or malicious activity.
 
 ---
 
-# NetFlow/IPFIX Analysis
+## NetFlow/IPFIX Analysis
 
 Flow records provide visibility into communication patterns.
 
@@ -1919,7 +1919,7 @@ NetFlow complements packet captures by providing scalable network visibility.
 
 ---
 
-# SIEM Investigation Workflow
+## SIEM Investigation Workflow
 
 ```
 Alert
@@ -1957,7 +1957,7 @@ A SIEM enables analysts to investigate events across multiple systems from a cen
 
 ---
 
-# Event Correlation
+## Event Correlation
 
 Correlation combines multiple related events into a single investigation.
 
@@ -1991,7 +1991,7 @@ Without correlation, each event may appear benign in isolation.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Detection Engineering focuses on creating reliable detection logic that balances sensitivity with accuracy.
 
@@ -2004,7 +2004,7 @@ Objectives:
 
 ---
 
-# Example Detection Rule — Port Scanning
+## Example Detection Rule — Port Scanning
 
 ```
 Single Source
@@ -2024,7 +2024,7 @@ Medium Severity Alert
 
 ---
 
-# Example Detection Rule — Brute Force
+## Example Detection Rule — Brute Force
 
 ```
 50 Failed Logins
@@ -2046,7 +2046,7 @@ Correlating authentication events provides higher confidence than monitoring fai
 
 ---
 
-# Example Detection Rule — DNS Tunneling
+## Example Detection Rule — DNS Tunneling
 
 Indicators include:
 
@@ -2059,7 +2059,7 @@ These behaviors may indicate covert data exfiltration.
 
 ---
 
-# Threat Hunting
+## Threat Hunting
 
 Threat hunting proactively searches for malicious activity that has not yet triggered alerts.
 
@@ -2077,7 +2077,7 @@ Threat hunting complements automated detection.
 
 ---
 
-# Root Cause Analysis (RCA)
+## Root Cause Analysis (RCA)
 
 Resolving symptoms without understanding the underlying cause often leads to recurring incidents.
 
@@ -2105,7 +2105,7 @@ RCA should be completed for all major incidents.
 
 ---
 
-# Post-Incident Review
+## Post-Incident Review
 
 Following incident resolution, organizations should review:
 
@@ -2120,7 +2120,7 @@ The objective is continuous operational improvement rather than assigning blame.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Comprehensive packet and log analysis enables organizations to:
 
@@ -2133,7 +2133,7 @@ Comprehensive packet and log analysis enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -2148,7 +2148,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Packet captures provide deep protocol-level visibility.
 - Wireshark is a powerful tool for protocol analysis and troubleshooting.
@@ -2160,11 +2160,11 @@ Organizations should:
 
 ---
 
-# Part 4 — Enterprise Troubleshooting Scenarios, Practical Labs, Enterprise Case Studies, Interview Questions, RFC/IEEE/NIST References, Summary, and Chapter Review
+## Part 4 — Enterprise Troubleshooting Scenarios, Practical Labs, Enterprise Case Studies, Interview Questions, RFC/IEEE/NIST References, Summary, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise troubleshooting extends beyond fixing technical issues—it is a disciplined process that minimizes downtime, protects business operations, and strengthens future resilience.
 
@@ -2183,7 +2183,7 @@ Successful organizations resolve incidents quickly while learning from every eve
 
 ---
 
-# Enterprise Troubleshooting Workflow
+## Enterprise Troubleshooting Workflow
 
 ```
 User Report / Monitoring Alert
@@ -2235,7 +2235,7 @@ Knowledge Base Update
 
 ---
 
-# Enterprise Troubleshooting Checklist
+## Enterprise Troubleshooting Checklist
 
 Before making changes, verify:
 
@@ -2256,18 +2256,18 @@ Following a checklist reduces the risk of overlooking common causes.
 
 ---
 
-# Enterprise Troubleshooting Scenarios
+## Enterprise Troubleshooting Scenarios
 
 ---
 
-## Scenario 1 — Complete Branch Office Outage
+### Scenario 1 — Complete Branch Office Outage
 
-### Symptoms
+#### Symptoms
 
 - Entire branch loses network connectivity.
 - Users cannot access internal applications or the Internet.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2279,7 +2279,7 @@ Verify:
 - ISP notifications
 - Power status
 
-### Resolution
+#### Resolution
 
 - Replace failed WAN interface.
 - Restore routing.
@@ -2288,15 +2288,15 @@ Verify:
 
 ---
 
-## Scenario 2 — Intermittent Connectivity
+### Scenario 2 — Intermittent Connectivity
 
-### Symptoms
+#### Symptoms
 
 - Random disconnections.
 - Voice calls drop.
 - Slow application performance.
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -2306,7 +2306,7 @@ Review:
 - Packet loss
 - Switch logs
 
-### Resolution
+#### Resolution
 
 - Replace damaged cable.
 - Correct duplex configuration.
@@ -2315,9 +2315,9 @@ Review:
 
 ---
 
-## Scenario 3 — Users Cannot Obtain IP Addresses
+### Scenario 3 — Users Cannot Obtain IP Addresses
 
-### Symptoms
+#### Symptoms
 
 ```
 Client
@@ -2331,7 +2331,7 @@ No IP Address
 169.254.x.x Assigned
 ```
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2341,7 +2341,7 @@ Verify:
 - VLAN assignment
 - Switch connectivity
 
-### Resolution
+#### Resolution
 
 - Restore DHCP service.
 - Expand DHCP scope if exhausted.
@@ -2349,14 +2349,14 @@ Verify:
 
 ---
 
-## Scenario 4 — DNS Resolution Failure
+### Scenario 4 — DNS Resolution Failure
 
-### Symptoms
+#### Symptoms
 
 - Websites inaccessible using names.
 - Applications fail despite successful ping by IP address.
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -2366,7 +2366,7 @@ Check:
 - Forwarders
 - Replication status
 
-### Resolution
+#### Resolution
 
 - Correct DNS records.
 - Restart DNS service if required.
@@ -2374,13 +2374,13 @@ Check:
 
 ---
 
-## Scenario 5 — Firewall Blocking Business Traffic
+### Scenario 5 — Firewall Blocking Business Traffic
 
-### Symptoms
+#### Symptoms
 
 - New application unavailable after deployment.
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -2391,7 +2391,7 @@ Review:
 - Security zones
 - Logs
 
-### Resolution
+#### Resolution
 
 - Update firewall policy.
 - Validate traffic.
@@ -2399,14 +2399,14 @@ Review:
 
 ---
 
-## Scenario 6 — VPN Users Cannot Access Internal Resources
+### Scenario 6 — VPN Users Cannot Access Internal Resources
 
-### Symptoms
+#### Symptoms
 
 - VPN connection succeeds.
 - Internal systems remain unreachable.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2416,7 +2416,7 @@ Verify:
 - Firewall policies
 - Internal DNS resolution
 
-### Resolution
+#### Resolution
 
 - Correct route advertisements.
 - Update firewall policies.
@@ -2424,15 +2424,15 @@ Verify:
 
 ---
 
-## Scenario 7 — High Network Latency
+### Scenario 7 — High Network Latency
 
-### Symptoms
+#### Symptoms
 
 - Slow ERP systems.
 - Delayed file transfers.
 - Voice quality degradation.
 
-### Investigation
+#### Investigation
 
 Analyze:
 
@@ -2442,7 +2442,7 @@ Analyze:
 - Packet loss
 - WAN health
 
-### Resolution
+#### Resolution
 
 - Optimize QoS.
 - Remove congestion.
@@ -2450,15 +2450,15 @@ Analyze:
 
 ---
 
-## Scenario 8 — Broadcast Storm
+### Scenario 8 — Broadcast Storm
 
-### Symptoms
+#### Symptoms
 
 - Network becomes extremely slow.
 - CPU spikes on switches.
 - Users lose connectivity.
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -2467,7 +2467,7 @@ Review:
 - Interface utilization
 - Loop detection
 
-### Resolution
+#### Resolution
 
 - Remove switching loop.
 - Verify STP operation.
@@ -2475,13 +2475,13 @@ Review:
 
 ---
 
-## Scenario 9 — Cloud Connectivity Failure
+### Scenario 9 — Cloud Connectivity Failure
 
-### Symptoms
+#### Symptoms
 
 - On-premises users cannot reach cloud workloads.
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -2492,7 +2492,7 @@ Check:
 - BGP status
 - Cloud provider health
 
-### Resolution
+#### Resolution
 
 - Restore routing.
 - Correct security policies.
@@ -2500,14 +2500,14 @@ Check:
 
 ---
 
-## Scenario 10 — Authentication Failure
+### Scenario 10 — Authentication Failure
 
-### Symptoms
+#### Symptoms
 
 - Multiple users cannot log in.
 - VPN authentication fails.
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -2518,7 +2518,7 @@ Review:
 - Time synchronization
 - Certificate validity
 
-### Resolution
+#### Resolution
 
 - Restore authentication service.
 - Synchronize system clocks.
@@ -2526,13 +2526,13 @@ Review:
 
 ---
 
-# Enterprise Root Cause Analysis Example
+## Enterprise Root Cause Analysis Example
 
-## Incident
+### Incident
 
 Users cannot access a business-critical web application.
 
-### Timeline
+#### Timeline
 
 ```
 09:00
@@ -2590,11 +2590,11 @@ Policy Corrected
 Service Restored
 ```
 
-### Root Cause
+#### Root Cause
 
 An incorrectly ordered firewall rule blocked HTTPS traffic to the application.
 
-### Preventive Actions
+#### Preventive Actions
 
 - Peer review firewall changes.
 - Automated policy validation.
@@ -2603,9 +2603,9 @@ An incorrectly ordered firewall rule blocked HTTPS traffic to the application.
 
 ---
 
-# Practical Lab 1 — OSI Troubleshooting
+## Practical Lab 1 — OSI Troubleshooting
 
-### Objectives
+#### Objectives
 
 1. Simulate connectivity failures.
 2. Identify the affected OSI layer.
@@ -2614,9 +2614,9 @@ An incorrectly ordered firewall rule blocked HTTPS traffic to the application.
 
 ---
 
-# Practical Lab 2 — Routing Investigation
+## Practical Lab 2 — Routing Investigation
 
-### Tasks
+#### Tasks
 
 1. Configure static routes.
 2. Introduce routing errors.
@@ -2625,9 +2625,9 @@ An incorrectly ordered firewall rule blocked HTTPS traffic to the application.
 
 ---
 
-# Practical Lab 3 — VLAN Troubleshooting
+## Practical Lab 3 — VLAN Troubleshooting
 
-### Tasks
+#### Tasks
 
 1. Configure multiple VLANs.
 2. Introduce incorrect VLAN assignments.
@@ -2636,9 +2636,9 @@ An incorrectly ordered firewall rule blocked HTTPS traffic to the application.
 
 ---
 
-# Practical Lab 4 — Wireshark Packet Analysis
+## Practical Lab 4 — Wireshark Packet Analysis
 
-### Tasks
+#### Tasks
 
 1. Capture DNS traffic.
 2. Analyze TCP three-way handshakes.
@@ -2648,9 +2648,9 @@ An incorrectly ordered firewall rule blocked HTTPS traffic to the application.
 
 ---
 
-# Practical Lab 5 — Enterprise Incident Investigation
+## Practical Lab 5 — Enterprise Incident Investigation
 
-### Scenario
+#### Scenario
 
 Investigate a simulated incident involving:
 
@@ -2660,7 +2660,7 @@ Investigate a simulated incident involving:
 - Authentication logs
 - Packet captures
 
-### Objectives
+#### Objectives
 
 - Determine the root cause.
 - Restore service.
@@ -2669,13 +2669,13 @@ Investigate a simulated incident involving:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A multinational retail organization experiences intermittent outages affecting payment processing systems across several regional stores during peak shopping hours.
 
-### Investigation
+#### Investigation
 
 The Network Operations Center (NOC) reviews telemetry and discovers:
 
@@ -2686,7 +2686,7 @@ The Network Operations Center (NOC) reviews telemetry and discovers:
 - Firewall logs confirming no policy blocks.
 - Application monitoring indicating degraded payment gateway response times.
 
-### Response
+#### Response
 
 The engineering team:
 
@@ -2697,7 +2697,7 @@ The engineering team:
 5. Schedules future software updates outside business hours.
 6. Documents the incident and updates operational runbooks.
 
-### Outcome
+#### Outcome
 
 - Payment systems return to normal operation.
 - Customer transaction delays are eliminated.
@@ -2706,31 +2706,31 @@ The engineering team:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is the first step in troubleshooting a network issue?
+#### What is the first step in troubleshooting a network issue?
 
 The first step is to clearly identify and validate the problem, including determining its scope, affected users, affected systems, and recent changes.
 
 ---
 
-### Why is the OSI model useful during troubleshooting?
+#### Why is the OSI model useful during troubleshooting?
 
 The OSI model provides a structured framework for isolating problems by examining each network layer independently.
 
 ---
 
-### What is Root Cause Analysis (RCA)?
+#### What is Root Cause Analysis (RCA)?
 
 Root Cause Analysis identifies the underlying cause of an incident so that corrective actions can prevent similar incidents in the future.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### How would you troubleshoot intermittent network connectivity?
+#### How would you troubleshoot intermittent network connectivity?
 
 A structured approach includes:
 
@@ -2743,21 +2743,21 @@ A structured approach includes:
 
 ---
 
-### Why is packet capture useful?
+#### Why is packet capture useful?
 
 Packet captures provide protocol-level visibility into communications, allowing engineers to identify handshake failures, retransmissions, malformed packets, and application-layer issues.
 
 ---
 
-### How does NetFlow differ from packet capture?
+#### How does NetFlow differ from packet capture?
 
 NetFlow records metadata about traffic flows, while packet capture records complete packets for detailed protocol analysis.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you investigate a large-scale enterprise outage?
+#### How would you investigate a large-scale enterprise outage?
 
 A systematic investigation includes:
 
@@ -2774,19 +2774,19 @@ A systematic investigation includes:
 
 ---
 
-### Why is change management important in troubleshooting?
+#### Why is change management important in troubleshooting?
 
 Many outages result from configuration changes. Proper change management reduces risk by enforcing testing, peer review, approval, rollback planning, and documentation.
 
 ---
 
-### How can Detection Engineering improve troubleshooting?
+#### How can Detection Engineering improve troubleshooting?
 
 Detection Engineering provides accurate alerts, correlates related events, reduces false positives, and accelerates root cause identification by combining telemetry from multiple sources.
 
 ---
 
-# RFC, IEEE, NIST, and Industry References
+## RFC, IEEE, NIST, and Industry References
 
 Key references for enterprise troubleshooting include:
 
@@ -2807,13 +2807,13 @@ Key references for enterprise troubleshooting include:
 
 ---
 
-# Summary
+## Summary
 
 Enterprise network troubleshooting is a structured, repeatable process that combines monitoring, packet analysis, log correlation, and root cause analysis to restore services efficiently. By leveraging standardized methodologies, comprehensive telemetry, and continuous improvement practices, organizations can reduce downtime, improve operational resilience, and maintain secure, reliable network services.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -2839,7 +2839,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`25-Interview-Questions.md`**, consolidates comprehensive networking interview questions from beginner to advanced levels, including:
 

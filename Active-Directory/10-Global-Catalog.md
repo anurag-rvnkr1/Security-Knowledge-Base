@@ -1,10 +1,10 @@
 # 10-Global-Catalog.md
 
-# Part 1 — Introduction to the Global Catalog, Architecture, Partial Attribute Set, Forest Searches, and Enterprise Fundamentals
+## Part 1 — Introduction to the Global Catalog, Architecture, Partial Attribute Set, Forest Searches, and Enterprise Fundamentals
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -18,7 +18,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Introduction
+## Introduction
 
 An Active Directory forest can contain:
 
@@ -33,7 +33,7 @@ Microsoft solves this problem using the **Global Catalog (GC).**
 
 ---
 
-# What is the Global Catalog?
+## What is the Global Catalog?
 
 The **Global Catalog (GC)** is a specialized Domain Controller that stores:
 
@@ -44,7 +44,7 @@ This allows users and applications to quickly locate directory objects without c
 
 ---
 
-# Visual Overview
+## Visual Overview
 
 ```text
 Forest
@@ -74,7 +74,7 @@ Entire Forest Search
 
 ---
 
-# Why Does the Global Catalog Exist?
+## Why Does the Global Catalog Exist?
 
 Imagine a company with:
 
@@ -119,7 +119,7 @@ Every domain would need to be queried individually.
 
 ---
 
-# With a Global Catalog
+## With a Global Catalog
 
 ```text
 Administrator
@@ -141,7 +141,7 @@ Only one query is required.
 
 ---
 
-# Real-World Analogy
+## Real-World Analogy
 
 Imagine a university.
 
@@ -163,7 +163,7 @@ The Global Catalog functions like this centralized directory.
 
 ---
 
-# Full Copy vs Partial Copy
+## Full Copy vs Partial Copy
 
 Normal Domain Controller:
 
@@ -195,7 +195,7 @@ Partial Information
 
 ---
 
-# Why Not Store Everything?
+## Why Not Store Everything?
 
 Suppose a forest contains:
 
@@ -214,7 +214,7 @@ Instead, Microsoft stores only frequently searched attributes from other domains
 
 ---
 
-# Partial Attribute Set (PAS)
+## Partial Attribute Set (PAS)
 
 The **Partial Attribute Set (PAS)** is the collection of attributes replicated to every Global Catalog for objects outside its own domain.
 
@@ -232,7 +232,7 @@ Not every attribute is included.
 
 ---
 
-# PAS Example
+## PAS Example
 
 User object:
 
@@ -272,7 +272,7 @@ The Global Catalog stores only selected attributes needed for efficient searchin
 
 ---
 
-# Benefits of the Partial Attribute Set
+## Benefits of the Partial Attribute Set
 
 Benefits include:
 
@@ -284,7 +284,7 @@ Benefits include:
 
 ---
 
-# Global Catalog Architecture
+## Global Catalog Architecture
 
 ```text
 Forest
@@ -314,7 +314,7 @@ Search Results
 
 ---
 
-# Global Catalog Servers
+## Global Catalog Servers
 
 Not every Domain Controller must be a Global Catalog.
 
@@ -338,7 +338,7 @@ Only Domain Controllers configured as Global Catalog servers maintain the Partia
 
 ---
 
-# Identifying a Global Catalog
+## Identifying a Global Catalog
 
 A Domain Controller can perform two roles:
 
@@ -380,7 +380,7 @@ A GC is a Domain Controller with additional responsibilities.
 
 ---
 
-# Information Stored in a Global Catalog
+## Information Stored in a Global Catalog
 
 For its own domain:
 
@@ -408,7 +408,7 @@ Partial Copy
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -460,7 +460,7 @@ Return Result
 
 ---
 
-# Read-Only Nature of Remote Domain Data
+## Read-Only Nature of Remote Domain Data
 
 The partial copies stored for other domains are **read-only**.
 
@@ -470,7 +470,7 @@ Changes must be made on writable Domain Controllers in the object's own domain.
 
 ---
 
-# Global Catalog Replication
+## Global Catalog Replication
 
 Whenever important attributes change:
 
@@ -494,7 +494,7 @@ Only attributes included in the Partial Attribute Set are replicated forest-wide
 
 ---
 
-# Advantages of the Global Catalog
+## Advantages of the Global Catalog
 
 The Global Catalog provides:
 
@@ -508,7 +508,7 @@ The Global Catalog provides:
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
 Applications commonly use the Global Catalog for:
 
@@ -521,7 +521,7 @@ Applications commonly use the Global Catalog for:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security teams use Global Catalog servers to:
 
@@ -535,7 +535,7 @@ Since GCs contain information about every domain, they should be protected as cr
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -547,13 +547,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Identify Global Catalog servers in a lab environment.
 
-### Tasks
+#### Tasks
 
 1. Open **Active Directory Sites and Services**.
 2. Expand:
@@ -569,7 +569,7 @@ Identify Global Catalog servers in a lab environment.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the Global Catalog?
 2. Why was the Global Catalog introduced?
@@ -584,7 +584,7 @@ Identify Global Catalog servers in a lab environment.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Global Catalog is a specialized Domain Controller that enables forest-wide searches.
 - It stores a full writable copy of its own domain and a partial read-only copy of objects from every other domain.
@@ -594,13 +594,13 @@ Identify Global Catalog servers in a lab environment.
 
 ---
 
-# 10-Global-Catalog.md
+## 10-Global-Catalog.md
 
-# Part 2 — Global Catalog in Authentication, Universal Groups, UPN Resolution, Replication, and Enterprise Operations
+## Part 2 — Global Catalog in Authentication, Universal Groups, UPN Resolution, Replication, and Enterprise Operations
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -613,7 +613,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Global Catalog and User Authentication
+## Global Catalog and User Authentication
 
 One of the most important responsibilities of the Global Catalog is assisting during **user authentication**, especially in multi-domain forests.
 
@@ -639,7 +639,7 @@ However, additional steps are required when Universal Groups or forest-wide iden
 
 ---
 
-# Authentication in a Multi-Domain Forest
+## Authentication in a Multi-Domain Forest
 
 Consider the following forest:
 
@@ -671,7 +671,7 @@ The authenticating Domain Controller may need Global Catalog information to buil
 
 ---
 
-# Authentication Workflow
+## Authentication Workflow
 
 ```text
 User
@@ -703,7 +703,7 @@ User Logged In
 
 ---
 
-# Why is the Global Catalog Needed?
+## Why is the Global Catalog Needed?
 
 The authenticating Domain Controller knows its own domain very well.
 
@@ -717,7 +717,7 @@ The Global Catalog supplies this information quickly.
 
 ---
 
-# Universal Groups
+## Universal Groups
 
 Active Directory supports several group scopes:
 
@@ -729,7 +729,7 @@ The Global Catalog is especially important for **Universal Groups**.
 
 ---
 
-# Universal Group Overview
+## Universal Group Overview
 
 Example:
 
@@ -757,7 +757,7 @@ Members may come from multiple domains.
 
 ---
 
-# Example
+## Example
 
 Employees:
 
@@ -799,7 +799,7 @@ The Global Catalog maintains the information required to resolve this membership
 
 ---
 
-# Why Universal Groups Need the GC
+## Why Universal Groups Need the GC
 
 Without a Global Catalog:
 
@@ -843,7 +843,7 @@ Access Token Ready
 
 ---
 
-# Universal Group Membership Caching
+## Universal Group Membership Caching
 
 Some branch offices may not have a local Global Catalog.
 
@@ -875,7 +875,7 @@ This reduces WAN traffic while allowing users to authenticate even if a Global C
 
 ---
 
-# User Principal Name (UPN)
+## User Principal Name (UPN)
 
 Users often log on using a **User Principal Name (UPN).**
 
@@ -893,7 +893,7 @@ COMPANY\johnsmith
 
 ---
 
-# UPN Resolution
+## UPN Resolution
 
 When a user enters:
 
@@ -927,7 +927,7 @@ Authenticate
 
 ---
 
-# Forest-Wide Searches
+## Forest-Wide Searches
 
 Suppose an administrator searches for:
 
@@ -957,7 +957,7 @@ The administrator does not need to know the user's domain beforehand.
 
 ---
 
-# Exchange Server Example
+## Exchange Server Example
 
 Microsoft Exchange heavily relies on the Global Catalog.
 
@@ -983,7 +983,7 @@ This allows fast organization-wide address lookups.
 
 ---
 
-# Identity Management Example
+## Identity Management Example
 
 Identity management systems often query the Global Catalog to:
 
@@ -997,7 +997,7 @@ Because the GC spans the forest, one query can replace many domain-specific quer
 
 ---
 
-# Global Catalog Replication
+## Global Catalog Replication
 
 The Global Catalog receives updates through Active Directory replication.
 
@@ -1027,7 +1027,7 @@ Only attributes included in the Partial Attribute Set are replicated to Global C
 
 ---
 
-# Replication Scope
+## Replication Scope
 
 For its own domain:
 
@@ -1053,7 +1053,7 @@ This design reduces replication traffic.
 
 ---
 
-# Global Catalog Ports
+## Global Catalog Ports
 
 Common LDAP ports:
 
@@ -1068,7 +1068,7 @@ Applications that require forest-wide searches commonly use ports **3268** or **
 
 ---
 
-# LDAP vs Global Catalog
+## LDAP vs Global Catalog
 
 Normal LDAP query:
 
@@ -1100,7 +1100,7 @@ Entire Forest
 
 ---
 
-# Enterprise Deployment
+## Enterprise Deployment
 
 Large organizations often deploy multiple Global Catalog servers.
 
@@ -1139,7 +1139,7 @@ Benefits include:
 
 ---
 
-# Branch Office Example
+## Branch Office Example
 
 Without a nearby GC:
 
@@ -1175,7 +1175,7 @@ Immediate Response
 
 ---
 
-# High Availability
+## High Availability
 
 Enterprises generally deploy more than one Global Catalog.
 
@@ -1203,7 +1203,7 @@ This improves resilience during maintenance or outages.
 
 ---
 
-# Global Catalog Placement Guidelines
+## Global Catalog Placement Guidelines
 
 Recommended practices:
 
@@ -1215,7 +1215,7 @@ Recommended practices:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Because the Global Catalog contains searchable information from every domain:
 
@@ -1229,7 +1229,7 @@ Security teams should:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -1241,13 +1241,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Verify Global Catalog connectivity.
 
-### Tasks
+#### Tasks
 
 1. Identify a Global Catalog server.
 2. Verify that it listens on:
@@ -1258,7 +1258,7 @@ Verify Global Catalog connectivity.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is the Global Catalog important during authentication?
 2. What are Universal Groups?
@@ -1273,7 +1273,7 @@ Verify Global Catalog connectivity.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Global Catalog plays a vital role in authentication by providing Universal Group membership information.
 - UPN logons and forest-wide searches rely on the Global Catalog for efficient object location.
@@ -1283,13 +1283,13 @@ Verify Global Catalog connectivity.
 
 ---
 
-# 10-Global-Catalog.md
+## 10-Global-Catalog.md
 
-# Part 3 — Global Catalog Management, Placement, Troubleshooting, Monitoring, Performance, and Disaster Recovery
+## Part 3 — Global Catalog Management, Placement, Troubleshooting, Monitoring, Performance, and Disaster Recovery
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -1302,7 +1302,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Managing Global Catalog Servers
+## Managing Global Catalog Servers
 
 A Global Catalog (GC) is simply a Domain Controller with the **Global Catalog option enabled**.
 
@@ -1328,7 +1328,7 @@ No separate server software is installed.
 
 ---
 
-# Enabling the Global Catalog
+## Enabling the Global Catalog
 
 Using **Active Directory Sites and Services**:
 
@@ -1364,7 +1364,7 @@ Once enabled:
 
 ---
 
-# Initial Synchronization
+## Initial Synchronization
 
 When a Domain Controller becomes a GC:
 
@@ -1397,7 +1397,7 @@ The synchronization duration depends on:
 
 ---
 
-# Global Catalog Placement Strategy
+## Global Catalog Placement Strategy
 
 Placement depends on:
 
@@ -1409,7 +1409,7 @@ Placement depends on:
 
 ---
 
-# Small Organization
+## Small Organization
 
 Example:
 
@@ -1433,7 +1433,7 @@ Advantages:
 
 ---
 
-# Medium Organization
+## Medium Organization
 
 ```text
 Head Office
@@ -1459,7 +1459,7 @@ Benefits:
 
 ---
 
-# Large Enterprise
+## Large Enterprise
 
 ```text
 North America
@@ -1495,7 +1495,7 @@ Every major site has at least one Global Catalog.
 
 ---
 
-# Site Awareness
+## Site Awareness
 
 Active Directory Sites optimize client connections.
 
@@ -1521,7 +1521,7 @@ This reduces latency and WAN utilization.
 
 ---
 
-# Client Discovery
+## Client Discovery
 
 Clients discover Global Catalog servers through DNS.
 
@@ -1551,7 +1551,7 @@ Correct DNS configuration is therefore critical.
 
 ---
 
-# Global Catalog Replication Monitoring
+## Global Catalog Replication Monitoring
 
 Administrators should regularly verify:
 
@@ -1563,7 +1563,7 @@ Administrators should regularly verify:
 
 ---
 
-# Replication Workflow
+## Replication Workflow
 
 ```text
 Object Updated
@@ -1591,7 +1591,7 @@ Clients Receive Updated Information
 
 ---
 
-# Monitoring Tools
+## Monitoring Tools
 
 Common administrative tools include:
 
@@ -1606,7 +1606,7 @@ These tools help validate both Domain Controller and Global Catalog health.
 
 ---
 
-# Useful Commands
+## Useful Commands
 
 Check replication summary:
 
@@ -1630,7 +1630,7 @@ These commands are frequently used during troubleshooting.
 
 ---
 
-# Performance Considerations
+## Performance Considerations
 
 Large forests require careful GC planning.
 
@@ -1647,7 +1647,7 @@ Performance factors include:
 
 ---
 
-# Indexing
+## Indexing
 
 The Global Catalog maintains indexes to accelerate searches.
 
@@ -1685,7 +1685,7 @@ Indexes significantly improve search efficiency.
 
 ---
 
-# High Availability
+## High Availability
 
 Never rely on a single Global Catalog.
 
@@ -1713,7 +1713,7 @@ Multiple GCs reduce downtime.
 
 ---
 
-# Load Distribution
+## Load Distribution
 
 Large organizations distribute client requests.
 
@@ -1737,7 +1737,7 @@ This improves responsiveness and reduces resource contention.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Suppose:
 
@@ -1767,7 +1767,7 @@ Because multiple GCs are recommended, authentication and searches generally cont
 
 ---
 
-# Removing a Global Catalog
+## Removing a Global Catalog
 
 A GC can be removed when:
 
@@ -1786,9 +1786,9 @@ Before removing a GC:
 
 ---
 
-# Common Problems
+## Common Problems
 
-## Problem 1
+### Problem 1
 
 Users experience slow forest-wide searches.
 
@@ -1801,7 +1801,7 @@ Possible causes:
 
 ---
 
-## Problem 2
+### Problem 2
 
 Authentication delays.
 
@@ -1814,7 +1814,7 @@ Possible causes:
 
 ---
 
-## Problem 3
+### Problem 3
 
 Universal Group membership not updating.
 
@@ -1826,7 +1826,7 @@ Possible causes:
 
 ---
 
-## Problem 4
+### Problem 4
 
 Search results missing recent changes.
 
@@ -1848,7 +1848,7 @@ Replication should be verified before assuming data inconsistency.
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```text
 Problem Reported
@@ -1884,7 +1884,7 @@ Resolve Issue
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
 Organization:
 
@@ -1920,7 +1920,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Global Catalog servers expose searchable directory information across the forest.
 
@@ -1936,7 +1936,7 @@ Recommendations:
 
 ---
 
-# Best Practices
+## Best Practices
 
 ✔ Deploy at least one GC per major site.
 
@@ -1958,7 +1958,7 @@ Recommendations:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid:
 
@@ -1971,13 +1971,13 @@ Avoid:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Evaluate Global Catalog health.
 
-### Tasks
+#### Tasks
 
 1. Open **Active Directory Sites and Services**.
 2. Identify every GC in the forest.
@@ -2005,7 +2005,7 @@ dcdiag
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. How do you enable a Global Catalog?
 2. How does a client locate a GC?
@@ -2020,7 +2020,7 @@ dcdiag
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A Global Catalog is a Domain Controller configured with additional forest-wide search capabilities.
 - Proper GC placement reduces WAN traffic and improves authentication performance.
@@ -2030,13 +2030,13 @@ dcdiag
 
 ---
 
-# 10-Global-Catalog.md
+## 10-Global-Catalog.md
 
-# Part 4 — Enterprise Best Practices, Security, Troubleshooting, Interview Preparation, and Chapter Summary
+## Part 4 — Enterprise Best Practices, Security, Troubleshooting, Interview Preparation, and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will be able to:
 
@@ -2050,7 +2050,7 @@ After completing this part, you will be able to:
 
 ---
 
-# Designing an Enterprise Global Catalog Infrastructure
+## Designing an Enterprise Global Catalog Infrastructure
 
 A successful Global Catalog deployment should consider:
 
@@ -2067,9 +2067,9 @@ The goal is to ensure users can authenticate and search directory information ef
 
 ---
 
-# Recommended Deployment Models
+## Recommended Deployment Models
 
-## Small Organization
+### Small Organization
 
 Environment:
 
@@ -2101,7 +2101,7 @@ Advantages:
 
 ---
 
-## Medium Organization
+### Medium Organization
 
 ```text
 Head Office
@@ -2131,7 +2131,7 @@ Each location has a nearby Global Catalog, reducing WAN dependency.
 
 ---
 
-## Large Enterprise
+### Large Enterprise
 
 ```text
 Forest
@@ -2178,7 +2178,7 @@ Benefits:
 
 ---
 
-# High Availability Strategy
+## High Availability Strategy
 
 Never rely on a single Global Catalog.
 
@@ -2212,7 +2212,7 @@ Multiple GCs minimize service disruption.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Before enabling additional Global Catalogs, evaluate:
 
@@ -2228,7 +2228,7 @@ Proper planning prevents unnecessary replication overhead.
 
 ---
 
-# Global Catalog Health Checklist
+## Global Catalog Health Checklist
 
 Administrators should verify:
 
@@ -2252,7 +2252,7 @@ Administrators should verify:
 
 ---
 
-# Global Catalog and DNS
+## Global Catalog and DNS
 
 Clients discover GCs through DNS service records.
 
@@ -2282,7 +2282,7 @@ DNS issues often appear as authentication or search failures.
 
 ---
 
-# Replication Validation
+## Replication Validation
 
 Routine validation should include:
 
@@ -2298,7 +2298,7 @@ These commands help identify replication delays that can affect Global Catalog d
 
 ---
 
-# Monitoring Global Catalog Performance
+## Monitoring Global Catalog Performance
 
 Monitor:
 
@@ -2315,9 +2315,9 @@ Trending these metrics helps identify capacity issues before users are affected.
 
 ---
 
-# Common Operational Scenarios
+## Common Operational Scenarios
 
-## Scenario 1
+### Scenario 1
 
 A user cannot find a recently created account.
 
@@ -2329,7 +2329,7 @@ Possible causes:
 
 ---
 
-## Scenario 2
+### Scenario 2
 
 Branch office users experience slow logons.
 
@@ -2342,7 +2342,7 @@ Possible causes:
 
 ---
 
-## Scenario 3
+### Scenario 3
 
 Forest-wide searches fail.
 
@@ -2355,7 +2355,7 @@ Possible causes:
 
 ---
 
-## Scenario 4
+### Scenario 4
 
 Universal Group membership appears incorrect.
 
@@ -2367,7 +2367,7 @@ Possible causes:
 
 ---
 
-# Troubleshooting Methodology
+## Troubleshooting Methodology
 
 ```text
 User Reports Issue
@@ -2409,7 +2409,7 @@ A structured approach reduces troubleshooting time.
 
 ---
 
-# Security Best Practices
+## Security Best Practices
 
 Global Catalog servers contain searchable information for the entire forest.
 
@@ -2426,7 +2426,7 @@ Recommendations:
 
 ---
 
-# Least Privilege Administration
+## Least Privilege Administration
 
 Administrative responsibilities should be separated.
 
@@ -2460,7 +2460,7 @@ Delegation reduces the impact of compromised accounts.
 
 ---
 
-# Backup and Disaster Recovery
+## Backup and Disaster Recovery
 
 Include Global Catalog servers in:
 
@@ -2473,9 +2473,9 @@ Although another GC can usually service requests, restoring failed infrastructur
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
-## Myth 1
+### Myth 1
 
 > Every Domain Controller is automatically a Global Catalog.
 
@@ -2485,7 +2485,7 @@ Only Domain Controllers explicitly configured as GCs perform Global Catalog func
 
 ---
 
-## Myth 2
+### Myth 2
 
 > The Global Catalog stores every attribute of every object.
 
@@ -2495,7 +2495,7 @@ Only the Partial Attribute Set from other domains is stored.
 
 ---
 
-## Myth 3
+### Myth 3
 
 > A Global Catalog replaces normal LDAP.
 
@@ -2505,7 +2505,7 @@ A GC extends LDAP functionality by providing forest-wide searches while normal L
 
 ---
 
-## Myth 4
+### Myth 4
 
 > One Global Catalog is enough for every environment.
 
@@ -2515,7 +2515,7 @@ Large enterprises require multiple GCs for redundancy and performance.
 
 ---
 
-# Common Administrative Mistakes
+## Common Administrative Mistakes
 
 Avoid:
 
@@ -2528,7 +2528,7 @@ Avoid:
 
 ---
 
-# Best Practices Checklist
+## Best Practices Checklist
 
 ✔ Deploy at least one GC per major site.
 
@@ -2552,7 +2552,7 @@ Avoid:
 
 ---
 
-# Complete Chapter Summary
+## Complete Chapter Summary
 
 In this chapter, you learned:
 
@@ -2575,7 +2575,7 @@ The Global Catalog is a fundamental Active Directory component that enables effi
 
 ---
 
-# Global Catalog vs Standard Domain Controller
+## Global Catalog vs Standard Domain Controller
 
 | Feature | Standard Domain Controller | Global Catalog |
 |---------|---------------------------|----------------|
@@ -2588,7 +2588,7 @@ The Global Catalog is a fundamental Active Directory component that enables effi
 
 ---
 
-# Quick Revision Table
+## Quick Revision Table
 
 | Topic | Key Point |
 |--------|-----------|
@@ -2602,13 +2602,13 @@ The Global Catalog is a fundamental Active Directory component that enables effi
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Assess the health and deployment of Global Catalog servers.
 
-### Tasks
+#### Tasks
 
 1. Identify all Global Catalog servers using **Active Directory Sites and Services**.
 2. Verify replication health:
@@ -2646,7 +2646,7 @@ dcdiag
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of the Global Catalog?
 2. What is stored in the Partial Attribute Set?
@@ -2661,7 +2661,7 @@ dcdiag
 
 ---
 
-# References
+## References
 
 - Microsoft Learn – Global Catalog and Active Directory
 - Microsoft Learn – Active Directory Domain Services
@@ -2673,7 +2673,7 @@ dcdiag
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 10 – Global Catalog**.
 

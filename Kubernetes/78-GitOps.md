@@ -75,7 +75,7 @@ Flux
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -149,7 +149,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is GitOps?
+## What Is GitOps?
 
 GitOps is a way of managing infrastructure and applications using:
 
@@ -174,9 +174,9 @@ GitOps continuously attempts to make the Kubernetes cluster match that state.
 
 ---
 
-# Declarative vs Imperative
+## Declarative vs Imperative
 
-## Imperative
+### Imperative
 
 You tell Kubernetes what action to perform.
 
@@ -190,7 +190,7 @@ This describes an action.
 
 ---
 
-## Declarative
+### Declarative
 
 You describe the desired state.
 
@@ -205,7 +205,7 @@ Kubernetes determines the actions required to reach that state.
 
 ---
 
-# GitOps Is Declarative
+## GitOps Is Declarative
 
 GitOps primarily uses declarative configuration.
 
@@ -224,7 +224,7 @@ Git stores the desired configuration.
 
 ---
 
-# Desired State
+## Desired State
 
 Desired state means:
 
@@ -243,7 +243,7 @@ Image v2
 
 ---
 
-# Actual State
+## Actual State
 
 Actual state means:
 
@@ -260,7 +260,7 @@ Image v1
 
 ---
 
-# Reconciliation
+## Reconciliation
 
 The GitOps controller continuously compares:
 
@@ -288,7 +288,7 @@ Cluster Updated
 
 ---
 
-# GitOps Reconciliation
+## GitOps Reconciliation
 
 ```text
              Git Repository
@@ -315,7 +315,7 @@ Cluster Updated
 
 ---
 
-# Git as the Source of Truth
+## Git as the Source of Truth
 
 Git can contain:
 
@@ -333,7 +333,7 @@ Policies
 
 ---
 
-# Why Git?
+## Why Git?
 
 Git provides:
 
@@ -349,7 +349,7 @@ Access Control
 
 ---
 
-# GitOps Principles
+## GitOps Principles
 
 Common GitOps principles include:
 
@@ -363,19 +363,19 @@ Continuously Reconciled
 
 ---
 
-# Principle 1 – Declarative
+## Principle 1 – Declarative
 
 Describe the desired state rather than manually executing every operational step.
 
 ---
 
-# Principle 2 – Versioned
+## Principle 2 – Versioned
 
 Configuration should be stored in version control.
 
 ---
 
-# Principle 3 – Immutable History
+## Principle 3 – Immutable History
 
 Git provides a history of changes.
 
@@ -391,19 +391,19 @@ Commit C
 
 ---
 
-# Principle 4 – Automated Delivery
+## Principle 4 – Automated Delivery
 
 A GitOps controller can automatically apply approved desired state.
 
 ---
 
-# Principle 5 – Continuous Reconciliation
+## Principle 5 – Continuous Reconciliation
 
 The controller continuously works to keep the cluster aligned with Git.
 
 ---
 
-# Traditional CI/CD
+## Traditional CI/CD
 
 A traditional pipeline may look like:
 
@@ -425,7 +425,7 @@ Kubernetes
 
 ---
 
-# GitOps CI/CD
+## GitOps CI/CD
 
 GitOps separates application build from deployment state.
 
@@ -449,7 +449,7 @@ Kubernetes
 
 ---
 
-# Push vs Pull
+## Push vs Pull
 
 Traditional deployment often uses:
 
@@ -475,7 +475,7 @@ The controller runs inside or has access to the cluster and pulls desired state.
 
 ---
 
-# GitOps Architecture
+## GitOps Architecture
 
 ```text
                     Developer
@@ -504,7 +504,7 @@ The controller runs inside or has access to the cluster and pulls desired state.
 
 ---
 
-# Application Repository
+## Application Repository
 
 Application source code may be stored separately:
 
@@ -523,7 +523,7 @@ package.json
 
 ---
 
-# Configuration Repository
+## Configuration Repository
 
 GitOps manifests can be stored separately:
 
@@ -542,7 +542,7 @@ policies/
 
 ---
 
-# Separation of Concerns
+## Separation of Concerns
 
 A common architecture:
 
@@ -567,7 +567,7 @@ Configuration Repository
 
 ---
 
-# Repository Structure
+## Repository Structure
 
 Example:
 
@@ -593,7 +593,7 @@ gitops-repo/
 
 ---
 
-# Monorepo
+## Monorepo
 
 One repository contains multiple applications and environments.
 
@@ -611,7 +611,7 @@ gitops/
 
 ---
 
-# Advantages of Monorepo
+## Advantages of Monorepo
 
 ```text
 Centralized Visibility
@@ -621,7 +621,7 @@ Simpler Cross-Application Changes
 
 ---
 
-# Disadvantages of Monorepo
+## Disadvantages of Monorepo
 
 Potential challenges:
 
@@ -633,7 +633,7 @@ Large Change Surface
 
 ---
 
-# Multi-Repo
+## Multi-Repo
 
 Separate repositories may be used for:
 
@@ -647,7 +647,7 @@ Platform Configuration
 
 ---
 
-# Advantages of Multi-Repo
+## Advantages of Multi-Repo
 
 ```text
 Isolation
@@ -658,7 +658,7 @@ Team Ownership
 
 ---
 
-# Disadvantages of Multi-Repo
+## Disadvantages of Multi-Repo
 
 Potential challenges:
 
@@ -670,7 +670,7 @@ Version Synchronization
 
 ---
 
-# Environment Management
+## Environment Management
 
 Common environments:
 
@@ -682,7 +682,7 @@ Production
 
 ---
 
-# Development
+## Development
 
 Used for:
 
@@ -694,7 +694,7 @@ Experimentation
 
 ---
 
-# Staging
+## Staging
 
 Used for:
 
@@ -706,7 +706,7 @@ Release Validation
 
 ---
 
-# Production
+## Production
 
 Used for:
 
@@ -718,7 +718,7 @@ Strict Change Control
 
 ---
 
-# Environment Promotion
+## Environment Promotion
 
 A common flow:
 
@@ -734,7 +734,7 @@ Production
 
 ---
 
-# Promotion by Git Commit
+## Promotion by Git Commit
 
 Example:
 
@@ -759,7 +759,7 @@ image: app:v2.1.0
 
 ---
 
-# Branch-Based Environments
+## Branch-Based Environments
 
 An organization may use:
 
@@ -773,7 +773,7 @@ However, GitOps does not require a specific branching strategy.
 
 ---
 
-# Directory-Based Environments
+## Directory-Based Environments
 
 Another approach:
 
@@ -788,7 +788,7 @@ This can make environment differences explicit.
 
 ---
 
-# Kustomize
+## Kustomize
 
 Kustomize allows environment-specific overlays.
 
@@ -808,7 +808,7 @@ overlays/
 
 ---
 
-# Kustomize Flow
+## Kustomize Flow
 
 ```text
 Base
@@ -822,7 +822,7 @@ Kubernetes Manifest
 
 ---
 
-# Helm
+## Helm
 
 Helm packages Kubernetes applications into charts.
 
@@ -842,7 +842,7 @@ Kubernetes
 
 ---
 
-# Helm Values
+## Helm Values
 
 Example:
 
@@ -856,7 +856,7 @@ image:
 
 ---
 
-# GitOps With Helm
+## GitOps With Helm
 
 ```text
 Git
@@ -872,7 +872,7 @@ Kubernetes
 
 ---
 
-# Secrets in GitOps
+## Secrets in GitOps
 
 Never store plaintext production credentials in Git.
 
@@ -884,7 +884,7 @@ password: SuperSecret123
 
 ---
 
-# Secret Management Options
+## Secret Management Options
 
 Consider:
 
@@ -900,7 +900,7 @@ The appropriate mechanism depends on the environment.
 
 ---
 
-# Sealed Secrets
+## Sealed Secrets
 
 Sealed Secrets can allow encrypted Kubernetes Secret manifests to be stored in Git.
 
@@ -922,7 +922,7 @@ Secret
 
 ---
 
-# External Secrets
+## External Secrets
 
 External Secrets can synchronize secrets from external secret-management systems into Kubernetes.
 
@@ -938,7 +938,7 @@ External Secret Manager
 
 ---
 
-# Secret Rotation
+## Secret Rotation
 
 Production secrets should have controlled rotation processes.
 
@@ -960,7 +960,7 @@ Validate
 
 ---
 
-# Argo CD
+## Argo CD
 
 Argo CD is a declarative GitOps continuous delivery tool for Kubernetes.
 
@@ -978,7 +978,7 @@ Kubernetes
 
 ---
 
-# Argo CD Architecture
+## Argo CD Architecture
 
 Conceptually:
 
@@ -998,7 +998,7 @@ Kubernetes
 
 ---
 
-# Argo CD Application
+## Argo CD Application
 
 An Argo CD Application represents:
 
@@ -1024,7 +1024,7 @@ Namespace
 
 ---
 
-# Argo CD Application Example
+## Argo CD Application Example
 
 Conceptually:
 
@@ -1046,7 +1046,7 @@ Repository URLs in examples should be replaced with your organization's actual r
 
 ---
 
-# Argo CD Sync
+## Argo CD Sync
 
 Sync means:
 
@@ -1056,7 +1056,7 @@ Make Kubernetes match Git.
 
 ---
 
-# Manual Sync
+## Manual Sync
 
 An operator initiates synchronization.
 
@@ -1068,7 +1068,7 @@ Production Changes Require Approval
 
 ---
 
-# Automated Sync
+## Automated Sync
 
 Argo CD can automatically synchronize approved desired state.
 
@@ -1086,7 +1086,7 @@ Kubernetes
 
 ---
 
-# Self-Healing
+## Self-Healing
 
 If someone manually changes a managed resource:
 
@@ -1102,7 +1102,7 @@ Argo CD can detect drift and, when configured for automated self-healing, reconc
 
 ---
 
-# Drift Detection
+## Drift Detection
 
 Drift means:
 
@@ -1122,7 +1122,7 @@ image = v3
 
 ---
 
-# Why Drift Is Dangerous
+## Why Drift Is Dangerous
 
 Manual changes can:
 
@@ -1135,7 +1135,7 @@ Complicate Rollbacks
 
 ---
 
-# GitOps Drift Flow
+## GitOps Drift Flow
 
 ```text
 Git
@@ -1153,7 +1153,7 @@ Alert / Reconcile
 
 ---
 
-# Flux
+## Flux
 
 Flux is another GitOps toolkit for Kubernetes.
 
@@ -1169,7 +1169,7 @@ Kubernetes
 
 ---
 
-# Flux Architecture
+## Flux Architecture
 
 Flux uses specialized controllers for resources such as:
 
@@ -1183,7 +1183,7 @@ These controllers reconcile desired state.
 
 ---
 
-# Argo CD vs Flux
+## Argo CD vs Flux
 
 | Argo CD | Flux |
 |---|---|
@@ -1196,7 +1196,7 @@ Both are mature GitOps approaches.
 
 ---
 
-# When to Use Argo CD
+## When to Use Argo CD
 
 Argo CD can be attractive when you want:
 
@@ -1210,7 +1210,7 @@ Multi-Cluster Management
 
 ---
 
-# When to Use Flux
+## When to Use Flux
 
 Flux can be attractive when you prefer:
 
@@ -1222,7 +1222,7 @@ Composable Components
 
 ---
 
-# GitOps Security
+## GitOps Security
 
 Git becomes a critical security boundary.
 
@@ -1239,7 +1239,7 @@ GitOps Controllers
 
 ---
 
-# Repository Permissions
+## Repository Permissions
 
 Use least privilege.
 
@@ -1254,7 +1254,7 @@ Cluster Infrastructure
 
 ---
 
-# Branch Protection
+## Branch Protection
 
 Protect important branches using controls such as:
 
@@ -1267,7 +1267,7 @@ Signed Commits
 
 ---
 
-# Commit Signing
+## Commit Signing
 
 Commit signing can help verify that commits were created or approved by trusted identities.
 
@@ -1281,7 +1281,7 @@ Sigstore
 
 ---
 
-# GitOps Supply Chain
+## GitOps Supply Chain
 
 A GitOps deployment chain may be:
 
@@ -1309,7 +1309,7 @@ Every stage should be protected.
 
 ---
 
-# Image Verification
+## Image Verification
 
 Before deployment, organizations may require:
 
@@ -1325,7 +1325,7 @@ Security Scan
 
 ---
 
-# Policy as Code
+## Policy as Code
 
 GitOps works well with policy engines.
 
@@ -1345,7 +1345,7 @@ Deploy
 
 ---
 
-# CI Integration
+## CI Integration
 
 CI can validate GitOps changes before they reach production.
 
@@ -1369,7 +1369,7 @@ Merge
 
 ---
 
-# Pull Requests
+## Pull Requests
 
 Production changes should ideally pass through review.
 
@@ -1383,7 +1383,7 @@ After
 
 ---
 
-# GitOps Change Management
+## GitOps Change Management
 
 Every production change can have:
 
@@ -1401,7 +1401,7 @@ This provides strong auditability.
 
 ---
 
-# GitOps Audit Trail
+## GitOps Audit Trail
 
 ```text
 Git Commit
@@ -1419,7 +1419,7 @@ Cluster Change
 
 ---
 
-# Compliance Benefits
+## Compliance Benefits
 
 GitOps can help with:
 
@@ -1436,7 +1436,7 @@ GitOps itself does not automatically guarantee compliance.
 
 ---
 
-# Multi-Cluster GitOps
+## Multi-Cluster GitOps
 
 A central Git repository can manage:
 
@@ -1448,7 +1448,7 @@ Cluster C
 
 ---
 
-# Multi-Cluster Architecture
+## Multi-Cluster Architecture
 
 ```text
                   Git
@@ -1463,7 +1463,7 @@ Cluster C
 
 ---
 
-# Cluster-Specific Configuration
+## Cluster-Specific Configuration
 
 Use overlays or directories:
 
@@ -1476,7 +1476,7 @@ clusters/
 
 ---
 
-# Multi-Environment GitOps
+## Multi-Environment GitOps
 
 ```text
 Base
@@ -1490,7 +1490,7 @@ Shared configuration remains centralized while environment-specific differences 
 
 ---
 
-# ApplicationSets
+## ApplicationSets
 
 Argo CD ApplicationSets can help generate multiple Applications from templates.
 
@@ -1514,7 +1514,7 @@ Many Applications
 
 ---
 
-# Progressive Delivery
+## Progressive Delivery
 
 GitOps can support:
 
@@ -1527,7 +1527,7 @@ Progressive Rollouts
 
 ---
 
-# Canary Deployment
+## Canary Deployment
 
 Example:
 
@@ -1549,7 +1549,7 @@ Then increase traffic gradually.
 
 ---
 
-# Blue-Green Deployment
+## Blue-Green Deployment
 
 ```text
 Blue = Current
@@ -1560,7 +1560,7 @@ GitOps can manage the desired state for the active environment.
 
 ---
 
-# Rollback
+## Rollback
 
 Git provides version history.
 
@@ -1578,7 +1578,7 @@ Rollback can mean reverting to a known-good configuration.
 
 ---
 
-# Git Revert
+## Git Revert
 
 Example:
 
@@ -1598,7 +1598,7 @@ Kubernetes
 
 ---
 
-# Rollback vs Manual kubectl
+## Rollback vs Manual kubectl
 
 Manual rollback:
 
@@ -1612,7 +1612,7 @@ GitOps rollback should also restore the desired state in Git to avoid drift.
 
 ---
 
-# Disaster Recovery With GitOps
+## Disaster Recovery With GitOps
 
 Git can preserve:
 
@@ -1637,7 +1637,7 @@ Secret Store
 
 ---
 
-# GitOps Is Not a Backup
+## GitOps Is Not a Backup
 
 Git does not replace:
 
@@ -1649,7 +1649,7 @@ Object Storage Backups
 
 ---
 
-# GitOps Observability
+## GitOps Observability
 
 Monitor:
 
@@ -1664,7 +1664,7 @@ Repository Availability
 
 ---
 
-# Application Health
+## Application Health
 
 A GitOps system should distinguish:
 
@@ -1678,7 +1678,7 @@ A workload can be synchronized with Git but still be unhealthy.
 
 ---
 
-# Sync Status
+## Sync Status
 
 Typical conceptual states:
 
@@ -1690,7 +1690,7 @@ Unknown
 
 ---
 
-# Health Status
+## Health Status
 
 Typical conceptual states may include:
 
@@ -1706,7 +1706,7 @@ Exact states depend on the GitOps tool and resource type.
 
 ---
 
-# GitOps Notifications
+## GitOps Notifications
 
 Notify teams about:
 
@@ -1720,7 +1720,7 @@ Production Changes
 
 ---
 
-# GitOps Troubleshooting
+## GitOps Troubleshooting
 
 A useful process:
 
@@ -1742,7 +1742,7 @@ Check Application
 
 ---
 
-# Troubleshooting Git Changes
+## Troubleshooting Git Changes
 
 Verify:
 
@@ -1755,7 +1755,7 @@ Correct Commit
 
 ---
 
-# Troubleshooting Sync
+## Troubleshooting Sync
 
 Check:
 
@@ -1770,7 +1770,7 @@ Resource Conflicts
 
 ---
 
-# Troubleshooting Application Health
+## Troubleshooting Application Health
 
 If GitOps says:
 
@@ -1790,7 +1790,7 @@ Check Dependencies
 
 ---
 
-# GitOps and Manual Changes
+## GitOps and Manual Changes
 
 Avoid:
 
@@ -1814,7 +1814,7 @@ Reconcile
 
 ---
 
-# Emergency Changes
+## Emergency Changes
 
 Production incidents may occasionally require emergency intervention.
 
@@ -1836,7 +1836,7 @@ Never leave an important manual production change undocumented.
 
 ---
 
-# GitOps Security Architecture
+## GitOps Security Architecture
 
 ```text
 Developer
@@ -1867,15 +1867,15 @@ Kubernetes
 
 ---
 
-# GitOps Best Practices
+## GitOps Best Practices
 
-### 1. Treat Git as the Source of Truth
+#### 1. Treat Git as the Source of Truth
 
 Avoid unmanaged manual changes.
 
 ---
 
-### 2. Protect Production Repositories
+#### 2. Protect Production Repositories
 
 Use:
 
@@ -1888,13 +1888,13 @@ MFA
 
 ---
 
-### 3. Never Store Plaintext Secrets
+#### 3. Never Store Plaintext Secrets
 
 Use appropriate secret-management mechanisms.
 
 ---
 
-### 4. Use Immutable Image References
+#### 4. Use Immutable Image References
 
 Prefer:
 
@@ -1908,7 +1908,7 @@ where appropriate.
 
 ---
 
-### 5. Validate Before Merge
+#### 5. Validate Before Merge
 
 Run:
 
@@ -1921,111 +1921,111 @@ Policy Checks
 
 ---
 
-### 6. Separate Environments
+#### 6. Separate Environments
 
 Make production changes explicit.
 
 ---
 
-### 7. Use Pull Requests
+#### 7. Use Pull Requests
 
 Require review for sensitive changes.
 
 ---
 
-### 8. Monitor Drift
+#### 8. Monitor Drift
 
 Detect unauthorized manual changes.
 
 ---
 
-### 9. Test Rollbacks
+#### 9. Test Rollbacks
 
 Do not assume rollback works.
 
 ---
 
-### 10. Monitor GitOps Controllers
+#### 10. Monitor GitOps Controllers
 
 GitOps itself is production infrastructure and requires observability.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Storing Plaintext Secrets in Git
+### 1. Storing Plaintext Secrets in Git
 
 Never commit production credentials directly.
 
 ---
 
-## 2. Giving Developers Production Write Access
+### 2. Giving Developers Production Write Access
 
 Use Git-based review and least privilege.
 
 ---
 
-## 3. Mixing Application Code and Deployment Configuration Without Structure
+### 3. Mixing Application Code and Deployment Configuration Without Structure
 
 Large repositories become difficult to maintain.
 
 ---
 
-## 4. No Branch Protection
+### 4. No Branch Protection
 
 A single compromised account could modify production state.
 
 ---
 
-## 5. Manual `kubectl` Changes
+### 5. Manual `kubectl` Changes
 
 These create drift.
 
 ---
 
-## 6. No Rollback Strategy
+### 6. No Rollback Strategy
 
 Every production deployment needs a recovery path.
 
 ---
 
-## 7. Treating GitOps as Backup
+### 7. Treating GitOps as Backup
 
 Git does not replace data backups.
 
 ---
 
-## 8. No Policy Validation
+### 8. No Policy Validation
 
 Invalid or insecure manifests can reach the cluster.
 
 ---
 
-## 9. No Drift Monitoring
+### 9. No Drift Monitoring
 
 Unauthorized changes may remain undetected.
 
 ---
 
-## 10. Overly Broad GitOps Permissions
+### 10. Overly Broad GitOps Permissions
 
 The GitOps controller should have only the permissions required for its scope.
 
 ---
 
-## 11. One Huge Repository Without Ownership
+### 11. One Huge Repository Without Ownership
 
 Poor organization creates operational complexity.
 
 ---
 
-## 12. No Production Approval
+### 12. No Production Approval
 
 Automated deployment does not necessarily mean unrestricted deployment.
 
 ---
 
-# Production GitOps Checklist
+## Production GitOps Checklist
 
 ```text
 ☑ Git is source of truth
@@ -2059,7 +2059,7 @@ Automated deployment does not necessarily mean unrestricted deployment.
 
 ---
 
-# Hands-on Lab 1 – Basic GitOps Repository
+## Hands-on Lab 1 – Basic GitOps Repository
 
 Create:
 
@@ -2077,7 +2077,7 @@ Add a Deployment and Service.
 
 ---
 
-# Hands-on Lab 2 – Git-Based Deployment
+## Hands-on Lab 2 – Git-Based Deployment
 
 Create a Kubernetes manifest.
 
@@ -2093,7 +2093,7 @@ Use a GitOps controller to synchronize it.
 
 ---
 
-# Hands-on Lab 3 – Argo CD
+## Hands-on Lab 3 – Argo CD
 
 Install Argo CD in a disposable cluster.
 
@@ -2109,7 +2109,7 @@ Application Resources
 
 ---
 
-# Hands-on Lab 4 – Automatic Sync
+## Hands-on Lab 4 – Automatic Sync
 
 Enable automated synchronization.
 
@@ -2131,7 +2131,7 @@ Observe the reconciliation.
 
 ---
 
-# Hands-on Lab 5 – Drift Detection
+## Hands-on Lab 5 – Drift Detection
 
 Deploy:
 
@@ -2155,7 +2155,7 @@ If self-healing is enabled, observe reconciliation back toward Git.
 
 ---
 
-# Hands-on Lab 6 – GitOps Rollback
+## Hands-on Lab 6 – GitOps Rollback
 
 Deploy:
 
@@ -2183,7 +2183,7 @@ Kubernetes
 
 ---
 
-# Hands-on Lab 7 – Environment Promotion
+## Hands-on Lab 7 – Environment Promotion
 
 Create:
 
@@ -2203,7 +2203,7 @@ through each environment.
 
 ---
 
-# Hands-on Lab 8 – Kustomize With GitOps
+## Hands-on Lab 8 – Kustomize With GitOps
 
 Create:
 
@@ -2218,7 +2218,7 @@ Deploy each overlay through GitOps.
 
 ---
 
-# Hands-on Lab 9 – Helm With GitOps
+## Hands-on Lab 9 – Helm With GitOps
 
 Create or use a Helm chart.
 
@@ -2228,7 +2228,7 @@ Deploy through a GitOps controller.
 
 ---
 
-# Hands-on Lab 10 – Secret Management
+## Hands-on Lab 10 – Secret Management
 
 Use a suitable test secret-management solution.
 
@@ -2242,7 +2242,7 @@ does not exist in Git.
 
 ---
 
-# Hands-on Lab 11 – Policy as Code
+## Hands-on Lab 11 – Policy as Code
 
 Add a policy:
 
@@ -2256,7 +2256,7 @@ Verify that the policy prevents the deployment.
 
 ---
 
-# Hands-on Lab 12 – GitOps RBAC
+## Hands-on Lab 12 – GitOps RBAC
 
 Create different GitOps access levels:
 
@@ -2271,7 +2271,7 @@ Verify each permission set.
 
 ---
 
-# Hands-on Lab 13 – Multi-Cluster GitOps
+## Hands-on Lab 13 – Multi-Cluster GitOps
 
 Create:
 
@@ -2284,7 +2284,7 @@ Deploy the same application to both through GitOps.
 
 ---
 
-# Hands-on Lab 14 – Drift Detection Dashboard
+## Hands-on Lab 14 – Drift Detection Dashboard
 
 Build a dashboard showing:
 
@@ -2297,7 +2297,7 @@ Failed Syncs
 
 ---
 
-# Hands-on Lab 15 – Progressive Delivery
+## Hands-on Lab 15 – Progressive Delivery
 
 Implement:
 
@@ -2318,7 +2318,7 @@ Then progressively increase traffic.
 
 ---
 
-# Hands-on Lab 16 – Production GitOps Exercise
+## Hands-on Lab 16 – Production GitOps Exercise
 
 Build:
 
@@ -2353,9 +2353,9 @@ Notifications
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## GitOps
+### GitOps
 
 ```text
 Git
@@ -2367,7 +2367,7 @@ Automated Reconciliation
 
 ---
 
-## Desired State
+### Desired State
 
 ```text
 What the cluster should look like
@@ -2375,7 +2375,7 @@ What the cluster should look like
 
 ---
 
-## Actual State
+### Actual State
 
 ```text
 What the cluster currently looks like
@@ -2383,7 +2383,7 @@ What the cluster currently looks like
 
 ---
 
-## Reconciliation
+### Reconciliation
 
 ```text
 Process of aligning actual state with desired state
@@ -2391,7 +2391,7 @@ Process of aligning actual state with desired state
 
 ---
 
-## Drift
+### Drift
 
 ```text
 Desired State ≠ Actual State
@@ -2399,7 +2399,7 @@ Desired State ≠ Actual State
 
 ---
 
-## Argo CD
+### Argo CD
 
 ```text
 Kubernetes GitOps continuous delivery tool
@@ -2407,7 +2407,7 @@ Kubernetes GitOps continuous delivery tool
 
 ---
 
-## Flux
+### Flux
 
 ```text
 Kubernetes GitOps toolkit based on controllers
@@ -2415,7 +2415,7 @@ Kubernetes GitOps toolkit based on controllers
 
 ---
 
-## GitOps Rollback
+### GitOps Rollback
 
 ```text
 Restore a known-good Git state
@@ -2423,7 +2423,7 @@ Restore a known-good Git state
 
 ---
 
-## GitOps Self-Healing
+### GitOps Self-Healing
 
 ```text
 Automatically reconcile unauthorized drift
@@ -2431,7 +2431,7 @@ Automatically reconcile unauthorized drift
 
 ---
 
-## Policy as Code
+### Policy as Code
 
 ```text
 Machine-readable policies evaluated automatically
@@ -2439,7 +2439,7 @@ Machine-readable policies evaluated automatically
 
 ---
 
-## GitOps Source of Truth
+### GitOps Source of Truth
 
 ```text
 Version-controlled desired state
@@ -2447,7 +2447,7 @@ Version-controlled desired state
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Clone repository:
 
@@ -2541,9 +2541,9 @@ kubectl rollout status deployment/<name>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is GitOps?
 - What are the core principles of GitOps?
@@ -2562,7 +2562,7 @@ kubectl rollout status deployment/<name>
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does Argo CD work?
 - How does Flux work?
@@ -2580,7 +2580,7 @@ kubectl rollout status deployment/<name>
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a production GitOps architecture for multiple Kubernetes clusters.
 - How would you implement GitOps for 100+ clusters?
@@ -2597,13 +2597,13 @@ kubectl rollout status deployment/<name>
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What happens if someone manually changes a Git-managed Kubernetes resource?
 
-### Answer
+#### Answer
 
 The cluster enters a drifted state:
 
@@ -2633,13 +2633,13 @@ can restore the desired state.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Why is GitOps more auditable than manual kubectl deployments?
 
-### Answer
+#### Answer
 
 GitOps can provide:
 
@@ -2663,13 +2663,13 @@ This creates a strong traceability chain.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > How should secrets be managed in GitOps?
 
-### Answer
+#### Answer
 
 Do not store plaintext production secrets in Git.
 
@@ -2689,13 +2689,13 @@ depending on organizational requirements.
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What is the difference between CI and GitOps CD?
 
-### Answer
+#### Answer
 
 CI focuses on:
 
@@ -2731,13 +2731,13 @@ Kubernetes
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How would you implement multi-cluster GitOps?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2755,13 +2755,13 @@ Use overlays or cluster-specific directories to manage differences.
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > How do you prevent insecure manifests from reaching production?
 
-### Answer
+#### Answer
 
 Use multiple layers:
 
@@ -2787,13 +2787,13 @@ This provides defense in depth.
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > What happens if Git is temporarily unavailable?
 
-### Answer
+#### Answer
 
 The existing cluster state can continue running.
 
@@ -2816,13 +2816,13 @@ Network Connectivity
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > Is GitOps a replacement for CI/CD?
 
-### Answer
+#### Answer
 
 No.
 
@@ -2848,13 +2848,13 @@ Kubernetes
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > Why should you avoid manually changing GitOps-managed resources?
 
-### Answer
+#### Answer
 
 Manual changes create:
 
@@ -2882,13 +2882,13 @@ Reconcile
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a secure production GitOps architecture.
 
-### Answer
+#### Answer
 
 ```text
 Developer
@@ -2934,7 +2934,7 @@ Monitoring / SIEM
 
 ---
 
-# Production GitOps Checklist
+## Production GitOps Checklist
 
 ```text
 ☑ Git source of truth established
@@ -2967,7 +2967,7 @@ Monitoring / SIEM
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 GitOps provides a declarative, version-controlled, continuously reconciled approach to Kubernetes operations.
 
@@ -3034,9 +3034,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 79 – CI/CD with Kubernetes
+## Chapter 79 – CI/CD with Kubernetes
 
 Topics will include:
 

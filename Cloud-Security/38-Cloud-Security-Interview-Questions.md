@@ -21,9 +21,9 @@ This chapter contains a comprehensive collection of commonly asked Cloud Securit
 
 ---
 
-# Section 1 — Cloud Computing Fundamentals
+## Section 1 — Cloud Computing Fundamentals
 
-### 1. What is cloud computing?
+#### 1. What is cloud computing?
 
 **Answer:**
 
@@ -31,7 +31,7 @@ Cloud computing is the delivery of computing resources such as servers, storage,
 
 ---
 
-### 2. What are the main cloud service models?
+#### 2. What are the main cloud service models?
 
 **Answer:**
 
@@ -43,7 +43,7 @@ The three primary cloud service models are:
 
 ---
 
-### 3. What are cloud deployment models?
+#### 3. What are cloud deployment models?
 
 **Answer:**
 
@@ -57,7 +57,7 @@ Cloud deployment models include:
 
 ---
 
-### 4. What is elasticity in cloud computing?
+#### 4. What is elasticity in cloud computing?
 
 **Answer:**
 
@@ -65,7 +65,7 @@ Elasticity is the ability of cloud resources to automatically scale up or down b
 
 ---
 
-### 5. What is scalability?
+#### 5. What is scalability?
 
 **Answer:**
 
@@ -73,7 +73,7 @@ Scalability is the capability to increase or decrease computing resources to han
 
 ---
 
-### 6. What is high availability?
+#### 6. What is high availability?
 
 **Answer:**
 
@@ -81,7 +81,7 @@ High availability ensures services remain operational with minimal downtime by u
 
 ---
 
-### 7. What is fault tolerance?
+#### 7. What is fault tolerance?
 
 **Answer:**
 
@@ -89,7 +89,7 @@ Fault tolerance is the ability of a system to continue operating even when one o
 
 ---
 
-### 8. What is disaster recovery?
+#### 8. What is disaster recovery?
 
 **Answer:**
 
@@ -97,7 +97,7 @@ Disaster recovery is the process of restoring systems, applications, and data af
 
 ---
 
-### 9. What is business continuity?
+#### 9. What is business continuity?
 
 **Answer:**
 
@@ -105,7 +105,7 @@ Business continuity ensures that essential business operations continue during a
 
 ---
 
-### 10. What is shared responsibility in cloud security?
+#### 10. What is shared responsibility in cloud security?
 
 **Answer:**
 
@@ -113,9 +113,9 @@ The Shared Responsibility Model defines security responsibilities between the cl
 
 ---
 
-# Section 2 — Identity and Access Management (IAM)
+## Section 2 — Identity and Access Management (IAM)
 
-### 11. What is IAM?
+#### 11. What is IAM?
 
 **Answer:**
 
@@ -123,7 +123,7 @@ Identity and Access Management (IAM) manages authentication, authorization, iden
 
 ---
 
-### 12. What is authentication?
+#### 12. What is authentication?
 
 **Answer:**
 
@@ -131,7 +131,7 @@ Authentication verifies the identity of a user, device, or application before ac
 
 ---
 
-### 13. What is authorization?
+#### 13. What is authorization?
 
 **Answer:**
 
@@ -139,7 +139,7 @@ Authorization determines what authenticated users are allowed to access or perfo
 
 ---
 
-### 14. What is Multi-Factor Authentication (MFA)?
+#### 14. What is Multi-Factor Authentication (MFA)?
 
 **Answer:**
 
@@ -147,7 +147,7 @@ MFA requires two or more independent authentication factors, such as a password 
 
 ---
 
-### 15. What is Single Sign-On (SSO)?
+#### 15. What is Single Sign-On (SSO)?
 
 **Answer:**
 
@@ -155,7 +155,7 @@ Single Sign-On allows users to authenticate once and securely access multiple ap
 
 ---
 
-### 16. What is the Principle of Least Privilege?
+#### 16. What is the Principle of Least Privilege?
 
 **Answer:**
 
@@ -163,7 +163,7 @@ The Principle of Least Privilege (PoLP) grants users and services only the minim
 
 ---
 
-### 17. What is Role-Based Access Control (RBAC)?
+#### 17. What is Role-Based Access Control (RBAC)?
 
 **Answer:**
 
@@ -171,7 +171,7 @@ RBAC assigns permissions to roles rather than directly to users, simplifying per
 
 ---
 
-### 18. What is Privileged Access Management (PAM)?
+#### 18. What is Privileged Access Management (PAM)?
 
 **Answer:**
 
@@ -179,7 +179,7 @@ PAM protects and manages privileged accounts by enforcing controls such as crede
 
 ---
 
-### 19. What is identity federation?
+#### 19. What is identity federation?
 
 **Answer:**
 
@@ -187,7 +187,7 @@ Identity federation enables users to access multiple systems using trusted ident
 
 ---
 
-### 20. Why should root or administrator accounts be used sparingly?
+#### 20. Why should root or administrator accounts be used sparingly?
 
 **Answer:**
 
@@ -195,9 +195,9 @@ Root or administrator accounts possess unrestricted permissions. Using them rout
 
 ---
 
-# Section 3 — Cloud Network Security
+## Section 3 — Cloud Network Security
 
-### 21. What is a Virtual Private Cloud (VPC)?
+#### 21. What is a Virtual Private Cloud (VPC)?
 
 **Answer:**
 
@@ -205,7 +205,7 @@ A VPC is a logically isolated virtual network within a public cloud where organi
 
 ---
 
-### 22. What is network segmentation?
+#### 22. What is network segmentation?
 
 **Answer:**
 
@@ -213,7 +213,7 @@ Network segmentation divides networks into smaller isolated sections to reduce l
 
 ---
 
-### 23. What is micro-segmentation?
+#### 23. What is micro-segmentation?
 
 **Answer:**
 
@@ -221,7 +221,7 @@ Micro-segmentation applies fine-grained security controls at the workload or app
 
 ---
 
-### 24. What is a Security Group?
+#### 24. What is a Security Group?
 
 **Answer:**
 
@@ -229,7 +229,7 @@ A Security Group is a virtual firewall that controls inbound and outbound traffi
 
 ---
 
-### 25. What is a Network Access Control List (NACL)?
+#### 25. What is a Network Access Control List (NACL)?
 
 **Answer:**
 
@@ -237,7 +237,7 @@ A NACL is a subnet-level firewall that controls network traffic entering and lea
 
 ---
 
-### 26. What is a Web Application Firewall (WAF)?
+#### 26. What is a Web Application Firewall (WAF)?
 
 **Answer:**
 
@@ -245,7 +245,7 @@ A WAF protects web applications by filtering HTTP/HTTPS traffic and blocking att
 
 ---
 
-### 27. What is Distributed Denial-of-Service (DDoS)?
+#### 27. What is Distributed Denial-of-Service (DDoS)?
 
 **Answer:**
 
@@ -253,7 +253,7 @@ A DDoS attack overwhelms systems with excessive traffic, making services unavail
 
 ---
 
-### 28. What is TLS?
+#### 28. What is TLS?
 
 **Answer:**
 
@@ -261,7 +261,7 @@ Transport Layer Security (TLS) encrypts communication between systems, protectin
 
 ---
 
-### 29. What is VPN?
+#### 29. What is VPN?
 
 **Answer:**
 
@@ -269,7 +269,7 @@ A Virtual Private Network (VPN) establishes an encrypted connection between user
 
 ---
 
-### 30. Why should management interfaces never be publicly exposed?
+#### 30. Why should management interfaces never be publicly exposed?
 
 **Answer:**
 
@@ -277,9 +277,9 @@ Publicly exposed administrative interfaces significantly increase the risk of un
 
 ---
 
-# Section 4 — Data Security
+## Section 4 — Data Security
 
-### 31. What is encryption?
+#### 31. What is encryption?
 
 **Answer:**
 
@@ -287,7 +287,7 @@ Encryption converts readable data into ciphertext using cryptographic algorithms
 
 ---
 
-### 32. What is encryption at rest?
+#### 32. What is encryption at rest?
 
 **Answer:**
 
@@ -295,7 +295,7 @@ Encryption at rest protects stored data such as databases, disks, backups, and o
 
 ---
 
-### 33. What is encryption in transit?
+#### 33. What is encryption in transit?
 
 **Answer:**
 
@@ -303,7 +303,7 @@ Encryption in transit protects data while it travels across networks using proto
 
 ---
 
-### 34. What is Key Management?
+#### 34. What is Key Management?
 
 **Answer:**
 
@@ -311,7 +311,7 @@ Key Management involves securely generating, storing, rotating, distributing, an
 
 ---
 
-### 35. What is Secrets Management?
+#### 35. What is Secrets Management?
 
 **Answer:**
 
@@ -319,7 +319,7 @@ Secrets Management securely stores and controls access to sensitive credentials 
 
 ---
 
-### 36. What is Data Loss Prevention (DLP)?
+#### 36. What is Data Loss Prevention (DLP)?
 
 **Answer:**
 
@@ -327,7 +327,7 @@ DLP solutions monitor and protect sensitive information from unauthorized disclo
 
 ---
 
-### 37. What is data classification?
+#### 37. What is data classification?
 
 **Answer:**
 
@@ -335,7 +335,7 @@ Data classification categorizes information based on sensitivity and business va
 
 ---
 
-### 38. Why should backups be encrypted?
+#### 38. Why should backups be encrypted?
 
 **Answer:**
 
@@ -343,7 +343,7 @@ Encrypted backups protect sensitive information if backup media or storage locat
 
 ---
 
-### 39. What is immutable backup?
+#### 39. What is immutable backup?
 
 **Answer:**
 
@@ -351,7 +351,7 @@ An immutable backup cannot be modified or deleted for a defined retention period
 
 ---
 
-### 40. Why is key rotation important?
+#### 40. Why is key rotation important?
 
 **Answer:**
 
@@ -359,7 +359,7 @@ Regular key rotation reduces the amount of data protected by a single key and li
 
 ---
 
-## Next Section
+### Next Section
 
 - Identity & Zero Trust Interview Questions
 - Containers & Kubernetes Interview Questions
@@ -370,7 +370,7 @@ Regular key rotation reduces the amount of data protected by a single key and li
 
 ---
 
-## How It Works
+### How It Works
 
 Cloud Security interviews are typically structured to evaluate both theoretical knowledge and practical problem-solving ability. Interviewers often begin with foundational concepts, then progress to implementation details, troubleshooting scenarios, architectural discussions, and real-world incident handling.
 
@@ -378,7 +378,7 @@ A strong candidate is expected not only to define concepts but also to explain *
 
 ---
 
-# Typical Cloud Security Interview Flow
+## Typical Cloud Security Interview Flow
 
 ```
 Resume Discussion
@@ -446,9 +446,9 @@ Behavioral Questions
 
 ---
 
-# Practical Example
+## Practical Example
 
-## Example 1 — IAM Scenario
+### Example 1 — IAM Scenario
 
 **Question:**
 
@@ -470,7 +470,7 @@ This minimizes security risk while enabling the required work.
 
 ---
 
-## Example 2 — Public Storage Bucket
+### Example 2 — Public Storage Bucket
 
 **Question:**
 
@@ -489,7 +489,7 @@ A storage bucket containing customer data is accidentally made public. What shou
 
 ---
 
-## Example 3 — Compromised API Key
+### Example 3 — Compromised API Key
 
 **Question:**
 
@@ -507,7 +507,7 @@ An API key has been committed to a public Git repository. What should you do?
 
 ---
 
-## Example 4 — Kubernetes Security
+### Example 4 — Kubernetes Security
 
 **Question:**
 
@@ -526,7 +526,7 @@ Unless absolutely necessary, workloads should run with the least privileges requ
 
 ---
 
-## Example 5 — Ransomware Recovery
+### Example 5 — Ransomware Recovery
 
 **Question:**
 
@@ -544,13 +544,13 @@ A ransomware attack encrypts production data. What is your response?
 
 ---
 
-# Detection
+## Detection
 
 Interviewers frequently ask how you would detect security issues in cloud environments. A complete answer should include monitoring, logging, alerting, and investigation.
 
 ---
 
-## Detecting Identity Compromise
+### Detecting Identity Compromise
 
 Indicators include:
 
@@ -569,7 +569,7 @@ Useful telemetry:
 
 ---
 
-## Detecting Misconfigurations
+### Detecting Misconfigurations
 
 Common examples:
 
@@ -589,7 +589,7 @@ Detection methods:
 
 ---
 
-## Detecting Malware or Runtime Threats
+### Detecting Malware or Runtime Threats
 
 Indicators include:
 
@@ -609,7 +609,7 @@ Detection sources:
 
 ---
 
-## Detecting Network Attacks
+### Detecting Network Attacks
 
 Watch for:
 
@@ -629,7 +629,7 @@ Useful telemetry:
 
 ---
 
-## Detecting Data Exposure
+### Detecting Data Exposure
 
 Monitor:
 
@@ -644,7 +644,7 @@ Data security monitoring helps prevent confidentiality breaches.
 
 ---
 
-## Detecting Supply Chain Risks
+### Detecting Supply Chain Risks
 
 Review for:
 
@@ -663,7 +663,7 @@ Use:
 
 ---
 
-## Detection Best Practices
+### Detection Best Practices
 
 - Centralize logs in a SIEM platform.
 - Correlate events across cloud services.
@@ -678,9 +678,9 @@ Use:
 
 ---
 
-## Interview Tips
+### Interview Tips
 
-### When answering technical questions:
+#### When answering technical questions:
 
 - Begin with a clear definition.
 - Explain why the concept matters.
@@ -690,7 +690,7 @@ Use:
 
 ---
 
-### If you do not know the answer:
+#### If you do not know the answer:
 
 Avoid guessing.
 
@@ -702,7 +702,7 @@ This demonstrates honesty, problem-solving ability, and a willingness to learn.
 
 ---
 
-## Next Section
+### Next Section
 
 Prevention
 
@@ -716,7 +716,7 @@ References
 
 ---
 
-## Prevention
+### Prevention
 
 Many Cloud Security interview questions focus on how you would **prevent** security incidents rather than simply detect or respond to them. Interviewers want to understand your ability to design secure systems proactively.
 
@@ -724,7 +724,7 @@ The following preventive practices are commonly expected in technical interviews
 
 ---
 
-# Cloud Security Prevention Strategy
+## Cloud Security Prevention Strategy
 
 ```
 Requirements
@@ -780,7 +780,7 @@ Continuous Improvement
 
 ---
 
-## Prevent Identity Attacks
+### Prevent Identity Attacks
 
 Implement:
 
@@ -796,7 +796,7 @@ These controls significantly reduce the likelihood of credential abuse and privi
 
 ---
 
-## Prevent Network Attacks
+### Prevent Network Attacks
 
 Recommended controls:
 
@@ -814,7 +814,7 @@ Limiting unnecessary exposure reduces the available attack surface.
 
 ---
 
-## Prevent Data Breaches
+### Prevent Data Breaches
 
 Protect sensitive information by:
 
@@ -830,7 +830,7 @@ Data should remain protected throughout its lifecycle.
 
 ---
 
-## Prevent Application Attacks
+### Prevent Application Attacks
 
 Secure applications through:
 
@@ -846,7 +846,7 @@ Security should be integrated from design through deployment.
 
 ---
 
-## Prevent Infrastructure Misconfigurations
+### Prevent Infrastructure Misconfigurations
 
 Use:
 
@@ -860,7 +860,7 @@ Automation minimizes manual configuration errors.
 
 ---
 
-## Prevent Supply Chain Attacks
+### Prevent Supply Chain Attacks
 
 Strengthen the software supply chain by:
 
@@ -875,7 +875,7 @@ Supply chain security has become a critical interview topic.
 
 ---
 
-## Prevent Insider Threats
+### Prevent Insider Threats
 
 Implement:
 
@@ -890,7 +890,7 @@ These measures reduce the impact of intentional and accidental insider actions.
 
 ---
 
-## Prevent Ransomware
+### Prevent Ransomware
 
 Recommended protections:
 
@@ -906,9 +906,9 @@ Recovery capabilities are just as important as preventive controls.
 
 ---
 
-# Best Practices
+## Best Practices
 
-## 1. Understand Core Concepts First
+### 1. Understand Core Concepts First
 
 Be comfortable explaining:
 
@@ -925,7 +925,7 @@ A strong foundation improves answers to advanced questions.
 
 ---
 
-## 2. Answer Using a Structured Format
+### 2. Answer Using a Structured Format
 
 A reliable interview structure is:
 
@@ -939,7 +939,7 @@ This keeps answers organized and complete.
 
 ---
 
-## 3. Relate Answers to Real Scenarios
+### 3. Relate Answers to Real Scenarios
 
 Example:
 
@@ -955,7 +955,7 @@ Concrete explanations demonstrate deeper understanding.
 
 ---
 
-## 4. Think Like a Security Engineer
+### 4. Think Like a Security Engineer
 
 When presented with a scenario, consider:
 
@@ -970,7 +970,7 @@ This analytical approach is valued in interviews.
 
 ---
 
-## 5. Prioritize Risk
+### 5. Prioritize Risk
 
 Explain how you would prioritize remediation based on:
 
@@ -984,7 +984,7 @@ Risk-based decision-making is a key professional skill.
 
 ---
 
-## 6. Emphasize Automation
+### 6. Emphasize Automation
 
 Mention automation where appropriate:
 
@@ -999,11 +999,11 @@ Automation demonstrates operational maturity.
 
 ---
 
-## 7. Know Major Cloud Services
+### 7. Know Major Cloud Services
 
 Be familiar with representative security services from leading cloud providers.
 
-### AWS
+#### AWS
 
 - IAM
 - Security Hub
@@ -1012,7 +1012,7 @@ Be familiar with representative security services from leading cloud providers.
 - AWS Config
 - KMS
 
-### Microsoft Azure
+#### Microsoft Azure
 
 - Microsoft Defender for Cloud
 - Microsoft Sentinel
@@ -1020,7 +1020,7 @@ Be familiar with representative security services from leading cloud providers.
 - Azure Key Vault
 - Microsoft Entra ID
 
-### Google Cloud
+#### Google Cloud
 
 - Security Command Center
 - Cloud Armor
@@ -1032,7 +1032,7 @@ Interviewers may ask platform-specific follow-up questions.
 
 ---
 
-## 8. Practice Whiteboard Architecture
+### 8. Practice Whiteboard Architecture
 
 Be prepared to explain secure architectures including:
 
@@ -1049,7 +1049,7 @@ Communicating architecture clearly is often as important as technical accuracy.
 
 ---
 
-## 9. Communicate Clearly
+### 9. Communicate Clearly
 
 During interviews:
 
@@ -1063,7 +1063,7 @@ Strong communication leaves a positive impression.
 
 ---
 
-## 10. Continue Learning
+### 10. Continue Learning
 
 Cloud security evolves rapidly.
 
@@ -1080,7 +1080,7 @@ Continuous learning is expected in cloud security roles.
 
 ---
 
-## Quick Interview Success Checklist
+### Quick Interview Success Checklist
 
 | Area | Ready |
 |-------|:----:|
@@ -1099,13 +1099,13 @@ Continuous learning is expected in cloud security roles.
 
 ---
 
-## Next Section
+### Next Section
 
 Common Mistakes
 
 References
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud Security interviews are designed to evaluate not only technical knowledge but also analytical thinking, communication, and practical decision-making. Many candidates understand the concepts but lose marks due to avoidable mistakes in how they answer questions.
 
@@ -1113,7 +1113,7 @@ The following are some of the most common mistakes observed during Cloud Securit
 
 ---
 
-### 1. Memorizing Definitions Without Understanding
+#### 1. Memorizing Definitions Without Understanding
 
 Many candidates memorize textbook definitions but cannot explain:
 
@@ -1137,7 +1137,7 @@ Understanding concepts is more valuable than memorization.
 
 ---
 
-### 2. Ignoring the Shared Responsibility Model
+#### 2. Ignoring the Shared Responsibility Model
 
 Candidates often incorrectly assume that cloud providers secure everything.
 
@@ -1156,7 +1156,7 @@ A clear explanation of this model is expected in most cloud security interviews.
 
 ---
 
-### 3. Confusing Authentication and Authorization
+#### 3. Confusing Authentication and Authorization
 
 A very common interview mistake.
 
@@ -1170,7 +1170,7 @@ Always distinguish between the two.
 
 ---
 
-### 4. Giving Generic Security Answers
+#### 4. Giving Generic Security Answers
 
 Avoid vague statements such as:
 
@@ -1190,7 +1190,7 @@ Specific answers demonstrate practical knowledge.
 
 ---
 
-### 5. Forgetting the Principle of Least Privilege
+#### 5. Forgetting the Principle of Least Privilege
 
 Granting excessive permissions is a frequent interview discussion point.
 
@@ -1204,7 +1204,7 @@ Always mention:
 
 ---
 
-### 6. Ignoring Logging and Monitoring
+#### 6. Ignoring Logging and Monitoring
 
 Security without visibility is ineffective.
 
@@ -1222,7 +1222,7 @@ Detection capabilities are as important as preventive controls.
 
 ---
 
-### 7. Treating Compliance as Security
+#### 7. Treating Compliance as Security
 
 Compliance frameworks provide a baseline but do not guarantee security.
 
@@ -1238,7 +1238,7 @@ Differentiate compliance from operational security.
 
 ---
 
-### 8. Not Explaining Trade-Offs
+#### 8. Not Explaining Trade-Offs
 
 Interviewers appreciate balanced reasoning.
 
@@ -1257,7 +1257,7 @@ Showing awareness of trade-offs demonstrates architectural thinking.
 
 ---
 
-### 9. Jumping Straight to Solutions
+#### 9. Jumping Straight to Solutions
 
 For scenario-based questions, avoid proposing fixes before understanding the problem.
 
@@ -1274,7 +1274,7 @@ A structured methodology is highly valued.
 
 ---
 
-### 10. Ignoring Business Impact
+#### 10. Ignoring Business Impact
 
 Security decisions should consider:
 
@@ -1290,7 +1290,7 @@ Security exists to support business objectives.
 
 ---
 
-### 11. Overlooking Cloud-Native Services
+#### 11. Overlooking Cloud-Native Services
 
 Candidates sometimes discuss only third-party tools.
 
@@ -1325,7 +1325,7 @@ Knowledge of native services is frequently assessed.
 
 ---
 
-### 12. Poor Communication
+#### 12. Poor Communication
 
 Technical knowledge alone is insufficient.
 
@@ -1341,7 +1341,7 @@ Aim for concise, logical, and well-structured responses.
 
 ---
 
-### 13. Guessing Instead of Acknowledging Uncertainty
+#### 13. Guessing Instead of Acknowledging Uncertainty
 
 If you are unsure:
 
@@ -1353,7 +1353,7 @@ Interviewers generally value honesty over incorrect certainty.
 
 ---
 
-### 14. Neglecting Hands-On Experience
+#### 14. Neglecting Hands-On Experience
 
 Whenever possible, reference practical experience.
 
@@ -1371,7 +1371,7 @@ Practical examples strengthen your answers.
 
 ---
 
-### 15. Failing to Keep Skills Current
+#### 15. Failing to Keep Skills Current
 
 Cloud platforms evolve rapidly.
 
@@ -1389,7 +1389,7 @@ Continuous learning is an important trait for cloud security professionals.
 
 ---
 
-## Interview Preparation Checklist
+### Interview Preparation Checklist
 
 | Topic | Ready |
 |--------|:----:|
@@ -1411,9 +1411,9 @@ Continuous learning is an important trait for cloud security professionals.
 
 ---
 
-## References
+### References
 
-### International Standards
+#### International Standards
 
 - ISO/IEC 27001 — Information Security Management Systems (ISMS)
 - ISO/IEC 27002 — Information Security Controls
@@ -1422,7 +1422,7 @@ Continuous learning is an important trait for cloud security professionals.
 
 ---
 
-### NIST Publications
+#### NIST Publications
 
 - NIST Cybersecurity Framework (CSF) 2.0
 - NIST SP 800-53 Rev. 5 — Security and Privacy Controls
@@ -1432,7 +1432,7 @@ Continuous learning is an important trait for cloud security professionals.
 
 ---
 
-### CIS Resources
+#### CIS Resources
 
 - CIS Controls v8
 - CIS Benchmarks
@@ -1441,14 +1441,14 @@ Continuous learning is an important trait for cloud security professionals.
 
 ---
 
-### Cloud Security Alliance (CSA)
+#### Cloud Security Alliance (CSA)
 
 - Cloud Controls Matrix (CCM)
 - Security Guidance for Critical Areas of Cloud Computing
 
 ---
 
-### OWASP Resources
+#### OWASP Resources
 
 - OWASP Top 10
 - OWASP API Security Top 10
@@ -1458,23 +1458,23 @@ Continuous learning is an important trait for cloud security professionals.
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - AWS Well-Architected Framework – Security Pillar
 - AWS Security Hub
 - Amazon GuardDuty
 - AWS IAM Access Analyzer
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Microsoft Defender for Cloud
 - Microsoft Sentinel
 - Azure Policy
 - Azure Key Vault
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Security Command Center
 - Cloud Armor
@@ -1483,7 +1483,7 @@ Continuous learning is an important trait for cloud security professionals.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - NIST Computer Security Resource Center (CSRC)
 - Cloud Security Alliance (CSA)

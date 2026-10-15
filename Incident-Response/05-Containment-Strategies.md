@@ -39,7 +39,7 @@ Instead, the immediate goal is:
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 An attacker who has gained access may continue:
 
@@ -95,7 +95,7 @@ Containment
 
 ---
 
-# Containment Objectives
+## Containment Objectives
 
 Containment should accomplish one or more of the following:
 
@@ -112,7 +112,7 @@ Containment should accomplish one or more of the following:
 
 ---
 
-# Containment Is a Decision Problem
+## Containment Is a Decision Problem
 
 Containment is rarely as simple as:
 
@@ -149,13 +149,13 @@ The best decision depends on the incident.
 
 ---
 
-# Containment Principles
+## Containment Principles
 
-## 1. Stop the Threat
+### 1. Stop the Threat
 
 Prevent continued attacker activity.
 
-## 2. Protect Critical Assets
+### 2. Protect Critical Assets
 
 Prioritize:
 
@@ -165,29 +165,29 @@ Prioritize:
 - Backups
 - Security infrastructure
 
-## 3. Preserve Evidence
+### 3. Preserve Evidence
 
 Avoid unnecessary destructive actions.
 
-## 4. Limit Business Disruption
+### 4. Limit Business Disruption
 
 Contain precisely where possible.
 
-## 5. Assume Scope May Expand
+### 5. Assume Scope May Expand
 
 Containment decisions should consider related systems.
 
-## 6. Document Actions
+### 6. Document Actions
 
 Every significant containment action should be recorded.
 
 ---
 
-# Types of Containment
+## Types of Containment
 
 A practical model divides containment into:
 
-### Short-Term Containment
+#### Short-Term Containment
 
 Immediate actions designed to stop active attacker activity.
 
@@ -198,7 +198,7 @@ Examples:
 - IP blocking
 - Session revocation
 
-### Long-Term Containment
+#### Long-Term Containment
 
 Actions that stabilize the environment while deeper remediation occurs.
 
@@ -212,7 +212,7 @@ Examples:
 
 ---
 
-# Containment Lifecycle
+## Containment Lifecycle
 
 ```text id="4w2jif"
 Incident Identified
@@ -243,7 +243,7 @@ Containment should be treated as an iterative process.
 
 ---
 
-# Containment Decision Framework
+## Containment Decision Framework
 
 Before taking an action, ask:
 
@@ -269,7 +269,7 @@ How will we validate containment?
 
 ---
 
-# Risk-Based Containment
+## Risk-Based Containment
 
 A useful conceptual model:
 
@@ -290,7 +290,7 @@ This is a decision framework, not a universal mathematical formula.
 
 ---
 
-# Host Isolation
+## Host Isolation
 
 One of the most common containment actions is isolating a compromised endpoint.
 
@@ -325,7 +325,7 @@ The responder should confirm what network access remains available after isolati
 
 ---
 
-# When to Isolate a Host
+## When to Isolate a Host
 
 Host isolation may be appropriate when:
 
@@ -338,7 +338,7 @@ Host isolation may be appropriate when:
 
 ---
 
-# When Immediate Isolation May Require Care
+## When Immediate Isolation May Require Care
 
 Consider additional analysis before isolating when:
 
@@ -358,7 +358,7 @@ It means:
 
 ---
 
-# Account Containment
+## Account Containment
 
 Compromised identities can be contained through:
 
@@ -394,7 +394,7 @@ Monitor
 
 ---
 
-# Privileged Account Containment
+## Privileged Account Containment
 
 Privileged identities require special handling.
 
@@ -426,7 +426,7 @@ Investigate Related Activity
 
 ---
 
-# Credential Rotation
+## Credential Rotation
 
 If credentials may have been exposed, rotate them appropriately.
 
@@ -447,7 +447,7 @@ Immediately changing a service account password without understanding where it i
 
 ---
 
-# Token and Session Revocation
+## Token and Session Revocation
 
 Password resets may not invalidate existing sessions in every environment.
 
@@ -475,7 +475,7 @@ Compromised Account
 
 ---
 
-# Network Containment
+## Network Containment
 
 Network controls can restrict attacker communication.
 
@@ -508,7 +508,7 @@ Traffic   Traffic
 
 ---
 
-# Egress Containment
+## Egress Containment
 
 Outbound traffic controls are especially useful for:
 
@@ -532,7 +532,7 @@ Proxy / Firewall
 
 ---
 
-# DNS Containment
+## DNS Containment
 
 Potential controls include:
 
@@ -563,7 +563,7 @@ DNS blocking can be useful but should not replace endpoint investigation.
 
 ---
 
-# Email Containment
+## Email Containment
 
 For phishing incidents, containment may include:
 
@@ -594,7 +594,7 @@ Malicious Email
 
 ---
 
-# Cloud Containment
+## Cloud Containment
 
 Cloud incidents may require:
 
@@ -627,7 +627,7 @@ API Activity Review
 
 ---
 
-# Active Directory Containment
+## Active Directory Containment
 
 Potential actions include:
 
@@ -643,7 +643,7 @@ If domain-level compromise is suspected, containment requires careful coordinati
 
 ---
 
-# Ransomware Containment
+## Ransomware Containment
 
 Ransomware requires rapid containment.
 
@@ -675,7 +675,7 @@ Do not assume the first encrypted endpoint is the only affected system.
 
 ---
 
-# Lateral Movement Containment
+## Lateral Movement Containment
 
 If lateral movement is suspected:
 
@@ -700,7 +700,7 @@ Potential controls:
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Segmentation can limit attacker movement.
 
@@ -721,7 +721,7 @@ During an incident, temporary restrictions may be applied to prevent movement in
 
 ---
 
-# Application Containment
+## Application Containment
 
 For compromised applications, options may include:
 
@@ -750,7 +750,7 @@ Forensic Investigation
 
 ---
 
-# Database Containment
+## Database Containment
 
 If database compromise is suspected:
 
@@ -766,7 +766,7 @@ Avoid destructive actions before evidence requirements are understood.
 
 ---
 
-# Container Containment
+## Container Containment
 
 For container incidents:
 
@@ -801,7 +801,7 @@ Investigate:
 
 ---
 
-# Kubernetes Containment
+## Kubernetes Containment
 
 Potential actions may include:
 
@@ -830,7 +830,7 @@ If node compromise is suspected, pod-level containment may be insufficient.
 
 ---
 
-# Containment and Evidence Preservation
+## Containment and Evidence Preservation
 
 Containment can alter evidence.
 
@@ -857,7 +857,7 @@ Therefore, evidence requirements should be considered before destructive actions
 
 ---
 
-# Volatile Evidence
+## Volatile Evidence
 
 Potential volatile evidence includes:
 
@@ -873,7 +873,7 @@ The more volatile the evidence, the faster it may disappear.
 
 ---
 
-# Containment vs Evidence Collection
+## Containment vs Evidence Collection
 
 These goals can conflict.
 
@@ -899,7 +899,7 @@ There is no universal rule that applies to every incident.
 
 ---
 
-# Containment Validation
+## Containment Validation
 
 After containment, verify that it actually worked.
 
@@ -925,7 +925,7 @@ Containment should never be assumed successful without validation.
 
 ---
 
-# Containment Monitoring
+## Containment Monitoring
 
 After an action:
 
@@ -947,27 +947,27 @@ If attacker activity continues, the containment strategy may need to expand.
 
 ---
 
-# Containment Scope
+## Containment Scope
 
 Containment can occur at different levels.
 
-### Endpoint
+#### Endpoint
 
 Isolate one machine.
 
-### Identity
+#### Identity
 
 Disable or restrict one account.
 
-### Network
+#### Network
 
 Block a destination or isolate a segment.
 
-### Application
+#### Application
 
 Disable one service.
 
-### Organization
+#### Organization
 
 Activate broad emergency controls.
 
@@ -975,13 +975,13 @@ The scope should be proportional to the threat.
 
 ---
 
-# Precision Containment
+## Precision Containment
 
 Whenever possible, prefer targeted controls.
 
 Example:
 
-### Broad
+#### Broad
 
 ```text
 Block all outbound traffic
@@ -989,7 +989,7 @@ Block all outbound traffic
 
 Potentially disruptive.
 
-### Precise
+#### Precise
 
 ```text
 Block confirmed malicious destination
@@ -1001,7 +1001,7 @@ Precision depends on confidence and available controls.
 
 ---
 
-# Broad Containment
+## Broad Containment
 
 Broad containment may be appropriate when:
 
@@ -1028,7 +1028,7 @@ Detailed Investigation
 
 ---
 
-# Containment Decision Matrix
+## Containment Decision Matrix
 
 | Situation | Possible Action | Priority |
 |---|---|---|
@@ -1045,83 +1045,83 @@ Actual actions should follow organizational procedures.
 
 ---
 
-# Common Containment Mistakes
+## Common Containment Mistakes
 
-## 1. Isolating Only the First Host
+### 1. Isolating Only the First Host
 
 The attacker may already have moved elsewhere.
 
-## 2. Resetting One Password
+### 2. Resetting One Password
 
 The attacker may have compromised additional credentials.
 
-## 3. Blocking Only One IP
+### 3. Blocking Only One IP
 
 Attackers may rotate infrastructure.
 
-## 4. Killing a Process Without Investigating
+### 4. Killing a Process Without Investigating
 
 This may destroy useful evidence.
 
-## 5. Rebooting Immediately
+### 5. Rebooting Immediately
 
 This may destroy volatile evidence.
 
-## 6. Deleting Malware
+### 6. Deleting Malware
 
 The sample may be important for analysis.
 
-## 7. Destroying Logs
+### 7. Destroying Logs
 
 Never overwrite or delete relevant evidence.
 
-## 8. Disabling Critical Systems Without Coordination
+### 8. Disabling Critical Systems Without Coordination
 
 Containment can create major business impact.
 
-## 9. Failing to Validate
+### 9. Failing to Validate
 
 A containment action may not work as expected.
 
-## 10. Treating Containment as Eradication
+### 10. Treating Containment as Eradication
 
 Stopping activity does not necessarily remove the attacker.
 
 ---
 
-# Containment Misconfigurations
+## Containment Misconfigurations
 
-### No EDR Isolation Capability
+#### No EDR Isolation Capability
 
 Responders cannot rapidly isolate endpoints.
 
-### Excessive Firewall Privileges
+#### Excessive Firewall Privileges
 
 Too many administrators can create uncontrolled changes.
 
-### No Network Segmentation
+#### No Network Segmentation
 
 Compromised endpoints can reach critical systems.
 
-### Shared Administrative Accounts
+#### Shared Administrative Accounts
 
 Containment becomes difficult to attribute.
 
-### No Session Revocation
+#### No Session Revocation
 
 Compromised credentials may remain active.
 
-### Long-Lived Cloud Keys
+#### Long-Lived Cloud Keys
 
 Stolen keys may remain usable for long periods.
 
-### No Emergency Change Process
+#### No Emergency Change Process
 
 Critical containment changes may be delayed.
 
 ---
 
-# Emergency Change Management
+## Emergency Change Management
 
 During a critical incident, organizations may need emergency changes.
 
@@ -1142,7 +1142,7 @@ Incident response should not become an excuse for undocumented infrastructure ch
 
 ---
 
-# Containment Documentation
+## Containment Documentation
 
 Every major action should be documented.
 
@@ -1176,9 +1176,9 @@ Forensic acquisition
 
 ---
 
-# Containment Checklist
+## Containment Checklist
 
-## Before Action
+### Before Action
 
 ```text id="1u8f2p"
 [ ] Incident validated
@@ -1189,7 +1189,7 @@ Forensic acquisition
 [ ] Expected result defined
 ```
 
-## During Action
+### During Action
 
 ```text id="v6l5se"
 [ ] Action executed
@@ -1199,7 +1199,7 @@ Forensic acquisition
 [ ] Dependencies considered
 ```
 
-## After Action
+### After Action
 
 ```text id="8t6jj2"
 [ ] Action validated
@@ -1211,27 +1211,27 @@ Forensic acquisition
 
 ---
 
-# Practical Commands
+## Practical Commands
 
 These commands are intended for authorized defensive response.
 
 ---
 
-## Windows
+### Windows
 
-### Identify Active Connections
+#### Identify Active Connections
 
 ```powershell id="6m0k8s"
 Get-NetTCPConnection
 ```
 
-### Identify Processes
+#### Identify Processes
 
 ```powershell id="y2x6p9"
 Get-Process
 ```
 
-### Stop a Process
+#### Stop a Process
 
 Use only when authorized and appropriate:
 
@@ -1239,7 +1239,7 @@ Use only when authorized and appropriate:
 Stop-Process -Id <PID>
 ```
 
-### Disable a User
+#### Disable a User
 
 Administrative example:
 
@@ -1251,21 +1251,21 @@ Use organizational procedures before modifying identity systems.
 
 ---
 
-## Linux
+### Linux
 
-### Identify Connections
+#### Identify Connections
 
 ```bash id="u0l3br"
 ss -tunap
 ```
 
-### Identify Processes
+#### Identify Processes
 
 ```bash id="n7z5m2"
 ps aux
 ```
 
-### Terminate a Process
+#### Terminate a Process
 
 ```bash id="d9e7p0"
 kill <PID>
@@ -1275,7 +1275,7 @@ Escalate carefully for critical systems.
 
 ---
 
-# Firewall Example
+## Firewall Example
 
 A Linux environment may use a host firewall such as `ufw`.
 
@@ -1289,11 +1289,11 @@ This should only be performed according to authorized incident response procedur
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-# Lab — Containing a Compromised Endpoint
+## Lab — Containing a Compromised Endpoint
 
-## Scenario
+### Scenario
 
 The SOC detects:
 
@@ -1321,7 +1321,7 @@ The host is currently online.
 
 ---
 
-# Step 1 — Assess
+## Step 1 — Assess
 
 Determine:
 
@@ -1341,7 +1341,7 @@ Is evidence volatile?
 
 ---
 
-# Step 2 — Preserve
+## Step 2 — Preserve
 
 Before destructive action where circumstances allow, consider collecting:
 
@@ -1357,7 +1357,7 @@ Memory, if appropriate
 
 ---
 
-# Step 3 — Contain
+## Step 3 — Contain
 
 Potential actions:
 
@@ -1370,7 +1370,7 @@ Block confirmed malicious infrastructure
 
 ---
 
-# Step 4 — Validate
+## Step 4 — Validate
 
 Check:
 
@@ -1386,7 +1386,7 @@ Are attacker sessions still active?
 
 ---
 
-# Step 5 — Expand
+## Step 5 — Expand
 
 Search the environment for:
 
@@ -1402,7 +1402,7 @@ Authentication
 
 ---
 
-# Expected Output
+## Expected Output
 
 ```text id="1ypjtb"
 Containment Action:
@@ -1429,11 +1429,11 @@ Eradication
 
 ---
 
-# Advanced Lab
+## Advanced Lab
 
-# Lab — Ransomware Containment
+## Lab — Ransomware Containment
 
-## Scenario
+### Scenario
 
 EDR detects rapid file modifications across multiple systems.
 
@@ -1449,7 +1449,7 @@ Users report inaccessible files.
 
 ---
 
-## Task 1 — Determine Immediate Priorities
+### Task 1 — Determine Immediate Priorities
 
 Prioritize:
 
@@ -1464,7 +1464,7 @@ Prioritize:
 
 ---
 
-## Task 2 — Containment Plan
+### Task 2 — Containment Plan
 
 Design:
 
@@ -1486,7 +1486,7 @@ Scope Expansion
 
 ---
 
-## Task 3 — Validate
+### Task 3 — Validate
 
 Determine:
 
@@ -1504,7 +1504,7 @@ Are critical systems affected?
 
 ---
 
-## Task 4 — Document
+### Task 4 — Document
 
 Create:
 
@@ -1521,9 +1521,9 @@ Next Step
 
 ---
 
-# Advanced Cloud Lab
+## Advanced Cloud Lab
 
-## Scenario
+### Scenario
 
 A cloud administrator account shows:
 
@@ -1539,7 +1539,7 @@ Privilege change
 Storage API activity
 ```
 
-### Containment Tasks
+#### Containment Tasks
 
 Determine whether to:
 
@@ -1564,15 +1564,15 @@ No continued data access
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is containment?
+### 1. What is containment?
 
 Containment is the process of limiting attacker activity and preventing additional compromise or damage during an incident.
 
 ---
 
-## 2. What is the difference between short-term and long-term containment?
+### 2. What is the difference between short-term and long-term containment?
 
 Short-term containment immediately stops active malicious activity.
 
@@ -1580,7 +1580,7 @@ Long-term containment stabilizes the environment while deeper eradication and re
 
 ---
 
-## 3. Should you always isolate a compromised system immediately?
+### 3. Should you always isolate a compromised system immediately?
 
 Not necessarily.
 
@@ -1594,7 +1594,7 @@ The responder should consider:
 
 ---
 
-## 4. Why can shutting down a system be problematic?
+### 4. Why can shutting down a system be problematic?
 
 It may destroy volatile evidence such as:
 
@@ -1605,13 +1605,13 @@ It may destroy volatile evidence such as:
 
 ---
 
-## 5. What is precision containment?
+### 5. What is precision containment?
 
 Precision containment applies the narrowest effective control to stop the threat while minimizing business disruption.
 
 ---
 
-## 6. When would broad containment be justified?
+### 6. When would broad containment be justified?
 
 Examples include:
 
@@ -1623,7 +1623,7 @@ Examples include:
 
 ---
 
-## 7. How can you contain a compromised account?
+### 7. How can you contain a compromised account?
 
 Potential actions include:
 
@@ -1636,19 +1636,19 @@ Potential actions include:
 
 ---
 
-## 8. Why is credential rotation important?
+### 8. Why is credential rotation important?
 
 If credentials are compromised, the attacker may continue using them even after the original endpoint is contained.
 
 ---
 
-## 9. Why should cloud sessions and tokens be considered?
+### 9. Why should cloud sessions and tokens be considered?
 
 Password resets may not invalidate all existing sessions or tokens.
 
 ---
 
-## 10. How do you validate containment?
+### 10. How do you validate containment?
 
 Check whether:
 
@@ -1661,7 +1661,7 @@ Check whether:
 
 ---
 
-## 11. What is the difference between containment and eradication?
+### 11. What is the difference between containment and eradication?
 
 Containment limits the attacker.
 
@@ -1669,7 +1669,7 @@ Eradication removes the attacker's presence and underlying persistence mechanism
 
 ---
 
-## 12. Why should containment actions be documented?
+### 12. Why should containment actions be documented?
 
 Documentation provides:
 
@@ -1681,7 +1681,7 @@ Documentation provides:
 
 ---
 
-## 13. How would you contain ransomware?
+### 13. How would you contain ransomware?
 
 Priorities generally include:
 
@@ -1698,7 +1698,7 @@ Exact actions depend on the environment.
 
 ---
 
-## 14. How would you contain a cloud account compromise?
+### 14. How would you contain a cloud account compromise?
 
 Potential steps:
 
@@ -1714,13 +1714,13 @@ Monitor
 
 ---
 
-## 15. What is the biggest containment mistake?
+### 15. What is the biggest containment mistake?
 
 A common major mistake is treating the first visible compromised asset as the complete scope of the incident.
 
 ---
 
-# Containment Decision Worksheet
+## Containment Decision Worksheet
 
 ```text id="qzjyrq"
 Incident:
@@ -1770,35 +1770,35 @@ ________________________________
 
 ---
 
-# Containment Maturity
+## Containment Maturity
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 - Manual isolation
 - Unclear authority
 - Limited documentation
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Defined containment procedures
 - Basic endpoint isolation
 - Account response procedures
 
-## Level 3 — Defined
+### Level 3 — Defined
 
 - Playbooks
 - Automated controls
 - Network segmentation
 - Cloud containment
 
-## Level 4 — Measured
+### Level 4 — Measured
 
 - Containment metrics
 - Validation procedures
 - Exercise results
 - Response time analysis
 
-## Level 5 — Optimized
+### Level 5 — Optimized
 
 - Automated risk-based containment
 - Identity-aware controls
@@ -1808,25 +1808,25 @@ ________________________________
 
 ---
 
-# Key Metrics
+## Key Metrics
 
-### Mean Time to Contain
+#### Mean Time to Contain
 
 Time from incident identification to effective containment.
 
-### Containment Success Rate
+#### Containment Success Rate
 
 Percentage of containment actions that successfully stopped the targeted activity.
 
-### Lateral Movement After Containment
+#### Lateral Movement After Containment
 
 Measures whether attacker movement continued after the containment action.
 
-### Business Impact
+#### Business Impact
 
 Measures operational disruption caused by containment.
 
-### Recontainment Rate
+#### Recontainment Rate
 
 Measures how often containment must be repeated because the initial action was insufficient.
 
@@ -1834,7 +1834,7 @@ Metrics should be interpreted in the context of incident severity.
 
 ---
 
-# Containment and Automation
+## Containment and Automation
 
 Automation can accelerate response.
 
@@ -1859,7 +1859,7 @@ Not every alert should automatically isolate a production system.
 
 ---
 
-# SOAR Integration
+## SOAR Integration
 
 Security Orchestration, Automation and Response platforms can automate repetitive actions.
 
@@ -1888,7 +1888,7 @@ Automation should be based on confidence and business risk.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Containment is about **stopping the attack without creating unnecessary additional damage**.
 
@@ -1930,41 +1930,41 @@ The most important principles are:
 
 ---
 
-# References
+## References
 
-### NIST
+#### NIST
 
 **Computer Security Incident Handling Guide — SP 800-61**
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### CISA
+#### CISA
 
 Incident response and ransomware guidance:
 
 https://www.cisa.gov/
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 Adversary tactics and techniques:
 
 https://attack.mitre.org/
 
-### CIS Controls
+#### CIS Controls
 
 https://www.cisecurity.org/controls
 
-### FIRST
+#### FIRST
 
 https://www.first.org/
 
-### SANS
+#### SANS
 
 https://www.sans.org/
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Effective containment requires responders to balance:
 

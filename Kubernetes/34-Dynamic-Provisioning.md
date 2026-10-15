@@ -74,7 +74,7 @@ PVC Bound
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -96,9 +96,9 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need Dynamic Provisioning?
+## Why Do We Need Dynamic Provisioning?
 
-## Static Provisioning
+### Static Provisioning
 
 ```text
 Administrator
@@ -128,7 +128,7 @@ This requires manual work.
 
 ---
 
-## Dynamic Provisioning
+### Dynamic Provisioning
 
 ```text
 Developer
@@ -162,7 +162,7 @@ No administrator needs to manually create a PV for every application.
 
 ---
 
-# Static vs Dynamic Provisioning
+## Static vs Dynamic Provisioning
 
 | Static Provisioning           | Dynamic Provisioning                    |
 | ----------------------------- | --------------------------------------- |
@@ -174,7 +174,7 @@ No administrator needs to manually create a PV for every application.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```text
                     Application
@@ -224,7 +224,7 @@ No administrator needs to manually create a PV for every application.
 
 ---
 
-# Complete Dynamic Provisioning Workflow
+## Complete Dynamic Provisioning Workflow
 
 ```text
 1. Developer creates PVC
@@ -252,7 +252,7 @@ No administrator needs to manually create a PV for every application.
 
 ---
 
-# Step 1 – Developer Creates PVC
+## Step 1 – Developer Creates PVC
 
 Example:
 
@@ -289,7 +289,7 @@ The developer does not need to manually create a PV.
 
 ---
 
-# Step 2 – Kubernetes Finds StorageClass
+## Step 2 – Kubernetes Finds StorageClass
 
 PVC:
 
@@ -311,7 +311,7 @@ The StorageClass contains information about how storage should be provisioned.
 
 ---
 
-# Step 3 – Provisioner Receives Request
+## Step 3 – Provisioner Receives Request
 
 The StorageClass identifies the provisioner.
 
@@ -335,7 +335,7 @@ Modern Kubernetes environments commonly use CSI drivers.
 
 ---
 
-# Step 4 – CSI Driver Creates Storage
+## Step 4 – CSI Driver Creates Storage
 
 The CSI driver requests storage from the backend.
 
@@ -357,7 +357,7 @@ The exact process depends on the storage provider.
 
 ---
 
-# Step 5 – Storage Backend Creates Volume
+## Step 5 – Storage Backend Creates Volume
 
 The storage platform creates the actual storage resource.
 
@@ -371,7 +371,7 @@ At this point, the physical or virtual storage exists outside the Kubernetes API
 
 ---
 
-# Step 6 – Kubernetes Creates PV
+## Step 6 – Kubernetes Creates PV
 
 After successful provisioning:
 
@@ -409,7 +409,7 @@ fast-storage
 
 ---
 
-# Step 7 – PVC Becomes Bound
+## Step 7 – PVC Becomes Bound
 
 The PVC now connects to the newly created PV.
 
@@ -437,7 +437,7 @@ Bound
 
 ---
 
-# Step 8 – Pod Uses PVC
+## Step 8 – Pod Uses PVC
 
 The application Pod references:
 
@@ -455,7 +455,7 @@ The Pod does not need to know the underlying storage provider.
 
 ---
 
-# Step 9 – Volume Attachment
+## Step 9 – Volume Attachment
 
 If the storage backend requires attachment, Kubernetes coordinates attaching the volume to the Node where the Pod is running.
 
@@ -481,7 +481,7 @@ This process is handled through the CSI ecosystem and Kubernetes storage compone
 
 ---
 
-# Step 10 – Volume Mount
+## Step 10 – Volume Mount
 
 After the volume is attached:
 
@@ -511,7 +511,7 @@ The application can now read and write data.
 
 ---
 
-# Complete Production Flow
+## Complete Production Flow
 
 ```text
 Developer
@@ -559,7 +559,7 @@ Application
 
 ---
 
-# Dynamic Provisioning Components
+## Dynamic Provisioning Components
 
 The main components involved are:
 
@@ -575,7 +575,7 @@ kubelet
 
 ---
 
-# CSI Controller Side
+## CSI Controller Side
 
 The CSI controller typically handles operations such as:
 
@@ -601,7 +601,7 @@ Storage Backend
 
 ---
 
-# CSI Node Side
+## CSI Node Side
 
 The CSI node component runs on Kubernetes Nodes.
 
@@ -634,7 +634,7 @@ The next chapter covers CSI drivers in much greater depth.
 
 ---
 
-# `Immediate` Provisioning
+## `Immediate` Provisioning
 
 StorageClass:
 
@@ -668,7 +668,7 @@ Storage can be provisioned before Kubernetes knows which Node will consume it.
 
 ---
 
-# `WaitForFirstConsumer`
+## `WaitForFirstConsumer`
 
 StorageClass:
 
@@ -710,7 +710,7 @@ This is especially useful for topology-aware storage.
 
 ---
 
-# Why Topology Matters
+## Why Topology Matters
 
 Suppose a cloud cluster has:
 
@@ -754,7 +754,7 @@ Kubernetes can consider the Pod's scheduling constraints before provisioning sto
 
 ---
 
-# Topology-Aware Provisioning
+## Topology-Aware Provisioning
 
 Conceptually:
 
@@ -778,7 +778,7 @@ This prevents many incorrect storage placements.
 
 ---
 
-# Dynamic Provisioning with StatefulSets
+## Dynamic Provisioning with StatefulSets
 
 Dynamic provisioning is commonly used with StatefulSets.
 
@@ -834,7 +834,7 @@ This is useful for stateful workloads.
 
 ---
 
-# Storage Lifecycle
+## Storage Lifecycle
 
 ```text
 PVC Created
@@ -868,7 +868,7 @@ What happens to the underlying storage depends on the reclaim policy.
 
 ---
 
-# Reclaim Policy: Delete
+## Reclaim Policy: Delete
 
 ```text
 PVC Deleted
@@ -886,7 +886,7 @@ This is convenient for disposable workloads.
 
 ---
 
-# Reclaim Policy: Retain
+## Reclaim Policy: Retain
 
 ```text
 PVC Deleted
@@ -904,7 +904,7 @@ This is useful for critical data requiring manual recovery or controlled reuse.
 
 ---
 
-# Dynamic Volume Expansion
+## Dynamic Volume Expansion
 
 If supported:
 
@@ -944,23 +944,23 @@ The exact behavior depends on the CSI driver and filesystem.
 
 ---
 
-# Dynamic Provisioning vs Volume Mounting
+## Dynamic Provisioning vs Volume Mounting
 
 These are different operations.
 
-### Provisioning
+#### Provisioning
 
 ```text
 Create Storage
 ```
 
-### Attachment
+#### Attachment
 
 ```text
 Connect Storage to Node
 ```
 
-### Mounting
+#### Mounting
 
 ```text
 Make Storage Available to Pod
@@ -982,7 +982,7 @@ Mount
 
 ---
 
-# Important Kubernetes Storage Objects
+## Important Kubernetes Storage Objects
 
 ```text
 StorageClass
@@ -1010,7 +1010,7 @@ Represents attachment of a volume to a Node for storage systems that require it.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```text
                  Kubernetes API Server
@@ -1045,7 +1045,7 @@ Represents attachment of a volume to a Node for storage systems that require it.
 
 ---
 
-# Hands-on Lab 1 – Create Dynamic PVC
+## Hands-on Lab 1 – Create Dynamic PVC
 
 Create:
 
@@ -1082,7 +1082,7 @@ kubectl get pvc
 
 ---
 
-# Hands-on Lab 2 – Watch Provisioning
+## Hands-on Lab 2 – Watch Provisioning
 
 Run:
 
@@ -1126,7 +1126,7 @@ Bound
 
 ---
 
-# Hands-on Lab 3 – Inspect PVC Events
+## Hands-on Lab 3 – Inspect PVC Events
 
 ```bash
 kubectl describe pvc dynamic-pvc
@@ -1142,7 +1142,7 @@ You may see provisioning-related events.
 
 ---
 
-# Hands-on Lab 4 – Create a Pod
+## Hands-on Lab 4 – Create a Pod
 
 ```yaml
 apiVersion: v1
@@ -1182,7 +1182,7 @@ kubectl apply -f pod.yaml
 
 ---
 
-# Hands-on Lab 5 – Write Data
+## Hands-on Lab 5 – Write Data
 
 Enter the Pod:
 
@@ -1204,7 +1204,7 @@ cat /data/test.txt
 
 ---
 
-# Hands-on Lab 6 – Recreate the Pod
+## Hands-on Lab 6 – Recreate the Pod
 
 Delete:
 
@@ -1230,7 +1230,7 @@ The data remains because it is stored on the persistent volume rather than the c
 
 ---
 
-# Hands-on Lab 7 – Test PVC Expansion
+## Hands-on Lab 7 – Test PVC Expansion
 
 First verify:
 
@@ -1268,7 +1268,7 @@ Verify the new capacity.
 
 ---
 
-# Hands-on Lab 8 – Investigate a Pending PVC
+## Hands-on Lab 8 – Investigate a Pending PVC
 
 Create a PVC referencing a nonexistent StorageClass.
 
@@ -1302,9 +1302,9 @@ This is an excellent real-world troubleshooting exercise.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Thinking Dynamic Provisioning Means Dynamic Mounting
+### 1. Thinking Dynamic Provisioning Means Dynamic Mounting
 
 Dynamic provisioning means:
 
@@ -1322,7 +1322,7 @@ The Pod still needs to reference the PVC.
 
 ---
 
-## 2. Missing StorageClass
+### 2. Missing StorageClass
 
 If the PVC references a nonexistent StorageClass:
 
@@ -1336,7 +1336,7 @@ Pending
 
 ---
 
-## 3. Missing CSI Driver
+### 3. Missing CSI Driver
 
 A StorageClass may exist while its CSI driver is unavailable.
 
@@ -1354,13 +1354,13 @@ or provisioning failures.
 
 ---
 
-## 4. Ignoring Topology
+### 4. Ignoring Topology
 
 Storage may be created in a location incompatible with Pod placement when topology-aware provisioning is not configured appropriately.
 
 ---
 
-## 5. Confusing Provisioning with Attachment
+### 5. Confusing Provisioning with Attachment
 
 These are separate operations:
 
@@ -1380,7 +1380,7 @@ Failure can occur at any stage.
 
 ---
 
-## 6. Assuming All Storage Supports RWX
+### 6. Assuming All Storage Supports RWX
 
 Many block-storage systems support:
 
@@ -1398,7 +1398,7 @@ RWX generally requires an appropriate shared filesystem or storage backend.
 
 ---
 
-## 7. Deleting PVCs Without Understanding Reclaim Policy
+### 7. Deleting PVCs Without Understanding Reclaim Policy
 
 With:
 
@@ -1412,7 +1412,7 @@ Always understand the lifecycle before deleting production PVCs.
 
 ---
 
-# Troubleshooting Dynamic Provisioning
+## Troubleshooting Dynamic Provisioning
 
 When a PVC is stuck in:
 
@@ -1422,7 +1422,7 @@ Pending
 
 check the following.
 
-### Step 1
+#### Step 1
 
 ```bash
 kubectl get pvc
@@ -1430,7 +1430,7 @@ kubectl get pvc
 
 ---
 
-### Step 2
+#### Step 2
 
 ```bash
 kubectl describe pvc <pvc-name>
@@ -1440,7 +1440,7 @@ Check Events.
 
 ---
 
-### Step 3
+#### Step 3
 
 Check StorageClasses:
 
@@ -1450,7 +1450,7 @@ kubectl get storageclass
 
 ---
 
-### Step 4
+#### Step 4
 
 Check CSI Pods:
 
@@ -1469,7 +1469,7 @@ The exact names depend on the CSI driver.
 
 ---
 
-### Step 5
+#### Step 5
 
 Check PVs:
 
@@ -1479,7 +1479,7 @@ kubectl get pv
 
 ---
 
-### Step 6
+#### Step 6
 
 Check the Pod if using `WaitForFirstConsumer`:
 
@@ -1491,9 +1491,9 @@ If there is no consuming Pod, provisioning may intentionally be waiting.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Dynamic Provisioning
+### Dynamic Provisioning
 
 ```text
 PVC
@@ -1521,7 +1521,7 @@ PVC Bound
 
 ---
 
-## Complete Runtime Flow
+### Complete Runtime Flow
 
 ```text
 PVC
@@ -1553,7 +1553,7 @@ Application
 
 ---
 
-## Topology-Aware Provisioning
+### Topology-Aware Provisioning
 
 ```text
 PVC
@@ -1577,7 +1577,7 @@ Storage Provisioning
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View PVCs:
 
@@ -1623,9 +1623,9 @@ kubectl get pods -A
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 * What is dynamic provisioning?
 * How is dynamic provisioning different from static provisioning?
@@ -1633,7 +1633,7 @@ kubectl get pods -A
 
 ---
 
-## Intermediate
+### Intermediate
 
 * Explain the workflow of dynamic provisioning.
 * What is the role of a CSI driver?
@@ -1642,7 +1642,7 @@ kubectl get pods -A
 
 ---
 
-## Advanced
+### Advanced
 
 * Explain the complete PVC → StorageClass → CSI → PV workflow.
 * Why is `WaitForFirstConsumer` important for topology-aware storage?
@@ -1655,15 +1655,15 @@ kubectl get pods -A
 
 ---
 
-# Production Best Practices
+## Production Best Practices
 
-### 1. Prefer Dynamic Provisioning
+#### 1. Prefer Dynamic Provisioning
 
 Use StorageClasses and CSI drivers instead of manually creating PVs for every workload.
 
 ---
 
-### 2. Use `WaitForFirstConsumer` Where Appropriate
+#### 2. Use `WaitForFirstConsumer` Where Appropriate
 
 Especially for:
 
@@ -1673,7 +1673,7 @@ Especially for:
 
 ---
 
-### 3. Define Clear Storage Classes
+#### 3. Define Clear Storage Classes
 
 Avoid creating many classes without meaningful differences.
 
@@ -1681,7 +1681,7 @@ Use classes based on actual workload requirements.
 
 ---
 
-### 4. Protect Critical Data
+#### 4. Protect Critical Data
 
 For important workloads, carefully evaluate:
 
@@ -1694,7 +1694,7 @@ Encryption
 
 ---
 
-### 5. Monitor CSI Components
+#### 5. Monitor CSI Components
 
 Monitor:
 
@@ -1708,7 +1708,7 @@ Deletion
 
 ---
 
-### 6. Test Disaster Recovery
+#### 6. Test Disaster Recovery
 
 Persistent storage is not automatically a backup.
 
@@ -1724,9 +1724,9 @@ Use an appropriate backup and recovery strategy.
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 * Dynamic Volume Provisioning
 * Persistent Volumes
@@ -1738,7 +1738,7 @@ Use an appropriate backup and recovery strategy.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 * Kubernetes SIG Storage
 * Container Storage Interface
@@ -1747,7 +1747,7 @@ Use an appropriate backup and recovery strategy.
 
 ---
 
-## CSI Ecosystem
+### CSI Ecosystem
 
 Dynamic provisioning is commonly implemented through CSI drivers for storage systems such as:
 
@@ -1764,7 +1764,7 @@ Always consult the documentation for the specific CSI driver before configuring 
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create a PVC using an existing StorageClass.
 2. Observe automatic PV creation.
@@ -1779,7 +1779,7 @@ Always consult the documentation for the specific CSI driver before configuring 
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Dynamic provisioning transforms Kubernetes storage from a manually managed process into an automated workflow.
 
@@ -1861,9 +1861,9 @@ Dynamic provisioning is one of the most important concepts for running **statefu
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 35 – CSI Drivers
+## Chapter 35 – CSI Drivers
 
 Topics:
 

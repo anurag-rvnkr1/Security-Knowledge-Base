@@ -1,10 +1,10 @@
 # A10:2021 – Server-Side Request Forgery (SSRF)
 
-# Part 1 — Foundations, Architecture, Attack Flow, and Core Concepts
+## Part 1 — Foundations, Architecture, Attack Flow, and Core Concepts
 
 ---
 
-# Overview
+## Overview
 
 Server-Side Request Forgery (SSRF) is a vulnerability that allows an attacker to force a server-side application to send unintended requests to internal or external resources.
 
@@ -26,7 +26,7 @@ Because the request originates from the trusted application, SSRF can bypass net
 
 ---
 
-# Why SSRF Matters
+## Why SSRF Matters
 
 Many organizations expose only a few public-facing services while protecting critical infrastructure behind firewalls.
 
@@ -65,7 +65,7 @@ However, if the public server is vulnerable to SSRF, an attacker may leverage it
 
 ---
 
-# What Makes SSRF Dangerous?
+## What Makes SSRF Dangerous?
 
 Unlike many web vulnerabilities, SSRF targets the **server's trust relationships** rather than the user's browser.
 
@@ -83,7 +83,7 @@ Potential consequences include:
 
 ---
 
-# High-Level SSRF Workflow
+## High-Level SSRF Workflow
 
 ```
 Attacker
@@ -115,7 +115,7 @@ Attacker Reads Sensitive Data
 
 ---
 
-# Example Vulnerable Feature
+## Example Vulnerable Feature
 
 Many web applications retrieve remote resources.
 
@@ -144,7 +144,7 @@ If the application fails to validate the destination, attackers may provide arbi
 
 ---
 
-# Basic SSRF Example
+## Basic SSRF Example
 
 Normal request:
 
@@ -182,7 +182,7 @@ The attacker cannot normally reach `127.0.0.1`, but the server can.
 
 ---
 
-# Trust Relationships
+## Trust Relationships
 
 ```
 Internet User
@@ -216,7 +216,7 @@ SSRF abuses this trust.
 
 ---
 
-# SSRF Request Flow
+## SSRF Request Flow
 
 ```
 Attacker
@@ -254,11 +254,11 @@ The application unknowingly acts as the attacker's proxy.
 
 ---
 
-# Real-World SSRF Entry Points
+## Real-World SSRF Entry Points
 
 Common features vulnerable to SSRF include:
 
-### Image Upload by URL
+#### Image Upload by URL
 
 ```
 Import Profile Picture
@@ -270,7 +270,7 @@ Server Downloads Image
 
 ---
 
-### PDF Generator
+#### PDF Generator
 
 ```
 Generate PDF
@@ -282,7 +282,7 @@ Render Remote Content
 
 ---
 
-### Webhooks
+#### Webhooks
 
 ```
 Webhook Validation
@@ -294,7 +294,7 @@ Server Connects
 
 ---
 
-### URL Preview
+#### URL Preview
 
 ```
 Paste Link
@@ -306,7 +306,7 @@ Server Retrieves Metadata
 
 ---
 
-### XML Processors
+#### XML Processors
 
 ```
 XML Input
@@ -320,7 +320,7 @@ External Resource Resolution
 
 ---
 
-### API Integrations
+#### API Integrations
 
 ```
 CRM
@@ -338,13 +338,13 @@ Improper validation may enable SSRF through integration endpoints.
 
 ---
 
-# Types of SSRF
+## Types of SSRF
 
 SSRF is commonly categorized into two broad types.
 
 ---
 
-## Basic SSRF
+### Basic SSRF
 
 The attacker receives the server's response.
 
@@ -378,7 +378,7 @@ The attacker directly observes the returned content.
 
 ---
 
-## Blind SSRF
+### Blind SSRF
 
 The attacker cannot see the response but can still trigger server-side requests.
 
@@ -406,7 +406,7 @@ Blind SSRF is often identified using out-of-band testing techniques.
 
 ---
 
-# Common SSRF Targets
+## Common SSRF Targets
 
 ```
 Internal Admin Panels
@@ -454,7 +454,7 @@ Service Discovery Systems
 
 ---
 
-# Localhost Attacks
+## Localhost Attacks
 
 Many applications trust localhost.
 
@@ -478,7 +478,7 @@ Potential services:
 
 ---
 
-# Internal Network Attacks
+## Internal Network Attacks
 
 Attackers may attempt requests such as:
 
@@ -494,7 +494,7 @@ The objective is to discover internal services that are not exposed externally.
 
 ---
 
-# Cloud Metadata Services
+## Cloud Metadata Services
 
 Cloud providers expose instance metadata services for legitimate administrative purposes.
 
@@ -522,7 +522,7 @@ If accessible through SSRF, these services may reveal sensitive instance metadat
 
 ---
 
-# Internal Service Discovery
+## Internal Service Discovery
 
 An attacker may attempt requests to:
 
@@ -547,7 +547,7 @@ Different response behaviors can help infer:
 
 ---
 
-# Why Firewalls May Not Help
+## Why Firewalls May Not Help
 
 Traditional firewalls often restrict incoming traffic from the Internet.
 
@@ -573,9 +573,9 @@ Since the application is already authorized to communicate internally, network c
 
 ---
 
-# SSRF vs Client-Side Request
+## SSRF vs Client-Side Request
 
-### Browser Request
+#### Browser Request
 
 ```
 User Browser
@@ -589,7 +589,7 @@ Originates from the user's device.
 
 ---
 
-### SSRF
+#### SSRF
 
 ```
 Server
@@ -605,7 +605,7 @@ This distinction is fundamental to understanding SSRF.
 
 ---
 
-# Common Root Causes
+## Common Root Causes
 
 SSRF vulnerabilities typically arise when applications:
 
@@ -619,7 +619,7 @@ SSRF vulnerabilities typically arise when applications:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Successful SSRF attacks may enable:
 
@@ -634,7 +634,7 @@ Successful SSRF attacks may enable:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - SSRF occurs when an application makes unintended server-side requests using attacker-controlled input.
 - The vulnerability abuses the server's trust relationships rather than the client's browser.
@@ -642,7 +642,7 @@ Successful SSRF attacks may enable:
 - Basic SSRF returns the server's response, while Blind SSRF relies on indirect indicators such as DNS or timing.
 - Preventing SSRF requires careful validation of outbound requests, network segmentation, and least-privilege access for server-side components.
 
-# Advanced SSRF Exploitation Techniques
+## Advanced SSRF Exploitation Techniques
 
 > **Educational Note**
 >
@@ -650,7 +650,7 @@ Successful SSRF attacks may enable:
 
 ---
 
-# Overview
+## Overview
 
 Many modern applications perform some level of URL validation.
 
@@ -668,7 +668,7 @@ Understanding these techniques is essential for building robust SSRF defenses.
 
 ---
 
-# Advanced SSRF Attack Workflow
+## Advanced SSRF Attack Workflow
 
 ```
 Attacker
@@ -706,7 +706,7 @@ An attacker may target weaknesses at any stage of this workflow.
 
 ---
 
-# URL Parsing
+## URL Parsing
 
 Applications typically process a URL in several stages:
 
@@ -734,7 +734,7 @@ If validation logic and the HTTP client interpret the URL differently, security 
 
 ---
 
-# URL Parser Inconsistencies
+## URL Parser Inconsistencies
 
 Different libraries may parse the same URL differently.
 
@@ -752,7 +752,7 @@ Defensive takeaway:
 
 ---
 
-# Redirect-Based SSRF
+## Redirect-Based SSRF
 
 Some applications validate only the initial URL.
 
@@ -784,7 +784,7 @@ Defensive considerations:
 
 ---
 
-# DNS Resolution
+## DNS Resolution
 
 Most outbound requests involve DNS.
 
@@ -808,7 +808,7 @@ Security controls should evaluate both the hostname and the resolved IP address.
 
 ---
 
-# DNS Rebinding (Concept)
+## DNS Rebinding (Concept)
 
 DNS rebinding relies on changes in DNS responses over time.
 
@@ -846,7 +846,7 @@ Modern defenses include:
 
 ---
 
-# Internal Network Discovery
+## Internal Network Discovery
 
 An SSRF vulnerability may allow limited discovery of internal services.
 
@@ -862,7 +862,7 @@ These differences can reveal information about internal infrastructure even when
 
 ---
 
-# Blind SSRF
+## Blind SSRF
 
 Blind SSRF occurs when the attacker cannot directly observe the response.
 
@@ -893,7 +893,7 @@ Monitoring unexpected outbound requests is therefore an important defensive cont
 
 ---
 
-# Server-Side Port Discovery
+## Server-Side Port Discovery
 
 Applications may generate different responses depending on whether a destination service is reachable.
 
@@ -927,7 +927,7 @@ These behavioral differences can unintentionally disclose network information.
 
 ---
 
-# Cloud Metadata Services
+## Cloud Metadata Services
 
 Many cloud platforms provide metadata services accessible from the instance itself.
 
@@ -943,19 +943,19 @@ Access to metadata should be carefully restricted because these services are int
 
 ---
 
-# AWS Metadata Service
+## AWS Metadata Service
 
 AWS provides the Instance Metadata Service (IMDS).
 
 Two versions exist:
 
-### IMDSv1
+#### IMDSv1
 
 - Request-based access
 - Simpler interaction model
 - More susceptible to SSRF if applications can reach the metadata endpoint
 
-### IMDSv2
+#### IMDSv2
 
 Introduces additional protections including:
 
@@ -967,7 +967,7 @@ Organizations should prefer IMDSv2 where supported.
 
 ---
 
-# Azure Metadata Service
+## Azure Metadata Service
 
 Azure virtual machines also expose a metadata service.
 
@@ -979,7 +979,7 @@ Security considerations include:
 
 ---
 
-# Google Cloud Metadata Service
+## Google Cloud Metadata Service
 
 Google Cloud similarly exposes instance metadata.
 
@@ -991,7 +991,7 @@ Common defensive measures include:
 
 ---
 
-# Local Services
+## Local Services
 
 Applications sometimes trust services running on the same host.
 
@@ -1017,7 +1017,7 @@ These services may not expect requests originating from untrusted user input.
 
 ---
 
-# Service-to-Service Communication
+## Service-to-Service Communication
 
 Modern architectures frequently rely on internal APIs.
 
@@ -1041,7 +1041,7 @@ An SSRF vulnerability in one component may allow unintended interaction with dow
 
 ---
 
-# URL Validation
+## URL Validation
 
 Robust validation should verify:
 
@@ -1056,7 +1056,7 @@ Validation should occur before establishing the outbound connection.
 
 ---
 
-# Allowlisting
+## Allowlisting
 
 Allowlisting is generally safer than blocking known-bad destinations.
 
@@ -1078,7 +1078,7 @@ Everything else should be rejected by default unless explicitly required.
 
 ---
 
-# URL Canonicalization
+## URL Canonicalization
 
 Before validation:
 
@@ -1106,7 +1106,7 @@ Canonicalization helps ensure that validation operates on a consistent represent
 
 ---
 
-# Outbound Network Controls
+## Outbound Network Controls
 
 Applications should not be able to contact every destination.
 
@@ -1128,7 +1128,7 @@ Restricting outbound connectivity limits the impact of SSRF even if application-
 
 ---
 
-# Microservice Environments
+## Microservice Environments
 
 Microservice architectures increase the importance of SSRF protection.
 
@@ -1152,7 +1152,7 @@ Each service should validate outbound requests independently rather than assumin
 
 ---
 
-# Containerized Applications
+## Containerized Applications
 
 Containerized workloads often communicate with:
 
@@ -1165,7 +1165,7 @@ Network policies and least-privilege communication paths help reduce SSRF impact
 
 ---
 
-# Common Defensive Mistakes
+## Common Defensive Mistakes
 
 Examples include:
 
@@ -1181,7 +1181,7 @@ Security controls should address the complete outbound request lifecycle rather 
 
 ---
 
-# Defense-in-Depth
+## Defense-in-Depth
 
 Effective SSRF protection combines multiple layers:
 
@@ -1225,7 +1225,7 @@ No single control is sufficient on its own.
 
 ---
 
-# Real-World Example: Capital One (2019)
+## Real-World Example: Capital One (2019)
 
 One widely discussed cloud security incident involved an SSRF vulnerability that enabled access to cloud metadata resources.
 
@@ -1241,7 +1241,7 @@ The incident demonstrated how an application-layer vulnerability can have infras
 
 ---
 
-# Business Impact
+## Business Impact
 
 Advanced SSRF techniques may contribute to:
 
@@ -1256,7 +1256,7 @@ Well-designed validation, network segmentation, and monitoring significantly red
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Attackers often target weaknesses in URL parsing, redirects, DNS handling, and trust relationships rather than the HTTP request itself.
 - Validation should include canonicalization, hostname verification, resolved IP checks, and redirect validation.
@@ -1264,11 +1264,11 @@ Well-designed validation, network segmentation, and monitoring significantly red
 - Outbound network restrictions and allowlists provide strong defense-in-depth even when application validation fails.
 - Multiple independent security controls are more effective than relying on a single blacklist or regular expression.
 
-# Detection, Prevention, and Enterprise Mitigations
+## Detection, Prevention, and Enterprise Mitigations
 
 ---
 
-# Overview
+## Overview
 
 Preventing SSRF requires more than validating user-supplied URLs.
 
@@ -1287,7 +1287,7 @@ This layered approach significantly reduces the likelihood and impact of SSRF.
 
 ---
 
-# Defense-in-Depth Architecture
+## Defense-in-Depth Architecture
 
 ```
                  User Input
@@ -1318,7 +1318,7 @@ Each layer should independently verify that the request is safe before it leaves
 
 ---
 
-# Secure Application Design
+## Secure Application Design
 
 Applications should never allow arbitrary outbound requests.
 
@@ -1348,7 +1348,7 @@ Instead of accepting an unrestricted URL from users, applications should map use
 
 ---
 
-# Secure URL Validation
+## Secure URL Validation
 
 Before making an outbound request, verify:
 
@@ -1363,7 +1363,7 @@ Validation should occur after normalization to avoid inconsistencies.
 
 ---
 
-# URL Canonicalization
+## URL Canonicalization
 
 Normalize URLs before applying validation rules.
 
@@ -1391,7 +1391,7 @@ This helps ensure that equivalent representations are evaluated consistently.
 
 ---
 
-# Allowlist-Based Validation
+## Allowlist-Based Validation
 
 Allowlisting is generally more reliable than attempting to block every dangerous destination.
 
@@ -1417,7 +1417,7 @@ Requests to destinations outside the allowlist should be rejected unless explici
 
 ---
 
-# Scheme Validation
+## Scheme Validation
 
 Only permit protocols required by the application.
 
@@ -1434,7 +1434,7 @@ Reject unnecessary or unsupported schemes to reduce attack surface.
 
 ---
 
-# Redirect Validation
+## Redirect Validation
 
 Every redirect should be validated before following it.
 
@@ -1458,7 +1458,7 @@ Blindly following redirects may allow requests to reach unintended systems.
 
 ---
 
-# DNS Validation
+## DNS Validation
 
 Hostname validation alone is insufficient.
 
@@ -1488,7 +1488,7 @@ Both the hostname and the resolved address should satisfy security policy.
 
 ---
 
-# Outbound Firewall (Egress Filtering)
+## Outbound Firewall (Egress Filtering)
 
 Applications rarely need unrestricted outbound network access.
 
@@ -1526,7 +1526,7 @@ Restricting outbound traffic significantly limits SSRF impact.
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Sensitive systems should not be directly reachable from public-facing applications.
 
@@ -1554,7 +1554,7 @@ Each network boundary should enforce appropriate access controls.
 
 ---
 
-# Zero Trust Networking
+## Zero Trust Networking
 
 Modern architectures should verify every connection.
 
@@ -1578,7 +1578,7 @@ Trust should be based on identity and policy rather than network location.
 
 ---
 
-# Cloud Security Controls
+## Cloud Security Controls
 
 Applications running in cloud environments require additional safeguards.
 
@@ -1594,7 +1594,7 @@ Cloud-native controls complement application-level defenses.
 
 ---
 
-# AWS Best Practices
+## AWS Best Practices
 
 Recommendations include:
 
@@ -1605,7 +1605,7 @@ Recommendations include:
 
 ---
 
-# Azure Best Practices
+## Azure Best Practices
 
 Recommendations include:
 
@@ -1616,7 +1616,7 @@ Recommendations include:
 
 ---
 
-# Google Cloud Best Practices
+## Google Cloud Best Practices
 
 Recommendations include:
 
@@ -1627,7 +1627,7 @@ Recommendations include:
 
 ---
 
-# Kubernetes Security
+## Kubernetes Security
 
 Applications running in Kubernetes should follow additional controls.
 
@@ -1658,7 +1658,7 @@ Recommendations:
 
 ---
 
-# Service Mesh
+## Service Mesh
 
 A service mesh can provide additional controls for service-to-service communication.
 
@@ -1674,7 +1674,7 @@ These controls help reduce the impact of SSRF within microservice environments.
 
 ---
 
-# Secure Coding Practices
+## Secure Coding Practices
 
 Developers should:
 
@@ -1691,7 +1691,7 @@ Security should be built into application design rather than added later.
 
 ---
 
-# Logging for SSRF Detection
+## Logging for SSRF Detection
 
 Log security-relevant outbound requests, including:
 
@@ -1723,7 +1723,7 @@ Avoid logging sensitive request bodies or credentials.
 
 ---
 
-# Monitoring for SSRF
+## Monitoring for SSRF
 
 Monitor for unusual outbound activity such as:
 
@@ -1738,7 +1738,7 @@ Behavioral monitoring improves detection of attempted exploitation.
 
 ---
 
-# SIEM Detection Use Cases
+## SIEM Detection Use Cases
 
 Potential detection scenarios include:
 
@@ -1766,7 +1766,7 @@ These detections should be tailored to the application's expected behavior.
 
 ---
 
-# Example Detection Workflow
+## Example Detection Workflow
 
 ```
 Application Log
@@ -1796,7 +1796,7 @@ Correlating multiple telemetry sources improves detection confidence.
 
 ---
 
-# WAF Considerations
+## WAF Considerations
 
 A Web Application Firewall (WAF) may help detect suspicious request patterns but should not be relied upon as the sole SSRF defense.
 
@@ -1811,9 +1811,9 @@ Defense-in-depth remains essential.
 
 ---
 
-# Secure Architecture Checklist
+## Secure Architecture Checklist
 
-## Application
+### Application
 
 ✔ Validate URLs after normalization.
 
@@ -1827,7 +1827,7 @@ Defense-in-depth remains essential.
 
 ---
 
-## Infrastructure
+### Infrastructure
 
 ✔ Restrict outbound traffic.
 
@@ -1841,7 +1841,7 @@ Defense-in-depth remains essential.
 
 ---
 
-## Operations
+### Operations
 
 ✔ SIEM integration.
 
@@ -1855,7 +1855,7 @@ Defense-in-depth remains essential.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Organizations implementing layered SSRF defenses benefit from:
 
@@ -1868,7 +1868,7 @@ Organizations implementing layered SSRF defenses benefit from:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective SSRF prevention requires secure application design, not just input filtering.
 - Validate canonical URLs, resolved IP addresses, and redirect destinations before making outbound requests.
@@ -1877,11 +1877,11 @@ Organizations implementing layered SSRF defenses benefit from:
 - Logging, monitoring, and SIEM-based detection provide visibility into suspicious outbound request patterns.
 - Multiple independent security controls provide stronger protection than any single mitigation technique.
 
-# Common SSRF Misconfigurations
+## Common SSRF Misconfigurations
 
 ---
 
-# Overview
+## Overview
 
 Most Server-Side Request Forgery (SSRF) vulnerabilities are not caused by flaws in HTTP libraries but by insecure application design and insufficient validation of outbound requests.
 
@@ -1889,9 +1889,9 @@ The following sections describe common defensive mistakes and recommended practi
 
 ---
 
-# Accepting Arbitrary URLs
+## Accepting Arbitrary URLs
 
-## Insecure Design
+### Insecure Design
 
 ```
 User
@@ -1907,7 +1907,7 @@ Application Downloads Resource
 
 Allowing users to specify unrestricted destinations significantly increases the attack surface.
 
-### Better Approach
+#### Better Approach
 
 ```
 User
@@ -1929,7 +1929,7 @@ Whenever possible, applications should avoid accepting arbitrary URLs and instea
 
 ---
 
-# Relying Only on Blacklists
+## Relying Only on Blacklists
 
 Blocking a few known values (such as `localhost`) is generally insufficient.
 
@@ -1949,7 +1949,7 @@ A more robust approach is to use an explicit allowlist of trusted destinations a
 
 ---
 
-# Trusting Only the Hostname
+## Trusting Only the Hostname
 
 Example validation:
 
@@ -1967,7 +1967,7 @@ Applications should validate both the hostname and the final destination used fo
 
 ---
 
-# Following Redirects Automatically
+## Following Redirects Automatically
 
 Example:
 
@@ -1987,7 +1987,7 @@ Redirect destinations should be validated before each outbound request.
 
 ---
 
-# Unrestricted Outbound Connectivity
+## Unrestricted Outbound Connectivity
 
 ```
 Application
@@ -2007,7 +2007,7 @@ Implementing egress filtering limits the systems an application can contact.
 
 ---
 
-# Overprivileged Workloads
+## Overprivileged Workloads
 
 Applications sometimes run with permissions that exceed operational requirements.
 
@@ -2021,7 +2021,7 @@ Applying the principle of least privilege reduces the potential impact of SSRF.
 
 ---
 
-# Missing Monitoring
+## Missing Monitoring
 
 Without monitoring:
 
@@ -2045,7 +2045,7 @@ Organizations should monitor unusual outbound activity, including attempts to ac
 
 ---
 
-# Secure Software Development Lifecycle (SSDLC)
+## Secure Software Development Lifecycle (SSDLC)
 
 SSRF prevention should be integrated throughout development.
 
@@ -2081,7 +2081,7 @@ Security is most effective when incorporated early rather than added after deplo
 
 ---
 
-# Threat Modeling for SSRF
+## Threat Modeling for SSRF
 
 During design, identify features that initiate outbound requests.
 
@@ -2104,7 +2104,7 @@ For each feature, determine:
 
 ---
 
-# Code Review Checklist
+## Code Review Checklist
 
 Reviewers should verify that:
 
@@ -2122,7 +2122,7 @@ Reviewers should verify that:
 
 ---
 
-# Security Testing
+## Security Testing
 
 Testing should verify that:
 
@@ -2136,7 +2136,7 @@ Testing should be performed in authorized environments as part of the secure dev
 
 ---
 
-# Enterprise SSRF Assessment Methodology
+## Enterprise SSRF Assessment Methodology
 
 A structured assessment may include:
 
@@ -2180,15 +2180,15 @@ This approach emphasizes reducing risk rather than simply identifying vulnerabil
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Objective
+### Objective
 
 Evaluate an application that retrieves remote resources and assess whether its design adequately mitigates SSRF risks.
 
 ---
 
-## Scenario
+### Scenario
 
 Application capabilities include:
 
@@ -2207,7 +2207,7 @@ Supporting infrastructure:
 
 ---
 
-## Tasks
+### Tasks
 
 1. Identify every feature that performs outbound requests.
 2. Document approved destinations for each feature.
@@ -2220,7 +2220,7 @@ Supporting infrastructure:
 
 ---
 
-## Expected Learning Outcomes
+### Expected Learning Outcomes
 
 After completing this assessment, you should be able to:
 
@@ -2232,32 +2232,32 @@ After completing this assessment, you should be able to:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is SSRF?
+#### What is SSRF?
 
 Server-Side Request Forgery (SSRF) is a vulnerability that allows an attacker to cause a server-side application to send unintended requests to internal or external resources using attacker-controlled input.
 
 ---
 
-### Why is SSRF dangerous?
+#### Why is SSRF dangerous?
 
 Because the request originates from the trusted application, it may access resources that are not directly reachable from the Internet, such as internal APIs or cloud metadata services.
 
 ---
 
-### What is the difference between SSRF and Client-Side Request Forgery (CSRF)?
+#### What is the difference between SSRF and Client-Side Request Forgery (CSRF)?
 
 - **SSRF** abuses the application's server to make unintended outbound requests.
 - **CSRF** tricks a user's browser into performing unintended actions on a website where the user is already authenticated.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### How can organizations reduce SSRF risk?
+#### How can organizations reduce SSRF risk?
 
 A layered strategy includes:
 
@@ -2271,21 +2271,21 @@ A layered strategy includes:
 
 ---
 
-### Why is allowlisting preferred over blacklisting?
+#### Why is allowlisting preferred over blacklisting?
 
 Allowlisting defines the small set of destinations that are explicitly trusted. This is generally easier to maintain securely than attempting to block every potentially dangerous destination.
 
 ---
 
-### Why should applications log outbound requests?
+#### Why should applications log outbound requests?
 
 Logging enables organizations to detect unusual communication patterns, investigate incidents, and improve detection engineering while supporting forensic analysis.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you design a secure SSRF-resistant architecture?
+#### How would you design a secure SSRF-resistant architecture?
 
 A secure architecture should include:
 
@@ -2302,7 +2302,7 @@ A secure architecture should include:
 
 ---
 
-### How would you investigate a suspected SSRF incident?
+#### How would you investigate a suspected SSRF incident?
 
 A structured investigation may involve:
 
@@ -2317,28 +2317,28 @@ A structured investigation may involve:
 
 ---
 
-# References
+## References
 
-## OWASP
+### OWASP
 
 - OWASP Top 10 (2021)
 - OWASP SSRF Prevention Cheat Sheet
 - OWASP Web Security Testing Guide (WSTG)
 - OWASP Application Security Verification Standard (ASVS)
 
-## NIST
+### NIST
 
 - NIST Secure Software Development Framework (SSDF)
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-53
 
-## CISA
+### CISA
 
 - Secure by Design
 - Secure by Demand
 - Cloud Security Technical Guidance
 
-## Cloud Providers
+### Cloud Providers
 
 - AWS Security Best Practices
 - Azure Security Documentation
@@ -2346,15 +2346,15 @@ A structured investigation may involve:
 
 ---
 
-# Summary
+## Summary
 
 Server-Side Request Forgery (SSRF) exploits trusted server-side communication paths by causing applications to send unintended outbound requests. Effective mitigation requires secure application design, strict destination validation, URL canonicalization, egress filtering, network segmentation, least-privilege identities, and continuous monitoring. Organizations should treat every outbound request as a security-sensitive operation and integrate SSRF protections into the Secure Software Development Lifecycle (SSDLC). Combining preventive controls with centralized logging, detection engineering, and regular security assessments significantly reduces the likelihood and impact of SSRF attacks.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
-## Skills Covered
+### Skills Covered
 
 After completing this chapter, you should understand:
 
@@ -2386,7 +2386,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# OWASP Top 10 (2021) Status
+## OWASP Top 10 (2021) Status
 
 ✅ A01 – Broken Access Control
 

@@ -52,7 +52,7 @@ The objective is to determine:
 
 ---
 
-# Why DNS Matters for Threat Hunting
+## Why DNS Matters for Threat Hunting
 
 DNS sits between applications and network infrastructure.
 
@@ -102,7 +102,7 @@ Even when the final HTTPS payload cannot be inspected, DNS can provide the first
 
 ---
 
-# DNS Threat-Hunting Architecture
+## DNS Threat-Hunting Architecture
 
 ```text
                          CLIENT
@@ -148,11 +148,11 @@ Security telemetry can be collected at multiple points:
 
 ---
 
-# DNS Components
+## DNS Components
 
 A threat hunter should understand the basic DNS architecture.
 
-## Stub Resolver
+### Stub Resolver
 
 The endpoint's local component that initiates DNS resolution.
 
@@ -165,7 +165,7 @@ Stub Resolver
 
 ---
 
-## Recursive Resolver
+### Recursive Resolver
 
 The recursive resolver performs DNS resolution on behalf of the client.
 
@@ -182,13 +182,13 @@ Recursive Resolver
 
 ---
 
-## Authoritative DNS Server
+### Authoritative DNS Server
 
 The authoritative server provides the authoritative answer for a DNS zone.
 
 ---
 
-## DNS Cache
+### DNS Cache
 
 Resolvers and endpoints may cache DNS responses.
 
@@ -198,7 +198,7 @@ A domain may not generate a DNS query every time an application connects because
 
 ---
 
-# Important DNS Record Types
+## Important DNS Record Types
 
 | Record | Purpose |
 |---|---|
@@ -217,7 +217,7 @@ Attackers can abuse or interact with different record types depending on their o
 
 ---
 
-# DNS Query Lifecycle
+## DNS Query Lifecycle
 
 Consider:
 
@@ -260,7 +260,7 @@ Endpoint Process
 
 ---
 
-# DNS Telemetry
+## DNS Telemetry
 
 Useful DNS fields include:
 
@@ -293,7 +293,7 @@ Category
 
 ---
 
-# DNS Logging
+## DNS Logging
 
 Common DNS sources include:
 
@@ -316,7 +316,7 @@ A mature organization should centralize DNS telemetry where possible.
 
 ---
 
-# DNS Hunting Data Model
+## DNS Hunting Data Model
 
 A useful normalized DNS event:
 
@@ -338,7 +338,7 @@ This makes cross-source hunting easier.
 
 ---
 
-# DNS Threat-Hunting Workflow
+## DNS Threat-Hunting Workflow
 
 ```text
 DNS Event
@@ -373,7 +373,7 @@ Investigate
 
 ---
 
-# Hunt Category 1 — Rare Domains
+## Hunt Category 1 — Rare Domains
 
 One of the simplest DNS hunts is identifying domains rarely queried within the organization.
 
@@ -398,7 +398,7 @@ A new business application may legitimately be used by only one department.
 
 ---
 
-# Domain Prevalence
+## Domain Prevalence
 
 Calculate:
 
@@ -444,7 +444,7 @@ External Connection
 
 ---
 
-# First-Seen Domains
+## First-Seen Domains
 
 Newly observed domains can be valuable hunting leads.
 
@@ -469,7 +469,7 @@ But legitimate software releases and new SaaS platforms also create first-seen d
 
 ---
 
-# Newly Registered Domains
+## Newly Registered Domains
 
 Threat actors sometimes use recently registered domains for:
 
@@ -493,7 +493,7 @@ instead of relying on registration age alone.
 
 ---
 
-# Domain Age Limitations
+## Domain Age Limitations
 
 Domain age is not proof of maliciousness.
 
@@ -521,7 +521,7 @@ is a stronger model.
 
 ---
 
-# Hunt Category 2 — NXDOMAIN
+## Hunt Category 2 — NXDOMAIN
 
 NXDOMAIN means the requested domain does not exist according to the DNS response.
 
@@ -549,7 +549,7 @@ This should be investigated when the pattern is unusual.
 
 ---
 
-# NXDOMAIN Ratio
+## NXDOMAIN Ratio
 
 A useful metric:
 
@@ -573,7 +573,7 @@ But legitimate applications can also produce high failure rates.
 
 ---
 
-# DGA Hunting
+## DGA Hunting
 
 Domain Generation Algorithms can generate large numbers of domains programmatically.
 
@@ -595,7 +595,7 @@ Only some generated domains may actually be registered.
 
 ---
 
-# DGA Indicators
+## DGA Indicators
 
 Potential signals include:
 
@@ -610,7 +610,7 @@ Potential signals include:
 
 ---
 
-# DGA Detection Model
+## DGA Detection Model
 
 ```text
 Host
@@ -627,7 +627,7 @@ Host
 
 ---
 
-# Domain Entropy
+## Domain Entropy
 
 Entropy can be used as one signal for measuring randomness.
 
@@ -654,7 +654,7 @@ Therefore entropy should never be used as a standalone maliciousness decision.
 
 ---
 
-# Shannon Entropy
+## Shannon Entropy
 
 For a string:
 
@@ -689,7 +689,7 @@ This is useful for exploratory hunting, not definitive malware classification.
 
 ---
 
-# Hunt Category 3 — Long DNS Labels
+## Hunt Category 3 — Long DNS Labels
 
 DNS tunneling and automated infrastructure can produce unusually long labels.
 
@@ -719,7 +719,7 @@ Rare Parent Domain
 
 ---
 
-# DNS Tunneling
+## DNS Tunneling
 
 DNS tunneling abuses DNS as a communication channel.
 
@@ -745,7 +745,7 @@ Responses may also carry encoded data.
 
 ---
 
-# DNS Tunneling Indicators
+## DNS Tunneling Indicators
 
 Potential signals include:
 
@@ -761,7 +761,7 @@ Potential signals include:
 
 ---
 
-# DNS Tunneling vs Legitimate Services
+## DNS Tunneling vs Legitimate Services
 
 Legitimate services can also produce:
 
@@ -784,7 +784,7 @@ Therefore, combine multiple signals.
 
 ---
 
-# Hunt Category 4 — TXT Record Abuse
+## Hunt Category 4 — TXT Record Abuse
 
 TXT records have legitimate uses:
 
@@ -809,7 +809,7 @@ Suspicious Endpoint
 
 ---
 
-# Hunt Category 5 — DNS Over HTTPS
+## Hunt Category 5 — DNS Over HTTPS
 
 DNS over HTTPS (DoH) encrypts DNS queries within HTTPS.
 
@@ -834,7 +834,7 @@ This creates a visibility challenge.
 
 ---
 
-# DoH Hunting
+## DoH Hunting
 
 Potential signals include:
 
@@ -856,7 +856,7 @@ Policies should reflect organizational requirements.
 
 ---
 
-# DNS Over TLS
+## DNS Over TLS
 
 DNS over TLS similarly encrypts DNS traffic.
 
@@ -876,7 +876,7 @@ Monitoring therefore requires network and endpoint context.
 
 ---
 
-# Encrypted DNS Visibility Model
+## Encrypted DNS Visibility Model
 
 ```text
 Traditional DNS
@@ -895,7 +895,7 @@ Encryption reduces payload visibility but does not necessarily eliminate behavio
 
 ---
 
-# Hunt Category 6 — DNS Beaconing
+## Hunt Category 6 — DNS Beaconing
 
 Periodic DNS requests may indicate automated communication.
 
@@ -922,7 +922,7 @@ Suspicious Process
 
 ---
 
-# Beacon Jitter
+## Beacon Jitter
 
 Real-world beaconing may include variation:
 
@@ -940,7 +940,7 @@ Analyze distributions rather than exact equality.
 
 ---
 
-# DNS Burst Analysis
+## DNS Burst Analysis
 
 Some malware may generate short bursts.
 
@@ -966,7 +966,7 @@ This can indicate:
 
 ---
 
-# Hunt Category 7 — DNS to Network Correlation
+## Hunt Category 7 — DNS to Network Correlation
 
 A DNS query should often precede network communication.
 
@@ -1004,7 +1004,7 @@ align temporally.
 
 ---
 
-# DNS and Endpoint Correlation
+## DNS and Endpoint Correlation
 
 Suppose:
 
@@ -1026,7 +1026,7 @@ This is significantly more suspicious than the DNS query alone.
 
 ---
 
-# Hunt Category 8 — Internal DNS Reconnaissance
+## Hunt Category 8 — Internal DNS Reconnaissance
 
 Attackers may query internal DNS records to discover:
 
@@ -1055,7 +1055,7 @@ Correlate with:
 
 ---
 
-# Active Directory DNS Hunting
+## Active Directory DNS Hunting
 
 In Windows environments, DNS can provide information about:
 
@@ -1069,7 +1069,7 @@ Unusual DNS activity from a workstation can therefore support discovery hunting.
 
 ---
 
-# Reverse DNS Hunting
+## Reverse DNS Hunting
 
 PTR lookups can provide hostnames for IP addresses.
 
@@ -1089,7 +1089,7 @@ Reverse DNS can also support investigation of unusual destinations.
 
 ---
 
-# DNS and Phishing
+## DNS and Phishing
 
 Phishing infrastructure may involve:
 
@@ -1119,7 +1119,7 @@ DNS should be correlated with email telemetry.
 
 ---
 
-# Lookalike Domains
+## Lookalike Domains
 
 Attackers may register domains resembling legitimate organizations.
 
@@ -1143,7 +1143,7 @@ DNS monitoring can provide an early warning.
 
 ---
 
-# Typosquatting
+## Typosquatting
 
 Common patterns:
 
@@ -1168,7 +1168,7 @@ Identity
 
 ---
 
-# DNS Sinkhole
+## DNS Sinkhole
 
 A sinkhole redirects known malicious domains to controlled infrastructure.
 
@@ -1197,7 +1197,7 @@ Sinkhole telemetry can reveal:
 
 ---
 
-# Sinkhole Hunting
+## Sinkhole Hunting
 
 A useful workflow:
 
@@ -1224,7 +1224,7 @@ A sinkhole hit should be treated as an investigation lead.
 
 ---
 
-# DNS Threat Intelligence
+## DNS Threat Intelligence
 
 DNS indicators can be enriched with:
 
@@ -1245,7 +1245,7 @@ ATT&CK
 
 ---
 
-# Passive DNS
+## Passive DNS
 
 Passive DNS records historical DNS observations.
 
@@ -1264,7 +1264,7 @@ This can help determine infrastructure relationships.
 
 ---
 
-# Infrastructure Pivoting
+## Infrastructure Pivoting
 
 Suppose a suspicious domain resolves to an IP.
 
@@ -1286,7 +1286,7 @@ This can identify related infrastructure.
 
 ---
 
-# DNS Infrastructure Graph
+## DNS Infrastructure Graph
 
 ```text
                Domain A
@@ -1305,7 +1305,7 @@ Graph-based hunting can reveal clusters that are difficult to identify through i
 
 ---
 
-# Domain Generation and Machine Learning
+## Domain Generation and Machine Learning
 
 Organizations may use statistical or machine-learning approaches to identify algorithmically generated domains.
 
@@ -1326,7 +1326,7 @@ Machine learning should complement analyst investigation rather than replace it.
 
 ---
 
-# DNS Baselines
+## DNS Baselines
 
 A good DNS baseline should consider:
 
@@ -1364,7 +1364,7 @@ But a new development dependency could also explain it.
 
 ---
 
-# Role-Based DNS Baselines
+## Role-Based DNS Baselines
 
 Different users have different normal behavior.
 
@@ -1391,7 +1391,7 @@ Role-aware baselines reduce false positives.
 
 ---
 
-# DNS Query Volume
+## DNS Query Volume
 
 High volume can indicate:
 
@@ -1416,7 +1416,7 @@ is more valuable than volume alone.
 
 ---
 
-# Time-Based DNS Hunting
+## Time-Based DNS Hunting
 
 Compare DNS activity by:
 
@@ -1431,7 +1431,7 @@ An endpoint that normally communicates during business hours but begins generati
 
 ---
 
-# After-Hours DNS Activity
+## After-Hours DNS Activity
 
 Example:
 
@@ -1454,7 +1454,7 @@ Asset role is essential.
 
 ---
 
-# User-to-Domain Analysis
+## User-to-Domain Analysis
 
 Build relationships:
 
@@ -1481,7 +1481,7 @@ Rare Process
 
 ---
 
-# Host-to-Domain Analysis
+## Host-to-Domain Analysis
 
 Similarly:
 
@@ -1498,7 +1498,7 @@ Rare host-domain relationships can become hunt candidates.
 
 ---
 
-# Domain-to-Host Analysis
+## Domain-to-Host Analysis
 
 Reverse the relationship:
 
@@ -1522,7 +1522,7 @@ Context determines meaning.
 
 ---
 
-# DNS Hunting With Splunk
+## DNS Hunting With Splunk
 
 Example:
 
@@ -1541,7 +1541,7 @@ This can help identify rare domains.
 
 ---
 
-# NXDOMAIN Hunt
+## NXDOMAIN Hunt
 
 ```spl
 index=dns
@@ -1557,7 +1557,7 @@ Investigate high-volume sources.
 
 ---
 
-# Long Domain Hunt
+## Long Domain Hunt
 
 Conceptually:
 
@@ -1573,7 +1573,7 @@ Thresholds should be tuned for the environment.
 
 ---
 
-# Rare Domain Hunt
+## Rare Domain Hunt
 
 ```spl
 index=dns
@@ -1585,7 +1585,7 @@ Then enrich the results.
 
 ---
 
-# DNS Hunt With KQL
+## DNS Hunt With KQL
 
 Conceptually:
 
@@ -1602,7 +1602,7 @@ The exact table and fields depend on the telemetry platform.
 
 ---
 
-# DNS Entropy Analysis With Python
+## DNS Entropy Analysis With Python
 
 Example:
 
@@ -1627,13 +1627,13 @@ For enterprise hunting, calculate entropy at the label level rather than blindly
 
 ---
 
-# Practical Lab 1 — Rare Domain Hunt
+## Practical Lab 1 — Rare Domain Hunt
 
-## Objective
+### Objective
 
 Identify domains queried by very few hosts.
 
-### Procedure
+#### Procedure
 
 1. Collect DNS telemetry.
 2. Group by domain.
@@ -1642,7 +1642,7 @@ Identify domains queried by very few hosts.
 5. Enrich the domain.
 6. Correlate with endpoint activity.
 
-### Investigation Questions
+#### Investigation Questions
 
 ```text
 Who queried it?
@@ -1656,13 +1656,13 @@ Did the endpoint connect to it?
 
 ---
 
-# Practical Lab 2 — NXDOMAIN Hunt
+## Practical Lab 2 — NXDOMAIN Hunt
 
-## Objective
+### Objective
 
 Identify hosts generating unusually high NXDOMAIN activity.
 
-### Procedure
+#### Procedure
 
 ```text
 DNS Logs
@@ -1693,13 +1693,13 @@ Then determine whether the host is:
 
 ---
 
-# Practical Lab 3 — DNS Beaconing
+## Practical Lab 3 — DNS Beaconing
 
-## Objective
+### Objective
 
 Find periodic DNS queries.
 
-### Procedure
+#### Procedure
 
 1. Group events by host and domain.
 2. Sort by timestamp.
@@ -1725,9 +1725,9 @@ Domain
 
 ---
 
-# Practical Lab 4 — DNS Tunneling
+## Practical Lab 4 — DNS Tunneling
 
-## Objective
+### Objective
 
 Identify potential DNS tunneling.
 
@@ -1757,9 +1757,9 @@ Network Connections
 
 ---
 
-# Practical Lab 5 — DGA Hunting
+## Practical Lab 5 — DGA Hunting
 
-## Objective
+### Objective
 
 Identify possible domain-generation behavior.
 
@@ -1785,9 +1785,9 @@ Then determine whether the behavior belongs to:
 
 ---
 
-# Practical Lab 6 — DNS-to-Process Correlation
+## Practical Lab 6 — DNS-to-Process Correlation
 
-## Objective
+### Objective
 
 Determine which process generated suspicious DNS behavior.
 
@@ -1816,7 +1816,7 @@ This can transform a weak DNS signal into a high-value investigation lead.
 
 ---
 
-# Practical Lab 7 — Sinkhole Investigation
+## Practical Lab 7 — Sinkhole Investigation
 
 Given:
 
@@ -1845,7 +1845,7 @@ Then determine whether multiple endpoints are affected.
 
 ---
 
-# Practical Lab 8 — Domain Infrastructure Pivot
+## Practical Lab 8 — Domain Infrastructure Pivot
 
 Start with:
 
@@ -1873,7 +1873,7 @@ Document the infrastructure relationships.
 
 ---
 
-# DNS Incident Timeline
+## DNS Incident Timeline
 
 Example:
 
@@ -1904,7 +1904,7 @@ This is a strong example of why DNS should be correlated with endpoint telemetry
 
 ---
 
-# DNS Detection Engineering
+## DNS Detection Engineering
 
 A mature DNS detection pipeline:
 
@@ -1935,7 +1935,7 @@ SOC Investigation
 
 ---
 
-# Example Detection — Suspicious DNS Volume
+## Example Detection — Suspicious DNS Volume
 
 Conceptually:
 
@@ -1967,7 +1967,7 @@ Do not automatically classify the host as compromised.
 
 ---
 
-# Example Detection — DNS Tunneling
+## Example Detection — DNS Tunneling
 
 Conceptually:
 
@@ -1991,7 +1991,7 @@ Generate DNS tunneling investigation signal
 
 ---
 
-# Example Detection — Beaconing
+## Example Detection — Beaconing
 
 ```text
 IF
@@ -2020,7 +2020,7 @@ Suspicious Endpoint Process
 
 ---
 
-# DNS False Positives
+## DNS False Positives
 
 Common sources include:
 
@@ -2052,7 +2052,7 @@ Tune
 
 ---
 
-# DNS Detection Tuning
+## DNS Detection Tuning
 
 Poor detection:
 
@@ -2088,7 +2088,7 @@ Threat Intelligence
 
 ---
 
-# DNS Data Quality
+## DNS Data Quality
 
 A mature DNS monitoring system should answer:
 
@@ -2108,7 +2108,7 @@ If these fields are unavailable, document the telemetry gap.
 
 ---
 
-# DNS Telemetry Gaps
+## DNS Telemetry Gaps
 
 Example:
 
@@ -2127,7 +2127,7 @@ The SOC should understand the limitations before relying on the data for high-co
 
 ---
 
-# Secure DNS Architecture
+## Secure DNS Architecture
 
 A mature enterprise may use:
 
@@ -2153,7 +2153,7 @@ This creates centralized visibility.
 
 ---
 
-# DNS Security Controls
+## DNS Security Controls
 
 Common defensive controls include:
 
@@ -2172,7 +2172,7 @@ Common defensive controls include:
 
 ---
 
-# Unauthorized DNS Resolver Hunting
+## Unauthorized DNS Resolver Hunting
 
 A useful enterprise hunt:
 
@@ -2188,7 +2188,7 @@ Direct use of external resolvers may be legitimate in some environments but shou
 
 ---
 
-# DNS and Zero Trust
+## DNS and Zero Trust
 
 DNS should not automatically imply trust.
 
@@ -2208,7 +2208,7 @@ DNS provides naming and resolution, not authorization.
 
 ---
 
-# DNS and Cloud
+## DNS and Cloud
 
 Cloud environments introduce additional DNS considerations:
 
@@ -2224,7 +2224,7 @@ DNS hunting should therefore extend into cloud environments.
 
 ---
 
-# Kubernetes DNS Hunting
+## Kubernetes DNS Hunting
 
 Kubernetes commonly uses cluster DNS.
 
@@ -2250,7 +2250,7 @@ Potential anomalies include:
 
 ---
 
-# Container DNS Hunting
+## Container DNS Hunting
 
 Correlate:
 
@@ -2272,7 +2272,7 @@ This provides significantly better context than source IP alone.
 
 ---
 
-# DNS and Malware Analysis
+## DNS and Malware Analysis
 
 During malware analysis, DNS can reveal:
 
@@ -2300,7 +2300,7 @@ This creates an infrastructure graph.
 
 ---
 
-# DNS and Incident Response
+## DNS and Incident Response
 
 During incident response, DNS can answer:
 
@@ -2316,9 +2316,9 @@ This helps establish the incident scope.
 
 ---
 
-# Enterprise DNS Hunting Checklist
+## Enterprise DNS Hunting Checklist
 
-## Collection
+### Collection
 
 - [ ] DNS query logs enabled
 - [ ] Source IP captured
@@ -2328,7 +2328,7 @@ This helps establish the incident scope.
 - [ ] Answers captured
 - [ ] Timestamp synchronized
 
-## Detection
+### Detection
 
 - [ ] Rare domains
 - [ ] First-seen domains
@@ -2341,7 +2341,7 @@ This helps establish the incident scope.
 - [ ] TXT anomalies
 - [ ] Unauthorized resolvers
 
-## Correlation
+### Correlation
 
 - [ ] Endpoint
 - [ ] User
@@ -2351,7 +2351,7 @@ This helps establish the incident scope.
 - [ ] Threat intelligence
 - [ ] Identity
 
-## Response
+### Response
 
 - [ ] Identify affected hosts
 - [ ] Identify users
@@ -2364,51 +2364,51 @@ This helps establish the incident scope.
 
 ---
 
-# Common DNS Hunting Mistakes
+## Common DNS Hunting Mistakes
 
-## 1. Treating Rare Domains as Malicious
+### 1. Treating Rare Domains as Malicious
 
 Rare domains are investigation candidates, not automatic threats.
 
 ---
 
-## 2. Using Entropy Alone
+### 2. Using Entropy Alone
 
 High entropy can be completely legitimate.
 
 ---
 
-## 3. Ignoring DNS Caching
+### 3. Ignoring DNS Caching
 
 Not every connection results in a DNS query.
 
 ---
 
-## 4. Ignoring Encrypted DNS
+### 4. Ignoring Encrypted DNS
 
 DoH and DoT can reduce traditional DNS visibility.
 
 ---
 
-## 5. Ignoring Internal DNS
+### 5. Ignoring Internal DNS
 
 Internal DNS can reveal reconnaissance and lateral movement.
 
 ---
 
-## 6. Ignoring Role-Based Behavior
+### 6. Ignoring Role-Based Behavior
 
 A server's DNS profile differs from a workstation's.
 
 ---
 
-## 7. Failing to Correlate DNS With Endpoint Data
+### 7. Failing to Correlate DNS With Endpoint Data
 
 DNS becomes substantially more valuable when tied to the responsible process.
 
 ---
 
-# Professional DNS Investigation Template
+## Professional DNS Investigation Template
 
 ```text
 Incident ID:
@@ -2476,7 +2476,7 @@ Lessons Learned:
 
 ---
 
-# MITRE ATT&CK Mapping
+## MITRE ATT&CK Mapping
 
 Relevant techniques include:
 
@@ -2498,27 +2498,27 @@ ATT&CK technique and sub-technique mappings should be validated against the curr
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. Why is DNS useful for threat hunting?
+### 1. Why is DNS useful for threat hunting?
 
 Because DNS provides visibility into domain resolution, infrastructure relationships, C2 activity, DGA behavior, tunneling, phishing infrastructure, and unusual network behavior.
 
 ---
 
-## 2. What is DNS tunneling?
+### 2. What is DNS tunneling?
 
 DNS tunneling is the use of DNS queries or responses to transport information through a DNS-based communication channel.
 
 ---
 
-## 3. What is a DGA?
+### 3. What is a DGA?
 
 A Domain Generation Algorithm generates domains algorithmically, often allowing malware to locate command-and-control infrastructure dynamically.
 
 ---
 
-## 4. What is NXDOMAIN?
+### 4. What is NXDOMAIN?
 
 NXDOMAIN indicates that the requested DNS name does not exist.
 
@@ -2526,7 +2526,7 @@ High NXDOMAIN activity can be a hunting signal when combined with other suspicio
 
 ---
 
-## 5. How would you hunt for DNS tunneling?
+### 5. How would you hunt for DNS tunneling?
 
 I would combine:
 
@@ -2548,7 +2548,7 @@ and then correlate the behavior with endpoint and network telemetry.
 
 ---
 
-## 6. Is high DNS entropy malicious?
+### 6. Is high DNS entropy malicious?
 
 No.
 
@@ -2556,31 +2556,31 @@ Cloud services, CDNs, authentication systems, and legitimate applications can pr
 
 ---
 
-## 7. How would you identify DNS beaconing?
+### 7. How would you identify DNS beaconing?
 
 I would group DNS events by host and destination, calculate query intervals, analyze periodicity and jitter, then correlate the destination and originating process.
 
 ---
 
-## 8. What is DNS over HTTPS?
+### 8. What is DNS over HTTPS?
 
 DoH transports DNS queries through HTTPS, providing encryption between the client and resolver.
 
 ---
 
-## 9. How does encrypted DNS affect hunting?
+### 9. How does encrypted DNS affect hunting?
 
 It can reduce visibility into DNS query content at traditional DNS monitoring points, requiring additional endpoint, TLS, network, and resolver telemetry.
 
 ---
 
-## 10. What is a DNS sinkhole?
+### 10. What is a DNS sinkhole?
 
 A DNS sinkhole redirects known malicious domains toward controlled infrastructure so organizations can block or monitor compromised systems attempting to communicate with them.
 
 ---
 
-## 11. How would you investigate a suspicious DNS domain?
+### 11. How would you investigate a suspicious DNS domain?
 
 I would examine:
 
@@ -2601,31 +2601,31 @@ Network Connections
 
 ---
 
-## 12. What is passive DNS?
+### 12. What is passive DNS?
 
 Passive DNS is historical DNS observation data that can show relationships between domains and IP addresses over time.
 
 ---
 
-## 13. Why is first-seen analysis useful?
+### 13. Why is first-seen analysis useful?
 
 A domain that appears for the first time on a single endpoint can provide a useful investigation lead, especially when combined with suspicious endpoint behavior.
 
 ---
 
-## 14. Can DNS identify malware?
+### 14. Can DNS identify malware?
 
 DNS alone generally cannot prove malware infection. It provides behavioral evidence that should be correlated with endpoint, network, identity, and threat-intelligence data.
 
 ---
 
-## 15. How would you detect unauthorized DNS resolvers?
+### 15. How would you detect unauthorized DNS resolvers?
 
 Identify endpoints communicating directly with DNS infrastructure outside the organization's approved resolver architecture and correlate those connections with process and user context.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 1. **DNS is a foundational threat-hunting data source.**
 2. **Rare domains are useful investigation leads.**
@@ -2649,7 +2649,7 @@ The core mindset is:
 
 ---
 
-# References
+## References
 
 - MITRE ATT&CK — Enterprise  
   https://attack.mitre.org/

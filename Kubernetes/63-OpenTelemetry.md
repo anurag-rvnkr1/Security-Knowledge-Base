@@ -37,7 +37,7 @@ It provides standardized telemetry generation and transport so organizations can
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -114,7 +114,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is OpenTelemetry?
+## What Is OpenTelemetry?
 
 OpenTelemetry is a vendor-neutral observability framework.
 
@@ -130,7 +130,7 @@ Logs
 
 ---
 
-# Why OpenTelemetry?
+## Why OpenTelemetry?
 
 Without a common standard, applications may use different telemetry libraries:
 
@@ -162,7 +162,7 @@ Backend
 
 ---
 
-# OpenTelemetry Is Not a Backend
+## OpenTelemetry Is Not a Backend
 
 OpenTelemetry is not primarily a storage system.
 
@@ -188,7 +188,7 @@ Observability Backend
 
 ---
 
-# OpenTelemetry Architecture
+## OpenTelemetry Architecture
 
 A simplified architecture:
 
@@ -210,7 +210,7 @@ A simplified architecture:
 
 ---
 
-# OpenTelemetry Components
+## OpenTelemetry Components
 
 Important components include:
 
@@ -228,7 +228,7 @@ Semantic Conventions
 
 ---
 
-# OpenTelemetry API
+## OpenTelemetry API
 
 The API provides interfaces that application code can use to create telemetry.
 
@@ -245,7 +245,7 @@ The API is designed to allow instrumentation without tightly coupling applicatio
 
 ---
 
-# OpenTelemetry SDK
+## OpenTelemetry SDK
 
 The SDK provides the implementation behind the API.
 
@@ -261,7 +261,7 @@ Instrumentation
 
 ---
 
-# Instrumentation
+## Instrumentation
 
 Instrumentation means adding telemetry generation to an application.
 
@@ -281,7 +281,7 @@ End Span
 
 ---
 
-# Automatic Instrumentation
+## Automatic Instrumentation
 
 Automatic instrumentation uses libraries or agents to generate telemetry without requiring extensive application code changes.
 
@@ -297,7 +297,7 @@ HTTP / Database / Framework Telemetry
 
 ---
 
-# Manual Instrumentation
+## Manual Instrumentation
 
 Manual instrumentation explicitly creates telemetry in application code.
 
@@ -312,7 +312,7 @@ This is useful when you need application-specific business context.
 
 ---
 
-# Automatic vs Manual Instrumentation
+## Automatic vs Manual Instrumentation
 
 | Feature | Automatic | Manual |
 |---|---|---|
@@ -326,7 +326,7 @@ A production system often uses both.
 
 ---
 
-# Observability
+## Observability
 
 Observability is the ability to understand the internal state of a system using its externally exposed telemetry.
 
@@ -340,7 +340,7 @@ Traces
 
 ---
 
-# Metrics
+## Metrics
 
 Metrics are numerical measurements over time.
 
@@ -362,7 +362,7 @@ http_requests_total
 
 ---
 
-# Logs
+## Logs
 
 Logs are records of events.
 
@@ -378,7 +378,7 @@ Logs provide detailed event context.
 
 ---
 
-# Traces
+## Traces
 
 A trace represents the journey of a request through distributed services.
 
@@ -398,7 +398,7 @@ Database
 
 ---
 
-# Distributed Tracing
+## Distributed Tracing
 
 Without tracing:
 
@@ -427,7 +427,7 @@ The slow service becomes easier to identify.
 
 ---
 
-# Trace
+## Trace
 
 A trace represents an end-to-end operation.
 
@@ -449,7 +449,7 @@ Span D
 
 ---
 
-# Span
+## Span
 
 A span represents a single operation within a trace.
 
@@ -467,7 +467,7 @@ Trace
 
 ---
 
-# Parent and Child Spans
+## Parent and Child Spans
 
 Example:
 
@@ -487,7 +487,7 @@ Child spans represent operations performed within it.
 
 ---
 
-# Span Attributes
+## Span Attributes
 
 Attributes add structured information to spans.
 
@@ -503,7 +503,7 @@ Use standardized semantic conventions where applicable.
 
 ---
 
-# Span Events
+## Span Events
 
 Span events represent significant events occurring during a span.
 
@@ -521,7 +521,7 @@ Payment completed
 
 ---
 
-# Span Links
+## Span Links
 
 Span links associate a span with another span or trace without creating a normal parent-child relationship.
 
@@ -536,7 +536,7 @@ Fan-In / Fan-Out
 
 ---
 
-# Trace Context
+## Trace Context
 
 Trace context allows distributed services to propagate tracing information.
 
@@ -556,7 +556,7 @@ Service C
 
 ---
 
-# Trace ID
+## Trace ID
 
 A Trace ID identifies the entire distributed operation.
 
@@ -569,7 +569,7 @@ Trace ID:
 
 ---
 
-# Span ID
+## Span ID
 
 A Span ID identifies an individual operation within a trace.
 
@@ -583,7 +583,7 @@ Trace ID
 
 ---
 
-# W3C Trace Context
+## W3C Trace Context
 
 OpenTelemetry commonly uses W3C Trace Context propagation.
 
@@ -598,7 +598,7 @@ This allows tracing context to travel between services.
 
 ---
 
-# Baggage
+## Baggage
 
 Baggage allows application-defined key-value information to propagate across service boundaries.
 
@@ -623,7 +623,7 @@ into baggage.
 
 ---
 
-# Resource Attributes
+## Resource Attributes
 
 Resource attributes describe the entity producing telemetry.
 
@@ -644,7 +644,7 @@ k8s.pod.name=payment-api-abc123
 
 ---
 
-# Semantic Conventions
+## Semantic Conventions
 
 Semantic conventions standardize attribute names and meanings.
 
@@ -660,7 +660,7 @@ This improves interoperability.
 
 ---
 
-# OpenTelemetry Protocol
+## OpenTelemetry Protocol
 
 OTLP stands for:
 
@@ -682,7 +682,7 @@ Collector
 
 ---
 
-# OTLP over gRPC
+## OTLP over gRPC
 
 Telemetry can be transported using:
 
@@ -700,7 +700,7 @@ Strongly Typed Protocol
 
 ---
 
-# OTLP over HTTP
+## OTLP over HTTP
 
 OTLP can also use HTTP.
 
@@ -718,7 +718,7 @@ Both gRPC and HTTP transport options are supported by OpenTelemetry components.
 
 ---
 
-# OpenTelemetry Collector
+## OpenTelemetry Collector
 
 The Collector is one of the most important OpenTelemetry components.
 
@@ -737,7 +737,7 @@ telemetry.
 
 ---
 
-# Collector Architecture
+## Collector Architecture
 
 ```text
               Telemetry Sources
@@ -757,7 +757,7 @@ telemetry.
 
 ---
 
-# Collector Components
+## Collector Components
 
 The major Collector building blocks are:
 
@@ -772,7 +772,7 @@ Service Pipelines
 
 ---
 
-# Receivers
+## Receivers
 
 Receivers accept telemetry.
 
@@ -791,7 +791,7 @@ The exact available receivers depend on the Collector distribution/build.
 
 ---
 
-# OTLP Receiver
+## OTLP Receiver
 
 A common receiver is:
 
@@ -803,7 +803,7 @@ It accepts telemetry from applications and other collectors.
 
 ---
 
-# Prometheus Receiver
+## Prometheus Receiver
 
 The Collector can scrape Prometheus-compatible metrics.
 
@@ -817,7 +817,7 @@ OTel Collector
 
 ---
 
-# Filelog Receiver
+## Filelog Receiver
 
 The filelog receiver can collect logs from files.
 
@@ -833,7 +833,7 @@ Collector
 
 ---
 
-# Processors
+## Processors
 
 Processors modify or enrich telemetry.
 
@@ -851,7 +851,7 @@ Tail Sampling
 
 ---
 
-# Batch Processor
+## Batch Processor
 
 The batch processor groups telemetry before exporting it.
 
@@ -874,7 +874,7 @@ Improved Export Efficiency
 
 ---
 
-# Memory Limiter
+## Memory Limiter
 
 The memory limiter helps protect the Collector from excessive memory consumption.
 
@@ -892,7 +892,7 @@ This is important in production deployments.
 
 ---
 
-# Resource Processor
+## Resource Processor
 
 Adds or modifies resource attributes.
 
@@ -906,7 +906,7 @@ cluster
 
 ---
 
-# Attributes Processor
+## Attributes Processor
 
 Modifies span, metric, or log attributes.
 
@@ -918,7 +918,7 @@ environment=production
 
 ---
 
-# Filter Processor
+## Filter Processor
 
 Filters telemetry based on conditions.
 
@@ -936,7 +936,7 @@ Drop unwanted telemetry
 
 ---
 
-# Tail Sampling
+## Tail Sampling
 
 Tail sampling makes sampling decisions after seeing trace information.
 
@@ -966,7 +966,7 @@ Routine Successful Requests
 
 ---
 
-# Exporters
+## Exporters
 
 Exporters send telemetry to external systems.
 
@@ -985,7 +985,7 @@ Availability depends on the Collector distribution and version.
 
 ---
 
-# OTLP Exporter
+## OTLP Exporter
 
 The Collector can export telemetry to another OTLP endpoint.
 
@@ -999,7 +999,7 @@ Backend
 
 ---
 
-# Prometheus Export
+## Prometheus Export
 
 Metrics can be exposed or exported for Prometheus-compatible consumption depending on the chosen Collector configuration.
 
@@ -1015,7 +1015,7 @@ Prometheus
 
 ---
 
-# Loki Integration
+## Loki Integration
 
 Logs can be routed to Loki where supported by the selected Collector/exporter configuration.
 
@@ -1029,7 +1029,7 @@ Loki
 
 ---
 
-# Tempo Integration
+## Tempo Integration
 
 Traces can be exported to Grafana Tempo through supported OTLP integrations.
 
@@ -1043,7 +1043,7 @@ Tempo
 
 ---
 
-# Jaeger Integration
+## Jaeger Integration
 
 OpenTelemetry can interoperate with Jaeger through supported protocols and exporters.
 
@@ -1061,13 +1061,13 @@ Jaeger
 
 ---
 
-# Zipkin Integration
+## Zipkin Integration
 
 OpenTelemetry can also interoperate with Zipkin-compatible systems.
 
 ---
 
-# Connectors
+## Connectors
 
 Connectors connect one Collector pipeline to another.
 
@@ -1085,7 +1085,7 @@ Connectors can also generate derived telemetry or route data between pipelines d
 
 ---
 
-# Extensions
+## Extensions
 
 Extensions provide additional Collector capabilities such as:
 
@@ -1097,7 +1097,7 @@ Diagnostics
 
 ---
 
-# Collector Pipelines
+## Collector Pipelines
 
 A pipeline defines:
 
@@ -1123,7 +1123,7 @@ OTLP Exporter
 
 ---
 
-# Metrics Pipeline
+## Metrics Pipeline
 
 Example:
 
@@ -1139,7 +1139,7 @@ Prometheus / OTLP Exporter
 
 ---
 
-# Logs Pipeline
+## Logs Pipeline
 
 Example:
 
@@ -1155,7 +1155,7 @@ Loki / OTLP Exporter
 
 ---
 
-# Traces Pipeline
+## Traces Pipeline
 
 Example:
 
@@ -1173,7 +1173,7 @@ OTLP Exporter
 
 ---
 
-# Collector Configuration
+## Collector Configuration
 
 A simplified configuration might look like:
 
@@ -1222,7 +1222,7 @@ Production configuration should include appropriate endpoints, TLS, authenticati
 
 ---
 
-# Collector Deployment Models
+## Collector Deployment Models
 
 Common deployment patterns include:
 
@@ -1236,7 +1236,7 @@ Sidecar
 
 ---
 
-# Agent Pattern
+## Agent Pattern
 
 Each workload or node sends telemetry to a local Collector.
 
@@ -1252,7 +1252,7 @@ Backend
 
 ---
 
-# Gateway Pattern
+## Gateway Pattern
 
 A centralized Collector receives telemetry from multiple workloads.
 
@@ -1273,7 +1273,7 @@ OTel  OTel OTel
 
 ---
 
-# DaemonSet Pattern
+## DaemonSet Pattern
 
 A Collector can run as a DaemonSet.
 
@@ -1287,7 +1287,7 @@ This is useful for node-local collection.
 
 ---
 
-# Deployment Pattern
+## Deployment Pattern
 
 A Collector can run as a Kubernetes Deployment.
 
@@ -1303,7 +1303,7 @@ This is useful for centralized gateway-style processing.
 
 ---
 
-# Sidecar Pattern
+## Sidecar Pattern
 
 A Collector can run alongside an application.
 
@@ -1317,9 +1317,9 @@ This provides strong isolation but increases resource consumption.
 
 ---
 
-# Agent vs Gateway
+## Agent vs Gateway
 
-### Agent
+#### Agent
 
 ```text
 Close to workload
@@ -1327,7 +1327,7 @@ Node-local
 Collection
 ```
 
-### Gateway
+#### Gateway
 
 ```text
 Centralized
@@ -1340,7 +1340,7 @@ A common production architecture uses both.
 
 ---
 
-# Kubernetes OpenTelemetry Architecture
+## Kubernetes OpenTelemetry Architecture
 
 ```text
                          Kubernetes Cluster
@@ -1366,7 +1366,7 @@ A common production architecture uses both.
 
 ---
 
-# Kubernetes Attributes
+## Kubernetes Attributes
 
 The Kubernetes Attributes Processor can enrich telemetry with Kubernetes metadata.
 
@@ -1397,7 +1397,7 @@ correlation.
 
 ---
 
-# Service Name
+## Service Name
 
 Every instrumented service should have a meaningful:
 
@@ -1415,7 +1415,7 @@ Avoid inconsistent service naming.
 
 ---
 
-# Service Version
+## Service Version
 
 Useful resource attribute:
 
@@ -1433,7 +1433,7 @@ Version 2.4.1
 
 ---
 
-# Deployment Environment
+## Deployment Environment
 
 Example:
 
@@ -1451,7 +1451,7 @@ development
 
 ---
 
-# Instrumentation in Kubernetes
+## Instrumentation in Kubernetes
 
 A Kubernetes application can be instrumented using:
 
@@ -1478,7 +1478,7 @@ Collector
 
 ---
 
-# Python Example
+## Python Example
 
 Conceptually:
 
@@ -1493,7 +1493,7 @@ with tracer.start_as_current_span("process-order"):
 
 ---
 
-# Automatic Python Instrumentation
+## Automatic Python Instrumentation
 
 The OpenTelemetry ecosystem provides instrumentation packages for supported frameworks and libraries.
 
@@ -1507,7 +1507,7 @@ The exact packages and environment variables depend on the application and instr
 
 ---
 
-# Node.js Instrumentation
+## Node.js Instrumentation
 
 Node.js applications can use OpenTelemetry packages for:
 
@@ -1520,7 +1520,7 @@ Other Supported Libraries
 
 ---
 
-# Java Instrumentation
+## Java Instrumentation
 
 Java applications commonly use the OpenTelemetry Java agent.
 
@@ -1536,19 +1536,19 @@ This can provide automatic instrumentation for supported libraries.
 
 ---
 
-# .NET Instrumentation
+## .NET Instrumentation
 
 .NET applications can use OpenTelemetry SDKs and supported instrumentation packages.
 
 ---
 
-# Go Instrumentation
+## Go Instrumentation
 
 Go applications generally use the OpenTelemetry Go SDK with instrumentation libraries and/or manual instrumentation.
 
 ---
 
-# Trace Propagation
+## Trace Propagation
 
 Example:
 
@@ -1572,7 +1572,7 @@ All services can contribute spans to the same trace.
 
 ---
 
-# Trace Correlation
+## Trace Correlation
 
 A useful observability workflow:
 
@@ -1604,7 +1604,7 @@ Slow Query
 
 ---
 
-# Sampling
+## Sampling
 
 Sampling determines which telemetry is retained.
 
@@ -1628,7 +1628,7 @@ The exact rate depends on your architecture.
 
 ---
 
-# Head Sampling
+## Head Sampling
 
 Head sampling makes a sampling decision near the beginning of the trace.
 
@@ -1646,7 +1646,7 @@ It is simple and efficient but has limited knowledge of what happens later in th
 
 ---
 
-# Tail Sampling
+## Tail Sampling
 
 Tail sampling waits until more of the trace is available.
 
@@ -1669,7 +1669,7 @@ Tail sampling can preserve unusual or important traces more effectively.
 
 ---
 
-# Head vs Tail Sampling
+## Head vs Tail Sampling
 
 | Feature | Head Sampling | Tail Sampling |
 |---|---|---|
@@ -1681,7 +1681,7 @@ Tail sampling can preserve unusual or important traces more effectively.
 
 ---
 
-# Metrics + Traces
+## Metrics + Traces
 
 Metrics can tell you:
 
@@ -1707,7 +1707,7 @@ Root Cause
 
 ---
 
-# Logs + Traces
+## Logs + Traces
 
 Logs can include:
 
@@ -1726,7 +1726,7 @@ Log
 
 ---
 
-# Metrics + Logs + Traces
+## Metrics + Logs + Traces
 
 A mature observability architecture connects all three:
 
@@ -1744,7 +1744,7 @@ A mature observability architecture connects all three:
 
 ---
 
-# OpenTelemetry and Prometheus
+## OpenTelemetry and Prometheus
 
 OpenTelemetry can participate in a metrics pipeline alongside Prometheus.
 
@@ -1766,7 +1766,7 @@ The exact architecture depends on whether Prometheus scrapes the Collector, rece
 
 ---
 
-# OpenTelemetry and Grafana
+## OpenTelemetry and Grafana
 
 A common stack is:
 
@@ -1786,7 +1786,7 @@ Grafana provides the visualization and exploration layer.
 
 ---
 
-# OpenTelemetry and Loki
+## OpenTelemetry and Loki
 
 Logs can flow:
 
@@ -1802,7 +1802,7 @@ Grafana
 
 ---
 
-# OpenTelemetry and Tempo
+## OpenTelemetry and Tempo
 
 Traces can flow:
 
@@ -1818,7 +1818,7 @@ Grafana
 
 ---
 
-# OpenTelemetry and Jaeger
+## OpenTelemetry and Jaeger
 
 Another possible architecture:
 
@@ -1834,7 +1834,7 @@ Jaeger
 
 ---
 
-# Cloud Backends
+## Cloud Backends
 
 OpenTelemetry can export telemetry to supported cloud observability platforms.
 
@@ -1852,7 +1852,7 @@ without necessarily rewriting all application instrumentation.
 
 ---
 
-# Vendor Neutrality
+## Vendor Neutrality
 
 One of the major OpenTelemetry benefits is reduced application-level coupling to a particular observability vendor.
 
@@ -1878,7 +1878,7 @@ Backend B
 
 ---
 
-# Security
+## Security
 
 Telemetry can contain sensitive information.
 
@@ -1896,7 +1896,7 @@ Do not blindly export everything.
 
 ---
 
-# TLS
+## TLS
 
 Use TLS where appropriate for:
 
@@ -1908,7 +1908,7 @@ Collector → Backend
 
 ---
 
-# Authentication
+## Authentication
 
 Collectors may require authentication when communicating with backends.
 
@@ -1924,7 +1924,7 @@ Cloud Identity
 
 ---
 
-# RBAC
+## RBAC
 
 In Kubernetes, protect Collector resources with RBAC.
 
@@ -1934,7 +1934,7 @@ Grant only required permissions.
 
 ---
 
-# Secrets
+## Secrets
 
 Do not hard-code:
 
@@ -1956,7 +1956,7 @@ Cloud Secret Managers
 
 ---
 
-# Telemetry Filtering
+## Telemetry Filtering
 
 Sensitive telemetry should be filtered or redacted.
 
@@ -1978,7 +1978,7 @@ Redact
 
 ---
 
-# PII Protection
+## PII Protection
 
 Avoid exporting unnecessary personal information.
 
@@ -1995,7 +1995,7 @@ where appropriate.
 
 ---
 
-# Collector Performance
+## Collector Performance
 
 Collector performance depends on:
 
@@ -2012,7 +2012,7 @@ Network
 
 ---
 
-# Collector Resource Limits
+## Collector Resource Limits
 
 Kubernetes deployment should define appropriate:
 
@@ -2031,7 +2031,7 @@ The exact values should be based on telemetry volume and testing.
 
 ---
 
-# Collector Backpressure
+## Collector Backpressure
 
 If the backend is slow:
 
@@ -2047,7 +2047,7 @@ Backpressure mechanisms help prevent uncontrolled resource consumption.
 
 ---
 
-# Queues
+## Queues
 
 Persistent or in-memory queues can improve resilience depending on exporter and Collector configuration.
 
@@ -2065,7 +2065,7 @@ A persistent queue can help survive some temporary backend failures, but it does
 
 ---
 
-# High Availability
+## High Availability
 
 A production Collector architecture can use multiple replicas:
 
@@ -2083,7 +2083,7 @@ A production Collector architecture can use multiple replicas:
 
 ---
 
-# Collector Gateway HA
+## Collector Gateway HA
 
 Example:
 
@@ -2103,7 +2103,7 @@ This avoids a single gateway becoming a single point of failure.
 
 ---
 
-# OpenTelemetry Collector Monitoring
+## OpenTelemetry Collector Monitoring
 
 Monitor:
 
@@ -2120,7 +2120,7 @@ Exporter Errors
 
 ---
 
-# Collector Self-Observability
+## Collector Self-Observability
 
 The Collector itself can expose telemetry.
 
@@ -2137,7 +2137,7 @@ to be monitored.
 
 ---
 
-# Kubernetes Deployment
+## Kubernetes Deployment
 
 Example conceptual architecture:
 
@@ -2161,7 +2161,7 @@ rather than ConfigMap.
 
 ---
 
-# Collector ConfigMap
+## Collector ConfigMap
 
 A Kubernetes deployment commonly stores non-secret Collector configuration in a ConfigMap.
 
@@ -2177,7 +2177,7 @@ metadata:
 
 ---
 
-# Collector Service
+## Collector Service
 
 Applications can send telemetry to:
 
@@ -2189,7 +2189,7 @@ The exact DNS name depends on the namespace and Service name.
 
 ---
 
-# OTLP Endpoint
+## OTLP Endpoint
 
 A common conceptual endpoint is:
 
@@ -2211,7 +2211,7 @@ The exact endpoint depends on the Collector configuration.
 
 ---
 
-# Kubernetes Service Discovery
+## Kubernetes Service Discovery
 
 The Collector can use Kubernetes service discovery and metadata enrichment to associate telemetry with:
 
@@ -2225,7 +2225,7 @@ Deployment
 
 ---
 
-# Production Architecture
+## Production Architecture
 
 A mature Kubernetes OpenTelemetry architecture may look like:
 
@@ -2257,7 +2257,7 @@ A mature Kubernetes OpenTelemetry architecture may look like:
 
 ---
 
-# Production Design Principles
+## Production Design Principles
 
 Use:
 
@@ -2281,7 +2281,7 @@ Monitoring
 
 ---
 
-# Collector Configuration Best Practices
+## Collector Configuration Best Practices
 
 A production Collector pipeline commonly considers:
 
@@ -2299,7 +2299,7 @@ The exact processor order should be tested for your workload.
 
 ---
 
-# Retry
+## Retry
 
 Exporters can retry failed exports.
 
@@ -2319,7 +2319,7 @@ Retries should be bounded and combined with appropriate queueing/backpressure co
 
 ---
 
-# Observability Pipeline
+## Observability Pipeline
 
 A robust pipeline can be:
 
@@ -2345,7 +2345,7 @@ Visualize
 
 ---
 
-# Common Mistake
+## Common Mistake
 
 Do not assume:
 
@@ -2367,21 +2367,21 @@ Better Observability
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. No Resource Limits
+### 1. No Resource Limits
 
 A Collector can consume excessive resources under high telemetry volume.
 
 ---
 
-## 2. No Memory Limiter
+### 2. No Memory Limiter
 
 Memory pressure can destabilize the Collector.
 
 ---
 
-## 3. Exporting Everything
+### 3. Exporting Everything
 
 This can create:
 
@@ -2393,13 +2393,13 @@ High Network Usage
 
 ---
 
-## 4. No Sampling
+### 4. No Sampling
 
 High-volume distributed tracing can become expensive.
 
 ---
 
-## 5. Bad Service Names
+### 5. Bad Service Names
 
 Inconsistent:
 
@@ -2416,7 +2416,7 @@ Use consistent naming conventions.
 
 ---
 
-## 6. Sensitive Data in Telemetry
+### 6. Sensitive Data in Telemetry
 
 Never blindly export:
 
@@ -2429,13 +2429,13 @@ Sensitive Personal Data
 
 ---
 
-## 7. Single Collector Instance
+### 7. Single Collector Instance
 
 A single Collector can become a single point of failure.
 
 ---
 
-## 8. No Monitoring of Collector
+### 8. No Monitoring of Collector
 
 You need to monitor:
 
@@ -2449,21 +2449,21 @@ Memory
 
 ---
 
-## 9. Poor Sampling Strategy
+### 9. Poor Sampling Strategy
 
 Dropping all slow/error traces can destroy valuable troubleshooting data.
 
 ---
 
-## 10. Incorrect Context Propagation
+### 10. Incorrect Context Propagation
 
 Broken propagation creates disconnected traces.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## No Traces
+### No Traces
 
 Check:
 
@@ -2480,7 +2480,7 @@ Backend
 
 ---
 
-# No Metrics
+## No Metrics
 
 Check:
 
@@ -2493,7 +2493,7 @@ Backend
 
 ---
 
-# No Logs
+## No Logs
 
 Check:
 
@@ -2508,7 +2508,7 @@ Backend
 
 ---
 
-# Broken Distributed Trace
+## Broken Distributed Trace
 
 Possible causes:
 
@@ -2521,7 +2521,7 @@ Proxy Header Removal
 
 ---
 
-# Collector Export Failure
+## Collector Export Failure
 
 Check:
 
@@ -2537,7 +2537,7 @@ Exporter Configuration
 
 ---
 
-# Collector Memory Usage Too High
+## Collector Memory Usage Too High
 
 Investigate:
 
@@ -2552,7 +2552,7 @@ Memory Limiter
 
 ---
 
-# Collector CPU Usage Too High
+## Collector CPU Usage Too High
 
 Investigate:
 
@@ -2566,7 +2566,7 @@ Export Rate
 
 ---
 
-# Dropped Telemetry
+## Dropped Telemetry
 
 Possible causes:
 
@@ -2581,7 +2581,7 @@ Backpressure
 
 ---
 
-# Trace Sampling Troubleshooting
+## Trace Sampling Troubleshooting
 
 If important traces are missing:
 
@@ -2594,9 +2594,9 @@ Check Exporter
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Standardize Resource Attributes
+#### 1. Standardize Resource Attributes
 
 Use:
 
@@ -2608,13 +2608,13 @@ deployment.environment
 
 ---
 
-### 2. Use Semantic Conventions
+#### 2. Use Semantic Conventions
 
 Standardized attributes improve interoperability.
 
 ---
 
-### 3. Use Automatic Instrumentation Carefully
+#### 3. Use Automatic Instrumentation Carefully
 
 Automatic instrumentation is useful, but validate:
 
@@ -2626,31 +2626,31 @@ Data Sensitivity
 
 ---
 
-### 4. Add Manual Instrumentation Where Valuable
+#### 4. Add Manual Instrumentation Where Valuable
 
 Add business-specific spans where automatic instrumentation cannot provide enough context.
 
 ---
 
-### 5. Use Sampling
+#### 5. Use Sampling
 
 Especially for high-volume tracing environments.
 
 ---
 
-### 6. Protect Sensitive Data
+#### 6. Protect Sensitive Data
 
 Filter and redact telemetry.
 
 ---
 
-### 7. Use Collector Agents
+#### 7. Use Collector Agents
 
 For node-local or workload-local collection.
 
 ---
 
-### 8. Use Gateway Collectors
+#### 8. Use Gateway Collectors
 
 For centralized:
 
@@ -2662,13 +2662,13 @@ Export
 
 ---
 
-### 9. Monitor the Collector
+#### 9. Monitor the Collector
 
 Treat the Collector as production infrastructure.
 
 ---
 
-### 10. Design for Failure
+#### 10. Design for Failure
 
 Use:
 
@@ -2683,7 +2683,7 @@ where appropriate.
 
 ---
 
-# Hands-on Lab 1 – Deploy OpenTelemetry Collector
+## Hands-on Lab 1 – Deploy OpenTelemetry Collector
 
 Deploy a Collector in Kubernetes.
 
@@ -2695,7 +2695,7 @@ kubectl get pods -n observability
 
 ---
 
-# Hands-on Lab 2 – Configure OTLP
+## Hands-on Lab 2 – Configure OTLP
 
 Configure:
 
@@ -2711,7 +2711,7 @@ Verify that telemetry reaches the Collector.
 
 ---
 
-# Hands-on Lab 3 – Instrument an Application
+## Hands-on Lab 3 – Instrument an Application
 
 Create a simple application.
 
@@ -2725,7 +2725,7 @@ Custom Business Span
 
 ---
 
-# Hands-on Lab 4 – Distributed Tracing
+## Hands-on Lab 4 – Distributed Tracing
 
 Deploy:
 
@@ -2742,7 +2742,7 @@ Verify a single distributed trace contains multiple service spans.
 
 ---
 
-# Hands-on Lab 5 – Resource Attributes
+## Hands-on Lab 5 – Resource Attributes
 
 Configure:
 
@@ -2756,7 +2756,7 @@ Verify these attributes appear in the backend.
 
 ---
 
-# Hands-on Lab 6 – Kubernetes Attributes
+## Hands-on Lab 6 – Kubernetes Attributes
 
 Deploy an OTel Collector with Kubernetes metadata enrichment.
 
@@ -2773,7 +2773,7 @@ where supported by the configured processor and permissions.
 
 ---
 
-# Hands-on Lab 7 – Metrics Pipeline
+## Hands-on Lab 7 – Metrics Pipeline
 
 Build:
 
@@ -2791,7 +2791,7 @@ Verify metrics.
 
 ---
 
-# Hands-on Lab 8 – Logs Pipeline
+## Hands-on Lab 8 – Logs Pipeline
 
 Build:
 
@@ -2809,7 +2809,7 @@ Verify logs in Grafana.
 
 ---
 
-# Hands-on Lab 9 – Traces Pipeline
+## Hands-on Lab 9 – Traces Pipeline
 
 Build:
 
@@ -2825,7 +2825,7 @@ Verify traces in Grafana.
 
 ---
 
-# Hands-on Lab 10 – Metrics + Logs + Traces
+## Hands-on Lab 10 – Metrics + Logs + Traces
 
 Build:
 
@@ -2846,7 +2846,7 @@ Application
 
 ---
 
-# Hands-on Lab 11 – Sampling
+## Hands-on Lab 11 – Sampling
 
 Generate:
 
@@ -2866,7 +2866,7 @@ Exported
 
 ---
 
-# Hands-on Lab 12 – Tail Sampling
+## Hands-on Lab 12 – Tail Sampling
 
 Keep:
 
@@ -2879,7 +2879,7 @@ Drop most routine successful traces.
 
 ---
 
-# Hands-on Lab 13 – Collector HA
+## Hands-on Lab 13 – Collector HA
 
 Deploy multiple gateway Collectors.
 
@@ -2893,7 +2893,7 @@ Verify telemetry continues through the remaining Collector instances.
 
 ---
 
-# Hands-on Lab 14 – Backend Failure
+## Hands-on Lab 14 – Backend Failure
 
 Temporarily make the backend unavailable.
 
@@ -2908,7 +2908,7 @@ Collector Logs
 
 ---
 
-# Hands-on Lab 15 – Security
+## Hands-on Lab 15 – Security
 
 Configure:
 
@@ -2922,7 +2922,7 @@ for a test Collector deployment.
 
 ---
 
-# Hands-on Lab 16 – Sensitive Data Filtering
+## Hands-on Lab 16 – Sensitive Data Filtering
 
 Create telemetry containing a fake secret.
 
@@ -2932,7 +2932,7 @@ Verify the secret is not exported.
 
 ---
 
-# Hands-on Lab 17 – Collector Monitoring
+## Hands-on Lab 17 – Collector Monitoring
 
 Monitor:
 
@@ -2946,7 +2946,7 @@ Queue Size
 
 ---
 
-# Hands-on Lab 18 – Trace-to-Log Correlation
+## Hands-on Lab 18 – Trace-to-Log Correlation
 
 Configure logs and traces so that:
 
@@ -2958,7 +2958,7 @@ can be used to locate related logs.
 
 ---
 
-# Hands-on Lab 19 – Kubernetes Incident Investigation
+## Hands-on Lab 19 – Kubernetes Incident Investigation
 
 Simulate:
 
@@ -2979,7 +2979,7 @@ to determine the root cause.
 
 ---
 
-# Hands-on Lab 20 – Production OpenTelemetry Architecture
+## Hands-on Lab 20 – Production OpenTelemetry Architecture
 
 Build:
 
@@ -3014,9 +3014,9 @@ HA
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## OpenTelemetry
+### OpenTelemetry
 
 ```text
 Vendor-neutral observability framework
@@ -3024,7 +3024,7 @@ Vendor-neutral observability framework
 
 ---
 
-## Telemetry
+### Telemetry
 
 ```text
 Metrics
@@ -3034,7 +3034,7 @@ Traces
 
 ---
 
-## API
+### API
 
 ```text
 Interfaces used to create telemetry
@@ -3042,7 +3042,7 @@ Interfaces used to create telemetry
 
 ---
 
-## SDK
+### SDK
 
 ```text
 Implementation that generates/processes telemetry
@@ -3050,7 +3050,7 @@ Implementation that generates/processes telemetry
 
 ---
 
-## Instrumentation
+### Instrumentation
 
 ```text
 Adding telemetry generation to an application
@@ -3058,7 +3058,7 @@ Adding telemetry generation to an application
 
 ---
 
-## Collector
+### Collector
 
 ```text
 Receive + Process + Export Telemetry
@@ -3066,7 +3066,7 @@ Receive + Process + Export Telemetry
 
 ---
 
-## Receiver
+### Receiver
 
 ```text
 Accepts telemetry
@@ -3074,7 +3074,7 @@ Accepts telemetry
 
 ---
 
-## Processor
+### Processor
 
 ```text
 Modifies/enriches/filters telemetry
@@ -3082,7 +3082,7 @@ Modifies/enriches/filters telemetry
 
 ---
 
-## Exporter
+### Exporter
 
 ```text
 Sends telemetry to a backend
@@ -3090,7 +3090,7 @@ Sends telemetry to a backend
 
 ---
 
-## Connector
+### Connector
 
 ```text
 Connects Collector pipelines
@@ -3098,7 +3098,7 @@ Connects Collector pipelines
 
 ---
 
-## OTLP
+### OTLP
 
 ```text
 OpenTelemetry Protocol
@@ -3106,7 +3106,7 @@ OpenTelemetry Protocol
 
 ---
 
-## Span
+### Span
 
 ```text
 Individual operation within a trace
@@ -3114,7 +3114,7 @@ Individual operation within a trace
 
 ---
 
-## Trace
+### Trace
 
 ```text
 Collection of related spans representing an operation
@@ -3122,7 +3122,7 @@ Collection of related spans representing an operation
 
 ---
 
-## Trace Context
+### Trace Context
 
 ```text
 Information propagated between services to connect spans
@@ -3130,7 +3130,7 @@ Information propagated between services to connect spans
 
 ---
 
-## Resource Attributes
+### Resource Attributes
 
 ```text
 Metadata describing the telemetry-producing entity
@@ -3138,7 +3138,7 @@ Metadata describing the telemetry-producing entity
 
 ---
 
-## Semantic Conventions
+### Semantic Conventions
 
 ```text
 Standardized telemetry attribute definitions
@@ -3146,7 +3146,7 @@ Standardized telemetry attribute definitions
 
 ---
 
-## Head Sampling
+### Head Sampling
 
 ```text
 Sampling decision made early
@@ -3154,7 +3154,7 @@ Sampling decision made early
 
 ---
 
-## Tail Sampling
+### Tail Sampling
 
 ```text
 Sampling decision made after more trace information is available
@@ -3162,7 +3162,7 @@ Sampling decision made after more trace information is available
 
 ---
 
-# Essential Kubernetes Commands
+## Essential Kubernetes Commands
 
 Create namespace:
 
@@ -3218,9 +3218,9 @@ kubectl describe pod \
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is OpenTelemetry?
 - Why is OpenTelemetry used?
@@ -3241,7 +3241,7 @@ kubectl describe pod \
 
 ---
 
-## Intermediate
+### Intermediate
 
 - What are the components of the OpenTelemetry Collector?
 - What is a receiver?
@@ -3264,7 +3264,7 @@ kubectl describe pod \
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a production OpenTelemetry architecture for Kubernetes.
 - Explain Agent + Gateway Collector architecture.
@@ -3285,13 +3285,13 @@ kubectl describe pod \
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What is OpenTelemetry?
 
-### Answer
+#### Answer
 
 OpenTelemetry is a vendor-neutral observability framework for generating, collecting, processing, and exporting:
 
@@ -3316,13 +3316,13 @@ It can export telemetry to multiple observability backends.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Is OpenTelemetry a monitoring backend?
 
-### Answer
+#### Answer
 
 No.
 
@@ -3342,13 +3342,13 @@ The backend stores and queries telemetry.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > What is the difference between a trace and a span?
 
-### Answer
+#### Answer
 
 A trace represents the complete distributed operation.
 
@@ -3370,13 +3370,13 @@ Each operation is a span.
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What is the OpenTelemetry Collector?
 
-### Answer
+#### Answer
 
 The Collector is a vendor-neutral telemetry pipeline component.
 
@@ -3396,13 +3396,13 @@ telemetry.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > What is the difference between a Collector Agent and Gateway?
 
-### Answer
+#### Answer
 
 An Agent is deployed close to the telemetry source:
 
@@ -3435,13 +3435,13 @@ Export
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > What is tail sampling?
 
-### Answer
+#### Answer
 
 Tail sampling makes a sampling decision after enough trace information has been collected.
 
@@ -3460,13 +3460,13 @@ This can preserve valuable troubleshooting traces while reducing storage and net
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How does distributed tracing work across Kubernetes services?
 
-### Answer
+#### Answer
 
 The tracing context is propagated between services.
 
@@ -3488,13 +3488,13 @@ The backend can then reconstruct the complete request path.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How would you troubleshoot missing traces?
 
-### Answer
+#### Answer
 
 Follow:
 
@@ -3530,13 +3530,13 @@ Sampling
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How would you protect sensitive data in OpenTelemetry?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3563,13 +3563,13 @@ unless explicitly required and appropriately protected.
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design an OpenTelemetry architecture for a large Kubernetes cluster.
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3619,7 +3619,7 @@ Monitoring
 
 ---
 
-# Production OpenTelemetry Checklist
+## Production OpenTelemetry Checklist
 
 ```text
 ☑ Standard service.name
@@ -3647,7 +3647,7 @@ Monitoring
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 OpenTelemetry provides a standardized way to generate, collect, process, and export observability telemetry.
 
@@ -3727,9 +3727,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 64 – Distributed Tracing
+## Chapter 64 – Distributed Tracing
 
 Topics will include:
 

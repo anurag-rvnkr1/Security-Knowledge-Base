@@ -19,7 +19,7 @@ Without Labels and Selectors, Kubernetes would have no reliable way to determine
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -37,7 +37,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is a Label?
+## What is a Label?
 
 A **Label** is a key-value pair attached to a Kubernetes object.
 
@@ -57,7 +57,7 @@ Labels provide metadata that Kubernetes uses to organize and identify resources.
 
 ---
 
-# Label Architecture
+## Label Architecture
 
 ```
 Pod
@@ -77,7 +77,7 @@ A resource can have **multiple Labels**.
 
 ---
 
-# Why Labels?
+## Why Labels?
 
 Imagine a cluster with hundreds of Pods.
 
@@ -129,7 +129,7 @@ Kubernetes can now organize resources efficiently.
 
 ---
 
-# Label Key-Value Format
+## Label Key-Value Format
 
 General format:
 
@@ -153,7 +153,7 @@ team=security
 
 ---
 
-# Common Labels
+## Common Labels
 
 Examples commonly used in production:
 
@@ -169,7 +169,7 @@ Examples commonly used in production:
 
 ---
 
-# Multiple Labels
+## Multiple Labels
 
 Example:
 
@@ -201,7 +201,7 @@ Pod
 
 ---
 
-# Creating Labels
+## Creating Labels
 
 Pod YAML:
 
@@ -223,7 +223,7 @@ kubectl apply -f pod.yaml
 
 ---
 
-# Viewing Labels
+## Viewing Labels
 
 Show Pods:
 
@@ -245,7 +245,7 @@ app=nginx,env=production
 
 ---
 
-# Adding Labels
+## Adding Labels
 
 Command:
 
@@ -263,7 +263,7 @@ kubectl get pod nginx \
 
 ---
 
-# Updating Labels
+## Updating Labels
 
 Change:
 
@@ -274,7 +274,7 @@ version=v2 --overwrite
 
 ---
 
-# Removing Labels
+## Removing Labels
 
 Delete:
 
@@ -285,7 +285,7 @@ version-
 
 ---
 
-# What is a Selector?
+## What is a Selector?
 
 A **Selector** is a query that matches Kubernetes resources based on Labels.
 
@@ -307,7 +307,7 @@ Selectors are how controllers identify the resources they manage.
 
 ---
 
-# Selector Architecture
+## Selector Architecture
 
 ```
 Selector
@@ -329,7 +329,7 @@ Only Pods with matching Labels are selected.
 
 ---
 
-# Equality-Based Selectors
+## Equality-Based Selectors
 
 Equality-based selectors match exact key-value pairs.
 
@@ -356,7 +356,7 @@ Displayed
 
 ---
 
-# Multiple Equality Labels
+## Multiple Equality Labels
 
 Example:
 
@@ -377,7 +377,7 @@ env=production
 
 ---
 
-# Set-Based Selectors
+## Set-Based Selectors
 
 Kubernetes also supports set-based matching.
 
@@ -406,7 +406,7 @@ Match
 
 ---
 
-# Other Set Operators
+## Other Set Operators
 
 Not In:
 
@@ -431,7 +431,7 @@ kubectl get pods \
 
 ---
 
-# Labels in Deployments
+## Labels in Deployments
 
 Deployment:
 
@@ -469,7 +469,7 @@ The selector and Pod template labels **must match**.
 
 ---
 
-# Labels in ReplicaSets
+## Labels in ReplicaSets
 
 ReplicaSet:
 
@@ -501,7 +501,7 @@ Controls Pods
 
 ---
 
-# Labels in Services
+## Labels in Services
 
 Service:
 
@@ -541,7 +541,7 @@ Services route traffic based on Labels—not Pod names.
 
 ---
 
-# Labels in Network Policies
+## Labels in Network Policies
 
 Example:
 
@@ -561,7 +561,7 @@ Labels determine which Pods a NetworkPolicy applies to.
 
 ---
 
-# Labels in Monitoring
+## Labels in Monitoring
 
 Prometheus:
 
@@ -577,7 +577,7 @@ Monitoring tools commonly use Labels for grouping and filtering workloads.
 
 ---
 
-# Recommended Label Convention
+## Recommended Label Convention
 
 Example:
 
@@ -599,7 +599,7 @@ Consistent labeling improves automation and operations.
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 View Labels:
 
@@ -638,7 +638,7 @@ version-
 
 ---
 
-# Labels vs Annotations
+## Labels vs Annotations
 
 | Labels | Annotations |
 |----------|-------------|
@@ -649,41 +649,41 @@ version-
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Consistent Labels
+#### 1. Use Consistent Labels
 
 Adopt a standard labeling scheme across all applications.
 
 ---
 
-### 2. Keep Labels Meaningful
+#### 2. Keep Labels Meaningful
 
 Labels should describe workload characteristics such as application, environment, version, or ownership.
 
 ---
 
-### 3. Avoid Frequently Changing Labels
+#### 3. Avoid Frequently Changing Labels
 
 Changing labels used by controllers can affect how resources are selected and managed.
 
 ---
 
-### 4. Use Selectors Carefully
+#### 4. Use Selectors Carefully
 
 Ensure Deployment, ReplicaSet, and Service selectors correctly match the intended Pods.
 
 ---
 
-### 5. Design Labels for Automation
+#### 5. Design Labels for Automation
 
 Monitoring, CI/CD, GitOps, and security tools often rely on consistent labels.
 
 ---
 
-# How Labels & Selectors Work Internally
+## How Labels & Selectors Work Internally
 
-## Overview
+### Overview
 
 Labels and Selectors are the **linking mechanism** that connects Kubernetes resources.
 
@@ -700,7 +700,7 @@ They are one of the most important concepts in the Kubernetes architecture.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                     API Server
@@ -734,7 +734,7 @@ They always use Labels.
 
 ---
 
-# Internal Workflow
+## Internal Workflow
 
 Suppose a Deployment is created.
 
@@ -782,7 +782,7 @@ Managed
 
 ---
 
-# Why Kubernetes Uses Labels
+## Why Kubernetes Uses Labels
 
 Imagine Pods were identified only by names.
 
@@ -822,7 +822,7 @@ Controllers continue working regardless of Pod names.
 
 ---
 
-# API Server Storage
+## API Server Storage
 
 Every Kubernetes object stores Labels in metadata.
 
@@ -856,7 +856,7 @@ The API Server stores these values in etcd along with the rest of the object met
 
 ---
 
-# Selector Matching
+## Selector Matching
 
 Suppose:
 
@@ -908,7 +908,7 @@ Pod A
 
 ---
 
-# Matching Algorithm
+## Matching Algorithm
 
 Controller:
 
@@ -944,7 +944,7 @@ Ignored
 
 ---
 
-# Equality-Based Matching
+## Equality-Based Matching
 
 Selector:
 
@@ -978,7 +978,7 @@ Only matching Pods are selected.
 
 ---
 
-# Multiple Labels
+## Multiple Labels
 
 Deployment:
 
@@ -1020,7 +1020,7 @@ All required labels must satisfy the selector.
 
 ---
 
-# Set-Based Matching
+## Set-Based Matching
 
 Selector:
 
@@ -1054,7 +1054,7 @@ Development
 
 ---
 
-# Service Internals
+## Service Internals
 
 Service:
 
@@ -1102,7 +1102,7 @@ The Service automatically updates its endpoint list as matching Pods are added o
 
 ---
 
-# ReplicaSet Internals
+## ReplicaSet Internals
 
 ReplicaSet:
 
@@ -1138,7 +1138,7 @@ Create Pod
 
 ---
 
-# Deployment Internals
+## Deployment Internals
 
 Deployment:
 
@@ -1158,7 +1158,7 @@ Changing Pod template labels during an update results in a new ReplicaSet with t
 
 ---
 
-# NetworkPolicy Internals
+## NetworkPolicy Internals
 
 NetworkPolicy:
 
@@ -1182,7 +1182,7 @@ Protected
 
 ---
 
-# Label Updates
+## Label Updates
 
 Suppose:
 
@@ -1228,7 +1228,7 @@ This is why changing controller-managed labels can have unexpected effects.
 
 ---
 
-# Controller Watch Loop
+## Controller Watch Loop
 
 Every controller continuously performs:
 
@@ -1256,7 +1256,7 @@ This process is called the **reconciliation loop**.
 
 ---
 
-# Label Indexing
+## Label Indexing
 
 The API Server indexes Labels to enable efficient searches.
 
@@ -1273,7 +1273,7 @@ This makes label-based queries efficient even in large clusters.
 
 ---
 
-# Resource Discovery
+## Resource Discovery
 
 Monitoring systems:
 
@@ -1321,7 +1321,7 @@ Many cloud-native tools depend on Labels for discovery and automation.
 
 ---
 
-# Hands-on Lab 1 – Create Labels
+## Hands-on Lab 1 – Create Labels
 
 Pod:
 
@@ -1349,7 +1349,7 @@ kubectl get pods --show-labels
 
 ---
 
-# Hands-on Lab 2 – Filter Pods
+## Hands-on Lab 2 – Filter Pods
 
 ```bash
 kubectl get pods \
@@ -1367,7 +1367,7 @@ Observe how the results change.
 
 ---
 
-# Hands-on Lab 3 – Update Labels
+## Hands-on Lab 3 – Update Labels
 
 ```bash
 kubectl label pod nginx \
@@ -1389,7 +1389,7 @@ version=v2 --overwrite
 
 ---
 
-# Hands-on Lab 4 – Remove Labels
+## Hands-on Lab 4 – Remove Labels
 
 ```bash
 kubectl label pod nginx \
@@ -1404,7 +1404,7 @@ kubectl get pods --show-labels
 
 ---
 
-# Hands-on Lab 5 – Deployment Selector
+## Hands-on Lab 5 – Deployment Selector
 
 Create a Deployment:
 
@@ -1442,9 +1442,9 @@ Notice how the ReplicaSet manages Pods using the selector.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Selector Does Not Match Labels
+### 1. Selector Does Not Match Labels
 
 Deployment:
 
@@ -1476,7 +1476,7 @@ Selectors and template labels must align.
 
 ---
 
-## 2. Changing Labels on Managed Pods
+### 2. Changing Labels on Managed Pods
 
 Example:
 
@@ -1501,7 +1501,7 @@ Modify the controller's template instead of changing managed Pods directly.
 
 ---
 
-## 3. Using Too Few Labels
+### 3. Using Too Few Labels
 
 Poor:
 
@@ -1525,7 +1525,7 @@ Rich labels improve automation and troubleshooting.
 
 ---
 
-## 4. Using Unclear Label Names
+### 4. Using Unclear Label Names
 
 Avoid:
 
@@ -1545,7 +1545,7 @@ team=security
 
 ---
 
-## 5. Overloading Labels
+### 5. Overloading Labels
 
 Labels should identify and organize resources.
 
@@ -1553,9 +1553,9 @@ Large notes, documentation, or arbitrary metadata belong in **Annotations**, not
 
 ---
 
-# Labels & Selectors Quick Revision
+## Labels & Selectors Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 Labels
@@ -1575,7 +1575,7 @@ Pods
 
 ---
 
-## Matching Process
+### Matching Process
 
 ```
 Controller
@@ -1599,7 +1599,7 @@ Managed Resource
 
 ---
 
-## Common Label Examples
+### Common Label Examples
 
 ```
 app=frontend
@@ -1615,7 +1615,7 @@ team=platform
 
 ---
 
-## Equality-Based Selector
+### Equality-Based Selector
 
 ```bash
 kubectl get pods \
@@ -1624,7 +1624,7 @@ kubectl get pods \
 
 ---
 
-## Set-Based Selector
+### Set-Based Selector
 
 ```bash
 kubectl get pods \
@@ -1633,7 +1633,7 @@ kubectl get pods \
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Labels:
 
@@ -1675,9 +1675,9 @@ kubectl label pod nginx version-
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a Label in Kubernetes?
 - What is a Selector?
@@ -1685,7 +1685,7 @@ kubectl label pod nginx version-
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - Explain equality-based and set-based selectors.
 - How do Services use Labels?
@@ -1693,7 +1693,7 @@ kubectl label pod nginx version-
 
 ---
 
-### Advanced
+#### Advanced
 
 - What happens if you change a Pod's label managed by a Deployment?
 - Why are Labels indexed?
@@ -1703,9 +1703,9 @@ kubectl label pod nginx version-
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Labels and Selectors
 - Recommended Labels
@@ -1716,7 +1716,7 @@ kubectl label pod nginx version-
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Best Practices
 - Kubernetes Learning Path
@@ -1724,7 +1724,7 @@ kubectl label pod nginx version-
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Production Best Practices
@@ -1733,7 +1733,7 @@ kubectl label pod nginx version-
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create Pods with different Labels.
 2. Query Pods using equality-based selectors.
@@ -1745,7 +1745,7 @@ kubectl label pod nginx version-
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Kubernetes Objects

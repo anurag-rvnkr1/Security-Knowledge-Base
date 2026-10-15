@@ -53,7 +53,7 @@ Ed25519
 
 ---
 
-# 1. What is a Digital Signature?
+## 1. What is a Digital Signature?
 
 A digital signature is a cryptographic value generated using:
 
@@ -101,7 +101,7 @@ Valid / Invalid
 
 ---
 
-# 2. What Does a Digital Signature Provide?
+## 2. What Does a Digital Signature Provide?
 
 A correctly implemented digital signature can provide:
 
@@ -117,11 +117,11 @@ If a signature verifies under a trusted public key, the verifier has cryptograph
 
 ---
 
-# 3. Digital Signature vs MAC
+## 3. Digital Signature vs MAC
 
 Both provide integrity and authentication, but their trust models differ.
 
-### MAC
+#### MAC
 
 ```text
 Shared Secret
@@ -129,7 +129,7 @@ Shared Secret
 
 Both sender and receiver know the same secret.
 
-### Digital Signature
+#### Digital Signature
 
 ```text
 Private Key → Sign
@@ -140,7 +140,7 @@ Only the signer should possess the private key.
 
 ---
 
-# 4. Comparison
+## 4. Comparison
 
 | Property | MAC | Digital Signature |
 |---|---|---|
@@ -154,7 +154,7 @@ Only the signer should possess the private key.
 
 ---
 
-# 5. Digital Signature Does Not Mean Encryption
+## 5. Digital Signature Does Not Mean Encryption
 
 A digital signature does not hide the message.
 
@@ -178,7 +178,7 @@ is required.
 
 ---
 
-# 6. Signing Process
+## 6. Signing Process
 
 A simplified signing process:
 
@@ -200,7 +200,7 @@ Instead, a cryptographic hash is incorporated into the signature scheme.
 
 ---
 
-# 7. Verification Process
+## 7. Verification Process
 
 The verifier has:
 
@@ -234,7 +234,7 @@ Signature = Invalid
 
 ---
 
-# 8. What a Valid Signature Means
+## 8. What a Valid Signature Means
 
 A valid signature generally means:
 
@@ -261,7 +261,7 @@ Application Trust Store
 
 ---
 
-# 9. Trust Is Separate From Verification
+## 9. Trust Is Separate From Verification
 
 This is a critical concept.
 
@@ -289,7 +289,7 @@ PKI helps answer the second question.
 
 ---
 
-# 10. Public-Key Infrastructure
+## 10. Public-Key Infrastructure
 
 **PKI** stands for:
 
@@ -315,7 +315,7 @@ used to manage digital identities and public keys.
 
 ---
 
-# 11. PKI Architecture
+## 11. PKI Architecture
 
 A simplified PKI hierarchy:
 
@@ -346,7 +346,7 @@ Web Server
 
 ---
 
-# 12. Certificate
+## 12. Certificate
 
 A digital certificate binds:
 
@@ -374,7 +374,7 @@ Certificate
 
 ---
 
-# 13. X.509 Certificates
+## 13. X.509 Certificates
 
 **X.509** is the widely used certificate standard used in many PKI systems.
 
@@ -393,7 +393,7 @@ CA Signature
 
 ---
 
-# 14. Certificate Example
+## 14. Certificate Example
 
 A simplified certificate:
 
@@ -421,7 +421,7 @@ The actual certificate contains many additional fields and extensions.
 
 ---
 
-# 15. Subject
+## 15. Subject
 
 The subject identifies the entity represented by the certificate.
 
@@ -438,7 +438,7 @@ For modern TLS hostname validation, the **Subject Alternative Name (SAN)** exten
 
 ---
 
-# 16. Subject Alternative Name
+## 16. Subject Alternative Name
 
 SAN can contain identities such as:
 
@@ -462,7 +462,7 @@ Modern TLS clients validate hostnames against SAN entries rather than relying so
 
 ---
 
-# 17. Issuer
+## 17. Issuer
 
 The issuer identifies the CA that signed the certificate.
 
@@ -480,7 +480,7 @@ This creates part of the certificate chain.
 
 ---
 
-# 18. Certificate Serial Number
+## 18. Certificate Serial Number
 
 Each certificate generally has a serial number assigned by its issuer.
 
@@ -500,7 +500,7 @@ Serial numbers are important for certificate management and revocation.
 
 ---
 
-# 19. Validity Period
+## 19. Validity Period
 
 Certificates contain:
 
@@ -523,7 +523,7 @@ A certificate outside its validity period should generally not be accepted for n
 
 ---
 
-# 20. Public Key Information
+## 20. Public Key Information
 
 The certificate contains the subject's public key.
 
@@ -539,7 +539,7 @@ The public key is used according to the certificate's intended key usage and the
 
 ---
 
-# 21. Certificate Signature
+## 21. Certificate Signature
 
 The certificate issuer signs certificate data.
 
@@ -565,7 +565,7 @@ to verify the certificate signature.
 
 ---
 
-# 22. Certificate Chain
+## 22. Certificate Chain
 
 A certificate usually belongs to a chain.
 
@@ -591,7 +591,7 @@ Root CA
 
 ---
 
-# 23. Root CA
+## 23. Root CA
 
 A root CA is a trust anchor.
 
@@ -608,7 +608,7 @@ The root certificate is normally self-signed.
 
 ---
 
-# 24. Why Root CAs Are Trusted
+## 24. Why Root CAs Are Trusted
 
 A root CA is trusted because the relevant platform, organization, or application has explicitly included it in a trusted trust store.
 
@@ -624,7 +624,7 @@ Trust ultimately depends on the security of that trust-store ecosystem.
 
 ---
 
-# 25. Intermediate CA
+## 25. Intermediate CA
 
 Intermediate CAs are signed by a root CA or another authorized CA.
 
@@ -644,7 +644,7 @@ Intermediate CAs reduce the need to use the root private key for routine certifi
 
 ---
 
-# 26. Why Use Intermediate CAs?
+## 26. Why Use Intermediate CAs?
 
 Using intermediate CAs provides:
 
@@ -661,7 +661,7 @@ The root CA can remain offline or highly protected.
 
 ---
 
-# 27. Root CA vs Intermediate CA
+## 27. Root CA vs Intermediate CA
 
 | Property | Root CA | Intermediate CA |
 |---|---|---|
@@ -674,7 +674,7 @@ The root CA can remain offline or highly protected.
 
 ---
 
-# 28. End-Entity Certificate
+## 28. End-Entity Certificate
 
 The final certificate in the chain is usually the certificate presented by the server, user, device, or application.
 
@@ -692,7 +692,7 @@ The `api.example.com` certificate is an end-entity certificate.
 
 ---
 
-# 29. Certificate Path Validation
+## 29. Certificate Path Validation
 
 A client validates:
 
@@ -710,7 +710,7 @@ The client checks whether the chain leads to a trusted root and whether the cert
 
 ---
 
-# 30. Certificate Validation
+## 30. Certificate Validation
 
 Important checks include:
 
@@ -733,7 +733,7 @@ Exact validation behavior depends on the protocol and implementation.
 
 ---
 
-# 31. Hostname Validation
+## 31. Hostname Validation
 
 Suppose the server presents:
 
@@ -758,7 +758,7 @@ is not covered by the certificate's SAN entries, hostname validation should fail
 
 ---
 
-# 32. Why Hostname Validation Matters
+## 32. Why Hostname Validation Matters
 
 Without hostname validation:
 
@@ -776,7 +776,7 @@ Hostname verification binds the certificate to the intended service identity.
 
 ---
 
-# 33. Certificate Authority Validation
+## 33. Certificate Authority Validation
 
 A client should verify that:
 
@@ -796,7 +796,7 @@ An arbitrary self-signed certificate should not automatically be trusted.
 
 ---
 
-# 34. Self-Signed Certificate
+## 34. Self-Signed Certificate
 
 A self-signed certificate is signed by its own private key.
 
@@ -821,7 +821,7 @@ but they must be explicitly trusted by clients.
 
 ---
 
-# 35. Self-Signed Certificate vs Invalid Certificate
+## 35. Self-Signed Certificate vs Invalid Certificate
 
 A self-signed certificate is not inherently "broken."
 
@@ -843,7 +843,7 @@ Valid Internal Certificate
 
 ---
 
-# 36. Certificate Signing Request
+## 36. Certificate Signing Request
 
 A **CSR** stands for:
 
@@ -871,7 +871,7 @@ Certificate Authority
 
 ---
 
-# 37. CSR Contents
+## 37. CSR Contents
 
 A CSR commonly contains:
 
@@ -886,7 +886,7 @@ The requester signs the CSR using the corresponding private key.
 
 ---
 
-# 38. CSR Does Not Contain the Private Key
+## 38. CSR Does Not Contain the Private Key
 
 A properly generated CSR contains:
 
@@ -906,7 +906,7 @@ The private key must remain under the control of the requester.
 
 ---
 
-# 39. Generate a CSR
+## 39. Generate a CSR
 
 Example with OpenSSL:
 
@@ -921,7 +921,7 @@ The CA can then process the CSR according to its issuance policy.
 
 ---
 
-# 40. Inspect a CSR
+## 40. Inspect a CSR
 
 ```bash
 openssl req \
@@ -941,7 +941,7 @@ Signature
 
 ---
 
-# 41. Certificate Authority Workflow
+## 41. Certificate Authority Workflow
 
 A simplified issuance workflow:
 
@@ -971,7 +971,7 @@ The validation process depends on the certificate type and CA policy.
 
 ---
 
-# 42. Domain Validation
+## 42. Domain Validation
 
 A CA may verify control of a domain through mechanisms such as:
 
@@ -985,7 +985,7 @@ The exact validation method depends on the certificate issuance process.
 
 ---
 
-# 43. Organization Validation
+## 43. Organization Validation
 
 Some certificates involve additional organization validation.
 
@@ -995,7 +995,7 @@ The certificate can then communicate more identity information than a simple dom
 
 ---
 
-# 44. Extended Validation
+## 44. Extended Validation
 
 Extended Validation (EV) certificates involve additional organizational validation requirements.
 
@@ -1005,7 +1005,7 @@ The underlying PKI validation remains based on certificate and CA processes.
 
 ---
 
-# 45. Certificate Revocation
+## 45. Certificate Revocation
 
 A certificate may need to be revoked before its expiration date.
 
@@ -1022,7 +1022,7 @@ Organizational Changes
 
 ---
 
-# 46. Certificate Revocation List
+## 46. Certificate Revocation List
 
 A **CRL** is a:
 
@@ -1044,7 +1044,7 @@ Revoked Certificate Serial Numbers
 
 ---
 
-# 47. CRL Distribution Point
+## 47. CRL Distribution Point
 
 A certificate can contain an extension identifying where revocation information can be obtained.
 
@@ -1060,7 +1060,7 @@ Clients may retrieve the CRL and check whether the certificate's serial number a
 
 ---
 
-# 48. OCSP
+## 48. OCSP
 
 **OCSP** stands for:
 
@@ -1084,7 +1084,7 @@ Good / Revoked / Unknown
 
 ---
 
-# 49. OCSP Stapling
+## 49. OCSP Stapling
 
 With OCSP stapling:
 
@@ -1104,7 +1104,7 @@ This can improve privacy and reduce client-side latency.
 
 ---
 
-# 50. CRL vs OCSP
+## 50. CRL vs OCSP
 
 | Feature | CRL | OCSP |
 |---|---|---|
@@ -1117,7 +1117,7 @@ This can improve privacy and reduce client-side latency.
 
 ---
 
-# 51. Certificate Transparency
+## 51. Certificate Transparency
 
 **Certificate Transparency (CT)** is a system designed to make publicly trusted certificate issuance auditable.
 
@@ -1131,7 +1131,7 @@ This allows domain owners and security researchers to detect unexpected certific
 
 ---
 
-# 52. Certificate Transparency Workflow
+## 52. Certificate Transparency Workflow
 
 Conceptually:
 
@@ -1149,7 +1149,7 @@ Unexpected Certificate Detection
 
 ---
 
-# 53. Certificate Transparency Security Value
+## 53. Certificate Transparency Security Value
 
 CT helps detect:
 
@@ -1173,7 +1173,7 @@ Detection
 
 ---
 
-# 54. Certificate Pinning
+## 54. Certificate Pinning
 
 Certificate or public-key pinning historically attempted to restrict which certificates or keys an application accepts.
 
@@ -1189,7 +1189,7 @@ Modern applications should follow current platform and protocol guidance rather 
 
 ---
 
-# 55. TLS Certificate
+## 55. TLS Certificate
 
 A TLS server generally presents:
 
@@ -1205,7 +1205,7 @@ The client validates the certificate before trusting the server identity.
 
 ---
 
-# 56. TLS Authentication
+## 56. TLS Authentication
 
 Simplified:
 
@@ -1229,7 +1229,7 @@ After authentication, the protocol establishes session keys for encrypted commun
 
 ---
 
-# 57. Certificate Authentication Is Not Encryption
+## 57. Certificate Authentication Is Not Encryption
 
 A certificate primarily provides:
 
@@ -1249,7 +1249,7 @@ which protect application data.
 
 ---
 
-# 58. Mutual TLS
+## 58. Mutual TLS
 
 In normal TLS:
 
@@ -1277,7 +1277,7 @@ Server Certificate
 
 ---
 
-# 59. mTLS Use Cases
+## 59. mTLS Use Cases
 
 mTLS is commonly used for:
 
@@ -1293,7 +1293,7 @@ Internal Services
 
 ---
 
-# 60. Code Signing
+## 60. Code Signing
 
 Digital signatures can authenticate software.
 
@@ -1321,7 +1321,7 @@ Trusted Public Key
 
 ---
 
-# 61. Code Signing Benefits
+## 61. Code Signing Benefits
 
 Code signing can help verify:
 
@@ -1336,7 +1336,7 @@ It is an important component of software supply-chain security.
 
 ---
 
-# 62. Software Update Security
+## 62. Software Update Security
 
 A secure update system can use:
 
@@ -1358,7 +1358,7 @@ Reject Update
 
 ---
 
-# 63. Supply Chain Attack
+## 63. Supply Chain Attack
 
 An attacker may compromise:
 
@@ -1386,7 +1386,7 @@ are protected.
 
 ---
 
-# 64. Signing Key Compromise
+## 64. Signing Key Compromise
 
 If an attacker obtains a legitimate software signing private key:
 
@@ -1404,7 +1404,7 @@ Therefore code-signing keys require strong protection.
 
 ---
 
-# 65. Hardware Security Modules
+## 65. Hardware Security Modules
 
 An **HSM** can protect sensitive private keys.
 
@@ -1427,7 +1427,7 @@ The application does not necessarily receive the private key itself.
 
 ---
 
-# 66. Cloud Key Management
+## 66. Cloud Key Management
 
 Cloud environments commonly provide:
 
@@ -1443,7 +1443,7 @@ These services can help protect signing and encryption keys.
 
 ---
 
-# 67. Private Key Protection
+## 67. Private Key Protection
 
 Private keys should be protected against:
 
@@ -1471,7 +1471,7 @@ Strict File Permissions
 
 ---
 
-# 68. Key Lifecycle
+## 68. Key Lifecycle
 
 A signing key has a lifecycle:
 
@@ -1495,7 +1495,7 @@ Lifecycle management is a critical part of PKI security.
 
 ---
 
-# 69. Certificate Lifecycle
+## 69. Certificate Lifecycle
 
 A certificate lifecycle:
 
@@ -1521,7 +1521,7 @@ Revoke if Required
 
 ---
 
-# 70. Certificate Expiration
+## 70. Certificate Expiration
 
 Expired certificates can cause:
 
@@ -1543,7 +1543,7 @@ automatically.
 
 ---
 
-# 71. Certificate Automation
+## 71. Certificate Automation
 
 Modern environments often automate:
 
@@ -1566,7 +1566,7 @@ Operational Overhead
 
 ---
 
-# 72. PKI Trust Store
+## 72. PKI Trust Store
 
 A trust store contains trusted certificates or trust anchors.
 
@@ -1590,7 +1590,7 @@ may become trusted according to the validation rules of the application.
 
 ---
 
-# 73. Enterprise Private PKI
+## 73. Enterprise Private PKI
 
 Organizations can operate their own PKI:
 
@@ -1616,7 +1616,7 @@ Clients must explicitly trust the organization's CA.
 
 ---
 
-# 74. PKI and Zero Trust
+## 74. PKI and Zero Trust
 
 PKI can support Zero Trust identity:
 
@@ -1636,7 +1636,7 @@ This can provide short-lived, cryptographically verifiable workload identities.
 
 ---
 
-# 75. SPIFFE and Workload Identity
+## 75. SPIFFE and Workload Identity
 
 Modern workload identity systems may use standardized identity frameworks such as:
 
@@ -1657,7 +1657,7 @@ Zero Trust
 
 ---
 
-# 76. SSH Public-Key Authentication
+## 76. SSH Public-Key Authentication
 
 SSH can authenticate users using public-key cryptography.
 
@@ -1689,7 +1689,7 @@ Authenticated
 
 ---
 
-# 77. SSH Authorized Keys
+## 77. SSH Authorized Keys
 
 A server may maintain:
 
@@ -1703,7 +1703,7 @@ The server does not need the user's private key.
 
 ---
 
-# 78. SSH Host Keys
+## 78. SSH Host Keys
 
 SSH servers also have host keys.
 
@@ -1717,7 +1717,7 @@ Host-key verification helps defend against man-in-the-middle attacks.
 
 ---
 
-# 79. SSH Known Hosts
+## 79. SSH Known Hosts
 
 Clients commonly maintain:
 
@@ -1733,7 +1733,7 @@ Such warnings should be investigated rather than blindly bypassed.
 
 ---
 
-# 80. Digital Signatures in Email
+## 80. Digital Signatures in Email
 
 Cryptographic signatures can protect email authenticity and integrity.
 
@@ -1760,7 +1760,7 @@ The recipient uses the corresponding public key to verify the signature.
 
 ---
 
-# 81. Non-Repudiation
+## 81. Non-Repudiation
 
 Digital signatures are sometimes described as providing:
 
@@ -1784,7 +1784,7 @@ Signing Policy
 
 ---
 
-# 82. Signature Algorithms
+## 82. Signature Algorithms
 
 Important modern signature algorithms include:
 
@@ -1807,7 +1807,7 @@ Protocol Support
 
 ---
 
-# 83. RSA-PSS
+## 83. RSA-PSS
 
 RSA-PSS is a modern RSA signature scheme.
 
@@ -1833,7 +1833,7 @@ RSA Public Key
 
 ---
 
-# 84. Why RSA-PSS?
+## 84. Why RSA-PSS?
 
 RSA-PSS provides randomized encoding and is preferred for modern RSA signature applications over older deterministic RSA signature constructions where applicable.
 
@@ -1841,7 +1841,7 @@ It should be implemented using a trusted cryptographic library.
 
 ---
 
-# 85. ECDSA
+## 85. ECDSA
 
 **ECDSA** stands for:
 
@@ -1871,7 +1871,7 @@ Signature
 
 ---
 
-# 86. ECDSA Nonce
+## 86. ECDSA Nonce
 
 ECDSA uses a per-signature nonce.
 
@@ -1890,7 +1890,7 @@ This makes secure implementation extremely important.
 
 ---
 
-# 87. Ed25519
+## 87. Ed25519
 
 Ed25519 is a modern elliptic-curve signature scheme.
 
@@ -1905,7 +1905,7 @@ It is designed to provide strong security with compact keys and signatures.
 
 ---
 
-# 88. Ed25519 vs ECDSA
+## 88. Ed25519 vs ECDSA
 
 | Property | Ed25519 | ECDSA |
 |---|---|---|
@@ -1919,7 +1919,7 @@ Actual protocol support varies.
 
 ---
 
-# 89. Signature Algorithm Selection
+## 89. Signature Algorithm Selection
 
 Do not select algorithms only based on:
 
@@ -1942,7 +1942,7 @@ Migration Requirements
 
 ---
 
-# 90. Certificate Key Usage
+## 90. Certificate Key Usage
 
 Certificates can restrict how keys are used.
 
@@ -1959,7 +1959,7 @@ The `keyUsage` extension can constrain permitted operations.
 
 ---
 
-# 91. Extended Key Usage
+## 91. Extended Key Usage
 
 Extended Key Usage (EKU) provides more specific purposes.
 
@@ -1976,7 +1976,7 @@ A certificate should not automatically be treated as valid for every possible pu
 
 ---
 
-# 92. Basic Constraints
+## 92. Basic Constraints
 
 The `basicConstraints` extension helps identify whether a certificate is a CA certificate.
 
@@ -1996,7 +1996,7 @@ CA = FALSE
 
 ---
 
-# 93. Path Length Constraints
+## 93. Path Length Constraints
 
 A CA certificate can include constraints limiting how many subordinate CA levels may appear beneath it.
 
@@ -2016,7 +2016,7 @@ A path-length constraint can restrict such delegation.
 
 ---
 
-# 94. Certificate Misconfiguration
+## 94. Certificate Misconfiguration
 
 Common PKI issues include:
 
@@ -2036,7 +2036,7 @@ Misissued Certificate
 
 ---
 
-# 95. VAPT Certificate Testing
+## 95. VAPT Certificate Testing
 
 A security tester can inspect:
 
@@ -2057,7 +2057,7 @@ TLS Configuration
 
 ---
 
-# 96. OpenSSL Certificate Inspection
+## 96. OpenSSL Certificate Inspection
 
 Retrieve a TLS certificate:
 
@@ -2079,7 +2079,7 @@ openssl s_client \
 
 ---
 
-# 97. Check Certificate Dates
+## 97. Check Certificate Dates
 
 ```bash
 openssl x509 \
@@ -2097,7 +2097,7 @@ notAfter
 
 ---
 
-# 98. Check Certificate Subject
+## 98. Check Certificate Subject
 
 ```bash
 openssl x509 \
@@ -2108,7 +2108,7 @@ openssl x509 \
 
 ---
 
-# 99. Check Certificate Issuer
+## 99. Check Certificate Issuer
 
 ```bash
 openssl x509 \
@@ -2119,7 +2119,7 @@ openssl x509 \
 
 ---
 
-# 100. Check SAN
+## 100. Check SAN
 
 ```bash
 openssl x509 \
@@ -2130,7 +2130,7 @@ openssl x509 \
 
 ---
 
-# 101. Check Public Key
+## 101. Check Public Key
 
 ```bash
 openssl x509 \
@@ -2141,7 +2141,7 @@ openssl x509 \
 
 ---
 
-# 102. Check Signature Algorithm
+## 102. Check Signature Algorithm
 
 ```bash
 openssl x509 \
@@ -2164,7 +2164,7 @@ Public Key Algorithm
 
 ---
 
-# 103. Verify Certificate Chain
+## 103. Verify Certificate Chain
 
 If you have:
 
@@ -2195,7 +2195,7 @@ if the supplied chain and trust relationship are valid.
 
 ---
 
-# 104. Generate an RSA Private Key
+## 104. Generate an RSA Private Key
 
 ```bash
 openssl genpkey \
@@ -2206,7 +2206,7 @@ openssl genpkey \
 
 ---
 
-# 105. Generate a CSR
+## 105. Generate a CSR
 
 ```bash
 openssl req \
@@ -2219,7 +2219,7 @@ For production certificates, requested SANs and other fields should be specified
 
 ---
 
-# 106. Generate an EC Key
+## 106. Generate an EC Key
 
 ```bash
 openssl genpkey \
@@ -2239,7 +2239,7 @@ openssl req \
 
 ---
 
-# 107. Digital Signature with Python
+## 107. Digital Signature with Python
 
 Using the `cryptography` library:
 
@@ -2280,7 +2280,7 @@ print("Signature valid")
 
 ---
 
-# 108. Signature Tampering Exercise
+## 108. Signature Tampering Exercise
 
 Generate a signature for:
 
@@ -2305,7 +2305,7 @@ Even a one-character change should cause verification failure.
 
 ---
 
-# 109. Certificate Inspection Lab
+## 109. Certificate Inspection Lab
 
 Choose a public HTTPS service.
 
@@ -2333,7 +2333,7 @@ Root CA
 
 ---
 
-# 110. PKI Attack Surface
+## 110. PKI Attack Surface
 
 Important attack categories include:
 
@@ -2354,7 +2354,7 @@ Signing-Key Compromise
 
 ---
 
-# 111. Private-Key Theft
+## 111. Private-Key Theft
 
 If a server's private key is stolen:
 
@@ -2379,7 +2379,7 @@ Compromise Investigation
 
 ---
 
-# 112. CA Compromise
+## 112. CA Compromise
 
 A compromised CA can potentially issue fraudulent certificates for domains it is authorized to validate.
 
@@ -2399,7 +2399,7 @@ Certificate Transparency and monitoring can help detect unexpected public certif
 
 ---
 
-# 113. Trust Store Abuse
+## 113. Trust Store Abuse
 
 If an attacker can install a malicious root CA into a device's trust store:
 
@@ -2417,7 +2417,7 @@ Therefore root CA installation should be tightly controlled.
 
 ---
 
-# 114. Certificate Mis-Issuance
+## 114. Certificate Mis-Issuance
 
 A CA may accidentally or maliciously issue a certificate for:
 
@@ -2431,7 +2431,7 @@ Monitoring CT logs can help domain owners detect such events.
 
 ---
 
-# 115. Certificate Transparency Monitoring
+## 115. Certificate Transparency Monitoring
 
 Organizations can monitor:
 
@@ -2452,7 +2452,7 @@ This can be integrated into security monitoring.
 
 ---
 
-# 116. PKI Incident Response
+## 116. PKI Incident Response
 
 If a fraudulent certificate is discovered:
 
@@ -2471,7 +2471,7 @@ If a fraudulent certificate is discovered:
 
 ---
 
-# 117. Code-Signing Incident Response
+## 117. Code-Signing Incident Response
 
 If a code-signing key is compromised:
 
@@ -2489,7 +2489,7 @@ If a code-signing key is compromised:
 
 ---
 
-# 118. PKI and DevSecOps
+## 118. PKI and DevSecOps
 
 Modern DevSecOps environments should automate:
 
@@ -2515,7 +2515,7 @@ Cloud KMS
 
 ---
 
-# 119. PKI in Kubernetes
+## 119. PKI in Kubernetes
 
 Kubernetes environments commonly use certificates for:
 
@@ -2533,7 +2533,7 @@ Certificates may be automatically rotated depending on the component and configu
 
 ---
 
-# 120. Kubernetes Certificate Security
+## 120. Kubernetes Certificate Security
 
 Important controls include:
 
@@ -2549,7 +2549,7 @@ Use Least Privilege
 
 ---
 
-# 121. Service Mesh and PKI
+## 121. Service Mesh and PKI
 
 Service meshes such as:
 
@@ -2574,7 +2574,7 @@ Both services authenticate cryptographically.
 
 ---
 
-# 122. Certificate Automation
+## 122. Certificate Automation
 
 A mature PKI system should provide:
 
@@ -2591,7 +2591,7 @@ This reduces manual certificate management errors.
 
 ---
 
-# 123. Certificate Expiration Monitoring
+## 123. Certificate Expiration Monitoring
 
 A monitoring system can alert:
 
@@ -2606,11 +2606,11 @@ The exact thresholds should match organizational requirements.
 
 ---
 
-# 124. Key Rotation vs Certificate Renewal
+## 124. Key Rotation vs Certificate Renewal
 
 These are related but different.
 
-### Certificate Renewal
+#### Certificate Renewal
 
 ```text
 New Certificate
@@ -2624,7 +2624,7 @@ Same Key
 
 depending on policy.
 
-### Key Rotation
+#### Key Rotation
 
 ```text
 New Private Key
@@ -2638,7 +2638,7 @@ Strong security practices often combine renewal with appropriate key rotation.
 
 ---
 
-# 125. Cryptographic Agility
+## 125. Cryptographic Agility
 
 PKI systems should support migration between algorithms.
 
@@ -2665,7 +2665,7 @@ Migration Planning
 
 ---
 
-# 126. Post-Quantum Signatures
+## 126. Post-Quantum Signatures
 
 Quantum computing threatens many classical public-key signature algorithms.
 
@@ -2690,7 +2690,7 @@ Post-quantum cryptography is covered in Chapter 12.
 
 ---
 
-# 127. Digital Signature Security Checklist
+## 127. Digital Signature Security Checklist
 
 ```text
 ☐ Use modern signature algorithms
@@ -2711,7 +2711,7 @@ Post-quantum cryptography is covered in Chapter 12.
 
 ---
 
-# 128. PKI Security Checklist
+## 128. PKI Security Checklist
 
 ```text
 ☐ Protect root CA keys
@@ -2731,7 +2731,7 @@ Post-quantum cryptography is covered in Chapter 12.
 
 ---
 
-# 129. Common Mistakes
+## 129. Common Mistakes
 
 ```text
 ❌ Trusting any certificate
@@ -2751,7 +2751,7 @@ Post-quantum cryptography is covered in Chapter 12.
 
 ---
 
-# 130. VAPT Checklist
+## 130. VAPT Checklist
 
 During a PKI/TLS assessment:
 
@@ -2777,7 +2777,7 @@ During a PKI/TLS assessment:
 
 ---
 
-# 131. SOC Monitoring
+## 131. SOC Monitoring
 
 SOC teams can monitor:
 
@@ -2797,7 +2797,7 @@ Suspicious Certificates
 
 ---
 
-# 132. Example SOC Alert
+## 132. Example SOC Alert
 
 ```text
 Alert:
@@ -2826,7 +2826,7 @@ Investigation:
 
 ---
 
-# 133. Certificate Monitoring Architecture
+## 133. Certificate Monitoring Architecture
 
 ```text
              Certificate Sources
@@ -2849,7 +2849,7 @@ Investigation:
 
 ---
 
-# 134. Digital Signature in Software Supply Chain
+## 134. Digital Signature in Software Supply Chain
 
 A secure artifact pipeline:
 
@@ -2877,7 +2877,7 @@ This establishes a stronger chain of trust.
 
 ---
 
-# 135. Signing Key Isolation
+## 135. Signing Key Isolation
 
 High-value signing keys should ideally be isolated from ordinary developer systems.
 
@@ -2902,7 +2902,7 @@ The private key remains protected.
 
 ---
 
-# 136. Certificate Authority Security Model
+## 136. Certificate Authority Security Model
 
 A mature CA architecture may look like:
 
@@ -2924,7 +2924,7 @@ Separate CA roles can reduce blast radius.
 
 ---
 
-# 137. CA Compromise Blast Radius
+## 137. CA Compromise Blast Radius
 
 If a dedicated intermediate CA is compromised:
 
@@ -2946,7 +2946,7 @@ This is why root CA private keys require exceptional protection.
 
 ---
 
-# 138. Certificate Policies
+## 138. Certificate Policies
 
 Organizations should define:
 
@@ -2966,7 +2966,7 @@ Audit Requirements
 
 ---
 
-# 139. PKI Governance
+## 139. PKI Governance
 
 PKI is not purely a technical problem.
 
@@ -2986,7 +2986,7 @@ A certificate is only as trustworthy as the system that manages its identity and
 
 ---
 
-# 140. Practical Lab – Build a Small CA
+## 140. Practical Lab – Build a Small CA
 
 For learning purposes, OpenSSL can be used to create a private test CA.
 
@@ -3015,7 +3015,7 @@ openssl req \
 
 ---
 
-# 141. Create a Server Key
+## 141. Create a Server Key
 
 ```bash
 openssl genpkey \
@@ -3026,7 +3026,7 @@ openssl genpkey \
 
 ---
 
-# 142. Create a Server CSR
+## 142. Create a Server CSR
 
 ```bash
 openssl req \
@@ -3037,7 +3037,7 @@ openssl req \
 
 ---
 
-# 143. Sign a Test Certificate
+## 143. Sign a Test Certificate
 
 For a controlled lab, the CA can sign the server CSR.
 
@@ -3053,7 +3053,7 @@ The client must explicitly trust the test CA for the certificate to validate.
 
 ---
 
-# 144. Verify the Certificate
+## 144. Verify the Certificate
 
 ```bash
 openssl verify \
@@ -3071,7 +3071,7 @@ if the certificate was correctly issued and the chain is valid.
 
 ---
 
-# 145. Practical Lab – Signature Verification
+## 145. Practical Lab – Signature Verification
 
 Create:
 
@@ -3105,7 +3105,7 @@ Verification should fail.
 
 ---
 
-# 146. Practical Lab – Certificate Enumeration
+## 146. Practical Lab – Certificate Enumeration
 
 For a public TLS service:
 
@@ -3131,7 +3131,7 @@ Signature Algorithm
 
 ---
 
-# 147. Real-World PKI Workflow
+## 147. Real-World PKI Workflow
 
 A production certificate lifecycle might look like:
 
@@ -3159,7 +3159,7 @@ Rotation
 
 ---
 
-# 148. Digital Signature Mental Model
+## 148. Digital Signature Mental Model
 
 Remember:
 
@@ -3181,7 +3181,7 @@ The public key is designed for distribution.
 
 ---
 
-# 149. PKI Mental Model
+## 149. PKI Mental Model
 
 Remember:
 
@@ -3211,7 +3211,7 @@ Trust
 
 ---
 
-# 150. Hash + Signature + Certificate
+## 150. Hash + Signature + Certificate
 
 These three concepts solve different problems:
 
@@ -3243,15 +3243,15 @@ form a foundation of modern PKI.
 
 ---
 
-# 151. Common Interview Questions
+## 151. Common Interview Questions
 
-## What is a digital signature?
+### What is a digital signature?
 
 A digital signature is a cryptographic value generated using a private key that allows others to verify the integrity and authenticity of signed data using the corresponding public key.
 
 ---
 
-## What does a digital signature provide?
+### What does a digital signature provide?
 
 Primarily:
 
@@ -3263,139 +3263,139 @@ Proof of Private-Key Possession
 
 ---
 
-## Is a digital signature encryption?
+### Is a digital signature encryption?
 
 No. A digital signature provides authenticity and integrity; encryption provides confidentiality.
 
 ---
 
-## What is PKI?
+### What is PKI?
 
 PKI is the infrastructure of certificates, keys, certificate authorities, policies, trust stores, and processes used to establish and manage public-key trust.
 
 ---
 
-## What is an X.509 certificate?
+### What is an X.509 certificate?
 
 An X.509 certificate is a standardized structure that binds an identity to a public key and is signed by an issuer.
 
 ---
 
-## What is a CA?
+### What is a CA?
 
 A Certificate Authority is a trusted entity that issues and signs certificates according to defined policies.
 
 ---
 
-## What is a root CA?
+### What is a root CA?
 
 A root CA is a trust anchor that is explicitly trusted by a platform, organization, or application.
 
 ---
 
-## What is an intermediate CA?
+### What is an intermediate CA?
 
 An intermediate CA is a subordinate CA whose authority is delegated by another CA, often a root CA.
 
 ---
 
-## What is a certificate chain?
+### What is a certificate chain?
 
 A certificate chain is a sequence of certificates linking an end-entity certificate to a trusted root.
 
 ---
 
-## What is a CSR?
+### What is a CSR?
 
 A Certificate Signing Request contains a public key, requested identity information/extensions, and a proof of possession of the corresponding private key.
 
 ---
 
-## Does a CSR contain the private key?
+### Does a CSR contain the private key?
 
 No. The private key should remain secret and under the requester's control.
 
 ---
 
-## What is SAN?
+### What is SAN?
 
 Subject Alternative Name is a certificate extension containing identities such as DNS names and IP addresses.
 
 ---
 
-## Why is SAN important?
+### Why is SAN important?
 
 TLS hostname verification uses SAN entries to determine whether a certificate is valid for the requested hostname.
 
 ---
 
-## What is certificate revocation?
+### What is certificate revocation?
 
 Revocation invalidates a certificate before its normal expiration time.
 
 ---
 
-## What is CRL?
+### What is CRL?
 
 A Certificate Revocation List is a list of revoked certificate serial numbers published by a CA.
 
 ---
 
-## What is OCSP?
+### What is OCSP?
 
 Online Certificate Status Protocol allows certificate status to be queried from an OCSP responder.
 
 ---
 
-## What is OCSP stapling?
+### What is OCSP stapling?
 
 The server provides a CA-signed OCSP response to the client during the TLS interaction, reducing the need for the client to contact the responder directly.
 
 ---
 
-## What is Certificate Transparency?
+### What is Certificate Transparency?
 
 Certificate Transparency provides public, auditable logs of publicly trusted certificate issuance.
 
 ---
 
-## What is mTLS?
+### What is mTLS?
 
 Mutual TLS authenticates both the server and client using certificates.
 
 ---
 
-## What is RSA-PSS?
+### What is RSA-PSS?
 
 RSA-PSS is a modern RSA digital-signature scheme using probabilistic encoding.
 
 ---
 
-## What is ECDSA?
+### What is ECDSA?
 
 ECDSA is an elliptic-curve digital signature algorithm.
 
 ---
 
-## What is Ed25519?
+### What is Ed25519?
 
 Ed25519 is a modern elliptic-curve digital signature scheme.
 
 ---
 
-## Why is ECDSA nonce reuse dangerous?
+### Why is ECDSA nonce reuse dangerous?
 
 Improper nonce reuse can expose mathematical relationships that may allow recovery of the private signing key.
 
 ---
 
-## What happens if a private signing key is compromised?
+### What happens if a private signing key is compromised?
 
 An attacker may be able to impersonate the key owner or create fraudulent signatures. The key should be considered compromised and replaced according to the incident-response process.
 
 ---
 
-# 152. Quick Revision Table
+## 152. Quick Revision Table
 
 | Concept | Purpose |
 |---|---|
@@ -3422,7 +3422,7 @@ An attacker may be able to impersonate the key owner or create fraudulent signat
 
 ---
 
-# 153. Key Takeaways
+## 153. Key Takeaways
 
 ```text
 1. Digital signatures provide integrity and authentication.
@@ -3476,7 +3476,7 @@ An attacker may be able to impersonate the key owner or create fraudulent signat
 
 ---
 
-# 154. Chapter Summary
+## 154. Chapter Summary
 
 This chapter covered:
 
@@ -3574,9 +3574,9 @@ Trusted Trust Store
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 08 – TLS/SSL & Secure Communications
+### Chapter 08 – TLS/SSL & Secure Communications
 
 The next chapter will cover:
 

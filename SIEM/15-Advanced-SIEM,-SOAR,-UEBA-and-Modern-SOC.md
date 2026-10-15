@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 Traditional SIEM:
 
@@ -66,7 +66,7 @@ Better Response
 
 ---
 
-# 2. What is a Modern SOC?
+## 2. What is a Modern SOC?
 
 A modern Security Operations Center combines:
 
@@ -98,7 +98,7 @@ Vulnerability Management
 
 ---
 
-# 3. Modern SOC Architecture
+## 3. Modern SOC Architecture
 
 A conceptual architecture:
 
@@ -135,7 +135,7 @@ A conceptual architecture:
 
 ---
 
-# 4. SOAR
+## 4. SOAR
 
 SOAR stands for:
 
@@ -148,9 +148,9 @@ SOAR connects security tools and automates workflows.
 
 ---
 
-# 5. SIEM vs SOAR
+## 5. SIEM vs SOAR
 
-## SIEM
+### SIEM
 
 Primarily focuses on:
 
@@ -162,7 +162,7 @@ Investigation
 Alerting
 ```
 
-## SOAR
+### SOAR
 
 Primarily focuses on:
 
@@ -190,7 +190,7 @@ Response
 
 ---
 
-# 6. Why SOAR?
+## 6. Why SOAR?
 
 Without automation:
 
@@ -230,7 +230,7 @@ Response
 
 ---
 
-# 7. SOAR Playbook
+## 7. SOAR Playbook
 
 A playbook defines:
 
@@ -250,7 +250,7 @@ Documentation
 
 ---
 
-# 8. Example – Malicious IP Playbook
+## 8. Example – Malicious IP Playbook
 
 ```text
 Alert:
@@ -286,7 +286,7 @@ Actions should be appropriately authorized.
 
 ---
 
-# 9. SOAR Actions
+## 9. SOAR Actions
 
 Possible actions:
 
@@ -307,7 +307,7 @@ High-impact actions should generally require appropriate safeguards.
 
 ---
 
-# 10. Human-in-the-Loop Automation
+## 10. Human-in-the-Loop Automation
 
 Not every action should be automatic.
 
@@ -329,7 +329,7 @@ Approved Automated Response
 
 ---
 
-# 11. Automation Levels
+## 11. Automation Levels
 
 A useful model:
 
@@ -354,7 +354,7 @@ Automation should increase only when confidence and safeguards are sufficient.
 
 ---
 
-# 12. SOAR Safety
+## 12. SOAR Safety
 
 Automation can cause damage if incorrectly designed.
 
@@ -381,7 +381,7 @@ Audit Logs
 
 ---
 
-# 13. SOAR Idempotency
+## 13. SOAR Idempotency
 
 An action should ideally produce the same safe result when executed more than once.
 
@@ -401,7 +401,7 @@ This is important for reliable automation.
 
 ---
 
-# 14. SOAR Error Handling
+## 14. SOAR Error Handling
 
 A playbook should account for:
 
@@ -419,7 +419,7 @@ Do not assume every external action succeeds.
 
 ---
 
-# 15. SOAR Verification
+## 15. SOAR Verification
 
 After an automated action:
 
@@ -443,7 +443,7 @@ Record Result
 
 ---
 
-# 16. Case Management
+## 16. Case Management
 
 A security case may contain:
 
@@ -462,13 +462,13 @@ Verdict
 
 ---
 
-# 17. Incident vs Alert
+## 17. Incident vs Alert
 
-### Alert
+#### Alert
 
 A signal requiring attention.
 
-### Incident
+#### Incident
 
 A confirmed or suspected security event requiring coordinated investigation and response.
 
@@ -490,7 +490,7 @@ Not every alert becomes an incident.
 
 ---
 
-# 18. Alert → Incident Workflow
+## 18. Alert → Incident Workflow
 
 ```text
 Alert
@@ -516,7 +516,7 @@ Incident?
 
 ---
 
-# 19. UEBA
+## 19. UEBA
 
 UEBA stands for:
 
@@ -536,7 +536,7 @@ Cloud Resources
 
 ---
 
-# 20. Traditional Detection
+## 20. Traditional Detection
 
 Example:
 
@@ -553,7 +553,7 @@ for this user?
 
 ---
 
-# 21. UEBA Baseline
+## 21. UEBA Baseline
 
 For a user:
 
@@ -570,7 +570,7 @@ Then detect deviations.
 
 ---
 
-# 22. UEBA Example
+## 22. UEBA Example
 
 Normal:
 
@@ -608,7 +608,7 @@ High Behavioral Anomaly
 
 ---
 
-# 23. Entity Behavior
+## 23. Entity Behavior
 
 UEBA can monitor more than users.
 
@@ -625,7 +625,7 @@ Container
 
 ---
 
-# 24. Entity Risk
+## 24. Entity Risk
 
 Example:
 
@@ -652,7 +652,7 @@ The scoring method should be calibrated to the organization's environment.
 
 ---
 
-# 25. UEBA Signals
+## 25. UEBA Signals
 
 Possible behavioral features:
 
@@ -671,7 +671,7 @@ Peer Group
 
 ---
 
-# 26. Peer Group Analysis
+## 26. Peer Group Analysis
 
 Compare:
 
@@ -709,7 +709,7 @@ Potential anomaly.
 
 ---
 
-# 27. Behavioral Anomaly
+## 27. Behavioral Anomaly
 
 Conceptually:
 
@@ -733,7 +733,7 @@ It requires context.
 
 ---
 
-# 28. UEBA + SIEM
+## 28. UEBA + SIEM
 
 ```text
 SIEM Event
@@ -753,7 +753,7 @@ Better Prioritization
 
 ---
 
-# 29. UEBA + Identity
+## 29. UEBA + Identity
 
 Example:
 
@@ -775,7 +775,7 @@ Potential Account Compromise
 
 ---
 
-# 30. UEBA + Endpoint
+## 30. UEBA + Endpoint
 
 ```text
 Rare Process
@@ -795,7 +795,7 @@ Potential Compromise
 
 ---
 
-# 31. UEBA Challenges
+## 31. UEBA Challenges
 
 Challenges include:
 
@@ -811,7 +811,7 @@ Data Quality
 
 ---
 
-# 32. Cold Start Problem
+## 32. Cold Start Problem
 
 A new user has:
 
@@ -835,7 +835,7 @@ Organization-Wide Baselines
 
 ---
 
-# 33. Model Drift
+## 33. Model Drift
 
 Behavior changes over time.
 
@@ -852,7 +852,7 @@ A model must adapt without learning malicious behavior as normal too quickly.
 
 ---
 
-# 34. UEBA Privacy
+## 34. UEBA Privacy
 
 Behavioral analytics can process sensitive information.
 
@@ -870,7 +870,7 @@ according to applicable requirements.
 
 ---
 
-# 35. Risk-Based Authentication
+## 35. Risk-Based Authentication
 
 Authentication can incorporate:
 
@@ -897,7 +897,7 @@ High Risk
 
 ---
 
-# 36. Continuous Authentication
+## 36. Continuous Authentication
 
 Instead of trusting a login forever:
 
@@ -915,7 +915,7 @@ This aligns with modern identity-centric security approaches.
 
 ---
 
-# 37. XDR
+## 37. XDR
 
 XDR stands for:
 
@@ -935,11 +935,11 @@ Cloud
 
 ---
 
-# 38. SIEM vs XDR
+## 38. SIEM vs XDR
 
 Simplified:
 
-### SIEM
+#### SIEM
 
 ```text
 Broad Data Collection
@@ -949,7 +949,7 @@ Cross-Source Search
 Correlation
 ```
 
-### XDR
+#### XDR
 
 ```text
 Integrated Detection
@@ -963,7 +963,7 @@ The exact capabilities vary significantly by platform.
 
 ---
 
-# 39. SIEM + XDR
+## 39. SIEM + XDR
 
 They can complement each other:
 
@@ -979,7 +979,7 @@ Enterprise-Wide Correlation
 
 ---
 
-# 40. Detection Engineering in Modern SOC
+## 40. Detection Engineering in Modern SOC
 
 Modern detection engineering includes:
 
@@ -996,7 +996,7 @@ Automation
 
 ---
 
-# 41. Threat-Informed Detection
+## 41. Threat-Informed Detection
 
 Start with:
 
@@ -1022,7 +1022,7 @@ Random Rule
 
 ---
 
-# 42. ATT&CK-Driven Detection
+## 42. ATT&CK-Driven Detection
 
 Example:
 
@@ -1048,7 +1048,7 @@ Not Detected
 
 ---
 
-# 43. Detection Coverage
+## 43. Detection Coverage
 
 A SOC should ask:
 
@@ -1064,7 +1064,7 @@ Which detections are high confidence?
 
 ---
 
-# 44. Detection Gap
+## 44. Detection Gap
 
 Example:
 
@@ -1092,7 +1092,7 @@ Improve Detection
 
 ---
 
-# 45. Threat Hunting
+## 45. Threat Hunting
 
 Threat hunting is proactive investigation.
 
@@ -1120,7 +1120,7 @@ Detect
 
 ---
 
-# 46. Threat Hunting Hypothesis
+## 46. Threat Hunting Hypothesis
 
 Example:
 
@@ -1142,7 +1142,7 @@ Time
 
 ---
 
-# 47. Hunt → Detection
+## 47. Hunt → Detection
 
 A successful hunt can become:
 
@@ -1160,7 +1160,7 @@ This is an important SOC feedback loop.
 
 ---
 
-# 48. Detection → Hunt
+## 48. Detection → Hunt
 
 The reverse is also possible:
 
@@ -1176,7 +1176,7 @@ Threat Hunt
 
 ---
 
-# 49. AI in the SOC
+## 49. AI in the SOC
 
 AI can assist with:
 
@@ -1193,7 +1193,7 @@ Prioritization
 
 ---
 
-# 50. AI-Assisted Investigation
+## 50. AI-Assisted Investigation
 
 Example:
 
@@ -1215,7 +1215,7 @@ The analyst remains responsible for validation and decisions.
 
 ---
 
-# 51. AI Investigation Example
+## 51. AI Investigation Example
 
 Input:
 
@@ -1252,7 +1252,7 @@ The analyst should verify the evidence.
 
 ---
 
-# 52. AI Risks
+## 52. AI Risks
 
 AI can produce:
 
@@ -1275,7 +1275,7 @@ Analyst Decision
 
 ---
 
-# 53. AI for Query Generation
+## 53. AI for Query Generation
 
 Analyst:
 
@@ -1300,7 +1300,7 @@ Do not blindly execute generated queries in sensitive environments.
 
 ---
 
-# 54. AI for Alert Summarization
+## 54. AI for Alert Summarization
 
 Instead of reading:
 
@@ -1321,7 +1321,7 @@ with references back to underlying evidence.
 
 ---
 
-# 55. AI + SOAR
+## 55. AI + SOAR
 
 Potential architecture:
 
@@ -1343,7 +1343,7 @@ High-impact actions should use strong safeguards.
 
 ---
 
-# 56. Autonomous SOC
+## 56. Autonomous SOC
 
 A fully autonomous SOC would theoretically:
 
@@ -1371,7 +1371,7 @@ Human-Governed
 
 ---
 
-# 57. Human Oversight
+## 57. Human Oversight
 
 Keep humans involved when:
 
@@ -1386,7 +1386,7 @@ Destructive Actions
 
 ---
 
-# 58. AI Guardrails
+## 58. AI Guardrails
 
 Use:
 
@@ -1402,7 +1402,7 @@ Rollback
 
 ---
 
-# 59. AI Agent in SOC
+## 59. AI Agent in SOC
 
 A security agent may:
 
@@ -1422,7 +1422,7 @@ But tool permissions should be restricted.
 
 ---
 
-# 60. Agentic SOC Architecture
+## 60. Agentic SOC Architecture
 
 ```text
              SIEM
@@ -1443,7 +1443,7 @@ But tool permissions should be restricted.
 
 ---
 
-# 61. Agent Tool Permissions
+## 61. Agent Tool Permissions
 
 Separate:
 
@@ -1477,7 +1477,7 @@ Approval Required
 
 ---
 
-# 62. Evidence-Based AI
+## 62. Evidence-Based AI
 
 AI conclusions should be grounded in:
 
@@ -1494,7 +1494,7 @@ Avoid unsupported assumptions.
 
 ---
 
-# 63. Investigation Timeline
+## 63. Investigation Timeline
 
 A modern SOC should build:
 
@@ -1511,7 +1511,7 @@ This makes attack progression easier to understand.
 
 ---
 
-# 64. Attack Graphs
+## 64. Attack Graphs
 
 Represent relationships:
 
@@ -1533,7 +1533,7 @@ Attack graphs help analysts understand scope and movement.
 
 ---
 
-# 65. Entity Graph
+## 65. Entity Graph
 
 Example:
 
@@ -1555,7 +1555,7 @@ This provides investigation context.
 
 ---
 
-# 66. Attack Path Analysis
+## 66. Attack Path Analysis
 
 Example:
 
@@ -1577,7 +1577,7 @@ The SOC should identify where detection occurred and where visibility is missing
 
 ---
 
-# 67. Modern Correlation
+## 67. Modern Correlation
 
 Traditional:
 
@@ -1611,7 +1611,7 @@ High-Confidence Detection
 
 ---
 
-# 68. Multi-Entity Correlation
+## 68. Multi-Entity Correlation
 
 Example:
 
@@ -1631,7 +1631,7 @@ can reveal relationships not visible from one log source.
 
 ---
 
-# 69. Risk Aggregation
+## 69. Risk Aggregation
 
 Instead of individual alerts:
 
@@ -1651,7 +1651,7 @@ This helps prioritize investigations.
 
 ---
 
-# 70. Risk-Based SOC
+## 70. Risk-Based SOC
 
 Traditional:
 
@@ -1681,7 +1681,7 @@ Critical Risk
 
 ---
 
-# 71. Continuous Detection Improvement
+## 71. Continuous Detection Improvement
 
 SOC feedback loop:
 
@@ -1703,7 +1703,7 @@ Redeploy
 
 ---
 
-# 72. Incident Lessons Learned
+## 72. Incident Lessons Learned
 
 After an incident ask:
 
@@ -1725,7 +1725,7 @@ What should change?
 
 ---
 
-# 73. Detection Engineering Feedback Loop
+## 73. Detection Engineering Feedback Loop
 
 ```text
 Incident
@@ -1747,7 +1747,7 @@ Production
 
 ---
 
-# 74. SOC Maturity
+## 74. SOC Maturity
 
 A simplified model:
 
@@ -1772,7 +1772,7 @@ Maturity models vary; this is a conceptual framework.
 
 ---
 
-# 75. Level 1 – Reactive
+## 75. Level 1 – Reactive
 
 Characteristics:
 
@@ -1785,7 +1785,7 @@ No Standardized Processes
 
 ---
 
-# 76. Level 2 – Centralized
+## 76. Level 2 – Centralized
 
 ```text
 Central SIEM
@@ -1796,7 +1796,7 @@ Basic Incident Management
 
 ---
 
-# 77. Level 3 – Detection Engineering
+## 77. Level 3 – Detection Engineering
 
 ```text
 Detection-as-Code
@@ -1809,7 +1809,7 @@ Metrics
 
 ---
 
-# 78. Level 4 – Threat-Informed
+## 78. Level 4 – Threat-Informed
 
 ```text
 Threat Intelligence
@@ -1821,7 +1821,7 @@ Attack-Chain Detection
 
 ---
 
-# 79. Level 5 – AI-Assisted
+## 79. Level 5 – AI-Assisted
 
 ```text
 AI Investigation
@@ -1834,7 +1834,7 @@ Human-Governed Agents
 
 ---
 
-# 80. SOC Metrics
+## 80. SOC Metrics
 
 Important metrics:
 
@@ -1852,7 +1852,7 @@ Data Coverage
 
 ---
 
-# 81. MTTD
+## 81. MTTD
 
 Mean Time to Detect:
 
@@ -1866,7 +1866,7 @@ Lower is generally better.
 
 ---
 
-# 82. MTTR
+## 82. MTTR
 
 Mean Time to Respond/Resolve, depending on the organization's definition:
 
@@ -1880,7 +1880,7 @@ Organizations should define the metric precisely.
 
 ---
 
-# 83. Detection Coverage
+## 83. Detection Coverage
 
 Measure:
 
@@ -1895,7 +1895,7 @@ covered by detections.
 
 ---
 
-# 84. Automation Rate
+## 84. Automation Rate
 
 Conceptually:
 
@@ -1909,7 +1909,7 @@ But automation quality matters more than raw percentage.
 
 ---
 
-# 85. Automation Quality
+## 85. Automation Quality
 
 Measure:
 
@@ -1923,7 +1923,7 @@ Rollback Events
 
 ---
 
-# 86. SOAR Metrics
+## 86. SOAR Metrics
 
 Useful metrics:
 
@@ -1938,7 +1938,7 @@ Action Accuracy
 
 ---
 
-# 87. UEBA Metrics
+## 87. UEBA Metrics
 
 Monitor:
 
@@ -1953,7 +1953,7 @@ Risk Distribution
 
 ---
 
-# 88. AI SOC Metrics
+## 88. AI SOC Metrics
 
 Evaluate:
 
@@ -1970,7 +1970,7 @@ AI should be measured like any other security capability.
 
 ---
 
-# 89. Modern SOC Technology Stack
+## 89. Modern SOC Technology Stack
 
 A mature SOC may include:
 
@@ -1992,7 +1992,7 @@ AI Assistance
 
 ---
 
-# 90. SIEM + SOAR + EDR
+## 90. SIEM + SOAR + EDR
 
 ```text
 EDR
@@ -2012,7 +2012,7 @@ EDR
 
 ---
 
-# 91. SIEM + UEBA + SOAR
+## 91. SIEM + UEBA + SOAR
 
 ```text
 Events
@@ -2030,7 +2030,7 @@ Response
 
 ---
 
-# 92. SIEM + TIP
+## 92. SIEM + TIP
 
 ```text
 Event
@@ -2048,7 +2048,7 @@ Alert
 
 ---
 
-# 93. SIEM + Vulnerability Management
+## 93. SIEM + Vulnerability Management
 
 ```text
 Asset
@@ -2066,7 +2066,7 @@ Prioritized Threat
 
 ---
 
-# 94. SIEM + Cloud Security
+## 94. SIEM + Cloud Security
 
 ```text
 Cloud Identity
@@ -2088,7 +2088,7 @@ Cloud Detection
 
 ---
 
-# 95. Modern SOC Data Model
+## 95. Modern SOC Data Model
 
 Important entities:
 
@@ -2120,7 +2120,7 @@ Resource → Data
 
 ---
 
-# 96. Security Knowledge Graph
+## 96. Security Knowledge Graph
 
 A knowledge graph connects:
 
@@ -2147,7 +2147,7 @@ Risk Analysis
 
 ---
 
-# 97. Modern Detection Example
+## 97. Modern Detection Example
 
 Scenario:
 
@@ -2187,7 +2187,7 @@ Data Exfiltration
 
 ---
 
-# 98. Modern SOC Response
+## 98. Modern SOC Response
 
 ```text
 Detection
@@ -2209,7 +2209,7 @@ Detection Improvement
 
 ---
 
-# 99. Continuous Security Operations
+## 99. Continuous Security Operations
 
 A mature SOC is not:
 
@@ -2235,7 +2235,7 @@ Detect Better
 
 ---
 
-# 100. Practical Lab – SOAR Playbook
+## 100. Practical Lab – SOAR Playbook
 
 Build a conceptual playbook:
 
@@ -2271,7 +2271,7 @@ Document
 
 ---
 
-# 101. Practical Lab – UEBA
+## 101. Practical Lab – UEBA
 
 Create a small dataset containing:
 
@@ -2298,7 +2298,7 @@ Identify anomalous behavior.
 
 ---
 
-# 102. Practical Lab – Risk Scoring
+## 102. Practical Lab – Risk Scoring
 
 Create:
 
@@ -2328,7 +2328,7 @@ Tune the model using simulated scenarios.
 
 ---
 
-# 103. Practical Lab – Attack Chain
+## 103. Practical Lab – Attack Chain
 
 Create a simulated sequence:
 
@@ -2358,7 +2358,7 @@ Risk Score
 
 ---
 
-# 104. Practical Lab – AI-Assisted Investigation
+## 104. Practical Lab – AI-Assisted Investigation
 
 Provide an AI assistant with:
 
@@ -2385,7 +2385,7 @@ Then manually verify every conclusion.
 
 ---
 
-# 105. Practical Lab – Human-in-the-Loop SOAR
+## 105. Practical Lab – Human-in-the-Loop SOAR
 
 Design:
 
@@ -2417,71 +2417,71 @@ What happens if automation fails?
 
 ---
 
-# 106. Interview Questions
+## 106. Interview Questions
 
-### What is SOAR?
+#### What is SOAR?
 
 > Security Orchestration, Automation and Response. It integrates security tools and automates investigation and response workflows.
 
-### What is the difference between SIEM and SOAR?
+#### What is the difference between SIEM and SOAR?
 
 > SIEM primarily focuses on collecting, correlating, detecting, and investigating security telemetry, while SOAR focuses on orchestrating tools and automating response workflows.
 
-### What is UEBA?
+#### What is UEBA?
 
 > User and Entity Behavior Analytics analyzes behavioral patterns of users and entities to identify anomalous activity.
 
-### Is anomalous behavior automatically malicious?
+#### Is anomalous behavior automatically malicious?
 
 > No. Anomaly indicates deviation from expected behavior; additional context and investigation are required to establish maliciousness.
 
-### What is risk-based alerting?
+#### What is risk-based alerting?
 
 > Prioritizing alerts using factors such as behavior, asset criticality, identity, threat intelligence, and historical risk rather than treating every alert equally.
 
-### What is XDR?
+#### What is XDR?
 
 > Extended Detection and Response integrates security telemetry and detection/response capabilities across multiple security domains such as endpoint, network, identity, email, and cloud.
 
-### What is a SOAR playbook?
+#### What is a SOAR playbook?
 
 > A structured workflow defining the trigger, enrichment, decisions, actions, verification, and documentation for a security scenario.
 
-### Why is human-in-the-loop automation important?
+#### Why is human-in-the-loop automation important?
 
 > It prevents high-impact automated actions from being triggered by uncertain or incorrect detections.
 
-### What is alert fatigue?
+#### What is alert fatigue?
 
 > Excessive low-value alerts that consume analyst attention and increase the risk of missing important threats.
 
-### How can AI help a SOC?
+#### How can AI help a SOC?
 
 > AI can assist with summarization, investigation, query generation, correlation, threat intelligence analysis, and prioritization.
 
-### What are the risks of AI in a SOC?
+#### What are the risks of AI in a SOC?
 
 > Hallucination, incorrect reasoning, incomplete context, overconfidence, excessive permissions, and unsafe automated actions.
 
-### What is threat-informed detection?
+#### What is threat-informed detection?
 
 > Designing detections based on realistic threats, adversary behaviors, techniques, telemetry, and organizational risk.
 
-### What is detection coverage?
+#### What is detection coverage?
 
 > The extent to which relevant threats, techniques, assets, and behaviors are observable and detectable by the SOC.
 
-### What is the relationship between threat hunting and detection engineering?
+#### What is the relationship between threat hunting and detection engineering?
 
 > Hunting can discover new attacker behaviors that become detections, while existing detections can reveal patterns that motivate broader hunts.
 
-### What is an autonomous SOC?
+#### What is an autonomous SOC?
 
 > A conceptual SOC where detection, investigation, decision-making, and response are heavily automated. In practice, high-impact operations generally require governance and human oversight.
 
 ---
 
-# 107. Quick Revision
+## 107. Quick Revision
 
 ```text
 SOAR
@@ -2535,7 +2535,7 @@ MTTR
 
 ---
 
-# 108. Golden Rules
+## 108. Golden Rules
 
 ```text
 1. Automation should reduce analyst workload, not remove security judgment blindly.
@@ -2593,7 +2593,7 @@ MTTR
 
 ---
 
-# 109. Final Modern SOC Mental Model
+## 109. Final Modern SOC Mental Model
 
 Think of the modern SOC as:
 
@@ -2647,7 +2647,7 @@ Think of the modern SOC as:
 
 ---
 
-# 110. Modern SOC Feedback Loop
+## 110. Modern SOC Feedback Loop
 
 The SOC should continuously evolve:
 
@@ -2675,7 +2675,7 @@ This creates a continuous improvement cycle.
 
 ---
 
-# 111. Advanced SIEM Mental Model
+## 111. Advanced SIEM Mental Model
 
 Traditional SIEM:
 
@@ -2721,7 +2721,7 @@ ASSET CONTEXT
 
 ---
 
-# 112. What a Mature SOC Should Be Able to Answer
+## 112. What a Mature SOC Should Be Able to Answer
 
 ```text
 What happened?
@@ -2759,7 +2759,7 @@ How can we prevent this from happening again?
 
 ---
 
-# 113. Final Chapter Summary
+## 113. Final Chapter Summary
 
 Modern SIEM is no longer just:
 
@@ -2850,7 +2850,7 @@ The key principle is:
 
 ---
 
-# 114. Complete SIEM Learning Path
+## 114. Complete SIEM Learning Path
 
 With this chapter, the complete **15-chapter SIEM section** is covered:
 

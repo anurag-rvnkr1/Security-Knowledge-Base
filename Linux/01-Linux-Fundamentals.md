@@ -1,10 +1,10 @@
 # 01 - Linux Fundamentals
 
-# Part 1 — Introduction to Linux, History of Unix & Linux, GNU Project, Open Source, Linux Distributions, and Enterprise Linux
+## Part 1 — Introduction to Linux, History of Unix & Linux, GNU Project, Open Source, Linux Distributions, and Enterprise Linux
 
 ---
 
-# Introduction
+## Introduction
 
 Linux is the world's most widely used open-source operating system. It powers everything from smartphones and laptops to cloud infrastructure, supercomputers, enterprise servers, IoT devices, embedded systems, and cybersecurity platforms.
 
@@ -28,7 +28,7 @@ Understanding Linux is therefore a foundational skill for anyone pursuing a care
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -43,7 +43,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is Linux?
+## What is Linux?
 
 Linux is an **open-source, Unix-like operating system** built around the Linux kernel. It provides a stable, secure, and highly customizable environment for running applications on a wide variety of hardware platforms.
 
@@ -62,7 +62,7 @@ A complete Linux operating system typically consists of:
 
 ---
 
-# Why Linux Matters
+## Why Linux Matters
 
 Linux dominates many areas of computing because of its reliability, flexibility, and scalability.
 
@@ -83,7 +83,7 @@ Linux is widely used in:
 
 ---
 
-# What is Unix?
+## What is Unix?
 
 Unix is a multiuser, multitasking operating system developed at **Bell Labs** in the late 1960s and early 1970s. It introduced many concepts that continue to influence modern operating systems.
 
@@ -99,7 +99,7 @@ Many modern operating systems, including Linux and macOS, are heavily influenced
 
 ---
 
-# Brief History of Unix
+## Brief History of Unix
 
 | Year | Milestone |
 |------|-----------|
@@ -114,7 +114,7 @@ Rewriting Unix in C greatly improved portability, enabling it to run on differen
 
 ---
 
-# Birth of Linux
+## Birth of Linux
 
 In 1991, **Linus Torvalds**, then a computer science student in Finland, began developing a free Unix-like kernel as a personal project.
 
@@ -128,7 +128,7 @@ The first public announcement was made in August 1991, inviting developers to co
 
 ---
 
-# Linux Timeline
+## Linux Timeline
 
 | Year | Event |
 |------|-------|
@@ -142,7 +142,7 @@ The first public announcement was made in August 1991, inviting developers to co
 
 ---
 
-# The GNU Project
+## The GNU Project
 
 The **GNU Project**, launched by **Richard Stallman** in 1983, aimed to create a completely free Unix-compatible operating system.
 
@@ -158,7 +158,7 @@ When the Linux kernel was combined with GNU software, a complete operating syste
 
 ---
 
-# GNU + Linux
+## GNU + Linux
 
 A typical Linux system consists of:
 
@@ -190,7 +190,7 @@ The GNU Project supplies many user-space tools, while the Linux kernel manages h
 
 ---
 
-# What is Open Source?
+## What is Open Source?
 
 Open-source software makes its source code publicly available, allowing anyone to:
 
@@ -203,7 +203,7 @@ This collaborative development model encourages innovation, transparency, and ra
 
 ---
 
-# Benefits of Open Source
+## Benefits of Open Source
 
 | Benefit | Description |
 |----------|-------------|
@@ -216,7 +216,7 @@ This collaborative development model encourages innovation, transparency, and ra
 
 ---
 
-# Proprietary vs Open Source
+## Proprietary vs Open Source
 
 | Proprietary Software | Open-Source Software |
 |----------------------|----------------------|
@@ -228,7 +228,7 @@ This collaborative development model encourages innovation, transparency, and ra
 
 ---
 
-# Linux Distributions
+## Linux Distributions
 
 A **Linux distribution (distro)** combines the Linux kernel with system utilities, package management, desktop environments, and additional software into a complete operating system.
 
@@ -242,7 +242,7 @@ Different distributions target different use cases, such as:
 
 ---
 
-# Major Linux Distribution Families
+## Major Linux Distribution Families
 
 ```
 Linux
@@ -272,7 +272,7 @@ Each family differs in package management, release cycle, and intended audience.
 
 ---
 
-# Popular Linux Distributions
+## Popular Linux Distributions
 
 | Distribution | Primary Use |
 |--------------|-------------|
@@ -289,7 +289,7 @@ Each family differs in package management, release cycle, and intended audience.
 
 ---
 
-# Enterprise Linux
+## Enterprise Linux
 
 Enterprise Linux distributions provide long-term stability, security updates, certification, and commercial support for business environments.
 
@@ -306,7 +306,7 @@ Organizations select enterprise distributions for their predictable release cycl
 
 ---
 
-# Linux in Cybersecurity
+## Linux in Cybersecurity
 
 Linux plays a central role across offensive and defensive security disciplines.
 
@@ -325,7 +325,7 @@ Examples include:
 
 ---
 
-# Enterprise Use Cases
+## Enterprise Use Cases
 
 Large organizations deploy Linux for:
 
@@ -344,7 +344,7 @@ Linux is often chosen for mission-critical workloads due to its stability and sc
 
 ---
 
-# Business Impact
+## Business Impact
 
 Adopting Linux enables organizations to:
 
@@ -357,7 +357,7 @@ Adopting Linux enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -371,7 +371,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux is an open-source, Unix-like operating system built around the Linux kernel.
 - Unix laid the foundation for many modern operating systems.
@@ -383,11 +383,11 @@ Organizations should:
 ---
 
 
-# Part 2 — Linux Architecture, Kernel, Shell, Terminal, CLI vs GUI, Linux Components, and System Overview
+## Part 2 — Linux Architecture, Kernel, Shell, Terminal, CLI vs GUI, Linux Components, and System Overview
 
 ---
 
-# Introduction
+## Introduction
 
 To become proficient with Linux, it is essential to understand how the operating system is organized internally. Unlike many proprietary operating systems, Linux follows a modular architecture where each component has a well-defined responsibility.
 
@@ -397,7 +397,7 @@ This section explains the major building blocks of Linux, from hardware to user 
 
 ---
 
-# Linux Architecture Overview
+## Linux Architecture Overview
 
 A Linux system consists of multiple layers that work together to provide a complete operating system.
 
@@ -423,7 +423,7 @@ Each layer provides services to the layer above while relying on the layer below
 
 ---
 
-# Major Components of Linux
+## Major Components of Linux
 
 A complete Linux operating system includes:
 
@@ -439,7 +439,7 @@ A complete Linux operating system includes:
 
 ---
 
-# What is the Linux Kernel?
+## What is the Linux Kernel?
 
 The **Linux Kernel** is the core of the operating system.
 
@@ -458,7 +458,7 @@ Without the kernel, applications cannot interact with hardware.
 
 ---
 
-# Responsibilities of the Kernel
+## Responsibilities of the Kernel
 
 ```
 Applications
@@ -487,7 +487,7 @@ The kernel acts as the intermediary between software and physical hardware.
 
 ---
 
-# Kernel Features
+## Kernel Features
 
 Modern Linux kernels support:
 
@@ -505,7 +505,7 @@ These capabilities make Linux suitable for both embedded systems and large-scale
 
 ---
 
-# Monolithic Kernel
+## Monolithic Kernel
 
 Linux uses a **monolithic kernel** architecture.
 
@@ -524,7 +524,7 @@ Potential disadvantages:
 
 ---
 
-# Kernel Space vs User Space
+## Kernel Space vs User Space
 
 ```
 +------------------------------+
@@ -563,7 +563,7 @@ This separation improves system stability and security.
 
 ---
 
-# System Calls
+## System Calls
 
 Applications communicate with the kernel through **system calls**.
 
@@ -596,7 +596,7 @@ System calls provide a controlled interface to kernel functionality.
 
 ---
 
-# Process Management
+## Process Management
 
 The kernel manages all running processes.
 
@@ -617,7 +617,7 @@ Each process receives:
 
 ---
 
-# Memory Management
+## Memory Management
 
 The kernel manages system memory efficiently by:
 
@@ -631,7 +631,7 @@ Efficient memory management ensures stable system performance.
 
 ---
 
-# Device Drivers
+## Device Drivers
 
 Device drivers allow the kernel to communicate with hardware devices.
 
@@ -647,7 +647,7 @@ Linux supports thousands of hardware drivers, many of which are built directly i
 
 ---
 
-# Loadable Kernel Modules (LKMs)
+## Loadable Kernel Modules (LKMs)
 
 Kernel functionality can be extended using **Loadable Kernel Modules** without recompiling or rebooting the kernel.
 
@@ -666,7 +666,7 @@ Benefits:
 
 ---
 
-# File System Management
+## File System Management
 
 The kernel provides a unified interface for accessing different file systems.
 
@@ -685,7 +685,7 @@ Applications access files through standard system calls regardless of the underl
 
 ---
 
-# Networking Stack
+## Networking Stack
 
 Linux includes a mature networking stack capable of supporting:
 
@@ -704,7 +704,7 @@ The networking stack is widely used in enterprise infrastructure and cloud platf
 
 ---
 
-# Linux Security Modules (LSM)
+## Linux Security Modules (LSM)
 
 Linux Security Modules provide additional access control mechanisms.
 
@@ -719,7 +719,7 @@ These frameworks enforce security policies beyond standard UNIX permissions.
 
 ---
 
-# What is a Shell?
+## What is a Shell?
 
 A **shell** is a command interpreter that allows users to interact with the operating system.
 
@@ -734,7 +734,7 @@ The shell serves as the interface between users and the kernel.
 
 ---
 
-# Shell Workflow
+## Shell Workflow
 
 ```
 User
@@ -760,7 +760,7 @@ The shell interprets commands but does not directly control hardware.
 
 ---
 
-# Popular Linux Shells
+## Popular Linux Shells
 
 | Shell | Description |
 |--------|-------------|
@@ -772,7 +772,7 @@ The shell interprets commands but does not directly control hardware.
 
 ---
 
-# What is a Terminal?
+## What is a Terminal?
 
 A **terminal** is the application used to access a shell.
 
@@ -788,7 +788,7 @@ The terminal displays command output and accepts keyboard input.
 
 ---
 
-# Terminal vs Shell
+## Terminal vs Shell
 
 | Terminal | Shell |
 |-----------|-------|
@@ -801,7 +801,7 @@ A terminal runs a shell, but they are not the same component.
 
 ---
 
-# Command-Line Interface (CLI)
+## Command-Line Interface (CLI)
 
 The CLI allows users to manage Linux systems by typing commands.
 
@@ -818,7 +818,7 @@ The CLI is the preferred interface for servers and cybersecurity operations.
 
 ---
 
-# Graphical User Interface (GUI)
+## Graphical User Interface (GUI)
 
 A GUI provides visual interaction through windows, icons, menus, and pointers.
 
@@ -834,7 +834,7 @@ GUIs are well suited for desktop users and graphical applications.
 
 ---
 
-# CLI vs GUI
+## CLI vs GUI
 
 | CLI | GUI |
 |-----|-----|
@@ -848,7 +848,7 @@ Most enterprise Linux servers operate without a graphical interface.
 
 ---
 
-# Why Linux Servers Often Use the CLI
+## Why Linux Servers Often Use the CLI
 
 Organizations prefer command-line administration because it:
 
@@ -860,7 +860,7 @@ Organizations prefer command-line administration because it:
 
 ---
 
-# Environment Variables
+## Environment Variables
 
 Environment variables store information used by the shell and applications.
 
@@ -878,7 +878,7 @@ These variables influence application behavior and user sessions.
 
 ---
 
-# Linux Philosophy
+## Linux Philosophy
 
 Linux follows several enduring design principles:
 
@@ -893,7 +893,7 @@ These principles contribute to Linux's flexibility and longevity.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Understanding Linux architecture enables organizations to:
 
@@ -906,7 +906,7 @@ Understanding Linux architecture enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -920,7 +920,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Linux kernel is the core component of the operating system.
 - User space and kernel space are separated for security and stability.
@@ -932,11 +932,11 @@ Organizations should:
 ---
 
 
-# Part 3 — Linux Features, Linux Directory Structure, Filesystem Hierarchy Standard (FHS), Essential Directories, and Enterprise File Organization
+## Part 3 — Linux Features, Linux Directory Structure, Filesystem Hierarchy Standard (FHS), Essential Directories, and Enterprise File Organization
 
 ---
 
-# Introduction
+## Introduction
 
 One of the most powerful aspects of Linux is its well-organized filesystem. Unlike Windows, where drives such as `C:\`, `D:\`, and `E:\` exist independently, Linux presents everything under a **single hierarchical directory tree** starting from the **root directory (`/`)**.
 
@@ -954,7 +954,7 @@ Understanding the Linux directory structure is fundamental for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -966,7 +966,7 @@ After completing this section, you will be able to:
 
 ---
 
-# Linux File System Overview
+## Linux File System Overview
 
 Linux stores all files and directories beneath a single root directory.
 
@@ -997,7 +997,7 @@ Every file, directory, storage device, and process is represented somewhere with
 
 ---
 
-# Everything is a File
+## Everything is a File
 
 One of Linux's core philosophies is:
 
@@ -1018,7 +1018,7 @@ This design provides a consistent interface for interacting with system resource
 
 ---
 
-# Root Directory (`/`)
+## Root Directory (`/`)
 
 The root directory is the top-most directory of the Linux filesystem.
 
@@ -1037,7 +1037,7 @@ Do not confuse:
 
 ---
 
-# Filesystem Hierarchy Standard (FHS)
+## Filesystem Hierarchy Standard (FHS)
 
 The **Filesystem Hierarchy Standard (FHS)** defines the standard directory layout used by most Linux distributions.
 
@@ -1053,7 +1053,7 @@ Most enterprise Linux distributions adhere closely to the FHS.
 
 ---
 
-# `/bin` — Essential User Commands
+## `/bin` — Essential User Commands
 
 The `/bin` directory contains essential command-line utilities required for booting and single-user mode.
 
@@ -1076,7 +1076,7 @@ These commands are available even when other filesystems are not mounted.
 
 ---
 
-# `/sbin` — System Administration Commands
+## `/sbin` — System Administration Commands
 
 The `/sbin` directory contains essential system administration utilities.
 
@@ -1097,7 +1097,7 @@ These commands are primarily intended for administrative tasks.
 
 ---
 
-# `/boot` — Boot Files
+## `/boot` — Boot Files
 
 The `/boot` directory contains files required during the boot process.
 
@@ -1119,7 +1119,7 @@ Deleting or modifying these files incorrectly may prevent the system from bootin
 
 ---
 
-# `/dev` — Device Files
+## `/dev` — Device Files
 
 Linux represents hardware devices as files inside `/dev`.
 
@@ -1145,7 +1145,7 @@ Examples of special devices:
 
 ---
 
-# `/etc` — Configuration Files
+## `/etc` — Configuration Files
 
 The `/etc` directory stores system-wide configuration files.
 
@@ -1165,7 +1165,7 @@ Most administrative configuration changes occur within this directory.
 
 ---
 
-# `/home` — User Home Directories
+## `/home` — User Home Directories
 
 Each regular user receives a personal directory inside `/home`.
 
@@ -1189,7 +1189,7 @@ Users typically have write access only to their own home directories.
 
 ---
 
-# `/root` — Root User Home
+## `/root` — Root User Home
 
 The root user's home directory is:
 
@@ -1201,7 +1201,7 @@ It is separate from `/home` to ensure administrative access remains available ev
 
 ---
 
-# `/lib` and `/lib64`
+## `/lib` and `/lib64`
 
 These directories contain essential shared libraries required by system programs.
 
@@ -1215,7 +1215,7 @@ Applications depend on these libraries for execution.
 
 ---
 
-# `/media`
+## `/media`
 
 The `/media` directory is used for automatically mounted removable devices.
 
@@ -1230,7 +1230,7 @@ SD Cards
 
 ---
 
-# `/mnt`
+## `/mnt`
 
 The `/mnt` directory is intended for temporary manual mounts.
 
@@ -1244,7 +1244,7 @@ System administrators frequently use `/mnt` during maintenance or recovery opera
 
 ---
 
-# `/opt`
+## `/opt`
 
 The `/opt` directory contains optional third-party software packages.
 
@@ -1260,7 +1260,7 @@ Enterprise software vendors often install applications under `/opt`.
 
 ---
 
-# `/proc`
+## `/proc`
 
 The `/proc` directory is a virtual filesystem generated by the kernel.
 
@@ -1285,7 +1285,7 @@ These files do not exist on disk; they are generated dynamically.
 
 ---
 
-# `/sys`
+## `/sys`
 
 The `/sys` directory is another virtual filesystem that exposes kernel objects and hardware information.
 
@@ -1301,7 +1301,7 @@ Many hardware-related settings can be viewed or modified through `/sys`.
 
 ---
 
-# `/run`
+## `/run`
 
 The `/run` directory stores runtime information created after system boot.
 
@@ -1316,7 +1316,7 @@ Its contents are typically cleared during each reboot.
 
 ---
 
-# `/srv`
+## `/srv`
 
 The `/srv` directory stores data served by system services.
 
@@ -1332,7 +1332,7 @@ This directory helps organize application-specific service data.
 
 ---
 
-# `/tmp`
+## `/tmp`
 
 The `/tmp` directory stores temporary files.
 
@@ -1346,7 +1346,7 @@ Applications should not rely on files in `/tmp` for long-term storage.
 
 ---
 
-# `/usr`
+## `/usr`
 
 The `/usr` directory contains the majority of user-space applications and resources.
 
@@ -1364,7 +1364,7 @@ Most installed software resides under `/usr`.
 
 ---
 
-# `/usr/local`
+## `/usr/local`
 
 This directory is reserved for software installed manually by administrators rather than through the system package manager.
 
@@ -1380,7 +1380,7 @@ This separation prevents conflicts with distribution-managed packages.
 
 ---
 
-# `/var`
+## `/var`
 
 The `/var` directory stores data that changes frequently.
 
@@ -1406,7 +1406,7 @@ Important subdirectories:
 
 ---
 
-# Important Enterprise Directories
+## Important Enterprise Directories
 
 | Directory | Enterprise Usage |
 |------------|------------------|
@@ -1421,7 +1421,7 @@ Important subdirectories:
 
 ---
 
-# Hidden Files
+## Hidden Files
 
 Files beginning with a period (`.`) are hidden.
 
@@ -1438,9 +1438,9 @@ Hidden files typically contain user-specific configuration.
 
 ---
 
-# Absolute vs Relative Paths
+## Absolute vs Relative Paths
 
-### Absolute Path
+#### Absolute Path
 
 Begins from the root directory.
 
@@ -1450,7 +1450,7 @@ Example:
 /home/alice/Documents/report.txt
 ```
 
-### Relative Path
+#### Relative Path
 
 Begins from the current working directory.
 
@@ -1462,7 +1462,7 @@ Documents/report.txt
 
 ---
 
-# Path Navigation Symbols
+## Path Navigation Symbols
 
 | Symbol | Meaning |
 |----------|---------|
@@ -1481,7 +1481,7 @@ cd /
 
 ---
 
-# Enterprise File Organization
+## Enterprise File Organization
 
 A typical enterprise Linux server might organize files as follows:
 
@@ -1507,7 +1507,7 @@ Following standardized layouts simplifies automation, backups, monitoring, and i
 
 ---
 
-# Business Impact
+## Business Impact
 
 A standardized filesystem hierarchy helps organizations:
 
@@ -1520,7 +1520,7 @@ A standardized filesystem hierarchy helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -1534,7 +1534,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux organizes all files under a single root directory (`/`).
 - The Filesystem Hierarchy Standard (FHS) defines consistent directory usage.
@@ -1545,11 +1545,11 @@ Organizations should:
 ---
 
 
-# Part 4 — Essential Linux Commands, Command Syntax, Navigation, File Operations, Help System, and Command-Line Best Practices
+## Part 4 — Essential Linux Commands, Command Syntax, Navigation, File Operations, Help System, and Command-Line Best Practices
 
 ---
 
-# Introduction
+## Introduction
 
 The Linux Command-Line Interface (CLI) is one of the most powerful features of the operating system. Unlike graphical interfaces that rely on menus and mouse clicks, the CLI enables administrators, developers, and cybersecurity professionals to perform tasks quickly, automate repetitive operations, and manage systems remotely.
 
@@ -1567,7 +1567,7 @@ This section introduces essential Linux commands and command-line concepts used 
 
 ---
 
-# Anatomy of a Linux Command
+## Anatomy of a Linux Command
 
 Most Linux commands follow a common syntax:
 
@@ -1591,7 +1591,7 @@ Breaking it down:
 
 ---
 
-# Command Components
+## Command Components
 
 ```text
 Command
@@ -1620,7 +1620,7 @@ cp -r project backup/
 
 ---
 
-# Opening a Terminal
+## Opening a Terminal
 
 Common terminal applications include:
 
@@ -1640,7 +1640,7 @@ Ctrl + Alt + T
 
 ---
 
-# Determining the Current Directory
+## Determining the Current Directory
 
 Command:
 
@@ -1658,7 +1658,7 @@ Example output:
 
 ---
 
-# Listing Directory Contents
+## Listing Directory Contents
 
 Command:
 
@@ -1683,7 +1683,7 @@ Videos
 
 ---
 
-# Common `ls` Options
+## Common `ls` Options
 
 | Command | Description |
 |----------|-------------|
@@ -1702,7 +1702,7 @@ ls -lah
 
 ---
 
-# Understanding `ls -l` Output
+## Understanding `ls -l` Output
 
 Example:
 
@@ -1722,7 +1722,7 @@ Example:
 
 ---
 
-# Changing Directories
+## Changing Directories
 
 Command:
 
@@ -1760,9 +1760,9 @@ Common shortcuts:
 
 ---
 
-# Viewing File Contents
+## Viewing File Contents
 
-## `cat`
+### `cat`
 
 Displays the entire contents of a file.
 
@@ -1772,7 +1772,7 @@ cat file.txt
 
 ---
 
-## `less`
+### `less`
 
 Displays files page by page.
 
@@ -1791,7 +1791,7 @@ Useful keys:
 
 ---
 
-## `more`
+### `more`
 
 Displays files one screen at a time.
 
@@ -1803,7 +1803,7 @@ more file.txt
 
 ---
 
-# Creating Files
+## Creating Files
 
 Using `touch`:
 
@@ -1819,7 +1819,7 @@ touch file1 file2 file3
 
 ---
 
-# Creating Directories
+## Creating Directories
 
 Command:
 
@@ -1837,7 +1837,7 @@ The `-p` option creates parent directories automatically if they do not already 
 
 ---
 
-# Copying Files
+## Copying Files
 
 Command:
 
@@ -1853,7 +1853,7 @@ cp -r project backup
 
 ---
 
-# Moving and Renaming Files
+## Moving and Renaming Files
 
 Move a file:
 
@@ -1871,7 +1871,7 @@ The `mv` command is used for both moving and renaming.
 
 ---
 
-# Removing Files
+## Removing Files
 
 Delete a file:
 
@@ -1895,7 +1895,7 @@ rm -rf directory
 
 ---
 
-# Viewing File Type
+## Viewing File Type
 
 Command:
 
@@ -1919,7 +1919,7 @@ This command identifies the file type based on its content rather than just the 
 
 ---
 
-# Displaying File Statistics
+## Displaying File Statistics
 
 Command:
 
@@ -1937,7 +1937,7 @@ Provides information such as:
 
 ---
 
-# Viewing Disk Usage
+## Viewing Disk Usage
 
 Display filesystem usage:
 
@@ -1956,7 +1956,7 @@ The `-h` option displays values in a human-readable format.
 
 ---
 
-# Viewing Directory Size
+## Viewing Directory Size
 
 Command:
 
@@ -1979,7 +1979,7 @@ Useful options:
 
 ---
 
-# Clearing the Terminal
+## Clearing the Terminal
 
 Command:
 
@@ -1997,7 +1997,7 @@ This clears the visible terminal output without deleting command history.
 
 ---
 
-# Command History
+## Command History
 
 Display previous commands:
 
@@ -2021,7 +2021,7 @@ Command history is invaluable for auditing, troubleshooting, and reusing complex
 
 ---
 
-# Command Auto-Completion
+## Command Auto-Completion
 
 Press:
 
@@ -2040,7 +2040,7 @@ Double `Tab` often displays all possible matches.
 
 ---
 
-# Command Chaining
+## Command Chaining
 
 Run commands sequentially:
 
@@ -2066,9 +2066,9 @@ mkdir test || echo "Directory already exists"
 
 ---
 
-# Getting Help
+## Getting Help
 
-## `man`
+### `man`
 
 Display the manual page:
 
@@ -2087,7 +2087,7 @@ Navigation:
 
 ---
 
-## `--help`
+### `--help`
 
 Many commands support a built-in help option.
 
@@ -2099,7 +2099,7 @@ ls --help
 
 ---
 
-## `info`
+### `info`
 
 Some GNU utilities provide detailed documentation through the `info` system.
 
@@ -2111,7 +2111,7 @@ info coreutils
 
 ---
 
-# Command Exit Status
+## Command Exit Status
 
 Every Linux command returns an exit status.
 
@@ -2132,7 +2132,7 @@ Exit codes are frequently used in shell scripts to make decisions based on comma
 
 ---
 
-# Enterprise Command-Line Best Practices
+## Enterprise Command-Line Best Practices
 
 - Use absolute paths in automation scripts where appropriate.
 - Test destructive commands before execution.
@@ -2145,7 +2145,7 @@ Exit codes are frequently used in shell scripts to make decisions based on comma
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong command-line skills enable organizations to:
 
@@ -2158,7 +2158,7 @@ Strong command-line skills enable organizations to:
 
 ---
 
-# Common Beginner Mistakes
+## Common Beginner Mistakes
 
 | Mistake | Recommendation |
 |----------|----------------|
@@ -2170,7 +2170,7 @@ Strong command-line skills enable organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux commands follow the syntax: `command [options] [arguments]`.
 - Essential commands include `pwd`, `ls`, `cd`, `cat`, `less`, `touch`, `mkdir`, `cp`, `mv`, and `rm`.
@@ -2180,15 +2180,15 @@ Strong command-line skills enable organizations to:
 
 ---
 
-# Part 5 — Linux Advantages, Limitations, Enterprise Use Cases, Cybersecurity Applications, Practical Labs, Chapter Summary, Review Questions, Interview Questions, and References
+## Part 5 — Linux Advantages, Limitations, Enterprise Use Cases, Cybersecurity Applications, Practical Labs, Chapter Summary, Review Questions, Interview Questions, and References
 
 ---
 
-# Linux Advantages
+## Linux Advantages
 
 Linux has become the dominant operating system for servers, cloud computing, cybersecurity, and enterprise infrastructure because of its reliability, flexibility, and performance.
 
-## 1. Open Source
+### 1. Open Source
 
 Linux source code is publicly available.
 
@@ -2204,7 +2204,7 @@ Enterprise organizations can audit source code to verify security.
 
 ---
 
-## 2. High Stability
+### 2. High Stability
 
 Linux systems are known for long uptimes.
 
@@ -2220,7 +2220,7 @@ Many enterprise Linux servers run continuously for months or even years with onl
 
 ---
 
-## 3. Strong Security
+### 3. Strong Security
 
 Linux includes multiple built-in security mechanisms.
 
@@ -2239,7 +2239,7 @@ These features make Linux a preferred platform for security-sensitive environmen
 
 ---
 
-## 4. Excellent Performance
+### 4. Excellent Performance
 
 Linux efficiently manages:
 
@@ -2260,7 +2260,7 @@ This allows Linux to scale from:
 
 ---
 
-## 5. Multiuser Support
+### 5. Multiuser Support
 
 Multiple users can safely work on the same Linux system simultaneously.
 
@@ -2274,7 +2274,7 @@ Each user has:
 
 ---
 
-## 6. Multitasking
+### 6. Multitasking
 
 Linux executes multiple processes simultaneously.
 
@@ -2291,7 +2291,7 @@ All can operate concurrently without interfering with one another.
 
 ---
 
-## 7. Portability
+### 7. Portability
 
 Linux runs on numerous architectures.
 
@@ -2308,7 +2308,7 @@ This flexibility makes Linux suitable for a wide variety of devices and environm
 
 ---
 
-## 8. Scalability
+### 8. Scalability
 
 Linux supports environments ranging from small embedded devices to massive cloud infrastructures.
 
@@ -2324,7 +2324,7 @@ Examples:
 
 ---
 
-## 9. Powerful Networking
+### 9. Powerful Networking
 
 Linux provides enterprise-grade networking capabilities.
 
@@ -2341,7 +2341,7 @@ Examples:
 
 ---
 
-## 10. Automation
+### 10. Automation
 
 Linux excels at automation through:
 
@@ -2357,17 +2357,17 @@ Automation reduces manual effort and improves operational consistency.
 
 ---
 
-# Linux Limitations
+## Linux Limitations
 
 Although Linux is highly capable, it has some challenges.
 
-## Steeper Learning Curve
+### Steeper Learning Curve
 
 Command-line administration can initially be difficult for beginners.
 
 ---
 
-## Software Compatibility
+### Software Compatibility
 
 Some proprietary desktop software may not be available natively.
 
@@ -2379,19 +2379,19 @@ Examples:
 
 ---
 
-## Hardware Driver Support
+### Hardware Driver Support
 
 While Linux supports a vast range of hardware, some new or specialized devices may require additional drivers or vendor support.
 
 ---
 
-## Gaming Support
+### Gaming Support
 
 Gaming support has improved significantly with technologies such as Proton and Steam Play, but some titles with proprietary anti-cheat systems or platform restrictions may still have compatibility issues.
 
 ---
 
-# Linux in Enterprise Environments
+## Linux in Enterprise Environments
 
 Linux powers modern enterprise infrastructure.
 
@@ -2410,7 +2410,7 @@ Examples include:
 
 ---
 
-# Linux in Cloud Computing
+## Linux in Cloud Computing
 
 Major cloud providers rely heavily on Linux.
 
@@ -2428,7 +2428,7 @@ Linux is the default operating system for many cloud workloads.
 
 ---
 
-# Linux in DevOps
+## Linux in DevOps
 
 Linux is central to DevOps workflows.
 
@@ -2446,11 +2446,11 @@ Most CI/CD pipelines run on Linux-based infrastructure.
 
 ---
 
-# Linux in Cybersecurity
+## Linux in Cybersecurity
 
 Linux is used extensively by both defenders and authorized security testers.
 
-## Security Operations Center (SOC)
+### Security Operations Center (SOC)
 
 Examples:
 
@@ -2463,7 +2463,7 @@ Examples:
 
 ---
 
-## Penetration Testing
+### Penetration Testing
 
 Common Linux-based security tools include:
 
@@ -2480,7 +2480,7 @@ These tools are used during authorized security assessments.
 
 ---
 
-## Digital Forensics
+### Digital Forensics
 
 Linux is frequently used for:
 
@@ -2493,7 +2493,7 @@ Linux is frequently used for:
 
 ---
 
-## Malware Analysis
+### Malware Analysis
 
 Linux environments can be used to:
 
@@ -2504,7 +2504,7 @@ Linux environments can be used to:
 
 ---
 
-## Threat Hunting
+### Threat Hunting
 
 Threat hunters commonly use Linux to:
 
@@ -2516,7 +2516,7 @@ Threat hunters commonly use Linux to:
 
 ---
 
-# Linux in Detection Engineering
+## Linux in Detection Engineering
 
 Detection engineers use Linux for:
 
@@ -2531,9 +2531,9 @@ Linux servers often act as log collectors and processing nodes in enterprise env
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A global e-commerce company operates:
 
@@ -2564,9 +2564,9 @@ Benefits achieved:
 
 ---
 
-# Practical Lab 1 — Exploring the Filesystem
+## Practical Lab 1 — Exploring the Filesystem
 
-## Objective
+### Objective
 
 Navigate the Linux directory structure.
 
@@ -2589,7 +2589,7 @@ Expected outcome:
 
 ---
 
-# Practical Lab 2 — Working with Files
+## Practical Lab 2 — Working with Files
 
 Commands:
 
@@ -2610,7 +2610,7 @@ Expected outcome:
 
 ---
 
-# Practical Lab 3 — Viewing File Information
+## Practical Lab 3 — Viewing File Information
 
 Commands:
 
@@ -2628,7 +2628,7 @@ Expected outcome:
 
 ---
 
-# Practical Lab 4 — Disk Usage
+## Practical Lab 4 — Disk Usage
 
 Commands:
 
@@ -2644,7 +2644,7 @@ Expected outcome:
 
 ---
 
-# Practical Lab 5 — Using the Help System
+## Practical Lab 5 — Using the Help System
 
 Commands:
 
@@ -2662,7 +2662,7 @@ Expected outcome:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2682,7 +2682,7 @@ In this chapter, you learned:
 
 ---
 
-# Chapter Review Questions
+## Chapter Review Questions
 
 1. What is the Linux kernel, and what are its primary responsibilities?
 2. Explain the difference between user space and kernel space.
@@ -2702,9 +2702,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 - What is Linux?
 - What is the kernel?
@@ -2719,7 +2719,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Explain the Linux boot process at a high level.
 - What is the difference between user space and kernel space?
@@ -2734,7 +2734,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 - Why is Linux considered highly scalable?
 - How does the Linux scheduler improve performance?
@@ -2749,7 +2749,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux is the dominant operating system for enterprise infrastructure, cloud platforms, and cybersecurity.
 - A solid understanding of Linux fundamentals is essential before learning administration, networking, scripting, and security.
@@ -2759,9 +2759,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - Linux Foundation Documentation
 - GNU Project Documentation
@@ -2772,13 +2772,13 @@ In this chapter, you learned:
 - Fedora Documentation
 - SUSE Documentation
 
-## Standards
+### Standards
 
 - POSIX (IEEE 1003.1)
 - Filesystem Hierarchy Standard (FHS)
 - Linux Standard Base (LSB)
 
-## Security References
+### Security References
 
 - NIST SP 800 Series
 - CIS Benchmarks for Linux
@@ -2787,7 +2787,7 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **02-Linux-Installation.md**
 

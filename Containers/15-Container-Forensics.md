@@ -29,7 +29,7 @@ Container forensics plays a vital role in:
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Suppose an attacker compromises a production container.
 
@@ -104,7 +104,7 @@ Organizations can reconstruct the attack and improve future defenses.
 
 ---
 
-# What is Digital Forensics?
+## What is Digital Forensics?
 
 Digital forensics is the scientific process of:
 
@@ -119,7 +119,7 @@ The objective is to maintain evidence integrity while determining what happened 
 
 ---
 
-# Container Forensics Challenges
+## Container Forensics Challenges
 
 Containers introduce several unique challenges.
 
@@ -151,7 +151,7 @@ These characteristics require investigators to adapt traditional forensic techni
 
 ---
 
-# Container Forensics Workflow
+## Container Forensics Workflow
 
 ```
 Incident
@@ -189,7 +189,7 @@ Every step should follow organizational forensic procedures and applicable legal
 
 ---
 
-# Sources of Evidence
+## Sources of Evidence
 
 Evidence may be collected from multiple layers.
 
@@ -221,7 +221,7 @@ No single source provides the complete picture.
 
 ---
 
-# Container-Level Evidence
+## Container-Level Evidence
 
 Examples include:
 
@@ -239,7 +239,7 @@ These artifacts help reconstruct container activity.
 
 ---
 
-# Image-Level Evidence
+## Image-Level Evidence
 
 Investigators may analyze:
 
@@ -256,7 +256,7 @@ Image analysis helps identify vulnerable or malicious components.
 
 ---
 
-# Host-Level Evidence
+## Host-Level Evidence
 
 The Docker host often contains critical evidence.
 
@@ -275,7 +275,7 @@ Host analysis is especially important if container isolation may have been bypas
 
 ---
 
-# Cloud Evidence
+## Cloud Evidence
 
 Cloud-native environments generate valuable evidence.
 
@@ -293,7 +293,7 @@ Cloud evidence helps reconstruct actions beyond the container itself.
 
 ---
 
-# Registry Evidence
+## Registry Evidence
 
 Container registries provide:
 
@@ -309,9 +309,9 @@ Registry metadata can reveal when compromised images were introduced or deployed
 
 ---
 
-# Types of Evidence
+## Types of Evidence
 
-## Volatile Evidence
+### Volatile Evidence
 
 Examples:
 
@@ -325,7 +325,7 @@ Volatile evidence may disappear when a container stops.
 
 ---
 
-## Non-Volatile Evidence
+### Non-Volatile Evidence
 
 Examples:
 
@@ -340,7 +340,7 @@ These artifacts generally persist longer than runtime information.
 
 ---
 
-# Chain of Custody
+## Chain of Custody
 
 Evidence handling should be documented.
 
@@ -372,7 +372,7 @@ Maintaining a documented chain of custody helps preserve evidence integrity and 
 
 ---
 
-# Timeline Analysis
+## Timeline Analysis
 
 Investigators reconstruct events chronologically.
 
@@ -408,7 +408,7 @@ Timeline analysis helps identify attacker actions and system responses.
 
 ---
 
-# Goals of Container Forensics
+## Goals of Container Forensics
 
 - Preserve evidence
 - Reconstruct attacker activity
@@ -420,21 +420,21 @@ Timeline analysis helps identify attacker actions and system responses.
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-## Forensic Readiness
+### Forensic Readiness
 
 Prepare logging, monitoring, and evidence collection capabilities before incidents occur.
 
 ---
 
-## Evidence Preservation
+### Evidence Preservation
 
 Collect volatile evidence as early as possible while avoiding unnecessary modification of affected systems.
 
 ---
 
-## Multi-Layer Investigation
+### Multi-Layer Investigation
 
 Investigations should consider:
 
@@ -449,25 +449,25 @@ to achieve a complete understanding of the incident.
 
 ---
 
-## Integrity
+### Integrity
 
 Evidence should remain complete, accurate, and protected against unauthorized modification.
 
 ---
 
-## Root Cause Analysis
+### Root Cause Analysis
 
 Determine not only what happened, but also why it happened and how recurrence can be prevented.
 
 ---
 
-## Documentation
+### Documentation
 
 Maintain detailed records throughout the investigation to support reporting, lessons learned, and compliance.
 
 ---
 
-## How It Works
+### How It Works
 
 Container Forensics is the process of identifying, preserving, collecting, analyzing, and reporting digital evidence from containerized environments. Because containers can be terminated automatically or replaced within seconds, investigators must prioritize rapid evidence collection while maintaining forensic integrity.
 
@@ -487,7 +487,7 @@ The objective is to reconstruct the incident timeline and determine the attack p
 
 ---
 
-# Container Forensics Workflow
+## Container Forensics Workflow
 
 ```
 Security Incident
@@ -539,7 +539,7 @@ Each phase should follow organizational forensic procedures and evidence handlin
 
 ---
 
-# Step 1 – Incident Identification
+## Step 1 – Incident Identification
 
 Investigation begins after:
 
@@ -573,7 +573,7 @@ Example triggers:
 
 ---
 
-# Step 2 – Preserve Volatile Evidence
+## Step 2 – Preserve Volatile Evidence
 
 Volatile evidence may disappear when the container stops.
 
@@ -603,7 +603,7 @@ This information should be collected before replacing or removing the affected c
 
 ---
 
-# Step 3 – Collect Container Evidence
+## Step 3 – Collect Container Evidence
 
 Typical evidence includes:
 
@@ -639,7 +639,7 @@ These artifacts help reconstruct runtime activity.
 
 ---
 
-# Step 4 – Collect Image Evidence
+## Step 4 – Collect Image Evidence
 
 Investigators examine:
 
@@ -679,7 +679,7 @@ Image analysis helps determine whether:
 
 ---
 
-# Step 5 – Collect Host Evidence
+## Step 5 – Collect Host Evidence
 
 Since containers share the host kernel, investigators also examine:
 
@@ -711,7 +711,7 @@ Host evidence is particularly important when investigating potential container e
 
 ---
 
-# Step 6 – Collect Cloud Evidence
+## Step 6 – Collect Cloud Evidence
 
 Cloud-native deployments generate additional forensic artifacts.
 
@@ -741,7 +741,7 @@ Cloud logs help correlate events beyond the container environment.
 
 ---
 
-# Step 7 – Correlate Evidence
+## Step 7 – Correlate Evidence
 
 No single artifact tells the complete story.
 
@@ -775,7 +775,7 @@ Correlation improves confidence in investigative findings.
 
 ---
 
-# Step 8 – Timeline Reconstruction
+## Step 8 – Timeline Reconstruction
 
 Investigators arrange events chronologically.
 
@@ -820,7 +820,7 @@ Timeline analysis identifies:
 
 ---
 
-# Step 9 – Root Cause Analysis
+## Step 9 – Root Cause Analysis
 
 Investigators determine:
 
@@ -834,7 +834,7 @@ The objective is long-term improvement rather than simply restoring service.
 
 ---
 
-# Real-World Investigation Workflow
+## Real-World Investigation Workflow
 
 Example:
 
@@ -878,9 +878,9 @@ Multiple evidence sources are combined to produce a complete investigation.
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Malicious Process
+### Example 1 – Malicious Process
 
 Monitoring reports:
 
@@ -918,7 +918,7 @@ Determine whether the process is legitimate or malicious.
 
 ---
 
-## Example 2 – Suspicious Image
+### Example 2 – Suspicious Image
 
 Registry activity shows:
 
@@ -941,7 +941,7 @@ to determine image provenance.
 
 ---
 
-## Example 3 – Container Escape Investigation
+### Example 3 – Container Escape Investigation
 
 Evidence sources:
 
@@ -969,7 +969,7 @@ Host analysis becomes critical when isolation boundaries may have been bypassed.
 
 ---
 
-## Example 4 – Data Exfiltration
+### Example 4 – Data Exfiltration
 
 Monitoring detects:
 
@@ -996,13 +996,13 @@ to determine the scope of data exposure.
 
 ---
 
-# Hands-on Forensic Commands
+## Hands-on Forensic Commands
 
 > **Note:** These commands provide operational visibility into Docker environments. Organizations performing formal forensic investigations should follow approved evidence preservation procedures and use appropriate forensic tooling where required.
 
 ---
 
-## List Running Containers
+### List Running Containers
 
 ```bash
 docker ps
@@ -1012,7 +1012,7 @@ Identify active containers.
 
 ---
 
-## List All Containers
+### List All Containers
 
 ```bash
 docker ps -a
@@ -1022,7 +1022,7 @@ Review current and recently stopped containers.
 
 ---
 
-## Inspect Container Metadata
+### Inspect Container Metadata
 
 ```bash
 docker inspect container_name
@@ -1039,7 +1039,7 @@ Review:
 
 ---
 
-## View Container Logs
+### View Container Logs
 
 ```bash
 docker logs container_name
@@ -1049,7 +1049,7 @@ Review application activity and errors.
 
 ---
 
-## Stream Container Logs
+### Stream Container Logs
 
 ```bash
 docker logs -f container_name
@@ -1059,7 +1059,7 @@ Observe live log output.
 
 ---
 
-## Display Running Processes
+### Display Running Processes
 
 ```bash
 docker top container_name
@@ -1069,7 +1069,7 @@ Identify expected and unexpected processes.
 
 ---
 
-## Display Docker Events
+### Display Docker Events
 
 ```bash
 docker events
@@ -1086,7 +1086,7 @@ Review lifecycle events including:
 
 ---
 
-## View Resource Usage
+### View Resource Usage
 
 ```bash
 docker stats
@@ -1096,7 +1096,7 @@ Identify unusual CPU, memory, or network utilization.
 
 ---
 
-## Inspect Image Metadata
+### Inspect Image Metadata
 
 ```bash
 docker inspect image_name
@@ -1106,7 +1106,7 @@ Review image configuration.
 
 ---
 
-## Review Image History
+### Review Image History
 
 ```bash
 docker history image_name
@@ -1116,9 +1116,9 @@ Examine image layers and build history.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Prepare for Forensics Before Incidents
+#### 1. Prepare for Forensics Before Incidents
 
 Implement:
 
@@ -1132,7 +1132,7 @@ Preparation greatly improves investigative capability.
 
 ---
 
-### 2. Collect Volatile Evidence First
+#### 2. Collect Volatile Evidence First
 
 Capture:
 
@@ -1145,7 +1145,7 @@ before the container terminates whenever practical.
 
 ---
 
-### 3. Correlate Multiple Evidence Sources
+#### 3. Correlate Multiple Evidence Sources
 
 Avoid relying on a single log or alert.
 
@@ -1162,7 +1162,7 @@ for a comprehensive investigation.
 
 ---
 
-### 4. Preserve Evidence Integrity
+#### 4. Preserve Evidence Integrity
 
 Record:
 
@@ -1176,7 +1176,7 @@ Maintain evidence according to organizational forensic procedures.
 
 ---
 
-### 5. Use Trusted Images During Recovery
+#### 5. Use Trusted Images During Recovery
 
 After investigation:
 
@@ -1200,7 +1200,7 @@ Avoid restoring from potentially compromised images.
 
 ---
 
-### 6. Document Every Investigation
+#### 6. Document Every Investigation
 
 Include:
 
@@ -1215,7 +1215,7 @@ Clear documentation supports future investigations and lessons learned.
 
 ---
 
-### 7. Improve Security Controls
+#### 7. Improve Security Controls
 
 Each investigation should strengthen:
 
@@ -1230,7 +1230,7 @@ Continuous improvement is a core objective of mature forensic practices.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Container Forensics requires careful planning, disciplined evidence handling, and a deep understanding of container technology. Because containers are ephemeral and highly dynamic, traditional forensic approaches are often insufficient.
 
@@ -1238,7 +1238,7 @@ The following are the most common mistakes encountered during container forensic
 
 ---
 
-# 1. Deleting the Container Before Collecting Evidence
+## 1. Deleting the Container Before Collecting Evidence
 
 The most common mistake is:
 
@@ -1267,7 +1267,7 @@ Whenever practical, preserve and collect relevant evidence before removing or re
 
 ---
 
-# 2. Ignoring Volatile Evidence
+## 2. Ignoring Volatile Evidence
 
 Volatile evidence disappears quickly.
 
@@ -1293,7 +1293,7 @@ Investigators should prioritize volatile data collection early in the response p
 
 ---
 
-# 3. Investigating Only the Container
+## 3. Investigating Only the Container
 
 A container is only one layer of the environment.
 
@@ -1327,7 +1327,7 @@ Multi-layer investigations produce more accurate findings.
 
 ---
 
-# 4. Forgetting the Host Operating System
+## 4. Forgetting the Host Operating System
 
 Containers share the host kernel.
 
@@ -1343,7 +1343,7 @@ If a container escape or privilege escalation occurred, host evidence becomes es
 
 ---
 
-# 5. Modifying the Evidence
+## 5. Modifying the Evidence
 
 Examples:
 
@@ -1369,7 +1369,7 @@ When feasible, collect evidence before making changes, following organizational 
 
 ---
 
-# 6. Not Synchronizing Time
+## 6. Not Synchronizing Time
 
 Different systems may report different timestamps.
 
@@ -1397,7 +1397,7 @@ Consistent time synchronization is essential for accurate timeline reconstructio
 
 ---
 
-# 7. Ignoring Registry Evidence
+## 7. Ignoring Registry Evidence
 
 The registry may reveal:
 
@@ -1412,7 +1412,7 @@ Registry metadata often explains how compromised images reached production.
 
 ---
 
-# 8. Assuming Logs Tell the Whole Story
+## 8. Assuming Logs Tell the Whole Story
 
 Logs may be:
 
@@ -1433,7 +1433,7 @@ No single evidence source should be considered definitive.
 
 ---
 
-# 9. Forgetting the CI/CD Pipeline
+## 9. Forgetting the CI/CD Pipeline
 
 The compromise may have occurred during software delivery.
 
@@ -1468,7 +1468,7 @@ Investigate:
 
 ---
 
-# 10. Ignoring Cloud Audit Logs
+## 10. Ignoring Cloud Audit Logs
 
 Cloud platforms record valuable events.
 
@@ -1484,7 +1484,7 @@ Cloud audit logs frequently provide evidence unavailable inside the container.
 
 ---
 
-# 11. Failing to Preserve Chain of Custody
+## 11. Failing to Preserve Chain of Custody
 
 Without documentation:
 
@@ -1512,7 +1512,7 @@ This is especially important for regulated environments and legal proceedings.
 
 ---
 
-# 12. No Timeline Reconstruction
+## 12. No Timeline Reconstruction
 
 Investigations should reconstruct events in order.
 
@@ -1548,7 +1548,7 @@ Without a timeline, determining cause and impact becomes much more difficult.
 
 ---
 
-# 13. Trusting Compromised Systems Completely
+## 13. Trusting Compromised Systems Completely
 
 Attackers may:
 
@@ -1562,7 +1562,7 @@ Validate findings using multiple independent evidence sources whenever possible.
 
 ---
 
-# 14. Focusing Only on Technical Evidence
+## 14. Focusing Only on Technical Evidence
 
 Effective investigations also consider:
 
@@ -1577,7 +1577,7 @@ Human actions and process failures may contribute to an incident.
 
 ---
 
-# 15. Closing the Investigation Without Improvements
+## 15. Closing the Investigation Without Improvements
 
 Incorrect workflow:
 
@@ -1619,9 +1619,9 @@ Every investigation should strengthen the organization's security posture.
 
 ---
 
-# Container Forensics Quick Revision
+## Container Forensics Quick Revision
 
-## Investigation Workflow
+### Investigation Workflow
 
 ```
 Incident
@@ -1657,7 +1657,7 @@ Report
 
 ---
 
-## Evidence Sources
+### Evidence Sources
 
 ```
 Application
@@ -1691,7 +1691,7 @@ A complete investigation typically combines evidence from multiple layers.
 
 ---
 
-## Volatile vs Non-Volatile Evidence
+### Volatile vs Non-Volatile Evidence
 
 | Volatile | Non-Volatile |
 |----------|--------------|
@@ -1705,7 +1705,7 @@ Volatile evidence should generally be collected first because it may disappear q
 
 ---
 
-## Common Investigation Commands
+### Common Investigation Commands
 
 ```bash
 docker ps
@@ -1731,7 +1731,7 @@ These commands provide valuable operational information but should be used withi
 
 ---
 
-# Container Forensics Checklist
+## Container Forensics Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1753,9 +1753,9 @@ These commands provide valuable operational information but should be used withi
 
 ---
 
-# References
+## References
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker Engine Documentation
 - Docker CLI Documentation
@@ -1765,7 +1765,7 @@ These commands provide valuable operational information but should be used withi
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Forensics Guidance
 - Falco Documentation
@@ -1774,7 +1774,7 @@ These commands provide valuable operational information but should be used withi
 
 ---
 
-## Security Standards
+### Security Standards
 
 - NIST SP 800-61 Rev. 2 — Computer Security Incident Handling Guide *(or the latest revision adopted by your organization)*
 - NIST SP 800-190 — Application Container Security Guide
@@ -1784,7 +1784,7 @@ These commands provide valuable operational information but should be used withi
 
 ---
 
-## Threat Intelligence & Frameworks
+### Threat Intelligence & Frameworks
 
 - MITRE ATT&CK
 - MITRE ATT&CK for Containers
@@ -1794,7 +1794,7 @@ These commands provide valuable operational information but should be used withi
 
 ---
 
-## Supply Chain & Integrity
+### Supply Chain & Integrity
 
 - Sigstore Documentation
 - Notary Documentation
@@ -1804,7 +1804,7 @@ These commands provide valuable operational information but should be used withi
 
 ---
 
-## Books
+### Books
 
 - *Container Security* — Liz Rice
 - *Incident Response & Computer Forensics* — Jason T. Luttgens, Matthew Pepe & Kevin Mandia
@@ -1813,7 +1813,7 @@ These commands provide valuable operational information but should be used withi
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Linux Foundation Training

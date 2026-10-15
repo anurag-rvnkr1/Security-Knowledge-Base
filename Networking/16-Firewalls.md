@@ -1,10 +1,10 @@
 # 16 - Firewalls
 
-# Part 1 — Firewall Fundamentals, Architecture, Packet Filtering, Stateful Inspection, Next-Generation Firewalls (NGFW), and Enterprise Deployment
+## Part 1 — Firewall Fundamentals, Architecture, Packet Filtering, Stateful Inspection, Next-Generation Firewalls (NGFW), and Enterprise Deployment
 
 ---
 
-# Overview
+## Overview
 
 A **Firewall** is one of the most critical security controls in modern networks. It acts as a gatekeeper between trusted and untrusted networks, enforcing security policies by inspecting, permitting, or denying network traffic.
 
@@ -22,7 +22,7 @@ Every organization—from a small business to a multinational enterprise—relie
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -40,7 +40,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is a Firewall?
+## What is a Firewall?
 
 A **Firewall** is a hardware, software, or virtual security device that examines network traffic according to defined security policies and decides whether to allow, deny, reject, or inspect communications.
 
@@ -60,7 +60,7 @@ The firewall forms a security boundary between different trust zones.
 
 ---
 
-# Why Firewalls Are Important
+## Why Firewalls Are Important
 
 Without a firewall, systems are directly exposed to external threats.
 
@@ -77,7 +77,7 @@ Firewalls help organizations:
 
 ---
 
-# Security Objectives
+## Security Objectives
 
 Enterprise firewall deployments aim to provide:
 
@@ -93,7 +93,7 @@ Enterprise firewall deployments aim to provide:
 
 ---
 
-# Firewall Placement
+## Firewall Placement
 
 Firewalls are commonly deployed at multiple locations.
 
@@ -129,7 +129,7 @@ Modern organizations often deploy multiple security layers rather than relying o
 
 ---
 
-# Enterprise Trust Zones
+## Enterprise Trust Zones
 
 Typical security zones include:
 
@@ -147,7 +147,7 @@ Traffic between zones is controlled by firewall policies.
 
 ---
 
-# Basic Firewall Operation
+## Basic Firewall Operation
 
 Every incoming packet is evaluated against a rule set.
 
@@ -183,7 +183,7 @@ A default deny policy is generally recommended.
 
 ---
 
-# Firewall Rule Components
+## Firewall Rule Components
 
 A typical firewall rule includes:
 
@@ -199,7 +199,7 @@ A typical firewall rule includes:
 
 ---
 
-# Example Firewall Rule
+## Example Firewall Rule
 
 | Source | Destination | Protocol | Port | Action |
 |---------|-------------|----------|------|--------|
@@ -209,9 +209,9 @@ A typical firewall rule includes:
 
 ---
 
-# Packet Filtering Firewall
+## Packet Filtering Firewall
 
-## Overview
+### Overview
 
 A packet filtering firewall evaluates packets independently based on header information.
 
@@ -243,7 +243,7 @@ It does not maintain information about previous packets.
 
 ---
 
-# Characteristics
+## Characteristics
 
 Packet filtering firewalls inspect:
 
@@ -257,7 +257,7 @@ They are fast and efficient but have limited context.
 
 ---
 
-# Advantages
+## Advantages
 
 - High performance
 - Low resource consumption
@@ -266,7 +266,7 @@ They are fast and efficient but have limited context.
 
 ---
 
-# Limitations
+## Limitations
 
 - No session awareness
 - Cannot detect application-layer attacks
@@ -275,9 +275,9 @@ They are fast and efficient but have limited context.
 
 ---
 
-# Stateful Inspection Firewall
+## Stateful Inspection Firewall
 
-## Overview
+### Overview
 
 Stateful firewalls track the state of active network connections.
 
@@ -301,7 +301,7 @@ Rather than evaluating each packet independently, the firewall considers the ent
 
 ---
 
-# State Table
+## State Table
 
 A state table records information such as:
 
@@ -317,7 +317,7 @@ This enables more intelligent filtering decisions.
 
 ---
 
-# Stateful Inspection Workflow
+## Stateful Inspection Workflow
 
 ```
 Client
@@ -355,7 +355,7 @@ Only packets belonging to valid sessions are allowed.
 
 ---
 
-# Advantages of Stateful Inspection
+## Advantages of Stateful Inspection
 
 - Better security than stateless filtering
 - Automatic handling of return traffic
@@ -364,9 +364,9 @@ Only packets belonging to valid sessions are allowed.
 
 ---
 
-# Circuit-Level Gateway
+## Circuit-Level Gateway
 
-## Overview
+### Overview
 
 A circuit-level gateway verifies TCP session establishment rather than inspecting application data.
 
@@ -390,7 +390,7 @@ These gateways typically operate at the Session Layer.
 
 ---
 
-# Characteristics
+## Characteristics
 
 Circuit-level gateways:
 
@@ -402,9 +402,9 @@ However, they provide limited application awareness.
 
 ---
 
-# Proxy Firewall
+## Proxy Firewall
 
-## Overview
+### Overview
 
 A proxy firewall acts as an intermediary between clients and destination servers.
 
@@ -424,7 +424,7 @@ The client never communicates directly with the destination.
 
 ---
 
-# Advantages
+## Advantages
 
 Proxy firewalls provide:
 
@@ -437,7 +437,7 @@ Proxy firewalls provide:
 
 ---
 
-# Limitations
+## Limitations
 
 - Increased latency
 - Higher resource consumption
@@ -445,9 +445,9 @@ Proxy firewalls provide:
 
 ---
 
-# Next-Generation Firewall (NGFW)
+## Next-Generation Firewall (NGFW)
 
-## Overview
+### Overview
 
 A **Next-Generation Firewall (NGFW)** extends traditional firewall capabilities with advanced security functions.
 
@@ -467,7 +467,7 @@ NGFWs combine network security, threat prevention, and application awareness int
 
 ---
 
-# Core Features
+## Core Features
 
 NGFW capabilities include:
 
@@ -484,7 +484,7 @@ NGFW capabilities include:
 
 ---
 
-# Deep Packet Inspection (DPI)
+## Deep Packet Inspection (DPI)
 
 Unlike packet filtering, DPI examines packet payloads.
 
@@ -508,7 +508,7 @@ DPI enables identification of malicious content and unauthorized applications.
 
 ---
 
-# Application Awareness
+## Application Awareness
 
 Modern firewalls recognize applications regardless of the port used.
 
@@ -524,7 +524,7 @@ Application-aware policies provide finer-grained control.
 
 ---
 
-# User Identity Integration
+## User Identity Integration
 
 NGFWs integrate with identity providers such as:
 
@@ -559,7 +559,7 @@ Deny
 
 ---
 
-# SSL/TLS Inspection
+## SSL/TLS Inspection
 
 A significant percentage of enterprise traffic is encrypted.
 
@@ -573,7 +573,7 @@ This process must be carefully implemented to balance security, privacy, and per
 
 ---
 
-# Threat Intelligence Integration
+## Threat Intelligence Integration
 
 NGFWs may integrate with threat intelligence feeds to block:
 
@@ -587,7 +587,7 @@ Threat intelligence improves detection of emerging threats.
 
 ---
 
-# Enterprise Deployment Example
+## Enterprise Deployment Example
 
 ```
 Internet
@@ -625,7 +625,7 @@ Critical environments often deploy firewalls in high-availability clusters.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper firewall deployment helps organizations:
 
@@ -638,7 +638,7 @@ Proper firewall deployment helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -653,7 +653,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Firewalls enforce security boundaries between trust zones.
 - Packet filtering firewalls make decisions using packet headers.
@@ -665,11 +665,11 @@ Organizations should:
 ---
 
 
-# Part 2 — Network Address Translation (NAT), Access Control Lists (ACLs), Deep Packet Inspection (DPI), Application Filtering, VPN Integration, High Availability, Cloud Firewalls, and Enterprise Firewall Architectures
+## Part 2 — Network Address Translation (NAT), Access Control Lists (ACLs), Deep Packet Inspection (DPI), Application Filtering, VPN Integration, High Availability, Cloud Firewalls, and Enterprise Firewall Architectures
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise firewalls have evolved far beyond simple packet filtering.
 
@@ -689,9 +689,9 @@ These capabilities allow organizations to secure increasingly complex hybrid and
 
 ---
 
-# Network Address Translation (NAT)
+## Network Address Translation (NAT)
 
-## Overview
+### Overview
 
 **Network Address Translation (NAT)** modifies IP address information as packets pass through a firewall or router.
 
@@ -711,7 +711,7 @@ Public Internet
 
 ---
 
-# Why NAT is Used
+## Why NAT is Used
 
 Organizations implement NAT to:
 
@@ -726,7 +726,7 @@ Organizations implement NAT to:
 
 ---
 
-# Private IPv4 Address Ranges
+## Private IPv4 Address Ranges
 
 RFC 1918 defines the following private address spaces:
 
@@ -740,7 +740,7 @@ These addresses are not routable on the public Internet.
 
 ---
 
-# Types of NAT
+## Types of NAT
 
 | NAT Type | Description |
 |----------|-------------|
@@ -750,7 +750,7 @@ These addresses are not routable on the public Internet.
 
 ---
 
-# Static NAT
+## Static NAT
 
 A dedicated public IP address is assigned to a specific internal host.
 
@@ -771,7 +771,7 @@ Typical use cases:
 
 ---
 
-# Dynamic NAT
+## Dynamic NAT
 
 Addresses are assigned dynamically from an available public pool.
 
@@ -791,7 +791,7 @@ If all public addresses are in use, additional connections must wait until one b
 
 ---
 
-# Port Address Translation (PAT)
+## Port Address Translation (PAT)
 
 PAT (also called **NAT Overload**) allows multiple internal devices to share a single public IP.
 
@@ -823,7 +823,7 @@ PAT is the most common NAT implementation in enterprise environments.
 
 ---
 
-# NAT Translation Process
+## NAT Translation Process
 
 ```
 Client
@@ -847,7 +847,7 @@ The firewall maintains a translation table to correctly forward return traffic.
 
 ---
 
-# Advantages of NAT
+## Advantages of NAT
 
 - Conserves IPv4 addresses
 - Hides internal addressing
@@ -857,7 +857,7 @@ The firewall maintains a translation table to correctly forward return traffic.
 
 ---
 
-# Limitations of NAT
+## Limitations of NAT
 
 - Can complicate troubleshooting
 - May interfere with some protocols
@@ -866,9 +866,9 @@ The firewall maintains a translation table to correctly forward return traffic.
 
 ---
 
-# Access Control Lists (ACLs)
+## Access Control Lists (ACLs)
 
-## Overview
+### Overview
 
 An **Access Control List (ACL)** is an ordered collection of rules that determine whether traffic is permitted or denied.
 
@@ -876,7 +876,7 @@ ACLs are implemented on routers, switches, and firewalls.
 
 ---
 
-# ACL Processing
+## ACL Processing
 
 Rules are evaluated from top to bottom.
 
@@ -912,7 +912,7 @@ If no rule matches, the firewall applies the default policy (typically deny).
 
 ---
 
-# ACL Components
+## ACL Components
 
 Typical ACL fields include:
 
@@ -927,7 +927,7 @@ Typical ACL fields include:
 
 ---
 
-# Example ACL
+## Example ACL
 
 | Priority | Source | Destination | Protocol | Port | Action |
 |----------|---------|-------------|----------|------|--------|
@@ -937,7 +937,7 @@ Typical ACL fields include:
 
 ---
 
-# ACL Best Practices
+## ACL Best Practices
 
 Organizations should:
 
@@ -950,9 +950,9 @@ Organizations should:
 
 ---
 
-# Deep Packet Inspection (DPI)
+## Deep Packet Inspection (DPI)
 
-## Overview
+### Overview
 
 Traditional firewalls inspect only packet headers.
 
@@ -980,7 +980,7 @@ Policy Decision
 
 ---
 
-# DPI Capabilities
+## DPI Capabilities
 
 DPI enables:
 
@@ -993,7 +993,7 @@ DPI enables:
 
 ---
 
-# Header Inspection vs Payload Inspection
+## Header Inspection vs Payload Inspection
 
 | Header Inspection | Payload Inspection |
 |------------------|--------------------|
@@ -1007,7 +1007,7 @@ Payload inspection provides significantly greater visibility than header-only fi
 
 ---
 
-# Application-Aware Filtering
+## Application-Aware Filtering
 
 Modern applications frequently use common ports such as TCP 443.
 
@@ -1041,7 +1041,7 @@ Block
 
 ---
 
-# Common Application Controls
+## Common Application Controls
 
 Organizations may create policies such as:
 
@@ -1056,7 +1056,7 @@ Organizations may create policies such as:
 
 ---
 
-# URL Filtering
+## URL Filtering
 
 Firewalls can categorize websites and enforce browsing policies.
 
@@ -1075,7 +1075,7 @@ This helps reduce exposure to malicious or inappropriate websites.
 
 ---
 
-# SSL/TLS Inspection
+## SSL/TLS Inspection
 
 Encrypted traffic can conceal malicious activity.
 
@@ -1109,7 +1109,7 @@ Organizations should carefully define inspection policies to balance security, c
 
 ---
 
-# VPN Integration
+## VPN Integration
 
 Firewalls commonly act as VPN gateways.
 
@@ -1122,7 +1122,7 @@ Supported technologies often include:
 
 ---
 
-# Site-to-Site VPN
+## Site-to-Site VPN
 
 ```
 Branch Office
@@ -1148,7 +1148,7 @@ This securely connects geographically separated locations.
 
 ---
 
-# Remote Access VPN
+## Remote Access VPN
 
 ```
 Remote Employee
@@ -1174,7 +1174,7 @@ Users authenticate before accessing internal systems.
 
 ---
 
-# VPN Authentication
+## VPN Authentication
 
 Common authentication methods include:
 
@@ -1186,9 +1186,9 @@ Common authentication methods include:
 
 ---
 
-# High Availability (HA)
+## High Availability (HA)
 
-## Overview
+### Overview
 
 Firewall High Availability minimizes downtime by providing redundancy.
 
@@ -1212,7 +1212,7 @@ If the active firewall fails, the standby firewall assumes responsibility.
 
 ---
 
-# HA Modes
+## HA Modes
 
 | Mode | Description |
 |------|-------------|
@@ -1221,7 +1221,7 @@ If the active firewall fails, the standby firewall assumes responsibility.
 
 ---
 
-# HA Synchronization
+## HA Synchronization
 
 HA peers synchronize:
 
@@ -1235,7 +1235,7 @@ This helps preserve existing connections during failover.
 
 ---
 
-# Cloud Firewalls
+## Cloud Firewalls
 
 Cloud platforms provide managed firewall services.
 
@@ -1251,7 +1251,7 @@ These services integrate with cloud-native networking constructs such as VPCs an
 
 ---
 
-# Virtual Firewalls
+## Virtual Firewalls
 
 Virtual firewalls run as software appliances.
 
@@ -1272,7 +1272,7 @@ Benefits include:
 
 ---
 
-# Enterprise Firewall Architecture
+## Enterprise Firewall Architecture
 
 Example:
 
@@ -1312,7 +1312,7 @@ Different firewall layers enforce different security policies.
 
 ---
 
-# Multi-Tier Security Architecture
+## Multi-Tier Security Architecture
 
 ```
 Internet
@@ -1346,7 +1346,7 @@ This layered approach supports defense in depth.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Advanced firewall capabilities help organizations:
 
@@ -1359,7 +1359,7 @@ Advanced firewall capabilities help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -1374,7 +1374,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - NAT enables communication between private and public networks.
 - ACLs determine whether traffic is permitted or denied.
@@ -1387,11 +1387,11 @@ Organizations should:
 ---
 
 
-# Part 3 — Firewall Security, Hardening, Rule Optimization, Logging, Monitoring, Threat Prevention, SOC Integration, and Enterprise Operations
+## Part 3 — Firewall Security, Hardening, Rule Optimization, Logging, Monitoring, Threat Prevention, SOC Integration, and Enterprise Operations
 
 ---
 
-# Introduction
+## Introduction
 
 A firewall is only as effective as its configuration.
 
@@ -1411,7 +1411,7 @@ Enterprise firewall security is based on:
 
 ---
 
-# Security Objectives
+## Security Objectives
 
 Firewall security aims to:
 
@@ -1426,7 +1426,7 @@ Firewall security aims to:
 
 ---
 
-# Common Firewall Threats
+## Common Firewall Threats
 
 Firewalls commonly face:
 
@@ -1444,7 +1444,7 @@ Firewalls commonly face:
 
 ---
 
-# Firewall Misconfiguration
+## Firewall Misconfiguration
 
 Misconfiguration is one of the leading causes of firewall-related security incidents.
 
@@ -1481,7 +1481,7 @@ This rule significantly weakens network security.
 
 ---
 
-# Rule Shadowing
+## Rule Shadowing
 
 Rule shadowing occurs when an earlier rule prevents a later rule from ever being evaluated.
 
@@ -1507,7 +1507,7 @@ Regular rule analysis helps eliminate shadowed policies.
 
 ---
 
-# Rule Ordering
+## Rule Ordering
 
 Firewall rules should be ordered carefully.
 
@@ -1522,7 +1522,7 @@ This improves both security and performance.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Every firewall rule should grant only the minimum access required.
 
@@ -1556,7 +1556,7 @@ Specific Protocol
 
 ---
 
-# Default Deny Policy
+## Default Deny Policy
 
 Enterprise firewalls should follow:
 
@@ -1576,7 +1576,7 @@ This minimizes unauthorized communication.
 
 ---
 
-# Administrative Security
+## Administrative Security
 
 Firewall administration should include:
 
@@ -1589,7 +1589,7 @@ Firewall administration should include:
 
 ---
 
-# Secure Management Access
+## Secure Management Access
 
 Administrative interfaces should only be accessible through trusted networks.
 
@@ -1613,7 +1613,7 @@ Never expose management services directly to the Internet unless absolutely nece
 
 ---
 
-# Secure Management Protocols
+## Secure Management Protocols
 
 Recommended protocols:
 
@@ -1628,7 +1628,7 @@ Encrypted management traffic protects credentials and configuration data.
 
 ---
 
-# Firmware Management
+## Firmware Management
 
 Firmware updates address:
 
@@ -1661,7 +1661,7 @@ Validation
 
 ---
 
-# Backup and Recovery
+## Backup and Recovery
 
 Firewall configurations should be backed up regularly.
 
@@ -1687,7 +1687,7 @@ Backups should be stored securely and tested periodically.
 
 ---
 
-# Change Management
+## Change Management
 
 Production firewall changes should follow a formal approval process.
 
@@ -1719,7 +1719,7 @@ Emergency changes should be documented and reviewed afterward.
 
 ---
 
-# Rule Lifecycle Management
+## Rule Lifecycle Management
 
 Firewall rules should have an owner and a business justification.
 
@@ -1737,7 +1737,7 @@ Unused rules should be removed promptly.
 
 ---
 
-# Logging
+## Logging
 
 Firewalls generate valuable operational and security logs.
 
@@ -1756,7 +1756,7 @@ Logging is essential for incident response and compliance.
 
 ---
 
-# Log Severity Levels
+## Log Severity Levels
 
 Typical severity categories:
 
@@ -1771,7 +1771,7 @@ Typical severity categories:
 
 ---
 
-# Centralized Logging
+## Centralized Logging
 
 Enterprise firewalls should forward logs to centralized platforms.
 
@@ -1799,7 +1799,7 @@ Centralized logging enables long-term retention, search, and correlation.
 
 ---
 
-# Monitoring
+## Monitoring
 
 Continuous monitoring should include:
 
@@ -1817,7 +1817,7 @@ Automated alerting helps reduce response time.
 
 ---
 
-# Threat Prevention
+## Threat Prevention
 
 Modern NGFWs incorporate advanced security features.
 
@@ -1836,7 +1836,7 @@ These capabilities complement traditional access control.
 
 ---
 
-# Intrusion Prevention Integration
+## Intrusion Prevention Integration
 
 ```
 Incoming Traffic
@@ -1874,7 +1874,7 @@ IPS helps prevent known exploit attempts before they reach protected systems.
 
 ---
 
-# Malware Detection
+## Malware Detection
 
 Firewalls may inspect files transferred over supported protocols.
 
@@ -1900,7 +1900,7 @@ Unknown files may be forwarded to a sandbox environment for deeper analysis, dep
 
 ---
 
-# Threat Intelligence
+## Threat Intelligence
 
 Threat intelligence feeds help identify known malicious infrastructure.
 
@@ -1916,7 +1916,7 @@ Threat intelligence should be updated regularly.
 
 ---
 
-# SSL/TLS Inspection Considerations
+## SSL/TLS Inspection Considerations
 
 Encrypted traffic inspection increases visibility but introduces operational considerations:
 
@@ -1930,7 +1930,7 @@ Organizations should define clear inspection policies and exclusions where neces
 
 ---
 
-# High Availability Monitoring
+## High Availability Monitoring
 
 HA deployments should continuously monitor:
 
@@ -1944,7 +1944,7 @@ Unexpected failovers should trigger immediate investigation.
 
 ---
 
-# Firewall Performance Metrics
+## Firewall Performance Metrics
 
 Key metrics include:
 
@@ -1961,7 +1961,7 @@ Capacity planning should account for future business growth.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Firewalls play an important role in meeting requirements from standards and regulations such as:
 
@@ -1981,7 +1981,7 @@ Compliance typically requires:
 
 ---
 
-# SOC Integration
+## SOC Integration
 
 Firewall telemetry is one of the most valuable data sources for Security Operations Centers.
 
@@ -2000,7 +2000,7 @@ These events provide context for incident investigations.
 
 ---
 
-# SIEM Correlation Examples
+## SIEM Correlation Examples
 
 Example 1:
 
@@ -2068,7 +2068,7 @@ Correlating events across multiple security tools significantly improves detecti
 
 ---
 
-# Firewall Health Dashboard
+## Firewall Health Dashboard
 
 A typical operational dashboard includes:
 
@@ -2087,7 +2087,7 @@ Dashboards support proactive monitoring and capacity planning.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -2105,7 +2105,7 @@ Organizations should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong firewall security enables organizations to:
 
@@ -2119,7 +2119,7 @@ Strong firewall security enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Firewall security depends on proper configuration and governance.
 - Least privilege and default-deny policies significantly reduce risk.
@@ -2130,11 +2130,11 @@ Strong firewall security enables organizations to:
 ---
 
 
-# Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, RFC References, Summary, and Chapter Review
+## Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, RFC References, Summary, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 Deploying a firewall is only the beginning of securing an enterprise network.
 
@@ -2153,7 +2153,7 @@ Enterprise firewall administration requires both networking knowledge and cybers
 
 ---
 
-# Enterprise Firewall Troubleshooting Methodology
+## Enterprise Firewall Troubleshooting Methodology
 
 A structured troubleshooting process reduces downtime and prevents unnecessary configuration changes.
 
@@ -2207,7 +2207,7 @@ Monitor
 
 ---
 
-# Initial Health Checks
+## Initial Health Checks
 
 Before modifying firewall policies, verify:
 
@@ -2225,7 +2225,7 @@ Many issues are operational rather than policy-related.
 
 ---
 
-# Packet Flow Through a Firewall
+## Packet Flow Through a Firewall
 
 Understanding packet flow simplifies troubleshooting.
 
@@ -2269,7 +2269,7 @@ A packet must successfully pass every processing stage before being forwarded.
 
 ---
 
-# Packet Analysis
+## Packet Analysis
 
 When investigating traffic, examine:
 
@@ -2287,7 +2287,7 @@ This information helps determine why traffic was allowed or blocked.
 
 ---
 
-# Wireshark Analysis
+## Wireshark Analysis
 
 Wireshark is commonly used alongside firewall logs.
 
@@ -2359,7 +2359,7 @@ Packet captures should be collected on the appropriate interface (inside, outsid
 
 ---
 
-# Firewall Log Analysis
+## Firewall Log Analysis
 
 Key log fields include:
 
@@ -2380,7 +2380,7 @@ Correlating these fields provides a complete picture of the event.
 
 ---
 
-# NAT Verification
+## NAT Verification
 
 When troubleshooting Internet access, verify:
 
@@ -2414,7 +2414,7 @@ Incorrect NAT is a common cause of connectivity failures.
 
 ---
 
-# VPN Verification
+## VPN Verification
 
 Verify:
 
@@ -2430,7 +2430,7 @@ Healthy tunnels should show encrypted traffic in both directions.
 
 ---
 
-# High Availability Verification
+## High Availability Verification
 
 Check:
 
@@ -2445,18 +2445,18 @@ Unexpected failovers may indicate hardware or network issues.
 
 ---
 
-# Common Firewall Troubleshooting Scenarios
+## Common Firewall Troubleshooting Scenarios
 
 ---
 
-## Scenario 1 — Users Cannot Browse the Internet
+### Scenario 1 — Users Cannot Browse the Internet
 
-### Symptoms
+#### Symptoms
 
 - Internal communication works.
 - External websites are unreachable.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2469,13 +2469,13 @@ Verify:
 
 ---
 
-## Scenario 2 — Public Web Server Unreachable
+### Scenario 2 — Public Web Server Unreachable
 
-### Symptoms
+#### Symptoms
 
 External users cannot access the web application.
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -2488,13 +2488,13 @@ Check:
 
 ---
 
-## Scenario 3 — VPN Tunnel Down
+### Scenario 3 — VPN Tunnel Down
 
-### Symptoms
+#### Symptoms
 
 Remote offices lose connectivity.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2507,13 +2507,13 @@ Verify:
 
 ---
 
-## Scenario 4 — Application Not Working
+### Scenario 4 — Application Not Working
 
-### Symptoms
+#### Symptoms
 
 Only one application fails while others function normally.
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -2527,9 +2527,9 @@ Application-aware policies may intentionally block unsupported or unauthorized t
 
 ---
 
-## Scenario 5 — Excessive Firewall CPU Usage
+### Scenario 5 — Excessive Firewall CPU Usage
 
-### Symptoms
+#### Symptoms
 
 - Slow packet processing
 - High latency
@@ -2545,9 +2545,9 @@ Possible causes:
 
 ---
 
-## Scenario 6 — High Session Count
+### Scenario 6 — High Session Count
 
-### Symptoms
+#### Symptoms
 
 The firewall approaches its maximum session capacity.
 
@@ -2561,7 +2561,7 @@ Investigate:
 
 ---
 
-# Firewall Performance Optimization
+## Firewall Performance Optimization
 
 Performance can be improved by:
 
@@ -2576,7 +2576,7 @@ Regular policy reviews reduce processing overhead.
 
 ---
 
-# SOC Detection Engineering
+## SOC Detection Engineering
 
 Firewalls are primary sources of security telemetry.
 
@@ -2597,9 +2597,9 @@ These events should be correlated with endpoint, identity, and cloud logs.
 
 ---
 
-# SIEM Correlation Ideas
+## SIEM Correlation Ideas
 
-### Internet Reconnaissance
+#### Internet Reconnaissance
 
 ```
 External Host
@@ -2619,7 +2619,7 @@ Alert
 
 ---
 
-### Brute-Force Attempt
+#### Brute-Force Attempt
 
 ```
 Repeated VPN Failures
@@ -2639,7 +2639,7 @@ Critical Alert
 
 ---
 
-### Data Exfiltration
+#### Data Exfiltration
 
 ```
 Large Outbound Transfer
@@ -2659,7 +2659,7 @@ Incident
 
 ---
 
-### Unauthorized Firewall Change
+#### Unauthorized Firewall Change
 
 ```
 Firewall Policy Modified
@@ -2679,7 +2679,7 @@ Critical Alert
 
 ---
 
-# Zeek Integration
+## Zeek Integration
 
 Zeek complements firewall telemetry by providing protocol-level visibility.
 
@@ -2695,7 +2695,7 @@ Zeek helps validate whether firewall decisions align with observed network activ
 
 ---
 
-# Suricata Integration
+## Suricata Integration
 
 Suricata enhances firewall monitoring by detecting:
 
@@ -2710,7 +2710,7 @@ Forwarding Suricata alerts to the SIEM enables richer correlation with firewall 
 
 ---
 
-# Threat Hunting Ideas
+## Threat Hunting Ideas
 
 Security teams can proactively investigate:
 
@@ -2726,7 +2726,7 @@ Threat hunting complements automated detections.
 
 ---
 
-# Practical Lab 1 — Firewall Rule Validation
+## Practical Lab 1 — Firewall Rule Validation
 
 Objective:
 
@@ -2741,7 +2741,7 @@ Tasks:
 
 ---
 
-# Practical Lab 2 — NAT Verification
+## Practical Lab 2 — NAT Verification
 
 Tasks:
 
@@ -2752,7 +2752,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — VPN Deployment
+## Practical Lab 3 — VPN Deployment
 
 Tasks:
 
@@ -2763,7 +2763,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — Packet Capture
+## Practical Lab 4 — Packet Capture
 
 Tasks:
 
@@ -2779,7 +2779,7 @@ Tasks:
 
 ---
 
-# Practical Lab 5 — SIEM Integration
+## Practical Lab 5 — SIEM Integration
 
 Tasks:
 
@@ -2791,13 +2791,13 @@ Tasks:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A financial institution reports intermittent failures when customers access its online banking platform.
 
-### Investigation
+#### Investigation
 
 Security engineers determine:
 
@@ -2806,7 +2806,7 @@ Security engineers determine:
 - High CPU utilization delayed session processing.
 - One HA node contained an outdated configuration.
 
-### Resolution
+#### Resolution
 
 - Correct SSL inspection exclusions.
 - Reorder firewall rules.
@@ -2814,7 +2814,7 @@ Security engineers determine:
 - Optimize policy processing.
 - Increase hardware resources.
 
-### Outcome
+#### Outcome
 
 - Improved application availability.
 - Reduced latency.
@@ -2824,52 +2824,52 @@ Security engineers determine:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is the primary purpose of a firewall?
+#### What is the primary purpose of a firewall?
 
 A firewall controls network traffic by enforcing security policies that allow or deny communications between different trust zones.
 
 ---
 
-### What is the difference between packet filtering and stateful inspection?
+#### What is the difference between packet filtering and stateful inspection?
 
 - **Packet filtering** evaluates each packet independently using header information.
 - **Stateful inspection** tracks active sessions and evaluates packets in the context of established connections.
 
 ---
 
-### What is NAT?
+#### What is NAT?
 
 Network Address Translation (NAT) modifies IP address information to enable communication between private and public networks and conserve IPv4 address space.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### Why is a default-deny policy recommended?
+#### Why is a default-deny policy recommended?
 
 A default-deny policy blocks all traffic unless it is explicitly permitted, reducing the likelihood of unauthorized access.
 
 ---
 
-### Explain the purpose of SSL/TLS inspection.
+#### Explain the purpose of SSL/TLS inspection.
 
 SSL/TLS inspection decrypts, inspects, and re-encrypts encrypted traffic to detect malware, policy violations, and other threats that would otherwise remain hidden.
 
 ---
 
-### Why is High Availability important for firewalls?
+#### Why is High Availability important for firewalls?
 
 HA minimizes downtime by providing redundant firewall instances capable of maintaining service during hardware or software failures.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you troubleshoot a blocked application?
+#### How would you troubleshoot a blocked application?
 
 A structured approach includes:
 
@@ -2883,7 +2883,7 @@ A structured approach includes:
 
 ---
 
-### How do SOC teams use firewall logs?
+#### How do SOC teams use firewall logs?
 
 Firewall logs help detect:
 
@@ -2898,7 +2898,7 @@ These events are correlated with endpoint, identity, cloud, and IDS/IPS telemetr
 
 ---
 
-### What are the benefits of integrating firewalls with a SIEM?
+#### What are the benefits of integrating firewalls with a SIEM?
 
 Integration enables:
 
@@ -2912,7 +2912,7 @@ Integration enables:
 
 ---
 
-# RFC References
+## RFC References
 
 Key RFCs relevant to firewall-related technologies include:
 
@@ -2925,13 +2925,13 @@ Key RFCs relevant to firewall-related technologies include:
 
 ---
 
-# Summary
+## Summary
 
 Firewalls are foundational security controls that protect enterprise networks through traffic filtering, policy enforcement, NAT, VPN services, application awareness, and advanced threat prevention. Effective firewall operations require secure configuration, continuous monitoring, packet analysis, centralized logging, SIEM integration, and disciplined change management. Well-maintained firewalls significantly strengthen an organization's overall cybersecurity posture.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -2967,7 +2967,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`17-VPN.md`**, covers:
 

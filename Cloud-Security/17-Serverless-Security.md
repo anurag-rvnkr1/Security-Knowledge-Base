@@ -1160,7 +1160,7 @@ Security should be incorporated into the Software Development Life Cycle (SDLC),
 
 ---
 
-# Defense-in-Depth for Serverless
+## Defense-in-Depth for Serverless
 
 ```
                 Users / Applications
@@ -1214,7 +1214,7 @@ Each security layer reduces the likelihood of unauthorized access and limits the
 
 ---
 
-# Enforce Least-Privilege IAM
+## Enforce Least-Privilege IAM
 
 Every serverless function should execute using a dedicated identity with only the permissions required for its specific task.
 
@@ -1242,7 +1242,7 @@ Least Privilege significantly reduces the blast radius of compromised functions.
 
 ---
 
-# Protect APIs
+## Protect APIs
 
 Most serverless applications expose functionality through APIs.
 
@@ -1260,7 +1260,7 @@ Proper API protection prevents abuse and unauthorized access.
 
 ---
 
-# Validate Every Input
+## Validate Every Input
 
 Never trust incoming data.
 
@@ -1281,7 +1281,7 @@ Input validation helps prevent:
 
 ---
 
-# Secure Secrets
+## Secure Secrets
 
 Credentials should never be embedded in:
 
@@ -1312,7 +1312,7 @@ Rotate secrets regularly and audit all access.
 
 ---
 
-# Secure Dependencies
+## Secure Dependencies
 
 Third-party libraries are a major attack surface.
 
@@ -1328,7 +1328,7 @@ Supply chain security should be part of every deployment.
 
 ---
 
-# Encrypt Sensitive Data
+## Encrypt Sensitive Data
 
 Enable encryption:
 
@@ -1347,7 +1347,7 @@ Protect encryption keys using an appropriate Key Management Service (KMS).
 
 ---
 
-# Secure Event Sources
+## Secure Event Sources
 
 Event sources should be authenticated and authorized where possible.
 
@@ -1363,7 +1363,7 @@ Validate that only trusted services can trigger sensitive functions.
 
 ---
 
-# Limit Function Permissions
+## Limit Function Permissions
 
 Functions should access only the cloud services necessary for business operations.
 
@@ -1378,7 +1378,7 @@ Permission reviews should be part of routine security assessments.
 
 ---
 
-# Implement Logging and Monitoring
+## Implement Logging and Monitoring
 
 Enable centralized monitoring for:
 
@@ -1410,7 +1410,7 @@ Continuous visibility enables faster detection of attacks.
 
 ---
 
-# Protect the CI/CD Pipeline
+## Protect the CI/CD Pipeline
 
 Serverless security begins before deployment.
 
@@ -1427,7 +1427,7 @@ Only verified artifacts should be deployed.
 
 ---
 
-# Apply Resource Limits
+## Apply Resource Limits
 
 Configure reasonable limits for:
 
@@ -1440,7 +1440,7 @@ Resource limits reduce the impact of denial-of-service attacks and uncontrolled 
 
 ---
 
-# Continuously Update Functions
+## Continuously Update Functions
 
 Maintain serverless applications by:
 
@@ -1453,9 +1453,9 @@ Regular updates reduce exposure to known vulnerabilities.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Follow the Principle of Least Privilege
+#### 1. Follow the Principle of Least Privilege
 
 Grant each function only the permissions required to complete its intended task.
 
@@ -1463,7 +1463,7 @@ Review IAM policies periodically.
 
 ---
 
-### 2. Authenticate and Authorize Every Request
+#### 2. Authenticate and Authorize Every Request
 
 Require strong authentication before function invocation.
 
@@ -1471,7 +1471,7 @@ Use modern identity standards such as OAuth 2.0 and OpenID Connect (OIDC) where 
 
 ---
 
-### 3. Protect APIs
+#### 3. Protect APIs
 
 Implement:
 
@@ -1486,7 +1486,7 @@ APIs should never trust unauthenticated clients.
 
 ---
 
-### 4. Secure Secrets
+#### 4. Secure Secrets
 
 Store credentials using managed secrets services.
 
@@ -1494,7 +1494,7 @@ Rotate secrets frequently and monitor retrieval activity.
 
 ---
 
-### 5. Scan Dependencies Continuously
+#### 5. Scan Dependencies Continuously
 
 Automatically detect:
 
@@ -1507,7 +1507,7 @@ Integrate dependency scanning into CI/CD pipelines.
 
 ---
 
-### 6. Encrypt Sensitive Information
+#### 6. Encrypt Sensitive Information
 
 Protect:
 
@@ -1521,7 +1521,7 @@ Encryption should be enabled by default whenever supported.
 
 ---
 
-### 7. Monitor Every Function Invocation
+#### 7. Monitor Every Function Invocation
 
 Monitor:
 
@@ -1536,7 +1536,7 @@ Behavioral baselines help identify anomalies.
 
 ---
 
-### 8. Enable Comprehensive Logging
+#### 8. Enable Comprehensive Logging
 
 Record:
 
@@ -1551,7 +1551,7 @@ Forward logs to the organization's SIEM for centralized analysis.
 
 ---
 
-### 9. Secure the Development Pipeline
+#### 9. Secure the Development Pipeline
 
 Adopt DevSecOps practices by integrating:
 
@@ -1565,7 +1565,7 @@ Prevent vulnerabilities from reaching production.
 
 ---
 
-### 10. Review Configurations Regularly
+#### 10. Review Configurations Regularly
 
 Periodically assess:
 
@@ -1580,7 +1580,7 @@ Routine configuration reviews strengthen the overall security posture.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Serverless platforms simplify infrastructure management, but they do not eliminate security responsibilities. Most serverless security incidents are caused by insecure application design, excessive permissions, poor secret management, and inadequate monitoring rather than vulnerabilities in the cloud provider's platform.
 
@@ -1588,7 +1588,7 @@ Recognizing these common mistakes helps organizations strengthen the security of
 
 ---
 
-### 1. Granting Excessive IAM Permissions
+#### 1. Granting Excessive IAM Permissions
 
 One of the most frequent mistakes is assigning broad permissions to function execution roles.
 
@@ -1615,7 +1615,7 @@ Every function should receive only the permissions necessary to perform its inte
 
 ---
 
-### 2. Hardcoding Secrets
+#### 2. Hardcoding Secrets
 
 Embedding credentials directly into:
 
@@ -1646,7 +1646,7 @@ Use managed secrets services instead of storing credentials within the applicati
 
 ---
 
-### 3. Trusting User Input
+#### 3. Trusting User Input
 
 Failing to validate incoming requests may result in:
 
@@ -1660,7 +1660,7 @@ Every input should be validated before processing.
 
 ---
 
-### 4. Ignoring Dependency Security
+#### 4. Ignoring Dependency Security
 
 Serverless applications commonly rely on numerous third-party libraries.
 
@@ -1675,7 +1675,7 @@ Dependencies should be scanned continuously.
 
 ---
 
-### 5. Exposing APIs Without Authentication
+#### 5. Exposing APIs Without Authentication
 
 Public APIs that lack authentication or authorization controls are common attack targets.
 
@@ -1690,7 +1690,7 @@ Protect APIs with strong authentication and authorization mechanisms.
 
 ---
 
-### 6. Using Shared Execution Roles
+#### 6. Using Shared Execution Roles
 
 Multiple functions sharing the same execution role increases security risk.
 
@@ -1704,7 +1704,7 @@ Assign dedicated execution roles to individual functions whenever possible.
 
 ---
 
-### 7. Logging Sensitive Information
+#### 7. Logging Sensitive Information
 
 Sensitive data should never appear in logs.
 
@@ -1720,7 +1720,7 @@ Logs should contain only information necessary for monitoring and troubleshootin
 
 ---
 
-### 8. Ignoring Function Timeouts
+#### 8. Ignoring Function Timeouts
 
 Functions without appropriate execution limits may:
 
@@ -1733,7 +1733,7 @@ Configure reasonable timeout values for every function.
 
 ---
 
-### 9. Poor Event Source Validation
+#### 9. Poor Event Source Validation
 
 Not every event should automatically trigger business logic.
 
@@ -1748,7 +1748,7 @@ Only trusted event sources should invoke sensitive functions.
 
 ---
 
-### 10. Insufficient Monitoring
+#### 10. Insufficient Monitoring
 
 Without continuous monitoring, organizations may fail to detect:
 
@@ -1762,7 +1762,7 @@ Visibility is essential for timely threat detection.
 
 ---
 
-### 11. Ignoring API Rate Limiting
+#### 11. Ignoring API Rate Limiting
 
 Unlimited request rates increase the risk of:
 
@@ -1775,7 +1775,7 @@ Implement throttling and rate-limiting controls at the API Gateway.
 
 ---
 
-### 12. Leaving Functions Outdated
+#### 12. Leaving Functions Outdated
 
 Running obsolete deployment packages may expose applications to:
 
@@ -1788,7 +1788,7 @@ Rebuild and redeploy functions regularly using current runtime versions.
 
 ---
 
-### 13. Weak CI/CD Security
+#### 13. Weak CI/CD Security
 
 An insecure deployment pipeline may allow attackers to introduce malicious code or artifacts.
 
@@ -1803,7 +1803,7 @@ Secure the software supply chain from development through deployment.
 
 ---
 
-### 14. Assuming the Cloud Provider Secures Everything
+#### 14. Assuming the Cloud Provider Secures Everything
 
 Under the Shared Responsibility Model, cloud providers secure the underlying infrastructure, while customers remain responsible for:
 
@@ -1820,7 +1820,7 @@ Misunderstanding these responsibilities often leads to security gaps.
 
 ---
 
-### 15. Treating Serverless as "Set and Forget"
+#### 15. Treating Serverless as "Set and Forget"
 
 Serverless applications require ongoing maintenance.
 
@@ -1837,7 +1837,7 @@ Continuous security is essential for long-term resilience.
 
 ---
 
-## Serverless Security Checklist
+### Serverless Security Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1859,9 +1859,9 @@ Continuous security is essential for long-term resilience.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-204A – Building Secure Microservices-Based Applications
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
@@ -1873,9 +1873,9 @@ Continuous security is essential for long-term resilience.
 
 ---
 
-### Serverless Platform Documentation
+#### Serverless Platform Documentation
 
-#### Amazon Web Services
+##### Amazon Web Services
 
 - AWS Lambda Documentation
 - AWS Lambda Security Best Practices
@@ -1883,35 +1883,35 @@ Continuous security is essential for long-term resilience.
 - AWS IAM Documentation
 - AWS Secrets Manager Documentation
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Azure Functions Documentation
 - Azure API Management Documentation
 - Microsoft Entra ID Documentation
 - Azure Key Vault Documentation
 
-#### Google Cloud Platform
+##### Google Cloud Platform
 
 - Google Cloud Functions Documentation
 - Cloud Run Documentation
 - Google Cloud IAM Documentation
 - Secret Manager Documentation
 
-#### Oracle Cloud Infrastructure
+##### Oracle Cloud Infrastructure
 
 - Oracle Cloud Functions Documentation
 
-#### IBM Cloud
+##### IBM Cloud
 
 - IBM Cloud Functions Documentation
 
-#### Cloudflare
+##### Cloudflare
 
 - Cloudflare Workers Documentation
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -1925,7 +1925,7 @@ Continuous security is essential for long-term resilience.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - OWASP Serverless Top 10
 - OWASP API Security Top 10

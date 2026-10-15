@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 Traditional detection development may begin with:
 
@@ -44,7 +44,7 @@ rather than simply by available data.
 
 ---
 
-# 2. What Is Threat-Informed Detection?
+## 2. What Is Threat-Informed Detection?
 
 Threat-informed detection is the practice of designing and prioritizing detections based on:
 
@@ -76,7 +76,7 @@ Validation
 
 ---
 
-# 3. Why Threat Intelligence Matters
+## 3. Why Threat Intelligence Matters
 
 A detection team has limited:
 
@@ -101,7 +101,7 @@ Which behaviors should we prioritize?
 
 ---
 
-# 4. MITRE ATT&CK
+## 4. MITRE ATT&CK
 
 :contentReference[oaicite:0]{index=0} ATT&CK is a knowledge base and framework for describing adversary behavior.
 
@@ -121,7 +121,7 @@ Data Sources
 
 ---
 
-# 5. ATT&CK Enterprise
+## 5. ATT&CK Enterprise
 
 The Enterprise knowledge base focuses on adversary behavior against enterprise environments.
 
@@ -142,7 +142,7 @@ The exact platform coverage evolves over time.
 
 ---
 
-# 6. ATT&CK Tactics
+## 6. ATT&CK Tactics
 
 Tactics represent the adversary's high-level objectives.
 
@@ -169,9 +169,9 @@ Not every attack uses every tactic.
 
 ---
 
-# 7. Tactic vs Technique
+## 7. Tactic vs Technique
 
-### Tactic
+#### Tactic
 
 Answers:
 
@@ -185,7 +185,7 @@ Example:
 Credential Access
 ```
 
-### Technique
+#### Technique
 
 Answers:
 
@@ -201,7 +201,7 @@ Credential Dumping
 
 ---
 
-# 8. Sub-Techniques
+## 8. Sub-Techniques
 
 Some techniques have more specific subdivisions.
 
@@ -218,7 +218,7 @@ Sub-techniques allow more precise detection mapping.
 
 ---
 
-# 9. Procedures
+## 9. Procedures
 
 A procedure describes how an adversary or software has actually used a technique.
 
@@ -237,7 +237,7 @@ Different adversaries may implement the same technique differently.
 
 ---
 
-# 10. TTP Model
+## 10. TTP Model
 
 The hierarchy can be remembered as:
 
@@ -261,7 +261,7 @@ Specific Tool / Method
 
 ---
 
-# 11. Why TTPs Are Valuable
+## 11. Why TTPs Are Valuable
 
 Attackers can change:
 
@@ -288,7 +288,7 @@ is stronger than IOC detection alone.
 
 ---
 
-# 12. Threat-Informed Detection Lifecycle
+## 12. Threat-Informed Detection Lifecycle
 
 ```text
 Threat Intelligence
@@ -314,7 +314,7 @@ Continuous Improvement
 
 ---
 
-# 13. Threat Intelligence Sources
+## 13. Threat Intelligence Sources
 
 Potential sources include:
 
@@ -335,7 +335,7 @@ Source quality should always be evaluated.
 
 ---
 
-# 14. Strategic Threat Intelligence
+## 14. Strategic Threat Intelligence
 
 Strategic intelligence answers:
 
@@ -351,7 +351,7 @@ It helps leadership make security decisions.
 
 ---
 
-# 15. Operational Threat Intelligence
+## 15. Operational Threat Intelligence
 
 Operational intelligence focuses on:
 
@@ -368,7 +368,7 @@ It helps security teams understand active campaigns.
 
 ---
 
-# 16. Tactical Threat Intelligence
+## 16. Tactical Threat Intelligence
 
 Tactical intelligence focuses on:
 
@@ -383,7 +383,7 @@ This is particularly useful for detection engineering.
 
 ---
 
-# 17. Technical Threat Intelligence
+## 17. Technical Threat Intelligence
 
 Technical intelligence includes:
 
@@ -409,7 +409,7 @@ SOAR
 
 ---
 
-# 18. Threat Intelligence Pyramid
+## 18. Threat Intelligence Pyramid
 
 A useful conceptual model:
 
@@ -427,7 +427,7 @@ Detection engineering often benefits from tactical intelligence while using tech
 
 ---
 
-# 19. Threat Prioritization
+## 19. Threat Prioritization
 
 Not every threat deserves the same detection effort.
 
@@ -446,7 +446,7 @@ Detection Gaps
 
 ---
 
-# 20. Threat Relevance
+## 20. Threat Relevance
 
 A threat may be highly dangerous but irrelevant to an organization.
 
@@ -464,7 +464,7 @@ Detection priorities should reflect actual exposure.
 
 ---
 
-# 21. Threat Modeling
+## 21. Threat Modeling
 
 Threat modeling asks:
 
@@ -479,7 +479,7 @@ Where are the gaps?
 
 ---
 
-# 22. Threat-Informed Detection Example
+## 22. Threat-Informed Detection Example
 
 Suppose intelligence indicates a threat actor commonly uses:
 
@@ -507,7 +507,7 @@ Cloud Detection
 
 ---
 
-# 23. Threat-to-Detection Mapping
+## 23. Threat-to-Detection Mapping
 
 Create a mapping:
 
@@ -521,7 +521,7 @@ This turns intelligence into engineering work.
 
 ---
 
-# 24. ATT&CK Navigator Concept
+## 24. ATT&CK Navigator Concept
 
 ATT&CK coverage can be visualized as a matrix of:
 
@@ -545,7 +545,7 @@ This makes gaps easier to communicate.
 
 ---
 
-# 25. Coverage Does Not Mean Detection Exists
+## 25. Coverage Does Not Mean Detection Exists
 
 A technique should not be considered fully covered simply because:
 
@@ -569,7 +569,7 @@ Acceptable Quality
 
 ---
 
-# 26. Detection Coverage Levels
+## 26. Detection Coverage Levels
 
 A useful internal model:
 
@@ -591,7 +591,7 @@ Organizations can define their own maturity model.
 
 ---
 
-# 27. Telemetry Coverage
+## 27. Telemetry Coverage
 
 Before writing a detection, determine:
 
@@ -615,7 +615,7 @@ API Calls
 
 ---
 
-# 28. ATT&CK Data Sources
+## 28. ATT&CK Data Sources
 
 ATT&CK can help identify relevant telemetry categories.
 
@@ -635,7 +635,7 @@ This helps detection engineers identify logging gaps.
 
 ---
 
-# 29. Telemetry Gap
+## 29. Telemetry Gap
 
 Example:
 
@@ -667,7 +667,7 @@ Accept Risk
 
 ---
 
-# 30. Detection Gap
+## 30. Detection Gap
 
 Example:
 
@@ -683,7 +683,7 @@ This is an engineering gap rather than a collection gap.
 
 ---
 
-# 31. Validation Gap
+## 31. Validation Gap
 
 Example:
 
@@ -702,7 +702,7 @@ This means the team cannot confidently determine whether the detection works.
 
 ---
 
-# 32. Coverage Gap Types
+## 32. Coverage Gap Types
 
 Common categories:
 
@@ -717,7 +717,7 @@ Visibility Gap
 
 ---
 
-# 33. Threat-Informed Detection Prioritization
+## 33. Threat-Informed Detection Prioritization
 
 Prioritize techniques using:
 
@@ -735,7 +735,7 @@ Detection Gap
 
 ---
 
-# 34. High-Priority Technique
+## 34. High-Priority Technique
 
 Example:
 
@@ -753,7 +753,7 @@ This should likely become a high-priority engineering task.
 
 ---
 
-# 35. Low-Priority Technique
+## 35. Low-Priority Technique
 
 Example:
 
@@ -771,7 +771,7 @@ May receive lower priority.
 
 ---
 
-# 36. Detection Hypothesis
+## 36. Detection Hypothesis
 
 A detection hypothesis describes:
 
@@ -793,7 +793,7 @@ perform privilege-sensitive actions.
 
 ---
 
-# 37. Hypothesis-Driven Detection
+## 37. Hypothesis-Driven Detection
 
 Workflow:
 
@@ -815,7 +815,7 @@ This is stronger than writing arbitrary rules.
 
 ---
 
-# 38. Threat Hunting and Detection Engineering
+## 38. Threat Hunting and Detection Engineering
 
 Threat hunting can identify:
 
@@ -834,7 +834,7 @@ Production Detections
 
 ---
 
-# 39. Hunt-to-Detection Lifecycle
+## 39. Hunt-to-Detection Lifecycle
 
 ```text
 Threat Hypothesis
@@ -852,7 +852,7 @@ Production
 
 ---
 
-# 40. Incident-to-Detection Lifecycle
+## 40. Incident-to-Detection Lifecycle
 
 Incidents can reveal detection gaps.
 
@@ -872,7 +872,7 @@ Validation
 
 ---
 
-# 41. Intelligence-to-Detection Lifecycle
+## 41. Intelligence-to-Detection Lifecycle
 
 ```text
 Threat Report
@@ -890,7 +890,7 @@ Simulation
 
 ---
 
-# 42. Detection Engineering From ATT&CK
+## 42. Detection Engineering From ATT&CK
 
 For each relevant technique:
 
@@ -907,7 +907,7 @@ For each relevant technique:
 
 ---
 
-# 43. ATT&CK Mapping Metadata
+## 43. ATT&CK Mapping Metadata
 
 A detection may contain:
 
@@ -927,7 +927,7 @@ Owner
 
 ---
 
-# 44. Detection Naming
+## 44. Detection Naming
 
 Use consistent names.
 
@@ -947,7 +947,7 @@ A naming standard improves maintainability.
 
 ---
 
-# 45. Detection IDs
+## 45. Detection IDs
 
 Every production detection should ideally have a unique identifier.
 
@@ -969,7 +969,7 @@ Change Management
 
 ---
 
-# 46. ATT&CK Mapping Example
+## 46. ATT&CK Mapping Example
 
 Conceptually:
 
@@ -994,7 +994,7 @@ The exact ATT&CK mapping should be validated against the current ATT&CK version.
 
 ---
 
-# 47. Detection Quality
+## 47. Detection Quality
 
 A detection should be evaluated using:
 
@@ -1011,7 +1011,7 @@ Analyst Value
 
 ---
 
-# 48. Precision
+## 48. Precision
 
 Precision answers:
 
@@ -1031,7 +1031,7 @@ True Positives
 
 ---
 
-# 49. Recall
+## 49. Recall
 
 Recall answers:
 
@@ -1051,7 +1051,7 @@ True Positives
 
 ---
 
-# 50. Precision vs Recall
+## 50. Precision vs Recall
 
 High precision:
 
@@ -1069,7 +1069,7 @@ Detection engineering often requires balancing both.
 
 ---
 
-# 51. ATT&CK Coverage vs Detection Quality
+## 51. ATT&CK Coverage vs Detection Quality
 
 A team may have:
 
@@ -1093,7 +1093,7 @@ Coverage ≠ Quality
 
 ---
 
-# 52. Threat-Informed Detection Matrix
+## 52. Threat-Informed Detection Matrix
 
 A useful matrix:
 
@@ -1106,7 +1106,7 @@ A useful matrix:
 
 ---
 
-# 53. Detection Gap Analysis
+## 53. Detection Gap Analysis
 
 Ask:
 
@@ -1122,7 +1122,7 @@ This provides an actionable engineering roadmap.
 
 ---
 
-# 54. Threat Coverage vs Asset Coverage
+## 54. Threat Coverage vs Asset Coverage
 
 A detection may work on:
 
@@ -1142,7 +1142,7 @@ Therefore coverage should consider platform.
 
 ---
 
-# 55. Platform-Specific Detection
+## 55. Platform-Specific Detection
 
 The same technique may produce different telemetry:
 
@@ -1164,7 +1164,7 @@ Detection engineering must account for these differences.
 
 ---
 
-# 56. Threat-Informed Detection for Identity
+## 56. Threat-Informed Detection for Identity
 
 Focus on:
 
@@ -1197,7 +1197,7 @@ Privilege Change
 
 ---
 
-# 57. Threat-Informed Detection for Endpoint
+## 57. Threat-Informed Detection for Endpoint
 
 Focus on:
 
@@ -1227,7 +1227,7 @@ External Connection
 
 ---
 
-# 58. Threat-Informed Detection for Network
+## 58. Threat-Informed Detection for Network
 
 Focus on:
 
@@ -1243,7 +1243,7 @@ Beaconing
 
 ---
 
-# 59. Threat-Informed Detection for Cloud
+## 59. Threat-Informed Detection for Cloud
 
 Focus on:
 
@@ -1259,7 +1259,7 @@ Configuration
 
 ---
 
-# 60. Threat-Informed Detection for Applications
+## 60. Threat-Informed Detection for Applications
 
 Focus on:
 
@@ -1274,7 +1274,7 @@ Error Patterns
 
 ---
 
-# 61. Threat-Informed Detection for Containers
+## 61. Threat-Informed Detection for Containers
 
 Focus on:
 
@@ -1291,7 +1291,7 @@ Service Account
 
 ---
 
-# 62. Threat-Informed Detection for SaaS
+## 62. Threat-Informed Detection for SaaS
 
 Focus on:
 
@@ -1307,7 +1307,7 @@ External Collaboration
 
 ---
 
-# 63. ATT&CK and Detection-as-Code
+## 63. ATT&CK and Detection-as-Code
 
 ATT&CK metadata can be stored with detection code.
 
@@ -1331,7 +1331,7 @@ This makes detection metadata machine-readable.
 
 ---
 
-# 64. ATT&CK Tags
+## 64. ATT&CK Tags
 
 Detection repositories can use tags such as:
 
@@ -1353,7 +1353,7 @@ Automation
 
 ---
 
-# 65. ATT&CK Coverage Automation
+## 65. ATT&CK Coverage Automation
 
 A CI/CD pipeline can calculate:
 
@@ -1368,7 +1368,7 @@ This makes coverage measurable.
 
 ---
 
-# 66. ATT&CK Versioning
+## 66. ATT&CK Versioning
 
 ATT&CK evolves.
 
@@ -1387,7 +1387,7 @@ Detection mappings should therefore be reviewed when ATT&CK changes.
 
 ---
 
-# 67. Mapping Drift
+## 67. Mapping Drift
 
 A detection may originally map correctly but later become outdated.
 
@@ -1405,7 +1405,7 @@ Review mappings during framework updates.
 
 ---
 
-# 68. Avoid Over-Mapping
+## 68. Avoid Over-Mapping
 
 Do not map a detection to many techniques simply to increase coverage.
 
@@ -1422,7 +1422,7 @@ This creates misleading coverage metrics.
 
 ---
 
-# 69. Avoid Under-Mapping
+## 69. Avoid Under-Mapping
 
 Similarly, do not map only the broad tactic when the detection clearly identifies a specific technique.
 
@@ -1434,7 +1434,7 @@ Actual Detection Behavior
 
 ---
 
-# 70. Detection Evidence
+## 70. Detection Evidence
 
 A good ATT&CK mapping should be supported by:
 
@@ -1448,7 +1448,7 @@ Documentation
 
 ---
 
-# 71. Procedure-Aware Detection
+## 71. Procedure-Aware Detection
 
 If threat intelligence identifies:
 
@@ -1470,7 +1470,7 @@ What alternative procedures could evade us?
 
 ---
 
-# 72. Procedure Diversity
+## 72. Procedure Diversity
 
 One technique can have many implementations.
 
@@ -1486,7 +1486,7 @@ A detection covering only Procedure A may provide incomplete technique coverage.
 
 ---
 
-# 73. Detection Robustness
+## 73. Detection Robustness
 
 Test:
 
@@ -1506,7 +1506,7 @@ rather than one implementation.
 
 ---
 
-# 74. Threat Actor Profiling
+## 74. Threat Actor Profiling
 
 Threat intelligence can provide:
 
@@ -1523,7 +1523,7 @@ This can inform detection priorities.
 
 ---
 
-# 75. Campaign-Based Detection
+## 75. Campaign-Based Detection
 
 A campaign may use:
 
@@ -1538,7 +1538,7 @@ Instead of detecting each activity independently, build a campaign-aware detecti
 
 ---
 
-# 76. Threat Actor vs Malware Detection
+## 76. Threat Actor vs Malware Detection
 
 Malware-focused:
 
@@ -1557,7 +1557,7 @@ The second can survive tool changes.
 
 ---
 
-# 77. Intelligence Confidence
+## 77. Intelligence Confidence
 
 Threat reports may have different confidence levels.
 
@@ -1575,7 +1575,7 @@ Avoid treating uncertain intelligence as fact.
 
 ---
 
-# 78. Intelligence Recency
+## 78. Intelligence Recency
 
 Threat intelligence becomes stale.
 
@@ -1591,7 +1591,7 @@ Expiration
 
 ---
 
-# 79. Threat Intelligence Context
+## 79. Threat Intelligence Context
 
 An indicator becomes more useful when associated with:
 
@@ -1607,7 +1607,7 @@ Confidence
 
 ---
 
-# 80. IOC + TTP
+## 80. IOC + TTP
 
 Combine:
 
@@ -1623,7 +1623,7 @@ This provides stronger evidence than the domain match alone.
 
 ---
 
-# 81. TTP + Asset Context
+## 81. TTP + Asset Context
 
 Example:
 
@@ -1643,7 +1643,7 @@ Test Machine
 
 ---
 
-# 82. TTP + Identity Context
+## 82. TTP + Identity Context
 
 Example:
 
@@ -1657,7 +1657,7 @@ may require immediate attention.
 
 ---
 
-# 83. TTP + Vulnerability Context
+## 83. TTP + Vulnerability Context
 
 Example:
 
@@ -1671,7 +1671,7 @@ increases confidence and potential impact.
 
 ---
 
-# 84. TTP + Network Context
+## 84. TTP + Network Context
 
 Example:
 
@@ -1687,7 +1687,7 @@ may indicate lateral movement.
 
 ---
 
-# 85. Threat-Informed Risk Model
+## 85. Threat-Informed Risk Model
 
 Conceptually:
 
@@ -1708,7 +1708,7 @@ Threat Intelligence
 
 ---
 
-# 86. Threat-Informed Detection Priority
+## 86. Threat-Informed Detection Priority
 
 A practical priority score can consider:
 
@@ -1724,7 +1724,7 @@ The exact formula should be defined and calibrated internally.
 
 ---
 
-# 87. Detection Backlog
+## 87. Detection Backlog
 
 Maintain a backlog containing:
 
@@ -1751,7 +1751,7 @@ Status: Planned
 
 ---
 
-# 88. Detection Roadmap
+## 88. Detection Roadmap
 
 Prioritize:
 
@@ -1777,7 +1777,7 @@ Review
 
 ---
 
-# 89. Detection Engineering Metrics
+## 89. Detection Engineering Metrics
 
 Useful metrics:
 
@@ -1795,7 +1795,7 @@ Telemetry Coverage
 
 ---
 
-# 90. Coverage Trend
+## 90. Coverage Trend
 
 Track:
 
@@ -1822,7 +1822,7 @@ Increasing rule count alone is not success.
 
 ---
 
-# 91. Detection Debt
+## 91. Detection Debt
 
 Detection debt is accumulated work caused by:
 
@@ -1839,7 +1839,7 @@ Detection debt reduces long-term detection effectiveness.
 
 ---
 
-# 92. Threat-Informed Detection Debt
+## 92. Threat-Informed Detection Debt
 
 Examples:
 
@@ -1861,7 +1861,7 @@ These should be visible in engineering metrics.
 
 ---
 
-# 93. Detection Review
+## 93. Detection Review
 
 Periodic reviews should ask:
 
@@ -1876,7 +1876,7 @@ Is the rule still needed?
 
 ---
 
-# 94. Detection Retirement
+## 94. Detection Retirement
 
 Retire detections when:
 
@@ -1893,7 +1893,7 @@ Retirement should be documented rather than silently deleting the rule.
 
 ---
 
-# 95. Threat-Informed Detection Testing
+## 95. Threat-Informed Detection Testing
 
 Testing should include:
 
@@ -1909,7 +1909,7 @@ Synthetic Events
 
 ---
 
-# 96. Atomic Testing
+## 96. Atomic Testing
 
 An atomic test validates a specific behavior or technique.
 
@@ -1929,7 +1929,7 @@ Testing must be authorized and performed safely.
 
 ---
 
-# 97. Purple Teaming
+## 97. Purple Teaming
 
 Purple teaming combines:
 
@@ -1958,7 +1958,7 @@ Could we improve it?
 
 ---
 
-# 98. Purple Team Detection Loop
+## 98. Purple Team Detection Loop
 
 ```text
 Threat
@@ -1980,7 +1980,7 @@ Engineering
 
 ---
 
-# 99. Threat-Informed Purple Teaming
+## 99. Threat-Informed Purple Teaming
 
 Select scenarios based on:
 
@@ -1995,7 +1995,7 @@ This produces higher-value exercises than arbitrary testing.
 
 ---
 
-# 100. Detection Validation Questions
+## 100. Detection Validation Questions
 
 After testing:
 
@@ -2011,7 +2011,7 @@ Did the detection survive minor variation?
 
 ---
 
-# 101. Detection Resilience
+## 101. Detection Resilience
 
 A robust detection should survive reasonable changes in:
 
@@ -2030,7 +2030,7 @@ when those changes do not fundamentally alter the underlying behavior.
 
 ---
 
-# 102. Threat-Informed Detection Architecture
+## 102. Threat-Informed Detection Architecture
 
 ```text
                Threat Intelligence
@@ -2064,9 +2064,9 @@ when those changes do not fundamentally alter the underlying behavior.
 
 ---
 
-# 103. Common Mistakes
+## 103. Common Mistakes
 
-## Mistake 1 – Checkbox Coverage
+### Mistake 1 – Checkbox Coverage
 
 ```text
 Rule exists
@@ -2078,61 +2078,61 @@ This is incorrect.
 
 ---
 
-## Mistake 2 – Over-Mapping
+### Mistake 2 – Over-Mapping
 
 Mapping one detection to many unrelated techniques inflates coverage.
 
 ---
 
-## Mistake 3 – Threat Intelligence Without Context
+### Mistake 3 – Threat Intelligence Without Context
 
 A threat report does not automatically mean the organization is exposed.
 
 ---
 
-## Mistake 4 – IOC-Only Detection
+### Mistake 4 – IOC-Only Detection
 
 Threat actors can change infrastructure.
 
 ---
 
-## Mistake 5 – Ignoring Procedures
+### Mistake 5 – Ignoring Procedures
 
 Technique-level detection may miss procedure-specific gaps.
 
 ---
 
-## Mistake 6 – No Testing
+### Mistake 6 – No Testing
 
 An untested detection is not reliable evidence of coverage.
 
 ---
 
-## Mistake 7 – Ignoring Telemetry
+### Mistake 7 – Ignoring Telemetry
 
 A theoretically excellent detection cannot work without required data.
 
 ---
 
-## Mistake 8 – Ignoring Platform Differences
+### Mistake 8 – Ignoring Platform Differences
 
 Windows, Linux, cloud, containers, and SaaS environments expose different telemetry.
 
 ---
 
-## Mistake 9 – Stale ATT&CK Mapping
+### Mistake 9 – Stale ATT&CK Mapping
 
 Framework updates can change technique relationships.
 
 ---
 
-## Mistake 10 – Measuring Only Rule Count
+### Mistake 10 – Measuring Only Rule Count
 
 More rules do not necessarily mean better security.
 
 ---
 
-# 104. Practical Exercise – Threat-to-Detection Mapping
+## 104. Practical Exercise – Threat-to-Detection Mapping
 
 Choose a relevant threat.
 
@@ -2172,7 +2172,7 @@ __________
 
 ---
 
-# 105. Practical Exercise – ATT&CK Coverage
+## 105. Practical Exercise – ATT&CK Coverage
 
 Create:
 
@@ -2187,7 +2187,7 @@ Then prioritize the gaps.
 
 ---
 
-# 106. Practical Exercise – Detection Hypothesis
+## 106. Practical Exercise – Detection Hypothesis
 
 Write:
 
@@ -2217,7 +2217,7 @@ Unusual Location
 
 ---
 
-# 107. Practical Exercise – Procedure Resilience
+## 107. Practical Exercise – Procedure Resilience
 
 Take a detection.
 
@@ -2240,7 +2240,7 @@ the underlying technique?
 
 ---
 
-# 108. Practical Exercise – Purple Team
+## 108. Practical Exercise – Purple Team
 
 Choose one technique.
 
@@ -2260,7 +2260,7 @@ Improvements
 
 ---
 
-# 109. Detection Documentation Template
+## 109. Detection Documentation Template
 
 ```yaml
 id: DET-EXAMPLE-001
@@ -2301,7 +2301,7 @@ status: production
 
 ---
 
-# 110. Threat-Informed Detection Checklist
+## 110. Threat-Informed Detection Checklist
 
 ```text
 [ ] Threat identified
@@ -2328,59 +2328,59 @@ status: production
 
 ---
 
-# 111. Interview Questions
+## 111. Interview Questions
 
-### What is MITRE ATT&CK?
+#### What is MITRE ATT&CK?
 
 > A knowledge base and framework that describes adversary tactics, techniques, procedures, software, groups, and other information about real-world adversary behavior.
 
-### What is a tactic?
+#### What is a tactic?
 
 > The adversary's high-level objective, such as Execution, Persistence, Credential Access, or Lateral Movement.
 
-### What is a technique?
+#### What is a technique?
 
 > A method an adversary can use to achieve a tactical objective.
 
-### What is a procedure?
+#### What is a procedure?
 
 > A specific implementation of a technique used by an adversary or piece of software.
 
-### Why is ATT&CK useful for detection engineering?
+#### Why is ATT&CK useful for detection engineering?
 
 > It provides a common language for understanding adversary behavior, identifying telemetry requirements, designing detections, measuring coverage, and planning validation.
 
-### What is threat-informed detection?
+#### What is threat-informed detection?
 
 > Designing and prioritizing detections based on relevant threats, adversary behavior, organizational exposure, and business risk.
 
-### Does one detection rule mean a technique is covered?
+#### Does one detection rule mean a technique is covered?
 
 > No. Meaningful coverage should include appropriate telemetry, working detection logic, validation, and relevant environmental coverage.
 
-### What is a detection gap?
+#### What is a detection gap?
 
 > A situation where a relevant adversary behavior cannot be reliably detected because of missing telemetry, missing logic, insufficient testing, or poor detection quality.
 
-### How do you prioritize ATT&CK techniques?
+#### How do you prioritize ATT&CK techniques?
 
 > Consider threat relevance, organizational exposure, asset criticality, potential impact, existing controls, telemetry availability, and detection gaps.
 
-### What is purple teaming?
+#### What is purple teaming?
 
 > A collaborative process where offensive and defensive teams validate whether adversary behaviors generate the expected telemetry and detections and then improve the defensive capability.
 
-### Why should detections be tested against multiple procedures?
+#### Why should detections be tested against multiple procedures?
 
 > Because the same technique can be implemented in different ways, and a detection tied too closely to one procedure may provide incomplete coverage.
 
-### What is ATT&CK mapping drift?
+#### What is ATT&CK mapping drift?
 
 > When changes to the ATT&CK framework or detection logic cause an existing technique mapping to become outdated or inaccurate.
 
 ---
 
-# 112. Quick Revision
+## 112. Quick Revision
 
 ```text
 Threat-Informed Detection
@@ -2434,7 +2434,7 @@ Threat Relevance
 
 ---
 
-# 113. Golden Rules
+## 113. Golden Rules
 
 ```text
 1. Build detections around relevant threats.
@@ -2500,7 +2500,7 @@ Threat Relevance
 
 ---
 
-# 114. Final Mental Model
+## 114. Final Mental Model
 
 Think of threat-informed detection as:
 
@@ -2560,7 +2560,7 @@ Continuous Improvement
 
 ---
 
-# 115. Chapter Summary
+## 115. Chapter Summary
 
 This chapter covered:
 

@@ -2,7 +2,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Security Misconfiguration occurs when applications, servers, cloud services, containers, APIs, databases, or supporting infrastructure are deployed with **insecure settings**, unnecessary features, or missing security controls.
 
@@ -23,7 +23,7 @@ Examples include:
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Modern applications consist of many interconnected components:
 
@@ -65,7 +65,7 @@ A single insecure setting can expose the entire application.
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 A company deploys a web application.
 
@@ -100,7 +100,7 @@ The deployment is insecure.
 
 ---
 
-# What is Configuration?
+## What is Configuration?
 
 Configuration defines how a system behaves.
 
@@ -119,9 +119,9 @@ Incorrect configuration often creates unnecessary attack opportunities.
 
 ---
 
-# Configuration vs Vulnerability
+## Configuration vs Vulnerability
 
-## Vulnerability
+### Vulnerability
 
 Developer introduces:
 
@@ -133,7 +133,7 @@ The application contains insecure code.
 
 ---
 
-## Misconfiguration
+### Misconfiguration
 
 Administrator enables:
 
@@ -145,7 +145,7 @@ The software behaves as configured—but the configuration itself is insecure.
 
 ---
 
-# Common Areas of Misconfiguration
+## Common Areas of Misconfiguration
 
 Security misconfiguration can occur at every layer.
 
@@ -189,7 +189,7 @@ Every layer must be configured securely.
 
 ---
 
-# Typical Root Causes
+## Typical Root Causes
 
 Security misconfigurations commonly result from:
 
@@ -205,7 +205,7 @@ Security misconfigurations commonly result from:
 
 ---
 
-# Configuration Drift
+## Configuration Drift
 
 Over time, systems change.
 
@@ -239,7 +239,7 @@ This gradual deviation from the approved secure baseline is known as **configura
 
 ---
 
-# Secure Baseline
+## Secure Baseline
 
 Organizations should define secure baseline configurations for every system.
 
@@ -277,7 +277,7 @@ Cloud
 
 ---
 
-# Principle of Secure Defaults
+## Principle of Secure Defaults
 
 Applications should ship with the safest reasonable configuration.
 
@@ -309,7 +309,7 @@ Require administrators to create a strong password during installation.
 
 ---
 
-# Environment Separation
+## Environment Separation
 
 Development, testing, and production environments should remain isolated.
 
@@ -341,7 +341,7 @@ into production.
 
 ---
 
-# Types of Security Misconfiguration
+## Types of Security Misconfiguration
 
 Common categories include:
 
@@ -367,7 +367,7 @@ Security Misconfiguration
 
 ---
 
-# Business Impact
+## Business Impact
 
 Security misconfiguration can lead to:
 
@@ -384,7 +384,7 @@ Security misconfiguration can lead to:
 
 ---
 
-# Example Attack Flow
+## Example Attack Flow
 
 ```
 Internet
@@ -418,7 +418,7 @@ The attacker exploits configuration weaknesses rather than software bugs.
 
 ---
 
-# Security Hardening
+## Security Hardening
 
 Hardening is the process of reducing unnecessary functionality and applying secure configurations.
 
@@ -434,7 +434,7 @@ Typical hardening activities include:
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Security misconfiguration often occurs because only one layer is protected.
 
@@ -480,7 +480,7 @@ Each layer helps reduce the impact of configuration mistakes elsewhere.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Security Misconfiguration results from insecure settings rather than programming bugs.
 - Every component of an application stack requires secure configuration.
@@ -488,7 +488,7 @@ Each layer helps reduce the impact of configuration mistakes elsewhere.
 - Configuration drift can gradually introduce vulnerabilities into otherwise secure systems.
 - Security should be enabled by default and validated continuously across all environments.
 
-# Common Security Misconfigurations
+## Common Security Misconfigurations
 
 Security misconfigurations can exist at every layer of an application's infrastructure.
 
@@ -496,9 +496,9 @@ This section explores the most frequently encountered configuration weaknesses, 
 
 ---
 
-# 1. Default Credentials
+## 1. Default Credentials
 
-## Overview
+### Overview
 
 Many products ship with default usernames and passwords to simplify installation.
 
@@ -519,7 +519,7 @@ If administrators fail to change these credentials, attackers can gain immediate
 
 ---
 
-## Attack Flow
+### Attack Flow
 
 ```
 Internet
@@ -543,7 +543,7 @@ Administrative Access
 
 ---
 
-## Real-World Examples
+### Real-World Examples
 
 Common targets include:
 
@@ -558,7 +558,7 @@ Common targets include:
 
 ---
 
-## Prevention
+### Prevention
 
 - Change all default credentials during installation.
 - Disable unused default accounts.
@@ -568,9 +568,9 @@ Common targets include:
 
 ---
 
-# 2. Default Accounts
+## 2. Default Accounts
 
-## Overview
+### Overview
 
 Some applications create built-in accounts intended for setup, maintenance, or vendor support.
 
@@ -588,7 +588,7 @@ If these accounts remain enabled in production, they become attractive attack ta
 
 ---
 
-## Secure Practice
+### Secure Practice
 
 - Disable unnecessary accounts.
 - Rename privileged accounts where appropriate.
@@ -597,9 +597,9 @@ If these accounts remain enabled in production, they become attractive attack ta
 
 ---
 
-# 3. Directory Listing Enabled
+## 3. Directory Listing Enabled
 
-## Overview
+### Overview
 
 Directory listing allows users to view the contents of web server directories when no default page exists.
 
@@ -627,7 +627,7 @@ images/
 
 ---
 
-## Risks
+### Risks
 
 Attackers may discover:
 
@@ -640,7 +640,7 @@ Attackers may discover:
 
 ---
 
-## Secure Configuration
+### Secure Configuration
 
 Apache:
 
@@ -656,9 +656,9 @@ autoindex off;
 
 ---
 
-# 4. Debug Mode Enabled
+## 4. Debug Mode Enabled
 
-## Overview
+### Overview
 
 Debug mode provides developers with detailed error information during development.
 
@@ -673,7 +673,7 @@ In production, it may reveal:
 
 ---
 
-## Example
+### Example
 
 Instead of:
 
@@ -699,7 +699,7 @@ This information greatly assists attackers.
 
 ---
 
-## Prevention
+### Prevention
 
 - Disable debug mode in production.
 - Log detailed errors internally.
@@ -707,9 +707,9 @@ This information greatly assists attackers.
 
 ---
 
-# 5. Verbose Error Messages
+## 5. Verbose Error Messages
 
-## Overview
+### Overview
 
 Applications sometimes expose excessive technical details during failures.
 
@@ -735,7 +735,7 @@ Attackers gain valuable reconnaissance information.
 
 ---
 
-## Secure Error Handling
+### Secure Error Handling
 
 User:
 
@@ -755,9 +755,9 @@ Only administrators should access detailed logs.
 
 ---
 
-# 6. Missing HTTP Security Headers
+## 6. Missing HTTP Security Headers
 
-## Overview
+### Overview
 
 HTTP response headers instruct browsers to enforce additional security controls.
 
@@ -765,9 +765,9 @@ Missing headers increase exposure to attacks such as clickjacking, MIME sniffing
 
 ---
 
-## Important Security Headers
+### Important Security Headers
 
-### Content-Security-Policy (CSP)
+#### Content-Security-Policy (CSP)
 
 Restricts where scripts, styles, images, and other resources may be loaded from.
 
@@ -782,7 +782,7 @@ Helps mitigate Cross-Site Scripting (XSS).
 
 ---
 
-### X-Frame-Options
+#### X-Frame-Options
 
 Controls whether a page can be embedded within an iframe.
 
@@ -794,7 +794,7 @@ Prevents clickjacking attacks.
 
 ---
 
-### X-Content-Type-Options
+#### X-Content-Type-Options
 
 ```
 X-Content-Type-Options: nosniff
@@ -804,7 +804,7 @@ Prevents browsers from MIME-type guessing.
 
 ---
 
-### Referrer-Policy
+#### Referrer-Policy
 
 Controls how much referral information is shared with external websites.
 
@@ -817,7 +817,7 @@ strict-origin-when-cross-origin
 
 ---
 
-### Permissions-Policy
+#### Permissions-Policy
 
 Restricts browser features such as:
 
@@ -837,7 +837,7 @@ microphone=()
 
 ---
 
-### Strict-Transport-Security (HSTS)
+#### Strict-Transport-Security (HSTS)
 
 Forces browsers to communicate only over HTTPS.
 
@@ -854,9 +854,9 @@ Helps prevent SSL stripping attacks.
 
 ---
 
-# 7. CORS Misconfiguration
+## 7. CORS Misconfiguration
 
-## Overview
+### Overview
 
 Cross-Origin Resource Sharing (CORS) controls which websites may access browser resources.
 
@@ -864,7 +864,7 @@ Improper configuration can expose authenticated APIs.
 
 ---
 
-## Dangerous Example
+### Dangerous Example
 
 ```
 Access-Control-Allow-Origin: *
@@ -876,7 +876,7 @@ This combination may allow unauthorized websites to interact with authenticated 
 
 ---
 
-## Secure Example
+### Secure Example
 
 ```
 Access-Control-Allow-Origin:
@@ -888,9 +888,9 @@ Only trusted origins should be allowed.
 
 ---
 
-# 8. HTTP Method Misconfiguration
+## 8. HTTP Method Misconfiguration
 
-## Overview
+### Overview
 
 Web servers often support multiple HTTP methods.
 
@@ -918,7 +918,7 @@ If unnecessary methods remain enabled, attackers may misuse them.
 
 ---
 
-## Example
+### Example
 
 A public endpoint unintentionally allows:
 
@@ -930,7 +930,7 @@ Attackers remove application resources.
 
 ---
 
-## Prevention
+### Prevention
 
 Enable only required HTTP methods.
 
@@ -945,15 +945,15 @@ unless explicitly required.
 
 ---
 
-# 9. File Permission Misconfiguration
+## 9. File Permission Misconfiguration
 
-## Overview
+### Overview
 
 Incorrect file permissions may expose sensitive data or allow unauthorized modifications.
 
 ---
 
-## Example
+### Example
 
 Linux permissions:
 
@@ -971,7 +971,7 @@ Highly dangerous.
 
 ---
 
-## Secure Example
+### Secure Example
 
 Configuration files:
 
@@ -991,9 +991,9 @@ Grant only the permissions necessary.
 
 ---
 
-# 10. Weak TLS Configuration
+## 10. Weak TLS Configuration
 
-## Overview
+### Overview
 
 TLS protects data during transmission.
 
@@ -1001,7 +1001,7 @@ Weak configurations expose users to interception and downgrade attacks.
 
 ---
 
-## Weak Configuration
+### Weak Configuration
 
 Supported protocols:
 
@@ -1025,7 +1025,7 @@ DES
 
 ---
 
-## Secure Configuration
+### Secure Configuration
 
 Supported protocols:
 
@@ -1039,7 +1039,7 @@ Modern cipher suites should be used while disabling deprecated protocols and alg
 
 ---
 
-# Secure vs Insecure Configuration
+## Secure vs Insecure Configuration
 
 | Area | Secure Configuration | Insecure Configuration |
 |------|----------------------|------------------------|
@@ -1056,7 +1056,7 @@ Modern cipher suites should be used while disabling deprecated protocols and alg
 
 ---
 
-# Real-World Examples
+## Real-World Examples
 
 Examples of breaches involving security misconfiguration include:
 
@@ -1071,7 +1071,7 @@ Examples of breaches involving security misconfiguration include:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Default credentials and unused accounts remain common attack vectors.
 - Debug mode, verbose errors, and directory listing often disclose sensitive information.
@@ -1080,7 +1080,7 @@ Examples of breaches involving security misconfiguration include:
 - File permissions and TLS settings should follow the principle of least privilege and modern cryptographic standards.
 - Regular hardening and configuration reviews are essential to prevent these issues.
 
-# Advanced Infrastructure & Cloud Misconfigurations
+## Advanced Infrastructure & Cloud Misconfigurations
 
 Modern applications rarely run on a single web server.
 
@@ -1112,9 +1112,9 @@ Every component introduces configuration risks.
 
 ---
 
-# 1. Cloud Security Misconfiguration
+## 1. Cloud Security Misconfiguration
 
-## Overview
+### Overview
 
 Cloud providers offer secure services, but customers are responsible for configuring them securely.
 
@@ -1124,9 +1124,9 @@ Cloud misconfigurations are among the leading causes of data breaches.
 
 ---
 
-## Common Cloud Misconfigurations
+### Common Cloud Misconfigurations
 
-### Public Object Storage
+#### Public Object Storage
 
 Example:
 
@@ -1152,7 +1152,7 @@ Possible exposure:
 
 ---
 
-### Excessive IAM Permissions
+#### Excessive IAM Permissions
 
 Instead of:
 
@@ -1174,7 +1174,7 @@ If the account is compromised, attackers gain unrestricted control.
 
 ---
 
-### Open Security Groups
+#### Open Security Groups
 
 Dangerous rule:
 
@@ -1190,13 +1190,13 @@ This allows SSH access from anywhere on the Internet.
 
 ---
 
-### Unencrypted Storage
+#### Unencrypted Storage
 
 Sensitive databases stored without encryption increase the impact of data theft.
 
 ---
 
-### Disabled Logging
+#### Disabled Logging
 
 Without audit logs:
 
@@ -1206,7 +1206,7 @@ Without audit logs:
 
 ---
 
-## Prevention
+### Prevention
 
 - Apply least privilege IAM.
 - Encrypt storage.
@@ -1216,17 +1216,17 @@ Without audit logs:
 
 ---
 
-# 2. Docker Misconfiguration
+## 2. Docker Misconfiguration
 
-## Overview
+### Overview
 
 Containers simplify deployment but require proper hardening.
 
 ---
 
-## Common Misconfigurations
+### Common Misconfigurations
 
-### Running as Root
+#### Running as Root
 
 ```
 Container
@@ -1240,7 +1240,7 @@ If compromised, attackers gain elevated privileges within the container.
 
 ---
 
-### Privileged Containers
+#### Privileged Containers
 
 ```
 docker run --privileged
@@ -1252,7 +1252,7 @@ Avoid unless absolutely necessary.
 
 ---
 
-### Sensitive Mounts
+#### Sensitive Mounts
 
 Dangerous example:
 
@@ -1264,7 +1264,7 @@ Container gains access to the host filesystem.
 
 ---
 
-### Secrets in Images
+#### Secrets in Images
 
 Avoid embedding:
 
@@ -1277,13 +1277,13 @@ inside container images.
 
 ---
 
-### Outdated Images
+#### Outdated Images
 
 Using old base images introduces known vulnerabilities.
 
 ---
 
-## Best Practices
+### Best Practices
 
 - Use minimal base images.
 - Run as non-root.
@@ -1294,29 +1294,29 @@ Using old base images introduces known vulnerabilities.
 
 ---
 
-# 3. Kubernetes Misconfiguration
+## 3. Kubernetes Misconfiguration
 
-## Overview
+### Overview
 
 Kubernetes introduces additional security considerations.
 
 ---
 
-## Common Issues
+### Common Issues
 
-### Anonymous API Access
+#### Anonymous API Access
 
 Cluster API exposed without authentication.
 
 ---
 
-### Dashboard Exposure
+#### Dashboard Exposure
 
 Public Kubernetes dashboards have resulted in numerous real-world compromises.
 
 ---
 
-### Excessive RBAC Permissions
+#### Excessive RBAC Permissions
 
 Bad example:
 
@@ -1332,13 +1332,13 @@ Assigned unnecessarily.
 
 ---
 
-### Privileged Pods
+#### Privileged Pods
 
 Containers receive elevated Linux capabilities.
 
 ---
 
-### Missing Network Policies
+#### Missing Network Policies
 
 Without network segmentation:
 
@@ -1354,13 +1354,13 @@ Attackers can move laterally within the cluster.
 
 ---
 
-### Secrets Stored in Plaintext
+#### Secrets Stored in Plaintext
 
 Secrets should be encrypted and access-controlled.
 
 ---
 
-## Best Practices
+### Best Practices
 
 - Enable RBAC.
 - Restrict API access.
@@ -1371,9 +1371,9 @@ Secrets should be encrypted and access-controlled.
 
 ---
 
-# 4. Database Misconfiguration
+## 4. Database Misconfiguration
 
-## Common Issues
+### Common Issues
 
 - Default credentials
 - Internet-exposed databases
@@ -1385,7 +1385,7 @@ Secrets should be encrypted and access-controlled.
 
 ---
 
-## Example
+### Example
 
 ```
 MongoDB
@@ -1405,7 +1405,7 @@ Entire Database Accessible
 
 ---
 
-## Prevention
+### Prevention
 
 - Restrict network access.
 - Enable authentication.
@@ -1415,7 +1415,7 @@ Entire Database Accessible
 
 ---
 
-# 5. Reverse Proxy & Load Balancer Misconfiguration
+## 5. Reverse Proxy & Load Balancer Misconfiguration
 
 Examples include:
 
@@ -1427,7 +1427,7 @@ Examples include:
 
 ---
 
-## Secure Configuration
+### Secure Configuration
 
 ```
 Internet
@@ -1451,9 +1451,9 @@ Application
 
 ---
 
-# 6. CI/CD Pipeline Misconfiguration
+## 6. CI/CD Pipeline Misconfiguration
 
-## Risks
+### Risks
 
 Development pipelines often have powerful privileges.
 
@@ -1467,7 +1467,7 @@ Common issues include:
 
 ---
 
-## Example
+### Example
 
 Pipeline stores:
 
@@ -1483,7 +1483,7 @@ Anyone with repository access gains cloud credentials.
 
 ---
 
-## Best Practices
+### Best Practices
 
 - Use secret managers.
 - Require approvals.
@@ -1493,9 +1493,9 @@ Anyone with repository access gains cloud credentials.
 
 ---
 
-# 7. Secrets Management Failures
+## 7. Secrets Management Failures
 
-## Common Examples
+### Common Examples
 
 Secrets stored in:
 
@@ -1513,7 +1513,7 @@ Environment Backup
 
 ---
 
-## Secure Storage
+### Secure Storage
 
 Use dedicated secret management solutions.
 
@@ -1526,7 +1526,7 @@ Examples include:
 
 ---
 
-# 8. Infrastructure as Code (IaC) Misconfiguration
+## 8. Infrastructure as Code (IaC) Misconfiguration
 
 Infrastructure defined in code must also be reviewed.
 
@@ -1542,9 +1542,9 @@ Review IaC before deployment.
 
 ---
 
-# Configuration Drift
+## Configuration Drift
 
-## Overview
+### Overview
 
 Systems evolve over time.
 
@@ -1578,7 +1578,7 @@ Eventually, production no longer matches the approved secure baseline.
 
 ---
 
-## Risks
+### Risks
 
 - Unknown exposures
 - Compliance violations
@@ -1587,7 +1587,7 @@ Eventually, production no longer matches the approved secure baseline.
 
 ---
 
-## Prevention
+### Prevention
 
 - Infrastructure as Code
 - Configuration management
@@ -1597,13 +1597,13 @@ Eventually, production no longer matches the approved secure baseline.
 
 ---
 
-# Detection Methodology
+## Detection Methodology
 
 Security misconfigurations require a combination of automated and manual assessment.
 
 ---
 
-## Web Servers
+### Web Servers
 
 Look for:
 
@@ -1615,7 +1615,7 @@ Look for:
 
 ---
 
-## Cloud
+### Cloud
 
 Review:
 
@@ -1627,7 +1627,7 @@ Review:
 
 ---
 
-## Containers
+### Containers
 
 Check:
 
@@ -1639,7 +1639,7 @@ Check:
 
 ---
 
-## Kubernetes
+### Kubernetes
 
 Verify:
 
@@ -1651,7 +1651,7 @@ Verify:
 
 ---
 
-## Databases
+### Databases
 
 Review:
 
@@ -1663,7 +1663,7 @@ Review:
 
 ---
 
-# Common Detection Tools
+## Common Detection Tools
 
 | Tool | Purpose |
 |------|---------|
@@ -1682,7 +1682,7 @@ Review:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Security misconfiguration affects cloud platforms, containers, Kubernetes, databases, CI/CD pipelines, and traditional infrastructure—not just web applications.
 - Cloud IAM, public storage, privileged containers, exposed dashboards, and poor secrets management are among today's most common enterprise security issues.
@@ -1690,7 +1690,7 @@ Review:
 - Automated tools can identify many misconfigurations, but manual reviews remain essential for understanding business context and deployment risks.
 - Secure configuration is an ongoing process that requires continuous monitoring, auditing, and hardening throughout the system lifecycle.
 
-# Prevention
+## Prevention
 
 Preventing security misconfiguration requires a combination of secure defaults, configuration management, automation, regular reviews, and continuous monitoring.
 
@@ -1698,7 +1698,7 @@ Unlike software vulnerabilities, misconfigurations can often be prevented throug
 
 ---
 
-# 1. Establish Secure Baselines
+## 1. Establish Secure Baselines
 
 Every operating system, application, container, cloud service, and database should have an approved secure baseline.
 
@@ -1719,7 +1719,7 @@ Baselines should be version-controlled and regularly reviewed.
 
 ---
 
-# 2. Apply System Hardening
+## 2. Apply System Hardening
 
 Hardening reduces the attack surface by removing unnecessary functionality.
 
@@ -1737,7 +1737,7 @@ Typical hardening tasks:
 
 ---
 
-# 3. Configuration Management
+## 3. Configuration Management
 
 Manual configuration leads to inconsistency.
 
@@ -1759,7 +1759,7 @@ Benefits:
 
 ---
 
-# 4. Infrastructure as Code (IaC)
+## 4. Infrastructure as Code (IaC)
 
 Store infrastructure definitions as code.
 
@@ -1794,7 +1794,7 @@ Advantages:
 
 ---
 
-# 5. Continuous Compliance
+## 5. Continuous Compliance
 
 Security should not be verified only during deployment.
 
@@ -1811,7 +1811,7 @@ Continuous monitoring should verify:
 
 ---
 
-# 6. Patch Management
+## 6. Patch Management
 
 Apply security updates promptly.
 
@@ -1841,7 +1841,7 @@ Delaying updates increases exposure to known vulnerabilities.
 
 ---
 
-# 7. Secrets Management
+## 7. Secrets Management
 
 Never store secrets in:
 
@@ -1861,7 +1861,7 @@ Examples:
 
 ---
 
-# 8. Secure Deployment Process
+## 8. Secure Deployment Process
 
 Deployment checklist:
 
@@ -1901,7 +1901,7 @@ Security checks should be automated wherever possible.
 
 ---
 
-# CIS Benchmarks
+## CIS Benchmarks
 
 The Center for Internet Security (CIS) publishes secure configuration benchmarks for many technologies.
 
@@ -1923,7 +1923,7 @@ Organizations can use these benchmarks as secure configuration baselines.
 
 ---
 
-# Detection Workflow
+## Detection Workflow
 
 A structured assessment helps identify misconfigurations consistently.
 
@@ -1969,9 +1969,9 @@ Generate Findings
 
 ---
 
-# Example Assessment Workflow
+## Example Assessment Workflow
 
-## Step 1
+### Step 1
 
 Identify exposed services.
 
@@ -1989,7 +1989,7 @@ Running Services
 
 ---
 
-## Step 2
+### Step 2
 
 Review web server configuration.
 
@@ -2002,7 +2002,7 @@ Check for:
 
 ---
 
-## Step 3
+### Step 3
 
 Assess HTTPS.
 
@@ -2015,7 +2015,7 @@ Review:
 
 ---
 
-## Step 4
+### Step 4
 
 Review authentication.
 
@@ -2028,7 +2028,7 @@ Check:
 
 ---
 
-## Step 5
+### Step 5
 
 Review cloud resources.
 
@@ -2042,7 +2042,7 @@ Check:
 
 ---
 
-## Step 6
+### Step 6
 
 Review containers.
 
@@ -2056,15 +2056,15 @@ Check:
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Objective
+### Objective
 
 Perform a security configuration assessment of a web application and supporting infrastructure.
 
 ---
 
-## Scenario
+### Scenario
 
 Target environment:
 
@@ -2077,7 +2077,7 @@ Target environment:
 
 ---
 
-## Tasks
+### Tasks
 
 1. Identify unnecessary services.
 2. Verify firewall configuration.
@@ -2092,7 +2092,7 @@ Target environment:
 
 ---
 
-## Expected Learning Outcomes
+### Expected Learning Outcomes
 
 You should be able to:
 
@@ -2103,7 +2103,7 @@ You should be able to:
 
 ---
 
-# Best Practices
+## Best Practices
 
 ✔ Use secure default configurations.
 
@@ -2137,17 +2137,17 @@ You should be able to:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is Security Misconfiguration?
+#### What is Security Misconfiguration?
 
 A vulnerability category caused by insecure system, application, or infrastructure settings rather than flaws in application code.
 
 ---
 
-### Give three common examples.
+#### Give three common examples.
 
 - Default credentials
 - Directory listing enabled
@@ -2155,35 +2155,35 @@ A vulnerability category caused by insecure system, application, or infrastructu
 
 ---
 
-### Why is debug mode dangerous?
+#### Why is debug mode dangerous?
 
 It may reveal stack traces, configuration details, environment variables, framework versions, or other sensitive information that assists attackers.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is configuration drift?
+#### What is configuration drift?
 
 Configuration drift occurs when systems gradually deviate from their approved secure baseline because of manual changes, emergency fixes, or inconsistent deployments.
 
 ---
 
-### Why is Infrastructure as Code important?
+#### Why is Infrastructure as Code important?
 
 It enables version-controlled, repeatable, and auditable infrastructure deployments, reducing manual configuration errors and improving consistency.
 
 ---
 
-### Why should secrets never be stored in source code?
+#### Why should secrets never be stored in source code?
 
 Repositories may be shared, cloned, or exposed accidentally. Dedicated secret management solutions provide better protection, auditing, and rotation capabilities.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you assess a production environment for security misconfiguration?
+#### How would you assess a production environment for security misconfiguration?
 
 A comprehensive assessment includes:
 
@@ -2200,45 +2200,45 @@ A comprehensive assessment includes:
 
 ---
 
-### Explain the Shared Responsibility Model in cloud security.
+#### Explain the Shared Responsibility Model in cloud security.
 
 Cloud providers are responsible for securing the underlying cloud infrastructure, while customers are responsible for securely configuring and managing the services they use, including identities, permissions, storage, networking, and data protection.
 
 ---
 
-### Why are automated scanners insufficient for identifying all security misconfigurations?
+#### Why are automated scanners insufficient for identifying all security misconfigurations?
 
 Automated tools are effective at identifying many common issues but may not understand business requirements, architectural context, or organization-specific security policies. Manual review remains essential.
 
 ---
 
-# References
+## References
 
-## OWASP
+### OWASP
 
 - OWASP Top 10 (2021)
 - OWASP Web Security Testing Guide (WSTG)
 - OWASP Cheat Sheet Series
 - OWASP ASVS
 
-## CIS
+### CIS
 
 - CIS Benchmarks
 - CIS Controls
 
-## NIST
+### NIST
 
 - NIST Cybersecurity Framework (CSF)
 - NIST Secure Software Development Framework (SSDF)
 - NIST SP 800-53
 
-## Cloud Providers
+### Cloud Providers
 
 - AWS Security Best Practices
 - Microsoft Azure Security Documentation
 - Google Cloud Security Best Practices
 
-## Container Security
+### Container Security
 
 - Docker Security Documentation
 - Kubernetes Security Documentation
@@ -2246,7 +2246,7 @@ Automated tools are effective at identifying many common issues but may not unde
 
 ---
 
-# Summary
+## Summary
 
 Security Misconfiguration is one of the most common and preventable causes of security incidents. It arises when systems are deployed with insecure settings, unnecessary functionality, weak defaults, or missing security controls.
 

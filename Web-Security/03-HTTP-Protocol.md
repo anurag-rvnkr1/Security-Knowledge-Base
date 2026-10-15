@@ -1,12 +1,12 @@
 # 03-HTTP-Protocol.md
 
-# Part 1 — Introduction to HTTP, HTTP Architecture, Request-Response Model, Methods, and Message Structure
+## Part 1 — Introduction to HTTP, HTTP Architecture, Request-Response Model, Methods, and Message Structure
 
 > **"HTTP is the language of the Web. Every browser, API, mobile application, and web server communicates using HTTP or HTTPS."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -24,7 +24,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Every time you:
 
@@ -41,7 +41,7 @@ Without HTTP, modern web applications could not communicate.
 
 ---
 
-# What is HTTP?
+## What is HTTP?
 
 **HTTP (HyperText Transfer Protocol)** is an application-layer protocol used to exchange information between clients and servers.
 
@@ -56,7 +56,7 @@ HTTP does **not** define how data travels across networks—that responsibility 
 
 ---
 
-# Why is HTTP Important?
+## Why is HTTP Important?
 
 HTTP provides a standardized way for different systems to communicate.
 
@@ -100,7 +100,7 @@ Cloud Platform
 
 ---
 
-# Where HTTP Fits
+## Where HTTP Fits
 
 ```
 Application Layer
@@ -130,7 +130,7 @@ HTTP operates at the **Application Layer**.
 
 ---
 
-# HTTP Communication Model
+## HTTP Communication Model
 
 ```
 Client
@@ -156,7 +156,7 @@ This is known as the **Request-Response Model**.
 
 ---
 
-# Client
+## Client
 
 The client initiates communication.
 
@@ -179,7 +179,7 @@ Responsibilities:
 
 ---
 
-# Server
+## Server
 
 The server waits for incoming requests.
 
@@ -193,7 +193,7 @@ Responsibilities:
 
 ---
 
-# Simple Example
+## Simple Example
 
 User visits:
 
@@ -217,7 +217,7 @@ Content-Type: text/html
 
 ---
 
-# Request-Response Lifecycle
+## Request-Response Lifecycle
 
 ```
 Browser
@@ -249,7 +249,7 @@ Render Page
 
 ---
 
-# HTTP is Stateless
+## HTTP is Stateless
 
 One of HTTP's most important characteristics is that it is **stateless**.
 
@@ -275,7 +275,7 @@ The server does **not automatically remember** previous requests.
 
 ---
 
-# Why Stateless?
+## Why Stateless?
 
 Benefits include:
 
@@ -296,7 +296,7 @@ These are built **on top of HTTP**, not into HTTP itself.
 
 ---
 
-# Example of Stateless Communication
+## Example of Stateless Communication
 
 User requests:
 
@@ -316,7 +316,7 @@ Unless additional information (such as a session cookie or token) accompanies th
 
 ---
 
-# Resources
+## Resources
 
 Everything accessed through HTTP is considered a **resource**.
 
@@ -345,7 +345,7 @@ Resources may represent:
 
 ---
 
-# URI vs URL
+## URI vs URL
 
 A **URI (Uniform Resource Identifier)** identifies a resource.
 
@@ -365,7 +365,7 @@ This is a URL because it specifies:
 
 ---
 
-# HTTP Methods
+## HTTP Methods
 
 HTTP methods describe the intended action.
 
@@ -383,7 +383,7 @@ Server Action
 
 ---
 
-# GET
+## GET
 
 Purpose:
 
@@ -399,7 +399,7 @@ Should not modify server data.
 
 ---
 
-# POST
+## POST
 
 Purpose:
 
@@ -420,7 +420,7 @@ Often used for:
 
 ---
 
-# PUT
+## PUT
 
 Purpose:
 
@@ -434,7 +434,7 @@ PUT /users/15
 
 ---
 
-# PATCH
+## PATCH
 
 Purpose:
 
@@ -448,7 +448,7 @@ PATCH /users/15
 
 ---
 
-# DELETE
+## DELETE
 
 Purpose:
 
@@ -462,7 +462,7 @@ DELETE /users/15
 
 ---
 
-# HEAD
+## HEAD
 
 Returns only the response headers without the response body.
 
@@ -474,7 +474,7 @@ Useful for:
 
 ---
 
-# OPTIONS
+## OPTIONS
 
 Used to discover which HTTP methods are supported.
 
@@ -488,7 +488,7 @@ Often seen in CORS-related communication.
 
 ---
 
-# TRACE
+## TRACE
 
 Requests that the server return the received request.
 
@@ -496,7 +496,7 @@ Because it can expose diagnostic information, many production systems disable it
 
 ---
 
-# CONNECT
+## CONNECT
 
 Used to establish a tunnel to another server.
 
@@ -507,7 +507,7 @@ Commonly used by:
 
 ---
 
-# HTTP Method Summary
+## HTTP Method Summary
 
 | Method | Purpose | Safe | Idempotent |
 |---------|----------|------|------------|
@@ -523,7 +523,7 @@ Commonly used by:
 
 ---
 
-# Safe Methods
+## Safe Methods
 
 Safe methods should not change server state.
 
@@ -535,7 +535,7 @@ Examples:
 
 ---
 
-# Idempotent Methods
+## Idempotent Methods
 
 A method is **idempotent** if repeating the same request produces the same intended server state.
 
@@ -549,7 +549,7 @@ Whether executed once or multiple times, the intended outcome remains that the r
 
 ---
 
-# Anatomy of an HTTP Request
+## Anatomy of an HTTP Request
 
 ```
 Request Line
@@ -569,7 +569,7 @@ Body (Optional)
 
 ---
 
-# Example HTTP Request
+## Example HTTP Request
 
 ```http
 POST /login HTTP/1.1
@@ -585,7 +585,7 @@ Content-Type: application/json
 
 ---
 
-# Request Line
+## Request Line
 
 ```
 POST /login HTTP/1.1
@@ -599,7 +599,7 @@ Contains:
 
 ---
 
-# Headers
+## Headers
 
 Headers provide metadata.
 
@@ -615,13 +615,13 @@ Examples:
 
 ---
 
-# Blank Line
+## Blank Line
 
 Separates the headers from the message body.
 
 ---
 
-# Request Body
+## Request Body
 
 The body carries data sent to the server.
 
@@ -635,7 +635,7 @@ Common formats:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A banking application receives:
 
@@ -663,7 +663,7 @@ before processing the transfer.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Open your browser's Developer Tools.
 
@@ -681,7 +681,7 @@ Try comparing a normal page load (GET) with submitting a form (POST).
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is HTTP?
 2. Why is HTTP called a stateless protocol?
@@ -696,7 +696,7 @@ Try comparing a normal page load (GET) with submitting a form (POST).
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use the correct HTTP method for the intended action.
 - Avoid using GET for operations that modify data.
@@ -706,7 +706,7 @@ Try comparing a normal page load (GET) with submitting a form (POST).
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming HTTP remembers previous requests.
 - Sending sensitive information in URLs.
@@ -716,7 +716,7 @@ Try comparing a normal page load (GET) with submitting a form (POST).
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - HTTP is the application-layer protocol that powers web communication.
 - It follows a stateless request-response model.
@@ -1659,15 +1659,15 @@ Using your browser's Developer Tools:
 
 ```
 
-# 03-HTTP-Protocol.md
+## 03-HTTP-Protocol.md
 
-# Part 3 — HTTP Versions, Persistent Connections, Caching, Compression, Proxies, and Enterprise HTTP Communication
+## Part 3 — HTTP Versions, Persistent Connections, Caching, Compression, Proxies, and Enterprise HTTP Communication
 
 > **"Modern HTTP has evolved far beyond simple web pages. Today's HTTP powers cloud platforms, mobile applications, streaming services, APIs, and billions of secure transactions every day."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1688,7 +1688,7 @@ After completing this part, you will understand:
 
 ---
 
-# Evolution of HTTP
+## Evolution of HTTP
 
 HTTP has continuously improved to increase:
 
@@ -1720,7 +1720,7 @@ HTTP/3
 
 ---
 
-# HTTP/0.9
+## HTTP/0.9
 
 Released in:
 
@@ -1744,7 +1744,7 @@ GET /index.html
 
 ---
 
-# Limitations of HTTP/0.9
+## Limitations of HTTP/0.9
 
 - No metadata
 - No authentication
@@ -1756,7 +1756,7 @@ The early Web was extremely simple.
 
 ---
 
-# HTTP/1.0
+## HTTP/1.0
 
 Introduced major improvements.
 
@@ -1777,7 +1777,7 @@ Host: example.com
 
 ---
 
-# Limitation of HTTP/1.0
+## Limitation of HTTP/1.0
 
 Each request required a new TCP connection.
 
@@ -1801,7 +1801,7 @@ Opening connections repeatedly introduced unnecessary overhead.
 
 ---
 
-# HTTP/1.1
+## HTTP/1.1
 
 Released in:
 
@@ -1822,7 +1822,7 @@ HTTP/1.1 became the dominant version of HTTP for many years.
 
 ---
 
-# Persistent Connections
+## Persistent Connections
 
 Instead of creating a new connection for every request:
 
@@ -1882,7 +1882,7 @@ This significantly reduces latency.
 
 ---
 
-# Keep-Alive
+## Keep-Alive
 
 Persistent connections are commonly referred to as **Keep-Alive** connections.
 
@@ -1895,7 +1895,7 @@ Benefits:
 
 ---
 
-# Host Header
+## Host Header
 
 Multiple websites can share one IP address.
 
@@ -1909,7 +1909,7 @@ The server uses the `Host` header to determine which website should receive the 
 
 ---
 
-# Virtual Hosting
+## Virtual Hosting
 
 One server
 
@@ -1935,7 +1935,7 @@ Virtual hosting is widely used in shared hosting environments.
 
 ---
 
-# Chunked Transfer Encoding
+## Chunked Transfer Encoding
 
 Sometimes the server does not know the response size in advance.
 
@@ -1967,7 +1967,7 @@ This allows data to be streamed as it becomes available.
 
 ---
 
-# Why Chunking Matters
+## Why Chunking Matters
 
 Useful for:
 
@@ -1977,7 +1977,7 @@ Useful for:
 
 ---
 
-# HTTP Pipelining
+## HTTP Pipelining
 
 HTTP/1.1 introduced pipelining.
 
@@ -1997,7 +1997,7 @@ However, pipelining suffered from practical limitations such as head-of-line blo
 
 ---
 
-# Head-of-Line Blocking
+## Head-of-Line Blocking
 
 Example:
 
@@ -2021,7 +2021,7 @@ One slow response delays later responses on the same connection.
 
 ---
 
-# HTTP/2
+## HTTP/2
 
 HTTP/2 greatly improves performance while keeping the same HTTP semantics.
 
@@ -2035,7 +2035,7 @@ Major features:
 
 ---
 
-# Binary Protocol
+## Binary Protocol
 
 HTTP/1.1:
 
@@ -2053,7 +2053,7 @@ Binary framing is more efficient for machines to process.
 
 ---
 
-# Multiplexing
+## Multiplexing
 
 Multiple requests can share a single connection simultaneously.
 
@@ -2077,7 +2077,7 @@ Responses can be interleaved without waiting for previous requests to finish.
 
 ---
 
-# Benefits of Multiplexing
+## Benefits of Multiplexing
 
 - Lower latency
 - Better bandwidth utilization
@@ -2086,7 +2086,7 @@ Responses can be interleaved without waiting for previous requests to finish.
 
 ---
 
-# Header Compression
+## Header Compression
 
 HTTP requests often repeat many headers.
 
@@ -2106,7 +2106,7 @@ HTTP/2 compresses repeated header information to reduce network usage.
 
 ---
 
-# Stream Prioritization
+## Stream Prioritization
 
 Browsers can indicate that some resources are more important than others.
 
@@ -2132,7 +2132,7 @@ This helps optimize perceived page loading performance.
 
 ---
 
-# HTTP/3
+## HTTP/3
 
 HTTP/3 is the newest major version of HTTP.
 
@@ -2146,7 +2146,7 @@ Major improvements:
 
 ---
 
-# HTTP/3 Overview
+## HTTP/3 Overview
 
 ```
 Browser
@@ -2172,7 +2172,7 @@ Unlike earlier versions, HTTP/3 runs over UDP using the QUIC transport protocol 
 
 ---
 
-# HTTP Version Comparison
+## HTTP Version Comparison
 
 | Feature | HTTP/1.0 | HTTP/1.1 | HTTP/2 | HTTP/3 |
 |----------|----------|----------|---------|---------|
@@ -2184,7 +2184,7 @@ Unlike earlier versions, HTTP/3 runs over UDP using the QUIC transport protocol 
 
 ---
 
-# Forward Proxy
+## Forward Proxy
 
 A forward proxy sits between clients and the Internet.
 
@@ -2209,7 +2209,7 @@ Common uses:
 
 ---
 
-# Reverse Proxy
+## Reverse Proxy
 
 A reverse proxy sits between the Internet and backend servers.
 
@@ -2235,7 +2235,7 @@ Responsibilities:
 
 ---
 
-# CDN and HTTP
+## CDN and HTTP
 
 Content Delivery Networks optimize HTTP delivery.
 
@@ -2260,7 +2260,7 @@ Benefits:
 
 ---
 
-# Compression
+## Compression
 
 Responses can be compressed before transmission.
 
@@ -2293,7 +2293,7 @@ Compression reduces transfer size and improves load times.
 
 ---
 
-# Enterprise HTTP Architecture
+## Enterprise HTTP Architecture
 
 ```
 Browser
@@ -2339,7 +2339,7 @@ HTTP traffic passes through multiple components before reaching the application.
 
 ---
 
-# HTTP Request Journey in Enterprise
+## HTTP Request Journey in Enterprise
 
 ```
 User
@@ -2381,7 +2381,7 @@ Each layer contributes to performance, scalability, and security.
 
 ---
 
-# Security Considerations
+## Security Considerations
 
 Each HTTP version introduces different operational considerations.
 
@@ -2395,7 +2395,7 @@ Examples include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A customer accesses a cloud-based banking portal.
 
@@ -2435,7 +2435,7 @@ Modern browsers and servers may negotiate HTTP/2 or HTTP/3 automatically when bo
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser's **Developer Tools**:
 
@@ -2450,7 +2450,7 @@ Using your browser's **Developer Tools**:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why was HTTP/1.1 introduced?
 2. What are persistent connections?
@@ -2465,7 +2465,7 @@ Using your browser's **Developer Tools**:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Prefer HTTP/2 or HTTP/3 where supported.
 - Enable response compression for suitable content.
@@ -2475,7 +2475,7 @@ Using your browser's **Developer Tools**:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming newer HTTP versions automatically make an application secure.
 - Disabling compression without understanding the performance impact.
@@ -2485,7 +2485,7 @@ Using your browser's **Developer Tools**:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - HTTP has evolved from a simple text-based protocol into a highly optimized communication standard.
 - HTTP/1.1 introduced persistent connections and improved efficiency.

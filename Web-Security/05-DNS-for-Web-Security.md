@@ -1,12 +1,12 @@
 # DNS-For-Web-Security.md
 
-# Part 1 — Introduction to DNS, Name Resolution, DNS Hierarchy, Records, and DNS Security Fundamentals
+## Part 1 — Introduction to DNS, Name Resolution, DNS Hierarchy, Records, and DNS Security Fundamentals
 
 > **"The Internet communicates using IP addresses, but humans communicate using names. DNS is the critical infrastructure that securely translates those names into addresses, making the modern Web possible."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -24,7 +24,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Imagine opening a browser and typing:
 
@@ -46,7 +46,7 @@ Only then can your browser establish an HTTPS connection.
 
 ---
 
-# Why DNS Exists
+## Why DNS Exists
 
 Computers communicate using IP addresses.
 
@@ -88,7 +88,7 @@ Server
 
 ---
 
-# What is DNS?
+## What is DNS?
 
 **DNS (Domain Name System)** is the Internet's distributed naming system that translates domain names into IP addresses.
 
@@ -116,7 +116,7 @@ IP Address
 
 ---
 
-# Why DNS is Important
+## Why DNS is Important
 
 Without DNS:
 
@@ -146,7 +146,7 @@ DNS makes the Internet usable.
 
 ---
 
-# Domain Names
+## Domain Names
 
 A domain name uniquely identifies an Internet resource.
 
@@ -164,7 +164,7 @@ example.org
 
 ---
 
-# Structure of a Domain Name
+## Structure of a Domain Name
 
 Example:
 
@@ -196,7 +196,7 @@ Top-Level Domain (TLD)
 
 ---
 
-# Fully Qualified Domain Name (FQDN)
+## Fully Qualified Domain Name (FQDN)
 
 Example:
 
@@ -230,7 +230,7 @@ An FQDN specifies the complete location of a host in the DNS hierarchy.
 
 ---
 
-# DNS Hierarchy
+## DNS Hierarchy
 
 DNS follows a hierarchical structure.
 
@@ -256,7 +256,7 @@ This design enables global scalability.
 
 ---
 
-# Root Domain
+## Root Domain
 
 At the top of DNS is the **Root Zone**.
 
@@ -270,7 +270,7 @@ Every DNS lookup ultimately begins from the root.
 
 ---
 
-# Top-Level Domains (TLDs)
+## Top-Level Domains (TLDs)
 
 Examples:
 
@@ -308,7 +308,7 @@ Country Code TLDs:
 
 ---
 
-# Second-Level Domain
+## Second-Level Domain
 
 Example:
 
@@ -326,7 +326,7 @@ is the registered domain.
 
 ---
 
-# Subdomains
+## Subdomains
 
 Organizations create subdomains to organize services.
 
@@ -348,7 +348,7 @@ Each may point to different infrastructure.
 
 ---
 
-# DNS Resolution Overview
+## DNS Resolution Overview
 
 When a browser requests:
 
@@ -388,7 +388,7 @@ Browser Connects
 
 ---
 
-# Recursive DNS Resolver
+## Recursive DNS Resolver
 
 A recursive resolver performs DNS lookups on behalf of the client.
 
@@ -418,7 +418,7 @@ Examples:
 
 ---
 
-# Authoritative DNS Server
+## Authoritative DNS Server
 
 An authoritative server stores official DNS information for a domain.
 
@@ -438,7 +438,7 @@ It provides the definitive answer for that domain.
 
 ---
 
-# Recursive vs Authoritative
+## Recursive vs Authoritative
 
 | Recursive Resolver | Authoritative Server |
 |---------------------|----------------------|
@@ -449,7 +449,7 @@ It provides the definitive answer for that domain.
 
 ---
 
-# DNS Query Flow
+## DNS Query Flow
 
 ```
 Browser
@@ -481,7 +481,7 @@ Browser
 
 ---
 
-# DNS Resolution Example
+## DNS Resolution Example
 
 User enters:
 
@@ -525,7 +525,7 @@ Process:
 
 ---
 
-# DNS Records
+## DNS Records
 
 DNS stores different record types.
 
@@ -544,7 +544,7 @@ Each serves a different purpose.
 
 ---
 
-# A Record
+## A Record
 
 Maps:
 
@@ -568,7 +568,7 @@ example.com
 
 ---
 
-# AAAA Record
+## AAAA Record
 
 Maps:
 
@@ -592,7 +592,7 @@ example.com
 
 ---
 
-# CNAME Record
+## CNAME Record
 
 Creates an alias.
 
@@ -610,7 +610,7 @@ Useful when multiple hostnames should resolve to the same service.
 
 ---
 
-# MX Record
+## MX Record
 
 Specifies mail servers.
 
@@ -628,7 +628,7 @@ Mail servers use MX records to deliver email.
 
 ---
 
-# NS Record
+## NS Record
 
 Defines authoritative name servers.
 
@@ -648,7 +648,7 @@ These servers answer DNS queries for the domain.
 
 ---
 
-# TXT Record
+## TXT Record
 
 Stores arbitrary text.
 
@@ -667,7 +667,7 @@ v=spf1 include:_spf.example.com -all
 
 ---
 
-# SOA Record
+## SOA Record
 
 Start of Authority (SOA) record contains administrative information about the DNS zone.
 
@@ -681,7 +681,7 @@ Typical information:
 
 ---
 
-# PTR Record
+## PTR Record
 
 Used for reverse DNS.
 
@@ -713,7 +713,7 @@ Useful for:
 
 ---
 
-# DNS Cache
+## DNS Cache
 
 To improve performance, DNS responses are cached.
 
@@ -741,7 +741,7 @@ Caching reduces lookup time and DNS traffic.
 
 ---
 
-# Time To Live (TTL)
+## Time To Live (TTL)
 
 Each DNS record includes a TTL value.
 
@@ -765,7 +765,7 @@ Fresh Lookup Required
 
 ---
 
-# Enterprise DNS Architecture
+## Enterprise DNS Architecture
 
 ```
 User
@@ -807,7 +807,7 @@ Enterprise DNS often includes redundancy, monitoring, and filtering.
 
 ---
 
-# DNS and Web Security
+## DNS and Web Security
 
 Every web connection begins with DNS.
 
@@ -837,7 +837,7 @@ Therefore DNS is a critical component of Web Security.
 
 ---
 
-# Real Enterprise Example
+## Real Enterprise Example
 
 Employee opens:
 
@@ -875,7 +875,7 @@ Without accurate DNS resolution, secure communication cannot begin.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using a command prompt or terminal:
 
@@ -903,7 +903,7 @@ Compare the responses.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is DNS?
 2. Why is DNS necessary?
@@ -918,7 +918,7 @@ Compare the responses.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use redundant authoritative DNS servers.
 - Monitor DNS infrastructure continuously.
@@ -929,7 +929,7 @@ Compare the responses.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming DNS provides encryption by default.
 - Misconfiguring DNS records.
@@ -939,7 +939,7 @@ Compare the responses.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - DNS translates domain names into IP addresses.
 - DNS follows a hierarchical architecture beginning at the root.
@@ -1938,15 +1938,15 @@ Observe:
 
 
 ```
-# DNS-For-Web-Security.md
+## DNS-For-Web-Security.md
 
-# Part 3 — DNS Security, DNS Attacks, DNSSEC, Secure DNS Protocols, Enterprise Defense, and Threat Detection
+## Part 3 — DNS Security, DNS Attacks, DNSSEC, Secure DNS Protocols, Enterprise Defense, and Threat Detection
 
 > **"DNS is one of the most targeted services on the Internet. Attackers often compromise DNS first because controlling name resolution allows them to redirect, monitor, or disrupt almost every other Internet service."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1965,7 +1965,7 @@ After completing this part, you will understand:
 
 ---
 
-# Why DNS Security Matters
+## Why DNS Security Matters
 
 Every web connection begins with DNS.
 
@@ -2011,7 +2011,7 @@ Therefore, DNS is a primary target in cyber attacks.
 
 ---
 
-# DNS Threat Landscape
+## DNS Threat Landscape
 
 Common DNS-based attacks include:
 
@@ -2027,7 +2027,7 @@ Common DNS-based attacks include:
 
 ---
 
-# DNS Spoofing
+## DNS Spoofing
 
 DNS Spoofing occurs when an attacker sends a forged DNS response.
 
@@ -2063,7 +2063,7 @@ The user unknowingly connects to the attacker's infrastructure.
 
 ---
 
-# DNS Spoofing Example
+## DNS Spoofing Example
 
 User visits:
 
@@ -2087,7 +2087,7 @@ The browser connects to the wrong server.
 
 ---
 
-# Impact of DNS Spoofing
+## Impact of DNS Spoofing
 
 Possible consequences:
 
@@ -2099,7 +2099,7 @@ Possible consequences:
 
 ---
 
-# DNS Cache Poisoning
+## DNS Cache Poisoning
 
 Resolvers cache DNS responses.
 
@@ -2125,7 +2125,7 @@ One poisoned cache can affect many users.
 
 ---
 
-# Cache Poisoning Flow
+## Cache Poisoning Flow
 
 ```
 Resolver
@@ -2161,7 +2161,7 @@ Malicious IP
 
 ---
 
-# DNS Hijacking
+## DNS Hijacking
 
 Instead of poisoning a cache, attackers may compromise DNS settings.
 
@@ -2190,7 +2190,7 @@ Users Redirected
 
 ---
 
-# Router DNS Hijacking
+## Router DNS Hijacking
 
 Attackers may modify home router DNS settings.
 
@@ -2214,7 +2214,7 @@ Users often remain unaware of the compromise.
 
 ---
 
-# Registrar Hijacking
+## Registrar Hijacking
 
 Attackers compromise a domain registrar account.
 
@@ -2238,7 +2238,7 @@ Potential impact:
 
 ---
 
-# DNS Tunneling
+## DNS Tunneling
 
 DNS was designed for name resolution.
 
@@ -2262,7 +2262,7 @@ Attacker DNS Server
 
 ---
 
-# Why DNS Tunneling Works
+## Why DNS Tunneling Works
 
 Many organizations allow outbound DNS.
 
@@ -2282,7 +2282,7 @@ Attackers exploit this trusted traffic.
 
 ---
 
-# DNS Tunneling Example
+## DNS Tunneling Example
 
 ```
 secret-data.company.com
@@ -2300,7 +2300,7 @@ Encoded information is hidden inside DNS labels.
 
 ---
 
-# Indicators of DNS Tunneling
+## Indicators of DNS Tunneling
 
 SOC analysts should investigate:
 
@@ -2312,7 +2312,7 @@ SOC analysts should investigate:
 
 ---
 
-# DNS Amplification Attack
+## DNS Amplification Attack
 
 DNS primarily uses UDP.
 
@@ -2330,7 +2330,7 @@ Attackers exploit this amplification.
 
 ---
 
-# Reflection Attack
+## Reflection Attack
 
 The attacker spoofs the victim's IP.
 
@@ -2358,7 +2358,7 @@ The victim receives traffic it never requested.
 
 ---
 
-# DNS Amplification Diagram
+## DNS Amplification Diagram
 
 ```
 Attacker
@@ -2384,7 +2384,7 @@ This is commonly used in Distributed Denial-of-Service (DDoS) attacks.
 
 ---
 
-# Open DNS Resolver
+## Open DNS Resolver
 
 A resolver that answers requests from anyone on the Internet.
 
@@ -2404,7 +2404,7 @@ Publicly exposed recursive resolvers can be abused if not properly configured.
 
 ---
 
-# Fast Flux DNS
+## Fast Flux DNS
 
 Attackers rapidly change DNS records.
 
@@ -2436,7 +2436,7 @@ Benefits for attackers:
 
 ---
 
-# Domain Shadowing
+## Domain Shadowing
 
 An attacker compromises a legitimate DNS account.
 
@@ -2462,7 +2462,7 @@ Many malicious subdomains are created without the owner's knowledge.
 
 ---
 
-# DNSSEC
+## DNSSEC
 
 **DNS Security Extensions (DNSSEC)** add authenticity and integrity to DNS data.
 
@@ -2472,7 +2472,7 @@ Instead, it verifies that DNS records have not been altered.
 
 ---
 
-# DNSSEC Goals
+## DNSSEC Goals
 
 Provides:
 
@@ -2488,7 +2488,7 @@ Does **NOT** provide:
 
 ---
 
-# DNSSEC Chain of Trust
+## DNSSEC Chain of Trust
 
 ```
 Root Zone
@@ -2510,7 +2510,7 @@ Each level signs the next.
 
 ---
 
-# DNSSEC Validation
+## DNSSEC Validation
 
 ```
 DNS Response
@@ -2536,7 +2536,7 @@ DNS Response Rejected
 
 ---
 
-# DNSSEC Components
+## DNSSEC Components
 
 | Component | Purpose |
 |-----------|----------|
@@ -2547,7 +2547,7 @@ DNS Response Rejected
 
 ---
 
-# DNS over HTTPS (DoH)
+## DNS over HTTPS (DoH)
 
 Traditional DNS:
 
@@ -2581,7 +2581,7 @@ Benefits:
 
 ---
 
-# DoH Architecture
+## DoH Architecture
 
 ```
 Browser
@@ -2603,7 +2603,7 @@ The DNS request is encapsulated within HTTPS.
 
 ---
 
-# DNS over TLS (DoT)
+## DNS over TLS (DoT)
 
 Another secure DNS protocol.
 
@@ -2626,7 +2626,7 @@ Unlike DoH:
 
 ---
 
-# DoH vs DoT
+## DoH vs DoT
 
 | DNS over HTTPS | DNS over TLS |
 |---------------|--------------|
@@ -2639,7 +2639,7 @@ Both protect DNS queries in transit but differ in deployment models.
 
 ---
 
-# Enterprise DNS Security Architecture
+## Enterprise DNS Security Architecture
 
 ```
 Users
@@ -2677,7 +2677,7 @@ Multiple security layers reduce DNS-related risk.
 
 ---
 
-# DNS Filtering
+## DNS Filtering
 
 Enterprise DNS services can block known malicious domains.
 
@@ -2705,7 +2705,7 @@ Filtering helps stop phishing and malware communications before connections are 
 
 ---
 
-# Threat Intelligence Integration
+## Threat Intelligence Integration
 
 ```
 DNS Query
@@ -2731,7 +2731,7 @@ Security teams continuously update threat intelligence sources.
 
 ---
 
-# DNS Logging
+## DNS Logging
 
 Organizations should record:
 
@@ -2751,7 +2751,7 @@ Logs support:
 
 ---
 
-# SOC Detection Examples
+## SOC Detection Examples
 
 Analysts monitor for:
 
@@ -2789,7 +2789,7 @@ Potential Compromise
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial institution deploys:
 
@@ -2830,7 +2830,7 @@ Benefits:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using terminal:
 
@@ -2861,7 +2861,7 @@ If available in your environment, inspect DNS traffic using a packet analyzer to
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is DNS Spoofing?
 2. How does DNS Cache Poisoning work?
@@ -2876,7 +2876,7 @@ If available in your environment, inspect DNS traffic using a packet analyzer to
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enable DNSSEC for supported domains.
 - Use trusted recursive resolvers.
@@ -2889,7 +2889,7 @@ If available in your environment, inspect DNS traffic using a packet analyzer to
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming DNSSEC encrypts DNS traffic.
 - Exposing open recursive resolvers to the Internet.
@@ -2900,7 +2900,7 @@ If available in your environment, inspect DNS traffic using a packet analyzer to
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - DNS is a high-value target because every web connection depends on successful name resolution.
 - DNS Spoofing, Cache Poisoning, Hijacking, Tunneling, and Amplification are among the most common DNS attacks.

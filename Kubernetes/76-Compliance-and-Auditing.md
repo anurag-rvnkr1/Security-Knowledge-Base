@@ -63,7 +63,7 @@ Cloud Infrastructure
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -142,7 +142,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Compliance?
+## What Is Compliance?
 
 Compliance means meeting defined requirements.
 
@@ -160,7 +160,7 @@ Security Framework
 
 ---
 
-# What Is Auditing?
+## What Is Auditing?
 
 Auditing is the systematic examination of:
 
@@ -176,7 +176,7 @@ to determine whether requirements are being satisfied.
 
 ---
 
-# Compliance vs Security
+## Compliance vs Security
 
 These concepts are related but different.
 
@@ -197,7 +197,7 @@ if controls exist on paper but do not adequately address real-world threats.
 
 ---
 
-# Governance
+## Governance
 
 Governance defines:
 
@@ -211,7 +211,7 @@ How Is Compliance Demonstrated?
 
 ---
 
-# Risk Management
+## Risk Management
 
 Compliance does not eliminate risk.
 
@@ -233,7 +233,7 @@ Accept / Transfer / Avoid / Reduce
 
 ---
 
-# Security Policy
+## Security Policy
 
 A Kubernetes security policy may define:
 
@@ -251,7 +251,7 @@ Incident Response
 
 ---
 
-# Control
+## Control
 
 A control is a mechanism designed to reduce risk or satisfy a requirement.
 
@@ -269,7 +269,7 @@ Backup
 
 ---
 
-# Control Objective
+## Control Objective
 
 A control objective describes what should be achieved.
 
@@ -290,7 +290,7 @@ Audit Logging
 
 ---
 
-# Control Mapping
+## Control Mapping
 
 A single Kubernetes control may support multiple requirements.
 
@@ -307,7 +307,7 @@ Centralized Audit Logging
 
 ---
 
-# Kubernetes Compliance Architecture
+## Kubernetes Compliance Architecture
 
 ```text
                  Requirements
@@ -338,7 +338,7 @@ Centralized Audit Logging
 
 ---
 
-# Kubernetes Audit Logging
+## Kubernetes Audit Logging
 
 Kubernetes Audit Logging records security-relevant API activity.
 
@@ -355,7 +355,7 @@ Which Namespace?
 
 ---
 
-# Why Audit Logs Matter
+## Why Audit Logs Matter
 
 Audit logs provide evidence of API activity.
 
@@ -371,7 +371,7 @@ Deployment Deleted
 
 ---
 
-# Kubernetes Audit Policy
+## Kubernetes Audit Policy
 
 The audit policy determines which events are recorded and at what level.
 
@@ -389,7 +389,7 @@ A real production policy should be designed according to security, privacy, stor
 
 ---
 
-# Audit Levels
+## Audit Levels
 
 Kubernetes commonly supports levels such as:
 
@@ -402,7 +402,7 @@ RequestResponse
 
 ---
 
-# None
+## None
 
 ```text
 No Event Logged
@@ -412,7 +412,7 @@ Useful when a particular activity does not need auditing.
 
 ---
 
-# Metadata
+## Metadata
 
 Records metadata such as:
 
@@ -428,7 +428,7 @@ It does not record full request and response bodies.
 
 ---
 
-# Request
+## Request
 
 Records metadata plus the request information where supported.
 
@@ -436,7 +436,7 @@ This can provide more investigative context.
 
 ---
 
-# RequestResponse
+## RequestResponse
 
 Records metadata, request information, and response information.
 
@@ -446,7 +446,7 @@ Use carefully.
 
 ---
 
-# Audit Policy Design
+## Audit Policy Design
 
 A good audit policy balances:
 
@@ -462,7 +462,7 @@ Performance
 
 ---
 
-# Audit Backends
+## Audit Backends
 
 Audit events can be sent to supported backends such as:
 
@@ -475,7 +475,7 @@ A centralized architecture can forward audit information into security infrastru
 
 ---
 
-# Audit Log Retention
+## Audit Log Retention
 
 Retention should be based on:
 
@@ -489,7 +489,7 @@ Privacy Requirements
 
 ---
 
-# Long-Term Audit Storage
+## Long-Term Audit Storage
 
 For important environments:
 
@@ -507,7 +507,7 @@ SIEM
 
 ---
 
-# Evidence Collection
+## Evidence Collection
 
 Compliance evidence can include:
 
@@ -525,7 +525,7 @@ Incident Records
 
 ---
 
-# Evidence Integrity
+## Evidence Integrity
 
 Evidence should be protected against unauthorized modification.
 
@@ -542,7 +542,7 @@ Retention Policies
 
 ---
 
-# Evidence Access
+## Evidence Access
 
 Use least privilege.
 
@@ -550,7 +550,7 @@ Only authorized personnel should access sensitive compliance evidence.
 
 ---
 
-# RBAC Auditing
+## RBAC Auditing
 
 Review:
 
@@ -566,7 +566,7 @@ ClusterRoleBindings
 
 ---
 
-# RBAC Compliance Questions
+## RBAC Compliance Questions
 
 Ask:
 
@@ -581,7 +581,7 @@ Was Access Reviewed?
 
 ---
 
-# ServiceAccount Auditing
+## ServiceAccount Auditing
 
 Review:
 
@@ -595,7 +595,7 @@ Token Usage
 
 ---
 
-# Authentication Auditing
+## Authentication Auditing
 
 Monitor:
 
@@ -610,7 +610,7 @@ Source IP
 
 ---
 
-# Authorization Auditing
+## Authorization Auditing
 
 Determine:
 
@@ -623,7 +623,7 @@ Was Access Allowed?
 
 ---
 
-# Admission Auditing
+## Admission Auditing
 
 Admission controls can enforce policies before resources are persisted.
 
@@ -638,7 +638,7 @@ Policy Changes
 
 ---
 
-# Pod Security Auditing
+## Pod Security Auditing
 
 Review workloads for:
 
@@ -655,7 +655,7 @@ Privilege Escalation
 
 ---
 
-# Pod Security Standards
+## Pod Security Standards
 
 Kubernetes Pod Security Standards commonly define:
 
@@ -667,7 +667,7 @@ Restricted
 
 ---
 
-# Privileged
+## Privileged
 
 Provides broad flexibility with minimal restrictions.
 
@@ -675,19 +675,19 @@ It is generally unsuitable for workloads that do not require elevated privileges
 
 ---
 
-# Baseline
+## Baseline
 
 Blocks many known privilege-escalation configurations while permitting common workloads.
 
 ---
 
-# Restricted
+## Restricted
 
 Provides stronger restrictions intended for security-sensitive workloads.
 
 ---
 
-# Network Policy Auditing
+## Network Policy Auditing
 
 Check:
 
@@ -706,7 +706,7 @@ Are Production Workloads Protected?
 
 ---
 
-# Default-Deny
+## Default-Deny
 
 A common security architecture is:
 
@@ -720,7 +720,7 @@ This supports network segmentation.
 
 ---
 
-# Secret Access Auditing
+## Secret Access Auditing
 
 Sensitive resources include:
 
@@ -744,7 +744,7 @@ From Where
 
 ---
 
-# Secret Management Compliance
+## Secret Management Compliance
 
 Controls may include:
 
@@ -759,7 +759,7 @@ Audit Logging
 
 ---
 
-# Container Image Compliance
+## Container Image Compliance
 
 Organizations may require:
 
@@ -775,7 +775,7 @@ Approved Base Image
 
 ---
 
-# Image Provenance
+## Image Provenance
 
 Provenance helps establish:
 
@@ -789,7 +789,7 @@ Who Built It?
 
 ---
 
-# SBOM
+## SBOM
 
 SBOM means:
 
@@ -810,7 +810,7 @@ Application
 
 ---
 
-# SBOM and Compliance
+## SBOM and Compliance
 
 SBOMs can help with:
 
@@ -824,7 +824,7 @@ Software Inventory
 
 ---
 
-# Supply Chain Compliance
+## Supply Chain Compliance
 
 Important controls include:
 
@@ -841,7 +841,7 @@ Admission Policy
 
 ---
 
-# Vulnerability Management Compliance
+## Vulnerability Management Compliance
 
 A mature program should track:
 
@@ -858,7 +858,7 @@ Status
 
 ---
 
-# Patch Management
+## Patch Management
 
 Track:
 
@@ -873,7 +873,7 @@ Applications
 
 ---
 
-# Configuration Compliance
+## Configuration Compliance
 
 Check:
 
@@ -889,7 +889,7 @@ Storage
 
 ---
 
-# Configuration Drift
+## Configuration Drift
 
 Drift occurs when actual configuration differs from the approved baseline.
 
@@ -907,7 +907,7 @@ This should generate a compliance finding.
 
 ---
 
-# CIS Kubernetes Benchmark
+## CIS Kubernetes Benchmark
 
 The CIS Kubernetes Benchmark provides security configuration guidance for Kubernetes.
 
@@ -924,7 +924,7 @@ Logging
 
 ---
 
-# Important Note About Benchmarks
+## Important Note About Benchmarks
 
 A benchmark is guidance.
 
@@ -942,7 +942,7 @@ Do not blindly apply every recommendation without understanding operational impa
 
 ---
 
-# NIST
+## NIST
 
 NIST publishes cybersecurity frameworks and guidance that organizations may use for:
 
@@ -957,7 +957,7 @@ Governance
 
 ---
 
-# ISO 27001
+## ISO 27001
 
 ISO/IEC 27001 provides requirements for an Information Security Management System (ISMS).
 
@@ -965,7 +965,7 @@ Kubernetes controls may support broader organizational controls under an ISMS.
 
 ---
 
-# SOC 2
+## SOC 2
 
 SOC 2 evaluates organizational controls around trust service criteria.
 
@@ -983,7 +983,7 @@ depending on the scope and applicable criteria.
 
 ---
 
-# PCI DSS
+## PCI DSS
 
 PCI DSS applies to organizations handling payment card data.
 
@@ -1000,7 +1000,7 @@ Monitoring
 
 ---
 
-# HIPAA
+## HIPAA
 
 HIPAA applies to covered entities and business associates handling protected health information in applicable contexts.
 
@@ -1015,7 +1015,7 @@ Risk Management
 
 ---
 
-# GDPR
+## GDPR
 
 GDPR applies to organizations and processing activities within its scope.
 
@@ -1032,7 +1032,7 @@ Incident Management
 
 ---
 
-# Compliance Does Not Equal Certification
+## Compliance Does Not Equal Certification
 
 Implementing technical controls does not automatically mean an organization is certified.
 
@@ -1049,7 +1049,7 @@ Organization
 
 ---
 
-# Cloud Compliance
+## Cloud Compliance
 
 Managed Kubernetes requires attention to both:
 
@@ -1074,7 +1074,7 @@ Cloud Audit Logs
 
 ---
 
-# Multi-Cluster Compliance
+## Multi-Cluster Compliance
 
 Organizations may have:
 
@@ -1090,7 +1090,7 @@ Compliance should be consistently evaluated across all relevant clusters.
 
 ---
 
-# Compliance Architecture
+## Compliance Architecture
 
 ```text
              Multiple Clusters
@@ -1122,7 +1122,7 @@ Compliance should be consistently evaluated across all relevant clusters.
 
 ---
 
-# Policy as Code
+## Policy as Code
 
 Policy as Code represents security and compliance rules in machine-readable form.
 
@@ -1135,7 +1135,7 @@ THEN reject
 
 ---
 
-# Benefits of Policy as Code
+## Benefits of Policy as Code
 
 ```text
 Consistency
@@ -1147,7 +1147,7 @@ Auditability
 
 ---
 
-# Open Policy Agent
+## Open Policy Agent
 
 OPA is a general-purpose policy engine commonly used for policy decisions.
 
@@ -1165,7 +1165,7 @@ Allow / Deny
 
 ---
 
-# Gatekeeper
+## Gatekeeper
 
 Gatekeeper integrates OPA-based policy enforcement into Kubernetes admission workflows.
 
@@ -1180,7 +1180,7 @@ Resource Requirements
 
 ---
 
-# Kyverno
+## Kyverno
 
 Kyverno is a Kubernetes-native policy engine.
 
@@ -1188,7 +1188,7 @@ Policies can validate or mutate Kubernetes resources.
 
 ---
 
-# OPA vs Kyverno
+## OPA vs Kyverno
 
 | OPA/Gatekeeper | Kyverno |
 |---|---|
@@ -1201,7 +1201,7 @@ The right choice depends on the organization's requirements.
 
 ---
 
-# Admission Policies
+## Admission Policies
 
 Admission policies can enforce:
 
@@ -1215,7 +1215,7 @@ Resource Limits
 
 ---
 
-# Compliance Enforcement Flow
+## Compliance Enforcement Flow
 
 ```text
 Developer
@@ -1231,7 +1231,7 @@ Allow / Reject
 
 ---
 
-# Continuous Compliance
+## Continuous Compliance
 
 Traditional compliance may be periodic:
 
@@ -1259,7 +1259,7 @@ Verify
 
 ---
 
-# Compliance Monitoring
+## Compliance Monitoring
 
 Monitor continuously for:
 
@@ -1275,7 +1275,7 @@ Logging Failures
 
 ---
 
-# Compliance Dashboard
+## Compliance Dashboard
 
 A dashboard may show:
 
@@ -1292,7 +1292,7 @@ Configuration Drift
 
 ---
 
-# Compliance Score
+## Compliance Score
 
 Organizations may calculate an internal score such as:
 
@@ -1306,7 +1306,7 @@ This is an internal metric and should not automatically be interpreted as regula
 
 ---
 
-# Audit Trail
+## Audit Trail
 
 An audit trail records activities over time.
 
@@ -1323,7 +1323,7 @@ Credential Change
 
 ---
 
-# Change Management
+## Change Management
 
 Security-sensitive Kubernetes changes should be traceable.
 
@@ -1339,7 +1339,7 @@ Cluster Configuration Change
 
 ---
 
-# GitOps and Compliance
+## GitOps and Compliance
 
 GitOps can improve auditability:
 
@@ -1359,7 +1359,7 @@ This creates a traceable change history.
 
 ---
 
-# Compliance Exceptions
+## Compliance Exceptions
 
 Sometimes a requirement cannot immediately be met.
 
@@ -1377,7 +1377,7 @@ Expiration
 
 ---
 
-# Risk Acceptance
+## Risk Acceptance
 
 Risk acceptance should be:
 
@@ -1392,7 +1392,7 @@ Avoid permanent undocumented exceptions.
 
 ---
 
-# Remediation
+## Remediation
 
 A compliance finding should have:
 
@@ -1408,7 +1408,7 @@ Evidence
 
 ---
 
-# Corrective Action
+## Corrective Action
 
 Corrective action fixes an identified issue.
 
@@ -1424,7 +1424,7 @@ Remove privileged access
 
 ---
 
-# Preventive Action
+## Preventive Action
 
 Preventive action prevents recurrence.
 
@@ -1440,7 +1440,7 @@ to prevent future privileged workloads.
 
 ---
 
-# Audit Findings
+## Audit Findings
 
 Typical findings may include:
 
@@ -1457,7 +1457,7 @@ Critical Vulnerability
 
 ---
 
-# Finding Severity
+## Finding Severity
 
 A simple classification:
 
@@ -1481,7 +1481,7 @@ Exposure
 
 ---
 
-# Audit Process
+## Audit Process
 
 A typical audit:
 
@@ -1507,7 +1507,7 @@ Report
 
 ---
 
-# Internal Audit
+## Internal Audit
 
 Performed by:
 
@@ -1525,13 +1525,13 @@ Find Problems Before External Assessment
 
 ---
 
-# External Audit
+## External Audit
 
 Performed by an independent assessor or auditor according to the applicable framework or engagement.
 
 ---
 
-# Third-Party Audit
+## Third-Party Audit
 
 Third parties may assess:
 
@@ -1545,7 +1545,7 @@ Supplier
 
 ---
 
-# Audit Preparation
+## Audit Preparation
 
 Before an audit:
 
@@ -1565,7 +1565,7 @@ Resolve Known Findings
 
 ---
 
-# Evidence Package
+## Evidence Package
 
 A compliance evidence package may include:
 
@@ -1584,7 +1584,7 @@ Training Records
 
 ---
 
-# Audit Evidence Retention
+## Audit Evidence Retention
 
 Retention should follow:
 
@@ -1598,7 +1598,7 @@ Incident Requirements
 
 ---
 
-# Security Governance
+## Security Governance
 
 Governance connects:
 
@@ -1616,7 +1616,7 @@ Operations
 
 ---
 
-# Compliance and DevSecOps
+## Compliance and DevSecOps
 
 Integrate compliance into the development lifecycle:
 
@@ -1638,7 +1638,7 @@ Audit
 
 ---
 
-# Compliance in CI/CD
+## Compliance in CI/CD
 
 Pipeline checks can validate:
 
@@ -1653,7 +1653,7 @@ Policy Violations
 
 ---
 
-# Example CI Compliance Flow
+## Example CI Compliance Flow
 
 ```text
 Pull Request
@@ -1673,7 +1673,7 @@ Deploy
 
 ---
 
-# Kubernetes Compliance Control Matrix
+## Kubernetes Compliance Control Matrix
 
 | Control Area | Example Control | Evidence |
 |---|---|---|
@@ -1691,7 +1691,7 @@ Deploy
 
 ---
 
-# Compliance Monitoring Architecture
+## Compliance Monitoring Architecture
 
 ```text
 Kubernetes
@@ -1721,9 +1721,9 @@ Kubernetes
 
 ---
 
-# Common Compliance Controls
+## Common Compliance Controls
 
-## Identity
+### Identity
 
 ```text
 Least Privilege
@@ -1734,7 +1734,7 @@ Access Reviews
 
 ---
 
-## Workload Security
+### Workload Security
 
 ```text
 Pod Security
@@ -1746,7 +1746,7 @@ seccomp
 
 ---
 
-## Network
+### Network
 
 ```text
 NetworkPolicy
@@ -1757,7 +1757,7 @@ Egress Controls
 
 ---
 
-## Images
+### Images
 
 ```text
 Approved Registry
@@ -1769,7 +1769,7 @@ Provenance
 
 ---
 
-## Secrets
+### Secrets
 
 ```text
 Encryption
@@ -1780,7 +1780,7 @@ External Secret Management
 
 ---
 
-## Logging
+### Logging
 
 ```text
 Audit Logs
@@ -1791,7 +1791,7 @@ Integrity
 
 ---
 
-# Compliance and Encryption
+## Compliance and Encryption
 
 Potential requirements may include encryption:
 
@@ -1811,7 +1811,7 @@ Database Encryption
 
 ---
 
-# Encryption of Kubernetes Secrets
+## Encryption of Kubernetes Secrets
 
 Kubernetes Secrets are not automatically equivalent to secure encrypted storage merely because they are represented as Secret objects.
 
@@ -1826,7 +1826,7 @@ Secret Rotation
 
 ---
 
-# Compliance and Backup
+## Compliance and Backup
 
 Backups should be:
 
@@ -1842,7 +1842,7 @@ Regular restoration testing is essential.
 
 ---
 
-# Compliance and Disaster Recovery
+## Compliance and Disaster Recovery
 
 Organizations may define:
 
@@ -1856,7 +1856,7 @@ Testing Requirements
 
 ---
 
-# Compliance and Incident Response
+## Compliance and Incident Response
 
 Incident records can become audit evidence.
 
@@ -1874,7 +1874,7 @@ Corrective Actions
 
 ---
 
-# Compliance and Forensics
+## Compliance and Forensics
 
 Forensic evidence should maintain:
 
@@ -1887,7 +1887,7 @@ Chain of Custody
 
 ---
 
-# Production Compliance Checklist
+## Production Compliance Checklist
 
 ```text
 ☑ Security policy documented
@@ -1923,33 +1923,33 @@ Chain of Custody
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Treating Compliance as a Checkbox Exercise
+### 1. Treating Compliance as a Checkbox Exercise
 
 Compliance should support actual security outcomes.
 
 ---
 
-## 2. No Evidence
+### 2. No Evidence
 
 A control that cannot be demonstrated may be difficult to validate during an audit.
 
 ---
 
-## 3. Manual Compliance Only
+### 3. Manual Compliance Only
 
 Manual checks do not scale well across large clusters.
 
 ---
 
-## 4. Ignoring Configuration Drift
+### 4. Ignoring Configuration Drift
 
 A compliant cluster can become non-compliant after a configuration change.
 
 ---
 
-## 5. No Ownership
+### 5. No Ownership
 
 Every finding should have:
 
@@ -1961,7 +1961,7 @@ Status
 
 ---
 
-## 6. Permanent Exceptions
+### 6. Permanent Exceptions
 
 Exceptions should be:
 
@@ -1973,25 +1973,25 @@ Time-Bounded
 
 ---
 
-## 7. Ignoring Cloud Infrastructure
+### 7. Ignoring Cloud Infrastructure
 
 Kubernetes compliance often depends on cloud controls.
 
 ---
 
-## 8. Overly Broad RBAC
+### 8. Overly Broad RBAC
 
 Excessive permissions increase security and compliance risk.
 
 ---
 
-## 9. Poor Audit Retention
+### 9. Poor Audit Retention
 
 Insufficient retention can make historical investigations difficult.
 
 ---
 
-## 10. Logging Sensitive Data
+### 10. Logging Sensitive Data
 
 Audit and application logs can contain sensitive information.
 
@@ -2005,21 +2005,21 @@ Retention
 
 ---
 
-## 11. Blindly Applying Benchmarks
+### 11. Blindly Applying Benchmarks
 
 Every benchmark recommendation should be evaluated against the actual environment.
 
 ---
 
-## 12. No Continuous Monitoring
+### 12. No Continuous Monitoring
 
 Periodic audits can miss problems between assessments.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Define Requirements First
+#### 1. Define Requirements First
 
 Know:
 
@@ -2032,7 +2032,7 @@ Which Evidence?
 
 ---
 
-### 2. Automate Compliance
+#### 2. Automate Compliance
 
 Use:
 
@@ -2044,13 +2044,13 @@ Continuous Scanning
 
 ---
 
-### 3. Centralize Evidence
+#### 3. Centralize Evidence
 
 Maintain controlled evidence repositories.
 
 ---
 
-### 4. Protect Evidence
+#### 4. Protect Evidence
 
 Use:
 
@@ -2063,7 +2063,7 @@ Hashing
 
 ---
 
-### 5. Monitor Drift
+#### 5. Monitor Drift
 
 Continuously compare:
 
@@ -2075,19 +2075,19 @@ Actual
 
 ---
 
-### 6. Use Least Privilege
+#### 6. Use Least Privilege
 
 Review RBAC regularly.
 
 ---
 
-### 7. Integrate Security Into CI/CD
+#### 7. Integrate Security Into CI/CD
 
 Catch problems before production.
 
 ---
 
-### 8. Maintain Audit Trails
+#### 8. Maintain Audit Trails
 
 Track:
 
@@ -2100,7 +2100,7 @@ Why
 
 ---
 
-### 9. Test Controls
+#### 9. Test Controls
 
 A control should not merely exist.
 
@@ -2108,7 +2108,7 @@ Verify that it actually works.
 
 ---
 
-### 10. Treat Compliance as Continuous
+#### 10. Treat Compliance as Continuous
 
 Use:
 
@@ -2124,7 +2124,7 @@ Verify
 
 ---
 
-# Hands-on Lab 1 – Kubernetes Audit Logging
+## Hands-on Lab 1 – Kubernetes Audit Logging
 
 Configure a test Kubernetes environment with an audit policy.
 
@@ -2142,7 +2142,7 @@ Timestamp
 
 ---
 
-# Hands-on Lab 2 – Audit Levels
+## Hands-on Lab 2 – Audit Levels
 
 Experiment with:
 
@@ -2162,7 +2162,7 @@ Sensitive Data Exposure
 
 ---
 
-# Hands-on Lab 3 – RBAC Compliance
+## Hands-on Lab 3 – RBAC Compliance
 
 Create intentionally excessive RBAC permissions in a test environment.
 
@@ -2178,7 +2178,7 @@ Remediate them.
 
 ---
 
-# Hands-on Lab 4 – Pod Security Compliance
+## Hands-on Lab 4 – Pod Security Compliance
 
 Create test Pods with:
 
@@ -2194,7 +2194,7 @@ Evaluate them against your chosen Pod Security requirements.
 
 ---
 
-# Hands-on Lab 5 – Network Compliance
+## Hands-on Lab 5 – Network Compliance
 
 Deploy:
 
@@ -2215,7 +2215,7 @@ Validate the resulting traffic paths.
 
 ---
 
-# Hands-on Lab 6 – Image Compliance
+## Hands-on Lab 6 – Image Compliance
 
 Create an image compliance policy requiring:
 
@@ -2229,7 +2229,7 @@ Test compliant and non-compliant images.
 
 ---
 
-# Hands-on Lab 7 – Policy as Code
+## Hands-on Lab 7 – Policy as Code
 
 Use Gatekeeper or Kyverno in a disposable cluster.
 
@@ -2251,7 +2251,7 @@ Reject
 
 ---
 
-# Hands-on Lab 8 – Configuration Drift
+## Hands-on Lab 8 – Configuration Drift
 
 Deploy a compliant resource.
 
@@ -2267,7 +2267,7 @@ Actual Configuration
 
 ---
 
-# Hands-on Lab 9 – Vulnerability Compliance
+## Hands-on Lab 9 – Vulnerability Compliance
 
 Generate a test vulnerability report.
 
@@ -2284,7 +2284,7 @@ Status
 
 ---
 
-# Hands-on Lab 10 – SBOM Compliance
+## Hands-on Lab 10 – SBOM Compliance
 
 Generate an SBOM for a test image.
 
@@ -2299,7 +2299,7 @@ Licenses
 
 ---
 
-# Hands-on Lab 11 – Evidence Collection
+## Hands-on Lab 11 – Evidence Collection
 
 Collect:
 
@@ -2316,7 +2316,7 @@ Organize them into an audit evidence package.
 
 ---
 
-# Hands-on Lab 12 – Evidence Integrity
+## Hands-on Lab 12 – Evidence Integrity
 
 Hash evidence:
 
@@ -2330,7 +2330,7 @@ Verify the hashes later.
 
 ---
 
-# Hands-on Lab 13 – Compliance Dashboard
+## Hands-on Lab 13 – Compliance Dashboard
 
 Create a dashboard showing:
 
@@ -2346,7 +2346,7 @@ Configuration Drift
 
 ---
 
-# Hands-on Lab 14 – Continuous Compliance
+## Hands-on Lab 14 – Continuous Compliance
 
 Build a workflow:
 
@@ -2368,7 +2368,7 @@ Verification
 
 ---
 
-# Hands-on Lab 15 – Audit Simulation
+## Hands-on Lab 15 – Audit Simulation
 
 Simulate an external audit.
 
@@ -2386,7 +2386,7 @@ Backup
 
 ---
 
-# Hands-on Lab 16 – Full Compliance Exercise
+## Hands-on Lab 16 – Full Compliance Exercise
 
 Build a test Kubernetes environment.
 
@@ -2421,9 +2421,9 @@ Final Report
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Compliance
+### Compliance
 
 ```text
 Meeting defined requirements
@@ -2431,7 +2431,7 @@ Meeting defined requirements
 
 ---
 
-## Auditing
+### Auditing
 
 ```text
 Evaluating controls and evidence
@@ -2439,7 +2439,7 @@ Evaluating controls and evidence
 
 ---
 
-## Governance
+### Governance
 
 ```text
 Management of security, risk, policies, and responsibilities
@@ -2447,7 +2447,7 @@ Management of security, risk, policies, and responsibilities
 
 ---
 
-## Control
+### Control
 
 ```text
 Mechanism used to reduce risk or satisfy a requirement
@@ -2455,7 +2455,7 @@ Mechanism used to reduce risk or satisfy a requirement
 
 ---
 
-## Audit Trail
+### Audit Trail
 
 ```text
 Record of activities over time
@@ -2463,7 +2463,7 @@ Record of activities over time
 
 ---
 
-## Policy as Code
+### Policy as Code
 
 ```text
 Machine-readable security and compliance rules
@@ -2471,7 +2471,7 @@ Machine-readable security and compliance rules
 
 ---
 
-## OPA
+### OPA
 
 ```text
 General-purpose policy engine
@@ -2479,7 +2479,7 @@ General-purpose policy engine
 
 ---
 
-## Gatekeeper
+### Gatekeeper
 
 ```text
 Kubernetes admission policy enforcement using OPA
@@ -2487,7 +2487,7 @@ Kubernetes admission policy enforcement using OPA
 
 ---
 
-## Kyverno
+### Kyverno
 
 ```text
 Kubernetes-native policy engine
@@ -2495,7 +2495,7 @@ Kubernetes-native policy engine
 
 ---
 
-## Configuration Drift
+### Configuration Drift
 
 ```text
 Difference between approved and actual configuration
@@ -2503,7 +2503,7 @@ Difference between approved and actual configuration
 
 ---
 
-## Evidence
+### Evidence
 
 ```text
 Information used to demonstrate control implementation or activity
@@ -2511,7 +2511,7 @@ Information used to demonstrate control implementation or activity
 
 ---
 
-## Risk Acceptance
+### Risk Acceptance
 
 ```text
 Formal decision to accept a defined risk
@@ -2519,7 +2519,7 @@ Formal decision to accept a defined risk
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 List all Pods:
 
@@ -2655,9 +2655,9 @@ sha256sum <file>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Kubernetes compliance?
 - What is Kubernetes auditing?
@@ -2676,7 +2676,7 @@ sha256sum <file>
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How do you audit Kubernetes RBAC?
 - How do you audit ServiceAccounts?
@@ -2694,7 +2694,7 @@ sha256sum <file>
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a continuous Kubernetes compliance architecture.
 - How would you map Kubernetes controls to an enterprise compliance framework?
@@ -2711,13 +2711,13 @@ sha256sum <file>
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > Your Kubernetes cluster is compliant during an audit, but a week later someone deploys a privileged Pod. How do you prevent this?
 
-### Answer
+#### Answer
 
 Use continuous enforcement:
 
@@ -2751,13 +2751,13 @@ This prevents or detects violations after the initial audit.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > How would you audit Kubernetes RBAC?
 
-### Answer
+#### Answer
 
 Review:
 
@@ -2793,13 +2793,13 @@ Retest
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > What Kubernetes audit level would you use?
 
-### Answer
+#### Answer
 
 There is no universal answer.
 
@@ -2819,13 +2819,13 @@ More detailed levels may be appropriate for selected sensitive operations, but t
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > How would you implement compliance across 100 Kubernetes clusters?
 
-### Answer
+#### Answer
 
 Use centralized automation:
 
@@ -2857,13 +2857,13 @@ Automated Evidence Collection
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How do you prevent developers from deploying unapproved images?
 
-### Answer
+#### Answer
 
 Use multiple layers:
 
@@ -2883,13 +2883,13 @@ The admission layer should reject images that violate the organization's policy.
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > How would you prove that an RBAC control is working?
 
-### Answer
+#### Answer
 
 Do not simply show that a Role exists.
 
@@ -2914,13 +2914,13 @@ This demonstrates both implementation and operation.
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > What is the difference between a benchmark and a compliance requirement?
 
-### Answer
+#### Answer
 
 A benchmark provides recommended security configurations.
 
@@ -2938,13 +2938,13 @@ A benchmark can support compliance but is not automatically equivalent to a lega
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How would you handle a compliance exception?
 
-### Answer
+#### Answer
 
 Document:
 
@@ -2968,13 +2968,13 @@ Then review it periodically.
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > Why is continuous compliance important?
 
-### Answer
+#### Answer
 
 Kubernetes is dynamic.
 
@@ -3005,13 +3005,13 @@ Unauthorized Changes
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a production Kubernetes compliance platform.
 
-### Answer
+#### Answer
 
 ```text
                   Kubernetes Clusters
@@ -3062,7 +3062,7 @@ Exception Management
 
 ---
 
-# Production Compliance Checklist
+## Production Compliance Checklist
 
 ```text
 ☑ Compliance scope documented
@@ -3101,7 +3101,7 @@ Exception Management
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Kubernetes compliance and auditing provide the governance and evidence layer around Kubernetes security.
 
@@ -3179,7 +3179,7 @@ The most important principle is:
 
 ---
 
-## Module 7 Complete
+### Module 7 Complete
 
 The following chapters covered:
 
@@ -3199,11 +3199,11 @@ Chapter 56 – Supply Chain Security
 
 ---
 
-## Next Module
+### Next Module
 
-# Module 8 — Kubernetes Observability
+## Module 8 — Kubernetes Observability
 
-### Chapter 57 – Logging
+#### Chapter 57 – Logging
 
 Topics will include:
 

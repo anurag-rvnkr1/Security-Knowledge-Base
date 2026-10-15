@@ -409,7 +409,7 @@ The goal is to detect malicious activity as early as possible while minimizing f
 
 ---
 
-# Cloud SIEM & SOC Operational Workflow
+## Cloud SIEM & SOC Operational Workflow
 
 ```
 Cloud Resources
@@ -473,7 +473,7 @@ The workflow operates continuously, providing ongoing visibility into the cloud 
 
 ---
 
-## Step 1 – Collect Security Telemetry
+### Step 1 – Collect Security Telemetry
 
 The SIEM collects logs from multiple cloud and security sources.
 
@@ -499,7 +499,7 @@ Comprehensive telemetry is essential for effective threat detection.
 
 ---
 
-## Step 2 – Normalize and Enrich Data
+### Step 2 – Normalize and Enrich Data
 
 Raw logs arrive in different formats.
 
@@ -525,7 +525,7 @@ Normalized and enriched data enables more accurate analysis.
 
 ---
 
-## Step 3 – Store Data in the SIEM
+### Step 3 – Store Data in the SIEM
 
 The SIEM indexes and stores telemetry for:
 
@@ -540,7 +540,7 @@ Retention periods should align with organizational and regulatory requirements.
 
 ---
 
-## Step 4 – Correlate Events
+### Step 4 – Correlate Events
 
 Correlation engines identify relationships between multiple events.
 
@@ -570,7 +570,7 @@ Individually, these events may appear normal; together, they may indicate accoun
 
 ---
 
-## Step 5 – Apply Threat Intelligence
+### Step 5 – Apply Threat Intelligence
 
 The SIEM compares collected events against external intelligence.
 
@@ -587,7 +587,7 @@ Threat intelligence increases detection accuracy and prioritization.
 
 ---
 
-## Step 6 – Generate Alerts
+### Step 6 – Generate Alerts
 
 When predefined conditions are met, the SIEM generates alerts.
 
@@ -606,7 +606,7 @@ Alert quality is more important than alert quantity.
 
 ---
 
-## Step 7 – SOC Investigation
+### Step 7 – SOC Investigation
 
 SOC analysts review alerts to determine whether they represent legitimate security incidents.
 
@@ -624,7 +624,7 @@ Investigations distinguish genuine threats from false positives.
 
 ---
 
-## Step 8 – Respond to Confirmed Incidents
+### Step 8 – Respond to Confirmed Incidents
 
 If malicious activity is confirmed, the SOC coordinates incident response.
 
@@ -642,7 +642,7 @@ Rapid response minimizes business impact.
 
 ---
 
-## Step 9 – Improve Detection
+### Step 9 – Improve Detection
 
 Every incident provides opportunities to improve security.
 
@@ -659,9 +659,9 @@ Continuous refinement strengthens future detection capabilities.
 
 ---
 
-## Practical Example
+### Practical Example
 
-### Example 1 – Impossible Travel Login
+#### Example 1 – Impossible Travel Login
 
 Scenario:
 
@@ -688,7 +688,7 @@ Outcome:
 
 ---
 
-### Example 2 – Kubernetes Privilege Escalation
+#### Example 2 – Kubernetes Privilege Escalation
 
 Scenario:
 
@@ -715,7 +715,7 @@ Outcome:
 
 ---
 
-### Example 3 – Object Storage Data Exfiltration
+#### Example 3 – Object Storage Data Exfiltration
 
 Scenario:
 
@@ -741,7 +741,7 @@ Outcome:
 
 ---
 
-### Example 4 – Suspicious Serverless Activity
+#### Example 4 – Suspicious Serverless Activity
 
 Scenario:
 
@@ -768,13 +768,13 @@ Outcome:
 
 ---
 
-## Detection
+### Detection
 
 Effective Cloud SIEM relies on comprehensive detection across every major cloud layer.
 
 ---
 
-### Identity Detection
+#### Identity Detection
 
 Monitor:
 
@@ -789,7 +789,7 @@ Identity remains one of the most common attack vectors.
 
 ---
 
-### Infrastructure Detection
+#### Infrastructure Detection
 
 Review:
 
@@ -804,7 +804,7 @@ Unexpected infrastructure changes often indicate compromise.
 
 ---
 
-### Network Detection
+#### Network Detection
 
 Monitor:
 
@@ -819,7 +819,7 @@ Network visibility is essential for detecting lateral movement and exfiltration.
 
 ---
 
-### Cloud Application Detection
+#### Cloud Application Detection
 
 Analyze:
 
@@ -834,7 +834,7 @@ Application telemetry provides valuable behavioral insights.
 
 ---
 
-### Kubernetes and Container Detection
+#### Kubernetes and Container Detection
 
 Monitor:
 
@@ -850,7 +850,7 @@ Cloud-native environments require dedicated detection logic.
 
 ---
 
-### Data Access Detection
+#### Data Access Detection
 
 Review:
 
@@ -865,7 +865,7 @@ Unexpected access patterns may indicate data theft or misuse.
 
 ---
 
-### Detection Best Practices
+#### Detection Best Practices
 
 - Collect telemetry from every cloud service.
 - Normalize logs before analysis.
@@ -880,7 +880,7 @@ Unexpected access patterns may indicate data theft or misuse.
 
 ---
 
-## Prevention
+### Prevention
 
 Cloud SIEM and SOC are most effective when organizations proactively design their environments for continuous visibility, rapid detection, and coordinated response. Prevention focuses on reducing the likelihood of successful attacks while ensuring security teams have the telemetry, tools, and processes necessary to detect and contain threats quickly.
 
@@ -888,7 +888,7 @@ A preventive strategy combines secure architecture, comprehensive monitoring, id
 
 ---
 
-# Cloud SIEM & SOC Prevention Lifecycle
+## Cloud SIEM & SOC Prevention Lifecycle
 
 ```
 Secure Cloud Architecture
@@ -946,7 +946,7 @@ This lifecycle emphasizes continuous monitoring and iterative enhancement of sec
 
 ---
 
-# Enable Comprehensive Logging
+## Enable Comprehensive Logging
 
 Ensure that logging is enabled across all cloud services.
 
@@ -969,7 +969,7 @@ Complete visibility enables faster investigations and reduces blind spots.
 
 ---
 
-# Centralize Security Telemetry
+## Centralize Security Telemetry
 
 Aggregate logs into a centralized SIEM platform.
 
@@ -986,7 +986,7 @@ A centralized repository enables analysts to investigate incidents efficiently.
 
 ---
 
-# Protect Identity Infrastructure
+## Protect Identity Infrastructure
 
 Implement strong identity controls such as:
 
@@ -1001,7 +1001,7 @@ Identity protection significantly reduces opportunities for unauthorized access.
 
 ---
 
-# Continuously Tune Detection Rules
+## Continuously Tune Detection Rules
 
 Detection rules should evolve as threats change.
 
@@ -1018,7 +1018,7 @@ Continuous tuning improves detection quality and analyst efficiency.
 
 ---
 
-# Integrate Threat Intelligence
+## Integrate Threat Intelligence
 
 Use trusted intelligence feeds to enrich events with:
 
@@ -1033,7 +1033,7 @@ Threat intelligence improves prioritization and contextual awareness.
 
 ---
 
-# Automate Routine Security Tasks
+## Automate Routine Security Tasks
 
 Use Security Orchestration, Automation, and Response (SOAR) or equivalent automation for:
 
@@ -1069,7 +1069,7 @@ Automation reduces repetitive work and accelerates response times.
 
 ---
 
-# Secure Log Storage
+## Secure Log Storage
 
 Protect security telemetry by implementing:
 
@@ -1084,7 +1084,7 @@ Secure log storage preserves evidence for investigations and compliance.
 
 ---
 
-# Validate Detection Coverage
+## Validate Detection Coverage
 
 Regularly assess whether monitoring covers:
 
@@ -1102,7 +1102,7 @@ Detection gaps should be identified and addressed promptly.
 
 ---
 
-# Train SOC Personnel
+## Train SOC Personnel
 
 Provide ongoing training in:
 
@@ -1119,7 +1119,7 @@ Well-trained analysts improve detection accuracy and response effectiveness.
 
 ---
 
-# Conduct Continuous Security Assessments
+## Conduct Continuous Security Assessments
 
 Regularly perform:
 
@@ -1134,9 +1134,9 @@ Continuous testing ensures operational readiness.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Collect Logs from Every Critical Service
+#### 1. Collect Logs from Every Critical Service
 
 Ensure visibility across:
 
@@ -1155,7 +1155,7 @@ Comprehensive logging forms the foundation of effective SIEM operations.
 
 ---
 
-### 2. Normalize and Enrich Security Data
+#### 2. Normalize and Enrich Security Data
 
 Standardize:
 
@@ -1176,7 +1176,7 @@ Normalized and enriched data improves investigation quality.
 
 ---
 
-### 3. Correlate Multiple Events
+#### 3. Correlate Multiple Events
 
 Avoid making decisions based on isolated alerts.
 
@@ -1193,7 +1193,7 @@ Correlation uncovers attack patterns that individual events may not reveal.
 
 ---
 
-### 4. Prioritize Alerts by Risk
+#### 4. Prioritize Alerts by Risk
 
 Consider:
 
@@ -1207,7 +1207,7 @@ Risk-based prioritization helps analysts focus on the most significant threats.
 
 ---
 
-### 5. Continuously Improve Detection Engineering
+#### 5. Continuously Improve Detection Engineering
 
 Maintain an ongoing process to:
 
@@ -1221,7 +1221,7 @@ Detection engineering should evolve alongside attacker techniques.
 
 ---
 
-### 6. Integrate SIEM with Incident Response
+#### 6. Integrate SIEM with Incident Response
 
 Ensure seamless coordination between:
 
@@ -1236,7 +1236,7 @@ Integrated workflows reduce response times.
 
 ---
 
-### 7. Measure SOC Performance
+#### 7. Measure SOC Performance
 
 Track operational metrics such as:
 
@@ -1252,7 +1252,7 @@ Metrics provide measurable insight into SOC effectiveness.
 
 ---
 
-### 8. Document Investigations
+#### 8. Document Investigations
 
 Every investigation should record:
 
@@ -1268,7 +1268,7 @@ Documentation supports compliance, audits, and continuous improvement.
 
 ---
 
-### 9. Validate Security Controls
+#### 9. Validate Security Controls
 
 Regularly verify that:
 
@@ -1282,7 +1282,7 @@ Validation ensures operational reliability.
 
 ---
 
-### 10. Foster Continuous Improvement
+#### 10. Foster Continuous Improvement
 
 Following every incident or major investigation:
 
@@ -1296,7 +1296,7 @@ Following every incident or major investigation:
 Continuous improvement enables the SIEM and SOC to adapt to evolving threats and changing cloud environments.
 
 ---
-## Common Mistakes
+### Common Mistakes
 
 Cloud SIEM and SOC capabilities are only as effective as the processes, data quality, and operational discipline that support them. Organizations often deploy powerful SIEM platforms but fail to realize their full value due to poor implementation, inadequate monitoring, or immature operational practices.
 
@@ -1304,7 +1304,7 @@ Avoiding the following mistakes helps improve detection accuracy, reduce respons
 
 ---
 
-### 1. Collecting Too Few Log Sources
+#### 1. Collecting Too Few Log Sources
 
 One of the most common mistakes is monitoring only a limited subset of cloud services.
 
@@ -1339,7 +1339,7 @@ Comprehensive telemetry is essential for effective security monitoring.
 
 ---
 
-### 2. Collecting Too Many Unnecessary Logs
+#### 2. Collecting Too Many Unnecessary Logs
 
 Collecting excessive low-value telemetry can create:
 
@@ -1353,7 +1353,7 @@ Organizations should balance visibility with operational efficiency through risk
 
 ---
 
-### 3. Ignoring Log Quality
+#### 3. Ignoring Log Quality
 
 Logs should be:
 
@@ -1367,7 +1367,7 @@ Poor-quality logs reduce the effectiveness of correlation and investigations.
 
 ---
 
-### 4. Not Normalizing Data
+#### 4. Not Normalizing Data
 
 Different cloud services generate different log formats.
 
@@ -1382,7 +1382,7 @@ Standardized data significantly improves SIEM performance.
 
 ---
 
-### 5. Excessive False Positives
+#### 5. Excessive False Positives
 
 Poorly tuned detection rules generate unnecessary alerts.
 
@@ -1397,7 +1397,7 @@ Detection engineering should continuously reduce false positives while maintaini
 
 ---
 
-### 6. Ignoring False Negatives
+#### 6. Ignoring False Negatives
 
 A quiet SIEM does not necessarily indicate a secure environment.
 
@@ -1413,7 +1413,7 @@ Regular validation helps identify missed detections.
 
 ---
 
-### 7. Poor Alert Prioritization
+#### 7. Poor Alert Prioritization
 
 Treating every alert as equally important reduces SOC effectiveness.
 
@@ -1429,7 +1429,7 @@ Risk-based prioritization enables analysts to focus on the highest-risk events.
 
 ---
 
-### 8. Not Integrating Threat Intelligence
+#### 8. Not Integrating Threat Intelligence
 
 Without threat intelligence:
 
@@ -1441,7 +1441,7 @@ Threat intelligence should be continuously updated and integrated into detection
 
 ---
 
-### 9. Ignoring Identity Monitoring
+#### 9. Ignoring Identity Monitoring
 
 Most cloud compromises begin with identities.
 
@@ -1458,7 +1458,7 @@ Identity monitoring should remain a primary SOC focus.
 
 ---
 
-### 10. Operating Without Playbooks
+#### 10. Operating Without Playbooks
 
 SOC analysts should have documented procedures for responding to common scenarios such as:
 
@@ -1474,7 +1474,7 @@ Playbooks improve consistency and reduce response times.
 
 ---
 
-### 11. Lack of Automation
+#### 11. Lack of Automation
 
 Manual handling of repetitive tasks delays investigations.
 
@@ -1491,7 +1491,7 @@ Automation allows analysts to concentrate on complex investigations.
 
 ---
 
-### 12. Not Measuring SOC Performance
+#### 12. Not Measuring SOC Performance
 
 Without operational metrics, it is difficult to identify areas for improvement.
 
@@ -1509,7 +1509,7 @@ Performance measurement drives continuous improvement.
 
 ---
 
-### 13. Poor Collaboration Between Teams
+#### 13. Poor Collaboration Between Teams
 
 Effective security operations require coordination among:
 
@@ -1526,7 +1526,7 @@ Poor communication delays containment and recovery.
 
 ---
 
-### 14. Neglecting Continuous Improvement
+#### 14. Neglecting Continuous Improvement
 
 Threats evolve continuously.
 
@@ -1544,7 +1544,7 @@ Continuous improvement ensures long-term effectiveness.
 
 ---
 
-### 15. Treating SIEM as a Complete Security Solution
+#### 15. Treating SIEM as a Complete Security Solution
 
 A SIEM is one component of a broader security ecosystem.
 
@@ -1564,7 +1564,7 @@ Security tools are most effective when integrated into a comprehensive defense s
 
 ---
 
-## Cloud SIEM & SOC Checklist
+### Cloud SIEM & SOC Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1586,9 +1586,9 @@ Security tools are most effective when integrated into a comprehensive defense s
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST Cybersecurity Framework (CSF) 2.0
 - NIST SP 800-61 Rev. 2 – Computer Security Incident Handling Guide
@@ -1600,7 +1600,7 @@ Security tools are most effective when integrated into a comprehensive defense s
 
 ---
 
-### SIEM & SOC Frameworks
+#### SIEM & SOC Frameworks
 
 - MITRE ATT&CK Framework
 - MITRE D3FEND
@@ -1610,9 +1610,9 @@ Security tools are most effective when integrated into a comprehensive defense s
 
 ---
 
-### Cloud Security Documentation
+#### Cloud Security Documentation
 
-#### Amazon Web Services (AWS)
+##### Amazon Web Services (AWS)
 
 - AWS Security Reference Architecture
 - AWS CloudTrail Documentation
@@ -1620,14 +1620,14 @@ Security tools are most effective when integrated into a comprehensive defense s
 - AWS Security Hub Documentation
 - AWS Well-Architected Framework – Security Pillar
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Microsoft Sentinel Documentation
 - Microsoft Defender for Cloud Documentation
 - Azure Monitor Documentation
 - Azure Well-Architected Framework – Security
 
-#### Google Cloud Platform (GCP)
+##### Google Cloud Platform (GCP)
 
 - Google Security Command Center Documentation
 - Google Cloud Logging Documentation
@@ -1636,7 +1636,7 @@ Security tools are most effective when integrated into a comprehensive defense s
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -1648,7 +1648,7 @@ Security tools are most effective when integrated into a comprehensive defense s
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - MITRE ATT&CK Knowledge Base
 - MITRE D3FEND Knowledge Base

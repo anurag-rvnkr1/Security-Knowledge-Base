@@ -1,16 +1,16 @@
 # Resources.md
 
-# Linux Learning Resources & Career Roadmap
+## Linux Learning Resources & Career Roadmap
 
 ---
 
-# Introduction
+## Introduction
 
 This companion guide provides curated resources to help you continue learning Linux beyond this handbook. It includes books, documentation, labs, certifications, communities, project ideas, and structured study plans suitable for aspiring Linux administrators, DevOps engineers, cloud engineers, SREs, and cybersecurity professionals.
 
 ---
 
-# Learning Philosophy
+## Learning Philosophy
 
 An effective Linux learning journey balances four activities:
 
@@ -38,7 +38,7 @@ Aim to spend more time using Linux than reading about Linux.
 
 ---
 
-# Recommended Books
+## Recommended Books
 
 | Book | Level | Focus |
 |------|-------|-------|
@@ -50,7 +50,7 @@ Aim to spend more time using Linux than reading about Linux.
 
 ---
 
-# Official Documentation
+## Official Documentation
 
 | Resource | Purpose |
 |----------|---------|
@@ -64,7 +64,7 @@ Aim to spend more time using Linux than reading about Linux.
 
 ---
 
-# Essential Manual Pages
+## Essential Manual Pages
 
 Frequently used:
 
@@ -94,9 +94,9 @@ man -k network
 
 ---
 
-# Recommended Linux Distributions
+## Recommended Linux Distributions
 
-## Beginners
+### Beginners
 
 - Ubuntu LTS
 - Linux Mint
@@ -104,7 +104,7 @@ man -k network
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Debian
 - Fedora Server
@@ -113,7 +113,7 @@ man -k network
 
 ---
 
-## Enterprise
+### Enterprise
 
 - Red Hat Enterprise Linux (RHEL)
 - Ubuntu Server LTS
@@ -121,7 +121,7 @@ man -k network
 
 ---
 
-## Security
+### Security
 
 - Kali Linux
 - Parrot Security
@@ -129,7 +129,7 @@ man -k network
 
 ---
 
-# Virtual Lab Platforms
+## Virtual Lab Platforms
 
 Practice safely using:
 
@@ -163,7 +163,7 @@ Kali Linux VM
 
 ---
 
-# Cloud Practice
+## Cloud Practice
 
 Free or low-cost options:
 
@@ -183,7 +183,7 @@ Practice:
 
 ---
 
-# Practice Platforms
+## Practice Platforms
 
 Hands-on learning:
 
@@ -196,9 +196,9 @@ Hands-on learning:
 
 ---
 
-# Certifications
+## Certifications
 
-## Linux
+### Linux
 
 | Certification | Level |
 |--------------|-------|
@@ -211,7 +211,7 @@ Hands-on learning:
 
 ---
 
-## Cloud
+### Cloud
 
 - AWS Certified Cloud Practitioner
 - AWS Solutions Architect – Associate
@@ -220,7 +220,7 @@ Hands-on learning:
 
 ---
 
-## Cybersecurity
+### Cybersecurity
 
 - CompTIA Security+
 - CompTIA CySA+
@@ -231,7 +231,7 @@ Hands-on learning:
 
 ---
 
-# GitHub Repositories to Explore
+## GitHub Repositories to Explore
 
 Look for repositories covering:
 
@@ -252,7 +252,7 @@ When reviewing repositories:
 
 ---
 
-# Blogs & Learning Websites
+## Blogs & Learning Websites
 
 Follow resources that regularly publish Linux and infrastructure content, such as:
 
@@ -265,7 +265,7 @@ Follow resources that regularly publish Linux and infrastructure content, such a
 
 ---
 
-# YouTube Learning Topics
+## YouTube Learning Topics
 
 Look for channels covering:
 
@@ -283,7 +283,7 @@ Evaluate content based on technical accuracy and recency.
 
 ---
 
-# Podcasts
+## Podcasts
 
 Recommended topics:
 
@@ -298,9 +298,9 @@ Listening during commutes can reinforce concepts learned through hands-on practi
 
 ---
 
-# Home Lab Setup Guide
+## Home Lab Setup Guide
 
-## Minimum Lab
+### Minimum Lab
 
 ```text
 Laptop/Desktop
@@ -316,7 +316,7 @@ Practice Commands
 
 ---
 
-## Intermediate Lab
+### Intermediate Lab
 
 ```text
 Host Computer
@@ -338,7 +338,7 @@ Practice:
 
 ---
 
-## Advanced Lab
+### Advanced Lab
 
 ```text
 Router
@@ -362,9 +362,9 @@ Hypervisor
 
 ---
 
-# Enterprise Project Ideas
+## Enterprise Project Ideas
 
-## Beginner
+### Beginner
 
 - File organizer script
 - Backup automation
@@ -374,7 +374,7 @@ Hypervisor
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Log monitoring tool
 - Service health checker
@@ -384,7 +384,7 @@ Hypervisor
 
 ---
 
-## Advanced
+### Advanced
 
 - Centralized logging environment
 - Infrastructure automation with Ansible
@@ -396,9 +396,9 @@ Hypervisor
 
 ---
 
-# 30-Day Learning Plan
+## 30-Day Learning Plan
 
-## Week 1
+### Week 1
 
 - Linux basics
 - Navigation
@@ -408,7 +408,7 @@ Hypervisor
 
 ---
 
-## Week 2
+### Week 2
 
 - Processes
 - Services
@@ -418,7 +418,7 @@ Hypervisor
 
 ---
 
-## Week 3
+### Week 3
 
 - Shell scripting
 - Automation
@@ -428,7 +428,7 @@ Hypervisor
 
 ---
 
-## Week 4
+### Week 4
 
 - Build projects
 - Review interview questions
@@ -437,7 +437,7 @@ Hypervisor
 
 ---
 
-# 60-Day Plan
+## 60-Day Plan
 
 Add:
 
@@ -450,7 +450,7 @@ Add:
 
 ---
 
-# 90-Day Plan
+## 90-Day Plan
 
 Focus on:
 
@@ -464,7 +464,7 @@ Focus on:
 
 ---
 
-# Daily Study Schedule (Example)
+## Daily Study Schedule (Example)
 
 | Time | Activity |
 |------|----------|
@@ -477,7 +477,7 @@ Consistency matters more than long, infrequent sessions.
 
 ---
 
-# Weekly Routine
+## Weekly Routine
 
 - Complete one hands-on lab
 - Build or improve one small project
@@ -487,7 +487,7 @@ Consistency matters more than long, infrequent sessions.
 
 ---
 
-# Monthly Goals
+## Monthly Goals
 
 - Complete one larger project
 - Rebuild a server from scratch in a lab
@@ -497,7 +497,7 @@ Consistency matters more than long, infrequent sessions.
 
 ---
 
-# Interview Preparation Strategy
+## Interview Preparation Strategy
 
 ```text
 Review Theory
@@ -532,7 +532,7 @@ Before interviews:
 
 ---
 
-# Career Roadmap
+## Career Roadmap
 
 ```text
 Linux Fundamentals
@@ -567,7 +567,7 @@ DevOps / SRE / Cybersecurity
 
 ---
 
-# Linux Glossary
+## Linux Glossary
 
 | Term | Meaning |
 |------|---------|
@@ -589,7 +589,7 @@ DevOps / SRE / Cybersecurity
 
 ---
 
-# Final Advice
+## Final Advice
 
 - Build a habit of using Linux every day.
 - Read documentation before relying on search results.
@@ -601,7 +601,7 @@ DevOps / SRE / Cybersecurity
 
 ---
 
-# Final Congratulations
+## Final Congratulations
 
 You have completed the Linux Handbook series.
 

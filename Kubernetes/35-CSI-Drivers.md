@@ -35,7 +35,7 @@ The CSI driver acts as the bridge between Kubernetes and the storage provider.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -58,7 +58,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need CSI?
+## Why Do We Need CSI?
 
 Suppose Kubernetes wants to support:
 
@@ -97,7 +97,7 @@ Storage Backend
 
 ---
 
-# What is CSI?
+## What is CSI?
 
 **Container Storage Interface (CSI)** is a standardized specification for exposing storage systems to container orchestration platforms.
 
@@ -135,7 +135,7 @@ Ceph CSI
 
 ---
 
-# CSI Architecture
+## CSI Architecture
 
 A typical CSI implementation consists of two major sides:
 
@@ -167,7 +167,7 @@ A typical CSI implementation consists of two major sides:
 
 ---
 
-# CSI Controller
+## CSI Controller
 
 The **CSI Controller** performs control-plane operations.
 
@@ -184,7 +184,7 @@ It normally runs as Pods in the cluster.
 
 ---
 
-# CSI Node Plugin
+## CSI Node Plugin
 
 The **CSI Node Plugin** runs on worker Nodes.
 
@@ -200,7 +200,7 @@ Typically it runs as a **DaemonSet**, allowing one instance on each eligible Nod
 
 ---
 
-# Controller vs Node
+## Controller vs Node
 
 | CSI Controller           | CSI Node                     |
 | ------------------------ | ---------------------------- |
@@ -212,7 +212,7 @@ Typically it runs as a **DaemonSet**, allowing one instance on each eligible Nod
 
 ---
 
-# CSI Sidecar Containers
+## CSI Sidecar Containers
 
 CSI deployments commonly use Kubernetes-maintained sidecar containers.
 
@@ -242,7 +242,7 @@ These components watch Kubernetes resources and communicate with the CSI driver.
 
 ---
 
-# External Provisioner
+## External Provisioner
 
 The **external-provisioner** watches PVCs.
 
@@ -272,7 +272,7 @@ The resulting storage is represented by a Persistent Volume.
 
 ---
 
-# External Attacher
+## External Attacher
 
 The **external-attacher** handles volume attachment for storage systems that require a separate attach operation.
 
@@ -294,7 +294,7 @@ This is especially important for cloud block storage.
 
 ---
 
-# External Resizer
+## External Resizer
 
 The **external-resizer** handles supported PVC expansion workflows.
 
@@ -316,7 +316,7 @@ Whether filesystem expansion is required and how it occurs depends on the driver
 
 ---
 
-# External Snapshotter
+## External Snapshotter
 
 The **external-snapshotter** enables Kubernetes volume snapshot workflows for CSI drivers that support snapshots.
 
@@ -347,7 +347,7 @@ Snapshots can be useful for:
 
 ---
 
-# Node Driver Registrar
+## Node Driver Registrar
 
 The `node-driver-registrar` helps register the CSI driver with the kubelet on a Node.
 
@@ -371,7 +371,7 @@ CSI Driver Registered
 
 ---
 
-# Complete CSI Architecture
+## Complete CSI Architecture
 
 ```text
                          Kubernetes API
@@ -402,7 +402,7 @@ CSI Driver Registered
 
 ---
 
-# Dynamic Provisioning with CSI
+## Dynamic Provisioning with CSI
 
 Suppose a developer creates:
 
@@ -461,7 +461,7 @@ PVC Bound
 
 ---
 
-# Step 1 – PVC Creation
+## Step 1 – PVC Creation
 
 Developer:
 
@@ -481,7 +481,7 @@ Pending
 
 ---
 
-# Step 2 – StorageClass Lookup
+## Step 2 – StorageClass Lookup
 
 The PVC specifies:
 
@@ -503,7 +503,7 @@ The StorageClass identifies the CSI provisioner.
 
 ---
 
-# Step 3 – External Provisioner
+## Step 3 – External Provisioner
 
 The external provisioner notices the PVC.
 
@@ -518,7 +518,7 @@ It then communicates with the CSI driver.
 
 ---
 
-# Step 4 – Create Volume
+## Step 4 – Create Volume
 
 The CSI controller requests the storage backend to create the volume.
 
@@ -546,7 +546,7 @@ volume-abc123
 
 ---
 
-# Step 5 – PV Creation
+## Step 5 – PV Creation
 
 Kubernetes creates a Persistent Volume representing the newly created storage.
 
@@ -570,7 +570,7 @@ Bound
 
 ---
 
-# Step 6 – Pod Uses PVC
+## Step 6 – Pod Uses PVC
 
 A Pod references:
 
@@ -588,7 +588,7 @@ Now Kubernetes must make the storage available to the Node running the Pod.
 
 ---
 
-# Step 7 – Scheduling
+## Step 7 – Scheduling
 
 The Scheduler determines:
 
@@ -604,7 +604,7 @@ Topology constraints may influence this decision.
 
 ---
 
-# Step 8 – Attach
+## Step 8 – Attach
 
 If the storage system requires attachment:
 
@@ -624,7 +624,7 @@ For some storage types, attachment may not be required.
 
 ---
 
-# Step 9 – Node Stage
+## Step 9 – Node Stage
 
 The CSI Node Plugin prepares the volume on the Node.
 
@@ -650,7 +650,7 @@ The exact operations depend on the CSI driver and volume type.
 
 ---
 
-# Step 10 – Node Publish
+## Step 10 – Node Publish
 
 The CSI Node Plugin makes the volume available to the Pod.
 
@@ -670,7 +670,7 @@ Container Mount
 
 ---
 
-# Step 11 – Application Starts
+## Step 11 – Application Starts
 
 The application sees:
 
@@ -682,7 +682,7 @@ and can read/write the persistent storage.
 
 ---
 
-# Complete Volume Lifecycle
+## Complete Volume Lifecycle
 
 ```text
 PVC Created
@@ -730,7 +730,7 @@ Application Uses Volume
 
 ---
 
-# Volume Deletion
+## Volume Deletion
 
 When the PVC is deleted and the PV reclaim policy is `Delete`:
 
@@ -764,7 +764,7 @@ the underlying storage is retained for administrator-controlled recovery or reus
 
 ---
 
-# CSI RPC Model
+## CSI RPC Model
 
 CSI drivers communicate using standardized RPC interfaces.
 
@@ -784,7 +784,7 @@ Node Service
 
 ---
 
-# Identity Service
+## Identity Service
 
 Provides information about the driver.
 
@@ -800,7 +800,7 @@ Capabilities
 
 ---
 
-# Controller Service
+## Controller Service
 
 Handles controller-side operations such as:
 
@@ -818,7 +818,7 @@ Exact capabilities depend on the CSI version and driver.
 
 ---
 
-# Node Service
+## Node Service
 
 Handles Node-level operations such as:
 
@@ -833,11 +833,11 @@ NodeGetCapabilities
 
 ---
 
-# Attach vs Mount
+## Attach vs Mount
 
 These concepts are frequently confused.
 
-## Attach
+### Attach
 
 ```text
 Storage Volume
@@ -851,7 +851,7 @@ The volume becomes available to a Node.
 
 ---
 
-## Mount / Publish
+### Mount / Publish
 
 ```text
 Worker Node
@@ -869,7 +869,7 @@ The volume is made available to the Pod and mounted into the container filesyste
 
 ---
 
-# Example
+## Example
 
 Cloud block storage:
 
@@ -895,7 +895,7 @@ Publish to Pod
 
 ---
 
-# CSI and StorageClasses
+## CSI and StorageClasses
 
 A StorageClass usually references a CSI driver through:
 
@@ -922,7 +922,7 @@ The exact provisioner name is driver-specific.
 
 ---
 
-# Topology-Aware CSI Provisioning
+## Topology-Aware CSI Provisioning
 
 Modern storage environments often have topology constraints.
 
@@ -956,7 +956,7 @@ Storage Placement
 
 ---
 
-# WaitForFirstConsumer
+## WaitForFirstConsumer
 
 With:
 
@@ -1000,7 +1000,7 @@ This prevents many topology mismatch problems.
 
 ---
 
-# CSI and Network Storage
+## CSI and Network Storage
 
 Not every storage backend requires attachment.
 
@@ -1026,7 +1026,7 @@ Therefore:
 
 ---
 
-# CSI Driver Deployment
+## CSI Driver Deployment
 
 A typical CSI driver installation may contain:
 
@@ -1060,7 +1060,7 @@ CSI Driver
 
 ---
 
-# View CSI Components
+## View CSI Components
 
 ```bash
 kubectl get pods -A
@@ -1076,7 +1076,7 @@ or provider-specific driver names.
 
 ---
 
-# View CSI Drivers
+## View CSI Drivers
 
 ```bash
 kubectl get csidrivers
@@ -1092,7 +1092,7 @@ example.csi.storage.k8s.io
 
 ---
 
-# Describe CSI Driver
+## Describe CSI Driver
 
 ```bash
 kubectl describe csidriver <driver-name>
@@ -1107,7 +1107,7 @@ You can inspect capabilities such as:
 
 ---
 
-# View StorageClasses
+## View StorageClasses
 
 ```bash
 kubectl get storageclass
@@ -1117,7 +1117,7 @@ Identify the CSI provisioner used by each class.
 
 ---
 
-# View PVCs
+## View PVCs
 
 ```bash
 kubectl get pvc
@@ -1125,7 +1125,7 @@ kubectl get pvc
 
 ---
 
-# View PVs
+## View PVs
 
 ```bash
 kubectl get pv
@@ -1133,7 +1133,7 @@ kubectl get pv
 
 ---
 
-# Hands-on Lab 1 – Discover CSI Drivers
+## Hands-on Lab 1 – Discover CSI Drivers
 
 Run:
 
@@ -1152,7 +1152,7 @@ Storage Capacity
 
 ---
 
-# Hands-on Lab 2 – Inspect CSI Pods
+## Hands-on Lab 2 – Inspect CSI Pods
 
 Run:
 
@@ -1170,7 +1170,7 @@ CSI Node DaemonSet
 
 ---
 
-# Hands-on Lab 3 – Inspect StorageClass
+## Hands-on Lab 3 – Inspect StorageClass
 
 ```bash
 kubectl get storageclass
@@ -1196,7 +1196,7 @@ Binding Mode
 
 ---
 
-# Hands-on Lab 4 – Dynamic Provisioning
+## Hands-on Lab 4 – Dynamic Provisioning
 
 Create a PVC using an available CSI-backed StorageClass.
 
@@ -1228,7 +1228,7 @@ PV
 
 ---
 
-# Hands-on Lab 5 – Mount CSI Storage
+## Hands-on Lab 5 – Mount CSI Storage
 
 Create a Pod that consumes the PVC.
 
@@ -1248,7 +1248,7 @@ Look for volume-related events.
 
 ---
 
-# Hands-on Lab 6 – Inspect Events
+## Hands-on Lab 6 – Inspect Events
 
 When troubleshooting:
 
@@ -1274,9 +1274,9 @@ FailedMount
 
 ---
 
-# Troubleshooting CSI
+## Troubleshooting CSI
 
-## Problem 1 – PVC Stuck in Pending
+### Problem 1 – PVC Stuck in Pending
 
 Check:
 
@@ -1295,7 +1295,7 @@ Potential causes:
 
 ---
 
-# Problem 2 – FailedAttachVolume
+## Problem 2 – FailedAttachVolume
 
 Check:
 
@@ -1313,7 +1313,7 @@ Possible causes:
 
 ---
 
-# Problem 3 – FailedMount
+## Problem 3 – FailedMount
 
 Possible causes:
 
@@ -1327,7 +1327,7 @@ Check CSI Node Plugin logs.
 
 ---
 
-# Problem 4 – CSI Controller Failure
+## Problem 4 – CSI Controller Failure
 
 Check:
 
@@ -1343,7 +1343,7 @@ kubectl logs <csi-controller-pod>
 
 ---
 
-# Problem 5 – Node Plugin Failure
+## Problem 5 – Node Plugin Failure
 
 Find the CSI Node Pod running on the affected worker Node.
 
@@ -1355,9 +1355,9 @@ kubectl logs <csi-node-pod>
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Confusing CSI with a CSI Driver
+### 1. Confusing CSI with a CSI Driver
 
 CSI:
 
@@ -1373,7 +1373,7 @@ Implementation
 
 ---
 
-## 2. Assuming Every CSI Driver Supports Every Feature
+### 2. Assuming Every CSI Driver Supports Every Feature
 
 A driver may not support:
 
@@ -1388,19 +1388,19 @@ Always verify driver capabilities.
 
 ---
 
-## 3. Assuming All Volumes Need Attach
+### 3. Assuming All Volumes Need Attach
 
 Some network filesystems can be mounted without a separate cloud-style attach operation.
 
 ---
 
-## 4. Ignoring Topology
+### 4. Ignoring Topology
 
 Zonal storage can create scheduling problems if topology is not considered.
 
 ---
 
-## 5. Debugging Only the Pod
+### 5. Debugging Only the Pod
 
 Storage failures can occur at several layers:
 
@@ -1432,7 +1432,7 @@ Troubleshoot from the Kubernetes resource toward the storage backend.
 
 ---
 
-## 6. Using Wrong StorageClass Parameters
+### 6. Using Wrong StorageClass Parameters
 
 CSI driver parameters are implementation-specific.
 
@@ -1440,9 +1440,9 @@ Never assume parameters from one provider work with another.
 
 ---
 
-# CSI Quick Revision
+## CSI Quick Revision
 
-## Architecture
+### Architecture
 
 ```text
 Kubernetes
@@ -1472,7 +1472,7 @@ Pod
 
 ---
 
-## Dynamic Provisioning
+### Dynamic Provisioning
 
 ```text
 PVC
@@ -1500,7 +1500,7 @@ PV
 
 ---
 
-## Volume Consumption
+### Volume Consumption
 
 ```text
 PV
@@ -1524,7 +1524,7 @@ Container Mount
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 List CSI Drivers:
 
@@ -1582,9 +1582,9 @@ kubectl logs <csi-pod>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 * What is CSI?
 * Why was CSI introduced?
@@ -1594,7 +1594,7 @@ kubectl logs <csi-pod>
 
 ---
 
-## Intermediate
+### Intermediate
 
 * Explain the role of `external-provisioner`.
 * What does `external-attacher` do?
@@ -1604,7 +1604,7 @@ kubectl logs <csi-pod>
 
 ---
 
-## Advanced
+### Advanced
 
 * Explain the complete lifecycle of a dynamically provisioned CSI volume.
 * Describe the workflow from PVC creation to a mounted volume inside a Pod.
@@ -1618,7 +1618,7 @@ kubectl logs <csi-pod>
 
 ---
 
-# Production Architecture
+## Production Architecture
 
 A typical cloud deployment might look like:
 
@@ -1656,7 +1656,7 @@ A typical cloud deployment might look like:
 
 ---
 
-# Security Considerations
+## Security Considerations
 
 CSI drivers have access to important storage infrastructure.
 
@@ -1673,21 +1673,21 @@ Therefore:
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Official or Trusted CSI Drivers
+#### 1. Use Official or Trusted CSI Drivers
 
 Choose actively maintained drivers with strong Kubernetes compatibility.
 
 ---
 
-### 2. Use StorageClasses
+#### 2. Use StorageClasses
 
 Applications should normally request storage through PVCs and StorageClasses instead of directly managing infrastructure.
 
 ---
 
-### 3. Understand Driver Capabilities
+#### 3. Understand Driver Capabilities
 
 Before deploying a CSI driver, verify support for:
 
@@ -1703,13 +1703,13 @@ Encryption
 
 ---
 
-### 4. Use `WaitForFirstConsumer` for Topology-Aware Storage
+#### 4. Use `WaitForFirstConsumer` for Topology-Aware Storage
 
 This is particularly useful with zonal cloud block storage.
 
 ---
 
-### 5. Monitor CSI Components
+#### 5. Monitor CSI Components
 
 Monitor:
 
@@ -1729,7 +1729,7 @@ Snapshotter
 
 ---
 
-### 6. Plan Backup Separately
+#### 6. Plan Backup Separately
 
 A CSI snapshot is **not automatically a complete disaster-recovery strategy**.
 
@@ -1742,9 +1742,9 @@ Consider:
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 * Container Storage Interface
 * Storage Classes
@@ -1756,7 +1756,7 @@ Consider:
 
 ---
 
-## CSI Specification
+### CSI Specification
 
 Study the official CSI specification for:
 
@@ -1768,7 +1768,7 @@ Study the official CSI specification for:
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 * Kubernetes SIG Storage
 * Container Storage Interface
@@ -1776,7 +1776,7 @@ Study the official CSI specification for:
 
 ---
 
-## Major CSI Drivers
+### Major CSI Drivers
 
 Examples include:
 
@@ -1793,7 +1793,7 @@ Always consult the specific driver's documentation for supported features and co
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Identify every CSI driver installed in your cluster.
 2. Inspect their `CSIDriver` objects.
@@ -1809,7 +1809,7 @@ Always consult the specific driver's documentation for supported features and co
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```text
                     Kubernetes
@@ -1892,7 +1892,7 @@ This abstraction allows Kubernetes applications to remain largely independent of
 
 ---
 
-# Kubernetes Storage Section – Complete
+## Kubernetes Storage Section – Complete
 
 You have now covered the complete storage progression:
 
@@ -1941,7 +1941,7 @@ The storage architecture to remember is:
 
 ---
 
-## Next Recommended Section
+### Next Recommended Section
 
 After completing Kubernetes storage, the natural next area is:
 

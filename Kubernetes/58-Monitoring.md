@@ -55,7 +55,7 @@ External Dependencies
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -116,7 +116,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Monitoring?
+## What Is Monitoring?
 
 Monitoring is the continuous collection and analysis of system information.
 
@@ -141,7 +141,7 @@ Is the system healthy?
 
 ---
 
-# Why Kubernetes Monitoring Matters
+## Why Kubernetes Monitoring Matters
 
 Kubernetes is a distributed system.
 
@@ -165,7 +165,7 @@ Without monitoring, the relationship may not be obvious.
 
 ---
 
-# Monitoring vs Observability
+## Monitoring vs Observability
 
 Monitoring usually focuses on predefined signals:
 
@@ -197,7 +197,7 @@ Profiles
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 A simplified monitoring architecture:
 
@@ -222,7 +222,7 @@ Query Engine
 
 ---
 
-# What Should Be Monitored?
+## What Should Be Monitored?
 
 At minimum:
 
@@ -239,7 +239,7 @@ Storage
 
 ---
 
-# Kubernetes Monitoring Layers
+## Kubernetes Monitoring Layers
 
 ```text
 Layer 1 → Application
@@ -253,7 +253,7 @@ Layer 7 → External Dependencies
 
 ---
 
-# Application Monitoring
+## Application Monitoring
 
 Application metrics can include:
 
@@ -269,7 +269,7 @@ Cache Hit Rate
 
 ---
 
-# Container Monitoring
+## Container Monitoring
 
 Monitor:
 
@@ -284,7 +284,7 @@ OOMKilled
 
 ---
 
-# Pod Monitoring
+## Pod Monitoring
 
 Important Pod signals:
 
@@ -300,7 +300,7 @@ Events
 
 ---
 
-# Node Monitoring
+## Node Monitoring
 
 Important Node signals:
 
@@ -317,7 +317,7 @@ Kubelet Health
 
 ---
 
-# Cluster Monitoring
+## Cluster Monitoring
 
 Cluster-level metrics include:
 
@@ -333,7 +333,7 @@ Controller Health
 
 ---
 
-# Control Plane Monitoring
+## Control Plane Monitoring
 
 Monitor:
 
@@ -348,7 +348,7 @@ depending on the cluster architecture and access to control-plane metrics.
 
 ---
 
-# API Server Monitoring
+## API Server Monitoring
 
 Important signals:
 
@@ -363,7 +363,7 @@ Active Connections
 
 ---
 
-# Scheduler Monitoring
+## Scheduler Monitoring
 
 Monitor:
 
@@ -376,7 +376,7 @@ Pending Pods
 
 ---
 
-# Controller Manager Monitoring
+## Controller Manager Monitoring
 
 Monitor:
 
@@ -389,7 +389,7 @@ Workqueue Depth
 
 ---
 
-# Kubelet Monitoring
+## Kubelet Monitoring
 
 Monitor:
 
@@ -404,7 +404,7 @@ Node Health
 
 ---
 
-# etcd Monitoring
+## etcd Monitoring
 
 For clusters where etcd metrics are available, monitor:
 
@@ -420,7 +420,7 @@ etcd is critical because Kubernetes control-plane state depends on it.
 
 ---
 
-# Metrics
+## Metrics
 
 A metric is a numerical measurement describing system behavior.
 
@@ -438,7 +438,7 @@ http_requests_total
 
 ---
 
-# Metric Components
+## Metric Components
 
 A metric usually has:
 
@@ -460,7 +460,7 @@ http_requests_total{
 
 ---
 
-# Metric Types
+## Metric Types
 
 Common Prometheus metric types include:
 
@@ -473,7 +473,7 @@ Summary
 
 ---
 
-# Counter
+## Counter
 
 A Counter generally increases over time.
 
@@ -499,7 +499,7 @@ Counters can reset when the process restarts.
 
 ---
 
-# Gauge
+## Gauge
 
 A Gauge represents a value that can increase or decrease.
 
@@ -514,7 +514,7 @@ Queue Size
 
 ---
 
-# Histogram
+## Histogram
 
 Histograms measure distributions.
 
@@ -536,7 +536,7 @@ Example buckets:
 
 ---
 
-# Summary
+## Summary
 
 A Summary can provide quantile-related observations depending on implementation.
 
@@ -544,7 +544,7 @@ For many Kubernetes monitoring architectures, Histograms are preferred when aggr
 
 ---
 
-# CPU Monitoring
+## CPU Monitoring
 
 CPU metrics help identify:
 
@@ -557,7 +557,7 @@ Capacity Problems
 
 ---
 
-# CPU Usage
+## CPU Usage
 
 Example:
 
@@ -575,7 +575,7 @@ Remember:
 
 ---
 
-# CPU Request
+## CPU Request
 
 Example:
 
@@ -591,7 +591,7 @@ The scheduler uses requests when deciding placement.
 
 ---
 
-# CPU Limit
+## CPU Limit
 
 Example:
 
@@ -607,7 +607,7 @@ The container can be throttled when it attempts to use more CPU than its configu
 
 ---
 
-# CPU Throttling
+## CPU Throttling
 
 If a container repeatedly reaches its CPU limit:
 
@@ -625,7 +625,7 @@ Monitor CPU throttling when diagnosing latency or performance problems.
 
 ---
 
-# Memory Monitoring
+## Memory Monitoring
 
 Monitor:
 
@@ -640,7 +640,7 @@ OOM Events
 
 ---
 
-# OOMKilled
+## OOMKilled
 
 OOM means:
 
@@ -664,7 +664,7 @@ OOMKilled
 
 ---
 
-# Memory Pressure
+## Memory Pressure
 
 A node can experience:
 
@@ -684,7 +684,7 @@ Process Termination
 
 ---
 
-# Disk Monitoring
+## Disk Monitoring
 
 Monitor:
 
@@ -699,7 +699,7 @@ Ephemeral Storage
 
 ---
 
-# Disk Pressure
+## Disk Pressure
 
 Kubernetes nodes can report:
 
@@ -720,7 +720,7 @@ Ephemeral Storage
 
 ---
 
-# Network Monitoring
+## Network Monitoring
 
 Monitor:
 
@@ -736,7 +736,7 @@ Latency
 
 ---
 
-# Network Saturation
+## Network Saturation
 
 High network utilization may cause:
 
@@ -749,7 +749,7 @@ Application Errors
 
 ---
 
-# Pod Restarts
+## Pod Restarts
 
 Restart count is an important signal.
 
@@ -772,7 +772,7 @@ Configuration Error
 
 ---
 
-# Pod Status
+## Pod Status
 
 Common statuses include:
 
@@ -786,7 +786,7 @@ Unknown
 
 ---
 
-# Pending Pods
+## Pending Pods
 
 A large number of Pending Pods may indicate:
 
@@ -802,7 +802,7 @@ Scheduling Constraints
 
 ---
 
-# Failed Pods
+## Failed Pods
 
 Investigate:
 
@@ -817,7 +817,7 @@ Probes
 
 ---
 
-# Readiness
+## Readiness
 
 A Pod can be running but not ready.
 
@@ -842,7 +842,7 @@ Traffic Should Not Yet Be Sent
 
 ---
 
-# Liveness
+## Liveness
 
 Liveness probes determine whether a container should be restarted.
 
@@ -854,7 +854,7 @@ Restart Loops
 
 ---
 
-# Startup Probe
+## Startup Probe
 
 Startup probes help applications that take a long time to initialize.
 
@@ -872,7 +872,7 @@ Liveness / Readiness
 
 ---
 
-# Monitoring Probes
+## Monitoring Probes
 
 Monitor:
 
@@ -885,7 +885,7 @@ Latency
 
 ---
 
-# Golden Signals
+## Golden Signals
 
 A widely used observability model is:
 
@@ -898,7 +898,7 @@ Saturation
 
 ---
 
-# Latency
+## Latency
 
 How long requests take.
 
@@ -912,7 +912,7 @@ P99 = 700ms
 
 ---
 
-# Traffic
+## Traffic
 
 How much demand the system receives.
 
@@ -926,7 +926,7 @@ Transactions per minute
 
 ---
 
-# Errors
+## Errors
 
 Measure failures:
 
@@ -940,7 +940,7 @@ Database Errors
 
 ---
 
-# Saturation
+## Saturation
 
 How close the system is to its capacity.
 
@@ -955,7 +955,7 @@ Connection Pool 98%
 
 ---
 
-# RED Method
+## RED Method
 
 RED stands for:
 
@@ -969,7 +969,7 @@ Primarily useful for request-driven services.
 
 ---
 
-# Rate
+## Rate
 
 Number of requests:
 
@@ -979,19 +979,19 @@ requests/second
 
 ---
 
-# Errors
+## Errors
 
 Number or percentage of failed requests.
 
 ---
 
-# Duration
+## Duration
 
 How long requests take.
 
 ---
 
-# USE Method
+## USE Method
 
 USE stands for:
 
@@ -1005,7 +1005,7 @@ It is particularly useful for infrastructure resources.
 
 ---
 
-# Utilization
+## Utilization
 
 Example:
 
@@ -1016,7 +1016,7 @@ Memory = 60%
 
 ---
 
-# Saturation
+## Saturation
 
 Example:
 
@@ -1027,7 +1027,7 @@ Disk I/O queue increasing
 
 ---
 
-# Errors
+## Errors
 
 Examples:
 
@@ -1039,7 +1039,7 @@ Hardware errors
 
 ---
 
-# RED vs USE
+## RED vs USE
 
 | Method | Best For |
 |---|---|
@@ -1049,7 +1049,7 @@ Hardware errors
 
 ---
 
-# SLI
+## SLI
 
 SLI means:
 
@@ -1067,7 +1067,7 @@ Successful Requests / Total Requests
 
 ---
 
-# SLO
+## SLO
 
 SLO means:
 
@@ -1083,7 +1083,7 @@ Example:
 
 ---
 
-# SLA
+## SLA
 
 SLA means:
 
@@ -1095,7 +1095,7 @@ It is a contractual or business commitment.
 
 ---
 
-# SLI vs SLO vs SLA
+## SLI vs SLO vs SLA
 
 ```text
 SLI
@@ -1117,7 +1117,7 @@ What we contractually promise
 
 ---
 
-# Example
+## Example
 
 ```text
 SLI:
@@ -1132,7 +1132,7 @@ SLA:
 
 ---
 
-# Error Budget
+## Error Budget
 
 If SLO is:
 
@@ -1154,7 +1154,7 @@ Error Budget
 
 ---
 
-# Monitoring Dashboards
+## Monitoring Dashboards
 
 A production dashboard may contain:
 
@@ -1173,7 +1173,7 @@ Alerts
 
 ---
 
-# Cluster Dashboard
+## Cluster Dashboard
 
 Example:
 
@@ -1189,7 +1189,7 @@ Disk Utilization:  52%
 
 ---
 
-# Node Dashboard
+## Node Dashboard
 
 Track:
 
@@ -1205,7 +1205,7 @@ Pressure Conditions
 
 ---
 
-# Pod Dashboard
+## Pod Dashboard
 
 Track:
 
@@ -1220,7 +1220,7 @@ Network
 
 ---
 
-# Application Dashboard
+## Application Dashboard
 
 Track:
 
@@ -1235,7 +1235,7 @@ Queue Length
 
 ---
 
-# Alerting
+## Alerting
 
 Monitoring without alerting may require humans to constantly watch dashboards.
 
@@ -1251,7 +1251,7 @@ Alert
 
 ---
 
-# Good Alerts
+## Good Alerts
 
 Good alerts are:
 
@@ -1265,7 +1265,7 @@ Stable
 
 ---
 
-# Bad Alerts
+## Bad Alerts
 
 Avoid alerts such as:
 
@@ -1277,7 +1277,7 @@ if there is no meaningful action associated with that condition.
 
 ---
 
-# Alert Fatigue
+## Alert Fatigue
 
 Too many alerts cause:
 
@@ -1295,7 +1295,7 @@ Slow Response
 
 ---
 
-# Alert Design
+## Alert Design
 
 An alert should ideally provide:
 
@@ -1310,7 +1310,7 @@ What should be checked?
 
 ---
 
-# Example Alert
+## Example Alert
 
 ```text
 CRITICAL
@@ -1333,7 +1333,7 @@ Payment requests failing
 
 ---
 
-# Thresholds
+## Thresholds
 
 Threshold-based monitoring uses conditions such as:
 
@@ -1347,7 +1347,7 @@ Thresholds are simple but can produce false positives if poorly chosen.
 
 ---
 
-# Baselines
+## Baselines
 
 A baseline describes normal behavior.
 
@@ -1365,7 +1365,7 @@ This may indicate an anomaly.
 
 ---
 
-# Anomaly Detection
+## Anomaly Detection
 
 Anomaly detection attempts to identify behavior that differs from normal patterns.
 
@@ -1389,7 +1389,7 @@ Misconfiguration
 
 ---
 
-# Monitoring Kubernetes Events
+## Monitoring Kubernetes Events
 
 Events provide useful operational information.
 
@@ -1408,7 +1408,7 @@ kubectl get events \
 
 ---
 
-# Example Event
+## Example Event
 
 ```text
 FailedScheduling
@@ -1422,7 +1422,7 @@ Insufficient CPU
 
 ---
 
-# Example Event
+## Example Event
 
 ```text
 FailedMount
@@ -1436,7 +1436,7 @@ Volume unavailable
 
 ---
 
-# Example Event
+## Example Event
 
 ```text
 BackOff
@@ -1446,7 +1446,7 @@ Potentially indicates repeated container startup failures.
 
 ---
 
-# Metrics Collection
+## Metrics Collection
 
 Metrics can be collected from:
 
@@ -1462,7 +1462,7 @@ Exporters
 
 ---
 
-# Metrics Aggregation
+## Metrics Aggregation
 
 A monitoring platform can collect metrics from many sources:
 
@@ -1479,7 +1479,7 @@ API ────┘
 
 ---
 
-# Monitoring Agents
+## Monitoring Agents
 
 Agents may run:
 
@@ -1492,7 +1492,7 @@ As DaemonSets
 
 ---
 
-# DaemonSet Monitoring Agent
+## DaemonSet Monitoring Agent
 
 A DaemonSet can run an agent on every node.
 
@@ -1515,7 +1515,7 @@ Telemetry
 
 ---
 
-# Node Exporter
+## Node Exporter
 
 Node Exporter exposes host-level metrics for Prometheus.
 
@@ -1541,7 +1541,7 @@ Prometheus
 
 ---
 
-# Metrics Server
+## Metrics Server
 
 Metrics Server provides resource metrics for Kubernetes workloads and nodes.
 
@@ -1561,7 +1561,7 @@ HPA
 
 ---
 
-# Metrics Server vs Prometheus
+## Metrics Server vs Prometheus
 
 | Feature | Metrics Server | Prometheus |
 |---|---|---|
@@ -1573,7 +1573,7 @@ HPA
 
 ---
 
-# `kubectl top`
+## `kubectl top`
 
 If Metrics Server is installed:
 
@@ -1590,7 +1590,7 @@ worker-1   250m         12%    2Gi            25%
 
 ---
 
-# Pod Metrics
+## Pod Metrics
 
 ```bash
 kubectl top pods
@@ -1604,7 +1604,7 @@ kubectl top pods -n production
 
 ---
 
-# Prometheus
+## Prometheus
 
 Prometheus is a monitoring and time-series database platform widely used in Kubernetes environments.
 
@@ -1619,7 +1619,7 @@ Alerting Integration
 
 ---
 
-# Prometheus Architecture
+## Prometheus Architecture
 
 ```text
 Applications
@@ -1640,7 +1640,7 @@ Prometheus
 
 ---
 
-# Pull-Based Monitoring
+## Pull-Based Monitoring
 
 Prometheus commonly uses a pull model.
 
@@ -1654,7 +1654,7 @@ Scrape
 
 ---
 
-# Metrics Endpoint
+## Metrics Endpoint
 
 A service may expose:
 
@@ -1671,7 +1671,7 @@ http_request_duration_seconds
 
 ---
 
-# Prometheus Service Discovery
+## Prometheus Service Discovery
 
 Kubernetes can provide dynamic discovery of:
 
@@ -1686,7 +1686,7 @@ This is important because Kubernetes workloads change frequently.
 
 ---
 
-# Prometheus Labels
+## Prometheus Labels
 
 Example:
 
@@ -1702,7 +1702,7 @@ Labels enable flexible querying.
 
 ---
 
-# High Cardinality
+## High Cardinality
 
 Too many unique label combinations can cause large metric storage and query costs.
 
@@ -1720,7 +1720,7 @@ These values may create enormous cardinality.
 
 ---
 
-# Monitoring Cardinality
+## Monitoring Cardinality
 
 Be careful with labels such as:
 
@@ -1743,7 +1743,7 @@ namespace
 
 ---
 
-# Monitoring and Capacity Planning
+## Monitoring and Capacity Planning
 
 Monitoring historical metrics helps forecast:
 
@@ -1757,7 +1757,7 @@ Pod Growth
 
 ---
 
-# Capacity Planning Example
+## Capacity Planning Example
 
 Current:
 
@@ -1779,7 +1779,7 @@ Future Capacity Requirement
 
 ---
 
-# Horizontal Scaling
+## Horizontal Scaling
 
 Monitoring can trigger:
 
@@ -1795,7 +1795,7 @@ HPA
 
 ---
 
-# Vertical Scaling
+## Vertical Scaling
 
 Monitoring can indicate the need for:
 
@@ -1811,7 +1811,7 @@ VPA
 
 ---
 
-# Cluster Scaling
+## Cluster Scaling
 
 Monitoring can identify:
 
@@ -1827,7 +1827,7 @@ Cluster Autoscaler
 
 ---
 
-# Monitoring and Autoscaling
+## Monitoring and Autoscaling
 
 ```text
 Metrics
@@ -1849,7 +1849,7 @@ More Nodes
 
 ---
 
-# Monitoring and Troubleshooting
+## Monitoring and Troubleshooting
 
 A common workflow:
 
@@ -1871,7 +1871,7 @@ Root Cause
 
 ---
 
-# Example Incident
+## Example Incident
 
 Alert:
 
@@ -1905,7 +1905,7 @@ Database connection saturation
 
 ---
 
-# Monitoring Security
+## Monitoring Security
 
 Monitoring systems can contain sensitive information.
 
@@ -1921,7 +1921,7 @@ Credentials
 
 ---
 
-# Monitoring RBAC
+## Monitoring RBAC
 
 Restrict access to:
 
@@ -1934,7 +1934,7 @@ Metrics APIs
 
 ---
 
-# Monitoring Credentials
+## Monitoring Credentials
 
 Avoid embedding credentials directly in:
 
@@ -1949,7 +1949,7 @@ Use appropriate Secret or identity mechanisms.
 
 ---
 
-# Monitoring Availability
+## Monitoring Availability
 
 Monitoring should itself be highly available for production-critical systems.
 
@@ -1963,7 +1963,7 @@ No Visibility
 
 ---
 
-# Monitoring the Monitoring System
+## Monitoring the Monitoring System
 
 Track:
 
@@ -1978,9 +1978,9 @@ Collector Health
 
 ---
 
-# Monitoring Best Practices
+## Monitoring Best Practices
 
-### 1. Monitor the Four Golden Signals
+#### 1. Monitor the Four Golden Signals
 
 ```text
 Latency
@@ -1991,7 +1991,7 @@ Saturation
 
 ---
 
-### 2. Monitor Infrastructure
+#### 2. Monitor Infrastructure
 
 Track:
 
@@ -2004,7 +2004,7 @@ Network
 
 ---
 
-### 3. Monitor Kubernetes Health
+#### 3. Monitor Kubernetes Health
 
 Track:
 
@@ -2018,7 +2018,7 @@ Scheduling
 
 ---
 
-### 4. Monitor Applications
+#### 4. Monitor Applications
 
 Track:
 
@@ -2031,19 +2031,19 @@ Dependencies
 
 ---
 
-### 5. Define SLOs
+#### 5. Define SLOs
 
 Do not monitor metrics without understanding service objectives.
 
 ---
 
-### 6. Build Actionable Alerts
+#### 6. Build Actionable Alerts
 
 Every critical alert should have a response path.
 
 ---
 
-### 7. Avoid Alert Fatigue
+#### 7. Avoid Alert Fatigue
 
 Tune:
 
@@ -2056,19 +2056,19 @@ Aggregation
 
 ---
 
-### 8. Monitor Capacity
+#### 8. Monitor Capacity
 
 Track long-term resource trends.
 
 ---
 
-### 9. Avoid High Cardinality
+#### 9. Avoid High Cardinality
 
 Keep labels bounded.
 
 ---
 
-### 10. Secure Monitoring
+#### 10. Secure Monitoring
 
 Use:
 
@@ -2081,13 +2081,13 @@ Least Privilege
 
 ---
 
-### 11. Integrate Metrics With Logs and Traces
+#### 11. Integrate Metrics With Logs and Traces
 
 Use the complete observability model.
 
 ---
 
-### 12. Test Monitoring
+#### 12. Test Monitoring
 
 Simulate:
 
@@ -2104,7 +2104,7 @@ Verify alerts.
 
 ---
 
-# Production Monitoring Checklist
+## Production Monitoring Checklist
 
 ```text
 ☑ Cluster monitoring
@@ -2137,7 +2137,7 @@ Verify alerts.
 
 ---
 
-# Hands-on Lab 1 – Node Metrics
+## Hands-on Lab 1 – Node Metrics
 
 If Metrics Server is installed:
 
@@ -2156,7 +2156,7 @@ for each node.
 
 ---
 
-# Hands-on Lab 2 – Pod Metrics
+## Hands-on Lab 2 – Pod Metrics
 
 Run:
 
@@ -2175,7 +2175,7 @@ Investigate why they consume those resources.
 
 ---
 
-# Hands-on Lab 3 – Generate CPU Load
+## Hands-on Lab 3 – Generate CPU Load
 
 Create a disposable workload that consumes CPU.
 
@@ -2189,7 +2189,7 @@ Observe the change in CPU utilization.
 
 ---
 
-# Hands-on Lab 4 – Memory Consumption
+## Hands-on Lab 4 – Memory Consumption
 
 Create a controlled test workload with increasing memory usage.
 
@@ -2206,7 +2206,7 @@ Use a disposable environment.
 
 ---
 
-# Hands-on Lab 5 – Monitor Pod Restarts
+## Hands-on Lab 5 – Monitor Pod Restarts
 
 Run:
 
@@ -2224,7 +2224,7 @@ Identify Pods with unusually high restart counts.
 
 ---
 
-# Hands-on Lab 6 – Kubernetes Events
+## Hands-on Lab 6 – Kubernetes Events
 
 Run:
 
@@ -2239,7 +2239,7 @@ Observe the resulting events.
 
 ---
 
-# Hands-on Lab 7 – Node Exporter
+## Hands-on Lab 7 – Node Exporter
 
 Deploy Node Exporter in a disposable cluster.
 
@@ -2256,7 +2256,7 @@ metrics.
 
 ---
 
-# Hands-on Lab 8 – Prometheus
+## Hands-on Lab 8 – Prometheus
 
 Deploy Prometheus.
 
@@ -2272,7 +2272,7 @@ Verify the target.
 
 ---
 
-# Hands-on Lab 9 – PromQL
+## Hands-on Lab 9 – PromQL
 
 Practice queries such as:
 
@@ -2290,7 +2290,7 @@ Then explore CPU and memory-related metrics available in your environment.
 
 ---
 
-# Hands-on Lab 10 – Grafana Dashboard
+## Hands-on Lab 10 – Grafana Dashboard
 
 Connect Grafana to Prometheus.
 
@@ -2307,7 +2307,7 @@ Latency
 
 ---
 
-# Hands-on Lab 11 – Alerting
+## Hands-on Lab 11 – Alerting
 
 Create a test alert:
 
@@ -2329,7 +2329,7 @@ Alert
 
 ---
 
-# Hands-on Lab 12 – SLI and SLO
+## Hands-on Lab 12 – SLI and SLO
 
 For a test application define:
 
@@ -2349,7 +2349,7 @@ Calculate the approximate error budget.
 
 ---
 
-# Hands-on Lab 13 – RED Dashboard
+## Hands-on Lab 13 – RED Dashboard
 
 Create panels for:
 
@@ -2363,7 +2363,7 @@ for a test service.
 
 ---
 
-# Hands-on Lab 14 – USE Dashboard
+## Hands-on Lab 14 – USE Dashboard
 
 For a test node create:
 
@@ -2377,7 +2377,7 @@ metrics.
 
 ---
 
-# Hands-on Lab 15 – End-to-End Monitoring
+## Hands-on Lab 15 – End-to-End Monitoring
 
 Build:
 
@@ -2405,9 +2405,9 @@ Events
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Monitoring Only CPU
+### 1. Monitoring Only CPU
 
 CPU alone does not indicate complete system health.
 
@@ -2425,75 +2425,75 @@ Latency
 
 ---
 
-## 2. Monitoring Without Alerts
+### 2. Monitoring Without Alerts
 
 Dashboards are useful, but critical conditions should generate alerts.
 
 ---
 
-## 3. Too Many Alerts
+### 3. Too Many Alerts
 
 This creates alert fatigue.
 
 ---
 
-## 4. No SLOs
+### 4. No SLOs
 
 Without objectives, it can be difficult to determine what actually matters.
 
 ---
 
-## 5. Ignoring Application Metrics
+### 5. Ignoring Application Metrics
 
 Infrastructure can look healthy while the application is failing.
 
 ---
 
-## 6. Ignoring Restarts
+### 6. Ignoring Restarts
 
 Frequent restarts are often an important failure signal.
 
 ---
 
-## 7. Ignoring OOMKilled
+### 7. Ignoring OOMKilled
 
 Memory-related failures can remain hidden without monitoring.
 
 ---
 
-## 8. Ignoring CPU Throttling
+### 8. Ignoring CPU Throttling
 
 A Pod may show moderate CPU usage but still experience throttling depending on its workload and limits.
 
 ---
 
-## 9. High-Cardinality Labels
+### 9. High-Cardinality Labels
 
 Avoid unbounded labels in Prometheus.
 
 ---
 
-## 10. No Capacity Planning
+### 10. No Capacity Planning
 
 Current health does not guarantee future capacity.
 
 ---
 
-## 11. Monitoring System Has No Monitoring
+### 11. Monitoring System Has No Monitoring
 
 A broken monitoring platform can create a dangerous visibility gap.
 
 ---
 
-## 12. No Security Controls
+### 12. No Security Controls
 
 Monitoring systems can contain sensitive infrastructure information.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Monitoring
+### Monitoring
 
 ```text
 Continuous observation of system health and behavior
@@ -2501,7 +2501,7 @@ Continuous observation of system health and behavior
 
 ---
 
-## Metrics
+### Metrics
 
 ```text
 Numerical measurements of system behavior
@@ -2509,7 +2509,7 @@ Numerical measurements of system behavior
 
 ---
 
-## Gauge
+### Gauge
 
 ```text
 Value that can increase or decrease
@@ -2517,7 +2517,7 @@ Value that can increase or decrease
 
 ---
 
-## Counter
+### Counter
 
 ```text
 Monotonically increasing value that can reset
@@ -2525,7 +2525,7 @@ Monotonically increasing value that can reset
 
 ---
 
-## Histogram
+### Histogram
 
 ```text
 Measures distributions across buckets
@@ -2533,7 +2533,7 @@ Measures distributions across buckets
 
 ---
 
-## Golden Signals
+### Golden Signals
 
 ```text
 Latency
@@ -2544,7 +2544,7 @@ Saturation
 
 ---
 
-## RED
+### RED
 
 ```text
 Rate
@@ -2554,7 +2554,7 @@ Duration
 
 ---
 
-## USE
+### USE
 
 ```text
 Utilization
@@ -2564,7 +2564,7 @@ Errors
 
 ---
 
-## SLI
+### SLI
 
 ```text
 Measured service indicator
@@ -2572,7 +2572,7 @@ Measured service indicator
 
 ---
 
-## SLO
+### SLO
 
 ```text
 Target for an SLI
@@ -2580,7 +2580,7 @@ Target for an SLI
 
 ---
 
-## SLA
+### SLA
 
 ```text
 Contractual/business commitment
@@ -2588,7 +2588,7 @@ Contractual/business commitment
 
 ---
 
-## Error Budget
+### Error Budget
 
 ```text
 Allowed failure within an SLO
@@ -2596,7 +2596,7 @@ Allowed failure within an SLO
 
 ---
 
-## Metrics Server
+### Metrics Server
 
 ```text
 Provides resource metrics commonly used by kubectl top and HPA
@@ -2604,7 +2604,7 @@ Provides resource metrics commonly used by kubectl top and HPA
 
 ---
 
-## Prometheus
+### Prometheus
 
 ```text
 Metrics collection, storage, querying, and alerting platform
@@ -2612,7 +2612,7 @@ Metrics collection, storage, querying, and alerting platform
 
 ---
 
-## Grafana
+### Grafana
 
 ```text
 Visualization and dashboard platform
@@ -2620,7 +2620,7 @@ Visualization and dashboard platform
 
 ---
 
-## Node Exporter
+### Node Exporter
 
 ```text
 Exposes host-level metrics for Prometheus
@@ -2628,7 +2628,7 @@ Exposes host-level metrics for Prometheus
 
 ---
 
-## Alert
+### Alert
 
 ```text
 Notification generated when a monitored condition requires attention
@@ -2636,7 +2636,7 @@ Notification generated when a monitored condition requires attention
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 View nodes:
 
@@ -2731,9 +2731,9 @@ kubectl get --raw "/apis/metrics.k8s.io/v1beta1/pods"
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Kubernetes monitoring?
 - What is the difference between monitoring and observability?
@@ -2755,7 +2755,7 @@ kubectl get --raw "/apis/metrics.k8s.io/v1beta1/pods"
 
 ---
 
-## Intermediate
+### Intermediate
 
 - What should you monitor in a Kubernetes cluster?
 - How do you monitor node CPU and memory?
@@ -2776,7 +2776,7 @@ kubectl get --raw "/apis/metrics.k8s.io/v1beta1/pods"
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a production Kubernetes monitoring architecture.
 - How would you monitor a 500-node Kubernetes cluster?
@@ -2797,13 +2797,13 @@ kubectl get --raw "/apis/metrics.k8s.io/v1beta1/pods"
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > A Pod is running, but users are receiving errors. What would you check?
 
-### Answer
+#### Answer
 
 Do not assume that:
 
@@ -2835,13 +2835,13 @@ A Pod can be Running while its application is unhealthy.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > CPU usage is only 50%, but the application is slow. What else would you investigate?
 
-### Answer
+#### Answer
 
 Check:
 
@@ -2860,13 +2860,13 @@ CPU utilization alone is not enough.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > A Pod is repeatedly restarting. How would you investigate?
 
-### Answer
+#### Answer
 
 Check:
 
@@ -2905,13 +2905,13 @@ Dependency Failure
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What is the difference between Metrics Server and Prometheus?
 
-### Answer
+#### Answer
 
 Metrics Server focuses primarily on Kubernetes resource metrics such as:
 
@@ -2951,13 +2951,13 @@ General Monitoring Platform
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > What are the four Golden Signals?
 
-### Answer
+#### Answer
 
 ```text
 Latency
@@ -2970,13 +2970,13 @@ They provide a practical high-level view of service health.
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > What is the difference between SLI, SLO, and SLA?
 
-### Answer
+#### Answer
 
 ```text
 SLI
@@ -2998,13 +2998,13 @@ What we contractually promise
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > Prometheus memory usage keeps increasing. What might be wrong?
 
-### Answer
+#### Answer
 
 One possibility is:
 
@@ -3034,13 +3034,13 @@ Query Load
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How would you monitor a Kubernetes cluster for production readiness?
 
-### Answer
+#### Answer
 
 Monitor:
 
@@ -3080,7 +3080,7 @@ Tracing
 
 ---
 
-# Production Monitoring Architecture
+## Production Monitoring Architecture
 
 ```text
                          Kubernetes Cluster
@@ -3117,7 +3117,7 @@ Tracing
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Monitoring provides continuous visibility into Kubernetes infrastructure and applications.
 
@@ -3275,9 +3275,9 @@ Security
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 59 – Metrics Server
+## Chapter 59 – Metrics Server
 
 Topics will include:
 

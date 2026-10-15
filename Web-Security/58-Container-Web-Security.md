@@ -1,12 +1,12 @@
 # 58-Container-Web-Security.md
 
-# Part 1 — Introduction to Container Web Security, Container Architecture, Isolation, Images, and Enterprise Foundations
+## Part 1 — Introduction to Container Web Security, Container Architecture, Isolation, Images, and Enterprise Foundations
 
 > **"Container Web Security is the practice of protecting containerized applications, container images, runtime environments, orchestration platforms, and supporting infrastructure throughout the application lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Container Web Security?
+## What is Container Web Security?
 
 Container Web Security focuses on protecting applications running inside containers as well as the supporting ecosystem.
 
@@ -59,7 +59,7 @@ Security should be incorporated throughout the container lifecycle rather than o
 
 ---
 
-# Why Container Security Matters
+## Why Container Security Matters
 
 Modern organizations widely use containers because they provide:
 
@@ -74,7 +74,7 @@ However, containers introduce new security considerations that require dedicated
 
 ---
 
-# Evolution of Application Deployment
+## Evolution of Application Deployment
 
 ```
 Physical Servers
@@ -96,7 +96,7 @@ Each evolution improves operational flexibility while introducing different secu
 
 ---
 
-# Virtual Machines vs Containers
+## Virtual Machines vs Containers
 
 | Feature | Virtual Machine | Container |
 |----------|-----------------|-----------|
@@ -111,7 +111,7 @@ Containers share the host operating system kernel while maintaining isolated exe
 
 ---
 
-# Container Architecture
+## Container Architecture
 
 ```
 Application
@@ -145,7 +145,7 @@ The container runtime manages container execution while the host operating syste
 
 ---
 
-# Container Components
+## Container Components
 
 ```
 Container Ecosystem
@@ -173,7 +173,7 @@ Each component should be considered during security planning.
 
 ---
 
-# Understanding Container Images
+## Understanding Container Images
 
 A container image is a packaged, immutable template containing everything required to run an application.
 
@@ -199,7 +199,7 @@ Images should be managed using secure software development and governance practi
 
 ---
 
-# Image Lifecycle
+## Image Lifecycle
 
 ```
 Development
@@ -233,7 +233,7 @@ Security should be maintained throughout the image lifecycle.
 
 ---
 
-# Container Runtime
+## Container Runtime
 
 The container runtime is responsible for executing and managing containers.
 
@@ -253,7 +253,7 @@ The runtime enforces isolation, resource management, and execution policies.
 
 ---
 
-# Container Isolation
+## Container Isolation
 
 Containers isolate applications from one another while sharing the host kernel.
 
@@ -275,7 +275,7 @@ Isolation reduces interference between workloads but should be strengthened with
 
 ---
 
-# Namespaces (Conceptual)
+## Namespaces (Conceptual)
 
 Namespaces provide logical separation between containers.
 
@@ -303,7 +303,7 @@ Namespaces help ensure each container operates within its own isolated environme
 
 ---
 
-# Control Groups (cgroups) (Conceptual)
+## Control Groups (cgroups) (Conceptual)
 
 Control groups help allocate and manage system resources.
 
@@ -329,7 +329,7 @@ Resource controls improve stability and help prevent resource exhaustion.
 
 ---
 
-# Shared Responsibility
+## Shared Responsibility
 
 Container security requires collaboration.
 
@@ -361,7 +361,7 @@ Every stakeholder contributes to maintaining secure containerized applications.
 
 ---
 
-# Security by Design
+## Security by Design
 
 Container security should begin during application design.
 
@@ -393,7 +393,7 @@ Early planning reduces operational risk later in the lifecycle.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Container security relies on multiple defensive layers.
 
@@ -425,7 +425,7 @@ No single security mechanism should be relied upon exclusively.
 
 ---
 
-# Enterprise Container Architecture
+## Enterprise Container Architecture
 
 ```
                  Business Requirements
@@ -477,7 +477,7 @@ This architecture demonstrates how security is integrated throughout the contain
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational e-commerce company deploys customer-facing web applications using containerized microservices.
 
@@ -513,7 +513,7 @@ Development teams create standardized images, platform engineers manage the runt
 
 ---
 
-# Benefits of Container Security
+## Benefits of Container Security
 
 ```
 Business Benefits
@@ -539,7 +539,7 @@ Business Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the architecture of a containerized web application.
 2. Identify the major container ecosystem components.
@@ -551,7 +551,7 @@ Business Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Container Web Security?
 2. How do containers differ from virtual machines?
@@ -566,7 +566,7 @@ Business Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design containerized applications with security from the beginning.
 - Use standardized and well-maintained container images.
@@ -579,7 +579,7 @@ Business Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating container security as only a runtime concern.
 - Ignoring the security of container images.
@@ -591,7 +591,7 @@ Business Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Container Web Security protects the complete lifecycle of containerized applications.
 - Containers differ from virtual machines by sharing the host operating system kernel.
@@ -599,15 +599,15 @@ Business Benefits
 - Security by Design, Defense in Depth, and shared responsibility strengthen container security.
 - Mature container security programs integrate governance, monitoring, and continuous improvement throughout the application lifecycle.
 
-# 58-Container-Web-Security.md
+## 58-Container-Web-Security.md
 
-# Part 2 — Secure Container Images, Registries, Runtime Security, Networking, Storage, and Enterprise Governance
+## Part 2 — Secure Container Images, Registries, Runtime Security, Networking, Storage, and Enterprise Governance
 
 > **"Container security begins long before a container starts running. Secure image creation, trusted registries, runtime protection, network isolation, and storage governance collectively establish a trustworthy container ecosystem."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -624,7 +624,7 @@ After completing this part, you will understand:
 
 ---
 
-# Secure Container Images
+## Secure Container Images
 
 Container images should be built using secure engineering practices.
 
@@ -652,7 +652,7 @@ Secure images provide the foundation for trustworthy containerized applications.
 
 ---
 
-# Characteristics of Secure Images
+## Characteristics of Secure Images
 
 ```
 Secure Images
@@ -680,7 +680,7 @@ Smaller, well-maintained images generally simplify maintenance and operational m
 
 ---
 
-# Base Image Selection
+## Base Image Selection
 
 Choosing an appropriate base image is an important architectural decision.
 
@@ -704,7 +704,7 @@ Organizations should establish internal standards for selecting and maintaining 
 
 ---
 
-# Image Lifecycle
+## Image Lifecycle
 
 ```
 Planning
@@ -742,7 +742,7 @@ Each stage should include appropriate review and governance activities.
 
 ---
 
-# Image Versioning
+## Image Versioning
 
 Container images should follow a documented versioning strategy.
 
@@ -770,7 +770,7 @@ Version tracking improves traceability and operational consistency.
 
 ---
 
-# Image Metadata
+## Image Metadata
 
 Metadata improves visibility into container images.
 
@@ -800,7 +800,7 @@ Well-maintained metadata simplifies asset management and auditing.
 
 ---
 
-# Container Registry
+## Container Registry
 
 A container registry stores and distributes container images.
 
@@ -824,7 +824,7 @@ The registry is a critical enterprise asset and should be protected accordingly.
 
 ---
 
-# Registry Components
+## Registry Components
 
 ```
 Container Registry
@@ -852,7 +852,7 @@ Governance should apply to every stored image.
 
 ---
 
-# Registry Security Principles
+## Registry Security Principles
 
 ```
 Registry Security
@@ -880,7 +880,7 @@ Strong registry controls help preserve software integrity.
 
 ---
 
-# Runtime Security
+## Runtime Security
 
 Runtime security focuses on protecting containers after deployment.
 
@@ -904,7 +904,7 @@ Runtime protection complements secure image creation and deployment practices.
 
 ---
 
-# Runtime Security Objectives
+## Runtime Security Objectives
 
 ```
 Runtime Security
@@ -932,7 +932,7 @@ Multiple controls work together to improve runtime resilience.
 
 ---
 
-# Container Networking
+## Container Networking
 
 Containerized applications communicate through virtual networks.
 
@@ -960,7 +960,7 @@ Network architecture should be documented and reviewed throughout the applicatio
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Container workloads should be logically separated according to business and architectural requirements.
 
@@ -986,7 +986,7 @@ Segmentation limits unnecessary communication between workloads.
 
 ---
 
-# Storage Security
+## Storage Security
 
 Containers frequently use persistent storage for application data.
 
@@ -1010,7 +1010,7 @@ Storage governance should include lifecycle management, access control, and back
 
 ---
 
-# Storage Components
+## Storage Components
 
 ```
 Storage
@@ -1038,7 +1038,7 @@ Storage planning should align with organizational data governance policies.
 
 ---
 
-# Configuration Management
+## Configuration Management
 
 Container configuration should remain separate from application logic whenever practical.
 
@@ -1062,7 +1062,7 @@ Configuration should follow documented governance procedures.
 
 ---
 
-# Configuration Governance
+## Configuration Governance
 
 ```
 Configuration
@@ -1090,7 +1090,7 @@ Consistent configuration management improves operational stability.
 
 ---
 
-# Enterprise Container Workflow
+## Enterprise Container Workflow
 
 ```
 Application Source
@@ -1124,7 +1124,7 @@ Every stage contributes to secure and reliable container operations.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider deploys patient-facing applications using containerized microservices.
 
@@ -1156,7 +1156,7 @@ Container images are standardized, centrally managed, and documented. Runtime en
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1171,7 +1171,7 @@ Container images are standardized, centrally managed, and documented. Runtime en
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1184,7 +1184,7 @@ Container images are standardized, centrally managed, and documented. Runtime en
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a secure container image lifecycle.
 2. Create a governance policy for container registries.
@@ -1196,7 +1196,7 @@ Container images are standardized, centrally managed, and documented. Runtime en
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are secure container images important?
 2. What factors should be considered when selecting a base image?
@@ -1211,7 +1211,7 @@ Container images are standardized, centrally managed, and documented. Runtime en
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use trusted and standardized base images.
 - Maintain a documented image lifecycle.
@@ -1224,7 +1224,7 @@ Container images are standardized, centrally managed, and documented. Runtime en
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Using inconsistent or unmanaged base images.
 - Treating registries as simple storage locations.
@@ -1236,7 +1236,7 @@ Container images are standardized, centrally managed, and documented. Runtime en
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure container images and trusted registries establish the foundation for container security.
 - Runtime security, network segmentation, and storage governance complement image security.
@@ -1244,15 +1244,15 @@ Container images are standardized, centrally managed, and documented. Runtime en
 - Enterprise container platforms benefit from centralized governance, monitoring, and asset management.
 - Mature container security integrates image management, runtime protection, networking, storage, and continuous operational improvement.
 
-# 58-Container-Web-Security.md
+## 58-Container-Web-Security.md
 
-# Part 3 — Container Orchestration, Identity & Access Management, Monitoring, Logging, Compliance, Incident Response, and Enterprise Operations
+## Part 3 — Container Orchestration, Identity & Access Management, Monitoring, Logging, Compliance, Incident Response, and Enterprise Operations
 
 > **"Container security extends beyond individual containers. Enterprise environments require secure orchestration, strong identity management, centralized monitoring, comprehensive logging, governance, and continuous operational visibility."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1269,7 +1269,7 @@ After completing this part, you will understand:
 
 ---
 
-# Container Orchestration
+## Container Orchestration
 
 Container orchestration platforms automate the deployment, scaling, networking, and lifecycle management of containers.
 
@@ -1297,7 +1297,7 @@ The orchestration platform becomes a critical part of the enterprise infrastruct
 
 ---
 
-# Responsibilities of an Orchestrator
+## Responsibilities of an Orchestrator
 
 ```
 Container Orchestrator
@@ -1325,7 +1325,7 @@ Operational reliability depends on secure orchestration practices.
 
 ---
 
-# Enterprise Orchestration Architecture
+## Enterprise Orchestration Architecture
 
 ```
 Developers
@@ -1355,7 +1355,7 @@ Every component should follow documented security and governance policies.
 
 ---
 
-# Identity and Access Management (IAM)
+## Identity and Access Management (IAM)
 
 Every user, service, and automation component interacting with the container platform should have a managed identity.
 
@@ -1383,7 +1383,7 @@ Proper IAM improves accountability and operational control.
 
 ---
 
-# Identity Types
+## Identity Types
 
 ```
 Platform Identities
@@ -1411,7 +1411,7 @@ Permissions should align with organizational roles and responsibilities.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Only the permissions necessary for assigned responsibilities should be granted.
 
@@ -1435,7 +1435,7 @@ Limiting privileges reduces operational and security risks.
 
 ---
 
-# Access Governance
+## Access Governance
 
 ```
 Access Request
@@ -1465,7 +1465,7 @@ Access reviews should occur regularly to ensure permissions remain appropriate.
 
 ---
 
-# Configuration Governance
+## Configuration Governance
 
 Container platform configurations should be centrally managed.
 
@@ -1493,7 +1493,7 @@ Configuration consistency improves reliability and simplifies maintenance.
 
 ---
 
-# Configuration Components
+## Configuration Components
 
 ```
 Platform Configuration
@@ -1521,7 +1521,7 @@ Every configuration change should follow a documented governance process.
 
 ---
 
-# Monitoring
+## Monitoring
 
 Continuous monitoring provides visibility into platform health and application operations.
 
@@ -1549,7 +1549,7 @@ Monitoring supports operational awareness and timely response to issues.
 
 ---
 
-# Monitoring Areas
+## Monitoring Areas
 
 ```
 Container Monitoring
@@ -1577,7 +1577,7 @@ Comprehensive monitoring improves operational resilience.
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Centralized logging supports troubleshooting, governance, and operational investigations.
 
@@ -1605,7 +1605,7 @@ Logs should be retained according to organizational policies while protecting se
 
 ---
 
-# Important Audit Events
+## Important Audit Events
 
 ```
 Audit Events
@@ -1633,7 +1633,7 @@ Audit records improve accountability and governance.
 
 ---
 
-# Compliance Integration
+## Compliance Integration
 
 Container platforms should support organizational compliance objectives.
 
@@ -1661,7 +1661,7 @@ Compliance activities should become part of routine operational processes.
 
 ---
 
-# Risk Management
+## Risk Management
 
 Operational risks should be reviewed continuously.
 
@@ -1693,7 +1693,7 @@ Risk management helps maintain a resilient container platform.
 
 ---
 
-# Common Risk Categories
+## Common Risk Categories
 
 ```
 Container Risks
@@ -1721,7 +1721,7 @@ Risk categorization supports prioritization and informed decision-making.
 
 ---
 
-# Incident Response
+## Incident Response
 
 Container environments should integrate with organizational incident response procedures.
 
@@ -1753,7 +1753,7 @@ Operational feedback strengthens future platform security.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -1779,7 +1779,7 @@ Continuous improvement supports long-term operational excellence.
 
 ---
 
-# Enterprise Container Security Architecture
+## Enterprise Container Security Architecture
 
 ```
               Container Registry
@@ -1817,7 +1817,7 @@ Security, monitoring, and governance operate together across the entire containe
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization deploys hundreds of containerized services across multiple environments.
 
@@ -1849,7 +1849,7 @@ Platform engineers manage orchestration, security teams define governance polici
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1864,7 +1864,7 @@ Platform engineers manage orchestration, security teams define governance polici
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1877,7 +1877,7 @@ Platform engineers manage orchestration, security teams define governance polici
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the architecture of a container orchestration platform.
 2. Identify the identities interacting with the platform.
@@ -1889,7 +1889,7 @@ Platform engineers manage orchestration, security teams define governance polici
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is container orchestration?
 2. Why is Identity and Access Management important for container platforms?
@@ -1904,7 +1904,7 @@ Platform engineers manage orchestration, security teams define governance polici
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply strong IAM controls throughout the container platform.
 - Enforce least-privilege access for users and services.
@@ -1917,7 +1917,7 @@ Platform engineers manage orchestration, security teams define governance polici
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Granting excessive administrative permissions.
 - Managing configurations outside version control.
@@ -1929,7 +1929,7 @@ Platform engineers manage orchestration, security teams define governance polici
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure container orchestration requires governance, strong IAM, and configuration management.
 - Centralized monitoring and logging improve operational visibility and accountability.
@@ -1937,15 +1937,15 @@ Platform engineers manage orchestration, security teams define governance polici
 - Incident response and lessons learned should drive continuous improvement.
 - Mature container platforms integrate security, operations, and governance throughout the application lifecycle.
 
-# 58-Container-Web-Security.md
+## 58-Container-Web-Security.md
 
-# Part 4 — Enterprise Governance, Zero Trust, Container Supply Chain Security, Security Maturity, Best Practices, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, Container Supply Chain Security, Security Maturity, Best Practices, and Chapter Summary
 
 > **"Container Web Security is most effective when security is integrated throughout the entire container lifecycle—from application development and image creation to runtime operations, orchestration, governance, and continuous monitoring."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1962,7 +1962,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Container Governance
+## Enterprise Container Governance
 
 Container environments should operate under standardized organizational governance.
 
@@ -1994,7 +1994,7 @@ Governance ensures that container platforms remain secure, consistent, and align
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Container Governance
@@ -2024,7 +2024,7 @@ Documented governance enables consistent security practices across development a
 
 ---
 
-# Zero Trust for Containers
+## Zero Trust for Containers
 
 Zero Trust principles extend to containerized environments.
 
@@ -2052,7 +2052,7 @@ Every request should be authenticated, authorized, and evaluated according to or
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -2080,7 +2080,7 @@ Applying these principles reduces unnecessary trust relationships across the con
 
 ---
 
-# Container Supply Chain Security
+## Container Supply Chain Security
 
 The integrity of a containerized application depends on every component involved in its creation and delivery.
 
@@ -2110,7 +2110,7 @@ Protecting the complete supply chain improves software integrity and operational
 
 ---
 
-# Supply Chain Governance
+## Supply Chain Governance
 
 ```
 Component Selection
@@ -2148,7 +2148,7 @@ Every stage should follow documented governance procedures.
 
 ---
 
-# Software Bill of Materials (SBOM)
+## Software Bill of Materials (SBOM)
 
 An SBOM provides a structured inventory of software components included within a container image.
 
@@ -2178,7 +2178,7 @@ Maintaining accurate SBOMs improves visibility, governance, and lifecycle manage
 
 ---
 
-# Benefits of SBOMs
+## Benefits of SBOMs
 
 ```
 SBOM Benefits
@@ -2206,7 +2206,7 @@ SBOMs provide valuable context for software maintenance and operational planning
 
 ---
 
-# Backup and Recovery
+## Backup and Recovery
 
 Critical container platform assets should be protected.
 
@@ -2234,7 +2234,7 @@ Regular recovery exercises improve confidence in operational resilience.
 
 ---
 
-# Business Continuity
+## Business Continuity
 
 Container platforms should support organizational continuity planning.
 
@@ -2262,7 +2262,7 @@ Business continuity planning should include container infrastructure, registries
 
 ---
 
-# Disaster Recovery Considerations
+## Disaster Recovery Considerations
 
 ```
 Recovery Planning
@@ -2290,7 +2290,7 @@ Recovery plans should be reviewed and updated regularly.
 
 ---
 
-# Continuous Verification
+## Continuous Verification
 
 Security verification should continue throughout the container lifecycle.
 
@@ -2322,7 +2322,7 @@ Continuous verification ensures security assumptions remain appropriate as envir
 
 ---
 
-# Enterprise Container Security Maturity Model
+## Enterprise Container Security Maturity Model
 
 ```
 Level 1
@@ -2361,7 +2361,7 @@ Organizations mature by improving governance, automation, monitoring, and operat
 
 ---
 
-# Characteristics of Mature Container Security
+## Characteristics of Mature Container Security
 
 ```
 Mature Container Security
@@ -2389,7 +2389,7 @@ Mature Container Security
 
 ---
 
-# Enterprise Container Architecture
+## Enterprise Container Architecture
 
 ```
                  Business Requirements
@@ -2447,7 +2447,7 @@ This architecture demonstrates the integration of secure development, operations
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution operates hundreds of containerized microservices supporting online banking platforms.
 
@@ -2483,7 +2483,7 @@ Engineering teams maintain standardized container images, platform administrator
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Standardized Container Images
@@ -2509,7 +2509,7 @@ Engineering teams maintain standardized container images, platform administrator
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2522,9 +2522,9 @@ Engineering teams maintain standardized container images, platform administrator
 
 ---
 
-# Container Web Security Quick Revision
+## Container Web Security Quick Revision
 
-## Container Lifecycle
+### Container Lifecycle
 
 ```
 Development
@@ -2552,7 +2552,7 @@ Monitoring
 
 ---
 
-## Core Security Principles
+### Core Security Principles
 
 ```
 Security by Design
@@ -2580,7 +2580,7 @@ Continuous Improvement
 
 ---
 
-## Operational Lifecycle
+### Operational Lifecycle
 
 ```
 Planning
@@ -2608,7 +2608,7 @@ Optimization
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise container platform architecture for a web application.
 2. Identify trust boundaries between registries, orchestration platforms, and workloads.
@@ -2620,7 +2620,7 @@ Optimization
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Container Web Security?
 2. Why should Zero Trust principles be applied to container platforms?
@@ -2635,7 +2635,7 @@ Optimization
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Build security into the entire container lifecycle.
 - Standardize and maintain trusted container images.
@@ -2648,7 +2648,7 @@ Optimization
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating container security as only a runtime responsibility.
 - Using unmanaged or inconsistent container images.
@@ -2660,7 +2660,7 @@ Optimization
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

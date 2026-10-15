@@ -1,12 +1,12 @@
 # 06-Web-Browsers.md
 
-# Part 1 — Introduction to Web Browsers, Browser Architecture, Rendering Engines, Navigation, and Browser Security Fundamentals
+## Part 1 — Introduction to Web Browsers, Browser Architecture, Rendering Engines, Navigation, and Browser Security Fundamentals
 
 > **"A browser is much more than a program that displays websites. It is a complex execution environment responsible for networking, rendering, JavaScript execution, storage, process isolation, and enforcing critical security boundaries."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -24,7 +24,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 When you type:
 
@@ -86,7 +86,7 @@ A browser coordinates every step.
 
 ---
 
-# What is a Web Browser?
+## What is a Web Browser?
 
 A **Web Browser** is software that retrieves, interprets, executes, and displays web content.
 
@@ -103,7 +103,7 @@ Modern browsers implement standardized web technologies to ensure websites behav
 
 ---
 
-# Responsibilities of a Browser
+## Responsibilities of a Browser
 
 A browser performs many tasks:
 
@@ -120,7 +120,7 @@ A browser performs many tasks:
 
 ---
 
-# Browser Overview
+## Browser Overview
 
 ```
 User
@@ -156,7 +156,7 @@ Display
 
 ---
 
-# High-Level Browser Architecture
+## High-Level Browser Architecture
 
 ```
 +--------------------------------------+
@@ -190,7 +190,7 @@ Display
 
 ---
 
-# Browser User Interface (UI)
+## Browser User Interface (UI)
 
 The Browser UI includes:
 
@@ -214,7 +214,7 @@ This is the visible portion users interact with.
 
 ---
 
-# Browser Process
+## Browser Process
 
 The browser process coordinates everything.
 
@@ -241,7 +241,7 @@ Renderer Processes
 
 ---
 
-# Modern Browser Architecture
+## Modern Browser Architecture
 
 Most modern browsers use a **multi-process architecture**.
 
@@ -267,7 +267,7 @@ This improves stability and security.
 
 ---
 
-# Why Multiple Processes?
+## Why Multiple Processes?
 
 Suppose one webpage crashes.
 
@@ -299,7 +299,7 @@ This isolates failures.
 
 ---
 
-# Browser Components
+## Browser Components
 
 A browser contains several major components.
 
@@ -337,7 +337,7 @@ Operating System
 
 ---
 
-# Browser Engine
+## Browser Engine
 
 The Browser Engine acts as the coordinator.
 
@@ -366,7 +366,7 @@ Networking
 
 ---
 
-# Rendering Engine
+## Rendering Engine
 
 The Rendering Engine displays webpages.
 
@@ -390,7 +390,7 @@ No Display
 
 ---
 
-# Popular Rendering Engines
+## Popular Rendering Engines
 
 | Browser | Rendering Engine |
 |----------|------------------|
@@ -404,7 +404,7 @@ Each engine implements web standards with minor differences.
 
 ---
 
-# JavaScript Engine
+## JavaScript Engine
 
 JavaScript engines execute JavaScript code.
 
@@ -419,7 +419,7 @@ Examples:
 
 ---
 
-# Rendering Engine vs JavaScript Engine
+## Rendering Engine vs JavaScript Engine
 
 | Rendering Engine | JavaScript Engine |
 |-----------------|-------------------|
@@ -431,7 +431,7 @@ Both engines work closely together.
 
 ---
 
-# Browser Navigation
+## Browser Navigation
 
 When a URL is entered:
 
@@ -467,7 +467,7 @@ The browser coordinates every stage.
 
 ---
 
-# Browser Navigation Flow
+## Browser Navigation Flow
 
 ```
 URL
@@ -507,7 +507,7 @@ Rendered Page
 
 ---
 
-# Browser Networking
+## Browser Networking
 
 The browser downloads:
 
@@ -523,7 +523,7 @@ Each resource typically requires one or more network requests.
 
 ---
 
-# Browser Cache
+## Browser Cache
 
 Frequently used resources are cached.
 
@@ -551,7 +551,7 @@ Caching improves performance and reduces bandwidth usage.
 
 ---
 
-# Browser Storage
+## Browser Storage
 
 Browsers store information using:
 
@@ -565,7 +565,7 @@ These mechanisms are covered in later chapters.
 
 ---
 
-# GPU Process
+## GPU Process
 
 Modern browsers offload graphics work.
 
@@ -590,7 +590,7 @@ GPU acceleration improves:
 
 ---
 
-# Multi-Process Isolation
+## Multi-Process Isolation
 
 Example:
 
@@ -612,7 +612,7 @@ Each process is isolated from the others to reduce the impact of crashes and cer
 
 ---
 
-# Browser Sandboxing
+## Browser Sandboxing
 
 Each renderer operates inside a restricted environment.
 
@@ -632,7 +632,7 @@ Sandboxing limits direct access to the operating system.
 
 ---
 
-# Why Sandboxing Matters
+## Why Sandboxing Matters
 
 Suppose malicious JavaScript executes.
 
@@ -668,7 +668,7 @@ Additional security controls may still be required depending on the vulnerabilit
 
 ---
 
-# Browser Security Responsibilities
+## Browser Security Responsibilities
 
 Browsers enforce many security mechanisms.
 
@@ -686,7 +686,7 @@ These topics are explored in later sections.
 
 ---
 
-# Enterprise Browser Environment
+## Enterprise Browser Environment
 
 Large organizations often manage browsers centrally.
 
@@ -720,7 +720,7 @@ Administrative controls may include:
 
 ---
 
-# Browser Lifecycle
+## Browser Lifecycle
 
 ```
 User Opens URL
@@ -762,7 +762,7 @@ This cycle repeats as users navigate between pages.
 
 ---
 
-# Real Enterprise Example
+## Real Enterprise Example
 
 An employee accesses:
 
@@ -812,7 +812,7 @@ Each stage is protected by browser security features.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using any modern browser:
 
@@ -829,7 +829,7 @@ Using any modern browser:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a Web Browser?
 2. What are the primary responsibilities of a browser?
@@ -844,7 +844,7 @@ Using any modern browser:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Keep browsers updated to the latest stable version.
 - Enable automatic security updates.
@@ -856,7 +856,7 @@ Using any modern browser:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming all browsers behave identically.
 - Installing excessive browser extensions.
@@ -866,7 +866,7 @@ Using any modern browser:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A browser is a sophisticated platform that handles networking, rendering, JavaScript execution, storage, and security.
 - Modern browsers use multi-process architectures for improved stability and isolation.
@@ -1815,15 +1815,15 @@ Using Developer Tools:
 
 ```
 
-# 06-Web-Browsers.md
+## 06-Web-Browsers.md
 
-# Part 3 — JavaScript Execution, Event Loop, Browser Storage, Cookies, Same-Origin Policy (SOP), CORS, and Browser Security Mechanisms
+## Part 3 — JavaScript Execution, Event Loop, Browser Storage, Cookies, Same-Origin Policy (SOP), CORS, and Browser Security Mechanisms
 
 > **"Modern browsers are secure application runtimes. They execute JavaScript, manage storage, isolate websites, enforce permissions, and implement security mechanisms that protect users from malicious web applications."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1845,7 +1845,7 @@ After completing this part, you will understand:
 
 ---
 
-# Browser Execution Environment
+## Browser Execution Environment
 
 A browser is not just a renderer.
 
@@ -1873,7 +1873,7 @@ Browser
 
 ---
 
-# JavaScript Engine
+## JavaScript Engine
 
 The JavaScript Engine executes JavaScript code.
 
@@ -1896,7 +1896,7 @@ Popular engines:
 
 ---
 
-# JavaScript Execution Flow
+## JavaScript Execution Flow
 
 ```
 JavaScript
@@ -1922,7 +1922,7 @@ Modern engines use Just-In-Time (JIT) compilation to improve performance.
 
 ---
 
-# JavaScript Memory
+## JavaScript Memory
 
 Memory is divided into two major areas.
 
@@ -1938,7 +1938,7 @@ Memory
 
 ---
 
-# Heap Memory
+## Heap Memory
 
 The Heap stores:
 
@@ -1961,7 +1961,7 @@ Objects remain in memory until no longer referenced.
 
 ---
 
-# Call Stack
+## Call Stack
 
 The Call Stack stores currently executing functions.
 
@@ -1997,7 +1997,7 @@ Functions return in reverse order.
 
 ---
 
-# Stack Overflow
+## Stack Overflow
 
 If recursive calls never terminate:
 
@@ -2027,7 +2027,7 @@ Stack Overflow
 
 ---
 
-# Garbage Collection
+## Garbage Collection
 
 Unused objects are automatically removed.
 
@@ -2047,7 +2047,7 @@ Automatic memory management helps prevent leaks, though developers can still cre
 
 ---
 
-# JavaScript is Single-Threaded
+## JavaScript is Single-Threaded
 
 JavaScript executes one task at a time.
 
@@ -2071,7 +2071,7 @@ Only one function executes on the Call Stack at any given moment.
 
 ---
 
-# How Can Browsers Handle Multiple Tasks?
+## How Can Browsers Handle Multiple Tasks?
 
 Browsers provide additional components.
 
@@ -2095,7 +2095,7 @@ Together they enable asynchronous programming.
 
 ---
 
-# Browser Web APIs
+## Browser Web APIs
 
 Web APIs are provided by the browser.
 
@@ -2114,7 +2114,7 @@ These APIs are **not** part of the JavaScript language itself.
 
 ---
 
-# Example
+## Example
 
 ```javascript
 setTimeout(function(){
@@ -2150,7 +2150,7 @@ Console
 
 ---
 
-# Event Loop
+## Event Loop
 
 The Event Loop coordinates asynchronous execution.
 
@@ -2174,7 +2174,7 @@ If the Call Stack is busy, queued tasks wait.
 
 ---
 
-# Event Loop Diagram
+## Event Loop Diagram
 
 ```
 JavaScript
@@ -2202,7 +2202,7 @@ The Event Loop continuously checks whether queued tasks can be executed.
 
 ---
 
-# Task Queue
+## Task Queue
 
 Completed asynchronous operations enter the Task Queue.
 
@@ -2224,7 +2224,7 @@ Call Stack
 
 ---
 
-# Fetch Example
+## Fetch Example
 
 ```javascript
 fetch("/api/users")
@@ -2258,7 +2258,7 @@ JavaScript Callback
 
 ---
 
-# Browser Storage
+## Browser Storage
 
 Browsers support multiple storage mechanisms.
 
@@ -2282,7 +2282,7 @@ Each serves different purposes.
 
 ---
 
-# Cookies
+## Cookies
 
 Cookies store small pieces of information.
 
@@ -2311,7 +2311,7 @@ Cookies are sent with matching HTTP requests.
 
 ---
 
-# Cookie Lifecycle
+## Cookie Lifecycle
 
 ```
 Server
@@ -2335,7 +2335,7 @@ Cookie Sent
 
 ---
 
-# Cookie Security Attributes
+## Cookie Security Attributes
 
 Important attributes include:
 
@@ -2350,7 +2350,7 @@ Important attributes include:
 
 ---
 
-# Local Storage
+## Local Storage
 
 Local Storage stores persistent data.
 
@@ -2375,7 +2375,7 @@ Persistent Data
 
 ---
 
-# Session Storage
+## Session Storage
 
 Session Storage lasts only for the current tab.
 
@@ -2399,7 +2399,7 @@ Useful for temporary page-specific state.
 
 ---
 
-# Local Storage vs Session Storage
+## Local Storage vs Session Storage
 
 | Local Storage | Session Storage |
 |---------------|-----------------|
@@ -2410,7 +2410,7 @@ Useful for temporary page-specific state.
 
 ---
 
-# IndexedDB
+## IndexedDB
 
 IndexedDB is a browser database.
 
@@ -2435,7 +2435,7 @@ Large Data Storage
 
 ---
 
-# Cache Storage
+## Cache Storage
 
 Progressive Web Apps (PWAs) use Cache Storage.
 
@@ -2459,7 +2459,7 @@ Useful for:
 
 ---
 
-# Same-Origin Policy (SOP)
+## Same-Origin Policy (SOP)
 
 One of the browser's most important security controls.
 
@@ -2469,7 +2469,7 @@ A webpage may only freely access resources from the **same origin**, unless expl
 
 ---
 
-# What is an Origin?
+## What is an Origin?
 
 An origin consists of:
 
@@ -2495,7 +2495,7 @@ All three components determine the origin.
 
 ---
 
-# Same-Origin Examples
+## Same-Origin Examples
 
 | URL A | URL B | Same Origin? |
 |--------|--------|--------------|
@@ -2506,7 +2506,7 @@ All three components determine the origin.
 
 ---
 
-# Why SOP Exists
+## Why SOP Exists
 
 Without SOP:
 
@@ -2536,7 +2536,7 @@ SOP prevents many cross-site attacks.
 
 ---
 
-# Cross-Origin Resource Sharing (CORS)
+## Cross-Origin Resource Sharing (CORS)
 
 Sometimes cross-origin access is required.
 
@@ -2562,7 +2562,7 @@ CORS provides a controlled mechanism for allowing such requests.
 
 ---
 
-# CORS Flow
+## CORS Flow
 
 ```
 Browser
@@ -2592,7 +2592,7 @@ The browser enforces the decision based on the server's response.
 
 ---
 
-# Common CORS Headers
+## Common CORS Headers
 
 | Header | Purpose |
 |----------|----------|
@@ -2603,7 +2603,7 @@ The browser enforces the decision based on the server's response.
 
 ---
 
-# Preflight Request
+## Preflight Request
 
 Certain cross-origin requests require an OPTIONS request first.
 
@@ -2631,7 +2631,7 @@ This is called a **Preflight Request**.
 
 ---
 
-# Browser Permission Model
+## Browser Permission Model
 
 Browsers protect sensitive features.
 
@@ -2649,7 +2649,7 @@ Users must generally grant permission before access.
 
 ---
 
-# Browser Sandboxing Revisited
+## Browser Sandboxing Revisited
 
 Each webpage executes inside a sandbox.
 
@@ -2673,7 +2673,7 @@ This limits the impact of malicious code.
 
 ---
 
-# Browser Process Isolation
+## Browser Process Isolation
 
 ```
 Browser
@@ -2693,7 +2693,7 @@ Each renderer process is isolated to improve both security and stability.
 
 ---
 
-# Enterprise Browser Security
+## Enterprise Browser Security
 
 Organizations often enforce browser policies.
 
@@ -2709,7 +2709,7 @@ Examples:
 
 ---
 
-# Real Enterprise Example
+## Real Enterprise Example
 
 An employee logs into:
 
@@ -2747,7 +2747,7 @@ Security mechanisms operate continuously throughout the session.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using Developer Tools:
 
@@ -2763,7 +2763,7 @@ Using Developer Tools:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the role of the JavaScript Engine?
 2. What is the Call Stack?
@@ -2778,7 +2778,7 @@ Using Developer Tools:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Store sensitive session identifiers in secure, HttpOnly cookies.
 - Enable appropriate `SameSite` cookie attributes.
@@ -2789,7 +2789,7 @@ Using Developer Tools:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Storing authentication tokens insecurely.
 - Allowing overly permissive CORS policies.
@@ -2799,7 +2799,7 @@ Using Developer Tools:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The JavaScript Engine executes application logic while the browser provides Web APIs for asynchronous operations.
 - The Event Loop coordinates execution between the Call Stack and queued asynchronous tasks.

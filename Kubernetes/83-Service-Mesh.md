@@ -41,7 +41,7 @@ Instead of implementing these capabilities independently inside every applicatio
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -130,7 +130,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is a Service Mesh?
+## What Is a Service Mesh?
 
 A Service Mesh is a dedicated infrastructure layer for managing service-to-service communication.
 
@@ -170,7 +170,7 @@ The application can focus primarily on business logic.
 
 ---
 
-# Why Use a Service Mesh?
+## Why Use a Service Mesh?
 
 Microservices introduce networking complexity.
 
@@ -193,7 +193,7 @@ A Service Mesh centralizes these networking capabilities into infrastructure.
 
 ---
 
-# Service Mesh Architecture
+## Service Mesh Architecture
 
 A typical Service Mesh has two major parts:
 
@@ -205,7 +205,7 @@ Data Plane
 
 ---
 
-# Control Plane
+## Control Plane
 
 The control plane manages configuration and policies.
 
@@ -225,7 +225,7 @@ Control Plane
 
 ---
 
-# Data Plane
+## Data Plane
 
 The data plane handles actual application traffic.
 
@@ -243,7 +243,7 @@ Network
 
 ---
 
-# Control Plane vs Data Plane
+## Control Plane vs Data Plane
 
 | Control Plane | Data Plane |
 |---|---|
@@ -256,7 +256,7 @@ Network
 
 ---
 
-# Sidecar Proxy
+## Sidecar Proxy
 
 A traditional Service Mesh architecture deploys a proxy alongside each application Pod.
 
@@ -270,7 +270,7 @@ Pod
 
 ---
 
-# Sidecar Architecture
+## Sidecar Architecture
 
 ```text
         Pod
@@ -291,7 +291,7 @@ The proxy intercepts traffic between the application and network.
 
 ---
 
-# Service-to-Service Traffic
+## Service-to-Service Traffic
 
 Example:
 
@@ -321,7 +321,7 @@ Authorization
 
 ---
 
-# East-West Traffic
+## East-West Traffic
 
 East-west traffic means service-to-service communication inside an environment.
 
@@ -337,7 +337,7 @@ A Service Mesh primarily provides infrastructure for managing this traffic.
 
 ---
 
-# North-South Traffic
+## North-South Traffic
 
 North-south traffic refers to traffic entering or leaving the cluster.
 
@@ -355,7 +355,7 @@ Kubernetes Services
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 Kubernetes already provides service discovery through DNS and Services.
 
@@ -363,7 +363,7 @@ A Service Mesh can consume Kubernetes service information and provide additional
 
 ---
 
-# Kubernetes Service Discovery
+## Kubernetes Service Discovery
 
 Example:
 
@@ -375,7 +375,7 @@ A client can access the Kubernetes Service through DNS.
 
 ---
 
-# Service Mesh Discovery
+## Service Mesh Discovery
 
 The Service Mesh control plane learns about services and distributes relevant configuration to proxies.
 
@@ -391,7 +391,7 @@ Proxy Configuration
 
 ---
 
-# Traffic Management
+## Traffic Management
 
 A Service Mesh can control:
 
@@ -404,7 +404,7 @@ What happens on failure
 
 ---
 
-# Load Balancing
+## Load Balancing
 
 A proxy can distribute traffic across service instances.
 
@@ -423,7 +423,7 @@ Proxy
 
 ---
 
-# Retries
+## Retries
 
 A proxy can retry failed requests.
 
@@ -445,7 +445,7 @@ Retries should be used carefully.
 
 ---
 
-# Retry Risks
+## Retry Risks
 
 Incorrect retries can amplify traffic during failures.
 
@@ -465,7 +465,7 @@ This can create a retry storm.
 
 ---
 
-# Timeouts
+## Timeouts
 
 Timeouts prevent requests from waiting indefinitely.
 
@@ -483,7 +483,7 @@ Timeout
 
 ---
 
-# Circuit Breaking
+## Circuit Breaking
 
 Circuit breaking prevents repeated requests to an unhealthy service.
 
@@ -505,7 +505,7 @@ Circuit Closes
 
 ---
 
-# Fault Injection
+## Fault Injection
 
 A Service Mesh can intentionally introduce failures for testing.
 
@@ -521,7 +521,7 @@ This can be used for resilience testing.
 
 ---
 
-# Traffic Splitting
+## Traffic Splitting
 
 Traffic can be divided between versions.
 
@@ -537,7 +537,7 @@ Example:
 
 ---
 
-# Canary Deployment
+## Canary Deployment
 
 A common canary pattern:
 
@@ -559,7 +559,7 @@ depending on validation results.
 
 ---
 
-# Blue-Green Deployment
+## Blue-Green Deployment
 
 Two environments exist:
 
@@ -580,7 +580,7 @@ once the new version is ready.
 
 ---
 
-# Request Routing
+## Request Routing
 
 A Service Mesh can route traffic based on:
 
@@ -595,7 +595,7 @@ Weights
 
 ---
 
-# HTTP Routing
+## HTTP Routing
 
 Example:
 
@@ -611,7 +611,7 @@ Order Service
 
 ---
 
-# Header-Based Routing
+## Header-Based Routing
 
 Traffic can be routed based on a header.
 
@@ -625,7 +625,7 @@ could route a request to a beta service version.
 
 ---
 
-# gRPC Routing
+## gRPC Routing
 
 Service Meshes can also manage gRPC traffic.
 
@@ -641,7 +641,7 @@ gRPC Service
 
 ---
 
-# TCP Routing
+## TCP Routing
 
 Some Service Meshes can also handle TCP traffic.
 
@@ -649,7 +649,7 @@ Support and capabilities depend on the implementation.
 
 ---
 
-# Mutual TLS
+## Mutual TLS
 
 mTLS means both sides authenticate each other using certificates.
 
@@ -671,7 +671,7 @@ Both sides authenticate.
 
 ---
 
-# Why mTLS?
+## Why mTLS?
 
 mTLS provides:
 
@@ -687,7 +687,7 @@ for service-to-service communication.
 
 ---
 
-# Service Identity
+## Service Identity
 
 Instead of trusting only:
 
@@ -709,7 +709,7 @@ Identity: service-b
 
 ---
 
-# Zero Trust Networking
+## Zero Trust Networking
 
 A Service Mesh can support Zero Trust principles:
 
@@ -723,7 +723,7 @@ Continuously Observe
 
 ---
 
-# Certificate Management
+## Certificate Management
 
 A Service Mesh may automatically issue and rotate workload certificates.
 
@@ -743,7 +743,7 @@ Rotation
 
 ---
 
-# Certificate Rotation
+## Certificate Rotation
 
 Certificates should be rotated automatically where possible.
 
@@ -751,7 +751,7 @@ This reduces operational risk associated with long-lived credentials.
 
 ---
 
-# Authorization
+## Authorization
 
 Authentication answers:
 
@@ -767,7 +767,7 @@ What are you allowed to do?
 
 ---
 
-# Service-to-Service Authorization
+## Service-to-Service Authorization
 
 Example:
 
@@ -787,7 +787,7 @@ backend
 
 ---
 
-# Observability
+## Observability
 
 A Service Mesh can provide:
 
@@ -803,7 +803,7 @@ Traffic Volume
 
 ---
 
-# Metrics
+## Metrics
 
 Useful metrics include:
 
@@ -817,7 +817,7 @@ Connection Count
 
 ---
 
-# RED Metrics
+## RED Metrics
 
 For services, common RED metrics are:
 
@@ -829,7 +829,7 @@ Duration
 
 ---
 
-# Access Logs
+## Access Logs
 
 A proxy can generate access logs containing information such as:
 
@@ -846,7 +846,7 @@ Avoid logging sensitive data unnecessarily.
 
 ---
 
-# Distributed Tracing
+## Distributed Tracing
 
 A Service Mesh can participate in distributed tracing.
 
@@ -869,7 +869,7 @@ A trace can represent the entire request path.
 
 ---
 
-# OpenTelemetry
+## OpenTelemetry
 
 OpenTelemetry provides vendor-neutral observability standards and tooling for:
 
@@ -883,7 +883,7 @@ A Service Mesh can integrate with OpenTelemetry-based observability systems.
 
 ---
 
-# Service Mesh and OpenTelemetry
+## Service Mesh and OpenTelemetry
 
 Conceptually:
 
@@ -899,7 +899,7 @@ Observability Backend
 
 ---
 
-# Istio
+## Istio
 
 Istio is a popular Kubernetes Service Mesh.
 
@@ -913,7 +913,7 @@ Envoy Proxies
 
 ---
 
-# Istio Architecture
+## Istio Architecture
 
 ```text
                   Istiod
@@ -929,7 +929,7 @@ Envoy Proxies
 
 ---
 
-# Istiod
+## Istiod
 
 Istiod is the main Istio control-plane component.
 
@@ -944,7 +944,7 @@ Proxy Configuration
 
 ---
 
-# Envoy
+## Envoy
 
 Envoy is a high-performance proxy commonly used as Istio's data-plane proxy.
 
@@ -961,7 +961,7 @@ Metrics
 
 ---
 
-# Istio Ingress Gateway
+## Istio Ingress Gateway
 
 An Istio ingress gateway manages traffic entering the mesh.
 
@@ -979,7 +979,7 @@ Application
 
 ---
 
-# Istio Egress Gateway
+## Istio Egress Gateway
 
 An egress gateway can control traffic leaving the mesh.
 
@@ -997,7 +997,7 @@ External Service
 
 ---
 
-# Istio Gateway
+## Istio Gateway
 
 A Gateway defines how traffic enters or exits a mesh.
 
@@ -1022,7 +1022,7 @@ spec:
 
 ---
 
-# Istio VirtualService
+## Istio VirtualService
 
 A VirtualService defines routing rules.
 
@@ -1045,7 +1045,7 @@ spec:
 
 ---
 
-# Istio DestinationRule
+## Istio DestinationRule
 
 A DestinationRule defines policies for traffic sent to a service.
 
@@ -1069,7 +1069,7 @@ spec:
 
 ---
 
-# Istio Traffic Splitting
+## Istio Traffic Splitting
 
 Example:
 
@@ -1090,7 +1090,7 @@ This can support canary deployments.
 
 ---
 
-# Istio ServiceEntry
+## Istio ServiceEntry
 
 A ServiceEntry can add external services to Istio's service registry.
 
@@ -1106,7 +1106,7 @@ can be represented within the mesh's traffic model.
 
 ---
 
-# Istio PeerAuthentication
+## Istio PeerAuthentication
 
 PeerAuthentication controls peer authentication behavior, including mTLS settings.
 
@@ -1122,7 +1122,7 @@ Use the appropriate mode for the migration and security requirements.
 
 ---
 
-# Istio RequestAuthentication
+## Istio RequestAuthentication
 
 RequestAuthentication can configure validation of request-level credentials such as JWTs.
 
@@ -1130,7 +1130,7 @@ Authentication and authorization remain separate concepts.
 
 ---
 
-# Istio AuthorizationPolicy
+## Istio AuthorizationPolicy
 
 AuthorizationPolicy controls access to workloads.
 
@@ -1156,7 +1156,7 @@ backend
 
 ---
 
-# Istio Sidecar Configuration
+## Istio Sidecar Configuration
 
 Istio also supports Sidecar resources that can restrict or configure proxy behavior.
 
@@ -1164,7 +1164,7 @@ This can help reduce unnecessary configuration and improve control in larger mes
 
 ---
 
-# Istio Ambient Mesh
+## Istio Ambient Mesh
 
 Istio also provides an ambient mesh architecture that reduces reliance on a sidecar proxy per workload.
 
@@ -1182,7 +1182,7 @@ Traffic
 
 ---
 
-# ztunnel
+## ztunnel
 
 In Istio ambient mode, `ztunnel` provides a node-level secure proxy layer for basic L4 mesh functionality.
 
@@ -1196,7 +1196,7 @@ Secure Connectivity
 
 ---
 
-# Waypoint Proxy
+## Waypoint Proxy
 
 Waypoint proxies provide higher-level L7 functionality in ambient mode.
 
@@ -1210,7 +1210,7 @@ Advanced L7 Traffic Management
 
 ---
 
-# Sidecar vs Ambient
+## Sidecar vs Ambient
 
 | Sidecar | Ambient |
 |---|---|
@@ -1224,7 +1224,7 @@ The exact capabilities depend on the Service Mesh version and configuration.
 
 ---
 
-# Linkerd
+## Linkerd
 
 Linkerd is another Kubernetes-focused Service Mesh.
 
@@ -1239,7 +1239,7 @@ Reliability
 
 ---
 
-# Linkerd Architecture
+## Linkerd Architecture
 
 ```text
              Control Plane
@@ -1254,7 +1254,7 @@ Reliability
 
 ---
 
-# Linkerd Proxy
+## Linkerd Proxy
 
 Linkerd uses a lightweight proxy to handle service-to-service traffic.
 
@@ -1269,7 +1269,7 @@ Reliability
 
 ---
 
-# Linkerd Control Plane
+## Linkerd Control Plane
 
 The control plane manages mesh configuration and identity.
 
@@ -1277,7 +1277,7 @@ It provides information and coordination required by the data plane.
 
 ---
 
-# Linkerd Viz
+## Linkerd Viz
 
 Linkerd Viz provides observability functionality.
 
@@ -1292,7 +1292,7 @@ Service Relationships
 
 ---
 
-# Linkerd Service Profiles
+## Linkerd Service Profiles
 
 Service Profiles can define additional routing and behavior for services.
 
@@ -1300,13 +1300,13 @@ They can be used to improve service-level observability and traffic behavior.
 
 ---
 
-# Linkerd Traffic Policies
+## Linkerd Traffic Policies
 
 Traffic policies can control aspects of service communication and authorization.
 
 ---
 
-# Linkerd mTLS
+## Linkerd mTLS
 
 Linkerd provides automatic mTLS between meshed workloads.
 
@@ -1322,7 +1322,7 @@ Service B
 
 ---
 
-# Linkerd Retries
+## Linkerd Retries
 
 Linkerd supports reliability mechanisms such as retries depending on configuration and protocol behavior.
 
@@ -1330,13 +1330,13 @@ Retries should be carefully configured to avoid retry storms.
 
 ---
 
-# Linkerd Timeouts
+## Linkerd Timeouts
 
 Timeouts can prevent requests from waiting indefinitely.
 
 ---
 
-# Linkerd Traffic Splitting
+## Linkerd Traffic Splitting
 
 Traffic can be split between service versions for progressive delivery.
 
@@ -1350,7 +1350,7 @@ Service
 
 ---
 
-# Istio vs Linkerd
+## Istio vs Linkerd
 
 | Feature | Istio | Linkerd |
 |---|---|---|
@@ -1368,7 +1368,7 @@ Feature availability can vary by version and deployment model.
 
 ---
 
-# When to Use Istio
+## When to Use Istio
 
 Istio may be appropriate when you need:
 
@@ -1383,7 +1383,7 @@ Ambient Mesh Options
 
 ---
 
-# When to Use Linkerd
+## When to Use Linkerd
 
 Linkerd may be attractive when you prioritize:
 
@@ -1397,7 +1397,7 @@ Service Observability
 
 ---
 
-# Service Mesh Overhead
+## Service Mesh Overhead
 
 A Service Mesh introduces additional components.
 
@@ -1413,7 +1413,7 @@ Operational Complexity
 
 ---
 
-# Sidecar Resource Overhead
+## Sidecar Resource Overhead
 
 If every Pod has a proxy:
 
@@ -1427,7 +1427,7 @@ This can significantly increase resource consumption.
 
 ---
 
-# Ambient Mesh Overhead
+## Ambient Mesh Overhead
 
 Ambient architectures can reduce some per-Pod overhead by moving proxy functionality into shared infrastructure.
 
@@ -1435,7 +1435,7 @@ However, they introduce their own components and operational considerations.
 
 ---
 
-# Service Mesh Performance
+## Service Mesh Performance
 
 Before production adoption, measure:
 
@@ -1450,7 +1450,7 @@ Error Rate
 
 ---
 
-# Service Mesh Security
+## Service Mesh Security
 
 A Service Mesh can improve:
 
@@ -1466,7 +1466,7 @@ But it does not automatically secure every aspect of the cluster.
 
 ---
 
-# Service Mesh Security Model
+## Service Mesh Security Model
 
 ```text
 Workload Identity
@@ -1482,7 +1482,7 @@ Encrypted Traffic
 
 ---
 
-# Zero Trust Architecture
+## Zero Trust Architecture
 
 A Service Mesh can become one layer of a Zero Trust architecture:
 
@@ -1504,7 +1504,7 @@ Application
 
 ---
 
-# Service Mesh and NetworkPolicy
+## Service Mesh and NetworkPolicy
 
 Service Mesh and Kubernetes NetworkPolicy solve different layers of networking.
 
@@ -1527,7 +1527,7 @@ They can complement one another.
 
 ---
 
-# Service Mesh and Ingress
+## Service Mesh and Ingress
 
 Ingress controls external traffic entering the cluster.
 
@@ -1543,7 +1543,7 @@ Authorization
 
 ---
 
-# Service Mesh and Gateway API
+## Service Mesh and Gateway API
 
 Gateway API provides Kubernetes-native APIs for traffic management.
 
@@ -1551,7 +1551,7 @@ Service Meshes can integrate with Gateway API depending on implementation and ve
 
 ---
 
-# Service Mesh and Kubernetes Services
+## Service Mesh and Kubernetes Services
 
 Kubernetes Service:
 
@@ -1569,7 +1569,7 @@ Observability
 
 ---
 
-# Service Mesh With GitOps
+## Service Mesh With GitOps
 
 Service Mesh configuration can be managed through Git.
 
@@ -1587,7 +1587,7 @@ Kubernetes
 
 ---
 
-# GitOps Repository
+## GitOps Repository
 
 Example:
 
@@ -1605,7 +1605,7 @@ mesh/
 
 ---
 
-# Service Mesh With CI/CD
+## Service Mesh With CI/CD
 
 A pipeline may validate:
 
@@ -1623,7 +1623,7 @@ Deployment
 
 ---
 
-# Canary Deployment Architecture
+## Canary Deployment Architecture
 
 ```text
                     Users
@@ -1641,7 +1641,7 @@ Deployment
 
 ---
 
-# Progressive Delivery
+## Progressive Delivery
 
 Traffic can gradually increase:
 
@@ -1674,7 +1674,7 @@ Observe metrics at each stage.
 
 ---
 
-# Service Mesh Failure Handling
+## Service Mesh Failure Handling
 
 A production mesh should consider:
 
@@ -1689,7 +1689,7 @@ Configuration Error
 
 ---
 
-# Control Plane Failure
+## Control Plane Failure
 
 If the control plane becomes temporarily unavailable, existing proxies may continue operating using previously distributed configuration, depending on the mesh architecture.
 
@@ -1697,7 +1697,7 @@ However, new configuration changes and some management functions may be affected
 
 ---
 
-# Data Plane Failure
+## Data Plane Failure
 
 If a proxy fails:
 
@@ -1711,7 +1711,7 @@ application traffic may be disrupted depending on the architecture and traffic p
 
 ---
 
-# Certificate Failure
+## Certificate Failure
 
 If workload certificates expire or identity infrastructure fails:
 
@@ -1727,7 +1727,7 @@ Certificate lifecycle monitoring is therefore important.
 
 ---
 
-# Configuration Failure
+## Configuration Failure
 
 Incorrect mesh configuration can cause:
 
@@ -1742,7 +1742,7 @@ Always validate changes before production rollout.
 
 ---
 
-# Service Mesh Troubleshooting
+## Service Mesh Troubleshooting
 
 Use a layered approach:
 
@@ -1761,7 +1761,7 @@ Use a layered approach:
 
 ---
 
-# Troubleshooting Checklist
+## Troubleshooting Checklist
 
 Check:
 
@@ -1781,7 +1781,7 @@ Metrics
 
 ---
 
-# Istio Troubleshooting Commands
+## Istio Troubleshooting Commands
 
 List Istio resources:
 
@@ -1835,7 +1835,7 @@ istioctl analyze -A
 
 ---
 
-# Linkerd Troubleshooting Commands
+## Linkerd Troubleshooting Commands
 
 Check Linkerd:
 
@@ -1863,7 +1863,7 @@ linkerd viz routes deploy/<deployment> -n <namespace>
 
 ---
 
-# Check Service Endpoints
+## Check Service Endpoints
 
 ```bash
 kubectl get endpoints -n <namespace>
@@ -1877,7 +1877,7 @@ kubectl get endpointslices -n <namespace>
 
 ---
 
-# Check DNS
+## Check DNS
 
 From a debugging Pod:
 
@@ -1887,7 +1887,7 @@ nslookup service.namespace.svc.cluster.local
 
 ---
 
-# Check mTLS
+## Check mTLS
 
 When troubleshooting mTLS:
 
@@ -1907,7 +1907,7 @@ Check each layer separately.
 
 ---
 
-# Check Authorization
+## Check Authorization
 
 If traffic is denied:
 
@@ -1927,7 +1927,7 @@ must be reviewed.
 
 ---
 
-# Check Proxy Logs
+## Check Proxy Logs
 
 Inspect the proxy container:
 
@@ -1939,77 +1939,77 @@ The exact proxy container name depends on the Service Mesh.
 
 ---
 
-# Common Service Mesh Problems
+## Common Service Mesh Problems
 
-## 1. Incorrect Routing
+### 1. Incorrect Routing
 
 Traffic is sent to the wrong service version.
 
 ---
 
-## 2. mTLS Mismatch
+### 2. mTLS Mismatch
 
 One side expects encrypted traffic while the other is not configured correctly.
 
 ---
 
-## 3. Authorization Policy
+### 3. Authorization Policy
 
 Traffic is rejected because the source identity is not allowed.
 
 ---
 
-## 4. DNS Failure
+### 4. DNS Failure
 
 Service discovery fails before the mesh can route traffic.
 
 ---
 
-## 5. NetworkPolicy
+### 5. NetworkPolicy
 
 Kubernetes NetworkPolicy blocks required traffic.
 
 ---
 
-## 6. Proxy Resource Exhaustion
+### 6. Proxy Resource Exhaustion
 
 Insufficient CPU or memory can affect traffic processing.
 
 ---
 
-## 7. Retry Storm
+### 7. Retry Storm
 
 Aggressive retries increase load during failures.
 
 ---
 
-## 8. Configuration Conflict
+### 8. Configuration Conflict
 
 Multiple policies may produce unexpected behavior.
 
 ---
 
-## 9. Certificate Problems
+### 9. Certificate Problems
 
 Expired or invalid certificates can break mTLS.
 
 ---
 
-## 10. Control Plane Issues
+### 10. Control Plane Issues
 
 Configuration may not reach proxies correctly.
 
 ---
 
-# Service Mesh Best Practices
+## Service Mesh Best Practices
 
-### 1. Start Small
+#### 1. Start Small
 
 Do not immediately mesh the entire cluster.
 
 ---
 
-### 2. Measure Overhead
+#### 2. Measure Overhead
 
 Monitor:
 
@@ -2022,55 +2022,55 @@ Throughput
 
 ---
 
-### 3. Enable mTLS Carefully
+#### 3. Enable mTLS Carefully
 
 Use migration strategies when introducing mTLS to existing workloads.
 
 ---
 
-### 4. Use Least Privilege
+#### 4. Use Least Privilege
 
 Restrict authorization policies.
 
 ---
 
-### 5. Avoid Excessive Retries
+#### 5. Avoid Excessive Retries
 
 Retry only operations that are safe and appropriate to retry.
 
 ---
 
-### 6. Configure Timeouts
+#### 6. Configure Timeouts
 
 Every distributed request should have sensible timeout behavior.
 
 ---
 
-### 7. Monitor Certificates
+#### 7. Monitor Certificates
 
 Certificate failures can cause widespread outages.
 
 ---
 
-### 8. Validate Mesh Configuration
+#### 8. Validate Mesh Configuration
 
 Use configuration validation tools before production deployment.
 
 ---
 
-### 9. Use GitOps
+#### 9. Use GitOps
 
 Store mesh configuration in Git.
 
 ---
 
-### 10. Monitor the Control Plane
+#### 10. Monitor the Control Plane
 
 A healthy data plane still requires a healthy management system for ongoing configuration.
 
 ---
 
-# Service Mesh Security Best Practices
+## Service Mesh Security Best Practices
 
 ```text
 ☑ Enable strong workload identity
@@ -2090,7 +2090,7 @@ A healthy data plane still requires a healthy management system for ongoing conf
 
 ---
 
-# Production Service Mesh Architecture
+## Production Service Mesh Architecture
 
 ```text
                          Internet
@@ -2132,7 +2132,7 @@ Logging
 
 ---
 
-# Service Mesh Decision Framework
+## Service Mesh Decision Framework
 
 Consider a Service Mesh when you need several of:
 
@@ -2150,7 +2150,7 @@ Avoid adopting one simply because it is popular.
 
 ---
 
-# When a Service Mesh May Be Unnecessary
+## When a Service Mesh May Be Unnecessary
 
 For a small application:
 
@@ -2168,7 +2168,7 @@ A Service Mesh introduces operational complexity and should solve a real problem
 
 ---
 
-# Service Mesh vs Kubernetes Service
+## Service Mesh vs Kubernetes Service
 
 | Kubernetes Service | Service Mesh |
 |---|---|
@@ -2182,7 +2182,7 @@ A Service Mesh introduces operational complexity and should solve a real problem
 
 ---
 
-# Service Mesh vs API Gateway
+## Service Mesh vs API Gateway
 
 An API Gateway primarily manages:
 
@@ -2210,7 +2210,7 @@ Microservices
 
 ---
 
-# Service Mesh vs NetworkPolicy
+## Service Mesh vs NetworkPolicy
 
 NetworkPolicy provides network-level enforcement.
 
@@ -2228,7 +2228,7 @@ Use both where appropriate.
 
 ---
 
-# Service Mesh and Security Operations
+## Service Mesh and Security Operations
 
 For a security-focused Kubernetes environment, mesh telemetry can help detect:
 
@@ -2251,7 +2251,7 @@ Kubernetes Audit Logs
 
 ---
 
-# Service Mesh and SIEM
+## Service Mesh and SIEM
 
 A possible architecture:
 
@@ -2274,7 +2274,7 @@ Service Mesh
 
 ---
 
-# Service Mesh and Runtime Security
+## Service Mesh and Runtime Security
 
 A runtime security platform can correlate:
 
@@ -2292,7 +2292,7 @@ This can improve threat detection.
 
 ---
 
-# Hands-on Lab 1 – Install a Service Mesh
+## Hands-on Lab 1 – Install a Service Mesh
 
 Choose either:
 
@@ -2312,7 +2312,7 @@ Do not begin experimentation on production.
 
 ---
 
-# Hands-on Lab 2 – Deploy Two Services
+## Hands-on Lab 2 – Deploy Two Services
 
 Deploy:
 
@@ -2331,7 +2331,7 @@ works normally.
 
 ---
 
-# Hands-on Lab 3 – Enable Mesh Injection
+## Hands-on Lab 3 – Enable Mesh Injection
 
 For a sidecar-based architecture, enable mesh injection according to the chosen Service Mesh.
 
@@ -2347,7 +2347,7 @@ and inspect the number of containers.
 
 ---
 
-# Hands-on Lab 4 – Inspect Proxies
+## Hands-on Lab 4 – Inspect Proxies
 
 Inspect the Pod:
 
@@ -2364,7 +2364,7 @@ Proxy Container
 
 ---
 
-# Hands-on Lab 5 – mTLS
+## Hands-on Lab 5 – mTLS
 
 Enable mesh security for the test namespace.
 
@@ -2374,7 +2374,7 @@ Confirm certificates are being used.
 
 ---
 
-# Hands-on Lab 6 – Traffic Metrics
+## Hands-on Lab 6 – Traffic Metrics
 
 Generate requests:
 
@@ -2394,7 +2394,7 @@ Latency
 
 ---
 
-# Hands-on Lab 7 – Canary Deployment
+## Hands-on Lab 7 – Canary Deployment
 
 Deploy:
 
@@ -2414,7 +2414,7 @@ Generate traffic and verify distribution.
 
 ---
 
-# Hands-on Lab 8 – Increase Canary
+## Hands-on Lab 8 – Increase Canary
 
 Change:
 
@@ -2438,7 +2438,7 @@ Observe the traffic.
 
 ---
 
-# Hands-on Lab 9 – Header-Based Routing
+## Hands-on Lab 9 – Header-Based Routing
 
 Route requests with:
 
@@ -2452,7 +2452,7 @@ Other users remain on version 1.
 
 ---
 
-# Hands-on Lab 10 – Timeout
+## Hands-on Lab 10 – Timeout
 
 Configure a short timeout.
 
@@ -2466,7 +2466,7 @@ Timeout
 
 ---
 
-# Hands-on Lab 11 – Retry
+## Hands-on Lab 11 – Retry
 
 Configure a controlled retry policy.
 
@@ -2478,7 +2478,7 @@ Measure whether the retry increases load.
 
 ---
 
-# Hands-on Lab 12 – Circuit Breaking
+## Hands-on Lab 12 – Circuit Breaking
 
 Configure connection or request limits where supported.
 
@@ -2488,7 +2488,7 @@ Observe how the mesh handles excessive requests.
 
 ---
 
-# Hands-on Lab 13 – Authorization
+## Hands-on Lab 13 – Authorization
 
 Create:
 
@@ -2501,7 +2501,7 @@ Verify authorization behavior.
 
 ---
 
-# Hands-on Lab 14 – Fault Injection
+## Hands-on Lab 14 – Fault Injection
 
 Inject:
 
@@ -2521,7 +2521,7 @@ Observe application behavior.
 
 ---
 
-# Hands-on Lab 15 – Gateway
+## Hands-on Lab 15 – Gateway
 
 Create an ingress gateway.
 
@@ -2539,7 +2539,7 @@ frontend
 
 ---
 
-# Hands-on Lab 16 – Egress Control
+## Hands-on Lab 16 – Egress Control
 
 Configure controlled access to an external API.
 
@@ -2555,7 +2555,7 @@ External API
 
 ---
 
-# Hands-on Lab 17 – Distributed Tracing
+## Hands-on Lab 17 – Distributed Tracing
 
 Generate traffic:
 
@@ -2573,7 +2573,7 @@ Collect traces through an OpenTelemetry-compatible tracing backend.
 
 ---
 
-# Hands-on Lab 18 – NetworkPolicy + Service Mesh
+## Hands-on Lab 18 – NetworkPolicy + Service Mesh
 
 Apply a Kubernetes NetworkPolicy.
 
@@ -2589,7 +2589,7 @@ operate together.
 
 ---
 
-# Hands-on Lab 19 – GitOps
+## Hands-on Lab 19 – GitOps
 
 Store:
 
@@ -2606,7 +2606,7 @@ Deploy through a GitOps controller.
 
 ---
 
-# Hands-on Lab 20 – Production Service Mesh Project
+## Hands-on Lab 20 – Production Service Mesh Project
 
 Build:
 
@@ -2654,9 +2654,9 @@ GitOps
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Service Mesh
+### Service Mesh
 
 ```text
 Infrastructure Layer for Service-to-Service Communication
@@ -2664,7 +2664,7 @@ Infrastructure Layer for Service-to-Service Communication
 
 ---
 
-## Control Plane
+### Control Plane
 
 ```text
 Configuration + Policy + Identity Management
@@ -2672,7 +2672,7 @@ Configuration + Policy + Identity Management
 
 ---
 
-## Data Plane
+### Data Plane
 
 ```text
 Actual Application Traffic Processing
@@ -2680,7 +2680,7 @@ Actual Application Traffic Processing
 
 ---
 
-## Proxy
+### Proxy
 
 ```text
 Component That Handles Service Traffic
@@ -2688,7 +2688,7 @@ Component That Handles Service Traffic
 
 ---
 
-## Sidecar
+### Sidecar
 
 ```text
 Proxy Running Alongside the Application Container
@@ -2696,7 +2696,7 @@ Proxy Running Alongside the Application Container
 
 ---
 
-## mTLS
+### mTLS
 
 ```text
 Mutual Authentication + Encryption
@@ -2704,7 +2704,7 @@ Mutual Authentication + Encryption
 
 ---
 
-## Traffic Splitting
+### Traffic Splitting
 
 ```text
 Send Different Percentages of Traffic to Different Versions
@@ -2712,7 +2712,7 @@ Send Different Percentages of Traffic to Different Versions
 
 ---
 
-## Canary
+### Canary
 
 ```text
 Gradually Expose a New Version to Users
@@ -2720,7 +2720,7 @@ Gradually Expose a New Version to Users
 
 ---
 
-## Circuit Breaking
+### Circuit Breaking
 
 ```text
 Stop Repeated Calls to an Unhealthy Dependency
@@ -2728,7 +2728,7 @@ Stop Repeated Calls to an Unhealthy Dependency
 
 ---
 
-## Istio
+### Istio
 
 ```text
 Feature-Rich Kubernetes Service Mesh
@@ -2736,7 +2736,7 @@ Feature-Rich Kubernetes Service Mesh
 
 ---
 
-## Linkerd
+### Linkerd
 
 ```text
 Kubernetes-Focused Service Mesh Emphasizing Simplicity
@@ -2744,7 +2744,7 @@ Kubernetes-Focused Service Mesh Emphasizing Simplicity
 
 ---
 
-## Envoy
+### Envoy
 
 ```text
 High-Performance Proxy Commonly Used by Istio
@@ -2752,7 +2752,7 @@ High-Performance Proxy Commonly Used by Istio
 
 ---
 
-## Istiod
+### Istiod
 
 ```text
 Istio Control Plane Component
@@ -2760,7 +2760,7 @@ Istio Control Plane Component
 
 ---
 
-## ztunnel
+### ztunnel
 
 ```text
 Istio Ambient Mesh L4 Secure Proxy Layer
@@ -2768,7 +2768,7 @@ Istio Ambient Mesh L4 Secure Proxy Layer
 
 ---
 
-## Waypoint Proxy
+### Waypoint Proxy
 
 ```text
 Istio Ambient Mesh L7 Proxy
@@ -2776,7 +2776,7 @@ Istio Ambient Mesh L7 Proxy
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check Pods:
 
@@ -2906,9 +2906,9 @@ kubectl logs <pod> -c <proxy-container>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is a Service Mesh?
 - Why is a Service Mesh used?
@@ -2931,7 +2931,7 @@ kubectl logs <pod> -c <proxy-container>
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does a Service Mesh intercept traffic?
 - How does mTLS work in a Service Mesh?
@@ -2956,7 +2956,7 @@ kubectl logs <pod> -c <proxy-container>
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a production Service Mesh architecture.
 - When should you avoid a Service Mesh?
@@ -2978,13 +2978,13 @@ kubectl logs <pod> -c <proxy-container>
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What problem does a Service Mesh solve?
 
-### Answer
+#### Answer
 
 A Service Mesh moves common service-to-service networking concerns from application code into infrastructure.
 
@@ -3004,13 +3004,13 @@ This avoids implementing the same networking logic independently in every micros
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > What is the difference between the control plane and data plane?
 
-### Answer
+#### Answer
 
 The **control plane** manages configuration, policy, identity, and proxy configuration.
 
@@ -3028,13 +3028,13 @@ Traffic
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > What is mTLS?
 
-### Answer
+#### Answer
 
 mTLS is mutual TLS where both communicating parties authenticate each other using certificates.
 
@@ -3050,13 +3050,13 @@ Workload Identity
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What is the difference between a Service Mesh and an API Gateway?
 
-### Answer
+#### Answer
 
 An API Gateway primarily manages:
 
@@ -3084,13 +3084,13 @@ Microservices
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > Why can retries be dangerous?
 
-### Answer
+#### Answer
 
 Retries can amplify failures.
 
@@ -3119,13 +3119,13 @@ Idempotency
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > What is circuit breaking?
 
-### Answer
+#### Answer
 
 Circuit breaking prevents repeated requests from being sent to an unhealthy dependency.
 
@@ -3147,13 +3147,13 @@ Closed
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > What is the difference between Istio and Linkerd?
 
-### Answer
+#### Answer
 
 Both are Kubernetes Service Mesh technologies.
 
@@ -3177,13 +3177,13 @@ The correct choice depends on operational requirements.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > What happens if the Istio control plane goes down?
 
-### Answer
+#### Answer
 
 Existing proxies may continue processing traffic using the configuration they already received, depending on the failure and architecture.
 
@@ -3201,13 +3201,13 @@ Therefore the control plane itself must be monitored and highly available.
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How would you troubleshoot an mTLS failure?
 
-### Answer
+#### Answer
 
 I would check the layers in order:
 
@@ -3227,13 +3227,13 @@ This avoids immediately assuming the problem is TLS.
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a secure production Service Mesh.
 
-### Answer
+#### Answer
 
 I would use:
 
@@ -3281,7 +3281,7 @@ Audit Logging
 
 ---
 
-# Production Service Mesh Checklist
+## Production Service Mesh Checklist
 
 ```text
 ☑ Service Mesh use case documented
@@ -3319,7 +3319,7 @@ Audit Logging
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 A Service Mesh provides an infrastructure layer for managing communication between microservices.
 
@@ -3388,7 +3388,7 @@ Therefore:
 
 ---
 
-# Module 11 Summary – Kubernetes Best Practices
+## Module 11 Summary – Kubernetes Best Practices
 
 The complete module now covers:
 
@@ -3424,9 +3424,9 @@ These concepts together form an important foundation for operating production Ku
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 84 – Kubernetes Interview Questions
+## Chapter 84 – Kubernetes Interview Questions
 
 Topics will include:
 

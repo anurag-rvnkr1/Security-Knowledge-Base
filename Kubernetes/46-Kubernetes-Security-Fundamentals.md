@@ -53,7 +53,7 @@ Therefore, Kubernetes security requires controls at every layer.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -90,7 +90,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Kubernetes Security Model
+## Kubernetes Security Model
 
 A Kubernetes cluster can be divided into several security boundaries:
 
@@ -113,7 +113,7 @@ Each component requires different security controls.
 
 ---
 
-# Security Layers
+## Security Layers
 
 A practical Kubernetes security model includes:
 
@@ -135,7 +135,7 @@ A practical Kubernetes security model includes:
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Defense in depth means:
 
@@ -169,7 +169,7 @@ If one layer fails, another layer can still reduce the impact.
 
 ---
 
-# Example
+## Example
 
 Suppose an attacker compromises an application Pod.
 
@@ -207,7 +207,7 @@ The attacker has fewer opportunities to escalate.
 
 ---
 
-# Shared Responsibility
+## Shared Responsibility
 
 Kubernetes security involves multiple parties.
 
@@ -248,7 +248,7 @@ The exact responsibility boundary depends on the platform.
 
 ---
 
-# Control Plane Security
+## Control Plane Security
 
 The Kubernetes control plane contains highly privileged components.
 
@@ -273,7 +273,7 @@ Highest Security Priority
 
 ---
 
-# Kubernetes API Server
+## Kubernetes API Server
 
 The API Server is the central entry point for Kubernetes API operations.
 
@@ -305,7 +305,7 @@ API Request
 
 ---
 
-# API Security Pipeline
+## API Security Pipeline
 
 A simplified request flow:
 
@@ -332,7 +332,7 @@ This is a fundamental Kubernetes security concept.
 
 ---
 
-# Authentication
+## Authentication
 
 Authentication answers:
 
@@ -352,7 +352,7 @@ Authentication comes before authorization.
 
 ---
 
-# Authorization
+## Authorization
 
 Authorization answers:
 
@@ -380,7 +380,7 @@ for authorization.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 | Concept | Question |
 |---|---|
@@ -404,7 +404,7 @@ but cannot delete Nodes.
 
 ---
 
-# RBAC
+## RBAC
 
 RBAC stands for:
 
@@ -442,7 +442,7 @@ Permissions
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 One of the most important security principles is:
 
@@ -468,7 +468,7 @@ Only grant the required permission.
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Pods commonly use:
 
@@ -488,7 +488,7 @@ A Pod should not automatically receive broad Kubernetes permissions.
 
 ---
 
-# Default Service Account
+## Default Service Account
 
 If no Service Account is explicitly configured, a Pod generally uses the namespace's:
 
@@ -502,7 +502,7 @@ This does not mean the Pod should be granted additional privileges.
 
 ---
 
-# Security Context
+## Security Context
 
 Kubernetes supports:
 
@@ -526,7 +526,7 @@ seccompProfile
 
 ---
 
-# Example Security Context
+## Example Security Context
 
 ```yaml
 securityContext:
@@ -542,7 +542,7 @@ This tells Kubernetes that the container should run as a non-root user and use t
 
 ---
 
-# Running as Non-Root
+## Running as Non-Root
 
 Containers should generally avoid running as:
 
@@ -564,7 +564,7 @@ This reduces the impact of some container-level compromises.
 
 ---
 
-# Privileged Containers
+## Privileged Containers
 
 A privileged container can receive extensive access to the underlying host.
 
@@ -582,7 +582,7 @@ A compromised privileged container can present significantly greater risk to the
 
 ---
 
-# AllowPrivilegeEscalation
+## AllowPrivilegeEscalation
 
 Example:
 
@@ -598,7 +598,7 @@ Use it where compatible with the workload.
 
 ---
 
-# Linux Capabilities
+## Linux Capabilities
 
 Linux capabilities divide some root privileges into separate units.
 
@@ -617,7 +617,7 @@ Instead of giving a container broad privileges, capabilities can be selectively 
 
 ---
 
-# Drop Capabilities
+## Drop Capabilities
 
 Example:
 
@@ -651,7 +651,7 @@ securityContext:
 
 ---
 
-# Why Drop Capabilities?
+## Why Drop Capabilities?
 
 Suppose an application only needs to bind to a low-numbered network port.
 
@@ -675,7 +675,7 @@ Least Privilege
 
 ---
 
-# Read-Only Root Filesystem
+## Read-Only Root Filesystem
 
 Example:
 
@@ -697,7 +697,7 @@ or another appropriate volume.
 
 ---
 
-# Example
+## Example
 
 ```yaml
 containers:
@@ -725,7 +725,7 @@ This is a useful baseline for many applications, subject to application compatib
 
 ---
 
-# Seccomp
+## Seccomp
 
 Seccomp stands for:
 
@@ -753,7 +753,7 @@ securityContext:
 
 ---
 
-# AppArmor
+## AppArmor
 
 On supported Linux systems, AppArmor can restrict application behavior.
 
@@ -769,7 +769,7 @@ Kubernetes Environment
 
 ---
 
-# SELinux
+## SELinux
 
 SELinux provides mandatory access control on supported Linux systems.
 
@@ -777,7 +777,7 @@ It can restrict what processes can access even when traditional Unix permissions
 
 ---
 
-# Container Isolation
+## Container Isolation
 
 Containers are not equivalent to virtual machines.
 
@@ -799,7 +799,7 @@ are both important.
 
 ---
 
-# Container Escape
+## Container Escape
 
 A container escape occurs when an attacker moves from:
 
@@ -836,7 +836,7 @@ Kernel patching
 
 ---
 
-# HostPath
+## HostPath
 
 `hostPath` mounts a path from the Node filesystem into a Pod.
 
@@ -858,7 +858,7 @@ Use `hostPath` only when necessary and restrict access carefully.
 
 ---
 
-# Host Network
+## Host Network
 
 A Pod can use:
 
@@ -872,7 +872,7 @@ It reduces network isolation and should only be used when required.
 
 ---
 
-# Host PID
+## Host PID
 
 Example:
 
@@ -886,7 +886,7 @@ This can expose host process information and should be carefully restricted.
 
 ---
 
-# Host IPC
+## Host IPC
 
 Example:
 
@@ -904,7 +904,7 @@ Use only when necessary.
 
 ---
 
-# Network Security
+## Network Security
 
 Kubernetes networking should follow:
 
@@ -927,7 +927,7 @@ between Pods and external destinations.
 
 ---
 
-# Example Network Policy
+## Example Network Policy
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -953,7 +953,7 @@ This establishes a default-deny policy for selected Pods, subject to the capabil
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Example architecture:
 
@@ -985,7 +985,7 @@ Frontend → Database
 
 ---
 
-# Secrets
+## Secrets
 
 Kubernetes provides:
 
@@ -1012,7 +1012,7 @@ Storage encryption and access control should be configured appropriately.
 
 ---
 
-# Secret Access
+## Secret Access
 
 An attacker who obtains sufficient RBAC permissions may be able to retrieve Secrets.
 
@@ -1032,7 +1032,7 @@ Monitoring
 
 ---
 
-# Encryption at Rest
+## Encryption at Rest
 
 Sensitive Kubernetes data can be encrypted at rest.
 
@@ -1054,7 +1054,7 @@ stores API objects.
 
 ---
 
-# etcd Security
+## etcd Security
 
 `etcd` contains critical cluster state.
 
@@ -1090,7 +1090,7 @@ Access controls
 
 ---
 
-# API Server TLS
+## API Server TLS
 
 Kubernetes components communicate using secure channels where configured.
 
@@ -1106,7 +1106,7 @@ Certificates are an important part of Kubernetes security.
 
 ---
 
-# Kubelet Security
+## Kubelet Security
 
 The Kubelet runs on worker Nodes and communicates with the control plane.
 
@@ -1124,7 +1124,7 @@ The Kubelet should not be unnecessarily exposed to untrusted networks.
 
 ---
 
-# Node Security
+## Node Security
 
 Worker Nodes should be hardened.
 
@@ -1144,7 +1144,7 @@ Credentials
 
 ---
 
-# Node Hardening
+## Node Hardening
 
 Typical controls include:
 
@@ -1161,7 +1161,7 @@ Monitoring
 
 ---
 
-# Container Runtime
+## Container Runtime
 
 Kubernetes uses a container runtime to execute containers.
 
@@ -1181,7 +1181,7 @@ A runtime vulnerability can affect workload isolation.
 
 ---
 
-# Image Security
+## Image Security
 
 A secure image lifecycle includes:
 
@@ -1203,7 +1203,7 @@ Deployment
 
 ---
 
-# Image Sources
+## Image Sources
 
 Avoid blindly deploying:
 
@@ -1222,7 +1222,7 @@ Signed Images
 
 ---
 
-# Image Tags
+## Image Tags
 
 Avoid relying solely on:
 
@@ -1250,7 +1250,7 @@ image: nginx@sha256:<digest>
 
 ---
 
-# Why Pin Images?
+## Why Pin Images?
 
 Mutable tags can change.
 
@@ -1266,7 +1266,7 @@ A digest identifies a specific image content.
 
 ---
 
-# Supply Chain Security
+## Supply Chain Security
 
 A Kubernetes workload depends on:
 
@@ -1290,7 +1290,7 @@ Therefore security should cover the complete software supply chain.
 
 ---
 
-# Admission Control
+## Admission Control
 
 Admission controllers intercept API requests after authorization and before persistence.
 
@@ -1315,7 +1315,7 @@ Custom Admission Webhooks
 
 ---
 
-# Pod Security Standards
+## Pod Security Standards
 
 Kubernetes defines Pod Security Standards with levels such as:
 
@@ -1329,7 +1329,7 @@ They help define security expectations for Pod configurations.
 
 ---
 
-# Privileged
+## Privileged
 
 The:
 
@@ -1343,7 +1343,7 @@ It is generally used for workloads requiring elevated privileges.
 
 ---
 
-# Baseline
+## Baseline
 
 The:
 
@@ -1355,7 +1355,7 @@ profile prevents many known privilege-escalation patterns while allowing a broad
 
 ---
 
-# Restricted
+## Restricted
 
 The:
 
@@ -1369,7 +1369,7 @@ It is appropriate for workloads where strong Pod isolation is desired and applic
 
 ---
 
-# Namespace Security
+## Namespace Security
 
 Security policies can be applied at namespace boundaries.
 
@@ -1385,7 +1385,7 @@ You can apply different controls to different environments.
 
 ---
 
-# Example
+## Example
 
 ```text
 production
@@ -1405,7 +1405,7 @@ The exact policy should be based on organizational requirements.
 
 ---
 
-# RBAC Security
+## RBAC Security
 
 RBAC should follow:
 
@@ -1437,7 +1437,7 @@ when possible.
 
 ---
 
-# Namespace Isolation
+## Namespace Isolation
 
 Namespaces provide organizational and administrative separation.
 
@@ -1466,7 +1466,7 @@ Admission Policies
 
 ---
 
-# Service Account Token Security
+## Service Account Token Security
 
 Applications should only receive Kubernetes API credentials when required.
 
@@ -1486,7 +1486,7 @@ instead of sharing identities.
 
 ---
 
-# Automounting Service Account Tokens
+## Automounting Service Account Tokens
 
 Example:
 
@@ -1498,7 +1498,7 @@ If an application does not need to communicate with the Kubernetes API, disablin
 
 ---
 
-# Security Context Example
+## Security Context Example
 
 A hardened Pod might include:
 
@@ -1546,7 +1546,7 @@ The exact configuration must be adapted to application requirements.
 
 ---
 
-# Security Context Checklist
+## Security Context Checklist
 
 For each workload, consider:
 
@@ -1566,7 +1566,7 @@ For each workload, consider:
 
 ---
 
-# Runtime Security
+## Runtime Security
 
 Runtime security detects suspicious activity after workloads are running.
 
@@ -1592,7 +1592,7 @@ Filesystem
 
 ---
 
-# Monitoring
+## Monitoring
 
 Security monitoring should cover:
 
@@ -1609,7 +1609,7 @@ Runtime Activity
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Kubernetes Audit Logging records API activity.
 
@@ -1637,7 +1637,7 @@ From where?
 
 ---
 
-# Audit Security Events
+## Audit Security Events
 
 High-value events include:
 
@@ -1654,7 +1654,7 @@ Node changes
 
 ---
 
-# Incident Example
+## Incident Example
 
 Suppose an attacker obtains credentials for:
 
@@ -1684,7 +1684,7 @@ Security monitoring can then generate an alert.
 
 ---
 
-# Common Kubernetes Attack Paths
+## Common Kubernetes Attack Paths
 
 A simplified attack chain:
 
@@ -1712,7 +1712,7 @@ Security controls should disrupt the chain at multiple stages.
 
 ---
 
-# Attack Path: Excessive RBAC
+## Attack Path: Excessive RBAC
 
 Bad configuration:
 
@@ -1748,7 +1748,7 @@ Only required resources
 
 ---
 
-# Attack Path: Privileged Container
+## Attack Path: Privileged Container
 
 Bad configuration:
 
@@ -1762,7 +1762,7 @@ Use privileged workloads only when necessary.
 
 ---
 
-# Attack Path: Exposed Kubelet
+## Attack Path: Exposed Kubelet
 
 An improperly secured Kubelet can expose sensitive Node-level capabilities.
 
@@ -1782,7 +1782,7 @@ must be carefully configured.
 
 ---
 
-# Attack Path: Malicious Image
+## Attack Path: Malicious Image
 
 ```text
 Malicious Image
@@ -1809,7 +1809,7 @@ SBOM
 
 ---
 
-# Attack Path: Secret Exposure
+## Attack Path: Secret Exposure
 
 ```text
 Application
@@ -1832,7 +1832,7 @@ Shared
 
 ---
 
-# Security Monitoring Architecture
+## Security Monitoring Architecture
 
 ```text
                 Kubernetes Cluster
@@ -1858,7 +1858,7 @@ Shared
 
 ---
 
-# Security Baseline
+## Security Baseline
 
 A Kubernetes security baseline should consider:
 
@@ -1882,9 +1882,9 @@ Backups
 
 ---
 
-# Production Security Checklist
+## Production Security Checklist
 
-## Control Plane
+### Control Plane
 
 ```text
 ☑ Secure API Server
@@ -1896,7 +1896,7 @@ Backups
 
 ---
 
-## Identity
+### Identity
 
 ```text
 ☑ Strong authentication
@@ -1907,7 +1907,7 @@ Backups
 
 ---
 
-## Workloads
+### Workloads
 
 ```text
 ☑ Non-root
@@ -1920,7 +1920,7 @@ Backups
 
 ---
 
-## Network
+### Network
 
 ```text
 ☑ Network segmentation
@@ -1932,7 +1932,7 @@ Backups
 
 ---
 
-## Images
+### Images
 
 ```text
 ☑ Trusted registry
@@ -1944,7 +1944,7 @@ Backups
 
 ---
 
-## Secrets
+### Secrets
 
 ```text
 ☑ Encrypt at rest
@@ -1956,7 +1956,7 @@ Backups
 
 ---
 
-## Runtime
+### Runtime
 
 ```text
 ☑ Runtime monitoring
@@ -1967,7 +1967,7 @@ Backups
 
 ---
 
-# Hands-on Lab 1 – Create Secure Pod
+## Hands-on Lab 1 – Create Secure Pod
 
 Create:
 
@@ -2023,7 +2023,7 @@ Observe whether the application functions correctly.
 
 ---
 
-# Hands-on Lab 2 – Inspect Security Context
+## Hands-on Lab 2 – Inspect Security Context
 
 Run:
 
@@ -2045,7 +2045,7 @@ automountServiceAccountToken
 
 ---
 
-# Hands-on Lab 3 – Inspect Service Accounts
+## Hands-on Lab 3 – Inspect Service Accounts
 
 Run:
 
@@ -2061,7 +2061,7 @@ kubectl describe serviceaccount default
 
 ---
 
-# Hands-on Lab 4 – Create Dedicated Service Account
+## Hands-on Lab 4 – Create Dedicated Service Account
 
 ```yaml
 apiVersion: v1
@@ -2089,7 +2089,7 @@ spec:
 
 ---
 
-# Hands-on Lab 5 – Inspect RBAC
+## Hands-on Lab 5 – Inspect RBAC
 
 Run:
 
@@ -2111,7 +2111,7 @@ kubectl get clusterrolebindings
 
 ---
 
-# Hands-on Lab 6 – NetworkPolicy
+## Hands-on Lab 6 – NetworkPolicy
 
 Create a default-deny policy:
 
@@ -2145,7 +2145,7 @@ Test connectivity in a disposable namespace.
 
 ---
 
-# Hands-on Lab 7 – Test Pod Security
+## Hands-on Lab 7 – Test Pod Security
 
 Create a namespace:
 
@@ -2168,7 +2168,7 @@ Observe the admission response.
 
 ---
 
-# Hands-on Lab 8 – Audit RBAC
+## Hands-on Lab 8 – Audit RBAC
 
 Create a read-only Role:
 
@@ -2211,7 +2211,7 @@ kubectl auth can-i get pods \
 
 ---
 
-# `kubectl auth can-i`
+## `kubectl auth can-i`
 
 This is an important security troubleshooting command.
 
@@ -2242,7 +2242,7 @@ no
 
 ---
 
-# Hands-on Lab 9 – Test Least Privilege
+## Hands-on Lab 9 – Test Least Privilege
 
 Allow:
 
@@ -2277,9 +2277,9 @@ Least Privilege
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Pod Rejected by Security Policy
+### Pod Rejected by Security Policy
 
 Check:
 
@@ -2297,7 +2297,7 @@ Look for Pod Security labels.
 
 ---
 
-# Container Cannot Start as Non-Root
+## Container Cannot Start as Non-Root
 
 Possible causes:
 
@@ -2317,7 +2317,7 @@ Fix the image or configure an appropriate non-root UID.
 
 ---
 
-# Read-Only Filesystem Failure
+## Read-Only Filesystem Failure
 
 An application may attempt:
 
@@ -2352,7 +2352,7 @@ volumeMounts:
 
 ---
 
-# NetworkPolicy Does Not Work
+## NetworkPolicy Does Not Work
 
 Possible causes:
 
@@ -2380,7 +2380,7 @@ kubectl get networkpolicy
 
 ---
 
-# RBAC Permission Denied
+## RBAC Permission Denied
 
 Error:
 
@@ -2409,7 +2409,7 @@ kubectl describe rolebinding <name>
 
 ---
 
-# Secret Access Denied
+## Secret Access Denied
 
 Check:
 
@@ -2436,9 +2436,9 @@ can define cluster-scoped permissions.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Running Everything as Root
+### 1. Running Everything as Root
 
 Avoid:
 
@@ -2450,7 +2450,7 @@ unless explicitly required.
 
 ---
 
-## 2. Giving cluster-admin to Applications
+### 2. Giving cluster-admin to Applications
 
 Avoid:
 
@@ -2462,25 +2462,25 @@ for ordinary workloads.
 
 ---
 
-## 3. Ignoring NetworkPolicy
+### 3. Ignoring NetworkPolicy
 
 Without network restrictions, a compromised Pod may have broader network reach than necessary.
 
 ---
 
-## 4. Trusting Container Images
+### 4. Trusting Container Images
 
 Do not assume an image is safe because it is publicly available.
 
 ---
 
-## 5. Using `latest`
+### 5. Using `latest`
 
 Prefer immutable versioning or digests.
 
 ---
 
-## 6. Mounting the Host Filesystem
+### 6. Mounting the Host Filesystem
 
 Avoid unnecessary:
 
@@ -2492,7 +2492,7 @@ mounts.
 
 ---
 
-## 7. Using Privileged Containers
+### 7. Using Privileged Containers
 
 Use:
 
@@ -2504,7 +2504,7 @@ only when justified.
 
 ---
 
-## 8. Leaving Service Account Tokens Unnecessary
+### 8. Leaving Service Account Tokens Unnecessary
 
 If an application does not need Kubernetes API access:
 
@@ -2516,13 +2516,13 @@ can reduce exposure.
 
 ---
 
-## 9. Ignoring etcd Security
+### 9. Ignoring etcd Security
 
 etcd contains highly sensitive cluster state.
 
 ---
 
-## 10. Assuming Namespaces Provide Complete Isolation
+### 10. Assuming Namespaces Provide Complete Isolation
 
 Namespaces are useful organizational and security scopes, but they are not complete isolation boundaries.
 
@@ -2537,27 +2537,27 @@ Admission Controls
 
 ---
 
-## 11. Ignoring Audit Logs
+### 11. Ignoring Audit Logs
 
 Without auditing, investigating suspicious API activity becomes harder.
 
 ---
 
-## 12. Overlooking the Node
+### 12. Overlooking the Node
 
 A secure Pod does not compensate for an insecure host.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Follow Defense in Depth
+#### 1. Follow Defense in Depth
 
 Use multiple independent security layers.
 
 ---
 
-### 2. Apply Least Privilege
+#### 2. Apply Least Privilege
 
 Minimize:
 
@@ -2571,7 +2571,7 @@ API Access
 
 ---
 
-### 3. Run Containers as Non-Root
+#### 3. Run Containers as Non-Root
 
 Where compatible:
 
@@ -2581,7 +2581,7 @@ runAsNonRoot: true
 
 ---
 
-### 4. Drop Unnecessary Capabilities
+#### 4. Drop Unnecessary Capabilities
 
 Start with:
 
@@ -2597,7 +2597,7 @@ and add only required capabilities.
 
 ---
 
-### 5. Disable Privilege Escalation
+#### 5. Disable Privilege Escalation
 
 Where appropriate:
 
@@ -2607,7 +2607,7 @@ allowPrivilegeEscalation: false
 
 ---
 
-### 6. Use Seccomp
+#### 6. Use Seccomp
 
 Prefer:
 
@@ -2621,7 +2621,7 @@ or a stricter custom profile when appropriate.
 
 ---
 
-### 7. Restrict Network Communication
+#### 7. Restrict Network Communication
 
 Use:
 
@@ -2633,7 +2633,7 @@ to implement segmentation.
 
 ---
 
-### 8. Secure Secrets
+#### 8. Secure Secrets
 
 Use:
 
@@ -2648,7 +2648,7 @@ where appropriate.
 
 ---
 
-### 9. Scan and Sign Images
+#### 9. Scan and Sign Images
 
 Implement:
 
@@ -2663,13 +2663,13 @@ in the software supply chain.
 
 ---
 
-### 10. Enable Auditing
+#### 10. Enable Auditing
 
 Record security-sensitive Kubernetes API operations.
 
 ---
 
-### 11. Harden Nodes
+#### 11. Harden Nodes
 
 Keep:
 
@@ -2684,7 +2684,7 @@ patched and restricted.
 
 ---
 
-### 12. Monitor Runtime Behavior
+#### 12. Monitor Runtime Behavior
 
 Detect:
 
@@ -2697,7 +2697,7 @@ Container escape attempts
 
 ---
 
-# Security Maturity Model
+## Security Maturity Model
 
 A useful way to think about Kubernetes security maturity:
 
@@ -2728,7 +2728,7 @@ Supply Chain Security + Continuous Detection + Response
 
 ---
 
-# Kubernetes Security Architecture
+## Kubernetes Security Architecture
 
 A mature environment can look like:
 
@@ -2774,7 +2774,7 @@ A mature environment can look like:
 
 ---
 
-# Security Incident Example
+## Security Incident Example
 
 Suppose an attacker compromises a web application.
 
@@ -2830,7 +2830,7 @@ Defense in Depth
 
 ---
 
-# Security Incident Response Flow
+## Security Incident Response Flow
 
 ```text
 Detection
@@ -2854,9 +2854,9 @@ Module 10 — Kubernetes Security Operations
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Authentication
+### Authentication
 
 ```text
 Who are you?
@@ -2864,7 +2864,7 @@ Who are you?
 
 ---
 
-## Authorization
+### Authorization
 
 ```text
 What can you do?
@@ -2872,7 +2872,7 @@ What can you do?
 
 ---
 
-## RBAC
+### RBAC
 
 ```text
 Controls permissions
@@ -2880,7 +2880,7 @@ Controls permissions
 
 ---
 
-## Service Account
+### Service Account
 
 ```text
 Identity used by workloads
@@ -2888,7 +2888,7 @@ Identity used by workloads
 
 ---
 
-## Security Context
+### Security Context
 
 ```text
 Controls container/Pod execution security
@@ -2896,7 +2896,7 @@ Controls container/Pod execution security
 
 ---
 
-## NetworkPolicy
+### NetworkPolicy
 
 ```text
 Controls Pod network traffic
@@ -2904,7 +2904,7 @@ Controls Pod network traffic
 
 ---
 
-## Pod Security Standards
+### Pod Security Standards
 
 ```text
 Privileged
@@ -2914,7 +2914,7 @@ Restricted
 
 ---
 
-## Seccomp
+### Seccomp
 
 ```text
 Restricts system calls
@@ -2922,7 +2922,7 @@ Restricts system calls
 
 ---
 
-## Linux Capabilities
+### Linux Capabilities
 
 ```text
 Fine-grained privileges
@@ -2930,7 +2930,7 @@ Fine-grained privileges
 
 ---
 
-## Secrets
+### Secrets
 
 ```text
 Sensitive configuration
@@ -2938,7 +2938,7 @@ Sensitive configuration
 
 ---
 
-## Admission
+### Admission
 
 ```text
 Validate / Mutate / Reject API requests
@@ -2946,7 +2946,7 @@ Validate / Mutate / Reject API requests
 
 ---
 
-## Audit Logging
+### Audit Logging
 
 ```text
 Records Kubernetes API activity
@@ -2954,7 +2954,7 @@ Records Kubernetes API activity
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 ```text
 Multiple security layers
@@ -2962,7 +2962,7 @@ Multiple security layers
 
 ---
 
-# Essential kubectl Security Commands
+## Essential kubectl Security Commands
 
 Check current identity:
 
@@ -3045,9 +3045,9 @@ kubectl get events --sort-by=.lastTimestamp
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is Kubernetes security?
 - What is defense in depth?
@@ -3062,7 +3062,7 @@ kubectl get events --sort-by=.lastTimestamp
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Explain the Kubernetes API request security flow.
 - What is the difference between Role and ClusterRole?
@@ -3080,7 +3080,7 @@ kubectl get events --sort-by=.lastTimestamp
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Kubernetes API security pipeline.
 - How would you secure a Kubernetes cluster against container escape?
@@ -3103,13 +3103,13 @@ kubectl get events --sort-by=.lastTimestamp
 
 ---
 
-# Security Interview Scenario
+## Security Interview Scenario
 
-### Question
+#### Question
 
 > A web application Pod has been compromised. How would you prevent the attacker from taking over the Kubernetes cluster?
 
-### Answer Structure
+#### Answer Structure
 
 Start with:
 
@@ -3228,7 +3228,7 @@ Containment
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create a dedicated security-testing namespace.
 2. Inspect default Service Accounts.
@@ -3255,9 +3255,9 @@ Containment
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Kubernetes Security
 - Kubernetes API Authentication
@@ -3276,7 +3276,7 @@ Containment
 
 ---
 
-## Kubernetes Security Resources
+### Kubernetes Security Resources
 
 - Kubernetes SIG Security
 - Kubernetes Security Checklist
@@ -3285,7 +3285,7 @@ Containment
 
 ---
 
-## Cloud Native Security
+### Cloud Native Security
 
 - Cloud Native Computing Foundation (CNCF)
 - Cloud Native Security
@@ -3293,7 +3293,7 @@ Containment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Kubernetes security is a **multi-layer defense-in-depth problem**.
 
@@ -3486,9 +3486,9 @@ This foundation will be used throughout the remaining Kubernetes security chapte
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 47 – Authentication
+## Chapter 47 – Authentication
 
 Topics will include:
 

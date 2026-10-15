@@ -4,7 +4,7 @@
 
 ---
 
-# 1. What Is Detection Logic?
+## 1. What Is Detection Logic?
 
 **Detection logic** is a set of conditions used to determine whether observed activity matches a security-relevant pattern.
 
@@ -38,7 +38,7 @@ Potential Brute Force
 
 ---
 
-# 2. Detection Rule
+## 2. Detection Rule
 
 A **detection rule** is an implemented representation of detection logic.
 
@@ -75,11 +75,11 @@ generate alert
 
 ---
 
-# 3. Detection Rule vs Query
+## 3. Detection Rule vs Query
 
 These terms are related but different.
 
-### Query
+#### Query
 
 Retrieves or analyzes data.
 
@@ -88,7 +88,7 @@ Search authentication events
 where outcome = failure
 ```
 
-### Detection Rule
+#### Detection Rule
 
 Uses a query or equivalent logic to identify a security condition.
 
@@ -109,7 +109,7 @@ Detection Rule
 
 ---
 
-# 4. Detection Logic Pipeline
+## 4. Detection Logic Pipeline
 
 ```text
 Raw Events
@@ -133,7 +133,7 @@ Alert
 
 ---
 
-# 5. Core Components of Detection Logic
+## 5. Core Components of Detection Logic
 
 Most detections contain some combination of:
 
@@ -156,7 +156,7 @@ Actions
 
 ---
 
-# 6. Data Source
+## 6. Data Source
 
 First determine where the required information exists.
 
@@ -182,7 +182,7 @@ Endpoint Process Telemetry
 
 ---
 
-# 7. Fields
+## 7. Fields
 
 Fields represent attributes of an event.
 
@@ -202,7 +202,7 @@ A detection should depend on reliable fields.
 
 ---
 
-# 8. Field Selection
+## 8. Field Selection
 
 Avoid selecting unnecessary fields.
 
@@ -231,7 +231,7 @@ Maintainability
 
 ---
 
-# 9. Filtering
+## 9. Filtering
 
 Filtering narrows the dataset.
 
@@ -267,7 +267,7 @@ Specific User
 
 ---
 
-# 10. Logical Operators
+## 10. Logical Operators
 
 Common operators:
 
@@ -287,7 +287,7 @@ event.outcome = failure
 
 ---
 
-# 11. AND
+## 11. AND
 
 All conditions must match.
 
@@ -305,7 +305,7 @@ Encoded Command
 
 ---
 
-# 12. OR
+## 12. OR
 
 Any condition may match.
 
@@ -323,7 +323,7 @@ pwsh.exe
 
 ---
 
-# 13. NOT
+## 13. NOT
 
 Excludes a condition.
 
@@ -343,7 +343,7 @@ Use exclusions carefully.
 
 ---
 
-# 14. Parentheses
+## 14. Parentheses
 
 Parentheses control logic order.
 
@@ -363,7 +363,7 @@ may produce very different results.
 
 ---
 
-# 15. Comparison Operators
+## 15. Comparison Operators
 
 Common operators:
 
@@ -384,7 +384,7 @@ failed_count >= 20
 
 ---
 
-# 16. Membership Operators
+## 16. Membership Operators
 
 Common concepts:
 
@@ -405,7 +405,7 @@ process.name IN (
 
 ---
 
-# 17. Pattern Matching
+## 17. Pattern Matching
 
 Common approaches:
 
@@ -427,15 +427,15 @@ Pattern matching should be used carefully because expensive patterns can affect 
 
 ---
 
-# 18. Exact vs Partial Matching
+## 18. Exact vs Partial Matching
 
-### Exact
+#### Exact
 
 ```text
 process.name = "powershell.exe"
 ```
 
-### Partial
+#### Partial
 
 ```text
 process.name contains "power"
@@ -445,7 +445,7 @@ Partial matching may detect more variations but can also increase false positive
 
 ---
 
-# 19. Regular Expressions
+## 19. Regular Expressions
 
 Regex can identify patterns.
 
@@ -468,7 +468,7 @@ But avoid unnecessary regex when structured fields are available.
 
 ---
 
-# 20. Query Performance
+## 20. Query Performance
 
 A query should be:
 
@@ -500,7 +500,7 @@ Large Historical Range
 
 ---
 
-# 21. Time Windows
+## 21. Time Windows
 
 Many detections depend on time.
 
@@ -521,7 +521,7 @@ Rapid Suspicious Activity
 
 ---
 
-# 22. Fixed Time Window
+## 22. Fixed Time Window
 
 Example:
 
@@ -538,7 +538,7 @@ within 5 minutes
 
 ---
 
-# 23. Sliding Window
+## 23. Sliding Window
 
 A sliding window continuously evaluates recent activity.
 
@@ -559,7 +559,7 @@ Useful for continuous behavioral detection.
 
 ---
 
-# 24. Event Time vs Processing Time
+## 24. Event Time vs Processing Time
 
 Two concepts:
 
@@ -575,7 +575,7 @@ Delayed telemetry can affect detection logic.
 
 ---
 
-# 25. Aggregation
+## 25. Aggregation
 
 Aggregation summarizes multiple events.
 
@@ -593,7 +593,7 @@ GROUP BY
 
 ---
 
-# 26. COUNT
+## 26. COUNT
 
 Example:
 
@@ -609,7 +609,7 @@ Threshold Detection
 
 ---
 
-# 27. Unique Count
+## 27. Unique Count
 
 Example:
 
@@ -632,7 +632,7 @@ Password Spraying
 
 ---
 
-# 28. GROUP BY
+## 28. GROUP BY
 
 Grouping identifies relationships.
 
@@ -658,7 +658,7 @@ Carol → 31
 
 ---
 
-# 29. Multi-Entity Grouping
+## 29. Multi-Entity Grouping
 
 Example:
 
@@ -679,7 +679,7 @@ from broader activity.
 
 ---
 
-# 30. Threshold Detection
+## 30. Threshold Detection
 
 Example:
 
@@ -692,7 +692,7 @@ Thresholds are simple and effective when carefully selected.
 
 ---
 
-# 31. Threshold Problems
+## 31. Threshold Problems
 
 Too low:
 
@@ -722,7 +722,7 @@ Therefore threshold tuning is important.
 
 ---
 
-# 32. Static Threshold
+## 32. Static Threshold
 
 Example:
 
@@ -734,7 +734,7 @@ Simple but may not account for different users.
 
 ---
 
-# 33. Dynamic Threshold
+## 33. Dynamic Threshold
 
 Compare behavior against a baseline.
 
@@ -756,7 +756,7 @@ Behavioral Anomaly
 
 ---
 
-# 34. Baseline
+## 34. Baseline
 
 A baseline represents expected behavior.
 
@@ -780,7 +780,7 @@ Expected Baseline
 
 ---
 
-# 35. Entity-Based Detection
+## 35. Entity-Based Detection
 
 Group behavior around:
 
@@ -806,7 +806,7 @@ Unusual Location
 
 ---
 
-# 36. Sequence Detection
+## 36. Sequence Detection
 
 Some attacks occur as sequences.
 
@@ -836,7 +836,7 @@ Sequence detection can be stronger than isolated rules.
 
 ---
 
-# 37. Sequence Ordering
+## 37. Sequence Ordering
 
 A proper sequence should consider:
 
@@ -857,7 +857,7 @@ for same user
 
 ---
 
-# 38. Correlation
+## 38. Correlation
 
 Correlation combines events.
 
@@ -879,7 +879,7 @@ Higher Confidence
 
 ---
 
-# 39. Event Correlation
+## 39. Event Correlation
 
 Correlate events using:
 
@@ -895,7 +895,7 @@ Transaction
 
 ---
 
-# 40. Cross-Source Correlation
+## 40. Cross-Source Correlation
 
 Example:
 
@@ -923,7 +923,7 @@ Cross-source correlation provides stronger context.
 
 ---
 
-# 41. Correlation Key
+## 41. Correlation Key
 
 A correlation key identifies events belonging together.
 
@@ -939,7 +939,7 @@ process.entity_id
 
 ---
 
-# 42. Entity Resolution
+## 42. Entity Resolution
 
 Different sources may represent the same entity differently.
 
@@ -960,7 +960,7 @@ Identity resolution may be required.
 
 ---
 
-# 43. Contextual Detection
+## 43. Contextual Detection
 
 A detection becomes stronger when context is added.
 
@@ -986,7 +986,7 @@ Rare Application
 
 ---
 
-# 44. Detection Enrichment
+## 44. Detection Enrichment
 
 Enrichment can include:
 
@@ -1003,7 +1003,7 @@ Business Context
 
 ---
 
-# 45. Risk-Based Detection
+## 45. Risk-Based Detection
 
 Instead of using a single condition:
 
@@ -1037,7 +1037,7 @@ Total:
 
 ---
 
-# 46. Risk Threshold
+## 46. Risk Threshold
 
 Example:
 
@@ -1055,7 +1055,7 @@ Risk thresholds should be calibrated to the organization's environment.
 
 ---
 
-# 47. Detection Severity
+## 47. Detection Severity
 
 Common:
 
@@ -1079,7 +1079,7 @@ Confidence
 
 ---
 
-# 48. Severity vs Confidence
+## 48. Severity vs Confidence
 
 Example:
 
@@ -1110,7 +1110,7 @@ Evidence Strength
 
 ---
 
-# 49. Detection Confidence
+## 49. Detection Confidence
 
 Confidence reflects:
 
@@ -1133,7 +1133,7 @@ may provide higher confidence than a single anomaly.
 
 ---
 
-# 50. Exceptions
+## 50. Exceptions
 
 Exceptions identify known legitimate activity.
 
@@ -1159,7 +1159,7 @@ Known Scan Window
 
 ---
 
-# 51. Safe Exceptions
+## 51. Safe Exceptions
 
 Good:
 
@@ -1180,7 +1180,7 @@ All Administrators
 
 ---
 
-# 52. Suppression
+## 52. Suppression
 
 Suppression reduces repeated alerts.
 
@@ -1206,7 +1206,7 @@ event count = 100
 
 ---
 
-# 53. Deduplication
+## 53. Deduplication
 
 Deduplication prevents repeated alerts for the same underlying condition.
 
@@ -1222,7 +1222,7 @@ Time Window
 
 ---
 
-# 54. Alert Grouping
+## 54. Alert Grouping
 
 Example:
 
@@ -1244,7 +1244,7 @@ This reduces analyst workload.
 
 ---
 
-# 55. Stateful Detection
+## 55. Stateful Detection
 
 Some detections require remembering previous events.
 
@@ -1262,7 +1262,7 @@ The detection must retain enough state to correlate the two.
 
 ---
 
-# 56. Stateless Detection
+## 56. Stateless Detection
 
 A stateless detection evaluates the current event independently.
 
@@ -1276,7 +1276,7 @@ No historical context required.
 
 ---
 
-# 57. Stateful vs Stateless
+## 57. Stateful vs Stateless
 
 ```text
 Stateless
@@ -1288,7 +1288,7 @@ Stateful
 
 ---
 
-# 58. Detection Logic Example – Brute Force
+## 58. Detection Logic Example – Brute Force
 
 Conceptual:
 
@@ -1309,7 +1309,7 @@ WITHIN
 
 ---
 
-# 59. Detection Logic Example – Password Spray
+## 59. Detection Logic Example – Password Spray
 
 Conceptual:
 
@@ -1338,7 +1338,7 @@ Password Spray
 
 ---
 
-# 60. Detection Logic Example – Impossible Travel
+## 60. Detection Logic Example – Impossible Travel
 
 Conceptual:
 
@@ -1367,7 +1367,7 @@ before generating a high-confidence alert.
 
 ---
 
-# 61. Detection Logic Example – Suspicious PowerShell
+## 61. Detection Logic Example – Suspicious PowerShell
 
 Conceptual:
 
@@ -1389,7 +1389,7 @@ A robust implementation should rely on validated behavioral indicators rather th
 
 ---
 
-# 62. Detection Logic Example – Data Exfiltration
+## 62. Detection Logic Example – Data Exfiltration
 
 Potential sequence:
 
@@ -1407,7 +1407,7 @@ Correlation improves confidence.
 
 ---
 
-# 63. Query Development Workflow
+## 63. Query Development Workflow
 
 Use:
 
@@ -1437,7 +1437,7 @@ Use:
 
 ---
 
-# 64. Start With Sample Data
+## 64. Start With Sample Data
 
 Before writing a complex query:
 
@@ -1462,7 +1462,7 @@ Formats
 
 ---
 
-# 65. Query Development Strategy
+## 65. Query Development Strategy
 
 Start simple:
 
@@ -1504,7 +1504,7 @@ CONTEXT
 
 ---
 
-# 66. Avoid Overengineering
+## 66. Avoid Overengineering
 
 Bad approach:
 
@@ -1535,7 +1535,7 @@ Maintainable
 
 ---
 
-# 67. Query Readability
+## 67. Query Readability
 
 Bad:
 
@@ -1563,7 +1563,7 @@ Readability reduces logic mistakes.
 
 ---
 
-# 68. Query Comments
+## 68. Query Comments
 
 Where supported, document:
 
@@ -1582,7 +1582,7 @@ Example:
 
 ---
 
-# 69. Query Testing Dataset
+## 69. Query Testing Dataset
 
 Useful datasets include:
 
@@ -1597,7 +1597,7 @@ Edge Cases
 
 ---
 
-# 70. Positive Dataset
+## 70. Positive Dataset
 
 Contains:
 
@@ -1613,7 +1613,7 @@ Attack Simulation
 
 ---
 
-# 71. Negative Dataset
+## 71. Negative Dataset
 
 Contains:
 
@@ -1629,7 +1629,7 @@ Normal Administrator Activity
 
 ---
 
-# 72. Regression Testing
+## 72. Regression Testing
 
 Whenever detection logic changes:
 
@@ -1651,7 +1651,7 @@ No Unexpected Detection Breakage
 
 ---
 
-# 73. Detection Test Case
+## 73. Detection Test Case
 
 A test case can define:
 
@@ -1678,7 +1678,7 @@ Medium
 
 ---
 
-# 74. Query Debugging
+## 74. Query Debugging
 
 If a query returns no results:
 
@@ -1700,7 +1700,7 @@ Test Incrementally
 
 ---
 
-# 75. Incremental Debugging
+## 75. Incremental Debugging
 
 Suppose final query:
 
@@ -1736,7 +1736,7 @@ This identifies the problematic condition.
 
 ---
 
-# 76. Query Performance Optimization
+## 76. Query Performance Optimization
 
 Use:
 
@@ -1762,7 +1762,7 @@ Complex Regex
 
 ---
 
-# 77. High Cardinality
+## 77. High Cardinality
 
 Fields with many unique values:
 
@@ -1785,7 +1785,7 @@ may produce enormous numbers of groups.
 
 ---
 
-# 78. Query Cost
+## 78. Query Cost
 
 Query cost can increase with:
 
@@ -1801,7 +1801,7 @@ Frequency
 
 ---
 
-# 79. Query Frequency
+## 79. Query Frequency
 
 A query running:
 
@@ -1826,9 +1826,9 @@ Operational Need
 
 ---
 
-# 80. Real-Time vs Scheduled Detection
+## 80. Real-Time vs Scheduled Detection
 
-### Real-Time
+#### Real-Time
 
 ```text
 Event
@@ -1845,7 +1845,7 @@ High-Speed Threats
 Critical Events
 ```
 
-### Scheduled
+#### Scheduled
 
 ```text
 Events Accumulate
@@ -1867,7 +1867,7 @@ is required.
 
 ---
 
-# 81. Detection Window vs Alert Window
+## 81. Detection Window vs Alert Window
 
 Detection window:
 
@@ -1885,7 +1885,7 @@ These should not be confused.
 
 ---
 
-# 82. Threshold vs Frequency
+## 82. Threshold vs Frequency
 
 Example:
 
@@ -1910,7 +1910,7 @@ How often the detection evaluates.
 
 ---
 
-# 83. Detection Query Components
+## 83. Detection Query Components
 
 A useful conceptual template:
 
@@ -1938,7 +1938,7 @@ ALERT
 
 ---
 
-# 84. Detection Rule Template
+## 84. Detection Rule Template
 
 ```text
 Name:
@@ -1977,7 +1977,7 @@ Version:
 
 ---
 
-# 85. Detection Rule Example
+## 85. Detection Rule Example
 
 ```text
 Name:
@@ -2024,7 +2024,7 @@ and subsequent successful logins.
 
 ---
 
-# 86. Detection Logic Layers
+## 86. Detection Logic Layers
 
 A mature detection can use layers:
 
@@ -2061,7 +2061,7 @@ High Risk
 
 ---
 
-# 87. Detection Confidence Ladder
+## 87. Detection Confidence Ladder
 
 Conceptually:
 
@@ -2079,7 +2079,7 @@ High Confidence Detection
 
 ---
 
-# 88. Weak Signal
+## 88. Weak Signal
 
 Example:
 
@@ -2095,7 +2095,7 @@ Low Confidence
 
 ---
 
-# 89. Stronger Signal
+## 89. Stronger Signal
 
 ```text
 PowerShell
@@ -2109,7 +2109,7 @@ Higher confidence.
 
 ---
 
-# 90. Strong Correlation
+## 90. Strong Correlation
 
 ```text
 Phishing
@@ -2129,7 +2129,7 @@ High Confidence
 
 ---
 
-# 91. Detection Resilience
+## 91. Detection Resilience
 
 Attackers may attempt:
 
@@ -2155,15 +2155,15 @@ Behavior-based detection can improve resilience.
 
 ---
 
-# 92. Static vs Behavioral Detection
+## 92. Static vs Behavioral Detection
 
-### Static
+#### Static
 
 ```text
 Hash = X
 ```
 
-### Behavioral
+#### Behavioral
 
 ```text
 Process
@@ -2181,7 +2181,7 @@ Behavioral detection can survive changes to specific indicators.
 
 ---
 
-# 93. Hybrid Detection
+## 93. Hybrid Detection
 
 Strong detection can combine:
 
@@ -2205,7 +2205,7 @@ Rare Host
 
 ---
 
-# 94. Detection Rule Dependencies
+## 94. Detection Rule Dependencies
 
 A rule may depend on:
 
@@ -2223,7 +2223,7 @@ Dependencies should be documented.
 
 ---
 
-# 95. Detection Failure Modes
+## 95. Detection Failure Modes
 
 Common causes:
 
@@ -2242,7 +2242,7 @@ Performance Problem
 
 ---
 
-# 96. Troubleshooting Detection Logic
+## 96. Troubleshooting Detection Logic
 
 Use:
 
@@ -2260,7 +2260,7 @@ Use:
 
 ---
 
-# 97. Detection Logic Anti-Patterns
+## 97. Detection Logic Anti-Patterns
 
 Avoid:
 
@@ -2294,7 +2294,7 @@ No Ownership
 
 ---
 
-# 98. Hardcoded Assumptions
+## 98. Hardcoded Assumptions
 
 Example:
 
@@ -2316,7 +2316,7 @@ where supported.
 
 ---
 
-# 99. Environment-Aware Detection
+## 99. Environment-Aware Detection
 
 Consider:
 
@@ -2344,7 +2344,7 @@ may be expected.
 
 ---
 
-# 100. Detection Logic Checklist
+## 100. Detection Logic Checklist
 
 Before deployment:
 
@@ -2368,51 +2368,51 @@ Before deployment:
 
 ---
 
-# 101. Interview Questions
+## 101. Interview Questions
 
-### What is detection logic?
+#### What is detection logic?
 
 > A set of conditions and relationships applied to security telemetry to identify suspicious or security-relevant behavior.
 
-### What is the difference between a query and a detection rule?
+#### What is the difference between a query and a detection rule?
 
 > A query primarily searches or analyzes data, while a detection rule uses logic to identify a security condition and typically generate an alert.
 
-### Why are time windows important?
+#### Why are time windows important?
 
 > They help distinguish rapid suspicious behavior from normal activity and enable correlation across events.
 
-### What is threshold detection?
+#### What is threshold detection?
 
 > Detecting activity when an event count, value, or measurement crosses a defined threshold within a specified context or time window.
 
-### What is correlation?
+#### What is correlation?
 
 > Combining multiple events or signals based on time, entity, sequence, or other relationships to identify higher-confidence behavior.
 
-### What is stateful detection?
+#### What is stateful detection?
 
 > Detection that considers previous events or stored context when evaluating current activity.
 
-### What is detection enrichment?
+#### What is detection enrichment?
 
 > Adding context such as threat intelligence, asset criticality, identity information, or geographic information to improve detection quality.
 
-### How do you optimize detection queries?
+#### How do you optimize detection queries?
 
 > Restrict the time range, use structured fields, filter early, avoid unnecessary regex, reduce expensive aggregations, and control query frequency.
 
-### Why are broad exclusions dangerous?
+#### Why are broad exclusions dangerous?
 
 > They can eliminate visibility into real attacks and create large detection blind spots.
 
-### How do you debug a detection query?
+#### How do you debug a detection query?
 
 > Start with the data source, validate fields and values, simplify the query, add conditions incrementally, and identify which condition causes the failure.
 
 ---
 
-# 102. Quick Revision
+## 102. Quick Revision
 
 ```text
 Detection Logic
@@ -2463,7 +2463,7 @@ Detection-as-Code
 
 ---
 
-# 103. Golden Rules
+## 103. Golden Rules
 
 ```text
 1. Start with the threat.
@@ -2519,7 +2519,7 @@ Detection-as-Code
 
 ---
 
-# 104. Final Mental Model
+## 104. Final Mental Model
 
 Every detection can be thought of as:
 
@@ -2559,7 +2559,7 @@ Alert / Investigation / Response
 
 ---
 
-# 105. Chapter Summary
+## 105. Chapter Summary
 
 This chapter established how raw telemetry becomes actual detection logic.
 
@@ -2592,4 +2592,3 @@ The key principle is:
 > **Good detection logic is not simply complex logic. It is the simplest reliable logic that identifies meaningful malicious behavior while remaining understandable, testable, performant, and maintainable.**
 
 The next chapter moves into **Detection Methodologies & Detection Types**, covering signature, IOC, rule-based, threshold, behavioral, anomaly, statistical, correlation, and hybrid detection approaches.
-```

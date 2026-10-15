@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Disk and file-system forensics focuses on persistent evidence stored on physical or virtual storage.
 
@@ -48,7 +48,7 @@ What other evidence is related?
 
 ---
 
-# Why Disk Forensics Matters
+## Why Disk Forensics Matters
 
 Attackers frequently interact with persistent storage.
 
@@ -80,7 +80,7 @@ Even when files are deleted, traces may remain within:
 
 ---
 
-# Disk Forensic Architecture
+## Disk Forensic Architecture
 
 ```text
                      Storage Device
@@ -108,7 +108,7 @@ Even when files are deleted, traces may remain within:
 
 ---
 
-# Disk Investigation Questions
+## Disk Investigation Questions
 
 A forensic analyst should ask:
 
@@ -127,7 +127,7 @@ What artifacts support the timeline?
 
 ---
 
-# Storage Evidence Types
+## Storage Evidence Types
 
 | Evidence | Value |
 |---|---|
@@ -144,9 +144,9 @@ What artifacts support the timeline?
 
 ---
 
-# Physical vs Logical Evidence
+## Physical vs Logical Evidence
 
-## Physical Acquisition
+### Physical Acquisition
 
 Captures storage at the block level.
 
@@ -171,7 +171,7 @@ Advantages:
 
 ---
 
-## Logical Acquisition
+### Logical Acquisition
 
 Collects selected files or directories.
 
@@ -195,7 +195,7 @@ Limitations:
 
 ---
 
-# Disk Imaging
+## Disk Imaging
 
 A forensic disk image should preserve the original storage content as accurately as practical.
 
@@ -211,7 +211,7 @@ Selection depends on tooling and forensic requirements.
 
 ---
 
-# Imaging Workflow
+## Imaging Workflow
 
 ```text
 Original Storage
@@ -238,7 +238,7 @@ Forensic Image
 
 ---
 
-# Write Protection
+## Write Protection
 
 A hardware or software write blocker can help prevent accidental modification of evidence during acquisition.
 
@@ -258,7 +258,7 @@ The goal is to preserve evidence integrity.
 
 ---
 
-# Hashing Disk Images
+## Hashing Disk Images
 
 After acquisition:
 
@@ -280,7 +280,7 @@ Tool Version
 
 ---
 
-# Hash Verification
+## Hash Verification
 
 Before analysis:
 
@@ -303,7 +303,7 @@ Do not silently continue.
 
 ---
 
-# Hash Limitations
+## Hash Limitations
 
 A matching hash demonstrates that the analyzed file matches the hashed image.
 
@@ -316,7 +316,7 @@ It does not automatically establish:
 
 ---
 
-# Partition Tables
+## Partition Tables
 
 Storage can contain partition structures.
 
@@ -338,7 +338,7 @@ A forensic analyst should identify:
 
 ---
 
-# MBR
+## MBR
 
 Master Boot Record is an older partitioning mechanism.
 
@@ -346,7 +346,7 @@ It has historical importance and remains relevant for forensic analysis of legac
 
 ---
 
-# GPT
+## GPT
 
 GUID Partition Table is widely used on modern systems.
 
@@ -358,7 +358,7 @@ It supports:
 
 ---
 
-# File Systems
+## File Systems
 
 Important file systems include:
 
@@ -380,7 +380,7 @@ The exact forensic artifacts depend on the file system.
 
 ---
 
-# NTFS
+## NTFS
 
 NTFS is a major Windows file system.
 
@@ -397,7 +397,7 @@ Directory Entries
 
 ---
 
-# Master File Table
+## Master File Table
 
 The NTFS Master File Table (MFT) contains records describing files and directories.
 
@@ -416,7 +416,7 @@ MFT analysis can provide important historical context.
 
 ---
 
-# NTFS File Attributes
+## NTFS File Attributes
 
 NTFS files can contain multiple attributes.
 
@@ -432,7 +432,7 @@ Different metadata structures may contain different timestamp information.
 
 ---
 
-# NTFS Timestamps
+## NTFS Timestamps
 
 Windows forensic analysis commonly considers:
 
@@ -447,7 +447,7 @@ The interpretation of timestamps depends on the artifact and Windows behavior.
 
 ---
 
-# Important Timestamp Principle
+## Important Timestamp Principle
 
 A timestamp should never be interpreted in isolation.
 
@@ -469,7 +469,7 @@ Network Evidence
 
 ---
 
-# Linux File Systems
+## Linux File Systems
 
 Linux systems may use:
 
@@ -491,7 +491,7 @@ For ext-family file systems, important concepts include:
 
 ---
 
-# Inodes
+## Inodes
 
 An inode stores metadata about a file.
 
@@ -511,7 +511,7 @@ The file name is associated through directory structures rather than being the c
 
 ---
 
-# File-System Metadata
+## File-System Metadata
 
 Useful metadata includes:
 
@@ -529,7 +529,7 @@ Attributes
 
 ---
 
-# File Metadata Investigation
+## File Metadata Investigation
 
 Example:
 
@@ -550,7 +550,7 @@ atime
 
 ---
 
-# Linux Timestamps
+## Linux Timestamps
 
 Linux commonly exposes:
 
@@ -570,7 +570,7 @@ The meaning is generally related to inode metadata/status changes.
 
 ---
 
-# File Creation Time
+## File Creation Time
 
 Some modern file systems may expose additional creation/birth-time information.
 
@@ -586,7 +586,7 @@ Never assume every Linux file has a reliable creation timestamp.
 
 ---
 
-# MACB Timeline
+## MACB Timeline
 
 A common forensic timeline representation is:
 
@@ -601,7 +601,7 @@ Availability depends on the artifact and file system.
 
 ---
 
-# Timeline Example
+## Timeline Example
 
 ```text
 10:01 — File created
@@ -615,7 +615,7 @@ The timeline becomes stronger when supported by independent artifacts.
 
 ---
 
-# Deleted Files
+## Deleted Files
 
 Deleting a file does not always immediately destroy every trace of it.
 
@@ -634,7 +634,7 @@ Snapshots
 
 ---
 
-# What Happens When a File Is Deleted?
+## What Happens When a File Is Deleted?
 
 Simplified:
 
@@ -658,7 +658,7 @@ The exact behavior depends on the file system and storage technology.
 
 ---
 
-# Deleted File Recovery
+## Deleted File Recovery
 
 Recovery depends on:
 
@@ -677,7 +677,7 @@ Therefore:
 
 ---
 
-# SSD Considerations
+## SSD Considerations
 
 Solid-state storage introduces additional complexity.
 
@@ -699,7 +699,7 @@ The exact result depends on hardware, firmware, OS, and configuration.
 
 ---
 
-# Unallocated Space
+## Unallocated Space
 
 Unallocated space consists of storage not currently assigned to an active file.
 
@@ -713,7 +713,7 @@ However, available evidence can be fragmented or overwritten.
 
 ---
 
-# Slack Space
+## Slack Space
 
 File slack refers broadly to unused space associated with allocated storage structures.
 
@@ -723,7 +723,7 @@ Modern storage behavior and file-system characteristics must be considered.
 
 ---
 
-# File Carving
+## File Carving
 
 File carving attempts to recover files based on recognizable content structures rather than normal file-system metadata.
 
@@ -747,7 +747,7 @@ Recovered File
 
 ---
 
-# File Carving Limitations
+## File Carving Limitations
 
 Carving can produce:
 
@@ -761,7 +761,7 @@ Recovered data should therefore be validated.
 
 ---
 
-# File Signatures
+## File Signatures
 
 Some file formats contain recognizable headers or structures.
 
@@ -780,7 +780,7 @@ File carving tools use such structures to identify candidate files.
 
 ---
 
-# Journaling
+## Journaling
 
 File systems may maintain journals recording changes.
 
@@ -799,7 +799,7 @@ ext4 Journal
 
 ---
 
-# NTFS USN Journal
+## NTFS USN Journal
 
 The Update Sequence Number Journal can contain information about changes to files and directories.
 
@@ -816,7 +816,7 @@ It is particularly valuable for reconstructing file-system activity.
 
 ---
 
-# Journal Limitations
+## Journal Limitations
 
 Journals are not complete event logs.
 
@@ -831,7 +831,7 @@ Consider:
 
 ---
 
-# Alternate Data Streams
+## Alternate Data Streams
 
 NTFS supports Alternate Data Streams (ADS).
 
@@ -847,7 +847,7 @@ ADS can have legitimate uses but may also require investigation when unexpected.
 
 ---
 
-# Investigating ADS
+## Investigating ADS
 
 On Windows systems, forensic tools can identify alternate streams.
 
@@ -862,7 +862,7 @@ The presence of an ADS is not inherently malicious.
 
 ---
 
-# Hidden Files
+## Hidden Files
 
 Hidden attributes and unusual locations should be investigated carefully.
 
@@ -880,7 +880,7 @@ Attackers may hide artifacts, but legitimate software also creates hidden files.
 
 ---
 
-# File Extension Mismatch
+## File Extension Mismatch
 
 A file named:
 
@@ -903,7 +903,7 @@ Origin
 
 ---
 
-# File Hashing
+## File Hashing
 
 Hash suspicious files:
 
@@ -922,7 +922,7 @@ Use hashes for:
 
 ---
 
-# Known-File Matching
+## Known-File Matching
 
 Investigators can compare hashes against:
 
@@ -935,7 +935,7 @@ A hash match should still be interpreted in context.
 
 ---
 
-# File Ownership
+## File Ownership
 
 Ownership may help determine:
 
@@ -949,7 +949,7 @@ But ownership does not prove authorship.
 
 ---
 
-# Permissions
+## Permissions
 
 Linux example:
 
@@ -966,7 +966,7 @@ Windows investigations should consider:
 
 ---
 
-# NTFS Security Descriptors
+## NTFS Security Descriptors
 
 Security descriptors can provide:
 
@@ -981,7 +981,7 @@ These can be useful during insider-threat and unauthorized-access investigations
 
 ---
 
-# Windows File-System Investigation
+## Windows File-System Investigation
 
 A Windows disk investigation may correlate:
 
@@ -1005,7 +1005,7 @@ User Files
 
 ---
 
-# Linux File-System Investigation
+## Linux File-System Investigation
 
 A Linux disk investigation may correlate:
 
@@ -1029,7 +1029,7 @@ Application Logs
 
 ---
 
-# File-System Investigation Workflow
+## File-System Investigation Workflow
 
 ```text
 Disk Image
@@ -1070,7 +1070,7 @@ Correlate
 
 ---
 
-# Safe Mounting
+## Safe Mounting
 
 Forensic images should be mounted in a way that prevents modification.
 
@@ -1084,7 +1084,7 @@ The investigator should:
 
 ---
 
-# Forensic File-System Tools
+## Forensic File-System Tools
 
 Common tools include:
 
@@ -1106,7 +1106,7 @@ Tool availability varies by environment.
 
 ---
 
-# The Sleuth Kit
+## The Sleuth Kit
 
 The Sleuth Kit provides command-line tools for examining disk images and file systems.
 
@@ -1128,7 +1128,7 @@ to examine file-system information when supported by the image and tool version.
 
 ---
 
-# File Listing
+## File Listing
 
 For supported file systems, tools such as:
 
@@ -1142,7 +1142,7 @@ Deleted entries may also be identifiable depending on file system and evidence s
 
 ---
 
-# Metadata Analysis
+## Metadata Analysis
 
 Tools such as:
 
@@ -1156,7 +1156,7 @@ Use the appropriate metadata identifier for the file system under investigation.
 
 ---
 
-# File Extraction
+## File Extraction
 
 Tools such as:
 
@@ -1178,7 +1178,7 @@ Hash
 
 ---
 
-# Disk Forensics and Timeline Analysis
+## Disk Forensics and Timeline Analysis
 
 A useful model is:
 
@@ -1198,7 +1198,7 @@ User Activity
 
 ---
 
-# Evidence Correlation Example
+## Evidence Correlation Example
 
 Suppose a suspicious executable is identified.
 
@@ -1224,43 +1224,43 @@ The combined evidence is significantly stronger than any single artifact.
 
 ---
 
-# Common Disk Forensic Mistakes
+## Common Disk Forensic Mistakes
 
-## Modifying the Original
+### Modifying the Original
 
 Never perform analysis directly against original evidence when avoidable.
 
-## Ignoring Hashes
+### Ignoring Hashes
 
 Integrity cannot be easily demonstrated.
 
-## Treating Timestamps as Absolute
+### Treating Timestamps as Absolute
 
 Clock drift and artifact semantics matter.
 
-## Assuming Deleted Means Gone
+### Assuming Deleted Means Gone
 
 Evidence may survive elsewhere.
 
-## Assuming Recovery Is Guaranteed
+### Assuming Recovery Is Guaranteed
 
 SSD/TRIM and overwriting may prevent recovery.
 
-## Ignoring Journals
+### Ignoring Journals
 
 Journals can provide important file-system context.
 
-## Trusting File Names
+### Trusting File Names
 
 Names can be misleading.
 
-## Ignoring Time Zones
+### Ignoring Time Zones
 
 Cross-system timelines can become incorrect.
 
 ---
 
-# Time Normalization
+## Time Normalization
 
 Record:
 
@@ -1285,7 +1285,7 @@ Use the correct timezone for the actual evidence rather than assuming.
 
 ---
 
-# File-System Timeline Model
+## File-System Timeline Model
 
 ```text
                     Timeline
@@ -1306,9 +1306,9 @@ Use the correct timezone for the actual evidence rather than assuming.
 
 ---
 
-# Practical Lab 01 — Disk Image Identification
+## Practical Lab 01 — Disk Image Identification
 
-## Objective
+### Objective
 
 Given an authorized forensic image:
 
@@ -1333,7 +1333,7 @@ File Systems
 
 ---
 
-# Practical Lab 02 — File-System Investigation
+## Practical Lab 02 — File-System Investigation
 
 Identify:
 
@@ -1350,7 +1350,7 @@ Create an evidence inventory.
 
 ---
 
-# Practical Lab 03 — Deleted File Investigation
+## Practical Lab 03 — Deleted File Investigation
 
 Identify deleted entries.
 
@@ -1369,7 +1369,7 @@ Do not assume every deleted entry can be recovered.
 
 ---
 
-# Practical Lab 04 — Timeline Investigation
+## Practical Lab 04 — Timeline Investigation
 
 Construct:
 
@@ -1386,7 +1386,7 @@ Then identify supporting artifacts for every event.
 
 ---
 
-# Practical Lab 05 — Suspicious File Investigation
+## Practical Lab 05 — Suspicious File Investigation
 
 Scenario:
 
@@ -1418,7 +1418,7 @@ Unknown
 
 ---
 
-# Practical Lab 06 — NTFS Investigation
+## Practical Lab 06 — NTFS Investigation
 
 Investigate:
 
@@ -1435,7 +1435,7 @@ Correlate file creation and execution.
 
 ---
 
-# Practical Lab 07 — Linux File-System Investigation
+## Practical Lab 07 — Linux File-System Investigation
 
 Investigate:
 
@@ -1454,7 +1454,7 @@ Construct a timeline.
 
 ---
 
-# Practical Lab 08 — Complete Disk Forensic Investigation
+## Practical Lab 08 — Complete Disk Forensic Investigation
 
 Scenario:
 
@@ -1494,7 +1494,7 @@ Answer:
 
 ---
 
-# Disk Forensic Investigation Report
+## Disk Forensic Investigation Report
 
 ```text
 # Disk and File-System Forensic Report
@@ -1545,7 +1545,7 @@ Investigator:
 
 ---
 
-# Example Finding
+## Example Finding
 
 ```text
 Finding ID:
@@ -1575,7 +1575,7 @@ The executable's complete content was not recoverable.
 
 ---
 
-# Disk Forensics and Incident Response
+## Disk Forensics and Incident Response
 
 Disk forensics supports:
 
@@ -1606,7 +1606,7 @@ Disk evidence can help determine:
 
 ---
 
-# Disk Forensics and Threat Hunting
+## Disk Forensics and Threat Hunting
 
 Forensic discoveries can become hunt hypotheses.
 
@@ -1633,7 +1633,7 @@ Scope Incident
 
 ---
 
-# Disk Forensics and Detection Engineering
+## Disk Forensics and Detection Engineering
 
 Example:
 
@@ -1659,7 +1659,7 @@ Alert on anomalous creation
 
 ---
 
-# Enterprise Disk Forensics Architecture
+## Enterprise Disk Forensics Architecture
 
 ```text
                     Security Operations
@@ -1697,7 +1697,7 @@ Alert on anomalous creation
 
 ---
 
-# Forensic Readiness
+## Forensic Readiness
 
 Organizations should prepare:
 
@@ -1716,7 +1716,7 @@ Backup / Snapshot Strategy
 
 ---
 
-# Evidence Retention
+## Evidence Retention
 
 Retention should account for:
 
@@ -1731,7 +1731,7 @@ Evidence should not be retained indefinitely without a documented reason.
 
 ---
 
-# Encryption Considerations
+## Encryption Considerations
 
 Disk encryption can affect acquisition and analysis.
 
@@ -1747,7 +1747,7 @@ Do not assume a powered-off encrypted system can be analyzed like an unencrypted
 
 ---
 
-# Cloud Storage Considerations
+## Cloud Storage Considerations
 
 Modern systems may use:
 
@@ -1763,7 +1763,7 @@ Cloud evidence should be acquired through approved provider mechanisms where pos
 
 ---
 
-# Virtual Machines
+## Virtual Machines
 
 Virtual machines introduce additional evidence sources:
 
@@ -1781,7 +1781,7 @@ A VM investigation may therefore require both guest and infrastructure evidence.
 
 ---
 
-# Containers
+## Containers
 
 Containerized environments may have:
 
@@ -1800,9 +1800,9 @@ Container forensics is covered further in:
 
 ---
 
-# File-System Evidence Confidence
+## File-System Evidence Confidence
 
-## High Confidence
+### High Confidence
 
 Multiple independent artifacts agree.
 
@@ -1816,35 +1816,35 @@ Event Log
 EDR
 ```
 
-## Medium Confidence
+### Medium Confidence
 
 Multiple related artifacts support the finding.
 
-## Low Confidence
+### Low Confidence
 
 A single ambiguous metadata artifact.
 
-## Unknown
+### Unknown
 
 Evidence is insufficient.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is disk forensics?
+### 1. What is disk forensics?
 
 The forensic examination of persistent storage and its file-system structures to identify evidence of activity.
 
 ---
 
-## 2. What is a forensic image?
+### 2. What is a forensic image?
 
 A forensic representation of storage acquired for investigation while preserving evidentiary integrity.
 
 ---
 
-## 3. What is the difference between physical and logical acquisition?
+### 3. What is the difference between physical and logical acquisition?
 
 Physical acquisition captures storage at a lower/block level and may include deleted/unallocated data.
 
@@ -1852,19 +1852,19 @@ Logical acquisition collects selected files or logical objects.
 
 ---
 
-## 4. What is NTFS?
+### 4. What is NTFS?
 
 A Windows file system with forensic artifacts such as MFT records, USN Journal, attributes, and security metadata.
 
 ---
 
-## 5. What is an inode?
+### 5. What is an inode?
 
 A Linux/Unix file-system structure containing metadata and references associated with a file.
 
 ---
 
-## 6. What is unallocated space?
+### 6. What is unallocated space?
 
 Storage space not currently assigned to active file-system objects.
 
@@ -1872,7 +1872,7 @@ It may contain remnants of deleted data.
 
 ---
 
-## 7. Can deleted files always be recovered?
+### 7. Can deleted files always be recovered?
 
 No.
 
@@ -1887,25 +1887,25 @@ Recovery depends on:
 
 ---
 
-## 8. What is file carving?
+### 8. What is file carving?
 
 Recovering candidate files from raw storage based on file structures rather than relying entirely on file-system metadata.
 
 ---
 
-## 9. What is the NTFS USN Journal?
+### 9. What is the NTFS USN Journal?
 
 A journal that records file-system changes and can help reconstruct activity involving files and directories.
 
 ---
 
-## 10. What is file slack?
+### 10. What is file slack?
 
 Unused space associated with allocated storage structures that may historically contain residual data.
 
 ---
 
-## 11. Why are timestamps dangerous to interpret?
+### 11. Why are timestamps dangerous to interpret?
 
 Because they can be affected by:
 
@@ -1918,13 +1918,13 @@ Because they can be affected by:
 
 ---
 
-## 12. What is the purpose of hashing?
+### 12. What is the purpose of hashing?
 
 To provide an integrity reference for evidence and enable comparison/correlation.
 
 ---
 
-## 13. What is the difference between `mtime` and `ctime` on Linux?
+### 13. What is the difference between `mtime` and `ctime` on Linux?
 
 `mtime` represents file-content modification.
 
@@ -1932,15 +1932,15 @@ To provide an integrity reference for evidence and enable comparison/correlation
 
 ---
 
-## 14. Why should investigators use working copies?
+### 14. Why should investigators use working copies?
 
 To preserve the original evidence and allow repeatable analysis.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A suspicious file was deleted immediately after an alert.
 
@@ -1960,9 +1960,9 @@ Snapshots
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A file is named `invoice.pdf`, but the investigation suggests it may be executable.
 
@@ -1983,9 +1983,9 @@ Never trust the extension alone.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > A file's timestamp indicates suspicious activity, but the endpoint clock was incorrect.
 
@@ -2005,36 +2005,36 @@ Other Hosts
 
 ---
 
-# Disk Forensics Maturity Model
+## Disk Forensics Maturity Model
 
-## Level 1 — Basic
+### Level 1 — Basic
 
 - Understand disk images
 - Understand filesystems
 - Analyze metadata
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Standard acquisition
 - Hash verification
 - Timeline creation
 - Deleted-file analysis
 
-## Level 3 — Managed
+### Level 3 — Managed
 
 - Enterprise forensic tooling
 - Central evidence storage
 - Standard procedures
 - Case management
 
-## Level 4 — Integrated
+### Level 4 — Integrated
 
 - Disk + memory + EDR
 - SIEM correlation
 - Threat hunting
 - Automated artifact collection
 
-## Level 5 — Advanced
+### Level 5 — Advanced
 
 - Enterprise forensic readiness
 - Large-scale endpoint collection
@@ -2044,7 +2044,7 @@ Other Hosts
 
 ---
 
-# Chapter Completion Checklist
+## Chapter Completion Checklist
 
 ```text
 [ ] Understand disk forensics
@@ -2080,7 +2080,7 @@ Other Hosts
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Disk forensics provides the persistent evidence necessary to reconstruct what happened on a system.
 
@@ -2121,49 +2121,49 @@ Remember:
 
 ---
 
-# References
+## References
 
-### NIST SP 800-86 — Guide to Integrating Forensic Techniques into Incident Response
+#### NIST SP 800-86 — Guide to Integrating Forensic Techniques into Incident Response
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### The Sleuth Kit
+#### The Sleuth Kit
 
 https://www.sleuthkit.org/
 
-### Autopsy
+#### Autopsy
 
 https://www.autopsy.com/
 
-### Microsoft NTFS Documentation
+#### Microsoft NTFS Documentation
 
 https://learn.microsoft.com/windows-server/storage/file-server/ntfs-overview
 
-### Microsoft File Systems
+#### Microsoft File Systems
 
 https://learn.microsoft.com/windows/win32/fileio/file-systems
 
-### Linux Kernel Documentation
+#### Linux Kernel Documentation
 
 https://docs.kernel.org/
 
-### Linux `stat` Manual
+#### Linux `stat` Manual
 
 https://man7.org/linux/man-pages/man1/stat.1.html
 
-### Linux `find` Manual
+#### Linux `find` Manual
 
 https://man7.org/linux/man-pages/man1/find.1.html
 
-### NIST Computer Forensics
+#### NIST Computer Forensics
 
 https://www.nist.gov/itl/ssd/software-quality-group/computer-forensics-tool-testing-program-cftt
 
-### SANS Digital Forensics
+#### SANS Digital Forensics
 
 https://www.sans.org/digital-forensics/
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 

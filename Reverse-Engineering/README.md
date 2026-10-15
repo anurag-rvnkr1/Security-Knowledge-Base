@@ -67,7 +67,7 @@ It covers:
 
 ---
 
-# Why Reverse Engineering Matters
+## Why Reverse Engineering Matters
 
 Modern security professionals frequently encounter software without source code.
 
@@ -111,11 +111,11 @@ A strong reverse engineer can answer:
 
 ---
 
-# Reverse Engineering vs Malware Analysis
+## Reverse Engineering vs Malware Analysis
 
 These areas overlap, but they have different goals.
 
-## Malware Analysis
+### Malware Analysis
 
 Primarily asks:
 
@@ -127,7 +127,7 @@ What infrastructure does it use?
 How can we detect it?
 ```
 
-## Reverse Engineering
+### Reverse Engineering
 
 Can ask:
 
@@ -154,7 +154,7 @@ Deep Software Understanding
 
 ---
 
-# Core Reverse Engineering Workflow
+## Core Reverse Engineering Workflow
 
 A professional investigation commonly follows:
 
@@ -202,11 +202,11 @@ A professional investigation commonly follows:
 
 ---
 
-# Reverse Engineering Objectives
+## Reverse Engineering Objectives
 
 Depending on the investigation, objectives may include:
 
-### Software Understanding
+#### Software Understanding
 
 ```text
 Program architecture
@@ -217,7 +217,7 @@ Control flow
 Algorithms
 ```
 
-### Security Analysis
+#### Security Analysis
 
 ```text
 Attack surface
@@ -229,7 +229,7 @@ Cryptographic implementation
 Privilege boundaries
 ```
 
-### Malware Research
+#### Malware Research
 
 ```text
 Payload behavior
@@ -240,7 +240,7 @@ Anti-analysis
 Injection
 ```
 
-### Vulnerability Research
+#### Vulnerability Research
 
 ```text
 Crash
@@ -253,7 +253,7 @@ Exploitability
 
 ---
 
-# Reverse Engineering Mindset
+## Reverse Engineering Mindset
 
 Reverse engineering requires an evidence-driven mindset.
 
@@ -278,23 +278,23 @@ What experiment can answer it?
 
 ---
 
-# Observation vs Inference
+## Observation vs Inference
 
 A professional reverse-engineering report should distinguish:
 
-### Observation
+#### Observation
 
 ```text
 The function calls CreateFileW.
 ```
 
-### Inference
+#### Inference
 
 ```text
 The function likely opens a file.
 ```
 
-### Confirmed Behavior
+#### Confirmed Behavior
 
 ```text
 Runtime execution shows the function opening C:\example.txt.
@@ -304,7 +304,7 @@ These are different levels of confidence.
 
 ---
 
-# Binary Analysis Layers
+## Binary Analysis Layers
 
 Reverse engineering can be viewed as multiple layers:
 
@@ -330,7 +330,7 @@ The analyst moves between layers as necessary.
 
 ---
 
-# Computer Architecture Foundation
+## Computer Architecture Foundation
 
 Reverse engineering requires understanding how computers execute instructions.
 
@@ -371,7 +371,7 @@ while introducing concepts transferable to other architectures.
 
 ---
 
-# Assembly Language
+## Assembly Language
 
 Assembly provides a human-readable representation of machine instructions.
 
@@ -395,7 +395,7 @@ Reverse engineering is the process of reconstructing higher-level meaning from i
 
 ---
 
-# Registers
+## Registers
 
 Registers store small pieces of CPU state.
 
@@ -433,7 +433,7 @@ Instruction Pointer
 
 ---
 
-# Stack
+## Stack
 
 The stack commonly contains:
 
@@ -470,7 +470,7 @@ Understanding the stack is essential for:
 
 ---
 
-# Heap
+## Heap
 
 The heap is commonly used for dynamically allocated memory.
 
@@ -492,7 +492,7 @@ Heap behavior is particularly important for vulnerability research.
 
 ---
 
-# Virtual Memory
+## Virtual Memory
 
 Modern operating systems provide processes with virtual address spaces.
 
@@ -518,7 +518,7 @@ The processes generally operate in separate virtual address spaces.
 
 ---
 
-# Executable Formats
+## Executable Formats
 
 Reverse engineers must understand how operating systems represent executable files.
 
@@ -550,7 +550,7 @@ Entry Point
 
 ---
 
-# PE
+## PE
 
 The Portable Executable format is used by Windows.
 
@@ -572,7 +572,7 @@ Debug Information
 
 ---
 
-# ELF
+## ELF
 
 Executable and Linkable Format is common on Linux and Unix-like systems.
 
@@ -590,7 +590,7 @@ Relocations
 
 ---
 
-# Static Analysis
+## Static Analysis
 
 Static analysis examines software without executing it.
 
@@ -610,7 +610,7 @@ Binary diffing
 
 ---
 
-# Dynamic Analysis
+## Dynamic Analysis
 
 Dynamic analysis examines software while it executes.
 
@@ -628,7 +628,7 @@ Network observation
 
 ---
 
-# Static + Dynamic
+## Static + Dynamic
 
 The strongest analysis often combines both.
 
@@ -648,7 +648,7 @@ Deeper Understanding
 
 ---
 
-# Disassembly
+## Disassembly
 
 Disassembly converts machine code into assembly instructions.
 
@@ -671,7 +671,7 @@ llvm-objdump
 
 ---
 
-# Decompilation
+## Decompilation
 
 Decompilers attempt to reconstruct source-like code.
 
@@ -691,7 +691,7 @@ Therefore decompiled code should be treated as an approximation.
 
 ---
 
-# Control-Flow Graph
+## Control-Flow Graph
 
 A Control-Flow Graph (CFG) represents possible execution paths.
 
@@ -719,7 +719,7 @@ CFGs are fundamental to:
 
 ---
 
-# Call Graph
+## Call Graph
 
 A call graph represents function relationships.
 
@@ -740,7 +740,7 @@ This helps identify high-value functions quickly.
 
 ---
 
-# Debugging
+## Debugging
 
 Debuggers allow analysts to observe program execution.
 
@@ -771,7 +771,7 @@ LLDB
 
 ---
 
-# Obfuscation
+## Obfuscation
 
 Obfuscation attempts to make code harder to understand.
 
@@ -792,7 +792,7 @@ Commercial software may also use it for intellectual-property protection.
 
 ---
 
-# Packing
+## Packing
 
 Packers transform a binary into a representation that reconstructs the original code at runtime.
 
@@ -815,7 +815,7 @@ Reverse engineering often requires identifying the unpacked code.
 
 ---
 
-# Anti-Reverse-Engineering
+## Anti-Reverse-Engineering
 
 Programs may attempt to detect:
 
@@ -832,7 +832,7 @@ The analyst should identify the detection mechanism and understand its impact on
 
 ---
 
-# Vulnerability Research
+## Vulnerability Research
 
 Reverse engineering is also fundamental to vulnerability research.
 
@@ -862,7 +862,7 @@ The goal is to understand why it occurs and what security boundary it affects.
 
 ---
 
-# Patch Diffing
+## Patch Diffing
 
 When a vendor releases a security update:
 
@@ -886,7 +886,7 @@ Patch diffing can help identify vulnerability fixes and understand affected code
 
 ---
 
-# Reverse Engineering Automation
+## Reverse Engineering Automation
 
 Automation can assist with:
 
@@ -905,7 +905,7 @@ Python is commonly used to extend reverse-engineering workflows.
 
 ---
 
-# Tool Categories
+## Tool Categories
 
 | Category | Examples |
 |---|---|
@@ -924,7 +924,7 @@ Tool capabilities and support vary by architecture and file type.
 
 ---
 
-# Ethical and Legal Considerations
+## Ethical and Legal Considerations
 
 Reverse engineering must respect:
 
@@ -940,7 +940,7 @@ Security research should be performed only on software and systems you are autho
 
 ---
 
-# Repository Structure
+## Repository Structure
 
 ```text
 Reverse-Engineering/
@@ -961,9 +961,9 @@ Reverse-Engineering/
 
 ---
 
-# Chapter Roadmap
+## Chapter Roadmap
 
-## 01 — Reverse Engineering Fundamentals
+### 01 — Reverse Engineering Fundamentals
 
 Covers:
 
@@ -977,7 +977,7 @@ Covers:
 
 ---
 
-## 02 — Computer Architecture and Assembly
+### 02 — Computer Architecture and Assembly
 
 Covers:
 
@@ -994,7 +994,7 @@ Covers:
 
 ---
 
-## 03 — Executable Formats: PE, ELF and Binary Internals
+### 03 — Executable Formats: PE, ELF and Binary Internals
 
 Covers:
 
@@ -1013,7 +1013,7 @@ Covers:
 
 ---
 
-## 04 — Static Code Analysis and Disassembly
+### 04 — Static Code Analysis and Disassembly
 
 Covers:
 
@@ -1028,7 +1028,7 @@ Covers:
 
 ---
 
-## 05 — Decompilation, Functions and Control Flow
+### 05 — Decompilation, Functions and Control Flow
 
 Covers:
 
@@ -1044,7 +1044,7 @@ Covers:
 
 ---
 
-## 06 — Debugging and Dynamic Reverse Engineering
+### 06 — Debugging and Dynamic Reverse Engineering
 
 Covers:
 
@@ -1060,7 +1060,7 @@ Covers:
 
 ---
 
-## 07 — Obfuscation, Packing and Anti-Reverse-Engineering
+### 07 — Obfuscation, Packing and Anti-Reverse-Engineering
 
 Covers:
 
@@ -1076,7 +1076,7 @@ Covers:
 
 ---
 
-## 08 — Software Vulnerability Research and Exploit Reversing
+### 08 — Software Vulnerability Research and Exploit Reversing
 
 Covers:
 
@@ -1093,7 +1093,7 @@ Covers:
 
 ---
 
-## 09 — Reverse Engineering Automation and Tooling
+### 09 — Reverse Engineering Automation and Tooling
 
 Covers:
 
@@ -1109,7 +1109,7 @@ Covers:
 
 ---
 
-## 10 — Advanced Reverse Engineering Case Studies
+### 10 — Advanced Reverse Engineering Case Studies
 
 Covers:
 
@@ -1125,7 +1125,7 @@ Covers:
 
 ---
 
-# Skills Matrix
+## Skills Matrix
 
 | Skill | Beginner | Intermediate | Advanced |
 |---|---:|---:|---:|
@@ -1146,7 +1146,7 @@ Covers:
 
 ---
 
-# Learning Path
+## Learning Path
 
 A recommended progression is:
 
@@ -1194,9 +1194,9 @@ Executable formats
 
 ---
 
-# Practical Lab Progression
+## Practical Lab Progression
 
-## Level 1 — Beginner
+### Level 1 — Beginner
 
 Analyze a simple compiled program.
 
@@ -1211,7 +1211,7 @@ Imports
 
 ---
 
-## Level 2 — Intermediate
+### Level 2 — Intermediate
 
 Analyze a stripped binary.
 
@@ -1226,7 +1226,7 @@ API usage
 
 ---
 
-## Level 3 — Advanced
+### Level 3 — Advanced
 
 Analyze an obfuscated binary.
 
@@ -1241,7 +1241,7 @@ Core functionality
 
 ---
 
-## Level 4 — Security Research
+### Level 4 — Security Research
 
 Analyze a vulnerable application.
 
@@ -1257,7 +1257,7 @@ Security impact
 
 ---
 
-## Level 5 — Professional
+### Level 5 — Professional
 
 Complete an end-to-end investigation:
 
@@ -1281,11 +1281,11 @@ Professional Report
 
 ---
 
-# Reverse Engineering and Other Knowledge Areas
+## Reverse Engineering and Other Knowledge Areas
 
 This section integrates directly with the rest of the knowledge base.
 
-### Malware Analysis
+#### Malware Analysis
 
 ```text
 Malware Analysis
@@ -1295,7 +1295,7 @@ Reverse Engineering
 Code-Level Understanding
 ```
 
-### Digital Forensics
+#### Digital Forensics
 
 ```text
 Forensic Artifact
@@ -1305,7 +1305,7 @@ Binary Analysis
 Runtime Behavior
 ```
 
-### Vulnerability Research
+#### Vulnerability Research
 
 ```text
 Binary
@@ -1319,7 +1319,7 @@ Root Cause
 Security Impact
 ```
 
-### Detection Engineering
+#### Detection Engineering
 
 ```text
 Reverse Engineering
@@ -1331,7 +1331,7 @@ TTP
 Detection
 ```
 
-### Incident Response
+#### Incident Response
 
 ```text
 Malware
@@ -1347,7 +1347,7 @@ Containment
 
 ---
 
-# Enterprise Reverse Engineering Workflow
+## Enterprise Reverse Engineering Workflow
 
 ```text
                  Security Event
@@ -1390,7 +1390,7 @@ Containment
 
 ---
 
-# Professional Documentation Standard
+## Professional Documentation Standard
 
 Every significant reverse-engineering investigation should record:
 
@@ -1415,7 +1415,7 @@ References
 
 ---
 
-# Analyst Evidence Model
+## Analyst Evidence Model
 
 Use:
 
@@ -1444,7 +1444,7 @@ Whether the destination is attacker-controlled without additional evidence.
 
 ---
 
-# Tool-Assisted Analysis Principles
+## Tool-Assisted Analysis Principles
 
 Tools such as Ghidra, IDA, x64dbg and GDB are extremely powerful.
 
@@ -1463,7 +1463,7 @@ What evidence supports the interpretation
 
 ---
 
-# Reverse Engineering Safety
+## Reverse Engineering Safety
 
 When working with unknown or malicious binaries:
 
@@ -1480,7 +1480,7 @@ When working with unknown or malicious binaries:
 
 ---
 
-# Recommended References
+## Recommended References
 
 - [Ghidra](https://ghidra-sre.org/)
 - [Ghidra Documentation](https://ghidra.re/)
@@ -1503,7 +1503,7 @@ When working with unknown or malicious binaries:
 
 ---
 
-# Completion Criteria
+## Completion Criteria
 
 This section should ultimately enable the learner to:
 
@@ -1535,7 +1535,7 @@ This section should ultimately enable the learner to:
 
 ---
 
-# Final Objective
+## Final Objective
 
 The ultimate goal of this knowledge area is to develop the ability to move confidently between:
 

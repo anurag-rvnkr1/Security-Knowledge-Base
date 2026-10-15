@@ -1,10 +1,10 @@
 # 09 - Linux Permissions and ACL
 
-# Part 1 — Linux Permission Model, Ownership, Read/Write/Execute Permissions, Symbolic & Numeric Permissions, `chmod`, `chown`, and `chgrp`
+## Part 1 — Linux Permission Model, Ownership, Read/Write/Execute Permissions, Symbolic & Numeric Permissions, `chmod`, `chown`, and `chgrp`
 
 ---
 
-# Introduction
+## Introduction
 
 One of Linux's strongest security features is its **permission-based access control model**.
 
@@ -33,7 +33,7 @@ The Linux permission model forms the foundation for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this chapter, you will understand:
 
@@ -49,7 +49,7 @@ By the end of this chapter, you will understand:
 
 ---
 
-# Why Permissions Matter
+## Why Permissions Matter
 
 Consider a production server hosting:
 
@@ -72,7 +72,7 @@ Permissions help enforce the **Principle of Least Privilege**.
 
 ---
 
-# Linux Permission Architecture
+## Linux Permission Architecture
 
 ```text
                      Linux File
@@ -104,7 +104,7 @@ Permissions help enforce the **Principle of Least Privilege**.
 
 ---
 
-# Every File Has Three Ownership Classes
+## Every File Has Three Ownership Classes
 
 Linux evaluates permissions for three classes.
 
@@ -138,7 +138,7 @@ Everyone Else
 
 ---
 
-# Viewing Permissions
+## Viewing Permissions
 
 Use:
 
@@ -154,7 +154,7 @@ Example:
 
 ---
 
-# Understanding the Output
+## Understanding the Output
 
 ```text
 -rwxr-xr--
@@ -183,7 +183,7 @@ Meaning:
 
 ---
 
-# File Types
+## File Types
 
 First character meanings:
 
@@ -207,7 +207,7 @@ The leading `d` indicates a directory.
 
 ---
 
-# Read Permission (r)
+## Read Permission (r)
 
 Read permission allows viewing file contents.
 
@@ -229,7 +229,7 @@ Permission denied
 
 ---
 
-# Write Permission (w)
+## Write Permission (w)
 
 Write permission allows modification.
 
@@ -250,7 +250,7 @@ nano notes.txt
 
 ---
 
-# Execute Permission (x)
+## Execute Permission (x)
 
 Execute permission allows running a file as a program or script.
 
@@ -268,7 +268,7 @@ Permission denied
 
 ---
 
-# Directory Permissions
+## Directory Permissions
 
 Permissions behave differently for directories.
 
@@ -280,7 +280,7 @@ Permissions behave differently for directories.
 
 ---
 
-# Directory Read Permission
+## Directory Read Permission
 
 Allows listing files.
 
@@ -296,7 +296,7 @@ Directory contents cannot be listed.
 
 ---
 
-# Directory Write Permission
+## Directory Write Permission
 
 Allows:
 
@@ -316,7 +316,7 @@ rm old.txt
 
 ---
 
-# Directory Execute Permission
+## Directory Execute Permission
 
 Allows traversal.
 
@@ -334,7 +334,7 @@ Permission denied
 
 ---
 
-# Permission Matrix
+## Permission Matrix
 
 | Permission | File | Directory |
 |-------------|------|-----------|
@@ -344,17 +344,17 @@ Permission denied
 
 ---
 
-# Permission Representation
+## Permission Representation
 
 Permissions are represented in two ways.
 
-## Symbolic
+### Symbolic
 
 ```text
 rwxr-xr--
 ```
 
-## Numeric
+### Numeric
 
 ```text
 754
@@ -364,7 +364,7 @@ Both describe the same permissions.
 
 ---
 
-# Numeric Permission Values
+## Numeric Permission Values
 
 Each permission has a numeric value.
 
@@ -378,7 +378,7 @@ Sum the values to calculate the permission digit.
 
 ---
 
-# Common Permission Values
+## Common Permission Values
 
 | Number | Meaning |
 |---------|----------|
@@ -393,7 +393,7 @@ Sum the values to calculate the permission digit.
 
 ---
 
-# Example Calculation
+## Example Calculation
 
 Permissions:
 
@@ -449,7 +449,7 @@ rwxr-xr--
 
 ---
 
-# Common Permission Sets
+## Common Permission Sets
 
 | Numeric | Symbolic | Typical Usage |
 |----------|----------|---------------|
@@ -464,7 +464,7 @@ rwxr-xr--
 
 ---
 
-# chmod
+## chmod
 
 `chmod` changes permissions.
 
@@ -482,7 +482,7 @@ chmod 644 notes.txt
 
 ---
 
-# Numeric chmod
+## Numeric chmod
 
 Grant:
 
@@ -514,7 +514,7 @@ chmod 644 file.txt
 
 ---
 
-# Make a Script Executable
+## Make a Script Executable
 
 ```bash
 chmod 755 backup.sh
@@ -530,7 +530,7 @@ can be executed by users with execute permission.
 
 ---
 
-# Symbolic chmod
+## Symbolic chmod
 
 Syntax:
 
@@ -557,7 +557,7 @@ Operators:
 
 ---
 
-# Examples
+## Examples
 
 Add execute permission for owner:
 
@@ -585,7 +585,7 @@ chmod a-x script.sh
 
 ---
 
-# Recursive chmod
+## Recursive chmod
 
 Apply permissions recursively.
 
@@ -597,7 +597,7 @@ chmod -R 755 website/
 
 ---
 
-# chown
+## chown
 
 Change file ownership.
 
@@ -615,7 +615,7 @@ sudo chown alice report.txt
 
 ---
 
-# Change Owner and Group
+## Change Owner and Group
 
 ```bash
 sudo chown alice:developers report.txt
@@ -625,7 +625,7 @@ Both owner and group are updated.
 
 ---
 
-# Recursive Ownership Change
+## Recursive Ownership Change
 
 ```bash
 sudo chown -R alice:developers project/
@@ -635,7 +635,7 @@ Useful after restoring backups or migrating application data.
 
 ---
 
-# chgrp
+## chgrp
 
 Change only the group.
 
@@ -655,7 +655,7 @@ Ownership remains unchanged.
 
 ---
 
-# Viewing Ownership
+## Viewing Ownership
 
 ```bash
 ls -l
@@ -681,7 +681,7 @@ developers
 
 ---
 
-# Ownership Decision Flow
+## Ownership Decision Flow
 
 ```text
 User Requests Access
@@ -719,7 +719,7 @@ The kernel evaluates owner, then group, then others, stopping at the first appli
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A web application stores files in:
 
@@ -759,7 +759,7 @@ This supports least-privilege access to web content.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Weak permissions are a common cause of security incidents.
 
@@ -775,7 +775,7 @@ Security teams regularly audit permissions to identify these issues.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper permission management helps organizations:
 
@@ -788,7 +788,7 @@ Proper permission management helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Grant the minimum permissions required.
 - Prefer group-based access instead of granting permissions to everyone.
@@ -800,7 +800,7 @@ Proper permission management helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Every Linux file has an owner, group, and permission set.
 - Read, write, and execute permissions have different meanings for files and directories.
@@ -811,11 +811,11 @@ Proper permission management helps organizations:
 ---
 
 
-# Part 2 — Special Permissions (SUID, SGID, Sticky Bit), Default Permissions (`umask`), and Access Control Lists (ACLs)
+## Part 2 — Special Permissions (SUID, SGID, Sticky Bit), Default Permissions (`umask`), and Access Control Lists (ACLs)
 
 ---
 
-# Introduction
+## Introduction
 
 Traditional Linux permissions (Owner, Group, Others) are sufficient for many situations, but enterprise environments often require more advanced access control.
 
@@ -840,7 +840,7 @@ These features allow administrators to implement more flexible and secure access
 
 ---
 
-# Linux Permission Hierarchy
+## Linux Permission Hierarchy
 
 ```text
                 Linux Permissions
@@ -872,7 +872,7 @@ These features allow administrators to implement more flexible and secure access
 
 ---
 
-# Review of Standard Permissions
+## Review of Standard Permissions
 
 Every object begins with:
 
@@ -900,7 +900,7 @@ ACLs extend this model by allowing permissions for specific additional users and
 
 ---
 
-# Special Permissions
+## Special Permissions
 
 Linux provides three special permission bits.
 
@@ -914,7 +914,7 @@ These values occupy an additional leading digit in numeric permission notation.
 
 ---
 
-# Permission Format
+## Permission Format
 
 Normal permissions:
 
@@ -936,7 +936,7 @@ The first digit represents special permission bits.
 
 ---
 
-# SUID (Set User ID)
+## SUID (Set User ID)
 
 SUID allows an executable to run with the privileges of its **owner**, rather than the privileges of the user executing it.
 
@@ -970,7 +970,7 @@ Returns to User
 
 ---
 
-# Why SUID Exists
+## Why SUID Exists
 
 Some operations require elevated privileges.
 
@@ -988,7 +988,7 @@ However, the `passwd` program can update it because it executes with the privile
 
 ---
 
-# Example
+## Example
 
 Display permissions:
 
@@ -1012,7 +1012,7 @@ The `s` replaces the owner's execute bit, indicating SUID is enabled.
 
 ---
 
-# Setting SUID
+## Setting SUID
 
 Numeric:
 
@@ -1028,7 +1028,7 @@ chmod u+s program
 
 ---
 
-# Removing SUID
+## Removing SUID
 
 ```bash
 chmod u-s program
@@ -1036,7 +1036,7 @@ chmod u-s program
 
 ---
 
-# Security Considerations for SUID
+## Security Considerations for SUID
 
 Improperly configured SUID programs may:
 
@@ -1052,7 +1052,7 @@ Enterprise administrators should:
 
 ---
 
-# Finding SUID Files
+## Finding SUID Files
 
 ```bash
 find / -perm -4000 -type f
@@ -1070,7 +1070,7 @@ Regular reviews help identify unexpected privileged executables.
 
 ---
 
-# SGID (Set Group ID)
+## SGID (Set Group ID)
 
 SGID behaves differently for files and directories.
 
@@ -1084,7 +1084,7 @@ For directories:
 
 ---
 
-# SGID on Directories
+## SGID on Directories
 
 Example:
 
@@ -1120,7 +1120,7 @@ This simplifies collaboration.
 
 ---
 
-# Enable SGID
+## Enable SGID
 
 Numeric:
 
@@ -1136,7 +1136,7 @@ chmod g+s project
 
 ---
 
-# SGID Example
+## SGID Example
 
 Display:
 
@@ -1154,7 +1154,7 @@ The `s` appears in the group execute position.
 
 ---
 
-# Finding SGID Files
+## Finding SGID Files
 
 ```bash
 find / -perm -2000
@@ -1164,7 +1164,7 @@ This identifies files and directories with the SGID bit set.
 
 ---
 
-# Sticky Bit
+## Sticky Bit
 
 The Sticky Bit is primarily used on **directories**.
 
@@ -1172,7 +1172,7 @@ It prevents users from deleting or renaming files owned by other users, even whe
 
 ---
 
-# Why Sticky Bit Exists
+## Why Sticky Bit Exists
 
 Consider:
 
@@ -1206,7 +1206,7 @@ Only the file owner, directory owner, or root can remove the file.
 
 ---
 
-# Example
+## Example
 
 Display:
 
@@ -1230,7 +1230,7 @@ The `t` indicates the Sticky Bit.
 
 ---
 
-# Enable Sticky Bit
+## Enable Sticky Bit
 
 Numeric:
 
@@ -1246,7 +1246,7 @@ chmod +t shared
 
 ---
 
-# Remove Sticky Bit
+## Remove Sticky Bit
 
 ```bash
 chmod -t shared
@@ -1254,7 +1254,7 @@ chmod -t shared
 
 ---
 
-# Summary of Special Permissions
+## Summary of Special Permissions
 
 | Permission | Applies To | Primary Purpose |
 |------------|------------|-----------------|
@@ -1264,7 +1264,7 @@ chmod -t shared
 
 ---
 
-# Understanding umask
+## Understanding umask
 
 When a file is created, Linux begins with default permission values.
 
@@ -1279,7 +1279,7 @@ The **umask** removes permission bits from these defaults.
 
 ---
 
-# View Current umask
+## View Current umask
 
 ```bash
 umask
@@ -1293,7 +1293,7 @@ Example:
 
 ---
 
-# Example Calculation
+## Example Calculation
 
 Default file permission:
 
@@ -1329,7 +1329,7 @@ Directory:
 
 ---
 
-# Common umask Values
+## Common umask Values
 
 | umask | Files | Directories | Typical Use |
 |--------|-------|-------------|-------------|
@@ -1339,7 +1339,7 @@ Directory:
 
 ---
 
-# Temporarily Change umask
+## Temporarily Change umask
 
 ```bash
 umask 027
@@ -1349,7 +1349,7 @@ This affects new files created in the current shell session.
 
 ---
 
-# Access Control Lists (ACLs)
+## Access Control Lists (ACLs)
 
 Traditional permissions allow only:
 
@@ -1387,7 +1387,7 @@ security-team
 
 ---
 
-# Why ACLs?
+## Why ACLs?
 
 Scenario:
 
@@ -1415,7 +1415,7 @@ ACLs solve this problem cleanly.
 
 ---
 
-# ACL Workflow
+## ACL Workflow
 
 ```text
 Permission Check
@@ -1449,7 +1449,7 @@ ACL evaluation extends the traditional permission model.
 
 ---
 
-# Viewing ACLs
+## Viewing ACLs
 
 Display ACL information:
 
@@ -1473,7 +1473,7 @@ other::---
 
 ---
 
-# Grant ACL Permission
+## Grant ACL Permission
 
 Grant Bob read access:
 
@@ -1490,7 +1490,7 @@ Explanation:
 
 ---
 
-# Grant Multiple Permissions
+## Grant Multiple Permissions
 
 Grant Bob read and write:
 
@@ -1500,7 +1500,7 @@ setfacl -m u:bob:rw report.txt
 
 ---
 
-# Grant Group ACL
+## Grant Group ACL
 
 ```bash
 setfacl -m g:security:r report.txt
@@ -1510,7 +1510,7 @@ The `security` group receives read access.
 
 ---
 
-# Remove ACL Entry
+## Remove ACL Entry
 
 ```bash
 setfacl -x u:bob report.txt
@@ -1518,7 +1518,7 @@ setfacl -x u:bob report.txt
 
 ---
 
-# Remove All ACLs
+## Remove All ACLs
 
 ```bash
 setfacl -b report.txt
@@ -1528,7 +1528,7 @@ This removes all extended ACL entries while leaving standard permissions intact.
 
 ---
 
-# Default ACLs
+## Default ACLs
 
 Default ACLs apply automatically to newly created files within a directory.
 
@@ -1542,7 +1542,7 @@ Files created inside `project/` inherit the default ACL according to filesystem 
 
 ---
 
-# Display Files with ACLs
+## Display Files with ACLs
 
 ```bash
 ls -l
@@ -1558,7 +1558,7 @@ The `+` indicates that extended ACL entries exist.
 
 ---
 
-# Enterprise Collaboration Example
+## Enterprise Collaboration Example
 
 ```text
 Engineering Directory
@@ -1588,7 +1588,7 @@ Each team receives only the permissions required for its role.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security teams frequently audit for:
 
@@ -1603,7 +1603,7 @@ Regular permission reviews reduce the likelihood of unauthorized access.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Advanced permission features enable organizations to:
 
@@ -1616,7 +1616,7 @@ Advanced permission features enable organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Minimize the number of SUID executables.
 - Use SGID on shared project directories where appropriate.
@@ -1628,7 +1628,7 @@ Advanced permission features enable organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - SUID allows executables to run with the owner's privileges.
 - SGID supports shared group ownership and group-based execution.
@@ -1638,11 +1638,11 @@ Advanced permission features enable organizations to:
 
 ---
 
-# Part 3 — Permission Troubleshooting, Enterprise Scenarios, Security Auditing, Practical Examples, and Real-World Permission Management
+## Part 3 — Permission Troubleshooting, Enterprise Scenarios, Security Auditing, Practical Examples, and Real-World Permission Management
 
 ---
 
-# Introduction
+## Introduction
 
 In enterprise environments, permission problems are among the most common causes of:
 
@@ -1664,7 +1664,7 @@ Permission troubleshooting requires understanding both Linux authorization logic
 
 ---
 
-# Permission Evaluation Process
+## Permission Evaluation Process
 
 Whenever a process attempts to access a file or directory, the Linux kernel evaluates permissions in a specific order.
 
@@ -1697,7 +1697,7 @@ Whenever a process attempts to access a file or directory, the Linux kernel eval
 
 ---
 
-# Understanding "Permission Denied"
+## Understanding "Permission Denied"
 
 One of the most common Linux errors:
 
@@ -1718,7 +1718,7 @@ Possible causes include:
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```text
 Access Failure
@@ -1770,7 +1770,7 @@ Following a consistent workflow reduces troubleshooting time.
 
 ---
 
-# Step 1 — Verify File Exists
+## Step 1 — Verify File Exists
 
 ```bash
 ls -l report.txt
@@ -1786,7 +1786,7 @@ The problem is not related to permissions.
 
 ---
 
-# Step 2 — Check Ownership
+## Step 2 — Check Ownership
 
 ```bash
 ls -l report.txt
@@ -1806,7 +1806,7 @@ Determine:
 
 ---
 
-# Step 3 — Verify User Identity
+## Step 3 — Verify User Identity
 
 Display current user:
 
@@ -1834,7 +1834,7 @@ Compare this information with the file's ownership.
 
 ---
 
-# Step 4 — Check Group Membership
+## Step 4 — Check Group Membership
 
 Display groups:
 
@@ -1858,7 +1858,7 @@ If the required group is missing, group permissions will not apply.
 
 ---
 
-# Step 5 — Check ACLs
+## Step 5 — Check ACLs
 
 Display ACL entries:
 
@@ -1882,7 +1882,7 @@ ACLs may grant or restrict access beyond the standard permission bits.
 
 ---
 
-# Step 6 — Verify Parent Directory
+## Step 6 — Verify Parent Directory
 
 Users require execute (`x`) permission on every directory in the path.
 
@@ -1914,7 +1914,7 @@ A missing execute bit on a parent directory can prevent access even when the fil
 
 ---
 
-# Diagnosing Common Permission Issues
+## Diagnosing Common Permission Issues
 
 | Problem | Likely Cause | Suggested Check |
 |----------|--------------|-----------------|
@@ -1928,7 +1928,7 @@ A missing execute bit on a parent directory can prevent access even when the fil
 
 ---
 
-# Example 1 — Script Will Not Execute
+## Example 1 — Script Will Not Execute
 
 Permissions:
 
@@ -1962,7 +1962,7 @@ ls -l backup.sh
 
 ---
 
-# Example 2 — User Cannot Modify File
+## Example 2 — User Cannot Modify File
 
 Permissions:
 
@@ -1996,7 +1996,7 @@ Choose the approach that aligns with organizational policy.
 
 ---
 
-# Example 3 — Shared Directory Collaboration
+## Example 3 — Shared Directory Collaboration
 
 Problem:
 
@@ -2034,7 +2034,7 @@ This ensures consistent group ownership.
 
 ---
 
-# Example 4 — Public Upload Directory
+## Example 4 — Public Upload Directory
 
 Requirements:
 
@@ -2063,7 +2063,7 @@ Protected Shared Directory
 
 ---
 
-# Example 5 — Confidential SSH Key
+## Example 5 — Confidential SSH Key
 
 Private key:
 
@@ -2094,7 +2094,7 @@ This protects sensitive authentication material.
 
 ---
 
-# Example 6 — Shared Report Access
+## Example 6 — Shared Report Access
 
 Scenario:
 
@@ -2120,7 +2120,7 @@ Benefits:
 
 ---
 
-# Enterprise Scenario 1 — Web Server
+## Enterprise Scenario 1 — Web Server
 
 Directory:
 
@@ -2156,7 +2156,7 @@ Benefits:
 
 ---
 
-# Enterprise Scenario 2 — Database Server
+## Enterprise Scenario 2 — Database Server
 
 Sensitive directory:
 
@@ -2174,7 +2174,7 @@ Access should generally be limited to the database service account and authorize
 
 ---
 
-# Enterprise Scenario 3 — Shared Engineering Repository
+## Enterprise Scenario 3 — Shared Engineering Repository
 
 ```text
 engineering/
@@ -2208,7 +2208,7 @@ This approach supports collaboration while maintaining least privilege.
 
 ---
 
-# Enterprise Scenario 4 — Secure Backup Storage
+## Enterprise Scenario 4 — Secure Backup Storage
 
 Backup directory:
 
@@ -2236,7 +2236,7 @@ Typical characteristics:
 
 ---
 
-# Permission Auditing
+## Permission Auditing
 
 Administrators should regularly review:
 
@@ -2251,7 +2251,7 @@ Routine audits help detect misconfigurations before they become security issues.
 
 ---
 
-# Find World-Writable Files
+## Find World-Writable Files
 
 ```bash
 find / -type f -perm -002
@@ -2261,7 +2261,7 @@ Review the results carefully before making changes.
 
 ---
 
-# Find World-Writable Directories
+## Find World-Writable Directories
 
 ```bash
 find / -type d -perm -002
@@ -2271,7 +2271,7 @@ Verify that publicly writable directories use the Sticky Bit where appropriate.
 
 ---
 
-# Find SUID Programs
+## Find SUID Programs
 
 ```bash
 find / -type f -perm -4000
@@ -2281,7 +2281,7 @@ Unexpected results should be investigated.
 
 ---
 
-# Find SGID Objects
+## Find SGID Objects
 
 ```bash
 find / -perm -2000
@@ -2291,7 +2291,7 @@ Review whether SGID is required for each result.
 
 ---
 
-# Find Files with ACLs
+## Find Files with ACLs
 
 ```bash
 getfacl filename
@@ -2311,7 +2311,7 @@ ls -l
 
 ---
 
-# Permission Audit Checklist
+## Permission Audit Checklist
 
 | Audit Item | Verify |
 |------------|---------|
@@ -2327,7 +2327,7 @@ ls -l
 
 ---
 
-# Permission Troubleshooting Flowchart
+## Permission Troubleshooting Flowchart
 
 ```text
 Permission Denied
@@ -2377,7 +2377,7 @@ Access Granted
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently abuse permission weaknesses such as:
 
@@ -2400,7 +2400,7 @@ Permission reviews are a core component of system hardening.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective permission management enables organizations to:
 
@@ -2413,7 +2413,7 @@ Effective permission management enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Apply the Principle of Least Privilege.
 - Prefer group-based access over broad "others" permissions.
@@ -2425,7 +2425,7 @@ Effective permission management enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Permission troubleshooting follows a structured process.
 - Ownership, groups, permission bits, ACLs, and security policies all influence access decisions.
@@ -2436,11 +2436,11 @@ Effective permission management enables organizations to:
 ---
 
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Linux permissions are one of the most frequently tested topics in:
 
@@ -2466,7 +2466,7 @@ This section combines everything learned throughout the chapter into practical e
 
 ---
 
-# Enterprise Permission Management Workflow
+## Enterprise Permission Management Workflow
 
 ```text
 User Request
@@ -2506,7 +2506,7 @@ Monitor Access
 
 ---
 
-# Practical Lab 1 — Viewing Permissions
+## Practical Lab 1 — Viewing Permissions
 
 Create a file:
 
@@ -2532,7 +2532,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 2 — Numeric chmod
+## Practical Lab 2 — Numeric chmod
 
 Assign permissions:
 
@@ -2558,7 +2558,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 3 — Symbolic chmod
+## Practical Lab 3 — Symbolic chmod
 
 Add execute permission:
 
@@ -2590,7 +2590,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 4 — Make a Script Executable
+## Practical Lab 4 — Make a Script Executable
 
 Create a script:
 
@@ -2634,7 +2634,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 5 — Change Ownership
+## Practical Lab 5 — Change Ownership
 
 Display ownership:
 
@@ -2660,7 +2660,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 6 — Change Group Ownership
+## Practical Lab 6 — Change Group Ownership
 
 Create group:
 
@@ -2686,7 +2686,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 7 — Recursive Permission Changes
+## Practical Lab 7 — Recursive Permission Changes
 
 Create directories:
 
@@ -2719,7 +2719,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 8 — Configure SGID
+## Practical Lab 8 — Configure SGID
 
 Create directory:
 
@@ -2757,7 +2757,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 9 — Configure Sticky Bit
+## Practical Lab 9 — Configure Sticky Bit
 
 Create directory:
 
@@ -2789,7 +2789,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 10 — View SUID Programs
+## Practical Lab 10 — View SUID Programs
 
 Search:
 
@@ -2803,7 +2803,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 11 — View SGID Objects
+## Practical Lab 11 — View SGID Objects
 
 ```bash
 find / -perm -2000
@@ -2815,7 +2815,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 12 — View Current umask
+## Practical Lab 12 — View Current umask
 
 ```bash
 umask
@@ -2845,7 +2845,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 13 — Configure ACL
+## Practical Lab 13 — Configure ACL
 
 Grant Bob read access:
 
@@ -2865,7 +2865,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 14 — Remove ACL
+## Practical Lab 14 — Remove ACL
 
 ```bash
 setfacl -x u:bob report.txt
@@ -2883,7 +2883,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 15 — Configure Default ACL
+## Practical Lab 15 — Configure Default ACL
 
 Grant default permissions:
 
@@ -2903,7 +2903,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 16 — Audit World-Writable Files
+## Practical Lab 16 — Audit World-Writable Files
 
 Search:
 
@@ -2919,7 +2919,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 17 — Audit World-Writable Directories
+## Practical Lab 17 — Audit World-Writable Directories
 
 ```bash
 find / -type d -perm -002
@@ -2933,7 +2933,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 18 — Complete Permission Audit
+## Practical Lab 18 — Complete Permission Audit
 
 Workflow:
 
@@ -2975,9 +2975,9 @@ Learning Objective:
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# Secure Web Server Deployment
+## Secure Web Server Deployment
 
 Application directory:
 
@@ -3013,9 +3013,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Shared Development Team
+## Shared Development Team
 
 Requirements:
 
@@ -3055,9 +3055,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# Public Upload Directory
+## Public Upload Directory
 
 Requirements:
 
@@ -3086,9 +3086,9 @@ Examples include temporary directories such as `/tmp`.
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# SSH Key Protection
+## SSH Key Protection
 
 Private key:
 
@@ -3122,7 +3122,7 @@ Benefits:
 
 ---
 
-# Common Permission Mistakes
+## Common Permission Mistakes
 
 | Mistake | Risk |
 |----------|------|
@@ -3137,7 +3137,7 @@ Benefits:
 
 ---
 
-# Enterprise Permission Audit Checklist
+## Enterprise Permission Audit Checklist
 
 | Item | Verify |
 |------|---------|
@@ -3155,7 +3155,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Permission misconfigurations are common attack vectors.
 
@@ -3180,7 +3180,7 @@ File Integrity Monitoring (FIM) solutions often alert on changes to critical per
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong permission management helps organizations:
 
@@ -3193,7 +3193,7 @@ Strong permission management helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow the Principle of Least Privilege.
 - Avoid `777` permissions except in exceptional, controlled circumstances.
@@ -3206,7 +3206,7 @@ Strong permission management helps organizations:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3228,9 +3228,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What do read, write, and execute permissions mean for files?
 2. How do directory permissions differ from file permissions?
@@ -3245,7 +3245,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the Linux permission evaluation order.
 2. What is the difference between SUID and SGID?
@@ -3260,7 +3260,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a secure permission model for a shared engineering repository.
 2. Explain how permission misconfigurations can lead to privilege escalation.
@@ -3275,7 +3275,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux permissions are a foundational security mechanism.
 - Ownership, standard permissions, and ACLs work together to control access.
@@ -3285,9 +3285,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man chmod`
 - `man chown`
@@ -3297,7 +3297,7 @@ In this chapter, you learned:
 - `man getfacl`
 - `man stat`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - CIS Benchmarks for Linux
@@ -3308,11 +3308,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **10-Linux-Processes.md**
 
-## Topics Covered
+### Topics Covered
 
 - Process Fundamentals
 - Process Lifecycle

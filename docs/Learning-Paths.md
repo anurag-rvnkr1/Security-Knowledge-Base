@@ -1,8 +1,8 @@
 # Learning Paths
 
-Paths are recommendations, not prerequisites. Use chapter depth appropriate to prior experience.
+Paths are recommendations, not prerequisites. The homepage presents these collections as links to actual first learning documents; use chapter depth appropriate to prior experience.
 
-## Cybersecurity Fundamentals
+## Security Foundations
 
 ```text
 Networking → Linux → Windows → Web Security → Cryptography
@@ -10,21 +10,13 @@ Networking → Linux → Windows → Web Security → Cryptography
 
 Links: [Networking](../Networking/), [Linux](../Linux/), [Windows](../Windows/), [Web Security](../Web-Security/), [Cryptography](../Cryptography/).
 
-## SOC Analyst
+## Defensive Operations
 
 ```text
-Networking → Windows → SIEM → Detection Engineering → Threat Hunting → Incident Response
+Windows → SIEM → Detection Engineering → Threat Hunting → Incident Response
 ```
 
 Links: [SIEM](../SIEM/), [Detection Engineering](../Detection-Engineering/), [Threat Hunting](../Threat-Hunting/), [Incident Response](../Incident-Response/).
-
-## Blue Team
-
-```text
-Windows → Endpoint Security → SIEM → Detection Engineering → Threat Hunting → Incident Response → Digital Forensics
-```
-
-Links: [Endpoint Security](../Endpoint-Security/), [Digital Forensics](../Digital-Forensics/).
 
 ## Application Security
 
@@ -37,15 +29,15 @@ Links: [OWASP](../OWASP/), [Web Security](../Web-Security/), [API Security](../A
 ## Cloud Security
 
 ```text
-Cloud fundamentals → IAM → Network and workload controls → Logging → Incident response
+Cloud Security → Identity and Access Management → Kubernetes → Incident Response
 ```
 
 Links: [Cloud Security](../Cloud-Security/), [IAM](../Identity-and-Access-Management/), [Incident Response](../Incident-Response/).
 
-## DFIR
+## Digital Forensics and Response
 
 ```text
-Operating system artifacts → Evidence handling → Timeline analysis → Incident response
+Windows → Digital Forensics → Malware Analysis → Incident Response
 ```
 
 Links: [Digital Forensics](../Digital-Forensics/), [Incident Response](../Incident-Response/), [Malware Analysis](../Malware-Analysis/).

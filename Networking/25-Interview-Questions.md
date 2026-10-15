@@ -1,10 +1,10 @@
 # 25 - Interview Questions
 
-# Part 1 — Networking Fundamentals, OSI Model, TCP/IP Model, Ethernet, IPv4, IPv6, and Subnetting Interview Questions
+## Part 1 — Networking Fundamentals, OSI Model, TCP/IP Model, Ethernet, IPv4, IPv6, and Subnetting Interview Questions
 
 ---
 
-# Introduction
+## Introduction
 
 Technical interviews for Network Engineer, SOC Analyst, System Administrator, Cybersecurity Engineer, Cloud Engineer, and DevOps roles frequently assess networking fundamentals.
 
@@ -14,7 +14,7 @@ This chapter provides questions ranging from beginner to advanced levels, along 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -25,11 +25,11 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Networking Fundamentals
+## Networking Fundamentals
 
 ---
 
-## Q1. What is a computer network?
+### Q1. What is a computer network?
 
 **Answer:**
 
@@ -37,7 +37,7 @@ A computer network is a collection of interconnected devices that communicate an
 
 ---
 
-## Q2. Why do organizations use networks?
+### Q2. Why do organizations use networks?
 
 **Answer:**
 
@@ -52,7 +52,7 @@ Organizations use networks to:
 
 ---
 
-## Q3. What are the main types of networks?
+### Q3. What are the main types of networks?
 
 **Answer:**
 
@@ -67,7 +67,7 @@ Organizations use networks to:
 
 ---
 
-## Q4. What is bandwidth?
+### Q4. What is bandwidth?
 
 **Answer:**
 
@@ -75,7 +75,7 @@ Bandwidth is the maximum amount of data that can be transmitted across a network
 
 ---
 
-## Q5. What is throughput?
+### Q5. What is throughput?
 
 **Answer:**
 
@@ -83,7 +83,7 @@ Throughput is the actual amount of data successfully transferred over the networ
 
 ---
 
-## Q6. What is latency?
+### Q6. What is latency?
 
 **Answer:**
 
@@ -91,7 +91,7 @@ Latency is the time taken for a packet to travel from the source to the destinat
 
 ---
 
-## Q7. What is jitter?
+### Q7. What is jitter?
 
 **Answer:**
 
@@ -99,7 +99,7 @@ Jitter is the variation in packet arrival times. High jitter negatively affects 
 
 ---
 
-## Q8. What is packet loss?
+### Q8. What is packet loss?
 
 **Answer:**
 
@@ -107,11 +107,11 @@ Packet loss occurs when packets fail to reach their destination due to congestio
 
 ---
 
-# OSI Model
+## OSI Model
 
 ---
 
-## Q9. What is the OSI Model?
+### Q9. What is the OSI Model?
 
 **Answer:**
 
@@ -119,7 +119,7 @@ The Open Systems Interconnection (OSI) Model is a seven-layer conceptual framewo
 
 ---
 
-## Q10. Name all seven OSI layers.
+### Q10. Name all seven OSI layers.
 
 **Answer:**
 
@@ -133,7 +133,7 @@ The Open Systems Interconnection (OSI) Model is a seven-layer conceptual framewo
 
 ---
 
-## Q11. Which OSI layer handles routing?
+### Q11. Which OSI layer handles routing?
 
 **Answer:**
 
@@ -141,7 +141,7 @@ The **Network Layer (Layer 3)** is responsible for logical addressing and routin
 
 ---
 
-## Q12. Which OSI layer uses MAC addresses?
+### Q12. Which OSI layer uses MAC addresses?
 
 **Answer:**
 
@@ -149,7 +149,7 @@ The **Data Link Layer (Layer 2)** uses MAC addresses for communication within th
 
 ---
 
-## Q13. Which layer is responsible for reliable communication?
+### Q13. Which layer is responsible for reliable communication?
 
 **Answer:**
 
@@ -157,7 +157,7 @@ The **Transport Layer (Layer 4)** provides reliable communication using TCP.
 
 ---
 
-## Q14. Which OSI layer handles encryption?
+### Q14. Which OSI layer handles encryption?
 
 **Answer:**
 
@@ -165,7 +165,7 @@ The **Presentation Layer (Layer 6)** is responsible for data encryption, compres
 
 ---
 
-## Q15. Which layer interacts directly with users?
+### Q15. Which layer interacts directly with users?
 
 **Answer:**
 
@@ -173,7 +173,7 @@ The **Application Layer (Layer 7)** provides services used by applications such 
 
 ---
 
-## Q16. Why is the OSI model important?
+### Q16. Why is the OSI model important?
 
 **Answer:**
 
@@ -181,11 +181,11 @@ The OSI model provides a standardized framework that simplifies network design, 
 
 ---
 
-# TCP/IP Model
+## TCP/IP Model
 
 ---
 
-## Q17. What is the TCP/IP Model?
+### Q17. What is the TCP/IP Model?
 
 **Answer:**
 
@@ -198,7 +198,7 @@ The TCP/IP Model is the practical networking model used on the Internet. It cons
 
 ---
 
-## Q18. What is the difference between the OSI and TCP/IP models?
+### Q18. What is the difference between the OSI and TCP/IP models?
 
 | OSI | TCP/IP |
 |------|---------|
@@ -208,7 +208,7 @@ The TCP/IP Model is the practical networking model used on the Internet. It cons
 
 ---
 
-## Q19. Which protocol provides reliable communication?
+### Q19. Which protocol provides reliable communication?
 
 **Answer:**
 
@@ -216,7 +216,7 @@ TCP (Transmission Control Protocol) provides reliable, connection-oriented commu
 
 ---
 
-## Q20. Which protocol is connectionless?
+### Q20. Which protocol is connectionless?
 
 **Answer:**
 
@@ -224,11 +224,11 @@ UDP (User Datagram Protocol) is connectionless and provides faster communication
 
 ---
 
-# Ethernet
+## Ethernet
 
 ---
 
-## Q21. What is Ethernet?
+### Q21. What is Ethernet?
 
 **Answer:**
 
@@ -236,7 +236,7 @@ Ethernet is the most widely used wired Local Area Network (LAN) technology defin
 
 ---
 
-## Q22. What is a MAC address?
+### Q22. What is a MAC address?
 
 **Answer:**
 
@@ -250,7 +250,7 @@ Example:
 
 ---
 
-## Q23. What is the difference between a MAC address and an IP address?
+### Q23. What is the difference between a MAC address and an IP address?
 
 | MAC Address | IP Address |
 |--------------|------------|
@@ -261,7 +261,7 @@ Example:
 
 ---
 
-## Q24. What is a broadcast domain?
+### Q24. What is a broadcast domain?
 
 **Answer:**
 
@@ -269,7 +269,7 @@ A broadcast domain is a group of devices that receive the same broadcast traffic
 
 ---
 
-## Q25. What is a collision domain?
+### Q25. What is a collision domain?
 
 **Answer:**
 
@@ -277,11 +277,11 @@ A collision domain is a network segment where packet collisions can occur. Moder
 
 ---
 
-# IPv4
+## IPv4
 
 ---
 
-## Q26. What is IPv4?
+### Q26. What is IPv4?
 
 **Answer:**
 
@@ -295,7 +295,7 @@ Example:
 
 ---
 
-## Q27. How many addresses does IPv4 support?
+### Q27. How many addresses does IPv4 support?
 
 **Answer:**
 
@@ -303,7 +303,7 @@ IPv4 provides approximately **4.3 billion** unique addresses (2³²).
 
 ---
 
-## Q28. What are private IPv4 address ranges?
+### Q28. What are private IPv4 address ranges?
 
 **Answer:**
 
@@ -315,7 +315,7 @@ IPv4 provides approximately **4.3 billion** unique addresses (2³²).
 
 ---
 
-## Q29. What is a subnet mask?
+### Q29. What is a subnet mask?
 
 **Answer:**
 
@@ -329,7 +329,7 @@ Example:
 
 ---
 
-## Q30. What is the default gateway?
+### Q30. What is the default gateway?
 
 **Answer:**
 
@@ -337,7 +337,7 @@ The default gateway is the router used to forward traffic from the local network
 
 ---
 
-## Q31. What is NAT?
+### Q31. What is NAT?
 
 **Answer:**
 
@@ -345,11 +345,11 @@ Network Address Translation (NAT) translates private IP addresses into public IP
 
 ---
 
-# IPv6
+## IPv6
 
 ---
 
-## Q32. Why was IPv6 introduced?
+### Q32. Why was IPv6 introduced?
 
 **Answer:**
 
@@ -357,7 +357,7 @@ IPv6 was introduced to overcome IPv4 address exhaustion and provide improved sca
 
 ---
 
-## Q33. How large is an IPv6 address?
+### Q33. How large is an IPv6 address?
 
 **Answer:**
 
@@ -371,7 +371,7 @@ Example:
 
 ---
 
-## Q34. What are the advantages of IPv6?
+### Q34. What are the advantages of IPv6?
 
 **Answer:**
 
@@ -386,7 +386,7 @@ Advantages include:
 
 ---
 
-## Q35. What is SLAAC?
+### Q35. What is SLAAC?
 
 **Answer:**
 
@@ -394,11 +394,11 @@ Stateless Address Autoconfiguration (SLAAC) enables IPv6 hosts to automatically 
 
 ---
 
-# Subnetting
+## Subnetting
 
 ---
 
-## Q36. Why is subnetting used?
+### Q36. Why is subnetting used?
 
 **Answer:**
 
@@ -406,7 +406,7 @@ Subnetting divides a large network into smaller logical networks to improve perf
 
 ---
 
-## Q37. What is CIDR?
+### Q37. What is CIDR?
 
 **Answer:**
 
@@ -414,7 +414,7 @@ Classless Inter-Domain Routing (CIDR) uses prefix notation (for example, `/24`) 
 
 ---
 
-## Q38. How many usable hosts are available in a /24 subnet?
+### Q38. How many usable hosts are available in a /24 subnet?
 
 **Answer:**
 
@@ -427,7 +427,7 @@ A `/24` subnet contains:
 
 ---
 
-## Q39. How many usable hosts are available in a /30 subnet?
+### Q39. How many usable hosts are available in a /30 subnet?
 
 **Answer:**
 
@@ -440,7 +440,7 @@ This is commonly used for point-to-point links.
 
 ---
 
-## Q40. Why is subnetting important in enterprise networks?
+### Q40. Why is subnetting important in enterprise networks?
 
 **Answer:**
 
@@ -455,7 +455,7 @@ Subnetting improves:
 
 ---
 
-# Quick Interview Tips
+## Quick Interview Tips
 
 During networking interviews:
 
@@ -467,7 +467,7 @@ During networking interviews:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Networking fundamentals form the foundation of every infrastructure and cybersecurity role.
 - A strong understanding of the OSI and TCP/IP models is essential for troubleshooting.
@@ -477,11 +477,11 @@ During networking interviews:
 ---
 
 
-# Part 2 — Routing, Switching, VLANs, STP, ARP, DHCP, DNS, TCP, UDP, ICMP, Firewalls, VPNs, Wireless, and Enterprise Networking Interview Questions
+## Part 2 — Routing, Switching, VLANs, STP, ARP, DHCP, DNS, TCP, UDP, ICMP, Firewalls, VPNs, Wireless, and Enterprise Networking Interview Questions
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise networking interviews typically move beyond basic networking concepts and focus on how networks actually operate in production environments.
 
@@ -502,11 +502,11 @@ This section contains commonly asked interview questions with concise, technical
 
 ---
 
-# Routing
+## Routing
 
 ---
 
-## Q41. What is routing?
+### Q41. What is routing?
 
 **Answer:**
 
@@ -514,7 +514,7 @@ Routing is the process of forwarding packets between different networks using ro
 
 ---
 
-## Q42. What is the difference between routing and switching?
+### Q42. What is the difference between routing and switching?
 
 | Routing | Switching |
 |----------|-----------|
@@ -525,7 +525,7 @@ Routing is the process of forwarding packets between different networks using ro
 
 ---
 
-## Q43. What is a routing table?
+### Q43. What is a routing table?
 
 **Answer:**
 
@@ -533,7 +533,7 @@ A routing table contains information about destination networks, next-hop addres
 
 ---
 
-## Q44. What is the default route?
+### Q44. What is the default route?
 
 **Answer:**
 
@@ -547,7 +547,7 @@ Example:
 
 ---
 
-## Q45. What is the difference between static and dynamic routing?
+### Q45. What is the difference between static and dynamic routing?
 
 | Static Routing | Dynamic Routing |
 |----------------|-----------------|
@@ -558,7 +558,7 @@ Example:
 
 ---
 
-## Q46. Name some dynamic routing protocols.
+### Q46. Name some dynamic routing protocols.
 
 **Answer:**
 
@@ -572,7 +572,7 @@ Common routing protocols include:
 
 ---
 
-## Q47. Which routing protocol is primarily used on the Internet?
+### Q47. Which routing protocol is primarily used on the Internet?
 
 **Answer:**
 
@@ -580,7 +580,7 @@ Border Gateway Protocol (BGP) is the primary routing protocol used to exchange r
 
 ---
 
-## Q48. What is route convergence?
+### Q48. What is route convergence?
 
 **Answer:**
 
@@ -588,11 +588,11 @@ Route convergence is the process by which routers update their routing tables an
 
 ---
 
-# Switching
+## Switching
 
 ---
 
-## Q49. What is a network switch?
+### Q49. What is a network switch?
 
 **Answer:**
 
@@ -600,7 +600,7 @@ A switch forwards Ethernet frames between devices within the same LAN using MAC 
 
 ---
 
-## Q50. How does a switch learn MAC addresses?
+### Q50. How does a switch learn MAC addresses?
 
 **Answer:**
 
@@ -608,7 +608,7 @@ A switch learns MAC addresses by recording the source MAC address of incoming fr
 
 ---
 
-## Q51. What happens when the destination MAC address is unknown?
+### Q51. What happens when the destination MAC address is unknown?
 
 **Answer:**
 
@@ -616,7 +616,7 @@ The switch floods the frame to all ports within the VLAN except the port on whic
 
 ---
 
-## Q52. What is a Layer 3 switch?
+### Q52. What is a Layer 3 switch?
 
 **Answer:**
 
@@ -624,11 +624,11 @@ A Layer 3 switch combines switching and routing capabilities, allowing high-spee
 
 ---
 
-# VLANs
+## VLANs
 
 ---
 
-## Q53. What is a VLAN?
+### Q53. What is a VLAN?
 
 **Answer:**
 
@@ -636,7 +636,7 @@ A Virtual Local Area Network (VLAN) logically separates devices into independent
 
 ---
 
-## Q54. Why are VLANs used?
+### Q54. Why are VLANs used?
 
 **Answer:**
 
@@ -650,7 +650,7 @@ VLANs improve:
 
 ---
 
-## Q55. What is an access port?
+### Q55. What is an access port?
 
 **Answer:**
 
@@ -658,7 +658,7 @@ An access port belongs to a single VLAN and connects end devices such as compute
 
 ---
 
-## Q56. What is a trunk port?
+### Q56. What is a trunk port?
 
 **Answer:**
 
@@ -666,7 +666,7 @@ A trunk port carries traffic for multiple VLANs between switches or between a sw
 
 ---
 
-## Q57. What is the native VLAN?
+### Q57. What is the native VLAN?
 
 **Answer:**
 
@@ -674,11 +674,11 @@ The native VLAN carries untagged traffic on an IEEE 802.1Q trunk link. Both ends
 
 ---
 
-# Spanning Tree Protocol (STP)
+## Spanning Tree Protocol (STP)
 
 ---
 
-## Q58. Why is STP required?
+### Q58. Why is STP required?
 
 **Answer:**
 
@@ -686,7 +686,7 @@ STP prevents Layer 2 loops by blocking redundant paths while maintaining backup 
 
 ---
 
-## Q59. What happens if STP is disabled in a redundant switched network?
+### Q59. What happens if STP is disabled in a redundant switched network?
 
 **Answer:**
 
@@ -699,7 +699,7 @@ Disabling STP can lead to:
 
 ---
 
-## Q60. What is the root bridge?
+### Q60. What is the root bridge?
 
 **Answer:**
 
@@ -707,11 +707,11 @@ The root bridge is the central reference switch selected by STP. All path calcul
 
 ---
 
-# ARP
+## ARP
 
 ---
 
-## Q61. What is ARP?
+### Q61. What is ARP?
 
 **Answer:**
 
@@ -719,7 +719,7 @@ The Address Resolution Protocol (ARP) maps IPv4 addresses to MAC addresses withi
 
 ---
 
-## Q62. How does ARP work?
+### Q62. How does ARP work?
 
 **Answer:**
 
@@ -729,7 +729,7 @@ The Address Resolution Protocol (ARP) maps IPv4 addresses to MAC addresses withi
 
 ---
 
-## Q63. What is ARP spoofing?
+### Q63. What is ARP spoofing?
 
 **Answer:**
 
@@ -737,11 +737,11 @@ ARP spoofing is an attack in which an attacker sends forged ARP replies to assoc
 
 ---
 
-# DHCP
+## DHCP
 
 ---
 
-## Q64. What is DHCP?
+### Q64. What is DHCP?
 
 **Answer:**
 
@@ -749,7 +749,7 @@ Dynamic Host Configuration Protocol (DHCP) automatically assigns IP configuratio
 
 ---
 
-## Q65. Explain the DHCP process.
+### Q65. Explain the DHCP process.
 
 **Answer:**
 
@@ -773,7 +773,7 @@ Acknowledge
 
 ---
 
-## Q66. What is a DHCP relay agent?
+### Q66. What is a DHCP relay agent?
 
 **Answer:**
 
@@ -781,11 +781,11 @@ A DHCP relay agent forwards DHCP requests between clients and DHCP servers locat
 
 ---
 
-# DNS
+## DNS
 
 ---
 
-## Q67. What is DNS?
+### Q67. What is DNS?
 
 **Answer:**
 
@@ -793,7 +793,7 @@ The Domain Name System (DNS) translates human-readable domain names into IP addr
 
 ---
 
-## Q68. What happens when you type a website into a browser?
+### Q68. What happens when you type a website into a browser?
 
 **Answer:**
 
@@ -829,7 +829,7 @@ Web Server Response
 
 ---
 
-## Q69. What is the difference between recursive and iterative DNS queries?
+### Q69. What is the difference between recursive and iterative DNS queries?
 
 | Recursive Query | Iterative Query |
 |-----------------|-----------------|
@@ -838,7 +838,7 @@ Web Server Response
 
 ---
 
-## Q70. What is DNS caching?
+### Q70. What is DNS caching?
 
 **Answer:**
 
@@ -846,11 +846,11 @@ DNS caching stores previously resolved domain names locally to reduce lookup tim
 
 ---
 
-# TCP
+## TCP
 
 ---
 
-## Q71. What is TCP?
+### Q71. What is TCP?
 
 **Answer:**
 
@@ -858,7 +858,7 @@ Transmission Control Protocol (TCP) is a connection-oriented transport protocol 
 
 ---
 
-## Q72. Explain the TCP three-way handshake.
+### Q72. Explain the TCP three-way handshake.
 
 **Answer:**
 
@@ -880,7 +880,7 @@ Connection Established
 
 ---
 
-## Q73. Why does TCP use acknowledgments?
+### Q73. Why does TCP use acknowledgments?
 
 **Answer:**
 
@@ -888,11 +888,11 @@ Acknowledgments confirm successful packet delivery and enable retransmission if 
 
 ---
 
-# UDP
+## UDP
 
 ---
 
-## Q74. What is UDP?
+### Q74. What is UDP?
 
 **Answer:**
 
@@ -900,7 +900,7 @@ User Datagram Protocol (UDP) is a connectionless transport protocol that priorit
 
 ---
 
-## Q75. When is UDP preferred?
+### Q75. When is UDP preferred?
 
 **Answer:**
 
@@ -914,7 +914,7 @@ UDP is commonly used for:
 
 ---
 
-## Q76. What is the primary difference between TCP and UDP?
+### Q76. What is the primary difference between TCP and UDP?
 
 | TCP | UDP |
 |------|-----|
@@ -925,11 +925,11 @@ UDP is commonly used for:
 
 ---
 
-# ICMP
+## ICMP
 
 ---
 
-## Q77. What is ICMP?
+### Q77. What is ICMP?
 
 **Answer:**
 
@@ -937,7 +937,7 @@ Internet Control Message Protocol (ICMP) is used for network diagnostics and err
 
 ---
 
-## Q78. Which commands commonly use ICMP?
+### Q78. Which commands commonly use ICMP?
 
 **Answer:**
 
@@ -946,7 +946,7 @@ Internet Control Message Protocol (ICMP) is used for network diagnostics and err
 
 ---
 
-## Q79. Why might ICMP be blocked?
+### Q79. Why might ICMP be blocked?
 
 **Answer:**
 
@@ -954,11 +954,11 @@ Organizations may restrict ICMP to reduce network reconnaissance opportunities o
 
 ---
 
-# Firewalls
+## Firewalls
 
 ---
 
-## Q80. What is a firewall?
+### Q80. What is a firewall?
 
 **Answer:**
 
@@ -966,7 +966,7 @@ A firewall monitors and controls inbound and outbound network traffic according 
 
 ---
 
-## Q81. What is the difference between a stateful firewall and a stateless firewall?
+### Q81. What is the difference between a stateful firewall and a stateless firewall?
 
 | Stateless Firewall | Stateful Firewall |
 |--------------------|------------------|
@@ -976,7 +976,7 @@ A firewall monitors and controls inbound and outbound network traffic according 
 
 ---
 
-## Q82. What is NAT?
+### Q82. What is NAT?
 
 **Answer:**
 
@@ -984,7 +984,7 @@ Network Address Translation (NAT) translates private IP addresses into public IP
 
 ---
 
-## Q83. What is the purpose of a DMZ?
+### Q83. What is the purpose of a DMZ?
 
 **Answer:**
 
@@ -992,11 +992,11 @@ A Demilitarized Zone (DMZ) isolates public-facing servers from internal networks
 
 ---
 
-# VPN
+## VPN
 
 ---
 
-## Q84. What is a VPN?
+### Q84. What is a VPN?
 
 **Answer:**
 
@@ -1004,7 +1004,7 @@ A Virtual Private Network (VPN) creates an encrypted tunnel across an untrusted 
 
 ---
 
-## Q85. What are the two common VPN types?
+### Q85. What are the two common VPN types?
 
 **Answer:**
 
@@ -1013,7 +1013,7 @@ A Virtual Private Network (VPN) creates an encrypted tunnel across an untrusted 
 
 ---
 
-## Q86. What is IPsec?
+### Q86. What is IPsec?
 
 **Answer:**
 
@@ -1021,11 +1021,11 @@ IPsec is a suite of protocols that provides authentication, integrity, and encry
 
 ---
 
-# Wireless Networking
+## Wireless Networking
 
 ---
 
-## Q87. What is an SSID?
+### Q87. What is an SSID?
 
 **Answer:**
 
@@ -1033,7 +1033,7 @@ The Service Set Identifier (SSID) is the name of a wireless network that clients
 
 ---
 
-## Q88. What are common causes of poor Wi-Fi performance?
+### Q88. What are common causes of poor Wi-Fi performance?
 
 **Answer:**
 
@@ -1046,7 +1046,7 @@ The Service Set Identifier (SSID) is the name of a wireless network that clients
 
 ---
 
-## Q89. What is WPA3?
+### Q89. What is WPA3?
 
 **Answer:**
 
@@ -1054,11 +1054,11 @@ WPA3 is the latest Wi-Fi security standard, providing stronger authentication an
 
 ---
 
-# Enterprise Networking
+## Enterprise Networking
 
 ---
 
-## Q90. Why is network segmentation important?
+### Q90. Why is network segmentation important?
 
 **Answer:**
 
@@ -1066,7 +1066,7 @@ Network segmentation limits broadcast traffic, improves performance, enhances se
 
 ---
 
-## Quick Interview Tips
+### Quick Interview Tips
 
 For enterprise networking interviews:
 
@@ -1077,7 +1077,7 @@ For enterprise networking interviews:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Routing and switching are fundamental to enterprise connectivity.
 - VLANs, STP, DHCP, and DNS are among the most frequently tested networking topics.
@@ -1087,11 +1087,11 @@ For enterprise networking interviews:
 ---
 
 
-# Part 3 — Network Security, Network Monitoring, Network Troubleshooting, Cloud Networking, Detection Engineering, SIEM, SOC, and Scenario-Based Enterprise Interview Questions
+## Part 3 — Network Security, Network Monitoring, Network Troubleshooting, Cloud Networking, Detection Engineering, SIEM, SOC, and Scenario-Based Enterprise Interview Questions
 
 ---
 
-# Introduction
+## Introduction
 
 For cybersecurity, SOC, Network Engineer, Cloud Engineer, and DevSecOps roles, interviewers focus heavily on practical scenarios rather than definitions alone.
 
@@ -1115,11 +1115,11 @@ The following questions represent the style commonly asked in enterprise technic
 
 ---
 
-# Network Security
+## Network Security
 
 ---
 
-## Q91. What is Defense in Depth?
+### Q91. What is Defense in Depth?
 
 **Answer:**
 
@@ -1138,7 +1138,7 @@ Example layers include:
 
 ---
 
-## Q92. What is Zero Trust?
+### Q92. What is Zero Trust?
 
 **Answer:**
 
@@ -1150,7 +1150,7 @@ Every request is continuously authenticated, authorized, and validated regardles
 
 ---
 
-## Q93. What is the CIA Triad?
+### Q93. What is the CIA Triad?
 
 **Answer:**
 
@@ -1164,7 +1164,7 @@ The CIA Triad consists of:
 
 ---
 
-## Q94. What is the difference between IDS and IPS?
+### Q94. What is the difference between IDS and IPS?
 
 | IDS | IPS |
 |------|-----|
@@ -1174,7 +1174,7 @@ The CIA Triad consists of:
 
 ---
 
-## Q95. What is microsegmentation?
+### Q95. What is microsegmentation?
 
 **Answer:**
 
@@ -1182,7 +1182,7 @@ Microsegmentation divides networks into very small security zones, allowing orga
 
 ---
 
-## Q96. What is a Security Information and Event Management (SIEM) platform?
+### Q96. What is a Security Information and Event Management (SIEM) platform?
 
 **Answer:**
 
@@ -1201,7 +1201,7 @@ Common log sources include:
 
 ---
 
-## Q97. What is Detection Engineering?
+### Q97. What is Detection Engineering?
 
 **Answer:**
 
@@ -1209,7 +1209,7 @@ Detection Engineering is the process of designing, implementing, testing, and co
 
 ---
 
-## Q98. What is the purpose of threat intelligence?
+### Q98. What is the purpose of threat intelligence?
 
 **Answer:**
 
@@ -1217,7 +1217,7 @@ Threat intelligence provides information about known adversaries, malicious infr
 
 ---
 
-## Q99. What are Indicators of Compromise (IOCs)?
+### Q99. What are Indicators of Compromise (IOCs)?
 
 **Answer:**
 
@@ -1232,7 +1232,7 @@ Examples include:
 
 ---
 
-## Q100. What are Indicators of Attack (IOAs)?
+### Q100. What are Indicators of Attack (IOAs)?
 
 **Answer:**
 
@@ -1248,11 +1248,11 @@ Examples include:
 
 ---
 
-# Network Monitoring
+## Network Monitoring
 
 ---
 
-## Q101. Why is network monitoring important?
+### Q101. Why is network monitoring important?
 
 **Answer:**
 
@@ -1260,7 +1260,7 @@ Network monitoring provides continuous visibility into the health, performance, 
 
 ---
 
-## Q102. What is SNMP used for?
+### Q102. What is SNMP used for?
 
 **Answer:**
 
@@ -1268,7 +1268,7 @@ SNMP is used to monitor network devices by collecting operational metrics such a
 
 ---
 
-## Q103. What is Syslog?
+### Q103. What is Syslog?
 
 **Answer:**
 
@@ -1276,7 +1276,7 @@ Syslog is a standardized protocol used to collect and centralize logs generated 
 
 ---
 
-## Q104. What is NetFlow?
+### Q104. What is NetFlow?
 
 **Answer:**
 
@@ -1284,7 +1284,7 @@ NetFlow exports metadata about network traffic flows, including source and desti
 
 ---
 
-## Q105. What is the difference between NetFlow and packet capture?
+### Q105. What is the difference between NetFlow and packet capture?
 
 | NetFlow | Packet Capture |
 |----------|----------------|
@@ -1295,11 +1295,11 @@ NetFlow exports metadata about network traffic flows, including source and desti
 
 ---
 
-# Cloud Networking
+## Cloud Networking
 
 ---
 
-## Q106. What is a Virtual Private Cloud (VPC)?
+### Q106. What is a Virtual Private Cloud (VPC)?
 
 **Answer:**
 
@@ -1307,7 +1307,7 @@ A VPC is a logically isolated virtual network within a cloud provider that enabl
 
 ---
 
-## Q107. What are Security Groups?
+### Q107. What are Security Groups?
 
 **Answer:**
 
@@ -1315,7 +1315,7 @@ Security Groups are stateful virtual firewalls that control inbound and outbound
 
 ---
 
-## Q108. What is the difference between a Security Group and a Network ACL?
+### Q108. What is the difference between a Security Group and a Network ACL?
 
 | Security Group | Network ACL |
 |----------------|-------------|
@@ -1325,7 +1325,7 @@ Security Groups are stateful virtual firewalls that control inbound and outbound
 
 ---
 
-## Q109. What is a hybrid cloud?
+### Q109. What is a hybrid cloud?
 
 **Answer:**
 
@@ -1333,7 +1333,7 @@ A hybrid cloud combines on-premises infrastructure with public and/or private cl
 
 ---
 
-## Q110. What is BGP commonly used for in cloud environments?
+### Q110. What is BGP commonly used for in cloud environments?
 
 **Answer:**
 
@@ -1341,11 +1341,11 @@ Border Gateway Protocol (BGP) is commonly used to exchange routing information b
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 ---
 
-## Q111. How would you detect a port scan?
+### Q111. How would you detect a port scan?
 
 **Answer:**
 
@@ -1360,7 +1360,7 @@ This behavior is commonly associated with reconnaissance.
 
 ---
 
-## Q112. How would you detect brute-force attacks?
+### Q112. How would you detect brute-force attacks?
 
 **Answer:**
 
@@ -1375,7 +1375,7 @@ Correlating these events improves detection accuracy.
 
 ---
 
-## Q113. What is DNS tunneling?
+### Q113. What is DNS tunneling?
 
 **Answer:**
 
@@ -1390,7 +1390,7 @@ Common indicators include:
 
 ---
 
-## Q114. What is lateral movement?
+### Q114. What is lateral movement?
 
 **Answer:**
 
@@ -1398,11 +1398,11 @@ Lateral movement is the process by which an attacker moves from one compromised 
 
 ---
 
-# SIEM and SOC
+## SIEM and SOC
 
 ---
 
-## Q115. What is log normalization?
+### Q115. What is log normalization?
 
 **Answer:**
 
@@ -1410,7 +1410,7 @@ Log normalization converts logs from different sources into a consistent format,
 
 ---
 
-## Q116. Why is event correlation important?
+### Q116. Why is event correlation important?
 
 **Answer:**
 
@@ -1418,7 +1418,7 @@ Event correlation combines related events from multiple sources into a single in
 
 ---
 
-## Q117. What is the purpose of a SOC?
+### Q117. What is the purpose of a SOC?
 
 **Answer:**
 
@@ -1426,7 +1426,7 @@ A Security Operations Center (SOC) continuously monitors, detects, investigates,
 
 ---
 
-## Q118. What are the responsibilities of a SOC Analyst?
+### Q118. What are the responsibilities of a SOC Analyst?
 
 **Answer:**
 
@@ -1443,11 +1443,11 @@ Typical responsibilities include:
 
 ---
 
-# Network Troubleshooting
+## Network Troubleshooting
 
 ---
 
-## Q119. How would you troubleshoot users who cannot access a website?
+### Q119. How would you troubleshoot users who cannot access a website?
 
 **Answer:**
 
@@ -1464,7 +1464,7 @@ A structured approach includes:
 
 ---
 
-## Q120. A user can ping an IP address but cannot access the website using its domain name. What is the most likely cause?
+### Q120. A user can ping an IP address but cannot access the website using its domain name. What is the most likely cause?
 
 **Answer:**
 
@@ -1472,7 +1472,7 @@ The most likely cause is a DNS issue, such as an incorrect DNS server configurat
 
 ---
 
-## Q121. How would you investigate intermittent network slowness?
+### Q121. How would you investigate intermittent network slowness?
 
 **Answer:**
 
@@ -1489,7 +1489,7 @@ Review:
 
 ---
 
-## Q122. How do you perform Root Cause Analysis (RCA)?
+### Q122. How do you perform Root Cause Analysis (RCA)?
 
 **Answer:**
 
@@ -1505,11 +1505,11 @@ A structured RCA process includes:
 
 ---
 
-# Scenario-Based Questions
+## Scenario-Based Questions
 
 ---
 
-## Q123. Users report that every application is slow. Where would you begin?
+### Q123. Users report that every application is slow. Where would you begin?
 
 **Answer:**
 
@@ -1517,7 +1517,7 @@ I would first determine the scope of the issue, review monitoring dashboards, ch
 
 ---
 
-## Q124. A firewall update was applied, and users immediately lost access to an application. How would you investigate?
+### Q124. A firewall update was applied, and users immediately lost access to an application. How would you investigate?
 
 **Answer:**
 
@@ -1532,7 +1532,7 @@ I would:
 
 ---
 
-## Q125. Your SIEM reports a possible port scan. What would you do?
+### Q125. Your SIEM reports a possible port scan. What would you do?
 
 **Answer:**
 
@@ -1548,7 +1548,7 @@ I would:
 
 ---
 
-## Q126. How would you investigate a VPN outage affecting remote employees?
+### Q126. How would you investigate a VPN outage affecting remote employees?
 
 **Answer:**
 
@@ -1566,7 +1566,7 @@ I would verify:
 
 ---
 
-## Q127. How would you respond to a DDoS attack?
+### Q127. How would you respond to a DDoS attack?
 
 **Answer:**
 
@@ -1583,11 +1583,11 @@ A structured response includes:
 
 ---
 
-# HR & Behavioral Questions
+## HR & Behavioral Questions
 
 ---
 
-## Q128. Describe a technical problem you solved.
+### Q128. Describe a technical problem you solved.
 
 **Answer (Framework):**
 
@@ -1600,7 +1600,7 @@ This follows the STAR (Situation, Task, Action, Result) interview technique.
 
 ---
 
-## Q129. How do you stay updated with networking and cybersecurity?
+### Q129. How do you stay updated with networking and cybersecurity?
 
 **Answer:**
 
@@ -1608,7 +1608,7 @@ I regularly study RFCs, vendor documentation, security advisories, technical blo
 
 ---
 
-## Q130. Why should we hire you?
+### Q130. Why should we hire you?
 
 **Answer:**
 
@@ -1616,7 +1616,7 @@ I have a strong foundation in networking, cybersecurity, and troubleshooting, su
 
 ---
 
-# Interview Success Tips
+## Interview Success Tips
 
 - Think aloud while solving technical scenarios.
 - Follow a structured troubleshooting methodology.
@@ -1627,7 +1627,7 @@ I have a strong foundation in networking, cybersecurity, and troubleshooting, su
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise interviews increasingly emphasize scenario-based problem solving.
 - Security, monitoring, troubleshooting, and cloud networking are core topics for modern infrastructure roles.
@@ -1636,11 +1636,11 @@ I have a strong foundation in networking, cybersecurity, and troubleshooting, su
 
 ---
 
-# Part 4 — Advanced Enterprise Scenarios, Mock Technical Interviews, Rapid-Fire Questions, Final Interview Preparation, Summary, and Chapter Review
+## Part 4 — Advanced Enterprise Scenarios, Mock Technical Interviews, Rapid-Fire Questions, Final Interview Preparation, Summary, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 Modern networking interviews rarely focus only on theoretical knowledge. Employers expect candidates to troubleshoot realistic enterprise scenarios, explain technical decisions, and communicate clearly under pressure.
 
@@ -1648,17 +1648,17 @@ This section consolidates everything covered throughout this repository into int
 
 ---
 
-# Enterprise Scenario 1 — Users Cannot Access the Internet
+## Enterprise Scenario 1 — Users Cannot Access the Internet
 
-### Scenario
+#### Scenario
 
 Multiple users report that they cannot browse the Internet, but internal applications remain accessible.
 
-### Interviewer's Expectation
+#### Interviewer's Expectation
 
 Explain how you would troubleshoot.
 
-### Sample Answer
+#### Sample Answer
 
 I would follow a structured approach:
 
@@ -1675,9 +1675,9 @@ I would follow a structured approach:
 
 ---
 
-# Enterprise Scenario 2 — VPN Connected but Internal Resources Unreachable
+## Enterprise Scenario 2 — VPN Connected but Internal Resources Unreachable
 
-### Sample Investigation
+#### Sample Investigation
 
 ```
 VPN Connected
@@ -1711,9 +1711,9 @@ A successful VPN connection does not necessarily indicate correct routing or aut
 
 ---
 
-# Enterprise Scenario 3 — Slow Application Performance
+## Enterprise Scenario 3 — Slow Application Performance
 
-### Investigation Steps
+#### Investigation Steps
 
 Review:
 
@@ -1732,16 +1732,16 @@ Always compare current metrics against historical baselines.
 
 ---
 
-# Enterprise Scenario 4 — Switch Loop
+## Enterprise Scenario 4 — Switch Loop
 
-### Symptoms
+#### Symptoms
 
 - Extremely slow network
 - High CPU utilization
 - Broadcast storm
 - MAC address flapping
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -1753,9 +1753,9 @@ Review:
 
 ---
 
-# Enterprise Scenario 5 — DNS Outage
+## Enterprise Scenario 5 — DNS Outage
 
-### Investigation
+#### Investigation
 
 ```
 Client
@@ -1787,9 +1787,9 @@ Validate:
 
 ---
 
-# Enterprise Scenario 6 — Firewall Blocking Traffic
+## Enterprise Scenario 6 — Firewall Blocking Traffic
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -1805,9 +1805,9 @@ Review logs before modifying firewall policies.
 
 ---
 
-# Enterprise Scenario 7 — Possible Security Incident
+## Enterprise Scenario 7 — Possible Security Incident
 
-### Indicators
+#### Indicators
 
 - High outbound bandwidth
 - Multiple failed logins
@@ -1816,7 +1816,7 @@ Review logs before modifying firewall policies.
 - New administrator account
 - IDS alerts
 
-### Investigation
+#### Investigation
 
 Collect:
 
@@ -1829,9 +1829,9 @@ Collect:
 
 ---
 
-# Enterprise Scenario 8 — Cloud Connectivity Failure
+## Enterprise Scenario 8 — Cloud Connectivity Failure
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -1846,11 +1846,11 @@ Verify:
 
 ---
 
-# Mock Technical Interview
+## Mock Technical Interview
 
 ---
 
-## Question 1
+### Question 1
 
 **Interviewer:**
 
@@ -1862,7 +1862,7 @@ TCP is a connection-oriented protocol that provides reliable, ordered, and error
 
 ---
 
-## Question 2
+### Question 2
 
 **Interviewer:**
 
@@ -1874,7 +1874,7 @@ When a user enters a domain name, the client queries a DNS resolver. If the answ
 
 ---
 
-## Question 3
+### Question 3
 
 **Interviewer:**
 
@@ -1891,7 +1891,7 @@ What happens when you type **https://example.com** into a browser?
 
 ---
 
-## Question 4
+### Question 4
 
 **Interviewer:**
 
@@ -1913,7 +1913,7 @@ I would:
 
 ---
 
-## Question 5
+### Question 5
 
 **Interviewer:**
 
@@ -1925,7 +1925,7 @@ Zero Trust is a security model where every request is continuously authenticated
 
 ---
 
-# Rapid-Fire Questions
+## Rapid-Fire Questions
 
 | Question | Answer |
 |----------|--------|
@@ -1952,7 +1952,7 @@ Zero Trust is a security model where every request is continuously authenticated
 
 ---
 
-# Common Interview Mistakes
+## Common Interview Mistakes
 
 Avoid:
 
@@ -1967,7 +1967,7 @@ Interviewers value structured thinking more than memorized answers.
 
 ---
 
-# Interview Best Practices
+## Interview Best Practices
 
 Before answering:
 
@@ -1981,17 +1981,17 @@ Before answering:
 
 ---
 
-# 30-Second Self-Introduction (Networking Role)
+## 30-Second Self-Introduction (Networking Role)
 
 > "I am a Computer Science graduate with a strong foundation in networking, cybersecurity, and system administration. I have hands-on experience with routing, switching, network security, packet analysis, SIEM concepts, and enterprise troubleshooting through academic projects and practical labs. I enjoy solving technical problems systematically and continuously improving my skills in enterprise networking and cybersecurity."
 
 ---
 
-# One-Day Revision Checklist
+## One-Day Revision Checklist
 
 Review the following before an interview:
 
-### Networking Fundamentals
+#### Networking Fundamentals
 
 - Network types
 - Bandwidth
@@ -2001,7 +2001,7 @@ Review the following before an interview:
 
 ---
 
-### OSI Model
+#### OSI Model
 
 - Seven layers
 - Devices
@@ -2010,7 +2010,7 @@ Review the following before an interview:
 
 ---
 
-### TCP/IP
+#### TCP/IP
 
 - Four layers
 - TCP vs UDP
@@ -2019,7 +2019,7 @@ Review the following before an interview:
 
 ---
 
-### Routing & Switching
+#### Routing & Switching
 
 - Static routing
 - Dynamic routing
@@ -2029,7 +2029,7 @@ Review the following before an interview:
 
 ---
 
-### Services
+#### Services
 
 - DHCP
 - DNS
@@ -2038,7 +2038,7 @@ Review the following before an interview:
 
 ---
 
-### Security
+#### Security
 
 - Firewalls
 - IDS/IPS
@@ -2049,7 +2049,7 @@ Review the following before an interview:
 
 ---
 
-### Monitoring
+#### Monitoring
 
 - SNMP
 - Syslog
@@ -2059,7 +2059,7 @@ Review the following before an interview:
 
 ---
 
-### Troubleshooting
+#### Troubleshooting
 
 - OSI methodology
 - Root Cause Analysis
@@ -2069,7 +2069,7 @@ Review the following before an interview:
 
 ---
 
-# Final Interview Advice
+## Final Interview Advice
 
 - Be honest if you do not know an answer.
 - Explain how you would investigate unfamiliar problems.
@@ -2080,13 +2080,13 @@ Review the following before an interview:
 
 ---
 
-# Summary
+## Summary
 
 This chapter consolidated networking concepts into interview-focused questions and practical scenarios. Mastering these topics prepares candidates for technical interviews involving network engineering, system administration, SOC operations, cybersecurity, cloud networking, and infrastructure support.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should be able to:
 
@@ -2104,7 +2104,7 @@ After completing this chapter, you should be able to:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The final chapter, **`26-Cheat-Sheet.md`**, provides a concise, high-value networking reference containing:
 

@@ -75,7 +75,7 @@ Prevent Recurrence
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -170,7 +170,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Incident Response?
+## What Is Incident Response?
 
 Incident Response is the organized process used to handle a security incident.
 
@@ -186,7 +186,7 @@ Recovery
 
 ---
 
-# What Is a Security Incident?
+## What Is a Security Incident?
 
 A security incident is an event that may compromise:
 
@@ -209,17 +209,17 @@ Cryptominer
 
 ---
 
-# Alert vs Incident
+## Alert vs Incident
 
 These are not the same.
 
-## Alert
+### Alert
 
 ```text
 Potentially Suspicious Event
 ```
 
-## Incident
+### Incident
 
 ```text
 Confirmed or Credible Security Impact
@@ -241,7 +241,7 @@ Incident
 
 ---
 
-# Incident Response Lifecycle
+## Incident Response Lifecycle
 
 A common lifecycle:
 
@@ -265,7 +265,7 @@ Lessons Learned
 
 ---
 
-# Phase 1 – Preparation
+## Phase 1 – Preparation
 
 Preparation includes:
 
@@ -283,7 +283,7 @@ Communication
 
 ---
 
-# Incident Response Preparation
+## Incident Response Preparation
 
 Before an incident, establish:
 
@@ -298,7 +298,7 @@ Who Handles Recovery?
 
 ---
 
-# Incident Response Team
+## Incident Response Team
 
 Possible roles:
 
@@ -315,7 +315,7 @@ Management
 
 ---
 
-# Incident Severity
+## Incident Severity
 
 Organizations can define severity levels.
 
@@ -330,7 +330,7 @@ SEV-4 → Low
 
 ---
 
-# SEV-1 Example
+## SEV-1 Example
 
 Potential characteristics:
 
@@ -344,7 +344,7 @@ Critical Credential Compromise
 
 ---
 
-# SEV-2 Example
+## SEV-2 Example
 
 ```text
 Compromised Application
@@ -357,7 +357,7 @@ Severity definitions should be organization-specific.
 
 ---
 
-# Incident Preparation Checklist
+## Incident Preparation Checklist
 
 ```text
 ☑ Logging enabled
@@ -375,7 +375,7 @@ Severity definitions should be organization-specific.
 
 ---
 
-# Phase 2 – Detection
+## Phase 2 – Detection
 
 Detection identifies potentially malicious activity.
 
@@ -395,7 +395,7 @@ IDS / IPS
 
 ---
 
-# Kubernetes Detection Sources
+## Kubernetes Detection Sources
 
 Important sources include:
 
@@ -412,7 +412,7 @@ Cloud Audit Logs
 
 ---
 
-# Kubernetes Audit Logs
+## Kubernetes Audit Logs
 
 Audit logs record API activity.
 
@@ -429,7 +429,7 @@ Which Namespace?
 
 ---
 
-# Example Suspicious Activity
+## Example Suspicious Activity
 
 ```text
 Unknown Identity
@@ -445,7 +445,7 @@ This may warrant investigation.
 
 ---
 
-# Pod Events
+## Pod Events
 
 Check:
 
@@ -467,7 +467,7 @@ Events are useful but should not be treated as a complete forensic record.
 
 ---
 
-# Container Logs
+## Container Logs
 
 Check:
 
@@ -492,7 +492,7 @@ Unexpected Connections
 
 ---
 
-# Node Logs
+## Node Logs
 
 On the node:
 
@@ -511,7 +511,7 @@ Kernel Logs
 
 ---
 
-# Cloud Logs
+## Cloud Logs
 
 Cloud environments may provide:
 
@@ -528,7 +528,7 @@ These can be critical when investigating cloud-hosted Kubernetes.
 
 ---
 
-# Network Logs
+## Network Logs
 
 Useful sources include:
 
@@ -542,7 +542,7 @@ Service Mesh Telemetry
 
 ---
 
-# DNS Logs
+## DNS Logs
 
 DNS activity can reveal:
 
@@ -555,7 +555,7 @@ Malware Infrastructure
 
 ---
 
-# Runtime Security
+## Runtime Security
 
 Runtime security can detect:
 
@@ -569,7 +569,7 @@ Suspicious Network Connection
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Security data can be centralized into a SIEM.
 
@@ -592,7 +592,7 @@ Alert
 
 ---
 
-# Phase 3 – Triage
+## Phase 3 – Triage
 
 Triage determines:
 
@@ -605,7 +605,7 @@ What Should Happen Next?
 
 ---
 
-# Triage Questions
+## Triage Questions
 
 Ask:
 
@@ -624,7 +624,7 @@ Is data affected?
 
 ---
 
-# Incident Scoping
+## Incident Scoping
 
 Determine the blast radius:
 
@@ -644,7 +644,7 @@ Cloud Account
 
 ---
 
-# Example Scope
+## Example Scope
 
 ```text
 Compromised Pod
@@ -660,7 +660,7 @@ The incident may therefore be larger than the original Pod.
 
 ---
 
-# Indicators of Compromise
+## Indicators of Compromise
 
 IOC means:
 
@@ -682,7 +682,7 @@ Container Image
 
 ---
 
-# Indicators of Attack
+## Indicators of Attack
 
 IOA means:
 
@@ -703,7 +703,7 @@ IOAs focus more on suspicious behavior than static artifacts.
 
 ---
 
-# Threat Intelligence
+## Threat Intelligence
 
 Threat intelligence can help determine:
 
@@ -717,7 +717,7 @@ Known Attacker Behavior
 
 ---
 
-# Phase 4 – Investigation
+## Phase 4 – Investigation
 
 Investigation aims to reconstruct:
 
@@ -732,7 +732,7 @@ What Changed?
 
 ---
 
-# Investigation Timeline
+## Investigation Timeline
 
 Create a timeline:
 
@@ -747,7 +747,7 @@ Create a timeline:
 
 ---
 
-# Why Timeline Matters
+## Why Timeline Matters
 
 A timeline helps identify:
 
@@ -764,7 +764,7 @@ Exfiltration
 
 ---
 
-# Kubernetes Discovery
+## Kubernetes Discovery
 
 An attacker may attempt to discover:
 
@@ -783,7 +783,7 @@ Suspicious API activity can be investigated through audit logs.
 
 ---
 
-# ServiceAccount Compromise
+## ServiceAccount Compromise
 
 A compromised ServiceAccount can be dangerous if it has excessive permissions.
 
@@ -799,7 +799,7 @@ ClusterRoleBindings
 
 ---
 
-# Check ServiceAccounts
+## Check ServiceAccounts
 
 ```bash
 kubectl get serviceaccounts -A
@@ -807,7 +807,7 @@ kubectl get serviceaccounts -A
 
 ---
 
-# Check RoleBindings
+## Check RoleBindings
 
 ```bash
 kubectl get rolebindings -A
@@ -815,7 +815,7 @@ kubectl get rolebindings -A
 
 ---
 
-# Check ClusterRoleBindings
+## Check ClusterRoleBindings
 
 ```bash
 kubectl get clusterrolebindings
@@ -823,7 +823,7 @@ kubectl get clusterrolebindings
 
 ---
 
-# RBAC Investigation
+## RBAC Investigation
 
 Determine:
 
@@ -835,7 +835,7 @@ Where can they do it?
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Potential paths include:
 
@@ -859,7 +859,7 @@ Node
 
 ---
 
-# Secret Access Investigation
+## Secret Access Investigation
 
 Determine:
 
@@ -873,7 +873,7 @@ Was It Exfiltrated?
 
 ---
 
-# Secret Rotation
+## Secret Rotation
 
 If a credential is compromised:
 
@@ -889,7 +889,7 @@ Validate
 
 ---
 
-# Do Not Assume Deleting a Pod Revokes Credentials
+## Do Not Assume Deleting a Pod Revokes Credentials
 
 Deleting a Pod does not necessarily revoke credentials that were already copied or exposed.
 
@@ -897,7 +897,7 @@ Rotate affected credentials.
 
 ---
 
-# Container Compromise
+## Container Compromise
 
 Indicators may include:
 
@@ -911,7 +911,7 @@ Unexpected File
 
 ---
 
-# Compromised Pod
+## Compromised Pod
 
 A suspicious Pod should be evaluated for:
 
@@ -929,7 +929,7 @@ Node
 
 ---
 
-# Pod Investigation
+## Pod Investigation
 
 ```bash
 kubectl describe pod <pod-name>
@@ -950,7 +950,7 @@ Events
 
 ---
 
-# Image Investigation
+## Image Investigation
 
 Check:
 
@@ -972,7 +972,7 @@ Scan Results
 
 ---
 
-# Malicious Image
+## Malicious Image
 
 Possible sources:
 
@@ -986,7 +986,7 @@ Developer Credential Theft
 
 ---
 
-# Supply Chain Incident
+## Supply Chain Incident
 
 Example:
 
@@ -1006,7 +1006,7 @@ Kubernetes
 
 ---
 
-# Container Escape
+## Container Escape
 
 A container escape occurs when an attacker breaks container isolation and gains access to the host environment.
 
@@ -1022,7 +1022,7 @@ Runtime Vulnerability
 
 ---
 
-# Container Escape Response
+## Container Escape Response
 
 Treat suspected container escape as a potentially serious node-level incident.
 
@@ -1030,7 +1030,7 @@ Do not assume deleting the container is sufficient.
 
 ---
 
-# Compromised Node
+## Compromised Node
 
 If a node may be compromised:
 
@@ -1046,7 +1046,7 @@ Rebuild / Recover
 
 ---
 
-# Node Isolation
+## Node Isolation
 
 A node may need:
 
@@ -1060,7 +1060,7 @@ The exact method depends on the environment and incident-response plan.
 
 ---
 
-# Why Not Immediately Destroy a Node?
+## Why Not Immediately Destroy a Node?
 
 Immediate destruction can eliminate:
 
@@ -1076,7 +1076,7 @@ If forensic preservation is required, coordinate with the incident-response team
 
 ---
 
-# Evidence Preservation
+## Evidence Preservation
 
 Potential evidence:
 
@@ -1095,7 +1095,7 @@ Manifests
 
 ---
 
-# Chain of Custody
+## Chain of Custody
 
 Chain of custody documents:
 
@@ -1111,7 +1111,7 @@ This is especially important when evidence may be used for legal or regulatory p
 
 ---
 
-# Evidence Integrity
+## Evidence Integrity
 
 Use appropriate integrity mechanisms such as:
 
@@ -1124,7 +1124,7 @@ Timestamps
 
 ---
 
-# Phase 5 – Containment
+## Phase 5 – Containment
 
 Containment prevents further damage.
 
@@ -1142,7 +1142,7 @@ Block Image
 
 ---
 
-# Short-Term Containment
+## Short-Term Containment
 
 Example:
 
@@ -1156,7 +1156,7 @@ Stop Lateral Movement
 
 ---
 
-# Long-Term Containment
+## Long-Term Containment
 
 May include:
 
@@ -1170,7 +1170,7 @@ Update Policies
 
 ---
 
-# Pod Isolation
+## Pod Isolation
 
 NetworkPolicy may help isolate a workload.
 
@@ -1198,7 +1198,7 @@ A real incident policy must be carefully designed because an overly restrictive 
 
 ---
 
-# Labeling for Isolation
+## Labeling for Isolation
 
 A response process may label a Pod:
 
@@ -1210,7 +1210,7 @@ and apply a corresponding policy.
 
 ---
 
-# Network Isolation
+## Network Isolation
 
 At broader levels, use:
 
@@ -1226,7 +1226,7 @@ depending on the environment.
 
 ---
 
-# Credential Revocation
+## Credential Revocation
 
 Compromised credentials may include:
 
@@ -1243,7 +1243,7 @@ Rotate or revoke them according to the incident plan.
 
 ---
 
-# Image Blocking
+## Image Blocking
 
 If an image is confirmed malicious:
 
@@ -1258,7 +1258,7 @@ Admission policies can prevent redeployment.
 
 ---
 
-# Phase 6 – Eradication
+## Phase 6 – Eradication
 
 Eradication removes the root cause.
 
@@ -1277,7 +1277,7 @@ Fix Network Policy
 
 ---
 
-# Persistence
+## Persistence
 
 Attackers may attempt persistence through:
 
@@ -1294,7 +1294,7 @@ CI/CD Pipeline
 
 ---
 
-# Persistence Investigation
+## Persistence Investigation
 
 Review:
 
@@ -1317,7 +1317,7 @@ Custom Resources
 
 ---
 
-# Phase 7 – Recovery
+## Phase 7 – Recovery
 
 Recovery returns the environment to a trusted operational state.
 
@@ -1335,7 +1335,7 @@ Monitor Closely
 
 ---
 
-# Recovery Principles
+## Recovery Principles
 
 Do not simply:
 
@@ -1357,7 +1357,7 @@ Restore Service
 
 ---
 
-# Node Rebuild
+## Node Rebuild
 
 For a confirmed node compromise, rebuilding the node from a known-good image can be safer than attempting to clean every artifact.
 
@@ -1381,7 +1381,7 @@ Validate
 
 ---
 
-# Cluster Recovery
+## Cluster Recovery
 
 A major cluster compromise may require:
 
@@ -1398,7 +1398,7 @@ Application Recovery
 
 ---
 
-# etcd Recovery
+## etcd Recovery
 
 If etcd integrity is compromised, follow the organization's tested etcd recovery procedure.
 
@@ -1406,7 +1406,7 @@ Do not experiment with production etcd during an active incident.
 
 ---
 
-# Phase 8 – Lessons Learned
+## Phase 8 – Lessons Learned
 
 After recovery:
 
@@ -1420,7 +1420,7 @@ What Should Change?
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 RCA identifies the underlying cause.
 
@@ -1446,7 +1446,7 @@ Insufficient workload security controls
 
 ---
 
-# Corrective Actions
+## Corrective Actions
 
 Examples:
 
@@ -1463,7 +1463,7 @@ Training
 
 ---
 
-# Preventive Controls
+## Preventive Controls
 
 Prevent recurrence with:
 
@@ -1483,9 +1483,9 @@ Runtime Detection
 
 ---
 
-# Common Kubernetes Incident Scenarios
+## Common Kubernetes Incident Scenarios
 
-## Scenario 1 – Cryptomining
+### Scenario 1 – Cryptomining
 
 ```text
 Vulnerable Application
@@ -1507,7 +1507,7 @@ Unexpected External Connection
 
 ---
 
-# Cryptomining Response
+## Cryptomining Response
 
 ```text
 Detect
@@ -1529,7 +1529,7 @@ Monitor
 
 ---
 
-# Scenario 2 – Secret Theft
+## Scenario 2 – Secret Theft
 
 ```text
 Compromised Identity
@@ -1557,7 +1557,7 @@ Monitor
 
 ---
 
-# Scenario 3 – Malicious Image
+## Scenario 3 – Malicious Image
 
 ```text
 Compromised Build
@@ -1585,7 +1585,7 @@ Investigate CI/CD
 
 ---
 
-# Scenario 4 – Compromised ServiceAccount
+## Scenario 4 – Compromised ServiceAccount
 
 ```text
 Token Theft
@@ -1611,7 +1611,7 @@ Investigate Actions
 
 ---
 
-# Scenario 5 – Container Escape
+## Scenario 5 – Container Escape
 
 ```text
 Compromised Container
@@ -1637,7 +1637,7 @@ Rebuild
 
 ---
 
-# Scenario 6 – Ransomware
+## Scenario 6 – Ransomware
 
 Potential signs:
 
@@ -1660,7 +1660,7 @@ Recovery
 
 ---
 
-# Scenario 7 – API Server Abuse
+## Scenario 7 – API Server Abuse
 
 Indicators:
 
@@ -1676,7 +1676,7 @@ Investigate audit logs.
 
 ---
 
-# Scenario 8 – Lateral Movement
+## Scenario 8 – Lateral Movement
 
 Example:
 
@@ -1701,7 +1701,7 @@ Monitoring
 
 ---
 
-# MITRE ATT&CK
+## MITRE ATT&CK
 
 MITRE ATT&CK provides a framework for describing adversary behavior.
 
@@ -1724,7 +1724,7 @@ Impact
 
 ---
 
-# Kubernetes Attack Chain
+## Kubernetes Attack Chain
 
 A simplified attack chain:
 
@@ -1750,7 +1750,7 @@ Incident responders should determine where the attacker entered and how far they
 
 ---
 
-# Incident Communication
+## Incident Communication
 
 Communication should be:
 
@@ -1763,7 +1763,7 @@ Documented
 
 ---
 
-# Incident Commander
+## Incident Commander
 
 The Incident Commander coordinates:
 
@@ -1777,7 +1777,7 @@ Recovery
 
 ---
 
-# Escalation
+## Escalation
 
 Escalate when:
 
@@ -1792,7 +1792,7 @@ Legal / Compliance Impact Exists
 
 ---
 
-# Incident Documentation
+## Incident Documentation
 
 Document:
 
@@ -1809,7 +1809,7 @@ Root Cause
 
 ---
 
-# Incident Ticket
+## Incident Ticket
 
 A useful incident record contains:
 
@@ -1829,7 +1829,7 @@ Owner
 
 ---
 
-# Evidence Collection
+## Evidence Collection
 
 Collect only what is necessary and authorized.
 
@@ -1848,7 +1848,7 @@ Network Logs
 
 ---
 
-# Kubernetes Evidence
+## Kubernetes Evidence
 
 Useful commands:
 
@@ -1874,7 +1874,7 @@ kubectl get events -A
 
 ---
 
-# Resource Inventory During Incident
+## Resource Inventory During Incident
 
 Collect:
 
@@ -1912,7 +1912,7 @@ kubectl get clusterrolebindings
 
 ---
 
-# Preserve Before Destroy
+## Preserve Before Destroy
 
 Important principle:
 
@@ -1930,7 +1930,7 @@ Do not automatically delete suspicious workloads before determining whether evid
 
 ---
 
-# However: Safety Comes First
+## However: Safety Comes First
 
 If a workload is actively causing severe damage:
 
@@ -1952,7 +1952,7 @@ Threat Containment
 
 ---
 
-# SOAR Integration
+## SOAR Integration
 
 SOAR can automate repetitive response actions.
 
@@ -1978,7 +1978,7 @@ Automation should include safeguards and approval for high-impact actions.
 
 ---
 
-# SOC Integration
+## SOC Integration
 
 Kubernetes security events can flow into a SOC:
 
@@ -1998,7 +1998,7 @@ Incident Response
 
 ---
 
-# Incident Response Automation
+## Incident Response Automation
 
 Potential automated actions:
 
@@ -2015,7 +2015,7 @@ High-risk actions should be carefully controlled.
 
 ---
 
-# Production Incident Runbook
+## Production Incident Runbook
 
 Example:
 
@@ -2037,7 +2037,7 @@ Example:
 
 ---
 
-# Incident Response Decision Tree
+## Incident Response Decision Tree
 
 ```text
 Suspicious Event
@@ -2065,15 +2065,15 @@ Close     Scope
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Immediately Deleting Evidence
+### 1. Immediately Deleting Evidence
 
 This can destroy valuable forensic information.
 
 ---
 
-## 2. Ignoring Scope
+### 2. Ignoring Scope
 
 A compromised Pod may indicate:
 
@@ -2085,31 +2085,31 @@ Cluster Compromise
 
 ---
 
-## 3. Rotating One Credential Only
+### 3. Rotating One Credential Only
 
 Investigate related credentials and access paths.
 
 ---
 
-## 4. Restarting the Entire Cluster
+### 4. Restarting the Entire Cluster
 
 This may destroy evidence and increase downtime.
 
 ---
 
-## 5. Ignoring Cloud Credentials
+### 5. Ignoring Cloud Credentials
 
 Kubernetes compromise can lead to cloud compromise.
 
 ---
 
-## 6. Ignoring ServiceAccounts
+### 6. Ignoring ServiceAccounts
 
 ServiceAccounts may have significant permissions.
 
 ---
 
-## 7. Ignoring RBAC
+### 7. Ignoring RBAC
 
 Investigate:
 
@@ -2122,39 +2122,39 @@ ClusterRoleBinding
 
 ---
 
-## 8. Focusing Only on the Malware
+### 8. Focusing Only on the Malware
 
 Find the initial access vector.
 
 ---
 
-## 9. No Timeline
+### 9. No Timeline
 
 Without a timeline, determining attacker progression becomes difficult.
 
 ---
 
-## 10. No Root Cause Analysis
+### 10. No Root Cause Analysis
 
 Removing malware without fixing the entry point allows reinfection.
 
 ---
 
-## 11. No Credential Rotation
+### 11. No Credential Rotation
 
 Deleting a compromised Pod does not invalidate stolen credentials.
 
 ---
 
-## 12. No Post-Incident Monitoring
+### 12. No Post-Incident Monitoring
 
 Attackers may attempt to return.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Prepare Before an Incident
+#### 1. Prepare Before an Incident
 
 Maintain:
 
@@ -2168,7 +2168,7 @@ Tools
 
 ---
 
-### 2. Centralize Security Logs
+#### 2. Centralize Security Logs
 
 Use:
 
@@ -2180,13 +2180,13 @@ Cloud Logging
 
 ---
 
-### 3. Preserve Evidence
+#### 3. Preserve Evidence
 
 Especially for serious incidents.
 
 ---
 
-### 4. Contain Quickly
+#### 4. Contain Quickly
 
 Stop:
 
@@ -2198,25 +2198,25 @@ Further Compromise
 
 ---
 
-### 5. Rotate Compromised Credentials
+#### 5. Rotate Compromised Credentials
 
 Do not rely only on Pod deletion.
 
 ---
 
-### 6. Rebuild Compromised Nodes
+#### 6. Rebuild Compromised Nodes
 
 For confirmed host compromise, rebuilding from trusted sources is often safer than attempting to clean every artifact.
 
 ---
 
-### 7. Use Least Privilege
+#### 7. Use Least Privilege
 
 Reduce attacker capabilities.
 
 ---
 
-### 8. Segment Networks
+#### 8. Segment Networks
 
 Use:
 
@@ -2228,7 +2228,7 @@ Security Groups
 
 ---
 
-### 9. Secure the Supply Chain
+#### 9. Secure the Supply Chain
 
 Use:
 
@@ -2242,13 +2242,13 @@ Admission
 
 ---
 
-### 10. Perform RCA
+#### 10. Perform RCA
 
 Fix the underlying cause.
 
 ---
 
-# Hands-on Lab 1 – Incident Detection
+## Hands-on Lab 1 – Incident Detection
 
 Create a test workload that generates a known suspicious event.
 
@@ -2262,7 +2262,7 @@ Monitoring
 
 ---
 
-# Hands-on Lab 2 – Pod Investigation
+## Hands-on Lab 2 – Pod Investigation
 
 Deploy a test Pod.
 
@@ -2290,7 +2290,7 @@ Node
 
 ---
 
-# Hands-on Lab 3 – Log Investigation
+## Hands-on Lab 3 – Log Investigation
 
 Generate test application events.
 
@@ -2310,7 +2310,7 @@ Create a timeline.
 
 ---
 
-# Hands-on Lab 4 – RBAC Investigation
+## Hands-on Lab 4 – RBAC Investigation
 
 Create a test ServiceAccount and Role.
 
@@ -2331,7 +2331,7 @@ Where
 
 ---
 
-# Hands-on Lab 5 – Suspicious ServiceAccount
+## Hands-on Lab 5 – Suspicious ServiceAccount
 
 Create a controlled test scenario involving unexpected API activity.
 
@@ -2349,7 +2349,7 @@ Namespace
 
 ---
 
-# Hands-on Lab 6 – Network Isolation
+## Hands-on Lab 6 – Network Isolation
 
 Create a test NetworkPolicy that isolates a labeled workload.
 
@@ -2368,7 +2368,7 @@ Egress
 
 ---
 
-# Hands-on Lab 7 – Credential Rotation
+## Hands-on Lab 7 – Credential Rotation
 
 Create a disposable test credential.
 
@@ -2388,7 +2388,7 @@ Validate
 
 ---
 
-# Hands-on Lab 8 – Malicious Image Simulation
+## Hands-on Lab 8 – Malicious Image Simulation
 
 Create a harmless test image that produces an obvious indicator.
 
@@ -2410,7 +2410,7 @@ Replace
 
 ---
 
-# Hands-on Lab 9 – Cryptomining Simulation
+## Hands-on Lab 9 – Cryptomining Simulation
 
 In a disposable environment, run a harmless CPU-intensive process.
 
@@ -2427,7 +2427,7 @@ Create a detection rule.
 
 ---
 
-# Hands-on Lab 10 – Incident Timeline
+## Hands-on Lab 10 – Incident Timeline
 
 Create a simulated incident with multiple events.
 
@@ -2449,7 +2449,7 @@ Document timestamps.
 
 ---
 
-# Hands-on Lab 11 – Evidence Collection
+## Hands-on Lab 11 – Evidence Collection
 
 Collect:
 
@@ -2467,7 +2467,7 @@ Store evidence with appropriate integrity controls.
 
 ---
 
-# Hands-on Lab 12 – Compromised Node Exercise
+## Hands-on Lab 12 – Compromised Node Exercise
 
 Use a disposable node.
 
@@ -2489,7 +2489,7 @@ Validate
 
 ---
 
-# Hands-on Lab 13 – SIEM Integration
+## Hands-on Lab 13 – SIEM Integration
 
 Send test Kubernetes logs into a SIEM.
 
@@ -2504,7 +2504,7 @@ Secret Access
 
 ---
 
-# Hands-on Lab 14 – SOAR Automation
+## Hands-on Lab 14 – SOAR Automation
 
 Create a safe test workflow:
 
@@ -2522,7 +2522,7 @@ Quarantine
 
 ---
 
-# Hands-on Lab 15 – Full Incident Exercise
+## Hands-on Lab 15 – Full Incident Exercise
 
 Simulate:
 
@@ -2552,9 +2552,9 @@ RCA
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Incident
+### Incident
 
 ```text
 Security event with confirmed or credible impact
@@ -2562,7 +2562,7 @@ Security event with confirmed or credible impact
 
 ---
 
-## Triage
+### Triage
 
 ```text
 Determine validity, severity, and scope
@@ -2570,7 +2570,7 @@ Determine validity, severity, and scope
 
 ---
 
-## Containment
+### Containment
 
 ```text
 Prevent further damage
@@ -2578,7 +2578,7 @@ Prevent further damage
 
 ---
 
-## Eradication
+### Eradication
 
 ```text
 Remove attacker presence and root cause
@@ -2586,7 +2586,7 @@ Remove attacker presence and root cause
 
 ---
 
-## Recovery
+### Recovery
 
 ```text
 Return systems to trusted operation
@@ -2594,7 +2594,7 @@ Return systems to trusted operation
 
 ---
 
-## IOC
+### IOC
 
 ```text
 Indicator of Compromise
@@ -2602,7 +2602,7 @@ Indicator of Compromise
 
 ---
 
-## IOA
+### IOA
 
 ```text
 Indicator of Attack
@@ -2610,7 +2610,7 @@ Indicator of Attack
 
 ---
 
-## SIEM
+### SIEM
 
 ```text
 Centralized security monitoring and correlation platform
@@ -2618,7 +2618,7 @@ Centralized security monitoring and correlation platform
 
 ---
 
-## SOAR
+### SOAR
 
 ```text
 Security orchestration and automated response
@@ -2626,7 +2626,7 @@ Security orchestration and automated response
 
 ---
 
-## Root Cause Analysis
+### Root Cause Analysis
 
 ```text
 Determine why the incident occurred
@@ -2634,7 +2634,7 @@ Determine why the incident occurred
 
 ---
 
-## Chain of Custody
+### Chain of Custody
 
 ```text
 Documentation of evidence handling
@@ -2642,7 +2642,7 @@ Documentation of evidence handling
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 List all Pods:
 
@@ -2790,9 +2790,9 @@ journalctl -u kubelet
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is incident response?
 - What is a security incident?
@@ -2811,7 +2811,7 @@ journalctl -u kubelet
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How do you investigate a compromised Pod?
 - What logs are important during a Kubernetes incident?
@@ -2829,7 +2829,7 @@ journalctl -u kubelet
 
 ---
 
-## Advanced
+### Advanced
 
 - How would you respond to a suspected Kubernetes cluster compromise?
 - How would you investigate a container escape?
@@ -2847,13 +2847,13 @@ journalctl -u kubelet
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > A Pod suddenly starts consuming 100% CPU. How would you investigate?
 
-### Answer
+#### Answer
 
 First determine whether the behavior is expected.
 
@@ -2889,13 +2889,13 @@ Investigate
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > You discover that a ServiceAccount token may have been stolen. What do you do?
 
-### Answer
+#### Answer
 
 ```text
 1. Identify the ServiceAccount
@@ -2910,13 +2910,13 @@ Investigate
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > A container escape is suspected. What is your response?
 
-### Answer
+#### Answer
 
 Treat the node as potentially compromised.
 
@@ -2942,13 +2942,13 @@ Monitor
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > Why shouldn't you immediately delete a compromised Pod?
 
-### Answer
+#### Answer
 
 Deleting it may destroy:
 
@@ -2966,13 +2966,13 @@ If the workload is actively causing severe damage, containment may take priority
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How do you investigate an attacker who used kubectl?
 
-### Answer
+#### Answer
 
 Review Kubernetes audit logs for:
 
@@ -2998,13 +2998,13 @@ Network Logs
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > How would you investigate a malicious image?
 
-### Answer
+#### Answer
 
 Determine:
 
@@ -3036,13 +3036,13 @@ Investigate Supply Chain
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How would you contain a compromised Pod?
 
-### Answer
+#### Answer
 
 Depending on the situation:
 
@@ -3060,13 +3060,13 @@ Then remove the malicious workload after investigation requirements are satisfie
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > What is the difference between containment and eradication?
 
-### Answer
+#### Answer
 
 Containment:
 
@@ -3092,13 +3092,13 @@ Remove Malware + Patch Vulnerability
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How would you determine the blast radius?
 
-### Answer
+#### Answer
 
 Trace:
 
@@ -3122,13 +3122,13 @@ Correlate Kubernetes audit, network, cloud, and application logs.
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a production Kubernetes incident-response architecture.
 
-### Answer
+#### Answer
 
 ```text
                 Kubernetes
@@ -3183,7 +3183,7 @@ Recovery Procedures
 
 ---
 
-# Production Incident Response Checklist
+## Production Incident Response Checklist
 
 ```text
 ☑ Incident response plan documented
@@ -3211,7 +3211,7 @@ Recovery Procedures
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Kubernetes incident response is a structured process for handling security incidents across:
 
@@ -3274,9 +3274,9 @@ The most important operational principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 74 – Kubernetes Forensics
+## Chapter 74 – Kubernetes Forensics
 
 Topics will include:
 

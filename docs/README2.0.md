@@ -1,7 +1,7 @@
 # Security Knowledge Base
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Portal-63f28a?style=flat-square&logo=github)](https://anurag-rvnkr1.github.io/Security-Knowledge-Base/)
-[![License](https://img.shields.io/badge/License-MIT-63f28a?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-63f28a?style=flat-square)](../LICENSE)
 
 > A structured, evolving cybersecurity knowledge base covering security foundations, application and cloud security, defensive operations, threat research, practical labs, cheatsheets, and technical reference.
 
@@ -43,7 +43,7 @@ Security-Knowledge-Base/
 
 ## Learning Paths
 
-Existing guidance connects Cybersecurity Fundamentals, SOC Analyst, Blue Team, Application Security, Cloud Security, and DFIR paths. See [docs/Learning-Paths.md](docs/Learning-Paths.md).
+Existing guidance connects security foundations, defensive operations, application security, cloud defense, and digital forensics paths. See [Learning Paths](./Learning-Paths.md).
 
 ## Website Architecture
 
@@ -52,7 +52,7 @@ The portal is deliberately static:
 - HTML5
 - CSS3
 - Vanilla JavaScript
-- `site/content.json`
+- `site/content.json` and the lazily loaded `site/search-index.json`
 - `marked` for Markdown parsing
 - `DOMPurify` for sanitization
 - GitHub Pages from `main / (root)`
@@ -65,7 +65,7 @@ The viewer uses query-string state such as:
 index.html?doc=Active-Directory%2F01-Introduction-to-Active-Directory.md
 ```
 
-This keeps refresh and browser history usable on GitHub Pages.
+The reader validates document paths against the generated catalogue and uses history entries for document navigation, refresh, and deep links.
 
 ## Maintaining the Content Index
 
@@ -75,7 +75,7 @@ When Markdown files are added, removed, or renamed, run from the repository root
 python scripts/build-content-index.py
 ```
 
-Review `site/content.json`, then commit it with the source changes. The script uses only the Python standard library and preserves spaces and punctuation in real repository paths.
+Commit both generated JSON files with the source changes. See [Content Maintenance](./CONTENT-MAINTENANCE.md) for collection configuration, validation, and local testing.
 
 ## Local Testing
 
@@ -97,11 +97,11 @@ Do not use a `file://` URL because the site uses browser `fetch()` for its conte
 
 ## Responsible Use
 
-Security testing and offensive techniques are intended only for authorized labs, CTF environments, controlled research, defensive testing, and systems where permission exists. Read [docs/Responsible-Use.md](docs/Responsible-Use.md).
+Security testing and offensive techniques are intended only for authorized labs, CTF environments, controlled research, defensive testing, and systems where permission exists. Read [Responsible Use](./Responsible-Use.md).
 
 ## Contributing
 
-See [Contributing.md](Contributing.md) and the documentation guides under [docs/](docs/).
+See [CONTRIBUTING.md](../CONTRIBUTING.md) and the documentation guides under [docs/](./README.md).
 
 ## Roadmap
 
@@ -113,7 +113,7 @@ See [Contributing.md](Contributing.md) and the documentation guides under [docs/
 
 ## License
 
-[MIT License](LICENSE)
+[MIT License](../LICENSE)
 
 ## Disclaimer
 

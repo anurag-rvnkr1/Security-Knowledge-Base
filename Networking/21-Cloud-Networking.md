@@ -1,10 +1,10 @@
 # 21 - Cloud Networking
 
-# Part 1 — Cloud Networking Fundamentals, Cloud Service Models, Deployment Models, Virtual Private Cloud (VPC), Virtual Networks (VNet), Regions, Availability Zones, Subnets, Routing, and Core Cloud Networking Components
+## Part 1 — Cloud Networking Fundamentals, Cloud Service Models, Deployment Models, Virtual Private Cloud (VPC), Virtual Networks (VNet), Regions, Availability Zones, Subnets, Routing, and Core Cloud Networking Components
 
 ---
 
-# Overview
+## Overview
 
 Cloud networking is the foundation of modern cloud computing. It enables organizations to securely connect applications, users, virtual machines, containers, databases, storage services, and on-premises infrastructure across geographically distributed cloud environments.
 
@@ -14,7 +14,7 @@ Today, almost every enterprise operates workloads in one or more cloud platforms
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -35,7 +35,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is Cloud Networking?
+## What is Cloud Networking?
 
 Cloud networking is the process of designing, configuring, securing, and managing network infrastructure within cloud computing environments.
 
@@ -64,7 +64,7 @@ Cloud networking provides secure communication between cloud resources while ena
 
 ---
 
-# Characteristics of Cloud Networking
+## Characteristics of Cloud Networking
 
 Cloud networking is designed to provide:
 
@@ -80,7 +80,7 @@ Cloud networking is designed to provide:
 
 ---
 
-# Cloud Service Models
+## Cloud Service Models
 
 Cloud providers offer networking capabilities through different service models.
 
@@ -94,7 +94,7 @@ Networking responsibilities vary depending on the selected service model.
 
 ---
 
-# Infrastructure as a Service (IaaS)
+## Infrastructure as a Service (IaaS)
 
 IaaS provides virtual infrastructure components such as:
 
@@ -110,7 +110,7 @@ Examples include virtual servers connected through a Virtual Private Cloud (VPC)
 
 ---
 
-# Platform as a Service (PaaS)
+## Platform as a Service (PaaS)
 
 PaaS abstracts much of the underlying infrastructure.
 
@@ -124,7 +124,7 @@ The cloud provider manages most networking components behind the platform.
 
 ---
 
-# Software as a Service (SaaS)
+## Software as a Service (SaaS)
 
 SaaS delivers complete applications over the Internet.
 
@@ -138,7 +138,7 @@ Customers generally do not manage the underlying network infrastructure.
 
 ---
 
-# Cloud Deployment Models
+## Cloud Deployment Models
 
 Organizations choose deployment models based on business, regulatory, and operational requirements.
 
@@ -151,7 +151,7 @@ Common models include:
 
 ---
 
-# Public Cloud
+## Public Cloud
 
 Public cloud infrastructure is owned and operated by a cloud provider.
 
@@ -178,7 +178,7 @@ Advantages:
 
 ---
 
-# Private Cloud
+## Private Cloud
 
 Private clouds are dedicated to a single organization.
 
@@ -205,7 +205,7 @@ Benefits include:
 
 ---
 
-# Hybrid Cloud
+## Hybrid Cloud
 
 Hybrid cloud combines on-premises infrastructure with public cloud services.
 
@@ -227,7 +227,7 @@ Hybrid architectures support gradual cloud adoption and workload flexibility.
 
 ---
 
-# Multi-Cloud
+## Multi-Cloud
 
 Multi-cloud uses services from multiple cloud providers.
 
@@ -258,7 +258,7 @@ Benefits include:
 
 ---
 
-# Shared Responsibility Model
+## Shared Responsibility Model
 
 Cloud security and networking follow a shared responsibility model.
 
@@ -274,7 +274,7 @@ Understanding this model is essential for secure cloud deployments.
 
 ---
 
-# Virtual Private Cloud (VPC)
+## Virtual Private Cloud (VPC)
 
 A **Virtual Private Cloud (VPC)** is a logically isolated virtual network within a public cloud environment.
 
@@ -311,7 +311,7 @@ Each VPC operates independently from other customer networks.
 
 ---
 
-# Virtual Network (VNet)
+## Virtual Network (VNet)
 
 Some cloud providers use the term **Virtual Network (VNet)** instead of VPC.
 
@@ -327,7 +327,7 @@ The underlying concepts remain largely the same across cloud platforms.
 
 ---
 
-# Regions
+## Regions
 
 A **Region** is a geographically separate area containing multiple cloud data centers.
 
@@ -349,7 +349,7 @@ Organizations select regions based on latency, compliance, and disaster recovery
 
 ---
 
-# Availability Zones
+## Availability Zones
 
 Availability Zones (AZs) are physically separate facilities within a region.
 
@@ -364,7 +364,7 @@ Applications should be distributed across multiple Availability Zones whenever p
 
 ---
 
-# Cloud Subnets
+## Cloud Subnets
 
 A subnet divides a VPC or VNet into smaller logical networks.
 
@@ -381,7 +381,7 @@ Subnet separation improves both security and scalability.
 
 ---
 
-# Public Subnets
+## Public Subnets
 
 Public subnets contain resources that require direct Internet access.
 
@@ -396,7 +396,7 @@ Public resources usually communicate through an Internet Gateway.
 
 ---
 
-# Private Subnets
+## Private Subnets
 
 Private subnets host internal resources.
 
@@ -411,7 +411,7 @@ Private subnets do not allow direct inbound Internet access.
 
 ---
 
-# Database Subnets
+## Database Subnets
 
 Database servers should reside in isolated private subnets.
 
@@ -426,7 +426,7 @@ Only authorized application tiers should communicate with database subnets.
 
 ---
 
-# Route Tables
+## Route Tables
 
 Route tables determine where traffic is forwarded.
 
@@ -443,7 +443,7 @@ Every subnet is associated with one or more route tables.
 
 ---
 
-# Routing Example
+## Routing Example
 
 ```
 Application Server
@@ -477,7 +477,7 @@ Routing decisions are based on the destination network.
 
 ---
 
-# Internet Gateway
+## Internet Gateway
 
 An Internet Gateway enables communication between cloud resources and the public Internet.
 
@@ -491,7 +491,7 @@ Internet Gateways are attached to VPCs or VNets.
 
 ---
 
-# NAT Gateway
+## NAT Gateway
 
 A NAT Gateway allows private resources to initiate outbound Internet connections without exposing them directly to inbound Internet traffic.
 
@@ -513,7 +513,7 @@ NAT Gateways improve security by hiding private IP addresses.
 
 ---
 
-# Elastic IP Addresses
+## Elastic IP Addresses
 
 Some cloud providers offer static public IP addresses.
 
@@ -527,7 +527,7 @@ These addresses remain associated with resources even after instance restarts.
 
 ---
 
-# DNS in the Cloud
+## DNS in the Cloud
 
 Cloud providers typically offer managed DNS services.
 
@@ -543,7 +543,7 @@ Reliable DNS is essential for cloud application availability.
 
 ---
 
-# Enterprise Cloud Network Architecture
+## Enterprise Cloud Network Architecture
 
 ```
                     Internet
@@ -565,7 +565,7 @@ This layered architecture supports security, scalability, and high availability.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective cloud networking enables organizations to:
 
@@ -578,7 +578,7 @@ Effective cloud networking enables organizations to:
 
 ---
 
-# Cloud Networking Best Practices
+## Cloud Networking Best Practices
 
 Organizations should:
 
@@ -593,7 +593,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cloud networking uses software-defined infrastructure to connect cloud resources securely and efficiently.
 - VPCs and VNets provide isolated virtual networking environments.
@@ -605,11 +605,11 @@ Organizations should:
 ---
 
 
-# Part 2 — Cloud Connectivity, VPN, Direct Connect/ExpressRoute, Transit Gateway, VPC Peering, Cloud Load Balancers, Kubernetes Networking, Service Mesh, and Modern Cloud Architecture
+## Part 2 — Cloud Connectivity, VPN, Direct Connect/ExpressRoute, Transit Gateway, VPC Peering, Cloud Load Balancers, Kubernetes Networking, Service Mesh, and Modern Cloud Architecture
 
 ---
 
-# Introduction
+## Introduction
 
 Modern enterprises rarely operate entirely within a single cloud network. Most organizations connect:
 
@@ -627,7 +627,7 @@ This section explores the networking technologies that make hybrid and multi-clo
 
 ---
 
-# Cloud Connectivity
+## Cloud Connectivity
 
 Cloud connectivity refers to the methods used to securely connect cloud resources with users, applications, and external networks.
 
@@ -646,7 +646,7 @@ Each option serves different business and technical requirements.
 
 ---
 
-# Hybrid Cloud Connectivity
+## Hybrid Cloud Connectivity
 
 Hybrid cloud networking connects on-premises infrastructure with cloud resources.
 
@@ -678,7 +678,7 @@ Hybrid networking allows organizations to migrate workloads gradually while main
 
 ---
 
-# Site-to-Site VPN
+## Site-to-Site VPN
 
 A Site-to-Site VPN creates an encrypted tunnel between two networks.
 
@@ -711,7 +711,7 @@ Common use cases:
 
 ---
 
-# Client VPN
+## Client VPN
 
 A Client VPN enables individual users to securely access cloud resources.
 
@@ -739,7 +739,7 @@ Client VPNs are widely used for remote work and administrative access.
 
 ---
 
-# Dedicated Private Connectivity
+## Dedicated Private Connectivity
 
 For predictable performance and lower latency, organizations often use dedicated private links instead of the public Internet.
 
@@ -755,7 +755,7 @@ Examples include provider-specific dedicated interconnect services.
 
 ---
 
-# Direct Connect / ExpressRoute Concepts
+## Direct Connect / ExpressRoute Concepts
 
 Dedicated private connectivity establishes a direct connection between an organization's network and the cloud provider.
 
@@ -784,7 +784,7 @@ Compared to Internet-based VPNs, dedicated links typically provide:
 
 ---
 
-# Cloud Router
+## Cloud Router
 
 Cloud routers exchange routing information between cloud and on-premises environments.
 
@@ -800,7 +800,7 @@ Dynamic routing simplifies management in large enterprise environments.
 
 ---
 
-# BGP in Cloud Networking
+## BGP in Cloud Networking
 
 Border Gateway Protocol (BGP) is commonly used for hybrid cloud routing.
 
@@ -815,7 +815,7 @@ BGP is preferred over static routing for enterprise-scale deployments.
 
 ---
 
-# VPC Peering
+## VPC Peering
 
 VPC Peering directly connects two virtual private networks.
 
@@ -835,7 +835,7 @@ Resources communicate using private IP addresses without traversing the public I
 
 ---
 
-# Characteristics of VPC Peering
+## Characteristics of VPC Peering
 
 Advantages:
 
@@ -851,7 +851,7 @@ Limitations:
 
 ---
 
-# Transit Gateway
+## Transit Gateway
 
 A Transit Gateway acts as a centralized hub for connecting multiple VPCs, VPNs, and on-premises networks.
 
@@ -871,7 +871,7 @@ Instead of creating numerous point-to-point connections, all networks connect to
 
 ---
 
-# Benefits of Transit Gateway
+## Benefits of Transit Gateway
 
 Advantages include:
 
@@ -885,7 +885,7 @@ Transit Gateways are ideal for large enterprise environments.
 
 ---
 
-# Cloud WAN
+## Cloud WAN
 
 Cloud WAN services provide centralized global networking across regions and cloud environments.
 
@@ -901,7 +901,7 @@ Cloud WAN simplifies enterprise-wide connectivity.
 
 ---
 
-# Hub-and-Spoke Architecture
+## Hub-and-Spoke Architecture
 
 Many cloud environments use a hub-and-spoke design.
 
@@ -923,7 +923,7 @@ The hub typically contains shared services such as:
 
 ---
 
-# Mesh Architecture
+## Mesh Architecture
 
 In smaller environments, networks may communicate directly.
 
@@ -943,7 +943,7 @@ Mesh designs become difficult to manage as the number of networks grows.
 
 ---
 
-# Cloud Load Balancing
+## Cloud Load Balancing
 
 Load balancers distribute traffic across multiple resources.
 
@@ -971,7 +971,7 @@ This improves availability and scalability.
 
 ---
 
-# Types of Cloud Load Balancers
+## Types of Cloud Load Balancers
 
 | Type | Typical Traffic |
 |------|-----------------|
@@ -984,7 +984,7 @@ The appropriate load balancer depends on application requirements.
 
 ---
 
-# Benefits of Load Balancing
+## Benefits of Load Balancing
 
 Advantages include:
 
@@ -996,7 +996,7 @@ Advantages include:
 
 ---
 
-# Health Checks
+## Health Checks
 
 Load balancers continuously verify backend resources.
 
@@ -1020,7 +1020,7 @@ Unhealthy servers are automatically removed from rotation until they recover.
 
 ---
 
-# Auto Scaling
+## Auto Scaling
 
 Cloud environments can automatically increase or decrease compute resources.
 
@@ -1044,7 +1044,7 @@ Auto scaling optimizes both performance and cost.
 
 ---
 
-# Kubernetes Networking
+## Kubernetes Networking
 
 Kubernetes uses a flat networking model where pods communicate directly.
 
@@ -1060,7 +1060,7 @@ Each pod receives its own IP address.
 
 ---
 
-# Kubernetes Networking Model
+## Kubernetes Networking Model
 
 ```
 Internet
@@ -1090,7 +1090,7 @@ Services provide stable endpoints for application communication.
 
 ---
 
-# Kubernetes Services
+## Kubernetes Services
 
 Common service types include:
 
@@ -1103,7 +1103,7 @@ Common service types include:
 
 ---
 
-# Ingress Controller
+## Ingress Controller
 
 Ingress provides Layer 7 routing into Kubernetes clusters.
 
@@ -1118,7 +1118,7 @@ Ingress simplifies application exposure.
 
 ---
 
-# Container Network Interface (CNI)
+## Container Network Interface (CNI)
 
 The CNI plugin manages networking between Kubernetes pods.
 
@@ -1133,7 +1133,7 @@ Popular implementations vary by platform and operational requirements.
 
 ---
 
-# Service Mesh
+## Service Mesh
 
 A Service Mesh manages communication between microservices.
 
@@ -1161,7 +1161,7 @@ Service Mesh separates networking concerns from application code.
 
 ---
 
-# Service Mesh Capabilities
+## Service Mesh Capabilities
 
 Typical capabilities include:
 
@@ -1175,7 +1175,7 @@ Typical capabilities include:
 
 ---
 
-# East-West Traffic
+## East-West Traffic
 
 East-West traffic refers to communication between workloads inside the cloud environment.
 
@@ -1201,7 +1201,7 @@ Microservice architectures generate significant east-west traffic.
 
 ---
 
-# North-South Traffic
+## North-South Traffic
 
 North-South traffic enters or leaves the cloud environment.
 
@@ -1223,7 +1223,7 @@ This traffic typically passes through security controls such as firewalls and we
 
 ---
 
-# Multi-Region Architecture
+## Multi-Region Architecture
 
 Applications can be distributed across multiple regions.
 
@@ -1251,7 +1251,7 @@ Multi-region deployments improve resilience and reduce latency for global users.
 
 ---
 
-# Disaster Recovery Networking
+## Disaster Recovery Networking
 
 Cloud networking supports disaster recovery through:
 
@@ -1265,7 +1265,7 @@ Business continuity planning should include regular disaster recovery testing.
 
 ---
 
-# Cloud DNS
+## Cloud DNS
 
 Managed cloud DNS services provide:
 
@@ -1280,7 +1280,7 @@ Reliable DNS is critical for highly available cloud applications.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Modern cloud connectivity enables organizations to:
 
@@ -1293,7 +1293,7 @@ Modern cloud connectivity enables organizations to:
 
 ---
 
-# Cloud Networking Best Practices
+## Cloud Networking Best Practices
 
 Organizations should:
 
@@ -1308,7 +1308,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Hybrid and multi-cloud environments require secure, scalable connectivity.
 - VPNs provide encrypted communication, while dedicated private circuits offer predictable performance.
@@ -1321,11 +1321,11 @@ Organizations should:
 ---
 
 
-# Part 3 — Cloud Security, Security Groups, Network ACLs, Zero Trust, Monitoring, Detection Engineering, Compliance, and Cloud Operations
+## Part 3 — Cloud Security, Security Groups, Network ACLs, Zero Trust, Monitoring, Detection Engineering, Compliance, and Cloud Operations
 
 ---
 
-# Introduction
+## Introduction
 
 Cloud networking provides agility, scalability, and global connectivity, but it also introduces new security challenges. Unlike traditional on-premises networks, cloud environments are dynamic, software-defined, and API-driven. Resources can be created, modified, or removed within minutes, making continuous security monitoring essential.
 
@@ -1345,7 +1345,7 @@ Cloud security must be implemented using a **defense-in-depth** approach, combin
 
 ---
 
-# Cloud Security Objectives
+## Cloud Security Objectives
 
 Enterprise cloud networking focuses on:
 
@@ -1362,7 +1362,7 @@ These principles apply regardless of the cloud provider.
 
 ---
 
-# Shared Responsibility Model
+## Shared Responsibility Model
 
 Cloud providers secure the **cloud infrastructure**, while customers secure **their workloads and configurations**.
 
@@ -1410,7 +1410,7 @@ Misunderstanding the shared responsibility model is one of the leading causes of
 
 ---
 
-# Defense-in-Depth
+## Defense-in-Depth
 
 A layered architecture minimizes the impact of security failures.
 
@@ -1446,7 +1446,7 @@ Each layer provides independent protection.
 
 ---
 
-# Cloud Network Segmentation
+## Cloud Network Segmentation
 
 Segmentation isolates workloads based on business function and security requirements.
 
@@ -1480,7 +1480,7 @@ Only necessary communication should be allowed between tiers.
 
 ---
 
-# Microsegmentation
+## Microsegmentation
 
 Microsegmentation extends security controls to individual workloads.
 
@@ -1521,7 +1521,7 @@ Even workloads in the same subnet can have distinct security policies.
 
 ---
 
-# Security Groups
+## Security Groups
 
 Security Groups act as **stateful virtual firewalls** attached to cloud resources.
 
@@ -1536,7 +1536,7 @@ Security Groups evaluate traffic before it reaches the instance.
 
 ---
 
-# Security Group Workflow
+## Security Group Workflow
 
 ```
 Internet
@@ -1558,7 +1558,7 @@ Only explicitly allowed traffic is permitted.
 
 ---
 
-# Common Security Group Rules
+## Common Security Group Rules
 
 | Protocol | Port | Purpose |
 |----------|------|---------|
@@ -1572,7 +1572,7 @@ Administrative ports should never be exposed broadly to the Internet.
 
 ---
 
-# Security Group Best Practices
+## Security Group Best Practices
 
 Organizations should:
 
@@ -1584,7 +1584,7 @@ Organizations should:
 
 ---
 
-# Network ACLs (NACLs)
+## Network ACLs (NACLs)
 
 Network ACLs provide **stateless subnet-level filtering**.
 
@@ -1599,7 +1599,7 @@ Unlike Security Groups, return traffic must also be explicitly allowed.
 
 ---
 
-# Security Groups vs Network ACLs
+## Security Groups vs Network ACLs
 
 | Feature | Security Groups | Network ACLs |
 |----------|-----------------|--------------|
@@ -1613,7 +1613,7 @@ Many cloud deployments use both for layered security.
 
 ---
 
-# Bastion Hosts
+## Bastion Hosts
 
 A Bastion Host provides secure administrative access to private resources.
 
@@ -1642,7 +1642,7 @@ Advantages:
 
 ---
 
-# Web Application Firewall (WAF)
+## Web Application Firewall (WAF)
 
 A WAF protects web applications from Layer 7 attacks.
 
@@ -1658,7 +1658,7 @@ A WAF complements, but does not replace, Security Groups or Network ACLs.
 
 ---
 
-# Distributed Denial-of-Service (DDoS) Protection
+## Distributed Denial-of-Service (DDoS) Protection
 
 Cloud providers often offer managed DDoS protection services.
 
@@ -1674,7 +1674,7 @@ DDoS protection helps maintain service availability during volumetric attacks.
 
 ---
 
-# Identity and Access Management (IAM)
+## Identity and Access Management (IAM)
 
 IAM controls access to cloud resources.
 
@@ -1689,7 +1689,7 @@ Identity should be the primary security boundary in cloud environments.
 
 ---
 
-# Least Privilege Access
+## Least Privilege Access
 
 Permissions should grant only the minimum required access.
 
@@ -1715,7 +1715,7 @@ Reducing permissions limits the impact of compromised accounts.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 Administrative accounts should require MFA.
 
@@ -1730,7 +1730,7 @@ MFA significantly reduces the risk of credential compromise.
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 Applications should never store credentials directly in source code.
 
@@ -1745,11 +1745,11 @@ Benefits include centralized rotation, auditing, and access control.
 
 ---
 
-# Encryption
+## Encryption
 
 Cloud environments should protect data:
 
-### At Rest
+#### At Rest
 
 Examples:
 
@@ -1757,7 +1757,7 @@ Examples:
 - Storage encryption
 - Snapshot encryption
 
-### In Transit
+#### In Transit
 
 Examples:
 
@@ -1769,7 +1769,7 @@ Encryption helps protect sensitive information throughout its lifecycle.
 
 ---
 
-# Logging
+## Logging
 
 Enable logging for:
 
@@ -1785,7 +1785,7 @@ Logs are fundamental to security operations and compliance.
 
 ---
 
-# Cloud Audit Logs
+## Cloud Audit Logs
 
 Cloud audit logs typically capture:
 
@@ -1800,7 +1800,7 @@ These logs provide accountability and support forensic investigations.
 
 ---
 
-# Flow Logs
+## Flow Logs
 
 Cloud Flow Logs record network traffic metadata.
 
@@ -1817,7 +1817,7 @@ Flow logs are valuable for troubleshooting and threat detection.
 
 ---
 
-# Centralized Monitoring
+## Centralized Monitoring
 
 ```
 Virtual Machines
@@ -1851,7 +1851,7 @@ Centralized monitoring enables holistic visibility across cloud workloads.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Cloud detection engineering focuses on identifying malicious activity using high-quality detection logic.
 
@@ -1870,9 +1870,9 @@ Detection rules should be regularly tested and refined.
 
 ---
 
-# SIEM Correlation Examples
+## SIEM Correlation Examples
 
-### Privilege Escalation
+#### Privilege Escalation
 
 ```
 User Login
@@ -1892,7 +1892,7 @@ Critical Alert
 
 ---
 
-### Public Storage Exposure
+#### Public Storage Exposure
 
 ```
 Storage Configuration Changed
@@ -1912,7 +1912,7 @@ SOC Investigation
 
 ---
 
-### Unusual API Activity
+#### Unusual API Activity
 
 ```
 Single Identity
@@ -1932,7 +1932,7 @@ High Severity Alert
 
 ---
 
-### Data Exfiltration
+#### Data Exfiltration
 
 ```
 Private Resource
@@ -1952,7 +1952,7 @@ Investigation
 
 ---
 
-# Threat Intelligence Integration
+## Threat Intelligence Integration
 
 Threat intelligence enhances cloud monitoring by identifying:
 
@@ -1966,7 +1966,7 @@ Threat intelligence should be correlated with internal telemetry to improve cont
 
 ---
 
-# Zero Trust in the Cloud
+## Zero Trust in the Cloud
 
 Zero Trust principles apply equally to cloud networking.
 
@@ -1983,7 +1983,7 @@ Cloud-native identity services simplify Zero Trust implementations.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Cloud networking contributes to compliance with:
 
@@ -2006,7 +2006,7 @@ Common requirements include:
 
 ---
 
-# Cloud Operations
+## Cloud Operations
 
 Operational responsibilities include:
 
@@ -2023,7 +2023,7 @@ Automation improves consistency and reduces operational overhead.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Infrastructure should be defined using version-controlled code.
 
@@ -2039,7 +2039,7 @@ IaC is a foundational practice in cloud operations.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong cloud network security enables organizations to:
 
@@ -2053,7 +2053,7 @@ Strong cloud network security enables organizations to:
 
 ---
 
-# Cloud Networking Best Practices
+## Cloud Networking Best Practices
 
 Organizations should:
 
@@ -2070,7 +2070,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cloud security relies on layered defenses, strong identity controls, and continuous monitoring.
 - Security Groups and Network ACLs provide complementary protection.
@@ -2082,11 +2082,11 @@ Organizations should:
 ---
 
 
-# Part 4 — Cloud Troubleshooting, Verification Tools, Detection Engineering, Practical Labs, Enterprise Case Study, Interview Questions, Cloud References, Summary, and Chapter Review
+## Part 4 — Cloud Troubleshooting, Verification Tools, Detection Engineering, Practical Labs, Enterprise Case Study, Interview Questions, Cloud References, Summary, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 Cloud networking enables organizations to rapidly deploy applications across global infrastructure. However, troubleshooting cloud environments requires a different mindset compared to traditional on-premises networking.
 
@@ -2105,7 +2105,7 @@ A structured troubleshooting methodology minimizes downtime, improves service av
 
 ---
 
-# Cloud Troubleshooting Methodology
+## Cloud Troubleshooting Methodology
 
 Follow a consistent workflow when diagnosing cloud networking issues.
 
@@ -2161,7 +2161,7 @@ A repeatable methodology helps avoid unnecessary changes and shortens resolution
 
 ---
 
-# Initial Health Checks
+## Initial Health Checks
 
 Before troubleshooting a specific workload, verify the overall health of the cloud environment.
 
@@ -2182,7 +2182,7 @@ Check:
 
 ---
 
-# End-to-End Packet Flow
+## End-to-End Packet Flow
 
 ```
 Client
@@ -2216,7 +2216,7 @@ Each component should be validated independently.
 
 ---
 
-# Cloud Connectivity Verification
+## Cloud Connectivity Verification
 
 Verify:
 
@@ -2232,7 +2232,7 @@ Many connectivity problems result from routing or security policy misconfigurati
 
 ---
 
-# Routing Verification
+## Routing Verification
 
 Review:
 
@@ -2247,7 +2247,7 @@ Routing errors are a common cause of failed communication between cloud resource
 
 ---
 
-# Security Verification
+## Security Verification
 
 Validate:
 
@@ -2262,7 +2262,7 @@ A single incorrect rule can block application communication.
 
 ---
 
-# DNS Verification
+## DNS Verification
 
 Confirm:
 
@@ -2276,7 +2276,7 @@ DNS issues often appear as application failures.
 
 ---
 
-# Load Balancer Verification
+## Load Balancer Verification
 
 Verify:
 
@@ -2291,7 +2291,7 @@ Improper health checks can remove healthy instances from service or leave unheal
 
 ---
 
-# Auto Scaling Verification
+## Auto Scaling Verification
 
 Review:
 
@@ -2305,7 +2305,7 @@ Improper scaling configuration can cause performance degradation during peak dem
 
 ---
 
-# Flow Log Analysis
+## Flow Log Analysis
 
 Cloud Flow Logs provide visibility into network traffic.
 
@@ -2324,7 +2324,7 @@ Flow Logs help identify blocked traffic, unexpected communication, and potential
 
 ---
 
-# Cloud Audit Log Analysis
+## Cloud Audit Log Analysis
 
 Cloud audit logs record administrative activity.
 
@@ -2341,7 +2341,7 @@ Administrative logs are critical during incident investigations.
 
 ---
 
-# Packet Analysis
+## Packet Analysis
 
 Some cloud platforms support packet capture through:
 
@@ -2354,7 +2354,7 @@ Captured traffic can be analyzed using tools such as Wireshark to identify proto
 
 ---
 
-# Linux Verification Commands
+## Linux Verification Commands
 
 Network Interfaces
 
@@ -2412,7 +2412,7 @@ tcpdump
 
 ---
 
-# Windows Verification Commands
+## Windows Verification Commands
 
 Network Configuration
 
@@ -2466,17 +2466,17 @@ These commands assist in verifying connectivity from cloud-hosted Windows worklo
 
 ---
 
-# Common Troubleshooting Scenarios
+## Common Troubleshooting Scenarios
 
 ---
 
-## Scenario 1 — Web Application Unreachable
+### Scenario 1 — Web Application Unreachable
 
-### Symptoms
+#### Symptoms
 
 - Users cannot access the application.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2489,14 +2489,14 @@ Verify:
 
 ---
 
-## Scenario 2 — Private Server Cannot Access the Internet
+### Scenario 2 — Private Server Cannot Access the Internet
 
-### Symptoms
+#### Symptoms
 
 - Software updates fail.
 - External APIs are unreachable.
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -2508,13 +2508,13 @@ Check:
 
 ---
 
-## Scenario 3 — VPN Connectivity Failure
+### Scenario 3 — VPN Connectivity Failure
 
-### Symptoms
+#### Symptoms
 
 - On-premises users cannot reach cloud resources.
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -2526,13 +2526,13 @@ Review:
 
 ---
 
-## Scenario 4 — Multi-Region Communication Failure
+### Scenario 4 — Multi-Region Communication Failure
 
-### Symptoms
+#### Symptoms
 
 - Services deployed in different regions cannot communicate.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2544,14 +2544,14 @@ Verify:
 
 ---
 
-## Scenario 5 — High Application Latency
+### Scenario 5 — High Application Latency
 
-### Symptoms
+#### Symptoms
 
 - Slow response times
 - Timeouts
 
-### Investigation
+#### Investigation
 
 Review:
 
@@ -2564,13 +2564,13 @@ Review:
 
 ---
 
-## Scenario 6 — Container Connectivity Issues
+### Scenario 6 — Container Connectivity Issues
 
-### Symptoms
+#### Symptoms
 
 - Kubernetes services cannot communicate.
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -2582,7 +2582,7 @@ Check:
 
 ---
 
-# Cloud Monitoring
+## Cloud Monitoring
 
 Cloud monitoring should include:
 
@@ -2601,7 +2601,7 @@ Proactive monitoring identifies issues before users are affected.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Cloud telemetry supports detection of:
 
@@ -2619,9 +2619,9 @@ Detection rules should correlate multiple signals to reduce false positives.
 
 ---
 
-# SIEM Correlation Examples
+## SIEM Correlation Examples
 
-### Public Security Group Exposure
+#### Public Security Group Exposure
 
 ```
 Security Group Modified
@@ -2641,7 +2641,7 @@ Critical Alert
 
 ---
 
-### Unusual API Activity
+#### Unusual API Activity
 
 ```
 Single Identity
@@ -2661,7 +2661,7 @@ SOC Investigation
 
 ---
 
-### Suspicious Data Transfer
+#### Suspicious Data Transfer
 
 ```
 Private Database
@@ -2681,7 +2681,7 @@ High Severity Alert
 
 ---
 
-### VPN Abuse
+#### VPN Abuse
 
 ```
 Multiple Failed Logins
@@ -2701,7 +2701,7 @@ Investigation
 
 ---
 
-# Zeek Integration
+## Zeek Integration
 
 Zeek can be deployed in cloud environments using traffic mirroring or virtual sensors.
 
@@ -2718,7 +2718,7 @@ Zeek provides deep protocol visibility for cloud workloads.
 
 ---
 
-# Suricata Integration
+## Suricata Integration
 
 Suricata can inspect mirrored cloud traffic to detect:
 
@@ -2733,7 +2733,7 @@ Suricata integrates well with SIEM platforms for real-time alerting.
 
 ---
 
-# Threat Hunting Ideas
+## Threat Hunting Ideas
 
 Cloud security teams can investigate:
 
@@ -2751,7 +2751,7 @@ Threat hunting complements automated detections by uncovering subtle or novel at
 
 ---
 
-# Practical Lab 1 — Virtual Private Cloud Deployment
+## Practical Lab 1 — Virtual Private Cloud Deployment
 
 Objective:
 
@@ -2767,7 +2767,7 @@ Tasks:
 
 ---
 
-# Practical Lab 2 — Secure Application Deployment
+## Practical Lab 2 — Secure Application Deployment
 
 Tasks:
 
@@ -2779,7 +2779,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — Hybrid Cloud Connectivity
+## Practical Lab 3 — Hybrid Cloud Connectivity
 
 Tasks:
 
@@ -2791,7 +2791,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — Cloud Monitoring
+## Practical Lab 4 — Cloud Monitoring
 
 Tasks:
 
@@ -2803,7 +2803,7 @@ Tasks:
 
 ---
 
-# Practical Lab 5 — Cloud Security Detection
+## Practical Lab 5 — Cloud Security Detection
 
 Tasks:
 
@@ -2815,13 +2815,13 @@ Tasks:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A global retail company migrates its customer-facing application to a public cloud. Shortly after deployment, users experience intermittent connectivity and increased response times during peak shopping periods.
 
-### Investigation
+#### Investigation
 
 The cloud operations team discovers:
 
@@ -2830,7 +2830,7 @@ The cloud operations team discovers:
 - A Security Group update accidentally blocks communication between the application and database tiers.
 - Flow Logs reveal repeated connection attempts being denied by subnet-level Network ACLs.
 
-### Resolution
+#### Resolution
 
 - Adjust load balancer health check thresholds.
 - Tune Auto Scaling policies for faster scale-out.
@@ -2838,7 +2838,7 @@ The cloud operations team discovers:
 - Update Network ACLs to align with application requirements.
 - Enable additional monitoring and alerting for configuration changes.
 
-### Outcome
+#### Outcome
 
 - Improved application availability.
 - Reduced response times during peak demand.
@@ -2847,37 +2847,37 @@ The cloud operations team discovers:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is a Virtual Private Cloud (VPC)?
+#### What is a Virtual Private Cloud (VPC)?
 
 A VPC is a logically isolated virtual network within a cloud environment where organizations can define IP addressing, subnets, routing, and security policies.
 
 ---
 
-### Why are Security Groups important?
+#### Why are Security Groups important?
 
 Security Groups act as stateful virtual firewalls that control inbound and outbound traffic to cloud resources based on defined allow rules.
 
 ---
 
-### What is the purpose of a NAT Gateway?
+#### What is the purpose of a NAT Gateway?
 
 A NAT Gateway enables private resources to initiate outbound Internet connections while preventing unsolicited inbound Internet traffic.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is the difference between Security Groups and Network ACLs?
+#### What is the difference between Security Groups and Network ACLs?
 
 Security Groups are stateful and operate at the resource level, whereas Network ACLs are stateless and operate at the subnet level with ordered allow and deny rules.
 
 ---
 
-### How would you troubleshoot a cloud application that cannot reach its database?
+#### How would you troubleshoot a cloud application that cannot reach its database?
 
 A structured approach includes:
 
@@ -2890,27 +2890,27 @@ A structured approach includes:
 
 ---
 
-### Why are Flow Logs valuable?
+#### Why are Flow Logs valuable?
 
 Flow Logs provide metadata about network traffic, helping identify blocked connections, unusual communication patterns, and potential security incidents.
 
 ---
 
-## Advanced
+### Advanced
 
-### How does Zero Trust improve cloud security?
+#### How does Zero Trust improve cloud security?
 
 Zero Trust continuously verifies identities, enforces least privilege, validates device posture, and evaluates every access request regardless of network location.
 
 ---
 
-### Why should cloud audit logs be integrated into a SIEM?
+#### Why should cloud audit logs be integrated into a SIEM?
 
 Centralized SIEM integration enables correlation of API activity, IAM changes, configuration updates, authentication events, and network telemetry for faster threat detection and incident response.
 
 ---
 
-### How would you investigate suspected cloud data exfiltration?
+#### How would you investigate suspected cloud data exfiltration?
 
 A comprehensive investigation includes:
 
@@ -2924,7 +2924,7 @@ A comprehensive investigation includes:
 
 ---
 
-# Cloud References
+## Cloud References
 
 Key cloud architecture and networking references include:
 
@@ -2939,13 +2939,13 @@ Key cloud architecture and networking references include:
 
 ---
 
-# Summary
+## Summary
 
 Cloud networking combines software-defined infrastructure, secure connectivity, automation, and cloud-native services to deliver scalable and resilient applications. Effective cloud operations depend on secure network design, layered security controls, continuous monitoring, structured troubleshooting, and well-defined detection engineering practices. By integrating networking, identity, logging, and automation, organizations can operate cloud environments that are both highly available and secure.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -2971,7 +2971,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`22-Network-Security.md`**, covers:
 

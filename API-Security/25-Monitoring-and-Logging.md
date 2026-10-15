@@ -1,6 +1,6 @@
 # 25 - API Monitoring and Logging
 
-# Introduction
+## Introduction
 
 API Monitoring and Logging provide continuous visibility into the health, security, and performance of APIs throughout their lifecycle.
 
@@ -41,7 +41,7 @@ SOC Response
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -57,7 +57,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Why API Monitoring Matters
+## Why API Monitoring Matters
 
 Continuous monitoring enables organizations to
 
@@ -73,7 +73,7 @@ Monitoring transforms operational data into security intelligence.
 
 ---
 
-# The Three Pillars of Observability
+## The Three Pillars of Observability
 
 Modern observability is built upon three primary data sources.
 
@@ -91,7 +91,7 @@ Each pillar answers different operational questions.
 
 ---
 
-# Logs
+## Logs
 
 Logs explain **what happened**.
 
@@ -105,7 +105,7 @@ Examples
 
 ---
 
-# Metrics
+## Metrics
 
 Metrics explain **how the system is performing**.
 
@@ -119,7 +119,7 @@ Examples
 
 ---
 
-# Traces
+## Traces
 
 Distributed traces explain **where time is spent**.
 
@@ -147,7 +147,7 @@ Tracing simplifies debugging in microservice architectures.
 
 ---
 
-# API Telemetry Architecture
+## API Telemetry Architecture
 
 ```
                 Clients
@@ -191,7 +191,7 @@ Tracing simplifies debugging in microservice architectures.
 
 ---
 
-# Logging Objectives
+## Logging Objectives
 
 Security logging should support
 
@@ -206,7 +206,7 @@ Logs should provide sufficient context without exposing unnecessary sensitive in
 
 ---
 
-# Structured Logging
+## Structured Logging
 
 Prefer structured formats over free-form text.
 
@@ -228,7 +228,7 @@ Structured logs improve searching and automated analysis.
 
 ---
 
-# Correlation IDs
+## Correlation IDs
 
 Assign a unique identifier to every request.
 
@@ -260,7 +260,7 @@ The same identifier should appear in every related log entry.
 
 ---
 
-# Request Lifecycle Logging
+## Request Lifecycle Logging
 
 ```
 Request Received
@@ -290,7 +290,7 @@ Logging each stage supports troubleshooting and forensic analysis.
 
 ---
 
-# Security Events to Log
+## Security Events to Log
 
 Recommended events include
 
@@ -307,7 +307,7 @@ Recommended events include
 
 ---
 
-# Authentication Logging
+## Authentication Logging
 
 Record
 
@@ -322,7 +322,7 @@ Avoid logging passwords or authentication secrets.
 
 ---
 
-# Authorization Logging
+## Authorization Logging
 
 Record
 
@@ -337,7 +337,7 @@ Authorization logs assist in identifying privilege abuse.
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Audit logs provide a permanent record of significant events.
 
@@ -354,7 +354,7 @@ Audit logs should be protected from unauthorized modification.
 
 ---
 
-# Error Logging
+## Error Logging
 
 Log
 
@@ -369,7 +369,7 @@ Client responses should remain generic while detailed diagnostics are retained i
 
 ---
 
-# Performance Metrics
+## Performance Metrics
 
 Track
 
@@ -384,7 +384,7 @@ Performance metrics support capacity planning and service optimization.
 
 ---
 
-# Availability Monitoring
+## Availability Monitoring
 
 Monitor
 
@@ -412,7 +412,7 @@ Availability should be monitored continuously.
 
 ---
 
-# Latency Monitoring
+## Latency Monitoring
 
 Measure
 
@@ -426,7 +426,7 @@ High latency may indicate security issues, resource constraints, or application 
 
 ---
 
-# Error Rate Monitoring
+## Error Rate Monitoring
 
 Typical indicators
 
@@ -441,7 +441,7 @@ Sudden increases in 4xx or 5xx responses should be investigated.
 
 ---
 
-# API Usage Metrics
+## API Usage Metrics
 
 Useful operational metrics
 
@@ -456,7 +456,7 @@ These metrics help identify both growth and abnormal behavior.
 
 ---
 
-# Distributed Tracing
+## Distributed Tracing
 
 Distributed tracing follows requests across multiple services.
 
@@ -488,7 +488,7 @@ Tracing simplifies root-cause analysis in distributed environments.
 
 ---
 
-# API Gateway Monitoring
+## API Gateway Monitoring
 
 Monitor
 
@@ -503,7 +503,7 @@ The API Gateway often provides the earliest visibility into abnormal traffic.
 
 ---
 
-# Database Monitoring
+## Database Monitoring
 
 Track
 
@@ -518,7 +518,7 @@ Database behavior directly affects API performance and reliability.
 
 ---
 
-# Cloud Monitoring
+## Cloud Monitoring
 
 Monitor cloud-native resources
 
@@ -533,7 +533,7 @@ Cloud telemetry should be integrated into centralized monitoring.
 
 ---
 
-# Kubernetes Monitoring
+## Kubernetes Monitoring
 
 Observe
 
@@ -548,7 +548,7 @@ Container orchestration introduces additional operational telemetry.
 
 ---
 
-# Alerting Strategy
+## Alerting Strategy
 
 Effective alerts should be
 
@@ -562,7 +562,7 @@ Avoid generating alerts for every minor event.
 
 ---
 
-# Alert Severity
+## Alert Severity
 
 | Severity | Typical Response |
 |-----------|------------------|
@@ -576,7 +576,7 @@ Severity should consider technical impact and business context.
 
 ---
 
-# Dashboard Design
+## Dashboard Design
 
 Security dashboards should display
 
@@ -593,7 +593,7 @@ Dashboards should support both operational teams and security analysts.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 High-value API detections include
 
@@ -610,7 +610,7 @@ High-value API detections include
 
 ---
 
-# Detection Workflow
+## Detection Workflow
 
 ```
 API Logs
@@ -640,7 +640,7 @@ Correlation across multiple telemetry sources improves detection accuracy.
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Recommended telemetry sources
 
@@ -681,9 +681,9 @@ SIEM
 
 ---
 
-# Example Correlation Rules
+## Example Correlation Rules
 
-## Rule 1 – Credential Stuffing
+### Rule 1 – Credential Stuffing
 
 ```
 Thousands of Login Attempts
@@ -703,7 +703,7 @@ High Priority Alert
 
 ---
 
-## Rule 2 – API Enumeration
+### Rule 2 – API Enumeration
 
 ```
 Single Client
@@ -723,7 +723,7 @@ Reconnaissance Alert
 
 ---
 
-## Rule 3 – Privilege Escalation
+### Rule 3 – Privilege Escalation
 
 ```
 Standard User
@@ -747,7 +747,7 @@ Security Investigation
 
 ---
 
-# Enterprise Monitoring Architecture
+## Enterprise Monitoring Architecture
 
 ```
                   Clients
@@ -791,7 +791,7 @@ Security Investigation
 
 ---
 
-# Best Practices
+## Best Practices
 
 Monitoring
 
@@ -811,7 +811,7 @@ Operations
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid
 
@@ -825,7 +825,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Monitoring provides continuous visibility into API health and security.
 - Logs, metrics, and traces together form the foundation of observability.
@@ -835,7 +835,7 @@ Avoid
 
 ---
 
-# Advanced API Observability
+## Advanced API Observability
 
 Modern API monitoring extends beyond collecting logs.
 
@@ -876,7 +876,7 @@ Resolution
 
 ---
 
-# OpenTelemetry
+## OpenTelemetry
 
 OpenTelemetry (OTel) is an open standard for collecting telemetry across distributed systems.
 
@@ -915,7 +915,7 @@ Benefits include:
 
 ---
 
-# Distributed Trace Context
+## Distributed Trace Context
 
 Each request should carry trace context across services.
 
@@ -947,7 +947,7 @@ Every service contributes a span to the complete trace.
 
 ---
 
-# Span Hierarchy
+## Span Hierarchy
 
 ```
 Root Span
@@ -973,7 +973,7 @@ Spans identify where time is spent during request processing.
 
 ---
 
-# Telemetry Correlation
+## Telemetry Correlation
 
 A single security investigation may require correlating
 
@@ -989,7 +989,7 @@ Correlation dramatically reduces investigation time.
 
 ---
 
-# Centralized Log Management
+## Centralized Log Management
 
 ```
 API Gateway
@@ -1025,7 +1025,7 @@ Benefits
 
 ---
 
-# Log Normalization
+## Log Normalization
 
 Different systems generate different log formats.
 
@@ -1047,7 +1047,7 @@ Normalization improves searching and detection engineering.
 
 ---
 
-# Log Enrichment
+## Log Enrichment
 
 Raw logs become significantly more valuable after enrichment.
 
@@ -1079,7 +1079,7 @@ Investigation Ready
 
 ---
 
-# API Audit Strategy
+## API Audit Strategy
 
 Audit logs should capture significant security events.
 
@@ -1097,7 +1097,7 @@ Audit records should support accountability and compliance.
 
 ---
 
-# Tamper Protection
+## Tamper Protection
 
 Security logs should be protected against unauthorized modification.
 
@@ -1127,7 +1127,7 @@ Forensic Evidence
 
 ---
 
-# Log Retention Strategy
+## Log Retention Strategy
 
 Retention policies should consider
 
@@ -1159,7 +1159,7 @@ Retention periods should align with organizational policies and legal obligation
 
 ---
 
-# API Health Monitoring
+## API Health Monitoring
 
 Monitor
 
@@ -1187,7 +1187,7 @@ Yes      Alert
 
 ---
 
-# Synthetic Monitoring
+## Synthetic Monitoring
 
 Synthetic monitoring proactively tests APIs.
 
@@ -1222,7 +1222,7 @@ Benefits
 
 ---
 
-# Real User Monitoring (RUM)
+## Real User Monitoring (RUM)
 
 Where applicable, Real User Monitoring measures actual user interactions.
 
@@ -1238,7 +1238,7 @@ RUM complements synthetic monitoring.
 
 ---
 
-# Service Level Indicators (SLIs)
+## Service Level Indicators (SLIs)
 
 Examples
 
@@ -1252,7 +1252,7 @@ SLIs provide objective measurements of service quality.
 
 ---
 
-# Service Level Objectives (SLOs)
+## Service Level Objectives (SLOs)
 
 An SLO defines the expected target for an SLI.
 
@@ -1269,7 +1269,7 @@ SLOs should reflect business and operational requirements.
 
 ---
 
-# Error Budget
+## Error Budget
 
 An error budget defines the acceptable amount of service degradation within a measurement period.
 
@@ -1293,7 +1293,7 @@ Error budgets help balance reliability improvements with feature delivery.
 
 ---
 
-# API Performance Dashboard
+## API Performance Dashboard
 
 Recommended widgets
 
@@ -1311,7 +1311,7 @@ Dashboards should support rapid operational awareness.
 
 ---
 
-# Security Dashboard
+## Security Dashboard
 
 Example dashboard sections
 
@@ -1337,7 +1337,7 @@ Security dashboards should prioritize actionable information.
 
 ---
 
-# SOC Dashboard
+## SOC Dashboard
 
 Recommended SOC widgets
 
@@ -1372,7 +1372,7 @@ Analyst
 
 ---
 
-# API Abuse Detection
+## API Abuse Detection
 
 Monitor for
 
@@ -1389,7 +1389,7 @@ Behavioral monitoring often detects attacks before signatures.
 
 ---
 
-# Anomaly Detection
+## Anomaly Detection
 
 Examples
 
@@ -1418,7 +1418,7 @@ Alert
 
 ---
 
-# Behavioral Analytics
+## Behavioral Analytics
 
 Behavioral analysis evaluates patterns rather than individual events.
 
@@ -1434,7 +1434,7 @@ Behavioral baselines improve detection accuracy.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1451,7 +1451,7 @@ Recommended detections
 
 ---
 
-# Detection Pipeline
+## Detection Pipeline
 
 ```
 Telemetry
@@ -1483,7 +1483,7 @@ SOC
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 High-value telemetry includes
 
@@ -1520,9 +1520,9 @@ SOC
 
 ---
 
-# Example Correlation Rules
+## Example Correlation Rules
 
-## Rule 1 – API Scraping
+### Rule 1 – API Scraping
 
 ```
 Thousands of Requests
@@ -1542,7 +1542,7 @@ Possible Data Harvesting
 
 ---
 
-## Rule 2 – Authentication Abuse
+### Rule 2 – Authentication Abuse
 
 ```
 Many Failed Logins
@@ -1562,7 +1562,7 @@ Possible Account Compromise
 
 ---
 
-## Rule 3 – Administrative Activity
+### Rule 3 – Administrative Activity
 
 ```
 Administrator Login
@@ -1582,7 +1582,7 @@ Review Required
 
 ---
 
-# Enterprise Observability Architecture
+## Enterprise Observability Architecture
 
 ```
                     Clients
@@ -1628,7 +1628,7 @@ Review Required
 
 ---
 
-# Hands-on Lab 1 – Structured Logging Review
+## Hands-on Lab 1 – Structured Logging Review
 
 **Objective**
 
@@ -1650,7 +1650,7 @@ Evaluate structured logging quality.
 
 ---
 
-# Hands-on Lab 2 – Dashboard Design
+## Hands-on Lab 2 – Dashboard Design
 
 **Objective**
 
@@ -1672,7 +1672,7 @@ Create an operational API dashboard.
 
 ---
 
-# Hands-on Lab 3 – Detection Validation
+## Hands-on Lab 3 – Detection Validation
 
 **Objective**
 
@@ -1694,9 +1694,9 @@ Validate API detection rules.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Missing Correlation IDs
+### Missing Correlation IDs
 
 Possible causes
 
@@ -1707,7 +1707,7 @@ Possible causes
 
 ---
 
-## Incomplete Distributed Traces
+### Incomplete Distributed Traces
 
 Possible causes
 
@@ -1718,7 +1718,7 @@ Possible causes
 
 ---
 
-## Excessive Alert Volume
+### Excessive Alert Volume
 
 Possible causes
 
@@ -1729,7 +1729,7 @@ Possible causes
 
 ---
 
-## Missing Audit Records
+### Missing Audit Records
 
 Possible causes
 
@@ -1740,7 +1740,7 @@ Possible causes
 
 ---
 
-## Dashboard Data Delays
+### Dashboard Data Delays
 
 Possible causes
 
@@ -1751,9 +1751,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What are the three pillars of observability?
 2. Why are correlation IDs important?
@@ -1768,7 +1768,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. How would you design an enterprise observability platform?
 12. Which security events should always be audited?
@@ -1783,7 +1783,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1815,7 +1815,7 @@ A SOC receives alerts for unusually high API traffic from a trusted client appli
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 This chapter expanded API monitoring into a comprehensive observability strategy covering logs, metrics, traces, OpenTelemetry, centralized logging, dashboards, detection engineering, and enterprise Security Operations Center workflows.
 
@@ -1840,7 +1840,7 @@ A mature observability platform provides the visibility needed to detect threats
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1856,9 +1856,9 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - OpenTelemetry Specification
 - OWASP API Security Top 10
@@ -1866,7 +1866,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - NIST SP 800-61 Rev. 2 (Computer Security Incident Handling Guide)
 - NIST SP 800-53
 
-## Further Reading
+### Further Reading
 
 - OWASP Cheat Sheet Series
 - MITRE ATT&CK Framework
@@ -1875,7 +1875,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 26 – API Incident Response**
 

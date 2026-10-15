@@ -4,13 +4,13 @@
 
 ---
 
-# Introduction
+## Introduction
 
 This cheat sheet summarizes the most important networking concepts covered throughout this repository. It is designed for rapid revision before interviews, certification exams, troubleshooting sessions, and day-to-day enterprise operations.
 
 ---
 
-# 1. OSI Model
+## 1. OSI Model
 
 | Layer | Name | Common Devices | Example Protocols |
 |--------|------|----------------|-------------------|
@@ -24,7 +24,7 @@ This cheat sheet summarizes the most important networking concepts covered throu
 
 ---
 
-# 2. TCP/IP Model
+## 2. TCP/IP Model
 
 | Layer | Protocol Examples |
 |--------|-------------------|
@@ -35,7 +35,7 @@ This cheat sheet summarizes the most important networking concepts covered throu
 
 ---
 
-# 3. Common Protocols
+## 3. Common Protocols
 
 | Protocol | Port | Transport | Purpose |
 |----------|------|-----------|----------|
@@ -59,7 +59,7 @@ This cheat sheet summarizes the most important networking concepts covered throu
 
 ---
 
-# 4. TCP vs UDP
+## 4. TCP vs UDP
 
 | Feature | TCP | UDP |
 |----------|-----|-----|
@@ -72,7 +72,7 @@ This cheat sheet summarizes the most important networking concepts covered throu
 
 ---
 
-# 5. IPv4 Private Address Ranges
+## 5. IPv4 Private Address Ranges
 
 | Network | CIDR |
 |----------|------|
@@ -82,7 +82,7 @@ This cheat sheet summarizes the most important networking concepts covered throu
 
 ---
 
-# 6. Common Subnet Masks
+## 6. Common Subnet Masks
 
 | CIDR | Subnet Mask | Total Addresses | Usable Hosts |
 |------|-------------|-----------------|--------------|
@@ -99,7 +99,7 @@ This cheat sheet summarizes the most important networking concepts covered throu
 
 ---
 
-# 7. IPv6 Quick Facts
+## 7. IPv6 Quick Facts
 
 - 128-bit addressing
 - Hexadecimal notation
@@ -117,7 +117,7 @@ Example:
 
 ---
 
-# 8. Routing Protocols
+## 8. Routing Protocols
 
 | Protocol | Type | Typical Use |
 |----------|------|-------------|
@@ -129,7 +129,7 @@ Example:
 
 ---
 
-# 9. VLAN Quick Reference
+## 9. VLAN Quick Reference
 
 - Access Port → Single VLAN
 - Trunk Port → Multiple VLANs
@@ -139,7 +139,7 @@ Example:
 
 ---
 
-# 10. STP States (Classic IEEE 802.1D)
+## 10. STP States (Classic IEEE 802.1D)
 
 - Blocking
 - Listening
@@ -151,7 +151,7 @@ Purpose: Prevent Layer 2 loops and broadcast storms.
 
 ---
 
-# 11. DHCP DORA Process
+## 11. DHCP DORA Process
 
 ```
 Discover
@@ -171,7 +171,7 @@ Acknowledge
 
 ---
 
-# 12. TCP Three-Way Handshake
+## 12. TCP Three-Way Handshake
 
 ```
 SYN
@@ -187,7 +187,7 @@ ACK
 
 ---
 
-# 13. TCP Connection Termination
+## 13. TCP Connection Termination
 
 ```
 FIN
@@ -207,7 +207,7 @@ ACK
 
 ---
 
-# 14. DNS Resolution Process
+## 14. DNS Resolution Process
 
 ```
 Client
@@ -231,7 +231,7 @@ Connection Established
 
 ---
 
-# 15. ARP Process
+## 15. ARP Process
 
 ```
 ARP Request
@@ -251,7 +251,7 @@ MAC Learned
 
 ---
 
-# 16. NAT Types
+## 16. NAT Types
 
 | Type | Purpose |
 |------|---------|
@@ -261,7 +261,7 @@ MAC Learned
 
 ---
 
-# 17. VPN Types
+## 17. VPN Types
 
 - Site-to-Site VPN
 - Remote Access VPN
@@ -270,7 +270,7 @@ MAC Learned
 
 ---
 
-# 18. Firewall Types
+## 18. Firewall Types
 
 - Packet Filtering Firewall
 - Stateful Firewall
@@ -280,7 +280,7 @@ MAC Learned
 
 ---
 
-# 19. IDS vs IPS
+## 19. IDS vs IPS
 
 | IDS | IPS |
 |------|-----|
@@ -290,7 +290,7 @@ MAC Learned
 
 ---
 
-# 20. Network Monitoring Tools
+## 20. Network Monitoring Tools
 
 | Tool | Primary Use |
 |------|-------------|
@@ -303,7 +303,7 @@ MAC Learned
 
 ---
 
-# 21. Common Linux Networking Commands
+## 21. Common Linux Networking Commands
 
 | Command | Purpose |
 |----------|---------|
@@ -320,7 +320,7 @@ MAC Learned
 
 ---
 
-# 22. Common Windows Networking Commands
+## 22. Common Windows Networking Commands
 
 | Command | Purpose |
 |----------|---------|
@@ -336,7 +336,7 @@ MAC Learned
 
 ---
 
-# 23. Wireshark Display Filters
+## 23. Wireshark Display Filters
 
 | Filter | Description |
 |----------|-------------|
@@ -353,7 +353,7 @@ MAC Learned
 
 ---
 
-# 24. Enterprise Troubleshooting Workflow
+## 24. Enterprise Troubleshooting Workflow
 
 ```
 Identify Problem
@@ -389,7 +389,7 @@ Document Findings
 
 ---
 
-# 25. Security Concepts
+## 25. Security Concepts
 
 | Concept | Purpose |
 |----------|---------|
@@ -403,7 +403,7 @@ Document Findings
 
 ---
 
-# 26. SIEM Investigation Workflow
+## 26. SIEM Investigation Workflow
 
 ```
 Alert
@@ -439,7 +439,7 @@ Document
 
 ---
 
-# 27. Root Cause Analysis (RCA)
+## 27. Root Cause Analysis (RCA)
 
 1. Identify the issue.
 2. Gather evidence.
@@ -451,7 +451,7 @@ Document
 
 ---
 
-# 28. Interview Revision Checklist
+## 28. Interview Revision Checklist
 
 Before an interview, review:
 
@@ -479,7 +479,7 @@ Before an interview, review:
 
 ---
 
-# 29. Enterprise Best Practices
+## 29. Enterprise Best Practices
 
 - Follow structured troubleshooting methodologies.
 - Keep network diagrams and documentation up to date.
@@ -494,7 +494,7 @@ Before an interview, review:
 
 ---
 
-# 30. Final Revision Tips
+## 30. Final Revision Tips
 
 - Understand concepts rather than memorizing definitions.
 - Practice subnetting calculations.
@@ -507,7 +507,7 @@ Before an interview, review:
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have completed the **Networking** section of the **Cybersecurity Notes** repository.
 

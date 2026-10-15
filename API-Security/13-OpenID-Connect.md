@@ -1,6 +1,6 @@
 # 13 - OpenID Connect (OIDC)
 
-# Introduction
+## Introduction
 
 OpenID Connect (OIDC) is an identity layer built on top of OAuth 2.0.
 
@@ -32,7 +32,7 @@ Major identity platforms support OIDC, including:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -49,7 +49,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Why OpenID Connect?
+## Why OpenID Connect?
 
 OAuth answers:
 
@@ -69,7 +69,7 @@ OIDC standardizes authentication.
 
 ---
 
-# OAuth vs OpenID Connect
+## OAuth vs OpenID Connect
 
 | OAuth 2.0 | OpenID Connect |
 |-----------|----------------|
@@ -83,7 +83,7 @@ OIDC extends OAuth instead of replacing it.
 
 ---
 
-# OpenID Connect Architecture
+## OpenID Connect Architecture
 
 ```
                  User
@@ -115,7 +115,7 @@ OIDC extends OAuth instead of replacing it.
 
 ---
 
-# OIDC Terminology
+## OIDC Terminology
 
 | Term | Description |
 |------|-------------|
@@ -129,7 +129,7 @@ OIDC extends OAuth instead of replacing it.
 
 ---
 
-# OpenID Provider (OP)
+## OpenID Provider (OP)
 
 The OpenID Provider authenticates users.
 
@@ -152,7 +152,7 @@ Examples
 
 ---
 
-# Relying Party (RP)
+## Relying Party (RP)
 
 The Relying Party is the application trusting the OpenID Provider.
 
@@ -168,7 +168,7 @@ The RP verifies the identity information contained in the ID Token.
 
 ---
 
-# OIDC Authentication Flow
+## OIDC Authentication Flow
 
 ```
 User
@@ -206,7 +206,7 @@ Authenticated User
 
 ---
 
-# OpenID Connect Flow
+## OpenID Connect Flow
 
 ```
              User
@@ -260,7 +260,7 @@ The Authorization Code Flow with PKCE is the recommended deployment model.
 
 ---
 
-# ID Token
+## ID Token
 
 The ID Token is a JWT containing information about the authenticated user.
 
@@ -286,7 +286,7 @@ not the Resource Server.
 
 ---
 
-# ID Token Example
+## ID Token Example
 
 ```json
 {
@@ -303,7 +303,7 @@ The client verifies these claims before trusting the identity.
 
 ---
 
-# ID Token Claims
+## ID Token Claims
 
 Common claims
 
@@ -321,7 +321,7 @@ Common claims
 
 ---
 
-# Authentication Time (auth_time)
+## Authentication Time (auth_time)
 
 Indicates when the user authenticated.
 
@@ -337,7 +337,7 @@ Useful for enforcing re-authentication policies.
 
 ---
 
-# Nonce
+## Nonce
 
 The **nonce** protects OIDC authentication against replay attacks.
 
@@ -368,7 +368,7 @@ Nonce values should be:
 
 ---
 
-# Nonce Validation
+## Nonce Validation
 
 ```
 ID Token
@@ -396,7 +396,7 @@ Nonce validation is mandatory for flows where ID Tokens are returned through the
 
 ---
 
-# OIDC Scopes
+## OIDC Scopes
 
 OIDC introduces identity-related scopes.
 
@@ -430,7 +430,7 @@ The `openid` scope is mandatory for OIDC.
 
 ---
 
-# Common Scope Usage
+## Common Scope Usage
 
 | Scope | Information Returned |
 |--------|----------------------|
@@ -445,7 +445,7 @@ Applications should request only the required scopes.
 
 ---
 
-# UserInfo Endpoint
+## UserInfo Endpoint
 
 The UserInfo endpoint returns profile information about the authenticated user.
 
@@ -471,7 +471,7 @@ Application
 
 ---
 
-# UserInfo Response
+## UserInfo Response
 
 Example
 
@@ -488,7 +488,7 @@ The `sub` claim should match the ID Token.
 
 ---
 
-# OIDC Discovery
+## OIDC Discovery
 
 Discovery allows clients to automatically locate provider configuration.
 
@@ -509,7 +509,7 @@ The discovery document publishes:
 
 ---
 
-# Discovery Workflow
+## Discovery Workflow
 
 ```
 Client
@@ -535,7 +535,7 @@ Discovery simplifies client configuration.
 
 ---
 
-# Discovery Document Example
+## Discovery Document Example
 
 ```json
 {
@@ -551,7 +551,7 @@ Clients should validate the issuer before trusting metadata.
 
 ---
 
-# JWKS Endpoint
+## JWKS Endpoint
 
 OIDC providers publish public signing keys.
 
@@ -575,7 +575,7 @@ Clients use these keys to verify ID Token signatures.
 
 ---
 
-# ID Token Validation
+## ID Token Validation
 
 Every ID Token should be validated.
 
@@ -611,7 +611,7 @@ Skipping validation may allow authentication bypass.
 
 ---
 
-# Authentication Request Parameters
+## Authentication Request Parameters
 
 Common parameters
 
@@ -626,7 +626,7 @@ Common parameters
 
 ---
 
-# Enterprise OIDC Architecture
+## Enterprise OIDC Architecture
 
 ```
                  User
@@ -670,7 +670,7 @@ Common parameters
 
 ---
 
-# Best Practices
+## Best Practices
 
 Authentication
 
@@ -697,7 +697,7 @@ Operations
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid
 
@@ -713,7 +713,7 @@ Avoid
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - OIDC adds authentication capabilities to OAuth 2.0.
 - The ID Token represents the authenticated user's identity.
@@ -724,7 +724,7 @@ Avoid
 
 ---
 
-# OIDC Authentication Flows
+## OIDC Authentication Flows
 
 OpenID Connect supports multiple authentication flows depending on the client type and security requirements.
 
@@ -739,7 +739,7 @@ The following are considered legacy and should generally be avoided for new appl
 
 ---
 
-# OIDC Flow Overview
+## OIDC Flow Overview
 
 ```
                     OpenID Connect
@@ -758,7 +758,7 @@ The Authorization Code Flow with PKCE is recommended for nearly all applications
 
 ---
 
-# Authorization Code Flow with PKCE
+## Authorization Code Flow with PKCE
 
 ```
 User
@@ -813,7 +813,7 @@ Advantages
 
 ---
 
-# Hybrid Flow
+## Hybrid Flow
 
 Hybrid Flow returns some tokens directly from the authorization endpoint while also returning an authorization code.
 
@@ -852,7 +852,7 @@ Most new deployments should use Authorization Code + PKCE instead.
 
 ---
 
-# Implicit Flow (Legacy)
+## Implicit Flow (Legacy)
 
 Historically,
 
@@ -883,7 +883,7 @@ Modern guidance recommends replacing the Implicit Flow with Authorization Code +
 
 ---
 
-# OIDC Session Management
+## OIDC Session Management
 
 Session management allows applications to determine whether the user remains authenticated.
 
@@ -915,7 +915,7 @@ Benefits
 
 ---
 
-# Local Session vs Identity Session
+## Local Session vs Identity Session
 
 ```
 Application Session
@@ -939,7 +939,7 @@ Ending one session does not automatically terminate the other unless logout mech
 
 ---
 
-# Session Lifecycle
+## Session Lifecycle
 
 ```
 Authentication
@@ -969,7 +969,7 @@ Applications should define reasonable session expiration policies.
 
 ---
 
-# Silent Authentication
+## Silent Authentication
 
 Silent authentication checks whether an existing authentication session is still valid.
 
@@ -1005,7 +1005,7 @@ This improves usability while maintaining security.
 
 ---
 
-# Single Sign-On (SSO)
+## Single Sign-On (SSO)
 
 OIDC enables centralized authentication across multiple applications.
 
@@ -1029,7 +1029,7 @@ Users authenticate once and gain access to multiple trusted applications.
 
 ---
 
-# Single Logout (SLO)
+## Single Logout (SLO)
 
 Single Logout terminates authenticated sessions across connected applications.
 
@@ -1061,7 +1061,7 @@ This prevents lingering authenticated sessions after logout.
 
 ---
 
-# Front-Channel Logout
+## Front-Channel Logout
 
 Front-channel logout uses the user's browser.
 
@@ -1092,7 +1092,7 @@ Limitations
 
 ---
 
-# Back-Channel Logout
+## Back-Channel Logout
 
 Back-channel logout communicates directly between servers.
 
@@ -1120,7 +1120,7 @@ Advantages
 
 ---
 
-# Dynamic Client Registration
+## Dynamic Client Registration
 
 OIDC supports automated client registration.
 
@@ -1150,7 +1150,7 @@ Dynamic registration should be carefully controlled in enterprise environments.
 
 ---
 
-# Client Metadata
+## Client Metadata
 
 Typical registration metadata includes:
 
@@ -1166,7 +1166,7 @@ Proper validation prevents unauthorized client registration.
 
 ---
 
-# Identity Federation
+## Identity Federation
 
 Federation enables trusted authentication across organizations.
 
@@ -1190,7 +1190,7 @@ Users authenticate with their home organization while accessing external service
 
 ---
 
-# Federation Architecture
+## Federation Architecture
 
 ```
           Enterprise A
@@ -1220,7 +1220,7 @@ Federation reduces identity duplication while maintaining organizational control
 
 ---
 
-# Home Realm Discovery
+## Home Realm Discovery
 
 Home Realm Discovery identifies the user's Identity Provider.
 
@@ -1251,7 +1251,7 @@ Common examples
 
 ---
 
-# Multi-Tenant Identity
+## Multi-Tenant Identity
 
 Many SaaS platforms support multiple organizations.
 
@@ -1275,7 +1275,7 @@ Each tenant maintains independent authentication and authorization policies.
 
 ---
 
-# OIDC Security Threats
+## OIDC Security Threats
 
 Common threats include:
 
@@ -1292,7 +1292,7 @@ Common threats include:
 
 ---
 
-# ID Token Replay
+## ID Token Replay
 
 An attacker reuses a previously issued ID Token.
 
@@ -1321,7 +1321,7 @@ Mitigations
 
 ---
 
-# Nonce Bypass
+## Nonce Bypass
 
 If applications ignore nonce validation,
 
@@ -1343,7 +1343,7 @@ Always validate the nonce.
 
 ---
 
-# Discovery Poisoning
+## Discovery Poisoning
 
 An attacker attempts to redirect clients to malicious provider metadata.
 
@@ -1367,7 +1367,7 @@ Mitigations
 
 ---
 
-# JWKS Manipulation
+## JWKS Manipulation
 
 Attackers attempt to influence which public keys are trusted.
 
@@ -1392,7 +1392,7 @@ Mitigations
 
 ---
 
-# Issuer Validation
+## Issuer Validation
 
 Applications must verify the expected issuer.
 
@@ -1422,7 +1422,7 @@ Issuer validation prevents trust in unauthorized identity providers.
 
 ---
 
-# Audience Validation
+## Audience Validation
 
 The client should verify that the ID Token was issued for itself.
 
@@ -1450,7 +1450,7 @@ Allow    Reject
 
 ---
 
-# Enterprise OIDC Best Practices
+## Enterprise OIDC Best Practices
 
 Authentication
 
@@ -1477,7 +1477,7 @@ Operations
 
 ---
 
-# OIDC Logging
+## OIDC Logging
 
 Log
 
@@ -1502,7 +1502,7 @@ Do not log
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Recommended detections
 
@@ -1521,7 +1521,7 @@ Recommended detections
 
 ---
 
-# SIEM Integration
+## SIEM Integration
 
 Recommended telemetry
 
@@ -1572,7 +1572,7 @@ Example correlation rules
 
 ---
 
-# Enterprise OIDC Architecture
+## Enterprise OIDC Architecture
 
 ```
                      User
@@ -1624,7 +1624,7 @@ Example correlation rules
 
 ---
 
-# Hands-on Lab 1 – ID Token Validation
+## Hands-on Lab 1 – ID Token Validation
 
 **Objective**
 
@@ -1645,7 +1645,7 @@ Review ID Token validation in an authorized environment.
 
 ---
 
-# Hands-on Lab 2 – Discovery Verification
+## Hands-on Lab 2 – Discovery Verification
 
 **Objective**
 
@@ -1666,7 +1666,7 @@ Review OIDC discovery configuration.
 
 ---
 
-# Hands-on Lab 3 – Federation Assessment
+## Hands-on Lab 3 – Federation Assessment
 
 **Objective**
 
@@ -1687,7 +1687,7 @@ Review federation trust relationships.
 
 ---
 
-# Common Security Mistakes
+## Common Security Mistakes
 
 Avoid
 
@@ -1704,9 +1704,9 @@ Avoid
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Invalid ID Token
+### Invalid ID Token
 
 Possible causes
 
@@ -1718,7 +1718,7 @@ Possible causes
 
 ---
 
-## Discovery Failure
+### Discovery Failure
 
 Possible causes
 
@@ -1729,7 +1729,7 @@ Possible causes
 
 ---
 
-## JWKS Validation Failure
+### JWKS Validation Failure
 
 Possible causes
 
@@ -1740,7 +1740,7 @@ Possible causes
 
 ---
 
-## Single Logout Not Working
+### Single Logout Not Working
 
 Possible causes
 
@@ -1751,7 +1751,7 @@ Possible causes
 
 ---
 
-## Federation Authentication Failure
+### Federation Authentication Failure
 
 Possible causes
 
@@ -1762,9 +1762,9 @@ Possible causes
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamental
+### Fundamental
 
 1. What is OpenID Connect?
 2. How does OIDC differ from OAuth 2.0?
@@ -1779,7 +1779,7 @@ Possible causes
 
 ---
 
-## Intermediate
+### Intermediate
 
 11. Explain the Authorization Code Flow with PKCE in OIDC.
 12. Why should an ID Token never be used as an API access token?
@@ -1794,7 +1794,7 @@ Possible causes
 
 ---
 
-## Scenario-Based
+### Scenario-Based
 
 **Scenario 1**
 
@@ -1824,7 +1824,7 @@ A security monitoring system reports repeated authentication failures immediatel
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, we explored OpenID Connect (OIDC), the identity layer built on top of OAuth 2.0.
 
@@ -1851,7 +1851,7 @@ OIDC provides standardized, interoperable authentication for modern applications
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 You should now be able to answer:
 
@@ -1867,9 +1867,9 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - OpenID Connect Core 1.0
 - OpenID Connect Discovery 1.0
@@ -1877,7 +1877,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - OpenID Connect Front-Channel Logout 1.0
 - OpenID Connect Back-Channel Logout 1.0
 
-## Security Standards
+### Security Standards
 
 - OAuth 2.0 Security Best Current Practice
 - OWASP API Security Top 10
@@ -1885,7 +1885,7 @@ If you can confidently answer these questions, you are ready to continue with **
 - NIST SP 800-63
 - NIST SP 800-207 (Zero Trust Architecture)
 
-## Further Reading
+### Further Reading
 
 - OpenID Foundation Specifications
 - Financial-grade API (FAPI) Security Profiles
@@ -1893,7 +1893,7 @@ If you can confidently answer these questions, you are ready to continue with **
 
 ---
 
-# What's Next?
+## What's Next?
 
 ➡️ **Chapter 14 – API Gateways**
 

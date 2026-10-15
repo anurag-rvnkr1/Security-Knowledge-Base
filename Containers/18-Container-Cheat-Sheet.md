@@ -18,7 +18,7 @@ Instead of explaining concepts in depth, this cheat sheet provides concise summa
 
 ---
 
-# Container Lifecycle
+## Container Lifecycle
 
 ```
 Dockerfile
@@ -70,7 +70,7 @@ Remove
 
 ---
 
-# Docker Architecture
+## Docker Architecture
 
 ```
 Docker Client
@@ -94,7 +94,7 @@ Docker Registry
 
 ---
 
-# Container vs Virtual Machine
+## Container vs Virtual Machine
 
 | Container | Virtual Machine |
 |------------|-----------------|
@@ -106,7 +106,7 @@ Docker Registry
 
 ---
 
-# Dockerfile Workflow
+## Dockerfile Workflow
 
 ```
 Dockerfile
@@ -130,7 +130,7 @@ Running Container
 
 ---
 
-# Image vs Container
+## Image vs Container
 
 | Image | Container |
 |--------|-----------|
@@ -140,7 +140,7 @@ Running Container
 
 ---
 
-# Container Storage
+## Container Storage
 
 ```
 Writable Layer
@@ -166,7 +166,7 @@ Host Directory
 
 ---
 
-# Docker Networking
+## Docker Networking
 
 ```
 Host
@@ -194,7 +194,7 @@ Common network types:
 
 ---
 
-# Container Security Layers
+## Container Security Layers
 
 ```
 Application
@@ -224,7 +224,7 @@ Apply security controls at every layer.
 
 ---
 
-# Container Security Principles
+## Container Security Principles
 
 - Least Privilege
 - Defense in Depth
@@ -235,7 +235,7 @@ Apply security controls at every layer.
 
 ---
 
-# Container Incident Response
+## Container Incident Response
 
 ```
 Preparation
@@ -267,7 +267,7 @@ Lessons Learned
 
 ---
 
-# Container Forensics
+## Container Forensics
 
 ```
 Incident
@@ -304,7 +304,7 @@ Evidence sources:
 
 ---
 
-# Container Monitoring
+## Container Monitoring
 
 ```
 Metrics
@@ -328,7 +328,7 @@ Response
 
 ---
 
-# Three Pillars of Observability
+## Three Pillars of Observability
 
 ```
 Metrics
@@ -344,7 +344,7 @@ Traces
 
 ---
 
-# Golden Signals
+## Golden Signals
 
 ```
 Latency
@@ -364,7 +364,7 @@ Saturation
 
 ---
 
-# RED Method
+## RED Method
 
 ```
 Rate
@@ -380,7 +380,7 @@ Duration
 
 ---
 
-# USE Method
+## USE Method
 
 ```
 Utilization
@@ -396,7 +396,7 @@ Errors
 
 ---
 
-# Container Vulnerability Management
+## Container Vulnerability Management
 
 ```
 Build
@@ -428,7 +428,7 @@ Deploy
 
 ---
 
-# Immutable Infrastructure
+## Immutable Infrastructure
 
 ```
 Old Container
@@ -450,7 +450,7 @@ Never patch running production containers.
 
 ---
 
-# Container Best Practices
+## Container Best Practices
 
 - Build small images
 - Use trusted base images
@@ -467,9 +467,9 @@ Never patch running production containers.
 
 ---
 
-# Docker CLI Cheat Sheet
+## Docker CLI Cheat Sheet
 
-## Images
+### Images
 
 Build image
 
@@ -503,7 +503,7 @@ docker rmi image_name
 
 ---
 
-## Containers
+### Containers
 
 Run container
 
@@ -555,7 +555,7 @@ docker rm container_name
 
 ---
 
-## Logs
+### Logs
 
 View logs
 
@@ -571,7 +571,7 @@ docker logs -f container_name
 
 ---
 
-## Resource Monitoring
+### Resource Monitoring
 
 View resource usage
 
@@ -593,7 +593,7 @@ docker events
 
 ---
 
-## Networks
+### Networks
 
 List networks
 
@@ -615,7 +615,7 @@ docker network create mynetwork
 
 ---
 
-## Volumes
+### Volumes
 
 List volumes
 
@@ -637,7 +637,7 @@ docker volume create myvolume
 
 ---
 
-## Registry
+### Registry
 
 Login
 
@@ -665,7 +665,7 @@ docker tag myapp username/myapp:1.0
 
 ---
 
-## Cleanup
+### Cleanup
 
 Remove stopped containers
 
@@ -699,7 +699,7 @@ docker system prune
 
 ---
 
-# Security Checklist
+## Security Checklist
 
 ✅ Use official images
 
@@ -727,7 +727,7 @@ docker system prune
 
 ---
 
-# Incident Response Checklist
+## Incident Response Checklist
 
 ```
 Detect
@@ -759,7 +759,7 @@ Lessons Learned
 
 ---
 
-# Forensics Checklist
+## Forensics Checklist
 
 - Preserve volatile evidence
 - Collect container logs
@@ -773,7 +773,7 @@ Lessons Learned
 
 ---
 
-# Production Readiness Checklist
+## Production Readiness Checklist
 
 - Images scanned
 - Secrets secured
@@ -788,7 +788,7 @@ Lessons Learned
 
 ---
 
-# Common Linux Features Behind Containers
+## Common Linux Features Behind Containers
 
 | Feature | Purpose |
 |----------|---------|
@@ -801,7 +801,7 @@ Lessons Learned
 
 ---
 
-# Most Important Interview Definitions
+## Most Important Interview Definitions
 
 | Question | One-Line Answer |
 |----------|-----------------|
@@ -820,7 +820,7 @@ Lessons Learned
 
 ---
 
-# Complete Container Learning Flow
+## Complete Container Learning Flow
 
 ```
 Container Fundamentals
@@ -864,9 +864,9 @@ Cloud Native Engineering
 
 ---
 
-# Final Revision Tips
+## Final Revision Tips
 
-### Before an Interview
+#### Before an Interview
 
 ✔ Understand container fundamentals.
 
@@ -888,7 +888,7 @@ Cloud Native Engineering
 
 ---
 
-# Golden Rule
+## Golden Rule
 
 ```
 Build Securely
@@ -920,7 +920,7 @@ Improve Continuously
 
 ---
 
-## Congratulations! 🎉
+### Congratulations! 🎉
 
 You have completed the **Container Learning Handbook**.
 

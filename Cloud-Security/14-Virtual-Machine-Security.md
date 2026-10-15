@@ -1311,7 +1311,7 @@ Security controls should follow the principles of **Defense in Depth**, **Least 
 
 ---
 
-# Defense-in-Depth for Virtual Machines
+## Defense-in-Depth for Virtual Machines
 
 ```
                Users / Administrators
@@ -1363,7 +1363,7 @@ Each layer contributes to reducing the attack surface and limiting the impact of
 
 ---
 
-# Use Hardened Golden Images
+## Use Hardened Golden Images
 
 Deploy virtual machines from approved, hardened images.
 
@@ -1392,7 +1392,7 @@ Avoid creating production VMs from outdated or unverified images.
 
 ---
 
-# Keep Operating Systems Updated
+## Keep Operating Systems Updated
 
 Regular patching reduces exposure to known vulnerabilities.
 
@@ -1424,7 +1424,7 @@ Automate patch deployment whenever practical.
 
 ---
 
-# Secure Administrative Access
+## Secure Administrative Access
 
 Administrative interfaces should be strongly protected.
 
@@ -1457,7 +1457,7 @@ Avoid exposing SSH or RDP directly to the public internet whenever possible.
 
 ---
 
-# Apply Least Privilege
+## Apply Least Privilege
 
 Grant administrators, applications, and automation only the permissions they require.
 
@@ -1474,7 +1474,7 @@ Review permissions regularly.
 
 ---
 
-# Encrypt Virtual Disks
+## Encrypt Virtual Disks
 
 Protect stored data using encryption.
 
@@ -1502,7 +1502,7 @@ Encryption reduces the impact of physical storage compromise.
 
 ---
 
-# Enable Secure Boot
+## Enable Secure Boot
 
 Secure Boot validates trusted boot components before the operating system loads.
 
@@ -1516,7 +1516,7 @@ Enable Secure Boot wherever supported.
 
 ---
 
-# Use Virtual TPM (vTPM)
+## Use Virtual TPM (vTPM)
 
 Virtual TPM provides hardware-backed security features to virtual machines.
 
@@ -1531,7 +1531,7 @@ vTPM strengthens trust in the boot process and credential protection.
 
 ---
 
-# Harden the Guest Operating System
+## Harden the Guest Operating System
 
 Reduce the attack surface by disabling unnecessary components.
 
@@ -1548,7 +1548,7 @@ Regular hardening reduces opportunities for exploitation.
 
 ---
 
-# Protect the Hypervisor
+## Protect the Hypervisor
 
 Although cloud providers generally manage the hypervisor, organizations should protect management access where applicable.
 
@@ -1564,7 +1564,7 @@ Compromise of the hypervisor may affect multiple hosted virtual machines.
 
 ---
 
-# Secure Network Communication
+## Secure Network Communication
 
 Restrict network access using layered controls.
 
@@ -1597,7 +1597,7 @@ Only required ports should be accessible.
 
 ---
 
-# Deploy Endpoint Protection
+## Deploy Endpoint Protection
 
 Every production VM should include endpoint security controls.
 
@@ -1613,7 +1613,7 @@ These controls improve visibility and response to threats.
 
 ---
 
-# Protect Snapshots and Backups
+## Protect Snapshots and Backups
 
 Snapshots and backups often contain complete copies of production systems.
 
@@ -1641,7 +1641,7 @@ Treat snapshots with the same level of protection as production systems.
 
 ---
 
-# Monitor Virtual Machines Continuously
+## Monitor Virtual Machines Continuously
 
 Continuously monitor:
 
@@ -1674,7 +1674,7 @@ Continuous monitoring enables faster detection and response.
 
 ---
 
-# Secure VM Images
+## Secure VM Images
 
 VM templates should undergo security validation before deployment.
 
@@ -1690,7 +1690,7 @@ Only approved images should be available for production deployments.
 
 ---
 
-# Remove Unused Virtual Machines
+## Remove Unused Virtual Machines
 
 Unused or forgotten virtual machines increase the attack surface.
 
@@ -1706,15 +1706,15 @@ Decommission unused resources securely.
 
 ---
 
-# Best Practices
+## Best Practices
 
-## 1. Deploy Only Hardened Images
+### 1. Deploy Only Hardened Images
 
 Standardize deployments using approved Golden Images that include security baselines and current patches.
 
 ---
 
-## 2. Patch Systems Regularly
+### 2. Patch Systems Regularly
 
 Maintain operating systems and applications with current security updates.
 
@@ -1722,7 +1722,7 @@ Automated patch management improves consistency.
 
 ---
 
-## 3. Restrict Administrative Access
+### 3. Restrict Administrative Access
 
 Require:
 
@@ -1735,7 +1735,7 @@ Avoid direct internet exposure of administrative services.
 
 ---
 
-## 4. Enable Disk Encryption
+### 4. Enable Disk Encryption
 
 Encrypt:
 
@@ -1748,7 +1748,7 @@ Manage encryption keys securely using a Key Management Service (KMS).
 
 ---
 
-## 5. Implement Network Segmentation
+### 5. Implement Network Segmentation
 
 Separate workloads into appropriate security zones.
 
@@ -1763,7 +1763,7 @@ Segmentation limits lateral movement.
 
 ---
 
-## 6. Deploy Endpoint Security
+### 6. Deploy Endpoint Security
 
 Install and maintain:
 
@@ -1776,7 +1776,7 @@ Ensure security agents remain operational.
 
 ---
 
-## 7. Enable Comprehensive Logging
+### 7. Enable Comprehensive Logging
 
 Log:
 
@@ -1791,7 +1791,7 @@ Forward logs to the organization's SIEM.
 
 ---
 
-## 8. Protect Backups and Snapshots
+### 8. Protect Backups and Snapshots
 
 Encrypt backups, restrict access, and periodically test restoration procedures.
 
@@ -1799,7 +1799,7 @@ Critical backups should be protected against unauthorized deletion where support
 
 ---
 
-## 9. Continuously Assess VM Security
+### 9. Continuously Assess VM Security
 
 Perform regular:
 
@@ -1813,7 +1813,7 @@ Continuous assessment improves security posture.
 
 ---
 
-## 10. Secure the Entire VM Lifecycle
+### 10. Secure the Entire VM Lifecycle
 
 Apply security controls from:
 
@@ -1828,9 +1828,9 @@ Security should extend across the entire lifecycle.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
-### Deploying Outdated VM Images
+#### Deploying Outdated VM Images
 
 Old images may contain:
 
@@ -1843,7 +1843,7 @@ Refresh Golden Images regularly.
 
 ---
 
-### Leaving Administrative Ports Publicly Accessible
+#### Leaving Administrative Ports Publicly Accessible
 
 Exposing services such as:
 
@@ -1857,7 +1857,7 @@ Use bastion hosts or private administrative networks instead.
 
 ---
 
-### Ignoring Patch Management
+#### Ignoring Patch Management
 
 Delaying security updates leaves virtual machines vulnerable to publicly known exploits.
 
@@ -1865,7 +1865,7 @@ Maintain a consistent patch management process.
 
 ---
 
-### Granting Excessive Privileges
+#### Granting Excessive Privileges
 
 Providing unnecessary administrative permissions increases the potential impact of compromised accounts.
 
@@ -1873,7 +1873,7 @@ Apply the Principle of Least Privilege.
 
 ---
 
-### Disabling Security Agents
+#### Disabling Security Agents
 
 Disabling:
 
@@ -1888,7 +1888,7 @@ Investigate unexpected disablement immediately.
 
 ---
 
-### Failing to Encrypt Virtual Disks
+#### Failing to Encrypt Virtual Disks
 
 Unencrypted disks and snapshots may expose sensitive information if accessed by unauthorized parties.
 
@@ -1896,7 +1896,7 @@ Enable encryption for all production storage.
 
 ---
 
-### Neglecting Snapshot Security
+#### Neglecting Snapshot Security
 
 Snapshots often contain complete operating systems and application data.
 
@@ -1904,7 +1904,7 @@ Leaving snapshots unencrypted or broadly accessible can result in data exposure.
 
 ---
 
-### Poor Network Segmentation
+#### Poor Network Segmentation
 
 Allowing unrestricted communication between virtual machines facilitates lateral movement following compromise.
 
@@ -1912,7 +1912,7 @@ Implement appropriate segmentation and firewall rules.
 
 ---
 
-### Ignoring Audit Logs
+#### Ignoring Audit Logs
 
 Failure to review VM activity may delay detection of:
 
@@ -1925,7 +1925,7 @@ Integrate VM logs into centralized monitoring.
 
 ---
 
-### Forgetting to Remove Unused Virtual Machines
+#### Forgetting to Remove Unused Virtual Machines
 
 Unused systems may:
 
@@ -1938,9 +1938,9 @@ Regularly inventory and securely decommission obsolete virtual machines.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-125 – Guide to Security for Full Virtualization Technologies
 - NIST SP 800-53 – Security and Privacy Controls for Information Systems and Organizations
@@ -1952,7 +1952,7 @@ Regularly inventory and securely decommission obsolete virtual machines.
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
 - Amazon EC2 Documentation
 - Amazon EC2 Image Builder Documentation
@@ -1965,7 +1965,7 @@ Regularly inventory and securely decommission obsolete virtual machines.
 
 ---
 
-### Industry Best Practices
+#### Industry Best Practices
 
 - Defense in Depth
 - Principle of Least Privilege (PoLP)
@@ -1979,7 +1979,7 @@ Regularly inventory and securely decommission obsolete virtual machines.
 - Continuous Vulnerability Management
 
 ---
-## Common Mistakes
+### Common Mistakes
 
 Misconfigurations and operational oversights remain among the leading causes of virtual machine compromises in cloud environments. Most successful attacks exploit preventable weaknesses rather than unknown vulnerabilities.
 
@@ -1987,7 +1987,7 @@ Understanding these common mistakes helps organizations build stronger security 
 
 ---
 
-### 1. Using Default Configurations
+#### 1. Using Default Configurations
 
 Deploying virtual machines with vendor default settings often leaves unnecessary services, ports, and configurations enabled.
 
@@ -2015,7 +2015,7 @@ Always apply an approved hardening baseline before placing a VM into production.
 
 ---
 
-### 2. Reusing Old VM Images
+#### 2. Reusing Old VM Images
 
 Many organizations continue deploying outdated VM templates that contain:
 
@@ -2041,7 +2041,7 @@ Maintain image versioning and retire obsolete templates promptly.
 
 ---
 
-### 3. Poor Identity Management
+#### 3. Poor Identity Management
 
 Weak identity practices significantly increase the risk of compromise.
 
@@ -2057,7 +2057,7 @@ Identity should always be individually assigned, auditable, and protected by str
 
 ---
 
-### 4. Exposing Management Services
+#### 4. Exposing Management Services
 
 Administrative services should never be broadly accessible from the internet.
 
@@ -2088,7 +2088,7 @@ Restrict management access through VPNs, bastion hosts, or private networks.
 
 ---
 
-### 5. Ignoring Hypervisor Security
+#### 5. Ignoring Hypervisor Security
 
 In self-managed virtualization environments, organizations sometimes focus exclusively on guest operating systems while neglecting the hypervisor.
 
@@ -2103,7 +2103,7 @@ The hypervisor should be patched, monitored, and securely administered.
 
 ---
 
-### 6. Disabling Security Controls
+#### 6. Disabling Security Controls
 
 Administrators occasionally disable security controls temporarily and forget to restore them.
 
@@ -2131,7 +2131,7 @@ Security agents should be continuously monitored to ensure they remain active.
 
 ---
 
-### 7. Weak Network Segmentation
+#### 7. Weak Network Segmentation
 
 Allowing unrestricted communication between virtual machines increases the risk of lateral movement.
 
@@ -2159,7 +2159,7 @@ Proper segmentation limits attacker movement within the environment.
 
 ---
 
-### 8. Delayed Patch Management
+#### 8. Delayed Patch Management
 
 Postponing updates leaves systems vulnerable to publicly known exploits.
 
@@ -2174,7 +2174,7 @@ Establish a formal patch management schedule with emergency procedures for criti
 
 ---
 
-### 9. Unprotected Snapshots
+#### 9. Unprotected Snapshots
 
 Snapshots frequently contain:
 
@@ -2196,7 +2196,7 @@ Treat snapshots as highly sensitive assets.
 
 ---
 
-### 10. Insecure Backup Storage
+#### 10. Insecure Backup Storage
 
 Backups should never be assumed secure simply because they are stored separately.
 
@@ -2211,7 +2211,7 @@ A backup that cannot be securely restored offers limited value during an inciden
 
 ---
 
-### 11. Excessive Administrative Permissions
+#### 11. Excessive Administrative Permissions
 
 Administrators sometimes receive unrestricted permissions across all virtual infrastructure.
 
@@ -2226,7 +2226,7 @@ Apply role-based access control and review privileged roles regularly.
 
 ---
 
-### 12. Ignoring Security Logs
+#### 12. Ignoring Security Logs
 
 Large volumes of logs are generated by virtual machines every day.
 
@@ -2242,7 +2242,7 @@ Logs should be centralized, retained, and continuously analyzed.
 
 ---
 
-### 13. Missing Asset Inventory
+#### 13. Missing Asset Inventory
 
 Organizations often lose visibility of deployed virtual machines.
 
@@ -2258,7 +2258,7 @@ Maintain an accurate and continuously updated asset inventory.
 
 ---
 
-### 14. Running Unsupported Operating Systems
+#### 14. Running Unsupported Operating Systems
 
 End-of-life operating systems no longer receive security updates.
 
@@ -2272,7 +2272,7 @@ Unsupported systems should be upgraded or isolated until replacement.
 
 ---
 
-### 15. Assuming Cloud Providers Secure Everything
+#### 15. Assuming Cloud Providers Secure Everything
 
 One of the most common misunderstandings is assuming the cloud provider secures the guest operating system.
 
@@ -2300,7 +2300,7 @@ Organizations remain responsible for securing their workloads.
 
 ---
 
-## Virtual Machine Security Checklist
+### Virtual Machine Security Checklist
 
 | Control | Status |
 |---------|--------|
@@ -2322,9 +2322,9 @@ Organizations remain responsible for securing their workloads.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-125 – Guide to Security for Full Virtualization Technologies
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
@@ -2339,9 +2339,9 @@ Organizations remain responsible for securing their workloads.
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
-#### Amazon Web Services
+##### Amazon Web Services
 
 - Amazon EC2 User Guide
 - EC2 Image Builder Documentation
@@ -2349,33 +2349,33 @@ Organizations remain responsible for securing their workloads.
 - AWS Nitro System Documentation
 - AWS Security Best Practices for EC2
 
-#### Microsoft Azure
+##### Microsoft Azure
 
 - Azure Virtual Machines Documentation
 - Azure Bastion Documentation
 - Azure Disk Encryption Documentation
 - Microsoft Defender for Cloud Documentation
 
-#### Google Cloud Platform
+##### Google Cloud Platform
 
 - Compute Engine Documentation
 - Shielded VM Documentation
 - OS Config Documentation
 - Google Cloud Security Best Practices
 
-#### Oracle Cloud Infrastructure
+##### Oracle Cloud Infrastructure
 
 - OCI Compute Documentation
 - OCI Security Guide
 
-#### IBM Cloud
+##### IBM Cloud
 
 - IBM Cloud Virtual Servers Documentation
 - IBM Cloud Security Documentation
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Defense in Depth
 - Zero Trust Architecture
@@ -2390,7 +2390,7 @@ Organizations remain responsible for securing their workloads.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - CIS Benchmarks for Operating Systems
 - MITRE ATT&CK Framework

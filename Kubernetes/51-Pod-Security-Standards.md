@@ -50,7 +50,7 @@ Restricted
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -91,7 +91,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Are Pod Security Standards?
+## What Are Pod Security Standards?
 
 Pod Security Standards define security requirements for Pods.
 
@@ -122,7 +122,7 @@ Conceptually:
 
 ---
 
-# Why Pod Security Matters
+## Why Pod Security Matters
 
 A compromised application should have as little ability as possible to:
 
@@ -139,7 +139,7 @@ Pod security reduces the attack surface.
 
 ---
 
-# Pod Security Architecture
+## Pod Security Architecture
 
 ```text
 Developer
@@ -166,7 +166,7 @@ Pod Created
 
 ---
 
-# Pod Security Admission
+## Pod Security Admission
 
 Pod Security Admission is a built-in Kubernetes admission mechanism that enforces Pod Security Standards.
 
@@ -192,7 +192,7 @@ profile for enforcement.
 
 ---
 
-# Pod Security Levels
+## Pod Security Levels
 
 There are three levels:
 
@@ -204,7 +204,7 @@ There are three levels:
 
 ---
 
-# Privileged
+## Privileged
 
 The:
 
@@ -229,7 +229,7 @@ It should not be selected merely for convenience.
 
 ---
 
-# Baseline
+## Baseline
 
 The:
 
@@ -243,7 +243,7 @@ It is a practical security baseline for many environments.
 
 ---
 
-# Restricted
+## Restricted
 
 The:
 
@@ -267,7 +267,7 @@ Safer volume usage
 
 ---
 
-# Comparison
+## Comparison
 
 | Profile | Security | Flexibility | Typical Use |
 |---|---|---|---|
@@ -277,7 +277,7 @@ Safer volume usage
 
 ---
 
-# Pod Security Modes
+## Pod Security Modes
 
 Pod Security Admission supports three modes:
 
@@ -291,7 +291,7 @@ These can be configured independently.
 
 ---
 
-# `enforce`
+## `enforce`
 
 Violating Pods are rejected.
 
@@ -317,7 +317,7 @@ Request rejected
 
 ---
 
-# `audit`
+## `audit`
 
 Violations are recorded in audit information.
 
@@ -337,7 +337,7 @@ Pod may continue
 
 ---
 
-# `warn`
+## `warn`
 
 The user receives a warning.
 
@@ -352,7 +352,7 @@ The request can still succeed if no enforcing policy rejects it.
 
 ---
 
-# Combining Modes
+## Combining Modes
 
 A namespace can use:
 
@@ -382,7 +382,7 @@ This is useful during gradual security adoption.
 
 ---
 
-# Recommended Migration Strategy
+## Recommended Migration Strategy
 
 Instead of immediately enforcing the most restrictive profile:
 
@@ -402,7 +402,7 @@ This reduces unexpected production outages.
 
 ---
 
-# Namespace Labels
+## Namespace Labels
 
 Pod Security Admission is commonly configured using namespace labels.
 
@@ -415,7 +415,7 @@ kubectl label namespace production \
 
 ---
 
-# Audit Label
+## Audit Label
 
 ```bash
 kubectl label namespace production \
@@ -424,7 +424,7 @@ kubectl label namespace production \
 
 ---
 
-# Warning Label
+## Warning Label
 
 ```bash
 kubectl label namespace production \
@@ -433,7 +433,7 @@ kubectl label namespace production \
 
 ---
 
-# Check Namespace Labels
+## Check Namespace Labels
 
 ```bash
 kubectl get namespace production --show-labels
@@ -441,7 +441,7 @@ kubectl get namespace production --show-labels
 
 ---
 
-# View Namespace YAML
+## View Namespace YAML
 
 ```bash
 kubectl get namespace production -o yaml
@@ -457,7 +457,7 @@ pod-security.kubernetes.io/warn
 
 ---
 
-# SecurityContext
+## SecurityContext
 
 Pod security is closely related to:
 
@@ -474,7 +474,7 @@ Container
 
 ---
 
-# Pod SecurityContext
+## Pod SecurityContext
 
 Example:
 
@@ -492,7 +492,7 @@ spec:
 
 ---
 
-# Container SecurityContext
+## Container SecurityContext
 
 Example:
 
@@ -516,7 +516,7 @@ containers:
 
 ---
 
-# Pod-Level vs Container-Level
+## Pod-Level vs Container-Level
 
 Pod-level:
 
@@ -538,7 +538,7 @@ Some security settings are container-specific, while others can apply to the Pod
 
 ---
 
-# Running as Non-Root
+## Running as Non-Root
 
 Running applications as non-root reduces the impact of a container compromise.
 
@@ -554,7 +554,7 @@ This tells Kubernetes that the container should not run as UID 0.
 
 ---
 
-# `runAsUser`
+## `runAsUser`
 
 You can specify a UID:
 
@@ -572,7 +572,7 @@ UID 1000
 
 ---
 
-# `runAsGroup`
+## `runAsGroup`
 
 You can specify the primary group:
 
@@ -584,7 +584,7 @@ securityContext:
 
 ---
 
-# `fsGroup`
+## `fsGroup`
 
 `fsGroup` can influence group ownership of supported mounted volumes.
 
@@ -600,7 +600,7 @@ Use it only when needed.
 
 ---
 
-# Why Non-Root Matters
+## Why Non-Root Matters
 
 Bad:
 
@@ -630,7 +630,7 @@ Running as non-root does not make a container automatically secure, but it is an
 
 ---
 
-# Privileged Containers
+## Privileged Containers
 
 A privileged container has significantly expanded access to the host.
 
@@ -646,7 +646,7 @@ This should be avoided for ordinary application workloads.
 
 ---
 
-# Why Privileged Containers Are Dangerous
+## Why Privileged Containers Are Dangerous
 
 A compromised privileged container may have significantly greater ability to:
 
@@ -661,7 +661,7 @@ The exact impact depends on the runtime and host configuration.
 
 ---
 
-# Baseline Restrictions
+## Baseline Restrictions
 
 The Baseline profile blocks several risky configurations, including certain:
 
@@ -676,7 +676,7 @@ The exact requirements are version-specific.
 
 ---
 
-# Host Network
+## Host Network
 
 A Pod can request:
 
@@ -688,7 +688,7 @@ This places the Pod in the host's network namespace.
 
 ---
 
-# Why Host Network Is Sensitive
+## Why Host Network Is Sensitive
 
 Instead of:
 
@@ -715,7 +715,7 @@ Avoid it unless required.
 
 ---
 
-# Host PID
+## Host PID
 
 A Pod can request:
 
@@ -729,7 +729,7 @@ This is highly sensitive because processes on the host may become visible to the
 
 ---
 
-# Host IPC
+## Host IPC
 
 A Pod can request:
 
@@ -743,7 +743,7 @@ It can reduce isolation and should be avoided for ordinary workloads.
 
 ---
 
-# Host Namespace Isolation
+## Host Namespace Isolation
 
 The following are particularly important:
 
@@ -757,7 +757,7 @@ Security-focused policies generally restrict these configurations.
 
 ---
 
-# HostPath
+## HostPath
 
 `hostPath` mounts a path from the Kubernetes node filesystem into a Pod.
 
@@ -775,7 +775,7 @@ volumes:
 
 ---
 
-# Why HostPath Is Dangerous
+## Why HostPath Is Dangerous
 
 A container may gain access to sensitive node files.
 
@@ -803,7 +803,7 @@ Use `hostPath` only when there is a clear requirement.
 
 ---
 
-# Linux Capabilities
+## Linux Capabilities
 
 Linux capabilities divide root privileges into smaller units.
 
@@ -820,7 +820,7 @@ Some capabilities are especially powerful.
 
 ---
 
-# Drop Capabilities
+## Drop Capabilities
 
 A security-focused container can drop capabilities:
 
@@ -838,7 +838,7 @@ Then add back only what is genuinely required.
 
 ---
 
-# Add Specific Capability
+## Add Specific Capability
 
 Example:
 
@@ -866,7 +866,7 @@ Add Only Required
 
 ---
 
-# Why Capabilities Matter
+## Why Capabilities Matter
 
 Instead of:
 
@@ -884,7 +884,7 @@ This supports least privilege.
 
 ---
 
-# `allowPrivilegeEscalation`
+## `allowPrivilegeEscalation`
 
 Example:
 
@@ -898,7 +898,7 @@ This prevents a process from gaining more privileges than its parent process thr
 
 ---
 
-# Why Disable Privilege Escalation?
+## Why Disable Privilege Escalation?
 
 If the application does not require privilege escalation:
 
@@ -910,7 +910,7 @@ reduces attack opportunities.
 
 ---
 
-# Read-Only Root Filesystem
+## Read-Only Root Filesystem
 
 A container can use:
 
@@ -924,7 +924,7 @@ This prevents writes to the container's root filesystem.
 
 ---
 
-# Why Read-Only Root Filesystem?
+## Why Read-Only Root Filesystem?
 
 If an attacker compromises the application:
 
@@ -942,7 +942,7 @@ Applications may still need writable temporary storage.
 
 ---
 
-# Temporary Writable Storage
+## Temporary Writable Storage
 
 A common pattern is to mount an `emptyDir` volume:
 
@@ -974,7 +974,7 @@ to remain writable while the root filesystem is read-only.
 
 ---
 
-# Seccomp
+## Seccomp
 
 Seccomp stands for:
 
@@ -999,7 +999,7 @@ A seccomp profile can limit which calls are permitted.
 
 ---
 
-# RuntimeDefault
+## RuntimeDefault
 
 A common secure configuration is:
 
@@ -1015,7 +1015,7 @@ This uses the container runtime's default seccomp profile where supported.
 
 ---
 
-# Custom Seccomp Profiles
+## Custom Seccomp Profiles
 
 Advanced environments can define custom profiles.
 
@@ -1035,7 +1035,7 @@ Custom profiles require careful testing because blocking required system calls c
 
 ---
 
-# AppArmor
+## AppArmor
 
 AppArmor is a Linux security mechanism that can restrict application behavior using profiles.
 
@@ -1053,7 +1053,7 @@ Availability and configuration depend on the underlying Linux distribution and n
 
 ---
 
-# SELinux
+## SELinux
 
 SELinux provides mandatory access controls.
 
@@ -1070,7 +1070,7 @@ Kubernetes can integrate with SELinux when the node operating system and contain
 
 ---
 
-# AppArmor vs SELinux
+## AppArmor vs SELinux
 
 Both provide additional host-level security controls.
 
@@ -1092,7 +1092,7 @@ The exact capabilities and operational model depend on the host operating system
 
 ---
 
-# SecurityContext Example
+## SecurityContext Example
 
 A hardened container might use:
 
@@ -1150,7 +1150,7 @@ This provides several layers of hardening.
 
 ---
 
-# SecurityContext Hardening
+## SecurityContext Hardening
 
 A useful baseline is:
 
@@ -1172,7 +1172,7 @@ Test applications carefully.
 
 ---
 
-# Pod Security and Images
+## Pod Security and Images
 
 Pod Security Standards focus on how Pods run.
 
@@ -1194,7 +1194,7 @@ Both are necessary for defense in depth.
 
 ---
 
-# Pod Security and RBAC
+## Pod Security and RBAC
 
 RBAC controls:
 
@@ -1220,7 +1220,7 @@ Pod Security = Privileged Pod rejected
 
 ---
 
-# Pod Security and NetworkPolicy
+## Pod Security and NetworkPolicy
 
 Pod Security controls:
 
@@ -1248,7 +1248,7 @@ Only approved network connections
 
 ---
 
-# Pod Security and Runtime Security
+## Pod Security and Runtime Security
 
 Runtime security detects suspicious activity after workloads are running.
 
@@ -1266,7 +1266,7 @@ Detect suspicious behavior
 
 ---
 
-# Pod Security Standards and Namespaces
+## Pod Security Standards and Namespaces
 
 A common enterprise strategy is:
 
@@ -1288,7 +1288,7 @@ The exact policy should depend on workload requirements.
 
 ---
 
-# System Workloads
+## System Workloads
 
 Some system components may genuinely require elevated privileges.
 
@@ -1305,7 +1305,7 @@ Do not blindly apply the most restrictive profile without checking workload requ
 
 ---
 
-# Production Namespace Strategy
+## Production Namespace Strategy
 
 Example:
 
@@ -1326,7 +1326,7 @@ This is an example strategy, not a universal requirement.
 
 ---
 
-# Exception Handling
+## Exception Handling
 
 Some workloads may require exceptions.
 
@@ -1354,7 +1354,7 @@ Monitor the workload
 
 ---
 
-# Security Policy Design
+## Security Policy Design
 
 A good security policy asks:
 
@@ -1376,7 +1376,7 @@ Least Privilege
 
 ---
 
-# Production Hardening Strategy
+## Production Hardening Strategy
 
 For application workloads:
 
@@ -1395,7 +1395,7 @@ For application workloads:
 
 ---
 
-# Pod Security Migration
+## Pod Security Migration
 
 Suppose an existing cluster has many workloads running with:
 
@@ -1427,7 +1427,7 @@ Enforce
 
 ---
 
-# Inventory Workloads
+## Inventory Workloads
 
 Identify:
 
@@ -1445,7 +1445,7 @@ Privilege escalation
 
 ---
 
-# Audit Violations
+## Audit Violations
 
 Use Pod Security Admission's:
 
@@ -1457,7 +1457,7 @@ mode to identify policy violations without immediately blocking workloads.
 
 ---
 
-# Warn Developers
+## Warn Developers
 
 Use:
 
@@ -1471,7 +1471,7 @@ Developers can then fix manifests before enforcement.
 
 ---
 
-# Enforce
+## Enforce
 
 Once workloads satisfy the policy:
 
@@ -1483,7 +1483,7 @@ can be introduced.
 
 ---
 
-# Troubleshooting Pod Security
+## Troubleshooting Pod Security
 
 Suppose:
 
@@ -1513,7 +1513,7 @@ HostPath
 
 ---
 
-# Check Namespace Policy
+## Check Namespace Policy
 
 ```bash
 kubectl get namespace production -o yaml
@@ -1527,7 +1527,7 @@ pod-security.kubernetes.io/enforce
 
 ---
 
-# Check Pod Security Context
+## Check Pod Security Context
 
 ```bash
 kubectl get pod <name> -o yaml
@@ -1546,7 +1546,7 @@ capabilities
 
 ---
 
-# Test a Pod Against Policy
+## Test a Pod Against Policy
 
 Create the Pod in a test namespace.
 
@@ -1566,7 +1566,7 @@ Then modify the security configuration and test again.
 
 ---
 
-# Common Violation
+## Common Violation
 
 Example:
 
@@ -1586,7 +1586,7 @@ A Restricted policy will generally reject such a configuration.
 
 ---
 
-# Fix
+## Fix
 
 Use a non-root UID:
 
@@ -1602,7 +1602,7 @@ Ensure the image supports running as that user.
 
 ---
 
-# Common Violation: Privileged
+## Common Violation: Privileged
 
 Bad:
 
@@ -1622,7 +1622,7 @@ unless the workload has a legitimate system-level requirement.
 
 ---
 
-# Common Violation: Privilege Escalation
+## Common Violation: Privilege Escalation
 
 Bad:
 
@@ -1638,7 +1638,7 @@ allowPrivilegeEscalation: false
 
 ---
 
-# Common Violation: Capabilities
+## Common Violation: Capabilities
 
 Bad:
 
@@ -1666,7 +1666,7 @@ and add only necessary capabilities.
 
 ---
 
-# Common Violation: Seccomp
+## Common Violation: Seccomp
 
 A security-focused workload should use:
 
@@ -1680,7 +1680,7 @@ where supported.
 
 ---
 
-# Common Violation: HostPath
+## Common Violation: HostPath
 
 Bad:
 
@@ -1698,7 +1698,7 @@ Avoid exposing the node filesystem.
 
 ---
 
-# Hands-on Lab 1 – Create Test Namespace
+## Hands-on Lab 1 – Create Test Namespace
 
 ```bash
 kubectl create namespace pss-lab
@@ -1713,7 +1713,7 @@ kubectl label namespace pss-lab \
 
 ---
 
-# Hands-on Lab 2 – Deploy Insecure Pod
+## Hands-on Lab 2 – Deploy Insecure Pod
 
 Create:
 
@@ -1754,7 +1754,7 @@ Admission rejection
 
 ---
 
-# Hands-on Lab 3 – Fix the Pod
+## Hands-on Lab 3 – Fix the Pod
 
 Create a hardened version:
 
@@ -1809,7 +1809,7 @@ kubectl get pods -n pss-lab
 
 ---
 
-# Hands-on Lab 4 – Test `warn`
+## Hands-on Lab 4 – Test `warn`
 
 Create a test namespace:
 
@@ -1830,7 +1830,7 @@ Observe the warning.
 
 ---
 
-# Hands-on Lab 5 – Test `audit`
+## Hands-on Lab 5 – Test `audit`
 
 Label:
 
@@ -1845,7 +1845,7 @@ Inspect Kubernetes audit information if audit logging is configured in your envi
 
 ---
 
-# Hands-on Lab 6 – Test Non-Root
+## Hands-on Lab 6 – Test Non-Root
 
 Create:
 
@@ -1885,7 +1885,7 @@ must both be considered.
 
 ---
 
-# Hands-on Lab 7 – Test Read-Only Root Filesystem
+## Hands-on Lab 7 – Test Read-Only Root Filesystem
 
 Create a Pod with:
 
@@ -1919,7 +1919,7 @@ and test again.
 
 ---
 
-# Hands-on Lab 8 – Test Capability Dropping
+## Hands-on Lab 8 – Test Capability Dropping
 
 Create:
 
@@ -1947,7 +1947,7 @@ at the Linux capability level.
 
 ---
 
-# Hands-on Lab 9 – Inspect SecurityContext
+## Hands-on Lab 9 – Inspect SecurityContext
 
 Run:
 
@@ -1968,7 +1968,7 @@ readOnlyRootFilesystem
 
 ---
 
-# Hands-on Lab 10 – Namespace Policy Review
+## Hands-on Lab 10 – Namespace Policy Review
 
 Run:
 
@@ -1988,7 +1988,7 @@ Document the security posture of each namespace.
 
 ---
 
-# Hands-on Lab 11 – Production Migration Simulation
+## Hands-on Lab 11 – Production Migration Simulation
 
 Create:
 
@@ -2019,7 +2019,7 @@ This simulates a production migration process.
 
 ---
 
-# Hands-on Lab 12 – Security Policy Checklist
+## Hands-on Lab 12 – Security Policy Checklist
 
 For each workload, verify:
 
@@ -2041,9 +2041,9 @@ For each workload, verify:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Running Everything as Root
+### 1. Running Everything as Root
 
 Avoid:
 
@@ -2055,7 +2055,7 @@ when the application does not require it.
 
 ---
 
-## 2. Using Privileged Containers
+### 2. Using Privileged Containers
 
 Do not use:
 
@@ -2067,7 +2067,7 @@ for convenience.
 
 ---
 
-## 3. Using Host Namespaces
+### 3. Using Host Namespaces
 
 Avoid:
 
@@ -2081,13 +2081,13 @@ unless required.
 
 ---
 
-## 4. Using HostPath Without Review
+### 4. Using HostPath Without Review
 
 Host filesystem access can significantly increase risk.
 
 ---
 
-## 5. Adding Powerful Capabilities
+### 5. Adding Powerful Capabilities
 
 Avoid unnecessary:
 
@@ -2101,7 +2101,7 @@ and other powerful capabilities.
 
 ---
 
-## 6. Forgetting Seccomp
+### 6. Forgetting Seccomp
 
 Use:
 
@@ -2115,7 +2115,7 @@ where appropriate.
 
 ---
 
-## 7. Assuming Non-Root Alone Is Enough
+### 7. Assuming Non-Root Alone Is Enough
 
 Non-root is only one security layer.
 
@@ -2133,7 +2133,7 @@ as additional controls.
 
 ---
 
-## 8. Enforcing Restricted Immediately
+### 8. Enforcing Restricted Immediately
 
 Existing workloads may break.
 
@@ -2149,7 +2149,7 @@ as a controlled migration strategy.
 
 ---
 
-## 9. Ignoring Application Compatibility
+### 9. Ignoring Application Compatibility
 
 A hardened filesystem or non-root configuration can break applications that assume:
 
@@ -2163,33 +2163,33 @@ Test before production enforcement.
 
 ---
 
-## 10. Applying One Policy to Every Workload
+### 10. Applying One Policy to Every Workload
 
 System components may require different security settings from ordinary applications.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Prefer Restricted for Compatible Applications
+#### 1. Prefer Restricted for Compatible Applications
 
 Use the strongest practical profile.
 
 ---
 
-### 2. Start With Baseline
+#### 2. Start With Baseline
 
 For legacy workloads, Baseline can be a useful intermediate step.
 
 ---
 
-### 3. Use Warn and Audit Before Enforce
+#### 3. Use Warn and Audit Before Enforce
 
 This helps identify violations.
 
 ---
 
-### 4. Run as Non-Root
+#### 4. Run as Non-Root
 
 Use:
 
@@ -2201,7 +2201,7 @@ where compatible.
 
 ---
 
-### 5. Disable Privilege Escalation
+#### 5. Disable Privilege Escalation
 
 Use:
 
@@ -2213,7 +2213,7 @@ when possible.
 
 ---
 
-### 6. Drop Capabilities
+#### 6. Drop Capabilities
 
 Prefer:
 
@@ -2229,7 +2229,7 @@ and add only required capabilities.
 
 ---
 
-### 7. Use RuntimeDefault Seccomp
+#### 7. Use RuntimeDefault Seccomp
 
 ```yaml
 seccompProfile:
@@ -2239,7 +2239,7 @@ seccompProfile:
 
 ---
 
-### 8. Avoid Host Access
+#### 8. Avoid Host Access
 
 Avoid unnecessary:
 
@@ -2252,7 +2252,7 @@ hostPath
 
 ---
 
-### 9. Use Read-Only Root Filesystems
+#### 9. Use Read-Only Root Filesystems
 
 Where applications support it:
 
@@ -2262,13 +2262,13 @@ readOnlyRootFilesystem: true
 
 ---
 
-### 10. Keep Exceptions Narrow
+#### 10. Keep Exceptions Narrow
 
 Do not weaken security for an entire cluster because one workload requires elevated privileges.
 
 ---
 
-### 11. Document Exceptions
+#### 11. Document Exceptions
 
 For every exception, record:
 
@@ -2283,7 +2283,7 @@ Review Date
 
 ---
 
-### 12. Combine Pod Security With Other Controls
+#### 12. Combine Pod Security With Other Controls
 
 Use:
 
@@ -2301,7 +2301,7 @@ Runtime Security
 
 ---
 
-# Production Hardening Example
+## Production Hardening Example
 
 ```yaml
 apiVersion: apps/v1
@@ -2404,7 +2404,7 @@ The exact configuration must be adapted to the application's needs.
 
 ---
 
-# Pod Security Defense-in-Depth
+## Pod Security Defense-in-Depth
 
 ```text
                   Pod
@@ -2429,7 +2429,7 @@ The exact configuration must be adapted to the application's needs.
 
 ---
 
-# Pod Security Threat Model
+## Pod Security Threat Model
 
 Potential threats:
 
@@ -2460,7 +2460,7 @@ Runtime Security
 
 ---
 
-# Pod Security and Container Escape
+## Pod Security and Container Escape
 
 No container isolation mechanism should be treated as an absolute guarantee.
 
@@ -2478,7 +2478,7 @@ Detect Suspicious Behavior
 
 ---
 
-# Pod Security and Supply Chain
+## Pod Security and Supply Chain
 
 A secure Pod configuration does not guarantee a safe image.
 
@@ -2508,7 +2508,7 @@ should work together.
 
 ---
 
-# Pod Security and Secrets
+## Pod Security and Secrets
 
 Even a non-root Pod can potentially access application credentials if they are mounted.
 
@@ -2525,7 +2525,7 @@ to reduce exposure.
 
 ---
 
-# Pod Security and NetworkPolicy
+## Pod Security and NetworkPolicy
 
 If a compromised container cannot:
 
@@ -2547,9 +2547,9 @@ provides stronger defense than either alone.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Pod Security Standards
+### Pod Security Standards
 
 ```text
 Privileged
@@ -2559,7 +2559,7 @@ Restricted
 
 ---
 
-## Privileged
+### Privileged
 
 ```text
 Most permissive
@@ -2567,7 +2567,7 @@ Most permissive
 
 ---
 
-## Baseline
+### Baseline
 
 ```text
 Blocks many known privilege escalation configurations
@@ -2575,7 +2575,7 @@ Blocks many known privilege escalation configurations
 
 ---
 
-## Restricted
+### Restricted
 
 ```text
 Strongest standard
@@ -2583,7 +2583,7 @@ Strongest standard
 
 ---
 
-## Pod Security Admission
+### Pod Security Admission
 
 ```text
 Enforces PSS
@@ -2591,7 +2591,7 @@ Enforces PSS
 
 ---
 
-## `enforce`
+### `enforce`
 
 ```text
 Reject violations
@@ -2599,7 +2599,7 @@ Reject violations
 
 ---
 
-## `audit`
+### `audit`
 
 ```text
 Record violations
@@ -2607,7 +2607,7 @@ Record violations
 
 ---
 
-## `warn`
+### `warn`
 
 ```text
 Warn user
@@ -2615,7 +2615,7 @@ Warn user
 
 ---
 
-## `runAsNonRoot`
+### `runAsNonRoot`
 
 ```text
 Prevent root execution
@@ -2623,7 +2623,7 @@ Prevent root execution
 
 ---
 
-## `allowPrivilegeEscalation`
+### `allowPrivilegeEscalation`
 
 ```text
 Controls privilege escalation
@@ -2631,7 +2631,7 @@ Controls privilege escalation
 
 ---
 
-## Capabilities
+### Capabilities
 
 ```text
 Fine-grained Linux privileges
@@ -2639,7 +2639,7 @@ Fine-grained Linux privileges
 
 ---
 
-## Seccomp
+### Seccomp
 
 ```text
 System call filtering
@@ -2647,7 +2647,7 @@ System call filtering
 
 ---
 
-## AppArmor
+### AppArmor
 
 ```text
 Linux application confinement
@@ -2655,7 +2655,7 @@ Linux application confinement
 
 ---
 
-## SELinux
+### SELinux
 
 ```text
 Mandatory access control
@@ -2663,7 +2663,7 @@ Mandatory access control
 
 ---
 
-## HostNetwork
+### HostNetwork
 
 ```text
 Uses host network namespace
@@ -2671,7 +2671,7 @@ Uses host network namespace
 
 ---
 
-## HostPID
+### HostPID
 
 ```text
 Uses host process namespace
@@ -2679,7 +2679,7 @@ Uses host process namespace
 
 ---
 
-## HostIPC
+### HostIPC
 
 ```text
 Uses host IPC namespace
@@ -2687,7 +2687,7 @@ Uses host IPC namespace
 
 ---
 
-## HostPath
+### HostPath
 
 ```text
 Mounts node filesystem path
@@ -2695,7 +2695,7 @@ Mounts node filesystem path
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Create namespace:
 
@@ -2756,9 +2756,9 @@ kubectl get namespaces
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What are Pod Security Standards?
 - What is Pod Security Admission?
@@ -2776,7 +2776,7 @@ kubectl get namespaces
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Why should containers run as non-root?
 - What does `allowPrivilegeEscalation: false` do?
@@ -2792,7 +2792,7 @@ kubectl get namespaces
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete Pod Security Admission architecture.
 - How would you design Pod security for a production cluster?
@@ -2812,13 +2812,13 @@ kubectl get namespaces
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > A developer can create Pods but receives a PodSecurity rejection. Why?
 
-### Answer
+#### Answer
 
 RBAC and Pod Security perform different functions.
 
@@ -2858,13 +2858,13 @@ Rejected
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Your organization wants to move all production namespaces to Restricted. How would you do it safely?
 
-### Answer
+#### Answer
 
 Do not immediately enforce it.
 
@@ -2897,13 +2897,13 @@ enforce
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > A container requires `NET_ADMIN`. Should you disable all Pod security restrictions?
 
-### Answer
+#### Answer
 
 No.
 
@@ -2929,13 +2929,13 @@ Do not weaken the entire cluster because one workload has a special requirement.
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > Why is `hostPath` considered dangerous?
 
-### Answer
+#### Answer
 
 `hostPath` exposes a path from the Kubernetes node filesystem to the container.
 
@@ -2968,13 +2968,13 @@ Avoid unnecessary hostPath
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > Is running a container as non-root enough to secure it?
 
-### Answer
+#### Answer
 
 No.
 
@@ -2999,7 +2999,7 @@ Defense in depth is essential.
 
 ---
 
-# Production Pod Security Checklist
+## Production Pod Security Checklist
 
 ```text
 ☑ Run as non-root
@@ -3024,7 +3024,7 @@ Defense in depth is essential.
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create a test namespace.
 2. Enable `warn=restricted`.
@@ -3054,9 +3054,9 @@ Defense in depth is essential.
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Pod Security Standards
 - Pod Security Admission
@@ -3072,7 +3072,7 @@ Defense in depth is essential.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Pod Security Standards provide a standardized way to define security requirements for Kubernetes Pods.
 
@@ -3250,9 +3250,9 @@ The key principle to remember is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 52 – Network Security
+## Chapter 52 – Network Security
 
 Topics will include:
 

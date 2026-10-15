@@ -1,10 +1,10 @@
 # 20 - Linux SSH
 
-# Part 1 — SSH Fundamentals, SSH Architecture, Authentication, SSH Keys, and Secure Remote Administration
+## Part 1 — SSH Fundamentals, SSH Architecture, Authentication, SSH Keys, and Secure Remote Administration
 
 ---
 
-# Introduction
+## Introduction
 
 One of the most important responsibilities of a Linux System Administrator, DevOps Engineer, Cloud Engineer, SOC Analyst, or Security Engineer is **secure remote administration**.
 
@@ -22,7 +22,7 @@ Today, SSH is the industry standard for securely accessing Linux systems over un
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -38,7 +38,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is SSH?
+## What is SSH?
 
 SSH (Secure Shell) is a cryptographic network protocol used for:
 
@@ -53,7 +53,7 @@ Unlike Telnet, SSH encrypts both authentication and communication.
 
 ---
 
-# Why SSH Matters
+## Why SSH Matters
 
 SSH provides:
 
@@ -75,7 +75,7 @@ It is widely used across:
 
 ---
 
-# SSH vs Telnet
+## SSH vs Telnet
 
 | Feature | SSH | Telnet |
 |----------|-----|--------|
@@ -88,7 +88,7 @@ It is widely used across:
 
 ---
 
-# SSH Workflow
+## SSH Workflow
 
 ```text
 Administrator
@@ -112,7 +112,7 @@ Linux System
 
 ---
 
-# SSH Architecture
+## SSH Architecture
 
 SSH consists of two primary components.
 
@@ -130,7 +130,7 @@ SSH Server
 
 ---
 
-# SSH Client
+## SSH Client
 
 The client initiates the connection.
 
@@ -152,7 +152,7 @@ ssh user@example.com
 
 ---
 
-# SSH Server
+## SSH Server
 
 The server accepts secure connections.
 
@@ -171,7 +171,7 @@ It listens for incoming connections and performs:
 
 ---
 
-# SSH Communication Process
+## SSH Communication Process
 
 ```text
 Client
@@ -203,7 +203,7 @@ Shell Access
 
 ---
 
-# Default SSH Port
+## Default SSH Port
 
 Default port:
 
@@ -215,7 +215,7 @@ Although SSH can listen on another port, changing the port alone should not be c
 
 ---
 
-# Installing OpenSSH
+## Installing OpenSSH
 
 Ubuntu/Debian:
 
@@ -231,7 +231,7 @@ sudo dnf install openssh-server
 
 ---
 
-# Starting SSH Service
+## Starting SSH Service
 
 Using systemd:
 
@@ -261,7 +261,7 @@ Service names vary by distribution.
 
 ---
 
-# Checking SSH Status
+## Checking SSH Status
 
 Ubuntu:
 
@@ -277,7 +277,7 @@ systemctl status sshd
 
 ---
 
-# Checking Listening Port
+## Checking Listening Port
 
 Display listening sockets:
 
@@ -293,7 +293,7 @@ ss -tulpn | grep 22
 
 ---
 
-# Testing SSH Connectivity
+## Testing SSH Connectivity
 
 Connect:
 
@@ -323,7 +323,7 @@ Verbose output is particularly useful when troubleshooting authentication and co
 
 ---
 
-# SSH Protocol Layers
+## SSH Protocol Layers
 
 ```text
 Application
@@ -349,7 +349,7 @@ SSH typically operates over TCP.
 
 ---
 
-# SSH Security Goals
+## SSH Security Goals
 
 SSH is designed to provide:
 
@@ -371,7 +371,7 @@ Secure Session
 
 ---
 
-# SSH Authentication Methods
+## SSH Authentication Methods
 
 SSH supports multiple authentication methods.
 
@@ -387,7 +387,7 @@ In enterprise environments, public key authentication is generally preferred ove
 
 ---
 
-# Password Authentication
+## Password Authentication
 
 Workflow:
 
@@ -424,7 +424,7 @@ Limitations:
 
 ---
 
-# Public Key Authentication
+## Public Key Authentication
 
 SSH key-based authentication uses asymmetric cryptography.
 
@@ -446,7 +446,7 @@ The public key is installed on the server.
 
 ---
 
-# Why Key Authentication?
+## Why Key Authentication?
 
 Advantages include:
 
@@ -458,7 +458,7 @@ Advantages include:
 
 ---
 
-# Public Key Cryptography
+## Public Key Cryptography
 
 ```text
 Private Key
@@ -480,7 +480,7 @@ Properties:
 
 ---
 
-# Generating SSH Keys
+## Generating SSH Keys
 
 Generate a modern key pair:
 
@@ -498,7 +498,7 @@ Current recommendations often favor **Ed25519** for general-purpose SSH deployme
 
 ---
 
-# Key Generation Workflow
+## Key Generation Workflow
 
 ```text
 ssh-keygen
@@ -522,7 +522,7 @@ Authenticate
 
 ---
 
-# Default SSH Key Location
+## Default SSH Key Location
 
 ```text
 ~/.ssh/
@@ -546,7 +546,7 @@ id_rsa.pub
 
 ---
 
-# File Purposes
+## File Purposes
 
 | File | Purpose |
 |------|----------|
@@ -557,7 +557,7 @@ id_rsa.pub
 
 ---
 
-# Server-Side Authorized Keys
+## Server-Side Authorized Keys
 
 Public keys are stored in:
 
@@ -589,7 +589,7 @@ Login
 
 ---
 
-# Protecting Private Keys
+## Protecting Private Keys
 
 Private keys should:
 
@@ -601,7 +601,7 @@ Private keys should:
 
 ---
 
-# SSH Host Keys
+## SSH Host Keys
 
 Host keys identify the **server**, not the user.
 
@@ -627,7 +627,7 @@ The client stores trusted host keys in the `known_hosts` file.
 
 ---
 
-# Host Key Verification
+## Host Key Verification
 
 First connection:
 
@@ -653,7 +653,7 @@ Unexpected changes should be investigated before proceeding.
 
 ---
 
-# Known Hosts
+## Known Hosts
 
 Location:
 
@@ -669,7 +669,7 @@ Purpose:
 
 ---
 
-# SSH Session Lifecycle
+## SSH Session Lifecycle
 
 ```text
 Connect
@@ -701,7 +701,7 @@ Disconnect
 
 ---
 
-# Enterprise SSH Architecture
+## Enterprise SSH Architecture
 
 ```text
 Administrator Laptop
@@ -723,7 +723,7 @@ Rather than exposing every server directly, many organizations use a **bastion (
 
 ---
 
-# Bastion Host
+## Bastion Host
 
 A bastion host is a hardened server used as a controlled entry point into protected networks.
 
@@ -736,7 +736,7 @@ Benefits:
 
 ---
 
-# Common SSH Use Cases
+## Common SSH Use Cases
 
 | Use Case | Example |
 |----------|----------|
@@ -749,7 +749,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently target SSH because it provides remote administrative access.
 
@@ -765,7 +765,7 @@ Proper authentication, monitoring, and hardening significantly reduce these risk
 
 ---
 
-# Business Impact
+## Business Impact
 
 Secure SSH deployment helps organizations:
 
@@ -778,7 +778,7 @@ Secure SSH deployment helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Prefer public key authentication over passwords.
 - Protect private keys with strong passphrases.
@@ -791,7 +791,7 @@ Secure SSH deployment helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - SSH is the standard protocol for secure remote administration.
 - SSH provides confidentiality, integrity, and authentication.
@@ -802,13 +802,13 @@ Secure SSH deployment helps organizations:
 
 ---
 
-# 20 - Linux SSH
+## 20 - Linux SSH
 
-# Part 2 — SSH Configuration (`sshd_config`), Key Management, SCP, SFTP, SSH Agent, and Client Configuration
+## Part 2 — SSH Configuration (`sshd_config`), Key Management, SCP, SFTP, SSH Agent, and Client Configuration
 
 ---
 
-# Introduction
+## Introduction
 
 Installing OpenSSH is only the beginning.
 
@@ -824,7 +824,7 @@ Most SSH hardening is performed through the SSH server configuration file.
 
 ---
 
-# SSH Configuration Files
+## SSH Configuration Files
 
 There are two primary configuration files.
 
@@ -835,7 +835,7 @@ There are two primary configuration files.
 
 ---
 
-# SSH Configuration Architecture
+## SSH Configuration Architecture
 
 ```text
 Administrator
@@ -863,7 +863,7 @@ sshd
 
 ---
 
-# SSH Server Configuration
+## SSH Server Configuration
 
 The SSH daemon reads:
 
@@ -882,7 +882,7 @@ This file controls:
 
 ---
 
-# Viewing Configuration
+## Viewing Configuration
 
 ```bash
 sudo cat /etc/ssh/sshd_config
@@ -896,7 +896,7 @@ grep -v "^#" /etc/ssh/sshd_config
 
 ---
 
-# Testing Configuration
+## Testing Configuration
 
 Before restarting SSH, validate the configuration:
 
@@ -908,7 +908,7 @@ A successful validation produces no output.
 
 ---
 
-# Reloading Configuration
+## Reloading Configuration
 
 Ubuntu:
 
@@ -938,7 +938,7 @@ Always ensure an existing administrative session remains open before restarting 
 
 ---
 
-# Important Configuration Directives
+## Important Configuration Directives
 
 Some commonly used directives include:
 
@@ -957,7 +957,7 @@ Some commonly used directives include:
 
 ---
 
-# Changing the SSH Port
+## Changing the SSH Port
 
 Default:
 
@@ -977,7 +977,7 @@ Remember to update firewall rules if the listening port changes.
 
 ---
 
-# ListenAddress
+## ListenAddress
 
 Specify which interface SSH listens on.
 
@@ -995,7 +995,7 @@ Benefits:
 
 ---
 
-# PermitRootLogin
+## PermitRootLogin
 
 Controls direct root login.
 
@@ -1013,7 +1013,7 @@ Many organizations disable direct root logins and require administrators to auth
 
 ---
 
-# PasswordAuthentication
+## PasswordAuthentication
 
 Enable:
 
@@ -1031,7 +1031,7 @@ In environments using key-based authentication, password authentication is often
 
 ---
 
-# PubkeyAuthentication
+## PubkeyAuthentication
 
 Enable:
 
@@ -1043,7 +1043,7 @@ Public key authentication should remain enabled when SSH keys are used.
 
 ---
 
-# AllowUsers
+## AllowUsers
 
 Restrict login to specific users.
 
@@ -1057,7 +1057,7 @@ Only listed users may authenticate.
 
 ---
 
-# AllowGroups
+## AllowGroups
 
 Restrict login by group.
 
@@ -1071,7 +1071,7 @@ Useful for enterprise access management.
 
 ---
 
-# MaxAuthTries
+## MaxAuthTries
 
 Limit failed authentication attempts.
 
@@ -1088,7 +1088,7 @@ Benefits:
 
 ---
 
-# LoginGraceTime
+## LoginGraceTime
 
 Authentication timeout.
 
@@ -1102,7 +1102,7 @@ Unauthenticated sessions exceeding this period are disconnected.
 
 ---
 
-# ClientAliveInterval
+## ClientAliveInterval
 
 Idle session timeout.
 
@@ -1116,7 +1116,7 @@ Helps remove inactive sessions according to organizational policy.
 
 ---
 
-# ClientAliveCountMax
+## ClientAliveCountMax
 
 Number of unanswered keepalive messages before disconnecting a client.
 
@@ -1130,7 +1130,7 @@ Combined with `ClientAliveInterval`, this controls idle session behavior.
 
 ---
 
-# Authentication Workflow
+## Authentication Workflow
 
 ```text
 Client
@@ -1162,7 +1162,7 @@ Shell
 
 ---
 
-# SSH Key Management
+## SSH Key Management
 
 Large organizations manage thousands of SSH keys.
 
@@ -1194,7 +1194,7 @@ Replace
 
 ---
 
-# Generating Keys
+## Generating Keys
 
 Ed25519:
 
@@ -1210,7 +1210,7 @@ ssh-keygen -t rsa -b 4096
 
 ---
 
-# Copying Public Keys
+## Copying Public Keys
 
 Using OpenSSH:
 
@@ -1226,7 +1226,7 @@ This appends the public key to the server's:
 
 ---
 
-# Manual Key Installation
+## Manual Key Installation
 
 Display public key:
 
@@ -1244,7 +1244,7 @@ Ensure appropriate permissions are applied to both the `.ssh` directory and the 
 
 ---
 
-# SSH File Permissions
+## SSH File Permissions
 
 Typical permissions:
 
@@ -1259,7 +1259,7 @@ Improper permissions may cause SSH to refuse key-based authentication.
 
 ---
 
-# SSH Agent
+## SSH Agent
 
 The SSH agent stores decrypted private keys in memory.
 
@@ -1289,7 +1289,7 @@ Benefits:
 
 ---
 
-# Starting SSH Agent
+## Starting SSH Agent
 
 ```bash
 eval "$(ssh-agent -s)"
@@ -1297,7 +1297,7 @@ eval "$(ssh-agent -s)"
 
 ---
 
-# Adding a Key
+## Adding a Key
 
 ```bash
 ssh-add ~/.ssh/id_ed25519
@@ -1311,7 +1311,7 @@ ssh-add -l
 
 ---
 
-# SSH Client Configuration
+## SSH Client Configuration
 
 Client configuration file:
 
@@ -1339,7 +1339,7 @@ ssh web-prod
 
 ---
 
-# Useful Client Options
+## Useful Client Options
 
 | Option | Purpose |
 |----------|----------|
@@ -1354,7 +1354,7 @@ ssh web-prod
 
 ---
 
-# SSH File Transfer
+## SSH File Transfer
 
 SSH also supports secure file transfer.
 
@@ -1365,7 +1365,7 @@ Common tools:
 
 ---
 
-# SCP
+## SCP
 
 Secure Copy Protocol transfers files over SSH.
 
@@ -1389,7 +1389,7 @@ scp -r project/ user@server:/srv/
 
 ---
 
-# SFTP
+## SFTP
 
 SFTP provides an interactive secure file transfer session.
 
@@ -1415,7 +1415,7 @@ bye
 
 ---
 
-# SCP vs SFTP
+## SCP vs SFTP
 
 | Feature | SCP | SFTP |
 |----------|-----|------|
@@ -1427,7 +1427,7 @@ bye
 
 ---
 
-# SSH Compression
+## SSH Compression
 
 Enable compression:
 
@@ -1439,7 +1439,7 @@ Useful on slower links where bandwidth savings outweigh CPU costs.
 
 ---
 
-# Executing Remote Commands
+## Executing Remote Commands
 
 Run a single command:
 
@@ -1462,7 +1462,7 @@ Useful for:
 
 ---
 
-# Batch Administration
+## Batch Administration
 
 Example:
 
@@ -1490,7 +1490,7 @@ Many automation frameworks build on SSH for remote execution.
 
 ---
 
-# Enterprise SSH Workflow
+## Enterprise SSH Workflow
 
 ```text
 Administrator
@@ -1516,7 +1516,7 @@ This centralizes access and improves traceability.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Misconfigured SSH services often expose organizations to:
 
@@ -1530,7 +1530,7 @@ Strong configuration and disciplined key management significantly reduce these r
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-managed SSH infrastructure:
 
@@ -1543,7 +1543,7 @@ Well-managed SSH infrastructure:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Prefer Ed25519 or other organization-approved key types.
 - Disable password authentication after verifying key-based access where organizational policy permits.
@@ -1558,7 +1558,7 @@ Well-managed SSH infrastructure:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - `sshd_config` controls SSH server behavior.
 - Public key authentication is preferred for enterprise environments.
@@ -1569,13 +1569,13 @@ Well-managed SSH infrastructure:
 
 ---
 
-# 20 - Linux SSH
+## 20 - Linux SSH
 
-# Part 3 — SSH Port Forwarding, SSH Tunneling, Agent Forwarding, Multiplexing, Hardening, Monitoring, and Troubleshooting
+## Part 3 — SSH Port Forwarding, SSH Tunneling, Agent Forwarding, Multiplexing, Hardening, Monitoring, and Troubleshooting
 
 ---
 
-# Introduction
+## Introduction
 
 SSH is much more than a remote login protocol.
 
@@ -1594,7 +1594,7 @@ Understanding these advanced capabilities is essential for Linux administrators 
 
 ---
 
-# SSH Advanced Features
+## SSH Advanced Features
 
 ```text
 SSH
@@ -1612,7 +1612,7 @@ SSH
 
 ---
 
-# SSH Tunneling
+## SSH Tunneling
 
 SSH tunneling securely transports network traffic through an encrypted SSH connection.
 
@@ -1641,7 +1641,7 @@ Benefits:
 
 ---
 
-# Types of Port Forwarding
+## Types of Port Forwarding
 
 SSH supports three primary forwarding methods.
 
@@ -1653,7 +1653,7 @@ SSH supports three primary forwarding methods.
 
 ---
 
-# Local Port Forwarding
+## Local Port Forwarding
 
 Local forwarding redirects a local port to a service on the remote network.
 
@@ -1693,7 +1693,7 @@ accesses the remote web service securely.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Database access:
 
@@ -1717,7 +1717,7 @@ Instead of exposing the database to the Internet, administrators access it throu
 
 ---
 
-# Remote Port Forwarding
+## Remote Port Forwarding
 
 Remote forwarding exposes a local service through the remote server.
 
@@ -1754,7 +1754,7 @@ Only enable remote forwarding where organizational policy permits.
 
 ---
 
-# Dynamic Port Forwarding
+## Dynamic Port Forwarding
 
 Dynamic forwarding creates a SOCKS proxy.
 
@@ -1784,7 +1784,7 @@ Applications configured to use the SOCKS proxy send their traffic through the en
 
 ---
 
-# Port Forwarding Comparison
+## Port Forwarding Comparison
 
 | Type | Purpose |
 |------|----------|
@@ -1794,7 +1794,7 @@ Applications configured to use the SOCKS proxy send their traffic through the en
 
 ---
 
-# Secure Tunneling Workflow
+## Secure Tunneling Workflow
 
 ```text
 Client
@@ -1814,7 +1814,7 @@ Protected Service
 
 ---
 
-# Executing Remote Commands
+## Executing Remote Commands
 
 Run a command:
 
@@ -1842,7 +1842,7 @@ This is commonly used by:
 
 ---
 
-# Running Multiple Commands
+## Running Multiple Commands
 
 Example:
 
@@ -1854,7 +1854,7 @@ Useful for quick diagnostics.
 
 ---
 
-# Agent Forwarding
+## Agent Forwarding
 
 SSH Agent Forwarding allows a remote system to use authentication from the local SSH agent without copying the private key.
 
@@ -1882,7 +1882,7 @@ ssh -A user@server
 
 ---
 
-# Agent Forwarding Considerations
+## Agent Forwarding Considerations
 
 Advantages:
 
@@ -1900,7 +1900,7 @@ Use agent forwarding only when necessary and only through trusted systems.
 
 ---
 
-# Connection Multiplexing
+## Connection Multiplexing
 
 SSH can reuse an existing connection.
 
@@ -1912,7 +1912,7 @@ Benefits:
 
 ---
 
-# Multiplexing Workflow
+## Multiplexing Workflow
 
 ```text
 First SSH Session
@@ -1932,7 +1932,7 @@ Reuse Existing Connection
 
 ---
 
-# Example Client Configuration
+## Example Client Configuration
 
 ```text
 Host *
@@ -1950,7 +1950,7 @@ Benefits:
 
 ---
 
-# Keepalive Messages
+## Keepalive Messages
 
 Client keepalive:
 
@@ -1968,7 +1968,7 @@ These settings help detect broken connections and clean up stale sessions.
 
 ---
 
-# SSH Hardening
+## SSH Hardening
 
 A secure SSH deployment typically includes:
 
@@ -1982,7 +1982,7 @@ A secure SSH deployment typically includes:
 
 ---
 
-# SSH Hardening Workflow
+## SSH Hardening Workflow
 
 ```text
 Install
@@ -2010,7 +2010,7 @@ Audit
 
 ---
 
-# Common Hardening Measures
+## Common Hardening Measures
 
 | Measure | Benefit |
 |----------|----------|
@@ -2024,7 +2024,7 @@ Audit
 
 ---
 
-# SSH Logging
+## SSH Logging
 
 SSH events are typically written to:
 
@@ -2056,7 +2056,7 @@ depending on the distribution.
 
 ---
 
-# Monitoring Failed Logins
+## Monitoring Failed Logins
 
 Ubuntu:
 
@@ -2079,7 +2079,7 @@ Look for:
 
 ---
 
-# Common SSH Problems
+## Common SSH Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2091,7 +2091,7 @@ Look for:
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```text
 Cannot Connect
@@ -2127,7 +2127,7 @@ Resolved
 
 ---
 
-# Useful Troubleshooting Commands
+## Useful Troubleshooting Commands
 
 Check service:
 
@@ -2167,7 +2167,7 @@ journalctl -u sshd
 
 ---
 
-# Host Key Changes
+## Host Key Changes
 
 When connecting, you may receive a warning similar to:
 
@@ -2187,7 +2187,7 @@ Always verify the new host key through a trusted channel before accepting it.
 
 ---
 
-# SSH Security Risks
+## SSH Security Risks
 
 Attackers commonly target SSH using:
 
@@ -2207,7 +2207,7 @@ Defensive controls include:
 
 ---
 
-# Enterprise SSH Architecture
+## Enterprise SSH Architecture
 
 ```text
 Administrator
@@ -2242,7 +2242,7 @@ Benefits:
 
 ---
 
-# Secure Administrative Workflow
+## Secure Administrative Workflow
 
 ```text
 Administrator
@@ -2270,7 +2270,7 @@ Audit Logs
 
 ---
 
-# DevOps and Automation
+## DevOps and Automation
 
 SSH is widely used by:
 
@@ -2285,7 +2285,7 @@ Automation generally relies on key-based authentication rather than interactive 
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 SSH is one of the most frequently targeted services on Internet-facing Linux servers.
 
@@ -2299,7 +2299,7 @@ Proper hardening:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Secure SSH administration helps organizations:
 
@@ -2312,7 +2312,7 @@ Secure SSH administration helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use public key authentication instead of passwords where organizational policy permits.
 - Restrict SSH access using firewalls and trusted networks.
@@ -2327,7 +2327,7 @@ Secure SSH administration helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - SSH tunneling securely transports application traffic.
 - Local, remote, and dynamic port forwarding serve different use cases.
@@ -2339,13 +2339,13 @@ Secure SSH administration helps organizations:
 ---
 
 
-# 20 - Linux SSH
+## 20 - Linux SSH
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 SSH is one of the most frequently used services in Linux administration.
 
@@ -2364,7 +2364,7 @@ Because SSH often provides privileged administrative access, it must be configur
 
 ---
 
-# Enterprise SSH Lifecycle
+## Enterprise SSH Lifecycle
 
 ```text
 Plan
@@ -2400,7 +2400,7 @@ Improve
 
 ---
 
-# Practical Lab 1 — Verify SSH Installation
+## Practical Lab 1 — Verify SSH Installation
 
 Check SSH client version:
 
@@ -2427,7 +2427,7 @@ Objectives:
 
 ---
 
-# Practical Lab 2 — Check SSH Service
+## Practical Lab 2 — Check SSH Service
 
 Ubuntu:
 
@@ -2460,7 +2460,7 @@ Objectives:
 
 ---
 
-# Practical Lab 3 — Verify Listening Port
+## Practical Lab 3 — Verify Listening Port
 
 Display listening sockets:
 
@@ -2481,7 +2481,7 @@ Objectives:
 
 ---
 
-# Practical Lab 4 — Generate SSH Keys
+## Practical Lab 4 — Generate SSH Keys
 
 Generate an Ed25519 key pair:
 
@@ -2502,7 +2502,7 @@ Objectives:
 
 ---
 
-# Practical Lab 5 — Install Public Key
+## Practical Lab 5 — Install Public Key
 
 Using OpenSSH:
 
@@ -2523,7 +2523,7 @@ Objectives:
 
 ---
 
-# Practical Lab 6 — Review SSH Configuration
+## Practical Lab 6 — Review SSH Configuration
 
 Display configuration:
 
@@ -2545,7 +2545,7 @@ Objectives:
 
 ---
 
-# Practical Lab 7 — Validate SSH Configuration
+## Practical Lab 7 — Validate SSH Configuration
 
 Before restarting SSH:
 
@@ -2560,7 +2560,7 @@ Objectives:
 
 ---
 
-# Practical Lab 8 — Configure SSH Client
+## Practical Lab 8 — Configure SSH Client
 
 Create:
 
@@ -2593,7 +2593,7 @@ Objectives:
 
 ---
 
-# Practical Lab 9 — Transfer Files Securely
+## Practical Lab 9 — Transfer Files Securely
 
 Copy local file:
 
@@ -2614,7 +2614,7 @@ Objectives:
 
 ---
 
-# Practical Lab 10 — Use SFTP
+## Practical Lab 10 — Use SFTP
 
 Connect:
 
@@ -2640,7 +2640,7 @@ Objectives:
 
 ---
 
-# Practical Lab 11 — Execute Remote Commands
+## Practical Lab 11 — Execute Remote Commands
 
 Check hostname:
 
@@ -2667,7 +2667,7 @@ Objectives:
 
 ---
 
-# Practical Lab 12 — Create a Local SSH Tunnel
+## Practical Lab 12 — Create a Local SSH Tunnel
 
 Example:
 
@@ -2688,7 +2688,7 @@ Objectives:
 
 ---
 
-# Practical Lab 13 — Review SSH Logs
+## Practical Lab 13 — Review SSH Logs
 
 Ubuntu:
 
@@ -2715,7 +2715,7 @@ Objectives:
 
 ---
 
-# Practical Lab 14 — Audit SSH Keys
+## Practical Lab 14 — Audit SSH Keys
 
 Review:
 
@@ -2736,7 +2736,7 @@ Objectives:
 
 ---
 
-# Practical Lab 15 — Troubleshoot SSH
+## Practical Lab 15 — Troubleshoot SSH
 
 Scenario:
 
@@ -2796,9 +2796,9 @@ ssh -vvv user@server
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# Secure Cloud Administration
+## Secure Cloud Administration
 
 Architecture:
 
@@ -2826,9 +2826,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Brute-Force SSH Attack
+## Brute-Force SSH Attack
 
 Observed:
 
@@ -2861,9 +2861,9 @@ Recommended actions:
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# Lost Private Key
+## Lost Private Key
 
 Incident:
 
@@ -2901,9 +2901,9 @@ Treat lost private keys as potentially compromised.
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Production SSH Configuration Error
+## Production SSH Configuration Error
 
 Problem:
 
@@ -2941,9 +2941,9 @@ Always keep an active administrative session open while testing remote configura
 
 ---
 
-# Enterprise Case Study 5
+## Enterprise Case Study 5
 
-# Bastion Host Deployment
+## Bastion Host Deployment
 
 Environment:
 
@@ -2976,7 +2976,7 @@ Benefits:
 
 ---
 
-# SSH Security Audit Checklist
+## SSH Security Audit Checklist
 
 | Control | Status |
 |----------|--------|
@@ -2993,7 +2993,7 @@ Benefits:
 
 ---
 
-# Common SSH Mistakes
+## Common SSH Mistakes
 
 | Mistake | Risk | Better Practice |
 |----------|------|-----------------|
@@ -3007,7 +3007,7 @@ Benefits:
 
 ---
 
-# Enterprise SSH Dashboard
+## Enterprise SSH Dashboard
 
 ```text
 SSH Dashboard
@@ -3035,7 +3035,7 @@ SSH Dashboard
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 SSH is frequently targeted because it grants administrative access.
 
@@ -3050,7 +3050,7 @@ Security teams should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Secure SSH administration enables organizations to:
 
@@ -3063,7 +3063,7 @@ Secure SSH administration enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use modern SSH key algorithms approved by organizational policy.
 - Validate `sshd_config` before reloading the service.
@@ -3078,7 +3078,7 @@ Secure SSH administration enables organizations to:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3103,9 +3103,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is SSH?
 2. Why is SSH more secure than Telnet?
@@ -3120,7 +3120,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Compare password authentication and public key authentication.
 2. Explain how SSH key-based authentication works.
@@ -3135,7 +3135,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a secure SSH architecture for a multi-tier production environment.
 2. Explain SSH hardening for Internet-facing servers.
@@ -3150,7 +3150,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - SSH is the industry standard for secure remote administration.
 - Public key authentication is generally preferred over passwords.
@@ -3161,9 +3161,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man ssh`
 - `man sshd`
@@ -3176,7 +3176,7 @@ In this chapter, you learned:
 - `man ssh-agent`
 - `man ssh-add`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - OpenSSH Project Documentation
 - Linux Foundation Documentation
@@ -3190,11 +3190,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **21-Linux-Automation.md**
 
-## Topics Covered
+### Topics Covered
 
 - Automation Fundamentals
 - Scheduling Jobs with `cron` and `at`

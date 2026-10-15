@@ -50,7 +50,7 @@ The central principle is:
 
 ---
 
-# 1. Why Randomness Matters
+## 1. Why Randomness Matters
 
 Suppose an encryption key is:
 
@@ -78,7 +78,7 @@ Correct Implementation
 
 ---
 
-# 2. Randomness in Cryptography
+## 2. Randomness in Cryptography
 
 Random values are used for:
 
@@ -100,7 +100,7 @@ If an attacker can predict these values, security can fail.
 
 ---
 
-# 3. Entropy
+## 3. Entropy
 
 **Entropy** is a measure of uncertainty or unpredictability.
 
@@ -130,7 +130,7 @@ The important security property is not merely the length but the actual unpredic
 
 ---
 
-# 4. High Entropy vs Low Entropy
+## 4. High Entropy vs Low Entropy
 
 High entropy:
 
@@ -153,7 +153,7 @@ An output can contain many bits while still having low effective entropy.
 
 ---
 
-# 5. Entropy Source
+## 5. Entropy Source
 
 An entropy source is where unpredictable information originates.
 
@@ -171,7 +171,7 @@ Applications should normally rely on the operating system's cryptographic random
 
 ---
 
-# 6. Operating-System Randomness
+## 6. Operating-System Randomness
 
 Modern operating systems provide cryptographically secure randomness facilities.
 
@@ -194,7 +194,7 @@ Modern programming languages generally expose secure APIs that internally use OS
 
 ---
 
-# 7. CSPRNG
+## 7. CSPRNG
 
 **CSPRNG** stands for:
 
@@ -218,7 +218,7 @@ Random-Looking Output
 
 ---
 
-# 8. PRNG vs CSPRNG
+## 8. PRNG vs CSPRNG
 
 A conventional PRNG may be designed for:
 
@@ -244,7 +244,7 @@ Do not assume every random-number API is cryptographically secure.
 
 ---
 
-# 9. Python Random Example
+## 9. Python Random Example
 
 This is not appropriate for generating cryptographic secrets:
 
@@ -258,7 +258,7 @@ The `random` module is designed for general-purpose pseudorandomness, not crypto
 
 ---
 
-# 10. Python Secure Randomness
+## 10. Python Secure Randomness
 
 Use:
 
@@ -280,7 +280,7 @@ For security-sensitive values, `secrets` is the appropriate standard-library int
 
 ---
 
-# 11. Cryptographic Random Bytes
+## 11. Cryptographic Random Bytes
 
 Example:
 
@@ -304,7 +304,7 @@ of cryptographically secure random data, assuming the underlying platform is fun
 
 ---
 
-# 12. CSPRNG State
+## 12. CSPRNG State
 
 A CSPRNG internally maintains state.
 
@@ -334,7 +334,7 @@ Entropy Input
 
 ---
 
-# 13. Seed
+## 13. Seed
 
 A seed initializes a pseudorandom generator.
 
@@ -352,7 +352,7 @@ Good cryptographic systems obtain seed material from a secure entropy source.
 
 ---
 
-# 14. Seed Reuse
+## 14. Seed Reuse
 
 Suppose:
 
@@ -369,7 +369,7 @@ Therefore cryptographic generators require appropriate initialization and state 
 
 ---
 
-# 15. Predictable Seed Attack
+## 15. Predictable Seed Attack
 
 Consider:
 
@@ -393,7 +393,7 @@ Timestamp ≠ Cryptographic Entropy
 
 ---
 
-# 16. Randomness Failure
+## 16. Randomness Failure
 
 A cryptographic system can fail even when:
 
@@ -417,7 +417,7 @@ Nonce = Predictable / Reused
 
 ---
 
-# 17. Famous Randomness Failures
+## 17. Famous Randomness Failures
 
 Historical failures demonstrate the importance of randomness.
 
@@ -433,7 +433,7 @@ Repeated encryption nonces
 
 ---
 
-# 18. Debian OpenSSL Bug
+## 18. Debian OpenSSL Bug
 
 A famous historical incident involved Debian's OpenSSL package.
 
@@ -453,7 +453,7 @@ This demonstrates:
 
 ---
 
-# 19. ECDSA Randomness Failure
+## 19. ECDSA Randomness Failure
 
 ECDSA requires a nonce for each signature.
 
@@ -475,7 +475,7 @@ This is one of the most important examples of randomness directly affecting asym
 
 ---
 
-# 20. Nonce
+## 20. Nonce
 
 A **nonce** means:
 
@@ -497,7 +497,7 @@ is critical.
 
 ---
 
-# 21. Nonce vs Random Number
+## 21. Nonce vs Random Number
 
 A nonce does not necessarily need to be random.
 
@@ -522,7 +522,7 @@ If uniqueness is guaranteed, randomness may not be required.
 
 ---
 
-# 22. Nonce Properties
+## 22. Nonce Properties
 
 Depending on the protocol, a nonce may require:
 
@@ -538,7 +538,7 @@ Never assume every nonce has the same requirements.
 
 ---
 
-# 23. IV
+## 23. IV
 
 **IV** stands for:
 
@@ -560,7 +560,7 @@ The exact requirement depends on the mode.
 
 ---
 
-# 24. Nonce vs IV
+## 24. Nonce vs IV
 
 The terms are sometimes used interchangeably, but conceptually:
 
@@ -576,7 +576,7 @@ The security requirement depends on the specific cryptographic scheme.
 
 ---
 
-# 25. Salt
+## 25. Salt
 
 A salt is another type of non-secret value.
 
@@ -602,7 +602,7 @@ Derived Output
 
 ---
 
-# 26. Salt vs Nonce vs IV
+## 26. Salt vs Nonce vs IV
 
 | Value | Typical Purpose | Secret? | Main Requirement |
 |---|---|---|---|
@@ -613,7 +613,7 @@ Derived Output
 
 ---
 
-# 27. Counter
+## 27. Counter
 
 A counter can be used as a nonce:
 
@@ -631,7 +631,7 @@ But the counter must not reset unexpectedly when the same key is reused.
 
 ---
 
-# 28. Counter Reuse Problem
+## 28. Counter Reuse Problem
 
 Suppose:
 
@@ -661,7 +661,7 @@ and may completely break certain AEAD modes.
 
 ---
 
-# 29. AES-GCM Nonce Reuse
+## 29. AES-GCM Nonce Reuse
 
 AES-GCM is extremely sensitive to nonce reuse.
 
@@ -688,7 +688,7 @@ Therefore:
 
 ---
 
-# 30. AES-GCM Mental Model
+## 30. AES-GCM Mental Model
 
 ```text
 Key
@@ -708,7 +708,7 @@ But reuse under the same key must be prevented.
 
 ---
 
-# 31. ChaCha20-Poly1305
+## 31. ChaCha20-Poly1305
 
 ChaCha20-Poly1305 is an AEAD construction.
 
@@ -726,7 +726,7 @@ Nonce reuse under the same key is also dangerous.
 
 ---
 
-# 32. AEAD
+## 32. AEAD
 
 **AEAD** stands for:
 
@@ -755,7 +755,7 @@ ChaCha20-Poly1305
 
 ---
 
-# 33. AEAD Structure
+## 33. AEAD Structure
 
 Conceptually:
 
@@ -795,7 +795,7 @@ Decrypt
 
 ---
 
-# 34. Associated Data
+## 34. Associated Data
 
 AAD means:
 
@@ -822,7 +822,7 @@ Authentication Failure
 
 ---
 
-# 35. Why AAD Matters
+## 35. Why AAD Matters
 
 Suppose:
 
@@ -844,7 +844,7 @@ AAD allows the metadata to be cryptographically bound to the ciphertext.
 
 ---
 
-# 36. Cryptographic Primitive
+## 36. Cryptographic Primitive
 
 A cryptographic primitive is a basic cryptographic building block.
 
@@ -865,7 +865,7 @@ Protocols combine primitives to achieve larger security goals.
 
 ---
 
-# 37. Hash Function
+## 37. Hash Function
 
 A cryptographic hash maps arbitrary input to a fixed-size output.
 
@@ -889,7 +889,7 @@ BLAKE3
 
 ---
 
-# 38. Hash Properties
+## 38. Hash Properties
 
 Important properties:
 
@@ -904,7 +904,7 @@ Avalanche Effect
 
 ---
 
-# 39. Preimage Resistance
+## 39. Preimage Resistance
 
 Given:
 
@@ -926,7 +926,7 @@ H(x)
 
 ---
 
-# 40. Second-Preimage Resistance
+## 40. Second-Preimage Resistance
 
 Given:
 
@@ -948,7 +948,7 @@ H(A) = H(B)
 
 ---
 
-# 41. Collision Resistance
+## 41. Collision Resistance
 
 It should be difficult to find any:
 
@@ -964,7 +964,7 @@ H(A) = H(B)
 
 ---
 
-# 42. Avalanche Effect
+## 42. Avalanche Effect
 
 A small change in input should produce a substantially different hash.
 
@@ -982,7 +982,7 @@ should produce very different digests.
 
 ---
 
-# 43. MAC
+## 43. MAC
 
 A Message Authentication Code uses:
 
@@ -1012,7 +1012,7 @@ Message + Secret
 
 ---
 
-# 44. Encryption Primitive
+## 44. Encryption Primitive
 
 Encryption provides confidentiality.
 
@@ -1030,7 +1030,7 @@ Modern secure encryption should generally also provide integrity through an auth
 
 ---
 
-# 45. Block Cipher
+## 45. Block Cipher
 
 A block cipher processes fixed-size blocks.
 
@@ -1056,7 +1056,7 @@ with key sizes:
 
 ---
 
-# 46. Stream Cipher
+## 46. Stream Cipher
 
 A stream cipher generates a keystream that is combined with plaintext.
 
@@ -1084,7 +1084,7 @@ Never reuse the same keystream under the same key.
 
 ---
 
-# 47. One-Time Pad
+## 47. One-Time Pad
 
 A one-time pad uses:
 
@@ -1106,7 +1106,7 @@ But key distribution makes it impractical for most modern systems.
 
 ---
 
-# 48. XOR
+## 48. XOR
 
 XOR is a fundamental operation:
 
@@ -1127,7 +1127,7 @@ This is why stream ciphers can encrypt and decrypt using XOR.
 
 ---
 
-# 49. Why XOR Alone Is Not Encryption
+## 49. Why XOR Alone Is Not Encryption
 
 If:
 
@@ -1152,7 +1152,7 @@ Security comes from the cryptographic construction and key properties.
 
 ---
 
-# 50. Digital Signature Primitive
+## 50. Digital Signature Primitive
 
 A signature provides:
 
@@ -1182,7 +1182,7 @@ Public Key
 
 ---
 
-# 51. KDF Primitive
+## 51. KDF Primitive
 
 A KDF transforms secret material:
 
@@ -1207,9 +1207,9 @@ They serve different use cases and should not be treated as interchangeable.
 
 ---
 
-# 52. Password KDF vs General KDF
+## 52. Password KDF vs General KDF
 
-### Password KDF
+#### Password KDF
 
 Designed to resist password guessing:
 
@@ -1219,7 +1219,7 @@ scrypt
 PBKDF2
 ```
 
-### General KDF
+#### General KDF
 
 Designed to derive keys from high-entropy secret material:
 
@@ -1229,7 +1229,7 @@ HKDF
 
 ---
 
-# 53. Cryptographic Composition
+## 53. Cryptographic Composition
 
 Individual primitives are rarely enough.
 
@@ -1257,7 +1257,7 @@ Secure Communication
 
 ---
 
-# 54. Primitive Composition Example
+## 54. Primitive Composition Example
 
 TLS conceptually uses:
 
@@ -1281,7 +1281,7 @@ Encrypted Application Data
 
 ---
 
-# 55. Don't Invent Cryptography
+## 55. Don't Invent Cryptography
 
 A common security mistake is designing:
 
@@ -1307,7 +1307,7 @@ Established Protocols
 
 ---
 
-# 56. Cryptographic API Design
+## 56. Cryptographic API Design
 
 A good cryptographic API should make insecure usage difficult.
 
@@ -1332,7 +1332,7 @@ and enforce safe defaults.
 
 ---
 
-# 57. Safe AEAD Example
+## 57. Safe AEAD Example
 
 Conceptually:
 
@@ -1358,7 +1358,7 @@ The nonce normally does not need to be secret.
 
 ---
 
-# 58. Authentication Tag
+## 58. Authentication Tag
 
 AEAD generates an authentication tag.
 
@@ -1381,7 +1381,7 @@ Incorrect Nonce
 
 ---
 
-# 59. Never Ignore Authentication Failures
+## 59. Never Ignore Authentication Failures
 
 If AEAD verification fails:
 
@@ -1401,7 +1401,7 @@ Authentication failure indicates that the cryptographic integrity check did not 
 
 ---
 
-# 60. Padding
+## 60. Padding
 
 Some block cipher modes use padding.
 
@@ -1423,7 +1423,7 @@ Modern applications should generally prefer AEAD modes when available.
 
 ---
 
-# 61. Padding Oracle
+## 61. Padding Oracle
 
 A padding oracle occurs when an attacker can distinguish:
 
@@ -1443,7 +1443,7 @@ The attacker may exploit this to recover plaintext or manipulate ciphertext.
 
 ---
 
-# 62. Timing Side Channels
+## 62. Timing Side Channels
 
 Suppose:
 
@@ -1458,7 +1458,7 @@ Cryptographic comparisons should use constant-time mechanisms where required.
 
 ---
 
-# 63. Constant-Time Comparison
+## 63. Constant-Time Comparison
 
 Do not necessarily compare security-sensitive MACs using ordinary string comparison.
 
@@ -1476,7 +1476,7 @@ This reduces timing leakage from early-exit comparisons.
 
 ---
 
-# 64. Side-Channel Security
+## 64. Side-Channel Security
 
 Cryptographic implementations may leak information through:
 
@@ -1497,7 +1497,7 @@ Side Channels
 
 ---
 
-# 65. Fault Injection
+## 65. Fault Injection
 
 An attacker may intentionally cause:
 
@@ -1521,7 +1521,7 @@ Secure Environments
 
 ---
 
-# 66. Error Handling
+## 66. Error Handling
 
 Avoid revealing detailed cryptographic state through errors.
 
@@ -1546,7 +1546,7 @@ when appropriate.
 
 ---
 
-# 67. Randomness and Session Tokens
+## 67. Randomness and Session Tokens
 
 Session tokens should be generated using cryptographically secure randomness.
 
@@ -1566,7 +1566,7 @@ token = secrets.token_urlsafe(32)
 
 ---
 
-# 68. Token Entropy
+## 68. Token Entropy
 
 A token should have enough effective entropy to resist guessing.
 
@@ -1588,7 +1588,7 @@ This may be insufficient for long-lived authentication credentials.
 
 ---
 
-# 69. OTP vs Authentication Token
+## 69. OTP vs Authentication Token
 
 A short OTP can be appropriate when:
 
@@ -1605,7 +1605,7 @@ A long-lived session token generally needs substantially more entropy.
 
 ---
 
-# 70. Nonce Reuse Detection
+## 70. Nonce Reuse Detection
 
 During a security assessment, investigate whether:
 
@@ -1631,7 +1631,7 @@ Concurrent Processes
 
 ---
 
-# 71. VM Snapshot Problem
+## 71. VM Snapshot Problem
 
 Consider:
 
@@ -1659,7 +1659,7 @@ Modern operating systems are designed to mitigate such issues, but application a
 
 ---
 
-# 72. Container Cloning
+## 72. Container Cloning
 
 If multiple containers are created from the same improperly initialized state:
 
@@ -1675,7 +1675,7 @@ Use the operating system's secure randomness facilities rather than custom deter
 
 ---
 
-# 73. Distributed Systems and Nonces
+## 73. Distributed Systems and Nonces
 
 Distributed applications need special care.
 
@@ -1712,7 +1712,7 @@ or carefully designed random nonces with sufficiently low collision probability.
 
 ---
 
-# 74. Nonce Construction
+## 74. Nonce Construction
 
 A common pattern:
 
@@ -1733,7 +1733,7 @@ This can provide uniqueness if the prefix and counter lifecycle are correctly ma
 
 ---
 
-# 75. Random Nonce Collision
+## 75. Random Nonce Collision
 
 Random nonces can collide.
 
@@ -1760,7 +1760,7 @@ Therefore the nonce size and generation strategy must match the construction's r
 
 ---
 
-# 76. Birthday Bound
+## 76. Birthday Bound
 
 For a hash function with:
 
@@ -1786,7 +1786,7 @@ This is why SHA-256 provides much stronger collision resistance than a 128-bit h
 
 ---
 
-# 77. Hash Truncation
+## 77. Hash Truncation
 
 A hash may be truncated:
 
@@ -1804,7 +1804,7 @@ The acceptable size depends on the protocol and threat model.
 
 ---
 
-# 78. Randomness for Private Keys
+## 78. Randomness for Private Keys
 
 Private keys should be generated using:
 
@@ -1831,7 +1831,7 @@ Predictable Seed
 
 ---
 
-# 79. Randomness for Password Salts
+## 79. Randomness for Password Salts
 
 Password salts should normally be:
 
@@ -1857,7 +1857,7 @@ Password KDF
 
 ---
 
-# 80. Randomness for CSRF Tokens
+## 80. Randomness for CSRF Tokens
 
 CSRF tokens should be:
 
@@ -1877,7 +1877,7 @@ not ordinary PRNGs.
 
 ---
 
-# 81. Randomness for Password Reset Tokens
+## 81. Randomness for Password Reset Tokens
 
 Password reset tokens are high-value authentication credentials.
 
@@ -1893,7 +1893,7 @@ Invalidated After Use
 
 ---
 
-# 82. Cryptographic Primitive Selection
+## 82. Cryptographic Primitive Selection
 
 Before selecting a primitive ask:
 
@@ -1925,7 +1925,7 @@ Fingerprint
 
 ---
 
-# 83. Security Property Mapping
+## 83. Security Property Mapping
 
 | Requirement | Appropriate Primitive |
 |---|---|
@@ -1940,7 +1940,7 @@ Fingerprint
 
 ---
 
-# 84. Don't Use Hashing as Encryption
+## 84. Don't Use Hashing as Encryption
 
 This is incorrect:
 
@@ -1966,7 +1966,7 @@ Password Verifier
 
 ---
 
-# 85. Don't Use Encryption as Password Hashing
+## 85. Don't Use Encryption as Password Hashing
 
 This is also problematic:
 
@@ -1992,7 +1992,7 @@ with a unique salt.
 
 ---
 
-# 86. Don't Use MD5 for Security
+## 86. Don't Use MD5 for Security
 
 MD5 has serious collision weaknesses.
 
@@ -2010,7 +2010,7 @@ It can still appear in legacy non-adversarial contexts such as checksums, but it
 
 ---
 
-# 87. Don't Use SHA-1 for New Security Designs
+## 87. Don't Use SHA-1 for New Security Designs
 
 SHA-1 collision resistance is considered broken.
 
@@ -2035,7 +2035,7 @@ as appropriate.
 
 ---
 
-# 88. Don't Build Custom MACs
+## 88. Don't Build Custom MACs
 
 Avoid:
 
@@ -2055,7 +2055,7 @@ or a standard AEAD construction.
 
 ---
 
-# 89. Length-Extension Attacks
+## 89. Length-Extension Attacks
 
 Some Merkle-Damgård hash constructions can be vulnerable to length-extension attacks when incorrectly used as:
 
@@ -2075,7 +2075,7 @@ instead of designing a custom MAC.
 
 ---
 
-# 90. Domain Separation
+## 90. Domain Separation
 
 Suppose one key is used with multiple protocols:
 
@@ -2097,7 +2097,7 @@ within the cryptographic derivation or signing construction where appropriate.
 
 ---
 
-# 91. Keyed Hashing
+## 91. Keyed Hashing
 
 A keyed hash provides authentication.
 
@@ -2121,7 +2121,7 @@ Authentication Tag
 
 ---
 
-# 92. Hash-Based Fingerprints
+## 92. Hash-Based Fingerprints
 
 Hashes can identify:
 
@@ -2144,7 +2144,7 @@ However, a hash alone does not authenticate who produced the file.
 
 ---
 
-# 93. Hash vs Digital Signature
+## 93. Hash vs Digital Signature
 
 Hash:
 
@@ -2170,7 +2170,7 @@ A signature provides cryptographic authentication of the data under a private ke
 
 ---
 
-# 94. MAC vs Digital Signature
+## 94. MAC vs Digital Signature
 
 MAC:
 
@@ -2192,7 +2192,7 @@ Signature verification does not require the verifier to possess the private sign
 
 ---
 
-# 95. Primitive Misuse
+## 95. Primitive Misuse
 
 Common mistakes:
 
@@ -2212,7 +2212,7 @@ Custom Cryptography
 
 ---
 
-# 96. Encoding vs Encryption
+## 96. Encoding vs Encryption
 
 Base64 is not encryption.
 
@@ -2238,7 +2238,7 @@ are encodings, not encryption.
 
 ---
 
-# 97. Serialization Security
+## 97. Serialization Security
 
 Cryptographic data often crosses serialization boundaries.
 
@@ -2257,7 +2257,7 @@ Incorrect serialization or canonicalization can cause signature verification pro
 
 ---
 
-# 98. Canonicalization
+## 98. Canonicalization
 
 Suppose two representations mean the same logical object:
 
@@ -2283,7 +2283,7 @@ before signing.
 
 ---
 
-# 99. Cryptographic Agility
+## 99. Cryptographic Agility
 
 Applications should avoid hard-coding assumptions such as:
 
@@ -2297,7 +2297,7 @@ Instead design systems that can migrate to stronger algorithms when necessary.
 
 ---
 
-# 100. Algorithm Deprecation
+## 100. Algorithm Deprecation
 
 Security teams should maintain inventories of:
 
@@ -2322,7 +2322,7 @@ components.
 
 ---
 
-# 101. Randomness Security Checklist
+## 101. Randomness Security Checklist
 
 ```text
 ☐ Use OS-provided CSPRNG
@@ -2342,7 +2342,7 @@ components.
 
 ---
 
-# 102. Nonce Security Checklist
+## 102. Nonce Security Checklist
 
 ```text
 ☐ Understand the algorithm's nonce requirement
@@ -2359,7 +2359,7 @@ components.
 
 ---
 
-# 103. Cryptographic Primitive Checklist
+## 103. Cryptographic Primitive Checklist
 
 ```text
 ☐ Use standardized primitives
@@ -2379,7 +2379,7 @@ components.
 
 ---
 
-# 104. VAPT – Randomness Testing
+## 104. VAPT – Randomness Testing
 
 During an assessment look for:
 
@@ -2398,7 +2398,7 @@ Weak Key Generation
 
 ---
 
-# 105. Source-Code Review
+## 105. Source-Code Review
 
 Search for suspicious patterns:
 
@@ -2422,7 +2422,7 @@ This does not automatically prove a vulnerability, but it is a strong review ind
 
 ---
 
-# 106. Search for Hard-Coded IVs
+## 106. Search for Hard-Coded IVs
 
 Suspicious:
 
@@ -2440,7 +2440,7 @@ A static IV may be unsafe depending on the encryption mode.
 
 ---
 
-# 107. Search for Static Nonces
+## 107. Search for Static Nonces
 
 Suspicious:
 
@@ -2459,7 +2459,7 @@ when the same key is reused.
 
 ---
 
-# 108. Search for Homemade Encryption
+## 108. Search for Homemade Encryption
 
 Suspicious code:
 
@@ -2483,7 +2483,7 @@ These are not secure encryption designs.
 
 ---
 
-# 109. SOC Monitoring
+## 109. SOC Monitoring
 
 SOC teams can monitor for:
 
@@ -2501,7 +2501,7 @@ Authentication Failures
 
 ---
 
-# 110. Cryptographic Incident Example
+## 110. Cryptographic Incident Example
 
 Suppose a service generates:
 
@@ -2537,7 +2537,7 @@ Response:
 
 ---
 
-# 111. Practical Lab – Secure Randomness
+## 111. Practical Lab – Secure Randomness
 
 Run:
 
@@ -2558,7 +2558,7 @@ Use this pattern for security-sensitive random values rather than the general-pu
 
 ---
 
-# 112. Practical Lab – Compare PRNG and CSPRNG
+## 112. Practical Lab – Compare PRNG and CSPRNG
 
 For demonstration only:
 
@@ -2581,7 +2581,7 @@ The CSPRNG output is intended for security-sensitive use.
 
 ---
 
-# 113. Practical Lab – Hash
+## 113. Practical Lab – Hash
 
 ```python
 import hashlib
@@ -2609,7 +2609,7 @@ and compare the digest.
 
 ---
 
-# 114. Practical Lab – HMAC
+## 114. Practical Lab – HMAC
 
 ```python
 import hmac
@@ -2631,7 +2631,7 @@ Change the message and observe that the tag changes.
 
 ---
 
-# 115. Practical Lab – Secure Token
+## 115. Practical Lab – Secure Token
 
 ```python
 import secrets
@@ -2645,7 +2645,7 @@ This can be used as a high-entropy token value when combined with appropriate li
 
 ---
 
-# 116. Practical Lab – Nonce Tracking
+## 116. Practical Lab – Nonce Tracking
 
 Build a small test that generates nonces and checks for duplicates:
 
@@ -2670,7 +2670,7 @@ This is an educational demonstration, not a proof of collision resistance.
 
 ---
 
-# 117. Practical Lab – AEAD
+## 117. Practical Lab – AEAD
 
 Using `cryptography`:
 
@@ -2707,7 +2707,7 @@ The nonce must be managed so that it is not reused with the same key.
 
 ---
 
-# 118. Practical Lab – Tamper Detection
+## 118. Practical Lab – Tamper Detection
 
 Modify:
 
@@ -2733,7 +2733,7 @@ This demonstrates AEAD integrity protection.
 
 ---
 
-# 119. Practical Lab – Nonce Reuse Experiment
+## 119. Practical Lab – Nonce Reuse Experiment
 
 For educational purposes, encrypt two messages using the same:
 
@@ -2749,7 +2749,7 @@ Do not perform this against real production data.
 
 ---
 
-# 120. Practical Lab – Hash Collision Concept
+## 120. Practical Lab – Hash Collision Concept
 
 You do not need to find an actual SHA-256 collision.
 
@@ -2773,7 +2773,7 @@ and research their historical collision attacks.
 
 ---
 
-# 121. Practical Lab – Domain Separation
+## 121. Practical Lab – Domain Separation
 
 Use HKDF with different `info` values:
 
@@ -2799,69 +2799,69 @@ Key A ≠ Key B
 
 ---
 
-# 122. Interview Questions
+## 122. Interview Questions
 
-## What is entropy?
+### What is entropy?
 
 Entropy represents the unpredictability of information. Cryptographic systems require sufficient effective entropy to prevent attackers from predicting secret values.
 
 ---
 
-## What is a CSPRNG?
+### What is a CSPRNG?
 
 A Cryptographically Secure Pseudorandom Number Generator produces pseudorandom values designed to resist prediction by attackers.
 
 ---
 
-## What is the difference between PRNG and CSPRNG?
+### What is the difference between PRNG and CSPRNG?
 
 A PRNG is generally designed for simulation or general randomness, while a CSPRNG is designed to provide unpredictable outputs suitable for cryptographic applications.
 
 ---
 
-## Why should `random()` not be used for security tokens?
+### Why should `random()` not be used for security tokens?
 
 General-purpose PRNGs may be predictable and are not designed to protect secrets.
 
 ---
 
-## What is a nonce?
+### What is a nonce?
 
 A nonce is a value intended to be used in a cryptographic protocol, commonly to provide uniqueness or freshness.
 
 ---
 
-## Does a nonce need to be secret?
+### Does a nonce need to be secret?
 
 Usually no. Many cryptographic constructions require nonce uniqueness rather than secrecy.
 
 ---
 
-## What happens if an AES-GCM nonce is reused?
+### What happens if an AES-GCM nonce is reused?
 
 Nonce reuse under the same key can severely compromise confidentiality and integrity and may enable forgery.
 
 ---
 
-## What is an IV?
+### What is an IV?
 
 An initialization vector is auxiliary input used by certain cryptographic constructions. Its required security properties depend on the specific mode.
 
 ---
 
-## What is a salt?
+### What is a salt?
 
 A salt is non-secret data, usually unique per password, used with password hashing or KDFs to prevent identical passwords from producing identical outputs and to hinder precomputation attacks.
 
 ---
 
-## What is AEAD?
+### What is AEAD?
 
 Authenticated Encryption with Associated Data provides confidentiality and integrity while allowing additional data to be authenticated without encryption.
 
 ---
 
-## Give examples of AEAD algorithms.
+### Give examples of AEAD algorithms.
 
 ```text
 AES-GCM
@@ -2870,49 +2870,49 @@ ChaCha20-Poly1305
 
 ---
 
-## What is HKDF?
+### What is HKDF?
 
 HKDF is an HMAC-based key derivation function used to derive cryptographic keys from secret material.
 
 ---
 
-## Why should you not build your own cryptographic algorithm?
+### Why should you not build your own cryptographic algorithm?
 
 Custom cryptography is difficult to design, analyze, implement, and securely compose. Standardized, peer-reviewed primitives and trusted libraries are preferred.
 
 ---
 
-## What is a cryptographic primitive?
+### What is a cryptographic primitive?
 
 A primitive is a basic cryptographic building block such as a hash function, MAC, encryption algorithm, KDF, signature scheme, or random generator.
 
 ---
 
-## What is a side-channel attack?
+### What is a side-channel attack?
 
 A side-channel attack extracts information from implementation behavior such as timing, power consumption, cache access, or error behavior rather than directly breaking the mathematical algorithm.
 
 ---
 
-## What is a padding oracle?
+### What is a padding oracle?
 
 A padding oracle is a vulnerability where observable differences in padding validation allow an attacker to infer information about encrypted data.
 
 ---
 
-## Why is constant-time comparison important?
+### Why is constant-time comparison important?
 
 It reduces timing leakage that could otherwise reveal information about secret values.
 
 ---
 
-## What is the birthday bound?
+### What is the birthday bound?
 
 For an ideal n-bit hash, generic collision attacks require roughly `2^(n/2)` work.
 
 ---
 
-# 123. Quick Revision Table
+## 123. Quick Revision Table
 
 | Concept | Key Idea |
 |---|---|
@@ -2940,7 +2940,7 @@ For an ideal n-bit hash, generic collision attacks require roughly `2^(n/2)` wor
 
 ---
 
-# 124. Key Takeaways
+## 124. Key Takeaways
 
 ```text
 1. Cryptography depends on unpredictable secret values.
@@ -3006,7 +3006,7 @@ For an ideal n-bit hash, generic collision attacks require roughly `2^(n/2)` wor
 
 ---
 
-# 125. Chapter Summary
+## 125. Chapter Summary
 
 This chapter covered:
 
@@ -3097,9 +3097,9 @@ A useful rule to remember:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 10 – TLS, HTTPS & Cryptographic Protocols
+### Chapter 10 – TLS, HTTPS & Cryptographic Protocols
 
 The next chapter will bring the previous cryptographic concepts together and examine how they operate in real-world protocols:
 

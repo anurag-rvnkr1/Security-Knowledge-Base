@@ -1,12 +1,12 @@
 # 45-Host-Header-Attacks.md
 
-# Part 1 — Introduction to HTTP Host Header Attacks, Host Headers, Virtual Hosting, and Secure Request Routing
+## Part 1 — Introduction to HTTP Host Header Attacks, Host Headers, Virtual Hosting, and Secure Request Routing
 
 > **"HTTP Host Header attacks arise when applications make security-sensitive decisions based on an untrusted Host header without appropriate validation. Secure applications validate host information, use trusted configuration, and avoid relying on client-controlled headers for critical functionality."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is the HTTP Host Header?
+## What is the HTTP Host Header?
 
 The **Host** header is an HTTP request header that identifies the intended destination host for a request.
 
@@ -48,7 +48,7 @@ The Host header allows multiple websites to share the same server or IP address 
 
 ---
 
-# Why the Host Header Exists
+## Why the Host Header Exists
 
 Modern web servers frequently host multiple websites on the same infrastructure.
 
@@ -92,7 +92,7 @@ The server can route the request to the appropriate application.
 
 ---
 
-# Basic HTTP Request Structure
+## Basic HTTP Request Structure
 
 A simplified HTTP request contains:
 
@@ -120,7 +120,7 @@ Each header provides additional information to the receiving server.
 
 ---
 
-# Virtual Hosting
+## Virtual Hosting
 
 Virtual hosting enables multiple websites to operate from a single server.
 
@@ -146,7 +146,7 @@ The Host header helps identify which virtual host should process an incoming req
 
 ---
 
-# High-Level Request Routing
+## High-Level Request Routing
 
 ```
 Client
@@ -176,7 +176,7 @@ Every routing layer should follow trusted configuration rather than making secur
 
 ---
 
-# Reverse Proxy Integration
+## Reverse Proxy Integration
 
 Many enterprise deployments place reverse proxies in front of applications.
 
@@ -200,7 +200,7 @@ Reverse proxies often perform routing, TLS termination, logging, and traffic man
 
 ---
 
-# Enterprise Request Flow
+## Enterprise Request Flow
 
 ```
 Client
@@ -234,7 +234,7 @@ Each layer contributes to reliable request routing and secure application delive
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 Client Request
@@ -252,7 +252,7 @@ The Host header originates from the client request and should therefore be treat
 
 ---
 
-# High-Level Host Header Attack Concept
+## High-Level Host Header Attack Concept
 
 Host Header attacks occur when applications make important decisions based on untrusted Host header values.
 
@@ -278,7 +278,7 @@ This chapter focuses on defensive architecture, validation, and secure configura
 
 ---
 
-# Why Host Header Issues Occur
+## Why Host Header Issues Occur
 
 These issues commonly arise because of:
 
@@ -304,7 +304,7 @@ Applications should validate and normalize request information before using it.
 
 ---
 
-# Sensitive Functions
+## Sensitive Functions
 
 Host-related information may influence:
 
@@ -320,7 +320,7 @@ Security-sensitive operations should avoid relying solely on untrusted request h
 
 ---
 
-# Host Header Validation
+## Host Header Validation
 
 Applications should validate host information before using it.
 
@@ -344,7 +344,7 @@ Validation should be based on trusted configuration rather than assumptions.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -378,7 +378,7 @@ Host validation may occur at multiple layers depending on architecture.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Host validation should complement other application security controls.
 
@@ -410,7 +410,7 @@ No single control should be relied upon exclusively.
 
 ---
 
-# Secure Design Principles
+## Secure Design Principles
 
 ```
 Secure Host Handling
@@ -438,7 +438,7 @@ Host-related decisions should be deterministic and policy-driven.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational software company hosts several customer portals behind a shared reverse proxy.
 
@@ -466,7 +466,7 @@ The organization validates incoming host information against centrally managed c
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 Host Processing
@@ -494,7 +494,7 @@ Every component contributes to secure request handling.
 
 ---
 
-# Secure Host Handling Goals
+## Secure Host Handling Goals
 
 Applications should provide:
 
@@ -507,7 +507,7 @@ Applications should provide:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the request-routing architecture of an enterprise web application.
 2. Identify where Host header information is processed.
@@ -519,7 +519,7 @@ Applications should provide:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the HTTP Host header?
 2. Why was the Host header introduced?
@@ -534,7 +534,7 @@ Applications should provide:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat Host header values as untrusted input.
 - Validate hostnames against trusted configuration.
@@ -547,7 +547,7 @@ Applications should provide:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting client-controlled Host header values.
 - Using inconsistent validation rules.
@@ -558,7 +558,7 @@ Applications should provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Host header enables virtual hosting and request routing.
 - Host header values originate from the client and should be validated.
@@ -566,15 +566,15 @@ Applications should provide:
 - Secure routing depends on trusted configuration, deterministic validation, and layered controls.
 - Centralized governance and continuous review improve enterprise resilience against Host header-related issues.
 
-# 45-Host-Header-Attacks.md
+## 45-Host-Header-Attacks.md
 
-# Part 2 — Host Header Processing Lifecycle, Virtual Host Resolution, Reverse Proxy Trust, Absolute URL Generation, and Enterprise Architecture
+## Part 2 — Host Header Processing Lifecycle, Virtual Host Resolution, Reverse Proxy Trust, Absolute URL Generation, and Enterprise Architecture
 
 > **"Secure Host header processing requires trusted request routing, deterministic host validation, centralized configuration, and consistent handling across web servers, reverse proxies, and applications."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -591,7 +591,7 @@ After completing this part, you will understand:
 
 ---
 
-# Host Header Processing Lifecycle
+## Host Header Processing Lifecycle
 
 Every HTTP request follows a routing lifecycle before reaching business logic.
 
@@ -627,7 +627,7 @@ Each stage should process request information consistently and according to orga
 
 ---
 
-# Enterprise Request Flow
+## Enterprise Request Flow
 
 ```
 Client
@@ -661,7 +661,7 @@ The Host header is evaluated by multiple infrastructure components during reques
 
 ---
 
-# Virtual Host Resolution
+## Virtual Host Resolution
 
 A web server selects the appropriate virtual host using configured routing rules.
 
@@ -689,7 +689,7 @@ Resolution should rely on trusted configuration rather than assumptions about cl
 
 ---
 
-# Canonical Hostname
+## Canonical Hostname
 
 Organizations typically define one or more canonical hostnames for each application.
 
@@ -713,7 +713,7 @@ Canonical hostnames improve consistency across authentication, routing, and URL 
 
 ---
 
-# Host Validation Workflow
+## Host Validation Workflow
 
 ```
 Incoming Request
@@ -739,7 +739,7 @@ Validation should occur before host information influences security-sensitive op
 
 ---
 
-# Reverse Proxy Processing
+## Reverse Proxy Processing
 
 Reverse proxies frequently perform:
 
@@ -770,7 +770,7 @@ Proxy behavior should align with documented security policies.
 
 ---
 
-# Trusted Reverse Proxies
+## Trusted Reverse Proxies
 
 Applications should distinguish between trusted infrastructure components and external clients.
 
@@ -790,7 +790,7 @@ Trust relationships should be explicitly configured rather than inferred.
 
 ---
 
-# Absolute URL Generation
+## Absolute URL Generation
 
 Applications sometimes generate complete URLs for legitimate business purposes.
 
@@ -822,7 +822,7 @@ Absolute URLs should be generated using trusted application configuration rather
 
 ---
 
-# URL Generation Flow
+## URL Generation Flow
 
 ```
 Application Configuration
@@ -844,7 +844,7 @@ Trusted configuration provides predictable application behavior.
 
 ---
 
-# Multi-Tenant Applications
+## Multi-Tenant Applications
 
 Some enterprise platforms support multiple customers using shared infrastructure.
 
@@ -866,7 +866,7 @@ Tenant routing should follow documented and validated routing policies.
 
 ---
 
-# Multi-Tenant Request Flow
+## Multi-Tenant Request Flow
 
 ```
 Client
@@ -892,7 +892,7 @@ Tenant identification should be based on approved application design.
 
 ---
 
-# Host Normalization
+## Host Normalization
 
 Before validation, organizations often normalize host information.
 
@@ -918,7 +918,7 @@ Normalization helps ensure consistent processing across infrastructure component
 
 ---
 
-# Secure Configuration
+## Secure Configuration
 
 ```
 Configuration
@@ -942,7 +942,7 @@ Configuration should remain centrally managed and version controlled.
 
 ---
 
-# Authentication Workflows
+## Authentication Workflows
 
 Authentication systems frequently generate navigation links.
 
@@ -970,7 +970,7 @@ These workflows should rely on trusted configuration for URL construction.
 
 ---
 
-# Password Recovery Workflow
+## Password Recovery Workflow
 
 ```
 User
@@ -996,7 +996,7 @@ Recovery workflows should consistently use approved hostnames.
 
 ---
 
-# Enterprise Routing Architecture
+## Enterprise Routing Architecture
 
 ```
 Internet
@@ -1034,7 +1034,7 @@ Each layer contributes to secure request routing and validation.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 DNS
@@ -1068,7 +1068,7 @@ Multiple layers reduce dependency on any single security mechanism.
 
 ---
 
-# Logging
+## Logging
 
 Host-processing events should be logged appropriately.
 
@@ -1092,7 +1092,7 @@ Logs improve troubleshooting, governance, and operational awareness.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1108,7 +1108,7 @@ Sensitive request data should be protected in operational logs.
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -1134,7 +1134,7 @@ Continuous monitoring verifies that routing policies operate as intended.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1148,7 +1148,7 @@ Continuous monitoring verifies that routing policies operate as intended.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization hosts patient, physician, and administrator portals behind a shared reverse proxy.
 
@@ -1180,7 +1180,7 @@ The organization validates incoming host information against approved applicatio
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1193,7 +1193,7 @@ The organization validates incoming host information against approved applicatio
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the Host header processing lifecycle for an enterprise application.
 2. Identify every infrastructure component involved in request routing.
@@ -1205,7 +1205,7 @@ The organization validates incoming host information against approved applicatio
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is virtual host resolution?
 2. Why should applications use canonical hostnames?
@@ -1220,7 +1220,7 @@ The organization validates incoming host information against approved applicatio
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate Host header values against approved hostnames.
 - Generate absolute URLs using trusted application configuration.
@@ -1233,7 +1233,7 @@ The organization validates incoming host information against approved applicatio
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Generating business URLs from untrusted request metadata.
 - Using inconsistent host validation across applications.
@@ -1244,7 +1244,7 @@ The organization validates incoming host information against approved applicatio
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Host header processing spans browsers, proxies, web servers, and applications.
 - Virtual host resolution should depend on trusted configuration.
@@ -1252,15 +1252,15 @@ The organization validates incoming host information against approved applicatio
 - Reverse proxy trust relationships should be explicitly documented.
 - Centralized governance, monitoring, and standardized validation strengthen enterprise Host header security.
 
-# 45-Host-Header-Attacks.md
+## 45-Host-Header-Attacks.md
 
-# Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, Monitoring, and Enterprise Defense
+## Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, Monitoring, and Enterprise Defense
 
 > **"Preventing Host Header-related security issues requires continuous validation of request routing, standardized infrastructure configuration, secure application design, and operational visibility across every layer that processes HTTP requests."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1277,7 +1277,7 @@ After completing this part, you will understand:
 
 ---
 
-# Detecting Host Header Risks
+## Detecting Host Header Risks
 
 Organizations should periodically review how host information is processed throughout the application.
 
@@ -1305,7 +1305,7 @@ The objective is to verify that host-related information never influences securi
 
 ---
 
-# Security Review Process
+## Security Review Process
 
 Every request-routing component should be evaluated.
 
@@ -1337,7 +1337,7 @@ Each layer should process host information consistently.
 
 ---
 
-# Infrastructure Inventory
+## Infrastructure Inventory
 
 Maintain an inventory of every component involved in request routing.
 
@@ -1367,7 +1367,7 @@ Complete inventories improve governance and troubleshooting.
 
 ---
 
-# Host Processing Inventory
+## Host Processing Inventory
 
 Applications should document every location where host information is used.
 
@@ -1397,7 +1397,7 @@ Documented usage simplifies architecture reviews.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Infrastructure should implement identical validation policies wherever practical.
 
@@ -1425,7 +1425,7 @@ Consistent configurations reduce operational drift.
 
 ---
 
-# Architecture Review
+## Architecture Review
 
 Architecture reviews should evaluate:
 
@@ -1456,7 +1456,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies where host information affects application behavior.
 
@@ -1480,7 +1480,7 @@ The goal is to understand where trusted configuration should replace client-cont
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 Security architects should ask:
 
@@ -1507,7 +1507,7 @@ Security Controls
 
 ---
 
-# Secure Host Validation Testing
+## Secure Host Validation Testing
 
 Testing should verify that applications consistently use trusted host configuration.
 
@@ -1531,7 +1531,7 @@ Validation should focus on correctness and policy compliance.
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1559,7 +1559,7 @@ Each testing phase contributes to secure request handling.
 
 ---
 
-# Reverse Proxy Validation
+## Reverse Proxy Validation
 
 Organizations should periodically review reverse proxy behavior.
 
@@ -1583,7 +1583,7 @@ Reviews should verify alignment with documented routing policies.
 
 ---
 
-# Canonical Host Validation
+## Canonical Host Validation
 
 Applications should verify that canonical hostnames remain accurate.
 
@@ -1607,7 +1607,7 @@ Periodic validation reduces configuration drift.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 Host validation should be integrated throughout software development.
 
@@ -1643,7 +1643,7 @@ Early validation reduces long-term operational risk.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -1677,7 +1677,7 @@ Infrastructure validation becomes part of continuous software delivery.
 
 ---
 
-# Change Management
+## Change Management
 
 Host-related configuration changes should follow formal governance.
 
@@ -1709,7 +1709,7 @@ Controlled changes improve traceability and operational reliability.
 
 ---
 
-# Logging
+## Logging
 
 Host-processing events should be logged appropriately.
 
@@ -1733,7 +1733,7 @@ Logs support investigations and operational visibility.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1750,7 +1750,7 @@ Sensitive request details should be masked or excluded where appropriate.
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1776,7 +1776,7 @@ Continuous monitoring confirms that routing policies remain effective.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1790,7 +1790,7 @@ Continuous monitoring confirms that routing policies remain effective.
 
 ---
 
-# Governance
+## Governance
 
 Organizations should establish centralized standards for host handling.
 
@@ -1820,7 +1820,7 @@ Governance improves consistency across infrastructure and development teams.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1862,7 +1862,7 @@ Every infrastructure layer contributes to secure request routing.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization operates internet banking, mobile APIs, partner integrations, and internal administrative portals.
 
@@ -1894,7 +1894,7 @@ The organization maintains centrally approved hostnames, validates routing polic
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Approved Hostnames Documented
@@ -1920,7 +1920,7 @@ The organization maintains centrally approved hostnames, validates routing polic
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1933,7 +1933,7 @@ The organization maintains centrally approved hostnames, validates routing polic
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create a complete inventory of request-routing components.
 2. Document all approved canonical hostnames.
@@ -1945,7 +1945,7 @@ The organization maintains centrally approved hostnames, validates routing polic
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should Host header values be validated?
 2. What is a canonical hostname?
@@ -1960,7 +1960,7 @@ The organization maintains centrally approved hostnames, validates routing polic
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain an inventory of all Host header processing components.
 - Validate hostnames against centrally approved configuration.
@@ -1974,7 +1974,7 @@ The organization maintains centrally approved hostnames, validates routing polic
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting Host header values without validation.
 - Generating application URLs from unvalidated request metadata.
@@ -1986,7 +1986,7 @@ The organization maintains centrally approved hostnames, validates routing polic
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure Host header handling requires validation, trusted configuration, and consistent routing.
 - Architecture reviews and threat modeling identify routing-related risks early.
@@ -1994,15 +1994,15 @@ The organization maintains centrally approved hostnames, validates routing polic
 - Secure SDLC and DevSecOps integrate host validation throughout development.
 - Continuous monitoring, governance, and operational visibility strengthen enterprise request-routing security.
 
-# 45-Host-Header-Attacks.md
+## 45-Host-Header-Attacks.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Secure Host header handling is achieved through centralized governance, trusted infrastructure configuration, deterministic request routing, continuous validation, and comprehensive operational monitoring across every layer that processes HTTP requests."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2024,7 +2024,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 Organizations should establish centralized governance for request routing and Host header processing.
 
@@ -2064,7 +2064,7 @@ Governance ensures consistent request processing across applications, environmen
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Host Header Security Governance
@@ -2094,7 +2094,7 @@ A centralized governance model minimizes inconsistencies across distributed envi
 
 ---
 
-# Host Configuration Governance
+## Host Configuration Governance
 
 Host-related configuration should be centrally managed.
 
@@ -2122,7 +2122,7 @@ Configuration drift should be detected through continuous validation.
 
 ---
 
-# Zero Trust for Request Routing
+## Zero Trust for Request Routing
 
 Zero Trust principles apply to every incoming HTTP request.
 
@@ -2157,7 +2157,7 @@ Every request should be evaluated independently.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Host validation should complement broader security controls.
 
@@ -2197,7 +2197,7 @@ Each layer contributes to secure request processing.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Host validation should become part of routine software delivery.
 
@@ -2229,7 +2229,7 @@ Security is continuously integrated throughout the application lifecycle.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Infrastructure configuration should be version controlled whenever practical.
 
@@ -2257,7 +2257,7 @@ IaC improves consistency, repeatability, and auditability.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2295,7 +2295,7 @@ Automated validation helps identify configuration issues before production deplo
 
 ---
 
-# Documentation
+## Documentation
 
 Maintain documentation for:
 
@@ -2325,7 +2325,7 @@ Comprehensive documentation supports operations, audits, and long-term maintenan
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Organizations should maintain governance supporting secure request routing.
 
@@ -2353,7 +2353,7 @@ Applicable compliance obligations depend on organizational, contractual, and reg
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Operational events related to host processing should be recorded.
 
@@ -2377,7 +2377,7 @@ Audit logs improve accountability and facilitate investigations.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2394,7 +2394,7 @@ Sensitive request information should be masked or omitted where appropriate.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2420,7 +2420,7 @@ Continuous monitoring confirms that request-routing policies remain effective af
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2435,7 +2435,7 @@ Continuous monitoring confirms that request-routing policies remain effective af
 
 ---
 
-# Host Security Dashboard
+## Host Security Dashboard
 
 ```
 Host Routing Dashboard
@@ -2463,7 +2463,7 @@ Dashboards provide centralized operational visibility into routing and host vali
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2493,7 +2493,7 @@ SOC teams correlate routing events with authentication, infrastructure, and appl
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should establish documented procedures for host-related security incidents.
 
@@ -2529,7 +2529,7 @@ A structured incident response process reduces operational impact and supports c
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2559,7 +2559,7 @@ Root cause analysis should evaluate both technical configuration and operational
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2589,7 +2589,7 @@ Host validation practices should evolve alongside infrastructure modernization a
 
 ---
 
-# Host Header Security Maturity Model
+## Host Header Security Maturity Model
 
 ```
 Level 1
@@ -2626,7 +2626,7 @@ Higher maturity reflects increased automation, governance, and operational consi
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2680,7 +2680,7 @@ This architecture separates request routing, validation, monitoring, and governa
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational SaaS provider hosts customer-facing portals, APIs, administrative consoles, and partner integrations across multiple cloud regions.
 
@@ -2712,7 +2712,7 @@ The organization maintains centrally managed canonical hostnames, validates requ
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Approved Hostnames Documented
@@ -2738,7 +2738,7 @@ The organization maintains centrally managed canonical hostnames, validates requ
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2751,9 +2751,9 @@ The organization maintains centrally managed canonical hostnames, validates requ
 
 ---
 
-# Host Header Quick Revision
+## Host Header Quick Revision
 
-## Request Routing Lifecycle
+### Request Routing Lifecycle
 
 ```
 Incoming Request
@@ -2777,7 +2777,7 @@ Response
 
 ---
 
-## Trusted Routing
+### Trusted Routing
 
 ```
 Client
@@ -2797,7 +2797,7 @@ Application
 
 ---
 
-## Defense Layers
+### Defense Layers
 
 ```
 DNS
@@ -2825,7 +2825,7 @@ Monitoring
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Metrics
@@ -2845,7 +2845,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise request-routing architecture from DNS to the application.
 2. Document every approved hostname and canonical domain.
@@ -2857,7 +2857,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of the HTTP Host header?
 2. Why should Host header values always be validated?
@@ -2872,7 +2872,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat every Host header value as untrusted until validated.
 - Maintain centrally managed canonical hostnames.
@@ -2886,7 +2886,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting client-controlled Host header values.
 - Generating business URLs using unvalidated request metadata.
@@ -2898,7 +2898,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

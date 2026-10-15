@@ -1,10 +1,10 @@
 # 21 - Linux Automation
 
-# Part 1 — Automation Fundamentals, Job Scheduling, `cron`, `crontab`, `at`, and Enterprise Automation Concepts
+## Part 1 — Automation Fundamentals, Job Scheduling, `cron`, `crontab`, `at`, and Enterprise Automation Concepts
 
 ---
 
-# Introduction
+## Introduction
 
 Modern Linux environments rarely rely on manual administration alone.
 
@@ -29,7 +29,7 @@ Automation is a core skill for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -44,7 +44,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is Automation?
+## What is Automation?
 
 Automation is the process of executing tasks automatically with minimal human intervention.
 
@@ -52,7 +52,7 @@ Instead of manually repeating commands, administrators configure Linux to execut
 
 ---
 
-# Manual vs Automated Administration
+## Manual vs Automated Administration
 
 | Manual | Automated |
 |----------|-----------|
@@ -64,7 +64,7 @@ Instead of manually repeating commands, administrators configure Linux to execut
 
 ---
 
-# Enterprise Automation Examples
+## Enterprise Automation Examples
 
 Organizations automate:
 
@@ -81,7 +81,7 @@ Organizations automate:
 
 ---
 
-# Enterprise Automation Workflow
+## Enterprise Automation Workflow
 
 ```text
 Identify Task
@@ -117,7 +117,7 @@ Improve
 
 ---
 
-# Why Automation Matters
+## Why Automation Matters
 
 Automation helps organizations:
 
@@ -131,7 +131,7 @@ Automation helps organizations:
 
 ---
 
-# Characteristics of Good Automation
+## Characteristics of Good Automation
 
 A well-designed automation task should be:
 
@@ -146,7 +146,7 @@ A well-designed automation task should be:
 
 ---
 
-# Common Automation Tools
+## Common Automation Tools
 
 | Tool | Purpose |
 |------|----------|
@@ -163,7 +163,7 @@ This section focuses on `cron`, `crontab`, and `at`.
 
 ---
 
-# cron
+## cron
 
 `cron` is the traditional Linux job scheduler.
 
@@ -179,7 +179,7 @@ Examples:
 
 ---
 
-# cron Architecture
+## cron Architecture
 
 ```text
 Administrator
@@ -207,7 +207,7 @@ Log Output
 
 ---
 
-# cron Daemon
+## cron Daemon
 
 The scheduling service is commonly named:
 
@@ -225,7 +225,7 @@ depending on the Linux distribution.
 
 ---
 
-# Verify cron Service
+## Verify cron Service
 
 Ubuntu/Debian:
 
@@ -241,7 +241,7 @@ systemctl status crond
 
 ---
 
-# Starting cron
+## Starting cron
 
 Ubuntu:
 
@@ -269,7 +269,7 @@ sudo systemctl enable crond
 
 ---
 
-# What is crontab?
+## What is crontab?
 
 A **crontab** (cron table) contains scheduled tasks for a user.
 
@@ -279,7 +279,7 @@ System-wide cron files are also available.
 
 ---
 
-# Viewing Current Crontab
+## Viewing Current Crontab
 
 Display your crontab:
 
@@ -295,7 +295,7 @@ no crontab for username
 
 ---
 
-# Editing Crontab
+## Editing Crontab
 
 Open editor:
 
@@ -307,7 +307,7 @@ After saving, the scheduler automatically uses the updated configuration.
 
 ---
 
-# Removing Crontab
+## Removing Crontab
 
 Delete current user's crontab:
 
@@ -319,7 +319,7 @@ crontab -r
 
 ---
 
-# Crontab Format
+## Crontab Format
 
 Standard format:
 
@@ -339,7 +339,7 @@ Command
 
 ---
 
-# Cron Field Diagram
+## Cron Field Diagram
 
 ```text
 * * * * *
@@ -359,7 +359,7 @@ Command
 
 ---
 
-# Cron Time Fields
+## Cron Time Fields
 
 | Field | Range |
 |--------|-------|
@@ -371,7 +371,7 @@ Command
 
 ---
 
-# Wildcard (*)
+## Wildcard (*)
 
 Example:
 
@@ -395,7 +395,7 @@ Every minute.
 
 ---
 
-# Every Hour
+## Every Hour
 
 ```text
 0 * * * *
@@ -407,7 +407,7 @@ At minute **0** of every hour.
 
 ---
 
-# Every Day at Midnight
+## Every Day at Midnight
 
 ```text
 0 0 * * *
@@ -419,7 +419,7 @@ Every day at 00:00.
 
 ---
 
-# Every Day at 02:30
+## Every Day at 02:30
 
 ```text
 30 2 * * *
@@ -431,7 +431,7 @@ Daily at 2:30 AM.
 
 ---
 
-# Every Monday
+## Every Monday
 
 ```text
 0 8 * * 1
@@ -443,7 +443,7 @@ Every Monday at 08:00.
 
 ---
 
-# Every Month
+## Every Month
 
 ```text
 0 0 1 * *
@@ -455,7 +455,7 @@ On the first day of every month.
 
 ---
 
-# Every Five Minutes
+## Every Five Minutes
 
 ```text
 */5 * * * *
@@ -467,7 +467,7 @@ Every five minutes.
 
 ---
 
-# Every Fifteen Minutes
+## Every Fifteen Minutes
 
 ```text
 */15 * * * *
@@ -479,7 +479,7 @@ Every fifteen minutes.
 
 ---
 
-# Every Thirty Minutes
+## Every Thirty Minutes
 
 ```text
 */30 * * * *
@@ -491,7 +491,7 @@ Twice per hour.
 
 ---
 
-# Range Operator
+## Range Operator
 
 Example:
 
@@ -515,7 +515,7 @@ Weekdays at 09:00.
 
 ---
 
-# List Operator
+## List Operator
 
 Example:
 
@@ -539,7 +539,7 @@ Monday, Wednesday, and Friday at 18:00.
 
 ---
 
-# Step Values
+## Step Values
 
 Example:
 
@@ -563,7 +563,7 @@ Every ten minutes.
 
 ---
 
-# Cron Examples
+## Cron Examples
 
 | Schedule | Expression |
 |-----------|------------|
@@ -577,7 +577,7 @@ Every ten minutes.
 
 ---
 
-# Example Cron Job
+## Example Cron Job
 
 ```text
 0 3 * * * /home/admin/backup.sh
@@ -589,7 +589,7 @@ Run the backup script every day at **03:00**.
 
 ---
 
-# Cron Workflow
+## Cron Workflow
 
 ```text
 Time Matches
@@ -613,7 +613,7 @@ Log
 
 ---
 
-# at
+## at
 
 Unlike cron, `at` schedules a task **once**.
 
@@ -626,7 +626,7 @@ Useful for:
 
 ---
 
-# at Workflow
+## at Workflow
 
 ```text
 Administrator
@@ -650,7 +650,7 @@ Remove Job
 
 ---
 
-# Installing at
+## Installing at
 
 Ubuntu:
 
@@ -666,7 +666,7 @@ sudo dnf install at
 
 ---
 
-# Start at Service
+## Start at Service
 
 Ubuntu:
 
@@ -688,7 +688,7 @@ sudo systemctl enable atd
 
 ---
 
-# Schedule a One-Time Job
+## Schedule a One-Time Job
 
 Example:
 
@@ -710,7 +710,7 @@ Ctrl + D
 
 ---
 
-# List Scheduled Jobs
+## List Scheduled Jobs
 
 ```bash
 atq
@@ -724,7 +724,7 @@ Example output:
 
 ---
 
-# Remove Scheduled Job
+## Remove Scheduled Job
 
 Delete:
 
@@ -736,7 +736,7 @@ Where **1** is the job number.
 
 ---
 
-# cron vs at
+## cron vs at
 
 | Feature | cron | at |
 |----------|------|----|
@@ -748,7 +748,7 @@ Where **1** is the job number.
 
 ---
 
-# Enterprise Automation Strategy
+## Enterprise Automation Strategy
 
 ```text
 Daily Tasks
@@ -770,7 +770,7 @@ Use each tool for the scenario it best fits.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Automation is also critical for security operations.
 
@@ -787,7 +787,7 @@ Poorly secured automation, however, can introduce risks such as excessive privil
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective automation:
 
@@ -800,7 +800,7 @@ Effective automation:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Keep scheduled jobs simple and well documented.
 - Store scripts in version-controlled repositories where appropriate.
@@ -813,7 +813,7 @@ Effective automation:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Automation reduces repetitive manual work.
 - `cron` schedules recurring jobs.
@@ -824,13 +824,13 @@ Effective automation:
 
 ---
 
-# 21 - Linux Automation
+## 21 - Linux Automation
 
-# Part 2 — Advanced Cron, System Cron Directories, Environment Variables, Systemd Timers, Automation Scripts, and Enterprise Scheduling
+## Part 2 — Advanced Cron, System Cron Directories, Environment Variables, Systemd Timers, Automation Scripts, and Enterprise Scheduling
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise Linux environments often execute hundreds or thousands of scheduled jobs every day.
 
@@ -849,7 +849,7 @@ Managing automation at scale requires understanding advanced scheduling mechanis
 
 ---
 
-# Enterprise Automation Architecture
+## Enterprise Automation Architecture
 
 ```text
 Administrator
@@ -881,7 +881,7 @@ Alerting
 
 ---
 
-# Cron Environment
+## Cron Environment
 
 Cron jobs run in a **minimal environment**.
 
@@ -896,7 +896,7 @@ This means scripts should not assume:
 
 ---
 
-# Common Environment Variables
+## Common Environment Variables
 
 Typical variables include:
 
@@ -910,7 +910,7 @@ Typical variables include:
 
 ---
 
-# Setting PATH
+## Setting PATH
 
 Example:
 
@@ -922,7 +922,7 @@ Using an explicit PATH helps ensure commands are found consistently.
 
 ---
 
-# Setting SHELL
+## Setting SHELL
 
 Example:
 
@@ -934,7 +934,7 @@ Useful when automation relies on Bash-specific features.
 
 ---
 
-# MAILTO
+## MAILTO
 
 Cron can send job output by email.
 
@@ -952,7 +952,7 @@ MAILTO=""
 
 ---
 
-# Working Directory
+## Working Directory
 
 Cron does not automatically execute commands from the directory containing your script.
 
@@ -966,7 +966,7 @@ or use absolute paths throughout the script.
 
 ---
 
-# Why Absolute Paths Matter
+## Why Absolute Paths Matter
 
 Avoid:
 
@@ -988,7 +988,7 @@ Benefits:
 
 ---
 
-# Redirecting Output
+## Redirecting Output
 
 Capture both standard output and standard error:
 
@@ -1000,7 +1000,7 @@ This simplifies troubleshooting and auditing.
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 ```text
 Cron Job
@@ -1031,7 +1031,7 @@ Good logs answer:
 
 ---
 
-# Useful Redirection Examples
+## Useful Redirection Examples
 
 Append output:
 
@@ -1059,7 +1059,7 @@ Capture everything:
 
 ---
 
-# System-Wide Cron
+## System-Wide Cron
 
 User crontabs are not the only scheduling mechanism.
 
@@ -1073,7 +1073,7 @@ This supports system-wide scheduled jobs.
 
 ---
 
-# System Crontab Format
+## System Crontab Format
 
 Unlike user crontabs, `/etc/crontab` includes a **user** field.
 
@@ -1089,7 +1089,7 @@ Example:
 
 ---
 
-# System Cron Directories
+## System Cron Directories
 
 Many distributions automatically execute scripts placed in specific directories.
 
@@ -1104,7 +1104,7 @@ The exact implementation depends on the Linux distribution.
 
 ---
 
-# Cron Directory Workflow
+## Cron Directory Workflow
 
 ```text
 cron
@@ -1124,7 +1124,7 @@ Log Results
 
 ---
 
-# Viewing Scheduled Jobs
+## Viewing Scheduled Jobs
 
 Current user:
 
@@ -1140,7 +1140,7 @@ sudo crontab -u username -l
 
 ---
 
-# Listing System Jobs
+## Listing System Jobs
 
 View:
 
@@ -1156,7 +1156,7 @@ ls /etc/cron.daily
 
 ---
 
-# Cron Permissions
+## Cron Permissions
 
 Linux provides access control for cron.
 
@@ -1181,7 +1181,7 @@ Behavior varies across implementations, so consult your platform documentation.
 
 ---
 
-# Best Practices for Scripts
+## Best Practices for Scripts
 
 Good automation scripts should:
 
@@ -1194,7 +1194,7 @@ Good automation scripts should:
 
 ---
 
-# Example Script Structure
+## Example Script Structure
 
 ```text
 Start
@@ -1222,7 +1222,7 @@ Exit
 
 ---
 
-# Exit Codes
+## Exit Codes
 
 Linux commands return status codes.
 
@@ -1235,7 +1235,7 @@ Cron itself can only determine whether the command exited successfully; applicat
 
 ---
 
-# Checking Exit Status
+## Checking Exit Status
 
 Example:
 
@@ -1247,7 +1247,7 @@ Immediately after a command, this displays its exit status.
 
 ---
 
-# Error Handling Example
+## Error Handling Example
 
 Conceptually:
 
@@ -1283,7 +1283,7 @@ Robust scripts handle unexpected failures gracefully.
 
 ---
 
-# systemd Timers
+## systemd Timers
 
 Modern Linux distributions increasingly use **systemd timers** as an alternative to cron.
 
@@ -1297,7 +1297,7 @@ Advantages include:
 
 ---
 
-# systemd Timer Architecture
+## systemd Timer Architecture
 
 ```text
 Timer Unit
@@ -1317,7 +1317,7 @@ Task
 
 ---
 
-# Components
+## Components
 
 A timer generally consists of:
 
@@ -1328,7 +1328,7 @@ A timer generally consists of:
 
 ---
 
-# Example Structure
+## Example Structure
 
 ```text
 backup.timer
@@ -1344,7 +1344,7 @@ backup.sh
 
 ---
 
-# Viewing Timers
+## Viewing Timers
 
 List active timers:
 
@@ -1360,7 +1360,7 @@ systemctl list-timers --all
 
 ---
 
-# Timer Workflow
+## Timer Workflow
 
 ```text
 Scheduled Time
@@ -1384,7 +1384,7 @@ Logs
 
 ---
 
-# Cron vs systemd Timers
+## Cron vs systemd Timers
 
 | Feature | cron | systemd Timer |
 |----------|------|---------------|
@@ -1398,7 +1398,7 @@ Many modern enterprise Linux systems support both mechanisms.
 
 ---
 
-# Automation Script Organization
+## Automation Script Organization
 
 Recommended layout:
 
@@ -1426,7 +1426,7 @@ Benefits:
 
 ---
 
-# Enterprise Scheduling Workflow
+## Enterprise Scheduling Workflow
 
 ```text
 Business Requirement
@@ -1458,7 +1458,7 @@ Continuous Improvement
 
 ---
 
-# Automation Documentation
+## Automation Documentation
 
 Every scheduled task should document:
 
@@ -1474,7 +1474,7 @@ Documentation simplifies maintenance and incident response.
 
 ---
 
-# Automation Security
+## Automation Security
 
 Automation should follow security principles:
 
@@ -1492,7 +1492,7 @@ Avoid:
 
 ---
 
-# Enterprise Monitoring
+## Enterprise Monitoring
 
 Monitor scheduled jobs for:
 
@@ -1526,7 +1526,7 @@ Administrator
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Automation is widely used by security teams for:
 
@@ -1541,7 +1541,7 @@ However, compromised automation scripts can execute with the permissions of the 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-managed automation:
 
@@ -1554,7 +1554,7 @@ Well-managed automation:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use absolute paths in all scheduled jobs.
 - Capture and review job output.
@@ -1567,7 +1567,7 @@ Well-managed automation:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cron jobs run in a limited environment.
 - Absolute paths improve reliability.
@@ -1578,13 +1578,13 @@ Well-managed automation:
 
 ---
 
-# 21 - Linux Automation
+## 21 - Linux Automation
 
-# Part 3 — Backup Automation, Log Rotation, Monitoring Automation, Security Automation, Enterprise Workflows, and Automation Troubleshooting
+## Part 3 — Backup Automation, Log Rotation, Monitoring Automation, Security Automation, Enterprise Workflows, and Automation Troubleshooting
 
 ---
 
-# Introduction
+## Introduction
 
 Automation becomes truly valuable when it manages critical infrastructure tasks without requiring constant administrator intervention.
 
@@ -1605,7 +1605,7 @@ Well-designed automation reduces downtime, improves consistency, and allows admi
 
 ---
 
-# Enterprise Automation Pipeline
+## Enterprise Automation Pipeline
 
 ```text
 Task
@@ -1641,7 +1641,7 @@ Administrator
 
 ---
 
-# Backup Automation
+## Backup Automation
 
 Backups are among the most common automated Linux tasks.
 
@@ -1657,7 +1657,7 @@ Typical backup targets include:
 
 ---
 
-# Backup Workflow
+## Backup Workflow
 
 ```text
 Files
@@ -1689,7 +1689,7 @@ Retention
 
 ---
 
-# Example Backup Script
+## Example Backup Script
 
 ```bash
 #!/bin/bash
@@ -1710,7 +1710,7 @@ Runs every day at **02:00**.
 
 ---
 
-# Backup Verification
+## Backup Verification
 
 A backup is only useful if it can be restored.
 
@@ -1723,7 +1723,7 @@ Verification should include:
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Enterprise organizations commonly follow the **3-2-1 backup principle**:
 
@@ -1743,7 +1743,7 @@ This improves resilience against hardware failure, accidental deletion, and rans
 
 ---
 
-# Log Rotation
+## Log Rotation
 
 Logs grow continuously.
 
@@ -1757,7 +1757,7 @@ Automation prevents uncontrolled log growth.
 
 ---
 
-# Log Rotation Workflow
+## Log Rotation Workflow
 
 ```text
 Log File
@@ -1785,7 +1785,7 @@ Delete Old Logs
 
 ---
 
-# logrotate
+## logrotate
 
 Most Linux distributions include:
 
@@ -1802,7 +1802,7 @@ It automates:
 
 ---
 
-# Common logrotate Configuration
+## Common logrotate Configuration
 
 Typical configuration options:
 
@@ -1818,7 +1818,7 @@ Typical configuration options:
 
 ---
 
-# Example Configuration
+## Example Configuration
 
 ```text
 /var/log/myapp.log {
@@ -1843,7 +1843,7 @@ Meaning:
 
 ---
 
-# Monitoring Automation
+## Monitoring Automation
 
 Monitoring systems automatically collect system information.
 
@@ -1858,7 +1858,7 @@ Common metrics:
 
 ---
 
-# Monitoring Workflow
+## Monitoring Workflow
 
 ```text
 Collect Metrics
@@ -1882,7 +1882,7 @@ Administrator
 
 ---
 
-# Example Disk Usage Script
+## Example Disk Usage Script
 
 ```bash
 #!/bin/bash
@@ -1900,7 +1900,7 @@ Runs every six hours.
 
 ---
 
-# Example Memory Check
+## Example Memory Check
 
 ```bash
 free -h
@@ -1910,7 +1910,7 @@ Useful for automated health reports.
 
 ---
 
-# Example CPU Monitoring
+## Example CPU Monitoring
 
 ```bash
 top -b -n 1
@@ -1926,7 +1926,7 @@ These commands can be incorporated into scheduled reporting scripts.
 
 ---
 
-# Service Monitoring
+## Service Monitoring
 
 Critical services should be checked automatically.
 
@@ -1940,7 +1940,7 @@ Examples:
 
 ---
 
-# Example Service Check
+## Example Service Check
 
 ```bash
 systemctl is-active ssh
@@ -1956,7 +1956,7 @@ A non-active result can trigger notifications through external monitoring or ale
 
 ---
 
-# Security Automation
+## Security Automation
 
 Security teams automate repetitive defensive tasks.
 
@@ -1971,7 +1971,7 @@ Examples include:
 
 ---
 
-# Security Automation Workflow
+## Security Automation Workflow
 
 ```text
 Scheduled Task
@@ -1999,7 +1999,7 @@ Response
 
 ---
 
-# File Integrity Monitoring
+## File Integrity Monitoring
 
 Automation can periodically calculate checksums for important files.
 
@@ -2029,7 +2029,7 @@ Unexpected changes may indicate unauthorized modification.
 
 ---
 
-# Certificate Monitoring
+## Certificate Monitoring
 
 Automated tasks can identify certificates approaching expiration.
 
@@ -2059,7 +2059,7 @@ This helps prevent service outages caused by expired certificates.
 
 ---
 
-# User Account Auditing
+## User Account Auditing
 
 Automation can review:
 
@@ -2072,7 +2072,7 @@ Regular reviews strengthen access control.
 
 ---
 
-# File Cleanup Automation
+## File Cleanup Automation
 
 Example:
 
@@ -2086,7 +2086,7 @@ Use caution and verify commands before scheduling deletion tasks.
 
 ---
 
-# Database Maintenance
+## Database Maintenance
 
 Automated database tasks commonly include:
 
@@ -2099,7 +2099,7 @@ Schedule maintenance during approved maintenance windows to minimize impact.
 
 ---
 
-# File Synchronization
+## File Synchronization
 
 Organizations often automate synchronization between systems.
 
@@ -2125,7 +2125,7 @@ This supports backup, disaster recovery, and distributed deployments.
 
 ---
 
-# Health Report Automation
+## Health Report Automation
 
 Many administrators generate daily reports containing:
 
@@ -2140,7 +2140,7 @@ These reports help identify trends before they become incidents.
 
 ---
 
-# Enterprise Automation Workflow
+## Enterprise Automation Workflow
 
 ```text
 Business Requirement
@@ -2176,7 +2176,7 @@ Continuous Improvement
 
 ---
 
-# Automation Failure Handling
+## Automation Failure Handling
 
 A good automation workflow anticipates failures.
 
@@ -2210,7 +2210,7 @@ Success?
 
 ---
 
-# Common Automation Problems
+## Common Automation Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2224,7 +2224,7 @@ Success?
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```text
 Job Failed
@@ -2256,7 +2256,7 @@ Resolved
 
 ---
 
-# Useful Troubleshooting Commands
+## Useful Troubleshooting Commands
 
 View current cron jobs:
 
@@ -2292,7 +2292,7 @@ journalctl
 
 ---
 
-# Automation Security Risks
+## Automation Security Risks
 
 Improper automation may introduce risks such as:
 
@@ -2307,7 +2307,7 @@ Mitigation includes least privilege, secure credential management, code review, 
 
 ---
 
-# Enterprise Automation Governance
+## Enterprise Automation Governance
 
 Organizations should define:
 
@@ -2323,7 +2323,7 @@ This reduces operational risk and supports compliance.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Automation enables security teams to perform continuous defensive tasks at scale.
 
@@ -2339,7 +2339,7 @@ At the same time, automation scripts should be treated as privileged assets and 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable automation:
 
@@ -2352,7 +2352,7 @@ Reliable automation:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Test every script before scheduling it.
 - Use meaningful exit codes and logging.
@@ -2365,7 +2365,7 @@ Reliable automation:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Backup automation is a foundational administrative task.
 - Log rotation prevents uncontrolled disk usage.
@@ -2376,13 +2376,13 @@ Reliable automation:
 
 ---
 
-# 21 - Linux Automation
+## 21 - Linux Automation
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Automation is a foundational capability for modern Linux administration.
 
@@ -2399,7 +2399,7 @@ This section consolidates the concepts covered throughout the chapter with pract
 
 ---
 
-# Enterprise Automation Lifecycle
+## Enterprise Automation Lifecycle
 
 ```text
 Requirement
@@ -2435,7 +2435,7 @@ Retire
 
 ---
 
-# Practical Lab 1 — Create Your First Cron Job
+## Practical Lab 1 — Create Your First Cron Job
 
 Objective:
 
@@ -2465,7 +2465,7 @@ A new timestamp is appended every minute.
 
 ---
 
-# Practical Lab 2 — Schedule a Backup Script
+## Practical Lab 2 — Schedule a Backup Script
 
 Create:
 
@@ -2500,7 +2500,7 @@ Objectives:
 
 ---
 
-# Practical Lab 3 — Test Cron Environment
+## Practical Lab 3 — Test Cron Environment
 
 Create:
 
@@ -2523,7 +2523,7 @@ Objectives:
 
 ---
 
-# Practical Lab 4 — Redirect Output
+## Practical Lab 4 — Redirect Output
 
 Modify a cron entry:
 
@@ -2544,7 +2544,7 @@ Objectives:
 
 ---
 
-# Practical Lab 5 — Use the `at` Command
+## Practical Lab 5 — Use the `at` Command
 
 Schedule:
 
@@ -2583,7 +2583,7 @@ Objectives:
 
 ---
 
-# Practical Lab 6 — Explore System Cron Directories
+## Practical Lab 6 — Explore System Cron Directories
 
 List directories:
 
@@ -2610,7 +2610,7 @@ Objectives:
 
 ---
 
-# Practical Lab 7 — Check Systemd Timers
+## Practical Lab 7 — Check Systemd Timers
 
 List timers:
 
@@ -2631,7 +2631,7 @@ Objectives:
 
 ---
 
-# Practical Lab 8 — Monitor Disk Usage
+## Practical Lab 8 — Monitor Disk Usage
 
 Create:
 
@@ -2654,7 +2654,7 @@ Objectives:
 
 ---
 
-# Practical Lab 9 — Monitor Services
+## Practical Lab 9 — Monitor Services
 
 Check service status:
 
@@ -2677,7 +2677,7 @@ Objectives:
 
 ---
 
-# Practical Lab 10 — Clean Temporary Files
+## Practical Lab 10 — Clean Temporary Files
 
 Example:
 
@@ -2694,7 +2694,7 @@ Objectives:
 
 ---
 
-# Practical Lab 11 — Validate Backup Archives
+## Practical Lab 11 — Validate Backup Archives
 
 List backup files:
 
@@ -2717,7 +2717,7 @@ Objectives:
 
 ---
 
-# Practical Lab 12 — Review Scheduled Jobs
+## Practical Lab 12 — Review Scheduled Jobs
 
 Display user cron jobs:
 
@@ -2738,7 +2738,7 @@ Objectives:
 
 ---
 
-# Practical Lab 13 — Test Script Exit Codes
+## Practical Lab 13 — Test Script Exit Codes
 
 Create a script:
 
@@ -2773,7 +2773,7 @@ Objectives:
 
 ---
 
-# Practical Lab 14 — Organize Automation Scripts
+## Practical Lab 14 — Organize Automation Scripts
 
 Example structure:
 
@@ -2798,7 +2798,7 @@ Objectives:
 
 ---
 
-# Practical Lab 15 — Troubleshoot a Failed Cron Job
+## Practical Lab 15 — Troubleshoot a Failed Cron Job
 
 Scenario:
 
@@ -2837,9 +2837,9 @@ Objectives:
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# Nightly Database Backups
+## Nightly Database Backups
 
 Requirement:
 
@@ -2879,9 +2879,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Daily Security Health Report
+## Daily Security Health Report
 
 Automation collects:
 
@@ -2916,9 +2916,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# Log Maintenance
+## Log Maintenance
 
 Problem:
 
@@ -2953,9 +2953,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Certificate Expiration Monitoring
+## Certificate Expiration Monitoring
 
 Workflow:
 
@@ -2986,9 +2986,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 5
+## Enterprise Case Study 5
 
-# Compliance Audit Automation
+## Compliance Audit Automation
 
 Automated tasks verify:
 
@@ -3005,7 +3005,7 @@ Benefits:
 
 ---
 
-# Automation Review Checklist
+## Automation Review Checklist
 
 | Control | Status |
 |----------|--------|
@@ -3022,7 +3022,7 @@ Benefits:
 
 ---
 
-# Common Automation Mistakes
+## Common Automation Mistakes
 
 | Mistake | Risk | Better Practice |
 |----------|------|-----------------|
@@ -3036,7 +3036,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Automation plays a major role in security operations.
 
@@ -3059,7 +3059,7 @@ Automation itself should be secured through:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Enterprise automation provides:
 
@@ -3072,7 +3072,7 @@ Enterprise automation provides:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3094,9 +3094,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is Linux automation?
 2. What is `cron`?
@@ -3111,7 +3111,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the cron execution environment.
 2. Why is logging important in automation?
@@ -3126,7 +3126,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design an enterprise automation architecture for 500 Linux servers.
 2. How would you secure privileged automation scripts?
@@ -3141,7 +3141,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Automation is essential for scalable Linux administration.
 - `cron` is ideal for recurring jobs, while `at` is intended for one-time tasks.
@@ -3152,9 +3152,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man cron`
 - `man crontab`
@@ -3165,7 +3165,7 @@ In this chapter, you learned:
 - `man logrotate`
 - `man bash`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - Red Hat Enterprise Linux Documentation
@@ -3178,11 +3178,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **22-Linux-Hardening.md**
 
-## Topics Covered
+### Topics Covered
 
 - Linux Hardening Fundamentals
 - Attack Surface Reduction

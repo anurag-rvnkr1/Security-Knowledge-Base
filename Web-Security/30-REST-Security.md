@@ -1,12 +1,12 @@
 # 30-REST-Security.md
 
-# Part 1 — Fundamentals of REST Security, REST Architecture, HTTP Security, and Enterprise Overview
+## Part 1 — Fundamentals of REST Security, REST Architecture, HTTP Security, and Enterprise Overview
 
 > **"REST security is not just about protecting endpoints. It is about securing every request, every response, every identity, and every interaction between distributed systems."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is REST?
+## What is REST?
 
 **REST (Representational State Transfer)** is an architectural style for designing networked applications.
 
@@ -49,7 +49,7 @@ REST is widely used because it is simple, scalable, and interoperable.
 
 ---
 
-# REST Security
+## REST Security
 
 REST Security refers to protecting RESTful APIs from unauthorized access, misuse, data exposure, and service disruption.
 
@@ -65,7 +65,7 @@ It focuses on:
 
 ---
 
-# Why REST Security Matters
+## Why REST Security Matters
 
 Modern organizations rely heavily on REST APIs.
 
@@ -99,7 +99,7 @@ REST APIs power:
 
 ---
 
-# REST Security Goals
+## REST Security Goals
 
 ```
 REST Security
@@ -123,7 +123,7 @@ REST Security
 
 ---
 
-# REST Architecture
+## REST Architecture
 
 REST separates clients and servers.
 
@@ -147,7 +147,7 @@ Each component has clearly defined responsibilities.
 
 ---
 
-# REST Architectural Constraints
+## REST Architectural Constraints
 
 REST is based on six architectural constraints.
 
@@ -173,7 +173,7 @@ These constraints improve scalability and maintainability.
 
 ---
 
-# Client-Server Constraint
+## Client-Server Constraint
 
 ```
 Client
@@ -191,7 +191,7 @@ Clients focus on presentation, while servers manage business logic and data.
 
 ---
 
-# Stateless Communication
+## Stateless Communication
 
 REST requests are stateless.
 
@@ -223,7 +223,7 @@ Each request contains all information required for processing.
 
 ---
 
-# Why Statelessness Improves Security
+## Why Statelessness Improves Security
 
 ```
 Each Request
@@ -249,7 +249,7 @@ Since every request is evaluated independently, authentication and authorization
 
 ---
 
-# Uniform Interface
+## Uniform Interface
 
 REST APIs expose resources using standardized interfaces.
 
@@ -269,7 +269,7 @@ Consistency simplifies development and security enforcement.
 
 ---
 
-# Layered Architecture
+## Layered Architecture
 
 ```
 Client
@@ -295,7 +295,7 @@ Each layer can implement additional security controls.
 
 ---
 
-# REST Resources
+## REST Resources
 
 Resources represent business objects.
 
@@ -323,7 +323,7 @@ Resources should expose only necessary functionality.
 
 ---
 
-# Resource Identifiers
+## Resource Identifiers
 
 REST resources are uniquely identified.
 
@@ -343,7 +343,7 @@ Identifiers should be stable, predictable for the application, and protected by 
 
 ---
 
-# HTTP Methods in REST
+## HTTP Methods in REST
 
 | Method | Purpose |
 |----------|----------|
@@ -357,7 +357,7 @@ Each method should align with its intended business purpose.
 
 ---
 
-# Safe vs Unsafe Methods
+## Safe vs Unsafe Methods
 
 | Safe Methods | Unsafe Methods |
 |--------------|----------------|
@@ -370,7 +370,7 @@ Each method should align with its intended business purpose.
 
 ---
 
-# Idempotent Methods
+## Idempotent Methods
 
 Idempotent operations produce the same intended server state when repeated.
 
@@ -388,7 +388,7 @@ Understanding idempotency helps developers design predictable APIs.
 
 ---
 
-# REST Request Lifecycle
+## REST Request Lifecycle
 
 ```
 Client
@@ -422,7 +422,7 @@ Every stage should include appropriate security controls.
 
 ---
 
-# REST Response Lifecycle
+## REST Response Lifecycle
 
 ```
 Application
@@ -448,7 +448,7 @@ Responses should expose only necessary information.
 
 ---
 
-# REST Data Formats
+## REST Data Formats
 
 REST commonly exchanges data using:
 
@@ -470,7 +470,7 @@ JSON is the most common representation in modern APIs.
 
 ---
 
-# REST Security Principles
+## REST Security Principles
 
 ```
 REST Security
@@ -498,7 +498,7 @@ These principles apply regardless of implementation technology.
 
 ---
 
-# Common REST Security Risks
+## Common REST Security Risks
 
 ```
 REST Risks
@@ -526,7 +526,7 @@ Most REST security issues arise from implementation flaws rather than the REST a
 
 ---
 
-# Enterprise REST Architecture
+## Enterprise REST Architecture
 
 ```
 Internet
@@ -564,7 +564,7 @@ Layered security improves resilience and operational visibility.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational insurance company provides REST APIs for mobile and web applications.
 
@@ -604,7 +604,7 @@ Each request is authenticated, authorized, validated, logged, and monitored befo
 
 ---
 
-# REST Security Workflow
+## REST Security Workflow
 
 ```
 Client
@@ -640,7 +640,7 @@ Response
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a secure REST architecture for an enterprise application.
 2. Identify authentication and authorization points.
@@ -652,7 +652,7 @@ Response
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is REST?
 2. What are the six REST architectural constraints?
@@ -667,7 +667,7 @@ Response
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use HTTPS for all REST communications.
 - Authenticate and authorize every protected request.
@@ -679,7 +679,7 @@ Response
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming REST itself provides security.
 - Using HTTP instead of HTTPS.
@@ -690,7 +690,7 @@ Response
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - REST is an architectural style, not a security mechanism.
 - REST security depends on proper authentication, authorization, validation, encryption, and monitoring.
@@ -698,15 +698,15 @@ Response
 - HTTP methods should be used consistently with their intended semantics.
 - Defense in depth, secure architecture, and operational visibility are essential for enterprise REST security.
 
-# 30-REST-Security.md
+## 30-REST-Security.md
 
-# Part 2 — Authentication, Authorization, Transport Security, Input Validation, Rate Limiting, and Secure REST API Design
+## Part 2 — Authentication, Authorization, Transport Security, Input Validation, Rate Limiting, and Secure REST API Design
 
 > **"A secure REST API verifies identity, enforces authorization, validates every request, protects data in transit, and continuously monitors every interaction."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -723,7 +723,7 @@ After completing this part, you will understand:
 
 ---
 
-# REST Authentication
+## REST Authentication
 
 Authentication verifies the identity of the client before granting access.
 
@@ -751,7 +751,7 @@ Every protected endpoint should require authentication.
 
 ---
 
-# Common Authentication Mechanisms
+## Common Authentication Mechanisms
 
 ```
 Authentication
@@ -777,7 +777,7 @@ The appropriate mechanism depends on the application's architecture and security
 
 ---
 
-# Authentication Workflow
+## Authentication Workflow
 
 ```
 Client
@@ -807,7 +807,7 @@ Authentication should occur before authorization decisions.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 Sensitive REST APIs should support strong authentication.
 
@@ -835,7 +835,7 @@ MFA significantly reduces the risk of account compromise.
 
 ---
 
-# REST Authorization
+## REST Authorization
 
 Authorization determines what an authenticated client is permitted to access.
 
@@ -859,7 +859,7 @@ Authorization should be evaluated for every protected resource.
 
 ---
 
-# Authorization Models
+## Authorization Models
 
 ```
 Authorization
@@ -881,7 +881,7 @@ Organizations often combine multiple models.
 
 ---
 
-# Resource-Level Authorization
+## Resource-Level Authorization
 
 Authorization should be enforced at the resource level.
 
@@ -909,7 +909,7 @@ Every request should verify that the requester is allowed to access the specific
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 ```
 Identity
@@ -931,7 +931,7 @@ Grant only the permissions necessary for legitimate business functions.
 
 ---
 
-# HTTPS for REST APIs
+## HTTPS for REST APIs
 
 REST APIs should always use encrypted communication.
 
@@ -955,7 +955,7 @@ Encryption protects confidentiality and integrity during transmission.
 
 ---
 
-# TLS Security
+## TLS Security
 
 TLS provides secure communication.
 
@@ -979,7 +979,7 @@ TLS protects data from interception and unauthorized modification while in trans
 
 ---
 
-# Secure Communication Principles
+## Secure Communication Principles
 
 ```
 Secure Communication
@@ -1003,7 +1003,7 @@ Transport security should follow current organizational and industry standards.
 
 ---
 
-# Request Validation
+## Request Validation
 
 Every request should be validated before processing.
 
@@ -1035,7 +1035,7 @@ Validation improves both security and reliability.
 
 ---
 
-# Validation Layers
+## Validation Layers
 
 ```
 Client Input
@@ -1061,7 +1061,7 @@ Layered validation reduces implementation errors.
 
 ---
 
-# Input Validation Checklist
+## Input Validation Checklist
 
 ```
 Validation
@@ -1087,7 +1087,7 @@ Validation should occur on the server regardless of client-side checks.
 
 ---
 
-# Output Encoding
+## Output Encoding
 
 Applications should safely prepare data before returning it to clients.
 
@@ -1111,7 +1111,7 @@ Output handling helps ensure responses remain well-formed and appropriate for th
 
 ---
 
-# Secure Error Handling
+## Secure Error Handling
 
 Applications should return consistent and informative error responses without exposing unnecessary implementation details.
 
@@ -1139,7 +1139,7 @@ Detailed diagnostic information should remain available only through protected s
 
 ---
 
-# Error Response Principles
+## Error Response Principles
 
 ```
 Error Handling
@@ -1163,7 +1163,7 @@ Consistency improves both usability and security.
 
 ---
 
-# HTTP Status Codes
+## HTTP Status Codes
 
 | Code | Meaning |
 |------|---------|
@@ -1181,7 +1181,7 @@ Applications should use status codes consistently.
 
 ---
 
-# Rate Limiting
+## Rate Limiting
 
 Rate limiting helps maintain service availability.
 
@@ -1213,7 +1213,7 @@ Rate limiting reduces abuse and supports fair resource usage.
 
 ---
 
-# Benefits of Rate Limiting
+## Benefits of Rate Limiting
 
 ```
 Rate Limiting
@@ -1235,7 +1235,7 @@ Rate Limiting
 
 ---
 
-# Request Size Controls
+## Request Size Controls
 
 Applications should define reasonable limits for incoming requests.
 
@@ -1263,7 +1263,7 @@ Limiting request size helps protect application resources.
 
 ---
 
-# Secure REST Response Design
+## Secure REST Response Design
 
 Responses should contain only information necessary for the requesting client.
 
@@ -1287,7 +1287,7 @@ Data minimization reduces unnecessary exposure.
 
 ---
 
-# API Versioning
+## API Versioning
 
 REST APIs evolve over time.
 
@@ -1307,7 +1307,7 @@ Version management enables improvements while supporting controlled migrations.
 
 ---
 
-# API Deprecation
+## API Deprecation
 
 ```
 Active Version
@@ -1329,7 +1329,7 @@ Consumers should receive adequate notice before an API version is retired.
 
 ---
 
-# REST Security Headers
+## REST Security Headers
 
 REST responses may include security-related HTTP headers.
 
@@ -1349,7 +1349,7 @@ Appropriate response headers complement transport security and secure client int
 
 ---
 
-# Secure REST API Design
+## Secure REST API Design
 
 ```
 Secure REST API
@@ -1377,7 +1377,7 @@ Security should be integrated into the API from the design phase.
 
 ---
 
-# Enterprise REST Request Flow
+## Enterprise REST Request Flow
 
 ```
 Client
@@ -1419,7 +1419,7 @@ Every stage contributes to secure request processing.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global healthcare provider secures REST APIs serving patient and clinician applications.
 
@@ -1459,7 +1459,7 @@ All requests are encrypted, authenticated, authorized, validated, logged, and mo
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1472,7 +1472,7 @@ All requests are encrypted, authenticated, authorized, validated, logged, and mo
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a secure REST authentication workflow.
 2. Compare RBAC and ABAC for a sample REST API.
@@ -1484,7 +1484,7 @@ All requests are encrypted, authenticated, authorized, validated, logged, and mo
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should every REST API use HTTPS?
 2. What is the difference between authentication and authorization?
@@ -1499,7 +1499,7 @@ All requests are encrypted, authenticated, authorized, validated, logged, and mo
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Enforce HTTPS for all REST endpoints.
 - Authenticate every protected request.
@@ -1512,7 +1512,7 @@ All requests are encrypted, authenticated, authorized, validated, logged, and mo
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Accepting client input without validation.
 - Using HTTP instead of HTTPS.
@@ -1524,7 +1524,7 @@ All requests are encrypted, authenticated, authorized, validated, logged, and mo
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - REST security depends on strong identity verification, authorization, transport security, validation, and operational controls.
 - HTTPS and TLS protect data during transmission.
@@ -1532,15 +1532,15 @@ All requests are encrypted, authenticated, authorized, validated, logged, and mo
 - Standardized error handling and secure responses improve both security and maintainability.
 - Rate limiting, version management, and defense in depth strengthen enterprise REST API security.
 
-# 30-REST-Security.md
+## 30-REST-Security.md
 
-# Part 3 — REST API Threats, OWASP Risks, Secure Operations, Logging, Monitoring, and Security Testing
+## Part 3 — REST API Threats, OWASP Risks, Secure Operations, Logging, Monitoring, and Security Testing
 
 > **"REST itself is not insecure. Most successful attacks exploit weaknesses in implementation, authorization, validation, configuration, or operational security rather than the REST architectural style."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1557,7 +1557,7 @@ After completing this part, you will understand:
 
 ---
 
-# REST Threat Landscape
+## REST Threat Landscape
 
 Modern REST APIs face numerous security challenges.
 
@@ -1589,7 +1589,7 @@ Most threats arise from insecure implementation rather than the REST architectur
 
 ---
 
-# OWASP API Security Risks
+## OWASP API Security Risks
 
 The OWASP API Security Top 10 categorizes the most significant API security issues.
 
@@ -1625,7 +1625,7 @@ These categories provide a structured framework for improving API security.
 
 ---
 
-# Broken Object Level Authorization (BOLA)
+## Broken Object Level Authorization (BOLA)
 
 Resource-level authorization is one of the most critical REST security requirements.
 
@@ -1649,7 +1649,7 @@ Every request for a protected resource should verify ownership or permission.
 
 ---
 
-# Function-Level Authorization
+## Function-Level Authorization
 
 Different users may perform different operations on the same resource.
 
@@ -1677,7 +1677,7 @@ Authorization should consider both the resource and the requested action.
 
 ---
 
-# Sensitive Data Exposure
+## Sensitive Data Exposure
 
 REST APIs should return only information required for the requested operation.
 
@@ -1701,7 +1701,7 @@ Reducing unnecessary data exposure minimizes security risk.
 
 ---
 
-# Data Classification
+## Data Classification
 
 Organizations should classify API data.
 
@@ -1725,7 +1725,7 @@ Different classifications require different protection measures.
 
 ---
 
-# Input Validation
+## Input Validation
 
 Every incoming request should be validated.
 
@@ -1749,7 +1749,7 @@ Validation prevents malformed or unexpected data from affecting application beha
 
 ---
 
-# Output Validation
+## Output Validation
 
 Responses should also be validated before being returned.
 
@@ -1773,7 +1773,7 @@ Output validation helps maintain consistency and prevent accidental data disclos
 
 ---
 
-# Secure Business Logic
+## Secure Business Logic
 
 Business rules should enforce organizational policies.
 
@@ -1801,7 +1801,7 @@ Security controls should be integrated into business workflows.
 
 ---
 
-# Business Logic Abuse
+## Business Logic Abuse
 
 Applications should verify that requests follow intended business processes.
 
@@ -1825,7 +1825,7 @@ Proper validation helps prevent unintended or unauthorized operations.
 
 ---
 
-# Security Misconfiguration
+## Security Misconfiguration
 
 Improper configuration increases attack surface.
 
@@ -1851,7 +1851,7 @@ Configuration should follow approved security baselines.
 
 ---
 
-# API Version Management
+## API Version Management
 
 Organizations often maintain multiple API versions.
 
@@ -1873,7 +1873,7 @@ Older versions should be monitored and retired according to governance policies.
 
 ---
 
-# API Inventory
+## API Inventory
 
 Every REST API should be documented.
 
@@ -1901,7 +1901,7 @@ Maintaining an inventory improves visibility and governance.
 
 ---
 
-# Logging
+## Logging
 
 Important security events should be logged.
 
@@ -1933,7 +1933,7 @@ Logging supports auditing, troubleshooting, and incident response.
 
 ---
 
-# What Should Be Logged?
+## What Should Be Logged?
 
 | Event | Purpose |
 |--------|----------|
@@ -1948,7 +1948,7 @@ Sensitive data should not be unnecessarily recorded in logs.
 
 ---
 
-# Monitoring
+## Monitoring
 
 Monitoring continuously evaluates API health and security.
 
@@ -1976,7 +1976,7 @@ Monitoring enables rapid detection of operational and security issues.
 
 ---
 
-# API Observability
+## API Observability
 
 Observability combines multiple telemetry sources.
 
@@ -1998,7 +1998,7 @@ Together, they provide insight into system health and performance.
 
 ---
 
-# REST Security Metrics
+## REST Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2014,7 +2014,7 @@ Security metrics help organizations measure improvements over time.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies risks before implementation.
 
@@ -2042,7 +2042,7 @@ Early planning reduces implementation risk.
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 REST security should be integrated throughout software development.
 
@@ -2078,7 +2078,7 @@ Security is most effective when incorporated from the beginning.
 
 ---
 
-# REST Security Testing
+## REST Security Testing
 
 Security testing validates implemented controls.
 
@@ -2108,7 +2108,7 @@ Testing should be continuous rather than limited to pre-release activities.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 REST APIs should implement multiple layers of protection.
 
@@ -2160,7 +2160,7 @@ No single security control should be relied upon exclusively.
 
 ---
 
-# Enterprise REST Architecture
+## Enterprise REST Architecture
 
 ```
 Internet
@@ -2210,7 +2210,7 @@ This layered approach improves resilience, governance, and operational visibilit
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail organization exposes REST APIs for online shopping, inventory management, and customer accounts.
 
@@ -2258,7 +2258,7 @@ Every request is authenticated, authorized, validated, logged, and monitored. AP
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2271,7 +2271,7 @@ Every request is authenticated, authorized, validated, logged, and monitored. AP
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a layered REST security architecture.
 2. Build a conceptual API inventory for a fictional organization.
@@ -2283,7 +2283,7 @@ Every request is authenticated, authorized, validated, logged, and monitored. AP
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Broken Object Level Authorization (BOLA)?
 2. Why is API inventory management important?
@@ -2298,7 +2298,7 @@ Every request is authenticated, authorized, validated, logged, and monitored. AP
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply authorization checks to every protected resource.
 - Maintain a complete inventory of all REST APIs.
@@ -2310,7 +2310,7 @@ Every request is authenticated, authorized, validated, logged, and monitored. AP
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming authentication alone protects resources.
 - Failing to maintain an API inventory.
@@ -2321,7 +2321,7 @@ Every request is authenticated, authorized, validated, logged, and monitored. AP
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - REST security requires strong authorization, secure business logic, operational visibility, and continuous governance.
 - Resource-level authorization is one of the most critical security controls for REST APIs.
@@ -2329,15 +2329,15 @@ Every request is authenticated, authorized, validated, logged, and monitored. AP
 - Threat modeling and Secure SDLC practices reduce security risks before deployment.
 - Defense in depth provides multiple layers of protection for enterprise REST environments.
 
-# 30-REST-Security.md
+## 30-REST-Security.md
 
-# Part 4 — Enterprise Governance, Zero Trust, Compliance, DevSecOps, Operational Excellence, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, Compliance, DevSecOps, Operational Excellence, and Chapter Summary
 
 > **"REST security is an ongoing process that combines secure design, strong identity, continuous monitoring, governance, automation, and operational excellence throughout the API lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2354,7 +2354,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise REST Governance
+## Enterprise REST Governance
 
 REST governance establishes organizational standards for designing, developing, deploying, operating, and retiring REST APIs.
 
@@ -2390,7 +2390,7 @@ Governance ensures REST APIs remain secure, consistent, and maintainable across 
 
 ---
 
-# REST Governance Framework
+## REST Governance Framework
 
 ```
 REST Governance
@@ -2420,7 +2420,7 @@ A governance framework helps maintain consistency across teams and environments.
 
 ---
 
-# REST API Lifecycle Governance
+## REST API Lifecycle Governance
 
 ```
 Requirements
@@ -2462,7 +2462,7 @@ Security reviews should occur throughout the lifecycle rather than only before d
 
 ---
 
-# Zero Trust for REST APIs
+## Zero Trust for REST APIs
 
 Zero Trust follows the principle of **"Never Trust, Always Verify."**
 
@@ -2498,7 +2498,7 @@ Every request is evaluated independently regardless of its origin.
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -2522,7 +2522,7 @@ These principles reduce reliance on implicit trust.
 
 ---
 
-# Identity-Centric Security
+## Identity-Centric Security
 
 Identity is the primary security boundary for REST services.
 
@@ -2546,7 +2546,7 @@ Every protected operation should be tied to a verified identity.
 
 ---
 
-# Secure Service-to-Service Communication
+## Secure Service-to-Service Communication
 
 Internal services also require strong security controls.
 
@@ -2570,7 +2570,7 @@ Internal network location alone should not be considered sufficient trust.
 
 ---
 
-# REST in Microservices
+## REST in Microservices
 
 Modern applications commonly consist of multiple REST-based services.
 
@@ -2602,7 +2602,7 @@ Each service should enforce its own security policies.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Security should be integrated into development and operations.
 
@@ -2638,7 +2638,7 @@ DevSecOps embeds security into every stage of software delivery.
 
 ---
 
-# REST Security in CI/CD
+## REST Security in CI/CD
 
 ```
 Developer
@@ -2668,7 +2668,7 @@ Automation helps identify issues earlier and improves consistency.
 
 ---
 
-# Change Management
+## Change Management
 
 REST APIs should follow structured change management processes.
 
@@ -2700,7 +2700,7 @@ Controlled changes reduce operational risk.
 
 ---
 
-# REST Compliance
+## REST Compliance
 
 Many regulations and industry frameworks require organizations to protect APIs appropriately.
 
@@ -2728,7 +2728,7 @@ Compliance should be viewed as a baseline rather than the final security objecti
 
 ---
 
-# REST Security Metrics
+## REST Security Metrics
 
 Organizations should measure the effectiveness of REST security controls.
 
@@ -2745,7 +2745,7 @@ Organizations should measure the effectiveness of REST security controls.
 
 ---
 
-# REST Security Dashboard
+## REST Security Dashboard
 
 ```
 Dashboard
@@ -2773,7 +2773,7 @@ Dashboards provide operational visibility for engineering and security teams.
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should prepare for REST security incidents.
 
@@ -2809,7 +2809,7 @@ A structured response minimizes business impact.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Every significant incident should be analyzed.
 
@@ -2841,7 +2841,7 @@ The objective is continual improvement rather than simply restoring service.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 REST security should evolve with changing technology and threats.
 
@@ -2873,7 +2873,7 @@ Continuous improvement increases long-term resilience.
 
 ---
 
-# REST Security Maturity Model
+## REST Security Maturity Model
 
 ```
 Level 1
@@ -2909,7 +2909,7 @@ Organizations gradually improve security capabilities over time.
 
 ---
 
-# Enterprise REST Architecture
+## Enterprise REST Architecture
 
 ```
                   Internet
@@ -2971,7 +2971,7 @@ This architecture demonstrates defense in depth using multiple complementary sec
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution exposes REST APIs for mobile banking, customer support, and payment processing.
 
@@ -3019,7 +3019,7 @@ All requests are authenticated, authorized, validated, logged, monitored, and go
 
 ---
 
-# Enterprise REST Security Checklist
+## Enterprise REST Security Checklist
 
 ```
 ✓ HTTPS Everywhere
@@ -3049,7 +3049,7 @@ All requests are authenticated, authorized, validated, logged, monitored, and go
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -3062,9 +3062,9 @@ All requests are authenticated, authorized, validated, logged, monitored, and go
 
 ---
 
-# REST Security Quick Revision
+## REST Security Quick Revision
 
-## Secure Request Flow
+### Secure Request Flow
 
 ```
 Client
@@ -3100,7 +3100,7 @@ Response
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 ```
 Internet
@@ -3136,7 +3136,7 @@ Monitoring
 
 ---
 
-## Zero Trust
+### Zero Trust
 
 ```
 Request
@@ -3160,7 +3160,7 @@ Monitor
 
 ---
 
-## REST Lifecycle
+### REST Lifecycle
 
 ```
 Design
@@ -3188,7 +3188,7 @@ Retire
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a Zero Trust architecture for a REST-based enterprise application.
 2. Create a governance policy for REST API versioning and retirement.
@@ -3200,7 +3200,7 @@ Retire
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is REST governance?
 2. Why is Zero Trust important for REST APIs?
@@ -3215,7 +3215,7 @@ Retire
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply HTTPS to every REST endpoint.
 - Verify identity and authorization for every protected request.
@@ -3227,7 +3227,7 @@ Retire
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting internal network traffic by default.
 - Deploying undocumented or unmanaged REST APIs.
@@ -3238,7 +3238,7 @@ Retire
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

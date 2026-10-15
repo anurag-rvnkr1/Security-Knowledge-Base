@@ -29,7 +29,7 @@ While Docker Compose is primarily intended for single-host environments, many of
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Modern applications rarely consist of a single container.
 
@@ -80,7 +80,7 @@ Benefits include:
 
 ---
 
-# What is Docker Compose?
+## What is Docker Compose?
 
 Docker Compose is a declarative configuration tool.
 
@@ -121,7 +121,7 @@ Docker Compose creates and manages the complete application stack automatically.
 
 ---
 
-# Docker Compose Architecture
+## Docker Compose Architecture
 
 ```
 Developer
@@ -157,7 +157,7 @@ The Compose CLI communicates with the Docker Engine, which creates the required 
 
 ---
 
-# Docker Compose Workflow
+## Docker Compose Workflow
 
 ```
 Developer
@@ -195,7 +195,7 @@ This workflow replaces multiple manual Docker commands.
 
 ---
 
-# Docker Compose File
+## Docker Compose File
 
 Modern Docker Compose uses:
 
@@ -213,7 +213,7 @@ Both names are commonly recognized, but the modern convention is `compose.yaml`.
 
 ---
 
-# Compose File Structure
+## Compose File Structure
 
 A Compose file typically contains:
 
@@ -241,7 +241,7 @@ Not every project requires every section.
 
 ---
 
-# Services
+## Services
 
 A **service** defines a containerized application.
 
@@ -267,7 +267,7 @@ Examples:
 
 ---
 
-# Image
+## Image
 
 A service can reference an existing image.
 
@@ -285,7 +285,7 @@ Docker downloads the image if it is not already available locally.
 
 ---
 
-# Build
+## Build
 
 Instead of downloading an image, Docker Compose can build one.
 
@@ -303,7 +303,7 @@ Compose reads the Dockerfile and builds the image before starting the container.
 
 ---
 
-# Ports
+## Ports
 
 Expose container ports.
 
@@ -333,7 +333,7 @@ Container
 
 ---
 
-# Environment Variables
+## Environment Variables
 
 Example:
 
@@ -349,7 +349,7 @@ Environment variables configure application behavior without modifying the image
 
 ---
 
-# Volumes
+## Volumes
 
 Persistent storage:
 
@@ -367,7 +367,7 @@ Benefits:
 
 ---
 
-# Networks
+## Networks
 
 Docker Compose automatically creates a default network.
 
@@ -383,7 +383,7 @@ Containers attached to the same network can communicate securely using service n
 
 ---
 
-# Restart Policy
+## Restart Policy
 
 Example:
 
@@ -402,7 +402,7 @@ Restart policies improve application availability.
 
 ---
 
-# Depends On
+## Depends On
 
 Example:
 
@@ -418,7 +418,7 @@ This expresses a startup dependency between services.
 
 ---
 
-# Complete Example
+## Complete Example
 
 ```yaml
 services:
@@ -458,7 +458,7 @@ using a single Compose file.
 
 ---
 
-# Docker Compose Lifecycle
+## Docker Compose Lifecycle
 
 ```
 compose.yaml
@@ -496,21 +496,21 @@ Volumes are preserved by default unless explicitly removed.
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-## Declarative Configuration
+### Declarative Configuration
 
 Compose describes the desired application state instead of requiring manual commands.
 
 ---
 
-## Multi-Container Applications
+### Multi-Container Applications
 
 One Compose file can define an entire application stack.
 
 ---
 
-## Service Discovery
+### Service Discovery
 
 Containers on the same Compose network can communicate using service names instead of IP addresses.
 
@@ -532,13 +532,13 @@ No manual IP configuration is required.
 
 ---
 
-## Portability
+### Portability
 
 Compose files can be shared through version control, enabling consistent development environments.
 
 ---
 
-## Automation
+### Automation
 
 Compose integrates naturally with:
 
@@ -549,7 +549,7 @@ Compose integrates naturally with:
 
 ---
 
-## How It Works
+### How It Works
 
 Docker Compose automates the deployment and management of multi-container applications. Instead of manually creating networks, volumes, and containers one at a time, Docker Compose reads a declarative YAML configuration file and performs all required operations automatically.
 
@@ -575,7 +575,7 @@ This allows an entire application stack to be deployed using a single command.
 
 ---
 
-# Docker Compose Workflow
+## Docker Compose Workflow
 
 ```
 compose.yaml
@@ -623,7 +623,7 @@ Each stage is handled automatically by Docker Compose.
 
 ---
 
-## Step 1 – Read the Compose File
+### Step 1 – Read the Compose File
 
 Docker Compose first searches for:
 
@@ -646,7 +646,7 @@ Compose validates the syntax before proceeding.
 
 ---
 
-## Step 2 – Build or Pull Images
+### Step 2 – Build or Pull Images
 
 For each service:
 
@@ -695,7 +695,7 @@ Docker downloads the image if it is not available locally.
 
 ---
 
-## Step 3 – Create Networks
+### Step 3 – Create Networks
 
 Docker Compose creates a default network automatically.
 
@@ -729,7 +729,7 @@ This greatly simplifies service communication.
 
 ---
 
-## Step 4 – Create Volumes
+### Step 4 – Create Volumes
 
 Persistent volumes are created before containers start.
 
@@ -759,7 +759,7 @@ Data remains available even if the container is recreated.
 
 ---
 
-## Step 5 – Create Containers
+### Step 5 – Create Containers
 
 Compose creates containers for every defined service.
 
@@ -789,7 +789,7 @@ Each service becomes one or more Docker containers.
 
 ---
 
-## Step 6 – Configure Networking
+### Step 6 – Configure Networking
 
 Compose automatically:
 
@@ -820,7 +820,7 @@ Containers communicate using service names.
 
 ---
 
-## Step 7 – Apply Environment Variables
+### Step 7 – Apply Environment Variables
 
 Compose injects configured environment variables.
 
@@ -844,7 +844,7 @@ Environment variables allow the same image to behave differently across environm
 
 ---
 
-## Step 8 – Start Services
+### Step 8 – Start Services
 
 Docker starts every container.
 
@@ -873,7 +873,7 @@ Remember that this controls startup order but does not ensure application readin
 
 ---
 
-## Step 9 – Monitor Running Services
+### Step 9 – Monitor Running Services
 
 The application stack remains active.
 
@@ -891,9 +891,9 @@ These commands provide visibility into running services.
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Web Server + Database
+### Example 1 – Web Server + Database
 
 Compose file:
 
@@ -931,7 +931,7 @@ Both services can communicate immediately.
 
 ---
 
-## Example 2 – Flask + Redis
+### Example 2 – Flask + Redis
 
 ```
 Flask
@@ -959,7 +959,7 @@ instead of an IP address.
 
 ---
 
-## Example 3 – Development Environment
+### Example 3 – Development Environment
 
 One Compose file launches:
 
@@ -993,7 +993,7 @@ No manual configuration is required.
 
 ---
 
-## Example 4 – Local Testing
+### Example 4 – Local Testing
 
 Before deploying to production:
 
@@ -1013,9 +1013,9 @@ Compose enables consistent local testing that closely mirrors production archite
 
 ---
 
-# Hands-on Commands
+## Hands-on Commands
 
-## Start Services
+### Start Services
 
 ```bash
 docker compose up
@@ -1025,7 +1025,7 @@ Creates and starts the application stack.
 
 ---
 
-## Start in Detached Mode
+### Start in Detached Mode
 
 ```bash
 docker compose up -d
@@ -1035,7 +1035,7 @@ Runs all services in the background.
 
 ---
 
-## Stop Services
+### Stop Services
 
 ```bash
 docker compose stop
@@ -1045,7 +1045,7 @@ Stops running containers without removing them.
 
 ---
 
-## Restart Services
+### Restart Services
 
 ```bash
 docker compose restart
@@ -1055,7 +1055,7 @@ Restarts all services.
 
 ---
 
-## View Running Services
+### View Running Services
 
 ```bash
 docker compose ps
@@ -1065,7 +1065,7 @@ Lists Compose-managed containers.
 
 ---
 
-## View Logs
+### View Logs
 
 ```bash
 docker compose logs
@@ -1075,7 +1075,7 @@ Displays logs from all services.
 
 ---
 
-## Follow Logs
+### Follow Logs
 
 ```bash
 docker compose logs -f
@@ -1085,7 +1085,7 @@ Streams logs in real time.
 
 ---
 
-## Build Images
+### Build Images
 
 ```bash
 docker compose build
@@ -1095,7 +1095,7 @@ Builds images for services using the `build` directive.
 
 ---
 
-## Pull Images
+### Pull Images
 
 ```bash
 docker compose pull
@@ -1105,7 +1105,7 @@ Downloads newer versions of referenced images.
 
 ---
 
-## Remove the Stack
+### Remove the Stack
 
 ```bash
 docker compose down
@@ -1120,7 +1120,7 @@ Volumes are retained by default.
 
 ---
 
-## Remove Everything Including Volumes
+### Remove Everything Including Volumes
 
 ```bash
 docker compose down -v
@@ -1132,9 +1132,9 @@ Use this carefully because persistent data will be deleted.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Store the Compose File in Version Control
+#### 1. Store the Compose File in Version Control
 
 Treat `compose.yaml` as application infrastructure code.
 
@@ -1142,7 +1142,7 @@ Track changes using Git alongside the application source code.
 
 ---
 
-### 2. Use Service Names for Communication
+#### 2. Use Service Names for Communication
 
 Instead of hardcoding IP addresses:
 
@@ -1160,7 +1160,7 @@ Docker Compose provides automatic DNS resolution between services.
 
 ---
 
-### 3. Separate Configuration from Images
+#### 3. Separate Configuration from Images
 
 Use:
 
@@ -1172,13 +1172,13 @@ instead of modifying images for different environments.
 
 ---
 
-### 4. Use Named Volumes for Persistent Data
+#### 4. Use Named Volumes for Persistent Data
 
 Applications such as PostgreSQL, MySQL, and Redis should store important data in named volumes rather than the container filesystem.
 
 ---
 
-### 5. Pin Image Versions
+#### 5. Pin Image Versions
 
 Instead of:
 
@@ -1196,7 +1196,7 @@ Version pinning provides reproducible deployments.
 
 ---
 
-### 6. Organize Large Compose Files
+#### 6. Organize Large Compose Files
 
 Group related configuration logically:
 
@@ -1209,7 +1209,7 @@ Consistent formatting improves readability and maintainability.
 
 ---
 
-### 7. Validate Before Deployment
+#### 7. Validate Before Deployment
 
 Before deploying, verify:
 
@@ -1224,13 +1224,13 @@ Validation reduces deployment failures.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Docker Compose greatly simplifies multi-container deployments, but incorrect configuration can lead to networking issues, startup failures, data loss, security risks, and maintenance challenges. Understanding the following common mistakes will help you create reliable and production-ready Compose configurations.
 
 ---
 
-# 1. Confusing Docker Compose with Docker
+## 1. Confusing Docker Compose with Docker
 
 Many beginners think Docker Compose is a replacement for Docker.
 
@@ -1256,7 +1256,7 @@ Docker Compose **uses Docker** to create and manage containers.
 
 ---
 
-# 2. Using Compose for Large Production Clusters
+## 2. Using Compose for Large Production Clusters
 
 Docker Compose is designed primarily for:
 
@@ -1277,7 +1277,7 @@ Compose is excellent for development but not a complete orchestration platform.
 
 ---
 
-# 3. Using `latest` Image Tags
+## 3. Using `latest` Image Tags
 
 Avoid:
 
@@ -1299,7 +1299,7 @@ Benefits:
 
 ---
 
-# 4. Hardcoding Secrets
+## 4. Hardcoding Secrets
 
 Never place sensitive information directly in the Compose file.
 
@@ -1322,7 +1322,7 @@ Sensitive information should not be committed to version control.
 
 ---
 
-# 5. Forgetting Persistent Volumes
+## 5. Forgetting Persistent Volumes
 
 Incorrect configuration:
 
@@ -1354,7 +1354,7 @@ Named volumes preserve application data across container recreation.
 
 ---
 
-# 6. Assuming `depends_on` Waits for Readiness
+## 6. Assuming `depends_on` Waits for Readiness
 
 Many developers believe:
 
@@ -1386,7 +1386,7 @@ For applications that require readiness, use:
 
 ---
 
-# 7. Publishing Every Port
+## 7. Publishing Every Port
 
 Poor example:
 
@@ -1426,7 +1426,7 @@ Internal services should generally remain accessible only within the Compose net
 
 ---
 
-# 8. Using IP Addresses Instead of Service Names
+## 8. Using IP Addresses Instead of Service Names
 
 Incorrect:
 
@@ -1450,7 +1450,7 @@ Service names are stable, while container IP addresses may change.
 
 ---
 
-# 9. Ignoring Restart Policies
+## 9. Ignoring Restart Policies
 
 Without restart policies:
 
@@ -1476,7 +1476,7 @@ Appropriate restart policies improve application availability.
 
 ---
 
-# 10. Creating One Giant Compose File
+## 10. Creating One Giant Compose File
 
 Large Compose files become difficult to maintain.
 
@@ -1490,7 +1490,7 @@ consider organizing services logically or using Compose overrides for different 
 
 ---
 
-# 11. Ignoring Environment Variables
+## 11. Ignoring Environment Variables
 
 Avoid modifying the Compose file for every environment.
 
@@ -1520,7 +1520,7 @@ External configuration improves portability.
 
 ---
 
-# 12. Running Everything as Root
+## 12. Running Everything as Root
 
 Many official images run as `root` by default.
 
@@ -1534,7 +1534,7 @@ This reduces the impact of vulnerabilities.
 
 ---
 
-# 13. Forgetting to Clean Up
+## 13. Forgetting to Clean Up
 
 Repeated testing can leave behind:
 
@@ -1547,7 +1547,7 @@ Use cleanup commands periodically to maintain a healthy development environment.
 
 ---
 
-# 14. Not Validating the Compose File
+## 14. Not Validating the Compose File
 
 Before deployment, validate:
 
@@ -1562,7 +1562,7 @@ A small formatting mistake can prevent the entire application stack from startin
 
 ---
 
-# 15. Treating Compose Files as Temporary Scripts
+## 15. Treating Compose Files as Temporary Scripts
 
 A Compose file represents infrastructure.
 
@@ -1578,9 +1578,9 @@ Treat Compose files with the same discipline as application source code.
 
 ---
 
-# Docker Compose Quick Revision
+## Docker Compose Quick Revision
 
-## Basic Workflow
+### Basic Workflow
 
 ```
 compose.yaml
@@ -1608,7 +1608,7 @@ Running Application
 
 ---
 
-## Common Commands
+### Common Commands
 
 ```bash
 docker compose up
@@ -1632,7 +1632,7 @@ docker compose pull
 
 ---
 
-## Core Compose Components
+### Core Compose Components
 
 ```
 Services
@@ -1660,7 +1660,7 @@ Dependencies
 
 ---
 
-## Service Communication
+### Service Communication
 
 ```
 Web
@@ -1678,7 +1678,7 @@ Containers communicate using **service names**, not IP addresses.
 
 ---
 
-# Docker Compose Checklist
+## Docker Compose Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1700,9 +1700,9 @@ Containers communicate using **service names**, not IP addresses.
 
 ---
 
-# References
+## References
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker Compose Documentation
 - Compose File Reference
@@ -1712,14 +1712,14 @@ Containers communicate using **service names**, not IP addresses.
 
 ---
 
-## OCI Standards
+### OCI Standards
 
 - Open Container Initiative (OCI) Image Specification
 - Open Container Initiative (OCI) Runtime Specification
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Documentation
 - Cloud Native Computing Foundation (CNCF)
@@ -1727,7 +1727,7 @@ Containers communicate using **service names**, not IP addresses.
 
 ---
 
-## Security Resources
+### Security Resources
 
 - NIST SP 800-190 — Application Container Security Guide
 - OWASP Docker Security Cheat Sheet
@@ -1736,7 +1736,7 @@ Containers communicate using **service names**, not IP addresses.
 
 ---
 
-## Books
+### Books
 
 - *Docker Deep Dive* — Nigel Poulton
 - *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
@@ -1745,7 +1745,7 @@ Containers communicate using **service names**, not IP addresses.
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Docker Labs

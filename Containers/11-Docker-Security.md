@@ -23,7 +23,7 @@ Modern organizations integrate Docker security into **DevSecOps**, ensuring secu
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Suppose an attacker compromises a vulnerable container.
 
@@ -59,7 +59,7 @@ Implementing Docker security significantly reduces these risks.
 
 ---
 
-# Docker Security Architecture
+## Docker Security Architecture
 
 ```
                 Internet
@@ -101,7 +101,7 @@ Security must be applied at every layer of the container ecosystem.
 
 ---
 
-# Docker Security Layers
+## Docker Security Layers
 
 Docker security follows a layered defense approach.
 
@@ -133,7 +133,7 @@ Each layer requires its own security controls.
 
 ---
 
-# Host Security
+## Host Security
 
 The Docker host is the foundation of every container.
 
@@ -150,7 +150,7 @@ A compromised host can affect every container running on it.
 
 ---
 
-# Image Security
+## Image Security
 
 Container images should be:
 
@@ -171,7 +171,7 @@ Always prefer official or trusted images.
 
 ---
 
-# Container Security
+## Container Security
 
 Running containers should follow security best practices.
 
@@ -188,7 +188,7 @@ Containers should have only the permissions they require.
 
 ---
 
-# Runtime Security
+## Runtime Security
 
 Security continues after deployment.
 
@@ -204,7 +204,7 @@ Runtime monitoring helps detect attacks that occur after deployment.
 
 ---
 
-# Registry Security
+## Registry Security
 
 Container registries should be protected through:
 
@@ -219,7 +219,7 @@ Private registries should be accessible only to authorized users and systems.
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 Never store secrets inside:
 
@@ -240,7 +240,7 @@ Use dedicated secret management solutions or secure runtime injection.
 
 ---
 
-# Network Security
+## Network Security
 
 Reduce the attack surface by:
 
@@ -254,7 +254,7 @@ Internal services should not be exposed directly to the Internet unless necessar
 
 ---
 
-# Access Control
+## Access Control
 
 Apply the Principle of Least Privilege.
 
@@ -269,7 +269,7 @@ Only authorized users should manage container infrastructure.
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Regularly:
 
@@ -283,7 +283,7 @@ Security is an ongoing process rather than a one-time activity.
 
 ---
 
-# Docker Security Lifecycle
+## Docker Security Lifecycle
 
 ```
 Write Dockerfile
@@ -321,7 +321,7 @@ Security should be integrated into every stage of the lifecycle.
 
 ---
 
-# Threats Against Containers
+## Threats Against Containers
 
 Common threats include:
 
@@ -339,45 +339,45 @@ Understanding these threats helps organizations implement effective defenses.
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-## Defense in Depth
+### Defense in Depth
 
 Protect every layer rather than relying on a single security control.
 
 ---
 
-## Least Privilege
+### Least Privilege
 
 Grant containers and users only the permissions necessary to perform their tasks.
 
 ---
 
-## Immutable Infrastructure
+### Immutable Infrastructure
 
 Instead of modifying running containers, rebuild secure images and redeploy.
 
 ---
 
-## Continuous Security
+### Continuous Security
 
 Container security must be continuously monitored, updated, and improved.
 
 ---
 
-## Secure Supply Chain
+### Secure Supply Chain
 
 Security begins during image creation and continues through registry storage, deployment, and runtime.
 
 ---
 
-## DevSecOps
+### DevSecOps
 
 Security should be integrated into CI/CD pipelines rather than added only before production.
 
 ---
 
-## How It Works
+### How It Works
 
 Docker security is implemented throughout the entire container lifecycle—from writing the Dockerfile to monitoring containers in production. Instead of relying on a single security mechanism, Docker uses a layered security model that combines Linux kernel features, secure image practices, access controls, runtime restrictions, and continuous monitoring.
 
@@ -385,7 +385,7 @@ The objective is to ensure that even if one security layer fails, additional con
 
 ---
 
-# Docker Security Lifecycle
+## Docker Security Lifecycle
 
 ```
 Developer
@@ -431,7 +431,7 @@ Security is a continuous process—not a one-time configuration.
 
 ---
 
-# Step 1 – Build a Secure Image
+## Step 1 – Build a Secure Image
 
 A secure deployment begins with the Dockerfile.
 
@@ -460,7 +460,7 @@ Security improvements include:
 
 ---
 
-# Step 2 – Scan the Image
+## Step 2 – Scan the Image
 
 Before publishing an image:
 
@@ -491,7 +491,7 @@ Images should be scanned before deployment and periodically afterward.
 
 ---
 
-# Step 3 – Push to a Secure Registry
+## Step 3 – Push to a Secure Registry
 
 Workflow:
 
@@ -522,7 +522,7 @@ Only authorized users and CI/CD systems should have permission to push images.
 
 ---
 
-# Step 4 – Deploy the Container
+## Step 4 – Deploy the Container
 
 When a container starts:
 
@@ -542,7 +542,7 @@ These Linux kernel features provide the foundation for container isolation.
 
 ---
 
-# Step 5 – Restrict Container Privileges
+## Step 5 – Restrict Container Privileges
 
 Containers should run with only the permissions they require.
 
@@ -572,7 +572,7 @@ Applying the Principle of Least Privilege reduces the impact of potential compro
 
 ---
 
-# Step 6 – Protect Secrets
+## Step 6 – Protect Secrets
 
 Instead of:
 
@@ -604,7 +604,7 @@ The image remains free of sensitive information.
 
 ---
 
-# Step 7 – Secure Networking
+## Step 7 – Secure Networking
 
 Application architecture:
 
@@ -634,7 +634,7 @@ Internal communication occurs over private container networks.
 
 ---
 
-# Step 8 – Runtime Monitoring
+## Step 8 – Runtime Monitoring
 
 After deployment:
 
@@ -668,7 +668,7 @@ Runtime monitoring can detect:
 
 ---
 
-# Step 9 – Patch and Rebuild
+## Step 9 – Patch and Rebuild
 
 Suppose a vulnerability is discovered.
 
@@ -692,9 +692,9 @@ Containers are replaced rather than manually modified.
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Running as a Non-Root User
+### Example 1 – Running as a Non-Root User
 
 Dockerfile:
 
@@ -712,7 +712,7 @@ Benefits:
 
 ---
 
-## Example 2 – Read-Only Filesystem
+### Example 2 – Read-Only Filesystem
 
 Container:
 
@@ -732,7 +732,7 @@ This limits unauthorized modification of application files.
 
 ---
 
-## Example 3 – Minimal Base Image
+### Example 3 – Minimal Base Image
 
 Instead of:
 
@@ -755,7 +755,7 @@ Benefits:
 
 ---
 
-## Example 4 – Private Registry
+### Example 4 – Private Registry
 
 Workflow:
 
@@ -779,9 +779,9 @@ Unauthorized users cannot access private application images.
 
 ---
 
-# Hands-on Commands
+## Hands-on Commands
 
-## List Running Containers
+### List Running Containers
 
 ```bash
 docker ps
@@ -791,7 +791,7 @@ Review active containers.
 
 ---
 
-## Inspect Container Configuration
+### Inspect Container Configuration
 
 ```bash
 docker inspect container_name
@@ -807,7 +807,7 @@ Check:
 
 ---
 
-## Display Running Processes
+### Display Running Processes
 
 ```bash
 docker top container_name
@@ -817,7 +817,7 @@ Verify the expected processes are running.
 
 ---
 
-## View Logs
+### View Logs
 
 ```bash
 docker logs container_name
@@ -827,7 +827,7 @@ Review application output for errors or suspicious activity.
 
 ---
 
-## Display Resource Usage
+### Display Resource Usage
 
 ```bash
 docker stats
@@ -844,7 +844,7 @@ Unexpected spikes may indicate performance issues or malicious behavior.
 
 ---
 
-## Verify Image History
+### Verify Image History
 
 ```bash
 docker history image_name
@@ -854,7 +854,7 @@ Review image layers and build history.
 
 ---
 
-## Inspect Image Metadata
+### Inspect Image Metadata
 
 ```bash
 docker inspect image_name
@@ -864,7 +864,7 @@ Examine image configuration and metadata.
 
 ---
 
-## Remove Unused Resources
+### Remove Unused Resources
 
 ```bash
 docker system prune
@@ -876,9 +876,9 @@ Use with caution, particularly on shared or production systems.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Official or Trusted Images
+#### 1. Use Official or Trusted Images
 
 Prefer images published by:
 
@@ -890,7 +890,7 @@ Avoid unverified images from unknown sources.
 
 ---
 
-### 2. Keep Images Minimal
+#### 2. Keep Images Minimal
 
 Smaller images contain:
 
@@ -901,7 +901,7 @@ Smaller images contain:
 
 ---
 
-### 3. Run Containers as Non-Root
+#### 3. Run Containers as Non-Root
 
 Avoid running applications with root privileges unless absolutely necessary.
 
@@ -909,13 +909,13 @@ Use the `USER` instruction in the Dockerfile whenever possible.
 
 ---
 
-### 4. Scan Images Regularly
+#### 4. Scan Images Regularly
 
 Integrate vulnerability scanning into CI/CD pipelines and repeat scans periodically as new vulnerabilities are disclosed.
 
 ---
 
-### 5. Never Store Secrets in Images
+#### 5. Never Store Secrets in Images
 
 Use:
 
@@ -927,7 +927,7 @@ Never commit secrets to source code or Dockerfiles.
 
 ---
 
-### 6. Restrict Network Exposure
+#### 6. Restrict Network Exposure
 
 Expose only the ports required by external users.
 
@@ -935,7 +935,7 @@ Keep databases, caches, and internal services on private networks.
 
 ---
 
-### 7. Monitor Continuously
+#### 7. Monitor Continuously
 
 Monitor:
 
@@ -949,7 +949,7 @@ Continuous monitoring improves detection and response to security incidents.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Container security is often misunderstood because many users assume Docker automatically secures applications. While Docker provides important isolation mechanisms, security depends on how images, containers, hosts, networks, registries, and deployment pipelines are configured.
 
@@ -957,7 +957,7 @@ The following are the most common Docker security mistakes observed in real-worl
 
 ---
 
-# 1. Running Containers as Root
+## 1. Running Containers as Root
 
 By default, many images execute applications as the **root** user.
 
@@ -999,7 +999,7 @@ Follow the Principle of Least Privilege whenever possible.
 
 ---
 
-# 2. Using Untrusted Images
+## 2. Using Untrusted Images
 
 Poor practice:
 
@@ -1030,7 +1030,7 @@ Prefer:
 
 ---
 
-# 3. Never Updating Images
+## 3. Never Updating Images
 
 Old images accumulate vulnerabilities over time.
 
@@ -1058,7 +1058,7 @@ Security patches are delivered through updated images, not by modifying running 
 
 ---
 
-# 4. Hardcoding Secrets
+## 4. Hardcoding Secrets
 
 Never place secrets in:
 
@@ -1089,7 +1089,7 @@ Use:
 
 ---
 
-# 5. Exposing Too Many Ports
+## 5. Exposing Too Many Ports
 
 Poor example:
 
@@ -1113,7 +1113,7 @@ Expose only the services that must be reachable externally.
 
 ---
 
-# 6. Ignoring Image Scanning
+## 6. Ignoring Image Scanning
 
 Many deployments skip vulnerability scanning.
 
@@ -1143,7 +1143,7 @@ Do not deploy images with known high-severity vulnerabilities unless there is a 
 
 ---
 
-# 7. Assuming Containers Are Virtual Machines
+## 7. Assuming Containers Are Virtual Machines
 
 Containers share the host kernel.
 
@@ -1165,7 +1165,7 @@ Protect the host because its security affects every container.
 
 ---
 
-# 8. Running Privileged Containers
+## 8. Running Privileged Containers
 
 Example:
 
@@ -1185,7 +1185,7 @@ Avoid privileged mode unless there is a clearly justified requirement.
 
 ---
 
-# 9. Ignoring Container Logs
+## 9. Ignoring Container Logs
 
 Security events often appear first in application logs.
 
@@ -1201,7 +1201,7 @@ Logs are a critical source of operational and security insight.
 
 ---
 
-# 10. Giving Containers Excessive Permissions
+## 10. Giving Containers Excessive Permissions
 
 Containers should not receive unnecessary:
 
@@ -1214,7 +1214,7 @@ Restrict permissions to the minimum required for the application.
 
 ---
 
-# 11. Forgetting Runtime Security
+## 11. Forgetting Runtime Security
 
 Security does not end after deployment.
 
@@ -1230,7 +1230,7 @@ Runtime monitoring complements preventive security controls.
 
 ---
 
-# 12. Skipping Host Security
+## 12. Skipping Host Security
 
 A secure container cannot compensate for an insecure host.
 
@@ -1244,7 +1244,7 @@ Protect the Docker host by:
 
 ---
 
-# 13. Trusting Every Registry
+## 13. Trusting Every Registry
 
 Not every registry provides the same level of security.
 
@@ -1261,7 +1261,7 @@ Prefer trusted organizational or official registries.
 
 ---
 
-# 14. Forgetting Supply Chain Security
+## 14. Forgetting Supply Chain Security
 
 Modern attacks increasingly target the software supply chain.
 
@@ -1295,7 +1295,7 @@ Each stage should include security verification.
 
 ---
 
-# 15. Treating Security as a Final Step
+## 15. Treating Security as a Final Step
 
 Traditional workflow:
 
@@ -1341,9 +1341,9 @@ Security should be integrated continuously throughout the development lifecycle.
 
 ---
 
-# Docker Security Quick Revision
+## Docker Security Quick Revision
 
-## Defense in Depth
+### Defense in Depth
 
 ```
 Application
@@ -1373,7 +1373,7 @@ Multiple security layers provide stronger protection than any single control.
 
 ---
 
-## Secure Image Workflow
+### Secure Image Workflow
 
 ```
 Trusted Base Image
@@ -1397,7 +1397,7 @@ Deploy
 
 ---
 
-## Security Controls
+### Security Controls
 
 - Non-root users
 - Minimal images
@@ -1411,7 +1411,7 @@ Deploy
 
 ---
 
-## Common Security Commands
+### Common Security Commands
 
 ```bash
 docker inspect
@@ -1431,7 +1431,7 @@ These commands assist with inspection, monitoring, and maintenance. They complem
 
 ---
 
-# Docker Security Checklist
+## Docker Security Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1453,9 +1453,9 @@ These commands assist with inspection, monitoring, and maintenance. They complem
 
 ---
 
-# References
+## References
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker Security Documentation
 - Docker Engine Security Guide
@@ -1465,7 +1465,7 @@ These commands assist with inspection, monitoring, and maintenance. They complem
 
 ---
 
-## OCI Standards
+### OCI Standards
 
 - OCI Image Specification
 - OCI Runtime Specification
@@ -1473,7 +1473,7 @@ These commands assist with inspection, monitoring, and maintenance. They complem
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Security Documentation
 - Cloud Native Computing Foundation (CNCF)
@@ -1482,7 +1482,7 @@ These commands assist with inspection, monitoring, and maintenance. They complem
 
 ---
 
-## Security Resources
+### Security Resources
 
 - NIST SP 800-190 — Application Container Security Guide
 - OWASP Docker Security Cheat Sheet
@@ -1494,7 +1494,7 @@ These commands assist with inspection, monitoring, and maintenance. They complem
 
 ---
 
-## Books
+### Books
 
 - *Container Security* — Liz Rice
 - *Docker Deep Dive* — Nigel Poulton
@@ -1503,7 +1503,7 @@ These commands assist with inspection, monitoring, and maintenance. They complem
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Docker Labs

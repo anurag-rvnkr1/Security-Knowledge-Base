@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Digital evidence is information stored or transmitted in digital form that can help establish:
 
@@ -58,7 +58,7 @@ Digital forensics provides the methods used to collect and analyze this informat
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Poor evidence handling can result in:
 
@@ -83,7 +83,7 @@ A technically correct investigation can still become unreliable if evidence hand
 
 ---
 
-# Evidence Lifecycle
+## Evidence Lifecycle
 
 A practical evidence lifecycle is:
 
@@ -127,9 +127,9 @@ The response should be proportional to:
 
 ---
 
-# Digital Evidence Categories
+## Digital Evidence Categories
 
-## Volatile Evidence
+### Volatile Evidence
 
 Evidence that may disappear quickly.
 
@@ -142,7 +142,7 @@ Examples:
 - Running services
 - Active sessions
 
-## Non-Volatile Evidence
+### Non-Volatile Evidence
 
 Evidence that generally persists after shutdown.
 
@@ -157,7 +157,7 @@ Examples:
 
 ---
 
-# Order of Volatility
+## Order of Volatility
 
 A simplified principle is:
 
@@ -187,9 +187,9 @@ The exact order depends on the environment and evidence source.
 
 ---
 
-# Evidence Sources
+## Evidence Sources
 
-## Endpoint
+### Endpoint
 
 - Memory
 - Disk
@@ -201,7 +201,7 @@ The exact order depends on the environment and evidence source.
 - Scheduled tasks
 - Shell history
 
-## Network
+### Network
 
 - PCAP
 - DNS
@@ -210,7 +210,7 @@ The exact order depends on the environment and evidence source.
 - NetFlow
 - IDS/IPS
 
-## Identity
+### Identity
 
 - Authentication logs
 - MFA events
@@ -218,7 +218,7 @@ The exact order depends on the environment and evidence source.
 - Group membership
 - Session information
 
-## Cloud
+### Cloud
 
 - API logs
 - IAM changes
@@ -226,7 +226,7 @@ The exact order depends on the environment and evidence source.
 - Storage access
 - Network flow logs
 
-## Applications
+### Applications
 
 - Access logs
 - Authentication logs
@@ -236,7 +236,7 @@ The exact order depends on the environment and evidence source.
 
 ---
 
-# Evidence Collection Architecture
+## Evidence Collection Architecture
 
 ```text
                   Incident
@@ -266,7 +266,7 @@ The exact order depends on the environment and evidence source.
 
 ---
 
-# Evidence Preservation
+## Evidence Preservation
 
 Preservation aims to prevent:
 
@@ -295,7 +295,7 @@ Whenever practical, analysis should be performed on a copy rather than the origi
 
 ---
 
-# Chain of Custody
+## Chain of Custody
 
 Chain of custody documents the lifecycle of evidence.
 
@@ -314,7 +314,7 @@ Was it transferred?
 
 ---
 
-# Chain of Custody Example
+## Chain of Custody Example
 
 ```text
 Evidence ID:
@@ -350,7 +350,7 @@ Malware analysis
 
 ---
 
-# Evidence Identification
+## Evidence Identification
 
 Before collecting evidence, define the investigative question.
 
@@ -370,7 +370,7 @@ Avoid collecting everything without an investigative purpose when time and stora
 
 ---
 
-# Evidence Collection Strategy
+## Evidence Collection Strategy
 
 A practical approach:
 
@@ -395,7 +395,7 @@ Analysis
 
 ---
 
-# Evidence Prioritization
+## Evidence Prioritization
 
 Prioritize evidence based on:
 
@@ -420,7 +420,7 @@ Active C2 Incident
 
 ---
 
-# Memory Forensics
+## Memory Forensics
 
 Memory can contain:
 
@@ -442,7 +442,7 @@ Memory is particularly valuable when investigating:
 
 ---
 
-# Memory Collection Considerations
+## Memory Collection Considerations
 
 Memory acquisition can alter system state.
 
@@ -468,7 +468,7 @@ Follow organizational forensic procedures.
 
 ---
 
-# Disk Forensics
+## Disk Forensics
 
 Disk evidence can contain:
 
@@ -484,7 +484,7 @@ Disk evidence can contain:
 
 ---
 
-# Disk Image
+## Disk Image
 
 A forensic disk image is a representation of storage media collected for analysis.
 
@@ -505,7 +505,7 @@ Evidence Image
 
 ---
 
-# Hashing Evidence
+## Hashing Evidence
 
 Cryptographic hashes help verify evidence integrity.
 
@@ -525,7 +525,7 @@ If the hash changes unexpectedly, the evidence should be investigated.
 
 ---
 
-# Hashing Does Not Prove Authenticity
+## Hashing Does Not Prove Authenticity
 
 A hash demonstrates that data matches a particular byte sequence.
 
@@ -552,7 +552,7 @@ provide stronger assurance.
 
 ---
 
-# Windows Evidence
+## Windows Evidence
 
 Important Windows artifacts may include:
 
@@ -571,7 +571,7 @@ Important Windows artifacts may include:
 
 ---
 
-# Windows Event Logs
+## Windows Event Logs
 
 Common logs include:
 
@@ -592,7 +592,7 @@ Security logs can provide information about:
 
 ---
 
-# PowerShell Evidence
+## PowerShell Evidence
 
 PowerShell logging may provide valuable information when enabled.
 
@@ -613,7 +613,7 @@ Logging availability depends on configuration.
 
 ---
 
-# Linux Evidence
+## Linux Evidence
 
 Potential evidence includes:
 
@@ -633,7 +633,7 @@ Exact locations vary by distribution.
 
 ---
 
-# Linux Authentication Logs
+## Linux Authentication Logs
 
 Examples:
 
@@ -651,7 +651,7 @@ Log formats vary across distributions.
 
 ---
 
-# Process Evidence
+## Process Evidence
 
 A process investigation should examine:
 
@@ -683,7 +683,7 @@ This relationship may warrant investigation.
 
 ---
 
-# Network Evidence
+## Network Evidence
 
 Network evidence may include:
 
@@ -700,7 +700,7 @@ Network evidence may include:
 
 ---
 
-# PCAP
+## PCAP
 
 Packet capture can provide detailed network evidence.
 
@@ -733,7 +733,7 @@ Encrypted traffic limits direct payload visibility but still leaves useful metad
 
 ---
 
-# DNS Evidence
+## DNS Evidence
 
 DNS logs are especially useful for identifying:
 
@@ -755,7 +755,7 @@ Regular intervals may indicate automated behavior, though periodic traffic is no
 
 ---
 
-# Timeline Analysis
+## Timeline Analysis
 
 Timeline analysis reconstructs events chronologically.
 
@@ -794,7 +794,7 @@ A timeline can reveal relationships that individual logs do not.
 
 ---
 
-# Timeline Construction
+## Timeline Construction
 
 Use multiple sources:
 
@@ -824,7 +824,7 @@ Normalize timestamps before correlating.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Incorrect clocks can produce incorrect timelines.
 
@@ -843,7 +843,7 @@ When clocks differ, record the observed offset.
 
 ---
 
-# File Metadata
+## File Metadata
 
 File metadata can help determine:
 
@@ -861,7 +861,7 @@ Never treat one timestamp as absolute proof of an event.
 
 ---
 
-# Browser Forensics
+## Browser Forensics
 
 Browser artifacts may contain:
 
@@ -879,7 +879,7 @@ Collection must follow authorization and privacy requirements.
 
 ---
 
-# Email Evidence
+## Email Evidence
 
 Email investigations may examine:
 
@@ -896,7 +896,7 @@ Email headers can help reconstruct delivery paths.
 
 ---
 
-# Cloud Evidence
+## Cloud Evidence
 
 Cloud forensic sources may include:
 
@@ -925,7 +925,7 @@ Audit Log
 
 ---
 
-# Cloud Evidence Challenges
+## Cloud Evidence Challenges
 
 Cloud forensics can be complicated by:
 
@@ -941,7 +941,7 @@ Organizations should define cloud logging requirements before incidents occur.
 
 ---
 
-# Container Evidence
+## Container Evidence
 
 Container environments require investigation across layers:
 
@@ -965,7 +965,7 @@ Evidence may exist at every layer.
 
 ---
 
-# Kubernetes Evidence
+## Kubernetes Evidence
 
 Potential sources:
 
@@ -981,7 +981,7 @@ A compromised pod does not automatically mean the entire cluster is compromised,
 
 ---
 
-# Evidence and Privacy
+## Evidence and Privacy
 
 Forensic collection may expose sensitive information.
 
@@ -1004,7 +1004,7 @@ Therefore, collection should follow:
 
 ---
 
-# Evidence Storage
+## Evidence Storage
 
 Evidence should be stored in controlled repositories.
 
@@ -1034,7 +1034,7 @@ Secure Repository
 
 ---
 
-# Evidence Access
+## Evidence Access
 
 Access should follow least privilege.
 
@@ -1051,7 +1051,7 @@ for evidence access whenever practical.
 
 ---
 
-# Working Copies
+## Working Copies
 
 A mature process distinguishes:
 
@@ -1070,7 +1070,7 @@ Investigators should analyze working copies where feasible.
 
 ---
 
-# Evidence Validation
+## Evidence Validation
 
 Validation can include:
 
@@ -1082,7 +1082,7 @@ Validation can include:
 
 ---
 
-# Forensic Analysis Methodology
+## Forensic Analysis Methodology
 
 A disciplined methodology is:
 
@@ -1112,23 +1112,23 @@ Avoid jumping directly from artifact to conclusion.
 
 ---
 
-# Fact vs Inference
+## Fact vs Inference
 
 Example:
 
-### Fact
+#### Fact
 
 ```text
 PowerShell executed at 10:05 UTC.
 ```
 
-### Inference
+#### Inference
 
 ```text
 PowerShell was likely used to execute the malicious payload.
 ```
 
-### Hypothesis
+#### Hypothesis
 
 ```text
 The attacker used the user's session to establish persistence.
@@ -1138,19 +1138,19 @@ These should not be presented as equivalent.
 
 ---
 
-# Evidence Confidence
+## Evidence Confidence
 
 Use confidence levels:
 
-### High
+#### High
 
 Multiple independent sources agree.
 
-### Medium
+#### Medium
 
 Evidence strongly supports the conclusion but has limitations.
 
-### Low
+#### Low
 
 Evidence is incomplete or ambiguous.
 
@@ -1175,7 +1175,7 @@ High
 
 ---
 
-# Negative Evidence
+## Negative Evidence
 
 Absence of evidence can sometimes be informative, but must be interpreted carefully.
 
@@ -1195,79 +1195,79 @@ Possible explanations:
 
 ---
 
-# Common Forensic Mistakes
+## Common Forensic Mistakes
 
-## 1. Modifying Original Evidence
+### 1. Modifying Original Evidence
 
 Analysis directly on original evidence can compromise integrity.
 
-## 2. Ignoring Volatile Evidence
+### 2. Ignoring Volatile Evidence
 
 Important runtime information may disappear.
 
-## 3. No Hashing
+### 3. No Hashing
 
 Evidence integrity becomes harder to validate.
 
-## 4. No Chain of Custody
+### 4. No Chain of Custody
 
 Evidence handling becomes difficult to reconstruct.
 
-## 5. Trusting Timestamps Blindly
+### 5. Trusting Timestamps Blindly
 
 Clock differences and timestamp manipulation can mislead investigators.
 
-## 6. Collecting Without a Question
+### 6. Collecting Without a Question
 
 Large amounts of irrelevant data slow investigations.
 
-## 7. Ignoring Cloud Logs
+### 7. Ignoring Cloud Logs
 
 Modern attacks frequently involve cloud infrastructure.
 
-## 8. Ignoring Identity Evidence
+### 8. Ignoring Identity Evidence
 
 Endpoint evidence alone may not explain account compromise.
 
-## 9. Overinterpreting One Artifact
+### 9. Overinterpreting One Artifact
 
 One artifact rarely proves an entire attack chain.
 
 ---
 
-# Evidence Collection Misconfigurations
+## Evidence Collection Misconfigurations
 
-### Insufficient Log Retention
+#### Insufficient Log Retention
 
 Critical evidence may have already disappeared.
 
-### No Centralized Logging
+#### No Centralized Logging
 
 Investigators must search individual systems.
 
-### No Time Synchronization
+#### No Time Synchronization
 
 Timelines become unreliable.
 
-### EDR Without Historical Retention
+#### EDR Without Historical Retention
 
 Past endpoint activity may be unavailable.
 
-### Cloud Audit Logs Disabled
+#### Cloud Audit Logs Disabled
 
 Cloud investigation becomes severely limited.
 
-### No Evidence Repository
+#### No Evidence Repository
 
 Sensitive evidence may be stored insecurely.
 
-### Excessive Evidence Access
+#### Excessive Evidence Access
 
 Confidential data may be exposed unnecessarily.
 
 ---
 
-# Detection Through Forensics
+## Detection Through Forensics
 
 Forensic analysis can reveal detection gaps.
 
@@ -1293,31 +1293,31 @@ Forensics should therefore feed improvements back into the SOC.
 
 ---
 
-# Practical Commands
+## Practical Commands
 
 These commands are intended for authorized investigation.
 
-## Windows
+### Windows
 
-### Recent Event Logs
+#### Recent Event Logs
 
 ```powershell id="0cz1tj"
 Get-WinEvent -LogName Security -MaxEvents 20
 ```
 
-### Running Processes
+#### Running Processes
 
 ```powershell id="4clw3u"
 Get-Process
 ```
 
-### Network Connections
+#### Network Connections
 
 ```powershell id="9w7i8g"
 Get-NetTCPConnection
 ```
 
-### Logged-In Users
+#### Logged-In Users
 
 ```powershell id="8g1j8b"
 Get-CimInstance Win32_LoggedOnUser
@@ -1325,27 +1325,27 @@ Get-CimInstance Win32_LoggedOnUser
 
 ---
 
-# Linux
+## Linux
 
-### Processes
+#### Processes
 
 ```bash id="2v5r9f"
 ps aux
 ```
 
-### Network Connections
+#### Network Connections
 
 ```bash id="j7q4b6"
 ss -tunap
 ```
 
-### System Logs
+#### System Logs
 
 ```bash id="p9m2xq"
 journalctl
 ```
 
-### Authentication Logs
+#### Authentication Logs
 
 ```bash id="6s8d3c"
 sudo journalctl | grep -i "ssh"
@@ -1353,7 +1353,7 @@ sudo journalctl | grep -i "ssh"
 
 ---
 
-# File Hashing
+## File Hashing
 
 Linux:
 
@@ -1369,11 +1369,11 @@ Get-FileHash suspicious.bin -Algorithm SHA256
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-# Lab — Build an Incident Evidence Timeline
+## Lab — Build an Incident Evidence Timeline
 
-## Scenario
+### Scenario
 
 The SOC reports suspicious activity from:
 
@@ -1398,7 +1398,7 @@ Cloud Identity Logs
 
 ---
 
-# Task 1 — Identify Evidence
+## Task 1 — Identify Evidence
 
 Map each investigative question.
 
@@ -1413,7 +1413,7 @@ Map each investigative question.
 
 ---
 
-# Task 2 — Normalize Time
+## Task 2 — Normalize Time
 
 Assume:
 
@@ -1432,7 +1432,7 @@ Convert all events to one reference timezone.
 
 ---
 
-# Task 3 — Build Timeline
+## Task 3 — Build Timeline
 
 Example:
 
@@ -1450,7 +1450,7 @@ Example:
 
 ---
 
-# Task 4 — Identify Confidence
+## Task 4 — Identify Confidence
 
 For each major finding:
 
@@ -1463,7 +1463,7 @@ Limitations
 
 ---
 
-# Task 5 — Determine Scope
+## Task 5 — Determine Scope
 
 Search for:
 
@@ -1479,7 +1479,7 @@ Authentication
 
 ---
 
-# Expected Investigation Output
+## Expected Investigation Output
 
 ```text
 Initial Access:
@@ -1510,9 +1510,9 @@ Medium for lateral movement
 
 ---
 
-# Advanced Lab — Evidence Preservation Exercise
+## Advanced Lab — Evidence Preservation Exercise
 
-## Scenario
+### Scenario
 
 A compromised server is still running.
 
@@ -1536,7 +1536,7 @@ Legal Requirements
 
 ---
 
-# Evidence Plan
+## Evidence Plan
 
 Create:
 
@@ -1553,7 +1553,7 @@ Purpose
 
 ---
 
-# Chain-of-Custody Exercise
+## Chain-of-Custody Exercise
 
 Create a record:
 
@@ -1591,9 +1591,9 @@ ________________
 
 ---
 
-# Professional Evidence Checklist
+## Professional Evidence Checklist
 
-## Identification
+### Identification
 
 ```text
 [ ] Investigative question defined
@@ -1602,7 +1602,7 @@ ________________
 [ ] Legal requirements reviewed
 ```
 
-## Preservation
+### Preservation
 
 ```text
 [ ] Original preserved
@@ -1611,7 +1611,7 @@ ________________
 [ ] Chain of custody started
 ```
 
-## Collection
+### Collection
 
 ```text
 [ ] Collector identified
@@ -1620,7 +1620,7 @@ ________________
 [ ] Evidence validated
 ```
 
-## Analysis
+### Analysis
 
 ```text
 [ ] Working copy used
@@ -1630,7 +1630,7 @@ ________________
 [ ] Confidence documented
 ```
 
-## Storage
+### Storage
 
 ```text
 [ ] Secure repository
@@ -1642,7 +1642,7 @@ ________________
 
 ---
 
-# Forensic Investigation Report
+## Forensic Investigation Report
 
 ```text
 Incident ID:
@@ -1690,33 +1690,33 @@ ________________________
 
 ---
 
-# Forensic Maturity
+## Forensic Maturity
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 - Manual evidence collection
 - Limited documentation
 - Short log retention
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Standard collection procedures
 - Basic chain of custody
 - Centralized evidence storage
 
-## Level 3 — Defined
+### Level 3 — Defined
 
 - Forensic playbooks
 - Evidence retention policies
 - Standard acquisition procedures
 
-## Level 4 — Measured
+### Level 4 — Measured
 
 - Evidence integrity metrics
 - Collection success metrics
 - Investigation quality reviews
 
-## Level 5 — Optimized
+### Level 5 — Optimized
 
 - Automated evidence acquisition
 - Centralized forensic telemetry
@@ -1726,7 +1726,7 @@ ________________________
 
 ---
 
-# Forensic Readiness
+## Forensic Readiness
 
 Organizations should prepare before an incident.
 
@@ -1748,7 +1748,7 @@ How to validate
 
 ---
 
-# Forensic Readiness Architecture
+## Forensic Readiness Architecture
 
 ```text
 Endpoints ─────┐
@@ -1766,7 +1766,7 @@ Applications ──┘          │
 
 ---
 
-# Evidence Retention
+## Evidence Retention
 
 Retention should balance:
 
@@ -1781,15 +1781,15 @@ A log that is deleted before an incident is discovered cannot help an investigat
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is digital evidence?
+### 1. What is digital evidence?
 
 Digital evidence is electronically stored or transmitted information that can help establish facts about a security event or incident.
 
 ---
 
-## 2. What is volatile evidence?
+### 2. What is volatile evidence?
 
 Evidence that can disappear or change quickly, such as:
 
@@ -1800,25 +1800,25 @@ Evidence that can disappear or change quickly, such as:
 
 ---
 
-## 3. Why is memory important?
+### 3. Why is memory important?
 
 Memory can contain runtime artifacts that do not exist on disk, including active processes, network connections, injected code, and other volatile information.
 
 ---
 
-## 4. What is chain of custody?
+### 4. What is chain of custody?
 
 Chain of custody records who collected, handled, transferred, accessed, and stored evidence throughout its lifecycle.
 
 ---
 
-## 5. Why do investigators hash evidence?
+### 5. Why do investigators hash evidence?
 
 To help verify that the evidence has not changed since the hash was calculated.
 
 ---
 
-## 6. Does hashing prove evidence authenticity?
+### 6. Does hashing prove evidence authenticity?
 
 No.
 
@@ -1826,31 +1826,31 @@ Hashing verifies data integrity against a known hash value. It does not independ
 
 ---
 
-## 7. Why should investigators use working copies?
+### 7. Why should investigators use working copies?
 
 To reduce the risk of modifying original evidence during analysis.
 
 ---
 
-## 8. What is timeline analysis?
+### 8. What is timeline analysis?
 
 Timeline analysis correlates events from multiple sources into chronological order to reconstruct attacker activity.
 
 ---
 
-## 9. Why is time synchronization important?
+### 9. Why is time synchronization important?
 
 Without consistent timestamps, events from different systems can appear in the wrong order.
 
 ---
 
-## 10. What is forensic readiness?
+### 10. What is forensic readiness?
 
 The organization's ability to collect and preserve useful evidence efficiently during an incident because appropriate logging, retention, access, procedures, and infrastructure were prepared beforehand.
 
 ---
 
-## 11. What evidence would you collect from a compromised endpoint?
+### 11. What evidence would you collect from a compromised endpoint?
 
 Potential sources include:
 
@@ -1870,7 +1870,7 @@ The exact collection depends on the investigation.
 
 ---
 
-## 12. What evidence would you collect during a cloud incident?
+### 12. What evidence would you collect during a cloud incident?
 
 Potential sources:
 
@@ -1884,7 +1884,7 @@ Potential sources:
 
 ---
 
-## 13. Why should one artifact not be treated as absolute proof?
+### 13. Why should one artifact not be treated as absolute proof?
 
 Artifacts can be incomplete, manipulated, misinterpreted, or generated by legitimate activity.
 
@@ -1892,7 +1892,7 @@ Strong conclusions generally come from correlated evidence.
 
 ---
 
-## 14. What is the difference between fact and inference?
+### 14. What is the difference between fact and inference?
 
 A fact directly describes an observed event.
 
@@ -1900,13 +1900,13 @@ An inference is a conclusion drawn from one or more observations.
 
 ---
 
-## 15. How can forensic findings improve detection?
+### 15. How can forensic findings improve detection?
 
 Forensic discoveries can identify previously undetected attacker behavior and provide new indicators and behavioral patterns for detection engineering.
 
 ---
 
-# Integration With Incident Response
+## Integration With Incident Response
 
 Digital forensics supports every major phase:
 
@@ -1939,7 +1939,7 @@ Forensics is therefore not merely a post-incident activity.
 
 ---
 
-# Integration With Threat Hunting
+## Integration With Threat Hunting
 
 Forensic findings can become hunt hypotheses.
 
@@ -1965,7 +1965,7 @@ This is an important feedback loop.
 
 ---
 
-# Integration With Detection Engineering
+## Integration With Detection Engineering
 
 ```text
 Forensic Finding
@@ -1985,7 +1985,7 @@ Future Incident Detected Earlier
 
 ---
 
-# Enterprise Digital Forensics Architecture
+## Enterprise Digital Forensics Architecture
 
 ```text
                          Security Operations
@@ -2018,7 +2018,7 @@ Future Incident Detected Earlier
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Digital evidence is the foundation for reconstructing what happened during an incident.
 
@@ -2063,9 +2063,9 @@ The most important principles are:
 
 ---
 
-# References
+## References
 
-### NIST
+#### NIST
 
 Computer Security Incident Handling Guide:
 
@@ -2075,37 +2075,37 @@ NIST Guide to Integrating Forensic Techniques into Incident Response:
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### CISA
+#### CISA
 
 https://www.cisa.gov/
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 
-### SWGDE
+#### SWGDE
 
 Scientific Working Group on Digital Evidence:
 
 https://www.swgde.org/
 
-### RFC 3227
+#### RFC 3227
 
 Guidelines for Evidence Collection and Archiving:
 
 https://www.rfc-editor.org/rfc/rfc3227
 
-### FIRST
+#### FIRST
 
 https://www.first.org/
 
-### SANS
+#### SANS
 
 https://www.sans.org/
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 A mature incident response capability must be able to answer:
 

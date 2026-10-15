@@ -1,10 +1,10 @@
 # 11 - Domain Name System (DNS)
 
-# Part 1 — DNS Fundamentals, Architecture, Namespace, Resolution Process, and Enterprise Operations
+## Part 1 — DNS Fundamentals, Architecture, Namespace, Resolution Process, and Enterprise Operations
 
 ---
 
-# Overview
+## Overview
 
 Humans naturally remember names such as:
 
@@ -39,7 +39,7 @@ Almost every modern network service depends on DNS.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -55,7 +55,7 @@ After completing this chapter, you should be able to:
 
 ---
 
-# Why DNS Exists
+## Why DNS Exists
 
 Without DNS:
 
@@ -101,7 +101,7 @@ DNS improves usability, scalability, and flexibility by separating service names
 
 ---
 
-# What is DNS?
+## What is DNS?
 
 The **Domain Name System (DNS)** is a distributed, hierarchical naming system that maps domain names to IP addresses and stores other resource information about hosts and services.
 
@@ -119,7 +119,7 @@ DNS is defined by multiple RFCs published by the **Internet Engineering Task For
 
 ---
 
-# DNS Characteristics
+## DNS Characteristics
 
 DNS is:
 
@@ -135,7 +135,7 @@ Unlike a centralized database, DNS information is distributed across many author
 
 ---
 
-# DNS Components
+## DNS Components
 
 A typical DNS environment contains:
 
@@ -163,7 +163,7 @@ Each component performs a specific role during name resolution.
 
 ---
 
-# DNS Namespace
+## DNS Namespace
 
 DNS follows a hierarchical naming structure.
 
@@ -200,7 +200,7 @@ www.example.com
 
 ---
 
-# DNS Hierarchy
+## DNS Hierarchy
 
 ```
 Root (.)
@@ -252,7 +252,7 @@ vpn.engineering.example.com
 
 ---
 
-# Root DNS Servers
+## Root DNS Servers
 
 The Root Zone is the highest level of the DNS hierarchy.
 
@@ -266,7 +266,7 @@ There are multiple logical root server identities (A through M), each implemente
 
 ---
 
-# Top-Level Domains (TLDs)
+## Top-Level Domains (TLDs)
 
 A **Top-Level Domain (TLD)** appears immediately below the root.
 
@@ -302,7 +302,7 @@ The appropriate TLD depends on organizational, geographic, and administrative re
 
 ---
 
-# Second-Level Domains
+## Second-Level Domains
 
 Examples:
 
@@ -318,7 +318,7 @@ Organizations register second-level domains through accredited domain registrars
 
 ---
 
-# Subdomains
+## Subdomains
 
 Organizations often create subdomains to organize services.
 
@@ -345,7 +345,7 @@ Benefits:
 
 ---
 
-# Fully Qualified Domain Name (FQDN)
+## Fully Qualified Domain Name (FQDN)
 
 A **Fully Qualified Domain Name (FQDN)** uniquely identifies a host within the DNS hierarchy.
 
@@ -359,7 +359,7 @@ The trailing period (`.`) represents the root zone, although it is usually omitt
 
 ---
 
-# DNS Zones
+## DNS Zones
 
 A **DNS Zone** is the portion of the namespace managed by a specific administrative authority.
 
@@ -381,7 +381,7 @@ A zone may represent an entire domain or only a delegated portion of it.
 
 ---
 
-# Zone Delegation
+## Zone Delegation
 
 Large organizations often delegate subdomains to different administrative teams.
 
@@ -407,7 +407,7 @@ Benefits:
 
 ---
 
-# DNS Resolution
+## DNS Resolution
 
 When a user enters:
 
@@ -445,7 +445,7 @@ Connection Established
 
 ---
 
-# Recursive Resolver
+## Recursive Resolver
 
 The recursive resolver performs DNS lookups on behalf of the client.
 
@@ -460,7 +460,7 @@ Clients typically send only one request to the resolver.
 
 ---
 
-# Authoritative Name Server
+## Authoritative Name Server
 
 An authoritative server stores official DNS records for a zone.
 
@@ -482,7 +482,7 @@ Unlike recursive resolvers, authoritative servers do not perform recursive looku
 
 ---
 
-# Recursive Query
+## Recursive Query
 
 In a recursive query:
 
@@ -504,7 +504,7 @@ This is the most common interaction between client devices and enterprise DNS se
 
 ---
 
-# Iterative Query
+## Iterative Query
 
 In an iterative query:
 
@@ -540,7 +540,7 @@ Each server provides the best information it has, often referring the resolver t
 
 ---
 
-# Complete DNS Resolution Workflow
+## Complete DNS Resolution Workflow
 
 ```
 User
@@ -586,7 +586,7 @@ Caching at multiple layers helps reduce latency and unnecessary external queries
 
 ---
 
-# Forward Lookup
+## Forward Lookup
 
 A forward lookup resolves:
 
@@ -612,7 +612,7 @@ This is the most common DNS operation.
 
 ---
 
-# Reverse Lookup
+## Reverse Lookup
 
 A reverse lookup resolves:
 
@@ -643,7 +643,7 @@ Reverse lookups are commonly used for:
 
 ---
 
-# DNS Transport Protocols
+## DNS Transport Protocols
 
 DNS primarily uses:
 
@@ -656,7 +656,7 @@ Modern DNS features such as DNSSEC may also require TCP due to larger response s
 
 ---
 
-# Enterprise DNS Example
+## Enterprise DNS Example
 
 ```
 Employee Laptop
@@ -686,7 +686,7 @@ Internal resources may be resolved entirely within the corporate network, while 
 
 ---
 
-# Common DNS Problems
+## Common DNS Problems
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -698,7 +698,7 @@ Internal resources may be resolved entirely within the corporate network, while 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Reliable DNS services support:
 
@@ -714,7 +714,7 @@ A DNS outage can affect nearly every application that depends on name resolution
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - DNS translates **domain names** into **IP addresses** and stores other resource information.
 - DNS is a **distributed, hierarchical, and scalable** system.
@@ -724,13 +724,13 @@ A DNS outage can affect nearly every application that depends on name resolution
 - DNS primarily uses **UDP port 53**, with **TCP port 53** used for zone transfers and larger responses.
 - DNS is a critical dependency for enterprise networking, cloud services, and modern cybersecurity operations.
 
-# 11 - Domain Name System (DNS)
+## 11 - Domain Name System (DNS)
 
-# Part 2 — DNS Record Types, Zone Files, Caching, TTL, Zone Transfers, Split-Horizon DNS, and Enterprise Architecture
+## Part 2 — DNS Record Types, Zone Files, Caching, TTL, Zone Transfers, Split-Horizon DNS, and Enterprise Architecture
 
 ---
 
-# Overview
+## Overview
 
 DNS is much more than a database that maps domain names to IP addresses.
 
@@ -751,7 +751,7 @@ Understanding these records is essential for network engineers, cloud engineers,
 
 ---
 
-# What is a DNS Resource Record?
+## What is a DNS Resource Record?
 
 A **Resource Record (RR)** is an entry stored inside a DNS zone.
 
@@ -773,7 +773,7 @@ Every DNS lookup ultimately retrieves one or more resource records.
 
 ---
 
-# General DNS Record Structure
+## General DNS Record Structure
 
 Most resource records contain:
 
@@ -801,7 +801,7 @@ A
 
 ---
 
-# A Record (Address Record)
+## A Record (Address Record)
 
 The **A Record** maps a hostname to an IPv4 address.
 
@@ -830,7 +830,7 @@ www    IN    A      192.168.10.20
 
 ---
 
-# AAAA Record (IPv6 Address)
+## AAAA Record (IPv6 Address)
 
 The **AAAA Record** maps a hostname to an IPv6 address.
 
@@ -854,7 +854,7 @@ Modern dual-stack environments often publish both A and AAAA records.
 
 ---
 
-# CNAME Record (Canonical Name)
+## CNAME Record (Canonical Name)
 
 A **CNAME** creates an alias pointing one hostname to another hostname.
 
@@ -880,7 +880,7 @@ Example:
 portal    IN    CNAME    www.example.com.
 ```
 
-### Advantages
+#### Advantages
 
 - Simplifies management
 - Reduces duplicate records
@@ -889,7 +889,7 @@ portal    IN    CNAME    www.example.com.
 
 ---
 
-# MX Record (Mail Exchange)
+## MX Record (Mail Exchange)
 
 The **MX Record** identifies mail servers responsible for receiving email.
 
@@ -917,7 +917,7 @@ Lower preference values indicate higher priority.
 
 ---
 
-# MX Priority
+## MX Priority
 
 Example:
 
@@ -930,7 +930,7 @@ If the preferred server is unavailable, mail delivery attempts continue with the
 
 ---
 
-# TXT Record
+## TXT Record
 
 TXT records store arbitrary text associated with a domain.
 
@@ -956,7 +956,7 @@ TXT records are widely used for email authentication and ownership verification.
 
 ---
 
-# NS Record (Name Server)
+## NS Record (Name Server)
 
 An **NS Record** identifies the authoritative name servers for a DNS zone.
 
@@ -976,7 +976,7 @@ Large organizations typically configure multiple authoritative name servers for 
 
 ---
 
-# SOA Record (Start of Authority)
+## SOA Record (Start of Authority)
 
 Every DNS zone contains exactly one **SOA Record**.
 
@@ -1006,7 +1006,7 @@ ns1.example.com. admin.example.com.
 
 ---
 
-# SOA Serial Number
+## SOA Serial Number
 
 The serial number tracks zone updates.
 
@@ -1028,7 +1028,7 @@ where `NN` is an increment for multiple updates on the same day.
 
 ---
 
-# PTR Record (Pointer Record)
+## PTR Record (Pointer Record)
 
 PTR records support **reverse DNS**.
 
@@ -1053,7 +1053,7 @@ Reverse lookups are stored under the **in-addr.arpa** (IPv4) or **ip6.arpa** (IP
 
 ---
 
-# SRV Record (Service Record)
+## SRV Record (Service Record)
 
 SRV records specify the location of network services.
 
@@ -1088,7 +1088,7 @@ _ldap._tcp.example.com.
 
 ---
 
-# CAA Record (Certification Authority Authorization)
+## CAA Record (Certification Authority Authorization)
 
 CAA records specify which Certificate Authorities (CAs) are permitted to issue TLS certificates for a domain.
 
@@ -1112,7 +1112,7 @@ Benefits:
 
 ---
 
-# Additional Record Types
+## Additional Record Types
 
 | Record | Purpose |
 |----------|----------|
@@ -1127,7 +1127,7 @@ Many modern security technologies rely on TXT and related record types.
 
 ---
 
-# DNS Zone Files
+## DNS Zone Files
 
 A **zone file** stores all resource records for a DNS zone.
 
@@ -1149,7 +1149,7 @@ Administrators update zone files to publish new services or modify existing reco
 
 ---
 
-# Simplified Zone File Example
+## Simplified Zone File Example
 
 ```text
 $ORIGIN example.com.
@@ -1168,7 +1168,7 @@ Actual production zone files may contain hundreds or thousands of records.
 
 ---
 
-# Forward Lookup Zone
+## Forward Lookup Zone
 
 Forward zones resolve:
 
@@ -1192,7 +1192,7 @@ vpn.example.com
 
 ---
 
-# Reverse Lookup Zone
+## Reverse Lookup Zone
 
 Reverse zones resolve:
 
@@ -1216,7 +1216,7 @@ vpn.example.com
 
 ---
 
-# DNS Caching
+## DNS Caching
 
 DNS servers and clients cache responses to reduce lookup time and network traffic.
 
@@ -1231,7 +1231,7 @@ Caching occurs at multiple layers.
 
 ---
 
-# Browser Cache
+## Browser Cache
 
 Web browsers maintain their own DNS cache.
 
@@ -1251,7 +1251,7 @@ Repeated visits often avoid another DNS query until the cached entry expires.
 
 ---
 
-# Operating System Cache
+## Operating System Cache
 
 Operating systems also maintain a local DNS resolver cache.
 
@@ -1277,7 +1277,7 @@ If a valid cached record exists, no external query is necessary.
 
 ---
 
-# Recursive Resolver Cache
+## Recursive Resolver Cache
 
 Enterprise recursive resolvers cache responses received from authoritative servers.
 
@@ -1315,7 +1315,7 @@ This reduces latency and external DNS traffic.
 
 ---
 
-# Time To Live (TTL)
+## Time To Live (TTL)
 
 Each DNS record contains a **Time To Live (TTL)** value.
 
@@ -1333,7 +1333,7 @@ TTL tells resolvers how long they may cache a record before requesting a fresh c
 
 ---
 
-# TTL Example
+## TTL Example
 
 ```
 A Record
@@ -1359,9 +1359,9 @@ Query Again
 
 ---
 
-# TTL Considerations
+## TTL Considerations
 
-### Short TTL
+#### Short TTL
 
 Advantages:
 
@@ -1376,7 +1376,7 @@ Disadvantages:
 
 ---
 
-### Long TTL
+#### Long TTL
 
 Advantages:
 
@@ -1393,7 +1393,7 @@ Administrators should choose TTL values based on operational requirements.
 
 ---
 
-# Zone Transfers
+## Zone Transfers
 
 Authoritative DNS servers often replicate zone data.
 
@@ -1409,7 +1409,7 @@ Synchronization is performed through **zone transfers**.
 
 ---
 
-# Full Zone Transfer (AXFR)
+## Full Zone Transfer (AXFR)
 
 AXFR transfers the entire zone.
 
@@ -1429,7 +1429,7 @@ Typically used during initial synchronization or major recovery events.
 
 ---
 
-# Incremental Zone Transfer (IXFR)
+## Incremental Zone Transfer (IXFR)
 
 IXFR transfers only the changes made since the previous synchronization.
 
@@ -1453,7 +1453,7 @@ Benefits:
 
 ---
 
-# Split-Horizon DNS (Split-Brain DNS)
+## Split-Horizon DNS (Split-Brain DNS)
 
 Organizations often maintain separate DNS views for internal and external users.
 
@@ -1487,7 +1487,7 @@ Both responses correspond to the same hostname but return different IP addresses
 
 ---
 
-# Benefits of Split-Horizon DNS
+## Benefits of Split-Horizon DNS
 
 - Improved security
 - Internal resource isolation
@@ -1497,7 +1497,7 @@ Both responses correspond to the same hostname but return different IP addresses
 
 ---
 
-# Enterprise DNS Architecture
+## Enterprise DNS Architecture
 
 Typical enterprise deployment:
 
@@ -1537,7 +1537,7 @@ Internal zones are typically resolved locally, while external domains follow the
 
 ---
 
-# High Availability
+## High Availability
 
 Enterprise DNS deployments commonly use:
 
@@ -1551,7 +1551,7 @@ These measures improve resilience and reduce downtime.
 
 ---
 
-# Common DNS Issues
+## Common DNS Issues
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -1563,7 +1563,7 @@ These measures improve resilience and reduce downtime.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper DNS record management enables:
 
@@ -1578,7 +1578,7 @@ Incorrect DNS records can result in application outages, authentication failures
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - DNS stores information as **Resource Records (RRs)**.
 - Common record types include **A, AAAA, CNAME, MX, TXT, NS, SOA, PTR, SRV, and CAA**.
@@ -1589,13 +1589,13 @@ Incorrect DNS records can result in application outages, authentication failures
 - **Split-horizon DNS** allows organizations to provide different answers to internal and external clients.
 - Redundant authoritative servers, recursive resolvers, and well-managed zones are fundamental to enterprise DNS reliability.
 
-# 11 - Domain Name System (DNS)
+## 11 - Domain Name System (DNS)
 
-# Part 3 — DNSSEC, DoH, DoT, Anycast, Load Balancing, Active Directory DNS, Cloud DNS, Kubernetes, and Enterprise Architecture
+## Part 3 — DNSSEC, DoH, DoT, Anycast, Load Balancing, Active Directory DNS, Cloud DNS, Kubernetes, and Enterprise Architecture
 
 ---
 
-# Overview
+## Overview
 
 Modern DNS has evolved far beyond simple name resolution.
 
@@ -1622,7 +1622,7 @@ This section explores the technologies that make enterprise DNS resilient and se
 
 ---
 
-# DNS Security Challenges
+## DNS Security Challenges
 
 Traditional DNS was designed without built-in security.
 
@@ -1647,9 +1647,9 @@ Attackers may exploit these limitations through:
 
 ---
 
-# DNS Security Extensions (DNSSEC)
+## DNS Security Extensions (DNSSEC)
 
-## What is DNSSEC?
+### What is DNSSEC?
 
 DNSSEC (DNS Security Extensions) adds **authentication and integrity** to DNS responses.
 
@@ -1663,7 +1663,7 @@ Instead, it allows clients to verify that DNS records:
 
 ---
 
-# Why DNSSEC Exists
+## Why DNSSEC Exists
 
 Without DNSSEC:
 
@@ -1711,7 +1711,7 @@ Reject
 
 ---
 
-# DNSSEC Components
+## DNSSEC Components
 
 DNSSEC introduces additional DNS record types.
 
@@ -1727,7 +1727,7 @@ These records establish a chain of trust throughout the DNS hierarchy.
 
 ---
 
-# Chain of Trust
+## Chain of Trust
 
 DNSSEC validation follows a hierarchical trust model.
 
@@ -1761,7 +1761,7 @@ If any link cannot be validated, the response is considered untrusted.
 
 ---
 
-# Benefits of DNSSEC
+## Benefits of DNSSEC
 
 DNSSEC helps protect against:
 
@@ -1774,7 +1774,7 @@ It improves trust in DNS responses but does not hide DNS queries.
 
 ---
 
-# Limitations of DNSSEC
+## Limitations of DNSSEC
 
 DNSSEC does **not** provide:
 
@@ -1786,9 +1786,9 @@ Queries remain visible on the network unless additional protocols such as DoH or
 
 ---
 
-# DNS over HTTPS (DoH)
+## DNS over HTTPS (DoH)
 
-## What is DoH?
+### What is DoH?
 
 DNS over HTTPS (DoH) encapsulates DNS queries within HTTPS traffic.
 
@@ -1812,7 +1812,7 @@ TCP 443
 
 ---
 
-# Benefits of DoH
+## Benefits of DoH
 
 - Encrypts DNS queries
 - Improves privacy
@@ -1821,7 +1821,7 @@ TCP 443
 
 ---
 
-# Considerations for Enterprises
+## Considerations for Enterprises
 
 While DoH enhances privacy, unmanaged DoH can bypass enterprise DNS controls such as:
 
@@ -1834,7 +1834,7 @@ Many organizations manage DoH usage through endpoint configuration and security 
 
 ---
 
-# DNS over TLS (DoT)
+## DNS over TLS (DoT)
 
 DNS over TLS encrypts DNS traffic using TLS.
 
@@ -1858,7 +1858,7 @@ TCP 853
 
 ---
 
-# DoH vs DoT
+## DoH vs DoT
 
 | Feature | DoH | DoT |
 |----------|-----|-----|
@@ -1871,7 +1871,7 @@ Both protocols improve confidentiality compared to traditional DNS.
 
 ---
 
-# Traditional DNS vs DoH vs DoT
+## Traditional DNS vs DoH vs DoT
 
 | Feature | Traditional DNS | DoH | DoT |
 |----------|----------------|-----|-----|
@@ -1882,9 +1882,9 @@ Both protocols improve confidentiality compared to traditional DNS.
 
 ---
 
-# Anycast DNS
+## Anycast DNS
 
-## What is Anycast?
+### What is Anycast?
 
 Anycast allows multiple geographically distributed DNS servers to advertise the **same IP address**.
 
@@ -1906,7 +1906,7 @@ Routing protocols direct the client to the closest or most appropriate server.
 
 ---
 
-# Benefits of Anycast
+## Benefits of Anycast
 
 - Lower latency
 - High Availability
@@ -1918,7 +1918,7 @@ Many public DNS services and root server instances use Anycast.
 
 ---
 
-# DNS Load Balancing
+## DNS Load Balancing
 
 DNS can distribute client requests across multiple servers.
 
@@ -1940,7 +1940,7 @@ Clients receive one of several available addresses based on the configured polic
 
 ---
 
-# Round-Robin DNS
+## Round-Robin DNS
 
 One simple load-balancing method is **Round-Robin DNS**.
 
@@ -1984,7 +1984,7 @@ Limitations:
 
 ---
 
-# GeoDNS
+## GeoDNS
 
 GeoDNS returns responses based on the client's geographic location.
 
@@ -2023,7 +2023,7 @@ Benefits:
 
 ---
 
-# Active Directory Integrated DNS
+## Active Directory Integrated DNS
 
 Microsoft Active Directory relies heavily on DNS.
 
@@ -2039,7 +2039,7 @@ Many Active Directory services use SRV records for service discovery.
 
 ---
 
-# Active Directory DNS Workflow
+## Active Directory DNS Workflow
 
 ```
 Client
@@ -2065,7 +2065,7 @@ Without functioning DNS, Active Directory authentication and many related servic
 
 ---
 
-# Dynamic DNS (DDNS)
+## Dynamic DNS (DDNS)
 
 Dynamic DNS allows hosts to update their own DNS records automatically.
 
@@ -2097,7 +2097,7 @@ In enterprise Windows environments, DHCP and Active Directory often integrate wi
 
 ---
 
-# Split-Brain DNS Review
+## Split-Brain DNS Review
 
 Large organizations commonly maintain:
 
@@ -2121,7 +2121,7 @@ Internal users receive private resource addresses, while external users receive 
 
 ---
 
-# Cloud DNS
+## Cloud DNS
 
 Public cloud providers offer managed DNS services.
 
@@ -2135,7 +2135,7 @@ Benefits include:
 
 ---
 
-# AWS Route 53
+## AWS Route 53
 
 AWS provides **Amazon Route 53** for:
 
@@ -2156,7 +2156,7 @@ Common routing policies include:
 
 ---
 
-# Azure DNS
+## Azure DNS
 
 Azure DNS provides:
 
@@ -2168,7 +2168,7 @@ Azure DNS provides:
 
 ---
 
-# Google Cloud DNS
+## Google Cloud DNS
 
 Google Cloud DNS offers:
 
@@ -2181,7 +2181,7 @@ Google Cloud DNS offers:
 
 ---
 
-# Kubernetes DNS
+## Kubernetes DNS
 
 Containers frequently communicate using service names instead of IP addresses.
 
@@ -2203,7 +2203,7 @@ Kubernetes automatically provides internal DNS-based service discovery.
 
 ---
 
-# CoreDNS
+## CoreDNS
 
 Most Kubernetes clusters use **CoreDNS**.
 
@@ -2216,7 +2216,7 @@ Responsibilities:
 
 ---
 
-# Enterprise Hybrid DNS
+## Enterprise Hybrid DNS
 
 Modern organizations often combine:
 
@@ -2250,7 +2250,7 @@ Challenges include:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -2267,7 +2267,7 @@ Organizations should:
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Problem | Possible Cause |
 |----------|----------------|
@@ -2279,7 +2279,7 @@ Organizations should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A secure and resilient DNS infrastructure enables:
 
@@ -2294,7 +2294,7 @@ Because nearly every enterprise application depends on DNS, outages or compromis
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - **DNSSEC** provides authentication and integrity but does not encrypt DNS traffic.
 - **DoH** and **DoT** encrypt DNS queries, improving privacy and confidentiality.
@@ -2305,13 +2305,13 @@ Because nearly every enterprise application depends on DNS, outages or compromis
 - Kubernetes uses **CoreDNS** for internal service discovery.
 - Enterprise DNS should be designed with redundancy, security, monitoring, and clear separation of internal and external namespaces.
 
-# 11 - Domain Name System (DNS)
+## 11 - Domain Name System (DNS)
 
-# Part 4 — DNS Security, Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, and Chapter Review
+## Part 4 — DNS Security, Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, and Chapter Review
 
 ---
 
-# Overview
+## Overview
 
 DNS is one of the most frequently targeted network services because nearly every application depends on it.
 
@@ -2330,7 +2330,7 @@ Understanding how to analyze, secure, and troubleshoot DNS is a critical skill f
 
 ---
 
-# Common DNS Attacks
+## Common DNS Attacks
 
 DNS infrastructure can be targeted through several attack techniques.
 
@@ -2350,9 +2350,9 @@ Each attack targets different aspects of DNS and requires specific detection and
 
 ---
 
-# DNS Cache Poisoning
+## DNS Cache Poisoning
 
-## What is DNS Cache Poisoning?
+### What is DNS Cache Poisoning?
 
 DNS cache poisoning occurs when an attacker injects false DNS information into a recursive resolver's cache.
 
@@ -2386,7 +2386,7 @@ Users unknowingly connect to the attacker's system instead of the legitimate ser
 
 ---
 
-# Business Impact
+## Business Impact
 
 Cache poisoning can lead to:
 
@@ -2399,7 +2399,7 @@ Cache poisoning can lead to:
 
 ---
 
-# Mitigation
+## Mitigation
 
 Recommended controls:
 
@@ -2412,7 +2412,7 @@ Recommended controls:
 
 ---
 
-# DNS Spoofing
+## DNS Spoofing
 
 DNS spoofing involves forging DNS responses to redirect users to malicious destinations.
 
@@ -2440,7 +2440,7 @@ Unlike cache poisoning, spoofing does not necessarily require compromising the D
 
 ---
 
-# DNS Hijacking
+## DNS Hijacking
 
 DNS hijacking occurs when an attacker changes DNS settings or redirects DNS traffic.
 
@@ -2454,7 +2454,7 @@ Possible targets include:
 
 ---
 
-# DNS Amplification Attack
+## DNS Amplification Attack
 
 DNS amplification is a Distributed Denial-of-Service (DDoS) technique.
 
@@ -2489,7 +2489,7 @@ Mitigations include:
 
 ---
 
-# DNS Tunneling
+## DNS Tunneling
 
 DNS tunneling hides data inside DNS queries and responses.
 
@@ -2520,7 +2520,7 @@ Attackers may use DNS tunneling for:
 
 ---
 
-# Indicators of DNS Tunneling
+## Indicators of DNS Tunneling
 
 Possible indicators include:
 
@@ -2535,7 +2535,7 @@ No single indicator confirms tunneling; analysts should correlate multiple signa
 
 ---
 
-# DNS Rebinding
+## DNS Rebinding
 
 DNS rebinding changes the IP address associated with a domain after the client's browser has already trusted it.
 
@@ -2565,7 +2565,7 @@ If successful, the browser may interact with internal resources under the attack
 
 ---
 
-# Fast Flux
+## Fast Flux
 
 Fast Flux rapidly rotates IP addresses associated with a domain.
 
@@ -2601,7 +2601,7 @@ Fast Flux is often associated with:
 
 ---
 
-# Domain Generation Algorithms (DGA)
+## Domain Generation Algorithms (DGA)
 
 Some malware generates hundreds or thousands of potential domain names.
 
@@ -2627,7 +2627,7 @@ The attacker only needs to register one generated domain to regain communication
 
 ---
 
-# DNS Packet Analysis
+## DNS Packet Analysis
 
 DNS packet captures provide valuable information for troubleshooting and investigations.
 
@@ -2644,7 +2644,7 @@ Typical fields include:
 
 ---
 
-# Wireshark DNS Filters
+## Wireshark DNS Filters
 
 Useful display filters:
 
@@ -2684,7 +2684,7 @@ udp.port == 53
 
 ---
 
-# Useful Wireshark Fields
+## Useful Wireshark Fields
 
 During packet analysis, review:
 
@@ -2701,7 +2701,7 @@ During packet analysis, review:
 
 ---
 
-# Cisco IOS Verification
+## Cisco IOS Verification
 
 Display configured DNS servers:
 
@@ -2729,7 +2729,7 @@ ping server.example.com
 
 ---
 
-# Linux Verification
+## Linux Verification
 
 Check configured DNS servers:
 
@@ -2769,7 +2769,7 @@ dig -x 192.168.10.20
 
 ---
 
-# Windows Verification
+## Windows Verification
 
 Display DNS configuration:
 
@@ -2803,7 +2803,7 @@ Resolve-DnsName example.com
 
 ---
 
-# Enterprise Troubleshooting Workflow
+## Enterprise Troubleshooting Workflow
 
 When DNS resolution fails:
 
@@ -2847,13 +2847,13 @@ Using a structured approach reduces troubleshooting time.
 
 ---
 
-# Troubleshooting Scenario 1
+## Troubleshooting Scenario 1
 
-## Symptom
+### Symptom
 
 Users cannot access an internal application.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2865,9 +2865,9 @@ Verify:
 
 ---
 
-# Troubleshooting Scenario 2
+## Troubleshooting Scenario 2
 
-## Symptom
+### Symptom
 
 Emails are not being delivered.
 
@@ -2881,9 +2881,9 @@ Verify:
 
 ---
 
-# Troubleshooting Scenario 3
+## Troubleshooting Scenario 3
 
-## Symptom
+### Symptom
 
 Secondary DNS server contains outdated records.
 
@@ -2896,7 +2896,7 @@ Possible causes:
 
 ---
 
-# Practical Lab 1 — Basic DNS Resolution
+## Practical Lab 1 — Basic DNS Resolution
 
 Tasks:
 
@@ -2909,7 +2909,7 @@ Tasks:
 
 ---
 
-# Practical Lab 2 — Reverse DNS
+## Practical Lab 2 — Reverse DNS
 
 Tasks:
 
@@ -2920,7 +2920,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — DNSSEC Validation
+## Practical Lab 3 — DNSSEC Validation
 
 Tasks:
 
@@ -2931,7 +2931,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — Split-Horizon DNS
+## Practical Lab 4 — Split-Horizon DNS
 
 Topology:
 
@@ -2967,7 +2967,7 @@ Tasks:
 
 ---
 
-# Practical Lab 5 — Packet Capture
+## Practical Lab 5 — Packet Capture
 
 Tasks:
 
@@ -2982,7 +2982,7 @@ Tasks:
 
 ---
 
-# SOC Detection Engineering
+## SOC Detection Engineering
 
 Security teams should monitor for:
 
@@ -2999,7 +2999,7 @@ DNS telemetry is a valuable source of indicators for threat hunting.
 
 ---
 
-# SIEM Detection Ideas
+## SIEM Detection Ideas
 
 Example 1:
 
@@ -3057,7 +3057,7 @@ Correlate DNS events with proxy, firewall, EDR, and authentication logs to impro
 
 ---
 
-# Zeek Monitoring
+## Zeek Monitoring
 
 Zeek records DNS activity in `dns.log`, including:
 
@@ -3073,7 +3073,7 @@ Analysts can use this information to identify suspicious communication patterns.
 
 ---
 
-# Suricata Monitoring
+## Suricata Monitoring
 
 Suricata can inspect DNS traffic for:
 
@@ -3087,7 +3087,7 @@ Alerts should be reviewed alongside packet captures and endpoint telemetry.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -3104,13 +3104,13 @@ Organizations should:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 Users report intermittent access to the corporate portal.
 
-### Investigation
+#### Investigation
 
 The SOC identifies:
 
@@ -3118,7 +3118,7 @@ The SOC identifies:
 - Frequent TXT record requests to an unfamiliar external domain.
 - High volumes of outbound DNS traffic.
 
-### Resolution
+#### Resolution
 
 - Isolate the compromised host.
 - Block the malicious domain.
@@ -3129,17 +3129,17 @@ The SOC identifies:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is DNS?
+#### What is DNS?
 
 DNS (Domain Name System) translates domain names into IP addresses and stores other resource information used by network services.
 
 ---
 
-### Which ports does DNS use?
+#### Which ports does DNS use?
 
 DNS primarily uses:
 
@@ -3148,41 +3148,41 @@ DNS primarily uses:
 
 ---
 
-### What is an A record?
+#### What is an A record?
 
 An A record maps a hostname to an IPv4 address.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is the difference between a recursive resolver and an authoritative server?
+#### What is the difference between a recursive resolver and an authoritative server?
 
 A recursive resolver performs lookups on behalf of clients, while an authoritative server provides the official records for a DNS zone.
 
 ---
 
-### What is TTL?
+#### What is TTL?
 
 TTL (Time To Live) specifies how long a DNS record may be cached before it must be refreshed.
 
 ---
 
-### What is DNSSEC?
+#### What is DNSSEC?
 
 DNSSEC adds authentication and integrity to DNS responses using digital signatures, helping prevent spoofed or modified records.
 
 ---
 
-## Advanced
+### Advanced
 
-### Explain DNS tunneling.
+#### Explain DNS tunneling.
 
 DNS tunneling encapsulates data within DNS queries and responses, allowing attackers to use DNS for command-and-control communication or data exfiltration.
 
 ---
 
-### How would you troubleshoot slow DNS resolution?
+#### How would you troubleshoot slow DNS resolution?
 
 A comprehensive answer should include:
 
@@ -3196,7 +3196,7 @@ A comprehensive answer should include:
 
 ---
 
-### How would you secure enterprise DNS?
+#### How would you secure enterprise DNS?
 
 Key measures include:
 
@@ -3212,9 +3212,9 @@ Key measures include:
 
 ---
 
-# References
+## References
 
-## RFCs
+### RFCs
 
 - RFC 1034 — Domain Names: Concepts and Facilities
 - RFC 1035 — Domain Names: Implementation and Specification
@@ -3224,7 +3224,7 @@ Key measures include:
 - RFC 8484 — DNS over HTTPS (DoH)
 - RFC 7858 — DNS over TLS (DoT)
 
-## Organizations
+### Organizations
 
 - IETF
 - ICANN
@@ -3233,13 +3233,13 @@ Key measures include:
 
 ---
 
-# Summary
+## Summary
 
 DNS is a distributed, hierarchical naming system that underpins virtually every modern network service. Secure and resilient DNS deployments require careful record management, redundancy, DNSSEC where appropriate, monitoring, and integration with enterprise security controls. Understanding DNS operations, packet analysis, and attack techniques equips professionals to design, troubleshoot, and defend critical infrastructure.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -3279,7 +3279,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`12-NAT.md`**, will cover:
 

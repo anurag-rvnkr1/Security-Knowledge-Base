@@ -1,12 +1,12 @@
 # 40-HTTP-Response-Splitting.md
 
-# Part 1 — Introduction to HTTP Response Splitting, HTTP Responses, Header Processing, and Secure Response Generation
+## Part 1 — Introduction to HTTP Response Splitting, HTTP Responses, Header Processing, and Secure Response Generation
 
 > **"HTTP Response Splitting occurs when untrusted input improperly influences HTTP response construction, potentially causing downstream components to interpret multiple responses instead of one. Secure applications ensure response headers and messages are generated in a controlled and standards-compliant manner."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is an HTTP Response?
+## What is an HTTP Response?
 
 An HTTP response is the message sent by a server after processing a client's request.
 
@@ -54,7 +54,7 @@ Client
 
 ---
 
-# Basic HTTP Response Structure
+## Basic HTTP Response Structure
 
 An HTTP response contains several logical sections.
 
@@ -78,7 +78,7 @@ Every HTTP component should interpret these sections consistently.
 
 ---
 
-# Example Response Flow
+## Example Response Flow
 
 ```
 Browser
@@ -108,7 +108,7 @@ Responses travel back through the infrastructure before reaching the client.
 
 ---
 
-# What is HTTP Response Splitting?
+## What is HTTP Response Splitting?
 
 HTTP Response Splitting is a class of vulnerability that can occur when untrusted data improperly affects HTTP response construction.
 
@@ -134,7 +134,7 @@ This chapter focuses on defensive understanding and secure design rather than ex
 
 ---
 
-# Why Response Construction Matters
+## Why Response Construction Matters
 
 Applications generate thousands of responses every second.
 
@@ -162,7 +162,7 @@ Incorrect response construction may affect multiple downstream systems.
 
 ---
 
-# Modern Enterprise Response Path
+## Modern Enterprise Response Path
 
 ```
 Application
@@ -192,7 +192,7 @@ Every intermediary processes HTTP responses.
 
 ---
 
-# Response Components
+## Response Components
 
 ```
 HTTP Response
@@ -212,7 +212,7 @@ Each component has a clearly defined purpose.
 
 ---
 
-# Response Headers
+## Response Headers
 
 Headers communicate metadata.
 
@@ -242,7 +242,7 @@ Applications should generate headers using trusted server-side logic.
 
 ---
 
-# Response Body
+## Response Body
 
 The response body contains application data.
 
@@ -266,7 +266,7 @@ Headers and body should remain logically separated.
 
 ---
 
-# Response Lifecycle
+## Response Lifecycle
 
 ```
 Business Logic
@@ -296,7 +296,7 @@ Proper validation ensures responses remain standards compliant.
 
 ---
 
-# Enterprise Response Architecture
+## Enterprise Response Architecture
 
 ```
 Application
@@ -326,7 +326,7 @@ Frameworks often provide safe APIs for response generation.
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 User Input
@@ -344,7 +344,7 @@ User-controlled input should never directly determine protocol structure.
 
 ---
 
-# Response Generation Pipeline
+## Response Generation Pipeline
 
 ```
 Application Logic
@@ -370,7 +370,7 @@ Each stage should preserve protocol correctness.
 
 ---
 
-# Importance of Framework APIs
+## Importance of Framework APIs
 
 Modern frameworks provide structured interfaces for creating responses.
 
@@ -394,7 +394,7 @@ Using framework APIs reduces the likelihood of protocol formatting errors.
 
 ---
 
-# High-Level Risks
+## High-Level Risks
 
 Improper response construction may contribute to:
 
@@ -408,7 +408,7 @@ Secure development focuses on preventing malformed responses through strict vali
 
 ---
 
-# Secure Response Design Principles
+## Secure Response Design Principles
 
 ```
 Secure Response Design
@@ -434,7 +434,7 @@ Secure Response Design
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A banking application returns account summaries through an API.
 
@@ -466,7 +466,7 @@ The framework generates standardized headers while the application supplies only
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 Response Processing
@@ -492,7 +492,7 @@ Each component contributes to secure response delivery.
 
 ---
 
-# Secure Response Goals
+## Secure Response Goals
 
 A secure HTTP response should provide:
 
@@ -505,7 +505,7 @@ A secure HTTP response should provide:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the structure of an HTTP response.
 2. Identify which components generate headers.
@@ -517,7 +517,7 @@ A secure HTTP response should provide:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an HTTP response?
 2. What are the main components of an HTTP response?
@@ -532,7 +532,7 @@ A secure HTTP response should provide:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Generate HTTP responses using trusted framework APIs.
 - Keep protocol structure separate from user-controlled data.
@@ -544,7 +544,7 @@ A secure HTTP response should provide:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing untrusted input to influence protocol structure.
 - Manually constructing HTTP responses unnecessarily.
@@ -555,7 +555,7 @@ A secure HTTP response should provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - HTTP responses consist of a status line, headers, a blank line, and a body.
 - Response headers communicate metadata and should be generated by trusted server-side components.
@@ -563,15 +563,15 @@ A secure HTTP response should provide:
 - Modern frameworks help enforce safe and standards-compliant response generation.
 - Secure response handling relies on validation, protocol compliance, and separation of user data from HTTP message structure.
 
-# 40-HTTP-Response-Splitting.md
+## 40-HTTP-Response-Splitting.md
 
-# Part 2 — HTTP Response Processing, Header Security, Response Validation, Infrastructure Components, and Defensive Architecture
+## Part 2 — HTTP Response Processing, Header Security, Response Validation, Infrastructure Components, and Defensive Architecture
 
 > **"Secure HTTP response processing ensures that every component—from the application framework to the browser—interprets response metadata consistently while preventing untrusted input from influencing protocol structure."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -588,7 +588,7 @@ After completing this part, you will understand:
 
 ---
 
-# HTTP Response Processing Lifecycle
+## HTTP Response Processing Lifecycle
 
 Every response follows a structured processing path.
 
@@ -620,7 +620,7 @@ Each stage contributes to protocol correctness.
 
 ---
 
-# Enterprise Response Flow
+## Enterprise Response Flow
 
 ```
 Application
@@ -654,7 +654,7 @@ Every infrastructure component processes or forwards the response.
 
 ---
 
-# Response Generation
+## Response Generation
 
 Application logic produces business data.
 
@@ -678,7 +678,7 @@ The framework should control protocol formatting while business logic provides v
 
 ---
 
-# Header Processing
+## Header Processing
 
 Headers communicate important metadata.
 
@@ -702,7 +702,7 @@ Header values should be generated using trusted server-side mechanisms.
 
 ---
 
-# Common HTTP Response Headers
+## Common HTTP Response Headers
 
 ```
 Response Headers
@@ -734,7 +734,7 @@ Each header influences how clients and intermediaries process the response.
 
 ---
 
-# Security Headers
+## Security Headers
 
 Security headers help improve browser security.
 
@@ -766,7 +766,7 @@ These headers complement other application security controls.
 
 ---
 
-# Response Validation
+## Response Validation
 
 Applications should validate responses before transmission.
 
@@ -790,7 +790,7 @@ Validation helps ensure responses conform to HTTP standards.
 
 ---
 
-# Response Normalization
+## Response Normalization
 
 Normalization creates a consistent response format.
 
@@ -814,7 +814,7 @@ Consistent formatting reduces ambiguity for downstream components.
 
 ---
 
-# Response Integrity
+## Response Integrity
 
 Secure systems preserve:
 
@@ -838,7 +838,7 @@ Client
 
 ---
 
-# Reverse Proxy Processing
+## Reverse Proxy Processing
 
 Reverse proxies frequently modify or add infrastructure-related headers.
 
@@ -862,7 +862,7 @@ Configuration should ensure that infrastructure-generated headers remain consist
 
 ---
 
-# CDN Response Handling
+## CDN Response Handling
 
 ```
 Application
@@ -884,7 +884,7 @@ CDNs rely on response metadata to determine caching behavior.
 
 ---
 
-# Cache-Control
+## Cache-Control
 
 ```
 Application
@@ -906,7 +906,7 @@ Correct cache directives help ensure content is stored and delivered appropriate
 
 ---
 
-# Browser Processing
+## Browser Processing
 
 ```
 HTTP Response
@@ -928,7 +928,7 @@ Browsers process metadata before rendering response content.
 
 ---
 
-# Secure Framework Design
+## Secure Framework Design
 
 Modern frameworks separate application logic from protocol handling.
 
@@ -952,7 +952,7 @@ Developers should use framework-provided interfaces instead of manually construc
 
 ---
 
-# API Responses
+## API Responses
 
 API responses commonly use structured formats.
 
@@ -976,7 +976,7 @@ Serialization should be handled using trusted libraries.
 
 ---
 
-# Microservices
+## Microservices
 
 ```
 Service A
@@ -998,7 +998,7 @@ Each service should generate standards-compliant responses.
 
 ---
 
-# Service Mesh
+## Service Mesh
 
 ```
 Application
@@ -1020,7 +1020,7 @@ Sidecar proxies process responses while maintaining protocol consistency.
 
 ---
 
-# Cloud-Native Architecture
+## Cloud-Native Architecture
 
 ```
 Application
@@ -1046,7 +1046,7 @@ Cloud-native deployments introduce additional response-processing layers.
 
 ---
 
-# Logging
+## Logging
 
 Response processing should be logged appropriately.
 
@@ -1070,7 +1070,7 @@ Logs improve troubleshooting and operational visibility.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1085,7 +1085,7 @@ Sensitive information should be excluded or appropriately protected within logs.
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -1111,7 +1111,7 @@ Monitoring helps identify abnormal response-processing behavior.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1124,7 +1124,7 @@ Monitoring helps identify abnormal response-processing behavior.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Clients
@@ -1162,7 +1162,7 @@ Each layer contributes to secure response generation and delivery.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A cloud-based healthcare portal returns patient records through secure APIs.
 
@@ -1194,7 +1194,7 @@ The framework generates standardized headers while business data is serialized u
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1207,7 +1207,7 @@ The framework generates standardized headers while business data is serialized u
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the lifecycle of an HTTP response.
 2. Identify which components add or process response headers.
@@ -1219,7 +1219,7 @@ The framework generates standardized headers while business data is serialized u
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are HTTP response headers important?
 2. What is response normalization?
@@ -1234,7 +1234,7 @@ The framework generates standardized headers while business data is serialized u
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use framework APIs for response generation.
 - Separate business data from protocol metadata.
@@ -1247,7 +1247,7 @@ The framework generates standardized headers while business data is serialized u
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Manually constructing HTTP responses when framework APIs are available.
 - Allowing inconsistent security headers across services.
@@ -1259,7 +1259,7 @@ The framework generates standardized headers while business data is serialized u
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure HTTP responses depend on correct header generation, validation, and protocol compliance.
 - Modern frameworks simplify secure response construction.
@@ -1267,15 +1267,15 @@ The framework generates standardized headers while business data is serialized u
 - Reverse proxies, CDNs, and browsers all participate in response processing.
 - Monitoring, standardized configurations, and validation improve the reliability and security of HTTP response handling.
 
-# 40-HTTP-Response-Splitting.md
+## 40-HTTP-Response-Splitting.md
 
-# Part 3 — Detection, Secure Testing, Monitoring, Threat Modeling, Secure SDLC, and Enterprise Defense
+## Part 3 — Detection, Secure Testing, Monitoring, Threat Modeling, Secure SDLC, and Enterprise Defense
 
 > **"HTTP Response Splitting is best prevented by ensuring that response construction remains entirely under trusted server control, with standardized framework APIs, rigorous validation, and consistent infrastructure behavior."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1292,7 +1292,7 @@ After completing this part, you will understand:
 
 ---
 
-# Why Response Construction Issues Are Difficult to Detect
+## Why Response Construction Issues Are Difficult to Detect
 
 Unlike syntax errors, response construction problems often involve interactions between:
 
@@ -1327,7 +1327,7 @@ A problem may not become visible until responses pass through multiple infrastru
 
 ---
 
-# Security Review Process
+## Security Review Process
 
 Organizations should review the complete response-generation pipeline.
 
@@ -1355,7 +1355,7 @@ Reviews should verify that response formatting remains standards compliant throu
 
 ---
 
-# Response Processing Inventory
+## Response Processing Inventory
 
 Document every component responsible for handling responses.
 
@@ -1385,7 +1385,7 @@ A complete inventory improves visibility and simplifies troubleshooting.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Enterprise deployments often contain multiple proxy instances.
 
@@ -1413,7 +1413,7 @@ Consistent configuration helps ensure uniform response handling.
 
 ---
 
-# Architecture Review
+## Architecture Review
 
 Architecture reviews should evaluate:
 
@@ -1443,7 +1443,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling helps identify weaknesses in response processing.
 
@@ -1471,7 +1471,7 @@ The goal is to identify where protocol integrity could be affected before deploy
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 During reviews, teams should ask:
 
@@ -1497,7 +1497,7 @@ Security Controls
 
 ---
 
-# Secure Response Testing
+## Secure Response Testing
 
 Testing should verify that responses remain standards compliant across supported environments.
 
@@ -1521,7 +1521,7 @@ Testing should focus on correctness, consistency, and protocol compliance rather
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1549,7 +1549,7 @@ Each testing phase validates different aspects of response handling.
 
 ---
 
-# Browser Compatibility Testing
+## Browser Compatibility Testing
 
 Responses should behave consistently across supported browsers.
 
@@ -1573,7 +1573,7 @@ Differences in browser behavior should be identified during quality assurance.
 
 ---
 
-# Framework Validation
+## Framework Validation
 
 Modern frameworks include response-handling features that should be verified during testing.
 
@@ -1597,7 +1597,7 @@ Using supported framework APIs reduces implementation complexity.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 Response security should be incorporated throughout development.
 
@@ -1633,7 +1633,7 @@ Security is most effective when integrated into every development phase.
 
 ---
 
-# DevSecOps Pipeline
+## DevSecOps Pipeline
 
 ```
 Developer
@@ -1667,7 +1667,7 @@ Response validation should be part of automated quality assurance.
 
 ---
 
-# Change Management
+## Change Management
 
 Response-related configuration changes should follow controlled processes.
 
@@ -1699,7 +1699,7 @@ Structured change management reduces operational risk.
 
 ---
 
-# Logging
+## Logging
 
 Important response-processing events should be recorded.
 
@@ -1723,7 +1723,7 @@ Logs support troubleshooting, compliance, and incident investigations.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1739,7 +1739,7 @@ Sensitive business or personal information should not be unnecessarily included 
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1765,7 +1765,7 @@ Continuous monitoring provides operational visibility into response generation.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1778,7 +1778,7 @@ Continuous monitoring provides operational visibility into response generation.
 
 ---
 
-# Governance
+## Governance
 
 Organizations should establish standards for response generation.
 
@@ -1808,7 +1808,7 @@ Governance promotes consistent implementation across teams.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1846,7 +1846,7 @@ Each layer contributes to secure response delivery and operational visibility.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global insurance platform serves policy information through secure web applications.
 
@@ -1882,7 +1882,7 @@ The organization uses standardized framework APIs, centralized security header p
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Framework APIs Used
@@ -1908,7 +1908,7 @@ The organization uses standardized framework APIs, centralized security header p
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1921,7 +1921,7 @@ The organization uses standardized framework APIs, centralized security header p
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the complete HTTP response path from the application to the browser.
 2. Identify which components generate, modify, or validate response headers.
@@ -1933,7 +1933,7 @@ The organization uses standardized framework APIs, centralized security header p
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should response construction remain under server control?
 2. What should be evaluated during response architecture reviews?
@@ -1948,7 +1948,7 @@ The organization uses standardized framework APIs, centralized security header p
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use trusted framework APIs for all response generation.
 - Validate response headers before transmission.
@@ -1962,7 +1962,7 @@ The organization uses standardized framework APIs, centralized security header p
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Manually building protocol responses unnecessarily.
 - Allowing inconsistent response policies across applications.
@@ -1974,7 +1974,7 @@ The organization uses standardized framework APIs, centralized security header p
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure response construction depends on trusted frameworks, validation, and standards compliance.
 - Architecture reviews and threat modeling help identify response-processing risks early.
@@ -1982,15 +1982,15 @@ The organization uses standardized framework APIs, centralized security header p
 - Monitoring, governance, and change management strengthen long-term operational resilience.
 - Response security should be integrated into Secure SDLC and DevSecOps practices.
 
-# 40-HTTP-Response-Splitting.md
+## 40-HTTP-Response-Splitting.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Secure HTTP response handling is achieved through standardized response generation, strict protocol compliance, centralized governance, and continuous monitoring across the entire application infrastructure."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2007,7 +2007,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 Organizations should establish standardized policies for generating and processing HTTP responses.
 
@@ -2047,7 +2047,7 @@ Governance ensures consistency across teams, applications, and environments.
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Response Security Governance
@@ -2077,7 +2077,7 @@ Governance provides repeatable and auditable security practices.
 
 ---
 
-# Response Header Governance
+## Response Header Governance
 
 Organizations should centrally define approved response headers.
 
@@ -2101,7 +2101,7 @@ Centralized management helps maintain consistent browser security behavior.
 
 ---
 
-# Zero Trust for Response Processing
+## Zero Trust for Response Processing
 
 Zero Trust principles apply to every response generated by an application.
 
@@ -2136,7 +2136,7 @@ Every response should be independently validated before transmission.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Response security should rely on multiple layers.
 
@@ -2168,7 +2168,7 @@ Multiple controls provide resilience if one mechanism fails.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Response validation should be part of every software release.
 
@@ -2200,7 +2200,7 @@ Security becomes a continuous engineering practice.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2238,7 +2238,7 @@ Automated testing reduces the likelihood of response-handling regressions.
 
 ---
 
-# Framework Standardization
+## Framework Standardization
 
 Organizations should standardize supported frameworks and libraries.
 
@@ -2262,7 +2262,7 @@ Standardization simplifies maintenance and security reviews.
 
 ---
 
-# Documentation
+## Documentation
 
 Maintain documentation for:
 
@@ -2292,7 +2292,7 @@ Accurate documentation improves operational consistency.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many regulatory frameworks expect organizations to maintain secure application communications.
 
@@ -2320,7 +2320,7 @@ Specific obligations depend on applicable regulations and industry standards.
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Response-related operational events should be logged.
 
@@ -2344,7 +2344,7 @@ Logs support investigations, troubleshooting, and compliance activities.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2361,7 +2361,7 @@ Sensitive customer or business information should not be unnecessarily stored in
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2387,7 +2387,7 @@ Continuous monitoring helps identify abnormal response-processing behavior befor
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2402,7 +2402,7 @@ Continuous monitoring helps identify abnormal response-processing behavior befor
 
 ---
 
-# Security Dashboard
+## Security Dashboard
 
 ```
 Response Security Dashboard
@@ -2430,7 +2430,7 @@ Dashboards provide a centralized operational view of response-processing health.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2460,7 +2460,7 @@ The SOC correlates response events with network, application, and infrastructure
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should maintain documented procedures for response-processing incidents.
 
@@ -2496,7 +2496,7 @@ A structured process minimizes service disruption and supports continual improve
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2526,7 +2526,7 @@ The objective is to eliminate both technical and procedural causes.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2556,7 +2556,7 @@ Response security should continuously evolve alongside applications and infrastr
 
 ---
 
-# HTTP Response Security Maturity Model
+## HTTP Response Security Maturity Model
 
 ```
 Level 1
@@ -2593,7 +2593,7 @@ Organizations mature by integrating governance, automation, monitoring, and stan
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2647,7 +2647,7 @@ This layered architecture separates application logic, response generation, moni
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational e-commerce platform delivers product pages and API responses through a globally distributed infrastructure.
 
@@ -2683,7 +2683,7 @@ The organization uses standardized response-generation libraries, centrally mana
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Framework APIs Used
@@ -2709,7 +2709,7 @@ The organization uses standardized response-generation libraries, centrally mana
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2722,9 +2722,9 @@ The organization uses standardized response-generation libraries, centrally mana
 
 ---
 
-# HTTP Response Splitting Quick Revision
+## HTTP Response Splitting Quick Revision
 
-## Response Lifecycle
+### Response Lifecycle
 
 ```
 Business Logic
@@ -2752,7 +2752,7 @@ Client
 
 ---
 
-## Response Structure
+### Response Structure
 
 ```
 Status Line
@@ -2772,7 +2772,7 @@ Body
 
 ---
 
-## Secure Processing
+### Secure Processing
 
 ```
 Validate
@@ -2796,7 +2796,7 @@ Monitor
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Metrics
@@ -2816,7 +2816,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a complete HTTP response architecture for a cloud-hosted application.
 2. Identify where response headers are generated and validated.
@@ -2828,7 +2828,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is HTTP Response Splitting at a high level?
 2. Why should HTTP responses be generated through framework APIs?
@@ -2843,7 +2843,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use trusted framework APIs for HTTP response generation.
 - Keep protocol formatting separate from business logic.
@@ -2857,7 +2857,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Manually constructing HTTP responses unnecessarily.
 - Allowing inconsistent response policies across applications.
@@ -2869,7 +2869,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

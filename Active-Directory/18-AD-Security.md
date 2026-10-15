@@ -1,10 +1,10 @@
 # 18-AD-Security.md
 
-# Part 1 — Introduction to Active Directory Security, Security Principles, Identity Protection and Administrative Security
+## Part 1 — Introduction to Active Directory Security, Security Principles, Identity Protection and Administrative Security
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Active Directory is often called the **heart of a Windows enterprise** because it stores and manages:
 
@@ -42,7 +42,7 @@ Therefore, securing Active Directory is one of the highest priorities for enterp
 
 ---
 
-# Why Active Directory is a High-Value Target
+## Why Active Directory is a High-Value Target
 
 Almost every business-critical system depends on Active Directory.
 
@@ -80,7 +80,7 @@ Compromising Active Directory may allow unauthorized access to many enterprise r
 
 ---
 
-# Active Directory Security Goals
+## Active Directory Security Goals
 
 The primary objectives are:
 
@@ -95,7 +95,7 @@ The primary objectives are:
 
 ---
 
-# Security Objectives
+## Security Objectives
 
 ```
 Prevent
@@ -121,7 +121,7 @@ Modern Active Directory security is built on continuous improvement rather than 
 
 ---
 
-# The CIA Triad
+## The CIA Triad
 
 The CIA Triad forms the foundation of information security.
 
@@ -141,7 +141,7 @@ Availability
 
 ---
 
-# Confidentiality
+## Confidentiality
 
 Confidentiality ensures information is only accessible to authorized users.
 
@@ -162,7 +162,7 @@ Controls include:
 
 ---
 
-# Integrity
+## Integrity
 
 Integrity ensures information is accurate and protected from unauthorized modification.
 
@@ -183,7 +183,7 @@ Controls include:
 
 ---
 
-# Availability
+## Availability
 
 Availability ensures systems remain operational for legitimate users.
 
@@ -206,7 +206,7 @@ Controls include:
 
 ---
 
-# Identity is the New Security Perimeter
+## Identity is the New Security Perimeter
 
 Traditional security focused primarily on protecting network boundaries.
 
@@ -244,7 +244,7 @@ Identity protection is therefore a core element of Active Directory security.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 These concepts are related but distinct.
 
@@ -259,7 +259,7 @@ Both processes are essential for secure access control.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 The Principle of Least Privilege (PoLP) states that users and administrators should receive only the permissions required to perform their tasks.
 
@@ -284,7 +284,7 @@ Benefits include:
 
 ---
 
-# Excessive Privileges
+## Excessive Privileges
 
 Granting unnecessary permissions can increase organizational risk.
 
@@ -322,7 +322,7 @@ Delegated permissions are generally preferable to broad administrative privilege
 
 ---
 
-# Administrative Tiering
+## Administrative Tiering
 
 Administrative Tiering separates administrative responsibilities based on the sensitivity of managed systems.
 
@@ -356,7 +356,7 @@ Administrative accounts should be restricted to the tier they are intended to ma
 
 ---
 
-# Tiered Administration Benefits
+## Tiered Administration Benefits
 
 - Reduces credential exposure
 - Limits lateral movement opportunities
@@ -366,7 +366,7 @@ Administrative accounts should be restricted to the tier they are intended to ma
 
 ---
 
-# Privileged Accounts
+## Privileged Accounts
 
 Privileged accounts include:
 
@@ -381,7 +381,7 @@ These accounts require additional protection.
 
 ---
 
-# Administrative Account Separation
+## Administrative Account Separation
 
 A common enterprise practice is to use separate accounts for different activities.
 
@@ -417,7 +417,7 @@ This separation reduces the likelihood that privileged credentials are exposed d
 
 ---
 
-# Secure Administrative Workstations (SAWs/PAWs)
+## Secure Administrative Workstations (SAWs/PAWs)
 
 Many organizations use dedicated administrative workstations for privileged tasks.
 
@@ -447,7 +447,7 @@ Characteristics include:
 
 ---
 
-# Security Baselines
+## Security Baselines
 
 A security baseline defines a secure starting configuration.
 
@@ -464,7 +464,7 @@ Baselines help ensure consistency across systems.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 No single security control is sufficient.
 
@@ -500,7 +500,7 @@ Multiple overlapping controls improve resilience.
 
 ---
 
-# Shared Responsibility
+## Shared Responsibility
 
 Active Directory security involves multiple teams.
 
@@ -532,7 +532,7 @@ Effective security depends on coordination across these groups.
 
 ---
 
-# Enterprise Security Workflow
+## Enterprise Security Workflow
 
 ```
 User Requests Access
@@ -570,7 +570,7 @@ Regular access reviews help ensure permissions remain appropriate.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -598,7 +598,7 @@ These layered controls reduce the likelihood and impact of credential compromise
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Modern attackers frequently target identities rather than infrastructure alone.
 
@@ -617,13 +617,13 @@ Protecting identities is often the most effective way to protect the entire Acti
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review the security posture of an Active Directory environment.
 
-### Step 1
+#### Step 1
 
 Identify privileged groups such as:
 
@@ -636,7 +636,7 @@ Document their intended responsibilities.
 
 ---
 
-### Step 2
+#### Step 2
 
 Review the organization's administrative account model.
 
@@ -644,7 +644,7 @@ Determine whether separate standard and administrative accounts are used.
 
 ---
 
-### Step 3
+#### Step 3
 
 Map the environment into administrative tiers.
 
@@ -656,7 +656,7 @@ Identify which systems belong to:
 
 ---
 
-### Step 4
+#### Step 4
 
 Review the current password and account lockout policies.
 
@@ -664,51 +664,51 @@ Document key settings and compare them with organizational standards.
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a simple diagram showing how authentication and authorization work together within Active Directory.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is Active Directory considered a high-value target?
+#### Q1: Why is Active Directory considered a high-value target?
 
 **Answer:** Because it manages authentication, authorization, identities, and access to critical enterprise resources. Compromising Active Directory can significantly affect the security of the entire environment.
 
 ---
 
-### Q2: What is the Principle of Least Privilege?
+#### Q2: What is the Principle of Least Privilege?
 
 **Answer:** It is the practice of granting users and administrators only the permissions necessary to perform their assigned responsibilities.
 
 ---
 
-### Q3: What is the difference between authentication and authorization?
+#### Q3: What is the difference between authentication and authorization?
 
 **Answer:** Authentication verifies a user's identity, while authorization determines what resources and actions that authenticated user is permitted to access.
 
 ---
 
-### Q4: Why should organizations use separate administrative accounts?
+#### Q4: Why should organizations use separate administrative accounts?
 
 **Answer:** Separate administrative accounts reduce the exposure of privileged credentials during routine activities such as email, web browsing, or document editing.
 
 ---
 
-### Q5: What is administrative tiering?
+#### Q5: What is administrative tiering?
 
 **Answer:** Administrative tiering separates privileged administration based on system sensitivity, helping reduce credential exposure and limit the impact of compromise.
 
 ---
 
-### Q6: What is the purpose of a Privileged Access Workstation (PAW)?
+#### Q6: What is the purpose of a Privileged Access Workstation (PAW)?
 
 **Answer:** A PAW is a hardened, dedicated workstation used exclusively for administrative tasks, reducing the risk of privileged credential theft.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply the Principle of Least Privilege.
 - Use dedicated administrative accounts.
@@ -721,7 +721,7 @@ Create a simple diagram showing how authentication and authorization work togeth
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Using Domain Administrator accounts for everyday work.
 - Granting excessive permissions.
@@ -733,7 +733,7 @@ Create a simple diagram showing how authentication and authorization work togeth
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory is one of the most critical components of enterprise infrastructure.
 - Identity protection is central to modern cybersecurity.
@@ -743,13 +743,13 @@ Create a simple diagram showing how authentication and authorization work togeth
 
 ---
 
-# 18-AD-Security.md
+## 18-AD-Security.md
 
-# Part 2 — Active Directory Security Controls, Password Policies, Privileged Access Management, Service Accounts and Auditing
+## Part 2 — Active Directory Security Controls, Password Policies, Privileged Access Management, Service Accounts and Auditing
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -767,7 +767,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Securing Active Directory requires implementing multiple security controls that work together.
 
@@ -785,7 +785,7 @@ No single control is sufficient on its own.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Enterprise Active Directory security uses multiple overlapping controls.
 
@@ -827,7 +827,7 @@ If one control fails, others continue providing protection.
 
 ---
 
-# Account Security
+## Account Security
 
 Every Active Directory account represents an identity that must be protected.
 
@@ -844,7 +844,7 @@ Each account type has different security requirements.
 
 ---
 
-# Password Policies
+## Password Policies
 
 Password policies help reduce the risk of unauthorized access.
 
@@ -870,7 +870,7 @@ Actual values should align with organizational policy and applicable standards.
 
 ---
 
-# Strong Password Characteristics
+## Strong Password Characteristics
 
 Strong passwords should:
 
@@ -889,7 +889,7 @@ Examples of information to avoid:
 
 ---
 
-# Fine-Grained Password Policies (FGPP)
+## Fine-Grained Password Policies (FGPP)
 
 Organizations often require stronger password policies for privileged accounts.
 
@@ -913,7 +913,7 @@ FGPP enables multiple password policies within the same Active Directory domain.
 
 ---
 
-# Password Settings Objects (PSOs)
+## Password Settings Objects (PSOs)
 
 Fine-Grained Password Policies are implemented using **Password Settings Objects (PSOs).**
 
@@ -930,7 +930,7 @@ Different PSOs can be assigned to different groups.
 
 ---
 
-# Account Lockout Policies
+## Account Lockout Policies
 
 Account lockout policies help slow automated password guessing attempts.
 
@@ -966,7 +966,7 @@ Lockout values should balance usability and security.
 
 ---
 
-# Password Policy Workflow
+## Password Policy Workflow
 
 ```
 User Creates Password
@@ -998,7 +998,7 @@ User Chooses New Password
 
 ---
 
-# Privileged Access Management (PAM)
+## Privileged Access Management (PAM)
 
 Privileged Access Management (PAM) refers to controlling, monitoring, and protecting administrative access.
 
@@ -1011,7 +1011,7 @@ Goals include:
 
 ---
 
-# Administrative Groups
+## Administrative Groups
 
 Examples of privileged groups include:
 
@@ -1035,7 +1035,7 @@ Membership should be reviewed regularly.
 
 ---
 
-# Privileged Access Workflow
+## Privileged Access Workflow
 
 ```
 Administrative Request
@@ -1065,7 +1065,7 @@ Limiting the duration of privileged access reduces risk.
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Many applications require service accounts.
 
@@ -1082,7 +1082,7 @@ Service accounts should not be treated like ordinary user accounts.
 
 ---
 
-# Risks Associated with Service Accounts
+## Risks Associated with Service Accounts
 
 Potential risks include:
 
@@ -1096,7 +1096,7 @@ Poorly managed service accounts are a common source of operational and security 
 
 ---
 
-# Managed Service Accounts (MSA)
+## Managed Service Accounts (MSA)
 
 Managed Service Accounts simplify administration.
 
@@ -1111,7 +1111,7 @@ MSAs are intended for a single computer.
 
 ---
 
-# Group Managed Service Accounts (gMSA)
+## Group Managed Service Accounts (gMSA)
 
 Group Managed Service Accounts extend the concept to multiple authorized systems.
 
@@ -1131,7 +1131,7 @@ Benefits:
 
 ---
 
-# Service Account Lifecycle
+## Service Account Lifecycle
 
 ```
 Request
@@ -1169,7 +1169,7 @@ Documenting the lifecycle improves governance.
 
 ---
 
-# Auditing Active Directory
+## Auditing Active Directory
 
 Auditing records important security events.
 
@@ -1187,7 +1187,7 @@ Auditing provides accountability and supports investigations.
 
 ---
 
-# Audit Workflow
+## Audit Workflow
 
 ```
 Administrative Action
@@ -1217,7 +1217,7 @@ Centralized logging improves visibility across the enterprise.
 
 ---
 
-# Security Logging
+## Security Logging
 
 Important log sources include:
 
@@ -1232,7 +1232,7 @@ Security teams should review these logs regularly.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Security monitoring helps detect unusual activity.
 
@@ -1249,7 +1249,7 @@ Monitoring should be integrated into broader security operations.
 
 ---
 
-# Enterprise Monitoring Workflow
+## Enterprise Monitoring Workflow
 
 ```
 Domain Controllers
@@ -1281,7 +1281,7 @@ Security Analyst
 
 ---
 
-# Security Review Checklist
+## Security Review Checklist
 
 ```
 ✓ Privileged Groups Reviewed
@@ -1303,7 +1303,7 @@ Security Analyst
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1330,7 +1330,7 @@ These controls help reduce credential-related risks while supporting compliance 
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Identity and credential protection are fundamental to Active Directory security.
 
@@ -1348,13 +1348,13 @@ Strong credential management significantly reduces the likelihood of identity co
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review identity protection settings within a lab Active Directory environment.
 
-### Step 1
+#### Step 1
 
 Review the domain password policy.
 
@@ -1367,7 +1367,7 @@ Document:
 
 ---
 
-### Step 2
+#### Step 2
 
 Identify privileged groups.
 
@@ -1381,7 +1381,7 @@ Review current membership.
 
 ---
 
-### Step 3
+#### Step 3
 
 Locate service accounts.
 
@@ -1393,7 +1393,7 @@ Determine:
 
 ---
 
-### Step 4
+#### Step 4
 
 Review Windows Security Logs on a Domain Controller.
 
@@ -1406,51 +1406,51 @@ Identify:
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a simple security review checklist for monthly Active Directory account audits.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why are Fine-Grained Password Policies useful?
+#### Q1: Why are Fine-Grained Password Policies useful?
 
 **Answer:** They allow different password and lockout policies to be applied to different users or groups, enabling stronger protection for privileged accounts.
 
 ---
 
-### Q2: What is the purpose of an account lockout policy?
+#### Q2: What is the purpose of an account lockout policy?
 
 **Answer:** It helps slow automated password guessing attempts by temporarily locking an account after a defined number of failed authentication attempts.
 
 ---
 
-### Q3: What is Privileged Access Management (PAM)?
+#### Q3: What is Privileged Access Management (PAM)?
 
 **Answer:** PAM is the practice of controlling, monitoring, and protecting privileged access to reduce the risk associated with administrative accounts.
 
 ---
 
-### Q4: Why are Managed Service Accounts more secure than traditional service accounts?
+#### Q4: Why are Managed Service Accounts more secure than traditional service accounts?
 
 **Answer:** Managed Service Accounts automatically manage passwords and reduce manual credential administration, lowering the risk of password-related issues.
 
 ---
 
-### Q5: Why is auditing important in Active Directory?
+#### Q5: Why is auditing important in Active Directory?
 
 **Answer:** Auditing provides accountability, supports investigations, detects unauthorized changes, and helps organizations meet compliance requirements.
 
 ---
 
-### Q6: Why should privileged group membership be reviewed regularly?
+#### Q6: Why should privileged group membership be reviewed regularly?
 
 **Answer:** Regular reviews help ensure only authorized users retain elevated permissions, reducing unnecessary privilege and security risk.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply strong password policies based on account sensitivity.
 - Use Fine-Grained Password Policies for privileged accounts where appropriate.
@@ -1463,7 +1463,7 @@ Create a simple security review checklist for monthly Active Directory account a
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Using the same password policy for all account types without evaluating risk.
 - Leaving obsolete service accounts enabled.
@@ -1475,7 +1475,7 @@ Create a simple security review checklist for monthly Active Directory account a
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory security relies on layered controls rather than a single defense.
 - Password policies, account lockout policies, and FGPP strengthen identity protection.
@@ -1485,13 +1485,13 @@ Create a simple security review checklist for monthly Active Directory account a
 
 ---
 
-# 18-AD-Security.md
+## 18-AD-Security.md
 
-# Part 3 — Securing Domain Controllers, Group Policy Security, Administrative Protection, Delegation, Network Security and Monitoring
+## Part 3 — Securing Domain Controllers, Group Policy Security, Administrative Protection, Delegation, Network Security and Monitoring
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1509,7 +1509,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Domain Controllers (DCs) are the most critical systems in an Active Directory environment.
 
@@ -1528,7 +1528,7 @@ Because of this, Domain Controllers require significantly stronger protection th
 
 ---
 
-# Domain Controller Security Model
+## Domain Controller Security Model
 
 ```
               Domain Controller
@@ -1552,7 +1552,7 @@ Enterprise Identity Infrastructure
 
 ---
 
-# Why Domain Controllers Must Be Protected
+## Why Domain Controllers Must Be Protected
 
 Every authentication request typically involves a Domain Controller.
 
@@ -1584,7 +1584,7 @@ If attackers gain administrative control of a Domain Controller, they may be abl
 
 ---
 
-# Physical Security
+## Physical Security
 
 Domain Controllers should be physically protected.
 
@@ -1602,7 +1602,7 @@ Physical compromise can bypass many software security controls.
 
 ---
 
-# Operating System Hardening
+## Operating System Hardening
 
 Domain Controllers should have a minimal attack surface.
 
@@ -1619,7 +1619,7 @@ Hardening reduces opportunities for exploitation.
 
 ---
 
-# Domain Controller Hardening Workflow
+## Domain Controller Hardening Workflow
 
 ```
 Install Windows Server
@@ -1647,7 +1647,7 @@ Continuous Monitoring
 
 ---
 
-# Security Baselines
+## Security Baselines
 
 Security baselines provide a consistent starting configuration.
 
@@ -1665,7 +1665,7 @@ Applying standardized baselines improves consistency across Domain Controllers.
 
 ---
 
-# Administrative Access Restrictions
+## Administrative Access Restrictions
 
 Administrative access should be tightly controlled.
 
@@ -1693,7 +1693,7 @@ Avoid administering Domain Controllers from unmanaged or non-administrative syst
 
 ---
 
-# Group Policy Security
+## Group Policy Security
 
 Group Policy is one of the most powerful administrative mechanisms in Active Directory.
 
@@ -1701,7 +1701,7 @@ Because Group Policy can configure thousands of computers simultaneously, unauth
 
 ---
 
-# Protecting Group Policy Objects
+## Protecting Group Policy Objects
 
 Recommendations:
 
@@ -1715,7 +1715,7 @@ Only authorized administrators should modify security-related Group Policy Objec
 
 ---
 
-# Group Policy Security Workflow
+## Group Policy Security Workflow
 
 ```
 Change Request
@@ -1749,7 +1749,7 @@ Production GPO changes should follow formal change management procedures.
 
 ---
 
-# Delegation Security
+## Delegation Security
 
 Delegation improves operational efficiency but must be implemented carefully.
 
@@ -1779,7 +1779,7 @@ Grant only the permissions necessary for assigned responsibilities.
 
 ---
 
-# Secure Delegation Principles
+## Secure Delegation Principles
 
 - Delegate to groups instead of individual users.
 - Document delegated permissions.
@@ -1789,7 +1789,7 @@ Grant only the permissions necessary for assigned responsibilities.
 
 ---
 
-# Administrative Tiering
+## Administrative Tiering
 
 Separating administration by security tier reduces credential exposure.
 
@@ -1833,7 +1833,7 @@ Credentials from higher tiers should not routinely be used on lower-tier systems
 
 ---
 
-# Protecting Administrative Credentials
+## Protecting Administrative Credentials
 
 Administrative credentials should never be exposed unnecessarily.
 
@@ -1849,7 +1849,7 @@ Credential hygiene is essential for protecting privileged identities.
 
 ---
 
-# DNS Security
+## DNS Security
 
 Active Directory depends heavily on DNS.
 
@@ -1869,7 +1869,7 @@ Recommendations:
 
 ---
 
-# Time Synchronization Security
+## Time Synchronization Security
 
 Kerberos relies on accurate time.
 
@@ -1895,7 +1895,7 @@ Protect the organization's time synchronization hierarchy and monitor for unexpe
 
 ---
 
-# Windows Firewall
+## Windows Firewall
 
 Windows Firewall should remain enabled on Domain Controllers unless a documented operational requirement exists.
 
@@ -1909,7 +1909,7 @@ Firewall rules should follow organizational standards.
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Many enterprises isolate Domain Controllers from general-purpose systems.
 
@@ -1935,7 +1935,7 @@ Segmentation limits unnecessary communication paths and reduces exposure.
 
 ---
 
-# Security Monitoring
+## Security Monitoring
 
 Continuous monitoring helps detect suspicious activity.
 
@@ -1953,7 +1953,7 @@ Monitoring supports early detection of operational and security issues.
 
 ---
 
-# Security Monitoring Workflow
+## Security Monitoring Workflow
 
 ```
 Domain Controllers
@@ -1985,7 +1985,7 @@ Security Operations Center
 
 ---
 
-# Administrative Reviews
+## Administrative Reviews
 
 Regular reviews should include:
 
@@ -2000,7 +2000,7 @@ Periodic reviews help maintain a secure environment.
 
 ---
 
-# Enterprise Hardening Checklist
+## Enterprise Hardening Checklist
 
 ```
 ✓ Supported Windows Server Version
@@ -2026,7 +2026,7 @@ Periodic reviews help maintain a secure environment.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -2055,7 +2055,7 @@ These layered controls reduce operational risk while improving visibility into a
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Domain Controllers should be treated as **Tier 0 assets** with the highest level of protection.
 
@@ -2074,13 +2074,13 @@ Strong operational discipline is as important as technical security controls.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review Domain Controller hardening and administrative security.
 
-### Step 1
+#### Step 1
 
 Inspect a Domain Controller and document:
 
@@ -2092,7 +2092,7 @@ Identify unnecessary components for further review.
 
 ---
 
-### Step 2
+#### Step 2
 
 Review the Windows Firewall configuration.
 
@@ -2100,7 +2100,7 @@ Confirm that required rules are enabled and document any exceptions.
 
 ---
 
-### Step 3
+#### Step 3
 
 Review the permissions on a critical Group Policy Object.
 
@@ -2112,7 +2112,7 @@ Identify:
 
 ---
 
-### Step 4
+#### Step 4
 
 Review privileged group memberships.
 
@@ -2120,51 +2120,51 @@ Verify that all members have a documented business justification.
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a Domain Controller security checklist for quarterly reviews.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why are Domain Controllers considered Tier 0 assets?
+#### Q1: Why are Domain Controllers considered Tier 0 assets?
 
 **Answer:** They provide authentication, authorization, and directory services for the domain. Compromise of a Domain Controller can significantly impact the security of the entire Active Directory environment.
 
 ---
 
-### Q2: Why should Group Policy modifications be tightly controlled?
+#### Q2: Why should Group Policy modifications be tightly controlled?
 
 **Answer:** Group Policy can configure thousands of systems simultaneously, so unauthorized or incorrect changes may have widespread operational and security impacts.
 
 ---
 
-### Q3: Why is DNS security important in Active Directory?
+#### Q3: Why is DNS security important in Active Directory?
 
 **Answer:** Active Directory depends on DNS for locating domain services. Unauthorized or incorrect DNS changes can disrupt authentication and other directory operations.
 
 ---
 
-### Q4: Why should administrative accounts be separated from normal user accounts?
+#### Q4: Why should administrative accounts be separated from normal user accounts?
 
 **Answer:** Using separate accounts reduces the exposure of privileged credentials during routine activities and supports the Principle of Least Privilege.
 
 ---
 
-### Q5: Why is accurate time synchronization critical?
+#### Q5: Why is accurate time synchronization critical?
 
 **Answer:** Kerberos authentication relies on synchronized time. Significant clock differences can cause authentication failures.
 
 ---
 
-### Q6: Why should delegated permissions be reviewed regularly?
+#### Q6: Why should delegated permissions be reviewed regularly?
 
 **Answer:** Regular reviews help ensure permissions remain appropriate, remove obsolete access, and reduce the risk of privilege accumulation.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Treat Domain Controllers as Tier 0 systems.
 - Apply standardized security baselines.
@@ -2177,7 +2177,7 @@ Create a Domain Controller security checklist for quarterly reviews.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Installing unnecessary software on Domain Controllers.
 - Allowing broad Group Policy editing permissions.
@@ -2189,7 +2189,7 @@ Create a Domain Controller security checklist for quarterly reviews.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Domain Controllers are the most sensitive systems in an Active Directory environment and require the strongest protections.
 - Group Policy, DNS, and privileged administration are critical security components.
@@ -2199,13 +2199,13 @@ Create a Domain Controller security checklist for quarterly reviews.
 
 ---
 
-# 18-AD-Security.md
+## 18-AD-Security.md
 
-# Part 4 — Incident Response, Backup & Recovery, Continuous Monitoring, Enterprise Security Program and Chapter Summary
+## Part 4 — Incident Response, Backup & Recovery, Continuous Monitoring, Enterprise Security Program and Chapter Summary
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -2222,7 +2222,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 No Active Directory environment is completely immune to security incidents.
 
@@ -2238,7 +2238,7 @@ Effective security is a continuous process rather than a one-time configuration.
 
 ---
 
-# Security Lifecycle
+## Security Lifecycle
 
 ```
 Identify Assets
@@ -2278,7 +2278,7 @@ This lifecycle aligns with widely adopted cybersecurity frameworks.
 
 ---
 
-# Active Directory Incident Response
+## Active Directory Incident Response
 
 When suspicious activity is detected, responders should follow a structured process.
 
@@ -2314,7 +2314,7 @@ A documented response plan reduces confusion during high-pressure situations.
 
 ---
 
-# Indicators of Suspicious Activity
+## Indicators of Suspicious Activity
 
 Security teams should investigate events such as:
 
@@ -2331,7 +2331,7 @@ These events do not necessarily indicate compromise, but they warrant investigat
 
 ---
 
-# Account Compromise Response
+## Account Compromise Response
 
 If a privileged account is suspected to be compromised:
 
@@ -2367,7 +2367,7 @@ Actions should follow organizational incident response procedures and approval p
 
 ---
 
-# Administrative Account Recovery
+## Administrative Account Recovery
 
 Recovery steps may include:
 
@@ -2382,7 +2382,7 @@ Every recovery action should be documented.
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Active Directory recovery depends on reliable backups.
 
@@ -2399,7 +2399,7 @@ Backups should be performed according to organizational recovery objectives.
 
 ---
 
-# Backup Workflow
+## Backup Workflow
 
 ```
 Domain Controller
@@ -2425,7 +2425,7 @@ A backup that has never been tested should not be assumed to be recoverable.
 
 ---
 
-# Recovery Planning
+## Recovery Planning
 
 Recovery planning should address:
 
@@ -2440,7 +2440,7 @@ Recovery documentation should be reviewed regularly.
 
 ---
 
-# Disaster Recovery Workflow
+## Disaster Recovery Workflow
 
 ```
 Incident
@@ -2472,7 +2472,7 @@ Post-Incident Review
 
 ---
 
-# Continuous Security Monitoring
+## Continuous Security Monitoring
 
 Security monitoring should operate continuously.
 
@@ -2491,7 +2491,7 @@ Monitoring supports rapid detection of operational and security issues.
 
 ---
 
-# Security Operations Workflow
+## Security Operations Workflow
 
 ```
 Domain Controllers
@@ -2529,7 +2529,7 @@ Centralized visibility improves detection and investigation.
 
 ---
 
-# Security Assessments
+## Security Assessments
 
 Organizations should perform regular assessments of Active Directory.
 
@@ -2547,7 +2547,7 @@ Assessments help identify weaknesses before they are exploited.
 
 ---
 
-# Security Review Checklist
+## Security Review Checklist
 
 ```
 ✓ Privileged Accounts Reviewed
@@ -2573,7 +2573,7 @@ Assessments help identify weaknesses before they are exploited.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Useful metrics include:
 
@@ -2592,7 +2592,7 @@ Tracking metrics helps evaluate and improve security operations.
 
 ---
 
-# Enterprise Security Governance
+## Enterprise Security Governance
 
 A mature Active Directory security program includes:
 
@@ -2628,9 +2628,9 @@ Governance ensures security practices remain consistent across the organization.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Company
+### Company
 
 ```
 Global Healthcare Network
@@ -2663,7 +2663,7 @@ Results:
 
 ---
 
-# Security Culture
+## Security Culture
 
 Technology alone cannot secure Active Directory.
 
@@ -2680,7 +2680,7 @@ Security is strengthened when people, processes, and technology work together.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Defending Active Directory requires a layered approach.
 
@@ -2698,13 +2698,13 @@ Preparation and continuous improvement significantly reduce organizational risk.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Review an organization's Active Directory security readiness.
 
-### Step 1
+#### Step 1
 
 Document:
 
@@ -2715,7 +2715,7 @@ Document:
 
 ---
 
-### Step 2
+#### Step 2
 
 Verify that:
 
@@ -2725,7 +2725,7 @@ Verify that:
 
 ---
 
-### Step 3
+#### Step 3
 
 Review security logs.
 
@@ -2737,7 +2737,7 @@ Identify:
 
 ---
 
-### Step 4
+#### Step 4
 
 Create a simple incident response checklist for:
 
@@ -2747,7 +2747,7 @@ Create a simple incident response checklist for:
 
 ---
 
-### Step 5
+#### Step 5
 
 Design a quarterly Active Directory security review schedule covering:
 
@@ -2760,45 +2760,45 @@ Design a quarterly Active Directory security review schedule covering:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What are the primary phases of incident response?
+#### Q1: What are the primary phases of incident response?
 
 **Answer:** Preparation, detection, analysis, containment, eradication, recovery, and lessons learned. Organizations may group or name these phases differently, but the overall process remains similar.
 
 ---
 
-### Q2: Why are System State backups important?
+#### Q2: Why are System State backups important?
 
 **Answer:** They contain critical Active Directory components required to recover Domain Controllers and restore directory services.
 
 ---
 
-### Q3: Why should backups be tested regularly?
+#### Q3: Why should backups be tested regularly?
 
 **Answer:** Successful backup creation does not guarantee successful restoration. Periodic testing verifies that recovery procedures work as expected.
 
 ---
 
-### Q4: What should be monitored continuously in Active Directory?
+#### Q4: What should be monitored continuously in Active Directory?
 
 **Answer:** Authentication events, privileged account activity, group membership changes, GPO modifications, Domain Controller health, replication, and critical service availability.
 
 ---
 
-### Q5: Why are security assessments valuable?
+#### Q5: Why are security assessments valuable?
 
 **Answer:** They help identify configuration weaknesses, excessive privileges, operational gaps, and opportunities for improvement before they become security incidents.
 
 ---
 
-### Q6: Why is governance important for Active Directory security?
+#### Q6: Why is governance important for Active Directory security?
 
 **Answer:** Governance establishes consistent policies, standards, procedures, and oversight, ensuring that security controls are implemented and maintained effectively.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Develop and regularly test incident response procedures.
 - Maintain current System State backups.
@@ -2811,7 +2811,7 @@ Design a quarterly Active Directory security review schedule covering:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming backups will work without testing.
 - Delaying investigation of suspicious administrative activity.
@@ -2823,7 +2823,7 @@ Design a quarterly Active Directory security review schedule covering:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Incident response and recovery planning are essential components of Active Directory security.
 - Reliable backups, tested recovery procedures, and continuous monitoring improve organizational resilience.
@@ -2833,7 +2833,7 @@ Design a quarterly Active Directory security review schedule covering:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

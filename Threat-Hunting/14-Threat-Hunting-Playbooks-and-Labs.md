@@ -54,7 +54,7 @@ Detection / Response
 
 ---
 
-# Why Hunting Playbooks Matter
+## Why Hunting Playbooks Matter
 
 Without structured procedures, threat hunting can become:
 
@@ -88,7 +88,7 @@ Conclusion
 
 ---
 
-# Playbook Design Principles
+## Playbook Design Principles
 
 A good hunting playbook should be:
 
@@ -108,7 +108,7 @@ The analyst should understand **why** each step exists.
 
 ---
 
-# Standard Hunt Playbook Structure
+## Standard Hunt Playbook Structure
 
 ```text id="qwmwqo"
 1. Objective
@@ -129,7 +129,7 @@ The analyst should understand **why** each step exists.
 
 ---
 
-# Hunt Lifecycle
+## Hunt Lifecycle
 
 ```text id="91u0y3"
              ┌───────────────────┐
@@ -164,7 +164,7 @@ The analyst should understand **why** each step exists.
 
 ---
 
-# Hunt Documentation Standard
+## Hunt Documentation Standard
 
 Every hunt should produce a record.
 
@@ -208,17 +208,17 @@ Lessons Learned:
 
 ---
 
-# Playbook 01 — Password Spraying
+## Playbook 01 — Password Spraying
 
-## Objective
+### Objective
 
 Identify authentication failures consistent with password spraying.
 
-## Threat Scenario
+### Threat Scenario
 
 An attacker attempts a small number of passwords against many accounts to avoid triggering individual account lockouts.
 
-## ATT&CK
+### ATT&CK
 
 ```text id="5w1k6r"
 T1110 — Brute Force
@@ -227,13 +227,13 @@ T1110.003 — Password Spraying
 
 ---
 
-## Hypothesis
+### Hypothesis
 
 > A source may be attempting authentication against multiple user accounts within a short period.
 
 ---
 
-## Required Telemetry
+### Required Telemetry
 
 ```text id="n2x4hv"
 Authentication Logs
@@ -257,7 +257,7 @@ authentication.method
 
 ---
 
-## Initial Hunt
+### Initial Hunt
 
 Conceptually:
 
@@ -279,7 +279,7 @@ Time Window
 
 ---
 
-## Investigation
+### Investigation
 
 For suspicious sources investigate:
 
@@ -295,7 +295,7 @@ Successful Login
 
 ---
 
-## Critical Pivot
+### Critical Pivot
 
 Look for:
 
@@ -310,7 +310,7 @@ A successful login following many failures can significantly increase investigat
 
 ---
 
-## Follow-Up
+### Follow-Up
 
 Investigate the account after successful authentication:
 
@@ -325,7 +325,7 @@ Data Access
 
 ---
 
-## Detection Opportunity
+### Detection Opportunity
 
 Create detection logic based on:
 
@@ -341,19 +341,19 @@ Short Time Window
 
 ---
 
-# Playbook 02 — Brute Force Against One Account
+## Playbook 02 — Brute Force Against One Account
 
-## Objective
+### Objective
 
 Identify repeated authentication failures against one account.
 
-## Hypothesis
+### Hypothesis
 
 > An attacker may repeatedly attempt credentials against a specific account.
 
 ---
 
-## Query Logic
+### Query Logic
 
 ```text id="v0xg7j"
 User
@@ -370,7 +370,7 @@ Group by Source
 
 ---
 
-## Investigate
+### Investigate
 
 ```text id="yd8j9c"
 Is the account privileged?
@@ -388,13 +388,13 @@ Was a new device involved?
 
 ---
 
-# Playbook 03 — Suspicious PowerShell
+## Playbook 03 — Suspicious PowerShell
 
-## Objective
+### Objective
 
 Identify potentially malicious PowerShell execution.
 
-## ATT&CK
+### ATT&CK
 
 ```text id="9l8yqg"
 T1059.001 — PowerShell
@@ -402,13 +402,13 @@ T1059.001 — PowerShell
 
 ---
 
-## Hypothesis
+### Hypothesis
 
 > PowerShell may be executing commands inconsistent with the user's normal activity.
 
 ---
 
-## Required Telemetry
+### Required Telemetry
 
 ```text id="h0s2x8"
 EDR
@@ -431,7 +431,7 @@ destination.ip
 
 ---
 
-## Initial Search
+### Initial Search
 
 Start with:
 
@@ -452,7 +452,7 @@ Frequency
 
 ---
 
-## Suspicious Context
+### Suspicious Context
 
 Examples:
 
@@ -467,7 +467,7 @@ Context matters.
 
 ---
 
-## Command-Line Indicators
+### Command-Line Indicators
 
 Look for behaviors such as:
 
@@ -485,7 +485,7 @@ Avoid relying on one string alone.
 
 ---
 
-## Pivot
+### Pivot
 
 From PowerShell:
 
@@ -502,19 +502,19 @@ Host
 
 ---
 
-# Playbook 04 — Suspicious Parent-Child Process Relationship
+## Playbook 04 — Suspicious Parent-Child Process Relationship
 
-## Objective
+### Objective
 
 Find unusual process trees.
 
-## Hypothesis
+### Hypothesis
 
 > A legitimate process may have spawned an unexpected child process as part of malicious execution.
 
 ---
 
-## Example Relationships
+### Example Relationships
 
 ```text id="3t0qg2"
 winword.exe
@@ -536,7 +536,7 @@ They require context.
 
 ---
 
-## Investigation
+### Investigation
 
 Capture:
 
@@ -553,19 +553,19 @@ Network Activity
 
 ---
 
-# Playbook 05 — Credential Access Hunting
+## Playbook 05 — Credential Access Hunting
 
-## Objective
+### Objective
 
 Identify suspicious activity associated with credential access.
 
-## Hypothesis
+### Hypothesis
 
 > A process may be interacting with credential stores or authentication material unexpectedly.
 
 ---
 
-## Telemetry
+### Telemetry
 
 ```text id="0c3s4p"
 EDR
@@ -578,7 +578,7 @@ Process Telemetry
 
 ---
 
-## Windows Areas
+### Windows Areas
 
 Potential investigation areas:
 
@@ -594,7 +594,7 @@ Do not interpret legitimate security software activity as malicious without cont
 
 ---
 
-## Linux Areas
+### Linux Areas
 
 Investigate:
 
@@ -611,19 +611,19 @@ Use appropriate authorization and evidence-handling controls.
 
 ---
 
-# Playbook 06 — Privilege Escalation
+## Playbook 06 — Privilege Escalation
 
-## Objective
+### Objective
 
 Identify unexpected privilege changes.
 
-## Hypothesis
+### Hypothesis
 
 > An account or process may have gained privileges outside normal administrative workflows.
 
 ---
 
-## Windows
+### Windows
 
 Investigate:
 
@@ -638,7 +638,7 @@ Account Changes
 
 ---
 
-## Linux
+### Linux
 
 Investigate:
 
@@ -653,7 +653,7 @@ User Group Changes
 
 ---
 
-## Cloud
+### Cloud
 
 Investigate:
 
@@ -667,15 +667,15 @@ New Credentials
 
 ---
 
-# Playbook 07 — Persistence Hunting
+## Playbook 07 — Persistence Hunting
 
-## Objective
+### Objective
 
 Identify mechanisms that survive reboot, logout, or process termination.
 
 ---
 
-## Windows Persistence
+### Windows Persistence
 
 Investigate:
 
@@ -691,7 +691,7 @@ New Accounts
 
 ---
 
-## Linux Persistence
+### Linux Persistence
 
 Investigate:
 
@@ -706,7 +706,7 @@ Init Mechanisms
 
 ---
 
-## Cloud Persistence
+### Cloud Persistence
 
 Investigate:
 
@@ -722,19 +722,19 @@ Automation Accounts
 
 ---
 
-# Playbook 08 — DNS Threat Hunting
+## Playbook 08 — DNS Threat Hunting
 
-## Objective
+### Objective
 
 Identify suspicious DNS activity.
 
-## Hypothesis
+### Hypothesis
 
 > A compromised endpoint may use DNS for command-and-control, tunneling, reconnaissance, or beaconing.
 
 ---
 
-## Initial Query
+### Initial Query
 
 Aggregate:
 
@@ -749,7 +749,7 @@ Query Type
 
 ---
 
-## Investigate
+### Investigate
 
 Look for:
 
@@ -764,7 +764,7 @@ High Query Volume
 
 ---
 
-## Pivot
+### Pivot
 
 ```text id="x8q3l0"
 Domain
@@ -780,15 +780,15 @@ Network
 
 ---
 
-# Playbook 09 — DNS Beaconing
+## Playbook 09 — DNS Beaconing
 
-## Hypothesis
+### Hypothesis
 
 > A compromised endpoint may repeatedly contact a domain at regular intervals.
 
 ---
 
-## Method
+### Method
 
 Collect timestamps:
 
@@ -804,7 +804,7 @@ Calculate approximate intervals.
 
 ---
 
-## Investigate
+### Investigate
 
 ```text id="8c4j1s"
 Average Interval
@@ -819,19 +819,19 @@ Regularity is a signal, not proof.
 
 ---
 
-# Playbook 10 — Lateral Movement
+## Playbook 10 — Lateral Movement
 
-## Objective
+### Objective
 
 Identify suspicious movement between systems.
 
-## Hypothesis
+### Hypothesis
 
 > A compromised identity or endpoint may be accessing systems outside its normal relationship graph.
 
 ---
 
-## Required Telemetry
+### Required Telemetry
 
 ```text id="j5q8d1"
 Authentication
@@ -846,7 +846,7 @@ EDR
 
 ---
 
-## Query Model
+### Query Model
 
 ```text id="y4c8z2"
 Source Host
@@ -863,7 +863,7 @@ Authentication Method
 
 ---
 
-## Baseline
+### Baseline
 
 Determine:
 
@@ -875,19 +875,19 @@ Then identify new relationships.
 
 ---
 
-# Playbook 11 — RDP Hunting
+## Playbook 11 — RDP Hunting
 
-## Objective
+### Objective
 
 Identify suspicious Remote Desktop activity.
 
-## Hypothesis
+### Hypothesis
 
 > An account may be using RDP from an unusual source or at an unusual time.
 
 ---
 
-## Investigate
+### Investigate
 
 ```text id="g9s2y1"
 Source Host
@@ -901,7 +901,7 @@ Device
 
 ---
 
-## Correlate
+### Correlate
 
 ```text id="1w8k3p"
 RDP Login
@@ -915,13 +915,13 @@ Unusual Time
 
 ---
 
-# Playbook 12 — SSH Threat Hunting
+## Playbook 12 — SSH Threat Hunting
 
-## Objective
+### Objective
 
 Identify suspicious SSH activity.
 
-## Linux Telemetry
+### Linux Telemetry
 
 ```text id="z5m7k2"
 /var/log/auth.log
@@ -933,7 +933,7 @@ EDR
 
 ---
 
-## Investigate
+### Investigate
 
 ```text id="s1k8c6"
 Failed Logins
@@ -946,7 +946,7 @@ Source IPs
 
 ---
 
-## Pivot
+### Pivot
 
 ```text id="m8d2v9"
 SSH Login
@@ -962,19 +962,19 @@ Network
 
 ---
 
-# Playbook 13 — Web Shell Hunting
+## Playbook 13 — Web Shell Hunting
 
-## Objective
+### Objective
 
 Identify command execution through a compromised web application.
 
-## Hypothesis
+### Hypothesis
 
 > A web server process may be spawning a shell or interpreter unexpectedly.
 
 ---
 
-## Suspicious Process Chains
+### Suspicious Process Chains
 
 ```text id="1p5v8k"
 nginx
@@ -994,7 +994,7 @@ These require validation.
 
 ---
 
-## Required Evidence
+### Required Evidence
 
 ```text id="5h0y9d"
 Web Request
@@ -1009,7 +1009,7 @@ Network Connection
 
 ---
 
-## Timeline
+### Timeline
 
 ```text id="v5f7x2"
 HTTP Request
@@ -1025,19 +1025,19 @@ Outbound Connection
 
 ---
 
-# Playbook 14 — Account Takeover
+## Playbook 14 — Account Takeover
 
-## Objective
+### Objective
 
 Identify potentially compromised user accounts.
 
-## Hypothesis
+### Hypothesis
 
 > A valid account may have been taken over.
 
 ---
 
-## Signals
+### Signals
 
 ```text id="g1w8q4"
 New Location
@@ -1052,7 +1052,7 @@ Sensitive Action
 
 ---
 
-## Correlation
+### Correlation
 
 ```text id="m4r7c9"
 Authentication Anomaly
@@ -1064,7 +1064,7 @@ Behavior Anomaly
 
 ---
 
-## Investigation
+### Investigation
 
 Review:
 
@@ -1080,19 +1080,19 @@ Privilege Changes
 
 ---
 
-# Playbook 15 — MFA Fatigue / Authentication Abuse
+## Playbook 15 — MFA Fatigue / Authentication Abuse
 
-## Objective
+### Objective
 
 Identify repeated authentication prompts or suspicious MFA activity.
 
-## Hypothesis
+### Hypothesis
 
 > An attacker may be attempting to cause a user to approve an authentication request.
 
 ---
 
-## Signals
+### Signals
 
 ```text id="5b3n8j"
 Many MFA Requests
@@ -1104,7 +1104,7 @@ Unusual Location
 
 ---
 
-## Investigation
+### Investigation
 
 ```text id="j8k2v4"
 User
@@ -1118,19 +1118,19 @@ Post-Approval Activity
 
 ---
 
-# Playbook 16 — Cloud IAM Abuse
+## Playbook 16 — Cloud IAM Abuse
 
-## Objective
+### Objective
 
 Identify suspicious cloud identity changes.
 
-## Hypothesis
+### Hypothesis
 
 > An attacker may modify cloud permissions to maintain or expand access.
 
 ---
 
-## Investigate
+### Investigate
 
 ```text id="s6h1q8"
 Role Assignment
@@ -1143,7 +1143,7 @@ Credential
 
 ---
 
-## Correlate
+### Correlate
 
 ```text id="9w2x6r"
 Login
@@ -1157,13 +1157,13 @@ Data Access
 
 ---
 
-# Playbook 17 — Cloud Storage Exposure
+## Playbook 17 — Cloud Storage Exposure
 
-## Objective
+### Objective
 
 Identify suspicious access to sensitive storage.
 
-## Investigate
+### Investigate
 
 ```text id="4d7m1y"
 Storage Object Access
@@ -1176,7 +1176,7 @@ Geography
 
 ---
 
-## High-Risk Pattern
+### High-Risk Pattern
 
 ```text id="0r5x9k"
 Rare Identity
@@ -1190,19 +1190,19 @@ New Source
 
 ---
 
-# Playbook 18 — Suspicious API Activity
+## Playbook 18 — Suspicious API Activity
 
-## Objective
+### Objective
 
 Identify API abuse.
 
-## Hypothesis
+### Hypothesis
 
 > An identity may be using APIs in a way inconsistent with normal behavior.
 
 ---
 
-## Signals
+### Signals
 
 ```text id="c2f8m7"
 High Request Rate
@@ -1215,19 +1215,19 @@ Error Spike
 
 ---
 
-# Playbook 19 — Data Exfiltration
+## Playbook 19 — Data Exfiltration
 
-## Objective
+### Objective
 
 Identify suspicious outbound transfer.
 
-## Hypothesis
+### Hypothesis
 
 > A compromised system may be transferring sensitive information externally.
 
 ---
 
-## Required Telemetry
+### Required Telemetry
 
 ```text id="m7y4q1"
 Proxy
@@ -1241,7 +1241,7 @@ Network Flow
 
 ---
 
-## Investigate
+### Investigate
 
 ```text id="v8c2k5"
 Destination
@@ -1256,7 +1256,7 @@ Data Classification
 
 ---
 
-## Important Principle
+### Important Principle
 
 Large transfers are not automatically malicious.
 
@@ -1274,19 +1274,19 @@ Context is essential.
 
 ---
 
-# Playbook 20 — Data Staging
+## Playbook 20 — Data Staging
 
-## Objective
+### Objective
 
 Identify suspicious local collection before exfiltration.
 
-## Hypothesis
+### Hypothesis
 
 > An attacker may aggregate sensitive data before transferring it.
 
 ---
 
-## Investigate
+### Investigate
 
 ```text id="9h4x2s"
 Archive Creation
@@ -1299,7 +1299,7 @@ Unusual User Activity
 
 ---
 
-## Process Correlation
+### Process Correlation
 
 ```text id="q6m8w1"
 File Access
@@ -1313,13 +1313,13 @@ Outbound Connection
 
 ---
 
-# Playbook 21 — Malware Execution
+## Playbook 21 — Malware Execution
 
-## Objective
+### Objective
 
 Identify potentially malicious file execution.
 
-## Signals
+### Signals
 
 ```text id="7c3n9x"
 Unknown Hash
@@ -1333,7 +1333,7 @@ Persistence
 
 ---
 
-## Investigate
+### Investigate
 
 ```text id="m8k1s5"
 File Hash
@@ -1348,9 +1348,9 @@ Persistence
 
 ---
 
-# Playbook 22 — Living-off-the-Land
+## Playbook 22 — Living-off-the-Land
 
-## Objective
+### Objective
 
 Identify legitimate system tools being used suspiciously.
 
@@ -1370,7 +1370,7 @@ bitsadmin
 
 ---
 
-## Detection Strategy
+### Detection Strategy
 
 Do not simply alert on execution.
 
@@ -1392,9 +1392,9 @@ Frequency
 
 ---
 
-# Playbook 23 — Scheduled Task Persistence
+## Playbook 23 — Scheduled Task Persistence
 
-## Windows
+### Windows
 
 Investigate:
 
@@ -1408,7 +1408,7 @@ Task Action
 
 ---
 
-## Suspicious Characteristics
+### Suspicious Characteristics
 
 ```text id="k1s7m4"
 Temporary Path
@@ -1420,7 +1420,7 @@ Remote Creation
 
 ---
 
-# Playbook 24 — Linux Cron Persistence
+## Playbook 24 — Linux Cron Persistence
 
 Investigate:
 
@@ -1442,9 +1442,9 @@ Network Activity
 
 ---
 
-# Playbook 25 — Service Persistence
+## Playbook 25 — Service Persistence
 
-## Windows
+### Windows
 
 Investigate:
 
@@ -1456,7 +1456,7 @@ Start Type
 Creation Time
 ```
 
-## Linux
+### Linux
 
 Investigate:
 
@@ -1470,9 +1470,9 @@ Environment
 
 ---
 
-# Playbook 26 — Identity Privilege Abuse
+## Playbook 26 — Identity Privilege Abuse
 
-## Objective
+### Objective
 
 Identify unusual administrative behavior.
 
@@ -1488,9 +1488,9 @@ Sensitive Action
 
 ---
 
-# Playbook 27 — Kerberos Threat Hunting
+## Playbook 27 — Kerberos Threat Hunting
 
-## Objective
+### Objective
 
 Identify suspicious Kerberos activity.
 
@@ -1516,9 +1516,9 @@ Interpret events in organizational context.
 
 ---
 
-# Playbook 28 — OAuth Abuse
+## Playbook 28 — OAuth Abuse
 
-## Objective
+### Objective
 
 Identify suspicious OAuth application activity.
 
@@ -1535,9 +1535,9 @@ Service Principal
 
 ---
 
-# Playbook 29 — Container Threat Hunting
+## Playbook 29 — Container Threat Hunting
 
-## Objective
+### Objective
 
 Identify suspicious activity within container environments.
 
@@ -1555,7 +1555,7 @@ Secrets
 
 ---
 
-## Suspicious Pattern
+### Suspicious Pattern
 
 ```text id="z7c1w4"
 Unexpected Container
@@ -1569,9 +1569,9 @@ Interactive Shell
 
 ---
 
-# Playbook 30 — Kubernetes Threat Hunting
+## Playbook 30 — Kubernetes Threat Hunting
 
-## Objective
+### Objective
 
 Identify suspicious Kubernetes activity.
 
@@ -1590,7 +1590,7 @@ Network Policies
 
 ---
 
-# Kubernetes Attack Path
+## Kubernetes Attack Path
 
 ```text id="u1r6k9"
 Compromised Credential
@@ -1608,9 +1608,9 @@ Container / Host Impact
 
 ---
 
-# Playbook 31 — CI/CD Threat Hunting
+## Playbook 31 — CI/CD Threat Hunting
 
-## Objective
+### Objective
 
 Identify abuse of software delivery pipelines.
 
@@ -1628,7 +1628,7 @@ Deployments
 
 ---
 
-# Suspicious CI/CD Pattern
+## Suspicious CI/CD Pattern
 
 ```text id="f9q3x7"
 Compromised Developer
@@ -1646,9 +1646,9 @@ Deployment
 
 ---
 
-# Playbook 32 — Security Control Tampering
+## Playbook 32 — Security Control Tampering
 
-## Objective
+### Objective
 
 Identify attempts to disable or bypass security controls.
 
@@ -1665,7 +1665,7 @@ CloudTrail Changes
 
 ---
 
-## High-Risk Pattern
+### High-Risk Pattern
 
 ```text id="4x7p2n"
 Privileged Login
@@ -1679,9 +1679,9 @@ This sequence deserves immediate investigation.
 
 ---
 
-# Playbook 33 — Log Tampering
+## Playbook 33 — Log Tampering
 
-## Objective
+### Objective
 
 Identify attempts to remove evidence.
 
@@ -1697,9 +1697,9 @@ Cloud Logging Changes
 
 ---
 
-# Playbook 34 — Newly Created Account
+## Playbook 34 — Newly Created Account
 
-## Objective
+### Objective
 
 Identify suspicious account creation.
 
@@ -1716,7 +1716,7 @@ Source
 
 ---
 
-# High-Risk Pattern
+## High-Risk Pattern
 
 ```text id="j8s3p6"
 Privileged User
@@ -1730,15 +1730,15 @@ New Account Logs In
 
 ---
 
-# Playbook 35 — Rare Process Hunting
+## Playbook 35 — Rare Process Hunting
 
-## Objective
+### Objective
 
 Identify processes with low environmental prevalence.
 
 ---
 
-## Method
+### Method
 
 Calculate:
 
@@ -1752,7 +1752,7 @@ Last Seen
 
 ---
 
-## Example
+### Example
 
 ```text id="v3k8m2"
 powershell.exe → common
@@ -1766,7 +1766,7 @@ Investigate context.
 
 ---
 
-# Playbook 36 — Rare Domain Hunting
+## Playbook 36 — Rare Domain Hunting
 
 Investigate:
 
@@ -1783,7 +1783,7 @@ Threat Intelligence
 
 ---
 
-# Playbook 37 — Newly Registered Domain Hunting
+## Playbook 37 — Newly Registered Domain Hunting
 
 Potential signals:
 
@@ -1799,15 +1799,15 @@ New domains are not inherently malicious.
 
 ---
 
-# Playbook 38 — Threat Intelligence Retro-Hunt
+## Playbook 38 — Threat Intelligence Retro-Hunt
 
-## Objective
+### Objective
 
 Search historical telemetry for newly identified indicators.
 
 ---
 
-## Workflow
+### Workflow
 
 ```text id="r6q3y8"
 New IOC
@@ -1827,7 +1827,7 @@ Investigate Timeline
 
 ---
 
-# Playbook 39 — IOC Pivot
+## Playbook 39 — IOC Pivot
 
 Given an indicator:
 
@@ -1852,15 +1852,15 @@ Email
 
 ---
 
-# Playbook 40 — Incident Timeline Reconstruction
+## Playbook 40 — Incident Timeline Reconstruction
 
-## Objective
+### Objective
 
 Build a chronological attack narrative.
 
 ---
 
-## Timeline
+### Timeline
 
 ```text id="x9m2c6"
 08:42 Login Failure
@@ -1875,7 +1875,7 @@ Build a chronological attack narrative.
 
 ---
 
-# Timeline Sources
+## Timeline Sources
 
 Combine:
 
@@ -1891,7 +1891,7 @@ Email
 
 ---
 
-# Timeline Accuracy
+## Timeline Accuracy
 
 Always consider:
 
@@ -1907,7 +1907,7 @@ Do not assume timestamps are perfectly synchronized.
 
 ---
 
-# Playbook 41 — Entity Pivoting
+## Playbook 41 — Entity Pivoting
 
 Start with:
 
@@ -1933,7 +1933,7 @@ Cloud Sessions
 
 ---
 
-# Playbook 42 — Host-Centric Investigation
+## Playbook 42 — Host-Centric Investigation
 
 Start with:
 
@@ -1956,7 +1956,7 @@ Host
 
 ---
 
-# Playbook 43 — User-Centric Investigation
+## Playbook 43 — User-Centric Investigation
 
 ```text id="p3m7v1"
 User
@@ -1971,7 +1971,7 @@ User
 
 ---
 
-# Playbook 44 — Network-Centric Investigation
+## Playbook 44 — Network-Centric Investigation
 
 ```text id="x8k3q5"
 Source
@@ -1989,7 +1989,7 @@ User
 
 ---
 
-# Playbook 45 — Cloud-Centric Investigation
+## Playbook 45 — Cloud-Centric Investigation
 
 ```text id="m7q2c9"
 Identity
@@ -2007,15 +2007,15 @@ Network
 
 ---
 
-# Playbook 46 — Multi-Stage Attack Hunt
+## Playbook 46 — Multi-Stage Attack Hunt
 
-## Objective
+### Objective
 
 Identify an attack spanning multiple ATT&CK tactics.
 
 ---
 
-## Example
+### Example
 
 ```text id="g4n8x2"
 Initial Access
@@ -2035,7 +2035,7 @@ Exfiltration
 
 ---
 
-## Investigation Model
+### Investigation Model
 
 Do not search each stage independently.
 
@@ -2052,9 +2052,9 @@ Resource
 
 ---
 
-# Playbook 47 — Detection Validation Hunt
+## Playbook 47 — Detection Validation Hunt
 
-## Objective
+### Objective
 
 Validate an existing detection.
 
@@ -2076,15 +2076,15 @@ Alert
 
 ---
 
-# Playbook 48 — Detection Gap Hunt
+## Playbook 48 — Detection Gap Hunt
 
-## Objective
+### Objective
 
 Find threats that existing controls may not detect.
 
 ---
 
-## Method
+### Method
 
 ```text id="q8m3x1"
 Threat
@@ -2106,9 +2106,9 @@ Detection Gap
 
 ---
 
-# Playbook 49 — Telemetry Health Hunt
+## Playbook 49 — Telemetry Health Hunt
 
-## Objective
+### Objective
 
 Identify missing or degraded security telemetry.
 
@@ -2125,7 +2125,7 @@ Ingestion Delay
 
 ---
 
-# Telemetry Gap Example
+## Telemetry Gap Example
 
 ```text id="h1x7q3"
 Expected:
@@ -2142,9 +2142,9 @@ Investigate immediately.
 
 ---
 
-# Playbook 50 — Crown Jewel Hunt
+## Playbook 50 — Crown Jewel Hunt
 
-## Objective
+### Objective
 
 Focus hunting on the most critical systems.
 
@@ -2164,7 +2164,7 @@ Increase detection and hunting depth around these assets.
 
 ---
 
-# Practical Lab Environment
+## Practical Lab Environment
 
 A useful threat-hunting lab can contain:
 
@@ -2200,17 +2200,17 @@ Threat Intelligence
 
 ---
 
-# Lab 1 — Windows Authentication Hunt
+## Lab 1 — Windows Authentication Hunt
 
-## Objective
+### Objective
 
 Detect suspicious authentication activity.
 
-## Data
+### Data
 
 Use authorized lab-generated authentication events.
 
-## Steps
+### Steps
 
 1. Collect authentication events.
 2. Filter failures.
@@ -2222,13 +2222,13 @@ Use authorized lab-generated authentication events.
 
 ---
 
-# Lab 2 — PowerShell Hunt
+## Lab 2 — PowerShell Hunt
 
-## Objective
+### Objective
 
 Investigate PowerShell execution.
 
-### Collect
+#### Collect
 
 ```text id="n8q3w6"
 Process Name
@@ -2239,7 +2239,7 @@ Host
 Network
 ```
 
-### Investigate
+#### Investigate
 
 ```text id="v4m7x2"
 Rare Parent
@@ -2250,13 +2250,13 @@ External Connection
 
 ---
 
-# Lab 3 — Linux SSH Hunt
+## Lab 3 — Linux SSH Hunt
 
-## Objective
+### Objective
 
 Identify suspicious SSH activity.
 
-### Collect
+#### Collect
 
 ```text id="y2k8p4"
 Source IP
@@ -2266,7 +2266,7 @@ Timestamp
 Privilege
 ```
 
-### Investigate
+#### Investigate
 
 ```text id="x6m1r9"
 Failed Attempts
@@ -2278,9 +2278,9 @@ Post-Login Commands
 
 ---
 
-# Lab 4 — DNS Hunt
+## Lab 4 — DNS Hunt
 
-## Objective
+### Objective
 
 Investigate potentially suspicious DNS behavior.
 
@@ -2298,13 +2298,13 @@ Then pivot to endpoint telemetry.
 
 ---
 
-# Lab 5 — Lateral Movement Hunt
+## Lab 5 — Lateral Movement Hunt
 
-## Objective
+### Objective
 
 Identify unusual host-to-host relationships.
 
-### Build Graph
+#### Build Graph
 
 ```text id="k3v8q2"
 Host A
@@ -2317,9 +2317,9 @@ Compare with baseline.
 
 ---
 
-# Lab 6 — Cloud IAM Hunt
+## Lab 6 — Cloud IAM Hunt
 
-## Objective
+### Objective
 
 Investigate suspicious privilege changes.
 
@@ -2337,9 +2337,9 @@ Correlate events by principal.
 
 ---
 
-# Lab 7 — Account Takeover
+## Lab 7 — Account Takeover
 
-## Objective
+### Objective
 
 Investigate suspicious identity activity.
 
@@ -2357,9 +2357,9 @@ Build a user timeline.
 
 ---
 
-# Lab 8 — Web Shell Investigation
+## Lab 8 — Web Shell Investigation
 
-## Objective
+### Objective
 
 Investigate suspicious web server execution.
 
@@ -2379,7 +2379,7 @@ Determine whether the process chain is expected.
 
 ---
 
-# Lab 9 — Detection Engineering
+## Lab 9 — Detection Engineering
 
 Create one production-quality detection from a completed hunt.
 
@@ -2396,7 +2396,7 @@ Runbook
 
 ---
 
-# Lab 10 — Purple Team Detection Validation
+## Lab 10 — Purple Team Detection Validation
 
 Choose an authorized technique.
 
@@ -2416,7 +2416,7 @@ Retest
 
 ---
 
-# Lab Investigation Methodology
+## Lab Investigation Methodology
 
 Every practical lab should follow:
 
@@ -2436,7 +2436,7 @@ Every practical lab should follow:
 
 ---
 
-# Investigation Scoping
+## Investigation Scoping
 
 Before searching, define:
 
@@ -2453,7 +2453,7 @@ Poor scope produces unnecessary noise.
 
 ---
 
-# Evidence Collection
+## Evidence Collection
 
 Record:
 
@@ -2469,7 +2469,7 @@ Interpretation
 
 ---
 
-# Evidence Preservation
+## Evidence Preservation
 
 During real incidents:
 
@@ -2482,7 +2482,7 @@ During real incidents:
 
 ---
 
-# Hunt Result Classification
+## Hunt Result Classification
 
 A hunt can conclude:
 
@@ -2499,7 +2499,7 @@ Avoid overstating certainty.
 
 ---
 
-# Confidence Assessment
+## Confidence Assessment
 
 Example:
 
@@ -2519,7 +2519,7 @@ Evidence / Incident Process Establishes Malicious Activity
 
 ---
 
-# Hunt-to-Incident Handoff
+## Hunt-to-Incident Handoff
 
 When escalation is required:
 
@@ -2551,7 +2551,7 @@ Initial Assessment
 
 ---
 
-# Hunt-to-Detection Handoff
+## Hunt-to-Detection Handoff
 
 A successful hunt may produce a detection.
 
@@ -2569,7 +2569,7 @@ Deploy
 
 ---
 
-# Hunt-to-Threat-Intelligence Handoff
+## Hunt-to-Threat-Intelligence Handoff
 
 A hunt may discover:
 
@@ -2585,7 +2585,7 @@ Feed validated intelligence into the appropriate intelligence workflow.
 
 ---
 
-# Hunt Metrics
+## Hunt Metrics
 
 Track:
 
@@ -2602,7 +2602,7 @@ False Positives
 
 ---
 
-# Hunt Effectiveness
+## Hunt Effectiveness
 
 A hunt is valuable if it produces one or more of:
 
@@ -2618,7 +2618,7 @@ New Investigation Knowledge
 
 ---
 
-# Hunt Backlog
+## Hunt Backlog
 
 Maintain a prioritized backlog.
 
@@ -2643,7 +2643,7 @@ Recent Intelligence
 
 ---
 
-# Hunt Prioritization Matrix
+## Hunt Prioritization Matrix
 
 | Priority | Threat | Business Impact | Telemetry | Detection Gap |
 |---|---|---|---|---|
@@ -2654,7 +2654,7 @@ Recent Intelligence
 
 ---
 
-# Playbook Automation
+## Playbook Automation
 
 Some repetitive steps can be automated.
 
@@ -2676,7 +2676,7 @@ Automation should support analysts rather than blindly automate conclusions.
 
 ---
 
-# Safe Automation Principles
+## Safe Automation Principles
 
 Automation should:
 
@@ -2689,7 +2689,7 @@ Automation should:
 
 ---
 
-# Hunt Query Library
+## Hunt Query Library
 
 Organize reusable queries:
 
@@ -2709,7 +2709,7 @@ queries/
 
 ---
 
-# Playbook Repository
+## Playbook Repository
 
 A professional hunting repository can use:
 
@@ -2736,7 +2736,7 @@ references/
 
 ---
 
-# Example Playbook Metadata
+## Example Playbook Metadata
 
 ```yaml id="h7m3q1"
 id: TH-PB-001
@@ -2762,7 +2762,7 @@ owner: SOC
 
 ---
 
-# Hunt Review
+## Hunt Review
 
 After completing a hunt, ask:
 
@@ -2788,7 +2788,7 @@ Should this hunt become recurring?
 
 ---
 
-# Hunt Retrospective
+## Hunt Retrospective
 
 Document:
 
@@ -2804,7 +2804,7 @@ Automation Opportunity
 
 ---
 
-# Real-World Investigation Model
+## Real-World Investigation Model
 
 A mature hunt often follows this progression:
 
@@ -2830,13 +2830,13 @@ Detection / Response
 
 ---
 
-# Practical Investigation Example
+## Practical Investigation Example
 
-## Scenario
+### Scenario
 
 An analyst notices a rare PowerShell execution on a production server.
 
-### Step 1 — Initial Observation
+#### Step 1 — Initial Observation
 
 ```text id="z7m2q4"
 Host: PROD-WEB-01
@@ -2844,7 +2844,7 @@ Process: powershell.exe
 User: service-account
 ```
 
-### Step 2 — Parent Process
+#### Step 2 — Parent Process
 
 ```text id="v4x8n1"
 Parent: w3wp.exe
@@ -2852,25 +2852,25 @@ Parent: w3wp.exe
 
 This is unusual and deserves investigation.
 
-### Step 3 — Command Line
+#### Step 3 — Command Line
 
 ```text id="j9m3k6"
 Review command line
 ```
 
-### Step 4 — Network
+#### Step 4 — Network
 
 ```text id="p2q7x5"
 Check outbound connections
 ```
 
-### Step 5 — Web Logs
+#### Step 5 — Web Logs
 
 ```text id="n6m1v8"
 Search HTTP requests immediately preceding execution.
 ```
 
-### Step 6 — Timeline
+#### Step 6 — Timeline
 
 ```text id="x3c8q2"
 HTTP Request
@@ -2882,7 +2882,7 @@ PowerShell
 Network Connection
 ```
 
-### Step 7 — Assessment
+#### Step 7 — Assessment
 
 The process chain may indicate possible web application compromise.
 
@@ -2890,23 +2890,23 @@ Escalate according to organizational incident procedures if supporting evidence 
 
 ---
 
-# Hunt Playbook Quality Checklist
+## Hunt Playbook Quality Checklist
 
-## Preparation
+### Preparation
 
 - [ ] Objective defined
 - [ ] Hypothesis defined
 - [ ] Scope defined
 - [ ] ATT&CK mapping considered
 
-## Telemetry
+### Telemetry
 
 - [ ] Data sources identified
 - [ ] Fields validated
 - [ ] Coverage checked
 - [ ] Time synchronization considered
 
-## Investigation
+### Investigation
 
 - [ ] Initial query executed
 - [ ] Results reviewed
@@ -2914,14 +2914,14 @@ Escalate according to organizational incident procedures if supporting evidence 
 - [ ] Correlation performed
 - [ ] Timeline created
 
-## Assessment
+### Assessment
 
 - [ ] Evidence documented
 - [ ] Confidence assigned
 - [ ] False positives considered
 - [ ] Threat intelligence checked
 
-## Outcome
+### Outcome
 
 - [ ] Detection candidate identified
 - [ ] Detection gap recorded
@@ -2931,7 +2931,7 @@ Escalate according to organizational incident procedures if supporting evidence 
 
 ---
 
-# Enterprise Threat Hunting Architecture
+## Enterprise Threat Hunting Architecture
 
 ```text id="q8v3m1"
                     THREAT INTELLIGENCE
@@ -2968,7 +2968,7 @@ Escalate according to organizational incident procedures if supporting evidence 
 
 ---
 
-# Professional Threat Hunting Workflow
+## Professional Threat Hunting Workflow
 
 ```text id="j5x8q2"
 01. Understand Threat
@@ -2990,99 +2990,99 @@ Escalate according to organizational incident procedures if supporting evidence 
 
 ---
 
-# Common Hunting Mistakes
+## Common Hunting Mistakes
 
-## 1. Searching Without a Hypothesis
+### 1. Searching Without a Hypothesis
 
 Large result sets rarely produce efficient investigations.
 
 ---
 
-## 2. Ignoring Baselines
+### 2. Ignoring Baselines
 
 Unusual does not automatically mean malicious.
 
 ---
 
-## 3. Trusting One Signal
+### 3. Trusting One Signal
 
 Strong investigations combine multiple evidence sources.
 
 ---
 
-## 4. Ignoring Identity
+### 4. Ignoring Identity
 
 Users and service accounts often provide essential context.
 
 ---
 
-## 5. Ignoring Time
+### 5. Ignoring Time
 
 Attack chains are temporal.
 
 ---
 
-## 6. Ignoring Telemetry Gaps
+### 6. Ignoring Telemetry Gaps
 
 Missing evidence can itself be meaningful.
 
 ---
 
-## 7. Treating Every IOC as Proof
+### 7. Treating Every IOC as Proof
 
 Indicators require contextual validation.
 
 ---
 
-## 8. Failing to Document
+### 8. Failing to Document
 
 Undocumented investigations cannot be reliably reproduced.
 
 ---
 
-## 9. Not Feeding Results Back
+### 9. Not Feeding Results Back
 
 Hunts should improve detections and intelligence.
 
 ---
 
-# Threat Hunting Maturity
+## Threat Hunting Maturity
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 Hunting happens only after alerts or incidents.
 
-## Level 2 — Structured
+### Level 2 — Structured
 
 Repeatable playbooks exist.
 
-## Level 3 — Threat-Informed
+### Level 3 — Threat-Informed
 
 Threat intelligence drives hunt priorities.
 
-## Level 4 — Detection-Integrated
+### Level 4 — Detection-Integrated
 
 Hunts continuously produce detection improvements.
 
-## Level 5 — Continuous Validation
+### Level 5 — Continuous Validation
 
 Purple teaming, telemetry validation, and automated testing continuously measure detection effectiveness.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Fundamentals
+### Fundamentals
 
-### 1. What is a threat-hunting playbook?
+#### 1. What is a threat-hunting playbook?
 
 A documented, repeatable workflow that guides analysts through a specific security investigation from hypothesis through evidence collection, validation, and outcome.
 
-### 2. Why are playbooks useful?
+#### 2. Why are playbooks useful?
 
 They improve consistency, repeatability, analyst efficiency, documentation, and knowledge transfer.
 
-### 3. What should a hunting playbook contain?
+#### 3. What should a hunting playbook contain?
 
 At minimum:
 
@@ -3098,67 +3098,67 @@ At minimum:
 
 ---
 
-## Investigation
+### Investigation
 
-### 4. How would you investigate password spraying?
+#### 4. How would you investigate password spraying?
 
 Look for authentication failures from one source against many unique accounts within a defined time window, then investigate successful logins and post-authentication behavior.
 
-### 5. How would you investigate suspicious PowerShell?
+#### 5. How would you investigate suspicious PowerShell?
 
 Review the process tree, command line, user, host, execution frequency, network connections, parent process, and historical behavior.
 
-### 6. How would you investigate lateral movement?
+#### 6. How would you investigate lateral movement?
 
 Correlate source host, destination host, user, authentication method, time, and historical source-to-destination relationships.
 
-### 7. Why is a timeline important?
+#### 7. Why is a timeline important?
 
 It allows analysts to understand event order and reconstruct the attack chain.
 
 ---
 
-## Detection
+### Detection
 
-### 8. When should a hunt become a detection?
+#### 8. When should a hunt become a detection?
 
 When the behavior is sufficiently understood, repeatable, supported by reliable telemetry, and valuable enough to monitor continuously.
 
-### 9. What is detection validation?
+#### 9. What is detection validation?
 
 Testing whether the telemetry, query, rule, alert, and SOC workflow actually identify the intended behavior.
 
-### 10. What is a detection gap?
+#### 10. What is a detection gap?
 
 A situation where relevant threat activity can occur and telemetry exists, but no reliable detection identifies it.
 
 ---
 
-## Advanced
+### Advanced
 
-### 11. How do you prioritize hunts?
+#### 11. How do you prioritize hunts?
 
 Consider threat intelligence, business impact, asset criticality, exposure, recent incidents, telemetry availability, and existing detection gaps.
 
-### 12. Why should threat hunters perform entity pivots?
+#### 12. Why should threat hunters perform entity pivots?
 
 Because a single event rarely contains enough context. Pivoting connects users, hosts, processes, IPs, domains, and cloud activity.
 
-### 13. What is telemetry-gap hunting?
+#### 13. What is telemetry-gap hunting?
 
 Searching for systems or events that should be reporting security telemetry but are not.
 
-### 14. How does threat hunting improve detection engineering?
+#### 14. How does threat hunting improve detection engineering?
 
 Hunting identifies real environmental behavior and attack patterns that can be converted into tested, production detections.
 
-### 15. What is purple-team validation?
+#### 15. What is purple-team validation?
 
 Collaborative validation where authorized adversary simulations are used to test telemetry, detections, investigations, and response processes.
 
 ---
 
-# Final Takeaways
+## Final Takeaways
 
 1. **A threat-hunting playbook converts analytical knowledge into repeatable operational procedures.**
 2. **Every hunt should begin with a clear hypothesis.**
@@ -3182,7 +3182,7 @@ The core principle is:
 
 ---
 
-# References
+## References
 
 - MITRE ATT&CK  
   https://attack.mitre.org/

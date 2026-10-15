@@ -36,23 +36,22 @@ The objective is to **minimize business impact, preserve evidence, understand wh
 
 ---
 
-# Table of Contents
-
+## Table of Contents
 - [What You Will Learn](#what-you-will-learn)
 - [Incident Response Lifecycle](#incident-response-lifecycle)
 - [Chapter Roadmap](#chapter-roadmap)
-- [01 — Incident Response Fundamentals](#01--incident-response-fundamentals)
-- [02 — Incident Response Preparation and Readiness](#02--incident-response-preparation-and-readiness)
-- [03 — Incident Detection Triage and Classification](#03--incident-detection-triage-and-classification)
-- [04 — Incident Analysis and Scoping](#04--incident-analysis-and-scoping)
-- [05 — Containment Strategies](#05--containment-strategies)
-- [06 — Eradication and Recovery](#06--eradication-and-recovery)
-- [07 — Digital Evidence and Forensic Handling](#07--digital-evidence-and-forensic-handling)
-- [08 — Identity Account Compromise and Cloud Incidents](#08--identity-account-compromise-and-cloud-incidents)
-- [09 — Malware Ransomware and Data Breach Response](#09--malware-ransomware-and-data-breach-response)
-- [10 — Network Endpoint and Application Incident Response](#10--network-endpoint-and-application-incident-response)
-- [11 — Incident Response Playbooks and Case Studies](#11--incident-response-playbooks-and-case-studies)
-- [12 — Post-Incident Review Metrics and Continuous Improvement](#12--post-incident-review-metrics-and-continuous-improvement)
+- [01 — Incident Response Fundamentals](#01-incident-response-fundamentals)
+- [02 — Incident Response Preparation and Readiness](#02-incident-response-preparation-and-readiness)
+- [03 — Incident Detection Triage and Classification](#03-incident-detection-triage-and-classification)
+- [04 — Incident Analysis and Scoping](#04-incident-analysis-and-scoping)
+- [05 — Containment Strategies](#05-containment-strategies)
+- [06 — Eradication and Recovery](#06-eradication-and-recovery)
+- [07 — Digital Evidence and Forensic Handling](#07-digital-evidence-and-forensic-handling)
+- [08 — Identity Account Compromise and Cloud Incidents](#08-identity-account-compromise-and-cloud-incidents)
+- [09 — Malware Ransomware and Data Breach Response](#09-malware-ransomware-and-data-breach-response)
+- [10 — Network Endpoint and Application Incident Response](#10-network-endpoint-and-application-incident-response)
+- [11 — Incident Response Playbooks and Case Studies](#11-incident-response-playbooks-and-case-studies)
+- [12 — Post-Incident Review Metrics and Continuous Improvement](#12-post-incident-review-metrics-and-continuous-improvement)
 - [Core Incident Response Skills](#core-incident-response-skills)
 - [Incident Evidence Sources](#incident-evidence-sources)
 - [Incident Severity](#incident-severity)
@@ -73,8 +72,7 @@ The objective is to **minimize business impact, preserve evidence, understand wh
 
 ---
 
-# What You Will Learn
-
+## What You Will Learn
 This section is designed to develop practical incident-response capability across the complete incident lifecycle.
 
 You will learn how to:
@@ -109,8 +107,7 @@ You will learn how to:
 
 ---
 
-# Incident Response Lifecycle
-
+## Incident Response Lifecycle
 A mature incident response process follows a structured lifecycle.
 
 ```text
@@ -183,8 +180,7 @@ A post-incident finding may result in:
 
 ---
 
-# Chapter Roadmap
-
+## Chapter Roadmap
 ## 01 — Incident Response Fundamentals
 
 [`01-Incident-Response-Fundamentals.md`](./01-Incident-Response-Fundamentals.md)
@@ -236,7 +232,7 @@ Topics include:
 
 ## 03 — Incident Detection Triage and Classification
 
-[`03-Incident-Detection-Triage-and-Classification.md`](./03-Incident-Detection-Triage-and-Classification.md)
+[`03-Incident-Detection,-Triage-and-Classification.md`](./03-Incident-Detection,-Triage-and-Classification.md)
 
 Covers the transition from security alert to confirmed incident.
 
@@ -363,7 +359,7 @@ Topics include:
 
 ## 08 — Identity Account Compromise and Cloud Incidents
 
-[`08-Identity-Account-Compromise-and-Cloud-Incidents.md`](./08-Identity-Account-Compromise-and-Cloud-Incidents.md)
+[`08-Identity,-Account-Compromise,-and-Cloud-Incidents..md`](./08-Identity,-Account-Compromise,-and-Cloud-Incidents..md)
 
 Focuses on modern identity-centric and cloud-based incidents.
 
@@ -393,7 +389,7 @@ Topics include:
 
 ## 09 — Malware Ransomware and Data Breach Response
 
-[`09-Malware-Ransomware-and-Data-Breach-Response.md`](./09-Malware-Ransomware-and-Data-Breach-Response.md)
+[`09-Malware,-Ransomware,-and-Data-Breach-Response.md`](./09-Malware,-Ransomware,-and-Data-Breach-Response.md)
 
 Covers some of the highest-impact incident categories.
 
@@ -422,7 +418,7 @@ Topics include:
 
 ## 10 — Network Endpoint and Application Incident Response
 
-[`10-Network-Endpoint-and-Application-Incident-Response.md`](./10-Network-Endpoint-and-Application-Incident-Response.md)
+[`10-Network,-Endpoint,-and-Application-Incident-Response.md`](./10-Network,-Endpoint,-and-Application-Incident-Response.md)
 
 Covers response across major infrastructure layers.
 
@@ -497,7 +493,7 @@ Lessons Learned
 
 ## 12 — Post-Incident Review Metrics and Continuous Improvement
 
-[`12-Post-Incident-Review-Metrics-and-Continuous-Improvement.md`](./12-Post-Incident-Review-Metrics-and-Continuous-Improvement.md)
+[`12-Post-Incident-Review,-Metrics,-and-Continuous-Improvement.md`](./12-Post-Incident-Review,-Metrics,-and-Continuous-Improvement.md)
 
 Focuses on improving the organization after an incident.
 
@@ -524,8 +520,7 @@ Topics include:
 
 ---
 
-# Core Incident Response Skills
-
+## Core Incident Response Skills
 A professional incident responder should develop capability across several domains.
 
 ### Technical Skills
@@ -571,8 +566,7 @@ A professional incident responder should develop capability across several domai
 
 ---
 
-# Incident Evidence Sources
-
+## Incident Evidence Sources
 Incident response requires visibility across multiple telemetry sources.
 
 ```text
@@ -626,8 +620,7 @@ Common evidence sources include:
 
 ---
 
-# Incident Severity
-
+## Incident Severity
 Organizations should define severity consistently.
 
 A generic model:
@@ -657,8 +650,7 @@ Severity should be reassessed as evidence changes.
 
 ---
 
-# Incident Response Team
-
+## Incident Response Team
 A mature organization typically operates through multiple roles.
 
 ```text
@@ -703,8 +695,7 @@ Possible roles include:
 
 ---
 
-# Investigation Methodology
-
+## Investigation Methodology
 Incident investigation should be evidence-driven.
 
 A practical methodology:
@@ -747,8 +738,7 @@ This prevents unsupported conclusions from entering incident reports.
 
 ---
 
-# Containment Philosophy
-
+## Containment Philosophy
 Containment is a balance between:
 
 ```text
@@ -789,8 +779,7 @@ Containment decisions should therefore consider:
 
 ---
 
-# Incident Documentation
-
+## Incident Documentation
 Every significant incident should produce an auditable record.
 
 A professional incident record may contain:
@@ -835,8 +824,7 @@ Documentation should be:
 
 ---
 
-# Practical Labs
-
+## Practical Labs
 The Incident Response section is designed to support practical defensive exercises.
 
 Suggested labs include:
@@ -938,8 +926,7 @@ Investigate:
 
 ---
 
-# Incident Response Playbooks
-
+## Incident Response Playbooks
 A mature IR program should maintain reusable playbooks.
 
 Recommended playbooks:
@@ -994,8 +981,7 @@ Closure
 
 ---
 
-# Professional Workflow
-
+## Professional Workflow
 A real-world SOC-to-IR workflow may look like:
 
 ```text
@@ -1044,8 +1030,7 @@ A real-world SOC-to-IR workflow may look like:
 
 ---
 
-# Integration With Other Cybersecurity Domains
-
+## Integration With Other Cybersecurity Domains
 Incident Response does not operate independently.
 
 ```text
@@ -1083,8 +1068,7 @@ Related sections in this knowledge base:
 
 ---
 
-# Incident Response Maturity
-
+## Incident Response Maturity
 A useful maturity progression:
 
 ### Level 1 — Reactive
@@ -1139,8 +1123,7 @@ Optimized
 
 ---
 
-# Recommended Learning Path
-
+## Recommended Learning Path
 For someone building incident-response capability from fundamentals:
 
 ```text
@@ -1183,8 +1166,7 @@ Post-Incident Improvement
 
 ---
 
-# Tools and Technologies
-
+## Tools and Technologies
 Incident responders may work with:
 
 ### SIEM
@@ -1243,8 +1225,7 @@ Tools are less important than understanding **what question you are trying to an
 
 ---
 
-# Repository Structure
-
+## Repository Structure
 ```text
 Incident-Response/
 │
@@ -1266,8 +1247,7 @@ Incident-Response/
 
 ---
 
-# How to Use This Section
-
+## How to Use This Section
 This section can be used in several ways.
 
 ### For Learning
@@ -1323,8 +1303,7 @@ Demonstrate:
 
 ---
 
-# Security Principles
-
+## Security Principles
 The following principles should guide incident response:
 
 ### 1. Preserve Before Destroying
@@ -1369,8 +1348,7 @@ Every significant incident should improve security controls.
 
 ---
 
-# Professional Incident Response Philosophy
-
+## Professional Incident Response Philosophy
 A strong incident responder should constantly ask:
 
 ```text
@@ -1421,8 +1399,7 @@ The goal is to understand:
 
 ---
 
-# Completion Checklist
-
+## Completion Checklist
 When this section is complete:
 
 - [x] Incident Response Fundamentals
@@ -1442,8 +1419,7 @@ When this section is complete:
 
 ---
 
-# References
-
+## References
 The material in this section should be continuously aligned with authoritative security guidance.
 
 ### NIST
@@ -1494,8 +1470,7 @@ https://owasp.org/
 
 ---
 
-# About This Section
-
+## About This Section
 This **Incident Response** section is part of the broader:
 
 > **Cybersecurity-Notes**

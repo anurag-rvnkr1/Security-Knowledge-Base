@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Linux systems are widely used in:
 
@@ -41,7 +41,7 @@ Linux forensics therefore requires both **host-level investigation** and **envir
 
 ---
 
-# Why Linux Forensics Matters
+## Why Linux Forensics Matters
 
 Attackers may use Linux systems for:
 
@@ -83,7 +83,7 @@ Data Access
 
 ---
 
-# Linux Forensic Architecture
+## Linux Forensic Architecture
 
 ```text id="h5m5e7"
                     Linux Host
@@ -110,7 +110,7 @@ Data Access
 
 ---
 
-# Linux Investigation Questions
+## Linux Investigation Questions
 
 A typical investigation should answer:
 
@@ -130,7 +130,7 @@ Was data accessed?
 
 ---
 
-# Major Linux Evidence Sources
+## Major Linux Evidence Sources
 
 | Evidence Source | Investigation Value |
 |---|---|
@@ -156,7 +156,7 @@ Was data accessed?
 
 ---
 
-# Linux Distribution Differences
+## Linux Distribution Differences
 
 Linux forensics varies across distributions.
 
@@ -193,7 +193,7 @@ before interpreting artifacts.
 
 ---
 
-# Identify the Linux System
+## Identify the Linux System
 
 Useful commands:
 
@@ -211,7 +211,7 @@ uname -r
 
 ---
 
-# System Identity
+## System Identity
 
 Record:
 
@@ -230,7 +230,7 @@ This creates the initial forensic context.
 
 ---
 
-# Uptime
+## Uptime
 
 ```bash id="a9p8tr"
 uptime
@@ -244,7 +244,7 @@ Uptime helps determine:
 
 ---
 
-# User Accounts
+## User Accounts
 
 Linux account information may be found in:
 
@@ -256,7 +256,7 @@ Linux account information may be found in:
 
 ---
 
-# `/etc/passwd`
+## `/etc/passwd`
 
 The file can provide:
 
@@ -274,7 +274,7 @@ cat /etc/passwd
 
 ---
 
-# Account Investigation
+## Account Investigation
 
 Look for:
 
@@ -291,7 +291,7 @@ Some may be legitimate service accounts.
 
 ---
 
-# `/etc/shadow`
+## `/etc/shadow`
 
 The shadow database contains password-related information.
 
@@ -307,7 +307,7 @@ Avoid unnecessarily exposing password hashes in reports.
 
 ---
 
-# Group Membership
+## Group Membership
 
 Review:
 
@@ -325,7 +325,7 @@ Examples may include:
 
 ---
 
-# Sudo Configuration
+## Sudo Configuration
 
 Investigate:
 
@@ -350,7 +350,7 @@ Questions:
 
 ---
 
-# Authentication Logs
+## Authentication Logs
 
 Authentication evidence is central to Linux investigations.
 
@@ -365,7 +365,7 @@ SSH logs
 
 ---
 
-# SSH Investigation
+## SSH Investigation
 
 SSH is one of the most important Linux remote-access mechanisms.
 
@@ -383,7 +383,7 @@ Commands
 
 ---
 
-# SSH Logs
+## SSH Logs
 
 Example:
 
@@ -401,7 +401,7 @@ The exact service name may differ by distribution.
 
 ---
 
-# Successful SSH Authentication
+## Successful SSH Authentication
 
 Search for successful sessions:
 
@@ -420,7 +420,7 @@ Time
 
 ---
 
-# Failed SSH Authentication
+## Failed SSH Authentication
 
 Search for:
 
@@ -440,7 +440,7 @@ Context is required.
 
 ---
 
-# SSH Keys
+## SSH Keys
 
 SSH key-based authentication can create persistent access.
 
@@ -462,7 +462,7 @@ Was the key used?
 
 ---
 
-# SSH Configuration
+## SSH Configuration
 
 Review:
 
@@ -483,7 +483,7 @@ Configuration changes should be correlated with logs.
 
 ---
 
-# Shell History
+## Shell History
 
 Shell history can provide useful evidence.
 
@@ -502,7 +502,7 @@ cat ~/.bash_history
 
 ---
 
-# Shell History Limitations
+## Shell History Limitations
 
 Shell history is not a perfect command log.
 
@@ -521,7 +521,7 @@ Therefore:
 
 ---
 
-# Shell History Investigation
+## Shell History Investigation
 
 Look for:
 
@@ -545,7 +545,7 @@ User
 
 ---
 
-# systemd and journald
+## systemd and journald
 
 Modern Linux systems frequently use systemd.
 
@@ -557,7 +557,7 @@ journalctl
 
 ---
 
-# Query Recent Logs
+## Query Recent Logs
 
 ```bash id="3l8k8x"
 journalctl -n 100
@@ -565,7 +565,7 @@ journalctl -n 100
 
 ---
 
-# Query by Time
+## Query by Time
 
 ```bash id="2t0k4p"
 journalctl --since "2026-10-06 09:00:00"
@@ -573,7 +573,7 @@ journalctl --since "2026-10-06 09:00:00"
 
 ---
 
-# Query a Service
+## Query a Service
 
 ```bash id="0v4t5s"
 journalctl -u ssh
@@ -583,7 +583,7 @@ Service names differ across distributions.
 
 ---
 
-# Kernel Logs
+## Kernel Logs
 
 Investigate:
 
@@ -601,7 +601,7 @@ Depending on permissions and system configuration.
 
 ---
 
-# systemd Services
+## systemd Services
 
 List services:
 
@@ -629,7 +629,7 @@ Execution
 
 ---
 
-# Linux Persistence
+## Linux Persistence
 
 Common persistence mechanisms include:
 
@@ -649,7 +649,7 @@ Containers
 
 ---
 
-# Cron
+## Cron
 
 Cron provides legitimate scheduled task functionality.
 
@@ -672,7 +672,7 @@ System-level schedules may exist in:
 
 ---
 
-# Cron Investigation
+## Cron Investigation
 
 For suspicious entries determine:
 
@@ -687,7 +687,7 @@ Was the change authorized?
 
 ---
 
-# Shell Profile Persistence
+## Shell Profile Persistence
 
 Review files such as:
 
@@ -703,7 +703,7 @@ Investigate unexpected commands or scripts.
 
 ---
 
-# Process Investigation
+## Process Investigation
 
 Running processes provide important volatile evidence.
 
@@ -719,7 +719,7 @@ ps -ef
 
 ---
 
-# Process Investigation Questions
+## Process Investigation Questions
 
 ```text id="o1u3n6"
 What is running?
@@ -733,7 +733,7 @@ What network connections exist?
 
 ---
 
-# Process Tree
+## Process Tree
 
 Use tools such as:
 
@@ -757,7 +757,7 @@ Parent-child relationships provide useful behavioral context.
 
 ---
 
-# Process Executable Paths
+## Process Executable Paths
 
 Linux exposes process information through `/proc`.
 
@@ -777,7 +777,7 @@ Use only on authorized systems.
 
 ---
 
-# Open Files
+## Open Files
 
 A process may have open files.
 
@@ -798,7 +798,7 @@ Process
 
 ---
 
-# Network Investigation
+## Network Investigation
 
 Linux network state can provide important evidence.
 
@@ -814,7 +814,7 @@ ss -tp
 
 ---
 
-# Network Questions
+## Network Questions
 
 Determine:
 
@@ -829,7 +829,7 @@ Is DNS involved?
 
 ---
 
-# Network Interfaces
+## Network Interfaces
 
 ```bash id="7c4m9b"
 ip addr
@@ -845,7 +845,7 @@ These help establish the system's network context.
 
 ---
 
-# DNS Investigation
+## DNS Investigation
 
 Depending on the environment, DNS evidence may exist in:
 
@@ -860,7 +860,7 @@ DNS should be correlated with process and network activity.
 
 ---
 
-# File-System Investigation
+## File-System Investigation
 
 Important directories include:
 
@@ -881,7 +881,7 @@ Their relevance depends on the system's role.
 
 ---
 
-# Temporary Directories
+## Temporary Directories
 
 Investigate:
 
@@ -902,7 +902,7 @@ But legitimate applications also use these directories.
 
 ---
 
-# File Metadata
+## File Metadata
 
 Useful commands include:
 
@@ -921,7 +921,7 @@ Review:
 
 ---
 
-# Linux Timestamps
+## Linux Timestamps
 
 Linux commonly provides:
 
@@ -935,7 +935,7 @@ ctime — Metadata/status change
 
 ---
 
-# Find Recently Modified Files
+## Find Recently Modified Files
 
 Example:
 
@@ -949,7 +949,7 @@ Use targeted paths to avoid excessive noise.
 
 ---
 
-# File Hashing
+## File Hashing
 
 ```bash id="k6x4v1"
 sha256sum suspicious-file
@@ -959,7 +959,7 @@ Record hashes for relevant evidence.
 
 ---
 
-# File Ownership
+## File Ownership
 
 Investigate:
 
@@ -978,7 +978,7 @@ When was it modified?
 
 ---
 
-# Linux Permissions
+## Linux Permissions
 
 Review:
 
@@ -999,7 +999,7 @@ Execute
 
 ---
 
-# SUID and SGID
+## SUID and SGID
 
 SUID/SGID binaries can be legitimate but require careful review during privilege-escalation investigations.
 
@@ -1019,7 +1019,7 @@ Investigate unusual binaries rather than assuming every SUID file is malicious.
 
 ---
 
-# Linux Capabilities
+## Linux Capabilities
 
 Capabilities provide fine-grained privileges.
 
@@ -1033,7 +1033,7 @@ Unexpected capabilities may be relevant during privilege-escalation investigatio
 
 ---
 
-# Root Investigation
+## Root Investigation
 
 Root-level activity deserves particular attention.
 
@@ -1049,7 +1049,7 @@ Review:
 
 ---
 
-# Sudo Logs
+## Sudo Logs
 
 Depending on distribution and configuration, sudo activity may appear in authentication logs or journald.
 
@@ -1061,7 +1061,7 @@ grep -i "sudo" /var/log/auth.log
 
 ---
 
-# Privilege Escalation Investigation
+## Privilege Escalation Investigation
 
 A useful model:
 
@@ -1088,7 +1088,7 @@ Investigate evidence at every stage.
 
 ---
 
-# Web Server Forensics
+## Web Server Forensics
 
 Linux systems frequently host:
 
@@ -1110,7 +1110,7 @@ Timestamp
 
 ---
 
-# Web Application Compromise
+## Web Application Compromise
 
 Correlate:
 
@@ -1134,7 +1134,7 @@ This is especially useful during web-shell investigations.
 
 ---
 
-# Web Shell Investigation
+## Web Shell Investigation
 
 Look for suspicious files in application directories.
 
@@ -1154,7 +1154,7 @@ Then investigate:
 
 ---
 
-# SSH Persistence
+## SSH Persistence
 
 Potential mechanisms include:
 
@@ -1170,7 +1170,7 @@ Investigate modifications carefully.
 
 ---
 
-# Linux Malware Investigation
+## Linux Malware Investigation
 
 Potential evidence sources:
 
@@ -1187,7 +1187,7 @@ Malware analysis is covered in greater depth in Chapter 09.
 
 ---
 
-# Linux File-System Timeline
+## Linux File-System Timeline
 
 Example:
 
@@ -1216,7 +1216,7 @@ Security Alert
 
 ---
 
-# Timeline Correlation
+## Timeline Correlation
 
 Correlate:
 
@@ -1236,7 +1236,7 @@ The combined sequence can reveal the attack path.
 
 ---
 
-# Linux Forensic Workflow
+## Linux Forensic Workflow
 
 ```text id="p7v4y0"
 Identify Host
@@ -1277,35 +1277,35 @@ Report
 
 ---
 
-# Common Linux Forensic Misconfigurations
+## Common Linux Forensic Misconfigurations
 
-## Short Log Retention
+### Short Log Retention
 
 Historical authentication evidence disappears.
 
-## No Centralized Logging
+### No Centralized Logging
 
 Evidence remains only on the compromised host.
 
-## Weak Time Synchronization
+### Weak Time Synchronization
 
 Timeline reconstruction becomes unreliable.
 
-## No Audit Framework
+### No Audit Framework
 
 Important system activity may be unavailable.
 
-## Inconsistent SSH Logging
+### Inconsistent SSH Logging
 
 Remote access investigations become difficult.
 
-## Shell History Not Preserved
+### Shell History Not Preserved
 
 Command-level context may be lost.
 
 ---
 
-# Linux Audit Framework
+## Linux Audit Framework
 
 Linux Audit (`auditd`) can provide detailed security-relevant telemetry when properly configured.
 
@@ -1323,7 +1323,7 @@ Audit logs are commonly stored under:
 
 ---
 
-# Audit Investigation
+## Audit Investigation
 
 Depending on configuration, audit telemetry may help answer:
 
@@ -1336,7 +1336,7 @@ Audit configuration determines the available evidence.
 
 ---
 
-# Journald Retention
+## Journald Retention
 
 Investigators should understand whether journald logs are:
 
@@ -1350,7 +1350,7 @@ A forensic investigation should not assume historical journal data exists indefi
 
 ---
 
-# Linux Evidence Collection Checklist
+## Linux Evidence Collection Checklist
 
 ```text id="f5k8m3"
 [ ] Hostname recorded
@@ -1379,9 +1379,9 @@ A forensic investigation should not assume historical journal data exists indefi
 
 ---
 
-# Practical Lab 01 — Linux Authentication Investigation
+## Practical Lab 01 — Linux Authentication Investigation
 
-## Scenario
+### Scenario
 
 A Linux server shows suspicious SSH activity.
 
@@ -1408,7 +1408,7 @@ Determine:
 
 ---
 
-# Practical Lab 02 — SSH Persistence Investigation
+## Practical Lab 02 — SSH Persistence Investigation
 
 Inspect:
 
@@ -1431,7 +1431,7 @@ Correlate with authentication logs.
 
 ---
 
-# Practical Lab 03 — Process Investigation
+## Practical Lab 03 — Process Investigation
 
 Run:
 
@@ -1460,7 +1460,7 @@ readlink /proc/<PID>/exe
 
 ---
 
-# Practical Lab 04 — Network Investigation
+## Practical Lab 04 — Network Investigation
 
 Run:
 
@@ -1488,7 +1488,7 @@ Then compare the network destination with:
 
 ---
 
-# Practical Lab 05 — Persistence Investigation
+## Practical Lab 05 — Persistence Investigation
 
 Review:
 
@@ -1519,7 +1519,7 @@ Confidence
 
 ---
 
-# Practical Lab 06 — Web Server Investigation
+## Practical Lab 06 — Web Server Investigation
 
 Scenario:
 
@@ -1553,7 +1553,7 @@ Network
 
 ---
 
-# Practical Lab 07 — Complete Linux Compromise Investigation
+## Practical Lab 07 — Complete Linux Compromise Investigation
 
 Scenario:
 
@@ -1590,7 +1590,7 @@ Your investigation should determine:
 
 ---
 
-# Linux Investigation Report Template
+## Linux Investigation Report Template
 
 ```text id="c3j9s6"
 # Linux Forensic Investigation
@@ -1643,7 +1643,7 @@ Investigator:
 
 ---
 
-# Example Finding
+## Example Finding
 
 ```text id="e8k3m4"
 Finding ID:
@@ -1679,7 +1679,7 @@ Historical network telemetry was incomplete.
 
 ---
 
-# Linux Forensic Decision Tree
+## Linux Forensic Decision Tree
 
 ```text id="k7p1r0"
               Suspicious Host
@@ -1718,9 +1718,9 @@ Historical network telemetry was incomplete.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What Linux artifacts are important during forensic investigation?
+### 1. What Linux artifacts are important during forensic investigation?
 
 Common sources include:
 
@@ -1741,7 +1741,7 @@ Common sources include:
 
 ---
 
-## 2. Where are SSH authentication events commonly found?
+### 2. Where are SSH authentication events commonly found?
 
 Depending on distribution:
 
@@ -1753,7 +1753,7 @@ journald
 
 ---
 
-## 3. Does Bash history prove all commands executed by a user?
+### 3. Does Bash history prove all commands executed by a user?
 
 No.
 
@@ -1761,7 +1761,7 @@ History can be incomplete, disabled, deleted, or bypassed.
 
 ---
 
-## 4. How would you investigate suspicious SSH activity?
+### 4. How would you investigate suspicious SSH activity?
 
 Review:
 
@@ -1779,19 +1779,19 @@ Timeline
 
 ---
 
-## 5. What is journald?
+### 5. What is journald?
 
 The systemd journal is a centralized logging mechanism used by many modern Linux systems.
 
 ---
 
-## 6. What is auditd?
+### 6. What is auditd?
 
 The Linux Audit framework can provide detailed security-relevant event telemetry depending on its configuration.
 
 ---
 
-## 7. How do you investigate Linux persistence?
+### 7. How do you investigate Linux persistence?
 
 Review:
 
@@ -1810,7 +1810,7 @@ Applications
 
 ---
 
-## 8. What is the difference between `mtime` and `ctime`?
+### 8. What is the difference between `mtime` and `ctime`?
 
 `mtime` represents modification time.
 
@@ -1820,25 +1820,25 @@ It should not be interpreted as ordinary file creation time.
 
 ---
 
-## 9. Why is `/proc` useful during forensics?
+### 9. Why is `/proc` useful during forensics?
 
 It exposes information about running processes and kernel/system state.
 
 ---
 
-## 10. What does `ss` help investigators understand?
+### 10. What does `ss` help investigators understand?
 
 It can show network sockets and connections, helping correlate network activity with processes.
 
 ---
 
-## 11. What is a Linux SUID binary?
+### 11. What is a Linux SUID binary?
 
 A binary configured to execute with the permissions of its owner, commonly root. SUID is legitimate functionality but can be relevant to privilege-escalation investigations.
 
 ---
 
-## 12. Does an unfamiliar cron job prove compromise?
+### 12. Does an unfamiliar cron job prove compromise?
 
 No.
 
@@ -1854,7 +1854,7 @@ Determine:
 
 ---
 
-## 13. What evidence would you collect from a compromised web server?
+### 13. What evidence would you collect from a compromised web server?
 
 At minimum:
 
@@ -1871,7 +1871,7 @@ Memory if appropriate
 
 ---
 
-## 14. How do Linux and Windows forensics differ?
+### 14. How do Linux and Windows forensics differ?
 
 The artifacts and operating-system architecture differ.
 
@@ -1900,9 +1900,9 @@ The underlying forensic principles remain similar.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > You discover a new user account on a Linux server. What do you investigate?
 
@@ -1925,9 +1925,9 @@ Then determine whether the account is legitimate.
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > You find a suspicious binary in `/tmp`. What do you do?
 
@@ -1965,9 +1965,9 @@ Do not execute the suspicious file merely to determine what it does on a product
 
 ---
 
-# Scenario Interview Question
+## Scenario Interview Question
 
-### Scenario
+#### Scenario
 
 > You find an SSH key that does not belong to the user.
 
@@ -1986,35 +1986,35 @@ Then assess whether the key is unauthorized.
 
 ---
 
-# Linux Forensic Maturity Model
+## Linux Forensic Maturity Model
 
-## Level 1 — Basic
+### Level 1 — Basic
 
 - Authentication logs
 - Manual investigation
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 - Standard collection
 - journald
 - SSH analysis
 - File investigation
 
-## Level 3 — Managed
+### Level 3 — Managed
 
 - Centralized logging
 - auditd
 - EDR
 - Formal procedures
 
-## Level 4 — Integrated
+### Level 4 — Integrated
 
 - SIEM
 - EDR
 - Threat hunting
 - Forensic collection
 
-## Level 5 — Advanced
+### Level 5 — Advanced
 
 - Enterprise Linux telemetry
 - Automated evidence preservation
@@ -2024,7 +2024,7 @@ Then assess whether the key is unauthorized.
 
 ---
 
-# Chapter Completion Checklist
+## Chapter Completion Checklist
 
 ```text id="s4j8v2"
 [ ] Understand Linux forensic architecture
@@ -2056,7 +2056,7 @@ Then assess whether the key is unauthorized.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Linux forensics is fundamentally about correlating system state, user activity, authentication, files, processes, persistence, and network behavior.
 
@@ -2104,41 +2104,41 @@ The investigator should remember:
 
 ---
 
-# References
+## References
 
-### Linux Manual Pages
+#### Linux Manual Pages
 
 https://man7.org/linux/man-pages/
 
-### systemd / journalctl
+#### systemd / journalctl
 
 https://www.freedesktop.org/wiki/Software/systemd/
 
-### Linux Audit
+#### Linux Audit
 
 https://linux-audit.com/
 
-### Red Hat Security
+#### Red Hat Security
 
 https://access.redhat.com/security/
 
-### Ubuntu Security
+#### Ubuntu Security
 
 https://ubuntu.com/security
 
-### NIST SP 800-86
+#### NIST SP 800-86
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 
-### SANS Digital Forensics
+#### SANS Digital Forensics
 
 https://www.sans.org/digital-forensics/
 
-### The Sleuth Kit
+#### The Sleuth Kit
 
 https://www.sleuthkit.org/
 

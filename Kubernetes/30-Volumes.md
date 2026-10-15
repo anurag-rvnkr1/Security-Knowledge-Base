@@ -59,7 +59,7 @@ A Volume provides storage that exists independently of the lifecycle of an indiv
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -80,7 +80,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need Volumes?
+## Why Do We Need Volumes?
 
 Suppose a container writes:
 
@@ -104,7 +104,7 @@ Application loses valuable information.
 
 ---
 
-## Solution
+### Solution
 
 Store the data inside a Volume.
 
@@ -136,7 +136,7 @@ Data Available
 
 ---
 
-# What is a Volume?
+## What is a Volume?
 
 A **Volume** is a storage resource attached to a Pod.
 
@@ -149,7 +149,7 @@ Characteristics:
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                     Pod
@@ -181,7 +181,7 @@ Both containers access the same storage.
 
 ---
 
-# Volume Lifecycle
+## Volume Lifecycle
 
 Container lifecycle:
 
@@ -215,7 +215,7 @@ The Volume survives container restarts but is removed when the Pod is deleted (f
 
 ---
 
-# Volume vs Container Filesystem
+## Volume vs Container Filesystem
 
 | Container Filesystem | Volume |
 |----------------------|--------|
@@ -226,7 +226,7 @@ The Volume survives container restarts but is removed when the Pod is deleted (f
 
 ---
 
-# Volume Mount
+## Volume Mount
 
 Volumes become usable only after being mounted.
 
@@ -248,7 +248,7 @@ The application reads and writes files through the mount path.
 
 ---
 
-# YAML Example
+## YAML Example
 
 ```yaml
 apiVersion: v1
@@ -282,7 +282,7 @@ spec:
 
 ---
 
-# YAML Breakdown
+## YAML Breakdown
 
 ```
 volumes
@@ -306,7 +306,7 @@ Container
 
 ---
 
-# Volume Workflow
+## Volume Workflow
 
 ```
 Pod Created
@@ -330,7 +330,7 @@ Application Uses Storage
 
 ---
 
-# Volume Types
+## Volume Types
 
 Kubernetes supports many volume types.
 
@@ -368,7 +368,7 @@ Each serves a different purpose.
 
 ---
 
-# emptyDir Volume
+## emptyDir Volume
 
 Created when:
 
@@ -416,7 +416,7 @@ Common use cases:
 
 ---
 
-# hostPath Volume
+## hostPath Volume
 
 Uses a directory from the Worker Node.
 
@@ -457,7 +457,7 @@ Common use cases:
 
 ---
 
-# ConfigMap Volume
+## ConfigMap Volume
 
 Stores configuration files.
 
@@ -479,7 +479,7 @@ Application reads configuration without rebuilding the container image.
 
 ---
 
-# Secret Volume
+## Secret Volume
 
 Stores sensitive information.
 
@@ -508,7 +508,7 @@ Secrets are mounted as files rather than embedded into the image.
 
 ---
 
-# Projected Volume
+## Projected Volume
 
 Combines multiple sources into one mount.
 
@@ -534,7 +534,7 @@ Applications access everything from one directory.
 
 ---
 
-# CSI Volume
+## CSI Volume
 
 Provided through a **CSI Driver**.
 
@@ -565,7 +565,7 @@ Supports many storage providers including:
 
 ---
 
-# Ephemeral CSI Volume
+## Ephemeral CSI Volume
 
 Temporary storage provided through a CSI driver.
 
@@ -591,7 +591,7 @@ Useful when advanced storage features are needed but persistence is not.
 
 ---
 
-# Sharing Volumes
+## Sharing Volumes
 
 One Volume:
 
@@ -615,7 +615,7 @@ All containers see the same files.
 
 ---
 
-# Example
+## Example
 
 Sidecar logging pattern:
 
@@ -639,7 +639,7 @@ Both containers share the same log directory.
 
 ---
 
-# ReadOnly Mount
+## ReadOnly Mount
 
 A volume can be mounted as read-only.
 
@@ -663,7 +663,7 @@ Ideal for:
 
 ---
 
-# Multiple Volumes
+## Multiple Volumes
 
 A Pod may mount several volumes.
 
@@ -693,7 +693,7 @@ Each serves a different purpose.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Pod
@@ -717,7 +717,7 @@ Application
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 Microservice:
 
@@ -773,7 +773,7 @@ Multiple volume types often coexist in production Pods.
 
 ---
 
-# View Pod
+## View Pod
 
 ```bash
 kubectl get pod
@@ -781,7 +781,7 @@ kubectl get pod
 
 ---
 
-# Describe Pod
+## Describe Pod
 
 ```bash
 kubectl describe pod nginx-volume
@@ -795,7 +795,7 @@ Observe:
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -823,7 +823,7 @@ kubectl delete pod nginx-volume
 
 ---
 
-# Volume Architecture Summary
+## Volume Architecture Summary
 
 ```
 Pod
@@ -847,15 +847,15 @@ Application
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use the Right Volume Type
+#### 1. Use the Right Volume Type
 
 Choose storage based on the application's requirements.
 
 ---
 
-### 2. Keep Secrets Separate
+#### 2. Keep Secrets Separate
 
 Never store credentials directly inside container images.
 
@@ -863,19 +863,19 @@ Use Secret volumes.
 
 ---
 
-### 3. Use ConfigMaps for Configuration
+#### 3. Use ConfigMaps for Configuration
 
 Avoid hardcoding configuration into applications.
 
 ---
 
-### 4. Minimize hostPath Usage
+#### 4. Minimize hostPath Usage
 
 Use `hostPath` only when Node access is truly required.
 
 ---
 
-### 5. Prefer Persistent Storage for Important Data
+#### 5. Prefer Persistent Storage for Important Data
 
 Use Persistent Volumes for:
 
@@ -887,7 +887,7 @@ Avoid `emptyDir` for important data.
 
 ---
 
-# Hands-on Lab 1 – Create an emptyDir Volume
+## Hands-on Lab 1 – Create an emptyDir Volume
 
 Deploy a Pod using:
 
@@ -901,7 +901,7 @@ Restart the container (without deleting the Pod) and verify the file still exist
 
 ---
 
-# Hands-on Lab 2 – Share Data Between Containers
+## Hands-on Lab 2 – Share Data Between Containers
 
 Create a Pod with:
 
@@ -914,7 +914,7 @@ Verify that files written by one container are visible to the other.
 
 ---
 
-# Hands-on Lab 3 – Mount a ConfigMap
+## Hands-on Lab 3 – Mount a ConfigMap
 
 Create a ConfigMap.
 
@@ -928,7 +928,7 @@ Verify that configuration files appear inside the container.
 
 ---
 
-# Hands-on Lab 4 – Mount a Secret
+## Hands-on Lab 4 – Mount a Secret
 
 Create a Secret.
 
@@ -938,7 +938,7 @@ Verify that sensitive data appears as files with appropriate permissions.
 
 ---
 
-# Hands-on Lab 5 – Inspect Mounted Volumes
+## Hands-on Lab 5 – Inspect Mounted Volumes
 
 Inside the Pod:
 
@@ -956,9 +956,9 @@ Observe mounted filesystems and storage paths.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Confusing Volumes with Persistent Storage
+### 1. Confusing Volumes with Persistent Storage
 
 Not all volumes are persistent.
 
@@ -978,7 +978,7 @@ Pod Deleted
 
 ---
 
-## 2. Storing Secrets in Images
+### 2. Storing Secrets in Images
 
 Incorrect:
 
@@ -998,13 +998,13 @@ Secret Volume
 
 ---
 
-## 3. Overusing hostPath
+### 3. Overusing hostPath
 
 `hostPath` tightly couples Pods to specific Nodes and can introduce security risks.
 
 ---
 
-## 4. Assuming Container Restarts Delete Volume Data
+### 4. Assuming Container Restarts Delete Volume Data
 
 Container restart:
 
@@ -1020,7 +1020,7 @@ For Pod-scoped volumes such as `emptyDir`, data survives container restarts.
 
 ---
 
-## 5. Forgetting Read-Only Mounts
+### 5. Forgetting Read-Only Mounts
 
 Configuration and Secret volumes should often be mounted as:
 
@@ -1032,9 +1032,9 @@ to reduce accidental modification.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Workflow
+### Workflow
 
 ```
 Pod Created
@@ -1054,7 +1054,7 @@ Application Reads/Writes
 
 ---
 
-## Common Volume Types
+### Common Volume Types
 
 ```
 emptyDir
@@ -1074,7 +1074,7 @@ PersistentVolume
 
 ---
 
-## Sharing
+### Sharing
 
 ```
 One Volume
@@ -1086,7 +1086,7 @@ Multiple Containers
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Pods:
 
@@ -1120,9 +1120,9 @@ mount
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a Kubernetes Volume?
 - Why are Volumes required?
@@ -1130,7 +1130,7 @@ mount
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - Explain the lifecycle of an `emptyDir` volume.
 - When should you use `hostPath`?
@@ -1138,7 +1138,7 @@ mount
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain how multiple containers share a Volume.
 - Compare `emptyDir`, `hostPath`, and CSI volumes.
@@ -1148,9 +1148,9 @@ mount
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Volumes
 - ConfigMap
@@ -1160,7 +1160,7 @@ mount
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Storage Concepts
 - CSI Documentation
@@ -1169,7 +1169,7 @@ mount
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - NIST SP 800-190
@@ -1177,7 +1177,7 @@ mount
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create Pods using different volume types.
 2. Compare container filesystem behavior with mounted volumes.
@@ -1189,7 +1189,7 @@ mount
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Application
@@ -1215,7 +1215,7 @@ Kubernetes **Volumes** provide storage that is independent of an individual cont
 
 ---
 
-## Next Chapter
+### Next Chapter
 
 **Chapter 31 – Persistent Volumes (PV)**
 

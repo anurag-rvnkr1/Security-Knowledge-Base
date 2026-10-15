@@ -1,6 +1,6 @@
 # 26-AD-Troubleshooting.md
 
-# Part 1 — Introduction to Active Directory Troubleshooting, Methodology, Diagnostic Tools and Enterprise Problem Solving
+## Part 1 — Introduction to Active Directory Troubleshooting, Methodology, Diagnostic Tools and Enterprise Problem Solving
 
 > **Important Note**
 >
@@ -8,7 +8,7 @@
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Even well-designed Active Directory environments experience operational issues.
 
@@ -42,7 +42,7 @@ Effective troubleshooting requires a **structured methodology** rather than gues
 
 ---
 
-# Why Structured Troubleshooting Matters
+## Why Structured Troubleshooting Matters
 
 Random troubleshooting often leads to:
 
@@ -56,7 +56,7 @@ A structured process improves consistency and reduces resolution time.
 
 ---
 
-# Enterprise Troubleshooting Lifecycle
+## Enterprise Troubleshooting Lifecycle
 
 ```
 Issue Reported
@@ -92,7 +92,7 @@ Document Lessons Learned
 
 ---
 
-# Troubleshooting Principles
+## Troubleshooting Principles
 
 Successful administrators follow these principles:
 
@@ -107,7 +107,7 @@ These practices reduce operational risk.
 
 ---
 
-# Common Active Directory Problem Categories
+## Common Active Directory Problem Categories
 
 | Category | Examples |
 |----------|----------|
@@ -124,7 +124,7 @@ Categorizing the issue helps narrow the investigation.
 
 ---
 
-# Enterprise Troubleshooting Workflow
+## Enterprise Troubleshooting Workflow
 
 ```
 User Reports Problem
@@ -160,7 +160,7 @@ Incident Closure
 
 ---
 
-# Information Collection
+## Information Collection
 
 Before making changes, gather:
 
@@ -177,7 +177,7 @@ Accurate information is essential for efficient diagnosis.
 
 ---
 
-# Determine the Scope
+## Determine the Scope
 
 Ask questions such as:
 
@@ -216,7 +216,7 @@ The broader the scope, the more likely the issue involves shared infrastructure.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Avoid fixing only the symptoms.
 
@@ -250,7 +250,7 @@ Root cause analysis helps prevent recurring issues.
 
 ---
 
-# Diagnostic Data Sources
+## Diagnostic Data Sources
 
 Administrators commonly review:
 
@@ -267,7 +267,7 @@ Combining multiple data sources provides a clearer picture.
 
 ---
 
-# Event Logging
+## Event Logging
 
 Event logs provide valuable diagnostic information.
 
@@ -283,7 +283,7 @@ Review logs before making configuration changes.
 
 ---
 
-# Common Diagnostic Tools
+## Common Diagnostic Tools
 
 | Tool | Primary Purpose |
 |------|-----------------|
@@ -300,7 +300,7 @@ These tools support most day-to-day troubleshooting tasks.
 
 ---
 
-# Change Verification
+## Change Verification
 
 Many issues occur after changes.
 
@@ -331,7 +331,7 @@ Recent Change?
 
 ---
 
-# Incident Documentation
+## Incident Documentation
 
 Each investigation should document:
 
@@ -347,9 +347,9 @@ Documentation improves future troubleshooting and knowledge sharing.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
-## Company
+### Company
 
 ```
 Contoso Financial Services
@@ -380,7 +380,7 @@ The issue was traced to a site-specific infrastructure configuration problem, co
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Troubleshooting should also consider security implications.
 
@@ -396,13 +396,13 @@ Operational issues and security events can sometimes appear similar, making care
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Develop a troubleshooting plan for a fictional Active Directory incident.
 
-### Step 1
+#### Step 1
 
 Document:
 
@@ -413,69 +413,69 @@ Document:
 
 ---
 
-### Step 2
+#### Step 2
 
 Determine the scope of the issue.
 
 ---
 
-### Step 3
+#### Step 3
 
 Identify which diagnostic tools you would use and why.
 
 ---
 
-### Step 4
+#### Step 4
 
 Create a step-by-step investigation workflow, ensuring evidence is collected before any configuration changes are made.
 
 ---
 
-### Step 5
+#### Step 5
 
 Prepare an incident report including the suspected root cause, validation steps, and lessons learned.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is the first step in Active Directory troubleshooting?
+#### Q1: What is the first step in Active Directory troubleshooting?
 
 **Answer:** Gather accurate information about the issue, including symptoms, scope, error messages, timing, and recent changes.
 
 ---
 
-### Q2: Why is determining the scope important?
+#### Q2: Why is determining the scope important?
 
 **Answer:** It helps identify whether the issue is isolated or affects shared infrastructure, narrowing the investigation.
 
 ---
 
-### Q3: Why should administrators collect evidence before making changes?
+#### Q3: Why should administrators collect evidence before making changes?
 
 **Answer:** Evidence-based troubleshooting prevents unnecessary changes, preserves diagnostic information, and supports accurate root cause analysis.
 
 ---
 
-### Q4: What is root cause analysis?
+#### Q4: What is root cause analysis?
 
 **Answer:** Root cause analysis identifies the underlying reason for an issue rather than only addressing its symptoms.
 
 ---
 
-### Q5: Which tools are commonly used for Active Directory troubleshooting?
+#### Q5: Which tools are commonly used for Active Directory troubleshooting?
 
 **Answer:** Event Viewer, Active Directory management consoles, DNS Manager, Group Policy Management, PowerShell, Performance Monitor, and Services.
 
 ---
 
-### Q6: Why should troubleshooting activities be documented?
+#### Q6: Why should troubleshooting activities be documented?
 
 **Answer:** Documentation improves consistency, supports future investigations, facilitates knowledge sharing, and helps prevent recurring issues.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Follow a structured troubleshooting methodology.
 - Collect evidence before making changes.
@@ -488,7 +488,7 @@ Prepare an incident report including the suspected root cause, validation steps,
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Making configuration changes without evidence.
 - Ignoring recent infrastructure changes.
@@ -499,7 +499,7 @@ Prepare an incident report including the suspected root cause, validation steps,
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Structured troubleshooting improves consistency and reduces downtime.
 - Scope determination and evidence collection are essential first steps.
@@ -508,9 +508,9 @@ Prepare an incident report including the suspected root cause, validation steps,
 
 ---
 
-# 26-AD-Troubleshooting.md
+## 26-AD-Troubleshooting.md
 
-# Part 2 — Troubleshooting Authentication, DNS, Replication, Group Policy and Domain Controller Health
+## Part 2 — Troubleshooting Authentication, DNS, Replication, Group Policy and Domain Controller Health
 
 > **Important Note**
 >
@@ -518,7 +518,7 @@ Prepare an incident report including the suspected root cause, validation steps,
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -534,7 +534,7 @@ After completing this part, you will understand:
 
 ---
 
-# Authentication Troubleshooting
+## Authentication Troubleshooting
 
 Authentication problems are among the most common Active Directory incidents.
 
@@ -550,7 +550,7 @@ A structured investigation helps identify the underlying cause.
 
 ---
 
-# Authentication Investigation Workflow
+## Authentication Investigation Workflow
 
 ```
 User Reports Issue
@@ -588,7 +588,7 @@ Each step eliminates potential causes systematically.
 
 ---
 
-# Authentication Checklist
+## Authentication Checklist
 
 | Check | Purpose |
 |--------|----------|
@@ -602,7 +602,7 @@ Each step eliminates potential causes systematically.
 
 ---
 
-# DNS Troubleshooting
+## DNS Troubleshooting
 
 Active Directory relies heavily on DNS.
 
@@ -617,7 +617,7 @@ DNS should be one of the first components reviewed.
 
 ---
 
-# DNS Troubleshooting Workflow
+## DNS Troubleshooting Workflow
 
 ```
 Authentication Issue
@@ -651,7 +651,7 @@ Proper name resolution is essential for Active Directory functionality.
 
 ---
 
-# Common DNS Symptoms
+## Common DNS Symptoms
 
 | Symptom | Possible Area to Review |
 |----------|------------------------|
@@ -663,7 +663,7 @@ Proper name resolution is essential for Active Directory functionality.
 
 ---
 
-# Replication Troubleshooting
+## Replication Troubleshooting
 
 Replication keeps directory information consistent across Domain Controllers.
 
@@ -676,7 +676,7 @@ Typical symptoms include:
 
 ---
 
-# Replication Workflow
+## Replication Workflow
 
 ```
 Directory Change
@@ -702,7 +702,7 @@ Successful replication ensures a consistent directory across the enterprise.
 
 ---
 
-# Replication Investigation
+## Replication Investigation
 
 Administrators should review:
 
@@ -717,7 +717,7 @@ Avoid assuming replication problems without collecting evidence.
 
 ---
 
-# Replication Symptoms
+## Replication Symptoms
 
 | Symptom | Review Area |
 |----------|-------------|
@@ -728,7 +728,7 @@ Avoid assuming replication problems without collecting evidence.
 
 ---
 
-# Group Policy Troubleshooting
+## Group Policy Troubleshooting
 
 Group Policy issues commonly involve:
 
@@ -747,7 +747,7 @@ Investigation should determine whether the issue affects:
 
 ---
 
-# Group Policy Workflow
+## Group Policy Workflow
 
 ```
 Policy Created
@@ -777,7 +777,7 @@ Each stage should be verified independently.
 
 ---
 
-# Group Policy Checklist
+## Group Policy Checklist
 
 - Verify policy exists
 - Verify correct Organizational Unit
@@ -788,7 +788,7 @@ Each stage should be verified independently.
 
 ---
 
-# Domain Controller Health
+## Domain Controller Health
 
 Healthy Domain Controllers are essential.
 
@@ -803,7 +803,7 @@ Areas to review include:
 
 ---
 
-# Domain Controller Health Workflow
+## Domain Controller Health Workflow
 
 ```
 Domain Controller
@@ -837,7 +837,7 @@ Routine health reviews reduce unexpected outages.
 
 ---
 
-# Important Services
+## Important Services
 
 Examples include:
 
@@ -853,7 +853,7 @@ These services should be operational for normal Active Directory functionality.
 
 ---
 
-# Time Synchronization
+## Time Synchronization
 
 Kerberos depends on accurate time synchronization.
 
@@ -877,7 +877,7 @@ Large time differences between systems may prevent successful authentication.
 
 ---
 
-# Network Connectivity
+## Network Connectivity
 
 Many Active Directory issues originate from network problems.
 
@@ -893,9 +893,9 @@ Infrastructure should be validated before assuming an Active Directory issue.
 
 ---
 
-# Enterprise Troubleshooting Scenario
+## Enterprise Troubleshooting Scenario
 
-## Company
+### Company
 
 ```
 Wingtip Manufacturing
@@ -927,7 +927,7 @@ A site-specific infrastructure issue was identified, resolved through standard o
 
 ---
 
-# Validation After Resolution
+## Validation After Resolution
 
 Every issue should be validated.
 
@@ -955,7 +955,7 @@ Validation ensures the underlying issue has been resolved.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Operational failures may resemble security incidents.
 
@@ -970,13 +970,13 @@ Security teams and infrastructure teams should collaborate when investigating is
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Investigate a fictional authentication problem affecting multiple users.
 
-### Step 1
+#### Step 1
 
 Document:
 
@@ -987,7 +987,7 @@ Document:
 
 ---
 
-### Step 2
+#### Step 2
 
 Review:
 
@@ -999,63 +999,63 @@ Review:
 
 ---
 
-### Step 3
+#### Step 3
 
 Determine the likely root cause based on collected evidence.
 
 ---
 
-### Step 4
+#### Step 4
 
 Document the corrective actions that would be taken through standard change management.
 
 ---
 
-### Step 5
+#### Step 5
 
 Create a validation checklist confirming authentication, DNS, replication, and Group Policy are functioning correctly after the issue is resolved.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why should DNS be checked during authentication problems?
+#### Q1: Why should DNS be checked during authentication problems?
 
 **Answer:** Active Directory depends on DNS to locate Domain Controllers and other directory services, making DNS a critical component of authentication.
 
 ---
 
-### Q2: Why is replication important?
+#### Q2: Why is replication important?
 
 **Answer:** Replication ensures directory information remains consistent across Domain Controllers, supporting reliable authentication and directory operations.
 
 ---
 
-### Q3: Why is time synchronization critical?
+#### Q3: Why is time synchronization critical?
 
 **Answer:** Kerberos authentication depends on accurate time synchronization between systems to function correctly.
 
 ---
 
-### Q4: What should be verified when Group Policy is not applying?
+#### Q4: What should be verified when Group Policy is not applying?
 
 **Answer:** Verify policy linkage, Organizational Unit placement, replication, client processing, and any applicable filtering or scope settings.
 
 ---
 
-### Q5: Why should Domain Controller health be monitored?
+#### Q5: Why should Domain Controller health be monitored?
 
 **Answer:** Healthy Domain Controllers provide authentication, directory services, replication, and DNS functionality essential for Active Directory operations.
 
 ---
 
-### Q6: Why should administrators validate fixes after troubleshooting?
+#### Q6: Why should administrators validate fixes after troubleshooting?
 
 **Answer:** Validation confirms that services are operating normally, users can access required resources, and the root cause has been successfully addressed.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Troubleshoot methodically.
 - Review DNS early in the investigation.
@@ -1068,7 +1068,7 @@ Create a validation checklist confirming authentication, DNS, replication, and G
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Ignoring DNS during authentication troubleshooting.
 - Assuming replication is functioning without verification.
@@ -1079,7 +1079,7 @@ Create a validation checklist confirming authentication, DNS, replication, and G
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication, DNS, replication, and Group Policy are closely interconnected.
 - Healthy Domain Controllers are essential for reliable Active Directory operations.
@@ -1088,9 +1088,9 @@ Create a validation checklist confirming authentication, DNS, replication, and G
 
 ---
 
-# 26-AD-Troubleshooting.md
+## 26-AD-Troubleshooting.md
 
-# Part 3 — Advanced Active Directory Troubleshooting, Performance Analysis, Recovery Planning and Enterprise Incident Management
+## Part 3 — Advanced Active Directory Troubleshooting, Performance Analysis, Recovery Planning and Enterprise Incident Management
 
 > **Important Note**
 >
@@ -1098,7 +1098,7 @@ Create a validation checklist confirming authentication, DNS, replication, and G
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1113,7 +1113,7 @@ After completing this part, you will understand:
 
 ---
 
-# Moving Beyond Basic Troubleshooting
+## Moving Beyond Basic Troubleshooting
 
 Basic troubleshooting focuses on resolving individual issues.
 
@@ -1147,7 +1147,7 @@ Prevent Future Incidents
 
 ---
 
-# Understanding Service Dependencies
+## Understanding Service Dependencies
 
 Active Directory relies on multiple supporting services.
 
@@ -1187,7 +1187,7 @@ A failure in any dependency can affect directory operations.
 
 ---
 
-# Dependency Validation
+## Dependency Validation
 
 Before assuming an Active Directory issue, validate:
 
@@ -1203,7 +1203,7 @@ Before assuming an Active Directory issue, validate:
 
 ---
 
-# Performance Troubleshooting
+## Performance Troubleshooting
 
 Performance issues may appear as:
 
@@ -1217,7 +1217,7 @@ Performance analysis should focus on identifying bottlenecks rather than symptom
 
 ---
 
-# Performance Investigation Workflow
+## Performance Investigation Workflow
 
 ```
 Performance Complaint
@@ -1249,7 +1249,7 @@ Monitor Results
 
 ---
 
-# Areas to Monitor
+## Areas to Monitor
 
 Common performance indicators include:
 
@@ -1265,7 +1265,7 @@ Monitoring trends is more valuable than isolated measurements.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Healthy environments grow over time.
 
@@ -1301,7 +1301,7 @@ Future Readiness
 
 ---
 
-# Backup Validation
+## Backup Validation
 
 Backups should not only exist—they should also be validated.
 
@@ -1318,7 +1318,7 @@ A backup that cannot be restored should not be considered reliable.
 
 ---
 
-# Recovery Planning
+## Recovery Planning
 
 Recovery planning prepares organizations for unexpected failures.
 
@@ -1350,7 +1350,7 @@ Recovery plans should be tested periodically through approved exercises.
 
 ---
 
-# Incident Severity Classification
+## Incident Severity Classification
 
 Organizations often classify incidents by business impact.
 
@@ -1365,7 +1365,7 @@ Prioritization helps allocate resources appropriately.
 
 ---
 
-# Enterprise Incident Response Workflow
+## Enterprise Incident Response Workflow
 
 ```
 Issue Detected
@@ -1405,7 +1405,7 @@ Lessons Learned
 
 ---
 
-# Root Cause Analysis Techniques
+## Root Cause Analysis Techniques
 
 Effective root cause analysis asks:
 
@@ -1419,7 +1419,7 @@ Effective root cause analysis asks:
 
 ---
 
-# Example Root Cause Analysis
+## Example Root Cause Analysis
 
 ```
 Problem
@@ -1457,7 +1457,7 @@ The focus remains on understanding *why* the issue occurred.
 
 ---
 
-# Monitoring and Alerting
+## Monitoring and Alerting
 
 Enterprise monitoring should include:
 
@@ -1474,7 +1474,7 @@ Early detection reduces business impact.
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Infrastructure
@@ -1504,7 +1504,7 @@ Automation improves response times while maintaining operational oversight.
 
 ---
 
-# Preventive Maintenance
+## Preventive Maintenance
 
 Routine maintenance reduces unexpected incidents.
 
@@ -1521,9 +1521,9 @@ Recommended activities:
 
 ---
 
-# Enterprise Scenario
+## Enterprise Scenario
 
-## Company
+### Company
 
 ```
 Northwind Retail Group
@@ -1554,7 +1554,7 @@ Performance bottlenecks were identified, infrastructure capacity was adjusted th
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Many operational issues can affect security.
 
@@ -1570,19 +1570,19 @@ Security and operations teams should coordinate investigations to maintain both 
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Develop an enterprise troubleshooting and recovery plan for a fictional Active Directory environment.
 
-### Step 1
+#### Step 1
 
 List all critical Active Directory dependencies.
 
 ---
 
-### Step 2
+#### Step 2
 
 Create a monitoring checklist covering:
 
@@ -1594,19 +1594,19 @@ Create a monitoring checklist covering:
 
 ---
 
-### Step 3
+#### Step 3
 
 Design an incident response workflow from detection through closure.
 
 ---
 
-### Step 4
+#### Step 4
 
 Prepare a backup validation checklist and define how recovery testing will be documented.
 
 ---
 
-### Step 5
+#### Step 5
 
 Write a root cause analysis report template including:
 
@@ -1620,45 +1620,45 @@ Write a root cause analysis report template including:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: Why is root cause analysis important?
+#### Q1: Why is root cause analysis important?
 
 **Answer:** It identifies the underlying cause of an incident, helping prevent recurrence rather than only resolving immediate symptoms.
 
 ---
 
-### Q2: Why should backup restoration be tested?
+#### Q2: Why should backup restoration be tested?
 
 **Answer:** Successful backup completion does not guarantee recoverability. Periodic restoration testing validates that backups can be used when needed.
 
 ---
 
-### Q3: What is the purpose of monitoring?
+#### Q3: What is the purpose of monitoring?
 
 **Answer:** Monitoring detects operational issues early, enabling faster investigation and reducing business impact.
 
 ---
 
-### Q4: Why are service dependencies important?
+#### Q4: Why are service dependencies important?
 
 **Answer:** Active Directory depends on supporting components such as DNS, networking, storage, and time synchronization. Problems in these areas can affect directory services.
 
 ---
 
-### Q5: What should be included in an incident report?
+#### Q5: What should be included in an incident report?
 
 **Answer:** Incident description, scope, evidence, timeline, root cause, resolution, validation results, and preventive recommendations.
 
 ---
 
-### Q6: Why is preventive maintenance valuable?
+#### Q6: Why is preventive maintenance valuable?
 
 **Answer:** Regular maintenance identifies issues before they become outages, improving reliability and reducing operational risk.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Monitor Active Directory continuously.
 - Validate backups with periodic restoration tests.
@@ -1671,7 +1671,7 @@ Write a root cause analysis report template including:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating recurring incidents as unrelated.
 - Ignoring long-term performance trends.
@@ -1682,7 +1682,7 @@ Write a root cause analysis report template including:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Advanced troubleshooting emphasizes prevention as well as resolution.
 - Performance analysis should focus on trends and dependencies.
@@ -1691,9 +1691,9 @@ Write a root cause analysis report template including:
 
 ---
 
-# 26-AD-Troubleshooting.md
+## 26-AD-Troubleshooting.md
 
-# Part 4 — Enterprise Troubleshooting Playbooks, Operational Excellence, Disaster Recovery, Best Practices and Chapter Summary
+## Part 4 — Enterprise Troubleshooting Playbooks, Operational Excellence, Disaster Recovery, Best Practices and Chapter Summary
 
 > **Important Note**
 >
@@ -1701,7 +1701,7 @@ Write a root cause analysis report template including:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1716,7 +1716,7 @@ After completing this part, you will understand:
 
 ---
 
-# Enterprise Troubleshooting Philosophy
+## Enterprise Troubleshooting Philosophy
 
 Troubleshooting should not simply restore services.
 
@@ -1751,7 +1751,7 @@ Prevent Future Incident
 
 ---
 
-# Enterprise Troubleshooting Playbooks
+## Enterprise Troubleshooting Playbooks
 
 Large organizations create standardized playbooks for common incidents.
 
@@ -1771,7 +1771,7 @@ Playbooks improve consistency across support teams.
 
 ---
 
-# Example Troubleshooting Playbook
+## Example Troubleshooting Playbook
 
 ```
 Incident Reported
@@ -1815,7 +1815,7 @@ Close Ticket
 
 ---
 
-# Operational Excellence
+## Operational Excellence
 
 Operational excellence is achieved through:
 
@@ -1849,7 +1849,7 @@ Operational Excellence
 
 ---
 
-# High Availability Validation
+## High Availability Validation
 
 Organizations should regularly verify:
 
@@ -1880,7 +1880,7 @@ Redundancy should be validated before failures occur.
 
 ---
 
-# Disaster Recovery Planning
+## Disaster Recovery Planning
 
 A disaster recovery plan prepares the organization for major outages.
 
@@ -1918,7 +1918,7 @@ Recovery documentation should be reviewed and updated regularly.
 
 ---
 
-# Business Continuity vs Disaster Recovery
+## Business Continuity vs Disaster Recovery
 
 | Business Continuity | Disaster Recovery |
 |---------------------|-------------------|
@@ -1931,7 +1931,7 @@ Both are important for enterprise resilience.
 
 ---
 
-# Change Management
+## Change Management
 
 Many incidents are linked to recent changes.
 
@@ -1969,7 +1969,7 @@ Controlled changes reduce operational risk.
 
 ---
 
-# Documentation Standards
+## Documentation Standards
 
 Every incident should include:
 
@@ -1988,7 +1988,7 @@ Good documentation supports future investigations.
 
 ---
 
-# Knowledge Base Development
+## Knowledge Base Development
 
 Organizations benefit from maintaining a centralized knowledge base.
 
@@ -2021,7 +2021,7 @@ Benefits include:
 
 ---
 
-# Enterprise Monitoring Strategy
+## Enterprise Monitoring Strategy
 
 A mature monitoring strategy includes:
 
@@ -2040,7 +2040,7 @@ Monitoring should provide actionable alerts rather than excessive notifications.
 
 ---
 
-# Post-Incident Review
+## Post-Incident Review
 
 After major incidents, organizations should conduct a structured review.
 
@@ -2075,7 +2075,7 @@ Improve Processes
 
 ---
 
-# Continuous Improvement Cycle
+## Continuous Improvement Cycle
 
 ```
 Monitor
@@ -2109,9 +2109,9 @@ Continuous improvement strengthens operational reliability over time.
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Company
+### Company
 
 ```
 Litware Technologies
@@ -2150,7 +2150,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Operational troubleshooting and cybersecurity are closely related.
 
@@ -2167,13 +2167,13 @@ Operational excellence contributes directly to enterprise security.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Develop an enterprise troubleshooting handbook for a fictional organization.
 
-### Step 1
+#### Step 1
 
 Create standard playbooks for:
 
@@ -2185,7 +2185,7 @@ Create standard playbooks for:
 
 ---
 
-### Step 2
+#### Step 2
 
 Design an incident report template including:
 
@@ -2199,7 +2199,7 @@ Design an incident report template including:
 
 ---
 
-### Step 3
+#### Step 3
 
 Develop a disaster recovery checklist covering:
 
@@ -2212,57 +2212,57 @@ Develop a disaster recovery checklist covering:
 
 ---
 
-### Step 4
+#### Step 4
 
 Prepare a monitoring dashboard listing the key operational metrics your organization will review daily, weekly, and monthly.
 
 ---
 
-### Step 5
+#### Step 5
 
 Conduct a mock post-incident review and document at least five process improvements based on the findings.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is an Active Directory troubleshooting playbook?
+#### Q1: What is an Active Directory troubleshooting playbook?
 
 **Answer:** A troubleshooting playbook is a documented, standardized procedure that guides administrators through investigating and resolving a specific type of Active Directory incident.
 
 ---
 
-### Q2: Why are post-incident reviews important?
+#### Q2: Why are post-incident reviews important?
 
 **Answer:** They identify lessons learned, improve procedures, refine monitoring, and reduce the likelihood of similar incidents occurring in the future.
 
 ---
 
-### Q3: What is the difference between business continuity and disaster recovery?
+#### Q3: What is the difference between business continuity and disaster recovery?
 
 **Answer:** Business continuity focuses on maintaining business operations during disruptions, while disaster recovery focuses on restoring technical systems and infrastructure.
 
 ---
 
-### Q4: Why is documentation important during troubleshooting?
+#### Q4: Why is documentation important during troubleshooting?
 
 **Answer:** Documentation preserves evidence, supports collaboration, enables knowledge sharing, simplifies audits, and improves future incident response.
 
 ---
 
-### Q5: Why should organizations validate high availability?
+#### Q5: Why should organizations validate high availability?
 
 **Answer:** Validation ensures redundant infrastructure functions correctly before an actual failure occurs, reducing downtime during incidents.
 
 ---
 
-### Q6: What are the characteristics of mature Active Directory operations?
+#### Q6: What are the characteristics of mature Active Directory operations?
 
 **Answer:** Mature operations include standardized procedures, proactive monitoring, structured troubleshooting, documented recovery plans, continuous improvement, and strong governance.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Follow standardized troubleshooting playbooks.
 - Use formal change management for infrastructure modifications.
@@ -2275,7 +2275,7 @@ Conduct a mock post-incident review and document at least five process improveme
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Troubleshooting without documented procedures.
 - Skipping validation after implementing fixes.
@@ -2286,7 +2286,7 @@ Conduct a mock post-incident review and document at least five process improveme
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise troubleshooting is a continuous operational process, not just incident resolution.
 - Standardized playbooks improve consistency, speed, and accuracy.
@@ -2295,7 +2295,7 @@ Conduct a mock post-incident review and document at least five process improveme
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

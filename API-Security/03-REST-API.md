@@ -1,7 +1,6 @@
 # 03 - REST API
 
-# Introduction
-
+## Introduction
 Representational State Transfer (REST) is the most widely adopted architectural style for designing web APIs. Nearly every modern web application, mobile application, cloud platform, Software-as-a-Service (SaaS) product, and enterprise system exposes REST APIs for communication.
 
 Companies such as Amazon, Google, Microsoft, Netflix, GitHub, Stripe, PayPal, Salesforce, and thousands of other organizations rely heavily on REST APIs to provide secure, scalable, and interoperable services.
@@ -14,8 +13,7 @@ This chapter explores REST from both architectural and security perspectives, pr
 
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 After completing this chapter, you will be able to:
 
 - Understand REST and its history.
@@ -33,8 +31,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is REST?
-
+## What is REST?
 REST stands for:
 
 > **Representational State Transfer**
@@ -47,8 +44,7 @@ Applications that follow these constraints are referred to as **RESTful APIs**.
 
 ---
 
-# REST Definition
-
+## REST Definition
 REST is an architectural style in which clients interact with resources exposed by servers using standard HTTP methods through a uniform interface.
 
 Instead of invoking functions directly, clients manipulate resources.
@@ -73,8 +69,7 @@ The API exposes resources rather than internal implementation details.
 
 ---
 
-# History of REST
-
+## History of REST
 Before REST became popular, enterprise applications primarily relied on technologies such as:
 
 - CORBA
@@ -95,8 +90,7 @@ Roy Fielding proposed REST to leverage the existing capabilities of HTTP, result
 
 ---
 
-# REST in Modern Applications
-
+## REST in Modern Applications
 REST APIs are widely used across industries.
 
 Examples include:
@@ -141,8 +135,7 @@ Artificial Intelligence
 
 ---
 
-# REST Communication Model
-
+## REST Communication Model
 A REST API follows a client-server communication model.
 
 ```
@@ -159,8 +152,7 @@ The server processes the request and returns a representation of that resource.
 
 ---
 
-# Resource-Oriented Architecture
-
+## Resource-Oriented Architecture
 The fundamental concept in REST is the **resource**.
 
 A resource represents any identifiable object managed by the application.
@@ -199,8 +191,7 @@ Example:
 
 ---
 
-# Resource Representation
-
+## Resource Representation
 Clients never interact with the actual resource stored internally.
 
 Instead, they receive a **representation**.
@@ -219,8 +210,7 @@ The database may contain dozens of additional fields, but the API returns only t
 
 ---
 
-# REST Architecture Overview
-
+## REST Architecture Overview
 ```
                   Client
 
@@ -253,8 +243,7 @@ Each layer has a clearly defined responsibility.
 
 ---
 
-# REST Constraints
-
+## REST Constraints
 REST is defined by six architectural constraints.
 
 Applications that follow these constraints are considered RESTful.
@@ -272,8 +261,7 @@ These constraints promote scalability, simplicity, and interoperability.
 
 ---
 
-# Constraint 1 — Client-Server
-
+## Constraint 1 — Client-Server
 Clients and servers are separated.
 
 ```
@@ -297,8 +285,7 @@ Advantages:
 
 ---
 
-# Constraint 2 — Stateless
-
+## Constraint 2 — Stateless
 Each request contains all information required to process it.
 
 ```
@@ -336,8 +323,7 @@ Benefits:
 
 ---
 
-# Constraint 3 — Cacheable
-
+## Constraint 3 — Cacheable
 Responses may be cached.
 
 ```
@@ -377,8 +363,7 @@ HTTP headers such as `Cache-Control`, `ETag`, and `Expires` help control caching
 
 ---
 
-# Constraint 4 — Uniform Interface
-
+## Constraint 4 — Uniform Interface
 REST APIs expose a consistent interface regardless of implementation.
 
 Examples:
@@ -397,8 +382,7 @@ Clients interact with resources in a predictable manner, reducing complexity and
 
 ---
 
-# Constraint 5 — Layered System
-
+## Constraint 5 — Layered System
 A client does not need to know whether it communicates directly with the application or through intermediary components.
 
 ```
@@ -439,8 +423,7 @@ Each layer performs a specific function without exposing internal details to the
 
 ---
 
-# Constraint 6 — Code on Demand (Optional)
-
+## Constraint 6 — Code on Demand (Optional)
 A server may optionally provide executable code to clients.
 
 Examples include:
@@ -453,8 +436,7 @@ Unlike the other five constraints, this constraint is optional and is less commo
 
 ---
 
-# REST vs Traditional RPC
-
+## REST vs Traditional RPC
 | REST | RPC |
 |------|-----|
 | Resource-oriented | Function-oriented |
@@ -480,8 +462,7 @@ GET /customers/15
 
 ---
 
-# Characteristics of REST APIs
-
+## Characteristics of REST APIs
 Well-designed REST APIs typically exhibit the following characteristics:
 
 - Stateless
@@ -499,8 +480,7 @@ These principles form the basis of most enterprise web APIs today.
 
 ---
 
-# Enterprise Example
-
+## Enterprise Example
 A global banking platform exposes the following REST resources:
 
 ```
@@ -523,8 +503,7 @@ Each endpoint represents a business resource rather than an internal function, a
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - REST is an architectural style rather than a protocol.
 - REST APIs expose resources instead of internal functions.
 - Resources are identified using URIs and represented using formats such as JSON.
@@ -534,8 +513,7 @@ Each endpoint represents a business resource rather than an internal function, a
 
 ---
 
-# Resource Identification
-
+## Resource Identification
 Everything in a REST API revolves around **resources**.
 
 A resource is any object, entity, or piece of information that can be identified and manipulated through a URI.
@@ -568,8 +546,7 @@ Each URI uniquely identifies a collection or an individual resource.
 
 ---
 
-# Collections vs Individual Resources
-
+## Collections vs Individual Resources
 REST distinguishes between collections and individual resources.
 
 Collection:
@@ -614,8 +591,7 @@ Users Collection
 
 ---
 
-# URI Structure
-
+## URI Structure
 A well-designed REST URI follows a predictable hierarchy.
 
 General format:
@@ -643,8 +619,7 @@ Components:
 
 ---
 
-# URI Naming Best Practices
-
+## URI Naming Best Practices
 REST URIs should follow consistent naming conventions.
 
 Good Examples
@@ -679,8 +654,7 @@ REST focuses on **resources**, not actions.
 
 ---
 
-# Use Nouns Instead of Verbs
-
+## Use Nouns Instead of Verbs
 Incorrect
 
 ```
@@ -705,8 +679,7 @@ The HTTP method already defines the action.
 
 ---
 
-# Use Plural Resource Names
-
+## Use Plural Resource Names
 Recommended
 
 ```
@@ -735,8 +708,7 @@ Plural naming improves consistency and readability.
 
 ---
 
-# Use Lowercase URIs
-
+## Use Lowercase URIs
 Recommended
 
 ```
@@ -766,8 +738,7 @@ Reasons:
 
 ---
 
-# Use Hyphens Instead of Underscores
-
+## Use Hyphens Instead of Underscores
 Good
 
 ```
@@ -792,8 +763,7 @@ Hyphens improve readability and align with common REST conventions.
 
 ---
 
-# Avoid File Extensions
-
+## Avoid File Extensions
 Avoid
 
 ```
@@ -812,8 +782,7 @@ The response format should be determined using the `Accept` header rather than e
 
 ---
 
-# Hierarchical Resources
-
+## Hierarchical Resources
 Resources often have parent-child relationships.
 
 Example:
@@ -840,8 +809,7 @@ Hierarchy should reflect real business relationships.
 
 ---
 
-# Nested Resources
-
+## Nested Resources
 Nested resources represent ownership or containment.
 
 Example:
@@ -884,12 +852,10 @@ Prefer flatter structures where practical.
 
 ---
 
-# Resource Relationships
-
+## Resource Relationships
 Resources may have different types of relationships.
 
-### One-to-One
-
+#### One-to-One
 ```
 User
 
@@ -908,8 +874,7 @@ URI
 
 ---
 
-### One-to-Many
-
+#### One-to-Many
 ```
 Customer
 
@@ -928,8 +893,7 @@ URI
 
 ---
 
-### Many-to-Many
-
+#### Many-to-Many
 ```
 Students
 
@@ -950,8 +914,7 @@ Possible URIs
 
 ---
 
-# Query Parameters
-
+## Query Parameters
 Query parameters filter, sort, and paginate results.
 
 Filtering
@@ -994,8 +957,7 @@ Query parameters should **not** change the identity of a resource.
 
 ---
 
-# Path Parameters vs Query Parameters
-
+## Path Parameters vs Query Parameters
 | Path Parameter | Query Parameter |
 |---------------|-----------------|
 | Identifies a resource | Filters resources |
@@ -1019,8 +981,7 @@ Retrieves users filtered by country.
 
 ---
 
-# Resource Versioning
-
+## Resource Versioning
 Enterprise APIs evolve over time.
 
 Versioning prevents breaking existing clients.
@@ -1051,8 +1012,7 @@ URI versioning is the most widely adopted approach because it is explicit and ea
 
 ---
 
-# REST Maturity Model
-
+## REST Maturity Model
 The Richardson Maturity Model evaluates how closely an API follows REST principles.
 
 ```
@@ -1075,8 +1035,7 @@ Each level introduces additional REST capabilities.
 
 ---
 
-# Level 0 — Single Endpoint
-
+## Level 0 — Single Endpoint
 Everything is handled by one endpoint.
 
 Example
@@ -1095,8 +1054,7 @@ Problems:
 
 ---
 
-# Level 1 — Resources
-
+## Level 1 — Resources
 Separate resources are introduced.
 
 Example
@@ -1113,8 +1071,7 @@ Resources are identified independently.
 
 ---
 
-# Level 2 — HTTP Methods
-
+## Level 2 — HTTP Methods
 HTTP methods express operations.
 
 ```
@@ -1143,8 +1100,7 @@ This is where most production REST APIs operate.
 
 ---
 
-# Level 3 — Hypermedia (HATEOAS)
-
+## Level 3 — Hypermedia (HATEOAS)
 Responses include links to related actions.
 
 Example:
@@ -1170,8 +1126,7 @@ Clients discover available actions dynamically.
 
 ---
 
-# REST Resource Lifecycle
-
+## REST Resource Lifecycle
 ```
 Create
 
@@ -1198,8 +1153,7 @@ This lifecycle maps naturally to CRUD operations and standard HTTP methods.
 
 ---
 
-# Enterprise REST Design Principles
-
+## Enterprise REST Design Principles
 Successful enterprise APIs follow several design principles.
 
 - Resource-oriented design
@@ -1219,8 +1173,7 @@ Following these principles improves developer experience and long-term maintaina
 
 ---
 
-# Enterprise Example
-
+## Enterprise Example
 An online retail platform exposes the following REST resources:
 
 ```
@@ -1243,8 +1196,7 @@ Notice that the URIs represent business resources, while the HTTP methods indica
 
 ---
 
-# Common URI Design Mistakes
-
+## Common URI Design Mistakes
 Avoid these common mistakes:
 
 ❌ Using verbs in URIs
@@ -1293,8 +1245,7 @@ Prefer simpler resource structures where possible.
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - Resources are the core building blocks of REST APIs.
 - Every resource should have a unique and meaningful URI.
 - URIs should use nouns, plural names, lowercase letters, and consistent structures.
@@ -1305,8 +1256,7 @@ Prefer simpler resource structures where possible.
 
 ---
 
-# HTTP Methods in REST
-
+## HTTP Methods in REST
 HTTP methods define the action that should be performed on a resource.
 
 Unlike traditional RPC systems where the action is embedded in the URI, REST uses standardized HTTP methods while keeping the URI focused on the resource.
@@ -1325,8 +1275,7 @@ This separation is one of the core principles of REST.
 
 ---
 
-# Common HTTP Methods
-
+## Common HTTP Methods
 The most commonly used HTTP methods are:
 
 | Method | Purpose |
@@ -1345,8 +1294,7 @@ In REST APIs, the first five methods are used most frequently.
 
 ---
 
-# GET Method
-
+## GET Method
 The GET method retrieves information from the server.
 
 It should **never modify data**.
@@ -1408,8 +1356,7 @@ Example Response
 
 ---
 
-# Characteristics of GET
-
+## Characteristics of GET
 Properties:
 
 - Read-only
@@ -1427,8 +1374,7 @@ Suitable for:
 
 ---
 
-# POST Method
-
+## POST Method
 POST creates new resources.
 
 Example:
@@ -1494,8 +1440,7 @@ Typical status code:
 
 ---
 
-# Characteristics of POST
-
+## Characteristics of POST
 Properties:
 
 - Creates resources
@@ -1514,8 +1459,7 @@ Common Uses
 
 ---
 
-# PUT Method
-
+## PUT Method
 PUT completely replaces an existing resource.
 
 Example
@@ -1539,8 +1483,7 @@ If fields are omitted, they may be overwritten depending on implementation.
 
 ---
 
-# PUT Architecture
-
+## PUT Architecture
 ```
 Existing User
 
@@ -1569,8 +1512,7 @@ Example Response
 
 ---
 
-# PATCH Method
-
+## PATCH Method
 PATCH modifies only specific fields.
 
 Example
@@ -1593,8 +1535,7 @@ Everything else remains unchanged.
 
 ---
 
-# PATCH Architecture
-
+## PATCH Architecture
 ```
 Current User
 
@@ -1621,8 +1562,7 @@ PATCH is generally preferred for partial updates because it minimizes data trans
 
 ---
 
-# PUT vs PATCH
-
+## PUT vs PATCH
 | PUT | PATCH |
 |------|--------|
 | Full replacement | Partial update |
@@ -1653,8 +1593,7 @@ PATCH
 
 ---
 
-# DELETE Method
-
+## DELETE Method
 DELETE removes a resource.
 
 Example
@@ -1709,8 +1648,7 @@ with confirmation details.
 
 ---
 
-# HEAD Method
-
+## HEAD Method
 HEAD behaves similarly to GET but returns only response headers.
 
 Example
@@ -1736,8 +1674,7 @@ Uses
 
 ---
 
-# OPTIONS Method
-
+## OPTIONS Method
 OPTIONS returns information about supported operations.
 
 Example
@@ -1764,8 +1701,7 @@ This method is heavily used during **CORS preflight requests**.
 
 ---
 
-# TRACE Method
-
+## TRACE Method
 TRACE returns the received request for diagnostic purposes.
 
 ```
@@ -1776,8 +1712,7 @@ Most production servers disable TRACE because it can assist attackers during rec
 
 ---
 
-# CONNECT Method
-
+## CONNECT Method
 CONNECT establishes a network tunnel through an HTTP proxy.
 
 ```
@@ -1804,8 +1739,7 @@ This method is primarily used by proxy servers and is rarely implemented in REST
 
 ---
 
-# Safe Methods
-
+## Safe Methods
 A safe method does **not modify server data**.
 
 Safe Methods
@@ -1834,8 +1768,7 @@ Safe methods should only retrieve information.
 
 ---
 
-# Idempotent Methods
-
+## Idempotent Methods
 An idempotent method produces the same result even if executed multiple times.
 
 Example
@@ -1860,8 +1793,7 @@ Same Resource
 
 ---
 
-# Idempotency Table
-
+## Idempotency Table
 | Method | Safe | Idempotent |
 |----------|------|------------|
 | GET | Yes | Yes |
@@ -1876,8 +1808,7 @@ Same Resource
 
 ---
 
-# Why Idempotency Matters
-
+## Why Idempotency Matters
 Idempotency improves reliability.
 
 Example:
@@ -1918,8 +1849,7 @@ Many payment APIs use **Idempotency Keys** to safely retry requests.
 
 ---
 
-# CRUD Mapping
-
+## CRUD Mapping
 REST naturally maps HTTP methods to CRUD operations.
 
 | CRUD | HTTP Method |
@@ -1965,8 +1895,7 @@ DELETE
 
 ---
 
-# Choosing the Correct Method
-
+## Choosing the Correct Method
 | Requirement | Recommended Method |
 |--------------|-------------------|
 | Retrieve users | GET |
@@ -1981,8 +1910,7 @@ Selecting the correct HTTP method improves API consistency and interoperability.
 
 ---
 
-# Enterprise Example
-
+## Enterprise Example
 A banking application may expose the following endpoints:
 
 ```
@@ -2003,10 +1931,8 @@ Each endpoint combines a resource-oriented URI with the appropriate HTTP method 
 
 ---
 
-# Common Mistakes
-
-### Using GET for Updates
-
+## Common Mistakes
+#### Using GET for Updates
 Incorrect
 
 ```
@@ -2021,8 +1947,7 @@ PATCH /accounts/1001
 
 ---
 
-### Using POST for Every Operation
-
+#### Using POST for Every Operation
 Incorrect
 
 ```
@@ -2045,16 +1970,14 @@ PATCH /users/25
 
 ---
 
-### Ignoring Idempotency
-
+#### Ignoring Idempotency
 Using POST for operations that may be retried can lead to duplicate transactions if retries occur after network failures.
 
 Design APIs with retries and idempotency in mind, especially for financial and transactional systems.
 
 ---
 
-# Best Practices
-
+## Best Practices
 - Use HTTP methods according to their intended semantics.
 - Keep GET requests free of side effects.
 - Use POST only for resource creation or non-idempotent operations.
@@ -2068,8 +1991,7 @@ Design APIs with retries and idempotency in mind, especially for financial and t
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - HTTP methods define the action performed on a resource.
 - REST separates resource identification (URI) from the operation (HTTP method).
 - GET, POST, PUT, PATCH, and DELETE form the foundation of RESTful APIs.
@@ -2079,8 +2001,7 @@ Design APIs with retries and idempotency in mind, especially for financial and t
 
 ---
 
-# HTTP Request Structure
-
+## HTTP Request Structure
 Every interaction between a client and a REST API begins with an **HTTP request**.
 
 An HTTP request contains all the information required for the server to understand what the client wants to do.
@@ -2111,8 +2032,7 @@ The server processes the request and generates an HTTP response.
 
 ---
 
-# HTTP Request Lifecycle
-
+## HTTP Request Lifecycle
 ```
 Client
 
@@ -2173,8 +2093,7 @@ Every API request follows this general lifecycle.
 
 ---
 
-# Request Line
-
+## Request Line
 The first line of an HTTP request contains three components.
 
 ```
@@ -2203,8 +2122,7 @@ This indicates:
 
 ---
 
-# Request Headers
-
+## Request Headers
 Headers provide additional information about the request.
 
 Example
@@ -2227,8 +2145,7 @@ Instead, they describe how the request should be processed.
 
 ---
 
-# Common Request Headers
-
+## Common Request Headers
 | Header | Purpose |
 |----------|----------|
 | Host | Target server |
@@ -2246,8 +2163,7 @@ Many security mechanisms rely heavily on HTTP headers.
 
 ---
 
-# Authorization Header
-
+## Authorization Header
 The Authorization header carries authentication credentials.
 
 Example
@@ -2270,8 +2186,7 @@ Proper validation of this header is critical for API security.
 
 ---
 
-# Accept Header
-
+## Accept Header
 The client tells the server which response format it prefers.
 
 Example
@@ -2294,8 +2209,7 @@ The server attempts to return data in one of the requested formats.
 
 ---
 
-# Content-Type Header
-
+## Content-Type Header
 Content-Type specifies the format of the request body.
 
 Example
@@ -2322,8 +2236,7 @@ Servers validate the body according to this header.
 
 ---
 
-# User-Agent Header
-
+## User-Agent Header
 Identifies the client software.
 
 Example
@@ -2350,8 +2263,7 @@ Many organizations analyze User-Agent values during threat detection.
 
 ---
 
-# Request Body
-
+## Request Body
 The request body contains data sent to the server.
 
 Usually used with:
@@ -2373,8 +2285,7 @@ GET requests generally do not include a request body.
 
 ---
 
-# JSON Payload
-
+## JSON Payload
 JSON has become the standard payload format for REST APIs.
 
 Example
@@ -2398,8 +2309,7 @@ Advantages
 
 ---
 
-# XML Payload
-
+## XML Payload
 Some enterprise systems continue using XML.
 
 Example
@@ -2420,8 +2330,7 @@ XML is still common in:
 
 ---
 
-# Multipart Requests
-
+## Multipart Requests
 Used primarily for file uploads.
 
 Example
@@ -2453,8 +2362,7 @@ Common use cases
 
 ---
 
-# HTTP Response Structure
-
+## HTTP Response Structure
 After processing the request, the server returns a response.
 
 Architecture
@@ -2475,8 +2383,7 @@ Architecture
 
 ---
 
-# Status Line
-
+## Status Line
 Example
 
 ```
@@ -2493,8 +2400,7 @@ Components
 
 ---
 
-# Response Headers
-
+## Response Headers
 Examples
 
 ```
@@ -2511,8 +2417,7 @@ Response headers provide metadata about the returned data.
 
 ---
 
-# Response Body
-
+## Response Body
 Contains the requested resource or an error message.
 
 Example
@@ -2527,8 +2432,7 @@ Example
 
 ---
 
-# HTTP Status Codes
-
+## HTTP Status Codes
 HTTP status codes indicate the result of processing a request.
 
 Categories
@@ -2543,8 +2447,7 @@ Categories
 
 ---
 
-# 1xx Informational
-
+## 1xx Informational
 Examples
 
 ```
@@ -2559,8 +2462,7 @@ Rarely seen in everyday REST APIs.
 
 ---
 
-# 2xx Success
-
+## 2xx Success
 Common success codes
 
 | Status Code | Meaning |
@@ -2582,8 +2484,7 @@ POST /users
 
 ---
 
-# 3xx Redirection
-
+## 3xx Redirection
 Examples
 
 ```
@@ -2602,8 +2503,7 @@ REST APIs generally use redirects less frequently than web browsers.
 
 ---
 
-# 4xx Client Errors
-
+## 4xx Client Errors
 Common client-side errors
 
 | Code | Meaning |
@@ -2624,8 +2524,7 @@ These usually indicate issues with the client's request.
 
 ---
 
-# 5xx Server Errors
-
+## 5xx Server Errors
 Common server-side errors
 
 | Code | Meaning |
@@ -2640,8 +2539,7 @@ These errors indicate failures on the server or infrastructure.
 
 ---
 
-# Content Negotiation
-
+## Content Negotiation
 Content negotiation allows clients and servers to agree on the data format.
 
 Example
@@ -2676,8 +2574,7 @@ This mechanism improves interoperability between diverse clients.
 
 ---
 
-# Standard Error Response
-
+## Standard Error Response
 Well-designed APIs return structured error messages.
 
 Example
@@ -2701,8 +2598,7 @@ Benefits
 
 ---
 
-# Enterprise Request Example
-
+## Enterprise Request Example
 ```
 POST /payments HTTP/1.1
 
@@ -2741,10 +2637,8 @@ HTTP/1.1 201 Created
 
 ---
 
-# Common Mistakes
-
-### Missing Content-Type
-
+## Common Mistakes
+#### Missing Content-Type
 Incorrect
 
 ```
@@ -2761,8 +2655,7 @@ Content-Type: application/json
 
 ---
 
-### Incorrect Status Codes
-
+#### Incorrect Status Codes
 Returning
 
 ```
@@ -2787,8 +2680,7 @@ Examples
 
 ---
 
-### Returning Sensitive Errors
-
+#### Returning Sensitive Errors
 Avoid exposing:
 
 - Database names
@@ -2802,8 +2694,7 @@ Instead, return generic client-facing errors while logging detailed information 
 
 ---
 
-# REST Response Best Practices
-
+## REST Response Best Practices
 - Return appropriate HTTP status codes.
 - Use JSON consistently unless another format is required.
 - Keep responses concise.
@@ -2817,8 +2708,7 @@ Instead, return generic client-facing errors while logging detailed information 
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - HTTP requests consist of a request line, headers, and an optional body.
 - HTTP responses include a status line, headers, and an optional response body.
 - Headers carry metadata that influences request processing and response handling.
@@ -2829,8 +2719,7 @@ Instead, return generic client-facing errors while logging detailed information 
 
 ---
 
-# REST API Security
-
+## REST API Security
 REST APIs expose business functionality directly to clients over HTTP, making them one of the most targeted attack surfaces in modern applications.
 
 Unlike traditional web applications, REST APIs are consumed by:
@@ -2847,8 +2736,7 @@ Because APIs often expose sensitive operations such as authentication, payments,
 
 ---
 
-# Why REST APIs Are Targeted
-
+## Why REST APIs Are Targeted
 Attackers prefer APIs because they provide direct access to backend functionality.
 
 Typical reasons include:
@@ -2885,8 +2773,7 @@ Access Sensitive Data
 
 ---
 
-# Enterprise REST API Security Architecture
-
+## Enterprise REST API Security Architecture
 ```
                     Internet
                         │
@@ -2922,8 +2809,7 @@ Security should be implemented at every architectural layer.
 
 ---
 
-# HTTPS Everywhere
-
+## HTTPS Everywhere
 REST APIs should always use HTTPS.
 
 ```
@@ -2970,8 +2856,7 @@ Without HTTPS, attackers can intercept sensitive information such as:
 
 ---
 
-# Authentication
-
+## Authentication
 Authentication verifies the identity of the client.
 
 Common authentication mechanisms include:
@@ -3017,8 +2902,7 @@ Authentication should occur before any sensitive operation is performed.
 
 ---
 
-# Authorization
-
+## Authorization
 Authentication answers:
 
 ```
@@ -3059,8 +2943,7 @@ Authorization must be enforced on every request, not just during login.
 
 ---
 
-# Principle of Least Privilege
-
+## Principle of Least Privilege
 Users and services should receive only the permissions required to perform their tasks.
 
 Example
@@ -3093,8 +2976,7 @@ This principle reduces the impact of compromised accounts.
 
 ---
 
-# Input Validation
-
+## Input Validation
 Never trust client-supplied data.
 
 Validate:
@@ -3136,8 +3018,7 @@ Proper validation helps prevent:
 
 ---
 
-# Output Encoding
-
+## Output Encoding
 Data returned to clients should be safely encoded.
 
 Example
@@ -3164,8 +3045,7 @@ Output encoding reduces the risk of client-side script execution.
 
 ---
 
-# Rate Limiting
-
+## Rate Limiting
 Rate limiting prevents excessive API usage.
 
 Example
@@ -3193,8 +3073,7 @@ Benefits
 
 ---
 
-# API Keys
-
+## API Keys
 API keys identify applications rather than individual users.
 
 Example
@@ -3217,8 +3096,7 @@ API keys should not be considered a replacement for user authentication.
 
 ---
 
-# JSON Web Tokens (JWT)
-
+## JSON Web Tokens (JWT)
 JWTs are widely used in REST APIs.
 
 Typical workflow
@@ -3266,8 +3144,7 @@ JWTs should have:
 
 ---
 
-# Secure Password Storage
-
+## Secure Password Storage
 Passwords should never be stored in plain text.
 
 Correct approach
@@ -3302,8 +3179,7 @@ Avoid:
 
 ---
 
-# Secrets Management
-
+## Secrets Management
 Applications require secrets such as:
 
 - Database passwords
@@ -3328,8 +3204,7 @@ Examples
 
 ---
 
-# Logging and Monitoring
-
+## Logging and Monitoring
 Every REST API should generate security-relevant logs.
 
 Examples
@@ -3362,8 +3237,7 @@ These logs enable detection, troubleshooting, and incident response.
 
 ---
 
-# API Versioning
-
+## API Versioning
 Versioning allows APIs to evolve without breaking existing clients.
 
 Common approaches
@@ -3388,8 +3262,7 @@ Versioning should be planned from the beginning of API development.
 
 ---
 
-# Pagination
-
+## Pagination
 Returning millions of records in one response is inefficient.
 
 Incorrect
@@ -3419,8 +3292,7 @@ Benefits
 
 ---
 
-# Filtering and Sorting
-
+## Filtering and Sorting
 REST APIs should support efficient data retrieval.
 
 Filtering
@@ -3451,8 +3323,7 @@ These features reduce unnecessary network traffic.
 
 ---
 
-# Caching
-
+## Caching
 Caching improves performance.
 
 ```
@@ -3497,8 +3368,7 @@ Caching should never expose sensitive information.
 
 ---
 
-# HATEOAS
-
+## HATEOAS
 HATEOAS stands for:
 
 > Hypermedia As The Engine Of Application State
@@ -3528,8 +3398,7 @@ Although part of the REST maturity model, HATEOAS is not commonly implemented in
 
 ---
 
-# Enterprise REST Best Practices
-
+## Enterprise REST Best Practices
 Design
 
 - Use resource-oriented URIs
@@ -3563,8 +3432,7 @@ Operations
 
 ---
 
-# Enterprise Case Study
-
+## Enterprise Case Study
 A global e-commerce platform exposes over 600 REST APIs for customers, partners, warehouses, and mobile applications.
 
 Architecture
@@ -3635,8 +3503,7 @@ This layered approach enables secure handling of millions of API requests each d
 
 ---
 
-# Hands-on Lab 1 – Explore a Public REST API
-
+## Hands-on Lab 1 – Explore a Public REST API
 Objective
 
 Understand REST requests and responses.
@@ -3661,8 +3528,7 @@ Learning Outcomes
 
 ---
 
-# Hands-on Lab 2 – Test Different HTTP Methods
-
+## Hands-on Lab 2 – Test Different HTTP Methods
 Objective
 
 Understand CRUD operations.
@@ -3685,8 +3551,7 @@ Learning Outcomes
 
 ---
 
-# Hands-on Lab 3 – Analyze REST Security
-
+## Hands-on Lab 3 – Analyze REST Security
 Objective
 
 Identify common REST security controls.
@@ -3704,8 +3569,7 @@ Document your findings and identify areas for improvement.
 
 ---
 
-# Common REST API Design Mistakes
-
+## Common REST API Design Mistakes
 Avoid:
 
 - Using verbs in URIs
@@ -3723,10 +3587,8 @@ Avoid:
 
 ---
 
-# Troubleshooting
-
-## 401 Unauthorized
-
+## Troubleshooting
+### 401 Unauthorized
 Possible causes:
 
 - Missing token
@@ -3735,8 +3597,7 @@ Possible causes:
 
 ---
 
-## 403 Forbidden
-
+### 403 Forbidden
 Possible causes:
 
 - Insufficient permissions
@@ -3745,8 +3606,7 @@ Possible causes:
 
 ---
 
-## 404 Not Found
-
+### 404 Not Found
 Possible causes:
 
 - Incorrect URI
@@ -3755,8 +3615,7 @@ Possible causes:
 
 ---
 
-## 415 Unsupported Media Type
-
+### 415 Unsupported Media Type
 Possible causes:
 
 - Incorrect `Content-Type`
@@ -3764,8 +3623,7 @@ Possible causes:
 
 ---
 
-## 429 Too Many Requests
-
+### 429 Too Many Requests
 Possible causes:
 
 - Rate limit exceeded
@@ -3773,8 +3631,7 @@ Possible causes:
 
 ---
 
-## Slow API Responses
-
+### Slow API Responses
 Possible causes:
 
 - Missing caching
@@ -3785,10 +3642,8 @@ Possible causes:
 
 ---
 
-# Interview Questions
-
-## Fundamental
-
+## Interview Questions
+### Fundamental
 1. What is REST?
 2. What are REST constraints?
 3. What is a resource?
@@ -3802,8 +3657,7 @@ Possible causes:
 
 ---
 
-## Intermediate
-
+### Intermediate
 11. Explain REST API versioning strategies.
 12. How does pagination improve API performance?
 13. What is the purpose of rate limiting?
@@ -3817,8 +3671,7 @@ Possible causes:
 
 ---
 
-## Scenario-Based
-
+### Scenario-Based
 **Scenario 1**
 
 Your organization exposes a public REST API for mobile banking. Attackers begin sending thousands of login attempts every minute.
@@ -3846,8 +3699,7 @@ A new version of your REST API introduces breaking changes.
 
 ---
 
-# Chapter Summary
-
+## Chapter Summary
 In this chapter, we explored REST as the dominant architectural style for modern web APIs.
 
 We covered:
@@ -3873,8 +3725,7 @@ These concepts form the foundation for understanding and securing RESTful APIs i
 
 ---
 
-# Chapter Review
-
+## Chapter Review
 You should now be able to answer:
 
 - What makes an API RESTful?
@@ -3892,17 +3743,14 @@ If you can confidently explain these topics, you are ready to move on to SOAP AP
 
 ---
 
-# References
-
-## RFCs
-
+## References
+### RFCs
 - RFC 9110 – HTTP Semantics
 - RFC 9112 – HTTP/1.1
 - RFC 8259 – JSON Data Interchange Format
 - RFC 7232 – HTTP Conditional Requests
 
-## Security Standards
-
+### Security Standards
 - OWASP API Security Top 10
 - OWASP ASVS
 - NIST Cybersecurity Framework (CSF)
@@ -3910,8 +3758,7 @@ If you can confidently explain these topics, you are ready to move on to SOAP AP
 - NIST SP 800-204
 - NIST SP 800-207 (Zero Trust)
 
-## Further Reading
-
+### Further Reading
 - REST Architectural Style (Roy Fielding Dissertation)
 - OpenAPI Specification
 - JSON:API Specification
@@ -3919,8 +3766,7 @@ If you can confidently explain these topics, you are ready to move on to SOAP AP
 
 ---
 
-# What's Next?
-
+## What's Next?
 ➡️ **Chapter 04 – SOAP API**
 
 In the next chapter, we will explore:

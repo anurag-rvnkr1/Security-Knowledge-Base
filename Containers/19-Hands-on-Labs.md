@@ -1,6 +1,6 @@
 # Chapter 19 – Hands-on Labs
 
-# Overview
+## Overview
 
 Theory alone is not enough to become proficient with containers. The best way to understand Docker and container security is by building, breaking, securing, troubleshooting, and recovering real applications.
 
@@ -19,9 +19,9 @@ Each lab builds upon previous concepts, progressing from beginner to advanced to
 
 ---
 
-# Lab Environment
+## Lab Environment
 
-## Recommended Host
+### Recommended Host
 
 | Component | Recommendation |
 |-----------|----------------|
@@ -35,7 +35,7 @@ Each lab builds upon previous concepts, progressing from beginner to advanced to
 
 ---
 
-# Skills Covered
+## Skills Covered
 
 After completing these labs, you should be comfortable with:
 
@@ -57,7 +57,7 @@ After completing these labs, you should be comfortable with:
 
 ---
 
-# Lab Structure
+## Lab Structure
 
 Each lab follows the same structure.
 
@@ -95,15 +95,15 @@ Challenge Exercise
 
 ---
 
-# Lab 1 – Your First Container
+## Lab 1 – Your First Container
 
-## Objective
+### Objective
 
 Run your first Docker container.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Docker Engine
@@ -123,7 +123,7 @@ Browser
 
 ---
 
-## Steps
+### Steps
 
 Pull the image:
 
@@ -151,13 +151,13 @@ http://localhost:8080
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 You should see the default Nginx welcome page.
 
 ---
 
-## Verification
+### Verification
 
 ```bash
 docker logs web
@@ -165,7 +165,7 @@ docker logs web
 
 ---
 
-## Cleanup
+### Cleanup
 
 ```bash
 docker stop web
@@ -175,21 +175,21 @@ docker rm web
 
 ---
 
-## Challenge
+### Challenge
 
 Run two Nginx containers simultaneously using different host ports.
 
 ---
 
-# Lab 2 – Build Your First Docker Image
+## Lab 2 – Build Your First Docker Image
 
-## Objective
+### Objective
 
 Create and build a custom Docker image.
 
 ---
 
-## Project Structure
+### Project Structure
 
 ```
 project/
@@ -203,7 +203,7 @@ project/
 
 ---
 
-## Dockerfile
+### Dockerfile
 
 ```dockerfile
 FROM nginx:alpine
@@ -213,7 +213,7 @@ COPY index.html /usr/share/nginx/html/index.html
 
 ---
 
-## Build
+### Build
 
 ```bash
 docker build -t mywebsite:v1 .
@@ -221,7 +221,7 @@ docker build -t mywebsite:v1 .
 
 ---
 
-## Run
+### Run
 
 ```bash
 docker run -d -p 8080:80 mywebsite:v1
@@ -229,7 +229,7 @@ docker run -d -p 8080:80 mywebsite:v1
 
 ---
 
-## Verify
+### Verify
 
 Visit:
 
@@ -239,7 +239,7 @@ http://localhost:8080
 
 ---
 
-## Cleanup
+### Cleanup
 
 ```bash
 docker stop <container_id>
@@ -249,21 +249,21 @@ docker rm <container_id>
 
 ---
 
-## Challenge
+### Challenge
 
 Add custom CSS and images to the website.
 
 ---
 
-# Lab 3 – Docker Volumes
+## Lab 3 – Docker Volumes
 
-## Objective
+### Objective
 
 Understand persistent storage.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Container
@@ -279,7 +279,7 @@ Persistent Data
 
 ---
 
-## Steps
+### Steps
 
 Create a volume:
 
@@ -313,13 +313,13 @@ cat /data/test.txt
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 The file should still exist.
 
 ---
 
-## Cleanup
+### Cleanup
 
 ```bash
 docker volume rm mydata
@@ -327,21 +327,21 @@ docker volume rm mydata
 
 ---
 
-## Challenge
+### Challenge
 
 Create multiple containers sharing the same volume.
 
 ---
 
-# Lab 4 – Docker Networking
+## Lab 4 – Docker Networking
 
-## Objective
+### Objective
 
 Connect multiple containers.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Bridge Network
@@ -357,7 +357,7 @@ Database Container
 
 ---
 
-## Steps
+### Steps
 
 Create network:
 
@@ -387,13 +387,13 @@ ping web
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 Containers communicate using container names.
 
 ---
 
-## Cleanup
+### Cleanup
 
 ```bash
 docker network rm labnet
@@ -401,21 +401,21 @@ docker network rm labnet
 
 ---
 
-## Challenge
+### Challenge
 
 Add a third container.
 
 ---
 
-# Lab 5 – Docker Compose
+## Lab 5 – Docker Compose
 
-## Objective
+### Objective
 
 Deploy a multi-container application.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Docker Compose
@@ -431,7 +431,7 @@ Database
 
 ---
 
-## docker-compose.yml
+### docker-compose.yml
 
 ```yaml
 services:
@@ -445,7 +445,7 @@ services:
 
 ---
 
-## Start
+### Start
 
 ```bash
 docker compose up -d
@@ -453,7 +453,7 @@ docker compose up -d
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 docker compose ps
@@ -461,7 +461,7 @@ docker compose ps
 
 ---
 
-## Cleanup
+### Cleanup
 
 ```bash
 docker compose down
@@ -469,15 +469,15 @@ docker compose down
 
 ---
 
-## Challenge
+### Challenge
 
 Add Redis to the stack.
 
 ---
 
-# Lab 6 – Image Versioning
+## Lab 6 – Image Versioning
 
-## Objective
+### Objective
 
 Understand image tags.
 
@@ -505,21 +505,21 @@ docker images
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 Two different versions should be available.
 
 ---
 
-## Challenge
+### Challenge
 
 Roll back from v2 to v1.
 
 ---
 
-# Lab 7 – Container Logs
+## Lab 7 – Container Logs
 
-## Objective
+### Objective
 
 View application logs.
 
@@ -539,15 +539,15 @@ docker logs -f container_name
 
 ---
 
-## Challenge
+### Challenge
 
 Generate application activity and observe log output in real time.
 
 ---
 
-# Lab 8 – Container Monitoring
+## Lab 8 – Container Monitoring
 
-## Objective
+### Objective
 
 Monitor resource usage.
 
@@ -568,15 +568,15 @@ Observe:
 
 ---
 
-## Challenge
+### Challenge
 
 Run multiple containers and compare their resource consumption.
 
 ---
 
-# Lab 9 – Container Cleanup
+## Lab 9 – Container Cleanup
 
-## Objective
+### Objective
 
 Remove unused resources.
 
@@ -598,15 +598,15 @@ docker system prune
 
 ---
 
-## Challenge
+### Challenge
 
 Determine how much disk space is reclaimed after cleanup.
 
 ---
 
-# Lab 10 – Container Security Basics
+## Lab 10 – Container Security Basics
 
-## Objective
+### Objective
 
 Build a more secure image.
 
@@ -630,7 +630,7 @@ CMD ["python","app.py"]
 
 ---
 
-## Verify
+### Verify
 
 Inspect:
 
@@ -642,13 +642,13 @@ Confirm the image is configured to run as the non-root user.
 
 ---
 
-## Challenge
+### Challenge
 
 Compare this image with one that runs as root and identify the security differences.
 
 ---
 
-# Summary
+## Summary
 
 After completing these ten foundational labs, you will have practical experience with:
 
@@ -666,21 +666,21 @@ After completing these ten foundational labs, you will have practical experience
 ---
 
 
-# Intermediate Hands-on Labs
+## Intermediate Hands-on Labs
 
 These labs move beyond basic Docker usage and focus on real-world engineering practices. They introduce image optimization, security scanning, networking, registries, monitoring, troubleshooting, and production-ready workflows.
 
 ---
 
-# Lab 11 – Multi-Stage Docker Build
+## Lab 11 – Multi-Stage Docker Build
 
-## Objective
+### Objective
 
 Reduce image size using multi-stage builds.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Source Code
@@ -704,7 +704,7 @@ Small Production Image
 
 ---
 
-## Example Dockerfile
+### Example Dockerfile
 
 ```dockerfile
 # Build Stage
@@ -728,7 +728,7 @@ CMD ["./app"]
 
 ---
 
-## Build
+### Build
 
 ```bash
 docker build -t go-app:v1 .
@@ -736,7 +736,7 @@ docker build -t go-app:v1 .
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 docker images
@@ -746,7 +746,7 @@ Compare the image size with a single-stage build.
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 - Smaller image
 - Faster deployment
@@ -754,21 +754,21 @@ Compare the image size with a single-stage build.
 
 ---
 
-## Challenge
+### Challenge
 
 Create a multi-stage Dockerfile for a Node.js or Python application.
 
 ---
 
-# Lab 12 – Docker Image Scanning
+## Lab 12 – Docker Image Scanning
 
-## Objective
+### Objective
 
 Scan container images for vulnerabilities.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Docker Image
@@ -788,7 +788,7 @@ Remediation
 
 ---
 
-## Example (Docker Scout)
+### Example (Docker Scout)
 
 ```bash
 docker scout quickview nginx:latest
@@ -796,7 +796,7 @@ docker scout quickview nginx:latest
 
 ---
 
-## Example (Trivy)
+### Example (Trivy)
 
 ```bash
 trivy image nginx:latest
@@ -804,7 +804,7 @@ trivy image nginx:latest
 
 ---
 
-## Verify
+### Verify
 
 Review:
 
@@ -815,21 +815,21 @@ Review:
 
 ---
 
-## Challenge
+### Challenge
 
 Compare scan results for two different base images.
 
 ---
 
-# Lab 13 – Custom Docker Network
+## Lab 13 – Custom Docker Network
 
-## Objective
+### Objective
 
 Create an isolated application network.
 
 ---
 
-## Steps
+### Steps
 
 Create network:
 
@@ -857,27 +857,27 @@ Verify communication between containers using appropriate networking tools.
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 Containers communicate only within the custom network unless additional networking is configured.
 
 ---
 
-## Challenge
+### Challenge
 
 Add three containers to the same network and verify connectivity.
 
 ---
 
-# Lab 14 – Bind Mounts
+## Lab 14 – Bind Mounts
 
-## Objective
+### Objective
 
 Share files between the host and a container.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Host Directory
@@ -893,7 +893,7 @@ Container
 
 ---
 
-## Example
+### Example
 
 ```bash
 docker run -it \
@@ -911,21 +911,21 @@ Verify that the file appears in the host directory.
 
 ---
 
-## Challenge
+### Challenge
 
 Modify the file from the host and verify the changes inside the container.
 
 ---
 
-# Lab 15 – Environment Variables
+## Lab 15 – Environment Variables
 
-## Objective
+### Objective
 
 Pass configuration securely to a container.
 
 ---
 
-## Run
+### Run
 
 ```bash
 docker run \
@@ -936,7 +936,7 @@ nginx
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 docker inspect container_name
@@ -946,21 +946,21 @@ Review configured environment variables.
 
 ---
 
-## Challenge
+### Challenge
 
 Use an `.env` file with Docker Compose.
 
 ---
 
-# Lab 16 – Restart Policies
+## Lab 16 – Restart Policies
 
-## Objective
+### Objective
 
 Configure automatic restart behavior.
 
 ---
 
-## Run
+### Run
 
 ```bash
 docker run \
@@ -977,7 +977,7 @@ Other restart policies include:
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 docker inspect container_name
@@ -987,21 +987,21 @@ Review the restart policy.
 
 ---
 
-## Challenge
+### Challenge
 
 Compare different restart policies in a test environment.
 
 ---
 
-# Lab 17 – Health Checks
+## Lab 17 – Health Checks
 
-## Objective
+### Objective
 
 Monitor container health.
 
 ---
 
-## Example Dockerfile
+### Example Dockerfile
 
 ```dockerfile
 HEALTHCHECK \
@@ -1010,7 +1010,7 @@ CMD curl --fail http://localhost/ || exit 1
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 docker ps
@@ -1026,7 +1026,7 @@ Review health status.
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 The container reports a health status such as:
 
@@ -1036,21 +1036,21 @@ The container reports a health status such as:
 
 ---
 
-## Challenge
+### Challenge
 
 Create a health check for your own application.
 
 ---
 
-# Lab 18 – Image Versioning
+## Lab 18 – Image Versioning
 
-## Objective
+### Objective
 
 Practice image tagging.
 
 ---
 
-## Build
+### Build
 
 ```bash
 docker build -t myapp:v1 .
@@ -1070,7 +1070,7 @@ docker tag myapp:v2 myapp:latest
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 docker images
@@ -1078,21 +1078,21 @@ docker images
 
 ---
 
-## Challenge
+### Challenge
 
 Deploy different versions simultaneously on different ports.
 
 ---
 
-# Lab 19 – Docker Registry
+## Lab 19 – Docker Registry
 
-## Objective
+### Objective
 
 Push an image to a registry.
 
 ---
 
-## Tag
+### Tag
 
 ```bash
 docker tag myapp:v1 username/myapp:v1
@@ -1100,7 +1100,7 @@ docker tag myapp:v1 username/myapp:v1
 
 ---
 
-## Login
+### Login
 
 ```bash
 docker login
@@ -1108,7 +1108,7 @@ docker login
 
 ---
 
-## Push
+### Push
 
 ```bash
 docker push username/myapp:v1
@@ -1116,27 +1116,27 @@ docker push username/myapp:v1
 
 ---
 
-## Verify
+### Verify
 
 Pull the image from another machine or environment if available.
 
 ---
 
-## Challenge
+### Challenge
 
 Create multiple version tags and test pulling specific versions.
 
 ---
 
-# Lab 20 – Docker Compose Application
+## Lab 20 – Docker Compose Application
 
-## Objective
+### Objective
 
 Deploy a three-tier application.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Browser
@@ -1156,7 +1156,7 @@ Database
 
 ---
 
-## Example Compose File
+### Example Compose File
 
 ```yaml
 services:
@@ -1173,7 +1173,7 @@ services:
 
 ---
 
-## Start
+### Start
 
 ```bash
 docker compose up -d
@@ -1181,7 +1181,7 @@ docker compose up -d
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 docker compose ps
@@ -1189,21 +1189,21 @@ docker compose ps
 
 ---
 
-## Challenge
+### Challenge
 
 Add Redis to the application stack.
 
 ---
 
-# Lab 21 – Log Analysis
+## Lab 21 – Log Analysis
 
-## Objective
+### Objective
 
 Investigate application logs.
 
 ---
 
-## Commands
+### Commands
 
 ```bash
 docker logs container_name
@@ -1213,7 +1213,7 @@ docker logs -f container_name
 
 ---
 
-## Tasks
+### Tasks
 
 - Generate requests
 - Observe log entries
@@ -1222,21 +1222,21 @@ docker logs -f container_name
 
 ---
 
-## Challenge
+### Challenge
 
 Simulate an application error and locate it in the logs.
 
 ---
 
-# Lab 22 – Container Monitoring
+## Lab 22 – Container Monitoring
 
-## Objective
+### Objective
 
 Monitor multiple running containers.
 
 ---
 
-## Commands
+### Commands
 
 ```bash
 docker stats
@@ -1251,21 +1251,21 @@ Observe:
 
 ---
 
-## Challenge
+### Challenge
 
 Identify the container consuming the most resources.
 
 ---
 
-# Lab 23 – Resource Limits
+## Lab 23 – Resource Limits
 
-## Objective
+### Objective
 
 Run containers with CPU and memory limits.
 
 ---
 
-## Example
+### Example
 
 ```bash
 docker run \
@@ -1276,7 +1276,7 @@ nginx
 
 ---
 
-## Verify
+### Verify
 
 ```bash
 docker inspect container_name
@@ -1286,21 +1286,21 @@ Review configured resource limits.
 
 ---
 
-## Challenge
+### Challenge
 
 Run two containers with different resource limits and compare their behavior under load.
 
 ---
 
-# Lab 24 – Image Cleanup
+## Lab 24 – Image Cleanup
 
-## Objective
+### Objective
 
 Manage Docker storage efficiently.
 
 ---
 
-## Commands
+### Commands
 
 List disk usage:
 
@@ -1316,27 +1316,27 @@ docker system prune
 
 ---
 
-## Verify
+### Verify
 
 Compare disk usage before and after cleanup.
 
 ---
 
-## Challenge
+### Challenge
 
 Remove only unused images while preserving active containers.
 
 ---
 
-# Lab 25 – Secure Dockerfile Review
+## Lab 25 – Secure Dockerfile Review
 
-## Objective
+### Objective
 
 Review an insecure Dockerfile and improve it.
 
 ---
 
-### Insecure Example
+#### Insecure Example
 
 ```dockerfile
 FROM ubuntu
@@ -1350,7 +1350,7 @@ CMD ["python","app.py"]
 
 ---
 
-### Improvements
+#### Improvements
 
 - Use a minimal base image.
 - Create and use a non-root user.
@@ -1360,13 +1360,13 @@ CMD ["python","app.py"]
 
 ---
 
-## Challenge
+### Challenge
 
 Rewrite the Dockerfile using security best practices.
 
 ---
 
-# Skills Gained
+## Skills Gained
 
 After completing Labs **11–25**, you will have practical experience with:
 
@@ -1388,7 +1388,7 @@ After completing Labs **11–25**, you will have practical experience with:
 
 ---
 
-# Advanced Security Hands-on Labs
+## Advanced Security Hands-on Labs
 
 These labs simulate enterprise container security practices used in production environments. They focus on vulnerability management, runtime security, incident response, monitoring, secure supply chains, and forensic investigations.
 
@@ -1396,15 +1396,15 @@ These labs simulate enterprise container security practices used in production e
 
 ---
 
-# Lab 26 – Vulnerability Scanning Pipeline
+## Lab 26 – Vulnerability Scanning Pipeline
 
-## Objective
+### Objective
 
 Integrate container image scanning into the build process.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Source Code
@@ -1432,7 +1432,7 @@ Registry
 
 ---
 
-## Steps
+### Steps
 
 Build the image:
 
@@ -1460,27 +1460,27 @@ Review:
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 Only images meeting your organization's security policy proceed to deployment.
 
 ---
 
-## Challenge
+### Challenge
 
 Compare scan results before and after updating the base image.
 
 ---
 
-# Lab 27 – Runtime Monitoring
+## Lab 27 – Runtime Monitoring
 
-## Objective
+### Objective
 
 Observe container activity during execution.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Application
@@ -1500,7 +1500,7 @@ Monitoring Dashboard
 
 ---
 
-## Steps
+### Steps
 
 Start several containers.
 
@@ -1524,33 +1524,33 @@ docker events
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 Understand how resource usage changes during application activity.
 
 ---
 
-## Challenge
+### Challenge
 
 Generate workload and observe CPU and memory trends.
 
 ---
 
-# Lab 28 – Log Investigation
+## Lab 28 – Log Investigation
 
-## Objective
+### Objective
 
 Analyze logs to identify application problems.
 
 ---
 
-## Scenario
+### Scenario
 
 Users report intermittent failures.
 
 ---
 
-## Investigation
+### Investigation
 
 Review logs:
 
@@ -1573,27 +1573,27 @@ Look for:
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 Identify the probable root cause using log evidence.
 
 ---
 
-## Challenge
+### Challenge
 
 Modify the application to generate structured JSON logs and compare them with plain text logs.
 
 ---
 
-# Lab 29 – Secure Secret Handling
+## Lab 29 – Secure Secret Handling
 
-## Objective
+### Objective
 
 Avoid embedding secrets inside images.
 
 ---
 
-## Poor Practice
+### Poor Practice
 
 ```dockerfile
 ENV API_KEY=my-secret
@@ -1601,7 +1601,7 @@ ENV API_KEY=my-secret
 
 ---
 
-## Better Practice
+### Better Practice
 
 Provide configuration at runtime:
 
@@ -1615,27 +1615,27 @@ For production environments, use an approved secret management solution provided
 
 ---
 
-## Verify
+### Verify
 
 Ensure the Dockerfile and source repository do not contain secrets.
 
 ---
 
-## Challenge
+### Challenge
 
 Replace hardcoded configuration with runtime configuration.
 
 ---
 
-# Lab 30 – Non-Root Containers
+## Lab 30 – Non-Root Containers
 
-## Objective
+### Objective
 
 Run applications using a dedicated non-root user.
 
 ---
 
-## Dockerfile
+### Dockerfile
 
 ```dockerfile
 FROM python:3.12-slim
@@ -1653,7 +1653,7 @@ CMD ["python","app.py"]
 
 ---
 
-## Verify
+### Verify
 
 Inspect the image:
 
@@ -1665,21 +1665,21 @@ Confirm the configured user.
 
 ---
 
-## Challenge
+### Challenge
 
 Compare behavior between root and non-root containers.
 
 ---
 
-# Lab 31 – Incident Response Exercise
+## Lab 31 – Incident Response Exercise
 
-## Objective
+### Objective
 
 Practice a structured incident response workflow.
 
 ---
 
-## Scenario
+### Scenario
 
 Monitoring reports:
 
@@ -1697,7 +1697,7 @@ Application Errors
 
 ---
 
-## Investigation Workflow
+### Investigation Workflow
 
 ```
 Validate Alert
@@ -1737,7 +1737,7 @@ docker stats
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 Document:
 
@@ -1748,21 +1748,21 @@ Document:
 
 ---
 
-## Challenge
+### Challenge
 
 Create an incident report using the evidence collected.
 
 ---
 
-# Lab 32 – Container Forensics
+## Lab 32 – Container Forensics
 
-## Objective
+### Objective
 
 Collect forensic artifacts after a simulated incident.
 
 ---
 
-## Evidence Sources
+### Evidence Sources
 
 ```
 Container Logs
@@ -1782,7 +1782,7 @@ Running Processes
 
 ---
 
-## Commands
+### Commands
 
 ```bash
 docker ps -a
@@ -1798,7 +1798,7 @@ docker top container_name
 
 ---
 
-## Tasks
+### Tasks
 
 Collect:
 
@@ -1810,21 +1810,21 @@ Collect:
 
 ---
 
-## Challenge
+### Challenge
 
 Construct a simple timeline using timestamps from multiple evidence sources.
 
 ---
 
-# Lab 33 – Resource Limit Testing
+## Lab 33 – Resource Limit Testing
 
-## Objective
+### Objective
 
 Understand the effect of CPU and memory limits.
 
 ---
 
-## Run
+### Run
 
 ```bash
 docker run \
@@ -1835,7 +1835,7 @@ nginx
 
 ---
 
-## Observe
+### Observe
 
 ```bash
 docker stats
@@ -1843,27 +1843,27 @@ docker stats
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 Understand how configured limits affect runtime behavior.
 
 ---
 
-## Challenge
+### Challenge
 
 Compare two containers with different resource limits.
 
 ---
 
-# Lab 34 – Image Optimization
+## Lab 34 – Image Optimization
 
-## Objective
+### Objective
 
 Reduce image size.
 
 ---
 
-## Compare
+### Compare
 
 Single-stage build
 
@@ -1877,7 +1877,7 @@ Minimal base image
 
 ---
 
-## Commands
+### Commands
 
 ```bash
 docker images
@@ -1889,27 +1889,27 @@ docker history image_name
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 Smaller production-ready image.
 
 ---
 
-## Challenge
+### Challenge
 
 Reduce image size by removing unnecessary packages and artifacts.
 
 ---
 
-# Lab 35 – Production Readiness Review
+## Lab 35 – Production Readiness Review
 
-## Objective
+### Objective
 
 Review a containerized application before production deployment.
 
 ---
 
-## Checklist
+### Checklist
 
 - Image scanned
 - Version tag assigned
@@ -1924,21 +1924,21 @@ Review a containerized application before production deployment.
 
 ---
 
-## Expected Outcome
+### Expected Outcome
 
 Produce a deployment readiness report identifying strengths and areas for improvement.
 
 ---
 
-# Mini Project 1 – Secure Web Application
+## Mini Project 1 – Secure Web Application
 
-## Objective
+### Objective
 
 Containerize a web application following best practices.
 
 ---
 
-## Requirements
+### Requirements
 
 - Dockerfile
 - Multi-stage build (if applicable)
@@ -1951,7 +1951,7 @@ Containerize a web application following best practices.
 
 ---
 
-## Deliverables
+### Deliverables
 
 ```
 Source Code
@@ -1975,15 +1975,15 @@ Deployment Notes
 
 ---
 
-# Mini Project 2 – Multi-Container Stack
+## Mini Project 2 – Multi-Container Stack
 
-## Objective
+### Objective
 
 Deploy a complete application using Docker Compose.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 Browser
@@ -2007,7 +2007,7 @@ Redis
 
 ---
 
-## Requirements
+### Requirements
 
 - Docker Compose
 - Named volumes
@@ -2017,21 +2017,21 @@ Redis
 
 ---
 
-## Challenge
+### Challenge
 
 Add monitoring and centralized logging to the stack.
 
 ---
 
-# Mini Project 3 – Secure CI/CD Workflow (Conceptual)
+## Mini Project 3 – Secure CI/CD Workflow (Conceptual)
 
-## Objective
+### Objective
 
 Design a secure container delivery pipeline.
 
 ---
 
-## Pipeline
+### Pipeline
 
 ```
 Git Commit
@@ -2067,7 +2067,7 @@ Runtime Monitoring
 
 ---
 
-## Discussion Points
+### Discussion Points
 
 Explain:
 
@@ -2078,7 +2078,7 @@ Explain:
 
 ---
 
-# Skills Gained
+## Skills Gained
 
 After completing Labs **26–35**, you will be able to:
 
@@ -2095,7 +2095,7 @@ After completing Labs **26–35**, you will be able to:
 
 ---
 
-# Final Capstone Challenge
+## Final Capstone Challenge
 
 Build a production-style containerized application that includes:
 

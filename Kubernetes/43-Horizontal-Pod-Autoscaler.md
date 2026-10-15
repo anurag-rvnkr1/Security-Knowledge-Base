@@ -57,7 +57,7 @@ More or Fewer Pods
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -87,7 +87,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Horizontal Scaling?
+## What Is Horizontal Scaling?
 
 Horizontal scaling means:
 
@@ -141,9 +141,9 @@ Scale In
 
 ---
 
-# Horizontal vs Vertical Scaling
+## Horizontal vs Vertical Scaling
 
-## Horizontal Scaling
+### Horizontal Scaling
 
 ```text
 More Pods
@@ -159,7 +159,7 @@ Example:
 
 ---
 
-## Vertical Scaling
+### Vertical Scaling
 
 ```text
 More CPU / Memory per Pod
@@ -187,7 +187,7 @@ VPA
 
 ---
 
-# HPA Architecture
+## HPA Architecture
 
 A simplified architecture:
 
@@ -221,7 +221,7 @@ A simplified architecture:
 
 ---
 
-# HPA and Deployment
+## HPA and Deployment
 
 HPA normally targets a scalable workload such as:
 
@@ -260,7 +260,7 @@ based on the configured metrics and policies.
 
 ---
 
-# Basic HPA Example
+## Basic HPA Example
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -312,7 +312,7 @@ Target CPU utilization = 70%
 
 ---
 
-# HPA Fields
+## HPA Fields
 
 Important fields include:
 
@@ -340,7 +340,7 @@ behavior
 
 ---
 
-# scaleTargetRef
+## scaleTargetRef
 
 Example:
 
@@ -362,7 +362,7 @@ Which workload should be scaled?
 
 ---
 
-# minReplicas
+## minReplicas
 
 Example:
 
@@ -378,7 +378,7 @@ The HPA should not normally scale the target below:
 
 ---
 
-# maxReplicas
+## maxReplicas
 
 Example:
 
@@ -394,7 +394,7 @@ The HPA should not normally scale the target above:
 
 ---
 
-# Target Utilization
+## Target Utilization
 
 Example:
 
@@ -414,7 +414,7 @@ This is why CPU requests are important for HPA.
 
 ---
 
-# Why CPU Requests Matter
+## Why CPU Requests Matter
 
 Suppose:
 
@@ -445,7 +445,7 @@ the workload is below the target.
 
 ---
 
-# Another Example
+## Another Example
 
 Request:
 
@@ -476,7 +476,7 @@ the HPA may scale out.
 
 ---
 
-# HPA Scaling Formula
+## HPA Scaling Formula
 
 Conceptually, for utilization-based scaling:
 
@@ -515,7 +515,7 @@ Actual HPA behavior also incorporates tolerance, missing metrics, stabilization,
 
 ---
 
-# CPU-Based HPA
+## CPU-Based HPA
 
 Example:
 
@@ -557,7 +557,7 @@ Deployment creates Pods
 
 ---
 
-# Memory-Based HPA
+## Memory-Based HPA
 
 HPA can also use memory utilization.
 
@@ -583,7 +583,7 @@ The HPA then uses memory utilization relative to memory requests.
 
 ---
 
-# CPU + Memory
+## CPU + Memory
 
 HPA can use multiple metrics.
 
@@ -639,7 +639,7 @@ HPA chooses:
 
 ---
 
-# HPA Requires Metrics
+## HPA Requires Metrics
 
 HPA needs current metrics.
 
@@ -669,7 +669,7 @@ HPA
 
 ---
 
-# Check Metrics Server
+## Check Metrics Server
 
 Run:
 
@@ -693,7 +693,7 @@ If `kubectl top` does not work, resource-based HPA may also fail to obtain the r
 
 ---
 
-# Check HPA
+## Check HPA
 
 ```bash
 kubectl get hpa
@@ -708,7 +708,7 @@ web-hpa   Deployment/web     45%/70%   2         10        3
 
 ---
 
-# Describe HPA
+## Describe HPA
 
 ```bash
 kubectl describe hpa web-hpa
@@ -726,7 +726,7 @@ Desired Replicas
 
 ---
 
-# HPA Conditions
+## HPA Conditions
 
 HPA status can indicate conditions such as:
 
@@ -740,7 +740,7 @@ These help diagnose problems.
 
 ---
 
-# ScalingActive
+## ScalingActive
 
 A healthy HPA commonly reports that scaling is active.
 
@@ -754,7 +754,7 @@ Workload configuration
 
 ---
 
-# ScalingLimited
+## ScalingLimited
 
 This condition can indicate that HPA wants a replica count outside the configured boundaries.
 
@@ -774,7 +774,7 @@ The HPA is limited to:
 
 ---
 
-# HPA and Deployments
+## HPA and Deployments
 
 Suppose:
 
@@ -798,7 +798,7 @@ replicas = HPA-controlled value
 
 ---
 
-# Important Operational Rule
+## Important Operational Rule
 
 Do not continuously modify:
 
@@ -812,7 +812,7 @@ HPA may overwrite that manual replica setting according to its desired state.
 
 ---
 
-# Scale Up
+## Scale Up
 
 Suppose:
 
@@ -842,7 +842,7 @@ depending on the workload, metrics, and configured behavior.
 
 ---
 
-# Scale Down
+## Scale Down
 
 Suppose:
 
@@ -874,7 +874,7 @@ Again, actual timing and rate are controlled by HPA behavior.
 
 ---
 
-# Why Scale Down Is Usually More Conservative
+## Why Scale Down Is Usually More Conservative
 
 Rapid scale-up can be useful during traffic spikes.
 
@@ -894,7 +894,7 @@ Therefore Kubernetes supports scaling behavior controls.
 
 ---
 
-# HPA Behavior
+## HPA Behavior
 
 The `behavior` field can configure:
 
@@ -930,7 +930,7 @@ behavior:
 
 ---
 
-# Stabilization Window
+## Stabilization Window
 
 A stabilization window prevents rapid oscillation.
 
@@ -964,7 +964,7 @@ Scale down
 
 ---
 
-# Why Stabilization Matters
+## Why Stabilization Matters
 
 Without stabilization:
 
@@ -994,7 +994,7 @@ Scaling Thrashing
 
 ---
 
-# Scale-Up Policies
+## Scale-Up Policies
 
 HPA can control how quickly it scales up.
 
@@ -1016,7 +1016,7 @@ This allows scaling by a percentage within the configured period.
 
 ---
 
-# Scale-Up Pods Policy
+## Scale-Up Pods Policy
 
 You can also use:
 
@@ -1032,7 +1032,7 @@ This controls the number of Pods that can be added according to the policy.
 
 ---
 
-# Multiple Scaling Policies
+## Multiple Scaling Policies
 
 Example:
 
@@ -1060,7 +1060,7 @@ The policy selection determines how multiple policies are combined.
 
 ---
 
-# Custom Metrics
+## Custom Metrics
 
 HPA is not limited to CPU and memory.
 
@@ -1099,7 +1099,7 @@ HPA
 
 ---
 
-# External Metrics
+## External Metrics
 
 HPA can also use:
 
@@ -1119,7 +1119,7 @@ External service demand
 
 ---
 
-# HPA Metric Types
+## HPA Metric Types
 
 Common HPA metric types include:
 
@@ -1143,7 +1143,7 @@ Custom metrics can be exposed through Kubernetes metrics APIs.
 
 ---
 
-# Resource Metric
+## Resource Metric
 
 Example:
 
@@ -1160,7 +1160,7 @@ Memory
 
 ---
 
-# Pods Metric
+## Pods Metric
 
 The `Pods` metric can scale based on an application-specific metric associated with Pods.
 
@@ -1180,7 +1180,7 @@ Replica Count
 
 ---
 
-# Object Metric
+## Object Metric
 
 An Object metric can use a metric associated with another Kubernetes object.
 
@@ -1200,7 +1200,7 @@ HPA
 
 ---
 
-# External Metric
+## External Metric
 
 Example concept:
 
@@ -1222,7 +1222,7 @@ Increase replicas
 
 ---
 
-# HPA and Application Load
+## HPA and Application Load
 
 CPU is not always the best scaling metric.
 
@@ -1252,7 +1252,7 @@ Choose a metric that correlates with actual workload demand.
 
 ---
 
-# HPA and Resource Requests
+## HPA and Resource Requests
 
 Suppose:
 
@@ -1302,7 +1302,7 @@ This demonstrates why unrealistic requests can distort utilization-based HPA beh
 
 ---
 
-# HPA and Limits
+## HPA and Limits
 
 HPA primarily uses metrics and targets, not CPU limits, to determine utilization.
 
@@ -1320,7 +1320,7 @@ is especially important.
 
 ---
 
-# HPA and ReplicaSets
+## HPA and ReplicaSets
 
 The hierarchy is:
 
@@ -1346,7 +1346,7 @@ The Deployment then manages the ReplicaSet.
 
 ---
 
-# HPA and Services
+## HPA and Services
 
 A Service does not perform autoscaling.
 
@@ -1368,7 +1368,7 @@ Changes replica count
 
 ---
 
-# HPA and Load Balancing
+## HPA and Load Balancing
 
 Suppose:
 
@@ -1401,7 +1401,7 @@ Conceptually:
 
 ---
 
-# HPA and Cluster Autoscaler
+## HPA and Cluster Autoscaler
 
 HPA:
 
@@ -1445,7 +1445,7 @@ Pending Pods become schedulable
 
 ---
 
-# HPA + Cluster Autoscaler
+## HPA + Cluster Autoscaler
 
 ```text
                 Traffic
@@ -1474,7 +1474,7 @@ Pending Pods become schedulable
 
 ---
 
-# HPA and VPA
+## HPA and VPA
 
 HPA:
 
@@ -1496,7 +1496,7 @@ Using both together requires careful design because both can respond to resource
 
 ---
 
-# HPA and StatefulSets
+## HPA and StatefulSets
 
 HPA can also target supported scalable workloads such as StatefulSets.
 
@@ -1511,7 +1511,7 @@ Application-level clustering
 
 ---
 
-# HPA Example – Production API
+## HPA Example – Production API
 
 Suppose:
 
@@ -1563,7 +1563,7 @@ spec:
 
 ---
 
-# Hands-on Lab 1 – Create Deployment
+## Hands-on Lab 1 – Create Deployment
 
 Create:
 
@@ -1629,7 +1629,7 @@ kubectl apply -f web.yaml
 
 ---
 
-# Hands-on Lab 2 – Verify Metrics
+## Hands-on Lab 2 – Verify Metrics
 
 Run:
 
@@ -1653,7 +1653,7 @@ Check the Metrics Server installation.
 
 ---
 
-# Hands-on Lab 3 – Create HPA
+## Hands-on Lab 3 – Create HPA
 
 Create:
 
@@ -1709,7 +1709,7 @@ kubectl get hpa
 
 ---
 
-# Hands-on Lab 4 – Describe HPA
+## Hands-on Lab 4 – Describe HPA
 
 Run:
 
@@ -1728,7 +1728,7 @@ Events
 
 ---
 
-# Hands-on Lab 5 – Generate CPU Load
+## Hands-on Lab 5 – Generate CPU Load
 
 In a disposable environment, generate CPU load against the application.
 
@@ -1760,7 +1760,7 @@ Deployment scales
 
 ---
 
-# Hands-on Lab 6 – Observe Scale Down
+## Hands-on Lab 6 – Observe Scale Down
 
 Stop the artificial workload.
 
@@ -1774,7 +1774,7 @@ Observe that the workload may take time to scale down because HPA uses stabiliza
 
 ---
 
-# Hands-on Lab 7 – Configure Scale Behavior
+## Hands-on Lab 7 – Configure Scale Behavior
 
 Example:
 
@@ -1810,7 +1810,7 @@ Observe the difference in scaling behavior.
 
 ---
 
-# Hands-on Lab 8 – Multiple Metrics
+## Hands-on Lab 8 – Multiple Metrics
 
 Configure:
 
@@ -1858,7 +1858,7 @@ The HPA uses the highest desired replica count produced by the metrics.
 
 ---
 
-# Hands-on Lab 9 – Test HPA Limits
+## Hands-on Lab 9 – Test HPA Limits
 
 Set:
 
@@ -1878,9 +1878,9 @@ Observe that the Deployment does not scale beyond:
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## HPA Shows Unknown Metrics
+### HPA Shows Unknown Metrics
 
 Run:
 
@@ -1904,7 +1904,7 @@ If that also fails, investigate Metrics Server.
 
 ---
 
-# Check Metrics API
+## Check Metrics API
 
 Run:
 
@@ -1922,7 +1922,7 @@ The exact API registration depends on the cluster setup.
 
 ---
 
-# Check Metrics Server
+## Check Metrics Server
 
 ```bash
 kubectl get pods -n kube-system
@@ -1936,7 +1936,7 @@ kubectl logs -n kube-system deployment/metrics-server
 
 ---
 
-# Check HPA Events
+## Check HPA Events
 
 ```bash
 kubectl describe hpa <hpa-name>
@@ -1950,7 +1950,7 @@ Events
 
 ---
 
-# HPA Does Not Scale
+## HPA Does Not Scale
 
 Possible causes:
 
@@ -1980,7 +1980,7 @@ Scaling behavior delaying action
 
 ---
 
-# HPA Scales Too Aggressively
+## HPA Scales Too Aggressively
 
 Possible causes:
 
@@ -2006,7 +2006,7 @@ Insufficient stabilization
 
 ---
 
-# HPA Scales Too Slowly
+## HPA Scales Too Slowly
 
 Possible causes:
 
@@ -2032,7 +2032,7 @@ Cluster capacity is insufficient
 
 ---
 
-# HPA Stuck at maxReplicas
+## HPA Stuck at maxReplicas
 
 Example:
 
@@ -2060,7 +2060,7 @@ Downstream dependencies
 
 ---
 
-# HPA Stuck at minReplicas
+## HPA Stuck at minReplicas
 
 Example:
 
@@ -2079,15 +2079,15 @@ If load is high but HPA stays at minimum, inspect metrics and configuration.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Forgetting Resource Requests
+### 1. Forgetting Resource Requests
 
 For CPU/memory utilization targets, missing resource requests can prevent meaningful utilization calculations.
 
 ---
 
-## 2. Installing HPA Without Metrics
+### 2. Installing HPA Without Metrics
 
 HPA requires a metrics source.
 
@@ -2095,7 +2095,7 @@ For resource metrics, Metrics Server is commonly used.
 
 ---
 
-## 3. Setting maxReplicas Too Low
+### 3. Setting maxReplicas Too Low
 
 Example:
 
@@ -2113,7 +2113,7 @@ The HPA cannot scale beyond 3.
 
 ---
 
-## 4. Setting minReplicas Too Low
+### 4. Setting minReplicas Too Low
 
 For production applications, too few replicas can create:
 
@@ -2125,7 +2125,7 @@ during scaling transitions.
 
 ---
 
-## 5. Using Unrealistic Requests
+### 5. Using Unrealistic Requests
 
 HPA utilization is commonly calculated relative to resource requests.
 
@@ -2133,7 +2133,7 @@ Bad requests can therefore produce misleading scaling behavior.
 
 ---
 
-## 6. Scaling Based on the Wrong Metric
+### 6. Scaling Based on the Wrong Metric
 
 CPU may not correlate with application demand.
 
@@ -2155,7 +2155,7 @@ may be more meaningful.
 
 ---
 
-## 7. Expecting Immediate Scale Down
+### 7. Expecting Immediate Scale Down
 
 HPA behavior includes stabilization and scaling policies.
 
@@ -2163,7 +2163,7 @@ Scale-down is often intentionally conservative.
 
 ---
 
-## 8. Fighting HPA with Manual Scaling
+### 8. Fighting HPA with Manual Scaling
 
 Do not repeatedly run:
 
@@ -2177,7 +2177,7 @@ The HPA controller may change the replica count again.
 
 ---
 
-## 9. Ignoring Cluster Capacity
+### 9. Ignoring Cluster Capacity
 
 HPA can create more Pods than the cluster can currently host.
 
@@ -2191,7 +2191,7 @@ Cluster Autoscaler may be required to add capacity.
 
 ---
 
-## 10. Ignoring Downstream Bottlenecks
+### 10. Ignoring Downstream Bottlenecks
 
 Scaling application Pods does not automatically scale:
 
@@ -2206,7 +2206,7 @@ The application can become faster at generating load against an already overload
 
 ---
 
-# HPA vs VPA vs Cluster Autoscaler
+## HPA vs VPA vs Cluster Autoscaler
 
 | Mechanism | Scales | Direction |
 |---|---|---|
@@ -2216,7 +2216,7 @@ The application can become faster at generating load against an already overload
 
 ---
 
-# HPA vs ReplicaSet
+## HPA vs ReplicaSet
 
 ReplicaSet:
 
@@ -2250,7 +2250,7 @@ Pods
 
 ---
 
-# HPA vs Deployment
+## HPA vs Deployment
 
 Deployment manages:
 
@@ -2268,7 +2268,7 @@ They work together.
 
 ---
 
-# HPA and Rolling Updates
+## HPA and Rolling Updates
 
 During a Deployment rollout:
 
@@ -2294,7 +2294,7 @@ together.
 
 ---
 
-# HPA and PodDisruptionBudget
+## HPA and PodDisruptionBudget
 
 A PodDisruptionBudget can protect application availability during voluntary disruptions.
 
@@ -2314,7 +2314,7 @@ How many Pods should remain available during voluntary disruption?
 
 ---
 
-# HPA and Readiness
+## HPA and Readiness
 
 A newly created Pod should not receive production traffic until it is ready.
 
@@ -2344,7 +2344,7 @@ Good readiness configuration is important for effective autoscaling.
 
 ---
 
-# HPA and Startup Time
+## HPA and Startup Time
 
 If an application takes:
 
@@ -2365,7 +2365,7 @@ Scaling policies
 
 ---
 
-# HPA and Databases
+## HPA and Databases
 
 Be careful when scaling workloads that depend heavily on a database.
 
@@ -2391,7 +2391,7 @@ Autoscaling the application can therefore amplify a database bottleneck.
 
 ---
 
-# Production Design Example
+## Production Design Example
 
 Suppose:
 
@@ -2495,21 +2495,21 @@ Conservative scale-down
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use `autoscaling/v2`
+#### 1. Use `autoscaling/v2`
 
 For modern Kubernetes environments, `autoscaling/v2` provides richer metric and behavior support.
 
 ---
 
-### 2. Define Resource Requests
+#### 2. Define Resource Requests
 
 CPU/memory utilization-based HPA depends on meaningful requests.
 
 ---
 
-### 3. Set Sensible minReplicas
+#### 3. Set Sensible minReplicas
 
 Ensure enough replicas for:
 
@@ -2521,7 +2521,7 @@ Failure Tolerance
 
 ---
 
-### 4. Set maxReplicas Based on Capacity
+#### 4. Set maxReplicas Based on Capacity
 
 Consider:
 
@@ -2534,13 +2534,13 @@ Cost
 
 ---
 
-### 5. Choose Metrics Carefully
+#### 5. Choose Metrics Carefully
 
 Use metrics that correlate with actual workload demand.
 
 ---
 
-### 6. Configure Scale Behavior
+#### 6. Configure Scale Behavior
 
 Use:
 
@@ -2554,7 +2554,7 @@ to prevent unstable scaling.
 
 ---
 
-### 7. Monitor HPA
+#### 7. Monitor HPA
 
 Use:
 
@@ -2572,13 +2572,13 @@ Also monitor the underlying workload.
 
 ---
 
-### 8. Combine HPA with Cluster Autoscaler
+#### 8. Combine HPA with Cluster Autoscaler
 
 When HPA can create more Pods than current Nodes can accommodate, Cluster Autoscaler can provide additional capacity.
 
 ---
 
-### 9. Test Under Realistic Load
+#### 9. Test Under Realistic Load
 
 Do not validate autoscaling only with idle workloads.
 
@@ -2594,7 +2594,7 @@ Dependency failures
 
 ---
 
-### 10. Avoid Blind Autoscaling
+#### 10. Avoid Blind Autoscaling
 
 More Pods do not always solve the problem.
 
@@ -2612,9 +2612,9 @@ Queues
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## HPA
+### HPA
 
 ```text
 Automatically changes Pod replica count
@@ -2622,7 +2622,7 @@ Automatically changes Pod replica count
 
 ---
 
-## Horizontal Scaling
+### Horizontal Scaling
 
 ```text
 More/Fewer Pods
@@ -2630,7 +2630,7 @@ More/Fewer Pods
 
 ---
 
-## Vertical Scaling
+### Vertical Scaling
 
 ```text
 More/Fewer Resources per Pod
@@ -2638,7 +2638,7 @@ More/Fewer Resources per Pod
 
 ---
 
-## minReplicas
+### minReplicas
 
 ```text
 Lower replica boundary
@@ -2646,7 +2646,7 @@ Lower replica boundary
 
 ---
 
-## maxReplicas
+### maxReplicas
 
 ```text
 Upper replica boundary
@@ -2654,7 +2654,7 @@ Upper replica boundary
 
 ---
 
-## Resource Utilization
+### Resource Utilization
 
 ```text
 Actual usage
@@ -2666,7 +2666,7 @@ Resource request
 
 ---
 
-## Multiple Metrics
+### Multiple Metrics
 
 ```text
 CPU desired = 5
@@ -2680,7 +2680,7 @@ HPA chooses 7
 
 ---
 
-## Metrics Server
+### Metrics Server
 
 ```text
 Collects resource metrics
@@ -2696,7 +2696,7 @@ HPA
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View HPA:
 
@@ -2754,9 +2754,9 @@ kubectl get apiservice
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is HPA?
 - Why is HPA used?
@@ -2767,7 +2767,7 @@ kubectl get apiservice
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does HPA calculate CPU utilization?
 - Why are resource requests important for HPA?
@@ -2780,7 +2780,7 @@ kubectl get apiservice
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete HPA control loop.
 - Explain how HPA calculates desired replicas.
@@ -2799,7 +2799,7 @@ kubectl get apiservice
 
 ---
 
-# Production Architecture
+## Production Architecture
 
 A typical production autoscaling architecture can look like:
 
@@ -2881,7 +2881,7 @@ Pods Scheduled
 
 ---
 
-# Real-World Scaling Example
+## Real-World Scaling Example
 
 Suppose an API normally runs:
 
@@ -2942,7 +2942,7 @@ HPA gradually scales down according to the configured behavior.
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Deploy a sample application.
 2. Define CPU and memory requests.
@@ -2965,9 +2965,9 @@ HPA gradually scales down according to the configured behavior.
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Horizontal Pod Autoscaling
 - HorizontalPodAutoscaler API
@@ -2980,7 +2980,7 @@ HPA gradually scales down according to the configured behavior.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes SIG Autoscaling
 - Kubernetes SIG Instrumentation
@@ -2989,7 +2989,7 @@ HPA gradually scales down according to the configured behavior.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 HPA allows Kubernetes to automatically adjust the number of Pod replicas based on workload demand.
 
@@ -3210,9 +3210,9 @@ This makes HPA an important foundation for building elastic Kubernetes applicati
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 44 – Vertical Pod Autoscaler (VPA)
+## Chapter 44 – Vertical Pod Autoscaler (VPA)
 
 Topics will include:
 

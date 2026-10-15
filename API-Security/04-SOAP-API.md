@@ -1,7 +1,6 @@
 # 04 - SOAP API
 
-# Introduction
-
+## Introduction
 Simple Object Access Protocol (SOAP) is a protocol specification for exchanging structured information between applications over a network.
 
 Before REST became the dominant architecture for web APIs, SOAP was the primary standard used by enterprise organizations for building secure, reliable, and interoperable web services.
@@ -33,8 +32,7 @@ Understanding SOAP is important because cybersecurity professionals frequently e
 
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 After completing this chapter, you will be able to:
 
 - Understand SOAP fundamentals.
@@ -51,8 +49,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is SOAP?
-
+## What is SOAP?
 SOAP stands for:
 
 > **Simple Object Access Protocol**
@@ -76,8 +73,7 @@ SOAP defines:
 
 ---
 
-# SOAP Definition
-
+## SOAP Definition
 SOAP is an XML-based messaging protocol that enables applications running on different operating systems, programming languages, and hardware platforms to exchange structured information.
 
 Example
@@ -100,8 +96,7 @@ SOAP provides interoperability through standardized XML messages.
 
 ---
 
-# Evolution of SOAP
-
+## Evolution of SOAP
 Before SOAP, distributed systems relied on technologies such as:
 
 - CORBA
@@ -120,8 +115,7 @@ SOAP introduced a platform-independent, XML-based communication protocol built o
 
 ---
 
-# SOAP Timeline
-
+## SOAP Timeline
 ```
 RPC
 
@@ -166,8 +160,7 @@ Although newer API styles have become popular, SOAP continues to power many ente
 
 ---
 
-# Why SOAP Was Created
-
+## Why SOAP Was Created
 SOAP addressed several enterprise challenges.
 
 Organizations required:
@@ -183,8 +176,7 @@ SOAP provided standardized solutions for each requirement.
 
 ---
 
-# SOAP Communication Model
-
+## SOAP Communication Model
 ```
 Client Application
 
@@ -217,8 +209,7 @@ Both requests and responses use XML.
 
 ---
 
-# SOAP Architecture
-
+## SOAP Architecture
 A typical SOAP architecture consists of:
 
 ```
@@ -256,8 +247,7 @@ Unlike REST, SOAP is transport-independent and can operate over multiple protoco
 
 ---
 
-# SOAP Components
-
+## SOAP Components
 SOAP consists of several core components.
 
 - SOAP Envelope
@@ -269,8 +259,7 @@ Every SOAP message follows this structure.
 
 ---
 
-# SOAP Message Structure
-
+## SOAP Message Structure
 ```
 SOAP Message
 
@@ -295,8 +284,7 @@ The envelope acts as the root element of every SOAP message.
 
 ---
 
-# XML in SOAP
-
+## XML in SOAP
 SOAP exclusively uses XML.
 
 Example
@@ -326,8 +314,7 @@ Disadvantages
 
 ---
 
-# SOAP Envelope
-
+## SOAP Envelope
 The envelope defines the beginning and end of the SOAP message.
 
 Example
@@ -342,8 +329,7 @@ Every SOAP message must contain exactly one envelope.
 
 ---
 
-# SOAP Header
-
+## SOAP Header
 The header contains metadata.
 
 Examples
@@ -373,8 +359,7 @@ Headers are optional but widely used in enterprise deployments.
 
 ---
 
-# SOAP Body
-
+## SOAP Body
 The body contains the actual business request.
 
 Example
@@ -395,8 +380,7 @@ Business operations are represented as XML elements.
 
 ---
 
-# SOAP Fault
-
+## SOAP Fault
 SOAP Fault provides standardized error handling.
 
 Example
@@ -420,8 +404,7 @@ SOAP Faults provide significantly richer error information than many REST APIs.
 
 ---
 
-# SOAP Request Example
-
+## SOAP Request Example
 ```xml
 POST /CustomerService HTTP/1.1
 
@@ -450,8 +433,7 @@ The request body contains the XML message enclosed within a SOAP envelope.
 
 ---
 
-# SOAP Response Example
-
+## SOAP Response Example
 ```xml
 HTTP/1.1 200 OK
 
@@ -476,8 +458,7 @@ The response also uses XML.
 
 ---
 
-# SOAP Transport Protocols
-
+## SOAP Transport Protocols
 Although HTTP is the most common transport, SOAP supports multiple protocols.
 
 Examples
@@ -493,8 +474,7 @@ This flexibility made SOAP attractive for enterprise integration.
 
 ---
 
-# SOAP over HTTP
-
+## SOAP over HTTP
 Most SOAP services communicate using HTTP or HTTPS.
 
 ```
@@ -521,8 +501,7 @@ Unlike REST, SOAP generally uses **POST** for most operations.
 
 ---
 
-# Enterprise Use Cases
-
+## Enterprise Use Cases
 SOAP is commonly used for:
 
 Financial Services
@@ -557,8 +536,7 @@ Telecommunications
 
 ---
 
-# Advantages of SOAP
-
+## Advantages of SOAP
 SOAP provides several enterprise benefits.
 
 - Platform independent
@@ -574,8 +552,7 @@ These features make SOAP suitable for mission-critical systems.
 
 ---
 
-# Disadvantages of SOAP
-
+## Disadvantages of SOAP
 SOAP also has limitations.
 
 - Large XML payloads
@@ -590,8 +567,7 @@ These limitations contributed to the widespread adoption of REST for modern web 
 
 ---
 
-# Enterprise Example
-
+## Enterprise Example
 A multinational bank integrates its core banking system with external payment processors using SOAP.
 
 Architecture
@@ -642,8 +618,7 @@ These characteristics are essential for financial systems where correctness and 
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - SOAP is a protocol for exchanging structured XML messages between distributed applications.
 - It is contract-driven, standardized, and designed for enterprise interoperability.
 - Every SOAP message consists of an Envelope, optional Header, Body, and optional Fault.
@@ -654,8 +629,7 @@ These characteristics are essential for financial systems where correctness and 
 
 ---
 
-# XML Namespaces
-
+## XML Namespaces
 SOAP messages rely heavily on **XML Namespaces** to uniquely identify XML elements and prevent naming conflicts.
 
 Without namespaces, different XML documents may define elements with identical names, making it difficult for applications to determine which element belongs to which schema.
@@ -678,8 +652,7 @@ Namespaces solve this problem.
 
 ---
 
-# What is an XML Namespace?
-
+## What is an XML Namespace?
 An XML namespace uniquely identifies XML elements using a Uniform Resource Identifier (URI).
 
 Example
@@ -705,8 +678,7 @@ identifies the SOAP specification.
 
 ---
 
-# Namespace Structure
-
+## Namespace Structure
 ```
 Prefix
 
@@ -741,8 +713,7 @@ SOAP Specification
 
 ---
 
-# Multiple Namespaces
-
+## Multiple Namespaces
 A SOAP message often uses multiple namespaces.
 
 Example
@@ -787,8 +758,7 @@ Business Namespace
 
 ---
 
-# Why Namespaces Matter
-
+## Why Namespaces Matter
 Benefits include:
 
 - Prevent naming conflicts
@@ -801,8 +771,7 @@ Namespaces are mandatory for interoperable SOAP services.
 
 ---
 
-# SOAP Namespace Example
-
+## SOAP Namespace Example
 ```
 SOAP Envelope
 
@@ -835,8 +804,7 @@ Example
 
 ---
 
-# XML Schema (XSD)
-
+## XML Schema (XSD)
 SOAP messages frequently rely on **XML Schema Definition (XSD)**.
 
 XSD defines:
@@ -869,8 +837,7 @@ Applications validate incoming XML against these schemas before processing reque
 
 ---
 
-# Web Services Description Language (WSDL)
-
+## Web Services Description Language (WSDL)
 One of SOAP's defining characteristics is the use of **WSDL**.
 
 WSDL stands for:
@@ -892,8 +859,7 @@ Unlike REST, where documentation is often external (such as OpenAPI), WSDL acts 
 
 ---
 
-# Why WSDL Exists
-
+## Why WSDL Exists
 Before invoking a SOAP service, clients need to know:
 
 - Which operations exist?
@@ -906,8 +872,7 @@ WSDL answers all of these questions.
 
 ---
 
-# WSDL Architecture
-
+## WSDL Architecture
 ```
 Client
 
@@ -932,8 +897,7 @@ Many development tools automatically generate client libraries directly from a W
 
 ---
 
-# WSDL Components
-
+## WSDL Components
 A WSDL document consists of several major sections.
 
 ```
@@ -956,8 +920,7 @@ Each component has a specific responsibility.
 
 ---
 
-# Types
-
+## Types
 The **Types** section defines data structures.
 
 Example
@@ -976,8 +939,7 @@ These are usually described using XML Schema (XSD).
 
 ---
 
-# Messages
-
+## Messages
 Messages define data exchanged between client and server.
 
 Example
@@ -994,8 +956,7 @@ Each message specifies the required XML elements.
 
 ---
 
-# Port Types
-
+## Port Types
 Port Types define available operations.
 
 Example
@@ -1016,8 +977,7 @@ A Port Type is conceptually similar to an interface in object-oriented programmi
 
 ---
 
-# Bindings
-
+## Bindings
 Bindings specify:
 
 - Transport protocol
@@ -1040,8 +1000,7 @@ Document Style
 
 ---
 
-# Service
-
+## Service
 The Service section identifies the actual endpoint.
 
 Example
@@ -1054,8 +1013,7 @@ Clients connect to this endpoint when invoking SOAP operations.
 
 ---
 
-# WSDL Workflow
-
+## WSDL Workflow
 ```
 Developer
 
@@ -1080,8 +1038,7 @@ This significantly reduces manual development effort.
 
 ---
 
-# SOAP Operations
-
+## SOAP Operations
 SOAP supports several operation types.
 
 ```
@@ -1098,8 +1055,7 @@ Each defines how messages flow between client and server.
 
 ---
 
-# One-Way Operation
-
+## One-Way Operation
 The client sends a request.
 
 No response is expected.
@@ -1124,8 +1080,7 @@ Example:
 
 ---
 
-# Request-Response
-
+## Request-Response
 Most common SOAP operation.
 
 ```
@@ -1157,8 +1112,7 @@ Used for:
 
 ---
 
-# Solicit-Response
-
+## Solicit-Response
 The server initiates communication.
 
 ```
@@ -1185,8 +1139,7 @@ Rarely implemented in modern enterprise systems.
 
 ---
 
-# Notification
-
+## Notification
 The server sends information without expecting a reply.
 
 ```
@@ -1209,8 +1162,7 @@ Example
 
 ---
 
-# RPC Style vs Document Style
-
+## RPC Style vs Document Style
 SOAP supports two messaging styles.
 
 ```
@@ -1225,8 +1177,7 @@ Document Style
 
 ---
 
-# RPC Style
-
+## RPC Style
 RPC (Remote Procedure Call) focuses on invoking methods.
 
 Example
@@ -1258,8 +1209,7 @@ Disadvantages
 
 ---
 
-# Document Style
-
+## Document Style
 Document Style exchanges XML documents instead of procedure calls.
 
 Example
@@ -1283,8 +1233,7 @@ Today, most enterprise SOAP services use **Document/Literal** style.
 
 ---
 
-# Literal vs Encoded
-
+## Literal vs Encoded
 SOAP also defines encoding styles.
 
 Literal
@@ -1311,8 +1260,7 @@ Document/Literal is considered the industry best practice.
 
 ---
 
-# Message Exchange Pattern
-
+## Message Exchange Pattern
 ```
 Application
 
@@ -1349,8 +1297,7 @@ Every SOAP transaction follows this general flow.
 
 ---
 
-# Enterprise SOAP Workflow
-
+## Enterprise SOAP Workflow
 A banking transaction illustrates the complete lifecycle.
 
 ```
@@ -1397,8 +1344,7 @@ Each stage validates and processes the XML message before returning a response.
 
 ---
 
-# Enterprise Design Principles
-
+## Enterprise Design Principles
 Well-designed SOAP services follow these principles:
 
 - Strong contracts using WSDL
@@ -1416,8 +1362,7 @@ These practices improve interoperability and long-term maintainability.
 
 ---
 
-# Common Mistakes
-
+## Common Mistakes
 Avoid:
 
 - Missing namespaces
@@ -1431,8 +1376,7 @@ Avoid:
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - XML namespaces uniquely identify XML elements and prevent naming conflicts.
 - XML Schema (XSD) validates SOAP message structure and data types.
 - WSDL acts as a formal, machine-readable contract describing SOAP services.
@@ -1442,8 +1386,7 @@ Avoid:
 
 ---
 
-# WS-Security
-
+## WS-Security
 One of the biggest strengths of SOAP is its standardized security framework.
 
 Unlike REST, which typically relies on HTTPS, JWT, OAuth 2.0, or API Gateways for security, SOAP includes an extensive specification called **WS-Security**.
@@ -1461,8 +1404,7 @@ It protects the **SOAP message itself**, not just the transport channel.
 
 ---
 
-# What is WS-Security?
-
+## What is WS-Security?
 WS-Security (Web Services Security) is an extension to SOAP that adds security information to SOAP headers.
 
 Instead of relying solely on HTTPS, security information travels inside the SOAP message.
@@ -1495,8 +1437,7 @@ This enables end-to-end security across multiple intermediaries.
 
 ---
 
-# Why WS-Security?
-
+## Why WS-Security?
 HTTPS protects data **only while it travels across the network**.
 
 ```
@@ -1547,8 +1488,7 @@ This provides **message-level security**.
 
 ---
 
-# WS-Security Components
-
+## WS-Security Components
 WS-Security consists of several security mechanisms.
 
 ```
@@ -1573,8 +1513,7 @@ Each mechanism addresses different security requirements.
 
 ---
 
-# Username Token
-
+## Username Token
 Username Tokens provide authentication credentials.
 
 Example
@@ -1593,8 +1532,7 @@ Instead of transmitting plain-text passwords, secure implementations typically u
 
 ---
 
-# Binary Security Tokens
-
+## Binary Security Tokens
 Binary Security Tokens carry certificates.
 
 Examples include:
@@ -1625,8 +1563,7 @@ These tokens enable strong identity verification.
 
 ---
 
-# XML Digital Signature
-
+## XML Digital Signature
 Digital signatures provide:
 
 - Integrity
@@ -1659,8 +1596,7 @@ The receiver verifies the signature using the sender's public key.
 
 ---
 
-# Digital Signature Verification
-
+## Digital Signature Verification
 ```
 Sender
 
@@ -1693,8 +1629,7 @@ If the message changes during transit, signature verification fails.
 
 ---
 
-# XML Encryption
-
+## XML Encryption
 Encryption protects sensitive message contents.
 
 Example
@@ -1731,8 +1666,7 @@ while leaving the remainder of the message readable.
 
 ---
 
-# Timestamp
-
+## Timestamp
 Timestamps help prevent replay attacks.
 
 Example
@@ -1759,8 +1693,7 @@ Expired messages are rejected.
 
 ---
 
-# Security Token Reference
-
+## Security Token Reference
 Security Token References identify authentication credentials.
 
 Example
@@ -1781,8 +1714,7 @@ This avoids repeatedly transmitting certificates.
 
 ---
 
-# WS-Security Workflow
-
+## WS-Security Workflow
 ```
 Client
 
@@ -1839,8 +1771,7 @@ This layered workflow ensures confidentiality, integrity, and authenticity.
 
 ---
 
-# Message-Level Security
-
+## Message-Level Security
 Unlike HTTPS, WS-Security protects individual message elements.
 
 ```
@@ -1867,8 +1798,7 @@ Even if the transport changes, protected elements remain secure.
 
 ---
 
-# Transport-Level vs Message-Level Security
-
+## Transport-Level vs Message-Level Security
 | Transport Security | Message Security |
 |--------------------|------------------|
 | HTTPS | WS-Security |
@@ -1882,8 +1812,7 @@ Many enterprise SOAP systems use **both** HTTPS and WS-Security together.
 
 ---
 
-# SOAP Fault
-
+## SOAP Fault
 SOAP provides standardized error handling using **SOAP Faults**.
 
 Structure
@@ -1900,8 +1829,7 @@ Faults communicate errors in a structured format.
 
 ---
 
-# SOAP Fault Components
-
+## SOAP Fault Components
 ```
 Fault
 
@@ -1922,8 +1850,7 @@ Each element provides information about the error.
 
 ---
 
-# SOAP Fault Example
-
+## SOAP Fault Example
 ```xml
 <soap:Fault>
 
@@ -1946,8 +1873,7 @@ Clients can process these standardized responses programmatically.
 
 ---
 
-# Common SOAP Fault Codes
-
+## Common SOAP Fault Codes
 | Fault Code | Meaning |
 |------------|----------|
 | VersionMismatch | Unsupported SOAP version |
@@ -1960,8 +1886,7 @@ These standardized fault codes improve interoperability.
 
 ---
 
-# SOAP Security Threats
-
+## SOAP Security Threats
 Although SOAP provides strong security capabilities, it is still vulnerable to attacks when improperly configured.
 
 Common threats include:
@@ -1981,8 +1906,7 @@ Proper configuration and validation are essential.
 
 ---
 
-# XML External Entity (XXE)
-
+## XML External Entity (XXE)
 One of the most common SOAP vulnerabilities.
 
 ```
@@ -2014,8 +1938,7 @@ Mitigations:
 
 ---
 
-# XML Signature Wrapping
-
+## XML Signature Wrapping
 Attackers manipulate XML structure while preserving valid signatures.
 
 Example
@@ -2044,8 +1967,7 @@ Mitigation:
 
 ---
 
-# SOAP Injection
-
+## SOAP Injection
 SOAP Injection is similar to other injection attacks.
 
 Example
@@ -2075,8 +1997,7 @@ Mitigations:
 
 ---
 
-# Enterprise SOAP Security Architecture
-
+## Enterprise SOAP Security Architecture
 ```
                  Internet
 
@@ -2145,8 +2066,7 @@ This layered architecture combines transport security, message security, and ope
 
 ---
 
-# REST vs SOAP
-
+## REST vs SOAP
 | Feature | REST | SOAP |
 |----------|------|------|
 | Type | Architectural Style | Protocol |
@@ -2164,8 +2084,7 @@ This layered architecture combines transport security, message security, and ope
 
 ---
 
-# When to Choose SOAP
-
+## When to Choose SOAP
 SOAP is well suited for:
 
 - Banking systems
@@ -2186,8 +2105,7 @@ Choose SOAP when:
 
 ---
 
-# Enterprise Case Study
-
+## Enterprise Case Study
 A multinational insurance company integrates policy management systems across multiple countries.
 
 Architecture
@@ -2255,8 +2173,7 @@ This architecture enables secure, compliant communication between internal syste
 
 ---
 
-# Hands-on Lab 1 – Inspect a SOAP Message
-
+## Hands-on Lab 1 – Inspect a SOAP Message
 Objective
 
 Understand the structure of a SOAP request.
@@ -2279,8 +2196,7 @@ Learning Outcomes
 
 ---
 
-# Hands-on Lab 2 – Analyze a WSDL
-
+## Hands-on Lab 2 – Analyze a WSDL
 Objective
 
 Understand how SOAP services are documented.
@@ -2303,8 +2219,7 @@ Learning Outcomes
 
 ---
 
-# Hands-on Lab 3 – Security Assessment
-
+## Hands-on Lab 3 – Security Assessment
 Objective
 
 Identify common SOAP security controls.
@@ -2322,8 +2237,7 @@ Document observations and recommend improvements.
 
 ---
 
-# Common SOAP Security Mistakes
-
+## Common SOAP Security Mistakes
 Avoid:
 
 - Allowing XML External Entities (XXE)
@@ -2339,10 +2253,8 @@ Avoid:
 
 ---
 
-# Troubleshooting
-
-## Invalid SOAP Envelope
-
+## Troubleshooting
+### Invalid SOAP Envelope
 Possible causes:
 
 - Malformed XML
@@ -2351,8 +2263,7 @@ Possible causes:
 
 ---
 
-## Authentication Failure
-
+### Authentication Failure
 Possible causes:
 
 - Invalid Username Token
@@ -2362,8 +2273,7 @@ Possible causes:
 
 ---
 
-## Signature Validation Failure
-
+### Signature Validation Failure
 Possible causes:
 
 - Modified message
@@ -2373,8 +2283,7 @@ Possible causes:
 
 ---
 
-## XML Parsing Errors
-
+### XML Parsing Errors
 Possible causes:
 
 - Invalid XML
@@ -2384,8 +2293,7 @@ Possible causes:
 
 ---
 
-## Service Unavailable
-
+### Service Unavailable
 Possible causes:
 
 - Endpoint unavailable
@@ -2395,10 +2303,8 @@ Possible causes:
 
 ---
 
-# Interview Questions
-
-## Fundamental
-
+## Interview Questions
+### Fundamental
 1. What is SOAP?
 2. How does SOAP differ from REST?
 3. What is a SOAP Envelope?
@@ -2412,8 +2318,7 @@ Possible causes:
 
 ---
 
-## Intermediate
-
+### Intermediate
 11. Explain the components of a WSDL document.
 12. How does XML Digital Signature work?
 13. What is XML Encryption?
@@ -2427,8 +2332,7 @@ Possible causes:
 
 ---
 
-## Scenario-Based
-
+### Scenario-Based
 **Scenario 1**
 
 A banking SOAP service begins rejecting valid requests with signature verification errors.
@@ -2456,8 +2360,7 @@ A legacy enterprise application must integrate securely with an external partner
 
 ---
 
-# Chapter Summary
-
+## Chapter Summary
 In this chapter, we explored SOAP as a protocol for enterprise web services.
 
 We covered:
@@ -2483,8 +2386,7 @@ Although REST dominates modern public APIs, SOAP remains an essential technology
 
 ---
 
-# Chapter Review
-
+## Chapter Review
 You should now be able to answer:
 
 - What is SOAP and how does it differ from REST?
@@ -2502,10 +2404,8 @@ If you can confidently explain these topics, you are ready to continue to GraphQ
 
 ---
 
-# References
-
-## Standards
-
+## References
+### Standards
 - SOAP 1.2 Specification (W3C)
 - Web Services Description Language (WSDL) 2.0
 - WS-Security 1.1
@@ -2513,16 +2413,14 @@ If you can confidently explain these topics, you are ready to continue to GraphQ
 - XML Encryption Syntax and Processing
 - XML Schema Definition (XSD)
 
-## Security Standards
-
+### Security Standards
 - OWASP API Security Top 10
 - OWASP Web Security Testing Guide (WSTG)
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-53
 - NIST SP 800-204
 
-## Further Reading
-
+### Further Reading
 - W3C SOAP Specifications
 - W3C XML Namespaces
 - W3C XML Schema
@@ -2531,8 +2429,7 @@ If you can confidently explain these topics, you are ready to continue to GraphQ
 
 ---
 
-# What's Next?
-
+## What's Next?
 ➡️ **Chapter 05 – GraphQL Security**
 
 In the next chapter, we will explore:

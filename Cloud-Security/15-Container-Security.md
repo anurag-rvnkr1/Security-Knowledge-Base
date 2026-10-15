@@ -1358,7 +1358,7 @@ Security controls should follow the principles of **Shift Left Security**, **Def
 
 ---
 
-# Defense-in-Depth for Containers
+## Defense-in-Depth for Containers
 
 ```
                 Developers
@@ -1416,7 +1416,7 @@ Each security layer helps reduce the likelihood of compromise and limits attacke
 
 ---
 
-# Use Trusted Base Images
+## Use Trusted Base Images
 
 Container security begins with selecting a secure base image.
 
@@ -1440,7 +1440,7 @@ Avoid downloading images from unknown or untrusted sources.
 
 ---
 
-# Scan Images Continuously
+## Scan Images Continuously
 
 Every image should undergo automated vulnerability scanning.
 
@@ -1469,7 +1469,7 @@ Block deployment of images that exceed the organization's risk threshold.
 
 ---
 
-# Digitally Sign Images
+## Digitally Sign Images
 
 Digitally signed images provide assurance that they have not been modified after creation.
 
@@ -1495,7 +1495,7 @@ Image signing strengthens software supply chain security.
 
 ---
 
-# Use Private Registries
+## Use Private Registries
 
 Production workloads should obtain images only from trusted registries.
 
@@ -1512,7 +1512,7 @@ Restrict who can push, pull, or delete images.
 
 ---
 
-# Protect Secrets
+## Protect Secrets
 
 Never store sensitive information inside:
 
@@ -1540,7 +1540,7 @@ Rotate secrets regularly.
 
 ---
 
-# Run Containers as Non-Root
+## Run Containers as Non-Root
 
 Containers should execute using non-privileged users.
 
@@ -1560,7 +1560,7 @@ Running as a non-root user reduces the impact of container compromise.
 
 ---
 
-# Restrict Linux Capabilities
+## Restrict Linux Capabilities
 
 Containers often receive more Linux capabilities than required.
 
@@ -1575,7 +1575,7 @@ Grant only the capabilities required by the application.
 
 ---
 
-# Avoid Privileged Containers
+## Avoid Privileged Containers
 
 Privileged containers have elevated access to the host.
 
@@ -1595,7 +1595,7 @@ Only use privileged mode when absolutely necessary and after a documented securi
 
 ---
 
-# Use Read-Only File Systems
+## Use Read-Only File Systems
 
 Where practical, mount container file systems as read-only.
 
@@ -1609,7 +1609,7 @@ Writable storage should be restricted to required application directories.
 
 ---
 
-# Implement Resource Limits
+## Implement Resource Limits
 
 Define CPU and memory limits for every container.
 
@@ -1631,7 +1631,7 @@ Resource limits reduce the risk of denial-of-service attacks caused by resource 
 
 ---
 
-# Secure Container Networking
+## Secure Container Networking
 
 Restrict communication between workloads using:
 
@@ -1645,7 +1645,7 @@ Only required communication paths should be permitted.
 
 ---
 
-# Protect the Host Operating System
+## Protect the Host Operating System
 
 Containers share the host kernel.
 
@@ -1661,7 +1661,7 @@ A compromised host may affect every running container.
 
 ---
 
-# Enable Runtime Protection
+## Enable Runtime Protection
 
 Runtime security should monitor:
 
@@ -1676,7 +1676,7 @@ Behavioral detection complements preventive controls.
 
 ---
 
-# Secure Kubernetes Admission
+## Secure Kubernetes Admission
 
 Admission controllers should enforce organizational security policies before workloads are deployed.
 
@@ -1692,7 +1692,7 @@ Policy enforcement prevents insecure workloads from reaching production.
 
 ---
 
-# Monitor Continuously
+## Monitor Continuously
 
 Monitor:
 
@@ -1724,9 +1724,9 @@ Continuous monitoring supports rapid threat detection.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Use Minimal Base Images
+#### 1. Use Minimal Base Images
 
 Smaller images reduce:
 
@@ -1739,7 +1739,7 @@ Deploy only the packages required by the application.
 
 ---
 
-### 2. Automate Image Scanning
+#### 2. Automate Image Scanning
 
 Scan every image:
 
@@ -1752,7 +1752,7 @@ Automated scanning helps identify newly disclosed vulnerabilities.
 
 ---
 
-### 3. Verify Image Signatures
+#### 3. Verify Image Signatures
 
 Deploy only images that:
 
@@ -1764,7 +1764,7 @@ Reject unsigned or modified images automatically.
 
 ---
 
-### 4. Protect Secrets Properly
+#### 4. Protect Secrets Properly
 
 Use dedicated secrets management platforms instead of embedding credentials in images or source code.
 
@@ -1772,7 +1772,7 @@ Rotate secrets regularly and audit access.
 
 ---
 
-### 5. Apply Least Privilege
+#### 5. Apply Least Privilege
 
 Run containers:
 
@@ -1785,7 +1785,7 @@ Least Privilege significantly limits attacker capabilities.
 
 ---
 
-### 6. Enable Runtime Monitoring
+#### 6. Enable Runtime Monitoring
 
 Monitor:
 
@@ -1799,7 +1799,7 @@ Runtime visibility is essential because preventive controls cannot stop every at
 
 ---
 
-### 7. Secure Registries
+#### 7. Secure Registries
 
 Protect image repositories using:
 
@@ -1813,7 +1813,7 @@ Registries represent critical software supply chain assets.
 
 ---
 
-### 8. Patch Base Images Frequently
+#### 8. Patch Base Images Frequently
 
 Rebuild images whenever:
 
@@ -1825,7 +1825,7 @@ Avoid patching running containers manually.
 
 ---
 
-### 9. Enforce Security Policies
+#### 9. Enforce Security Policies
 
 Use admission policies to require:
 
@@ -1839,7 +1839,7 @@ Automated policy enforcement improves consistency.
 
 ---
 
-### 10. Integrate Security into DevSecOps
+#### 10. Integrate Security into DevSecOps
 
 Embed security controls throughout the CI/CD pipeline.
 
@@ -1856,7 +1856,7 @@ Security should be continuous rather than a final deployment step.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Container environments are highly dynamic, making them particularly vulnerable to configuration errors, insecure deployment practices, and software supply chain risks. Most container security incidents are caused by preventable mistakes rather than sophisticated zero-day exploits.
 
@@ -1864,7 +1864,7 @@ Understanding these common mistakes helps organizations build resilient cloud-na
 
 ---
 
-### 1. Using Untrusted Container Images
+#### 1. Using Untrusted Container Images
 
 Downloading images from unknown public registries without verification introduces significant risk.
 
@@ -1896,7 +1896,7 @@ Use only trusted, verified, and organization-approved image sources.
 
 ---
 
-### 2. Running Containers as Root
+#### 2. Running Containers as Root
 
 One of the most common security mistakes is executing containers with root privileges.
 
@@ -1922,7 +1922,7 @@ Always configure containers to run as non-root users whenever possible.
 
 ---
 
-### 3. Using Privileged Containers
+#### 3. Using Privileged Containers
 
 Privileged containers have extensive access to host resources.
 
@@ -1937,7 +1937,7 @@ Privileged mode should be avoided unless absolutely required and formally approv
 
 ---
 
-### 4. Hardcoding Secrets
+#### 4. Hardcoding Secrets
 
 Embedding sensitive information directly into:
 
@@ -1973,7 +1973,7 @@ Use dedicated secrets management solutions instead.
 
 ---
 
-### 5. Ignoring Image Vulnerabilities
+#### 5. Ignoring Image Vulnerabilities
 
 Organizations sometimes deploy images without vulnerability scanning.
 
@@ -1988,7 +1988,7 @@ Every production image should be scanned before deployment and rescanned regular
 
 ---
 
-### 6. Using Outdated Base Images
+#### 6. Using Outdated Base Images
 
 Old base images often contain:
 
@@ -2001,7 +2001,7 @@ Rebuild images regularly using current base images.
 
 ---
 
-### 7. Granting Excessive Linux Capabilities
+#### 7. Granting Excessive Linux Capabilities
 
 Containers frequently receive more privileges than necessary.
 
@@ -2016,7 +2016,7 @@ Grant only the capabilities required by the workload.
 
 ---
 
-### 8. Poor Network Segmentation
+#### 8. Poor Network Segmentation
 
 Allowing unrestricted communication between containers enables attackers to move laterally.
 
@@ -2044,7 +2044,7 @@ Implement network policies and micro-segmentation.
 
 ---
 
-### 9. Ignoring Runtime Security
+#### 9. Ignoring Runtime Security
 
 Many organizations focus only on image scanning while neglecting runtime monitoring.
 
@@ -2059,7 +2059,7 @@ Runtime monitoring complements preventive security controls.
 
 ---
 
-### 10. Failing to Verify Image Signatures
+#### 10. Failing to Verify Image Signatures
 
 Deploying unsigned images increases the risk of software supply chain attacks.
 
@@ -2073,7 +2073,7 @@ Verify image integrity before every deployment.
 
 ---
 
-### 11. Weak Registry Security
+#### 11. Weak Registry Security
 
 Container registries are high-value targets.
 
@@ -2089,7 +2089,7 @@ Protect registries with strong authentication, RBAC, and continuous monitoring.
 
 ---
 
-### 12. Inadequate Resource Limits
+#### 12. Inadequate Resource Limits
 
 Containers without CPU or memory limits may consume excessive resources.
 
@@ -2103,7 +2103,7 @@ Define appropriate resource requests and limits for every workload.
 
 ---
 
-### 13. Treating Containers Like Virtual Machines
+#### 13. Treating Containers Like Virtual Machines
 
 Containers are designed to be immutable.
 
@@ -2143,7 +2143,7 @@ Never rely on manual changes to running containers.
 
 ---
 
-### 14. Ignoring Host Operating System Security
+#### 14. Ignoring Host Operating System Security
 
 Containers share the host kernel.
 
@@ -2159,7 +2159,7 @@ Protect the host by:
 
 ---
 
-### 15. Assuming Kubernetes Automatically Secures Containers
+#### 15. Assuming Kubernetes Automatically Secures Containers
 
 Container orchestration platforms simplify deployment but do not automatically secure workloads.
 
@@ -2177,7 +2177,7 @@ Security must be intentionally configured.
 
 ---
 
-## Container Security Checklist
+### Container Security Checklist
 
 | Control | Status |
 |---------|--------|
@@ -2199,9 +2199,9 @@ Security must be intentionally configured.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-190 – Application Container Security Guide
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
@@ -2215,15 +2215,15 @@ Security must be intentionally configured.
 
 ---
 
-### Container Platform Documentation
+#### Container Platform Documentation
 
-#### Docker
+##### Docker
 
 - Docker Engine Documentation
 - Docker Security Documentation
 - Docker Hardened Images Documentation
 
-#### Kubernetes
+##### Kubernetes
 
 - Kubernetes Documentation
 - Kubernetes Security Best Practices
@@ -2231,13 +2231,13 @@ Security must be intentionally configured.
 - Admission Controllers Documentation
 - Network Policies Documentation
 
-#### Container Runtimes
+##### Container Runtimes
 
 - containerd Documentation
 - CRI-O Documentation
 - Open Container Initiative (OCI) Specifications
 
-#### Cloud Provider Documentation
+##### Cloud Provider Documentation
 
 - Amazon Elastic Container Service (ECS)
 - Amazon Elastic Kubernetes Service (EKS)
@@ -2248,7 +2248,7 @@ Security must be intentionally configured.
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -2263,7 +2263,7 @@ Security must be intentionally configured.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - MITRE ATT&CK Framework
 - MITRE D3FEND

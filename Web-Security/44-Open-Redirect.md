@@ -1,12 +1,12 @@
 # 44-Open-Redirect.md
 
-# Part 1 — Introduction to Open Redirect, URL Navigation, Redirect Mechanisms, and Secure Redirect Design
+## Part 1 — Introduction to Open Redirect, URL Navigation, Redirect Mechanisms, and Secure Redirect Design
 
 > **"Open Redirect is a web application security issue where an application redirects users to an unintended destination because redirect targets are insufficiently validated. Secure applications protect users by validating redirect destinations, using allowlists, and maintaining trusted navigation flows."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -22,7 +22,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Open Redirect?
+## What is Open Redirect?
 
 **Open Redirect** is a web application security issue in which an application redirects a user to a destination that has not been sufficiently validated.
 
@@ -48,7 +48,7 @@ This chapter focuses on **secure application design and defensive controls**, no
 
 ---
 
-# Why Redirects Exist
+## Why Redirects Exist
 
 Redirects are a normal part of web applications.
 
@@ -83,7 +83,7 @@ Redirects improve usability when implemented securely.
 
 ---
 
-# HTTP Redirection
+## HTTP Redirection
 
 HTTP supports responses that instruct browsers to navigate to another location.
 
@@ -113,7 +113,7 @@ The browser performs the navigation based on the server's response.
 
 ---
 
-# High-Level Redirect Flow
+## High-Level Redirect Flow
 
 ```
 User
@@ -143,7 +143,7 @@ Applications should ensure the target page is appropriate for the current workfl
 
 ---
 
-# URL Navigation
+## URL Navigation
 
 Users navigate between resources through URLs.
 
@@ -167,7 +167,7 @@ Applications should control navigation whenever redirect decisions are influence
 
 ---
 
-# Types of Redirects
+## Types of Redirects
 
 Redirects may occur for several legitimate reasons.
 
@@ -193,7 +193,7 @@ Each type should follow documented business requirements.
 
 ---
 
-# Business Workflow Example
+## Business Workflow Example
 
 ```
 User
@@ -215,7 +215,7 @@ After successful authentication, users are commonly redirected to an appropriate
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 User Input
@@ -233,7 +233,7 @@ Any user-controlled information crossing this boundary should be validated befor
 
 ---
 
-# Why Open Redirect Occurs
+## Why Open Redirect Occurs
 
 Open Redirect vulnerabilities typically result from:
 
@@ -259,7 +259,7 @@ Proper validation significantly reduces risk.
 
 ---
 
-# Redirect Decision Process
+## Redirect Decision Process
 
 ```
 Incoming Request
@@ -285,7 +285,7 @@ Every redirect decision should be evaluated against application policy.
 
 ---
 
-# Enterprise Redirect Architecture
+## Enterprise Redirect Architecture
 
 ```
 User
@@ -319,7 +319,7 @@ Centralizing redirect handling simplifies governance and auditing.
 
 ---
 
-# Redirect Service
+## Redirect Service
 
 Large organizations often centralize redirect management.
 
@@ -343,7 +343,7 @@ Centralized services improve consistency across multiple applications.
 
 ---
 
-# Trusted Destinations
+## Trusted Destinations
 
 Organizations should define trusted redirect destinations.
 
@@ -369,7 +369,7 @@ Redirect destinations should align with business requirements.
 
 ---
 
-# Secure Redirect Design Principles
+## Secure Redirect Design Principles
 
 ```
 Secure Redirect Design
@@ -397,7 +397,7 @@ Redirects should be deterministic, documented, and predictable.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Redirect validation complements broader application security controls.
 
@@ -429,7 +429,7 @@ No single control should be relied upon exclusively.
 
 ---
 
-# Secure Navigation Goals
+## Secure Navigation Goals
 
 Applications should ensure:
 
@@ -442,7 +442,7 @@ Applications should ensure:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail company uses redirects after login, logout, and order completion.
 
@@ -470,7 +470,7 @@ The organization validates every redirect destination against centrally managed 
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 Redirect Processing
@@ -496,7 +496,7 @@ Each component contributes to secure navigation.
 
 ---
 
-# Common Business Scenarios
+## Common Business Scenarios
 
 Redirects commonly occur after:
 
@@ -512,7 +512,7 @@ Each workflow should validate redirect destinations before navigation.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the redirect workflow for an enterprise web application.
 2. Identify every business process that performs redirects.
@@ -524,7 +524,7 @@ Each workflow should validate redirect destinations before navigation.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Open Redirect?
 2. Why do web applications use redirects?
@@ -539,7 +539,7 @@ Each workflow should validate redirect destinations before navigation.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate every redirect destination.
 - Use centrally managed allowlists for approved destinations.
@@ -552,7 +552,7 @@ Each workflow should validate redirect destinations before navigation.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting user-supplied redirect destinations.
 - Allowing unrestricted redirect targets.
@@ -563,7 +563,7 @@ Each workflow should validate redirect destinations before navigation.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Open Redirect is fundamentally a navigation validation issue.
 - Redirects are legitimate application features that require secure design.
@@ -571,15 +571,15 @@ Each workflow should validate redirect destinations before navigation.
 - Centralized redirect governance improves consistency and maintainability.
 - Layered controls, monitoring, and secure defaults reduce redirect-related risks.
 
-# 44-Open-Redirect.md
+## 44-Open-Redirect.md
 
-# Part 2 — Redirect Processing Lifecycle, HTTP Status Codes, URL Validation, Trusted Destinations, and Enterprise Redirect Architecture
+## Part 2 — Redirect Processing Lifecycle, HTTP Status Codes, URL Validation, Trusted Destinations, and Enterprise Redirect Architecture
 
 > **"Secure redirect handling requires deterministic destination validation, standardized business rules, trusted navigation paths, and centralized governance throughout the application's request lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -596,7 +596,7 @@ After completing this part, you will understand:
 
 ---
 
-# Redirect Processing Lifecycle
+## Redirect Processing Lifecycle
 
 Every redirect should follow a predictable processing pipeline.
 
@@ -632,7 +632,7 @@ Each stage should validate that the redirect aligns with business requirements.
 
 ---
 
-# Enterprise Redirect Flow
+## Enterprise Redirect Flow
 
 ```
 User
@@ -666,7 +666,7 @@ A centralized redirect service improves consistency across multiple applications
 
 ---
 
-# Redirect Decision Process
+## Redirect Decision Process
 
 Applications should make redirect decisions only after validation.
 
@@ -698,7 +698,7 @@ Redirects should never bypass established business policies.
 
 ---
 
-# HTTP Redirect Status Codes
+## HTTP Redirect Status Codes
 
 HTTP defines several redirect status codes.
 
@@ -722,7 +722,7 @@ The selected status code should accurately reflect the application's intended be
 
 ---
 
-# Conceptual Redirect Flow
+## Conceptual Redirect Flow
 
 ```
 Client
@@ -756,7 +756,7 @@ The browser initiates a new request after receiving the redirect response.
 
 ---
 
-# URL Validation
+## URL Validation
 
 Redirect destinations should be validated before navigation.
 
@@ -780,7 +780,7 @@ Validation should ensure that destinations comply with organizational policies.
 
 ---
 
-# Destination Validation
+## Destination Validation
 
 Validation commonly considers:
 
@@ -810,7 +810,7 @@ Validation criteria should be centrally managed.
 
 ---
 
-# Redirect Parameters
+## Redirect Parameters
 
 Applications sometimes use request parameters to determine navigation.
 
@@ -838,7 +838,7 @@ Any parameter influencing navigation should be treated as untrusted input.
 
 ---
 
-# Authentication Redirects
+## Authentication Redirects
 
 Authentication workflows frequently include redirects.
 
@@ -862,7 +862,7 @@ Post-authentication navigation should be restricted to approved destinations.
 
 ---
 
-# Logout Redirects
+## Logout Redirects
 
 ```
 User
@@ -884,7 +884,7 @@ Logout workflows should follow the same validation principles as login workflows
 
 ---
 
-# Password Reset Workflow
+## Password Reset Workflow
 
 ```
 User
@@ -910,7 +910,7 @@ Redirect destinations should remain consistent throughout the recovery process.
 
 ---
 
-# Trusted Destination Registry
+## Trusted Destination Registry
 
 Large organizations often maintain a centralized registry.
 
@@ -938,7 +938,7 @@ Applications should reference centrally approved destinations whenever possible.
 
 ---
 
-# Redirect Governance
+## Redirect Governance
 
 ```
 Business Requirements
@@ -964,7 +964,7 @@ Governance reduces inconsistencies between development teams.
 
 ---
 
-# Enterprise Redirect Service
+## Enterprise Redirect Service
 
 ```
 Applications
@@ -990,7 +990,7 @@ A dedicated redirect service promotes reuse and policy consistency.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Redirect validation should complement broader security controls.
 
@@ -1022,7 +1022,7 @@ Each layer contributes to secure application navigation.
 
 ---
 
-# Logging
+## Logging
 
 Redirect-related operational events should be recorded.
 
@@ -1046,7 +1046,7 @@ Logging supports troubleshooting, auditing, and operational visibility.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1062,7 +1062,7 @@ Sensitive user information should not be unnecessarily recorded in logs.
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -1088,7 +1088,7 @@ Continuous monitoring helps verify that redirect policies remain effective after
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1102,7 +1102,7 @@ Continuous monitoring helps verify that redirect policies remain effective after
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1140,7 +1140,7 @@ This architecture centralizes redirect validation while maintaining consistent b
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global insurance company operates customer, employee, and partner portals.
 
@@ -1168,7 +1168,7 @@ Every redirect is validated against a centrally maintained registry of approved 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1181,7 +1181,7 @@ Every redirect is validated against a centrally maintained registry of approved 
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the redirect processing lifecycle for an enterprise application.
 2. Identify every workflow that performs redirects.
@@ -1193,7 +1193,7 @@ Every redirect is validated against a centrally maintained registry of approved 
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the redirect processing lifecycle?
 2. Why should redirect destinations be validated?
@@ -1208,7 +1208,7 @@ Every redirect is validated against a centrally maintained registry of approved 
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate all redirect destinations before navigation.
 - Maintain a centralized registry of trusted destinations.
@@ -1221,7 +1221,7 @@ Every redirect is validated against a centrally maintained registry of approved 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing inconsistent redirect validation.
 - Managing trusted destinations independently across teams.
@@ -1232,7 +1232,7 @@ Every redirect is validated against a centrally maintained registry of approved 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Redirect handling should follow a structured and predictable lifecycle.
 - Redirect destinations should be validated against approved business rules.
@@ -1240,15 +1240,15 @@ Every redirect is validated against a centrally maintained registry of approved 
 - Centralized governance and trusted destination registries improve consistency across enterprise applications.
 - Continuous monitoring, logging, and standardized validation significantly strengthen redirect security.
 
-# 44-Open-Redirect.md
+## 44-Open-Redirect.md
 
-# Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, Monitoring, and Enterprise Defense
+## Part 3 — Detection, Secure Testing, Threat Modeling, Secure SDLC, Monitoring, and Enterprise Defense
 
 > **"Secure redirect handling depends on continuous validation, standardized governance, secure application architecture, and comprehensive monitoring throughout the software lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1265,7 +1265,7 @@ After completing this part, you will understand:
 
 ---
 
-# Detecting Redirect Security Risks
+## Detecting Redirect Security Risks
 
 Organizations should periodically review redirect behavior throughout their application portfolio.
 
@@ -1293,7 +1293,7 @@ The objective is to ensure every redirect aligns with approved business workflow
 
 ---
 
-# Redirect Security Review
+## Redirect Security Review
 
 A security review should examine the complete navigation process.
 
@@ -1325,7 +1325,7 @@ Reviews should verify that redirect decisions are deterministic and policy-drive
 
 ---
 
-# Redirect Inventory
+## Redirect Inventory
 
 Maintain an inventory of every application component that performs redirects.
 
@@ -1355,7 +1355,7 @@ An accurate inventory simplifies governance and compliance activities.
 
 ---
 
-# Trusted Destination Inventory
+## Trusted Destination Inventory
 
 Organizations should maintain documentation of approved destinations.
 
@@ -1383,7 +1383,7 @@ Destination inventories should be reviewed regularly.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Redirect validation should be implemented consistently across applications.
 
@@ -1411,7 +1411,7 @@ Consistent implementation reduces configuration drift.
 
 ---
 
-# Architecture Review
+## Architecture Review
 
 Architecture reviews should evaluate:
 
@@ -1442,7 +1442,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling identifies where navigation decisions influence business processes.
 
@@ -1470,7 +1470,7 @@ The goal is to understand where additional validation or governance may be requi
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 Security architects should ask:
 
@@ -1497,7 +1497,7 @@ Security Controls
 
 ---
 
-# Redirect Validation Testing
+## Redirect Validation Testing
 
 Applications should verify that redirect behavior follows documented business requirements.
 
@@ -1521,7 +1521,7 @@ Testing should focus on correctness, predictability, and policy compliance.
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1549,7 +1549,7 @@ Every testing phase contributes to reliable navigation behavior.
 
 ---
 
-# Business Workflow Validation
+## Business Workflow Validation
 
 Critical workflows should be reviewed individually.
 
@@ -1577,7 +1577,7 @@ Expected Navigation
 
 ---
 
-# Redirect Policy Validation
+## Redirect Policy Validation
 
 Applications should periodically verify that redirect policies remain accurate.
 
@@ -1601,7 +1601,7 @@ Policy reviews reduce inconsistencies after application changes.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 Redirect security should be incorporated throughout software development.
 
@@ -1637,7 +1637,7 @@ Integrating redirect validation early reduces long-term operational risk.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 ```
 Developer
@@ -1671,7 +1671,7 @@ Automated validation helps identify policy inconsistencies before production dep
 
 ---
 
-# Change Management
+## Change Management
 
 Redirect-related configuration changes should follow formal governance.
 
@@ -1703,7 +1703,7 @@ Controlled changes improve traceability and operational reliability.
 
 ---
 
-# Logging
+## Logging
 
 Redirect-related events should be logged appropriately.
 
@@ -1727,7 +1727,7 @@ Logs support troubleshooting, compliance, and operational awareness.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1744,7 +1744,7 @@ Sensitive user information should be masked or excluded from logs whenever appro
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1770,7 +1770,7 @@ Continuous monitoring confirms that redirect policies remain effective after rel
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1784,7 +1784,7 @@ Continuous monitoring confirms that redirect policies remain effective after rel
 
 ---
 
-# Governance
+## Governance
 
 Organizations should establish centralized redirect security standards.
 
@@ -1814,7 +1814,7 @@ Governance improves consistency across development teams.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1856,7 +1856,7 @@ Each layer contributes to secure and predictable navigation.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization manages customer banking, employee services, and partner portals.
 
@@ -1884,7 +1884,7 @@ All redirect decisions are validated against centrally managed business policies
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Redirect Entry Points Documented
@@ -1910,7 +1910,7 @@ All redirect decisions are validated against centrally managed business policies
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1923,7 +1923,7 @@ All redirect decisions are validated against centrally managed business policies
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create an inventory of every redirect within an enterprise application.
 2. Document trusted destinations for each workflow.
@@ -1935,7 +1935,7 @@ All redirect decisions are validated against centrally managed business policies
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should redirect workflows be reviewed regularly?
 2. What is the purpose of a trusted destination inventory?
@@ -1950,7 +1950,7 @@ All redirect decisions are validated against centrally managed business policies
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain a complete inventory of redirect workflows.
 - Validate every redirect against approved business rules.
@@ -1964,7 +1964,7 @@ All redirect decisions are validated against centrally managed business policies
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Inconsistent redirect validation between applications.
 - Maintaining separate destination lists for different teams.
@@ -1976,7 +1976,7 @@ All redirect decisions are validated against centrally managed business policies
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Redirect security depends on predictable validation and centralized governance.
 - Architecture reviews and threat modeling help identify navigation-related risks.
@@ -1984,15 +1984,15 @@ All redirect decisions are validated against centrally managed business policies
 - Continuous monitoring and logging improve operational visibility.
 - Standardized validation policies and trusted destination registries strengthen enterprise redirect security.
 
-# 44-Open-Redirect.md
+## 44-Open-Redirect.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Secure redirect handling is achieved through centralized governance, deterministic destination validation, standardized navigation policies, continuous monitoring, and secure software development practices. Redirects should always preserve user trust and business intent."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2014,7 +2014,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Redirect Governance
+## Enterprise Redirect Governance
 
 Organizations should establish centralized governance for all redirect-related functionality.
 
@@ -2054,7 +2054,7 @@ Governance ensures consistent redirect behavior across every application.
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Redirect Security Governance
@@ -2084,7 +2084,7 @@ Governance reduces inconsistencies between teams and applications.
 
 ---
 
-# Destination Governance
+## Destination Governance
 
 Approved destinations should be centrally managed.
 
@@ -2112,7 +2112,7 @@ Only documented and approved destinations should be available for business workf
 
 ---
 
-# Zero Trust for Redirects
+## Zero Trust for Redirects
 
 Zero Trust principles apply to every navigation decision.
 
@@ -2147,7 +2147,7 @@ Every redirect should be independently evaluated.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Redirect validation should work alongside other security controls.
 
@@ -2179,7 +2179,7 @@ Multiple layers improve overall application resilience.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Redirect validation should become part of the software delivery lifecycle.
 
@@ -2211,7 +2211,7 @@ Security is incorporated continuously rather than only before production.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Redirect configuration should be version controlled where practical.
 
@@ -2239,7 +2239,7 @@ IaC provides consistency, traceability, and repeatability.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2273,7 +2273,7 @@ Automated checks help identify policy inconsistencies before deployment.
 
 ---
 
-# Documentation
+## Documentation
 
 Maintain documentation for:
 
@@ -2303,7 +2303,7 @@ Accurate documentation supports maintenance, governance, and audits.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Organizations should maintain governance supporting secure navigation workflows.
 
@@ -2331,7 +2331,7 @@ Applicable requirements vary according to regulatory and organizational obligati
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Redirect-related operational events should be recorded.
 
@@ -2355,7 +2355,7 @@ Audit logs support investigations, governance, and operational visibility.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2372,7 +2372,7 @@ Sensitive user information should be masked or omitted where appropriate.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2398,7 +2398,7 @@ Continuous monitoring helps verify that redirect behavior remains consistent aft
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2413,7 +2413,7 @@ Continuous monitoring helps verify that redirect behavior remains consistent aft
 
 ---
 
-# Redirect Security Dashboard
+## Redirect Security Dashboard
 
 ```
 Redirect Security Dashboard
@@ -2441,7 +2441,7 @@ Dashboards provide centralized visibility into redirect operations.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2471,7 +2471,7 @@ SOC teams correlate redirect events with authentication, application, and infras
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should establish documented response procedures for redirect-related incidents.
 
@@ -2507,7 +2507,7 @@ A structured response minimizes disruption and improves future resilience.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2537,7 +2537,7 @@ Root cause analysis should examine technical controls, governance, and operation
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2567,7 +2567,7 @@ Redirect governance should evolve alongside application architecture and busines
 
 ---
 
-# Redirect Security Maturity Model
+## Redirect Security Maturity Model
 
 ```
 Level 1
@@ -2604,7 +2604,7 @@ Higher maturity reflects increased automation, governance, and operational consi
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2658,7 +2658,7 @@ This architecture separates redirect validation from business logic while provid
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational e-commerce organization operates customer portals, payment workflows, support systems, and partner integrations.
 
@@ -2686,7 +2686,7 @@ The organization maintains a centrally managed destination registry, validates e
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Redirect Workflows Documented
@@ -2712,7 +2712,7 @@ The organization maintains a centrally managed destination registry, validates e
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2725,9 +2725,9 @@ The organization maintains a centrally managed destination registry, validates e
 
 ---
 
-# Open Redirect Quick Revision
+## Open Redirect Quick Revision
 
-## Redirect Lifecycle
+### Redirect Lifecycle
 
 ```
 Request
@@ -2751,7 +2751,7 @@ Redirect
 
 ---
 
-## Secure Navigation
+### Secure Navigation
 
 ```
 User
@@ -2771,7 +2771,7 @@ Trusted Destination
 
 ---
 
-## Defense Layers
+### Defense Layers
 
 ```
 Input Validation
@@ -2795,7 +2795,7 @@ Monitoring
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Metrics
@@ -2815,7 +2815,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise redirect architecture showing validation and governance layers.
 2. Build a registry of approved redirect destinations for different business workflows.
@@ -2827,7 +2827,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is an Open Redirect?
 2. Why are redirects commonly used in web applications?
@@ -2842,7 +2842,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate every redirect destination before navigation.
 - Maintain a centrally managed registry of approved destinations.
@@ -2856,7 +2856,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting user-controlled redirect destinations.
 - Applying inconsistent validation across applications.
@@ -2868,7 +2868,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A SIEM can generate thousands of events and alerts.
 
@@ -34,7 +34,7 @@ They are related but different.
 
 ---
 
-# 2. Triage
+## 2. Triage
 
 Triage is the rapid process of determining:
 
@@ -62,7 +62,7 @@ Investigate / Escalate / Close
 
 ---
 
-# 3. Investigation
+## 3. Investigation
 
 Investigation goes deeper.
 
@@ -82,7 +82,7 @@ What happened after?
 
 ---
 
-# 4. Threat Hunting
+## 4. Threat Hunting
 
 Threat hunting is proactive.
 
@@ -110,7 +110,7 @@ The goal is to discover threats that may not have generated alerts.
 
 ---
 
-# 5. Triage vs Investigation vs Hunting
+## 5. Triage vs Investigation vs Hunting
 
 | Activity | Starting Point | Goal |
 |---|---|---|
@@ -120,7 +120,7 @@ The goal is to discover threats that may not have generated alerts.
 
 ---
 
-# 6. Investigation Lifecycle
+## 6. Investigation Lifecycle
 
 A practical workflow:
 
@@ -150,7 +150,7 @@ DOCUMENT
 
 ---
 
-# 7. Step 1 – Validate the Alert
+## 7. Step 1 – Validate the Alert
 
 Ask:
 
@@ -176,7 +176,7 @@ Start with:
 
 ---
 
-# 8. Step 2 – Understand the Detection
+## 8. Step 2 – Understand the Detection
 
 Review:
 
@@ -195,7 +195,7 @@ This helps determine whether the alert is behaving as expected.
 
 ---
 
-# 9. Step 3 – Identify Key Entities
+## 9. Step 3 – Identify Key Entities
 
 Extract:
 
@@ -216,7 +216,7 @@ These become investigation pivots.
 
 ---
 
-# 10. Investigation Pivot
+## 10. Investigation Pivot
 
 A pivot means:
 
@@ -251,7 +251,7 @@ Search host timeline
 
 ---
 
-# 11. Common Pivot Types
+## 11. Common Pivot Types
 
 ```text
 User → Host
@@ -267,7 +267,7 @@ Cloud Account → Resources
 
 ---
 
-# 12. Investigation Starting Point
+## 12. Investigation Starting Point
 
 Suppose the alert says:
 
@@ -301,7 +301,7 @@ These fields become your investigation starting points.
 
 ---
 
-# 13. Timeline Analysis
+## 13. Timeline Analysis
 
 A timeline arranges events chronologically.
 
@@ -322,7 +322,7 @@ The timeline reveals relationships.
 
 ---
 
-# 14. Why Timelines Matter
+## 14. Why Timelines Matter
 
 Individual events may appear harmless.
 
@@ -348,7 +348,7 @@ Possible Compromise
 
 ---
 
-# 15. Event Ordering
+## 15. Event Ordering
 
 Always verify:
 
@@ -373,7 +373,7 @@ Effect
 
 ---
 
-# 16. Before-and-After Analysis
+## 16. Before-and-After Analysis
 
 For an alert at:
 
@@ -397,7 +397,7 @@ The exact window should depend on the incident.
 
 ---
 
-# 17. Scope Analysis
+## 17. Scope Analysis
 
 Scope determines:
 
@@ -426,7 +426,7 @@ represent very different incidents.
 
 ---
 
-# 18. Scope Questions
+## 18. Scope Questions
 
 Ask:
 
@@ -446,7 +446,7 @@ Did the same process execute elsewhere?
 
 ---
 
-# 19. Blast Radius
+## 19. Blast Radius
 
 Blast radius describes the extent of impact.
 
@@ -473,7 +473,7 @@ Affected Services
 
 ---
 
-# 20. Root Cause
+## 20. Root Cause
 
 Root cause asks:
 
@@ -495,7 +495,7 @@ Exposed Service
 
 ---
 
-# 21. Initial Access Investigation
+## 21. Initial Access Investigation
 
 If compromise is suspected, investigate:
 
@@ -512,7 +512,7 @@ Vulnerabilities
 
 ---
 
-# 22. Account Investigation
+## 22. Account Investigation
 
 For suspicious user activity:
 
@@ -530,7 +530,7 @@ Cloud Activity
 
 ---
 
-# 23. Host Investigation
+## 23. Host Investigation
 
 For suspicious host activity:
 
@@ -548,7 +548,7 @@ DNS
 
 ---
 
-# 24. Process Investigation
+## 24. Process Investigation
 
 For suspicious process:
 
@@ -568,7 +568,7 @@ Child Processes
 
 ---
 
-# 25. Parent-Child Process Analysis
+## 25. Parent-Child Process Analysis
 
 Example:
 
@@ -588,7 +588,7 @@ Process lineage is often more informative than a single process name.
 
 ---
 
-# 26. Command-Line Analysis
+## 26. Command-Line Analysis
 
 Look for:
 
@@ -606,7 +606,7 @@ But command-line content should always be interpreted in context.
 
 ---
 
-# 27. Network Investigation
+## 27. Network Investigation
 
 For suspicious communication:
 
@@ -626,7 +626,7 @@ Process
 
 ---
 
-# 28. DNS Investigation
+## 28. DNS Investigation
 
 Search:
 
@@ -652,7 +652,7 @@ High Query Volume
 
 ---
 
-# 29. Firewall Investigation
+## 29. Firewall Investigation
 
 Review:
 
@@ -678,7 +678,7 @@ Inbound?
 
 ---
 
-# 30. Proxy Investigation
+## 30. Proxy Investigation
 
 Review:
 
@@ -705,7 +705,7 @@ Phishing
 
 ---
 
-# 31. Cloud Investigation
+## 31. Cloud Investigation
 
 For suspicious cloud activity:
 
@@ -734,7 +734,7 @@ Cloud Storage Access
 
 ---
 
-# 32. Identity Investigation
+## 32. Identity Investigation
 
 Identity logs can reveal:
 
@@ -752,7 +752,7 @@ Identity is often central to modern investigations.
 
 ---
 
-# 33. Threat Intelligence Pivot
+## 33. Threat Intelligence Pivot
 
 Suppose:
 
@@ -775,7 +775,7 @@ Related Domains
 
 ---
 
-# 34. IOC Pivot
+## 34. IOC Pivot
 
 If you discover:
 
@@ -804,7 +804,7 @@ Execution?
 
 ---
 
-# 35. Related Alert Search
+## 35. Related Alert Search
 
 Search for:
 
@@ -828,7 +828,7 @@ Attack progression
 
 ---
 
-# 36. Alert Correlation
+## 36. Alert Correlation
 
 Example:
 
@@ -856,7 +856,7 @@ rather than four unrelated incidents.
 
 ---
 
-# 37. Incident Timeline
+## 37. Incident Timeline
 
 Build:
 
@@ -880,7 +880,7 @@ Example:
 
 ---
 
-# 38. Evidence Classification
+## 38. Evidence Classification
 
 Classify evidence as:
 
@@ -912,7 +912,7 @@ This prevents overclaiming.
 
 ---
 
-# 39. Hypothesis
+## 39. Hypothesis
 
 A hypothesis is a testable explanation.
 
@@ -930,7 +930,7 @@ Contradicting Evidence
 
 ---
 
-# 40. Hypothesis-Driven Investigation
+## 40. Hypothesis-Driven Investigation
 
 Workflow:
 
@@ -952,7 +952,7 @@ This prevents random searching.
 
 ---
 
-# 41. Example Hypothesis
+## 41. Example Hypothesis
 
 Hypothesis:
 
@@ -973,7 +973,7 @@ Threat intelligence
 
 ---
 
-# 42. Threat Hunting
+## 42. Threat Hunting
 
 Threat hunting starts with:
 
@@ -984,9 +984,9 @@ without triggering our detections?"
 
 ---
 
-# 43. Hunting vs Alert Investigation
+## 43. Hunting vs Alert Investigation
 
-### Alert Investigation
+#### Alert Investigation
 
 ```text
 Known Signal
@@ -994,7 +994,7 @@ Known Signal
 Investigate
 ```
 
-### Threat Hunting
+#### Threat Hunting
 
 ```text
 Hypothesis
@@ -1006,7 +1006,7 @@ Discover
 
 ---
 
-# 44. Hunt Hypothesis Examples
+## 44. Hunt Hypothesis Examples
 
 ```text
 Attackers may be using compromised
@@ -1027,7 +1027,7 @@ before large outbound transfers.
 
 ---
 
-# 45. Hunt Types
+## 45. Hunt Types
 
 Common approaches:
 
@@ -1043,7 +1043,7 @@ Hypothesis-Driven Hunting
 
 ---
 
-# 46. IOC Hunting
+## 46. IOC Hunting
 
 Search known:
 
@@ -1067,7 +1067,7 @@ Find affected hosts
 
 ---
 
-# 47. IOA Hunting
+## 47. IOA Hunting
 
 Search behaviors:
 
@@ -1083,7 +1083,7 @@ This can detect unknown infrastructure.
 
 ---
 
-# 48. Behavioral Hunting
+## 48. Behavioral Hunting
 
 Instead of:
 
@@ -1105,7 +1105,7 @@ Privileged execution
 
 ---
 
-# 49. Anomaly Hunting
+## 49. Anomaly Hunting
 
 Search:
 
@@ -1124,7 +1124,7 @@ It is a hunting signal.
 
 ---
 
-# 50. Threat Actor Hunting
+## 50. Threat Actor Hunting
 
 If intelligence indicates:
 
@@ -1145,7 +1145,7 @@ across relevant systems.
 
 ---
 
-# 51. Technique-Based Hunting
+## 51. Technique-Based Hunting
 
 Example:
 
@@ -1172,7 +1172,7 @@ Endpoint
 
 ---
 
-# 52. Hunt → Detection
+## 52. Hunt → Detection
 
 A successful hunt may reveal:
 
@@ -1196,7 +1196,7 @@ Threat hunting therefore improves detection engineering.
 
 ---
 
-# 53. Hunt → Incident
+## 53. Hunt → Incident
 
 A hunt may discover:
 
@@ -1220,7 +1220,7 @@ Response
 
 ---
 
-# 54. Triage Priority
+## 54. Triage Priority
 
 A practical priority model:
 
@@ -1246,7 +1246,7 @@ Attack Stage
 
 ---
 
-# 55. High-Priority Alert Example
+## 55. High-Priority Alert Example
 
 ```text
 Privileged Account
@@ -1264,7 +1264,7 @@ This should generally receive significant attention.
 
 ---
 
-# 56. Low-Priority Alert Example
+## 56. Low-Priority Alert Example
 
 ```text
 Single failed login
@@ -1280,7 +1280,7 @@ Likely lower priority.
 
 ---
 
-# 57. Triage Decision Tree
+## 57. Triage Decision Tree
 
 ```text
 Alert
@@ -1304,7 +1304,7 @@ Escalate / Respond
 
 ---
 
-# 58. False Positive Investigation
+## 58. False Positive Investigation
 
 Do not simply mark:
 
@@ -1329,7 +1329,7 @@ Should an exception be created?
 
 ---
 
-# 59. True Positive Investigation
+## 59. True Positive Investigation
 
 A true positive means the alert represents genuine suspicious/malicious activity.
 
@@ -1347,7 +1347,7 @@ Remediate
 
 ---
 
-# 60. Benign True Positive
+## 60. Benign True Positive
 
 A detection can correctly identify unusual activity while the activity is legitimate.
 
@@ -1369,7 +1369,7 @@ This is different from a detection bug.
 
 ---
 
-# 61. False Positive vs Benign Positive
+## 61. False Positive vs Benign Positive
 
 ```text
 False Positive:
@@ -1384,7 +1384,7 @@ Terminology can vary between organizations.
 
 ---
 
-# 62. Investigation Questions
+## 62. Investigation Questions
 
 Always ask:
 
@@ -1408,7 +1408,7 @@ WHEN ELSE?
 
 ---
 
-# 63. The Five Ws + H
+## 63. The Five Ws + H
 
 ```text
 Who?
@@ -1423,7 +1423,7 @@ This is a useful investigation framework.
 
 ---
 
-# 64. Scope Questions
+## 64. Scope Questions
 
 ```text
 How many hosts?
@@ -1443,7 +1443,7 @@ How long has this occurred?
 
 ---
 
-# 65. Root-Cause Questions
+## 65. Root-Cause Questions
 
 ```text
 How did the attacker enter?
@@ -1459,7 +1459,7 @@ Which system was first compromised?
 
 ---
 
-# 66. Persistence Questions
+## 66. Persistence Questions
 
 ```text
 Were accounts created?
@@ -1477,7 +1477,7 @@ Were cloud keys created?
 
 ---
 
-# 67. Lateral Movement Questions
+## 67. Lateral Movement Questions
 
 ```text
 Did the attacker access another host?
@@ -1495,7 +1495,7 @@ Was remote execution observed?
 
 ---
 
-# 68. Collection Questions
+## 68. Collection Questions
 
 ```text
 What data was accessed?
@@ -1511,7 +1511,7 @@ Which cloud resources?
 
 ---
 
-# 69. Exfiltration Questions
+## 69. Exfiltration Questions
 
 ```text
 Was data transferred externally?
@@ -1529,7 +1529,7 @@ Which protocol?
 
 ---
 
-# 70. Persistence and Remediation
+## 70. Persistence and Remediation
 
 After compromise:
 
@@ -1548,7 +1548,7 @@ Exact actions depend on incident scope and organizational procedures.
 
 ---
 
-# 71. Evidence Preservation
+## 71. Evidence Preservation
 
 During investigations:
 
@@ -1565,7 +1565,7 @@ Avoid unnecessarily modifying compromised systems before appropriate evidence co
 
 ---
 
-# 72. Chain of Custody
+## 72. Chain of Custody
 
 For formal investigations, evidence handling may require:
 
@@ -1582,7 +1582,7 @@ The exact requirements depend on organizational and legal context.
 
 ---
 
-# 73. Investigation Documentation
+## 73. Investigation Documentation
 
 Document:
 
@@ -1603,7 +1603,7 @@ Final Classification
 
 ---
 
-# 74. Query Documentation
+## 74. Query Documentation
 
 Record important queries.
 
@@ -1627,7 +1627,7 @@ This makes investigations reproducible.
 
 ---
 
-# 75. Investigation Notebook
+## 75. Investigation Notebook
 
 A useful structure:
 
@@ -1648,7 +1648,7 @@ CASE
 
 ---
 
-# 76. Entity Relationship Analysis
+## 76. Entity Relationship Analysis
 
 Example:
 
@@ -1672,7 +1672,7 @@ This relationship chain helps identify the attack path.
 
 ---
 
-# 77. Investigation Graph
+## 77. Investigation Graph
 
 A graph may show:
 
@@ -1696,7 +1696,7 @@ Graphs are particularly useful for complex incidents.
 
 ---
 
-# 78. Search Strategy
+## 78. Search Strategy
 
 Do not start with:
 
@@ -1726,7 +1726,7 @@ Environment
 
 ---
 
-# 79. Narrow-to-Broad Investigation
+## 79. Narrow-to-Broad Investigation
 
 Example:
 
@@ -1748,7 +1748,7 @@ This controls investigation complexity.
 
 ---
 
-# 80. Broad-to-Narrow Hunting
+## 80. Broad-to-Narrow Hunting
 
 Threat hunting often works differently:
 
@@ -1778,7 +1778,7 @@ This is a useful conceptual distinction.
 
 ---
 
-# 81. Search Time Ranges
+## 81. Search Time Ranges
 
 Choose ranges based on the question.
 
@@ -1803,7 +1803,7 @@ Historical threat hunting
 
 ---
 
-# 82. Historical Retention
+## 82. Historical Retention
 
 Investigation quality depends on:
 
@@ -1823,7 +1823,7 @@ Historical investigation may be impossible.
 
 ---
 
-# 83. Data Source Reliability
+## 83. Data Source Reliability
 
 Before trusting absence:
 
@@ -1853,7 +1853,7 @@ Always distinguish the two.
 
 ---
 
-# 84. Triage Automation
+## 84. Triage Automation
 
 Some triage steps can be automated:
 
@@ -1872,7 +1872,7 @@ This allows analysts to focus on reasoning.
 
 ---
 
-# 85. Automated Enrichment
+## 85. Automated Enrichment
 
 Example:
 
@@ -1894,7 +1894,7 @@ Risk
 
 ---
 
-# 86. SOAR and Investigation
+## 86. SOAR and Investigation
 
 SOAR can automate repetitive actions:
 
@@ -1914,7 +1914,7 @@ More advanced workflows can perform approved response actions.
 
 ---
 
-# 87. Human-in-the-Loop
+## 87. Human-in-the-Loop
 
 Not every response should be fully automated.
 
@@ -1934,7 +1934,7 @@ This reduces accidental destructive actions.
 
 ---
 
-# 88. Investigation Quality
+## 88. Investigation Quality
 
 A good investigation is:
 
@@ -1949,7 +1949,7 @@ Documented
 
 ---
 
-# 89. Common Investigation Mistakes
+## 89. Common Investigation Mistakes
 
 ```text
 1. Assuming every alert is malicious.
@@ -1985,7 +1985,7 @@ Documented
 
 ---
 
-# 90. Practical Investigation Scenario
+## 90. Practical Investigation Scenario
 
 Alert:
 
@@ -2023,7 +2023,7 @@ Investigation:
 
 ---
 
-# 91. Scenario – Phishing Investigation
+## 91. Scenario – Phishing Investigation
 
 Start:
 
@@ -2063,7 +2063,7 @@ Network Connection
 
 ---
 
-# 92. Scenario – Account Compromise
+## 92. Scenario – Account Compromise
 
 Start:
 
@@ -2095,7 +2095,7 @@ if the same source appears elsewhere.
 
 ---
 
-# 93. Scenario – Malware Investigation
+## 93. Scenario – Malware Investigation
 
 Start:
 
@@ -2120,7 +2120,7 @@ Last Seen
 
 ---
 
-# 94. Scenario – Lateral Movement
+## 94. Scenario – Lateral Movement
 
 Start:
 
@@ -2143,7 +2143,7 @@ Subsequent Activity
 
 ---
 
-# 95. Scenario – Data Exfiltration
+## 95. Scenario – Data Exfiltration
 
 Start:
 
@@ -2168,7 +2168,7 @@ Cloud Storage
 
 ---
 
-# 96. Threat Hunting Scenario
+## 96. Threat Hunting Scenario
 
 Hypothesis:
 
@@ -2206,7 +2206,7 @@ Network
 
 ---
 
-# 97. Hunting Scenario – Rare PowerShell
+## 97. Hunting Scenario – Rare PowerShell
 
 Hypothesis:
 
@@ -2241,7 +2241,7 @@ Network
 
 ---
 
-# 98. Hunting Scenario – Rare Domain
+## 98. Hunting Scenario – Rare Domain
 
 Hypothesis:
 
@@ -2271,7 +2271,7 @@ Network Connections
 
 ---
 
-# 99. Hunt Validation
+## 99. Hunt Validation
 
 A hunt finding should be classified:
 
@@ -2292,71 +2292,71 @@ Further Hunting?
 
 ---
 
-# 100. Interview Questions
+## 100. Interview Questions
 
-### What is SOC triage?
+#### What is SOC triage?
 
 > The rapid assessment of an alert or security event to determine validity, priority, severity, scope, and the appropriate next action.
 
-### What is a security investigation?
+#### What is a security investigation?
 
 > A structured analysis of evidence to determine what happened, how it happened, what was affected, and what response is required.
 
-### What is threat hunting?
+#### What is threat hunting?
 
 > A proactive, hypothesis-driven search for malicious or suspicious activity that may not have been detected automatically.
 
-### What is the difference between triage and investigation?
+#### What is the difference between triage and investigation?
 
 > Triage quickly determines priority and whether deeper investigation is warranted; investigation performs the detailed analysis needed to establish facts and scope.
 
-### What is a pivot?
+#### What is a pivot?
 
 > Using a known entity or piece of evidence to search for related activity.
 
-### What is a timeline?
+#### What is a timeline?
 
 > A chronological representation of relevant events used to understand the sequence and relationships of activity.
 
-### What is blast radius?
+#### What is blast radius?
 
 > The scope or extent of systems, users, data, or services potentially affected by an incident.
 
-### What is hypothesis-driven hunting?
+#### What is hypothesis-driven hunting?
 
 > Starting with a testable assumption about attacker behavior and searching telemetry for supporting or contradicting evidence.
 
-### What is the difference between IOC hunting and behavioral hunting?
+#### What is the difference between IOC hunting and behavioral hunting?
 
 > IOC hunting searches for known artifacts such as IPs or hashes, while behavioral hunting searches for attacker-like activity patterns regardless of known indicators.
 
-### How do you investigate a suspicious login?
+#### How do you investigate a suspicious login?
 
 > Review the user, source IP, device, time, location, authentication method, MFA, previous activity, privilege changes, related alerts, and subsequent actions, then determine whether the behavior is expected and assess scope.
 
-### How do you investigate suspicious PowerShell?
+#### How do you investigate suspicious PowerShell?
 
 > Examine the process tree, parent process, command line, user, host, file activity, network connections, DNS, related alerts, and prevalence across the environment.
 
-### How do you determine incident scope?
+#### How do you determine incident scope?
 
 > Search related users, hosts, IPs, hashes, processes, domains, and timestamps across the relevant data sources and determine the number and type of affected entities.
 
-### Why is a timeline important?
+#### Why is a timeline important?
 
 > It helps establish causality, sequence, attack progression, and relationships between events.
 
-### What should you do if logs are missing?
+#### What should you do if logs are missing?
 
 > Verify the health of the relevant data source first; absence of events may represent missing telemetry rather than absence of activity.
 
-### Why document investigation queries?
+#### Why document investigation queries?
 
 > To make the investigation reproducible, auditable, and easier for another analyst to continue.
 
 ---
 
-# 101. Quick Revision
+## 101. Quick Revision
 
 ```text
 TRIAGE
@@ -2404,7 +2404,7 @@ CORRELATION
 
 ---
 
-# 102. Golden Rules
+## 102. Golden Rules
 
 ```text
 1. Validate the alert before assuming maliciousness.
@@ -2450,7 +2450,7 @@ CORRELATION
 
 ---
 
-# 103. Final Mental Model
+## 103. Final Mental Model
 
 For alert investigation:
 
@@ -2508,7 +2508,7 @@ DETECTION / INCIDENT
 
 ---
 
-# 104. Chapter Summary
+## 104. Chapter Summary
 
 Security investigation and threat hunting transform SIEM data into understanding.
 
@@ -2605,4 +2605,3 @@ Chapter 11 – Incident Response & SIEM Workflows
 ```
 
 There we will cover **incident lifecycle, preparation, detection, analysis, containment, eradication, recovery, post-incident activity, SIEM-to-case workflows, evidence handling, escalation, playbooks, response automation, SOAR integration, incident documentation, and practical incident-response scenarios.**
-```

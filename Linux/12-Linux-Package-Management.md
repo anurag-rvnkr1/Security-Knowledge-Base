@@ -1,10 +1,10 @@
 # 12 - Linux Package Management
 
-# Part 1 — Introduction to Linux Package Management, Software Repositories, Package Formats, APT, DNF, YUM, Zypper, Pacman, and Package Architecture
+## Part 1 — Introduction to Linux Package Management, Software Repositories, Package Formats, APT, DNF, YUM, Zypper, Pacman, and Package Architecture
 
 ---
 
-# Introduction
+## Introduction
 
 Every Linux system requires software beyond the base operating system.
 
@@ -31,7 +31,7 @@ Package management is one of the most important responsibilities of Linux admini
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -46,7 +46,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is a Package?
+## What is a Package?
 
 A **package** is a compressed archive containing everything required to install software.
 
@@ -63,7 +63,7 @@ A package typically includes:
 
 ---
 
-# Package Structure
+## Package Structure
 
 ```text
 Package
@@ -87,7 +87,7 @@ Package
 
 ---
 
-# Why Package Management Exists
+## Why Package Management Exists
 
 Without package management:
 
@@ -102,7 +102,7 @@ Package managers automate these tasks.
 
 ---
 
-# Package Management Architecture
+## Package Management Architecture
 
 ```text
 Administrator
@@ -146,7 +146,7 @@ Install Software
 
 ---
 
-# Package Manager Responsibilities
+## Package Manager Responsibilities
 
 A package manager performs tasks such as:
 
@@ -161,7 +161,7 @@ A package manager performs tasks such as:
 
 ---
 
-# Common Linux Package Formats
+## Common Linux Package Formats
 
 | Distribution Family | Package Format |
 |---------------------|----------------|
@@ -172,7 +172,7 @@ A package manager performs tasks such as:
 
 ---
 
-# Package Managers
+## Package Managers
 
 | Distribution | Package Manager |
 |--------------|----------------|
@@ -188,7 +188,7 @@ A package manager performs tasks such as:
 
 ---
 
-# Package Management Workflow
+## Package Management Workflow
 
 ```text
 User
@@ -228,7 +228,7 @@ Package Database Updated
 
 ---
 
-# Understanding Repositories
+## Understanding Repositories
 
 A **repository** is a trusted collection of software packages.
 
@@ -242,7 +242,7 @@ Repositories provide:
 
 ---
 
-# Repository Architecture
+## Repository Architecture
 
 ```text
 Vendor Repository
@@ -266,7 +266,7 @@ Installed System
 
 ---
 
-# Repository Benefits
+## Repository Benefits
 
 Repositories provide:
 
@@ -279,7 +279,7 @@ Repositories provide:
 
 ---
 
-# Public vs Private Repositories
+## Public vs Private Repositories
 
 | Public Repository | Private Repository |
 |-------------------|-------------------|
@@ -290,7 +290,7 @@ Repositories provide:
 
 ---
 
-# Enterprise Repository Model
+## Enterprise Repository Model
 
 ```text
 Internet
@@ -321,7 +321,7 @@ Benefits:
 
 ---
 
-# Package Metadata
+## Package Metadata
 
 Every package contains metadata including:
 
@@ -346,7 +346,7 @@ Architecture: x86_64
 
 ---
 
-# Package Dependencies
+## Package Dependencies
 
 Software rarely works alone.
 
@@ -372,7 +372,7 @@ Installing one application may automatically install several supporting packages
 
 ---
 
-# Dependency Resolution
+## Dependency Resolution
 
 ```text
 Install Application
@@ -398,7 +398,7 @@ Automatic dependency resolution is a major advantage of modern package managers.
 
 ---
 
-# Package Database
+## Package Database
 
 Linux maintains a local database of installed packages.
 
@@ -414,7 +414,7 @@ This enables accurate upgrades and removals.
 
 ---
 
-# Package Cache
+## Package Cache
 
 Downloaded packages are often stored locally.
 
@@ -428,7 +428,7 @@ Administrators may periodically clean the cache to reclaim disk space.
 
 ---
 
-# Package Signing
+## Package Signing
 
 Repositories digitally sign packages.
 
@@ -458,7 +458,7 @@ Unsigned or improperly signed packages should not be trusted.
 
 ---
 
-# Why Digital Signatures Matter
+## Why Digital Signatures Matter
 
 Digital signatures help verify:
 
@@ -470,7 +470,7 @@ They reduce the risk of installing tampered software.
 
 ---
 
-# Introduction to APT
+## Introduction to APT
 
 APT (Advanced Package Tool) is used on:
 
@@ -483,7 +483,7 @@ APT simplifies package management by resolving dependencies automatically.
 
 ---
 
-# Updating Repository Metadata
+## Updating Repository Metadata
 
 Refresh available package information:
 
@@ -495,7 +495,7 @@ This downloads the latest repository metadata without upgrading installed softwa
 
 ---
 
-# Installing a Package
+## Installing a Package
 
 Example:
 
@@ -513,7 +513,7 @@ APT will:
 
 ---
 
-# Removing a Package
+## Removing a Package
 
 Remove the package while generally leaving system-wide configuration files:
 
@@ -529,7 +529,7 @@ sudo apt purge nginx
 
 ---
 
-# Searching for Packages
+## Searching for Packages
 
 Search repositories:
 
@@ -545,7 +545,7 @@ apt show nginx
 
 ---
 
-# Listing Installed Packages
+## Listing Installed Packages
 
 ```bash
 apt list --installed
@@ -559,7 +559,7 @@ Useful for:
 
 ---
 
-# Introduction to DNF
+## Introduction to DNF
 
 DNF is the default package manager for:
 
@@ -576,7 +576,7 @@ sudo dnf install nginx
 
 ---
 
-# Common DNF Commands
+## Common DNF Commands
 
 Refresh metadata:
 
@@ -604,7 +604,7 @@ dnf info nginx
 
 ---
 
-# Introduction to YUM
+## Introduction to YUM
 
 YUM was the traditional package manager for older RHEL-based distributions.
 
@@ -618,7 +618,7 @@ Modern RHEL-compatible systems generally use DNF while retaining compatibility w
 
 ---
 
-# Introduction to Zypper
+## Introduction to Zypper
 
 Used on openSUSE.
 
@@ -642,7 +642,7 @@ sudo zypper refresh
 
 ---
 
-# Introduction to Pacman
+## Introduction to Pacman
 
 Used on Arch Linux.
 
@@ -672,7 +672,7 @@ pacman -Ss nginx
 
 ---
 
-# Comparison of Package Managers
+## Comparison of Package Managers
 
 | Feature | APT | DNF | YUM | Zypper | Pacman |
 |----------|-----|-----|-----|---------|---------|
@@ -684,7 +684,7 @@ pacman -Ss nginx
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company deploys 500 Ubuntu servers.
 
@@ -718,7 +718,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Package management plays a critical role in security.
 
@@ -734,7 +734,7 @@ Installing software from untrusted sources can introduce malware or unsupported 
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective package management enables organizations to:
 
@@ -747,7 +747,7 @@ Effective package management enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Install software only from trusted repositories.
 - Refresh repository metadata before installing new packages.
@@ -759,7 +759,7 @@ Effective package management enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Packages contain software, metadata, dependencies, and installation scripts.
 - Package managers automate installation, updates, and dependency resolution.
@@ -770,11 +770,11 @@ Effective package management enables organizations to:
 ---
 
 
-# Part 2 — Repository Configuration, Package Installation, Updates, Upgrades, Dependency Resolution, and Package Queries
+## Part 2 — Repository Configuration, Package Installation, Updates, Upgrades, Dependency Resolution, and Package Queries
 
 ---
 
-# Introduction
+## Introduction
 
 Installing software is only one aspect of package management.
 
@@ -793,7 +793,7 @@ This section focuses on day-to-day package management operations across major Li
 
 ---
 
-# Enterprise Package Management Workflow
+## Enterprise Package Management Workflow
 
 ```text
 Repository Configured
@@ -833,7 +833,7 @@ Maintain Software
 
 ---
 
-# Repository Configuration
+## Repository Configuration
 
 A **repository** is a trusted source of packages.
 
@@ -841,7 +841,7 @@ Before software can be installed, the package manager must know where repositori
 
 ---
 
-# APT Repository Configuration
+## APT Repository Configuration
 
 APT repositories are typically defined in:
 
@@ -863,7 +863,7 @@ deb http://archive.ubuntu.com/ubuntu jammy main restricted
 
 ---
 
-# Viewing Configured APT Repositories
+## Viewing Configured APT Repositories
 
 Display repository entries:
 
@@ -879,7 +879,7 @@ ls /etc/apt/sources.list.d/
 
 ---
 
-# DNF Repository Configuration
+## DNF Repository Configuration
 
 Repository definitions are commonly stored in:
 
@@ -909,7 +909,7 @@ gpgcheck=1
 
 ---
 
-# Repository File Components
+## Repository File Components
 
 | Directive | Purpose |
 |-----------|----------|
@@ -921,7 +921,7 @@ gpgcheck=1
 
 ---
 
-# Viewing Enabled Repositories
+## Viewing Enabled Repositories
 
 APT:
 
@@ -949,7 +949,7 @@ pacman -Sl
 
 ---
 
-# Refreshing Repository Metadata
+## Refreshing Repository Metadata
 
 Refreshing metadata downloads the latest package information without installing updates.
 
@@ -979,7 +979,7 @@ sudo pacman -Sy
 
 ---
 
-# Metadata Refresh Workflow
+## Metadata Refresh Workflow
 
 ```text
 Repository
@@ -999,7 +999,7 @@ Latest Package Information Available
 
 ---
 
-# Searching for Software
+## Searching for Software
 
 APT:
 
@@ -1027,7 +1027,7 @@ pacman -Ss nginx
 
 ---
 
-# Viewing Package Information
+## Viewing Package Information
 
 APT:
 
@@ -1064,7 +1064,7 @@ Typical information includes:
 
 ---
 
-# Installing Packages
+## Installing Packages
 
 APT:
 
@@ -1092,7 +1092,7 @@ sudo pacman -S nginx
 
 ---
 
-# Installation Process
+## Installation Process
 
 ```text
 Install Request
@@ -1124,7 +1124,7 @@ Package Database Updated
 
 ---
 
-# Installing Multiple Packages
+## Installing Multiple Packages
 
 APT:
 
@@ -1142,7 +1142,7 @@ Package managers install all requested packages while resolving shared dependenc
 
 ---
 
-# Reinstalling Packages
+## Reinstalling Packages
 
 APT:
 
@@ -1160,7 +1160,7 @@ Useful when package files become corrupted.
 
 ---
 
-# Removing Packages
+## Removing Packages
 
 APT:
 
@@ -1188,7 +1188,7 @@ sudo pacman -R nginx
 
 ---
 
-# Purging Configuration (APT)
+## Purging Configuration (APT)
 
 Remove package and system-wide configuration files:
 
@@ -1200,7 +1200,7 @@ Useful when performing a clean reinstall.
 
 ---
 
-# Automatically Removing Unused Dependencies
+## Automatically Removing Unused Dependencies
 
 APT:
 
@@ -1218,7 +1218,7 @@ Removes packages that were installed as dependencies but are no longer required.
 
 ---
 
-# Cleaning Package Cache
+## Cleaning Package Cache
 
 APT:
 
@@ -1246,7 +1246,7 @@ sudo pacman -Sc
 
 ---
 
-# Cache Management Workflow
+## Cache Management Workflow
 
 ```text
 Downloaded Packages
@@ -1266,7 +1266,7 @@ Disk Space Recovered
 
 ---
 
-# Updating Installed Packages
+## Updating Installed Packages
 
 APT:
 
@@ -1296,7 +1296,7 @@ Updates installed software using the current repository metadata.
 
 ---
 
-# Full System Upgrade
+## Full System Upgrade
 
 APT supports a more comprehensive upgrade operation:
 
@@ -1308,7 +1308,7 @@ This may install or remove packages when required to satisfy dependency changes.
 
 ---
 
-# Update vs Upgrade
+## Update vs Upgrade
 
 | Operation | Purpose |
 |-----------|----------|
@@ -1320,7 +1320,7 @@ Refreshing metadata does **not** update installed software.
 
 ---
 
-# Dependency Resolution
+## Dependency Resolution
 
 Package managers automatically install required dependencies.
 
@@ -1350,7 +1350,7 @@ This prevents many manual installation errors.
 
 ---
 
-# Dependency Conflict Example
+## Dependency Conflict Example
 
 ```text
 Application A
@@ -1370,7 +1370,7 @@ Package managers attempt to resolve such conflicts while maintaining consistency
 
 ---
 
-# Listing Installed Packages
+## Listing Installed Packages
 
 APT:
 
@@ -1398,7 +1398,7 @@ Useful for:
 
 ---
 
-# Determining Whether a Package Is Installed
+## Determining Whether a Package Is Installed
 
 APT:
 
@@ -1420,7 +1420,7 @@ pacman -Q nginx
 
 ---
 
-# Finding the Repository Providing a Package
+## Finding the Repository Providing a Package
 
 APT:
 
@@ -1438,7 +1438,7 @@ These commands help determine the package source and installed version.
 
 ---
 
-# Listing Files Installed by a Package
+## Listing Files Installed by a Package
 
 APT (Debian package database):
 
@@ -1460,7 +1460,7 @@ Useful for:
 
 ---
 
-# Finding Which Package Owns a File
+## Finding Which Package Owns a File
 
 APT:
 
@@ -1478,7 +1478,7 @@ This identifies the package responsible for an installed file.
 
 ---
 
-# Enterprise Software Inventory
+## Enterprise Software Inventory
 
 ```text
 Package Database
@@ -1504,7 +1504,7 @@ Accurate inventories simplify audits and vulnerability management.
 
 ---
 
-# Enterprise Scenario
+## Enterprise Scenario
 
 A vulnerability is announced in a web server package.
 
@@ -1538,7 +1538,7 @@ Timely patching reduces exposure to known vulnerabilities.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers often exploit:
 
@@ -1557,7 +1557,7 @@ Security teams should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective update and repository management helps organizations:
 
@@ -1569,7 +1569,7 @@ Effective update and repository management helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Refresh repository metadata before installing or upgrading software.
 - Use trusted repositories with signature verification enabled.
@@ -1581,7 +1581,7 @@ Effective update and repository management helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Repository configuration determines where packages are obtained.
 - Metadata refresh and software upgrades are separate operations.
@@ -1591,11 +1591,11 @@ Effective update and repository management helps organizations:
 
 ---
 
-# Part 3 — Package Verification, GPG Keys, Repository Security, Building from Source, Enterprise Patch Management, and Security Best Practices
+## Part 3 — Package Verification, GPG Keys, Repository Security, Building from Source, Enterprise Patch Management, and Security Best Practices
 
 ---
 
-# Introduction
+## Introduction
 
 Installing software is only the first step.
 
@@ -1612,7 +1612,7 @@ Modern package managers provide cryptographic verification and repository securi
 
 ---
 
-# Enterprise Secure Package Workflow
+## Enterprise Secure Package Workflow
 
 ```text
 Repository Selected
@@ -1652,7 +1652,7 @@ Security Monitoring
 
 ---
 
-# Why Package Verification Matters
+## Why Package Verification Matters
 
 Without verification, an attacker could:
 
@@ -1666,7 +1666,7 @@ Verification protects both integrity and authenticity.
 
 ---
 
-# Software Supply Chain
+## Software Supply Chain
 
 ```text
 Developer
@@ -1696,7 +1696,7 @@ Every stage should be protected to reduce supply-chain risk.
 
 ---
 
-# Cryptographic Verification
+## Cryptographic Verification
 
 Package managers verify:
 
@@ -1712,7 +1712,7 @@ Verification relies on:
 
 ---
 
-# GPG (GNU Privacy Guard)
+## GPG (GNU Privacy Guard)
 
 Linux repositories commonly use **GPG** to sign packages and repository metadata.
 
@@ -1726,7 +1726,7 @@ Systems verify packages using the corresponding:
 
 ---
 
-# GPG Verification Workflow
+## GPG Verification Workflow
 
 ```text
 Repository
@@ -1752,7 +1752,7 @@ If verification fails, the package should not be trusted.
 
 ---
 
-# Repository Public Keys
+## Repository Public Keys
 
 Public keys are imported into the system's trusted keyring.
 
@@ -1760,7 +1760,7 @@ Package managers use these keys to verify repository metadata and packages befor
 
 ---
 
-# Why GPG Keys Matter
+## Why GPG Keys Matter
 
 Benefits:
 
@@ -1771,7 +1771,7 @@ Benefits:
 
 ---
 
-# Repository Security
+## Repository Security
 
 A secure repository should provide:
 
@@ -1783,7 +1783,7 @@ A secure repository should provide:
 
 ---
 
-# Trusted Repository Model
+## Trusted Repository Model
 
 ```text
 Vendor
@@ -1811,7 +1811,7 @@ Linux Server
 
 ---
 
-# Risks of Untrusted Repositories
+## Risks of Untrusted Repositories
 
 Installing software from unknown repositories may introduce:
 
@@ -1825,9 +1825,9 @@ Organizations should carefully evaluate any third-party repository before use.
 
 ---
 
-# Verifying Installed Packages
+## Verifying Installed Packages
 
-## Debian-Based Systems
+### Debian-Based Systems
 
 Verify package contents:
 
@@ -1839,7 +1839,7 @@ debsums
 
 ---
 
-## RPM-Based Systems
+### RPM-Based Systems
 
 Verify package integrity:
 
@@ -1864,7 +1864,7 @@ Unexpected output may indicate:
 
 ---
 
-# Understanding RPM Verification
+## Understanding RPM Verification
 
 Example output:
 
@@ -1887,7 +1887,7 @@ Interpret results carefully, as some changes may be expected (for example, confi
 
 ---
 
-# Package Information Queries
+## Package Information Queries
 
 APT:
 
@@ -1911,7 +1911,7 @@ These commands provide package metadata useful for audits and troubleshooting.
 
 ---
 
-# Listing Package Files
+## Listing Package Files
 
 Debian:
 
@@ -1933,7 +1933,7 @@ Useful for:
 
 ---
 
-# Package Ownership
+## Package Ownership
 
 Determine which package installed a file.
 
@@ -1951,7 +1951,7 @@ rpm -qf /usr/bin/ssh
 
 ---
 
-# Building Software from Source
+## Building Software from Source
 
 Not all software is available in repositories.
 
@@ -1977,7 +1977,7 @@ Install
 
 ---
 
-# Typical Source Build Steps
+## Typical Source Build Steps
 
 Many traditional projects follow:
 
@@ -2001,7 +2001,7 @@ Always follow the project's official build instructions.
 
 ---
 
-# Advantages of Building from Source
+## Advantages of Building from Source
 
 Benefits include:
 
@@ -2012,7 +2012,7 @@ Benefits include:
 
 ---
 
-# Disadvantages of Building from Source
+## Disadvantages of Building from Source
 
 Challenges include:
 
@@ -2026,7 +2026,7 @@ Production environments generally prefer distribution packages unless a specific
 
 ---
 
-# Enterprise Patch Management
+## Enterprise Patch Management
 
 Patch management is the process of:
 
@@ -2038,7 +2038,7 @@ Patch management is the process of:
 
 ---
 
-# Patch Management Lifecycle
+## Patch Management Lifecycle
 
 ```text
 Security Advisory
@@ -2070,7 +2070,7 @@ Documentation
 
 ---
 
-# Patch Categories
+## Patch Categories
 
 | Category | Purpose |
 |----------|----------|
@@ -2082,7 +2082,7 @@ Documentation
 
 ---
 
-# Security Update Workflow
+## Security Update Workflow
 
 ```text
 Vendor Advisory
@@ -2114,7 +2114,7 @@ Close Change Record
 
 ---
 
-# Patch Testing
+## Patch Testing
 
 Enterprise environments commonly use:
 
@@ -2138,7 +2138,7 @@ Testing helps identify compatibility issues before deployment.
 
 ---
 
-# Rollback Planning
+## Rollback Planning
 
 Before major upgrades:
 
@@ -2151,7 +2151,7 @@ A documented rollback strategy reduces operational risk.
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Security teams continuously:
 
@@ -2165,7 +2165,7 @@ Package inventories are essential for this process.
 
 ---
 
-# Compliance Requirements
+## Compliance Requirements
 
 Many regulations require:
 
@@ -2184,7 +2184,7 @@ Examples include:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A critical OpenSSL vulnerability is announced.
 
@@ -2220,7 +2220,7 @@ Document Completion
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently target:
 
@@ -2239,7 +2239,7 @@ Defensive measures include:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Strong package governance helps organizations:
 
@@ -2251,7 +2251,7 @@ Strong package governance helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use only trusted repositories.
 - Keep repository signing keys up to date.
@@ -2264,7 +2264,7 @@ Strong package governance helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - GPG signatures help verify package authenticity and integrity.
 - Trusted repositories reduce software supply-chain risk.
@@ -2275,11 +2275,11 @@ Strong package governance helps organizations:
 ---
 
 
-# Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Linux package management is one of the most frequently performed administrative tasks.
 
@@ -2298,7 +2298,7 @@ Modern package managers simplify these operations while improving security throu
 
 ---
 
-# Enterprise Package Lifecycle
+## Enterprise Package Lifecycle
 
 ```text
 Software Requirement
@@ -2346,27 +2346,27 @@ Retirement
 
 ---
 
-# Practical Lab 1 — Refresh Repository Metadata
+## Practical Lab 1 — Refresh Repository Metadata
 
-### Ubuntu / Debian
+#### Ubuntu / Debian
 
 ```bash
 sudo apt update
 ```
 
-### Fedora / Rocky / AlmaLinux
+#### Fedora / Rocky / AlmaLinux
 
 ```bash
 sudo dnf check-update
 ```
 
-### openSUSE
+#### openSUSE
 
 ```bash
 sudo zypper refresh
 ```
 
-### Arch Linux
+#### Arch Linux
 
 ```bash
 sudo pacman -Sy
@@ -2379,7 +2379,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 2 — Search for Software
+## Practical Lab 2 — Search for Software
 
 Ubuntu:
 
@@ -2412,7 +2412,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 3 — View Package Information
+## Practical Lab 3 — View Package Information
 
 Ubuntu:
 
@@ -2446,7 +2446,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 4 — Install Software
+## Practical Lab 4 — Install Software
 
 Ubuntu:
 
@@ -2478,7 +2478,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 5 — Remove Software
+## Practical Lab 5 — Remove Software
 
 Ubuntu:
 
@@ -2504,7 +2504,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 6 — Remove Unused Dependencies
+## Practical Lab 6 — Remove Unused Dependencies
 
 Ubuntu:
 
@@ -2525,7 +2525,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 7 — Clean Package Cache
+## Practical Lab 7 — Clean Package Cache
 
 Ubuntu:
 
@@ -2552,7 +2552,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 8 — Upgrade Installed Packages
+## Practical Lab 8 — Upgrade Installed Packages
 
 Ubuntu:
 
@@ -2578,7 +2578,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 9 — List Installed Packages
+## Practical Lab 9 — List Installed Packages
 
 Ubuntu:
 
@@ -2605,7 +2605,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 10 — Find Package Ownership
+## Practical Lab 10 — Find Package Ownership
 
 Ubuntu:
 
@@ -2625,7 +2625,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 11 — List Files Installed by a Package
+## Practical Lab 11 — List Files Installed by a Package
 
 Ubuntu:
 
@@ -2646,7 +2646,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 12 — Verify Package Integrity
+## Practical Lab 12 — Verify Package Integrity
 
 RPM-based systems:
 
@@ -2667,7 +2667,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 13 — Review Configured Repositories
+## Practical Lab 13 — Review Configured Repositories
 
 Ubuntu:
 
@@ -2688,7 +2688,7 @@ Learning Objectives
 
 ---
 
-# Practical Lab 14 — End-to-End Patch Management
+## Practical Lab 14 — End-to-End Patch Management
 
 Workflow:
 
@@ -2726,9 +2726,9 @@ Learning Objectives
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# Critical Web Server Vulnerability
+## Critical Web Server Vulnerability
 
 Scenario
 
@@ -2771,9 +2771,9 @@ Outcome
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Unauthorized Repository Added
+## Unauthorized Repository Added
 
 SOC analysts discover an unexpected third-party repository on a production server.
 
@@ -2815,9 +2815,9 @@ Business Benefit
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# Failed Package Upgrade
+## Failed Package Upgrade
 
 Scenario
 
@@ -2857,9 +2857,9 @@ Lessons Learned
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Enterprise Patch Deployment
+## Enterprise Patch Deployment
 
 Deployment Strategy
 
@@ -2895,7 +2895,7 @@ Benefits
 
 ---
 
-# Common Package Management Mistakes
+## Common Package Management Mistakes
 
 | Mistake | Impact |
 |----------|--------|
@@ -2910,7 +2910,7 @@ Benefits
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 | Item | Verify |
 |------|---------|
@@ -2927,7 +2927,7 @@ Benefits
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Effective package management is a fundamental security control.
 
@@ -2945,7 +2945,7 @@ Many successful attacks exploit systems that remain vulnerable due to delayed pa
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-managed package infrastructure provides:
 
@@ -2959,7 +2959,7 @@ Well-managed package infrastructure provides:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Standardize repositories across the organization.
 - Use automated patch management where appropriate.
@@ -2974,7 +2974,7 @@ Well-managed package infrastructure provides:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2996,9 +2996,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is a Linux package?
 2. What is the purpose of a package manager?
@@ -3013,7 +3013,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the Linux package management workflow.
 2. What is package metadata?
@@ -3028,7 +3028,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design an enterprise patch management process.
 2. How would you detect unauthorized repositories?
@@ -3043,7 +3043,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Package managers automate secure software installation and maintenance.
 - Trusted repositories and GPG signatures help protect the software supply chain.
@@ -3053,9 +3053,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man apt`
 - `man apt-cache`
@@ -3066,7 +3066,7 @@ In this chapter, you learned:
 - `man zypper`
 - `man pacman`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Debian Administrator's Handbook
 - Fedora Documentation
@@ -3081,11 +3081,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **13-Linux-Networking.md**
 
-## Topics Covered
+### Topics Covered
 
 - Networking Fundamentals
 - OSI Model

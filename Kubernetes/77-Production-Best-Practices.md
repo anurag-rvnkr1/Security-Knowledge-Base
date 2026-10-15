@@ -61,7 +61,7 @@ Continuous Improvement
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -143,7 +143,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Production-Ready Kubernetes?
+## What Is Production-Ready Kubernetes?
 
 A production-ready Kubernetes environment should be capable of:
 
@@ -163,7 +163,7 @@ Supporting Safe Changes
 
 ---
 
-# Production Readiness Model
+## Production Readiness Model
 
 ```text
                  Production
@@ -183,7 +183,7 @@ Supporting Safe Changes
 
 ---
 
-# Production Architecture
+## Production Architecture
 
 A typical production platform may contain:
 
@@ -219,7 +219,7 @@ Secrets
 
 ---
 
-# Cluster Design
+## Cluster Design
 
 Production cluster design should consider:
 
@@ -236,7 +236,7 @@ Cost
 
 ---
 
-# Availability Zones
+## Availability Zones
 
 Where supported, distribute workloads across multiple availability zones.
 
@@ -260,7 +260,7 @@ This reduces dependence on a single zone.
 
 ---
 
-# Failure Domains
+## Failure Domains
 
 Important failure domains include:
 
@@ -278,7 +278,7 @@ Production architecture should understand which failures it can tolerate.
 
 ---
 
-# Namespace Strategy
+## Namespace Strategy
 
 Namespaces can provide organizational and security boundaries.
 
@@ -297,7 +297,7 @@ Avoid creating namespaces without a clear ownership or isolation purpose.
 
 ---
 
-# Namespace Ownership
+## Namespace Ownership
 
 Define:
 
@@ -312,7 +312,7 @@ Network Policy
 
 ---
 
-# Resource Quotas
+## Resource Quotas
 
 Use ResourceQuota to prevent one namespace from consuming unlimited cluster resources.
 
@@ -333,7 +333,7 @@ spec:
 
 ---
 
-# LimitRange
+## LimitRange
 
 LimitRange can define default or allowed resource values within a namespace.
 
@@ -357,7 +357,7 @@ spec:
 
 ---
 
-# Resource Requests
+## Resource Requests
 
 Requests tell Kubernetes how much resource a container expects to require.
 
@@ -372,7 +372,7 @@ resources:
 
 ---
 
-# Resource Limits
+## Resource Limits
 
 Limits place an upper bound on resource consumption.
 
@@ -387,7 +387,7 @@ resources:
 
 ---
 
-# Why Requests Matter
+## Why Requests Matter
 
 Requests influence:
 
@@ -400,7 +400,7 @@ QoS
 
 ---
 
-# Why Limits Matter
+## Why Limits Matter
 
 Limits can prevent workloads from consuming unlimited resources.
 
@@ -414,7 +414,7 @@ Application Instability
 
 ---
 
-# Quality of Service
+## Quality of Service
 
 Kubernetes QoS classes include:
 
@@ -426,25 +426,25 @@ BestEffort
 
 ---
 
-# Guaranteed
+## Guaranteed
 
 Generally achieved when containers have matching CPU and memory requests and limits for all applicable containers.
 
 ---
 
-# Burstable
+## Burstable
 
 Used when resource requests and limits are defined but do not meet Guaranteed criteria.
 
 ---
 
-# BestEffort
+## BestEffort
 
 Used when containers have no CPU or memory requests or limits.
 
 ---
 
-# Production Recommendation
+## Production Recommendation
 
 Avoid leaving critical workloads without resource requests.
 
@@ -460,7 +460,7 @@ Safety Margin
 
 ---
 
-# Pod Disruption Budget
+## Pod Disruption Budget
 
 PDB helps maintain application availability during voluntary disruptions.
 
@@ -480,7 +480,7 @@ spec:
 
 ---
 
-# Why PDB Matters
+## Why PDB Matters
 
 During:
 
@@ -494,7 +494,7 @@ PDB can help prevent excessive simultaneous disruption.
 
 ---
 
-# High Availability
+## High Availability
 
 High availability means the application can continue operating despite expected failures.
 
@@ -514,7 +514,7 @@ Load Balancing
 
 ---
 
-# Replica Strategy
+## Replica Strategy
 
 Avoid:
 
@@ -528,7 +528,7 @@ Prefer multiple replicas based on availability requirements.
 
 ---
 
-# Pod Anti-Affinity
+## Pod Anti-Affinity
 
 Pod anti-affinity can distribute replicas across nodes.
 
@@ -548,7 +548,7 @@ affinity:
 
 ---
 
-# Topology Spread Constraints
+## Topology Spread Constraints
 
 Topology spread constraints provide another mechanism for distributing workloads across failure domains.
 
@@ -566,7 +566,7 @@ topologySpreadConstraints:
 
 ---
 
-# Node Affinity
+## Node Affinity
 
 Use node affinity when workloads should run on specific nodes or infrastructure.
 
@@ -581,7 +581,7 @@ Specific Zones
 
 ---
 
-# Taints and Tolerations
+## Taints and Tolerations
 
 Taints prevent workloads from being scheduled onto nodes unless they tolerate the taint.
 
@@ -596,7 +596,7 @@ Infrastructure Nodes
 
 ---
 
-# Health Checks
+## Health Checks
 
 Production workloads should generally use appropriate probes.
 
@@ -610,7 +610,7 @@ Liveness
 
 ---
 
-# Startup Probe
+## Startup Probe
 
 Startup probes help applications that require significant initialization time.
 
@@ -627,7 +627,7 @@ startupProbe:
 
 ---
 
-# Readiness Probe
+## Readiness Probe
 
 Readiness determines whether a Pod should receive traffic.
 
@@ -642,7 +642,7 @@ readinessProbe:
 
 ---
 
-# Liveness Probe
+## Liveness Probe
 
 Liveness helps detect containers that are unhealthy and need restarting.
 
@@ -657,7 +657,7 @@ livenessProbe:
 
 ---
 
-# Probe Best Practice
+## Probe Best Practice
 
 Do not make liveness checks depend on external systems unnecessarily.
 
@@ -677,7 +677,7 @@ This can create restart storms.
 
 ---
 
-# Graceful Shutdown
+## Graceful Shutdown
 
 Applications should handle termination signals.
 
@@ -697,7 +697,7 @@ Exit
 
 ---
 
-# terminationGracePeriodSeconds
+## terminationGracePeriodSeconds
 
 Example:
 
@@ -710,7 +710,7 @@ Choose the value based on application behavior.
 
 ---
 
-# Deployment Strategy
+## Deployment Strategy
 
 Common deployment strategies include:
 
@@ -723,7 +723,7 @@ Recreate
 
 ---
 
-# Rolling Update
+## Rolling Update
 
 The new version gradually replaces the old version.
 
@@ -743,7 +743,7 @@ v2 v2 v2 v2
 
 ---
 
-# Rolling Update Configuration
+## Rolling Update Configuration
 
 Example:
 
@@ -757,7 +757,7 @@ strategy:
 
 ---
 
-# Blue-Green Deployment
+## Blue-Green Deployment
 
 Two environments:
 
@@ -784,7 +784,7 @@ Blue
 
 ---
 
-# Canary Deployment
+## Canary Deployment
 
 A small percentage of traffic is sent to the new version.
 
@@ -811,7 +811,7 @@ Eventually:
 
 ---
 
-# Rollbacks
+## Rollbacks
 
 Always have a rollback strategy.
 
@@ -829,7 +829,7 @@ kubectl rollout undo deployment/api
 
 ---
 
-# Deployment Status
+## Deployment Status
 
 Check:
 
@@ -839,7 +839,7 @@ kubectl rollout status deployment/api
 
 ---
 
-# Configuration Management
+## Configuration Management
 
 Separate:
 
@@ -852,7 +852,7 @@ Infrastructure
 
 ---
 
-# ConfigMaps
+## ConfigMaps
 
 Use ConfigMaps for non-sensitive configuration.
 
@@ -866,7 +866,7 @@ envFrom:
 
 ---
 
-# Secrets
+## Secrets
 
 Use Secrets for sensitive data, but understand that Kubernetes Secret objects alone do not automatically solve all secret-management requirements.
 
@@ -882,7 +882,7 @@ Access Control
 
 ---
 
-# Never Hardcode Secrets
+## Never Hardcode Secrets
 
 Avoid:
 
@@ -894,7 +894,7 @@ inside source code or Git repositories.
 
 ---
 
-# Image Best Practices
+## Image Best Practices
 
 Use:
 
@@ -911,7 +911,7 @@ Signing
 
 ---
 
-# Avoid `latest`
+## Avoid `latest`
 
 Avoid:
 
@@ -925,7 +925,7 @@ Prefer a controlled version and, where appropriate, an immutable digest.
 
 ---
 
-# Image Pull Policy
+## Image Pull Policy
 
 Choose deliberately based on deployment strategy.
 
@@ -933,7 +933,7 @@ Avoid relying on implicit behavior when deterministic production behavior matter
 
 ---
 
-# Non-Root Containers
+## Non-Root Containers
 
 Where possible:
 
@@ -944,7 +944,7 @@ securityContext:
 
 ---
 
-# Read-Only Filesystem
+## Read-Only Filesystem
 
 Where supported:
 
@@ -957,7 +957,7 @@ This can reduce the impact of certain attacks.
 
 ---
 
-# Drop Capabilities
+## Drop Capabilities
 
 Example:
 
@@ -972,7 +972,7 @@ Add only capabilities that are genuinely required.
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Where appropriate:
 
@@ -983,7 +983,7 @@ securityContext:
 
 ---
 
-# Seccomp
+## Seccomp
 
 Use an appropriate seccomp profile.
 
@@ -997,7 +997,7 @@ securityContext:
 
 ---
 
-# Network Security
+## Network Security
 
 Production clusters should implement network segmentation.
 
@@ -1014,7 +1014,7 @@ Cloud Network Controls
 
 ---
 
-# Default-Deny Networking
+## Default-Deny Networking
 
 A common strategy:
 
@@ -1028,7 +1028,7 @@ This follows a least-privilege networking model.
 
 ---
 
-# RBAC
+## RBAC
 
 Use least privilege.
 
@@ -1042,7 +1042,7 @@ unless absolutely necessary.
 
 ---
 
-# ServiceAccounts
+## ServiceAccounts
 
 Create dedicated ServiceAccounts for workloads.
 
@@ -1050,7 +1050,7 @@ Avoid sharing one highly privileged ServiceAccount across many applications.
 
 ---
 
-# ServiceAccount Example
+## ServiceAccount Example
 
 ```yaml
 apiVersion: v1
@@ -1062,7 +1062,7 @@ metadata:
 
 ---
 
-# Disable Unnecessary Token Mounting
+## Disable Unnecessary Token Mounting
 
 If a Pod does not need Kubernetes API access:
 
@@ -1072,7 +1072,7 @@ automountServiceAccountToken: false
 
 ---
 
-# Admission Policies
+## Admission Policies
 
 Use admission controls to prevent unsafe configurations.
 
@@ -1089,7 +1089,7 @@ Host Networking
 
 ---
 
-# Policy as Code
+## Policy as Code
 
 Store policies in version control.
 
@@ -1109,7 +1109,7 @@ Cluster
 
 ---
 
-# GitOps
+## GitOps
 
 Production changes should ideally be traceable.
 
@@ -1131,7 +1131,7 @@ Deployment
 
 ---
 
-# Infrastructure as Code
+## Infrastructure as Code
 
 Use tools such as:
 
@@ -1156,7 +1156,7 @@ Drift Detection
 
 ---
 
-# CI/CD Security
+## CI/CD Security
 
 CI/CD should validate:
 
@@ -1172,7 +1172,7 @@ Policies
 
 ---
 
-# Observability
+## Observability
 
 Production systems require:
 
@@ -1185,7 +1185,7 @@ Alerts
 
 ---
 
-# The Three Pillars
+## The Three Pillars
 
 ```text
 Logs
@@ -1197,7 +1197,7 @@ Together they provide broader system visibility.
 
 ---
 
-# Metrics
+## Metrics
 
 Monitor:
 
@@ -1214,7 +1214,7 @@ Error Rate
 
 ---
 
-# Golden Signals
+## Golden Signals
 
 Common service-level signals:
 
@@ -1227,7 +1227,7 @@ Saturation
 
 ---
 
-# Logging
+## Logging
 
 Centralize logs instead of relying exclusively on local node storage.
 
@@ -1245,7 +1245,7 @@ Search / SIEM
 
 ---
 
-# Distributed Tracing
+## Distributed Tracing
 
 Tracing helps follow a request across services.
 
@@ -1265,7 +1265,7 @@ Database
 
 ---
 
-# Alerting
+## Alerting
 
 Alerts should be:
 
@@ -1280,7 +1280,7 @@ Avoid alerting on every minor event.
 
 ---
 
-# Service Level Objectives
+## Service Level Objectives
 
 SLOs define target reliability.
 
@@ -1292,7 +1292,7 @@ Availability SLO = 99.9%
 
 ---
 
-# Service Level Indicators
+## Service Level Indicators
 
 SLIs are measurements used to evaluate service performance.
 
@@ -1306,7 +1306,7 @@ Total Requests
 
 ---
 
-# Service Level Agreements
+## Service Level Agreements
 
 An SLA is typically an external or contractual commitment.
 
@@ -1320,7 +1320,7 @@ SLA
 
 ---
 
-# Error Budget
+## Error Budget
 
 If the SLO is:
 
@@ -1332,7 +1332,7 @@ the remaining availability budget can be used to reason about acceptable unrelia
 
 ---
 
-# Monitoring Kubernetes
+## Monitoring Kubernetes
 
 Monitor:
 
@@ -1350,7 +1350,7 @@ API Server
 
 ---
 
-# Monitoring Nodes
+## Monitoring Nodes
 
 Important metrics:
 
@@ -1366,7 +1366,7 @@ Pressure
 
 ---
 
-# Monitoring Pods
+## Monitoring Pods
 
 Monitor:
 
@@ -1381,7 +1381,7 @@ CrashLoopBackOff
 
 ---
 
-# Monitoring Deployments
+## Monitoring Deployments
 
 Monitor:
 
@@ -1394,7 +1394,7 @@ Unavailable Replicas
 
 ---
 
-# Storage Monitoring
+## Storage Monitoring
 
 Monitor:
 
@@ -1409,7 +1409,7 @@ PVC Status
 
 ---
 
-# Database Dependencies
+## Database Dependencies
 
 Kubernetes may run the application while the real bottleneck is an external database.
 
@@ -1425,7 +1425,7 @@ Object Storage
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Back up:
 
@@ -1438,7 +1438,7 @@ Cluster State Where Applicable
 
 ---
 
-# Backup Verification
+## Backup Verification
 
 A backup that cannot be restored is not a reliable backup strategy.
 
@@ -1454,7 +1454,7 @@ Validation
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Define:
 
@@ -1468,7 +1468,7 @@ Responsibilities
 
 ---
 
-# RPO
+## RPO
 
 Recovery Point Objective defines the maximum acceptable amount of data loss.
 
@@ -1480,7 +1480,7 @@ RPO = 15 minutes
 
 ---
 
-# RTO
+## RTO
 
 Recovery Time Objective defines the target time to restore service.
 
@@ -1492,7 +1492,7 @@ RTO = 1 hour
 
 ---
 
-# Cluster Upgrades
+## Cluster Upgrades
 
 Never treat Kubernetes upgrades as a casual package update.
 
@@ -1511,7 +1511,7 @@ Rollback
 
 ---
 
-# Upgrade Process
+## Upgrade Process
 
 ```text
 Review
@@ -1529,7 +1529,7 @@ Monitor
 
 ---
 
-# Maintenance
+## Maintenance
 
 Production maintenance should be:
 
@@ -1543,7 +1543,7 @@ Reversible
 
 ---
 
-# Node Maintenance
+## Node Maintenance
 
 Use appropriate node lifecycle operations.
 
@@ -1563,7 +1563,7 @@ Understand workload disruption before draining production nodes.
 
 ---
 
-# Change Management
+## Change Management
 
 Every important production change should have:
 
@@ -1579,7 +1579,7 @@ Validation
 
 ---
 
-# Deployment Windows
+## Deployment Windows
 
 For sensitive changes, define:
 
@@ -1592,7 +1592,7 @@ Rollback Criteria
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Monitor:
 
@@ -1606,7 +1606,7 @@ Failure Capacity
 
 ---
 
-# Headroom
+## Headroom
 
 Do not operate the cluster permanently at near-maximum capacity.
 
@@ -1622,7 +1622,7 @@ Autoscaling
 
 ---
 
-# Autoscaling
+## Autoscaling
 
 Use:
 
@@ -1636,7 +1636,7 @@ where appropriate.
 
 ---
 
-# Horizontal Pod Autoscaler
+## Horizontal Pod Autoscaler
 
 Scales the number of Pod replicas.
 
@@ -1654,19 +1654,19 @@ High Traffic
 
 ---
 
-# Vertical Pod Autoscaler
+## Vertical Pod Autoscaler
 
 Adjusts resource requests and limits according to observed usage, depending on its configured mode.
 
 ---
 
-# Cluster Autoscaler
+## Cluster Autoscaler
 
 Adjusts node capacity based on scheduling demand in supported environments.
 
 ---
 
-# Cost Optimization
+## Cost Optimization
 
 Optimize:
 
@@ -1681,7 +1681,7 @@ Autoscaling
 
 ---
 
-# Cost vs Reliability
+## Cost vs Reliability
 
 Do not optimize cost blindly.
 
@@ -1707,7 +1707,7 @@ Higher Availability
 
 ---
 
-# Production Security
+## Production Security
 
 Use defense in depth:
 
@@ -1729,7 +1729,7 @@ Audit
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 A production Kubernetes architecture should avoid assuming:
 
@@ -1749,7 +1749,7 @@ Monitor
 
 ---
 
-# Encryption
+## Encryption
 
 Use encryption where appropriate for:
 
@@ -1762,13 +1762,13 @@ Backups
 
 ---
 
-# TLS
+## TLS
 
 Secure communication between services and external clients using appropriate TLS configurations.
 
 ---
 
-# Certificate Management
+## Certificate Management
 
 Monitor:
 
@@ -1783,7 +1783,7 @@ Automated certificate management can reduce manual errors.
 
 ---
 
-# DNS Reliability
+## DNS Reliability
 
 Production systems depend heavily on DNS.
 
@@ -1798,7 +1798,7 @@ Configuration
 
 ---
 
-# Network Reliability
+## Network Reliability
 
 Monitor:
 
@@ -1812,7 +1812,7 @@ Ingress/Gateway
 
 ---
 
-# Pod Lifecycle
+## Pod Lifecycle
 
 Understand:
 
@@ -1834,7 +1834,7 @@ Terminated
 
 ---
 
-# CrashLoopBackOff
+## CrashLoopBackOff
 
 A Pod repeatedly restarting may indicate:
 
@@ -1856,7 +1856,7 @@ kubectl logs <pod> --previous
 
 ---
 
-# OOMKilled
+## OOMKilled
 
 An OOMKilled container may indicate:
 
@@ -1871,7 +1871,7 @@ Investigate resource configuration and actual usage.
 
 ---
 
-# Production Troubleshooting
+## Production Troubleshooting
 
 Use a systematic process:
 
@@ -1895,7 +1895,7 @@ Document
 
 ---
 
-# Troubleshooting Golden Rule
+## Troubleshooting Golden Rule
 
 Do not immediately change multiple variables.
 
@@ -1915,7 +1915,7 @@ Make controlled changes where possible.
 
 ---
 
-# Runbooks
+## Runbooks
 
 A runbook documents how to respond to a known operational problem.
 
@@ -1939,7 +1939,7 @@ Steps:
 
 ---
 
-# Incident Response
+## Incident Response
 
 Production incidents should have:
 
@@ -1956,7 +1956,7 @@ Postmortem
 
 ---
 
-# On-Call
+## On-Call
 
 Define:
 
@@ -1970,7 +1970,7 @@ Severity Criteria
 
 ---
 
-# Documentation
+## Documentation
 
 Document:
 
@@ -1987,7 +1987,7 @@ Known Issues
 
 ---
 
-# Production Readiness Review
+## Production Readiness Review
 
 Before production deployment, review:
 
@@ -2005,7 +2005,7 @@ Documentation
 
 ---
 
-# Production Readiness Checklist
+## Production Readiness Checklist
 
 ```text
 ☑ Multiple replicas configured where required
@@ -2049,21 +2049,21 @@ Documentation
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Running Critical Applications With One Replica
+### 1. Running Critical Applications With One Replica
 
 This creates a single point of failure.
 
 ---
 
-## 2. No Resource Requests
+### 2. No Resource Requests
 
 Scheduling and capacity planning become unreliable.
 
 ---
 
-## 3. Arbitrary Resource Limits
+### 3. Arbitrary Resource Limits
 
 Incorrect limits can cause unnecessary:
 
@@ -2074,7 +2074,7 @@ CPU Throttling
 
 ---
 
-## 4. Incorrect Probes
+### 4. Incorrect Probes
 
 Bad probes can cause:
 
@@ -2086,31 +2086,31 @@ Deployment Failures
 
 ---
 
-## 5. No Pod Disruption Budget
+### 5. No Pod Disruption Budget
 
 Maintenance can cause unnecessary downtime.
 
 ---
 
-## 6. All Replicas on One Node
+### 6. All Replicas on One Node
 
 A node failure can take down the entire application.
 
 ---
 
-## 7. Using `latest`
+### 7. Using `latest`
 
 Mutable tags make deployments less deterministic.
 
 ---
 
-## 8. Running Containers as Root
+### 8. Running Containers as Root
 
 This increases the potential impact of application compromise.
 
 ---
 
-## 9. Excessive RBAC
+### 9. Excessive RBAC
 
 Avoid unnecessary:
 
@@ -2122,37 +2122,37 @@ access.
 
 ---
 
-## 10. No Network Policies
+### 10. No Network Policies
 
 A compromised Pod may have excessive network reachability.
 
 ---
 
-## 11. No Centralized Logging
+### 11. No Centralized Logging
 
 Local logs can disappear when Pods or nodes are replaced.
 
 ---
 
-## 12. No Monitoring
+### 12. No Monitoring
 
 You cannot reliably operate what you cannot observe.
 
 ---
 
-## 13. No Tested Backups
+### 13. No Tested Backups
 
 Untested backups create false confidence.
 
 ---
 
-## 14. No Rollback Plan
+### 14. No Rollback Plan
 
 Every production deployment should have a recovery strategy.
 
 ---
 
-## 15. Manual Production Changes
+### 15. Manual Production Changes
 
 Manual changes are difficult to:
 
@@ -2165,7 +2165,7 @@ Rollback
 
 ---
 
-## 16. No Capacity Headroom
+### 16. No Capacity Headroom
 
 Clusters operating near maximum capacity are vulnerable to:
 
@@ -2177,7 +2177,7 @@ Scheduling Failures
 
 ---
 
-## 17. Ignoring Dependencies
+### 17. Ignoring Dependencies
 
 Application health may depend on:
 
@@ -2190,15 +2190,15 @@ External API
 
 ---
 
-## 18. Over-Automating Destructive Actions
+### 18. Over-Automating Destructive Actions
 
 Automation should be safe, tested, and appropriately controlled.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Design for Failure
+#### 1. Design for Failure
 
 Assume:
 
@@ -2211,7 +2211,7 @@ Dependencies Fail
 
 ---
 
-### 2. Use Least Privilege
+#### 2. Use Least Privilege
 
 Apply it to:
 
@@ -2224,7 +2224,7 @@ Networks
 
 ---
 
-### 3. Automate Deployments
+#### 3. Automate Deployments
 
 Use:
 
@@ -2236,7 +2236,7 @@ Infrastructure as Code
 
 ---
 
-### 4. Monitor Everything Important
+#### 4. Monitor Everything Important
 
 At minimum:
 
@@ -2250,7 +2250,7 @@ Add tracing where distributed request visibility is needed.
 
 ---
 
-### 5. Test Recovery
+#### 5. Test Recovery
 
 Regularly test:
 
@@ -2263,7 +2263,7 @@ Disaster Recovery
 
 ---
 
-### 6. Keep Images Minimal
+#### 6. Keep Images Minimal
 
 Reduce:
 
@@ -2275,7 +2275,7 @@ Unnecessary Packages
 
 ---
 
-### 7. Make Deployments Reversible
+#### 7. Make Deployments Reversible
 
 Always know:
 
@@ -2286,13 +2286,13 @@ How To Roll Back?
 
 ---
 
-### 8. Define SLOs
+#### 8. Define SLOs
 
 Reliability should be measurable.
 
 ---
 
-### 9. Maintain Capacity Headroom
+#### 9. Maintain Capacity Headroom
 
 Plan for:
 
@@ -2305,13 +2305,13 @@ Maintenance
 
 ---
 
-### 10. Document Operational Knowledge
+#### 10. Document Operational Knowledge
 
 Runbooks reduce dependence on individual engineers.
 
 ---
 
-# Hands-on Lab 1 – Production-Ready Deployment
+## Hands-on Lab 1 – Production-Ready Deployment
 
 Create a Deployment with:
 
@@ -2335,7 +2335,7 @@ kubectl rollout status deployment/<name>
 
 ---
 
-# Hands-on Lab 2 – High Availability
+## Hands-on Lab 2 – High Availability
 
 Deploy multiple replicas across nodes.
 
@@ -2359,7 +2359,7 @@ kubectl get pods -o wide
 
 ---
 
-# Hands-on Lab 3 – Resource Management
+## Hands-on Lab 3 – Resource Management
 
 Configure:
 
@@ -2374,7 +2374,7 @@ Observe scheduling behavior.
 
 ---
 
-# Hands-on Lab 4 – Pod Disruption Budget
+## Hands-on Lab 4 – Pod Disruption Budget
 
 Create a PDB.
 
@@ -2384,7 +2384,7 @@ Observe how Kubernetes protects available replicas.
 
 ---
 
-# Hands-on Lab 5 – Health Probes
+## Hands-on Lab 5 – Health Probes
 
 Create an application with:
 
@@ -2406,7 +2406,7 @@ Observe Kubernetes behavior.
 
 ---
 
-# Hands-on Lab 6 – Rolling Deployment
+## Hands-on Lab 6 – Rolling Deployment
 
 Deploy:
 
@@ -2428,7 +2428,7 @@ kubectl rollout status deployment/<name>
 
 ---
 
-# Hands-on Lab 7 – Rollback
+## Hands-on Lab 7 – Rollback
 
 Deploy a broken version.
 
@@ -2448,7 +2448,7 @@ kubectl rollout status deployment/<name>
 
 ---
 
-# Hands-on Lab 8 – Network Security
+## Hands-on Lab 8 – Network Security
 
 Create:
 
@@ -2467,7 +2467,7 @@ Backend → Database
 
 ---
 
-# Hands-on Lab 9 – RBAC Hardening
+## Hands-on Lab 9 – RBAC Hardening
 
 Create a dedicated ServiceAccount.
 
@@ -2482,7 +2482,7 @@ Denied Actions
 
 ---
 
-# Hands-on Lab 10 – Container Hardening
+## Hands-on Lab 10 – Container Hardening
 
 Configure:
 
@@ -2499,7 +2499,7 @@ Test the application and adjust only where required.
 
 ---
 
-# Hands-on Lab 11 – Admission Policy
+## Hands-on Lab 11 – Admission Policy
 
 Implement a policy that rejects:
 
@@ -2516,7 +2516,7 @@ Non-Compliant Deployment
 
 ---
 
-# Hands-on Lab 12 – Monitoring
+## Hands-on Lab 12 – Monitoring
 
 Deploy a monitoring stack.
 
@@ -2534,7 +2534,7 @@ Latency
 
 ---
 
-# Hands-on Lab 13 – Logging
+## Hands-on Lab 13 – Logging
 
 Create centralized application logging.
 
@@ -2542,7 +2542,7 @@ Verify that logs remain available even after a Pod is replaced.
 
 ---
 
-# Hands-on Lab 14 – Autoscaling
+## Hands-on Lab 14 – Autoscaling
 
 Configure an HPA.
 
@@ -2558,7 +2558,7 @@ Memory
 
 ---
 
-# Hands-on Lab 15 – Backup and Restore
+## Hands-on Lab 15 – Backup and Restore
 
 Create application data.
 
@@ -2572,7 +2572,7 @@ Verify application functionality.
 
 ---
 
-# Hands-on Lab 16 – Disaster Recovery
+## Hands-on Lab 16 – Disaster Recovery
 
 Simulate a cluster failure scenario.
 
@@ -2590,7 +2590,7 @@ Measure RTO
 
 ---
 
-# Hands-on Lab 17 – Capacity Planning
+## Hands-on Lab 17 – Capacity Planning
 
 Generate increasing workload.
 
@@ -2608,7 +2608,7 @@ Determine when scaling is required.
 
 ---
 
-# Hands-on Lab 18 – Cost Optimization
+## Hands-on Lab 18 – Cost Optimization
 
 Identify:
 
@@ -2623,7 +2623,7 @@ Optimize without violating reliability requirements.
 
 ---
 
-# Hands-on Lab 19 – Production Incident
+## Hands-on Lab 19 – Production Incident
 
 Simulate:
 
@@ -2648,7 +2648,7 @@ to identify the root cause.
 
 ---
 
-# Hands-on Lab 20 – Complete Production Readiness Exercise
+## Hands-on Lab 20 – Complete Production Readiness Exercise
 
 Build a production-style application with:
 
@@ -2675,9 +2675,9 @@ Perform a complete production readiness review.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Production Readiness
+### Production Readiness
 
 ```text
 Security
@@ -2693,7 +2693,7 @@ Recoverability
 
 ---
 
-## Resource Requests
+### Resource Requests
 
 ```text
 Resources needed for scheduling
@@ -2701,7 +2701,7 @@ Resources needed for scheduling
 
 ---
 
-## Resource Limits
+### Resource Limits
 
 ```text
 Maximum configured resource consumption
@@ -2709,7 +2709,7 @@ Maximum configured resource consumption
 
 ---
 
-## PDB
+### PDB
 
 ```text
 Protects availability during voluntary disruptions
@@ -2717,7 +2717,7 @@ Protects availability during voluntary disruptions
 
 ---
 
-## Readiness Probe
+### Readiness Probe
 
 ```text
 Determines whether a Pod should receive traffic
@@ -2725,7 +2725,7 @@ Determines whether a Pod should receive traffic
 
 ---
 
-## Liveness Probe
+### Liveness Probe
 
 ```text
 Helps determine whether a container needs restarting
@@ -2733,7 +2733,7 @@ Helps determine whether a container needs restarting
 
 ---
 
-## Startup Probe
+### Startup Probe
 
 ```text
 Protects slow-starting applications from premature liveness failures
@@ -2741,7 +2741,7 @@ Protects slow-starting applications from premature liveness failures
 
 ---
 
-## HPA
+### HPA
 
 ```text
 Scales Pod replicas
@@ -2749,7 +2749,7 @@ Scales Pod replicas
 
 ---
 
-## VPA
+### VPA
 
 ```text
 Adjusts workload resource sizing according to observed usage and configuration
@@ -2757,7 +2757,7 @@ Adjusts workload resource sizing according to observed usage and configuration
 
 ---
 
-## Cluster Autoscaler
+### Cluster Autoscaler
 
 ```text
 Adjusts node capacity according to scheduling demand
@@ -2765,7 +2765,7 @@ Adjusts node capacity according to scheduling demand
 
 ---
 
-## RPO
+### RPO
 
 ```text
 Maximum acceptable data loss
@@ -2773,7 +2773,7 @@ Maximum acceptable data loss
 
 ---
 
-## RTO
+### RTO
 
 ```text
 Target recovery time
@@ -2781,7 +2781,7 @@ Target recovery time
 
 ---
 
-## SLI
+### SLI
 
 ```text
 Measured reliability indicator
@@ -2789,7 +2789,7 @@ Measured reliability indicator
 
 ---
 
-## SLO
+### SLO
 
 ```text
 Target reliability level
@@ -2797,7 +2797,7 @@ Target reliability level
 
 ---
 
-## SLA
+### SLA
 
 ```text
 Service commitment, often contractual
@@ -2805,7 +2805,7 @@ Service commitment, often contractual
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Check cluster:
 
@@ -2969,9 +2969,9 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What makes a Kubernetes cluster production-ready?
 - Why are resource requests important?
@@ -2993,7 +2993,7 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How would you design a highly available Kubernetes application?
 - How do you distribute Pods across availability zones?
@@ -3012,7 +3012,7 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a production Kubernetes architecture for a highly available application.
 - How would you design Kubernetes across multiple availability zones?
@@ -3030,13 +3030,13 @@ kubectl get pod <pod> -o yaml
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > How would you make a Kubernetes application highly available?
 
-### Answer
+#### Answer
 
 I would use:
 
@@ -3062,13 +3062,13 @@ I would also ensure that dependencies such as databases and caches have appropri
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > What happens if all replicas of an application are scheduled on one node?
 
-### Answer
+#### Answer
 
 A node failure can remove all application replicas simultaneously.
 
@@ -3088,13 +3088,13 @@ to distribute replicas across nodes and, where appropriate, availability zones.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > How do you perform zero-downtime deployment?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3124,13 +3124,13 @@ Blue-Green
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > Why should you not use the same ServiceAccount for every application?
 
-### Answer
+#### Answer
 
 Because compromise of one application could provide unnecessary permissions to other workloads.
 
@@ -3150,13 +3150,13 @@ Each receives only the permissions it requires.
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How would you secure a production container?
 
-### Answer
+#### Answer
 
 I would use:
 
@@ -3184,13 +3184,13 @@ I would add only the privileges and capabilities genuinely required by the appli
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > How would you handle a Kubernetes node maintenance operation?
 
-### Answer
+#### Answer
 
 I would:
 
@@ -3216,13 +3216,13 @@ I would verify that the maintenance does not violate availability requirements.
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How do you prepare Kubernetes for disaster recovery?
 
-### Answer
+#### Answer
 
 Define:
 
@@ -3249,13 +3249,13 @@ The recovery process should be tested rather than assumed to work.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How do you prevent one application from consuming all cluster resources?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -3277,13 +3277,13 @@ This provides workload-level and namespace-level resource governance.
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How would you troubleshoot CrashLoopBackOff in production?
 
-### Answer
+#### Answer
 
 I would inspect:
 
@@ -3310,13 +3310,13 @@ I would avoid restarting repeatedly without identifying the underlying cause.
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a complete production Kubernetes platform.
 
-### Answer
+#### Answer
 
 A high-level architecture:
 
@@ -3376,7 +3376,7 @@ Operational Runbooks
 
 ---
 
-# Production Operations Checklist
+## Production Operations Checklist
 
 ```text
 ☑ Architecture documented
@@ -3426,7 +3426,7 @@ Operational Runbooks
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Production Kubernetes is not simply about keeping Pods running.
 
@@ -3494,9 +3494,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 78 – GitOps
+## Chapter 78 – GitOps
 
 Topics will include:
 

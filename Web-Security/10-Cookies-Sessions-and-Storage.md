@@ -1,12 +1,12 @@
 # 10-Cookies-Sessions-and-Storage.md
 
-# Part 1 — Introduction to Cookies, Sessions, Browser Storage, HTTP State Management, and Authentication Fundamentals
+## Part 1 — Introduction to Cookies, Sessions, Browser Storage, HTTP State Management, and Authentication Fundamentals
 
 > **"HTTP is a stateless protocol. Cookies, sessions, and browser storage provide mechanisms that allow web applications to remember users, maintain authentication, personalize experiences, and securely manage state across multiple requests."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# Why State Management is Needed
+## Why State Management is Needed
 
 HTTP treats every request independently.
 
@@ -47,7 +47,7 @@ The server does **not** automatically remember previous interactions.
 
 ---
 
-# Stateless Nature of HTTP
+## Stateless Nature of HTTP
 
 Without state management:
 
@@ -71,7 +71,7 @@ Every request appears to come from a new visitor unless additional mechanisms ar
 
 ---
 
-# What is State?
+## What is State?
 
 State represents information that must persist across requests.
 
@@ -86,7 +86,7 @@ Examples:
 
 ---
 
-# State Management
+## State Management
 
 State management allows applications to remember users.
 
@@ -110,7 +110,7 @@ This enables continuous user experiences.
 
 ---
 
-# Common State Management Methods
+## Common State Management Methods
 
 ```
 State Management
@@ -132,7 +132,7 @@ Each mechanism serves different purposes.
 
 ---
 
-# Authentication vs Authorization
+## Authentication vs Authorization
 
 These concepts are often confused.
 
@@ -158,7 +158,7 @@ Authorization determines permissions.
 
 ---
 
-# Authentication Example
+## Authentication Example
 
 ```
 Username
@@ -178,7 +178,7 @@ Identity Verified
 
 ---
 
-# Authorization Example
+## Authorization Example
 
 ```
 Authenticated User
@@ -202,7 +202,7 @@ Admin Dashboard
 
 ---
 
-# Real Enterprise Example
+## Real Enterprise Example
 
 ```
 Employee
@@ -232,7 +232,7 @@ Identity alone does not guarantee access to every resource.
 
 ---
 
-# What are Cookies?
+## What are Cookies?
 
 Cookies are small pieces of data stored by the browser.
 
@@ -264,7 +264,7 @@ Cookies help applications remember users between requests.
 
 ---
 
-# Why Cookies Exist
+## Why Cookies Exist
 
 Cookies can store information such as:
 
@@ -279,7 +279,7 @@ They should not store highly sensitive information directly.
 
 ---
 
-# Cookie Lifecycle
+## Cookie Lifecycle
 
 ```
 Server
@@ -311,7 +311,7 @@ Deleted
 
 ---
 
-# Cookie Components
+## Cookie Components
 
 A cookie typically contains:
 
@@ -337,7 +337,7 @@ Scope
 
 ---
 
-# Example Cookie Structure (Conceptual)
+## Example Cookie Structure (Conceptual)
 
 ```
 Cookie
@@ -363,7 +363,7 @@ Cookie
 
 ---
 
-# Session Cookies
+## Session Cookies
 
 Session cookies exist only while the browser session remains active.
 
@@ -385,7 +385,7 @@ Cookie Removed
 
 ---
 
-# Persistent Cookies
+## Persistent Cookies
 
 Persistent cookies remain after the browser closes.
 
@@ -411,7 +411,7 @@ Eventually Expires
 
 ---
 
-# First-Party Cookies
+## First-Party Cookies
 
 ```
 example.com
@@ -437,7 +437,7 @@ They belong to the same website the user is visiting.
 
 ---
 
-# Third-Party Cookies
+## Third-Party Cookies
 
 Historically:
 
@@ -461,7 +461,7 @@ Modern browsers increasingly restrict or phase out third-party cookies to improv
 
 ---
 
-# What is a Session?
+## What is a Session?
 
 A session represents a user's interaction with a web application over time.
 
@@ -487,7 +487,7 @@ Session Ends
 
 ---
 
-# Why Sessions Matter
+## Why Sessions Matter
 
 Without sessions:
 
@@ -503,7 +503,7 @@ Sessions eliminate the need to repeatedly authenticate during normal usage.
 
 ---
 
-# Session ID
+## Session ID
 
 Most session-based applications assign a unique identifier.
 
@@ -531,7 +531,7 @@ The session ID links the browser to server-side session data.
 
 ---
 
-# Session Data
+## Session Data
 
 Applications commonly associate session IDs with server-side information such as:
 
@@ -546,7 +546,7 @@ The actual implementation varies between frameworks.
 
 ---
 
-# Session Architecture
+## Session Architecture
 
 ```
 Browser
@@ -572,7 +572,7 @@ The browser usually stores only the session identifier, while the server stores 
 
 ---
 
-# Session Lifecycle
+## Session Lifecycle
 
 ```
 User Login
@@ -604,7 +604,7 @@ Session Destroyed
 
 ---
 
-# Browser Storage
+## Browser Storage
 
 Modern browsers provide additional storage mechanisms.
 
@@ -626,7 +626,7 @@ These differ in persistence, accessibility, and intended use.
 
 ---
 
-# Comparing Storage Mechanisms
+## Comparing Storage Mechanisms
 
 | Storage | Sent with HTTP Requests | Persistence | JavaScript Access |
 |----------|-------------------------|-------------|-------------------|
@@ -637,7 +637,7 @@ These differ in persistence, accessibility, and intended use.
 
 ---
 
-# Browser vs Server Storage
+## Browser vs Server Storage
 
 ```
 Browser
@@ -675,7 +675,7 @@ Applications often combine browser and server storage.
 
 ---
 
-# Enterprise Authentication Flow
+## Enterprise Authentication Flow
 
 ```
 User
@@ -715,7 +715,7 @@ Authenticated Requests
 
 ---
 
-# State Management Architecture
+## State Management Architecture
 
 ```
                 Browser
@@ -761,7 +761,7 @@ Authenticated Requests
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An online banking customer logs in.
 
@@ -801,7 +801,7 @@ The server uses the session identifier to recognize the authenticated customer t
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser's Developer Tools:
 
@@ -815,7 +815,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is HTTP considered stateless?
 2. What is state management?
@@ -830,7 +830,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Always transmit authentication data over HTTPS.
 - Keep session identifiers unpredictable and unique.
@@ -842,7 +842,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming HTTP remembers previous requests automatically.
 - Confusing authentication with authorization.
@@ -853,7 +853,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - HTTP is stateless, so web applications require state management mechanisms.
 - Cookies allow browsers to store small pieces of data that can be associated with future requests.
@@ -862,15 +862,15 @@ Using your browser's Developer Tools:
 - Authentication verifies identity, while authorization determines access rights.
 
 
-# 10-Cookies-Sessions-and-Storage.md
+## 10-Cookies-Sessions-and-Storage.md
 
-# Part 2 — Cookie Attributes, Session Management, Browser Storage, Token Storage, Session Lifecycle, and Enterprise Authentication Flows
+## Part 2 — Cookie Attributes, Session Management, Browser Storage, Token Storage, Session Lifecycle, and Enterprise Authentication Flows
 
 > **"A cookie by itself is not secure or insecure. Its security depends on how it is configured, how the session is managed, and how the application uses it."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -888,7 +888,7 @@ After completing this part, you will understand:
 
 ---
 
-# Anatomy of a Cookie
+## Anatomy of a Cookie
 
 A cookie consists of:
 
@@ -920,7 +920,7 @@ Each attribute affects how and when the browser sends the cookie.
 
 ---
 
-# Cookie Scope
+## Cookie Scope
 
 A cookie is not necessarily sent to every request.
 
@@ -956,7 +956,7 @@ Scope depends on attributes such as **Domain** and **Path**.
 
 ---
 
-# Domain Attribute
+## Domain Attribute
 
 The **Domain** attribute specifies which hosts may receive the cookie.
 
@@ -982,7 +982,7 @@ Applications should avoid unnecessarily broad cookie scope.
 
 ---
 
-# Path Attribute
+## Path Attribute
 
 The **Path** attribute limits where cookies are sent.
 
@@ -1006,7 +1006,7 @@ Using narrower paths helps reduce unnecessary cookie exposure.
 
 ---
 
-# Secure Attribute
+## Secure Attribute
 
 ```
 HTTPS
@@ -1028,7 +1028,7 @@ The **Secure** attribute ensures cookies are transmitted only over encrypted HTT
 
 ---
 
-# Why Secure Matters
+## Why Secure Matters
 
 Without Secure:
 
@@ -1048,7 +1048,7 @@ Secure cookies help protect authentication data during transmission.
 
 ---
 
-# HttpOnly Attribute
+## HttpOnly Attribute
 
 ```
 Browser
@@ -1072,7 +1072,7 @@ This helps reduce the impact of certain client-side attacks targeting session co
 
 ---
 
-# SameSite Attribute
+## SameSite Attribute
 
 SameSite controls whether cookies are sent with cross-site requests.
 
@@ -1090,7 +1090,7 @@ Modern browsers require `Secure` when `SameSite=None` is used.
 
 ---
 
-# SameSite Strict
+## SameSite Strict
 
 ```
 External Website
@@ -1112,7 +1112,7 @@ Strict provides the strongest cross-site protection but may affect some navigati
 
 ---
 
-# SameSite Lax
+## SameSite Lax
 
 ```
 Top-Level Navigation
@@ -1130,7 +1130,7 @@ Lax offers a balance between usability and security.
 
 ---
 
-# SameSite None
+## SameSite None
 
 ```
 Cross-Site Request
@@ -1148,7 +1148,7 @@ This mode is typically used only when cross-site cookies are genuinely required.
 
 ---
 
-# Cookie Expiration
+## Cookie Expiration
 
 Cookies may expire in two ways:
 
@@ -1164,7 +1164,7 @@ After expiration, browsers remove the cookie.
 
 ---
 
-# Session Cookies
+## Session Cookies
 
 ```
 Browser Starts
@@ -1186,7 +1186,7 @@ Session cookies are temporary.
 
 ---
 
-# Persistent Cookies
+## Persistent Cookies
 
 ```
 Cookie Created
@@ -1216,7 +1216,7 @@ Persistent cookies survive browser restarts until expiration.
 
 ---
 
-# Cookie Security Summary
+## Cookie Security Summary
 
 | Attribute | Security Benefit |
 |------------|------------------|
@@ -1229,7 +1229,7 @@ Persistent cookies survive browser restarts until expiration.
 
 ---
 
-# Session Management
+## Session Management
 
 After successful authentication:
 
@@ -1261,7 +1261,7 @@ Future requests reference the session through the session identifier.
 
 ---
 
-# Session Store
+## Session Store
 
 Applications typically maintain session data on the server.
 
@@ -1294,7 +1294,7 @@ Possible session stores include:
 
 ---
 
-# Session Timeout
+## Session Timeout
 
 Sessions should not remain active forever.
 
@@ -1318,7 +1318,7 @@ Timeouts reduce exposure if a device is left unattended.
 
 ---
 
-# Idle Timeout
+## Idle Timeout
 
 ```
 User Active
@@ -1344,7 +1344,7 @@ Idle timeout measures inactivity.
 
 ---
 
-# Absolute Timeout
+## Absolute Timeout
 
 Even active sessions may have a maximum lifetime.
 
@@ -1368,7 +1368,7 @@ This limits long-lived authenticated sessions.
 
 ---
 
-# Session Rotation
+## Session Rotation
 
 Applications may issue a new session identifier after important events.
 
@@ -1394,7 +1394,7 @@ Session rotation helps reduce risks associated with reused session identifiers.
 
 ---
 
-# Logout Process
+## Logout Process
 
 ```
 User Clicks Logout
@@ -1420,7 +1420,7 @@ Proper logout removes the authenticated session.
 
 ---
 
-# Remember Me
+## Remember Me
 
 Some applications offer persistent login.
 
@@ -1448,7 +1448,7 @@ Persistent authentication should be implemented carefully with appropriate secur
 
 ---
 
-# Browser Storage Review
+## Browser Storage Review
 
 ```
 Browser
@@ -1468,7 +1468,7 @@ Each mechanism has different persistence and security characteristics.
 
 ---
 
-# Cookies vs Browser Storage
+## Cookies vs Browser Storage
 
 | Feature | Cookies | Local Storage | Session Storage |
 |----------|----------|---------------|-----------------|
@@ -1481,7 +1481,7 @@ Each mechanism has different persistence and security characteristics.
 
 ---
 
-# Authentication Tokens
+## Authentication Tokens
 
 Some modern applications use tokens instead of traditional server-side sessions.
 
@@ -1505,7 +1505,7 @@ Different token-based architectures have different security considerations.
 
 ---
 
-# Token Storage Considerations
+## Token Storage Considerations
 
 Possible storage locations include:
 
@@ -1518,7 +1518,7 @@ Each option has trade-offs related to usability, persistence, and security.
 
 ---
 
-# Enterprise Authentication Flow
+## Enterprise Authentication Flow
 
 ```
 User
@@ -1558,7 +1558,7 @@ Application Server
 
 ---
 
-# Enterprise Session Architecture
+## Enterprise Session Architecture
 
 ```
                Browser
@@ -1602,7 +1602,7 @@ This architecture supports scalability and high availability.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retailer authenticates customers as follows:
 
@@ -1646,7 +1646,7 @@ Session validation occurs on every authenticated request.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser's Developer Tools:
 
@@ -1659,7 +1659,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of the Secure cookie attribute?
 2. Why is HttpOnly important?
@@ -1674,7 +1674,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use HTTPS for all authenticated traffic.
 - Mark authentication cookies as `Secure`.
@@ -1687,7 +1687,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Sending authentication cookies over HTTP.
 - Leaving sessions active indefinitely.
@@ -1699,7 +1699,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cookie attributes such as `Secure`, `HttpOnly`, `SameSite`, `Domain`, and `Path` are essential for protecting authenticated sessions.
 - Session management includes creation, validation, timeout, rotation, and destruction of user sessions.
@@ -1707,15 +1707,15 @@ Using your browser's Developer Tools:
 - Token-based and session-based authentication models both require careful storage and lifecycle management.
 - Strong session management is a critical component of enterprise web application security.
 
-# 10-Cookies-Sessions-and-Storage.md
+## 10-Cookies-Sessions-and-Storage.md
 
-# Part 3 — Session Security, Session Attacks, Token Security, Browser Storage Risks, Modern Authentication, and Enterprise Session Protection
+## Part 3 — Session Security, Session Attacks, Token Security, Browser Storage Risks, Modern Authentication, and Enterprise Session Protection
 
 > **"The security of an authenticated user depends less on the password they entered and more on how securely the application manages their session after login."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1733,7 +1733,7 @@ After completing this part, you will understand:
 
 ---
 
-# Session Security
+## Session Security
 
 After authentication, the application must continue verifying that each request belongs to the authenticated user.
 
@@ -1761,7 +1761,7 @@ Authentication is not a one-time security event—it is continuously enforced th
 
 ---
 
-# Secure Session Lifecycle
+## Secure Session Lifecycle
 
 ```
 User Login
@@ -1795,7 +1795,7 @@ Each phase should be securely implemented.
 
 ---
 
-# Session Identifier
+## Session Identifier
 
 A session identifier links a browser to server-side session data.
 
@@ -1819,7 +1819,7 @@ The session ID acts as a reference—not the actual session data.
 
 ---
 
-# Characteristics of Secure Session IDs
+## Characteristics of Secure Session IDs
 
 A secure session identifier should be:
 
@@ -1833,7 +1833,7 @@ Applications should never use sequential or predictable session identifiers.
 
 ---
 
-# Session Validation
+## Session Validation
 
 Every authenticated request follows a similar process.
 
@@ -1875,7 +1875,7 @@ Authentication Required
 
 ---
 
-# Session Renewal
+## Session Renewal
 
 Applications may periodically issue a new session identifier.
 
@@ -1899,7 +1899,7 @@ Regular renewal limits the lifetime of a single session identifier.
 
 ---
 
-# Session Rotation
+## Session Rotation
 
 Important events that commonly trigger session rotation include:
 
@@ -1913,7 +1913,7 @@ Rotating the session identifier helps reduce the impact of compromised identifie
 
 ---
 
-# Session Expiration
+## Session Expiration
 
 Applications should automatically expire inactive sessions.
 
@@ -1937,7 +1937,7 @@ Timeouts reduce exposure if users forget to log out.
 
 ---
 
-# Idle Timeout
+## Idle Timeout
 
 ```
 Activity
@@ -1963,7 +1963,7 @@ Idle timeout measures user inactivity.
 
 ---
 
-# Absolute Session Lifetime
+## Absolute Session Lifetime
 
 Even active sessions should eventually expire.
 
@@ -1987,7 +1987,7 @@ This limits long-running authenticated sessions.
 
 ---
 
-# Logout Security
+## Logout Security
 
 A secure logout process should invalidate both client and server state.
 
@@ -2011,7 +2011,7 @@ Logging out should prevent reuse of the previous session.
 
 ---
 
-# Multiple Device Sessions
+## Multiple Device Sessions
 
 Many enterprise applications support multiple active sessions.
 
@@ -2031,7 +2031,7 @@ Each device may maintain an independent authenticated session.
 
 ---
 
-# Session Management Dashboard
+## Session Management Dashboard
 
 Many enterprise applications provide users with:
 
@@ -2045,7 +2045,7 @@ These features improve account visibility and control.
 
 ---
 
-# Session Hijacking (Conceptual)
+## Session Hijacking (Conceptual)
 
 Session hijacking occurs when an attacker obtains a valid session identifier.
 
@@ -2069,7 +2069,7 @@ The attacker attempts to impersonate the authenticated user by presenting the st
 
 ---
 
-# Preventing Session Hijacking
+## Preventing Session Hijacking
 
 Organizations commonly reduce risk through:
 
@@ -2084,7 +2084,7 @@ Organizations commonly reduce risk through:
 
 ---
 
-# Session Fixation (Conceptual)
+## Session Fixation (Conceptual)
 
 Session fixation is a class of attack in which an attacker attempts to make a victim use a known session identifier.
 
@@ -2110,7 +2110,7 @@ Regenerating the session identifier after successful authentication helps mitiga
 
 ---
 
-# Concurrent Session Control
+## Concurrent Session Control
 
 Organizations may choose different policies.
 
@@ -2130,7 +2130,7 @@ The appropriate choice depends on business requirements.
 
 ---
 
-# Detecting Suspicious Sessions
+## Detecting Suspicious Sessions
 
 Applications may monitor for unusual behavior such as:
 
@@ -2144,7 +2144,7 @@ Detection enables risk-based responses.
 
 ---
 
-# Risk-Based Session Protection
+## Risk-Based Session Protection
 
 ```
 User Activity
@@ -2182,7 +2182,7 @@ Modern applications increasingly adapt authentication requirements based on risk
 
 ---
 
-# Token-Based Authentication
+## Token-Based Authentication
 
 Some applications use authentication tokens instead of traditional server-managed sessions.
 
@@ -2208,7 +2208,7 @@ Token Verified
 
 ---
 
-# What is a JWT?
+## What is a JWT?
 
 JWT stands for:
 
@@ -2228,7 +2228,7 @@ A JWT is a standardized token format commonly used in web APIs and distributed s
 
 ---
 
-# JWT Structure
+## JWT Structure
 
 Conceptually:
 
@@ -2248,7 +2248,7 @@ Applications should validate tokens before accepting them.
 
 ---
 
-# Session-Based vs Token-Based Authentication
+## Session-Based vs Token-Based Authentication
 
 | Session-Based | Token-Based |
 |---------------|-------------|
@@ -2259,7 +2259,7 @@ Applications should validate tokens before accepting them.
 
 ---
 
-# Token Expiration
+## Token Expiration
 
 Tokens should not remain valid indefinitely.
 
@@ -2283,7 +2283,7 @@ Short-lived tokens reduce the impact of token exposure.
 
 ---
 
-# Refresh Tokens (Overview)
+## Refresh Tokens (Overview)
 
 Some authentication systems use two token types.
 
@@ -2311,7 +2311,7 @@ Refresh tokens typically have stronger protection requirements than access token
 
 ---
 
-# Browser Storage Risks
+## Browser Storage Risks
 
 Client-side storage should be selected carefully.
 
@@ -2333,7 +2333,7 @@ Different mechanisms provide different persistence, accessibility, and security 
 
 ---
 
-# Storage Comparison
+## Storage Comparison
 
 | Storage | Typical Use | JavaScript Access | Persistence |
 |----------|-------------|-------------------|-------------|
@@ -2344,7 +2344,7 @@ Different mechanisms provide different persistence, accessibility, and security 
 
 ---
 
-# Sensitive Data
+## Sensitive Data
 
 Applications should carefully evaluate storing:
 
@@ -2358,7 +2358,7 @@ Only the minimum necessary information should be stored in the browser.
 
 ---
 
-# Enterprise Authentication Architecture
+## Enterprise Authentication Architecture
 
 ```
                  User
@@ -2414,7 +2414,7 @@ Only the minimum necessary information should be stored in the browser.
 
 ---
 
-# Enterprise Banking Example
+## Enterprise Banking Example
 
 ```
 Customer
@@ -2466,7 +2466,7 @@ Additional controls include:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser's Developer Tools:
 
@@ -2479,7 +2479,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a session identifier?
 2. Why should session identifiers be unpredictable?
@@ -2494,7 +2494,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Generate strong, unpredictable session identifiers.
 - Rotate session identifiers after authentication and privilege changes.
@@ -2507,7 +2507,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Using predictable session identifiers.
 - Allowing sessions to remain active indefinitely.
@@ -2519,7 +2519,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Session management is a critical component of web application security after authentication.
 - Session identifiers should be unique, unpredictable, rotated when appropriate, and protected during transmission.
@@ -2527,15 +2527,15 @@ Using your browser's Developer Tools:
 - Token-based authentication introduces different lifecycle and storage considerations than traditional session-based authentication.
 - Enterprise applications combine secure cookies, HTTPS, MFA, monitoring, and continuous session validation to protect authenticated users.
 
-# 10-Cookies-Sessions-and-Storage.md
+## 10-Cookies-Sessions-and-Storage.md
 
-# Part 4 — Enterprise Session Architecture, Browser Storage Security, Session Monitoring, Secure Authentication Practices, Troubleshooting, and Chapter Summary
+## Part 4 — Enterprise Session Architecture, Browser Storage Security, Session Monitoring, Secure Authentication Practices, Troubleshooting, and Chapter Summary
 
 > **"Authentication proves who a user is only once. Session management proves it on every request. Enterprise security depends on protecting the entire authentication lifecycle—not just the login page."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2552,7 +2552,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Authentication Lifecycle
+## Enterprise Authentication Lifecycle
 
 A secure authentication process spans multiple stages.
 
@@ -2588,7 +2588,7 @@ Every stage should be protected by appropriate security controls.
 
 ---
 
-# Enterprise Session Architecture
+## Enterprise Session Architecture
 
 ```
                  User
@@ -2642,7 +2642,7 @@ A centralized session store enables consistent authentication across multiple ap
 
 ---
 
-# Distributed Session Store
+## Distributed Session Store
 
 Large-scale applications often separate session storage from application servers.
 
@@ -2671,7 +2671,7 @@ Benefits include:
 
 ---
 
-# Sticky Sessions vs Shared Sessions
+## Sticky Sessions vs Shared Sessions
 
 ```
 Sticky Sessions
@@ -2697,7 +2697,7 @@ Shared sessions generally provide greater flexibility in cloud-native environmen
 
 ---
 
-# Single Sign-On (SSO)
+## Single Sign-On (SSO)
 
 SSO enables users to authenticate once and access multiple applications.
 
@@ -2729,7 +2729,7 @@ Users authenticate once rather than repeatedly entering credentials.
 
 ---
 
-# SSO Components
+## SSO Components
 
 ```
 User
@@ -2755,7 +2755,7 @@ Examples of enterprise identity technologies include SAML, OAuth 2.0, and OpenID
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 Authentication may require more than one factor.
 
@@ -2779,7 +2779,7 @@ MFA significantly strengthens account protection.
 
 ---
 
-# Risk-Based Authentication
+## Risk-Based Authentication
 
 Modern identity platforms evaluate risk before granting access.
 
@@ -2811,7 +2811,7 @@ Risk signals may include device reputation, geolocation, and unusual behavior.
 
 ---
 
-# Continuous Session Validation
+## Continuous Session Validation
 
 Authentication should not end after login.
 
@@ -2835,7 +2835,7 @@ Every protected request should validate the active session.
 
 ---
 
-# Session Monitoring
+## Session Monitoring
 
 Organizations monitor sessions for suspicious activity.
 
@@ -2863,7 +2863,7 @@ Monitoring helps identify compromised or abnormal sessions.
 
 ---
 
-# Indicators of Suspicious Sessions
+## Indicators of Suspicious Sessions
 
 Examples include:
 
@@ -2878,7 +2878,7 @@ These indicators should be investigated according to organizational procedures.
 
 ---
 
-# Session Logging
+## Session Logging
 
 Applications commonly record:
 
@@ -2895,7 +2895,7 @@ Sensitive secrets such as passwords should **never** be logged.
 
 ---
 
-# Audit Trail
+## Audit Trail
 
 ```
 User Login
@@ -2925,7 +2925,7 @@ Audit logs support investigations, compliance, and incident response.
 
 ---
 
-# Browser Storage Security
+## Browser Storage Security
 
 Applications should choose browser storage carefully.
 
@@ -2947,7 +2947,7 @@ Each mechanism has different persistence, accessibility, and security properties
 
 ---
 
-# Choosing the Right Storage
+## Choosing the Right Storage
 
 | Requirement | Recommended Approach |
 |--------------|----------------------|
@@ -2960,7 +2960,7 @@ The exact choice depends on application requirements and security design.
 
 ---
 
-# Protecting Browser Data
+## Protecting Browser Data
 
 General recommendations include:
 
@@ -2973,7 +2973,7 @@ General recommendations include:
 
 ---
 
-# Authentication Best Practices
+## Authentication Best Practices
 
 ```
 HTTPS
@@ -3007,7 +3007,7 @@ Security should be maintained throughout the session lifecycle.
 
 ---
 
-# Session Timeout Strategy
+## Session Timeout Strategy
 
 A balanced strategy commonly includes:
 
@@ -3031,7 +3031,7 @@ This combination reduces long-term exposure while maintaining usability.
 
 ---
 
-# Enterprise Security Layers
+## Enterprise Security Layers
 
 ```
 User
@@ -3069,7 +3069,7 @@ Session management works together with multiple security controls.
 
 ---
 
-# Session Security Checklist
+## Session Security Checklist
 
 ```
 ✓ HTTPS Everywhere
@@ -3099,7 +3099,7 @@ Session management works together with multiple security controls.
 
 ---
 
-# Security Testing
+## Security Testing
 
 When reviewing session management, assess:
 
@@ -3116,7 +3116,7 @@ Testing should be performed only in authorized environments.
 
 ---
 
-# Enterprise Troubleshooting
+## Enterprise Troubleshooting
 
 Common authentication issues:
 
@@ -3132,7 +3132,7 @@ A structured troubleshooting approach helps isolate issues efficiently.
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 ```
 Authentication Problem
@@ -3166,7 +3166,7 @@ Investigate each layer methodically.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution uses:
 
@@ -3214,7 +3214,7 @@ Additional controls include:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using your browser's Developer Tools:
 
@@ -3228,7 +3228,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why do enterprises use centralized session stores?
 2. What is Single Sign-On (SSO)?
@@ -3243,7 +3243,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use HTTPS for every authenticated request.
 - Protect session cookies with Secure, HttpOnly, and appropriate SameSite attributes.
@@ -3258,7 +3258,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting authentication without continuous session validation.
 - Allowing sessions to remain active indefinitely.
@@ -3270,7 +3270,7 @@ Using your browser's Developer Tools:
 
 ---
 
-# Quick Revision
+## Quick Revision
 
 ```
 HTTP
@@ -3362,7 +3362,7 @@ Continuous Validation
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

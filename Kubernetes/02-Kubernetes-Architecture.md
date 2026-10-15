@@ -10,7 +10,7 @@ Understanding Kubernetes architecture is essential because every operation—cre
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -26,7 +26,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# High-Level Kubernetes Architecture
+## High-Level Kubernetes Architecture
 
 A Kubernetes cluster consists of two major parts:
 
@@ -47,7 +47,7 @@ A Kubernetes cluster consists of two major parts:
 
 ---
 
-# Kubernetes Cluster
+## Kubernetes Cluster
 
 A cluster is a collection of machines working together to run applications.
 
@@ -77,7 +77,7 @@ Pods
 
 ---
 
-# Architecture Overview
+## Architecture Overview
 
 ```
                     User
@@ -123,9 +123,9 @@ Every Kubernetes operation passes through the API Server.
 
 ---
 
-# Two Major Components
+## Two Major Components
 
-## 1. Control Plane
+### 1. Control Plane
 
 The Control Plane makes decisions.
 
@@ -139,7 +139,7 @@ Responsibilities:
 
 ---
 
-## 2. Worker Nodes
+### 2. Worker Nodes
 
 Worker Nodes execute workloads.
 
@@ -152,7 +152,7 @@ Responsibilities:
 
 ---
 
-# Control Plane Components
+## Control Plane Components
 
 ```
 Control Plane
@@ -178,7 +178,7 @@ Each component performs a specialized role.
 
 ---
 
-# API Server
+## API Server
 
 The API Server is the central communication hub of Kubernetes.
 
@@ -209,7 +209,7 @@ Without the API Server, the cluster cannot be managed.
 
 ---
 
-# Scheduler
+## Scheduler
 
 The Scheduler decides where Pods should run.
 
@@ -245,7 +245,7 @@ It only selects the most appropriate node.
 
 ---
 
-# Controller Manager
+## Controller Manager
 
 The Controller Manager continuously compares:
 
@@ -272,7 +272,7 @@ Examples:
 
 ---
 
-# etcd
+## etcd
 
 etcd is Kubernetes' distributed key-value database.
 
@@ -298,7 +298,7 @@ Without etcd, Kubernetes loses its source of truth.
 
 ---
 
-# Worker Node Components
+## Worker Node Components
 
 Every worker node contains:
 
@@ -324,7 +324,7 @@ Pods
 
 ---
 
-# kubelet
+## kubelet
 
 The kubelet is the primary node agent.
 
@@ -355,7 +355,7 @@ Pod Running
 
 ---
 
-# kube-proxy
+## kube-proxy
 
 kube-proxy manages network communication.
 
@@ -380,7 +380,7 @@ Pod
 
 ---
 
-# Container Runtime
+## Container Runtime
 
 The container runtime executes containers.
 
@@ -398,7 +398,7 @@ Responsibilities:
 
 ---
 
-# Pods
+## Pods
 
 Pods are the smallest deployable Kubernetes object.
 
@@ -421,7 +421,7 @@ A Pod may contain:
 
 ---
 
-# Component Communication
+## Component Communication
 
 ```
 User
@@ -459,7 +459,7 @@ Every request flows through the API Server.
 
 ---
 
-# Request Lifecycle
+## Request Lifecycle
 
 Suppose a user runs:
 
@@ -507,7 +507,7 @@ Pod Created
 
 ---
 
-# Cluster State Management
+## Cluster State Management
 
 Kubernetes constantly compares:
 
@@ -531,7 +531,7 @@ This continuous reconciliation enables self-healing.
 
 ---
 
-# Self-Healing Example
+## Self-Healing Example
 
 Suppose:
 
@@ -561,7 +561,7 @@ Create New Pod
 
 ---
 
-# Scaling Example
+## Scaling Example
 
 Update:
 
@@ -593,7 +593,7 @@ New Pods
 
 ---
 
-# High Availability
+## High Availability
 
 Production clusters usually have multiple Control Plane nodes.
 
@@ -615,7 +615,7 @@ Worker Nodes are also distributed across multiple machines.
 
 ---
 
-# Cluster Communication
+## Cluster Communication
 
 ```
 kubectl
@@ -641,7 +641,7 @@ Worker Nodes communicate with the Control Plane through the API Server.
 
 ---
 
-# Kubernetes Architecture Layers
+## Kubernetes Architecture Layers
 
 ```
 Applications
@@ -667,7 +667,7 @@ Each layer depends on the one below it.
 
 ---
 
-# Architecture Benefits
+## Architecture Benefits
 
 Kubernetes architecture provides:
 
@@ -681,7 +681,7 @@ Kubernetes architecture provides:
 
 ---
 
-# Important Terminology
+## Important Terminology
 
 | Component | Purpose |
 |-----------|---------|
@@ -699,7 +699,7 @@ Kubernetes architecture provides:
 
 ---
 
-# Architecture Summary
+## Architecture Summary
 
 ```
 Developer
@@ -741,7 +741,7 @@ This architecture enables Kubernetes to manage thousands of workloads across man
 
 ---
 
-## How Kubernetes Architecture Works Internally
+### How Kubernetes Architecture Works Internally
 
 Kubernetes is built around a **control loop architecture**. Every component continuously communicates with the Kubernetes API Server to ensure that the **actual state** of the cluster matches the **desired state** defined by users.
 
@@ -749,7 +749,7 @@ Unlike traditional systems where administrators manually manage infrastructure, 
 
 ---
 
-# Complete Kubernetes Request Flow
+## Complete Kubernetes Request Flow
 
 Suppose a developer deploys an application.
 
@@ -837,7 +837,7 @@ Everything revolves around the API Server.
 
 ---
 
-# Step 1 – User Sends Request
+## Step 1 – User Sends Request
 
 Example:
 
@@ -861,7 +861,7 @@ API Server
 
 ---
 
-# Step 2 – Authentication
+## Step 2 – Authentication
 
 The API Server verifies:
 
@@ -885,7 +885,7 @@ Request Rejected
 
 ---
 
-# Step 3 – Authorization
+## Step 3 – Authorization
 
 After identity is verified:
 
@@ -907,7 +907,7 @@ If unauthorized:
 
 ---
 
-# Step 4 – Request Validation
+## Step 4 – Request Validation
 
 The API Server validates:
 
@@ -928,7 +928,7 @@ Invalid manifests are rejected before reaching the cluster.
 
 ---
 
-# Step 5 – Admission Controllers
+## Step 5 – Admission Controllers
 
 Admission Controllers may:
 
@@ -959,7 +959,7 @@ Examples include namespace lifecycle management, image policy enforcement, and r
 
 ---
 
-# Step 6 – Store in etcd
+## Step 6 – Store in etcd
 
 Validated objects are stored.
 
@@ -984,7 +984,7 @@ Stored objects include:
 
 ---
 
-# Step 7 – Controller Manager
+## Step 7 – Controller Manager
 
 Controllers constantly monitor Kubernetes objects.
 
@@ -1012,7 +1012,7 @@ They create or update Kubernetes objects.
 
 ---
 
-# Step 8 – ReplicaSet Controller
+## Step 8 – ReplicaSet Controller
 
 ReplicaSet ensures:
 
@@ -1046,7 +1046,7 @@ because no node has been assigned yet.
 
 ---
 
-# Step 9 – Scheduler
+## Step 9 – Scheduler
 
 Scheduler evaluates available nodes.
 
@@ -1076,7 +1076,7 @@ Best Node Selected
 
 ---
 
-# Step 10 – kubelet
+## Step 10 – kubelet
 
 The kubelet running on the selected worker node receives the assignment.
 
@@ -1102,7 +1102,7 @@ The kubelet continuously reports node and Pod status back to the Control Plane.
 
 ---
 
-# Step 11 – Container Runtime
+## Step 11 – Container Runtime
 
 The runtime performs:
 
@@ -1132,7 +1132,7 @@ Pull From Registry
 
 ---
 
-# Step 12 – Pod Initialization
+## Step 12 – Pod Initialization
 
 Before the application begins serving traffic:
 
@@ -1160,7 +1160,7 @@ Only after the Pod is ready will it receive traffic through a Service (if config
 
 ---
 
-# Step 13 – Status Updates
+## Step 13 – Status Updates
 
 The kubelet continuously reports:
 
@@ -1185,7 +1185,7 @@ etcd Updated
 
 ---
 
-# Continuous Reconciliation
+## Continuous Reconciliation
 
 Controllers never stop working.
 
@@ -1213,7 +1213,7 @@ This loop runs throughout the lifetime of the cluster.
 
 ---
 
-# Example – Pod Failure
+## Example – Pod Failure
 
 Suppose one Pod crashes.
 
@@ -1257,7 +1257,7 @@ No administrator intervention is required.
 
 ---
 
-# Example – Node Failure
+## Example – Node Failure
 
 Worker Node:
 
@@ -1295,7 +1295,7 @@ Provided sufficient cluster capacity exists, workloads are recreated on other no
 
 ---
 
-# Kubernetes Watches
+## Kubernetes Watches
 
 Most Kubernetes components use **watch mechanisms** rather than continuously polling.
 
@@ -1321,7 +1321,7 @@ This event-driven design improves scalability and efficiency.
 
 ---
 
-# API-Centric Architecture
+## API-Centric Architecture
 
 Every component communicates through the API Server.
 
@@ -1353,7 +1353,7 @@ Direct communication between most components is intentionally minimized.
 
 ---
 
-# Control Plane Responsibilities
+## Control Plane Responsibilities
 
 ```
 Receive Requests
@@ -1381,7 +1381,7 @@ Report Status
 
 ---
 
-# Worker Node Responsibilities
+## Worker Node Responsibilities
 
 ```
 Receive Pod Assignment
@@ -1405,7 +1405,7 @@ Report Health
 
 ---
 
-# Complete Internal Workflow
+## Complete Internal Workflow
 
 ```
 Developer
@@ -1491,9 +1491,9 @@ This represents the complete lifecycle from deployment to a running application.
 
 ---
 
-# Hands-on Commands
+## Hands-on Commands
 
-## View Cluster Information
+### View Cluster Information
 
 ```bash
 kubectl cluster-info
@@ -1501,7 +1501,7 @@ kubectl cluster-info
 
 ---
 
-## View Nodes
+### View Nodes
 
 ```bash
 kubectl get nodes -o wide
@@ -1509,7 +1509,7 @@ kubectl get nodes -o wide
 
 ---
 
-## View All Pods
+### View All Pods
 
 ```bash
 kubectl get pods -A
@@ -1517,7 +1517,7 @@ kubectl get pods -A
 
 ---
 
-## View Deployments
+### View Deployments
 
 ```bash
 kubectl get deployments -A
@@ -1525,7 +1525,7 @@ kubectl get deployments -A
 
 ---
 
-## View ReplicaSets
+### View ReplicaSets
 
 ```bash
 kubectl get replicasets -A
@@ -1533,7 +1533,7 @@ kubectl get replicasets -A
 
 ---
 
-## View Services
+### View Services
 
 ```bash
 kubectl get services -A
@@ -1541,7 +1541,7 @@ kubectl get services -A
 
 ---
 
-## Describe a Node
+### Describe a Node
 
 ```bash
 kubectl describe node <node-name>
@@ -1557,7 +1557,7 @@ Useful information includes:
 
 ---
 
-## Describe a Pod
+### Describe a Pod
 
 ```bash
 kubectl describe pod <pod-name>
@@ -1573,7 +1573,7 @@ This provides details about:
 
 ---
 
-## View Cluster Events
+### View Cluster Events
 
 ```bash
 kubectl get events -A
@@ -1583,39 +1583,39 @@ Events are often the first place to investigate deployment or scheduling issues.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Think in Desired State
+#### 1. Think in Desired State
 
 Define what the system should look like rather than manually managing individual Pods.
 
 ---
 
-### 2. Treat the API Server as the Central Entry Point
+#### 2. Treat the API Server as the Central Entry Point
 
 All cluster changes should flow through the Kubernetes API.
 
 ---
 
-### 3. Avoid Modifying Running Pods
+#### 3. Avoid Modifying Running Pods
 
 Update manifests and perform new deployments instead of manually changing live workloads.
 
 ---
 
-### 4. Monitor Control Plane Health
+#### 4. Monitor Control Plane Health
 
 A healthy Control Plane is essential for cluster stability.
 
 ---
 
-### 5. Keep etcd Protected
+#### 5. Keep etcd Protected
 
 Because etcd contains the cluster's state, secure access, perform backups, and monitor its health carefully.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Understanding Kubernetes architecture is essential because many production issues stem from misconceptions about how the Control Plane and Worker Nodes operate.
 
@@ -1623,7 +1623,7 @@ The following are some of the most common mistakes encountered when learning or 
 
 ---
 
-# 1. Thinking Kubernetes Runs Containers Directly
+## 1. Thinking Kubernetes Runs Containers Directly
 
 Many beginners believe:
 
@@ -1659,7 +1659,7 @@ Kubernetes orchestrates workloads, while the container runtime (such as **contai
 
 ---
 
-# 2. Ignoring the Role of the API Server
+## 2. Ignoring the Role of the API Server
 
 Some engineers assume components communicate directly.
 
@@ -1681,7 +1681,7 @@ Most Kubernetes components interact through the **API Server**, making it the ce
 
 ---
 
-# 3. Confusing etcd with a Database for Applications
+## 3. Confusing etcd with a Database for Applications
 
 Incorrect assumption:
 
@@ -1709,7 +1709,7 @@ Application data belongs in databases such as PostgreSQL, MySQL, MongoDB, etc.
 
 ---
 
-# 4. Assuming the Scheduler Starts Pods
+## 4. Assuming the Scheduler Starts Pods
 
 Many candidates answer:
 
@@ -1749,7 +1749,7 @@ The Scheduler only **chooses the node**.
 
 ---
 
-# 5. Forgetting Controllers
+## 5. Forgetting Controllers
 
 Controllers are responsible for maintaining the desired state.
 
@@ -1779,7 +1779,7 @@ Without controllers, Kubernetes would not provide self-healing.
 
 ---
 
-# 6. Assuming Pods Are Permanent
+## 6. Assuming Pods Are Permanent
 
 Pods are **ephemeral**.
 
@@ -1807,7 +1807,7 @@ Applications should tolerate Pod recreation.
 
 ---
 
-# 7. Editing Running Pods
+## 7. Editing Running Pods
 
 Incorrect approach:
 
@@ -1837,7 +1837,7 @@ kubectl apply
 
 ---
 
-# 8. Ignoring Cluster State
+## 8. Ignoring Cluster State
 
 Kubernetes always works toward:
 
@@ -1863,7 +1863,7 @@ This is expected behavior.
 
 ---
 
-# 9. Believing Every Node Is Identical
+## 9. Believing Every Node Is Identical
 
 Worker nodes may differ in:
 
@@ -1878,7 +1878,7 @@ The Scheduler considers these characteristics when placing Pods.
 
 ---
 
-# 10. Ignoring Node Capacity
+## 10. Ignoring Node Capacity
 
 A Pod requiring:
 
@@ -1894,7 +1894,7 @@ Always define realistic resource requests.
 
 ---
 
-# 11. Misunderstanding Worker Nodes
+## 11. Misunderstanding Worker Nodes
 
 Worker nodes are not passive machines.
 
@@ -1908,7 +1908,7 @@ These components continuously communicate with the Control Plane.
 
 ---
 
-# 12. Ignoring Events
+## 12. Ignoring Events
 
 Many engineers check only logs.
 
@@ -1927,7 +1927,7 @@ Events often explain:
 
 ---
 
-# 13. Not Backing Up etcd
+## 13. Not Backing Up etcd
 
 etcd contains the cluster's desired state.
 
@@ -1937,7 +1937,7 @@ Back up etcd according to your organization's operational procedures.
 
 ---
 
-# 14. Assuming Kubernetes Solves Every Problem Automatically
+## 14. Assuming Kubernetes Solves Every Problem Automatically
 
 Kubernetes provides automation, but it cannot automatically fix:
 
@@ -1951,7 +1951,7 @@ It maintains the desired state of infrastructure—not application correctness.
 
 ---
 
-# 15. Learning Components Independently
+## 15. Learning Components Independently
 
 Many people memorize:
 
@@ -2004,9 +2004,9 @@ Understanding this flow is far more valuable than memorizing component definitio
 
 ---
 
-# Kubernetes Architecture Quick Revision
+## Kubernetes Architecture Quick Revision
 
-## Cluster Architecture
+### Cluster Architecture
 
 ```
 Control Plane
@@ -2022,7 +2022,7 @@ Pods
 
 ---
 
-## Control Plane
+### Control Plane
 
 ```
 API Server
@@ -2042,7 +2042,7 @@ etcd
 
 ---
 
-## Worker Node
+### Worker Node
 
 ```
 kubelet
@@ -2062,7 +2062,7 @@ Networking
 
 ---
 
-## Complete Request Flow
+### Complete Request Flow
 
 ```
 Developer
@@ -2122,7 +2122,7 @@ Pod Running
 
 ---
 
-## Reconciliation Loop
+### Reconciliation Loop
 
 ```
 Desired State
@@ -2152,7 +2152,7 @@ This reconciliation loop is one of the defining characteristics of Kubernetes.
 
 ---
 
-## Component Responsibilities
+### Component Responsibilities
 
 | Component | Primary Responsibility |
 |------------|------------------------|
@@ -2166,7 +2166,7 @@ This reconciliation loop is one of the defining characteristics of Kubernetes.
 
 ---
 
-## Most Important kubectl Commands
+### Most Important kubectl Commands
 
 ```bash
 kubectl cluster-info
@@ -2190,7 +2190,7 @@ kubectl get events -A
 
 ---
 
-# Kubernetes Architecture Checklist
+## Kubernetes Architecture Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -2212,9 +2212,9 @@ kubectl get events -A
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Resources
+### Official Kubernetes Resources
 
 - Kubernetes Architecture Documentation
 - Kubernetes Components Documentation
@@ -2224,7 +2224,7 @@ kubectl get events -A
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Cloud Native Computing Foundation (CNCF)
 - Kubernetes Best Practices
@@ -2233,7 +2233,7 @@ kubectl get events -A
 
 ---
 
-## Security Standards
+### Security Standards
 
 - CIS Kubernetes Benchmark
 - NIST SP 800-190 — Application Container Security Guide
@@ -2242,7 +2242,7 @@ kubectl get events -A
 
 ---
 
-## Recommended Books
+### Recommended Books
 
 - *Kubernetes Up & Running* — Kelsey Hightower, Brendan Burns & Joe Beda
 - *Kubernetes in Action* — Marko Lukša
@@ -2251,7 +2251,7 @@ kubectl get events -A
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 - Build a local cluster using Kind, Minikube, or k3d.
 - Observe how Deployments create ReplicaSets and Pods.
@@ -2262,7 +2262,7 @@ kubectl get events -A
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 User

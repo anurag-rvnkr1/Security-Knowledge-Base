@@ -2,7 +2,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Injection vulnerabilities occur when an application sends untrusted user input to an interpreter without proper validation or sanitization. The interpreter treats the malicious input as commands or part of a query, causing unintended execution.
 
@@ -30,7 +30,7 @@ Common interpreters include:
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Modern web applications continuously process user input.
 
@@ -86,7 +86,7 @@ Returns Entire Table
 
 ---
 
-# What is an Interpreter?
+## What is an Interpreter?
 
 An interpreter is software that reads and executes instructions.
 
@@ -126,7 +126,7 @@ If attackers manipulate the instructions being interpreted, they may execute uni
 
 ---
 
-# General Injection Flow
+## General Injection Flow
 
 ```
 Attacker
@@ -157,7 +157,7 @@ without separating them securely.
 
 ---
 
-# Safe Processing Flow
+## Safe Processing Flow
 
 ```
 User Input
@@ -183,7 +183,7 @@ The interpreter receives data separately from commands, preventing user input fr
 
 ---
 
-# Root Cause
+## Root Cause
 
 Injection vulnerabilities usually occur due to:
 
@@ -197,7 +197,7 @@ Injection vulnerabilities usually occur due to:
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 Imagine a login form.
 
@@ -257,7 +257,7 @@ The password check is ignored, potentially allowing unauthorized access.
 
 ---
 
-# Types of Injection
+## Types of Injection
 
 OWASP groups several injection vulnerabilities under this category.
 
@@ -282,7 +282,7 @@ Each targets a different interpreter but exploits the same fundamental weakness:
 
 ---
 
-# SQL Injection (SQLi)
+## SQL Injection (SQLi)
 
 Targets relational databases.
 
@@ -310,7 +310,7 @@ Impact:
 
 ---
 
-# NoSQL Injection
+## NoSQL Injection
 
 Targets NoSQL databases such as:
 
@@ -335,7 +335,7 @@ Improper query construction can cause authentication checks to succeed unexpecte
 
 ---
 
-# OS Command Injection
+## OS Command Injection
 
 Occurs when user input is passed to operating system commands.
 
@@ -367,7 +367,7 @@ Impact:
 
 ---
 
-# LDAP Injection
+## LDAP Injection
 
 Applications using LDAP for authentication or directory lookups may build LDAP queries insecurely.
 
@@ -381,7 +381,7 @@ Manipulated input may alter the LDAP filter and bypass intended restrictions.
 
 ---
 
-# XPath Injection
+## XPath Injection
 
 XPath queries retrieve information from XML documents.
 
@@ -395,7 +395,7 @@ Unsafely concatenated user input may allow attackers to retrieve unintended XML 
 
 ---
 
-# Server-Side Template Injection (SSTI)
+## Server-Side Template Injection (SSTI)
 
 Occurs when user input is interpreted by a server-side template engine.
 
@@ -423,7 +423,7 @@ Advanced SSTI vulnerabilities may lead to Remote Code Execution.
 
 ---
 
-# Expression Language Injection
+## Expression Language Injection
 
 Some Java frameworks evaluate expressions dynamically.
 
@@ -437,7 +437,7 @@ If evaluated instead of treated as text, attackers may manipulate application lo
 
 ---
 
-# Common Attack Surfaces
+## Common Attack Surfaces
 
 Injection vulnerabilities commonly appear in:
 
@@ -456,7 +456,7 @@ Injection vulnerabilities commonly appear in:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Successful injection attacks can result in:
 
@@ -472,7 +472,7 @@ Successful injection attacks can result in:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Injection occurs when untrusted input is interpreted as executable commands.
 - The root cause is unsafe handling of user-controlled input.
@@ -480,9 +480,9 @@ Successful injection attacks can result in:
 - Parameterized queries, input validation, and context-aware encoding are fundamental defenses.
 - Preventing injection requires separating user data from executable commands rather than attempting to filter malicious input alone.
 
-# SQL Injection (SQLi)
+## SQL Injection (SQLi)
 
-## Overview
+### Overview
 
 SQL Injection (SQLi) is one of the oldest and most dangerous web application vulnerabilities. It occurs when an application constructs SQL queries using untrusted user input without proper separation between **code** and **data**.
 
@@ -499,7 +499,7 @@ As a result, attackers may:
 
 ---
 
-# Understanding SQL
+## Understanding SQL
 
 SQL (Structured Query Language) is the language used to communicate with relational databases.
 
@@ -523,7 +523,7 @@ Applications use SQL to:
 
 ---
 
-# How Applications Communicate with Databases
+## How Applications Communicate with Databases
 
 A typical request flow:
 
@@ -559,7 +559,7 @@ The application creates a SQL query using user input and sends it to the databas
 
 ---
 
-# Vulnerable Login Example
+## Vulnerable Login Example
 
 Suppose a login form asks for:
 
@@ -598,7 +598,7 @@ This works correctly.
 
 ---
 
-# The Problem
+## The Problem
 
 Now imagine the attacker enters:
 
@@ -628,7 +628,7 @@ Since `'1'='1'` is always true, the WHERE clause may evaluate to true for many o
 
 ---
 
-# Why This Happens
+## Why This Happens
 
 The application directly concatenates user input into SQL commands.
 
@@ -657,7 +657,7 @@ because both are combined into one string.
 
 ---
 
-# Secure Approach
+## Secure Approach
 
 Parameterized queries separate SQL instructions from user input.
 
@@ -681,7 +681,7 @@ The database always treats the parameter as data—not executable SQL.
 
 ---
 
-# SQL Injection Attack Flow
+## SQL Injection Attack Flow
 
 ```
 Attacker
@@ -709,7 +709,7 @@ Sensitive Data Returned
 
 ---
 
-# Common SQL Injection Types
+## Common SQL Injection Types
 
 ```
 SQL Injection
@@ -728,7 +728,7 @@ Each type exploits the same underlying flaw but extracts information differently
 
 ---
 
-# 1. Authentication Bypass
+## 1. Authentication Bypass
 
 The attacker attempts to bypass the login process by altering the SQL logic.
 
@@ -760,7 +760,7 @@ The comment marker (`--`) causes the password check to be ignored in many SQL di
 
 ---
 
-# 2. Error-Based SQL Injection
+## 2. Error-Based SQL Injection
 
 Some applications display raw database errors.
 
@@ -788,7 +788,7 @@ Attackers use these clues to craft more effective payloads.
 
 ---
 
-# Example
+## Example
 
 Instead of:
 
@@ -811,7 +811,7 @@ The attacker now knows:
 
 ---
 
-# 3. UNION-Based SQL Injection
+## 3. UNION-Based SQL Injection
 
 The SQL `UNION` operator combines the results of two compatible `SELECT` statements.
 
@@ -841,7 +841,7 @@ before using UNION.
 
 ---
 
-# UNION Attack Flow
+## UNION Attack Flow
 
 ```
 Original Query
@@ -865,7 +865,7 @@ Application Displays Both
 
 ---
 
-# 4. Boolean-Based Blind SQL Injection
+## 4. Boolean-Based Blind SQL Injection
 
 Some applications suppress errors and do not display query results.
 
@@ -889,7 +889,7 @@ By asking a series of true/false questions, attackers can infer information one 
 
 ---
 
-# Example Logic
+## Example Logic
 
 The attacker asks questions such as:
 
@@ -901,7 +901,7 @@ The application's responses gradually reveal hidden information.
 
 ---
 
-# 5. Time-Based Blind SQL Injection
+## 5. Time-Based Blind SQL Injection
 
 If the application always returns identical pages, attackers may rely on response timing.
 
@@ -927,7 +927,7 @@ By measuring response times, attackers can infer answers to true/false questions
 
 ---
 
-# 6. Out-of-Band (OOB) SQL Injection
+## 6. Out-of-Band (OOB) SQL Injection
 
 Some database systems can initiate outbound network requests under certain configurations.
 
@@ -955,7 +955,7 @@ This technique is useful in highly restricted environments but depends on databa
 
 ---
 
-# 7. Second-Order SQL Injection
+## 7. Second-Order SQL Injection
 
 In second-order SQL Injection, malicious input is stored safely at first but becomes dangerous later when reused in another SQL query without proper parameterization.
 
@@ -985,7 +985,7 @@ These vulnerabilities can be difficult to detect because exploitation occurs lon
 
 ---
 
-# 8. Stacked Queries
+## 8. Stacked Queries
 
 Some database engines allow multiple SQL statements in a single request.
 
@@ -1009,7 +1009,7 @@ Whether this is possible depends on the database engine and application configur
 
 ---
 
-# Common Developer Mistakes
+## Common Developer Mistakes
 
 ❌ Building SQL queries using string concatenation.
 
@@ -1025,7 +1025,7 @@ Whether this is possible depends on the database engine and application configur
 
 ---
 
-# SQL Injection vs Broken Access Control
+## SQL Injection vs Broken Access Control
 
 | SQL Injection | Broken Access Control |
 |---------------|----------------------|
@@ -1036,7 +1036,7 @@ Whether this is possible depends on the database engine and application configur
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - SQL Injection occurs when user input is incorporated into SQL commands without proper separation of code and data.
 - Parameterized queries are the primary defense against SQL Injection.
@@ -1044,15 +1044,15 @@ Whether this is possible depends on the database engine and application configur
 - Error messages, timing differences, and application behavior can all reveal sensitive information to attackers.
 - Eliminating SQL Injection requires secure coding practices, least-privilege database accounts, proper error handling, and comprehensive input handling—not simple keyword filtering.
 
-# Other Injection Vulnerabilities
+## Other Injection Vulnerabilities
 
 While SQL Injection is the most well-known injection attack, many modern applications use technologies such as NoSQL databases, operating system commands, template engines, LDAP directories, GraphQL APIs, and XML processors. Each of these can become vulnerable if untrusted input is interpreted as executable instructions.
 
 ---
 
-# 1. NoSQL Injection
+## 1. NoSQL Injection
 
-## Overview
+### Overview
 
 NoSQL Injection targets applications using NoSQL databases instead of traditional relational databases.
 
@@ -1068,7 +1068,7 @@ Unlike SQL databases, NoSQL databases often use JSON-like query structures.
 
 ---
 
-## Typical Architecture
+### Typical Architecture
 
 ```
 User
@@ -1090,7 +1090,7 @@ If user input is inserted directly into the query object, attackers may manipula
 
 ---
 
-## Vulnerable Example
+### Vulnerable Example
 
 Imagine an application builds a MongoDB query directly from user input.
 
@@ -1116,7 +1116,7 @@ If the application fails to validate the structure of incoming JSON, an attacker
 
 ---
 
-## Common Causes
+### Common Causes
 
 - Trusting JSON input
 - Dynamic query construction
@@ -1125,7 +1125,7 @@ If the application fails to validate the structure of incoming JSON, an attacker
 
 ---
 
-## Potential Impact
+### Potential Impact
 
 - Authentication bypass
 - Data disclosure
@@ -1135,7 +1135,7 @@ If the application fails to validate the structure of incoming JSON, an attacker
 
 ---
 
-# Prevention
+## Prevention
 
 - Validate input types.
 - Use strict schemas.
@@ -1145,9 +1145,9 @@ If the application fails to validate the structure of incoming JSON, an attacker
 
 ---
 
-# 2. OS Command Injection
+## 2. OS Command Injection
 
-## Overview
+### Overview
 
 OS Command Injection occurs when an application executes operating system commands using user-controlled input.
 
@@ -1155,7 +1155,7 @@ Instead of attacking the database, the attacker targets the underlying operating
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 User
@@ -1177,7 +1177,7 @@ If user input is concatenated into shell commands, attackers may execute uninten
 
 ---
 
-## Common Sources
+### Common Sources
 
 - Network diagnostic tools
 - Ping utilities
@@ -1188,7 +1188,7 @@ If user input is concatenated into shell commands, attackers may execute uninten
 
 ---
 
-## Example (Conceptual)
+### Example (Conceptual)
 
 An application allows users to test connectivity by supplying a host.
 
@@ -1210,7 +1210,7 @@ If user input is not handled safely, it may alter the command being executed.
 
 ---
 
-## Possible Impact
+### Possible Impact
 
 - Remote Code Execution (RCE)
 - File disclosure
@@ -1221,7 +1221,7 @@ If user input is not handled safely, it may alter the command being executed.
 
 ---
 
-## Prevention
+### Prevention
 
 - Avoid shell execution when native APIs are available.
 - If shell execution is unavoidable, avoid invoking a shell interpreter and pass arguments safely through language-specific process APIs.
@@ -1231,9 +1231,9 @@ If user input is not handled safely, it may alter the command being executed.
 
 ---
 
-# 3. LDAP Injection
+## 3. LDAP Injection
 
-## Overview
+### Overview
 
 LDAP (Lightweight Directory Access Protocol) is commonly used for:
 
@@ -1246,7 +1246,7 @@ Applications often build LDAP filters to authenticate users or search directory 
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 User
@@ -1268,7 +1268,7 @@ Improper construction of LDAP filters may allow attackers to alter search condit
 
 ---
 
-## Risks
+### Risks
 
 - Authentication bypass
 - User enumeration
@@ -1277,7 +1277,7 @@ Improper construction of LDAP filters may allow attackers to alter search condit
 
 ---
 
-## Prevention
+### Prevention
 
 - Escape special LDAP characters.
 - Use framework-provided LDAP APIs.
@@ -1287,9 +1287,9 @@ Improper construction of LDAP filters may allow attackers to alter search condit
 
 ---
 
-# 4. XPath Injection
+## 4. XPath Injection
 
-## Overview
+### Overview
 
 XPath is a query language used to retrieve information from XML documents.
 
@@ -1297,7 +1297,7 @@ Applications that dynamically construct XPath expressions from user input may be
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 User
@@ -1319,7 +1319,7 @@ If user input changes the query logic, unauthorized XML data may be retrieved.
 
 ---
 
-## Example Use Cases
+### Example Use Cases
 
 - Legacy web applications
 - XML configuration systems
@@ -1328,7 +1328,7 @@ If user input changes the query logic, unauthorized XML data may be retrieved.
 
 ---
 
-## Prevention
+### Prevention
 
 - Use parameterized XPath APIs where available.
 - Escape reserved characters.
@@ -1337,9 +1337,9 @@ If user input changes the query logic, unauthorized XML data may be retrieved.
 
 ---
 
-# 5. Server-Side Template Injection (SSTI)
+## 5. Server-Side Template Injection (SSTI)
 
-## Overview
+### Overview
 
 Modern web frameworks often use server-side template engines to generate HTML dynamically.
 
@@ -1357,7 +1357,7 @@ If untrusted input is interpreted as template syntax instead of plain text, atta
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 User Input
@@ -1375,7 +1375,7 @@ Instead of treating input as text, the template engine evaluates it.
 
 ---
 
-## Typical Impact
+### Typical Impact
 
 Depending on the template engine:
 
@@ -1386,7 +1386,7 @@ Depending on the template engine:
 
 ---
 
-## Prevention
+### Prevention
 
 - Never render user input directly as templates.
 - Separate template code from user-controlled data.
@@ -1395,9 +1395,9 @@ Depending on the template engine:
 
 ---
 
-# 6. Expression Language (EL) Injection
+## 6. Expression Language (EL) Injection
 
-## Overview
+### Overview
 
 Several Java frameworks evaluate expression languages dynamically.
 
@@ -1415,7 +1415,7 @@ Improper evaluation of user-controlled expressions may lead to:
 
 ---
 
-## Prevention
+### Prevention
 
 - Disable unnecessary expression evaluation.
 - Never evaluate user-controlled expressions.
@@ -1424,9 +1424,9 @@ Improper evaluation of user-controlled expressions may lead to:
 
 ---
 
-# 7. GraphQL Injection
+## 7. GraphQL Injection
 
-## Overview
+### Overview
 
 GraphQL allows clients to request exactly the data they need.
 
@@ -1434,7 +1434,7 @@ If GraphQL queries, filters, or resolvers fail to validate input correctly, inje
 
 ---
 
-## Common Risks
+### Common Risks
 
 - Excessive data exposure
 - Unauthorized field access
@@ -1444,7 +1444,7 @@ If GraphQL queries, filters, or resolvers fail to validate input correctly, inje
 
 ---
 
-## Prevention
+### Prevention
 
 - Validate input.
 - Implement authorization at the resolver level.
@@ -1454,7 +1454,7 @@ If GraphQL queries, filters, or resolvers fail to validate input correctly, inje
 
 ---
 
-# Comparing Injection Types
+## Comparing Injection Types
 
 | Injection Type | Target Interpreter | Typical Impact |
 |----------------|-------------------|----------------|
@@ -1469,7 +1469,7 @@ If GraphQL queries, filters, or resolvers fail to validate input correctly, inje
 
 ---
 
-# Detection Methodology
+## Detection Methodology
 
 During a penetration test, evaluate every location where user input reaches an interpreter.
 
@@ -1497,7 +1497,7 @@ Testing should determine:
 
 ---
 
-# General Prevention Strategy
+## General Prevention Strategy
 
 Regardless of the interpreter involved, the security principles remain consistent:
 
@@ -1514,7 +1514,7 @@ Regardless of the interpreter involved, the security principles remain consisten
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Injection vulnerabilities are not limited to SQL databases.
 - Any interpreter that processes untrusted input can become an attack target.
@@ -1522,15 +1522,15 @@ Regardless of the interpreter involved, the security principles remain consisten
 - Secure APIs, parameterization, input validation, and least privilege are the most effective defenses.
 - Modern penetration tests should assess SQL, NoSQL, operating system commands, template engines, LDAP, GraphQL, XML, and other interpreters as part of a comprehensive application security review.
 
-# Detection
+## Detection
 
 Injection vulnerabilities should be identified through a combination of manual testing, automated scanning, secure code review, and architecture analysis. Automated tools can discover common issues, but manual verification is essential to understand the root cause and confirm exploitability.
 
 ---
 
-# Manual Testing
+## Manual Testing
 
-## 1. Identify User-Controlled Input
+### 1. Identify User-Controlled Input
 
 Locate every place where the application accepts external input, including:
 
@@ -1549,7 +1549,7 @@ Trace how this input flows through the application.
 
 ---
 
-## 2. Observe Application Behavior
+### 2. Observe Application Behavior
 
 Check whether unexpected input causes:
 
@@ -1564,7 +1564,7 @@ Unexpected behavior often indicates that user input is reaching an interpreter.
 
 ---
 
-## 3. Review Error Messages
+### 3. Review Error Messages
 
 Examples include:
 
@@ -1599,7 +1599,7 @@ Detailed error messages may reveal:
 
 ---
 
-## 4. Review Source Code
+### 4. Review Source Code
 
 Look for:
 
@@ -1627,13 +1627,13 @@ These patterns deserve careful review.
 
 ---
 
-# Automated Detection
+## Automated Detection
 
 Automation helps identify common injection points but should always be followed by manual validation.
 
 ---
 
-## Burp Suite
+### Burp Suite
 
 Useful modules:
 
@@ -1680,7 +1680,7 @@ Burp Suite helps identify:
 
 ---
 
-## sqlmap
+### sqlmap
 
 `sqlmap` automates SQL Injection detection and exploitation.
 
@@ -1706,7 +1706,7 @@ Use sqlmap only against systems you own or have explicit authorization to test.
 
 ---
 
-## ffuf
+### ffuf
 
 Useful for discovering:
 
@@ -1718,7 +1718,7 @@ Additional attack surface often leads to previously unknown injection opportunit
 
 ---
 
-## Static Application Security Testing (SAST)
+### Static Application Security Testing (SAST)
 
 SAST tools inspect source code for patterns such as:
 
@@ -1736,7 +1736,7 @@ Examples include:
 
 ---
 
-## Dynamic Application Security Testing (DAST)
+### Dynamic Application Security Testing (DAST)
 
 DAST evaluates a running application.
 
@@ -1749,13 +1749,13 @@ Typical tools:
 
 ---
 
-# Prevention
+## Prevention
 
 Preventing injection requires secure software design rather than relying on input filtering alone.
 
 ---
 
-## 1. Parameterized Queries
+### 1. Parameterized Queries
 
 Always use prepared statements or parameterized queries.
 
@@ -1765,7 +1765,7 @@ This prevents user input from changing the query structure.
 
 ---
 
-## 2. Input Validation
+### 2. Input Validation
 
 Accept only expected input.
 
@@ -1781,7 +1781,7 @@ Reject unexpected characters and data types whenever possible.
 
 ---
 
-## 3. Avoid Dynamic Command Construction
+### 3. Avoid Dynamic Command Construction
 
 Avoid constructing:
 
@@ -1795,7 +1795,7 @@ using string concatenation.
 
 ---
 
-## 4. Context-Aware Escaping
+### 4. Context-Aware Escaping
 
 Where parameterization is unavailable, apply escaping appropriate for the target interpreter.
 
@@ -1803,7 +1803,7 @@ Escaping alone should not replace parameterization.
 
 ---
 
-## 5. Least Privilege
+### 5. Least Privilege
 
 Backend services should use accounts with only the permissions they require.
 
@@ -1821,7 +1821,7 @@ Application account:
 
 ---
 
-## 6. Secure Error Handling
+### 6. Secure Error Handling
 
 Users should receive generic error messages.
 
@@ -1843,7 +1843,7 @@ Detailed errors should be logged securely for administrators.
 
 ---
 
-## 7. Keep Components Updated
+### 7. Keep Components Updated
 
 Regularly update:
 
@@ -1857,9 +1857,9 @@ Many injection vulnerabilities arise from outdated software.
 
 ---
 
-# Secure Coding Examples
+## Secure Coding Examples
 
-## Python (Django ORM)
+### Python (Django ORM)
 
 ```python
 user = User.objects.filter(
@@ -1871,7 +1871,7 @@ The ORM generates parameterized queries internally, reducing the risk of SQL Inj
 
 ---
 
-## Java (Spring)
+### Java (Spring)
 
 ```java
 PreparedStatement stmt =
@@ -1884,7 +1884,7 @@ Prepared statements separate SQL instructions from user data.
 
 ---
 
-## Node.js (Parameterized Query)
+### Node.js (Parameterized Query)
 
 ```javascript
 db.query(
@@ -1897,7 +1897,7 @@ The placeholder ensures the input is treated as data rather than executable SQL.
 
 ---
 
-## PHP (PDO)
+### PHP (PDO)
 
 ```php
 $stmt = $pdo->prepare(
@@ -1911,7 +1911,7 @@ PDO prepared statements are the recommended approach for preventing SQL Injectio
 
 ---
 
-# Best Practices
+## Best Practices
 
 ✔ Use parameterized queries everywhere.
 
@@ -1939,9 +1939,9 @@ PDO prepared statements are the recommended approach for preventing SQL Injectio
 
 ---
 
-# Useful Commands
+## Useful Commands
 
-## Nmap Service Detection
+### Nmap Service Detection
 
 ```bash
 nmap -sV example.com
@@ -1949,7 +1949,7 @@ nmap -sV example.com
 
 ---
 
-## Enumerate Hidden Content
+### Enumerate Hidden Content
 
 ```bash
 ffuf -u https://example.com/FUZZ \
@@ -1958,7 +1958,7 @@ ffuf -u https://example.com/FUZZ \
 
 ---
 
-## Test HTTP Requests
+### Test HTTP Requests
 
 ```bash
 curl https://example.com
@@ -1966,7 +1966,7 @@ curl https://example.com
 
 ---
 
-## Inspect Responses
+### Inspect Responses
 
 ```bash
 curl -i https://example.com
@@ -1974,17 +1974,17 @@ curl -i https://example.com
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Objective
+### Objective
 
 Identify and remediate injection vulnerabilities in a deliberately vulnerable application.
 
 ---
 
-## Recommended Labs
+### Recommended Labs
 
-### OWASP Juice Shop
+#### OWASP Juice Shop
 
 Practice:
 
@@ -1995,7 +1995,7 @@ Practice:
 
 ---
 
-### DVWA (Damn Vulnerable Web Application)
+#### DVWA (Damn Vulnerable Web Application)
 
 Practice:
 
@@ -2006,7 +2006,7 @@ Practice:
 
 ---
 
-### WebGoat
+#### WebGoat
 
 Practice:
 
@@ -2017,7 +2017,7 @@ Practice:
 
 ---
 
-## Suggested Workflow
+### Suggested Workflow
 
 1. Intercept requests using Burp Suite.
 2. Identify user-controlled parameters.
@@ -2029,57 +2029,57 @@ Practice:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is an Injection vulnerability?
+#### What is an Injection vulnerability?
 
 Injection occurs when untrusted user input is interpreted as executable commands by an interpreter.
 
 ---
 
-### Why is SQL Injection dangerous?
+#### Why is SQL Injection dangerous?
 
 Because it may allow attackers to read, modify, or delete database data, bypass authentication, or perform administrative actions.
 
 ---
 
-### What is the best defense against SQL Injection?
+#### What is the best defense against SQL Injection?
 
 Parameterized queries (prepared statements), combined with input validation and least privilege.
 
 ---
 
-### What is Command Injection?
+#### What is Command Injection?
 
 Command Injection occurs when user input is incorporated into operating system commands without proper handling, allowing unintended command execution.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is the difference between SQL Injection and NoSQL Injection?
+#### What is the difference between SQL Injection and NoSQL Injection?
 
 SQL Injection targets relational database query languages, while NoSQL Injection targets query mechanisms used by NoSQL databases. Both stem from unsafe handling of user-controlled input.
 
 ---
 
-### Why is input validation alone insufficient?
+#### Why is input validation alone insufficient?
 
 Validation reduces attack surface but cannot guarantee protection against every injection technique. Safe APIs and parameterization are still required.
 
 ---
 
-### What is Server-Side Template Injection?
+#### What is Server-Side Template Injection?
 
 SSTI occurs when user input is evaluated by a server-side template engine instead of being treated as plain text, potentially leading to information disclosure or code execution.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you identify an Injection vulnerability during a penetration test?
+#### How would you identify an Injection vulnerability during a penetration test?
 
 A systematic approach includes:
 
@@ -2094,21 +2094,21 @@ A systematic approach includes:
 
 ---
 
-### Why are ORMs generally safer than dynamic SQL?
+#### Why are ORMs generally safer than dynamic SQL?
 
 ORMs typically generate parameterized queries automatically, separating SQL logic from user input. However, unsafe raw query APIs within an ORM can still introduce SQL Injection if misused.
 
 ---
 
-### What role does least privilege play in mitigating Injection?
+#### What role does least privilege play in mitigating Injection?
 
 Even if an injection vulnerability exists, limiting database or operating system permissions reduces the potential impact by preventing unauthorized administrative actions.
 
 ---
 
-# References
+## References
 
-## OWASP
+### OWASP
 
 - OWASP Top 10 (2021)
 - OWASP SQL Injection Prevention Cheat Sheet
@@ -2118,7 +2118,7 @@ Even if an injection vulnerability exists, limiting database or operating system
 - OWASP Juice Shop
 - OWASP WebGoat
 
-## MITRE CWE
+### MITRE CWE
 
 - CWE-89: SQL Injection
 - CWE-77: Command Injection
@@ -2127,13 +2127,13 @@ Even if an injection vulnerability exists, limiting database or operating system
 - CWE-91: XML Injection
 - CWE-917: Expression Language Injection
 
-## Standards
+### Standards
 
 - NIST Secure Software Development Framework (SSDF)
 - NIST SP 800-53
 - CIS Secure Software Development Controls
 
-## Additional Resources
+### Additional Resources
 
 - PortSwigger Web Security Academy
 - PostgreSQL Documentation
@@ -2142,7 +2142,7 @@ Even if an injection vulnerability exists, limiting database or operating system
 
 ---
 
-# Summary
+## Summary
 
 Injection vulnerabilities arise when applications allow untrusted input to influence interpreters such as SQL databases, operating system shells, LDAP directories, template engines, or GraphQL resolvers. The root cause is almost always the same: failure to clearly separate executable instructions from user-supplied data.
 

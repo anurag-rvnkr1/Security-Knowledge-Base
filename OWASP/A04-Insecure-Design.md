@@ -2,7 +2,7 @@
 
 ---
 
-# Overview
+## Overview
 
 **Insecure Design** refers to weaknesses that originate from poor security architecture, flawed business logic, or missing security controls during the design phase of an application.
 
@@ -16,7 +16,7 @@ If security requirements are missing during planning and architecture, no amount
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Every software project begins with design decisions.
 
@@ -36,11 +36,11 @@ If these are designed incorrectly, attackers may abuse the application's intende
 
 ---
 
-# Implementation Bug vs Design Flaw
+## Implementation Bug vs Design Flaw
 
 This distinction is critical.
 
-## Implementation Bug
+### Implementation Bug
 
 Developer writes:
 
@@ -60,7 +60,7 @@ SQL Injection
 
 ---
 
-## Design Flaw
+### Design Flaw
 
 Suppose a banking application allows users to transfer unlimited money without:
 
@@ -74,9 +74,9 @@ Even if every line of code is correct, the system is insecure because the design
 
 ---
 
-# Architecture Comparison
+## Architecture Comparison
 
-## Secure Design
+### Secure Design
 
 ```
 User
@@ -110,7 +110,7 @@ Multiple layers reduce risk.
 
 ---
 
-## Insecure Design
+### Insecure Design
 
 ```
 User
@@ -124,7 +124,7 @@ Security controls are missing entirely.
 
 ---
 
-# What Makes a Design Secure?
+## What Makes a Design Secure?
 
 A secure design anticipates abuse before development begins.
 
@@ -142,7 +142,7 @@ These questions help identify threats before implementation.
 
 ---
 
-# Root Causes
+## Root Causes
 
 Insecure Design commonly results from:
 
@@ -158,7 +158,7 @@ Insecure Design commonly results from:
 
 ---
 
-# Security by Design
+## Security by Design
 
 Security should be considered from the very beginning of the Software Development Life Cycle (SDLC), not added after development is complete.
 
@@ -194,7 +194,7 @@ Security activities should occur throughout every stage.
 
 ---
 
-# Secure Development Lifecycle (Secure SDLC)
+## Secure Development Lifecycle (Secure SDLC)
 
 A Secure SDLC integrates security into every phase.
 
@@ -234,7 +234,7 @@ Security becomes a continuous process rather than a final checklist.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling is the process of identifying potential attackers, assets, attack paths, and security controls before implementation.
 
@@ -248,7 +248,7 @@ Threat modeling asks:
 
 ---
 
-## Questions Asked During Threat Modeling
+### Questions Asked During Threat Modeling
 
 - What are we building?
 - What assets are valuable?
@@ -259,7 +259,7 @@ Threat modeling asks:
 
 ---
 
-# Example
+## Example
 
 Application:
 
@@ -286,7 +286,7 @@ Threat modeling identifies protections before implementation.
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
 
 A trust boundary is a point where data moves between components with different trust levels.
 
@@ -314,7 +314,7 @@ Never assume data remains trustworthy after crossing a trust boundary.
 
 ---
 
-# Business Logic
+## Business Logic
 
 Business logic defines how an application is intended to behave.
 
@@ -332,7 +332,7 @@ Attackers often exploit weaknesses in business logic without exploiting traditio
 
 ---
 
-# Example
+## Example
 
 A shopping website allows:
 
@@ -378,7 +378,7 @@ The business rule was never enforced.
 
 ---
 
-# Abuse Cases
+## Abuse Cases
 
 Traditional software design focuses on expected user behavior.
 
@@ -426,7 +426,7 @@ Both workflows should be considered during design.
 
 ---
 
-# Key Principles of Secure Design
+## Key Principles of Secure Design
 
 Security architects should apply principles such as:
 
@@ -445,7 +445,7 @@ These principles influence architecture before any code is written.
 
 ---
 
-# Why Traditional Security Testing Isn't Enough
+## Why Traditional Security Testing Isn't Enough
 
 Static analysis can detect:
 
@@ -464,7 +464,7 @@ These are design decisions.
 
 ---
 
-# Real-World Examples
+## Real-World Examples
 
 Examples of insecure design include:
 
@@ -481,7 +481,7 @@ Examples of insecure design include:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Insecure Design focuses on architectural and business logic weaknesses rather than coding bugs.
 - Secure code cannot compensate for missing security requirements or flawed system design.
@@ -489,7 +489,7 @@ Examples of insecure design include:
 - Every system should be designed with the assumption that attackers will intentionally misuse legitimate functionality.
 - Security is most effective when integrated into architecture from the beginning rather than added after development.
 
-# Secure Design Principles
+## Secure Design Principles
 
 Secure design principles are fundamental guidelines that help architects and developers build systems that remain secure even when individual controls fail.
 
@@ -497,9 +497,9 @@ Rather than relying on a single security feature, secure systems use multiple co
 
 ---
 
-# 1. Defense in Depth
+## 1. Defense in Depth
 
-## Overview
+### Overview
 
 Defense in Depth means protecting a system with **multiple independent layers of security**.
 
@@ -507,7 +507,7 @@ If one layer fails, additional layers continue to provide protection.
 
 ---
 
-## Insecure Architecture
+### Insecure Architecture
 
 ```
 Internet
@@ -521,7 +521,7 @@ If an attacker reaches the database, there are no additional barriers.
 
 ---
 
-## Secure Architecture
+### Secure Architecture
 
 ```
 Internet
@@ -567,7 +567,7 @@ Even if one control is bypassed, others continue to reduce the attacker's progre
 
 ---
 
-## Real-World Example
+### Real-World Example
 
 Online banking typically uses:
 
@@ -584,7 +584,7 @@ No single control is expected to stop every attack.
 
 ---
 
-## Benefits
+### Benefits
 
 - Reduces single points of failure
 - Improves resilience
@@ -593,15 +593,15 @@ No single control is expected to stop every attack.
 
 ---
 
-# 2. Principle of Least Privilege
+## 2. Principle of Least Privilege
 
-## Overview
+### Overview
 
 Every user, application, and service should receive **only the minimum permissions necessary** to perform its intended tasks.
 
 ---
 
-## Example
+### Example
 
 Customer:
 
@@ -625,7 +625,7 @@ Administrator:
 
 ---
 
-## Application Example
+### Application Example
 
 Instead of connecting to the database as:
 
@@ -653,7 +653,7 @@ Avoid unnecessary permissions such as:
 
 ---
 
-## Benefits
+### Benefits
 
 - Reduces damage after compromise
 - Limits insider abuse
@@ -662,15 +662,15 @@ Avoid unnecessary permissions such as:
 
 ---
 
-# 3. Fail Securely
+## 3. Fail Securely
 
-## Overview
+### Overview
 
 When an error occurs, the application should default to a secure state.
 
 ---
 
-## Insecure Example
+### Insecure Example
 
 Authentication service becomes unavailable.
 
@@ -688,7 +688,7 @@ This is catastrophic.
 
 ---
 
-## Secure Example
+### Secure Example
 
 Authentication service becomes unavailable.
 
@@ -706,7 +706,7 @@ The system prioritizes security over convenience.
 
 ---
 
-## Examples
+### Examples
 
 Secure failures include:
 
@@ -717,9 +717,9 @@ Secure failures include:
 
 ---
 
-# 4. Secure by Default
+## 4. Secure by Default
 
-## Overview
+### Overview
 
 The default configuration should be the safest configuration.
 
@@ -727,7 +727,7 @@ Users should never have to enable security manually.
 
 ---
 
-## Example
+### Example
 
 New account:
 
@@ -753,7 +753,7 @@ Secure Session Configuration Enabled
 
 ---
 
-## Server Example
+### Server Example
 
 Default:
 
@@ -773,9 +773,9 @@ Disabled
 
 ---
 
-# 5. Complete Mediation
+## 5. Complete Mediation
 
-## Overview
+### Overview
 
 Every request to a protected resource should be authorized.
 
@@ -783,7 +783,7 @@ Never assume that a previous authorization remains valid forever.
 
 ---
 
-## Architecture
+### Architecture
 
 ```
 User
@@ -805,7 +805,7 @@ Every request follows this process.
 
 ---
 
-## Common Mistake
+### Common Mistake
 
 Application checks authorization only during login.
 
@@ -815,15 +815,15 @@ Attackers exploit this by directly accessing protected endpoints.
 
 ---
 
-# 6. Separation of Duties
+## 6. Separation of Duties
 
-## Overview
+### Overview
 
 Critical actions should require multiple independent roles or approvals.
 
 ---
 
-## Banking Example
+### Banking Example
 
 Employee:
 
@@ -847,7 +847,7 @@ No single individual controls the entire process.
 
 ---
 
-## Benefits
+### Benefits
 
 - Reduces fraud
 - Prevents accidental mistakes
@@ -856,9 +856,9 @@ No single individual controls the entire process.
 
 ---
 
-# 7. Economy of Mechanism
+## 7. Economy of Mechanism
 
-## Overview
+### Overview
 
 Security mechanisms should be as simple as possible while still meeting security requirements.
 
@@ -866,7 +866,7 @@ Complex systems are more difficult to understand, test, and maintain.
 
 ---
 
-## Example
+### Example
 
 Instead of:
 
@@ -884,9 +884,9 @@ Simple, well-understood solutions are generally more secure than overly complex 
 
 ---
 
-# 8. Minimize Attack Surface
+## 8. Minimize Attack Surface
 
-## Overview
+### Overview
 
 Every exposed feature is a potential entry point for attackers.
 
@@ -894,7 +894,7 @@ Reduce unnecessary functionality.
 
 ---
 
-## Remove
+### Remove
 
 - Unused APIs
 - Debug endpoints
@@ -906,7 +906,7 @@ Reduce unnecessary functionality.
 
 ---
 
-## Example
+### Example
 
 Instead of exposing:
 
@@ -922,7 +922,7 @@ Expose only:
 
 ---
 
-## Benefits
+### Benefits
 
 - Fewer vulnerabilities
 - Smaller testing scope
@@ -931,9 +931,9 @@ Expose only:
 
 ---
 
-# 9. Zero Trust
+## 9. Zero Trust
 
-## Overview
+### Overview
 
 Zero Trust assumes that no user, device, or network should be trusted automatically.
 
@@ -945,7 +945,7 @@ Core principle:
 
 ---
 
-## Traditional Model
+### Traditional Model
 
 ```
 Internal Network
@@ -957,7 +957,7 @@ Trusted
 
 ---
 
-## Zero Trust Model
+### Zero Trust Model
 
 ```
 User
@@ -985,7 +985,7 @@ Grant Limited Access
 
 ---
 
-## Continuous Verification
+### Continuous Verification
 
 Checks may include:
 
@@ -1000,15 +1000,15 @@ Trust is not permanent.
 
 ---
 
-# 10. Compartmentalization
+## 10. Compartmentalization
 
-## Overview
+### Overview
 
 Separate systems into isolated components so that compromise of one component does not automatically compromise the entire environment.
 
 ---
 
-## Example
+### Example
 
 Instead of:
 
@@ -1036,7 +1036,7 @@ Compromise of one component has limited impact.
 
 ---
 
-## Cloud Example
+### Cloud Example
 
 Separate:
 
@@ -1053,7 +1053,7 @@ Use different:
 
 ---
 
-# Comparing Secure vs Insecure Designs
+## Comparing Secure vs Insecure Designs
 
 | Principle | Secure Design | Insecure Design |
 |------------|---------------|-----------------|
@@ -1070,7 +1070,7 @@ Use different:
 
 ---
 
-# Applying These Principles Together
+## Applying These Principles Together
 
 A mature application rarely depends on just one principle.
 
@@ -1124,7 +1124,7 @@ Each layer complements the others and limits the impact of failures elsewhere.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure design is achieved through multiple complementary principles rather than a single security feature.
 - Defense in Depth, Least Privilege, and Complete Mediation are foundational concepts in modern application security.
@@ -1132,9 +1132,9 @@ Each layer complements the others and limits the impact of failures elsewhere.
 - Simplicity, compartmentalization, and minimizing attack surface reduce opportunities for attackers.
 - Applying these principles during system design is significantly more effective than attempting to retrofit security after development.
 
-# Business Logic Vulnerabilities
+## Business Logic Vulnerabilities
 
-## Overview
+### Overview
 
 Business logic defines how an application is intended to operate.
 
@@ -1157,7 +1157,7 @@ Unlike SQL Injection or Cross-Site Scripting, these attacks often involve **vali
 
 ---
 
-# Why Business Logic Matters
+## Why Business Logic Matters
 
 Consider an online shopping website.
 
@@ -1197,7 +1197,7 @@ If these scenarios were never considered during design, attackers may exploit th
 
 ---
 
-# Characteristics of Business Logic Flaws
+## Characteristics of Business Logic Flaws
 
 Unlike traditional vulnerabilities:
 
@@ -1215,9 +1215,9 @@ The application simply allows actions that should never have been permitted.
 
 ---
 
-# Example 1 — Coupon Abuse
+## Example 1 — Coupon Abuse
 
-## Intended Rule
+### Intended Rule
 
 ```
 One coupon
@@ -1229,7 +1229,7 @@ One order
 
 ---
 
-## Vulnerable Design
+### Vulnerable Design
 
 The application never verifies whether the coupon has already been used.
 
@@ -1267,7 +1267,7 @@ The business rule was never enforced.
 
 ---
 
-# Example 2 — Unlimited Password Reset
+## Example 2 — Unlimited Password Reset
 
 Intended process:
 
@@ -1294,7 +1294,7 @@ Attackers may repeatedly request OTPs, brute-force codes, or flood users with re
 
 ---
 
-# Example 3 — Race Condition
+## Example 3 — Race Condition
 
 Suppose a coupon should only be redeemed once.
 
@@ -1342,7 +1342,7 @@ The design failed to consider concurrent requests.
 
 ---
 
-# Example 4 — Banking Transfer
+## Example 4 — Banking Transfer
 
 Transfer workflow:
 
@@ -1366,7 +1366,7 @@ Attackers can automate large numbers of transfers without violating application 
 
 ---
 
-# Example 5 — Airline Booking
+## Example 5 — Airline Booking
 
 Application assumes:
 
@@ -1386,7 +1386,7 @@ If seat reservation expires after payment instead of before, attackers may reser
 
 ---
 
-# Abuse Cases
+## Abuse Cases
 
 Traditional software engineering focuses on **use cases**.
 
@@ -1394,7 +1394,7 @@ Security engineering also considers **abuse cases**.
 
 ---
 
-## Use Case
+### Use Case
 
 ```
 Customer
@@ -1414,7 +1414,7 @@ Logout
 
 ---
 
-## Abuse Case
+### Abuse Case
 
 ```
 Bot
@@ -1436,7 +1436,7 @@ Both should be considered during design.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling is a structured process used to identify potential threats before development begins.
 
@@ -1450,7 +1450,7 @@ It answers questions such as:
 
 ---
 
-# Threat Modeling Process
+## Threat Modeling Process
 
 ```
 Requirements
@@ -1480,7 +1480,7 @@ Threat modeling is most effective during the design phase, before implementation
 
 ---
 
-# Identifying Assets
+## Identifying Assets
 
 Examples of assets include:
 
@@ -1498,7 +1498,7 @@ The value of an asset influences the level of protection it requires.
 
 ---
 
-# Trust Boundaries
+## Trust Boundaries
 
 A trust boundary exists whenever data moves between components with different trust levels.
 
@@ -1532,7 +1532,7 @@ Never assume data remains trustworthy after crossing a boundary.
 
 ---
 
-# Data Flow Diagram (DFD)
+## Data Flow Diagram (DFD)
 
 A Data Flow Diagram helps visualize how information moves through a system.
 
@@ -1571,7 +1571,7 @@ Security teams review each connection to identify:
 
 ---
 
-# STRIDE Threat Modeling
+## STRIDE Threat Modeling
 
 Microsoft's STRIDE model categorizes common threats.
 
@@ -1586,7 +1586,7 @@ Microsoft's STRIDE model categorizes common threats.
 
 ---
 
-## Example
+### Example
 
 Password reset service:
 
@@ -1601,7 +1601,7 @@ Possible STRIDE threats:
 
 ---
 
-# DREAD Risk Assessment
+## DREAD Risk Assessment
 
 DREAD is a historical model for evaluating risk.
 
@@ -1617,7 +1617,7 @@ Although less commonly used today, it illustrates structured risk analysis.
 
 ---
 
-# Attack Trees
+## Attack Trees
 
 Attack trees model how an attacker could achieve a goal.
 
@@ -1645,11 +1645,11 @@ Attack trees help designers identify missing security controls.
 
 ---
 
-# Secure Design Review Checklist
+## Secure Design Review Checklist
 
 During architecture reviews, ask:
 
-### Authentication
+#### Authentication
 
 - Is MFA required where appropriate?
 - Are passwords stored securely?
@@ -1657,7 +1657,7 @@ During architecture reviews, ask:
 
 ---
 
-### Authorization
+#### Authorization
 
 - Are permissions defined clearly?
 - Are sensitive actions re-authorized?
@@ -1665,7 +1665,7 @@ During architecture reviews, ask:
 
 ---
 
-### Business Logic
+#### Business Logic
 
 - Can workflows be abused?
 - Are transaction limits enforced?
@@ -1674,7 +1674,7 @@ During architecture reviews, ask:
 
 ---
 
-### Data Protection
+#### Data Protection
 
 - Is sensitive data encrypted?
 - Are secrets protected?
@@ -1682,7 +1682,7 @@ During architecture reviews, ask:
 
 ---
 
-### Availability
+#### Availability
 
 - Are rate limits implemented?
 - Is abuse detection available?
@@ -1690,7 +1690,7 @@ During architecture reviews, ask:
 
 ---
 
-# Real-World Examples
+## Real-World Examples
 
 Examples of insecure design include:
 
@@ -1709,7 +1709,7 @@ These are not coding mistakes—they are missing security requirements.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Business logic vulnerabilities exploit intended application behavior rather than software bugs.
 - Threat modeling helps identify security risks before implementation begins.
@@ -1718,7 +1718,7 @@ These are not coding mistakes—they are missing security requirements.
 - Data Flow Diagrams, trust boundaries, and attack trees help security teams reason about system design.
 - Strong application security begins with thoughtful architecture and security requirements—not just secure code.
 
-# Detection
+## Detection
 
 Detecting Insecure Design is fundamentally different from detecting implementation vulnerabilities.
 
@@ -1742,7 +1742,7 @@ As a result, Insecure Design is primarily identified through:
 
 ---
 
-# Security Design Review
+## Security Design Review
 
 A Security Design Review evaluates whether the application's architecture includes appropriate security controls before implementation.
 
@@ -1780,11 +1780,11 @@ This process identifies architectural weaknesses early, when they are least expe
 
 ---
 
-# Architecture Review Checklist
+## Architecture Review Checklist
 
 During an architecture review, consider the following questions.
 
-## Authentication
+### Authentication
 
 - Is authentication required for all sensitive functions?
 - Is MFA required for high-risk actions?
@@ -1793,7 +1793,7 @@ During an architecture review, consider the following questions.
 
 ---
 
-## Authorization
+### Authorization
 
 - Are user roles clearly defined?
 - Is least privilege enforced?
@@ -1802,7 +1802,7 @@ During an architecture review, consider the following questions.
 
 ---
 
-## Business Logic
+### Business Logic
 
 - Can workflows be abused?
 - Are transaction limits enforced?
@@ -1812,7 +1812,7 @@ During an architecture review, consider the following questions.
 
 ---
 
-## Data Protection
+### Data Protection
 
 - Is sensitive data encrypted in transit?
 - Is sensitive data encrypted at rest where appropriate?
@@ -1821,7 +1821,7 @@ During an architecture review, consider the following questions.
 
 ---
 
-## Availability
+### Availability
 
 - Are rate limits implemented?
 - Is abuse detection available?
@@ -1830,7 +1830,7 @@ During an architecture review, consider the following questions.
 
 ---
 
-## Monitoring
+### Monitoring
 
 - Are important security events logged?
 - Can suspicious behavior be detected?
@@ -1839,7 +1839,7 @@ During an architecture review, consider the following questions.
 
 ---
 
-# Integrating Security into the SDLC
+## Integrating Security into the SDLC
 
 Secure design should be embedded into every stage of software development.
 
@@ -1883,13 +1883,13 @@ Security should never be treated as a final testing phase.
 
 ---
 
-# Prevention
+## Prevention
 
 The most effective way to prevent Insecure Design is to build security requirements into the architecture from the beginning.
 
 ---
 
-## 1. Perform Threat Modeling
+### 1. Perform Threat Modeling
 
 Before development begins:
 
@@ -1903,7 +1903,7 @@ Threat modeling should be revisited whenever significant architectural changes o
 
 ---
 
-## 2. Define Security Requirements
+### 2. Define Security Requirements
 
 Security requirements should be documented alongside functional requirements.
 
@@ -1918,7 +1918,7 @@ Examples:
 
 ---
 
-## 3. Design for Abuse Cases
+### 3. Design for Abuse Cases
 
 For every normal use case, consider how it could be misused.
 
@@ -1956,7 +1956,7 @@ Design controls should prevent or detect abusive behavior.
 
 ---
 
-## 4. Apply Secure Design Principles
+### 4. Apply Secure Design Principles
 
 Ensure the architecture incorporates:
 
@@ -1973,7 +1973,7 @@ These principles should influence system design before implementation.
 
 ---
 
-## 5. Limit Trust
+### 5. Limit Trust
 
 Treat all external input as untrusted.
 
@@ -1988,7 +1988,7 @@ Examples:
 
 ---
 
-## 6. Conduct Regular Design Reviews
+### 6. Conduct Regular Design Reviews
 
 Architecture evolves over time.
 
@@ -2002,7 +2002,7 @@ Review designs whenever:
 
 ---
 
-# Secure Coding vs Secure Design
+## Secure Coding vs Secure Design
 
 | Secure Coding | Secure Design |
 |---------------|---------------|
@@ -2015,7 +2015,7 @@ Both are essential and complementary.
 
 ---
 
-# Best Practices
+## Best Practices
 
 ✔ Perform threat modeling early.
 
@@ -2043,15 +2043,15 @@ Both are essential and complementary.
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Objective
+### Objective
 
 Evaluate an application's architecture for design weaknesses.
 
 ---
 
-## Scenario
+### Scenario
 
 An online banking platform supports:
 
@@ -2063,7 +2063,7 @@ An online banking platform supports:
 
 ---
 
-## Tasks
+### Tasks
 
 1. Identify valuable assets.
 2. Draw a simple Data Flow Diagram.
@@ -2075,7 +2075,7 @@ An online banking platform supports:
 
 ---
 
-## Expected Learning Outcomes
+### Expected Learning Outcomes
 
 You should be able to:
 
@@ -2087,51 +2087,51 @@ You should be able to:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is Insecure Design?
+#### What is Insecure Design?
 
 A category of vulnerabilities caused by missing or inadequate security controls in the application's architecture or business logic rather than programming mistakes.
 
 ---
 
-### How is Insecure Design different from SQL Injection?
+#### How is Insecure Design different from SQL Injection?
 
 SQL Injection is an implementation flaw caused by unsafe query construction. Insecure Design results from poor architectural decisions or missing security requirements.
 
 ---
 
-### What is threat modeling?
+#### What is threat modeling?
 
 Threat modeling is the structured process of identifying assets, threats, attack paths, and appropriate security controls before development begins.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is a business logic vulnerability?
+#### What is a business logic vulnerability?
 
 A flaw where an application's intended workflow can be abused because the design fails to enforce necessary business rules or security constraints.
 
 ---
 
-### What is a trust boundary?
+#### What is a trust boundary?
 
 A trust boundary is the point where data moves between components with different trust levels. Data crossing these boundaries should be authenticated, authorized, validated, and monitored.
 
 ---
 
-### Why can't automated scanners reliably detect Insecure Design?
+#### Why can't automated scanners reliably detect Insecure Design?
 
 Because they primarily analyze code patterns or runtime behavior. Business rules, workflow abuse, and architectural decisions generally require human understanding and contextual analysis.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you conduct a secure design review?
+#### How would you conduct a secure design review?
 
 A structured approach includes:
 
@@ -2147,15 +2147,15 @@ A structured approach includes:
 
 ---
 
-### Give an example where perfectly written code is still insecure.
+#### Give an example where perfectly written code is still insecure.
 
 A payment system that allows unlimited high-value transfers without transaction limits, fraud detection, or step-up authentication may function exactly as designed, yet remain insecure because the design lacks essential security controls.
 
 ---
 
-# References
+## References
 
-## OWASP
+### OWASP
 
 - OWASP Top 10 (2021)
 - OWASP ASVS
@@ -2164,25 +2164,25 @@ A payment system that allows unlimited high-value transfers without transaction 
 - OWASP Abuse Case Cheat Sheet
 - OWASP Proactive Controls
 
-## Microsoft
+### Microsoft
 
 - Microsoft Security Development Lifecycle (SDL)
 - STRIDE Threat Modeling
 
-## NIST
+### NIST
 
 - NIST Secure Software Development Framework (SSDF)
 - NIST SP 800-53
 - NIST Cybersecurity Framework (CSF)
 
-## MITRE
+### MITRE
 
 - MITRE ATT&CK (for understanding attacker behavior)
 - CAPEC (Common Attack Pattern Enumeration and Classification)
 
 ---
 
-# Summary
+## Summary
 
 Insecure Design represents weaknesses introduced during system planning and architecture rather than implementation. These flaws often stem from missing security requirements, inadequate threat modeling, poor business logic, or failure to anticipate abuse cases.
 

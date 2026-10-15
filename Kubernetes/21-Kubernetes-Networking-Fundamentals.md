@@ -34,7 +34,7 @@ Understanding Kubernetes networking is essential for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -51,7 +51,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Kubernetes Networking?
+## Why Kubernetes Networking?
 
 Imagine a cluster.
 
@@ -89,13 +89,13 @@ Communication should work regardless of:
 
 ---
 
-# Kubernetes Networking Model
+## Kubernetes Networking Model
 
 Kubernetes follows four fundamental networking principles.
 
 ---
 
-## Rule 1
+### Rule 1
 
 Every Pod gets its own IP address.
 
@@ -119,7 +119,7 @@ Pods never share IP addresses.
 
 ---
 
-## Rule 2
+### Rule 2
 
 Pods communicate directly.
 
@@ -135,7 +135,7 @@ No NAT is required within the cluster.
 
 ---
 
-## Rule 3
+### Rule 3
 
 Nodes communicate with Pods.
 
@@ -151,7 +151,7 @@ Every Node can reach every Pod.
 
 ---
 
-## Rule 4
+### Rule 4
 
 Applications should use **Services** instead of Pod IPs.
 
@@ -171,7 +171,7 @@ Because Pod IPs change when Pods are recreated.
 
 ---
 
-# Kubernetes Network Architecture
+## Kubernetes Network Architecture
 
 ```
                      Internet
@@ -211,7 +211,7 @@ Because Pod IPs change when Pods are recreated.
 
 ---
 
-# Cluster Networking Components
+## Cluster Networking Components
 
 ```
 Kubernetes Network
@@ -235,7 +235,7 @@ Kubernetes Network
 
 ---
 
-# Pod Networking
+## Pod Networking
 
 Each Pod receives:
 
@@ -257,7 +257,7 @@ Containers inside the Pod share that IP.
 
 ---
 
-# Pod Communication
+## Pod Communication
 
 ```
 Pod A
@@ -279,7 +279,7 @@ Communication works even across different Nodes.
 
 ---
 
-# Multi-Container Pod Networking
+## Multi-Container Pod Networking
 
 ```
 Pod
@@ -305,7 +305,7 @@ Containers communicate using:
 
 ---
 
-# Node Networking
+## Node Networking
 
 Worker Nodes also have IP addresses.
 
@@ -331,7 +331,7 @@ These IPs are different from Pod IPs.
 
 ---
 
-# Service Networking
+## Service Networking
 
 Services provide stable networking.
 
@@ -363,7 +363,7 @@ They are different networks.
 
 ---
 
-# Service Virtual IP
+## Service Virtual IP
 
 ```
 ClusterIP
@@ -381,7 +381,7 @@ ClusterIP is managed by Kubernetes and does not belong to an individual Pod.
 
 ---
 
-# Cluster DNS
+## Cluster DNS
 
 Every Service receives:
 
@@ -399,7 +399,7 @@ Applications should use DNS rather than Pod IPs.
 
 ---
 
-# kube-proxy
+## kube-proxy
 
 kube-proxy manages Service networking.
 
@@ -423,7 +423,7 @@ Responsibilities:
 
 ---
 
-# CNI Plugin
+## CNI Plugin
 
 Kubernetes itself does **not** implement Pod networking.
 
@@ -448,7 +448,7 @@ Common CNI plugins:
 
 ---
 
-# CNI Responsibilities
+## CNI Responsibilities
 
 A CNI plugin:
 
@@ -460,7 +460,7 @@ A CNI plugin:
 
 ---
 
-# Pod-to-Pod Communication
+## Pod-to-Pod Communication
 
 Example:
 
@@ -485,7 +485,7 @@ communication should work transparently.
 
 ---
 
-# Pod-to-Service Communication
+## Pod-to-Service Communication
 
 ```
 Pod
@@ -507,7 +507,7 @@ Applications rarely communicate directly with Pod IPs.
 
 ---
 
-# External Communication
+## External Communication
 
 ```
 Internet
@@ -541,7 +541,7 @@ Pods
 
 ---
 
-# Network Namespaces
+## Network Namespaces
 
 Each Pod gets its own network namespace.
 
@@ -561,7 +561,7 @@ All containers inside the Pod share it.
 
 ---
 
-# IP Address Types
+## IP Address Types
 
 ```
 Node IP
@@ -591,7 +591,7 @@ Each serves a different purpose.
 
 ---
 
-# Network Flow
+## Network Flow
 
 ```
 Client
@@ -619,7 +619,7 @@ Container
 
 ---
 
-# DNS Resolution
+## DNS Resolution
 
 Application:
 
@@ -649,9 +649,9 @@ Pods
 
 ---
 
-# Common Network Traffic
+## Common Network Traffic
 
-## Pod → Pod
+### Pod → Pod
 
 ```
 Direct
@@ -659,7 +659,7 @@ Direct
 
 ---
 
-## Pod → Service
+### Pod → Service
 
 ```
 DNS
@@ -671,7 +671,7 @@ ClusterIP
 
 ---
 
-## External → Service
+### External → Service
 
 ```
 Ingress
@@ -683,7 +683,7 @@ Service
 
 ---
 
-## Pod → Internet
+### Pod → Internet
 
 ```
 Node
@@ -697,7 +697,7 @@ Outbound internet access is typically provided through the Node's networking con
 
 ---
 
-# Kubernetes Networking Layers
+## Kubernetes Networking Layers
 
 ```
 Application
@@ -725,7 +725,7 @@ Internet
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 View Pods:
 
@@ -753,15 +753,15 @@ kubectl describe pod <pod-name>
 
 ---
 
-# Networking Best Practices
+## Networking Best Practices
 
-### 1. Never Depend on Pod IPs
+#### 1. Never Depend on Pod IPs
 
 Always communicate through Services or stable DNS names.
 
 ---
 
-### 2. Use DNS Names
+#### 2. Use DNS Names
 
 Example:
 
@@ -777,7 +777,7 @@ instead of hardcoded IP addresses.
 
 ---
 
-### 3. Choose the Right Service Type
+#### 3. Choose the Right Service Type
 
 - ClusterIP → Internal communication
 - NodePort → Development or basic external access
@@ -785,13 +785,13 @@ instead of hardcoded IP addresses.
 
 ---
 
-### 4. Secure Network Traffic
+#### 4. Secure Network Traffic
 
 Implement Network Policies where supported by the CNI plugin.
 
 ---
 
-### 5. Select an Appropriate CNI Plugin
+#### 5. Select an Appropriate CNI Plugin
 
 Choose a CNI solution that matches your requirements for:
 
@@ -802,9 +802,9 @@ Choose a CNI solution that matches your requirements for:
 
 ---
 
-# How Kubernetes Networking Works Internally
+## How Kubernetes Networking Works Internally
 
-## Overview
+### Overview
 
 Kubernetes networking appears simple from the outside:
 
@@ -834,7 +834,7 @@ Understanding these components explains **how Kubernetes enables seamless commun
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                     Kubernetes Cluster
@@ -866,7 +866,7 @@ Each Node independently manages its local networking while the CNI plugin connec
 
 ---
 
-# Complete Packet Flow
+## Complete Packet Flow
 
 ```
 Application
@@ -910,7 +910,7 @@ Destination Pod
 
 ---
 
-# Step 1 – Pod Creation
+## Step 1 – Pod Creation
 
 Suppose a Pod is created.
 
@@ -934,7 +934,7 @@ The kubelet requests the container runtime to create the Pod.
 
 ---
 
-# Step 2 – Pod Sandbox
+## Step 2 – Pod Sandbox
 
 Before containers start:
 
@@ -962,7 +962,7 @@ Every application container joins these namespaces.
 
 ---
 
-# Step 3 – Network Namespace
+## Step 3 – Network Namespace
 
 Each Pod receives its own network namespace.
 
@@ -992,7 +992,7 @@ Containers inside the Pod share this namespace.
 
 ---
 
-# Step 4 – Virtual Ethernet Pair (veth)
+## Step 4 – Virtual Ethernet Pair (veth)
 
 Kubernetes connects the Pod to the Node using a **veth pair**.
 
@@ -1020,7 +1020,7 @@ The other end exists on the Node.
 
 ---
 
-# veth Pair Workflow
+## veth Pair Workflow
 
 ```
 Pod
@@ -1042,7 +1042,7 @@ Every Pod receives its own virtual Ethernet interface.
 
 ---
 
-# Step 5 – Linux Bridge
+## Step 5 – Linux Bridge
 
 The Node maintains a virtual switch called a **Linux Bridge**.
 
@@ -1070,7 +1070,7 @@ The bridge forwards traffic between local Pods.
 
 ---
 
-# Same Node Communication
+## Same Node Communication
 
 Suppose:
 
@@ -1116,7 +1116,7 @@ No physical network is involved.
 
 ---
 
-# Different Node Communication
+## Different Node Communication
 
 Suppose:
 
@@ -1166,7 +1166,7 @@ The CNI plugin handles routing between Nodes.
 
 ---
 
-# Step 6 – Container Network Interface (CNI)
+## Step 6 – Container Network Interface (CNI)
 
 The kubelet invokes the CNI plugin whenever a Pod is created.
 
@@ -1197,7 +1197,7 @@ Configure Network
 
 ---
 
-# Pod IP Assignment
+## Pod IP Assignment
 
 Example:
 
@@ -1213,7 +1213,7 @@ The IP address is assigned by the CNI plugin based on the cluster's configured P
 
 ---
 
-# Step 7 – Routing
+## Step 7 – Routing
 
 Each Node maintains routing information.
 
@@ -1239,7 +1239,7 @@ Routes ensure packets reach the correct Node hosting the destination Pod.
 
 ---
 
-# Step 8 – kube-proxy
+## Step 8 – kube-proxy
 
 Pods usually communicate through Services.
 
@@ -1267,7 +1267,7 @@ kube-proxy programs the Node to forward traffic appropriately.
 
 ---
 
-# kube-proxy Workflow
+## kube-proxy Workflow
 
 ```
 Service
@@ -1285,7 +1285,7 @@ kube-proxy configures the operating system's packet forwarding rules.
 
 ---
 
-# ClusterIP
+## ClusterIP
 
 Example:
 
@@ -1317,7 +1317,7 @@ Backend Pods
 
 ---
 
-# CoreDNS
+## CoreDNS
 
 Applications typically communicate using names.
 
@@ -1345,7 +1345,7 @@ CoreDNS converts Service names into IP addresses.
 
 ---
 
-# Full Internal Packet Flow
+## Full Internal Packet Flow
 
 ```
 Application
@@ -1377,7 +1377,7 @@ Application
 
 ---
 
-# Pod-to-Pod Flow
+## Pod-to-Pod Flow
 
 ```
 Pod A
@@ -1417,7 +1417,7 @@ Pod B
 
 ---
 
-# Service-to-Pod Flow
+## Service-to-Pod Flow
 
 ```
 Application
@@ -1443,7 +1443,7 @@ The application is unaware of which Pod actually receives the request.
 
 ---
 
-# External Client Flow
+## External Client Flow
 
 ```
 Internet
@@ -1471,7 +1471,7 @@ Pod
 
 ---
 
-# Overlay Networks
+## Overlay Networks
 
 Most Kubernetes clusters use **overlay networking** to connect Pods across Nodes.
 
@@ -1499,7 +1499,7 @@ This allows Pods on different Nodes to communicate as if they were on the same n
 
 ---
 
-# Packet Encapsulation
+## Packet Encapsulation
 
 When Pods are on different Nodes:
 
@@ -1527,7 +1527,7 @@ The overlay network hides the complexity from applications.
 
 ---
 
-# Network Namespaces Summary
+## Network Namespaces Summary
 
 Each Pod has:
 
@@ -1551,7 +1551,7 @@ Containers inside the Pod share these resources.
 
 ---
 
-# Internal Networking Architecture
+## Internal Networking Architecture
 
 ```
 Application
@@ -1591,7 +1591,7 @@ Destination Pod
 
 ---
 
-# Hands-on Lab 1 – View Pod IPs
+## Hands-on Lab 1 – View Pod IPs
 
 ```bash
 kubectl get pods -o wide
@@ -1604,7 +1604,7 @@ Observe:
 
 ---
 
-# Hands-on Lab 2 – Test Pod Connectivity
+## Hands-on Lab 2 – Test Pod Connectivity
 
 Create two Pods.
 
@@ -1618,7 +1618,7 @@ Verify Pod-to-Pod communication.
 
 ---
 
-# Hands-on Lab 3 – Test Service Connectivity
+## Hands-on Lab 3 – Test Service Connectivity
 
 Create a Service.
 
@@ -1633,7 +1633,7 @@ Observe successful Service routing.
 
 ---
 
-# Hands-on Lab 4 – DNS Resolution
+## Hands-on Lab 4 – DNS Resolution
 
 ```bash
 kubectl exec -it pod-a -- nslookup kubernetes.default
@@ -1646,7 +1646,7 @@ Observe:
 
 ---
 
-# Hands-on Lab 5 – Inspect Routes (Advanced)
+## Hands-on Lab 5 – Inspect Routes (Advanced)
 
 Inside a Pod:
 
@@ -1664,9 +1664,9 @@ Observe:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using Pod IPs Directly
+### 1. Using Pod IPs Directly
 
 Incorrect:
 
@@ -1692,7 +1692,7 @@ Pod IPs are ephemeral.
 
 ---
 
-## 2. Assuming Services Are Pods
+### 2. Assuming Services Are Pods
 
 A Service is a virtual abstraction.
 
@@ -1700,7 +1700,7 @@ It does **not** run as a container.
 
 ---
 
-## 3. Ignoring the CNI Plugin
+### 3. Ignoring the CNI Plugin
 
 Without a CNI plugin:
 
@@ -1716,7 +1716,7 @@ Kubernetes depends on the CNI implementation for Pod networking.
 
 ---
 
-## 4. Confusing Node IP and Pod IP
+### 4. Confusing Node IP and Pod IP
 
 ```
 Node
@@ -1738,15 +1738,15 @@ These belong to different network layers.
 
 ---
 
-## 5. Forgetting DNS
+### 5. Forgetting DNS
 
 Applications should communicate using Service names, not hardcoded IP addresses.
 
 ---
 
-# Kubernetes Networking Quick Revision
+## Kubernetes Networking Quick Revision
 
-## Internal Flow
+### Internal Flow
 
 ```
 Container
@@ -1774,7 +1774,7 @@ Destination Pod
 
 ---
 
-## Service Flow
+### Service Flow
 
 ```
 Application
@@ -1802,7 +1802,7 @@ Pod
 
 ---
 
-## Networking Components
+### Networking Components
 
 ```
 Network Namespace
@@ -1830,7 +1830,7 @@ kube-proxy
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Pod IPs:
 
@@ -1864,9 +1864,9 @@ kubectl exec -it <pod> -- ping <pod-ip>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - How do Pods communicate with each other?
 - What is the role of the CNI plugin?
@@ -1874,7 +1874,7 @@ kubectl exec -it <pod> -- ping <pod-ip>
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - What is a veth pair?
 - What is the Linux Bridge?
@@ -1882,7 +1882,7 @@ kubectl exec -it <pod> -- ping <pod-ip>
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the complete internal packet flow from one Pod to another.
 - How does Kubernetes enable communication between Pods on different Nodes?
@@ -1892,9 +1892,9 @@ kubectl exec -it <pod> -- ping <pod-ip>
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Cluster Networking
 - Container Network Interface (CNI)
@@ -1904,7 +1904,7 @@ kubectl exec -it <pod> -- ping <pod-ip>
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Networking Model
 - Kubernetes Best Practices
@@ -1913,7 +1913,7 @@ kubectl exec -it <pod> -- ping <pod-ip>
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - Kubernetes Networking SIG
 - CIS Kubernetes Benchmark
@@ -1922,7 +1922,7 @@ kubectl exec -it <pod> -- ping <pod-ip>
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Deploy multiple Pods across different Nodes.
 2. Verify Pod-to-Pod communication using Pod IPs.
@@ -1934,7 +1934,7 @@ kubectl exec -it <pod> -- ping <pod-ip>
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Developer

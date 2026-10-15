@@ -1,10 +1,10 @@
 # 24 - Linux Troubleshooting
 
-# Part 1 — Linux Troubleshooting Fundamentals, Methodology, Boot Problems, and Recovery
+## Part 1 — Linux Troubleshooting Fundamentals, Methodology, Boot Problems, and Recovery
 
 ---
 
-# Introduction
+## Introduction
 
 Linux systems are designed to be reliable, but failures can still occur due to:
 
@@ -21,7 +21,7 @@ A good Linux administrator or cybersecurity professional must be able to trouble
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this chapter, you will understand:
 
@@ -36,7 +36,7 @@ By the end of this chapter, you will understand:
 
 ---
 
-# What is Troubleshooting?
+## What is Troubleshooting?
 
 Troubleshooting is the systematic process of identifying, isolating, diagnosing, and resolving problems affecting a Linux system.
 
@@ -50,7 +50,7 @@ The primary goals are to:
 
 ---
 
-# Enterprise Troubleshooting Workflow
+## Enterprise Troubleshooting Workflow
 
 ```text
 Problem Report
@@ -90,7 +90,7 @@ Prevent Future Issues
 
 ---
 
-# Reactive vs Proactive Troubleshooting
+## Reactive vs Proactive Troubleshooting
 
 | Reactive | Proactive |
 |-----------|-----------|
@@ -103,7 +103,7 @@ Enterprise IT teams combine both approaches.
 
 ---
 
-# Troubleshooting Principles
+## Troubleshooting Principles
 
 Always:
 
@@ -116,7 +116,7 @@ Always:
 
 ---
 
-# Root Cause Analysis (RCA)
+## Root Cause Analysis (RCA)
 
 Fixing symptoms is not enough.
 
@@ -150,7 +150,7 @@ Without RCA, the issue is likely to return.
 
 ---
 
-# Information Gathering
+## Information Gathering
 
 Before making changes, collect:
 
@@ -165,7 +165,7 @@ Before making changes, collect:
 
 ---
 
-# Essential Diagnostic Commands
+## Essential Diagnostic Commands
 
 Hostname:
 
@@ -199,7 +199,7 @@ date
 
 ---
 
-# System Health Overview
+## System Health Overview
 
 CPU:
 
@@ -229,7 +229,7 @@ These commands provide a quick snapshot of system health.
 
 ---
 
-# Enterprise Incident Prioritization
+## Enterprise Incident Prioritization
 
 | Priority | Example |
 |----------|----------|
@@ -242,7 +242,7 @@ Prioritization helps allocate resources effectively.
 
 ---
 
-# Troubleshooting Methodology
+## Troubleshooting Methodology
 
 ```text
 Observe
@@ -274,7 +274,7 @@ Document
 
 ---
 
-# Boot Problems
+## Boot Problems
 
 Boot failures can occur because of:
 
@@ -289,7 +289,7 @@ Boot failures can occur because of:
 
 ---
 
-# Linux Boot Sequence
+## Linux Boot Sequence
 
 ```text
 BIOS / UEFI
@@ -323,7 +323,7 @@ Failures can occur at any stage.
 
 ---
 
-# Boot Failure Categories
+## Boot Failure Categories
 
 | Stage | Possible Issue |
 |--------|----------------|
@@ -336,7 +336,7 @@ Failures can occur at any stage.
 
 ---
 
-# Viewing Previous Boot Logs
+## Viewing Previous Boot Logs
 
 Current boot:
 
@@ -354,7 +354,7 @@ These logs are often the first place to investigate startup issues.
 
 ---
 
-# Failed Services During Boot
+## Failed Services During Boot
 
 List failed units:
 
@@ -370,7 +370,7 @@ systemctl status service-name
 
 ---
 
-# Kernel Messages
+## Kernel Messages
 
 Display kernel ring buffer:
 
@@ -387,7 +387,7 @@ Recent kernel messages can reveal:
 
 ---
 
-# Bootloader (GRUB)
+## Bootloader (GRUB)
 
 GRUB is commonly used as the Linux bootloader.
 
@@ -400,7 +400,7 @@ Responsibilities:
 
 ---
 
-# Common GRUB Problems
+## Common GRUB Problems
 
 Examples:
 
@@ -417,7 +417,7 @@ Symptoms:
 
 ---
 
-# initramfs
+## initramfs
 
 The initial RAM filesystem (initramfs):
 
@@ -429,7 +429,7 @@ If required drivers are missing, the system may fail to boot.
 
 ---
 
-# Kernel Panic
+## Kernel Panic
 
 A kernel panic occurs when the kernel encounters a fatal condition from which it cannot safely recover.
 
@@ -445,7 +445,7 @@ Kernel panics require investigation rather than repeated reboots.
 
 ---
 
-# Filesystem Issues During Boot
+## Filesystem Issues During Boot
 
 Common causes:
 
@@ -462,7 +462,7 @@ Symptoms may include:
 
 ---
 
-# Emergency Mode
+## Emergency Mode
 
 Linux may enter emergency mode when critical filesystems cannot be mounted or essential services fail to start.
 
@@ -494,7 +494,7 @@ Validate
 
 ---
 
-# Rescue Mode
+## Rescue Mode
 
 Rescue mode provides a minimal environment for system recovery.
 
@@ -508,7 +508,7 @@ Typical tasks:
 
 ---
 
-# Viewing Boot Time
+## Viewing Boot Time
 
 Display startup timing:
 
@@ -526,7 +526,7 @@ Useful for identifying slow boot services.
 
 ---
 
-# Boot Performance Workflow
+## Boot Performance Workflow
 
 ```text
 Boot
@@ -550,7 +550,7 @@ Validate
 
 ---
 
-# Enterprise Recovery Strategy
+## Enterprise Recovery Strategy
 
 A typical recovery process:
 
@@ -584,7 +584,7 @@ Documentation
 
 ---
 
-# Documentation During Troubleshooting
+## Documentation During Troubleshooting
 
 Record:
 
@@ -600,7 +600,7 @@ Good documentation accelerates future troubleshooting efforts.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers may intentionally cause:
 
@@ -614,7 +614,7 @@ Troubleshooting should therefore consider both operational failures and potentia
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective troubleshooting helps organizations:
 
@@ -627,7 +627,7 @@ Effective troubleshooting helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Follow a structured troubleshooting methodology.
 - Preserve evidence before making changes.
@@ -640,7 +640,7 @@ Effective troubleshooting helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Troubleshooting is a structured, evidence-based process.
 - Root cause analysis is essential to prevent recurring issues.
@@ -650,13 +650,13 @@ Effective troubleshooting helps organizations:
 
 ---
 
-# 24 - Linux Troubleshooting
+## 24 - Linux Troubleshooting
 
-# Part 2 — Service Troubleshooting, Process Troubleshooting, Performance Analysis, Network Troubleshooting, and DNS Troubleshooting
+## Part 2 — Service Troubleshooting, Process Troubleshooting, Performance Analysis, Network Troubleshooting, and DNS Troubleshooting
 
 ---
 
-# Introduction
+## Introduction
 
 Most production Linux incidents involve one or more of the following:
 
@@ -673,7 +673,7 @@ A systematic troubleshooting approach minimizes downtime and helps identify the 
 
 ---
 
-# Service Troubleshooting
+## Service Troubleshooting
 
 Linux services provide essential functionality such as:
 
@@ -688,7 +688,7 @@ When a service fails, investigate before restarting it.
 
 ---
 
-# Service Troubleshooting Workflow
+## Service Troubleshooting Workflow
 
 ```text
 Service Failure
@@ -720,7 +720,7 @@ Validate
 
 ---
 
-# Check Service Status
+## Check Service Status
 
 Display service status:
 
@@ -743,7 +743,7 @@ Look for:
 
 ---
 
-# Review Failed Services
+## Review Failed Services
 
 ```bash
 systemctl --failed
@@ -753,7 +753,7 @@ This lists all units currently in a failed state.
 
 ---
 
-# Restart a Service
+## Restart a Service
 
 ```bash
 sudo systemctl restart service-name
@@ -763,7 +763,7 @@ Restarting may restore service temporarily, but always investigate the underlyin
 
 ---
 
-# Reload Configuration
+## Reload Configuration
 
 Some services support configuration reloads without a full restart:
 
@@ -775,7 +775,7 @@ Use reload when supported to minimize service disruption.
 
 ---
 
-# View Service Logs
+## View Service Logs
 
 ```bash
 journalctl -u service-name
@@ -791,7 +791,7 @@ Logs often provide the most direct explanation for service failures.
 
 ---
 
-# Validate Configuration
+## Validate Configuration
 
 Many services provide syntax validation commands.
 
@@ -805,7 +805,7 @@ Always validate configuration files before restarting services after changes.
 
 ---
 
-# Process Troubleshooting
+## Process Troubleshooting
 
 Processes consume:
 
@@ -818,7 +818,7 @@ Unexpected process behavior can affect overall system performance.
 
 ---
 
-# View Running Processes
+## View Running Processes
 
 ```bash
 ps aux
@@ -832,7 +832,7 @@ ps -ef --forest
 
 ---
 
-# Interactive Process Monitoring
+## Interactive Process Monitoring
 
 ```bash
 top
@@ -855,7 +855,7 @@ Monitor:
 
 ---
 
-# Process States
+## Process States
 
 | State | Meaning |
 |--------|---------|
@@ -869,7 +869,7 @@ Persistent zombie or uninterruptible processes warrant investigation.
 
 ---
 
-# Identify Resource-Intensive Processes
+## Identify Resource-Intensive Processes
 
 Sort by CPU:
 
@@ -885,7 +885,7 @@ ps aux --sort=-%mem | head
 
 ---
 
-# Terminate a Process
+## Terminate a Process
 
 Graceful termination:
 
@@ -903,7 +903,7 @@ Prefer graceful termination whenever possible to avoid data loss or corruption.
 
 ---
 
-# Performance Troubleshooting
+## Performance Troubleshooting
 
 Performance issues may be caused by:
 
@@ -916,7 +916,7 @@ Performance issues may be caused by:
 
 ---
 
-# Performance Analysis Workflow
+## Performance Analysis Workflow
 
 ```text
 Identify Symptoms
@@ -944,7 +944,7 @@ Monitor
 
 ---
 
-# CPU Analysis
+## CPU Analysis
 
 Current CPU load:
 
@@ -966,7 +966,7 @@ Review:
 
 ---
 
-# Memory Analysis
+## Memory Analysis
 
 Display memory usage:
 
@@ -985,7 +985,7 @@ High swap usage may indicate memory pressure.
 
 ---
 
-# Storage Analysis
+## Storage Analysis
 
 Filesystem utilization:
 
@@ -1007,7 +1007,7 @@ Look for:
 
 ---
 
-# Open Files
+## Open Files
 
 Display open files:
 
@@ -1023,7 +1023,7 @@ Useful for:
 
 ---
 
-# Disk I/O Considerations
+## Disk I/O Considerations
 
 Symptoms of disk-related issues:
 
@@ -1036,7 +1036,7 @@ Correlate storage observations with application and system logs.
 
 ---
 
-# Network Troubleshooting
+## Network Troubleshooting
 
 Common network issues include:
 
@@ -1049,7 +1049,7 @@ Common network issues include:
 
 ---
 
-# Network Troubleshooting Workflow
+## Network Troubleshooting Workflow
 
 ```text
 Verify Interface
@@ -1077,7 +1077,7 @@ Validate
 
 ---
 
-# Review Network Interfaces
+## Review Network Interfaces
 
 ```bash
 ip addr
@@ -1091,7 +1091,7 @@ Verify:
 
 ---
 
-# Review Routing Table
+## Review Routing Table
 
 ```bash
 ip route
@@ -1105,7 +1105,7 @@ Look for:
 
 ---
 
-# Connectivity Testing
+## Connectivity Testing
 
 Test basic connectivity:
 
@@ -1123,7 +1123,7 @@ A failed ping does not always indicate failure because ICMP may be intentionally
 
 ---
 
-# Trace Network Path
+## Trace Network Path
 
 ```bash
 traceroute hostname
@@ -1141,7 +1141,7 @@ Useful for identifying routing issues.
 
 ---
 
-# Display Listening Ports
+## Display Listening Ports
 
 ```bash
 ss -tulpn
@@ -1151,7 +1151,7 @@ Verify that expected services are listening on the correct interfaces and ports.
 
 ---
 
-# DNS Troubleshooting
+## DNS Troubleshooting
 
 DNS problems often appear as application connectivity failures.
 
@@ -1164,7 +1164,7 @@ Typical symptoms:
 
 ---
 
-# DNS Resolution Workflow
+## DNS Resolution Workflow
 
 ```text
 Application
@@ -1192,7 +1192,7 @@ Connection
 
 ---
 
-# Check DNS Configuration
+## Check DNS Configuration
 
 View configured resolvers:
 
@@ -1208,7 +1208,7 @@ Verify:
 
 ---
 
-# Query DNS
+## Query DNS
 
 Using `dig` (if installed):
 
@@ -1232,7 +1232,7 @@ Compare results if troubleshooting inconsistent resolution.
 
 ---
 
-# Verify Hostname Resolution
+## Verify Hostname Resolution
 
 Display hostname:
 
@@ -1250,7 +1250,7 @@ Ensure local overrides are intentional and up to date.
 
 ---
 
-# Firewall Considerations
+## Firewall Considerations
 
 A correctly configured firewall may intentionally block traffic.
 
@@ -1262,7 +1262,7 @@ Before assuming a network failure:
 
 ---
 
-# Network Troubleshooting Checklist
+## Network Troubleshooting Checklist
 
 | Check | Status |
 |--------|--------|
@@ -1276,9 +1276,9 @@ Before assuming a network failure:
 
 ---
 
-# Enterprise Scenario 1
+## Enterprise Scenario 1
 
-## Web Server Unreachable
+### Web Server Unreachable
 
 Symptoms:
 
@@ -1296,9 +1296,9 @@ Investigation:
 
 ---
 
-# Enterprise Scenario 2
+## Enterprise Scenario 2
 
-## High CPU Usage
+### High CPU Usage
 
 Symptoms:
 
@@ -1315,9 +1315,9 @@ Investigation:
 
 ---
 
-# Enterprise Scenario 3
+## Enterprise Scenario 3
 
-## DNS Resolution Failure
+### DNS Resolution Failure
 
 Symptoms:
 
@@ -1334,7 +1334,7 @@ Investigation:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Performance degradation and service failures can also indicate security events such as:
 
@@ -1348,7 +1348,7 @@ Always consider security as a potential contributing factor during investigation
 
 ---
 
-# Business Impact
+## Business Impact
 
 Rapid troubleshooting of services and networks helps organizations:
 
@@ -1360,7 +1360,7 @@ Rapid troubleshooting of services and networks helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Review logs before restarting services.
 - Validate configuration changes before deployment.
@@ -1373,7 +1373,7 @@ Rapid troubleshooting of services and networks helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Service troubleshooting begins with status checks and log analysis.
 - Resource monitoring is essential for diagnosing performance issues.
@@ -1383,13 +1383,13 @@ Rapid troubleshooting of services and networks helps organizations:
 
 ---
 
-# 24 - Linux Troubleshooting
+## 24 - Linux Troubleshooting
 
-# Part 3 — Storage Troubleshooting, Filesystem Recovery, Log Analysis, Security Incident Troubleshooting, Practical Labs, and Enterprise Case Studies
+## Part 3 — Storage Troubleshooting, Filesystem Recovery, Log Analysis, Security Incident Troubleshooting, Practical Labs, and Enterprise Case Studies
 
 ---
 
-# Introduction
+## Introduction
 
 Storage failures and filesystem corruption can cause severe service disruptions.
 
@@ -1406,7 +1406,7 @@ Administrators must diagnose these problems carefully to prevent data loss.
 
 ---
 
-# Storage Troubleshooting Workflow
+## Storage Troubleshooting Workflow
 
 ```text
 Identify Symptoms
@@ -1442,7 +1442,7 @@ Document
 
 ---
 
-# Storage Inventory
+## Storage Inventory
 
 Display block devices:
 
@@ -1466,7 +1466,7 @@ These commands provide an overview of the storage layout.
 
 ---
 
-# Filesystem Utilization
+## Filesystem Utilization
 
 Check available storage:
 
@@ -1486,7 +1486,7 @@ High utilization may affect application performance and updates.
 
 ---
 
-# Directory Usage
+## Directory Usage
 
 Determine which directories consume space:
 
@@ -1498,7 +1498,7 @@ Review large directories individually for more detail.
 
 ---
 
-# Inode Exhaustion
+## Inode Exhaustion
 
 A filesystem can run out of inodes even when free space remains.
 
@@ -1512,7 +1512,7 @@ High inode usage is common when many small files exist.
 
 ---
 
-# Deleted but Open Files
+## Deleted but Open Files
 
 A deleted file may continue consuming disk space while a process keeps it open.
 
@@ -1526,7 +1526,7 @@ Look for deleted files still referenced by running processes.
 
 ---
 
-# Filesystem Integrity
+## Filesystem Integrity
 
 Filesystem corruption may result from:
 
@@ -1544,7 +1544,7 @@ Symptoms include:
 
 ---
 
-# Filesystem Recovery
+## Filesystem Recovery
 
 General recovery workflow:
 
@@ -1576,7 +1576,7 @@ Always ensure backups are available before performing repair operations.
 
 ---
 
-# Review Filesystem UUIDs
+## Review Filesystem UUIDs
 
 ```bash
 blkid
@@ -1590,7 +1590,7 @@ Useful when troubleshooting:
 
 ---
 
-# Verify Mount Configuration
+## Verify Mount Configuration
 
 Display configuration:
 
@@ -1607,7 +1607,7 @@ Common issues:
 
 ---
 
-# Read-Only Filesystem
+## Read-Only Filesystem
 
 Symptoms:
 
@@ -1624,7 +1624,7 @@ Investigate:
 
 ---
 
-# Storage Performance
+## Storage Performance
 
 Storage bottlenecks may cause:
 
@@ -1637,7 +1637,7 @@ Correlate observations with system metrics and logs.
 
 ---
 
-# Log Analysis
+## Log Analysis
 
 Logs are one of the most valuable troubleshooting resources.
 
@@ -1652,7 +1652,7 @@ Common log categories:
 
 ---
 
-# System Journal
+## System Journal
 
 View recent entries:
 
@@ -1674,7 +1674,7 @@ journalctl -b -1
 
 ---
 
-# Follow Logs
+## Follow Logs
 
 View new log entries in real time:
 
@@ -1686,7 +1686,7 @@ Useful during troubleshooting after applying configuration changes.
 
 ---
 
-# Kernel Messages
+## Kernel Messages
 
 Display kernel messages:
 
@@ -1703,7 +1703,7 @@ Common items include:
 
 ---
 
-# Search Logs
+## Search Logs
 
 Example:
 
@@ -1721,7 +1721,7 @@ Searching logs helps isolate relevant events.
 
 ---
 
-# Log Analysis Workflow
+## Log Analysis Workflow
 
 ```text
 Collect Logs
@@ -1749,7 +1749,7 @@ Implement Fix
 
 ---
 
-# Security Incident Troubleshooting
+## Security Incident Troubleshooting
 
 Not every outage is purely operational.
 
@@ -1763,7 +1763,7 @@ Consider security-related causes such as:
 
 ---
 
-# Security Investigation Workflow
+## Security Investigation Workflow
 
 ```text
 Detect
@@ -1791,7 +1791,7 @@ Lessons Learned
 
 ---
 
-# Authentication Investigation
+## Authentication Investigation
 
 Review authentication events:
 
@@ -1816,7 +1816,7 @@ Look for:
 
 ---
 
-# Service Investigation
+## Service Investigation
 
 Review service state:
 
@@ -1834,7 +1834,7 @@ Correlate timestamps with reported issues.
 
 ---
 
-# Configuration Drift
+## Configuration Drift
 
 Unexpected configuration changes may explain recurring issues.
 
@@ -1847,7 +1847,7 @@ Review:
 
 ---
 
-# Enterprise Troubleshooting Checklist
+## Enterprise Troubleshooting Checklist
 
 | Area | Verify |
 |------|--------|
@@ -1862,7 +1862,7 @@ Review:
 
 ---
 
-# Practical Lab 1 — Storage Inventory
+## Practical Lab 1 — Storage Inventory
 
 ```bash
 lsblk
@@ -1879,7 +1879,7 @@ Objectives:
 
 ---
 
-# Practical Lab 2 — Directory Usage
+## Practical Lab 2 — Directory Usage
 
 ```bash
 du -sh /var/*
@@ -1892,7 +1892,7 @@ Objectives:
 
 ---
 
-# Practical Lab 3 — Open Files
+## Practical Lab 3 — Open Files
 
 ```bash
 lsof
@@ -1905,7 +1905,7 @@ Objectives:
 
 ---
 
-# Practical Lab 4 — Review Mount Configuration
+## Practical Lab 4 — Review Mount Configuration
 
 ```bash
 cat /etc/fstab
@@ -1918,7 +1918,7 @@ Objectives:
 
 ---
 
-# Practical Lab 5 — System Journal
+## Practical Lab 5 — System Journal
 
 ```bash
 journalctl -b
@@ -1931,7 +1931,7 @@ Objectives:
 
 ---
 
-# Practical Lab 6 — Kernel Messages
+## Practical Lab 6 — Kernel Messages
 
 ```bash
 dmesg
@@ -1944,7 +1944,7 @@ Objectives:
 
 ---
 
-# Practical Lab 7 — Service Logs
+## Practical Lab 7 — Service Logs
 
 ```bash
 journalctl -u ssh
@@ -1959,7 +1959,7 @@ Objectives:
 
 ---
 
-# Practical Lab 8 — Authentication Logs
+## Practical Lab 8 — Authentication Logs
 
 Ubuntu/Debian:
 
@@ -1980,9 +1980,9 @@ Objectives:
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-## Disk Full on Production Server
+### Disk Full on Production Server
 
 Symptoms:
 
@@ -2000,9 +2000,9 @@ Investigation:
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-## Service Failure After Configuration Change
+### Service Failure After Configuration Change
 
 Symptoms:
 
@@ -2018,9 +2018,9 @@ Investigation:
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-## Unexpected Authentication Failures
+### Unexpected Authentication Failures
 
 Symptoms:
 
@@ -2036,9 +2036,9 @@ Investigation:
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-## Boot Delay
+### Boot Delay
 
 Symptoms:
 
@@ -2053,7 +2053,7 @@ Investigation:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Troubleshooting and security investigations often overlap.
 
@@ -2068,7 +2068,7 @@ Maintain evidence integrity if a security incident is suspected.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective troubleshooting of storage, logs, and security events helps organizations:
 
@@ -2080,7 +2080,7 @@ Effective troubleshooting of storage, logs, and security events helps organizati
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor storage utilization proactively.
 - Review logs regularly, not only during incidents.
@@ -2093,7 +2093,7 @@ Effective troubleshooting of storage, logs, and security events helps organizati
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Storage and filesystem issues are common causes of Linux outages.
 - Log analysis is central to effective troubleshooting.
@@ -2103,13 +2103,13 @@ Effective troubleshooting of storage, logs, and security events helps organizati
 
 ---
 
-# 24 - Linux Troubleshooting
+## 24 - Linux Troubleshooting
 
-# Part 4 — Advanced Practical Labs, Enterprise Scenarios, Chapter Summary, Interview Questions, Linux Troubleshooting Cheat Sheet, and References
+## Part 4 — Advanced Practical Labs, Enterprise Scenarios, Chapter Summary, Interview Questions, Linux Troubleshooting Cheat Sheet, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise Linux troubleshooting requires more than technical knowledge.
 
@@ -2126,7 +2126,7 @@ This final section combines practical exercises with real-world enterprise scena
 
 ---
 
-# Enterprise Troubleshooting Lifecycle
+## Enterprise Troubleshooting Lifecycle
 
 ```text
 Incident Report
@@ -2166,7 +2166,7 @@ Preventive Actions
 
 ---
 
-# Practical Lab 1 — Complete System Health Check
+## Practical Lab 1 — Complete System Health Check
 
 Review system information:
 
@@ -2198,7 +2198,7 @@ Objectives:
 
 ---
 
-# Practical Lab 2 — Investigate Failed Services
+## Practical Lab 2 — Investigate Failed Services
 
 Display failed services:
 
@@ -2225,7 +2225,7 @@ Objectives:
 
 ---
 
-# Practical Lab 3 — Network Connectivity Validation
+## Practical Lab 3 — Network Connectivity Validation
 
 Review interfaces:
 
@@ -2252,7 +2252,7 @@ Objectives:
 
 ---
 
-# Practical Lab 4 — DNS Investigation
+## Practical Lab 4 — DNS Investigation
 
 View resolver configuration:
 
@@ -2279,7 +2279,7 @@ Objectives:
 
 ---
 
-# Practical Lab 5 — Filesystem Investigation
+## Practical Lab 5 — Filesystem Investigation
 
 Review mounted filesystems:
 
@@ -2306,7 +2306,7 @@ Objectives:
 
 ---
 
-# Practical Lab 6 — Log Correlation
+## Practical Lab 6 — Log Correlation
 
 Review current boot logs:
 
@@ -2327,7 +2327,7 @@ Objectives:
 
 ---
 
-# Practical Lab 7 — Authentication Investigation
+## Practical Lab 7 — Authentication Investigation
 
 Ubuntu/Debian:
 
@@ -2348,7 +2348,7 @@ Objectives:
 
 ---
 
-# Practical Lab 8 — Performance Investigation
+## Practical Lab 8 — Performance Investigation
 
 Display top resource consumers:
 
@@ -2375,7 +2375,7 @@ Objectives:
 
 ---
 
-# Practical Lab 9 — Storage Investigation
+## Practical Lab 9 — Storage Investigation
 
 Review block devices:
 
@@ -2396,7 +2396,7 @@ Objectives:
 
 ---
 
-# Practical Lab 10 — Comprehensive Troubleshooting Report
+## Practical Lab 10 — Comprehensive Troubleshooting Report
 
 Prepare a report including:
 
@@ -2414,9 +2414,9 @@ This mirrors documentation expected in enterprise environments.
 
 ---
 
-# Enterprise Scenario 1
+## Enterprise Scenario 1
 
-## Production Web Server Outage
+### Production Web Server Outage
 
 Symptoms:
 
@@ -2459,9 +2459,9 @@ Root Cause (example):
 
 ---
 
-# Enterprise Scenario 2
+## Enterprise Scenario 2
 
-## Storage Exhaustion
+### Storage Exhaustion
 
 Symptoms:
 
@@ -2478,9 +2478,9 @@ Investigation:
 
 ---
 
-# Enterprise Scenario 3
+## Enterprise Scenario 3
 
-## Memory Pressure
+### Memory Pressure
 
 Symptoms:
 
@@ -2517,9 +2517,9 @@ Possible causes include:
 
 ---
 
-# Enterprise Scenario 4
+## Enterprise Scenario 4
 
-## Network Connectivity Failure
+### Network Connectivity Failure
 
 Symptoms:
 
@@ -2536,9 +2536,9 @@ Investigation:
 
 ---
 
-# Enterprise Scenario 5
+## Enterprise Scenario 5
 
-## Suspected Security Incident
+### Suspected Security Incident
 
 Observed:
 
@@ -2574,7 +2574,7 @@ Lessons Learned
 
 ---
 
-# Enterprise Troubleshooting Checklist
+## Enterprise Troubleshooting Checklist
 
 | Area | Verification |
 |------|--------------|
@@ -2592,9 +2592,9 @@ Lessons Learned
 
 ---
 
-# Linux Troubleshooting Cheat Sheet
+## Linux Troubleshooting Cheat Sheet
 
-## System Information
+### System Information
 
 ```bash
 hostnamectl
@@ -2610,7 +2610,7 @@ uptime
 
 ---
 
-## CPU & Memory
+### CPU & Memory
 
 ```bash
 top
@@ -2626,7 +2626,7 @@ ps aux
 
 ---
 
-## Storage
+### Storage
 
 ```bash
 df -h
@@ -2642,7 +2642,7 @@ lsblk
 
 ---
 
-## Filesystems
+### Filesystems
 
 ```bash
 mount
@@ -2654,7 +2654,7 @@ blkid
 
 ---
 
-## Networking
+### Networking
 
 ```bash
 ip addr
@@ -2670,7 +2670,7 @@ ss -tulpn
 
 ---
 
-## DNS
+### DNS
 
 ```bash
 cat /etc/resolv.conf
@@ -2682,7 +2682,7 @@ dig example.com
 
 ---
 
-## Services
+### Services
 
 ```bash
 systemctl status service
@@ -2694,7 +2694,7 @@ systemctl --failed
 
 ---
 
-## Logs
+### Logs
 
 ```bash
 journalctl -b
@@ -2710,7 +2710,7 @@ dmesg
 
 ---
 
-## Authentication
+### Authentication
 
 Ubuntu/Debian:
 
@@ -2726,7 +2726,7 @@ grep "Failed password" /var/log/secure
 
 ---
 
-## Open Files
+### Open Files
 
 ```bash
 lsof
@@ -2734,7 +2734,7 @@ lsof
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2754,9 +2754,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is the purpose of Linux troubleshooting?
 2. Why is root cause analysis important?
@@ -2771,7 +2771,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain an enterprise troubleshooting methodology.
 2. How would you troubleshoot a service that fails to start?
@@ -2786,7 +2786,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a troubleshooting workflow for a production outage.
 2. Explain how you would diagnose intermittent performance issues.
@@ -2801,7 +2801,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Effective troubleshooting is structured, evidence-based, and repeatable.
 - Root cause analysis prevents recurring incidents.
@@ -2811,9 +2811,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - `man journalctl`
 - `man systemctl`
@@ -2828,7 +2828,7 @@ In this chapter, you learned:
 - `man dmesg`
 - `man lsof`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - Red Hat Enterprise Linux Documentation
@@ -2841,11 +2841,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **25-Linux-Interview-Questions.md**
 
-## Topics Covered
+### Topics Covered
 
 - Linux Fundamentals Interview Questions
 - File System & Permissions Questions

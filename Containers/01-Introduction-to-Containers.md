@@ -21,7 +21,7 @@ Today, nearly every major cloud provider—including Amazon Web Services (AWS), 
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Before containers became popular, software deployments frequently encountered the classic problem:
 
@@ -53,7 +53,7 @@ Containers have fundamentally changed how organizations build, deploy, and manag
 
 ---
 
-# History of Containers
+## History of Containers
 
 Container technology evolved over several decades rather than appearing suddenly.
 
@@ -74,7 +74,7 @@ Docker played a major role in making containers accessible to developers by simp
 
 ---
 
-# Evolution of Virtualization
+## Evolution of Virtualization
 
 The evolution of computing infrastructure can be viewed in four major phases.
 
@@ -102,7 +102,7 @@ Cloud-Native Containers
 
 ---
 
-## Phase 1 – Physical Servers
+### Phase 1 – Physical Servers
 
 Initially, each application typically ran on its own dedicated physical server.
 
@@ -118,7 +118,7 @@ Operating System
 Application
 ```
 
-### Challenges
+#### Challenges
 
 - Low hardware utilization
 - High infrastructure costs
@@ -128,7 +128,7 @@ Application
 
 ---
 
-## Phase 2 – Virtual Machines
+### Phase 2 – Virtual Machines
 
 Hypervisors enabled multiple virtual machines to run on a single physical server.
 
@@ -155,14 +155,14 @@ Guest Guest Guest
 Apps Apps Apps
 ```
 
-### Benefits
+#### Benefits
 
 - Better hardware utilization
 - Strong isolation
 - Multiple operating systems
 - Improved flexibility
 
-### Limitations
+#### Limitations
 
 - Large disk footprint
 - Slow boot times
@@ -171,7 +171,7 @@ Apps Apps Apps
 
 ---
 
-## Phase 3 – Containers
+### Phase 3 – Containers
 
 Containers share the host operating system kernel.
 
@@ -197,7 +197,7 @@ Container Container Container
 App      App      App
 ```
 
-### Advantages
+#### Advantages
 
 - Lightweight
 - Fast startup
@@ -207,7 +207,7 @@ App      App      App
 
 ---
 
-## Phase 4 – Cloud-Native Containers
+### Phase 4 – Cloud-Native Containers
 
 Modern cloud platforms integrate containers with orchestration systems such as Kubernetes.
 
@@ -224,7 +224,7 @@ Cloud-native containers represent the current standard for modern application de
 
 ---
 
-# Container Architecture Overview
+## Container Architecture Overview
 
 A simplified container architecture is shown below.
 
@@ -252,9 +252,9 @@ Each layer has a specific responsibility:
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-## Container
+### Container
 
 A container is an isolated runtime environment that packages:
 
@@ -268,7 +268,7 @@ Containers share the host operating system kernel while maintaining process isol
 
 ---
 
-## Container Image
+### Container Image
 
 A container image is a read-only template used to create containers.
 
@@ -284,7 +284,7 @@ Images are immutable and versioned.
 
 ---
 
-## Container Runtime
+### Container Runtime
 
 The container runtime is responsible for:
 
@@ -304,7 +304,7 @@ Examples include:
 
 ---
 
-## Isolation
+### Isolation
 
 Containers isolate:
 
@@ -319,7 +319,7 @@ Isolation prevents applications from interfering with one another.
 
 ---
 
-## Portability
+### Portability
 
 Containers run consistently across:
 
@@ -334,7 +334,7 @@ This portability is one of their greatest strengths.
 
 ---
 
-## Lightweight Design
+### Lightweight Design
 
 Because containers share the host kernel:
 
@@ -345,7 +345,7 @@ Because containers share the host kernel:
 
 ---
 
-## Immutability
+### Immutability
 
 Container images should not be modified after creation.
 
@@ -359,7 +359,7 @@ This approach improves consistency, repeatability, and rollback capabilities.
 
 ---
 
-## Scalability
+### Scalability
 
 Containers can be scaled horizontally by running multiple instances of the same application.
 
@@ -375,7 +375,7 @@ Container orchestration platforms automate scaling based on workload demand.
 
 ---
 
-# Benefits of Containers
+## Benefits of Containers
 
 - Lightweight architecture
 - Fast startup
@@ -392,7 +392,7 @@ Container orchestration platforms automate scaling based on workload demand.
 
 ---
 
-# Limitations of Containers
+## Limitations of Containers
 
 Containers also have limitations.
 
@@ -410,7 +410,7 @@ Understanding these limitations helps organizations choose the right deployment 
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
 Containers are commonly used for:
 
@@ -429,7 +429,7 @@ Containers are commonly used for:
 
 ---
 
-## How It Works
+### How It Works
 
 Containers work by combining application code, dependencies, runtime libraries, configuration files, and system tools into a standardized package called a **container image**. When this image is executed by a **container runtime**, it becomes a **running container**.
 
@@ -439,7 +439,7 @@ This lightweight architecture enables applications to start quickly, consume few
 
 ---
 
-# Container Execution Workflow
+## Container Execution Workflow
 
 ```
 Developer
@@ -491,7 +491,7 @@ Each stage contributes to creating a portable and reproducible application deplo
 
 ---
 
-## Step 1 – Develop the Application
+### Step 1 – Develop the Application
 
 A developer writes an application using any programming language.
 
@@ -516,7 +516,7 @@ Traditionally, installing these dependencies on every machine led to inconsisten
 
 ---
 
-## Step 2 – Define the Container Image
+### Step 2 – Define the Container Image
 
 A **Dockerfile** (or equivalent build specification) defines how the container image should be created.
 
@@ -533,7 +533,7 @@ The Dockerfile serves as a reproducible recipe for building the application envi
 
 ---
 
-## Step 3 – Build the Container Image
+### Step 3 – Build the Container Image
 
 The container engine reads the Dockerfile and builds an image.
 
@@ -549,7 +549,7 @@ Container images are immutable, meaning they are not modified after creation.
 
 ---
 
-## Step 4 – Store the Image
+### Step 4 – Store the Image
 
 Built images can be stored in a container registry.
 
@@ -566,7 +566,7 @@ Registries allow teams to share, version, and distribute container images secure
 
 ---
 
-## Step 5 – Pull the Image
+### Step 5 – Pull the Image
 
 Before execution, the runtime checks whether the required image exists locally.
 
@@ -608,7 +608,7 @@ This ensures the correct version of the application is available.
 
 ---
 
-## Step 6 – Create the Container
+### Step 6 – Create the Container
 
 The container runtime creates an isolated execution environment by:
 
@@ -623,7 +623,7 @@ Although the container shares the host kernel, it behaves as though it has its o
 
 ---
 
-## Step 7 – Start the Application
+### Step 7 – Start the Application
 
 Once the container is initialized:
 
@@ -651,7 +651,7 @@ Unlike traditional servers, containers typically run a single primary process.
 
 ---
 
-## Step 8 – Runtime Isolation
+### Step 8 – Runtime Isolation
 
 Multiple containers can run simultaneously on the same host.
 
@@ -685,7 +685,7 @@ This isolation allows applications to coexist without interfering with each othe
 
 ---
 
-## Step 9 – Stop or Remove the Container
+### Step 9 – Stop or Remove the Container
 
 Containers can be:
 
@@ -702,9 +702,9 @@ This "replace, don't repair" philosophy supports reliable and repeatable deploym
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Running a Web Application
+### Example 1 – Running a Web Application
 
 Scenario:
 
@@ -725,7 +725,7 @@ The application runs identically in development, testing, and production environ
 
 ---
 
-## Example 2 – Team Collaboration
+### Example 2 – Team Collaboration
 
 Scenario:
 
@@ -751,7 +751,7 @@ Consistent behavior across all development environments.
 
 ---
 
-## Example 3 – Cloud Deployment
+### Example 3 – Cloud Deployment
 
 Scenario:
 
@@ -769,7 +769,7 @@ Faster migration and improved portability.
 
 ---
 
-## Example 4 – Microservices
+### Example 4 – Microservices
 
 Scenario:
 
@@ -792,9 +792,9 @@ Benefits:
 
 ---
 
-# Hands-on Commands
+## Hands-on Commands
 
-### Check Docker Version
+#### Check Docker Version
 
 ```bash
 docker --version
@@ -804,7 +804,7 @@ Displays the installed Docker version.
 
 ---
 
-### Display Docker Information
+#### Display Docker Information
 
 ```bash
 docker info
@@ -814,7 +814,7 @@ Shows Docker Engine details, storage drivers, runtimes, and system information.
 
 ---
 
-### List Local Images
+#### List Local Images
 
 ```bash
 docker images
@@ -824,7 +824,7 @@ Displays all container images stored locally.
 
 ---
 
-### Pull an Image
+#### Pull an Image
 
 ```bash
 docker pull nginx
@@ -834,7 +834,7 @@ Downloads the official Nginx image from Docker Hub.
 
 ---
 
-### Run a Container
+#### Run a Container
 
 ```bash
 docker run nginx
@@ -844,7 +844,7 @@ Creates and starts a new Nginx container.
 
 ---
 
-### Run a Container in Detached Mode
+#### Run a Container in Detached Mode
 
 ```bash
 docker run -d nginx
@@ -854,7 +854,7 @@ Starts the container in the background.
 
 ---
 
-### List Running Containers
+#### List Running Containers
 
 ```bash
 docker ps
@@ -864,7 +864,7 @@ Displays currently running containers.
 
 ---
 
-### List All Containers
+#### List All Containers
 
 ```bash
 docker ps -a
@@ -874,7 +874,7 @@ Displays both running and stopped containers.
 
 ---
 
-### Stop a Container
+#### Stop a Container
 
 ```bash
 docker stop <container_id>
@@ -884,7 +884,7 @@ Gracefully stops a running container.
 
 ---
 
-### Remove a Container
+#### Remove a Container
 
 ```bash
 docker rm <container_id>
@@ -894,7 +894,7 @@ Deletes a stopped container.
 
 ---
 
-### Remove an Image
+#### Remove an Image
 
 ```bash
 docker rmi <image_name>
@@ -904,27 +904,27 @@ Deletes a local container image.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Use Official Images
+#### 1. Use Official Images
 
 Prefer trusted images published by verified maintainers or official repositories.
 
 ---
 
-### 2. Keep Images Small
+#### 2. Keep Images Small
 
 Use minimal base images (for example, Alpine or Distroless where appropriate) to reduce the attack surface and image size.
 
 ---
 
-### 3. One Primary Process per Container
+#### 3. One Primary Process per Container
 
 Design containers to run a single primary application process whenever practical.
 
 ---
 
-### 4. Treat Containers as Immutable
+#### 4. Treat Containers as Immutable
 
 Avoid modifying running containers.
 
@@ -936,7 +936,7 @@ Instead:
 
 ---
 
-### 5. Version Images
+#### 5. Version Images
 
 Use meaningful version tags such as:
 
@@ -952,13 +952,13 @@ Versioning supports controlled deployments and easier rollbacks.
 
 ---
 
-### 6. Store Images in Trusted Registries
+#### 6. Store Images in Trusted Registries
 
 Use secure registries with authentication, access control, and image scanning capabilities.
 
 ---
 
-### 7. Clean Up Unused Resources
+#### 7. Clean Up Unused Resources
 
 Remove unused:
 
@@ -971,7 +971,7 @@ to conserve system resources.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Containers simplify application deployment and management, but incorrect usage can introduce security risks, operational issues, and performance problems. Many of the following mistakes are commonly observed in development, DevOps, and production environments.
 
@@ -979,7 +979,7 @@ Understanding these mistakes helps build reliable, secure, and maintainable cont
 
 ---
 
-### 1. Confusing Containers with Virtual Machines
+#### 1. Confusing Containers with Virtual Machines
 
 One of the most common beginner mistakes is assuming containers are lightweight virtual machines.
 
@@ -1038,7 +1038,7 @@ Understanding this distinction is fundamental to container technology.
 
 ---
 
-### 2. Running Everything Inside One Container
+#### 2. Running Everything Inside One Container
 
 A container should ideally run **one primary application or service**.
 
@@ -1071,7 +1071,7 @@ This improves scalability, maintainability, and fault isolation.
 
 ---
 
-### 3. Using the `latest` Image Tag Everywhere
+#### 3. Using the `latest` Image Tag Everywhere
 
 Many beginners deploy images using:
 
@@ -1095,7 +1095,7 @@ Version pinning improves consistency and simplifies rollbacks.
 
 ---
 
-### 4. Modifying Running Containers
+#### 4. Modifying Running Containers
 
 A running container should not be treated like a traditional server.
 
@@ -1115,7 +1115,7 @@ This follows the immutable infrastructure principle.
 
 ---
 
-### 5. Ignoring Persistent Storage
+#### 5. Ignoring Persistent Storage
 
 Containers are ephemeral by design.
 
@@ -1139,7 +1139,7 @@ for data that must survive container recreation.
 
 ---
 
-### 6. Running Containers as the Root User
+#### 6. Running Containers as the Root User
 
 Running applications as `root` increases security risk.
 
@@ -1153,7 +1153,7 @@ Use non-root users whenever possible.
 
 ---
 
-### 7. Hardcoding Secrets
+#### 7. Hardcoding Secrets
 
 Avoid embedding:
 
@@ -1174,7 +1174,7 @@ Use dedicated secrets management solutions instead.
 
 ---
 
-### 8. Using Large Base Images
+#### 8. Using Large Base Images
 
 Large images:
 
@@ -1193,7 +1193,7 @@ Examples:
 
 ---
 
-### 9. Ignoring Image Updates
+#### 9. Ignoring Image Updates
 
 Base images receive security patches regularly.
 
@@ -1208,7 +1208,7 @@ Regularly:
 
 ---
 
-### 10. Leaving Unused Containers and Images
+#### 10. Leaving Unused Containers and Images
 
 Over time, systems accumulate:
 
@@ -1223,7 +1223,7 @@ Perform periodic cleanup of unused resources.
 
 ---
 
-### 11. Not Understanding Networking
+#### 11. Not Understanding Networking
 
 Beginners often assume containers communicate like processes on the host.
 
@@ -1241,7 +1241,7 @@ Networking knowledge is essential for multi-container applications.
 
 ---
 
-### 12. Assuming Containers Are Secure by Default
+#### 12. Assuming Containers Are Secure by Default
 
 Containers provide isolation, but they are **not** inherently secure.
 
@@ -1258,7 +1258,7 @@ Security should be intentionally designed into container deployments.
 
 ---
 
-### 13. Ignoring Logs
+#### 13. Ignoring Logs
 
 Troubleshooting becomes difficult without collecting and reviewing container logs.
 
@@ -1274,7 +1274,7 @@ Centralized logging improves visibility and operational support.
 
 ---
 
-### 14. Not Learning the Linux Fundamentals
+#### 14. Not Learning the Linux Fundamentals
 
 Containers rely heavily on Linux concepts such as:
 
@@ -1289,7 +1289,7 @@ A solid understanding of Linux significantly improves container troubleshooting 
 
 ---
 
-### 15. Treating Containers as Traditional Servers
+#### 15. Treating Containers as Traditional Servers
 
 Containers are intended to be:
 
@@ -1316,7 +1316,7 @@ This approach simplifies maintenance and aligns with cloud-native practices.
 
 ---
 
-# Introduction to Containers Checklist
+## Introduction to Containers Checklist
 
 | Item | Status |
 |------|:------:|
@@ -1335,9 +1335,9 @@ This approach simplifies maintenance and aligns with cloud-native practices.
 
 ---
 
-# References
+## References
 
-## International Standards
+### International Standards
 
 - Open Container Initiative (OCI) Runtime Specification
 - Open Container Initiative (OCI) Image Specification
@@ -1345,7 +1345,7 @@ This approach simplifies maintenance and aligns with cloud-native practices.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Cloud Native Computing Foundation (CNCF)
 - Kubernetes Documentation
@@ -1354,7 +1354,7 @@ This approach simplifies maintenance and aligns with cloud-native practices.
 
 ---
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker Engine Documentation
 - Docker CLI Documentation
@@ -1364,7 +1364,7 @@ This approach simplifies maintenance and aligns with cloud-native practices.
 
 ---
 
-## Linux Documentation
+### Linux Documentation
 
 - Linux Namespaces
 - Linux Control Groups (cgroups)
@@ -1373,7 +1373,7 @@ This approach simplifies maintenance and aligns with cloud-native practices.
 
 ---
 
-## Security Resources
+### Security Resources
 
 - OWASP Docker Security Cheat Sheet
 - OWASP Container Security Verification Standard
@@ -1383,7 +1383,7 @@ This approach simplifies maintenance and aligns with cloud-native practices.
 
 ---
 
-## Books
+### Books
 
 - *Docker Deep Dive* — Nigel Poulton
 - *Docker in Action* — Jeff Nickoloff & Stephen Kuenzli
@@ -1392,7 +1392,7 @@ This approach simplifies maintenance and aligns with cloud-native practices.
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Training
 - Kubernetes Official Documentation

@@ -21,7 +21,7 @@ An effective Container IR strategy minimizes business disruption while preservin
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 Imagine an attacker exploits a vulnerable web application running inside a container.
 
@@ -93,7 +93,7 @@ Organizations can respond consistently and effectively.
 
 ---
 
-# What is an Incident?
+## What is an Incident?
 
 A security incident is any event that threatens the confidentiality, integrity, or availability (CIA) of systems or data.
 
@@ -113,7 +113,7 @@ Not every alert is an incident, but every confirmed incident should be investiga
 
 ---
 
-# Container Incident Response Lifecycle
+## Container Incident Response Lifecycle
 
 ```
 Preparation
@@ -147,7 +147,7 @@ This lifecycle aligns with widely accepted incident response frameworks.
 
 ---
 
-# Challenges of Container Incident Response
+## Challenges of Container Incident Response
 
 Containers introduce unique investigation challenges.
 
@@ -177,9 +177,9 @@ Traditional forensic techniques must be adapted for cloud-native environments.
 
 ---
 
-# Common Container Security Incidents
+## Common Container Security Incidents
 
-## Compromised Container
+### Compromised Container
 
 ```
 Attacker
@@ -195,7 +195,7 @@ Unauthorized Access
 
 ---
 
-## Container Escape
+### Container Escape
 
 ```
 Container
@@ -213,7 +213,7 @@ A container escape attempts to break container isolation and access the host.
 
 ---
 
-## Malware
+### Malware
 
 Examples:
 
@@ -224,7 +224,7 @@ Examples:
 
 ---
 
-## Credential Theft
+### Credential Theft
 
 Attackers may target:
 
@@ -236,7 +236,7 @@ Attackers may target:
 
 ---
 
-## Data Exfiltration
+### Data Exfiltration
 
 Sensitive information may be transferred outside the environment.
 
@@ -249,7 +249,7 @@ Examples:
 
 ---
 
-## Supply Chain Attack
+### Supply Chain Attack
 
 ```
 Compromised Image
@@ -271,7 +271,7 @@ Malicious or compromised images can affect every deployment using them.
 
 ---
 
-# Incident Response Architecture
+## Incident Response Architecture
 
 ```
 Containers
@@ -305,7 +305,7 @@ Monitoring provides the visibility needed to detect incidents early.
 
 ---
 
-# Incident Response Team
+## Incident Response Team
 
 Typical roles include:
 
@@ -322,7 +322,7 @@ Responsibilities vary by organization.
 
 ---
 
-# Indicators of Compromise (IOCs)
+## Indicators of Compromise (IOCs)
 
 Common IOCs include:
 
@@ -339,7 +339,7 @@ IOCs suggest potential malicious activity and warrant investigation.
 
 ---
 
-# Evidence Sources
+## Evidence Sources
 
 Container investigations may use evidence from:
 
@@ -356,7 +356,7 @@ Evidence should be collected carefully to preserve its integrity.
 
 ---
 
-# Goals of Container Incident Response
+## Goals of Container Incident Response
 
 - Minimize business impact
 - Preserve forensic evidence
@@ -369,45 +369,45 @@ Incident response is not only about recovery—it is also about continuous impro
 
 ---
 
-# Key Concepts
+## Key Concepts
 
-## Preparation
+### Preparation
 
 Develop documented procedures, monitoring, backups, and access controls before incidents occur.
 
 ---
 
-## Detection
+### Detection
 
 Identify suspicious activity through monitoring, logging, alerts, and user reports.
 
 ---
 
-## Containment
+### Containment
 
 Limit attacker movement while preserving evidence whenever practical.
 
 ---
 
-## Eradication
+### Eradication
 
 Remove the root cause of the incident, such as vulnerable images, malware, or compromised credentials.
 
 ---
 
-## Recovery
+### Recovery
 
 Restore services using trusted images and validated configurations.
 
 ---
 
-## Lessons Learned
+### Lessons Learned
 
 Review the incident to improve security controls, processes, and response capabilities.
 
 ---
 
-## How It Works
+### How It Works
 
 Container Incident Response follows a structured workflow that enables security teams to quickly detect, investigate, contain, eradicate, and recover from security incidents affecting containerized environments. Because containers are often short-lived and automatically recreated, investigators must preserve evidence early in the investigation.
 
@@ -425,7 +425,7 @@ Rapid evidence collection is essential because containers may terminate automati
 
 ---
 
-# Container Incident Response Workflow
+## Container Incident Response Workflow
 
 ```
 Security Event
@@ -489,7 +489,7 @@ Every phase should be documented to support post-incident review and continuous 
 
 ---
 
-# Step 1 – Incident Detection
+## Step 1 – Incident Detection
 
 Detection may originate from:
 
@@ -525,7 +525,7 @@ Early detection reduces attacker dwell time.
 
 ---
 
-# Step 2 – Initial Triage
+## Step 2 – Initial Triage
 
 Security analysts determine:
 
@@ -559,7 +559,7 @@ No → Continue Investigation
 
 ---
 
-# Step 3 – Evidence Collection
+## Step 3 – Evidence Collection
 
 Evidence should be gathered before making major changes.
 
@@ -597,7 +597,7 @@ Evidence should be collected according to organizational procedures and legal re
 
 ---
 
-# Step 4 – Scope the Incident
+## Step 4 – Scope the Incident
 
 Determine:
 
@@ -625,7 +625,7 @@ Understanding scope prevents incomplete remediation.
 
 ---
 
-# Step 5 – Containment
+## Step 5 – Containment
 
 Containment limits attacker activity while minimizing disruption.
 
@@ -651,7 +651,7 @@ In many environments, replacing the compromised container with a trusted image i
 
 ---
 
-# Step 6 – Root Cause Analysis
+## Step 6 – Root Cause Analysis
 
 Investigate:
 
@@ -689,7 +689,7 @@ Understanding the attack path helps prevent recurrence.
 
 ---
 
-# Step 7 – Eradication
+## Step 7 – Eradication
 
 Remove the underlying cause.
 
@@ -719,7 +719,7 @@ Eradication should address the root cause rather than only the visible symptoms.
 
 ---
 
-# Step 8 – Recovery
+## Step 8 – Recovery
 
 Recovery uses trusted artifacts.
 
@@ -747,7 +747,7 @@ Recovery should include verification that the vulnerability has been addressed.
 
 ---
 
-# Step 9 – Lessons Learned
+## Step 9 – Lessons Learned
 
 After recovery:
 
@@ -781,7 +781,7 @@ Organizations often review:
 
 ---
 
-# Real-World Incident Workflow
+## Real-World Incident Workflow
 
 Example:
 
@@ -831,7 +831,7 @@ Incident Closed
 
 ---
 
-# Evidence Collection Checklist
+## Evidence Collection Checklist
 
 Collect evidence from:
 
@@ -852,9 +852,9 @@ Collect evidence before deleting or replacing affected containers whenever feasi
 
 ---
 
-# Practical Examples
+## Practical Examples
 
-## Example 1 – Unexpected Container Restart
+### Example 1 – Unexpected Container Restart
 
 Monitoring reports:
 
@@ -894,7 +894,7 @@ Root Cause Identified
 
 ---
 
-## Example 2 – Suspicious Process
+### Example 2 – Suspicious Process
 
 Runtime monitoring detects:
 
@@ -919,7 +919,7 @@ Investigation focuses on:
 
 ---
 
-## Example 3 – Credential Theft
+### Example 3 – Credential Theft
 
 Logs indicate:
 
@@ -947,7 +947,7 @@ Recovery includes rotating exposed credentials and reviewing access logs.
 
 ---
 
-## Example 4 – Vulnerable Image
+### Example 4 – Vulnerable Image
 
 Security scanner reports:
 
@@ -971,13 +971,13 @@ Recovery uses an updated, scanned image rather than modifying the running contai
 
 ---
 
-# Hands-on Investigation Commands
+## Hands-on Investigation Commands
 
 > **Note:** These commands assist with inspection and troubleshooting. Production investigations should follow organizational incident response procedures.
 
 ---
 
-## List Running Containers
+### List Running Containers
 
 ```bash
 docker ps
@@ -987,7 +987,7 @@ Identify running workloads.
 
 ---
 
-## View Container Logs
+### View Container Logs
 
 ```bash
 docker logs container_name
@@ -997,7 +997,7 @@ Review application output.
 
 ---
 
-## Stream Logs
+### Stream Logs
 
 ```bash
 docker logs -f container_name
@@ -1007,7 +1007,7 @@ Observe log activity in real time.
 
 ---
 
-## Inspect Container
+### Inspect Container
 
 ```bash
 docker inspect container_name
@@ -1024,7 +1024,7 @@ Review:
 
 ---
 
-## Display Running Processes
+### Display Running Processes
 
 ```bash
 docker top container_name
@@ -1034,7 +1034,7 @@ Look for unexpected processes.
 
 ---
 
-## Monitor Resource Usage
+### Monitor Resource Usage
 
 ```bash
 docker stats
@@ -1046,7 +1046,7 @@ Unexpected spikes may indicate abnormal activity.
 
 ---
 
-## Display Docker Events
+### Display Docker Events
 
 ```bash
 docker events
@@ -1056,7 +1056,7 @@ Review container lifecycle events.
 
 ---
 
-## Inspect Image History
+### Inspect Image History
 
 ```bash
 docker history image_name
@@ -1066,7 +1066,7 @@ Review image layers and build history.
 
 ---
 
-## View Image Metadata
+### View Image Metadata
 
 ```bash
 docker inspect image_name
@@ -1076,9 +1076,9 @@ Review image configuration and metadata.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Prepare Before Incidents
+#### 1. Prepare Before Incidents
 
 Develop:
 
@@ -1092,7 +1092,7 @@ Preparation improves response efficiency.
 
 ---
 
-### 2. Preserve Evidence Early
+#### 2. Preserve Evidence Early
 
 Containers may terminate quickly.
 
@@ -1107,13 +1107,13 @@ before replacing or removing affected containers whenever practical.
 
 ---
 
-### 3. Centralize Logs
+#### 3. Centralize Logs
 
 Centralized logging preserves historical evidence even after containers are deleted.
 
 ---
 
-### 4. Replace Rather Than Repair
+#### 4. Replace Rather Than Repair
 
 Instead of modifying compromised containers:
 
@@ -1133,7 +1133,7 @@ This aligns with immutable infrastructure principles.
 
 ---
 
-### 5. Rotate Secrets After Compromise
+#### 5. Rotate Secrets After Compromise
 
 If credentials may have been exposed:
 
@@ -1146,7 +1146,7 @@ Do not assume secrets remain secure after an incident.
 
 ---
 
-### 6. Document Every Step
+#### 6. Document Every Step
 
 Maintain records of:
 
@@ -1160,7 +1160,7 @@ Documentation supports lessons learned and compliance requirements.
 
 ---
 
-### 7. Review and Improve
+#### 7. Review and Improve
 
 Every incident should strengthen:
 
@@ -1174,7 +1174,7 @@ Continuous improvement reduces future risk.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Container Incident Response differs significantly from traditional server incident response because containers are ephemeral, highly automated, and often part of distributed cloud-native environments. Mistakes made during an investigation can result in the loss of critical evidence, prolonged attacker access, or incomplete remediation.
 
@@ -1182,7 +1182,7 @@ The following are the most common mistakes observed during container incident re
 
 ---
 
-# 1. Immediately Deleting the Container
+## 1. Immediately Deleting the Container
 
 One of the most common mistakes is:
 
@@ -1210,7 +1210,7 @@ Whenever possible, collect relevant evidence before removing or replacing the co
 
 ---
 
-# 2. Ignoring Container Logs
+## 2. Ignoring Container Logs
 
 Example:
 
@@ -1242,7 +1242,7 @@ Logs should always be reviewed during investigations.
 
 ---
 
-# 3. Focusing Only on the Container
+## 3. Focusing Only on the Container
 
 The container is only one part of the environment.
 
@@ -1276,7 +1276,7 @@ Incidents frequently span multiple systems.
 
 ---
 
-# 4. Forgetting the Docker Host
+## 4. Forgetting the Docker Host
 
 Containers share the host kernel.
 
@@ -1304,7 +1304,7 @@ The host should be investigated for:
 
 ---
 
-# 5. Restarting Before Investigation
+## 5. Restarting Before Investigation
 
 Example:
 
@@ -1330,7 +1330,7 @@ Investigate first whenever practical.
 
 ---
 
-# 6. Not Rotating Credentials
+## 6. Not Rotating Credentials
 
 If attackers accessed:
 
@@ -1346,7 +1346,7 @@ Recovery should include credential rotation where exposure is suspected.
 
 ---
 
-# 7. Assuming One Container Was Affected
+## 7. Assuming One Container Was Affected
 
 Example:
 
@@ -1370,7 +1370,7 @@ Investigators should determine the full scope of the incident before concluding 
 
 ---
 
-# 8. Ignoring Supply Chain Compromise
+## 8. Ignoring Supply Chain Compromise
 
 The attack may have originated before deployment.
 
@@ -1406,7 +1406,7 @@ Investigate:
 
 ---
 
-# 9. Modifying Evidence
+## 9. Modifying Evidence
 
 Examples:
 
@@ -1428,7 +1428,7 @@ Whenever feasible, preserve original evidence before making changes.
 
 ---
 
-# 10. Trusting the Running Container
+## 10. Trusting the Running Container
 
 A compromised container may display:
 
@@ -1447,7 +1447,7 @@ Correlate information with:
 
 ---
 
-# 11. No Centralized Logging
+## 11. No Centralized Logging
 
 Without centralized logging:
 
@@ -1467,7 +1467,7 @@ Centralized logging preserves historical records beyond the container lifecycle.
 
 ---
 
-# 12. No Timeline Reconstruction
+## 12. No Timeline Reconstruction
 
 Investigators should establish:
 
@@ -1499,7 +1499,7 @@ A clear timeline supports root cause analysis and reporting.
 
 ---
 
-# 13. Skipping Lessons Learned
+## 13. Skipping Lessons Learned
 
 After recovery:
 
@@ -1525,7 +1525,7 @@ Every incident should improve:
 
 ---
 
-# 14. Treating Incident Response as Only a Security Task
+## 14. Treating Incident Response as Only a Security Task
 
 Container incidents often require collaboration between:
 
@@ -1540,7 +1540,7 @@ Effective communication accelerates recovery and reduces business impact.
 
 ---
 
-# 15. Recovering Without Fixing the Root Cause
+## 15. Recovering Without Fixing the Root Cause
 
 Incorrect workflow:
 
@@ -1582,9 +1582,9 @@ Recovery is incomplete unless the underlying issue has been addressed.
 
 ---
 
-# Container Incident Response Quick Revision
+## Container Incident Response Quick Revision
 
-## Incident Response Lifecycle
+### Incident Response Lifecycle
 
 ```
 Preparation
@@ -1616,7 +1616,7 @@ Lessons Learned
 
 ---
 
-## Common Evidence Sources
+### Common Evidence Sources
 
 ```
 Container Logs
@@ -1644,7 +1644,7 @@ Runtime Alerts
 
 ---
 
-## Typical Indicators of Compromise (IOCs)
+### Typical Indicators of Compromise (IOCs)
 
 - Unexpected processes
 - Unknown outbound connections
@@ -1657,7 +1657,7 @@ Runtime Alerts
 
 ---
 
-## Investigation Commands
+### Investigation Commands
 
 ```bash
 docker ps
@@ -1681,7 +1681,7 @@ These commands provide useful operational information but should be supplemented
 
 ---
 
-# Container Incident Response Checklist
+## Container Incident Response Checklist
 
 | Topic | Status |
 |--------|:------:|
@@ -1703,9 +1703,9 @@ These commands provide useful operational information but should be supplemented
 
 ---
 
-# References
+## References
 
-## Docker Documentation
+### Docker Documentation
 
 - Docker Engine Documentation
 - Docker CLI Documentation
@@ -1714,7 +1714,7 @@ These commands provide useful operational information but should be supplemented
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Incident Response Guidance
 - Falco Documentation
@@ -1723,7 +1723,7 @@ These commands provide useful operational information but should be supplemented
 
 ---
 
-## Security Standards
+### Security Standards
 
 - NIST SP 800-61 Rev. 2 — Computer Security Incident Handling Guide *(or the latest revision adopted by your organization)*
 - NIST SP 800-190 — Application Container Security Guide
@@ -1733,7 +1733,7 @@ These commands provide useful operational information but should be supplemented
 
 ---
 
-## Threat Intelligence & Frameworks
+### Threat Intelligence & Frameworks
 
 - MITRE ATT&CK
 - MITRE ATT&CK for Containers
@@ -1742,7 +1742,7 @@ These commands provide useful operational information but should be supplemented
 
 ---
 
-## Books
+### Books
 
 - *Container Security* — Liz Rice
 - *Incident Response & Computer Forensics* — Jason T. Luttgens, Matthew Pepe & Kevin Mandia
@@ -1751,7 +1751,7 @@ These commands provide useful operational information but should be supplemented
 
 ---
 
-## Recommended Learning Resources
+### Recommended Learning Resources
 
 - Docker Official Documentation
 - Linux Foundation Training

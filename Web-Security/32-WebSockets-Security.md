@@ -1,12 +1,12 @@
 # 32-WebSockets-and-Real-Time-Security.md
 
-# Part 1 — Fundamentals of WebSockets, Real-Time Communication, WebSocket Security, and Enterprise Architecture
+## Part 1 — Fundamentals of WebSockets, Real-Time Communication, WebSocket Security, and Enterprise Architecture
 
 > **"Unlike traditional HTTP communication, WebSockets establish persistent, bidirectional connections. This enables real-time applications but also introduces unique security challenges that require continuous authentication, authorization, monitoring, and secure session management."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What are WebSockets?
+## What are WebSockets?
 
 WebSockets are a communication protocol that enables **persistent, full-duplex communication** between clients and servers over a single TCP connection.
 
@@ -43,7 +43,7 @@ Server
 
 ---
 
-# Why WebSockets?
+## Why WebSockets?
 
 Traditional HTTP communication requires clients to initiate every request.
 
@@ -81,7 +81,7 @@ Server
 
 ---
 
-# Common WebSocket Use Cases
+## Common WebSocket Use Cases
 
 ```
 Applications
@@ -109,7 +109,7 @@ These applications require low-latency, real-time communication.
 
 ---
 
-# WebSocket Security
+## WebSocket Security
 
 WebSocket Security is the practice of protecting persistent bidirectional communication channels from unauthorized access, misuse, data exposure, and service disruption.
 
@@ -125,7 +125,7 @@ Security focuses on:
 
 ---
 
-# WebSocket Security Goals
+## WebSocket Security Goals
 
 ```
 WebSocket Security
@@ -149,7 +149,7 @@ WebSocket Security
 
 ---
 
-# HTTP vs WebSockets
+## HTTP vs WebSockets
 
 | HTTP | WebSockets |
 |------|------------|
@@ -163,7 +163,7 @@ Both require strong security controls.
 
 ---
 
-# WebSocket Architecture
+## WebSocket Architecture
 
 ```
 Client
@@ -193,7 +193,7 @@ Security controls should exist at every layer.
 
 ---
 
-# WebSocket Protocol
+## WebSocket Protocol
 
 WebSockets begin as an HTTP request before transitioning to the WebSocket protocol.
 
@@ -217,7 +217,7 @@ This transition is commonly referred to as the **WebSocket handshake**.
 
 ---
 
-# WebSocket Handshake
+## WebSocket Handshake
 
 A typical connection process follows this sequence:
 
@@ -245,7 +245,7 @@ Authentication and authorization should occur before accepting the upgraded conn
 
 ---
 
-# WebSocket Lifecycle
+## WebSocket Lifecycle
 
 ```
 Connection Request
@@ -275,7 +275,7 @@ Security should be maintained throughout the entire lifecycle—not only during 
 
 ---
 
-# Persistent Connections
+## Persistent Connections
 
 Unlike HTTP, WebSocket connections remain open until either endpoint closes them.
 
@@ -295,7 +295,7 @@ Long-lived sessions require careful lifecycle management.
 
 ---
 
-# Full-Duplex Communication
+## Full-Duplex Communication
 
 Both parties may exchange messages independently.
 
@@ -311,7 +311,7 @@ This enables efficient real-time communication while requiring continuous author
 
 ---
 
-# WebSocket Components
+## WebSocket Components
 
 ```
 WebSocket
@@ -339,7 +339,7 @@ Each component contributes to secure communication.
 
 ---
 
-# WebSocket Frames
+## WebSocket Frames
 
 Messages are transmitted using frames.
 
@@ -367,7 +367,7 @@ Applications should validate received messages before processing them.
 
 ---
 
-# WebSocket Message Flow
+## WebSocket Message Flow
 
 ```
 Client
@@ -397,7 +397,7 @@ Every incoming message should undergo appropriate validation.
 
 ---
 
-# WebSocket Trust Boundaries
+## WebSocket Trust Boundaries
 
 ```
 Internet
@@ -431,7 +431,7 @@ Trust should never be assumed simply because a connection has already been estab
 
 ---
 
-# WebSocket Session Management
+## WebSocket Session Management
 
 ```
 User
@@ -457,7 +457,7 @@ Sessions should be securely managed throughout their lifetime.
 
 ---
 
-# Connection States
+## Connection States
 
 ```
 Connection
@@ -479,7 +479,7 @@ Security monitoring should continue while connections remain active.
 
 ---
 
-# Enterprise WebSocket Architecture
+## Enterprise WebSocket Architecture
 
 ```
 Internet
@@ -521,7 +521,7 @@ Layered security improves scalability and resilience.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution provides real-time stock price updates.
 
@@ -561,7 +561,7 @@ Every connection is authenticated before establishment, authorized before access
 
 ---
 
-# Security Considerations for Real-Time Applications
+## Security Considerations for Real-Time Applications
 
 ```
 Security
@@ -589,7 +589,7 @@ Real-time communication requires security throughout the connection lifecycle.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a secure WebSocket architecture.
 2. Identify authentication and authorization stages.
@@ -601,7 +601,7 @@ Real-time communication requires security throughout the connection lifecycle.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a WebSocket?
 2. How does WebSocket differ from HTTP?
@@ -616,7 +616,7 @@ Real-time communication requires security throughout the connection lifecycle.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use secure transport (WSS) for production deployments.
 - Authenticate clients before accepting WebSocket connections.
@@ -628,7 +628,7 @@ Real-time communication requires security throughout the connection lifecycle.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming an authenticated connection never needs further authorization.
 - Trusting every message received over an established connection.
@@ -639,7 +639,7 @@ Real-time communication requires security throughout the connection lifecycle.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - WebSockets enable persistent, bidirectional communication for real-time applications.
 - Security must extend beyond the initial handshake to the entire connection lifecycle.
@@ -647,15 +647,15 @@ Real-time communication requires security throughout the connection lifecycle.
 - Long-lived sessions require careful management and operational oversight.
 - Layered security and defense in depth are fundamental to enterprise WebSocket deployments.
 
-# 32-WebSockets-and-Real-Time-Security.md
+## 32-WebSockets-and-Real-Time-Security.md
 
-# Part 2 — Authentication, Authorization, Message Validation, Session Security, WSS, and Secure WebSocket Design
+## Part 2 — Authentication, Authorization, Message Validation, Session Security, WSS, and Secure WebSocket Design
 
 > **"Securing a WebSocket application is not limited to establishing a secure connection. Every message exchanged throughout the lifetime of the connection must be authenticated, authorized, validated, and monitored."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -672,7 +672,7 @@ After completing this part, you will understand:
 
 ---
 
-# WebSocket Authentication
+## WebSocket Authentication
 
 Authentication verifies the identity of a client before establishing a WebSocket connection.
 
@@ -700,7 +700,7 @@ Authentication should occur before accepting the connection.
 
 ---
 
-# Common Authentication Methods
+## Common Authentication Methods
 
 ```
 Authentication
@@ -726,7 +726,7 @@ The authentication method should align with enterprise identity standards.
 
 ---
 
-# Authentication Workflow
+## Authentication Workflow
 
 ```
 Client
@@ -756,7 +756,7 @@ Only authenticated clients should be allowed to establish protected connections.
 
 ---
 
-# WebSocket Authorization
+## WebSocket Authorization
 
 Authentication identifies the client.
 
@@ -782,7 +782,7 @@ Authorization decisions should be enforced throughout the connection lifecycle.
 
 ---
 
-# Authorization Levels
+## Authorization Levels
 
 ```
 Authorization
@@ -804,7 +804,7 @@ Multiple authorization layers strengthen security.
 
 ---
 
-# Continuous Authorization
+## Continuous Authorization
 
 Authorization should not be considered a one-time decision.
 
@@ -828,7 +828,7 @@ Applications should verify permissions whenever required by the business operati
 
 ---
 
-# Secure WebSocket (WSS)
+## Secure WebSocket (WSS)
 
 Production environments should use **WSS (WebSocket Secure)**.
 
@@ -852,7 +852,7 @@ WSS provides encrypted communication similar to HTTPS.
 
 ---
 
-# WSS vs WS
+## WSS vs WS
 
 | WS | WSS |
 |----|-----|
@@ -865,7 +865,7 @@ Production deployments should use encrypted transport.
 
 ---
 
-# TLS for WebSockets
+## TLS for WebSockets
 
 ```
 Client
@@ -887,7 +887,7 @@ TLS protects confidentiality and integrity while messages travel across the netw
 
 ---
 
-# Secure Communication Principles
+## Secure Communication Principles
 
 ```
 Transport Security
@@ -911,7 +911,7 @@ Transport security should follow organizational standards and current best pract
 
 ---
 
-# Session Management
+## Session Management
 
 Long-lived WebSocket connections require secure session management.
 
@@ -939,7 +939,7 @@ Sessions should not remain active longer than necessary.
 
 ---
 
-# Session Lifecycle
+## Session Lifecycle
 
 ```
 Connection
@@ -965,7 +965,7 @@ Security controls should remain active throughout the session.
 
 ---
 
-# Session Timeout
+## Session Timeout
 
 Applications should define session lifetime policies.
 
@@ -989,7 +989,7 @@ Reasonable timeout policies reduce long-lived exposure.
 
 ---
 
-# Reauthentication
+## Reauthentication
 
 Some enterprise applications require reauthentication for particularly sensitive operations or after defined policy conditions.
 
@@ -1013,7 +1013,7 @@ The need for reauthentication depends on organizational risk requirements.
 
 ---
 
-# Message Validation
+## Message Validation
 
 Every incoming message should be validated before processing.
 
@@ -1041,7 +1041,7 @@ Validation should occur regardless of message source.
 
 ---
 
-# Validation Layers
+## Validation Layers
 
 ```
 Message
@@ -1071,7 +1071,7 @@ Layered validation improves security and reliability.
 
 ---
 
-# Message Size Limits
+## Message Size Limits
 
 Applications should define reasonable message size limits.
 
@@ -1107,7 +1107,7 @@ Size limits help protect system resources.
 
 ---
 
-# Message Rate Controls
+## Message Rate Controls
 
 Applications should prevent excessive message volumes.
 
@@ -1135,7 +1135,7 @@ Rate controls improve availability and reduce abuse.
 
 ---
 
-# Input Sanitization
+## Input Sanitization
 
 Applications should normalize and validate received data before business processing.
 
@@ -1163,7 +1163,7 @@ Validation should occur on the server regardless of client behavior.
 
 ---
 
-# Secure Error Handling
+## Secure Error Handling
 
 Applications should return standardized error messages.
 
@@ -1191,7 +1191,7 @@ Internal implementation details should remain in protected logs.
 
 ---
 
-# Error Handling Principles
+## Error Handling Principles
 
 ```
 Error Handling
@@ -1215,7 +1215,7 @@ Security and usability should both be considered.
 
 ---
 
-# Connection Management
+## Connection Management
 
 Applications should actively manage connection state.
 
@@ -1243,7 +1243,7 @@ Connection management improves stability and operational control.
 
 ---
 
-# Heartbeats
+## Heartbeats
 
 Many WebSocket implementations use heartbeat mechanisms to detect inactive or disconnected peers.
 
@@ -1263,7 +1263,7 @@ Heartbeats help maintain connection health and identify stale sessions.
 
 ---
 
-# Resource Management
+## Resource Management
 
 Each active connection consumes server resources.
 
@@ -1291,7 +1291,7 @@ Organizations should plan capacity and resource limits appropriately.
 
 ---
 
-# Enterprise WebSocket Request Flow
+## Enterprise WebSocket Request Flow
 
 ```
 Client
@@ -1333,7 +1333,7 @@ Every stage contributes to secure message processing.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider offers real-time patient monitoring dashboards.
 
@@ -1377,7 +1377,7 @@ Connections are authenticated before establishment, authorized throughout their 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1390,7 +1390,7 @@ Connections are authenticated before establishment, authorized throughout their 
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a secure WebSocket authentication workflow.
 2. Draw a secure session lifecycle diagram.
@@ -1402,7 +1402,7 @@ Connections are authenticated before establishment, authorized throughout their 
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is WSS?
 2. Why should production WebSocket applications use TLS?
@@ -1417,7 +1417,7 @@ Connections are authenticated before establishment, authorized throughout their 
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use WSS for all production WebSocket communications.
 - Authenticate clients before accepting connections.
@@ -1430,7 +1430,7 @@ Connections are authenticated before establishment, authorized throughout their 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Using unencrypted WS connections in production.
 - Performing authorization only during the initial handshake.
@@ -1442,7 +1442,7 @@ Connections are authenticated before establishment, authorized throughout their 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Authentication establishes identity, while authorization must continue throughout the WebSocket session.
 - WSS protects communication using TLS and should be used for production deployments.
@@ -1450,15 +1450,15 @@ Connections are authenticated before establishment, authorized throughout their 
 - Secure session management, heartbeat monitoring, and connection lifecycle controls improve resilience.
 - Rate controls, message size limits, and defense in depth are essential for enterprise WebSocket security.
 
-# 32-WebSockets-and-Real-Time-Security.md
+## 32-WebSockets-and-Real-Time-Security.md
 
-# Part 3 — WebSocket Threats, OWASP Risks, Origin Validation, Logging, Monitoring, Security Testing, and Operational Security
+## Part 3 — WebSocket Threats, OWASP Risks, Origin Validation, Logging, Monitoring, Security Testing, and Operational Security
 
 > **"A WebSocket connection may remain active for hours. Organizations must continuously validate, monitor, and protect every message exchanged throughout its lifetime."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1475,7 +1475,7 @@ After completing this part, you will understand:
 
 ---
 
-# WebSocket Threat Landscape
+## WebSocket Threat Landscape
 
 Like any network service, WebSocket applications can be affected by common application security risks if they are not properly designed and operated.
 
@@ -1509,7 +1509,7 @@ Most risks arise from insecure implementation rather than the WebSocket protocol
 
 ---
 
-# WebSocket Attack Surface
+## WebSocket Attack Surface
 
 ```
 Client
@@ -1547,7 +1547,7 @@ Every layer should enforce appropriate security controls.
 
 ---
 
-# Cross-Site WebSocket Hijacking (CSWSH)
+## Cross-Site WebSocket Hijacking (CSWSH)
 
 Cross-Site WebSocket Hijacking is a risk where a user's authenticated browser could establish an unintended WebSocket connection if the server does not properly validate the connection request.
 
@@ -1575,7 +1575,7 @@ Proper origin validation and authentication help reduce this risk.
 
 ---
 
-# Origin Validation
+## Origin Validation
 
 Servers should validate the expected origin during the WebSocket handshake when appropriate.
 
@@ -1611,7 +1611,7 @@ Origin validation complements—not replaces—authentication and authorization.
 
 ---
 
-# Authentication Failures
+## Authentication Failures
 
 Weak authentication can expose real-time services to unauthorized users.
 
@@ -1635,7 +1635,7 @@ Every protected connection should require verified identity.
 
 ---
 
-# Authorization Failures
+## Authorization Failures
 
 Authorization should be evaluated whenever a client accesses protected resources.
 
@@ -1659,7 +1659,7 @@ Authentication alone is not sufficient.
 
 ---
 
-# Session Hijacking
+## Session Hijacking
 
 Long-lived sessions require strong protection throughout their lifecycle.
 
@@ -1683,7 +1683,7 @@ Secure transport, session management, and continuous authorization help reduce r
 
 ---
 
-# Resource Exhaustion
+## Resource Exhaustion
 
 Persistent connections consume server resources.
 
@@ -1711,7 +1711,7 @@ Organizations should monitor and manage resource utilization.
 
 ---
 
-# Connection Limits
+## Connection Limits
 
 Applications commonly define limits on active connections.
 
@@ -1739,7 +1739,7 @@ Reasonable limits improve service stability and availability.
 
 ---
 
-# Idle Connection Management
+## Idle Connection Management
 
 Idle connections should not remain open indefinitely.
 
@@ -1759,7 +1759,7 @@ Timeout policies help reclaim resources and reduce unnecessary exposure.
 
 ---
 
-# Message Flooding
+## Message Flooding
 
 High message rates may affect application availability.
 
@@ -1783,7 +1783,7 @@ Rate limiting and monitoring help maintain service health.
 
 ---
 
-# Message Validation
+## Message Validation
 
 Every received message should be validated.
 
@@ -1807,7 +1807,7 @@ Validation reduces the likelihood of invalid or unexpected data affecting applic
 
 ---
 
-# Sensitive Data Exposure
+## Sensitive Data Exposure
 
 Applications should minimize the amount of sensitive information transmitted over WebSocket channels.
 
@@ -1831,7 +1831,7 @@ Only authorized clients should receive sensitive information.
 
 ---
 
-# Logging
+## Logging
 
 Security-relevant WebSocket events should be logged.
 
@@ -1863,7 +1863,7 @@ Logging supports operational visibility and incident investigations.
 
 ---
 
-# Events to Log
+## Events to Log
 
 | Event | Purpose |
 |--------|----------|
@@ -1878,7 +1878,7 @@ Sensitive information should be handled carefully within logs.
 
 ---
 
-# Monitoring
+## Monitoring
 
 Monitoring provides continuous visibility into WebSocket environments.
 
@@ -1906,7 +1906,7 @@ Monitoring supports early detection of operational and security issues.
 
 ---
 
-# Observability
+## Observability
 
 Modern WebSocket services benefit from comprehensive telemetry.
 
@@ -1928,7 +1928,7 @@ Together, these sources provide insight into system behavior and performance.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1943,7 +1943,7 @@ Together, these sources provide insight into system behavior and performance.
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling should be performed during system design.
 
@@ -1971,7 +1971,7 @@ This process helps identify security concerns before deployment.
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 WebSocket security should be integrated throughout development.
 
@@ -2007,7 +2007,7 @@ Security should be addressed continuously rather than only before release.
 
 ---
 
-# Security Testing
+## Security Testing
 
 Security testing verifies implemented controls.
 
@@ -2037,7 +2037,7 @@ Testing should confirm that security controls behave as intended.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Multiple independent controls strengthen security.
 
@@ -2089,7 +2089,7 @@ Layered defenses reduce the impact of individual control failures.
 
 ---
 
-# Enterprise WebSocket Architecture
+## Enterprise WebSocket Architecture
 
 ```
 Internet
@@ -2143,7 +2143,7 @@ This architecture supports secure, scalable, and observable real-time communicat
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global logistics company provides real-time shipment tracking for customers and internal operations teams.
 
@@ -2183,7 +2183,7 @@ Every connection is authenticated, authorized for appropriate tracking informati
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2196,7 +2196,7 @@ Every connection is authenticated, authorized for appropriate tracking informati
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a WebSocket trust boundary diagram.
 2. Design a conceptual connection lifecycle monitoring dashboard.
@@ -2208,7 +2208,7 @@ Every connection is authenticated, authorized for appropriate tracking informati
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Cross-Site WebSocket Hijacking (CSWSH)?
 2. Why is origin validation important?
@@ -2223,7 +2223,7 @@ Every connection is authenticated, authorized for appropriate tracking informati
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Validate connection origins where appropriate.
 - Require strong authentication before establishing protected connections.
@@ -2236,7 +2236,7 @@ Every connection is authenticated, authorized for appropriate tracking informati
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting a connection simply because it was authenticated once.
 - Allowing idle sessions to remain active indefinitely.
@@ -2247,7 +2247,7 @@ Every connection is authenticated, authorized for appropriate tracking informati
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - WebSocket security requires continuous protection throughout the connection lifecycle.
 - Origin validation, authentication, authorization, and message validation work together to reduce risk.
@@ -2255,15 +2255,15 @@ Every connection is authenticated, authorized for appropriate tracking informati
 - Logging, observability, and security testing improve operational resilience.
 - Defense in depth remains a foundational principle for enterprise WebSocket deployments.
 
-# 32-WebSockets-and-Real-Time-Security.md
+## 32-WebSockets-and-Real-Time-Security.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Compliance, Incident Response, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Compliance, Incident Response, and Chapter Summary
 
 > **"Enterprise WebSocket security is not achieved by securing only the connection. It requires governance, continuous verification, operational visibility, resilient architecture, and security integrated throughout the software lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2280,7 +2280,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise WebSocket Governance
+## Enterprise WebSocket Governance
 
 Governance establishes organizational standards for designing, deploying, operating, and retiring WebSocket services.
 
@@ -2316,7 +2316,7 @@ Governance promotes consistency, security, and operational reliability across te
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 WebSocket Governance
@@ -2346,7 +2346,7 @@ A structured governance framework reduces implementation inconsistencies.
 
 ---
 
-# Secure Design Principles
+## Secure Design Principles
 
 Every WebSocket service should be designed with security as a primary objective.
 
@@ -2374,7 +2374,7 @@ These principles support secure and maintainable systems.
 
 ---
 
-# WebSocket Service Lifecycle
+## WebSocket Service Lifecycle
 
 ```
 Requirements
@@ -2416,7 +2416,7 @@ Security should be integrated into every lifecycle stage.
 
 ---
 
-# Zero Trust for WebSockets
+## Zero Trust for WebSockets
 
 Zero Trust assumes that no client, connection, or internal service should be trusted by default.
 
@@ -2452,7 +2452,7 @@ Verification continues throughout the connection lifecycle.
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -2478,7 +2478,7 @@ Every message should be evaluated within organizational security policies.
 
 ---
 
-# Identity-Centric Security
+## Identity-Centric Security
 
 Identity becomes the primary security boundary.
 
@@ -2506,7 +2506,7 @@ Strong identity verification supports secure access decisions.
 
 ---
 
-# Service-to-Service Security
+## Service-to-Service Security
 
 Backend services communicating through WebSocket infrastructure should also authenticate each other.
 
@@ -2530,7 +2530,7 @@ Internal communication should follow the same security principles as external co
 
 ---
 
-# WebSockets in Microservices
+## WebSockets in Microservices
 
 Modern enterprises commonly integrate WebSockets with microservice architectures.
 
@@ -2566,7 +2566,7 @@ Each service remains responsible for enforcing its own authorization and validat
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Security should be integrated into development and deployment pipelines.
 
@@ -2602,7 +2602,7 @@ Security becomes a continuous process rather than a final step.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2640,7 +2640,7 @@ Automated validation improves software quality and reduces operational risk.
 
 ---
 
-# Change Management
+## Change Management
 
 All significant changes to WebSocket infrastructure should follow controlled processes.
 
@@ -2672,7 +2672,7 @@ Structured change management reduces unintended service disruptions.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many regulations and industry frameworks require organizations to secure real-time communication systems.
 
@@ -2700,7 +2700,7 @@ Compliance supports governance but should complement broader security practices.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Organizations should monitor meaningful operational and security metrics.
 
@@ -2717,7 +2717,7 @@ Organizations should monitor meaningful operational and security metrics.
 
 ---
 
-# Operational Dashboard
+## Operational Dashboard
 
 ```
 Dashboard
@@ -2745,7 +2745,7 @@ Dashboards provide a centralized operational view for engineering and security t
 
 ---
 
-# Security Operations
+## Security Operations
 
 Continuous operational monitoring supports rapid detection of issues.
 
@@ -2777,7 +2777,7 @@ Security operations rely on timely telemetry and effective incident handling.
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should prepare procedures for responding to WebSocket-related incidents.
 
@@ -2813,7 +2813,7 @@ Each incident should contribute to improving future resilience.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2843,7 +2843,7 @@ Understanding underlying causes helps prevent recurrence.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 Security programs should continuously evolve.
 
@@ -2875,7 +2875,7 @@ Continuous improvement strengthens long-term operational maturity.
 
 ---
 
-# WebSocket Security Maturity Model
+## WebSocket Security Maturity Model
 
 ```
 Level 1
@@ -2911,7 +2911,7 @@ Organizations typically progress through increasing levels of operational maturi
 
 ---
 
-# Enterprise WebSocket Architecture
+## Enterprise WebSocket Architecture
 
 ```
                     Internet
@@ -2991,7 +2991,7 @@ This layered architecture supports secure, scalable, and highly available real-t
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational collaboration platform provides secure real-time messaging, notifications, and presence information.
 
@@ -3043,7 +3043,7 @@ Every connection is authenticated, continuously authorized, monitored throughout
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ WSS Enabled
@@ -3073,7 +3073,7 @@ Every connection is authenticated, continuously authorized, monitored throughout
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -3086,9 +3086,9 @@ Every connection is authenticated, continuously authorized, monitored throughout
 
 ---
 
-# WebSocket Security Quick Revision
+## WebSocket Security Quick Revision
 
-## Secure Connection Flow
+### Secure Connection Flow
 
 ```
 Client
@@ -3128,7 +3128,7 @@ Response
 
 ---
 
-## Secure Session
+### Secure Session
 
 ```
 Authentication
@@ -3152,7 +3152,7 @@ Connection Closed
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 ```
 Internet
@@ -3188,7 +3188,7 @@ Monitoring
 
 ---
 
-## Secure Lifecycle
+### Secure Lifecycle
 
 ```
 Design
@@ -3216,7 +3216,7 @@ Improve
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise WebSocket architecture for a real-time collaboration platform.
 2. Create a governance workflow for WebSocket service deployments.
@@ -3228,7 +3228,7 @@ Improve
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is WSS recommended for production deployments?
 2. How does Zero Trust apply to WebSocket communication?
@@ -3243,7 +3243,7 @@ Improve
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use WSS for all production WebSocket deployments.
 - Authenticate clients before establishing connections.
@@ -3256,7 +3256,7 @@ Improve
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming authentication alone secures long-lived connections.
 - Ignoring authorization after the initial handshake.
@@ -3267,7 +3267,7 @@ Improve
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

@@ -4,7 +4,7 @@
 
 ---
 
-# 1. What Is Detection Engineering?
+## 1. What Is Detection Engineering?
 
 Detection Engineering transforms:
 
@@ -58,7 +58,7 @@ Create Better Alerts
 
 ---
 
-# 2. Why Detection Engineering Matters
+## 2. Why Detection Engineering Matters
 
 Security teams receive enormous amounts of telemetry.
 
@@ -106,11 +106,11 @@ Ineffective SOC
 
 ---
 
-# 3. Detection Engineering vs Detection
+## 3. Detection Engineering vs Detection
 
 These are different concepts.
 
-### Detection
+#### Detection
 
 A specific piece of logic that identifies suspicious activity.
 
@@ -122,7 +122,7 @@ from one source against one account
 within 5 minutes
 ```
 
-### Detection Engineering
+#### Detection Engineering
 
 The complete discipline around that detection:
 
@@ -150,7 +150,7 @@ Maintenance
 
 ---
 
-# 4. Detection Engineering vs SOC Monitoring
+## 4. Detection Engineering vs SOC Monitoring
 
 SOC monitoring focuses on:
 
@@ -193,9 +193,9 @@ This creates a feedback loop.
 
 ---
 
-# 5. Detection Engineering vs Threat Hunting
+## 5. Detection Engineering vs Threat Hunting
 
-### Threat Hunting
+#### Threat Hunting
 
 Proactively searches for threats.
 
@@ -209,7 +209,7 @@ Investigation
 Finding
 ```
 
-### Detection Engineering
+#### Detection Engineering
 
 Turns repeatable threat patterns into persistent detections.
 
@@ -237,15 +237,15 @@ Continuous Detection
 
 ---
 
-# 6. Detection Engineering vs Incident Response
+## 6. Detection Engineering vs Incident Response
 
-### Detection Engineering
+#### Detection Engineering
 
 ```text
 Identify suspicious behavior
 ```
 
-### Incident Response
+#### Incident Response
 
 ```text
 Investigate
@@ -268,9 +268,9 @@ Incident Response
 
 ---
 
-# 7. Detection Engineering vs SIEM Engineering
+## 7. Detection Engineering vs SIEM Engineering
 
-### SIEM Engineering
+#### SIEM Engineering
 
 Concerned with:
 
@@ -285,7 +285,7 @@ Architecture
 Availability
 ```
 
-### Detection Engineering
+#### Detection Engineering
 
 Concerned with:
 
@@ -313,7 +313,7 @@ Effective Security Monitoring
 
 ---
 
-# 8. Detection Engineering Lifecycle
+## 8. Detection Engineering Lifecycle
 
 A professional detection follows a lifecycle:
 
@@ -347,7 +347,7 @@ A professional detection follows a lifecycle:
 
 ---
 
-# 9. Step 1 – Threat Identification
+## 9. Step 1 – Threat Identification
 
 Start with a threat.
 
@@ -375,7 +375,7 @@ Credential Theft
 
 ---
 
-# 10. Step 2 – Understand the Threat
+## 10. Step 2 – Understand the Threat
 
 Before writing a query, understand:
 
@@ -407,7 +407,7 @@ First understand the behavior.
 
 ---
 
-# 11. Step 3 – Detection Hypothesis
+## 11. Step 3 – Detection Hypothesis
 
 A detection hypothesis describes:
 
@@ -431,7 +431,7 @@ What evidence would support this?
 
 ---
 
-# 12. Detection Hypothesis Structure
+## 12. Detection Hypothesis Structure
 
 A useful structure:
 
@@ -463,7 +463,7 @@ New device + unusual location
 
 ---
 
-# 13. Step 4 – Identify Required Telemetry
+## 13. Step 4 – Identify Required Telemetry
 
 Ask:
 
@@ -492,7 +492,7 @@ No Reliable Detection
 
 ---
 
-# 14. Telemetry Dependency
+## 14. Telemetry Dependency
 
 Every detection has dependencies.
 
@@ -519,7 +519,7 @@ Detection Quality ↓
 
 ---
 
-# 15. Detection Blind Spot
+## 15. Detection Blind Spot
 
 A blind spot occurs when required attacker activity cannot be observed.
 
@@ -544,7 +544,7 @@ Detection Blind Spot
 
 ---
 
-# 16. Visibility Before Detection
+## 16. Visibility Before Detection
 
 A fundamental rule:
 
@@ -566,7 +566,7 @@ must work together.
 
 ---
 
-# 17. Step 5 – Detection Design
+## 17. Step 5 – Detection Design
 
 Now define the detection.
 
@@ -592,7 +592,7 @@ This is detection logic.
 
 ---
 
-# 18. Detection Logic Components
+## 18. Detection Logic Components
 
 A detection commonly contains:
 
@@ -631,7 +631,7 @@ Medium
 
 ---
 
-# 19. Simple Rule
+## 19. Simple Rule
 
 Example:
 
@@ -646,7 +646,7 @@ This is a threshold detection.
 
 ---
 
-# 20. Contextual Rule
+## 20. Contextual Rule
 
 More advanced:
 
@@ -672,7 +672,7 @@ Adding context generally improves prioritization.
 
 ---
 
-# 21. Behavioral Rule
+## 21. Behavioral Rule
 
 Instead of looking for a fixed indicator:
 
@@ -696,7 +696,7 @@ behavioral anomaly
 
 ---
 
-# 22. Correlation Rule
+## 22. Correlation Rule
 
 Example:
 
@@ -718,7 +718,7 @@ Potential Account Takeover
 
 ---
 
-# 23. Step 6 – Detection Development
+## 23. Step 6 – Detection Development
 
 Implement the logic using the target platform.
 
@@ -738,7 +738,7 @@ The exact language depends on the security platform.
 
 ---
 
-# 24. Sigma
+## 24. Sigma
 
 Sigma is a generic, vendor-neutral format for describing detection logic.
 
@@ -765,7 +765,7 @@ Collaboration
 
 ---
 
-# 25. Example Detection Metadata
+## 25. Example Detection Metadata
 
 A professional detection may contain:
 
@@ -786,7 +786,7 @@ Version
 
 ---
 
-# 26. Detection Documentation
+## 26. Detection Documentation
 
 A detection should explain:
 
@@ -822,7 +822,7 @@ preceded by repeated authentication failures.
 
 ---
 
-# 27. Step 7 – Testing
+## 27. Step 7 – Testing
 
 Never assume:
 
@@ -848,7 +848,7 @@ Does the rule work at scale?
 
 ---
 
-# 28. Positive Testing
+## 28. Positive Testing
 
 Simulate or reproduce the behavior the rule is intended to detect.
 
@@ -863,7 +863,7 @@ Alert
 
 ---
 
-# 29. Negative Testing
+## 29. Negative Testing
 
 Test legitimate behavior.
 
@@ -878,7 +878,7 @@ No Alert
 
 ---
 
-# 30. Boundary Testing
+## 30. Boundary Testing
 
 Suppose:
 
@@ -900,7 +900,7 @@ To verify threshold behavior.
 
 ---
 
-# 31. Missing Data Testing
+## 31. Missing Data Testing
 
 What happens if:
 
@@ -918,7 +918,7 @@ The detection should fail safely rather than silently producing incorrect conclu
 
 ---
 
-# 32. Duplicate Event Testing
+## 32. Duplicate Event Testing
 
 Suppose:
 
@@ -943,7 +943,7 @@ Deduplication may be required.
 
 ---
 
-# 33. Delayed Event Testing
+## 33. Delayed Event Testing
 
 Security telemetry can arrive late.
 
@@ -967,7 +967,7 @@ Ingestion Time
 
 ---
 
-# 34. Step 8 – Validation
+## 34. Step 8 – Validation
 
 Testing asks:
 
@@ -994,7 +994,7 @@ Red Team Activity
 
 ---
 
-# 35. Purple Team Validation
+## 35. Purple Team Validation
 
 ```text
 Red Team
@@ -1014,7 +1014,7 @@ This validates the complete detection chain.
 
 ---
 
-# 36. Detection Validation Questions
+## 36. Detection Validation Questions
 
 Ask:
 
@@ -1040,7 +1040,7 @@ Could an attacker bypass it?
 
 ---
 
-# 37. Step 9 – Code Review
+## 37. Step 9 – Code Review
 
 Production detections should ideally receive peer review.
 
@@ -1059,7 +1059,7 @@ Documentation
 
 ---
 
-# 38. Step 10 – Deployment
+## 38. Step 10 – Deployment
 
 A safe deployment process:
 
@@ -1089,7 +1089,7 @@ Rollback
 
 ---
 
-# 39. Shadow Mode
+## 39. Shadow Mode
 
 A detection runs without generating normal analyst alerts.
 
@@ -1118,7 +1118,7 @@ Large-Scale Deployments
 
 ---
 
-# 40. Step 11 – Production Monitoring
+## 40. Step 11 – Production Monitoring
 
 Once deployed, monitor:
 
@@ -1137,7 +1137,7 @@ A detection is not finished when it reaches production.
 
 ---
 
-# 41. Step 12 – Tuning
+## 41. Step 12 – Tuning
 
 Suppose:
 
@@ -1168,7 +1168,7 @@ Risk Scoring
 
 ---
 
-# 42. Avoid Blind Exclusions
+## 42. Avoid Blind Exclusions
 
 Bad:
 
@@ -1197,7 +1197,7 @@ with documentation and review.
 
 ---
 
-# 43. Step 13 – Measure Detection
+## 43. Step 13 – Measure Detection
 
 Useful measurements:
 
@@ -1214,7 +1214,7 @@ Test Pass Rate
 
 ---
 
-# 44. Detection Coverage
+## 44. Detection Coverage
 
 Coverage asks:
 
@@ -1233,7 +1233,7 @@ ATT&CK Technique D → Not Covered
 
 ---
 
-# 45. Detection Gap
+## 45. Detection Gap
 
 A detection gap occurs when:
 
@@ -1264,7 +1264,7 @@ Detection Gap
 
 ---
 
-# 46. Detection Maturity
+## 46. Detection Maturity
 
 A conceptual maturity progression:
 
@@ -1287,7 +1287,7 @@ Automated / AI-Assisted Detection
 
 ---
 
-# 47. Level 1 – Reactive
+## 47. Level 1 – Reactive
 
 Characteristics:
 
@@ -1300,7 +1300,7 @@ Little Documentation
 
 ---
 
-# 48. Level 2 – Centralized
+## 48. Level 2 – Centralized
 
 ```text
 SIEM
@@ -1311,7 +1311,7 @@ Basic Monitoring
 
 ---
 
-# 49. Level 3 – Detection Engineering
+## 49. Level 3 – Detection Engineering
 
 ```text
 Detection-as-Code
@@ -1324,7 +1324,7 @@ Coverage
 
 ---
 
-# 50. Level 4 – Threat-Informed
+## 50. Level 4 – Threat-Informed
 
 ```text
 Threat Intelligence
@@ -1337,7 +1337,7 @@ Coverage Analysis
 
 ---
 
-# 51. Level 5 – Modern Detection
+## 51. Level 5 – Modern Detection
 
 ```text
 Behavior Analytics
@@ -1351,7 +1351,7 @@ Continuous Validation
 
 ---
 
-# 52. Detection Engineering Feedback Loop
+## 52. Detection Engineering Feedback Loop
 
 A mature environment continuously learns:
 
@@ -1377,7 +1377,7 @@ Improvement
 
 ---
 
-# 53. Detection Quality Dimensions
+## 53. Detection Quality Dimensions
 
 Evaluate detections using:
 
@@ -1393,7 +1393,7 @@ Resilience
 
 ---
 
-# 54. Accuracy
+## 54. Accuracy
 
 Does the detection correctly distinguish:
 
@@ -1405,7 +1405,7 @@ Legitimate
 
 ---
 
-# 55. Coverage
+## 55. Coverage
 
 Does the detection cover:
 
@@ -1418,7 +1418,7 @@ Environments
 
 ---
 
-# 56. Timeliness
+## 56. Timeliness
 
 How quickly does the detection fire?
 
@@ -1436,7 +1436,7 @@ Lower detection latency is generally preferable.
 
 ---
 
-# 57. Actionability
+## 57. Actionability
 
 An alert should help analysts answer:
 
@@ -1449,7 +1449,7 @@ What should I investigate?
 
 ---
 
-# 58. Performance
+## 58. Performance
 
 A detection should not unnecessarily consume:
 
@@ -1463,7 +1463,7 @@ Network
 
 ---
 
-# 59. Maintainability
+## 59. Maintainability
 
 A detection should be:
 
@@ -1477,7 +1477,7 @@ Owned
 
 ---
 
-# 60. Resilience
+## 60. Resilience
 
 A detection should account for:
 
@@ -1492,7 +1492,7 @@ Environment Changes
 
 ---
 
-# 61. Detection Dependencies
+## 61. Detection Dependencies
 
 A detection may depend on:
 
@@ -1511,7 +1511,7 @@ Document these dependencies.
 
 ---
 
-# 62. Detection Metadata
+## 62. Detection Metadata
 
 Recommended metadata:
 
@@ -1536,11 +1536,11 @@ Response Guidance
 
 ---
 
-# 63. Severity vs Confidence
+## 63. Severity vs Confidence
 
 These are different.
 
-### Severity
+#### Severity
 
 How serious would the activity be?
 
@@ -1551,7 +1551,7 @@ High
 Critical
 ```
 
-### Confidence
+#### Confidence
 
 How confident are we that the detection represents malicious behavior?
 
@@ -1573,7 +1573,7 @@ should not automatically result in aggressive response.
 
 ---
 
-# 64. Risk
+## 64. Risk
 
 Risk can combine:
 
@@ -1611,7 +1611,7 @@ Total:
 
 ---
 
-# 65. Alert Prioritization
+## 65. Alert Prioritization
 
 Instead of:
 
@@ -1635,7 +1635,7 @@ to prioritize.
 
 ---
 
-# 66. Detection vs Prevention
+## 66. Detection vs Prevention
 
 Detection:
 
@@ -1663,7 +1663,7 @@ Both are important.
 
 ---
 
-# 67. Detection vs Response
+## 67. Detection vs Response
 
 ```text
 Detection
@@ -1677,7 +1677,7 @@ A good detection should provide enough context for effective response.
 
 ---
 
-# 68. Detection Engineering and Threat Intelligence
+## 68. Detection Engineering and Threat Intelligence
 
 Threat intelligence can provide:
 
@@ -1701,7 +1701,7 @@ Coverage
 
 ---
 
-# 69. Intelligence-to-Detection Pipeline
+## 69. Intelligence-to-Detection Pipeline
 
 ```text
 Threat Intelligence
@@ -1721,7 +1721,7 @@ Deploy
 
 ---
 
-# 70. Detection Engineering and MITRE ATT&CK
+## 70. Detection Engineering and MITRE ATT&CK
 
 ATT&CK can answer:
 
@@ -1751,7 +1751,7 @@ Coverage
 
 ---
 
-# 71. Detection Engineering and Threat Hunting
+## 71. Detection Engineering and Threat Hunting
 
 Strong SOCs connect both disciplines:
 
@@ -1773,7 +1773,7 @@ New Hunt
 
 ---
 
-# 72. Detection Engineering and Purple Teaming
+## 72. Detection Engineering and Purple Teaming
 
 Purple teaming validates:
 
@@ -1802,7 +1802,7 @@ Response Gaps
 
 ---
 
-# 73. Detection Engineering and Incident Response
+## 73. Detection Engineering and Incident Response
 
 Incident response provides valuable feedback.
 
@@ -1826,9 +1826,9 @@ Deploy
 
 ---
 
-# 74. Common Detection Engineering Mistakes
+## 74. Common Detection Engineering Mistakes
 
-## Mistake 1
+### Mistake 1
 
 ```text
 Create Rule
@@ -1849,7 +1849,7 @@ Create
 
 ---
 
-## Mistake 2
+### Mistake 2
 
 ```text
 Use only IOCs
@@ -1873,7 +1873,7 @@ Context
 
 ---
 
-## Mistake 3
+### Mistake 3
 
 ```text
 Alert on Everything Suspicious
@@ -1887,7 +1887,7 @@ Alert Fatigue
 
 ---
 
-## Mistake 4
+### Mistake 4
 
 ```text
 Broad Exclusions
@@ -1901,7 +1901,7 @@ Blind Spots
 
 ---
 
-## Mistake 5
+### Mistake 5
 
 ```text
 No Testing
@@ -1915,7 +1915,7 @@ Unknown Detection Quality
 
 ---
 
-## Mistake 6
+### Mistake 6
 
 ```text
 No Documentation
@@ -1929,7 +1929,7 @@ Nobody Understands the Rule
 
 ---
 
-## Mistake 7
+### Mistake 7
 
 ```text
 No Owner
@@ -1943,7 +1943,7 @@ Detection Becomes Orphaned
 
 ---
 
-# 75. Detection Ownership
+## 75. Detection Ownership
 
 Every important production detection should have an owner.
 
@@ -1961,7 +1961,7 @@ Retire When Necessary
 
 ---
 
-# 76. Detection Status
+## 76. Detection Status
 
 Useful statuses:
 
@@ -1977,7 +1977,7 @@ Retired
 
 ---
 
-# 77. Detection Versioning
+## 77. Detection Versioning
 
 Example:
 
@@ -2006,7 +2006,7 @@ Testing
 
 ---
 
-# 78. Detection Retirement
+## 78. Detection Retirement
 
 Retire a detection when:
 
@@ -2038,7 +2038,7 @@ Monitor
 
 ---
 
-# 79. Detection Engineering Architecture
+## 79. Detection Engineering Architecture
 
 Conceptually:
 
@@ -2082,21 +2082,21 @@ Conceptually:
 
 ---
 
-# 80. Practical Example – Brute Force Detection
+## 80. Practical Example – Brute Force Detection
 
-## Threat
+### Threat
 
 ```text
 Credential Attack
 ```
 
-## Behavior
+### Behavior
 
 ```text
 Repeated Authentication Failures
 ```
 
-## Telemetry
+### Telemetry
 
 ```text
 Timestamp
@@ -2107,7 +2107,7 @@ Result
 Authentication Method
 ```
 
-## Detection
+### Detection
 
 ```text
 IF
@@ -2127,7 +2127,7 @@ THEN
 generate alert
 ```
 
-## Context
+### Context
 
 Add:
 
@@ -2138,7 +2138,7 @@ Known VPN?
 Known Corporate NAT?
 ```
 
-## Test
+### Test
 
 ```text
 19 failures → No Alert
@@ -2149,15 +2149,15 @@ Legitimate Authentication → No Alert
 
 ---
 
-# 81. Practical Example – Suspicious PowerShell
+## 81. Practical Example – Suspicious PowerShell
 
-## Threat
+### Threat
 
 ```text
 Malicious Script Execution
 ```
 
-## Telemetry
+### Telemetry
 
 ```text
 Process
@@ -2168,7 +2168,7 @@ Host
 Network
 ```
 
-## Detection Concept
+### Detection Concept
 
 ```text
 PowerShell
@@ -2184,7 +2184,7 @@ The exact logic should be validated against the organization's environment.
 
 ---
 
-# 82. Practical Example – Account Compromise
+## 82. Practical Example – Account Compromise
 
 ```text
 Multiple Failed Logins
@@ -2210,7 +2210,7 @@ High-Priority Investigation
 
 ---
 
-# 83. Practical Example – Ransomware
+## 83. Practical Example – Ransomware
 
 Potential telemetry:
 
@@ -2241,7 +2241,7 @@ High-Risk Ransomware Candidate
 
 ---
 
-# 84. Practical Example – Cloud Account Takeover
+## 84. Practical Example – Cloud Account Takeover
 
 Telemetry:
 
@@ -2269,7 +2269,7 @@ Sensitive API Calls
 
 ---
 
-# 85. Detection Engineering Checklist
+## 85. Detection Engineering Checklist
 
 Before production:
 
@@ -2297,7 +2297,7 @@ Before production:
 
 ---
 
-# 86. Production Checklist
+## 86. Production Checklist
 
 After deployment:
 
@@ -2316,7 +2316,7 @@ After deployment:
 
 ---
 
-# 87. Detection Engineering Mental Model
+## 87. Detection Engineering Mental Model
 
 Remember:
 
@@ -2348,71 +2348,71 @@ IMPROVE
 
 ---
 
-# 88. Interview Questions
+## 88. Interview Questions
 
-### 1. What is detection engineering?
+#### 1. What is detection engineering?
 
 > Detection engineering is the process of designing, developing, testing, deploying, tuning, and maintaining security detections that identify meaningful adversary behavior.
 
-### 2. What is the first step when creating a detection?
+#### 2. What is the first step when creating a detection?
 
 > Understand the threat and attacker behavior before determining the telemetry and detection logic.
 
-### 3. What is a detection hypothesis?
+#### 3. What is a detection hypothesis?
 
 > A statement describing what observable behavior or evidence would indicate that a particular threat may be occurring.
 
-### 4. Why is telemetry important?
+#### 4. Why is telemetry important?
 
 > A detection can only identify behavior that is sufficiently observable in the available telemetry.
 
-### 5. What is detection coverage?
+#### 5. What is detection coverage?
 
 > The extent to which relevant threats, techniques, assets, and behaviors are observable and detectable.
 
-### 6. What is a false positive?
+#### 6. What is a false positive?
 
 > A detection triggers on legitimate activity.
 
-### 7. What is a false negative?
+#### 7. What is a false negative?
 
 > Malicious activity occurs but the detection fails to identify it.
 
-### 8. How do you reduce false positives?
+#### 8. How do you reduce false positives?
 
 > Add context, improve correlation, tune thresholds, use narrow exceptions, enrich events, and validate changes with testing.
 
-### 9. Why shouldn't you simply disable a noisy detection?
+#### 9. Why shouldn't you simply disable a noisy detection?
 
 > It may eliminate useful visibility and create a detection blind spot.
 
-### 10. What is detection-as-code?
+#### 10. What is detection-as-code?
 
 > Managing detections as version-controlled, testable, reviewable software artifacts.
 
-### 11. Why use Git for detections?
+#### 11. Why use Git for detections?
 
 > It provides version control, collaboration, peer review, auditability, and rollback.
 
-### 12. How do you validate a detection?
+#### 12. How do you validate a detection?
 
 > Use positive and negative tests, historical data, attack simulation, threat hunting, or purple-team exercises.
 
-### 13. What is purple teaming?
+#### 13. What is purple teaming?
 
 > A collaborative process where offensive and defensive teams validate whether attacker behaviors are visible and detectable.
 
-### 14. What is the difference between severity and confidence?
+#### 14. What is the difference between severity and confidence?
 
 > Severity represents potential impact, while confidence represents how strongly the evidence indicates malicious activity.
 
-### 15. What makes a good detection?
+#### 15. What makes a good detection?
 
 > It should be accurate, actionable, tested, maintainable, performant, threat-relevant, and resilient to reasonable environmental changes.
 
 ---
 
-# 89. Quick Revision
+## 89. Quick Revision
 
 ```text
 Detection Engineering
@@ -2463,7 +2463,7 @@ Detection Lifecycle
 
 ---
 
-# 90. Golden Rules
+## 90. Golden Rules
 
 ```text
 1. Start with the threat, not the query.
@@ -2519,7 +2519,7 @@ Detection Lifecycle
 
 ---
 
-# 91. Final Takeaway
+## 91. Final Takeaway
 
 Detection engineering can be summarized as:
 
@@ -2553,7 +2553,7 @@ The most important mindset is:
 
 ---
 
-# 92. Chapter Summary
+## 92. Chapter Summary
 
 This chapter established the foundation for the rest of the Detection Engineering section.
 

@@ -1,12 +1,12 @@
 # 67-Resources.md
 
-# Part 1 — Essential Web Security Learning Resources, Documentation, Standards, Books, Labs, and Practice Platforms
+## Part 1 — Essential Web Security Learning Resources, Documentation, Standards, Books, Labs, and Practice Platforms
 
 > **"The best cybersecurity professionals are lifelong learners. Technologies evolve, threats change, and continuous learning is essential for maintaining secure systems."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will know where to find:
 
@@ -22,7 +22,7 @@ After completing this part, you will know where to find:
 
 ---
 
-# Why Learning Resources Matter
+## Why Learning Resources Matter
 
 Web Security changes continuously due to:
 
@@ -39,7 +39,7 @@ Continuous learning helps security professionals remain effective throughout the
 
 ---
 
-# Recommended Learning Path
+## Recommended Learning Path
 
 ```
 Fundamentals
@@ -79,7 +79,7 @@ Enterprise Security
 
 ---
 
-# Official Security Documentation
+## Official Security Documentation
 
 Always prioritize official documentation when learning.
 
@@ -103,7 +103,7 @@ Official Documentation
 
 ---
 
-# Security Standards
+## Security Standards
 
 Study major security standards including:
 
@@ -117,7 +117,7 @@ Study major security standards including:
 
 ---
 
-# Security Frameworks
+## Security Frameworks
 
 ```
 Security Frameworks
@@ -139,7 +139,7 @@ Security Frameworks
 
 ---
 
-# Programming Resources
+## Programming Resources
 
 A web security professional should understand:
 
@@ -167,7 +167,7 @@ Learning programming improves the ability to understand application behavior and
 
 ---
 
-# Networking Resources
+## Networking Resources
 
 Study topics such as:
 
@@ -197,7 +197,7 @@ Networking knowledge is fundamental to understanding web application communicati
 
 ---
 
-# Linux Learning
+## Linux Learning
 
 Important topics include:
 
@@ -225,7 +225,7 @@ Linux
 
 ---
 
-# Cloud Learning Areas
+## Cloud Learning Areas
 
 ```
 Cloud
@@ -253,7 +253,7 @@ Cloud knowledge is increasingly important for modern web applications.
 
 ---
 
-# DevSecOps Learning
+## DevSecOps Learning
 
 ```
 DevSecOps
@@ -279,7 +279,7 @@ DevSecOps
 
 ---
 
-# Secure Coding Resources
+## Secure Coding Resources
 
 Study:
 
@@ -307,7 +307,7 @@ Secure Coding
 
 ---
 
-# Practice Platforms
+## Practice Platforms
 
 Good learning platforms generally provide:
 
@@ -335,7 +335,7 @@ Always use authorized and intentionally designed learning environments.
 
 ---
 
-# Home Lab Ideas
+## Home Lab Ideas
 
 Create a defensive learning environment with:
 
@@ -365,7 +365,7 @@ The lab should be isolated and used only for authorized educational purposes.
 
 ---
 
-# Books Worth Studying
+## Books Worth Studying
 
 Focus on books covering:
 
@@ -382,7 +382,7 @@ Focus on books covering:
 
 ---
 
-# Documentation Habits
+## Documentation Habits
 
 Maintain notes for:
 
@@ -410,7 +410,7 @@ Good documentation reinforces long-term learning.
 
 ---
 
-# Research Skills
+## Research Skills
 
 Develop the ability to:
 
@@ -423,7 +423,7 @@ Develop the ability to:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A security engineer spends time each week:
 
@@ -440,7 +440,7 @@ This continuous learning approach improves both technical knowledge and practica
 
 ---
 
-# Weekly Learning Plan
+## Weekly Learning Plan
 
 ```
 Monday
@@ -492,7 +492,7 @@ Practice Labs & Review
 
 ---
 
-# Conceptual Hands-on Lab
+## Conceptual Hands-on Lab
 
 1. Design a personal learning roadmap covering networking, programming, web security, cloud security, and DevSecOps.
 2. Build a simple isolated home lab using virtual machines.
@@ -504,7 +504,7 @@ Practice Labs & Review
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Prioritize official documentation and recognized standards.
 - Learn concepts before tools.
@@ -517,7 +517,7 @@ Practice Labs & Review
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Learning tools without understanding underlying concepts.
 - Ignoring official documentation.
@@ -529,7 +529,7 @@ Practice Labs & Review
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Continuous learning is essential for every web security professional.
 - Strong foundations in networking, programming, Linux, cloud, and secure development support long-term growth.
@@ -537,15 +537,15 @@ Practice Labs & Review
 - Maintaining a structured knowledge base helps reinforce concepts.
 - Consistent, ethical, and authorized practice leads to lasting expertise.
 
-# 67-Resources.md
+## 67-Resources.md
 
-# Part 2 — Official Documentation, Security Standards, Cloud Resources, Development References, Communities, and Continuous Learning
+## Part 2 — Official Documentation, Security Standards, Cloud Resources, Development References, Communities, and Continuous Learning
 
 > **"Use official documentation as the primary source of truth. Community resources are valuable, but authoritative documentation should guide security decisions."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will know where to find:
 
@@ -560,7 +560,7 @@ After completing this part, you will know where to find:
 
 ---
 
-# Official Documentation Hierarchy
+## Official Documentation Hierarchy
 
 Always learn in the following order:
 
@@ -596,7 +596,7 @@ The higher the source in the hierarchy, the more authoritative it generally is.
 
 ---
 
-# Web Security Documentation
+## Web Security Documentation
 
 Study documentation covering:
 
@@ -626,7 +626,7 @@ Web Security
 
 ---
 
-# Programming Documentation
+## Programming Documentation
 
 Every web security engineer should regularly reference:
 
@@ -654,7 +654,7 @@ Understanding how technologies are intended to work is essential for designing s
 
 ---
 
-# Cloud Documentation
+## Cloud Documentation
 
 Study official documentation for topics such as:
 
@@ -684,7 +684,7 @@ Cloud providers frequently update guidance as new services become available.
 
 ---
 
-# Linux Documentation
+## Linux Documentation
 
 Focus on:
 
@@ -712,7 +712,7 @@ Linux
 
 ---
 
-# Version Control Resources
+## Version Control Resources
 
 Learn concepts such as:
 
@@ -740,7 +740,7 @@ Version control is an essential skill for both developers and security professio
 
 ---
 
-# Container Learning
+## Container Learning
 
 ```
 Containers
@@ -766,7 +766,7 @@ Containers
 
 ---
 
-# Kubernetes Learning
+## Kubernetes Learning
 
 ```
 Kubernetes
@@ -792,7 +792,7 @@ Kubernetes
 
 ---
 
-# DevSecOps Learning Areas
+## DevSecOps Learning Areas
 
 ```
 DevSecOps
@@ -818,7 +818,7 @@ DevSecOps
 
 ---
 
-# Security Communities
+## Security Communities
 
 Professional communities help you:
 
@@ -846,7 +846,7 @@ Always verify community advice against official documentation.
 
 ---
 
-# Security Conferences
+## Security Conferences
 
 Following conferences can help you stay informed about:
 
@@ -863,7 +863,7 @@ Conference presentations often highlight new research and emerging trends.
 
 ---
 
-# Research Papers
+## Research Papers
 
 Reading research papers improves understanding of:
 
@@ -893,7 +893,7 @@ Read abstracts and conclusions first to understand the paper's objectives and ou
 
 ---
 
-# Security News
+## Security News
 
 Follow trusted sources for updates on:
 
@@ -921,7 +921,7 @@ Avoid relying solely on headlines; review official advisories for complete conte
 
 ---
 
-# Documentation Strategy
+## Documentation Strategy
 
 Maintain documentation in categories such as:
 
@@ -949,7 +949,7 @@ Knowledge Repository
 
 ---
 
-# Learning Journal
+## Learning Journal
 
 Record after every study session:
 
@@ -964,7 +964,7 @@ Record after every study session:
 
 ---
 
-# Certification Preparation
+## Certification Preparation
 
 A balanced preparation plan includes:
 
@@ -1000,7 +1000,7 @@ Understand concepts thoroughly instead of memorizing answers.
 
 ---
 
-# Enterprise Learning Roadmap
+## Enterprise Learning Roadmap
 
 ```
 Networking
@@ -1046,7 +1046,7 @@ Learning should build progressively from fundamentals to advanced topics.
 
 ---
 
-# Personal Knowledge Base
+## Personal Knowledge Base
 
 Organize notes into folders such as:
 
@@ -1080,7 +1080,7 @@ Well-organized notes make revision faster and improve long-term retention.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A web security engineer allocates weekly learning time as follows:
 
@@ -1136,7 +1136,7 @@ This balanced approach develops both breadth and depth across core security doma
 
 ---
 
-# Study Techniques
+## Study Techniques
 
 ```
 Study
@@ -1162,7 +1162,7 @@ Teaching concepts to others is an effective way to reinforce understanding.
 
 ---
 
-# Conceptual Hands-on Lab
+## Conceptual Hands-on Lab
 
 1. Create a structured knowledge repository with sections for networking, Linux, cloud, web security, and secure development.
 2. Read official documentation for one technology you use regularly and summarize the key security recommendations.
@@ -1174,7 +1174,7 @@ Teaching concepts to others is an effective way to reinforce understanding.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Start with official standards and documentation.
 - Build strong fundamentals before specializing.
@@ -1187,7 +1187,7 @@ Teaching concepts to others is an effective way to reinforce understanding.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Depending entirely on unofficial tutorials.
 - Skipping documentation because it appears lengthy.
@@ -1199,7 +1199,7 @@ Teaching concepts to others is an effective way to reinforce understanding.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Official documentation and standards should form the foundation of your learning.
 - Strong fundamentals in programming, networking, Linux, cloud, and secure development support advanced web security knowledge.
@@ -1207,15 +1207,15 @@ Teaching concepts to others is an effective way to reinforce understanding.
 - Balance reading, hands-on practice, documentation, and review.
 - Continuous, disciplined learning is one of the most valuable skills for a cybersecurity professional.
 
-# 67-Resources.md
+## 67-Resources.md
 
-# Part 3 — Books, Certifications, Career Roadmap, Practice Strategy, Research, Documentation, and Enterprise Skill Development
+## Part 3 — Books, Certifications, Career Roadmap, Practice Strategy, Research, Documentation, and Enterprise Skill Development
 
 > **"A successful cybersecurity career is built on strong fundamentals, ethical practice, continuous learning, and the ability to adapt to evolving technologies."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will know:
 
@@ -1230,7 +1230,7 @@ After completing this part, you will know:
 
 ---
 
-# Long-Term Learning Roadmap
+## Long-Term Learning Roadmap
 
 ```
 Computer Science
@@ -1274,7 +1274,7 @@ Security Leadership
 
 ---
 
-# Knowledge Pyramid
+## Knowledge Pyramid
 
 ```
         Leadership
@@ -1305,7 +1305,7 @@ Strong fundamentals support every advanced security topic.
 
 ---
 
-# Recommended Book Categories
+## Recommended Book Categories
 
 Study books covering:
 
@@ -1337,7 +1337,7 @@ Books
 
 ---
 
-# Essential Knowledge Areas
+## Essential Knowledge Areas
 
 ```
 Core Knowledge
@@ -1365,7 +1365,7 @@ Core Knowledge
 
 ---
 
-# Certification Learning Path
+## Certification Learning Path
 
 ```
 Fundamentals
@@ -1407,7 +1407,7 @@ Certifications should reinforce practical knowledge rather than replace it.
 
 ---
 
-# Study Strategy
+## Study Strategy
 
 ```
 Read
@@ -1441,7 +1441,7 @@ Learning becomes more effective when concepts are repeatedly applied and explain
 
 ---
 
-# The 70-20-10 Learning Model
+## The 70-20-10 Learning Model
 
 ```
 70%
@@ -1467,7 +1467,7 @@ A balanced learning approach combines theory with practical experience and colla
 
 ---
 
-# Building a Personal Knowledge Base
+## Building a Personal Knowledge Base
 
 Organize your notes by topic:
 
@@ -1499,7 +1499,7 @@ Knowledge Base
 
 ---
 
-# Documentation Template
+## Documentation Template
 
 For every topic, record:
 
@@ -1515,7 +1515,7 @@ For every topic, record:
 
 ---
 
-# Research Workflow
+## Research Workflow
 
 ```
 Question
@@ -1549,7 +1549,7 @@ Always validate community advice against authoritative sources.
 
 ---
 
-# Reading Technical Papers
+## Reading Technical Papers
 
 When reading research papers:
 
@@ -1581,7 +1581,7 @@ Focus on understanding the problem being solved and the practical implications.
 
 ---
 
-# Skill Development Matrix
+## Skill Development Matrix
 
 | Skill Area | Beginner | Intermediate | Advanced |
 |------------|----------|--------------|----------|
@@ -1596,7 +1596,7 @@ Focus on understanding the problem being solved and the practical implications.
 
 ---
 
-# Enterprise Skills
+## Enterprise Skills
 
 Technical expertise alone is not enough.
 
@@ -1624,7 +1624,7 @@ Professional Skills
 
 ---
 
-# Building a Portfolio
+## Building a Portfolio
 
 A professional portfolio may include:
 
@@ -1654,7 +1654,7 @@ Focus on demonstrating understanding, documentation quality, and defensive secur
 
 ---
 
-# Career Growth Roadmap
+## Career Growth Roadmap
 
 ```
 Student
@@ -1692,7 +1692,7 @@ Career progression varies by organization and specialization.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A web security engineer creates an annual development plan:
 
@@ -1709,7 +1709,7 @@ This structured approach promotes continuous professional growth.
 
 ---
 
-# Weekly Learning Checklist
+## Weekly Learning Checklist
 
 ```
 ✓ Read Documentation
@@ -1731,7 +1731,7 @@ This structured approach promotes continuous professional growth.
 
 ---
 
-# Monthly Learning Checklist
+## Monthly Learning Checklist
 
 ```
 ✓ Complete One Major Topic
@@ -1753,7 +1753,7 @@ This structured approach promotes continuous professional growth.
 
 ---
 
-# Annual Learning Goals
+## Annual Learning Goals
 
 ```
 Knowledge Review
@@ -1785,7 +1785,7 @@ Continuous Improvement
 
 ---
 
-# Common Learning Mistakes
+## Common Learning Mistakes
 
 ```
 Mistakes
@@ -1811,7 +1811,7 @@ Mistakes
 
 ---
 
-# Enterprise Learning Cycle
+## Enterprise Learning Cycle
 
 ```
 Learn
@@ -1845,7 +1845,7 @@ Organizations benefit when employees continuously improve and share knowledge re
 
 ---
 
-# Conceptual Hands-on Lab
+## Conceptual Hands-on Lab
 
 1. Create a one-year cybersecurity learning roadmap with quarterly goals.
 2. Build a structured knowledge base for all major security domains.
@@ -1857,7 +1857,7 @@ Organizations benefit when employees continuously improve and share knowledge re
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Build strong fundamentals before specializing.
 - Learn from official documentation and recognized standards.
@@ -1870,7 +1870,7 @@ Organizations benefit when employees continuously improve and share knowledge re
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Pursuing certifications without understanding concepts.
 - Ignoring documentation and relying solely on videos.
@@ -1882,7 +1882,7 @@ Organizations benefit when employees continuously improve and share knowledge re
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Long-term success in web security requires continuous, structured learning.
 - Strong foundations in networking, programming, Linux, cloud, and secure development support advanced topics.
@@ -1890,15 +1890,15 @@ Organizations benefit when employees continuously improve and share knowledge re
 - Documentation, communication, and collaboration are essential professional skills.
 - A disciplined learning roadmap helps transform knowledge into expertise.
 
-# 67-Resources.md
+## 67-Resources.md
 
-# Part 4 — Final Resources, Enterprise Learning Strategy, Reference Checklists, Quick Revision, and Chapter Summary
+## Part 4 — Final Resources, Enterprise Learning Strategy, Reference Checklists, Quick Revision, and Chapter Summary
 
 > **"Technology changes rapidly, but strong fundamentals, ethical behavior, and continuous learning remain the foundation of every successful cybersecurity career."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1913,7 +1913,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Continuous Learning Cycle
+## Continuous Learning Cycle
 
 ```
 Learn
@@ -1947,7 +1947,7 @@ This cycle helps transform information into long-term professional expertise.
 
 ---
 
-# Enterprise Learning Strategy
+## Enterprise Learning Strategy
 
 ```
 Security Standards
@@ -1985,7 +1985,7 @@ Enterprise learning should support both technical skills and business objectives
 
 ---
 
-# Knowledge Management Framework
+## Knowledge Management Framework
 
 ```
 Knowledge
@@ -2013,7 +2013,7 @@ A structured knowledge repository improves productivity and simplifies revision.
 
 ---
 
-# Documentation Checklist
+## Documentation Checklist
 
 Maintain documentation for:
 
@@ -2037,7 +2037,7 @@ Maintain documentation for:
 
 ---
 
-# Professional Networking
+## Professional Networking
 
 Networking with professionals helps you:
 
@@ -2065,7 +2065,7 @@ Professional networking should always be respectful, ethical, and focused on lea
 
 ---
 
-# Learning Resources by Career Stage
+## Learning Resources by Career Stage
 
 | Career Stage | Primary Focus |
 |--------------|---------------|
@@ -2077,7 +2077,7 @@ Professional networking should always be respectful, ethical, and focused on lea
 
 ---
 
-# Weekly Improvement Framework
+## Weekly Improvement Framework
 
 ```
 Read
@@ -2107,7 +2107,7 @@ Even a few hours of focused study each week can lead to significant long-term pr
 
 ---
 
-# Building Enterprise Experience
+## Building Enterprise Experience
 
 Develop experience through:
 
@@ -2137,7 +2137,7 @@ Experience is built gradually through consistent learning and practical applicat
 
 ---
 
-# Security Research Workflow
+## Security Research Workflow
 
 ```
 Question
@@ -2171,7 +2171,7 @@ Always perform practical activities only in environments where you have explicit
 
 ---
 
-# Personal Portfolio Checklist
+## Personal Portfolio Checklist
 
 ```
 ✓ Resume
@@ -2195,7 +2195,7 @@ A well-documented portfolio demonstrates both technical ability and professional
 
 ---
 
-# Professional Reading Checklist
+## Professional Reading Checklist
 
 Review topics regularly:
 
@@ -2237,7 +2237,7 @@ Governance
 
 ---
 
-# Enterprise Security Skill Matrix
+## Enterprise Security Skill Matrix
 
 | Domain | Importance |
 |---------|------------|
@@ -2256,7 +2256,7 @@ Governance
 
 ---
 
-# Personal Development Plan
+## Personal Development Plan
 
 ```
 Current Skills
@@ -2290,7 +2290,7 @@ Reassess your skills periodically to keep your learning aligned with your career
 
 ---
 
-# Long-Term Learning Principles
+## Long-Term Learning Principles
 
 ```
 Professional Growth
@@ -2316,7 +2316,7 @@ Professional Growth
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A security engineer follows a structured annual improvement plan:
 
@@ -2362,7 +2362,7 @@ Each quarter includes:
 
 ---
 
-# Complete Web Security Learning Roadmap
+## Complete Web Security Learning Roadmap
 
 ```
 Computer Science
@@ -2454,7 +2454,7 @@ Continuous Improvement
 
 ---
 
-# Final Revision Checklist
+## Final Revision Checklist
 
 ```
 ✓ Networking Fundamentals
@@ -2498,7 +2498,7 @@ Continuous Improvement
 
 ---
 
-# Conceptual Hands-on Lab
+## Conceptual Hands-on Lab
 
 1. Build a personal cybersecurity roadmap covering the next 12 months.
 2. Organize your notes into a searchable knowledge repository.
@@ -2510,7 +2510,7 @@ Continuous Improvement
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Learn concepts before focusing on specific tools.
 - Rely on official documentation and recognized standards.
@@ -2523,7 +2523,7 @@ Continuous Improvement
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Chasing every new technology without mastering fundamentals.
 - Treating certifications as a substitute for practical understanding.
@@ -2535,7 +2535,7 @@ Continuous Improvement
 
 ---
 
-# Final Resources Summary
+## Final Resources Summary
 
 This chapter introduced a structured approach to building and maintaining Web Security knowledge through:
 
@@ -2552,7 +2552,7 @@ These resources are intended to support long-term professional growth rather tha
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Throughout the **Web Security** folder, you have studied:
 

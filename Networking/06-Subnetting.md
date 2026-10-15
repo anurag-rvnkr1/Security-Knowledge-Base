@@ -1,10 +1,10 @@
 # 06 - Subnetting
 
-# Part 1 — Subnetting Fundamentals, Binary Mathematics, CIDR, and Network Design Principles
+## Part 1 — Subnetting Fundamentals, Binary Mathematics, CIDR, and Network Design Principles
 
 ---
 
-# Overview
+## Overview
 
 Subnetting is one of the most important concepts in networking.
 
@@ -24,7 +24,7 @@ Whether you are configuring routers, designing enterprise networks, securing clo
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you should be able to:
 
@@ -39,7 +39,7 @@ After completing this chapter, you should be able to:
 
 ---
 
-# What is a Subnet?
+## What is a Subnet?
 
 A **subnet** (subnetwork) is a logical division of a larger IP network into smaller networks.
 
@@ -65,7 +65,7 @@ Each subnet functions as an independent Layer 3 network.
 
 ---
 
-# Why Do We Need Subnetting?
+## Why Do We Need Subnetting?
 
 Imagine an organization with 5,000 employees using a single network.
 
@@ -121,7 +121,7 @@ Benefits:
 
 ---
 
-# What is a Broadcast Domain?
+## What is a Broadcast Domain?
 
 A **broadcast domain** is the set of devices that receive Layer 2 broadcast traffic.
 
@@ -165,9 +165,9 @@ Each subnet creates a separate broadcast domain when connected through Layer 3 r
 
 ---
 
-# Benefits of Subnetting
+## Benefits of Subnetting
 
-### Security
+#### Security
 
 Different departments can be isolated.
 
@@ -187,7 +187,7 @@ Finance Servers
 
 ---
 
-### Performance
+#### Performance
 
 Broadcast traffic remains within each subnet.
 
@@ -201,25 +201,25 @@ Less Network Congestion
 
 ---
 
-### Scalability
+#### Scalability
 
 Organizations can grow without redesigning the entire network.
 
 ---
 
-### Easier Troubleshooting
+#### Easier Troubleshooting
 
 Problems can be isolated to individual subnets.
 
 ---
 
-### Better Routing
+#### Better Routing
 
 Routers forward traffic more efficiently when networks are logically organized.
 
 ---
 
-# IPv4 Address Review
+## IPv4 Address Review
 
 IPv4 consists of:
 
@@ -253,7 +253,7 @@ Each octet contains:
 
 ---
 
-# Network Portion vs Host Portion
+## Network Portion vs Host Portion
 
 Example:
 
@@ -277,7 +277,7 @@ The subnet mask determines where the network portion ends and the host portion b
 
 ---
 
-# Binary Refresher
+## Binary Refresher
 
 Each octet consists of:
 
@@ -310,7 +310,7 @@ Understanding binary is essential for manual subnet calculations.
 
 ---
 
-# What is a Subnet Mask?
+## What is a Subnet Mask?
 
 A **subnet mask** identifies which bits belong to the **network** and which belong to the **host**.
 
@@ -348,7 +348,7 @@ Host
 
 ---
 
-# CIDR Notation
+## CIDR Notation
 
 CIDR stands for:
 
@@ -386,7 +386,7 @@ CIDR allows flexible network sizing instead of relying on traditional address cl
 
 ---
 
-# How CIDR Works
+## How CIDR Works
 
 Example:
 
@@ -414,7 +414,7 @@ The remaining 8 bits identify individual hosts.
 
 ---
 
-# Network Address
+## Network Address
 
 The **network address** identifies the subnet itself.
 
@@ -430,7 +430,7 @@ This address **cannot** be assigned to a host.
 
 ---
 
-# Broadcast Address
+## Broadcast Address
 
 The **broadcast address** is the highest address in the subnet.
 
@@ -444,7 +444,7 @@ Packets sent to this address are delivered to all hosts within the subnet.
 
 ---
 
-# Usable Host Addresses
+## Usable Host Addresses
 
 For:
 
@@ -478,7 +478,7 @@ Reserved addresses:
 
 ---
 
-# Host Calculation Formula
+## Host Calculation Formula
 
 The number of usable hosts is calculated as:
 
@@ -507,7 +507,7 @@ Examples:
 
 ---
 
-# Borrowing Bits
+## Borrowing Bits
 
 Subnetting works by borrowing bits from the host portion.
 
@@ -544,7 +544,7 @@ Each borrowed bit:
 
 ---
 
-# Subnet Calculation Example
+## Subnet Calculation Example
 
 Original:
 
@@ -582,7 +582,7 @@ Each subnet provides:
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Corporate Office
@@ -610,7 +610,7 @@ Advantages:
 
 ---
 
-# Common Subnetting Mistakes
+## Common Subnetting Mistakes
 
 | Mistake | Result |
 |----------|--------|
@@ -623,7 +623,7 @@ Advantages:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper subnetting enables:
 
@@ -638,7 +638,7 @@ Poor subnet design increases operational complexity and can introduce performanc
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Subnetting divides a large network into smaller logical networks.
 - CIDR provides flexible address allocation by using prefix lengths.
@@ -646,13 +646,13 @@ Poor subnet design increases operational complexity and can introduce performanc
 - Borrowing host bits creates additional subnets while reducing hosts per subnet.
 - Thoughtful subnet planning is essential for secure, scalable, and manageable enterprise networks.
 
-# 06 - Subnetting
+## 06 - Subnetting
 
-# Part 2 — Manual Subnet Calculations, Magic Number Method, Binary Subnetting, and Interview Techniques
+## Part 2 — Manual Subnet Calculations, Magic Number Method, Binary Subnetting, and Interview Techniques
 
 ---
 
-# Overview
+## Overview
 
 One of the most frequently tested networking skills in technical interviews is **manual subnet calculation**.
 
@@ -670,7 +670,7 @@ This section explains:
 
 ---
 
-# Steps for Manual Subnetting
+## Steps for Manual Subnetting
 
 Whenever you receive an IP address and subnet mask, answer these questions:
 
@@ -698,7 +698,7 @@ Following the same process every time helps avoid mistakes.
 
 ---
 
-# Example
+## Example
 
 ```
 IP Address
@@ -719,7 +719,7 @@ Our objective is to determine:
 
 ---
 
-# CIDR to Subnet Mask
+## CIDR to Subnet Mask
 
 A prefix length represents the number of network bits.
 
@@ -737,7 +737,7 @@ Always convert the CIDR prefix into its subnet mask before calculating.
 
 ---
 
-# Binary View of /26
+## Binary View of /26
 
 Subnet mask:
 
@@ -769,7 +769,7 @@ Meaning:
 
 ---
 
-# Host Calculation
+## Host Calculation
 
 Formula:
 
@@ -805,7 +805,7 @@ Calculation:
 
 ---
 
-# Number of Subnets
+## Number of Subnets
 
 Formula:
 
@@ -845,7 +845,7 @@ Calculation:
 
 ---
 
-# The Magic Number Method
+## The Magic Number Method
 
 The **Magic Number** (also called the block size) is the fastest manual subnetting technique.
 
@@ -885,7 +885,7 @@ Therefore, subnet boundaries occur every:
 
 ---
 
-# Example — /26
+## Example — /26
 
 Magic number:
 
@@ -919,7 +919,7 @@ Resulting networks:
 
 ---
 
-# Finding the Correct Subnet
+## Finding the Correct Subnet
 
 Given:
 
@@ -965,7 +965,7 @@ Network:
 
 ---
 
-# Broadcast Address
+## Broadcast Address
 
 Broadcast is always:
 
@@ -989,7 +989,7 @@ Broadcast:
 
 ---
 
-# First Host
+## First Host
 
 ```
 Network
@@ -1007,7 +1007,7 @@ Result:
 
 ---
 
-# Last Host
+## Last Host
 
 ```
 Broadcast
@@ -1023,7 +1023,7 @@ Result:
 
 ---
 
-# Final Answer
+## Final Answer
 
 Given:
 
@@ -1041,7 +1041,7 @@ Given:
 
 ---
 
-# Worked Example — /25
+## Worked Example — /25
 
 Given:
 
@@ -1097,7 +1097,7 @@ Results:
 
 ---
 
-# Worked Example — /27
+## Worked Example — /27
 
 Given:
 
@@ -1165,7 +1165,7 @@ Results:
 
 ---
 
-# Worked Example — /28
+## Worked Example — /28
 
 Given:
 
@@ -1237,7 +1237,7 @@ Results:
 
 ---
 
-# Worked Example — /29
+## Worked Example — /29
 
 Magic number:
 
@@ -1278,7 +1278,7 @@ Results:
 
 ---
 
-# Worked Example — /30
+## Worked Example — /30
 
 Subnet mask:
 
@@ -1330,7 +1330,7 @@ Common use:
 
 ---
 
-# Special Prefix — /31
+## Special Prefix — /31
 
 According to **RFC 3021**, `/31` networks can be used for point-to-point links.
 
@@ -1354,7 +1354,7 @@ Example:
 
 ---
 
-# Special Prefix — /32
+## Special Prefix — /32
 
 A `/32` identifies a **single host**.
 
@@ -1373,7 +1373,7 @@ Common uses:
 
 ---
 
-# Quick Reference Table
+## Quick Reference Table
 
 | Prefix | Hosts | Block Size |
 |---------|------:|-----------:|
@@ -1389,7 +1389,7 @@ Common uses:
 
 ---
 
-# Fast Interview Shortcut
+## Fast Interview Shortcut
 
 Instead of converting every address to binary:
 
@@ -1407,7 +1407,7 @@ This method is widely used by experienced network engineers and is often suffici
 
 ---
 
-# Common Interview Mistakes
+## Common Interview Mistakes
 
 | Mistake | Result |
 |----------|--------|
@@ -1419,9 +1419,9 @@ This method is widely used by experienced network engineers and is often suffici
 
 ---
 
-# Practice Questions
+## Practice Questions
 
-### Question 1
+#### Question 1
 
 ```
 192.168.20.170/27
@@ -1436,7 +1436,7 @@ Find:
 
 ---
 
-### Question 2
+#### Question 2
 
 ```
 10.10.15.90/28
@@ -1450,7 +1450,7 @@ Calculate:
 
 ---
 
-### Question 3
+#### Question 3
 
 ```
 172.20.30.101/26
@@ -1466,7 +1466,7 @@ Determine:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Manual subnetting follows a repeatable five-step process.
 - The **Magic Number (Block Size)** method is faster than binary conversion for most interview scenarios.
@@ -1475,13 +1475,13 @@ Determine:
 - First and last usable hosts are immediately after the network address and immediately before the broadcast address.
 - `/31` and `/32` have specialized purposes and are important for enterprise routing and security.
 
-# 06 - Subnetting
+## 06 - Subnetting
 
-# Part 3 — Variable Length Subnet Masking (VLSM), Route Summarization, Longest Prefix Match, and Enterprise Network Design
+## Part 3 — Variable Length Subnet Masking (VLSM), Route Summarization, Longest Prefix Match, and Enterprise Network Design
 
 ---
 
-# Overview
+## Overview
 
 In real-world enterprise environments, not every network requires the same number of IP addresses.
 
@@ -1497,7 +1497,7 @@ To solve this problem, organizations use **Variable Length Subnet Masking (VLSM)
 
 ---
 
-# What is VLSM?
+## What is VLSM?
 
 **Variable Length Subnet Masking (VLSM)** is the practice of assigning different subnet sizes to different networks based on their actual host requirements.
 
@@ -1537,7 +1537,7 @@ Each subnet is sized according to the number of devices it must support.
 
 ---
 
-# Why Do We Need VLSM?
+## Why Do We Need VLSM?
 
 Consider an organization with four departments:
 
@@ -1563,7 +1563,7 @@ VLSM minimizes this waste.
 
 ---
 
-# VLSM Design Process
+## VLSM Design Process
 
 A common design approach is:
 
@@ -1591,7 +1591,7 @@ Allocating the largest networks first reduces fragmentation and simplifies futur
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Available network:
 
@@ -1611,7 +1611,7 @@ Requirements:
 
 ---
 
-# Step 1 — Largest Requirement
+## Step 1 — Largest Requirement
 
 HR needs:
 
@@ -1645,7 +1645,7 @@ Host range:
 
 ---
 
-# Step 2 — IT
+## Step 2 — IT
 
 Remaining space begins at:
 
@@ -1675,7 +1675,7 @@ Assignment:
 
 ---
 
-# Step 3 — Servers
+## Step 3 — Servers
 
 Requirement:
 
@@ -1699,7 +1699,7 @@ Assignment:
 
 ---
 
-# Step 4 — Printers
+## Step 4 — Printers
 
 Requirement:
 
@@ -1723,7 +1723,7 @@ Assignment:
 
 ---
 
-# Step 5 — WAN Link
+## Step 5 — WAN Link
 
 Requirement:
 
@@ -1749,7 +1749,7 @@ Remaining address space can be reserved for future expansion or additional infra
 
 ---
 
-# Final VLSM Plan
+## Final VLSM Plan
 
 | Network | Prefix | Host Capacity |
 |----------|--------|--------------:|
@@ -1763,7 +1763,7 @@ This approach uses address space efficiently while allowing room for growth.
 
 ---
 
-# Advantages of VLSM
+## Advantages of VLSM
 
 - Efficient IPv4 utilization
 - Smaller routing tables
@@ -1774,7 +1774,7 @@ This approach uses address space efficiently while allowing room for growth.
 
 ---
 
-# Disadvantages
+## Disadvantages
 
 - More planning required
 - Increased configuration complexity
@@ -1783,7 +1783,7 @@ This approach uses address space efficiently while allowing room for growth.
 
 ---
 
-# What is Route Summarization?
+## What is Route Summarization?
 
 Route Summarization (also called **Route Aggregation** or **Supernetting**) combines multiple contiguous networks into a single summarized route.
 
@@ -1809,7 +1809,7 @@ This reduces routing table size and improves routing efficiency.
 
 ---
 
-# Benefits of Route Summarization
+## Benefits of Route Summarization
 
 - Smaller routing tables
 - Faster route lookup
@@ -1822,7 +1822,7 @@ These benefits are especially important in large enterprise and service provider
 
 ---
 
-# Supernetting Example
+## Supernetting Example
 
 Individual routes:
 
@@ -1846,7 +1846,7 @@ A summarized route should only be created when the component networks are contig
 
 ---
 
-# Longest Prefix Match (LPM)
+## Longest Prefix Match (LPM)
 
 Routers use the **Longest Prefix Match** rule when multiple routes match the destination.
 
@@ -1888,7 +1888,7 @@ because it has the **longest matching prefix**.
 
 ---
 
-# Why Longest Prefix Match Matters
+## Why Longest Prefix Match Matters
 
 Without LPM, routers could forward packets to less specific routes, resulting in inefficient or incorrect paths.
 
@@ -1896,7 +1896,7 @@ LPM ensures traffic follows the most precise routing information available.
 
 ---
 
-# Enterprise Routing Example
+## Enterprise Routing Example
 
 ```
                      Core Router
@@ -1912,13 +1912,13 @@ Each summarized route represents multiple smaller departmental subnets.
 
 ---
 
-# Cloud Subnetting
+## Cloud Subnetting
 
 Cloud providers also rely on subnetting for workload isolation.
 
 ---
 
-## AWS Example
+### AWS Example
 
 ```
 VPC
@@ -1950,7 +1950,7 @@ Private subnets typically host:
 
 ---
 
-## Azure Example
+### Azure Example
 
 ```
 Virtual Network
@@ -1972,7 +1972,7 @@ Azure reserves certain IP addresses within every subnet for platform use.
 
 ---
 
-## Google Cloud Example
+### Google Cloud Example
 
 ```
 VPC
@@ -1994,7 +1994,7 @@ Google Cloud uses regional subnets that can span multiple availability zones wit
 
 ---
 
-# Enterprise Design Best Practices
+## Enterprise Design Best Practices
 
 - Allocate addresses hierarchically.
 - Reserve space for future growth.
@@ -2006,7 +2006,7 @@ Google Cloud uses regional subnets that can span multiple availability zones wit
 
 ---
 
-# Common VLSM Mistakes
+## Common VLSM Mistakes
 
 | Mistake | Result |
 |----------|--------|
@@ -2018,7 +2018,7 @@ Google Cloud uses regional subnets that can span multiple availability zones wit
 
 ---
 
-# Practice Scenario
+## Practice Scenario
 
 Available network:
 
@@ -2045,7 +2045,7 @@ Exercise:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - VLSM allocates subnet sizes based on actual host requirements, reducing IPv4 address waste.
 - Plan from the largest network to the smallest to simplify allocation and future expansion.
@@ -2054,13 +2054,13 @@ Exercise:
 - Cloud platforms such as AWS, Azure, and Google Cloud rely heavily on subnetting for network segmentation and security.
 - Proper VLSM design and route summarization improve scalability, performance, and operational efficiency in enterprise environments.
 
-# 06 - Subnetting
+## 06 - Subnetting
 
-# Part 4 — Enterprise Design, Troubleshooting, Practical Labs, Wireshark Analysis, Interview Questions, and Chapter Review
+## Part 4 — Enterprise Design, Troubleshooting, Practical Labs, Wireshark Analysis, Interview Questions, and Chapter Review
 
 ---
 
-# Overview
+## Overview
 
 Subnetting is not only a mathematical exercise—it is a core component of enterprise network architecture.
 
@@ -2079,7 +2079,7 @@ This section focuses on applying subnetting concepts in real-world enterprise en
 
 ---
 
-# Enterprise Subnet Design Principles
+## Enterprise Subnet Design Principles
 
 When designing subnets, organizations should consider:
 
@@ -2096,7 +2096,7 @@ Avoid designing solely for today's needs; reserve address space for expansion.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Corporate network:
 
@@ -2127,7 +2127,7 @@ Benefits:
 
 ---
 
-# Security Segmentation
+## Security Segmentation
 
 Subnetting supports network segmentation.
 
@@ -2157,7 +2157,7 @@ Traffic between these networks can be controlled using:
 
 ---
 
-# High Availability Design
+## High Availability Design
 
 Large enterprises often deploy redundant network paths.
 
@@ -2180,7 +2180,7 @@ Subnet planning should align with:
 
 ---
 
-# Common Subnetting Problems
+## Common Subnetting Problems
 
 | Problem | Description |
 |----------|-------------|
@@ -2194,7 +2194,7 @@ Subnet planning should align with:
 
 ---
 
-# Troubleshooting Workflow
+## Troubleshooting Workflow
 
 When diagnosing subnet-related issues:
 
@@ -2234,15 +2234,15 @@ Always verify lower-layer connectivity before investigating higher-layer issues.
 
 ---
 
-# Example Troubleshooting Scenario
+## Example Troubleshooting Scenario
 
-### Problem
+#### Problem
 
 A workstation cannot communicate with another workstation in the same office.
 
 ---
 
-### Step 1
+#### Step 1
 
 Check IP configuration.
 
@@ -2260,7 +2260,7 @@ Result:
 
 ---
 
-### Step 2
+#### Step 2
 
 Check the second workstation.
 
@@ -2276,19 +2276,19 @@ The devices are on different subnets.
 
 ---
 
-### Root Cause
+#### Root Cause
 
 Incorrect IP assignment.
 
 ---
 
-### Resolution
+#### Resolution
 
 Assign the correct subnet or ensure routing exists between the networks.
 
 ---
 
-# Wireshark Analysis
+## Wireshark Analysis
 
 Capture ICMP traffic between two hosts.
 
@@ -2322,7 +2322,7 @@ If ARP requests are repeated without replies, investigate local Layer 2 connecti
 
 ---
 
-# Cisco IOS Verification
+## Cisco IOS Verification
 
 Display interface information:
 
@@ -2358,7 +2358,7 @@ Useful observations:
 
 ---
 
-# Linux Verification
+## Linux Verification
 
 Display addresses:
 
@@ -2392,7 +2392,7 @@ traceroute 8.8.8.8
 
 ---
 
-# Windows Verification
+## Windows Verification
 
 Display configuration:
 
@@ -2420,9 +2420,9 @@ tracert 8.8.8.8
 
 ---
 
-# Cloud Subnet Verification
+## Cloud Subnet Verification
 
-## AWS
+### AWS
 
 Useful checks:
 
@@ -2450,7 +2450,7 @@ Private Subnet
 
 ---
 
-## Azure
+### Azure
 
 Verify:
 
@@ -2462,7 +2462,7 @@ Verify:
 
 ---
 
-## Google Cloud
+### Google Cloud
 
 Verify:
 
@@ -2474,7 +2474,7 @@ Verify:
 
 ---
 
-# Practical Lab 1 — Determine Subnet Information
+## Practical Lab 1 — Determine Subnet Information
 
 Given:
 
@@ -2494,7 +2494,7 @@ Verify your results using a trusted subnet calculator after solving manually.
 
 ---
 
-# Practical Lab 2 — VLSM Design
+## Practical Lab 2 — VLSM Design
 
 Available network:
 
@@ -2521,7 +2521,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — Routing Verification
+## Practical Lab 3 — Routing Verification
 
 Build two subnets:
 
@@ -2541,9 +2541,9 @@ Verify:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A company acquires another organization.
 
@@ -2561,7 +2561,7 @@ Company B
 10.10.0.0/16
 ```
 
-### Problem
+#### Problem
 
 The address ranges overlap.
 
@@ -2572,7 +2572,7 @@ Consequences:
 - Application failures
 - Difficult integration
 
-### Solution Options
+#### Solution Options
 
 - Renumber one network
 - Introduce temporary NAT during migration
@@ -2581,7 +2581,7 @@ Consequences:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use hierarchical addressing.
 - Plan for future expansion.
@@ -2595,57 +2595,57 @@ Consequences:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is subnetting?
+#### What is subnetting?
 
 Subnetting is the process of dividing a larger IP network into smaller logical networks to improve efficiency, security, and manageability.
 
 ---
 
-### What is a subnet mask?
+#### What is a subnet mask?
 
 A subnet mask identifies the network and host portions of an IP address.
 
 ---
 
-### Why is subnetting important?
+#### Why is subnetting important?
 
 It reduces broadcast domains, improves security, optimizes address usage, and simplifies routing and troubleshooting.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is CIDR?
+#### What is CIDR?
 
 Classless Inter-Domain Routing (CIDR) uses prefix lengths (for example, `/24`) instead of fixed address classes, allowing flexible subnet allocation.
 
 ---
 
-### Explain VLSM.
+#### Explain VLSM.
 
 Variable Length Subnet Masking allocates different subnet sizes according to actual host requirements, reducing IPv4 address waste.
 
 ---
 
-### What is route summarization?
+#### What is route summarization?
 
 Route summarization combines contiguous networks into a single aggregated route, reducing routing table size and improving scalability.
 
 ---
 
-## Advanced
+### Advanced
 
-### Explain Longest Prefix Match.
+#### Explain Longest Prefix Match.
 
 When multiple routes match a destination, routers select the route with the longest matching network prefix because it is the most specific.
 
 ---
 
-### How would you design a network for multiple departments?
+#### How would you design a network for multiple departments?
 
 A strong answer should include:
 
@@ -2660,7 +2660,7 @@ A strong answer should include:
 
 ---
 
-### How would you troubleshoot a subnetting issue?
+#### How would you troubleshoot a subnetting issue?
 
 A structured response should include:
 
@@ -2674,16 +2674,16 @@ A structured response should include:
 
 ---
 
-# References
+## References
 
-## Standards
+### Standards
 
 - RFC 950 — Internet Standard Subnetting Procedure
 - RFC 1519 — CIDR
 - RFC 3021 — Using 31-Bit Prefixes on IPv4 Point-to-Point Links
 - RFC 4632 — CIDR Address Strategy
 
-## Organizations
+### Organizations
 
 - IANA
 - ICANN
@@ -2693,7 +2693,7 @@ A structured response should include:
 - AFRINIC
 - LACNIC
 
-## Security Guidance
+### Security Guidance
 
 - NIST SP 800-41
 - NIST SP 800-53
@@ -2701,13 +2701,13 @@ A structured response should include:
 
 ---
 
-# Summary
+## Summary
 
 Subnetting enables efficient use of IP address space while improving network performance, scalability, and security. CIDR provides flexible subnet allocation, VLSM minimizes address waste, and route summarization reduces routing complexity. Successful enterprise subnet design requires careful planning, accurate documentation, and ongoing management through IPAM and monitoring tools.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -2743,7 +2743,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`07-Routing.md`**, will build on these concepts and cover:
 

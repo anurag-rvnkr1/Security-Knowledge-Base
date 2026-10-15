@@ -1,10 +1,10 @@
 # 02 - Linux Installation
 
-# Part 1 — Installation Overview, System Requirements, Installation Methods, Choosing a Distribution, BIOS vs UEFI, and Preparing Installation Media
+## Part 1 — Installation Overview, System Requirements, Installation Methods, Choosing a Distribution, BIOS vs UEFI, and Preparing Installation Media
 
 ---
 
-# Introduction
+## Introduction
 
 Installing Linux is the first practical step toward becoming a Linux administrator, cybersecurity professional, cloud engineer, or DevOps engineer.
 
@@ -14,7 +14,7 @@ Understanding the different installation methods, firmware interfaces, and stora
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -28,7 +28,7 @@ After completing this section, you will be able to:
 
 ---
 
-# Installation Workflow
+## Installation Workflow
 
 A typical Linux installation follows these stages:
 
@@ -67,7 +67,7 @@ Each stage contributes to a successful and secure deployment.
 
 ---
 
-# What is an ISO Image?
+## What is an ISO Image?
 
 An **ISO image** is a complete archive of an operating system installation disc.
 
@@ -92,7 +92,7 @@ kali-linux-2026.2-installer-amd64.iso
 
 ---
 
-# Why Verify ISO Integrity?
+## Why Verify ISO Integrity?
 
 Before installing Linux, verify that the downloaded ISO image has not been corrupted or tampered with.
 
@@ -115,7 +115,7 @@ Compare the output with the checksum provided by the distribution's official web
 
 ---
 
-# Choosing the Right Linux Distribution
+## Choosing the Right Linux Distribution
 
 Different distributions are optimized for different purposes.
 
@@ -136,7 +136,7 @@ Choose a distribution that aligns with your learning goals or organizational req
 
 ---
 
-# Recommended Distributions by Role
+## Recommended Distributions by Role
 
 | Role | Recommended Distribution |
 |------|---------------------------|
@@ -151,7 +151,7 @@ Choose a distribution that aligns with your learning goals or organizational req
 
 ---
 
-# Hardware Requirements
+## Hardware Requirements
 
 Hardware requirements vary depending on the distribution and intended workload.
 
@@ -176,11 +176,11 @@ Recommended for learning in a virtual machine:
 
 ---
 
-# Installation Methods
+## Installation Methods
 
 Linux can be installed using several approaches.
 
-## Physical Installation
+### Physical Installation
 
 Linux is installed directly onto a computer's internal storage.
 
@@ -198,7 +198,7 @@ Common use cases:
 
 ---
 
-## Virtual Machine Installation
+### Virtual Machine Installation
 
 Linux runs as a guest operating system within virtualization software.
 
@@ -220,7 +220,7 @@ Widely used in cybersecurity training and labs.
 
 ---
 
-## Dual Boot
+### Dual Boot
 
 Linux and another operating system (such as Windows) are installed on the same computer.
 
@@ -238,7 +238,7 @@ Considerations:
 
 ---
 
-## Windows Subsystem for Linux (WSL)
+### Windows Subsystem for Linux (WSL)
 
 WSL allows Linux user-space environments to run directly on Windows without a traditional virtual machine.
 
@@ -253,7 +253,7 @@ WSL is particularly useful for developers and students but is not a full replace
 
 ---
 
-## Cloud Installation
+### Cloud Installation
 
 Linux instances can be launched in cloud environments.
 
@@ -275,7 +275,7 @@ Cloud deployments are common in enterprise environments.
 
 ---
 
-# Comparing Installation Methods
+## Comparing Installation Methods
 
 | Method | Performance | Isolation | Typical Use |
 |---------|-------------|-----------|-------------|
@@ -287,7 +287,7 @@ Cloud deployments are common in enterprise environments.
 
 ---
 
-# BIOS
+## BIOS
 
 The **Basic Input/Output System (BIOS)** is legacy firmware that initializes hardware during system startup.
 
@@ -306,7 +306,7 @@ Characteristics:
 
 ---
 
-# UEFI
+## UEFI
 
 The **Unified Extensible Firmware Interface (UEFI)** is the modern replacement for BIOS.
 
@@ -323,7 +323,7 @@ Most modern systems ship with UEFI firmware enabled by default.
 
 ---
 
-# BIOS vs UEFI
+## BIOS vs UEFI
 
 | Feature | BIOS | UEFI |
 |----------|------|------|
@@ -336,7 +336,7 @@ Most modern systems ship with UEFI firmware enabled by default.
 
 ---
 
-# Secure Boot
+## Secure Boot
 
 Secure Boot is a UEFI feature that helps prevent unauthorized bootloaders and operating systems from loading during startup.
 
@@ -350,7 +350,7 @@ Some Linux distributions support Secure Boot out of the box, while others may re
 
 ---
 
-# MBR vs GPT
+## MBR vs GPT
 
 Storage devices use partition tables to organize disk partitions.
 
@@ -365,7 +365,7 @@ GPT is recommended for modern systems.
 
 ---
 
-# Downloading Linux
+## Downloading Linux
 
 Always download installation images from official distribution websites.
 
@@ -378,7 +378,7 @@ General recommendations:
 
 ---
 
-# Creating Bootable Installation Media
+## Creating Bootable Installation Media
 
 A bootable USB drive allows a system to start the Linux installer.
 
@@ -396,7 +396,7 @@ Typical USB size:
 
 ---
 
-# Preparing for Installation
+## Preparing for Installation
 
 Before beginning installation:
 
@@ -411,7 +411,7 @@ Before beginning installation:
 
 ---
 
-# Enterprise Deployment Considerations
+## Enterprise Deployment Considerations
 
 Enterprise Linux deployments often involve:
 
@@ -428,7 +428,7 @@ Automation tools help ensure consistency across large fleets of systems.
 
 ---
 
-# Business Impact
+## Business Impact
 
 A well-planned installation process helps organizations:
 
@@ -441,7 +441,7 @@ A well-planned installation process helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use supported Long-Term Support (LTS) or enterprise releases.
 - Verify installation media before deployment.
@@ -453,7 +453,7 @@ A well-planned installation process helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux can be installed on physical hardware, virtual machines, cloud platforms, WSL, or dual-boot systems.
 - Choosing the right distribution depends on your use case and organizational requirements.
@@ -464,11 +464,11 @@ A well-planned installation process helps organizations:
 ---
 
 
-# Part 2 — Virtual Machines, VirtualBox, VMware, Hyper-V, KVM, Windows Subsystem for Linux (WSL), Cloud Instances, and Enterprise Deployment Methods
+## Part 2 — Virtual Machines, VirtualBox, VMware, Hyper-V, KVM, Windows Subsystem for Linux (WSL), Cloud Instances, and Enterprise Deployment Methods
 
 ---
 
-# Introduction
+## Introduction
 
 Most Linux professionals do **not** begin by installing Linux directly on their primary computer. Instead, they use **virtualization** to safely create isolated Linux environments.
 
@@ -487,7 +487,7 @@ Enterprise organizations also rely heavily on virtualization to maximize hardwar
 
 ---
 
-# What is Virtualization?
+## What is Virtualization?
 
 Virtualization is the process of creating a **virtual version of a physical computer**.
 
@@ -504,7 +504,7 @@ The guest operating system (Linux) believes it is running on a real computer.
 
 ---
 
-# Virtualization Architecture
+## Virtualization Architecture
 
 ```text
 +----------------------------------------------------+
@@ -526,7 +526,7 @@ The guest operating system (Linux) believes it is running on a real computer.
 
 ---
 
-# Advantages of Virtual Machines
+## Advantages of Virtual Machines
 
 Virtual machines provide several benefits.
 
@@ -540,7 +540,7 @@ Virtual machines provide several benefits.
 
 ---
 
-# Virtual Machine Terminology
+## Virtual Machine Terminology
 
 | Term | Description |
 |------|-------------|
@@ -553,7 +553,7 @@ Virtual machines provide several benefits.
 
 ---
 
-# What is a Hypervisor?
+## What is a Hypervisor?
 
 A **hypervisor** manages virtual machines by allocating hardware resources such as CPU, memory, storage, and networking.
 
@@ -561,7 +561,7 @@ There are two main categories of hypervisors.
 
 ---
 
-# Type 1 Hypervisor (Bare Metal)
+## Type 1 Hypervisor (Bare Metal)
 
 Runs directly on physical hardware.
 
@@ -581,7 +581,7 @@ Advantages:
 
 ---
 
-# Type 2 Hypervisor (Hosted)
+## Type 2 Hypervisor (Hosted)
 
 Runs as an application on top of an existing operating system.
 
@@ -600,7 +600,7 @@ Advantages:
 
 ---
 
-# Type 1 vs Type 2 Hypervisors
+## Type 1 vs Type 2 Hypervisors
 
 | Feature | Type 1 | Type 2 |
 |----------|--------|--------|
@@ -612,7 +612,7 @@ Advantages:
 
 ---
 
-# Oracle VirtualBox
+## Oracle VirtualBox
 
 VirtualBox is a free and open-source Type 2 hypervisor developed by Oracle.
 
@@ -635,7 +635,7 @@ VirtualBox is one of the most popular tools for students and cybersecurity labs.
 
 ---
 
-# Creating a Virtual Machine in VirtualBox
+## Creating a Virtual Machine in VirtualBox
 
 Typical workflow:
 
@@ -663,7 +663,7 @@ Start Installation
 
 ---
 
-# Recommended VirtualBox Resources
+## Recommended VirtualBox Resources
 
 | Resource | Recommended |
 |----------|-------------|
@@ -675,7 +675,7 @@ Start Installation
 
 ---
 
-# VMware Workstation
+## VMware Workstation
 
 VMware Workstation is a commercial Type 2 hypervisor widely used by professionals.
 
@@ -693,7 +693,7 @@ It is commonly used in enterprise development and cybersecurity environments.
 
 ---
 
-# VirtualBox vs VMware
+## VirtualBox vs VMware
 
 | Feature | VirtualBox | VMware Workstation |
 |----------|------------|-------------------|
@@ -706,7 +706,7 @@ It is commonly used in enterprise development and cybersecurity environments.
 
 ---
 
-# Microsoft Hyper-V
+## Microsoft Hyper-V
 
 Hyper-V is Microsoft's built-in virtualization platform available on supported Windows editions.
 
@@ -722,7 +722,7 @@ Hyper-V is frequently used in Windows-based enterprise environments.
 
 ---
 
-# KVM (Kernel-based Virtual Machine)
+## KVM (Kernel-based Virtual Machine)
 
 KVM is a Type 1 hypervisor built directly into the Linux kernel.
 
@@ -738,7 +738,7 @@ Many cloud providers and enterprise data centers use KVM.
 
 ---
 
-# Comparing Popular Virtualization Platforms
+## Comparing Popular Virtualization Platforms
 
 | Platform | Host OS | Type | Enterprise Use |
 |----------|----------|------|----------------|
@@ -749,7 +749,7 @@ Many cloud providers and enterprise data centers use KVM.
 
 ---
 
-# Snapshots
+## Snapshots
 
 A snapshot captures the current state of a virtual machine.
 
@@ -770,7 +770,7 @@ Snapshots are heavily used in cybersecurity training.
 
 ---
 
-# Cloning
+## Cloning
 
 A clone is a copy of an existing virtual machine.
 
@@ -787,7 +787,7 @@ Advantages:
 
 ---
 
-# Virtual Networking
+## Virtual Networking
 
 Virtual machines support multiple network configurations.
 
@@ -804,7 +804,7 @@ Choose the mode based on the lab or production requirements.
 
 ---
 
-# Windows Subsystem for Linux (WSL)
+## Windows Subsystem for Linux (WSL)
 
 WSL allows Linux user-space environments to run directly on Windows.
 
@@ -820,7 +820,7 @@ WSL is convenient for learning basic Linux commands and development workflows.
 
 ---
 
-# WSL 1 vs WSL 2
+## WSL 1 vs WSL 2
 
 | Feature | WSL 1 | WSL 2 |
 |----------|-------|-------|
@@ -833,7 +833,7 @@ WSL 2 is recommended for most modern development use cases.
 
 ---
 
-# Cloud Linux Instances
+## Cloud Linux Instances
 
 Cloud providers make it possible to launch Linux servers in minutes.
 
@@ -868,7 +868,7 @@ Cloud instances are ideal for learning cloud administration and practicing remot
 
 ---
 
-# Common Enterprise Deployment Methods
+## Common Enterprise Deployment Methods
 
 Organizations deploy Linux using several approaches.
 
@@ -884,7 +884,7 @@ Automation improves consistency and reduces deployment time.
 
 ---
 
-# Golden Images
+## Golden Images
 
 A **golden image** is a preconfigured operating system image that includes:
 
@@ -903,7 +903,7 @@ Benefits:
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Infrastructure as Code automates the provisioning of servers and infrastructure.
 
@@ -918,7 +918,7 @@ These tools help deploy Linux systems consistently across on-premises and cloud 
 
 ---
 
-# Enterprise Deployment Workflow
+## Enterprise Deployment Workflow
 
 ```text
 Standard Image
@@ -941,7 +941,7 @@ Production Deployment
 
 ---
 
-# Business Impact
+## Business Impact
 
 Virtualization and automated deployment provide organizations with:
 
@@ -955,7 +955,7 @@ Virtualization and automated deployment provide organizations with:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use virtualization for learning and testing.
 - Allocate adequate CPU, memory, and storage to VMs.
@@ -968,7 +968,7 @@ Virtualization and automated deployment provide organizations with:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Virtualization allows Linux to run safely alongside other operating systems.
 - Hypervisors manage virtual hardware and guest operating systems.
@@ -980,11 +980,11 @@ Virtualization and automated deployment provide organizations with:
 ---
 
 
-# Part 3 — Installing Linux in VirtualBox & VMware, Disk Partitioning, Filesystem Selection, LVM, Swap, and Step-by-Step Installation Walkthrough
+## Part 3 — Installing Linux in VirtualBox & VMware, Disk Partitioning, Filesystem Selection, LVM, Swap, and Step-by-Step Installation Walkthrough
 
 ---
 
-# Introduction
+## Introduction
 
 After selecting a Linux distribution and understanding virtualization platforms, the next step is installing Linux.
 
@@ -1000,7 +1000,7 @@ Understanding what happens during installation helps administrators:
 
 ---
 
-# Linux Installation Workflow
+## Linux Installation Workflow
 
 ```text
 Download ISO
@@ -1041,9 +1041,9 @@ Reboot
 
 ---
 
-# Installing Linux in VirtualBox
+## Installing Linux in VirtualBox
 
-## Step 1 — Create a New Virtual Machine
+### Step 1 — Create a New Virtual Machine
 
 Open VirtualBox and select:
 
@@ -1061,7 +1061,7 @@ Provide:
 
 ---
 
-## Step 2 — Allocate Memory
+### Step 2 — Allocate Memory
 
 Recommended RAM:
 
@@ -1076,7 +1076,7 @@ Never allocate all available RAM to the VM.
 
 ---
 
-## Step 3 — Configure CPU
+### Step 3 — Configure CPU
 
 Recommended allocation:
 
@@ -1090,7 +1090,7 @@ Avoid assigning every CPU core to a single VM.
 
 ---
 
-## Step 4 — Create Virtual Hard Disk
+### Step 4 — Create Virtual Hard Disk
 
 Choose:
 
@@ -1115,7 +1115,7 @@ Recommended sizes:
 
 ---
 
-## Step 5 — Attach Linux ISO
+### Step 5 — Attach Linux ISO
 
 Navigate to:
 
@@ -1139,7 +1139,7 @@ Select the downloaded Linux ISO.
 
 ---
 
-## Step 6 — Configure Networking
+### Step 6 — Configure Networking
 
 Default:
 
@@ -1157,7 +1157,7 @@ Choose based on whether the VM needs to appear directly on the physical network.
 
 ---
 
-# Installing Linux in VMware
+## Installing Linux in VMware
 
 VMware installation is very similar.
 
@@ -1199,7 +1199,7 @@ VMware often detects Linux distributions automatically and suggests optimized se
 
 ---
 
-# Booting the Installer
+## Booting the Installer
 
 After powering on the VM:
 
@@ -1224,7 +1224,7 @@ Some distributions provide:
 
 ---
 
-# Language Selection
+## Language Selection
 
 Choose the preferred installation language.
 
@@ -1242,7 +1242,7 @@ The selected language determines:
 
 ---
 
-# Keyboard Layout
+## Keyboard Layout
 
 Examples:
 
@@ -1262,7 +1262,7 @@ Test the layout before continuing to avoid password entry issues later.
 
 ---
 
-# Time Zone
+## Time Zone
 
 Choose:
 
@@ -1280,7 +1280,7 @@ Servers often use **UTC** to simplify log correlation across multiple regions.
 
 ---
 
-# Network Configuration
+## Network Configuration
 
 Options include:
 
@@ -1294,7 +1294,7 @@ Enterprise servers commonly use static IP addresses, while desktop systems typic
 
 ---
 
-# Hostname
+## Hostname
 
 The hostname identifies the machine on a network.
 
@@ -1316,7 +1316,7 @@ Enterprise naming conventions usually reflect the server's role or location.
 
 ---
 
-# Creating Users
+## Creating Users
 
 Most installers create:
 
@@ -1339,7 +1339,7 @@ Use strong, unique passwords for all accounts.
 
 ---
 
-# Disk Partitioning
+## Disk Partitioning
 
 Disk partitioning divides a storage device into logical sections.
 
@@ -1365,7 +1365,7 @@ Each partition serves a specific purpose.
 
 ---
 
-# Automatic Partitioning
+## Automatic Partitioning
 
 Recommended for beginners.
 
@@ -1379,7 +1379,7 @@ Advantages:
 
 ---
 
-# Manual Partitioning
+## Manual Partitioning
 
 Recommended for:
 
@@ -1396,7 +1396,7 @@ Advantages:
 
 ---
 
-# Typical Linux Partition Layout
+## Typical Linux Partition Layout
 
 ```text
 Disk
@@ -1412,7 +1412,7 @@ Large enterprise deployments may also use dedicated partitions for `/tmp`, `/opt
 
 ---
 
-# EFI System Partition (ESP)
+## EFI System Partition (ESP)
 
 Purpose:
 
@@ -1439,7 +1439,7 @@ Mount point:
 
 ---
 
-# Root Partition
+## Root Partition
 
 Mount point:
 
@@ -1465,7 +1465,7 @@ Recommended sizes:
 
 ---
 
-# Home Partition
+## Home Partition
 
 Mount point:
 
@@ -1485,7 +1485,7 @@ Separating `/home` simplifies OS reinstalls while preserving user data.
 
 ---
 
-# Swap Partition
+## Swap Partition
 
 Swap extends virtual memory by using disk space when RAM is exhausted.
 
@@ -1508,7 +1508,7 @@ Modern systems with ample RAM often require only modest swap space.
 
 ---
 
-# What is LVM?
+## What is LVM?
 
 **Logical Volume Manager (LVM)** provides flexible storage management by abstracting physical storage into logical volumes.
 
@@ -1521,7 +1521,7 @@ Advantages:
 
 ---
 
-# LVM Architecture
+## LVM Architecture
 
 ```text
 Physical Disk
@@ -1545,7 +1545,7 @@ Filesystem
 
 ---
 
-# Benefits of LVM
+## Benefits of LVM
 
 - Online volume expansion
 - Flexible storage allocation
@@ -1557,7 +1557,7 @@ LVM is widely used in enterprise Linux environments.
 
 ---
 
-# Choosing a Filesystem
+## Choosing a Filesystem
 
 The filesystem determines how data is stored and retrieved.
 
@@ -1573,7 +1573,7 @@ Common options:
 
 ---
 
-# ext4
+## ext4
 
 Features:
 
@@ -1590,7 +1590,7 @@ Best suited for:
 
 ---
 
-# XFS
+## XFS
 
 Features:
 
@@ -1603,7 +1603,7 @@ Often the default filesystem for enterprise distributions such as Red Hat Enterp
 
 ---
 
-# Btrfs
+## Btrfs
 
 Features:
 
@@ -1617,7 +1617,7 @@ Suitable for systems requiring advanced storage features.
 
 ---
 
-# Installation Summary
+## Installation Summary
 
 Before installation begins, the installer typically displays a summary of:
 
@@ -1633,7 +1633,7 @@ Review this information carefully before proceeding.
 
 ---
 
-# Installing the Operating System
+## Installing the Operating System
 
 The installer then:
 
@@ -1648,7 +1648,7 @@ Installation time varies based on hardware performance and the selected software
 
 ---
 
-# Reboot
+## Reboot
 
 After installation:
 
@@ -1664,7 +1664,7 @@ Remove the installation ISO if prompted to prevent booting back into the install
 
 ---
 
-# First Boot
+## First Boot
 
 On the first boot, you should see:
 
@@ -1688,7 +1688,7 @@ The system is now ready for post-installation configuration.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper partitioning and filesystem selection improve:
 
@@ -1701,7 +1701,7 @@ Proper partitioning and filesystem selection improve:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use GPT with UEFI on modern hardware.
 - Allocate separate partitions for critical data where appropriate (for example, `/home`, `/var`, or application data).
@@ -1713,7 +1713,7 @@ Proper partitioning and filesystem selection improve:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Installing Linux in VirtualBox and VMware follows a similar workflow.
 - Automatic partitioning is suitable for beginners, while manual partitioning offers greater control.
@@ -1723,11 +1723,11 @@ Proper partitioning and filesystem selection improve:
 
 ---
 
-# Part 4 — Post-Installation Configuration, Package Updates, User Management, SSH Setup, Essential Software, Enterprise Hardening, Practical Labs, Summary, Interview Questions, and References
+## Part 4 — Post-Installation Configuration, Package Updates, User Management, SSH Setup, Essential Software, Enterprise Hardening, Practical Labs, Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 Installing Linux is only the beginning. A freshly installed system should **never** be considered production-ready.
 
@@ -1745,7 +1745,7 @@ These steps help create a secure, stable, and maintainable Linux environment.
 
 ---
 
-# First Login
+## First Login
 
 After rebooting, log in using the account created during installation.
 
@@ -1760,7 +1760,7 @@ Verify the system is functioning correctly before making additional changes.
 
 ---
 
-# Verify System Information
+## Verify System Information
 
 Check the currently running kernel:
 
@@ -1782,7 +1782,7 @@ uname -a
 
 ---
 
-# Check Linux Distribution
+## Check Linux Distribution
 
 Display distribution details:
 
@@ -1801,7 +1801,7 @@ VERSION="24.04 LTS"
 
 ---
 
-# Verify Hostname
+## Verify Hostname
 
 Display hostname:
 
@@ -1829,7 +1829,7 @@ hostnamectl
 
 ---
 
-# Verify Date and Time
+## Verify Date and Time
 
 Check current time:
 
@@ -1855,7 +1855,7 @@ Accurate time is critical for:
 
 ---
 
-# Update Package Repository
+## Update Package Repository
 
 Ubuntu/Debian:
 
@@ -1873,7 +1873,7 @@ Updating package metadata ensures the system knows about the latest available so
 
 ---
 
-# Upgrade Installed Packages
+## Upgrade Installed Packages
 
 Ubuntu:
 
@@ -1898,7 +1898,7 @@ Always update a newly installed system before using it.
 
 ---
 
-# Install Essential Packages
+## Install Essential Packages
 
 Examples:
 
@@ -1932,7 +1932,7 @@ These utilities are commonly required for administration and troubleshooting.
 
 ---
 
-# Verify Network Connectivity
+## Verify Network Connectivity
 
 Test internet connectivity:
 
@@ -1950,7 +1950,7 @@ Successful replies confirm basic network connectivity.
 
 ---
 
-# Check IP Address
+## Check IP Address
 
 Modern command:
 
@@ -1972,7 +1972,7 @@ Example output:
 
 ---
 
-# Check Default Gateway
+## Check Default Gateway
 
 ```bash
 ip route
@@ -1986,7 +1986,7 @@ default via 192.168.1.1
 
 ---
 
-# Verify DNS Resolution
+## Verify DNS Resolution
 
 ```bash
 dig openai.com
@@ -2002,7 +2002,7 @@ Proper DNS resolution is essential for package updates, cloud services, and inte
 
 ---
 
-# Create Additional Users
+## Create Additional Users
 
 Example:
 
@@ -2024,7 +2024,7 @@ sudo passwd analyst
 
 ---
 
-# Grant Administrative Privileges
+## Grant Administrative Privileges
 
 Ubuntu:
 
@@ -2042,7 +2042,7 @@ Always follow the principle of least privilege.
 
 ---
 
-# Verify Groups
+## Verify Groups
 
 ```bash
 groups analyst
@@ -2056,7 +2056,7 @@ analyst sudo
 
 ---
 
-# Configure SSH
+## Configure SSH
 
 Install OpenSSH Server (if not already installed):
 
@@ -2086,7 +2086,7 @@ sudo systemctl status ssh
 
 ---
 
-# Test Remote Access
+## Test Remote Access
 
 From another Linux system:
 
@@ -2102,7 +2102,7 @@ ssh anurag@192.168.1.50
 
 ---
 
-# Generate SSH Keys
+## Generate SSH Keys
 
 Generate a modern ED25519 key pair:
 
@@ -2121,7 +2121,7 @@ Public keys can be added to `~/.ssh/authorized_keys` on remote systems for passw
 
 ---
 
-# Configure Firewall
+## Configure Firewall
 
 Ubuntu (UFW):
 
@@ -2157,7 +2157,7 @@ sudo firewall-cmd --reload
 
 ---
 
-# Enable Automatic Security Updates
+## Enable Automatic Security Updates
 
 Ubuntu:
 
@@ -2171,7 +2171,7 @@ In enterprise environments, updates should follow established testing and change
 
 ---
 
-# Configure Swap (If Required)
+## Configure Swap (If Required)
 
 Display swap usage:
 
@@ -2189,7 +2189,7 @@ If no swap is configured and workloads require it, create a swap file following 
 
 ---
 
-# Install Development Tools
+## Install Development Tools
 
 Common packages:
 
@@ -2211,7 +2211,7 @@ Useful for:
 
 ---
 
-# Install Monitoring Tools
+## Install Monitoring Tools
 
 Examples:
 
@@ -2233,7 +2233,7 @@ These utilities help analyze:
 
 ---
 
-# Configure Log Rotation
+## Configure Log Rotation
 
 Most distributions include `logrotate` by default.
 
@@ -2251,7 +2251,7 @@ Log rotation helps:
 
 ---
 
-# Backup Important Configuration Files
+## Backup Important Configuration Files
 
 Examples:
 
@@ -2266,7 +2266,7 @@ Configuration backups simplify disaster recovery and change rollback.
 
 ---
 
-# Enterprise Hardening Checklist
+## Enterprise Hardening Checklist
 
 Recommended actions after installation:
 
@@ -2285,7 +2285,7 @@ Recommended actions after installation:
 
 ---
 
-# Enterprise Deployment Workflow
+## Enterprise Deployment Workflow
 
 ```text
 Install Linux
@@ -2317,7 +2317,7 @@ Production Ready
 
 ---
 
-# Practical Lab 1 — Update the System
+## Practical Lab 1 — Update the System
 
 Commands:
 
@@ -2333,7 +2333,7 @@ Objective:
 
 ---
 
-# Practical Lab 2 — Create a User
+## Practical Lab 2 — Create a User
 
 Commands:
 
@@ -2349,7 +2349,7 @@ Objective:
 
 ---
 
-# Practical Lab 3 — Enable SSH
+## Practical Lab 3 — Enable SSH
 
 Commands:
 
@@ -2365,7 +2365,7 @@ Objective:
 
 ---
 
-# Practical Lab 4 — Verify Networking
+## Practical Lab 4 — Verify Networking
 
 Commands:
 
@@ -2381,7 +2381,7 @@ Objective:
 
 ---
 
-# Practical Lab 5 — Configure the Firewall
+## Practical Lab 5 — Configure the Firewall
 
 Ubuntu:
 
@@ -2397,7 +2397,7 @@ Objective:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2417,9 +2417,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is an ISO image?
 2. What is the purpose of UEFI?
@@ -2434,7 +2434,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Compare VirtualBox and VMware Workstation.
 2. Explain NAT and Bridged networking.
@@ -2449,7 +2449,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. How would you standardize Linux deployments across hundreds of servers?
 2. When would you choose XFS over ext4?
@@ -2464,7 +2464,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Installation is only the first stage of the Linux lifecycle.
 - Updating packages and configuring secure access are essential post-installation tasks.
@@ -2474,9 +2474,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - Ubuntu Documentation
 - Debian Documentation
@@ -2486,7 +2486,7 @@ In this chapter, you learned:
 - Fedora Documentation
 - Linux Foundation Documentation
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - NIST SP 800 Series
 - CIS Linux Benchmarks
@@ -2496,7 +2496,7 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **03-Linux-Architecture.md**
 

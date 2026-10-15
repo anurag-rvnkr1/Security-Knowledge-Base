@@ -1,12 +1,12 @@
 # 08-Reverse-Proxies-and-Load-Balancers.md
 
-# Part 1 — Introduction to Reverse Proxies, Forward Proxies, Load Balancers, Architecture, Request Flow, and Enterprise Fundamentals
+## Part 1 — Introduction to Reverse Proxies, Forward Proxies, Load Balancers, Architecture, Request Flow, and Enterprise Fundamentals
 
 > **"Reverse proxies and load balancers sit between users and applications. They improve security, scalability, availability, and performance while hiding backend infrastructure from the Internet."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -24,7 +24,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 A user visiting a website rarely communicates directly with the application server.
 
@@ -67,7 +67,7 @@ In modern enterprise environments:
 
 ---
 
-# What is a Proxy?
+## What is a Proxy?
 
 A **Proxy** is an intermediary that receives requests and forwards them to another system.
 
@@ -92,7 +92,7 @@ There are two major categories:
 
 ---
 
-# Proxy Types
+## Proxy Types
 
 ```
                     Proxy
@@ -106,7 +106,7 @@ Although both forward requests, they serve different purposes.
 
 ---
 
-# What is a Forward Proxy?
+## What is a Forward Proxy?
 
 A **Forward Proxy** represents the client.
 
@@ -130,7 +130,7 @@ The destination website primarily sees the proxy rather than the original client
 
 ---
 
-# Forward Proxy Responsibilities
+## Forward Proxy Responsibilities
 
 - Hide client identity
 - Filter outbound traffic
@@ -141,7 +141,7 @@ The destination website primarily sees the proxy rather than the original client
 
 ---
 
-# Enterprise Forward Proxy Example
+## Enterprise Forward Proxy Example
 
 ```
 Employees
@@ -168,7 +168,7 @@ Typical use cases:
 
 ---
 
-# Forward Proxy Benefits
+## Forward Proxy Benefits
 
 - Internet filtering
 - Malware blocking
@@ -179,7 +179,7 @@ Typical use cases:
 
 ---
 
-# What is a Reverse Proxy?
+## What is a Reverse Proxy?
 
 A **Reverse Proxy** represents the server.
 
@@ -199,7 +199,7 @@ Clients never communicate directly with backend servers.
 
 ---
 
-# Reverse Proxy Responsibilities
+## Reverse Proxy Responsibilities
 
 A reverse proxy commonly performs:
 
@@ -215,7 +215,7 @@ A reverse proxy commonly performs:
 
 ---
 
-# Reverse Proxy Architecture
+## Reverse Proxy Architecture
 
 ```
 Internet
@@ -237,7 +237,7 @@ The reverse proxy decides which backend server should process each request.
 
 ---
 
-# Client Perspective
+## Client Perspective
 
 From the client's viewpoint:
 
@@ -261,7 +261,7 @@ The client usually does not know:
 
 ---
 
-# Backend Perspective
+## Backend Perspective
 
 Backend servers trust the reverse proxy as the entry point.
 
@@ -281,7 +281,7 @@ This simplifies security and traffic management.
 
 ---
 
-# Reverse Proxy Request Flow
+## Reverse Proxy Request Flow
 
 ```
 Browser
@@ -319,7 +319,7 @@ Every request passes through the proxy first.
 
 ---
 
-# Reverse Proxy vs Forward Proxy
+## Reverse Proxy vs Forward Proxy
 
 | Forward Proxy | Reverse Proxy |
 |---------------|---------------|
@@ -331,7 +331,7 @@ Every request passes through the proxy first.
 
 ---
 
-# Why Organizations Use Reverse Proxies
+## Why Organizations Use Reverse Proxies
 
 Reasons include:
 
@@ -345,7 +345,7 @@ Reasons include:
 
 ---
 
-# What is a Load Balancer?
+## What is a Load Balancer?
 
 A **Load Balancer** distributes client requests across multiple backend servers.
 
@@ -365,7 +365,7 @@ Instead of sending all traffic to one server, requests are shared.
 
 ---
 
-# Why Load Balancing?
+## Why Load Balancing?
 
 Without a load balancer:
 
@@ -403,7 +403,7 @@ Traffic is distributed, reducing overload.
 
 ---
 
-# Basic Load Balancer Architecture
+## Basic Load Balancer Architecture
 
 ```
                  Users
@@ -423,7 +423,7 @@ Traffic is distributed, reducing overload.
 
 ---
 
-# Reverse Proxy and Load Balancer Together
+## Reverse Proxy and Load Balancer Together
 
 In many environments, one product performs both roles.
 
@@ -447,7 +447,7 @@ Products such as Nginx, HAProxy, and cloud-managed services often provide both c
 
 ---
 
-# Reverse Proxy Advantages
+## Reverse Proxy Advantages
 
 | Feature | Benefit |
 |----------|----------|
@@ -461,7 +461,7 @@ Products such as Nginx, HAProxy, and cloud-managed services often provide both c
 
 ---
 
-# Load Balancer Advantages
+## Load Balancer Advantages
 
 | Feature | Benefit |
 |----------|----------|
@@ -474,7 +474,7 @@ Products such as Nginx, HAProxy, and cloud-managed services often provide both c
 
 ---
 
-# Enterprise Deployment
+## Enterprise Deployment
 
 ```
 Internet
@@ -504,7 +504,7 @@ Each layer has a specific responsibility.
 
 ---
 
-# Reverse Proxy Security
+## Reverse Proxy Security
 
 The reverse proxy is often the first application-layer defense.
 
@@ -519,7 +519,7 @@ Responsibilities include:
 
 ---
 
-# Backend Isolation
+## Backend Isolation
 
 Instead of exposing:
 
@@ -549,7 +549,7 @@ Backend servers remain on private networks.
 
 ---
 
-# Reverse Proxy and TLS
+## Reverse Proxy and TLS
 
 Instead of every backend server managing certificates:
 
@@ -577,7 +577,7 @@ The reverse proxy commonly handles TLS termination, though some environments als
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A banking application serves millions of users.
 
@@ -619,7 +619,7 @@ Benefits:
 
 ---
 
-# Real-World Products
+## Real-World Products
 
 Common reverse proxy and load balancing solutions include:
 
@@ -636,7 +636,7 @@ Cloud providers also offer managed load balancing services.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using Nginx or HAProxy in a lab:
 
@@ -648,7 +648,7 @@ Using Nginx or HAProxy in a lab:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a proxy?
 2. What is the difference between a forward proxy and a reverse proxy?
@@ -663,7 +663,7 @@ Using Nginx or HAProxy in a lab:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Keep backend servers on private networks.
 - Terminate TLS using modern configurations.
@@ -675,7 +675,7 @@ Using Nginx or HAProxy in a lab:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Exposing backend application servers directly.
 - Trusting client-supplied headers without validation.
@@ -686,7 +686,7 @@ Using Nginx or HAProxy in a lab:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - A proxy is an intermediary between communicating systems.
 - Forward proxies represent clients, while reverse proxies represent servers.
@@ -1757,15 +1757,15 @@ Using **Nginx** or **HAProxy**:
 - TLS termination, connection pooling, and Keep-Alive significantly improve performance and simplify enterprise operations.
 
 ```
-# 08-Reverse-Proxies-and-Load-Balancers.md
+## 08-Reverse-Proxies-and-Load-Balancers.md
 
-# Part 3 — Advanced Reverse Proxy Features, Web Application Firewall (WAF), Rate Limiting, Caching, Compression, Header Management, API Gateway, and Enterprise Security
+## Part 3 — Advanced Reverse Proxy Features, Web Application Firewall (WAF), Rate Limiting, Caching, Compression, Header Management, API Gateway, and Enterprise Security
 
 > **"Modern reverse proxies are no longer simple request forwarders. They have evolved into intelligent edge gateways capable of enforcing security policies, accelerating applications, protecting APIs, and providing centralized observability for enterprise environments."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1785,7 +1785,7 @@ After completing this part, you will understand:
 
 ---
 
-# Evolution of Reverse Proxies
+## Evolution of Reverse Proxies
 
 Initially, reverse proxies only forwarded requests.
 
@@ -1815,7 +1815,7 @@ Modern reverse proxies provide:
 
 ---
 
-# Enterprise Reverse Proxy Architecture
+## Enterprise Reverse Proxy Architecture
 
 ```
                  Internet
@@ -1851,7 +1851,7 @@ Modern reverse proxies provide:
 
 ---
 
-# Request Filtering
+## Request Filtering
 
 Reverse proxies inspect requests before forwarding them.
 
@@ -1887,7 +1887,7 @@ Filtering reduces unnecessary traffic reaching backend applications.
 
 ---
 
-# Common Filtering Rules
+## Common Filtering Rules
 
 Requests may be evaluated based on:
 
@@ -1902,7 +1902,7 @@ Requests may be evaluated based on:
 
 ---
 
-# Header Manipulation
+## Header Manipulation
 
 Reverse proxies can modify request and response headers.
 
@@ -1931,7 +1931,7 @@ Common use cases:
 
 ---
 
-# Common Headers Added by Reverse Proxies
+## Common Headers Added by Reverse Proxies
 
 | Header | Purpose |
 |---------|----------|
@@ -1943,7 +1943,7 @@ Common use cases:
 
 ---
 
-# X-Forwarded-For
+## X-Forwarded-For
 
 Without a reverse proxy:
 
@@ -1978,7 +1978,7 @@ The backend can identify the original client.
 
 ---
 
-# Important Security Note
+## Important Security Note
 
 Applications should **not blindly trust** forwarding headers.
 
@@ -1998,7 +1998,7 @@ Only trusted reverse proxies should be permitted to set forwarding headers.
 
 ---
 
-# Response Header Management
+## Response Header Management
 
 Reverse proxies can improve security by modifying responses.
 
@@ -2028,7 +2028,7 @@ Browser
 
 ---
 
-# Web Application Firewall (WAF)
+## Web Application Firewall (WAF)
 
 A WAF filters HTTP and HTTPS traffic before it reaches applications.
 
@@ -2050,7 +2050,7 @@ Application
 
 ---
 
-# WAF Responsibilities
+## WAF Responsibilities
 
 A Web Application Firewall can:
 
@@ -2063,7 +2063,7 @@ A Web Application Firewall can:
 
 ---
 
-# WAF Processing Flow
+## WAF Processing Flow
 
 ```
 Incoming Request
@@ -2095,7 +2095,7 @@ Forward Request
 
 ---
 
-# WAF vs Traditional Firewall
+## WAF vs Traditional Firewall
 
 | Network Firewall | Web Application Firewall |
 |------------------|--------------------------|
@@ -2106,7 +2106,7 @@ Forward Request
 
 ---
 
-# Rate Limiting
+## Rate Limiting
 
 Rate limiting restricts excessive requests.
 
@@ -2128,7 +2128,7 @@ Allowed Limit = 20
 
 ---
 
-# Why Rate Limiting?
+## Why Rate Limiting?
 
 It helps protect against:
 
@@ -2140,7 +2140,7 @@ It helps protect against:
 
 ---
 
-# Rate Limiting Strategies
+## Rate Limiting Strategies
 
 Common strategies:
 
@@ -2153,7 +2153,7 @@ Common strategies:
 
 ---
 
-# Rate Limiting Flow
+## Rate Limiting Flow
 
 ```
 Request
@@ -2185,7 +2185,7 @@ Continue
 
 ---
 
-# Request Size Limiting
+## Request Size Limiting
 
 Large requests may consume excessive resources.
 
@@ -2218,7 +2218,7 @@ Typical limits apply to:
 
 ---
 
-# Connection Limiting
+## Connection Limiting
 
 Instead of limiting requests:
 
@@ -2238,7 +2238,7 @@ Connection limits help mitigate connection exhaustion attacks.
 
 ---
 
-# Request Timeout
+## Request Timeout
 
 Long-running connections consume server resources.
 
@@ -2266,7 +2266,7 @@ Proper timeout values improve resilience.
 
 ---
 
-# Caching
+## Caching
 
 Reverse proxies often cache static and semi-static responses.
 
@@ -2304,7 +2304,7 @@ Cache
 
 ---
 
-# Benefits of Caching
+## Benefits of Caching
 
 - Lower latency
 - Reduced backend load
@@ -2314,7 +2314,7 @@ Cache
 
 ---
 
-# Cacheable Content
+## Cacheable Content
 
 Typically cached:
 
@@ -2329,7 +2329,7 @@ Dynamic user-specific data should only be cached when appropriate controls are i
 
 ---
 
-# Compression
+## Compression
 
 Responses are compressed before transmission.
 
@@ -2353,7 +2353,7 @@ Compression reduces bandwidth usage and improves page load times.
 
 ---
 
-# Compression Algorithms
+## Compression Algorithms
 
 | Algorithm | Characteristics |
 |-----------|-----------------|
@@ -2363,7 +2363,7 @@ Compression reduces bandwidth usage and improves page load times.
 
 ---
 
-# API Gateway
+## API Gateway
 
 An API Gateway is a specialized reverse proxy for APIs.
 
@@ -2381,7 +2381,7 @@ Microservices
 
 ---
 
-# API Gateway Responsibilities
+## API Gateway Responsibilities
 
 - Authentication
 - Authorization
@@ -2394,7 +2394,7 @@ Microservices
 
 ---
 
-# API Gateway Example
+## API Gateway Example
 
 ```
 Internet
@@ -2416,7 +2416,7 @@ API Gateway
 
 ---
 
-# Reverse Proxy vs API Gateway
+## Reverse Proxy vs API Gateway
 
 | Reverse Proxy | API Gateway |
 |---------------|-------------|
@@ -2430,7 +2430,7 @@ Many API gateways also include reverse proxy capabilities.
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 In cloud environments, backend servers frequently change.
 
@@ -2454,7 +2454,7 @@ This allows routing without manually updating configurations.
 
 ---
 
-# Dynamic Routing
+## Dynamic Routing
 
 Instead of fixed backend addresses:
 
@@ -2478,7 +2478,7 @@ This is common in Kubernetes and other orchestration platforms.
 
 ---
 
-# SSL Offloading
+## SSL Offloading
 
 SSL/TLS operations require CPU resources.
 
@@ -2506,7 +2506,7 @@ The reverse proxy performs the expensive cryptographic operations, reducing back
 
 ---
 
-# Logging
+## Logging
 
 Reverse proxies create valuable security logs.
 
@@ -2524,7 +2524,7 @@ These logs support monitoring and incident response.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                  Internet
@@ -2568,7 +2568,7 @@ These logs support monitoring and incident response.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking platform exposes hundreds of APIs.
 
@@ -2610,7 +2610,7 @@ Benefits:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 Using **Nginx** or **Traefik** in a lab:
 
@@ -2623,7 +2623,7 @@ Using **Nginx** or **Traefik** in a lab:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What additional capabilities do modern reverse proxies provide beyond request forwarding?
 2. What is the purpose of the `X-Forwarded-For` header?
@@ -2638,7 +2638,7 @@ Using **Nginx** or **Traefik** in a lab:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Place a WAF in front of public-facing applications where appropriate.
 - Validate and sanitize forwarded headers.
@@ -2651,7 +2651,7 @@ Using **Nginx** or **Traefik** in a lab:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Trusting client-supplied `X-Forwarded-*` headers without validation.
 - Applying aggressive caching to sensitive or personalized content.
@@ -2662,7 +2662,7 @@ Using **Nginx** or **Traefik** in a lab:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Modern reverse proxies provide advanced traffic management, security, and performance optimization.
 - WAFs protect applications by inspecting HTTP/HTTPS requests at the application layer.
@@ -3626,11 +3626,10 @@ Authentication
 ↓
 
 Application
-```
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

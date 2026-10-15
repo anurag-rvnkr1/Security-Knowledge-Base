@@ -76,7 +76,7 @@ Allows the Pod to tolerate the taint
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -107,7 +107,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need Taints?
+## Why Do We Need Taints?
 
 Suppose a Kubernetes cluster contains:
 
@@ -136,7 +136,7 @@ Taints solve this problem.
 
 ---
 
-# Basic Concept
+## Basic Concept
 
 Apply a taint:
 
@@ -168,7 +168,7 @@ Now it can tolerate the taint.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```text
                   Kubernetes Scheduler
@@ -196,7 +196,7 @@ Now it can tolerate the taint.
 
 ---
 
-# Taint Structure
+## Taint Structure
 
 A taint consists of:
 
@@ -234,7 +234,7 @@ NoSchedule
 
 ---
 
-# Adding a Taint
+## Adding a Taint
 
 Use:
 
@@ -250,7 +250,7 @@ kubectl taint nodes worker-01 dedicated=database:NoSchedule
 
 ---
 
-# Viewing Node Taints
+## Viewing Node Taints
 
 Run:
 
@@ -278,7 +278,7 @@ spec.taints
 
 ---
 
-# Three Taint Effects
+## Three Taint Effects
 
 Kubernetes supports three main taint effects:
 
@@ -298,7 +298,7 @@ These effects behave differently.
 
 ---
 
-# NoSchedule
+## NoSchedule
 
 ```text
 NoSchedule
@@ -334,7 +334,7 @@ Cannot be scheduled there
 
 ---
 
-# Important NoSchedule Behavior
+## Important NoSchedule Behavior
 
 Existing Pods are not automatically removed merely because the taint is added.
 
@@ -342,7 +342,7 @@ The primary effect is on **new scheduling decisions**.
 
 ---
 
-# PreferNoSchedule
+## PreferNoSchedule
 
 ```text
 PreferNoSchedule
@@ -374,7 +374,7 @@ Soft avoidance
 
 ---
 
-# NoExecute
+## NoExecute
 
 `NoExecute` affects both:
 
@@ -404,7 +404,7 @@ Existing non-tolerating Pods may be removed from the Node.
 
 ---
 
-# Comparing Taint Effects
+## Comparing Taint Effects
 
 | Effect | New Pods | Existing Pods |
 |---|---|---|
@@ -414,7 +414,7 @@ Existing non-tolerating Pods may be removed from the Node.
 
 ---
 
-# Tolerations
+## Tolerations
 
 A toleration allows a Pod to tolerate a matching Node taint.
 
@@ -452,7 +452,7 @@ Pod can be considered for that Node
 
 ---
 
-# Important Concept
+## Important Concept
 
 A toleration does **not** mean:
 
@@ -470,7 +470,7 @@ The Scheduler may still choose another Node.
 
 ---
 
-# Taint + Toleration
+## Taint + Toleration
 
 The complete relationship is:
 
@@ -499,7 +499,7 @@ Pod with matching toleration
 
 ---
 
-# Toleration Operator
+## Toleration Operator
 
 Tolerations support:
 
@@ -515,7 +515,7 @@ Exists
 
 ---
 
-# Equal Operator
+## Equal Operator
 
 Example:
 
@@ -539,7 +539,7 @@ dedicated=database:NoSchedule
 
 ---
 
-# Exists Operator
+## Exists Operator
 
 Example:
 
@@ -571,7 +571,7 @@ can both match the same key-based toleration, assuming the effect also matches.
 
 ---
 
-# Empty Key with Exists
+## Empty Key with Exists
 
 A toleration using:
 
@@ -595,7 +595,7 @@ This is powerful and should be used carefully.
 
 ---
 
-# Empty Effect
+## Empty Effect
 
 If the toleration does not specify an effect, it can match taints with the same key across taint effects, subject to the toleration matching rules.
 
@@ -603,7 +603,7 @@ For production workloads, explicitly specifying the intended effect usually make
 
 ---
 
-# TolerationSeconds
+## TolerationSeconds
 
 `NoExecute` tolerations can specify:
 
@@ -649,7 +649,7 @@ Pod may be evicted
 
 ---
 
-# Why TolerationSeconds Is Useful
+## Why TolerationSeconds Is Useful
 
 It can provide temporary tolerance during:
 
@@ -660,7 +660,7 @@ It can provide temporary tolerance during:
 
 ---
 
-# Example
+## Example
 
 Node:
 
@@ -688,7 +688,7 @@ Pod may be evicted
 
 ---
 
-# Node Taint Example
+## Node Taint Example
 
 Apply:
 
@@ -708,7 +708,7 @@ dedicated=database:NoSchedule
 
 ---
 
-# Pod Without Toleration
+## Pod Without Toleration
 
 ```yaml
 apiVersion: v1
@@ -738,7 +738,7 @@ Therefore it cannot normally be scheduled onto that Node.
 
 ---
 
-# Pod With Toleration
+## Pod With Toleration
 
 ```yaml
 apiVersion: v1
@@ -772,7 +772,7 @@ Now the Pod can be considered for the tainted Node.
 
 ---
 
-# Important: Toleration Does Not Guarantee Placement
+## Important: Toleration Does Not Guarantee Placement
 
 Suppose:
 
@@ -814,7 +814,7 @@ Node Selector / Node Affinity
 
 ---
 
-# Dedicated Node Pattern
+## Dedicated Node Pattern
 
 A common production design is:
 
@@ -866,11 +866,11 @@ Selection
 
 ---
 
-# Taints vs Node Affinity
+## Taints vs Node Affinity
 
 These mechanisms solve different problems.
 
-## Taints
+### Taints
 
 Applied to:
 
@@ -886,7 +886,7 @@ Repel unwanted Pods
 
 ---
 
-## Node Affinity
+### Node Affinity
 
 Applied to:
 
@@ -902,7 +902,7 @@ Select preferred/required Nodes
 
 ---
 
-# Comparison
+## Comparison
 
 | Feature | Taints | Node Affinity |
 |---|---|---|
@@ -915,7 +915,7 @@ Select preferred/required Nodes
 
 ---
 
-# Taints + Node Affinity
+## Taints + Node Affinity
 
 For dedicated workloads, use both.
 
@@ -955,7 +955,7 @@ This is a powerful production pattern.
 
 ---
 
-# Control-Plane Nodes
+## Control-Plane Nodes
 
 Kubernetes control-plane Nodes are commonly protected with taints so ordinary application Pods are not scheduled there.
 
@@ -977,7 +977,7 @@ The exact taint key and configuration can vary by Kubernetes distribution and cl
 
 ---
 
-# GPU Nodes
+## GPU Nodes
 
 GPU Nodes are expensive and specialized.
 
@@ -1015,7 +1015,7 @@ GPU Resource Request
 
 ---
 
-# Maintenance Scenario
+## Maintenance Scenario
 
 Suppose a Node needs maintenance.
 
@@ -1039,11 +1039,11 @@ Taints can also be used as part of operational workflows, but **cordon/drain** a
 
 ---
 
-# Taint vs Cordon
+## Taint vs Cordon
 
 These are different.
 
-## Cordon
+### Cordon
 
 ```text
 Node
@@ -1057,7 +1057,7 @@ It prevents new Pods from being scheduled onto the Node.
 
 ---
 
-## Taint
+### Taint
 
 ```text
 Node
@@ -1071,7 +1071,7 @@ A taint can selectively repel Pods.
 
 ---
 
-# NoExecute and Node Conditions
+## NoExecute and Node Conditions
 
 Kubernetes can use taints to react to Node conditions.
 
@@ -1093,7 +1093,7 @@ Pods may have tolerations for such taints.
 
 ---
 
-# Example
+## Example
 
 ```yaml
 tolerations:
@@ -1111,7 +1111,7 @@ This allows a Pod to tolerate a NotReady condition for a limited time.
 
 ---
 
-# Scheduler Workflow with Taints
+## Scheduler Workflow with Taints
 
 ```text
 Pod Created
@@ -1143,7 +1143,7 @@ Continue Scheduling
 
 ---
 
-# Multiple Taints
+## Multiple Taints
 
 A Node can have multiple taints.
 
@@ -1163,7 +1163,7 @@ A Pod must satisfy the relevant taint requirements to avoid being rejected or ev
 
 ---
 
-# Example
+## Example
 
 Node:
 
@@ -1198,7 +1198,7 @@ maintenance=true
 
 ---
 
-# Removing a Taint
+## Removing a Taint
 
 Use:
 
@@ -1222,7 +1222,7 @@ kubectl describe node <node-name>
 
 ---
 
-# View Taints
+## View Taints
 
 ```bash
 kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints
@@ -1230,7 +1230,7 @@ kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints
 
 ---
 
-# Hands-on Lab 1 – Add a Taint
+## Hands-on Lab 1 – Add a Taint
 
 Choose a worker Node:
 
@@ -1246,7 +1246,7 @@ kubectl describe node <node-name>
 
 ---
 
-# Hands-on Lab 2 – Deploy a Pod Without Toleration
+## Hands-on Lab 2 – Deploy a Pod Without Toleration
 
 Create:
 
@@ -1294,7 +1294,7 @@ kubectl describe pod taint-test
 
 ---
 
-# Hands-on Lab 3 – Add a Toleration
+## Hands-on Lab 3 – Add a Toleration
 
 Create:
 
@@ -1340,7 +1340,7 @@ kubectl get pod toleration-test -o wide
 
 ---
 
-# Hands-on Lab 4 – Toleration Does Not Select
+## Hands-on Lab 4 – Toleration Does Not Select
 
 Create:
 
@@ -1372,7 +1372,7 @@ Node Selection
 
 ---
 
-# Hands-on Lab 5 – Toleration + Node Selector
+## Hands-on Lab 5 – Toleration + Node Selector
 
 Use:
 
@@ -1404,7 +1404,7 @@ Selects database Node
 
 ---
 
-# Hands-on Lab 6 – Test NoExecute
+## Hands-on Lab 6 – Test NoExecute
 
 Apply:
 
@@ -1424,7 +1424,7 @@ Only perform this test on a disposable lab cluster.
 
 ---
 
-# Hands-on Lab 7 – Test TolerationSeconds
+## Hands-on Lab 7 – Test TolerationSeconds
 
 Create a Pod with:
 
@@ -1448,7 +1448,7 @@ Observe that the Pod can tolerate the taint temporarily.
 
 ---
 
-# Hands-on Lab 8 – Multiple Taints
+## Hands-on Lab 8 – Multiple Taints
 
 Add:
 
@@ -1470,9 +1470,9 @@ Then add the second toleration.
 
 ---
 
-# Troubleshooting
+## Troubleshooting
 
-## Check Node Taints
+### Check Node Taints
 
 ```bash
 kubectl describe node <node-name>
@@ -1486,7 +1486,7 @@ Taints:
 
 ---
 
-## Check Pod Tolerations
+### Check Pod Tolerations
 
 ```bash
 kubectl get pod <pod-name> -o yaml
@@ -1500,7 +1500,7 @@ spec.tolerations
 
 ---
 
-## Check Scheduling Events
+### Check Scheduling Events
 
 ```bash
 kubectl describe pod <pod-name>
@@ -1514,7 +1514,7 @@ FailedScheduling
 
 ---
 
-# Example Scheduling Error
+## Example Scheduling Error
 
 You may encounter messages indicating:
 
@@ -1542,9 +1542,9 @@ Does not have matching Toleration
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Thinking a Toleration Forces Scheduling
+### 1. Thinking a Toleration Forces Scheduling
 
 Incorrect:
 
@@ -1570,7 +1570,7 @@ The Scheduler can still select another suitable Node.
 
 ---
 
-## 2. Forgetting the Taint Effect
+### 2. Forgetting the Taint Effect
 
 These are different:
 
@@ -1590,7 +1590,7 @@ The toleration must match the intended effect where applicable.
 
 ---
 
-## 3. Using NoExecute Without Understanding Eviction
+### 3. Using NoExecute Without Understanding Eviction
 
 `NoExecute` can affect existing Pods.
 
@@ -1598,7 +1598,7 @@ Use it carefully in production.
 
 ---
 
-## 4. Forgetting TolerationSeconds
+### 4. Forgetting TolerationSeconds
 
 For temporary tolerance:
 
@@ -1612,7 +1612,7 @@ Without a time limit, the toleration can remain effective indefinitely, subject 
 
 ---
 
-## 5. Assuming Taints Replace Node Affinity
+### 5. Assuming Taints Replace Node Affinity
 
 Taints repel unwanted workloads.
 
@@ -1622,7 +1622,7 @@ They often work together.
 
 ---
 
-## 6. Forgetting Other Taints
+### 6. Forgetting Other Taints
 
 A Node may have multiple taints.
 
@@ -1630,7 +1630,7 @@ Tolerating one does not necessarily tolerate all others.
 
 ---
 
-## 7. Accidentally Tainting Production Nodes
+### 7. Accidentally Tainting Production Nodes
 
 Always verify the target Node before running:
 
@@ -1640,7 +1640,7 @@ kubectl taint nodes ...
 
 ---
 
-# Taints vs Tolerations vs Affinity
+## Taints vs Tolerations vs Affinity
 
 | Mechanism | Applied To | Purpose |
 |---|---|---|
@@ -1653,9 +1653,9 @@ kubectl taint nodes ...
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Taint
+### Taint
 
 ```text
 Node
@@ -1667,7 +1667,7 @@ Repels Pods
 
 ---
 
-## Toleration
+### Toleration
 
 ```text
 Pod
@@ -1679,7 +1679,7 @@ Allows it to tolerate matching taint
 
 ---
 
-## Effects
+### Effects
 
 ```text
 NoSchedule
@@ -1701,7 +1701,7 @@ Do not schedule + can evict
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 Add taint:
 
@@ -1742,9 +1742,9 @@ kubectl describe pod <pod>
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is a taint?
 - What is a toleration?
@@ -1755,7 +1755,7 @@ kubectl describe pod <pod>
 
 ---
 
-## Intermediate
+### Intermediate
 
 - Explain `NoSchedule`.
 - Explain `PreferNoSchedule`.
@@ -1766,7 +1766,7 @@ kubectl describe pod <pod>
 
 ---
 
-## Advanced
+### Advanced
 
 - Explain the complete taint and toleration scheduling workflow.
 - Compare taints with Node Affinity.
@@ -1781,7 +1781,7 @@ kubectl describe pod <pod>
 
 ---
 
-# Production Design Example
+## Production Design Example
 
 Consider a production cluster:
 
@@ -1841,9 +1841,9 @@ This creates workload isolation.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Taints for Dedicated Nodes
+#### 1. Use Taints for Dedicated Nodes
 
 Good candidates:
 
@@ -1857,7 +1857,7 @@ Specialized hardware
 
 ---
 
-### 2. Combine Taints with Node Affinity
+#### 2. Combine Taints with Node Affinity
 
 Use:
 
@@ -1883,7 +1883,7 @@ a specialized Node.
 
 ---
 
-### 3. Use NoExecute Carefully
+#### 3. Use NoExecute Carefully
 
 It can evict existing workloads.
 
@@ -1891,7 +1891,7 @@ Always understand the impact before applying it.
 
 ---
 
-### 4. Prefer Explicit Tolerations
+#### 4. Prefer Explicit Tolerations
 
 Avoid broad tolerations such as:
 
@@ -1903,13 +1903,13 @@ unless the workload genuinely needs to tolerate a broad class of taints.
 
 ---
 
-### 5. Use TolerationSeconds for Temporary Conditions
+#### 5. Use TolerationSeconds for Temporary Conditions
 
 Useful for controlled grace periods.
 
 ---
 
-### 6. Document Dedicated Node Policies
+#### 6. Document Dedicated Node Policies
 
 For example:
 
@@ -1923,7 +1923,7 @@ Keep naming consistent across the cluster.
 
 ---
 
-### 7. Test Before Production
+#### 7. Test Before Production
 
 Test:
 
@@ -1937,9 +1937,9 @@ in a lab environment before using them in critical clusters.
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Taints and Tolerations
 - Assigning Pods to Nodes
@@ -1950,7 +1950,7 @@ in a lab environment before using them in critical clusters.
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes SIG Scheduling
 - Kubernetes Scheduling Framework
@@ -1958,7 +1958,7 @@ in a lab environment before using them in critical clusters.
 
 ---
 
-# Recommended Practice
+## Recommended Practice
 
 1. Create a dedicated lab Node.
 2. Apply a `NoSchedule` taint.
@@ -1976,7 +1976,7 @@ in a lab environment before using them in critical clusters.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```text
                      Node
@@ -2080,9 +2080,9 @@ which is particularly useful for production databases, GPU workloads, security w
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 41 – Priority Classes
+## Chapter 41 – Priority Classes
 
 Topics will include:
 

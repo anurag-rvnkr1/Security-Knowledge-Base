@@ -10,7 +10,7 @@ They help organize resources, apply security policies, manage quotas, and simpli
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -26,7 +26,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Namespaces?
+## Why Namespaces?
 
 Imagine a single Kubernetes cluster shared by multiple teams.
 
@@ -74,7 +74,7 @@ Resources become organized and easier to manage.
 
 ---
 
-# What is a Namespace?
+## What is a Namespace?
 
 A Namespace is a logical boundary for Kubernetes resources.
 
@@ -110,7 +110,7 @@ Each Namespace maintains its own collection of resources.
 
 ---
 
-# Namespace Architecture
+## Namespace Architecture
 
 ```
                Kubernetes Cluster
@@ -143,13 +143,13 @@ Each Namespace maintains its own collection of resources.
 
 ---
 
-# Default Namespaces
+## Default Namespaces
 
 A new Kubernetes cluster typically includes several built-in Namespaces.
 
 ---
 
-## default
+### default
 
 The default Namespace for user-created resources.
 
@@ -165,7 +165,7 @@ If no Namespace is specified, resources are generally created here.
 
 ---
 
-## kube-system
+### kube-system
 
 Contains Kubernetes system components.
 
@@ -188,7 +188,7 @@ Avoid deploying application workloads here.
 
 ---
 
-## kube-public
+### kube-public
 
 A Namespace intended for publicly readable cluster information.
 
@@ -202,7 +202,7 @@ Public Cluster Data
 
 ---
 
-## kube-node-lease
+### kube-node-lease
 
 Stores Lease objects used by nodes to report their availability efficiently.
 
@@ -216,7 +216,7 @@ Node Leases
 
 ---
 
-# Viewing Namespaces
+## Viewing Namespaces
 
 List all Namespaces:
 
@@ -246,7 +246,7 @@ kube-node-lease
 
 ---
 
-# Creating a Namespace
+## Creating a Namespace
 
 Command:
 
@@ -262,7 +262,7 @@ kubectl get namespaces
 
 ---
 
-# Namespace YAML
+## Namespace YAML
 
 Example:
 
@@ -284,7 +284,7 @@ kubectl apply -f namespace.yaml
 
 ---
 
-# Deploying Resources into a Namespace
+## Deploying Resources into a Namespace
 
 Create a Deployment:
 
@@ -303,7 +303,7 @@ kubectl apply -f deployment.yaml \
 
 ---
 
-# Viewing Resources in a Namespace
+## Viewing Resources in a Namespace
 
 Pods:
 
@@ -328,7 +328,7 @@ kubectl get services \
 
 ---
 
-# Viewing Resources Across All Namespaces
+## Viewing Resources Across All Namespaces
 
 Pods:
 
@@ -350,7 +350,7 @@ kubectl get services -A
 
 ---
 
-# Namespace Isolation
+## Namespace Isolation
 
 Example:
 
@@ -374,7 +374,7 @@ Both Pods can have the same name because they exist in different Namespaces.
 
 ---
 
-# Resource Naming
+## Resource Naming
 
 Within one Namespace:
 
@@ -398,7 +398,7 @@ Both are valid.
 
 ---
 
-# Namespace Scope
+## Namespace Scope
 
 Common namespace-scoped resources include:
 
@@ -422,7 +422,7 @@ Examples of cluster-scoped resources include:
 
 ---
 
-# Namespace Communication
+## Namespace Communication
 
 Namespaces provide logical organization—not complete network isolation.
 
@@ -448,7 +448,7 @@ Pods in different Namespaces may still communicate unless restricted by **Networ
 
 ---
 
-# Switching Namespace
+## Switching Namespace
 
 For a single command:
 
@@ -467,7 +467,7 @@ metadata:
 
 ---
 
-# Deleting a Namespace
+## Deleting a Namespace
 
 Delete:
 
@@ -493,7 +493,7 @@ Deleting a Namespace removes the namespace-scoped resources it contains.
 
 ---
 
-# Namespace Lifecycle
+## Namespace Lifecycle
 
 ```
 Create Namespace
@@ -513,7 +513,7 @@ Delete Namespace
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
 Namespaces are commonly used for:
 
@@ -529,7 +529,7 @@ Namespaces are commonly used for:
 
 ---
 
-# Namespace Hierarchy Example
+## Namespace Hierarchy Example
 
 ```
 Cluster
@@ -559,7 +559,7 @@ Cluster
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 View:
 
@@ -601,7 +601,7 @@ kubectl get pods -A
 
 ---
 
-# Namespace Architecture Summary
+## Namespace Architecture Summary
 
 ```
 Cluster
@@ -629,9 +629,9 @@ Containers
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Separate Environments
+#### 1. Separate Environments
 
 Use dedicated Namespaces for:
 
@@ -642,25 +642,25 @@ Use dedicated Namespaces for:
 
 ---
 
-### 2. Do Not Deploy Applications into `kube-system`
+#### 2. Do Not Deploy Applications into `kube-system`
 
 Reserve the `kube-system` Namespace for Kubernetes components.
 
 ---
 
-### 3. Apply Resource Quotas
+#### 3. Apply Resource Quotas
 
 Limit CPU, memory, and object creation within each Namespace using ResourceQuota objects.
 
 ---
 
-### 4. Use RBAC with Namespaces
+#### 4. Use RBAC with Namespaces
 
 Grant users access only to the Namespaces they require.
 
 ---
 
-### 5. Use Consistent Naming
+#### 5. Use Consistent Naming
 
 Examples:
 
@@ -680,9 +680,9 @@ Consistent naming improves automation and administration.
 
 ---
 
-# How Namespaces Work Internally
+## How Namespaces Work Internally
 
-## Overview
+### Overview
 
 Namespaces are one of Kubernetes' most fundamental organizational features.
 
@@ -694,7 +694,7 @@ Instead, they organize Kubernetes resources at the API level.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                   Kubernetes Cluster
@@ -722,7 +722,7 @@ The cluster is shared, but resources are logically grouped.
 
 ---
 
-# How Kubernetes Stores Namespaces
+## How Kubernetes Stores Namespaces
 
 Every Kubernetes object contains metadata.
 
@@ -756,7 +756,7 @@ These are treated as two completely different objects.
 
 ---
 
-# Internal Workflow
+## Internal Workflow
 
 Suppose a user creates a Deployment.
 
@@ -818,7 +818,7 @@ Pods
 
 ---
 
-# Namespace Resolution
+## Namespace Resolution
 
 If a Namespace is specified:
 
@@ -838,7 +838,7 @@ is generally used.
 
 ---
 
-# API Server Processing
+## API Server Processing
 
 The API Server performs several checks.
 
@@ -874,7 +874,7 @@ Namespace Not Found
 
 ---
 
-# etcd Storage
+## etcd Storage
 
 Internally:
 
@@ -902,7 +902,7 @@ The Namespace becomes part of the resource identity.
 
 ---
 
-# Resource Lookup
+## Resource Lookup
 
 Example:
 
@@ -942,7 +942,7 @@ Return Pods
 
 ---
 
-# Viewing All Namespaces
+## Viewing All Namespaces
 
 Command:
 
@@ -972,7 +972,7 @@ This is useful for cluster administrators.
 
 ---
 
-# Namespace Creation
+## Namespace Creation
 
 Command:
 
@@ -1006,7 +1006,7 @@ Ready For Resources
 
 ---
 
-# Resource Creation
+## Resource Creation
 
 Example:
 
@@ -1030,7 +1030,7 @@ All namespace-scoped resources are associated with the Namespace.
 
 ---
 
-# Namespace Deletion
+## Namespace Deletion
 
 Delete:
 
@@ -1060,7 +1060,7 @@ This process is managed by Kubernetes controllers.
 
 ---
 
-# Namespace Finalization
+## Namespace Finalization
 
 Before a Namespace is removed:
 
@@ -1088,7 +1088,7 @@ If resources cannot be removed, the Namespace may remain in a **Terminating** st
 
 ---
 
-# Namespace Isolation
+## Namespace Isolation
 
 Example:
 
@@ -1116,7 +1116,7 @@ These Pods have identical names but exist independently because their Namespaces
 
 ---
 
-# Object Identity
+## Object Identity
 
 Internally:
 
@@ -1144,7 +1144,7 @@ Both are valid.
 
 ---
 
-# Namespace Communication
+## Namespace Communication
 
 Namespaces organize resources but **do not block network traffic** by default.
 
@@ -1162,7 +1162,7 @@ Communication is generally allowed unless restricted by **Network Policies** or 
 
 ---
 
-# Resource Discovery
+## Resource Discovery
 
 View resources:
 
@@ -1195,7 +1195,7 @@ Services
 
 ---
 
-# Namespace Context
+## Namespace Context
 
 kubectl can operate within a chosen Namespace.
 
@@ -1222,7 +1222,7 @@ After this, many `kubectl` commands will use the selected Namespace unless overr
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Kubernetes Cluster
@@ -1248,7 +1248,7 @@ Each controller watches only the resources relevant to its operation.
 
 ---
 
-# Namespace Lifecycle
+## Namespace Lifecycle
 
 ```
 Namespace Created
@@ -1272,7 +1272,7 @@ Namespace Removed
 
 ---
 
-# Hands-on Lab 1 – Create Namespace
+## Hands-on Lab 1 – Create Namespace
 
 Create:
 
@@ -1288,7 +1288,7 @@ kubectl get ns
 
 ---
 
-# Hands-on Lab 2 – Deploy Application
+## Hands-on Lab 2 – Deploy Application
 
 ```bash
 kubectl create deployment nginx \
@@ -1305,7 +1305,7 @@ kubectl get deployments \
 
 ---
 
-# Hands-on Lab 3 – View Resources
+## Hands-on Lab 3 – View Resources
 
 Pods:
 
@@ -1323,7 +1323,7 @@ kubectl get all \
 
 ---
 
-# Hands-on Lab 4 – View Across All Namespaces
+## Hands-on Lab 4 – View Across All Namespaces
 
 ```bash
 kubectl get pods -A
@@ -1337,7 +1337,7 @@ Observe:
 
 ---
 
-# Hands-on Lab 5 – Delete Namespace
+## Hands-on Lab 5 – Delete Namespace
 
 ```bash
 kubectl delete namespace development
@@ -1353,7 +1353,7 @@ Observe the Namespace progressing toward deletion.
 
 ---
 
-# Resource Quotas (Preview)
+## Resource Quotas (Preview)
 
 Namespaces can limit resource consumption.
 
@@ -1379,7 +1379,7 @@ This prevents a single Namespace from consuming all cluster resources.
 
 ---
 
-# LimitRanges (Preview)
+## LimitRanges (Preview)
 
 LimitRanges define default or maximum/minimum resource values for containers and Pods within a Namespace.
 
@@ -1399,7 +1399,7 @@ Default Memory
 
 ---
 
-# RBAC with Namespaces (Preview)
+## RBAC with Namespaces (Preview)
 
 RBAC commonly grants permissions at the Namespace level.
 
@@ -1425,15 +1425,15 @@ This is a fundamental security practice.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use Namespaces to Organize Workloads
+#### 1. Use Namespaces to Organize Workloads
 
 Separate applications and environments logically.
 
 ---
 
-### 2. Apply Namespace-Level Security
+#### 2. Apply Namespace-Level Security
 
 Combine Namespaces with:
 
@@ -1445,19 +1445,19 @@ for stronger isolation.
 
 ---
 
-### 3. Avoid Using `default` for Everything
+#### 3. Avoid Using `default` for Everything
 
 Create dedicated Namespaces for production workloads.
 
 ---
 
-### 4. Monitor Namespace Resources
+#### 4. Monitor Namespace Resources
 
 Regularly inspect CPU, memory, and object usage per Namespace.
 
 ---
 
-### 5. Keep Namespace Names Predictable
+#### 5. Keep Namespace Names Predictable
 
 Examples:
 
@@ -1477,9 +1477,9 @@ Consistent naming simplifies automation and administration.
 
 ---
 
-# Resource Quotas
+## Resource Quotas
 
-## Overview
+### Overview
 
 A **ResourceQuota** is a Kubernetes object that limits the total amount of resources a Namespace can consume.
 
@@ -1499,7 +1499,7 @@ ResourceQuotas help ensure **fair resource allocation** among teams and applicat
 
 ---
 
-# Why Resource Quotas?
+## Why Resource Quotas?
 
 Imagine three teams sharing one cluster.
 
@@ -1557,7 +1557,7 @@ Each team receives a controlled allocation.
 
 ---
 
-# ResourceQuota Architecture
+## ResourceQuota Architecture
 
 ```
 Namespace
@@ -1591,11 +1591,11 @@ Every ResourceQuota belongs to a Namespace.
 
 ---
 
-# What Can ResourceQuota Limit?
+## What Can ResourceQuota Limit?
 
 Examples include:
 
-### Compute Resources
+#### Compute Resources
 
 - CPU Requests
 - CPU Limits
@@ -1604,14 +1604,14 @@ Examples include:
 
 ---
 
-### Storage
+#### Storage
 
 - Persistent Volume Claims (PVCs)
 - Requested Storage
 
 ---
 
-### Object Counts
+#### Object Counts
 
 - Pods
 - Services
@@ -1623,7 +1623,7 @@ Examples include:
 
 ---
 
-# ResourceQuota Workflow
+## ResourceQuota Workflow
 
 ```
 User
@@ -1661,7 +1661,7 @@ Rejected
 
 ---
 
-# ResourceQuota YAML
+## ResourceQuota YAML
 
 Example:
 
@@ -1693,7 +1693,7 @@ spec:
 
 ---
 
-# Understanding the YAML
+## Understanding the YAML
 
 ```
 Namespace
@@ -1721,7 +1721,7 @@ Once 20 Pods exist, additional Pods are rejected until resources become availabl
 
 ---
 
-# Creating a ResourceQuota
+## Creating a ResourceQuota
 
 Apply:
 
@@ -1743,7 +1743,7 @@ kubectl get quota
 
 ---
 
-# Describe ResourceQuota
+## Describe ResourceQuota
 
 ```bash
 kubectl describe quota dev-quota
@@ -1767,7 +1767,7 @@ This shows current usage versus configured limits.
 
 ---
 
-# ResourceQuota Example
+## ResourceQuota Example
 
 Suppose:
 
@@ -1807,7 +1807,7 @@ The quota prevents exceeding the configured limit.
 
 ---
 
-# CPU Quota Example
+## CPU Quota Example
 
 Quota:
 
@@ -1843,7 +1843,7 @@ Rejected
 
 ---
 
-# Memory Quota Example
+## Memory Quota Example
 
 Namespace:
 
@@ -1875,7 +1875,7 @@ Rejected
 
 ---
 
-# Object Count Quotas
+## Object Count Quotas
 
 Example:
 
@@ -1903,7 +1903,7 @@ The same concept applies to other supported resource types.
 
 ---
 
-# ResourceQuota Scope
+## ResourceQuota Scope
 
 ResourceQuotas apply only to:
 
@@ -1931,7 +1931,7 @@ unless another ResourceQuota exists.
 
 ---
 
-# Multiple Namespaces
+## Multiple Namespaces
 
 ```
 Development
@@ -1961,7 +1961,7 @@ Each Namespace can have its own limits.
 
 ---
 
-# Viewing Resource Usage
+## Viewing Resource Usage
 
 Describe:
 
@@ -1987,7 +1987,7 @@ This helps administrators monitor consumption.
 
 ---
 
-# Hands-on Lab 1 – Create Namespace
+## Hands-on Lab 1 – Create Namespace
 
 ```bash
 kubectl create namespace development
@@ -1995,7 +1995,7 @@ kubectl create namespace development
 
 ---
 
-# Hands-on Lab 2 – Create ResourceQuota
+## Hands-on Lab 2 – Create ResourceQuota
 
 Example:
 
@@ -2028,7 +2028,7 @@ kubectl apply -f quota.yaml \
 
 ---
 
-# Hands-on Lab 3 – Verify
+## Hands-on Lab 3 – Verify
 
 ```bash
 kubectl get quota \
@@ -2044,7 +2044,7 @@ kubectl describe quota development-quota \
 
 ---
 
-# Hands-on Lab 4 – Create Pods
+## Hands-on Lab 4 – Create Pods
 
 Create several Pods.
 
@@ -2059,7 +2059,7 @@ Watch the **Used** values increase.
 
 ---
 
-# Hands-on Lab 5 – Exceed Quota
+## Hands-on Lab 5 – Exceed Quota
 
 Attempt to create more Pods than allowed.
 
@@ -2077,7 +2077,7 @@ Kubernetes rejects the request.
 
 ---
 
-# ResourceQuota Lifecycle
+## ResourceQuota Lifecycle
 
 ```
 Namespace Created
@@ -2101,7 +2101,7 @@ Resources Deleted
 
 ---
 
-# ResourceQuota vs LimitRange
+## ResourceQuota vs LimitRange
 
 | ResourceQuota | LimitRange |
 |---------------|------------|
@@ -2113,7 +2113,7 @@ These two resources are commonly used together.
 
 ---
 
-# Benefits
+## Benefits
 
 - Fair resource sharing
 - Prevents resource exhaustion
@@ -2123,21 +2123,21 @@ These two resources are commonly used together.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Configure ResourceQuotas for Shared Clusters
+#### 1. Configure ResourceQuotas for Shared Clusters
 
 Especially when multiple teams or applications share the same environment.
 
 ---
 
-### 2. Combine with LimitRanges
+#### 2. Combine with LimitRanges
 
 Use LimitRanges to control individual Pods while ResourceQuotas manage Namespace-wide consumption.
 
 ---
 
-### 3. Monitor Usage
+#### 3. Monitor Usage
 
 Review:
 
@@ -2149,21 +2149,21 @@ regularly.
 
 ---
 
-### 4. Set Realistic Limits
+#### 4. Set Realistic Limits
 
 Avoid values that unnecessarily block legitimate workloads.
 
 ---
 
-### 5. Review Quotas Periodically
+#### 5. Review Quotas Periodically
 
 As applications evolve, adjust quotas to reflect current operational requirements.
 
 ---
 
-# LimitRanges
+## LimitRanges
 
-## Overview
+### Overview
 
 A **LimitRange** is a Kubernetes object that defines **default, minimum, and maximum resource constraints** for individual Pods and Containers within a Namespace.
 
@@ -2173,7 +2173,7 @@ These two objects complement each other and are commonly used together in produc
 
 ---
 
-# Why LimitRanges?
+## Why LimitRanges?
 
 Imagine a shared Kubernetes cluster.
 
@@ -2225,7 +2225,7 @@ The oversized request is rejected.
 
 ---
 
-# LimitRange Architecture
+## LimitRange Architecture
 
 ```
 Namespace
@@ -2251,7 +2251,7 @@ Every new Pod or Container is evaluated against these rules.
 
 ---
 
-# ResourceQuota vs LimitRange
+## ResourceQuota vs LimitRange
 
 | ResourceQuota | LimitRange |
 |---------------|------------|
@@ -2280,7 +2280,7 @@ Namespace
 
 ---
 
-# What Can a LimitRange Control?
+## What Can a LimitRange Control?
 
 A LimitRange can define:
 
@@ -2296,7 +2296,7 @@ A LimitRange can define:
 
 ---
 
-# LimitRange Workflow
+## LimitRange Workflow
 
 ```
 User
@@ -2334,7 +2334,7 @@ Rejected
 
 ---
 
-# Default Values
+## Default Values
 
 Suppose a developer creates:
 
@@ -2368,7 +2368,7 @@ The exact values depend on the configured LimitRange.
 
 ---
 
-# LimitRange YAML
+## LimitRange YAML
 
 Example:
 
@@ -2414,7 +2414,7 @@ spec:
 
 ---
 
-# YAML Structure
+## YAML Structure
 
 ```
 LimitRange
@@ -2442,7 +2442,7 @@ Maximum
 
 ---
 
-# Minimum Resources
+## Minimum Resources
 
 Example:
 
@@ -2470,7 +2470,7 @@ The request is below the configured minimum.
 
 ---
 
-# Maximum Resources
+## Maximum Resources
 
 Example:
 
@@ -2496,7 +2496,7 @@ Rejected
 
 ---
 
-# Default Requests
+## Default Requests
 
 Developer submits:
 
@@ -2524,7 +2524,7 @@ This helps the scheduler make informed placement decisions.
 
 ---
 
-# Default Limits
+## Default Limits
 
 If no limits are specified:
 
@@ -2556,7 +2556,7 @@ Defaults help prevent unbounded resource consumption.
 
 ---
 
-# Namespace Scope
+## Namespace Scope
 
 LimitRanges apply only within their Namespace.
 
@@ -2580,7 +2580,7 @@ Each Namespace can define its own policy.
 
 ---
 
-# Multiple Namespaces
+## Multiple Namespaces
 
 ```
 Development
@@ -2610,7 +2610,7 @@ Each team or environment can have different limits.
 
 ---
 
-# Creating a LimitRange
+## Creating a LimitRange
 
 Apply:
 
@@ -2632,7 +2632,7 @@ kubectl get limits
 
 ---
 
-# Describe LimitRange
+## Describe LimitRange
 
 ```bash
 kubectl describe limitrange container-limits
@@ -2662,7 +2662,7 @@ Maximum
 
 ---
 
-# Hands-on Lab 1 – Create Namespace
+## Hands-on Lab 1 – Create Namespace
 
 ```bash
 kubectl create namespace development
@@ -2670,7 +2670,7 @@ kubectl create namespace development
 
 ---
 
-# Hands-on Lab 2 – Create LimitRange
+## Hands-on Lab 2 – Create LimitRange
 
 Example:
 
@@ -2723,7 +2723,7 @@ kubectl apply -f limitrange.yaml \
 
 ---
 
-# Hands-on Lab 3 – Verify
+## Hands-on Lab 3 – Verify
 
 ```bash
 kubectl get limits \
@@ -2739,7 +2739,7 @@ kubectl describe limitrange dev-limits \
 
 ---
 
-# Hands-on Lab 4 – Create a Pod Without Resources
+## Hands-on Lab 4 – Create a Pod Without Resources
 
 Deploy a Pod that omits the `resources` section.
 
@@ -2753,7 +2753,7 @@ Observe that Kubernetes has applied the default resource requests and limits def
 
 ---
 
-# Hands-on Lab 5 – Exceed Maximum
+## Hands-on Lab 5 – Exceed Maximum
 
 Create a Pod requesting:
 
@@ -2781,7 +2781,7 @@ The API Server denies the request.
 
 ---
 
-# Common Validation Flow
+## Common Validation Flow
 
 ```
 Create Pod
@@ -2811,7 +2811,7 @@ Rejected
 
 ---
 
-# Resource Scheduling
+## Resource Scheduling
 
 LimitRanges improve scheduling by ensuring Pods have predictable resource requests.
 
@@ -2835,7 +2835,7 @@ Without requests, scheduling decisions become less accurate.
 
 ---
 
-# Benefits
+## Benefits
 
 - Prevents oversized resource requests
 - Provides sensible defaults
@@ -2845,9 +2845,9 @@ Without requests, scheduling decisions become less accurate.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use LimitRanges with ResourceQuotas
+#### 1. Use LimitRanges with ResourceQuotas
 
 ResourceQuota controls Namespace totals.
 
@@ -2857,25 +2857,25 @@ Use both.
 
 ---
 
-### 2. Always Define Defaults
+#### 2. Always Define Defaults
 
 This ensures developers who omit resource settings still receive reasonable values.
 
 ---
 
-### 3. Set Practical Minimums
+#### 3. Set Practical Minimums
 
 Avoid values that are unrealistically low or unnecessarily restrictive.
 
 ---
 
-### 4. Prevent Oversized Containers
+#### 4. Prevent Oversized Containers
 
 Maximum values help protect cluster stability.
 
 ---
 
-### 5. Review Resource Policies Regularly
+#### 5. Review Resource Policies Regularly
 
 As workloads evolve, revisit LimitRanges to ensure they still meet operational needs.
 

@@ -14,7 +14,7 @@ This solves one of Kubernetes' biggest challenges:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -31,7 +31,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why Do We Need ClusterIP?
+## Why Do We Need ClusterIP?
 
 Imagine an application.
 
@@ -79,7 +79,7 @@ Connection Failed
 
 ---
 
-# Solution
+## Solution
 
 Use a Service.
 
@@ -99,7 +99,7 @@ The Service IP never changes, even if Pods are recreated.
 
 ---
 
-# What is ClusterIP?
+## What is ClusterIP?
 
 A ClusterIP is a **virtual IP address** assigned to a Kubernetes Service.
 
@@ -119,7 +119,7 @@ Applications communicate with the Service instead of individual Pods.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                   Client Pod
@@ -145,7 +145,7 @@ Applications communicate with the Service instead of individual Pods.
 
 ---
 
-# ClusterIP Characteristics
+## ClusterIP Characteristics
 
 - Internal-only access
 - Stable virtual IP
@@ -156,7 +156,7 @@ Applications communicate with the Service instead of individual Pods.
 
 ---
 
-# Service Types
+## Service Types
 
 | Service Type | Accessible From |
 |--------------|-----------------|
@@ -169,7 +169,7 @@ ClusterIP is the default.
 
 ---
 
-# How ClusterIP Works
+## How ClusterIP Works
 
 ```
 Application
@@ -191,7 +191,7 @@ The application never knows which Pod receives the request.
 
 ---
 
-# ClusterIP Workflow
+## ClusterIP Workflow
 
 ```
 Client
@@ -215,7 +215,7 @@ Healthy Pod
 
 ---
 
-# Creating a ClusterIP Service
+## Creating a ClusterIP Service
 
 Example:
 
@@ -253,7 +253,7 @@ This field is optional because ClusterIP is the default.
 
 ---
 
-# YAML Breakdown
+## YAML Breakdown
 
 ```
 Service
@@ -277,7 +277,7 @@ ClusterIP
 
 ---
 
-# Service Selector
+## Service Selector
 
 Suppose:
 
@@ -309,7 +309,7 @@ These Pods automatically become backend endpoints.
 
 ---
 
-# Endpoint Objects
+## Endpoint Objects
 
 When a Service is created:
 
@@ -339,7 +339,7 @@ These are the Pods selected by the Service.
 
 ---
 
-# ClusterIP Address
+## ClusterIP Address
 
 Example:
 
@@ -361,7 +361,7 @@ ClusterIP belongs to the Service, not the Pods.
 
 ---
 
-# DNS Integration
+## DNS Integration
 
 Every Service automatically receives a DNS name.
 
@@ -385,7 +385,7 @@ CoreDNS resolves the name to the Service's ClusterIP.
 
 ---
 
-# Packet Flow
+## Packet Flow
 
 ```
 Application
@@ -413,7 +413,7 @@ Backend Pod
 
 ---
 
-# Internal Load Balancing
+## Internal Load Balancing
 
 Suppose:
 
@@ -455,7 +455,7 @@ kube-proxy distributes traffic among available Pods.
 
 ---
 
-# Pod Scaling
+## Pod Scaling
 
 Current:
 
@@ -483,7 +483,7 @@ No application changes are required.
 
 ---
 
-# Pod Failure
+## Pod Failure
 
 Suppose:
 
@@ -509,7 +509,7 @@ Traffic is automatically sent only to healthy Pods.
 
 ---
 
-# Service Without Matching Pods
+## Service Without Matching Pods
 
 Suppose:
 
@@ -535,7 +535,7 @@ Requests fail because there are no backend Pods.
 
 ---
 
-# Multiple Services
+## Multiple Services
 
 ```
 Frontend Service
@@ -565,7 +565,7 @@ Each Service has its own ClusterIP.
 
 ---
 
-# ClusterIP vs Pod IP
+## ClusterIP vs Pod IP
 
 | ClusterIP | Pod IP |
 |-----------|---------|
@@ -576,7 +576,7 @@ Each Service has its own ClusterIP.
 
 ---
 
-# ClusterIP vs NodePort
+## ClusterIP vs NodePort
 
 | ClusterIP | NodePort |
 |------------|----------|
@@ -586,7 +586,7 @@ Each Service has its own ClusterIP.
 
 ---
 
-# ClusterIP vs LoadBalancer
+## ClusterIP vs LoadBalancer
 
 | ClusterIP | LoadBalancer |
 |------------|--------------|
@@ -596,7 +596,7 @@ Each Service has its own ClusterIP.
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 Application:
 
@@ -620,7 +620,7 @@ The application never needs to know Pod IPs.
 
 ---
 
-# Internal Communication
+## Internal Communication
 
 ```
 Frontend
@@ -638,7 +638,7 @@ This is the recommended communication model in Kubernetes.
 
 ---
 
-# Viewing Services
+## Viewing Services
 
 ```bash
 kubectl get svc
@@ -654,7 +654,7 @@ backend    ClusterIP   10.96.15.20
 
 ---
 
-# Viewing Endpoints
+## Viewing Endpoints
 
 ```bash
 kubectl get endpoints
@@ -674,7 +674,7 @@ backend
 
 ---
 
-# Describe Service
+## Describe Service
 
 ```bash
 kubectl describe svc backend
@@ -689,7 +689,7 @@ Useful information:
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 Create:
 
@@ -723,7 +723,7 @@ kubectl delete svc backend
 
 ---
 
-# ClusterIP Architecture Summary
+## ClusterIP Architecture Summary
 
 ```
 Client
@@ -751,21 +751,21 @@ Pods
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Always Use Services
+#### 1. Always Use Services
 
 Applications should communicate with Services rather than Pod IPs.
 
 ---
 
-### 2. Use Labels Consistently
+#### 2. Use Labels Consistently
 
 Services rely on label selectors to identify backend Pods.
 
 ---
 
-### 3. Use DNS Names
+#### 3. Use DNS Names
 
 Prefer:
 
@@ -781,7 +781,7 @@ instead of:
 
 ---
 
-### 4. Verify Endpoints
+#### 4. Verify Endpoints
 
 If a Service is unreachable:
 
@@ -793,15 +793,15 @@ is one of the first troubleshooting commands to run.
 
 ---
 
-### 5. Keep Services Focused
+#### 5. Keep Services Focused
 
 One Service should expose one logical application or API.
 
 ---
 
-# How ClusterIP Works Internally
+## How ClusterIP Works Internally
 
-## Overview
+### Overview
 
 A **ClusterIP** is one of the most fundamental networking abstractions in Kubernetes.
 
@@ -821,7 +821,7 @@ to transparently redirect traffic from the Service IP to one of the backend Pods
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                    Client Pod
@@ -861,7 +861,7 @@ to transparently redirect traffic from the Service IP to one of the backend Pods
 
 ---
 
-# Complete Internal Workflow
+## Complete Internal Workflow
 
 ```
 Application
@@ -897,7 +897,7 @@ Application Response
 
 ---
 
-# Step 1 – Create Service
+## Step 1 – Create Service
 
 Example:
 
@@ -913,7 +913,7 @@ kubectl apply -f service.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -934,7 +934,7 @@ Service Stored
 
 ---
 
-# Step 3 – Service Controller
+## Step 3 – Service Controller
 
 The Service Controller watches:
 
@@ -958,7 +958,7 @@ Create Endpoint Objects
 
 ---
 
-# Step 4 – Endpoint Creation
+## Step 4 – Endpoint Creation
 
 Suppose:
 
@@ -994,7 +994,7 @@ backend
 
 ---
 
-# EndpointSlice
+## EndpointSlice
 
 Modern Kubernetes uses **EndpointSlices** instead of one large Endpoints object.
 
@@ -1021,7 +1021,7 @@ Backend Pods
 
 ---
 
-# Step 5 – ClusterIP Allocation
+## Step 5 – ClusterIP Allocation
 
 Suppose:
 
@@ -1049,7 +1049,7 @@ It exists only as a virtual destination.
 
 ---
 
-# Step 6 – CoreDNS
+## Step 6 – CoreDNS
 
 Application:
 
@@ -1073,7 +1073,7 @@ The application now sends packets to the ClusterIP.
 
 ---
 
-# Step 7 – kube-proxy Watches Services
+## Step 7 – kube-proxy Watches Services
 
 Every worker Node runs:
 
@@ -1099,7 +1099,7 @@ Update Rules
 
 ---
 
-# kube-proxy Responsibilities
+## kube-proxy Responsibilities
 
 ```
 Service
@@ -1119,7 +1119,7 @@ Instead, it programs the Linux networking stack.
 
 ---
 
-# Packet Flow
+## Packet Flow
 
 Suppose:
 
@@ -1149,7 +1149,7 @@ Traffic is redirected before reaching a physical network interface.
 
 ---
 
-# iptables Mode
+## iptables Mode
 
 Historically, kube-proxy created **iptables rules**.
 
@@ -1181,7 +1181,7 @@ Linux rewrites the packet destination.
 
 ---
 
-# IPVS Mode
+## IPVS Mode
 
 IPVS is a Linux kernel load balancer.
 
@@ -1215,7 +1215,7 @@ Benefits:
 
 ---
 
-# nftables Mode
+## nftables Mode
 
 Modern Linux systems increasingly use **nftables**.
 
@@ -1229,7 +1229,7 @@ Recent Kubernetes versions support kube-proxy with nftables on compatible system
 
 ---
 
-# Packet Rewriting
+## Packet Rewriting
 
 Original packet:
 
@@ -1255,7 +1255,7 @@ The application never notices the change.
 
 ---
 
-# Response Flow
+## Response Flow
 
 Backend Pod:
 
@@ -1271,7 +1271,7 @@ The connection appears to be directly with the Service.
 
 ---
 
-# Load Balancing
+## Load Balancing
 
 Suppose:
 
@@ -1309,7 +1309,7 @@ The exact algorithm depends on kube-proxy mode and kernel implementation.
 
 ---
 
-# Pod Failure
+## Pod Failure
 
 Suppose:
 
@@ -1341,7 +1341,7 @@ Traffic is automatically routed only to healthy Pods.
 
 ---
 
-# Scaling Up
+## Scaling Up
 
 Current:
 
@@ -1377,7 +1377,7 @@ No Service restart is required.
 
 ---
 
-# Service Without Endpoints
+## Service Without Endpoints
 
 Suppose:
 
@@ -1407,7 +1407,7 @@ A common troubleshooting step is checking Endpoints.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 Application
@@ -1439,7 +1439,7 @@ Backend Pod
 
 ---
 
-# kube-proxy Modes
+## kube-proxy Modes
 
 | Mode | Description |
 |------|-------------|
@@ -1450,7 +1450,7 @@ Backend Pod
 
 ---
 
-# Endpoint vs EndpointSlice
+## Endpoint vs EndpointSlice
 
 | Endpoints | EndpointSlice |
 |-----------|---------------|
@@ -1461,7 +1461,7 @@ Backend Pod
 
 ---
 
-# DNS Resolution Flow
+## DNS Resolution Flow
 
 ```
 Application
@@ -1481,7 +1481,7 @@ CoreDNS
 
 ---
 
-# Full Packet Flow
+## Full Packet Flow
 
 ```
 Client
@@ -1521,7 +1521,7 @@ Application
 
 ---
 
-# Hands-on Lab 1 – Create Deployment
+## Hands-on Lab 1 – Create Deployment
 
 ```bash
 kubectl create deployment nginx \
@@ -1531,7 +1531,7 @@ kubectl create deployment nginx \
 
 ---
 
-# Hands-on Lab 2 – Expose Deployment
+## Hands-on Lab 2 – Expose Deployment
 
 ```bash
 kubectl expose deployment nginx \
@@ -1546,7 +1546,7 @@ kubectl get svc
 
 ---
 
-# Hands-on Lab 3 – Inspect EndpointSlices
+## Hands-on Lab 3 – Inspect EndpointSlices
 
 ```bash
 kubectl get endpointslices
@@ -1556,7 +1556,7 @@ Observe backend Pod IP addresses associated with the Service.
 
 ---
 
-# Hands-on Lab 4 – Test DNS
+## Hands-on Lab 4 – Test DNS
 
 ```bash
 kubectl run tester \
@@ -1574,7 +1574,7 @@ Observe the returned ClusterIP.
 
 ---
 
-# Hands-on Lab 5 – Test Load Balancing
+## Hands-on Lab 5 – Test Load Balancing
 
 Inside the BusyBox Pod:
 
@@ -1588,9 +1588,9 @@ Then inspect the backend Pods to observe traffic distribution.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Connecting Directly to Pod IPs
+### 1. Connecting Directly to Pod IPs
 
 Incorrect:
 
@@ -1614,7 +1614,7 @@ Service DNS
 
 ---
 
-## 2. Forgetting Labels
+### 2. Forgetting Labels
 
 Service:
 
@@ -1640,7 +1640,7 @@ No Endpoints
 
 ---
 
-## 3. Confusing ClusterIP with Pod IP
+### 3. Confusing ClusterIP with Pod IP
 
 ```
 ClusterIP
@@ -1660,7 +1660,7 @@ Real
 
 ---
 
-## 4. Ignoring EndpointSlices
+### 4. Ignoring EndpointSlices
 
 When troubleshooting Services:
 
@@ -1672,15 +1672,15 @@ is often more useful than checking only Pods.
 
 ---
 
-## 5. Assuming kube-proxy Forwards Packets Directly
+### 5. Assuming kube-proxy Forwards Packets Directly
 
 kube-proxy generally **programs the kernel's networking tables** rather than acting as an inline proxy for every packet.
 
 ---
 
-# ClusterIP Quick Revision
+## ClusterIP Quick Revision
 
-## Internal Flow
+### Internal Flow
 
 ```
 Application
@@ -1712,7 +1712,7 @@ Pod
 
 ---
 
-## Networking Components
+### Networking Components
 
 ```
 CoreDNS
@@ -1736,7 +1736,7 @@ Pod
 
 ---
 
-## Packet Processing
+### Packet Processing
 
 ```
 Virtual IP
@@ -1752,7 +1752,7 @@ Backend Pod
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View Services:
 
@@ -1792,9 +1792,9 @@ kubectl exec -it <pod> -- wget -qO- http://backend
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a ClusterIP?
 - Why is ClusterIP the default Service type?
@@ -1802,7 +1802,7 @@ kubectl exec -it <pod> -- wget -qO- http://backend
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - What is the role of kube-proxy?
 - What are EndpointSlices?
@@ -1810,7 +1810,7 @@ kubectl exec -it <pod> -- wget -qO- http://backend
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the complete internal packet flow from a client Pod to a backend Pod through a ClusterIP Service.
 - Compare iptables, IPVS, and nftables modes.
@@ -1820,9 +1820,9 @@ kubectl exec -it <pod> -- wget -qO- http://backend
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - Services
 - ClusterIP
@@ -1832,7 +1832,7 @@ kubectl exec -it <pod> -- wget -qO- http://backend
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Networking Model
 - Kubernetes Best Practices
@@ -1841,7 +1841,7 @@ kubectl exec -it <pod> -- wget -qO- http://backend
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Production Networking
@@ -1850,7 +1850,7 @@ kubectl exec -it <pod> -- wget -qO- http://backend
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Deploy a three-replica application and expose it with a ClusterIP Service.
 2. Inspect the generated Endpoints and EndpointSlices.
@@ -1862,7 +1862,7 @@ kubectl exec -it <pod> -- wget -qO- http://backend
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Application

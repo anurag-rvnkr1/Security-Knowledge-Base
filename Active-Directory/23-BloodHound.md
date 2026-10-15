@@ -1,6 +1,6 @@
 # 23-BloodHound.md
 
-# Part 1 — Introduction to BloodHound, Enterprise Identity Visualization, Attack Path Analysis and Defensive Security Assessments
+## Part 1 — Introduction to BloodHound, Enterprise Identity Visualization, Attack Path Analysis and Defensive Security Assessments
 
 > **Important Note**
 >
@@ -10,7 +10,7 @@
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -26,7 +26,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 Large Active Directory environments often contain:
 
@@ -44,7 +44,7 @@ BloodHound helps security teams **visualize identity relationships** so they can
 
 ---
 
-# What is BloodHound?
+## What is BloodHound?
 
 BloodHound is a security analysis platform that models relationships within identity infrastructure as a graph.
 
@@ -54,7 +54,7 @@ Its primary value is **visibility**.
 
 ---
 
-# Why Organizations Use BloodHound
+## Why Organizations Use BloodHound
 
 Organizations commonly use BloodHound to:
 
@@ -69,7 +69,7 @@ Organizations commonly use BloodHound to:
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
 Identity Data
@@ -101,11 +101,11 @@ Security Assessment
 
 ---
 
-# Graph Theory Basics
+## Graph Theory Basics
 
 BloodHound represents identity infrastructure using graph concepts.
 
-### Nodes
+#### Nodes
 
 Nodes represent objects such as:
 
@@ -118,7 +118,7 @@ Nodes represent objects such as:
 
 ---
 
-### Edges
+#### Edges
 
 Edges represent relationships between objects.
 
@@ -134,7 +134,7 @@ The graph illustrates how these relationships connect.
 
 ---
 
-# Example Graph
+## Example Graph
 
 ```
 User
@@ -168,7 +168,7 @@ A graph makes complex identity relationships easier to understand than large tab
 
 ---
 
-# Why Graphs Matter
+## Why Graphs Matter
 
 Traditional documentation answers questions like:
 
@@ -182,7 +182,7 @@ This broader perspective supports more effective security reviews.
 
 ---
 
-# BloodHound from a Blue Team Perspective
+## BloodHound from a Blue Team Perspective
 
 Blue Teams use BloodHound to:
 
@@ -196,7 +196,7 @@ The emphasis is on reducing organizational risk.
 
 ---
 
-# Identity Relationship Analysis
+## Identity Relationship Analysis
 
 Examples of relationships that may be reviewed include:
 
@@ -224,7 +224,7 @@ Security teams can evaluate whether these relationships are appropriate and nece
 
 ---
 
-# Enterprise Identity Visualization
+## Enterprise Identity Visualization
 
 ```
 Users
@@ -258,7 +258,7 @@ Visualization helps security teams understand complex environments more effectiv
 
 ---
 
-# Attack Path Analysis (Defensive View)
+## Attack Path Analysis (Defensive View)
 
 An **attack path** is a sequence of connected permissions or relationships that could increase organizational risk if left unmanaged.
 
@@ -273,7 +273,7 @@ The goal is to eliminate or reduce risky relationships before they can be abused
 
 ---
 
-# Common Defensive Questions
+## Common Defensive Questions
 
 Security teams often ask:
 
@@ -287,7 +287,7 @@ These questions support proactive security improvement.
 
 ---
 
-# Enterprise Risk Visualization
+## Enterprise Risk Visualization
 
 ```
 Identity
@@ -313,7 +313,7 @@ Visualization assists with prioritizing remediation activities.
 
 ---
 
-# Identity Governance
+## Identity Governance
 
 BloodHound can support governance initiatives by helping organizations review:
 
@@ -327,7 +327,7 @@ Periodic reviews help maintain least privilege.
 
 ---
 
-# Security Assessment Workflow
+## Security Assessment Workflow
 
 ```
 Collect Identity Information
@@ -355,7 +355,7 @@ Validate Changes
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -386,7 +386,7 @@ Benefits:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Identity relationships naturally become more complex as organizations grow.
 
@@ -401,13 +401,13 @@ The greatest value comes from using the information to strengthen security contr
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design a relationship map for a fictional Active Directory environment.
 
-### Step 1
+#### Step 1
 
 List:
 
@@ -419,13 +419,13 @@ List:
 
 ---
 
-### Step 2
+#### Step 2
 
 Draw relationships between these objects.
 
 ---
 
-### Step 3
+#### Step 3
 
 Highlight:
 
@@ -435,57 +435,57 @@ Highlight:
 
 ---
 
-### Step 4
+#### Step 4
 
 Identify areas where least privilege could be improved.
 
 ---
 
-### Step 5
+#### Step 5
 
 Recommend three governance improvements based on your diagram.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is BloodHound?
+#### Q1: What is BloodHound?
 
 **Answer:** BloodHound is a graph-based security analysis platform that helps organizations visualize identity relationships and privilege structures within Active Directory.
 
 ---
 
-### Q2: Why are graph relationships useful?
+#### Q2: Why are graph relationships useful?
 
 **Answer:** They make complex identity and permission relationships easier to understand, supporting more effective security analysis.
 
 ---
 
-### Q3: What is an attack path from a defensive perspective?
+#### Q3: What is an attack path from a defensive perspective?
 
 **Answer:** It is a sequence of identity or permission relationships that may increase organizational risk and should be reviewed for potential remediation.
 
 ---
 
-### Q4: How does BloodHound support least privilege?
+#### Q4: How does BloodHound support least privilege?
 
 **Answer:** It helps identify excessive permissions and unnecessary administrative relationships so organizations can reduce privilege exposure.
 
 ---
 
-### Q5: Why is identity visualization important?
+#### Q5: Why is identity visualization important?
 
 **Answer:** Large Active Directory environments contain many interconnected relationships that are difficult to understand without graphical representation.
 
 ---
 
-### Q6: Who typically uses BloodHound?
+#### Q6: Who typically uses BloodHound?
 
 **Answer:** Security engineers, Active Directory administrators, Blue Teams, Red Teams conducting authorized assessments, and identity governance teams.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use BloodHound as part of regular security assessments.
 - Review privileged relationships periodically.
@@ -498,7 +498,7 @@ Recommend three governance improvements based on your diagram.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming visualization alone improves security.
 - Ignoring excessive delegated permissions.
@@ -509,7 +509,7 @@ Recommend three governance improvements based on your diagram.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - BloodHound helps visualize complex identity relationships within Active Directory.
 - Graph-based analysis improves understanding of privilege structures.
@@ -518,9 +518,9 @@ Recommend three governance improvements based on your diagram.
 
 ---
 
-# 23-BloodHound.md
+## 23-BloodHound.md
 
-# Part 2 — BloodHound Data Model, Nodes, Edges, Graph Concepts, Enterprise Analysis and Defensive Risk Assessment
+## Part 2 — BloodHound Data Model, Nodes, Edges, Graph Concepts, Enterprise Analysis and Defensive Risk Assessment
 
 > **Important Note**
 >
@@ -528,7 +528,7 @@ Recommend three governance improvements based on your diagram.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -544,7 +544,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 BloodHound models Active Directory as a **graph**.
 
@@ -558,7 +558,7 @@ This approach allows security teams to understand how identities interact across
 
 ---
 
-# BloodHound Graph Model
+## BloodHound Graph Model
 
 ```
           Active Directory
@@ -590,7 +590,7 @@ This approach allows security teams to understand how identities interact across
 
 ---
 
-# What is a Node?
+## What is a Node?
 
 A **Node** represents an object.
 
@@ -608,7 +608,7 @@ Each object becomes a node inside the graph.
 
 ---
 
-# Example Node Structure
+## Example Node Structure
 
 ```
 +----------------+
@@ -632,7 +632,7 @@ Each node contains metadata that describes the object.
 
 ---
 
-# Common Node Types
+## Common Node Types
 
 | Node Type | Represents |
 |-----------|------------|
@@ -647,7 +647,7 @@ Each node contains metadata that describes the object.
 
 ---
 
-# What is an Edge?
+## What is an Edge?
 
 An **Edge** represents a relationship between two nodes.
 
@@ -669,7 +669,7 @@ Without edges, the graph would simply be a collection of unrelated objects.
 
 ---
 
-# Example Relationship
+## Example Relationship
 
 ```
 Alice
@@ -695,7 +695,7 @@ This illustrates how relationships connect objects.
 
 ---
 
-# Types of Relationships
+## Types of Relationships
 
 Examples of relationship categories include:
 
@@ -710,7 +710,7 @@ These relationships help defenders understand privilege flow throughout the envi
 
 ---
 
-# Graph Visualization
+## Graph Visualization
 
 ```
 User A
@@ -738,7 +738,7 @@ Graph visualization helps simplify complex environments.
 
 ---
 
-# Identity Relationship Mapping
+## Identity Relationship Mapping
 
 ```
 Users
@@ -764,7 +764,7 @@ This representation helps identify where governance improvements may be benefici
 
 ---
 
-# Why Graph Analysis Matters
+## Why Graph Analysis Matters
 
 Traditional permission reviews often answer:
 
@@ -778,7 +778,7 @@ This broader context supports more effective security reviews.
 
 ---
 
-# Enterprise Relationship Analysis
+## Enterprise Relationship Analysis
 
 Security teams commonly review:
 
@@ -793,7 +793,7 @@ The objective is to understand how permissions are distributed across the enviro
 
 ---
 
-# Graph Traversal (Conceptual)
+## Graph Traversal (Conceptual)
 
 ```
 Node
@@ -819,7 +819,7 @@ Graph traversal helps security teams understand how objects are interconnected w
 
 ---
 
-# Tier-0 Visualization
+## Tier-0 Visualization
 
 ```
 Tier-0
@@ -841,7 +841,7 @@ Graph visualization assists in identifying relationships involving critical asse
 
 ---
 
-# Administrative Relationship Review
+## Administrative Relationship Review
 
 ```
 User
@@ -863,7 +863,7 @@ Organizations should periodically review whether each relationship remains neces
 
 ---
 
-# Privilege Review Process
+## Privilege Review Process
 
 ```
 Relationship
@@ -885,7 +885,7 @@ Least privilege should guide remediation decisions.
 
 ---
 
-# Defensive Risk Assessment
+## Defensive Risk Assessment
 
 Graph analysis can support review of:
 
@@ -899,7 +899,7 @@ The objective is to reduce unnecessary privilege relationships.
 
 ---
 
-# Governance Workflow
+## Governance Workflow
 
 ```
 Graph Analysis
@@ -929,7 +929,7 @@ Governance ensures privilege changes are controlled and documented.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -960,7 +960,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 As enterprises grow, identity relationships become increasingly complex.
 
@@ -975,13 +975,13 @@ Visibility is the first step toward reducing identity-related risk.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Create a graph model for a fictional Active Directory environment.
 
-### Step 1
+#### Step 1
 
 Identify node types:
 
@@ -993,13 +993,13 @@ Identify node types:
 
 ---
 
-### Step 2
+#### Step 2
 
 Draw relationships between each node.
 
 ---
 
-### Step 3
+#### Step 3
 
 Highlight:
 
@@ -1009,57 +1009,57 @@ Highlight:
 
 ---
 
-### Step 4
+#### Step 4
 
 Review each administrative relationship and determine whether it supports a legitimate business requirement.
 
 ---
 
-### Step 5
+#### Step 5
 
 Document three recommendations to simplify the privilege structure while maintaining operational needs.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: What is a node in BloodHound?
+#### Q1: What is a node in BloodHound?
 
 **Answer:** A node represents an Active Directory object such as a user, group, computer, domain, or Organizational Unit.
 
 ---
 
-### Q2: What is an edge?
+#### Q2: What is an edge?
 
 **Answer:** An edge represents the relationship between two nodes, such as membership, delegation, or ownership.
 
 ---
 
-### Q3: Why does BloodHound use a graph model?
+#### Q3: Why does BloodHound use a graph model?
 
 **Answer:** A graph model makes it easier to understand complex identity relationships and privilege structures that are difficult to analyze using traditional tables.
 
 ---
 
-### Q4: Why are relationships important?
+#### Q4: Why are relationships important?
 
 **Answer:** Relationships show how permissions and administrative responsibilities are connected across an environment, supporting better governance and risk assessment.
 
 ---
 
-### Q5: How does graph analysis help security teams?
+#### Q5: How does graph analysis help security teams?
 
 **Answer:** It provides visibility into privilege structures, administrative relationships, and identity governance, enabling organizations to identify opportunities to reduce unnecessary risk.
 
 ---
 
-### Q6: Why should privileged relationships be reviewed regularly?
+#### Q6: Why should privileged relationships be reviewed regularly?
 
 **Answer:** Regular reviews help ensure privileges remain aligned with business needs and support the principle of least privilege.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain an up-to-date inventory of identity objects.
 - Review administrative relationships on a regular schedule.
@@ -1072,7 +1072,7 @@ Document three recommendations to simplify the privilege structure while maintai
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating graph analysis as a one-time exercise.
 - Ignoring indirect privilege relationships.
@@ -1083,7 +1083,7 @@ Document three recommendations to simplify the privilege structure while maintai
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - BloodHound models Active Directory using nodes and edges to represent identity relationships.
 - Graph analysis provides valuable visibility into privilege structures and administrative relationships.
@@ -1092,9 +1092,9 @@ Document three recommendations to simplify the privilege structure while maintai
 
 ---
 
-# 23-BloodHound.md
+## 23-BloodHound.md
 
-# Part 3 — BloodHound for Defensive Analysis, Identity Governance, Risk Prioritization, Continuous Assessment and Security Improvement
+## Part 3 — BloodHound for Defensive Analysis, Identity Governance, Risk Prioritization, Continuous Assessment and Security Improvement
 
 > **Important Note**
 >
@@ -1102,7 +1102,7 @@ Document three recommendations to simplify the privilege structure while maintai
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1118,7 +1118,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 BloodHound becomes most valuable **after** the graph has been built.
 
@@ -1133,7 +1133,7 @@ The objective is continuous security improvement.
 
 ---
 
-# Defensive Assessment Workflow
+## Defensive Assessment Workflow
 
 ```
 Identity Data
@@ -1165,7 +1165,7 @@ Continuous Review
 
 ---
 
-# Identity Governance Workflow
+## Identity Governance Workflow
 
 BloodHound supports governance by helping organizations review:
 
@@ -1197,7 +1197,7 @@ Identity governance should be an ongoing process rather than a one-time review.
 
 ---
 
-# Privilege Review Process
+## Privilege Review Process
 
 Security teams should periodically review:
 
@@ -1212,7 +1212,7 @@ Each privilege should have a documented business justification.
 
 ---
 
-# Least Privilege Validation
+## Least Privilege Validation
 
 ```
 Assigned Permission
@@ -1238,7 +1238,7 @@ Reducing unnecessary permissions lowers identity-related risk.
 
 ---
 
-# Risk Prioritization
+## Risk Prioritization
 
 Not every relationship presents the same level of concern.
 
@@ -1256,7 +1256,7 @@ Risk should always be evaluated within the organization's operational context.
 
 ---
 
-# Tier-0 Review
+## Tier-0 Review
 
 Typical Tier-0 assets include:
 
@@ -1280,7 +1280,7 @@ Relationships involving Tier-0 assets deserve the highest review priority.
 
 ---
 
-# Administrative Group Review
+## Administrative Group Review
 
 Example review process:
 
@@ -1312,7 +1312,7 @@ Periodic reviews help prevent privilege accumulation over time.
 
 ---
 
-# Delegation Review
+## Delegation Review
 
 Organizations should review:
 
@@ -1326,7 +1326,7 @@ Delegation should align with the principle of least privilege.
 
 ---
 
-# Identity Exposure Review
+## Identity Exposure Review
 
 Security teams should evaluate:
 
@@ -1340,7 +1340,7 @@ The objective is to simplify identity management while maintaining operational e
 
 ---
 
-# Attack Path Reduction (Defensive Perspective)
+## Attack Path Reduction (Defensive Perspective)
 
 From a defensive standpoint, organizations aim to:
 
@@ -1368,7 +1368,7 @@ Reducing unnecessary relationships makes the environment easier to manage and de
 
 ---
 
-# Security Dashboard
+## Security Dashboard
 
 Example governance dashboard:
 
@@ -1400,7 +1400,7 @@ Dashboards help security teams monitor long-term improvements.
 
 ---
 
-# Continuous Assessment
+## Continuous Assessment
 
 Identity relationships evolve continuously.
 
@@ -1416,7 +1416,7 @@ Regular reviews help ensure governance keeps pace with change.
 
 ---
 
-# Security Reporting
+## Security Reporting
 
 Example reporting categories:
 
@@ -1431,7 +1431,7 @@ Reports should emphasize measurable improvements.
 
 ---
 
-# Enterprise Improvement Cycle
+## Enterprise Improvement Cycle
 
 ```
 Review
@@ -1465,7 +1465,7 @@ Continuous improvement is more effective than infrequent large-scale reviews.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Company:
 
@@ -1497,7 +1497,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 BloodHound should be viewed as a **decision-support tool** rather than an automated security solution.
 
@@ -1511,13 +1511,13 @@ Its greatest value comes from helping organizations:
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Perform a governance review of a fictional Active Directory environment.
 
-### Step 1
+#### Step 1
 
 Identify:
 
@@ -1528,7 +1528,7 @@ Identify:
 
 ---
 
-### Step 2
+#### Step 2
 
 Review all privileged relationships.
 
@@ -1540,63 +1540,63 @@ Document:
 
 ---
 
-### Step 3
+#### Step 3
 
 Identify relationships that may benefit from simplification.
 
 ---
 
-### Step 4
+#### Step 4
 
 Create a risk-prioritized remediation plan.
 
 ---
 
-### Step 5
+#### Step 5
 
 Design a quarterly governance review process for maintaining least privilege.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: How does BloodHound support identity governance?
+#### Q1: How does BloodHound support identity governance?
 
 **Answer:** It visualizes identity relationships, enabling organizations to review permissions, administrative delegation, and privileged access more effectively.
 
 ---
 
-### Q2: Why should administrative relationships be reviewed regularly?
+#### Q2: Why should administrative relationships be reviewed regularly?
 
 **Answer:** Business needs change over time, and periodic reviews help ensure privileges remain appropriate and aligned with least privilege principles.
 
 ---
 
-### Q3: What is the purpose of Tier-0 governance?
+#### Q3: What is the purpose of Tier-0 governance?
 
 **Answer:** Tier-0 governance focuses on protecting the organization's most critical identity infrastructure by applying enhanced controls and oversight.
 
 ---
 
-### Q4: Why is continuous assessment important?
+#### Q4: Why is continuous assessment important?
 
 **Answer:** Active Directory environments change continuously, requiring regular reviews to maintain security and governance.
 
 ---
 
-### Q5: What is the value of security dashboards?
+#### Q5: What is the value of security dashboards?
 
 **Answer:** Dashboards provide visibility into identity governance, privilege trends, and remediation progress, supporting informed decision-making.
 
 ---
 
-### Q6: Why is BloodHound considered a decision-support tool?
+#### Q6: Why is BloodHound considered a decision-support tool?
 
 **Answer:** It helps visualize and analyze identity relationships, allowing security teams to make informed governance and remediation decisions.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Review privileged relationships on a scheduled basis.
 - Prioritize Tier-0 governance.
@@ -1609,7 +1609,7 @@ Design a quarterly governance review process for maintaining least privilege.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Conducting privilege reviews only after incidents.
 - Ignoring indirect administrative relationships.
@@ -1620,7 +1620,7 @@ Design a quarterly governance review process for maintaining least privilege.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - BloodHound supports identity governance by providing visibility into privilege relationships.
 - Regular reviews of administrative access help maintain least privilege.
@@ -1629,9 +1629,9 @@ Design a quarterly governance review process for maintaining least privilege.
 
 ---
 
-# 23-BloodHound.md
+## 23-BloodHound.md
 
-# Part 4 — Enterprise Governance, Continuous Improvement, Security Metrics, BloodHound Best Practices and Chapter Summary
+## Part 4 — Enterprise Governance, Continuous Improvement, Security Metrics, BloodHound Best Practices and Chapter Summary
 
 > **Important Note**
 >
@@ -1639,7 +1639,7 @@ Design a quarterly governance review process for maintaining least privilege.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1655,7 +1655,7 @@ After completing this part, you will understand:
 
 ---
 
-# Introduction
+## Introduction
 
 BloodHound is most effective when integrated into an organization's **identity governance program**.
 
@@ -1672,7 +1672,7 @@ Continuous visibility leads to better long-term security.
 
 ---
 
-# Enterprise Governance Lifecycle
+## Enterprise Governance Lifecycle
 
 ```
 Collect Identity Data
@@ -1706,7 +1706,7 @@ Governance is an ongoing operational process.
 
 ---
 
-# Enterprise BloodHound Program
+## Enterprise BloodHound Program
 
 ```
 Identity Governance
@@ -1730,7 +1730,7 @@ BloodHound should complement—not replace—other security monitoring and gover
 
 ---
 
-# Identity Governance Framework
+## Identity Governance Framework
 
 A mature governance framework typically includes:
 
@@ -1745,7 +1745,7 @@ Identity governance aligns technical permissions with business requirements.
 
 ---
 
-# Privilege Governance
+## Privilege Governance
 
 Organizations should periodically review:
 
@@ -1782,7 +1782,7 @@ Every privileged relationship should have:
 
 ---
 
-# Tier-0 Governance
+## Tier-0 Governance
 
 Tier-0 assets deserve the highest level of oversight.
 
@@ -1821,7 +1821,7 @@ Documentation
 
 ---
 
-# Continuous Privilege Review
+## Continuous Privilege Review
 
 Identity environments evolve continuously.
 
@@ -1838,7 +1838,7 @@ Privilege reviews should evolve alongside these changes.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Example governance metrics:
 
@@ -1857,11 +1857,11 @@ Metrics help demonstrate measurable improvement over time.
 
 ---
 
-# Security Reporting
+## Security Reporting
 
 Different stakeholders require different levels of detail.
 
-### Operational Teams
+#### Operational Teams
 
 Focus on:
 
@@ -1871,7 +1871,7 @@ Focus on:
 
 ---
 
-### Security Teams
+#### Security Teams
 
 Focus on:
 
@@ -1882,7 +1882,7 @@ Focus on:
 
 ---
 
-### Management
+#### Management
 
 Focus on:
 
@@ -1893,7 +1893,7 @@ Focus on:
 
 ---
 
-### Executives
+#### Executives
 
 Focus on:
 
@@ -1904,7 +1904,7 @@ Focus on:
 
 ---
 
-# Continuous Improvement Model
+## Continuous Improvement Model
 
 ```
 Assess
@@ -1938,7 +1938,7 @@ Security maturity increases through repeated improvement cycles.
 
 ---
 
-# BloodHound Limitations
+## BloodHound Limitations
 
 BloodHound is a powerful visualization and analysis platform, but it has important limitations.
 
@@ -1955,7 +1955,7 @@ BloodHound should be integrated with broader security processes rather than used
 
 ---
 
-# Enterprise Integration
+## Enterprise Integration
 
 BloodHound works best alongside:
 
@@ -1991,7 +1991,7 @@ Combining multiple security capabilities provides stronger overall protection.
 
 ---
 
-# Enterprise Maturity Model
+## Enterprise Maturity Model
 
 ```
 Level 1
@@ -2027,9 +2027,9 @@ Organizations gradually mature through consistent governance and operational dis
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Company
+### Company
 
 ```
 Fabrikam Global Retail
@@ -2061,7 +2061,7 @@ Results:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 BloodHound is most valuable when used to answer governance questions such as:
 
@@ -2075,13 +2075,13 @@ The objective is **better governance**, not simply better visualization.
 
 ---
 
-# Hands-on Lab
+## Hands-on Lab
 
-## Objective
+### Objective
 
 Design an enterprise identity governance program that incorporates BloodHound.
 
-### Step 1
+#### Step 1
 
 Define review schedules for:
 
@@ -2092,13 +2092,13 @@ Define review schedules for:
 
 ---
 
-### Step 2
+#### Step 2
 
 Develop governance metrics for measuring improvement.
 
 ---
 
-### Step 3
+#### Step 3
 
 Create an executive dashboard showing:
 
@@ -2109,57 +2109,57 @@ Create an executive dashboard showing:
 
 ---
 
-### Step 4
+#### Step 4
 
 Design a quarterly governance meeting agenda to review identity risks and approve remediation priorities.
 
 ---
 
-### Step 5
+#### Step 5
 
 Document a continuous improvement plan for the next 12 months.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Q1: How should BloodHound be integrated into enterprise security?
+#### Q1: How should BloodHound be integrated into enterprise security?
 
 **Answer:** As part of a broader identity governance and security assessment program that includes monitoring, risk management, and periodic privilege reviews.
 
 ---
 
-### Q2: Why are governance metrics important?
+#### Q2: Why are governance metrics important?
 
 **Answer:** They provide measurable insight into identity security, privilege management, and the effectiveness of governance activities over time.
 
 ---
 
-### Q3: What are BloodHound's primary limitations?
+#### Q3: What are BloodHound's primary limitations?
 
 **Answer:** It visualizes and analyzes identity relationships but does not replace monitoring, endpoint protection, vulnerability management, or governance processes.
 
 ---
 
-### Q4: Why should Tier-0 assets receive enhanced governance?
+#### Q4: Why should Tier-0 assets receive enhanced governance?
 
 **Answer:** Because compromise or mismanagement of Tier-0 assets can significantly affect the security of the entire Active Directory environment.
 
 ---
 
-### Q5: Why is continuous validation important?
+#### Q5: Why is continuous validation important?
 
 **Answer:** Identity environments change continuously, so governance decisions and privilege assignments should be reviewed regularly to remain aligned with business requirements.
 
 ---
 
-### Q6: What is the greatest long-term benefit of BloodHound?
+#### Q6: What is the greatest long-term benefit of BloodHound?
 
 **Answer:** Improved visibility into identity relationships, enabling organizations to strengthen governance, reduce unnecessary privilege exposure, and continuously improve Active Directory security.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Incorporate BloodHound into regular identity governance activities.
 - Review Tier-0 relationships frequently.
@@ -2172,7 +2172,7 @@ Document a continuous improvement plan for the next 12 months.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating BloodHound as a one-time assessment tool.
 - Ignoring governance after initial analysis.
@@ -2183,7 +2183,7 @@ Document a continuous improvement plan for the next 12 months.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - BloodHound is a graph-based platform for understanding identity relationships and supporting security governance.
 - Continuous privilege reviews and Tier-0 governance improve long-term Active Directory security.
@@ -2192,7 +2192,7 @@ Document a continuous improvement plan for the next 12 months.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

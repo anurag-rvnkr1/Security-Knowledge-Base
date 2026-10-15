@@ -73,7 +73,7 @@ Key Separation
 
 ---
 
-# 1. Why Key Management Matters
+## 1. Why Key Management Matters
 
 Consider:
 
@@ -111,7 +111,7 @@ Therefore:
 
 ---
 
-# 2. Cryptographic Key
+## 2. Cryptographic Key
 
 A cryptographic key is secret or public information used by a cryptographic algorithm.
 
@@ -140,7 +140,7 @@ Wrapped
 
 ---
 
-# 3. Symmetric Key
+## 3. Symmetric Key
 
 A symmetric key is generally used for both encryption and decryption.
 
@@ -165,7 +165,7 @@ HMAC Keys
 
 ---
 
-# 4. Asymmetric Key Pair
+## 4. Asymmetric Key Pair
 
 Asymmetric cryptography uses:
 
@@ -203,7 +203,7 @@ depending on the algorithm and protocol.
 
 ---
 
-# 5. Key Lifecycle
+## 5. Key Lifecycle
 
 A secure key lifecycle can be represented as:
 
@@ -231,7 +231,7 @@ Each stage must have security controls.
 
 ---
 
-# 6. Key Generation
+## 6. Key Generation
 
 Keys should be generated using a cryptographically secure random number generator.
 
@@ -261,7 +261,7 @@ This generates:
 
 ---
 
-# 7. Key Entropy
+## 7. Key Entropy
 
 **Entropy** represents unpredictability.
 
@@ -286,7 +286,7 @@ its effective security may be dramatically lower.
 
 ---
 
-# 8. Key Length
+## 8. Key Length
 
 Typical symmetric key sizes:
 
@@ -312,7 +312,7 @@ Threat Model
 
 ---
 
-# 9. Key Distribution Problem
+## 9. Key Distribution Problem
 
 Suppose Alice wants to securely communicate with Bob using AES.
 
@@ -346,7 +346,7 @@ This is the **key distribution problem**.
 
 ---
 
-# 10. Key Exchange
+## 10. Key Exchange
 
 Key exchange allows two parties to establish shared secret material without directly transmitting the final shared secret over the network.
 
@@ -368,7 +368,7 @@ Shared Secret              Shared Secret
 
 ---
 
-# 11. Diffie-Hellman
+## 11. Diffie-Hellman
 
 **Diffie-Hellman (DH)** is a key agreement mechanism.
 
@@ -388,7 +388,7 @@ produce the same shared secret independently.
 
 ---
 
-# 12. Basic Diffie-Hellman Model
+## 12. Basic Diffie-Hellman Model
 
 Public parameters:
 
@@ -430,7 +430,7 @@ B
 
 ---
 
-# 13. Shared Secret
+## 13. Shared Secret
 
 Alice computes:
 
@@ -470,7 +470,7 @@ Bob's S
 
 ---
 
-# 14. What the Attacker Sees
+## 14. What the Attacker Sees
 
 An attacker can observe:
 
@@ -499,7 +499,7 @@ This relies on the hardness of the underlying mathematical problem.
 
 ---
 
-# 15. Diffie-Hellman Does Not Authenticate
+## 15. Diffie-Hellman Does Not Authenticate
 
 A critical limitation:
 
@@ -523,7 +523,7 @@ Man-in-the-Middle Attack
 
 ---
 
-# 16. Diffie-Hellman MITM
+## 16. Diffie-Hellman MITM
 
 Suppose:
 
@@ -555,7 +555,7 @@ Therefore protocols combine key exchange with authentication.
 
 ---
 
-# 17. Authenticated Key Exchange
+## 17. Authenticated Key Exchange
 
 A secure protocol generally combines:
 
@@ -577,7 +577,7 @@ in TLS.
 
 ---
 
-# 18. Ephemeral Diffie-Hellman
+## 18. Ephemeral Diffie-Hellman
 
 An ephemeral key is temporary.
 
@@ -605,7 +605,7 @@ Different sessions produce different shared secrets.
 
 ---
 
-# 19. Forward Secrecy
+## 19. Forward Secrecy
 
 Forward secrecy means that compromise of a long-term private key should not allow an attacker to decrypt previously captured sessions, assuming ephemeral session keys were used correctly and other protocol assumptions hold.
 
@@ -631,7 +631,7 @@ under the forward-secrecy model.
 
 ---
 
-# 20. Why Forward Secrecy Matters
+## 20. Why Forward Secrecy Matters
 
 Suppose an attacker records:
 
@@ -663,7 +663,7 @@ should remain unavailable.
 
 ---
 
-# 21. ECDH
+## 21. ECDH
 
 **ECDH** stands for:
 
@@ -695,7 +695,7 @@ Same Shared Secret
 
 ---
 
-# 22. ECDHE
+## 22. ECDHE
 
 **ECDHE** stands for:
 
@@ -723,7 +723,7 @@ Session Keys
 
 ---
 
-# 23. DH vs ECDH
+## 23. DH vs ECDH
 
 | Feature | DH | ECDH |
 |---|---|---|
@@ -735,7 +735,7 @@ Session Keys
 
 ---
 
-# 24. DHE vs ECDHE
+## 24. DHE vs ECDHE
 
 ```text
 DHE
@@ -753,7 +753,7 @@ Both can provide forward secrecy when used with fresh ephemeral keys.
 
 ---
 
-# 25. RSA Key Transport
+## 25. RSA Key Transport
 
 Older TLS designs could use RSA to transport a premaster secret.
 
@@ -775,7 +775,7 @@ Modern TLS 1.3 does not use static RSA key transport.
 
 ---
 
-# 26. RSA Key Transport vs ECDHE
+## 26. RSA Key Transport vs ECDHE
 
 | Property | RSA Key Transport | ECDHE |
 |---|---|---|
@@ -787,7 +787,7 @@ Modern TLS 1.3 does not use static RSA key transport.
 
 ---
 
-# 27. Key Derivation
+## 27. Key Derivation
 
 A shared secret should not necessarily be used directly as an encryption key.
 
@@ -805,7 +805,7 @@ A **Key Derivation Function (KDF)** converts secret material into cryptographica
 
 ---
 
-# 28. HKDF
+## 28. HKDF
 
 **HKDF** stands for:
 
@@ -829,7 +829,7 @@ Derived Key
 
 ---
 
-# 29. HKDF Extract
+## 29. HKDF Extract
 
 The extract phase takes input key material and produces a pseudorandom key.
 
@@ -847,7 +847,7 @@ PRK
 
 ---
 
-# 30. HKDF Expand
+## 30. HKDF Expand
 
 The expand phase derives one or more keys.
 
@@ -865,7 +865,7 @@ The `info` field can separate different purposes.
 
 ---
 
-# 31. Why Use a KDF?
+## 31. Why Use a KDF?
 
 Suppose a protocol has:
 
@@ -896,7 +896,7 @@ Kenc Kmac IV  Other
 
 ---
 
-# 32. Key Separation
+## 32. Key Separation
 
 Never unnecessarily use the same key for multiple unrelated purposes.
 
@@ -923,7 +923,7 @@ Kenc Kmac Ktoken Kother
 
 ---
 
-# 33. Context Binding
+## 33. Context Binding
 
 A KDF can incorporate context information:
 
@@ -939,7 +939,7 @@ This helps ensure derived keys are specific to their intended context.
 
 ---
 
-# 34. Client and Server Keys
+## 34. Client and Server Keys
 
 A protocol may derive separate keys:
 
@@ -966,7 +966,7 @@ This provides stronger key separation.
 
 ---
 
-# 35. Session Keys
+## 35. Session Keys
 
 A session key is a temporary cryptographic key used for a particular communication session.
 
@@ -986,9 +986,9 @@ Encrypted Traffic
 
 ---
 
-# 36. Long-Term vs Ephemeral Keys
+## 36. Long-Term vs Ephemeral Keys
 
-### Long-Term Key
+#### Long-Term Key
 
 Used over a longer period:
 
@@ -998,7 +998,7 @@ CA Key
 Signing Key
 ```
 
-### Ephemeral Key
+#### Ephemeral Key
 
 Used temporarily:
 
@@ -1010,7 +1010,7 @@ Temporary Encryption Key
 
 ---
 
-# 37. Key Hierarchy
+## 37. Key Hierarchy
 
 Large systems often use hierarchical key structures.
 
@@ -1030,7 +1030,7 @@ This makes key management more scalable.
 
 ---
 
-# 38. Data Encryption Key
+## 38. Data Encryption Key
 
 A **DEK** is a key used to encrypt actual data.
 
@@ -1044,7 +1044,7 @@ The DEK itself can be protected using another key.
 
 ---
 
-# 39. Key Encryption Key
+## 39. Key Encryption Key
 
 A **KEK** is used to encrypt or wrap another key.
 
@@ -1060,7 +1060,7 @@ This allows the data-encryption key to be stored or transported more safely.
 
 ---
 
-# 40. Envelope Encryption
+## 40. Envelope Encryption
 
 Envelope encryption uses:
 
@@ -1096,7 +1096,7 @@ Wrapped DEK
 
 ---
 
-# 41. Envelope Encryption Architecture
+## 41. Envelope Encryption Architecture
 
 ```text
                 Master / KEK
@@ -1120,7 +1120,7 @@ This is common in cloud systems.
 
 ---
 
-# 42. Why Envelope Encryption?
+## 42. Why Envelope Encryption?
 
 Benefits include:
 
@@ -1135,7 +1135,7 @@ Simpler Rotation
 
 ---
 
-# 43. Key Management Service
+## 43. Key Management Service
 
 A **KMS** provides managed cryptographic key operations.
 
@@ -1158,7 +1158,7 @@ Examples include cloud-provider KMS services and enterprise key-management syste
 
 ---
 
-# 44. HSM
+## 44. HSM
 
 **HSM** stands for:
 
@@ -1184,7 +1184,7 @@ Result
 
 ---
 
-# 45. HSM vs KMS
+## 45. HSM vs KMS
 
 | Feature | HSM | KMS |
 |---|---|---|
@@ -1199,7 +1199,7 @@ KMS and HSM are complementary concepts; a KMS may use HSMs underneath.
 
 ---
 
-# 46. Secrets Management
+## 46. Secrets Management
 
 Not every secret is necessarily a cryptographic key.
 
@@ -1226,7 +1226,7 @@ Distribution
 
 ---
 
-# 47. Secrets Manager
+## 47. Secrets Manager
 
 A secrets-management system may provide:
 
@@ -1244,7 +1244,7 @@ The application should receive only the secrets it needs.
 
 ---
 
-# 48. Least Privilege
+## 48. Least Privilege
 
 Applications should not have access to every key.
 
@@ -1270,7 +1270,7 @@ Only Key B
 
 ---
 
-# 49. Key Access Control
+## 49. Key Access Control
 
 Key management should enforce:
 
@@ -1298,7 +1298,7 @@ Delete
 
 ---
 
-# 50. Key Usage Restrictions
+## 50. Key Usage Restrictions
 
 A key should have a defined purpose.
 
@@ -1322,7 +1322,7 @@ unless there is a deliberate, standards-based reason.
 
 ---
 
-# 51. Key Rotation
+## 51. Key Rotation
 
 Key rotation means replacing a key with a new key.
 
@@ -1340,16 +1340,16 @@ Rotation limits the amount of data protected by a single key and helps reduce th
 
 ---
 
-# 52. Rotation Strategies
+## 52. Rotation Strategies
 
-### Immediate Rotation
+#### Immediate Rotation
 
 ```text
 K1 → Disabled
 K2 → Active
 ```
 
-### Graceful Rotation
+#### Graceful Rotation
 
 ```text
 New Data → K2
@@ -1364,7 +1364,7 @@ K1 → Destroy / Retire
 
 ---
 
-# 53. Why Rotate Keys?
+## 53. Why Rotate Keys?
 
 Reasons include:
 
@@ -1381,7 +1381,7 @@ Algorithm Migration
 
 ---
 
-# 54. Cryptoperiod
+## 54. Cryptoperiod
 
 A **cryptoperiod** is the period during which a cryptographic key is authorized for use.
 
@@ -1400,7 +1400,7 @@ There is no single universal rotation interval for every key.
 
 ---
 
-# 55. Key Revocation
+## 55. Key Revocation
 
 Revocation means a key should no longer be trusted or used.
 
@@ -1416,7 +1416,7 @@ Service Decommissioned
 
 ---
 
-# 56. Key Destruction
+## 56. Key Destruction
 
 When a key is no longer required:
 
@@ -1438,7 +1438,7 @@ depending on the provider and key type.
 
 ---
 
-# 57. Key Escrow
+## 57. Key Escrow
 
 Key escrow means storing a copy of certain keys under controlled conditions so authorized parties can recover them.
 
@@ -1463,7 +1463,7 @@ Therefore escrow must be carefully governed.
 
 ---
 
-# 58. Backup of Cryptographic Keys
+## 58. Backup of Cryptographic Keys
 
 Critical keys may require secure backups.
 
@@ -1488,7 +1488,7 @@ Recovery Procedures
 
 ---
 
-# 59. Disaster Recovery
+## 59. Disaster Recovery
 
 Organizations should answer:
 
@@ -1504,7 +1504,7 @@ Key management must be part of disaster recovery planning.
 
 ---
 
-# 60. Key Compromise
+## 60. Key Compromise
 
 If a key is compromised:
 
@@ -1536,7 +1536,7 @@ CA Key
 
 ---
 
-# 61. Key Compromise Response
+## 61. Key Compromise Response
 
 General process:
 
@@ -1555,7 +1555,7 @@ General process:
 
 ---
 
-# 62. Key Wrapping
+## 62. Key Wrapping
 
 Key wrapping protects one key using another key.
 
@@ -1571,7 +1571,7 @@ The wrapped key can then be stored in databases or configuration systems.
 
 ---
 
-# 63. Key Encryption vs Key Wrapping
+## 63. Key Encryption vs Key Wrapping
 
 These terms can be related but are not always interchangeable.
 
@@ -1587,9 +1587,9 @@ Use standardized mechanisms rather than inventing custom key-encryption formats.
 
 ---
 
-# 64. Key Derivation vs Key Wrapping
+## 64. Key Derivation vs Key Wrapping
 
-### Key Derivation
+#### Key Derivation
 
 ```text
 Secret
@@ -1599,7 +1599,7 @@ KDF
 New Key
 ```
 
-### Key Wrapping
+#### Key Wrapping
 
 ```text
 Existing Key
@@ -1613,7 +1613,7 @@ They solve different problems.
 
 ---
 
-# 65. Passwords Are Not Keys
+## 65. Passwords Are Not Keys
 
 A password:
 
@@ -1641,7 +1641,7 @@ Password hashing is covered in the relevant cryptography fundamentals/applicatio
 
 ---
 
-# 66. Salt vs Key
+## 66. Salt vs Key
 
 A salt is not a secret key.
 
@@ -1659,19 +1659,19 @@ The salt can generally be stored alongside the resulting password verifier.
 
 ---
 
-# 67. Salt vs Nonce
+## 67. Salt vs Nonce
 
 These are different concepts.
 
-### Salt
+#### Salt
 
 Primarily used with password hashing/KDFs and some key derivation constructions.
 
-### Nonce
+#### Nonce
 
 A value intended to provide uniqueness or freshness within a cryptographic protocol.
 
-### Key
+#### Key
 
 Secret cryptographic material.
 
@@ -1679,7 +1679,7 @@ Do not treat them as interchangeable.
 
 ---
 
-# 68. Nonce in Key Exchange
+## 68. Nonce in Key Exchange
 
 Some protocols use nonces to provide:
 
@@ -1703,7 +1703,7 @@ depending on the algorithm.
 
 ---
 
-# 69. Key Exchange and Authentication
+## 69. Key Exchange and Authentication
 
 A secure key exchange protocol often looks like:
 
@@ -1721,7 +1721,7 @@ This prevents attackers from simply replacing public key-exchange values.
 
 ---
 
-# 70. Authenticated Diffie-Hellman
+## 70. Authenticated Diffie-Hellman
 
 One approach:
 
@@ -1746,7 +1746,7 @@ Bob verifies using Alice's trusted public key.
 
 ---
 
-# 71. TLS Key Exchange
+## 71. TLS Key Exchange
 
 Modern TLS commonly uses:
 
@@ -1770,7 +1770,7 @@ Certificates authenticate the server identity.
 
 ---
 
-# 72. Key Schedule
+## 72. Key Schedule
 
 Modern protocols often use a key schedule.
 
@@ -1792,7 +1792,7 @@ TLS 1.3 uses HKDF extensively in its key schedule.
 
 ---
 
-# 73. Session Resumption
+## 73. Session Resumption
 
 Protocols can sometimes resume sessions without performing a complete initial handshake.
 
@@ -1808,7 +1808,7 @@ But resumed sessions must still use secure key derivation and replay protections
 
 ---
 
-# 74. PSK
+## 74. PSK
 
 **PSK** stands for:
 
@@ -1838,7 +1838,7 @@ Machine Authentication
 
 ---
 
-# 75. PSK Risks
+## 75. PSK Risks
 
 Problems include:
 
@@ -1855,7 +1855,7 @@ Therefore PSKs require strong lifecycle management.
 
 ---
 
-# 76. Device Key Management
+## 76. Device Key Management
 
 IoT devices may have:
 
@@ -1884,7 +1884,7 @@ Decommissioning
 
 ---
 
-# 77. Key Provisioning
+## 77. Key Provisioning
 
 Provisioning means securely delivering or installing keys into systems.
 
@@ -1911,7 +1911,7 @@ Unprotected CI Logs
 
 ---
 
-# 78. Hardware-backed Keys
+## 78. Hardware-backed Keys
 
 Hardware-backed keys may be protected by:
 
@@ -1926,7 +1926,7 @@ The key may be designed so that sensitive operations occur inside protected hard
 
 ---
 
-# 79. TPM
+## 79. TPM
 
 **TPM** stands for:
 
@@ -1946,7 +1946,7 @@ Device Identity
 
 ---
 
-# 80. Secure Enclave
+## 80. Secure Enclave
 
 Some platforms provide hardware-backed secure environments for sensitive cryptographic operations.
 
@@ -1966,7 +1966,7 @@ The private key may not be directly exportable.
 
 ---
 
-# 81. Non-Exportable Keys
+## 81. Non-Exportable Keys
 
 A key can be configured so that applications can request:
 
@@ -1982,7 +1982,7 @@ This reduces exposure.
 
 ---
 
-# 82. Key Access Logging
+## 82. Key Access Logging
 
 Key-management systems should log security-sensitive operations:
 
@@ -2001,7 +2001,7 @@ Logs should be protected from unauthorized modification.
 
 ---
 
-# 83. Separation of Duties
+## 83. Separation of Duties
 
 High-value key operations may require multiple roles.
 
@@ -2019,7 +2019,7 @@ This reduces insider-risk.
 
 ---
 
-# 84. Dual Control
+## 84. Dual Control
 
 Dual control means:
 
@@ -2041,7 +2041,7 @@ Key Destruction
 
 ---
 
-# 85. Key Ceremony
+## 85. Key Ceremony
 
 A **key ceremony** is a controlled process for generating or handling high-value cryptographic keys.
 
@@ -2061,7 +2061,7 @@ Root CA key generation is a classic example.
 
 ---
 
-# 86. Root Key Protection
+## 86. Root Key Protection
 
 Root CA keys should generally have extremely strong controls:
 
@@ -2077,7 +2077,7 @@ Secure Backup
 
 ---
 
-# 87. Key Hierarchy Example
+## 87. Key Hierarchy Example
 
 A large enterprise may use:
 
@@ -2101,7 +2101,7 @@ This limits the impact of individual key compromise.
 
 ---
 
-# 88. Key Separation by Environment
+## 88. Key Separation by Environment
 
 Never casually reuse production keys in:
 
@@ -2121,7 +2121,7 @@ Production  → Production Keys
 
 ---
 
-# 89. Environment Isolation
+## 89. Environment Isolation
 
 A compromised development environment should not provide access to:
 
@@ -2135,7 +2135,7 @@ Use separate accounts, projects, roles, and key stores where appropriate.
 
 ---
 
-# 90. Container Key Management
+## 90. Container Key Management
 
 Avoid:
 
@@ -2169,7 +2169,7 @@ instead.
 
 ---
 
-# 91. Kubernetes Secret Management
+## 91. Kubernetes Secret Management
 
 Kubernetes applications can use:
 
@@ -2193,7 +2193,7 @@ Audit
 
 ---
 
-# 92. Cloud Key Management
+## 92. Cloud Key Management
 
 A cloud KMS can provide:
 
@@ -2214,7 +2214,7 @@ Applications typically authenticate using cloud identity rather than receiving a
 
 ---
 
-# 93. Application-Level Encryption
+## 93. Application-Level Encryption
 
 A secure application architecture might use:
 
@@ -2234,7 +2234,7 @@ This is generally more scalable than sending every large data object directly th
 
 ---
 
-# 94. Key Management and Databases
+## 94. Key Management and Databases
 
 Sensitive database fields may be encrypted using:
 
@@ -2268,7 +2268,7 @@ Encrypted Database Field
 
 ---
 
-# 95. Key Management and Backups
+## 95. Key Management and Backups
 
 Encrypted backups are useless if the corresponding keys are permanently unavailable.
 
@@ -2284,7 +2284,7 @@ must be designed together.
 
 ---
 
-# 96. Backup Key Separation
+## 96. Backup Key Separation
 
 Do not store:
 
@@ -2310,7 +2310,7 @@ Data Compromise
 
 ---
 
-# 97. Key Rotation and Existing Data
+## 97. Key Rotation and Existing Data
 
 Suppose:
 
@@ -2339,7 +2339,7 @@ and migrate old data gradually.
 
 ---
 
-# 98. Re-encryption
+## 98. Re-encryption
 
 When required:
 
@@ -2359,7 +2359,7 @@ The operation must be carefully controlled to avoid exposing plaintext.
 
 ---
 
-# 99. Key Versioning
+## 99. Key Versioning
 
 Use identifiers such as:
 
@@ -2382,7 +2382,7 @@ This allows the system to know which key should be used for decryption.
 
 ---
 
-# 100. Cryptographic Metadata
+## 100. Cryptographic Metadata
 
 Encrypted data often needs metadata:
 
@@ -2400,7 +2400,7 @@ However, it must be integrity-protected where appropriate.
 
 ---
 
-# 101. Associated Data
+## 101. Associated Data
 
 AEAD allows additional authenticated data:
 
@@ -2424,7 +2424,7 @@ This prevents an attacker from changing important metadata without detection.
 
 ---
 
-# 102. Key Derivation Context
+## 102. Key Derivation Context
 
 Suppose one secret generates:
 
@@ -2444,7 +2444,7 @@ This provides domain separation between derived keys.
 
 ---
 
-# 103. Domain Separation
+## 103. Domain Separation
 
 Domain separation ensures cryptographic outputs are tied to a particular purpose.
 
@@ -2463,7 +2463,7 @@ This reduces accidental cross-protocol key reuse.
 
 ---
 
-# 104. Key Confirmation
+## 104. Key Confirmation
 
 Some key-exchange protocols use key confirmation to prove that both parties derived the same key.
 
@@ -2478,7 +2478,7 @@ This can help detect mismatched key material.
 
 ---
 
-# 105. Key Compromise Impersonation
+## 105. Key Compromise Impersonation
 
 Some key exchange designs need to consider:
 
@@ -2498,7 +2498,7 @@ Modern authenticated key exchange protocols are designed with various security p
 
 ---
 
-# 106. Unknown Key-Share Attack
+## 106. Unknown Key-Share Attack
 
 An unknown key-share attack can occur when:
 
@@ -2516,7 +2516,7 @@ Proper identity binding in the protocol is therefore critical.
 
 ---
 
-# 107. Downgrade Attacks
+## 107. Downgrade Attacks
 
 Attackers may attempt to force parties to use:
 
@@ -2531,7 +2531,7 @@ Secure protocols should include downgrade protection and disable obsolete algori
 
 ---
 
-# 108. Key Exchange Attack Surface
+## 108. Key Exchange Attack Surface
 
 During a security assessment inspect:
 
@@ -2552,7 +2552,7 @@ Nonce Handling
 
 ---
 
-# 109. VAPT – Key Management Testing
+## 109. VAPT – Key Management Testing
 
 Checklist:
 
@@ -2574,7 +2574,7 @@ Checklist:
 
 ---
 
-# 110. VAPT – Key Exchange Testing
+## 110. VAPT – Key Exchange Testing
 
 Check:
 
@@ -2592,7 +2592,7 @@ Check:
 
 ---
 
-# 111. Secret Scanning
+## 111. Secret Scanning
 
 Security tools can search repositories for patterns such as:
 
@@ -2618,7 +2618,7 @@ Detection should be combined with immediate credential rotation.
 
 ---
 
-# 112. Git History Problem
+## 112. Git History Problem
 
 Deleting:
 
@@ -2650,7 +2650,7 @@ is more important than simply deleting the file.
 
 ---
 
-# 113. Secret Rotation After Git Leak
+## 113. Secret Rotation After Git Leak
 
 If a production secret is committed:
 
@@ -2668,7 +2668,7 @@ Never assume deletion alone solves the problem.
 
 ---
 
-# 114. SOC Monitoring – Key Management
+## 114. SOC Monitoring – Key Management
 
 SOC teams can monitor:
 
@@ -2687,7 +2687,7 @@ Secret Access
 
 ---
 
-# 115. Suspicious KMS Activity
+## 115. Suspicious KMS Activity
 
 Example:
 
@@ -2721,7 +2721,7 @@ SOC investigation should correlate with application and identity logs.
 
 ---
 
-# 116. Key Destruction Alert
+## 116. Key Destruction Alert
 
 A high-value alert:
 
@@ -2745,7 +2745,7 @@ Recovery Failure
 
 ---
 
-# 117. Key Management Incident Example
+## 117. Key Management Incident Example
 
 Scenario:
 
@@ -2778,7 +2778,7 @@ Improve Secret Scanning
 
 ---
 
-# 118. Production Key Management Architecture
+## 118. Production Key Management Architecture
 
 ```text
                     Identity Provider
@@ -2802,7 +2802,7 @@ Application ───────────► KMS
 
 ---
 
-# 119. High-Security Architecture
+## 119. High-Security Architecture
 
 For highly sensitive systems:
 
@@ -2826,7 +2826,7 @@ The application does not directly handle high-value master keys.
 
 ---
 
-# 120. Key Management Policies
+## 120. Key Management Policies
 
 An enterprise policy should define:
 
@@ -2849,7 +2849,7 @@ Incident Response
 
 ---
 
-# 121. Key Inventory
+## 121. Key Inventory
 
 Maintain an inventory:
 
@@ -2864,7 +2864,7 @@ A key inventory prevents unknown or forgotten keys from remaining active indefin
 
 ---
 
-# 122. Key Ownership
+## 122. Key Ownership
 
 Every high-value key should have:
 
@@ -2888,7 +2888,7 @@ becomes unclear.
 
 ---
 
-# 123. Cryptoperiod Policy
+## 123. Cryptoperiod Policy
 
 Organizations can define different policies:
 
@@ -2907,7 +2907,7 @@ The correct policy depends on the key type and threat model.
 
 ---
 
-# 124. Key Rotation Automation
+## 124. Key Rotation Automation
 
 Automated rotation:
 
@@ -2929,7 +2929,7 @@ Automation should include rollback and monitoring.
 
 ---
 
-# 125. Key Rotation Failure
+## 125. Key Rotation Failure
 
 A badly designed rotation can cause:
 
@@ -2953,7 +2953,7 @@ may be required.
 
 ---
 
-# 126. Cryptographic Agility
+## 126. Cryptographic Agility
 
 Key-management systems should allow migration:
 
@@ -2976,7 +2976,7 @@ Key-Length Upgrades
 
 ---
 
-# 127. Key Management and Compliance
+## 127. Key Management and Compliance
 
 Depending on the environment, organizations may need controls for:
 
@@ -2995,7 +2995,7 @@ Specific requirements depend on the applicable regulatory framework.
 
 ---
 
-# 128. Practical Lab – Diffie-Hellman Concept
+## 128. Practical Lab – Diffie-Hellman Concept
 
 For educational purposes, experiment with small numbers.
 
@@ -3043,7 +3043,7 @@ Both should produce the same shared value.
 
 ---
 
-# 129. Practical Lab – HKDF
+## 129. Practical Lab – HKDF
 
 Using Python's `cryptography` library:
 
@@ -3067,7 +3067,7 @@ The resulting key can be used as key material for an appropriate cryptographic c
 
 ---
 
-# 130. Practical Lab – Key Generation
+## 130. Practical Lab – Key Generation
 
 Generate a secure AES key:
 
@@ -3089,7 +3089,7 @@ Verify:
 
 ---
 
-# 131. Practical Lab – Key Wrapping Concept
+## 131. Practical Lab – Key Wrapping Concept
 
 Experiment with:
 
@@ -3122,7 +3122,7 @@ Use standardized key-wrapping primitives provided by trusted cryptographic libra
 
 ---
 
-# 132. Practical Lab – Key Rotation
+## 132. Practical Lab – Key Rotation
 
 Create:
 
@@ -3153,7 +3153,7 @@ Then verify that old ciphertext can still be decrypted using its original key du
 
 ---
 
-# 133. Practical Lab – Secret Leak Simulation
+## 133. Practical Lab – Secret Leak Simulation
 
 Create a test repository containing:
 
@@ -3183,7 +3183,7 @@ Use only synthetic test secrets.
 
 ---
 
-# 134. Practical Lab – KMS Architecture
+## 134. Practical Lab – KMS Architecture
 
 Design:
 
@@ -3213,141 +3213,141 @@ Who can audit?
 
 ---
 
-# 135. Interview Questions
+## 135. Interview Questions
 
-## What is key management?
+### What is key management?
 
 Key management is the lifecycle management of cryptographic keys from generation through storage, usage, rotation, revocation, and destruction.
 
 ---
 
-## What is key exchange?
+### What is key exchange?
 
 Key exchange is a protocol through which parties establish shared secret material over a communication channel.
 
 ---
 
-## What is Diffie-Hellman?
+### What is Diffie-Hellman?
 
 Diffie-Hellman is a key-agreement mechanism that allows two parties to derive a shared secret over an insecure channel.
 
 ---
 
-## Does Diffie-Hellman provide authentication?
+### Does Diffie-Hellman provide authentication?
 
 No. Basic DH does not authenticate the communicating parties.
 
 ---
 
-## What is a man-in-the-middle attack against DH?
+### What is a man-in-the-middle attack against DH?
 
 An attacker intercepts and replaces key-exchange values so that the attacker establishes separate keys with each party.
 
 ---
 
-## What is ECDH?
+### What is ECDH?
 
 Elliptic Curve Diffie-Hellman is a key-agreement mechanism based on elliptic-curve cryptography.
 
 ---
 
-## What is ECDHE?
+### What is ECDHE?
 
 ECDHE is ephemeral ECDH and can provide forward secrecy when used appropriately.
 
 ---
 
-## What is forward secrecy?
+### What is forward secrecy?
 
 Forward secrecy means compromise of a long-term private key does not allow an attacker to recover past session keys under the protocol's security assumptions.
 
 ---
 
-## What is a KDF?
+### What is a KDF?
 
 A Key Derivation Function derives cryptographic keys from existing secret material.
 
 ---
 
-## What is HKDF?
+### What is HKDF?
 
 HKDF is an HMAC-based key derivation function using extract and expand stages.
 
 ---
 
-## Why use a KDF instead of using the shared secret directly?
+### Why use a KDF instead of using the shared secret directly?
 
 A KDF can derive appropriately sized, independent keys for different cryptographic purposes and protocol contexts.
 
 ---
 
-## What is key separation?
+### What is key separation?
 
 Key separation means using different cryptographic keys for different purposes or contexts.
 
 ---
 
-## What is a DEK?
+### What is a DEK?
 
 A Data Encryption Key is used to encrypt actual application data.
 
 ---
 
-## What is a KEK?
+### What is a KEK?
 
 A Key Encryption Key is used to protect or wrap another key, such as a DEK.
 
 ---
 
-## What is envelope encryption?
+### What is envelope encryption?
 
 Envelope encryption encrypts data with a DEK and protects the DEK using a higher-level key such as a KEK.
 
 ---
 
-## What is KMS?
+### What is KMS?
 
 A Key Management Service provides managed creation, storage, access control, rotation, and cryptographic operations for keys.
 
 ---
 
-## What is an HSM?
+### What is an HSM?
 
 A Hardware Security Module is specialized hardware designed to protect cryptographic keys and perform sensitive cryptographic operations.
 
 ---
 
-## What happens if a cryptographic key is compromised?
+### What happens if a cryptographic key is compromised?
 
 The attacker may gain whatever capabilities that key provides, such as decrypting data or forging signatures. The key should be revoked/disabled and replaced according to the incident-response process.
 
 ---
 
-## Why should keys be rotated?
+### Why should keys be rotated?
 
 Rotation limits the cryptoperiod and can reduce the impact of long-term key exposure.
 
 ---
 
-## What is a PSK?
+### What is a PSK?
 
 A Pre-Shared Key is secret material already shared between communicating parties before a protocol session.
 
 ---
 
-## What is key escrow?
+### What is key escrow?
 
 Key escrow is controlled storage of key material for authorized recovery purposes.
 
 ---
 
-## Why is key escrow risky?
+### Why is key escrow risky?
 
 The escrow system becomes another high-value target and can increase the impact of unauthorized access.
 
 ---
 
-# 136. Quick Revision Table
+## 136. Quick Revision Table
 
 | Concept | Key Idea |
 |---|---|
@@ -3376,7 +3376,7 @@ The escrow system becomes another high-value target and can increase the impact 
 
 ---
 
-# 137. Key Takeaways
+## 137. Key Takeaways
 
 ```text
 1. Strong algorithms cannot compensate for poor key management.
@@ -3436,7 +3436,7 @@ The escrow system becomes another high-value target and can increase the impact 
 
 ---
 
-# 138. Chapter Summary
+## 138. Chapter Summary
 
 This chapter covered:
 
@@ -3535,9 +3535,9 @@ A useful mental model is:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## Chapter 09 – Randomness, Nonces & Cryptographic Primitives
+### Chapter 09 – Randomness, Nonces & Cryptographic Primitives
 
 The next chapter will cover:
 

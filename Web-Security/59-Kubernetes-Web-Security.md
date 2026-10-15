@@ -1,12 +1,12 @@
 # 59-Kubernetes-Web-Security.md
 
-# Part 1 — Introduction to Kubernetes Web Security, Cluster Architecture, Core Components, Isolation, and Enterprise Foundations
+## Part 1 — Introduction to Kubernetes Web Security, Cluster Architecture, Core Components, Isolation, and Enterprise Foundations
 
 > **"Kubernetes Web Security is the practice of protecting Kubernetes clusters, workloads, networking, storage, identities, and operational processes throughout the lifecycle of containerized applications."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Kubernetes Web Security?
+## What is Kubernetes Web Security?
 
 Kubernetes Web Security focuses on protecting applications deployed on Kubernetes clusters as well as the platform that manages them.
 
@@ -55,7 +55,7 @@ Security should be integrated into every stage of application deployment and clu
 
 ---
 
-# Why Kubernetes Security Matters
+## Why Kubernetes Security Matters
 
 Modern enterprises deploy thousands of workloads across Kubernetes clusters.
 
@@ -72,7 +72,7 @@ Because Kubernetes manages critical infrastructure, it requires comprehensive se
 
 ---
 
-# Evolution of Container Platforms
+## Evolution of Container Platforms
 
 ```
 Physical Servers
@@ -98,7 +98,7 @@ Kubernetes has become the standard orchestration platform for modern cloud-nativ
 
 ---
 
-# High-Level Kubernetes Architecture
+## High-Level Kubernetes Architecture
 
 ```
                 Kubernetes Cluster
@@ -128,7 +128,7 @@ The cluster consists of a control plane that manages worker nodes running applic
 
 ---
 
-# Kubernetes Components
+## Kubernetes Components
 
 ```
 Kubernetes
@@ -156,7 +156,7 @@ Each component contributes to application availability and requires appropriate 
 
 ---
 
-# Understanding the Control Plane
+## Understanding the Control Plane
 
 The control plane manages the overall state of the cluster.
 
@@ -180,7 +180,7 @@ These components coordinate workload scheduling and cluster operations.
 
 ---
 
-# Worker Nodes
+## Worker Nodes
 
 Worker nodes execute containerized workloads.
 
@@ -204,7 +204,7 @@ Worker nodes should be securely configured and continuously monitored.
 
 ---
 
-# What is a Pod?
+## What is a Pod?
 
 A Pod is the smallest deployable workload unit in Kubernetes.
 
@@ -226,7 +226,7 @@ Pods provide a shared execution environment for one or more closely related cont
 
 ---
 
-# Kubernetes Objects
+## Kubernetes Objects
 
 ```
 Cluster Objects
@@ -254,7 +254,7 @@ These objects define how workloads are deployed and managed.
 
 ---
 
-# Namespaces
+## Namespaces
 
 Namespaces provide logical separation between workloads.
 
@@ -276,7 +276,7 @@ Namespaces help organize resources and support multi-team environments.
 
 ---
 
-# Kubernetes Services
+## Kubernetes Services
 
 Services provide stable communication endpoints for workloads.
 
@@ -296,7 +296,7 @@ Services simplify application communication within the cluster.
 
 ---
 
-# Deployments
+## Deployments
 
 Deployments manage application rollout and lifecycle.
 
@@ -320,7 +320,7 @@ Deployments improve consistency and simplify application updates.
 
 ---
 
-# Cluster Isolation
+## Cluster Isolation
 
 Isolation reduces unintended interactions between workloads.
 
@@ -344,7 +344,7 @@ Layered isolation contributes to secure multi-tenant environments.
 
 ---
 
-# Shared Responsibility
+## Shared Responsibility
 
 Securing Kubernetes requires collaboration across multiple teams.
 
@@ -376,7 +376,7 @@ Every stakeholder contributes to maintaining a secure Kubernetes environment.
 
 ---
 
-# Security by Design
+## Security by Design
 
 Security should be considered during cluster planning and application architecture.
 
@@ -404,7 +404,7 @@ Planning security early reduces operational complexity later.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Kubernetes security relies on multiple independent controls.
 
@@ -436,7 +436,7 @@ Multiple security layers improve resilience against operational failures and mis
 
 ---
 
-# Enterprise Kubernetes Architecture
+## Enterprise Kubernetes Architecture
 
 ```
                 Business Requirements
@@ -480,7 +480,7 @@ The architecture integrates application deployment, cluster management, and oper
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational retail company deploys customer-facing web services on Kubernetes.
 
@@ -508,7 +508,7 @@ Development teams manage application code, platform engineers administer the Kub
 
 ---
 
-# Benefits of Kubernetes Security
+## Benefits of Kubernetes Security
 
 ```
 Business Benefits
@@ -534,7 +534,7 @@ Business Benefits
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the architecture of a Kubernetes cluster.
 2. Identify the control plane and worker node components.
@@ -546,7 +546,7 @@ Business Benefits
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Kubernetes Web Security?
 2. What is the purpose of the Kubernetes control plane?
@@ -561,7 +561,7 @@ Business Benefits
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design Kubernetes clusters with security from the beginning.
 - Clearly separate workloads using namespaces where appropriate.
@@ -574,7 +574,7 @@ Business Benefits
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating Kubernetes security as only a container security concern.
 - Ignoring control plane security.
@@ -586,7 +586,7 @@ Business Benefits
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Kubernetes Web Security protects the complete Kubernetes platform and its workloads.
 - The control plane, worker nodes, pods, and cluster objects are all critical security components.
@@ -594,15 +594,15 @@ Business Benefits
 - Security by Design, Defense in Depth, and shared responsibility strengthen Kubernetes environments.
 - Mature Kubernetes security integrates governance, monitoring, and continuous improvement throughout the cluster lifecycle.
 
-# 59-Kubernetes-Web-Security.md
+## 59-Kubernetes-Web-Security.md
 
-# Part 2 — Secure Cluster Configuration, Identity & Access Management, Workload Security, Networking, Storage, and Enterprise Governance
+## Part 2 — Secure Cluster Configuration, Identity & Access Management, Workload Security, Networking, Storage, and Enterprise Governance
 
 > **"Kubernetes security depends on secure cluster configuration, strong identity management, controlled workload deployment, protected networking, secure storage, and well-defined governance throughout the platform lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -619,7 +619,7 @@ After completing this part, you will understand:
 
 ---
 
-# Secure Cluster Configuration
+## Secure Cluster Configuration
 
 A Kubernetes cluster should be securely configured before workloads are deployed.
 
@@ -647,7 +647,7 @@ Configuration should follow organizational security standards and be reviewed re
 
 ---
 
-# Cluster Configuration Components
+## Cluster Configuration Components
 
 ```
 Cluster Configuration
@@ -675,7 +675,7 @@ Every configuration area contributes to the overall security posture of the clus
 
 ---
 
-# Kubernetes Identity and Access Management (IAM)
+## Kubernetes Identity and Access Management (IAM)
 
 Every user, service, and application interacting with Kubernetes should have a managed identity.
 
@@ -703,7 +703,7 @@ Proper identity management strengthens accountability and reduces unauthorized a
 
 ---
 
-# Authentication
+## Authentication
 
 Authentication verifies the identity of a user or service before access is granted.
 
@@ -723,7 +723,7 @@ Authentication should integrate with organizational identity management wherever
 
 ---
 
-# Authorization
+## Authorization
 
 After authentication, authorization determines which resources an identity can access.
 
@@ -743,7 +743,7 @@ Authorization policies should follow the Principle of Least Privilege.
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 RBAC is the standard authorization model used in Kubernetes.
 
@@ -767,7 +767,7 @@ Roles define what actions are permitted on specific Kubernetes resources.
 
 ---
 
-# RBAC Components
+## RBAC Components
 
 ```
 RBAC
@@ -795,7 +795,7 @@ RBAC simplifies access management while improving governance.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Each identity should receive only the permissions required for its responsibilities.
 
@@ -819,7 +819,7 @@ Restricting unnecessary permissions reduces operational and security risks.
 
 ---
 
-# Service Accounts
+## Service Accounts
 
 Service Accounts provide identities for workloads running inside the cluster.
 
@@ -839,7 +839,7 @@ Applications should use dedicated identities aligned with organizational access 
 
 ---
 
-# Workload Security
+## Workload Security
 
 Every workload should follow secure deployment and operational standards.
 
@@ -867,7 +867,7 @@ Secure workloads contribute to a resilient Kubernetes platform.
 
 ---
 
-# Workload Security Components
+## Workload Security Components
 
 ```
 Workload Security
@@ -895,7 +895,7 @@ Security should be considered throughout the workload lifecycle.
 
 ---
 
-# Resource Management
+## Resource Management
 
 Resource allocation helps maintain platform stability.
 
@@ -923,7 +923,7 @@ Appropriate resource planning improves reliability and supports predictable clus
 
 ---
 
-# Kubernetes Networking
+## Kubernetes Networking
 
 Networking enables communication between workloads and external systems.
 
@@ -951,7 +951,7 @@ Network architecture should be documented and reviewed as part of the cluster de
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Logical separation improves workload isolation.
 
@@ -977,7 +977,7 @@ Segmentation reduces unnecessary communication between workloads.
 
 ---
 
-# Storage Security
+## Storage Security
 
 Persistent storage should be managed securely.
 
@@ -1001,7 +1001,7 @@ Storage governance should include lifecycle management, access control, and reco
 
 ---
 
-# Storage Components
+## Storage Components
 
 ```
 Storage
@@ -1029,7 +1029,7 @@ Organizations should establish policies for storage management and retention.
 
 ---
 
-# Configuration Management
+## Configuration Management
 
 Configuration should remain separate from application code whenever practical.
 
@@ -1057,7 +1057,7 @@ Configuration changes should follow documented review and approval procedures.
 
 ---
 
-# Configuration Governance
+## Configuration Governance
 
 ```
 Configuration
@@ -1085,7 +1085,7 @@ Configuration governance improves operational consistency.
 
 ---
 
-# Enterprise Kubernetes Workflow
+## Enterprise Kubernetes Workflow
 
 ```
 Application Source
@@ -1115,7 +1115,7 @@ Every stage contributes to secure and reliable Kubernetes operations.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare organization operates multiple Kubernetes clusters supporting patient-facing applications.
 
@@ -1143,7 +1143,7 @@ Platform engineers manage cluster configuration, development teams deploy standa
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1158,7 +1158,7 @@ Platform engineers manage cluster configuration, development teams deploy standa
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1171,7 +1171,7 @@ Platform engineers manage cluster configuration, development teams deploy standa
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a secure Kubernetes cluster architecture.
 2. Document RBAC roles for administrators, developers, and applications.
@@ -1183,7 +1183,7 @@ Platform engineers manage cluster configuration, development teams deploy standa
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is secure cluster configuration important?
 2. What is Kubernetes RBAC?
@@ -1198,7 +1198,7 @@ Platform engineers manage cluster configuration, development teams deploy standa
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Secure cluster configuration before deploying workloads.
 - Use RBAC to enforce least-privilege access.
@@ -1211,7 +1211,7 @@ Platform engineers manage cluster configuration, development teams deploy standa
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Granting excessive permissions through RBAC.
 - Sharing Service Accounts across unrelated workloads.
@@ -1223,7 +1223,7 @@ Platform engineers manage cluster configuration, development teams deploy standa
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure cluster configuration establishes the foundation for Kubernetes security.
 - IAM, RBAC, and Service Accounts provide structured identity and authorization.
@@ -1231,15 +1231,15 @@ Platform engineers manage cluster configuration, development teams deploy standa
 - Configuration management and version control strengthen operational consistency.
 - Enterprise Kubernetes environments benefit from standardized governance, monitoring, and continuous review.
 
-# 59-Kubernetes-Web-Security.md
+## 59-Kubernetes-Web-Security.md
 
-# Part 3 — Network Policies, Secrets Management, Monitoring, Logging, Compliance, Incident Response, and Enterprise Operations
+## Part 3 — Network Policies, Secrets Management, Monitoring, Logging, Compliance, Incident Response, and Enterprise Operations
 
 > **"A secure Kubernetes environment requires continuous visibility, controlled communication between workloads, secure management of sensitive information, operational governance, and an established incident response process."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1256,7 +1256,7 @@ After completing this part, you will understand:
 
 ---
 
-# Kubernetes Network Security
+## Kubernetes Network Security
 
 Networking is a fundamental part of Kubernetes security because applications communicate extensively with one another.
 
@@ -1284,7 +1284,7 @@ Network communication should follow organizational security policies and documen
 
 ---
 
-# Kubernetes Network Policies
+## Kubernetes Network Policies
 
 Network Policies define which workloads are permitted to communicate with each other.
 
@@ -1312,7 +1312,7 @@ Network segmentation reduces unnecessary communication and supports least-privil
 
 ---
 
-# Logical Network Segmentation
+## Logical Network Segmentation
 
 ```
 Kubernetes Cluster
@@ -1334,7 +1334,7 @@ Logical segmentation improves isolation between different application tiers.
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 Kubernetes provides mechanisms that allow applications to locate services consistently.
 
@@ -1358,7 +1358,7 @@ Reliable service discovery supports scalable and resilient application architect
 
 ---
 
-# Secure Service Communication
+## Secure Service Communication
 
 ```
 Client
@@ -1380,7 +1380,7 @@ Communication paths should be documented and reviewed as part of cluster governa
 
 ---
 
-# Kubernetes Secrets
+## Kubernetes Secrets
 
 Applications often require sensitive configuration information.
 
@@ -1404,7 +1404,7 @@ Sensitive information should be managed securely throughout its lifecycle.
 
 ---
 
-# Secrets Lifecycle
+## Secrets Lifecycle
 
 ```
 Creation
@@ -1434,7 +1434,7 @@ Lifecycle management improves operational security and governance.
 
 ---
 
-# Sensitive Information Examples
+## Sensitive Information Examples
 
 ```
 Sensitive Data
@@ -1460,7 +1460,7 @@ Organizations should maintain clear ownership and lifecycle policies for sensiti
 
 ---
 
-# Monitoring Kubernetes
+## Monitoring Kubernetes
 
 Continuous monitoring provides operational visibility across the cluster.
 
@@ -1488,7 +1488,7 @@ Monitoring supports reliability, troubleshooting, and security operations.
 
 ---
 
-# Monitoring Areas
+## Monitoring Areas
 
 ```
 Monitoring
@@ -1516,7 +1516,7 @@ These metrics help identify operational issues early.
 
 ---
 
-# Logging Strategy
+## Logging Strategy
 
 Centralized logging supports troubleshooting, auditing, and operational analysis.
 
@@ -1540,7 +1540,7 @@ Logs should be protected from unauthorized modification and retained according t
 
 ---
 
-# Types of Logs
+## Types of Logs
 
 ```
 Cluster Logs
@@ -1568,7 +1568,7 @@ Different log sources provide different operational insights.
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Audit logging records important administrative and operational activities.
 
@@ -1592,7 +1592,7 @@ Audit logs improve accountability and support governance.
 
 ---
 
-# Important Audit Events
+## Important Audit Events
 
 ```
 Audit Events
@@ -1620,7 +1620,7 @@ Audit records should be reviewed regularly.
 
 ---
 
-# Compliance Integration
+## Compliance Integration
 
 Compliance activities should be integrated into normal cluster operations.
 
@@ -1648,7 +1648,7 @@ Routine compliance activities reduce operational risk.
 
 ---
 
-# Risk Management
+## Risk Management
 
 Risk management should be an ongoing operational process.
 
@@ -1680,7 +1680,7 @@ Organizations should regularly reassess risks as clusters evolve.
 
 ---
 
-# Common Risk Categories
+## Common Risk Categories
 
 ```
 Cluster Risks
@@ -1708,7 +1708,7 @@ Categorizing risks helps prioritize mitigation efforts.
 
 ---
 
-# Incident Response
+## Incident Response
 
 Incident response should be integrated with organizational security operations.
 
@@ -1740,7 +1740,7 @@ A documented response process improves resilience and operational readiness.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -1766,7 +1766,7 @@ Operational lessons should be incorporated into future platform improvements.
 
 ---
 
-# Enterprise Kubernetes Security Architecture
+## Enterprise Kubernetes Security Architecture
 
 ```
                Kubernetes Cluster
@@ -1800,7 +1800,7 @@ Continuous monitoring and governance provide visibility across the entire platfo
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global banking organization operates multiple Kubernetes clusters supporting digital banking services.
 
@@ -1832,7 +1832,7 @@ Operations teams monitor cluster health and availability, while security teams r
 
 ---
 
-# Operational Metrics
+## Operational Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1847,7 +1847,7 @@ Operations teams monitor cluster health and availability, while security teams r
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1860,7 +1860,7 @@ Operations teams monitor cluster health and availability, while security teams r
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design a logical network segmentation model for a Kubernetes cluster.
 2. Document the lifecycle of sensitive configuration information.
@@ -1872,7 +1872,7 @@ Operations teams monitor cluster health and availability, while security teams r
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are Kubernetes Network Policies?
 2. Why is network segmentation important?
@@ -1887,7 +1887,7 @@ Operations teams monitor cluster health and availability, while security teams r
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design and document logical network segmentation.
 - Manage sensitive configuration information throughout its lifecycle.
@@ -1900,7 +1900,7 @@ Operations teams monitor cluster health and availability, while security teams r
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Allowing unrestricted communication between workloads.
 - Managing sensitive information without governance.
@@ -1912,7 +1912,7 @@ Operations teams monitor cluster health and availability, while security teams r
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Kubernetes Network Policies improve workload isolation through controlled communication.
 - Secure management of sensitive configuration information is essential for enterprise operations.
@@ -1920,15 +1920,15 @@ Operations teams monitor cluster health and availability, while security teams r
 - Risk management, compliance, and incident response strengthen platform resilience.
 - Mature Kubernetes environments continuously improve through governance, monitoring, and operational feedback.
 
-# 59-Kubernetes-Web-Security.md
+## 59-Kubernetes-Web-Security.md
 
-# Part 4 — Enterprise Governance, Zero Trust, Kubernetes Supply Chain Security, Security Maturity, Operational Excellence, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, Kubernetes Supply Chain Security, Security Maturity, Operational Excellence, and Chapter Summary
 
 > **"A mature Kubernetes security program combines secure architecture, identity management, workload protection, governance, continuous monitoring, operational resilience, and ongoing improvement across the entire application lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1945,7 +1945,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Kubernetes Governance
+## Enterprise Kubernetes Governance
 
 Governance provides standardized policies, procedures, and oversight for Kubernetes environments.
 
@@ -1977,7 +1977,7 @@ Governance ensures consistent security practices across clusters, teams, and env
 
 ---
 
-# Kubernetes Governance Framework
+## Kubernetes Governance Framework
 
 ```
 Kubernetes Governance
@@ -2007,7 +2007,7 @@ Every Kubernetes cluster should operate under documented governance policies.
 
 ---
 
-# Zero Trust for Kubernetes
+## Zero Trust for Kubernetes
 
 Zero Trust assumes that no user, workload, or service should be inherently trusted.
 
@@ -2039,7 +2039,7 @@ Every access request should be verified and evaluated according to organizationa
 
 ---
 
-# Zero Trust Principles
+## Zero Trust Principles
 
 ```
 Zero Trust
@@ -2067,7 +2067,7 @@ These principles improve resilience and reduce unnecessary trust relationships.
 
 ---
 
-# Kubernetes Supply Chain Security
+## Kubernetes Supply Chain Security
 
 Secure software delivery extends beyond application code.
 
@@ -2097,7 +2097,7 @@ Each stage contributes to the integrity of deployed applications.
 
 ---
 
-# Supply Chain Governance
+## Supply Chain Governance
 
 ```
 Planning
@@ -2135,7 +2135,7 @@ Governance should be integrated throughout the software delivery lifecycle.
 
 ---
 
-# Software Bill of Materials (SBOM)
+## Software Bill of Materials (SBOM)
 
 An SBOM documents the software components included within an application or container image.
 
@@ -2165,7 +2165,7 @@ Maintaining accurate inventories supports governance and lifecycle management.
 
 ---
 
-# Benefits of SBOM
+## Benefits of SBOM
 
 ```
 SBOM Benefits
@@ -2193,7 +2193,7 @@ SBOMs improve transparency across the software supply chain.
 
 ---
 
-# Backup Strategy
+## Backup Strategy
 
 Critical Kubernetes assets should be protected through regular backups.
 
@@ -2221,7 +2221,7 @@ Backup procedures should be documented and periodically reviewed.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Recovery planning prepares organizations for unexpected disruptions.
 
@@ -2249,7 +2249,7 @@ Recovery planning should include cluster configurations, persistent storage, and
 
 ---
 
-# Business Continuity
+## Business Continuity
 
 Business continuity planning helps maintain essential services.
 
@@ -2277,7 +2277,7 @@ Continuity planning should align with organizational resilience objectives.
 
 ---
 
-# Continuous Verification
+## Continuous Verification
 
 Security validation should continue throughout the Kubernetes lifecycle.
 
@@ -2309,7 +2309,7 @@ Continuous verification supports long-term platform resilience.
 
 ---
 
-# Kubernetes Security Maturity Model
+## Kubernetes Security Maturity Model
 
 ```
 Level 1
@@ -2347,7 +2347,7 @@ Organizations mature by improving governance, visibility, operational processes,
 
 ---
 
-# Characteristics of Mature Kubernetes Security
+## Characteristics of Mature Kubernetes Security
 
 ```
 Mature Security
@@ -2375,7 +2375,7 @@ Mature Security
 
 ---
 
-# Enterprise Kubernetes Security Architecture
+## Enterprise Kubernetes Security Architecture
 
 ```
               Business Requirements
@@ -2431,7 +2431,7 @@ This architecture demonstrates how governance, monitoring, and operational proce
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare provider operates Kubernetes clusters supporting clinical applications across multiple regions.
 
@@ -2467,7 +2467,7 @@ Platform engineers maintain standardized cluster configurations, development tea
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Secure Cluster Configuration
@@ -2493,7 +2493,7 @@ Platform engineers maintain standardized cluster configurations, development tea
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2506,9 +2506,9 @@ Platform engineers maintain standardized cluster configurations, development tea
 
 ---
 
-# Kubernetes Security Quick Revision
+## Kubernetes Security Quick Revision
 
-## Cluster Lifecycle
+### Cluster Lifecycle
 
 ```
 Planning
@@ -2536,7 +2536,7 @@ Improvement
 
 ---
 
-## Core Security Principles
+### Core Security Principles
 
 ```
 Security by Design
@@ -2564,7 +2564,7 @@ Continuous Improvement
 
 ---
 
-## Operational Workflow
+### Operational Workflow
 
 ```
 Develop
@@ -2592,7 +2592,7 @@ Optimize
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Design an enterprise Kubernetes architecture for a multi-tier web application.
 2. Identify trust boundaries between the control plane, worker nodes, workloads, and external users.
@@ -2604,7 +2604,7 @@ Optimize
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Kubernetes Web Security?
 2. Why is governance important for Kubernetes platforms?
@@ -2619,7 +2619,7 @@ Optimize
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Integrate security throughout the Kubernetes lifecycle.
 - Apply Zero Trust principles across identities, workloads, and services.
@@ -2632,7 +2632,7 @@ Optimize
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating Kubernetes security as only a deployment concern.
 - Using inconsistent cluster configurations.
@@ -2644,7 +2644,7 @@ Optimize
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

@@ -4,7 +4,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Incident response does not end when the threat is contained.
 
@@ -59,7 +59,7 @@ Improved Security
 
 ---
 
-# Why Post-Incident Review Matters
+## Why Post-Incident Review Matters
 
 Organizations often focus heavily on:
 
@@ -73,7 +73,7 @@ Without structured post-incident review, organizations risk repeating the same f
 
 ---
 
-# Post-Incident Review Objectives
+## Post-Incident Review Objectives
 
 A good review should determine:
 
@@ -94,7 +94,7 @@ A good review should determine:
 
 ---
 
-# Incident Closure vs Post-Incident Review
+## Incident Closure vs Post-Incident Review
 
 These are related but different.
 
@@ -118,7 +118,7 @@ An incident can be technically closed while improvement actions remain open.
 
 ---
 
-# Post-Incident Lifecycle
+## Post-Incident Lifecycle
 
 ```text
 Recovery
@@ -159,7 +159,7 @@ Management Reporting
 
 ---
 
-# When Should a PIR Occur?
+## When Should a PIR Occur?
 
 The review should happen after sufficient operational stabilization.
 
@@ -188,7 +188,7 @@ Executive Review
 
 ---
 
-# Hot Wash
+## Hot Wash
 
 A **hot wash** is a rapid review performed shortly after the incident.
 
@@ -205,7 +205,7 @@ Questions:
 
 ---
 
-# Detailed Post-Incident Review
+## Detailed Post-Incident Review
 
 The detailed review should reconstruct the incident objectively.
 
@@ -231,7 +231,7 @@ Ownership
 
 ---
 
-# Executive Summary
+## Executive Summary
 
 The executive summary should be understandable without deep technical knowledge.
 
@@ -268,7 +268,7 @@ Strengthen phishing-resistant authentication for privileged identities.
 
 ---
 
-# Incident Timeline
+## Incident Timeline
 
 A timeline is one of the most valuable PIR artifacts.
 
@@ -311,19 +311,19 @@ No additional compromised identities identified
 
 ---
 
-# Timeline Quality
+## Timeline Quality
 
 A good timeline distinguishes between:
 
-### Confirmed
+#### Confirmed
 
 Directly supported by evidence.
 
-### Likely
+#### Likely
 
 Strongly supported but not directly confirmed.
 
-### Possible
+#### Possible
 
 Plausible but insufficiently supported.
 
@@ -344,7 +344,7 @@ This prevents assumptions from becoming facts.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Root cause analysis asks why the incident was possible.
 
@@ -368,11 +368,11 @@ Systemic Cause
 
 ---
 
-# Root Cause vs Trigger
+## Root Cause vs Trigger
 
 These concepts should not be confused.
 
-### Trigger
+#### Trigger
 
 The event that immediately caused the incident.
 
@@ -380,7 +380,7 @@ Example:
 
 > Employee clicked a phishing link.
 
-### Root Cause
+#### Root Cause
 
 The underlying condition that allowed the incident to succeed.
 
@@ -390,29 +390,29 @@ Example:
 
 ---
 
-# Five Whys
+## Five Whys
 
 The Five Whys technique can help identify deeper causes.
 
 Example:
 
-### Why was the account compromised?
+#### Why was the account compromised?
 
 Because credentials were stolen.
 
-### Why were credentials stolen?
+#### Why were credentials stolen?
 
 Because the user submitted them to a phishing site.
 
-### Why could the stolen credentials be used?
+#### Why could the stolen credentials be used?
 
 Because stronger phishing-resistant authentication was not enforced.
 
-### Why was it not enforced?
+#### Why was it not enforced?
 
 Because privileged identity policy was incomplete.
 
-### Why was the policy incomplete?
+#### Why was the policy incomplete?
 
 Because identity security requirements were not incorporated into the organization's control baseline.
 
@@ -422,7 +422,7 @@ The final answer is more actionable than:
 
 ---
 
-# Root Cause Categories
+## Root Cause Categories
 
 Root causes commonly fall into:
 
@@ -441,7 +441,7 @@ Supply Chain
 
 ---
 
-# Control Failure Analysis
+## Control Failure Analysis
 
 A security incident may involve multiple failed controls.
 
@@ -465,7 +465,7 @@ This demonstrates that security is a layered system.
 
 ---
 
-# Defense-in-Depth Review
+## Defense-in-Depth Review
 
 For every incident ask:
 
@@ -483,7 +483,7 @@ This creates a defense-in-depth analysis.
 
 ---
 
-# Detection Gap Analysis
+## Detection Gap Analysis
 
 Determine whether the incident was:
 
@@ -499,7 +499,7 @@ Discovered After Impact
 
 ---
 
-# Detection Gap Example
+## Detection Gap Example
 
 Suppose an attacker remained active for six hours.
 
@@ -527,7 +527,7 @@ The PIR should ask:
 
 ---
 
-# Detection Engineering Review
+## Detection Engineering Review
 
 For every significant incident, ask:
 
@@ -549,7 +549,7 @@ Could detection have occurred earlier?
 
 ---
 
-# Detection Improvement Lifecycle
+## Detection Improvement Lifecycle
 
 ```text
 Incident
@@ -575,7 +575,7 @@ Monitoring
 
 ---
 
-# Threat Hunting Feedback
+## Threat Hunting Feedback
 
 Incidents should generate new hunting opportunities.
 
@@ -599,7 +599,7 @@ New Hunting Hypothesis
 
 ---
 
-# Corrective and Preventive Actions
+## Corrective and Preventive Actions
 
 A mature organization tracks improvements through a structured action register.
 
@@ -613,11 +613,11 @@ Example:
 
 ---
 
-# CAPA
+## CAPA
 
 **Corrective and Preventive Action** separates two ideas.
 
-### Corrective Action
+#### Corrective Action
 
 Fix the existing problem.
 
@@ -625,7 +625,7 @@ Example:
 
 > Rotate compromised credentials.
 
-### Preventive Action
+#### Preventive Action
 
 Reduce the likelihood of recurrence.
 
@@ -635,7 +635,7 @@ Example:
 
 ---
 
-# Action Prioritization
+## Action Prioritization
 
 Not every improvement has equal priority.
 
@@ -654,25 +654,25 @@ Likelihood
 
 A practical classification:
 
-### Critical
+#### Critical
 
 Immediate risk reduction required.
 
-### High
+#### High
 
 Significant security improvement.
 
-### Medium
+#### Medium
 
 Important but can be scheduled.
 
-### Low
+#### Low
 
 Optimization or maturity improvement.
 
 ---
 
-# Action Ownership
+## Action Ownership
 
 Every action should have:
 
@@ -698,7 +698,7 @@ Instead:
 
 ---
 
-# Action Closure
+## Action Closure
 
 An action should not be considered complete merely because a ticket was closed.
 
@@ -722,7 +722,7 @@ Action Closed
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 Metrics help organizations understand response effectiveness.
 
@@ -745,7 +745,7 @@ Common incident response metrics include:
 
 ---
 
-# MTTD
+## MTTD
 
 **Mean Time to Detect**
 
@@ -759,7 +759,7 @@ Lower is generally better.
 
 ---
 
-# MTTA
+## MTTA
 
 **Mean Time to Acknowledge**
 
@@ -771,7 +771,7 @@ Acknowledgement Time - Alert Time
 
 ---
 
-# MTTC
+## MTTC
 
 **Mean Time to Contain**
 
@@ -783,7 +783,7 @@ Containment Time - Incident Identification Time
 
 ---
 
-# MTTR
+## MTTR
 
 **Mean Time to Recover**
 
@@ -797,7 +797,7 @@ Organizations should define the exact start and end points consistently.
 
 ---
 
-# Dwell Time
+## Dwell Time
 
 Dwell time represents the period between initial compromise and detection.
 
@@ -821,7 +821,7 @@ Long dwell time may indicate:
 
 ---
 
-# Containment Metrics
+## Containment Metrics
 
 Useful measurements:
 
@@ -835,7 +835,7 @@ Average Time to Protect Backups
 
 ---
 
-# Recovery Metrics
+## Recovery Metrics
 
 Measure:
 
@@ -848,7 +848,7 @@ Measure:
 
 ---
 
-# Detection Quality Metrics
+## Detection Quality Metrics
 
 Volume alone is not a good measure of SOC performance.
 
@@ -867,7 +867,7 @@ Detection-to-Incident Conversion
 
 ---
 
-# Alert-to-Incident Conversion
+## Alert-to-Incident Conversion
 
 Example:
 
@@ -888,7 +888,7 @@ This can reveal whether detection engineering is producing excessive noise.
 
 ---
 
-# Incident Recurrence
+## Incident Recurrence
 
 Track repeated incidents by:
 
@@ -915,7 +915,7 @@ A decreasing trend may indicate successful improvements.
 
 ---
 
-# Security Debt
+## Security Debt
 
 Incident reviews can reveal security debt.
 
@@ -933,7 +933,7 @@ Security debt should be tracked similarly to technical debt.
 
 ---
 
-# Risk Register Integration
+## Risk Register Integration
 
 Post-incident findings should feed the organizational risk register.
 
@@ -958,7 +958,7 @@ Validation
 
 ---
 
-# Executive Metrics
+## Executive Metrics
 
 Executives generally need outcomes rather than raw technical telemetry.
 
@@ -975,7 +975,7 @@ Useful executive indicators:
 
 ---
 
-# Technical Metrics
+## Technical Metrics
 
 Security teams may require deeper measurements:
 
@@ -992,7 +992,7 @@ Security teams may require deeper measurements:
 
 ---
 
-# Metrics Hierarchy
+## Metrics Hierarchy
 
 ```text
 Executive
@@ -1019,31 +1019,31 @@ Operational
 
 ---
 
-# Metrics Anti-Patterns
+## Metrics Anti-Patterns
 
-## Measuring Alert Volume
+### Measuring Alert Volume
 
 More alerts does not necessarily mean better security.
 
-## Measuring Analysts by Ticket Closure
+### Measuring Analysts by Ticket Closure
 
 Fast closure can encourage poor investigations.
 
-## Measuring Only MTTR
+### Measuring Only MTTR
 
 A low MTTR may hide poor detection or incomplete recovery.
 
-## Ignoring Business Impact
+### Ignoring Business Impact
 
 Technical recovery does not automatically mean business recovery.
 
-## Ignoring Recurrence
+### Ignoring Recurrence
 
 Repeated incidents indicate unresolved systemic problems.
 
 ---
 
-# Continuous Improvement Model
+## Continuous Improvement Model
 
 A mature IR program follows:
 
@@ -1073,39 +1073,39 @@ IMPROVE
 
 ---
 
-# Lessons Learned Categories
+## Lessons Learned Categories
 
 Capture lessons in several categories.
 
-## People
+### People
 
 - Skills
 - Training
 - Staffing
 - Roles
 
-## Process
+### Process
 
 - Escalation
 - Documentation
 - Communication
 - Approval
 
-## Technology
+### Technology
 
 - EDR
 - SIEM
 - IAM
 - Network controls
 
-## Architecture
+### Architecture
 
 - Segmentation
 - Zero Trust
 - Resilience
 - Redundancy
 
-## Governance
+### Governance
 
 - Policies
 - Risk
@@ -1114,11 +1114,11 @@ Capture lessons in several categories.
 
 ---
 
-# What Worked / What Failed
+## What Worked / What Failed
 
 A useful PIR should document both.
 
-### What Worked
+#### What Worked
 
 ```text
 EDR detected malicious process.
@@ -1127,7 +1127,7 @@ Account was contained.
 Backups were available.
 ```
 
-### What Failed
+#### What Failed
 
 ```text
 Initial phishing was not blocked.
@@ -1140,7 +1140,7 @@ This creates a balanced review rather than a blame exercise.
 
 ---
 
-# Blameless Post-Incident Review
+## Blameless Post-Incident Review
 
 A mature security organization should focus on systems and decisions rather than personal blame.
 
@@ -1156,7 +1156,7 @@ This produces more actionable improvements.
 
 ---
 
-# Human Factors
+## Human Factors
 
 Security incidents often involve:
 
@@ -1172,7 +1172,7 @@ These should be treated as system-level improvement opportunities.
 
 ---
 
-# Communication Review
+## Communication Review
 
 Analyze:
 
@@ -1187,7 +1187,7 @@ Were updates accurate?
 
 ---
 
-# Third-Party Incident Review
+## Third-Party Incident Review
 
 If a vendor is involved, evaluate:
 
@@ -1201,7 +1201,7 @@ If a vendor is involved, evaluate:
 
 ---
 
-# Supply Chain Incident Review
+## Supply Chain Incident Review
 
 For compromised software or dependencies, determine:
 
@@ -1231,7 +1231,7 @@ Then review:
 
 ---
 
-# Tabletop Exercise Feedback
+## Tabletop Exercise Feedback
 
 Tabletop exercises should produce action items.
 
@@ -1258,7 +1258,7 @@ Validation
 
 ---
 
-# Purple Team Feedback
+## Purple Team Feedback
 
 Purple-team exercises can validate:
 
@@ -1292,7 +1292,7 @@ Improvement
 
 ---
 
-# Detection Coverage Improvement
+## Detection Coverage Improvement
 
 Incidents should be mapped to relevant ATT&CK techniques.
 
@@ -1321,9 +1321,9 @@ Which techniques generated useful alerts?
 
 ---
 
-# Incident Maturity Model
+## Incident Maturity Model
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 Characteristics:
 
@@ -1333,7 +1333,7 @@ Characteristics:
 
 ---
 
-## Level 2 — Repeatable
+### Level 2 — Repeatable
 
 Characteristics:
 
@@ -1343,7 +1343,7 @@ Characteristics:
 
 ---
 
-## Level 3 — Managed
+### Level 3 — Managed
 
 Characteristics:
 
@@ -1354,7 +1354,7 @@ Characteristics:
 
 ---
 
-## Level 4 — Integrated
+### Level 4 — Integrated
 
 Characteristics:
 
@@ -1365,7 +1365,7 @@ Characteristics:
 
 ---
 
-## Level 5 — Optimized
+### Level 5 — Optimized
 
 Characteristics:
 
@@ -1377,7 +1377,7 @@ Characteristics:
 
 ---
 
-# Enterprise Improvement Architecture
+## Enterprise Improvement Architecture
 
 ```text
                          Security Incident
@@ -1413,9 +1413,9 @@ Characteristics:
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-# Lab 1 — Conduct a Post-Incident Review
+## Lab 1 — Conduct a Post-Incident Review
 
 Use a hypothetical phishing incident.
 
@@ -1436,7 +1436,7 @@ Metrics
 
 ---
 
-# Lab 2 — Build an Action Register
+## Lab 2 — Build an Action Register
 
 Create at least 10 findings.
 
@@ -1451,7 +1451,7 @@ Example:
 
 ---
 
-# Lab 3 — Calculate IR Metrics
+## Lab 3 — Calculate IR Metrics
 
 Given:
 
@@ -1505,7 +1505,7 @@ The exact metric definitions should be standardized within the organization.
 
 ---
 
-# Lab 4 — Detection Gap Analysis
+## Lab 4 — Detection Gap Analysis
 
 Scenario:
 
@@ -1536,7 +1536,7 @@ Then design:
 
 ---
 
-# Lab 5 — Root Cause Analysis
+## Lab 5 — Root Cause Analysis
 
 Scenario:
 
@@ -1554,7 +1554,7 @@ Corrective Action Plan
 
 ---
 
-# Practical Post-Incident Review Template
+## Practical Post-Incident Review Template
 
 ```text
 # Post-Incident Review
@@ -1619,7 +1619,7 @@ Incident Commander:
 
 ---
 
-# Corrective Action Register Template
+## Corrective Action Register Template
 
 ```text
 Action ID:
@@ -1638,7 +1638,7 @@ Closure Date:
 
 ---
 
-# Incident Trend Analysis
+## Incident Trend Analysis
 
 Organizations should periodically analyze incidents across time.
 
@@ -1669,7 +1669,7 @@ Analyze:
 
 ---
 
-# Recurring Incident Analysis
+## Recurring Incident Analysis
 
 If the same incident occurs repeatedly:
 
@@ -1690,7 +1690,7 @@ The organization should investigate whether the corrective action addressed the 
 
 ---
 
-# Security Control Effectiveness
+## Security Control Effectiveness
 
 A PIR should ask:
 
@@ -1706,7 +1706,7 @@ Was it operational?
 
 ---
 
-# Security Control Validation
+## Security Control Validation
 
 A control should be validated through evidence.
 
@@ -1734,7 +1734,7 @@ Alert
 
 ---
 
-# Recovery Validation
+## Recovery Validation
 
 Recovery should include:
 
@@ -1753,7 +1753,7 @@ A restored server is not necessarily a recovered service.
 
 ---
 
-# Business Resilience
+## Business Resilience
 
 Incident response should ultimately protect:
 
@@ -1767,7 +1767,7 @@ Incident response should ultimately protect:
 
 ---
 
-# Security Improvement Backlog
+## Security Improvement Backlog
 
 Maintain a backlog containing:
 
@@ -1787,7 +1787,7 @@ Prioritize based on risk.
 
 ---
 
-# Governance
+## Governance
 
 Post-incident actions may require coordination across:
 
@@ -1807,7 +1807,7 @@ Leadership
 
 ---
 
-# Incident Review Meeting
+## Incident Review Meeting
 
 Suggested agenda:
 
@@ -1828,7 +1828,7 @@ Suggested agenda:
 
 ---
 
-# Avoiding Blame
+## Avoiding Blame
 
 A post-incident review should not become:
 
@@ -1854,23 +1854,23 @@ Validate Improvement
 
 ---
 
-# Incident Response Program Review
+## Incident Response Program Review
 
 At least periodically, evaluate:
 
-### People
+#### People
 
 - Skills
 - Staffing
 - On-call coverage
 
-### Process
+#### Process
 
 - Playbooks
 - Escalation
 - Documentation
 
-### Technology
+#### Technology
 
 - SIEM
 - EDR
@@ -1878,13 +1878,13 @@ At least periodically, evaluate:
 - IAM
 - Network telemetry
 
-### Governance
+#### Governance
 
 - Policies
 - Risk
 - Compliance
 
-### Resilience
+#### Resilience
 
 - Backups
 - Recovery
@@ -1892,7 +1892,7 @@ At least periodically, evaluate:
 
 ---
 
-# Enterprise Incident Response Scorecard
+## Enterprise Incident Response Scorecard
 
 | Domain | Question |
 |---|---|
@@ -1910,7 +1910,7 @@ At least periodically, evaluate:
 
 ---
 
-# Continuous Improvement Checklist
+## Continuous Improvement Checklist
 
 ```text
 [ ] Incident reviewed
@@ -1936,15 +1936,15 @@ At least periodically, evaluate:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## 1. What is a post-incident review?
+### 1. What is a post-incident review?
 
 A structured assessment performed after an incident to understand what happened, evaluate response effectiveness, identify root causes and control gaps, and create measurable improvements.
 
 ---
 
-## 2. What is the difference between root cause and contributing factor?
+### 2. What is the difference between root cause and contributing factor?
 
 The root cause is the underlying condition that enabled or significantly contributed to the incident.
 
@@ -1952,7 +1952,7 @@ A contributing factor is an additional condition that increased likelihood, impa
 
 ---
 
-## 3. What is MTTD?
+### 3. What is MTTD?
 
 Mean Time to Detect.
 
@@ -1960,7 +1960,7 @@ It measures the average time between malicious activity or compromise and detect
 
 ---
 
-## 4. What is MTTC?
+### 4. What is MTTC?
 
 Mean Time to Contain.
 
@@ -1968,13 +1968,13 @@ It measures how quickly effective containment is achieved after an incident has 
 
 ---
 
-## 5. Why is MTTR alone insufficient?
+### 5. Why is MTTR alone insufficient?
 
 Because rapid recovery does not necessarily mean the organization detected the threat quickly, correctly identified scope, or eliminated the root cause.
 
 ---
 
-## 6. What should happen after an incident?
+### 6. What should happen after an incident?
 
 At minimum:
 
@@ -1989,7 +1989,7 @@ Metrics
 
 ---
 
-## 7. What is CAPA?
+### 7. What is CAPA?
 
 Corrective and Preventive Action.
 
@@ -1997,31 +1997,31 @@ Corrective actions address existing problems, while preventive actions reduce th
 
 ---
 
-## 8. How should organizations prioritize improvement actions?
+### 8. How should organizations prioritize improvement actions?
 
 Based on risk, impact, likelihood, exposure, business criticality, and feasibility.
 
 ---
 
-## 9. Why should incident reviews be blameless?
+### 9. Why should incident reviews be blameless?
 
 Blameless reviews encourage accurate reporting and focus on systemic improvements rather than discouraging people from reporting mistakes.
 
 ---
 
-## 10. How can incidents improve detection engineering?
+### 10. How can incidents improve detection engineering?
 
 Incident findings can identify telemetry and detection gaps that can be converted into new detection requirements, tested rules, and hunting hypotheses.
 
 ---
 
-## 11. How can threat hunting benefit from incident reviews?
+### 11. How can threat hunting benefit from incident reviews?
 
 Incident artifacts can generate new hunting hypotheses and enable retrospective searches for similar activity.
 
 ---
 
-## 12. What makes an improvement action complete?
+### 12. What makes an improvement action complete?
 
 Implementation alone is insufficient.
 
@@ -2043,7 +2043,7 @@ Close
 
 ---
 
-# Professional Incident Closure Criteria
+## Professional Incident Closure Criteria
 
 An incident should generally require:
 
@@ -2062,7 +2062,7 @@ An incident should generally require:
 
 ---
 
-# Integration With Threat Hunting
+## Integration With Threat Hunting
 
 ```text
 Incident
@@ -2085,7 +2085,7 @@ Detection Improvement
 
 ---
 
-# Integration With Detection Engineering
+## Integration With Detection Engineering
 
 ```text
 Incident
@@ -2111,7 +2111,7 @@ Validation
 
 ---
 
-# Integration With Vulnerability Management
+## Integration With Vulnerability Management
 
 If an incident exploited a vulnerability:
 
@@ -2136,7 +2136,7 @@ Risk Reduction
 
 ---
 
-# Integration With Identity Security
+## Integration With Identity Security
 
 If identity was involved:
 
@@ -2158,7 +2158,7 @@ Identity Control Improvement
 
 ---
 
-# Integration With Security Architecture
+## Integration With Security Architecture
 
 Major incidents may reveal architectural weaknesses.
 
@@ -2184,7 +2184,7 @@ Centralized Telemetry
 
 ---
 
-# Enterprise Continuous Improvement Architecture
+## Enterprise Continuous Improvement Architecture
 
 ```text
                          INCIDENT
@@ -2229,7 +2229,7 @@ Centralized Telemetry
 
 ---
 
-# Chapter Completion Checklist
+## Chapter Completion Checklist
 
 ```text
 [ ] Understand post-incident review
@@ -2257,7 +2257,7 @@ Centralized Telemetry
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 Incident response is not complete when the attacker is removed.
 
@@ -2291,7 +2291,7 @@ They are defined by how effectively they **learn from attacks**.
 
 ---
 
-# Incident Response Section — Final Architecture
+## Incident Response Section — Final Architecture
 
 With this chapter, the Incident Response section forms a complete lifecycle:
 
@@ -2339,49 +2339,49 @@ Continuous Improvement
 
 ---
 
-# References
+## References
 
-### NIST SP 800-61
+#### NIST SP 800-61
 
 Computer Security Incident Handling Guide:
 
 https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final
 
-### NIST SP 800-86
+#### NIST SP 800-86
 
 Guide to Integrating Forensic Techniques into Incident Response:
 
 https://csrc.nist.gov/publications/detail/sp/800-86/final
 
-### NIST Cybersecurity Framework
+#### NIST Cybersecurity Framework
 
 https://www.nist.gov/cyberframework
 
-### CISA
+#### CISA
 
 Cybersecurity incident response resources:
 
 https://www.cisa.gov/
 
-### MITRE ATT&CK
+#### MITRE ATT&CK
 
 https://attack.mitre.org/
 
-### CIS Controls
+#### CIS Controls
 
 https://www.cisecurity.org/controls
 
-### FIRST
+#### FIRST
 
 https://www.first.org/
 
-### SANS
+#### SANS
 
 https://www.sans.org/
 
 ---
 
-# Incident Response Section — Final Objective
+## Incident Response Section — Final Objective
 
 After completing this section, you should be able to reason through an enterprise incident from beginning to end:
 

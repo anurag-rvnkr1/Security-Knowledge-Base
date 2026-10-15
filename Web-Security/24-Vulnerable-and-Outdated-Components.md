@@ -1,12 +1,12 @@
 # 24-Vulnerable-and-Outdated-Components.md
 
-# Part 1 — Fundamentals of Vulnerable & Outdated Components, Software Supply Chain, Dependency Management, and Enterprise Overview
+## Part 1 — Fundamentals of Vulnerable & Outdated Components, Software Supply Chain, Dependency Management, and Enterprise Overview
 
 > **"Modern applications are built from thousands of components. The security of the application depends not only on your code but also on every library, framework, runtime, container, and third-party dependency it uses."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What are Vulnerable and Outdated Components?
+## What are Vulnerable and Outdated Components?
 
 A **component** is any reusable software used by an application.
 
@@ -43,7 +43,7 @@ When these components contain known security vulnerabilities or are no longer ma
 
 ---
 
-# Why Components Matter
+## Why Components Matter
 
 Modern applications rarely consist entirely of custom-written code.
 
@@ -75,7 +75,7 @@ A vulnerability in any component may affect the overall application.
 
 ---
 
-# OWASP Perspective
+## OWASP Perspective
 
 OWASP identifies **Vulnerable and Outdated Components** as a major application security risk because organizations frequently:
 
@@ -87,7 +87,7 @@ OWASP identifies **Vulnerable and Outdated Components** as a major application s
 
 ---
 
-# What is a Software Component?
+## What is a Software Component?
 
 ```
 Application
@@ -109,7 +109,7 @@ Components help developers build applications efficiently without writing every 
 
 ---
 
-# Examples of Components
+## Examples of Components
 
 | Category | Examples |
 |----------|-----------|
@@ -124,7 +124,7 @@ Components help developers build applications efficiently without writing every 
 
 ---
 
-# Application Dependency Tree
+## Application Dependency Tree
 
 ```
 Application
@@ -152,9 +152,9 @@ One application may indirectly depend on hundreds or even thousands of component
 
 ---
 
-# Direct vs Transitive Dependencies
+## Direct vs Transitive Dependencies
 
-## Direct Dependency
+### Direct Dependency
 
 ```
 Application
@@ -168,7 +168,7 @@ The application explicitly includes the library.
 
 ---
 
-## Transitive Dependency
+### Transitive Dependency
 
 ```
 Application
@@ -190,7 +190,7 @@ The application may not directly reference every dependency, yet vulnerabilities
 
 ---
 
-# Software Supply Chain
+## Software Supply Chain
 
 The software supply chain includes every component involved in building and delivering software.
 
@@ -226,7 +226,7 @@ Every stage should be managed securely.
 
 ---
 
-# Supply Chain Components
+## Supply Chain Components
 
 ```
 Software Supply Chain
@@ -254,7 +254,7 @@ Security should be considered throughout the supply chain.
 
 ---
 
-# Dependency Management
+## Dependency Management
 
 Dependency management is the process of tracking, updating, and maintaining software components.
 
@@ -286,7 +286,7 @@ Organizations should maintain visibility into every dependency.
 
 ---
 
-# Why Organizations Use Third-Party Components
+## Why Organizations Use Third-Party Components
 
 Benefits include:
 
@@ -301,7 +301,7 @@ However, every dependency introduces additional risk that must be managed.
 
 ---
 
-# Risks of Outdated Components
+## Risks of Outdated Components
 
 ```
 Outdated Component
@@ -323,7 +323,7 @@ Unsupported software may no longer receive security updates or bug fixes.
 
 ---
 
-# Unsupported Software
+## Unsupported Software
 
 Software reaches the end of its support lifecycle.
 
@@ -351,7 +351,7 @@ Organizations should plan upgrades before support ends.
 
 ---
 
-# Software Bill of Materials (SBOM)
+## Software Bill of Materials (SBOM)
 
 An SBOM is an inventory of software components used within an application.
 
@@ -379,7 +379,7 @@ SBOMs improve visibility and accelerate incident response.
 
 ---
 
-# Benefits of an SBOM
+## Benefits of an SBOM
 
 ```
 SBOM
@@ -401,7 +401,7 @@ SBOM
 
 ---
 
-# Package Managers
+## Package Managers
 
 Package managers simplify dependency installation and updates.
 
@@ -421,7 +421,7 @@ Package managers improve consistency but require proper governance.
 
 ---
 
-# Enterprise Dependency Lifecycle
+## Enterprise Dependency Lifecycle
 
 ```
 Need Identified
@@ -455,7 +455,7 @@ Every new dependency should undergo review before adoption.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Managing components is one layer of enterprise security.
 
@@ -491,7 +491,7 @@ No single control eliminates all risk.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A banking application:
 
@@ -527,7 +527,7 @@ Every component should be inventoried, monitored, and updated throughout its lif
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Example |
 |-----------|----------|
@@ -540,7 +540,7 @@ Every component should be inventoried, monitored, and updated throughout its lif
 
 ---
 
-# Enterprise Dependency Workflow
+## Enterprise Dependency Workflow
 
 ```
 Business Need
@@ -572,7 +572,7 @@ Update Planning
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select a sample web application.
 2. List all major software components.
@@ -584,7 +584,7 @@ Update Planning
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a software component?
 2. What are vulnerable and outdated components?
@@ -599,7 +599,7 @@ Update Planning
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain an accurate inventory of all software components.
 - Review dependencies before adoption.
@@ -611,7 +611,7 @@ Update Planning
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Forgetting indirect dependencies.
 - Continuing to use unsupported software.
@@ -622,7 +622,7 @@ Update Planning
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Modern applications depend heavily on third-party components.
 - Vulnerable or outdated components can introduce significant security risks even when custom code is secure.
@@ -630,15 +630,15 @@ Update Planning
 - SBOMs improve transparency and support faster risk assessment.
 - Effective dependency management is a continuous operational process.
 
-# 24-Vulnerable-and-Outdated-Components.md
+## 24-Vulnerable-and-Outdated-Components.md
 
-# Part 2 — Vulnerability Management, CVE, CVSS, Patch Management, Dependency Scanning, and Enterprise Supply Chain Security
+## Part 2 — Vulnerability Management, CVE, CVSS, Patch Management, Dependency Scanning, and Enterprise Supply Chain Security
 
 > **"You cannot protect software components that you do not know exist. Visibility, vulnerability assessment, and timely updates are the foundation of software supply chain security."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -655,7 +655,7 @@ After completing this part, you will understand:
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Vulnerability management is the continuous process of identifying, evaluating, prioritizing, remediating, and monitoring security weaknesses.
 
@@ -687,7 +687,7 @@ This process applies to applications, operating systems, containers, cloud servi
 
 ---
 
-# Vulnerability Management Lifecycle
+## Vulnerability Management Lifecycle
 
 ```
 Asset Inventory
@@ -725,7 +725,7 @@ Effective vulnerability management depends on maintaining an accurate inventory 
 
 ---
 
-# What is a CVE?
+## What is a CVE?
 
 **CVE (Common Vulnerabilities and Exposures)** provides standardized identifiers for publicly disclosed security vulnerabilities.
 
@@ -745,7 +745,7 @@ A CVE identifier helps security teams consistently reference a specific vulnerab
 
 ---
 
-# Why CVEs Matter
+## Why CVEs Matter
 
 Without standardized identifiers:
 
@@ -789,7 +789,7 @@ Standard identifiers improve communication and incident response.
 
 ---
 
-# CVSS Overview
+## CVSS Overview
 
 The **Common Vulnerability Scoring System (CVSS)** provides a standardized way to estimate the severity of vulnerabilities.
 
@@ -807,7 +807,7 @@ CVSS helps organizations prioritize remediation but should not be the only facto
 
 ---
 
-# Risk-Based Prioritization
+## Risk-Based Prioritization
 
 ```
 Detected Vulnerability
@@ -837,7 +837,7 @@ Organizations often combine technical severity with business context.
 
 ---
 
-# Enterprise Risk Factors
+## Enterprise Risk Factors
 
 ```
 Risk Evaluation
@@ -863,7 +863,7 @@ Risk should be evaluated holistically rather than relying solely on numerical sc
 
 ---
 
-# Patch Management
+## Patch Management
 
 Patch management is the structured process of applying security updates safely.
 
@@ -895,7 +895,7 @@ Updates should be validated before production deployment.
 
 ---
 
-# Patch Management Lifecycle
+## Patch Management Lifecycle
 
 ```
 Patch Released
@@ -929,7 +929,7 @@ Organizations should establish defined maintenance procedures for updates.
 
 ---
 
-# Emergency vs Routine Patching
+## Emergency vs Routine Patching
 
 | Routine Updates | Emergency Updates |
 |-----------------|------------------|
@@ -942,7 +942,7 @@ Both require documentation and validation.
 
 ---
 
-# Dependency Scanning
+## Dependency Scanning
 
 Dependency scanning identifies known vulnerabilities in software libraries and packages.
 
@@ -970,7 +970,7 @@ Scanning helps organizations detect outdated or vulnerable components before dep
 
 ---
 
-# Continuous Dependency Monitoring
+## Continuous Dependency Monitoring
 
 ```
 Application
@@ -1000,7 +1000,7 @@ Security reviews should continue after deployment because new vulnerabilities ma
 
 ---
 
-# Software Composition Analysis (SCA)
+## Software Composition Analysis (SCA)
 
 Software Composition Analysis (SCA) tools help organizations understand the components within an application.
 
@@ -1028,7 +1028,7 @@ SCA improves visibility into software supply chains.
 
 ---
 
-# Container Image Security
+## Container Image Security
 
 Containers include multiple software layers.
 
@@ -1052,7 +1052,7 @@ Each layer should be reviewed and maintained throughout its lifecycle.
 
 ---
 
-# Container Lifecycle
+## Container Lifecycle
 
 ```
 Build
@@ -1082,7 +1082,7 @@ Container security is an ongoing process rather than a one-time activity.
 
 ---
 
-# Supply Chain Security
+## Supply Chain Security
 
 Software supply chain security extends beyond application code.
 
@@ -1114,7 +1114,7 @@ Every stage should include integrity and security verification.
 
 ---
 
-# Third-Party Risk Management
+## Third-Party Risk Management
 
 Organizations should evaluate external software before adoption.
 
@@ -1142,7 +1142,7 @@ Well-maintained software generally provides a more predictable security lifecycl
 
 ---
 
-# Enterprise Dependency Governance
+## Enterprise Dependency Governance
 
 ```
 New Dependency
@@ -1172,7 +1172,7 @@ Dependency selection should be governed rather than left to individual preferenc
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial application uses:
 
@@ -1213,7 +1213,7 @@ Each component is:
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1226,7 +1226,7 @@ Each component is:
 
 ---
 
-# Enterprise Vulnerability Workflow
+## Enterprise Vulnerability Workflow
 
 ```
 Inventory
@@ -1262,7 +1262,7 @@ Continuous Monitoring
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select a sample web application.
 2. Create a conceptual dependency inventory.
@@ -1274,7 +1274,7 @@ Continuous Monitoring
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is vulnerability management?
 2. What is a CVE?
@@ -1289,7 +1289,7 @@ Continuous Monitoring
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain a complete inventory of software components.
 - Continuously monitor dependencies for newly disclosed vulnerabilities.
@@ -1301,7 +1301,7 @@ Continuous Monitoring
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Delaying security updates indefinitely.
 - Ignoring transitive dependencies.
@@ -1312,7 +1312,7 @@ Continuous Monitoring
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Vulnerability management is a continuous operational process.
 - CVEs provide standardized vulnerability identifiers, while CVSS helps estimate severity.
@@ -1320,15 +1320,15 @@ Continuous Monitoring
 - Dependency scanning and Software Composition Analysis improve visibility into software supply chains.
 - Effective governance ensures that software components remain secure throughout their lifecycle.
 
-# 24-Vulnerable-and-Outdated-Components.md
+## 24-Vulnerable-and-Outdated-Components.md
 
-# Part 3 — Secure Dependency Management, CI/CD Security, SBOM, Container Supply Chain, Trusted Repositories, and Enterprise Governance
+## Part 3 — Secure Dependency Management, CI/CD Security, SBOM, Container Supply Chain, Trusted Repositories, and Enterprise Governance
 
 > **"A secure software supply chain requires continuous verification—not only of your own code, but also of every dependency, build artifact, container image, and deployment pipeline."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1345,7 +1345,7 @@ After completing this part, you will understand:
 
 ---
 
-# Secure Dependency Management
+## Secure Dependency Management
 
 Dependency management is not simply installing libraries—it is managing their entire lifecycle.
 
@@ -1385,7 +1385,7 @@ Each dependency should be treated as an enterprise asset.
 
 ---
 
-# Enterprise Dependency Lifecycle
+## Enterprise Dependency Lifecycle
 
 ```
 Component
@@ -1423,7 +1423,7 @@ Dependencies should be reviewed throughout their operational life.
 
 ---
 
-# Selecting Third-Party Components
+## Selecting Third-Party Components
 
 Before adopting a component, organizations commonly evaluate:
 
@@ -1453,7 +1453,7 @@ Selection should balance functionality, maintainability, and organizational requ
 
 ---
 
-# Trusted Package Repositories
+## Trusted Package Repositories
 
 Package repositories distribute software components.
 
@@ -1472,7 +1472,7 @@ Organizations should establish policies governing which repositories are approve
 
 ---
 
-# Repository Governance
+## Repository Governance
 
 ```
 Developer
@@ -1498,7 +1498,7 @@ Restricting software sources improves consistency and reduces supply chain risk.
 
 ---
 
-# Dependency Version Management
+## Dependency Version Management
 
 Every dependency should have a clearly defined version.
 
@@ -1522,7 +1522,7 @@ Version tracking supports reproducible builds and simplifies troubleshooting.
 
 ---
 
-# Version Pinning
+## Version Pinning
 
 Version pinning specifies the exact version of a dependency to be used.
 
@@ -1548,7 +1548,7 @@ Organizations should periodically review pinned versions and update them as appr
 
 ---
 
-# Dependency Lock Files
+## Dependency Lock Files
 
 Many package managers generate lock files.
 
@@ -1572,7 +1572,7 @@ Lock files help ensure consistent dependency versions across development, testin
 
 ---
 
-# Software Bill of Materials (SBOM)
+## Software Bill of Materials (SBOM)
 
 An SBOM provides a structured inventory of software components.
 
@@ -1602,7 +1602,7 @@ SBOMs improve visibility into software composition.
 
 ---
 
-# Why SBOMs Matter
+## Why SBOMs Matter
 
 ```
 New Vulnerability
@@ -1632,7 +1632,7 @@ Organizations can respond more efficiently when they know exactly where affected
 
 ---
 
-# Artifact Repository
+## Artifact Repository
 
 Compiled software artifacts are often stored centrally.
 
@@ -1660,7 +1660,7 @@ Access to repositories should follow organizational security policies.
 
 ---
 
-# Build Integrity
+## Build Integrity
 
 Every build should be reproducible and verifiable.
 
@@ -1688,7 +1688,7 @@ Reliable build processes reduce operational risk.
 
 ---
 
-# CI/CD Supply Chain
+## CI/CD Supply Chain
 
 ```
 Developer
@@ -1722,7 +1722,7 @@ Security validation should occur throughout the pipeline.
 
 ---
 
-# Security Controls in CI/CD
+## Security Controls in CI/CD
 
 ```
 CI/CD Security
@@ -1750,7 +1750,7 @@ No single control is sufficient on its own.
 
 ---
 
-# Container Supply Chain
+## Container Supply Chain
 
 Containers consist of multiple layers.
 
@@ -1776,7 +1776,7 @@ Every layer contributes to the overall security posture.
 
 ---
 
-# Container Image Lifecycle
+## Container Image Lifecycle
 
 ```
 Select Base Image
@@ -1810,7 +1810,7 @@ Container images should be updated and reviewed throughout their lifecycle.
 
 ---
 
-# Image Provenance
+## Image Provenance
 
 Organizations benefit from knowing:
 
@@ -1836,7 +1836,7 @@ Documenting provenance improves traceability and incident response.
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 ```
 Governance
@@ -1862,7 +1862,7 @@ Governance helps development teams follow consistent practices.
 
 ---
 
-# Dependency Approval Workflow
+## Dependency Approval Workflow
 
 ```
 Developer Request
@@ -1892,7 +1892,7 @@ Reviewing new dependencies reduces unnecessary software risk.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 New vulnerabilities may be disclosed after deployment.
 
@@ -1920,7 +1920,7 @@ Monitoring should continue throughout the application's operational life.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An enterprise healthcare application:
 
@@ -1965,7 +1965,7 @@ All components are:
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1978,7 +1978,7 @@ All components are:
 
 ---
 
-# Enterprise Dependency Governance Workflow
+## Enterprise Dependency Governance Workflow
 
 ```
 Business Need
@@ -2014,7 +2014,7 @@ Lifecycle Management
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Select a sample enterprise application.
 2. Create a conceptual SBOM.
@@ -2026,7 +2026,7 @@ Lifecycle Management
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is secure dependency management important?
 2. What is version pinning?
@@ -2041,7 +2041,7 @@ Lifecycle Management
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain an accurate inventory of all software components.
 - Adopt dependencies only after appropriate review.
@@ -2054,7 +2054,7 @@ Lifecycle Management
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Downloading packages from untrusted sources.
 - Using inconsistent dependency versions across environments.
@@ -2065,7 +2065,7 @@ Lifecycle Management
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure dependency management extends throughout the entire software lifecycle.
 - Trusted repositories, version pinning, and lock files improve consistency and security.
@@ -2073,15 +2073,15 @@ Lifecycle Management
 - CI/CD pipelines and artifact repositories are essential parts of the software supply chain.
 - Continuous governance and monitoring strengthen enterprise supply chain security.
 
-# 24-Vulnerable-and-Outdated-Components.md
+## 24-Vulnerable-and-Outdated-Components.md
 
-# Part 4 — Enterprise Governance, Risk Management, Continuous Improvement, Incident Response, and Chapter Summary
+## Part 4 — Enterprise Governance, Risk Management, Continuous Improvement, Incident Response, and Chapter Summary
 
 > **"Software components continuously evolve. Secure organizations continuously monitor, assess, update, and govern their software supply chain rather than treating security as a one-time activity."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2098,7 +2098,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Software Supply Chain Governance
+## Enterprise Software Supply Chain Governance
 
 Governance ensures every software component follows organizational security policies throughout its lifecycle.
 
@@ -2138,7 +2138,7 @@ Governance provides consistency across projects, teams, and environments.
 
 ---
 
-# Component Lifecycle Management
+## Component Lifecycle Management
 
 Software components have defined operational lifecycles.
 
@@ -2174,7 +2174,7 @@ Every stage should include security validation.
 
 ---
 
-# Component Inventory Management
+## Component Inventory Management
 
 Organizations should maintain an inventory of software assets.
 
@@ -2204,7 +2204,7 @@ An accurate inventory enables faster risk assessment and incident response.
 
 ---
 
-# Continuous Vulnerability Monitoring
+## Continuous Vulnerability Monitoring
 
 New vulnerabilities may affect existing deployments.
 
@@ -2236,7 +2236,7 @@ Monitoring should continue throughout the application's operational lifetime.
 
 ---
 
-# Enterprise Risk Management
+## Enterprise Risk Management
 
 Component risks should be evaluated within the broader business context.
 
@@ -2268,7 +2268,7 @@ Organizations should balance security, operational stability, and business requi
 
 ---
 
-# Risk Prioritization Matrix
+## Risk Prioritization Matrix
 
 | Likelihood | Business Impact | Priority |
 |------------|-----------------|----------|
@@ -2282,7 +2282,7 @@ Risk prioritization helps allocate remediation resources effectively.
 
 ---
 
-# Security Review Process
+## Security Review Process
 
 Every major dependency update should undergo review.
 
@@ -2318,7 +2318,7 @@ Structured reviews reduce deployment risk.
 
 ---
 
-# Secure Upgrade Process
+## Secure Upgrade Process
 
 ```
 Vendor Release
@@ -2352,7 +2352,7 @@ Upgrades should be planned rather than performed without review.
 
 ---
 
-# Legacy Component Management
+## Legacy Component Management
 
 Some environments contain older software that cannot be replaced immediately.
 
@@ -2380,7 +2380,7 @@ Organizations should develop long-term modernization strategies while reducing i
 
 ---
 
-# End-of-Life (EOL) Management
+## End-of-Life (EOL) Management
 
 ```
 Supported Software
@@ -2406,7 +2406,7 @@ Running unsupported software increases operational and security risk.
 
 ---
 
-# Incident Response for Vulnerable Components
+## Incident Response for Vulnerable Components
 
 If a vulnerable component is identified:
 
@@ -2442,7 +2442,7 @@ The objective is to restore security while minimizing business disruption.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 Following remediation, organizations should determine:
 
@@ -2464,7 +2464,7 @@ Root cause analysis strengthens future security processes.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Security Incident
@@ -2494,7 +2494,7 @@ Security maturity improves through repeated review and refinement.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many organizations must demonstrate software governance.
 
@@ -2522,7 +2522,7 @@ Good documentation supports both operational efficiency and regulatory requireme
 
 ---
 
-# Enterprise Metrics
+## Enterprise Metrics
 
 Organizations monitor measurable indicators to evaluate supply chain security.
 
@@ -2537,7 +2537,7 @@ Organizations monitor measurable indicators to evaluate supply chain security.
 
 ---
 
-# Enterprise Dashboard
+## Enterprise Dashboard
 
 ```
 Supply Chain Dashboard
@@ -2565,7 +2565,7 @@ Dashboards provide management with visibility into organizational software risk.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial organization manages:
 
@@ -2611,7 +2611,7 @@ Every dependency is:
 
 ---
 
-# Enterprise Software Supply Chain Checklist
+## Enterprise Software Supply Chain Checklist
 
 ```
 ✓ Component Inventory Maintained
@@ -2637,7 +2637,7 @@ Every dependency is:
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2650,9 +2650,9 @@ Every dependency is:
 
 ---
 
-# Interview Revision
+## Interview Revision
 
-## Vulnerable Components
+### Vulnerable Components
 
 ```
 Third-Party Component
@@ -2676,7 +2676,7 @@ Verification
 
 ---
 
-## Dependency Management
+### Dependency Management
 
 ```
 Select
@@ -2704,7 +2704,7 @@ Update
 
 ---
 
-## Software Supply Chain
+### Software Supply Chain
 
 ```
 Source Code
@@ -2732,7 +2732,7 @@ Production
 
 ---
 
-## Continuous Security
+### Continuous Security
 
 ```
 Inventory
@@ -2758,7 +2758,7 @@ Security should continue throughout the software lifecycle.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Create a conceptual inventory for an enterprise application.
 2. Build an SBOM listing major components and versions.
@@ -2770,7 +2770,7 @@ Security should continue throughout the software lifecycle.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are vulnerable and outdated components?
 2. Why is an SBOM valuable?
@@ -2785,7 +2785,7 @@ Security should continue throughout the software lifecycle.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain a complete and accurate software inventory.
 - Generate and regularly update SBOMs.
@@ -2797,7 +2797,7 @@ Security should continue throughout the software lifecycle.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Using unsupported or abandoned software.
 - Ignoring transitive dependencies.
@@ -2808,7 +2808,7 @@ Security should continue throughout the software lifecycle.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

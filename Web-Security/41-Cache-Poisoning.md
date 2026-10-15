@@ -1,12 +1,12 @@
 # 41-Cache-Poisoning.md
 
-# Part 1 — Introduction to Web Cache Poisoning, HTTP Caching, Cache Architecture, and Secure Cache Design
+## Part 1 — Introduction to Web Cache Poisoning, HTTP Caching, Cache Architecture, and Secure Cache Design
 
 > **"Web Cache Poisoning occurs when incorrect or untrusted data influences cached content, causing caches to serve unintended responses to subsequent users. Secure cache design relies on proper cache key generation, response validation, and standards-compliant caching behavior."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Web Caching?
+## What is Web Caching?
 
 Web caching stores previously generated responses so they can be delivered more efficiently.
 
@@ -63,7 +63,7 @@ Caching primarily improves:
 
 ---
 
-# Why Caching Matters
+## Why Caching Matters
 
 Without caching:
 
@@ -105,7 +105,7 @@ The application performs less work when suitable cached responses are available.
 
 ---
 
-# What is Cache Poisoning?
+## What is Cache Poisoning?
 
 Web Cache Poisoning is a security issue in which unintended or incorrect content becomes stored in a cache and is later served to other users.
 
@@ -135,7 +135,7 @@ This chapter focuses on secure cache architecture, defensive design, and operati
 
 ---
 
-# Types of Web Caches
+## Types of Web Caches
 
 Modern environments contain multiple cache layers.
 
@@ -161,7 +161,7 @@ Each cache has different responsibilities and lifecycles.
 
 ---
 
-# Browser Cache
+## Browser Cache
 
 A browser may locally store responses.
 
@@ -185,7 +185,7 @@ This reduces repeated network requests for eligible resources.
 
 ---
 
-# CDN Cache
+## CDN Cache
 
 Content Delivery Networks cache responses closer to users.
 
@@ -209,7 +209,7 @@ CDNs improve latency and scalability for distributed applications.
 
 ---
 
-# Reverse Proxy Cache
+## Reverse Proxy Cache
 
 Reverse proxies may cache responses before forwarding them.
 
@@ -233,7 +233,7 @@ Proper configuration is essential for correct behavior.
 
 ---
 
-# Application Cache
+## Application Cache
 
 Applications often cache frequently accessed data.
 
@@ -253,7 +253,7 @@ Examples include product catalogs, configuration data, and reference information
 
 ---
 
-# Object Cache
+## Object Cache
 
 ```
 Application
@@ -271,7 +271,7 @@ Object caches reduce repeated computation for commonly accessed data.
 
 ---
 
-# HTTP Cache Architecture
+## HTTP Cache Architecture
 
 ```
 Client
@@ -301,7 +301,7 @@ Multiple caches may participate in processing a single request.
 
 ---
 
-# Cache Lifecycle
+## Cache Lifecycle
 
 ```
 Request
@@ -331,7 +331,7 @@ This lifecycle determines whether a response is generated or reused.
 
 ---
 
-# Cache Hit
+## Cache Hit
 
 ```
 Request
@@ -353,7 +353,7 @@ The cached response is delivered immediately.
 
 ---
 
-# Cache Miss
+## Cache Miss
 
 ```
 Request
@@ -383,7 +383,7 @@ The application generates a new response which may later become cacheable.
 
 ---
 
-# Cache Key
+## Cache Key
 
 A cache key identifies whether an existing response can be reused.
 
@@ -415,7 +415,7 @@ Accurate cache keys are fundamental to secure caching.
 
 ---
 
-# Cache Metadata
+## Cache Metadata
 
 Caches also store metadata.
 
@@ -439,7 +439,7 @@ Metadata determines how long cached content remains valid.
 
 ---
 
-# HTTP Cache-Control
+## HTTP Cache-Control
 
 HTTP responses may include caching directives.
 
@@ -463,7 +463,7 @@ These directives influence cache behavior throughout the infrastructure.
 
 ---
 
-# Enterprise Cache Architecture
+## Enterprise Cache Architecture
 
 ```
 Internet
@@ -493,7 +493,7 @@ Multiple infrastructure layers participate in response delivery.
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 Client Request
@@ -515,7 +515,7 @@ Applications should make cache decisions using trusted server-side logic.
 
 ---
 
-# High-Level Risks
+## High-Level Risks
 
 Incorrect caching behavior may contribute to:
 
@@ -529,7 +529,7 @@ Secure cache design minimizes these risks through well-defined policies and vali
 
 ---
 
-# Secure Cache Design Principles
+## Secure Cache Design Principles
 
 ```
 Secure Cache Design
@@ -555,7 +555,7 @@ Secure Cache Design
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global e-commerce platform delivers product pages through a CDN.
 
@@ -583,7 +583,7 @@ Only responses intended for shared caching are stored, while personalized conten
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 Caching Infrastructure
@@ -609,7 +609,7 @@ Each component contributes to secure content delivery.
 
 ---
 
-# Secure Cache Goals
+## Secure Cache Goals
 
 A secure caching system should provide:
 
@@ -622,7 +622,7 @@ A secure caching system should provide:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the caching architecture of a modern web application.
 2. Identify every cache layer between the client and the application.
@@ -634,7 +634,7 @@ A secure caching system should provide:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is web caching?
 2. Why are caches used?
@@ -649,7 +649,7 @@ A secure caching system should provide:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Define explicit cache policies.
 - Use accurate cache keys.
@@ -661,7 +661,7 @@ A secure caching system should provide:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming every response is safe to cache.
 - Using inconsistent cache policies across infrastructure.
@@ -672,7 +672,7 @@ A secure caching system should provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Web caching improves performance and scalability by reusing previously generated responses.
 - Modern applications commonly use multiple cache layers, including browsers, CDNs, reverse proxies, and application caches.
@@ -680,15 +680,15 @@ A secure caching system should provide:
 - Web Cache Poisoning is fundamentally a cache integrity issue arising from incorrect caching behavior.
 - Secure cache design relies on explicit policies, trusted server-side decisions, validation, and continuous monitoring.
 
-# 41-Cache-Poisoning.md
+## 41-Cache-Poisoning.md
 
-# Part 2 — HTTP Cache Processing, Cache Keys, Cache Validation, Infrastructure Components, and Defensive Architecture
+## Part 2 — HTTP Cache Processing, Cache Keys, Cache Validation, Infrastructure Components, and Defensive Architecture
 
 > **"Secure caching depends on deterministic cache keys, correct validation, consistent cache policies, and standards-compliant behavior across every caching layer."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -705,7 +705,7 @@ After completing this part, you will understand:
 
 ---
 
-# Cache Processing Lifecycle
+## Cache Processing Lifecycle
 
 Every request follows a predictable caching workflow.
 
@@ -745,7 +745,7 @@ Each stage should follow clearly defined cache policies.
 
 ---
 
-# Enterprise Request Flow
+## Enterprise Request Flow
 
 ```
 Client
@@ -775,7 +775,7 @@ Multiple cache layers may evaluate the same request independently.
 
 ---
 
-# Cache Decision Process
+## Cache Decision Process
 
 Each caching layer determines whether cached content can be reused.
 
@@ -803,7 +803,7 @@ Decisions should be deterministic and standards compliant.
 
 ---
 
-# Cache Key Generation
+## Cache Key Generation
 
 A cache key identifies cached content.
 
@@ -829,7 +829,7 @@ A properly designed cache key uniquely identifies reusable responses.
 
 ---
 
-# Why Cache Keys Matter
+## Why Cache Keys Matter
 
 ```
 Request A
@@ -859,7 +859,7 @@ If different requests are intended to produce different responses, the cache sho
 
 ---
 
-# Cache Validation
+## Cache Validation
 
 Before serving stored content, caches may validate whether it remains usable.
 
@@ -883,7 +883,7 @@ Validation improves consistency while reducing unnecessary processing.
 
 ---
 
-# Cache Metadata
+## Cache Metadata
 
 Caches maintain metadata alongside stored responses.
 
@@ -907,7 +907,7 @@ Metadata determines when cached entries should be reused or refreshed.
 
 ---
 
-# Cache-Control Directives
+## Cache-Control Directives
 
 HTTP responses may include directives that influence caching behavior.
 
@@ -931,7 +931,7 @@ Cache directives help define how responses should be handled throughout the infr
 
 ---
 
-# Response Freshness
+## Response Freshness
 
 ```
 New Response
@@ -957,7 +957,7 @@ Freshness policies determine how long responses remain eligible for reuse.
 
 ---
 
-# Cache Expiration
+## Cache Expiration
 
 ```
 Response
@@ -983,7 +983,7 @@ Expiration policies should align with business requirements and data sensitivity
 
 ---
 
-# Browser Cache Processing
+## Browser Cache Processing
 
 ```
 Browser
@@ -1005,7 +1005,7 @@ Browsers evaluate local cache policies before issuing network requests.
 
 ---
 
-# CDN Cache Processing
+## CDN Cache Processing
 
 ```
 Origin
@@ -1027,7 +1027,7 @@ CDNs reduce latency by serving cached content from geographically distributed lo
 
 ---
 
-# Reverse Proxy Cache
+## Reverse Proxy Cache
 
 ```
 Client
@@ -1049,7 +1049,7 @@ Reverse proxies reduce load on backend services while improving response times.
 
 ---
 
-# API Caching
+## API Caching
 
 API responses may also be cached when appropriate.
 
@@ -1077,7 +1077,7 @@ Caching policies should reflect API design and business requirements.
 
 ---
 
-# Microservices
+## Microservices
 
 ```
 Gateway
@@ -1099,7 +1099,7 @@ Distributed systems should maintain consistent cache policies across services.
 
 ---
 
-# Cloud-Native Caching
+## Cloud-Native Caching
 
 ```
 Internet
@@ -1125,7 +1125,7 @@ Cloud-native environments often contain several independent cache layers.
 
 ---
 
-# Cache Consistency
+## Cache Consistency
 
 Organizations should strive for consistent cache behavior.
 
@@ -1149,7 +1149,7 @@ Standardized cache policies improve predictability across environments.
 
 ---
 
-# Logging
+## Logging
 
 Important cache events should be recorded.
 
@@ -1173,7 +1173,7 @@ Logging supports troubleshooting and operational analysis.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1189,7 +1189,7 @@ Sensitive user information should not be unnecessarily included in cache-related
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -1215,7 +1215,7 @@ Continuous monitoring provides visibility into cache efficiency and health.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1228,7 +1228,7 @@ Continuous monitoring provides visibility into cache efficiency and health.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Clients
@@ -1266,7 +1266,7 @@ Each layer contributes to secure and efficient content delivery.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global news platform delivers articles through multiple caching layers.
 
@@ -1294,7 +1294,7 @@ Editorial content is cached according to predefined policies, while personalized
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1307,7 +1307,7 @@ Editorial content is cached according to predefined policies, while personalized
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the complete cache processing lifecycle.
 2. Identify every cache layer within an enterprise architecture.
@@ -1319,7 +1319,7 @@ Editorial content is cached according to predefined policies, while personalized
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a cache key?
 2. What is cache validation?
@@ -1334,7 +1334,7 @@ Editorial content is cached according to predefined policies, while personalized
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Define deterministic cache policies.
 - Design cache keys carefully.
@@ -1347,7 +1347,7 @@ Editorial content is cached according to predefined policies, while personalized
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating caching as only a performance feature.
 - Using inconsistent cache policies across environments.
@@ -1359,7 +1359,7 @@ Editorial content is cached according to predefined policies, while personalized
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure cache processing depends on deterministic cache keys, validation, and consistent policies.
 - Multiple cache layers—including browsers, CDNs, reverse proxies, and application caches—work together to improve performance.
@@ -1367,15 +1367,15 @@ Editorial content is cached according to predefined policies, while personalized
 - Monitoring, logging, and governance improve operational visibility and reliability.
 - Enterprise cache architectures require standardized configurations and continuous validation to maintain secure and predictable behavior.
 
-# 41-Cache-Poisoning.md
+## 41-Cache-Poisoning.md
 
-# Part 3 — Detection, Secure Testing, Monitoring, Threat Modeling, Secure SDLC, and Enterprise Defense
+## Part 3 — Detection, Secure Testing, Monitoring, Threat Modeling, Secure SDLC, and Enterprise Defense
 
 > **"Secure cache infrastructure depends on predictable cache behavior, accurate cache policies, comprehensive monitoring, and continuous validation across every caching layer."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1392,7 +1392,7 @@ After completing this part, you will understand:
 
 ---
 
-# Why Cache Issues Are Difficult to Detect
+## Why Cache Issues Are Difficult to Detect
 
 Modern applications rarely rely on a single cache.
 
@@ -1422,7 +1422,7 @@ A cache-related issue may originate from any layer or from inconsistent behavior
 
 ---
 
-# Security Review Process
+## Security Review Process
 
 Organizations should review the complete caching infrastructure rather than individual components.
 
@@ -1450,7 +1450,7 @@ A holistic review helps ensure that cache behavior remains predictable.
 
 ---
 
-# Cache Infrastructure Inventory
+## Cache Infrastructure Inventory
 
 Every caching component should be documented.
 
@@ -1480,7 +1480,7 @@ An accurate inventory simplifies troubleshooting and governance.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Enterprise environments frequently operate multiple cache instances.
 
@@ -1508,7 +1508,7 @@ Consistent configuration reduces operational complexity and unexpected behavior.
 
 ---
 
-# Architecture Review
+## Architecture Review
 
 Security architects should periodically evaluate:
 
@@ -1539,7 +1539,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling examines how cached content flows throughout the infrastructure.
 
@@ -1571,7 +1571,7 @@ The objective is to identify architectural assumptions that could affect cache i
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 During architecture reviews, organizations should ask:
 
@@ -1597,7 +1597,7 @@ Security Controls
 
 ---
 
-# Secure Cache Testing
+## Secure Cache Testing
 
 Testing should verify that cache behavior matches documented policies.
 
@@ -1625,7 +1625,7 @@ Testing should focus on correctness, consistency, and standards compliance.
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1653,7 +1653,7 @@ Each testing stage validates different aspects of cache behavior.
 
 ---
 
-# Cache Policy Validation
+## Cache Policy Validation
 
 Organizations should periodically validate cache policies.
 
@@ -1681,7 +1681,7 @@ Policy validation helps ensure responses are cached only as intended.
 
 ---
 
-# Cross-Layer Validation
+## Cross-Layer Validation
 
 Every cache layer should be evaluated together.
 
@@ -1709,7 +1709,7 @@ Cross-layer validation reduces inconsistent caching decisions.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 Caching requirements should be addressed throughout development.
 
@@ -1745,7 +1745,7 @@ Security is most effective when considered early in the development lifecycle.
 
 ---
 
-# DevSecOps Pipeline
+## DevSecOps Pipeline
 
 ```
 Developer
@@ -1779,7 +1779,7 @@ Automated validation helps identify cache configuration issues before production
 
 ---
 
-# Change Management
+## Change Management
 
 Cache-related changes should follow controlled processes.
 
@@ -1811,7 +1811,7 @@ Formal change management reduces operational risk.
 
 ---
 
-# Logging
+## Logging
 
 Important cache events should be recorded.
 
@@ -1835,7 +1835,7 @@ Logs support operational analysis, troubleshooting, and incident investigations.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1852,7 +1852,7 @@ Sensitive customer or application data should not be unnecessarily stored in log
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1878,7 +1878,7 @@ Continuous monitoring provides visibility into cache health and efficiency.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1892,7 +1892,7 @@ Continuous monitoring provides visibility into cache health and efficiency.
 
 ---
 
-# Governance
+## Governance
 
 Organizations should establish centralized cache standards.
 
@@ -1922,7 +1922,7 @@ Governance promotes consistency across business units and environments.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1964,7 +1964,7 @@ Each layer should follow documented cache policies and operational standards.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational streaming platform distributes video metadata through several cache layers.
 
@@ -1996,7 +1996,7 @@ The organization defines centralized cache policies, validates cache behavior du
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Cache Inventory Complete
@@ -2022,7 +2022,7 @@ The organization defines centralized cache policies, validates cache behavior du
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2035,7 +2035,7 @@ The organization defines centralized cache policies, validates cache behavior du
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the complete cache processing path for an enterprise web application.
 2. Identify every cache layer and its responsibilities.
@@ -2047,7 +2047,7 @@ The organization defines centralized cache policies, validates cache behavior du
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should cache behavior be reviewed across all infrastructure layers?
 2. What is cache policy validation?
@@ -2062,7 +2062,7 @@ The organization defines centralized cache policies, validates cache behavior du
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain an inventory of all caching components.
 - Define explicit and consistent cache policies.
@@ -2076,7 +2076,7 @@ The organization defines centralized cache policies, validates cache behavior du
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating caching solely as a performance optimization.
 - Ignoring interactions between multiple cache layers.
@@ -2088,7 +2088,7 @@ The organization defines centralized cache policies, validates cache behavior du
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure caching depends on predictable behavior across all cache layers.
 - Architecture reviews, governance, and threat modeling improve cache reliability.
@@ -2096,15 +2096,15 @@ The organization defines centralized cache policies, validates cache behavior du
 - Monitoring, logging, and centralized dashboards provide visibility into cache performance.
 - Consistent policies, documentation, and configuration management strengthen enterprise cache security.
 
-# 41-Cache-Poisoning.md
+## 41-Cache-Poisoning.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Secure caching is achieved through consistent cache policies, deterministic cache decisions, centralized governance, continuous validation, and comprehensive operational visibility across every caching layer."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2121,7 +2121,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Cache Governance
+## Enterprise Cache Governance
 
 Enterprise organizations should define centralized policies governing every cache layer.
 
@@ -2161,7 +2161,7 @@ Governance ensures consistent behavior across browser caches, CDNs, reverse prox
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 Cache Governance
@@ -2191,7 +2191,7 @@ Governance improves consistency, auditability, and operational resilience.
 
 ---
 
-# Configuration Governance
+## Configuration Governance
 
 Cache configurations should remain standardized.
 
@@ -2219,7 +2219,7 @@ Configuration drift should be detected through continuous validation.
 
 ---
 
-# Zero Trust for Cache Infrastructure
+## Zero Trust for Cache Infrastructure
 
 Zero Trust principles apply to every caching decision.
 
@@ -2254,7 +2254,7 @@ Each request should be evaluated according to documented cache policies.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Secure caching relies on multiple defensive layers.
 
@@ -2286,7 +2286,7 @@ Each layer contributes to reliability and consistency.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Caching policies should be validated during software delivery.
 
@@ -2318,7 +2318,7 @@ Security becomes part of routine engineering activities rather than a separate p
 
 ---
 
-# Infrastructure as Code
+## Infrastructure as Code
 
 Many organizations manage cache infrastructure using Infrastructure as Code (IaC).
 
@@ -2346,7 +2346,7 @@ IaC improves repeatability, auditing, and change management.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2380,7 +2380,7 @@ Automated validation reduces configuration-related issues before deployment.
 
 ---
 
-# Documentation
+## Documentation
 
 Organizations should maintain documentation for:
 
@@ -2410,7 +2410,7 @@ Accurate documentation supports operational consistency.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many compliance frameworks require secure management of application infrastructure.
 
@@ -2438,7 +2438,7 @@ Applicable regulatory obligations vary by organization and industry.
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Cache-related operational events should be recorded.
 
@@ -2462,7 +2462,7 @@ Audit logs improve accountability and facilitate investigations.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2479,7 +2479,7 @@ Sensitive business or customer information should not be unnecessarily recorded 
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Cache Infrastructure
@@ -2505,7 +2505,7 @@ Continuous monitoring helps maintain healthy cache behavior across distributed e
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2520,7 +2520,7 @@ Continuous monitoring helps maintain healthy cache behavior across distributed e
 
 ---
 
-# Cache Security Dashboard
+## Cache Security Dashboard
 
 ```
 Cache Operations Dashboard
@@ -2548,7 +2548,7 @@ Dashboards provide centralized operational visibility.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2578,7 +2578,7 @@ Cache telemetry should be correlated with application, infrastructure, and netwo
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should establish documented procedures for cache-related incidents.
 
@@ -2614,7 +2614,7 @@ A structured response minimizes operational disruption.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2644,7 +2644,7 @@ Root cause analysis should identify both technical and procedural improvements.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2674,7 +2674,7 @@ Security programs should evolve continuously as infrastructure changes.
 
 ---
 
-# Cache Security Maturity Model
+## Cache Security Maturity Model
 
 ```
 Level 1
@@ -2711,7 +2711,7 @@ Higher maturity reflects increased automation, governance, and operational consi
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2759,7 +2759,7 @@ This architecture provides scalable delivery while maintaining centralized gover
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational online retail platform serves millions of product requests daily.
 
@@ -2791,7 +2791,7 @@ The organization maintains standardized cache policies, validates cache behavior
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ Cache Inventory Complete
@@ -2817,7 +2817,7 @@ The organization maintains standardized cache policies, validates cache behavior
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2830,9 +2830,9 @@ The organization maintains standardized cache policies, validates cache behavior
 
 ---
 
-# Cache Poisoning Quick Revision
+## Cache Poisoning Quick Revision
 
-## Cache Lifecycle
+### Cache Lifecycle
 
 ```
 Request
@@ -2856,7 +2856,7 @@ Reuse
 
 ---
 
-## Cache Layers
+### Cache Layers
 
 ```
 Browser
@@ -2876,7 +2876,7 @@ Application Cache
 
 ---
 
-## Secure Cache Processing
+### Secure Cache Processing
 
 ```
 Evaluate
@@ -2900,7 +2900,7 @@ Monitor
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Metrics
@@ -2920,7 +2920,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise cache architecture including browser, CDN, reverse proxy, and application caches.
 2. Identify cache ownership for each layer.
@@ -2932,7 +2932,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Web Cache Poisoning at a high level?
 2. Why are cache policies important?
@@ -2947,7 +2947,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Define clear cache policies for every application.
 - Standardize cache configurations across environments.
@@ -2961,7 +2961,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating caching only as a performance optimization.
 - Ignoring interactions between multiple cache layers.
@@ -2973,7 +2973,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

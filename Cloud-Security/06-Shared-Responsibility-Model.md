@@ -42,7 +42,7 @@ Understanding exactly **who is responsible for what** is essential for every:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -59,7 +59,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is the Shared Responsibility Model?
+## What is the Shared Responsibility Model?
 
 The Shared Responsibility Model is a security framework that clearly defines which security and operational responsibilities belong to the **Cloud Service Provider (CSP)** and which belong to the **Customer**.
 
@@ -83,7 +83,7 @@ Both parties must fulfill their responsibilities to achieve a secure cloud envir
 
 ---
 
-# Why Does Shared Responsibility Exist?
+## Why Does Shared Responsibility Exist?
 
 Cloud providers own and operate massive global infrastructures that serve thousands or millions of customers.
 
@@ -108,11 +108,11 @@ The Shared Responsibility Model creates a clear boundary between these areas of 
 
 ---
 
-# Security of the Cloud vs Security in the Cloud
+## Security of the Cloud vs Security in the Cloud
 
 One of the simplest ways to understand the model is by separating responsibilities into two categories.
 
-## Security **of** the Cloud
+### Security **of** the Cloud
 
 This refers to protecting the infrastructure that delivers cloud services.
 
@@ -132,7 +132,7 @@ These responsibilities belong primarily to the cloud provider.
 
 ---
 
-## Security **in** the Cloud
+### Security **in** the Cloud
 
 This refers to everything customers deploy, configure, and manage inside the cloud.
 
@@ -153,7 +153,7 @@ These responsibilities belong primarily to the customer.
 
 ---
 
-# Visualizing the Responsibility Boundary
+## Visualizing the Responsibility Boundary
 
 ```
                     Cloud Service
@@ -197,7 +197,7 @@ These responsibilities belong primarily to the customer.
 
 ---
 
-# Why This Model Matters
+## Why This Model Matters
 
 Organizations that misunderstand responsibility boundaries often assume the provider secures everything.
 
@@ -215,11 +215,11 @@ A cloud provider cannot prevent many of these issues because they occur within t
 
 ---
 
-# Core Principles of the Shared Responsibility Model
+## Core Principles of the Shared Responsibility Model
 
 Every cloud provider follows similar high-level principles.
 
-## Principle 1 – Ownership Determines Responsibility
+### Principle 1 – Ownership Determines Responsibility
 
 The party that controls a resource is generally responsible for securing it.
 
@@ -251,7 +251,7 @@ Customer Responsibility
 
 ---
 
-## Principle 2 – Responsibility Changes with Service Model
+### Principle 2 – Responsibility Changes with Service Model
 
 Customer responsibilities vary depending on whether the organization uses:
 
@@ -263,7 +263,7 @@ As managed services increase, customer infrastructure responsibilities decrease.
 
 ---
 
-## Principle 3 – Security is Collaborative
+### Principle 3 – Security is Collaborative
 
 Security is not owned exclusively by either party.
 
@@ -283,7 +283,7 @@ Weaknesses on either side can impact the overall security posture.
 
 ---
 
-# Shared Responsibility Across Service Models
+## Shared Responsibility Across Service Models
 
 Responsibility shifts depending on the level of abstraction.
 
@@ -308,7 +308,7 @@ Understanding these shifts is essential when designing secure cloud architecture
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company deploys an online banking application.
 
@@ -335,9 +335,9 @@ Both organizations contribute to the application's overall security.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
-## "The cloud provider patches my virtual machines."
+### "The cloud provider patches my virtual machines."
 
 Not always.
 
@@ -345,7 +345,7 @@ In Infrastructure as a Service, customers are generally responsible for operatin
 
 ---
 
-## "My cloud storage is automatically private."
+### "My cloud storage is automatically private."
 
 Incorrect.
 
@@ -355,7 +355,7 @@ Misconfigured storage remains one of the most common causes of cloud data exposu
 
 ---
 
-## "Compliance is handled entirely by the provider."
+### "Compliance is handled entirely by the provider."
 
 Incorrect.
 
@@ -363,7 +363,7 @@ While providers obtain certifications for their infrastructure, customers remain
 
 ---
 
-## "Using cloud services eliminates cybersecurity risks."
+### "Using cloud services eliminates cybersecurity risks."
 
 Cloud computing changes risk—it does not eliminate it.
 
@@ -379,7 +379,7 @@ Organizations must continue implementing:
 
 ---
 
-# Benefits of Understanding the Shared Responsibility Model
+## Benefits of Understanding the Shared Responsibility Model
 
 Organizations that correctly implement the model gain:
 
@@ -396,7 +396,7 @@ Organizations that correctly implement the model gain:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Clearly document provider and customer responsibilities.
 - Train engineering teams on shared responsibility concepts.
@@ -411,7 +411,7 @@ Organizations that correctly implement the model gain:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -426,7 +426,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - The Shared Responsibility Model defines how security and operational responsibilities are divided between the cloud provider and the customer.
 - Providers focus on securing the cloud infrastructure, while customers secure the workloads, identities, applications, configurations, and data they deploy.
@@ -436,7 +436,7 @@ Avoid the following pitfalls:
 
 ---
 
-## Shared Responsibility Across IaaS, PaaS, and SaaS
+### Shared Responsibility Across IaaS, PaaS, and SaaS
 
 One of the most important aspects of the Shared Responsibility Model is that **customer responsibilities change depending on the cloud service model** being used.
 
@@ -448,7 +448,7 @@ Understanding these differences is essential for designing secure cloud environm
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -463,7 +463,7 @@ After completing this section, you will be able to:
 
 ---
 
-# Responsibility Progression
+## Responsibility Progression
 
 As cloud services become more managed, provider responsibilities increase while customer infrastructure responsibilities decrease.
 
@@ -491,7 +491,7 @@ This shift only affects infrastructure management—not ownership of business da
 
 ---
 
-# Understanding the Layers
+## Understanding the Layers
 
 Most cloud environments can be viewed as a stack of components.
 
@@ -523,9 +523,9 @@ Responsibility for each layer depends on the service model.
 
 ---
 
-# Infrastructure as a Service (IaaS)
+## Infrastructure as a Service (IaaS)
 
-## Overview
+### Overview
 
 Infrastructure as a Service provides customers with virtualized computing resources while allowing them significant control over the operating environment.
 
@@ -545,7 +545,7 @@ IaaS offers maximum flexibility but also carries the highest customer security r
 
 ---
 
-# IaaS Responsibility Diagram
+## IaaS Responsibility Diagram
 
 ```
 Infrastructure as a Service
@@ -587,7 +587,7 @@ Provider Manages
 
 ---
 
-# Customer Responsibilities in IaaS
+## Customer Responsibilities in IaaS
 
 The customer is responsible for securing:
 
@@ -611,7 +611,7 @@ Failure in any of these areas can expose cloud workloads despite secure infrastr
 
 ---
 
-# Provider Responsibilities in IaaS
+## Provider Responsibilities in IaaS
 
 The provider secures:
 
@@ -630,7 +630,7 @@ Customers generally have no direct control over these components.
 
 ---
 
-# IaaS Example
+## IaaS Example
 
 A company launches virtual machines hosting an online retail application.
 
@@ -671,7 +671,7 @@ Meanwhile, the cloud provider maintains:
 
 ---
 
-# Security Risks in IaaS
+## Security Risks in IaaS
 
 Common customer mistakes include:
 
@@ -689,9 +689,9 @@ These issues remain customer responsibilities.
 
 ---
 
-# Platform as a Service (PaaS)
+## Platform as a Service (PaaS)
 
-## Overview
+### Overview
 
 Platform as a Service abstracts much of the underlying infrastructure.
 
@@ -709,7 +709,7 @@ PaaS accelerates development while reducing infrastructure management.
 
 ---
 
-# PaaS Responsibility Diagram
+## PaaS Responsibility Diagram
 
 ```
 Platform as a Service
@@ -751,7 +751,7 @@ Provider Manages
 
 ---
 
-# Customer Responsibilities in PaaS
+## Customer Responsibilities in PaaS
 
 Customers remain responsible for:
 
@@ -773,7 +773,7 @@ Although infrastructure management decreases, application security becomes even 
 
 ---
 
-# Provider Responsibilities in PaaS
+## Provider Responsibilities in PaaS
 
 The provider manages:
 
@@ -791,7 +791,7 @@ This reduces operational overhead for customers.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A software company deploys a web application using a managed application platform.
 
@@ -812,7 +812,7 @@ Provider responsibilities:
 
 ---
 
-# Security Risks in PaaS
+## Security Risks in PaaS
 
 Typical mistakes include:
 
@@ -829,9 +829,9 @@ Infrastructure security alone cannot protect vulnerable applications.
 
 ---
 
-# Software as a Service (SaaS)
+## Software as a Service (SaaS)
 
-## Overview
+### Overview
 
 Software as a Service provides complete applications over the internet.
 
@@ -850,7 +850,7 @@ The provider manages almost the entire technology stack.
 
 ---
 
-# SaaS Responsibility Diagram
+## SaaS Responsibility Diagram
 
 ```
 Software as a Service
@@ -896,7 +896,7 @@ Provider Manages
 
 ---
 
-# Customer Responsibilities in SaaS
+## Customer Responsibilities in SaaS
 
 Although SaaS requires the least infrastructure management, customers still control critical security areas.
 
@@ -917,7 +917,7 @@ These responsibilities directly affect organizational security.
 
 ---
 
-# Provider Responsibilities in SaaS
+## Provider Responsibilities in SaaS
 
 The provider manages:
 
@@ -936,7 +936,7 @@ Customers generally cannot modify these components.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An organization adopts a cloud-based email service.
 
@@ -958,7 +958,7 @@ Customer responsibilities:
 
 ---
 
-# Responsibility Comparison Matrix
+## Responsibility Comparison Matrix
 
 | Component | IaaS | PaaS | SaaS |
 |------------|------|------|------|
@@ -976,7 +976,7 @@ Customer responsibilities:
 
 ---
 
-# Responsibility Shift Visualization
+## Responsibility Shift Visualization
 
 ```
 Physical Infrastructure
@@ -1024,7 +1024,7 @@ Notice that **data ownership remains with the customer in every service model**.
 
 ---
 
-# Real-World Scenario
+## Real-World Scenario
 
 Consider an employee whose SaaS account is compromised because Multi-Factor Authentication (MFA) was disabled.
 
@@ -1062,7 +1062,7 @@ This incident falls within the customer's area of responsibility.
 
 ---
 
-# Responsibility During Cloud Migration
+## Responsibility During Cloud Migration
 
 Organizations often migrate through multiple service models.
 
@@ -1093,9 +1093,9 @@ Migration planning should account for these transitions.
 
 ---
 
-# Common Misunderstandings
+## Common Misunderstandings
 
-### "The provider patches everything."
+#### "The provider patches everything."
 
 Only true for managed components.
 
@@ -1103,7 +1103,7 @@ Customer-managed virtual machines still require patching.
 
 ---
 
-### "Managed database means I don't secure it."
+#### "Managed database means I don't secure it."
 
 Incorrect.
 
@@ -1117,7 +1117,7 @@ Customers still manage:
 
 ---
 
-### "SaaS means no security work."
+#### "SaaS means no security work."
 
 Incorrect.
 
@@ -1125,7 +1125,7 @@ Identity, permissions, information governance, compliance, and user education re
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Identify responsibilities before deploying workloads.
 - Document ownership for every cloud resource.
@@ -1140,7 +1140,7 @@ Identity, permissions, information governance, compliance, and user education re
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -1155,7 +1155,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Customer responsibilities decrease as organizations move from IaaS to PaaS and SaaS, but they never disappear.
 - In IaaS, customers manage operating systems, applications, identities, configurations, and data.
@@ -1165,9 +1165,9 @@ Avoid the following pitfalls:
 
 ---
 
-# Detailed Customer Responsibilities
+## Detailed Customer Responsibilities
 
-## Introduction
+### Introduction
 
 One of the biggest misconceptions in cloud computing is that once workloads are deployed to the cloud, security becomes the sole responsibility of the cloud provider.
 
@@ -1190,7 +1190,7 @@ Understanding customer responsibilities is therefore essential for building a se
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -1208,7 +1208,7 @@ After completing this section, you will be able to:
 
 ---
 
-# Overview of Customer Responsibilities
+## Overview of Customer Responsibilities
 
 Although responsibilities vary slightly across cloud service models, customers are generally responsible for securing the following areas:
 
@@ -1256,9 +1256,9 @@ Each area contributes to the organization's overall cloud security posture.
 
 ---
 
-# Identity and Access Management (IAM)
+## Identity and Access Management (IAM)
 
-## Overview
+### Overview
 
 Identity is the new security perimeter in cloud computing.
 
@@ -1268,7 +1268,7 @@ Customers are fully responsible for configuring IAM correctly.
 
 ---
 
-# IAM Responsibilities
+## IAM Responsibilities
 
 Customers should manage:
 
@@ -1287,7 +1287,7 @@ Poor IAM configuration remains one of the leading causes of cloud security incid
 
 ---
 
-# Least Privilege Principle
+## Least Privilege Principle
 
 Every identity should receive only the minimum permissions required.
 
@@ -1315,7 +1315,7 @@ Excessive permissions increase the impact of compromised accounts.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 Customers should enable MFA for:
 
@@ -1345,7 +1345,7 @@ MFA significantly reduces the risk of credential-based attacks.
 
 ---
 
-# Identity Lifecycle Management
+## Identity Lifecycle Management
 
 Organizations should manage user identities throughout their lifecycle.
 
@@ -1385,9 +1385,9 @@ Inactive accounts present unnecessary security risks.
 
 ---
 
-# Data Protection
+## Data Protection
 
-## Overview
+### Overview
 
 Cloud providers store customer data, but **customers own and are responsible for protecting that data**.
 
@@ -1403,7 +1403,7 @@ Security responsibilities include:
 
 ---
 
-# Data Classification
+## Data Classification
 
 Organizations should classify information according to sensitivity.
 
@@ -1427,7 +1427,7 @@ Different classifications require different protection levels.
 
 ---
 
-# Data Access Control
+## Data Access Control
 
 Access should follow business requirements.
 
@@ -1451,7 +1451,7 @@ Access reviews should be conducted regularly.
 
 ---
 
-# Data Lifecycle
+## Data Lifecycle
 
 ```
 Data Created
@@ -1477,9 +1477,9 @@ Security controls should exist throughout every phase.
 
 ---
 
-# Encryption Responsibilities
+## Encryption Responsibilities
 
-## Encryption in Transit
+### Encryption in Transit
 
 Customers should ensure sensitive communications use secure protocols.
 
@@ -1506,7 +1506,7 @@ Unencrypted communication may expose sensitive information.
 
 ---
 
-## Encryption at Rest
+### Encryption at Rest
 
 Stored information should also be encrypted.
 
@@ -1522,7 +1522,7 @@ Encryption reduces the impact of physical media compromise and unauthorized stor
 
 ---
 
-## Encryption Key Management
+### Encryption Key Management
 
 Customers should define:
 
@@ -1536,7 +1536,7 @@ Poor key management can render encryption ineffective.
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 Applications often require sensitive credentials.
 
@@ -1575,7 +1575,7 @@ Secure Connection
 
 ---
 
-# Operating System Security
+## Operating System Security
 
 *(Primarily applicable to Infrastructure as a Service)*
 
@@ -1593,7 +1593,7 @@ Responsibilities include:
 
 ---
 
-# Operating System Hardening
+## Operating System Hardening
 
 Examples include:
 
@@ -1608,7 +1608,7 @@ Hardening reduces the attack surface.
 
 ---
 
-# Patch Management
+## Patch Management
 
 Keeping systems updated is a customer responsibility in IaaS.
 
@@ -1636,7 +1636,7 @@ Delaying security patches increases exposure to known vulnerabilities.
 
 ---
 
-# Network Security
+## Network Security
 
 Customers configure logical network security even though providers manage the physical network.
 
@@ -1653,7 +1653,7 @@ Responsibilities include:
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Sensitive systems should be isolated.
 
@@ -1681,7 +1681,7 @@ Segmentation limits lateral movement.
 
 ---
 
-# Firewall Configuration
+## Firewall Configuration
 
 Example:
 
@@ -1709,7 +1709,7 @@ Only required ports should be opened.
 
 ---
 
-# Application Security
+## Application Security
 
 Applications remain the customer's responsibility in both IaaS and PaaS.
 
@@ -1726,7 +1726,7 @@ Responsibilities include:
 
 ---
 
-# Secure Software Development Lifecycle (SSDLC)
+## Secure Software Development Lifecycle (SSDLC)
 
 ```
 Requirements
@@ -1760,7 +1760,7 @@ Security should be integrated throughout the development lifecycle rather than a
 
 ---
 
-# API Security
+## API Security
 
 Customers should secure APIs using:
 
@@ -1777,7 +1777,7 @@ APIs often represent the primary attack surface for cloud-native applications.
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Customers should continuously identify and remediate vulnerabilities.
 
@@ -1792,7 +1792,7 @@ Typical activities include:
 
 ---
 
-# Vulnerability Management Lifecycle
+## Vulnerability Management Lifecycle
 
 ```
 Discover
@@ -1822,7 +1822,7 @@ This process should be continuous rather than periodic.
 
 ---
 
-# Logging Responsibilities
+## Logging Responsibilities
 
 Customers should configure comprehensive logging.
 
@@ -1841,7 +1841,7 @@ Logs support investigations and compliance.
 
 ---
 
-# Monitoring Responsibilities
+## Monitoring Responsibilities
 
 Monitoring should cover:
 
@@ -1878,7 +1878,7 @@ Continuous monitoring enables early detection of malicious activity.
 
 ---
 
-# Backup Responsibilities
+## Backup Responsibilities
 
 Even when cloud providers offer backup services, customers remain responsible for defining backup strategies.
 
@@ -1895,7 +1895,7 @@ A backup that has never been restored cannot be assumed to be usable.
 
 ---
 
-# Incident Response
+## Incident Response
 
 Customers should establish documented incident response procedures.
 
@@ -1933,7 +1933,7 @@ Cloud providers assist with infrastructure availability, but customers respond t
 
 ---
 
-# Compliance Responsibilities
+## Compliance Responsibilities
 
 Organizations remain responsible for meeting regulatory obligations.
 
@@ -1951,7 +1951,7 @@ Provider certifications do not automatically make customer workloads compliant.
 
 ---
 
-# Governance Responsibilities
+## Governance Responsibilities
 
 Cloud governance includes:
 
@@ -1968,7 +1968,7 @@ Governance ensures cloud environments remain secure and consistent over time.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A healthcare provider hosts a patient management system in the cloud.
 
@@ -1995,7 +1995,7 @@ Both parties must fulfill their responsibilities to maintain a secure environmen
 
 ---
 
-# Common Customer Security Failures
+## Common Customer Security Failures
 
 Many cloud incidents originate from preventable mistakes.
 
@@ -2016,7 +2016,7 @@ Most of these failures occur within the customer's area of responsibility.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply the Principle of Least Privilege to every identity.
 - Enable MFA for all privileged accounts.
@@ -2031,7 +2031,7 @@ Most of these failures occur within the customer's area of responsibility.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -2046,7 +2046,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Customers remain responsible for securing everything they deploy, configure, manage, or control within the cloud.
 - Identity, data protection, encryption, applications, configurations, logging, monitoring, and governance are core customer responsibilities across all cloud service models.
@@ -2056,9 +2056,9 @@ Avoid the following pitfalls:
 
 ---
 
-# Detailed Cloud Provider Responsibilities
+## Detailed Cloud Provider Responsibilities
 
-## Introduction
+### Introduction
 
 Cloud Service Providers (CSPs) such as Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP), Oracle Cloud Infrastructure (OCI), IBM Cloud, and others invest billions of dollars every year to build, operate, and secure highly resilient cloud infrastructures.
 
@@ -2079,7 +2079,7 @@ Understanding provider responsibilities helps organizations:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -2096,7 +2096,7 @@ After completing this section, you will be able to:
 
 ---
 
-# Overview of Cloud Provider Responsibilities
+## Overview of Cloud Provider Responsibilities
 
 Cloud providers are responsible for securing the foundational infrastructure that enables cloud services.
 
@@ -2142,9 +2142,9 @@ These responsibilities form the security foundation of every cloud environment.
 
 ---
 
-# Physical Data Center Security
+## Physical Data Center Security
 
-## Overview
+### Overview
 
 Cloud providers own or operate highly secure data centers distributed across multiple geographic regions.
 
@@ -2160,7 +2160,7 @@ Customers generally never have physical access to cloud provider data centers.
 
 ---
 
-# Physical Security Controls
+## Physical Security Controls
 
 Typical controls include:
 
@@ -2207,7 +2207,7 @@ Every layer reduces the likelihood of unauthorized physical access.
 
 ---
 
-# Biometric Access Controls
+## Biometric Access Controls
 
 Highly sensitive areas often require multiple authentication factors.
 
@@ -2237,7 +2237,7 @@ Access is granted only after successful verification.
 
 ---
 
-# Environmental Controls
+## Environmental Controls
 
 Cloud providers maintain environmental conditions necessary for reliable operation.
 
@@ -2255,7 +2255,7 @@ These controls protect hardware from environmental damage.
 
 ---
 
-# Power Infrastructure
+## Power Infrastructure
 
 Continuous availability depends on redundant power systems.
 
@@ -2287,7 +2287,7 @@ Even if utility power fails, workloads continue operating.
 
 ---
 
-# Network Connectivity Redundancy
+## Network Connectivity Redundancy
 
 Cloud providers build highly redundant network infrastructures.
 
@@ -2315,9 +2315,9 @@ Multiple network paths reduce the impact of outages.
 
 ---
 
-# Hardware Security
+## Hardware Security
 
-## Overview
+### Overview
 
 Cloud providers procure, install, monitor, maintain, and replace physical hardware.
 
@@ -2335,7 +2335,7 @@ Customers are not responsible for maintaining physical hardware.
 
 ---
 
-# Hardware Lifecycle Management
+## Hardware Lifecycle Management
 
 ```
 Procurement
@@ -2373,7 +2373,7 @@ Every phase follows strict operational procedures.
 
 ---
 
-# Secure Hardware Disposal
+## Secure Hardware Disposal
 
 Before retired storage devices leave production environments, providers securely sanitize or destroy them.
 
@@ -2388,7 +2388,7 @@ These processes help prevent unauthorized data recovery.
 
 ---
 
-# Storage Infrastructure
+## Storage Infrastructure
 
 Cloud providers maintain large-scale distributed storage systems.
 
@@ -2407,7 +2407,7 @@ Customers remain responsible for configuring logical access permissions.
 
 ---
 
-# Network Infrastructure Security
+## Network Infrastructure Security
 
 Providers operate extensive global networking infrastructures.
 
@@ -2442,9 +2442,9 @@ Customers configure logical network policies within this infrastructure.
 
 ---
 
-# Virtualization Security
+## Virtualization Security
 
-## Overview
+### Overview
 
 Virtualization enables multiple customers to share physical hardware securely.
 
@@ -2460,7 +2460,7 @@ Customers generally cannot access the hypervisor directly.
 
 ---
 
-# Hypervisor Architecture
+## Hypervisor Architecture
 
 ```
 Physical Hardware
@@ -2482,7 +2482,7 @@ The hypervisor isolates workloads belonging to different customers.
 
 ---
 
-# Virtual Machine Isolation
+## Virtual Machine Isolation
 
 Isolation prevents one customer's virtual machine from directly accessing another customer's workloads.
 
@@ -2498,7 +2498,7 @@ Strong isolation is essential in multi-tenant cloud environments.
 
 ---
 
-# Managed Service Operations
+## Managed Service Operations
 
 Cloud providers also operate many managed cloud services.
 
@@ -2516,7 +2516,7 @@ For these services, providers assume additional operational responsibilities.
 
 ---
 
-# Platform Availability
+## Platform Availability
 
 Cloud providers design services for high availability.
 
@@ -2549,7 +2549,7 @@ Customers should still architect workloads for resilience.
 
 ---
 
-# Infrastructure Monitoring
+## Infrastructure Monitoring
 
 Cloud providers continuously monitor infrastructure health.
 
@@ -2567,7 +2567,7 @@ Monitoring enables rapid operational response.
 
 ---
 
-# Disaster Recovery
+## Disaster Recovery
 
 Cloud providers prepare for infrastructure failures through disaster recovery planning.
 
@@ -2584,7 +2584,7 @@ These controls improve service resilience.
 
 ---
 
-# Capacity Management
+## Capacity Management
 
 Cloud providers continuously forecast and expand infrastructure capacity.
 
@@ -2601,7 +2601,7 @@ Capacity management helps maintain reliable cloud services during demand growth.
 
 ---
 
-# Security Operations
+## Security Operations
 
 Cloud providers operate dedicated security teams responsible for protecting infrastructure.
 
@@ -2620,7 +2620,7 @@ These teams protect the cloud platform itself.
 
 ---
 
-# Vulnerability Management
+## Vulnerability Management
 
 Providers regularly assess infrastructure for vulnerabilities.
 
@@ -2637,7 +2637,7 @@ Customers remain responsible for scanning and patching their own workloads where
 
 ---
 
-# Patch Management
+## Patch Management
 
 Providers patch:
 
@@ -2651,7 +2651,7 @@ Customers generally do not perform these activities.
 
 ---
 
-# DDoS Protection
+## DDoS Protection
 
 Most cloud providers implement infrastructure-level protections against Distributed Denial-of-Service (DDoS) attacks.
 
@@ -2667,7 +2667,7 @@ Customers may still need application-level protections depending on workload req
 
 ---
 
-# Compliance Responsibilities
+## Compliance Responsibilities
 
 Cloud providers obtain numerous independent certifications for their infrastructure.
 
@@ -2689,7 +2689,7 @@ However, **customer workloads are not automatically compliant simply because the
 
 ---
 
-# Audit Responsibilities
+## Audit Responsibilities
 
 Providers conduct and support infrastructure audits through:
 
@@ -2703,7 +2703,7 @@ Customers use these reports as part of their own compliance activities.
 
 ---
 
-# Provider Incident Response
+## Provider Incident Response
 
 When infrastructure incidents occur, providers are responsible for:
 
@@ -2739,7 +2739,7 @@ Customers remain responsible for incidents affecting their own applications, ide
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An organization deploys an ERP application on cloud virtual machines.
 
@@ -2769,9 +2769,9 @@ This clear separation reduces ambiguity during operations and incident response.
 
 ---
 
-# Common Misunderstandings
+## Common Misunderstandings
 
-### "The provider secures my application."
+#### "The provider secures my application."
 
 Incorrect.
 
@@ -2779,7 +2779,7 @@ Providers secure the platform, not customer-developed application code.
 
 ---
 
-### "Infrastructure compliance makes my application compliant."
+#### "Infrastructure compliance makes my application compliant."
 
 Incorrect.
 
@@ -2789,7 +2789,7 @@ Customers must configure workloads according to applicable regulations.
 
 ---
 
-### "The provider backs up all my data."
+#### "The provider backs up all my data."
 
 Not necessarily.
 
@@ -2797,7 +2797,7 @@ Some services provide backup capabilities, but customers are generally responsib
 
 ---
 
-### "Cloud providers prevent all cyberattacks."
+#### "Cloud providers prevent all cyberattacks."
 
 Providers implement strong infrastructure protections, but they cannot prevent attacks resulting from:
 
@@ -2809,7 +2809,7 @@ Providers implement strong infrastructure protections, but they cannot prevent a
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Review provider security documentation regularly.
 - Understand which controls are provider-managed.
@@ -2824,7 +2824,7 @@ Providers implement strong infrastructure protections, but they cannot prevent a
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -2839,7 +2839,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cloud providers are responsible for securing the infrastructure that delivers cloud services, including physical facilities, hardware, networking, virtualization, and managed platform operations.
 - Provider responsibilities include physical security, environmental controls, hardware lifecycle management, hypervisor security, infrastructure monitoring, disaster recovery, and compliance certifications.

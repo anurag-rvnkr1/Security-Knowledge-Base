@@ -1166,7 +1166,7 @@ Organizations should implement the following security principles:
 
 ---
 
-# Defense-in-Depth for Cloud Applications
+## Defense-in-Depth for Cloud Applications
 
 ```
                   Users / Clients
@@ -1226,7 +1226,7 @@ Multiple security layers ensure that the failure of one control does not expose 
 
 ---
 
-# Implement Strong Authentication
+## Implement Strong Authentication
 
 Protect user accounts using:
 
@@ -1240,7 +1240,7 @@ Authentication should verify both the identity and context of each login attempt
 
 ---
 
-# Enforce Fine-Grained Authorization
+## Enforce Fine-Grained Authorization
 
 Authorization should be evaluated on every request.
 
@@ -1267,7 +1267,7 @@ Permitted Action
 
 ---
 
-# Validate All Input
+## Validate All Input
 
 Every input source should be treated as untrusted.
 
@@ -1290,7 +1290,7 @@ Input validation helps prevent:
 
 ---
 
-# Secure Session Management
+## Secure Session Management
 
 Protect active user sessions by:
 
@@ -1305,7 +1305,7 @@ Terminate sessions immediately after logout.
 
 ---
 
-# Protect APIs
+## Protect APIs
 
 Cloud applications depend heavily on APIs.
 
@@ -1324,7 +1324,7 @@ API Gateways should enforce security policies consistently.
 
 ---
 
-# Secure Sensitive Data
+## Secure Sensitive Data
 
 Protect sensitive information using:
 
@@ -1338,7 +1338,7 @@ Reduce unnecessary collection and retention of sensitive data.
 
 ---
 
-# Protect Secrets
+## Protect Secrets
 
 Store credentials using managed secrets services.
 
@@ -1370,7 +1370,7 @@ Rotate secrets regularly and monitor access.
 
 ---
 
-# Secure Dependencies
+## Secure Dependencies
 
 Third-party packages should be:
 
@@ -1383,7 +1383,7 @@ Maintain an inventory of dependencies and generate Software Bills of Materials (
 
 ---
 
-# Secure File Uploads
+## Secure File Uploads
 
 Applications accepting uploaded content should:
 
@@ -1398,7 +1398,7 @@ Never execute uploaded files directly.
 
 ---
 
-# Secure Cloud Resources
+## Secure Cloud Resources
 
 Applications should access cloud resources using dedicated service identities.
 
@@ -1415,7 +1415,7 @@ Service identities should follow the Principle of Least Privilege.
 
 ---
 
-# Enable Runtime Protection
+## Enable Runtime Protection
 
 Runtime monitoring should detect:
 
@@ -1429,7 +1429,7 @@ Behavioral analytics improve detection of sophisticated attacks.
 
 ---
 
-# Enable Comprehensive Logging
+## Enable Comprehensive Logging
 
 Collect logs for:
 
@@ -1461,7 +1461,7 @@ Centralized logging supports investigation, compliance, and incident response.
 
 ---
 
-# Integrate Security into SSDLC
+## Integrate Security into SSDLC
 
 Security should be embedded throughout development.
 
@@ -1480,9 +1480,9 @@ Shift-left security reduces vulnerabilities before deployment.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Require Multi-Factor Authentication
+#### 1. Require Multi-Factor Authentication
 
 Protect privileged and customer accounts with MFA.
 
@@ -1490,7 +1490,7 @@ Risk-based authentication should be considered for sensitive applications.
 
 ---
 
-### 2. Follow the Principle of Least Privilege
+#### 2. Follow the Principle of Least Privilege
 
 Grant users, applications, and services only the permissions required to perform their tasks.
 
@@ -1498,7 +1498,7 @@ Review permissions regularly.
 
 ---
 
-### 3. Secure Every API
+#### 3. Secure Every API
 
 Require:
 
@@ -1513,7 +1513,7 @@ Treat APIs as critical security boundaries.
 
 ---
 
-### 4. Encrypt Sensitive Information
+#### 4. Encrypt Sensitive Information
 
 Protect:
 
@@ -1527,7 +1527,7 @@ Encryption should be enabled by default whenever practical.
 
 ---
 
-### 5. Implement Secure Session Management
+#### 5. Implement Secure Session Management
 
 Use:
 
@@ -1540,7 +1540,7 @@ Protect sessions from hijacking and fixation attacks.
 
 ---
 
-### 6. Continuously Scan Dependencies
+#### 6. Continuously Scan Dependencies
 
 Automatically detect:
 
@@ -1553,7 +1553,7 @@ Integrate dependency scanning into CI/CD pipelines.
 
 ---
 
-### 7. Monitor Application Behavior
+#### 7. Monitor Application Behavior
 
 Monitor:
 
@@ -1568,7 +1568,7 @@ Behavioral monitoring helps detect attacks in progress.
 
 ---
 
-### 8. Secure File Upload Functionality
+#### 8. Secure File Upload Functionality
 
 Validate every uploaded file before storage.
 
@@ -1576,7 +1576,7 @@ Reject unsupported, oversized, or malicious files.
 
 ---
 
-### 9. Protect Secrets Properly
+#### 9. Protect Secrets Properly
 
 Never store credentials in:
 
@@ -1589,7 +1589,7 @@ Use centralized secrets management with regular rotation.
 
 ---
 
-### 10. Continuously Assess Security
+#### 10. Continuously Assess Security
 
 Perform regular:
 
@@ -1603,7 +1603,7 @@ Cloud Application Security should evolve alongside the application and its threa
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud applications are continuously exposed to the internet and interact with users, APIs, databases, cloud services, and third-party systems. Even small implementation mistakes can introduce significant security risks.
 
@@ -1613,7 +1613,7 @@ Understanding these common mistakes helps developers, architects, and security t
 
 ---
 
-### 1. Relying Only on Client-Side Validation
+#### 1. Relying Only on Client-Side Validation
 
 Client-side validation improves user experience but should never be considered a security control.
 
@@ -1639,7 +1639,7 @@ Always perform server-side validation before processing any request.
 
 ---
 
-### 2. Broken Authentication
+#### 2. Broken Authentication
 
 Weak authentication mechanisms increase the risk of account compromise.
 
@@ -1655,7 +1655,7 @@ Strong authentication significantly reduces unauthorized access.
 
 ---
 
-### 3. Broken Authorization
+#### 3. Broken Authorization
 
 A user should never gain access simply by modifying identifiers or URLs.
 
@@ -1670,7 +1670,7 @@ Every request must include server-side authorization checks.
 
 ---
 
-### 4. Hardcoding Secrets
+#### 4. Hardcoding Secrets
 
 Sensitive information should never be stored in:
 
@@ -1696,7 +1696,7 @@ Use centralized secrets management solutions and rotate credentials regularly.
 
 ---
 
-### 5. Ignoring Input Validation
+#### 5. Ignoring Input Validation
 
 Failure to validate user input may allow:
 
@@ -1711,7 +1711,7 @@ Every input should be treated as untrusted.
 
 ---
 
-### 6. Exposing Sensitive Error Messages
+#### 6. Exposing Sensitive Error Messages
 
 Detailed error messages may reveal:
 
@@ -1725,7 +1725,7 @@ Return generic error messages to users while logging detailed diagnostics secure
 
 ---
 
-### 7. Weak Session Management
+#### 7. Weak Session Management
 
 Poor session handling may result in:
 
@@ -1743,7 +1743,7 @@ Always:
 
 ---
 
-### 8. Poor API Security
+#### 8. Poor API Security
 
 Common API mistakes include:
 
@@ -1757,7 +1757,7 @@ APIs should expose only the minimum required functionality and data.
 
 ---
 
-### 9. Logging Sensitive Information
+#### 9. Logging Sensitive Information
 
 Avoid recording:
 
@@ -1772,7 +1772,7 @@ Logs should support investigations without exposing confidential information.
 
 ---
 
-### 10. Ignoring Dependency Security
+#### 10. Ignoring Dependency Security
 
 Third-party packages may contain:
 
@@ -1785,7 +1785,7 @@ Dependencies should be scanned continuously and updated regularly.
 
 ---
 
-### 11. Insecure File Upload Handling
+#### 11. Insecure File Upload Handling
 
 Accepting uploaded files without validation may lead to:
 
@@ -1798,7 +1798,7 @@ Uploaded files should be validated, scanned, renamed, and securely stored.
 
 ---
 
-### 12. Excessive Cloud Permissions
+#### 12. Excessive Cloud Permissions
 
 Applications frequently receive unnecessary access to cloud resources.
 
@@ -1813,7 +1813,7 @@ Apply Least Privilege to every application identity.
 
 ---
 
-### 13. Missing Runtime Monitoring
+#### 13. Missing Runtime Monitoring
 
 Without runtime visibility, organizations may fail to detect:
 
@@ -1827,7 +1827,7 @@ Continuous monitoring improves incident detection and response.
 
 ---
 
-### 14. Delaying Security Updates
+#### 14. Delaying Security Updates
 
 Outdated applications may contain:
 
@@ -1840,7 +1840,7 @@ Maintain a regular update and patch management process.
 
 ---
 
-### 15. Assuming HTTPS Alone Provides Complete Security
+#### 15. Assuming HTTPS Alone Provides Complete Security
 
 HTTPS protects data in transit but does not protect against:
 
@@ -1855,7 +1855,7 @@ Application security requires multiple complementary controls beyond transport e
 
 ---
 
-## Cloud Application Security Checklist
+### Cloud Application Security Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1877,9 +1877,9 @@ Application security requires multiple complementary controls beyond transport e
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
 - NIST Cybersecurity Framework (CSF) 2.0
@@ -1891,9 +1891,9 @@ Application security requires multiple complementary controls beyond transport e
 
 ---
 
-### Application Security Documentation
+#### Application Security Documentation
 
-#### OWASP
+##### OWASP
 
 - OWASP Top 10
 - OWASP Application Security Verification Standard (ASVS)
@@ -1901,7 +1901,7 @@ Application security requires multiple complementary controls beyond transport e
 - OWASP API Security Top 10
 - OWASP Cheat Sheet Series
 
-#### Cloud Platforms
+##### Cloud Platforms
 
 - AWS Well-Architected Framework – Security Pillar
 - Azure Well-Architected Framework – Security
@@ -1909,7 +1909,7 @@ Application security requires multiple complementary controls beyond transport e
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -1923,7 +1923,7 @@ Application security requires multiple complementary controls beyond transport e
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - OWASP Top 10
 - OWASP API Security Top 10

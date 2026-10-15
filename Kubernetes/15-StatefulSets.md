@@ -28,7 +28,7 @@ Common examples include:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -46,7 +46,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why StatefulSets?
+## Why StatefulSets?
 
 Imagine a Deployment with three Pods.
 
@@ -94,7 +94,7 @@ Database nodes require:
 
 ---
 
-# Solution
+## Solution
 
 Use a StatefulSet.
 
@@ -122,7 +122,7 @@ Each Pod has:
 
 ---
 
-# What is a StatefulSet?
+## What is a StatefulSet?
 
 A StatefulSet is a controller that manages stateful workloads requiring:
 
@@ -144,7 +144,7 @@ Each Pod is unique.
 
 ---
 
-# Deployment vs StatefulSet
+## Deployment vs StatefulSet
 
 | Deployment | StatefulSet |
 |------------|-------------|
@@ -156,7 +156,7 @@ Each Pod is unique.
 
 ---
 
-# StatefulSet Architecture
+## StatefulSet Architecture
 
 ```
                StatefulSet
@@ -188,7 +188,7 @@ Every Pod receives its own PersistentVolumeClaim (PVC).
 
 ---
 
-# Stable Pod Identity
+## Stable Pod Identity
 
 Pods receive predictable names.
 
@@ -222,7 +222,7 @@ The name remains unchanged.
 
 ---
 
-# Stable Network Identity
+## Stable Network Identity
 
 Each Pod receives a stable DNS name.
 
@@ -240,7 +240,7 @@ Applications can reliably communicate with specific Pods.
 
 ---
 
-# Headless Service Requirement
+## Headless Service Requirement
 
 StatefulSets require a **Headless Service**.
 
@@ -272,7 +272,7 @@ Without a Headless Service, stable Pod DNS names cannot be provided.
 
 ---
 
-# Persistent Storage
+## Persistent Storage
 
 Each Pod gets its own storage.
 
@@ -304,7 +304,7 @@ Each Pod owns its PersistentVolumeClaim.
 
 ---
 
-# Why Separate Storage?
+## Why Separate Storage?
 
 Suppose:
 
@@ -344,7 +344,7 @@ Data survives Pod recreation.
 
 ---
 
-# Ordered Deployment
+## Ordered Deployment
 
 Deployment creates Pods:
 
@@ -378,7 +378,7 @@ The next Pod is created only after the previous Pod is ready.
 
 ---
 
-# Ordered Scaling
+## Ordered Scaling
 
 Scale up:
 
@@ -424,7 +424,7 @@ Pods are removed in reverse order.
 
 ---
 
-# Ordered Updates
+## Ordered Updates
 
 Suppose:
 
@@ -460,7 +460,7 @@ By default, StatefulSets update Pods one at a time in reverse ordinal order, ens
 
 ---
 
-# StatefulSet Workflow
+## StatefulSet Workflow
 
 ```
 StatefulSet
@@ -488,7 +488,7 @@ Persistent Volume
 
 ---
 
-# StatefulSet YAML
+## StatefulSet YAML
 
 ```yaml
 apiVersion: apps/v1
@@ -530,7 +530,7 @@ spec:
 
 ---
 
-# Volume Claim Template
+## Volume Claim Template
 
 StatefulSets automatically create PVCs.
 
@@ -560,7 +560,7 @@ Each replica gets its own PVC.
 
 ---
 
-# Scaling Example
+## Scaling Example
 
 Current:
 
@@ -594,7 +594,7 @@ Each receives:
 
 ---
 
-# Common Stateful Applications
+## Common Stateful Applications
 
 ```
 MySQL
@@ -638,7 +638,7 @@ Node Identity
 
 ---
 
-# Viewing StatefulSets
+## Viewing StatefulSets
 
 List:
 
@@ -660,7 +660,7 @@ kubectl describe sts mysql
 
 ---
 
-# Updating StatefulSets
+## Updating StatefulSets
 
 Apply:
 
@@ -676,7 +676,7 @@ kubectl rollout status sts mysql
 
 ---
 
-# Deleting StatefulSets
+## Deleting StatefulSets
 
 Delete:
 
@@ -698,7 +698,7 @@ PVCs are **not** automatically deleted, protecting persistent data.
 
 ---
 
-# StatefulSet Lifecycle
+## StatefulSet Lifecycle
 
 ```
 Create
@@ -734,7 +734,7 @@ Delete
 
 ---
 
-# Important kubectl Commands
+## Important kubectl Commands
 
 View:
 
@@ -769,7 +769,7 @@ kubectl delete sts mysql
 
 ---
 
-# StatefulSet Architecture Summary
+## StatefulSet Architecture Summary
 
 ```
 StatefulSet
@@ -793,41 +793,41 @@ Ordered Operations
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Use StatefulSets Only for Stateful Workloads
+#### 1. Use StatefulSets Only for Stateful Workloads
 
 Databases, distributed storage, and clustered applications are ideal candidates.
 
 ---
 
-### 2. Always Use a Headless Service
+#### 2. Always Use a Headless Service
 
 It provides stable DNS records required by StatefulSets.
 
 ---
 
-### 3. Use Persistent Volumes
+#### 3. Use Persistent Volumes
 
 Avoid ephemeral storage for stateful applications.
 
 ---
 
-### 4. Test Scaling Carefully
+#### 4. Test Scaling Carefully
 
 Ensure the application itself supports scaling and replica synchronization.
 
 ---
 
-### 5. Protect Persistent Data
+#### 5. Protect Persistent Data
 
 Remember that deleting a StatefulSet does not automatically remove the associated PersistentVolumeClaims.
 
 ---
 
-# How StatefulSets Work Internally
+## How StatefulSets Work Internally
 
-## Overview
+### Overview
 
 StatefulSets are one of the most sophisticated workload controllers in Kubernetes.
 
@@ -854,7 +854,7 @@ These components work together to provide reliable, stateful workloads.
 
 ---
 
-# High-Level Architecture
+## High-Level Architecture
 
 ```
                  Kubernetes Cluster
@@ -890,7 +890,7 @@ These components work together to provide reliable, stateful workloads.
 
 ---
 
-# Complete Workflow
+## Complete Workflow
 
 ```
 Developer
@@ -946,7 +946,7 @@ Running Pod
 
 ---
 
-# Step 1 – StatefulSet Creation
+## Step 1 – StatefulSet Creation
 
 Example:
 
@@ -962,7 +962,7 @@ kubectl apply -f statefulset.yaml
 
 ---
 
-# Step 2 – API Server
+## Step 2 – API Server
 
 The API Server:
 
@@ -987,7 +987,7 @@ StatefulSet Stored
 
 ---
 
-# Step 3 – StatefulSet Controller
+## Step 3 – StatefulSet Controller
 
 The StatefulSet Controller continuously watches:
 
@@ -1012,7 +1012,7 @@ Desired State
 
 ---
 
-# Step 4 – Headless Service
+## Step 4 – Headless Service
 
 Unlike Deployments, StatefulSets require:
 
@@ -1030,7 +1030,7 @@ Because every Pod needs an individual DNS record.
 
 ---
 
-# Headless Service Workflow
+## Headless Service Workflow
 
 ```
 Headless Service
@@ -1052,7 +1052,7 @@ No virtual ClusterIP is created.
 
 ---
 
-# Step 5 – Pod Identity
+## Step 5 – Pod Identity
 
 Instead of random names:
 
@@ -1074,7 +1074,7 @@ These identities never change.
 
 ---
 
-# Pod Identity Rules
+## Pod Identity Rules
 
 Replica:
 
@@ -1124,7 +1124,7 @@ Identity remains stable.
 
 ---
 
-# Step 6 – DNS Creation
+## Step 6 – DNS Creation
 
 CoreDNS automatically creates:
 
@@ -1144,7 +1144,7 @@ Applications can reliably connect to specific Pods.
 
 ---
 
-# Step 7 – VolumeClaimTemplates
+## Step 7 – VolumeClaimTemplates
 
 Example:
 
@@ -1166,7 +1166,7 @@ Each replica receives its own PersistentVolumeClaim.
 
 ---
 
-# PVC Creation
+## PVC Creation
 
 Workflow:
 
@@ -1190,7 +1190,7 @@ Each Pod has dedicated storage.
 
 ---
 
-# Storage Binding
+## Storage Binding
 
 ```
 PVC
@@ -1212,7 +1212,7 @@ After the PVC is bound, the Pod can start.
 
 ---
 
-# Step 8 – Ordered Pod Creation
+## Step 8 – Ordered Pod Creation
 
 Suppose:
 
@@ -1270,7 +1270,7 @@ The controller waits for each Pod to become Ready.
 
 ---
 
-# Step 9 – Scheduler
+## Step 9 – Scheduler
 
 Once the PVC is available:
 
@@ -1288,7 +1288,7 @@ Assign Pod
 
 ---
 
-# Step 10 – kubelet
+## Step 10 – kubelet
 
 Worker Node:
 
@@ -1310,7 +1310,7 @@ Start Container
 
 ---
 
-# Final Running State
+## Final Running State
 
 ```
 mysql-0
@@ -1350,7 +1350,7 @@ PV
 
 ---
 
-# Scaling Up
+## Scaling Up
 
 Current:
 
@@ -1384,7 +1384,7 @@ Only the new replica is added.
 
 ---
 
-# Scaling Down
+## Scaling Down
 
 Current:
 
@@ -1426,7 +1426,7 @@ Data is preserved.
 
 ---
 
-# Pod Restart
+## Pod Restart
 
 Suppose:
 
@@ -1454,7 +1454,7 @@ Application continues using the same identity.
 
 ---
 
-# Rolling Update Workflow
+## Rolling Update Workflow
 
 Suppose:
 
@@ -1498,7 +1498,7 @@ This reverse-order update helps maintain application consistency.
 
 ---
 
-# Update Strategy
+## Update Strategy
 
 Default:
 
@@ -1528,7 +1528,7 @@ New Version Starts
 
 ---
 
-# Pod Management Policy
+## Pod Management Policy
 
 Default:
 
@@ -1568,7 +1568,7 @@ Pods can be created or deleted simultaneously, but identities remain stable.
 
 ---
 
-# Failure Recovery
+## Failure Recovery
 
 Suppose:
 
@@ -1600,7 +1600,7 @@ State is preserved.
 
 ---
 
-# Internal Architecture
+## Internal Architecture
 
 ```
 API Server
@@ -1640,7 +1640,7 @@ Container
 
 ---
 
-# Database Example
+## Database Example
 
 ```
 PostgreSQL Cluster
@@ -1674,7 +1674,7 @@ Each Pod maintains a unique identity and storage.
 
 ---
 
-# Kafka Example
+## Kafka Example
 
 ```
 Kafka
@@ -1696,7 +1696,7 @@ Each broker keeps its own data directory.
 
 ---
 
-# Elasticsearch Example
+## Elasticsearch Example
 
 ```
 es-0
@@ -1718,7 +1718,7 @@ Each node maintains its own index data.
 
 ---
 
-# Hands-on Lab 1 – Create Headless Service
+## Hands-on Lab 1 – Create Headless Service
 
 ```yaml
 apiVersion: v1
@@ -1750,7 +1750,7 @@ kubectl apply -f service.yaml
 
 ---
 
-# Hands-on Lab 2 – Create StatefulSet
+## Hands-on Lab 2 – Create StatefulSet
 
 Deploy:
 
@@ -1778,7 +1778,7 @@ mysql-2
 
 ---
 
-# Hands-on Lab 3 – View PVCs
+## Hands-on Lab 3 – View PVCs
 
 ```bash
 kubectl get pvc
@@ -1798,7 +1798,7 @@ Each Pod has its own claim.
 
 ---
 
-# Hands-on Lab 4 – Scale StatefulSet
+## Hands-on Lab 4 – Scale StatefulSet
 
 ```bash
 kubectl scale sts mysql \
@@ -1817,7 +1817,7 @@ New replicas receive new PVCs.
 
 ---
 
-# Hands-on Lab 5 – Delete a Pod
+## Hands-on Lab 5 – Delete a Pod
 
 Delete:
 
@@ -1845,9 +1845,9 @@ Verify that:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Using Deployments for Databases
+### 1. Using Deployments for Databases
 
 Incorrect:
 
@@ -1871,7 +1871,7 @@ MySQL
 
 ---
 
-## 2. Forgetting the Headless Service
+### 2. Forgetting the Headless Service
 
 Without:
 
@@ -1883,7 +1883,7 @@ Stable DNS records are unavailable.
 
 ---
 
-## 3. Assuming PVCs Are Deleted Automatically
+### 3. Assuming PVCs Are Deleted Automatically
 
 Deleting a StatefulSet does **not** automatically remove its PVCs.
 
@@ -1891,7 +1891,7 @@ Storage remains until explicitly cleaned up or managed by the configured retenti
 
 ---
 
-## 4. Expecting Parallel Startup
+### 4. Expecting Parallel Startup
 
 Default behavior:
 
@@ -1903,7 +1903,7 @@ Pods are created sequentially.
 
 ---
 
-## 5. Sharing One PersistentVolume
+### 5. Sharing One PersistentVolume
 
 Incorrect:
 
@@ -1931,9 +1931,9 @@ Own PV
 
 ---
 
-# StatefulSets Quick Revision
+## StatefulSets Quick Revision
 
-## Architecture
+### Architecture
 
 ```
 StatefulSet
@@ -1961,7 +1961,7 @@ PV
 
 ---
 
-## Lifecycle
+### Lifecycle
 
 ```
 Create
@@ -1993,7 +1993,7 @@ Delete
 
 ---
 
-## Ordered Operations
+### Ordered Operations
 
 ```
 Create
@@ -2015,7 +2015,7 @@ Update
 
 ---
 
-# Essential kubectl Commands
+## Essential kubectl Commands
 
 View StatefulSets:
 
@@ -2056,9 +2056,9 @@ kubectl delete sts mysql
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-### Basic
+#### Basic
 
 - What is a StatefulSet?
 - How does a StatefulSet differ from a Deployment?
@@ -2066,7 +2066,7 @@ kubectl delete sts mysql
 
 ---
 
-### Intermediate
+#### Intermediate
 
 - What is a VolumeClaimTemplate?
 - How are Pod names generated?
@@ -2074,7 +2074,7 @@ kubectl delete sts mysql
 
 ---
 
-### Advanced
+#### Advanced
 
 - Explain the internal workflow of a StatefulSet.
 - Why are Pods created sequentially by default?
@@ -2084,9 +2084,9 @@ kubectl delete sts mysql
 
 ---
 
-# References
+## References
 
-## Official Kubernetes Documentation
+### Official Kubernetes Documentation
 
 - StatefulSets
 - Persistent Volumes
@@ -2097,7 +2097,7 @@ kubectl delete sts mysql
 
 ---
 
-## CNCF Resources
+### CNCF Resources
 
 - Kubernetes Best Practices
 - Stateful Workloads Guide
@@ -2105,7 +2105,7 @@ kubectl delete sts mysql
 
 ---
 
-## Security & Operations
+### Security & Operations
 
 - CIS Kubernetes Benchmark
 - Kubernetes Production Best Practices
@@ -2114,7 +2114,7 @@ kubectl delete sts mysql
 
 ---
 
-## Recommended Practice
+### Recommended Practice
 
 1. Create a Headless Service and StatefulSet.
 2. Observe stable Pod names and DNS entries.
@@ -2126,7 +2126,7 @@ kubectl delete sts mysql
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 ```
 Developer

@@ -1,10 +1,10 @@
 # 07-Windows-Command-Line.md
 
-# Part 1 — Introduction to Windows Command Line, Command Prompt (CMD), Console Basics, Navigation, File System Commands, and Environment Variables
+## Part 1 — Introduction to Windows Command Line, Command Prompt (CMD), Console Basics, Navigation, File System Commands, and Environment Variables
 
 ---
 
-# Introduction
+## Introduction
 
 The **Windows Command Line** is a text-based interface that allows users and administrators to interact directly with the Windows operating system.
 
@@ -33,7 +33,7 @@ Although many modern administrative tasks are performed using **PowerShell**, un
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this part, you will understand:
 
@@ -51,7 +51,7 @@ By the end of this part, you will understand:
 
 ---
 
-# What is the Command Line?
+## What is the Command Line?
 
 The command line allows users to issue text commands that Windows executes directly.
 
@@ -81,7 +81,7 @@ Instead of clicking buttons, users execute commands to perform operations.
 
 ---
 
-# Graphical Interface vs Command Line
+## Graphical Interface vs Command Line
 
 | Graphical User Interface (GUI) | Command Line Interface (CLI) |
 |--------------------------------|------------------------------|
@@ -95,7 +95,7 @@ Most enterprise administrators use both interfaces depending on the task.
 
 ---
 
-# Windows Command-Line Components
+## Windows Command-Line Components
 
 ```text
 User
@@ -121,7 +121,7 @@ The console hosts the command interpreter and displays input and output.
 
 ---
 
-# Command Prompt (CMD)
+## Command Prompt (CMD)
 
 **Command Prompt**, also called **CMD**, is the traditional Windows command interpreter.
 
@@ -141,7 +141,7 @@ CMD interprets user commands and executes internal or external programs.
 
 ---
 
-# Windows Console
+## Windows Console
 
 The Windows Console provides the interface for text-based applications.
 
@@ -155,7 +155,7 @@ Responsibilities include:
 
 ---
 
-# Opening Command Prompt
+## Opening Command Prompt
 
 Common methods:
 
@@ -167,7 +167,7 @@ Common methods:
 
 ---
 
-# Opening an Administrative Command Prompt
+## Opening an Administrative Command Prompt
 
 Some commands require elevated privileges.
 
@@ -203,7 +203,7 @@ Administrative access is required for many system configuration tasks.
 
 ---
 
-# Standard vs Administrative CMD
+## Standard vs Administrative CMD
 
 | Standard CMD | Administrative CMD |
 |--------------|--------------------|
@@ -215,7 +215,7 @@ Always use the lowest privilege necessary to perform a task.
 
 ---
 
-# CMD Window Components
+## CMD Window Components
 
 ```text
 +------------------------------------------------+
@@ -243,7 +243,7 @@ Scroll Buffer
 
 ---
 
-# Command Prompt Format
+## Command Prompt Format
 
 Typical prompt:
 
@@ -261,7 +261,7 @@ Meaning:
 
 ---
 
-# Current Working Directory (CWD)
+## Current Working Directory (CWD)
 
 The **Current Working Directory** is the folder in which commands operate by default.
 
@@ -275,7 +275,7 @@ Relative paths are interpreted from this location.
 
 ---
 
-# Command Syntax
+## Command Syntax
 
 General format:
 
@@ -307,7 +307,7 @@ Where:
 
 ---
 
-# Internal vs External Commands
+## Internal vs External Commands
 
 CMD supports two categories of commands.
 
@@ -319,7 +319,7 @@ CMD supports two categories of commands.
 
 ---
 
-# Viewing Help
+## Viewing Help
 
 Most commands provide built-in help.
 
@@ -345,7 +345,7 @@ Learning to use built-in help is an important troubleshooting skill.
 
 ---
 
-# Command History
+## Command History
 
 CMD stores previously entered commands.
 
@@ -360,7 +360,7 @@ Useful keys:
 
 ---
 
-# Auto-Completion
+## Auto-Completion
 
 Example:
 
@@ -384,7 +384,7 @@ Tab completion reduces typing errors and speeds navigation.
 
 ---
 
-# Changing Directories
+## Changing Directories
 
 Command:
 
@@ -412,7 +412,7 @@ cd \
 
 ---
 
-# Changing Drives
+## Changing Drives
 
 Example:
 
@@ -440,7 +440,7 @@ cd /d D:\Projects
 
 ---
 
-# Display Current Directory
+## Display Current Directory
 
 Command:
 
@@ -458,7 +458,7 @@ Without arguments, the command displays the current working directory.
 
 ---
 
-# Listing Directory Contents
+## Listing Directory Contents
 
 Command:
 
@@ -480,7 +480,7 @@ budget.xlsx
 
 ---
 
-# Useful DIR Options
+## Useful DIR Options
 
 | Command | Purpose |
 |----------|----------|
@@ -494,7 +494,7 @@ budget.xlsx
 
 ---
 
-# Directory Navigation Example
+## Directory Navigation Example
 
 ```text
 C:\
@@ -527,7 +527,7 @@ cd Projects
 
 ---
 
-# Creating Directories
+## Creating Directories
 
 Command:
 
@@ -551,7 +551,7 @@ Created
 
 ---
 
-# Removing Directories
+## Removing Directories
 
 Command:
 
@@ -569,7 +569,7 @@ A directory generally must be empty before it can be removed without additional 
 
 ---
 
-# Creating Files
+## Creating Files
 
 One simple method:
 
@@ -585,7 +585,7 @@ demo.txt
 
 ---
 
-# Display File Contents
+## Display File Contents
 
 Command:
 
@@ -605,7 +605,7 @@ Submit report
 
 ---
 
-# Clearing the Screen
+## Clearing the Screen
 
 Command:
 
@@ -623,7 +623,7 @@ This affects only the display, not command history or system state.
 
 ---
 
-# Exiting Command Prompt
+## Exiting Command Prompt
 
 Command:
 
@@ -639,7 +639,7 @@ CMD Window Closed
 
 ---
 
-# Environment Variables
+## Environment Variables
 
 Environment variables store information used by Windows and applications.
 
@@ -656,7 +656,7 @@ Examples:
 
 ---
 
-# Viewing Environment Variables
+## Viewing Environment Variables
 
 Display all variables:
 
@@ -678,7 +678,7 @@ Alice
 
 ---
 
-# PATH Variable
+## PATH Variable
 
 The **PATH** variable tells Windows where to search for executable programs.
 
@@ -702,7 +702,7 @@ Without PATH, many commands would require their full file paths.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A help desk technician needs to verify a user's profile directory.
 
@@ -722,7 +722,7 @@ This allows quick verification during remote support sessions.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Command Prompt is frequently used by both defenders and attackers.
 
@@ -751,7 +751,7 @@ Security teams should monitor suspicious command execution using:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Command-line proficiency enables organizations to:
 
@@ -765,7 +765,7 @@ Administrators who understand the command line can often diagnose issues more qu
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use administrative CMD only when required.
 - Prefer full paths in administrative scripts.
@@ -776,9 +776,9 @@ Administrators who understand the command line can often diagnose issues more qu
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Explore the Current Directory
+### Lab 1 — Explore the Current Directory
 
 Open **Command Prompt** and run:
 
@@ -798,7 +798,7 @@ Observe how the current working directory changes.
 
 ---
 
-## Lab 2 — Create and View a File
+### Lab 2 — Create and View a File
 
 Run:
 
@@ -818,7 +818,7 @@ Record the results after each command.
 
 ---
 
-## Lab 3 — Explore Environment Variables
+### Lab 3 — Explore Environment Variables
 
 Run:
 
@@ -836,7 +836,7 @@ Identify the values for your current system.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - CMD is the traditional Windows command interpreter.
 - Commands consist of a command name, optional switches, and arguments.
@@ -847,7 +847,7 @@ Identify the values for your current system.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is `cmd.exe`?
 2. What is the difference between CMD and PowerShell?
@@ -862,7 +862,7 @@ Identify the values for your current system.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Command-Line Reference
@@ -872,13 +872,13 @@ Identify the values for your current system.
 
 ---
 
-# 07-Windows-Command-Line.md
+## 07-Windows-Command-Line.md
 
-# Part 2 — Advanced CMD Commands, File Operations, Process Management, Networking Utilities, Batch Files, Redirection, Pipes, and Command Chaining
+## Part 2 — Advanced CMD Commands, File Operations, Process Management, Networking Utilities, Batch Files, Redirection, Pipes, and Command Chaining
 
 ---
 
-# Introduction
+## Introduction
 
 After learning the fundamentals of Command Prompt (CMD), the next step is understanding how administrators automate work, troubleshoot systems, manage processes, and perform network diagnostics.
 
@@ -897,7 +897,7 @@ Although PowerShell has become Microsoft's primary automation platform, many Win
 
 ---
 
-# Advanced Command Categories
+## Advanced Command Categories
 
 ```text
 Windows CMD
@@ -916,7 +916,7 @@ Windows CMD
 
 ---
 
-# Copy Command
+## Copy Command
 
 Copies one or more files.
 
@@ -948,7 +948,7 @@ D:\Backup\
 
 ---
 
-# XCOPY
+## XCOPY
 
 `xcopy` is an enhanced version of the `copy` command.
 
@@ -971,7 +971,7 @@ Although still available, **Robocopy** is generally recommended for enterprise-s
 
 ---
 
-# ROBOCOPY
+## ROBOCOPY
 
 Robocopy (Robust File Copy) is Microsoft's enterprise file-copy utility.
 
@@ -992,7 +992,7 @@ Common features
 
 ---
 
-# Move Command
+## Move Command
 
 Moves files or folders.
 
@@ -1022,7 +1022,7 @@ File Relocated
 
 ---
 
-# Rename Command
+## Rename Command
 
 Rename files or folders.
 
@@ -1038,7 +1038,7 @@ The file contents remain unchanged.
 
 ---
 
-# Delete Files
+## Delete Files
 
 Delete a file
 
@@ -1062,7 +1062,7 @@ Always verify wildcard usage before execution.
 
 ---
 
-# Remove Directories
+## Remove Directories
 
 Delete an empty folder
 
@@ -1086,7 +1086,7 @@ Be cautious when using `/S` and `/Q` because they can remove large directory tre
 
 ---
 
-# Wildcards
+## Wildcards
 
 CMD supports wildcard characters.
 
@@ -1107,7 +1107,7 @@ copy *.pdf D:\PDF\
 
 ---
 
-# Tree Command
+## Tree Command
 
 Display directory hierarchy.
 
@@ -1131,7 +1131,7 @@ Useful for documentation and troubleshooting.
 
 ---
 
-# Finding Files
+## Finding Files
 
 Locate files using:
 
@@ -1147,7 +1147,7 @@ dir *.log /S
 
 ---
 
-# File Comparison
+## File Comparison
 
 Compare two files.
 
@@ -1163,7 +1163,7 @@ Useful for:
 
 ---
 
-# Display Text Files
+## Display Text Files
 
 ```cmd
 type notes.txt
@@ -1177,7 +1177,7 @@ type *.txt
 
 ---
 
-# More Command
+## More Command
 
 Large output can be paged.
 
@@ -1191,7 +1191,7 @@ Instead of scrolling rapidly, output pauses one screen at a time.
 
 ---
 
-# Sort Command
+## Sort Command
 
 Sort text alphabetically.
 
@@ -1209,7 +1209,7 @@ type users.txt | sort
 
 ---
 
-# Find Command
+## Find Command
 
 Search for text.
 
@@ -1223,7 +1223,7 @@ Returns matching lines.
 
 ---
 
-# Findstr Command
+## Findstr Command
 
 `findstr` is more powerful than `find`.
 
@@ -1244,7 +1244,7 @@ Widely used in log analysis.
 
 ---
 
-# System Information
+## System Information
 
 Display detailed system information.
 
@@ -1264,7 +1264,7 @@ Information includes:
 
 ---
 
-# Hostname
+## Hostname
 
 Display computer name.
 
@@ -1280,7 +1280,7 @@ HR-LAPTOP-021
 
 ---
 
-# Who Am I
+## Who Am I
 
 Display current user.
 
@@ -1308,7 +1308,7 @@ These commands are valuable during privilege analysis.
 
 ---
 
-# Tasklist
+## Tasklist
 
 Display running processes.
 
@@ -1328,7 +1328,7 @@ notepad.exe
 
 ---
 
-# Taskkill
+## Taskkill
 
 Terminate a process.
 
@@ -1354,7 +1354,7 @@ Use force termination carefully because unsaved work may be lost.
 
 ---
 
-# Shutdown Command
+## Shutdown Command
 
 Shutdown system
 
@@ -1382,7 +1382,7 @@ shutdown /r /t 60
 
 ---
 
-# Networking Utilities
+## Networking Utilities
 
 Common networking commands include:
 
@@ -1402,7 +1402,7 @@ These commands are covered in greater detail in the Windows Networking chapter.
 
 ---
 
-# IPCONFIG
+## IPCONFIG
 
 Display IP configuration.
 
@@ -1436,7 +1436,7 @@ ipconfig /flushdns
 
 ---
 
-# PING
+## PING
 
 Test connectivity.
 
@@ -1464,7 +1464,7 @@ Latency Displayed
 
 ---
 
-# NETSTAT
+## NETSTAT
 
 View active connections.
 
@@ -1486,7 +1486,7 @@ netstat -ab
 
 ---
 
-# NSLOOKUP
+## NSLOOKUP
 
 Query DNS.
 
@@ -1502,7 +1502,7 @@ Useful for:
 
 ---
 
-# Batch Files
+## Batch Files
 
 Batch files automate CMD commands.
 
@@ -1526,7 +1526,7 @@ pause
 
 ---
 
-# Echo Command
+## Echo Command
 
 Display text.
 
@@ -1542,7 +1542,7 @@ echo %USERNAME%
 
 ---
 
-# Pause
+## Pause
 
 Wait for user input.
 
@@ -1558,7 +1558,7 @@ Press any key to continue . . .
 
 ---
 
-# Comments
+## Comments
 
 Batch comments
 
@@ -1574,7 +1574,7 @@ Alternative
 
 ---
 
-# Variables
+## Variables
 
 Create variable
 
@@ -1590,7 +1590,7 @@ echo %NAME%
 
 ---
 
-# Input
+## Input
 
 Prompt the user.
 
@@ -1600,7 +1600,7 @@ set /P USER=Enter username:
 
 ---
 
-# IF Statement
+## IF Statement
 
 Example
 
@@ -1612,7 +1612,7 @@ Conditional execution is fundamental to batch scripting.
 
 ---
 
-# FOR Loop
+## FOR Loop
 
 Example
 
@@ -1624,7 +1624,7 @@ Useful for processing multiple files.
 
 ---
 
-# GOTO
+## GOTO
 
 Jump to another section.
 
@@ -1637,7 +1637,7 @@ echo Finished
 
 ---
 
-# Redirection
+## Redirection
 
 Redirect output.
 
@@ -1669,7 +1669,7 @@ Text File
 
 ---
 
-# Input Redirection
+## Input Redirection
 
 ```cmd
 sort < names.txt
@@ -1679,7 +1679,7 @@ The command reads input from a file instead of the keyboard.
 
 ---
 
-# Error Redirection
+## Error Redirection
 
 Redirect errors.
 
@@ -1695,7 +1695,7 @@ dir C:\ 1>output.txt 2>errors.txt
 
 ---
 
-# Pipes
+## Pipes
 
 A pipe passes output from one command directly into another.
 
@@ -1731,7 +1731,7 @@ Filtered Result
 
 ---
 
-# Command Chaining
+## Command Chaining
 
 Execute multiple commands.
 
@@ -1755,7 +1755,7 @@ echo Start & dir & echo Finished
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A help desk engineer collects diagnostic information.
 
@@ -1787,7 +1787,7 @@ The collected information is attached to a support ticket for troubleshooting.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently use built-in CMD utilities because they are trusted Windows components.
 
@@ -1813,7 +1813,7 @@ Monitoring command-line activity is an important component of Endpoint Detection
 
 ---
 
-# Business Impact
+## Business Impact
 
 CMD enables organizations to:
 
@@ -1828,7 +1828,7 @@ Well-designed automation reduces operational costs and human error.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Test batch scripts in non-production environments.
 - Use descriptive script names and comments.
@@ -1839,9 +1839,9 @@ Well-designed automation reduces operational costs and human error.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — File Operations
+### Lab 1 — File Operations
 
 Create a test folder and perform:
 
@@ -1859,7 +1859,7 @@ Observe the changes after each command.
 
 ---
 
-## Lab 2 — Process Management
+### Lab 2 — Process Management
 
 Run:
 
@@ -1882,7 +1882,7 @@ Identify:
 
 ---
 
-## Lab 3 — Redirection and Pipes
+### Lab 3 — Redirection and Pipes
 
 Execute:
 
@@ -1898,7 +1898,7 @@ Review the generated files and filtered output.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - CMD provides powerful administrative capabilities beyond basic navigation.
 - Built-in utilities support process, file, and network management.
@@ -1909,7 +1909,7 @@ Review the generated files and filtered output.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between `copy`, `xcopy`, and `robocopy`?
 2. What does the `tasklist` command display?
@@ -1924,7 +1924,7 @@ Review the generated files and filtered output.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Command Reference
@@ -1934,13 +1934,13 @@ Review the generated files and filtered output.
 
 ---
 
-# 07-Windows-Command-Line.md
+## 07-Windows-Command-Line.md
 
-# Part 3 — Windows Networking Commands, Disk Utilities, System Administration Commands, Scheduling, Services, Registry Tools, and Troubleshooting
+## Part 3 — Windows Networking Commands, Disk Utilities, System Administration Commands, Scheduling, Services, Registry Tools, and Troubleshooting
 
 ---
 
-# Introduction
+## Introduction
 
 The Windows Command Line provides numerous built-in utilities that enable administrators to manage networking, storage, services, scheduled tasks, user accounts, the Windows Registry, and system troubleshooting.
 
@@ -1960,7 +1960,7 @@ Many of these commands require **administrative privileges** because they modify
 
 ---
 
-# Windows Administrative Command Categories
+## Windows Administrative Command Categories
 
 ```text
 Windows CMD
@@ -1979,7 +1979,7 @@ Windows CMD
 
 ---
 
-# Network Configuration Commands
+## Network Configuration Commands
 
 Windows includes several networking utilities.
 
@@ -1998,7 +1998,7 @@ Windows includes several networking utilities.
 
 ---
 
-# IPCONFIG Review
+## IPCONFIG Review
 
 Display IP configuration.
 
@@ -2038,7 +2038,7 @@ ipconfig /displaydns
 
 ---
 
-# PING
+## PING
 
 Tests network connectivity using ICMP Echo Requests.
 
@@ -2064,7 +2064,7 @@ TTL=127
 
 ---
 
-# TRACERT
+## TRACERT
 
 Displays the path packets take to a destination.
 
@@ -2098,7 +2098,7 @@ Useful for identifying routing issues.
 
 ---
 
-# PATHPING
+## PATHPING
 
 Combines the functionality of `ping` and `tracert`.
 
@@ -2114,7 +2114,7 @@ Provides:
 
 ---
 
-# ARP
+## ARP
 
 Displays the Address Resolution Protocol cache.
 
@@ -2136,7 +2136,7 @@ Useful during network troubleshooting and incident investigations.
 
 ---
 
-# NETSTAT
+## NETSTAT
 
 Displays network statistics.
 
@@ -2155,7 +2155,7 @@ Common options:
 
 ---
 
-# Example NETSTAT Output
+## Example NETSTAT Output
 
 ```text
 Local Address
@@ -2177,7 +2177,7 @@ Administrators often correlate the PID with `tasklist` during investigations.
 
 ---
 
-# ROUTE
+## ROUTE
 
 View routing table.
 
@@ -2207,7 +2207,7 @@ Improper routes can prevent communication between networks.
 
 ---
 
-# NSLOOKUP
+## NSLOOKUP
 
 DNS query utility.
 
@@ -2225,7 +2225,7 @@ Useful for diagnosing DNS resolution issues.
 
 ---
 
-# NET Command
+## NET Command
 
 The `net` command manages numerous Windows networking functions.
 
@@ -2251,7 +2251,7 @@ Each subcommand serves a different administrative purpose.
 
 ---
 
-# NET USER
+## NET USER
 
 List local users.
 
@@ -2281,7 +2281,7 @@ Administrative privileges are required for account management.
 
 ---
 
-# NET LOCALGROUP
+## NET LOCALGROUP
 
 Display local groups.
 
@@ -2299,7 +2299,7 @@ Membership changes should follow organizational approval processes.
 
 ---
 
-# NET SHARE
+## NET SHARE
 
 Display shared folders.
 
@@ -2317,7 +2317,7 @@ Improperly configured shares can expose sensitive information.
 
 ---
 
-# NET USE
+## NET USE
 
 Connect to a network share.
 
@@ -2333,7 +2333,7 @@ net use Z: /delete
 
 ---
 
-# Task Scheduler
+## Task Scheduler
 
 Windows schedules tasks using:
 
@@ -2349,7 +2349,7 @@ schtasks
 
 ---
 
-# SCHTASKS
+## SCHTASKS
 
 Display scheduled tasks.
 
@@ -2379,7 +2379,7 @@ Scheduled tasks are commonly used for automation and maintenance.
 
 ---
 
-# Service Management
+## Service Management
 
 Windows services can be managed from CMD.
 
@@ -2391,7 +2391,7 @@ Utilities include:
 
 ---
 
-# NET START
+## NET START
 
 Display running services.
 
@@ -2407,7 +2407,7 @@ net start Spooler
 
 ---
 
-# NET STOP
+## NET STOP
 
 Stop a service.
 
@@ -2419,7 +2419,7 @@ Stopping critical services may affect system functionality.
 
 ---
 
-# SC Command
+## SC Command
 
 Service Controller utility.
 
@@ -2455,7 +2455,7 @@ sc qc WinDefend
 
 ---
 
-# Driver Query
+## Driver Query
 
 Display installed drivers.
 
@@ -2479,7 +2479,7 @@ Useful during troubleshooting and forensic investigations.
 
 ---
 
-# Driver Signing
+## Driver Signing
 
 Windows can display information about signed drivers.
 
@@ -2493,7 +2493,7 @@ This launches the File Signature Verification utility.
 
 ---
 
-# Registry Command
+## Registry Command
 
 The Windows Registry can be managed using:
 
@@ -2527,7 +2527,7 @@ Always back up the Registry before making changes.
 
 ---
 
-# Registry Query Example
+## Registry Query Example
 
 ```cmd
 reg query HKLM\Software
@@ -2549,7 +2549,7 @@ Data
 
 ---
 
-# Event Log Utility
+## Event Log Utility
 
 Windows includes:
 
@@ -2581,7 +2581,7 @@ Useful during incident response and troubleshooting.
 
 ---
 
-# System File Checker
+## System File Checker
 
 Verify protected Windows system files.
 
@@ -2609,7 +2609,7 @@ Generate Results
 
 ---
 
-# DISM
+## DISM
 
 Deployment Image Servicing and Management.
 
@@ -2635,7 +2635,7 @@ DISM is commonly used before or alongside `sfc` when repairing Windows installat
 
 ---
 
-# CHKDSK
+## CHKDSK
 
 Check disk integrity.
 
@@ -2659,7 +2659,7 @@ Some operations require a reboot because the system volume is in use.
 
 ---
 
-# FSUTIL
+## FSUTIL
 
 Advanced file system management.
 
@@ -2677,7 +2677,7 @@ fsutil fsinfo ntfsinfo C:
 
 ---
 
-# Shutdown Utility
+## Shutdown Utility
 
 Shutdown.
 
@@ -2705,7 +2705,7 @@ shutdown /a
 
 ---
 
-# System Diagnostics Workflow
+## System Diagnostics Workflow
 
 ```text
 Problem Report
@@ -2745,7 +2745,7 @@ Resolution
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A workstation cannot reach a file server.
 
@@ -2779,7 +2779,7 @@ If connectivity exists but authentication fails, the administrator continues wit
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security analysts frequently use CMD during investigations.
 
@@ -2804,7 +2804,7 @@ Attackers also use many of these utilities because they are legitimate Windows b
 
 ---
 
-# Business Impact
+## Business Impact
 
 These command-line utilities enable organizations to:
 
@@ -2818,7 +2818,7 @@ These command-line utilities enable organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Use administrative privileges only when necessary.
 - Export Registry data before modifying it.
@@ -2830,9 +2830,9 @@ These command-line utilities enable organizations to:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Network Diagnostics
+### Lab 1 — Network Diagnostics
 
 Run:
 
@@ -2858,7 +2858,7 @@ Record:
 
 ---
 
-## Lab 2 — System Health
+### Lab 2 — System Health
 
 Execute:
 
@@ -2878,7 +2878,7 @@ Observe:
 
 ---
 
-## Lab 3 — Services and Tasks
+### Lab 3 — Services and Tasks
 
 Run:
 
@@ -2900,7 +2900,7 @@ Do not stop or modify production services unless authorized.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows provides extensive command-line tools for networking, storage, services, and troubleshooting.
 - `net`, `sc`, and `schtasks` are core administrative utilities.
@@ -2910,7 +2910,7 @@ Do not stop or modify production services unless authorized.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the difference between `ping`, `tracert`, and `pathping`?
 2. What information does `netstat -ano` provide?
@@ -2925,7 +2925,7 @@ Do not stop or modify production services unless authorized.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Command Reference
@@ -2937,13 +2937,13 @@ Do not stop or modify production services unless authorized.
 
 ---
 
-# 07-Windows-Command-Line.md
+## 07-Windows-Command-Line.md
 
-# Part 4 — Advanced CMD Administration, Security, Enterprise Automation, Best Practices, Chapter Review, and Interview Preparation
+## Part 4 — Advanced CMD Administration, Security, Enterprise Automation, Best Practices, Chapter Review, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Windows Command Prompt (CMD) remains one of the most valuable administrative tools in Windows.
 
@@ -2963,7 +2963,7 @@ Understanding how CMD fits into modern enterprise administration helps professio
 
 ---
 
-# Enterprise Command-Line Workflow
+## Enterprise Command-Line Workflow
 
 ```text
 Administrator
@@ -2997,7 +2997,7 @@ Every administrative action should be documented, monitored, and performed using
 
 ---
 
-# CMD in Enterprise Administration
+## CMD in Enterprise Administration
 
 CMD is commonly used for:
 
@@ -3014,7 +3014,7 @@ CMD is commonly used for:
 
 ---
 
-# Windows Recovery Environment (WinRE)
+## Windows Recovery Environment (WinRE)
 
 Command Prompt is available within **Windows Recovery Environment (WinRE)**.
 
@@ -3052,7 +3052,7 @@ Successful Boot
 
 ---
 
-# Windows PE (WinPE)
+## Windows PE (WinPE)
 
 Windows Preinstallation Environment (WinPE) is a lightweight Windows environment used for:
 
@@ -3066,7 +3066,7 @@ CMD is the primary interface in many WinPE scenarios.
 
 ---
 
-# Safe Mode with Command Prompt
+## Safe Mode with Command Prompt
 
 Windows can boot into:
 
@@ -3090,7 +3090,7 @@ This mode is useful when graphical components fail to load correctly.
 
 ---
 
-# Administrative Automation
+## Administrative Automation
 
 Many organizations automate routine maintenance using CMD scripts.
 
@@ -3124,7 +3124,7 @@ Automation reduces repetitive manual work and improves consistency.
 
 ---
 
-# Logging Administrative Activity
+## Logging Administrative Activity
 
 Administrative scripts should generate logs whenever possible.
 
@@ -3162,7 +3162,7 @@ Logs simplify troubleshooting and auditing.
 
 ---
 
-# Exit Codes
+## Exit Codes
 
 Most Windows commands return an **exit code** indicating success or failure.
 
@@ -3183,7 +3183,7 @@ echo %ERRORLEVEL%
 
 ---
 
-# Using ERRORLEVEL
+## Using ERRORLEVEL
 
 Example:
 
@@ -3201,7 +3201,7 @@ Checking exit codes improves the reliability of automation.
 
 ---
 
-# Batch Script Structure
+## Batch Script Structure
 
 Example:
 
@@ -3223,7 +3223,7 @@ A well-structured script is easier to maintain and troubleshoot.
 
 ---
 
-# Defensive Scripting Practices
+## Defensive Scripting Practices
 
 Administrators should:
 
@@ -3237,7 +3237,7 @@ Administrators should:
 
 ---
 
-# Common Administrative Mistakes
+## Common Administrative Mistakes
 
 Examples include:
 
@@ -3253,7 +3253,7 @@ Careful verification reduces operational risk.
 
 ---
 
-# CMD Security Considerations
+## CMD Security Considerations
 
 Because CMD can execute powerful system commands, organizations should protect administrative access.
 
@@ -3268,7 +3268,7 @@ Recommended controls:
 
 ---
 
-# Living Off the Land (LotL)
+## Living Off the Land (LotL)
 
 Many legitimate Windows executables can be used for both administration and malicious purposes.
 
@@ -3288,7 +3288,7 @@ The presence of these tools alone is **not** an indicator of malicious activity.
 
 ---
 
-# Command-Line Logging
+## Command-Line Logging
 
 Enterprise security solutions often record:
 
@@ -3305,7 +3305,7 @@ These records support incident response and threat hunting.
 
 ---
 
-# Example Investigation
+## Example Investigation
 
 SOC analysts observe the following sequence:
 
@@ -3343,7 +3343,7 @@ This activity may be legitimate administration or part of attacker reconnaissanc
 
 ---
 
-# Enterprise Automation Example
+## Enterprise Automation Example
 
 Nightly maintenance script:
 
@@ -3375,7 +3375,7 @@ This approach minimizes manual intervention while maintaining accountability.
 
 ---
 
-# Incident Response Example
+## Incident Response Example
 
 A workstation reports suspicious activity.
 
@@ -3401,7 +3401,7 @@ The collected information is preserved for further investigation.
 
 ---
 
-# Disaster Recovery Example
+## Disaster Recovery Example
 
 A Windows server fails to boot.
 
@@ -3443,7 +3443,7 @@ The exact repair sequence depends on the root cause of the failure.
 
 ---
 
-# CMD vs PowerShell
+## CMD vs PowerShell
 
 | Feature | CMD | PowerShell |
 |----------|-----|------------|
@@ -3459,7 +3459,7 @@ PowerShell is generally recommended for new automation projects, while CMD remai
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial institution automates nightly log collection.
 
@@ -3495,7 +3495,7 @@ The process runs unattended and produces a detailed execution log.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Command-line activity is a high-value source of security telemetry.
 
@@ -3514,7 +3514,7 @@ Context is essential. Many commands used by attackers are also used daily by sys
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective command-line administration enables organizations to:
 
@@ -3528,7 +3528,7 @@ Effective command-line administration enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Prefer PowerShell for new automation while maintaining CMD compatibility where required.
 - Execute administrative commands using least privilege.
@@ -3541,9 +3541,9 @@ Effective command-line administration enables organizations to:
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Collect System Information
+### Lab 1 — Collect System Information
 
 Open **Command Prompt** and run:
 
@@ -3561,7 +3561,7 @@ Review the generated reports.
 
 ---
 
-## Lab 2 — Create a Simple Batch Script
+### Lab 2 — Create a Simple Batch Script
 
 Create a file named:
 
@@ -3585,7 +3585,7 @@ Run the script and observe the output.
 
 ---
 
-## Lab 3 — Check Exit Codes
+### Lab 3 — Check Exit Codes
 
 Execute:
 
@@ -3603,7 +3603,7 @@ Compare the exit codes after a successful and unsuccessful command.
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3633,7 +3633,7 @@ These skills provide a strong foundation for Windows administration, troubleshoo
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - CMD remains an essential Windows administration tool despite the growth of PowerShell.
 - Batch scripts automate repetitive administrative tasks.
@@ -3644,7 +3644,7 @@ These skills provide a strong foundation for Windows administration, troubleshoo
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is `%ERRORLEVEL%`, and why is it important?
 2. When would you use CMD instead of PowerShell?
@@ -3659,7 +3659,7 @@ These skills provide a strong foundation for Windows administration, troubleshoo
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Command Reference
@@ -3671,7 +3671,7 @@ These skills provide a strong foundation for Windows administration, troubleshoo
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 7 – Windows Command Line**.
 

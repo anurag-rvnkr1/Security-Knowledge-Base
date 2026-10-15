@@ -1,12 +1,12 @@
 # 17-Content-Security-Policy.md
 
-# Part 1 — Content Security Policy (CSP) Fundamentals, Browser Security Model, Directives, and Enterprise Overview
+## Part 1 — Content Security Policy (CSP) Fundamentals, Browser Security Model, Directives, and Enterprise Overview
 
 > **"Content Security Policy (CSP) is a browser-enforced security mechanism that helps reduce the impact of Cross-Site Scripting (XSS) and other content injection attacks by controlling which resources a web page is allowed to load and execute."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is Content Security Policy (CSP)?
+## What is Content Security Policy (CSP)?
 
 **Content Security Policy (CSP)** is an HTTP response policy that instructs the browser which resources are permitted to load and execute.
 
@@ -59,7 +59,7 @@ CSP is enforced by the browser—not by the web server.
 
 ---
 
-# Why CSP Exists
+## Why CSP Exists
 
 Modern web applications load many types of content.
 
@@ -87,7 +87,7 @@ Without restrictions, unexpected or malicious content may execute if an applicat
 
 ---
 
-# Browser Trust Model
+## Browser Trust Model
 
 ```
 Application
@@ -117,7 +117,7 @@ The browser evaluates every relevant resource against the policy before loading 
 
 ---
 
-# Why CSP Is Important
+## Why CSP Is Important
 
 CSP helps reduce the impact of vulnerabilities such as:
 
@@ -131,7 +131,7 @@ CSP should complement secure coding practices rather than replace them.
 
 ---
 
-# High-Level CSP Workflow
+## High-Level CSP Workflow
 
 ```
 Client Request
@@ -165,7 +165,7 @@ No  → Block
 
 ---
 
-# Browser Enforcement
+## Browser Enforcement
 
 The browser acts as the policy enforcement point.
 
@@ -197,7 +197,7 @@ Applications define the policy, but browsers enforce it.
 
 ---
 
-# CSP and XSS
+## CSP and XSS
 
 ```
 Application
@@ -223,7 +223,7 @@ A properly configured CSP can significantly reduce the impact of many XSS attack
 
 ---
 
-# CSP is Not a Replacement
+## CSP is Not a Replacement
 
 ```
 Secure Coding
@@ -257,7 +257,7 @@ CSP is one component of a defense-in-depth strategy.
 
 ---
 
-# CSP Delivery Methods
+## CSP Delivery Methods
 
 A CSP can be delivered using:
 
@@ -275,7 +275,7 @@ In enterprise environments, HTTP response headers are generally preferred becaus
 
 ---
 
-# CSP Architecture
+## CSP Architecture
 
 ```
                 Browser
@@ -301,7 +301,7 @@ The browser continuously evaluates resource loading decisions against the policy
 
 ---
 
-# Resource Categories
+## Resource Categories
 
 CSP governs multiple resource types.
 
@@ -331,7 +331,7 @@ Each category can be controlled independently.
 
 ---
 
-# CSP Directives
+## CSP Directives
 
 A CSP consists of **directives**.
 
@@ -359,7 +359,7 @@ Each directive controls a specific category of browser behavior.
 
 ---
 
-# Browser Decision Process
+## Browser Decision Process
 
 ```
 Page Requests Resource
@@ -385,7 +385,7 @@ No  → Block
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Corporate Portal
@@ -419,7 +419,7 @@ This reduces the likelihood of unauthorized resources executing within the appli
 
 ---
 
-# Common Use Cases
+## Common Use Cases
 
 Organizations commonly deploy CSP to:
 
@@ -432,7 +432,7 @@ Organizations commonly deploy CSP to:
 
 ---
 
-# Browser Security Layers
+## Browser Security Layers
 
 ```
 HTTPS
@@ -462,7 +462,7 @@ Each layer addresses different security risks.
 
 ---
 
-# Common Misconceptions
+## Common Misconceptions
 
 | Myth | Reality |
 |------|---------|
@@ -473,7 +473,7 @@ Each layer addresses different security risks.
 
 ---
 
-# Benefits of CSP
+## Benefits of CSP
 
 | Benefit | Description |
 |----------|-------------|
@@ -485,7 +485,7 @@ Each layer addresses different security risks.
 
 ---
 
-# Secure Design Principle
+## Secure Design Principle
 
 ```
 Application
@@ -507,7 +507,7 @@ Only explicitly trusted resources should be permitted.
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Open a web page using browser Developer Tools.
 2. Inspect the HTTP response headers.
@@ -519,7 +519,7 @@ Only explicitly trusted resources should be permitted.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Content Security Policy (CSP)?
 2. Why was CSP introduced?
@@ -534,7 +534,7 @@ Only explicitly trusted resources should be permitted.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Deploy CSP alongside secure coding practices.
 - Prefer HTTP response headers for policy delivery.
@@ -545,7 +545,7 @@ Only explicitly trusted resources should be permitted.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Treating CSP as a complete replacement for XSS prevention.
 - Allowing unnecessary external resources.
@@ -555,7 +555,7 @@ Only explicitly trusted resources should be permitted.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Content Security Policy is a browser-enforced security mechanism.
 - CSP controls which resources may load and execute.
@@ -563,15 +563,15 @@ Only explicitly trusted resources should be permitted.
 - CSP complements—but does not replace—secure coding and output encoding.
 - Enterprise applications should treat CSP as an essential layer in a defense-in-depth strategy.
 
-# 17-Content-Security-Policy.md
+## 17-Content-Security-Policy.md
 
-# Part 2 — CSP Directives, Resource Types, Policy Design, Nonces, Hashes, Reporting, and Enterprise Deployment
+## Part 2 — CSP Directives, Resource Types, Policy Design, Nonces, Hashes, Reporting, and Enterprise Deployment
 
 > **"An effective Content Security Policy precisely defines what the browser is allowed to load. The principle is simple: explicitly allow only trusted resources and deny everything else."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -588,7 +588,7 @@ After completing this part, you will understand:
 
 ---
 
-# CSP Directive Structure
+## CSP Directive Structure
 
 A Content Security Policy is composed of multiple directives.
 
@@ -618,7 +618,7 @@ Each directive governs a specific category of browser behavior.
 
 ---
 
-# Resource Categories
+## Resource Categories
 
 Browsers load many different resource types.
 
@@ -648,7 +648,7 @@ CSP allows each category to be managed independently.
 
 ---
 
-# Default Policy Concept
+## Default Policy Concept
 
 A default policy establishes the baseline behavior for resources.
 
@@ -680,7 +680,7 @@ This provides a fallback mechanism for resource evaluation.
 
 ---
 
-# Script Resources
+## Script Resources
 
 JavaScript is one of the highest-risk resource categories.
 
@@ -710,7 +710,7 @@ Restricting script execution is one of the primary objectives of CSP.
 
 ---
 
-# Style Resources
+## Style Resources
 
 ```
 Browser
@@ -736,7 +736,7 @@ Style resources should also be restricted to trusted origins.
 
 ---
 
-# Image Resources
+## Image Resources
 
 ```
 Image Request
@@ -762,7 +762,7 @@ Although images are generally less risky than scripts, they should still be cont
 
 ---
 
-# Font Resources
+## Font Resources
 
 ```
 Browser
@@ -792,7 +792,7 @@ Restricting font sources reduces unnecessary external dependencies.
 
 ---
 
-# Network Connections
+## Network Connections
 
 Modern web applications frequently communicate with APIs.
 
@@ -824,7 +824,7 @@ Only approved endpoints should be permitted.
 
 ---
 
-# Frames
+## Frames
 
 Applications may embed or be embedded within other pages.
 
@@ -848,7 +848,7 @@ Frame-related directives help control these interactions.
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 ```
 Everything
@@ -870,7 +870,7 @@ Grant only the minimum permissions necessary for application functionality.
 
 ---
 
-# Policy Design Strategy
+## Policy Design Strategy
 
 ```
 Identify Resources
@@ -904,7 +904,7 @@ Policies should evolve alongside the application.
 
 ---
 
-# Nonces (Conceptual)
+## Nonces (Conceptual)
 
 A **nonce** is a unique value generated for a page load that allows approved scripts to execute.
 
@@ -934,7 +934,7 @@ The value should be unpredictable and generated securely.
 
 ---
 
-# Why Nonces Help
+## Why Nonces Help
 
 ```
 Unexpected Script
@@ -956,7 +956,7 @@ Only scripts associated with the expected nonce are permitted to execute.
 
 ---
 
-# Hash-Based Policies (Conceptual)
+## Hash-Based Policies (Conceptual)
 
 Another approach allows execution based on the cryptographic hash of approved content.
 
@@ -986,7 +986,7 @@ This approach is often suitable for static content that rarely changes.
 
 ---
 
-# Nonces vs Hashes
+## Nonces vs Hashes
 
 | Feature | Nonce | Hash |
 |---------|-------|------|
@@ -997,7 +997,7 @@ This approach is often suitable for static content that rarely changes.
 
 ---
 
-# Inline Content
+## Inline Content
 
 Inline content should be carefully reviewed during CSP design.
 
@@ -1025,7 +1025,7 @@ Reducing unnecessary inline content generally improves security.
 
 ---
 
-# Third-Party Resources
+## Third-Party Resources
 
 Many applications rely on external providers.
 
@@ -1061,7 +1061,7 @@ Every external dependency should be evaluated before inclusion.
 
 ---
 
-# CSP Reporting
+## CSP Reporting
 
 Browsers can generate reports when policy violations occur.
 
@@ -1089,7 +1089,7 @@ Reporting helps organizations identify both attacks and policy configuration iss
 
 ---
 
-# Reporting Workflow
+## Reporting Workflow
 
 ```
 Browser
@@ -1119,7 +1119,7 @@ Monitoring should be an ongoing operational activity.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                   Browser
@@ -1161,7 +1161,7 @@ Monitoring should be an ongoing operational activity.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 An enterprise HR platform loads:
 
@@ -1174,7 +1174,7 @@ The browser evaluates each request against the organization's CSP before allowin
 
 ---
 
-# Security Review Checklist
+## Security Review Checklist
 
 ```
 ✓ Scripts Restricted
@@ -1196,7 +1196,7 @@ The browser evaluates each request against the organization's CSP before allowin
 
 ---
 
-# Common Misconfigurations
+## Common Misconfigurations
 
 | Misconfiguration | Risk |
 |------------------|------|
@@ -1208,7 +1208,7 @@ The browser evaluates each request against the organization's CSP before allowin
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Review the application's resource inventory.
 2. Classify each resource by type.
@@ -1220,7 +1220,7 @@ The browser evaluates each request against the organization's CSP before allowin
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of CSP directives?
 2. Why is JavaScript considered a high-risk resource?
@@ -1235,7 +1235,7 @@ The browser evaluates each request against the organization's CSP before allowin
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Apply the principle of least privilege to resource loading.
 - Restrict each resource type independently.
@@ -1247,7 +1247,7 @@ The browser evaluates each request against the organization's CSP before allowin
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Creating overly permissive policies.
 - Trusting every third-party resource by default.
@@ -1258,7 +1258,7 @@ The browser evaluates each request against the organization's CSP before allowin
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - CSP directives control different categories of browser resources.
 - The principle of least privilege should guide CSP policy design.
@@ -1266,15 +1266,15 @@ The browser evaluates each request against the organization's CSP before allowin
 - CSP reporting improves visibility into policy violations.
 - Enterprise CSP deployment requires continuous review, testing, and monitoring.
 
-# 17-Content-Security-Policy.md
+## 17-Content-Security-Policy.md
 
-# Part 4 — Enterprise CSP Governance, Incident Response, Best Practices, Security Review, and Chapter Summary
+## Part 4 — Enterprise CSP Governance, Incident Response, Best Practices, Security Review, and Chapter Summary
 
 > **"A well-designed Content Security Policy is a living security control. It evolves with the application, is continuously monitored, and complements secure coding practices throughout the software development lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -1290,7 +1290,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise CSP Governance
+## Enterprise CSP Governance
 
 Organizations should establish a standardized CSP policy across all web applications.
 
@@ -1322,7 +1322,7 @@ A centralized approach helps ensure consistency and simplifies maintenance.
 
 ---
 
-# CSP Governance Lifecycle
+## CSP Governance Lifecycle
 
 ```
 Policy Definition
@@ -1360,7 +1360,7 @@ Content Security Policies should be reviewed whenever application functionality 
 
 ---
 
-# Secure SDLC Integration
+## Secure SDLC Integration
 
 ```
 Requirements
@@ -1402,7 +1402,7 @@ CSP should be considered from the design stage rather than added after deploymen
 
 ---
 
-# Security Architecture
+## Security Architecture
 
 ```
                    Browser
@@ -1448,7 +1448,7 @@ Multiple independent security controls provide stronger protection than any sing
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 ```
 HTTPS
@@ -1490,7 +1490,7 @@ Each layer contributes to reducing application risk.
 
 ---
 
-# Enterprise Security Review
+## Enterprise Security Review
 
 During an architecture review, verify:
 
@@ -1514,7 +1514,7 @@ During an architecture review, verify:
 
 ---
 
-# Code Review Checklist
+## Code Review Checklist
 
 Security reviewers should examine:
 
@@ -1528,7 +1528,7 @@ Security reviewers should examine:
 
 ---
 
-# Deployment Workflow
+## Deployment Workflow
 
 ```
 Develop
@@ -1570,7 +1570,7 @@ Gradual deployment reduces operational risk.
 
 ---
 
-# Incident Response
+## Incident Response
 
 If CSP violations increase unexpectedly:
 
@@ -1610,7 +1610,7 @@ Not every violation represents an attack; some may result from legitimate applic
 
 ---
 
-# Monitoring Strategy
+## Monitoring Strategy
 
 Security teams should monitor:
 
@@ -1634,7 +1634,7 @@ Monitoring supports both security and operational stability.
 
 ---
 
-# Logging
+## Logging
 
 Important events include:
 
@@ -1649,7 +1649,7 @@ Logs assist with investigations and compliance audits.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution follows this workflow:
 
@@ -1685,7 +1685,7 @@ Every release undergoes CSP validation before reaching production.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many security standards encourage:
 
@@ -1701,7 +1701,7 @@ CSP supports these objectives as part of a broader application security program.
 
 ---
 
-# Operational Checklist
+## Operational Checklist
 
 ```
 ✓ HTTPS Enabled
@@ -1727,7 +1727,7 @@ CSP supports these objectives as part of a broader application security program.
 
 ---
 
-# Common CSP Challenges
+## Common CSP Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1739,7 +1739,7 @@ CSP supports these objectives as part of a broader application security program.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Adopt the principle of least privilege for resource loading.
 - Prefer HTTP response headers for policy delivery.
@@ -1754,7 +1754,7 @@ CSP supports these objectives as part of a broader application security program.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming CSP alone prevents all XSS vulnerabilities.
 - Deploying strict policies without testing.
@@ -1766,9 +1766,9 @@ CSP supports these objectives as part of a broader application security program.
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## CSP Lifecycle
+### CSP Lifecycle
 
 ```
 Design
@@ -1804,7 +1804,7 @@ Improve
 
 ---
 
-## Browser Enforcement
+### Browser Enforcement
 
 ```
 HTTP Response
@@ -1832,7 +1832,7 @@ Block
 
 ---
 
-## Defense in Depth
+### Defense in Depth
 
 ```
 Secure Coding
@@ -1860,7 +1860,7 @@ Monitoring
 
 ---
 
-## Enterprise Security Pipeline
+### Enterprise Security Pipeline
 
 ```
 Request
@@ -1896,7 +1896,7 @@ Monitoring
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Inventory all resources loaded by an application.
 2. Classify each resource by trust level.
@@ -1909,7 +1909,7 @@ Monitoring
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Content Security Policy (CSP)?
 2. Why is CSP considered a defense-in-depth mechanism?
@@ -1924,7 +1924,7 @@ Monitoring
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

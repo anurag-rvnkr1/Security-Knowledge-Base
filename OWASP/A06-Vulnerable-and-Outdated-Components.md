@@ -2,7 +2,7 @@
 
 ---
 
-# Overview
+## Overview
 
 Modern applications rarely consist entirely of custom-written code.
 
@@ -25,7 +25,7 @@ A06:2021 – Vulnerable and Outdated Components focuses on the risks associated 
 
 ---
 
-# Why It Matters
+## Why It Matters
 
 A modern web application may contain thousands of software dependencies.
 
@@ -55,7 +55,7 @@ A vulnerability in **any one** of these components may compromise the entire app
 
 ---
 
-# What is a Software Component?
+## What is a Software Component?
 
 A software component is any reusable piece of software that provides functionality.
 
@@ -106,7 +106,7 @@ Cloud SDKs
 
 ---
 
-# Why Do Vulnerabilities Exist?
+## Why Do Vulnerabilities Exist?
 
 Software is developed by humans.
 
@@ -144,7 +144,7 @@ If organizations fail to apply updates, attackers can exploit publicly known vul
 
 ---
 
-# Understanding the Software Supply Chain
+## Understanding the Software Supply Chain
 
 Applications depend on many upstream components.
 
@@ -178,7 +178,7 @@ This is known as the **software supply chain**.
 
 ---
 
-# Dependency Chain
+## Dependency Chain
 
 Example:
 
@@ -206,9 +206,9 @@ Even if your application code is secure, vulnerabilities in lower-level dependen
 
 ---
 
-# Types of Components
+## Types of Components
 
-## Direct Dependencies
+### Direct Dependencies
 
 Packages explicitly installed by developers.
 
@@ -220,7 +220,7 @@ pip install django
 
 ---
 
-## Transitive Dependencies
+### Transitive Dependencies
 
 Packages installed automatically because another package depends on them.
 
@@ -246,7 +246,7 @@ Developers may not even realize these packages exist.
 
 ---
 
-# Supported vs Unsupported Software
+## Supported vs Unsupported Software
 
 Supported software:
 
@@ -268,7 +268,7 @@ Using unsupported software significantly increases risk.
 
 ---
 
-# What Makes a Component Vulnerable?
+## What Makes a Component Vulnerable?
 
 Common causes include:
 
@@ -284,7 +284,7 @@ Common causes include:
 
 ---
 
-# Root Causes
+## Root Causes
 
 Organizations often become vulnerable because they:
 
@@ -298,7 +298,7 @@ Organizations often become vulnerable because they:
 
 ---
 
-# Example Attack Flow
+## Example Attack Flow
 
 ```
 Public CVE Released
@@ -334,7 +334,7 @@ System Compromise
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 Suppose an organization deploys:
 
@@ -364,7 +364,7 @@ The application's own code may contain no vulnerabilities—the compromise resul
 
 ---
 
-# Why Updating Isn't Always Simple
+## Why Updating Isn't Always Simple
 
 Organizations cannot always apply updates immediately.
 
@@ -387,7 +387,7 @@ Therefore, effective vulnerability management involves:
 
 ---
 
-# Software Lifecycle
+## Software Lifecycle
 
 Every component follows a lifecycle.
 
@@ -419,7 +419,7 @@ Once a component reaches End of Life, security fixes are typically no longer pro
 
 ---
 
-# Business Impact
+## Business Impact
 
 Using vulnerable or outdated components may lead to:
 
@@ -435,7 +435,7 @@ Using vulnerable or outdated components may lead to:
 
 ---
 
-# Security Responsibility
+## Security Responsibility
 
 Developers are responsible for:
 
@@ -458,7 +458,7 @@ Operations teams are responsible for:
 
 ---
 
-# Shared Responsibility
+## Shared Responsibility
 
 Managing vulnerable components requires collaboration.
 
@@ -486,7 +486,7 @@ Each group plays an important role in reducing software supply chain risk.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Modern applications rely heavily on third-party software components.
 - Vulnerabilities in dependencies can compromise otherwise secure applications.
@@ -494,7 +494,7 @@ Each group plays an important role in reducing software supply chain risk.
 - Unsupported software should be replaced or isolated.
 - Effective vulnerability management includes inventory, monitoring, scanning, patching, and continuous review.
 
-# The Vulnerability Ecosystem
+## The Vulnerability Ecosystem
 
 Modern vulnerability management relies on standardized identifiers, scoring systems, and databases.
 
@@ -536,9 +536,9 @@ Remediation
 
 ---
 
-# Common Vulnerabilities and Exposures (CVE)
+## Common Vulnerabilities and Exposures (CVE)
 
-## Overview
+### Overview
 
 A **Common Vulnerabilities and Exposures (CVE)** identifier is a unique public identifier assigned to a specific publicly disclosed security vulnerability.
 
@@ -557,7 +557,7 @@ Where:
 
 ---
 
-## Example
+### Example
 
 ```
 CVE-2021-44228
@@ -575,7 +575,7 @@ Security tools, advisories, and scanners all reference the same CVE ID.
 
 ---
 
-# CVE Lifecycle
+## CVE Lifecycle
 
 ```
 Researcher Discovers Issue
@@ -605,9 +605,9 @@ Timely patching after disclosure is essential to reduce exposure.
 
 ---
 
-# Common Weakness Enumeration (CWE)
+## Common Weakness Enumeration (CWE)
 
-## Overview
+### Overview
 
 While a CVE identifies a **specific vulnerability**, a **Common Weakness Enumeration (CWE)** identifies the **underlying class of software weakness** that caused it.
 
@@ -618,7 +618,7 @@ Think of it this way:
 
 ---
 
-## Example
+### Example
 
 ```
 CVE-XXXX-YYYY
@@ -640,7 +640,7 @@ Multiple CVEs can map to the same CWE because different applications may contain
 
 ---
 
-## Common CWEs
+### Common CWEs
 
 | CWE | Weakness |
 |------|----------|
@@ -656,9 +656,9 @@ Understanding the associated CWE helps developers address the root cause rather 
 
 ---
 
-# Common Vulnerability Scoring System (CVSS)
+## Common Vulnerability Scoring System (CVSS)
 
-## Overview
+### Overview
 
 Not every vulnerability presents the same level of risk.
 
@@ -666,7 +666,7 @@ The **Common Vulnerability Scoring System (CVSS)** provides a standardized numer
 
 ---
 
-## CVSS Severity Levels
+### CVSS Severity Levels
 
 | Score | Severity |
 |-------:|----------|
@@ -678,7 +678,7 @@ The **Common Vulnerability Scoring System (CVSS)** provides a standardized numer
 
 ---
 
-## Example
+### Example
 
 ```
 CVE-2021-44228
@@ -696,7 +696,7 @@ A high CVSS score indicates significant technical impact, but organizations shou
 
 ---
 
-# CVSS Base Metrics
+## CVSS Base Metrics
 
 CVSS evaluates several characteristics of a vulnerability.
 
@@ -715,9 +715,9 @@ These metrics determine the overall Base Score.
 
 ---
 
-# Common Platform Enumeration (CPE)
+## Common Platform Enumeration (CPE)
 
-## Overview
+### Overview
 
 A **Common Platform Enumeration (CPE)** is a standardized way to identify software, operating systems, and hardware products.
 
@@ -739,9 +739,9 @@ Security scanners use CPE names to determine whether a system matches software a
 
 ---
 
-# National Vulnerability Database (NVD)
+## National Vulnerability Database (NVD)
 
-## Overview
+### Overview
 
 The **National Vulnerability Database (NVD)** is a publicly available database that enriches CVE records with additional information.
 
@@ -757,9 +757,9 @@ Many vulnerability scanners use NVD data to identify known issues.
 
 ---
 
-# Exploit Prediction Scoring System (EPSS)
+## Exploit Prediction Scoring System (EPSS)
 
-## Overview
+### Overview
 
 A high CVSS score does not necessarily mean a vulnerability will be exploited soon.
 
@@ -797,9 +797,9 @@ Organizations often use EPSS alongside CVSS to prioritize remediation.
 
 ---
 
-# Known Exploited Vulnerabilities (KEV)
+## Known Exploited Vulnerabilities (KEV)
 
-## Overview
+### Overview
 
 Some vulnerabilities are actively exploited in the wild.
 
@@ -809,7 +809,7 @@ Security teams frequently prioritize KEV-listed vulnerabilities because attacker
 
 ---
 
-# Why CVSS Alone Is Not Enough
+## Why CVSS Alone Is Not Enough
 
 Consider two vulnerabilities:
 
@@ -850,9 +850,9 @@ Risk-based prioritization considers:
 
 ---
 
-# Software Bill of Materials (SBOM)
+## Software Bill of Materials (SBOM)
 
-## Overview
+### Overview
 
 A **Software Bill of Materials (SBOM)** is an inventory of all software components, libraries, and dependencies used by an application.
 
@@ -860,7 +860,7 @@ Think of it as an ingredient list for software.
 
 ---
 
-## Example
+### Example
 
 ```
 Online Banking Application
@@ -879,7 +879,7 @@ If a vulnerability is disclosed in one component, the SBOM helps identify affect
 
 ---
 
-# Benefits of SBOM
+## Benefits of SBOM
 
 - Improved visibility into dependencies.
 - Faster impact assessment.
@@ -889,7 +889,7 @@ If a vulnerability is disclosed in one component, the SBOM helps identify affect
 
 ---
 
-# Vulnerability Disclosure Process
+## Vulnerability Disclosure Process
 
 Responsible disclosure typically follows this sequence:
 
@@ -925,7 +925,7 @@ Coordinated disclosure allows vendors time to develop and distribute fixes befor
 
 ---
 
-# Enterprise Vulnerability Prioritization
+## Enterprise Vulnerability Prioritization
 
 Many organizations use a combination of factors to prioritize remediation.
 
@@ -967,7 +967,7 @@ This approach balances technical severity with operational and business risk.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - CVEs uniquely identify publicly disclosed vulnerabilities.
 - CWEs describe the underlying class of weakness that caused a vulnerability.
@@ -978,9 +978,9 @@ This approach balances technical severity with operational and business risk.
 - KEV highlights vulnerabilities known to be actively exploited.
 - SBOMs provide visibility into software dependencies, enabling faster response to newly disclosed vulnerabilities.
 
-# Software Supply Chain Security
+## Software Supply Chain Security
 
-## Overview
+### Overview
 
 Modern software is rarely built entirely from custom code.
 
@@ -1026,7 +1026,7 @@ If any component in this chain is compromised, the application itself may also b
 
 ---
 
-# What is a Supply Chain Attack?
+## What is a Supply Chain Attack?
 
 A supply chain attack targets the software development or distribution process instead of attacking the application directly.
 
@@ -1060,7 +1060,7 @@ Attacker Gains Access
 
 ---
 
-# Common Supply Chain Attack Techniques
+## Common Supply Chain Attack Techniques
 
 ```
 Software Supply Chain
@@ -1079,9 +1079,9 @@ Software Supply Chain
 
 ---
 
-# Dependency Confusion
+## Dependency Confusion
 
-## Overview
+### Overview
 
 Many organizations use both:
 
@@ -1092,7 +1092,7 @@ If dependency resolution prefers the public repository, an attacker may publish 
 
 ---
 
-## Example
+### Example
 
 Internal package:
 
@@ -1130,7 +1130,7 @@ The attacker gains code execution during the build or deployment process.
 
 ---
 
-## Prevention
+### Prevention
 
 - Use private package namespaces.
 - Configure package manager priorities.
@@ -1139,9 +1139,9 @@ The attacker gains code execution during the build or deployment process.
 
 ---
 
-# Typosquatting
+## Typosquatting
 
-## Overview
+### Overview
 
 Attackers publish packages with names similar to legitimate packages.
 
@@ -1169,7 +1169,7 @@ Developers accidentally install the malicious package.
 
 ---
 
-## Example
+### Example
 
 ```
 pip install requsets
@@ -1185,7 +1185,7 @@ The malicious package executes attacker-controlled code.
 
 ---
 
-## Prevention
+### Prevention
 
 - Review package names carefully.
 - Use dependency allowlists.
@@ -1194,9 +1194,9 @@ The malicious package executes attacker-controlled code.
 
 ---
 
-# Malicious Packages
+## Malicious Packages
 
-## Overview
+### Overview
 
 Some packages are intentionally created with malicious functionality.
 
@@ -1210,7 +1210,7 @@ Examples include:
 
 ---
 
-## Example Attack Flow
+### Example Attack Flow
 
 ```
 Developer
@@ -1238,7 +1238,7 @@ Attacker
 
 ---
 
-## Common Targets
+### Common Targets
 
 Sensitive information often targeted includes:
 
@@ -1251,9 +1251,9 @@ Sensitive information often targeted includes:
 
 ---
 
-# Dependency Hijacking
+## Dependency Hijacking
 
-## Overview
+### Overview
 
 Instead of publishing a new malicious package, attackers compromise an existing dependency.
 
@@ -1279,7 +1279,7 @@ Organizations unknowingly install malware through normal updates.
 
 ---
 
-# Compromised Maintainer Accounts
+## Compromised Maintainer Accounts
 
 Open-source projects often rely on volunteers.
 
@@ -1305,7 +1305,7 @@ The package remains trusted while containing malicious code.
 
 ---
 
-# Repository Compromise
+## Repository Compromise
 
 Attackers may compromise:
 
@@ -1333,7 +1333,7 @@ Organization Compromised
 
 ---
 
-# Build Pipeline Compromise
+## Build Pipeline Compromise
 
 CI/CD pipelines have access to:
 
@@ -1366,7 +1366,7 @@ Customers Install
 
 ---
 
-# Container Image Poisoning
+## Container Image Poisoning
 
 Containers often begin with public base images.
 
@@ -1392,7 +1392,7 @@ Production Deployment
 
 ---
 
-## Prevention
+### Prevention
 
 - Use trusted registries.
 - Pin image versions.
@@ -1401,7 +1401,7 @@ Production Deployment
 
 ---
 
-# Signed vs Unsigned Packages
+## Signed vs Unsigned Packages
 
 Package signing helps verify authenticity.
 
@@ -1433,7 +1433,7 @@ Digital signatures reduce the risk of tampering but do not guarantee that the pa
 
 ---
 
-# Lock Files
+## Lock Files
 
 Dependency versions should be fixed using lock files.
 
@@ -1468,7 +1468,7 @@ These files ensure consistent dependency versions across environments.
 
 ---
 
-# Why Lock Files Matter
+## Why Lock Files Matter
 
 Without lock files:
 
@@ -1494,7 +1494,7 @@ Lock files improve reproducibility and reduce unexpected updates.
 
 ---
 
-# Package Repositories
+## Package Repositories
 
 Common package ecosystems include:
 
@@ -1526,9 +1526,9 @@ These repositories should be treated as external dependencies and monitored acco
 
 ---
 
-# Real-World Case Studies
+## Real-World Case Studies
 
-## Log4Shell (2021)
+### Log4Shell (2021)
 
 Affected:
 
@@ -1544,7 +1544,7 @@ Impact:
 
 ---
 
-## SolarWinds (2020)
+### SolarWinds (2020)
 
 Attackers compromised the software build process.
 
@@ -1566,7 +1566,7 @@ This demonstrated how trusted software updates can become attack vectors.
 
 ---
 
-## XZ Utils (2024)
+### XZ Utils (2024)
 
 Attackers inserted a backdoor into a widely used compression library after gaining influence over the project's maintenance process.
 
@@ -1574,7 +1574,7 @@ The malicious code targeted authentication workflows in specific environments be
 
 ---
 
-## event-stream (npm)
+### event-stream (npm)
 
 A widely used npm package was compromised after maintainership changed hands.
 
@@ -1582,13 +1582,13 @@ Malicious code targeted cryptocurrency wallet users.
 
 ---
 
-## ua-parser-js
+### ua-parser-js
 
 A compromised release of the package included malware capable of installing cryptocurrency miners and credential-stealing software.
 
 ---
 
-## Codecov
+### Codecov
 
 Attackers modified the Codecov Bash uploader script.
 
@@ -1608,7 +1608,7 @@ Credentials Stolen
 
 ---
 
-# Supply Chain Security Best Practices
+## Supply Chain Security Best Practices
 
 - Maintain an inventory of all dependencies.
 - Use trusted package repositories.
@@ -1625,7 +1625,7 @@ Credentials Stolen
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Software supply chain attacks target trusted dependencies rather than your application's own code.
 - Dependency confusion, typosquatting, malicious packages, and compromised maintainers are common attack techniques.
@@ -1633,7 +1633,7 @@ Credentials Stolen
 - CI/CD pipelines and container images are high-value targets that require strong security controls.
 - Continuous dependency monitoring, SBOMs, and secure build practices are essential for modern application security.
 
-# Detection
+## Detection
 
 Identifying vulnerable and outdated components requires continuous visibility into all software assets and dependencies.
 
@@ -1652,7 +1652,7 @@ Typical detection methods include:
 
 ---
 
-# Vulnerability Management Lifecycle
+## Vulnerability Management Lifecycle
 
 A mature vulnerability management program follows a structured process.
 
@@ -1692,7 +1692,7 @@ This lifecycle repeats continuously as new vulnerabilities are discovered.
 
 ---
 
-# Dependency Scanning
+## Dependency Scanning
 
 Dependency scanners inspect application packages and compare them against known vulnerability databases.
 
@@ -1746,7 +1746,7 @@ build.gradle
 
 ---
 
-# Container Image Scanning
+## Container Image Scanning
 
 Container images often contain:
 
@@ -1777,7 +1777,7 @@ Never deploy unscanned production images.
 
 ---
 
-# Operating System Scanning
+## Operating System Scanning
 
 Review:
 
@@ -1791,7 +1791,7 @@ Outdated operating systems often expose well-known vulnerabilities.
 
 ---
 
-# Cloud Workload Assessment
+## Cloud Workload Assessment
 
 Review cloud workloads for:
 
@@ -1803,7 +1803,7 @@ Review cloud workloads for:
 
 ---
 
-# Software Bill of Materials (SBOM) Analysis
+## Software Bill of Materials (SBOM) Analysis
 
 SBOMs enable rapid impact assessment.
 
@@ -1829,7 +1829,7 @@ Without an SBOM, organizations may spend significant time determining where vuln
 
 ---
 
-# Security Advisory Monitoring
+## Security Advisory Monitoring
 
 Organizations should continuously monitor:
 
@@ -1843,7 +1843,7 @@ Timely awareness shortens remediation time.
 
 ---
 
-# Patch Management Lifecycle
+## Patch Management Lifecycle
 
 Applying patches safely requires planning.
 
@@ -1883,7 +1883,7 @@ Emergency patches may require an accelerated process, but validation remains imp
 
 ---
 
-# Risk-Based Prioritization
+## Risk-Based Prioritization
 
 Not every vulnerability requires the same response.
 
@@ -1908,7 +1908,7 @@ Prioritize based on overall risk rather than severity alone.
 
 ---
 
-# Common Detection Tools
+## Common Detection Tools
 
 | Tool | Primary Purpose |
 |------|-----------------|
@@ -1923,13 +1923,13 @@ Prioritize based on overall risk rather than severity alone.
 
 ---
 
-# Prevention
+## Prevention
 
 Effective prevention combines secure development practices with continuous monitoring.
 
 ---
 
-## 1. Maintain a Software Inventory
+### 1. Maintain a Software Inventory
 
 Know exactly which:
 
@@ -1945,7 +1945,7 @@ An accurate inventory is the foundation of vulnerability management.
 
 ---
 
-## 2. Remove Unused Components
+### 2. Remove Unused Components
 
 Unused software increases attack surface.
 
@@ -1959,7 +1959,7 @@ Regularly remove:
 
 ---
 
-## 3. Keep Components Updated
+### 3. Keep Components Updated
 
 Adopt a regular update schedule.
 
@@ -1973,7 +1973,7 @@ Avoid remaining on unsupported versions without a documented business justificat
 
 ---
 
-## 4. Verify Package Integrity
+### 4. Verify Package Integrity
 
 Before installing packages:
 
@@ -1984,7 +1984,7 @@ Before installing packages:
 
 ---
 
-## 5. Secure the Software Supply Chain
+### 5. Secure the Software Supply Chain
 
 Protect:
 
@@ -1998,7 +1998,7 @@ Compromising any of these can affect downstream software.
 
 ---
 
-## 6. Generate and Maintain SBOMs
+### 6. Generate and Maintain SBOMs
 
 An SBOM should be generated for each release.
 
@@ -2011,7 +2011,7 @@ Benefits include:
 
 ---
 
-## 7. Continuous Monitoring
+### 7. Continuous Monitoring
 
 Security does not end after deployment.
 
@@ -2025,7 +2025,7 @@ Continuously monitor:
 
 ---
 
-# Best Practices
+## Best Practices
 
 ✔ Maintain complete asset inventories.
 
@@ -2053,15 +2053,15 @@ Continuously monitor:
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Objective
+### Objective
 
 Assess an application for vulnerable and outdated components.
 
 ---
 
-## Scenario
+### Scenario
 
 Application stack:
 
@@ -2074,7 +2074,7 @@ Application stack:
 
 ---
 
-## Tasks
+### Tasks
 
 1. Inventory installed components.
 2. Generate an SBOM.
@@ -2087,7 +2087,7 @@ Application stack:
 
 ---
 
-## Expected Learning Outcomes
+### Expected Learning Outcomes
 
 After completing this lab, you should be able to:
 
@@ -2099,51 +2099,51 @@ After completing this lab, you should be able to:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is a vulnerable component?
+#### What is a vulnerable component?
 
 A software library, framework, operating system, container image, or other dependency that contains a known security vulnerability.
 
 ---
 
-### What is a CVE?
+#### What is a CVE?
 
 A Common Vulnerabilities and Exposures (CVE) identifier is a unique identifier assigned to a publicly disclosed security vulnerability.
 
 ---
 
-### What is an SBOM?
+#### What is an SBOM?
 
 A Software Bill of Materials is an inventory of all software components and dependencies used within an application.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is the difference between CVE and CWE?
+#### What is the difference between CVE and CWE?
 
 A CVE identifies a specific publicly disclosed vulnerability, while a CWE describes the general class of software weakness that can lead to vulnerabilities.
 
 ---
 
-### Why are transitive dependencies important?
+#### Why are transitive dependencies important?
 
 Applications may indirectly include vulnerable packages through other libraries. These transitive dependencies can introduce security risks even when developers did not explicitly install them.
 
 ---
 
-### Why shouldn't organizations always apply every update immediately?
+#### Why shouldn't organizations always apply every update immediately?
 
 Updates may introduce compatibility issues or operational risks. Mature organizations assess risk, test changes, and deploy updates through a controlled patch management process.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you build a vulnerability management program?
+#### How would you build a vulnerability management program?
 
 A comprehensive program includes:
 
@@ -2158,7 +2158,7 @@ A comprehensive program includes:
 
 ---
 
-### Explain how you would respond to a critical zero-day affecting a widely used library.
+#### Explain how you would respond to a critical zero-day affecting a widely used library.
 
 A structured response includes:
 
@@ -2173,31 +2173,31 @@ A structured response includes:
 
 ---
 
-# References
+## References
 
-## OWASP
+### OWASP
 
 - OWASP Top 10 (2021)
 - OWASP Dependency-Check
 - OWASP CycloneDX
 
-## NIST
+### NIST
 
 - NIST Secure Software Development Framework (SSDF)
 - NIST Cybersecurity Framework (CSF)
 - NIST SP 800-53
 
-## CISA
+### CISA
 
 - Known Exploited Vulnerabilities (KEV) Catalog
 - Secure by Design Guidance
 
-## OpenSSF
+### OpenSSF
 
 - OpenSSF Scorecard
 - OpenSSF Best Practices
 
-## Supply Chain Security
+### Supply Chain Security
 
 - CycloneDX
 - SPDX
@@ -2205,7 +2205,7 @@ A structured response includes:
 
 ---
 
-# Summary
+## Summary
 
 Vulnerable and Outdated Components remain one of the most significant risks in modern software because applications rely extensively on third-party libraries, frameworks, operating systems, containers, and cloud services. Effective management requires maintaining accurate inventories, generating Software Bills of Materials (SBOMs), continuously monitoring security advisories, scanning dependencies, protecting the software supply chain, and applying risk-based patch management.
 

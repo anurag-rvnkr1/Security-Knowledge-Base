@@ -2,7 +2,7 @@
 
 <div align="center">
 
-# 🔐 API Security Handbook
+## 🔐 API Security Handbook
 
 ### Enterprise Guide to Secure API Design, Development, Testing, Defense, Monitoring & Incident Response
 
@@ -27,7 +27,7 @@
 
 ---
 
-# Table of Contents
+## Table of Contents
 
 - Introduction
 - Why API Security Matters
@@ -52,7 +52,7 @@
 
 ---
 
-# Introduction
+## Introduction
 
 Modern applications rarely communicate directly with databases or services.
 
@@ -99,7 +99,7 @@ This handbook teaches API Security from an enterprise perspective—not just how
 
 ---
 
-# Why API Security Matters
+## Why API Security Matters
 
 Modern organizations expose hundreds or even thousands of APIs.
 
@@ -136,7 +136,7 @@ It is a business requirement.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this handbook, you will understand:
 
@@ -170,7 +170,7 @@ By the end of this handbook, you will understand:
 
 ---
 
-# Who Should Read This Handbook
+## Who Should Read This Handbook
 
 This handbook is designed for:
 
@@ -192,7 +192,7 @@ This handbook is designed for:
 
 ---
 
-# Prerequisites
+## Prerequisites
 
 Although beginner friendly, readers should know:
 
@@ -215,7 +215,7 @@ Helpful but optional:
 
 ---
 
-# Learning Roadmap
+## Learning Roadmap
 
 ```
 Networking
@@ -265,7 +265,7 @@ Enterprise Security
 
 ---
 
-# Repository Structure
+## Repository Structure
 
 ```
 API-Security/
@@ -333,7 +333,7 @@ Resources.md
 
 ---
 
-# Chapter Overview
+## Chapter Overview
 
 | Chapter | Description |
 |----------|-------------|
@@ -368,7 +368,7 @@ Resources.md
 
 ---
 
-# Skills You Will Gain
+## Skills You Will Gain
 
 By completing this handbook, you'll gain practical skills in:
 
@@ -395,7 +395,7 @@ By completing this handbook, you'll gain practical skills in:
 
 ---
 
-# Enterprise API Security Lifecycle
+## Enterprise API Security Lifecycle
 
 ```
 Business Requirements
@@ -439,7 +439,7 @@ Continuous Improvement
 
 ---
 
-# API Security Domains
+## API Security Domains
 
 This handbook covers every major API security domain, including:
 
@@ -466,7 +466,7 @@ This handbook covers every major API security domain, including:
 
 ---
 
-# Enterprise Tools Covered
+## Enterprise Tools Covered
 
 Development
 
@@ -523,7 +523,7 @@ DevSecOps
 
 ---
 
-# Hands-on Labs
+## Hands-on Labs
 
 Throughout the handbook you will perform:
 
@@ -546,7 +546,7 @@ Throughout the handbook you will perform:
 
 ---
 
-# Recommended Learning Path
+## Recommended Learning Path
 
 Follow the chapters in order.
 
@@ -564,7 +564,7 @@ These concepts are foundational for advanced API security.
 
 ---
 
-# Industry Standards Covered
+## Industry Standards Covered
 
 The handbook aligns with industry-recognized standards and best practices, including:
 
@@ -583,7 +583,7 @@ The handbook aligns with industry-recognized standards and best practices, inclu
 
 ---
 
-# Career Roadmap
+## Career Roadmap
 
 After mastering this handbook, you can pursue roles such as:
 
@@ -601,7 +601,7 @@ After mastering this handbook, you can pursue roles such as:
 
 ---
 
-# Interview Preparation
+## Interview Preparation
 
 This repository is designed to prepare you for interviews by including:
 
@@ -618,7 +618,7 @@ This repository is designed to prepare you for interviews by including:
 
 ---
 
-# Contributing
+## Contributing
 
 Contributions are welcome.
 
@@ -632,13 +632,13 @@ Please ensure that:
 
 ---
 
-# License
+## License
 
 This project is released under the MIT License.
 
 ---
 
-# Acknowledgements
+## Acknowledgements
 
 This handbook draws inspiration from:
 
@@ -653,7 +653,7 @@ This handbook draws inspiration from:
 
 ---
 
-# What Next?
+## What Next?
 
 Begin your journey with:
 

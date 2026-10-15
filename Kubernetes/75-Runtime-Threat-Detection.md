@@ -68,7 +68,7 @@ Incident Response
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -146,7 +146,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is Runtime Security?
+## What Is Runtime Security?
 
 Runtime security protects workloads while they are executing.
 
@@ -175,7 +175,7 @@ Kubernetes Activity
 
 ---
 
-# Runtime vs Image Security
+## Runtime vs Image Security
 
 Image scanning:
 
@@ -205,7 +205,7 @@ Runtime Detection
 
 ---
 
-# Runtime vs Vulnerability Scanning
+## Runtime vs Vulnerability Scanning
 
 | Vulnerability Scanning | Runtime Detection |
 |---|---|
@@ -219,7 +219,7 @@ Both are required.
 
 ---
 
-# Runtime Attack Surface
+## Runtime Attack Surface
 
 Potential runtime targets include:
 
@@ -238,7 +238,7 @@ Secrets
 
 ---
 
-# Runtime Telemetry
+## Runtime Telemetry
 
 Runtime security can collect:
 
@@ -253,7 +253,7 @@ Kubernetes API Events
 
 ---
 
-# Process Monitoring
+## Process Monitoring
 
 Monitor:
 
@@ -269,7 +269,7 @@ Capabilities
 
 ---
 
-# Suspicious Process Example
+## Suspicious Process Example
 
 A web application container normally runs:
 
@@ -289,7 +289,7 @@ This may be suspicious.
 
 ---
 
-# Shell Detection
+## Shell Detection
 
 Detect unexpected:
 
@@ -305,7 +305,7 @@ However, legitimate administrative or debugging activity can also create shells,
 
 ---
 
-# Process Anomaly
+## Process Anomaly
 
 Example:
 
@@ -332,7 +332,7 @@ Network Activity
 
 ---
 
-# Parent-Child Process Analysis
+## Parent-Child Process Analysis
 
 Process relationships can reveal suspicious behavior.
 
@@ -348,7 +348,7 @@ This is potentially suspicious because the web server spawned a shell that launc
 
 ---
 
-# File Monitoring
+## File Monitoring
 
 Monitor sensitive files such as:
 
@@ -362,7 +362,7 @@ and application-sensitive locations.
 
 ---
 
-# Sensitive File Access
+## Sensitive File Access
 
 Unexpected access to:
 
@@ -378,7 +378,7 @@ can indicate credential theft.
 
 ---
 
-# File Modification
+## File Modification
 
 Detect:
 
@@ -392,7 +392,7 @@ Configuration Changes
 
 ---
 
-# Network Monitoring
+## Network Monitoring
 
 Monitor:
 
@@ -408,7 +408,7 @@ Connection Frequency
 
 ---
 
-# Suspicious Network Connection
+## Suspicious Network Connection
 
 Example:
 
@@ -424,7 +424,7 @@ This may require investigation.
 
 ---
 
-# DNS Monitoring
+## DNS Monitoring
 
 DNS activity can reveal:
 
@@ -437,7 +437,7 @@ Unexpected External Services
 
 ---
 
-# DNS Anomalies
+## DNS Anomalies
 
 Potential indicators:
 
@@ -451,7 +451,7 @@ Frequent Failed Queries
 
 ---
 
-# System Call Monitoring
+## System Call Monitoring
 
 Linux applications interact with the kernel through system calls.
 
@@ -470,7 +470,7 @@ Runtime security tools can monitor system-call behavior.
 
 ---
 
-# Why System Calls Matter
+## Why System Calls Matter
 
 Instead of only observing:
 
@@ -492,7 +492,7 @@ This provides more behavioral context.
 
 ---
 
-# eBPF
+## eBPF
 
 eBPF allows programs to run safely within the Linux kernel infrastructure and observe or enforce certain system and networking behaviors.
 
@@ -507,7 +507,7 @@ Security Detection
 
 ---
 
-# eBPF Security Architecture
+## eBPF Security Architecture
 
 Conceptually:
 
@@ -527,7 +527,7 @@ Alert
 
 ---
 
-# Advantages of eBPF
+## Advantages of eBPF
 
 Potential benefits:
 
@@ -542,7 +542,7 @@ Actual performance depends on implementation and workload.
 
 ---
 
-# eBPF Limitations
+## eBPF Limitations
 
 Consider:
 
@@ -556,7 +556,7 @@ Data Volume
 
 ---
 
-# seccomp
+## seccomp
 
 seccomp restricts the system calls available to a process.
 
@@ -574,19 +574,19 @@ Allow / Restrict
 
 ---
 
-# Why seccomp Matters
+## Why seccomp Matters
 
 If an application does not need certain system calls, restricting them can reduce attack surface.
 
 ---
 
-# seccomp and Detection
+## seccomp and Detection
 
 seccomp is primarily a restriction mechanism, but violations or blocked behavior can also provide security signals depending on configuration and runtime.
 
 ---
 
-# AppArmor
+## AppArmor
 
 AppArmor provides Linux security policies based on application profiles.
 
@@ -600,7 +600,7 @@ Network Behavior
 
 ---
 
-# SELinux
+## SELinux
 
 SELinux provides mandatory access control based on security labels and policies.
 
@@ -614,7 +614,7 @@ Resources
 
 ---
 
-# Linux Security Controls
+## Linux Security Controls
 
 Important mechanisms include:
 
@@ -631,7 +631,7 @@ These complement runtime detection.
 
 ---
 
-# Falco
+## Falco
 
 Falco is a runtime security and threat detection project commonly used to detect suspicious behavior across Linux, containers, and Kubernetes environments.
 
@@ -647,7 +647,7 @@ Privilege Changes
 
 ---
 
-# Falco Architecture
+## Falco Architecture
 
 Conceptually:
 
@@ -667,7 +667,7 @@ SIEM / SOC
 
 ---
 
-# Falco Rule Concept
+## Falco Rule Concept
 
 A rule conceptually contains:
 
@@ -691,7 +691,7 @@ then generate a high-priority alert.
 
 ---
 
-# Tetragon
+## Tetragon
 
 Tetragon is a Kubernetes-aware runtime security and observability project that uses eBPF-based mechanisms to provide process and security visibility and enforcement capabilities.
 
@@ -706,7 +706,7 @@ Kubernetes Context
 
 ---
 
-# Tracee
+## Tracee
 
 Tracee is an eBPF-based tracing and security tool that can provide visibility into Linux events and detect suspicious behaviors.
 
@@ -721,7 +721,7 @@ Container Activity
 
 ---
 
-# Runtime Security Tools
+## Runtime Security Tools
 
 | Tool | Primary Focus |
 |---|---|
@@ -734,7 +734,7 @@ Container Activity
 
 ---
 
-# Runtime Detection Architecture
+## Runtime Detection Architecture
 
 ```text
                 Kubernetes Cluster
@@ -767,7 +767,7 @@ Container Activity
 
 ---
 
-# Behavioral Detection
+## Behavioral Detection
 
 Behavioral detection looks for activity that deviates from expected behavior.
 
@@ -783,7 +783,7 @@ Web Server → External IP → Unusual Port
 
 ---
 
-# Anomaly Detection
+## Anomaly Detection
 
 Anomaly detection identifies activity outside an expected baseline.
 
@@ -808,7 +808,7 @@ Misconfiguration
 
 ---
 
-# Rule-Based Detection
+## Rule-Based Detection
 
 Rule-based detection uses predefined conditions.
 
@@ -826,7 +826,7 @@ generate alert
 
 ---
 
-# Signature-Based Detection
+## Signature-Based Detection
 
 Signature detection looks for known patterns.
 
@@ -841,7 +841,7 @@ Known Exploit Signature
 
 ---
 
-# Behavioral vs Signature Detection
+## Behavioral vs Signature Detection
 
 | Signature | Behavioral |
 |---|---|
@@ -853,7 +853,7 @@ Use both where appropriate.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 Detection engineering is the process of designing:
 
@@ -869,7 +869,7 @@ Investigation Context
 
 ---
 
-# Good Detection
+## Good Detection
 
 A useful alert should answer:
 
@@ -883,7 +883,7 @@ Why is it suspicious?
 
 ---
 
-# Bad Detection
+## Bad Detection
 
 Example:
 
@@ -895,7 +895,7 @@ This provides insufficient context.
 
 ---
 
-# Alert Context
+## Alert Context
 
 A useful runtime alert may include:
 
@@ -917,7 +917,7 @@ Timestamp
 
 ---
 
-# Alert Severity
+## Alert Severity
 
 Common levels:
 
@@ -940,7 +940,7 @@ Asset Criticality
 
 ---
 
-# False Positives
+## False Positives
 
 A legitimate action can look malicious.
 
@@ -973,7 +973,7 @@ is required.
 
 ---
 
-# Reducing False Positives
+## Reducing False Positives
 
 Use:
 
@@ -991,7 +991,7 @@ Do not create overly broad exclusions.
 
 ---
 
-# Production Context
+## Production Context
 
 Consider:
 
@@ -1007,7 +1007,7 @@ A shell in a hardened production application container may be much more suspicio
 
 ---
 
-# Container Escape Detection
+## Container Escape Detection
 
 Potential signals include:
 
@@ -1022,7 +1022,7 @@ Suspicious Kernel Interaction
 
 ---
 
-# Privileged Container Detection
+## Privileged Container Detection
 
 Monitor Pods using:
 
@@ -1035,7 +1035,7 @@ Privileged workloads require strong justification.
 
 ---
 
-# Host Namespace Detection
+## Host Namespace Detection
 
 Monitor:
 
@@ -1049,7 +1049,7 @@ These can increase the attack surface.
 
 ---
 
-# HostPath Detection
+## HostPath Detection
 
 Monitor:
 
@@ -1062,7 +1062,7 @@ Host filesystem access can create security risk.
 
 ---
 
-# Capability Abuse
+## Capability Abuse
 
 Linux capabilities can provide additional privileges.
 
@@ -1080,7 +1080,7 @@ Capabilities should be minimized.
 
 ---
 
-# Privilege Escalation
+## Privilege Escalation
 
 Monitor:
 
@@ -1094,7 +1094,7 @@ Unexpected Root Processes
 
 ---
 
-# Kubernetes API Abuse
+## Kubernetes API Abuse
 
 Runtime security should complement Kubernetes audit logging.
 
@@ -1112,7 +1112,7 @@ Node Access
 
 ---
 
-# kubectl exec Detection
+## kubectl exec Detection
 
 Unexpected:
 
@@ -1140,7 +1140,7 @@ Time
 
 ---
 
-# ServiceAccount Abuse
+## ServiceAccount Abuse
 
 Monitor:
 
@@ -1154,7 +1154,7 @@ Mass Resource Discovery
 
 ---
 
-# RBAC Abuse
+## RBAC Abuse
 
 Potential indicators:
 
@@ -1167,7 +1167,7 @@ Privilege Changes
 
 ---
 
-# Secret Access Detection
+## Secret Access Detection
 
 Monitor access to:
 
@@ -1182,7 +1182,7 @@ Unexpected access should be investigated.
 
 ---
 
-# Reverse Shell Detection
+## Reverse Shell Detection
 
 Potential behavioral signals:
 
@@ -1208,7 +1208,7 @@ This combination may be highly suspicious.
 
 ---
 
-# Cryptocurrency Mining Detection
+## Cryptocurrency Mining Detection
 
 Indicators may include:
 
@@ -1221,7 +1221,7 @@ Unexpected External Traffic
 
 ---
 
-# Malware Detection
+## Malware Detection
 
 Potential indicators:
 
@@ -1236,7 +1236,7 @@ File Modification
 
 ---
 
-# Persistence Detection
+## Persistence Detection
 
 Monitor creation or modification of:
 
@@ -1252,7 +1252,7 @@ Admission Components
 
 ---
 
-# Namespace Monitoring
+## Namespace Monitoring
 
 Monitor sensitive namespaces such as:
 
@@ -1265,13 +1265,13 @@ Infrastructure Namespaces
 
 ---
 
-# kube-system Monitoring
+## kube-system Monitoring
 
 Unexpected changes in `kube-system` can be particularly important because it commonly contains cluster infrastructure components.
 
 ---
 
-# Runtime Policies
+## Runtime Policies
 
 Runtime policies can define:
 
@@ -1285,7 +1285,7 @@ Allowed System Calls
 
 ---
 
-# Policy Example
+## Policy Example
 
 Conceptually:
 
@@ -1305,7 +1305,7 @@ An unexpected process should generate a security signal.
 
 ---
 
-# Runtime Enforcement
+## Runtime Enforcement
 
 Some security systems can do more than detect.
 
@@ -1322,7 +1322,7 @@ Use enforcement carefully in production.
 
 ---
 
-# Detection vs Prevention
+## Detection vs Prevention
 
 Detection:
 
@@ -1344,7 +1344,7 @@ A mature security architecture uses both.
 
 ---
 
-# MITRE ATT&CK
+## MITRE ATT&CK
 
 Runtime detections can map to attacker behaviors such as:
 
@@ -1363,7 +1363,7 @@ Impact
 
 ---
 
-# Kubernetes Threat Matrix
+## Kubernetes Threat Matrix
 
 Kubernetes-specific threat frameworks can help map attacker techniques to Kubernetes components.
 
@@ -1381,7 +1381,7 @@ Cloud Infrastructure
 
 ---
 
-# Detection Coverage
+## Detection Coverage
 
 A security team should ask:
 
@@ -1396,7 +1396,7 @@ Can We Detect RBAC Abuse?
 
 ---
 
-# Detection Coverage Matrix
+## Detection Coverage Matrix
 
 | Behavior | Detection Source |
 |---|---|
@@ -1412,7 +1412,7 @@ Can We Detect RBAC Abuse?
 
 ---
 
-# Runtime Security and SIEM
+## Runtime Security and SIEM
 
 Runtime events should flow into the SOC:
 
@@ -1430,7 +1430,7 @@ SOC
 
 ---
 
-# Correlation Example
+## Correlation Example
 
 Individually:
 
@@ -1454,7 +1454,7 @@ may indicate a serious incident.
 
 ---
 
-# SIEM Correlation
+## SIEM Correlation
 
 Conceptually:
 
@@ -1470,7 +1470,7 @@ High Confidence Alert
 
 ---
 
-# SOAR Integration
+## SOAR Integration
 
 SOAR can automate safe response workflows:
 
@@ -1490,7 +1490,7 @@ Quarantine if Approved
 
 ---
 
-# Runtime Security and Incident Response
+## Runtime Security and Incident Response
 
 Runtime detection feeds incident response:
 
@@ -1510,7 +1510,7 @@ Recovery
 
 ---
 
-# Runtime Security and Vulnerability Management
+## Runtime Security and Vulnerability Management
 
 These controls answer different questions:
 
@@ -1534,7 +1534,7 @@ High Priority
 
 ---
 
-# Runtime Security and Image Security
+## Runtime Security and Image Security
 
 Example:
 
@@ -1556,7 +1556,7 @@ No single security control is sufficient.
 
 ---
 
-# Performance Considerations
+## Performance Considerations
 
 Runtime telemetry consumes:
 
@@ -1579,7 +1579,7 @@ Aggregation
 
 ---
 
-# High Event Volume
+## High Event Volume
 
 A large cluster may generate millions of events.
 
@@ -1595,7 +1595,7 @@ Security-Relevant Context
 
 ---
 
-# Runtime Detection Pipeline
+## Runtime Detection Pipeline
 
 ```text
 Kernel
@@ -1617,7 +1617,7 @@ SIEM
 
 ---
 
-# Event Enrichment
+## Event Enrichment
 
 Add context such as:
 
@@ -1637,7 +1637,7 @@ This makes alerts more actionable.
 
 ---
 
-# Detection Tuning
+## Detection Tuning
 
 After deployment:
 
@@ -1655,7 +1655,7 @@ Measure
 
 ---
 
-# Detection Quality Metrics
+## Detection Quality Metrics
 
 Track:
 
@@ -1670,7 +1670,7 @@ Alert Volume
 
 ---
 
-# Mean Time To Detect
+## Mean Time To Detect
 
 MTTD measures:
 
@@ -1684,7 +1684,7 @@ Lower is generally better.
 
 ---
 
-# Mean Time To Respond
+## Mean Time To Respond
 
 MTTR can measure:
 
@@ -1698,7 +1698,7 @@ Organizations should define exactly which timestamps their metrics use.
 
 ---
 
-# Runtime Security Architecture
+## Runtime Security Architecture
 
 A production architecture can look like:
 
@@ -1733,7 +1733,7 @@ A production architecture can look like:
 
 ---
 
-# Production Runtime Security Strategy
+## Production Runtime Security Strategy
 
 Use layered controls:
 
@@ -1753,15 +1753,15 @@ Incident Response
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Relying Only on Image Scanning
+### 1. Relying Only on Image Scanning
 
 A clean image can still be compromised at runtime.
 
 ---
 
-## 2. Alerting on Everything
+### 2. Alerting on Everything
 
 Excessive alerts create:
 
@@ -1771,7 +1771,7 @@ Alert Fatigue
 
 ---
 
-## 3. No Context
+### 3. No Context
 
 A raw process event is often insufficient.
 
@@ -1787,13 +1787,13 @@ Node
 
 ---
 
-## 4. Ignoring False Positives
+### 4. Ignoring False Positives
 
 Poorly tuned detections become unusable.
 
 ---
 
-## 5. Overly Broad Exceptions
+### 5. Overly Broad Exceptions
 
 An exception such as:
 
@@ -1805,7 +1805,7 @@ can hide real attacks.
 
 ---
 
-## 6. Automatically Killing Everything Suspicious
+### 6. Automatically Killing Everything Suspicious
 
 Aggressive enforcement can cause:
 
@@ -1817,33 +1817,33 @@ Operational Damage
 
 ---
 
-## 7. Ignoring the Node
+### 7. Ignoring the Node
 
 Container activity can be connected to node-level compromise.
 
 ---
 
-## 8. Ignoring Kubernetes Audit Logs
+### 8. Ignoring Kubernetes Audit Logs
 
 Runtime telemetry alone does not show the complete control-plane story.
 
 ---
 
-## 9. No Baseline
+### 9. No Baseline
 
 Without knowing expected behavior, anomaly detection becomes difficult.
 
 ---
 
-## 10. Ignoring Performance
+### 10. Ignoring Performance
 
 Excessive telemetry can create operational overhead.
 
 ---
 
-# Best Practices
+## Best Practices
 
-### 1. Monitor Runtime Behavior
+#### 1. Monitor Runtime Behavior
 
 Track:
 
@@ -1856,13 +1856,13 @@ System Calls
 
 ---
 
-### 2. Use eBPF Where Appropriate
+#### 2. Use eBPF Where Appropriate
 
 Use mature tools and validate kernel compatibility.
 
 ---
 
-### 3. Combine Detection Sources
+#### 3. Combine Detection Sources
 
 Use:
 
@@ -1878,7 +1878,7 @@ Cloud
 
 ---
 
-### 4. Enrich Alerts
+#### 4. Enrich Alerts
 
 Include:
 
@@ -1893,7 +1893,7 @@ Identity
 
 ---
 
-### 5. Tune Detections
+#### 5. Tune Detections
 
 Continuously reduce:
 
@@ -1904,13 +1904,13 @@ Alert Noise
 
 ---
 
-### 6. Maintain Baselines
+#### 6. Maintain Baselines
 
 Understand normal behavior.
 
 ---
 
-### 7. Protect Sensitive Namespaces
+#### 7. Protect Sensitive Namespaces
 
 Increase monitoring around:
 
@@ -1923,25 +1923,25 @@ Infrastructure
 
 ---
 
-### 8. Use Least Privilege
+#### 8. Use Least Privilege
 
 Reduce the impact of compromise.
 
 ---
 
-### 9. Integrate With SIEM
+#### 9. Integrate With SIEM
 
 Centralize detection and correlation.
 
 ---
 
-### 10. Integrate With Incident Response
+#### 10. Integrate With Incident Response
 
 Every high-confidence detection should have a response path.
 
 ---
 
-# Hands-on Lab 1 – Process Monitoring
+## Hands-on Lab 1 – Process Monitoring
 
 Deploy a test application.
 
@@ -1960,7 +1960,7 @@ Unexpected Processes
 
 ---
 
-# Hands-on Lab 2 – Shell Detection
+## Hands-on Lab 2 – Shell Detection
 
 Deploy a container.
 
@@ -1980,7 +1980,7 @@ or:
 
 ---
 
-# Hands-on Lab 3 – File Monitoring
+## Hands-on Lab 3 – File Monitoring
 
 Create a test workload that accesses a monitored file.
 
@@ -1995,7 +1995,7 @@ Timestamp
 
 ---
 
-# Hands-on Lab 4 – Network Detection
+## Hands-on Lab 4 – Network Detection
 
 Deploy a test Pod and generate controlled outbound traffic.
 
@@ -2011,7 +2011,7 @@ Process
 
 ---
 
-# Hands-on Lab 5 – DNS Detection
+## Hands-on Lab 5 – DNS Detection
 
 Generate controlled DNS requests.
 
@@ -2026,7 +2026,7 @@ Frequency
 
 ---
 
-# Hands-on Lab 6 – Falco
+## Hands-on Lab 6 – Falco
 
 Install Falco in a disposable Kubernetes environment.
 
@@ -2044,7 +2044,7 @@ Namespace
 
 ---
 
-# Hands-on Lab 7 – Tetragon
+## Hands-on Lab 7 – Tetragon
 
 Deploy Tetragon in a test cluster.
 
@@ -2058,7 +2058,7 @@ Security Events
 
 ---
 
-# Hands-on Lab 8 – Tracee
+## Hands-on Lab 8 – Tracee
 
 Deploy Tracee in a suitable test environment.
 
@@ -2074,7 +2074,7 @@ Container Context
 
 ---
 
-# Hands-on Lab 9 – Privileged Pod Detection
+## Hands-on Lab 9 – Privileged Pod Detection
 
 Create a test Pod with:
 
@@ -2087,7 +2087,7 @@ Create a runtime detection rule for privileged workloads.
 
 ---
 
-# Hands-on Lab 10 – Host Namespace Detection
+## Hands-on Lab 10 – Host Namespace Detection
 
 Create a controlled Pod using:
 
@@ -2099,7 +2099,7 @@ Detect the configuration and runtime behavior.
 
 ---
 
-# Hands-on Lab 11 – Capability Detection
+## Hands-on Lab 11 – Capability Detection
 
 Create a test Pod with an additional Linux capability.
 
@@ -2113,7 +2113,7 @@ Namespace
 
 ---
 
-# Hands-on Lab 12 – kubectl exec Detection
+## Hands-on Lab 12 – kubectl exec Detection
 
 Perform:
 
@@ -2133,7 +2133,7 @@ Runtime Event
 
 ---
 
-# Hands-on Lab 13 – ServiceAccount Abuse Simulation
+## Hands-on Lab 13 – ServiceAccount Abuse Simulation
 
 Create a test ServiceAccount.
 
@@ -2149,7 +2149,7 @@ RBAC Enumeration
 
 ---
 
-# Hands-on Lab 14 – Cryptomining Detection Simulation
+## Hands-on Lab 14 – Cryptomining Detection Simulation
 
 Use a harmless CPU-intensive workload.
 
@@ -2165,7 +2165,7 @@ Do not use real mining software in the lab.
 
 ---
 
-# Hands-on Lab 15 – SIEM Integration
+## Hands-on Lab 15 – SIEM Integration
 
 Send runtime alerts to a SIEM.
 
@@ -2183,7 +2183,7 @@ Generate a high-confidence alert.
 
 ---
 
-# Hands-on Lab 16 – SOAR Integration
+## Hands-on Lab 16 – SOAR Integration
 
 Create a safe workflow:
 
@@ -2203,7 +2203,7 @@ Add analyst approval before disruptive actions.
 
 ---
 
-# Hands-on Lab 17 – Detection Tuning
+## Hands-on Lab 17 – Detection Tuning
 
 Generate:
 
@@ -2216,7 +2216,7 @@ Tune the detection to reduce false positives without suppressing suspicious acti
 
 ---
 
-# Hands-on Lab 18 – Runtime Security Dashboard
+## Hands-on Lab 18 – Runtime Security Dashboard
 
 Create a dashboard showing:
 
@@ -2233,7 +2233,7 @@ MTTD
 
 ---
 
-# Hands-on Lab 19 – Detection Coverage
+## Hands-on Lab 19 – Detection Coverage
 
 Create a matrix:
 
@@ -2258,7 +2258,7 @@ Persistence
 
 ---
 
-# Hands-on Lab 20 – Full Runtime Threat Detection Exercise
+## Hands-on Lab 20 – Full Runtime Threat Detection Exercise
 
 Simulate:
 
@@ -2295,9 +2295,9 @@ Eradication
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Runtime Security
+### Runtime Security
 
 ```text
 Security monitoring and protection during workload execution
@@ -2305,7 +2305,7 @@ Security monitoring and protection during workload execution
 
 ---
 
-## Runtime Threat Detection
+### Runtime Threat Detection
 
 ```text
 Detect suspicious behavior while systems are running
@@ -2313,7 +2313,7 @@ Detect suspicious behavior while systems are running
 
 ---
 
-## eBPF
+### eBPF
 
 ```text
 Linux kernel technology used for efficient observability and security tooling
@@ -2321,7 +2321,7 @@ Linux kernel technology used for efficient observability and security tooling
 
 ---
 
-## seccomp
+### seccomp
 
 ```text
 Restricts system calls available to a process
@@ -2329,7 +2329,7 @@ Restricts system calls available to a process
 
 ---
 
-## AppArmor
+### AppArmor
 
 ```text
 Linux application security profiles
@@ -2337,7 +2337,7 @@ Linux application security profiles
 
 ---
 
-## SELinux
+### SELinux
 
 ```text
 Mandatory access control based on security labels and policies
@@ -2345,7 +2345,7 @@ Mandatory access control based on security labels and policies
 
 ---
 
-## Falco
+### Falco
 
 ```text
 Runtime threat detection
@@ -2353,7 +2353,7 @@ Runtime threat detection
 
 ---
 
-## Tetragon
+### Tetragon
 
 ```text
 eBPF-based Kubernetes-aware runtime observability and enforcement
@@ -2361,7 +2361,7 @@ eBPF-based Kubernetes-aware runtime observability and enforcement
 
 ---
 
-## Tracee
+### Tracee
 
 ```text
 eBPF-based Linux tracing and security
@@ -2369,7 +2369,7 @@ eBPF-based Linux tracing and security
 
 ---
 
-## Behavioral Detection
+### Behavioral Detection
 
 ```text
 Detect suspicious behavior
@@ -2377,7 +2377,7 @@ Detect suspicious behavior
 
 ---
 
-## Signature Detection
+### Signature Detection
 
 ```text
 Detect known patterns
@@ -2385,7 +2385,7 @@ Detect known patterns
 
 ---
 
-## Anomaly Detection
+### Anomaly Detection
 
 ```text
 Detect deviation from expected behavior
@@ -2393,7 +2393,7 @@ Detect deviation from expected behavior
 
 ---
 
-## IOC
+### IOC
 
 ```text
 Indicator of Compromise
@@ -2401,7 +2401,7 @@ Indicator of Compromise
 
 ---
 
-## IOA
+### IOA
 
 ```text
 Indicator of Attack
@@ -2409,7 +2409,7 @@ Indicator of Attack
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 List Pods:
 
@@ -2545,9 +2545,9 @@ ss -antp
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is runtime security?
 - What is runtime threat detection?
@@ -2567,7 +2567,7 @@ ss -antp
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How would you detect a shell inside a container?
 - How would you detect suspicious processes?
@@ -2585,7 +2585,7 @@ ss -antp
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a runtime threat-detection architecture for a production Kubernetes cluster.
 - How would you detect container escape behavior?
@@ -2602,13 +2602,13 @@ ss -antp
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > A web application container suddenly executes `/bin/bash`. Is this automatically an attack?
 
-### Answer
+#### Answer
 
 No.
 
@@ -2640,13 +2640,13 @@ the confidence of malicious activity increases significantly.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > Why is runtime security required if we already scan container images?
 
-### Answer
+#### Answer
 
 Image scanning identifies known vulnerabilities before or around deployment.
 
@@ -2668,13 +2668,13 @@ Therefore both controls are complementary.
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > How would you detect container escape attempts?
 
-### Answer
+#### Answer
 
 Monitor for:
 
@@ -2696,13 +2696,13 @@ Combine runtime telemetry with Kubernetes configuration and node-level monitorin
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What is the advantage of eBPF for runtime security?
 
-### Answer
+#### Answer
 
 eBPF enables security tooling to observe low-level Linux behavior with rich kernel context.
 
@@ -2719,13 +2719,13 @@ This can enable detailed detection without requiring intrusive application instr
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > How would you reduce false positives in a runtime detection system?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2749,13 +2749,13 @@ Then continuously measure and tune detections.
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > How would you detect a cryptomining attack?
 
-### Answer
+#### Answer
 
 Correlate:
 
@@ -2773,13 +2773,13 @@ The combination provides stronger evidence than CPU usage alone.
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > How would you detect ServiceAccount abuse?
 
-### Answer
+#### Answer
 
 Monitor:
 
@@ -2806,13 +2806,13 @@ Privilege Changes
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How would you integrate runtime detection with a SOC?
 
-### Answer
+#### Answer
 
 Use:
 
@@ -2840,13 +2840,13 @@ for controlled automation.
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > What would a high-confidence runtime alert look like?
 
-### Answer
+#### Answer
 
 Instead of:
 
@@ -2872,13 +2872,13 @@ This gives analysts actionable context.
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a complete Kubernetes runtime security architecture.
 
-### Answer
+#### Answer
 
 ```text
                 Kubernetes
@@ -2924,7 +2924,7 @@ Admission Controls
 
 ---
 
-# Production Runtime Security Checklist
+## Production Runtime Security Checklist
 
 ```text
 ☑ Runtime monitoring enabled
@@ -2960,7 +2960,7 @@ Admission Controls
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Runtime threat detection focuses on what is happening while Kubernetes workloads are running.
 
@@ -3030,9 +3030,9 @@ The most important principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 76 – Compliance & Auditing
+## Chapter 76 – Compliance & Auditing
 
 Topics will include:
 

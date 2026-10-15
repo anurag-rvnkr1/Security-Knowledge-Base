@@ -29,3 +29,5 @@ Connect related foundational, operational, and defensive material with relative 
 ## Safety and Versioning
 
 State authorization assumptions for security testing, protect secrets and personal information, and include cleanup for labs. Explain breaking or version-dependent changes; summarize material repository changes in the established change history when appropriate.
+
+For catalogue generation, content ordering, diagram links, local testing, and publishing, follow the [content maintenance guide](./CONTENT-MAINTENANCE.md).

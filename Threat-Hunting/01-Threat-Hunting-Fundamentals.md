@@ -44,7 +44,7 @@ The broader objective is to discover **evidence of adversary behavior that exist
 
 ---
 
-# Why Threat Hunting Matters
+## Why Threat Hunting Matters
 
 Modern attackers increasingly use techniques designed to evade traditional security controls.
 
@@ -85,9 +85,9 @@ Threat hunting attempts to connect these individual behaviors into a meaningful 
 
 ---
 
-# Threat Hunting vs Traditional Security Monitoring
+## Threat Hunting vs Traditional Security Monitoring
 
-## Traditional Monitoring
+### Traditional Monitoring
 
 Traditional monitoring is primarily alert-driven.
 
@@ -105,7 +105,7 @@ The SOC waits for known detection logic to identify suspicious activity.
 
 ---
 
-## Threat Hunting
+### Threat Hunting
 
 Threat hunting begins with a question or hypothesis.
 
@@ -129,7 +129,7 @@ The hunter then searches authentication, endpoint, network, and identity telemet
 
 ---
 
-# Threat Hunting vs Incident Response
+## Threat Hunting vs Incident Response
 
 These disciplines are related but different.
 
@@ -162,11 +162,11 @@ Improved Detection
 
 ---
 
-# Threat Hunting vs Vulnerability Management
+## Threat Hunting vs Vulnerability Management
 
 These are also different disciplines.
 
-### Vulnerability Management
+#### Vulnerability Management
 
 Focuses on weaknesses:
 
@@ -180,7 +180,7 @@ Risk
 Patch / Mitigation
 ```
 
-### Threat Hunting
+#### Threat Hunting
 
 Focuses on adversary activity:
 
@@ -200,7 +200,7 @@ Threat hunting investigates whether suspicious activity is actually occurring.
 
 ---
 
-# Threat Hunting vs Penetration Testing
+## Threat Hunting vs Penetration Testing
 
 | Penetration Testing               | Threat Hunting                                |
 | --------------------------------- | --------------------------------------------- |
@@ -228,7 +228,7 @@ Detection Rule
 
 ---
 
-# Threat Hunting Lifecycle
+## Threat Hunting Lifecycle
 
 A mature hunt follows a repeatable lifecycle.
 
@@ -254,7 +254,7 @@ A mature hunt follows a repeatable lifecycle.
 
 ---
 
-# 1. Preparation
+## 1. Preparation
 
 Before starting a hunt, understand the environment.
 
@@ -288,7 +288,7 @@ A hunter cannot investigate telemetry that the organization does not collect.
 
 ---
 
-# 2. Threat Hypothesis
+## 2. Threat Hypothesis
 
 A threat hypothesis is a testable statement about potentially malicious activity.
 
@@ -316,7 +316,7 @@ A good hypothesis should define:
 
 ---
 
-# Hunt Hypothesis Structure
+## Hunt Hypothesis Structure
 
 Use:
 
@@ -345,7 +345,7 @@ in identity and authentication logs.
 
 ---
 
-# 3. Identify Required Telemetry
+## 3. Identify Required Telemetry
 
 After creating a hypothesis, determine what data can validate it.
 
@@ -379,7 +379,7 @@ It is:
 
 ---
 
-# 4. Hunt
+## 4. Hunt
 
 The hunter searches available telemetry.
 
@@ -397,7 +397,7 @@ Possible approaches include:
 
 ---
 
-# IOC-Based Hunting
+## IOC-Based Hunting
 
 IOC stands for **Indicator of Compromise**.
 
@@ -432,7 +432,7 @@ IOC hunting is useful but limited because attackers can change infrastructure.
 
 ---
 
-# Behavior-Based Hunting
+## Behavior-Based Hunting
 
 Behavior-based hunting focuses on what an attacker does rather than a known artifact.
 
@@ -454,7 +454,7 @@ Behavior-based hunting is often more resilient against changing attacker infrast
 
 ---
 
-# Baseline-Based Hunting
+## Baseline-Based Hunting
 
 A baseline describes normal activity.
 
@@ -490,7 +490,7 @@ It must be investigated in context.
 
 ---
 
-# Statistical Hunting
+## Statistical Hunting
 
 Statistical techniques can identify unusual activity.
 
@@ -525,7 +525,7 @@ Investigate
 
 ---
 
-# 5. Investigation
+## 5. Investigation
 
 Finding an anomaly is only the beginning.
 
@@ -547,7 +547,7 @@ How?
 
 ---
 
-## Who?
+### Who?
 
 Identify:
 
@@ -559,7 +559,7 @@ Identify:
 
 ---
 
-## What?
+### What?
 
 Determine:
 
@@ -571,7 +571,7 @@ Determine:
 
 ---
 
-## When?
+### When?
 
 Build a timeline.
 
@@ -602,7 +602,7 @@ Sensitive File Access
 
 ---
 
-## Where?
+### Where?
 
 Determine:
 
@@ -614,7 +614,7 @@ Determine:
 
 ---
 
-## Why?
+### Why?
 
 Determine whether the activity has a legitimate business explanation.
 
@@ -640,7 +640,7 @@ Context prevents unnecessary escalation.
 
 ---
 
-## How?
+### How?
 
 Determine the possible attack path.
 
@@ -658,7 +658,7 @@ Collection
 
 ---
 
-# 6. Validate Findings
+## 6. Validate Findings
 
 Not every suspicious event represents an attack.
 
@@ -678,7 +678,7 @@ The hunter should document the reasoning behind the conclusion.
 
 ---
 
-# False Positive
+## False Positive
 
 A false positive occurs when legitimate activity triggers suspicion.
 
@@ -708,7 +708,7 @@ The solution may involve tuning the detection.
 
 ---
 
-# False Negative
+## False Negative
 
 A false negative occurs when malicious activity is not detected.
 
@@ -730,7 +730,7 @@ Threat hunting can uncover these detection gaps.
 
 ---
 
-# 7. Detection Engineering
+## 7. Detection Engineering
 
 A successful hunt should ideally improve permanent security controls.
 
@@ -762,7 +762,7 @@ This is one of the most valuable outcomes of threat hunting.
 
 ---
 
-# Hunt-to-Detection Pipeline
+## Hunt-to-Detection Pipeline
 
 ```text
 Hypothesis
@@ -786,7 +786,7 @@ Tuning
 
 ---
 
-# 8. Documentation
+## 8. Documentation
 
 Every hunt should be documented.
 
@@ -822,7 +822,7 @@ Professional documentation allows another analyst to reproduce the investigation
 
 ---
 
-# 9. Continuous Improvement
+## 9. Continuous Improvement
 
 Threat hunting should feed back into the security program.
 
@@ -858,7 +858,7 @@ This creates a continuous defensive feedback loop.
 
 ---
 
-# Threat Hunting Pyramid
+## Threat Hunting Pyramid
 
 A useful way to think about hunting is through levels of observable information.
 
@@ -884,9 +884,9 @@ The higher levels focus on attacker behavior and techniques.
 
 ---
 
-# IOC → Behavior → TTP
+## IOC → Behavior → TTP
 
-### IOC
+#### IOC
 
 ```text
 203.0.113.50
@@ -896,7 +896,7 @@ Very specific.
 
 ---
 
-### Behavior
+#### Behavior
 
 ```text
 Endpoint communicates with a rare
@@ -908,7 +908,7 @@ More general.
 
 ---
 
-### TTP
+#### TTP
 
 ```text
 Command and Control
@@ -922,9 +922,9 @@ A mature hunting program increasingly focuses on behavior and TTPs rather than r
 
 ---
 
-# Threat Hunting Data Sources
+## Threat Hunting Data Sources
 
-## Endpoint Telemetry
+### Endpoint Telemetry
 
 Examples:
 
@@ -939,7 +939,7 @@ Examples:
 
 ---
 
-## Windows
+### Windows
 
 Important sources include:
 
@@ -952,7 +952,7 @@ Important sources include:
 
 ---
 
-## Linux
+### Linux
 
 Examples:
 
@@ -970,7 +970,7 @@ journald
 
 ---
 
-## Network
+### Network
 
 Sources include:
 
@@ -984,7 +984,7 @@ Sources include:
 
 ---
 
-## Cloud
+### Cloud
 
 Examples:
 
@@ -995,41 +995,41 @@ Examples:
 
 ---
 
-# Threat Hunting Data Quality
+## Threat Hunting Data Quality
 
 Good hunting requires good telemetry.
 
 Important properties include:
 
-### Coverage
+#### Coverage
 
 Are important systems monitored?
 
-### Accuracy
+#### Accuracy
 
 Are events recorded correctly?
 
-### Completeness
+#### Completeness
 
 Are important fields available?
 
-### Timeliness
+#### Timeliness
 
 Are events available quickly enough for investigation?
 
-### Retention
+#### Retention
 
 Are historical events retained long enough?
 
 ---
 
-# Threat Hunting Hypothesis Example
+## Threat Hunting Hypothesis Example
 
-## Scenario
+### Scenario
 
 An attacker may attempt to move laterally using compromised credentials.
 
-### Hypothesis
+#### Hypothesis
 
 ```text
 An attacker using compromised credentials may
@@ -1037,7 +1037,7 @@ authenticate to systems that the legitimate user
 rarely or never accesses.
 ```
 
-### Data Sources
+#### Data Sources
 
 ```text
 Authentication Logs
@@ -1049,7 +1049,7 @@ Active Directory
 Endpoint Telemetry
 ```
 
-### Hunt
+#### Hunt
 
 Search for:
 
@@ -1059,7 +1059,7 @@ Search for:
 * Authentication outside normal hours
 * Multiple systems accessed rapidly
 
-### Investigation
+#### Investigation
 
 ```text
 User
@@ -1085,7 +1085,7 @@ Time
 Subsequent Activity
 ```
 
-### Outcome
+#### Outcome
 
 If malicious:
 
@@ -1101,7 +1101,7 @@ Detection Rule
 
 ---
 
-# MITRE ATT&CK Integration
+## MITRE ATT&CK Integration
 
 Threat hunters should understand adversary behavior through the MITRE ATT&CK framework.
 
@@ -1145,7 +1145,7 @@ MITRE ATT&CK mapping should be covered in depth in Chapter 2.
 
 ---
 
-# Threat Hunting Maturity Model
+## Threat Hunting Maturity Model
 
 A practical maturity progression:
 
@@ -1176,7 +1176,7 @@ Continuous Detection Engineering
 
 ---
 
-## Level 1 — Reactive
+### Level 1 — Reactive
 
 The team investigates only after alerts.
 
@@ -1188,7 +1188,7 @@ Investigation
 
 ---
 
-## Level 2 — IOC Hunting
+### Level 2 — IOC Hunting
 
 The team searches for known:
 
@@ -1199,13 +1199,13 @@ The team searches for known:
 
 ---
 
-## Level 3 — Hypothesis-Driven
+### Level 3 — Hypothesis-Driven
 
 Hunters proactively investigate possible attacker behaviors.
 
 ---
 
-## Level 4 — Behavior-Based
+### Level 4 — Behavior-Based
 
 The organization hunts for:
 
@@ -1216,13 +1216,13 @@ The organization hunts for:
 
 ---
 
-## Level 5 — Continuous Detection Engineering
+### Level 5 — Continuous Detection Engineering
 
 Threat hunting, detection engineering, threat intelligence, and SOC operations operate as a continuous feedback loop.
 
 ---
 
-# Threat Hunting Workflow
+## Threat Hunting Workflow
 
 ```text
                  Threat Intelligence
@@ -1258,9 +1258,9 @@ Threat hunting, detection engineering, threat intelligence, and SOC operations o
 
 ---
 
-# Common Threat Hunting Mistakes
+## Common Threat Hunting Mistakes
 
-## 1. Searching Without a Hypothesis
+### 1. Searching Without a Hypothesis
 
 Bad:
 
@@ -1280,7 +1280,7 @@ Targeted Hunt
 
 ---
 
-## 2. Relying Only on IOCs
+### 2. Relying Only on IOCs
 
 Attackers can change:
 
@@ -1292,7 +1292,7 @@ Behavior is often more durable.
 
 ---
 
-## 3. Ignoring Context
+### 3. Ignoring Context
 
 An unusual event may have a legitimate explanation.
 
@@ -1306,7 +1306,7 @@ Always consider:
 
 ---
 
-## 4. Ignoring Telemetry Gaps
+### 4. Ignoring Telemetry Gaps
 
 If logs are missing, document the limitation.
 
@@ -1324,13 +1324,13 @@ Telemetry Improvement
 
 ---
 
-## 5. Not Converting Hunts into Detections
+### 5. Not Converting Hunts into Detections
 
 If the same threat is discovered repeatedly, it should often become a detection rule.
 
 ---
 
-# Threat Hunting Best Practices
+## Threat Hunting Best Practices
 
 * Start with a clear hypothesis.
 * Understand the environment before hunting.
@@ -1349,7 +1349,7 @@ If the same threat is discovered repeatedly, it should often become a detection 
 
 ---
 
-# Professional Hunt Documentation Template
+## Professional Hunt Documentation Template
 
 Every future hunt in this repository should follow this structure:
 
@@ -1397,13 +1397,13 @@ This makes the repository useful as both a learning resource and a professional 
 
 ---
 
-# Practical Lab
+## Practical Lab
 
-## Lab Objective
+### Lab Objective
 
 Perform a hypothesis-driven threat hunt against a controlled dataset.
 
-### Scenario
+#### Scenario
 
 A user account is suspected of being compromised.
 
@@ -1417,7 +1417,7 @@ Windows Events
 Endpoint Telemetry
 ```
 
-### Hypothesis
+#### Hypothesis
 
 ```text
 A compromised user account may authenticate
@@ -1425,7 +1425,7 @@ from an unusual source and subsequently perform
 activities outside the user's normal behavior.
 ```
 
-### Investigation
+#### Investigation
 
 Start with:
 
@@ -1445,7 +1445,7 @@ Endpoint Activity
 Network Activity
 ```
 
-### Questions
+#### Questions
 
 Determine:
 
@@ -1457,7 +1457,7 @@ Determine:
 6. Was there unusual network activity?
 7. Does the evidence support compromise?
 
-### Final Deliverable
+#### Final Deliverable
 
 Produce:
 
@@ -1478,37 +1478,37 @@ Only perform testing against datasets or systems for which you have explicit aut
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is threat hunting?
+#### What is threat hunting?
 
 Threat hunting is the proactive search for malicious activity or suspicious behavior that may not have been detected by existing security controls.
 
 ---
 
-### How is threat hunting different from SOC monitoring?
+#### How is threat hunting different from SOC monitoring?
 
 SOC monitoring primarily analyzes incoming alerts and events, while threat hunting proactively searches telemetry for threats that may not have generated alerts.
 
 ---
 
-### What is a threat hypothesis?
+#### What is a threat hypothesis?
 
 A threat hypothesis is a testable statement describing an expected attacker behavior and the evidence that should exist if that behavior occurred.
 
 ---
 
-### What is an IOC?
+#### What is an IOC?
 
 An Indicator of Compromise is an observable artifact associated with potentially malicious activity, such as a malicious IP address, domain, URL, or file hash.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is the difference between IOC and IOA?
+#### What is the difference between IOC and IOA?
 
 IOC-based hunting searches for known artifacts associated with compromise.
 
@@ -1516,13 +1516,13 @@ IOA-based hunting focuses on behaviors indicating that an attack may be occurrin
 
 ---
 
-### Why is threat hunting hypothesis-driven?
+#### Why is threat hunting hypothesis-driven?
 
 A hypothesis provides direction and identifies what evidence should be searched for. This makes hunting more focused, repeatable, and measurable.
 
 ---
 
-### What telemetry would you need to hunt credential abuse?
+#### What telemetry would you need to hunt credential abuse?
 
 Potential sources include:
 
@@ -1536,15 +1536,15 @@ Potential sources include:
 
 ---
 
-### What should happen after discovering malicious activity?
+#### What should happen after discovering malicious activity?
 
 The finding should be validated, documented, escalated according to the organization's incident response process, and used to improve detection and prevention controls.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you perform a threat hunt from beginning to end?
+#### How would you perform a threat hunt from beginning to end?
 
 A structured process would be:
 
@@ -1572,7 +1572,7 @@ Create / Improve Detection
 
 ---
 
-### How do you measure threat hunting effectiveness?
+#### How do you measure threat hunting effectiveness?
 
 Possible metrics include:
 
@@ -1590,7 +1590,7 @@ Metrics should focus on meaningful security outcomes rather than simply counting
 
 ---
 
-### What makes a good threat hunter?
+#### What makes a good threat hunter?
 
 A strong threat hunter combines:
 
@@ -1614,35 +1614,35 @@ The ability to ask the right question is often more important than knowing a par
 
 ---
 
-# Tools Covered in This Repository
+## Tools Covered in This Repository
 
 Future chapters will explore:
 
-### SIEM
+#### SIEM
 
 * Splunk
 * Microsoft Sentinel
 * Elastic Security
 
-### Endpoint
+#### Endpoint
 
 * Sysmon
 * Microsoft Defender
 * Velociraptor
 * osquery
 
-### Network
+#### Network
 
 * Wireshark
 * Zeek
 * Suricata
 
-### Detection
+#### Detection
 
 * Sigma
 * YARA
 
-### Intelligence
+#### Intelligence
 
 * MITRE ATT&CK
 * MISP
@@ -1650,7 +1650,7 @@ Future chapters will explore:
 
 ---
 
-# Skills Demonstrated
+## Skills Demonstrated
 
 Completing this chapter should demonstrate understanding of:
 
@@ -1670,22 +1670,22 @@ Security Analytics
 
 ---
 
-# References
+## References
 
-## Frameworks and Standards
+### Frameworks and Standards
 
 * MITRE ATT&CK
 * NIST Cybersecurity Framework
 * NIST SP 800-61
 * NIST SP 800-92
 
-## Threat Hunting
+### Threat Hunting
 
 * MITRE ATT&CK Data Sources
 * Threat Hunting methodologies
 * Detection Engineering practices
 
-## Defensive Security
+### Defensive Security
 
 * CISA guidance
 * Microsoft security documentation
@@ -1694,7 +1694,7 @@ Security Analytics
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Threat hunting is a proactive cybersecurity discipline focused on discovering adversary activity that may evade existing security controls.
 
@@ -1742,9 +1742,9 @@ DETECT BETTER
 
 ---
 
-# Next Chapter
+## Next Chapter
 
-## 02 — MITRE ATT&CK for Threat Hunters
+### 02 — MITRE ATT&CK for Threat Hunters
 
 The next chapter will cover:
 

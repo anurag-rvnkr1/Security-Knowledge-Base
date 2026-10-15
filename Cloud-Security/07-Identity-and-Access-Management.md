@@ -1411,7 +1411,7 @@ A successful IAM prevention strategy focuses on:
 
 ---
 
-# IAM Security Strategy
+## IAM Security Strategy
 
 ```
                 IAM Security
@@ -1439,7 +1439,7 @@ Strong Identity  Least Privilege   Continuous Audit
 
 ---
 
-# Strong Authentication
+## Strong Authentication
 
 Authentication is the first line of defense against unauthorized access.
 
@@ -1455,7 +1455,7 @@ Organizations should implement:
 
 ---
 
-## Enforce Multi-Factor Authentication (MFA)
+### Enforce Multi-Factor Authentication (MFA)
 
 Administrative accounts should always require MFA.
 
@@ -1485,7 +1485,7 @@ MFA significantly reduces attacks involving:
 
 ---
 
-## Password Policies
+### Password Policies
 
 Although passwordless authentication is becoming increasingly common, passwords remain widely used.
 
@@ -1507,7 +1507,7 @@ Avoid:
 
 ---
 
-## Passwordless Authentication
+### Passwordless Authentication
 
 Modern IAM platforms increasingly support passwordless authentication.
 
@@ -1544,7 +1544,7 @@ Benefits include:
 
 ---
 
-# Principle of Least Privilege (PoLP)
+## Principle of Least Privilege (PoLP)
 
 Every identity should receive only the permissions necessary to perform assigned tasks.
 
@@ -1587,7 +1587,7 @@ Least privilege should apply to:
 
 ---
 
-# Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 Organizations should assign permissions through roles rather than directly to users.
 
@@ -1616,7 +1616,7 @@ Advantages:
 
 ---
 
-# Attribute-Based Access Control (ABAC)
+## Attribute-Based Access Control (ABAC)
 
 ABAC enables dynamic access decisions using contextual information.
 
@@ -1653,7 +1653,7 @@ Additional attributes may include:
 
 ---
 
-# Just-In-Time (JIT) Access
+## Just-In-Time (JIT) Access
 
 Permanent administrative access should be avoided.
 
@@ -1691,7 +1691,7 @@ Benefits:
 
 ---
 
-# Privileged Access Management (PAM)
+## Privileged Access Management (PAM)
 
 Highly privileged accounts require additional protections.
 
@@ -1722,7 +1722,7 @@ Production Environment
 
 ---
 
-# Secure Machine Identities
+## Secure Machine Identities
 
 Applications also require identities.
 
@@ -1754,7 +1754,7 @@ Machine identities should use:
 
 ---
 
-# Credential Rotation
+## Credential Rotation
 
 Long-lived credentials increase risk.
 
@@ -1785,7 +1785,7 @@ Old Credential Revoked
 
 ---
 
-# Conditional Access
+## Conditional Access
 
 Conditional Access evaluates risk before granting access.
 
@@ -1824,7 +1824,7 @@ Allow Access
 
 ---
 
-# Identity Lifecycle Management
+## Identity Lifecycle Management
 
 Access should change as employee responsibilities change.
 
@@ -1864,7 +1864,7 @@ Automating identity lifecycle management reduces orphaned accounts.
 
 ---
 
-# Access Reviews
+## Access Reviews
 
 Regular access reviews help identify excessive permissions.
 
@@ -1886,7 +1886,7 @@ Questions to ask:
 
 ---
 
-# Federation Security
+## Federation Security
 
 When using identity federation:
 
@@ -1901,7 +1901,7 @@ Federation reduces password sprawl while maintaining centralized identity manage
 
 ---
 
-# Logging and Monitoring
+## Logging and Monitoring
 
 Every IAM deployment should log:
 
@@ -1938,9 +1938,9 @@ Continuous monitoring enables rapid detection of identity-based attacks.
 
 ---
 
-# Best Practices
+## Best Practices
 
-## 1. Enforce MFA Everywhere
+### 1. Enforce MFA Everywhere
 
 Require MFA for:
 
@@ -1952,7 +1952,7 @@ Require MFA for:
 
 ---
 
-## 2. Apply Least Privilege
+### 2. Apply Least Privilege
 
 Grant only the permissions required to perform assigned responsibilities.
 
@@ -1960,7 +1960,7 @@ Review permissions regularly.
 
 ---
 
-## 3. Eliminate Shared Accounts
+### 3. Eliminate Shared Accounts
 
 Every individual should have a unique identity.
 
@@ -1972,7 +1972,7 @@ Benefits:
 
 ---
 
-## 4. Use Groups and Roles
+### 4. Use Groups and Roles
 
 Assign permissions through:
 
@@ -1984,7 +1984,7 @@ Avoid assigning permissions directly to individual users whenever possible.
 
 ---
 
-## 5. Use Temporary Credentials
+### 5. Use Temporary Credentials
 
 Prefer:
 
@@ -1996,7 +1996,7 @@ Avoid permanent credentials.
 
 ---
 
-## 6. Regularly Review IAM Policies
+### 6. Regularly Review IAM Policies
 
 Remove:
 
@@ -2007,7 +2007,7 @@ Remove:
 
 ---
 
-## 7. Protect Privileged Accounts
+### 7. Protect Privileged Accounts
 
 Protect administrative identities with:
 
@@ -2019,7 +2019,7 @@ Protect administrative identities with:
 
 ---
 
-## 8. Monitor IAM Continuously
+### 8. Monitor IAM Continuously
 
 Alert on:
 
@@ -2031,7 +2031,7 @@ Alert on:
 
 ---
 
-## 9. Automate Identity Lifecycle
+### 9. Automate Identity Lifecycle
 
 Automate:
 
@@ -2044,7 +2044,7 @@ Automation reduces human error.
 
 ---
 
-## 10. Follow Zero Trust Principles
+### 10. Follow Zero Trust Principles
 
 Never assume trust based on network location.
 
@@ -2060,27 +2060,27 @@ Every access request should be evaluated independently.
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
-### Overly Permissive IAM Policies
+#### Overly Permissive IAM Policies
 
 Granting excessive permissions increases the impact of compromised accounts.
 
 ---
 
-### Using Root Accounts for Daily Operations
+#### Using Root Accounts for Daily Operations
 
 Root or owner accounts should only be used for exceptional administrative tasks.
 
 ---
 
-### Disabling MFA
+#### Disabling MFA
 
 Accounts protected only by passwords are significantly more vulnerable to compromise.
 
 ---
 
-### Hardcoding Credentials
+#### Hardcoding Credentials
 
 Never embed:
 
@@ -2098,13 +2098,13 @@ inside:
 
 ---
 
-### Ignoring Service Accounts
+#### Ignoring Service Accounts
 
 Machine identities require the same level of protection as human identities.
 
 ---
 
-### Leaving Dormant Accounts Active
+#### Leaving Dormant Accounts Active
 
 Inactive accounts become attractive targets for attackers.
 
@@ -2112,7 +2112,7 @@ Regularly disable or remove unused identities.
 
 ---
 
-### Failing to Review Permissions
+#### Failing to Review Permissions
 
 Employees frequently change roles.
 
@@ -2120,13 +2120,13 @@ Permissions should evolve accordingly.
 
 ---
 
-### Using Shared Administrative Accounts
+#### Using Shared Administrative Accounts
 
 Shared accounts eliminate accountability and complicate forensic investigations.
 
 ---
 
-### Permanent Administrative Access
+#### Permanent Administrative Access
 
 Standing administrative privileges increase organizational risk.
 
@@ -2134,7 +2134,7 @@ Prefer Just-In-Time access.
 
 ---
 
-### Ignoring Audit Logs
+#### Ignoring Audit Logs
 
 Authentication and authorization logs provide critical evidence during:
 
@@ -2147,9 +2147,9 @@ Ignoring them delays detection and response.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-63 Digital Identity Guidelines
 - NIST Cybersecurity Framework (CSF)
@@ -2162,7 +2162,7 @@ Ignoring them delays detection and response.
 
 ---
 
-### Cloud Provider Documentation
+#### Cloud Provider Documentation
 
 - AWS Identity and Access Management (IAM) Documentation
 - Microsoft Entra ID (formerly Azure Active Directory) Documentation
@@ -2172,7 +2172,7 @@ Ignoring them delays detection and response.
 
 ---
 
-### Industry Best Practices
+#### Industry Best Practices
 
 - Principle of Least Privilege (PoLP)
 - Role-Based Access Control (RBAC)

@@ -1158,7 +1158,7 @@ Cloud-native environments should adopt the principles of:
 
 ---
 
-# Defense-in-Depth for Cloud-Native Environments
+## Defense-in-Depth for Cloud-Native Environments
 
 ```
                  Developers
@@ -1216,7 +1216,7 @@ Each layer provides additional protection and minimizes the impact of security f
 
 ---
 
-# Secure the Software Development Lifecycle
+## Secure the Software Development Lifecycle
 
 Security should begin before application code is written.
 
@@ -1232,7 +1232,7 @@ Building security into development reduces vulnerabilities later in the lifecycl
 
 ---
 
-# Protect the CI/CD Pipeline
+## Protect the CI/CD Pipeline
 
 The CI/CD pipeline is a high-value target because it controls deployments.
 
@@ -1249,7 +1249,7 @@ Only trusted users and automated systems should modify deployment pipelines.
 
 ---
 
-# Scan Source Code and Dependencies
+## Scan Source Code and Dependencies
 
 Automated scanning should detect:
 
@@ -1279,7 +1279,7 @@ Prevent vulnerable code from reaching production.
 
 ---
 
-# Validate Infrastructure as Code
+## Validate Infrastructure as Code
 
 Infrastructure definitions should be validated before provisioning.
 
@@ -1295,7 +1295,7 @@ Policy-as-code helps enforce organizational standards consistently.
 
 ---
 
-# Secure Container Images
+## Secure Container Images
 
 Container security should include:
 
@@ -1309,7 +1309,7 @@ Reject images that do not satisfy organizational security requirements.
 
 ---
 
-# Harden Kubernetes and Serverless Platforms
+## Harden Kubernetes and Serverless Platforms
 
 Protect orchestration platforms by:
 
@@ -1328,7 +1328,7 @@ For serverless workloads:
 
 ---
 
-# Implement Zero Trust
+## Implement Zero Trust
 
 Assume no workload, user, or service is inherently trusted.
 
@@ -1363,7 +1363,7 @@ Trust should be established for every request.
 
 ---
 
-# Secure Service-to-Service Communication
+## Secure Service-to-Service Communication
 
 Protect internal communication using:
 
@@ -1376,7 +1376,7 @@ A service mesh can simplify implementation and improve observability.
 
 ---
 
-# Protect Secrets
+## Protect Secrets
 
 Store sensitive information in dedicated secrets management systems.
 
@@ -1392,7 +1392,7 @@ Rotate secrets regularly and audit all access events.
 
 ---
 
-# Encrypt Sensitive Data
+## Encrypt Sensitive Data
 
 Enable encryption:
 
@@ -1411,7 +1411,7 @@ Encryption keys should be managed through a secure Key Management Service (KMS).
 
 ---
 
-# Monitor Runtime Activity
+## Monitor Runtime Activity
 
 Continuous runtime monitoring should detect:
 
@@ -1425,7 +1425,7 @@ Behavioral analytics help identify attacks that bypass preventive controls.
 
 ---
 
-# Centralize Logging
+## Centralize Logging
 
 Aggregate logs from:
 
@@ -1457,7 +1457,7 @@ Centralized visibility improves incident detection and forensic analysis.
 
 ---
 
-# Maintain Immutable Infrastructure
+## Maintain Immutable Infrastructure
 
 Avoid manually modifying production systems.
 
@@ -1483,7 +1483,7 @@ Immutable infrastructure minimizes configuration drift and simplifies rollback.
 
 ---
 
-# Conduct Continuous Security Assessments
+## Conduct Continuous Security Assessments
 
 Regularly perform:
 
@@ -1497,9 +1497,9 @@ Continuous assessment helps identify emerging risks before they are exploited.
 
 ---
 
-## Best Practices
+### Best Practices
 
-### 1. Integrate Security into DevSecOps
+#### 1. Integrate Security into DevSecOps
 
 Embed security into every phase of development, testing, deployment, and operations.
 
@@ -1507,7 +1507,7 @@ Automate security wherever possible.
 
 ---
 
-### 2. Apply Least Privilege Everywhere
+#### 2. Apply Least Privilege Everywhere
 
 Restrict permissions for:
 
@@ -1521,7 +1521,7 @@ Review and remove unnecessary permissions regularly.
 
 ---
 
-### 3. Secure the Software Supply Chain
+#### 3. Secure the Software Supply Chain
 
 Implement:
 
@@ -1535,7 +1535,7 @@ Supply chain security reduces the risk of introducing compromised software.
 
 ---
 
-### 4. Protect APIs
+#### 4. Protect APIs
 
 Require:
 
@@ -1550,7 +1550,7 @@ Secure APIs are fundamental to cloud-native architectures.
 
 ---
 
-### 5. Use Immutable Infrastructure
+#### 5. Use Immutable Infrastructure
 
 Never modify running workloads manually.
 
@@ -1558,7 +1558,7 @@ Replace them with newly built and verified artifacts.
 
 ---
 
-### 6. Enable Continuous Monitoring
+#### 6. Enable Continuous Monitoring
 
 Monitor:
 
@@ -1573,7 +1573,7 @@ Behavioral monitoring improves early threat detection.
 
 ---
 
-### 7. Encrypt Sensitive Information
+#### 7. Encrypt Sensitive Information
 
 Protect:
 
@@ -1587,7 +1587,7 @@ Encryption should be enabled by default whenever feasible.
 
 ---
 
-### 8. Secure Secrets Properly
+#### 8. Secure Secrets Properly
 
 Use centralized secrets management.
 
@@ -1601,7 +1601,7 @@ Rotate secrets periodically.
 
 ---
 
-### 9. Validate Infrastructure Before Deployment
+#### 9. Validate Infrastructure Before Deployment
 
 Scan Infrastructure as Code for:
 
@@ -1613,7 +1613,7 @@ Prevent insecure infrastructure from being provisioned.
 
 ---
 
-### 10. Continuously Review Security Posture
+#### 10. Continuously Review Security Posture
 
 Regularly evaluate:
 
@@ -1627,7 +1627,7 @@ Cloud-native security requires continuous improvement rather than one-time imple
 
 ---
 
-## Common Mistakes
+### Common Mistakes
 
 Cloud-native environments combine multiple technologies such as containers, Kubernetes, serverless computing, APIs, CI/CD pipelines, and Infrastructure as Code (IaC). While these technologies provide flexibility and scalability, they also introduce new security risks when implemented incorrectly.
 
@@ -1637,7 +1637,7 @@ Understanding these common mistakes helps organizations build more secure and re
 
 ---
 
-### 1. Treating Security as a Final Step
+#### 1. Treating Security as a Final Step
 
 One of the biggest mistakes is performing security testing only before production deployment.
 
@@ -1689,7 +1689,7 @@ Shift security left by integrating it into the SDLC.
 
 ---
 
-### 2. Granting Excessive Permissions
+#### 2. Granting Excessive Permissions
 
 Applications frequently receive permissions far beyond their operational needs.
 
@@ -1704,7 +1704,7 @@ Apply the Principle of Least Privilege to every identity.
 
 ---
 
-### 3. Ignoring Software Supply Chain Security
+#### 3. Ignoring Software Supply Chain Security
 
 Using unverified packages, images, or build artifacts increases the risk of software supply chain attacks.
 
@@ -1726,7 +1726,7 @@ before deployment.
 
 ---
 
-### 4. Hardcoding Secrets
+#### 4. Hardcoding Secrets
 
 Sensitive information should never be stored in:
 
@@ -1751,7 +1751,7 @@ Store secrets in managed secrets management services.
 
 ---
 
-### 5. Insecure CI/CD Pipelines
+#### 5. Insecure CI/CD Pipelines
 
 Weak deployment pipelines may allow attackers to introduce malicious code.
 
@@ -1767,7 +1767,7 @@ Protect CI/CD pipelines with strong identity controls and artifact verification.
 
 ---
 
-### 6. Deploying Vulnerable Container Images
+#### 6. Deploying Vulnerable Container Images
 
 Using outdated or unscanned images introduces known vulnerabilities into production.
 
@@ -1782,7 +1782,7 @@ Trusted images should be the only images deployed.
 
 ---
 
-### 7. Weak Kubernetes Configuration
+#### 7. Weak Kubernetes Configuration
 
 Common Kubernetes mistakes include:
 
@@ -1796,7 +1796,7 @@ Cluster hardening should be part of every deployment.
 
 ---
 
-### 8. Ignoring Runtime Monitoring
+#### 8. Ignoring Runtime Monitoring
 
 Preventive security controls alone cannot detect every attack.
 
@@ -1812,7 +1812,7 @@ Continuous behavioral monitoring is essential.
 
 ---
 
-### 9. Poor API Security
+#### 9. Poor API Security
 
 APIs frequently expose business-critical functionality.
 
@@ -1828,7 +1828,7 @@ Secure APIs are fundamental to cloud-native architectures.
 
 ---
 
-### 10. Ignoring Infrastructure as Code Security
+#### 10. Ignoring Infrastructure as Code Security
 
 Infrastructure templates may accidentally create:
 
@@ -1842,7 +1842,7 @@ Every Infrastructure as Code template should undergo automated security validati
 
 ---
 
-### 11. Configuration Drift
+#### 11. Configuration Drift
 
 Manual changes to production environments create inconsistencies between deployed infrastructure and version-controlled definitions.
 
@@ -1862,7 +1862,7 @@ Maintain immutable infrastructure and redeploy rather than modifying running sys
 
 ---
 
-### 12. Weak Network Segmentation
+#### 12. Weak Network Segmentation
 
 Allowing unrestricted communication between workloads increases the likelihood of lateral movement.
 
@@ -1877,7 +1877,7 @@ to restrict unnecessary communication.
 
 ---
 
-### 13. Poor Visibility
+#### 13. Poor Visibility
 
 Without centralized logging and monitoring, security teams may fail to detect:
 
@@ -1891,7 +1891,7 @@ Cloud-native environments require comprehensive observability.
 
 ---
 
-### 14. Delayed Security Updates
+#### 14. Delayed Security Updates
 
 Outdated software introduces unnecessary risk.
 
@@ -1907,7 +1907,7 @@ Timely updates reduce exposure to known vulnerabilities.
 
 ---
 
-### 15. Assuming Cloud-Native Platforms Are Secure by Default
+#### 15. Assuming Cloud-Native Platforms Are Secure by Default
 
 Cloud-native technologies provide security capabilities but require proper implementation.
 
@@ -1928,7 +1928,7 @@ Security is a shared responsibility that must be continuously maintained.
 
 ---
 
-## Cloud Native Security Checklist
+### Cloud Native Security Checklist
 
 | Control | Status |
 |---------|--------|
@@ -1950,9 +1950,9 @@ Security is a shared responsibility that must be continuously maintained.
 
 ---
 
-## References
+### References
 
-### Standards
+#### Standards
 
 - NIST SP 800-53 Rev. 5 – Security and Privacy Controls for Information Systems and Organizations
 - NIST SP 800-190 – Application Container Security Guide
@@ -1966,26 +1966,26 @@ Security is a shared responsibility that must be continuously maintained.
 
 ---
 
-### Cloud Native Documentation
+#### Cloud Native Documentation
 
-#### Cloud Native Computing Foundation (CNCF)
+##### Cloud Native Computing Foundation (CNCF)
 
 - CNCF Cloud Native Landscape
 - CNCF Security Whitepapers
 - CNCF Best Practices
 
-#### Kubernetes
+##### Kubernetes
 
 - Kubernetes Documentation
 - Kubernetes Security Documentation
 - Pod Security Standards
 
-#### Service Mesh
+##### Service Mesh
 
 - Istio Documentation
 - Linkerd Documentation
 
-#### Infrastructure as Code
+##### Infrastructure as Code
 
 - Terraform Documentation
 - Pulumi Documentation
@@ -1994,7 +1994,7 @@ Security is a shared responsibility that must be continuously maintained.
 
 ---
 
-### Security Frameworks
+#### Security Frameworks
 
 - Zero Trust Architecture
 - Defense in Depth
@@ -2008,7 +2008,7 @@ Security is a shared responsibility that must be continuously maintained.
 
 ---
 
-### Recommended Learning Resources
+#### Recommended Learning Resources
 
 - OWASP Top 10
 - OWASP API Security Top 10

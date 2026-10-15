@@ -56,7 +56,7 @@ Distributed Applications
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -131,7 +131,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What Is an Operator?
+## What Is an Operator?
 
 An Operator is a Kubernetes application that uses the Kubernetes API to automate operational knowledge.
 
@@ -151,7 +151,7 @@ Managed Resources
 
 ---
 
-# Why Operators?
+## Why Operators?
 
 Kubernetes already manages basic workloads well.
 
@@ -182,7 +182,7 @@ An Operator can automate these tasks.
 
 ---
 
-# Human Knowledge vs Operator
+## Human Knowledge vs Operator
 
 Without an Operator:
 
@@ -206,7 +206,7 @@ Automated Procedures
 
 ---
 
-# Operator Pattern
+## Operator Pattern
 
 The Operator pattern extends Kubernetes with domain-specific automation.
 
@@ -228,7 +228,7 @@ Kubernetes API
 
 ---
 
-# Controllers
+## Controllers
 
 A controller continuously observes Kubernetes resources and attempts to make actual state match desired state.
 
@@ -246,7 +246,7 @@ Observe Again
 
 ---
 
-# Reconciliation
+## Reconciliation
 
 Reconciliation is the process of making:
 
@@ -280,7 +280,7 @@ Operator Reconciles
 
 ---
 
-# Desired State
+## Desired State
 
 The desired state is commonly represented by the resource:
 
@@ -297,7 +297,7 @@ spec:
 
 ---
 
-# Actual State
+## Actual State
 
 Actual state is represented by:
 
@@ -311,7 +311,7 @@ Observed Conditions
 
 ---
 
-# Spec vs Status
+## Spec vs Status
 
 A common Kubernetes API pattern is:
 
@@ -326,7 +326,7 @@ status:
 
 ---
 
-# `spec`
+## `spec`
 
 The `spec` describes:
 
@@ -336,7 +336,7 @@ What the user wants
 
 ---
 
-# `status`
+## `status`
 
 The `status` describes:
 
@@ -346,7 +346,7 @@ What the system observes
 
 ---
 
-# Custom Resources
+## Custom Resources
 
 A Custom Resource is an extension of the Kubernetes API.
 
@@ -365,7 +365,7 @@ Kubernetes can store this object just like other API resources.
 
 ---
 
-# Custom Resource Definition
+## Custom Resource Definition
 
 A Custom Resource Definition, or CRD, defines a new Kubernetes API resource.
 
@@ -383,7 +383,7 @@ Operator Manages It
 
 ---
 
-# CRD Example
+## CRD Example
 
 A simplified CRD:
 
@@ -410,7 +410,7 @@ spec:
 
 ---
 
-# Creating a Custom Resource
+## Creating a Custom Resource
 
 After the CRD exists:
 
@@ -427,7 +427,7 @@ The Operator watches this resource.
 
 ---
 
-# Custom Resource Lifecycle
+## Custom Resource Lifecycle
 
 ```text
 Create CR
@@ -445,7 +445,7 @@ Update Status
 
 ---
 
-# Operator Architecture
+## Operator Architecture
 
 A simplified Operator architecture:
 
@@ -473,7 +473,7 @@ A simplified Operator architecture:
 
 ---
 
-# Operator Components
+## Operator Components
 
 A typical Operator contains:
 
@@ -489,7 +489,7 @@ Optional Metrics
 
 ---
 
-# Watchers
+## Watchers
 
 A controller watches resources for changes.
 
@@ -503,7 +503,7 @@ Delete
 
 ---
 
-# Watch Relationship
+## Watch Relationship
 
 Example:
 
@@ -518,7 +518,7 @@ When the Custom Resource changes, the Operator reconciles the related Deployment
 
 ---
 
-# Event-Driven Reconciliation
+## Event-Driven Reconciliation
 
 A simplified flow:
 
@@ -536,7 +536,7 @@ Reconcile
 
 ---
 
-# Reconciliation Loop
+## Reconciliation Loop
 
 A good reconciliation loop is:
 
@@ -549,7 +549,7 @@ Observable
 
 ---
 
-# Idempotency
+## Idempotency
 
 Idempotency means running the reconciliation multiple times produces the same desired result.
 
@@ -569,7 +569,7 @@ No Unnecessary Change
 
 ---
 
-# Why Idempotency Matters
+## Why Idempotency Matters
 
 Controllers can receive repeated events.
 
@@ -584,7 +584,7 @@ Temporary Failures
 
 ---
 
-# Example Reconciliation Logic
+## Example Reconciliation Logic
 
 Conceptually:
 
@@ -609,7 +609,7 @@ Create      Compare
 
 ---
 
-# Controller Runtime
+## Controller Runtime
 
 Many Kubernetes Operators written in Go use:
 
@@ -635,7 +635,7 @@ Reconciler
 
 ---
 
-# Operator SDK
+## Operator SDK
 
 Operator SDK is a framework/toolkit for building Operators.
 
@@ -651,7 +651,7 @@ Packaging
 
 ---
 
-# Kubebuilder
+## Kubebuilder
 
 Kubebuilder is a framework for building Kubernetes APIs and controllers, especially in Go.
 
@@ -671,7 +671,7 @@ Reconciliation
 
 ---
 
-# Operator SDK vs Kubebuilder
+## Operator SDK vs Kubebuilder
 
 Both can be used to develop Kubernetes Operators.
 
@@ -688,7 +688,7 @@ The best choice depends on the Operator architecture and ecosystem.
 
 ---
 
-# Go-Based Operators
+## Go-Based Operators
 
 Go is widely used for Kubernetes controllers.
 
@@ -703,7 +703,7 @@ cmd/
 
 ---
 
-# Ansible-Based Operators
+## Ansible-Based Operators
 
 Operator SDK has supported Ansible-based Operator development.
 
@@ -711,7 +711,7 @@ This can be useful when existing operational automation is already expressed thr
 
 ---
 
-# Helm-Based Operators
+## Helm-Based Operators
 
 Operators can also use Helm-based approaches.
 
@@ -731,7 +731,7 @@ This can simplify some application packaging scenarios.
 
 ---
 
-# Operator Lifecycle Manager
+## Operator Lifecycle Manager
 
 Operator Lifecycle Manager, commonly called OLM, provides mechanisms for managing the lifecycle of Operators in Kubernetes environments.
 
@@ -746,7 +746,7 @@ Upgrade
 
 ---
 
-# OperatorHub
+## OperatorHub
 
 OperatorHub provides a catalog of Operators.
 
@@ -770,7 +770,7 @@ Do not blindly install an Operator just because it is available in a catalog.
 
 ---
 
-# Operator Deployment
+## Operator Deployment
 
 An Operator usually runs as a Kubernetes workload.
 
@@ -786,7 +786,7 @@ Kubernetes API
 
 ---
 
-# Operator Namespace
+## Operator Namespace
 
 An Operator may be:
 
@@ -804,7 +804,7 @@ depending on what it needs to manage.
 
 ---
 
-# Namespace-Scoped Operator
+## Namespace-Scoped Operator
 
 Manages resources in one or selected namespaces.
 
@@ -817,7 +817,7 @@ Simpler Permissions
 
 ---
 
-# Cluster-Wide Operator
+## Cluster-Wide Operator
 
 May watch or manage resources across the cluster.
 
@@ -833,7 +833,7 @@ Security Responsibility
 
 ---
 
-# Operator RBAC
+## Operator RBAC
 
 An Operator needs permissions to manage resources.
 
@@ -853,7 +853,7 @@ Only grant what is required.
 
 ---
 
-# Operator Security
+## Operator Security
 
 An Operator is highly privileged software.
 
@@ -872,7 +872,7 @@ Operator Credentials
 
 ---
 
-# Least Privilege
+## Least Privilege
 
 Avoid:
 
@@ -890,7 +890,7 @@ Prefer narrowly scoped permissions.
 
 ---
 
-# Operator ServiceAccount
+## Operator ServiceAccount
 
 The Operator should run with a dedicated ServiceAccount.
 
@@ -905,7 +905,7 @@ metadata:
 
 ---
 
-# Operator RBAC Flow
+## Operator RBAC Flow
 
 ```text
 Operator Pod
@@ -921,7 +921,7 @@ Kubernetes API
 
 ---
 
-# Leader Election
+## Leader Election
 
 When multiple Operator replicas run, they may use leader election.
 
@@ -941,7 +941,7 @@ This helps prevent multiple replicas from performing conflicting active reconcil
 
 ---
 
-# Operator High Availability
+## Operator High Availability
 
 Production Operators may run multiple replicas.
 
@@ -956,7 +956,7 @@ But simply running multiple replicas does not automatically guarantee safe activ
 
 ---
 
-# Operator Events
+## Operator Events
 
 Operators can publish Kubernetes Events.
 
@@ -974,7 +974,7 @@ Events can help operators understand what the controller is doing.
 
 ---
 
-# Status Conditions
+## Status Conditions
 
 Modern Kubernetes APIs commonly expose structured conditions.
 
@@ -991,7 +991,7 @@ status:
 
 ---
 
-# Condition Types
+## Condition Types
 
 Examples:
 
@@ -1006,7 +1006,7 @@ The exact conditions depend on the API.
 
 ---
 
-# Status Updates
+## Status Updates
 
 The Operator should update status when important state changes.
 
@@ -1025,7 +1025,7 @@ Progressing
 
 ---
 
-# Finalizers
+## Finalizers
 
 Finalizers allow controllers to perform cleanup before a resource is fully deleted.
 
@@ -1045,7 +1045,7 @@ Resource Deleted
 
 ---
 
-# Why Finalizers?
+## Why Finalizers?
 
 Suppose an Operator creates an external database.
 
@@ -1059,7 +1059,7 @@ before the Kubernetes object disappears.
 
 ---
 
-# Finalizer Example
+## Finalizer Example
 
 Conceptually:
 
@@ -1071,7 +1071,7 @@ metadata:
 
 ---
 
-# Owner References
+## Owner References
 
 Owner references connect managed resources to their parent resource.
 
@@ -1089,7 +1089,7 @@ The child resources can reference the parent as an owner.
 
 ---
 
-# Garbage Collection
+## Garbage Collection
 
 Kubernetes can use owner references for garbage collection.
 
@@ -1097,7 +1097,7 @@ This can help automatically remove dependent resources when their owner is delet
 
 ---
 
-# Owner Reference vs Finalizer
+## Owner Reference vs Finalizer
 
 | Owner Reference | Finalizer |
 |---|---|
@@ -1109,7 +1109,7 @@ They solve different problems.
 
 ---
 
-# API Design
+## API Design
 
 A good Custom Resource API should be:
 
@@ -1123,7 +1123,7 @@ Backward-Compatible
 
 ---
 
-# API Group
+## API Group
 
 Example:
 
@@ -1133,7 +1133,7 @@ databases.example.com
 
 ---
 
-# API Version
+## API Version
 
 Example:
 
@@ -1149,7 +1149,7 @@ databases.example.com/v1
 
 ---
 
-# Kind
+## Kind
 
 Example:
 
@@ -1159,7 +1159,7 @@ PostgreSQLCluster
 
 ---
 
-# Resource Naming
+## Resource Naming
 
 Plural resource:
 
@@ -1175,7 +1175,7 @@ PostgreSQLCluster
 
 ---
 
-# API Versioning
+## API Versioning
 
 An Operator may evolve:
 
@@ -1191,7 +1191,7 @@ Production APIs should have a carefully planned compatibility strategy.
 
 ---
 
-# Conversion
+## Conversion
 
 When multiple versions of a CRD exist, conversion mechanisms can translate between versions.
 
@@ -1207,7 +1207,7 @@ v1
 
 ---
 
-# Storage Version
+## Storage Version
 
 A CRD identifies one version as the storage version.
 
@@ -1215,7 +1215,7 @@ The Operator and API server must handle version compatibility correctly.
 
 ---
 
-# Webhooks
+## Webhooks
 
 Operators may use webhooks for:
 
@@ -1227,7 +1227,7 @@ Conversion
 
 ---
 
-# Validating Webhook
+## Validating Webhook
 
 A validating webhook checks whether a request is acceptable.
 
@@ -1241,7 +1241,7 @@ The webhook can reject it.
 
 ---
 
-# Mutating Webhook
+## Mutating Webhook
 
 A mutating webhook modifies an incoming resource.
 
@@ -1259,7 +1259,7 @@ Kubernetes
 
 ---
 
-# Admission Webhooks
+## Admission Webhooks
 
 Admission webhooks operate during Kubernetes API admission.
 
@@ -1267,7 +1267,7 @@ They can enforce or modify policy.
 
 ---
 
-# Operator Webhook Architecture
+## Operator Webhook Architecture
 
 ```text
 User
@@ -1285,7 +1285,7 @@ Operator
 
 ---
 
-# Operator Reconciliation
+## Operator Reconciliation
 
 A controller typically:
 
@@ -1300,7 +1300,7 @@ A controller typically:
 
 ---
 
-# Requeue
+## Requeue
 
 A controller may request another reconciliation when:
 
@@ -1312,7 +1312,7 @@ Retry Needed
 
 ---
 
-# Reconciliation Failure
+## Reconciliation Failure
 
 If reconciliation fails:
 
@@ -1330,7 +1330,7 @@ A controller should implement safe retry behavior.
 
 ---
 
-# Exponential Backoff
+## Exponential Backoff
 
 Repeated failures should not cause uncontrolled API traffic.
 
@@ -1338,7 +1338,7 @@ Controllers can use retry/backoff mechanisms.
 
 ---
 
-# External Systems
+## External Systems
 
 Operators may manage external systems:
 
@@ -1352,7 +1352,7 @@ Message Queues
 
 ---
 
-# External Resource Management
+## External Resource Management
 
 Example:
 
@@ -1374,7 +1374,7 @@ status:
 
 ---
 
-# External Dependencies
+## External Dependencies
 
 Operators managing external systems need to handle:
 
@@ -1389,7 +1389,7 @@ Retries
 
 ---
 
-# Idempotent External Operations
+## Idempotent External Operations
 
 If an Operator creates a cloud resource, it should first determine whether the resource already exists.
 
@@ -1419,7 +1419,7 @@ Otherwise Update / No-op
 
 ---
 
-# Stateful Application Operator
+## Stateful Application Operator
 
 A database Operator may automate:
 
@@ -1435,7 +1435,7 @@ Upgrade
 
 ---
 
-# Database Operator Architecture
+## Database Operator Architecture
 
 ```text
 PostgreSQLCluster
@@ -1452,7 +1452,7 @@ Pods  Services  PVCs
 
 ---
 
-# Backup Operator
+## Backup Operator
 
 A backup Operator may manage:
 
@@ -1466,7 +1466,7 @@ Verification
 
 ---
 
-# Monitoring Operator
+## Monitoring Operator
 
 A monitoring Operator may create:
 
@@ -1479,7 +1479,7 @@ Alerts
 
 ---
 
-# Storage Operator
+## Storage Operator
 
 Storage Operators may automate:
 
@@ -1492,7 +1492,7 @@ Snapshots
 
 ---
 
-# Multi-Cluster Operator
+## Multi-Cluster Operator
 
 A platform Operator may manage resources across clusters.
 
@@ -1517,7 +1517,7 @@ Network Security
 
 ---
 
-# Operator Dependencies
+## Operator Dependencies
 
 An Operator may depend on:
 
@@ -1534,7 +1534,7 @@ Dependencies must be installed and upgraded in a controlled order.
 
 ---
 
-# Operator Upgrades
+## Operator Upgrades
 
 A production Operator upgrade should follow:
 
@@ -1556,7 +1556,7 @@ Rollback if Required
 
 ---
 
-# CRD Upgrade
+## CRD Upgrade
 
 CRDs are APIs and should be treated as important production infrastructure.
 
@@ -1572,7 +1572,7 @@ Check Stored Data
 
 ---
 
-# Operator Rollback
+## Operator Rollback
 
 Rolling back the Operator image may not automatically roll back:
 
@@ -1587,7 +1587,7 @@ Therefore Operator rollback requires planning.
 
 ---
 
-# Operator Testing
+## Operator Testing
 
 Operators should be tested at multiple levels:
 
@@ -1599,7 +1599,7 @@ End-to-End
 
 ---
 
-# Unit Testing
+## Unit Testing
 
 Test individual reconciliation logic.
 
@@ -1614,7 +1614,7 @@ Invalid Spec
 
 ---
 
-# Integration Testing
+## Integration Testing
 
 Test interaction with:
 
@@ -1627,7 +1627,7 @@ Webhooks
 
 ---
 
-# End-to-End Testing
+## End-to-End Testing
 
 Run the Operator against a real Kubernetes environment.
 
@@ -1643,7 +1643,7 @@ Failure Recovery
 
 ---
 
-# Failure Testing
+## Failure Testing
 
 Test:
 
@@ -1657,7 +1657,7 @@ External Service Failure
 
 ---
 
-# Operator Observability
+## Operator Observability
 
 Operators should expose:
 
@@ -1670,7 +1670,7 @@ Status Conditions
 
 ---
 
-# Operator Logs
+## Operator Logs
 
 Logs should help answer:
 
@@ -1693,7 +1693,7 @@ Sensitive Data
 
 ---
 
-# Operator Metrics
+## Operator Metrics
 
 Useful metrics can include:
 
@@ -1710,7 +1710,7 @@ Exact metrics depend on the framework.
 
 ---
 
-# Operator Events
+## Operator Events
 
 Events can show:
 
@@ -1724,7 +1724,7 @@ Degraded
 
 ---
 
-# Operator Health
+## Operator Health
 
 A production Operator should have appropriate:
 
@@ -1738,7 +1738,7 @@ probes when applicable.
 
 ---
 
-# Operator Resource Management
+## Operator Resource Management
 
 Operators themselves require:
 
@@ -1753,7 +1753,7 @@ where appropriate.
 
 ---
 
-# Operator SecurityContext
+## Operator SecurityContext
 
 Use hardened container configuration where compatible:
 
@@ -1767,7 +1767,7 @@ The exact configuration must match the Operator's requirements.
 
 ---
 
-# Operator Network Security
+## Operator Network Security
 
 Use NetworkPolicies where appropriate.
 
@@ -1782,7 +1782,7 @@ to required communication paths.
 
 ---
 
-# Operator Supply Chain Security
+## Operator Supply Chain Security
 
 Secure:
 
@@ -1798,7 +1798,7 @@ Registry
 
 ---
 
-# Operator Image Security
+## Operator Image Security
 
 Use:
 
@@ -1815,7 +1815,7 @@ where appropriate.
 
 ---
 
-# Operator RBAC Review
+## Operator RBAC Review
 
 Review:
 
@@ -1830,7 +1830,7 @@ Identify excessive permissions.
 
 ---
 
-# Operator Security Architecture
+## Operator Security Architecture
 
 ```text
               Git
@@ -1868,7 +1868,7 @@ Identify excessive permissions.
 
 ---
 
-# Production Operator Architecture
+## Production Operator Architecture
 
 ```text
                   User
@@ -1896,21 +1896,21 @@ Identify excessive permissions.
 
 ---
 
-# Operator Design Principles
+## Operator Design Principles
 
-### 1. Reconciliation Must Be Idempotent
+#### 1. Reconciliation Must Be Idempotent
 
 Repeated reconciliation should be safe.
 
 ---
 
-### 2. Minimize Permissions
+#### 2. Minimize Permissions
 
 Use least-privilege RBAC.
 
 ---
 
-### 3. Make APIs Clear
+#### 3. Make APIs Clear
 
 Users should understand:
 
@@ -1922,7 +1922,7 @@ conditions
 
 ---
 
-### 4. Handle Failure
+#### 4. Handle Failure
 
 Expect:
 
@@ -1936,31 +1936,31 @@ Partial State
 
 ---
 
-### 5. Update Status
+#### 5. Update Status
 
 Expose useful operational information.
 
 ---
 
-### 6. Use Owner References
+#### 6. Use Owner References
 
 Where appropriate, establish resource ownership.
 
 ---
 
-### 7. Use Finalizers Carefully
+#### 7. Use Finalizers Carefully
 
 Ensure cleanup logic cannot permanently block deletion.
 
 ---
 
-### 8. Test Upgrade Paths
+#### 8. Test Upgrade Paths
 
 Operators manage long-lived production state.
 
 ---
 
-### 9. Observe the Operator
+#### 9. Observe the Operator
 
 Monitor:
 
@@ -1974,33 +1974,33 @@ Status
 
 ---
 
-### 10. Secure the Supply Chain
+#### 10. Secure the Supply Chain
 
 Treat Operators as privileged infrastructure software.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
-## 1. Overly Broad RBAC
+### 1. Overly Broad RBAC
 
 Giving the Operator unrestricted access creates a large blast radius.
 
 ---
 
-## 2. Non-Idempotent Reconciliation
+### 2. Non-Idempotent Reconciliation
 
 Repeated events may create duplicate resources or unwanted changes.
 
 ---
 
-## 3. Ignoring Status
+### 3. Ignoring Status
 
 Users need visibility into whether the desired state has been achieved.
 
 ---
 
-## 4. Bad Finalizer Logic
+### 4. Bad Finalizer Logic
 
 A broken finalizer can leave resources stuck in:
 
@@ -2010,55 +2010,55 @@ Terminating
 
 ---
 
-## 5. Ignoring API Compatibility
+### 5. Ignoring API Compatibility
 
 CRD changes can break existing resources.
 
 ---
 
-## 6. No Upgrade Testing
+### 6. No Upgrade Testing
 
 An Operator upgrade can affect every managed workload.
 
 ---
 
-## 7. Poor Error Handling
+### 7. Poor Error Handling
 
 Transient failures should be retried safely.
 
 ---
 
-## 8. Logging Secrets
+### 8. Logging Secrets
 
 Never expose credentials in Operator logs.
 
 ---
 
-## 9. Excessive External API Calls
+### 9. Excessive External API Calls
 
 Uncontrolled reconciliation can hit rate limits.
 
 ---
 
-## 10. No Leader Election
+### 10. No Leader Election
 
 Multiple replicas can cause conflicting operations if the controller is not designed for concurrent active reconciliation.
 
 ---
 
-## 11. No Observability
+### 11. No Observability
 
 Without metrics and logs, diagnosing Operator failures becomes difficult.
 
 ---
 
-## 12. Treating the Operator as Ordinary Application Software
+### 12. Treating the Operator as Ordinary Application Software
 
 Operators have direct control over Kubernetes resources and therefore require strong security and reliability practices.
 
 ---
 
-# Hands-on Lab 1 – Inspect Existing CRDs
+## Hands-on Lab 1 – Inspect Existing CRDs
 
 List CRDs:
 
@@ -2074,7 +2074,7 @@ kubectl describe crd <crd-name>
 
 ---
 
-# Hands-on Lab 2 – Create a Simple CRD
+## Hands-on Lab 2 – Create a Simple CRD
 
 Create a CRD representing:
 
@@ -2092,7 +2092,7 @@ port
 
 ---
 
-# Hands-on Lab 3 – Create a Custom Resource
+## Hands-on Lab 3 – Create a Custom Resource
 
 Create:
 
@@ -2115,7 +2115,7 @@ kubectl get webapplications
 
 ---
 
-# Hands-on Lab 4 – Build a Simple Controller
+## Hands-on Lab 4 – Build a Simple Controller
 
 Using Kubebuilder or Operator SDK, create a controller that watches:
 
@@ -2132,7 +2132,7 @@ Service
 
 ---
 
-# Hands-on Lab 5 – Reconciliation
+## Hands-on Lab 5 – Reconciliation
 
 Implement logic:
 
@@ -2150,7 +2150,7 @@ Update if Required
 
 ---
 
-# Hands-on Lab 6 – Status Conditions
+## Hands-on Lab 6 – Status Conditions
 
 Add:
 
@@ -2166,7 +2166,7 @@ Update status after reconciliation.
 
 ---
 
-# Hands-on Lab 7 – Owner References
+## Hands-on Lab 7 – Owner References
 
 Make the Deployment owned by the Custom Resource.
 
@@ -2176,7 +2176,7 @@ Observe the behavior of dependent resources.
 
 ---
 
-# Hands-on Lab 8 – Finalizer
+## Hands-on Lab 8 – Finalizer
 
 Add a finalizer.
 
@@ -2190,7 +2190,7 @@ Then remove the finalizer.
 
 ---
 
-# Hands-on Lab 9 – RBAC
+## Hands-on Lab 9 – RBAC
 
 Create only the permissions required to manage:
 
@@ -2204,7 +2204,7 @@ Test the Operator with restricted permissions.
 
 ---
 
-# Hands-on Lab 10 – Leader Election
+## Hands-on Lab 10 – Leader Election
 
 Run multiple Operator replicas.
 
@@ -2214,7 +2214,7 @@ Observe which instance actively reconciles.
 
 ---
 
-# Hands-on Lab 11 – Failure Recovery
+## Hands-on Lab 11 – Failure Recovery
 
 Delete a managed Deployment:
 
@@ -2226,7 +2226,7 @@ Observe the Operator recreate it.
 
 ---
 
-# Hands-on Lab 12 – Configuration Change
+## Hands-on Lab 12 – Configuration Change
 
 Modify:
 
@@ -2239,7 +2239,7 @@ Observe reconciliation.
 
 ---
 
-# Hands-on Lab 13 – Invalid Configuration
+## Hands-on Lab 13 – Invalid Configuration
 
 Submit an invalid Custom Resource.
 
@@ -2247,7 +2247,7 @@ Use validation to reject it.
 
 ---
 
-# Hands-on Lab 14 – Webhook
+## Hands-on Lab 14 – Webhook
 
 Create a validating webhook that rejects:
 
@@ -2257,7 +2257,7 @@ replicas < 1
 
 ---
 
-# Hands-on Lab 15 – Operator Metrics
+## Hands-on Lab 15 – Operator Metrics
 
 Expose reconciliation metrics.
 
@@ -2271,7 +2271,7 @@ Duration
 
 ---
 
-# Hands-on Lab 16 – Operator Logging
+## Hands-on Lab 16 – Operator Logging
 
 Generate structured logs showing:
 
@@ -2287,7 +2287,7 @@ Ensure secrets are never logged.
 
 ---
 
-# Hands-on Lab 17 – Operator Testing
+## Hands-on Lab 17 – Operator Testing
 
 Write:
 
@@ -2309,7 +2309,7 @@ Recovery
 
 ---
 
-# Hands-on Lab 18 – Operator Upgrade
+## Hands-on Lab 18 – Operator Upgrade
 
 Deploy:
 
@@ -2327,7 +2327,7 @@ Verify existing Custom Resources continue working.
 
 ---
 
-# Hands-on Lab 19 – Multi-Resource Operator
+## Hands-on Lab 19 – Multi-Resource Operator
 
 Create an Operator that manages:
 
@@ -2342,7 +2342,7 @@ from a single Custom Resource.
 
 ---
 
-# Hands-on Lab 20 – Production Operator Project
+## Hands-on Lab 20 – Production Operator Project
 
 Build a production-style Operator:
 
@@ -2383,9 +2383,9 @@ Security
 
 ---
 
-# Quick Revision
+## Quick Revision
 
-## Operator
+### Operator
 
 ```text
 Software that automates management of a Kubernetes application or resource
@@ -2393,7 +2393,7 @@ Software that automates management of a Kubernetes application or resource
 
 ---
 
-## Controller
+### Controller
 
 ```text
 Component that continuously reconciles desired and actual state
@@ -2401,7 +2401,7 @@ Component that continuously reconciles desired and actual state
 
 ---
 
-## CRD
+### CRD
 
 ```text
 Defines a new Kubernetes API resource
@@ -2409,7 +2409,7 @@ Defines a new Kubernetes API resource
 
 ---
 
-## Custom Resource
+### Custom Resource
 
 ```text
 An instance of a CRD
@@ -2417,7 +2417,7 @@ An instance of a CRD
 
 ---
 
-## Reconciliation
+### Reconciliation
 
 ```text
 Process of aligning actual state with desired state
@@ -2425,7 +2425,7 @@ Process of aligning actual state with desired state
 
 ---
 
-## Spec
+### Spec
 
 ```text
 Desired State
@@ -2433,7 +2433,7 @@ Desired State
 
 ---
 
-## Status
+### Status
 
 ```text
 Observed State
@@ -2441,7 +2441,7 @@ Observed State
 
 ---
 
-## Finalizer
+### Finalizer
 
 ```text
 Blocks deletion until cleanup is completed
@@ -2449,7 +2449,7 @@ Blocks deletion until cleanup is completed
 
 ---
 
-## Owner Reference
+### Owner Reference
 
 ```text
 Represents resource ownership and supports garbage collection
@@ -2457,7 +2457,7 @@ Represents resource ownership and supports garbage collection
 
 ---
 
-## Leader Election
+### Leader Election
 
 ```text
 Coordinates active controller leadership among replicas
@@ -2465,7 +2465,7 @@ Coordinates active controller leadership among replicas
 
 ---
 
-## Idempotency
+### Idempotency
 
 ```text
 Repeated reconciliation produces the same correct result
@@ -2473,7 +2473,7 @@ Repeated reconciliation produces the same correct result
 
 ---
 
-# Essential Commands
+## Essential Commands
 
 List CRDs:
 
@@ -2567,9 +2567,9 @@ kubectl get <resource> <name> -o jsonpath='{.status}'
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Basic
+### Basic
 
 - What is a Kubernetes Operator?
 - What is the Operator pattern?
@@ -2587,7 +2587,7 @@ kubectl get <resource> <name> -o jsonpath='{.status}'
 
 ---
 
-## Intermediate
+### Intermediate
 
 - How does an Operator work?
 - How does a reconciliation loop work?
@@ -2608,7 +2608,7 @@ kubectl get <resource> <name> -o jsonpath='{.status}'
 
 ---
 
-## Advanced
+### Advanced
 
 - Design a production Operator architecture.
 - How would you build a database Operator?
@@ -2628,13 +2628,13 @@ kubectl get <resource> <name> -o jsonpath='{.status}'
 
 ---
 
-# Interview Scenario 1
+## Interview Scenario 1
 
-### Question
+#### Question
 
 > What is the difference between a Kubernetes Controller and an Operator?
 
-### Answer
+#### Answer
 
 A **Controller** is a Kubernetes control-loop component that reconciles resources.
 
@@ -2652,13 +2652,13 @@ An Operator is therefore a specialized form of controller-based automation.
 
 ---
 
-# Interview Scenario 2
+## Interview Scenario 2
 
-### Question
+#### Question
 
 > What happens when a Custom Resource is created?
 
-### Answer
+#### Answer
 
 Conceptually:
 
@@ -2680,13 +2680,13 @@ Update Status
 
 ---
 
-# Interview Scenario 3
+## Interview Scenario 3
 
-### Question
+#### Question
 
 > Why must reconciliation be idempotent?
 
-### Answer
+#### Answer
 
 Controllers can reconcile the same resource multiple times due to:
 
@@ -2701,13 +2701,13 @@ If reconciliation is idempotent, repeated execution safely converges to the desi
 
 ---
 
-# Interview Scenario 4
+## Interview Scenario 4
 
-### Question
+#### Question
 
 > What is a finalizer?
 
-### Answer
+#### Answer
 
 A finalizer allows an Operator to perform cleanup before Kubernetes completes deletion.
 
@@ -2727,13 +2727,13 @@ Object Deleted
 
 ---
 
-# Interview Scenario 5
+## Interview Scenario 5
 
-### Question
+#### Question
 
 > What happens if a finalizer is broken?
 
-### Answer
+#### Answer
 
 The resource can remain stuck in:
 
@@ -2754,13 +2754,13 @@ Operators should also provide an operational procedure for safely recovering fro
 
 ---
 
-# Interview Scenario 6
+## Interview Scenario 6
 
-### Question
+#### Question
 
 > Why use owner references?
 
-### Answer
+#### Answer
 
 Owner references establish relationships between resources.
 
@@ -2778,13 +2778,13 @@ They allow Kubernetes garbage collection mechanisms to manage dependent resource
 
 ---
 
-# Interview Scenario 7
+## Interview Scenario 7
 
-### Question
+#### Question
 
 > Why should an Operator not use unrestricted ClusterRole permissions?
 
-### Answer
+#### Answer
 
 Because Operators are privileged control-plane applications.
 
@@ -2802,13 +2802,13 @@ Least privilege reduces the blast radius.
 
 ---
 
-# Interview Scenario 8
+## Interview Scenario 8
 
-### Question
+#### Question
 
 > How would you design a database Operator?
 
-### Answer
+#### Answer
 
 I would expose a Custom Resource:
 
@@ -2859,13 +2859,13 @@ Upgrade Strategy
 
 ---
 
-# Interview Scenario 9
+## Interview Scenario 9
 
-### Question
+#### Question
 
 > How would you troubleshoot an Operator that is not reconciling?
 
-### Answer
+#### Answer
 
 I would check:
 
@@ -2886,13 +2886,13 @@ Then verify whether reconciliation requests are being generated and whether the 
 
 ---
 
-# Interview Scenario 10
+## Interview Scenario 10
 
-### Question
+#### Question
 
 > Design a production-grade Operator architecture.
 
-### Answer
+#### Answer
 
 ```text
                          Git
@@ -2961,7 +2961,7 @@ Secure Supply Chain
 
 ---
 
-# Production Operator Checklist
+## Production Operator Checklist
 
 ```text
 ☑ CRD API designed
@@ -3002,7 +3002,7 @@ Secure Supply Chain
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 Kubernetes Operators extend Kubernetes with application-specific automation.
 
@@ -3074,9 +3074,9 @@ The most important reliability principle is:
 
 ---
 
-## Next Chapter
+### Next Chapter
 
-# Chapter 83 – Service Mesh (Istio & Linkerd)
+## Chapter 83 – Service Mesh (Istio & Linkerd)
 
 Topics will include:
 

@@ -1,10 +1,10 @@
 # 27-Windows-Interview-Questions.md
 
-# Part 1 — Windows Fundamentals, Operating System, Architecture, Installation, Boot Process, File System, and Command Line
+## Part 1 — Windows Fundamentals, Operating System, Architecture, Installation, Boot Process, File System, and Command Line
 
 ---
 
-# Introduction
+## Introduction
 
 Windows interview questions range from basic operating system concepts to advanced enterprise administration and cybersecurity topics.
 
@@ -25,7 +25,7 @@ The questions progress from beginner to advanced level and include concise, inte
 
 ---
 
-# Interview Preparation Strategy
+## Interview Preparation Strategy
 
 Focus on:
 
@@ -39,11 +39,11 @@ Interviewers often value clear reasoning over memorized definitions.
 
 ---
 
-# Beginner Level Questions
+## Beginner Level Questions
 
 ---
 
-## 1. What is Microsoft Windows?
+### 1. What is Microsoft Windows?
 
 **Answer**
 
@@ -51,7 +51,7 @@ Microsoft Windows is a family of operating systems developed by Microsoft that m
 
 ---
 
-## 2. What are the major responsibilities of an operating system?
+### 2. What are the major responsibilities of an operating system?
 
 **Answer**
 
@@ -68,7 +68,7 @@ An operating system is responsible for:
 
 ---
 
-## 3. What is the difference between Windows Home, Pro, and Enterprise editions?
+### 3. What is the difference between Windows Home, Pro, and Enterprise editions?
 
 | Edition | Primary Use |
 |----------|-------------|
@@ -80,7 +80,7 @@ Enterprise editions include capabilities such as advanced policy management, ent
 
 ---
 
-## 4. What is the difference between 32-bit and 64-bit Windows?
+### 4. What is the difference between 32-bit and 64-bit Windows?
 
 | 32-bit | 64-bit |
 |---------|---------|
@@ -92,7 +92,7 @@ Most modern enterprise systems use 64-bit Windows.
 
 ---
 
-## 5. What is the Windows Registry?
+### 5. What is the Windows Registry?
 
 **Answer**
 
@@ -100,7 +100,7 @@ The Windows Registry is a hierarchical database that stores operating system set
 
 ---
 
-## 6. What is NTFS?
+### 6. What is NTFS?
 
 **Answer**
 
@@ -115,7 +115,7 @@ NTFS (New Technology File System) is the default Windows file system that suppor
 
 ---
 
-## 7. What is the difference between FAT32, exFAT, and NTFS?
+### 7. What is the difference between FAT32, exFAT, and NTFS?
 
 | FAT32 | exFAT | NTFS |
 |--------|--------|------|
@@ -125,7 +125,7 @@ NTFS (New Technology File System) is the default Windows file system that suppor
 
 ---
 
-## 8. What is a file system?
+### 8. What is a file system?
 
 **Answer**
 
@@ -133,7 +133,7 @@ A file system organizes and manages files and directories on storage devices, en
 
 ---
 
-## 9. What is BIOS?
+### 9. What is BIOS?
 
 **Answer**
 
@@ -141,7 +141,7 @@ BIOS (Basic Input/Output System) is legacy firmware that initializes hardware an
 
 ---
 
-## 10. What is UEFI?
+### 10. What is UEFI?
 
 **Answer**
 
@@ -149,11 +149,11 @@ UEFI (Unified Extensible Firmware Interface) is the modern firmware standard tha
 
 ---
 
-# Windows Architecture Questions
+## Windows Architecture Questions
 
 ---
 
-## 11. What are the major components of Windows architecture?
+### 11. What are the major components of Windows architecture?
 
 **Answer**
 
@@ -169,7 +169,7 @@ Major components include:
 
 ---
 
-## 12. What is User Mode?
+### 12. What is User Mode?
 
 **Answer**
 
@@ -177,7 +177,7 @@ User Mode is the execution environment where applications run with restricted pr
 
 ---
 
-## 13. What is Kernel Mode?
+### 13. What is Kernel Mode?
 
 **Answer**
 
@@ -185,7 +185,7 @@ Kernel Mode provides unrestricted access to hardware and system resources. Core 
 
 ---
 
-## 14. What is the Hardware Abstraction Layer (HAL)?
+### 14. What is the Hardware Abstraction Layer (HAL)?
 
 **Answer**
 
@@ -193,7 +193,7 @@ The HAL provides a consistent interface between Windows and hardware, allowing t
 
 ---
 
-## 15. Why is Kernel Mode more privileged than User Mode?
+### 15. Why is Kernel Mode more privileged than User Mode?
 
 **Answer**
 
@@ -201,11 +201,11 @@ Kernel Mode requires unrestricted access to hardware and memory to manage system
 
 ---
 
-# Installation Questions
+## Installation Questions
 
 ---
 
-## 16. What are the minimum requirements before installing Windows?
+### 16. What are the minimum requirements before installing Windows?
 
 **Answer**
 
@@ -222,7 +222,7 @@ Always verify requirements for the specific Windows version being deployed.
 
 ---
 
-## 17. What is a clean installation?
+### 17. What is a clean installation?
 
 **Answer**
 
@@ -230,7 +230,7 @@ A clean installation installs Windows onto a new or formatted partition, removin
 
 ---
 
-## 18. What is an in-place upgrade?
+### 18. What is an in-place upgrade?
 
 **Answer**
 
@@ -238,7 +238,7 @@ An in-place upgrade installs a newer version of Windows while attempting to pres
 
 ---
 
-## 19. What is a bootable USB drive?
+### 19. What is a bootable USB drive?
 
 **Answer**
 
@@ -246,7 +246,7 @@ A bootable USB drive contains Windows installation files and is configured so th
 
 ---
 
-## 20. Why should enterprise deployments use standardized installation images?
+### 20. Why should enterprise deployments use standardized installation images?
 
 **Answer**
 
@@ -254,11 +254,11 @@ Standardized images improve consistency, reduce deployment time, simplify mainte
 
 ---
 
-# Boot Process Questions
+## Boot Process Questions
 
 ---
 
-## 21. Explain the Windows boot process.
+### 21. Explain the Windows boot process.
 
 **Answer**
 
@@ -298,7 +298,7 @@ Logon Screen
 
 ---
 
-## 22. What is Windows Boot Manager?
+### 22. What is Windows Boot Manager?
 
 **Answer**
 
@@ -306,7 +306,7 @@ Windows Boot Manager locates and starts the selected Windows installation using 
 
 ---
 
-## 23. What is BCD?
+### 23. What is BCD?
 
 **Answer**
 
@@ -314,7 +314,7 @@ The Boot Configuration Data (BCD) store contains boot configuration information 
 
 ---
 
-## 24. What is Winload?
+### 24. What is Winload?
 
 **Answer**
 
@@ -322,7 +322,7 @@ Winload loads the Windows kernel, hardware abstraction layer, and essential boot
 
 ---
 
-## 25. What is Safe Mode?
+### 25. What is Safe Mode?
 
 **Answer**
 
@@ -330,11 +330,11 @@ Safe Mode starts Windows with a minimal set of drivers and services to assist tr
 
 ---
 
-# File System Questions
+## File System Questions
 
 ---
 
-## 26. What is journaling in NTFS?
+### 26. What is journaling in NTFS?
 
 **Answer**
 
@@ -342,7 +342,7 @@ Journaling records metadata changes before they are committed, improving file sy
 
 ---
 
-## 27. What are Access Control Lists (ACLs)?
+### 27. What are Access Control Lists (ACLs)?
 
 **Answer**
 
@@ -350,7 +350,7 @@ ACLs define which users and groups are allowed or denied specific permissions on
 
 ---
 
-## 28. What is file compression?
+### 28. What is file compression?
 
 **Answer**
 
@@ -358,7 +358,7 @@ NTFS file compression reduces disk space usage by storing data in a compressed f
 
 ---
 
-## 29. What is BitLocker?
+### 29. What is BitLocker?
 
 **Answer**
 
@@ -366,7 +366,7 @@ BitLocker is Microsoft's full-disk encryption technology that protects data by e
 
 ---
 
-## 30. Why is NTFS preferred in enterprise environments?
+### 30. Why is NTFS preferred in enterprise environments?
 
 **Answer**
 
@@ -383,11 +383,11 @@ making it suitable for enterprise workloads.
 
 ---
 
-# Command Line Questions
+## Command Line Questions
 
 ---
 
-## 31. What is Command Prompt?
+### 31. What is Command Prompt?
 
 **Answer**
 
@@ -395,7 +395,7 @@ Command Prompt (cmd.exe) is a command-line interpreter used to execute administr
 
 ---
 
-## 32. What is PowerShell?
+### 32. What is PowerShell?
 
 **Answer**
 
@@ -403,7 +403,7 @@ PowerShell is Microsoft's automation and scripting platform built on the .NET fr
 
 ---
 
-## 33. What is the difference between CMD and PowerShell?
+### 33. What is the difference between CMD and PowerShell?
 
 | CMD | PowerShell |
 |------|------------|
@@ -413,7 +413,7 @@ PowerShell is Microsoft's automation and scripting platform built on the .NET fr
 
 ---
 
-## 34. What command displays the current directory?
+### 34. What command displays the current directory?
 
 **Answer**
 
@@ -423,7 +423,7 @@ cd
 
 ---
 
-## 35. Which command lists files?
+### 35. Which command lists files?
 
 **Answer**
 
@@ -433,7 +433,7 @@ dir
 
 ---
 
-## 36. Which command creates a directory?
+### 36. Which command creates a directory?
 
 **Answer**
 
@@ -443,7 +443,7 @@ mkdir FolderName
 
 ---
 
-## 37. Which command removes a directory?
+### 37. Which command removes a directory?
 
 **Answer**
 
@@ -453,7 +453,7 @@ rmdir FolderName
 
 ---
 
-## 38. Which command copies files?
+### 38. Which command copies files?
 
 **Answer**
 
@@ -465,7 +465,7 @@ For large or complex copy operations, administrators often use `robocopy`.
 
 ---
 
-## 39. Which command displays IP configuration?
+### 39. Which command displays IP configuration?
 
 **Answer**
 
@@ -475,7 +475,7 @@ ipconfig
 
 ---
 
-## 40. Which command checks connectivity?
+### 40. Which command checks connectivity?
 
 **Answer**
 
@@ -485,11 +485,11 @@ ping hostname
 
 ---
 
-# Scenario-Based Questions
+## Scenario-Based Questions
 
 ---
 
-## 41. A computer does not boot. What would you check first?
+### 41. A computer does not boot. What would you check first?
 
 **Answer**
 
@@ -504,7 +504,7 @@ A structured approach:
 
 ---
 
-## 42. A system is very slow after startup. How would you investigate?
+### 42. A system is very slow after startup. How would you investigate?
 
 **Answer**
 
@@ -520,7 +520,7 @@ I would:
 
 ---
 
-## 43. Why is documentation important during troubleshooting?
+### 43. Why is documentation important during troubleshooting?
 
 **Answer**
 
@@ -534,7 +534,7 @@ Documentation:
 
 ---
 
-## 44. Why should administrators avoid making multiple changes simultaneously?
+### 44. Why should administrators avoid making multiple changes simultaneously?
 
 **Answer**
 
@@ -542,7 +542,7 @@ Changing one variable at a time makes it easier to determine which action resolv
 
 ---
 
-## 45. What qualities make an effective Windows administrator?
+### 45. What qualities make an effective Windows administrator?
 
 **Answer**
 
@@ -559,7 +559,7 @@ Key qualities include:
 
 ---
 
-# Quick Revision Table
+## Quick Revision Table
 
 | Topic | Key Point |
 |---------|-----------|
@@ -576,7 +576,7 @@ Key qualities include:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows interview questions often begin with operating system fundamentals.
 - Understanding architecture and the boot process is essential.
@@ -586,7 +586,7 @@ Key qualities include:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Documentation
@@ -597,13 +597,13 @@ Key qualities include:
 ---
 
 
-# 27-Windows-Interview-Questions.md
+## 27-Windows-Interview-Questions.md
 
-# Part 2 — Users, Permissions, Active Directory, Group Policy, Networking, Security, and System Administration Interview Questions
+## Part 2 — Users, Permissions, Active Directory, Group Policy, Networking, Security, and System Administration Interview Questions
 
 ---
 
-# Introduction
+## Introduction
 
 Enterprise Windows interviews frequently focus on identity management, security, networking, and administration because these areas directly affect business operations.
 
@@ -620,11 +620,11 @@ The answers below are concise, technically accurate, and suitable for interviews
 
 ---
 
-# Users and Groups
+## Users and Groups
 
 ---
 
-## 46. What is the difference between a local user account and a domain user account?
+### 46. What is the difference between a local user account and a domain user account?
 
 **Answer**
 
@@ -636,7 +636,7 @@ The answers below are concise, technically accurate, and suitable for interviews
 
 ---
 
-## 47. What is Active Directory?
+### 47. What is Active Directory?
 
 **Answer**
 
@@ -644,7 +644,7 @@ Active Directory (AD) is Microsoft's centralized directory service that manages 
 
 ---
 
-## 48. What is a Domain Controller (DC)?
+### 48. What is a Domain Controller (DC)?
 
 **Answer**
 
@@ -652,7 +652,7 @@ A Domain Controller is a Windows Server that hosts Active Directory Domain Servi
 
 ---
 
-## 49. What is the difference between a workgroup and a domain?
+### 49. What is the difference between a workgroup and a domain?
 
 | Workgroup | Domain |
 |------------|--------|
@@ -662,7 +662,7 @@ A Domain Controller is a Windows Server that hosts Active Directory Domain Servi
 
 ---
 
-## 50. What is an Organizational Unit (OU)?
+### 50. What is an Organizational Unit (OU)?
 
 **Answer**
 
@@ -670,7 +670,7 @@ An Organizational Unit (OU) is a logical container in Active Directory used to o
 
 ---
 
-## 51. What is a Security Group?
+### 51. What is a Security Group?
 
 **Answer**
 
@@ -678,7 +678,7 @@ A Security Group is used to assign permissions to multiple users collectively, s
 
 ---
 
-## 52. What is a Distribution Group?
+### 52. What is a Distribution Group?
 
 **Answer**
 
@@ -686,7 +686,7 @@ A Distribution Group is primarily used for email distribution and cannot be used
 
 ---
 
-## 53. What is the principle of least privilege?
+### 53. What is the principle of least privilege?
 
 **Answer**
 
@@ -694,7 +694,7 @@ The principle of least privilege states that users and services should receive o
 
 ---
 
-## 54. Why should users avoid using administrator accounts for daily work?
+### 54. Why should users avoid using administrator accounts for daily work?
 
 **Answer**
 
@@ -702,7 +702,7 @@ Using standard user accounts reduces the risk of malware execution, accidental s
 
 ---
 
-## 55. What is User Account Control (UAC)?
+### 55. What is User Account Control (UAC)?
 
 **Answer**
 
@@ -710,11 +710,11 @@ User Account Control helps prevent unauthorized changes by prompting for approva
 
 ---
 
-# NTFS Permissions
+## NTFS Permissions
 
 ---
 
-## 56. What are NTFS permissions?
+### 56. What are NTFS permissions?
 
 **Answer**
 
@@ -722,7 +722,7 @@ NTFS permissions control access to files and folders by defining which users or 
 
 ---
 
-## 57. What is the difference between Share Permissions and NTFS Permissions?
+### 57. What is the difference between Share Permissions and NTFS Permissions?
 
 | Share Permissions | NTFS Permissions |
 |-------------------|------------------|
@@ -732,7 +732,7 @@ NTFS permissions control access to files and folders by defining which users or 
 
 ---
 
-## 58. Which permission is usually considered the most powerful?
+### 58. Which permission is usually considered the most powerful?
 
 **Answer**
 
@@ -740,7 +740,7 @@ NTFS permissions control access to files and folders by defining which users or 
 
 ---
 
-## 59. What is permission inheritance?
+### 59. What is permission inheritance?
 
 **Answer**
 
@@ -748,7 +748,7 @@ Inheritance allows child objects to automatically receive permissions from their
 
 ---
 
-## 60. What is file ownership?
+### 60. What is file ownership?
 
 **Answer**
 
@@ -756,11 +756,11 @@ Ownership determines who has authority to modify permissions on an object, even 
 
 ---
 
-# Active Directory
+## Active Directory
 
 ---
 
-## 61. What services does Active Directory provide?
+### 61. What services does Active Directory provide?
 
 **Answer**
 
@@ -775,7 +775,7 @@ Active Directory provides:
 
 ---
 
-## 62. Why is DNS critical for Active Directory?
+### 62. Why is DNS critical for Active Directory?
 
 **Answer**
 
@@ -783,7 +783,7 @@ Active Directory depends on DNS to locate Domain Controllers and other directory
 
 ---
 
-## 63. What is Kerberos?
+### 63. What is Kerberos?
 
 **Answer**
 
@@ -791,7 +791,7 @@ Kerberos is the default authentication protocol used by Active Directory to prov
 
 ---
 
-## 64. What is NTLM?
+### 64. What is NTLM?
 
 **Answer**
 
@@ -799,7 +799,7 @@ NTLM is an older authentication protocol retained for compatibility with legacy 
 
 ---
 
-## 65. What causes account lockouts?
+### 65. What causes account lockouts?
 
 **Answer**
 
@@ -813,7 +813,7 @@ Common causes include:
 
 ---
 
-## 66. What is replication?
+### 66. What is replication?
 
 **Answer**
 
@@ -821,7 +821,7 @@ Replication synchronizes Active Directory information between Domain Controllers
 
 ---
 
-## 67. Why is time synchronization important?
+### 67. Why is time synchronization important?
 
 **Answer**
 
@@ -829,7 +829,7 @@ Kerberos requires accurate time synchronization. Significant clock differences c
 
 ---
 
-## 68. What command displays applied Group Policies?
+### 68. What command displays applied Group Policies?
 
 **Answer**
 
@@ -839,7 +839,7 @@ gpresult /r
 
 ---
 
-## 69. What is RSoP?
+### 69. What is RSoP?
 
 **Answer**
 
@@ -847,7 +847,7 @@ Resultant Set of Policy (RSoP) displays the effective Group Policy settings appl
 
 ---
 
-## 70. Why would a Group Policy fail to apply?
+### 70. Why would a Group Policy fail to apply?
 
 **Answer**
 
@@ -862,11 +862,11 @@ Possible reasons:
 
 ---
 
-# Networking
+## Networking
 
 ---
 
-## 71. What command displays IP configuration?
+### 71. What command displays IP configuration?
 
 **Answer**
 
@@ -876,7 +876,7 @@ ipconfig
 
 ---
 
-## 72. What does `ipconfig /all` display?
+### 72. What does `ipconfig /all` display?
 
 **Answer**
 
@@ -891,7 +891,7 @@ Detailed network configuration including:
 
 ---
 
-## 73. What does the `ping` command do?
+### 73. What does the `ping` command do?
 
 **Answer**
 
@@ -899,7 +899,7 @@ It tests network connectivity using ICMP Echo Request and Echo Reply packets.
 
 ---
 
-## 74. What is `tracert`?
+### 74. What is `tracert`?
 
 **Answer**
 
@@ -907,7 +907,7 @@ It tests network connectivity using ICMP Echo Request and Echo Reply packets.
 
 ---
 
-## 75. What is `nslookup`?
+### 75. What is `nslookup`?
 
 **Answer**
 
@@ -915,7 +915,7 @@ It tests network connectivity using ICMP Echo Request and Echo Reply packets.
 
 ---
 
-## 76. What is DHCP?
+### 76. What is DHCP?
 
 **Answer**
 
@@ -923,7 +923,7 @@ Dynamic Host Configuration Protocol automatically assigns IP configuration infor
 
 ---
 
-## 77. What is DNS?
+### 77. What is DNS?
 
 **Answer**
 
@@ -931,7 +931,7 @@ Domain Name System translates human-readable domain names into IP addresses.
 
 ---
 
-## 78. What is the purpose of the default gateway?
+### 78. What is the purpose of the default gateway?
 
 **Answer**
 
@@ -939,7 +939,7 @@ The default gateway forwards traffic destined for networks outside the local sub
 
 ---
 
-## 79. How would you troubleshoot a user who cannot access the internet?
+### 79. How would you troubleshoot a user who cannot access the internet?
 
 **Answer**
 
@@ -954,7 +954,7 @@ I would verify:
 
 ---
 
-## 80. What command displays active network connections?
+### 80. What command displays active network connections?
 
 **Answer**
 
@@ -964,11 +964,11 @@ netstat
 
 ---
 
-# Windows Security
+## Windows Security
 
 ---
 
-## 81. What is Microsoft Defender?
+### 81. What is Microsoft Defender?
 
 **Answer**
 
@@ -976,7 +976,7 @@ Microsoft Defender is Microsoft's built-in endpoint protection solution that pro
 
 ---
 
-## 82. What is BitLocker?
+### 82. What is BitLocker?
 
 **Answer**
 
@@ -984,7 +984,7 @@ BitLocker encrypts storage volumes to protect data if a device is lost or stolen
 
 ---
 
-## 83. What is Windows Firewall?
+### 83. What is Windows Firewall?
 
 **Answer**
 
@@ -992,7 +992,7 @@ Windows Firewall filters inbound and outbound network traffic according to confi
 
 ---
 
-## 84. Why should administrators avoid disabling Windows Firewall?
+### 84. Why should administrators avoid disabling Windows Firewall?
 
 **Answer**
 
@@ -1000,7 +1000,7 @@ Disabling the firewall increases attack surface and removes an important layer o
 
 ---
 
-## 85. What is Secure Boot?
+### 85. What is Secure Boot?
 
 **Answer**
 
@@ -1008,7 +1008,7 @@ Secure Boot verifies trusted boot components before Windows starts, helping prev
 
 ---
 
-## 86. What is Credential Guard?
+### 86. What is Credential Guard?
 
 **Answer**
 
@@ -1016,7 +1016,7 @@ Credential Guard protects authentication secrets using virtualization-based secu
 
 ---
 
-## 87. What is Windows Hello?
+### 87. What is Windows Hello?
 
 **Answer**
 
@@ -1024,7 +1024,7 @@ Windows Hello provides modern authentication methods such as biometrics and PIN-
 
 ---
 
-## 88. What is Event Viewer?
+### 88. What is Event Viewer?
 
 **Answer**
 
@@ -1032,7 +1032,7 @@ Event Viewer displays Windows logs for applications, security, system events, an
 
 ---
 
-## 89. What is Windows Recovery Environment (WinRE)?
+### 89. What is Windows Recovery Environment (WinRE)?
 
 **Answer**
 
@@ -1040,7 +1040,7 @@ WinRE provides recovery tools such as Startup Repair, System Restore, Command Pr
 
 ---
 
-## 90. What is Safe Mode?
+### 90. What is Safe Mode?
 
 **Answer**
 
@@ -1048,11 +1048,11 @@ Safe Mode starts Windows with only essential drivers and services, allowing admi
 
 ---
 
-# Windows Administration
+## Windows Administration
 
 ---
 
-## 91. What is Task Manager used for?
+### 91. What is Task Manager used for?
 
 **Answer**
 
@@ -1060,7 +1060,7 @@ Task Manager monitors running processes, resource utilization, startup applicati
 
 ---
 
-## 92. What is Performance Monitor?
+### 92. What is Performance Monitor?
 
 **Answer**
 
@@ -1068,7 +1068,7 @@ Performance Monitor collects and analyzes detailed performance counters over tim
 
 ---
 
-## 93. What is Resource Monitor?
+### 93. What is Resource Monitor?
 
 **Answer**
 
@@ -1076,7 +1076,7 @@ Resource Monitor provides detailed real-time information about CPU, memory, disk
 
 ---
 
-## 94. What is Reliability Monitor?
+### 94. What is Reliability Monitor?
 
 **Answer**
 
@@ -1084,7 +1084,7 @@ Reliability Monitor provides a timeline of application failures, Windows updates
 
 ---
 
-## 95. What is Device Manager?
+### 95. What is Device Manager?
 
 **Answer**
 
@@ -1092,7 +1092,7 @@ Device Manager manages hardware devices, drivers, and hardware configuration whi
 
 ---
 
-## 96. What is Windows Update?
+### 96. What is Windows Update?
 
 **Answer**
 
@@ -1100,7 +1100,7 @@ Windows Update installs security patches, feature updates, quality updates, and 
 
 ---
 
-## 97. Why is patch management important?
+### 97. Why is patch management important?
 
 **Answer**
 
@@ -1108,7 +1108,7 @@ Patch management reduces security vulnerabilities, improves stability, fixes bug
 
 ---
 
-## 98. What is CHKDSK?
+### 98. What is CHKDSK?
 
 **Answer**
 
@@ -1116,7 +1116,7 @@ CHKDSK checks and repairs logical file system errors and can identify bad sector
 
 ---
 
-## 99. What is SFC?
+### 99. What is SFC?
 
 **Answer**
 
@@ -1124,7 +1124,7 @@ System File Checker (`sfc /scannow`) verifies and repairs protected Windows syst
 
 ---
 
-## 100. What is DISM?
+### 100. What is DISM?
 
 **Answer**
 
@@ -1138,7 +1138,7 @@ DISM /Online /Cleanup-Image /RestoreHealth
 
 ---
 
-# Quick Revision Table
+## Quick Revision Table
 
 | Topic | Key Point |
 |--------|-----------|
@@ -1155,7 +1155,7 @@ DISM /Online /Cleanup-Image /RestoreHealth
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Active Directory and DNS are tightly integrated.
 - Group Policy management is a common interview topic.
@@ -1165,7 +1165,7 @@ DISM /Online /Cleanup-Image /RestoreHealth
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Active Directory Documentation
@@ -1177,13 +1177,13 @@ DISM /Online /Cleanup-Image /RestoreHealth
 
 ---
 
-# 27-Windows-Interview-Questions.md
+## 27-Windows-Interview-Questions.md
 
-# Part 3 — Windows Troubleshooting, PowerShell, Services, Registry, Sysinternals, Cybersecurity, and Advanced Scenario-Based Interview Questions
+## Part 3 — Windows Troubleshooting, PowerShell, Services, Registry, Sysinternals, Cybersecurity, and Advanced Scenario-Based Interview Questions
 
 ---
 
-# Introduction
+## Introduction
 
 Intermediate and advanced Windows interviews focus less on memorization and more on your ability to troubleshoot, automate, secure, and explain your decision-making process.
 
@@ -1201,11 +1201,11 @@ The questions below emphasize practical enterprise experience.
 
 ---
 
-# Windows Troubleshooting
+## Windows Troubleshooting
 
 ---
 
-## 101. A Windows system is running very slowly. How would you troubleshoot it?
+### 101. A Windows system is running very slowly. How would you troubleshoot it?
 
 **Answer**
 
@@ -1222,7 +1222,7 @@ I would follow a structured process:
 
 ---
 
-## 102. A user reports that Windows does not boot after an update. What would you do?
+### 102. A user reports that Windows does not boot after an update. What would you do?
 
 **Answer**
 
@@ -1237,7 +1237,7 @@ I would follow a structured process:
 
 ---
 
-## 103. How would you troubleshoot high CPU utilization?
+### 103. How would you troubleshoot high CPU utilization?
 
 **Answer**
 
@@ -1253,7 +1253,7 @@ I would:
 
 ---
 
-## 104. How would you troubleshoot high disk usage?
+### 104. How would you troubleshoot high disk usage?
 
 **Answer**
 
@@ -1270,7 +1270,7 @@ I would use Resource Monitor and Performance Monitor to identify the process res
 
 ---
 
-## 105. What tools would you use for Windows troubleshooting?
+### 105. What tools would you use for Windows troubleshooting?
 
 **Answer**
 
@@ -1288,11 +1288,11 @@ Common tools include:
 
 ---
 
-# Windows Services
+## Windows Services
 
 ---
 
-## 106. What is a Windows Service?
+### 106. What is a Windows Service?
 
 **Answer**
 
@@ -1300,7 +1300,7 @@ A Windows Service is a background process that starts automatically or manually 
 
 ---
 
-## 107. What startup types are available for Windows Services?
+### 107. What startup types are available for Windows Services?
 
 **Answer**
 
@@ -1313,7 +1313,7 @@ Startup type should be selected based on operational requirements.
 
 ---
 
-## 108. What should you check if a service fails to start?
+### 108. What should you check if a service fails to start?
 
 **Answer**
 
@@ -1326,7 +1326,7 @@ Startup type should be selected based on operational requirements.
 
 ---
 
-## 109. Why should you avoid disabling services unnecessarily?
+### 109. Why should you avoid disabling services unnecessarily?
 
 **Answer**
 
@@ -1334,7 +1334,7 @@ Disabling services may affect applications, security features, or operating syst
 
 ---
 
-## 110. How can you restart a service?
+### 110. How can you restart a service?
 
 **Answer**
 
@@ -1353,11 +1353,11 @@ Restart-Service ServiceName
 
 ---
 
-# Windows Registry
+## Windows Registry
 
 ---
 
-## 111. What is the Windows Registry?
+### 111. What is the Windows Registry?
 
 **Answer**
 
@@ -1365,7 +1365,7 @@ The Windows Registry is a hierarchical database storing operating system, applic
 
 ---
 
-## 112. What precautions should be taken before editing the Registry?
+### 112. What precautions should be taken before editing the Registry?
 
 **Answer**
 
@@ -1376,7 +1376,7 @@ The Windows Registry is a hierarchical database storing operating system, applic
 
 ---
 
-## 113. Which tool edits the Registry?
+### 113. Which tool edits the Registry?
 
 **Answer**
 
@@ -1386,7 +1386,7 @@ regedit.exe
 
 ---
 
-## 114. Why is the Registry important?
+### 114. Why is the Registry important?
 
 **Answer**
 
@@ -1394,7 +1394,7 @@ Many Windows and application settings are stored in the Registry. Incorrect modi
 
 ---
 
-## 115. Can Registry corruption prevent Windows from booting?
+### 115. Can Registry corruption prevent Windows from booting?
 
 **Answer**
 
@@ -1402,11 +1402,11 @@ Yes. Corrupted Registry hives may prevent successful startup or cause applicatio
 
 ---
 
-# PowerShell
+## PowerShell
 
 ---
 
-## 116. Why is PowerShell preferred over CMD for administration?
+### 116. Why is PowerShell preferred over CMD for administration?
 
 **Answer**
 
@@ -1420,7 +1420,7 @@ PowerShell provides:
 
 ---
 
-## 117. How do you display running processes in PowerShell?
+### 117. How do you display running processes in PowerShell?
 
 **Answer**
 
@@ -1430,7 +1430,7 @@ Get-Process
 
 ---
 
-## 118. How do you list Windows services?
+### 118. How do you list Windows services?
 
 **Answer**
 
@@ -1440,7 +1440,7 @@ Get-Service
 
 ---
 
-## 119. How do you retrieve event logs?
+### 119. How do you retrieve event logs?
 
 **Answer**
 
@@ -1452,7 +1452,7 @@ Get-WinEvent
 
 ---
 
-## 120. Why is PowerShell important in enterprise environments?
+### 120. Why is PowerShell important in enterprise environments?
 
 **Answer**
 
@@ -1460,11 +1460,11 @@ PowerShell enables automation, configuration management, reporting, remote admin
 
 ---
 
-# Sysinternals
+## Sysinternals
 
 ---
 
-## 121. What is Process Explorer?
+### 121. What is Process Explorer?
 
 **Answer**
 
@@ -1472,7 +1472,7 @@ Process Explorer is an advanced process analysis tool that displays parent-child
 
 ---
 
-## 122. What is Process Monitor?
+### 122. What is Process Monitor?
 
 **Answer**
 
@@ -1480,7 +1480,7 @@ Process Monitor captures real-time file system, Registry, process, and thread ac
 
 ---
 
-## 123. What is Autoruns?
+### 123. What is Autoruns?
 
 **Answer**
 
@@ -1488,7 +1488,7 @@ Autoruns displays applications and components configured to start automatically,
 
 ---
 
-## 124. What is TCPView?
+### 124. What is TCPView?
 
 **Answer**
 
@@ -1496,7 +1496,7 @@ TCPView displays active TCP and UDP connections along with the associated proces
 
 ---
 
-## 125. Why are Sysinternals tools widely used?
+### 125. Why are Sysinternals tools widely used?
 
 **Answer**
 
@@ -1504,11 +1504,11 @@ They provide deeper visibility into Windows internals than many built-in adminis
 
 ---
 
-# Windows Security
+## Windows Security
 
 ---
 
-## 126. What would you investigate if multiple failed logon attempts appear in Event Viewer?
+### 126. What would you investigate if multiple failed logon attempts appear in Event Viewer?
 
 **Answer**
 
@@ -1525,7 +1525,7 @@ This helps determine whether the activity is accidental or malicious.
 
 ---
 
-## 127. What is the principle of defense in depth?
+### 127. What is the principle of defense in depth?
 
 **Answer**
 
@@ -1533,7 +1533,7 @@ Defense in depth uses multiple complementary security controls so that the failu
 
 ---
 
-## 128. What is privilege escalation?
+### 128. What is privilege escalation?
 
 **Answer**
 
@@ -1541,7 +1541,7 @@ Privilege escalation occurs when a user or process gains permissions beyond thos
 
 ---
 
-## 129. Why should administrators regularly review security logs?
+### 129. Why should administrators regularly review security logs?
 
 **Answer**
 
@@ -1555,7 +1555,7 @@ Security logs help identify:
 
 ---
 
-## 130. What is the difference between authentication and authorization?
+### 130. What is the difference between authentication and authorization?
 
 | Authentication | Authorization |
 |---------------|---------------|
@@ -1564,11 +1564,11 @@ Security logs help identify:
 
 ---
 
-# Advanced Scenario Questions
+## Advanced Scenario Questions
 
 ---
 
-## 131. A user cannot access a shared folder. How would you troubleshoot?
+### 131. A user cannot access a shared folder. How would you troubleshoot?
 
 **Answer**
 
@@ -1584,7 +1584,7 @@ I would verify:
 
 ---
 
-## 132. Group Policy is not applying. What would you check?
+### 132. Group Policy is not applying. What would you check?
 
 **Answer**
 
@@ -1599,7 +1599,7 @@ I would verify:
 
 ---
 
-## 133. A Domain Controller becomes unavailable. What is the impact?
+### 133. A Domain Controller becomes unavailable. What is the impact?
 
 **Answer**
 
@@ -1614,7 +1614,7 @@ If redundant Domain Controllers exist, the impact is often reduced.
 
 ---
 
-## 134. A system repeatedly experiences BSODs. What is your approach?
+### 134. A system repeatedly experiences BSODs. What is your approach?
 
 **Answer**
 
@@ -1630,7 +1630,7 @@ I would:
 
 ---
 
-## 135. Users report slow logon times after a new GPO deployment. What would you investigate?
+### 135. Users report slow logon times after a new GPO deployment. What would you investigate?
 
 **Answer**
 
@@ -1645,7 +1645,7 @@ Possible causes:
 
 ---
 
-## 136. A workstation repeatedly locks user accounts. What might cause this?
+### 136. A workstation repeatedly locks user accounts. What might cause this?
 
 **Answer**
 
@@ -1659,7 +1659,7 @@ Potential causes:
 
 ---
 
-## 137. An application suddenly stops working after a Windows update. What should you do?
+### 137. An application suddenly stops working after a Windows update. What should you do?
 
 **Answer**
 
@@ -1672,7 +1672,7 @@ Potential causes:
 
 ---
 
-## 138. How would you prioritize multiple simultaneous incidents?
+### 138. How would you prioritize multiple simultaneous incidents?
 
 **Answer**
 
@@ -1686,7 +1686,7 @@ Prioritization should consider:
 
 ---
 
-## 139. A server's disk is nearly full. What actions would you take?
+### 139. A server's disk is nearly full. What actions would you take?
 
 **Answer**
 
@@ -1699,7 +1699,7 @@ Prioritization should consider:
 
 ---
 
-## 140. What is Root Cause Analysis (RCA)?
+### 140. What is Root Cause Analysis (RCA)?
 
 **Answer**
 
@@ -1707,11 +1707,11 @@ Root Cause Analysis identifies the underlying cause of an issue so that correcti
 
 ---
 
-# HR + Technical Combined Questions
+## HR + Technical Combined Questions
 
 ---
 
-## 141. Why do you want to work as a Windows Administrator?
+### 141. Why do you want to work as a Windows Administrator?
 
 **Sample Answer**
 
@@ -1719,7 +1719,7 @@ Root Cause Analysis identifies the underlying cause of an issue so that correcti
 
 ---
 
-## 142. Describe a challenging technical issue you solved.
+### 142. Describe a challenging technical issue you solved.
 
 **Sample Answer**
 
@@ -1732,7 +1732,7 @@ Describe the situation using the STAR method:
 
 ---
 
-## 143. How do you keep your Windows knowledge current?
+### 143. How do you keep your Windows knowledge current?
 
 **Sample Answer**
 
@@ -1740,7 +1740,7 @@ Describe the situation using the STAR method:
 
 ---
 
-## 144. How do you handle pressure during major incidents?
+### 144. How do you handle pressure during major incidents?
 
 **Sample Answer**
 
@@ -1748,7 +1748,7 @@ Describe the situation using the STAR method:
 
 ---
 
-## 145. Why should we hire you?
+### 145. Why should we hire you?
 
 **Sample Answer**
 
@@ -1756,7 +1756,7 @@ Describe the situation using the STAR method:
 
 ---
 
-# Quick Revision Table
+## Quick Revision Table
 
 | Topic | Remember |
 |--------|----------|
@@ -1773,7 +1773,7 @@ Describe the situation using the STAR method:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Scenario-based questions assess analytical thinking.
 - PowerShell knowledge is expected in modern Windows administration.
@@ -1783,7 +1783,7 @@ Describe the situation using the STAR method:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Sysinternals Documentation
@@ -1794,13 +1794,13 @@ Describe the situation using the STAR method:
 
 ---
 
-# 27-Windows-Interview-Questions.md
+## 27-Windows-Interview-Questions.md
 
-# Part 4 — Expert Windows Interview Questions, Rapid-Fire Round, Hands-on Tasks, HR Scenarios, Final Revision, and Chapter Summary
+## Part 4 — Expert Windows Interview Questions, Rapid-Fire Round, Hands-on Tasks, HR Scenarios, Final Revision, and Chapter Summary
 
 ---
 
-# Introduction
+## Introduction
 
 Senior-level Windows interviews evaluate more than technical knowledge. Interviewers assess:
 
@@ -1816,11 +1816,11 @@ This section provides advanced questions, practical tasks, and revision material
 
 ---
 
-# Expert-Level Technical Questions
+## Expert-Level Technical Questions
 
 ---
 
-## 146. Explain the Windows boot process in detail.
+### 146. Explain the Windows boot process in detail.
 
 **Sample Answer**
 
@@ -1828,7 +1828,7 @@ The Windows boot process begins when the system firmware (UEFI or BIOS) initiali
 
 ---
 
-## 147. Explain the difference between a process and a thread.
+### 147. Explain the difference between a process and a thread.
 
 **Answer**
 
@@ -1841,7 +1841,7 @@ The Windows boot process begins when the system firmware (UEFI or BIOS) initiali
 
 ---
 
-## 148. Explain virtual memory.
+### 148. Explain virtual memory.
 
 **Answer**
 
@@ -1849,7 +1849,7 @@ Virtual memory extends physical RAM by using disk storage (page file) when memor
 
 ---
 
-## 149. Explain the relationship between Active Directory, DNS, and Kerberos.
+### 149. Explain the relationship between Active Directory, DNS, and Kerberos.
 
 **Answer**
 
@@ -1861,7 +1861,7 @@ Without properly functioning DNS, Kerberos authentication and Active Directory s
 
 ---
 
-## 150. Explain why Group Policy processing depends on Active Directory.
+### 150. Explain why Group Policy processing depends on Active Directory.
 
 **Answer**
 
@@ -1869,11 +1869,11 @@ Group Policy Objects (GPOs) are stored and linked through Active Directory. Duri
 
 ---
 
-# Practical Hands-on Interview Tasks
+## Practical Hands-on Interview Tasks
 
 ---
 
-## Task 1 — Troubleshoot High CPU Usage
+### Task 1 — Troubleshoot High CPU Usage
 
 **Scenario**
 
@@ -1892,7 +1892,7 @@ A user's computer is consistently using 100% CPU.
 
 ---
 
-## Task 2 — Resolve "Access Denied"
+### Task 2 — Resolve "Access Denied"
 
 **Scenario**
 
@@ -1909,7 +1909,7 @@ A user cannot modify files in a shared folder.
 
 ---
 
-## Task 3 — Group Policy Failure
+### Task 3 — Group Policy Failure
 
 **Scenario**
 
@@ -1927,7 +1927,7 @@ A mapped drive policy is not applied.
 
 ---
 
-## Task 4 — Boot Failure
+### Task 4 — Boot Failure
 
 **Scenario**
 
@@ -1945,7 +1945,7 @@ Windows displays "Preparing Automatic Repair."
 
 ---
 
-## Task 5 — Network Connectivity
+### Task 5 — Network Connectivity
 
 **Scenario**
 
@@ -1987,13 +1987,13 @@ Validate Resolution
 
 ---
 
-# Rapid-Fire Interview Round
+## Rapid-Fire Interview Round
 
 Provide concise answers.
 
 ---
 
-### 151. What command displays running processes in PowerShell?
+#### 151. What command displays running processes in PowerShell?
 
 ```powershell
 Get-Process
@@ -2001,7 +2001,7 @@ Get-Process
 
 ---
 
-### 152. Which command lists services?
+#### 152. Which command lists services?
 
 ```powershell
 Get-Service
@@ -2009,7 +2009,7 @@ Get-Service
 
 ---
 
-### 153. Which command repairs protected Windows system files?
+#### 153. Which command repairs protected Windows system files?
 
 ```cmd
 sfc /scannow
@@ -2017,7 +2017,7 @@ sfc /scannow
 
 ---
 
-### 154. Which command repairs the Windows image?
+#### 154. Which command repairs the Windows image?
 
 ```cmd
 DISM /Online /Cleanup-Image /RestoreHealth
@@ -2025,7 +2025,7 @@ DISM /Online /Cleanup-Image /RestoreHealth
 
 ---
 
-### 155. Which command displays detailed network configuration?
+#### 155. Which command displays detailed network configuration?
 
 ```cmd
 ipconfig /all
@@ -2033,7 +2033,7 @@ ipconfig /all
 
 ---
 
-### 156. Which tool edits the Registry?
+#### 156. Which tool edits the Registry?
 
 ```
 regedit
@@ -2041,7 +2041,7 @@ regedit
 
 ---
 
-### 157. Which tool displays hardware devices?
+#### 157. Which tool displays hardware devices?
 
 ```
 Device Manager
@@ -2049,7 +2049,7 @@ Device Manager
 
 ---
 
-### 158. Which tool displays event logs?
+#### 158. Which tool displays event logs?
 
 ```
 Event Viewer
@@ -2057,7 +2057,7 @@ Event Viewer
 
 ---
 
-### 159. Which service manages Windows services?
+#### 159. Which service manages Windows services?
 
 ```
 Service Control Manager (SCM)
@@ -2065,7 +2065,7 @@ Service Control Manager (SCM)
 
 ---
 
-### 160. Which authentication protocol does Active Directory use by default?
+#### 160. Which authentication protocol does Active Directory use by default?
 
 ```
 Kerberos
@@ -2073,7 +2073,7 @@ Kerberos
 
 ---
 
-### 161. What does BCD stand for?
+#### 161. What does BCD stand for?
 
 ```
 Boot Configuration Data
@@ -2081,7 +2081,7 @@ Boot Configuration Data
 
 ---
 
-### 162. Which file system supports ACLs?
+#### 162. Which file system supports ACLs?
 
 ```
 NTFS
@@ -2089,7 +2089,7 @@ NTFS
 
 ---
 
-### 163. Which built-in encryption technology protects Windows drives?
+#### 163. Which built-in encryption technology protects Windows drives?
 
 ```
 BitLocker
@@ -2097,7 +2097,7 @@ BitLocker
 
 ---
 
-### 164. What is the default command-line interpreter?
+#### 164. What is the default command-line interpreter?
 
 ```
 cmd.exe
@@ -2105,7 +2105,7 @@ cmd.exe
 
 ---
 
-### 165. Which Windows feature protects credentials using virtualization?
+#### 165. Which Windows feature protects credentials using virtualization?
 
 ```
 Credential Guard
@@ -2113,11 +2113,11 @@ Credential Guard
 
 ---
 
-# HR + Behavioral Questions
+## HR + Behavioral Questions
 
 ---
 
-## 166. Describe a time you solved a difficult technical issue.
+### 166. Describe a time you solved a difficult technical issue.
 
 **Recommended Approach**
 
@@ -2132,7 +2132,7 @@ Emphasize structured troubleshooting, communication, and measurable outcomes.
 
 ---
 
-## 167. How do you prioritize support tickets?
+### 167. How do you prioritize support tickets?
 
 **Sample Answer**
 
@@ -2140,7 +2140,7 @@ Emphasize structured troubleshooting, communication, and measurable outcomes.
 
 ---
 
-## 168. What would you do if you did not know the answer?
+### 168. What would you do if you did not know the answer?
 
 **Sample Answer**
 
@@ -2148,7 +2148,7 @@ Emphasize structured troubleshooting, communication, and measurable outcomes.
 
 ---
 
-## 169. How do you communicate with non-technical users?
+### 169. How do you communicate with non-technical users?
 
 **Sample Answer**
 
@@ -2156,7 +2156,7 @@ Emphasize structured troubleshooting, communication, and measurable outcomes.
 
 ---
 
-## 170. How do you handle conflicting priorities?
+### 170. How do you handle conflicting priorities?
 
 **Sample Answer**
 
@@ -2164,7 +2164,7 @@ Emphasize structured troubleshooting, communication, and measurable outcomes.
 
 ---
 
-# Common Interview Mistakes
+## Common Interview Mistakes
 
 Avoid:
 
@@ -2179,7 +2179,7 @@ Avoid:
 
 ---
 
-# Enterprise Best Practices to Mention
+## Enterprise Best Practices to Mention
 
 Interviewers appreciate candidates who discuss:
 
@@ -2196,7 +2196,7 @@ Interviewers appreciate candidates who discuss:
 
 ---
 
-# Final Revision Cheat Sheet
+## Final Revision Cheat Sheet
 
 | Area | Remember |
 |------|----------|
@@ -2224,13 +2224,13 @@ Interviewers appreciate candidates who discuss:
 
 ---
 
-# 30-Second Self-Introduction (Windows Administrator)
+## 30-Second Self-Introduction (Windows Administrator)
 
 > "I am a Windows and cybersecurity professional with strong knowledge of Windows administration, Active Directory, Group Policy, PowerShell, networking, troubleshooting, and endpoint security. I enjoy solving technical problems using a structured approach, automating repetitive tasks, and maintaining secure, reliable enterprise environments. I continuously improve my skills through hands-on labs, Microsoft documentation, and practical projects."
 
 ---
 
-# One-Minute Interview Summary
+## One-Minute Interview Summary
 
 If asked to summarize your strengths:
 
@@ -2238,7 +2238,7 @@ If asked to summarize your strengths:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 This chapter covered:
 
@@ -2266,7 +2266,7 @@ Together, these topics provide a strong foundation for Windows support, administ
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Explain concepts clearly instead of memorizing definitions.
 - Follow structured troubleshooting methodologies.
@@ -2277,7 +2277,7 @@ Together, these topics provide a strong foundation for Windows support, administ
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Windows Documentation
@@ -2291,7 +2291,7 @@ Together, these topics provide a strong foundation for Windows support, administ
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 27 – Windows Interview Questions**.
 

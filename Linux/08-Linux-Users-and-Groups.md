@@ -1,10 +1,10 @@
 # 08 - Linux Users and Groups
 
-# Part 1 — Linux User Management Fundamentals, User IDs (UID), Group IDs (GID), User Types, `/etc/passwd`, `/etc/shadow`, and `/etc/group`
+## Part 1 — Linux User Management Fundamentals, User IDs (UID), Group IDs (GID), User Types, `/etc/passwd`, `/etc/shadow`, and `/etc/group`
 
 ---
 
-# Introduction
+## Introduction
 
 Linux is a **multi-user operating system**, meaning multiple users can access and use the same system simultaneously while remaining isolated from one another.
 
@@ -28,7 +28,7 @@ Proper user and group management is fundamental to:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -43,7 +43,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# Why User Management Matters
+## Why User Management Matters
 
 Every enterprise Linux server may have:
 
@@ -67,7 +67,7 @@ Without proper account management:
 
 ---
 
-# Linux User Architecture
+## Linux User Architecture
 
 ```text
                 Linux System
@@ -90,7 +90,7 @@ The kernel uses numeric user and group identifiers to enforce access control.
 
 ---
 
-# What is a User?
+## What is a User?
 
 A **user** represents an identity recognized by the operating system.
 
@@ -117,7 +117,7 @@ Shell: /bin/bash
 
 ---
 
-# User Types
+## User Types
 
 Linux systems generally contain three categories of users.
 
@@ -129,7 +129,7 @@ Linux systems generally contain three categories of users.
 
 ---
 
-# Root User
+## Root User
 
 The **root** account is the most privileged account on a Linux system.
 
@@ -155,7 +155,7 @@ UID: 0
 
 ---
 
-# Regular Users
+## Regular Users
 
 Regular users perform everyday tasks.
 
@@ -175,7 +175,7 @@ Regular users generally cannot:
 
 ---
 
-# System Users
+## System Users
 
 Many Linux services run under dedicated service accounts.
 
@@ -208,7 +208,7 @@ Running each service under its own account limits the impact of compromise.
 
 ---
 
-# User Identification
+## User Identification
 
 Linux identifies users internally by **User ID (UID)** rather than username.
 
@@ -234,7 +234,7 @@ The kernel makes authorization decisions based on numeric IDs.
 
 ---
 
-# User ID (UID)
+## User ID (UID)
 
 Each user has a unique numeric identifier.
 
@@ -250,7 +250,7 @@ Typical ranges (may vary by distribution):
 
 ---
 
-# Why UID Matters
+## Why UID Matters
 
 The filesystem stores ownership using numeric IDs.
 
@@ -272,7 +272,7 @@ The username displayed by tools such as `ls` is derived by mapping the UID to an
 
 ---
 
-# Group IDs (GID)
+## Group IDs (GID)
 
 Every group also has a numeric identifier.
 
@@ -294,7 +294,7 @@ Like UIDs, GIDs are used internally by the kernel.
 
 ---
 
-# What is a Group?
+## What is a Group?
 
 A group is a collection of users who share permissions.
 
@@ -314,7 +314,7 @@ Groups simplify permission management by assigning access to multiple users coll
 
 ---
 
-# Why Groups Exist
+## Why Groups Exist
 
 Without groups:
 
@@ -354,7 +354,7 @@ Managing permissions becomes significantly simpler.
 
 ---
 
-# Primary Group
+## Primary Group
 
 Each user has one **primary group**.
 
@@ -380,7 +380,7 @@ New files created by the user typically inherit the user's primary group, subjec
 
 ---
 
-# Supplementary Groups
+## Supplementary Groups
 
 Users may belong to multiple additional groups.
 
@@ -402,7 +402,7 @@ This allows a single account to receive permissions for multiple roles.
 
 ---
 
-# Viewing Current User
+## Viewing Current User
 
 Display the current username:
 
@@ -418,7 +418,7 @@ alice
 
 ---
 
-# Display User Information
+## Display User Information
 
 Show UID, GID, and group memberships:
 
@@ -438,7 +438,7 @@ groups=1001(alice),27(sudo),998(docker)
 
 ---
 
-# Display Logged-In Users
+## Display Logged-In Users
 
 List active sessions:
 
@@ -456,7 +456,7 @@ The `w` command also displays system load and user activity.
 
 ---
 
-# The `/etc/passwd` File
+## The `/etc/passwd` File
 
 User account information is stored in:
 
@@ -468,7 +468,7 @@ Despite its name, modern Linux systems do **not** store password hashes in this 
 
 ---
 
-# Example Entry
+## Example Entry
 
 ```text
 alice:x:1001:1001:Alice:/home/alice:/bin/bash
@@ -478,7 +478,7 @@ Each field is separated by a colon (`:`).
 
 ---
 
-# `/etc/passwd` Structure
+## `/etc/passwd` Structure
 
 | Field | Description |
 |----------|-------------|
@@ -492,7 +492,7 @@ Each field is separated by a colon (`:`).
 
 ---
 
-# Password Placeholder
+## Password Placeholder
 
 Example:
 
@@ -510,7 +510,7 @@ This separation improves security.
 
 ---
 
-# Home Directory
+## Home Directory
 
 Example:
 
@@ -530,7 +530,7 @@ Each user typically has a dedicated home directory.
 
 ---
 
-# Login Shell
+## Login Shell
 
 Example:
 
@@ -552,7 +552,7 @@ Service accounts often use non-interactive shells.
 
 ---
 
-# The `/etc/shadow` File
+## The `/etc/shadow` File
 
 Password hashes are stored in:
 
@@ -570,7 +570,7 @@ Unlike `/etc/passwd`, access to this file is restricted because it contains sens
 
 ---
 
-# `/etc/shadow` Fields
+## `/etc/shadow` Fields
 
 | Field | Description |
 |----------|-------------|
@@ -586,7 +586,7 @@ Unlike `/etc/passwd`, access to this file is restricted because it contains sens
 
 ---
 
-# Password Hashes
+## Password Hashes
 
 Modern Linux systems typically use strong password hashing algorithms such as:
 
@@ -599,7 +599,7 @@ Password hashes are designed to make recovering the original password computatio
 
 ---
 
-# The `/etc/group` File
+## The `/etc/group` File
 
 Group information is stored in:
 
@@ -615,7 +615,7 @@ developers:x:1002:alice,bob,charlie
 
 ---
 
-# `/etc/group` Structure
+## `/etc/group` Structure
 
 | Field | Description |
 |----------|-------------|
@@ -626,7 +626,7 @@ developers:x:1002:alice,bob,charlie
 
 ---
 
-# Relationship Between User Files
+## Relationship Between User Files
 
 ```text
            User Login
@@ -654,7 +654,7 @@ Together, these files define user identities, authentication information, and gr
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 User accounts are a primary target during attacks.
 
@@ -675,7 +675,7 @@ Security teams should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Proper user management helps organizations:
 
@@ -688,7 +688,7 @@ Proper user management helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Assign unique accounts to each user.
 - Avoid sharing privileged accounts.
@@ -700,7 +700,7 @@ Proper user management helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux identifies users and groups using numeric UIDs and GIDs.
 - Root, regular users, and service accounts serve different purposes.
@@ -711,11 +711,11 @@ Proper user management helps organizations:
 ---
 
 
-# Part 2 — User Creation, User Modification, User Deletion, Group Management, Password Management, and Account Administration
+## Part 2 — User Creation, User Modification, User Deletion, Group Management, Password Management, and Account Administration
 
 ---
 
-# Introduction
+## Introduction
 
 Creating and managing user accounts is one of the primary responsibilities of a Linux administrator.
 
@@ -734,7 +734,7 @@ Proper account lifecycle management is critical for both security and operationa
 
 ---
 
-# User Lifecycle
+## User Lifecycle
 
 ```text
 Create User
@@ -772,7 +772,7 @@ A structured lifecycle ensures that user access aligns with organizational polic
 
 ---
 
-# Creating Users
+## Creating Users
 
 Linux provides dedicated utilities for user creation.
 
@@ -785,7 +785,7 @@ Common commands:
 
 ---
 
-# Create a User
+## Create a User
 
 Example:
 
@@ -799,7 +799,7 @@ Depending on system defaults, a home directory may not be created automatically.
 
 ---
 
-# Create Home Directory
+## Create Home Directory
 
 Create a user with a home directory:
 
@@ -817,7 +817,7 @@ The `-m` option creates the user's home directory if it does not already exist.
 
 ---
 
-# Specify Login Shell
+## Specify Login Shell
 
 Example:
 
@@ -834,7 +834,7 @@ Options:
 
 ---
 
-# Specify User ID
+## Specify User ID
 
 Example:
 
@@ -848,7 +848,7 @@ Unique UIDs should be maintained to avoid ownership conflicts.
 
 ---
 
-# Specify Primary Group
+## Specify Primary Group
 
 Example:
 
@@ -860,7 +860,7 @@ The specified group becomes the user's primary group.
 
 ---
 
-# Add Supplementary Groups
+## Add Supplementary Groups
 
 Example:
 
@@ -872,7 +872,7 @@ The user joins multiple additional groups.
 
 ---
 
-# Complete User Creation Example
+## Complete User Creation Example
 
 ```bash
 sudo useradd \
@@ -892,7 +892,7 @@ This creates:
 
 ---
 
-# Set Password
+## Set Password
 
 Assign or change a password:
 
@@ -904,7 +904,7 @@ The administrator is prompted to enter and confirm the new password.
 
 ---
 
-# Password Workflow
+## Password Workflow
 
 ```text
 Administrator
@@ -930,7 +930,7 @@ Passwords are stored as hashes rather than plaintext.
 
 ---
 
-# Force Password Change
+## Force Password Change
 
 Require a password change at next login:
 
@@ -942,7 +942,7 @@ Useful after password resets.
 
 ---
 
-# Lock a Password
+## Lock a Password
 
 Disable password authentication:
 
@@ -954,7 +954,7 @@ The account remains present, but password-based login is prevented.
 
 ---
 
-# Unlock a Password
+## Unlock a Password
 
 Re-enable password authentication:
 
@@ -966,7 +966,7 @@ This reverses a previous password lock.
 
 ---
 
-# View Password Status
+## View Password Status
 
 ```bash
 sudo passwd -S alice
@@ -982,7 +982,7 @@ The exact format may vary by distribution.
 
 ---
 
-# Modify User Accounts
+## Modify User Accounts
 
 Use:
 
@@ -994,7 +994,7 @@ This command updates existing user account settings.
 
 ---
 
-# Change Login Shell
+## Change Login Shell
 
 Example:
 
@@ -1010,7 +1010,7 @@ The user's default shell becomes:
 
 ---
 
-# Change Home Directory
+## Change Home Directory
 
 Example:
 
@@ -1028,7 +1028,7 @@ The `-m` option moves the contents of the old home directory.
 
 ---
 
-# Rename a User
+## Rename a User
 
 Example:
 
@@ -1042,7 +1042,7 @@ Additional updates (such as renaming the home directory) may be required separat
 
 ---
 
-# Add User to a Group
+## Add User to a Group
 
 Example:
 
@@ -1061,7 +1061,7 @@ Explanation:
 
 ---
 
-# Remove User from Group
+## Remove User from Group
 
 Example:
 
@@ -1073,7 +1073,7 @@ The user is removed from the specified supplementary group.
 
 ---
 
-# View Group Membership
+## View Group Membership
 
 Display current user's groups:
 
@@ -1089,7 +1089,7 @@ groups alice
 
 ---
 
-# Create Groups
+## Create Groups
 
 Create a group:
 
@@ -1101,7 +1101,7 @@ The system assigns an available GID.
 
 ---
 
-# Specify Group ID
+## Specify Group ID
 
 Example:
 
@@ -1113,7 +1113,7 @@ Useful for consistent group IDs across multiple systems.
 
 ---
 
-# Modify Group Name
+## Modify Group Name
 
 Rename a group:
 
@@ -1125,7 +1125,7 @@ The group's GID remains the same.
 
 ---
 
-# Delete Group
+## Delete Group
 
 Example:
 
@@ -1137,7 +1137,7 @@ Groups should generally not be deleted while still serving as primary groups for
 
 ---
 
-# Delete User
+## Delete User
 
 Remove a user account:
 
@@ -1149,7 +1149,7 @@ The account is deleted, but the home directory is typically retained unless addi
 
 ---
 
-# Delete User and Home Directory
+## Delete User and Home Directory
 
 Example:
 
@@ -1166,7 +1166,7 @@ Exercise caution before deleting user data.
 
 ---
 
-# User Account Verification
+## User Account Verification
 
 Confirm account information:
 
@@ -1188,7 +1188,7 @@ grep "^alice:" /etc/passwd
 
 ---
 
-# Account Expiration
+## Account Expiration
 
 Set an expiration date:
 
@@ -1200,7 +1200,7 @@ After this date, the account cannot be used for login.
 
 ---
 
-# View Password Aging
+## View Password Aging
 
 Display password aging information:
 
@@ -1217,7 +1217,7 @@ Example output includes:
 
 ---
 
-# Configure Password Aging
+## Configure Password Aging
 
 Set maximum password age:
 
@@ -1241,7 +1241,7 @@ These settings help enforce organizational password policies.
 
 ---
 
-# Disable an Account
+## Disable an Account
 
 Expire the account immediately:
 
@@ -1253,7 +1253,7 @@ Alternatively, administrators may lock the account and disable login access acco
 
 ---
 
-# Verify Logged-In Users
+## Verify Logged-In Users
 
 Display active sessions:
 
@@ -1271,7 +1271,7 @@ These commands assist with user activity monitoring.
 
 ---
 
-# Enterprise User Provisioning Workflow
+## Enterprise User Provisioning Workflow
 
 ```text
 HR Approval
@@ -1309,7 +1309,7 @@ Automated provisioning is commonly integrated with centralized identity manageme
 
 ---
 
-# Enterprise User Deprovisioning Workflow
+## Enterprise User Deprovisioning Workflow
 
 ```text
 Employee Departure
@@ -1343,7 +1343,7 @@ Timely deprovisioning reduces the risk of unauthorized access.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers often attempt to:
 
@@ -1362,7 +1362,7 @@ Security teams should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 Well-managed user administration enables organizations to:
 
@@ -1375,7 +1375,7 @@ Well-managed user administration enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Create individual accounts for every user.
 - Assign the minimum required privileges.
@@ -1388,7 +1388,7 @@ Well-managed user administration enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - `useradd`, `usermod`, and `userdel` manage user accounts.
 - `groupadd`, `groupmod`, and `groupdel` manage groups.
@@ -1398,11 +1398,11 @@ Well-managed user administration enables organizations to:
 
 ---
 
-# Part 3 — Login Environment, User Profiles, Shell Initialization, Environment Variables, Enterprise Identity Management, and Security Best Practices
+## Part 3 — Login Environment, User Profiles, Shell Initialization, Environment Variables, Enterprise Identity Management, and Security Best Practices
 
 ---
 
-# Introduction
+## Introduction
 
 Creating user accounts is only one part of identity management.
 
@@ -1425,7 +1425,7 @@ Understanding this process helps administrators:
 
 ---
 
-# User Login Process
+## User Login Process
 
 ```text
 User Login
@@ -1453,7 +1453,7 @@ Each step contributes to the user's working environment.
 
 ---
 
-# Login Shell
+## Login Shell
 
 A **login shell** is the first shell started after successful authentication.
 
@@ -1476,7 +1476,7 @@ Common login shells:
 
 ---
 
-# User Home Directory
+## User Home Directory
 
 Every user typically has a dedicated home directory.
 
@@ -1517,7 +1517,7 @@ Hidden files begin with a period (`.`).
 
 ---
 
-# Hidden Configuration Files
+## Hidden Configuration Files
 
 Common user configuration files:
 
@@ -1534,7 +1534,7 @@ Not every distribution uses every file, and shell behavior may differ.
 
 ---
 
-# Shell Initialization Order (Bash)
+## Shell Initialization Order (Bash)
 
 A simplified Bash startup sequence:
 
@@ -1564,7 +1564,7 @@ For non-login interactive shells, Bash typically reads `.bashrc`.
 
 ---
 
-# System-Wide Configuration
+## System-Wide Configuration
 
 Global configuration files affect multiple users.
 
@@ -1584,7 +1584,7 @@ These files are often used to establish organization-wide settings.
 
 ---
 
-# User-Specific Configuration
+## User-Specific Configuration
 
 Individual users can customize their own environments.
 
@@ -1607,7 +1607,7 @@ Typical customizations include:
 
 ---
 
-# Environment Variables
+## Environment Variables
 
 Environment variables store configuration information available to processes.
 
@@ -1631,7 +1631,7 @@ Applications and scripts rely heavily on these values.
 
 ---
 
-# View Environment Variables
+## View Environment Variables
 
 Display all variables:
 
@@ -1659,7 +1659,7 @@ Example output:
 
 ---
 
-# Common Environment Variables
+## Common Environment Variables
 
 | Variable | Purpose |
 |-----------|----------|
@@ -1675,7 +1675,7 @@ Example output:
 
 ---
 
-# PATH Variable
+## PATH Variable
 
 The `PATH` variable specifies where the shell searches for executable programs.
 
@@ -1719,7 +1719,7 @@ Execute Program
 
 ---
 
-# Why PATH Matters
+## Why PATH Matters
 
 When you execute:
 
@@ -1737,7 +1737,7 @@ Without `PATH`, users would need to specify full paths, such as:
 
 ---
 
-# Temporary Environment Variables
+## Temporary Environment Variables
 
 Create a variable:
 
@@ -1761,7 +1761,7 @@ The variable exists for the current shell session and its child processes.
 
 ---
 
-# Persistent Environment Variables
+## Persistent Environment Variables
 
 To make a variable available in future login sessions, add it to the appropriate shell initialization file.
 
@@ -1781,7 +1781,7 @@ Changes take effect in the current shell after reloading.
 
 ---
 
-# Aliases
+## Aliases
 
 Aliases create shortcuts for commands.
 
@@ -1805,7 +1805,7 @@ ls -lah
 
 ---
 
-# View Aliases
+## View Aliases
 
 Display configured aliases:
 
@@ -1821,7 +1821,7 @@ unalias ll
 
 ---
 
-# Default File Permissions (umask)
+## Default File Permissions (umask)
 
 The **umask** determines which permission bits are removed from newly created files and directories.
 
@@ -1839,7 +1839,7 @@ Example:
 
 ---
 
-# Simplified umask Example
+## Simplified umask Example
 
 Common default permissions:
 
@@ -1865,7 +1865,7 @@ The umask masks permission bits rather than directly assigning permissions.
 
 ---
 
-# View Current Shell
+## View Current Shell
 
 Display the active shell:
 
@@ -1881,7 +1881,7 @@ Example:
 
 ---
 
-# Change Login Shell
+## Change Login Shell
 
 Use:
 
@@ -1899,7 +1899,7 @@ Only valid shells listed in `/etc/shells` should be assigned.
 
 ---
 
-# View Available Shells
+## View Available Shells
 
 ```bash
 cat /etc/shells
@@ -1917,7 +1917,7 @@ Example output:
 
 ---
 
-# Session Information
+## Session Information
 
 Display the current user:
 
@@ -1941,7 +1941,7 @@ These commands help verify the current login session.
 
 ---
 
-# Login History
+## Login History
 
 Display recent login records:
 
@@ -1961,7 +1961,7 @@ This information is typically derived from system login records.
 
 ---
 
-# Failed Login Attempts
+## Failed Login Attempts
 
 Display failed login attempts:
 
@@ -1975,7 +1975,7 @@ Reviewing failed logins supports security monitoring and incident response.
 
 ---
 
-# Enterprise Identity Management
+## Enterprise Identity Management
 
 Modern enterprises often manage identities centrally.
 
@@ -2013,7 +2013,7 @@ Technologies such as LDAP, Active Directory integration, Kerberos, and SSSD are 
 
 ---
 
-# Principle of Least Privilege
+## Principle of Least Privilege
 
 Users should receive only the permissions necessary to perform their responsibilities.
 
@@ -2037,7 +2037,7 @@ Benefits include:
 
 ---
 
-# Separation of Duties
+## Separation of Duties
 
 Enterprise environments often separate responsibilities.
 
@@ -2073,7 +2073,7 @@ Role separation limits risk and improves accountability.
 
 ---
 
-# Monitoring User Activity
+## Monitoring User Activity
 
 Administrators commonly review:
 
@@ -2088,7 +2088,7 @@ Routine reviews help detect anomalies and unauthorized access.
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Attackers frequently attempt to:
 
@@ -2103,7 +2103,7 @@ Security teams should periodically review shell configuration files and monitor 
 
 ---
 
-# Business Impact
+## Business Impact
 
 A consistent and secure login environment helps organizations:
 
@@ -2116,7 +2116,7 @@ A consistent and secure login environment helps organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Standardize login environments across systems.
 - Limit write access to system-wide initialization files.
@@ -2128,7 +2128,7 @@ A consistent and secure login environment helps organizations:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux prepares a user environment through shell initialization and configuration files.
 - Environment variables influence application and shell behavior.
@@ -2139,11 +2139,11 @@ A consistent and secure login environment helps organizations:
 ---
 
 
-# Part 4 — Practical Labs, Enterprise Identity Case Studies, Chapter Summary, Interview Questions, and References
+## Part 4 — Practical Labs, Enterprise Identity Case Studies, Chapter Summary, Interview Questions, and References
 
 ---
 
-# Introduction
+## Introduction
 
 User and group management is one of the most security-critical responsibilities of a Linux administrator.
 
@@ -2161,7 +2161,7 @@ This chapter concludes with practical enterprise labs and real-world cybersecuri
 
 ---
 
-# Enterprise Identity Management Lifecycle
+## Enterprise Identity Management Lifecycle
 
 ```text
                 Employee Joins
@@ -2193,7 +2193,7 @@ This chapter concludes with practical enterprise labs and real-world cybersecuri
 
 ---
 
-# Practical Lab 1 — Display Current User
+## Practical Lab 1 — Display Current User
 
 Determine the currently logged-in user.
 
@@ -2215,7 +2215,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 2 — View User Identity
+## Practical Lab 2 — View User Identity
 
 Display complete identity information.
 
@@ -2239,7 +2239,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 3 — Create a New User
+## Practical Lab 3 — Create a New User
 
 Create a new user account with a home directory.
 
@@ -2265,7 +2265,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 4 — Create a Group
+## Practical Lab 4 — Create a Group
 
 Create a new group.
 
@@ -2285,7 +2285,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 5 — Add User to Multiple Groups
+## Practical Lab 5 — Add User to Multiple Groups
 
 ```bash
 sudo usermod -aG developers,docker john
@@ -2309,7 +2309,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 6 — Change Login Shell
+## Practical Lab 6 — Change Login Shell
 
 Display current shell.
 
@@ -2335,7 +2335,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 7 — Examine User Databases
+## Practical Lab 7 — Examine User Databases
 
 View user entries.
 
@@ -2355,7 +2355,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 8 — Examine Group Database
+## Practical Lab 8 — Examine Group Database
 
 ```bash
 cat /etc/group
@@ -2373,7 +2373,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 9 — Display Password Aging
+## Practical Lab 9 — Display Password Aging
 
 ```bash
 sudo chage -l john
@@ -2395,7 +2395,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 10 — Force Password Change
+## Practical Lab 10 — Force Password Change
 
 Require password update during next login.
 
@@ -2409,7 +2409,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 11 — Lock a User Account
+## Practical Lab 11 — Lock a User Account
 
 ```bash
 sudo passwd -l john
@@ -2433,7 +2433,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 12 — Configure Password Expiration
+## Practical Lab 12 — Configure Password Expiration
 
 Require password changes every 90 days.
 
@@ -2459,7 +2459,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 13 — Create Environment Variables
+## Practical Lab 13 — Create Environment Variables
 
 Temporary variable.
 
@@ -2479,7 +2479,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 14 — Configure Aliases
+## Practical Lab 14 — Configure Aliases
 
 Create alias.
 
@@ -2505,7 +2505,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 15 — Review Login History
+## Practical Lab 15 — Review Login History
 
 Display successful logins.
 
@@ -2525,7 +2525,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 16 — Check Active Sessions
+## Practical Lab 16 — Check Active Sessions
 
 ```bash
 who
@@ -2543,7 +2543,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 17 — Remove a User
+## Practical Lab 17 — Remove a User
 
 Delete account.
 
@@ -2563,7 +2563,7 @@ Learning Objective:
 
 ---
 
-# Practical Lab 18 — Full User Provisioning Exercise
+## Practical Lab 18 — Full User Provisioning Exercise
 
 Complete workflow.
 
@@ -2619,9 +2619,9 @@ Learning Objective:
 
 ---
 
-# Enterprise Case Study 1
+## Enterprise Case Study 1
 
-# Employee Onboarding
+## Employee Onboarding
 
 Scenario:
 
@@ -2671,9 +2671,9 @@ Business Benefit:
 
 ---
 
-# Enterprise Case Study 2
+## Enterprise Case Study 2
 
-# Employee Offboarding
+## Employee Offboarding
 
 Scenario:
 
@@ -2722,9 +2722,9 @@ Business Benefit:
 
 ---
 
-# Enterprise Case Study 3
+## Enterprise Case Study 3
 
-# Privileged Access Management
+## Privileged Access Management
 
 Only selected administrators receive elevated privileges.
 
@@ -2760,9 +2760,9 @@ Benefits:
 
 ---
 
-# Enterprise Case Study 4
+## Enterprise Case Study 4
 
-# Compromised User Account
+## Compromised User Account
 
 Incident:
 
@@ -2808,7 +2808,7 @@ Investigation Activities:
 
 ---
 
-# Common Administrative Mistakes
+## Common Administrative Mistakes
 
 | Mistake | Security Impact |
 |----------|-----------------|
@@ -2823,7 +2823,7 @@ Investigation Activities:
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 | Check | Recommended |
 |---------|-------------|
@@ -2840,7 +2840,7 @@ Investigation Activities:
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Identity management is one of the primary security controls in Linux.
 
@@ -2867,7 +2867,7 @@ Strong identity management significantly reduces the likelihood and impact of su
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective identity management enables organizations to:
 
@@ -2881,7 +2881,7 @@ Effective identity management enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Assign unique identities to every user.
 - Grant only the permissions required for each role.
@@ -2896,7 +2896,7 @@ Effective identity management enables organizations to:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -2921,9 +2921,9 @@ In this chapter, you learned:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
 1. What is a UID?
 2. What is a GID?
@@ -2938,7 +2938,7 @@ In this chapter, you learned:
 
 ---
 
-## Intermediate
+### Intermediate
 
 1. Explain the difference between primary and supplementary groups.
 2. What is the difference between `useradd` and `usermod`?
@@ -2953,7 +2953,7 @@ In this chapter, you learned:
 
 ---
 
-## Advanced
+### Advanced
 
 1. Design a secure enterprise user provisioning workflow.
 2. Explain least privilege in Linux.
@@ -2968,7 +2968,7 @@ In this chapter, you learned:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Linux uses UIDs and GIDs internally for identity and authorization.
 - Users, groups, and password policies are foundational security controls.
@@ -2978,9 +2978,9 @@ In this chapter, you learned:
 
 ---
 
-# References
+## References
 
-## Official Documentation
+### Official Documentation
 
 - Linux `useradd(8)`
 - Linux `usermod(8)`
@@ -2991,7 +2991,7 @@ In this chapter, you learned:
 - Linux `id(1)`
 - Linux `groups(1)`
 
-## Standards & Best Practices
+### Standards & Best Practices
 
 - Linux Foundation Documentation
 - CIS Benchmarks for Linux
@@ -3001,11 +3001,11 @@ In this chapter, you learned:
 
 ---
 
-# Next Chapter
+## Next Chapter
 
 ➡️ **09-Linux-Permissions-and-ACL.md**
 
-## Topics Covered
+### Topics Covered
 
 - Linux Permission Model
 - Read, Write, Execute Permissions

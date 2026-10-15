@@ -1,10 +1,10 @@
 # 17 - Virtual Private Networks (VPN)
 
-# Part 1 — VPN Fundamentals, Architecture, Types of VPNs, IPsec Overview, SSL/TLS VPNs, GRE Tunnels, and Enterprise VPN Deployment
+## Part 1 — VPN Fundamentals, Architecture, Types of VPNs, IPsec Overview, SSL/TLS VPNs, GRE Tunnels, and Enterprise VPN Deployment
 
 ---
 
-# Overview
+## Overview
 
 Organizations increasingly rely on **Virtual Private Networks (VPNs)** to securely connect users, branch offices, cloud environments, and business partners over untrusted networks such as the Internet.
 
@@ -25,7 +25,7 @@ VPN technology is a foundational component of modern cybersecurity and secure en
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will understand:
 
@@ -45,7 +45,7 @@ After completing this chapter, you will understand:
 
 ---
 
-# What is a VPN?
+## What is a VPN?
 
 A **Virtual Private Network (VPN)** is a technology that creates a secure, encrypted communication channel across an untrusted network.
 
@@ -69,7 +69,7 @@ Although traffic travels across the public Internet, encryption protects its con
 
 ---
 
-# Why VPNs Are Important
+## Why VPNs Are Important
 
 Without a VPN:
 
@@ -113,7 +113,7 @@ The encrypted tunnel significantly reduces the risk of eavesdropping and tamperi
 
 ---
 
-# Security Objectives
+## Security Objectives
 
 VPN technologies aim to provide:
 
@@ -127,7 +127,7 @@ VPN technologies aim to provide:
 
 ---
 
-# Enterprise VPN Use Cases
+## Enterprise VPN Use Cases
 
 Organizations commonly deploy VPNs for:
 
@@ -141,7 +141,7 @@ Organizations commonly deploy VPNs for:
 
 ---
 
-# VPN Architecture
+## VPN Architecture
 
 A simplified VPN architecture:
 
@@ -169,7 +169,7 @@ The VPN gateway authenticates the user and establishes an encrypted tunnel.
 
 ---
 
-# Core VPN Components
+## Core VPN Components
 
 Typical VPN deployments include:
 
@@ -182,7 +182,7 @@ Typical VPN deployments include:
 
 ---
 
-# Tunnel Concept
+## Tunnel Concept
 
 A VPN tunnel encapsulates one packet inside another before transmission.
 
@@ -214,7 +214,7 @@ Encapsulation and encryption allow private communication over public networks.
 
 ---
 
-# VPN Terminology
+## VPN Terminology
 
 | Term | Description |
 |------|-------------|
@@ -228,7 +228,7 @@ Encapsulation and encryption allow private communication over public networks.
 
 ---
 
-# VPN Types
+## VPN Types
 
 Enterprise VPNs are generally categorized as:
 
@@ -241,7 +241,7 @@ Enterprise VPNs are generally categorized as:
 
 ---
 
-# Remote Access VPN
+## Remote Access VPN
 
 A Remote Access VPN securely connects an individual user to an organization's internal network.
 
@@ -269,7 +269,7 @@ This model became especially important with the growth of remote and hybrid work
 
 ---
 
-# Advantages
+## Advantages
 
 Remote Access VPNs provide:
 
@@ -281,7 +281,7 @@ Remote Access VPNs provide:
 
 ---
 
-# Site-to-Site VPN
+## Site-to-Site VPN
 
 A Site-to-Site VPN connects two or more entire networks.
 
@@ -309,7 +309,7 @@ Users do not manually establish the tunnel; the gateways maintain it automatical
 
 ---
 
-# Typical Site-to-Site Uses
+## Typical Site-to-Site Uses
 
 Examples include:
 
@@ -321,7 +321,7 @@ Examples include:
 
 ---
 
-# Extranet VPN
+## Extranet VPN
 
 An Extranet VPN securely connects external organizations.
 
@@ -341,7 +341,7 @@ Access is restricted to authorized resources.
 
 ---
 
-# Cloud VPN
+## Cloud VPN
 
 Cloud VPNs securely connect on-premises infrastructure with cloud providers.
 
@@ -365,7 +365,7 @@ This architecture supports hybrid cloud deployments.
 
 ---
 
-# VPN Modes
+## VPN Modes
 
 VPNs commonly operate in two modes:
 
@@ -378,9 +378,9 @@ Tunnel mode is generally used for gateway-to-gateway communications.
 
 ---
 
-# IPsec Overview
+## IPsec Overview
 
-## What is IPsec?
+### What is IPsec?
 
 **Internet Protocol Security (IPsec)** is a suite of protocols that secures IP communications using encryption, authentication, and integrity protection.
 
@@ -392,7 +392,7 @@ IPsec is widely used for:
 
 ---
 
-# IPsec Security Services
+## IPsec Security Services
 
 IPsec provides:
 
@@ -405,7 +405,7 @@ These services protect data while it traverses untrusted networks.
 
 ---
 
-# IPsec Components
+## IPsec Components
 
 Major components include:
 
@@ -418,7 +418,7 @@ Later sections of this chapter explore each component in detail.
 
 ---
 
-# Authentication Header (AH)
+## Authentication Header (AH)
 
 AH provides:
 
@@ -432,7 +432,7 @@ For this reason, ESP is more commonly deployed in enterprise environments.
 
 ---
 
-# Encapsulating Security Payload (ESP)
+## Encapsulating Security Payload (ESP)
 
 ESP provides:
 
@@ -446,7 +446,7 @@ ESP is the most commonly used IPsec protocol for modern VPN deployments.
 
 ---
 
-# SSL/TLS VPN
+## SSL/TLS VPN
 
 SSL/TLS VPNs use the Transport Layer Security protocol to secure communications.
 
@@ -470,7 +470,7 @@ Many SSL VPNs require only a web browser or lightweight client.
 
 ---
 
-# Advantages of SSL/TLS VPN
+## Advantages of SSL/TLS VPN
 
 - Easy deployment
 - Browser-based access
@@ -480,7 +480,7 @@ Many SSL VPNs require only a web browser or lightweight client.
 
 ---
 
-# IPsec vs SSL/TLS VPN
+## IPsec vs SSL/TLS VPN
 
 | Feature | IPsec | SSL/TLS VPN |
 |----------|--------|-------------|
@@ -493,9 +493,9 @@ Both technologies remain widely used in enterprise environments.
 
 ---
 
-# GRE Tunnels
+## GRE Tunnels
 
-## Overview
+### Overview
 
 **Generic Routing Encapsulation (GRE)** creates logical tunnels between endpoints.
 
@@ -515,7 +515,7 @@ GRE encapsulates many Layer 3 protocols.
 
 ---
 
-# Important Note
+## Important Note
 
 GRE by itself:
 
@@ -537,9 +537,9 @@ to provide both tunneling flexibility and strong security.
 
 ---
 
-# Split Tunnel vs Full Tunnel
+## Split Tunnel vs Full Tunnel
 
-## Full Tunnel
+### Full Tunnel
 
 ```
 User
@@ -567,7 +567,7 @@ Advantages:
 
 ---
 
-## Split Tunnel
+### Split Tunnel
 
 ```
 Corporate Traffic
@@ -597,7 +597,7 @@ Potential disadvantages:
 
 ---
 
-# Enterprise VPN Deployment
+## Enterprise VPN Deployment
 
 A typical enterprise deployment:
 
@@ -633,7 +633,7 @@ Redundant VPN gateways improve availability and resilience.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Secure VPN deployments help organizations:
 
@@ -646,7 +646,7 @@ Secure VPN deployments help organizations:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -661,7 +661,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - VPNs create encrypted tunnels across untrusted networks.
 - Remote Access VPNs connect individual users.
@@ -673,11 +673,11 @@ Organizations should:
 
 ---
 
-# Part 2 — IPsec Architecture, IKEv1, IKEv2, Security Associations (SA), Encryption Algorithms, Authentication Methods, Cloud VPNs, and Enterprise VPN Architectures
+## Part 2 — IPsec Architecture, IKEv1, IKEv2, Security Associations (SA), Encryption Algorithms, Authentication Methods, Cloud VPNs, and Enterprise VPN Architectures
 
 ---
 
-# Introduction
+## Introduction
 
 While **Virtual Private Networks (VPNs)** provide secure connectivity, the security of an enterprise VPN largely depends on the underlying protocols responsible for authentication, encryption, and key management.
 
@@ -695,7 +695,7 @@ Understanding IPsec architecture is essential for Network Engineers, Security En
 
 ---
 
-# IPsec Architecture
+## IPsec Architecture
 
 IPsec secures IP communications by protecting packets before they are transmitted across an untrusted network.
 
@@ -729,7 +729,7 @@ Original Packet
 
 ---
 
-# IPsec Security Services
+## IPsec Security Services
 
 IPsec provides several security services.
 
@@ -743,7 +743,7 @@ IPsec provides several security services.
 
 ---
 
-# IPsec Components
+## IPsec Components
 
 The major IPsec components include:
 
@@ -756,7 +756,7 @@ The major IPsec components include:
 
 ---
 
-# Authentication Header (AH)
+## Authentication Header (AH)
 
 AH protects packet integrity and authenticates the sender.
 
@@ -775,7 +775,7 @@ Because it does not encrypt payloads and is incompatible with many NAT deploymen
 
 ---
 
-# Encapsulating Security Payload (ESP)
+## Encapsulating Security Payload (ESP)
 
 ESP is the primary IPsec protocol used in modern deployments.
 
@@ -791,7 +791,7 @@ ESP is compatible with NAT Traversal (NAT-T) and is preferred for most enterpris
 
 ---
 
-# Tunnel Mode
+## Tunnel Mode
 
 Tunnel Mode protects the entire original IP packet.
 
@@ -823,7 +823,7 @@ Typical use cases:
 
 ---
 
-# Transport Mode
+## Transport Mode
 
 Transport Mode encrypts only the payload.
 
@@ -846,7 +846,7 @@ Typical use cases:
 
 ---
 
-# Tunnel Mode vs Transport Mode
+## Tunnel Mode vs Transport Mode
 
 | Feature | Tunnel Mode | Transport Mode |
 |----------|-------------|----------------|
@@ -857,7 +857,7 @@ Typical use cases:
 
 ---
 
-# Internet Key Exchange (IKE)
+## Internet Key Exchange (IKE)
 
 IKE automates:
 
@@ -870,7 +870,7 @@ Without IKE, manually configuring encryption keys would be impractical in enterp
 
 ---
 
-# IKE Versions
+## IKE Versions
 
 | Version | Characteristics |
 |----------|----------------|
@@ -881,11 +881,11 @@ Modern enterprise deployments generally prefer **IKEv2**.
 
 ---
 
-# IKEv1 Phases
+## IKEv1 Phases
 
 IKEv1 establishes a VPN in two phases.
 
-### Phase 1
+#### Phase 1
 
 Creates a secure management channel.
 
@@ -907,7 +907,7 @@ Secure Channel
 
 ---
 
-### Phase 2
+#### Phase 2
 
 Negotiates IPsec Security Associations used to protect user traffic.
 
@@ -925,7 +925,7 @@ Traffic Protection
 
 ---
 
-# IKEv1 Modes
+## IKEv1 Modes
 
 Phase 1 supports:
 
@@ -938,7 +938,7 @@ Main Mode is generally preferred where IKEv1 is still in use.
 
 ---
 
-# IKEv2
+## IKEv2
 
 IKEv2 simplifies VPN establishment while improving:
 
@@ -957,7 +957,7 @@ Advantages include:
 
 ---
 
-# Security Associations (SA)
+## Security Associations (SA)
 
 A **Security Association (SA)** defines how traffic will be protected.
 
@@ -973,7 +973,7 @@ Each protected communication direction uses its own SA.
 
 ---
 
-# Security Association Database (SAD)
+## Security Association Database (SAD)
 
 The SAD stores active Security Associations.
 
@@ -1003,7 +1003,7 @@ The firewall or VPN gateway references this database during packet processing.
 
 ---
 
-# Security Policy Database (SPD)
+## Security Policy Database (SPD)
 
 The SPD determines which traffic should be protected.
 
@@ -1027,7 +1027,7 @@ Traffic not matching a protection policy may be bypassed or discarded depending 
 
 ---
 
-# Security Parameter Index (SPI)
+## Security Parameter Index (SPI)
 
 Each IPsec Security Association is identified using a **Security Parameter Index (SPI)**.
 
@@ -1051,7 +1051,7 @@ The SPI allows the receiving device to locate the correct cryptographic paramete
 
 ---
 
-# Encryption Algorithms
+## Encryption Algorithms
 
 Modern IPsec deployments commonly support:
 
@@ -1067,7 +1067,7 @@ AES-256 is widely recommended for new enterprise deployments.
 
 ---
 
-# Integrity Algorithms
+## Integrity Algorithms
 
 Integrity algorithms verify that packets have not been modified.
 
@@ -1081,7 +1081,7 @@ Legacy algorithms such as MD5 and SHA-1 should generally be avoided for new depl
 
 ---
 
-# Diffie-Hellman Key Exchange
+## Diffie-Hellman Key Exchange
 
 Diffie-Hellman (DH) enables two peers to establish a shared secret over an untrusted network.
 
@@ -1105,7 +1105,7 @@ The shared secret is then used to derive encryption keys.
 
 ---
 
-# Perfect Forward Secrecy (PFS)
+## Perfect Forward Secrecy (PFS)
 
 Perfect Forward Secrecy ensures that compromise of one session key does not compromise previous sessions.
 
@@ -1129,7 +1129,7 @@ PFS significantly improves long-term confidentiality.
 
 ---
 
-# Authentication Methods
+## Authentication Methods
 
 VPN peers must authenticate before establishing a tunnel.
 
@@ -1146,7 +1146,7 @@ Enterprise deployments increasingly favor certificate-based authentication.
 
 ---
 
-# Certificate-Based Authentication
+## Certificate-Based Authentication
 
 Certificates eliminate many risks associated with shared passwords.
 
@@ -1178,7 +1178,7 @@ Benefits include:
 
 ---
 
-# VPN Encryption Workflow
+## VPN Encryption Workflow
 
 ```
 User Data
@@ -1208,7 +1208,7 @@ The receiving gateway validates integrity before decrypting the payload.
 
 ---
 
-# Cloud VPN
+## Cloud VPN
 
 Cloud providers support managed VPN services.
 
@@ -1224,7 +1224,7 @@ These services securely connect cloud resources with on-premises networks.
 
 ---
 
-# Hybrid Cloud VPN
+## Hybrid Cloud VPN
 
 ```
 Corporate Network
@@ -1254,7 +1254,7 @@ Hybrid VPNs enable secure communication between on-premises infrastructure and c
 
 ---
 
-# Multi-Site Enterprise VPN
+## Multi-Site Enterprise VPN
 
 ```
 Head Office
@@ -1284,7 +1284,7 @@ Hub-and-spoke and full-mesh topologies are common, depending on organizational r
 
 ---
 
-# VPN Concentrator
+## VPN Concentrator
 
 A VPN concentrator is designed to terminate and manage a large number of simultaneous VPN connections.
 
@@ -1300,7 +1300,7 @@ Large enterprises often deploy VPN concentrators in redundant clusters.
 
 ---
 
-# Business Impact
+## Business Impact
 
 A well-designed IPsec VPN infrastructure enables organizations to:
 
@@ -1313,7 +1313,7 @@ A well-designed IPsec VPN infrastructure enables organizations to:
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -1328,7 +1328,7 @@ Organizations should:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - IPsec provides confidentiality, integrity, authentication, and replay protection.
 - ESP is the preferred IPsec protocol for most enterprise deployments.
@@ -1342,11 +1342,11 @@ Organizations should:
 ---
 
 
-# Part 3 — VPN Security, Hardening, Monitoring, Threats, Detection Engineering, Zero Trust Integration, and Enterprise Operations
+## Part 3 — VPN Security, Hardening, Monitoring, Threats, Detection Engineering, Zero Trust Integration, and Enterprise Operations
 
 ---
 
-# Introduction
+## Introduction
 
 A VPN provides secure connectivity only when it is properly designed, configured, monitored, and maintained.
 
@@ -1370,7 +1370,7 @@ For this reason, enterprise VPN security extends beyond encryption and includes:
 
 ---
 
-# Security Objectives
+## Security Objectives
 
 Enterprise VPN security aims to provide:
 
@@ -1385,7 +1385,7 @@ Enterprise VPN security aims to provide:
 
 ---
 
-# Common VPN Threats
+## Common VPN Threats
 
 Enterprise VPN environments commonly face:
 
@@ -1405,7 +1405,7 @@ Understanding these threats enables organizations to implement layered defenses.
 
 ---
 
-# Credential Theft
+## Credential Theft
 
 Compromised VPN credentials are one of the most common attack vectors.
 
@@ -1437,7 +1437,7 @@ Mitigation:
 
 ---
 
-# Password Spraying
+## Password Spraying
 
 Attackers attempt commonly used passwords across many accounts.
 
@@ -1466,7 +1466,7 @@ Mitigation:
 
 ---
 
-# Brute-Force Attacks
+## Brute-Force Attacks
 
 Attackers repeatedly attempt authentication.
 
@@ -1492,7 +1492,7 @@ Mitigation:
 
 ---
 
-# VPN Gateway Vulnerabilities
+## VPN Gateway Vulnerabilities
 
 VPN appliances occasionally contain critical vulnerabilities.
 
@@ -1512,7 +1512,7 @@ Organizations should:
 
 ---
 
-# Man-in-the-Middle (MITM)
+## Man-in-the-Middle (MITM)
 
 Improper certificate validation or weak authentication may allow interception attempts.
 
@@ -1537,7 +1537,7 @@ Mitigation:
 
 ---
 
-# Session Hijacking
+## Session Hijacking
 
 Attackers attempt to take over active VPN sessions.
 
@@ -1556,7 +1556,7 @@ Mitigation:
 
 ---
 
-# Split Tunneling Risks
+## Split Tunneling Risks
 
 Split tunneling allows Internet traffic to bypass enterprise security controls.
 
@@ -1587,7 +1587,7 @@ Organizations should evaluate split tunneling based on business and security req
 
 ---
 
-# Endpoint Security
+## Endpoint Security
 
 A VPN protects traffic in transit but does not secure the endpoint itself.
 
@@ -1604,7 +1604,7 @@ Compromised endpoints can undermine an otherwise secure VPN.
 
 ---
 
-# Network Access Control (NAC)
+## Network Access Control (NAC)
 
 NAC evaluates device compliance before granting VPN access.
 
@@ -1621,7 +1621,7 @@ Non-compliant devices may be quarantined or denied access.
 
 ---
 
-# Multi-Factor Authentication (MFA)
+## Multi-Factor Authentication (MFA)
 
 MFA significantly reduces the impact of stolen passwords.
 
@@ -1637,7 +1637,7 @@ MFA should be required for all remote administrative access.
 
 ---
 
-# Certificate Lifecycle Management
+## Certificate Lifecycle Management
 
 Certificates require proper lifecycle management.
 
@@ -1653,7 +1653,7 @@ Compromised certificates should be revoked immediately.
 
 ---
 
-# VPN Logging
+## VPN Logging
 
 VPN gateways generate valuable security telemetry.
 
@@ -1672,7 +1672,7 @@ Logs should be retained according to organizational policy.
 
 ---
 
-# Centralized Logging
+## Centralized Logging
 
 Enterprise architecture:
 
@@ -1701,7 +1701,7 @@ Centralized logging enables:
 
 ---
 
-# VPN Monitoring
+## VPN Monitoring
 
 Security teams should monitor:
 
@@ -1719,7 +1719,7 @@ Continuous monitoring helps identify abnormal behavior.
 
 ---
 
-# Zero Trust Integration
+## Zero Trust Integration
 
 Modern enterprises increasingly integrate VPNs with Zero Trust principles.
 
@@ -1736,7 +1736,7 @@ A VPN should not automatically grant unrestricted network access after authentic
 
 ---
 
-# Conditional Access
+## Conditional Access
 
 VPN access can be based on contextual factors such as:
 
@@ -1779,7 +1779,7 @@ Block
 
 ---
 
-# Least Privilege Access
+## Least Privilege Access
 
 Users should receive access only to required resources.
 
@@ -1813,7 +1813,7 @@ Micro-segmentation limits lateral movement.
 
 ---
 
-# VPN High Availability
+## VPN High Availability
 
 Critical VPN infrastructure should be redundant.
 
@@ -1842,7 +1842,7 @@ Benefits:
 
 ---
 
-# VPN Capacity Planning
+## VPN Capacity Planning
 
 Organizations should monitor:
 
@@ -1857,7 +1857,7 @@ Capacity planning ensures consistent performance during growth or emergencies.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 VPN deployments contribute to compliance with frameworks such as:
 
@@ -1877,7 +1877,7 @@ Common compliance requirements include:
 
 ---
 
-# SOC Integration
+## SOC Integration
 
 VPN telemetry is an important source of detection data.
 
@@ -1896,9 +1896,9 @@ Correlating VPN events with endpoint and identity data improves investigation ac
 
 ---
 
-# SIEM Correlation Examples
+## SIEM Correlation Examples
 
-### Impossible Travel
+#### Impossible Travel
 
 ```
 Login
@@ -1922,7 +1922,7 @@ Alert
 
 ---
 
-### Repeated MFA Failures
+#### Repeated MFA Failures
 
 ```
 Single User
@@ -1942,7 +1942,7 @@ High-Risk Alert
 
 ---
 
-### Multiple Failed Logins
+#### Multiple Failed Logins
 
 ```
 One Source IP
@@ -1958,7 +1958,7 @@ Password Spraying Alert
 
 ---
 
-### Administrative Configuration Change
+#### Administrative Configuration Change
 
 ```
 VPN Policy Modified
@@ -1974,7 +1974,7 @@ Alert
 
 ---
 
-# Threat Intelligence Integration
+## Threat Intelligence Integration
 
 VPN gateways can consume threat intelligence feeds to identify:
 
@@ -1988,7 +1988,7 @@ Access attempts from high-risk sources may trigger additional authentication or 
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 Organizations should:
 
@@ -2004,7 +2004,7 @@ Organizations should:
 
 ---
 
-# Business Impact
+## Business Impact
 
 A secure VPN deployment enables organizations to:
 
@@ -2018,7 +2018,7 @@ A secure VPN deployment enables organizations to:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - VPN security depends on more than encryption.
 - MFA, endpoint security, and least privilege significantly reduce risk.
@@ -2029,11 +2029,11 @@ A secure VPN deployment enables organizations to:
 
 ---
 
-# Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, RFC References, Summary, and Chapter Review
+## Part 4 — Packet Analysis, Verification Commands, Enterprise Troubleshooting, Detection Engineering, Practical Labs, Interview Questions, RFC References, Summary, and Chapter Review
 
 ---
 
-# Introduction
+## Introduction
 
 Deploying a VPN is only the first step toward secure remote connectivity.
 
@@ -2052,7 +2052,7 @@ Operational excellence is essential to maintaining a secure and reliable VPN inf
 
 ---
 
-# Enterprise VPN Troubleshooting Methodology
+## Enterprise VPN Troubleshooting Methodology
 
 A structured troubleshooting workflow helps identify and resolve VPN issues efficiently.
 
@@ -2112,7 +2112,7 @@ Each step should be completed before proceeding to the next to avoid unnecessary
 
 ---
 
-# VPN Health Checks
+## VPN Health Checks
 
 Before troubleshooting individual tunnels, verify the overall health of the VPN infrastructure.
 
@@ -2131,7 +2131,7 @@ Check:
 
 ---
 
-# VPN Connection Workflow
+## VPN Connection Workflow
 
 Understanding the VPN connection process simplifies troubleshooting.
 
@@ -2167,7 +2167,7 @@ A failure at any stage prevents successful communication.
 
 ---
 
-# Packet Flow Through an IPsec VPN
+## Packet Flow Through an IPsec VPN
 
 ```
 Original Packet
@@ -2205,7 +2205,7 @@ Each stage should be validated when troubleshooting connectivity.
 
 ---
 
-# Packet Analysis
+## Packet Analysis
 
 When analyzing VPN traffic, examine:
 
@@ -2223,7 +2223,7 @@ Packet analysis often identifies where communication is failing.
 
 ---
 
-# Wireshark Analysis
+## Wireshark Analysis
 
 Wireshark is a valuable tool for VPN troubleshooting.
 
@@ -2297,7 +2297,7 @@ Packet captures should ideally be collected on both sides of the VPN tunnel when
 
 ---
 
-# VPN Log Analysis
+## VPN Log Analysis
 
 Important log fields include:
 
@@ -2317,7 +2317,7 @@ These logs provide insight into authentication, tunnel establishment, and traffi
 
 ---
 
-# Authentication Verification
+## Authentication Verification
 
 Verify:
 
@@ -2333,7 +2333,7 @@ Authentication failures often originate from identity infrastructure rather than
 
 ---
 
-# Certificate Verification
+## Certificate Verification
 
 Confirm:
 
@@ -2348,7 +2348,7 @@ Expired or invalid certificates frequently cause tunnel establishment failures.
 
 ---
 
-# IKE Verification
+## IKE Verification
 
 Verify:
 
@@ -2364,7 +2364,7 @@ Mismatched parameters prevent successful tunnel negotiation.
 
 ---
 
-# IPsec Verification
+## IPsec Verification
 
 Verify:
 
@@ -2380,7 +2380,7 @@ Healthy tunnels should show active Security Associations and increasing packet c
 
 ---
 
-# NAT Traversal (NAT-T) Verification
+## NAT Traversal (NAT-T) Verification
 
 When VPN endpoints are behind NAT devices:
 
@@ -2395,7 +2395,7 @@ Improper NAT configuration is a common cause of tunnel failures.
 
 ---
 
-# Routing Verification
+## Routing Verification
 
 Verify:
 
@@ -2410,7 +2410,7 @@ Incorrect routing may prevent traffic from entering the VPN tunnel.
 
 ---
 
-# DNS Verification
+## DNS Verification
 
 Many VPN issues are related to DNS rather than encryption.
 
@@ -2426,18 +2426,18 @@ Successful tunnel establishment does not guarantee successful name resolution.
 
 ---
 
-# Common VPN Troubleshooting Scenarios
+## Common VPN Troubleshooting Scenarios
 
 ---
 
-## Scenario 1 — Tunnel Does Not Establish
+### Scenario 1 — Tunnel Does Not Establish
 
-### Symptoms
+#### Symptoms
 
 - VPN client cannot connect.
 - Tunnel remains down.
 
-### Investigation
+#### Investigation
 
 Verify:
 
@@ -2450,14 +2450,14 @@ Verify:
 
 ---
 
-## Scenario 2 — Tunnel Established but No Traffic
+### Scenario 2 — Tunnel Established but No Traffic
 
-### Symptoms
+#### Symptoms
 
 - Tunnel is active.
 - Applications cannot communicate.
 
-### Investigation
+#### Investigation
 
 Check:
 
@@ -2470,9 +2470,9 @@ Check:
 
 ---
 
-## Scenario 3 — Frequent Tunnel Disconnects
+### Scenario 3 — Frequent Tunnel Disconnects
 
-### Symptoms
+#### Symptoms
 
 - Tunnel repeatedly reconnects.
 
@@ -2486,9 +2486,9 @@ Possible causes:
 
 ---
 
-## Scenario 4 — Slow VPN Performance
+### Scenario 4 — Slow VPN Performance
 
-### Symptoms
+#### Symptoms
 
 - High latency
 - Poor throughput
@@ -2504,9 +2504,9 @@ Investigate:
 
 ---
 
-## Scenario 5 — Remote User Cannot Access Specific Application
+### Scenario 5 — Remote User Cannot Access Specific Application
 
-### Symptoms
+#### Symptoms
 
 Only one application is unavailable.
 
@@ -2520,9 +2520,9 @@ Verify:
 
 ---
 
-## Scenario 6 — Cloud Resources Unreachable
+### Scenario 6 — Cloud Resources Unreachable
 
-### Symptoms
+#### Symptoms
 
 On-premises users cannot access cloud workloads.
 
@@ -2537,7 +2537,7 @@ Verify:
 
 ---
 
-# Enterprise Performance Monitoring
+## Enterprise Performance Monitoring
 
 Monitor:
 
@@ -2555,7 +2555,7 @@ Capacity monitoring prevents service degradation during peak usage.
 
 ---
 
-# Detection Engineering
+## Detection Engineering
 
 VPN logs provide valuable detection opportunities.
 
@@ -2572,9 +2572,9 @@ Monitor for:
 
 ---
 
-# SIEM Correlation Examples
+## SIEM Correlation Examples
 
-### Password Spraying
+#### Password Spraying
 
 ```
 Single IP
@@ -2594,7 +2594,7 @@ Alert
 
 ---
 
-### Impossible Travel
+#### Impossible Travel
 
 ```
 Login
@@ -2618,7 +2618,7 @@ High-Risk Alert
 
 ---
 
-### Concurrent Sessions
+#### Concurrent Sessions
 
 ```
 User
@@ -2642,7 +2642,7 @@ Alert
 
 ---
 
-### Administrative Policy Change
+#### Administrative Policy Change
 
 ```
 Configuration Modified
@@ -2658,7 +2658,7 @@ SOC Alert
 
 ---
 
-# Zeek Integration
+## Zeek Integration
 
 Useful Zeek logs include:
 
@@ -2671,7 +2671,7 @@ Zeek provides protocol-level visibility that complements VPN gateway logs.
 
 ---
 
-# Suricata Integration
+## Suricata Integration
 
 Suricata can detect:
 
@@ -2685,7 +2685,7 @@ Correlating Suricata alerts with VPN events improves incident detection.
 
 ---
 
-# Threat Hunting Ideas
+## Threat Hunting Ideas
 
 Security teams can investigate:
 
@@ -2701,7 +2701,7 @@ Threat hunting helps identify sophisticated attacks that bypass automated detect
 
 ---
 
-# Practical Lab 1 — Remote Access VPN
+## Practical Lab 1 — Remote Access VPN
 
 Objective:
 
@@ -2717,7 +2717,7 @@ Tasks:
 
 ---
 
-# Practical Lab 2 — Site-to-Site VPN
+## Practical Lab 2 — Site-to-Site VPN
 
 Tasks:
 
@@ -2728,7 +2728,7 @@ Tasks:
 
 ---
 
-# Practical Lab 3 — VPN Packet Capture
+## Practical Lab 3 — VPN Packet Capture
 
 Tasks:
 
@@ -2739,7 +2739,7 @@ Tasks:
 
 ---
 
-# Practical Lab 4 — Certificate-Based Authentication
+## Practical Lab 4 — Certificate-Based Authentication
 
 Tasks:
 
@@ -2751,7 +2751,7 @@ Tasks:
 
 ---
 
-# Practical Lab 5 — SIEM Integration
+## Practical Lab 5 — SIEM Integration
 
 Tasks:
 
@@ -2763,13 +2763,13 @@ Tasks:
 
 ---
 
-# Enterprise Case Study
+## Enterprise Case Study
 
-## Scenario
+### Scenario
 
 A multinational organization experiences repeated unauthorized VPN login attempts against employee accounts.
 
-### Investigation
+#### Investigation
 
 The SOC identifies:
 
@@ -2778,7 +2778,7 @@ The SOC identifies:
 - Lateral movement attempts after VPN access.
 - VPN appliance firmware several versions behind.
 
-### Resolution
+#### Resolution
 
 - Enforce MFA for all users.
 - Reset compromised credentials.
@@ -2787,7 +2787,7 @@ The SOC identifies:
 - Implement conditional access based on device compliance and user risk.
 - Enhance SIEM correlation rules.
 
-### Outcome
+#### Outcome
 
 - Unauthorized access prevented.
 - Faster detection of credential attacks.
@@ -2796,53 +2796,53 @@ The SOC identifies:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
-## Beginner
+### Beginner
 
-### What is the purpose of a VPN?
+#### What is the purpose of a VPN?
 
 A VPN creates an encrypted tunnel over an untrusted network, allowing secure communication between users, offices, or cloud environments.
 
 ---
 
-### What is the difference between a Remote Access VPN and a Site-to-Site VPN?
+#### What is the difference between a Remote Access VPN and a Site-to-Site VPN?
 
 - **Remote Access VPN:** Connects individual users to a corporate network.
 - **Site-to-Site VPN:** Connects entire networks through VPN gateways.
 
 ---
 
-### What is IPsec?
+#### What is IPsec?
 
 IPsec is a suite of protocols that provides encryption, authentication, integrity, and secure key exchange for IP communications.
 
 ---
 
-## Intermediate
+### Intermediate
 
-### What is the difference between Tunnel Mode and Transport Mode?
+#### What is the difference between Tunnel Mode and Transport Mode?
 
 - **Tunnel Mode:** Protects the entire original IP packet and is commonly used for gateway-to-gateway VPNs.
 - **Transport Mode:** Protects only the payload and is typically used for host-to-host communication.
 
 ---
 
-### Why is IKE required?
+#### Why is IKE required?
 
 IKE securely negotiates cryptographic parameters, authenticates peers, and establishes Security Associations (SAs) used by IPsec.
 
 ---
 
-### Why is Multi-Factor Authentication important for VPNs?
+#### Why is Multi-Factor Authentication important for VPNs?
 
 MFA significantly reduces the likelihood that stolen passwords alone can be used to gain unauthorized VPN access.
 
 ---
 
-## Advanced
+### Advanced
 
-### How would you troubleshoot a VPN tunnel that establishes successfully but carries no traffic?
+#### How would you troubleshoot a VPN tunnel that establishes successfully but carries no traffic?
 
 A structured approach includes:
 
@@ -2856,7 +2856,7 @@ A structured approach includes:
 
 ---
 
-### How can SOC teams detect compromised VPN accounts?
+#### How can SOC teams detect compromised VPN accounts?
 
 Indicators include:
 
@@ -2870,7 +2870,7 @@ Indicators include:
 
 ---
 
-### How does integrating VPN logs with a SIEM improve security?
+#### How does integrating VPN logs with a SIEM improve security?
 
 SIEM integration enables:
 
@@ -2884,7 +2884,7 @@ SIEM integration enables:
 
 ---
 
-# RFC References
+## RFC References
 
 Key RFCs relevant to VPN technologies include:
 
@@ -2899,13 +2899,13 @@ Key RFCs relevant to VPN technologies include:
 
 ---
 
-# Summary
+## Summary
 
 Virtual Private Networks (VPNs) enable secure communication across untrusted networks through encryption, authentication, and integrity protection. Modern enterprise VPN deployments rely on IPsec, IKEv2, strong cryptography, certificate-based authentication, Multi-Factor Authentication, and continuous monitoring. Operational success requires structured troubleshooting, centralized logging, SIEM integration, and proactive threat detection to ensure secure and reliable remote connectivity.
 
 ---
 
-# Chapter Review
+## Chapter Review
 
 After completing this chapter, you should understand:
 
@@ -2935,7 +2935,7 @@ After completing this chapter, you should understand:
 
 ---
 
-# What's Next?
+## What's Next?
 
 The next chapter, **`18-Wireless-Networks.md`**, covers:
 

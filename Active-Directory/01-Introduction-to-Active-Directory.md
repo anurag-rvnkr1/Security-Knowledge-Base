@@ -1,13 +1,10 @@
 # Active-Directory/
 
-# 01-Introduction-to-Active-Directory.md
-
-# Part 1 — Introduction, History, Why Active Directory Exists, Core Concepts, Enterprise Use Cases, and Basic Components
-
+## 01-Introduction-to-Active-Directory.md
+## Part 1 — Introduction, History, Why Active Directory Exists, Core Concepts, Enterprise Use Cases, and Basic Components
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 After completing this chapter, you will be able to:
 
 - Understand what Active Directory (AD) is.
@@ -21,8 +18,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is Active Directory?
-
+## What is Active Directory?
 **Active Directory (AD)** is Microsoft's centralized directory service used to manage identities, computers, groups, policies, and resources within an organization.
 
 Think of Active Directory as the **central brain** of a Windows enterprise network.
@@ -31,8 +27,7 @@ Instead of configuring each computer individually, administrators can manage tho
 
 ---
 
-# Simple Analogy
-
+## Simple Analogy
 Imagine a university campus.
 
 Without Active Directory:
@@ -56,8 +51,7 @@ Active Directory provides this centralized management for enterprise IT environm
 
 ---
 
-# Why Was Active Directory Created?
-
+## Why Was Active Directory Created?
 Before Active Directory, organizations often relied on:
 
 - Individual local user accounts.
@@ -73,8 +67,7 @@ Microsoft introduced Active Directory with Windows 2000 Server to solve these ch
 
 ---
 
-# Problems Solved by Active Directory
-
+## Problems Solved by Active Directory
 | Problem | Active Directory Solution |
 |----------|---------------------------|
 | Multiple usernames | Single centralized identity |
@@ -88,8 +81,7 @@ Microsoft introduced Active Directory with Windows 2000 Server to solve these ch
 
 ---
 
-# What Does Active Directory Manage?
-
+## What Does Active Directory Manage?
 Active Directory stores information about many types of objects.
 
 Examples include:
@@ -107,8 +99,7 @@ Examples include:
 
 ---
 
-# What is a Directory?
-
+## What is a Directory?
 A **directory** is a specialized database optimized for searching and retrieving information about network objects.
 
 Unlike a traditional database that frequently changes application data, a directory focuses on identity and resource information.
@@ -140,8 +131,7 @@ Group:
 
 ---
 
-# Real Enterprise Example
-
+## Real Enterprise Example
 Consider a company with:
 
 - 25 offices
@@ -168,12 +158,10 @@ With Active Directory:
 
 ---
 
-# Core Functions of Active Directory
-
+## Core Functions of Active Directory
 Active Directory provides several key services.
 
-## 1. Authentication
-
+### 1. Authentication
 Authentication answers the question:
 
 > **Who are you?**
@@ -189,8 +177,7 @@ Successful authentication verifies identity.
 
 ---
 
-## 2. Authorization
-
+### 2. Authorization
 Authorization answers:
 
 > **What are you allowed to do?**
@@ -207,8 +194,7 @@ Authentication occurs before authorization.
 
 ---
 
-## 3. Centralized Management
-
+### 3. Centralized Management
 Administrators can:
 
 - Create users.
@@ -221,8 +207,7 @@ Administrators can:
 
 ---
 
-## 4. Policy Enforcement
-
+### 4. Policy Enforcement
 Using **Group Policy**, organizations can enforce settings such as:
 
 - Password complexity
@@ -235,8 +220,7 @@ Using **Group Policy**, organizations can enforce settings such as:
 
 ---
 
-## 5. Resource Management
-
+### 5. Resource Management
 AD simplifies access to:
 
 - File servers
@@ -248,8 +232,7 @@ AD simplifies access to:
 
 ---
 
-# Active Directory Components (High-Level)
-
+## Active Directory Components (High-Level)
 ```text
                  Active Directory
 
@@ -271,8 +254,7 @@ These components will be explored in depth in later chapters.
 
 ---
 
-# Enterprise Benefits
-
+## Enterprise Benefits
 | Benefit | Description |
 |---------|-------------|
 | Centralized management | One place to manage identities and devices |
@@ -285,8 +267,7 @@ These components will be explored in depth in later chapters.
 
 ---
 
-# Active Directory vs Local Accounts
-
+## Active Directory vs Local Accounts
 | Local Account | Active Directory Account |
 |---------------|--------------------------|
 | Exists on one computer | Exists in the domain |
@@ -297,8 +278,7 @@ These components will be explored in depth in later chapters.
 
 ---
 
-# Active Directory vs Microsoft Entra ID
-
+## Active Directory vs Microsoft Entra ID
 | Active Directory | Microsoft Entra ID |
 |------------------|--------------------|
 | Primarily on-premises | Cloud-based identity service |
@@ -311,8 +291,7 @@ Many organizations operate in a **hybrid identity** model that combines both.
 
 ---
 
-# Common Enterprise Use Cases
-
+## Common Enterprise Use Cases
 - Employee onboarding and offboarding
 - Password management
 - Centralized authentication
@@ -326,8 +305,7 @@ Many organizations operate in a **hybrid identity** model that combines both.
 
 ---
 
-# Basic Authentication Flow
-
+## Basic Authentication Flow
 ```text
 User
 
@@ -358,8 +336,7 @@ User Accesses Authorized Resources
 
 ---
 
-# Who Uses Active Directory?
-
+## Who Uses Active Directory?
 Roles that commonly work with AD include:
 
 - Windows System Administrators
@@ -377,8 +354,7 @@ Roles that commonly work with AD include:
 
 ---
 
-# Cybersecurity Perspective
-
+## Cybersecurity Perspective
 Active Directory is one of the most valuable assets in a Windows enterprise.
 
 Because it controls identities and permissions, attackers frequently target AD to:
@@ -402,14 +378,11 @@ Understanding AD is essential for both administration and cybersecurity.
 
 ---
 
-# Hands-on Lab
-
-## Objective
-
+## Hands-on Lab
+### Objective
 Explore the Local Users and Groups console on a standalone Windows system.
 
-### Steps
-
+#### Steps
 1. Open **Run** (`Win + R`).
 2. Launch `lusrmgr.msc` (if available on your edition of Windows).
 3. Examine:
@@ -420,8 +393,7 @@ Explore the Local Users and Groups console on a standalone Windows system.
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - Active Directory is Microsoft's centralized directory service.
 - It manages users, computers, groups, and other directory objects.
 - AD provides centralized authentication and authorization.
@@ -431,32 +403,20 @@ Explore the Local Users and Groups console on a standalone Windows system.
 
 ---
 
-# Interview Questions
-
-### 1. What is Active Directory?
-
-### 2. Why do organizations use Active Directory?
-
-### 3. What problems does Active Directory solve?
-
-### 4. What is the difference between authentication and authorization?
-
-### 5. Name five objects that Active Directory can manage.
-
-### 6. What is centralized management?
-
-### 7. What are the benefits of Group Policy?
-
-### 8. How is an Active Directory account different from a local account?
-
-### 9. What is the difference between Active Directory and Microsoft Entra ID?
-
-### 10. Why is Active Directory a common target for attackers?
-
+## Interview Questions
+#### 1. What is Active Directory?
+#### 2. Why do organizations use Active Directory?
+#### 3. What problems does Active Directory solve?
+#### 4. What is the difference between authentication and authorization?
+#### 5. Name five objects that Active Directory can manage.
+#### 6. What is centralized management?
+#### 7. What are the benefits of Group Policy?
+#### 8. How is an Active Directory account different from a local account?
+#### 9. What is the difference between Active Directory and Microsoft Entra ID?
+#### 10. Why is Active Directory a common target for attackers?
 ---
 
-# References
-
+## References
 - Microsoft Learn – Active Directory fundamentals
 - Microsoft Windows Server Documentation
 - Microsoft Identity Documentation
@@ -466,14 +426,11 @@ Explore the Local Users and Groups console on a standalone Windows system.
 
 ---
 
-# 01-Introduction-to-Active-Directory.md
-
-# Part 2 — Active Directory Components, Objects, Schema, Partitions, Logical Structure, and Enterprise Architecture
-
+## 01-Introduction-to-Active-Directory.md
+## Part 2 — Active Directory Components, Objects, Schema, Partitions, Logical Structure, and Enterprise Architecture
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 By the end of this chapter, you will be able to:
 
 - Understand every major Active Directory component.
@@ -487,8 +444,7 @@ By the end of this chapter, you will be able to:
 
 ---
 
-# Active Directory Components
-
+## Active Directory Components
 An Active Directory environment consists of several interconnected components.
 
 ```text
@@ -516,8 +472,7 @@ Each component plays a specific role in authentication, authorization, and centr
 
 ---
 
-# Active Directory Objects
-
+## Active Directory Objects
 Everything stored in Active Directory is called an **object**.
 
 Examples include:
@@ -537,8 +492,7 @@ Think of an object as a record in the directory database.
 
 ---
 
-# Object Attributes
-
+## Object Attributes
 Every object contains **attributes**.
 
 Example:
@@ -568,8 +522,7 @@ Every object type has a predefined set of attributes defined by the AD Schema.
 
 ---
 
-# Distinguished Name (DN)
-
+## Distinguished Name (DN)
 Each object has a unique **Distinguished Name**.
 
 Example:
@@ -609,8 +562,7 @@ The Distinguished Name uniquely identifies the object's location within Active D
 
 ---
 
-# Relative Distinguished Name (RDN)
-
+## Relative Distinguished Name (RDN)
 The **Relative Distinguished Name (RDN)** identifies an object within its parent container.
 
 Example:
@@ -623,8 +575,7 @@ Combined with the parent path, it forms the full Distinguished Name.
 
 ---
 
-# GUID
-
+## GUID
 Every Active Directory object also has a **Globally Unique Identifier (GUID)**.
 
 Characteristics:
@@ -644,8 +595,7 @@ Administrators usually work with names, while AD relies heavily on GUIDs interna
 
 ---
 
-# Security Identifier (SID)
-
+## Security Identifier (SID)
 Security-sensitive objects receive a **Security Identifier (SID)**.
 
 Example:
@@ -664,8 +614,7 @@ Important points:
 
 ---
 
-# Common Active Directory Objects
-
+## Common Active Directory Objects
 | Object | Purpose |
 |----------|----------|
 | User | Represents a person or service |
@@ -679,8 +628,7 @@ Important points:
 
 ---
 
-# Containers vs Organizational Units
-
+## Containers vs Organizational Units
 Containers and OUs both hold objects, but they differ.
 
 | Container | OU |
@@ -708,8 +656,7 @@ company.com
 
 ---
 
-# What is the Active Directory Schema?
-
+## What is the Active Directory Schema?
 The **Schema** defines:
 
 - Which object types exist.
@@ -720,8 +667,7 @@ Think of the schema as the blueprint for the entire directory.
 
 ---
 
-# Schema Analogy
-
+## Schema Analogy
 Imagine designing a student database.
 
 Schema:
@@ -756,8 +702,7 @@ Similarly, Active Directory relies on its schema to understand every object.
 
 ---
 
-# Schema Components
-
+## Schema Components
 The schema defines:
 
 - Object classes
@@ -768,8 +713,7 @@ The schema defines:
 
 ---
 
-# Schema Example
-
+## Schema Example
 User Class
 
 ```text
@@ -824,8 +768,7 @@ DNS Name
 
 ---
 
-# Can the Schema Be Modified?
-
+## Can the Schema Be Modified?
 Yes.
 
 Organizations and software vendors can extend the schema.
@@ -840,8 +783,7 @@ Because schema changes affect the entire forest, they must be planned and tested
 
 ---
 
-# Active Directory Database
-
+## Active Directory Database
 All directory information is stored in the **NTDS.DIT** database on Domain Controllers.
 
 It stores:
@@ -857,8 +799,7 @@ It stores:
 
 ---
 
-# High-Level Database View
-
+## High-Level Database View
 ```text
 NTDS.DIT
 
@@ -881,8 +822,7 @@ NTDS.DIT
 
 ---
 
-# Naming Contexts (Directory Partitions)
-
+## Naming Contexts (Directory Partitions)
 The Active Directory database is divided into logical partitions.
 
 ```text
@@ -901,8 +841,7 @@ Active Directory
 
 ---
 
-# 1. Schema Partition
-
+## 1. Schema Partition
 Contains:
 
 - Object classes
@@ -917,8 +856,7 @@ Characteristics:
 
 ---
 
-# 2. Configuration Partition
-
+## 2. Configuration Partition
 Stores:
 
 - Sites
@@ -930,8 +868,7 @@ Shared by all domains in the forest.
 
 ---
 
-# 3. Domain Partition
-
+## 3. Domain Partition
 Contains:
 
 - Users
@@ -944,8 +881,7 @@ Replicated only to Domain Controllers within that domain.
 
 ---
 
-# 4. Application Partition
-
+## 4. Application Partition
 Stores application-specific data.
 
 Examples:
@@ -957,14 +893,12 @@ Replication scope depends on the application.
 
 ---
 
-# Logical vs Physical Structure
-
+## Logical vs Physical Structure
 One of the most important Active Directory concepts is understanding the difference between logical and physical structures.
 
 ---
 
-## Logical Structure
-
+### Logical Structure
 Organizes identities.
 
 Includes:
@@ -995,8 +929,7 @@ Users
 
 ---
 
-## Physical Structure
-
+### Physical Structure
 Organizes infrastructure.
 
 Includes:
@@ -1026,8 +959,7 @@ Replication
 
 ---
 
-# Enterprise Logical Structure Example
-
+## Enterprise Logical Structure Example
 ```text
 Forest
 
@@ -1054,8 +986,7 @@ Forest
 
 ---
 
-# Enterprise Physical Structure Example
-
+## Enterprise Physical Structure Example
 ```text
 Head Office
 
@@ -1082,8 +1013,7 @@ Branch Office
 
 ---
 
-# Why This Design Matters
-
+## Why This Design Matters
 Separating logical and physical structures provides:
 
 - Better scalability
@@ -1094,8 +1024,7 @@ Separating logical and physical structures provides:
 
 ---
 
-# Cybersecurity Perspective
-
+## Cybersecurity Perspective
 Understanding AD objects is essential for security because attackers often target:
 
 - User accounts
@@ -1117,14 +1046,11 @@ Defenders should:
 
 ---
 
-# Hands-on Lab
-
-## Objective
-
+## Hands-on Lab
+### Objective
 Explore Active Directory object types in a lab environment.
 
-### Steps
-
+#### Steps
 1. Open **Active Directory Users and Computers** (`dsa.msc`) on a domain-joined management workstation or Domain Controller.
 2. Expand the domain.
 3. Locate:
@@ -1139,8 +1065,7 @@ Explore Active Directory object types in a lab environment.
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - Everything stored in Active Directory is an object.
 - Objects contain attributes defined by the schema.
 - Distinguished Names uniquely identify object locations.
@@ -1153,8 +1078,7 @@ Explore Active Directory object types in a lab environment.
 
 ---
 
-# Interview Questions
-
+## Interview Questions
 1. What is an Active Directory object?
 2. What is the difference between an object and an attribute?
 3. What is a Distinguished Name (DN)?
@@ -1168,8 +1092,7 @@ Explore Active Directory object types in a lab environment.
 
 ---
 
-# References
-
+## References
 - Microsoft Learn – Active Directory Architecture
 - Microsoft Windows Server Documentation
 - Windows Internals
@@ -1178,14 +1101,11 @@ Explore Active Directory object types in a lab environment.
 
 ---
 
-# 01-Introduction-to-Active-Directory.md
-
-# Part 3 — Evolution of Active Directory, Directory Services, LDAP Fundamentals, X.500, Identity Management Concepts, and Active Directory Design Principles
-
+## 01-Introduction-to-Active-Directory.md
+## Part 3 — Evolution of Active Directory, Directory Services, LDAP Fundamentals, X.500, Identity Management Concepts, and Active Directory Design Principles
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 By the end of this chapter, you will be able to:
 
 - Understand the evolution of directory services.
@@ -1198,8 +1118,7 @@ By the end of this chapter, you will be able to:
 
 ---
 
-# Evolution of Directory Services
-
+## Evolution of Directory Services
 Before centralized directory services existed, organizations typically managed users independently on each system.
 
 Example:
@@ -1236,8 +1155,7 @@ As organizations grew, centralized identity management became essential.
 
 ---
 
-# What is a Directory Service?
-
+## What is a Directory Service?
 A **directory service** is a specialized system that stores, organizes, and provides fast access to information about network resources and identities.
 
 Unlike a typical application database, directory services are optimized for:
@@ -1250,8 +1168,7 @@ Unlike a typical application database, directory services are optimized for:
 
 ---
 
-# Characteristics of a Directory Service
-
+## Characteristics of a Directory Service
 A directory service is generally:
 
 - Hierarchical
@@ -1263,8 +1180,7 @@ A directory service is generally:
 
 ---
 
-# Directory Service vs Relational Database
-
+## Directory Service vs Relational Database
 | Directory Service | Relational Database |
 |-------------------|---------------------|
 | Optimized for searches | Optimized for transactions |
@@ -1276,8 +1192,7 @@ A directory service is generally:
 
 ---
 
-# Common Directory Services
-
+## Common Directory Services
 | Directory Service | Vendor |
 |-------------------|--------|
 | Active Directory | Microsoft |
@@ -1290,8 +1205,7 @@ Although implementations differ, many support LDAP for directory access.
 
 ---
 
-# History of X.500
-
+## History of X.500
 Before LDAP, the **X.500** standard defined a global directory service architecture.
 
 Developed by the International Telecommunication Union (ITU), X.500 introduced concepts such as:
@@ -1307,8 +1221,7 @@ Many of these concepts are still present in Active Directory.
 
 ---
 
-# Simplified X.500 Structure
-
+## Simplified X.500 Structure
 ```text
 Country
 
@@ -1345,8 +1258,7 @@ John Smith
 
 ---
 
-# Why LDAP Was Introduced
-
+## Why LDAP Was Introduced
 The original X.500 protocols were powerful but complex and resource-intensive.
 
 LDAP (Lightweight Directory Access Protocol) was created to provide a simpler way for clients to query and manage directory services.
@@ -1361,8 +1273,7 @@ Advantages of LDAP:
 
 ---
 
-# What is LDAP?
-
+## What is LDAP?
 LDAP stands for:
 
 **Lightweight Directory Access Protocol**
@@ -1380,8 +1291,7 @@ LDAP is not the directory itself—it is the language clients use to communicate
 
 ---
 
-# LDAP Communication
-
+## LDAP Communication
 ```text
 Administrator
 
@@ -1406,8 +1316,7 @@ Applications such as email servers, VPN gateways, and enterprise applications of
 
 ---
 
-# Common LDAP Operations
-
+## Common LDAP Operations
 | Operation | Purpose |
 |-----------|---------|
 | Bind | Authenticate to the directory |
@@ -1421,8 +1330,7 @@ Applications such as email servers, VPN gateways, and enterprise applications of
 
 ---
 
-# LDAP Naming Example
-
+## LDAP Naming Example
 ```text
 CN=Alice Johnson,
 OU=HR,
@@ -1440,8 +1348,7 @@ Breakdown:
 
 ---
 
-# LDAP Ports
-
+## LDAP Ports
 | Port | Protocol | Typical Use |
 |------|----------|-------------|
 | 389 | TCP/UDP | LDAP |
@@ -1453,8 +1360,7 @@ In enterprise environments, encrypted LDAP (LDAPS) is recommended for sensitive 
 
 ---
 
-# Identity Management Concepts
-
+## Identity Management Concepts
 Identity management ensures that the right individuals have the appropriate access to resources at the correct time.
 
 Core activities include:
@@ -1468,8 +1374,7 @@ Core activities include:
 
 ---
 
-# Identity Lifecycle
-
+## Identity Lifecycle
 ```text
 Hire Employee
 
@@ -1514,8 +1419,7 @@ Proper lifecycle management reduces security risks and supports compliance.
 
 ---
 
-# Authentication vs Authorization
-
+## Authentication vs Authorization
 Authentication verifies identity.
 
 Example:
@@ -1546,8 +1450,7 @@ These concepts are related but distinct.
 
 ---
 
-# Authentication Factors
-
+## Authentication Factors
 Modern environments may use one or more authentication factors:
 
 | Factor | Example |
@@ -1560,8 +1463,7 @@ Combining multiple factors strengthens security.
 
 ---
 
-# Single Sign-On (SSO)
-
+## Single Sign-On (SSO)
 Single Sign-On allows users to authenticate once and access multiple authorized resources without repeatedly entering credentials.
 
 Benefits:
@@ -1574,8 +1476,7 @@ Benefits:
 
 ---
 
-# Identity Stores
-
+## Identity Stores
 Examples of identity stores include:
 
 - Active Directory
@@ -1588,8 +1489,7 @@ Each serves different use cases depending on organizational needs.
 
 ---
 
-# Active Directory Design Principles
-
+## Active Directory Design Principles
 When designing an AD environment, architects should prioritize:
 
 - Simplicity
@@ -1603,16 +1503,14 @@ When designing an AD environment, architects should prioritize:
 
 ---
 
-# Principle 1 — Simplicity
-
+## Principle 1 — Simplicity
 Avoid unnecessary complexity.
 
 Instead of deeply nested Organizational Units, prefer structures that are easy to understand and maintain.
 
 ---
 
-# Principle 2 — Least Privilege
-
+## Principle 2 — Least Privilege
 Grant only the permissions required for a role.
 
 Benefits:
@@ -1623,8 +1521,7 @@ Benefits:
 
 ---
 
-# Principle 3 — Delegation
-
+## Principle 3 — Delegation
 Delegate administrative tasks without granting excessive privileges.
 
 Example:
@@ -1649,8 +1546,7 @@ Delegation supports operational efficiency while maintaining security.
 
 ---
 
-# Principle 4 — High Availability
-
+## Principle 4 — High Availability
 Avoid single points of failure.
 
 Examples:
@@ -1662,8 +1558,7 @@ Examples:
 
 ---
 
-# Principle 5 — Scalability
-
+## Principle 5 — Scalability
 Design for future growth.
 
 Consider:
@@ -1676,8 +1571,7 @@ Consider:
 
 ---
 
-# Principle 6 — Documentation
-
+## Principle 6 — Documentation
 Document:
 
 - Organizational Unit structure
@@ -1691,8 +1585,7 @@ Good documentation accelerates troubleshooting and onboarding.
 
 ---
 
-# Common Design Mistakes
-
+## Common Design Mistakes
 Avoid:
 
 - Excessive OU nesting
@@ -1706,8 +1599,7 @@ Avoid:
 
 ---
 
-# Enterprise Identity Architecture (Simplified)
-
+## Enterprise Identity Architecture (Simplified)
 ```text
                    Users
 
@@ -1734,8 +1626,7 @@ Avoid:
 
 ---
 
-# Cybersecurity Perspective
-
+## Cybersecurity Perspective
 Identity is one of the most valuable assets in an enterprise.
 
 Attackers frequently target:
@@ -1758,14 +1649,11 @@ Defenders should:
 
 ---
 
-# Hands-on Lab
-
-## Objective
-
+## Hands-on Lab
+### Objective
 Understand LDAP and directory queries conceptually.
 
-### Steps
-
+#### Steps
 1. Review a sample Distinguished Name:
    ```text
    CN=Alice Johnson,OU=HR,DC=company,DC=com
@@ -1780,8 +1668,7 @@ Understand LDAP and directory queries conceptually.
 
 ---
 
-# Key Takeaways
-
+## Key Takeaways
 - Directory services centralize identity information.
 - Active Directory is Microsoft's enterprise directory service.
 - LDAP is the protocol used to communicate with directory services.
@@ -1792,8 +1679,7 @@ Understand LDAP and directory queries conceptually.
 
 ---
 
-# Interview Questions
-
+## Interview Questions
 1. What is a directory service?
 2. How does a directory service differ from a relational database?
 3. What is LDAP?
@@ -1807,8 +1693,7 @@ Understand LDAP and directory queries conceptually.
 
 ---
 
-# References
-
+## References
 - Microsoft Learn – Active Directory Fundamentals
 - Microsoft Windows Server Documentation
 - RFC 4511 – Lightweight Directory Access Protocol (LDAP)
@@ -1818,14 +1703,11 @@ Understand LDAP and directory queries conceptually.
 
 ---
 
-# 01-Introduction-to-Active-Directory.md
-
-# Part 4 — Active Directory Editions, Deployment Models, Enterprise Planning, Best Practices, Common Misconceptions, Chapter Summary, and Final Revision
-
+## 01-Introduction-to-Active-Directory.md
+## Part 4 — Active Directory Editions, Deployment Models, Enterprise Planning, Best Practices, Common Misconceptions, Chapter Summary, and Final Revision
 ---
 
-# Learning Objectives
-
+## Learning Objectives
 After completing this chapter, you will be able to:
 
 - Understand where Active Directory can be deployed.
@@ -1837,8 +1719,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# Active Directory Deployment Models
-
+## Active Directory Deployment Models
 Modern organizations generally use one of three identity models.
 
 ```text
@@ -1855,8 +1736,7 @@ Each model has different operational and security considerations.
 
 ---
 
-# 1. On-Premises Active Directory
-
+## 1. On-Premises Active Directory
 Traditional deployment hosted entirely within the organization's own infrastructure.
 
 ```text
@@ -1879,16 +1759,14 @@ Servers
 Shared Resources
 ```
 
-### Advantages
-
+#### Advantages
 - Full administrative control
 - Local authentication
 - Mature ecosystem
 - Works without Internet connectivity for internal authentication
 - Supports legacy applications
 
-### Challenges
-
+#### Challenges
 - Hardware management
 - Infrastructure maintenance
 - Backup responsibility
@@ -1897,8 +1775,7 @@ Shared Resources
 
 ---
 
-# 2. Cloud Identity
-
+## 2. Cloud Identity
 Cloud-native identity managed through **Microsoft Entra ID**.
 
 ```text
@@ -1921,24 +1798,21 @@ Microsoft 365
 Cloud Applications
 ```
 
-### Advantages
-
+#### Advantages
 - Reduced infrastructure management
 - Global availability
 - Built-in cloud integrations
 - Supports modern authentication
 - Simplified SaaS access
 
-### Challenges
-
+#### Challenges
 - Internet dependency for many services
 - Legacy application compatibility
 - Different administration model than traditional AD
 
 ---
 
-# 3. Hybrid Identity
-
+## 3. Hybrid Identity
 Many enterprises combine Active Directory with Microsoft Entra ID.
 
 ```text
@@ -1969,8 +1843,7 @@ Hybrid identity is common in medium and large organizations.
 
 ---
 
-# Active Directory Editions and Requirements
-
+## Active Directory Editions and Requirements
 Active Directory Domain Services (AD DS) is a **Windows Server role**.
 
 Common Windows Server editions include:
@@ -1984,8 +1857,7 @@ Client operating systems (Windows 10/11) can join an Active Directory domain but
 
 ---
 
-# Core Infrastructure Requirements
-
+## Core Infrastructure Requirements
 Before deploying Active Directory, ensure the following components are planned:
 
 | Component | Why It Matters |
@@ -1999,8 +1871,7 @@ Before deploying Active Directory, ensure the following components are planned:
 
 ---
 
-# Enterprise Planning Checklist
-
+## Enterprise Planning Checklist
 Before implementing Active Directory, answer questions such as:
 
 - How many users will the environment support?
@@ -2016,8 +1887,7 @@ Planning reduces future restructuring efforts.
 
 ---
 
-# Naming Conventions
-
+## Naming Conventions
 Consistent naming improves administration.
 
 Example:
@@ -2062,8 +1932,7 @@ Good naming conventions simplify automation, reporting, and troubleshooting.
 
 ---
 
-# Administrative Roles
-
+## Administrative Roles
 Separate administrative responsibilities whenever possible.
 
 Example:
@@ -2080,8 +1949,7 @@ Avoid assigning unnecessary enterprise-wide privileges.
 
 ---
 
-# High Availability
-
+## High Availability
 A resilient Active Directory environment should include:
 
 - Multiple Domain Controllers
@@ -2118,8 +1986,7 @@ Example:
 
 ---
 
-# Backup and Recovery
-
+## Backup and Recovery
 Backups should include:
 
 - System State
@@ -2132,8 +1999,7 @@ Backups should be **tested**, not merely created.
 
 ---
 
-# Monitoring Recommendations
-
+## Monitoring Recommendations
 Monitor:
 
 - Authentication failures
@@ -2149,10 +2015,8 @@ Early detection helps prevent operational and security incidents.
 
 ---
 
-# Active Directory Best Practices
-
-### Identity
-
+## Active Directory Best Practices
+#### Identity
 - Use unique accounts.
 - Disable inactive accounts.
 - Remove unnecessary privileges.
@@ -2160,8 +2024,7 @@ Early detection helps prevent operational and security incidents.
 
 ---
 
-### Security
-
+#### Security
 - Enforce strong password policies.
 - Enable multi-factor authentication where applicable.
 - Protect privileged accounts.
@@ -2170,8 +2033,7 @@ Early detection helps prevent operational and security incidents.
 
 ---
 
-### Administration
-
+#### Administration
 - Delegate permissions instead of sharing administrator accounts.
 - Follow documented change management.
 - Test changes before production deployment.
@@ -2179,8 +2041,7 @@ Early detection helps prevent operational and security incidents.
 
 ---
 
-### Infrastructure
-
+#### Infrastructure
 - Deploy multiple Domain Controllers.
 - Keep systems patched.
 - Synchronize time reliably.
@@ -2189,10 +2050,8 @@ Early detection helps prevent operational and security incidents.
 
 ---
 
-# Common Misconceptions
-
-## Myth 1
-
+## Common Misconceptions
+### Myth 1
 > Active Directory is only for authentication.
 
 Reality:
@@ -2201,8 +2060,7 @@ AD also manages authorization, policies, devices, groups, trusts, replication, a
 
 ---
 
-## Myth 2
-
+### Myth 2
 > Every administrator should be a Domain Admin.
 
 Reality:
@@ -2211,8 +2069,7 @@ Only a small number of trusted administrators should have Domain Admin privilege
 
 ---
 
-## Myth 3
-
+### Myth 3
 > DNS is optional.
 
 Reality:
@@ -2221,8 +2078,7 @@ DNS is fundamental to Active Directory functionality.
 
 ---
 
-## Myth 4
-
+### Myth 4
 > One Domain Controller is sufficient.
 
 Reality:
@@ -2231,8 +2087,7 @@ Multiple Domain Controllers improve availability and resilience.
 
 ---
 
-## Myth 5
-
+### Myth 5
 > Backups are enough.
 
 Reality:
@@ -2241,8 +2096,7 @@ Recovery procedures must also be tested.
 
 ---
 
-# Enterprise Scenario
-
+## Enterprise Scenario
 A multinational organization has:
 
 - 18,000 employees
@@ -2265,8 +2119,7 @@ Active Directory enables these capabilities through centralized identity and pol
 
 ---
 
-# Cybersecurity Perspective
-
+## Cybersecurity Perspective
 Active Directory is often considered the "keys to the kingdom" in Windows environments.
 
 Compromising Active Directory may allow attackers to:
@@ -2288,8 +2141,7 @@ Defensive priorities include:
 
 ---
 
-# Complete Chapter Summary
-
+## Complete Chapter Summary
 This chapter introduced:
 
 - Active Directory fundamentals
@@ -2317,8 +2169,7 @@ These concepts form the foundation for all subsequent Active Directory topics.
 
 ---
 
-# Final Revision Table
-
+## Final Revision Table
 | Topic | Key Point |
 |------|-----------|
 | Active Directory | Centralized directory service |
@@ -2339,8 +2190,7 @@ These concepts form the foundation for all subsequent Active Directory topics.
 
 ---
 
-# Interview Questions
-
+## Interview Questions
 1. Compare on-premises, cloud, and hybrid identity.
 2. Why is DNS essential for Active Directory?
 3. Why should Domain Admin privileges be limited?
@@ -2354,8 +2204,7 @@ These concepts form the foundation for all subsequent Active Directory topics.
 
 ---
 
-# Practical Exercises
-
+## Practical Exercises
 1. Draw a simple Active Directory hierarchy for a fictional company.
 2. Create a naming convention for users, computers, and groups.
 3. List five Active Directory objects and five attributes for each.
@@ -2366,8 +2215,7 @@ These concepts form the foundation for all subsequent Active Directory topics.
 
 ---
 
-# References
-
+## References
 - Microsoft Learn – Active Directory Domain Services
 - Microsoft Windows Server Documentation
 - Microsoft Identity Documentation
@@ -2378,8 +2226,7 @@ These concepts form the foundation for all subsequent Active Directory topics.
 
 ---
 
-# Congratulations!
-
+## Congratulations!
 You have completed **Chapter 01 – Introduction to Active Directory**.
 
 You now have a solid conceptual understanding of Active Directory, its history, architecture, identity concepts, directory services, deployment models, and enterprise design principles. This foundation prepares you for deeper exploration of Active Directory architecture and administration.

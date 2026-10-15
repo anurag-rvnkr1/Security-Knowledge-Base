@@ -1,6 +1,6 @@
 # Chapter 05: Cloud Architecture
 
-# Introduction
+## Introduction
 
 Cloud computing is much more than simply running virtual machines or storing files on remote servers. Behind every cloud service lies a carefully designed architecture that enables organizations to build applications that are scalable, resilient, secure, highly available, and globally accessible.
 
@@ -26,7 +26,7 @@ This chapter provides an in-depth exploration of cloud architecture, beginning w
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this chapter, you will be able to:
 
@@ -43,7 +43,7 @@ After completing this chapter, you will be able to:
 
 ---
 
-# What is Cloud Architecture?
+## What is Cloud Architecture?
 
 Cloud Architecture refers to the **overall structure, design, organization, and interaction of all components that deliver cloud computing services**.
 
@@ -64,7 +64,7 @@ Simply put,
 
 ---
 
-# Why Cloud Architecture Matters
+## Why Cloud Architecture Matters
 
 Poor architecture is one of the leading causes of:
 
@@ -90,7 +90,7 @@ A well-designed architecture provides:
 
 ---
 
-# Real-World Example
+## Real-World Example
 
 Imagine an online banking application.
 
@@ -166,11 +166,11 @@ Removing just one component may introduce security vulnerabilities or reduce app
 
 ---
 
-# Goals of Cloud Architecture
+## Goals of Cloud Architecture
 
 Every cloud architecture aims to achieve multiple objectives simultaneously.
 
-## Scalability
+### Scalability
 
 Applications should handle increasing workloads without requiring major redesign.
 
@@ -185,7 +185,7 @@ A scalable architecture automatically adjusts available resources.
 
 ---
 
-## High Availability
+### High Availability
 
 Applications should remain operational despite hardware failures.
 
@@ -198,7 +198,7 @@ Typical techniques include:
 
 ---
 
-## Reliability
+### Reliability
 
 Systems should consistently deliver expected functionality.
 
@@ -211,7 +211,7 @@ Reliability involves:
 
 ---
 
-## Performance
+### Performance
 
 Cloud applications should deliver low latency and fast response times.
 
@@ -225,7 +225,7 @@ Performance depends on:
 
 ---
 
-## Security
+### Security
 
 Security must be integrated into every architectural layer.
 
@@ -241,7 +241,7 @@ Examples include:
 
 ---
 
-## Cost Efficiency
+### Cost Efficiency
 
 Cloud architecture should optimize resource utilization.
 
@@ -255,7 +255,7 @@ Examples:
 
 ---
 
-## Automation
+### Automation
 
 Modern architectures automate:
 
@@ -270,7 +270,7 @@ Automation improves consistency while reducing human error.
 
 ---
 
-# Characteristics of Modern Cloud Architecture
+## Characteristics of Modern Cloud Architecture
 
 Modern cloud architectures differ significantly from traditional enterprise systems.
 
@@ -289,7 +289,7 @@ Common characteristics include:
 
 ---
 
-# Evolution of Cloud Architecture
+## Evolution of Cloud Architecture
 
 Cloud architecture has evolved dramatically over time.
 
@@ -349,7 +349,7 @@ Each evolution increased scalability, automation, and operational efficiency whi
 
 ---
 
-# Core Components of Cloud Architecture
+## Core Components of Cloud Architecture
 
 Every cloud environment consists of several interconnected components.
 
@@ -383,7 +383,7 @@ These components function together to provide cloud services.
 
 ---
 
-# High-Level Cloud Architecture
+## High-Level Cloud Architecture
 
 A simplified enterprise cloud architecture can be represented as follows.
 
@@ -457,7 +457,7 @@ Each layer contributes to application availability, security, and performance.
 
 ---
 
-# Cloud Architecture Layers
+## Cloud Architecture Layers
 
 Cloud architecture is commonly divided into logical layers.
 
@@ -485,7 +485,7 @@ Each layer builds upon the capabilities of the layer beneath it.
 
 ---
 
-# Physical Infrastructure Layer
+## Physical Infrastructure Layer
 
 The foundation of every cloud consists of physical hardware.
 
@@ -506,7 +506,7 @@ Cloud providers manage it internally.
 
 ---
 
-# Virtualization Layer
+## Virtualization Layer
 
 Virtualization transforms physical resources into logical resources.
 
@@ -528,7 +528,7 @@ Hypervisors operate at this layer.
 
 ---
 
-# Infrastructure Layer
+## Infrastructure Layer
 
 The Infrastructure Layer exposes virtualized resources to customers.
 
@@ -545,7 +545,7 @@ Infrastructure as a Service (IaaS) primarily operates within this layer.
 
 ---
 
-# Platform Layer
+## Platform Layer
 
 The Platform Layer provides managed services that simplify application development.
 
@@ -562,7 +562,7 @@ Developers focus on application logic rather than infrastructure management.
 
 ---
 
-# Application Layer
+## Application Layer
 
 This is the layer that users directly interact with.
 
@@ -579,7 +579,7 @@ Security controls from every lower layer ultimately protect these applications.
 
 ---
 
-# Architectural Building Blocks
+## Architectural Building Blocks
 
 Modern cloud architecture consists of numerous building blocks.
 
@@ -617,7 +617,7 @@ Each building block will be explored in detail throughout this handbook.
 
 ---
 
-# Front-End Architecture
+## Front-End Architecture
 
 The front-end represents everything users interact with.
 
@@ -658,7 +658,7 @@ The front-end should never directly access sensitive backend resources such as d
 
 ---
 
-# Back-End Architecture
+## Back-End Architecture
 
 The back-end performs the business logic and processes user requests.
 
@@ -701,7 +701,7 @@ Back-end systems are protected through multiple layers of security controls.
 
 ---
 
-# Enterprise Cloud Architecture Overview
+## Enterprise Cloud Architecture Overview
 
 Large organizations rarely deploy a single application. Instead, they operate complex ecosystems consisting of hundreds or thousands of interconnected services.
 
@@ -763,7 +763,7 @@ This architecture emphasizes redundancy, scalability, centralized security, and 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cloud Architecture is the blueprint that defines how cloud services are designed, deployed, and operated.
 - A well-designed architecture balances security, scalability, performance, cost, reliability, and maintainability.
@@ -773,9 +773,9 @@ This architecture emphasizes redundancy, scalability, centralized security, and 
 
 ---
 
-# Cloud Architecture Components
+## Cloud Architecture Components
 
-## Introduction
+### Introduction
 
 Cloud Architecture is not a single technology or service. Instead, it is a collection of tightly integrated architectural components that work together to provide reliable, scalable, secure, and highly available cloud services.
 
@@ -809,7 +809,7 @@ Understanding each architectural component is essential for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -826,7 +826,7 @@ After completing this section, you will be able to:
 
 ---
 
-# Cloud Architecture Overview
+## Cloud Architecture Overview
 
 Every cloud application is built using multiple interconnected components.
 
@@ -888,7 +888,7 @@ Each component performs a specialized function within the architecture.
 
 ---
 
-# Major Cloud Architecture Components
+## Major Cloud Architecture Components
 
 The major components include:
 
@@ -930,9 +930,9 @@ Every enterprise cloud deployment contains most or all of these components.
 
 ---
 
-# Client Infrastructure
+## Client Infrastructure
 
-## What is Client Infrastructure?
+### What is Client Infrastructure?
 
 Client Infrastructure refers to the devices and software that users employ to access cloud services.
 
@@ -971,7 +971,7 @@ The client infrastructure represents the first interaction point between users a
 
 ---
 
-## Responsibilities
+### Responsibilities
 
 Client infrastructure is responsible for:
 
@@ -984,7 +984,7 @@ Client infrastructure is responsible for:
 
 ---
 
-## Security Considerations
+### Security Considerations
 
 Client devices must be protected against:
 
@@ -1005,7 +1005,7 @@ Common protections include:
 
 ---
 
-# Network Infrastructure
+## Network Infrastructure
 
 Network Infrastructure connects every cloud component.
 
@@ -1046,7 +1046,7 @@ Modern cloud networking is entirely software-defined.
 
 ---
 
-## Responsibilities
+### Responsibilities
 
 Network infrastructure provides:
 
@@ -1061,7 +1061,7 @@ Network infrastructure provides:
 
 ---
 
-## Security Features
+### Security Features
 
 Enterprise networking includes:
 
@@ -1074,9 +1074,9 @@ Enterprise networking includes:
 
 ---
 
-# Compute Infrastructure
+## Compute Infrastructure
 
-## Overview
+### Overview
 
 Compute Infrastructure provides processing power for applications.
 
@@ -1107,9 +1107,9 @@ Compute Layer
 
 ---
 
-## Types of Compute
+### Types of Compute
 
-### Virtual Machines
+#### Virtual Machines
 
 Provide complete operating system environments.
 
@@ -1121,7 +1121,7 @@ Suitable for:
 
 ---
 
-### Containers
+#### Containers
 
 Provide lightweight application environments.
 
@@ -1133,7 +1133,7 @@ Benefits:
 
 ---
 
-### Kubernetes
+#### Kubernetes
 
 Coordinates large numbers of containers.
 
@@ -1146,7 +1146,7 @@ Provides:
 
 ---
 
-### Serverless Computing
+#### Serverless Computing
 
 Developers deploy functions instead of servers.
 
@@ -1159,7 +1159,7 @@ Cloud providers automatically manage:
 
 ---
 
-## Security Considerations
+### Security Considerations
 
 Compute security includes:
 
@@ -1172,7 +1172,7 @@ Compute security includes:
 
 ---
 
-# Storage Infrastructure
+## Storage Infrastructure
 
 Storage is responsible for persistent data.
 
@@ -1194,7 +1194,7 @@ Storage
 
 ---
 
-## Object Storage
+### Object Storage
 
 Designed for:
 
@@ -1212,7 +1212,7 @@ Characteristics:
 
 ---
 
-## Block Storage
+### Block Storage
 
 Acts like traditional hard drives.
 
@@ -1228,7 +1228,7 @@ Provides:
 
 ---
 
-## File Storage
+### File Storage
 
 Supports shared access.
 
@@ -1240,7 +1240,7 @@ Common use cases:
 
 ---
 
-## Archive Storage
+### Archive Storage
 
 Optimized for:
 
@@ -1252,7 +1252,7 @@ Access time is slower but storage costs are significantly lower.
 
 ---
 
-## Storage Security
+### Storage Security
 
 Important controls include:
 
@@ -1265,7 +1265,7 @@ Important controls include:
 
 ---
 
-# Database Services
+## Database Services
 
 Applications require structured data storage.
 
@@ -1292,7 +1292,7 @@ Persistent Storage
 
 ---
 
-## Database Responsibilities
+### Database Responsibilities
 
 Databases manage:
 
@@ -1304,7 +1304,7 @@ Databases manage:
 
 ---
 
-## Security Considerations
+### Security Considerations
 
 Protect databases using:
 
@@ -1317,7 +1317,7 @@ Protect databases using:
 
 ---
 
-# Identity Services
+## Identity Services
 
 Identity is the foundation of cloud security.
 
@@ -1345,7 +1345,7 @@ Cloud Resources
 
 ---
 
-## Major Identity Components
+### Major Identity Components
 
 - Identity Provider (IdP)
 - Multi-Factor Authentication
@@ -1356,7 +1356,7 @@ Cloud Resources
 
 ---
 
-## Identity Workflow
+### Identity Workflow
 
 ```
 User
@@ -1384,7 +1384,7 @@ Cloud Service
 
 ---
 
-## Security Best Practices
+### Security Best Practices
 
 - Enforce MFA.
 - Implement Least Privilege.
@@ -1395,7 +1395,7 @@ Cloud Service
 
 ---
 
-# API Layer
+## API Layer
 
 Modern cloud applications communicate primarily through APIs.
 
@@ -1417,7 +1417,7 @@ Database
 
 ---
 
-## API Gateway Responsibilities
+### API Gateway Responsibilities
 
 The API Gateway performs:
 
@@ -1431,7 +1431,7 @@ The API Gateway performs:
 
 ---
 
-## Security Controls
+### Security Controls
 
 API security includes:
 
@@ -1445,7 +1445,7 @@ API security includes:
 
 ---
 
-# Security Services
+## Security Services
 
 Cloud providers include numerous built-in security services.
 
@@ -1481,7 +1481,7 @@ These services work together to protect workloads.
 
 ---
 
-# Monitoring Services
+## Monitoring Services
 
 Monitoring continuously evaluates infrastructure health.
 
@@ -1519,7 +1519,7 @@ Monitoring enables proactive issue detection.
 
 ---
 
-# Logging Services
+## Logging Services
 
 Logs record events occurring throughout the environment.
 
@@ -1543,7 +1543,7 @@ Logs are essential for:
 
 ---
 
-# Messaging Services
+## Messaging Services
 
 Messaging enables asynchronous communication between applications.
 
@@ -1575,7 +1575,7 @@ Benefits include:
 
 ---
 
-# Automation Services
+## Automation Services
 
 Automation is a core principle of modern cloud architecture.
 
@@ -1593,7 +1593,7 @@ Infrastructure as Code (IaC) tools enable consistent deployments.
 
 ---
 
-# Backup Services
+## Backup Services
 
 Backup services create recoverable copies of critical data.
 
@@ -1614,7 +1614,7 @@ Backups should be:
 
 ---
 
-# Disaster Recovery Components
+## Disaster Recovery Components
 
 Disaster Recovery ensures applications can recover from major failures.
 
@@ -1649,7 +1649,7 @@ Recovery
 
 ---
 
-# How Cloud Components Work Together
+## How Cloud Components Work Together
 
 The following illustrates a complete request lifecycle.
 
@@ -1717,7 +1717,7 @@ Although each component performs a unique role, they operate as an integrated sy
 
 ---
 
-# Enterprise Cloud Component Interaction
+## Enterprise Cloud Component Interaction
 
 ```
                     Users
@@ -1791,7 +1791,7 @@ This layered interaction demonstrates how enterprise cloud platforms achieve sca
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design every component with security in mind.
 - Apply the Principle of Least Privilege across all services.
@@ -1806,7 +1806,7 @@ This layered interaction demonstrates how enterprise cloud platforms achieve sca
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -1821,7 +1821,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cloud Architecture consists of multiple interconnected components that collectively deliver secure and scalable cloud services.
 - Core components include client infrastructure, networking, compute, storage, databases, identity, APIs, security services, monitoring, logging, automation, backups, and disaster recovery.
@@ -1831,9 +1831,9 @@ Avoid the following pitfalls:
 
 ---
 
-# Cloud Control Plane, Data Plane, and Management Plane Architecture
+## Cloud Control Plane, Data Plane, and Management Plane Architecture
 
-## Introduction
+### Introduction
 
 One of the most fundamental concepts in modern cloud architecture is the separation of responsibilities into different operational planes. This architectural separation allows cloud providers to build platforms that are scalable, secure, fault-tolerant, and easier to manage.
 
@@ -1878,7 +1878,7 @@ It also forms the basis for understanding cloud security architecture, IAM, Kube
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -1895,7 +1895,7 @@ After completing this section, you will be able to:
 
 ---
 
-# Why Cloud Uses Multiple Planes
+## Why Cloud Uses Multiple Planes
 
 Imagine managing an airport.
 
@@ -1925,7 +1925,7 @@ Different architectural planes separate responsibilities to improve:
 
 ---
 
-# High-Level Cloud Plane Architecture
+## High-Level Cloud Plane Architecture
 
 ```
                     Users
@@ -1977,7 +1977,7 @@ Each layer has a unique responsibility.
 
 ---
 
-# Understanding the Three Planes
+## Understanding the Three Planes
 
 Think of a modern smart city.
 
@@ -2015,7 +2015,7 @@ Similarly,
 
 ---
 
-# What is the Control Plane?
+## What is the Control Plane?
 
 The **Control Plane** is responsible for controlling, configuring, orchestrating, and managing cloud resources.
 
@@ -2033,7 +2033,7 @@ Instead, it manages the infrastructure that processes the traffic.
 
 ---
 
-# Responsibilities of the Control Plane
+## Responsibilities of the Control Plane
 
 Typical responsibilities include:
 
@@ -2052,7 +2052,7 @@ Typical responsibilities include:
 
 ---
 
-# Control Plane Workflow
+## Control Plane Workflow
 
 ```
 Administrator
@@ -2102,7 +2102,7 @@ Everything above occurs before users begin using the application.
 
 ---
 
-# Example: Creating a Virtual Machine
+## Example: Creating a Virtual Machine
 
 Suppose an administrator creates a VM.
 
@@ -2148,7 +2148,7 @@ The Control Plane is only preparing resources.
 
 ---
 
-# Control Plane Components
+## Control Plane Components
 
 ```
 Control Plane
@@ -2180,7 +2180,7 @@ Each component manages infrastructure rather than application data.
 
 ---
 
-# Real-World Examples
+## Real-World Examples
 
 Examples of Control Plane services include:
 
@@ -2195,7 +2195,7 @@ Examples of Control Plane services include:
 
 ---
 
-# Control Plane Security
+## Control Plane Security
 
 Because the Control Plane controls the entire infrastructure, it is one of the highest-value attack targets.
 
@@ -2211,7 +2211,7 @@ Potential consequences of compromise include:
 
 ---
 
-# Control Plane Attack Surface
+## Control Plane Attack Surface
 
 Examples include:
 
@@ -2243,7 +2243,7 @@ Attackers frequently target these components.
 
 ---
 
-# Common Control Plane Attacks
+## Common Control Plane Attacks
 
 Examples include:
 
@@ -2258,7 +2258,7 @@ Examples include:
 
 ---
 
-# Securing the Control Plane
+## Securing the Control Plane
 
 Best practices include:
 
@@ -2274,7 +2274,7 @@ Best practices include:
 
 ---
 
-# What is the Data Plane?
+## What is the Data Plane?
 
 The **Data Plane** is responsible for processing actual application workloads and user traffic.
 
@@ -2294,7 +2294,7 @@ If the Control Plane creates a VM, the Data Plane is where the VM actually execu
 
 ---
 
-# Data Plane Responsibilities
+## Data Plane Responsibilities
 
 The Data Plane handles:
 
@@ -2309,7 +2309,7 @@ The Data Plane handles:
 
 ---
 
-# Data Plane Workflow
+## Data Plane Workflow
 
 ```
 Customer
@@ -2343,7 +2343,7 @@ Every request handled by the application occurs inside the Data Plane.
 
 ---
 
-# Data Plane Components
+## Data Plane Components
 
 ```
 Data Plane
@@ -2373,7 +2373,7 @@ Data Plane
 
 ---
 
-# Example: Online Shopping
+## Example: Online Shopping
 
 Customer adds an item to the cart.
 
@@ -2405,7 +2405,7 @@ All of these activities occur inside the Data Plane.
 
 ---
 
-# Data Plane Security
+## Data Plane Security
 
 The Data Plane processes business data.
 
@@ -2424,7 +2424,7 @@ It therefore requires strong protection against:
 
 ---
 
-# Data Plane Attack Surface
+## Data Plane Attack Surface
 
 Typical targets include:
 
@@ -2440,7 +2440,7 @@ Unlike the Control Plane, attackers target business workloads rather than manage
 
 ---
 
-# Securing the Data Plane
+## Securing the Data Plane
 
 Recommended controls include:
 
@@ -2457,7 +2457,7 @@ Recommended controls include:
 
 ---
 
-# What is the Management Plane?
+## What is the Management Plane?
 
 The **Management Plane** provides the interfaces through which administrators interact with cloud resources.
 
@@ -2474,7 +2474,7 @@ Examples include:
 
 ---
 
-# Responsibilities of the Management Plane
+## Responsibilities of the Management Plane
 
 The Management Plane enables administrators to:
 
@@ -2490,7 +2490,7 @@ The Management Plane enables administrators to:
 
 ---
 
-# Management Plane Workflow
+## Management Plane Workflow
 
 ```
 Administrator
@@ -2518,7 +2518,7 @@ Instead, they use Management Plane interfaces.
 
 ---
 
-# Management Plane Components
+## Management Plane Components
 
 ```
 Management Plane
@@ -2546,7 +2546,7 @@ Management Plane
 
 ---
 
-# Security of the Management Plane
+## Security of the Management Plane
 
 Because administrators access infrastructure through the Management Plane, protecting it is essential.
 
@@ -2563,7 +2563,7 @@ Controls include:
 
 ---
 
-# Comparing the Three Planes
+## Comparing the Three Planes
 
 | Feature | Management Plane | Control Plane | Data Plane |
 |----------|------------------|---------------|------------|
@@ -2577,7 +2577,7 @@ Controls include:
 
 ---
 
-# Complete Cloud Request Flow
+## Complete Cloud Request Flow
 
 The following diagram illustrates how all three planes work together.
 
@@ -2633,11 +2633,11 @@ The three planes cooperate but perform distinct responsibilities.
 
 ---
 
-# Kubernetes Example
+## Kubernetes Example
 
 Kubernetes provides one of the clearest real-world examples of plane separation.
 
-## Kubernetes Control Plane
+### Kubernetes Control Plane
 
 Responsible for:
 
@@ -2647,7 +2647,7 @@ Responsible for:
 - etcd
 - Cluster state
 
-## Kubernetes Data Plane
+### Kubernetes Data Plane
 
 Responsible for:
 
@@ -2691,7 +2691,7 @@ Applications
 
 ---
 
-# Enterprise Architecture Example
+## Enterprise Architecture Example
 
 ```
                     Administrators
@@ -2747,9 +2747,9 @@ This layered architecture improves governance, scalability, and fault isolation.
 
 ---
 
-# Security Best Practices
+## Security Best Practices
 
-## Management Plane
+### Management Plane
 
 - Enforce Multi-Factor Authentication.
 - Restrict administrative access.
@@ -2759,7 +2759,7 @@ This layered architecture improves governance, scalability, and fault isolation.
 
 ---
 
-## Control Plane
+### Control Plane
 
 - Apply Least Privilege IAM.
 - Enable comprehensive audit logging.
@@ -2770,7 +2770,7 @@ This layered architecture improves governance, scalability, and fault isolation.
 
 ---
 
-## Data Plane
+### Data Plane
 
 - Encrypt sensitive data.
 - Deploy Web Application Firewalls.
@@ -2781,7 +2781,7 @@ This layered architecture improves governance, scalability, and fault isolation.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -2795,7 +2795,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cloud architecture separates responsibilities into the **Management Plane**, **Control Plane**, and **Data Plane**.
 - The **Management Plane** provides interfaces such as consoles, CLIs, SDKs, and APIs for administrators.
@@ -2806,9 +2806,9 @@ Avoid the following pitfalls:
 
 ---
 
-# Cloud Architecture Design Principles
+## Cloud Architecture Design Principles
 
-## Introduction
+### Introduction
 
 A cloud architecture is only as strong as the principles upon which it is built.
 
@@ -2835,7 +2835,7 @@ These principles are technology-agnostic and apply across all major cloud provid
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -2854,7 +2854,7 @@ After completing this section, you will be able to:
 
 ---
 
-# Why Design Principles Matter
+## Why Design Principles Matter
 
 Consider two organizations deploying the same application.
 
@@ -2897,7 +2897,7 @@ The difference lies not in the cloud provider—but in the architectural design.
 
 ---
 
-# Pillars of Good Cloud Architecture
+## Pillars of Good Cloud Architecture
 
 Modern enterprise architectures are generally built around several fundamental pillars.
 
@@ -2927,9 +2927,9 @@ These pillars influence every architectural decision.
 
 ---
 
-# Principle 1: Design for Scalability
+## Principle 1: Design for Scalability
 
-## What is Scalability?
+### What is Scalability?
 
 Scalability is the ability of a system to handle increasing workloads without significant degradation in performance.
 
@@ -2959,9 +2959,9 @@ A scalable architecture grows with business demand.
 
 ---
 
-## Types of Scalability
+### Types of Scalability
 
-### Vertical Scaling (Scale Up)
+#### Vertical Scaling (Scale Up)
 
 Increase the capacity of an existing server.
 
@@ -2996,7 +2996,7 @@ Limitations:
 
 ---
 
-### Horizontal Scaling (Scale Out)
+#### Horizontal Scaling (Scale Out)
 
 Add more servers instead of increasing server size.
 
@@ -3036,7 +3036,7 @@ Modern cloud-native applications primarily use horizontal scaling.
 
 ---
 
-# Best Practices for Scalability
+## Best Practices for Scalability
 
 - Use Auto Scaling Groups.
 - Design stateless services.
@@ -3048,9 +3048,9 @@ Modern cloud-native applications primarily use horizontal scaling.
 
 ---
 
-# Principle 2: Design for High Availability
+## Principle 2: Design for High Availability
 
-## What is High Availability?
+### What is High Availability?
 
 High Availability (HA) ensures that applications remain operational even when components fail.
 
@@ -3058,7 +3058,7 @@ A highly available system minimizes downtime and maintains service continuity.
 
 ---
 
-## High Availability Architecture
+### High Availability Architecture
 
 ```
                  Users
@@ -3088,7 +3088,7 @@ Failure of one server or one Availability Zone should not interrupt service.
 
 ---
 
-## High Availability Techniques
+### High Availability Techniques
 
 - Multi-AZ deployment
 - Health checks
@@ -3101,7 +3101,7 @@ Failure of one server or one Availability Zone should not interrupt service.
 
 ---
 
-# Principle 3: Design for Reliability
+## Principle 3: Design for Reliability
 
 Reliability measures the ability of a system to consistently perform its intended functions over time.
 
@@ -3114,7 +3114,7 @@ Reliable systems:
 
 ---
 
-## Example
+### Example
 
 ```
 Database Failure
@@ -3134,7 +3134,7 @@ Customers Unaffected
 
 ---
 
-# Principle 4: Fault Tolerance
+## Principle 4: Fault Tolerance
 
 Fault tolerance ensures that applications continue operating despite failures.
 
@@ -3142,7 +3142,7 @@ Unlike High Availability, fault tolerance often aims for **zero interruption**.
 
 ---
 
-## Fault-Tolerant Architecture
+### Fault-Tolerant Architecture
 
 ```
 Users
@@ -3172,7 +3172,7 @@ If an entire region becomes unavailable, another region immediately serves traff
 
 ---
 
-# Fault Isolation
+## Fault Isolation
 
 Fault isolation prevents failures from spreading throughout the system.
 
@@ -3202,7 +3202,7 @@ Other Services Continue
 
 ---
 
-## Techniques
+### Techniques
 
 - Microservices
 - Network segmentation
@@ -3212,9 +3212,9 @@ Other Services Continue
 
 ---
 
-# Principle 5: Loose Coupling
+## Principle 5: Loose Coupling
 
-## What is Loose Coupling?
+### What is Loose Coupling?
 
 Loose coupling means that system components depend on one another as little as possible.
 
@@ -3222,7 +3222,7 @@ Instead of communicating directly, services often communicate through APIs, mess
 
 ---
 
-## Tightly Coupled Example
+### Tightly Coupled Example
 
 ```
 Application A
@@ -3244,7 +3244,7 @@ If Application B fails, everything above it may stop functioning.
 
 ---
 
-## Loosely Coupled Example
+### Loosely Coupled Example
 
 ```
 Application A
@@ -3270,7 +3270,7 @@ Failures are isolated and easier to recover from.
 
 ---
 
-## Benefits
+### Benefits
 
 - Easier scaling
 - Independent deployments
@@ -3280,7 +3280,7 @@ Failures are isolated and easier to recover from.
 
 ---
 
-# Principle 6: High Cohesion
+## Principle 6: High Cohesion
 
 High cohesion means that every service should perform one well-defined responsibility.
 
@@ -3323,9 +3323,9 @@ Highly cohesive services are:
 
 ---
 
-# Principle 7: Stateless Architecture
+## Principle 7: Stateless Architecture
 
-## What is a Stateless Application?
+### What is a Stateless Application?
 
 A stateless application does not store user session information locally.
 
@@ -3355,7 +3355,7 @@ The server does not remember previous requests.
 
 ---
 
-## Stateful Example
+### Stateful Example
 
 ```
 User
@@ -3379,7 +3379,7 @@ User Logged Out
 
 ---
 
-## Stateless Example
+### Stateless Example
 
 ```
 User
@@ -3409,7 +3409,7 @@ Benefits:
 
 ---
 
-# Principle 8: Security by Design
+## Principle 8: Security by Design
 
 Security must be integrated from the beginning—not added later.
 
@@ -3426,7 +3426,7 @@ Security considerations should influence:
 
 ---
 
-## Security Layers
+### Security Layers
 
 ```
 Users
@@ -3466,7 +3466,7 @@ SIEM
 
 ---
 
-## Core Practices
+### Core Practices
 
 - Least Privilege
 - Zero Trust
@@ -3478,7 +3478,7 @@ SIEM
 
 ---
 
-# Principle 9: Defense in Depth
+## Principle 9: Defense in Depth
 
 No single security control is sufficient.
 
@@ -3524,7 +3524,7 @@ If one control fails, others continue protecting the system.
 
 ---
 
-# Principle 10: Performance Efficiency
+## Principle 10: Performance Efficiency
 
 Performance-efficient architectures maximize resource utilization while minimizing latency.
 
@@ -3540,7 +3540,7 @@ Optimization techniques include:
 
 ---
 
-## Example
+### Example
 
 Without Cache:
 
@@ -3572,7 +3572,7 @@ Fast Response
 
 ---
 
-# Principle 11: Cost Optimization
+## Principle 11: Cost Optimization
 
 Cloud resources should deliver maximum business value with minimal waste.
 
@@ -3588,7 +3588,7 @@ Common cost optimization strategies include:
 
 ---
 
-## Example
+### Example
 
 Poor Architecture:
 
@@ -3624,7 +3624,7 @@ Reduce During Low Demand
 
 ---
 
-# Principle 12: Automation First
+## Principle 12: Automation First
 
 Manual infrastructure management introduces inconsistency and human error.
 
@@ -3640,7 +3640,7 @@ Modern cloud environments automate:
 
 ---
 
-## Automation Workflow
+### Automation Workflow
 
 ```
 Developer
@@ -3672,7 +3672,7 @@ Production
 
 ---
 
-# Principle 13: Observability
+## Principle 13: Observability
 
 Observability enables teams to understand the internal state of systems using external outputs.
 
@@ -3699,7 +3699,7 @@ Observability helps detect:
 
 ---
 
-# Principle 14: Resilience
+## Principle 14: Resilience
 
 Resilience is the ability to withstand failures and recover quickly.
 
@@ -3717,7 +3717,7 @@ Common resilience techniques include:
 
 ---
 
-## Example
+### Example
 
 ```
 Primary Database
@@ -3737,7 +3737,7 @@ Application Continues
 
 ---
 
-# Principle 15: Design for Failure
+## Principle 15: Design for Failure
 
 Cloud architects should assume:
 
@@ -3751,7 +3751,7 @@ Therefore, systems should be designed to recover automatically.
 
 ---
 
-## Failure Scenario
+### Failure Scenario
 
 ```
 Application Server
@@ -3779,7 +3779,7 @@ Users Continue Working
 
 ---
 
-# Enterprise Cloud Architecture Applying These Principles
+## Enterprise Cloud Architecture Applying These Principles
 
 ```
                      Users
@@ -3844,7 +3844,7 @@ This architecture demonstrates:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design applications to scale horizontally.
 - Deploy workloads across multiple Availability Zones.
@@ -3859,7 +3859,7 @@ This architecture demonstrates:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -3874,7 +3874,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cloud Architecture Design Principles provide the foundation for building secure, scalable, reliable, and maintainable cloud systems.
 - Core principles include scalability, high availability, reliability, fault tolerance, loose coupling, high cohesion, stateless design, security by design, defense in depth, performance efficiency, cost optimization, automation, observability, resilience, and designing for failure.
@@ -3884,9 +3884,9 @@ Avoid the following pitfalls:
 
 ---
 
-# Cloud Architecture Patterns
+## Cloud Architecture Patterns
 
-## Introduction
+### Introduction
 
 Cloud architecture is not only about selecting cloud services or deploying virtual machines—it is about **how applications are designed, structured, and interconnected**. Over the years, software engineers and cloud architects have developed proven architectural patterns that solve recurring design challenges such as scalability, availability, maintainability, security, fault tolerance, and performance.
 
@@ -3936,7 +3936,7 @@ Understanding these patterns is essential for:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -3955,7 +3955,7 @@ After completing this section, you will be able to:
 
 ---
 
-# What is an Architecture Pattern?
+## What is an Architecture Pattern?
 
 An Architecture Pattern is a reusable solution that defines how software components should be organized and communicate with one another.
 
@@ -3974,7 +3974,7 @@ Unlike a design pattern, which solves problems at the code level, an architectur
 
 ---
 
-# Why Architecture Patterns Matter
+## Why Architecture Patterns Matter
 
 Without a defined architecture pattern, systems often become difficult to maintain as they grow.
 
@@ -3992,7 +3992,7 @@ Architecture patterns address these issues by providing standardized approaches 
 
 ---
 
-# Evolution of Cloud Architectures
+## Evolution of Cloud Architectures
 
 Application architecture has evolved significantly over the past several decades.
 
@@ -4058,7 +4058,7 @@ Each stage solved limitations of the previous generation while introducing new d
 
 ---
 
-# Categories of Cloud Architecture Patterns
+## Categories of Cloud Architecture Patterns
 
 Cloud architecture patterns can be broadly categorized as follows:
 
@@ -4106,9 +4106,9 @@ Each pattern addresses a different architectural challenge.
 
 ---
 
-# Monolithic Architecture
+## Monolithic Architecture
 
-## Introduction
+### Introduction
 
 The Monolithic Architecture is one of the oldest and simplest software architecture patterns.
 
@@ -4129,7 +4129,7 @@ Everything exists within one application.
 
 ---
 
-# Monolithic Architecture Diagram
+## Monolithic Architecture Diagram
 
 ```
                 Monolithic Application
@@ -4165,7 +4165,7 @@ All modules share the same runtime environment.
 
 ---
 
-# Characteristics
+## Characteristics
 
 A monolithic architecture typically exhibits the following characteristics:
 
@@ -4178,7 +4178,7 @@ A monolithic architecture typically exhibits the following characteristics:
 
 ---
 
-# Workflow Example
+## Workflow Example
 
 ```
 Customer
@@ -4216,7 +4216,7 @@ Every request is handled by the same application.
 
 ---
 
-# Advantages
+## Advantages
 
 - Simple to develop initially
 - Easy to test for small applications
@@ -4227,7 +4227,7 @@ Every request is handled by the same application.
 
 ---
 
-# Disadvantages
+## Disadvantages
 
 As applications grow, several limitations emerge:
 
@@ -4241,7 +4241,7 @@ As applications grow, several limitations emerge:
 
 ---
 
-# Security Considerations
+## Security Considerations
 
 Security challenges include:
 
@@ -4256,7 +4256,7 @@ A vulnerability in one module can potentially affect the entire system.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Small business management software
 
@@ -4281,9 +4281,9 @@ Suitable for:
 
 ---
 
-# Service-Oriented Architecture (SOA)
+## Service-Oriented Architecture (SOA)
 
-## Introduction
+### Introduction
 
 As enterprise applications became larger and more complex, organizations sought ways to separate major business capabilities into independent services while still enabling communication between them.
 
@@ -4303,7 +4303,7 @@ Unlike monolithic systems, each service focuses on a specific business function.
 
 ---
 
-# SOA Architecture
+## SOA Architecture
 
 ```
                Client Applications
@@ -4331,7 +4331,7 @@ The Enterprise Service Bus (ESB) coordinates communication between services.
 
 ---
 
-# Characteristics
+## Characteristics
 
 SOA emphasizes:
 
@@ -4344,7 +4344,7 @@ SOA emphasizes:
 
 ---
 
-# Enterprise Service Bus (ESB)
+## Enterprise Service Bus (ESB)
 
 The ESB acts as a communication backbone.
 
@@ -4372,7 +4372,7 @@ Application B
 
 ---
 
-# Advantages
+## Advantages
 
 - Improved modularity
 - Reusable business services
@@ -4383,7 +4383,7 @@ Application B
 
 ---
 
-# Disadvantages
+## Disadvantages
 
 - ESB may become a bottleneck.
 - Increased architectural complexity.
@@ -4393,7 +4393,7 @@ Application B
 
 ---
 
-# Security Considerations
+## Security Considerations
 
 SOA environments require:
 
@@ -4408,7 +4408,7 @@ Compromise of the ESB can affect multiple services.
 
 ---
 
-# Monolithic vs SOA
+## Monolithic vs SOA
 
 | Feature | Monolithic | SOA |
 |----------|------------|-----|
@@ -4422,7 +4422,7 @@ Compromise of the ESB can affect multiple services.
 
 ---
 
-# Enterprise SOA Example
+## Enterprise SOA Example
 
 A banking organization may expose independent services such as:
 
@@ -4454,7 +4454,7 @@ Each department reuses the same services rather than implementing duplicate func
 
 ---
 
-# When to Choose Monolithic Architecture
+## When to Choose Monolithic Architecture
 
 Monolithic architecture is appropriate when:
 
@@ -4467,7 +4467,7 @@ Monolithic architecture is appropriate when:
 
 ---
 
-# When to Choose SOA
+## When to Choose SOA
 
 Service-Oriented Architecture is appropriate when:
 
@@ -4479,7 +4479,7 @@ Service-Oriented Architecture is appropriate when:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Keep service responsibilities well-defined.
 - Avoid unnecessary dependencies between services.
@@ -4492,7 +4492,7 @@ Service-Oriented Architecture is appropriate when:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -4506,7 +4506,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Architecture patterns provide reusable solutions for designing cloud applications.
 - Monolithic Architecture packages all functionality into a single deployment unit and is suitable for smaller systems.
@@ -4516,9 +4516,9 @@ Avoid the following pitfalls:
 
 ---
 
-# Microservices Architecture
+## Microservices Architecture
 
-## Introduction
+### Introduction
 
 As enterprise applications grew in size and complexity, traditional Monolithic Architecture and even Service-Oriented Architecture (SOA) began to expose limitations in scalability, deployment speed, team autonomy, and operational flexibility. Organizations required an architectural style that would enable independent development, rapid deployment, fault isolation, continuous delivery, and cloud-native scalability.
 
@@ -4550,7 +4550,7 @@ This architectural approach aligns closely with cloud-native principles, making 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -4570,7 +4570,7 @@ After completing this section, you will be able to:
 
 ---
 
-# What is Microservices Architecture?
+## What is Microservices Architecture?
 
 Microservices Architecture is an approach where an application is built as a collection of **small, autonomous services**, each implementing a specific business capability.
 
@@ -4587,7 +4587,7 @@ Instead of treating an application as one large system, microservices treat it a
 
 ---
 
-# High-Level Microservices Architecture
+## High-Level Microservices Architecture
 
 ```
                     Users
@@ -4635,11 +4635,11 @@ Each service owns its own business logic and storage.
 
 ---
 
-# Characteristics of Microservices
+## Characteristics of Microservices
 
 Microservices share several defining characteristics.
 
-## Single Responsibility
+### Single Responsibility
 
 Every service performs one primary business function.
 
@@ -4673,7 +4673,7 @@ Keeping responsibilities narrow simplifies development and maintenance.
 
 ---
 
-## Independent Deployment
+### Independent Deployment
 
 Each service can be deployed independently.
 
@@ -4693,7 +4693,7 @@ Unlike monolithic systems, updating one service does not require redeploying the
 
 ---
 
-## Independent Scaling
+### Independent Scaling
 
 Different services experience different workloads.
 
@@ -4727,7 +4727,7 @@ Resources are allocated based on actual demand.
 
 ---
 
-## Decentralized Data Management
+### Decentralized Data Management
 
 Every service owns its own database.
 
@@ -4759,7 +4759,7 @@ This avoids direct database sharing between services.
 
 ---
 
-## Technology Diversity
+### Technology Diversity
 
 Different services may use different programming languages or databases if they best fit the problem.
 
@@ -4777,7 +4777,7 @@ Technology diversity should be used thoughtfully to avoid excessive operational 
 
 ---
 
-# Microservices vs Monolithic Architecture
+## Microservices vs Monolithic Architecture
 
 | Feature | Monolithic | Microservices |
 |----------|------------|---------------|
@@ -4792,7 +4792,7 @@ Technology diversity should be used thoughtfully to avoid excessive operational 
 
 ---
 
-# Service Decomposition
+## Service Decomposition
 
 One of the most important architectural activities is deciding **how to divide an application into services**.
 
@@ -4812,7 +4812,7 @@ Good decomposition results in:
 
 ---
 
-## Example: Online Marketplace
+### Example: Online Marketplace
 
 Instead of:
 
@@ -4858,7 +4858,7 @@ Each service focuses on one business capability.
 
 ---
 
-# Bounded Context
+## Bounded Context
 
 The concept of **Bounded Context**, derived from Domain-Driven Design (DDD), defines the boundary within which a particular business model applies consistently.
 
@@ -4896,7 +4896,7 @@ Each service owns its own domain.
 
 ---
 
-# Database Per Service Pattern
+## Database Per Service Pattern
 
 A core microservices principle is:
 
@@ -4937,7 +4937,7 @@ Benefits:
 
 ---
 
-# Why Shared Databases Are Discouraged
+## Why Shared Databases Are Discouraged
 
 Shared databases create hidden coupling.
 
@@ -4969,11 +4969,11 @@ Whenever possible, services should communicate through APIs or events instead of
 
 ---
 
-# Service Communication
+## Service Communication
 
 Microservices communicate using two primary models:
 
-## Synchronous Communication
+### Synchronous Communication
 
 A service waits for another service to respond.
 
@@ -5019,7 +5019,7 @@ Disadvantages:
 
 ---
 
-## Asynchronous Communication
+### Asynchronous Communication
 
 Services exchange messages through messaging platforms.
 
@@ -5054,7 +5054,7 @@ Advantages:
 
 ---
 
-# API Gateway
+## API Gateway
 
 Instead of exposing every service directly to clients, requests typically pass through an API Gateway.
 
@@ -5088,7 +5088,7 @@ Shipping
 
 ---
 
-## Responsibilities
+### Responsibilities
 
 The API Gateway commonly provides:
 
@@ -5106,7 +5106,7 @@ This simplifies client interactions and centralizes common concerns.
 
 ---
 
-# Service Discovery
+## Service Discovery
 
 Because services are frequently created, terminated, and scaled, their locations constantly change.
 
@@ -5132,7 +5132,7 @@ Without service discovery, maintaining hardcoded addresses would be impractical 
 
 ---
 
-# Configuration Management
+## Configuration Management
 
 Microservices often require configuration values such as:
 
@@ -5147,7 +5147,7 @@ Centralized configuration management enables consistent and secure configuration
 
 ---
 
-# Distributed Transactions
+## Distributed Transactions
 
 In a monolithic application, a single database transaction often updates multiple tables.
 
@@ -5177,7 +5177,7 @@ Patterns such as the **Saga Pattern** help coordinate these distributed business
 
 ---
 
-# Observability in Microservices
+## Observability in Microservices
 
 Distributed systems are inherently more difficult to troubleshoot than monolithic applications.
 
@@ -5231,7 +5231,7 @@ Each step contributes telemetry that helps diagnose latency and failures.
 
 ---
 
-# Service Mesh
+## Service Mesh
 
 As the number of services grows, managing communication becomes increasingly complex.
 
@@ -5271,7 +5271,7 @@ The application code focuses on business logic while the mesh handles networking
 
 ---
 
-# Security Architecture
+## Security Architecture
 
 Every service represents a potential attack surface.
 
@@ -5319,7 +5319,7 @@ SIEM
 
 ---
 
-# Authentication
+## Authentication
 
 Users authenticate once.
 
@@ -5347,7 +5347,7 @@ Services validate tokens rather than repeatedly requesting user credentials.
 
 ---
 
-# Authorization
+## Authorization
 
 Each service independently verifies whether a request is permitted.
 
@@ -5361,7 +5361,7 @@ Examples include:
 
 ---
 
-# Common Security Challenges
+## Common Security Challenges
 
 Microservices introduce new security considerations:
 
@@ -5380,7 +5380,7 @@ These risks require layered security controls.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Consider a global online retail platform.
 
@@ -5420,7 +5420,7 @@ Each team independently develops, deploys, and maintains its assigned services w
 
 ---
 
-# Advantages
+## Advantages
 
 Microservices provide numerous benefits:
 
@@ -5437,7 +5437,7 @@ Microservices provide numerous benefits:
 
 ---
 
-# Disadvantages
+## Disadvantages
 
 Microservices also introduce complexity:
 
@@ -5454,7 +5454,7 @@ Organizations should adopt microservices only when the benefits outweigh these a
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design services around business capabilities.
 - Keep services small but meaningful.
@@ -5469,7 +5469,7 @@ Organizations should adopt microservices only when the benefits outweigh these a
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -5484,7 +5484,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Microservices Architecture structures applications as a collection of small, independently deployable services centered around business capabilities.
 - Each service owns its own logic, data, and deployment lifecycle, enabling greater scalability and team autonomy.
@@ -5494,9 +5494,9 @@ Avoid the following pitfalls:
 
 ---
 
-# Event-Driven Architecture (EDA)
+## Event-Driven Architecture (EDA)
 
-## Introduction
+### Introduction
 
 Traditional application architectures often rely on **synchronous communication**, where one service directly calls another and waits for an immediate response. While this approach is simple to understand, it can create bottlenecks, increase coupling between services, and reduce overall system resilience.
 
@@ -5555,7 +5555,7 @@ Today, Event-Driven Architecture powers:
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -5573,7 +5573,7 @@ After completing this section, you will be able to:
 
 ---
 
-# What is an Event?
+## What is an Event?
 
 An **event** is a record indicating that something meaningful has occurred within a system.
 
@@ -5598,7 +5598,7 @@ An event should describe **what happened**, not **what should happen**.
 
 ---
 
-# Characteristics of Events
+## Characteristics of Events
 
 A well-designed event is:
 
@@ -5614,7 +5614,7 @@ Once published, an event should never be modified.
 
 ---
 
-# Anatomy of an Event
+## Anatomy of an Event
 
 A typical event contains several fields.
 
@@ -5670,7 +5670,7 @@ The payload contains the business information associated with the event.
 
 ---
 
-# Why Event-Driven Architecture?
+## Why Event-Driven Architecture?
 
 Large distributed systems encounter several challenges with synchronous communication.
 
@@ -5708,7 +5708,7 @@ Event-Driven Architecture addresses these challenges by decoupling services.
 
 ---
 
-# Traditional Request-Response Architecture
+## Traditional Request-Response Architecture
 
 ```
 Customer
@@ -5748,7 +5748,7 @@ Failure in one component can delay the entire workflow.
 
 ---
 
-# Event-Driven Architecture Workflow
+## Event-Driven Architecture Workflow
 
 ```
 Customer
@@ -5790,7 +5790,7 @@ All services process events independently.
 
 ---
 
-# Core Components of Event-Driven Architecture
+## Core Components of Event-Driven Architecture
 
 ```
 Event-Driven Architecture
@@ -5822,9 +5822,9 @@ Each component plays a distinct role.
 
 ---
 
-# Event Producer
+## Event Producer
 
-## What is an Event Producer?
+### What is an Event Producer?
 
 An Event Producer is a service that creates and publishes events.
 
@@ -5859,7 +5859,7 @@ The producer does not know which services consume the event.
 
 ---
 
-# Event Consumer
+## Event Consumer
 
 An Event Consumer subscribes to events and performs actions when they occur.
 
@@ -5895,7 +5895,7 @@ Multiple consumers can react independently.
 
 ---
 
-# Event Broker
+## Event Broker
 
 The Event Broker is responsible for distributing events from producers to consumers.
 
@@ -5930,7 +5930,7 @@ The broker enables loose coupling between producers and consumers.
 
 ---
 
-# Publish/Subscribe Model
+## Publish/Subscribe Model
 
 One of the most common communication models in Event-Driven systems is **Publish/Subscribe (Pub/Sub).**
 
@@ -5958,7 +5958,7 @@ The publisher never needs to know who the subscribers are.
 
 ---
 
-# Point-to-Point Messaging
+## Point-to-Point Messaging
 
 Unlike Pub/Sub, point-to-point messaging delivers a message to only one consumer.
 
@@ -5985,7 +5985,7 @@ Examples:
 
 ---
 
-# Event Topics
+## Event Topics
 
 Topics logically organize related events.
 
@@ -6015,7 +6015,7 @@ Consumers subscribe only to topics they require.
 
 ---
 
-# Event Streaming
+## Event Streaming
 
 Traditional messaging delivers messages individually.
 
@@ -6053,7 +6053,7 @@ Common use cases include:
 
 ---
 
-# Event Store
+## Event Store
 
 Some systems persist every event.
 
@@ -6081,7 +6081,7 @@ Event stores are commonly used with Event Sourcing architectures.
 
 ---
 
-# Dead Letter Queue (DLQ)
+## Dead Letter Queue (DLQ)
 
 Occasionally, event processing fails.
 
@@ -6111,7 +6111,7 @@ Operations teams investigate and reprocess failed events later.
 
 ---
 
-# Event Processing Lifecycle
+## Event Processing Lifecycle
 
 ```
 Business Action
@@ -6161,7 +6161,7 @@ This lifecycle provides resilience and reliability.
 
 ---
 
-# Event Ordering
+## Event Ordering
 
 Some applications require events to be processed in sequence.
 
@@ -6189,7 +6189,7 @@ Architects must determine whether ordering guarantees are required for each work
 
 ---
 
-# Event Idempotency
+## Event Idempotency
 
 Distributed systems occasionally deliver duplicate events.
 
@@ -6219,7 +6219,7 @@ Idempotency is essential for reliable event processing.
 
 ---
 
-# Event Replay
+## Event Replay
 
 One of the major advantages of Event-Driven systems is the ability to replay historical events.
 
@@ -6249,7 +6249,7 @@ Replay enables:
 
 ---
 
-# Event-Driven Security Architecture
+## Event-Driven Security Architecture
 
 ```
 Users
@@ -6291,7 +6291,7 @@ Security must protect every stage of event transmission.
 
 ---
 
-# Security Considerations
+## Security Considerations
 
 Event-Driven systems introduce unique security challenges.
 
@@ -6310,7 +6310,7 @@ Examples include:
 
 ---
 
-# Security Controls
+## Security Controls
 
 Recommended controls include:
 
@@ -6327,7 +6327,7 @@ Recommended controls include:
 
 ---
 
-# Event Schema Management
+## Event Schema Management
 
 As applications evolve, event structures may change.
 
@@ -6357,7 +6357,7 @@ Consumers should be designed to handle version evolution without breaking existi
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 Consider a large online retail platform.
 
@@ -6397,7 +6397,7 @@ Every downstream service operates independently while reacting to the same event
 
 ---
 
-# Advantages
+## Advantages
 
 Event-Driven Architecture provides numerous benefits:
 
@@ -6414,7 +6414,7 @@ Event-Driven Architecture provides numerous benefits:
 
 ---
 
-# Disadvantages
+## Disadvantages
 
 Despite its advantages, Event-Driven Architecture also introduces complexity.
 
@@ -6433,7 +6433,7 @@ Successful implementations require mature operational practices and robust obser
 
 ---
 
-# Event-Driven Architecture vs Request-Response
+## Event-Driven Architecture vs Request-Response
 
 | Feature | Request-Response | Event-Driven |
 |----------|------------------|--------------|
@@ -6448,37 +6448,37 @@ Successful implementations require mature operational practices and robust obser
 
 ---
 
-# Real-World Use Cases
+## Real-World Use Cases
 
 Event-Driven Architecture is widely adopted across industries.
 
 Examples include:
 
-### E-Commerce
+#### E-Commerce
 
 - Order processing
 - Inventory updates
 - Shipment notifications
 
-### Banking
+#### Banking
 
 - Transaction monitoring
 - Fraud detection
 - Payment processing
 
-### Healthcare
+#### Healthcare
 
 - Patient monitoring
 - Laboratory notifications
 - Medical device telemetry
 
-### IoT
+#### IoT
 
 - Sensor data ingestion
 - Smart city infrastructure
 - Industrial automation
 
-### Cybersecurity
+#### Cybersecurity
 
 - SIEM event ingestion
 - Threat detection
@@ -6486,7 +6486,7 @@ Examples include:
 - Security orchestration
 - Real-time alerting
 
-### Media Streaming
+#### Media Streaming
 
 - User activity tracking
 - Recommendation engines
@@ -6494,7 +6494,7 @@ Examples include:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design events to represent completed business facts.
 - Keep event payloads concise and well-defined.
@@ -6509,7 +6509,7 @@ Examples include:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -6524,7 +6524,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Event-Driven Architecture enables services to communicate asynchronously through events rather than direct calls.
 - Producers publish events without needing to know which consumers will process them, enabling loose coupling and independent scalability.
@@ -6535,9 +6535,9 @@ Avoid the following pitfalls:
 
 ---
 
-# Serverless Architecture
+## Serverless Architecture
 
-## Introduction
+### Introduction
 
 As cloud computing evolved, organizations sought ways to reduce the operational burden of managing servers while enabling developers to focus exclusively on building business functionality.
 
@@ -6580,7 +6580,7 @@ It has become one of the foundational technologies for cloud-native application 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -6598,7 +6598,7 @@ After completing this section, you will be able to:
 
 ---
 
-# What is Serverless Architecture?
+## What is Serverless Architecture?
 
 Serverless Architecture is a cloud computing model in which application code executes in **managed execution environments** without requiring developers to provision or manage servers.
 
@@ -6617,7 +6617,7 @@ Unlike traditional servers that remain running continuously, serverless function
 
 ---
 
-# Serverless Computing Model
+## Serverless Computing Model
 
 ```
 Developer
@@ -6655,11 +6655,11 @@ Developers focus on application logic rather than infrastructure management.
 
 ---
 
-# Characteristics of Serverless Architecture
+## Characteristics of Serverless Architecture
 
 Serverless platforms exhibit several defining characteristics.
 
-## Event-Driven
+### Event-Driven
 
 Functions execute only when triggered.
 
@@ -6676,7 +6676,7 @@ Possible triggers include:
 
 ---
 
-## Automatic Scaling
+### Automatic Scaling
 
 The cloud platform automatically increases or decreases execution capacity based on workload.
 
@@ -6700,7 +6700,7 @@ Scaling decisions occur automatically.
 
 ---
 
-## Stateless Execution
+### Stateless Execution
 
 Every function invocation should be independent.
 
@@ -6724,7 +6724,7 @@ The function should not rely on local memory from previous executions.
 
 ---
 
-## Short-Lived Execution
+### Short-Lived Execution
 
 Functions are intended for relatively short-running tasks.
 
@@ -6740,7 +6740,7 @@ Long-running workloads may be better suited to containers or virtual machines.
 
 ---
 
-## Managed Infrastructure
+### Managed Infrastructure
 
 Cloud providers manage:
 
@@ -6755,7 +6755,7 @@ This significantly reduces operational effort.
 
 ---
 
-# Evolution to Serverless
+## Evolution to Serverless
 
 The progression of cloud computing can be summarized as follows:
 
@@ -6791,9 +6791,9 @@ Each stage abstracts additional infrastructure responsibilities from developers.
 
 ---
 
-# Function-as-a-Service (FaaS)
+## Function-as-a-Service (FaaS)
 
-## What is FaaS?
+### What is FaaS?
 
 Function-as-a-Service (FaaS) is the primary execution model used by Serverless platforms.
 
@@ -6813,7 +6813,7 @@ Each function performs one clearly defined responsibility.
 
 ---
 
-# Function Lifecycle
+## Function Lifecycle
 
 ```
 Event Occurs
@@ -6843,7 +6843,7 @@ Resources are allocated only when necessary.
 
 ---
 
-# Example Workflow
+## Example Workflow
 
 Customer uploads an image.
 
@@ -6879,7 +6879,7 @@ The function executes only after the upload event occurs.
 
 ---
 
-# Common Serverless Triggers
+## Common Serverless Triggers
 
 Serverless functions can be triggered by many event sources.
 
@@ -6913,7 +6913,7 @@ This flexibility enables highly event-driven applications.
 
 ---
 
-# API-Based Execution
+## API-Based Execution
 
 One of the most common serverless patterns involves APIs.
 
@@ -6945,7 +6945,7 @@ The API Gateway routes requests to appropriate functions.
 
 ---
 
-# Storage Event Processing
+## Storage Event Processing
 
 ```
 User Uploads File
@@ -6979,7 +6979,7 @@ This pattern is common in document management systems.
 
 ---
 
-# Scheduled Execution
+## Scheduled Execution
 
 Functions can execute at predefined intervals.
 
@@ -7013,7 +7013,7 @@ Typical scheduled tasks include:
 
 ---
 
-# Messaging-Based Execution
+## Messaging-Based Execution
 
 ```
 Application
@@ -7039,7 +7039,7 @@ Queues help smooth traffic spikes while decoupling producers from consumers.
 
 ---
 
-# Automatic Scaling
+## Automatic Scaling
 
 One of the greatest advantages of Serverless Architecture is automatic scaling.
 
@@ -7071,7 +7071,7 @@ Developers do not manually provision additional servers.
 
 ---
 
-# Concurrency
+## Concurrency
 
 Modern serverless platforms execute multiple function instances simultaneously.
 
@@ -7097,9 +7097,9 @@ Concurrency enables large-scale parallel processing.
 
 ---
 
-# Cold Starts
+## Cold Starts
 
-## What is a Cold Start?
+### What is a Cold Start?
 
 If no execution environment is currently available, the platform must initialize one before executing the function.
 
@@ -7123,7 +7123,7 @@ This initialization delay is known as a **Cold Start**.
 
 ---
 
-# Warm Starts
+## Warm Starts
 
 If a runtime already exists, the platform reuses it.
 
@@ -7143,7 +7143,7 @@ Warm starts generally provide lower latency than cold starts.
 
 ---
 
-# Factors Affecting Cold Starts
+## Factors Affecting Cold Starts
 
 Cold start duration depends on several factors, including:
 
@@ -7158,7 +7158,7 @@ Architects should design functions to minimize startup overhead where low latenc
 
 ---
 
-# Stateless Design
+## Stateless Design
 
 Serverless applications should remain stateless.
 
@@ -7188,7 +7188,7 @@ Persistent information should reside in managed storage services.
 
 ---
 
-# Serverless Architecture Components
+## Serverless Architecture Components
 
 ```
 Serverless Platform
@@ -7220,7 +7220,7 @@ Each component contributes to the overall application architecture.
 
 ---
 
-# Security Architecture
+## Security Architecture
 
 A secure serverless architecture includes multiple protective layers.
 
@@ -7268,7 +7268,7 @@ Security should be integrated throughout the execution flow.
 
 ---
 
-# Identity and Access Management
+## Identity and Access Management
 
 Functions require carefully scoped permissions.
 
@@ -7298,7 +7298,7 @@ Each function receives only the permissions necessary for its task.
 
 ---
 
-# Secrets Management
+## Secrets Management
 
 Sensitive information should never be hardcoded.
 
@@ -7314,7 +7314,7 @@ Instead, retrieve secrets securely from dedicated secrets management services du
 
 ---
 
-# Network Security
+## Network Security
 
 Functions often communicate with:
 
@@ -7333,7 +7333,7 @@ Recommended protections include:
 
 ---
 
-# Logging and Monitoring
+## Logging and Monitoring
 
 Every invocation should generate operational telemetry.
 
@@ -7351,7 +7351,7 @@ Logs should be centralized for troubleshooting and incident response.
 
 ---
 
-# Common Security Risks
+## Common Security Risks
 
 Serverless environments introduce unique risks.
 
@@ -7372,7 +7372,7 @@ Understanding these risks is critical for secure deployments.
 
 ---
 
-# Advantages
+## Advantages
 
 Serverless Architecture offers many benefits.
 
@@ -7389,7 +7389,7 @@ Serverless Architecture offers many benefits.
 
 ---
 
-# Limitations
+## Limitations
 
 Despite its advantages, serverless computing is not suitable for every workload.
 
@@ -7408,7 +7408,7 @@ Organizations should evaluate workload characteristics before selecting a server
 
 ---
 
-# Serverless vs Traditional Servers
+## Serverless vs Traditional Servers
 
 | Feature | Traditional Servers | Serverless |
 |----------|--------------------|------------|
@@ -7423,30 +7423,30 @@ Organizations should evaluate workload characteristics before selecting a server
 
 ---
 
-# Enterprise Use Cases
+## Enterprise Use Cases
 
 Serverless Architecture is widely used across industries.
 
-### Financial Services
+#### Financial Services
 
 - Transaction validation
 - Fraud detection
 - Payment notifications
 
-### Healthcare
+#### Healthcare
 
 - Medical image processing
 - Patient notifications
 - Data transformation
 
-### E-Commerce
+#### E-Commerce
 
 - Order processing
 - Inventory updates
 - Recommendation engines
 - Invoice generation
 
-### Cybersecurity
+#### Cybersecurity
 
 - Automated incident response
 - Threat intelligence enrichment
@@ -7454,7 +7454,7 @@ Serverless Architecture is widely used across industries.
 - Compliance automation
 - Malware scanning
 
-### IoT
+#### IoT
 
 - Sensor data processing
 - Device telemetry
@@ -7463,7 +7463,7 @@ Serverless Architecture is widely used across industries.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Design functions with a single responsibility.
 - Keep functions stateless.
@@ -7478,7 +7478,7 @@ Serverless Architecture is widely used across industries.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -7493,7 +7493,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Serverless Architecture enables developers to deploy application logic without managing underlying servers.
 - Function-as-a-Service (FaaS) is the primary execution model, where functions execute in response to events.
@@ -7503,9 +7503,9 @@ Avoid the following pitfalls:
 
 ---
 
-# Multi-Tier (N-Tier) Architecture
+## Multi-Tier (N-Tier) Architecture
 
-## Introduction
+### Introduction
 
 As enterprise software systems became increasingly complex, architects recognized the need to separate applications into multiple logical layers, each responsible for a distinct function. This separation improves scalability, maintainability, security, performance, and fault isolation.
 
@@ -7542,7 +7542,7 @@ Although modern cloud-native applications increasingly adopt Microservices Archi
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -7559,7 +7559,7 @@ After completing this section, you will be able to:
 
 ---
 
-# What is Multi-Tier Architecture?
+## What is Multi-Tier Architecture?
 
 Multi-Tier Architecture is a software architecture pattern in which an application is divided into **multiple independent layers**, each responsible for a specific set of functions.
 
@@ -7591,7 +7591,7 @@ Each tier communicates only with the adjacent tier unless explicitly designed ot
 
 ---
 
-# Why Multi-Tier Architecture?
+## Why Multi-Tier Architecture?
 
 Separating applications into tiers provides several benefits.
 
@@ -7639,7 +7639,7 @@ Each layer can evolve independently.
 
 ---
 
-# Evolution of Multi-Tier Architecture
+## Evolution of Multi-Tier Architecture
 
 Application architectures have evolved through multiple stages.
 
@@ -7675,7 +7675,7 @@ Each stage introduced better separation of responsibilities.
 
 ---
 
-# Understanding Tiers
+## Understanding Tiers
 
 A **tier** is a logical or physical layer responsible for a specific category of work.
 
@@ -7692,13 +7692,13 @@ Each tier has well-defined responsibilities and interfaces.
 
 ---
 
-# Logical Tiers vs Physical Tiers
+## Logical Tiers vs Physical Tiers
 
 One of the most common misconceptions is that logical tiers and physical servers are the same.
 
 They are not.
 
-## Logical Tier
+### Logical Tier
 
 A logical tier represents a functional responsibility.
 
@@ -7720,7 +7720,7 @@ These layers may exist on the same server.
 
 ---
 
-## Physical Tier
+### Physical Tier
 
 A physical tier represents actual infrastructure.
 
@@ -7754,7 +7754,7 @@ Modern cloud environments often separate logical tiers across multiple physical 
 
 ---
 
-# Characteristics of Multi-Tier Architecture
+## Characteristics of Multi-Tier Architecture
 
 A well-designed Multi-Tier Architecture exhibits the following characteristics:
 
@@ -7770,7 +7770,7 @@ A well-designed Multi-Tier Architecture exhibits the following characteristics:
 
 ---
 
-# Types of Multi-Tier Architectures
+## Types of Multi-Tier Architectures
 
 The most common forms include:
 
@@ -7794,9 +7794,9 @@ The number of tiers depends on business requirements.
 
 ---
 
-# Two-Tier Architecture
+## Two-Tier Architecture
 
-## Introduction
+### Introduction
 
 Two-Tier Architecture is the simplest layered architecture.
 
@@ -7817,7 +7817,7 @@ The client directly communicates with the database.
 
 ---
 
-# Components
+## Components
 
 ```
 Client
@@ -7835,7 +7835,7 @@ Business logic often resides inside the client application.
 
 ---
 
-# Advantages
+## Advantages
 
 - Simple architecture
 - Easy deployment
@@ -7844,7 +7844,7 @@ Business logic often resides inside the client application.
 
 ---
 
-# Disadvantages
+## Disadvantages
 
 - Poor scalability
 - Limited security
@@ -7854,7 +7854,7 @@ Business logic often resides inside the client application.
 
 ---
 
-# Typical Use Cases
+## Typical Use Cases
 
 - Small office applications
 - Departmental software
@@ -7863,9 +7863,9 @@ Business logic often resides inside the client application.
 
 ---
 
-# Three-Tier Architecture
+## Three-Tier Architecture
 
-## Introduction
+### Introduction
 
 Three-Tier Architecture separates business logic from the user interface and the database.
 
@@ -7879,7 +7879,7 @@ The three layers are:
 
 ---
 
-# Three-Tier Architecture Diagram
+## Three-Tier Architecture Diagram
 
 ```
                Users
@@ -7903,9 +7903,9 @@ Each tier performs specialized responsibilities.
 
 ---
 
-# Presentation Tier
+## Presentation Tier
 
-## Overview
+### Overview
 
 The Presentation Tier provides the interface through which users interact with the application.
 
@@ -7927,7 +7927,7 @@ Responsibilities include:
 
 ---
 
-# Presentation Workflow
+## Presentation Workflow
 
 ```
 User
@@ -7949,7 +7949,7 @@ The Presentation Tier should not directly access databases.
 
 ---
 
-# Security Considerations
+## Security Considerations
 
 Protect the Presentation Tier using:
 
@@ -7963,9 +7963,9 @@ Protect the Presentation Tier using:
 
 ---
 
-# Application Tier
+## Application Tier
 
-## Overview
+### Overview
 
 The Application Tier contains the business logic.
 
@@ -7984,7 +7984,7 @@ This layer acts as the central brain of the application.
 
 ---
 
-# Application Workflow
+## Application Workflow
 
 ```
 Presentation Tier
@@ -8004,7 +8004,7 @@ Response Generated
 
 ---
 
-# Security Responsibilities
+## Security Responsibilities
 
 The Application Tier performs:
 
@@ -8019,9 +8019,9 @@ Most security decisions occur here.
 
 ---
 
-# Data Tier
+## Data Tier
 
-## Overview
+### Overview
 
 The Data Tier stores persistent information.
 
@@ -8035,7 +8035,7 @@ Examples include:
 
 ---
 
-# Data Tier Workflow
+## Data Tier Workflow
 
 ```
 Application
@@ -8057,7 +8057,7 @@ The Data Tier should never be directly accessible from users.
 
 ---
 
-# Security Controls
+## Security Controls
 
 Protect databases through:
 
@@ -8071,7 +8071,7 @@ Protect databases through:
 
 ---
 
-# Four-Tier Architecture
+## Four-Tier Architecture
 
 As applications become larger, additional tiers may be introduced.
 
@@ -8102,7 +8102,7 @@ The Service Layer enables integration with:
 
 ---
 
-# Five-Tier Architecture
+## Five-Tier Architecture
 
 Large enterprises frequently extend the architecture further.
 
@@ -8130,7 +8130,7 @@ Each layer focuses on a narrower responsibility.
 
 ---
 
-# Enterprise N-Tier Architecture
+## Enterprise N-Tier Architecture
 
 Global enterprises often implement many independent tiers.
 
@@ -8198,7 +8198,7 @@ Each tier contributes to security, scalability, and resilience.
 
 ---
 
-# Cloud Deployment Example
+## Cloud Deployment Example
 
 ```
 Internet
@@ -8248,7 +8248,7 @@ This architecture supports millions of concurrent users while maintaining strong
 
 ---
 
-# Network Segmentation
+## Network Segmentation
 
 Each tier should reside in its own network segment.
 
@@ -8276,7 +8276,7 @@ Direct communication between the internet and the database should never occur.
 
 ---
 
-# Firewall Architecture
+## Firewall Architecture
 
 ```
 Internet
@@ -8310,7 +8310,7 @@ Every layer should have independent security boundaries.
 
 ---
 
-# High Availability
+## High Availability
 
 Enterprise deployments distribute each tier across multiple Availability Zones.
 
@@ -8352,7 +8352,7 @@ Failure of one component should not interrupt the application.
 
 ---
 
-# Scalability
+## Scalability
 
 Each tier can scale independently.
 
@@ -8386,7 +8386,7 @@ Independent scaling improves efficiency and cost optimization.
 
 ---
 
-# Security Architecture
+## Security Architecture
 
 ```
 Users
@@ -8436,7 +8436,7 @@ Security controls are applied at every tier rather than relying on a single defe
 
 ---
 
-# Advantages
+## Advantages
 
 Multi-Tier Architecture offers several benefits:
 
@@ -8453,7 +8453,7 @@ Multi-Tier Architecture offers several benefits:
 
 ---
 
-# Disadvantages
+## Disadvantages
 
 Despite its strengths, Multi-Tier Architecture introduces additional complexity.
 
@@ -8470,7 +8470,7 @@ Architects should balance these trade-offs against business requirements.
 
 ---
 
-# Multi-Tier vs Monolithic
+## Multi-Tier vs Monolithic
 
 | Feature | Monolithic | Multi-Tier |
 |----------|------------|------------|
@@ -8484,7 +8484,7 @@ Architects should balance these trade-offs against business requirements.
 
 ---
 
-# Multi-Tier vs Microservices
+## Multi-Tier vs Microservices
 
 | Feature | Multi-Tier | Microservices |
 |----------|------------|---------------|
@@ -8500,35 +8500,35 @@ It is common for each individual microservice to internally follow a multi-tier 
 
 ---
 
-# Enterprise Use Cases
+## Enterprise Use Cases
 
 Multi-Tier Architecture remains a preferred choice for many enterprise workloads.
 
-### Banking
+#### Banking
 
 - Internet banking
 - Loan management
 - Credit card processing
 
-### Healthcare
+#### Healthcare
 
 - Electronic Health Records (EHR)
 - Patient portals
 - Clinical management systems
 
-### Government
+#### Government
 
 - Citizen service portals
 - Tax filing systems
 - Identity management platforms
 
-### E-Commerce
+#### E-Commerce
 
 - Product catalogs
 - Order management
 - Customer account portals
 
-### Education
+#### Education
 
 - Learning Management Systems
 - Student information systems
@@ -8536,7 +8536,7 @@ Multi-Tier Architecture remains a preferred choice for many enterprise workloads
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Clearly define responsibilities for every tier.
 - Prevent direct database access from client applications.
@@ -8551,7 +8551,7 @@ Multi-Tier Architecture remains a preferred choice for many enterprise workloads
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -8566,7 +8566,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Multi-Tier Architecture separates applications into logical layers, each with clearly defined responsibilities.
 - The most common implementation is the Three-Tier Architecture, consisting of the Presentation Tier, Application Tier, and Data Tier.
@@ -8576,9 +8576,9 @@ Avoid the following pitfalls:
 
 ---
 
-# Cloud-Native Architectural Patterns
+## Cloud-Native Architectural Patterns
 
-## Introduction
+### Introduction
 
 Modern cloud-native applications are fundamentally different from traditional enterprise systems. They are expected to operate across multiple regions, automatically recover from failures, scale to millions of users, integrate with hundreds of services, and evolve continuously without downtime.
 
@@ -8603,7 +8603,7 @@ Rather than inventing new architectures for every application, cloud architects 
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this section, you will be able to:
 
@@ -8627,7 +8627,7 @@ After completing this section, you will be able to:
 
 ---
 
-# Why Cloud-Native Patterns Matter
+## Why Cloud-Native Patterns Matter
 
 Distributed systems introduce challenges that do not exist in monolithic applications.
 
@@ -8676,7 +8676,7 @@ Cloud-Native Patterns
 
 ---
 
-# Classification of Cloud-Native Patterns
+## Classification of Cloud-Native Patterns
 
 ```
 Cloud-Native Patterns
@@ -8724,9 +8724,9 @@ Each pattern addresses a specific architectural concern.
 
 ---
 
-# API Gateway Pattern
+## API Gateway Pattern
 
-## Introduction
+### Introduction
 
 In a microservices environment, exposing every service directly to external clients leads to unnecessary complexity and increased security risks.
 
@@ -8764,7 +8764,7 @@ The API Gateway solves this problem by providing a **single entry point** for ex
 
 ---
 
-# API Gateway Architecture
+## API Gateway Architecture
 
 ```
                   Clients
@@ -8804,7 +8804,7 @@ The gateway centralizes request routing and cross-cutting concerns.
 
 ---
 
-# Responsibilities
+## Responsibilities
 
 An API Gateway typically performs:
 
@@ -8824,7 +8824,7 @@ An API Gateway typically performs:
 
 ---
 
-# Workflow
+## Workflow
 
 ```
 User
@@ -8854,7 +8854,7 @@ Clients never communicate directly with internal services.
 
 ---
 
-# Advantages
+## Advantages
 
 - Single public endpoint
 - Simplified client development
@@ -8866,7 +8866,7 @@ Clients never communicate directly with internal services.
 
 ---
 
-# Security Considerations
+## Security Considerations
 
 The gateway should implement:
 
@@ -8885,9 +8885,9 @@ The API Gateway is a high-value target and must be hardened accordingly.
 
 ---
 
-# Backend for Frontend (BFF) Pattern
+## Backend for Frontend (BFF) Pattern
 
-## Introduction
+### Introduction
 
 Different client types often require different APIs.
 
@@ -8902,7 +8902,7 @@ Instead of forcing every client to use the same backend API, the Backend for Fro
 
 ---
 
-# BFF Architecture
+## BFF Architecture
 
 ```
               Clients
@@ -8932,7 +8932,7 @@ Each frontend communicates with its own optimized backend.
 
 ---
 
-# Benefits
+## Benefits
 
 - Optimized payloads
 - Reduced network usage
@@ -8943,7 +8943,7 @@ Each frontend communicates with its own optimized backend.
 
 ---
 
-# Example
+## Example
 
 Instead of returning:
 
@@ -8977,9 +8977,9 @@ Reducing bandwidth and latency.
 
 ---
 
-# Sidecar Pattern
+## Sidecar Pattern
 
-## Introduction
+### Introduction
 
 Microservices often require supporting capabilities unrelated to business logic.
 
@@ -8998,7 +8998,7 @@ The Sidecar Pattern moves these responsibilities into a companion process.
 
 ---
 
-# Sidecar Architecture
+## Sidecar Architecture
 
 ```
 ┌────────────────────────────┐
@@ -9022,7 +9022,7 @@ Every application instance has its own sidecar.
 
 ---
 
-# Responsibilities
+## Responsibilities
 
 Sidecars commonly perform:
 
@@ -9037,7 +9037,7 @@ Sidecars commonly perform:
 
 ---
 
-# Benefits
+## Benefits
 
 - Separation of concerns
 - Consistent security
@@ -9047,9 +9047,9 @@ Sidecars commonly perform:
 
 ---
 
-# Ambassador Pattern
+## Ambassador Pattern
 
-## Introduction
+### Introduction
 
 The Ambassador Pattern places a proxy between an application and external services.
 
@@ -9057,7 +9057,7 @@ Instead of applications directly managing network communication, the ambassador 
 
 ---
 
-# Architecture
+## Architecture
 
 ```
 Application
@@ -9073,7 +9073,7 @@ External Service
 
 ---
 
-# Responsibilities
+## Responsibilities
 
 - Connection pooling
 - TLS management
@@ -9086,9 +9086,9 @@ Applications remain focused on business logic.
 
 ---
 
-# Adapter Pattern
+## Adapter Pattern
 
-## Introduction
+### Introduction
 
 Legacy systems often expose incompatible interfaces.
 
@@ -9096,7 +9096,7 @@ The Adapter Pattern converts one interface into another without modifying either
 
 ---
 
-# Architecture
+## Architecture
 
 ```
 Legacy System
@@ -9112,7 +9112,7 @@ Modern API
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 ```
 Old SOAP Service
@@ -9134,9 +9134,9 @@ The adapter enables gradual modernization while preserving compatibility.
 
 ---
 
-# Strangler Fig Pattern
+## Strangler Fig Pattern
 
-## Introduction
+### Introduction
 
 Replacing a large legacy application all at once is risky.
 
@@ -9144,7 +9144,7 @@ The Strangler Fig Pattern enables gradual migration.
 
 ---
 
-# Migration Process
+## Migration Process
 
 ```
 Legacy System
@@ -9174,7 +9174,7 @@ Over time, the legacy application is "strangled" by new services.
 
 ---
 
-# Benefits
+## Benefits
 
 - Lower migration risk
 - Incremental modernization
@@ -9184,9 +9184,9 @@ Over time, the legacy application is "strangled" by new services.
 
 ---
 
-# Circuit Breaker Pattern
+## Circuit Breaker Pattern
 
-## Introduction
+### Introduction
 
 Distributed systems experience temporary failures.
 
@@ -9196,7 +9196,7 @@ Circuit Breakers prevent cascading failures.
 
 ---
 
-# Circuit Breaker States
+## Circuit Breaker States
 
 ```
 Closed
@@ -9228,7 +9228,7 @@ Closed
 
 ---
 
-# Closed State
+## Closed State
 
 Normal operation.
 
@@ -9248,7 +9248,7 @@ Requests flow normally.
 
 ---
 
-# Open State
+## Open State
 
 Too many failures occur.
 
@@ -9268,7 +9268,7 @@ Requests are rejected without contacting the unhealthy service.
 
 ---
 
-# Half-Open State
+## Half-Open State
 
 After a timeout:
 
@@ -9298,7 +9298,7 @@ This controlled testing prevents overwhelming recovering services.
 
 ---
 
-# Benefits
+## Benefits
 
 - Faster failure detection
 - Improved resilience
@@ -9308,9 +9308,9 @@ This controlled testing prevents overwhelming recovering services.
 
 ---
 
-# Retry Pattern
+## Retry Pattern
 
-## Introduction
+### Introduction
 
 Many failures are temporary.
 
@@ -9318,7 +9318,7 @@ Instead of immediately failing, applications retry operations.
 
 ---
 
-# Retry Workflow
+## Retry Workflow
 
 ```
 Request
@@ -9342,7 +9342,7 @@ Success
 
 ---
 
-# Exponential Backoff
+## Exponential Backoff
 
 Instead of retrying continuously:
 
@@ -9382,7 +9382,7 @@ Backoff reduces pressure on recovering systems.
 
 ---
 
-# Retry Best Practices
+## Retry Best Practices
 
 - Use exponential backoff.
 - Add randomized jitter.
@@ -9393,9 +9393,9 @@ Backoff reduces pressure on recovering systems.
 
 ---
 
-# Bulkhead Pattern
+## Bulkhead Pattern
 
-## Introduction
+### Introduction
 
 Ships use watertight compartments (bulkheads) to prevent flooding from sinking the entire vessel.
 
@@ -9403,7 +9403,7 @@ Cloud applications apply the same principle.
 
 ---
 
-# Architecture
+## Architecture
 
 ```
 Application
@@ -9423,7 +9423,7 @@ Each workload receives isolated resources.
 
 ---
 
-# Failure Scenario
+## Failure Scenario
 
 ```
 Payments Overloaded
@@ -9445,7 +9445,7 @@ Failure remains isolated.
 
 ---
 
-# Benefits
+## Benefits
 
 - Resource isolation
 - Better resilience
@@ -9454,9 +9454,9 @@ Failure remains isolated.
 
 ---
 
-# Queue-Based Load Leveling
+## Queue-Based Load Leveling
 
-## Introduction
+### Introduction
 
 Traffic spikes can overwhelm backend services.
 
@@ -9464,7 +9464,7 @@ Queues absorb bursts of incoming requests.
 
 ---
 
-# Architecture
+## Architecture
 
 ```
 Clients
@@ -9486,7 +9486,7 @@ The queue smooths workload fluctuations.
 
 ---
 
-# Benefits
+## Benefits
 
 - Improved stability
 - Better scalability
@@ -9495,9 +9495,9 @@ The queue smooths workload fluctuations.
 
 ---
 
-# Saga Pattern
+## Saga Pattern
 
-## Introduction
+### Introduction
 
 Microservices avoid distributed database transactions.
 
@@ -9505,7 +9505,7 @@ Instead, long-running business operations are coordinated using a Saga.
 
 ---
 
-# Example
+## Example
 
 ```
 Create Order
@@ -9541,7 +9541,7 @@ Each step has a compensating action.
 
 ---
 
-# Choreography vs Orchestration
+## Choreography vs Orchestration
 
 | Approach | Description |
 |-----------|-------------|
@@ -9552,15 +9552,15 @@ Both approaches are widely used depending on complexity and governance needs.
 
 ---
 
-# CQRS (Command Query Responsibility Segregation)
+## CQRS (Command Query Responsibility Segregation)
 
-## Introduction
+### Introduction
 
 CQRS separates write operations from read operations.
 
 ---
 
-# Architecture
+## Architecture
 
 ```
 Application
@@ -9576,7 +9576,7 @@ Queries retrieve information.
 
 ---
 
-# Benefits
+## Benefits
 
 - Independent optimization
 - Better scalability
@@ -9585,9 +9585,9 @@ Queries retrieve information.
 
 ---
 
-# Event Sourcing
+## Event Sourcing
 
-## Introduction
+### Introduction
 
 Traditional systems store only the current state.
 
@@ -9595,7 +9595,7 @@ Event Sourcing stores every state-changing event.
 
 ---
 
-# Example
+## Example
 
 Instead of:
 
@@ -9629,7 +9629,7 @@ The current state is reconstructed by replaying events.
 
 ---
 
-# Advantages
+## Advantages
 
 - Complete audit history
 - Historical replay
@@ -9639,7 +9639,7 @@ The current state is reconstructed by replaying events.
 
 ---
 
-# Combining CQRS and Event Sourcing
+## Combining CQRS and Event Sourcing
 
 ```
 Commands
@@ -9661,7 +9661,7 @@ This combination is common in financial platforms and event-driven systems.
 
 ---
 
-# Pattern Comparison
+## Pattern Comparison
 
 | Pattern | Primary Goal | Typical Use Case |
 |----------|--------------|------------------|
@@ -9681,7 +9681,7 @@ This combination is common in financial platforms and event-driven systems.
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Select patterns based on business requirements rather than trends.
 - Combine complementary patterns, such as Retry with Circuit Breaker.
@@ -9696,7 +9696,7 @@ This combination is common in financial platforms and event-driven systems.
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 Avoid the following pitfalls:
 
@@ -9713,7 +9713,7 @@ Avoid the following pitfalls:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Cloud-native architectural patterns provide proven solutions to recurring challenges in distributed systems.
 - Patterns such as API Gateway, BFF, Sidecar, Ambassador, and Adapter simplify communication, integration, and operational management.

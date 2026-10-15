@@ -1,10 +1,10 @@
 # 16-Windows-System-Monitoring.md
 
-# Part 1 — Windows System Monitoring Fundamentals, Performance Monitoring, Resource Utilization, and Monitoring Tools
+## Part 1 — Windows System Monitoring Fundamentals, Performance Monitoring, Resource Utilization, and Monitoring Tools
 
 ---
 
-# Introduction
+## Introduction
 
 Windows System Monitoring is the continuous process of observing, measuring, and analyzing the health, performance, and availability of Windows systems.
 
@@ -22,7 +22,7 @@ In enterprise environments, monitoring is one of the most important responsibili
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this section, you will understand:
 
@@ -40,7 +40,7 @@ By the end of this section, you will understand:
 
 ---
 
-# What is System Monitoring?
+## What is System Monitoring?
 
 System monitoring is the process of continuously collecting information about system resources and behavior.
 
@@ -56,7 +56,7 @@ Without monitoring, administrators often discover problems only after users repo
 
 ---
 
-# Why System Monitoring is Important
+## Why System Monitoring is Important
 
 Monitoring enables organizations to:
 
@@ -71,7 +71,7 @@ Monitoring enables organizations to:
 
 ---
 
-# Enterprise Monitoring Workflow
+## Enterprise Monitoring Workflow
 
 ```text
 Windows Systems
@@ -105,7 +105,7 @@ Modern monitoring platforms automate much of this workflow.
 
 ---
 
-# Types of Monitoring
+## Types of Monitoring
 
 | Type | Purpose |
 |------|----------|
@@ -121,7 +121,7 @@ Each type addresses different operational requirements.
 
 ---
 
-# Monitoring Categories
+## Monitoring Categories
 
 ```text
 System Monitoring
@@ -147,7 +147,7 @@ A comprehensive monitoring strategy covers all categories.
 
 ---
 
-# Key Performance Indicators (KPIs)
+## Key Performance Indicators (KPIs)
 
 Administrators monitor KPIs to assess system health.
 
@@ -166,7 +166,7 @@ KPIs help identify trends before they become critical issues.
 
 ---
 
-# CPU Monitoring
+## CPU Monitoring
 
 CPU monitoring measures processor utilization.
 
@@ -188,7 +188,7 @@ High CPU utilization may indicate:
 
 ---
 
-# CPU Utilization Example
+## CPU Utilization Example
 
 ```text
 CPU Usage
@@ -208,7 +208,7 @@ Consistently high CPU utilization warrants further investigation.
 
 ---
 
-# Memory Monitoring
+## Memory Monitoring
 
 Memory monitoring evaluates RAM usage.
 
@@ -225,7 +225,7 @@ Memory shortages can significantly affect system performance.
 
 ---
 
-# Memory Utilization
+## Memory Utilization
 
 ```text
 Installed RAM
@@ -247,7 +247,7 @@ Excessive paging often indicates insufficient physical memory.
 
 ---
 
-# Virtual Memory
+## Virtual Memory
 
 Windows uses virtual memory when physical RAM becomes limited.
 
@@ -271,7 +271,7 @@ Heavy reliance on the page file can reduce performance.
 
 ---
 
-# Disk Monitoring
+## Disk Monitoring
 
 Storage performance is critical for many workloads.
 
@@ -288,7 +288,7 @@ Slow storage often affects overall system responsiveness.
 
 ---
 
-# Disk Activity
+## Disk Activity
 
 ```text
 Application
@@ -314,7 +314,7 @@ High disk activity may result from backups, updates, or database operations.
 
 ---
 
-# Network Monitoring
+## Network Monitoring
 
 Network monitoring measures communication between systems.
 
@@ -331,7 +331,7 @@ Network performance directly impacts distributed applications.
 
 ---
 
-# Network Flow
+## Network Flow
 
 ```text
 Application
@@ -357,7 +357,7 @@ Monitoring each layer helps isolate connectivity issues.
 
 ---
 
-# Process Monitoring
+## Process Monitoring
 
 Processes consume system resources.
 
@@ -373,7 +373,7 @@ Unexpected resource usage may indicate application issues or malicious activity.
 
 ---
 
-# Service Monitoring
+## Service Monitoring
 
 Critical Windows services should remain operational.
 
@@ -389,7 +389,7 @@ Monitoring service status helps maintain system availability.
 
 ---
 
-# Windows Task Manager
+## Windows Task Manager
 
 Task Manager provides real-time monitoring.
 
@@ -411,7 +411,7 @@ Task Manager is often the first troubleshooting tool used.
 
 ---
 
-# Task Manager Performance Tab
+## Task Manager Performance Tab
 
 Displays:
 
@@ -425,7 +425,7 @@ Administrators can quickly identify resource bottlenecks.
 
 ---
 
-# Resource Monitor
+## Resource Monitor
 
 Launch:
 
@@ -444,7 +444,7 @@ Resource Monitor offers greater detail than Task Manager.
 
 ---
 
-# Resource Monitor Overview
+## Resource Monitor Overview
 
 ```text
 CPU
@@ -466,7 +466,7 @@ Each section provides real-time statistics and process-level visibility.
 
 ---
 
-# Performance Monitor (PerfMon)
+## Performance Monitor (PerfMon)
 
 Launch:
 
@@ -487,7 +487,7 @@ PerfMon is widely used in enterprise environments.
 
 ---
 
-# Performance Counters
+## Performance Counters
 
 Counters measure specific system metrics.
 
@@ -504,7 +504,7 @@ Counters provide quantitative performance data.
 
 ---
 
-# Data Collector Sets
+## Data Collector Sets
 
 Data Collector Sets automate performance data collection.
 
@@ -530,7 +530,7 @@ Useful for long-term monitoring and troubleshooting intermittent issues.
 
 ---
 
-# Reliability Monitor
+## Reliability Monitor
 
 Launch:
 
@@ -550,7 +550,7 @@ It provides a timeline of system reliability.
 
 ---
 
-# Reliability Index
+## Reliability Index
 
 Windows assigns a stability score.
 
@@ -582,7 +582,7 @@ A declining reliability index indicates recurring problems.
 
 ---
 
-# Enterprise Monitoring Tools
+## Enterprise Monitoring Tools
 
 Organizations commonly use:
 
@@ -599,7 +599,7 @@ These platforms centralize monitoring across many systems.
 
 ---
 
-# Monitoring Dashboard
+## Monitoring Dashboard
 
 ```text
 Multiple Servers
@@ -625,7 +625,7 @@ Dashboards provide administrators with a consolidated operational view.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company manages 500 Windows servers.
 
@@ -642,7 +642,7 @@ When CPU exceeds 90% for five minutes, an alert is automatically generated for t
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 System monitoring is an essential security capability.
 
@@ -660,7 +660,7 @@ Operational monitoring and security monitoring often complement each other.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Effective monitoring provides:
 
@@ -675,7 +675,7 @@ Proactive monitoring prevents small issues from becoming major outages.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor all critical servers continuously.
 - Define performance baselines.
@@ -688,9 +688,9 @@ Proactive monitoring prevents small issues from becoming major outages.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Explore Task Manager
+### Lab 1 — Explore Task Manager
 
 Open Task Manager.
 
@@ -703,7 +703,7 @@ Identify:
 
 ---
 
-## Lab 2 — Launch Resource Monitor
+### Lab 2 — Launch Resource Monitor
 
 Run:
 
@@ -719,7 +719,7 @@ Observe:
 
 ---
 
-## Lab 3 — Open Performance Monitor
+### Lab 3 — Open Performance Monitor
 
 Run:
 
@@ -737,7 +737,7 @@ Monitor changes while launching applications.
 
 ---
 
-## Lab 4 — Review Reliability Monitor
+### Lab 4 — Review Reliability Monitor
 
 Run:
 
@@ -753,7 +753,7 @@ Review:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - System monitoring provides visibility into Windows health and performance.
 - CPU, memory, disk, and network metrics are core monitoring components.
@@ -764,7 +764,7 @@ Review:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is Windows System Monitoring?
 2. Why is continuous monitoring important in enterprise environments?
@@ -779,7 +779,7 @@ Review:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Performance Monitor Documentation
@@ -790,13 +790,13 @@ Review:
 
 ---
 
-# 16-Windows-System-Monitoring.md
+## 16-Windows-System-Monitoring.md
 
-# Part 2 — Performance Counters, Event Tracing, Data Collection, Alerts, Baselines, and Advanced Monitoring
+## Part 2 — Performance Counters, Event Tracing, Data Collection, Alerts, Baselines, and Advanced Monitoring
 
 ---
 
-# Introduction
+## Introduction
 
 Collecting system metrics is only the first step in monitoring.
 
@@ -814,7 +814,7 @@ Modern monitoring is proactive rather than reactive.
 
 ---
 
-# Monitoring Lifecycle
+## Monitoring Lifecycle
 
 ```text
 Collect Metrics
@@ -856,7 +856,7 @@ A structured monitoring lifecycle improves operational efficiency.
 
 ---
 
-# Performance Counters
+## Performance Counters
 
 Performance Counters measure specific aspects of Windows performance.
 
@@ -896,7 +896,7 @@ Performance counters provide precise measurements of system activity.
 
 ---
 
-# Performance Counter Components
+## Performance Counter Components
 
 | Component | Description |
 |-----------|-------------|
@@ -920,7 +920,7 @@ System
 
 ---
 
-# Common Performance Objects
+## Common Performance Objects
 
 Windows exposes many performance objects.
 
@@ -939,7 +939,7 @@ Examples:
 
 ---
 
-# Processor Counters
+## Processor Counters
 
 Common CPU counters include:
 
@@ -955,7 +955,7 @@ High values should be interpreted in context rather than isolation.
 
 ---
 
-# Memory Counters
+## Memory Counters
 
 Important memory counters:
 
@@ -970,7 +970,7 @@ Sudden changes may indicate memory pressure.
 
 ---
 
-# Disk Counters
+## Disk Counters
 
 Important storage counters:
 
@@ -986,7 +986,7 @@ Disk counters help identify storage bottlenecks.
 
 ---
 
-# Network Counters
+## Network Counters
 
 Common network counters:
 
@@ -1001,7 +1001,7 @@ Monitoring network activity is essential for distributed systems.
 
 ---
 
-# Process Counters
+## Process Counters
 
 Administrators often monitor:
 
@@ -1016,7 +1016,7 @@ These counters help identify resource-intensive applications.
 
 ---
 
-# Viewing Performance Counters
+## Viewing Performance Counters
 
 Open:
 
@@ -1036,7 +1036,7 @@ Administrators can monitor hundreds of counters simultaneously.
 
 ---
 
-# Data Collector Sets
+## Data Collector Sets
 
 A Data Collector Set automatically records performance information.
 
@@ -1066,7 +1066,7 @@ Data can be collected over hours, days, or weeks.
 
 ---
 
-# Types of Data Collector Sets
+## Types of Data Collector Sets
 
 | Type | Purpose |
 |------|----------|
@@ -1076,7 +1076,7 @@ Data can be collected over hours, days, or weeks.
 
 ---
 
-# Configuring Data Collection
+## Configuring Data Collection
 
 Typical configuration includes:
 
@@ -1091,7 +1091,7 @@ Thoughtful configuration minimizes system overhead while capturing useful data.
 
 ---
 
-# Performance Logs
+## Performance Logs
 
 Collected performance data is stored in log files.
 
@@ -1106,7 +1106,7 @@ Long-term logs provide context that real-time monitoring cannot.
 
 ---
 
-# Performance Baselines
+## Performance Baselines
 
 A baseline represents normal system behavior.
 
@@ -1134,7 +1134,7 @@ Future measurements are compared against this baseline.
 
 ---
 
-# Why Baselines Matter
+## Why Baselines Matter
 
 Without a baseline:
 
@@ -1146,7 +1146,7 @@ Baselines provide context for interpreting performance data.
 
 ---
 
-# Establishing Baselines
+## Establishing Baselines
 
 Recommended approach:
 
@@ -1174,7 +1174,7 @@ Collect data during typical business operations rather than during outages.
 
 ---
 
-# Thresholds
+## Thresholds
 
 Thresholds define acceptable operating limits.
 
@@ -1192,7 +1192,7 @@ Thresholds should reflect workload characteristics.
 
 ---
 
-# Alerts
+## Alerts
 
 Monitoring platforms generate alerts when thresholds are exceeded.
 
@@ -1218,7 +1218,7 @@ Alerts should be meaningful and actionable.
 
 ---
 
-# Alert Severity
+## Alert Severity
 
 Typical alert levels:
 
@@ -1232,7 +1232,7 @@ Proper classification helps prioritize incidents.
 
 ---
 
-# Alert Fatigue
+## Alert Fatigue
 
 Excessive alerts reduce effectiveness.
 
@@ -1247,7 +1247,7 @@ Organizations should tune monitoring rules regularly.
 
 ---
 
-# Event Tracing for Windows (ETW)
+## Event Tracing for Windows (ETW)
 
 Event Tracing for Windows (ETW) is a high-performance tracing framework built into Windows.
 
@@ -1262,7 +1262,7 @@ It is widely used for diagnostics and performance analysis.
 
 ---
 
-# ETW Architecture
+## ETW Architecture
 
 ```text
 Application
@@ -1288,7 +1288,7 @@ ETW introduces minimal overhead compared to many traditional logging mechanisms.
 
 ---
 
-# ETW Providers
+## ETW Providers
 
 Examples of providers include:
 
@@ -1303,7 +1303,7 @@ Providers emit structured diagnostic events.
 
 ---
 
-# Real-Time Monitoring
+## Real-Time Monitoring
 
 Real-time monitoring provides immediate visibility into:
 
@@ -1317,7 +1317,7 @@ Administrators can respond before users are significantly affected.
 
 ---
 
-# Historical Monitoring
+## Historical Monitoring
 
 Historical monitoring supports:
 
@@ -1331,7 +1331,7 @@ Historical data often reveals patterns invisible in real-time views.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Capacity planning estimates future resource requirements.
 
@@ -1361,7 +1361,7 @@ Planning ahead avoids unexpected outages caused by exhausted resources.
 
 ---
 
-# Trend Analysis
+## Trend Analysis
 
 Trend analysis compares metrics over time.
 
@@ -1385,7 +1385,7 @@ Steady increases in utilization may indicate the need for hardware upgrades or w
 
 ---
 
-# Root Cause Analysis (RCA)
+## Root Cause Analysis (RCA)
 
 Monitoring data assists in Root Cause Analysis.
 
@@ -1419,7 +1419,7 @@ RCA helps prevent recurring issues.
 
 ---
 
-# Enterprise Monitoring Example
+## Enterprise Monitoring Example
 
 A database server experiences intermittent slowdowns.
 
@@ -1433,7 +1433,7 @@ The organization reschedules backups outside business hours, eliminating user co
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Security teams use monitoring data to identify:
 
@@ -1448,7 +1448,7 @@ Performance anomalies can provide early indicators of compromise.
 
 ---
 
-# Business Impact
+## Business Impact
 
 Advanced monitoring enables organizations to:
 
@@ -1463,7 +1463,7 @@ Reliable monitoring contributes directly to business continuity.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Establish documented performance baselines.
 - Review thresholds regularly.
@@ -1476,9 +1476,9 @@ Reliable monitoring contributes directly to business continuity.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Add Performance Counters
+### Lab 1 — Add Performance Counters
 
 Open:
 
@@ -1496,7 +1496,7 @@ Observe changes while running applications.
 
 ---
 
-## Lab 2 — Create a Data Collector Set
+### Lab 2 — Create a Data Collector Set
 
 Create a custom Data Collector Set that records:
 
@@ -1508,7 +1508,7 @@ Run it for at least 15 minutes and review the collected data.
 
 ---
 
-## Lab 3 — Establish a Baseline
+### Lab 3 — Establish a Baseline
 
 Record the following metrics during normal operation:
 
@@ -1521,7 +1521,7 @@ Save the values for future comparison.
 
 ---
 
-## Lab 4 — Analyze Trend Data
+### Lab 4 — Analyze Trend Data
 
 Collect performance metrics over several days.
 
@@ -1534,7 +1534,7 @@ Identify:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Performance counters provide detailed measurements of Windows resources.
 - Data Collector Sets automate long-term performance collection.
@@ -1545,7 +1545,7 @@ Identify:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are Windows Performance Counters?
 2. Explain the relationship between objects, counters, and instances.
@@ -1560,7 +1560,7 @@ Identify:
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Performance Monitor Documentation
@@ -1570,13 +1570,13 @@ Identify:
 
 ---
 
-# 16-Windows-System-Monitoring.md
+## 16-Windows-System-Monitoring.md
 
-# Part 3 — Windows Event Monitoring, Resource Analysis, PowerShell Monitoring, Automation, and Enterprise Operations
+## Part 3 — Windows Event Monitoring, Resource Analysis, PowerShell Monitoring, Automation, and Enterprise Operations
 
 ---
 
-# Introduction
+## Introduction
 
 Monitoring resource utilization alone is insufficient in enterprise environments.
 
@@ -1596,7 +1596,7 @@ Combining performance metrics with event monitoring provides a complete picture 
 
 ---
 
-# Enterprise Monitoring Architecture
+## Enterprise Monitoring Architecture
 
 ```text
 Windows Endpoint
@@ -1634,7 +1634,7 @@ Enterprise monitoring platforms correlate multiple data sources to identify oper
 
 ---
 
-# Windows Event Monitoring
+## Windows Event Monitoring
 
 Windows records events for nearly every significant operating system activity.
 
@@ -1652,7 +1652,7 @@ These events are stored in Event Logs.
 
 ---
 
-# Windows Event Logs
+## Windows Event Logs
 
 Major log categories include:
 
@@ -1668,7 +1668,7 @@ Administrators regularly review these logs during troubleshooting.
 
 ---
 
-# Event Severity Levels
+## Event Severity Levels
 
 Windows classifies events by severity.
 
@@ -1684,7 +1684,7 @@ Severity helps prioritize investigation.
 
 ---
 
-# Event ID
+## Event ID
 
 Each Windows event has a unique Event ID.
 
@@ -1704,7 +1704,7 @@ Event IDs allow administrators to identify specific system activities quickly.
 
 ---
 
-# Event Correlation
+## Event Correlation
 
 Single events rarely tell the complete story.
 
@@ -1730,7 +1730,7 @@ Correlating multiple events improves diagnostic accuracy.
 
 ---
 
-# Monitoring Services
+## Monitoring Services
 
 Critical services should be monitored continuously.
 
@@ -1747,7 +1747,7 @@ Unexpected service failures may indicate configuration issues or security incide
 
 ---
 
-# Service Monitoring Workflow
+## Service Monitoring Workflow
 
 ```text
 Service
@@ -1779,7 +1779,7 @@ Automated monitoring reduces recovery time.
 
 ---
 
-# Process Monitoring
+## Process Monitoring
 
 Administrators monitor processes for:
 
@@ -1793,7 +1793,7 @@ Monitoring helps identify both operational and security issues.
 
 ---
 
-# Important Process Metrics
+## Important Process Metrics
 
 | Metric | Description |
 |----------|-------------|
@@ -1807,7 +1807,7 @@ Unexpected changes may require investigation.
 
 ---
 
-# Startup Application Monitoring
+## Startup Application Monitoring
 
 Applications configured to start automatically affect:
 
@@ -1826,7 +1826,7 @@ Administrators should review startup entries periodically.
 
 ---
 
-# Scheduled Task Monitoring
+## Scheduled Task Monitoring
 
 Organizations rely heavily on scheduled tasks.
 
@@ -1842,7 +1842,7 @@ Failed scheduled tasks should generate alerts.
 
 ---
 
-# Hardware Monitoring
+## Hardware Monitoring
 
 Hardware health directly affects system availability.
 
@@ -1858,7 +1858,7 @@ Enterprise hardware often provides dedicated monitoring interfaces.
 
 ---
 
-# SMART Monitoring
+## SMART Monitoring
 
 Many storage devices support **SMART (Self-Monitoring, Analysis and Reporting Technology).**
 
@@ -1874,7 +1874,7 @@ Administrators should replace failing disks proactively.
 
 ---
 
-# Resource Contention
+## Resource Contention
 
 Multiple applications may compete for limited resources.
 
@@ -1902,7 +1902,7 @@ Monitoring identifies resource contention before it impacts users.
 
 ---
 
-# Bottleneck Identification
+## Bottleneck Identification
 
 Common bottlenecks include:
 
@@ -1915,7 +1915,7 @@ The slowest component often limits overall system performance.
 
 ---
 
-# PowerShell Monitoring
+## PowerShell Monitoring
 
 PowerShell provides extensive monitoring capabilities.
 
@@ -1937,7 +1937,7 @@ PowerShell enables administrators to automate routine monitoring tasks.
 
 ---
 
-# Get-Counter
+## Get-Counter
 
 Retrieve performance counter data.
 
@@ -1951,7 +1951,7 @@ This cmdlet is useful for automated performance collection.
 
 ---
 
-# Get-Process
+## Get-Process
 
 Example:
 
@@ -1964,7 +1964,7 @@ Displays processes consuming the most CPU time.
 
 ---
 
-# Get-Service
+## Get-Service
 
 View running services.
 
@@ -1981,7 +1981,7 @@ Where-Object Status -eq Stopped
 
 ---
 
-# Get-CimInstance
+## Get-CimInstance
 
 Collect system information.
 
@@ -1999,7 +1999,7 @@ Useful properties include:
 
 ---
 
-# Get-WinEvent
+## Get-WinEvent
 
 Retrieve recent system events.
 
@@ -2013,7 +2013,7 @@ PowerShell enables advanced event filtering and automation.
 
 ---
 
-# Automating Monitoring
+## Automating Monitoring
 
 Typical automation workflow:
 
@@ -2045,7 +2045,7 @@ Automation reduces manual effort and ensures consistent monitoring.
 
 ---
 
-# Health Check Script
+## Health Check Script
 
 Enterprise health check scripts commonly verify:
 
@@ -2061,7 +2061,7 @@ Health checks are often scheduled daily.
 
 ---
 
-# Monitoring Reports
+## Monitoring Reports
 
 Common report formats include:
 
@@ -2075,7 +2075,7 @@ Reports are distributed to operations teams and management.
 
 ---
 
-# Enterprise Dashboards
+## Enterprise Dashboards
 
 Dashboards consolidate metrics from multiple systems.
 
@@ -2105,7 +2105,7 @@ Dashboards improve situational awareness.
 
 ---
 
-# SLA Monitoring
+## SLA Monitoring
 
 Service Level Agreements (SLAs) define expected service quality.
 
@@ -2121,7 +2121,7 @@ Monitoring verifies compliance with SLA commitments.
 
 ---
 
-# Capacity Monitoring
+## Capacity Monitoring
 
 Administrators monitor long-term growth.
 
@@ -2136,7 +2136,7 @@ Capacity reports support budgeting and infrastructure planning.
 
 ---
 
-# Enterprise Operations Center
+## Enterprise Operations Center
 
 Typical workflow:
 
@@ -2168,7 +2168,7 @@ Continuous monitoring enables rapid operational response.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A file server begins responding slowly.
 
@@ -2183,7 +2183,7 @@ The operations team replaces the failing storage device before complete failure,
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Monitoring supports security operations by detecting:
 
@@ -2199,7 +2199,7 @@ Security analysts often correlate monitoring data with endpoint detection and SI
 
 ---
 
-# Business Impact
+## Business Impact
 
 Comprehensive monitoring enables organizations to:
 
@@ -2214,7 +2214,7 @@ Monitoring is a critical investment in business continuity.
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Monitor business-critical services continuously.
 - Collect performance and event data centrally.
@@ -2227,9 +2227,9 @@ Monitoring is a critical investment in business continuity.
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Monitor CPU with PowerShell
+### Lab 1 — Monitor CPU with PowerShell
 
 Run:
 
@@ -2241,7 +2241,7 @@ Observe CPU utilization over several executions.
 
 ---
 
-## Lab 2 — Review Stopped Services
+### Lab 2 — Review Stopped Services
 
 Run:
 
@@ -2254,7 +2254,7 @@ Identify which stopped services are expected and which require investigation.
 
 ---
 
-## Lab 3 — Retrieve Recent System Events
+### Lab 3 — Retrieve Recent System Events
 
 Run:
 
@@ -2273,7 +2273,7 @@ Review:
 
 ---
 
-## Lab 4 — Create a Basic Health Report
+### Lab 4 — Create a Basic Health Report
 
 Create a PowerShell script that collects:
 
@@ -2287,7 +2287,7 @@ Export the results to a CSV file.
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Windows Event Logs provide detailed operational and security information.
 - Monitoring services, processes, and scheduled tasks improves system reliability.
@@ -2298,7 +2298,7 @@ Export the results to a CSV file.
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What are the primary Windows Event Logs?
 2. What is an Event ID?
@@ -2313,7 +2313,7 @@ Export the results to a CSV file.
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Performance Monitor Documentation
@@ -2324,13 +2324,13 @@ Export the results to a CSV file.
 
 ---
 
-# 16-Windows-System-Monitoring.md
+## 16-Windows-System-Monitoring.md
 
-# Part 4 — Enterprise Monitoring Strategy, Troubleshooting, Best Practices, Chapter Summary, and Interview Preparation
+## Part 4 — Enterprise Monitoring Strategy, Troubleshooting, Best Practices, Chapter Summary, and Interview Preparation
 
 ---
 
-# Introduction
+## Introduction
 
 Monitoring is effective only when organizations have a well-defined operational strategy.
 
@@ -2347,7 +2347,7 @@ This section focuses on enterprise monitoring operations, troubleshooting method
 
 ---
 
-# Enterprise Monitoring Framework
+## Enterprise Monitoring Framework
 
 A mature monitoring program follows a structured framework.
 
@@ -2391,7 +2391,7 @@ Continuous improvement is essential for long-term success.
 
 ---
 
-# Monitoring Maturity Model
+## Monitoring Maturity Model
 
 | Level | Characteristics |
 |--------|-----------------|
@@ -2405,7 +2405,7 @@ Organizations typically progress through these stages over time.
 
 ---
 
-# Monitoring Objectives
+## Monitoring Objectives
 
 Every monitoring solution should answer:
 
@@ -2420,7 +2420,7 @@ Good monitoring provides actionable answers rather than simply collecting data.
 
 ---
 
-# Performance Baseline Review
+## Performance Baseline Review
 
 Baselines should be reviewed regularly.
 
@@ -2438,7 +2438,7 @@ Significant deviations require investigation.
 
 ---
 
-# Monitoring Threshold Review
+## Monitoring Threshold Review
 
 Thresholds should evolve with workload changes.
 
@@ -2468,7 +2468,7 @@ Avoid thresholds that generate frequent false positives.
 
 ---
 
-# Alert Escalation Workflow
+## Alert Escalation Workflow
 
 ```text
 Alert Generated
@@ -2508,7 +2508,7 @@ Escalation procedures should be documented and tested.
 
 ---
 
-# Incident Prioritization
+## Incident Prioritization
 
 Typical priorities:
 
@@ -2524,7 +2524,7 @@ Prioritization helps allocate resources effectively.
 
 ---
 
-# Root Cause Analysis (RCA)
+## Root Cause Analysis (RCA)
 
 RCA identifies the underlying cause of an incident.
 
@@ -2566,7 +2566,7 @@ The goal is to prevent recurrence, not merely restore service.
 
 ---
 
-# Common Performance Problems
+## Common Performance Problems
 
 Frequently encountered issues include:
 
@@ -2583,7 +2583,7 @@ A structured investigation reduces resolution time.
 
 ---
 
-# High CPU Troubleshooting
+## High CPU Troubleshooting
 
 Investigation process:
 
@@ -2621,7 +2621,7 @@ Potential causes include:
 
 ---
 
-# Memory Troubleshooting
+## Memory Troubleshooting
 
 Symptoms:
 
@@ -2640,7 +2640,7 @@ Investigation steps:
 
 ---
 
-# Storage Troubleshooting
+## Storage Troubleshooting
 
 Common symptoms:
 
@@ -2660,7 +2660,7 @@ Investigate:
 
 ---
 
-# Network Troubleshooting
+## Network Troubleshooting
 
 Indicators:
 
@@ -2679,7 +2679,7 @@ Review:
 
 ---
 
-# Service Failure Investigation
+## Service Failure Investigation
 
 Workflow:
 
@@ -2711,7 +2711,7 @@ Recurring failures often require application or configuration analysis.
 
 ---
 
-# Event Correlation
+## Event Correlation
 
 Enterprise platforms correlate events from multiple sources.
 
@@ -2737,7 +2737,7 @@ Correlation reduces investigation time.
 
 ---
 
-# Automated Remediation
+## Automated Remediation
 
 Some monitoring systems perform predefined corrective actions.
 
@@ -2753,7 +2753,7 @@ Automation should be carefully tested before production use.
 
 ---
 
-# Capacity Planning
+## Capacity Planning
 
 Capacity planning relies on historical monitoring data.
 
@@ -2787,7 +2787,7 @@ Planning prevents unexpected resource shortages.
 
 ---
 
-# Trend Analysis
+## Trend Analysis
 
 Trend analysis identifies gradual changes.
 
@@ -2802,7 +2802,7 @@ Long-term trends often indicate future infrastructure requirements.
 
 ---
 
-# Documentation
+## Documentation
 
 Every monitoring environment should document:
 
@@ -2818,7 +2818,7 @@ Accurate documentation improves operational consistency.
 
 ---
 
-# Enterprise Monitoring Architecture
+## Enterprise Monitoring Architecture
 
 ```text
 Endpoints
@@ -2860,7 +2860,7 @@ This architecture supports centralized operational visibility.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A company operates 1,000 Windows servers across multiple data centers.
 
@@ -2878,7 +2878,7 @@ A centralized monitoring solution enables the operations team to identify issues
 
 ---
 
-# Cybersecurity Perspective
+## Cybersecurity Perspective
 
 Monitoring plays a vital role in defensive security.
 
@@ -2897,7 +2897,7 @@ Operational monitoring data is frequently integrated with SIEM and Endpoint Dete
 
 ---
 
-# Business Impact
+## Business Impact
 
 Comprehensive monitoring provides:
 
@@ -2913,7 +2913,7 @@ Reliable monitoring directly contributes to business continuity and operational 
 
 ---
 
-# Enterprise Best Practices
+## Enterprise Best Practices
 
 - Define and maintain performance baselines.
 - Review thresholds periodically.
@@ -2928,9 +2928,9 @@ Reliable monitoring directly contributes to business continuity and operational 
 
 ---
 
-# Practical Labs
+## Practical Labs
 
-## Lab 1 — Investigate a High CPU Scenario
+### Lab 1 — Investigate a High CPU Scenario
 
 Using Task Manager or Resource Monitor:
 
@@ -2940,7 +2940,7 @@ Using Task Manager or Resource Monitor:
 
 ---
 
-## Lab 2 — Create a Monitoring Checklist
+### Lab 2 — Create a Monitoring Checklist
 
 Develop a checklist covering:
 
@@ -2956,7 +2956,7 @@ Use it as a daily operational review template.
 
 ---
 
-## Lab 3 — Review Historical Performance
+### Lab 3 — Review Historical Performance
 
 Using Performance Monitor:
 
@@ -2966,7 +2966,7 @@ Using Performance Monitor:
 
 ---
 
-## Lab 4 — Perform Root Cause Analysis
+### Lab 4 — Perform Root Cause Analysis
 
 Given a scenario where users report slow application performance:
 
@@ -2978,7 +2978,7 @@ Given a scenario where users report slow application performance:
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
@@ -3002,7 +3002,7 @@ Effective monitoring enables administrators to detect issues proactively, optimi
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Monitoring should be proactive rather than reactive.
 - Performance counters provide detailed resource metrics.
@@ -3014,7 +3014,7 @@ Effective monitoring enables administrators to detect issues proactively, optimi
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is the purpose of Windows System Monitoring?
 2. Why are performance baselines important?
@@ -3029,7 +3029,7 @@ Effective monitoring enables administrators to detect issues proactively, optimi
 
 ---
 
-# References
+## References
 
 - Microsoft Learn
 - Microsoft Performance Monitor Documentation
@@ -3041,7 +3041,7 @@ Effective monitoring enables administrators to detect issues proactively, optimi
 
 ---
 
-# Congratulations!
+## Congratulations!
 
 You have successfully completed **Chapter 16 – Windows System Monitoring**.
 

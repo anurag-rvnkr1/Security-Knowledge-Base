@@ -1,12 +1,12 @@
 # 42-XXE.md
 
-# Part 1 — Introduction to XML External Entity (XXE), XML Fundamentals, XML Parsing, and Secure XML Processing
+## Part 1 — Introduction to XML External Entity (XXE), XML Fundamentals, XML Parsing, and Secure XML Processing
 
 > **"XML External Entity (XXE) is a class of vulnerability that arises when XML processors are configured to resolve external entities in untrusted XML documents. Secure applications minimize risk by using secure parser configurations, disabling unnecessary XML features, validating input, and following the principle of least functionality."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is XML?
+## What is XML?
 
 **XML (eXtensible Markup Language)** is a structured data format designed to store and exchange information in a human-readable and machine-readable way.
 
@@ -52,7 +52,7 @@ Application B
 
 ---
 
-# Why XML is Still Used
+## Why XML is Still Used
 
 Although JSON is widely used for modern REST APIs, XML remains important in many enterprise environments.
 
@@ -86,7 +86,7 @@ Enterprise Systems
 
 ---
 
-# Basic XML Structure
+## Basic XML Structure
 
 An XML document consists of nested elements.
 
@@ -108,7 +108,7 @@ XML requires well-formed syntax for successful parsing.
 
 ---
 
-# Example XML Hierarchy
+## Example XML Hierarchy
 
 ```
 Company
@@ -134,7 +134,7 @@ Applications use parsers to interpret this hierarchy.
 
 ---
 
-# XML Processing Lifecycle
+## XML Processing Lifecycle
 
 ```
 Incoming XML
@@ -164,7 +164,7 @@ Each stage should perform appropriate validation and security checks.
 
 ---
 
-# What is an XML Parser?
+## What is an XML Parser?
 
 An XML parser reads XML documents and converts them into a format the application can process.
 
@@ -188,7 +188,7 @@ Parsers are available in most programming languages and frameworks.
 
 ---
 
-# Common Parser Responsibilities
+## Common Parser Responsibilities
 
 An XML parser typically performs:
 
@@ -218,7 +218,7 @@ Parser
 
 ---
 
-# XML Parsing Models
+## XML Parsing Models
 
 Common parsing approaches include:
 
@@ -242,7 +242,7 @@ Different parsing models offer different performance and memory characteristics.
 
 ---
 
-# DOM Parsing
+## DOM Parsing
 
 ```
 XML
@@ -273,7 +273,7 @@ Considerations:
 
 ---
 
-# SAX Parsing
+## SAX Parsing
 
 ```
 XML
@@ -296,7 +296,7 @@ Advantages:
 
 ---
 
-# Streaming Parsers
+## Streaming Parsers
 
 ```
 XML Stream
@@ -314,7 +314,7 @@ Streaming parsers process XML progressively, making them suitable for large data
 
 ---
 
-# XML Namespaces
+## XML Namespaces
 
 Namespaces help distinguish elements that share the same name but originate from different vocabularies.
 
@@ -332,7 +332,7 @@ Namespaces improve interoperability across enterprise systems.
 
 ---
 
-# What are XML Entities?
+## What are XML Entities?
 
 Entities provide reusable references within XML documents.
 
@@ -358,7 +358,7 @@ Applications should carefully evaluate whether entity support is required.
 
 ---
 
-# What are External Entities?
+## What are External Entities?
 
 Some XML processors support references to resources outside the current XML document.
 
@@ -382,7 +382,7 @@ When external entity resolution is unnecessary, it should typically be disabled.
 
 ---
 
-# What is XXE?
+## What is XXE?
 
 **XML External Entity (XXE)** is a vulnerability that may occur when an XML processor is configured to resolve external entities from untrusted XML input.
 
@@ -408,7 +408,7 @@ This chapter focuses on defensive design, secure parser configuration, and enter
 
 ---
 
-# Why XXE Occurs
+## Why XXE Occurs
 
 XXE generally results from a combination of:
 
@@ -434,7 +434,7 @@ Secure configuration significantly reduces risk.
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 Client XML
@@ -452,7 +452,7 @@ Untrusted XML should be validated before reaching sensitive processing component
 
 ---
 
-# Enterprise XML Architecture
+## Enterprise XML Architecture
 
 ```
 Client
@@ -482,7 +482,7 @@ Every layer contributes to secure XML handling.
 
 ---
 
-# Secure XML Design Principles
+## Secure XML Design Principles
 
 ```
 Secure XML Design
@@ -510,7 +510,7 @@ Applications should enable only the XML features required for business functiona
 
 ---
 
-# High-Level Risks
+## High-Level Risks
 
 Improper XML processing may contribute to:
 
@@ -524,7 +524,7 @@ Secure parser configuration minimizes these risks.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A healthcare organization exchanges patient records using XML-based messaging.
 
@@ -552,7 +552,7 @@ The organization configures XML parsers using secure defaults, validates incomin
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 XML Processing
@@ -578,7 +578,7 @@ Each component contributes to secure XML processing.
 
 ---
 
-# Secure XML Goals
+## Secure XML Goals
 
 A secure XML processing system should provide:
 
@@ -591,7 +591,7 @@ A secure XML processing system should provide:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the XML processing lifecycle for an enterprise application.
 2. Identify where XML parsing occurs.
@@ -603,7 +603,7 @@ A secure XML processing system should provide:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is XML?
 2. Why is XML still widely used?
@@ -618,7 +618,7 @@ A secure XML processing system should provide:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use secure parser configurations by default.
 - Enable only XML features required by the application.
@@ -630,7 +630,7 @@ A secure XML processing system should provide:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Enabling unnecessary XML parser features.
 - Assuming all parser defaults are secure.
@@ -641,7 +641,7 @@ A secure XML processing system should provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - XML remains an important technology in many enterprise systems.
 - XML parsers convert structured XML documents into application-readable objects.
@@ -649,15 +649,15 @@ A secure XML processing system should provide:
 - XXE is fundamentally a parser configuration and secure XML processing issue.
 - Secure parser configuration, input validation, least functionality, and defense in depth significantly reduce XML-related risks.
 
-# 42-XXE.md
+## 42-XXE.md
 
-# Part 2 — XML Processing Pipeline, DTDs, Entity Resolution, Secure Parser Configuration, and Enterprise Architecture
+## Part 2 — XML Processing Pipeline, DTDs, Entity Resolution, Secure Parser Configuration, and Enterprise Architecture
 
 > **"Secure XML processing requires understanding how XML parsers interpret documents, how optional XML features operate, and how enterprise applications can safely process XML using secure parser configurations and least-privilege principles."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -674,7 +674,7 @@ After completing this part, you will understand:
 
 ---
 
-# XML Processing Pipeline
+## XML Processing Pipeline
 
 Every XML document follows a structured processing workflow.
 
@@ -710,7 +710,7 @@ Each stage should contribute to secure and reliable XML handling.
 
 ---
 
-# Enterprise XML Flow
+## Enterprise XML Flow
 
 ```
 Client
@@ -744,7 +744,7 @@ Enterprise systems often include multiple validation and security layers before 
 
 ---
 
-# XML Validation
+## XML Validation
 
 Applications should validate XML before business processing.
 
@@ -768,7 +768,7 @@ Validation helps ensure documents conform to expected structure and business req
 
 ---
 
-# Well-Formed XML
+## Well-Formed XML
 
 A well-formed XML document follows XML syntax rules.
 
@@ -796,7 +796,7 @@ Well-formedness alone does not guarantee business correctness or security.
 
 ---
 
-# Valid XML
+## Valid XML
 
 Beyond syntax, XML documents may also be validated against predefined rules.
 
@@ -820,7 +820,7 @@ Validation confirms that the document structure matches expected business defini
 
 ---
 
-# Document Type Definitions (DTDs)
+## Document Type Definitions (DTDs)
 
 A **Document Type Definition (DTD)** defines the allowed structure of an XML document.
 
@@ -851,7 +851,7 @@ Applications should use DTDs only when required for legitimate business function
 
 ---
 
-# XML Schema (XSD)
+## XML Schema (XSD)
 
 Many modern enterprise applications prefer **XML Schema Definition (XSD)** for validation.
 
@@ -880,7 +880,7 @@ Compared with traditional DTDs, XSD provides richer validation capabilities such
 
 ---
 
-# DTD vs XSD
+## DTD vs XSD
 
 | Feature | DTD | XSD |
 |---------|-----|-----|
@@ -892,7 +892,7 @@ Compared with traditional DTDs, XSD provides richer validation capabilities such
 
 ---
 
-# XML Entities
+## XML Entities
 
 Entities provide reusable values within XML documents.
 
@@ -916,7 +916,7 @@ Entities simplify document reuse and consistency.
 
 ---
 
-# Entity Resolution
+## Entity Resolution
 
 During parsing, the parser may resolve entity references.
 
@@ -940,7 +940,7 @@ Applications should carefully evaluate whether entity resolution is necessary.
 
 ---
 
-# Internal vs External Entities (High-Level)
+## Internal vs External Entities (High-Level)
 
 ```
 Entities
@@ -959,7 +959,7 @@ When external entities are not required, they should generally be disabled.
 
 ---
 
-# Parser Configuration
+## Parser Configuration
 
 Parser behavior depends heavily on configuration.
 
@@ -983,7 +983,7 @@ Secure parser configuration is one of the most effective defenses against XML pr
 
 ---
 
-# Secure Parser Configuration Principles
+## Secure Parser Configuration Principles
 
 ```
 Parser Security
@@ -1009,7 +1009,7 @@ Only required XML capabilities should be enabled.
 
 ---
 
-# Resource Management
+## Resource Management
 
 XML processing consumes:
 
@@ -1038,7 +1038,7 @@ Organizations should define appropriate processing limits to improve resilience.
 
 ---
 
-# SOAP and XML
+## SOAP and XML
 
 Many enterprise web services use SOAP.
 
@@ -1062,7 +1062,7 @@ SOAP messages are XML documents and should be processed using secure parser conf
 
 ---
 
-# Enterprise Integrations
+## Enterprise Integrations
 
 XML remains common in business integrations.
 
@@ -1086,7 +1086,7 @@ Secure XML handling is essential throughout the integration pipeline.
 
 ---
 
-# Microservices Using XML
+## Microservices Using XML
 
 Although JSON dominates many REST APIs, XML may still be used internally or for compatibility.
 
@@ -1106,7 +1106,7 @@ Shared XML standards improve interoperability.
 
 ---
 
-# Cloud-Native XML Processing
+## Cloud-Native XML Processing
 
 ```
 Client
@@ -1136,7 +1136,7 @@ Cloud deployments should apply the same parser security principles as traditiona
 
 ---
 
-# Logging
+## Logging
 
 Important XML-processing events should be recorded.
 
@@ -1156,7 +1156,7 @@ Logs improve operational visibility and incident investigations.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1171,7 +1171,7 @@ Sensitive XML content should be masked or omitted from logs whenever appropriate
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -1197,7 +1197,7 @@ Continuous monitoring helps identify abnormal XML-processing behavior.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1210,7 +1210,7 @@ Continuous monitoring helps identify abnormal XML-processing behavior.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1248,7 +1248,7 @@ Every layer contributes to secure XML processing.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational insurance company exchanges policy information with partner organizations through XML-based services.
 
@@ -1280,7 +1280,7 @@ Incoming XML documents are validated against approved schemas, processed using s
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1293,7 +1293,7 @@ Incoming XML documents are validated against approved schemas, processed using s
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the XML processing pipeline for an enterprise application.
 2. Identify where validation occurs.
@@ -1305,7 +1305,7 @@ Incoming XML documents are validated against approved schemas, processed using s
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is a DTD?
 2. What is an XML Schema (XSD)?
@@ -1320,7 +1320,7 @@ Incoming XML documents are validated against approved schemas, processed using s
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use secure parser configurations by default.
 - Enable only required XML features.
@@ -1333,7 +1333,7 @@ Incoming XML documents are validated against approved schemas, processed using s
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming parser defaults are always secure.
 - Enabling XML features that are not required.
@@ -1344,7 +1344,7 @@ Incoming XML documents are validated against approved schemas, processed using s
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - XML processing involves validation, parsing, and business logic execution.
 - DTDs and XSDs define document structure, with XSD providing richer validation capabilities.
@@ -1352,15 +1352,15 @@ Incoming XML documents are validated against approved schemas, processed using s
 - Secure parser configuration, schema validation, and resource controls improve XML security.
 - Enterprise XML processing benefits from standardized libraries, centralized governance, and continuous monitoring.
 
-# 42-XXE.md
+## 42-XXE.md
 
-# Part 3 — Detection, Secure Testing, Monitoring, Threat Modeling, Secure SDLC, and Enterprise Defense
+## Part 3 — Detection, Secure Testing, Monitoring, Threat Modeling, Secure SDLC, and Enterprise Defense
 
 > **"Secure XML processing depends on properly configured parsers, strong validation, least functionality, continuous monitoring, and standardized governance throughout the XML processing lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1377,7 +1377,7 @@ After completing this part, you will understand:
 
 ---
 
-# Why XML Processing Risks Are Difficult to Detect
+## Why XML Processing Risks Are Difficult to Detect
 
 Modern enterprise applications rarely process XML using a single component.
 
@@ -1415,7 +1415,7 @@ Each stage introduces additional processing that should be reviewed.
 
 ---
 
-# Security Review Process
+## Security Review Process
 
 Organizations should review the complete XML processing pipeline.
 
@@ -1447,7 +1447,7 @@ Security reviews should verify that parser features align with business requirem
 
 ---
 
-# XML Processing Inventory
+## XML Processing Inventory
 
 Maintain an inventory of every XML-processing component.
 
@@ -1477,7 +1477,7 @@ Comprehensive inventories improve governance and incident response.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Large organizations often deploy multiple XML-processing services.
 
@@ -1505,7 +1505,7 @@ Consistent parser configurations reduce operational complexity.
 
 ---
 
-# Architecture Review
+## Architecture Review
 
 Architecture reviews should evaluate:
 
@@ -1536,7 +1536,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling helps identify XML-related risks before deployment.
 
@@ -1564,7 +1564,7 @@ The objective is to identify architectural assumptions that may increase XML-pro
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 During design reviews, organizations should ask:
 
@@ -1591,7 +1591,7 @@ Security Controls
 
 ---
 
-# Secure XML Testing
+## Secure XML Testing
 
 Testing should confirm that XML is processed according to documented requirements.
 
@@ -1615,7 +1615,7 @@ Testing should emphasize correctness, standards compliance, and operational resi
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1643,7 +1643,7 @@ Each testing phase contributes to reliable XML processing.
 
 ---
 
-# Schema Validation Testing
+## Schema Validation Testing
 
 Applications using XML schemas should verify that validation behaves consistently.
 
@@ -1667,7 +1667,7 @@ Validation should align with documented business requirements.
 
 ---
 
-# Parser Configuration Validation
+## Parser Configuration Validation
 
 Organizations should periodically verify parser settings.
 
@@ -1691,7 +1691,7 @@ Configuration reviews reduce operational drift across environments.
 
 ---
 
-# Cross-System Validation
+## Cross-System Validation
 
 Enterprise XML processing often spans multiple services.
 
@@ -1719,7 +1719,7 @@ Each component should process XML consistently according to organizational stand
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 XML security should be incorporated throughout the development lifecycle.
 
@@ -1755,7 +1755,7 @@ Early security integration reduces long-term operational risk.
 
 ---
 
-# DevSecOps Pipeline
+## DevSecOps Pipeline
 
 ```
 Developer
@@ -1789,7 +1789,7 @@ XML validation should be included within automated quality assurance processes.
 
 ---
 
-# Change Management
+## Change Management
 
 Parser-related changes should follow formal approval procedures.
 
@@ -1821,7 +1821,7 @@ Controlled changes improve reliability and traceability.
 
 ---
 
-# Logging
+## Logging
 
 Important XML-processing events should be recorded.
 
@@ -1845,7 +1845,7 @@ Logs assist troubleshooting, compliance, and incident investigations.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1862,7 +1862,7 @@ Sensitive XML content should be appropriately masked or excluded from logs whene
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1888,7 +1888,7 @@ Continuous monitoring helps identify unexpected parser behavior.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1902,7 +1902,7 @@ Continuous monitoring helps identify unexpected parser behavior.
 
 ---
 
-# Governance
+## Governance
 
 Organizations should establish centralized XML security standards.
 
@@ -1932,7 +1932,7 @@ Governance improves consistency across development teams.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1974,7 +1974,7 @@ Each layer contributes to secure XML processing and operational visibility.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization exchanges payment messages with partner institutions using XML-based integrations.
 
@@ -2006,7 +2006,7 @@ The organization standardizes parser configurations, validates XML using approve
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ XML Entry Points Documented
@@ -2032,7 +2032,7 @@ The organization standardizes parser configurations, validates XML using approve
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2045,7 +2045,7 @@ The organization standardizes parser configurations, validates XML using approve
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the complete XML processing architecture of an enterprise application.
 2. Identify every XML parser used throughout the environment.
@@ -2057,7 +2057,7 @@ The organization standardizes parser configurations, validates XML using approve
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why should XML processing be reviewed as a complete pipeline?
 2. What is schema validation testing?
@@ -2072,7 +2072,7 @@ The organization standardizes parser configurations, validates XML using approve
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain an inventory of all XML-processing components.
 - Standardize parser configurations across environments.
@@ -2086,7 +2086,7 @@ The organization standardizes parser configurations, validates XML using approve
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming parser defaults remain secure across versions.
 - Using inconsistent parser configurations across applications.
@@ -2098,7 +2098,7 @@ The organization standardizes parser configurations, validates XML using approve
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Secure XML processing depends on consistent parser configuration, validation, and governance.
 - Architecture reviews and threat modeling help identify XML-processing risks early.
@@ -2106,15 +2106,15 @@ The organization standardizes parser configurations, validates XML using approve
 - Monitoring, logging, and centralized dashboards provide visibility into XML-processing health.
 - Standardized parser configurations, schema governance, and continuous review strengthen enterprise XML security.
 
-# 42-XXE.md
+## 42-XXE.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"Secure XML processing is achieved through secure parser configurations, least functionality, standardized governance, continuous validation, and comprehensive operational monitoring across the entire XML processing lifecycle."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2131,7 +2131,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise XML Governance
+## Enterprise XML Governance
 
 Organizations should establish centralized governance for all XML processing components.
 
@@ -2171,7 +2171,7 @@ Governance ensures that XML processing remains secure, consistent, and maintaina
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 XML Security Governance
@@ -2201,7 +2201,7 @@ A centralized governance model reduces inconsistencies across multiple developme
 
 ---
 
-# Parser Configuration Governance
+## Parser Configuration Governance
 
 Parser configurations should be standardized and centrally managed.
 
@@ -2229,7 +2229,7 @@ Configuration drift should be detected through automated validation wherever pos
 
 ---
 
-# Zero Trust for XML Processing
+## Zero Trust for XML Processing
 
 Zero Trust principles apply to every XML document entering the organization.
 
@@ -2268,7 +2268,7 @@ Every XML document should be independently validated before processing.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 Secure XML processing should use multiple complementary controls.
 
@@ -2304,7 +2304,7 @@ Each control reduces overall operational risk.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 XML security should be integrated throughout the software delivery lifecycle.
 
@@ -2336,7 +2336,7 @@ Security validation becomes part of every software release.
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Parser configurations and XML infrastructure should be managed as code where practical.
 
@@ -2364,7 +2364,7 @@ IaC improves repeatability, auditing, and operational consistency.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2402,7 +2402,7 @@ Automated validation helps identify configuration issues before production deplo
 
 ---
 
-# Documentation
+## Documentation
 
 Maintain documentation for:
 
@@ -2432,7 +2432,7 @@ Comprehensive documentation supports operations, maintenance, and audits.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Many industries continue to exchange business-critical information using XML.
 
@@ -2460,7 +2460,7 @@ Applicable compliance requirements depend on organizational and regulatory oblig
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 XML-processing events should be logged appropriately.
 
@@ -2488,7 +2488,7 @@ Logs should support investigations while protecting sensitive information.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2505,7 +2505,7 @@ Sensitive XML payloads should be masked, redacted, or excluded where appropriate
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Applications
@@ -2531,7 +2531,7 @@ Monitoring enables early identification of abnormal XML-processing behavior.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2546,7 +2546,7 @@ Monitoring enables early identification of abnormal XML-processing behavior.
 
 ---
 
-# XML Security Dashboard
+## XML Security Dashboard
 
 ```
 XML Operations Dashboard
@@ -2574,7 +2574,7 @@ Dashboards provide centralized visibility into XML-processing operations.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Applications
@@ -2604,7 +2604,7 @@ SOC teams correlate XML-processing events with application and infrastructure te
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should maintain documented response procedures for XML-processing incidents.
 
@@ -2640,7 +2640,7 @@ A structured process minimizes downtime and improves future resilience.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2670,7 +2670,7 @@ Root cause analysis should identify both technical and procedural improvements.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2700,7 +2700,7 @@ XML security should continuously evolve as applications and infrastructure chang
 
 ---
 
-# XML Security Maturity Model
+## XML Security Maturity Model
 
 ```
 Level 1
@@ -2737,7 +2737,7 @@ Organizations mature by integrating governance, automation, monitoring, and stan
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2791,7 +2791,7 @@ This layered architecture separates validation, parsing, monitoring, and governa
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational banking organization processes XML-based payment instructions from partner financial institutions.
 
@@ -2827,7 +2827,7 @@ The organization standardizes parser configurations, validates XML against appro
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ XML Entry Points Documented
@@ -2853,7 +2853,7 @@ The organization standardizes parser configurations, validates XML against appro
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2866,9 +2866,9 @@ The organization standardizes parser configurations, validates XML against appro
 
 ---
 
-# XXE Quick Revision
+## XXE Quick Revision
 
-## XML Processing Lifecycle
+### XML Processing Lifecycle
 
 ```
 XML Input
@@ -2892,7 +2892,7 @@ Response
 
 ---
 
-## Enterprise XML Flow
+### Enterprise XML Flow
 
 ```
 API Gateway
@@ -2912,7 +2912,7 @@ Application
 
 ---
 
-## Secure XML Processing
+### Secure XML Processing
 
 ```
 Validate
@@ -2936,7 +2936,7 @@ Monitor
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Metrics
@@ -2956,7 +2956,7 @@ Deployment
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a secure enterprise XML processing architecture.
 2. Identify every XML parser used across the environment.
@@ -2968,7 +2968,7 @@ Deployment
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is XXE at a high level?
 2. Why should unnecessary XML parser features be disabled?
@@ -2983,7 +2983,7 @@ Deployment
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use secure parser configurations by default.
 - Enable only required XML features.
@@ -2997,7 +2997,7 @@ Deployment
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming default parser configurations are always secure.
 - Enabling unnecessary XML features.
@@ -3009,7 +3009,7 @@ Deployment
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 

@@ -3,7 +3,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Cybersecurity-Knowledge%20Base-63f28a?style=for-the-badge&logo=hackthebox&logoColor=white" alt="Cybersecurity Knowledge Base">
   <img src="https://img.shields.io/badge/Focus-Blue%20Team%20%7C%20AppSec%20%7C%20Cloud%20%7C%20Threat%20Research-111814?style=for-the-badge" alt="Security Focus">
-  <img src="https://img.shields.io/badge/Content-674%2B%20Markdown%20Documents-111814?style=for-the-badge&logo=markdown" alt="Markdown Documents">
   <img src="https://img.shields.io/badge/License-MIT-111814?style=for-the-badge" alt="MIT License">
 </p>
 
@@ -53,8 +52,7 @@ The live portal provides a professional interface for exploring the underlying k
 
 ---
 
-# 01 — What Is This?
-
+## 01 — What Is This?
 **Security Knowledge Base** is a continuously evolving cybersecurity learning and reference platform.
 
 It brings together foundational security concepts, defensive operations, security engineering, application security, cloud security, threat intelligence, detection engineering, threat hunting, digital forensics, malware analysis, practical labs, CTF writeups, and technical reference material.
@@ -67,8 +65,7 @@ Rather than treating cybersecurity topics as isolated subjects, this repository 
 
 ---
 
-# 02 — The Security Mindset
-
+## 02 — The Security Mindset
 Cybersecurity is rarely about knowing one tool or memorizing one command.
 
 A strong security practitioner needs to understand how different layers interact.
@@ -116,8 +113,7 @@ This repository is designed around those connections.
 
 ---
 
-# 03 — Knowledge Domains
-
+## 03 — Knowledge Domains
 ## 🔐 Core Security Foundations
 
 | Domain | Focus |
@@ -174,8 +170,7 @@ These areas connect adversary behavior, intelligence collection, technical analy
 
 ---
 
-# 04 — Practical Security
-
+## 04 — Practical Security
 Knowledge becomes useful when it can be applied.
 
 The repository therefore includes:
@@ -206,8 +201,7 @@ Curated references, documentation, learning material, tools, standards, and secu
 
 ---
 
-# 05 — Connected Learning Paths
-
+## 05 — Connected Learning Paths
 The knowledge base can be approached from different professional directions.
 
 ## 🛡️ Blue Team
@@ -356,8 +350,7 @@ Research-driven Defense
 
 ---
 
-# 06 — Detection Engineering
-
+## 06 — Detection Engineering
 Detection engineering is treated as an engineering discipline rather than simply writing alerts.
 
 The knowledge base explores concepts around:
@@ -392,8 +385,7 @@ This creates a connection between:
 
 ---
 
-# 07 — Threat Hunting
-
+## 07 — Threat Hunting
 Threat hunting focuses on proactively searching for suspicious behavior that may not yet have triggered a detection.
 
 Core concepts include:
@@ -415,8 +407,7 @@ The objective is not simply to find an indicator.
 
 ---
 
-# 08 — MITRE ATT&CK as a Common Language
-
+## 08 — MITRE ATT&CK as a Common Language
 MITRE ATT&CK provides a common framework connecting multiple parts of the repository.
 
 It can be used to connect:
@@ -441,8 +432,7 @@ This makes ATT&CK useful not just as a reference catalogue, but as a bridge betw
 
 ---
 
-# 09 — Repository Architecture
-
+## 09 — Repository Architecture
 ```text
 Security-Knowledge-Base/
 │
@@ -498,12 +488,11 @@ Security-Knowledge-Base/
 └── CHANGELOG.md
 ```
 
-The repository currently contains **674+ Markdown documents**, making the GitHub Pages portal the preferred way to navigate the knowledge base.
+The static portal generates its collection catalogue and full-text search index from the Markdown sources. Run the documented checks after changing content so the committed catalogue remains accurate.
 
 ---
 
-# 10 — The Portfolio Experience
-
+## 10 — The Portfolio Experience
 The repository is backed by a dedicated static cybersecurity portal.
 
 ### 🌐 Security Knowledge Base Portal
@@ -554,8 +543,7 @@ No backend or database is required.
 
 ---
 
-# 11 — Security Documentation Philosophy
-
+## 11 — Security Documentation Philosophy
 Each topic should answer more than:
 
 > **"What is this?"**
@@ -586,8 +574,7 @@ This approach helps connect theoretical knowledge with practical security operat
 
 ---
 
-# 12 — Operational Areas
-
+## 12 — Operational Areas
 The repository connects knowledge across:
 
 ### Security Operations
@@ -640,8 +627,7 @@ The repository connects knowledge across:
 
 ---
 
-# 13 — References & Standards
-
+## 13 — References & Standards
 The repository connects its learning material with authoritative sources including:
 
 - [MITRE ATT&CK](https://attack.mitre.org/)
@@ -657,8 +643,7 @@ The repository connects its learning material with authoritative sources includi
 
 ---
 
-# 14 — Documentation & Contribution
-
+## 14 — Documentation & Contribution
 This project is intended to evolve continuously.
 
 Contributions that improve:
@@ -682,8 +667,7 @@ Before contributing, review:
 
 ---
 
-# 15 — Responsible Use
-
+## 15 — Responsible Use
 This repository contains security concepts and techniques that may be dual-use.
 
 All offensive testing, exploitation, enumeration, reverse engineering, malware analysis, and security research should be performed only within:
@@ -698,8 +682,7 @@ Always comply with applicable laws, organizational policies, and scope restricti
 
 ---
 
-# 16 — Roadmap
-
+## 16 — Roadmap
 The knowledge base is continuously evolving.
 
 ### Current direction
@@ -718,8 +701,7 @@ The knowledge base is continuously evolving.
 
 ---
 
-# 17 — Why This Repository Exists
-
+## 17 — Why This Repository Exists
 Cybersecurity is too interconnected to learn as isolated command lists.
 
 A suspicious PowerShell process can become:
@@ -752,8 +734,7 @@ The purpose of this knowledge base is to make those connections visible.
 
 ---
 
-# 18 — Explore
-
+## 18 — Explore
 <p align="center">
 
 ### 🚀 Start with the interactive portal

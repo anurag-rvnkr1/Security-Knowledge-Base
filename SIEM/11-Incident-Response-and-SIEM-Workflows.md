@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A security incident is not simply:
 
@@ -44,7 +44,7 @@ Lessons Learned
 
 ---
 
-# 2. What is Incident Response?
+## 2. What is Incident Response?
 
 Incident response is the organized approach for handling security incidents.
 
@@ -63,11 +63,11 @@ The exact workflow varies by organization and incident type.
 
 ---
 
-# 3. Event vs Alert vs Incident
+## 3. Event vs Alert vs Incident
 
 These concepts must be distinguished.
 
-## Event
+### Event
 
 A recorded activity:
 
@@ -75,7 +75,7 @@ A recorded activity:
 Successful Login
 ```
 
-## Alert
+### Alert
 
 A security detection:
 
@@ -83,7 +83,7 @@ A security detection:
 Suspicious Login
 ```
 
-## Incident
+### Incident
 
 A confirmed or strongly suspected security event requiring coordinated response:
 
@@ -109,7 +109,7 @@ Not every event or alert becomes an incident.
 
 ---
 
-# 4. Incident Response Lifecycle
+## 4. Incident Response Lifecycle
 
 A practical lifecycle is:
 
@@ -131,7 +131,7 @@ This is commonly associated with established incident-response frameworks, altho
 
 ---
 
-# 5. Phase 1 – Preparation
+## 5. Phase 1 – Preparation
 
 Preparation happens before an incident.
 
@@ -152,7 +152,7 @@ Incident Roles
 
 ---
 
-# 6. SIEM Preparation
+## 6. SIEM Preparation
 
 For SIEM specifically:
 
@@ -176,7 +176,7 @@ Define Escalation
 
 ---
 
-# 7. Incident Response Roles
+## 7. Incident Response Roles
 
 Typical roles may include:
 
@@ -198,7 +198,7 @@ The exact structure depends on organization size.
 
 ---
 
-# 8. Incident Severity
+## 8. Incident Severity
 
 Organizations may classify incidents as:
 
@@ -225,7 +225,7 @@ Regulatory Impact
 
 ---
 
-# 9. Critical Incident Example
+## 9. Critical Incident Example
 
 ```text
 Ransomware
@@ -245,7 +245,7 @@ Critical
 
 ---
 
-# 10. Low-Severity Incident Example
+## 10. Low-Severity Incident Example
 
 ```text
 Compromised Test Account
@@ -267,7 +267,7 @@ Actual classification should follow organizational policy.
 
 ---
 
-# 11. Incident Identification
+## 11. Incident Identification
 
 An incident can originate from:
 
@@ -286,7 +286,7 @@ Third Party
 
 ---
 
-# 12. SIEM-to-Incident Workflow
+## 12. SIEM-to-Incident Workflow
 
 ```text
 SIEM Alert
@@ -310,7 +310,7 @@ Response
 
 ---
 
-# 13. Alert Validation
+## 13. Alert Validation
 
 Ask:
 
@@ -334,7 +334,7 @@ Is the data trustworthy?
 
 ---
 
-# 14. Incident Declaration
+## 14. Incident Declaration
 
 An alert becomes an incident when evidence indicates:
 
@@ -360,7 +360,7 @@ Ransomware Activity
 
 ---
 
-# 15. Incident Case
+## 15. Incident Case
 
 A case should contain:
 
@@ -385,7 +385,7 @@ Resolution
 
 ---
 
-# 16. Case Status
+## 16. Case Status
 
 Typical statuses:
 
@@ -404,7 +404,7 @@ Organizations may use different naming.
 
 ---
 
-# 17. Incident Timeline
+## 17. Incident Timeline
 
 Example:
 
@@ -424,7 +424,7 @@ This timeline becomes the foundation of the investigation.
 
 ---
 
-# 18. Detection Time
+## 18. Detection Time
 
 Important timestamps include:
 
@@ -441,7 +441,7 @@ These allow teams to measure response performance.
 
 ---
 
-# 19. MTTD
+## 19. MTTD
 
 MTTD:
 
@@ -461,7 +461,7 @@ Lower is generally better.
 
 ---
 
-# 20. MTTA
+## 20. MTTA
 
 MTTA:
 
@@ -473,7 +473,7 @@ Measures how long it takes for an alert or incident to receive analyst attention
 
 ---
 
-# 21. MTTR
+## 21. MTTR
 
 MTTR is commonly used for:
 
@@ -493,7 +493,7 @@ Always define the metric before comparing it.
 
 ---
 
-# 22. Why Response Metrics Matter
+## 22. Why Response Metrics Matter
 
 Example:
 
@@ -525,7 +525,7 @@ Recovery
 
 ---
 
-# 23. Containment
+## 23. Containment
 
 Containment limits attacker access or prevents further damage.
 
@@ -545,7 +545,7 @@ Actions should follow approved incident-response procedures.
 
 ---
 
-# 24. Short-Term Containment
+## 24. Short-Term Containment
 
 Goal:
 
@@ -564,7 +564,7 @@ Session Revocation
 
 ---
 
-# 25. Long-Term Containment
+## 25. Long-Term Containment
 
 Goal:
 
@@ -584,7 +584,7 @@ Credential Restrictions
 
 ---
 
-# 26. Eradication
+## 26. Eradication
 
 Eradication removes the underlying threat.
 
@@ -602,7 +602,7 @@ Clean Systems
 
 ---
 
-# 27. Recovery
+## 27. Recovery
 
 Recovery restores normal operations.
 
@@ -620,7 +620,7 @@ Recovery should be controlled rather than simply returning everything to its pre
 
 ---
 
-# 28. Recovery Monitoring
+## 28. Recovery Monitoring
 
 After recovery:
 
@@ -636,7 +636,7 @@ Validate Controls
 
 ---
 
-# 29. Re-Compromise
+## 29. Re-Compromise
 
 A system may become compromised again if:
 
@@ -652,7 +652,7 @@ Therefore eradication must address the cause, not just the visible symptom.
 
 ---
 
-# 30. Post-Incident Activity
+## 30. Post-Incident Activity
 
 After an incident:
 
@@ -668,7 +668,7 @@ Policy Updates
 
 ---
 
-# 31. Root Cause Analysis
+## 31. Root Cause Analysis
 
 Ask:
 
@@ -688,7 +688,7 @@ What allowed lateral movement?
 
 ---
 
-# 32. Five Whys
+## 32. Five Whys
 
 Example:
 
@@ -718,7 +718,7 @@ This helps identify systemic weaknesses.
 
 ---
 
-# 33. SIEM Investigation Workflow
+## 33. SIEM Investigation Workflow
 
 A practical workflow:
 
@@ -752,7 +752,7 @@ Improve Detection
 
 ---
 
-# 34. Alert-to-Case Automation
+## 34. Alert-to-Case Automation
 
 A SIEM can automatically create:
 
@@ -780,7 +780,7 @@ Assign SOC Queue
 
 ---
 
-# 35. Case Enrichment
+## 35. Case Enrichment
 
 Automatically attach:
 
@@ -797,7 +797,7 @@ Vulnerability Data
 
 ---
 
-# 36. Case Correlation
+## 36. Case Correlation
 
 Multiple alerts can be connected:
 
@@ -823,7 +823,7 @@ Incident CASE-2026-001
 
 ---
 
-# 37. Case Deduplication
+## 37. Case Deduplication
 
 If multiple detections represent the same behavior:
 
@@ -843,7 +843,7 @@ This reduces analyst overload.
 
 ---
 
-# 38. Incident Ownership
+## 38. Incident Ownership
 
 Every incident should have:
 
@@ -868,7 +868,7 @@ Clear ownership prevents incidents from remaining unassigned.
 
 ---
 
-# 39. Escalation
+## 39. Escalation
 
 Escalate based on:
 
@@ -885,7 +885,7 @@ Regulatory Requirements
 
 ---
 
-# 40. Escalation Example
+## 40. Escalation Example
 
 ```text
 Low:
@@ -909,7 +909,7 @@ Actual escalation paths must follow organizational policy.
 
 ---
 
-# 41. Communication
+## 41. Communication
 
 Incident communication may involve:
 
@@ -935,7 +935,7 @@ Documented
 
 ---
 
-# 42. Incident Communication Template
+## 42. Incident Communication Template
 
 ```text
 Incident ID:
@@ -968,7 +968,7 @@ Endpoint investigation
 
 ---
 
-# 43. Evidence Collection
+## 43. Evidence Collection
 
 Evidence may include:
 
@@ -988,7 +988,7 @@ Network Connections
 
 ---
 
-# 44. Evidence Integrity
+## 44. Evidence Integrity
 
 Important considerations:
 
@@ -1005,7 +1005,7 @@ For formal investigations, evidence procedures should follow organizational, leg
 
 ---
 
-# 45. SIEM as Evidence Repository
+## 45. SIEM as Evidence Repository
 
 The SIEM can provide:
 
@@ -1026,7 +1026,7 @@ Other systems may contain richer or authoritative evidence.
 
 ---
 
-# 46. Log Preservation
+## 46. Log Preservation
 
 During major incidents:
 
@@ -1044,7 +1044,7 @@ Preservation should follow organizational procedures.
 
 ---
 
-# 47. Incident Response Playbook
+## 47. Incident Response Playbook
 
 A playbook defines:
 
@@ -1061,7 +1061,7 @@ Documentation
 
 ---
 
-# 48. Example – Account Compromise Playbook
+## 48. Example – Account Compromise Playbook
 
 ```text
 Trigger:
@@ -1083,7 +1083,7 @@ Suspicious Account Activity
 
 ---
 
-# 49. Example – Malware Playbook
+## 49. Example – Malware Playbook
 
 ```text
 Trigger:
@@ -1105,7 +1105,7 @@ Malware Detection
 
 ---
 
-# 50. Example – Phishing Playbook
+## 50. Example – Phishing Playbook
 
 ```text
 Trigger:
@@ -1127,7 +1127,7 @@ Reported Phishing Email
 
 ---
 
-# 51. Example – Ransomware Playbook
+## 51. Example – Ransomware Playbook
 
 ```text
 Trigger:
@@ -1151,7 +1151,7 @@ Actual response must follow the organization's ransomware procedures and busines
 
 ---
 
-# 52. SIEM Workflow for Ransomware
+## 52. SIEM Workflow for Ransomware
 
 ```text
 File Encryption Events
@@ -1169,7 +1169,7 @@ Containment
 
 ---
 
-# 53. SIEM Workflow for Account Takeover
+## 53. SIEM Workflow for Account Takeover
 
 ```text
 Unusual Login
@@ -1187,7 +1187,7 @@ Incident
 
 ---
 
-# 54. SIEM Workflow for C2
+## 54. SIEM Workflow for C2
 
 ```text
 Endpoint
@@ -1207,7 +1207,7 @@ High Risk
 
 ---
 
-# 55. SIEM Workflow for Data Exfiltration
+## 55. SIEM Workflow for Data Exfiltration
 
 ```text
 Sensitive Access
@@ -1225,7 +1225,7 @@ Incident
 
 ---
 
-# 56. Incident Status Workflow
+## 56. Incident Status Workflow
 
 ```text
 NEW
@@ -1249,7 +1249,7 @@ CLOSED
 
 ---
 
-# 57. Incident Closure Criteria
+## 57. Incident Closure Criteria
 
 Before closing, confirm:
 
@@ -1269,7 +1269,7 @@ Exact closure requirements vary by incident and organization.
 
 ---
 
-# 58. Lessons Learned
+## 58. Lessons Learned
 
 Ask:
 
@@ -1291,7 +1291,7 @@ How can response time improve?
 
 ---
 
-# 59. Detection Improvement After Incident
+## 59. Detection Improvement After Incident
 
 Incident:
 
@@ -1319,7 +1319,7 @@ Monitor
 
 ---
 
-# 60. Logging Improvement
+## 60. Logging Improvement
 
 Finding:
 
@@ -1341,7 +1341,7 @@ Create Detection
 
 ---
 
-# 61. Control Improvement
+## 61. Control Improvement
 
 Incident may reveal:
 
@@ -1358,7 +1358,7 @@ Response should address systemic weaknesses.
 
 ---
 
-# 62. SIEM Metrics
+## 62. SIEM Metrics
 
 Useful metrics include:
 
@@ -1378,7 +1378,7 @@ Data Source Health
 
 ---
 
-# 63. False Positive Rate
+## 63. False Positive Rate
 
 Conceptually:
 
@@ -1392,7 +1392,7 @@ High false positive rates may indicate poor detection tuning.
 
 ---
 
-# 64. True Positive Rate
+## 64. True Positive Rate
 
 Conceptually:
 
@@ -1406,7 +1406,7 @@ The exact metric definition should be standardized before operational use.
 
 ---
 
-# 65. Alert-to-Incident Conversion
+## 65. Alert-to-Incident Conversion
 
 Measure:
 
@@ -1432,7 +1432,7 @@ But the metric must be interpreted with context.
 
 ---
 
-# 66. Mean Time to Detect
+## 66. Mean Time to Detect
 
 Conceptually:
 
@@ -1446,7 +1446,7 @@ A lower value generally indicates faster detection.
 
 ---
 
-# 67. Mean Time to Respond
+## 67. Mean Time to Respond
 
 Conceptually:
 
@@ -1460,7 +1460,7 @@ Organizations should define exactly which timestamps are used.
 
 ---
 
-# 68. Mean Time to Contain
+## 68. Mean Time to Contain
 
 Measures:
 
@@ -1474,7 +1474,7 @@ Useful for understanding operational response speed.
 
 ---
 
-# 69. Incident Severity Distribution
+## 69. Incident Severity Distribution
 
 Dashboard:
 
@@ -1489,7 +1489,7 @@ This can help identify trends.
 
 ---
 
-# 70. Incident Trends
+## 70. Incident Trends
 
 Track:
 
@@ -1513,7 +1513,7 @@ This can guide security priorities.
 
 ---
 
-# 71. Incident Categories
+## 71. Incident Categories
 
 Common categories:
 
@@ -1532,7 +1532,7 @@ Policy Violation
 
 ---
 
-# 72. SIEM and SOAR
+## 72. SIEM and SOAR
 
 SIEM:
 
@@ -1570,7 +1570,7 @@ Response
 
 ---
 
-# 73. SOAR Enrichment Example
+## 73. SOAR Enrichment Example
 
 ```text
 Alert
@@ -1592,7 +1592,7 @@ Create Case
 
 ---
 
-# 74. SOAR Response Example
+## 74. SOAR Response Example
 
 For a high-confidence malicious endpoint:
 
@@ -1614,7 +1614,7 @@ Automated containment should be carefully authorized and tested.
 
 ---
 
-# 75. Human Approval
+## 75. Human Approval
 
 For risky actions:
 
@@ -1641,7 +1641,7 @@ Cloud Permission Changes
 
 ---
 
-# 76. Automation Guardrails
+## 76. Automation Guardrails
 
 Automations should include:
 
@@ -1657,7 +1657,7 @@ Exception Handling
 
 ---
 
-# 77. Example Guardrail
+## 77. Example Guardrail
 
 Instead of:
 
@@ -1687,7 +1687,7 @@ for analyst approval
 
 ---
 
-# 78. Incident Response Documentation
+## 78. Incident Response Documentation
 
 A complete case may include:
 
@@ -1709,7 +1709,7 @@ Detection Improvements
 
 ---
 
-# 79. Executive Summary
+## 79. Executive Summary
 
 Example:
 
@@ -1726,7 +1726,7 @@ The executive summary should avoid unnecessary technical detail.
 
 ---
 
-# 80. Technical Summary
+## 80. Technical Summary
 
 Include:
 
@@ -1745,7 +1745,7 @@ Map relevant behaviors to ATT&CK when useful.
 
 ---
 
-# 81. Incident Evidence Table
+## 81. Incident Evidence Table
 
 | Time | Source | Entity | Event | Interpretation |
 |---|---|---|---|---|
@@ -1756,7 +1756,7 @@ Map relevant behaviors to ATT&CK when useful.
 
 ---
 
-# 82. Incident Handoff
+## 82. Incident Handoff
 
 When transferring a case:
 
@@ -1775,7 +1775,7 @@ A good handoff prevents duplicated work.
 
 ---
 
-# 83. Shift Handover
+## 83. Shift Handover
 
 SOC teams operating 24/7 should communicate:
 
@@ -1790,7 +1790,7 @@ Feed Problems
 
 ---
 
-# 84. Incident Communication Timeline
+## 84. Incident Communication Timeline
 
 Maintain:
 
@@ -1805,7 +1805,7 @@ This creates accountability.
 
 ---
 
-# 85. Third-Party Incidents
+## 85. Third-Party Incidents
 
 If a vendor is involved:
 
@@ -1822,7 +1822,7 @@ Do not assume the third party has complete evidence.
 
 ---
 
-# 86. Cloud Incident Response
+## 86. Cloud Incident Response
 
 Cloud incidents may require:
 
@@ -1840,7 +1840,7 @@ The exact controls depend on the cloud provider.
 
 ---
 
-# 87. Identity Incident Response
+## 87. Identity Incident Response
 
 For account compromise:
 
@@ -1858,7 +1858,7 @@ Carefully preserve evidence before destructive changes where appropriate.
 
 ---
 
-# 88. Endpoint Incident Response
+## 88. Endpoint Incident Response
 
 Typical steps:
 
@@ -1882,7 +1882,7 @@ Monitor
 
 ---
 
-# 89. Network Incident Response
+## 89. Network Incident Response
 
 Typical steps:
 
@@ -1904,7 +1904,7 @@ Monitor
 
 ---
 
-# 90. Data Incident Response
+## 90. Data Incident Response
 
 For possible data exposure:
 
@@ -1928,7 +1928,7 @@ Legal/privacy teams may need to be involved depending on the organization and ju
 
 ---
 
-# 91. Practical Lab – Full Incident
+## 91. Practical Lab – Full Incident
 
 Create the following simulated timeline:
 
@@ -1977,7 +1977,7 @@ Incident Classification
 
 ---
 
-# 92. Practical Lab – Containment
+## 92. Practical Lab – Containment
 
 Given:
 
@@ -2006,7 +2006,7 @@ What evidence should be preserved first?
 
 ---
 
-# 93. Practical Lab – Detection Improvement
+## 93. Practical Lab – Detection Improvement
 
 Incident finding:
 
@@ -2033,7 +2033,7 @@ High
 
 ---
 
-# 94. Practical Lab – Incident Report
+## 94. Practical Lab – Incident Report
 
 Create:
 
@@ -2058,67 +2058,67 @@ Detection Improvements
 
 ---
 
-# 95. Interview Questions
+## 95. Interview Questions
 
-### What is incident response?
+#### What is incident response?
 
 > The structured process of detecting, analyzing, containing, eradicating, and recovering from security incidents.
 
-### What are the major incident-response phases?
+#### What are the major incident-response phases?
 
 > Preparation, detection and analysis, containment, eradication, recovery, and post-incident activity.
 
-### What is the difference between an alert and an incident?
+#### What is the difference between an alert and an incident?
 
 > An alert is a security detection requiring evaluation; an incident is a confirmed or strongly suspected security event requiring coordinated response.
 
-### What is containment?
+#### What is containment?
 
 > Actions taken to limit attacker access, spread, or damage.
 
-### What is eradication?
+#### What is eradication?
 
 > Removing the underlying threat, persistence, compromised credentials, malware, or vulnerability.
 
-### What is recovery?
+#### What is recovery?
 
 > Restoring systems and services to a secure operational state while validating that the threat has been removed.
 
-### What is root-cause analysis?
+#### What is root-cause analysis?
 
 > Determining how the incident began and identifying the underlying weaknesses that enabled it.
 
-### What is MTTD?
+#### What is MTTD?
 
 > Mean Time To Detect, measuring the time between the beginning or occurrence of relevant malicious activity and its detection, based on the organization's defined timestamps.
 
-### What is MTTR?
+#### What is MTTR?
 
 > Mean Time To Respond or Recover, depending on the organization's metric definition.
 
-### How does SIEM support incident response?
+#### How does SIEM support incident response?
 
 > SIEM provides centralized telemetry, correlation, detections, alerts, historical search, enrichment, timelines, and evidence that support investigation and response.
 
-### How does SOAR complement SIEM?
+#### How does SOAR complement SIEM?
 
 > SOAR automates enrichment, orchestration, case management, and approved response actions around SIEM detections.
 
-### What should an analyst do after receiving a high-severity alert?
+#### What should an analyst do after receiving a high-severity alert?
 
 > Validate the alert, understand the detection, identify entities, search related events, build a timeline, determine scope and impact, enrich the evidence, and escalate or initiate response according to procedure.
 
-### What is a playbook?
+#### What is a playbook?
 
 > A documented sequence of investigation and response steps for a specific incident type.
 
-### Why is incident documentation important?
+#### Why is incident documentation important?
 
 > It provides an auditable record, supports handoffs, enables lessons learned, and helps improve security controls and detections.
 
 ---
 
-# 96. Quick Revision
+## 96. Quick Revision
 
 ```text
 INCIDENT RESPONSE
@@ -2169,7 +2169,7 @@ SOAR
 
 ---
 
-# 97. Golden Rules
+## 97. Golden Rules
 
 ```text
 1. Not every alert is an incident.
@@ -2215,7 +2215,7 @@ SOAR
 
 ---
 
-# 98. Final Mental Model
+## 98. Final Mental Model
 
 The complete SIEM-driven incident-response workflow is:
 
@@ -2267,7 +2267,7 @@ DETECT BETTER
 
 ---
 
-# 99. Chapter Summary
+## 99. Chapter Summary
 
 Incident response transforms security detections into coordinated action.
 
@@ -2322,4 +2322,3 @@ Chapter 12 – SIEM Use Cases & Detection Scenarios
 ```
 
 There we will cover **high-value SOC use cases, authentication attacks, brute force, password spraying, account compromise, malware, phishing, PowerShell, privilege escalation, lateral movement, C2, data exfiltration, ransomware, insider threats, cloud attacks, and complete detection-to-response scenarios.**
-```

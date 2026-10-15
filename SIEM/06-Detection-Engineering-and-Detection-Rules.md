@@ -4,7 +4,7 @@
 
 ---
 
-# 1. Introduction
+## 1. Introduction
 
 A SIEM becomes useful when it can continuously answer:
 
@@ -42,7 +42,7 @@ Continuous Improvement
 
 ---
 
-# 2. What is Detection Engineering?
+## 2. What is Detection Engineering?
 
 Detection engineering is the process of designing and maintaining detections that identify potentially malicious or otherwise security-relevant behavior.
 
@@ -68,11 +68,11 @@ Operational Feedback
 
 ---
 
-# 3. Detection vs Alert
+## 3. Detection vs Alert
 
 These terms are related but different.
 
-### Detection
+#### Detection
 
 The logic used to identify suspicious behavior.
 
@@ -83,7 +83,7 @@ occur from one source
 within a short time window
 ```
 
-### Alert
+#### Alert
 
 The operational notification generated when the detection condition is satisfied.
 
@@ -104,7 +104,7 @@ Alert
 
 ---
 
-# 4. Why Detection Engineering Matters
+## 4. Why Detection Engineering Matters
 
 Good detection engineering provides:
 
@@ -131,7 +131,7 @@ Poor SOC Efficiency
 
 ---
 
-# 5. Detection Engineering Mindset
+## 5. Detection Engineering Mindset
 
 A good detection engineer asks:
 
@@ -155,7 +155,7 @@ What happens when the data format changes?
 
 ---
 
-# 6. Detection Lifecycle
+## 6. Detection Lifecycle
 
 A mature detection lifecycle looks like:
 
@@ -191,7 +191,7 @@ A mature detection lifecycle looks like:
 
 ---
 
-# 7. Step 1 – Identify the Threat
+## 7. Step 1 – Identify the Threat
 
 Start with:
 
@@ -216,7 +216,7 @@ Cloud Account Abuse
 
 ---
 
-# 8. Step 2 – Define the Behavior
+## 8. Step 2 – Define the Behavior
 
 Avoid overly broad statements such as:
 
@@ -235,7 +235,7 @@ This is measurable.
 
 ---
 
-# 9. Step 3 – Identify Telemetry
+## 9. Step 3 – Identify Telemetry
 
 Determine which data sources can observe the behavior.
 
@@ -262,7 +262,7 @@ Firewall
 
 ---
 
-# 10. Step 4 – Define Required Fields
+## 10. Step 4 – Define Required Fields
 
 For a password-spraying detection:
 
@@ -286,7 +286,7 @@ device
 
 ---
 
-# 11. Step 5 – Explore the Data
+## 11. Step 5 – Explore the Data
 
 Before writing a production rule:
 
@@ -304,7 +304,7 @@ This prevents building detections based on assumptions.
 
 ---
 
-# 12. Step 6 – Write the Query
+## 12. Step 6 – Write the Query
 
 Example:
 
@@ -329,7 +329,7 @@ COUNT(DISTINCT user.name)
 
 ---
 
-# 13. Step 7 – Define Threshold
+## 13. Step 7 – Define Threshold
 
 Example:
 
@@ -358,7 +358,7 @@ Historical incidents
 
 ---
 
-# 14. Step 8 – Add a Time Window
+## 14. Step 8 – Add a Time Window
 
 Example:
 
@@ -393,7 +393,7 @@ generate alert
 
 ---
 
-# 15. Detection Logic
+## 15. Detection Logic
 
 A detection can be represented as:
 
@@ -417,7 +417,7 @@ ALERT
 
 ---
 
-# 16. Detection Types
+## 16. Detection Types
 
 Common detection categories include:
 
@@ -438,7 +438,7 @@ Machine-Learning-Assisted
 
 ---
 
-# 17. Signature-Based Detection
+## 17. Signature-Based Detection
 
 Looks for known patterns.
 
@@ -466,7 +466,7 @@ Attackers can modify artifacts
 
 ---
 
-# 18. IOC-Based Detection
+## 18. IOC-Based Detection
 
 IOC:
 
@@ -493,7 +493,7 @@ source.ip IN threat_intelligence.ip_list
 
 ---
 
-# 19. Rule-Based Detection
+## 19. Rule-Based Detection
 
 Example:
 
@@ -509,7 +509,7 @@ This is straightforward and deterministic.
 
 ---
 
-# 20. Threshold Detection
+## 20. Threshold Detection
 
 Example:
 
@@ -534,7 +534,7 @@ Abuse
 
 ---
 
-# 21. Behavioral Detection
+## 21. Behavioral Detection
 
 Instead of matching a specific indicator, detect behavior.
 
@@ -554,7 +554,7 @@ Behavior-based detection can therefore be more resilient to indicator changes.
 
 ---
 
-# 22. Sequence Detection
+## 22. Sequence Detection
 
 Sequence detections look for events occurring in a particular order.
 
@@ -574,7 +574,7 @@ This may indicate account compromise.
 
 ---
 
-# 23. Stateful Detection
+## 23. Stateful Detection
 
 A stateful rule tracks events over time.
 
@@ -592,7 +592,7 @@ The detection maintains context across events.
 
 ---
 
-# 24. Stateless Detection
+## 24. Stateless Detection
 
 A stateless detection evaluates one event at a time.
 
@@ -612,7 +612,7 @@ No historical context is required.
 
 ---
 
-# 25. Anomaly Detection
+## 25. Anomaly Detection
 
 Anomaly detection identifies activity that differs significantly from expected behavior.
 
@@ -630,7 +630,7 @@ Potential anomaly.
 
 ---
 
-# 26. Baseline-Based Detection
+## 26. Baseline-Based Detection
 
 Example:
 
@@ -648,7 +648,7 @@ Baseline-based detection requires enough historical data and careful handling of
 
 ---
 
-# 27. Statistical Detection
+## 27. Statistical Detection
 
 Example:
 
@@ -676,7 +676,7 @@ Statistical deviation requires context.
 
 ---
 
-# 28. Detection Using Multiple Signals
+## 28. Detection Using Multiple Signals
 
 A stronger detection may combine:
 
@@ -706,7 +706,7 @@ Higher Confidence
 
 ---
 
-# 29. Detection Confidence
+## 29. Detection Confidence
 
 Not every alert has the same confidence.
 
@@ -727,7 +727,7 @@ Confidence can be used alongside severity and risk.
 
 ---
 
-# 30. Severity
+## 30. Severity
 
 Common severity levels:
 
@@ -743,15 +743,15 @@ Severity should reflect potential impact and urgency.
 
 ---
 
-# 31. Severity vs Confidence
+## 31. Severity vs Confidence
 
 These are different.
 
-### Severity
+#### Severity
 
 How serious could the activity be?
 
-### Confidence
+#### Confidence
 
 How confident are we that the activity is malicious?
 
@@ -772,7 +772,7 @@ but evidence is weak.
 
 ---
 
-# 32. Risk-Based Detection
+## 32. Risk-Based Detection
 
 Risk combines multiple signals.
 
@@ -795,7 +795,7 @@ The organization can prioritize based on risk.
 
 ---
 
-# 33. Detection Context
+## 33. Detection Context
 
 A detection should include enough information for investigation.
 
@@ -829,7 +829,7 @@ Unique Users:
 
 ---
 
-# 34. Alert Enrichment
+## 34. Alert Enrichment
 
 Alerts can be enriched with:
 
@@ -848,7 +848,7 @@ This reduces analyst lookup time.
 
 ---
 
-# 35. False Positive
+## 35. False Positive
 
 A false positive occurs when a detection alerts on legitimate activity.
 
@@ -875,7 +875,7 @@ But activity is legitimate.
 
 ---
 
-# 36. False Negative
+## 36. False Negative
 
 A false negative occurs when malicious activity is not detected.
 
@@ -905,7 +905,7 @@ Detection misses it
 
 ---
 
-# 37. Detection Trade-Off
+## 37. Detection Trade-Off
 
 There is often a trade-off:
 
@@ -938,7 +938,7 @@ Risk
 
 ---
 
-# 38. Precision
+## 38. Precision
 
 Precision asks:
 
@@ -956,7 +956,7 @@ Higher precision generally means less alert noise.
 
 ---
 
-# 39. Recall
+## 39. Recall
 
 Recall asks:
 
@@ -972,7 +972,7 @@ True Positives /
 
 ---
 
-# 40. Detection Coverage
+## 40. Detection Coverage
 
 Coverage asks:
 
@@ -998,7 +998,7 @@ Coverage should be measured against relevant threats and telemetry.
 
 ---
 
-# 41. Detection Gaps
+## 41. Detection Gaps
 
 A gap exists when:
 
@@ -1028,7 +1028,7 @@ No detection
 
 ---
 
-# 42. Detection Dependencies
+## 42. Detection Dependencies
 
 A detection may depend on:
 
@@ -1050,7 +1050,7 @@ Detection Reliability ↓
 
 ---
 
-# 43. Detection Metadata
+## 43. Detection Metadata
 
 A production detection should contain metadata such as:
 
@@ -1074,7 +1074,7 @@ Response Guidance
 
 ---
 
-# 44. Detection ID
+## 44. Detection ID
 
 Example:
 
@@ -1100,7 +1100,7 @@ Retire
 
 ---
 
-# 45. Detection Description
+## 45. Detection Description
 
 Bad:
 
@@ -1119,7 +1119,7 @@ time window.
 
 ---
 
-# 46. Required Data Sources
+## 46. Required Data Sources
 
 Example:
 
@@ -1138,7 +1138,7 @@ This helps troubleshoot missing telemetry.
 
 ---
 
-# 47. Required Fields
+## 47. Required Fields
 
 Example:
 
@@ -1154,7 +1154,7 @@ A detection should fail safely or degrade gracefully when required fields are un
 
 ---
 
-# 48. False Positive Guidance
+## 48. False Positive Guidance
 
 Example:
 
@@ -1171,7 +1171,7 @@ The analyst should know what to verify.
 
 ---
 
-# 49. Exception Handling
+## 49. Exception Handling
 
 Some legitimate entities may need exceptions.
 
@@ -1198,7 +1198,7 @@ Review
 
 ---
 
-# 50. Allowlists
+## 50. Allowlists
 
 Example:
 
@@ -1223,7 +1223,7 @@ Monitored
 
 ---
 
-# 51. Detection Tuning
+## 51. Detection Tuning
 
 Tuning modifies a detection to improve its usefulness.
 
@@ -1240,7 +1240,7 @@ Change severity
 
 ---
 
-# 52. Threshold Tuning
+## 52. Threshold Tuning
 
 Initial:
 
@@ -1270,7 +1270,7 @@ But tuning should not simply reduce alert count. It should preserve meaningful d
 
 ---
 
-# 53. Contextual Tuning
+## 53. Contextual Tuning
 
 Instead of:
 
@@ -1292,7 +1292,7 @@ This can improve precision.
 
 ---
 
-# 54. Risk-Based Tuning
+## 54. Risk-Based Tuning
 
 A suspicious action on:
 
@@ -1310,7 +1310,7 @@ Context matters.
 
 ---
 
-# 55. Detection Testing
+## 55. Detection Testing
 
 Never deploy a detection without testing.
 
@@ -1328,7 +1328,7 @@ Legitimate Similar Behavior
 
 ---
 
-# 56. Positive Test
+## 56. Positive Test
 
 Generate expected malicious/suspicious behavior.
 
@@ -1348,7 +1348,7 @@ Detection triggers
 
 ---
 
-# 57. Negative Test
+## 57. Negative Test
 
 Generate legitimate behavior.
 
@@ -1366,7 +1366,7 @@ No alert
 
 ---
 
-# 58. Edge Case Test
+## 58. Edge Case Test
 
 Example:
 
@@ -1400,7 +1400,7 @@ Alert
 
 ---
 
-# 59. Boundary Testing
+## 59. Boundary Testing
 
 If threshold:
 
@@ -1420,7 +1420,7 @@ This catches logic errors.
 
 ---
 
-# 60. Detection Test Data
+## 60. Detection Test Data
 
 Possible sources:
 
@@ -1438,7 +1438,7 @@ Only use security testing tools and activities within authorized environments.
 
 ---
 
-# 61. Detection as Code
+## 61. Detection as Code
 
 Detection rules can be stored as code/configuration.
 
@@ -1473,7 +1473,7 @@ Auditability
 
 ---
 
-# 62. Version Control
+## 62. Version Control
 
 Example:
 
@@ -1493,7 +1493,7 @@ History should remain available.
 
 ---
 
-# 63. Detection CI/CD
+## 63. Detection CI/CD
 
 A mature workflow:
 
@@ -1517,7 +1517,7 @@ Production
 
 ---
 
-# 64. Detection Unit Tests
+## 64. Detection Unit Tests
 
 Tests can verify:
 
@@ -1542,7 +1542,7 @@ Alert
 
 ---
 
-# 65. Regression Testing
+## 65. Regression Testing
 
 A detection that worked previously may break after:
 
@@ -1558,7 +1558,7 @@ Regression tests ensure previous behavior remains valid.
 
 ---
 
-# 66. Detection Monitoring
+## 66. Detection Monitoring
 
 After deployment, monitor:
 
@@ -1575,7 +1575,7 @@ Analyst Feedback
 
 ---
 
-# 67. Alert Volume Monitoring
+## 67. Alert Volume Monitoring
 
 Example:
 
@@ -1606,7 +1606,7 @@ Investigate before assuming an attack.
 
 ---
 
-# 68. Detection Health
+## 68. Detection Health
 
 A detection can be logically correct but operationally broken.
 
@@ -1641,7 +1641,7 @@ must both be monitored.
 
 ---
 
-# 69. Detection Drift
+## 69. Detection Drift
 
 Detection drift occurs when the environment changes and the detection becomes less effective.
 
@@ -1659,7 +1659,7 @@ Detections should be periodically reviewed.
 
 ---
 
-# 70. Detection Retirement
+## 70. Detection Retirement
 
 A detection may become obsolete.
 
@@ -1678,7 +1678,7 @@ Retirement should be documented.
 
 ---
 
-# 71. Detection Catalog
+## 71. Detection Catalog
 
 A mature SOC maintains a catalog:
 
@@ -1698,7 +1698,7 @@ Performance
 
 ---
 
-# 72. Detection Ownership
+## 72. Detection Ownership
 
 Each production detection should have an owner.
 
@@ -1724,7 +1724,7 @@ Retire
 
 ---
 
-# 73. Detection Review
+## 73. Detection Review
 
 Review periodically:
 
@@ -1744,7 +1744,7 @@ Does another detection cover the same behavior?
 
 ---
 
-# 74. Detection Naming
+## 74. Detection Naming
 
 Good:
 
@@ -1768,7 +1768,7 @@ Searchable
 
 ---
 
-# 75. Detection Categories
+## 75. Detection Categories
 
 Useful categories:
 
@@ -1790,7 +1790,7 @@ Exfiltration
 
 ---
 
-# 76. Example Detection – Brute Force
+## 76. Example Detection – Brute Force
 
 ```text
 Name:
@@ -1816,7 +1816,7 @@ Users repeatedly entering wrong passwords
 
 ---
 
-# 77. Example Detection – Password Spraying
+## 77. Example Detection – Password Spraying
 
 ```text
 Name:
@@ -1843,7 +1843,7 @@ Example:
 
 ---
 
-# 78. Example Detection – New Admin Account
+## 78. Example Detection – New Admin Account
 
 ```text
 event.action = account_created
@@ -1869,7 +1869,7 @@ Was there a change ticket?
 
 ---
 
-# 79. Example Detection – Privilege Escalation
+## 79. Example Detection – Privilege Escalation
 
 ```text
 Normal User
@@ -1889,7 +1889,7 @@ privileged group
 
 ---
 
-# 80. Example Detection – Suspicious PowerShell
+## 80. Example Detection – Suspicious PowerShell
 
 Potential signals:
 
@@ -1913,7 +1913,7 @@ The exact combination should be validated against the environment.
 
 ---
 
-# 81. Example Detection – Rare Process
+## 81. Example Detection – Rare Process
 
 Baseline:
 
@@ -1942,7 +1942,7 @@ network connection
 
 ---
 
-# 82. Example Detection – Suspicious DNS
+## 82. Example Detection – Suspicious DNS
 
 Signals:
 
@@ -1966,7 +1966,7 @@ But legitimate software can also generate unusual DNS patterns.
 
 ---
 
-# 83. Example Detection – Impossible Travel
+## 83. Example Detection – Impossible Travel
 
 Example:
 
@@ -1995,7 +1995,7 @@ Shared Accounts
 
 ---
 
-# 84. Example Detection – Data Exfiltration
+## 84. Example Detection – Data Exfiltration
 
 Signals:
 
@@ -2017,7 +2017,7 @@ Large Transfer
 
 ---
 
-# 85. Example Detection – Defense Evasion
+## 85. Example Detection – Defense Evasion
 
 Potential signals:
 
@@ -2033,7 +2033,7 @@ This may indicate attempts to weaken visibility.
 
 ---
 
-# 86. Detection Chaining
+## 86. Detection Chaining
 
 Multiple detections can feed a higher-level detection.
 
@@ -2055,7 +2055,7 @@ Possible Account Compromise
 
 ---
 
-# 87. Detection Pyramid
+## 87. Detection Pyramid
 
 A useful conceptual model:
 
@@ -2080,7 +2080,7 @@ Higher layers generally provide more context but may require more data and engin
 
 ---
 
-# 88. Detection Quality Metrics
+## 88. Detection Quality Metrics
 
 Important metrics include:
 
@@ -2099,7 +2099,7 @@ Rule Execution Errors
 
 ---
 
-# 89. Mean Time to Detect
+## 89. Mean Time to Detect
 
 MTTD:
 
@@ -2113,7 +2113,7 @@ Lower is generally better for time-sensitive threats.
 
 ---
 
-# 90. Mean Time to Triage
+## 90. Mean Time to Triage
 
 MTTT can be thought of as:
 
@@ -2127,7 +2127,7 @@ Good alert context can reduce this time.
 
 ---
 
-# 91. Mean Time to Respond
+## 91. Mean Time to Respond
 
 MTTR is commonly used for:
 
@@ -2141,7 +2141,7 @@ Organizations define the exact measurement differently.
 
 ---
 
-# 92. Detection Engineering and SOC
+## 92. Detection Engineering and SOC
 
 Detection engineers:
 
@@ -2165,7 +2165,7 @@ Strong feedback between both roles improves detection quality.
 
 ---
 
-# 93. Analyst Feedback Loop
+## 93. Analyst Feedback Loop
 
 ```text
 Detection
@@ -2189,7 +2189,7 @@ This feedback loop is essential.
 
 ---
 
-# 94. Production Detection Checklist
+## 94. Production Detection Checklist
 
 Before deployment:
 
@@ -2214,11 +2214,11 @@ Before deployment:
 
 ---
 
-# 95. Practical Lab
+## 95. Practical Lab
 
 Build a password-spraying detection.
 
-## Step 1
+### Step 1
 
 Search:
 
@@ -2226,7 +2226,7 @@ Search:
 authentication failures
 ```
 
-## Step 2
+### Step 2
 
 Group by:
 
@@ -2234,7 +2234,7 @@ Group by:
 source.ip
 ```
 
-## Step 3
+### Step 3
 
 Calculate:
 
@@ -2243,7 +2243,7 @@ failure count
 unique users
 ```
 
-## Step 4
+### Step 4
 
 Apply:
 
@@ -2251,7 +2251,7 @@ Apply:
 failure count > threshold
 ```
 
-## Step 5
+### Step 5
 
 Apply:
 
@@ -2259,7 +2259,7 @@ Apply:
 unique users > threshold
 ```
 
-## Step 6
+### Step 6
 
 Apply:
 
@@ -2267,7 +2267,7 @@ Apply:
 time window
 ```
 
-## Step 7
+### Step 7
 
 Test:
 
@@ -2278,17 +2278,17 @@ Password Spray
 Scanner
 ```
 
-## Step 8
+### Step 8
 
 Tune.
 
-## Step 9
+### Step 9
 
 Deploy.
 
 ---
 
-# 96. Detection Development Example
+## 96. Detection Development Example
 
 ```text
 THREAT
@@ -2349,75 +2349,75 @@ MONITOR
 
 ---
 
-# 97. Interview Questions
+## 97. Interview Questions
 
-### What is detection engineering?
+#### What is detection engineering?
 
 > The discipline of designing, testing, deploying, monitoring, and maintaining security detections based on threats, behaviors, telemetry, and investigation requirements.
 
-### What is the difference between a detection and an alert?
+#### What is the difference between a detection and an alert?
 
 > A detection is the logic that identifies suspicious activity; an alert is the operational output generated when that logic matches.
 
-### What is a false positive?
+#### What is a false positive?
 
 > A legitimate event incorrectly identified as suspicious.
 
-### What is a false negative?
+#### What is a false negative?
 
 > Malicious or relevant activity that the detection fails to identify.
 
-### What is detection tuning?
+#### What is detection tuning?
 
 > Modifying detection logic, thresholds, context, or exclusions to improve effectiveness and reduce unnecessary alerts without creating unacceptable visibility gaps.
 
-### What is threshold-based detection?
+#### What is threshold-based detection?
 
 > A detection that triggers when an event count or metric crosses a defined threshold within a specified period.
 
-### What is behavioral detection?
+#### What is behavioral detection?
 
 > A detection based on suspicious activity patterns rather than only matching known indicators.
 
-### What is stateful detection?
+#### What is stateful detection?
 
 > A detection that maintains context across multiple events or over time.
 
-### What is detection coverage?
+#### What is detection coverage?
 
 > The threats, behaviors, or attack techniques that the organization's telemetry and detections can identify.
 
-### Why is detection testing important?
+#### Why is detection testing important?
 
 > To verify that the rule detects intended behavior, avoids common legitimate behavior, and continues working after changes.
 
-### What is detection as code?
+#### What is detection as code?
 
 > Managing detection rules as version-controlled code or configuration with testing, review, deployment, and rollback practices.
 
-### Why should detections have owners?
+#### Why should detections have owners?
 
 > To ensure someone is responsible for maintenance, tuning, testing, and periodic review.
 
-### What is detection drift?
+#### What is detection drift?
 
 > The gradual loss of detection effectiveness as infrastructure, telemetry, applications, or attacker behavior changes.
 
-### What is precision?
+#### What is precision?
 
 > The proportion of generated alerts that are true/relevant positives.
 
-### What is recall?
+#### What is recall?
 
 > The proportion of actual relevant malicious events that the detection successfully identifies.
 
-### How would you reduce false positives?
+#### How would you reduce false positives?
 
 > Analyze legitimate alert sources, add contextual conditions, improve thresholds, use asset/user context, create narrowly scoped exceptions, and continuously validate the detection.
 
 ---
 
-# 98. Quick Revision
+## 98. Quick Revision
 
 ```text
 DETECTION ENGINEERING
@@ -2465,7 +2465,7 @@ RETIREMENT
 
 ---
 
-# 99. Golden Rules
+## 99. Golden Rules
 
 ```text
 1. Start with a threat and behavior, not a random query.
@@ -2511,7 +2511,7 @@ RETIREMENT
 
 ---
 
-# 100. Final Mental Model
+## 100. Final Mental Model
 
 Remember detection engineering as:
 
@@ -2561,7 +2561,7 @@ When was it last tested?
 
 ---
 
-# 101. Chapter Summary
+## 101. Chapter Summary
 
 Detection engineering transforms security knowledge into continuous monitoring capability.
 

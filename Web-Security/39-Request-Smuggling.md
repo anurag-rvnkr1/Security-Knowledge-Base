@@ -1,12 +1,12 @@
 # 39-Request-Smuggling.md
 
-# Part 1 — Introduction to HTTP Request Smuggling, HTTP Message Parsing, Proxy Architecture, and Secure Request Processing
+## Part 1 — Introduction to HTTP Request Smuggling, HTTP Message Parsing, Proxy Architecture, and Secure Request Processing
 
 > **"HTTP Request Smuggling is a class of vulnerabilities that arises when two or more HTTP components interpret the boundaries of the same request differently. Secure systems ensure every component parses requests consistently."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -23,7 +23,7 @@ After completing this part, you will understand:
 
 ---
 
-# What is HTTP Request Smuggling?
+## What is HTTP Request Smuggling?
 
 HTTP Request Smuggling (HRS) is an application-layer vulnerability that can occur when multiple HTTP components disagree about where one request ends and the next begins.
 
@@ -49,7 +49,7 @@ For secure communication, every component should interpret requests in exactly t
 
 ---
 
-# Why Request Parsing Matters
+## Why Request Parsing Matters
 
 Every HTTP request must be interpreted consistently before reaching the application.
 
@@ -77,7 +77,7 @@ Inconsistent parsing between infrastructure components can produce unexpected be
 
 ---
 
-# Modern Enterprise Architecture
+## Modern Enterprise Architecture
 
 Many enterprise applications include multiple HTTP components.
 
@@ -113,7 +113,7 @@ Each component processes HTTP requests before forwarding them.
 
 ---
 
-# HTTP Message Structure
+## HTTP Message Structure
 
 An HTTP request consists of several logical parts.
 
@@ -137,7 +137,7 @@ Each component should identify these sections consistently.
 
 ---
 
-# Example Request Flow
+## Example Request Flow
 
 ```
 Browser
@@ -163,7 +163,7 @@ The request should remain structurally consistent throughout the entire path.
 
 ---
 
-# Reverse Proxy
+## Reverse Proxy
 
 A reverse proxy sits between clients and application servers.
 
@@ -190,7 +190,7 @@ Common responsibilities include:
 
 ---
 
-# Load Balancer
+## Load Balancer
 
 ```
 Clients
@@ -212,7 +212,7 @@ Load balancers distribute incoming requests while preserving protocol correctnes
 
 ---
 
-# Web Application Firewall (WAF)
+## Web Application Firewall (WAF)
 
 ```
 Internet
@@ -230,7 +230,7 @@ A WAF analyzes requests before forwarding them to protected services.
 
 ---
 
-# Why Multiple Components Increase Complexity
+## Why Multiple Components Increase Complexity
 
 ```
 Client
@@ -262,7 +262,7 @@ If implementations differ, request interpretation may also differ.
 
 ---
 
-# Trust Boundary
+## Trust Boundary
 
 ```
 Internet
@@ -280,7 +280,7 @@ All external requests cross one or more trust boundaries before reaching busines
 
 ---
 
-# HTTP Parsing
+## HTTP Parsing
 
 Every HTTP component performs parsing.
 
@@ -304,7 +304,7 @@ Consistent parsing is essential for reliable communication.
 
 ---
 
-# HTTP Request Lifecycle
+## HTTP Request Lifecycle
 
 ```
 Client
@@ -338,7 +338,7 @@ Each stage contributes to secure request handling.
 
 ---
 
-# Request Forwarding
+## Request Forwarding
 
 ```
 Incoming Request
@@ -360,7 +360,7 @@ The forwarded request should preserve protocol correctness.
 
 ---
 
-# Enterprise Deployment Example
+## Enterprise Deployment Example
 
 ```
 Internet
@@ -386,7 +386,7 @@ Distributed architectures rely on consistent protocol interpretation.
 
 ---
 
-# Common Enterprise Components
+## Common Enterprise Components
 
 ```
 Infrastructure
@@ -414,7 +414,7 @@ Each component has a defined responsibility in request processing.
 
 ---
 
-# Secure Request Processing
+## Secure Request Processing
 
 ```
 Receive
@@ -448,7 +448,7 @@ Normalization and validation help ensure consistent request handling.
 
 ---
 
-# Request Integrity
+## Request Integrity
 
 Enterprise systems should preserve:
 
@@ -476,7 +476,7 @@ Application
 
 ---
 
-# Secure Design Principles
+## Secure Design Principles
 
 ```
 Secure Design
@@ -502,7 +502,7 @@ Secure Design
 
 ---
 
-# High-Level Risks
+## High-Level Risks
 
 If request parsing is inconsistent, organizations may experience:
 
@@ -517,7 +517,7 @@ This chapter focuses on understanding the underlying concepts and defensive desi
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A financial services platform receives requests through multiple infrastructure layers.
 
@@ -553,7 +553,7 @@ Every infrastructure component should interpret requests consistently to maintai
 
 ---
 
-# Components Involved
+## Components Involved
 
 ```
 Request Processing
@@ -581,7 +581,7 @@ Request Processing
 
 ---
 
-# Secure Infrastructure Goals
+## Secure Infrastructure Goals
 
 A secure HTTP infrastructure should provide:
 
@@ -594,7 +594,7 @@ A secure HTTP infrastructure should provide:
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw a modern enterprise HTTP request flow.
 2. Identify every infrastructure component that parses requests.
@@ -606,7 +606,7 @@ A secure HTTP infrastructure should provide:
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. What is HTTP Request Smuggling?
 2. Why does request parsing matter?
@@ -621,7 +621,7 @@ A secure HTTP infrastructure should provide:
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Ensure all HTTP infrastructure follows relevant protocol standards.
 - Keep front-end and back-end components compatible and consistently configured.
@@ -633,7 +633,7 @@ A secure HTTP infrastructure should provide:
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming all HTTP components interpret requests identically.
 - Mixing incompatible infrastructure versions without validation.
@@ -644,7 +644,7 @@ A secure HTTP infrastructure should provide:
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - HTTP Request Smuggling is fundamentally a request parsing consistency problem.
 - Modern enterprise applications often include multiple HTTP-processing components.
@@ -652,15 +652,15 @@ A secure HTTP infrastructure should provide:
 - Protocol compliance, validation, normalization, and monitoring improve request integrity.
 - Secure architecture reduces the likelihood of parsing inconsistencies across distributed systems.
 
-# 39-Request-Smuggling.md
+## 39-Request-Smuggling.md
 
-# Part 2 — HTTP Parsing, Request Routing, Protocol Compliance, Infrastructure Consistency, and Defensive Architecture
+## Part 2 — HTTP Parsing, Request Routing, Protocol Compliance, Infrastructure Consistency, and Defensive Architecture
 
 > **"The security of an HTTP infrastructure depends on every intermediary interpreting requests consistently. Uniform parsing, validation, and protocol compliance reduce ambiguity and improve reliability."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -677,7 +677,7 @@ After completing this part, you will understand:
 
 ---
 
-# HTTP Request Processing Lifecycle
+## HTTP Request Processing Lifecycle
 
 Every request passes through multiple processing stages.
 
@@ -717,7 +717,7 @@ Each stage should interpret the request consistently before forwarding it.
 
 ---
 
-# Enterprise Request Flow
+## Enterprise Request Flow
 
 ```
 Internet
@@ -751,7 +751,7 @@ Every intermediary contributes to request processing and overall application sec
 
 ---
 
-# Front-End Server Responsibilities
+## Front-End Server Responsibilities
 
 The front-end infrastructure commonly performs:
 
@@ -781,7 +781,7 @@ The front-end should forward requests in a predictable and standards-compliant m
 
 ---
 
-# Back-End Server Responsibilities
+## Back-End Server Responsibilities
 
 ```
 Back-End
@@ -809,7 +809,7 @@ Application servers assume that incoming requests have already been parsed corre
 
 ---
 
-# Request Routing
+## Request Routing
 
 ```
 Incoming Request
@@ -831,7 +831,7 @@ Routing decisions should be deterministic and based on validated request informa
 
 ---
 
-# Request Normalization
+## Request Normalization
 
 Normalization creates a consistent representation of incoming requests.
 
@@ -855,7 +855,7 @@ Normalization reduces ambiguity before requests reach downstream systems.
 
 ---
 
-# Header Validation
+## Header Validation
 
 Headers influence routing, caching, authentication, and application behavior.
 
@@ -879,7 +879,7 @@ Applications should process only expected and properly formatted headers.
 
 ---
 
-# Request Integrity
+## Request Integrity
 
 A secure infrastructure preserves:
 
@@ -903,7 +903,7 @@ Forward
 
 ---
 
-# Infrastructure Consistency
+## Infrastructure Consistency
 
 All HTTP-processing components should follow compatible parsing behavior.
 
@@ -927,7 +927,7 @@ Configuration consistency reduces operational risk.
 
 ---
 
-# Layered Architecture
+## Layered Architecture
 
 ```
 Internet
@@ -957,7 +957,7 @@ Each layer has clearly defined responsibilities.
 
 ---
 
-# HTTP/1.1 Overview
+## HTTP/1.1 Overview
 
 HTTP/1.1 is a text-based application protocol.
 
@@ -981,7 +981,7 @@ It supports persistent connections and widely deployed infrastructure.
 
 ---
 
-# HTTP/2 Overview
+## HTTP/2 Overview
 
 HTTP/2 improves efficiency through features such as multiplexing and header compression.
 
@@ -1005,7 +1005,7 @@ Infrastructure components should correctly translate and process protocol versio
 
 ---
 
-# Protocol Translation
+## Protocol Translation
 
 Some enterprise deployments include protocol conversion.
 
@@ -1029,7 +1029,7 @@ Translation should preserve protocol correctness and request semantics.
 
 ---
 
-# Reverse Proxy Cluster
+## Reverse Proxy Cluster
 
 ```
 Internet
@@ -1055,7 +1055,7 @@ Clusters should maintain consistent configurations across all nodes.
 
 ---
 
-# API Gateway
+## API Gateway
 
 ```
 Clients
@@ -1081,7 +1081,7 @@ API gateways centralize request handling and policy enforcement.
 
 ---
 
-# Service Mesh
+## Service Mesh
 
 Modern cloud environments may use a service mesh.
 
@@ -1109,7 +1109,7 @@ Service meshes provide secure communication, observability, and traffic manageme
 
 ---
 
-# Cloud Infrastructure
+## Cloud Infrastructure
 
 ```
 Internet
@@ -1135,7 +1135,7 @@ Cloud-native environments introduce additional HTTP-processing layers that requi
 
 ---
 
-# Secure Proxy Configuration
+## Secure Proxy Configuration
 
 Secure proxy deployments should emphasize:
 
@@ -1163,7 +1163,7 @@ Configuration
 
 ---
 
-# Logging
+## Logging
 
 Request-processing stages should be logged appropriately.
 
@@ -1187,7 +1187,7 @@ Logs improve troubleshooting and operational visibility.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1202,7 +1202,7 @@ Sensitive information should be excluded or appropriately protected within logs.
 
 ---
 
-# Monitoring
+## Monitoring
 
 ```
 Applications
@@ -1228,7 +1228,7 @@ Monitoring helps identify abnormal request-processing behavior.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1241,7 +1241,7 @@ Monitoring helps identify abnormal request-processing behavior.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Clients
@@ -1283,7 +1283,7 @@ Each layer contributes to secure and reliable request processing.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A global online retail platform receives millions of requests daily.
 
@@ -1323,7 +1323,7 @@ Every component uses standardized request processing and centralized monitoring 
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -1336,7 +1336,7 @@ Every component uses standardized request processing and centralized monitoring 
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise request-processing pipeline.
 2. Identify every component responsible for parsing HTTP requests.
@@ -1348,7 +1348,7 @@ Every component uses standardized request processing and centralized monitoring 
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is request normalization important?
 2. What responsibilities does a reverse proxy perform?
@@ -1363,7 +1363,7 @@ Every component uses standardized request processing and centralized monitoring 
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain protocol-compliant HTTP infrastructure.
 - Standardize configurations across all proxy instances.
@@ -1376,7 +1376,7 @@ Every component uses standardized request processing and centralized monitoring 
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming all intermediaries parse requests identically.
 - Allowing configuration drift between proxy instances.
@@ -1388,7 +1388,7 @@ Every component uses standardized request processing and centralized monitoring 
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - Enterprise HTTP infrastructures contain multiple request-processing components.
 - Request normalization and consistent parsing improve security and reliability.
@@ -1396,15 +1396,15 @@ Every component uses standardized request processing and centralized monitoring 
 - Standardized configurations and continuous monitoring reduce operational risk.
 - Protocol compliance is fundamental to secure request processing.
 
-# 39-Request-Smuggling.md
+## 39-Request-Smuggling.md
 
-# Part 3 — Detection, Secure Testing, Monitoring, Threat Modeling, Secure SDLC, and Enterprise Defense
+## Part 3 — Detection, Secure Testing, Monitoring, Threat Modeling, Secure SDLC, and Enterprise Defense
 
 > **"The most effective mitigation for HTTP Request Smuggling is ensuring that every HTTP component in the request path interprets requests consistently through standards-compliant implementations, rigorous testing, and continuous monitoring."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this part, you will understand:
 
@@ -1421,7 +1421,7 @@ After completing this part, you will understand:
 
 ---
 
-# Detecting Request Parsing Problems
+## Detecting Request Parsing Problems
 
 Unlike many application vulnerabilities, request parsing inconsistencies often involve interactions between multiple infrastructure components.
 
@@ -1453,7 +1453,7 @@ Detection therefore requires evaluating the complete request-processing path rat
 
 ---
 
-# Security Review Process
+## Security Review Process
 
 Organizations should review every HTTP-processing component.
 
@@ -1481,7 +1481,7 @@ Configuration reviews should verify that components process requests consistentl
 
 ---
 
-# Request Processing Inventory
+## Request Processing Inventory
 
 Before assessing security, document every HTTP component.
 
@@ -1511,7 +1511,7 @@ A complete inventory improves architecture visibility.
 
 ---
 
-# Configuration Consistency
+## Configuration Consistency
 
 Enterprise environments frequently contain multiple instances.
 
@@ -1539,7 +1539,7 @@ Configuration drift can introduce inconsistent behavior and operational risk.
 
 ---
 
-# Architecture Review
+## Architecture Review
 
 Security architects should review:
 
@@ -1569,7 +1569,7 @@ Implementation
 
 ---
 
-# Threat Modeling
+## Threat Modeling
 
 Threat modeling evaluates how request-processing assumptions could affect security.
 
@@ -1597,7 +1597,7 @@ The focus is on identifying architectural weaknesses before deployment.
 
 ---
 
-# Threat Modeling Questions
+## Threat Modeling Questions
 
 During design reviews, organizations should ask:
 
@@ -1623,7 +1623,7 @@ Controls
 
 ---
 
-# Secure HTTP Testing
+## Secure HTTP Testing
 
 Testing should verify that infrastructure behaves consistently under expected operating conditions.
 
@@ -1647,7 +1647,7 @@ Testing should focus on protocol compliance and interoperability.
 
 ---
 
-# Types of Testing
+## Types of Testing
 
 ```
 Testing
@@ -1675,7 +1675,7 @@ Each testing stage contributes to overall reliability.
 
 ---
 
-# Compatibility Testing
+## Compatibility Testing
 
 ```
 HTTP Component A
@@ -1697,7 +1697,7 @@ Compatibility testing helps ensure consistent request handling across infrastruc
 
 ---
 
-# Change Management
+## Change Management
 
 Infrastructure changes should follow controlled processes.
 
@@ -1729,7 +1729,7 @@ This reduces the risk of introducing parsing inconsistencies.
 
 ---
 
-# Secure SDLC
+## Secure SDLC
 
 HTTP infrastructure should be reviewed throughout development and deployment.
 
@@ -1765,7 +1765,7 @@ Security should be integrated throughout the software lifecycle.
 
 ---
 
-# DevSecOps Pipeline
+## DevSecOps Pipeline
 
 ```
 Developer
@@ -1799,7 +1799,7 @@ Infrastructure validation should accompany application testing.
 
 ---
 
-# Logging
+## Logging
 
 Request-processing events should be logged appropriately.
 
@@ -1827,7 +1827,7 @@ Logging supports troubleshooting, auditing, and incident investigations.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -1843,7 +1843,7 @@ Sensitive request data should be appropriately protected or omitted from logs.
 
 ---
 
-# Monitoring Architecture
+## Monitoring Architecture
 
 ```
 Applications
@@ -1873,7 +1873,7 @@ Continuous monitoring helps identify unexpected infrastructure behavior.
 
 ---
 
-# Useful Metrics
+## Useful Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -1886,7 +1886,7 @@ Continuous monitoring helps identify unexpected infrastructure behavior.
 
 ---
 
-# Governance
+## Governance
 
 Organizations should establish standards for HTTP infrastructure.
 
@@ -1916,7 +1916,7 @@ Governance promotes consistency across environments.
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
 Internet
@@ -1958,7 +1958,7 @@ Each layer should be validated as part of the overall security architecture.
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational healthcare platform provides patient services through a cloud-based architecture.
 
@@ -1998,7 +1998,7 @@ The organization performs regular architecture reviews, compatibility testing, a
 
 ---
 
-# Operational Readiness Checklist
+## Operational Readiness Checklist
 
 ```
 ✓ Infrastructure Inventory
@@ -2024,7 +2024,7 @@ The organization performs regular architecture reviews, compatibility testing, a
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2037,7 +2037,7 @@ The organization performs regular architecture reviews, compatibility testing, a
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw the complete HTTP request path for a cloud-native application.
 2. Identify every component responsible for request parsing.
@@ -2049,7 +2049,7 @@ The organization performs regular architecture reviews, compatibility testing, a
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why are request parsing inconsistencies difficult to identify?
 2. What is compatibility testing?
@@ -2064,7 +2064,7 @@ The organization performs regular architecture reviews, compatibility testing, a
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Maintain an inventory of all HTTP-processing components.
 - Standardize configurations across environments.
@@ -2077,7 +2077,7 @@ The organization performs regular architecture reviews, compatibility testing, a
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Reviewing only the application server while ignoring intermediaries.
 - Deploying mixed infrastructure versions without validation.
@@ -2089,7 +2089,7 @@ The organization performs regular architecture reviews, compatibility testing, a
 
 ---
 
-# Key Takeaways
+## Key Takeaways
 
 - HTTP Request Smuggling prevention relies heavily on consistent protocol handling across all infrastructure components.
 - Architecture reviews, compatibility testing, and configuration management are essential defensive practices.
@@ -2097,15 +2097,15 @@ The organization performs regular architecture reviews, compatibility testing, a
 - Monitoring, logging, and governance improve operational visibility and long-term resilience.
 - Secure SDLC and DevSecOps help prevent request-parsing inconsistencies before production.
 
-# 39-Request-Smuggling.md
+## 39-Request-Smuggling.md
 
-# Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
+## Part 4 — Enterprise Governance, Zero Trust, DevSecOps, Incident Response, Security Maturity, and Chapter Summary
 
 > **"HTTP Request Smuggling is prevented not by a single security control, but by ensuring every HTTP-processing component follows consistent, standards-compliant request parsing throughout the entire infrastructure."**
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this final part, you will understand:
 
@@ -2122,7 +2122,7 @@ After completing this final part, you will understand:
 
 ---
 
-# Enterprise Governance
+## Enterprise Governance
 
 HTTP infrastructure should be governed using standardized organizational policies.
 
@@ -2162,7 +2162,7 @@ Governance ensures consistency across development, staging, and production envir
 
 ---
 
-# Governance Framework
+## Governance Framework
 
 ```
 HTTP Infrastructure Governance
@@ -2192,7 +2192,7 @@ Every infrastructure change should follow an approved governance process.
 
 ---
 
-# Configuration Governance
+## Configuration Governance
 
 Organizations should maintain consistent configurations.
 
@@ -2220,7 +2220,7 @@ Configuration drift should be detected and corrected promptly.
 
 ---
 
-# Zero Trust for HTTP Infrastructure
+## Zero Trust for HTTP Infrastructure
 
 Zero Trust principles apply to request processing.
 
@@ -2255,7 +2255,7 @@ Each processing stage independently verifies request integrity.
 
 ---
 
-# Defense in Depth
+## Defense in Depth
 
 HTTP request processing should include multiple security layers.
 
@@ -2295,7 +2295,7 @@ Each layer contributes to overall resilience.
 
 ---
 
-# DevSecOps Integration
+## DevSecOps Integration
 
 Security should be integrated into infrastructure deployment.
 
@@ -2331,7 +2331,7 @@ Infrastructure changes should undergo the same rigorous review as application co
 
 ---
 
-# Infrastructure as Code (IaC)
+## Infrastructure as Code (IaC)
 
 Many organizations manage infrastructure through version-controlled code.
 
@@ -2359,7 +2359,7 @@ IaC improves repeatability, auditing, and change tracking.
 
 ---
 
-# Secure CI/CD Pipeline
+## Secure CI/CD Pipeline
 
 ```
 Developer
@@ -2397,7 +2397,7 @@ Automated validation reduces configuration errors before release.
 
 ---
 
-# Documentation
+## Documentation
 
 Maintain documentation for:
 
@@ -2427,7 +2427,7 @@ Comprehensive documentation supports operations and audits.
 
 ---
 
-# Compliance Considerations
+## Compliance Considerations
 
 Organizations should maintain secure HTTP processing consistent with applicable standards and regulations.
 
@@ -2455,7 +2455,7 @@ Specific compliance obligations depend on industry regulations and organizationa
 
 ---
 
-# Audit Logging
+## Audit Logging
 
 Important infrastructure events should be recorded.
 
@@ -2483,7 +2483,7 @@ Logs provide traceability and operational visibility.
 
 ---
 
-# Important Events
+## Important Events
 
 | Event | Purpose |
 |--------|----------|
@@ -2500,7 +2500,7 @@ Sensitive request data should be appropriately protected or excluded from logs.
 
 ---
 
-# Continuous Monitoring
+## Continuous Monitoring
 
 ```
 Infrastructure
@@ -2526,7 +2526,7 @@ Monitoring enables early detection of infrastructure anomalies.
 
 ---
 
-# Security Metrics
+## Security Metrics
 
 | Metric | Purpose |
 |---------|----------|
@@ -2541,7 +2541,7 @@ Monitoring enables early detection of infrastructure anomalies.
 
 ---
 
-# Security Dashboard
+## Security Dashboard
 
 ```
 HTTP Infrastructure Dashboard
@@ -2569,7 +2569,7 @@ Dashboards provide a centralized view of infrastructure health.
 
 ---
 
-# Security Operations Center (SOC)
+## Security Operations Center (SOC)
 
 ```
 Infrastructure
@@ -2599,7 +2599,7 @@ The SOC correlates infrastructure events with application and network telemetry 
 
 ---
 
-# Incident Response
+## Incident Response
 
 Organizations should prepare response procedures for HTTP infrastructure incidents.
 
@@ -2635,7 +2635,7 @@ Well-defined procedures reduce recovery time and improve resilience.
 
 ---
 
-# Root Cause Analysis
+## Root Cause Analysis
 
 ```
 Incident
@@ -2665,7 +2665,7 @@ Root cause analysis should identify both technical and process improvements.
 
 ---
 
-# Continuous Improvement
+## Continuous Improvement
 
 ```
 Monitoring
@@ -2695,7 +2695,7 @@ Continuous review strengthens long-term infrastructure security.
 
 ---
 
-# Request Smuggling Security Maturity Model
+## Request Smuggling Security Maturity Model
 
 ```
 Level 1
@@ -2732,7 +2732,7 @@ Organizations improve maturity by standardizing configurations, validating infra
 
 ---
 
-# Enterprise Architecture
+## Enterprise Architecture
 
 ```
                     Internet
@@ -2792,7 +2792,7 @@ This layered architecture supports protocol consistency, operational visibility,
 
 ---
 
-# Enterprise Example
+## Enterprise Example
 
 A multinational financial institution operates customer-facing web services through a distributed cloud platform.
 
@@ -2836,7 +2836,7 @@ The organization standardizes HTTP processing across all infrastructure componen
 
 ---
 
-# Enterprise Security Checklist
+## Enterprise Security Checklist
 
 ```
 ✓ HTTP Components Inventoried
@@ -2862,7 +2862,7 @@ The organization standardizes HTTP processing across all infrastructure componen
 
 ---
 
-# Common Enterprise Challenges
+## Common Enterprise Challenges
 
 | Challenge | Recommended Approach |
 |-----------|----------------------|
@@ -2875,9 +2875,9 @@ The organization standardizes HTTP processing across all infrastructure componen
 
 ---
 
-# HTTP Request Smuggling Quick Revision
+## HTTP Request Smuggling Quick Revision
 
-## Request Lifecycle
+### Request Lifecycle
 
 ```
 Client
@@ -2909,7 +2909,7 @@ Application
 
 ---
 
-## Infrastructure Layers
+### Infrastructure Layers
 
 ```
 CDN
@@ -2933,7 +2933,7 @@ Application
 
 ---
 
-## Secure Processing
+### Secure Processing
 
 ```
 Validate
@@ -2957,7 +2957,7 @@ Monitor
 
 ---
 
-## Continuous Improvement
+### Continuous Improvement
 
 ```
 Monitoring
@@ -2977,7 +2977,7 @@ Enhancement
 
 ---
 
-# Hands-on Lab (Conceptual)
+## Hands-on Lab (Conceptual)
 
 1. Draw an enterprise HTTP infrastructure showing every request-processing component.
 2. Identify trust boundaries and request validation stages.
@@ -2989,7 +2989,7 @@ Enhancement
 
 ---
 
-# Interview Questions
+## Interview Questions
 
 1. Why is HTTP Request Smuggling considered an infrastructure issue?
 2. Why is protocol consistency important?
@@ -3004,7 +3004,7 @@ Enhancement
 
 ---
 
-# Best Practices
+## Best Practices
 
 - Use standards-compliant HTTP implementations.
 - Keep front-end and back-end components compatible.
@@ -3018,7 +3018,7 @@ Enhancement
 
 ---
 
-# Common Mistakes
+## Common Mistakes
 
 - Assuming every intermediary parses requests identically.
 - Ignoring protocol compatibility during upgrades.
@@ -3030,7 +3030,7 @@ Enhancement
 
 ---
 
-# Chapter Summary
+## Chapter Summary
 
 In this chapter, you learned:
 
