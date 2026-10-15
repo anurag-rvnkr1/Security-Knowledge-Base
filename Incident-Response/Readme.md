@@ -41,18 +41,18 @@ The objective is to **minimize business impact, preserve evidence, understand wh
 - [What You Will Learn](#what-you-will-learn)
 - [Incident Response Lifecycle](#incident-response-lifecycle)
 - [Chapter Roadmap](#chapter-roadmap)
-- [01 — Incident Response Fundamentals](#01--incident-response-fundamentals)
-- [02 — Incident Response Preparation and Readiness](#02--incident-response-preparation-and-readiness)
-- [03 — Incident Detection Triage and Classification](#03--incident-detection-triage-and-classification)
-- [04 — Incident Analysis and Scoping](#04--incident-analysis-and-scoping)
-- [05 — Containment Strategies](#05--containment-strategies)
-- [06 — Eradication and Recovery](#06--eradication-and-recovery)
-- [07 — Digital Evidence and Forensic Handling](#07--digital-evidence-and-forensic-handling)
-- [08 — Identity Account Compromise and Cloud Incidents](#08--identity-account-compromise-and-cloud-incidents)
-- [09 — Malware Ransomware and Data Breach Response](#09--malware-ransomware-and-data-breach-response)
-- [10 — Network Endpoint and Application Incident Response](#10--network-endpoint-and-application-incident-response)
-- [11 — Incident Response Playbooks and Case Studies](#11--incident-response-playbooks-and-case-studies)
-- [12 — Post-Incident Review Metrics and Continuous Improvement](#12--post-incident-review-metrics-and-continuous-improvement)
+- [01 — Incident Response Fundamentals](#01-incident-response-fundamentals)
+- [02 — Incident Response Preparation and Readiness](#02-incident-response-preparation-and-readiness)
+- [03 — Incident Detection Triage and Classification](#03-incident-detection-triage-and-classification)
+- [04 — Incident Analysis and Scoping](#04-incident-analysis-and-scoping)
+- [05 — Containment Strategies](#05-containment-strategies)
+- [06 — Eradication and Recovery](#06-eradication-and-recovery)
+- [07 — Digital Evidence and Forensic Handling](#07-digital-evidence-and-forensic-handling)
+- [08 — Identity Account Compromise and Cloud Incidents](#08-identity-account-compromise-and-cloud-incidents)
+- [09 — Malware Ransomware and Data Breach Response](#09-malware-ransomware-and-data-breach-response)
+- [10 — Network Endpoint and Application Incident Response](#10-network-endpoint-and-application-incident-response)
+- [11 — Incident Response Playbooks and Case Studies](#11-incident-response-playbooks-and-case-studies)
+- [12 — Post-Incident Review Metrics and Continuous Improvement](#12-post-incident-review-metrics-and-continuous-improvement)
 - [Core Incident Response Skills](#core-incident-response-skills)
 - [Incident Evidence Sources](#incident-evidence-sources)
 - [Incident Severity](#incident-severity)
@@ -236,7 +236,7 @@ Topics include:
 
 ## 03 — Incident Detection Triage and Classification
 
-[`03-Incident-Detection-Triage-and-Classification.md`](./03-Incident-Detection-Triage-and-Classification.md)
+[`03-Incident-Detection,-Triage-and-Classification.md`](./03-Incident-Detection,-Triage-and-Classification.md)
 
 Covers the transition from security alert to confirmed incident.
 
@@ -363,7 +363,7 @@ Topics include:
 
 ## 08 — Identity Account Compromise and Cloud Incidents
 
-[`08-Identity-Account-Compromise-and-Cloud-Incidents.md`](./08-Identity-Account-Compromise-and-Cloud-Incidents.md)
+[`08-Identity,-Account-Compromise,-and-Cloud-Incidents..md`](./08-Identity,-Account-Compromise,-and-Cloud-Incidents..md)
 
 Focuses on modern identity-centric and cloud-based incidents.
 
@@ -393,7 +393,7 @@ Topics include:
 
 ## 09 — Malware Ransomware and Data Breach Response
 
-[`09-Malware-Ransomware-and-Data-Breach-Response.md`](./09-Malware-Ransomware-and-Data-Breach-Response.md)
+[`09-Malware,-Ransomware,-and-Data-Breach-Response.md`](./09-Malware,-Ransomware,-and-Data-Breach-Response.md)
 
 Covers some of the highest-impact incident categories.
 
@@ -422,7 +422,7 @@ Topics include:
 
 ## 10 — Network Endpoint and Application Incident Response
 
-[`10-Network-Endpoint-and-Application-Incident-Response.md`](./10-Network-Endpoint-and-Application-Incident-Response.md)
+[`10-Network,-Endpoint,-and-Application-Incident-Response.md`](./10-Network,-Endpoint,-and-Application-Incident-Response.md)
 
 Covers response across major infrastructure layers.
 
@@ -497,7 +497,7 @@ Lessons Learned
 
 ## 12 — Post-Incident Review Metrics and Continuous Improvement
 
-[`12-Post-Incident-Review-Metrics-and-Continuous-Improvement.md`](./12-Post-Incident-Review-Metrics-and-Continuous-Improvement.md)
+[`12-Post-Incident-Review,-Metrics,-and-Continuous-Improvement.md`](./12-Post-Incident-Review,-Metrics,-and-Continuous-Improvement.md)
 
 Focuses on improving the organization after an incident.
 

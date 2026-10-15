@@ -10,3 +10,4 @@
 - Use blockquotes for short summaries or cautions; do not rely on color alone.
 - Identify assumptions, platform/version dependencies, risk, and expected output.
 - Check that code fences, tables, headings, and links render correctly before submission.
+- Run the repository tests and validator; complex nested link syntax still requires manual review.

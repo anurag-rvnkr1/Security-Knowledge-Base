@@ -1931,4 +1931,3 @@ Application Response
 An **Ingress** provides **declarative Layer 7 routing rules**, while an **Ingress Controller** enforces those rules by acting as a reverse proxy. Together with **Services**, **EndpointSlices**, and **TLS termination**, Ingress enables scalable, secure, and cost-effective exposure of multiple applications through a single external entry point.
 
 ---
-

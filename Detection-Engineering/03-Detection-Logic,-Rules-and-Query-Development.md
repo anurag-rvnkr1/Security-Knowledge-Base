@@ -2592,4 +2592,3 @@ The key principle is:
 > **Good detection logic is not simply complex logic. It is the simplest reliable logic that identifies meaningful malicious behavior while remaining understandable, testable, performant, and maintainable.**
 
 The next chapter moves into **Detection Methodologies & Detection Types**, covering signature, IOC, rule-based, threshold, behavioral, anomaly, statistical, correlation, and hybrid detection approaches.
-```

@@ -118,6 +118,6 @@ https://www.contributor-covenant.org
 
 # Thank You
 
-Thank you for helping make **Cybersecurity Notes** a professional, welcoming, and valuable resource for the global cybersecurity community.
+Thank you for helping make **Security Knowledge Base** a professional, welcoming, and valuable resource for the global cybersecurity community.
 
 Together, we can build a knowledge base that promotes responsible learning, collaboration, and secure technology.

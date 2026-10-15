@@ -1,6 +1,6 @@
 # Security Policy
 
-Thank you for helping keep **Cybersecurity Notes** secure.
+Thank you for helping keep **Security Knowledge Base** secure.
 
 This repository is an educational knowledge base focused on defensive cybersecurity, secure engineering, and responsible security research. While it primarily contains documentation and reference material, we take the integrity of the repository and any supporting code or examples seriously.
 
@@ -146,4 +146,4 @@ Nothing in this policy is intended to discourage legitimate security research co
 
 We sincerely appreciate members of the cybersecurity community who responsibly report issues and help improve the quality and security of this repository.
 
-Thank you for helping make **Cybersecurity Notes** a trusted learning resource for everyone.
+Thank you for helping make **Security Knowledge Base** a trusted learning resource for everyone.

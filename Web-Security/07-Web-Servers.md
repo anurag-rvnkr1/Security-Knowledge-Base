@@ -3631,6 +3631,3 @@ In this chapter, you learned:
 - Common web server attacks, monitoring strategies, incident response workflows, and troubleshooting techniques.
 
 A strong understanding of web servers is essential for web developers, DevOps engineers, system administrators, penetration testers, SOC analysts, and cybersecurity professionals because every web application ultimately depends on secure and reliable web server infrastructure.
-
-
-```

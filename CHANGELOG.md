@@ -13,11 +13,22 @@ The format follows the principles of **Keep a Changelog** and adheres to **Seman
 
 ## Added
 
-* Future documentation improvements.
-* New cybersecurity learning modules.
-* Additional practical labs.
-* Expanded detection engineering content.
-* Community contributions.
+* Deterministic Markdown title extraction, generated learning-path destinations, and a full-text search index.
+* Regression tests for title parsing, search/catalogue correspondence, Markdown links, fragments, and generated heading IDs.
+* A repository validator and CI workflow for local-link, asset, JSON, fence, and generated-output checks.
+* Accessible search results and a keyboard-operable document reader with history and focus handling.
+
+## Changed
+
+* The catalogue now includes repository documentation and root Markdown alongside topical collections; generated counts remain source-derived.
+* Search is lazy-loaded and ranks title and heading matches above incidental body matches.
+* The learning-path guide links to real starting chapters and matches the generated site paths.
+
+## Fixed
+
+* Corrected malformed filename-derived titles, local chapter links, and Incident Response heading fragments.
+* Removed stray and unbalanced code fences from affected chapters.
+* Replaced an unresolved citation-export marker with a link to the MITRE ATT&CK knowledge base.
 
 ---
 

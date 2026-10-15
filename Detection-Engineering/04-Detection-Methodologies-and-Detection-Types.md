@@ -2335,4 +2335,3 @@ The key lesson is:
 > **Detection engineering is not about choosing the most sophisticated detection method. It is about choosing the appropriate method—or combination of methods—for the threat, telemetry, environment, and operational objective.**
 
 The next chapter focuses specifically on **IOC, Signature & Indicator-Based Detection**, including indicator types, matching strategies, threat-intelligence integration, IOC lifecycle, freshness, confidence, false positives, and the limitations of indicator-driven detection.
-```

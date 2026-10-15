@@ -2813,4 +2813,3 @@ Modern authentication extends far beyond usernames and passwords. Organizations 
 
 
 **Next Chapter:** 26-Software-and-Data-Integrity-Failures.md
-```

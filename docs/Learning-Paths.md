@@ -1,51 +1,52 @@
 # Learning Paths
 
-Paths are recommendations, not prerequisites. Use chapter depth appropriate to prior experience.
+These are suggested reading sequences, not prerequisites or certification
+claims. The portal uses the same ordered chapter destinations to render its
+learning-path cards; keep `LEARNING_PATHS` and `LEARNING_PATH_STARTS` in
+`scripts/build-content-index.py` aligned with this guide when paths change.
 
 ## Cybersecurity Fundamentals
 
-```text
-Networking → Linux → Windows → Web Security → Cryptography
-```
-
-Links: [Networking](../Networking/), [Linux](../Linux/), [Windows](../Windows/), [Web Security](../Web-Security/), [Cryptography](../Cryptography/).
+1. [Networking Fundamentals](../Networking/01-Networking-Fundamentals.md)
+2. [Linux Fundamentals](../Linux/01-Linux-Fundamentals.md)
+3. [Windows Fundamentals](../Windows/01-Windows-Fundamentals.md)
+4. [Introduction to Web Security](../Web-Security/01-Introduction-to-Web-Security.md)
+5. [Cryptography Fundamentals](../Cryptography/01-Cryptography-Fundamentals.md)
 
 ## SOC Analyst
 
-```text
-Networking → Windows → SIEM → Detection Engineering → Threat Hunting → Incident Response
-```
-
-Links: [SIEM](../SIEM/), [Detection Engineering](../Detection-Engineering/), [Threat Hunting](../Threat-Hunting/), [Incident Response](../Incident-Response/).
+1. [Networking Fundamentals](../Networking/01-Networking-Fundamentals.md)
+2. [Windows Fundamentals](../Windows/01-Windows-Fundamentals.md)
+3. [SIEM Fundamentals and Security Monitoring](../SIEM/01-SIEM-Fundamentals-and-Security-Monitoring.md)
+4. [Detection Engineering Fundamentals](../Detection-Engineering/01-Detection-Engineering-Fundamentals.md)
+5. [Threat Hunting Fundamentals](../Threat-Hunting/01-Threat-Hunting-Fundamentals.md)
+6. [Incident Response Fundamentals](../Incident-Response/01-Incident-Response-Fundamentals.md)
 
 ## Blue Team
 
-```text
-Windows → Endpoint Security → SIEM → Detection Engineering → Threat Hunting → Incident Response → Digital Forensics
-```
-
-Links: [Endpoint Security](../Endpoint-Security/), [Digital Forensics](../Digital-Forensics/).
+1. [Windows Fundamentals](../Windows/01-Windows-Fundamentals.md)
+2. [Endpoint Security Fundamentals](../Endpoint-Security/01-Endpoint-Security-Fundamentals.md)
+3. [SIEM Fundamentals and Security Monitoring](../SIEM/01-SIEM-Fundamentals-and-Security-Monitoring.md)
+4. [Detection Engineering Fundamentals](../Detection-Engineering/01-Detection-Engineering-Fundamentals.md)
+5. [Threat Hunting Fundamentals](../Threat-Hunting/01-Threat-Hunting-Fundamentals.md)
+6. [Incident Response Fundamentals](../Incident-Response/01-Incident-Response-Fundamentals.md)
+7. [Digital Forensics Fundamentals](../Digital-Forensics/01-Digital-Forensics-Fundamentals.md)
 
 ## Application Security
 
-```text
-OWASP → Web Security → API Security → DevSecOps
-```
-
-Links: [OWASP](../OWASP/), [Web Security](../Web-Security/), [API Security](../API-Security/), [DevSecOps](../DevSecOps/).
+1. [OWASP overview](../OWASP/README.md)
+2. [Introduction to Web Security](../Web-Security/01-Introduction-to-Web-Security.md)
+3. [Introduction to APIs](../API-Security/01-Introduction-to-API.md)
+4. [DevSecOps Fundamentals](../DevSecOps/01-DevSecOps-Fundamentals.md)
 
 ## Cloud Security
 
-```text
-Cloud fundamentals → IAM → Network and workload controls → Logging → Incident response
-```
-
-Links: [Cloud Security](../Cloud-Security/), [IAM](../Identity-and-Access-Management/), [Incident Response](../Incident-Response/).
+1. [Introduction to Cloud Security](../Cloud-Security/01-Introduction-to-Cloud-Security.md)
+2. [IAM Fundamentals](../Identity-and-Access-Management/01-IAM-Fundamentals.md)
+3. [Incident Response Fundamentals](../Incident-Response/01-Incident-Response-Fundamentals.md)
 
 ## DFIR
 
-```text
-Operating system artifacts → Evidence handling → Timeline analysis → Incident response
-```
-
-Links: [Digital Forensics](../Digital-Forensics/), [Incident Response](../Incident-Response/), [Malware Analysis](../Malware-Analysis/).
+1. [Digital Forensics Fundamentals](../Digital-Forensics/01-Digital-Forensics-Fundamentals.md)
+2. [Incident Response Fundamentals](../Incident-Response/01-Incident-Response-Fundamentals.md)
+3. [Malware Analysis Fundamentals](../Malware-Analysis/01-Malware-Analysis-Fundamentals.md)

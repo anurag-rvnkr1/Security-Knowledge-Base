@@ -18,5 +18,7 @@ This section defines how to write, review, and navigate knowledge-base content. 
 - [Security Research Methodology](./Security-Research-Methodology.md)
 - [Responsible Use](./Responsible-Use.md)
 - [Contribution Workflow](./Contribution-Workflow.md)
+- [GitHub Pages Deployment](./DEPLOYMENT.md)
+- [Troubleshooting](./TROUBLESHOOTING.md)
 
 Related sections: [CTF Writeups](../CTF-Writeups/), [Labs](../Labs/), [Cheatsheets](../Cheatsheets/), [Resources](../Resources/), [Assets](../assets/).

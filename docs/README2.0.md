@@ -43,7 +43,7 @@ Security-Knowledge-Base/
 
 ## Learning Paths
 
-Existing guidance connects Cybersecurity Fundamentals, SOC Analyst, Blue Team, Application Security, Cloud Security, and DFIR paths. See [docs/Learning-Paths.md](docs/Learning-Paths.md).
+Existing guidance connects Cybersecurity Fundamentals, SOC Analyst, Blue Team, Application Security, Cloud Security, and DFIR paths. See [Learning Paths](./Learning-Paths.md).
 
 ## Website Architecture
 
@@ -75,7 +75,18 @@ When Markdown files are added, removed, or renamed, run from the repository root
 python scripts/build-content-index.py
 ```
 
-Review `site/content.json`, then commit it with the source changes. The script uses only the Python standard library and preserves spaces and punctuation in real repository paths.
+The builder produces `site/content.json` and the full-text `site/search-index.json`. Review and commit both with the source changes; do not edit generated JSON directly.
+
+## Automated checks
+
+The standard-library tests, generated-output comparison, Markdown/link validator, and JavaScript syntax check run locally and in the validation workflow:
+
+```bash
+python -m unittest discover -s tests -v
+python scripts/build-content-index.py --check
+python scripts/validate-knowledge-base.py
+node --check assets/js/app.js
+```
 
 ## Local Testing
 
@@ -97,11 +108,11 @@ Do not use a `file://` URL because the site uses browser `fetch()` for its conte
 
 ## Responsible Use
 
-Security testing and offensive techniques are intended only for authorized labs, CTF environments, controlled research, defensive testing, and systems where permission exists. Read [docs/Responsible-Use.md](docs/Responsible-Use.md).
+Security testing and offensive techniques are intended only for authorized labs, CTF environments, controlled research, defensive testing, and systems where permission exists. Read [Responsible Use](./Responsible-Use.md).
 
 ## Contributing
 
-See [Contributing.md](Contributing.md) and the documentation guides under [docs/](docs/).
+See [Contributing.md](../Contributing.md) and the documentation guides under [the docs directory](./).
 
 ## Roadmap
 
@@ -113,7 +124,7 @@ See [Contributing.md](Contributing.md) and the documentation guides under [docs/
 
 ## License
 
-[MIT License](LICENSE)
+[MIT License](../LICENSE)
 
 ## Disclaimer
 

@@ -1888,5 +1888,3 @@ In this chapter, you learned:
 - Security mindset and learning roadmap
 
 This chapter establishes the foundation for the rest of the handbook. The next chapter explains **how the web actually works**, starting from entering a URL in a browser and following every step until a webpage is rendered. Understanding this process is essential before learning about web vulnerabilities and defenses.
- 
-```

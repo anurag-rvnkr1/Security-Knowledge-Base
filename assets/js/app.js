@@ -1,28 +1,678 @@
 (() => {
-'use strict';
-const REPO='anurag-rvnkr1/Security-Knowledge-Base',BRANCH='main',RAW=`https://raw.githubusercontent.com/${REPO}/${BRANCH}/`;
-const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const state={data:null,docs:[],category:'',query:''};
-const names={"API-Security":"API Security","Active-Directory":"Active Directory","CTF-Writeups":"CTF Writeups","Cheatsheets":"Cheatsheets","Cloud-Security":"Cloud Security","Containers":"Containers","Cryptography":"Cryptography","Detection-Engineering":"Detection Engineering","DevSecOps":"DevSecOps","Digital-Forensics":"Digital Forensics","Email-Security":"Email Security","Endpoint-Security":"Endpoint Security","Identity-and-Access-Management":"Identity and Access Management","Incident-Response":"Incident Response","Kubernetes":"Kubernetes","Labs":"Labs","Linux":"Linux","MITRE-ATTACK":"MITRE ATT&CK","Malware-Analysis":"Malware Analysis","Network-Security":"Network Security","Networking":"Networking","OSINT":"OSINT","OWASP":"OWASP","Resources":"Resources","Reverse-Engineering":"Reverse Engineering","SIEM":"SIEM","SOC":"SOC","Security-Architecture":"Security Architecture","Security-Automation":"Security Automation","Threat-Hunting":"Threat Hunting","Threat-Intelligence":"Threat Intelligence","Vulnerability-Management":"Vulnerability Management","Web-Security":"Web Security","Windows":"Windows","assets":"Assets","docs":"Documentation"};
-const desc={"API-Security":"API architecture, authentication, authorization, testing and monitoring.","Active-Directory":"Directory architecture, administration, security and blue-team practices.","CTF-Writeups":"Hands-on challenge writeups organized by security domain.","Cheatsheets":"Compact technical references for security workflows and tools.","Cloud-Security":"Cloud security concepts, controls, architecture and monitoring.","Containers":"Container architecture, security, hardening and runtime concepts.","Cryptography":"Cryptographic foundations, algorithms, protocols and applied security.","Detection-Engineering":"Telemetry, detection logic, validation, tuning and lifecycle practices.","DevSecOps":"Security integrated into development, CI/CD and software delivery.","Digital-Forensics":"Forensic evidence, artifacts, analysis and investigation workflows.","Email-Security":"Email threats, authentication, phishing analysis and defensive controls.","Endpoint-Security":"Endpoint visibility, hardening, monitoring and protection.","Identity-and-Access-Management":"Identity, authentication, authorization, access control and governance.","Incident-Response":"Incident preparation, triage, containment, recovery and investigation.","Kubernetes":"Kubernetes architecture, operations and cloud-native security.","Labs":"Controlled hands-on security exercises and practical worksheets.","Linux":"Linux administration, security, monitoring and defensive operations.","MITRE-ATTACK":"ATT&CK tactics, techniques, mapping and defensive context.","Malware-Analysis":"Malware analysis workflows, artifacts and defensive investigation.","Network-Security":"Network protection, monitoring, architecture and defensive controls.","Networking":"Networking fundamentals underpinning security operations.","OSINT":"Open-source intelligence collection, analysis and research workflows.","OWASP":"Application-security guidance, vulnerabilities and defensive practices.","Resources":"Courses, tools, standards, research and learning references.","Reverse-Engineering":"Reverse-engineering concepts and technical analysis.","SIEM":"Security monitoring, telemetry, analysis, detection and operations.","SOC":"Security operations, triage, alert handling and analyst workflows.","Security-Architecture":"Security architecture, design principles, controls and planning.","Security-Automation":"Automation patterns for repeatable security operations.","Threat-Hunting":"Hypothesis-driven hunting, telemetry, analysis and investigation.","Threat-Intelligence":"Threat intelligence collection, enrichment, analysis and use.","Vulnerability-Management":"Discovery, assessment, prioritization, remediation and lifecycle management.","Web-Security":"Web application security, vulnerabilities, testing and defensive practices.","Windows":"Windows administration, logging, security and hardening."};
-const counts={"API-Security":29,"Active-Directory":30,"CTF-Writeups":13,"Cheatsheets":31,"Cloud-Security":40,"Containers":21,"Cryptography":14,"Detection-Engineering":17,"DevSecOps":7,"Digital-Forensics":11,"Email-Security":7,"Endpoint-Security":7,"Identity-and-Access-Management":7,"Incident-Response":13,"Kubernetes":90,"Labs":24,"Linux":28,"MITRE-ATTACK":7,"Malware-Analysis":11,"Network-Security":7,"Networking":27,"OSINT":7,"OWASP":11,"Resources":23,"Reverse-Engineering":1,"SIEM":17,"SOC":7,"Security-Architecture":7,"Security-Automation":7,"Threat-Hunting":16,"Threat-Intelligence":7,"Vulnerability-Management":7,"Web-Security":68,"Windows":30};
-function human(s){return String(s).replace(/[-_]+/g,' ').replace(/^\d+\s*/,'').replace(/\bapi\b/gi,'API').replace(/\bmitre\b/gi,'MITRE').replace(/\bowasp\b/gi,'OWASP').replace(/\bosint\b/gi,'OSINT').replace(/\bsiem\b/gi,'SIEM').replace(/\bsoc\b/gi,'SOC').replace(/\biam\b/gi,'IAM').replace(/\b\w/g,c=>c.toUpperCase())}
-function docUrl(p){return 'index.html?doc='+encodeURIComponent(p)}
-function rawUrl(p){return RAW+p.split('/').map(encodeURIComponent).join('/')}
-function ghUrl(p){return `https://github.com/${REPO}/blob/${BRANCH}/`+p.split('/').map(encodeURIComponent).join('/')}
-function cat(path){return state.data.categories.find(c=>c.path&&path.startsWith(c.path+'/'))||state.data.categories.find(c=>c.path===path)||state.data.categories[0]}
-function icon(n){return ({api:'API',network:'NET',flag:'CTF',terminal:'CLI',cloud:'☁',box:'BOX',key:'KEY',radar:'DET',git:'GIT',search:'DFIR',mail:'MAIL',monitor:'END',identity:'IAM',alert:'IR',cube:'K8S',flask:'LAB',target:'ATT',bug:'MAL',shield:'SEC',eye:'OSINT',book:'DOC',code:'REV',activity:'SIEM',soc:'SOC',architecture:'ARCH',automation:'AUTO',hunt:'HUNT',intel:'TI',scan:'VM',globe:'WEB',windows:'WIN'})[n]||'DOC'}
-async function loadIndex(){const r=await fetch('site/content.json',{cache:'no-cache'});if(!r.ok)throw Error('content index '+r.status);state.data=await r.json();if(state.data.categories.some(c=>c.documents?.length)){state.docs=state.data.categories.flatMap(c=>c.documents.map(d=>({...d,category:c})));return}await enrichFromGitHub()}
-async function enrichFromGitHub(){const r=await fetch(`https://api.github.com/repos/${REPO}/git/trees/${BRANCH}?recursive=1`);if(!r.ok)throw Error('GitHub tree '+r.status);const tree=(await r.json()).tree.filter(x=>x.type==='blob'&&/\.md$/i.test(x.path));const by={};for(const x of tree){const root=x.path.includes('/')?x.path.split('/')[0]:'';(by[root]??=[]).push(x.path)}const categories=Object.keys(by).map(p=>({name:names[p]||human(p)||'Repository Documentation',path:p,description:desc[p]||'Repository documentation and reference material.',icon:'book',documents:by[p].map(path=>({title:human(path.split('/').pop().replace(/\.md$/i,'')),path,kind:/template/i.test(path)?'template':'document'}))}));state.data.categories=categories;state.docs=categories.flatMap(c=>c.documents.map(d=>({...d,category:c})));}
-function render(){const cats=state.data.categories.filter(c=>c.path);const lab=cats.find(c=>c.path==='Labs'),ctf=cats.find(c=>c.path==='CTF-Writeups'),cheat=cats.find(c=>c.path==='Cheatsheets');const stats=[[cats.length,'Knowledge Domains'],[state.docs.length,'Markdown Documents'],[lab?.documents.length||0,'Labs'],[ctf?.documents.length||0,'CTF Documents'],[cheat?.documents.length||0,'Cheatsheets']];$('#stats').innerHTML=stats.map(x=>`<div class="stat"><strong>${x[0]}</strong><small>${x[1]}</small></div>`).join('');$('#termstats').innerHTML=stats.slice(0,4).map(x=>`<div class="termstat"><strong>${x[0]}</strong><small>${x[1]}</small></div>`).join('');$('#filter').innerHTML='<option value="">All domains</option>'+cats.map(c=>`<option value="${esc(c.path)}">${esc(c.name)}</option>`).join('');renderDomains();const list=(c,n=7)=>c?.documents.slice(0,n).map(d=>`<div class="item"><a href="${docUrl(d.path)}">${esc(d.title)}</a><small>${esc(d.path.split('/').slice(0,-1).join(' / '))}</small></div>`).join('')||'<div class="empty">No indexed documents.</div>';$('#labsPanel').innerHTML=list(lab);$('#ctfPanel').innerHTML=list(ctf);$('#cheatPanel').innerHTML=(cheat?.documents||[]).slice(0,12).map(d=>`<a href="${docUrl(d.path)}"><b>${esc(d.title)}</b><span>Open source document →</span></a>`).join('');const paths=[['Cybersecurity Fundamentals',['Networking','Linux','Windows','Web Security','Cryptography']],['SOC Analyst',['Networking','Windows','SIEM','Detection Engineering','Threat Hunting','Incident Response']],['Blue Team',['Windows','Endpoint Security','SIEM','Detection Engineering','Threat Hunting','Incident Response','Digital Forensics']],['Application Security',['OWASP','Web Security','API Security','DevSecOps']],['Cloud Security',['Cloud Security','Identity and Access Management','Incident Response']],['DFIR',['Digital Forensics','Incident Response','Malware Analysis']]];$('#paths').innerHTML=paths.map(p=>`<div class="path"><h3>${p[0]}</h3>${p[1].filter(s=>cats.some(c=>c.name===s)).map(s=>`<span class="step">${esc(s)}</span>`).join('<span class="step">→</span>')}</div>`).join('')}
-function renderDomains(){const q=($('#domainSearch').value||'').toLowerCase();const cats=state.data.categories.filter(c=>c.path&&(!state.category||c.path===state.category)&&(!q||(c.name+' '+c.description+' '+c.documents.map(d=>d.title).join(' ')).toLowerCase().includes(q)));$('#domainsGrid').innerHTML=cats.length?cats.map(c=>`<article class="card"><div class="icon">${icon(c.icon)}</div><h3>${esc(c.name)}</h3><p>${esc(c.description)}</p><div class="cardfoot"><span>${c.documents.length} documents</span><a href="${c.documents[0]?docUrl(c.documents[0].path):'#'}">Explore →</a></div></article>`).join(''):'<div class="empty">No domains match the current filter.</div>'}
-function route(){const p=new URLSearchParams(location.search).get('doc');if(p)openDoc(p)}
-async function openDoc(path){$('#viewer').hidden=false;document.body.style.overflow='hidden';const c=cat(path);$('#meta').innerHTML=`<div class="metaTitle">${esc(human(path.split('/').pop().replace(/\.md$/i,'')))}</div><div class="metaCat">${esc(c?.name||'Document')}</div>`;$('#crumb').textContent=(c?.name||'Document')+' / '+human(path.split('/').pop().replace(/\.md$/i,''));$('#source').href=ghUrl(path);$('#article').innerHTML='<div class="loading">Loading knowledge node…</div>';try{const r=await fetch(rawUrl(path));if(!r.ok)throw Error(r.status);const md=await r.text();$('#article').innerHTML=DOMPurify.sanitize(marked.parse(md),{USE_PROFILES:{html:true}});rewrite(path);toc();copy();nav(path)}catch(e){$('#article').innerHTML=`<div class="empty"><h2>Signal Lost</h2><p>Requested knowledge node could not be loaded.</p><a href="${ghUrl(path)}" target="_blank" rel="noopener">Open source on GitHub</a></div>`}history.replaceState({doc:path},'',docUrl(path));$('#close').focus()}
-function rewrite(path){const base=path.includes('/')?path.slice(0,path.lastIndexOf('/')+1):'';$('#article').querySelectorAll('img').forEach(i=>{const s=i.getAttribute('src');if(s&&!/^(https?:|data:|\/)/i.test(s))i.src=rawUrl(base+s.replace(/^\.\//,''));i.loading='lazy'});$('#article').querySelectorAll('a').forEach(a=>{const h=a.getAttribute('href');if(h&&/\.md(?:#.*)?$/i.test(h)&&!/^https?:/i.test(h)){const [p,hash]=h.split('#');a.href=docUrl(base+p)+(hash?'#'+hash:'')}})}
-function toc(){const hs=[...$('#article').querySelectorAll('h2,h3')];$('#toc').innerHTML=hs.length?hs.map(h=>{h.id=h.id||human(h.textContent).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');return `<a class="l${h.tagName[1]}" href="#${encodeURIComponent(h.id)}">${esc(h.textContent)}</a>`}).join(''):'<span class="muted">No section headings.</span>'}
-function copy(){$('#article').querySelectorAll('pre').forEach(p=>{const b=document.createElement('button');b.className='copy';b.textContent='Copy';b.onclick=async()=>{await navigator.clipboard.writeText(p.querySelector('code')?.innerText||'');b.textContent='Copied';toast('Code copied');setTimeout(()=>b.textContent='Copy',1000)};p.appendChild(b)})}
-function nav(path){const i=state.docs.findIndex(d=>d.path===path),a=state.docs[i-1],b=state.docs[i+1];$('#docnav').innerHTML=(a?`<a href="${docUrl(a.path)}"><small>← PREVIOUS</small>${esc(a.title)}</a>`:'<span></span>')+(b?`<a href="${docUrl(b.path)}"><small>NEXT →</small>${esc(b.title)}</a>`:'<span></span>')}
-function close(){history.replaceState({},'',location.pathname);$('#viewer').hidden=true;document.body.style.overflow=''}function toast(s){const t=$('#toast');t.textContent=s;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1200)}
-function events(){$('#search').onkeydown=e=>{if(e.key==='Enter'){$('#domainSearch').value=e.target.value;state.query=e.target.value;location.hash='domains';renderDomains()}};$('#domainSearch').oninput=e=>{state.query=e.target.value;renderDomains()};$('#filter').onchange=e=>{state.category=e.target.value;renderDomains()};$('#close').onclick=close;$('#tocbtn').onclick=()=>$('#sidebar').style.display=$('#sidebar').style.display==='block'?'none':'block';$('#menu').onclick=()=>{$('#nav').classList.toggle('open');$('#menu').setAttribute('aria-expanded',$('#nav').classList.contains('open'))};document.onkeydown=e=>{if(e.key==='/'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){e.preventDefault();$('#search').focus()}};window.onpopstate=route}
-(async()=>{try{await loadIndex();render();events();route()}catch(e){console.error(e);$('#main').innerHTML='<section class="section shell"><div class="empty"><h2>Knowledge index unavailable</h2><p>Check site/content.json and GitHub Pages deployment.</p></div></section>'}})();
+  'use strict';
+
+  const REPO = 'anurag-rvnkr1/Security-Knowledge-Base';
+  const BRANCH = 'main';
+  const HOME_TITLE = 'Security Knowledge Base | Cybersecurity Documentation Portal';
+  const HOME_DESCRIPTION = document.querySelector('meta[name="description"]')?.content || '';
+  const $ = (selector, scope = document) => scope.querySelector(selector);
+  const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+  const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
+  const stopWords = new Set([
+    'a', 'about', 'after', 'all', 'also', 'an', 'and', 'any', 'are', 'as', 'at',
+    'be', 'because', 'been', 'before', 'between', 'both', 'but', 'by', 'can',
+    'could', 'did', 'do', 'does', 'each', 'for', 'from', 'had', 'has', 'have',
+    'how', 'if', 'in', 'into', 'is', 'it', 'its', 'may', 'more', 'most', 'must',
+    'not', 'of', 'on', 'one', 'or', 'our', 'over', 'should', 'such', 'than',
+    'that', 'the', 'their', 'them', 'then', 'there', 'these', 'they', 'this',
+    'those', 'through', 'to', 'under', 'up', 'use', 'used', 'using', 'was',
+    'we', 'were', 'what', 'when', 'where', 'which', 'while', 'who', 'will',
+    'with', 'you', 'your'
+  ]);
+  const state = {
+    catalogue: null,
+    docs: [],
+    category: '',
+    searchIndex: null,
+    searchPromise: null,
+    searchSequence: 0,
+    routeSequence: 0,
+    abortController: null,
+    currentPath: '',
+    opener: null,
+    wasReaderOpen: false
+  };
+
+  function docURL(path, fragment = '') {
+    const url = new URL('index.html', document.baseURI);
+    url.searchParams.set('doc', path);
+    if (fragment) url.hash = fragment;
+    return `${url.pathname}${url.search}${url.hash}`;
+  }
+
+  function githubURL(path) {
+    return `https://github.com/${REPO}/blob/${BRANCH}/` +
+      path.split('/').map(encodeURIComponent).join('/');
+  }
+
+  function githubTreeURL(path) {
+    return `https://github.com/${REPO}/tree/${BRANCH}/` +
+      path.split('/').filter(Boolean).map(encodeURIComponent).join('/');
+  }
+
+  function localPath(path) {
+    return path.split('/').map(encodeURIComponent).join('/');
+  }
+
+  function categoryFor(path) {
+    return state.docs.find(doc => doc.path === path)?.category ||
+      state.catalogue.categories.find(category =>
+        path === category.path || path.startsWith(`${category.path}/`)
+      );
+  }
+
+  function iconFor(name) {
+    const icons = {
+      'API-Security': 'API', 'Active-Directory': 'AD', 'CTF-Writeups': 'CTF',
+      Cheatsheets: 'REF', 'Cloud-Security': 'CLOUD', Containers: 'BOX',
+      Cryptography: 'KEY', 'Detection-Engineering': 'DET', DevSecOps: 'CI',
+      'Digital-Forensics': 'DFIR', 'Email-Security': 'MAIL',
+      'Endpoint-Security': 'END', 'Identity-and-Access-Management': 'IAM',
+      'Incident-Response': 'IR', Kubernetes: 'K8S', Labs: 'LAB', Linux: 'NIX',
+      'MITRE-ATTACK': 'ATT&CK', 'Malware-Analysis': 'MAL',
+      'Network-Security': 'NET', Networking: 'NET', OSINT: 'OSINT',
+      OWASP: 'APPSEC', Resources: 'DOC', 'Reverse-Engineering': 'REV',
+      SIEM: 'SIEM', SOC: 'SOC', 'Security-Architecture': 'ARCH',
+      'Security-Automation': 'AUTO', 'Threat-Hunting': 'HUNT',
+      'Threat-Intelligence': 'TI', 'Vulnerability-Management': 'VM',
+      'Web-Security': 'WEB', Windows: 'WIN'
+    };
+    return icons[name] || 'DOC';
+  }
+
+  async function loadCatalogue() {
+    const response = await fetch('site/content.json', { cache: 'no-cache' });
+    if (!response.ok) throw new Error(`Catalogue request failed (${response.status})`);
+    const catalogue = await response.json();
+    if (catalogue.version !== 2 || !Array.isArray(catalogue.categories)) {
+      throw new Error('Catalogue schema is missing or outdated.');
+    }
+    state.catalogue = catalogue;
+    state.docs = catalogue.categories.flatMap(category =>
+      category.documents.map(doc => ({ ...doc, category }))
+    );
+  }
+
+  function render() {
+    const categories = state.catalogue.categories;
+    const find = path => categories.find(category => category.path === path);
+    const labs = find('Labs');
+    const ctf = find('CTF-Writeups');
+    const cheatsheets = find('Cheatsheets');
+    const stats = [
+      [categories.length, 'Knowledge Domains'],
+      [state.docs.length, 'Markdown Documents'],
+      [labs?.documents.length || 0, 'Labs'],
+      [ctf?.documents.length || 0, 'CTF Documents'],
+      [cheatsheets?.documents.length || 0, 'Cheatsheets']
+    ];
+    $('#stats').innerHTML = stats.map(([value, label]) =>
+      `<div class="stat"><strong>${value}</strong><small>${escapeHTML(label)}</small></div>`
+    ).join('');
+    $('#termstats').innerHTML = stats.slice(0, 4).map(([value, label]) =>
+      `<div class="termstat"><strong>${value}</strong><small>${escapeHTML(label)}</small></div>`
+    ).join('');
+
+    const selectable = categories.filter(category => category.documents.length);
+    $('#filter').innerHTML = '<option value="">All domains</option>' +
+      selectable.map(category =>
+        `<option value="${escapeHTML(category.path)}">${escapeHTML(category.name)}</option>`
+      ).join('');
+    renderDomains();
+
+    const list = category => category?.documents.slice(0, 7).map(doc =>
+      `<div class="item"><a href="${docURL(doc.path)}">${escapeHTML(doc.title)}</a>` +
+      `<small>${escapeHTML(doc.path.split('/').slice(0, -1).join(' / '))}</small></div>`
+    ).join('') || '<p class="empty">No indexed documents.</p>';
+    $('#labsPanel').innerHTML = list(labs);
+    $('#ctfPanel').innerHTML = list(ctf);
+    $('#cheatPanel').innerHTML = (cheatsheets?.documents || []).slice(0, 12).map(doc =>
+      `<a href="${docURL(doc.path)}"><b>${escapeHTML(doc.title)}</b>` +
+      '<span>Open source document →</span></a>'
+    ).join('');
+
+    $('#paths').innerHTML = (state.catalogue.learningPaths || []).map(path =>
+      `<article class="path"><h3>${escapeHTML(path.name)}</h3><ol>` +
+      path.documents.map(documentPath => {
+        const doc = state.docs.find(item => item.path === documentPath);
+        return doc ? `<li><a class="step" href="${docURL(doc.path)}">${escapeHTML(doc.title)}</a></li>` : '';
+      }).join('') +
+      '</ol></article>'
+    ).join('');
+  }
+
+  function renderDomains() {
+    const query = ($('#domainSearch').value || '').trim().toLocaleLowerCase();
+    const categories = state.catalogue.categories.filter(category =>
+      category.documents.length &&
+      (!state.category || category.path === state.category) &&
+      (!query || `${category.name} ${category.description} ` +
+        category.documents.map(doc => doc.title).join(' ').toLocaleLowerCase().includes(query))
+    );
+    $('#domainsGrid').innerHTML = categories.length ? categories.map(category => {
+      const first = category.documents.find(doc => doc.kind === 'index') ||
+        category.documents.find(doc => doc.kind !== 'index') || category.documents[0];
+      return `<article class="card"><div class="icon" aria-hidden="true">${escapeHTML(iconFor(category.path))}</div>` +
+        `<h3>${escapeHTML(category.name)}</h3><p>${escapeHTML(category.description)}</p>` +
+        `<div class="cardfoot"><span>${category.documents.length} documents</span>` +
+        `<a href="${docURL(first.path)}">Start reading →</a></div></article>`;
+    }).join('') : '<p class="empty">No domains match the current filter.</p>';
+  }
+
+  function searchTokens(query) {
+    const matches = query.normalize('NFKC').toLocaleLowerCase().match(
+      /\.?[\p{L}\p{N}]+(?:[+#]+|(?:[.&/-][\p{L}\p{N}]+)*)/gu
+    ) || [];
+    return [...new Set(matches.filter(token => !stopWords.has(token) && token.length > 1))];
+  }
+
+  async function loadSearchIndex() {
+    if (state.searchIndex) return state.searchIndex;
+    if (!state.searchPromise) {
+      state.searchPromise = (async () => {
+        const response = await fetch('site/search-index.json', { cache: 'force-cache' });
+        if (!response.ok) throw new Error(`Search index request failed (${response.status})`);
+        const index = await response.json();
+        const catalogueDocs = state.docs;
+        if (index.version !== 1 || index.catalogueVersion !== state.catalogue.version ||
+            !Array.isArray(index.documents) ||
+            index.documents.length !== catalogueDocs.length ||
+            index.documents.some((doc, i) =>
+              doc.path !== catalogueDocs[i].path || doc.title !== catalogueDocs[i].title
+            ) || !index.terms || typeof index.terms !== 'object') {
+          throw new Error('Search index does not match the catalogue. Please reload the handbook.');
+        }
+        state.searchIndex = index;
+        return index;
+      })().catch(error => {
+        state.searchPromise = null;
+        throw error;
+      });
+    }
+    return state.searchPromise;
+  }
+
+  function escapeRegExp(value) {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function highlight(text, tokens) {
+    let result = escapeHTML(text);
+    for (const token of tokens) {
+      const escaped = escapeHTML(token);
+      result = result.replace(new RegExp(`(${escapeRegExp(escaped)})`, 'giu'), '<mark>$1</mark>');
+    }
+    return result;
+  }
+
+  function renderSearchResults(query, tokens, index) {
+    const resultElement = $('#searchResults');
+    if (!query.trim()) {
+      resultElement.hidden = true;
+      resultElement.innerHTML = '';
+      return;
+    }
+    resultElement.hidden = false;
+    if (!tokens.length) {
+      resultElement.innerHTML = '<p>Enter a topic, acronym, tool, or technique to search the handbook.</p>';
+      return;
+    }
+
+    const scores = new Map();
+    for (const token of tokens) {
+      for (const [docId, titleCount, headingCount, bodyCount] of index.terms[token] || []) {
+        const entry = scores.get(docId) || { score: 0, coverage: 0 };
+        entry.coverage += 1;
+        entry.score += titleCount * 12 + headingCount * 6 + Math.min(bodyCount, 4);
+        scores.set(docId, entry);
+      }
+    }
+    const normalizedQuery = query.normalize('NFKC').trim().toLocaleLowerCase();
+    const results = [...scores.entries()]
+      .filter(([docId]) => {
+        const doc = index.documents[docId];
+        return doc && (!state.category || doc.collection === state.category);
+      })
+      .map(([docId, result]) => {
+        const doc = index.documents[docId];
+        const title = doc.title.toLocaleLowerCase();
+        const phraseBoost = title === normalizedQuery ? 32 :
+          title.startsWith(normalizedQuery) ? 20 :
+            title.includes(normalizedQuery) ? 12 : 0;
+        return { ...doc, ...result, score: result.score + phraseBoost };
+      })
+      .sort((a, b) =>
+        b.coverage - a.coverage || b.score - a.score || a.title.localeCompare(b.title)
+      );
+
+    if (!results.length) {
+      resultElement.innerHTML = '<p class="search-count">No results for ' +
+        `<strong>${escapeHTML(query)}</strong>. Try fewer words, a common acronym, or a related term.</p>`;
+      return;
+    }
+    const shown = results.slice(0, 12);
+    resultElement.innerHTML = `<p class="search-count" role="status">${results.length} result${results.length === 1 ? '' : 's'}; ` +
+      `showing ${shown.length} for <strong>${escapeHTML(query)}</strong></p>` +
+      `<ol>${shown.map(result => {
+        const matchingHeading = result.headings.find(heading =>
+          tokens.some(token => heading.toLocaleLowerCase().includes(token))
+        );
+        const context = matchingHeading || result.snippet || result.collection;
+        const category = state.catalogue.categories.find(item => item.path === result.collection);
+        return `<li><a href="${docURL(result.path)}">${highlight(result.title, tokens)}</a>` +
+          `<small>${escapeHTML(category?.name || result.collection)}</small>` +
+          `<p>${highlight(context, tokens)}</p></li>`;
+      }).join('')}</ol>`;
+  }
+
+  async function search(query) {
+    const sequence = ++state.searchSequence;
+    if (!query.trim()) {
+      renderSearchResults('', [], { terms: {} });
+      return;
+    }
+    $('#searchResults').hidden = false;
+    $('#searchResults').innerHTML = '<p role="status">Searching the handbook…</p>';
+    try {
+      const index = await loadSearchIndex();
+      if (sequence !== state.searchSequence) return;
+      renderSearchResults(query, searchTokens(query), index);
+    } catch (error) {
+      if (sequence !== state.searchSequence) return;
+      console.error(error);
+      $('#searchResults').hidden = false;
+      $('#searchResults').innerHTML = '<p role="status">Search is temporarily unavailable. ' +
+        '<button type="button" id="retrySearch">Retry</button></p>';
+    }
+  }
+
+  function route() {
+    const path = new URLSearchParams(location.search).get('doc');
+    if (path) openDocument(path, decodeFragment(location.hash.slice(1)));
+    else closeReader(false);
+  }
+
+  function decodeFragment(fragment) {
+    try {
+      return decodeURIComponent(fragment);
+    } catch {
+      return fragment;
+    }
+  }
+
+  function readerError(message, doc) {
+    const recovery = doc
+      ? `<a href="${githubURL(doc.path)}" target="_blank" rel="noopener noreferrer">Open the source on GitHub</a>`
+      : '<a href="./">Return to the handbook</a>';
+    const retry = doc ? '<p><button type="button" id="retryDocument">Retry loading document</button></p>' : '';
+    $('#article').innerHTML = `<div class="empty"><h2>Document unavailable</h2>` +
+      `<p>${escapeHTML(message)}</p><p>${recovery}</p>${retry}` +
+      '<a href="./">Return to the handbook</a></div>';
+    $('#toc').innerHTML = '<p class="muted">Contents unavailable.</p>';
+    $('#docnav').innerHTML = '';
+  }
+
+  function openDocument(path, fragment = '', force = false) {
+    const doc = state.docs.find(item => item.path === path);
+    if (!doc) {
+      showReader();
+      state.currentPath = '';
+      $('#meta').textContent = 'Unknown document';
+      $('#crumb').textContent = 'Handbook';
+      $('#source').hidden = true;
+      document.title = `Document unavailable | Security Knowledge Base`;
+      readerError('This document is not present in the current catalogue. Return to the handbook or choose another collection.', null);
+      $('#close').focus();
+      return;
+    }
+    if (!force && state.currentPath === path && !$('#viewer').hidden) {
+      if (fragment) {
+        const target = document.getElementById(fragment);
+        target?.scrollIntoView({ block: 'start' });
+        target?.focus({ preventScroll: true });
+      } else {
+        $('#viewer').scrollTo({ top: 0 });
+      }
+      return;
+    }
+    if (state.abortController) state.abortController.abort();
+    const requestId = ++state.routeSequence;
+    state.abortController = new AbortController();
+    state.currentPath = path;
+    showReader();
+    const category = doc.category;
+    $('#meta').innerHTML = `<div class="metaTitle">${escapeHTML(doc.title)}</div>` +
+      `<div class="metaCat">${escapeHTML(category.name)}</div>`;
+    $('#crumb').textContent = `${category.name} / ${doc.title}`;
+    $('#source').href = githubURL(doc.path);
+    $('#source').hidden = false;
+    $('#article').innerHTML = '<p class="loading" role="status">Loading document…</p>';
+    $('#toc').innerHTML = '<p class="muted">Loading contents…</p>';
+    document.title = `${doc.title} — ${category.name} | Security Knowledge Base`;
+    const description = $('meta[name="description"]');
+    if (description) description.content =
+      `Read ${doc.title} in the ${category.name} cybersecurity handbook. The repository Markdown is the authoritative source.`;
+
+    fetch(localPath(doc.path), { signal: state.abortController.signal })
+      .then(response => {
+        if (!response.ok) throw new Error(`The source returned HTTP ${response.status}.`);
+        return response.text();
+      })
+      .then(markdown => {
+        if (requestId !== state.routeSequence || state.currentPath !== path) return;
+        if (!window.marked || !window.DOMPurify) {
+          throw new Error('The Markdown renderer or sanitizer did not load. Check the connection and retry.');
+        }
+        const rendered = window.marked.parse(markdown, { gfm: true });
+        $('#article').innerHTML = window.DOMPurify.sanitize(rendered, {
+          USE_PROFILES: { html: true }
+        });
+        rewriteContentLinks(doc.path);
+        buildTableOfContents();
+        addCopyButtons();
+        buildDocumentNavigation(doc);
+        $('#article').scrollTop = 0;
+        $('#viewer').scrollTop = 0;
+        const target = fragment ? document.getElementById(fragment) : null;
+        if (target) {
+          target.tabIndex = -1;
+          target.scrollIntoView({ block: 'start' });
+          target.focus({ preventScroll: true });
+        } else {
+          const firstHeading = $('#article h1') || $('#article h2');
+          if (firstHeading) {
+            firstHeading.tabIndex = -1;
+            firstHeading.focus({ preventScroll: true });
+          }
+        }
+      })
+      .catch(error => {
+        if (error.name === 'AbortError' || requestId !== state.routeSequence) return;
+        console.error(error);
+        readerError(error.message || 'The source could not be loaded.', doc);
+      });
+  }
+
+  function showReader() {
+    if ($('#viewer').hidden) {
+      state.opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      $('#viewer').hidden = false;
+      document.body.style.overflow = 'hidden';
+      for (const element of $$('header, #main, footer')) element.inert = true;
+    }
+    state.wasReaderOpen = true;
+  }
+
+  function closeReader(updateHistory = true) {
+    if ($('#viewer').hidden) return;
+    if (updateHistory && new URLSearchParams(location.search).has('doc') && history.state?.doc) {
+      history.back();
+      return;
+    }
+    if (updateHistory && new URLSearchParams(location.search).has('doc')) {
+      history.replaceState({}, '', `${location.pathname}${location.hash}`);
+    }
+    if (state.abortController) state.abortController.abort();
+    state.routeSequence += 1;
+    state.currentPath = '';
+    $('#viewer').hidden = true;
+    $('#viewer').classList.remove('toc-open');
+    $('#tocbtn').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    for (const element of $$('header, #main, footer')) element.inert = false;
+    document.title = HOME_TITLE;
+    const description = $('meta[name="description"]');
+    if (description) description.content = HOME_DESCRIPTION;
+    const target = state.opener?.isConnected ? state.opener : $('#search');
+    target?.focus({ preventScroll: true });
+    state.opener = null;
+  }
+
+  function slugHeading(text) {
+    return text.normalize('NFKC').toLocaleLowerCase()
+      .replace(/<[^>]*>/g, '')
+      .replace(/[^\p{L}\p{N}_\-\s]/gu, '')
+      .trim().replace(/\s+/g, '-');
+  }
+
+  function buildTableOfContents() {
+    const headings = $$('h2, h3', $('#article'));
+    const used = new Set();
+    $('#toc').innerHTML = headings.length ? headings.map(heading => {
+      let id = heading.id || slugHeading(heading.textContent);
+      const base = id;
+      let suffix = 1;
+      while (!id || used.has(id)) id = `${base}-${suffix++}`;
+      used.add(id);
+      heading.id = id;
+      return `<a class="l${heading.tagName.slice(1)}" href="#${encodeURIComponent(id)}">` +
+        `${escapeHTML(heading.textContent)}</a>`;
+    }).join('') : '<p class="muted">No section headings.</p>';
+  }
+
+  function rewriteContentLinks(sourcePath) {
+    const sourceBase = new URL(localPath(sourcePath), document.baseURI);
+    const siteBase = new URL('.', document.baseURI);
+    for (const image of $$('img', $('#article'))) {
+      const src = image.getAttribute('src');
+      if (!src) continue;
+      try {
+        const target = new URL(src, sourceBase);
+        if (target.origin === siteBase.origin) {
+          image.src = target.href;
+        } else if (!['http:', 'https:'].includes(target.protocol)) {
+          image.removeAttribute('src');
+        }
+      } catch {
+        image.removeAttribute('src');
+      }
+      image.loading = 'lazy';
+      image.decoding = 'async';
+    }
+    for (const anchor of $$('a[href]', $('#article'))) {
+      const href = anchor.getAttribute('href');
+      if (!href) continue;
+      try {
+        const target = new URL(href, sourceBase);
+        if (target.origin !== siteBase.origin) {
+          if (!['http:', 'https:', 'mailto:', 'tel:'].includes(target.protocol)) {
+            anchor.removeAttribute('href');
+            continue;
+          }
+          anchor.target = '_blank';
+          anchor.rel = 'noopener noreferrer';
+          continue;
+        }
+        if (!target.pathname.startsWith(siteBase.pathname)) continue;
+        const relativePath = decodeURIComponent(target.pathname.slice(siteBase.pathname.length));
+        const markdownTarget = relativePath && /\.markdown?$/i.test(relativePath);
+        const directory = target.pathname.endsWith('/');
+        const collection = state.catalogue.categories.find(item =>
+          item.path === relativePath.replace(/\/$/, '')
+        );
+        if (markdownTarget || directory || collection) {
+          let destination = relativePath;
+          if (directory || collection) {
+            const start = collection?.documents.find(item => item.kind === 'index') ||
+              collection?.documents.find(item => item.kind !== 'index');
+            if (start) destination = start.path;
+            else {
+              anchor.href = `${githubTreeURL(relativePath)}${target.hash}`;
+              anchor.target = '_blank';
+              anchor.rel = 'noopener noreferrer';
+              continue;
+            }
+          }
+          if (state.docs.some(doc => doc.path === destination)) {
+            anchor.href = docURL(destination, target.hash ? decodeFragment(target.hash.slice(1)) : '');
+          } else {
+            anchor.href = `${githubURL(destination)}${target.hash}`;
+            anchor.target = '_blank';
+            anchor.rel = 'noopener noreferrer';
+          }
+        } else {
+          anchor.href = target.href;
+        }
+      } catch {
+        anchor.removeAttribute('href');
+      }
+    }
+  }
+
+  function addCopyButtons() {
+    for (const pre of $$('pre', $('#article'))) {
+      if ($('.copy', pre)) continue;
+      const button = document.createElement('button');
+      button.className = 'copy';
+      button.type = 'button';
+      button.textContent = 'Copy';
+      button.setAttribute('aria-label', 'Copy code block');
+      button.addEventListener('click', async () => {
+        const content = $('code', pre)?.innerText || pre.innerText;
+        try {
+          if (!navigator.clipboard?.writeText) throw new Error('Clipboard access is unavailable in this browser.');
+          await navigator.clipboard.writeText(content);
+          button.textContent = 'Copied';
+          toast('Code copied to clipboard.');
+          window.setTimeout(() => { button.textContent = 'Copy'; }, 1200);
+        } catch (error) {
+          toast(error.message || 'Could not copy this code block.');
+        }
+      });
+      pre.append(button);
+    }
+  }
+
+  function buildDocumentNavigation(doc) {
+    const index = state.docs.findIndex(item => item.path === doc.path);
+    const previous = state.docs[index - 1];
+    const next = state.docs[index + 1];
+    $('#docnav').innerHTML =
+      (previous ? `<a href="${docURL(previous.path)}"><small>← PREVIOUS</small>${escapeHTML(previous.title)}</a>` : '<span></span>') +
+      (next ? `<a href="${docURL(next.path)}"><small>NEXT →</small>${escapeHTML(next.title)}</a>` : '<span></span>');
+  }
+
+  function navigateToDocument(path, fragment = '') {
+    if (!state.docs.some(doc => doc.path === path)) return;
+    if (new URLSearchParams(location.search).get('doc') === path) {
+      if (fragment) {
+        const decoded = decodeFragment(fragment);
+        history.pushState({ doc: path }, '', docURL(path, decoded));
+        const target = document.getElementById(decoded);
+        target?.scrollIntoView({ block: 'start' });
+        target?.focus({ preventScroll: true });
+      }
+      return;
+    }
+    const decoded = decodeFragment(fragment);
+    history.pushState({ doc: path }, '', docURL(path, decoded));
+    openDocument(path, decoded);
+  }
+
+  function activateDocumentLinks(event) {
+    const anchor = event.target.closest('a[href]');
+    if (!anchor || anchor.target === '_blank' || event.defaultPrevented ||
+        event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const target = new URL(anchor.href, location.href);
+    if (target.origin !== location.origin || target.pathname !== new URL('index.html', document.baseURI).pathname) return;
+    const path = target.searchParams.get('doc');
+    if (!path) return;
+    event.preventDefault();
+    navigateToDocument(path, target.hash.slice(1));
+    $('#nav').classList.remove('open');
+    $('#menu').setAttribute('aria-expanded', 'false');
+  }
+
+  function trapFocus(event) {
+    if (event.key !== 'Tab' || $('#viewer').hidden) return;
+    const focusable = $$('a[href], button:not([disabled]), [tabindex="0"]', $('#viewer'))
+      .filter(element => !element.hidden && element.getClientRects().length);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  function toast(message) {
+    const element = $('#toast');
+    element.textContent = message;
+    element.classList.add('show');
+    window.setTimeout(() => element.classList.remove('show'), 2200);
+  }
+
+  function bindEvents() {
+    $('#search').addEventListener('input', event => search(event.target.value));
+    $('#search').addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        const firstResult = $('#searchResults a');
+        if (firstResult) firstResult.focus();
+        else $('#searchResults').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+    $('#domainSearch').addEventListener('input', renderDomains);
+    $('#filter').addEventListener('change', event => {
+      state.category = event.target.value;
+      renderDomains();
+      search($('#search').value);
+    });
+    $('#close').addEventListener('click', () => closeReader());
+    $('#tocbtn').addEventListener('click', () => {
+      const expanded = $('#tocbtn').getAttribute('aria-expanded') === 'true';
+      $('#tocbtn').setAttribute('aria-expanded', String(!expanded));
+      $('#viewer').classList.toggle('toc-open', !expanded);
+    });
+    $('#menu').addEventListener('click', () => {
+      const open = $('#nav').classList.toggle('open');
+      $('#menu').setAttribute('aria-expanded', String(open));
+    });
+    $('#searchResults').addEventListener('click', event => {
+      if (event.target.closest('#retrySearch')) search($('#search').value);
+    });
+    $('#viewer').addEventListener('click', event => {
+      if (event.target.closest('#retryDocument') && state.currentPath) {
+        openDocument(state.currentPath, decodeFragment(location.hash.slice(1)), true);
+        $('#article').focus({ preventScroll: true });
+      }
+    });
+    document.addEventListener('click', activateDocumentLinks);
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !$('#viewer').hidden) {
+        if ($('#viewer').classList.contains('toc-open') && matchMedia('(max-width: 950px)').matches) {
+          $('#viewer').classList.remove('toc-open');
+          $('#tocbtn').setAttribute('aria-expanded', 'false');
+        } else closeReader();
+      } else if (event.key === 'Tab') {
+        trapFocus(event);
+      } else if (event.key === '/' &&
+          !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName) &&
+          $('#viewer').hidden) {
+        event.preventDefault();
+        $('#search').focus();
+      }
+    });
+    window.addEventListener('popstate', route);
+  }
+
+  (async () => {
+    try {
+      await loadCatalogue();
+      render();
+      bindEvents();
+      route();
+    } catch (error) {
+      console.error(error);
+      $('#main').innerHTML = '<section class="section shell"><div class="empty">' +
+        '<h2>Handbook catalogue unavailable</h2>' +
+        '<p>The generated content catalogue could not be loaded. Refresh later or open the repository source.</p>' +
+        `<a class="btn" href="https://github.com/${REPO}">Open repository</a></div></section>`;
+    }
+  })();
 })();

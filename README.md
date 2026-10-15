@@ -3,7 +3,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Cybersecurity-Knowledge%20Base-63f28a?style=for-the-badge&logo=hackthebox&logoColor=white" alt="Cybersecurity Knowledge Base">
   <img src="https://img.shields.io/badge/Focus-Blue%20Team%20%7C%20AppSec%20%7C%20Cloud%20%7C%20Threat%20Research-111814?style=for-the-badge" alt="Security Focus">
-  <img src="https://img.shields.io/badge/Content-674%2B%20Markdown%20Documents-111814?style=for-the-badge&logo=markdown" alt="Markdown Documents">
+  <img src="https://img.shields.io/badge/Content-Markdown--First%20Handbook-111814?style=for-the-badge&logo=markdown" alt="Markdown-first handbook">
   <img src="https://img.shields.io/badge/License-MIT-111814?style=for-the-badge" alt="MIT License">
 </p>
 
@@ -493,12 +493,12 @@ Security-Knowledge-Base/
 ├── site/
 ├── scripts/
 ├── LICENSE
-├── CONTRIBUTING.md
+├── Contributing.md
 ├── SECURITY.md
 └── CHANGELOG.md
 ```
 
-The repository currently contains **674+ Markdown documents**, making the GitHub Pages portal the preferred way to navigate the knowledge base.
+The knowledge base contains hundreds of Markdown documents across its topical collections. The generated catalogue and search index are built from those sources; the Markdown remains authoritative.
 
 ---
 
@@ -548,9 +548,29 @@ The website transforms the repository from a conventional GitHub documentation t
 - Markdown rendering
 - DOM sanitization
 - Static GitHub Pages
-- Client-side search
+- Lazy-loaded full-text client-side search
+- Generated `site/content.json` and `site/search-index.json`
+- Python standard-library catalogue and validation scripts
 
 No backend or database is required.
+
+## Local quality checks
+
+After editing Markdown or portal code, run:
+
+```bash
+python scripts/build-content-index.py
+python -m unittest discover -s tests -v
+python scripts/build-content-index.py --check
+python scripts/validate-knowledge-base.py
+node --check assets/js/app.js
+python -m http.server 8000
+```
+
+Open `http://localhost:8000/` to exercise the site. The validator checks
+repository-local links and generated-index consistency; it does not claim that
+external links or the published Pages deployment have been verified. See the
+[deployment guide](docs/DEPLOYMENT.md) for publishing and browser checks.
 
 ---
 
@@ -675,7 +695,7 @@ are welcome.
 
 Before contributing, review:
 
-- [Contributing Guide](./CONTRIBUTING.md)
+- [Contributing Guide](./Contributing.md)
 - [Security Policy](./SECURITY.md)
 - [Documentation Guides](./docs/)
 - [Responsible Use](./docs/Responsible-Use.md)

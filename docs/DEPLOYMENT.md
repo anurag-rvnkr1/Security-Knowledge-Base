@@ -1,61 +1,72 @@
 # GitHub Pages Deployment
 
-## What
-Publish the portal as a static GitHub Pages site.
+The portal is a static HTML/CSS/JavaScript application. It reads the generated
+catalogue and search index, then fetches the Markdown sources served alongside
+the site. There is no build-time framework or backend.
 
-## Why
-The repository already contains the knowledge source. GitHub Pages can serve the frontend without a backend.
+## Publishing configuration
 
-## Steps
+The repository contains no GitHub Pages deployment workflow. The CI workflow
+validates content and code; it does not publish the site. The Pages repository
+setting is not available in this checkout, so a maintainer must confirm it in
+**Settings → Pages**. The expected configuration for the published URL is
+**Deploy from a branch → `main` → `/(root)`**. If the repository uses a
+different configuration, update this guide and verify relative asset paths
+against that deployment.
 
-1. Open https://github.com/anurag-rvnkr1/Security-Knowledge-Base.
-2. Put `index.html`, `404.html`, `favicon.svg`, `robots.txt`, `assets/`, `site/`, and `scripts/` in the repository root.
-3. Commit to `main`.
-4. Open **Settings → Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select **main**.
-7. Select **/(root)**.
-8. Click **Save**.
-9. Wait for GitHub Pages to publish.
-10. Open https://anurag-rvnkr1.github.io/Security-Knowledge-Base/.
+## Local preview
 
-### Why `main / (root)` works
-GitHub Pages takes static files from the selected branch and directory. Because `index.html` is in the root, it becomes the entry page. The browser then loads the CSS, JavaScript, JSON index, and source Markdown.
-
-## Local verification
-
-From the repository root:
+From the repository root, run:
 
 ```bash
 python -m http.server 8000
 ```
 
-Open http://localhost:8000/.
+Open <http://localhost:8000/>. A local HTTP server is required because the
+browser loads JSON and Markdown with `fetch()`; a `file://` preview is not
+supported. Stop the server with `Ctrl+C`.
 
-Stop with `Ctrl+C`.
+## Regenerate and validate
 
-Test search, a document, refresh, Back/Forward, code-copy buttons, images, GitHub links, and mobile layout.
-
-## Updating content
-
-The Markdown files remain authoritative. After adding or renaming Markdown:
+Markdown files are the source of truth. After adding, removing, or renaming a
+document, rebuild both generated files:
 
 ```bash
 python scripts/build-content-index.py
 ```
 
-Commit both the source change and regenerated `site/content.json`.
+Before submitting, run the same checks used in CI:
 
-## What to verify after deployment
+```bash
+python -m unittest discover -s tests -v
+python scripts/build-content-index.py --check
+python scripts/validate-knowledge-base.py
+node --check assets/js/app.js
+```
 
-- Home page loads.
-- Domain cards appear.
-- Search works.
-- A Markdown document opens.
-- Images resolve relative to the source document.
-- `Open on GitHub` points to the real source path.
-- Spaces and punctuation in paths work.
-- Refreshing a document URL preserves the document.
-- Browser Back/Forward works.
-- Mobile navigation works.
-- No horizontal page overflow appears.
+Commit source changes together with regenerated `site/content.json` and
+`site/search-index.json`. Do not edit those JSON files by hand. The search
+index is loaded only when a visitor starts searching.
+
+## Preview checklist
+
+- Home, collection cards, learning-path starts, labs, CTF writeups, and
+  references load.
+- Search finds terms from titles, headings, and document text; errors can be
+  retried.
+- A document opens from search and from a collection, and its direct URL
+  survives refresh.
+- Browser Back/Forward, reader close, and focus restoration behave as expected.
+- Relative Markdown links, fragments, images, and GitHub source links work.
+- Code-copy controls provide feedback; wide code and tables remain contained.
+- Keyboard navigation, Escape, mobile table of contents, reduced motion, and
+  mobile navigation work.
+- No page-level horizontal overflow is introduced at narrow viewport widths.
+
+## After publishing
+
+Confirm the Pages deployment status in GitHub, then test the published URL in a
+browser. Check the browser console and network panel for failed catalogue,
+search-index, stylesheet, script, or Markdown requests. A successful static
+build or valid sitemap does not prove that dynamically rendered documents will
+be indexed by search engines.

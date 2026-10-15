@@ -2605,4 +2605,3 @@ Chapter 11 – Incident Response & SIEM Workflows
 ```
 
 There we will cover **incident lifecycle, preparation, detection, analysis, containment, eradication, recovery, post-incident activity, SIEM-to-case workflows, evidence handling, escalation, playbooks, response automation, SOAR integration, incident documentation, and practical incident-response scenarios.**
-```

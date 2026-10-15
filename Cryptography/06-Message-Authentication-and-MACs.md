@@ -2845,4 +2845,3 @@ VAPT Testing
 The key question for the next chapter will be:
 
 > **How can someone prove that a message, certificate, software package, or communication endpoint genuinely belongs to a particular trusted identity?**
-```

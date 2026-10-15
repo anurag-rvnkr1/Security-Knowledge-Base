@@ -3173,6 +3173,3 @@ In this chapter, you learned:
 - HTTP security concepts, logging, monitoring, and enterprise best practices
 
 With a strong understanding of HTTP, you are now ready to study **HTTPS and TLS**, where you'll learn how modern web communication is encrypted, authenticated, and protected against interception.
-
-```
-

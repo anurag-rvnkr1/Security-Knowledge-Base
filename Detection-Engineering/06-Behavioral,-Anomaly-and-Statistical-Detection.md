@@ -197,7 +197,7 @@ What exact artifact did they use?
 
 # 9. MITRE ATT&CK
 
-:contentReference[oaicite:0]{index=0} ATT&CK is a knowledge base describing adversary tactics and techniques.
+[MITRE ATT&CK](https://attack.mitre.org/) is a knowledge base describing adversary tactics and techniques.
 
 It can help detection engineers:
 
@@ -2442,4 +2442,3 @@ The central principle is:
 > **Attackers can change their tools and indicators, but they still need to perform actions to achieve their objectives. Detecting those actions and the relationships between them makes TTP-based behavioral detection one of the most important foundations of modern detection engineering.**
 
 The next chapter moves into **Anomaly Detection, Baselines & Statistical Detection**, focusing on how to model normal behavior, identify deviations, handle seasonality and drift, reduce anomaly-driven false positives, and build reliable statistical detections.
-```

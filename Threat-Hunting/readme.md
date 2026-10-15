@@ -252,7 +252,7 @@ Understand how professional threat hunters formulate hypotheses and investigate 
 
 ## 02 — MITRE ATT&CK for Threat Hunters
 
-**File:** [`02-MITRE-ATTACK-for-Threat-Hunters.md`](./02-MITRE-ATTACK-for-Threat-Hunters.md)
+**File:** [`02-MITRE-ATT-and-CK-for-Threat-Hunters.md`](./02-MITRE-ATT-and-CK-for-Threat-Hunters.md)
 
 Explains how MITRE ATT&CK can be used to structure and prioritize threat-hunting activities.
 

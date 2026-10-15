@@ -2322,4 +2322,3 @@ Chapter 12 – SIEM Use Cases & Detection Scenarios
 ```
 
 There we will cover **high-value SOC use cases, authentication attacks, brute force, password spraying, account compromise, malware, phishing, PowerShell, privilege escalation, lateral movement, C2, data exfiltration, ransomware, insider threats, cloud attacks, and complete detection-to-response scenarios.**
-```

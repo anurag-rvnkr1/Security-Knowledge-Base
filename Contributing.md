@@ -1,6 +1,6 @@
-# Contributing to Cybersecurity Notes
+# Contributing to Security Knowledge Base
 
-First off, thank you for your interest in contributing to **Cybersecurity Handbook**! 🎉
+Thank you for helping improve the **Security Knowledge Base**.
 
 Whether you're fixing a typo, improving an explanation, adding a new topic, or contributing a hands-on lab, your efforts help make this repository a valuable learning resource for the cybersecurity community.
 
@@ -45,6 +45,9 @@ Please:
 * Ensure all information is technically accurate.
 * Verify commands and configuration examples before submitting.
 * Follow responsible disclosure practices when discussing security topics.
+* Use synthetic data and reserved example addresses where applicable.
+* State authorization, scope, prerequisites, and cleanup for dual-use labs.
+* Treat Markdown sources as authoritative; generated site JSON is not edited by hand.
 
 ---
 
@@ -194,6 +197,25 @@ misc
 
 # Pull Request Checklist
 
+## Local quality checks
+
+Run these commands from the repository root:
+
+```bash
+python scripts/build-content-index.py
+python -m unittest discover -s tests -v
+python scripts/build-content-index.py --check
+python scripts/validate-knowledge-base.py
+node --check assets/js/app.js
+```
+
+The builder regenerates `site/content.json` and `site/search-index.json`.
+Review and commit both generated files with the Markdown changes. Start a
+local HTTP preview with `python -m http.server 8000`, then open
+`http://localhost:8000/` to verify reader behavior. The validator checks
+local paths and fragments; it does not test external links or certify that
+the published website is live.
+
 Before opening a Pull Request, ensure that:
 
 * The content is accurate.
@@ -273,4 +295,4 @@ By contributing to this repository, you agree that your contributions will be li
 
 Every contribution—whether it's correcting a typo, improving a diagram, or adding a new topic—helps make this repository more useful for learners and professionals around the world.
 
-Thank you for helping improve **Cybersecurity Notes**.
+Thank you for helping improve **Security Knowledge Base**.
